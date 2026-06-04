@@ -6,28 +6,28 @@
 	.type	hypre_SMGAxpy,@function
 hypre_SMGAxpy:                          # @hypre_SMGAxpy
 # %bb.0:
-	addi.d	$sp, $sp, -256
-	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -224
+	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
 	move	$fp, $a3
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	move	$s0, $a1
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(hypre_BoxCreate)
 	jirl	$ra, $ra, 0
-	xvld	$xr4, $sp, 96                   # 32-byte Folded Reload
-	st.d	$s0, $sp, 80                    # 8-byte Folded Spill
+	vld	$vr4, $sp, 80                   # 16-byte Folded Reload
+	st.d	$s0, $sp, 64                    # 8-byte Folded Spill
 	ld.d	$a1, $s0, 8
 	ld.d	$a2, $a1, 8
 	ld.w	$a1, $a2, 8
@@ -35,18 +35,18 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	blez	$a1, .LBB0_32
 # %bb.1:                                # %.lr.ph
 	move	$s5, $zero
-	xvreplve0.d	$xr5, $xr4
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
-	xvst	$xr5, $sp, 16                   # 32-byte Folded Spill
+	vreplvei.d	$vr5, $vr4, 0
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
+	vst	$vr5, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_2:                                # %._crit_edge
                                         #   in Loop: Header=BB0_3 Depth=1
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	ld.w	$a0, $a2, 8
 	addi.d	$s5, $s5, 1
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
 	bge	$s5, $a0, .LBB0_32
 .LBB0_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_20 Depth 2
@@ -70,13 +70,13 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	ld.w	$a0, $a0, 20
 	st.w	$a0, $s3, 20
 	move	$a0, $s3
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(hypre_ProjectBox)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a0, $a2, 16
-	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a1, $a3, 16
 	ld.d	$s2, $a0, 0
 	ld.d	$s4, $a1, 0
@@ -87,9 +87,9 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	ldx.w	$s1, $a0, $a2
 	ld.d	$s8, $a3, 24
 	ldx.w	$a0, $a1, $a2
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	add.d	$s6, $s2, $s0
-	addi.d	$a2, $sp, 156
+	addi.d	$a2, $sp, 124
 	move	$a0, $s3
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(hypre_BoxGetStrideSize)
@@ -119,8 +119,8 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	ld.w	$t7, $a0, 0
 	sub.w	$t0, $a2, $t5
 	addi.d	$s2, $t0, 1
-	xvld	$xr4, $sp, 96                   # 32-byte Folded Reload
-	xvld	$xr5, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr4, $sp, 80                   # 16-byte Folded Reload
+	vld	$vr5, $sp, 16                   # 16-byte Folded Reload
 	bltz	$t0, .LBB0_8
 # %bb.7:                                #   in Loop: Header=BB0_3 Depth=1
 	ld.w	$a2, $s3, 8
@@ -136,8 +136,8 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	ld.w	$a0, $fp, 0
 	sub.w	$s4, $a1, $t6
 	addi.d	$t1, $s4, 1
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	bltz	$s4, .LBB0_12
 # %bb.10:                               #   in Loop: Header=BB0_3 Depth=1
 	ld.w	$a1, $fp, 4
@@ -164,9 +164,9 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	move	$s7, $zero
 	move	$s0, $zero
 .LBB0_14:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.w	$a1, $sp, 156
-	ld.w	$a2, $sp, 160
-	ld.w	$a3, $sp, 164
+	ld.w	$a1, $sp, 124
+	ld.w	$a2, $sp, 128
+	ld.w	$a3, $sp, 132
 	slt	$a4, $a1, $a2
 	masknez	$fp, $a1, $a4
 	maskeqz	$a4, $a2, $a4
@@ -220,26 +220,26 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	sub.d	$a6, $s7, $a6
 	sub.d	$a7, $a7, $t2
 	sub.d	$t0, $t0, $t1
-	ld.d	$t1, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$t2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 96                    # 8-byte Folded Reload
 	alsl.d	$t1, $t2, $t1, 3
 	addi.d	$t2, $a1, -1
 	bstrpick.d	$t4, $t2, 31, 0
 	alsl.d	$t2, $t4, $t1, 3
 	addi.d	$t2, $t2, 8
-	ld.d	$t3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 112                   # 8-byte Folded Reload
 	alsl.d	$t3, $s1, $t3, 3
 	alsl.d	$t4, $t4, $t3, 3
 	addi.d	$t4, $t4, 8
-	ori	$t5, $zero, 7
+	ori	$t5, $zero, 3
 	sltu	$t5, $t5, $a1
 	addi.d	$t6, $a0, -1
 	sltui	$t6, $t6, 1
 	and	$t5, $t5, $t6
-	bstrpick.d	$t6, $a1, 30, 3
-	slli.d	$t6, $t6, 3
-	addi.d	$t7, $t1, 32
-	addi.d	$t8, $t3, 32
+	bstrpick.d	$t6, $a1, 30, 2
+	slli.d	$t6, $t6, 2
+	addi.d	$t7, $t1, 16
+	addi.d	$t8, $t3, 16
 	slli.d	$s0, $a0, 3
 	b	.LBB0_20
 	.p2align	4, , 16
@@ -325,17 +325,17 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
                                         #     Parent Loop BB0_20 Depth=2
                                         #       Parent Loop BB0_22 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	xvld	$xr0, $s2, -32
-	xvld	$xr1, $s2, 0
-	xvld	$xr2, $s6, -32
-	xvld	$xr3, $s6, 0
-	xvfmadd.d	$xr0, $xr5, $xr0, $xr2
-	xvfmadd.d	$xr1, $xr5, $xr1, $xr3
-	xvst	$xr0, $s6, -32
-	xvst	$xr1, $s6, 0
-	addi.d	$ra, $ra, -8
-	addi.d	$s6, $s6, 64
-	addi.d	$s2, $s2, 64
+	vld	$vr0, $s2, -16
+	vld	$vr1, $s2, 0
+	vld	$vr2, $s6, -16
+	vld	$vr3, $s6, 0
+	vfmadd.d	$vr0, $vr5, $vr0, $vr2
+	vfmadd.d	$vr1, $vr5, $vr1, $vr3
+	vst	$vr0, $s6, -16
+	vst	$vr1, $s6, 0
+	addi.d	$ra, $ra, -4
+	addi.d	$s6, $s6, 32
+	addi.d	$s2, $s2, 32
 	bnez	$ra, .LBB0_30
 # %bb.31:                               # %middle.block
                                         #   in Loop: Header=BB0_22 Depth=3
@@ -347,18 +347,18 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	pcaddu18i	$ra, %call36(hypre_BoxDestroy)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 256
+	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 224
 	ret
 .Lfunc_end0:
 	.size	hypre_SMGAxpy, .Lfunc_end0-hypre_SMGAxpy

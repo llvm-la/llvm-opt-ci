@@ -234,13 +234,11 @@ sort_nuclide_grids:                     # @sort_nuclide_grids
 .Lfunc_end2:
 	.size	sort_nuclide_grids, .Lfunc_end2-sort_nuclide_grids
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function generate_energy_grid
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function generate_energy_grid
 .LCPI3_0:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	generate_energy_grid
 	.p2align	2
@@ -349,7 +347,7 @@ generate_energy_grid:                   # @generate_energy_grid
 # %bb.9:                                # %.preheader
 	blez	$s1, .LBB3_17
 # %bb.10:                               # %.lr.ph41.preheader
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 4
 	bgeu	$s3, $a1, .LBB3_12
 # %bb.11:
 	move	$a1, $zero
@@ -357,44 +355,32 @@ generate_energy_grid:                   # @generate_energy_grid
 .LBB3_12:                               # %vector.ph47
 	move	$a1, $s3
 	pcalau12i	$a2, %pc_hi20(.LCPI3_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI3_0)
-	bstrins.d	$a1, $zero, 2, 0
-	xvreplgr2vr.d	$xr1, $s0
-	addi.d	$a2, $fp, 72
+	vld	$vr0, $a2, %pc_lo12(.LCPI3_0)
+	bstrins.d	$a1, $zero, 1, 0
+	vreplgr2vr.d	$vr1, $s0
+	addi.d	$a2, $fp, 40
 	move	$a3, $a1
 	.p2align	4, , 16
 .LBB3_13:                               # %vector.body50
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr0, 4
-	xvmul.d	$xr3, $xr0, $xr1
-	xvpickve2gr.d	$a4, $xr3, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	xvpickve2gr.d	$a6, $xr3, 2
-	xvpickve2gr.d	$a7, $xr3, 3
-	xvmul.d	$xr2, $xr2, $xr1
-	xvpickve2gr.d	$t0, $xr2, 0
-	xvpickve2gr.d	$t1, $xr2, 1
-	xvpickve2gr.d	$t2, $xr2, 2
-	xvpickve2gr.d	$t3, $xr2, 3
+	vaddi.du	$vr2, $vr0, 2
+	vmul.d	$vr3, $vr0, $vr1
+	vpickve2gr.d	$a4, $vr3, 0
+	vpickve2gr.d	$a5, $vr3, 1
+	vmul.d	$vr2, $vr2, $vr1
+	vpickve2gr.d	$a6, $vr2, 0
+	vpickve2gr.d	$a7, $vr2, 1
 	alsl.d	$a4, $a4, $a0, 2
 	alsl.d	$a5, $a5, $a0, 2
 	alsl.d	$a6, $a6, $a0, 2
 	alsl.d	$a7, $a7, $a0, 2
-	alsl.d	$t0, $t0, $a0, 2
-	alsl.d	$t1, $t1, $a0, 2
-	alsl.d	$t2, $t2, $a0, 2
-	alsl.d	$t3, $t3, $a0, 2
-	st.d	$a4, $a2, -64
-	st.d	$a5, $a2, -48
-	st.d	$a6, $a2, -32
-	st.d	$a7, $a2, -16
-	st.d	$t0, $a2, 0
-	st.d	$t1, $a2, 16
-	st.d	$t2, $a2, 32
-	st.d	$t3, $a2, 48
-	xvaddi.du	$xr0, $xr0, 8
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 128
+	st.d	$a4, $a2, -32
+	st.d	$a5, $a2, -16
+	st.d	$a6, $a2, 0
+	st.d	$a7, $a2, 16
+	vaddi.du	$vr0, $vr0, 4
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 64
 	bnez	$a3, .LBB3_13
 # %bb.14:                               # %middle.block53
 	beq	$s3, $a1, .LBB3_17

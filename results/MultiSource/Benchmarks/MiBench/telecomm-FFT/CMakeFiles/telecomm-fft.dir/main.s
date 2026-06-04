@@ -41,17 +41,13 @@ srand:                                  # @srand
 .Lfunc_end1:
 	.size	srand, .Lfunc_end1-srand
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI2_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
 .LCPI2_1:
@@ -170,7 +166,7 @@ main:                                   # @main
 	b	.LBB2_24
 .LBB2_8:                                # %.lr.ph.preheader
 	bstrpick.d	$a2, $s4, 31, 0
-	ori	$a0, $zero, 8
+	ori	$a0, $zero, 4
 	lu12i.w	$a1, 67108
 	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
 	bgeu	$a2, $a0, .LBB2_10
@@ -179,30 +175,30 @@ main:                                   # @main
 	b	.LBB2_13
 .LBB2_10:                               # %vector.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI2_0)
-	bstrpick.d	$a0, $s4, 31, 3
-	slli.d	$a0, $a0, 3
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_0)
+	bstrpick.d	$a0, $s4, 31, 2
+	slli.d	$a0, $a0, 2
 	ori	$a2, $a1, 3539
-	xvreplgr2vr.w	$xr0, $a2
+	vreplgr2vr.w	$vr0, $a2
 	ori	$a2, $zero, 1000
-	xvreplgr2vr.w	$xr1, $a2
+	vreplgr2vr.w	$vr1, $a2
 	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	move	$a4, $a0
 	.p2align	4, , 16
 .LBB2_11:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmuh.wu	$xr3, $xr2, $xr0
-	xvsrli.w	$xr3, $xr3, 6
-	xvaddi.wu	$xr4, $xr2, 8
-	xvmsub.w	$xr2, $xr3, $xr1
-	xvffint.s.wu	$xr2, $xr2
-	xvst	$xr2, $a2, 0
-	xvst	$xr2, $a3, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 32
-	addi.d	$a2, $a2, 32
-	xvori.b	$xr2, $xr4, 0
+	vmuh.wu	$vr3, $vr2, $vr0
+	vsrli.w	$vr3, $vr3, 6
+	vaddi.wu	$vr4, $vr2, 4
+	vmsub.w	$vr2, $vr3, $vr1
+	vffint.s.wu	$vr2, $vr2
+	vst	$vr2, $a2, 0
+	vst	$vr2, $a3, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 16
+	addi.d	$a2, $a2, 16
+	vori.b	$vr2, $vr4, 0
 	bnez	$a4, .LBB2_11
 # %bb.12:                               # %middle.block
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload

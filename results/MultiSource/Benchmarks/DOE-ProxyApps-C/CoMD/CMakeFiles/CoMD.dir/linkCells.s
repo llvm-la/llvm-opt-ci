@@ -25,21 +25,23 @@ initLinkCells:                          # @initLinkCells
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $s0, 152
 	fst.d	$fa0, $fp, 72
+	vld	$vr1, $s0, 96
+	fld.d	$fa2, $s0, 152
 	frecip.d	$fa0, $fa0
 	fst.d	$fa0, $fp, 96
-	fdiv.d	$fa0, $fa1, $fs0
+	vst	$vr1, $fp, 24
+	fdiv.d	$fa0, $fa2, $fs0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a1, $fa0
 	movgr2fr.w	$fa0, $a1
 	ffint.d.w	$fa0, $fa0
-	fdiv.d	$fa0, $fa1, $fa0
-	xvld	$xr1, $s0, 96
+	fdiv.d	$fa0, $fa2, $fa0
+	vld	$vr1, $s0, 112
 	fst.d	$fa0, $fp, 80
 	frecip.d	$fa0, $fa0
 	fst.d	$fa0, $fp, 104
-	xvst	$xr1, $fp, 24
+	vst	$vr1, $fp, 40
 	vld	$vr0, $s0, 128
 	fld.d	$fa1, $s0, 160
 	st.w	$a0, $fp, 0
@@ -545,10 +547,10 @@ putAtomInBox:                           # @putAtomInBox
 getBoxFromCoord:                        # @getBoxFromCoord
 # %bb.0:
 	fld.d	$fa3, $a1, 0
-	vld	$vr0, $a1, 8
+	vld	$vr1, $a1, 8
 	fld.d	$fa4, $a0, 48
 	vld	$vr2, $a0, 32
-	vld	$vr1, $a0, 104
+	vld	$vr0, $a0, 104
 	fcmp.cule.d	$fcc0, $fa4, $fa3
 	bcnez	$fcc0, .LBB5_2
 # %bb.1:
@@ -572,23 +574,21 @@ getBoxFromCoord:                        # @getBoxFromCoord
 	ld.w	$a1, $a0, 0
 .LBB5_3:
 	fld.d	$fa3, $a0, 56
-	vreplvei.d	$vr4, $vr0, 0
+	vreplvei.d	$vr4, $vr1, 0
 	fld.d	$fa5, $a0, 64
 	fcmp.clt.d	$fcc1, $fa4, $fa3
-	vfsub.d	$vr2, $vr0, $vr2
-	vreplvei.d	$vr0, $vr0, 1
-	fcmp.clt.d	$fcc0, $fa0, $fa5
-	vfmul.d	$vr0, $vr2, $vr1
-	vfrintrm.d	$vr0, $vr0
+	vfsub.d	$vr2, $vr1, $vr2
+	vreplvei.d	$vr1, $vr1, 1
+	fcmp.clt.d	$fcc0, $fa1, $fa5
 	ld.d	$a2, $a0, 4
-	xvftintrz.l.d	$xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 238
-	xvpickev.w	$xr0, $xr1, $xr0
+	vfmul.d	$vr0, $vr2, $vr0
+	vfrintrm.d	$vr0, $vr0
+	vftintrz.w.d	$vr0, $vr0, $vr0
 	vinsgr2vr.d	$vr1, $a2, 0
 	vpickve2gr.w	$a2, $vr1, 0
 	addi.w	$a3, $a2, -1
 	vseq.w	$vr2, $vr1, $vr0
-	vext2xv.d.w	$xr3, $xr2
+	vilvl.w	$vr3, $vr2, $vr2
 	vpickve2gr.d	$a4, $vr2, 0
 	andi	$a4, $a4, 1
 	vpickve2gr.w	$a5, $vr0, 0
@@ -822,12 +822,10 @@ updateLinkCells:                        # @updateLinkCells
 	fcmp.cule.d	$fcc0, $fa0, $fa1
 	fld.d	$fa5, $a0, 64
 	vreplvei.d	$vr6, $vr2, 1
+	ld.d	$t7, $a0, 4
 	vfmul.d	$vr2, $vr4, $vr3
 	vfrintrm.d	$vr2, $vr2
-	ld.d	$t7, $a0, 4
-	xvftintrz.l.d	$xr2, $xr2
-	xvpermi.d	$xr3, $xr2, 238
-	xvpickev.w	$xr2, $xr3, $xr2
+	vftintrz.w.d	$vr2, $vr2, $vr2
 	vinsgr2vr.d	$vr4, $t7, 0
 	vpickve2gr.w	$t7, $vr4, 0
 	addi.w	$t8, $t7, -1
@@ -857,7 +855,7 @@ updateLinkCells:                        # @updateLinkCells
 	b	.LBB7_25
 	.p2align	4, , 16
 .LBB7_16:                               #   in Loop: Header=BB7_11 Depth=2
-	vext2xv.d.w	$xr3, $xr3
+	vilvl.w	$vr3, $vr3, $vr3
 	addi.w	$s1, $t8, -1
 	vpickve2gr.d	$s2, $vr3, 1
 	andi	$s2, $s2, 1
@@ -1033,9 +1031,9 @@ maxOccupancy:                           # @maxOccupancy
 	ld.w	$a1, $a0, 12
 	st.w	$zero, $sp, 4
 	blez	$a1, .LBB8_7
-# %bb.1:                                # %iter.check
+# %bb.1:                                # %.lr.ph
 	ld.d	$a0, $a0, 120
-	ori	$a2, $zero, 4
+	ori	$a2, $zero, 8
 	bltu	$a1, $a2, .LBB8_4
 # %bb.2:                                # %vector.memcheck
 	alsl.d	$a2, $a1, $a0, 2
@@ -1047,11 +1045,11 @@ maxOccupancy:                           # @maxOccupancy
 .LBB8_4:
 	move	$a2, $zero
 	move	$a3, $zero
-.LBB8_5:                                # %vec.epilog.scalar.ph.preheader
+.LBB8_5:                                # %scalar.ph.preheader
 	alsl.d	$a0, $a2, $a0, 2
 	sub.d	$a1, $a1, $a2
 	.p2align	4, , 16
-.LBB8_6:                                # %vec.epilog.scalar.ph
+.LBB8_6:                                # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a0, 0
 	slt	$a4, $a2, $a3
@@ -1078,67 +1076,32 @@ maxOccupancy:                           # @maxOccupancy
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
-.LBB8_8:                                # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB8_10
-# %bb.9:
-	move	$a2, $zero
-	move	$a3, $zero
-	b	.LBB8_14
-.LBB8_10:                               # %vector.ph
-	andi	$a4, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	xvrepli.b	$xr0, 0
-	addi.d	$a3, $a0, 32
-	move	$a5, $a2
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB8_11:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a3, -32
-	xvld	$xr3, $a3, 0
-	xvmax.w	$xr0, $xr0, $xr2
-	xvmax.w	$xr1, $xr1, $xr3
-	addi.d	$a5, $a5, -16
-	addi.d	$a3, $a3, 64
-	bnez	$a5, .LBB8_11
-# %bb.12:                               # %middle.block
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.q	$xr1, $xr0, 1
-	vmax.w	$vr0, $vr0, $vr1
-	vbsrl.v	$vr1, $vr0, 8
-	vmax.w	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 4
-	vmax.w	$vr0, $vr1, $vr0
-	vstelm.w	$vr0, $sp, 4, 0
-	beq	$a2, $a1, .LBB8_7
-# %bb.13:                               # %vec.epilog.iter.check
-	vpickve2gr.w	$a3, $vr0, 0
-	beqz	$a4, .LBB8_5
-.LBB8_14:                               # %vec.epilog.ph
+.LBB8_8:                                # %vector.ph
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	vrepli.b	$vr0, 0
+	addi.d	$a3, $a0, 16
 	move	$a4, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	vreplgr2vr.w	$vr0, $a3
-	sub.d	$a3, $a4, $a2
-	alsl.d	$a4, $a4, $a0, 2
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB8_15:                               # %vec.epilog.vector.body
+.LBB8_9:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a4, 0
+	vld	$vr2, $a3, -16
+	vld	$vr3, $a3, 0
+	vmax.w	$vr0, $vr0, $vr2
+	vmax.w	$vr1, $vr1, $vr3
+	addi.d	$a4, $a4, -8
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB8_9
+# %bb.10:                               # %middle.block
 	vmax.w	$vr0, $vr0, $vr1
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a3, .LBB8_15
-# %bb.16:                               # %vec.epilog.middle.block
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.w	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.w	$vr0, $vr1, $vr0
 	vstelm.w	$vr0, $sp, 4, 0
 	beq	$a2, $a1, .LBB8_7
-# %bb.17:
+# %bb.11:
 	vpickve2gr.w	$a3, $vr0, 0
 	b	.LBB8_5
 .Lfunc_end8:

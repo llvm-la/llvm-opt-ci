@@ -47,8 +47,8 @@ _ZN12CFilterCoderC2Ev:                  # @_ZN12CFilterCoderC2Ev
 	vrepli.b	$vr0, 0
 	vst	$vr0, $fp, 104
 	vst	$vr0, $fp, 152
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 168
+	vst	$vr0, $fp, 168
+	vst	$vr0, $fp, 184
 .Ltmp0:                                 # EH_LABEL
 	lu12i.w	$a0, 32
 	pcaddu18i	$ra, %call36(MidAlloc)

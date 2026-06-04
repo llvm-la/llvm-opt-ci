@@ -154,6 +154,8 @@ BF_cbc_encrypt:                         # @BF_cbc_encrypt
 .LBB0_15:
 	blt	$s2, $a0, .LBB0_18
 # %bb.16:                               # %.lr.ph273
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	ori	$s6, $zero, 15
 	.p2align	4, , 16
 .LBB0_17:                               # =>This Inner Loop Header: Depth=1
@@ -164,8 +166,9 @@ BF_cbc_encrypt:                         # @BF_cbc_encrypt
 	addi.d	$s3, $s3, 8
 	vinsgr2vr.d	$vr0, $a0, 0
 	vshuf4i.b	$vr0, $vr0, 27
-	vext2xv.du.wu	$xr0, $xr0
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vilvl.w	$vr0, $vr1, $vr0
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr0, $sp, 48
 	addi.d	$a0, $sp, 48
 	move	$a1, $s0
@@ -191,7 +194,7 @@ BF_cbc_encrypt:                         # @BF_cbc_encrypt
 	st.b	$a0, $s1, 6
 	addi.d	$s1, $s1, 8
 	st.b	$a1, $s7, 7
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	vpickve2gr.d	$s4, $vr0, 0
 	vpickve2gr.d	$s5, $vr0, 1
 	bltu	$s6, $s8, .LBB0_17

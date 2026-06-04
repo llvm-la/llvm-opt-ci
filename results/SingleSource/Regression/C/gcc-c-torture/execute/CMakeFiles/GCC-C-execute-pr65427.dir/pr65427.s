@@ -7,7 +7,9 @@
 foo:                                    # @foo
 # %bb.0:
 	pcalau12i	$a2, %pc_hi20(a)
-	xvld	$xr0, $a2, %pc_lo12(a)
+	addi.d	$a2, $a2, %pc_lo12(a)
+	vld	$vr0, $a2, 16
+	vld	$vr1, $a2, 0
 	beqz	$a0, .LBB0_3
 # %bb.1:                                # %.split
 	beqz	$a1, .LBB0_5
@@ -29,43 +31,50 @@ foo:                                    # @foo
 	pcalau12i	$a0, %pc_hi20(b)
 	addi.d	$a0, $a0, %pc_lo12(b)
 .LBB0_7:                                # %.split4.us
-	xvld	$xr1, $a0, 0
-	xvxor.v	$xr0, $xr1, $xr0
+	vld	$vr2, $a0, 0
+	vld	$vr3, $a0, 16
+	vxor.v	$vr1, $vr2, $vr1
+	vxor.v	$vr0, $vr3, $vr0
 	pcalau12i	$a0, %pc_hi20(d)
-	xvst	$xr0, $a0, %pc_lo12(d)
+	addi.d	$a0, $a0, %pc_lo12(d)
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 0
 	ret
 .Lfunc_end0:
 	.size	foo, .Lfunc_end0-foo
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI1_0:
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
 	.word	8                               # 0x8
 .LCPI1_1:
-	.word	65                              # 0x41
-	.word	130                             # 0x82
-	.word	67                              # 0x43
-	.word	132                             # 0x84
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.word	4                               # 0x4
+.LCPI1_2:
 	.word	69                              # 0x45
 	.word	134                             # 0x86
 	.word	71                              # 0x47
 	.word	136                             # 0x88
-.LCPI1_2:
-	.word	129                             # 0x81
-	.word	66                              # 0x42
-	.word	131                             # 0x83
-	.word	68                              # 0x44
+.LCPI1_3:
+	.word	65                              # 0x41
+	.word	130                             # 0x82
+	.word	67                              # 0x43
+	.word	132                             # 0x84
+.LCPI1_4:
 	.word	133                             # 0x85
 	.word	70                              # 0x46
 	.word	135                             # 0x87
 	.word	72                              # 0x48
+.LCPI1_5:
+	.word	129                             # 0x81
+	.word	66                              # 0x42
+	.word	131                             # 0x83
+	.word	68                              # 0x44
 	.text
 	.globl	main
 	.p2align	2
@@ -78,19 +87,28 @@ main:                                   # @main
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI1_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_0)
 	pcalau12i	$a0, %pc_hi20(a)
-	xvst	$xr0, $a0, %pc_lo12(a)
+	addi.d	$a0, $a0, %pc_lo12(a)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI1_1)
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 0
 	ori	$a0, $zero, 64
 	lu32i.d	$a0, 128
-	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_1)
-	xvreplgr2vr.d	$xr1, $a0
+	vreplgr2vr.d	$vr0, $a0
 	pcalau12i	$a0, %pc_hi20(b)
-	xvst	$xr1, $a0, %pc_lo12(b)
+	addi.d	$a0, $a0, %pc_lo12(b)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_2)
+	vld	$vr1, $a1, %pc_lo12(.LCPI1_2)
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 0
 	pcalau12i	$a0, %pc_hi20(e)
 	addi.d	$s0, $a0, %pc_lo12(e)
-	xvst	$xr0, $s0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI1_3)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_3)
+	vst	$vr1, $s0, 16
+	vst	$vr0, $s0, 0
 	move	$a0, $zero
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(foo)
@@ -116,14 +134,19 @@ main:                                   # @main
 # %bb.1:
 	ori	$a0, $zero, 128
 	lu32i.d	$a0, 64
-	pcalau12i	$a1, %pc_hi20(.LCPI1_2)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_2)
-	xvreplgr2vr.d	$xr1, $a0
+	vreplgr2vr.d	$vr0, $a0
 	pcalau12i	$a0, %pc_hi20(c)
-	xvst	$xr1, $a0, %pc_lo12(c)
+	addi.d	$a0, $a0, %pc_lo12(c)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_4)
+	vld	$vr1, $a1, %pc_lo12(.LCPI1_4)
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 0
 	pcalau12i	$a0, %pc_hi20(f)
 	addi.d	$s0, $a0, %pc_lo12(f)
-	xvst	$xr0, $s0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI1_5)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_5)
+	vst	$vr1, $s0, 16
+	vst	$vr0, $s0, 0
 	ori	$a0, $zero, 1
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(foo)

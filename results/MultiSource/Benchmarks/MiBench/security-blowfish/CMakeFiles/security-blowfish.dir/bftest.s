@@ -715,14 +715,14 @@ test:                                   # @test
 	st.d	$s7, $sp, 1952                  # 8-byte Folded Spill
 	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 2480
+	ori	$a0, $a0, 2464
 	sub.d	$sp, $sp, $a0
 	pcalau12i	$a0, %pc_hi20(.Lstr.7)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.7)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 236
+	ori	$a0, $a0, 220
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
 	pcalau12i	$a0, %pc_hi20(bf_key)
@@ -732,7 +732,7 @@ test:                                   # @test
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	addi.d	$a0, $sp, 88
+	addi.d	$a0, $sp, 72
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(BF_set_key)
 	jirl	$ra, $ra, 0
@@ -743,9 +743,9 @@ test:                                   # @test
 	pcalau12i	$a0, %pc_hi20(bf_plain)
 	addi.d	$s1, $a0, %pc_lo12(bf_plain)
 	vld	$vr0, $s1, 0
-	vst	$vr0, $sp, 64
-	addi.d	$a0, $sp, 64
-	addi.d	$a1, $sp, 88
+	vst	$vr0, $sp, 48
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 72
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(BF_encrypt)
 	jirl	$ra, $ra, 0
@@ -756,7 +756,7 @@ test:                                   # @test
 	pcalau12i	$a0, %pc_hi20(bf_cipher)
 	addi.d	$s2, $a0, %pc_lo12(bf_cipher)
 	ld.d	$a0, $s2, 0
-	ld.d	$a1, $sp, 64
+	ld.d	$a1, $sp, 48
 	move	$fp, $zero
 	beq	$a0, $a1, .LBB2_2
 # %bb.1:
@@ -768,13 +768,13 @@ test:                                   # @test
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 64
+	ld.d	$a1, $sp, 48
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.25)
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 72
+	ld.d	$a1, $sp, 56
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -798,8 +798,8 @@ test:                                   # @test
 	jirl	$ra, $ra, 0
 	ori	$fp, $zero, 1
 .LBB2_2:
-	addi.d	$a0, $sp, 64
-	addi.d	$a1, $sp, 88
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 72
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(BF_encrypt)
 	jirl	$ra, $ra, 0
@@ -808,7 +808,7 @@ test:                                   # @test
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s1, 0
-	ld.d	$a1, $sp, 64
+	ld.d	$a1, $sp, 48
 	beq	$a0, $a1, .LBB2_4
 # %bb.3:
 	pcalau12i	$a0, %pc_hi20(.Lstr.26)
@@ -819,13 +819,13 @@ test:                                   # @test
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 64
+	ld.d	$a1, $sp, 48
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.25)
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 72
+	ld.d	$a1, $sp, 56
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -854,7 +854,7 @@ test:                                   # @test
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	addi.d	$a0, $sp, 88
+	addi.d	$a0, $sp, 72
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(BF_set_key)
 	jirl	$ra, $ra, 0
@@ -863,9 +863,9 @@ test:                                   # @test
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $s1, 16
-	vst	$vr0, $sp, 64
-	addi.d	$a0, $sp, 64
-	addi.d	$a1, $sp, 88
+	vst	$vr0, $sp, 48
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 72
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(BF_encrypt)
 	jirl	$ra, $ra, 0
@@ -874,7 +874,7 @@ test:                                   # @test
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 16
-	ld.d	$a1, $sp, 64
+	ld.d	$a1, $sp, 48
 	beq	$a0, $a1, .LBB2_6
 # %bb.5:
 	pcalau12i	$a0, %pc_hi20(.Lstr.24)
@@ -885,13 +885,13 @@ test:                                   # @test
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 64
+	ld.d	$a1, $sp, 48
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.25)
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 72
+	ld.d	$a1, $sp, 56
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -915,8 +915,8 @@ test:                                   # @test
 	jirl	$ra, $ra, 0
 	ori	$fp, $zero, 1
 .LBB2_6:
-	addi.d	$a0, $sp, 64
-	addi.d	$a1, $sp, 88
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 72
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(BF_encrypt)
 	jirl	$ra, $ra, 0
@@ -925,7 +925,7 @@ test:                                   # @test
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s1, 16
-	ld.d	$a1, $sp, 64
+	ld.d	$a1, $sp, 48
 	beq	$a0, $a1, .LBB2_8
 # %bb.7:
 	pcalau12i	$a0, %pc_hi20(.Lstr.26)
@@ -936,13 +936,13 @@ test:                                   # @test
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 64
+	ld.d	$a1, $sp, 48
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.25)
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 72
+	ld.d	$a1, $sp, 56
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -971,7 +971,7 @@ test:                                   # @test
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 236
+	ori	$a0, $a0, 220
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
 	pcalau12i	$a0, %pc_hi20(cipher_data+3)
@@ -1001,19 +1001,19 @@ test:                                   # @test
 	ori	$a0, $zero, 33
 	bgeu	$s8, $a0, .LBB2_14
 .LBB2_10:                               # =>This Inner Loop Header: Depth=1
-	addi.d	$a0, $sp, 88
+	addi.d	$a0, $sp, 72
 	ori	$a1, $zero, 8
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(BF_set_key)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $sp, 56
-	addi.d	$a2, $sp, 88
+	addi.d	$a1, $sp, 40
+	addi.d	$a2, $sp, 72
 	ori	$a3, $zero, 1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(BF_ecb_encrypt)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s7, -3
-	ld.d	$a1, $sp, 56
+	ld.d	$a1, $sp, 40
 	beq	$a0, $a1, .LBB2_12
 # %bb.11:                               #   in Loop: Header=BB2_10 Depth=1
 	move	$a0, $s6
@@ -1022,35 +1022,35 @@ test:                                   # @test
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 56
+	ld.bu	$a1, $sp, 40
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 57
+	ld.bu	$a1, $sp, 41
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 58
+	ld.bu	$a1, $sp, 42
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 59
+	ld.bu	$a1, $sp, 43
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 60
+	ld.bu	$a1, $sp, 44
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 61
+	ld.bu	$a1, $sp, 45
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 62
+	ld.bu	$a1, $sp, 46
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 63
+	ld.bu	$a1, $sp, 47
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -1097,14 +1097,14 @@ test:                                   # @test
 	jirl	$ra, $ra, 0
 	ori	$fp, $zero, 1
 .LBB2_12:                               #   in Loop: Header=BB2_10 Depth=1
-	addi.d	$a0, $sp, 56
-	addi.d	$a1, $sp, 56
-	addi.d	$a2, $sp, 88
+	addi.d	$a0, $sp, 40
+	addi.d	$a1, $sp, 40
+	addi.d	$a2, $sp, 72
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(BF_ecb_encrypt)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s1, 0
-	ld.d	$a1, $sp, 56
+	ld.d	$a1, $sp, 40
 	beq	$a0, $a1, .LBB2_9
 # %bb.13:                               #   in Loop: Header=BB2_10 Depth=1
 	move	$a0, $s2
@@ -1113,35 +1113,35 @@ test:                                   # @test
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 56
+	ld.bu	$a1, $sp, 40
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 57
+	ld.bu	$a1, $sp, 41
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 58
+	ld.bu	$a1, $sp, 42
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 59
+	ld.bu	$a1, $sp, 43
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 60
+	ld.bu	$a1, $sp, 44
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 61
+	ld.bu	$a1, $sp, 45
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 62
+	ld.bu	$a1, $sp, 46
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $sp, 63
+	ld.bu	$a1, $sp, 47
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -1195,7 +1195,7 @@ test:                                   # @test
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 236
+	ori	$a1, $a1, 220
 	add.d	$a1, $sp, $a1
 	st.w	$a0, $a1, 0
 	pcalau12i	$a0, %pc_hi20(key_out)
@@ -1215,18 +1215,18 @@ test:                                   # @test
 	bgeu	$s3, $s5, .LBB2_18
 .LBB2_16:                               # =>This Inner Loop Header: Depth=1
 	addi.w	$s3, $s3, 1
-	addi.d	$a0, $sp, 88
+	addi.d	$a0, $sp, 72
 	move	$a1, $s3
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(BF_set_key)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $sp, 56
-	addi.d	$a2, $sp, 88
+	addi.d	$a1, $sp, 40
+	addi.d	$a2, $sp, 72
 	ori	$a3, $zero, 1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(BF_ecb_encrypt)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 56
+	ld.d	$a0, $sp, 40
 	ld.d	$a1, $s4, 0
 	beq	$a0, $a1, .LBB2_15
 # %bb.17:                               #   in Loop: Header=BB2_16 Depth=1
@@ -1249,42 +1249,50 @@ test:                                   # @test
 	addi.d	$s0, $a0, 1
 	pcalau12i	$a0, %pc_hi20(cbc_key)
 	addi.d	$a2, $a0, %pc_lo12(cbc_key)
-	addi.d	$a0, $sp, 88
+	addi.d	$a0, $sp, 72
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(BF_set_key)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 320
+	ori	$a0, $a0, 304
 	add.d	$a0, $sp, $a0
 	st.d	$zero, $a0, 0
-	xvrepli.b	$xr0, 0
+	vrepli.b	$vr0, 0
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 288
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 272
+	add.d	$a0, $sp, $a0
+	vst	$vr0, $a0, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 232
 	add.d	$a0, $sp, $a0
 	st.d	$zero, $a0, 0
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 240
+	add.d	$a0, $sp, $a0
+	vst	$vr0, $a0, 0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 256
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, -422995
 	ori	$a0, $a0, 3326
 	lu32i.d	$a0, 152694
 	lu52i.d	$s8, $a0, 259
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 240
+	ori	$a0, $a0, 224
 	add.d	$a0, $sp, $a0
 	st.d	$s8, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 232
 	add.d	$a1, $sp, $a0
-	addi.d	$a3, $sp, 88
+	addi.d	$a3, $sp, 72
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 240
+	ori	$a0, $a0, 224
 	add.d	$a4, $sp, $a0
 	ori	$a5, $zero, 1
 	move	$a0, $s2
@@ -1292,24 +1300,24 @@ test:                                   # @test
 	pcaddu18i	$ra, %call36(BF_cbc_encrypt)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 232
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(cbc_ok)
 	addi.d	$a1, $a1, %pc_lo12(cbc_ok)
 	ld.d	$a2, $a1, 0
 	lu12i.w	$a3, 2
-	ori	$a3, $a3, 256
+	ori	$a3, $a3, 240
 	add.d	$a3, $sp, $a3
 	ld.d	$a3, $a3, 0
 	ld.d	$a4, $a1, 8
 	lu12i.w	$a5, 2
-	ori	$a5, $a5, 264
+	ori	$a5, $a5, 248
 	add.d	$a5, $sp, $a5
 	ld.d	$a5, $a5, 0
 	ld.d	$a6, $a1, 16
 	lu12i.w	$a7, 2
-	ori	$a7, $a7, 272
+	ori	$a7, $a7, 256
 	add.d	$a7, $sp, $a7
 	ld.d	$a7, $a7, 0
 	ld.d	$a1, $a1, 24
@@ -1327,11 +1335,123 @@ test:                                   # @test
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 232
 	add.d	$a0, $sp, $a0
 	ld.bu	$a1, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.37)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.37)
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 233
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 234
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 235
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 236
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 237
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 238
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 239
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 240
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 241
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 242
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 243
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 244
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 245
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 246
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 247
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 248
+	add.d	$a0, $sp, $a0
+	ld.bu	$a1, $a0, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -1440,133 +1560,21 @@ test:                                   # @test
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 264
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 265
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 266
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 267
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 268
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 269
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 270
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 271
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 272
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 273
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 274
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 275
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 276
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 277
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 278
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 279
-	add.d	$a0, $sp, $a0
-	ld.bu	$a1, $a0, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
 	ori	$fp, $zero, 1
 .LBB2_20:                               # %.loopexit109
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 240
+	ori	$a0, $a0, 224
 	add.d	$a0, $sp, $a0
 	st.d	$s8, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 232
 	add.d	$a0, $sp, $a0
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 288
+	ori	$a1, $a1, 272
 	add.d	$a1, $sp, $a1
-	addi.d	$a3, $sp, 88
+	addi.d	$a3, $sp, 72
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 240
+	ori	$a2, $a2, 224
 	add.d	$a4, $sp, $a2
 	move	$a2, $s0
 	move	$a5, $zero
@@ -1579,7 +1587,7 @@ test:                                   # @test
 	jirl	$ra, $ra, 0
 	addi.d	$a2, $a0, 1
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 288
+	ori	$a0, $a0, 272
 	add.d	$a0, $sp, $a0
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(bcmp)
@@ -1598,61 +1606,69 @@ test:                                   # @test
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(cbc_key)
 	addi.d	$a2, $a0, %pc_lo12(cbc_key)
-	addi.d	$a0, $sp, 88
+	addi.d	$a0, $sp, 72
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(BF_set_key)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 320
+	ori	$a0, $a0, 304
 	add.d	$a0, $sp, $a0
 	st.d	$zero, $a0, 0
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 288
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 272
+	add.d	$a0, $sp, $a0
+	vst	$vr0, $a0, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 232
 	add.d	$a0, $sp, $a0
 	st.d	$zero, $a0, 0
 	lu12i.w	$a0, 2
+	ori	$a0, $a0, 240
+	add.d	$a0, $sp, $a0
+	vst	$vr0, $a0, 0
+	lu12i.w	$a0, 2
 	ori	$a0, $a0, 256
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 240
+	ori	$a0, $a0, 224
 	add.d	$a0, $sp, $a0
 	st.d	$s8, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 236
+	ori	$a0, $a0, 220
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 232
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 13
-	addi.d	$a3, $sp, 88
+	addi.d	$a3, $sp, 72
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 240
+	ori	$a0, $a0, 224
 	add.d	$a4, $sp, $a0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 236
+	ori	$a0, $a0, 220
 	add.d	$a5, $sp, $a0
 	ori	$a6, $zero, 1
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(BF_cfb64_encrypt)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 261
+	ori	$a0, $a0, 245
 	add.d	$s3, $sp, $a0
 	addi.d	$s4, $s1, -12
 	addi.d	$a0, $s2, 13
-	addi.d	$a3, $sp, 88
+	addi.d	$a3, $sp, 72
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 240
+	ori	$a1, $a1, 224
 	add.d	$a4, $sp, $a1
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 236
+	ori	$a1, $a1, 220
 	add.d	$a5, $sp, $a1
 	ori	$a6, $zero, 1
 	move	$a1, $s3
@@ -1663,7 +1679,7 @@ test:                                   # @test
 	pcalau12i	$a0, %pc_hi20(cfb64_ok)
 	addi.d	$a1, $a0, %pc_lo12(cfb64_ok)
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 232
 	add.d	$a0, $sp, $a0
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(bcmp)
@@ -1678,7 +1694,7 @@ test:                                   # @test
 # %bb.24:                               # %.lr.ph.preheader
 	bstrpick.d	$s5, $s0, 30, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 232
 	add.d	$s6, $sp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.37)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.37)
@@ -1696,43 +1712,43 @@ test:                                   # @test
 	ori	$fp, $zero, 1
 .LBB2_27:                               # %.loopexit108
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 236
+	ori	$a0, $a0, 220
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 240
+	ori	$a0, $a0, 224
 	add.d	$a0, $sp, $a0
 	st.d	$s8, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 232
 	add.d	$a0, $sp, $a0
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 288
+	ori	$a1, $a1, 272
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 17
-	addi.d	$a3, $sp, 88
+	addi.d	$a3, $sp, 72
 	lu12i.w	$a4, 2
-	ori	$a4, $a4, 240
+	ori	$a4, $a4, 224
 	add.d	$a4, $sp, $a4
 	lu12i.w	$a5, 2
-	ori	$a5, $a5, 236
+	ori	$a5, $a5, 220
 	add.d	$a5, $sp, $a5
 	move	$a6, $zero
 	pcaddu18i	$ra, %call36(BF_cfb64_encrypt)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 265
+	ori	$a0, $a0, 249
 	add.d	$s5, $sp, $a0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 305
+	ori	$a0, $a0, 289
 	add.d	$s6, $sp, $a0
 	addi.d	$s1, $s1, -16
-	addi.d	$a3, $sp, 88
+	addi.d	$a3, $sp, 72
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 240
+	ori	$a0, $a0, 224
 	add.d	$a4, $sp, $a0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 236
+	ori	$a0, $a0, 220
 	add.d	$a5, $sp, $a0
 	move	$a0, $s5
 	move	$a1, $s6
@@ -1743,7 +1759,7 @@ test:                                   # @test
 	pcalau12i	$a0, %pc_hi20(cbc_data)
 	addi.d	$s7, $a0, %pc_lo12(cbc_data)
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 288
+	ori	$a0, $a0, 272
 	add.d	$a0, $sp, $a0
 	move	$a1, $s7
 	move	$a2, $s2
@@ -1763,56 +1779,64 @@ test:                                   # @test
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(cbc_key)
 	addi.d	$a2, $a0, %pc_lo12(cbc_key)
-	addi.d	$a0, $sp, 88
+	addi.d	$a0, $sp, 72
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(BF_set_key)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 320
+	ori	$a0, $a0, 304
 	add.d	$a0, $sp, $a0
 	st.d	$zero, $a0, 0
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 288
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 272
+	add.d	$a0, $sp, $a0
+	vst	$vr0, $a0, 0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 232
 	add.d	$a0, $sp, $a0
 	st.d	$zero, $a0, 0
 	lu12i.w	$a0, 2
+	ori	$a0, $a0, 240
+	add.d	$a0, $sp, $a0
+	vst	$vr0, $a0, 0
+	lu12i.w	$a0, 2
 	ori	$a0, $a0, 256
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 240
+	ori	$a0, $a0, 224
 	add.d	$a0, $sp, $a0
 	st.d	$s8, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 236
+	ori	$a0, $a0, 220
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 232
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 13
-	addi.d	$a3, $sp, 88
+	addi.d	$a3, $sp, 72
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 240
+	ori	$a0, $a0, 224
 	add.d	$a4, $sp, $a0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 236
+	ori	$a0, $a0, 220
 	add.d	$a5, $sp, $a0
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(BF_ofb64_encrypt)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $s7, 13
-	addi.d	$a3, $sp, 88
+	addi.d	$a3, $sp, 72
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 240
+	ori	$a1, $a1, 224
 	add.d	$a4, $sp, $a1
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 236
+	ori	$a1, $a1, 220
 	add.d	$a5, $sp, $a1
 	move	$a1, $s3
 	move	$a2, $s4
@@ -1821,7 +1845,7 @@ test:                                   # @test
 	pcalau12i	$a0, %pc_hi20(ofb64_ok)
 	addi.d	$a1, $a0, %pc_lo12(ofb64_ok)
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 232
 	add.d	$a0, $sp, $a0
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(bcmp)
@@ -1837,7 +1861,7 @@ test:                                   # @test
 # %bb.31:                               # %.lr.ph127.preheader
 	bstrpick.d	$s3, $s0, 30, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 232
 	add.d	$s4, $sp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.37)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.37)
@@ -1853,35 +1877,35 @@ test:                                   # @test
 	bnez	$s3, .LBB2_32
 .LBB2_33:                               # %.loopexit
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 236
+	ori	$a0, $a0, 220
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 240
+	ori	$a0, $a0, 224
 	add.d	$a0, $sp, $a0
 	st.d	$s8, $a0, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 248
+	ori	$a0, $a0, 232
 	add.d	$a0, $sp, $a0
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 288
+	ori	$a1, $a1, 272
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 17
-	addi.d	$a3, $sp, 88
+	addi.d	$a3, $sp, 72
 	lu12i.w	$a4, 2
-	ori	$a4, $a4, 240
+	ori	$a4, $a4, 224
 	add.d	$a4, $sp, $a4
 	lu12i.w	$a5, 2
-	ori	$a5, $a5, 236
+	ori	$a5, $a5, 220
 	add.d	$a5, $sp, $a5
 	pcaddu18i	$ra, %call36(BF_ofb64_encrypt)
 	jirl	$ra, $ra, 0
-	addi.d	$a3, $sp, 88
+	addi.d	$a3, $sp, 72
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 240
+	ori	$a0, $a0, 224
 	add.d	$a4, $sp, $a0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 236
+	ori	$a0, $a0, 220
 	add.d	$a5, $sp, $a0
 	move	$a0, $s5
 	move	$a1, $s6
@@ -1891,7 +1915,7 @@ test:                                   # @test
 	pcalau12i	$a0, %pc_hi20(cbc_data)
 	addi.d	$a1, $a0, %pc_lo12(cbc_data)
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 288
+	ori	$a0, $a0, 272
 	add.d	$a0, $sp, $a0
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(bcmp)
@@ -1906,7 +1930,7 @@ test:                                   # @test
 .LBB2_35:
 	move	$a0, $fp
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 2480
+	ori	$a1, $a1, 2464
 	add.d	$sp, $sp, $a1
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload

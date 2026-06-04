@@ -448,7 +448,8 @@ _ZNK25btHeightfieldTerrainShape7getAabbERK11btTransformR9btVector3S4_: # @_ZNK25
 	vextrins.w	$vr2, $vr4, 16
 	vshuf4i.w	$vr2, $vr2, 16
 	vslli.d	$vr2, $vr2, 32
-	vext2xv.du.wu	$xr1, $xr1
+	vrepli.b	$vr3, 0
+	vilvl.w	$vr1, $vr3, $vr1
 	vor.v	$vr1, $vr2, $vr1
 	vstelm.d	$vr1, $s0, 0, 0
 	movfr2gr.s	$a0, $fa0
@@ -765,7 +766,7 @@ _ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btV
 	fsel	$fa1, $fa1, $fa7, $fcc0
 	vrepli.b	$vr0, 0
 	vfcmp.clt.s	$vr9, $vr2, $vr0
-	vext2xv.d.w	$xr9, $xr9
+	vilvl.w	$vr9, $vr9, $vr9
 	movgr2fr.w	$ft2, $zero
 	fcmp.clt.s	$fcc0, $fa1, $ft2
 	vfcvtl.d.s	$vr2, $vr2
@@ -780,9 +781,7 @@ _ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btV
 	fadd.d	$fa1, $ft7, $fa1
 	vori.b	$vr9, $vr2, 0
 	vextrins.d	$vr9, $vr1, 16
-	xvftintrz.l.d	$xr1, $xr9
-	xvpermi.d	$xr9, $xr1, 238
-	xvpickev.w	$xr1, $xr9, $xr1
+	vftintrz.w.d	$vr1, $vr9, $vr9
 	vfcmp.clt.s	$vr9, $vr6, $vr4
 	vbitsel.v	$vr4, $vr6, $vr4, $vr9
 	fcmp.clt.s	$fcc0, $fa5, $ft0
@@ -792,7 +791,7 @@ _ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btV
 	fcmp.clt.s	$fcc0, $fa7, $fa5
 	fsel	$fa4, $fa5, $fa7, $fcc0
 	vfcmp.clt.s	$vr5, $vr3, $vr0
-	vext2xv.d.w	$xr5, $xr5
+	vilvl.w	$vr5, $vr5, $vr5
 	fcmp.clt.s	$fcc0, $fa4, $ft2
 	vfcvtl.d.s	$vr3, $vr3
 	fcvt.d.s	$fa4, $fa4
@@ -802,9 +801,7 @@ _ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btV
 	fadd.d	$fa3, $fa6, $fa4
 	vori.b	$vr4, $vr5, 0
 	vextrins.d	$vr4, $vr3, 16
-	xvftintrz.l.d	$xr3, $xr4
-	xvpermi.d	$xr4, $xr3, 238
-	xvpickev.w	$xr4, $xr4, $xr3
+	vftintrz.w.d	$vr4, $vr4, $vr4
 	ld.d	$a1, $a0, 76
 	vsubi.wu	$vr3, $vr1, 1
 	ld.w	$a0, $a0, 120
@@ -814,12 +811,8 @@ _ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btV
 	vsubi.wu	$vr1, $vr1, 1
 	beq	$a0, $a1, .LBB9_112
 # %bb.1:
-	xvftintrz.l.d	$xr2, $xr2
-	xvpermi.d	$xr6, $xr2, 238
-	xvpickev.w	$xr2, $xr6, $xr2
-	xvftintrz.l.d	$xr5, $xr5
-	xvpermi.d	$xr6, $xr5, 238
-	xvpickev.w	$xr5, $xr6, $xr5
+	vftintrz.w.d	$vr2, $vr2, $vr2
+	vftintrz.w.d	$vr5, $vr5, $vr5
 	vsubi.wu	$vr2, $vr2, 1
 	ori	$a1, $zero, 1
 	vaddi.wu	$vr5, $vr5, 1

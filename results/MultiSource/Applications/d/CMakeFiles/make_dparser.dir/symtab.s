@@ -956,10 +956,12 @@ update_D_Sym:                           # @update_D_Sym
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s0, 8
-	xvst	$xr0, $a0, 8
 	ld.d	$a1, $s0, 0
 	st.d	$a1, $a0, 0
+	vld	$vr0, $s0, 8
+	vst	$vr0, $a0, 8
+	vld	$vr0, $s0, 24
+	vst	$vr0, $a0, 24
 	ld.d	$a1, $s0, 16
 	sltui	$a2, $a1, 1
 	masknez	$a1, $a1, $a2

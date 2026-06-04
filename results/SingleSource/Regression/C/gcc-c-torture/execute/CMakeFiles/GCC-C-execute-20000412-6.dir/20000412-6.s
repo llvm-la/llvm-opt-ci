@@ -43,55 +43,51 @@ bug:                                    # @bug
 	or	$a3, $a4, $a3
 	nor	$a4, $a1, $zero
 	add.d	$a3, $a3, $a4
-	ori	$a4, $zero, 14
+	ori	$a4, $zero, 6
 	bgeu	$a3, $a4, .LBB1_3
 # %bb.2:
 	move	$a3, $a1
 	b	.LBB1_12
 .LBB1_3:                                # %vector.main.loop.iter.check
 	srli.d	$a4, $a3, 1
-	ori	$a5, $zero, 62
+	ori	$a5, $zero, 30
 	addi.d	$a4, $a4, 1
 	bgeu	$a3, $a5, .LBB1_5
 # %bb.4:
 	move	$a5, $zero
 	b	.LBB1_9
 .LBB1_5:                                # %vector.ph
-	andi	$a6, $a4, 24
+	vrepli.b	$vr0, 0
+	andi	$a6, $a4, 12
 	move	$a5, $a4
-	bstrins.d	$a5, $zero, 4, 0
+	bstrins.d	$a5, $zero, 3, 0
 	alsl.d	$a3, $a5, $a1, 1
-	xvrepli.b	$xr0, 0
-	xvreplgr2vr.h	$xr2, $a0
-	xvpermi.q	$xr2, $xr0, 18
-	xvori.b	$xr1, $xr0, 0
-	xvextrins.h	$xr1, $xr2, 0
-	addi.d	$a0, $a1, 32
+	vori.b	$vr1, $vr0, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	addi.d	$a0, $a1, 16
 	move	$a7, $a5
 	.p2align	4, , 16
 .LBB1_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a0, -32
-	xvld	$xr3, $a0, 0
-	xvsub.h	$xr1, $xr1, $xr2
-	xvsub.h	$xr0, $xr0, $xr3
-	addi.d	$a7, $a7, -32
-	addi.d	$a0, $a0, 64
+	vld	$vr2, $a0, -16
+	vld	$vr3, $a0, 0
+	vsub.h	$vr1, $vr1, $vr2
+	vsub.h	$vr0, $vr0, $vr3
+	addi.d	$a7, $a7, -16
+	addi.d	$a0, $a0, 32
 	bnez	$a7, .LBB1_6
 # %bb.7:                                # %middle.block
-	xvadd.h	$xr0, $xr0, $xr1
-	xvhaddw.w.h	$xr0, $xr0, $xr0
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a0, $xr0, 0
+	vadd.h	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$a4, $a5, .LBB1_13
 # %bb.8:                                # %vec.epilog.iter.check
 	beqz	$a6, .LBB1_12
 .LBB1_9:                                # %vec.epilog.ph
 	move	$a6, $a4
-	bstrins.d	$a6, $zero, 2, 0
+	bstrins.d	$a6, $zero, 1, 0
 	alsl.d	$a3, $a6, $a1, 1
 	vrepli.b	$vr0, 0
 	vinsgr2vr.h	$vr0, $a0, 0
@@ -100,15 +96,15 @@ bug:                                    # @bug
 	.p2align	4, , 16
 .LBB1_10:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a1, 0
+	ld.d	$a5, $a1, 0
+	vinsgr2vr.d	$vr1, $a5, 0
 	vsub.h	$vr0, $vr0, $vr1
-	addi.d	$a0, $a0, 8
-	addi.d	$a1, $a1, 16
+	addi.d	$a0, $a0, 4
+	addi.d	$a1, $a1, 8
 	bnez	$a0, .LBB1_10
 # %bb.11:                               # %vec.epilog.middle.block
 	vhaddw.w.h	$vr0, $vr0, $vr0
 	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	beq	$a4, $a6, .LBB1_13
 	.p2align	4, , 16

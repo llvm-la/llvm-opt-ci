@@ -114,7 +114,7 @@ main:                                   # @main
 	st.w	$a1, $a0, %pc_lo12(ranks)
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.8)
-.LBB0_15:                               # %iter.check
+.LBB0_15:                               # %vector.ph
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
 	move	$a3, $a1
@@ -129,90 +129,158 @@ main:                                   # @main
 	pcalau12i	$s0, %pc_hi20(solutions)
 	st.d	$zero, $s0, %pc_lo12(solutions)
 	pcalau12i	$a0, %pc_hi20(file)
-	addi.d	$a0, $a0, %pc_lo12(file)
-	xvrepli.w	$xr0, 101
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	vrepli.w	$vr1, 101
-	vst	$vr1, $a0, 384
-	pcalau12i	$a0, %pc_hi20(bakdiag)
-	addi.d	$a0, $a0, %pc_lo12(bakdiag)
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	pcalau12i	$a1, %pc_hi20(fordiag)
-	addi.d	$a1, $a1, %pc_lo12(fordiag)
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	vst	$vr1, $a0, 768
-	vst	$vr1, $a1, 768
+	addi.d	$a1, $a0, %pc_lo12(file)
+	vrepli.w	$vr0, 101
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	ori	$a0, $zero, 101
 	ori	$a2, $zero, 101
-	st.w	$a2, $a0, 784
-	st.w	$a2, $a1, 784
-	st.w	$a2, $a0, 788
-	st.w	$a2, $a1, 788
-	st.w	$a2, $a0, 792
-	st.w	$a2, $a1, 792
+	lu32i.d	$a2, 101
+	st.d	$a2, $a1, 384
+	st.d	$a2, $a1, 392
+	pcalau12i	$a1, %pc_hi20(bakdiag)
+	addi.d	$a1, $a1, %pc_lo12(bakdiag)
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	pcalau12i	$a2, %pc_hi20(fordiag)
+	addi.d	$a2, $a2, %pc_lo12(fordiag)
+	vst	$vr0, $a2, 0
+	vst	$vr0, $a2, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a2, 32
+	vst	$vr0, $a2, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a2, 64
+	vst	$vr0, $a2, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a2, 96
+	vst	$vr0, $a2, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a2, 128
+	vst	$vr0, $a2, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a2, 160
+	vst	$vr0, $a2, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a2, 192
+	vst	$vr0, $a2, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a2, 224
+	vst	$vr0, $a2, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a2, 256
+	vst	$vr0, $a2, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a2, 288
+	vst	$vr0, $a2, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a2, 320
+	vst	$vr0, $a2, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a2, 352
+	vst	$vr0, $a2, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a2, 384
+	vst	$vr0, $a2, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a2, 416
+	vst	$vr0, $a2, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a2, 448
+	vst	$vr0, $a2, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a2, 480
+	vst	$vr0, $a2, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a2, 512
+	vst	$vr0, $a2, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a2, 544
+	vst	$vr0, $a2, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a2, 576
+	vst	$vr0, $a2, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a2, 608
+	vst	$vr0, $a2, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a2, 640
+	vst	$vr0, $a2, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a2, 672
+	vst	$vr0, $a2, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a2, 704
+	vst	$vr0, $a2, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a2, 736
+	vst	$vr0, $a2, 752
+	st.w	$a0, $a1, 768
+	st.w	$a0, $a2, 768
+	st.w	$a0, $a1, 772
+	st.w	$a0, $a2, 772
+	st.w	$a0, $a1, 776
+	st.w	$a0, $a2, 776
+	st.w	$a0, $a1, 780
+	st.w	$a0, $a2, 780
+	st.w	$a0, $a1, 784
+	st.w	$a0, $a2, 784
+	st.w	$a0, $a1, 788
+	st.w	$a0, $a2, 788
+	st.w	$a0, $a1, 792
+	st.w	$a0, $a2, 792
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(find)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, %pc_lo12(printing)
 	ld.d	$a1, $s0, %pc_lo12(solutions)
 	beqz	$a0, .LBB0_18
-# %bb.16:                               # %iter.check
+# %bb.16:                               # %vector.ph
 	beqz	$a1, .LBB0_18
 # %bb.17:
 	ld.d	$a1, $fp, 0
@@ -615,21 +683,21 @@ ranks:
 	.type	file,@object                    # @file
 	.bss
 	.globl	file
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 file:
 	.space	400
 	.size	file, 400
 
 	.type	bakdiag,@object                 # @bakdiag
 	.globl	bakdiag
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 bakdiag:
 	.space	796
 	.size	bakdiag, 796
 
 	.type	fordiag,@object                 # @fordiag
 	.globl	fordiag
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 fordiag:
 	.space	796
 	.size	fordiag, 796

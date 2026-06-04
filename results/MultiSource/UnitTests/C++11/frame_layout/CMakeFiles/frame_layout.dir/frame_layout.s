@@ -6621,8 +6621,6 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	movgr2fr.w	$fa0, $s0
 	ffint.d.w	$fs7, $fa0
 	fadd.d	$fa0, $fs7, $fs7
-	fst.d	$fa0, $sp, 336                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs7
 	fst.d	$fa0, $sp, 320                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs7
 	fst.d	$fa0, $sp, 304                  # 8-byte Folded Spill
@@ -6633,14 +6631,16 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fa0, $fs7
 	fst.d	$fa0, $sp, 272                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs7
-	fst.d	$fa0, $sp, 256                  # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 264                  # 8-byte Folded Spill
+	fadd.d	$fa0, $fa0, $fs7
+	fst.d	$fa0, $sp, 248                  # 8-byte Folded Spill
 	fadd.d	$fs6, $fa0, $fs7
 	fadd.d	$fs5, $fs6, $fs7
-	fst.d	$fs6, $sp, 392                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 400                  # 8-byte Folded Spill
 	fadd.d	$fs4, $fs5, $fs7
-	fst.d	$fs5, $sp, 400                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 408                  # 8-byte Folded Spill
 	fadd.d	$fs3, $fs4, $fs7
-	fst.d	$fs4, $sp, 424                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 432                  # 8-byte Folded Spill
 	fadd.d	$fs2, $fs3, $fs7
 	fst.d	$fs3, $sp, 440                  # 8-byte Folded Spill
 	fadd.d	$fs1, $fs2, $fs7
@@ -6687,7 +6687,7 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a2, $s0, $s0, 3
 	ori	$a0, $zero, 14
 	mul.w	$s1, $s0, $a0
-	st.d	$s1, $sp, 328                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 336                   # 8-byte Folded Spill
 	slli.w	$s3, $s0, 4
 	sub.w	$t3, $s3, $s0
 	st.d	$t3, $sp, 360                   # 8-byte Folded Spill
@@ -6695,7 +6695,7 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a6, $s0, $s3, 1
 	st.d	$a6, $sp, 376                   # 8-byte Folded Spill
 	alsl.w	$a3, $s0, $s3, 2
-	st.d	$a3, $sp, 408                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 416                   # 8-byte Folded Spill
 	ori	$a0, $zero, 22
 	mul.w	$a4, $s0, $a0
 	st.d	$a4, $sp, 448                   # 8-byte Folded Spill
@@ -6771,19 +6771,19 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fs4
 	fdiv.d	$fa0, $fa0, $fs5
 	fdiv.d	$fa0, $fa0, $fs6
-	fld.d	$fs6, $sp, 256                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 248                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs6
-	fld.d	$fs5, $sp, 272                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 264                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs5
-	fld.d	$fs4, $sp, 280                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 272                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs4
-	fld.d	$fs3, $sp, 296                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 280                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs3
-	fld.d	$fs2, $sp, 304                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 296                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs2
-	fld.d	$fs1, $sp, 320                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 304                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs1
-	fld.d	$fs0, $sp, 336                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 320                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs0
 	fdiv.d	$fa0, $fa0, $fs7
 	addi.w	$a1, $a0, 1
@@ -6815,10 +6815,10 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	move	$a1, $s2
 	st.d	$s2, $sp, 240                   # 8-byte Folded Spill
 	alsl.w	$a4, $s2, $s0, 2
-	st.d	$a4, $sp, 416                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 424                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a4
 	div.w	$a0, $a0, $a3
-	st.d	$a2, $sp, 248                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 256                   # 8-byte Folded Spill
 	alsl.w	$a3, $a2, $s0, 1
 	st.d	$a3, $sp, 384                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
@@ -6828,14 +6828,14 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $t3
 	div.w	$a0, $a0, $s1
 	alsl.w	$a3, $s4, $s0, 2
-	st.d	$a3, $sp, 312                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 328                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
 	slli.w	$s6, $s0, 3
 	alsl.w	$a3, $s0, $s6, 2
-	st.d	$a3, $sp, 288                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 312                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
 	alsl.w	$a3, $s2, $s0, 1
-	st.d	$a3, $sp, 264                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 288                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
 	alsl.w	$s2, $s0, $s6, 1
 	div.w	$a0, $a0, $s2
@@ -6855,7 +6855,7 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	fadd.d	$fa1, $fa0, $fa1
-	fst.d	$fa1, $sp, 432                  # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 392                  # 8-byte Folded Spill
 	ori	$a0, $zero, 38
 	mul.w	$a0, $s0, $a0
 	st.d	$a0, $sp, 352                   # 8-byte Folded Spill
@@ -6870,13 +6870,19 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 160
-	xvst	$xr0, $sp, 128
-	xvst	$xr0, $sp, 96
-	xvst	$xr0, $sp, 64
-	xvst	$xr0, $sp, 32
-	xvst	$xr0, $sp, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 176
+	vst	$vr0, $sp, 160
+	vst	$vr0, $sp, 144
+	vst	$vr0, $sp, 128
+	vst	$vr0, $sp, 112
+	vst	$vr0, $sp, 96
+	vst	$vr0, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr0, $sp, 48
+	vst	$vr0, $sp, 32
+	vst	$vr0, $sp, 16
+	vst	$vr0, $sp, 0
 	movgr2fr.d	$fa0, $zero
 	fst.d	$fa1, $sp, 216
 	move	$a0, $zero
@@ -6911,22 +6917,22 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s1
 	div.w	$a0, $a0, $s8
 	div.w	$a0, $a0, $s6
-	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a2
 	div.w	$a0, $a0, $s2
-	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
-	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
-	fld.d	$fa1, $sp, 392                  # 8-byte Folded Reload
-	fdiv.d	$fa0, $fa0, $fa1
+	ld.d	$a1, $sp, 336                   # 8-byte Folded Reload
+	div.w	$a0, $a0, $a1
 	fld.d	$fa1, $sp, 400                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 424                  # 8-byte Folded Reload
+	fld.d	$fa1, $sp, 408                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 432                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 440                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
@@ -6991,9 +6997,9 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 384                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
-	ld.d	$a1, $sp, 408                   # 8-byte Folded Reload
-	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 416                   # 8-byte Folded Reload
+	div.w	$a0, $a0, $a1
+	ld.d	$a1, $sp, 424                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
@@ -7056,7 +7062,7 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$zero, $sp, 0
                                         # implicit-def: $r9
 	ld.d	$a1, $sp, 512                   # 8-byte Folded Reload
-	fld.d	$fa0, $sp, 432                  # 8-byte Folded Reload
+	fld.d	$fa0, $sp, 392                  # 8-byte Folded Reload
 	move	$a4, $zero
 	move	$a7, $zero
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
@@ -7199,8 +7205,6 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	movgr2fr.w	$fa0, $s0
 	ffint.d.w	$fs7, $fa0
 	fadd.d	$fa0, $fs7, $fs7
-	fst.d	$fa0, $sp, 336                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs7
 	fst.d	$fa0, $sp, 320                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs7
 	fst.d	$fa0, $sp, 304                  # 8-byte Folded Spill
@@ -7211,12 +7215,14 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fa0, $fs7
 	fst.d	$fa0, $sp, 272                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs7
-	fst.d	$fa0, $sp, 256                  # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 264                  # 8-byte Folded Spill
+	fadd.d	$fa0, $fa0, $fs7
+	fst.d	$fa0, $sp, 248                  # 8-byte Folded Spill
 	fadd.d	$fs6, $fa0, $fs7
 	fadd.d	$fs5, $fs6, $fs7
-	fst.d	$fs6, $sp, 392                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 400                  # 8-byte Folded Spill
 	fadd.d	$fs4, $fs5, $fs7
-	fst.d	$fs5, $sp, 400                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 408                  # 8-byte Folded Spill
 	fadd.d	$fs3, $fs4, $fs7
 	fst.d	$fs4, $sp, 432                  # 8-byte Folded Spill
 	fadd.d	$fs2, $fs3, $fs7
@@ -7265,7 +7271,7 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a2, $s0, $s0, 3
 	ori	$a0, $zero, 14
 	mul.w	$s1, $s0, $a0
-	st.d	$s1, $sp, 328                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 336                   # 8-byte Folded Spill
 	slli.w	$s3, $s0, 4
 	sub.w	$t3, $s3, $s0
 	st.d	$t3, $sp, 360                   # 8-byte Folded Spill
@@ -7273,7 +7279,7 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a6, $s0, $s3, 1
 	st.d	$a6, $sp, 376                   # 8-byte Folded Spill
 	alsl.w	$a3, $s0, $s3, 2
-	st.d	$a3, $sp, 408                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 416                   # 8-byte Folded Spill
 	ori	$a0, $zero, 22
 	mul.w	$a4, $s0, $a0
 	st.d	$a4, $sp, 448                   # 8-byte Folded Spill
@@ -7349,19 +7355,19 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fs4
 	fdiv.d	$fa0, $fa0, $fs5
 	fdiv.d	$fa0, $fa0, $fs6
-	fld.d	$fs6, $sp, 256                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 248                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs6
-	fld.d	$fs5, $sp, 272                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 264                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs5
-	fld.d	$fs4, $sp, 280                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 272                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs4
-	fld.d	$fs3, $sp, 296                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 280                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs3
-	fld.d	$fs2, $sp, 304                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 296                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs2
-	fld.d	$fs1, $sp, 320                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 304                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs1
-	fld.d	$fs0, $sp, 336                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 320                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs0
 	fdiv.d	$fa0, $fa0, $fs7
 	addi.w	$a1, $a0, 1
@@ -7393,12 +7399,12 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	move	$a1, $s2
 	st.d	$s2, $sp, 240                   # 8-byte Folded Spill
 	alsl.w	$a4, $s2, $s0, 2
-	st.d	$a4, $sp, 416                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 424                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a4
 	div.w	$a0, $a0, $a3
-	st.d	$a2, $sp, 248                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 256                   # 8-byte Folded Spill
 	alsl.w	$a3, $a2, $s0, 1
-	st.d	$a3, $sp, 384                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 392                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
 	div.w	$a0, $a0, $a6
 	div.w	$a0, $a0, $a5
@@ -7406,14 +7412,14 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $t3
 	div.w	$a0, $a0, $s1
 	alsl.w	$a3, $s4, $s0, 2
-	st.d	$a3, $sp, 312                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 328                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
 	slli.w	$s6, $s0, 3
 	alsl.w	$a3, $s0, $s6, 2
-	st.d	$a3, $sp, 288                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 312                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
 	alsl.w	$a3, $s2, $s0, 1
-	st.d	$a3, $sp, 264                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 288                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
 	alsl.w	$s2, $s0, $s6, 1
 	div.w	$a0, $a0, $s2
@@ -7421,11 +7427,11 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s6
 	sub.w	$s8, $s6, $s0
 	div.w	$a0, $a0, $s8
-	slli.w	$s7, $s0, 2
-	alsl.w	$s1, $s0, $s7, 1
-	div.w	$a0, $a0, $s1
-	div.w	$a0, $a0, $a1
+	slli.w	$s1, $s0, 2
+	alsl.w	$s7, $s0, $s1, 1
 	div.w	$a0, $a0, $s7
+	div.w	$a0, $a0, $a1
+	div.w	$a0, $a0, $s1
 	div.w	$a0, $a0, $s4
 	slli.w	$fp, $s0, 1
 	div.w	$a0, $a0, $fp
@@ -7433,7 +7439,7 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	fadd.d	$fa1, $fa0, $fa1
-	fst.d	$fa1, $sp, 424                  # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 384                  # 8-byte Folded Spill
 	ori	$a0, $zero, 38
 	mul.w	$a0, $s0, $a0
 	st.d	$a0, $sp, 352                   # 8-byte Folded Spill
@@ -7448,13 +7454,19 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 160
-	xvst	$xr0, $sp, 128
-	xvst	$xr0, $sp, 96
-	xvst	$xr0, $sp, 64
-	xvst	$xr0, $sp, 32
-	xvst	$xr0, $sp, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 176
+	vst	$vr0, $sp, 160
+	vst	$vr0, $sp, 144
+	vst	$vr0, $sp, 128
+	vst	$vr0, $sp, 112
+	vst	$vr0, $sp, 96
+	vst	$vr0, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr0, $sp, 48
+	vst	$vr0, $sp, 32
+	vst	$vr0, $sp, 16
+	vst	$vr0, $sp, 0
 	movgr2fr.d	$fa0, $zero
 	fst.d	$fa1, $sp, 216
 	move	$a0, $zero
@@ -7483,26 +7495,26 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fs6
 	div.w	$a0, $s0, $fp
 	div.w	$a0, $a0, $s4
-	div.w	$a0, $a0, $s7
+	div.w	$a0, $a0, $s1
 	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
-	div.w	$a0, $a0, $s1
+	div.w	$a0, $a0, $s7
 	div.w	$a0, $a0, $s8
 	div.w	$a0, $a0, $s6
-	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a2
 	div.w	$a0, $a0, $s2
-	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
-	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
-	fld.d	$fa1, $sp, 392                  # 8-byte Folded Reload
-	fdiv.d	$fa0, $fa0, $fa1
+	ld.d	$a1, $sp, 336                   # 8-byte Folded Reload
+	div.w	$a0, $a0, $a1
 	fld.d	$fa1, $sp, 400                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 408                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 432                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
@@ -7567,11 +7579,11 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 376                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
-	ld.d	$a1, $sp, 384                   # 8-byte Folded Reload
-	div.w	$a0, $a0, $a1
-	ld.d	$a1, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 392                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 416                   # 8-byte Folded Reload
+	div.w	$a0, $a0, $a1
+	ld.d	$a1, $sp, 424                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
@@ -7634,7 +7646,7 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$zero, $sp, 0
                                         # implicit-def: $r9
 	ld.d	$a1, $sp, 512                   # 8-byte Folded Reload
-	fld.d	$fa0, $sp, 424                  # 8-byte Folded Reload
+	fld.d	$fa0, $sp, 384                  # 8-byte Folded Reload
 	move	$a4, $zero
 	move	$a7, $zero
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
@@ -7777,8 +7789,6 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	movgr2fr.w	$fa0, $s0
 	ffint.d.w	$fs7, $fa0
 	fadd.d	$fa0, $fs7, $fs7
-	fst.d	$fa0, $sp, 336                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs7
 	fst.d	$fa0, $sp, 320                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs7
 	fst.d	$fa0, $sp, 304                  # 8-byte Folded Spill
@@ -7789,14 +7799,16 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fa0, $fs7
 	fst.d	$fa0, $sp, 272                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs7
-	fst.d	$fa0, $sp, 256                  # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 264                  # 8-byte Folded Spill
+	fadd.d	$fa0, $fa0, $fs7
+	fst.d	$fa0, $sp, 248                  # 8-byte Folded Spill
 	fadd.d	$fs6, $fa0, $fs7
 	fadd.d	$fs5, $fs6, $fs7
-	fst.d	$fs6, $sp, 392                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 400                  # 8-byte Folded Spill
 	fadd.d	$fs4, $fs5, $fs7
-	fst.d	$fs5, $sp, 400                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 408                  # 8-byte Folded Spill
 	fadd.d	$fs3, $fs4, $fs7
-	fst.d	$fs4, $sp, 424                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 432                  # 8-byte Folded Spill
 	fadd.d	$fs2, $fs3, $fs7
 	fst.d	$fs3, $sp, 440                  # 8-byte Folded Spill
 	fadd.d	$fs1, $fs2, $fs7
@@ -7843,7 +7855,7 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a2, $s0, $s0, 3
 	ori	$a0, $zero, 14
 	mul.w	$s1, $s0, $a0
-	st.d	$s1, $sp, 328                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 336                   # 8-byte Folded Spill
 	slli.w	$s3, $s0, 4
 	sub.w	$t3, $s3, $s0
 	st.d	$t3, $sp, 360                   # 8-byte Folded Spill
@@ -7851,7 +7863,7 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a6, $s0, $s3, 1
 	st.d	$a6, $sp, 376                   # 8-byte Folded Spill
 	alsl.w	$a3, $s0, $s3, 2
-	st.d	$a3, $sp, 408                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 416                   # 8-byte Folded Spill
 	ori	$a0, $zero, 22
 	mul.w	$a4, $s0, $a0
 	st.d	$a4, $sp, 448                   # 8-byte Folded Spill
@@ -7927,19 +7939,19 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fs4
 	fdiv.d	$fa0, $fa0, $fs5
 	fdiv.d	$fa0, $fa0, $fs6
-	fld.d	$fs6, $sp, 256                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 248                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs6
-	fld.d	$fs5, $sp, 272                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 264                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs5
-	fld.d	$fs4, $sp, 280                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 272                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs4
-	fld.d	$fs3, $sp, 296                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 280                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs3
-	fld.d	$fs2, $sp, 304                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 296                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs2
-	fld.d	$fs1, $sp, 320                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 304                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs1
-	fld.d	$fs0, $sp, 336                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 320                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs0
 	fdiv.d	$fa0, $fa0, $fs7
 	addi.w	$a1, $a0, 1
@@ -7971,10 +7983,10 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	move	$a1, $s2
 	st.d	$s2, $sp, 240                   # 8-byte Folded Spill
 	alsl.w	$a4, $s2, $s0, 2
-	st.d	$a4, $sp, 416                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 424                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a4
 	div.w	$a0, $a0, $a3
-	st.d	$a2, $sp, 248                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 256                   # 8-byte Folded Spill
 	alsl.w	$a3, $a2, $s0, 1
 	st.d	$a3, $sp, 384                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
@@ -7984,14 +7996,14 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $t3
 	div.w	$a0, $a0, $s1
 	alsl.w	$a3, $s4, $s0, 2
-	st.d	$a3, $sp, 312                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 328                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
 	slli.w	$s6, $s0, 3
 	alsl.w	$a3, $s0, $s6, 2
-	st.d	$a3, $sp, 288                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 312                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
 	alsl.w	$a3, $s2, $s0, 1
-	st.d	$a3, $sp, 264                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 288                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
 	alsl.w	$s2, $s0, $s6, 1
 	div.w	$a0, $a0, $s2
@@ -8011,7 +8023,7 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	fadd.d	$fa1, $fa0, $fa1
-	fst.d	$fa1, $sp, 432                  # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 392                  # 8-byte Folded Spill
 	ori	$a0, $zero, 38
 	mul.w	$a0, $s0, $a0
 	st.d	$a0, $sp, 352                   # 8-byte Folded Spill
@@ -8026,13 +8038,19 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 160
-	xvst	$xr0, $sp, 128
-	xvst	$xr0, $sp, 96
-	xvst	$xr0, $sp, 64
-	xvst	$xr0, $sp, 32
-	xvst	$xr0, $sp, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 176
+	vst	$vr0, $sp, 160
+	vst	$vr0, $sp, 144
+	vst	$vr0, $sp, 128
+	vst	$vr0, $sp, 112
+	vst	$vr0, $sp, 96
+	vst	$vr0, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr0, $sp, 48
+	vst	$vr0, $sp, 32
+	vst	$vr0, $sp, 16
+	vst	$vr0, $sp, 0
 	movgr2fr.d	$fa0, $zero
 	fst.d	$fa1, $sp, 216
 	move	$a0, $zero
@@ -8067,22 +8085,22 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s1
 	div.w	$a0, $a0, $s8
 	div.w	$a0, $a0, $s6
-	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a2
 	div.w	$a0, $a0, $s2
-	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
-	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
-	fld.d	$fa1, $sp, 392                  # 8-byte Folded Reload
-	fdiv.d	$fa0, $fa0, $fa1
+	ld.d	$a1, $sp, 336                   # 8-byte Folded Reload
+	div.w	$a0, $a0, $a1
 	fld.d	$fa1, $sp, 400                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 424                  # 8-byte Folded Reload
+	fld.d	$fa1, $sp, 408                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 432                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 440                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
@@ -8147,9 +8165,9 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 384                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
-	ld.d	$a1, $sp, 408                   # 8-byte Folded Reload
-	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 416                   # 8-byte Folded Reload
+	div.w	$a0, $a0, $a1
+	ld.d	$a1, $sp, 424                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
@@ -8213,7 +8231,7 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$zero, $sp, 0
                                         # implicit-def: $r9
 	ld.d	$a1, $sp, 512                   # 8-byte Folded Reload
-	fld.d	$fa0, $sp, 432                  # 8-byte Folded Reload
+	fld.d	$fa0, $sp, 392                  # 8-byte Folded Reload
 	move	$a7, $zero
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
 	jirl	$ra, $ra, 0
@@ -8355,8 +8373,6 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	movgr2fr.w	$fa0, $s0
 	ffint.d.w	$fs7, $fa0
 	fadd.d	$fa0, $fs7, $fs7
-	fst.d	$fa0, $sp, 336                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs7
 	fst.d	$fa0, $sp, 320                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs7
 	fst.d	$fa0, $sp, 304                  # 8-byte Folded Spill
@@ -8367,12 +8383,14 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fa0, $fs7
 	fst.d	$fa0, $sp, 272                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs7
-	fst.d	$fa0, $sp, 256                  # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 264                  # 8-byte Folded Spill
+	fadd.d	$fa0, $fa0, $fs7
+	fst.d	$fa0, $sp, 248                  # 8-byte Folded Spill
 	fadd.d	$fs6, $fa0, $fs7
 	fadd.d	$fs5, $fs6, $fs7
-	fst.d	$fs6, $sp, 392                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 400                  # 8-byte Folded Spill
 	fadd.d	$fs4, $fs5, $fs7
-	fst.d	$fs5, $sp, 400                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 408                  # 8-byte Folded Spill
 	fadd.d	$fs3, $fs4, $fs7
 	fst.d	$fs4, $sp, 432                  # 8-byte Folded Spill
 	fadd.d	$fs2, $fs3, $fs7
@@ -8421,7 +8439,7 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a2, $s0, $s0, 3
 	ori	$a0, $zero, 14
 	mul.w	$s1, $s0, $a0
-	st.d	$s1, $sp, 328                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 336                   # 8-byte Folded Spill
 	slli.w	$s3, $s0, 4
 	sub.w	$t3, $s3, $s0
 	st.d	$t3, $sp, 360                   # 8-byte Folded Spill
@@ -8429,7 +8447,7 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a6, $s0, $s3, 1
 	st.d	$a6, $sp, 376                   # 8-byte Folded Spill
 	alsl.w	$a3, $s0, $s3, 2
-	st.d	$a3, $sp, 408                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 416                   # 8-byte Folded Spill
 	ori	$a0, $zero, 22
 	mul.w	$a4, $s0, $a0
 	st.d	$a4, $sp, 448                   # 8-byte Folded Spill
@@ -8505,19 +8523,19 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fs4
 	fdiv.d	$fa0, $fa0, $fs5
 	fdiv.d	$fa0, $fa0, $fs6
-	fld.d	$fs6, $sp, 256                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 248                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs6
-	fld.d	$fs5, $sp, 272                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 264                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs5
-	fld.d	$fs4, $sp, 280                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 272                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs4
-	fld.d	$fs3, $sp, 296                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 280                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs3
-	fld.d	$fs2, $sp, 304                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 296                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs2
-	fld.d	$fs1, $sp, 320                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 304                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs1
-	fld.d	$fs0, $sp, 336                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 320                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fs0
 	fdiv.d	$fa0, $fa0, $fs7
 	addi.w	$a1, $a0, 1
@@ -8549,12 +8567,12 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	move	$a1, $s2
 	st.d	$s2, $sp, 240                   # 8-byte Folded Spill
 	alsl.w	$a4, $s2, $s0, 2
-	st.d	$a4, $sp, 416                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 424                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a4
 	div.w	$a0, $a0, $a3
-	st.d	$a2, $sp, 248                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 256                   # 8-byte Folded Spill
 	alsl.w	$a3, $a2, $s0, 1
-	st.d	$a3, $sp, 384                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 392                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
 	div.w	$a0, $a0, $a6
 	div.w	$a0, $a0, $a5
@@ -8562,14 +8580,14 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $t3
 	div.w	$a0, $a0, $s1
 	alsl.w	$a3, $s4, $s0, 2
-	st.d	$a3, $sp, 312                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 328                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
 	slli.w	$s6, $s0, 3
 	alsl.w	$a3, $s0, $s6, 2
-	st.d	$a3, $sp, 288                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 312                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
 	alsl.w	$a3, $s2, $s0, 1
-	st.d	$a3, $sp, 264                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 288                   # 8-byte Folded Spill
 	div.w	$a0, $a0, $a3
 	alsl.w	$s2, $s0, $s6, 1
 	div.w	$a0, $a0, $s2
@@ -8577,11 +8595,11 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s6
 	sub.w	$s8, $s6, $s0
 	div.w	$a0, $a0, $s8
-	slli.w	$s7, $s0, 2
-	alsl.w	$s1, $s0, $s7, 1
-	div.w	$a0, $a0, $s1
-	div.w	$a0, $a0, $a1
+	slli.w	$s1, $s0, 2
+	alsl.w	$s7, $s0, $s1, 1
 	div.w	$a0, $a0, $s7
+	div.w	$a0, $a0, $a1
+	div.w	$a0, $a0, $s1
 	div.w	$a0, $a0, $s4
 	slli.w	$fp, $s0, 1
 	div.w	$a0, $a0, $fp
@@ -8589,7 +8607,7 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	fadd.d	$fa1, $fa0, $fa1
-	fst.d	$fa1, $sp, 424                  # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 384                  # 8-byte Folded Spill
 	ori	$a0, $zero, 38
 	mul.w	$a0, $s0, $a0
 	st.d	$a0, $sp, 352                   # 8-byte Folded Spill
@@ -8604,13 +8622,19 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 160
-	xvst	$xr0, $sp, 128
-	xvst	$xr0, $sp, 96
-	xvst	$xr0, $sp, 64
-	xvst	$xr0, $sp, 32
-	xvst	$xr0, $sp, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 176
+	vst	$vr0, $sp, 160
+	vst	$vr0, $sp, 144
+	vst	$vr0, $sp, 128
+	vst	$vr0, $sp, 112
+	vst	$vr0, $sp, 96
+	vst	$vr0, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr0, $sp, 48
+	vst	$vr0, $sp, 32
+	vst	$vr0, $sp, 16
+	vst	$vr0, $sp, 0
 	movgr2fr.d	$fa0, $zero
 	fst.d	$fa1, $sp, 216
 	move	$a0, $zero
@@ -8639,26 +8663,26 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fs6
 	div.w	$a0, $s0, $fp
 	div.w	$a0, $a0, $s4
-	div.w	$a0, $a0, $s7
+	div.w	$a0, $a0, $s1
 	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
-	div.w	$a0, $a0, $s1
+	div.w	$a0, $a0, $s7
 	div.w	$a0, $a0, $s8
 	div.w	$a0, $a0, $s6
-	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a2
 	div.w	$a0, $a0, $s2
-	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
-	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
-	fld.d	$fa1, $sp, 392                  # 8-byte Folded Reload
-	fdiv.d	$fa0, $fa0, $fa1
+	ld.d	$a1, $sp, 336                   # 8-byte Folded Reload
+	div.w	$a0, $a0, $a1
 	fld.d	$fa1, $sp, 400                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 408                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 432                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
@@ -8723,11 +8747,11 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 376                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
-	ld.d	$a1, $sp, 384                   # 8-byte Folded Reload
-	div.w	$a0, $a0, $a1
-	ld.d	$a1, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 392                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 416                   # 8-byte Folded Reload
+	div.w	$a0, $a0, $a1
+	ld.d	$a1, $sp, 424                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	div.w	$a0, $a0, $a1
@@ -8791,7 +8815,7 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$zero, $sp, 0
                                         # implicit-def: $r9
 	ld.d	$a1, $sp, 512                   # 8-byte Folded Reload
-	fld.d	$fa0, $sp, 424                  # 8-byte Folded Reload
+	fld.d	$fa0, $sp, 384                  # 8-byte Folded Reload
 	move	$a7, $zero
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
 	jirl	$ra, $ra, 0
@@ -8935,8 +8959,6 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fs0, $fs0
 	fst.d	$fa0, $sp, 656                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
-	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 672                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 664                  # 8-byte Folded Spill
@@ -8946,13 +8968,15 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fst.d	$fa0, $sp, 696                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 688                  # 8-byte Folded Spill
-	fadd.d	$fs4, $fa0, $fs0
+	fadd.d	$fa0, $fa0, $fs0
+	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
+	fadd.d	$fs6, $fa0, $fs0
+	fadd.d	$fs5, $fs6, $fs0
+	fadd.d	$fs4, $fs5, $fs0
 	fadd.d	$fs3, $fs4, $fs0
 	fadd.d	$fs2, $fs3, $fs0
 	fadd.d	$fs1, $fs2, $fs0
-	fadd.d	$fa5, $fs1, $fs0
-	fadd.d	$fa6, $fa5, $fs0
-	fadd.d	$fa7, $fa6, $fs0
+	fadd.d	$fa7, $fs1, $fs0
 	fadd.d	$ft0, $fa7, $fs0
 	fadd.d	$ft1, $ft0, $fs0
 	fadd.d	$ft2, $ft1, $fs0
@@ -9060,9 +9084,9 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a1, $s6, $s0, 1
 	div.w	$a0, $a0, $a1
 	alsl.w	$s8, $s0, $s3, 1
-	fadd.d	$fs5, $fs7, $fs0
-	fadd.d	$fs6, $fs5, $fs0
-	fadd.d	$fa3, $fs6, $fs0
+	fadd.d	$fa6, $fs7, $fs0
+	fadd.d	$fa5, $fa6, $fs0
+	fadd.d	$fa3, $fa5, $fs0
 	fadd.d	$fa2, $fa3, $fs0
 	fadd.d	$fa1, $fa2, $fs0
 	fadd.d	$fa0, $fa1, $fs0
@@ -9076,10 +9100,10 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fa2
 	fst.d	$fa3, $sp, 256                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa3
-	fst.d	$fs6, $sp, 264                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs6
-	fst.d	$fs5, $sp, 272                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fa5, $sp, 264                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa5
+	fst.d	$fa6, $sp, 272                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa6
 	fst.d	$fs7, $sp, 320                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs7
 	fld.d	$fs7, $sp, 656                  # 8-byte Folded Reload
@@ -9117,18 +9141,20 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $ft0
 	fst.d	$fa7, $sp, 456                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa7
-	fst.d	$fa6, $sp, 464                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa6
-	fst.d	$fa5, $sp, 472                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa5
-	fst.d	$fs1, $sp, 480                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 464                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs1
-	fst.d	$fs2, $sp, 488                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 472                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs2
-	fst.d	$fs3, $sp, 496                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 480                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs3
-	fst.d	$fs4, $sp, 504                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 488                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs4
+	fst.d	$fs5, $sp, 496                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fs6, $sp, 504                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs6
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
@@ -9139,9 +9165,6 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fmov.d	$fs3, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 672                  # 8-byte Folded Reload
-	fmov.d	$fs2, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fmov.d	$fs1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fdiv.d	$fa0, $fa0, $fs7
@@ -9163,9 +9186,9 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
-	fadd.d	$fs4, $fa0, $fa1
+	fadd.d	$fs2, $fa0, $fa1
 .Ltmp75:                                # EH_LABEL
-	fst.d	$fs4, $sp, 216
+	fst.d	$fs2, $sp, 216
 	addi.d	$a0, $sp, 744
 	st.d	$a0, $sp, 208
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
@@ -9173,14 +9196,20 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $sp, 160
-	xvst	$xr1, $sp, 128
-	xvst	$xr1, $sp, 96
-	xvst	$xr1, $sp, 64
-	xvst	$xr1, $sp, 32
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 176
+	vst	$vr1, $sp, 160
+	vst	$vr1, $sp, 144
+	vst	$vr1, $sp, 128
+	vst	$vr1, $sp, 112
+	vst	$vr1, $sp, 96
+	vst	$vr1, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr1, $sp, 48
+	vst	$vr1, $sp, 32
+	vst	$vr1, $sp, 16
 	movgr2fr.d	$fa0, $zero
-	xvst	$xr1, $sp, 0
+	vst	$vr1, $sp, 0
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $zero
@@ -9202,13 +9231,14 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 # %bb.1:
 	fdiv.d	$fa0, $fs0, $fs7
 	fdiv.d	$fa0, $fa0, $fs1
-	fdiv.d	$fa0, $fa0, $fs2
 	fdiv.d	$fa0, $fa0, $fs3
 	fld.d	$fa1, $sp, 704                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	div.w	$a0, $s0, $s4
 	div.w	$a0, $a0, $fp
@@ -9380,7 +9410,7 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	ori	$a6, $zero, 2048
 	ori	$a7, $zero, 1
                                         # implicit-def: $r9
-	fmov.d	$fa0, $fs4
+	fmov.d	$fa0, $fs2
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
 	jirl	$ra, $ra, 0
@@ -9555,8 +9585,6 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fs0, $fs0
 	fst.d	$fa0, $sp, 656                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
-	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 672                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 664                  # 8-byte Folded Spill
@@ -9566,13 +9594,15 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fst.d	$fa0, $sp, 696                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 688                  # 8-byte Folded Spill
-	fadd.d	$fs4, $fa0, $fs0
+	fadd.d	$fa0, $fa0, $fs0
+	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
+	fadd.d	$fs6, $fa0, $fs0
+	fadd.d	$fs5, $fs6, $fs0
+	fadd.d	$fs4, $fs5, $fs0
 	fadd.d	$fs3, $fs4, $fs0
 	fadd.d	$fs2, $fs3, $fs0
 	fadd.d	$fs1, $fs2, $fs0
-	fadd.d	$fa5, $fs1, $fs0
-	fadd.d	$fa6, $fa5, $fs0
-	fadd.d	$fa7, $fa6, $fs0
+	fadd.d	$fa7, $fs1, $fs0
 	fadd.d	$ft0, $fa7, $fs0
 	fadd.d	$ft1, $ft0, $fs0
 	fadd.d	$ft2, $ft1, $fs0
@@ -9680,9 +9710,9 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a1, $s6, $s0, 1
 	div.w	$a0, $a0, $a1
 	alsl.w	$s8, $s0, $s3, 1
-	fadd.d	$fs5, $fs7, $fs0
-	fadd.d	$fs6, $fs5, $fs0
-	fadd.d	$fa3, $fs6, $fs0
+	fadd.d	$fa6, $fs7, $fs0
+	fadd.d	$fa5, $fa6, $fs0
+	fadd.d	$fa3, $fa5, $fs0
 	fadd.d	$fa2, $fa3, $fs0
 	fadd.d	$fa1, $fa2, $fs0
 	fadd.d	$fa0, $fa1, $fs0
@@ -9696,10 +9726,10 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fa2
 	fst.d	$fa3, $sp, 256                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa3
-	fst.d	$fs6, $sp, 264                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs6
-	fst.d	$fs5, $sp, 272                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fa5, $sp, 264                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa5
+	fst.d	$fa6, $sp, 272                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa6
 	fst.d	$fs7, $sp, 320                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs7
 	fld.d	$fs7, $sp, 656                  # 8-byte Folded Reload
@@ -9737,18 +9767,20 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $ft0
 	fst.d	$fa7, $sp, 456                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa7
-	fst.d	$fa6, $sp, 464                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa6
-	fst.d	$fa5, $sp, 472                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa5
-	fst.d	$fs1, $sp, 480                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 464                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs1
-	fst.d	$fs2, $sp, 488                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 472                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs2
-	fst.d	$fs3, $sp, 496                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 480                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs3
-	fst.d	$fs4, $sp, 504                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 488                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs4
+	fst.d	$fs5, $sp, 496                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fs6, $sp, 504                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs6
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
@@ -9759,9 +9791,6 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fmov.d	$fs3, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 672                  # 8-byte Folded Reload
-	fmov.d	$fs2, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fmov.d	$fs1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fdiv.d	$fa0, $fa0, $fs7
@@ -9783,9 +9812,9 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
-	fadd.d	$fs4, $fa0, $fa1
+	fadd.d	$fs2, $fa0, $fa1
 .Ltmp82:                                # EH_LABEL
-	fst.d	$fs4, $sp, 216
+	fst.d	$fs2, $sp, 216
 	addi.d	$a0, $sp, 744
 	st.d	$a0, $sp, 208
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
@@ -9793,14 +9822,20 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $sp, 160
-	xvst	$xr1, $sp, 128
-	xvst	$xr1, $sp, 96
-	xvst	$xr1, $sp, 64
-	xvst	$xr1, $sp, 32
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 176
+	vst	$vr1, $sp, 160
+	vst	$vr1, $sp, 144
+	vst	$vr1, $sp, 128
+	vst	$vr1, $sp, 112
+	vst	$vr1, $sp, 96
+	vst	$vr1, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr1, $sp, 48
+	vst	$vr1, $sp, 32
+	vst	$vr1, $sp, 16
 	movgr2fr.d	$fa0, $zero
-	xvst	$xr1, $sp, 0
+	vst	$vr1, $sp, 0
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $zero
@@ -9822,13 +9857,14 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 # %bb.1:
 	fdiv.d	$fa0, $fs0, $fs7
 	fdiv.d	$fa0, $fa0, $fs1
-	fdiv.d	$fa0, $fa0, $fs2
 	fdiv.d	$fa0, $fa0, $fs3
 	fld.d	$fa1, $sp, 704                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	div.w	$a0, $s0, $s4
 	div.w	$a0, $a0, $fp
@@ -10000,7 +10036,7 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	ori	$a6, $zero, 2048
 	ori	$a7, $zero, 1
                                         # implicit-def: $r9
-	fmov.d	$fa0, $fs4
+	fmov.d	$fa0, $fs2
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
 	jirl	$ra, $ra, 0
@@ -10175,8 +10211,6 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fs0, $fs0
 	fst.d	$fa0, $sp, 656                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
-	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 672                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 664                  # 8-byte Folded Spill
@@ -10186,13 +10220,15 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fst.d	$fa0, $sp, 696                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 688                  # 8-byte Folded Spill
-	fadd.d	$fs4, $fa0, $fs0
+	fadd.d	$fa0, $fa0, $fs0
+	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
+	fadd.d	$fs6, $fa0, $fs0
+	fadd.d	$fs5, $fs6, $fs0
+	fadd.d	$fs4, $fs5, $fs0
 	fadd.d	$fs3, $fs4, $fs0
 	fadd.d	$fs2, $fs3, $fs0
 	fadd.d	$fs1, $fs2, $fs0
-	fadd.d	$fa5, $fs1, $fs0
-	fadd.d	$fa6, $fa5, $fs0
-	fadd.d	$fa7, $fa6, $fs0
+	fadd.d	$fa7, $fs1, $fs0
 	fadd.d	$ft0, $fa7, $fs0
 	fadd.d	$ft1, $ft0, $fs0
 	fadd.d	$ft2, $ft1, $fs0
@@ -10300,9 +10336,9 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a1, $s6, $s0, 1
 	div.w	$a0, $a0, $a1
 	alsl.w	$s8, $s0, $s3, 1
-	fadd.d	$fs5, $fs7, $fs0
-	fadd.d	$fs6, $fs5, $fs0
-	fadd.d	$fa3, $fs6, $fs0
+	fadd.d	$fa6, $fs7, $fs0
+	fadd.d	$fa5, $fa6, $fs0
+	fadd.d	$fa3, $fa5, $fs0
 	fadd.d	$fa2, $fa3, $fs0
 	fadd.d	$fa1, $fa2, $fs0
 	fadd.d	$fa0, $fa1, $fs0
@@ -10316,10 +10352,10 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fa2
 	fst.d	$fa3, $sp, 256                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa3
-	fst.d	$fs6, $sp, 264                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs6
-	fst.d	$fs5, $sp, 272                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fa5, $sp, 264                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa5
+	fst.d	$fa6, $sp, 272                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa6
 	fst.d	$fs7, $sp, 320                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs7
 	fld.d	$fs7, $sp, 656                  # 8-byte Folded Reload
@@ -10357,18 +10393,20 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $ft0
 	fst.d	$fa7, $sp, 456                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa7
-	fst.d	$fa6, $sp, 464                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa6
-	fst.d	$fa5, $sp, 472                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa5
-	fst.d	$fs1, $sp, 480                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 464                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs1
-	fst.d	$fs2, $sp, 488                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 472                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs2
-	fst.d	$fs3, $sp, 496                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 480                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs3
-	fst.d	$fs4, $sp, 504                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 488                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs4
+	fst.d	$fs5, $sp, 496                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fs6, $sp, 504                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs6
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
@@ -10379,9 +10417,6 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fmov.d	$fs3, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 672                  # 8-byte Folded Reload
-	fmov.d	$fs2, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fmov.d	$fs1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fdiv.d	$fa0, $fa0, $fs7
@@ -10403,9 +10438,9 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
-	fadd.d	$fs4, $fa0, $fa1
+	fadd.d	$fs2, $fa0, $fa1
 .Ltmp89:                                # EH_LABEL
-	fst.d	$fs4, $sp, 216
+	fst.d	$fs2, $sp, 216
 	addi.d	$a0, $sp, 744
 	st.d	$a0, $sp, 208
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
@@ -10413,14 +10448,20 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $sp, 160
-	xvst	$xr1, $sp, 128
-	xvst	$xr1, $sp, 96
-	xvst	$xr1, $sp, 64
-	xvst	$xr1, $sp, 32
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 176
+	vst	$vr1, $sp, 160
+	vst	$vr1, $sp, 144
+	vst	$vr1, $sp, 128
+	vst	$vr1, $sp, 112
+	vst	$vr1, $sp, 96
+	vst	$vr1, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr1, $sp, 48
+	vst	$vr1, $sp, 32
+	vst	$vr1, $sp, 16
 	movgr2fr.d	$fa0, $zero
-	xvst	$xr1, $sp, 0
+	vst	$vr1, $sp, 0
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $zero
@@ -10442,13 +10483,14 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 # %bb.1:
 	fdiv.d	$fa0, $fs0, $fs7
 	fdiv.d	$fa0, $fa0, $fs1
-	fdiv.d	$fa0, $fa0, $fs2
 	fdiv.d	$fa0, $fa0, $fs3
 	fld.d	$fa1, $sp, 704                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	div.w	$a0, $s0, $s4
 	div.w	$a0, $a0, $fp
@@ -10621,7 +10663,7 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	ori	$a6, $zero, 2048
 	ori	$a7, $zero, 1
                                         # implicit-def: $r9
-	fmov.d	$fa0, $fs4
+	fmov.d	$fa0, $fs2
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
 	jirl	$ra, $ra, 0
 .Ltmp93:                                # EH_LABEL
@@ -10795,8 +10837,6 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fs0, $fs0
 	fst.d	$fa0, $sp, 656                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
-	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 672                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 664                  # 8-byte Folded Spill
@@ -10806,13 +10846,15 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fst.d	$fa0, $sp, 696                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 688                  # 8-byte Folded Spill
-	fadd.d	$fs4, $fa0, $fs0
+	fadd.d	$fa0, $fa0, $fs0
+	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
+	fadd.d	$fs6, $fa0, $fs0
+	fadd.d	$fs5, $fs6, $fs0
+	fadd.d	$fs4, $fs5, $fs0
 	fadd.d	$fs3, $fs4, $fs0
 	fadd.d	$fs2, $fs3, $fs0
 	fadd.d	$fs1, $fs2, $fs0
-	fadd.d	$fa5, $fs1, $fs0
-	fadd.d	$fa6, $fa5, $fs0
-	fadd.d	$fa7, $fa6, $fs0
+	fadd.d	$fa7, $fs1, $fs0
 	fadd.d	$ft0, $fa7, $fs0
 	fadd.d	$ft1, $ft0, $fs0
 	fadd.d	$ft2, $ft1, $fs0
@@ -10920,9 +10962,9 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a1, $s6, $s0, 1
 	div.w	$a0, $a0, $a1
 	alsl.w	$s8, $s0, $s3, 1
-	fadd.d	$fs5, $fs7, $fs0
-	fadd.d	$fs6, $fs5, $fs0
-	fadd.d	$fa3, $fs6, $fs0
+	fadd.d	$fa6, $fs7, $fs0
+	fadd.d	$fa5, $fa6, $fs0
+	fadd.d	$fa3, $fa5, $fs0
 	fadd.d	$fa2, $fa3, $fs0
 	fadd.d	$fa1, $fa2, $fs0
 	fadd.d	$fa0, $fa1, $fs0
@@ -10936,10 +10978,10 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fa2
 	fst.d	$fa3, $sp, 256                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa3
-	fst.d	$fs6, $sp, 264                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs6
-	fst.d	$fs5, $sp, 272                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fa5, $sp, 264                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa5
+	fst.d	$fa6, $sp, 272                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa6
 	fst.d	$fs7, $sp, 320                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs7
 	fld.d	$fs7, $sp, 656                  # 8-byte Folded Reload
@@ -10977,18 +11019,20 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $ft0
 	fst.d	$fa7, $sp, 456                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa7
-	fst.d	$fa6, $sp, 464                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa6
-	fst.d	$fa5, $sp, 472                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa5
-	fst.d	$fs1, $sp, 480                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 464                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs1
-	fst.d	$fs2, $sp, 488                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 472                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs2
-	fst.d	$fs3, $sp, 496                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 480                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs3
-	fst.d	$fs4, $sp, 504                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 488                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs4
+	fst.d	$fs5, $sp, 496                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fs6, $sp, 504                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs6
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
@@ -10999,9 +11043,6 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	fmov.d	$fs3, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 672                  # 8-byte Folded Reload
-	fmov.d	$fs2, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fmov.d	$fs1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fdiv.d	$fa0, $fa0, $fs7
@@ -11023,9 +11064,9 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
-	fadd.d	$fs4, $fa0, $fa1
+	fadd.d	$fs2, $fa0, $fa1
 .Ltmp96:                                # EH_LABEL
-	fst.d	$fs4, $sp, 216
+	fst.d	$fs2, $sp, 216
 	addi.d	$a0, $sp, 744
 	st.d	$a0, $sp, 208
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
@@ -11033,14 +11074,20 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $sp, 160
-	xvst	$xr1, $sp, 128
-	xvst	$xr1, $sp, 96
-	xvst	$xr1, $sp, 64
-	xvst	$xr1, $sp, 32
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 176
+	vst	$vr1, $sp, 160
+	vst	$vr1, $sp, 144
+	vst	$vr1, $sp, 128
+	vst	$vr1, $sp, 112
+	vst	$vr1, $sp, 96
+	vst	$vr1, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr1, $sp, 48
+	vst	$vr1, $sp, 32
+	vst	$vr1, $sp, 16
 	movgr2fr.d	$fa0, $zero
-	xvst	$xr1, $sp, 0
+	vst	$vr1, $sp, 0
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $zero
@@ -11062,13 +11109,14 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 # %bb.1:
 	fdiv.d	$fa0, $fs0, $fs7
 	fdiv.d	$fa0, $fa0, $fs1
-	fdiv.d	$fa0, $fa0, $fs2
 	fdiv.d	$fa0, $fa0, $fs3
 	fld.d	$fa1, $sp, 704                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	div.w	$a0, $s0, $s4
 	div.w	$a0, $a0, $fp
@@ -11241,7 +11289,7 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb0EEbiRVi: # @_Z19check_frame_variantIL
 	ori	$a6, $zero, 2048
 	ori	$a7, $zero, 1
                                         # implicit-def: $r9
-	fmov.d	$fa0, $fs4
+	fmov.d	$fa0, $fs2
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
 	jirl	$ra, $ra, 0
 .Ltmp100:                               # EH_LABEL
@@ -16183,8 +16231,6 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fs0, $fs0
 	fst.d	$fa0, $sp, 656                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
-	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 672                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 664                  # 8-byte Folded Spill
@@ -16194,13 +16240,15 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fst.d	$fa0, $sp, 696                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 688                  # 8-byte Folded Spill
-	fadd.d	$fs4, $fa0, $fs0
+	fadd.d	$fa0, $fa0, $fs0
+	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
+	fadd.d	$fs6, $fa0, $fs0
+	fadd.d	$fs5, $fs6, $fs0
+	fadd.d	$fs4, $fs5, $fs0
 	fadd.d	$fs3, $fs4, $fs0
 	fadd.d	$fs2, $fs3, $fs0
 	fadd.d	$fs1, $fs2, $fs0
-	fadd.d	$fa5, $fs1, $fs0
-	fadd.d	$fa6, $fa5, $fs0
-	fadd.d	$fa7, $fa6, $fs0
+	fadd.d	$fa7, $fs1, $fs0
 	fadd.d	$ft0, $fa7, $fs0
 	fadd.d	$ft1, $ft0, $fs0
 	fadd.d	$ft2, $ft1, $fs0
@@ -16308,9 +16356,9 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a1, $s6, $s0, 1
 	div.w	$a0, $a0, $a1
 	alsl.w	$s8, $s0, $s3, 1
-	fadd.d	$fs5, $fs7, $fs0
-	fadd.d	$fs6, $fs5, $fs0
-	fadd.d	$fa3, $fs6, $fs0
+	fadd.d	$fa6, $fs7, $fs0
+	fadd.d	$fa5, $fa6, $fs0
+	fadd.d	$fa3, $fa5, $fs0
 	fadd.d	$fa2, $fa3, $fs0
 	fadd.d	$fa1, $fa2, $fs0
 	fadd.d	$fa0, $fa1, $fs0
@@ -16324,10 +16372,10 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fa2
 	fst.d	$fa3, $sp, 256                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa3
-	fst.d	$fs6, $sp, 264                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs6
-	fst.d	$fs5, $sp, 272                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fa5, $sp, 264                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa5
+	fst.d	$fa6, $sp, 272                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa6
 	fst.d	$fs7, $sp, 320                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs7
 	fld.d	$fs7, $sp, 656                  # 8-byte Folded Reload
@@ -16365,18 +16413,20 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $ft0
 	fst.d	$fa7, $sp, 456                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa7
-	fst.d	$fa6, $sp, 464                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa6
-	fst.d	$fa5, $sp, 472                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa5
-	fst.d	$fs1, $sp, 480                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 464                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs1
-	fst.d	$fs2, $sp, 488                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 472                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs2
-	fst.d	$fs3, $sp, 496                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 480                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs3
-	fst.d	$fs4, $sp, 504                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 488                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs4
+	fst.d	$fs5, $sp, 496                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fs6, $sp, 504                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs6
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
@@ -16387,9 +16437,6 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fmov.d	$fs3, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 672                  # 8-byte Folded Reload
-	fmov.d	$fs2, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fmov.d	$fs1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fdiv.d	$fa0, $fa0, $fs7
@@ -16411,9 +16458,9 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
-	fadd.d	$fs4, $fa0, $fa1
+	fadd.d	$fs2, $fa0, $fa1
 .Ltmp159:                               # EH_LABEL
-	fst.d	$fs4, $sp, 216
+	fst.d	$fs2, $sp, 216
 	addi.d	$a0, $sp, 744
 	st.d	$a0, $sp, 208
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
@@ -16421,14 +16468,20 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $sp, 160
-	xvst	$xr1, $sp, 128
-	xvst	$xr1, $sp, 96
-	xvst	$xr1, $sp, 64
-	xvst	$xr1, $sp, 32
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 176
+	vst	$vr1, $sp, 160
+	vst	$vr1, $sp, 144
+	vst	$vr1, $sp, 128
+	vst	$vr1, $sp, 112
+	vst	$vr1, $sp, 96
+	vst	$vr1, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr1, $sp, 48
+	vst	$vr1, $sp, 32
+	vst	$vr1, $sp, 16
 	movgr2fr.d	$fa0, $zero
-	xvst	$xr1, $sp, 0
+	vst	$vr1, $sp, 0
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $zero
@@ -16450,13 +16503,14 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 # %bb.1:
 	fdiv.d	$fa0, $fs0, $fs7
 	fdiv.d	$fa0, $fa0, $fs1
-	fdiv.d	$fa0, $fa0, $fs2
 	fdiv.d	$fa0, $fa0, $fs3
 	fld.d	$fa1, $sp, 704                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	div.w	$a0, $s0, $s4
 	div.w	$a0, $a0, $fp
@@ -16628,7 +16682,7 @@ _Z19check_frame_variantILb1ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	addi.d	$a2, $sp, 744
 	ori	$a6, $zero, 2048
                                         # implicit-def: $r9
-	fmov.d	$fa0, $fs4
+	fmov.d	$fa0, $fs2
 	move	$a4, $zero
 	move	$a7, $zero
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
@@ -16804,8 +16858,6 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fs0, $fs0
 	fst.d	$fa0, $sp, 656                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
-	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 672                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 664                  # 8-byte Folded Spill
@@ -16815,13 +16867,15 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fst.d	$fa0, $sp, 696                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 688                  # 8-byte Folded Spill
-	fadd.d	$fs4, $fa0, $fs0
+	fadd.d	$fa0, $fa0, $fs0
+	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
+	fadd.d	$fs6, $fa0, $fs0
+	fadd.d	$fs5, $fs6, $fs0
+	fadd.d	$fs4, $fs5, $fs0
 	fadd.d	$fs3, $fs4, $fs0
 	fadd.d	$fs2, $fs3, $fs0
 	fadd.d	$fs1, $fs2, $fs0
-	fadd.d	$fa5, $fs1, $fs0
-	fadd.d	$fa6, $fa5, $fs0
-	fadd.d	$fa7, $fa6, $fs0
+	fadd.d	$fa7, $fs1, $fs0
 	fadd.d	$ft0, $fa7, $fs0
 	fadd.d	$ft1, $ft0, $fs0
 	fadd.d	$ft2, $ft1, $fs0
@@ -16929,9 +16983,9 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a1, $s6, $s0, 1
 	div.w	$a0, $a0, $a1
 	alsl.w	$s8, $s0, $s3, 1
-	fadd.d	$fs5, $fs7, $fs0
-	fadd.d	$fs6, $fs5, $fs0
-	fadd.d	$fa3, $fs6, $fs0
+	fadd.d	$fa6, $fs7, $fs0
+	fadd.d	$fa5, $fa6, $fs0
+	fadd.d	$fa3, $fa5, $fs0
 	fadd.d	$fa2, $fa3, $fs0
 	fadd.d	$fa1, $fa2, $fs0
 	fadd.d	$fa0, $fa1, $fs0
@@ -16945,10 +16999,10 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fa2
 	fst.d	$fa3, $sp, 256                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa3
-	fst.d	$fs6, $sp, 264                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs6
-	fst.d	$fs5, $sp, 272                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fa5, $sp, 264                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa5
+	fst.d	$fa6, $sp, 272                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa6
 	fst.d	$fs7, $sp, 320                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs7
 	fld.d	$fs7, $sp, 656                  # 8-byte Folded Reload
@@ -16986,18 +17040,20 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $ft0
 	fst.d	$fa7, $sp, 456                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa7
-	fst.d	$fa6, $sp, 464                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa6
-	fst.d	$fa5, $sp, 472                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa5
-	fst.d	$fs1, $sp, 480                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 464                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs1
-	fst.d	$fs2, $sp, 488                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 472                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs2
-	fst.d	$fs3, $sp, 496                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 480                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs3
-	fst.d	$fs4, $sp, 504                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 488                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs4
+	fst.d	$fs5, $sp, 496                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fs6, $sp, 504                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs6
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
@@ -17008,9 +17064,6 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fmov.d	$fs3, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 672                  # 8-byte Folded Reload
-	fmov.d	$fs2, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fmov.d	$fs1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fdiv.d	$fa0, $fa0, $fs7
@@ -17032,9 +17085,9 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
-	fadd.d	$fs4, $fa0, $fa1
+	fadd.d	$fs2, $fa0, $fa1
 .Ltmp166:                               # EH_LABEL
-	fst.d	$fs4, $sp, 216
+	fst.d	$fs2, $sp, 216
 	addi.d	$a0, $sp, 744
 	st.d	$a0, $sp, 208
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
@@ -17042,14 +17095,20 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $sp, 160
-	xvst	$xr1, $sp, 128
-	xvst	$xr1, $sp, 96
-	xvst	$xr1, $sp, 64
-	xvst	$xr1, $sp, 32
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 176
+	vst	$vr1, $sp, 160
+	vst	$vr1, $sp, 144
+	vst	$vr1, $sp, 128
+	vst	$vr1, $sp, 112
+	vst	$vr1, $sp, 96
+	vst	$vr1, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr1, $sp, 48
+	vst	$vr1, $sp, 32
+	vst	$vr1, $sp, 16
 	movgr2fr.d	$fa0, $zero
-	xvst	$xr1, $sp, 0
+	vst	$vr1, $sp, 0
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $zero
@@ -17071,13 +17130,14 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 # %bb.1:
 	fdiv.d	$fa0, $fs0, $fs7
 	fdiv.d	$fa0, $fa0, $fs1
-	fdiv.d	$fa0, $fa0, $fs2
 	fdiv.d	$fa0, $fa0, $fs3
 	fld.d	$fa1, $sp, 704                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	div.w	$a0, $s0, $s4
 	div.w	$a0, $a0, $fp
@@ -17249,7 +17309,7 @@ _Z19check_frame_variantILb0ELb0ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	ori	$a3, $zero, 2
 	ori	$a6, $zero, 2048
                                         # implicit-def: $r9
-	fmov.d	$fa0, $fs4
+	fmov.d	$fa0, $fs2
 	move	$a4, $zero
 	move	$a7, $zero
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
@@ -17425,8 +17485,6 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fs0, $fs0
 	fst.d	$fa0, $sp, 656                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
-	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 672                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 664                  # 8-byte Folded Spill
@@ -17436,13 +17494,15 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fst.d	$fa0, $sp, 696                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 688                  # 8-byte Folded Spill
-	fadd.d	$fs4, $fa0, $fs0
+	fadd.d	$fa0, $fa0, $fs0
+	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
+	fadd.d	$fs6, $fa0, $fs0
+	fadd.d	$fs5, $fs6, $fs0
+	fadd.d	$fs4, $fs5, $fs0
 	fadd.d	$fs3, $fs4, $fs0
 	fadd.d	$fs2, $fs3, $fs0
 	fadd.d	$fs1, $fs2, $fs0
-	fadd.d	$fa5, $fs1, $fs0
-	fadd.d	$fa6, $fa5, $fs0
-	fadd.d	$fa7, $fa6, $fs0
+	fadd.d	$fa7, $fs1, $fs0
 	fadd.d	$ft0, $fa7, $fs0
 	fadd.d	$ft1, $ft0, $fs0
 	fadd.d	$ft2, $ft1, $fs0
@@ -17550,9 +17610,9 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a1, $s6, $s0, 1
 	div.w	$a0, $a0, $a1
 	alsl.w	$s8, $s0, $s3, 1
-	fadd.d	$fs5, $fs7, $fs0
-	fadd.d	$fs6, $fs5, $fs0
-	fadd.d	$fa3, $fs6, $fs0
+	fadd.d	$fa6, $fs7, $fs0
+	fadd.d	$fa5, $fa6, $fs0
+	fadd.d	$fa3, $fa5, $fs0
 	fadd.d	$fa2, $fa3, $fs0
 	fadd.d	$fa1, $fa2, $fs0
 	fadd.d	$fa0, $fa1, $fs0
@@ -17566,10 +17626,10 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fa2
 	fst.d	$fa3, $sp, 256                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa3
-	fst.d	$fs6, $sp, 264                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs6
-	fst.d	$fs5, $sp, 272                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fa5, $sp, 264                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa5
+	fst.d	$fa6, $sp, 272                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa6
 	fst.d	$fs7, $sp, 320                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs7
 	fld.d	$fs7, $sp, 656                  # 8-byte Folded Reload
@@ -17607,18 +17667,20 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $ft0
 	fst.d	$fa7, $sp, 456                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa7
-	fst.d	$fa6, $sp, 464                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa6
-	fst.d	$fa5, $sp, 472                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa5
-	fst.d	$fs1, $sp, 480                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 464                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs1
-	fst.d	$fs2, $sp, 488                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 472                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs2
-	fst.d	$fs3, $sp, 496                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 480                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs3
-	fst.d	$fs4, $sp, 504                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 488                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs4
+	fst.d	$fs5, $sp, 496                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fs6, $sp, 504                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs6
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
@@ -17629,9 +17691,6 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fmov.d	$fs3, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 672                  # 8-byte Folded Reload
-	fmov.d	$fs2, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fmov.d	$fs1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fdiv.d	$fa0, $fa0, $fs7
@@ -17653,9 +17712,9 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
-	fadd.d	$fs4, $fa0, $fa1
+	fadd.d	$fs2, $fa0, $fa1
 .Ltmp173:                               # EH_LABEL
-	fst.d	$fs4, $sp, 216
+	fst.d	$fs2, $sp, 216
 	addi.d	$a0, $sp, 744
 	st.d	$a0, $sp, 208
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
@@ -17663,14 +17722,20 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $sp, 160
-	xvst	$xr1, $sp, 128
-	xvst	$xr1, $sp, 96
-	xvst	$xr1, $sp, 64
-	xvst	$xr1, $sp, 32
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 176
+	vst	$vr1, $sp, 160
+	vst	$vr1, $sp, 144
+	vst	$vr1, $sp, 128
+	vst	$vr1, $sp, 112
+	vst	$vr1, $sp, 96
+	vst	$vr1, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr1, $sp, 48
+	vst	$vr1, $sp, 32
+	vst	$vr1, $sp, 16
 	movgr2fr.d	$fa0, $zero
-	xvst	$xr1, $sp, 0
+	vst	$vr1, $sp, 0
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $zero
@@ -17692,13 +17757,14 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 # %bb.1:
 	fdiv.d	$fa0, $fs0, $fs7
 	fdiv.d	$fa0, $fa0, $fs1
-	fdiv.d	$fa0, $fa0, $fs2
 	fdiv.d	$fa0, $fa0, $fs3
 	fld.d	$fa1, $sp, 704                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	div.w	$a0, $s0, $s4
 	div.w	$a0, $a0, $fp
@@ -17871,7 +17937,7 @@ _Z19check_frame_variantILb1ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	ori	$a4, $zero, 1
 	ori	$a6, $zero, 2048
                                         # implicit-def: $r9
-	fmov.d	$fa0, $fs4
+	fmov.d	$fa0, $fs2
 	move	$a7, $zero
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
 	jirl	$ra, $ra, 0
@@ -18046,8 +18112,6 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fs0, $fs0
 	fst.d	$fa0, $sp, 656                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
-	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 672                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 664                  # 8-byte Folded Spill
@@ -18057,13 +18121,15 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fst.d	$fa0, $sp, 696                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 688                  # 8-byte Folded Spill
-	fadd.d	$fs4, $fa0, $fs0
+	fadd.d	$fa0, $fa0, $fs0
+	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
+	fadd.d	$fs6, $fa0, $fs0
+	fadd.d	$fs5, $fs6, $fs0
+	fadd.d	$fs4, $fs5, $fs0
 	fadd.d	$fs3, $fs4, $fs0
 	fadd.d	$fs2, $fs3, $fs0
 	fadd.d	$fs1, $fs2, $fs0
-	fadd.d	$fa5, $fs1, $fs0
-	fadd.d	$fa6, $fa5, $fs0
-	fadd.d	$fa7, $fa6, $fs0
+	fadd.d	$fa7, $fs1, $fs0
 	fadd.d	$ft0, $fa7, $fs0
 	fadd.d	$ft1, $ft0, $fs0
 	fadd.d	$ft2, $ft1, $fs0
@@ -18171,9 +18237,9 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a1, $s6, $s0, 1
 	div.w	$a0, $a0, $a1
 	alsl.w	$s8, $s0, $s3, 1
-	fadd.d	$fs5, $fs7, $fs0
-	fadd.d	$fs6, $fs5, $fs0
-	fadd.d	$fa3, $fs6, $fs0
+	fadd.d	$fa6, $fs7, $fs0
+	fadd.d	$fa5, $fa6, $fs0
+	fadd.d	$fa3, $fa5, $fs0
 	fadd.d	$fa2, $fa3, $fs0
 	fadd.d	$fa1, $fa2, $fs0
 	fadd.d	$fa0, $fa1, $fs0
@@ -18187,10 +18253,10 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fa2
 	fst.d	$fa3, $sp, 256                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa3
-	fst.d	$fs6, $sp, 264                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs6
-	fst.d	$fs5, $sp, 272                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fa5, $sp, 264                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa5
+	fst.d	$fa6, $sp, 272                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa6
 	fst.d	$fs7, $sp, 320                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs7
 	fld.d	$fs7, $sp, 656                  # 8-byte Folded Reload
@@ -18228,18 +18294,20 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $ft0
 	fst.d	$fa7, $sp, 456                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa7
-	fst.d	$fa6, $sp, 464                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa6
-	fst.d	$fa5, $sp, 472                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa5
-	fst.d	$fs1, $sp, 480                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 464                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs1
-	fst.d	$fs2, $sp, 488                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 472                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs2
-	fst.d	$fs3, $sp, 496                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 480                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs3
-	fst.d	$fs4, $sp, 504                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 488                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs4
+	fst.d	$fs5, $sp, 496                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fs6, $sp, 504                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs6
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
@@ -18250,9 +18318,6 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fmov.d	$fs3, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 672                  # 8-byte Folded Reload
-	fmov.d	$fs2, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fmov.d	$fs1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fdiv.d	$fa0, $fa0, $fs7
@@ -18274,9 +18339,9 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
-	fadd.d	$fs4, $fa0, $fa1
+	fadd.d	$fs2, $fa0, $fa1
 .Ltmp180:                               # EH_LABEL
-	fst.d	$fs4, $sp, 216
+	fst.d	$fs2, $sp, 216
 	addi.d	$a0, $sp, 744
 	st.d	$a0, $sp, 208
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
@@ -18284,14 +18349,20 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $sp, 160
-	xvst	$xr1, $sp, 128
-	xvst	$xr1, $sp, 96
-	xvst	$xr1, $sp, 64
-	xvst	$xr1, $sp, 32
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 176
+	vst	$vr1, $sp, 160
+	vst	$vr1, $sp, 144
+	vst	$vr1, $sp, 128
+	vst	$vr1, $sp, 112
+	vst	$vr1, $sp, 96
+	vst	$vr1, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr1, $sp, 48
+	vst	$vr1, $sp, 32
+	vst	$vr1, $sp, 16
 	movgr2fr.d	$fa0, $zero
-	xvst	$xr1, $sp, 0
+	vst	$vr1, $sp, 0
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $zero
@@ -18313,13 +18384,14 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 # %bb.1:
 	fdiv.d	$fa0, $fs0, $fs7
 	fdiv.d	$fa0, $fa0, $fs1
-	fdiv.d	$fa0, $fa0, $fs2
 	fdiv.d	$fa0, $fa0, $fs3
 	fld.d	$fa1, $sp, 704                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	div.w	$a0, $s0, $s4
 	div.w	$a0, $a0, $fp
@@ -18492,7 +18564,7 @@ _Z19check_frame_variantILb0ELb1ELb0ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	ori	$a4, $zero, 1
 	ori	$a6, $zero, 2048
                                         # implicit-def: $r9
-	fmov.d	$fa0, $fs4
+	fmov.d	$fa0, $fs2
 	move	$a7, $zero
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
 	jirl	$ra, $ra, 0
@@ -18667,8 +18739,6 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fs0, $fs0
 	fst.d	$fa0, $sp, 656                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
-	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 672                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 664                  # 8-byte Folded Spill
@@ -18678,13 +18748,15 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fst.d	$fa0, $sp, 696                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 688                  # 8-byte Folded Spill
-	fadd.d	$fs4, $fa0, $fs0
+	fadd.d	$fa0, $fa0, $fs0
+	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
+	fadd.d	$fs6, $fa0, $fs0
+	fadd.d	$fs5, $fs6, $fs0
+	fadd.d	$fs4, $fs5, $fs0
 	fadd.d	$fs3, $fs4, $fs0
 	fadd.d	$fs2, $fs3, $fs0
 	fadd.d	$fs1, $fs2, $fs0
-	fadd.d	$fa5, $fs1, $fs0
-	fadd.d	$fa6, $fa5, $fs0
-	fadd.d	$fa7, $fa6, $fs0
+	fadd.d	$fa7, $fs1, $fs0
 	fadd.d	$ft0, $fa7, $fs0
 	fadd.d	$ft1, $ft0, $fs0
 	fadd.d	$ft2, $ft1, $fs0
@@ -18792,9 +18864,9 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a1, $s6, $s0, 1
 	div.w	$a0, $a0, $a1
 	alsl.w	$s8, $s0, $s3, 1
-	fadd.d	$fs5, $fs7, $fs0
-	fadd.d	$fs6, $fs5, $fs0
-	fadd.d	$fa3, $fs6, $fs0
+	fadd.d	$fa6, $fs7, $fs0
+	fadd.d	$fa5, $fa6, $fs0
+	fadd.d	$fa3, $fa5, $fs0
 	fadd.d	$fa2, $fa3, $fs0
 	fadd.d	$fa1, $fa2, $fs0
 	fadd.d	$fa0, $fa1, $fs0
@@ -18808,10 +18880,10 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fa2
 	fst.d	$fa3, $sp, 256                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa3
-	fst.d	$fs6, $sp, 264                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs6
-	fst.d	$fs5, $sp, 272                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fa5, $sp, 264                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa5
+	fst.d	$fa6, $sp, 272                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa6
 	fst.d	$fs7, $sp, 320                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs7
 	fld.d	$fs7, $sp, 656                  # 8-byte Folded Reload
@@ -18849,18 +18921,20 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $ft0
 	fst.d	$fa7, $sp, 456                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa7
-	fst.d	$fa6, $sp, 464                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa6
-	fst.d	$fa5, $sp, 472                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa5
-	fst.d	$fs1, $sp, 480                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 464                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs1
-	fst.d	$fs2, $sp, 488                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 472                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs2
-	fst.d	$fs3, $sp, 496                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 480                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs3
-	fst.d	$fs4, $sp, 504                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 488                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs4
+	fst.d	$fs5, $sp, 496                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fs6, $sp, 504                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs6
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
@@ -18871,9 +18945,6 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fmov.d	$fs3, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 672                  # 8-byte Folded Reload
-	fmov.d	$fs2, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fmov.d	$fs1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fdiv.d	$fa0, $fa0, $fs7
@@ -18895,9 +18966,9 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
-	fadd.d	$fs4, $fa0, $fa1
+	fadd.d	$fs2, $fa0, $fa1
 .Ltmp187:                               # EH_LABEL
-	fst.d	$fs4, $sp, 216
+	fst.d	$fs2, $sp, 216
 	addi.d	$a0, $sp, 744
 	st.d	$a0, $sp, 208
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
@@ -18905,14 +18976,20 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $sp, 160
-	xvst	$xr1, $sp, 128
-	xvst	$xr1, $sp, 96
-	xvst	$xr1, $sp, 64
-	xvst	$xr1, $sp, 32
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 176
+	vst	$vr1, $sp, 160
+	vst	$vr1, $sp, 144
+	vst	$vr1, $sp, 128
+	vst	$vr1, $sp, 112
+	vst	$vr1, $sp, 96
+	vst	$vr1, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr1, $sp, 48
+	vst	$vr1, $sp, 32
+	vst	$vr1, $sp, 16
 	movgr2fr.d	$fa0, $zero
-	xvst	$xr1, $sp, 0
+	vst	$vr1, $sp, 0
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $zero
@@ -18934,13 +19011,14 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 # %bb.1:
 	fdiv.d	$fa0, $fs0, $fs7
 	fdiv.d	$fa0, $fa0, $fs1
-	fdiv.d	$fa0, $fa0, $fs2
 	fdiv.d	$fa0, $fa0, $fs3
 	fld.d	$fa1, $sp, 704                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	div.w	$a0, $s0, $s4
 	div.w	$a0, $a0, $fp
@@ -19113,7 +19191,7 @@ _Z19check_frame_variantILb1ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	ori	$a6, $zero, 2048
 	ori	$a7, $zero, 1
                                         # implicit-def: $r9
-	fmov.d	$fa0, $fs4
+	fmov.d	$fa0, $fs2
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
 	jirl	$ra, $ra, 0
@@ -19288,8 +19366,6 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fs0, $fs0
 	fst.d	$fa0, $sp, 656                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
-	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 672                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 664                  # 8-byte Folded Spill
@@ -19299,13 +19375,15 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fst.d	$fa0, $sp, 696                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 688                  # 8-byte Folded Spill
-	fadd.d	$fs4, $fa0, $fs0
+	fadd.d	$fa0, $fa0, $fs0
+	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
+	fadd.d	$fs6, $fa0, $fs0
+	fadd.d	$fs5, $fs6, $fs0
+	fadd.d	$fs4, $fs5, $fs0
 	fadd.d	$fs3, $fs4, $fs0
 	fadd.d	$fs2, $fs3, $fs0
 	fadd.d	$fs1, $fs2, $fs0
-	fadd.d	$fa5, $fs1, $fs0
-	fadd.d	$fa6, $fa5, $fs0
-	fadd.d	$fa7, $fa6, $fs0
+	fadd.d	$fa7, $fs1, $fs0
 	fadd.d	$ft0, $fa7, $fs0
 	fadd.d	$ft1, $ft0, $fs0
 	fadd.d	$ft2, $ft1, $fs0
@@ -19413,9 +19491,9 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a1, $s6, $s0, 1
 	div.w	$a0, $a0, $a1
 	alsl.w	$s8, $s0, $s3, 1
-	fadd.d	$fs5, $fs7, $fs0
-	fadd.d	$fs6, $fs5, $fs0
-	fadd.d	$fa3, $fs6, $fs0
+	fadd.d	$fa6, $fs7, $fs0
+	fadd.d	$fa5, $fa6, $fs0
+	fadd.d	$fa3, $fa5, $fs0
 	fadd.d	$fa2, $fa3, $fs0
 	fadd.d	$fa1, $fa2, $fs0
 	fadd.d	$fa0, $fa1, $fs0
@@ -19429,10 +19507,10 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fa2
 	fst.d	$fa3, $sp, 256                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa3
-	fst.d	$fs6, $sp, 264                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs6
-	fst.d	$fs5, $sp, 272                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fa5, $sp, 264                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa5
+	fst.d	$fa6, $sp, 272                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa6
 	fst.d	$fs7, $sp, 320                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs7
 	fld.d	$fs7, $sp, 656                  # 8-byte Folded Reload
@@ -19470,18 +19548,20 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $ft0
 	fst.d	$fa7, $sp, 456                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa7
-	fst.d	$fa6, $sp, 464                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa6
-	fst.d	$fa5, $sp, 472                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa5
-	fst.d	$fs1, $sp, 480                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 464                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs1
-	fst.d	$fs2, $sp, 488                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 472                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs2
-	fst.d	$fs3, $sp, 496                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 480                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs3
-	fst.d	$fs4, $sp, 504                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 488                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs4
+	fst.d	$fs5, $sp, 496                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fs6, $sp, 504                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs6
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
@@ -19492,9 +19572,6 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fmov.d	$fs3, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 672                  # 8-byte Folded Reload
-	fmov.d	$fs2, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fmov.d	$fs1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fdiv.d	$fa0, $fa0, $fs7
@@ -19516,9 +19593,9 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
-	fadd.d	$fs4, $fa0, $fa1
+	fadd.d	$fs2, $fa0, $fa1
 .Ltmp194:                               # EH_LABEL
-	fst.d	$fs4, $sp, 216
+	fst.d	$fs2, $sp, 216
 	addi.d	$a0, $sp, 744
 	st.d	$a0, $sp, 208
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
@@ -19526,14 +19603,20 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $sp, 160
-	xvst	$xr1, $sp, 128
-	xvst	$xr1, $sp, 96
-	xvst	$xr1, $sp, 64
-	xvst	$xr1, $sp, 32
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 176
+	vst	$vr1, $sp, 160
+	vst	$vr1, $sp, 144
+	vst	$vr1, $sp, 128
+	vst	$vr1, $sp, 112
+	vst	$vr1, $sp, 96
+	vst	$vr1, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr1, $sp, 48
+	vst	$vr1, $sp, 32
+	vst	$vr1, $sp, 16
 	movgr2fr.d	$fa0, $zero
-	xvst	$xr1, $sp, 0
+	vst	$vr1, $sp, 0
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $zero
@@ -19555,13 +19638,14 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 # %bb.1:
 	fdiv.d	$fa0, $fs0, $fs7
 	fdiv.d	$fa0, $fa0, $fs1
-	fdiv.d	$fa0, $fa0, $fs2
 	fdiv.d	$fa0, $fa0, $fs3
 	fld.d	$fa1, $sp, 704                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	div.w	$a0, $s0, $s4
 	div.w	$a0, $a0, $fp
@@ -19734,7 +19818,7 @@ _Z19check_frame_variantILb0ELb0ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	ori	$a6, $zero, 2048
 	ori	$a7, $zero, 1
                                         # implicit-def: $r9
-	fmov.d	$fa0, $fs4
+	fmov.d	$fa0, $fs2
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
 	jirl	$ra, $ra, 0
@@ -19909,10 +19993,6 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fs0, $fs0
 	fst.d	$fa0, $sp, 656                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
-	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs0
-	fst.d	$fa0, $sp, 672                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 664                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 704                  # 8-byte Folded Spill
@@ -19920,13 +20000,17 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fst.d	$fa0, $sp, 696                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 688                  # 8-byte Folded Spill
-	fadd.d	$fs4, $fa0, $fs0
+	fadd.d	$fa0, $fa0, $fs0
+	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
+	fadd.d	$fa0, $fa0, $fs0
+	fst.d	$fa0, $sp, 672                  # 8-byte Folded Spill
+	fadd.d	$fs6, $fa0, $fs0
+	fadd.d	$fs5, $fs6, $fs0
+	fadd.d	$fs4, $fs5, $fs0
 	fadd.d	$fs3, $fs4, $fs0
 	fadd.d	$fs2, $fs3, $fs0
 	fadd.d	$fs1, $fs2, $fs0
-	fadd.d	$fa5, $fs1, $fs0
-	fadd.d	$fa6, $fa5, $fs0
-	fadd.d	$fa7, $fa6, $fs0
+	fadd.d	$fa7, $fs1, $fs0
 	fadd.d	$ft0, $fa7, $fs0
 	fadd.d	$ft1, $ft0, $fs0
 	fadd.d	$ft2, $ft1, $fs0
@@ -20034,9 +20118,9 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a1, $s6, $s0, 1
 	div.w	$a0, $a0, $a1
 	alsl.w	$s8, $s0, $s3, 1
-	fadd.d	$fs5, $fs7, $fs0
-	fadd.d	$fs6, $fs5, $fs0
-	fadd.d	$fa3, $fs6, $fs0
+	fadd.d	$fa6, $fs7, $fs0
+	fadd.d	$fa5, $fa6, $fs0
+	fadd.d	$fa3, $fa5, $fs0
 	fadd.d	$fa2, $fa3, $fs0
 	fadd.d	$fa1, $fa2, $fs0
 	fadd.d	$fa0, $fa1, $fs0
@@ -20050,10 +20134,10 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fa2
 	fst.d	$fa3, $sp, 256                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa3
-	fst.d	$fs6, $sp, 264                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs6
-	fst.d	$fs5, $sp, 272                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fa5, $sp, 264                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa5
+	fst.d	$fa6, $sp, 272                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa6
 	fst.d	$fs7, $sp, 320                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs7
 	fld.d	$fs7, $sp, 656                  # 8-byte Folded Reload
@@ -20091,18 +20175,22 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $ft0
 	fst.d	$fa7, $sp, 456                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa7
-	fst.d	$fa6, $sp, 464                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa6
-	fst.d	$fa5, $sp, 472                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa5
-	fst.d	$fs1, $sp, 480                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 464                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs1
-	fst.d	$fs2, $sp, 488                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 472                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs2
-	fst.d	$fs3, $sp, 496                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 480                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs3
-	fst.d	$fs4, $sp, 504                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 488                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs4
+	fst.d	$fs5, $sp, 496                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fs6, $sp, 504                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs6
+	fld.d	$fa1, $sp, 672                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
@@ -20110,13 +20198,7 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fld.d	$fa1, $sp, 704                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 664                  # 8-byte Folded Reload
-	fmov.d	$fs3, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 672                  # 8-byte Folded Reload
 	fmov.d	$fs2, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
-	fmov.d	$fs1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fdiv.d	$fa0, $fa0, $fs7
 	fdiv.d	$fa0, $fa0, $fs0
@@ -20137,9 +20219,9 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
-	fadd.d	$fs4, $fa0, $fa1
+	fadd.d	$fs1, $fa0, $fa1
 .Ltmp201:                               # EH_LABEL
-	fst.d	$fs4, $sp, 216
+	fst.d	$fs1, $sp, 216
 	addi.d	$a0, $sp, 744
 	st.d	$a0, $sp, 208
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
@@ -20147,14 +20229,20 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $sp, 160
-	xvst	$xr1, $sp, 128
-	xvst	$xr1, $sp, 96
-	xvst	$xr1, $sp, 64
-	xvst	$xr1, $sp, 32
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 176
+	vst	$vr1, $sp, 160
+	vst	$vr1, $sp, 144
+	vst	$vr1, $sp, 128
+	vst	$vr1, $sp, 112
+	vst	$vr1, $sp, 96
+	vst	$vr1, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr1, $sp, 48
+	vst	$vr1, $sp, 32
+	vst	$vr1, $sp, 16
 	movgr2fr.d	$fa0, $zero
-	xvst	$xr1, $sp, 0
+	vst	$vr1, $sp, 0
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $zero
@@ -20175,14 +20263,16 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 .Ltmp202:                               # EH_LABEL
 # %bb.1:
 	fdiv.d	$fa0, $fs0, $fs7
-	fdiv.d	$fa0, $fa0, $fs1
 	fdiv.d	$fa0, $fa0, $fs2
-	fdiv.d	$fa0, $fa0, $fs3
 	fld.d	$fa1, $sp, 704                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 672                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	div.w	$a0, $s0, $s4
 	div.w	$a0, $a0, $fp
@@ -20356,7 +20446,7 @@ _Z19check_frame_variantILb1ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	ori	$a6, $zero, 2048
 	ori	$a7, $zero, 1
                                         # implicit-def: $r9
-	fmov.d	$fa0, $fs4
+	fmov.d	$fa0, $fs1
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
 	jirl	$ra, $ra, 0
 .Ltmp205:                               # EH_LABEL
@@ -20530,8 +20620,6 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fadd.d	$fa0, $fs0, $fs0
 	fst.d	$fa0, $sp, 656                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
-	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
-	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 672                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 664                  # 8-byte Folded Spill
@@ -20541,13 +20629,15 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fst.d	$fa0, $sp, 696                  # 8-byte Folded Spill
 	fadd.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $sp, 688                  # 8-byte Folded Spill
-	fadd.d	$fs4, $fa0, $fs0
+	fadd.d	$fa0, $fa0, $fs0
+	fst.d	$fa0, $sp, 680                  # 8-byte Folded Spill
+	fadd.d	$fs6, $fa0, $fs0
+	fadd.d	$fs5, $fs6, $fs0
+	fadd.d	$fs4, $fs5, $fs0
 	fadd.d	$fs3, $fs4, $fs0
 	fadd.d	$fs2, $fs3, $fs0
 	fadd.d	$fs1, $fs2, $fs0
-	fadd.d	$fa5, $fs1, $fs0
-	fadd.d	$fa6, $fa5, $fs0
-	fadd.d	$fa7, $fa6, $fs0
+	fadd.d	$fa7, $fs1, $fs0
 	fadd.d	$ft0, $fa7, $fs0
 	fadd.d	$ft1, $ft0, $fs0
 	fadd.d	$ft2, $ft1, $fs0
@@ -20655,9 +20745,9 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	alsl.w	$a1, $s6, $s0, 1
 	div.w	$a0, $a0, $a1
 	alsl.w	$s8, $s0, $s3, 1
-	fadd.d	$fs5, $fs7, $fs0
-	fadd.d	$fs6, $fs5, $fs0
-	fadd.d	$fa3, $fs6, $fs0
+	fadd.d	$fa6, $fs7, $fs0
+	fadd.d	$fa5, $fa6, $fs0
+	fadd.d	$fa3, $fa5, $fs0
 	fadd.d	$fa2, $fa3, $fs0
 	fadd.d	$fa1, $fa2, $fs0
 	fadd.d	$fa0, $fa1, $fs0
@@ -20671,10 +20761,10 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $fa2
 	fst.d	$fa3, $sp, 256                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa3
-	fst.d	$fs6, $sp, 264                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs6
-	fst.d	$fs5, $sp, 272                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fa5, $sp, 264                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa5
+	fst.d	$fa6, $sp, 272                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa6
 	fst.d	$fs7, $sp, 320                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs7
 	fld.d	$fs7, $sp, 656                  # 8-byte Folded Reload
@@ -20712,18 +20802,20 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fdiv.d	$fa0, $fa0, $ft0
 	fst.d	$fa7, $sp, 456                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa7
-	fst.d	$fa6, $sp, 464                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa6
-	fst.d	$fa5, $sp, 472                  # 8-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa5
-	fst.d	$fs1, $sp, 480                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 464                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs1
-	fst.d	$fs2, $sp, 488                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 472                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs2
-	fst.d	$fs3, $sp, 496                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 480                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs3
-	fst.d	$fs4, $sp, 504                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 488                  # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fs4
+	fst.d	$fs5, $sp, 496                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs5
+	fst.d	$fs6, $sp, 504                  # 8-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fs6
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
@@ -20734,9 +20826,6 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	fmov.d	$fs3, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 672                  # 8-byte Folded Reload
-	fmov.d	$fs2, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fmov.d	$fs1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fdiv.d	$fa0, $fa0, $fs7
@@ -20758,9 +20847,9 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	div.w	$a0, $a0, $s0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
-	fadd.d	$fs4, $fa0, $fa1
+	fadd.d	$fs2, $fa0, $fa1
 .Ltmp208:                               # EH_LABEL
-	fst.d	$fs4, $sp, 216
+	fst.d	$fs2, $sp, 216
 	addi.d	$a0, $sp, 744
 	st.d	$a0, $sp, 208
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
@@ -20768,14 +20857,20 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	st.d	$a0, $sp, 200
 	ori	$a0, $zero, 100
 	st.d	$a0, $sp, 192
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $sp, 160
-	xvst	$xr1, $sp, 128
-	xvst	$xr1, $sp, 96
-	xvst	$xr1, $sp, 64
-	xvst	$xr1, $sp, 32
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 176
+	vst	$vr1, $sp, 160
+	vst	$vr1, $sp, 144
+	vst	$vr1, $sp, 128
+	vst	$vr1, $sp, 112
+	vst	$vr1, $sp, 96
+	vst	$vr1, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr1, $sp, 48
+	vst	$vr1, $sp, 32
+	vst	$vr1, $sp, 16
 	movgr2fr.d	$fa0, $zero
-	xvst	$xr1, $sp, 0
+	vst	$vr1, $sp, 0
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $zero
@@ -20797,13 +20892,14 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 # %bb.1:
 	fdiv.d	$fa0, $fs0, $fs7
 	fdiv.d	$fa0, $fa0, $fs1
-	fdiv.d	$fa0, $fa0, $fs2
 	fdiv.d	$fa0, $fa0, $fs3
 	fld.d	$fa1, $sp, 704                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 696                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $sp, 688                  # 8-byte Folded Reload
+	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $sp, 680                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa0, $fa1
 	div.w	$a0, $s0, $s4
 	div.w	$a0, $a0, $fp
@@ -20977,7 +21073,7 @@ _Z19check_frame_variantILb0ELb1ELb1ELb1ELb1EEbiRVi: # @_Z19check_frame_variantIL
 	ori	$a6, $zero, 2048
 	ori	$a7, $zero, 1
                                         # implicit-def: $r9
-	fmov.d	$fa0, $fs4
+	fmov.d	$fa0, $fs2
 	pcaddu18i	$ra, %call36(_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi)
 	jirl	$ra, $ra, 0
 .Ltmp212:                               # EH_LABEL

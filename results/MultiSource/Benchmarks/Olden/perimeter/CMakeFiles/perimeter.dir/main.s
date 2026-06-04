@@ -6,13 +6,15 @@
 	.type	CountTree,@function
 CountTree:                              # @CountTree
 # %bb.0:
-	xvld	$xr0, $a0, 8
-	xvseqi.d	$xr1, $xr0, 0
-	xvxori.b	$xr1, $xr1, 255
-	xvmskltz.d	$xr1, $xr1
-	xvpickve2gr.wu	$a0, $xr1, 0
-	xvpickve2gr.wu	$a1, $xr1, 4
-	bstrins.d	$a0, $a1, 3, 2
+	vld	$vr0, $a0, 8
+	vld	$vr1, $a0, 24
+	vseqi.d	$vr2, $vr0, 0
+	vxori.b	$vr2, $vr2, 255
+	vseqi.d	$vr3, $vr1, 0
+	vxori.b	$vr3, $vr3, 255
+	vpickev.w	$vr2, $vr3, $vr2
+	vmskltz.w	$vr2, $vr2
+	vpickve2gr.hu	$a0, $vr2, 0
 	beqz	$a0, .LBB0_4
 # %bb.1:                                # %tailrecurse.preheader
 	addi.d	$sp, $sp, -48
@@ -23,10 +25,10 @@ CountTree:                              # @CountTree
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$s3, $zero
-	xvpickve2gr.d	$s2, $xr0, 3
-	xvpickve2gr.d	$fp, $xr0, 2
-	xvpickve2gr.d	$s0, $xr0, 1
-	xvpickve2gr.d	$a0, $xr0, 0
+	vpickve2gr.d	$s2, $vr1, 1
+	vpickve2gr.d	$fp, $vr1, 0
+	vpickve2gr.d	$s0, $vr0, 1
+	vpickve2gr.d	$a0, $vr0, 0
 	.p2align	4, , 16
 .LBB0_2:                                # %tailrecurse
                                         # =>This Inner Loop Header: Depth=1
@@ -43,17 +45,19 @@ CountTree:                              # @CountTree
 	move	$a1, $a0
 	add.d	$a0, $s1, $s3
 	add.d	$a2, $a0, $s0
-	xvld	$xr0, $s2, 8
+	vld	$vr0, $s2, 8
+	vld	$vr1, $s2, 24
 	ld.d	$fp, $s2, 24
 	ld.d	$s0, $s2, 16
 	ld.d	$a0, $s2, 8
 	ld.d	$s2, $s2, 32
-	xvseqi.d	$xr0, $xr0, 0
-	xvxori.b	$xr0, $xr0, 255
-	xvmskltz.d	$xr0, $xr0
-	xvpickve2gr.wu	$a3, $xr0, 0
-	xvpickve2gr.wu	$a4, $xr0, 4
-	bstrins.d	$a3, $a4, 3, 2
+	vseqi.d	$vr0, $vr0, 0
+	vxori.b	$vr0, $vr0, 255
+	vseqi.d	$vr1, $vr1, 0
+	vxori.b	$vr1, $vr1, 255
+	vpickev.w	$vr0, $vr1, $vr0
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a3, $vr0, 0
 	add.d	$s3, $a2, $a1
 	bnez	$a3, .LBB0_2
 # %bb.3:                                # %tailrecurse._crit_edge.loopexit

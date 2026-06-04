@@ -1,20 +1,17 @@
 	.file	"mt.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function MTBegin
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function MTBegin
 .LCPI0_0:
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	0                               # 0x0
-	.word	0                               # 0x0
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	0                               # 0x0
 	.word	0                               # 0x0
 .LCPI0_1:
 	.word	1                               # 0x1
+	.word	1                               # 0x1
 	.word	0                               # 0x0
 	.word	0                               # 0x0
-	.word	0                               # 0x0
+.LCPI0_2:
 	.word	1                               # 0x1
 	.word	0                               # 0x0
 	.word	0                               # 0x0
@@ -33,18 +30,24 @@ MTBegin:                                # @MTBegin
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_2
 # %bb.1:
+	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI0_1)
+	ori	$a1, $zero, 3652
+	vstx	$vr0, $a0, $a1
 	st.w	$zero, $a0, 0
+	ori	$a1, $zero, 3636
+	vstx	$vr1, $a0, $a1
+	pcalau12i	$a1, %pc_hi20(.LCPI0_2)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_2)
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, 1
 	stptr.d	$a1, $a0, 3668
-	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI0_1)
-	ori	$a1, $zero, 3636
-	xvstx	$xr0, $a0, $a1
+	ori	$a1, $zero, 3620
+	vstx	$vr0, $a0, $a1
 	ori	$a1, $zero, 3604
-	xvstx	$xr1, $a0, $a1
+	vstx	$vr0, $a0, $a1
 .LBB0_2:
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -52,22 +55,19 @@ MTBegin:                                # @MTBegin
 .Lfunc_end0:
 	.size	MTBegin, .Lfunc_end0-MTBegin
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function MTIdentity
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function MTIdentity
 .LCPI1_0:
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	0                               # 0x0
-	.word	0                               # 0x0
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	0                               # 0x0
 	.word	0                               # 0x0
 .LCPI1_1:
 	.word	1                               # 0x1
+	.word	1                               # 0x1
 	.word	0                               # 0x0
 	.word	0                               # 0x0
-	.word	0                               # 0x0
+.LCPI1_2:
 	.word	1                               # 0x1
 	.word	0                               # 0x0
 	.word	0                               # 0x0
@@ -79,17 +79,23 @@ MTBegin:                                # @MTBegin
 	.type	MTIdentity,@function
 MTIdentity:                             # @MTIdentity
 # %bb.0:
+	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI1_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI1_1)
+	ori	$a1, $zero, 3652
+	vstx	$vr0, $a0, $a1
+	ori	$a1, $zero, 3636
+	vstx	$vr1, $a0, $a1
+	pcalau12i	$a1, %pc_hi20(.LCPI1_2)
+	vld	$vr0, $a1, %pc_lo12(.LCPI1_2)
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, 1
 	stptr.d	$a1, $a0, 3668
-	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI1_1)
-	ori	$a1, $zero, 3636
-	xvstx	$xr0, $a0, $a1
+	ori	$a1, $zero, 3620
+	vstx	$vr0, $a0, $a1
 	ori	$a1, $zero, 3604
-	xvstx	$xr1, $a0, $a1
+	vstx	$vr0, $a0, $a1
 	ret
 .Lfunc_end1:
 	.size	MTIdentity, .Lfunc_end1-MTIdentity
@@ -113,37 +119,36 @@ MTTranslate:                            # @MTTranslate
 # %bb.0:
 	ori	$a3, $zero, 3628
 	ldx.w	$a3, $a0, $a3
+	ori	$a4, $zero, 3632
+	ldx.w	$a4, $a0, $a4
 	add.d	$a1, $a3, $a1
 	stptr.w	$a1, $a0, 3628
-	ori	$a3, $zero, 3632
-	ldx.w	$a3, $a0, $a3
-	ori	$a4, $zero, 3604
-	ldx.w	$a4, $a0, $a4
-	ori	$a5, $zero, 3616
-	ldx.w	$a5, $a0, $a5
-	add.d	$a2, $a3, $a2
+	add.d	$a2, $a4, $a2
 	stptr.w	$a2, $a0, 3632
-	stptr.w	$a4, $a0, 3640
-	stptr.w	$a5, $a0, 3644
-	ori	$a3, $zero, 3608
+	ori	$a3, $zero, 3604
 	ldx.w	$a3, $a0, $a3
+	ori	$a4, $zero, 3616
+	ldx.w	$a4, $a0, $a4
+	ori	$a5, $zero, 3608
+	ldx.w	$a5, $a0, $a5
 	ori	$a6, $zero, 3620
 	ldx.w	$a6, $a0, $a6
-	mul.d	$a4, $a4, $a1
-	mul.d	$a7, $a3, $a2
-	add.d	$a4, $a4, $a7
-	sub.d	$a4, $zero, $a4
-	stptr.w	$a4, $a0, 3664
-	mul.d	$a1, $a5, $a1
+	stptr.w	$a3, $a0, 3640
+	stptr.w	$a4, $a0, 3644
+	stptr.w	$a5, $a0, 3652
+	stptr.w	$a6, $a0, 3656
+	mul.d	$a3, $a3, $a1
+	mul.d	$a5, $a5, $a2
+	add.d	$a3, $a3, $a5
+	sub.d	$a3, $zero, $a3
+	stptr.w	$a3, $a0, 3664
+	mul.d	$a1, $a4, $a1
 	mul.d	$a2, $a6, $a2
 	add.d	$a1, $a1, $a2
 	sub.d	$a1, $zero, $a1
 	stptr.w	$a1, $a0, 3668
-	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a3, 1
-	vinsgr2vr.w	$vr0, $a6, 2
-	ori	$a1, $zero, 3648
-	vstx	$vr0, $a0, $a1
+	stptr.w	$zero, $a0, 3660
+	stptr.w	$zero, $a0, 3648
 	ori	$a1, $zero, 1
 	stptr.w	$a1, $a0, 3672
 	ret
@@ -156,11 +161,6 @@ MTTranslate:                            # @MTTranslate
 	.type	MTMY,@function
 MTMY:                                   # @MTMY
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 96
-	bstrins.d	$sp, $zero, 4, 0
 	ori	$a1, $zero, 3608
 	ldx.w	$a1, $a0, $a1
 	sub.d	$a2, $zero, $a1
@@ -172,38 +172,31 @@ MTMY:                                   # @MTMY
 	sub.d	$a5, $zero, $a3
 	stptr.w	$a5, $a0, 3620
 	sub.d	$a6, $zero, $a4
-	ori	$a7, $zero, 3604
-	ldx.w	$a7, $a0, $a7
 	stptr.w	$a6, $a0, 3632
-	ori	$a6, $zero, 3628
+	ori	$a6, $zero, 3604
 	ldx.w	$a6, $a0, $a6
-	stptr.w	$a7, $a0, 3640
-	ori	$t0, $zero, 3616
-	ldx.w	$t0, $a0, $t0
-	mul.d	$a7, $a6, $a7
+	ori	$a7, $zero, 3616
+	ldx.w	$a7, $a0, $a7
+	stptr.w	$a2, $a0, 3652
+	ori	$a2, $zero, 3628
+	ldx.w	$a2, $a0, $a2
+	stptr.w	$a6, $a0, 3640
+	stptr.w	$a7, $a0, 3644
+	stptr.w	$a5, $a0, 3656
+	mul.d	$a5, $a2, $a6
 	mul.d	$a1, $a4, $a1
-	add.d	$a1, $a1, $a7
+	add.d	$a1, $a1, $a5
 	sub.d	$a1, $zero, $a1
-	mul.d	$a6, $a6, $t0
-	mul.d	$a3, $a4, $a3
-	add.d	$a3, $a3, $a6
-	sub.d	$a3, $zero, $a3
-	ori	$a4, $zero, 1
-	st.w	$a4, $sp, 60
-	st.w	$zero, $sp, 48
-	st.w	$zero, $sp, 36
-	st.w	$t0, $sp, 32
-	st.w	$a5, $sp, 44
-	st.w	$a2, $sp, 40
-	st.w	$a3, $sp, 56
-	st.w	$a1, $sp, 52
-	xvld	$xr0, $sp, 32
-	ori	$a1, $zero, 3644
-	xvstx	$xr0, $a0, $a1
-	addi.d	$sp, $fp, -96
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	stptr.w	$a1, $a0, 3664
+	mul.d	$a1, $a2, $a7
+	mul.d	$a2, $a4, $a3
+	add.d	$a1, $a2, $a1
+	sub.d	$a1, $zero, $a1
+	stptr.w	$a1, $a0, 3668
+	stptr.w	$zero, $a0, 3660
+	stptr.w	$zero, $a0, 3648
+	ori	$a1, $zero, 1
+	stptr.w	$a1, $a0, 3672
 	ret
 .Lfunc_end4:
 	.size	MTMY, .Lfunc_end4-MTMY
@@ -214,11 +207,6 @@ MTMY:                                   # @MTMY
 	.type	MTMX,@function
 MTMX:                                   # @MTMX
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 96
-	bstrins.d	$sp, $zero, 4, 0
 	ori	$a1, $zero, 3604
 	ldx.w	$a1, $a0, $a1
 	sub.d	$a2, $zero, $a1
@@ -232,36 +220,30 @@ MTMX:                                   # @MTMX
 	sub.d	$a6, $zero, $a4
 	stptr.w	$a6, $a0, 3628
 	stptr.w	$a2, $a0, 3640
+	stptr.w	$a5, $a0, 3644
 	ori	$a2, $zero, 3608
 	ldx.w	$a2, $a0, $a2
-	ori	$a6, $zero, 3632
+	ori	$a5, $zero, 3632
+	ldx.w	$a5, $a0, $a5
+	ori	$a6, $zero, 3620
 	ldx.w	$a6, $a0, $a6
-	ori	$a7, $zero, 3620
-	ldx.w	$a7, $a0, $a7
 	mul.d	$a1, $a4, $a1
-	mul.d	$t0, $a6, $a2
-	add.d	$a1, $a1, $t0
+	mul.d	$a7, $a5, $a2
+	add.d	$a1, $a1, $a7
 	sub.d	$a1, $zero, $a1
-	mul.d	$a3, $a4, $a3
-	mul.d	$a4, $a6, $a7
-	add.d	$a3, $a3, $a4
-	sub.d	$a3, $zero, $a3
-	ori	$a4, $zero, 1
-	st.w	$a4, $sp, 60
-	st.w	$zero, $sp, 48
-	st.w	$zero, $sp, 36
-	st.w	$a7, $sp, 44
-	st.w	$a2, $sp, 40
-	st.w	$a5, $sp, 32
-	st.w	$a3, $sp, 56
-	st.w	$a1, $sp, 52
-	xvld	$xr0, $sp, 32
-	ori	$a1, $zero, 3644
-	xvstx	$xr0, $a0, $a1
-	addi.d	$sp, $fp, -96
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	stptr.w	$a1, $a0, 3664
+	mul.d	$a1, $a4, $a3
+	mul.d	$a3, $a5, $a6
+	add.d	$a1, $a1, $a3
+	sub.d	$a1, $zero, $a1
+	stptr.w	$a1, $a0, 3668
+	vrepli.b	$vr0, 0
+	vinsgr2vr.w	$vr0, $a2, 1
+	vinsgr2vr.w	$vr0, $a6, 2
+	ori	$a1, $zero, 3648
+	vstx	$vr0, $a0, $a1
+	ori	$a1, $zero, 1
+	stptr.w	$a1, $a0, 3672
 	ret
 .Lfunc_end5:
 	.size	MTMX, .Lfunc_end5-MTMX
@@ -720,34 +702,29 @@ MTPremultiplyP:                         # @MTPremultiplyP
 .Lfunc_end12:
 	.size	MTPremultiplyP, .Lfunc_end12-MTPremultiplyP
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function MTDecodeP
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function MTDecodeP
 .LCPI13_0:
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	0                               # 0x0
-	.word	0                               # 0x0
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	0                               # 0x0
 	.word	0                               # 0x0
 .LCPI13_1:
 	.word	1                               # 0x1
+	.word	1                               # 0x1
 	.word	0                               # 0x0
 	.word	0                               # 0x0
-	.word	0                               # 0x0
+.LCPI13_2:
 	.word	1                               # 0x1
 	.word	0                               # 0x0
 	.word	0                               # 0x0
 	.word	0                               # 0x0
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI13_2:
+.LCPI13_3:
 	.word	0                               # 0x0
 	.word	4294967295                      # 0xffffffff
 	.word	0                               # 0x0
 	.word	1                               # 0x1
-.LCPI13_3:
+.LCPI13_4:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	0                               # 0x0
@@ -816,31 +793,36 @@ MTDecodeP:                              # @MTDecodeP
 	ld.w	$a5, $a0, 0
 	addi.d	$a5, $a5, 1
 	st.w	$a5, $a0, 0
-	ldptr.w	$s6, $a0, 3604
+	ldptr.w	$s3, $a0, 3604
+	pcalau12i	$a5, %pc_hi20(.LCPI13_0)
+	vld	$vr0, $a5, %pc_lo12(.LCPI13_0)
 	ldx.w	$s4, $a0, $a2
-	ldx.w	$s5, $a0, $a6
-	ldx.w	$s3, $a0, $a7
+	ldx.w	$s6, $a0, $a6
+	ori	$a2, $zero, 3652
+	vstx	$vr0, $a0, $a2
+	pcalau12i	$a2, %pc_hi20(.LCPI13_1)
+	vld	$vr0, $a2, %pc_lo12(.LCPI13_1)
+	ldx.w	$s5, $a0, $a7
 	ldptr.w	$a2, $a0, 3628
+	ori	$a5, $zero, 3636
+	vstx	$vr0, $a0, $a5
+	pcalau12i	$a5, %pc_hi20(.LCPI13_2)
+	vld	$vr0, $a5, %pc_lo12(.LCPI13_2)
 	ori	$a5, $zero, 0
-	pcalau12i	$a6, %pc_hi20(.LCPI13_0)
-	xvld	$xr0, $a6, %pc_lo12(.LCPI13_0)
 	lu32i.d	$a5, 1
 	stptr.d	$a5, $a0, 3668
-	ori	$a5, $zero, 3636
-	xvstx	$xr0, $a0, $a5
-	pcalau12i	$a5, %pc_hi20(.LCPI13_1)
-	xvld	$xr0, $a5, %pc_lo12(.LCPI13_1)
-	sltui	$a6, $s6, 1
+	vstx	$vr0, $a0, $a7
+	sltui	$a6, $s3, 1
 	addi.d	$a5, $s4, -1
 	sltui	$a5, $a5, 1
 	and	$a5, $a6, $a5
-	xvstx	$xr0, $a0, $a4
+	vstx	$vr0, $a0, $a4
 	beqz	$a5, .LBB13_7
 # %bb.3:
 	ori	$a4, $zero, 1
-	bne	$s5, $a4, .LBB13_7
+	bne	$s6, $a4, .LBB13_7
 # %bb.4:
-	bnez	$s3, .LBB13_7
+	bnez	$s5, .LBB13_7
 # %bb.5:
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
@@ -873,9 +855,9 @@ MTDecodeP:                              # @MTDecodeP
 	beqz	$a4, .LBB13_12
 # %bb.8:
 	addi.w	$a6, $zero, -1
-	bne	$s5, $a6, .LBB13_12
+	bne	$s6, $a6, .LBB13_12
 # %bb.9:
-	bnez	$s3, .LBB13_12
+	bnez	$s5, .LBB13_12
 # %bb.10:
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, -1
@@ -901,12 +883,12 @@ MTDecodeP:                              # @MTDecodeP
 	addi.d	$a5, $a5, %pc_lo12(.L.str.2)
 	b	.LBB13_21
 .LBB13_12:
-	addi.d	$a6, $s5, 1
+	addi.d	$a6, $s6, 1
 	sltui	$a6, $a6, 1
 	and	$a5, $a5, $a6
 	beqz	$a5, .LBB13_17
 # %bb.13:
-	bnez	$s3, .LBB13_17
+	bnez	$s5, .LBB13_17
 # %bb.14:
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, -1
@@ -917,8 +899,8 @@ MTDecodeP:                              # @MTDecodeP
 	stptr.w	$a3, $a0, 3632
 	stptr.d	$zero, $a0, 3656
 	stptr.w	$a3, $a0, 3664
-	pcalau12i	$a5, %pc_hi20(.LCPI13_3)
-	vld	$vr0, $a5, %pc_lo12(.LCPI13_3)
+	pcalau12i	$a5, %pc_hi20(.LCPI13_4)
+	vld	$vr0, $a5, %pc_lo12(.LCPI13_4)
 	sub.d	$a5, $zero, $a2
 	stptr.w	$a5, $a0, 3668
 	ori	$a5, $zero, 3640
@@ -942,12 +924,12 @@ MTDecodeP:                              # @MTDecodeP
 	st.h	$a3, $a4, 8
 	b	.LBB13_23
 .LBB13_17:
-	addi.d	$a5, $s5, -1
+	addi.d	$a5, $s6, -1
 	sltui	$a5, $a5, 1
 	and	$a4, $a4, $a5
 	beqz	$a4, .LBB13_35
 # %bb.18:
-	bnez	$s3, .LBB13_35
+	bnez	$s5, .LBB13_35
 # %bb.19:
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
@@ -958,8 +940,8 @@ MTDecodeP:                              # @MTDecodeP
 	stptr.w	$a2, $a0, 3628
 	stptr.w	$a3, $a0, 3632
 	stptr.d	$zero, $a0, 3656
-	pcalau12i	$a4, %pc_hi20(.LCPI13_2)
-	vld	$vr0, $a4, %pc_lo12(.LCPI13_2)
+	pcalau12i	$a4, %pc_hi20(.LCPI13_3)
+	vld	$vr0, $a4, %pc_lo12(.LCPI13_3)
 	sub.d	$a4, $zero, $a3
 	stptr.w	$a4, $a0, 3664
 	ori	$a4, $zero, 3640
@@ -996,16 +978,16 @@ MTDecodeP:                              # @MTDecodeP
 	st.d	$a2, $a4, 0
 .LBB13_24:
 	ldptr.w	$a2, $a0, 3604
-	bne	$a2, $s6, .LBB13_31
+	bne	$a2, $s3, .LBB13_31
 # %bb.25:
 	ldptr.w	$a2, $a0, 3608
-	bne	$a2, $s5, .LBB13_31
+	bne	$a2, $s6, .LBB13_31
 # %bb.26:
 	ldptr.w	$a2, $a0, 3616
 	bne	$a2, $s4, .LBB13_31
 # %bb.27:
 	ldptr.w	$a2, $a0, 3620
-	bne	$a2, $s3, .LBB13_31
+	bne	$a2, $s5, .LBB13_31
 # %bb.28:
 	ld.w	$a2, $a0, 0
 	beqz	$a2, .LBB13_30
@@ -1107,16 +1089,16 @@ MTDecodeP:                              # @MTDecodeP
 	addi.d	$sp, $sp, 96
 	ret
 .LBB13_35:
-	addi.d	$a4, $s6, -1
+	addi.d	$a4, $s3, -1
 	sltui	$a4, $a4, 1
 	sltui	$a5, $s4, 1
 	and	$a4, $a4, $a5
-	sltui	$a6, $s5, 1
+	sltui	$a6, $s6, 1
 	and	$a4, $a4, $a6
 	beqz	$a4, .LBB13_40
 # %bb.36:
 	ori	$a7, $zero, 1
-	bne	$s3, $a7, .LBB13_40
+	bne	$s5, $a7, .LBB13_40
 # %bb.37:
 	move	$fp, $a1
 	move	$s0, $a0
@@ -1149,14 +1131,14 @@ MTDecodeP:                              # @MTDecodeP
 	st.w	$a2, $a4, 0
 	b	.LBB13_24
 .LBB13_40:
-	addi.d	$a7, $s6, 1
+	addi.d	$a7, $s3, 1
 	sltui	$a7, $a7, 1
 	and	$a5, $a7, $a5
 	and	$a5, $a5, $a6
 	beqz	$a5, .LBB13_45
 # %bb.41:
 	addi.w	$a6, $zero, -1
-	bne	$s3, $a6, .LBB13_45
+	bne	$s5, $a6, .LBB13_45
 # %bb.42:
 	move	$s7, $a1
 	addi.w	$a1, $zero, -1
@@ -1193,7 +1175,7 @@ MTDecodeP:                              # @MTDecodeP
 	st.w	$a2, $a4, 0
 	b	.LBB13_24
 .LBB13_45:
-	addi.d	$a6, $s3, -1
+	addi.d	$a6, $s5, -1
 	sltui	$a6, $a6, 1
 	and	$a5, $a5, $a6
 	beqz	$a5, .LBB13_50
@@ -1226,7 +1208,7 @@ MTDecodeP:                              # @MTDecodeP
 	move	$a1, $fp
 	b	.LBB13_24
 .LBB13_50:
-	addi.d	$a5, $s3, 1
+	addi.d	$a5, $s5, 1
 	sltui	$a5, $a5, 1
 	and	$a4, $a4, $a5
 	beqz	$a4, .LBB13_57

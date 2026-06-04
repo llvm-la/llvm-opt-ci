@@ -357,26 +357,26 @@ main:                                   # @main
 # %bb.3:                                # %.lr.ph.i.preheader
 	sub.d	$a2, $a1, $a0
 	addi.d	$a3, $a2, -8
-	ori	$a4, $zero, 56
+	ori	$a4, $zero, 24
 	move	$a2, $a0
 	bltu	$a3, $a4, .LBB2_7
 # %bb.4:                                # %vector.ph
 	srli.d	$a2, $a3, 3
 	addi.d	$a3, $a2, 1
-	bstrpick.d	$a2, $a3, 61, 3
-	slli.d	$a4, $a2, 3
-	slli.d	$a2, $a2, 6
+	bstrpick.d	$a2, $a3, 61, 2
+	slli.d	$a4, $a2, 2
+	slli.d	$a2, $a2, 5
 	add.d	$a2, $a0, $a2
-	addi.d	$a5, $a0, 32
-	xvldi	$xr0, -1016
+	addi.d	$a5, $a0, 16
+	vldi	$vr0, -1016
 	move	$a6, $a4
 	.p2align	4, , 16
 .LBB2_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a5, -32
-	xvst	$xr0, $a5, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a5, $a5, 64
+	vst	$vr0, $a5, -16
+	vst	$vr0, $a5, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB2_5
 # %bb.6:                                # %middle.block
 	beq	$a3, $a4, .LBB2_9
@@ -400,7 +400,7 @@ main:                                   # @main
 # %bb.10:                               # %.lr.ph.i26.preheader
 	sub.d	$a3, $a2, $a6
 	addi.d	$a3, $a3, -8
-	ori	$a4, $zero, 56
+	ori	$a4, $zero, 24
 	bgeu	$a3, $a4, .LBB2_12
 # %bb.11:
 	move	$a3, $a6
@@ -408,20 +408,20 @@ main:                                   # @main
 .LBB2_12:                               # %vector.ph33
 	srli.d	$a3, $a3, 3
 	addi.d	$a4, $a3, 1
-	bstrpick.d	$a3, $a4, 61, 3
-	slli.d	$a5, $a3, 3
-	slli.d	$a3, $a3, 6
+	bstrpick.d	$a3, $a4, 61, 2
+	slli.d	$a5, $a3, 2
+	slli.d	$a3, $a3, 5
 	add.d	$a3, $a6, $a3
-	addi.d	$a6, $a6, 32
-	xvldi	$xr0, -1016
+	addi.d	$a6, $a6, 16
+	vldi	$vr0, -1016
 	move	$a7, $a5
 	.p2align	4, , 16
 .LBB2_13:                               # %vector.body36
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a6, -32
-	xvst	$xr0, $a6, 0
-	addi.d	$a7, $a7, -8
-	addi.d	$a6, $a6, 64
+	vst	$vr0, $a6, -16
+	vst	$vr0, $a6, 0
+	addi.d	$a7, $a7, -4
+	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB2_13
 # %bb.14:                               # %middle.block40
 	beq	$a4, $a5, .LBB2_17

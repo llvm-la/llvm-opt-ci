@@ -6,18 +6,18 @@
 	.type	TransferInit,@function
 TransferInit:                           # @TransferInit
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
 	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(initial_constraint)
 	addi.d	$a0, $a0, %pc_lo12(initial_constraint)
@@ -88,13 +88,12 @@ TransferInit:                           # @TransferInit
 	st.d	$zero, $s1, 80
 	addi.d	$a0, $a0, 256
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
 	vst	$vr0, $s1, 104
 	st.h	$a0, $s1, 42
 	ld.bu	$a0, $s4, 122
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
-	xvst	$xr0, $s1, 128
+	vst	$vr0, $s1, 128
+	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
+	vst	$vr0, $s1, 144
 	slli.d	$a1, $a0, 3
 	ldx.d	$s0, $s2, $a1
 	st.w	$a0, $s3, 0
@@ -259,7 +258,7 @@ TransferInit:                           # @TransferInit
 	st.d	$a0, $a0, 0
 	pcalau12i	$a2, %pc_hi20(root_galley)
 	ld.h	$a1, $a0, 42
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(root_galley)
 	lu12i.w	$a2, -2
 	ori	$a2, $a2, 3839
@@ -267,12 +266,12 @@ TransferInit:                           # @TransferInit
 	addi.d	$a2, $a1, 256
 	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 104
-	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
-	xvst	$xr1, $a0, 128
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
 	st.h	$a2, $a0, 42
 	pcalau12i	$a1, %got_pc_hi20(no_fpos)
 	ld.d	$a1, $a1, %got_pc_lo12(no_fpos)
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
 	ld.d	$a1, $a1, 0
 	ld.h	$a3, $a1, 2
 	st.h	$a3, $a0, 34
@@ -335,7 +334,7 @@ TransferInit:                           # @TransferInit
 	st.d	$a2, $a0, 0
 	b	.LBB0_23
 .LBB0_22:
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	pcaddu18i	$ra, %call36(GetMemory)
 	jirl	$ra, $ra, 0
@@ -345,7 +344,7 @@ TransferInit:                           # @TransferInit
 	st.d	$a1, $a1, 24
 	st.d	$a1, $a1, 16
 	st.d	$a1, $a1, 0
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(root_galley)
 	st.d	$a1, $a1, 8
 	st.d	$a1, $s6, 0
@@ -385,11 +384,11 @@ TransferInit:                           # @TransferInit
 	st.d	$a2, $a3, 24
 .LBB0_28:
 	st.d	$zero, $sp, 32
-	addi.d	$a1, $sp, 120
+	addi.d	$a1, $sp, 104
 	st.d	$a1, $sp, 24
-	addi.d	$a1, $sp, 128
-	st.d	$a1, $sp, 16
 	addi.d	$a1, $sp, 112
+	st.d	$a1, $sp, 16
+	addi.d	$a1, $sp, 96
 	st.d	$a1, $sp, 8
 	st.d	$zero, $sp, 0
 	pcalau12i	$a1, %pc_hi20(InitialStyle)
@@ -403,8 +402,8 @@ TransferInit:                           # @TransferInit
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(SizeGalley)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 128
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112
+	ld.d	$fp, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a0, .LBB0_30
 # %bb.29:
 	ld.d	$a4, $fp, 0
@@ -418,7 +417,7 @@ TransferInit:                           # @TransferInit
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB0_30:
-	ld.d	$a0, $sp, 120
+	ld.d	$a0, $sp, 104
 	beqz	$a0, .LBB0_32
 # %bb.31:
 	ld.d	$a4, $fp, 0
@@ -469,7 +468,7 @@ TransferInit:                           # @TransferInit
 	st.d	$a3, $a0, 0
 	ld.d	$a2, $s7, 0
 	ld.d	$a0, $s6, 0
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, %pc_lo12(root_galley)
 	st.d	$a2, $a3, 8
 	st.d	$a0, $s7, 0
@@ -580,7 +579,7 @@ TransferInit:                           # @TransferInit
 	st.d	$a4, $a2, 0
 	b	.LBB0_52
 .LBB0_51:
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(GetMemory)
@@ -631,22 +630,22 @@ TransferInit:                           # @TransferInit
 	pcalau12i	$a1, %pc_hi20(constraints)
 	addi.d	$a1, $a1, %pc_lo12(constraints)
 	alsl.d	$a1, $a3, $a1, 4
-	addi.d	$a3, $sp, 104
+	addi.d	$a3, $sp, 88
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(Constrained)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
 .Lfunc_end0:
 	.size	TransferInit, .Lfunc_end0-TransferInit
@@ -1747,8 +1746,8 @@ TransferComponent:                      # @TransferComponent
 	addi.d	$a0, $a0, 256
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 104
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $s0, 128
+	vst	$vr0, $s0, 128
+	vst	$vr0, $s0, 144
 	st.h	$a0, $s0, 42
 	ld.h	$a1, $s3, 34
 	st.h	$a1, $s0, 34
@@ -2341,10 +2340,12 @@ TransferEnd:                            # @TransferEnd
 	bstrins.d	$a1, $a2, 63, 20
 	st.w	$a1, $s0, 36
 	ld.hu	$a1, $s0, 42
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $s0, 128
+	vrepli.b	$vr0, 0
+	vst	$vr0, $s0, 104
+	vst	$vr0, $s0, 128
+	vst	$vr0, $s0, 144
 	st.d	$zero, $s0, 80
-	xvst	$xr0, $s0, 88
+	vst	$vr0, $s0, 88
 	ori	$a2, $zero, 129
 	st.b	$a2, $s0, 40
 	lu12i.w	$a2, 14

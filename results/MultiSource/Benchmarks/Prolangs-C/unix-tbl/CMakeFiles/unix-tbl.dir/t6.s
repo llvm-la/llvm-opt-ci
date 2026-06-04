@@ -818,111 +818,76 @@ maktab:                                 # @maktab
 	ld.w	$a0, $s7, 0
 .LBB0_84:                               # %.loopexit
 	blez	$a0, .LBB0_87
-# %bb.85:                               # %iter.check
-	ori	$a1, $zero, 4
+# %bb.85:                               # %.lr.ph264.preheader
+	ori	$a1, $zero, 8
 	bgeu	$a0, $a1, .LBB0_88
 # %bb.86:
 	move	$a1, $zero
 	move	$s0, $zero
-	b	.LBB0_97
+	b	.LBB0_91
 .LBB0_87:
 	move	$s0, $zero
-	b	.LBB0_99
-.LBB0_88:                               # %vector.main.loop.iter.check
-	ori	$a1, $zero, 16
-	bgeu	$a0, $a1, .LBB0_90
-# %bb.89:
-	move	$a1, $zero
-	move	$s0, $zero
-	b	.LBB0_94
-.LBB0_90:                               # %vector.ph
-	andi	$a2, $a0, 12
+	b	.LBB0_93
+.LBB0_88:                               # %vector.ph
 	pcalau12i	$a1, %got_pc_hi20(sep)
-	ld.d	$a3, $a1, %got_pc_lo12(sep)
-	bstrpick.d	$a1, $a0, 30, 4
-	slli.d	$a1, $a1, 4
-	xvrepli.b	$xr0, 0
-	addi.d	$a3, $a3, 32
-	move	$a4, $a1
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB0_91:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a3, -32
-	xvld	$xr3, $a3, 0
-	xvadd.w	$xr0, $xr2, $xr0
-	xvadd.w	$xr1, $xr3, $xr1
-	addi.d	$a4, $a4, -16
-	addi.d	$a3, $a3, 64
-	bnez	$a4, .LBB0_91
-# %bb.92:                               # %middle.block
-	xvadd.w	$xr0, $xr1, $xr0
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$s0, $xr0, 0
-	beq	$a1, $a0, .LBB0_99
-# %bb.93:                               # %vec.epilog.iter.check
-	beqz	$a2, .LBB0_97
-.LBB0_94:                               # %vec.epilog.ph
-	move	$a3, $a1
-	bstrpick.d	$a1, $a0, 30, 2
-	slli.d	$a1, $a1, 2
+	ld.d	$a2, $a1, %got_pc_lo12(sep)
+	bstrpick.d	$a1, $a0, 30, 3
+	slli.d	$a1, $a1, 3
 	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $s0, 0
-	sub.d	$a2, $a3, $a1
-	pcalau12i	$a4, %got_pc_hi20(sep)
-	ld.d	$a4, $a4, %got_pc_lo12(sep)
-	alsl.d	$a3, $a3, $a4, 2
+	addi.d	$a2, $a2, 16
+	move	$a3, $a1
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB0_95:                               # %vec.epilog.vector.body
+.LBB0_89:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a3, 0
+	vld	$vr2, $a2, -16
+	vld	$vr3, $a2, 0
+	vadd.w	$vr0, $vr2, $vr0
+	vadd.w	$vr1, $vr3, $vr1
+	addi.d	$a3, $a3, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB0_89
+# %bb.90:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 16
-	bnez	$a2, .LBB0_95
-# %bb.96:                               # %vec.epilog.middle.block
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$s0, $vr0, 0
-	beq	$a1, $a0, .LBB0_99
-.LBB0_97:                               # %.lr.ph264.preheader
+	beq	$a1, $a0, .LBB0_93
+.LBB0_91:                               # %.lr.ph264.preheader331
 	pcalau12i	$a2, %got_pc_hi20(sep)
 	ld.d	$a2, $a2, %got_pc_lo12(sep)
 	alsl.d	$a2, $a1, $a2, 2
 	sub.d	$a0, $a0, $a1
 	.p2align	4, , 16
-.LBB0_98:                               # %.lr.ph264
+.LBB0_92:                               # %.lr.ph264
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $a2, 0
 	add.d	$s0, $a1, $s0
 	addi.d	$a0, $a0, -1
 	addi.d	$a2, $a2, 4
-	bnez	$a0, .LBB0_98
-.LBB0_99:                               # %._crit_edge265
+	bnez	$a0, .LBB0_92
+.LBB0_93:                               # %._crit_edge265
 	pcalau12i	$a0, %got_pc_hi20(expflg)
 	ld.d	$a0, $a0, %got_pc_lo12(expflg)
 	ld.w	$a1, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(tabout)
 	ld.d	$s3, $a0, %got_pc_lo12(tabout)
 	ld.d	$a0, $s3, 0
-	beqz	$a1, .LBB0_107
-# %bb.100:
+	beqz	$a1, .LBB0_101
+# %bb.94:
 	pcalau12i	$a1, %pc_hi20(.L.str.21)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.21)
 	ori	$a2, $zero, 38
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s7, 0
-	blez	$a0, .LBB0_103
-# %bb.101:                              # %.lr.ph269.preheader
+	blez	$a0, .LBB0_97
+# %bb.95:                               # %.lr.ph269.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.22)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.22)
 	move	$s1, $zero
 	.p2align	4, , 16
-.LBB0_102:                              # %.lr.ph269
+.LBB0_96:                               # %.lr.ph269
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s3, 0
 	addi.w	$a2, $s1, 80
@@ -931,8 +896,8 @@ maktab:                                 # @maktab
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s7, 0
 	addi.w	$s1, $s1, 1
-	blt	$s1, $a0, .LBB0_102
-.LBB0_103:                              # %._crit_edge270
+	blt	$s1, $a0, .LBB0_96
+.LBB0_97:                               # %._crit_edge270
 	ld.d	$a1, $s3, 0
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(fputc)
@@ -947,35 +912,35 @@ maktab:                                 # @maktab
 	pcalau12i	$a0, %got_pc_hi20(boxflg)
 	ld.d	$a0, $a0, %got_pc_lo12(boxflg)
 	ld.w	$a0, $a0, 0
-	bnez	$a0, .LBB0_108
-# %bb.104:                              # %._crit_edge270
+	bnez	$a0, .LBB0_102
+# %bb.98:                               # %._crit_edge270
 	pcalau12i	$a0, %got_pc_hi20(dboxflg)
 	ld.d	$a0, $a0, %got_pc_lo12(dboxflg)
 	ld.w	$a0, $a0, 0
-	bnez	$a0, .LBB0_108
-# %bb.105:                              # %._crit_edge270
+	bnez	$a0, .LBB0_102
+# %bb.99:                               # %._crit_edge270
 	pcalau12i	$a0, %got_pc_hi20(allflg)
 	ld.d	$a0, $a0, %got_pc_lo12(allflg)
 	ld.w	$a0, $a0, 0
-	bnez	$a0, .LBB0_108
-# %bb.106:
+	bnez	$a0, .LBB0_102
+# %bb.100:
 	ld.w	$a0, $s7, 0
 	pcalau12i	$a1, %got_pc_hi20(sep)
 	ld.d	$a1, $a1, %got_pc_lo12(sep)
 	alsl.d	$a0, $a0, $a1, 2
 	ld.w	$a0, $a0, -4
 	sub.w	$a4, $s0, $a0
-	b	.LBB0_109
-.LBB0_107:
+	b	.LBB0_103
+.LBB0_101:
 	pcalau12i	$a1, %pc_hi20(.L.str.25)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.25)
 	ori	$a2, $zero, 38
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	b	.LBB0_110
-.LBB0_108:
+	b	.LBB0_104
+.LBB0_102:
 	addi.w	$a4, $s0, 1
-.LBB0_109:
+.LBB0_103:
 	ld.d	$a0, $s3, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.24)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.24)
@@ -990,7 +955,7 @@ maktab:                                 # @maktab
 	ori	$a3, $zero, 38
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-.LBB0_110:
+.LBB0_104:
 	ld.d	$a0, $s3, 0
 	pcalau12i	$a1, %pc_hi20(.L.str)
 	addi.d	$a1, $a1, %pc_lo12(.L.str)
@@ -998,8 +963,8 @@ maktab:                                 # @maktab
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s7, 0
-	blez	$a1, .LBB0_115
-# %bb.111:                              # %.lr.ph274.preheader
+	blez	$a1, .LBB0_109
+# %bb.105:                              # %.lr.ph274.preheader
 	pcalau12i	$a0, %got_pc_hi20(boxflg)
 	ld.d	$a0, $a0, %got_pc_lo12(boxflg)
 	ld.w	$a0, $a0, 0
@@ -1025,17 +990,17 @@ maktab:                                 # @maktab
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.19)
 	move	$s6, $zero
-	b	.LBB0_113
+	b	.LBB0_107
 	.p2align	4, , 16
-.LBB0_112:                              #   in Loop: Header=BB0_113 Depth=1
+.LBB0_106:                              #   in Loop: Header=BB0_107 Depth=1
 	ld.w	$a4, $s5, 0
 	ld.w	$a1, $s7, 0
 	addi.d	$s6, $s6, 1
 	addi.w	$fp, $fp, 1
 	addi.d	$s4, $s4, 4
 	addi.d	$s5, $s5, 4
-	bge	$s6, $a1, .LBB0_115
-.LBB0_113:                              # %.lr.ph274
+	bge	$s6, $a1, .LBB0_109
+.LBB0_107:                              # %.lr.ph274
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s3, 0
 	addi.w	$s2, $fp, 40
@@ -1052,21 +1017,21 @@ maktab:                                 # @maktab
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 0
-	beqz	$a0, .LBB0_112
-# %bb.114:                              #   in Loop: Header=BB0_113 Depth=1
+	beqz	$a0, .LBB0_106
+# %bb.108:                              #   in Loop: Header=BB0_107 Depth=1
 	ld.d	$a0, $s3, 0
 	addi.w	$a2, $fp, 20
 	move	$a1, $s1
 	move	$a3, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	b	.LBB0_112
-.LBB0_115:                              # %._crit_edge275
+	b	.LBB0_106
+.LBB0_109:                              # %._crit_edge275
 	pcalau12i	$a0, %got_pc_hi20(rightl)
 	ld.d	$a0, $a0, %got_pc_lo12(rightl)
 	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB0_117
-# %bb.116:
+	beqz	$a0, .LBB0_111
+# %bb.110:
 	ld.d	$a0, $s3, 0
 	addi.w	$a2, $a1, 79
 	addi.w	$a3, $a1, 39
@@ -1076,7 +1041,7 @@ maktab:                                 # @maktab
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s7, 0
-.LBB0_117:
+.LBB0_111:
 	ld.d	$a0, $s3, 0
 	addi.w	$a2, $a1, 79
 	pcalau12i	$a1, %pc_hi20(.L.str.28)
@@ -1086,18 +1051,18 @@ maktab:                                 # @maktab
 	pcalau12i	$a0, %got_pc_hi20(boxflg)
 	ld.d	$a0, $a0, %got_pc_lo12(boxflg)
 	ld.w	$a0, $a0, 0
-	bnez	$a0, .LBB0_120
-# %bb.118:
+	bnez	$a0, .LBB0_114
+# %bb.112:
 	pcalau12i	$a0, %got_pc_hi20(allflg)
 	ld.d	$a0, $a0, %got_pc_lo12(allflg)
 	ld.w	$a0, $a0, 0
-	bnez	$a0, .LBB0_120
-# %bb.119:
+	bnez	$a0, .LBB0_114
+# %bb.113:
 	pcalau12i	$a0, %got_pc_hi20(dboxflg)
 	ld.d	$a0, $a0, %got_pc_lo12(dboxflg)
 	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB0_121
-.LBB0_120:
+	beqz	$a0, .LBB0_115
+.LBB0_114:
 	ld.d	$a0, $s3, 0
 	ld.w	$a1, $s7, 0
 	pcalau12i	$a2, %got_pc_hi20(sep)
@@ -1109,7 +1074,7 @@ maktab:                                 # @maktab
 	ori	$a3, $zero, 38
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-.LBB0_121:
+.LBB0_115:
 	ld.d	$a0, $s3, 0
 	pcalau12i	$a1, %got_pc_hi20(iline)
 	ld.d	$a1, $a1, %got_pc_lo12(iline)

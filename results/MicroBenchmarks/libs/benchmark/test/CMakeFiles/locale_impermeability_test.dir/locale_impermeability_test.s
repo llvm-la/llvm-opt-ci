@@ -563,9 +563,11 @@ _GLOBAL__sub_I_locale_impermeability_test.cc: # @_GLOBAL__sub_I_locale_impermeab
 	st.d	$a1, $sp, 1560
 	pcalau12i	$a2, %pc_hi20(.L.str.3)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.3)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.w	$a2, $a2, 55
@@ -665,8 +667,10 @@ _GLOBAL__sub_I_locale_impermeability_test.cc: # @_GLOBAL__sub_I_locale_impermeab
 	st.d	$a1, $sp, 1560
 	pcalau12i	$a2, %pc_hi20(.L.str.5)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.5)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 45
 	vst	$vr0, $a0, 32
@@ -729,11 +733,14 @@ _GLOBAL__sub_I_locale_impermeability_test.cc: # @_GLOBAL__sub_I_locale_impermeab
 .Ltmp32:                                # EH_LABEL
 # %bb.24:                               # %.noexc117.i
 	ld.d	$a1, $sp, 304
-	pcalau12i	$a2, %pc_hi20(.L.str.7)
-	xvld	$xr0, $a2, %pc_lo12(.L.str.7)
 	st.d	$a0, $sp, 336
 	st.d	$a1, $sp, 352
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.L.str.7)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.7)
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 336
 	st.d	$a1, $sp, 344
 	stx.b	$zero, $a0, $a1
@@ -763,9 +770,11 @@ _GLOBAL__sub_I_locale_impermeability_test.cc: # @_GLOBAL__sub_I_locale_impermeab
 	st.d	$a1, $sp, 320
 	pcalau12i	$a2, %pc_hi20(.L.str.8)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.8)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.b	$a2, $a2, 56

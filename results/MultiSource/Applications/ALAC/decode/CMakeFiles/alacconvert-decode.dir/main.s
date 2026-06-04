@@ -339,10 +339,12 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	bne	$s3, $s4, .LBB0_50
 # %bb.49:
+	vld	$vr0, $sp, 216
 	ld.d	$a0, $sp, 232
-	xvld	$xr0, $sp, 200
+	vld	$vr1, $sp, 200
+	vst	$vr0, $sp, 160
 	st.d	$a0, $sp, 176
-	xvst	$xr0, $sp, 144
+	vst	$vr1, $sp, 144
 	fst.d	$fs0, $sp, 104
 	st.w	$s5, $sp, 112
 	st.w	$s8, $sp, 116
@@ -369,12 +371,14 @@ main:                                   # @main
 	ori	$a2, $zero, 3
 	bgeu	$a1, $a2, .LBB0_60
 .LBB0_52:
+	vld	$vr0, $sp, 216
 	ld.d	$a1, $sp, 232
-	xvld	$xr0, $sp, 200
+	vst	$vr0, $sp, 80
+	vld	$vr0, $sp, 200
 	xor	$a0, $a0, $a3
 	sltu	$a0, $zero, $a0
 	st.d	$a1, $sp, 96
-	xvst	$xr0, $sp, 64
+	vst	$vr0, $sp, 64
 	fst.d	$fs0, $sp, 24
 	st.w	$s5, $sp, 32
 	st.w	$s8, $sp, 36
@@ -696,22 +700,18 @@ _Z15SetOutputFormat22AudioFormatDescriptionPS_: # @_Z15SetOutputFormat22AudioFor
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB2_12
 # %bb.3:                                # %switch.lookup
-	addi.d	$sp, $sp, -16
 	slli.d	$a2, $a3, 2
 	pcalau12i	$a3, %pc_hi20(.Lswitch.table._Z15SetOutputFormat22AudioFormatDescriptionPS_)
 	addi.d	$a3, $a3, %pc_lo12(.Lswitch.table._Z15SetOutputFormat22AudioFormatDescriptionPS_)
+	ldx.w	$a3, $a3, $a2
 	ld.w	$a0, $a0, 28
-	ldx.w	$a2, $a3, $a2
+	st.w	$a3, $a1, 12
 	st.w	$a0, $a1, 28
 	st.d	$zero, $a1, 32
-	st.w	$zero, $sp, 12
+	st.w	$zero, $a1, 24
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 4096
-	st.d	$a0, $sp, 4
-	st.w	$a2, $sp, 0
-	vld	$vr0, $sp, 0
-	vst	$vr0, $a1, 12
-	addi.d	$sp, $sp, 16
+	st.d	$a0, $a1, 16
 	move	$a0, $zero
 	ret
 .LBB2_4:
@@ -980,8 +980,8 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	st.w	$zero, $sp, 380
 	lu12i.w	$a0, 2
-	ori	$s5, $a0, 112
-	move	$a0, $s5
+	ori	$s6, $a0, 112
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
@@ -991,13 +991,15 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 .Ltmp1:                                 # EH_LABEL
 # %bb.1:
 	ld.w	$a0, $s4, 20
-	xvld	$xr0, $s4, 8
-	ld.d	$a1, $s1, 0
+	vld	$vr0, $s4, 24
 	stptr.w	$a0, $s1, 8284
-	xvst	$xr0, $sp, 312
-	ld.d	$a0, $s4, 0
-	ld.d	$a2, $a1, 32
-	st.d	$a0, $sp, 304
+	ld.d	$a0, $s1, 0
+	vst	$vr0, $sp, 328
+	ld.d	$a1, $s4, 0
+	vld	$vr0, $s4, 8
+	ld.d	$a2, $a0, 32
+	st.d	$a1, $sp, 304
+	vst	$vr0, $sp, 312
 	addi.d	$a1, $sp, 304
 	move	$a0, $s1
 	jirl	$ra, $a2, 0
@@ -1005,9 +1007,11 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 	pcaddu18i	$ra, %call36(_Z18WriteCAFFcaffChunkP8_IO_FILE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 32
-	xvld	$xr0, $s4, 0
+	vld	$vr0, $s4, 16
+	vld	$vr1, $s4, 0
 	st.d	$a0, $sp, 296
-	xvst	$xr0, $sp, 264
+	vst	$vr0, $sp, 280
+	vst	$vr1, $sp, 264
 	addi.d	$a1, $sp, 264
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Z18WriteCAFFdescChunkP8_IO_FILE22AudioFormatDescription)
@@ -1050,9 +1054,11 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 	jirl	$ra, $ra, 0
 .LBB4_3:
 	ld.d	$a0, $s3, 32
-	xvld	$xr0, $s3, 0
+	vld	$vr0, $s3, 16
+	vld	$vr1, $s3, 0
 	st.d	$a0, $sp, 256
-	xvst	$xr0, $sp, 224
+	vst	$vr0, $sp, 240
+	vst	$vr1, $sp, 224
 	addi.d	$a0, $sp, 224
 	addi.d	$a2, $sp, 388
 	addi.d	$a3, $sp, 355
@@ -1075,7 +1081,7 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 	pcaddu18i	$ra, %call36(ftell)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 388
-	move	$s6, $a0
+	move	$s5, $a0
 	addi.w	$a2, $a1, -24
 	st.w	$a2, $sp, 388
 	ori	$a1, $zero, 1
@@ -1096,9 +1102,9 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(ftell)
 	jirl	$ra, $ra, 0
-	move	$s5, $a0
+	move	$s6, $a0
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
 	move	$s2, $zero
 	bge	$s7, $a2, .LBB4_10
 .LBB4_4:                                # %._crit_edge
@@ -1148,7 +1154,7 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(_Z13GetBERIntegeriPhPi)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $s6, 0
+	addi.w	$a1, $s5, 0
 	move	$a0, $fp
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(fseek)
@@ -1160,10 +1166,10 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 384
-	add.d	$s6, $a0, $s6
+	add.d	$s5, $a0, $s5
 	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
 	sub.w	$s4, $s4, $a0
-	addi.w	$a1, $s5, 0
+	addi.w	$a1, $s6, 0
 	move	$a0, $fp
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(fseek)
@@ -1180,7 +1186,7 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 	ori	$a0, $zero, 13
 	bltu	$s4, $a0, .LBB4_9
 # %bb.8:
-	addi.w	$a1, $s6, 0
+	addi.w	$a1, $s5, 0
 	move	$a0, $fp
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(fseek)
@@ -1284,7 +1290,7 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13GetBERIntegeriPhPi)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $s6, 0
+	addi.w	$a1, $s5, 0
 	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
 	move	$a0, $fp
 	move	$a2, $zero
@@ -1297,10 +1303,10 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 384
-	add.d	$s6, $a0, $s6
+	add.d	$s5, $a0, $s5
 	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
 	sub.w	$s4, $s4, $a0
-	addi.w	$a1, $s5, 0
+	addi.w	$a1, $s6, 0
 	move	$a0, $fp
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(fseek)
@@ -1312,7 +1318,7 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 380
-	add.d	$s5, $a0, $s5
+	add.d	$s6, $a0, $s6
 	add.d	$s2, $s2, $a0
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	blt	$s7, $a2, .LBB4_4
@@ -1468,7 +1474,7 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 .Ltmp2:                                 # EH_LABEL
 	move	$fp, $a0
 	move	$a0, $s1
-	move	$a1, $s5
+	move	$a1, $s6
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -1667,9 +1673,11 @@ _Z10DecodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_ij: # @_Z10DecodeALACP8_IO
 	pcaddu18i	$ra, %call36(_Z18WriteCAFFcaffChunkP8_IO_FILE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 32
-	xvld	$xr0, $s4, 0
+	vld	$vr0, $s4, 16
+	vld	$vr1, $s4, 0
 	st.d	$a0, $sp, 72
-	xvst	$xr0, $sp, 40
+	vst	$vr0, $sp, 56
+	vst	$vr1, $sp, 40
 	addi.d	$a1, $sp, 40
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Z18WriteCAFFdescChunkP8_IO_FILE22AudioFormatDescription)

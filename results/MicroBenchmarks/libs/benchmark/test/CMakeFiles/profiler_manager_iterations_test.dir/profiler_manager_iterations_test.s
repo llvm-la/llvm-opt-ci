@@ -200,34 +200,32 @@ _ZN12_GLOBAL__N_110BM_MyBenchERN9benchmark5StateE: # @_ZN12_GLOBAL__N_110BM_MyBe
 	masknez	$a3, $a3, $a4
 	or	$a2, $a2, $a3
 	addi.d	$a2, $a2, 1
-	ori	$a3, $zero, 17
+	ori	$a3, $zero, 9
 	bltu	$a2, $a3, .LBB1_6
 # %bb.3:                                # %vector.ph
-	andi	$a3, $a2, 15
+	andi	$a3, $a2, 7
 	sltui	$a4, $a3, 1
 	masknez	$a3, $a3, $a4
-	ori	$a5, $zero, 16
+	ori	$a5, $zero, 8
 	maskeqz	$a4, $a5, $a4
 	or	$a3, $a4, $a3
 	sub.d	$a2, $a2, $a3
-	xvrepli.b	$xr0, 0
+	vrepli.b	$vr0, 0
 	sub.d	$s0, $s0, $a2
-	xvori.b	$xr1, $xr0, 0
-	xvinsgr2vr.w	$xr1, $a1, 0
+	vori.b	$vr1, $vr0, 0
+	vinsgr2vr.w	$vr1, $a1, 0
 	.p2align	4, , 16
 .LBB1_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.wu	$xr1, $xr1, 1
-	addi.d	$a2, $a2, -16
-	xvaddi.wu	$xr0, $xr0, 1
+	vaddi.wu	$vr1, $vr1, 1
+	addi.d	$a2, $a2, -8
+	vaddi.wu	$vr0, $vr0, 1
 	bnez	$a2, .LBB1_4
 # %bb.5:                                # %middle.block
-	xvadd.w	$xr0, $xr0, $xr1
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a1, $xr0, 0
+	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 .LBB1_6:                                # %_ZN9benchmark5State13StateIteratorppEv.exit
                                         # =>This Inner Loop Header: Depth=1
 	blez	$s0, .LBB1_10

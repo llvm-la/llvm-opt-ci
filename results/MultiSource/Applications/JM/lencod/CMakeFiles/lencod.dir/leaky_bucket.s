@@ -384,7 +384,7 @@ calc_buffer:                            # @calc_buffer
 	beqz	$a0, .LBB4_9
 .LBB4_6:                                # %.lr.ph
 	ld.d	$a1, $s5, %pc_lo12(Bit_Buffer)
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bgeu	$a0, $a2, .LBB4_10
 # %bb.7:
 	move	$a3, $zero
@@ -403,27 +403,25 @@ calc_buffer:                            # @calc_buffer
 	b	.LBB4_16
 .LBB4_10:                               # %vector.ph
 	move	$a2, $a0
-	bstrins.d	$a2, $zero, 2, 0
-	xvrepli.b	$xr0, 0
-	addi.d	$a3, $a1, 32
+	bstrins.d	$a2, $zero, 1, 0
+	vrepli.b	$vr0, 0
+	addi.d	$a3, $a1, 16
 	move	$a4, $a2
-	xvori.b	$xr1, $xr0, 0
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB4_11:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a3, -32
-	xvld	$xr3, $a3, 0
-	xvadd.d	$xr0, $xr2, $xr0
-	xvadd.d	$xr1, $xr3, $xr1
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vld	$vr2, $a3, -16
+	vld	$vr3, $a3, 0
+	vadd.d	$vr0, $vr2, $vr0
+	vadd.d	$vr1, $vr3, $vr1
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB4_11
 # %bb.12:                               # %middle.block
-	xvadd.d	$xr0, $xr1, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a3, $xr0, 0
+	vadd.d	$vr0, $vr1, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
 	beq	$a0, $a2, .LBB4_15
 .LBB4_13:                               # %scalar.ph.preheader
 	sub.d	$a4, $a0, $a2

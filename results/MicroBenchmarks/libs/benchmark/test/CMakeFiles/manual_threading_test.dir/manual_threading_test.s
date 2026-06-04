@@ -1581,11 +1581,12 @@ _ZNSt6threadC2IRKSt8functionIFviEEJiEvEEOT_DpOT0_: # @_ZNSt6threadC2IRKSt8functi
 	pcalau12i	$a0, %pc_hi20(_ZTVNSt6thread11_State_implINS_8_InvokerISt5tupleIJSt8functionIFviEEiEEEEEE+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTVNSt6thread11_State_implINS_8_InvokerISt5tupleIJSt8functionIFviEEiEEEEEE+16)
 	ld.w	$a1, $s2, 0
-	ld.d	$a3, $s1, 16
 	st.d	$a0, $fp, 0
+	ld.d	$a3, $s1, 16
 	st.w	$a1, $fp, 8
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 16
+	vrepli.b	$vr0, 0
+	vst	$vr0, $fp, 16
+	vst	$vr0, $fp, 32
 	beqz	$a3, .LBB14_3
 # %bb.1:
 .Ltmp17:                                # EH_LABEL

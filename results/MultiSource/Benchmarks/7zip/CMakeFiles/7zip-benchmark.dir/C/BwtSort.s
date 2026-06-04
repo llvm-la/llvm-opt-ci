@@ -23,7 +23,7 @@ SortGroup:                              # @SortGroup
 	bgeu	$a3, $t0, .LBB0_2
 # %bb.1:
 	move	$t0, $zero
-	b	.LBB0_40
+	b	.LBB0_39
 .LBB0_2:                                # %.lr.ph360
 	bstrpick.d	$s4, $a0, 31, 0
 	alsl.d	$s8, $s4, $a5, 2
@@ -89,7 +89,7 @@ SortGroup:                              # @SortGroup
                                         #         Child Loop BB0_14 Depth 4
 	move	$fp, $a7
 	addi.w	$a7, $a7, 0
-	bgeu	$s5, $a7, .LBB0_37
+	bgeu	$s5, $a7, .LBB0_36
 # %bb.10:                               #   in Loop: Header=BB0_9 Depth=2
 	move	$s7, $zero
 	addi.d	$a7, $fp, 1
@@ -216,23 +216,24 @@ SortGroup:                              # @SortGroup
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	ori	$t1, $zero, 2
 	bgeu	$a3, $t1, .LBB0_3
-	b	.LBB0_40
+	b	.LBB0_39
 .LBB0_24:                               # %._crit_edge.thread
 	addi.w	$a0, $a3, -1
 	slli.d	$a1, $a0, 20
 	lu12i.w	$a2, 261888
 	and	$a1, $a1, $a2
 	or	$a1, $t3, $a1
-	b	.LBB0_38
+	b	.LBB0_37
 .LBB0_25:                               # %.lr.ph365.preheader
 	move	$a6, $zero
 	sll.w	$a7, $t0, $a4
+	move	$s2, $s8
 	st.w	$a7, $s8, 0
-	bstrpick.d	$s2, $a3, 31, 0
+	bstrpick.d	$t6, $a3, 31, 0
 	addi.d	$t1, $a5, 4
 	alsl.d	$a7, $s1, $t1, 2
 	alsl.d	$t1, $s4, $t1, 2
-	addi.d	$t2, $s2, -1
+	addi.d	$t2, $t6, -1
 	ori	$t3, $zero, 1
 	.p2align	4, , 16
 .LBB0_26:                               # %.lr.ph365
@@ -257,24 +258,23 @@ SortGroup:                              # @SortGroup
 	addi.d	$t1, $t1, 4
 	bnez	$t2, .LBB0_26
 # %bb.27:                               # %._crit_edge366
-	beqz	$a6, .LBB0_37
+	beqz	$a6, .LBB0_36
 # %bb.28:                               # %.lr.ph373.preheader
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
 	st.d	$a5, $sp, 32                    # 8-byte Folded Spill
-	move	$a0, $s8
+	move	$a0, $s2
+	move	$s3, $t6
 	move	$s5, $a3
 	move	$a1, $a3
 	move	$fp, $a4
 	move	$s4, $a2
-	move	$s3, $s8
 	move	$s7, $ra
 	pcaddu18i	$ra, %call36(HeapSort)
 	jirl	$ra, $ra, 0
-	move	$ra, $s8
 	move	$a1, $s4
 	move	$a0, $fp
-	ld.w	$a3, $s8, 0
+	ld.w	$a3, $s2, 0
 	addi.w	$a2, $s7, -1
 	and	$a4, $a3, $a2
 	slli.d	$a4, $a4, 2
@@ -284,11 +284,12 @@ SortGroup:                              # @SortGroup
 	move	$t2, $zero
 	move	$t0, $zero
 	move	$t6, $zero
-	st.w	$a4, $s8, 0
-	srl.w	$s4, $a3, $fp
-	addi.d	$t3, $a1, 1
-	addi.d	$t4, $s8, 4
-	addi.d	$t5, $s2, -1
+	st.w	$a4, $s2, 0
+	srl.w	$s7, $a3, $fp
+	addi.d	$t3, $s4, 1
+	addi.d	$t4, $s2, 4
+	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$t5, $s3, -1
 	lu12i.w	$a6, 261888
 	lu12i.w	$a5, -524288
 	lu32i.d	$a5, 0
@@ -299,9 +300,9 @@ SortGroup:                              # @SortGroup
 	lu32i.d	$a3, 0
 	b	.LBB0_31
 	.p2align	4, , 16
-.LBB0_29:                               #   in Loop: Header=BB0_31 Depth=1
-	move	$t8, $s4
-	ori	$t0, $zero, 1
+.LBB0_29:                               # %SetGroupSize.exit291
+                                        #   in Loop: Header=BB0_31 Depth=1
+	move	$t6, $t2
 .LBB0_30:                               # %SetGroupSize.exit291
                                         #   in Loop: Header=BB0_31 Depth=1
 	and	$fp, $fp, $a2
@@ -315,63 +316,61 @@ SortGroup:                              # @SortGroup
 	addi.w	$a7, $a7, 0
 	addi.d	$t5, $t5, -1
 	addi.d	$t4, $t4, 4
-	move	$s4, $t8
-	beqz	$t5, .LBB0_41
+	move	$s7, $t8
+	beqz	$t5, .LBB0_40
 .LBB0_31:                               # %.lr.ph373
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$fp, $t4, 0
-	move	$s8, $t2
+	move	$ra, $t2
 	srl.w	$t8, $fp, $a0
 	addi.w	$t2, $t2, 1
-	beq	$t8, $s4, .LBB0_29
+	bne	$t8, $s7, .LBB0_33
 # %bb.32:                               #   in Loop: Header=BB0_31 Depth=1
-	sub.w	$s7, $s8, $t6
-	add.d	$a1, $t3, $s8
-	beqz	$s7, .LBB0_36
-# %bb.33:                               #   in Loop: Header=BB0_31 Depth=1
+	move	$t8, $s7
+	ori	$t0, $zero, 1
+	b	.LBB0_30
+	.p2align	4, , 16
+.LBB0_33:                               #   in Loop: Header=BB0_31 Depth=1
+	sub.w	$s8, $ra, $t6
+	add.d	$a1, $t3, $ra
+	beqz	$s8, .LBB0_29
+# %bb.34:                               #   in Loop: Header=BB0_31 Depth=1
 	bstrpick.d	$s4, $t6, 31, 0
-	alsl.d	$s4, $s4, $ra, 2
-	ld.w	$s8, $s4, 0
+	alsl.d	$s7, $s4, $s2, 2
+	ld.w	$s4, $s7, 0
 	slli.d	$ra, $t6, 20
 	sub.d	$ra, $a7, $ra
 	and	$ra, $ra, $a6
-	or	$s8, $s8, $ra
-	or	$ra, $s8, $a5
-	st.w	$ra, $s4, 0
-	bltu	$s7, $t7, .LBB0_35
-# %bb.34:                               #   in Loop: Header=BB0_31 Depth=1
-	or	$s7, $s8, $a4
-	st.w	$s7, $s4, 0
-	ld.w	$s7, $s4, 4
+	or	$ra, $s4, $ra
+	or	$s4, $ra, $a5
+	st.w	$s4, $s7, 0
+	bltu	$s8, $t7, .LBB0_29
+# %bb.35:                               #   in Loop: Header=BB0_31 Depth=1
+	or	$s4, $ra, $a4
+	st.w	$s4, $s7, 0
+	ld.w	$s4, $s7, 4
 	slli.d	$t6, $t6, 10
 	sub.d	$t6, $t1, $t6
 	and	$t6, $t6, $a3
-	or	$t6, $s7, $t6
-	st.w	$t6, $s4, 4
-.LBB0_35:                               # %SetGroupSize.exit291
-                                        #   in Loop: Header=BB0_31 Depth=1
-	move	$t6, $t2
-	move	$ra, $s3
-	b	.LBB0_30
-.LBB0_36:                               #   in Loop: Header=BB0_31 Depth=1
-	move	$t6, $t2
-	b	.LBB0_30
-.LBB0_37:
+	or	$t6, $s4, $t6
+	st.w	$t6, $s7, 4
+	b	.LBB0_29
+.LBB0_36:
 	addi.w	$a0, $a3, -1
 	ld.w	$a1, $s0, 0
 	slli.d	$a2, $a0, 20
 	lu12i.w	$a3, 261888
 	and	$a2, $a2, $a3
 	or	$a1, $a1, $a2
-.LBB0_38:
+.LBB0_37:
 	lu12i.w	$a2, -524288
 	lu32i.d	$a2, 0
 	or	$a2, $a1, $a2
 	st.w	$a2, $s0, 0
 	ori	$a2, $zero, 1023
 	ori	$t0, $zero, 1
-	bgeu	$a2, $a0, .LBB0_40
-# %bb.39:                               # %SetGroupSize.exit.sink.split
+	bgeu	$a2, $a0, .LBB0_39
+# %bb.38:                               # %SetGroupSize.exit.sink.split
 	lu12i.w	$a2, -262144
 	lu32i.d	$a2, 0
 	or	$a1, $a1, $a2
@@ -384,7 +383,7 @@ SortGroup:                              # @SortGroup
 	or	$a0, $a1, $a0
 	st.w	$a0, $s0, 4
 	ori	$t0, $zero, 1
-.LBB0_40:                               # %SetGroupSize.exit
+.LBB0_39:                               # %SetGroupSize.exit
 	or	$a0, $t0, $s3
 	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
@@ -399,14 +398,14 @@ SortGroup:                              # @SortGroup
 	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 144
 	ret
-.LBB0_41:                               # %._crit_edge374
+.LBB0_40:                               # %._crit_edge374
 	nor	$a0, $t6, $zero
 	add.w	$a0, $s5, $a0
 	ld.d	$t1, $sp, 40                    # 8-byte Folded Reload
-	beqz	$a0, .LBB0_44
-# %bb.42:
+	beqz	$a0, .LBB0_43
+# %bb.41:
 	bstrpick.d	$a1, $t6, 31, 0
-	alsl.d	$a1, $a1, $ra, 2
+	alsl.d	$a1, $a1, $s2, 2
 	ld.w	$a2, $a1, 0
 	slli.d	$a7, $a0, 20
 	and	$a6, $a7, $a6
@@ -414,8 +413,8 @@ SortGroup:                              # @SortGroup
 	or	$a5, $a2, $a5
 	ori	$a6, $zero, 1024
 	st.w	$a5, $a1, 0
-	bltu	$a0, $a6, .LBB0_44
-# %bb.43:
+	bltu	$a0, $a6, .LBB0_43
+# %bb.42:
 	or	$a2, $a2, $a4
 	ld.w	$a4, $a1, 4
 	st.w	$a2, $a1, 0
@@ -423,32 +422,48 @@ SortGroup:                              # @SortGroup
 	and	$a0, $a0, $a3
 	or	$a0, $a4, $a0
 	st.w	$a0, $a1, 4
-.LBB0_44:                               # %iter.check
-	ori	$a0, $zero, 4
+.LBB0_43:                               # %SetGroupSize.exit292
+	ori	$a0, $zero, 12
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	bltu	$s5, $a0, .LBB0_48
-# %bb.45:                               # %vector.memcheck
+# %bb.44:                               # %vector.memcheck
 	sub.d	$a0, $s1, $t1
-	bstrpick.d	$a0, $a0, 61, 4
-	slli.d	$a0, $a0, 4
+	bstrpick.d	$a0, $a0, 61, 3
+	slli.d	$a0, $a0, 3
 	beqz	$a0, .LBB0_48
-# %bb.46:                               # %vector.main.loop.iter.check
-	ori	$a0, $zero, 16
-	bgeu	$s5, $a0, .LBB0_52
-# %bb.47:
-	move	$a0, $zero
-	b	.LBB0_56
+# %bb.45:                               # %vector.ph
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	bstrpick.d	$a0, $a4, 31, 3
+	slli.d	$a0, $a0, 3
+	addi.d	$a2, $s3, 16
+	alsl.d	$a1, $s1, $a2, 2
+	alsl.d	$a2, $t1, $a2, 2
+	move	$a3, $a0
+.LBB0_46:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a2, -16
+	vld	$vr1, $a2, 0
+	vst	$vr0, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a3, $a3, -8
+	addi.d	$a1, $a1, 32
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB0_46
+# %bb.47:                               # %middle.block
+	bne	$a0, $a4, .LBB0_49
+	b	.LBB0_51
 .LBB0_48:
 	move	$a0, $zero
-.LBB0_49:                               # %vec.epilog.scalar.ph.preheader
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+.LBB0_49:                               # %scalar.ph.preheader
 	slli.d	$a1, $a0, 2
 	alsl.d	$a1, $t1, $a1, 2
 	add.d	$a1, $s3, $a1
 	alsl.d	$a2, $a0, $s3, 2
 	alsl.d	$a2, $s1, $a2, 2
-	sub.d	$a0, $s2, $a0
+	sub.d	$a0, $a4, $a0
 	.p2align	4, , 16
-.LBB0_50:                               # %vec.epilog.scalar.ph
+.LBB0_50:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a1, 0
 	st.w	$a3, $a2, 0
@@ -458,50 +473,7 @@ SortGroup:                              # @SortGroup
 	bnez	$a0, .LBB0_50
 .LBB0_51:
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	b	.LBB0_40
-.LBB0_52:                               # %vector.ph
-	andi	$a1, $s2, 12
-	bstrpick.d	$a0, $s2, 31, 4
-	slli.d	$a0, $a0, 4
-	addi.d	$a3, $s3, 32
-	alsl.d	$a2, $s1, $a3, 2
-	alsl.d	$a3, $t1, $a3, 2
-	move	$a4, $a0
-.LBB0_53:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a2, -32
-	xvst	$xr1, $a2, 0
-	addi.d	$a4, $a4, -16
-	addi.d	$a2, $a2, 64
-	addi.d	$a3, $a3, 64
-	bnez	$a4, .LBB0_53
-# %bb.54:                               # %middle.block
-	beq	$a0, $s2, .LBB0_51
-# %bb.55:                               # %vec.epilog.iter.check
-	beqz	$a1, .LBB0_49
-.LBB0_56:                               # %vec.epilog.ph
-	move	$a2, $a0
-	bstrpick.d	$a0, $s2, 31, 2
-	slli.d	$a0, $a0, 2
-	sub.d	$a1, $a2, $a0
-	slli.d	$a3, $a2, 2
-	alsl.d	$a2, $a2, $s3, 2
-	alsl.d	$a2, $s1, $a2, 2
-	alsl.d	$a3, $t1, $a3, 2
-	add.d	$a3, $s3, $a3
-.LBB0_57:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a3, 0
-	vst	$vr0, $a2, 0
-	addi.d	$a1, $a1, 4
-	addi.d	$a2, $a2, 16
-	addi.d	$a3, $a3, 16
-	bnez	$a1, .LBB0_57
-# %bb.58:                               # %vec.epilog.middle.block
-	bne	$a0, $s2, .LBB0_49
-	b	.LBB0_51
+	b	.LBB0_39
 .Lfunc_end0:
 	.size	SortGroup, .Lfunc_end0-SortGroup
                                         # -- End function

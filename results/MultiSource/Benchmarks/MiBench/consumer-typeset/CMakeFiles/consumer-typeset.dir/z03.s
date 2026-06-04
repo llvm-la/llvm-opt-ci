@@ -604,8 +604,8 @@ InitFiles:                              # @InitFiles
 	vrepli.b	$vr0, 0
 	ld.bu	$a2, $s2, 17
 	vst	$vr0, $fp, 4
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 20
+	vst	$vr0, $fp, 20
+	vst	$vr0, $fp, 36
 	slli.d	$a0, $a2, 3
 	ldx.d	$a0, $s0, $a0
 	st.w	$zero, $fp, 52

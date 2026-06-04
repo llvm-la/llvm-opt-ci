@@ -21,8 +21,8 @@ _ZN29btGeneric6DofSpringConstraintC2ER11btRigidBodyS1_RK11btTransformS4_b: # @_Z
 	st.d	$a0, $fp, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $fp, 1266
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 1282
+	vst	$vr0, $fp, 1282
+	vst	$vr0, $fp, 1298
 	st.d	$zero, $fp, 1312
 	vldi	$vr0, -1424
 	vst	$vr0, $fp, 1320

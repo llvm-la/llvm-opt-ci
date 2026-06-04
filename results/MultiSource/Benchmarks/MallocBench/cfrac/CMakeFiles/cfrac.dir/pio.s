@@ -326,35 +326,18 @@ fprintp:                                # @fprintp
 .Lfunc_end2:
 	.size	fprintp, .Lfunc_end2-fprintp
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function fgetp
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function fgetp
 .LCPI3_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 .LCPI3_1:
 	.word	10                              # 0xa
 	.word	1                               # 0x1
 	.word	1                               # 0x1
 	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-.LCPI3_2:
-	.word	100                             # 0x64
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
 	.text
 	.globl	fgetp
 	.p2align	2
@@ -376,7 +359,7 @@ fgetp:                                  # @fgetp
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
 	addi.w	$s3, $zero, -1
-	beq	$a0, $s3, .LBB3_40
+	beq	$a0, $s3, .LBB3_42
 # %bb.1:                                # %.preheader46
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
@@ -428,7 +411,7 @@ fgetp:                                  # @fgetp
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(ungetc)
 	jirl	$ra, $ra, 0
-	b	.LBB3_35
+	b	.LBB3_37
 .LBB3_10:
 	move	$s4, $a0
 	pcalau12i	$a0, %got_pc_hi20(pzero)
@@ -578,53 +561,63 @@ fgetp:                                  # @fgetp
 	ldx.hu	$a1, $s1, $a1
 	slli.d	$a1, $a1, 52
 	bltz	$a1, .LBB3_11
-	b	.LBB3_31
+	b	.LBB3_33
 .LBB3_20:
 	st.d	$zero, $sp, 16
-	b	.LBB3_35
+	b	.LBB3_37
 .LBB3_21:
 	move	$s2, $a0
 	ori	$a0, $zero, 10
-	b	.LBB3_30
+	b	.LBB3_32
 .LBB3_22:
-	move	$a1, $zero
-	b	.LBB3_29
-.LBB3_23:
 	ori	$a1, $zero, 1
 	b	.LBB3_29
-.LBB3_24:
+.LBB3_23:
 	ori	$a1, $zero, 2
 	b	.LBB3_29
-.LBB3_25:
+.LBB3_24:
 	ori	$a1, $zero, 3
 	b	.LBB3_29
-.LBB3_26:
+.LBB3_25:
 	ori	$a1, $zero, 4
 	b	.LBB3_29
-.LBB3_27:
+.LBB3_26:
 	ori	$a1, $zero, 5
 	b	.LBB3_29
-.LBB3_28:
+.LBB3_27:
 	ori	$a1, $zero, 6
+	b	.LBB3_29
+.LBB3_28:
+	ori	$a1, $zero, 7
 .LBB3_29:                               # %vector.ph
+	addi.d	$a2, $a1, 3
+	andi	$a2, $a2, 12
+	pcalau12i	$a3, %pc_hi20(.LCPI3_0)
+	vld	$vr3, $a3, %pc_lo12(.LCPI3_0)
+	pcalau12i	$a3, %pc_hi20(.LCPI3_1)
+	vld	$vr0, $a3, %pc_lo12(.LCPI3_1)
+	addi.d	$a1, $a1, -1
+	vreplgr2vr.w	$vr1, $a1
+	vrepli.w	$vr2, 10
+	.p2align	4, , 16
+.LBB3_30:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vori.b	$vr5, $vr3, 0
+	vori.b	$vr4, $vr0, 0
+	vmul.w	$vr0, $vr0, $vr2
+	addi.w	$a2, $a2, -4
+	vaddi.wu	$vr3, $vr3, 4
+	bnez	$a2, .LBB3_30
+# %bb.31:                               # %._crit_edge58.loopexit
 	move	$s2, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI3_0)
-	pcalau12i	$a0, %pc_hi20(.LCPI3_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI3_1)
-	pcalau12i	$a0, %pc_hi20(.LCPI3_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI3_2)
-	xvreplgr2vr.w	$xr3, $a1
-	xvslt.wu	$xr0, $xr3, $xr0
-	xvbitsel.v	$xr0, $xr2, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvshuf4i.w	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvrepl128vei.w	$xr1, $xr0, 1
-	xvmul.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
-.LBB3_30:                               # %._crit_edge58
+	vslt.wu	$vr1, $vr1, $vr5
+	vbitsel.v	$vr0, $vr0, $vr4, $vr1
+	vshuf4i.w	$vr1, $vr0, 14
+	vmul.w	$vr0, $vr0, $vr1
+	vreplvei.w	$vr1, $vr0, 1
+	vmul.w	$vr0, $vr0, $vr1
+	vpickve2gr.w	$a0, $vr0, 0
+.LBB3_32:                               # %._crit_edge58
 	ld.d	$s0, $sp, 16
 	pcaddu18i	$ra, %call36(utop)
 	jirl	$ra, $ra, 0
@@ -645,16 +638,16 @@ fgetp:                                  # @fgetp
 	pcaddu18i	$ra, %call36(psetq)
 	jirl	$ra, $ra, 0
 	move	$a0, $s2
-.LBB3_31:                               # %.loopexit
-	beq	$a0, $s3, .LBB3_33
-# %bb.32:
+.LBB3_33:                               # %.loopexit
+	beq	$a0, $s3, .LBB3_35
+# %bb.34:
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(ungetc)
 	jirl	$ra, $ra, 0
-.LBB3_33:
+.LBB3_35:
 	ori	$a0, $zero, 45
-	bne	$s4, $a0, .LBB3_35
-# %bb.34:
+	bne	$s4, $a0, .LBB3_37
+# %bb.36:
 	ld.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(pneg)
 	jirl	$ra, $ra, 0
@@ -662,30 +655,30 @@ fgetp:                                  # @fgetp
 	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(psetq)
 	jirl	$ra, $ra, 0
-.LBB3_35:
+.LBB3_37:
 	ld.d	$a0, $sp, 8
-	beqz	$a0, .LBB3_37
-# %bb.36:
+	beqz	$a0, .LBB3_39
+# %bb.38:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
 	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
-	beqz	$a2, .LBB3_39
-.LBB3_37:
+	beqz	$a2, .LBB3_41
+.LBB3_39:
 	ld.d	$a0, $sp, 16
-	beqz	$a0, .LBB3_40
-.LBB3_38:
+	beqz	$a0, .LBB3_42
+.LBB3_40:
 	pcaddu18i	$ra, %call36(presult)
 	jirl	$ra, $ra, 0
-	b	.LBB3_41
-.LBB3_39:
+	b	.LBB3_43
+.LBB3_41:
 	pcaddu18i	$ra, %call36(pfree)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 16
-	bnez	$a0, .LBB3_38
-.LBB3_40:
+	bnez	$a0, .LBB3_40
+.LBB3_42:
 	move	$a0, $zero
-.LBB3_41:                               # %.thread80
+.LBB3_43:                               # %.thread80
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload

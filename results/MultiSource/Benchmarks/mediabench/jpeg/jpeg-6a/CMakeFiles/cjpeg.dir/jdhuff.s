@@ -290,68 +290,142 @@ jpeg_make_d_derived_tbl:                # @jpeg_make_d_derived_tbl
 	addi.d	$a4, $s1, 1512
 	ori	$a5, $zero, 1
 	addi.d	$a6, $sp, 20
-	xvrepli.w	$xr0, 1
+	vrepli.w	$vr0, 1
 	ori	$t3, $zero, 1
 	b	.LBB0_48
 	.p2align	4, , 16
 .LBB0_46:                               # %vector.body
                                         #   in Loop: Header=BB0_48 Depth=1
-	ldx.b	$t2, $a2, $a1
-	vinsgr2vr.b	$vr1, $t2, 0
-	vinsgr2vr.b	$vr1, $t2, 1
-	vinsgr2vr.b	$vr1, $t2, 2
-	vinsgr2vr.b	$vr1, $t2, 3
-	vinsgr2vr.b	$vr1, $t2, 4
-	vinsgr2vr.b	$vr1, $t2, 5
-	vinsgr2vr.b	$vr1, $t2, 6
-	vinsgr2vr.b	$vr1, $t2, 7
-	slli.d	$t2, $t0, 2
-	xvstx	$xr0, $s0, $t2
-	xvst	$xr0, $t1, 32
-	vreplvei.d	$vr1, $vr1, 0
-	vstx	$vr1, $a0, $t0
+	ldx.b	$t3, $a2, $a1
+	vinsgr2vr.b	$vr1, $t3, 0
+	vinsgr2vr.b	$vr1, $t3, 1
+	vinsgr2vr.b	$vr1, $t3, 2
+	vinsgr2vr.b	$vr1, $t3, 3
+	slli.d	$t3, $t0, 2
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
+	addi.d	$t1, $t0, 8
+	alsl.d	$t2, $t1, $s0, 2
+	slli.d	$t3, $t1, 2
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	add.d	$t1, $a0, $t1
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
 	addi.d	$t1, $t0, 16
 	alsl.d	$t2, $t1, $s0, 2
 	slli.d	$t3, $t1, 2
-	xvstx	$xr0, $s0, $t3
-	xvst	$xr0, $t2, 32
-	vstx	$vr1, $a0, $t1
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	add.d	$t1, $a0, $t1
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
+	addi.d	$t1, $t0, 24
+	alsl.d	$t2, $t1, $s0, 2
+	slli.d	$t3, $t1, 2
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	add.d	$t1, $a0, $t1
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
 	addi.d	$t1, $t0, 32
 	alsl.d	$t2, $t1, $s0, 2
 	slli.d	$t3, $t1, 2
-	xvstx	$xr0, $s0, $t3
-	xvst	$xr0, $t2, 32
-	vstx	$vr1, $a0, $t1
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	add.d	$t1, $a0, $t1
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
+	addi.d	$t1, $t0, 40
+	alsl.d	$t2, $t1, $s0, 2
+	slli.d	$t3, $t1, 2
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	add.d	$t1, $a0, $t1
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
 	addi.d	$t1, $t0, 48
 	alsl.d	$t2, $t1, $s0, 2
 	slli.d	$t3, $t1, 2
-	xvstx	$xr0, $s0, $t3
-	xvst	$xr0, $t2, 32
-	vstx	$vr1, $a0, $t1
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	add.d	$t1, $a0, $t1
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
+	addi.d	$t1, $t0, 56
+	alsl.d	$t2, $t1, $s0, 2
+	slli.d	$t3, $t1, 2
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	add.d	$t1, $a0, $t1
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
 	addi.d	$t1, $t0, 64
 	alsl.d	$t2, $t1, $s0, 2
 	slli.d	$t3, $t1, 2
-	xvstx	$xr0, $s0, $t3
-	xvst	$xr0, $t2, 32
-	vstx	$vr1, $a0, $t1
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	add.d	$t1, $a0, $t1
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
+	addi.d	$t1, $t0, 72
+	alsl.d	$t2, $t1, $s0, 2
+	slli.d	$t3, $t1, 2
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	add.d	$t1, $a0, $t1
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
 	addi.d	$t1, $t0, 80
 	alsl.d	$t2, $t1, $s0, 2
 	slli.d	$t3, $t1, 2
-	xvstx	$xr0, $s0, $t3
-	xvst	$xr0, $t2, 32
-	vstx	$vr1, $a0, $t1
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	add.d	$t1, $a0, $t1
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
+	addi.d	$t1, $t0, 88
+	alsl.d	$t2, $t1, $s0, 2
+	slli.d	$t3, $t1, 2
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	add.d	$t1, $a0, $t1
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
 	addi.d	$t1, $t0, 96
 	alsl.d	$t2, $t1, $s0, 2
 	slli.d	$t3, $t1, 2
-	xvstx	$xr0, $s0, $t3
-	xvst	$xr0, $t2, 32
-	vstx	$vr1, $a0, $t1
-	addi.d	$t0, $t0, 112
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	add.d	$t1, $a0, $t1
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
+	addi.d	$t1, $t0, 104
+	alsl.d	$t2, $t1, $s0, 2
+	slli.d	$t3, $t1, 2
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	add.d	$t1, $a0, $t1
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
+	addi.d	$t1, $t0, 112
+	alsl.d	$t2, $t1, $s0, 2
+	slli.d	$t3, $t1, 2
+	vstx	$vr0, $s0, $t3
+	vst	$vr0, $t2, 16
+	add.d	$t1, $a0, $t1
+	vstelm.w	$vr1, $t1, 0, 0
+	vstelm.w	$vr1, $t1, 4, 0
+	addi.d	$t0, $t0, 120
 	alsl.d	$t1, $t0, $s0, 2
 	slli.d	$t2, $t0, 2
-	xvstx	$xr0, $s0, $t2
-	xvst	$xr0, $t1, 32
-	vstx	$vr1, $a0, $t0
+	vstx	$vr0, $s0, $t2
+	vst	$vr0, $t1, 16
+	add.d	$t0, $a0, $t0
+	vstelm.w	$vr1, $t0, 0, 0
+	vstelm.w	$vr1, $t0, 4, 0
 .LBB0_47:                               # %._crit_edge100.us
                                         #   in Loop: Header=BB0_48 Depth=1
 	ld.bu	$t0, $s2, 0
@@ -364,12 +438,12 @@ jpeg_make_d_derived_tbl:                # @jpeg_make_d_derived_tbl
 	slli.d	$a7, $a1, 2
 	ldx.w	$a7, $a7, $a6
 	slli.w	$t0, $a7, 7
-	alsl.d	$t1, $t0, $s0, 2
+	alsl.d	$t2, $t0, $s0, 2
 	alsl.d	$t5, $t0, $a3, 2
-	add.d	$t2, $a0, $t0
+	add.d	$t1, $a0, $t0
 	add.d	$t4, $a4, $t0
-	sltu	$a7, $t1, $t4
-	sltu	$t6, $t2, $t5
+	sltu	$a7, $t2, $t4
+	sltu	$t6, $t1, $t5
 	and	$t6, $a7, $t6
 	move	$a7, $t3
 	bnez	$t6, .LBB0_51
@@ -378,13 +452,13 @@ jpeg_make_d_derived_tbl:                # @jpeg_make_d_derived_tbl
 	add.d	$t6, $fp, $a1
 	addi.d	$t3, $t6, 18
 	addi.d	$t6, $t6, 17
-	sltu	$t7, $t1, $t3
+	sltu	$t7, $t2, $t3
 	sltu	$t5, $t6, $t5
 	and	$t5, $t7, $t5
 	bnez	$t5, .LBB0_51
 # %bb.50:                               # %.lr.ph99.us
                                         #   in Loop: Header=BB0_48 Depth=1
-	sltu	$t3, $t2, $t3
+	sltu	$t3, $t1, $t3
 	sltu	$t4, $t6, $t4
 	and	$t3, $t3, $t4
 	beqz	$t3, .LBB0_46
@@ -395,12 +469,12 @@ jpeg_make_d_derived_tbl:                # @jpeg_make_d_derived_tbl
 .LBB0_52:                               # %scalar.ph
                                         #   Parent Loop BB0_48 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.w	$a5, $t1, 0
+	st.w	$a5, $t2, 0
 	ldx.b	$t3, $a2, $a1
-	st.b	$t3, $t2, 0
-	addi.d	$t1, $t1, 4
+	st.b	$t3, $t1, 0
+	addi.d	$t2, $t2, 4
 	addi.w	$t0, $t0, -1
-	addi.d	$t2, $t2, 1
+	addi.d	$t1, $t1, 1
 	bltu	$a5, $t0, .LBB0_52
 	b	.LBB0_47
 .LBB0_53:
@@ -436,44 +510,78 @@ jpeg_make_d_derived_tbl:                # @jpeg_make_d_derived_tbl
 	ori	$t0, $zero, 1
 	addi.d	$t1, $sp, 20
 	ori	$t2, $zero, 2
-	xvrepli.w	$xr0, 2
+	vrepli.w	$vr0, 2
 	ori	$t7, $zero, 1
 	b	.LBB0_60
 	.p2align	4, , 16
 .LBB0_58:                               # %vector.body184
                                         #   in Loop: Header=BB0_60 Depth=1
-	ldx.b	$t6, $a2, $a1
-	vinsgr2vr.b	$vr1, $t6, 0
-	vinsgr2vr.b	$vr1, $t6, 1
-	vinsgr2vr.b	$vr1, $t6, 2
-	vinsgr2vr.b	$vr1, $t6, 3
-	vinsgr2vr.b	$vr1, $t6, 4
-	vinsgr2vr.b	$vr1, $t6, 5
-	vinsgr2vr.b	$vr1, $t6, 6
-	vinsgr2vr.b	$vr1, $t6, 7
-	slli.d	$t6, $t5, 2
-	xvstx	$xr0, $s0, $t6
-	xvst	$xr0, $t4, 32
-	vreplvei.d	$vr1, $vr1, 0
-	vstx	$vr1, $a0, $t5
-	addi.d	$t4, $t5, 16
-	alsl.d	$t6, $t4, $s0, 2
+	ldx.b	$t7, $a2, $a1
+	vinsgr2vr.b	$vr1, $t7, 0
+	vinsgr2vr.b	$vr1, $t7, 1
+	vinsgr2vr.b	$vr1, $t7, 2
+	vinsgr2vr.b	$vr1, $t7, 3
 	slli.d	$t7, $t4, 2
-	xvstx	$xr0, $s0, $t7
-	xvst	$xr0, $t6, 32
-	vstx	$vr1, $a0, $t4
-	addi.d	$t4, $t5, 32
-	alsl.d	$t6, $t4, $s0, 2
-	slli.d	$t7, $t4, 2
-	xvstx	$xr0, $s0, $t7
-	xvst	$xr0, $t6, 32
-	vstx	$vr1, $a0, $t4
-	addi.d	$t4, $t5, 48
+	vstx	$vr0, $s0, $t7
+	vst	$vr0, $t5, 16
+	vstelm.w	$vr1, $t6, 0, 0
+	vstelm.w	$vr1, $t6, 4, 0
+	addi.d	$t5, $t4, 8
+	alsl.d	$t6, $t5, $s0, 2
+	slli.d	$t7, $t5, 2
+	vstx	$vr0, $s0, $t7
+	vst	$vr0, $t6, 16
+	add.d	$t5, $a0, $t5
+	vstelm.w	$vr1, $t5, 0, 0
+	vstelm.w	$vr1, $t5, 4, 0
+	addi.d	$t5, $t4, 16
+	alsl.d	$t6, $t5, $s0, 2
+	slli.d	$t7, $t5, 2
+	vstx	$vr0, $s0, $t7
+	vst	$vr0, $t6, 16
+	add.d	$t5, $a0, $t5
+	vstelm.w	$vr1, $t5, 0, 0
+	vstelm.w	$vr1, $t5, 4, 0
+	addi.d	$t5, $t4, 24
+	alsl.d	$t6, $t5, $s0, 2
+	slli.d	$t7, $t5, 2
+	vstx	$vr0, $s0, $t7
+	vst	$vr0, $t6, 16
+	add.d	$t5, $a0, $t5
+	vstelm.w	$vr1, $t5, 0, 0
+	vstelm.w	$vr1, $t5, 4, 0
+	addi.d	$t5, $t4, 32
+	alsl.d	$t6, $t5, $s0, 2
+	slli.d	$t7, $t5, 2
+	vstx	$vr0, $s0, $t7
+	vst	$vr0, $t6, 16
+	add.d	$t5, $a0, $t5
+	vstelm.w	$vr1, $t5, 0, 0
+	vstelm.w	$vr1, $t5, 4, 0
+	addi.d	$t5, $t4, 40
+	alsl.d	$t6, $t5, $s0, 2
+	slli.d	$t7, $t5, 2
+	vstx	$vr0, $s0, $t7
+	vst	$vr0, $t6, 16
+	add.d	$t5, $a0, $t5
+	vstelm.w	$vr1, $t5, 0, 0
+	vstelm.w	$vr1, $t5, 4, 0
+	addi.d	$t5, $t4, 48
+	alsl.d	$t6, $t5, $s0, 2
+	slli.d	$t7, $t5, 2
+	vstx	$vr0, $s0, $t7
+	vst	$vr0, $t6, 16
+	add.d	$t5, $a0, $t5
+	vstelm.w	$vr1, $t5, 0, 0
+	vstelm.w	$vr1, $t5, 4, 0
+	addi.d	$t4, $t4, 56
 	alsl.d	$t5, $t4, $s0, 2
 	slli.d	$t6, $t4, 2
-	xvstx	$xr0, $s0, $t6
-	xvst	$xr0, $t5, 32
-	vstx	$vr1, $a0, $t4
+	vstx	$vr0, $s0, $t6
+	vst	$vr0, $t5, 16
+	add.d	$t4, $a0, $t4
+	vstelm.w	$vr1, $t4, 0, 0
+	vstelm.w	$vr1, $t4, 4, 0
 .LBB0_59:                               # %._crit_edge100.us.1
                                         #   in Loop: Header=BB0_60 Depth=1
 	ld.bu	$t4, $fp, 2
@@ -486,12 +594,12 @@ jpeg_make_d_derived_tbl:                # @jpeg_make_d_derived_tbl
                                         #     Child Loop BB0_64 Depth 2
 	slli.d	$t3, $a1, 2
 	ldx.w	$t3, $t3, $t1
-	slli.w	$t5, $t3, 6
-	alsl.d	$t4, $t5, $s0, 2
-	alsl.d	$s1, $t5, $a4, 2
-	add.d	$t6, $a0, $t5
-	add.d	$t8, $a5, $t5
-	sltu	$t3, $t4, $t8
+	slli.w	$t4, $t3, 6
+	alsl.d	$t5, $t4, $s0, 2
+	alsl.d	$s1, $t4, $a4, 2
+	add.d	$t6, $a0, $t4
+	add.d	$t8, $a5, $t4
+	sltu	$t3, $t5, $t8
 	sltu	$s2, $t6, $s1
 	and	$s2, $t3, $s2
 	move	$t3, $t7
@@ -500,7 +608,7 @@ jpeg_make_d_derived_tbl:                # @jpeg_make_d_derived_tbl
                                         #   in Loop: Header=BB0_60 Depth=1
 	add.d	$t7, $a6, $a3
 	add.d	$s2, $a7, $a3
-	sltu	$s3, $t4, $t7
+	sltu	$s3, $t5, $t7
 	sltu	$s1, $s2, $s1
 	and	$s1, $s3, $s1
 	bnez	$s1, .LBB0_63
@@ -512,18 +620,18 @@ jpeg_make_d_derived_tbl:                # @jpeg_make_d_derived_tbl
 	beqz	$t7, .LBB0_58
 .LBB0_63:                               # %scalar.ph182.preheader
                                         #   in Loop: Header=BB0_60 Depth=1
-	ori	$t5, $zero, 65
+	ori	$t4, $zero, 65
 	.p2align	4, , 16
 .LBB0_64:                               # %scalar.ph182
                                         #   Parent Loop BB0_60 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.w	$t2, $t4, 0
+	st.w	$t2, $t5, 0
 	ldx.b	$t7, $a2, $a1
 	st.b	$t7, $t6, 0
 	addi.d	$t6, $t6, 1
-	addi.w	$t5, $t5, -1
-	addi.d	$t4, $t4, 4
-	bltu	$t0, $t5, .LBB0_64
+	addi.w	$t4, $t4, -1
+	addi.d	$t5, $t5, 4
+	bltu	$t0, $t4, .LBB0_64
 	b	.LBB0_59
 .LBB0_65:                               # %._crit_edge105.1
 	ld.bu	$a2, $fp, 3
@@ -1262,9 +1370,11 @@ jinit_huff_decoder:                     # @jinit_huff_decoder
 	pcalau12i	$a1, %pc_hi20(decode_mcu)
 	addi.d	$a1, $a1, %pc_lo12(decode_mcu)
 	st.d	$a1, $a0, 8
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 88
-	xvst	$xr0, $a0, 56
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 104
+	vst	$vr0, $a0, 88
+	vst	$vr0, $a0, 72
+	vst	$vr0, $a0, 56
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16

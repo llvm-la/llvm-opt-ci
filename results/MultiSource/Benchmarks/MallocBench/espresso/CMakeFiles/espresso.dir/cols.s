@@ -14,8 +14,9 @@ sm_col_alloc:                           # @sm_col_alloc
 	st.d	$zero, $a0, 0
 	st.w	$zero, $a0, 8
 	st.d	$zero, $a0, 16
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 24
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 24
+	vst	$vr0, $a0, 40
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
@@ -70,11 +71,12 @@ sm_col_dup:                             # @sm_col_dup
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	st.d	$zero, $a0, 0
-	ld.d	$s0, $s0, 16
 	st.w	$zero, $a0, 8
+	ld.d	$s0, $s0, 16
 	st.d	$zero, $a0, 16
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 24
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 24
+	vst	$vr0, $a0, 40
 	beqz	$s0, .LBB2_2
 	.p2align	4, , 16
 .LBB2_1:                                # %.lr.ph
@@ -398,11 +400,12 @@ sm_col_and:                             # @sm_col_and
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$zero, $a0, 0
-	ld.d	$s0, $s0, 16
 	st.w	$zero, $a0, 8
+	ld.d	$s0, $s0, 16
 	st.d	$zero, $a0, 16
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 24
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 24
+	vst	$vr0, $a0, 40
 	beqz	$s0, .LBB9_9
 # %bb.1:
 	ld.d	$s1, $fp, 16

@@ -630,7 +630,7 @@ _ZN21btSimpleDynamicsWorld11clearForcesEv: # @_ZN21btSimpleDynamicsWorld11clearF
 	move	$a2, $zero
 	move	$a3, $zero
 	ori	$a4, $zero, 2
-	xvrepli.b	$xr0, 0
+	vrepli.b	$vr0, 0
 	b	.LBB8_3
 	.p2align	4, , 16
 .LBB8_2:                                #   in Loop: Header=BB8_3 Depth=1
@@ -645,7 +645,8 @@ _ZN21btSimpleDynamicsWorld11clearForcesEv: # @_ZN21btSimpleDynamicsWorld11clearF
 	ld.w	$a6, $a5, 256
 	bne	$a6, $a4, .LBB8_2
 # %bb.5:                                #   in Loop: Header=BB8_3 Depth=1
-	xvst	$xr0, $a5, 444
+	vst	$vr0, $a5, 460
+	vst	$vr0, $a5, 444
 	ld.w	$a1, $a0, 12
 	b	.LBB8_2
 .LBB8_6:                                # %._crit_edge

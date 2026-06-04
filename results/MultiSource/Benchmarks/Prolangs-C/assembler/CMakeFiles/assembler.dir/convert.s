@@ -867,10 +867,12 @@ GET_EXPRESSION:                         # @GET_EXPRESSION
 	addi.d	$a0, $a0, %pc_lo12(.L.str.8)
 	ld.d	$a1, $a0, 47
 	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
 	st.d	$a1, $sp, 87
 	vst	$vr0, $sp, 72
-	xvst	$xr1, $sp, 40
+	vst	$vr1, $sp, 56
+	vst	$vr2, $sp, 40
 	pcalau12i	$a0, %got_pc_hi20(ERROR_REC_BUF)
 	ld.d	$a0, $a0, %got_pc_lo12(ERROR_REC_BUF)
 	addi.d	$a1, $sp, 40

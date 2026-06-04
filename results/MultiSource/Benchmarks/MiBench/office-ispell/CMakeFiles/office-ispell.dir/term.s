@@ -179,12 +179,14 @@ terminit:                               # @terminit
 	vld	$vr0, $fp, 8
 	pcalau12i	$a0, %pc_hi20(sbuf)
 	addi.d	$a2, $a0, %pc_lo12(sbuf)
-	ld.d	$a0, $fp, 0
-	xvld	$xr1, $fp, 24
-	ld.w	$a1, $fp, 56
 	vst	$vr0, $a2, 8
+	vld	$vr0, $fp, 24
+	ld.d	$a0, $fp, 0
+	vld	$vr1, $fp, 40
+	ld.w	$a1, $fp, 56
+	vst	$vr0, $a2, 24
 	st.d	$a0, $a2, 0
-	xvst	$xr1, $a2, 24
+	vst	$vr1, $a2, 40
 	st.w	$a1, $a2, 56
 	ld.wu	$a1, $a2, 12
 	addi.w	$a3, $zero, -107

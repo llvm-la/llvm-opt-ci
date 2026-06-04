@@ -1,292 +1,258 @@
 	.file	"jfdctflt.c"
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function jpeg_fdct_float
+.LCPI0_0:
+	.word	3                               # 0x3
+	.word	7                               # 0x7
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
 	.text
-	.globl	jpeg_fdct_float                 # -- Begin function jpeg_fdct_float
+	.globl	jpeg_fdct_float
 	.p2align	2
 	.prefalign	5, .Lfunc_end0, nop
 	.type	jpeg_fdct_float,@function
 jpeg_fdct_float:                        # @jpeg_fdct_float
 # %bb.0:                                # %vector.ph
-	fld.s	$fa0, $a0, 0
-	fld.s	$fa1, $a0, 32
-	fld.s	$fa2, $a0, 64
-	fld.s	$fa3, $a0, 128
-	fld.s	$fa4, $a0, 160
-	fld.s	$fa5, $a0, 192
-	fld.s	$fa6, $a0, 224
-	fld.s	$fa7, $a0, 96
-	vextrins.w	$vr3, $vr4, 16
-	vextrins.w	$vr3, $vr5, 32
-	vextrins.w	$vr3, $vr6, 48
-	vextrins.w	$vr0, $vr1, 16
-	vextrins.w	$vr0, $vr2, 32
-	vextrins.w	$vr0, $vr7, 48
-	xvpermi.q	$xr0, $xr3, 2
-	fld.s	$fa2, $a0, 28
-	fld.s	$fa1, $a0, 60
-	fld.s	$fa3, $a0, 92
-	fld.s	$fa4, $a0, 156
-	fld.s	$fa5, $a0, 188
-	fld.s	$fa6, $a0, 220
-	fld.s	$fa7, $a0, 252
-	fld.s	$ft0, $a0, 124
-	vextrins.w	$vr4, $vr5, 16
-	vextrins.w	$vr4, $vr6, 32
-	vextrins.w	$vr4, $vr7, 48
-	vextrins.w	$vr2, $vr1, 16
-	vextrins.w	$vr2, $vr3, 32
-	vextrins.w	$vr2, $vr8, 48
-	xvpermi.q	$xr2, $xr4, 2
-	xvfadd.s	$xr1, $xr0, $xr2
-	xvfsub.s	$xr0, $xr0, $xr2
-	fld.s	$fa2, $a0, 4
-	fld.s	$fa3, $a0, 36
-	fld.s	$fa4, $a0, 68
-	fld.s	$fa5, $a0, 132
-	fld.s	$fa6, $a0, 164
-	fld.s	$fa7, $a0, 196
-	fld.s	$ft0, $a0, 228
-	fld.s	$ft1, $a0, 100
+	move	$a1, $zero
+	lu12i.w	$a2, 258896
+	ori	$a2, $a2, 1267
+	vreplgr2vr.w	$vr0, $a2
+	lu12i.w	$a2, 257086
+	ori	$a2, $a2, 3861
+	vreplgr2vr.w	$vr1, $a2
+	lu12i.w	$a2, 260723
+	ori	$a2, $a2, 3445
+	vreplgr2vr.w	$vr2, $a2
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	vld	$vr4, $a2, %pc_lo12(.LCPI0_0)
+	lu12i.w	$a2, 258216
+	ori	$a2, $a2, 3028
+	vreplgr2vr.w	$vr3, $a2
+	ori	$a2, $zero, 256
+	.p2align	4, , 16
+.LBB0_1:                                # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a3, $a0, $a1
+	fldx.s	$fa5, $a0, $a1
+	fld.s	$fa6, $a3, 32
+	fld.s	$fa7, $a3, 64
+	fld.s	$ft0, $a3, 96
 	vextrins.w	$vr5, $vr6, 16
 	vextrins.w	$vr5, $vr7, 32
+	fld.s	$fa7, $a3, 28
+	fld.s	$fa6, $a3, 60
+	fld.s	$ft1, $a3, 92
+	fld.s	$ft2, $a3, 124
 	vextrins.w	$vr5, $vr8, 48
-	vextrins.w	$vr2, $vr3, 16
-	vextrins.w	$vr2, $vr4, 32
-	vextrins.w	$vr2, $vr9, 48
-	xvpermi.q	$xr2, $xr5, 2
-	fld.s	$fa4, $a0, 24
-	fld.s	$fa3, $a0, 56
-	fld.s	$fa5, $a0, 88
-	fld.s	$fa6, $a0, 152
-	fld.s	$fa7, $a0, 184
-	fld.s	$ft0, $a0, 216
-	fld.s	$ft1, $a0, 248
-	fld.s	$ft2, $a0, 120
-	vextrins.w	$vr6, $vr7, 16
-	vextrins.w	$vr6, $vr8, 32
-	vextrins.w	$vr6, $vr9, 48
-	vextrins.w	$vr4, $vr3, 16
-	vextrins.w	$vr4, $vr5, 32
-	vextrins.w	$vr4, $vr10, 48
-	xvpermi.q	$xr4, $xr6, 2
-	xvfadd.s	$xr3, $xr2, $xr4
-	xvfsub.s	$xr2, $xr2, $xr4
-	fld.s	$fa4, $a0, 8
-	fld.s	$fa5, $a0, 40
-	fld.s	$fa6, $a0, 72
-	fld.s	$fa7, $a0, 136
-	fld.s	$ft0, $a0, 168
-	fld.s	$ft1, $a0, 200
-	fld.s	$ft2, $a0, 232
-	fld.s	$ft3, $a0, 104
-	vextrins.w	$vr7, $vr8, 16
+	vextrins.w	$vr7, $vr6, 16
 	vextrins.w	$vr7, $vr9, 32
 	vextrins.w	$vr7, $vr10, 48
-	vextrins.w	$vr4, $vr5, 16
-	vextrins.w	$vr4, $vr6, 32
-	vextrins.w	$vr4, $vr11, 48
-	xvpermi.q	$xr4, $xr7, 2
-	fld.s	$fa6, $a0, 20
-	fld.s	$fa5, $a0, 52
-	fld.s	$fa7, $a0, 84
-	fld.s	$ft0, $a0, 148
-	fld.s	$ft1, $a0, 180
-	fld.s	$ft2, $a0, 212
-	fld.s	$ft3, $a0, 244
-	fld.s	$ft4, $a0, 116
+	vfadd.s	$vr6, $vr5, $vr7
+	fld.s	$ft0, $a3, 4
+	fld.s	$ft1, $a3, 36
+	fld.s	$ft2, $a3, 68
+	vfsub.s	$vr5, $vr5, $vr7
+	fld.s	$fa7, $a3, 100
 	vextrins.w	$vr8, $vr9, 16
 	vextrins.w	$vr8, $vr10, 32
-	vextrins.w	$vr8, $vr11, 48
-	vextrins.w	$vr6, $vr5, 16
-	vextrins.w	$vr6, $vr7, 32
-	vextrins.w	$vr6, $vr12, 48
-	xvpermi.q	$xr6, $xr8, 2
-	xvfadd.s	$xr5, $xr4, $xr6
-	xvfsub.s	$xr4, $xr4, $xr6
-	fld.s	$fa6, $a0, 12
-	fld.s	$fa7, $a0, 44
-	fld.s	$ft0, $a0, 76
-	fld.s	$ft1, $a0, 140
-	fld.s	$ft2, $a0, 172
-	fld.s	$ft3, $a0, 204
-	fld.s	$ft4, $a0, 236
-	fld.s	$ft5, $a0, 108
+	fld.s	$ft1, $a3, 24
+	fld.s	$ft2, $a3, 56
+	fld.s	$ft3, $a3, 88
+	fld.s	$ft4, $a3, 120
+	vextrins.w	$vr8, $vr7, 48
 	vextrins.w	$vr9, $vr10, 16
 	vextrins.w	$vr9, $vr11, 32
 	vextrins.w	$vr9, $vr12, 48
-	vextrins.w	$vr6, $vr7, 16
-	vextrins.w	$vr6, $vr8, 32
-	vextrins.w	$vr6, $vr13, 48
-	xvpermi.q	$xr6, $xr9, 2
-	fld.s	$fa7, $a0, 16
-	fld.s	$ft0, $a0, 48
-	fld.s	$ft1, $a0, 80
-	fld.s	$ft2, $a0, 144
-	fld.s	$ft3, $a0, 176
-	fld.s	$ft4, $a0, 208
-	fld.s	$ft5, $a0, 240
-	fld.s	$ft6, $a0, 112
+	vfadd.s	$vr7, $vr8, $vr9
+	fld.s	$ft2, $a3, 8
+	fld.s	$ft3, $a3, 40
+	fld.s	$ft4, $a3, 72
+	vfsub.s	$vr8, $vr8, $vr9
+	fld.s	$ft1, $a3, 104
 	vextrins.w	$vr10, $vr11, 16
 	vextrins.w	$vr10, $vr12, 32
-	vextrins.w	$vr10, $vr13, 48
-	vextrins.w	$vr7, $vr8, 16
-	vextrins.w	$vr7, $vr9, 32
-	vextrins.w	$vr7, $vr14, 48
-	xvpermi.q	$xr7, $xr10, 2
-	xvfadd.s	$xr8, $xr6, $xr7
-	xvfsub.s	$xr10, $xr6, $xr7
-	xvfadd.s	$xr7, $xr1, $xr8
-	xvfsub.s	$xr11, $xr1, $xr8
-	xvfadd.s	$xr1, $xr3, $xr5
-	xvfsub.s	$xr3, $xr3, $xr5
-	xvfadd.s	$xr6, $xr1, $xr7
-	xvstelm.w	$xr6, $a0, 32, 1
-	xvstelm.w	$xr6, $a0, 64, 2
-	xvstelm.w	$xr6, $a0, 96, 3
-	xvstelm.w	$xr6, $a0, 128, 4
-	xvstelm.w	$xr6, $a0, 160, 5
-	xvstelm.w	$xr6, $a0, 192, 6
-	xvstelm.w	$xr6, $a0, 224, 7
-	xvfsub.s	$xr5, $xr7, $xr1
-	xvstelm.w	$xr5, $a0, 48, 1
-	xvstelm.w	$xr5, $a0, 80, 2
-	xvstelm.w	$xr5, $a0, 112, 3
-	xvstelm.w	$xr5, $a0, 144, 4
-	xvstelm.w	$xr5, $a0, 176, 5
-	xvstelm.w	$xr5, $a0, 208, 6
-	xvstelm.w	$xr5, $a0, 240, 7
-	xvfadd.s	$xr3, $xr3, $xr11
-	lu12i.w	$a1, 258896
-	ori	$a1, $a1, 1267
-	xvreplgr2vr.w	$xr1, $a1
-	xvfmul.s	$xr3, $xr3, $xr1
-	xvfadd.s	$xr9, $xr11, $xr3
-	xvpickve.w	$xr8, $xr9, 4
-	xvstelm.w	$xr9, $a0, 40, 1
-	xvstelm.w	$xr9, $a0, 72, 2
-	xvstelm.w	$xr9, $a0, 104, 3
-	xvstelm.w	$xr9, $a0, 136, 4
-	xvstelm.w	$xr9, $a0, 168, 5
-	xvstelm.w	$xr9, $a0, 200, 6
-	xvstelm.w	$xr9, $a0, 232, 7
-	xvfsub.s	$xr7, $xr11, $xr3
-	xvstelm.w	$xr7, $a0, 56, 1
-	xvstelm.w	$xr7, $a0, 88, 2
-	xvstelm.w	$xr7, $a0, 120, 3
-	xvstelm.w	$xr7, $a0, 152, 4
-	xvstelm.w	$xr7, $a0, 184, 5
-	xvstelm.w	$xr7, $a0, 216, 6
-	xvstelm.w	$xr7, $a0, 248, 7
-	xvfadd.s	$xr10, $xr4, $xr10
-	xvfadd.s	$xr11, $xr2, $xr4
-	xvfadd.s	$xr12, $xr0, $xr2
-	xvfsub.s	$xr3, $xr10, $xr12
-	lu12i.w	$a1, 257086
-	ori	$a1, $a1, 3861
-	xvreplgr2vr.w	$xr2, $a1
-	xvfmul.s	$xr13, $xr3, $xr2
-	lu12i.w	$a1, 258216
-	ori	$a1, $a1, 3028
-	xvreplgr2vr.w	$xr3, $a1
-	xvfmadd.s	$xr10, $xr10, $xr3, $xr13
-	lu12i.w	$a1, 260723
-	ori	$a1, $a1, 3445
-	xvreplgr2vr.w	$xr4, $a1
-	xvfmadd.s	$xr12, $xr12, $xr4, $xr13
-	xvfmul.s	$xr11, $xr11, $xr1
-	xvfadd.s	$xr13, $xr0, $xr11
-	xvfsub.s	$xr0, $xr0, $xr11
-	xvfadd.s	$xr11, $xr0, $xr10
-	xvstelm.w	$xr11, $a0, 52, 1
-	xvstelm.w	$xr11, $a0, 84, 2
-	xvstelm.w	$xr11, $a0, 116, 3
-	xvstelm.w	$xr11, $a0, 148, 4
-	xvstelm.w	$xr11, $a0, 180, 5
-	xvstelm.w	$xr11, $a0, 212, 6
-	xvstelm.w	$xr11, $a0, 244, 7
-	xvfsub.s	$xr0, $xr0, $xr10
-	xvpickve.w	$xr10, $xr0, 4
-	xvstelm.w	$xr0, $a0, 44, 1
-	xvstelm.w	$xr0, $a0, 76, 2
-	xvstelm.w	$xr0, $a0, 108, 3
-	xvstelm.w	$xr0, $a0, 140, 4
-	xvstelm.w	$xr0, $a0, 172, 5
-	xvstelm.w	$xr0, $a0, 204, 6
-	xvstelm.w	$xr0, $a0, 236, 7
-	xvfadd.s	$xr14, $xr13, $xr12
-	xvstelm.w	$xr14, $a0, 36, 1
-	xvstelm.w	$xr14, $a0, 68, 2
-	xvstelm.w	$xr14, $a0, 100, 3
-	xvstelm.w	$xr14, $a0, 132, 4
-	xvstelm.w	$xr14, $a0, 164, 5
-	xvstelm.w	$xr14, $a0, 196, 6
-	xvstelm.w	$xr14, $a0, 228, 7
-	xvfsub.s	$xr12, $xr13, $xr12
-	xvpackev.w	$xr6, $xr14, $xr6
-	xvpickve.w	$xr9, $xr9, 0
-	xvinsve0.w	$xr6, $xr9, 2
-	xvpickve.w	$xr0, $xr0, 0
-	xvinsve0.w	$xr6, $xr0, 3
-	xvinsve0.w	$xr6, $xr8, 6
-	xvinsve0.w	$xr6, $xr10, 7
-	xvinsve0.w	$xr6, $xr5, 4
-	xvinsve0.w	$xr6, $xr11, 5
-	xvinsve0.w	$xr6, $xr7, 6
-	xvinsve0.w	$xr6, $xr12, 7
-	xvst	$xr6, $a0, 0
-	xvstelm.w	$xr12, $a0, 60, 1
-	xvstelm.w	$xr12, $a0, 92, 2
-	xvstelm.w	$xr12, $a0, 124, 3
-	xvstelm.w	$xr12, $a0, 156, 4
-	xvstelm.w	$xr12, $a0, 220, 6
-	xvstelm.w	$xr12, $a0, 252, 7
-	xvld	$xr0, $a0, 224
-	xvld	$xr5, $a0, 32
-	xvld	$xr7, $a0, 192
-	xvstelm.w	$xr12, $a0, 188, 5
-	xvfadd.s	$xr8, $xr6, $xr0
-	xvfsub.s	$xr0, $xr6, $xr0
-	xvfadd.s	$xr6, $xr5, $xr7
-	xvld	$xr9, $a0, 64
-	xvld	$xr10, $a0, 160
-	xvld	$xr11, $a0, 96
-	xvld	$xr12, $a0, 128
-	xvfsub.s	$xr5, $xr5, $xr7
-	xvfadd.s	$xr7, $xr9, $xr10
-	xvfsub.s	$xr9, $xr9, $xr10
-	xvfadd.s	$xr10, $xr11, $xr12
-	xvfsub.s	$xr11, $xr11, $xr12
-	xvfadd.s	$xr12, $xr8, $xr10
-	xvfsub.s	$xr8, $xr8, $xr10
-	xvfadd.s	$xr10, $xr6, $xr7
-	xvfsub.s	$xr6, $xr6, $xr7
-	xvfadd.s	$xr7, $xr10, $xr12
-	xvst	$xr7, $a0, 0
-	xvfsub.s	$xr7, $xr12, $xr10
-	xvst	$xr7, $a0, 128
-	xvfadd.s	$xr6, $xr6, $xr8
-	xvfmul.s	$xr6, $xr6, $xr1
-	xvfadd.s	$xr7, $xr8, $xr6
-	xvst	$xr7, $a0, 64
-	xvfsub.s	$xr6, $xr8, $xr6
-	xvst	$xr6, $a0, 192
-	xvfadd.s	$xr6, $xr9, $xr11
-	xvfadd.s	$xr7, $xr5, $xr9
-	xvfadd.s	$xr5, $xr0, $xr5
-	xvfsub.s	$xr8, $xr6, $xr5
-	xvfmul.s	$xr2, $xr8, $xr2
-	xvfmadd.s	$xr3, $xr6, $xr3, $xr2
-	xvfmadd.s	$xr2, $xr5, $xr4, $xr2
-	xvfmul.s	$xr1, $xr7, $xr1
-	xvfadd.s	$xr4, $xr0, $xr1
-	xvfsub.s	$xr0, $xr0, $xr1
-	xvfadd.s	$xr1, $xr0, $xr3
-	xvst	$xr1, $a0, 160
-	xvfsub.s	$xr0, $xr0, $xr3
-	xvst	$xr0, $a0, 96
-	xvfadd.s	$xr0, $xr4, $xr2
-	xvst	$xr0, $a0, 32
-	xvfsub.s	$xr0, $xr4, $xr2
-	xvst	$xr0, $a0, 224
+	fld.s	$ft3, $a3, 20
+	fld.s	$ft4, $a3, 52
+	fld.s	$ft5, $a3, 84
+	fld.s	$ft6, $a3, 116
+	vextrins.w	$vr10, $vr9, 48
+	vextrins.w	$vr11, $vr12, 16
+	vextrins.w	$vr11, $vr13, 32
+	vextrins.w	$vr11, $vr14, 48
+	vfadd.s	$vr9, $vr10, $vr11
+	fld.s	$ft4, $a3, 12
+	fld.s	$ft5, $a3, 44
+	fld.s	$ft6, $a3, 76
+	vfsub.s	$vr10, $vr10, $vr11
+	fld.s	$ft3, $a3, 108
+	vextrins.w	$vr12, $vr13, 16
+	vextrins.w	$vr12, $vr14, 32
+	fld.s	$ft5, $a3, 16
+	fld.s	$ft6, $a3, 48
+	fld.s	$ft7, $a3, 80
+	fld.s	$ft8, $a3, 112
+	vextrins.w	$vr12, $vr11, 48
+	vextrins.w	$vr13, $vr14, 16
+	vextrins.w	$vr13, $vr15, 32
+	vextrins.w	$vr13, $vr16, 48
+	vfadd.s	$vr11, $vr12, $vr13
+	vfsub.s	$vr12, $vr12, $vr13
+	vfadd.s	$vr13, $vr6, $vr11
+	vfsub.s	$vr11, $vr6, $vr11
+	vfadd.s	$vr14, $vr7, $vr9
+	vfsub.s	$vr9, $vr7, $vr9
+	vfadd.s	$vr6, $vr14, $vr13
+	vfadd.s	$vr12, $vr10, $vr12
+	vfadd.s	$vr7, $vr8, $vr10
+	vfadd.s	$vr8, $vr5, $vr8
+	vfsub.s	$vr10, $vr12, $vr8
+	vfmul.s	$vr10, $vr10, $vr1
+	vfmadd.s	$vr8, $vr8, $vr2, $vr10
+	vfmul.s	$vr15, $vr7, $vr0
+	vfadd.s	$vr16, $vr5, $vr15
+	vfadd.s	$vr7, $vr16, $vr8
+	vpackod.w	$vr17, $vr7, $vr6
+	vfadd.s	$vr9, $vr9, $vr11
+	vfmul.s	$vr9, $vr9, $vr0
+	vfadd.s	$vr18, $vr11, $vr9
+	vfmadd.s	$vr10, $vr12, $vr3, $vr10
+	vfsub.s	$vr5, $vr5, $vr15
+	vfsub.s	$vr12, $vr5, $vr10
+	vilvl.w	$vr15, $vr12, $vr18
+	vpermi.w	$vr15, $vr17, 228
+	vst	$vr15, $a3, 32
+	vstelm.w	$vr6, $a3, 64, 2
+	vfsub.s	$vr13, $vr13, $vr14
+	vfadd.s	$vr5, $vr5, $vr10
+	vpackod.w	$vr10, $vr5, $vr13
+	vfsub.s	$vr9, $vr11, $vr9
+	vfsub.s	$vr8, $vr16, $vr8
+	vilvl.w	$vr11, $vr8, $vr9
+	vpermi.w	$vr11, $vr10, 228
+	vst	$vr11, $a3, 48
+	vstelm.w	$vr9, $a3, 120, 3
+	vilvh.w	$vr10, $vr9, $vr5
+	vpackev.w	$vr11, $vr5, $vr13
+	vextrins.w	$vr11, $vr9, 32
+	vextrins.w	$vr11, $vr8, 48
+	vstelm.w	$vr8, $a3, 124, 3
+	vextrins.w	$vr8, $vr6, 51
+	vpermi.w	$vr8, $vr10, 228
+	vst	$vr8, $a3, 84
+	vstelm.w	$vr5, $a3, 116, 3
+	vpackev.w	$vr5, $vr7, $vr6
+	vextrins.w	$vr5, $vr18, 32
+	vextrins.w	$vr5, $vr12, 48
+	vstx	$vr5, $a0, $a1
+	vilvh.w	$vr5, $vr18, $vr7
+	vpackev.w	$vr6, $vr13, $vr12
+	vpermi.w	$vr6, $vr5, 228
+	vst	$vr6, $a3, 68
+	vori.b	$vr5, $vr4, 0
+	vshuf.w	$vr5, $vr18, $vr7
+	vpackod.w	$vr6, $vr13, $vr12
+	vpermi.w	$vr6, $vr5, 228
+	vst	$vr6, $a3, 100
+	addi.d	$a1, $a1, 128
+	vst	$vr11, $a3, 16
+	bne	$a1, $a2, .LBB0_1
+# %bb.2:                                # %vector.body152
+	vld	$vr4, $a0, 0
+	vld	$vr5, $a0, 224
+	vld	$vr6, $a0, 32
+	vld	$vr7, $a0, 192
+	vfadd.s	$vr8, $vr4, $vr5
+	vfsub.s	$vr4, $vr4, $vr5
+	vfadd.s	$vr5, $vr6, $vr7
+	vld	$vr9, $a0, 64
+	vld	$vr10, $a0, 160
+	vld	$vr11, $a0, 96
+	vld	$vr12, $a0, 128
+	vfsub.s	$vr6, $vr6, $vr7
+	vfadd.s	$vr7, $vr9, $vr10
+	vfsub.s	$vr9, $vr9, $vr10
+	vfadd.s	$vr10, $vr11, $vr12
+	vfsub.s	$vr11, $vr11, $vr12
+	vfadd.s	$vr12, $vr8, $vr10
+	vfsub.s	$vr8, $vr8, $vr10
+	vfadd.s	$vr10, $vr5, $vr7
+	vfsub.s	$vr5, $vr5, $vr7
+	vfadd.s	$vr7, $vr10, $vr12
+	vst	$vr7, $a0, 0
+	vfsub.s	$vr7, $vr12, $vr10
+	vst	$vr7, $a0, 128
+	vfadd.s	$vr5, $vr5, $vr8
+	vfmul.s	$vr5, $vr5, $vr0
+	vfadd.s	$vr7, $vr8, $vr5
+	vst	$vr7, $a0, 64
+	vfsub.s	$vr5, $vr8, $vr5
+	vst	$vr5, $a0, 192
+	vfadd.s	$vr5, $vr9, $vr11
+	vfadd.s	$vr7, $vr6, $vr9
+	vfadd.s	$vr6, $vr4, $vr6
+	vfsub.s	$vr8, $vr5, $vr6
+	vfmul.s	$vr8, $vr8, $vr1
+	vfmadd.s	$vr5, $vr5, $vr3, $vr8
+	vfmadd.s	$vr6, $vr6, $vr2, $vr8
+	vfmul.s	$vr7, $vr7, $vr0
+	vfadd.s	$vr8, $vr4, $vr7
+	vfsub.s	$vr4, $vr4, $vr7
+	vfadd.s	$vr7, $vr4, $vr5
+	vst	$vr7, $a0, 160
+	vfsub.s	$vr4, $vr4, $vr5
+	vst	$vr4, $a0, 96
+	vfadd.s	$vr4, $vr8, $vr6
+	vst	$vr4, $a0, 32
+	vfsub.s	$vr4, $vr8, $vr6
+	vld	$vr5, $a0, 16
+	vld	$vr6, $a0, 240
+	vld	$vr7, $a0, 48
+	vld	$vr8, $a0, 208
+	vst	$vr4, $a0, 224
+	vfadd.s	$vr4, $vr5, $vr6
+	vfsub.s	$vr5, $vr5, $vr6
+	vfadd.s	$vr6, $vr7, $vr8
+	vld	$vr9, $a0, 80
+	vld	$vr10, $a0, 176
+	vld	$vr11, $a0, 112
+	vld	$vr12, $a0, 144
+	vfsub.s	$vr7, $vr7, $vr8
+	vfadd.s	$vr8, $vr9, $vr10
+	vfsub.s	$vr9, $vr9, $vr10
+	vfadd.s	$vr10, $vr11, $vr12
+	vfsub.s	$vr11, $vr11, $vr12
+	vfadd.s	$vr12, $vr4, $vr10
+	vfsub.s	$vr4, $vr4, $vr10
+	vfadd.s	$vr10, $vr6, $vr8
+	vfsub.s	$vr6, $vr6, $vr8
+	vfadd.s	$vr8, $vr10, $vr12
+	vst	$vr8, $a0, 16
+	vfsub.s	$vr8, $vr12, $vr10
+	vst	$vr8, $a0, 144
+	vfadd.s	$vr6, $vr6, $vr4
+	vfmul.s	$vr6, $vr6, $vr0
+	vfadd.s	$vr8, $vr4, $vr6
+	vst	$vr8, $a0, 80
+	vfsub.s	$vr4, $vr4, $vr6
+	vst	$vr4, $a0, 208
+	vfadd.s	$vr4, $vr9, $vr11
+	vfadd.s	$vr6, $vr7, $vr9
+	vfadd.s	$vr7, $vr5, $vr7
+	vfsub.s	$vr8, $vr4, $vr7
+	vfmul.s	$vr1, $vr8, $vr1
+	vfmadd.s	$vr3, $vr4, $vr3, $vr1
+	vfmadd.s	$vr1, $vr7, $vr2, $vr1
+	vfmul.s	$vr0, $vr6, $vr0
+	vfadd.s	$vr2, $vr5, $vr0
+	vfsub.s	$vr0, $vr5, $vr0
+	vfadd.s	$vr4, $vr0, $vr3
+	vst	$vr4, $a0, 176
+	vfsub.s	$vr0, $vr0, $vr3
+	vst	$vr0, $a0, 112
+	vfadd.s	$vr0, $vr2, $vr1
+	vst	$vr0, $a0, 48
+	vfsub.s	$vr0, $vr2, $vr1
+	vst	$vr0, $a0, 240
 	ret
 .Lfunc_end0:
 	.size	jpeg_fdct_float, .Lfunc_end0-jpeg_fdct_float

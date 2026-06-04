@@ -1,18 +1,17 @@
 	.file	"btCompoundShape.cpp"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN15btCompoundShapeC2Eb
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN15btCompoundShapeC2Eb
 .LCPI0_0:
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x00000000                      # float 0
+.LCPI0_1:
 	.word	0xdd5e0b6b                      # float -9.99999984E+17
 	.word	0xdd5e0b6b                      # float -9.99999984E+17
 	.word	0xdd5e0b6b                      # float -9.99999984E+17
 	.word	0x00000000                      # float 0
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI0_1:
+.LCPI0_2:
 	.word	0x00000000                      # float 0
 	.word	0x3f800000                      # float 1
 	.word	0x3f800000                      # float 1
@@ -40,15 +39,18 @@ _ZN15btCompoundShapeC2Eb:               # @_ZN15btCompoundShapeC2Eb
 	st.d	$zero, $a0, 16
 	pcalau12i	$a0, %pc_hi20(_ZTV15btCompoundShape+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV15btCompoundShape+16)
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI0_0)
 	st.d	$a0, $fp, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
+	vst	$vr0, $fp, 56
+	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_1)
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 48
 	st.d	$zero, $fp, 40
-	xvst	$xr0, $fp, 56
-	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
-	vld	$vr0, $a2, %pc_lo12(.LCPI0_1)
+	vst	$vr0, $fp, 72
+	pcalau12i	$a2, %pc_hi20(.LCPI0_2)
+	vld	$vr0, $a2, %pc_lo12(.LCPI0_2)
 	st.d	$zero, $fp, 28
 	st.d	$zero, $fp, 88
 	st.w	$a0, $fp, 96
@@ -448,17 +450,21 @@ _ZN15btCompoundShape13addChildShapeERK11btTransformP16btCollisionShape: # @_ZN15
 	.cfi_offset 56, -88
 	move	$fp, $a0
 	ld.w	$a0, $a0, 96
-	move	$s0, $a2
 	move	$s1, $a1
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 96
+	vld	$vr0, $a1, 0
+	move	$s0, $a2
+	vst	$vr0, $sp, 72
+	vld	$vr0, $a1, 16
 	ld.d	$a0, $a2, 0
-	xvld	$xr0, $a1, 0
-	xvld	$xr1, $a1, 32
+	vld	$vr1, $a1, 32
+	vld	$vr2, $a1, 48
 	ld.w	$s3, $a2, 8
 	ld.d	$a1, $a0, 88
-	xvst	$xr0, $sp, 72
-	xvst	$xr1, $sp, 104
+	vst	$vr0, $sp, 88
+	vst	$vr1, $sp, 104
+	vst	$vr2, $sp, 120
 	move	$a0, $a2
 	jirl	$ra, $a1, 0
 	ld.d	$a0, $s0, 0
@@ -763,19 +769,23 @@ _ZN15btCompoundShape23removeChildShapeByIndexEi: # @_ZN15btCompoundShape23remove
 	vstx	$vr0, $a1, $a2
 	vld	$vr0, $a3, 16
 	add.d	$a1, $a1, $a2
-	xvld	$xr2, $a1, 16
+	vld	$vr2, $a1, 16
 	vst	$vr0, $a1, 16
 	vld	$vr0, $a3, 32
+	vld	$vr3, $a1, 32
 	vst	$vr0, $a1, 32
 	vld	$vr0, $a3, 48
-	xvld	$xr3, $a1, 48
+	vst	$vr1, $sp, 16
+	vld	$vr1, $a1, 48
 	vst	$vr0, $a1, 48
 	vld	$vr0, $a3, 64
-	vst	$vr1, $sp, 16
+	vst	$vr2, $sp, 32
+	vst	$vr3, $sp, 48
+	vld	$vr2, $a1, 64
 	vst	$vr0, $a1, 64
 	ld.d	$a2, $a3, 80
-	xvst	$xr2, $sp, 32
-	xvst	$xr3, $sp, 64
+	vst	$vr1, $sp, 64
+	vst	$vr2, $sp, 80
 	ld.d	$a3, $a1, 80
 	st.d	$a2, $a1, 80
 	ld.d	$a1, $fp, 40
@@ -944,13 +954,14 @@ _ZN15btCompoundShape16removeChildShapeEP16btCollisionShape: # @_ZN15btCompoundSh
 	.size	_ZN15btCompoundShape16removeChildShapeEP16btCollisionShape, .Lfunc_end7-_ZN15btCompoundShape16removeChildShapeEP16btCollisionShape
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN15btCompoundShape20recalculateLocalAabbEv
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN15btCompoundShape20recalculateLocalAabbEv
 .LCPI8_0:
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x00000000                      # float 0
+.LCPI8_1:
 	.word	0xdd5e0b6b                      # float -9.99999984E+17
 	.word	0xdd5e0b6b                      # float -9.99999984E+17
 	.word	0xdd5e0b6b                      # float -9.99999984E+17
@@ -975,9 +986,12 @@ _ZN15btCompoundShape20recalculateLocalAabbEv: # @_ZN15btCompoundShape20recalcula
 	.cfi_offset 24, -32
 	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI8_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI8_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI8_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI8_1)
 	ld.w	$a0, $fp, 28
-	xvst	$xr0, $fp, 56
+	vst	$vr0, $fp, 56
+	vst	$vr1, $fp, 72
 	blez	$a0, .LBB8_15
 # %bb.1:                                # %.lr.ph
 	move	$s0, $zero
@@ -1215,7 +1229,8 @@ _ZNK15btCompoundShape7getAabbERK11btTransformR9btVector3S4_: # @_ZNK15btCompound
 	vextrins.w	$vr4, $vr3, 16
 	vshuf4i.w	$vr1, $vr4, 16
 	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr2, $xr2
+	vrepli.b	$vr3, 0
+	vilvl.w	$vr2, $vr3, $vr2
 	vor.v	$vr1, $vr1, $vr2
 	vstelm.d	$vr1, $s0, 0, 0
 	movfr2gr.s	$a0, $fa0
@@ -1399,8 +1414,8 @@ _ZNK15btCompoundShape31calculatePrincipalAxisTransformEPfR11btTransformR9btVecto
 	st.w	$zero, $s0, 60
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 72
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 40
+	vst	$vr0, $sp, 56
+	vst	$vr0, $sp, 40
 	blez	$a0, .LBB11_7
 # %bb.5:                                # %.lr.ph220
 	move	$s3, $zero

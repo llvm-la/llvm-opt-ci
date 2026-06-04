@@ -1077,10 +1077,12 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(Error_Text)
 	addi.d	$a0, $a0, %pc_lo12(Error_Text)
 	vld	$vr0, $a1, 32
-	xvld	$xr1, $a1, 0
+	vld	$vr1, $a1, 16
+	vld	$vr2, $a1, 0
 	st.w	$a2, $a0, 48
 	vst	$vr0, $a0, 32
-	xvst	$xr1, $a0, 0
+	vst	$vr1, $a0, 16
+	vst	$vr2, $a0, 0
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB0_130:
@@ -1109,9 +1111,11 @@ main:                                   # @main
 	ld.b	$a2, $a1, 32
 	pcalau12i	$a0, %pc_hi20(Error_Text)
 	addi.d	$a0, $a0, %pc_lo12(Error_Text)
-	xvld	$xr0, $a1, 0
+	vld	$vr0, $a1, 16
+	vld	$vr1, $a1, 0
 	st.b	$a2, $a0, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 0
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .Lfunc_end0:

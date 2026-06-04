@@ -1,13 +1,6 @@
 	.file	"Crystal_Cholesky.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function Crystal_Cholesky
-.LCPI0_0:
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
-	.dword	4                               # 0x4
 	.text
-	.globl	Crystal_Cholesky
+	.globl	Crystal_Cholesky                # -- Begin function Crystal_Cholesky
 	.p2align	2
 	.prefalign	5, .Lfunc_end0, nop
 	.type	Crystal_Cholesky,@function
@@ -21,29 +14,29 @@ Crystal_Cholesky:                       # @Crystal_Cholesky
 	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	blez	$a0, .LBB0_9
 # %bb.1:                                # %.lr.ph.preheader
-	ori	$a5, $zero, 8
+	ori	$a5, $zero, 4
 	move	$a4, $zero
 	bltu	$a0, $a5, .LBB0_6
 # %bb.2:                                # %.lr.ph.preheader
 	sub.d	$a5, $a3, $a2
-	ori	$a6, $zero, 64
+	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB0_6
 # %bb.3:                                # %vector.ph
-	bstrpick.d	$a4, $a0, 30, 3
-	slli.d	$a4, $a4, 3
-	addi.d	$a5, $a3, 32
-	addi.d	$a6, $a2, 32
+	bstrpick.d	$a4, $a0, 30, 2
+	slli.d	$a4, $a4, 2
+	addi.d	$a5, $a3, 16
+	addi.d	$a6, $a2, 16
 	move	$a7, $a4
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a7, $a7, -8
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
+	vld	$vr0, $a6, -16
+	vld	$vr1, $a6, 0
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a7, $a7, -4
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB0_4
 # %bb.5:                                # %middle.block
 	beq	$a4, $a0, .LBB0_8
@@ -83,47 +76,27 @@ Crystal_Cholesky:                       # @Crystal_Cholesky
 	ret
 .LBB0_11:                               # %.lr.ph149
 	fld.d	$fa0, $a1, 0
-	ori	$a5, $zero, 5
+	ori	$a5, $zero, 3
 	addi.d	$a2, $a0, -1
 	bltu	$a0, $a5, .LBB0_15
 # %bb.12:                               # %vector.ph226
+	addi.d	$a6, $a1, 192
 	move	$a5, $a2
-	bstrins.d	$a5, $zero, 1, 0
-	ori	$a6, $zero, 1
-	move	$a4, $a2
-	pcalau12i	$a7, %pc_hi20(.LCPI0_0)
-	xvld	$xr1, $a7, %pc_lo12(.LCPI0_0)
-	bstrins.d	$a4, $a6, 1, 0
-	xvreplve0.d	$xr2, $xr0
-	xvrepli.d	$xr3, 96
-	move	$a6, $a5
+	bstrins.d	$a5, $zero, 0, 0
+	ori	$a4, $a2, 1
+	move	$a7, $a5
 	.p2align	4, , 16
 .LBB0_13:                               # %vector.body229
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr4, $xr1, $xr3
-	xvpickve2gr.d	$a7, $xr4, 0
-	xvpickve2gr.d	$t0, $xr4, 1
-	xvpickve2gr.d	$t1, $xr4, 2
-	xvpickve2gr.d	$t2, $xr4, 3
-	add.d	$t3, $a1, $a7
-	add.d	$t4, $a1, $t0
-	fldx.d	$fa4, $a1, $a7
-	fldx.d	$fa5, $a1, $t1
-	fldx.d	$fa6, $a1, $t2
-	fldx.d	$fa7, $a1, $t0
-	add.d	$a7, $a1, $t1
-	add.d	$t0, $a1, $t2
-	vextrins.d	$vr5, $vr6, 16
-	vextrins.d	$vr4, $vr7, 16
-	xvpermi.q	$xr4, $xr5, 2
-	xvfdiv.d	$xr4, $xr4, $xr2
-	xvstelm.d	$xr4, $t3, 0, 0
-	xvstelm.d	$xr4, $t4, 0, 1
-	xvstelm.d	$xr4, $a7, 0, 2
-	xvstelm.d	$xr4, $t0, 0, 3
-	addi.d	$a6, $a6, -4
-	xvaddi.du	$xr1, $xr1, 4
-	bnez	$a6, .LBB0_13
+	fld.d	$fa1, $a6, -96
+	fld.d	$fa2, $a6, 0
+	fdiv.d	$fa1, $fa1, $fa0
+	fdiv.d	$fa2, $fa2, $fa0
+	fst.d	$fa1, $a6, -96
+	fst.d	$fa2, $a6, 0
+	addi.d	$a7, $a7, -2
+	addi.d	$a6, $a6, 192
+	bnez	$a7, .LBB0_13
 # %bb.14:                               # %middle.block232
 	beq	$a2, $a5, .LBB0_17
 .LBB0_15:                               # %scalar.ph224.preheader

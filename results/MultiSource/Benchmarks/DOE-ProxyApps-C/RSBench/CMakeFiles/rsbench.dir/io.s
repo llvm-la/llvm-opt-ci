@@ -688,8 +688,10 @@ print_input_summary:                    # @print_input_summary
 	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	move	$s0, $a0
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 16
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $sp, 32
+	vst	$vr1, $sp, 16
 	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(get_mem_estimate)
 	jirl	$ra, $ra, 0

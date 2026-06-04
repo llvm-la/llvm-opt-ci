@@ -448,25 +448,28 @@ prfs_Clean:                             # @prfs_Clean
 	jirl	$ra, $ra, 0
 	st.d	$zero, $fp, 40
 	st.d	$zero, $fp, 96
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 0
-	xvst	$xr0, $fp, 56
+	vrepli.b	$vr0, 0
+	vst	$vr0, $fp, 0
+	vst	$vr0, $fp, 16
+	vst	$vr0, $fp, 56
+	vst	$vr0, $fp, 72
 	st.d	$zero, $fp, 120
-	xvst	$xr0, $fp, 128
+	vst	$vr0, $fp, 128
+	vst	$vr0, $fp, 144
 	ld.d	$a0, $fp, 104
 	lu12i.w	$a1, -4
 	ori	$a1, $a1, 384
-	xvrepli.w	$xr0, -42
+	vrepli.w	$vr0, -42
 	lu12i.w	$a3, 3
 	ori	$a2, $a3, 3712
-	ori	$a3, $a3, 3744
+	ori	$a3, $a3, 3728
 	.p2align	4, , 16
 .LBB4_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $a0, $a1
-	xvstx	$xr0, $a4, $a2
-	addi.d	$a1, $a1, 64
-	xvstx	$xr0, $a4, $a3
+	vstx	$vr0, $a4, $a2
+	addi.d	$a1, $a1, 32
+	vstx	$vr0, $a4, $a3
 	bnez	$a1, .LBB4_1
 # %bb.2:                                # %symbol_ClearPrecedence.exit
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
@@ -530,21 +533,21 @@ prfs_SwapIndexes:                       # @prfs_SwapIndexes
 	.type	prfs_Create,@function
 prfs_Create:                            # @prfs_Create
 # %bb.0:                                # %vector.ph
-	addi.d	$sp, $sp, -128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	ori	$a0, $zero, 160
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	st.d	$zero, $a0, 0
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	vst	$vr0, $a0, 8
 	pcaddu18i	$ra, %call36(sharing_IndexCreate)
 	jirl	$ra, $ra, 0
@@ -554,9 +557,9 @@ prfs_Create:                            # @prfs_Create
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 48
 	st.d	$zero, $fp, 24
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
-	xvst	$xr0, $fp, 56
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $fp, 56
+	vst	$vr0, $fp, 72
 	lu12i.w	$s1, 3
 	ori	$s0, $s1, 3712
 	move	$a0, $s0
@@ -564,15 +567,15 @@ prfs_Create:                            # @prfs_Create
 	jirl	$ra, $ra, 0
 	lu12i.w	$a1, -4
 	ori	$a1, $a1, 384
-	xvrepli.w	$xr0, -42
-	ori	$a2, $s1, 3744
+	vrepli.w	$vr0, -42
+	ori	$a2, $s1, 3728
 	.p2align	4, , 16
 .LBB6_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a0, $a1
-	xvstx	$xr0, $a3, $s0
-	addi.d	$a1, $a1, 64
-	xvstx	$xr0, $a3, $a2
+	vstx	$vr0, $a3, $s0
+	addi.d	$a1, $a1, 32
+	vstx	$vr0, $a3, $a2
 	bnez	$a1, .LBB6_1
 # %bb.2:                                # %symbol_CreatePrecedence.exit
 	st.d	$a0, $fp, 104
@@ -704,20 +707,20 @@ prfs_Create:                            # @prfs_Create
 	addi.w	$s1, $s1, 1
 	bne	$s4, $s3, .LBB6_3
 # %bb.6:                                # %flag_InitStoreByDefaults.exit
-	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $fp, 88
 	st.d	$zero, $fp, 120
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $fp, 128
+	vst	$vr0, $fp, 128
+	vst	$vr0, $fp, 144
 	move	$a0, $fp
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB6_7:
 	pcalau12i	$a0, %got_pc_hi20(stdout)

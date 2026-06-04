@@ -72,7 +72,7 @@ genorient:                              # @genorient
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	alsl.d	$a0, $fp, $a0, 2
 	ld.w	$a0, $a0, -4
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 .LBB0_7:                                #   in Loop: Header=BB0_4 Depth=1
 	ld.d	$s5, $a1, 152
 	ld.w	$s3, $s5, 68
@@ -84,21 +84,23 @@ genorient:                              # @genorient
 	ori	$a0, $zero, 104
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
+	vld	$vr0, $s5, 56
 	move	$s0, $a0
 	st.d	$fp, $sp, 88                    # 8-byte Folded Spill
 	slli.d	$a0, $fp, 3
 	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
 	stx.d	$s0, $s1, $a0
-	xvld	$xr0, $s5, 56
+	vst	$vr0, $s0, 56
+	vld	$vr0, $s5, 72
 	fld.d	$fa2, $s5, 8
 	fld.d	$fa1, $s5, 16
 	st.d	$zero, $s0, 0
-	xvst	$xr0, $s0, 56
+	vst	$vr0, $s0, 72
 	fst.d	$fa2, $s0, 8
 	fst.d	$fa1, $s0, 16
 	vld	$vr3, $s5, 24
 	st.d	$zero, $s0, 88
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	addi.w	$fp, $a0, 0
 	addi.d	$a1, $fp, -1
 	vst	$vr3, $s0, 24
@@ -166,7 +168,7 @@ genorient:                              # @genorient
 	addi.d	$s3, $s5, 60
 	addi.d	$s4, $s5, 56
 	sub.w	$a0, $s6, $s7
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(move)
 	jirl	$ra, $ra, 0
@@ -176,26 +178,24 @@ genorient:                              # @genorient
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(rect)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
-	move	$a0, $a2
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	bstrins.d	$a0, $zero, 1, 1
 	addi.w	$a0, $a0, 0
 	addi.d	$a1, $a0, -4
 	sltui	$a1, $a1, 1
-	and	$a1, $a1, $s8
-	bstrpick.d	$a2, $a2, 31, 1
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
+	and	$a1, $s8, $a1
 	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
 	bnez	$a1, .LBB0_23
 # %bb.21:                               #   in Loop: Header=BB0_4 Depth=1
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	slli.w	$a1, $a1, 1
-	ori	$a2, $zero, 2
-	bne	$a1, $a2, .LBB0_24
-# %bb.22:                               #   in Loop: Header=BB0_4 Depth=1
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	andi	$a1, $a1, 1
 	beqz	$a1, .LBB0_24
+# %bb.22:                               #   in Loop: Header=BB0_4 Depth=1
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	bstrins.d	$a1, $zero, 0, 0
+	addi.w	$a1, $a1, 0
+	ori	$a2, $zero, 2
+	bne	$a1, $a2, .LBB0_24
 .LBB0_23:                               #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a1, $s4, 0
 	ld.w	$a3, $s3, 0
@@ -213,7 +213,7 @@ genorient:                              # @genorient
 	st.w	$a2, $s5, 72
 	addi.d	$a0, $a0, -1
 	sltui	$a0, $a0, 1
-	and	$s8, $a0, $s8
+	and	$s8, $s8, $a0
 	st.w	$a1, $s5, 76
 	beqz	$s8, .LBB0_27
 .LBB0_26:                               #   in Loop: Header=BB0_4 Depth=1
@@ -226,7 +226,7 @@ genorient:                              # @genorient
 	b	.LBB0_30
 	.p2align	4, , 16
 .LBB0_27:                               #   in Loop: Header=BB0_4 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB0_30
 # %bb.28:                               #   in Loop: Header=BB0_4 Depth=1
@@ -240,20 +240,23 @@ genorient:                              # @genorient
 	ld.d	$a0, $s5, 64
 	st.d	$a0, $s5, 80
 	ld.w	$a0, $a3, 60
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	bstrpick.d	$a1, $a1, 31, 1
+	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
 	blez	$a0, .LBB0_53
 # %bb.31:                               # %.lr.ph
                                         #   in Loop: Header=BB0_4 Depth=1
-	move	$s7, $zero
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	move	$s6, $zero
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	slli.w	$a0, $a0, 1
 	addi.d	$a0, $a0, -2
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	and	$a0, $a0, $a1
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	and	$a0, $a1, $a0
 	andi	$a1, $a1, 1
 	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
-	or	$s6, $a1, $a0
+	or	$s7, $a1, $a0
 	b	.LBB0_34
 	.p2align	4, , 16
 .LBB0_32:                               #   in Loop: Header=BB0_34 Depth=2
@@ -268,8 +271,8 @@ genorient:                              # @genorient
 	st.d	$a0, $s5, 80
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 60
-	addi.w	$s7, $s7, 1
-	bge	$s7, $a0, .LBB0_53
+	addi.w	$s6, $s6, 1
+	bge	$s6, $a0, .LBB0_53
 .LBB0_34:                               #   Parent Loop BB0_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$s5, $s5, 0
@@ -278,16 +281,18 @@ genorient:                              # @genorient
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
+	vld	$vr0, $s5, 56
+	st.d	$a0, $s1, 0
 	fld.d	$fa2, $s5, 8
 	fld.d	$fa1, $s5, 16
-	st.d	$a0, $s1, 0
-	xvld	$xr0, $s5, 56
+	vst	$vr0, $a0, 56
+	vld	$vr0, $s5, 72
 	fst.d	$fa2, $a0, 8
 	fst.d	$fa1, $a0, 16
 	vld	$vr3, $s5, 24
 	st.d	$zero, $a0, 0
 	st.d	$zero, $a0, 88
-	xvst	$xr0, $a0, 56
+	vst	$vr0, $a0, 72
 	vst	$vr3, $a0, 24
 	ori	$a0, $zero, 6
 	addi.d	$a1, $fp, -1
@@ -363,7 +368,7 @@ genorient:                              # @genorient
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s4, 0
 	ld.w	$a0, $s3, 0
-	beqz	$s6, .LBB0_49
+	beqz	$s7, .LBB0_49
 # %bb.48:                               #   in Loop: Header=BB0_34 Depth=2
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $s4, 0
@@ -419,13 +424,14 @@ genorient:                              # @genorient
 	bnez	$a0, .LBB0_57
 # %bb.55:                               #   in Loop: Header=BB0_4 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	slli.w	$a0, $a0, 1
-	ori	$a1, $zero, 2
-	bne	$a0, $a1, .LBB0_58
-# %bb.56:                               #   in Loop: Header=BB0_4 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB0_58
+# %bb.56:                               #   in Loop: Header=BB0_4 Depth=1
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	bstrins.d	$a0, $zero, 0, 0
+	addi.w	$a0, $a0, 0
+	ori	$a1, $zero, 2
+	bne	$a0, $a1, .LBB0_58
 .LBB0_57:                               #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a0, $s2, 0
 	addi.d	$a0, $a0, 1
@@ -441,7 +447,7 @@ genorient:                              # @genorient
 	st.w	$a0, $s4, 16
 	bnez	$s8, .LBB0_62
 .LBB0_59:                               #   in Loop: Header=BB0_4 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB0_63
 # %bb.60:                               #   in Loop: Header=BB0_4 Depth=1
@@ -480,12 +486,12 @@ genorient:                              # @genorient
 # %bb.66:                               # %.lr.ph949
                                         #   in Loop: Header=BB0_4 Depth=1
 	move	$s2, $zero
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	slli.w	$a1, $a1, 1
 	addi.d	$a1, $a1, -2
 	sltui	$a1, $a1, 1
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
-	and	$a1, $a1, $a2
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	and	$a1, $a2, $a1
 	andi	$s3, $a2, 1
 	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	or	$s4, $a2, $a1
@@ -536,12 +542,12 @@ genorient:                              # @genorient
 	b	.LBB0_68
 .LBB0_75:                               # %.lr.ph945
                                         #   in Loop: Header=BB0_4 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	slli.w	$a0, $a0, 1
 	addi.d	$a0, $a0, -2
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	and	$a0, $a0, $a1
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	and	$a0, $a1, $a0
 	andi	$s5, $a1, 1
 	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	or	$s6, $a1, $a0

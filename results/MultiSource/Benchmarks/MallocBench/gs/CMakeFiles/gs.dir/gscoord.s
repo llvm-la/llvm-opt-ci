@@ -22,9 +22,15 @@ gs_initmatrix:                          # @gs_initmatrix
 	lu12i.w	$a0, 284672
 	vreplgr2vr.w	$vr1, $a0
 	vfmul.s	$vr0, $vr0, $vr1
-	vftintrz.w.s	$vr0, $vr0
-	vext2xv.d.w	$xr0, $xr0
-	vst	$vr0, $fp, 120
+	vreplvei.w	$vr1, $vr0, 0
+	ftintrz.l.s	$fa1, $fa1
+	movfr2gr.d	$a0, $fa1
+	vinsgr2vr.d	$vr1, $a0, 0
+	vreplvei.w	$vr0, $vr0, 1
+	ftintrz.l.s	$fa0, $fa0
+	movfr2gr.d	$a0, $fa0
+	vinsgr2vr.d	$vr1, $a0, 1
+	vst	$vr1, $fp, 120
 	st.w	$zero, $fp, 232
 	st.w	$zero, $fp, 432
 	move	$a0, $zero
@@ -96,9 +102,15 @@ gs_setmatrix:                           # @gs_setmatrix
 	lu12i.w	$a0, 284672
 	vreplgr2vr.w	$vr1, $a0
 	vfmul.s	$vr0, $vr0, $vr1
-	vftintrz.w.s	$vr0, $vr0
-	vext2xv.d.w	$xr0, $xr0
-	vst	$vr0, $fp, 120
+	vreplvei.w	$vr1, $vr0, 0
+	ftintrz.l.s	$fa1, $fa1
+	movfr2gr.d	$a0, $fa1
+	vinsgr2vr.d	$vr1, $a0, 0
+	vreplvei.w	$vr0, $vr0, 1
+	ftintrz.l.s	$fa0, $fa0
+	movfr2gr.d	$a0, $fa0
+	vinsgr2vr.d	$vr1, $a0, 1
+	vst	$vr1, $fp, 120
 	st.w	$zero, $fp, 232
 	st.w	$zero, $fp, 432
 	move	$a0, $zero
@@ -127,18 +139,24 @@ gs_translate:                           # @gs_translate
 # %bb.1:
 	fld.s	$fa0, $fp, 88
 	fld.s	$fa1, $fp, 104
-	move	$a0, $zero
 	fld.d	$fa2, $sp, 8
+	move	$a0, $zero
 	vextrins.w	$vr0, $vr1, 16
+	vfadd.s	$vr0, $vr2, $vr0
 	lu12i.w	$a1, 284672
 	vreplgr2vr.w	$vr1, $a1
-	vfadd.s	$vr0, $vr2, $vr0
+	vfmul.s	$vr1, $vr0, $vr1
+	vreplvei.w	$vr2, $vr1, 0
+	ftintrz.l.s	$fa2, $fa2
+	movfr2gr.d	$a1, $fa2
+	vinsgr2vr.d	$vr2, $a1, 0
+	vreplvei.w	$vr1, $vr1, 1
+	ftintrz.l.s	$fa1, $fa1
+	movfr2gr.d	$a1, $fa1
+	vinsgr2vr.d	$vr2, $a1, 1
 	vstelm.w	$vr0, $fp, 88, 0
 	vstelm.w	$vr0, $fp, 104, 1
-	vfmul.s	$vr0, $vr0, $vr1
-	vftintrz.w.s	$vr0, $vr0
-	vext2xv.d.w	$xr0, $xr0
-	vst	$vr0, $fp, 120
+	vst	$vr2, $fp, 120
 	st.w	$zero, $fp, 232
 .LBB4_2:
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -225,9 +243,15 @@ gs_concat:                              # @gs_concat
 	lu12i.w	$a1, 284672
 	vreplgr2vr.w	$vr1, $a1
 	vfmul.s	$vr0, $vr0, $vr1
-	vftintrz.w.s	$vr0, $vr0
-	vext2xv.d.w	$xr0, $xr0
-	vst	$vr0, $fp, 120
+	vreplvei.w	$vr1, $vr0, 0
+	ftintrz.l.s	$fa1, $fa1
+	movfr2gr.d	$a1, $fa1
+	vinsgr2vr.d	$vr1, $a1, 0
+	vreplvei.w	$vr0, $vr0, 1
+	ftintrz.l.s	$fa0, $fa0
+	movfr2gr.d	$a1, $fa0
+	vinsgr2vr.d	$vr1, $a1, 1
+	vst	$vr1, $fp, 120
 	st.w	$zero, $fp, 232
 	st.w	$zero, $fp, 432
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload

@@ -2469,8 +2469,10 @@ plus_EBNF:                              # @plus_EBNF
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s3, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $s3, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s3, 16
+	vst	$vr0, $a0, 16
 	st.d	$s1, $a0, 8
 	addi.d	$a1, $s1, 48
 	st.d	$a1, $s1, 40
@@ -2528,8 +2530,10 @@ plus_EBNF:                              # @plus_EBNF
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s3, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $s3, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s3, 16
+	vst	$vr0, $a0, 16
 	st.d	$s1, $a0, 8
 	ori	$a1, $zero, 2
 	st.w	$a1, $s1, 32
@@ -5201,47 +5205,35 @@ build_grammar:                          # @build_grammar
 	beqz	$a0, .LBB33_48
 # %bb.41:                               # %.lr.ph124.i
 	ld.d	$a1, $s6, 56
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	bstrpick.d	$a2, $a0, 31, 0
 	bgeu	$a0, $a3, .LBB33_43
 # %bb.42:
 	move	$a0, $zero
 	b	.LBB33_46
 .LBB33_43:                              # %vector.ph
-	bstrpick.d	$a0, $a2, 31, 3
-	slli.d	$a0, $a0, 3
-	addi.d	$a3, $a1, 32
-	ori	$a4, $zero, 7
+	move	$a3, $zero
+	bstrpick.d	$a0, $a2, 31, 2
+	slli.d	$a0, $a0, 2
+	addi.d	$a4, $a1, 16
 	move	$a5, $a0
 	.p2align	4, , 16
 .LBB33_44:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a6, $a4, -7
-	addi.d	$a7, $a4, -6
-	addi.d	$t0, $a4, -5
-	addi.d	$t1, $a4, -4
-	addi.d	$t2, $a4, -3
-	addi.d	$t3, $a4, -2
-	addi.d	$t4, $a4, -1
-	ld.d	$t5, $a3, -32
-	ld.d	$t6, $a3, -24
-	ld.d	$t7, $a3, -16
-	ld.d	$t8, $a3, -8
-	ld.d	$fp, $a3, 0
-	ld.d	$s0, $a3, 8
-	ld.d	$s1, $a3, 16
-	ld.d	$s3, $a3, 24
-	st.w	$a6, $t5, 4
-	st.w	$a7, $t6, 4
-	st.w	$t0, $t7, 4
-	st.w	$t1, $t8, 4
-	st.w	$t2, $fp, 4
-	st.w	$t3, $s0, 4
-	st.w	$t4, $s1, 4
-	st.w	$a4, $s3, 4
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 8
-	addi.d	$a3, $a3, 64
+	addi.d	$a6, $a3, 1
+	addi.d	$a7, $a3, 2
+	addi.d	$t0, $a3, 3
+	ld.d	$t1, $a4, -16
+	ld.d	$t2, $a4, -8
+	ld.d	$t3, $a4, 0
+	ld.d	$t4, $a4, 8
+	st.w	$a3, $t1, 4
+	st.w	$a6, $t2, 4
+	st.w	$a7, $t3, 4
+	st.w	$t0, $t4, 4
+	addi.d	$a5, $a5, -4
+	addi.d	$a3, $a3, 4
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB33_44
 # %bb.45:                               # %middle.block
 	beq	$a0, $a2, .LBB33_48

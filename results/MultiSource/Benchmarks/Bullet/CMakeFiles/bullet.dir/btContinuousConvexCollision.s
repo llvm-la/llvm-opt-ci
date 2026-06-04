@@ -254,19 +254,23 @@ _ZN27btContinuousConvexCollision16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12b
 .Ltmp5:                                 # EH_LABEL
 # %bb.5:
 	vld	$vr0, $s2, 0
-	xvld	$xr1, $s2, 16
+	vld	$vr1, $s2, 16
+	vld	$vr2, $s2, 32
+	vst	$vr0, $sp, 224
+	vst	$vr1, $sp, 240
+	vld	$vr0, $s2, 48
+	vst	$vr2, $sp, 256
+	vld	$vr1, $s1, 0
+	vld	$vr2, $s1, 16
+	vst	$vr0, $sp, 272
+	vld	$vr0, $s1, 32
+	vst	$vr1, $sp, 288
+	vst	$vr2, $sp, 304
+	vld	$vr1, $s1, 48
+	vst	$vr0, $sp, 320
 	st.w	$s8, $sp, 352
 	st.d	$zero, $sp, 360
-	vst	$vr0, $sp, 224
-	xvst	$xr1, $sp, 240
-	vld	$vr0, $s2, 48
-	xvld	$xr1, $s1, 0
-	vld	$vr2, $s1, 32
-	vld	$vr3, $s1, 48
-	vst	$vr0, $sp, 272
-	xvst	$xr1, $sp, 288
-	vst	$vr2, $sp, 320
-	vst	$vr3, $sp, 336
+	vst	$vr1, $sp, 336
 .Ltmp7:                                 # EH_LABEL
 	addi.d	$a0, $sp, 376
 	addi.d	$a1, $sp, 224

@@ -466,72 +466,42 @@ copyPredictorTo20:                      # @copyPredictorTo20
 	.type	copyPredictorTo32,@function
 copyPredictorTo32:                      # @copyPredictorTo32
 # %bb.0:
-	blez	$a3, .LBB7_15
-# %bb.1:                                # %iter.check
-	ori	$a5, $zero, 4
+	blez	$a3, .LBB7_9
+# %bb.1:                                # %.lr.ph.preheader
+	ori	$a5, $zero, 8
 	move	$a4, $zero
-	bltu	$a3, $a5, .LBB7_13
-# %bb.2:                                # %iter.check
+	bltu	$a3, $a5, .LBB7_7
+# %bb.2:                                # %.lr.ph.preheader
 	ori	$a5, $zero, 1
-	bne	$a2, $a5, .LBB7_13
-# %bb.3:                                # %iter.check
+	bne	$a2, $a5, .LBB7_7
+# %bb.3:                                # %.lr.ph.preheader
 	sub.d	$a5, $a1, $a0
-	ori	$a6, $zero, 64
-	bltu	$a5, $a6, .LBB7_13
-# %bb.4:                                # %vector.main.loop.iter.check
-	ori	$a4, $zero, 16
-	bgeu	$a3, $a4, .LBB7_6
-# %bb.5:
-	move	$a4, $zero
-	b	.LBB7_10
-.LBB7_6:                                # %vector.ph
-	andi	$a5, $a3, 12
-	bstrpick.d	$a4, $a3, 30, 4
-	slli.d	$a4, $a4, 4
-	addi.d	$a6, $a1, 32
-	addi.d	$a7, $a0, 32
-	move	$t0, $a4
-	.p2align	4, , 16
-.LBB7_7:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a7, -32
-	xvld	$xr1, $a7, 0
-	xvst	$xr0, $a6, -32
-	xvst	$xr1, $a6, 0
-	addi.d	$a6, $a6, 64
-	addi.d	$t0, $t0, -16
-	addi.d	$a7, $a7, 64
-	bnez	$t0, .LBB7_7
-# %bb.8:                                # %middle.block
-	beq	$a4, $a3, .LBB7_15
-# %bb.9:                                # %vec.epilog.iter.check
-	beqz	$a5, .LBB7_13
-.LBB7_10:                               # %vec.epilog.ph
+	ori	$a6, $zero, 32
+	bltu	$a5, $a6, .LBB7_7
+# %bb.4:                                # %vector.ph
+	bstrpick.d	$a4, $a3, 30, 3
+	slli.d	$a4, $a4, 3
+	addi.d	$a5, $a1, 16
+	addi.d	$a6, $a0, 16
 	move	$a7, $a4
-	bstrpick.d	$a4, $a3, 30, 2
-	slli.d	$a4, $a4, 2
-	slli.d	$a5, $a7, 32
-	sub.d	$a6, $a7, $a4
-	alsl.d	$a7, $a7, $a0, 2
-	ori	$t0, $zero, 0
-	lu32i.d	$t0, 4
 	.p2align	4, , 16
-.LBB7_11:                               # %vec.epilog.vector.body
+.LBB7_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a7, 0
-	srai.d	$t1, $a5, 30
-	vstx	$vr0, $a1, $t1
-	add.d	$a5, $a5, $t0
-	addi.d	$a6, $a6, 4
-	addi.d	$a7, $a7, 16
-	bnez	$a6, .LBB7_11
-# %bb.12:                               # %vec.epilog.middle.block
-	beq	$a4, $a3, .LBB7_15
-.LBB7_13:                               # %.lr.ph.preheader
+	vld	$vr0, $a6, -16
+	vld	$vr1, $a6, 0
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a5, $a5, 32
+	addi.d	$a7, $a7, -8
+	addi.d	$a6, $a6, 32
+	bnez	$a7, .LBB7_5
+# %bb.6:                                # %middle.block
+	beq	$a4, $a3, .LBB7_9
+.LBB7_7:                                # %.lr.ph.preheader15
 	alsl.d	$a0, $a4, $a0, 2
 	sub.d	$a3, $a3, $a4
 	.p2align	4, , 16
-.LBB7_14:                               # %.lr.ph
+.LBB7_8:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a0, 0
 	addi.w	$a6, $a4, 0
@@ -540,8 +510,8 @@ copyPredictorTo32:                      # @copyPredictorTo32
 	add.d	$a4, $a4, $a2
 	addi.d	$a3, $a3, -1
 	addi.d	$a0, $a0, 4
-	bnez	$a3, .LBB7_14
-.LBB7_15:                               # %._crit_edge
+	bnez	$a3, .LBB7_8
+.LBB7_9:                                # %._crit_edge
 	ret
 .Lfunc_end7:
 	.size	copyPredictorTo32, .Lfunc_end7-copyPredictorTo32

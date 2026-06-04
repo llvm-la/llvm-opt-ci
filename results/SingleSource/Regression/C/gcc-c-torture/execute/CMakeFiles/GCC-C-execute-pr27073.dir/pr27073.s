@@ -60,17 +60,18 @@ foo:                                    # @foo
 .Lfunc_end0:
 	.size	foo, .Lfunc_end0-foo
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI1_0:
-	.word	100                             # 0x64
-	.word	200                             # 0xc8
-	.word	300                             # 0x12c
-	.word	400                             # 0x190
 	.word	500                             # 0x1f4
 	.word	100                             # 0x64
 	.word	200                             # 0xc8
 	.word	300                             # 0x12c
+.LCPI1_1:
+	.word	100                             # 0x64
+	.word	200                             # 0xc8
+	.word	300                             # 0x12c
+	.word	400                             # 0x190
 	.text
 	.globl	main
 	.p2align	2
@@ -95,15 +96,19 @@ main:                                   # @main
                                         # implicit-def: $r7
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 24
+	vld	$vr0, $sp, 24
+	vld	$vr1, $sp, 40
+	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI1_0)
-	xvseq.w	$xr0, $xr0, $xr1
-	xvxori.b	$xr0, $xr0, 255
-	xvmskltz.w	$xr0, $xr0
-	xvpickve2gr.wu	$a0, $xr0, 0
-	xvpickve2gr.wu	$a1, $xr0, 4
-	bstrins.d	$a0, $a1, 7, 4
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_0)
+	vseq.w	$vr0, $vr0, $vr2
+	vxori.b	$vr0, $vr0, 255
+	vseq.w	$vr1, $vr1, $vr3
+	vxori.b	$vr1, $vr1, 255
+	vpickev.h	$vr0, $vr1, $vr0
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	bnez	$a0, .LBB1_4
 # %bb.1:
 	ld.w	$a0, $sp, 56

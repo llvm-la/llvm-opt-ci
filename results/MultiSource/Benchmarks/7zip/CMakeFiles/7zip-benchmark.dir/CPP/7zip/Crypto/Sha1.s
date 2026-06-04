@@ -46,290 +46,294 @@ _ZN7NCrypto5NSha112CContextBase14GetBlockDigestEPjS2_b: # @_ZN7NCrypto5NSha112CC
 	andn	$t1, $a6, $a5
 	and	$t2, $a7, $a5
 	or	$t1, $t2, $t1
-	xvld	$xr0, $a1, 0
+	vld	$vr0, $a1, 0
 	rotri.w	$t2, $a4, 27
 	add.d	$t0, $t2, $t0
 	add.d	$t0, $t0, $t1
-	xvpickve2gr.w	$t1, $xr0, 0
+	vpickve2gr.w	$t1, $vr0, 0
 	add.d	$t0, $t0, $t1
 	rotri.w	$a5, $a5, 2
 	andn	$t1, $a7, $a4
 	and	$t2, $a5, $a4
 	or	$t1, $t2, $t1
 	add.d	$a6, $a6, $t1
-	xvpickve2gr.w	$t1, $xr0, 1
+	vpickve2gr.w	$t1, $vr0, 1
 	add.d	$a6, $a6, $t1
 	rotri.w	$t1, $a4, 2
-	xvpickve2gr.w	$t2, $xr0, 2
+	vpickve2gr.w	$t2, $vr0, 2
 	add.d	$t2, $a7, $t2
-	xvpickve2gr.w	$a7, $xr0, 3
-	add.d	$t3, $a5, $a7
-	xvpickve2gr.w	$a7, $xr0, 4
-	add.d	$t4, $t1, $a7
 	lu12i.w	$a7, 370727
 	ori	$a7, $a7, 2457
 	add.d	$t0, $t0, $a7
-	rotri.w	$t5, $t0, 27
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $a7
-	andn	$a5, $a5, $t0
-	and	$t5, $t1, $t0
-	or	$a5, $t5, $a5
-	rotri.w	$t5, $a6, 27
-	add.d	$a5, $t2, $a5
-	add.d	$a5, $a5, $t5
-	add.d	$a5, $a5, $a7
-	rotri.w	$t0, $t0, 2
-	andn	$t1, $t1, $a6
-	and	$t2, $t0, $a6
-	or	$t1, $t2, $t1
-	rotri.w	$t2, $a5, 27
-	add.d	$t1, $t3, $t1
-	add.d	$t1, $t1, $t2
-	add.d	$t1, $t1, $a7
-	rotri.w	$a6, $a6, 2
-	andn	$t2, $t0, $a5
-	and	$t3, $a6, $a5
-	or	$t2, $t3, $t2
-	rotri.w	$t3, $t1, 27
-	add.d	$t2, $t4, $t2
-	add.d	$t2, $t2, $t3
-	add.d	$t2, $t2, $a7
-	rotri.w	$a5, $a5, 2
-	andn	$t3, $a6, $t1
-	and	$t4, $a5, $t1
-	or	$t3, $t4, $t3
-	rotri.w	$t4, $t2, 27
-	add.d	$t0, $t4, $t0
-	add.d	$t0, $t0, $t3
-	xvpickve2gr.w	$t3, $xr0, 5
-	add.d	$t0, $t0, $t3
-	add.d	$t0, $t0, $a7
-	rotri.w	$t1, $t1, 2
-	andn	$t3, $a5, $t2
-	and	$t4, $t1, $t2
-	or	$t3, $t4, $t3
-	rotri.w	$t4, $t0, 27
+	rotri.w	$t3, $t0, 27
 	add.d	$a6, $a6, $t3
-	xvpickve2gr.w	$t3, $xr0, 6
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
 	add.d	$a6, $a6, $a7
-	rotri.w	$t2, $t2, 2
-	andn	$t3, $t1, $t0
-	and	$t4, $t2, $t0
+	andn	$t3, $a5, $t0
+	and	$t4, $t1, $t0
 	or	$t3, $t4, $t3
-	xvst	$xr0, $sp, 16
 	rotri.w	$t4, $a6, 27
-	xvpickve2gr.w	$t5, $xr0, 7
+	add.d	$t2, $t2, $t3
+	add.d	$t2, $t2, $t4
+	add.d	$t2, $t2, $a7
+	rotri.w	$t0, $t0, 2
+	andn	$t3, $t1, $a6
+	and	$t4, $t0, $a6
+	or	$t3, $t4, $t3
+	vst	$vr0, $sp, 16
+	rotri.w	$t4, $t2, 27
+	vpickve2gr.w	$t5, $vr0, 3
 	add.d	$a5, $a5, $t5
 	add.d	$a5, $a5, $t3
 	add.d	$a5, $a5, $t4
 	add.d	$a5, $a5, $a7
-	rotri.w	$t0, $t0, 2
-	andn	$t3, $t2, $a6
-	xvld	$xr0, $a1, 32
-	and	$t4, $t0, $a6
+	rotri.w	$a6, $a6, 2
+	andn	$t3, $t0, $t2
+	vld	$vr0, $a1, 16
+	and	$t4, $a6, $t2
 	or	$t3, $t4, $t3
 	rotri.w	$t4, $a5, 27
-	xvpickve2gr.w	$t5, $xr0, 0
+	vpickve2gr.w	$t5, $vr0, 0
 	add.d	$t1, $t1, $t5
-	rotri.w	$a6, $a6, 2
-	andn	$t5, $t0, $a5
-	and	$t6, $a6, $a5
+	rotri.w	$t2, $t2, 2
+	andn	$t5, $a6, $a5
+	and	$t6, $t2, $a5
 	or	$t5, $t6, $t5
-	xvpickve2gr.w	$t6, $xr0, 1
-	add.d	$t2, $t2, $t6
 	rotri.w	$a5, $a5, 2
 	add.d	$t1, $t1, $t3
 	add.d	$t1, $t1, $t4
 	add.d	$t1, $t1, $a7
+	andn	$t3, $t2, $t1
+	and	$t4, $a5, $t1
+	or	$t3, $t4, $t3
+	add.d	$a6, $a6, $t3
 	rotri.w	$t3, $t1, 27
+	add.d	$t0, $t3, $t0
+	add.d	$t0, $t0, $t5
+	vpickve2gr.w	$t3, $vr0, 1
+	add.d	$t0, $t0, $t3
+	add.d	$t0, $t0, $a7
+	rotri.w	$t3, $t0, 27
+	vpickve2gr.w	$t4, $vr0, 2
+	add.d	$a6, $a6, $t4
+	add.d	$a6, $a6, $t3
+	add.d	$a6, $a6, $a7
+	rotri.w	$t1, $t1, 2
+	andn	$t3, $a5, $t0
+	and	$t4, $t1, $t0
+	or	$t3, $t4, $t3
+	vst	$vr0, $sp, 32
+	rotri.w	$t4, $a6, 27
+	vpickve2gr.w	$t5, $vr0, 3
 	add.d	$t2, $t2, $t5
 	add.d	$t2, $t2, $t3
-	add.d	$t2, $t2, $a7
-	rotri.w	$t3, $t1, 2
-	andn	$t4, $a5, $t2
-	and	$t5, $t3, $t2
-	or	$t4, $t5, $t4
-	add.d	$t4, $a6, $t4
-	xvpickve2gr.w	$t5, $xr0, 4
-	add.d	$t5, $a5, $t5
-	andn	$a6, $a6, $t1
-	and	$a5, $a5, $t1
-	or	$a5, $a5, $a6
-	rotri.w	$a6, $t2, 27
-	add.d	$a6, $a6, $t0
-	add.d	$a5, $a6, $a5
-	xvpickve2gr.w	$a6, $xr0, 2
-	add.d	$a5, $a5, $a6
-	add.d	$a5, $a5, $a7
-	rotri.w	$a6, $a5, 27
-	xvpickve2gr.w	$t0, $xr0, 3
-	add.d	$t0, $t4, $t0
-	add.d	$a6, $t0, $a6
-	add.d	$a6, $a6, $a7
-	rotri.w	$t0, $t2, 2
-	andn	$t1, $t3, $a5
-	and	$t2, $t0, $a5
-	or	$t1, $t2, $t1
-	rotri.w	$t2, $a6, 27
-	add.d	$t1, $t5, $t1
-	add.d	$t1, $t1, $t2
-	add.d	$t1, $t1, $a7
-	rotri.w	$a5, $a5, 2
-	andn	$t2, $t0, $a6
-	and	$t4, $a5, $a6
-	or	$t2, $t4, $t2
-	rotri.w	$t4, $t1, 27
-	xvpickve2gr.w	$t5, $xr0, 5
-	add.d	$t3, $t3, $t5
-	add.d	$t2, $t3, $t2
 	add.d	$t2, $t2, $t4
 	add.d	$t2, $t2, $a7
-	rotri.w	$a6, $a6, 2
-	andn	$t3, $a5, $t1
-	and	$t4, $a6, $t1
+	rotri.w	$t0, $t0, 2
+	andn	$t3, $t1, $a6
+	vld	$vr0, $a1, 32
+	and	$t4, $t0, $a6
 	or	$t3, $t4, $t3
 	rotri.w	$t4, $t2, 27
-	xvpickve2gr.w	$t6, $xr0, 6
-	add.d	$t0, $t0, $t6
-	add.d	$t0, $t0, $t3
-	add.d	$t0, $t0, $t4
-	add.d	$t0, $t0, $a7
-	rotri.w	$t1, $t1, 2
-	andn	$t3, $a6, $t2
-	and	$t4, $t1, $t2
-	or	$t3, $t4, $t3
-	xvst	$xr0, $sp, 48
-	rotri.w	$t4, $t0, 27
-	add.d	$a5, $t4, $a5
-	add.d	$a5, $a5, $t3
-	xvpickve2gr.w	$t3, $xr0, 7
-	add.d	$a5, $a5, $t3
-	add.d	$a5, $a5, $a7
-	rotri.w	$t2, $t2, 2
-	andn	$t4, $t1, $t0
-	ld.w	$t7, $sp, 48
-	ld.w	$t8, $sp, 16
-	and	$fp, $t2, $t0
-	ld.w	$s0, $sp, 24
-	or	$t4, $fp, $t4
-	xor	$t7, $t7, $t8
-	xor	$t5, $t7, $t5
-	xor	$t5, $t5, $s0
-	rotri.w	$t5, $t5, 31
-	st.w	$t5, $sp, 80
-	rotri.w	$t7, $a5, 27
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t5
-	rotri.w	$t4, $t0, 2
-	andn	$t0, $t2, $a5
-	and	$t7, $t4, $a5
-	ld.w	$t8, $sp, 52
-	ld.w	$fp, $sp, 20
-	or	$t0, $t7, $t0
-	ld.w	$t7, $sp, 28
-	add.d	$a6, $a6, $a7
-	xor	$t8, $t8, $fp
-	xor	$t6, $t8, $t6
-	xor	$t6, $t6, $t7
-	rotri.w	$t6, $t6, 31
-	st.w	$t6, $sp, 84
-	rotri.w	$t8, $a6, 27
-	add.d	$t0, $t1, $t0
-	add.d	$t0, $t0, $t6
-	add.d	$t0, $t0, $t8
-	add.d	$t6, $t0, $a7
-	rotri.w	$a5, $a5, 2
-	ld.w	$t0, $sp, 56
-	ld.w	$t1, $sp, 32
-	andn	$t8, $t4, $a6
-	and	$fp, $a5, $a6
-	or	$t8, $fp, $t8
-	xor	$t0, $t0, $t1
-	xor	$t0, $t0, $t3
-	xor	$t0, $t0, $s0
-	rotri.w	$t0, $t0, 31
-	st.w	$t0, $sp, 88
-	rotri.w	$t1, $t6, 27
-	add.d	$t2, $t2, $t8
-	add.d	$t0, $t2, $t0
-	add.d	$t0, $t0, $t1
-	add.d	$t0, $t0, $a7
+	vpickve2gr.w	$t5, $vr0, 0
+	add.d	$a5, $a5, $t5
 	rotri.w	$a6, $a6, 2
-	ld.w	$t1, $sp, 60
-	ld.w	$t2, $sp, 36
-	andn	$t3, $a5, $t6
-	and	$t8, $a6, $t6
-	or	$t3, $t8, $t3
-	xor	$t1, $t1, $t2
-	xor	$t1, $t1, $t5
-	xor	$t1, $t1, $t7
-	rotri.w	$t1, $t1, 31
-	st.w	$t1, $sp, 92
-	rotri.w	$t2, $t0, 27
-	add.d	$t3, $t4, $t3
-	add.d	$t1, $t3, $t1
+	andn	$t5, $t0, $t2
+	and	$t6, $a6, $t2
+	or	$t5, $t6, $t5
+	vpickve2gr.w	$t6, $vr0, 1
+	add.d	$t1, $t1, $t6
+	rotri.w	$t6, $t2, 2
+	add.d	$a5, $a5, $t3
+	add.d	$a5, $a5, $t4
+	add.d	$a5, $a5, $a7
+	rotri.w	$t2, $a5, 27
+	add.d	$t1, $t1, $t5
 	add.d	$t1, $t1, $t2
 	add.d	$t1, $t1, $a7
-	rotri.w	$a7, $t6, 2
-	ori	$t2, $zero, 15
-	addi.d	$t5, $sp, 64
-	lu12i.w	$t3, 454046
-	ori	$t3, $t3, 2977
-	ori	$t4, $zero, 35
+	andn	$t2, $a6, $a5
+	and	$t3, $t6, $a5
+	or	$t2, $t3, $t2
+	rotri.w	$t3, $t1, 27
+	add.d	$t0, $t3, $t0
+	add.d	$t0, $t0, $t2
+	vpickve2gr.w	$t2, $vr0, 2
+	add.d	$t0, $t0, $t2
+	add.d	$t0, $t0, $a7
+	rotri.w	$a5, $a5, 2
+	andn	$t2, $t6, $t1
+	and	$t3, $a5, $t1
+	or	$t2, $t3, $t2
+	vst	$vr0, $sp, 48
+	rotri.w	$t3, $t0, 27
+	add.d	$a6, $a6, $t2
+	vpickve2gr.w	$t2, $vr0, 3
+	add.d	$a6, $a6, $t2
+	add.d	$a6, $a6, $t3
+	add.d	$a6, $a6, $a7
+	rotri.w	$t1, $t1, 2
+	andn	$t2, $a5, $t0
+	and	$t3, $t1, $t0
+	vld	$vr0, $a1, 48
+	or	$t3, $t3, $t2
+	addi.d	$t2, $sp, 64
+	rotri.w	$t4, $a6, 27
+	vpickve2gr.w	$t5, $vr0, 0
+	add.d	$t5, $t6, $t5
+	rotri.w	$t0, $t0, 2
+	andn	$t6, $t1, $a6
+	and	$t7, $t0, $a6
+	or	$t6, $t7, $t6
+	vpickve2gr.w	$t7, $vr0, 1
+	add.d	$t8, $a5, $t7
+	rotri.w	$a6, $a6, 2
+	vpickve2gr.w	$a5, $vr0, 2
+	add.d	$t1, $t1, $a5
+	add.d	$t3, $t5, $t3
+	add.d	$t3, $t3, $t4
+	add.d	$t3, $t3, $a7
+	rotri.w	$t4, $t3, 27
+	add.d	$t5, $t8, $t6
+	add.d	$t4, $t5, $t4
+	add.d	$t4, $t4, $a7
+	andn	$t5, $t0, $t3
+	and	$t6, $a6, $t3
+	or	$t5, $t6, $t5
+	rotri.w	$t6, $t4, 27
+	add.d	$t1, $t1, $t5
+	add.d	$t1, $t1, $t6
+	add.d	$t1, $t1, $a7
+	rotri.w	$t3, $t3, 2
+	andn	$t5, $a6, $t4
+	and	$t6, $t3, $t4
+	or	$t5, $t6, $t5
+	vst	$vr0, $sp, 64
+	rotri.w	$t6, $t1, 27
+	add.d	$t0, $t6, $t0
+	add.d	$t0, $t0, $t5
+	vpickve2gr.w	$t5, $vr0, 3
+	add.d	$t0, $t0, $t5
+	add.d	$t0, $t0, $a7
+	rotri.w	$t4, $t4, 2
+	andn	$t6, $t3, $t1
+	ld.w	$t8, $sp, 48
+	ld.w	$fp, $sp, 16
+	and	$s0, $t4, $t1
+	ld.w	$s1, $sp, 24
+	or	$t6, $s0, $t6
+	xor	$t8, $t8, $fp
+	xor	$t7, $t8, $t7
+	xor	$t7, $t7, $s1
+	rotri.w	$t7, $t7, 31
+	st.w	$t7, $sp, 80
+	rotri.w	$t8, $t0, 27
+	add.d	$a6, $a6, $t6
+	add.d	$a6, $a6, $t8
+	add.d	$a6, $a6, $t7
+	rotri.w	$t1, $t1, 2
+	andn	$t6, $t4, $t0
+	and	$t8, $t1, $t0
+	ld.w	$fp, $sp, 52
+	ld.w	$s0, $sp, 20
+	or	$t6, $t8, $t6
+	ld.w	$t8, $sp, 28
+	add.d	$a6, $a6, $a7
+	xor	$fp, $fp, $s0
+	xor	$a5, $fp, $a5
+	xor	$a5, $a5, $t8
+	rotri.w	$a5, $a5, 31
+	st.w	$a5, $sp, 84
+	rotri.w	$fp, $a6, 27
+	add.d	$t3, $t3, $t6
+	add.d	$a5, $t3, $a5
+	add.d	$a5, $a5, $fp
+	add.d	$t3, $a5, $a7
+	rotri.w	$a5, $t0, 2
+	ld.w	$t0, $sp, 56
+	ld.w	$t6, $sp, 32
+	andn	$fp, $t1, $a6
+	and	$s0, $a5, $a6
+	or	$fp, $s0, $fp
+	xor	$t0, $t0, $t6
+	xor	$t0, $t0, $t5
+	xor	$t0, $t0, $s1
+	rotri.w	$t0, $t0, 31
+	st.w	$t0, $sp, 88
+	rotri.w	$t5, $t3, 27
+	add.d	$t4, $t4, $fp
+	add.d	$t0, $t4, $t0
+	add.d	$t0, $t0, $t5
+	add.d	$t0, $t0, $a7
+	rotri.w	$a6, $a6, 2
+	ld.w	$t4, $sp, 60
+	ld.w	$t5, $sp, 36
+	andn	$t6, $a5, $t3
+	and	$fp, $a6, $t3
+	or	$t6, $fp, $t6
+	xor	$t4, $t4, $t5
+	xor	$t4, $t4, $t7
+	xor	$t4, $t4, $t8
+	rotri.w	$t4, $t4, 31
+	st.w	$t4, $sp, 92
+	rotri.w	$t5, $t0, 27
+	add.d	$t1, $t1, $t6
+	add.d	$t1, $t1, $t4
+	add.d	$t1, $t1, $t5
+	add.d	$t1, $t1, $a7
+	rotri.w	$a7, $t3, 2
+	ori	$t3, $zero, 15
+	lu12i.w	$t4, 454046
+	ori	$t4, $t4, 2977
+	ori	$t5, $zero, 35
 	.p2align	4, , 16
 .LBB1_1:                                # =>This Inner Loop Header: Depth=1
 	xor	$t6, $a7, $t0
-	ld.w	$t7, $t5, 20
-	ld.w	$t8, $t5, 0
-	ld.w	$fp, $t5, -32
-	ld.w	$s0, $t5, -24
+	ld.w	$t7, $t2, 20
+	ld.w	$t8, $t2, 0
+	ld.w	$fp, $t2, -32
+	ld.w	$s0, $t2, -24
 	xor	$t6, $t6, $a6
 	xor	$t7, $t8, $t7
 	xor	$t7, $t7, $fp
 	xor	$t7, $t7, $s0
 	rotri.w	$t7, $t7, 31
-	ld.w	$t8, $t5, 24
-	ld.w	$fp, $t5, 4
-	ld.w	$s1, $t5, -28
-	ld.w	$s2, $t5, -20
-	st.w	$t7, $t5, 32
+	ld.w	$t8, $t2, 24
+	ld.w	$fp, $t2, 4
+	ld.w	$s1, $t2, -28
+	ld.w	$s2, $t2, -20
+	st.w	$t7, $t2, 32
 	xor	$t8, $fp, $t8
 	xor	$t8, $t8, $s1
 	xor	$t8, $t8, $s2
-	ld.w	$fp, $t5, 28
-	ld.w	$s1, $t5, 8
+	ld.w	$fp, $t2, 28
+	ld.w	$s1, $t2, 8
 	rotri.w	$t8, $t8, 31
-	st.w	$t8, $t5, 36
-	ld.w	$s3, $t5, -16
+	st.w	$t8, $t2, 36
+	ld.w	$s3, $t2, -16
 	xor	$fp, $fp, $s1
 	xor	$fp, $fp, $s0
-	ld.w	$s0, $t5, 12
-	ld.w	$s1, $t5, -12
+	ld.w	$s0, $t2, 12
+	ld.w	$s1, $t2, -12
 	xor	$fp, $fp, $s3
 	rotri.w	$fp, $fp, 31
-	st.w	$fp, $t5, 40
+	st.w	$fp, $t2, 40
 	xor	$s0, $s0, $s1
 	xor	$s0, $s0, $t7
-	ld.w	$s1, $t5, 16
-	ld.w	$s4, $t5, -8
+	ld.w	$s1, $t2, 16
+	ld.w	$s4, $t2, -8
 	xor	$s0, $s0, $s2
 	rotri.w	$s0, $s0, 31
-	st.w	$s0, $t5, 44
+	st.w	$s0, $t2, 44
 	xor	$s1, $s1, $s4
 	xor	$s1, $s1, $t8
 	xor	$s1, $s1, $s3
 	rotri.w	$s1, $s1, 31
-	st.w	$s1, $t5, 48
-	addi.d	$t5, $t5, 20
+	st.w	$s1, $t2, 48
+	addi.d	$t2, $t2, 20
 	rotri.w	$s2, $t1, 27
 	add.d	$t6, $s2, $t6
 	add.d	$a5, $t6, $a5
 	add.d	$a5, $a5, $t7
-	add.d	$a5, $a5, $t3
+	add.d	$a5, $a5, $t4
 	rotri.w	$t0, $t0, 2
 	xor	$t6, $t0, $t1
 	xor	$t6, $t6, $a7
@@ -337,7 +341,7 @@ _ZN7NCrypto5NSha112CContextBase14GetBlockDigestEPjS2_b: # @_ZN7NCrypto5NSha112CC
 	add.d	$a6, $a6, $t6
 	add.d	$a6, $a6, $t8
 	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t3
+	add.d	$a6, $a6, $t4
 	rotri.w	$t1, $t1, 2
 	xor	$t6, $t0, $t1
 	xor	$t6, $t6, $a5
@@ -345,7 +349,7 @@ _ZN7NCrypto5NSha112CContextBase14GetBlockDigestEPjS2_b: # @_ZN7NCrypto5NSha112CC
 	add.d	$a7, $a7, $t6
 	add.d	$a7, $a7, $fp
 	add.d	$a7, $a7, $t7
-	add.d	$a7, $a7, $t3
+	add.d	$a7, $a7, $t4
 	rotri.w	$a5, $a5, 2
 	xor	$t6, $a5, $t1
 	xor	$t6, $t6, $a6
@@ -353,7 +357,7 @@ _ZN7NCrypto5NSha112CContextBase14GetBlockDigestEPjS2_b: # @_ZN7NCrypto5NSha112CC
 	add.d	$t0, $t0, $t6
 	add.d	$t0, $t0, $s0
 	add.d	$t0, $t0, $t7
-	add.d	$t0, $t0, $t3
+	add.d	$t0, $t0, $t4
 	rotri.w	$a6, $a6, 2
 	xor	$t6, $a6, $a5
 	xor	$t6, $t6, $a7
@@ -361,10 +365,10 @@ _ZN7NCrypto5NSha112CContextBase14GetBlockDigestEPjS2_b: # @_ZN7NCrypto5NSha112CC
 	add.d	$t1, $t1, $t6
 	add.d	$t1, $t1, $s1
 	add.d	$t1, $t1, $t7
-	add.d	$t1, $t1, $t3
-	addi.d	$t2, $t2, 5
+	add.d	$t1, $t1, $t4
+	addi.d	$t3, $t3, 5
 	rotri.w	$a7, $a7, 2
-	bltu	$t2, $t4, .LBB1_1
+	bltu	$t3, $t5, .LBB1_1
 # %bb.2:                                # %.lr.ph.preheader
 	ori	$t2, $zero, 35
 	addi.d	$t3, $sp, 192
@@ -576,10 +580,14 @@ _ZN7NCrypto5NSha112CContextBase14GetBlockDigestEPjS2_b: # @_ZN7NCrypto5NSha112CC
 	st.w	$a0, $a2, 16
 	beqz	$a3, .LBB1_8
 # %bb.7:                                # %.preheader.preheader
-	xvld	$xr0, $sp, 304
-	xvld	$xr1, $sp, 272
-	xvst	$xr0, $a1, 32
-	xvst	$xr1, $a1, 0
+	vld	$vr0, $sp, 320
+	vld	$vr1, $sp, 304
+	vld	$vr2, $sp, 288
+	vld	$vr3, $sp, 272
+	vst	$vr0, $a1, 48
+	vst	$vr1, $a1, 32
+	vst	$vr2, $a1, 16
+	vst	$vr3, $a1, 0
 .LBB1_8:                                # %.loopexit
 	ld.d	$s4, $sp, 336                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 344                   # 8-byte Folded Reload
@@ -598,84 +606,55 @@ _ZN7NCrypto5NSha112CContextBase14GetBlockDigestEPjS2_b: # @_ZN7NCrypto5NSha112CC
 	.type	_ZNK7NCrypto5NSha112CContextBase12PrepareBlockEPjj,@function
 _ZNK7NCrypto5NSha112CContextBase12PrepareBlockEPjj: # @_ZNK7NCrypto5NSha112CContextBase12PrepareBlockEPjj
 # %bb.0:
-	andi	$a5, $a2, 15
-	slli.d	$a3, $a5, 2
-	lu12i.w	$a4, -524288
-	lu32i.d	$a4, 0
-	addi.d	$a6, $a5, 1
+	andi	$a3, $a2, 15
+	slli.d	$a5, $a3, 2
+	lu12i.w	$a6, -524288
+	lu32i.d	$a6, 0
+	addi.d	$a4, $a3, 1
 	ori	$a7, $zero, 14
-	stx.w	$a4, $a1, $a3
-	beq	$a6, $a7, .LBB2_15
-# %bb.1:                                # %iter.check
-	ori	$a3, $zero, 13
-	sub.d	$a3, $a3, $a5
-	ori	$a4, $zero, 4
-	bltu	$a3, $a4, .LBB2_5
-# %bb.2:                                # %iter.check
-	ori	$a4, $zero, 12
-	bltu	$a4, $a5, .LBB2_5
-# %bb.3:                                # %vector.main.loop.iter.check
-	ori	$a4, $zero, 16
-	bgeu	$a3, $a4, .LBB2_6
-# %bb.4:
-	move	$a7, $zero
-	b	.LBB2_10
-.LBB2_5:
-	move	$a4, $a6
-	b	.LBB2_13
-.LBB2_6:                                # %vector.ph
-	andi	$t0, $a3, 12
-	move	$a7, $a3
-	bstrins.d	$a7, $zero, 3, 0
-	add.d	$a4, $a6, $a7
-	xvrepli.b	$xr0, 0
-	move	$t1, $a6
-	move	$t2, $a7
-	.p2align	4, , 16
-.LBB2_7:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$t3, $t1, 31, 0
-	alsl.d	$t4, $t3, $a1, 2
-	slli.d	$t3, $t3, 2
-	xvstx	$xr0, $a1, $t3
-	xvst	$xr0, $t4, 32
-	addi.w	$t2, $t2, -16
-	addi.w	$t1, $t1, 16
-	bnez	$t2, .LBB2_7
-# %bb.8:                                # %middle.block
-	beq	$a3, $a7, .LBB2_15
-# %bb.9:                                # %vec.epilog.iter.check
-	beqz	$t0, .LBB2_13
-.LBB2_10:                               # %vec.epilog.ph
-	move	$t0, $a3
-	bstrins.d	$t0, $zero, 1, 0
-	add.d	$a4, $a6, $t0
-	sub.d	$a6, $a7, $t0
-	add.d	$a5, $a7, $a5
-	addi.d	$a5, $a5, 1
+	stx.w	$a6, $a1, $a5
+	beq	$a4, $a7, .LBB2_9
+# %bb.1:                                # %.lr.ph.preheader
+	ori	$a5, $zero, 13
+	sub.d	$a5, $a5, $a3
+	ori	$a6, $zero, 8
+	bltu	$a5, $a6, .LBB2_6
+# %bb.2:                                # %.lr.ph.preheader
+	ori	$a6, $zero, 12
+	bltu	$a6, $a3, .LBB2_6
+# %bb.3:                                # %vector.ph
+	move	$a6, $a5
+	bstrins.d	$a6, $zero, 2, 0
+	add.d	$a3, $a4, $a6
 	vrepli.b	$vr0, 0
+	move	$a7, $a6
 	.p2align	4, , 16
-.LBB2_11:                               # %vec.epilog.vector.body
+.LBB2_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a7, $a5, 31, 0
-	slli.d	$a7, $a7, 2
-	vstx	$vr0, $a1, $a7
-	addi.w	$a6, $a6, 4
-	addi.w	$a5, $a5, 4
-	bnez	$a6, .LBB2_11
-# %bb.12:                               # %vec.epilog.middle.block
-	beq	$a3, $t0, .LBB2_15
-.LBB2_13:                               # %.lr.ph.preheader
-	ori	$a3, $zero, 14
+	bstrpick.d	$t0, $a4, 31, 0
+	alsl.d	$t1, $t0, $a1, 2
+	slli.d	$t0, $t0, 2
+	vstx	$vr0, $a1, $t0
+	vst	$vr0, $t1, 16
+	addi.w	$a7, $a7, -8
+	addi.w	$a4, $a4, 8
+	bnez	$a7, .LBB2_4
+# %bb.5:                                # %middle.block
+	bne	$a5, $a6, .LBB2_7
+	b	.LBB2_9
+.LBB2_6:
+	move	$a3, $a4
+.LBB2_7:                                # %.lr.ph.preheader16
+	ori	$a4, $zero, 14
 	.p2align	4, , 16
-.LBB2_14:                               # %.lr.ph
+.LBB2_8:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a4, 31, 0
+	bstrpick.d	$a5, $a3, 31, 0
 	slli.d	$a5, $a5, 2
-	addi.w	$a4, $a4, 1
+	addi.w	$a3, $a3, 1
 	stx.w	$zero, $a1, $a5
-	bne	$a4, $a3, .LBB2_14
-.LBB2_15:                               # %._crit_edge
+	bne	$a3, $a4, .LBB2_8
+.LBB2_9:                                # %._crit_edge
 	ld.d	$a0, $a0, 24
 	slli.d	$a0, $a0, 9
 	bstrpick.d	$a2, $a2, 31, 0

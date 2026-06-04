@@ -962,17 +962,23 @@ _ZN35btSequentialImpulseConstraintSolver10btRandInt2Ei: # @_ZN35btSequentialImpu
 	.type	_ZN35btSequentialImpulseConstraintSolver14initSolverBodyEP12btSolverBodyP17btCollisionObject,@function
 _ZN35btSequentialImpulseConstraintSolver14initSolverBodyEP12btSolverBodyP17btCollisionObject: # @_ZN35btSequentialImpulseConstraintSolver14initSolverBodyEP12btSolverBodyP17btCollisionObject
 # %bb.0:
-	beqz	$a2, .LBB12_3
+	beqz	$a2, .LBB12_2
 # %bb.1:
 	ld.w	$a0, $a2, 256
 	addi.d	$a0, $a0, -2
 	sltui	$a0, $a0, 1
 	maskeqz	$a0, $a2, $a0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 80
-	beqz	$a0, .LBB12_4
+	b	.LBB12_3
 .LBB12_2:
+	move	$a0, $zero
+.LBB12_3:                               # %select.unfold
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	beqz	$a0, .LBB12_5
+# %bb.4:
 	fld.s	$fa0, $a0, 360
 	fld.s	$fa1, $a0, 380
 	fld.s	$fa2, $a0, 384
@@ -991,19 +997,12 @@ _ZN35btSequentialImpulseConstraintSolver14initSolverBodyEP12btSolverBodyP17btCol
 	vld	$vr0, $a0, 364
 	vst	$vr0, $a1, 32
 	ret
-.LBB12_3:
-	move	$a0, $zero
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 80
-	bnez	$a0, .LBB12_2
-.LBB12_4:
+.LBB12_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI12_0)
-	vld	$vr0, $a0, %pc_lo12(.LCPI12_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI12_0)
 	st.d	$zero, $a1, 72
-	vrepli.b	$vr1, 0
-	vst	$vr1, $a1, 48
-	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr1, $a1, 32
 	ret
 .Lfunc_end12:
 	.size	_ZN35btSequentialImpulseConstraintSolver14initSolverBodyEP12btSolverBodyP17btCollisionObject, .Lfunc_end12-_ZN35btSequentialImpulseConstraintSolver14initSolverBodyEP12btSolverBodyP17btCollisionObject
@@ -1582,10 +1581,12 @@ _ZN35btSequentialImpulseConstraintSolver19getOrInitSolverBodyER17btCollisionObje
 	ld.d	$a1, $s0, 24
 	add.d	$a0, $a1, $s1
 	ld.w	$a2, $s2, 256
-	xvrepli.b	$xr0, 0
-	xvstx	$xr0, $a1, $s1
+	vrepli.b	$vr0, 0
+	vstx	$vr0, $a1, $s1
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 80
 	ori	$a1, $zero, 2
-	xvst	$xr0, $a0, 80
+	vst	$vr0, $a0, 96
 	bne	$a2, $a1, .LBB16_18
 # %bb.17:
 	fld.s	$fa0, $s2, 360
@@ -1604,15 +1605,15 @@ _ZN35btSequentialImpulseConstraintSolver19getOrInitSolverBodyER17btCollisionObje
 	st.d	$a2, $a0, 56
 	st.d	$s2, $a0, 72
 	vld	$vr0, $s2, 364
+	vst	$vr0, $a0, 32
 	b	.LBB16_19
 .LBB16_18:
 	pcalau12i	$a1, %pc_hi20(.LCPI16_0)
-	vld	$vr0, $a1, %pc_lo12(.LCPI16_0)
+	vld	$vr1, $a1, %pc_lo12(.LCPI16_0)
 	st.d	$zero, $a0, 72
-	vrepli.b	$vr1, 0
-	vst	$vr1, $a0, 48
+	vst	$vr0, $a0, 48
+	vst	$vr1, $a0, 32
 .LBB16_19:                              # %_ZN35btSequentialImpulseConstraintSolver14initSolverBodyEP12btSolverBodyP17btCollisionObject.exit
-	vst	$vr0, $a0, 32
 	st.w	$fp, $s2, 224
 .LBB16_20:                              # %.critedge
 	move	$a0, $fp
@@ -2983,22 +2984,11 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	.word	0x3f800000                      # float 1
 	.word	0x3f800000                      # float 1
 	.word	0x00000000                      # float 0
-.LCPI18_2:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI18_1:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 	.text
 	.globl	_ZN35btSequentialImpulseConstraintSolver28solveGroupCacheFriendlySetupEPP17btCollisionObjectiPP20btPersistentManifoldiPP17btTypedConstraintiRK19btContactSolverInfoP12btIDebugDrawP12btStackAlloc
 	.p2align	2
@@ -3010,20 +3000,20 @@ _ZN35btSequentialImpulseConstraintSolver28solveGroupCacheFriendlySetupEPP17btCol
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception2
 # %bb.0:
-	addi.d	$sp, $sp, -320
-	.cfi_def_cfa_offset 320
-	st.d	$ra, $sp, 312                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 296                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 256                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 232                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 224                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -304
+	.cfi_def_cfa_offset 304
+	st.d	$ra, $sp, 296                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 280                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 264                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 216                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 208                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -3047,7 +3037,7 @@ _ZN35btSequentialImpulseConstraintSolver28solveGroupCacheFriendlySetupEPP17btCol
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager13Start_ProfileEPKc)
 	jirl	$ra, $ra, 0
 	sub.w	$a0, $zero, $fp
-	beq	$s6, $a0, .LBB18_148
+	beq	$s6, $a0, .LBB18_124
 # %bb.1:                                # %.preheader379
 	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
@@ -3147,12 +3137,13 @@ _ZN35btSequentialImpulseConstraintSolver28solveGroupCacheFriendlySetupEPP17btCol
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s3, 24
 	add.d	$a1, $a0, $fp
-	xvrepli.b	$xr1, 0
-	xvstx	$xr1, $a0, $fp
 	vrepli.b	$vr0, 0
+	vstx	$vr0, $a0, $fp
+	vst	$vr0, $a1, 16
 	vst	$vr0, $a1, 48
-	xvst	$xr1, $sp, 64                   # 32-byte Folded Spill
-	xvst	$xr1, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
+	vst	$vr0, $a1, 80
 	st.d	$zero, $a1, 72
 	pcalau12i	$a0, %pc_hi20(.LCPI18_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI18_0)
@@ -3345,9 +3336,9 @@ _ZN35btSequentialImpulseConstraintSolver28solveGroupCacheFriendlySetupEPP17btCol
 	ldx.w	$a0, $fp, $a3
 	beqz	$a0, .LBB18_53
 # %bb.55:                               #   in Loop: Header=BB18_54 Depth=1
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
-	st.d	$a3, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
 	ldx.d	$s2, $s7, $a3
 	ld.d	$s1, $s3, 88
 	ld.d	$s5, $s2, 24
@@ -3368,12 +3359,12 @@ _ZN35btSequentialImpulseConstraintSolver28solveGroupCacheFriendlySetupEPP17btCol
 .Ltmp59:                                # EH_LABEL
 # %bb.57:                               #   in Loop: Header=BB18_54 Depth=1
 	move	$s8, $a0
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	alsl.d	$fp, $a0, $fp, 3
 	ld.w	$a0, $fp, 0
 	ld.d	$a1, $s3, 24
-	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	slli.d	$a1, $a2, 7
 	alsl.d	$a1, $a2, $a1, 4
 	add.d	$s1, $s1, $a1
@@ -3403,45 +3394,47 @@ _ZN35btSequentialImpulseConstraintSolver28solveGroupCacheFriendlySetupEPP17btCol
                                         #   in Loop: Header=BB18_54 Depth=1
 	ori	$a1, $zero, 112
 	mul.d	$a0, $s7, $a1
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	add.d	$a0, $a2, $a0
 	mul.d	$a1, $s8, $a1
 	add.d	$a1, $a2, $a1
-	xvld	$xr0, $sp, 64                   # 32-byte Folded Reload
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a1, 0
+	vld	$vr0, $sp, 64                   # 16-byte Folded Reload
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 0
 	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
 	fld.s	$fa0, $s4, 12
 	fld.s	$fa1, $s4, 32
 	frecip.s	$fa0, $fa0
-	fst.s	$fa0, $sp, 128
+	fst.s	$fa0, $sp, 112
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $s7, 3
-	fst.s	$fa1, $sp, 132
+	fst.s	$fa1, $sp, 116
 	addi.d	$a1, $s1, 16
-	st.d	$a1, $sp, 136
-	st.d	$s1, $sp, 144
+	st.d	$a1, $sp, 120
+	st.d	$s1, $sp, 128
 	ori	$a1, $zero, 36
-	st.w	$a1, $sp, 168
+	st.w	$a1, $sp, 152
 	addi.d	$a1, $s1, 120
-	st.d	$a1, $sp, 176
+	st.d	$a1, $sp, 160
 	addi.d	$a1, $s1, 124
-	st.d	$a1, $sp, 184
+	st.d	$a1, $sp, 168
 	ld.d	$a0, $a0, 0
 	addi.d	$a1, $s1, 128
-	st.d	$a1, $sp, 192
+	st.d	$a1, $sp, 176
 	ld.w	$a1, $s4, 20
 	ld.d	$a2, $a0, 0
 	addi.d	$a3, $s1, 132
-	st.d	$a3, $sp, 200
-	st.w	$a1, $sp, 216
+	st.d	$a3, $sp, 184
+	st.w	$a1, $sp, 200
 	ld.d	$a2, $a2, 40
-	st.d	$zero, $sp, 152
+	st.d	$zero, $sp, 136
 	addi.d	$a1, $s1, 32
-	st.d	$a1, $sp, 160
+	st.d	$a1, $sp, 144
 .Ltmp61:                                # EH_LABEL
-	addi.d	$a1, $sp, 128
+	addi.d	$a1, $sp, 112
 	jirl	$ra, $a2, 0
 .Ltmp62:                                # EH_LABEL
 # %bb.61:                               # %.preheader376
@@ -3631,11 +3624,11 @@ _ZN35btSequentialImpulseConstraintSolver28solveGroupCacheFriendlySetupEPP17btCol
 .LBB18_64:                              # %._crit_edge393
                                         #   in Loop: Header=BB18_54 Depth=1
 	ld.d	$fp, $s3, 216
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ldx.w	$a0, $fp, $a0
 	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$a1, $a1, 1
 	add.w	$a2, $a0, $a2
 	bne	$a1, $s6, .LBB18_54
@@ -3658,17 +3651,17 @@ _ZN35btSequentialImpulseConstraintSolver28solveGroupCacheFriendlySetupEPP17btCol
 	addi.d	$s0, $s0, 8
 	bnez	$fp, .LBB18_66
 .LBB18_68:                              # %._crit_edge400
-	ld.w	$s2, $s3, 44
-	ld.w	$fp, $s3, 140
+	ld.w	$fp, $s3, 44
+	ld.w	$s2, $s3, 140
 	ld.w	$s1, $s3, 108
-	bge	$fp, $s2, .LBB18_94
+	bge	$s2, $fp, .LBB18_88
 # %bb.69:
 	ld.w	$a0, $s3, 144
-	bge	$a0, $s2, .LBB18_77
+	bge	$a0, $fp, .LBB18_81
 # %bb.70:
-	beqz	$s2, .LBB18_78
+	beqz	$fp, .LBB18_82
 # %bb.71:
-	slli.d	$a0, $s2, 2
+	slli.d	$a0, $fp, 2
 .Ltmp67:                                # EH_LABEL
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
@@ -3678,430 +3671,318 @@ _ZN35btSequentialImpulseConstraintSolver28solveGroupCacheFriendlySetupEPP17btCol
 	move	$s0, $a0
 	ld.w	$a1, $s3, 140
 	ld.d	$a0, $s3, 152
-	blez	$a1, .LBB18_79
-.LBB18_73:                              # %iter.check
-	ori	$a3, $zero, 4
+	blez	$a1, .LBB18_83
+.LBB18_73:                              # %.lr.ph.i.i.i304
+	ori	$a3, $zero, 8
 	move	$a2, $zero
-	bltu	$a1, $a3, .LBB18_88
-# %bb.74:                               # %iter.check
+	bltu	$a1, $a3, .LBB18_78
+# %bb.74:                               # %.lr.ph.i.i.i304
 	sub.d	$a3, $s0, $a0
-	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB18_88
-# %bb.75:                               # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB18_81
-# %bb.76:
-	move	$a2, $zero
-	b	.LBB18_85
-.LBB18_77:                              # %..lr.ph.i295_crit_edge
-	ld.d	$s0, $s3, 152
-	b	.LBB18_93
-.LBB18_78:
-	move	$s0, $zero
-	move	$a1, $fp
-	ld.d	$a0, $s3, 152
-	bgtz	$a1, .LBB18_73
-.LBB18_79:                              # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
-	beqz	$a0, .LBB18_92
-# %bb.80:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
-	ld.b	$a1, $s3, 160
-	andi	$a1, $a1, 1
-	bnez	$a1, .LBB18_91
-	b	.LBB18_92
-.LBB18_81:                              # %vector.ph
-	andi	$a3, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a4, $a0, 32
-	addi.d	$a5, $s0, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB18_82:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -16
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB18_82
-# %bb.83:                               # %middle.block
-	beq	$a2, $a1, .LBB18_90
-# %bb.84:                               # %vec.epilog.iter.check
-	beqz	$a3, .LBB18_88
-.LBB18_85:                              # %vec.epilog.ph
+	ori	$a4, $zero, 32
+	bltu	$a3, $a4, .LBB18_78
+# %bb.75:                               # %vector.ph
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s0, 16
 	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a5, $a2
-	alsl.d	$a4, $a5, $a0, 2
-	alsl.d	$a5, $a5, $s0, 2
 	.p2align	4, , 16
-.LBB18_86:                              # %vec.epilog.vector.body
+.LBB18_76:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB18_86
-# %bb.87:                               # %vec.epilog.middle.block
-	beq	$a2, $a1, .LBB18_90
-.LBB18_88:                              # %vec.epilog.scalar.ph.preheader
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB18_76
+# %bb.77:                               # %middle.block
+	beq	$a2, $a1, .LBB18_80
+.LBB18_78:                              # %scalar.ph.preheader
 	sub.d	$a1, $a1, $a2
 	alsl.d	$a3, $a2, $a0, 2
 	alsl.d	$a2, $a2, $s0, 2
 	.p2align	4, , 16
-.LBB18_89:                              # %vec.epilog.scalar.ph
+.LBB18_79:                              # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a3, 0
 	st.w	$a4, $a2, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
-	bnez	$a1, .LBB18_89
-.LBB18_90:                              # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i
+	bnez	$a1, .LBB18_79
+.LBB18_80:                              # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i
 	ld.bu	$a1, $s3, 160
-	beqz	$a1, .LBB18_92
-.LBB18_91:
+	bnez	$a1, .LBB18_85
+	b	.LBB18_86
+.LBB18_81:                              # %..lr.ph.i295_crit_edge
+	ld.d	$s0, $s3, 152
+	b	.LBB18_87
+.LBB18_82:
+	move	$s0, $zero
+	move	$a1, $s2
+	ld.d	$a0, $s3, 152
+	bgtz	$a1, .LBB18_73
+.LBB18_83:                              # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
+	beqz	$a0, .LBB18_86
+# %bb.84:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
+	ld.b	$a1, $s3, 160
+	andi	$a1, $a1, 1
+	beqz	$a1, .LBB18_86
+.LBB18_85:
 .Ltmp69:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp70:                                # EH_LABEL
-.LBB18_92:                              # %_ZN20btAlignedObjectArrayIiE10deallocateEv.exit.i.i
+.LBB18_86:                              # %_ZN20btAlignedObjectArrayIiE10deallocateEv.exit.i.i
 	ori	$a0, $zero, 1
 	st.b	$a0, $s3, 160
 	st.d	$s0, $s3, 152
-	st.w	$s2, $s3, 144
-.LBB18_93:                              # %.lr.ph.i295
-	alsl.d	$a0, $fp, $s0, 2
-	sub.d	$a1, $s2, $fp
+	st.w	$fp, $s3, 144
+.LBB18_87:                              # %.lr.ph.i295
+	alsl.d	$a0, $s2, $s0, 2
+	sub.d	$a1, $fp, $s2
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-.LBB18_94:                              # %.loopexit374
-	ld.w	$fp, $s3, 172
-	st.w	$s2, $s3, 140
-	bge	$fp, $s1, .LBB18_120
-# %bb.95:
+.LBB18_88:                              # %.loopexit374
+	ld.w	$s2, $s3, 172
+	st.w	$fp, $s3, 140
+	bge	$s2, $s1, .LBB18_108
+# %bb.89:
 	ld.w	$a0, $s3, 176
-	bge	$a0, $s1, .LBB18_103
-# %bb.96:
-	beqz	$s1, .LBB18_104
-# %bb.97:
+	bge	$a0, $s1, .LBB18_101
+# %bb.90:
+	beqz	$s1, .LBB18_102
+# %bb.91:
 	slli.d	$a0, $s1, 2
 .Ltmp72:                                # EH_LABEL
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 .Ltmp73:                                # EH_LABEL
-# %bb.98:                               # %.noexc334
+# %bb.92:                               # %.noexc334
 	move	$s0, $a0
 	ld.w	$a1, $s3, 172
 	ld.d	$a0, $s3, 184
-	blez	$a1, .LBB18_105
-.LBB18_99:                              # %iter.check481
-	ori	$a3, $zero, 4
+	blez	$a1, .LBB18_103
+.LBB18_93:                              # %.lr.ph.i.i.i325
+	ori	$a3, $zero, 8
 	move	$a2, $zero
-	bltu	$a1, $a3, .LBB18_114
-# %bb.100:                              # %iter.check481
+	bltu	$a1, $a3, .LBB18_98
+# %bb.94:                               # %.lr.ph.i.i.i325
 	sub.d	$a3, $s0, $a0
-	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB18_114
-# %bb.101:                              # %vector.main.loop.iter.check468
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB18_107
-# %bb.102:
-	move	$a2, $zero
-	b	.LBB18_111
-.LBB18_103:                             # %..lr.ph.i311_crit_edge
-	ld.d	$s0, $s3, 184
-	b	.LBB18_119
-.LBB18_104:
-	move	$s0, $zero
-	move	$a1, $fp
-	ld.d	$a0, $s3, 184
-	bgtz	$a1, .LBB18_99
-.LBB18_105:                             # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i321
-	beqz	$a0, .LBB18_118
-# %bb.106:                              # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i321
-	ld.b	$a1, $s3, 192
-	andi	$a1, $a1, 1
-	bnez	$a1, .LBB18_117
-	b	.LBB18_118
-.LBB18_107:                             # %vector.ph470
-	andi	$a3, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a4, $a0, 32
-	addi.d	$a5, $s0, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB18_108:                             # %vector.body473
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -16
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB18_108
-# %bb.109:                              # %middle.block478
-	beq	$a2, $a1, .LBB18_116
-# %bb.110:                              # %vec.epilog.iter.check483
-	beqz	$a3, .LBB18_114
-.LBB18_111:                             # %vec.epilog.ph485
+	ori	$a4, $zero, 32
+	bltu	$a3, $a4, .LBB18_98
+# %bb.95:                               # %vector.ph462
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s0, 16
 	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a5, $a2
-	alsl.d	$a4, $a5, $a0, 2
-	alsl.d	$a5, $a5, $s0, 2
 	.p2align	4, , 16
-.LBB18_112:                             # %vec.epilog.vector.body488
+.LBB18_96:                              # %vector.body465
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB18_112
-# %bb.113:                              # %vec.epilog.middle.block492
-	beq	$a2, $a1, .LBB18_116
-.LBB18_114:                             # %vec.epilog.scalar.ph482.preheader
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB18_96
+# %bb.97:                               # %middle.block470
+	beq	$a2, $a1, .LBB18_100
+.LBB18_98:                              # %scalar.ph460.preheader
 	sub.d	$a1, $a1, $a2
 	alsl.d	$a3, $a2, $a0, 2
 	alsl.d	$a2, $a2, $s0, 2
 	.p2align	4, , 16
-.LBB18_115:                             # %vec.epilog.scalar.ph482
+.LBB18_99:                              # %scalar.ph460
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a3, 0
 	st.w	$a4, $a2, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
-	bnez	$a1, .LBB18_115
-.LBB18_116:                             # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i330
+	bnez	$a1, .LBB18_99
+.LBB18_100:                             # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i330
 	ld.bu	$a1, $s3, 192
-	beqz	$a1, .LBB18_118
-.LBB18_117:
+	bnez	$a1, .LBB18_105
+	b	.LBB18_106
+.LBB18_101:                             # %..lr.ph.i311_crit_edge
+	ld.d	$s0, $s3, 184
+	b	.LBB18_107
+.LBB18_102:
+	move	$s0, $zero
+	move	$a1, $s2
+	ld.d	$a0, $s3, 184
+	bgtz	$a1, .LBB18_93
+.LBB18_103:                             # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i321
+	beqz	$a0, .LBB18_106
+# %bb.104:                              # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i321
+	ld.b	$a1, $s3, 192
+	andi	$a1, $a1, 1
+	beqz	$a1, .LBB18_106
+.LBB18_105:
 .Ltmp74:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp75:                                # EH_LABEL
-.LBB18_118:                             # %_ZN20btAlignedObjectArrayIiE10deallocateEv.exit.i.i324
+.LBB18_106:                             # %_ZN20btAlignedObjectArrayIiE10deallocateEv.exit.i.i324
 	ori	$a0, $zero, 1
 	st.b	$a0, $s3, 192
 	st.d	$s0, $s3, 184
 	st.w	$s1, $s3, 176
-.LBB18_119:                             # %.lr.ph.i311
-	alsl.d	$a0, $fp, $s0, 2
-	sub.d	$a1, $s1, $fp
+.LBB18_107:                             # %.lr.ph.i311
+	alsl.d	$a0, $s2, $s0, 2
+	sub.d	$a1, $s1, $s2
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-.LBB18_120:                             # %.loopexit373
+.LBB18_108:                             # %.loopexit373
 	st.w	$s1, $s3, 172
-	blez	$s2, .LBB18_134
-# %bb.121:                              # %iter.check507
-	ld.d	$a0, $s3, 152
-	ori	$a1, $zero, 4
-	bgeu	$s2, $a1, .LBB18_123
-# %bb.122:
-	move	$a1, $zero
-	b	.LBB18_132
-.LBB18_123:                             # %vector.main.loop.iter.check496
-	ori	$a1, $zero, 16
-	bgeu	$s2, $a1, .LBB18_125
-# %bb.124:
-	move	$a1, $zero
-	b	.LBB18_129
-.LBB18_125:                             # %vector.ph498
-	andi	$a2, $s2, 12
-	pcalau12i	$a1, %pc_hi20(.LCPI18_1)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI18_1)
-	bstrpick.d	$a1, $s2, 30, 4
-	slli.d	$a1, $a1, 4
-	addi.d	$a3, $a0, 32
-	move	$a4, $a1
+	blez	$fp, .LBB18_116
+# %bb.109:                              # %.lr.ph403
+	ld.d	$a1, $s3, 152
+	ori	$a0, $zero, 8
+	bgeu	$fp, $a0, .LBB18_111
+# %bb.110:
+	move	$a0, $zero
+	b	.LBB18_114
+.LBB18_111:                             # %vector.ph475
+	pcalau12i	$a0, %pc_hi20(.LCPI18_1)
+	vld	$vr0, $a0, %pc_lo12(.LCPI18_1)
+	bstrpick.d	$a0, $fp, 30, 3
+	slli.d	$a0, $a0, 3
+	addi.d	$a2, $a1, 16
+	move	$a3, $a0
 	.p2align	4, , 16
-.LBB18_126:                             # %vector.body501
+.LBB18_112:                             # %vector.body478
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.wu	$xr1, $xr0, 8
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	xvaddi.wu	$xr0, $xr0, 16
-	addi.d	$a4, $a4, -16
-	addi.d	$a3, $a3, 64
-	bnez	$a4, .LBB18_126
-# %bb.127:                              # %middle.block504
-	beq	$a1, $s2, .LBB18_134
-# %bb.128:                              # %vec.epilog.iter.check509
-	beqz	$a2, .LBB18_132
-.LBB18_129:                             # %vec.epilog.ph511
-	move	$a3, $a1
-	pcalau12i	$a1, %pc_hi20(.LCPI18_2)
-	vld	$vr0, $a1, %pc_lo12(.LCPI18_2)
-	bstrpick.d	$a1, $s2, 30, 2
-	slli.d	$a1, $a1, 2
-	vreplgr2vr.w	$vr1, $a3
-	vor.v	$vr0, $vr1, $vr0
-	sub.d	$a2, $a3, $a1
-	alsl.d	$a3, $a3, $a0, 2
+	vaddi.wu	$vr1, $vr0, 4
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	vaddi.wu	$vr0, $vr0, 8
+	addi.d	$a3, $a3, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB18_112
+# %bb.113:                              # %middle.block481
+	beq	$a0, $fp, .LBB18_116
+.LBB18_114:                             # %scalar.ph473.preheader
+	alsl.d	$a1, $a0, $a1, 2
+	sub.d	$a2, $fp, $a0
 	.p2align	4, , 16
-.LBB18_130:                             # %vec.epilog.vector.body514
+.LBB18_115:                             # %scalar.ph473
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr0, $a3, 0
-	vaddi.wu	$vr0, $vr0, 4
-	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 16
-	bnez	$a2, .LBB18_130
-# %bb.131:                              # %vec.epilog.middle.block519
-	beq	$a1, $s2, .LBB18_134
-.LBB18_132:                             # %vec.epilog.scalar.ph508.preheader
-	alsl.d	$a0, $a1, $a0, 2
-	sub.d	$a2, $s2, $a1
-	.p2align	4, , 16
-.LBB18_133:                             # %vec.epilog.scalar.ph508
-                                        # =>This Inner Loop Header: Depth=1
-	st.w	$a1, $a0, 0
-	addi.d	$a1, $a1, 1
+	st.w	$a0, $a1, 0
+	addi.d	$a0, $a0, 1
 	addi.d	$a2, $a2, -1
-	addi.d	$a0, $a0, 4
-	bnez	$a2, .LBB18_133
-.LBB18_134:                             # %.preheader
-	blez	$s1, .LBB18_148
-# %bb.135:                              # %iter.check537
-	ld.d	$a0, $s3, 184
-	ori	$a1, $zero, 4
-	bgeu	$s1, $a1, .LBB18_137
-# %bb.136:
-	move	$a1, $zero
-	b	.LBB18_146
-.LBB18_137:                             # %vector.main.loop.iter.check523
-	ori	$a1, $zero, 16
-	bgeu	$s1, $a1, .LBB18_139
-# %bb.138:
-	move	$a1, $zero
-	b	.LBB18_143
-.LBB18_139:                             # %vector.ph525
-	andi	$a2, $s1, 12
-	pcalau12i	$a1, %pc_hi20(.LCPI18_1)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI18_1)
-	bstrpick.d	$a1, $s1, 30, 4
-	slli.d	$a1, $a1, 4
-	addi.d	$a3, $a0, 32
-	move	$a4, $a1
+	addi.d	$a1, $a1, 4
+	bnez	$a2, .LBB18_115
+.LBB18_116:                             # %.preheader
+	blez	$s1, .LBB18_124
+# %bb.117:                              # %.lr.ph405
+	ld.d	$a1, $s3, 184
+	ori	$a0, $zero, 8
+	bgeu	$s1, $a0, .LBB18_119
+# %bb.118:
+	move	$a0, $zero
+	b	.LBB18_122
+.LBB18_119:                             # %vector.ph486
+	pcalau12i	$a0, %pc_hi20(.LCPI18_1)
+	vld	$vr0, $a0, %pc_lo12(.LCPI18_1)
+	bstrpick.d	$a0, $s1, 30, 3
+	slli.d	$a0, $a0, 3
+	addi.d	$a2, $a1, 16
+	move	$a3, $a0
 	.p2align	4, , 16
-.LBB18_140:                             # %vector.body528
+.LBB18_120:                             # %vector.body489
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.wu	$xr1, $xr0, 8
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	xvaddi.wu	$xr0, $xr0, 16
-	addi.d	$a4, $a4, -16
-	addi.d	$a3, $a3, 64
-	bnez	$a4, .LBB18_140
-# %bb.141:                              # %middle.block534
-	beq	$a1, $s1, .LBB18_148
-# %bb.142:                              # %vec.epilog.iter.check539
-	beqz	$a2, .LBB18_146
-.LBB18_143:                             # %vec.epilog.ph541
-	move	$a3, $a1
-	pcalau12i	$a1, %pc_hi20(.LCPI18_2)
-	vld	$vr0, $a1, %pc_lo12(.LCPI18_2)
-	bstrpick.d	$a1, $s1, 30, 2
-	slli.d	$a1, $a1, 2
-	vreplgr2vr.w	$vr1, $a3
-	vor.v	$vr0, $vr1, $vr0
-	sub.d	$a2, $a3, $a1
-	alsl.d	$a3, $a3, $a0, 2
+	vaddi.wu	$vr1, $vr0, 4
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	vaddi.wu	$vr0, $vr0, 8
+	addi.d	$a3, $a3, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB18_120
+# %bb.121:                              # %middle.block495
+	beq	$a0, $s1, .LBB18_124
+.LBB18_122:                             # %scalar.ph484.preheader
+	alsl.d	$a1, $a0, $a1, 2
+	sub.d	$a2, $s1, $a0
 	.p2align	4, , 16
-.LBB18_144:                             # %vec.epilog.vector.body547
+.LBB18_123:                             # %scalar.ph484
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr0, $a3, 0
-	vaddi.wu	$vr0, $vr0, 4
-	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 16
-	bnez	$a2, .LBB18_144
-# %bb.145:                              # %vec.epilog.middle.block552
-	beq	$a1, $s1, .LBB18_148
-.LBB18_146:                             # %vec.epilog.scalar.ph538.preheader
-	alsl.d	$a0, $a1, $a0, 2
-	sub.d	$a2, $s1, $a1
-	.p2align	4, , 16
-.LBB18_147:                             # %vec.epilog.scalar.ph538
-                                        # =>This Inner Loop Header: Depth=1
-	st.w	$a1, $a0, 0
-	addi.d	$a1, $a1, 1
+	st.w	$a0, $a1, 0
+	addi.d	$a0, $a0, 1
 	addi.d	$a2, $a2, -1
-	addi.d	$a0, $a0, 4
-	bnez	$a2, .LBB18_147
-.LBB18_148:                             # %.loopexit
+	addi.d	$a1, $a1, 4
+	bnez	$a2, .LBB18_123
+.LBB18_124:                             # %.loopexit
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager12Stop_ProfileEv)
 	jirl	$ra, $ra, 0
 	movgr2fr.w	$fa0, $zero
-	fld.d	$fs0, $sp, 224                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 312                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 320
+	fld.d	$fs0, $sp, 208                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 296                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 304
 	ret
-.LBB18_149:
+.LBB18_125:
 .Ltmp76:                                # EH_LABEL
-	b	.LBB18_160
-.LBB18_150:
+	b	.LBB18_136
+.LBB18_126:
 .Ltmp71:                                # EH_LABEL
-	b	.LBB18_160
-.LBB18_151:
+	b	.LBB18_136
+.LBB18_127:
 .Ltmp54:                                # EH_LABEL
-	b	.LBB18_160
-.LBB18_152:
+	b	.LBB18_136
+.LBB18_128:
 .Ltmp46:                                # EH_LABEL
-	b	.LBB18_160
-.LBB18_153:
+	b	.LBB18_136
+.LBB18_129:
 .Ltmp41:                                # EH_LABEL
-	b	.LBB18_160
-.LBB18_154:
+	b	.LBB18_136
+.LBB18_130:
 .Ltmp63:                                # EH_LABEL
-	b	.LBB18_160
-.LBB18_155:
+	b	.LBB18_136
+.LBB18_131:
 .Ltmp57:                                # EH_LABEL
-	b	.LBB18_160
-.LBB18_156:
+	b	.LBB18_136
+.LBB18_132:
 .Ltmp60:                                # EH_LABEL
-	b	.LBB18_160
-.LBB18_157:
+	b	.LBB18_136
+.LBB18_133:
 .Ltmp66:                                # EH_LABEL
-	b	.LBB18_160
-.LBB18_158:
+	b	.LBB18_136
+.LBB18_134:
 .Ltmp49:                                # EH_LABEL
-	b	.LBB18_160
-.LBB18_159:
+	b	.LBB18_136
+.LBB18_135:
 .Ltmp36:                                # EH_LABEL
-.LBB18_160:
+.LBB18_136:
 	move	$fp, $a0
 .Ltmp77:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager12Stop_ProfileEv)
 	jirl	$ra, $ra, 0
 .Ltmp78:                                # EH_LABEL
-# %bb.161:                              # %_ZN14CProfileSampleD2Ev.exit
+# %bb.137:                              # %_ZN14CProfileSampleD2Ev.exit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB18_162:
+.LBB18_138:
 .Ltmp79:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -4239,20 +4120,20 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception3
 # %bb.0:
-	addi.d	$sp, $sp, -272
-	.cfi_def_cfa_offset 272
-	st.d	$ra, $sp, 264                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 256                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 184                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 176                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -240
+	.cfi_def_cfa_offset 240
+	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -4274,15 +4155,15 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager13Start_ProfileEPKc)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 20
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 80                    # 8-byte Folded Spill
 	blez	$a0, .LBB19_144
 # %bb.1:                                # %.lr.ph313
 	ld.wu	$a0, $s0, 108
 	ld.wu	$a1, $s0, 44
 	move	$s4, $zero
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	addi.w	$s5, $a0, 0
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	addi.w	$s6, $a1, 0
 	lu12i.w	$a0, 406
 	ori	$a7, $a0, 1549
@@ -4291,27 +4172,25 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	lu12i.w	$a0, -349526
 	ori	$a0, $a0, 2731
 	lu32i.d	$a0, 0
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ori	$s7, $zero, 112
 	movgr2fr.w	$fs0, $zero
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 128                  # 32-byte Folded Spill
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 168                   # 8-byte Folded Spill
-	st.d	$a7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$t0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 64                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a7, $sp, 56                    # 8-byte Folded Spill
+	st.d	$t0, $sp, 48                    # 8-byte Folded Spill
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	b	.LBB19_3
 	.p2align	4, , 16
 .LBB19_2:                               # %.loopexit267
                                         #   in Loop: Header=BB19_3 Depth=1
 	ld.w	$a0, $s2, 20
 	addi.w	$s4, $s4, 1
-	ld.d	$a7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$t0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
 	bge	$s4, $a0, .LBB19_144
 .LBB19_3:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB19_134 Depth 2
@@ -4385,7 +4264,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	srli.d	$a4, $a3, 2
 	xor	$a3, $a4, $a3
 	bstrpick.d	$a4, $a3, 31, 0
-	ld.d	$a5, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a5, $sp, 16                    # 8-byte Folded Reload
 	mul.d	$a4, $a4, $a5
 	srli.d	$a4, $a4, 33
 	alsl.d	$a4, $a4, $a4, 1
@@ -4473,7 +4352,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	srli.d	$a4, $a3, 2
 	xor	$a3, $a4, $a3
 	bstrpick.d	$a4, $a3, 31, 0
-	ld.d	$a5, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a5, $sp, 16                    # 8-byte Folded Reload
 	mul.d	$a4, $a4, $a5
 	srli.d	$a4, $a4, 33
 	alsl.d	$a4, $a4, $a4, 1
@@ -4516,8 +4395,8 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	ld.w	$a0, $s0, 76
 	andi	$a1, $a1, 1
 	pcalau12i	$a2, %pc_hi20(.LCPI19_0)
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 96                    # 8-byte Folded Spill
 	bnez	$a1, .LBB19_76
 # %bb.20:                               # %.preheader269
                                         #   in Loop: Header=BB19_3 Depth=1
@@ -4548,7 +4427,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	blt	$s1, $a0, .LBB19_22
 .LBB19_23:                              # %.preheader268
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
 	blez	$s3, .LBB19_68
 # %bb.24:                               # %.lr.ph302.preheader
                                         #   in Loop: Header=BB19_3 Depth=1
@@ -4593,7 +4472,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	move	$a0, $s4
 	bge	$s4, $fp, .LBB19_62
 # %bb.31:                               #   in Loop: Header=BB19_25 Depth=2
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
 	beqz	$fp, .LBB19_55
 # %bb.32:                               #   in Loop: Header=BB19_25 Depth=2
 	mul.d	$a0, $fp, $s7
@@ -4685,7 +4564,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 .LBB19_47:                              # %_ZNK20btAlignedObjectArrayI12btSolverBodyE4copyEiiPS0_.exit.i.i.i219
                                         #   in Loop: Header=BB19_25 Depth=2
 	ld.d	$a0, $s0, 24
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
 	beqz	$a0, .LBB19_50
 # %bb.48:                               # %_ZNK20btAlignedObjectArrayI12btSolverBodyE4copyEiiPS0_.exit.i.i.i219
                                         #   in Loop: Header=BB19_25 Depth=2
@@ -4704,7 +4583,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	st.b	$a1, $s0, 32
 	st.d	$s3, $s0, 24
 	st.w	$fp, $s0, 16
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
 .LBB19_51:                              # %_ZN20btAlignedObjectArrayI12btSolverBodyE6expandERKS0_.exit.i205
                                         #   in Loop: Header=BB19_25 Depth=2
 	ld.d	$a1, $s0, 24
@@ -4717,11 +4596,13 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s0, 24
-	ld.w	$a2, $s4, 256
 	add.d	$a0, $a1, $fp
-	xvld	$xr0, $sp, 128                  # 32-byte Folded Reload
-	xvstx	$xr0, $a1, $fp
-	xvst	$xr0, $a0, 80
+	ld.w	$a2, $s4, 256
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vstx	$vr1, $a1, $fp
+	vst	$vr1, $a0, 16
+	vst	$vr1, $a0, 80
+	vst	$vr1, $a0, 96
 	ori	$a1, $zero, 2
 	bne	$a2, $a1, .LBB19_53
 # %bb.52:                               #   in Loop: Header=BB19_25 Depth=2
@@ -4743,15 +4624,14 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	vld	$vr0, $s4, 364
 	b	.LBB19_54
 .LBB19_53:                              #   in Loop: Header=BB19_25 Depth=2
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	vld	$vr0, $a1, %pc_lo12(.LCPI19_0)
 	st.d	$zero, $a0, 72
-	vld	$vr1, $sp, 96                   # 16-byte Folded Reload
 	vst	$vr1, $a0, 48
 .LBB19_54:                              # %_ZN35btSequentialImpulseConstraintSolver14initSolverBodyEP12btSolverBodyP17btCollisionObject.exit.i207
                                         #   in Loop: Header=BB19_25 Depth=2
 	vst	$vr0, $a0, 32
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a0, $s8, 0
 	st.w	$s6, $s4, 224
 	ld.d	$s1, $a0, 32
@@ -4781,8 +4661,8 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 .LBB19_58:                              # %_ZNK20btAlignedObjectArrayI12btSolverBodyE4copyEiiPS0_.exit.i.i.i248
                                         #   in Loop: Header=BB19_25 Depth=2
 	ld.d	$a0, $s0, 24
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
 	beqz	$a0, .LBB19_61
 # %bb.59:                               # %_ZNK20btAlignedObjectArrayI12btSolverBodyE4copyEiiPS0_.exit.i.i.i248
                                         #   in Loop: Header=BB19_25 Depth=2
@@ -4801,7 +4681,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	st.b	$a1, $s0, 32
 	st.d	$s3, $s0, 24
 	st.w	$fp, $s0, 16
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
 .LBB19_62:                              # %_ZN20btAlignedObjectArrayI12btSolverBodyE6expandERKS0_.exit.i234
                                         #   in Loop: Header=BB19_25 Depth=2
 	ld.d	$a1, $s0, 24
@@ -4814,11 +4694,13 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s0, 24
-	ld.w	$a2, $s1, 256
 	add.d	$a0, $a1, $fp
-	xvld	$xr0, $sp, 128                  # 32-byte Folded Reload
-	xvstx	$xr0, $a1, $fp
-	xvst	$xr0, $a0, 80
+	ld.w	$a2, $s1, 256
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vstx	$vr1, $a1, $fp
+	vst	$vr1, $a0, 16
+	vst	$vr1, $a0, 80
+	vst	$vr1, $a0, 96
 	ori	$a1, $zero, 2
 	bne	$a2, $a1, .LBB19_64
 # %bb.63:                               #   in Loop: Header=BB19_25 Depth=2
@@ -4840,15 +4722,14 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	vld	$vr0, $s1, 364
 	b	.LBB19_65
 .LBB19_64:                              #   in Loop: Header=BB19_25 Depth=2
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	vld	$vr0, $a1, %pc_lo12(.LCPI19_0)
 	st.d	$zero, $a0, 72
-	vld	$vr1, $sp, 96                   # 16-byte Folded Reload
 	vst	$vr1, $a0, 48
 .LBB19_65:                              # %_ZN35btSequentialImpulseConstraintSolver14initSolverBodyEP12btSolverBodyP17btCollisionObject.exit.i236
                                         #   in Loop: Header=BB19_25 Depth=2
 	vst	$vr0, $a0, 32
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a0, $s8, 0
 	st.w	$s4, $s1, 224
 	.p2align	4, , 16
@@ -5029,9 +4910,9 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 .LBB19_71:                              # %._crit_edge307
                                         #   in Loop: Header=BB19_3 Depth=1
 	ld.w	$a0, $s0, 108
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 64                    # 8-byte Folded Reload
 	blez	$a0, .LBB19_2
 # %bb.72:                               # %.lr.ph310.preheader
                                         #   in Loop: Header=BB19_3 Depth=1
@@ -5106,7 +4987,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	blt	$s1, $a0, .LBB19_78
 .LBB19_79:                              # %.preheader271
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
 	blez	$s3, .LBB19_124
 # %bb.80:                               # %.lr.ph291.preheader
                                         #   in Loop: Header=BB19_3 Depth=1
@@ -5151,7 +5032,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	move	$a0, $s4
 	bge	$s4, $fp, .LBB19_118
 # %bb.87:                               #   in Loop: Header=BB19_81 Depth=2
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
 	beqz	$fp, .LBB19_111
 # %bb.88:                               #   in Loop: Header=BB19_81 Depth=2
 	mul.d	$a0, $fp, $s7
@@ -5190,7 +5071,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	move	$a0, $s6
 	bge	$s6, $fp, .LBB19_107
 # %bb.94:                               #   in Loop: Header=BB19_81 Depth=2
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
 	beqz	$fp, .LBB19_100
 # %bb.95:                               #   in Loop: Header=BB19_81 Depth=2
 	mul.d	$a0, $fp, $s7
@@ -5244,7 +5125,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 .LBB19_103:                             # %_ZNK20btAlignedObjectArrayI12btSolverBodyE4copyEiiPS0_.exit.i.i.i
                                         #   in Loop: Header=BB19_81 Depth=2
 	ld.d	$a0, $s0, 24
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
 	beqz	$a0, .LBB19_106
 # %bb.104:                              # %_ZNK20btAlignedObjectArrayI12btSolverBodyE4copyEiiPS0_.exit.i.i.i
                                         #   in Loop: Header=BB19_81 Depth=2
@@ -5263,7 +5144,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	st.b	$a1, $s0, 32
 	st.d	$s3, $s0, 24
 	st.w	$fp, $s0, 16
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
 .LBB19_107:                             # %_ZN20btAlignedObjectArrayI12btSolverBodyE6expandERKS0_.exit.i
                                         #   in Loop: Header=BB19_81 Depth=2
 	ld.d	$a1, $s0, 24
@@ -5276,11 +5157,13 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s0, 24
-	ld.w	$a2, $s4, 256
 	add.d	$a0, $a1, $fp
-	xvld	$xr0, $sp, 128                  # 32-byte Folded Reload
-	xvstx	$xr0, $a1, $fp
-	xvst	$xr0, $a0, 80
+	ld.w	$a2, $s4, 256
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vstx	$vr1, $a1, $fp
+	vst	$vr1, $a0, 16
+	vst	$vr1, $a0, 80
+	vst	$vr1, $a0, 96
 	ori	$a1, $zero, 2
 	bne	$a2, $a1, .LBB19_109
 # %bb.108:                              #   in Loop: Header=BB19_81 Depth=2
@@ -5302,15 +5185,14 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	vld	$vr0, $s4, 364
 	b	.LBB19_110
 .LBB19_109:                             #   in Loop: Header=BB19_81 Depth=2
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	vld	$vr0, $a1, %pc_lo12(.LCPI19_0)
 	st.d	$zero, $a0, 72
-	vld	$vr1, $sp, 96                   # 16-byte Folded Reload
 	vst	$vr1, $a0, 48
 .LBB19_110:                             # %_ZN35btSequentialImpulseConstraintSolver14initSolverBodyEP12btSolverBodyP17btCollisionObject.exit.i
                                         #   in Loop: Header=BB19_81 Depth=2
 	vst	$vr0, $a0, 32
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a0, $s8, 0
 	st.w	$s6, $s4, 224
 	ld.d	$s1, $a0, 32
@@ -5340,8 +5222,8 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 .LBB19_114:                             # %_ZNK20btAlignedObjectArrayI12btSolverBodyE4copyEiiPS0_.exit.i.i.i190
                                         #   in Loop: Header=BB19_81 Depth=2
 	ld.d	$a0, $s0, 24
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
 	beqz	$a0, .LBB19_117
 # %bb.115:                              # %_ZNK20btAlignedObjectArrayI12btSolverBodyE4copyEiiPS0_.exit.i.i.i190
                                         #   in Loop: Header=BB19_81 Depth=2
@@ -5360,7 +5242,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	st.b	$a1, $s0, 32
 	st.d	$s3, $s0, 24
 	st.w	$fp, $s0, 16
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
 .LBB19_118:                             # %_ZN20btAlignedObjectArrayI12btSolverBodyE6expandERKS0_.exit.i176
                                         #   in Loop: Header=BB19_81 Depth=2
 	ld.d	$a1, $s0, 24
@@ -5373,11 +5255,13 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s0, 24
-	ld.w	$a2, $s1, 256
 	add.d	$a0, $a1, $fp
-	xvld	$xr0, $sp, 128                  # 32-byte Folded Reload
-	xvstx	$xr0, $a1, $fp
-	xvst	$xr0, $a0, 80
+	ld.w	$a2, $s1, 256
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vstx	$vr1, $a1, $fp
+	vst	$vr1, $a0, 16
+	vst	$vr1, $a0, 80
+	vst	$vr1, $a0, 96
 	ori	$a1, $zero, 2
 	bne	$a2, $a1, .LBB19_120
 # %bb.119:                              #   in Loop: Header=BB19_81 Depth=2
@@ -5399,15 +5283,14 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	vld	$vr0, $s1, 364
 	b	.LBB19_121
 .LBB19_120:                             #   in Loop: Header=BB19_81 Depth=2
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	vld	$vr0, $a1, %pc_lo12(.LCPI19_0)
 	st.d	$zero, $a0, 72
-	vld	$vr1, $sp, 96                   # 16-byte Folded Reload
 	vst	$vr1, $a0, 48
 .LBB19_121:                             # %_ZN35btSequentialImpulseConstraintSolver14initSolverBodyEP12btSolverBodyP17btCollisionObject.exit.i178
                                         #   in Loop: Header=BB19_81 Depth=2
 	vst	$vr0, $a0, 32
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a0, $s8, 0
 	st.w	$s4, $s1, 224
 	.p2align	4, , 16
@@ -5588,9 +5471,9 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 .LBB19_127:                             # %._crit_edge295
                                         #   in Loop: Header=BB19_3 Depth=1
 	ld.w	$a0, $s0, 108
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 64                    # 8-byte Folded Reload
 	blez	$a0, .LBB19_2
 # %bb.128:                              # %.lr.ph298.preheader
                                         #   in Loop: Header=BB19_3 Depth=1
@@ -5651,7 +5534,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	st.w	$a5, $a2, 0
 	stx.w	$a6, $a0, $a4
 	addi.d	$a2, $a2, 4
-	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
 	beq	$a4, $a3, .LBB19_11
 .LBB19_134:                             # %.peel.next342
                                         #   Parent Loop BB19_3 Depth=1
@@ -5692,7 +5575,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	st.w	$a5, $a2, 0
 	stx.w	$a6, $a0, $a4
 	addi.d	$a2, $a2, 4
-	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
 	beq	$a4, $a3, .LBB19_18
 .LBB19_140:                             # %.peel.next364
                                         #   Parent Loop BB19_3 Depth=1
@@ -5767,7 +5650,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	addi.d	$s2, $s2, 4
 	bne	$s3, $s2, .LBB19_151
 # %bb.152:                              # %._crit_edge324.loopexit
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 20
 .LBB19_153:                             # %._crit_edge324
                                         # =>This Inner Loop Header: Depth=1
@@ -5817,7 +5700,7 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	addi.d	$s2, $s2, 4
 	bne	$s3, $s2, .LBB19_159
 # %bb.160:                              # %._crit_edge318.loopexit
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 20
 .LBB19_161:                             # %._crit_edge318
                                         # =>This Inner Loop Header: Depth=1
@@ -5827,19 +5710,19 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager12Stop_ProfileEv)
 	jirl	$ra, $ra, 0
 	movgr2fr.w	$fa0, $zero
-	fld.d	$fs0, $sp, 176                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 264                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 272
+	fld.d	$fs0, $sp, 144                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 240
 	ret
 .LBB19_163:
 .Ltmp97:                                # EH_LABEL

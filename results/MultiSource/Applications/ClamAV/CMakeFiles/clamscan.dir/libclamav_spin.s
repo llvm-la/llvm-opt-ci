@@ -1,6 +1,6 @@
 	.file	"libclamav_spin.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function unspin
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function unspin
 .LCPI0_0:
 	.byte	0                               # 0x0
 	.byte	255                             # 0xff
@@ -18,41 +18,23 @@
 	.byte	243                             # 0xf3
 	.byte	242                             # 0xf2
 	.byte	241                             # 0xf1
-	.byte	240                             # 0xf0
-	.byte	239                             # 0xef
-	.byte	238                             # 0xee
-	.byte	237                             # 0xed
-	.byte	236                             # 0xec
-	.byte	235                             # 0xeb
-	.byte	234                             # 0xea
-	.byte	233                             # 0xe9
-	.byte	232                             # 0xe8
-	.byte	231                             # 0xe7
-	.byte	230                             # 0xe6
-	.byte	229                             # 0xe5
-	.byte	228                             # 0xe4
-	.byte	227                             # 0xe3
-	.byte	226                             # 0xe2
-	.byte	225                             # 0xe1
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
 .LCPI0_1:
+	.byte	7                               # 0x7
+	.byte	6                               # 0x6
+	.byte	5                               # 0x5
+	.byte	4                               # 0x4
+	.byte	3                               # 0x3
+	.byte	2                               # 0x2
+	.byte	1                               # 0x1
 	.byte	0                               # 0x0
 	.byte	255                             # 0xff
-	.byte	254                             # 0xfe
-	.byte	253                             # 0xfd
-	.byte	252                             # 0xfc
-	.byte	251                             # 0xfb
-	.byte	250                             # 0xfa
-	.byte	249                             # 0xf9
-	.byte	248                             # 0xf8
-	.byte	247                             # 0xf7
-	.byte	246                             # 0xf6
-	.byte	245                             # 0xf5
-	.byte	244                             # 0xf4
-	.byte	243                             # 0xf3
-	.byte	242                             # 0xf2
-	.byte	241                             # 0xf1
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
 	.text
 	.globl	unspin
 	.p2align	2
@@ -170,85 +152,56 @@ unspin:                                 # @unspin
 	lu12i.w	$a2, 3
 .LBB0_13:                               # %iter.check
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
 	add.d	$a6, $fp, $a1
-	addi.d	$a0, $s8, 32
-	xvreplgr2vr.b	$xr1, $s8
-	xvadd.b	$xr0, $xr1, $xr0
-	ori	$a1, $a2, 451
+	addi.d	$a0, $s8, 16
+	vreplgr2vr.b	$vr1, $s8
+	vadd.b	$vr0, $vr1, $vr0
+	ori	$a1, $a2, 467
 	add.d	$a1, $s4, $a1
 	lu12i.w	$a5, 1
-	ori	$a2, $a5, 480
-	xvrepli.b	$xr1, -32
+	ori	$a2, $a5, 496
 	.p2align	4, , 16
 .LBB0_14:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvldx	$xr2, $s7, $a1
-	xvpermi.d	$xr3, $xr0, 78
-	xvshuf4i.w	$xr3, $xr3, 27
-	xvshuf4i.b	$xr3, $xr3, 27
-	xvxor.v	$xr2, $xr2, $xr3
-	xvstx	$xr2, $s7, $a1
-	xvadd.b	$xr0, $xr0, $xr1
-	addi.d	$a2, $a2, -32
-	addi.d	$a1, $a1, -32
+	vldx	$vr1, $s7, $a1
+	vshuf4i.w	$vr2, $vr0, 27
+	vshuf4i.b	$vr2, $vr2, 27
+	vxor.v	$vr1, $vr1, $vr2
+	vstx	$vr1, $s7, $a1
+	vsubi.bu	$vr0, $vr0, 16
+	addi.d	$a2, $a2, -16
+	addi.d	$a1, $a1, -16
 	bnez	$a2, .LBB0_14
 # %bb.15:                               # %vec.epilog.ph
-	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
-	vld	$vr0, $a1, %pc_lo12(.LCPI0_1)
-	vreplgr2vr.b	$vr1, $a0
-	vadd.b	$vr0, $vr1, $vr0
-	ori	$a0, $a5, 4083
-	vldx	$vr1, $fp, $a0
-	addi.d	$a1, $s8, 16
-	vshuf4i.w	$vr0, $vr0, 27
-	vshuf4i.b	$vr0, $vr0, 27
-	vxor.v	$vr0, $vr1, $vr0
-	ori	$a2, $a5, 4082
-	ldx.b	$a3, $fp, $a2
-	vstx	$vr0, $fp, $a0
-	ori	$a0, $a5, 4081
-	ldx.b	$a4, $fp, $a0
-	xor	$a1, $a3, $a1
-	addi.d	$a3, $s8, 15
-	stx.b	$a1, $fp, $a2
-	xor	$a1, $a4, $a3
-	ori	$a2, $a5, 4080
-	ldx.b	$a3, $fp, $a2
-	addi.d	$a4, $s8, 14
-	stx.b	$a1, $fp, $a0
-	addi.d	$a0, $s8, 13
-	xor	$a1, $a3, $a4
-	ori	$a3, $a5, 4079
-	ldx.b	$a4, $fp, $a3
-	stx.b	$a1, $fp, $a2
-	ori	$a1, $a5, 4078
-	ldx.b	$a2, $fp, $a1
-	xor	$a0, $a4, $a0
-	addi.d	$a4, $s8, 12
-	stx.b	$a0, $fp, $a3
-	xor	$a0, $a2, $a4
-	ori	$a2, $a5, 4077
-	ldx.b	$a3, $fp, $a2
-	addi.d	$a4, $s8, 11
-	stx.b	$a0, $fp, $a1
-	addi.d	$a0, $s8, 10
-	xor	$a1, $a3, $a4
-	ori	$a3, $a5, 4076
-	ldx.b	$a4, $fp, $a3
-	stx.b	$a1, $fp, $a2
-	ori	$a1, $a5, 4075
-	ldx.b	$a2, $fp, $a1
-	xor	$a0, $a4, $a0
-	addi.d	$a4, $s8, 9
-	stx.b	$a0, $fp, $a3
-	xor	$a0, $a2, $a4
+	addi.d	$a1, $s8, 8
+	vinsgr2vr.b	$vr0, $a0, 0
+	vinsgr2vr.b	$vr0, $a0, 1
+	vinsgr2vr.b	$vr0, $a0, 2
+	vinsgr2vr.b	$vr0, $a0, 3
+	vinsgr2vr.b	$vr0, $a0, 4
+	vinsgr2vr.b	$vr0, $a0, 5
+	vinsgr2vr.b	$vr0, $a0, 6
+	vinsgr2vr.b	$vr0, $a0, 7
+	lu12i.w	$a0, -8209
+	ori	$a0, $a0, 3840
+	lu32i.d	$a0, -328708
+	lu52i.d	$a0, $a0, -97
+	vreplgr2vr.d	$vr1, $a0
+	ori	$a0, $a5, 4075
+	ldx.d	$a2, $fp, $a0
+	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
+	vld	$vr2, $a3, %pc_lo12(.LCPI0_1)
+	vadd.b	$vr0, $vr0, $vr1
+	add.d	$a0, $fp, $a0
+	vinsgr2vr.d	$vr1, $a2, 0
+	vshuf.b	$vr0, $vr0, $vr0, $vr2
 	ori	$a2, $a5, 4074
 	ldx.b	$a3, $fp, $a2
-	addi.d	$a4, $s8, 8
-	stx.b	$a0, $fp, $a1
+	vxor.v	$vr0, $vr1, $vr0
+	vstelm.d	$vr0, $a0, 0, 0
 	addi.d	$a0, $s8, 7
-	xor	$a1, $a3, $a4
+	xor	$a1, $a3, $a1
 	ori	$a3, $a5, 4073
 	ldx.b	$a4, $fp, $a3
 	stx.b	$a1, $fp, $a2

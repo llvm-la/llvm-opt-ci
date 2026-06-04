@@ -60,8 +60,10 @@ gx_path_bbox:                           # @gx_path_bbox
 	move	$a0, $zero
 	ret
 .LBB1_7:
-	xvld	$xr0, $a0, 16
-	xvst	$xr0, $a1, 0
+	vld	$vr0, $a0, 32
+	vst	$vr0, $a1, 16
+	vld	$vr0, $a0, 16
+	vst	$vr0, $a1, 0
 	move	$a0, $zero
 	ret
 .LBB1_8:                                # %.thread
@@ -203,8 +205,10 @@ gx_path_is_rectangle:                   # @gx_path_is_rectangle
 	.type	gx_cpath_box_for_check,@function
 gx_cpath_box_for_check:                 # @gx_cpath_box_for_check
 # %bb.0:
-	xvld	$xr0, $a0, 56
-	xvst	$xr0, $a1, 0
+	vld	$vr0, $a0, 72
+	vst	$vr0, $a1, 16
+	vld	$vr0, $a0, 56
+	vst	$vr0, $a1, 0
 	move	$a0, $zero
 	ret
 .Lfunc_end5:
@@ -287,10 +291,12 @@ gx_path_copy:                           # @gx_path_copy
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $fp, 88
 	ld.d	$a0, $fp, 96
-	xvld	$xr0, $fp, 104
+	vld	$vr0, $fp, 104
+	vld	$vr1, $fp, 120
 	ld.d	$s2, $fp, 136
 	st.d	$a0, $sp, 16
-	xvst	$xr0, $sp, 24
+	vst	$vr0, $sp, 24
+	vst	$vr1, $sp, 40
 	move	$a0, $s0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(gx_path_init)
@@ -380,10 +386,12 @@ gx_path_copy:                           # @gx_path_copy
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 16
-	xvld	$xr0, $sp, 24
+	vld	$vr0, $sp, 24
+	vld	$vr1, $sp, 40
 	st.d	$s1, $fp, 88
 	st.d	$a0, $fp, 96
-	xvst	$xr0, $fp, 104
+	vst	$vr0, $fp, 104
+	vst	$vr1, $fp, 120
 	st.d	$s2, $fp, 136
 	move	$a0, $s3
 	b	.LBB7_11
@@ -424,10 +432,12 @@ copy_path:                              # @copy_path
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $fp, 88
 	ld.d	$a0, $fp, 96
-	xvld	$xr0, $fp, 104
+	vld	$vr0, $fp, 104
+	vld	$vr1, $fp, 120
 	ld.d	$s3, $fp, 136
 	st.d	$a0, $sp, 8
-	xvst	$xr0, $sp, 16
+	vst	$vr0, $sp, 16
+	vst	$vr1, $sp, 32
 	move	$a0, $s0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(gx_path_init)
@@ -517,10 +527,12 @@ copy_path:                              # @copy_path
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 8
-	xvld	$xr0, $sp, 16
+	vld	$vr0, $sp, 16
+	vld	$vr1, $sp, 32
 	st.d	$s2, $fp, 88
 	st.d	$a0, $fp, 96
-	xvst	$xr0, $fp, 104
+	vst	$vr0, $fp, 104
+	vst	$vr1, $fp, 120
 	st.d	$s3, $fp, 136
 	move	$a0, $s1
 	b	.LBB8_11
@@ -588,33 +600,33 @@ gx_path_translate:                      # @gx_path_translate
 	vld	$vr2, $a0, 32
 	vst	$vr1, $a0, 16
 	vld	$vr1, $a0, 120
-	ld.d	$a3, $a0, 88
+	ld.d	$a1, $a0, 88
 	vadd.d	$vr2, $vr2, $vr0
 	vst	$vr2, $a0, 32
 	vadd.d	$vr1, $vr1, $vr0
 	vst	$vr1, $a0, 120
-	beqz	$a3, .LBB10_5
+	beqz	$a1, .LBB10_5
 # %bb.1:                                # %.lr.ph.preheader
-	vinsgr2vr.d	$vr1, $a1, 0
-	vinsgr2vr.d	$vr1, $a2, 1
-	xvpermi.d	$xr1, $xr1, 68
 	ori	$a0, $zero, 3
 	b	.LBB10_3
 	.p2align	4, , 16
 .LBB10_2:                               #   in Loop: Header=BB10_3 Depth=1
-	vld	$vr2, $a3, 24
-	vadd.d	$vr2, $vr2, $vr0
-	vst	$vr2, $a3, 24
-	ld.d	$a3, $a3, 8
-	beqz	$a3, .LBB10_5
+	vld	$vr1, $a1, 24
+	vadd.d	$vr1, $vr1, $vr0
+	vst	$vr1, $a1, 24
+	ld.d	$a1, $a1, 8
+	beqz	$a1, .LBB10_5
 .LBB10_3:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a1, $a3, 16
-	bne	$a1, $a0, .LBB10_2
+	ld.w	$a2, $a1, 16
+	bne	$a2, $a0, .LBB10_2
 # %bb.4:                                #   in Loop: Header=BB10_3 Depth=1
-	xvld	$xr2, $a3, 40
-	xvadd.d	$xr2, $xr2, $xr1
-	xvst	$xr2, $a3, 40
+	vld	$vr1, $a1, 40
+	vld	$vr2, $a1, 56
+	vadd.d	$vr1, $vr1, $vr0
+	vst	$vr1, $a1, 40
+	vadd.d	$vr1, $vr2, $vr0
+	vst	$vr1, $a1, 56
 	b	.LBB10_2
 .LBB10_5:                               # %._crit_edge
 	move	$a0, $zero

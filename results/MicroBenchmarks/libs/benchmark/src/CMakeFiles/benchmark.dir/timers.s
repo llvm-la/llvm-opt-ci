@@ -163,8 +163,8 @@ _ZN9benchmark19LocalDateTimeStringB5cxx11Ev: # @_ZN9benchmark19LocalDateTimeStri
 	st.d	$zero, $sp, 56
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 40
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 8
+	vst	$vr0, $sp, 24
+	vst	$vr0, $sp, 8
 	addi.d	$a0, $sp, 240
 	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(localtime_r)

@@ -364,18 +364,20 @@ start_input_pass:                       # @start_input_pass
 	ld.w	$a2, $a1, 28
 	ld.w	$a3, $a1, 32
 	st.w	$a2, $fp, 456
-	ld.w	$a2, $a1, 36
 	st.w	$a3, $fp, 460
-	vrepli.w	$vr0, 1
-	ld.w	$a4, $a1, 12
-	vinsgr2vr.w	$vr0, $a2, 3
-	vst	$vr0, $a1, 52
+	ori	$a2, $zero, 1
+	lu32i.d	$a2, 1
+	ld.w	$a4, $a1, 36
+	st.d	$a2, $a1, 52
+	ld.w	$a2, $a1, 12
+	st.w	$a0, $a1, 60
+	st.w	$a4, $a1, 64
 	st.w	$a0, $a1, 68
-	mod.wu	$a2, $a3, $a4
-	sltui	$a3, $a2, 1
-	masknez	$a2, $a2, $a3
-	maskeqz	$a3, $a4, $a3
-	or	$a2, $a3, $a2
+	mod.wu	$a3, $a3, $a2
+	sltui	$a4, $a3, 1
+	masknez	$a3, $a3, $a4
+	maskeqz	$a2, $a2, $a4
+	or	$a2, $a2, $a3
 	st.w	$a2, $a1, 72
 	st.w	$a0, $fp, 464
 	st.w	$zero, $fp, 468

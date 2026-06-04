@@ -12,138 +12,29 @@ _Z8example1v:                           # @_Z8example1v
 # %bb.0:                                # %vector.ph
 	pcalau12i	$a0, %pc_hi20(b)
 	addi.d	$a0, $a0, %pc_lo12(b)
-	xvld	$xr0, $a0, 0
-	xvld	$xr1, $a0, 32
 	pcalau12i	$a1, %pc_hi20(c)
 	addi.d	$a1, $a1, %pc_lo12(c)
-	xvld	$xr2, $a1, 0
-	xvld	$xr3, $a1, 32
-	xvadd.w	$xr0, $xr2, $xr0
-	xvadd.w	$xr1, $xr3, $xr1
 	pcalau12i	$a2, %pc_hi20(a)
 	addi.d	$a2, $a2, %pc_lo12(a)
-	xvld	$xr2, $a0, 64
-	xvld	$xr3, $a0, 96
-	xvld	$xr4, $a1, 64
-	xvld	$xr5, $a1, 96
-	xvst	$xr0, $a2, 0
-	xvst	$xr1, $a2, 32
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvld	$xr2, $a0, 128
-	xvld	$xr3, $a0, 160
-	xvld	$xr4, $a1, 128
-	xvld	$xr5, $a1, 160
-	xvst	$xr0, $a2, 64
-	xvst	$xr1, $a2, 96
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvld	$xr2, $a0, 192
-	xvld	$xr3, $a0, 224
-	xvld	$xr4, $a1, 192
-	xvld	$xr5, $a1, 224
-	xvst	$xr0, $a2, 128
-	xvst	$xr1, $a2, 160
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvld	$xr2, $a0, 256
-	xvld	$xr3, $a0, 288
-	xvld	$xr4, $a1, 256
-	xvld	$xr5, $a1, 288
-	xvst	$xr0, $a2, 192
-	xvst	$xr1, $a2, 224
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvld	$xr2, $a0, 320
-	xvld	$xr3, $a0, 352
-	xvld	$xr4, $a1, 320
-	xvld	$xr5, $a1, 352
-	xvst	$xr0, $a2, 256
-	xvst	$xr1, $a2, 288
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvld	$xr2, $a0, 384
-	xvld	$xr3, $a0, 416
-	xvld	$xr4, $a1, 384
-	xvld	$xr5, $a1, 416
-	xvst	$xr0, $a2, 320
-	xvst	$xr1, $a2, 352
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvld	$xr2, $a0, 448
-	xvld	$xr3, $a0, 480
-	xvld	$xr4, $a1, 448
-	xvld	$xr5, $a1, 480
-	xvst	$xr0, $a2, 384
-	xvst	$xr1, $a2, 416
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvld	$xr2, $a0, 512
-	xvld	$xr3, $a0, 544
-	xvld	$xr4, $a1, 512
-	xvld	$xr5, $a1, 544
-	xvst	$xr0, $a2, 448
-	xvst	$xr1, $a2, 480
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvld	$xr2, $a0, 576
-	xvld	$xr3, $a0, 608
-	xvld	$xr4, $a1, 576
-	xvld	$xr5, $a1, 608
-	xvst	$xr0, $a2, 512
-	xvst	$xr1, $a2, 544
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvld	$xr2, $a0, 640
-	xvld	$xr3, $a0, 672
-	xvld	$xr4, $a1, 640
-	xvld	$xr5, $a1, 672
-	xvst	$xr0, $a2, 576
-	xvst	$xr1, $a2, 608
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvld	$xr2, $a0, 704
-	xvld	$xr3, $a0, 736
-	xvld	$xr4, $a1, 704
-	xvld	$xr5, $a1, 736
-	xvst	$xr0, $a2, 640
-	xvst	$xr1, $a2, 672
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvld	$xr2, $a0, 768
-	xvld	$xr3, $a0, 800
-	xvld	$xr4, $a1, 768
-	xvld	$xr5, $a1, 800
-	xvst	$xr0, $a2, 704
-	xvst	$xr1, $a2, 736
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvld	$xr2, $a0, 832
-	xvld	$xr3, $a0, 864
-	xvld	$xr4, $a1, 832
-	xvld	$xr5, $a1, 864
-	xvst	$xr0, $a2, 768
-	xvst	$xr1, $a2, 800
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvld	$xr2, $a0, 896
-	xvld	$xr3, $a0, 928
-	xvld	$xr4, $a1, 896
-	xvld	$xr5, $a1, 928
-	xvst	$xr0, $a2, 832
-	xvst	$xr1, $a2, 864
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvld	$xr2, $a0, 960
-	xvld	$xr3, $a0, 992
-	xvld	$xr4, $a1, 960
-	xvld	$xr5, $a1, 992
-	xvst	$xr0, $a2, 896
-	xvst	$xr1, $a2, 928
-	xvadd.w	$xr0, $xr4, $xr2
-	xvadd.w	$xr1, $xr5, $xr3
-	xvst	$xr0, $a2, 960
-	xvst	$xr1, $a2, 992
+	move	$a3, $zero
+	ori	$a4, $zero, 1024
+	.p2align	4, , 16
+.LBB0_1:                                # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a5, $a0, $a3
+	vldx	$vr0, $a0, $a3
+	vld	$vr1, $a5, 16
+	add.d	$a5, $a1, $a3
+	vldx	$vr2, $a1, $a3
+	vld	$vr3, $a5, 16
+	vadd.w	$vr0, $vr2, $vr0
+	vadd.w	$vr1, $vr3, $vr1
+	add.d	$a5, $a2, $a3
+	vstx	$vr0, $a2, $a3
+	addi.d	$a3, $a3, 32
+	vst	$vr1, $a5, 16
+	bne	$a3, $a4, .LBB0_1
+# %bb.2:                                # %middle.block
 	ret
 .Lfunc_end0:
 	.size	_Z8example1v, .Lfunc_end0-_Z8example1v
@@ -154,67 +45,42 @@ _Z8example1v:                           # @_Z8example1v
 	.type	_Z9example2aii,@function
 _Z9example2aii:                         # @_Z9example2aii
 # %bb.0:
-	blez	$a0, .LBB1_14
-# %bb.1:                                # %iter.check
-	ori	$a3, $zero, 4
+	blez	$a0, .LBB1_8
+# %bb.1:                                # %.lr.ph.preheader
+	ori	$a3, $zero, 8
 	pcalau12i	$a2, %pc_hi20(b)
 	addi.d	$a2, $a2, %pc_lo12(b)
 	bgeu	$a0, $a3, .LBB1_3
 # %bb.2:
 	move	$a3, $zero
-	b	.LBB1_12
-.LBB1_3:                                # %vector.main.loop.iter.check
-	ori	$a3, $zero, 16
-	bgeu	$a0, $a3, .LBB1_5
-# %bb.4:
-	move	$a3, $zero
-	b	.LBB1_9
-.LBB1_5:                                # %vector.ph
-	andi	$a4, $a0, 12
-	bstrpick.d	$a3, $a0, 30, 4
-	slli.d	$a3, $a3, 4
-	addi.d	$a5, $a2, 32
-	xvreplgr2vr.w	$xr0, $a1
-	move	$a6, $a3
-	.p2align	4, , 16
-.LBB1_6:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a5, -32
-	xvst	$xr0, $a5, 0
-	addi.d	$a6, $a6, -16
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB1_6
-# %bb.7:                                # %middle.block
-	beq	$a3, $a0, .LBB1_14
-# %bb.8:                                # %vec.epilog.iter.check
-	beqz	$a4, .LBB1_12
-.LBB1_9:                                # %vec.epilog.ph
-	move	$a5, $a3
-	bstrpick.d	$a3, $a0, 30, 2
-	slli.d	$a3, $a3, 2
+	b	.LBB1_6
+.LBB1_3:                                # %vector.ph
+	bstrpick.d	$a3, $a0, 30, 3
+	slli.d	$a3, $a3, 3
+	addi.d	$a4, $a2, 16
 	vreplgr2vr.w	$vr0, $a1
-	sub.d	$a4, $a5, $a3
-	alsl.d	$a5, $a5, $a2, 2
+	move	$a5, $a3
 	.p2align	4, , 16
-.LBB1_10:                               # %vec.epilog.vector.body
+.LBB1_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr0, $a5, 0
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 16
-	bnez	$a4, .LBB1_10
-# %bb.11:                               # %vec.epilog.middle.block
-	beq	$a3, $a0, .LBB1_14
-.LBB1_12:                               # %.lr.ph.preheader
+	vst	$vr0, $a4, -16
+	vst	$vr0, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB1_4
+# %bb.5:                                # %middle.block
+	beq	$a3, $a0, .LBB1_8
+.LBB1_6:                                # %.lr.ph.preheader6
 	alsl.d	$a2, $a3, $a2, 2
 	sub.d	$a0, $a0, $a3
 	.p2align	4, , 16
-.LBB1_13:                               # %.lr.ph
+.LBB1_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a1, $a2, 0
 	addi.d	$a0, $a0, -1
 	addi.d	$a2, $a2, 4
-	bnez	$a0, .LBB1_13
-.LBB1_14:                               # %._crit_edge
+	bnez	$a0, .LBB1_7
+.LBB1_8:                                # %._crit_edge
 	ret
 .Lfunc_end1:
 	.size	_Z9example2aii, .Lfunc_end1-_Z9example2aii
@@ -225,96 +91,63 @@ _Z9example2aii:                         # @_Z9example2aii
 	.type	_Z9example2bii,@function
 _Z9example2bii:                         # @_Z9example2bii
 # %bb.0:
-	beqz	$a0, .LBB2_14
-# %bb.1:                                # %iter.check
-	ori	$a3, $zero, 4
+	beqz	$a0, .LBB2_8
+# %bb.1:                                # %.lr.ph.preheader
+	ori	$a4, $zero, 8
 	pcalau12i	$a1, %pc_hi20(b)
 	addi.d	$a1, $a1, %pc_lo12(b)
 	pcalau12i	$a2, %pc_hi20(c)
 	addi.d	$a2, $a2, %pc_lo12(c)
-	pcalau12i	$a4, %pc_hi20(a)
-	addi.d	$a4, $a4, %pc_lo12(a)
-	bgeu	$a0, $a3, .LBB2_3
+	pcalau12i	$a3, %pc_hi20(a)
+	addi.d	$a3, $a3, %pc_lo12(a)
+	bgeu	$a0, $a4, .LBB2_3
 # %bb.2:
-	move	$a6, $zero
-	move	$a3, $a0
-	b	.LBB2_12
-.LBB2_3:                                # %vector.main.loop.iter.check
-	ori	$a3, $zero, 16
+	move	$a4, $zero
+	b	.LBB2_6
+.LBB2_3:                                # %vector.ph
 	bstrpick.d	$a5, $a0, 31, 0
-	bgeu	$a0, $a3, .LBB2_5
-# %bb.4:
-	move	$a6, $zero
-	b	.LBB2_9
-.LBB2_5:                                # %vector.ph
-	andi	$a7, $a5, 12
-	bstrpick.d	$a3, $a5, 31, 4
-	slli.d	$a6, $a3, 4
-	sub.d	$a3, $a0, $a6
-	addi.d	$t0, $a4, 32
-	addi.d	$t1, $a2, 32
-	addi.d	$t2, $a1, 32
-	move	$t3, $a6
+	bstrpick.d	$a4, $a5, 31, 3
+	slli.d	$a4, $a4, 3
+	sub.d	$a0, $a0, $a4
+	addi.d	$a6, $a3, 16
+	addi.d	$a7, $a2, 16
+	addi.d	$t0, $a1, 16
+	move	$t1, $a4
 	.p2align	4, , 16
-.LBB2_6:                                # %vector.body
+.LBB2_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $t2, -32
-	xvld	$xr1, $t2, 0
-	xvld	$xr2, $t1, -32
-	xvld	$xr3, $t1, 0
-	xvand.v	$xr0, $xr2, $xr0
-	xvand.v	$xr1, $xr3, $xr1
-	xvst	$xr0, $t0, -32
-	xvst	$xr1, $t0, 0
-	addi.d	$t3, $t3, -16
-	addi.d	$t0, $t0, 64
-	addi.d	$t1, $t1, 64
-	addi.d	$t2, $t2, 64
-	bnez	$t3, .LBB2_6
-# %bb.7:                                # %middle.block
-	beq	$a6, $a5, .LBB2_14
-# %bb.8:                                # %vec.epilog.iter.check
-	beqz	$a7, .LBB2_12
-.LBB2_9:                                # %vec.epilog.ph
-	move	$t1, $a6
-	bstrpick.d	$a3, $a5, 31, 2
-	slli.d	$a6, $a3, 2
-	sub.d	$a3, $a0, $a6
-	sub.d	$a0, $t1, $a6
-	alsl.d	$a7, $t1, $a4, 2
-	alsl.d	$t0, $t1, $a2, 2
-	alsl.d	$t1, $t1, $a1, 2
-	.p2align	4, , 16
-.LBB2_10:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $t1, 0
+	vld	$vr0, $t0, -16
 	vld	$vr1, $t0, 0
-	vand.v	$vr0, $vr1, $vr0
-	vst	$vr0, $a7, 0
-	addi.d	$a0, $a0, 4
-	addi.d	$a7, $a7, 16
-	addi.d	$t0, $t0, 16
-	addi.d	$t1, $t1, 16
-	bnez	$a0, .LBB2_10
-# %bb.11:                               # %vec.epilog.middle.block
-	beq	$a6, $a5, .LBB2_14
-.LBB2_12:                               # %.lr.ph.preheader
-	alsl.d	$a0, $a6, $a1, 2
-	alsl.d	$a1, $a6, $a2, 2
-	alsl.d	$a2, $a6, $a4, 2
+	vld	$vr2, $a7, -16
+	vld	$vr3, $a7, 0
+	vand.v	$vr0, $vr2, $vr0
+	vand.v	$vr1, $vr3, $vr1
+	vst	$vr0, $a6, -16
+	vst	$vr1, $a6, 0
+	addi.d	$t1, $t1, -8
+	addi.d	$a6, $a6, 32
+	addi.d	$a7, $a7, 32
+	addi.d	$t0, $t0, 32
+	bnez	$t1, .LBB2_4
+# %bb.5:                                # %middle.block
+	beq	$a4, $a5, .LBB2_8
+.LBB2_6:                                # %.lr.ph.preheader13
+	alsl.d	$a1, $a4, $a1, 2
+	alsl.d	$a2, $a4, $a2, 2
+	alsl.d	$a3, $a4, $a3, 2
 	.p2align	4, , 16
-.LBB2_13:                               # %.lr.ph
+.LBB2_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a0, 0
-	ld.w	$a5, $a1, 0
-	addi.w	$a3, $a3, -1
+	ld.w	$a4, $a1, 0
+	ld.w	$a5, $a2, 0
+	addi.w	$a0, $a0, -1
 	and	$a4, $a5, $a4
-	st.w	$a4, $a2, 0
-	addi.d	$a0, $a0, 4
+	st.w	$a4, $a3, 0
 	addi.d	$a1, $a1, 4
 	addi.d	$a2, $a2, 4
-	bnez	$a3, .LBB2_13
-.LBB2_14:                               # %._crit_edge
+	addi.d	$a3, $a3, 4
+	bnez	$a0, .LBB2_7
+.LBB2_8:                                # %._crit_edge
 	ret
 .Lfunc_end2:
 	.size	_Z9example2bii, .Lfunc_end2-_Z9example2bii
@@ -345,83 +178,52 @@ _Z8example3iPiS_:                       # @_Z8example3iPiS_
 	.type	_Z9example4aiPiS_,@function
 _Z9example4aiPiS_:                      # @_Z9example4aiPiS_
 # %bb.0:
-	beqz	$a0, .LBB4_13
-# %bb.1:                                # %iter.check
-	ori	$a3, $zero, 4
+	beqz	$a0, .LBB4_7
+# %bb.1:                                # %.lr.ph.preheader
+	ori	$a3, $zero, 8
 	bgeu	$a0, $a3, .LBB4_3
 # %bb.2:
 	move	$a3, $a2
 	move	$a4, $a1
-	move	$a5, $a0
-	b	.LBB4_12
-.LBB4_3:                                # %vector.main.loop.iter.check
-	ori	$a3, $zero, 16
-	bstrpick.d	$a6, $a0, 31, 0
-	bgeu	$a0, $a3, .LBB4_5
-# %bb.4:
-	move	$a7, $zero
-	b	.LBB4_9
-.LBB4_5:                                # %vector.ph
-	andi	$t0, $a6, 12
-	bstrpick.d	$a3, $a6, 31, 4
-	slli.d	$a7, $a3, 4
-	slli.d	$a4, $a3, 6
+	b	.LBB4_6
+.LBB4_3:                                # %vector.ph
+	bstrpick.d	$a5, $a0, 31, 0
+	bstrpick.d	$a3, $a5, 31, 3
+	slli.d	$a6, $a3, 3
+	slli.d	$a4, $a3, 5
 	add.d	$a3, $a2, $a4
 	add.d	$a4, $a1, $a4
-	sub.d	$a5, $a0, $a7
-	addi.d	$t1, $a1, 32
-	addi.d	$t2, $a2, 32
-	move	$t3, $a7
-	.p2align	4, , 16
-.LBB4_6:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $t2, -32
-	xvld	$xr1, $t2, 0
-	xvaddi.wu	$xr0, $xr0, 5
-	xvaddi.wu	$xr1, $xr1, 5
-	xvst	$xr0, $t1, -32
-	xvst	$xr1, $t1, 0
-	addi.d	$t3, $t3, -16
-	addi.d	$t1, $t1, 64
-	addi.d	$t2, $t2, 64
-	bnez	$t3, .LBB4_6
-# %bb.7:                                # %middle.block
-	beq	$a7, $a6, .LBB4_13
-# %bb.8:                                # %vec.epilog.iter.check
-	beqz	$t0, .LBB4_12
-.LBB4_9:                                # %vec.epilog.ph
-	bstrpick.d	$a4, $a6, 31, 2
-	slli.d	$t0, $a4, 2
-	alsl.d	$a3, $a4, $a2, 4
-	alsl.d	$a4, $a4, $a1, 4
-	sub.d	$a5, $a0, $t0
-	sub.d	$a0, $a7, $t0
-	alsl.d	$a1, $a7, $a1, 2
-	alsl.d	$a2, $a7, $a2, 2
-	.p2align	4, , 16
-.LBB4_10:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a2, 0
-	vaddi.wu	$vr0, $vr0, 5
-	vst	$vr0, $a1, 0
-	addi.d	$a0, $a0, 4
+	sub.d	$a0, $a0, $a6
 	addi.d	$a1, $a1, 16
 	addi.d	$a2, $a2, 16
-	bnez	$a0, .LBB4_10
-# %bb.11:                               # %vec.epilog.middle.block
-	beq	$t0, $a6, .LBB4_13
+	move	$a7, $a6
 	.p2align	4, , 16
-.LBB4_12:                               # %.lr.ph
+.LBB4_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a0, $a3, 0
-	addi.w	$a5, $a5, -1
+	vld	$vr0, $a2, -16
+	vld	$vr1, $a2, 0
+	vaddi.wu	$vr0, $vr0, 5
+	vaddi.wu	$vr1, $vr1, 5
+	vst	$vr0, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a7, $a7, -8
+	addi.d	$a1, $a1, 32
+	addi.d	$a2, $a2, 32
+	bnez	$a7, .LBB4_4
+# %bb.5:                                # %middle.block
+	beq	$a6, $a5, .LBB4_7
+	.p2align	4, , 16
+.LBB4_6:                                # %.lr.ph
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a1, $a3, 0
+	addi.w	$a0, $a0, -1
 	addi.d	$a3, $a3, 4
-	addi.d	$a0, $a0, 5
-	addi.d	$a1, $a4, 4
-	st.w	$a0, $a4, 0
-	move	$a4, $a1
-	bnez	$a5, .LBB4_12
-.LBB4_13:                               # %._crit_edge
+	addi.d	$a1, $a1, 5
+	addi.d	$a2, $a4, 4
+	st.w	$a1, $a4, 0
+	move	$a4, $a2
+	bnez	$a0, .LBB4_6
+.LBB4_7:                                # %._crit_edge
 	ret
 .Lfunc_end4:
 	.size	_Z9example4aiPiS_, .Lfunc_end4-_Z9example4aiPiS_
@@ -432,9 +234,9 @@ _Z9example4aiPiS_:                      # @_Z9example4aiPiS_
 	.type	_Z9example4biPiS_,@function
 _Z9example4biPiS_:                      # @_Z9example4biPiS_
 # %bb.0:
-	blez	$a0, .LBB5_14
-# %bb.1:                                # %iter.check
-	ori	$a4, $zero, 4
+	blez	$a0, .LBB5_8
+# %bb.1:                                # %.lr.ph.preheader
+	ori	$a4, $zero, 8
 	pcalau12i	$a1, %pc_hi20(c)
 	addi.d	$a1, $a1, %pc_lo12(c)
 	pcalau12i	$a2, %pc_hi20(a)
@@ -444,66 +246,33 @@ _Z9example4biPiS_:                      # @_Z9example4biPiS_
 	bgeu	$a0, $a4, .LBB5_3
 # %bb.2:
 	move	$a4, $zero
-	b	.LBB5_12
-.LBB5_3:                                # %vector.main.loop.iter.check
-	ori	$a4, $zero, 16
-	bgeu	$a0, $a4, .LBB5_5
-# %bb.4:
-	move	$a4, $zero
-	b	.LBB5_9
-.LBB5_5:                                # %vector.ph
-	andi	$a5, $a0, 12
-	addi.d	$a6, $a3, 36
-	addi.d	$a7, $a1, 44
-	bstrpick.d	$a4, $a0, 30, 4
-	slli.d	$a4, $a4, 4
-	addi.d	$t0, $a2, 32
-	move	$t1, $a4
-	.p2align	4, , 16
-.LBB5_6:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvld	$xr2, $a7, -32
-	xvld	$xr3, $a7, 0
-	xvadd.w	$xr0, $xr2, $xr0
-	xvadd.w	$xr1, $xr3, $xr1
-	xvst	$xr0, $t0, -32
-	xvst	$xr1, $t0, 0
-	addi.d	$a6, $a6, 64
-	addi.d	$a7, $a7, 64
-	addi.d	$t1, $t1, -16
-	addi.d	$t0, $t0, 64
-	bnez	$t1, .LBB5_6
-# %bb.7:                                # %middle.block
-	beq	$a4, $a0, .LBB5_14
-# %bb.8:                                # %vec.epilog.iter.check
-	beqz	$a5, .LBB5_12
-.LBB5_9:                                # %vec.epilog.ph
+	b	.LBB5_6
+.LBB5_3:                                # %vector.ph
+	addi.d	$a5, $a3, 20
+	addi.d	$a6, $a1, 28
+	bstrpick.d	$a4, $a0, 30, 3
+	slli.d	$a4, $a4, 3
+	addi.d	$a7, $a2, 16
 	move	$t0, $a4
-	bstrpick.d	$a4, $a0, 30, 2
-	slli.d	$a4, $a4, 2
-	alsl.d	$a5, $t0, $a3, 2
-	addi.d	$a5, $a5, 4
-	sub.d	$a6, $t0, $a4
-	alsl.d	$a7, $t0, $a2, 2
-	alsl.d	$t0, $t0, $a1, 2
-	addi.d	$t0, $t0, 12
 	.p2align	4, , 16
-.LBB5_10:                               # %vec.epilog.vector.body
+.LBB5_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a5, 0
-	vld	$vr1, $t0, 0
-	vadd.w	$vr0, $vr1, $vr0
-	vst	$vr0, $a7, 0
-	addi.d	$a5, $a5, 16
-	addi.d	$a6, $a6, 4
-	addi.d	$a7, $a7, 16
-	addi.d	$t0, $t0, 16
-	bnez	$a6, .LBB5_10
-# %bb.11:                               # %vec.epilog.middle.block
-	beq	$a4, $a0, .LBB5_14
-.LBB5_12:                               # %.lr.ph.preheader
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vld	$vr2, $a6, -16
+	vld	$vr3, $a6, 0
+	vadd.w	$vr0, $vr2, $vr0
+	vadd.w	$vr1, $vr3, $vr1
+	vst	$vr0, $a7, -16
+	vst	$vr1, $a7, 0
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	addi.d	$t0, $t0, -8
+	addi.d	$a7, $a7, 32
+	bnez	$t0, .LBB5_4
+# %bb.5:                                # %middle.block
+	beq	$a4, $a0, .LBB5_8
+.LBB5_6:                                # %.lr.ph.preheader10
 	alsl.d	$a1, $a4, $a1, 2
 	addi.d	$a1, $a1, 12
 	alsl.d	$a2, $a4, $a2, 2
@@ -511,7 +280,7 @@ _Z9example4biPiS_:                      # @_Z9example4biPiS_
 	alsl.d	$a3, $a4, $a3, 2
 	addi.d	$a3, $a3, 4
 	.p2align	4, , 16
-.LBB5_13:                               # %.lr.ph
+.LBB5_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a3, 0
 	ld.w	$a5, $a1, 0
@@ -521,8 +290,8 @@ _Z9example4biPiS_:                      # @_Z9example4biPiS_
 	addi.d	$a2, $a2, 4
 	addi.d	$a0, $a0, -1
 	addi.d	$a3, $a3, 4
-	bnez	$a0, .LBB5_13
-.LBB5_14:                               # %._crit_edge
+	bnez	$a0, .LBB5_7
+.LBB5_8:                                # %._crit_edge
 	ret
 .Lfunc_end5:
 	.size	_Z9example4biPiS_, .Lfunc_end5-_Z9example4biPiS_
@@ -533,87 +302,58 @@ _Z9example4biPiS_:                      # @_Z9example4biPiS_
 	.type	_Z9example4ciPiS_,@function
 _Z9example4ciPiS_:                      # @_Z9example4ciPiS_
 # %bb.0:
-	blez	$a0, .LBB6_14
-# %bb.1:                                # %iter.check
-	ori	$a1, $zero, 4
-	pcalau12i	$a2, %pc_hi20(a)
-	addi.d	$a2, $a2, %pc_lo12(a)
-	pcalau12i	$a3, %pc_hi20(b)
-	addi.d	$a3, $a3, %pc_lo12(b)
-	bgeu	$a0, $a1, .LBB6_3
+	blez	$a0, .LBB6_8
+# %bb.1:                                # %.lr.ph.preheader
+	ori	$a3, $zero, 8
+	pcalau12i	$a1, %pc_hi20(a)
+	addi.d	$a1, $a1, %pc_lo12(a)
+	pcalau12i	$a2, %pc_hi20(b)
+	addi.d	$a2, $a2, %pc_lo12(b)
+	bgeu	$a0, $a3, .LBB6_3
 # %bb.2:
-	move	$a4, $zero
-	b	.LBB6_12
-.LBB6_3:                                # %vector.main.loop.iter.check
-	ori	$a4, $zero, 16
-	bgeu	$a0, $a4, .LBB6_5
-# %bb.4:
-	move	$a4, $zero
-	b	.LBB6_9
-.LBB6_5:                                # %vector.ph
-	andi	$a5, $a0, 12
-	addi.d	$a6, $a3, 32
-	addi.d	$a7, $a2, 32
-	bstrpick.d	$a4, $a0, 30, 4
-	slli.d	$a4, $a4, 4
-	xvrepli.w	$xr0, 4
-	move	$t0, $a4
-	.p2align	4, , 16
-.LBB6_6:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr1, $a7, -32
-	xvld	$xr2, $a7, 0
-	xvslt.w	$xr1, $xr0, $xr1
-	xvand.v	$xr1, $xr1, $xr0
-	xvslt.w	$xr2, $xr0, $xr2
-	xvand.v	$xr2, $xr2, $xr0
-	xvst	$xr1, $a6, -32
-	xvst	$xr2, $a6, 0
-	addi.d	$t0, $t0, -16
-	addi.d	$a6, $a6, 64
-	addi.d	$a7, $a7, 64
-	bnez	$t0, .LBB6_6
-# %bb.7:                                # %middle.block
-	beq	$a4, $a0, .LBB6_14
-# %bb.8:                                # %vec.epilog.iter.check
-	beqz	$a5, .LBB6_12
-.LBB6_9:                                # %vec.epilog.ph
-	move	$a7, $a4
-	bstrpick.d	$a4, $a0, 30, 2
-	slli.d	$a4, $a4, 2
-	sub.d	$a5, $a7, $a4
-	alsl.d	$a6, $a7, $a3, 2
-	alsl.d	$a7, $a7, $a2, 2
+	move	$a3, $zero
+	b	.LBB6_6
+.LBB6_3:                                # %vector.ph
+	addi.d	$a4, $a2, 16
+	addi.d	$a5, $a1, 16
+	bstrpick.d	$a3, $a0, 30, 3
+	slli.d	$a3, $a3, 3
 	vrepli.w	$vr0, 4
+	move	$a6, $a3
 	.p2align	4, , 16
-.LBB6_10:                               # %vec.epilog.vector.body
+.LBB6_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a7, 0
+	vld	$vr1, $a5, -16
+	vld	$vr2, $a5, 0
 	vslt.w	$vr1, $vr0, $vr1
 	vand.v	$vr1, $vr1, $vr0
-	vst	$vr1, $a6, 0
-	addi.d	$a5, $a5, 4
-	addi.d	$a6, $a6, 16
-	addi.d	$a7, $a7, 16
-	bnez	$a5, .LBB6_10
-# %bb.11:                               # %vec.epilog.middle.block
-	beq	$a4, $a0, .LBB6_14
-.LBB6_12:                               # %.lr.ph.preheader
-	alsl.d	$a2, $a4, $a2, 2
-	alsl.d	$a3, $a4, $a3, 2
-	sub.d	$a0, $a0, $a4
+	vslt.w	$vr2, $vr0, $vr2
+	vand.v	$vr2, $vr2, $vr0
+	vst	$vr1, $a4, -16
+	vst	$vr2, $a4, 0
+	addi.d	$a6, $a6, -8
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB6_4
+# %bb.5:                                # %middle.block
+	beq	$a3, $a0, .LBB6_8
+.LBB6_6:                                # %.lr.ph.preheader8
+	alsl.d	$a1, $a3, $a1, 2
+	alsl.d	$a2, $a3, $a2, 2
+	sub.d	$a0, $a0, $a3
+	ori	$a3, $zero, 4
 	.p2align	4, , 16
-.LBB6_13:                               # %.lr.ph
+.LBB6_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a2, 0
-	slt	$a4, $a1, $a4
+	ld.w	$a4, $a1, 0
+	slt	$a4, $a3, $a4
 	slli.d	$a4, $a4, 2
-	st.w	$a4, $a3, 0
-	addi.d	$a2, $a2, 4
+	st.w	$a4, $a2, 0
+	addi.d	$a1, $a1, 4
 	addi.d	$a0, $a0, -1
-	addi.d	$a3, $a3, 4
-	bnez	$a0, .LBB6_13
-.LBB6_14:                               # %._crit_edge
+	addi.d	$a2, $a2, 4
+	bnez	$a0, .LBB6_7
+.LBB6_8:                                # %._crit_edge
 	ret
 .Lfunc_end6:
 	.size	_Z9example4ciPiS_, .Lfunc_end6-_Z9example4ciPiS_
@@ -624,66 +364,41 @@ _Z9example4ciPiS_:                      # @_Z9example4ciPiS_
 	.type	_Z8example5iP1A,@function
 _Z8example5iP1A:                        # @_Z8example5iP1A
 # %bb.0:
-	blez	$a0, .LBB7_14
-# %bb.1:                                # %iter.check
-	ori	$a2, $zero, 4
+	blez	$a0, .LBB7_8
+# %bb.1:                                # %.lr.ph.preheader
+	ori	$a2, $zero, 8
 	bgeu	$a0, $a2, .LBB7_3
 # %bb.2:
 	move	$a2, $zero
-	b	.LBB7_12
-.LBB7_3:                                # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$a0, $a2, .LBB7_5
-# %bb.4:
-	move	$a2, $zero
-	b	.LBB7_9
-.LBB7_5:                                # %vector.ph
-	andi	$a3, $a0, 12
-	bstrpick.d	$a2, $a0, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a4, $a1, 32
-	xvrepli.w	$xr0, 5
-	move	$a5, $a2
-	.p2align	4, , 16
-.LBB7_6:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a4, -32
-	xvst	$xr0, $a4, 0
-	addi.d	$a5, $a5, -16
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB7_6
-# %bb.7:                                # %middle.block
-	beq	$a2, $a0, .LBB7_14
-# %bb.8:                                # %vec.epilog.iter.check
-	beqz	$a3, .LBB7_12
-.LBB7_9:                                # %vec.epilog.ph
-	move	$a4, $a2
-	bstrpick.d	$a2, $a0, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a4, $a2
-	alsl.d	$a4, $a4, $a1, 2
+	b	.LBB7_6
+.LBB7_3:                                # %vector.ph
+	bstrpick.d	$a2, $a0, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $a1, 16
 	vrepli.w	$vr0, 5
+	move	$a4, $a2
 	.p2align	4, , 16
-.LBB7_10:                               # %vec.epilog.vector.body
+.LBB7_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr0, $a4, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a3, .LBB7_10
-# %bb.11:                               # %vec.epilog.middle.block
-	beq	$a2, $a0, .LBB7_14
-.LBB7_12:                               # %.lr.ph.preheader
+	vst	$vr0, $a3, -16
+	vst	$vr0, $a3, 0
+	addi.d	$a4, $a4, -8
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB7_4
+# %bb.5:                                # %middle.block
+	beq	$a2, $a0, .LBB7_8
+.LBB7_6:                                # %.lr.ph.preheader5
 	alsl.d	$a1, $a2, $a1, 2
 	sub.d	$a0, $a0, $a2
 	ori	$a2, $zero, 5
 	.p2align	4, , 16
-.LBB7_13:                               # %.lr.ph
+.LBB7_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a2, $a1, 0
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 4
-	bnez	$a0, .LBB7_13
-.LBB7_14:                               # %._crit_edge
+	bnez	$a0, .LBB7_7
+.LBB7_8:                                # %._crit_edge
 	ret
 .Lfunc_end7:
 	.size	_Z8example5iP1A, .Lfunc_end7-_Z8example5iP1A
@@ -711,8137 +426,415 @@ _Z8example7i:                           # @_Z8example7i
 	.type	_Z8example8i,@function
 _Z8example8i:                           # @_Z8example8i
 # %bb.0:                                # %.preheader
-	xvreplgr2vr.w	$xr0, $a0
+	vreplgr2vr.w	$vr0, $a0
+	lu12i.w	$a1, -1
 	pcalau12i	$a0, %pc_hi20(G)
 	addi.d	$a0, $a0, %pc_lo12(G)
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
-	xvst	$xr0, $a0, 1024
-	xvst	$xr0, $a0, 1056
-	xvst	$xr0, $a0, 1088
-	xvst	$xr0, $a0, 1120
-	xvst	$xr0, $a0, 1152
-	xvst	$xr0, $a0, 1184
-	xvst	$xr0, $a0, 1216
-	xvst	$xr0, $a0, 1248
-	xvst	$xr0, $a0, 1280
-	xvst	$xr0, $a0, 1312
-	xvst	$xr0, $a0, 1344
-	xvst	$xr0, $a0, 1376
-	xvst	$xr0, $a0, 1408
-	xvst	$xr0, $a0, 1440
-	xvst	$xr0, $a0, 1472
-	xvst	$xr0, $a0, 1504
-	xvst	$xr0, $a0, 1536
-	xvst	$xr0, $a0, 1568
-	xvst	$xr0, $a0, 1600
-	xvst	$xr0, $a0, 1632
-	xvst	$xr0, $a0, 1664
-	xvst	$xr0, $a0, 1696
-	xvst	$xr0, $a0, 1728
-	xvst	$xr0, $a0, 1760
-	xvst	$xr0, $a0, 1792
-	xvst	$xr0, $a0, 1824
-	xvst	$xr0, $a0, 1856
-	xvst	$xr0, $a0, 1888
-	xvst	$xr0, $a0, 1920
-	xvst	$xr0, $a0, 1952
-	xvst	$xr0, $a0, 1984
-	xvst	$xr0, $a0, 2016
-	ori	$a1, $zero, 2048
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2080
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2112
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2144
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2176
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2208
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2240
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2272
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2304
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2336
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2368
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2400
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2432
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2464
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2496
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2528
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2560
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2592
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2624
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2656
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2688
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2720
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2752
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2784
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2816
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2848
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2880
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2912
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2944
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2976
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3008
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3040
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3072
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3104
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3136
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3168
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3200
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3232
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3264
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3296
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3328
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3360
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3392
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3424
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3456
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3488
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3520
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3552
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3584
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3616
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3648
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3680
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3712
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3744
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3776
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3808
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3840
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3872
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3904
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3936
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3968
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 4000
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 4032
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 4064
-	xvstx	$xr0, $a0, $a1
-	lu12i.w	$a1, 1
-	xvstx	$xr0, $a0, $a1
-	ori	$a2, $a1, 32
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 64
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 96
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 128
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 160
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 192
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 224
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 256
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 288
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 320
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 352
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 384
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 416
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 448
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 480
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 512
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 544
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 576
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 608
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 640
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 672
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 704
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 736
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 768
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 800
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 832
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 864
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 896
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 928
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 960
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 992
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1024
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1056
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1088
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1120
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1152
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1184
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1216
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1248
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1280
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1312
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1344
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1376
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1408
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1440
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1472
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1504
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1536
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1568
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1600
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1632
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1664
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1696
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1728
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1760
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1792
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1824
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1856
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1888
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1920
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1952
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 1984
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2016
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2048
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2080
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2112
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2144
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2176
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2208
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2240
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2272
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2304
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2336
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2368
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2400
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2432
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2464
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2496
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2528
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2560
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2592
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2624
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2656
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2688
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2720
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2752
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2784
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2816
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2848
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2880
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2912
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2944
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 2976
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3008
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3040
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3072
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3104
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3136
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3168
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3200
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3232
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3264
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3296
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3328
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3360
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3392
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3424
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3456
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3488
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3520
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3552
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3584
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3616
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3648
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3680
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3712
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3744
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3776
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3808
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3840
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3872
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3904
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3936
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 3968
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 4000
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a1, 4032
-	xvstx	$xr0, $a0, $a2
-	ori	$a1, $a1, 4064
-	xvstx	$xr0, $a0, $a1
+	lu12i.w	$a2, 1
+	ori	$a3, $a2, 16
+	.p2align	4, , 16
+.LBB9_1:                                # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a4, $a0, $a1
+	vstx	$vr0, $a4, $a2
+	addi.d	$a1, $a1, 32
+	vstx	$vr0, $a4, $a3
+	bnez	$a1, .LBB9_1
+# %bb.2:                                # %vector.ph13
+	lu12i.w	$a1, -1
 	lu12i.w	$a2, 2
-	xvstx	$xr0, $a0, $a2
-	ori	$a1, $a2, 32
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 64
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 96
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 128
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 160
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 192
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 224
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 256
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 288
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 320
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 352
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 384
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 416
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 448
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 480
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 512
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 544
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 576
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 608
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 640
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 672
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 704
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 736
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 768
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 800
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 832
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 864
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 896
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 928
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 960
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 992
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1024
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1056
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1088
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1120
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1152
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1184
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1216
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1248
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1280
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1312
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1344
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1376
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1408
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1440
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1472
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1504
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1536
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1568
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1600
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1632
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1664
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1696
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1728
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1760
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1792
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1824
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1856
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1888
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1920
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1952
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 1984
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2016
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2048
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2080
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2112
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2144
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2176
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2208
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2240
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2272
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2304
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2336
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2368
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2400
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2432
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2464
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2496
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2528
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2560
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2592
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2624
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2656
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2688
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2720
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2752
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2784
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2816
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2848
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2880
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2912
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2944
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 2976
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a2, 3008
-	xvstx	$xr0, $a0, $a1
-	lu12i.w	$a3, 4
-	ori	$a1, $a3, 2688
-	xvstx	$xr0, $a0, $a1
-	lu12i.w	$a4, 8
-	ori	$a1, $a4, 2272
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 2240
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 2208
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 2176
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 2144
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 2112
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 2080
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 2048
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 2016
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1984
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1952
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1920
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1888
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1856
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1824
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1792
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1760
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1728
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1696
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1664
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1632
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1600
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1568
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1536
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1504
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1472
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1440
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1408
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1376
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1344
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1312
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1280
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1248
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1216
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1184
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1152
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1120
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1088
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1056
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 1024
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 992
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 960
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 928
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 896
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 864
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 832
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 800
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 768
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 736
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 704
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 672
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 640
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 608
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 576
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 544
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 512
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 480
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 448
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 416
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 384
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 352
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 320
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 288
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 256
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 224
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 192
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 160
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 128
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 96
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 64
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $a4, 32
-	xvstx	$xr0, $a0, $a1
-	xvstx	$xr0, $a0, $a4
-	lu12i.w	$a1, 7
-	ori	$a5, $a1, 4064
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 4032
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 4000
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3968
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3936
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3904
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3872
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3840
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3808
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3776
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3744
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3712
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3680
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3648
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3616
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3584
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3552
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3520
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3488
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3456
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3424
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3392
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3360
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3328
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3264
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3232
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3200
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3168
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3136
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3104
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3072
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3040
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 3008
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2976
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2944
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2912
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2880
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2848
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2816
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2784
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2752
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2720
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2688
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2656
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2624
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2592
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2560
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2528
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2496
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2464
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2432
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2400
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2368
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2336
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2304
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2272
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2240
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2208
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2176
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2144
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2112
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2080
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2048
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 2016
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1984
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1952
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1920
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1888
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1856
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1824
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1792
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1760
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1728
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1696
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1664
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1632
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1600
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1568
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1536
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1504
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1472
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1440
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1408
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1376
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1344
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1312
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1280
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1248
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1216
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1184
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1152
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1120
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1088
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1056
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 1024
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 992
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 960
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 928
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 896
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 864
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 832
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 800
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 768
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 736
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 704
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 672
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 640
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 608
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 576
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 544
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 512
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 480
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 448
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 416
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 384
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 352
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 320
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 288
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 256
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 224
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 192
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 160
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 128
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 96
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 64
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a1, 32
-	xvstx	$xr0, $a0, $a5
-	xvstx	$xr0, $a0, $a1
-	lu12i.w	$a5, 6
-	ori	$a6, $a5, 4064
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 4032
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 4000
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3968
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3936
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3904
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3872
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3840
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3808
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3776
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3744
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3712
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3680
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3648
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3616
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3584
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3552
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3520
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3488
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3456
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3424
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3392
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3360
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3328
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3296
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3264
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3232
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3200
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3168
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3136
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3104
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3072
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3040
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3008
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2976
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2944
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2912
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2880
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2848
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2816
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2784
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2752
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2720
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2656
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2624
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2592
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2560
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2528
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2496
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2464
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2432
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2400
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2368
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2336
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2304
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2272
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2240
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2208
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2176
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2144
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2112
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2080
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2048
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 2016
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1984
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1952
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1920
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1888
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1856
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1824
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1792
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1760
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1728
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1696
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1664
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1632
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1600
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1568
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1536
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1504
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1472
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1440
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1408
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1376
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1344
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1312
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1280
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1248
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1216
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1184
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1152
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1120
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1088
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1056
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1024
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 992
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 960
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 928
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 896
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 864
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 832
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 800
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 768
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 736
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 704
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 672
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 640
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 608
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 576
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 544
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 512
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 480
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 448
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 416
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 384
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 352
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 320
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 288
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 256
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 224
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 192
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 160
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 128
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 96
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 64
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 32
-	xvstx	$xr0, $a0, $a6
-	xvstx	$xr0, $a0, $a3
-	lu12i.w	$a6, 3
-	ori	$a7, $a6, 4064
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 4032
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 4000
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3968
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3936
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3904
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3872
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3840
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3808
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3776
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3744
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3712
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3680
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3648
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3616
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3584
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3552
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3520
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3488
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3456
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3424
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3392
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3360
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3328
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3296
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3264
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3232
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3200
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3168
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3136
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3104
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3072
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3040
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3008
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2976
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2944
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2912
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2880
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2848
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2816
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2784
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2752
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2720
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2688
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2656
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2624
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2592
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2560
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2528
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2496
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2464
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2432
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2400
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2368
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2336
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2304
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2272
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2240
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2208
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2176
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2144
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2112
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2080
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2048
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2016
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1984
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1952
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1920
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1888
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1856
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1824
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1792
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1760
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1728
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1696
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1664
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1632
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1600
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1568
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1536
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1504
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1472
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1440
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1408
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1376
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1344
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1312
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1280
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1248
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1216
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1184
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1152
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1120
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1088
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1056
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1024
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 992
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 960
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 928
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 896
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 864
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 832
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 800
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 768
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 736
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 704
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 672
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 640
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 608
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 576
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 544
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 512
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 480
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 448
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 416
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 384
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 352
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 320
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 288
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 256
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 224
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 192
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 160
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 128
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 96
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 64
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 32
-	xvstx	$xr0, $a0, $a7
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 4064
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 4032
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 4000
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3968
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3936
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3904
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3872
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3840
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3808
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3776
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3744
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3712
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3680
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3648
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3616
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3584
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3552
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3520
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3488
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3456
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3424
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3392
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3360
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3328
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3296
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3264
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3232
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3200
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3168
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3136
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3104
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3072
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a2, 3040
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2720
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2752
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2784
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2816
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2848
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2880
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2912
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2944
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2976
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3008
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3040
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3072
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3104
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3136
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3168
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3200
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3232
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3264
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3296
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3328
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3360
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3392
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3424
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3456
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3488
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3520
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3552
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3584
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3616
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3648
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3680
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3712
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3744
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3776
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3808
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3840
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3872
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3904
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3936
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3968
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 4000
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 4032
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 4064
-	xvstx	$xr0, $a0, $a2
+	ori	$a3, $a2, 16
+	.p2align	4, , 16
+.LBB9_3:                                # %vector.body16
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a4, $a0, $a1
+	vstx	$vr0, $a4, $a2
+	addi.d	$a1, $a1, 32
+	vstx	$vr0, $a4, $a3
+	bnez	$a1, .LBB9_3
+# %bb.4:                                # %vector.ph20
+	lu12i.w	$a1, -1
+	lu12i.w	$a2, 3
+	ori	$a3, $a2, 16
+	.p2align	4, , 16
+.LBB9_5:                                # %vector.body23
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a4, $a0, $a1
+	vstx	$vr0, $a4, $a2
+	addi.d	$a1, $a1, 32
+	vstx	$vr0, $a4, $a3
+	bnez	$a1, .LBB9_5
+# %bb.6:                                # %vector.ph27
+	lu12i.w	$a1, -1
+	lu12i.w	$a2, 4
+	ori	$a3, $a2, 16
+	.p2align	4, , 16
+.LBB9_7:                                # %vector.body30
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a4, $a0, $a1
+	vstx	$vr0, $a4, $a2
+	addi.d	$a1, $a1, 32
+	vstx	$vr0, $a4, $a3
+	bnez	$a1, .LBB9_7
+# %bb.8:                                # %vector.ph34
+	lu12i.w	$a1, -1
 	lu12i.w	$a2, 5
-	xvstx	$xr0, $a0, $a2
-	ori	$a3, $a2, 32
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 64
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 96
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 128
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 160
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 192
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 224
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 256
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 288
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 320
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 352
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 384
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 416
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 448
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 480
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 512
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 544
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 576
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 608
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 640
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 672
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 704
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 736
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 768
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 800
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 832
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 864
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 896
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 928
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 960
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 992
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1024
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1056
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1088
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1120
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1152
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1184
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1216
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1248
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1280
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1312
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1344
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1376
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1408
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1440
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1472
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1504
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1536
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1568
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1600
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1632
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1664
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1696
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1728
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1760
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1792
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1824
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1856
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1888
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1920
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1952
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1984
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2016
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2048
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2080
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2112
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2144
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2176
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2208
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2240
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2272
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2304
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2336
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2368
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2400
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2432
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2464
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2496
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2528
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2560
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2592
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2624
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2656
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2688
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2720
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2752
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2784
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2816
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2848
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2880
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2912
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2944
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2976
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3008
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3040
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3072
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3104
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3136
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3168
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3200
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3232
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3264
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3296
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3328
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3360
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3392
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3424
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3456
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3488
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3520
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3552
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3584
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3616
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3648
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3680
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3712
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3744
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3776
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3808
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3840
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3872
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3904
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3936
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3968
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 4000
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 4032
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a2, 4064
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a5
-	ori	$a2, $a5, 32
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 64
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 96
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 128
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 160
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 192
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 224
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 256
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 288
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 320
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 352
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 384
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 416
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 448
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 480
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 512
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 544
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 576
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 608
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 640
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 672
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 704
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 736
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 768
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 800
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 832
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 864
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 896
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 928
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 960
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 992
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1024
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1056
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1088
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1120
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1152
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1184
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1216
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1248
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1280
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1312
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1344
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1376
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1408
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1440
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1472
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1504
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1536
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1568
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1600
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1632
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1664
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1696
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1728
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1760
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1792
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1824
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1856
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1888
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1920
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1952
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 1984
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2016
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2048
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2080
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2112
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2144
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2176
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2208
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2240
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2272
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2304
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2336
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2368
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2400
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2432
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2464
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2496
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2528
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2560
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2592
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2624
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2656
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a5, 2688
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a4, 2336
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a4, 2304
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a4, 2368
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a4, 2400
-	ori	$a3, $a4, 2432
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2464
-	ori	$a3, $a4, 2496
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2528
-	ori	$a3, $a4, 2560
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2592
-	ori	$a3, $a4, 2624
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2656
-	ori	$a3, $a4, 2688
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2720
-	ori	$a3, $a4, 2752
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2784
-	ori	$a3, $a4, 2816
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2848
-	ori	$a3, $a4, 2880
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2912
-	ori	$a3, $a4, 2944
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2976
-	ori	$a3, $a4, 3008
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3040
-	ori	$a3, $a4, 3072
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3104
-	ori	$a3, $a4, 3136
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3168
-	ori	$a3, $a4, 3200
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3232
-	ori	$a3, $a4, 3264
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3296
-	ori	$a3, $a4, 3328
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3360
-	ori	$a3, $a4, 3392
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3424
-	ori	$a3, $a4, 3456
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3488
-	ori	$a3, $a4, 3520
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3552
-	ori	$a3, $a4, 3584
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3616
-	ori	$a3, $a4, 3648
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3680
-	ori	$a3, $a4, 3712
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3744
-	ori	$a3, $a4, 3776
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3808
-	ori	$a3, $a4, 3840
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3872
-	ori	$a3, $a4, 3904
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3936
-	ori	$a3, $a4, 3968
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 4000
-	ori	$a3, $a4, 4032
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a4, 4064
-	lu12i.w	$a2, 9
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a2
-	ori	$a3, $a2, 32
-	ori	$a4, $a2, 64
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 96
-	ori	$a4, $a2, 128
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 160
-	ori	$a4, $a2, 192
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 224
-	ori	$a4, $a2, 256
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 288
-	ori	$a4, $a2, 320
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 352
-	ori	$a4, $a2, 384
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 416
-	ori	$a4, $a2, 448
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 480
-	ori	$a4, $a2, 512
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 544
-	ori	$a4, $a2, 576
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 608
-	ori	$a4, $a2, 640
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 672
-	ori	$a4, $a2, 704
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 736
-	ori	$a4, $a2, 768
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 800
-	ori	$a4, $a2, 832
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 864
-	ori	$a4, $a2, 896
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 928
-	ori	$a4, $a2, 960
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 992
-	ori	$a4, $a2, 1024
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1056
-	ori	$a4, $a2, 1088
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1120
-	ori	$a4, $a2, 1152
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1184
-	ori	$a4, $a2, 1216
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1248
-	ori	$a4, $a2, 1280
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1312
-	ori	$a4, $a2, 1344
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1376
-	ori	$a4, $a2, 1408
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1440
-	ori	$a4, $a2, 1472
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1504
-	ori	$a4, $a2, 1536
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1568
-	ori	$a4, $a2, 1600
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1632
-	ori	$a4, $a2, 1664
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1696
-	ori	$a4, $a2, 1728
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1760
-	ori	$a4, $a2, 1792
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1824
-	ori	$a4, $a2, 1856
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1888
-	ori	$a4, $a2, 1920
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1952
-	ori	$a4, $a2, 1984
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2016
-	ori	$a4, $a2, 2048
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2080
-	ori	$a4, $a2, 2112
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2144
-	ori	$a4, $a2, 2176
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2208
-	ori	$a4, $a2, 2240
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2272
-	ori	$a4, $a2, 2304
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2336
-	ori	$a4, $a2, 2368
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2400
-	ori	$a4, $a2, 2432
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2464
-	ori	$a4, $a2, 2496
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2528
-	ori	$a4, $a2, 2560
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2592
-	ori	$a4, $a2, 2624
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2656
-	ori	$a4, $a2, 2688
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2720
-	ori	$a4, $a2, 2752
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2784
-	ori	$a4, $a2, 2816
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2848
-	ori	$a4, $a2, 2880
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2912
-	ori	$a4, $a2, 2944
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2976
-	ori	$a4, $a2, 3008
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3040
-	ori	$a4, $a2, 3072
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3104
-	ori	$a4, $a2, 3136
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3168
-	ori	$a4, $a2, 3200
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3232
-	ori	$a4, $a2, 3264
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3296
-	ori	$a4, $a2, 3328
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3360
-	ori	$a4, $a2, 3392
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3424
-	ori	$a4, $a2, 3456
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3488
-	ori	$a4, $a2, 3520
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3552
-	ori	$a4, $a2, 3584
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3616
-	ori	$a4, $a2, 3648
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3680
-	ori	$a4, $a2, 3712
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3744
-	ori	$a4, $a2, 3776
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3808
-	ori	$a4, $a2, 3840
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3872
-	ori	$a4, $a2, 3904
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3936
-	ori	$a4, $a2, 3968
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 4000
-	ori	$a4, $a2, 4032
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 4064
-	lu12i.w	$a2, 10
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a2
-	ori	$a3, $a2, 32
-	ori	$a4, $a2, 64
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 96
-	ori	$a4, $a2, 128
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 160
-	ori	$a4, $a2, 192
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 224
-	ori	$a4, $a2, 256
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 288
-	ori	$a4, $a2, 320
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 352
-	ori	$a4, $a2, 384
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 416
-	ori	$a4, $a2, 448
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 480
-	ori	$a4, $a2, 512
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 544
-	ori	$a4, $a2, 576
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 608
-	ori	$a4, $a2, 640
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 672
-	ori	$a4, $a2, 704
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 736
-	ori	$a4, $a2, 768
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 800
-	ori	$a4, $a2, 832
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 864
-	ori	$a4, $a2, 896
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 928
-	ori	$a4, $a2, 960
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 992
-	ori	$a4, $a2, 1024
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1056
-	ori	$a4, $a2, 1088
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1120
-	ori	$a4, $a2, 1152
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1184
-	ori	$a4, $a2, 1216
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1248
-	ori	$a4, $a2, 1280
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1312
-	ori	$a4, $a2, 1344
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1376
-	ori	$a4, $a2, 1408
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1440
-	ori	$a4, $a2, 1472
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1504
-	ori	$a4, $a2, 1536
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1568
-	ori	$a4, $a2, 1600
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1632
-	ori	$a4, $a2, 1664
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1696
-	ori	$a4, $a2, 1728
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1760
-	ori	$a4, $a2, 1792
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1824
-	ori	$a4, $a2, 1856
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1888
-	ori	$a4, $a2, 1920
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1952
-	ori	$a4, $a2, 1984
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2016
-	ori	$a4, $a2, 2048
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2080
-	ori	$a4, $a2, 2112
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2144
-	ori	$a4, $a2, 2176
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2208
-	ori	$a4, $a2, 2240
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2272
-	ori	$a4, $a2, 2304
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	lu12i.w	$a3, 12
-	ori	$a4, $a3, 1952
-	xvstx	$xr0, $a0, $a4
-	lu12i.w	$a4, 16
-	ori	$a5, $a4, 1504
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1472
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1440
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1408
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1376
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1344
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1312
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1280
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1248
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1216
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1184
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1152
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1120
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1088
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1056
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1024
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 992
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 960
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 928
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 896
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 864
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 832
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 800
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 768
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 736
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 704
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 672
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 640
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 608
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 576
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 544
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 512
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 480
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 448
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 416
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 384
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 352
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 320
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 288
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 256
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 224
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 192
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 160
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 128
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 96
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 64
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 32
-	xvstx	$xr0, $a0, $a5
-	xvstx	$xr0, $a0, $a4
-	lu12i.w	$a5, 15
-	ori	$a6, $a5, 4064
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 4032
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 4000
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3968
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3936
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3904
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3872
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3840
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3808
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3776
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3744
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3712
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3680
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3648
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3616
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3584
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3552
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3520
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3488
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3456
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3424
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3392
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3360
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3328
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3296
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3264
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3232
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3200
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3168
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3136
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3104
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3072
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3040
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3008
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2976
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2944
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2912
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2880
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2848
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2816
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2784
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2752
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2720
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2688
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2656
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2624
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2592
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2560
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2528
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2496
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2464
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2432
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2400
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2368
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2336
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2304
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2272
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2240
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2208
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2176
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2144
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2112
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2080
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2048
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2016
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1984
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1952
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1920
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1888
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1856
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1824
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1792
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1760
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1728
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1696
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1664
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1632
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1600
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1568
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1536
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1504
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1472
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1440
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1408
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1376
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1344
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1312
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1280
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1248
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1216
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1184
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1152
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1120
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1088
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1056
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1024
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 992
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 960
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 928
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 896
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 864
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 832
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 800
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 768
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 736
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 704
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 672
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 640
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 608
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 576
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 544
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 512
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 480
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 448
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 416
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 384
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 352
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 320
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 288
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 256
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 224
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 192
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 160
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 128
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 96
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 64
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 32
-	xvstx	$xr0, $a0, $a6
-	xvstx	$xr0, $a0, $a5
-	lu12i.w	$a5, 14
-	ori	$a6, $a5, 4064
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 4032
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 4000
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3968
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3936
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3904
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3872
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3840
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3808
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3776
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3744
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3712
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3680
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3648
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3616
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3584
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3552
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3520
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3488
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3456
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3424
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3392
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3360
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3328
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3296
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3264
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3232
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3200
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3168
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3136
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3104
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3072
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3040
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3008
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2976
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2944
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2912
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2880
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2848
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2816
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2784
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2752
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2720
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2688
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2656
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2624
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2592
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2560
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2528
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2496
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2464
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2432
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2400
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2368
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2336
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2304
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2272
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2240
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2208
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2176
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2144
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2112
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2080
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2048
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2016
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1984
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1920
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1888
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1856
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1824
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1792
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1760
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1728
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1696
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1664
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1632
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1600
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1568
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1536
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1504
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1472
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1440
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1408
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1376
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1344
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1312
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1280
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1248
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1216
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1184
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1152
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1120
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1088
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1056
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1024
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 992
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 960
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 928
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 896
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 864
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 832
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 800
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 768
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 736
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 704
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 672
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 640
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 608
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 576
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 544
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 512
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 480
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 448
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 416
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 384
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 352
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 320
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 288
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 256
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 224
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 192
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 160
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 128
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 96
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 64
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 32
-	xvstx	$xr0, $a0, $a6
-	xvstx	$xr0, $a0, $a3
-	lu12i.w	$a6, 11
-	ori	$a7, $a6, 4064
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 4032
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 4000
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3968
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3936
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3904
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3872
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3840
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3808
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3776
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3744
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3712
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3680
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3648
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3616
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3584
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3552
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3520
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3488
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3456
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3424
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3392
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3360
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3328
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3296
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3264
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3232
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3200
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3168
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3136
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3104
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3072
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3040
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3008
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2976
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2944
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2912
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2880
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2848
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2816
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2784
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2752
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2720
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2688
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2656
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2624
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2592
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2560
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2528
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2496
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2464
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2432
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2400
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2368
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2336
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2304
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2272
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2240
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2208
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2176
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2144
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2112
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2080
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2048
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2016
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1984
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1952
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1920
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1888
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1856
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1824
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1792
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1760
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1728
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1696
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1664
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1632
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1600
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1568
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1536
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1504
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1472
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1440
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1408
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1376
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1344
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1312
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1280
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1248
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1216
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1184
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1152
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1120
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1088
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1056
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1024
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 992
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 960
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 928
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 896
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 864
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 832
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 800
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 768
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 736
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 704
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 672
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 640
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 608
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 576
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 544
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 512
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 480
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 448
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 416
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 384
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 352
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 320
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 288
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 256
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 224
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 192
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 160
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 128
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 96
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 64
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 32
-	xvstx	$xr0, $a0, $a7
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 4064
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 4032
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 4000
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3968
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3936
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3904
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3872
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3840
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3808
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3776
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3744
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3712
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3680
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3648
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3616
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3584
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3552
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3520
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3488
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3456
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3424
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3392
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3360
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3328
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3296
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3264
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3232
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3200
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3168
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3136
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3104
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3072
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3040
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3008
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2976
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2944
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2912
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2880
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2848
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2816
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2784
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2752
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2720
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2688
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2656
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2624
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2592
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2560
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2528
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2496
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2464
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2432
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2400
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2368
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a2, 2336
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1984
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2016
-	ori	$a6, $a3, 2048
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2080
-	ori	$a6, $a3, 2112
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2144
-	ori	$a6, $a3, 2176
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2208
-	ori	$a6, $a3, 2240
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2272
-	ori	$a6, $a3, 2304
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2336
-	ori	$a6, $a3, 2368
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2400
-	ori	$a6, $a3, 2432
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2464
-	ori	$a6, $a3, 2496
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2528
-	ori	$a6, $a3, 2560
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2592
-	ori	$a6, $a3, 2624
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2656
-	ori	$a6, $a3, 2688
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2720
-	ori	$a6, $a3, 2752
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2784
-	ori	$a6, $a3, 2816
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2848
-	ori	$a6, $a3, 2880
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2912
-	ori	$a6, $a3, 2944
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 2976
-	ori	$a6, $a3, 3008
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3040
-	ori	$a6, $a3, 3072
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3104
-	ori	$a6, $a3, 3136
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3168
-	ori	$a6, $a3, 3200
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3232
-	ori	$a6, $a3, 3264
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3296
-	ori	$a6, $a3, 3328
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3360
-	ori	$a6, $a3, 3392
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3424
-	ori	$a6, $a3, 3456
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3488
-	ori	$a6, $a3, 3520
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3552
-	ori	$a6, $a3, 3584
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3616
-	ori	$a6, $a3, 3648
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3680
-	ori	$a6, $a3, 3712
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3744
-	ori	$a6, $a3, 3776
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3808
-	ori	$a6, $a3, 3840
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3872
-	ori	$a6, $a3, 3904
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 3936
-	ori	$a6, $a3, 3968
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a3, 4000
-	ori	$a6, $a3, 4032
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a3, 4064
-	lu12i.w	$a2, 13
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a2
-	ori	$a3, $a2, 32
-	ori	$a6, $a2, 64
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 96
-	ori	$a6, $a2, 128
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 160
-	ori	$a6, $a2, 192
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 224
-	ori	$a6, $a2, 256
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 288
-	ori	$a6, $a2, 320
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 352
-	ori	$a6, $a2, 384
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 416
-	ori	$a6, $a2, 448
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 480
-	ori	$a6, $a2, 512
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 544
-	ori	$a6, $a2, 576
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 608
-	ori	$a6, $a2, 640
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 672
-	ori	$a6, $a2, 704
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 736
-	ori	$a6, $a2, 768
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 800
-	ori	$a6, $a2, 832
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 864
-	ori	$a6, $a2, 896
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 928
-	ori	$a6, $a2, 960
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 992
-	ori	$a6, $a2, 1024
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1056
-	ori	$a6, $a2, 1088
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1120
-	ori	$a6, $a2, 1152
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1184
-	ori	$a6, $a2, 1216
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1248
-	ori	$a6, $a2, 1280
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1312
-	ori	$a6, $a2, 1344
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1376
-	ori	$a6, $a2, 1408
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1440
-	ori	$a6, $a2, 1472
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1504
-	ori	$a6, $a2, 1536
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1568
-	ori	$a6, $a2, 1600
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1632
-	ori	$a6, $a2, 1664
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1696
-	ori	$a6, $a2, 1728
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1760
-	ori	$a6, $a2, 1792
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1824
-	ori	$a6, $a2, 1856
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1888
-	ori	$a6, $a2, 1920
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 1952
-	ori	$a6, $a2, 1984
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2016
-	ori	$a6, $a2, 2048
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2080
-	ori	$a6, $a2, 2112
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2144
-	ori	$a6, $a2, 2176
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2208
-	ori	$a6, $a2, 2240
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2272
-	ori	$a6, $a2, 2304
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2336
-	ori	$a6, $a2, 2368
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2400
-	ori	$a6, $a2, 2432
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2464
-	ori	$a6, $a2, 2496
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2528
-	ori	$a6, $a2, 2560
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2592
-	ori	$a6, $a2, 2624
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2656
-	ori	$a6, $a2, 2688
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2720
-	ori	$a6, $a2, 2752
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2784
-	ori	$a6, $a2, 2816
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2848
-	ori	$a6, $a2, 2880
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2912
-	ori	$a6, $a2, 2944
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 2976
-	ori	$a6, $a2, 3008
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3040
-	ori	$a6, $a2, 3072
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3104
-	ori	$a6, $a2, 3136
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3168
-	ori	$a6, $a2, 3200
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3232
-	ori	$a6, $a2, 3264
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3296
-	ori	$a6, $a2, 3328
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3360
-	ori	$a6, $a2, 3392
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3424
-	ori	$a6, $a2, 3456
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3488
-	ori	$a6, $a2, 3520
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3552
-	ori	$a6, $a2, 3584
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3616
-	ori	$a6, $a2, 3648
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3680
-	ori	$a6, $a2, 3712
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3744
-	ori	$a6, $a2, 3776
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3808
-	ori	$a6, $a2, 3840
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3872
-	ori	$a6, $a2, 3904
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 3936
-	ori	$a6, $a2, 3968
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a3, $a2, 4000
-	ori	$a6, $a2, 4032
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a6
-	ori	$a2, $a2, 4064
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a5
-	ori	$a2, $a5, 32
-	ori	$a3, $a5, 64
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 96
-	ori	$a3, $a5, 128
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 160
-	ori	$a3, $a5, 192
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 224
-	ori	$a3, $a5, 256
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 288
-	ori	$a3, $a5, 320
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 352
-	ori	$a3, $a5, 384
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 416
-	ori	$a3, $a5, 448
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 480
-	ori	$a3, $a5, 512
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 544
-	ori	$a3, $a5, 576
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 608
-	ori	$a3, $a5, 640
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 672
-	ori	$a3, $a5, 704
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 736
-	ori	$a3, $a5, 768
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 800
-	ori	$a3, $a5, 832
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 864
-	ori	$a3, $a5, 896
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 928
-	ori	$a3, $a5, 960
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 992
-	ori	$a3, $a5, 1024
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1056
-	ori	$a3, $a5, 1088
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1120
-	ori	$a3, $a5, 1152
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1184
-	ori	$a3, $a5, 1216
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1248
-	ori	$a3, $a5, 1280
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1312
-	ori	$a3, $a5, 1344
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1376
-	ori	$a3, $a5, 1408
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1440
-	ori	$a3, $a5, 1472
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1504
-	ori	$a3, $a5, 1536
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1568
-	ori	$a3, $a5, 1600
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1632
-	ori	$a3, $a5, 1664
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1696
-	ori	$a3, $a5, 1728
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1760
-	ori	$a3, $a5, 1792
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1824
-	ori	$a3, $a5, 1856
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1888
-	ori	$a3, $a5, 1920
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1952
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a4, 1568
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a4, 1536
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a4, 1600
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a4, 1632
-	ori	$a3, $a4, 1664
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1696
-	ori	$a3, $a4, 1728
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1760
-	ori	$a3, $a4, 1792
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1824
-	ori	$a3, $a4, 1856
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1888
-	ori	$a3, $a4, 1920
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1952
-	ori	$a3, $a4, 1984
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2016
-	ori	$a3, $a4, 2048
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2080
-	ori	$a3, $a4, 2112
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2144
-	ori	$a3, $a4, 2176
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2208
-	ori	$a3, $a4, 2240
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2272
-	ori	$a3, $a4, 2304
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2336
-	ori	$a3, $a4, 2368
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2400
-	ori	$a3, $a4, 2432
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2464
-	ori	$a3, $a4, 2496
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2528
-	ori	$a3, $a4, 2560
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2592
-	ori	$a3, $a4, 2624
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2656
-	ori	$a3, $a4, 2688
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2720
-	ori	$a3, $a4, 2752
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2784
-	ori	$a3, $a4, 2816
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2848
-	ori	$a3, $a4, 2880
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2912
-	ori	$a3, $a4, 2944
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2976
-	ori	$a3, $a4, 3008
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3040
-	ori	$a3, $a4, 3072
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3104
-	ori	$a3, $a4, 3136
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3168
-	ori	$a3, $a4, 3200
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3232
-	ori	$a3, $a4, 3264
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3296
-	ori	$a3, $a4, 3328
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3360
-	ori	$a3, $a4, 3392
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3424
-	ori	$a3, $a4, 3456
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3488
-	ori	$a3, $a4, 3520
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3552
-	ori	$a3, $a4, 3584
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3616
-	ori	$a3, $a4, 3648
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3680
-	ori	$a3, $a4, 3712
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3744
-	ori	$a3, $a4, 3776
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3808
-	ori	$a3, $a4, 3840
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3872
-	ori	$a3, $a4, 3904
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3936
-	ori	$a3, $a4, 3968
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 4000
-	ori	$a3, $a4, 4032
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a4, 4064
-	lu12i.w	$a2, 17
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a2
-	ori	$a3, $a2, 32
-	ori	$a4, $a2, 64
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 96
-	ori	$a4, $a2, 128
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 160
-	ori	$a4, $a2, 192
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 224
-	ori	$a4, $a2, 256
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 288
-	ori	$a4, $a2, 320
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 352
-	ori	$a4, $a2, 384
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 416
-	ori	$a4, $a2, 448
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 480
-	ori	$a4, $a2, 512
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 544
-	ori	$a4, $a2, 576
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 608
-	ori	$a4, $a2, 640
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 672
-	ori	$a4, $a2, 704
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 736
-	ori	$a4, $a2, 768
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 800
-	ori	$a4, $a2, 832
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 864
-	ori	$a4, $a2, 896
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 928
-	ori	$a4, $a2, 960
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 992
-	ori	$a4, $a2, 1024
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1056
-	ori	$a4, $a2, 1088
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1120
-	ori	$a4, $a2, 1152
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1184
-	ori	$a4, $a2, 1216
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1248
-	ori	$a4, $a2, 1280
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1312
-	ori	$a4, $a2, 1344
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1376
-	ori	$a4, $a2, 1408
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1440
-	ori	$a4, $a2, 1472
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1504
-	ori	$a4, $a2, 1536
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1568
-	ori	$a4, $a2, 1600
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1632
-	ori	$a4, $a2, 1664
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1696
-	ori	$a4, $a2, 1728
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1760
-	ori	$a4, $a2, 1792
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1824
-	ori	$a4, $a2, 1856
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1888
-	ori	$a4, $a2, 1920
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1952
-	ori	$a4, $a2, 1984
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2016
-	ori	$a4, $a2, 2048
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2080
-	ori	$a4, $a2, 2112
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2144
-	ori	$a4, $a2, 2176
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2208
-	ori	$a4, $a2, 2240
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2272
-	ori	$a4, $a2, 2304
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2336
-	ori	$a4, $a2, 2368
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2400
-	ori	$a4, $a2, 2432
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2464
-	ori	$a4, $a2, 2496
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2528
-	ori	$a4, $a2, 2560
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2592
-	ori	$a4, $a2, 2624
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2656
-	ori	$a4, $a2, 2688
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2720
-	ori	$a4, $a2, 2752
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2784
-	ori	$a4, $a2, 2816
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2848
-	ori	$a4, $a2, 2880
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2912
-	ori	$a4, $a2, 2944
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2976
-	ori	$a4, $a2, 3008
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3040
-	ori	$a4, $a2, 3072
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3104
-	ori	$a4, $a2, 3136
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3168
-	ori	$a4, $a2, 3200
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3232
-	ori	$a4, $a2, 3264
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3296
-	ori	$a4, $a2, 3328
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3360
-	ori	$a4, $a2, 3392
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3424
-	ori	$a4, $a2, 3456
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3488
-	ori	$a4, $a2, 3520
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3552
-	ori	$a4, $a2, 3584
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3616
-	ori	$a4, $a2, 3648
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3680
-	ori	$a4, $a2, 3712
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3744
-	ori	$a4, $a2, 3776
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3808
-	ori	$a4, $a2, 3840
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3872
-	ori	$a4, $a2, 3904
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3936
-	ori	$a4, $a2, 3968
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 4000
-	ori	$a4, $a2, 4032
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 4064
-	lu12i.w	$a2, 18
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 32
-	ori	$a4, $a2, 64
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 96
-	ori	$a4, $a2, 128
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 160
-	ori	$a4, $a2, 192
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 224
-	ori	$a4, $a2, 256
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 288
-	ori	$a4, $a2, 320
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 352
-	ori	$a4, $a2, 384
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 416
-	ori	$a4, $a2, 448
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 480
-	ori	$a4, $a2, 512
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 544
-	ori	$a4, $a2, 576
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 608
-	ori	$a4, $a2, 640
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 672
-	ori	$a4, $a2, 704
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 736
-	ori	$a4, $a2, 768
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 800
-	ori	$a4, $a2, 832
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 864
-	ori	$a4, $a2, 896
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 928
-	ori	$a4, $a2, 960
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 992
-	ori	$a4, $a2, 1024
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1056
-	ori	$a4, $a2, 1088
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1120
-	ori	$a4, $a2, 1152
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1184
-	ori	$a4, $a2, 1216
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1248
-	ori	$a4, $a2, 1280
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1312
-	ori	$a4, $a2, 1344
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1376
-	ori	$a4, $a2, 1408
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1440
-	ori	$a4, $a2, 1472
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1504
-	ori	$a4, $a2, 1536
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1600
-	xvstx	$xr0, $a0, $a3
-	lu12i.w	$a3, 20
-	ori	$a4, $a3, 1184
-	xvstx	$xr0, $a0, $a4
-	lu12i.w	$a4, 24
-	ori	$a5, $a4, 704
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 672
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 640
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 608
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 576
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 544
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 512
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 480
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 448
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 416
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 384
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 352
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 320
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 288
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 256
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 224
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 192
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 160
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 128
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 96
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 64
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 32
-	xvstx	$xr0, $a0, $a5
-	xvstx	$xr0, $a0, $a4
-	lu12i.w	$a5, 23
-	ori	$a6, $a5, 4064
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 4032
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 4000
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3968
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3936
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3904
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3872
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3840
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3808
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3776
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3744
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3712
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3680
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3648
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3616
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3584
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3552
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3520
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3488
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3456
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3424
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3392
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3360
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3328
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3296
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3264
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3232
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3200
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3168
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3136
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3104
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3072
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3040
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3008
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2976
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2944
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2912
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2880
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2848
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2816
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2784
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2752
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2720
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2688
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2656
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2624
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2592
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2560
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2528
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2496
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2464
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2432
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2400
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2368
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2336
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2304
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2272
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2240
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2208
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2176
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2144
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2112
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2080
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2048
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2016
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1984
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1952
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1920
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1888
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1856
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1824
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1792
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1760
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1728
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1696
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1664
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1632
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1600
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1568
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1536
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1504
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1472
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1440
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1408
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1376
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1344
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1312
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1280
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1248
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1216
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1184
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1152
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1120
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1088
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1056
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1024
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 992
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 960
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 928
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 896
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 864
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 832
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 800
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 768
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 736
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 704
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 672
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 640
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 608
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 576
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 544
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 512
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 480
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 448
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 416
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 384
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 352
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 320
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 288
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 256
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 224
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 192
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 160
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 128
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 96
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 64
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 32
-	xvstx	$xr0, $a0, $a6
-	xvstx	$xr0, $a0, $a5
-	lu12i.w	$a5, 22
-	ori	$a6, $a5, 4064
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 4032
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 4000
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3968
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3936
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3904
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3872
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3840
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3808
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3776
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3744
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3712
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3680
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3648
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3616
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3584
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3552
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3520
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3488
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3456
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3424
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3392
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3360
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3328
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3296
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3264
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3232
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3200
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3168
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3136
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3104
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3072
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3040
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 3008
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2976
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2944
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2912
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2880
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2848
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2816
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2784
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2752
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2720
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2688
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2656
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2624
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2592
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2560
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2528
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2496
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2464
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2432
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2400
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2368
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2336
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2304
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2272
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2240
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2208
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2176
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2144
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2112
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2080
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2048
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 2016
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1984
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1952
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1920
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1888
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1856
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1824
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1792
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1760
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1728
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1696
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1664
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1632
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1600
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1568
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1536
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1504
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1472
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1440
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1408
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1376
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1344
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1312
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1280
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1248
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1216
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a5, 1184
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1152
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1120
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1088
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1056
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 1024
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 992
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 960
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 928
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 896
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 864
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 832
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 800
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 768
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 736
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 704
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 672
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 640
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 608
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 576
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 544
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 512
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 480
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 448
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 416
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 384
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 352
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 320
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 288
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 256
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 224
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 192
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 160
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 128
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 96
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 64
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a3, 32
-	xvstx	$xr0, $a0, $a6
-	xvstx	$xr0, $a0, $a3
-	lu12i.w	$a6, 19
-	ori	$a7, $a6, 4064
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 4032
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 4000
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3968
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3936
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3904
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3872
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3840
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3808
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3776
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3744
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3712
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3680
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3648
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3616
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3584
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3552
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3520
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3488
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3456
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3424
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3392
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3360
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3328
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3296
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3264
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3232
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3200
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3168
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3136
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3104
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3072
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3040
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 3008
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2976
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2944
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2912
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2880
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2848
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2816
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2784
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2752
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2720
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2688
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2656
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2624
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2592
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2560
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2528
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2496
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2464
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2432
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2400
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2368
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2336
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2304
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2272
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2240
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2208
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2176
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2144
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2112
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2080
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2048
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 2016
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1984
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1952
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1920
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1888
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1856
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1824
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1792
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1760
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1728
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1696
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1664
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1632
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1600
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1568
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1536
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1504
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1472
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1440
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1408
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1376
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1344
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1312
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1280
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1248
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1216
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1184
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1152
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1120
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1088
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1056
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 1024
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 992
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 960
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 928
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 896
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 864
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 832
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 800
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 768
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 736
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 704
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 672
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 640
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 608
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 576
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 544
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 512
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 480
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 448
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 416
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 384
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 352
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 320
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 288
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 256
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 224
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 192
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 160
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 128
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 96
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 64
-	xvstx	$xr0, $a0, $a7
-	ori	$a7, $a6, 32
-	xvstx	$xr0, $a0, $a7
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 4064
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 4032
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 4000
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3968
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3936
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3904
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3872
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3840
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3808
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3776
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3744
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3712
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3680
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3648
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3616
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3584
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3552
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3520
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3488
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3456
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3424
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3392
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3360
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3328
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3296
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3264
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3232
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3200
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3168
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3136
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3104
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3072
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3040
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 3008
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2976
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2944
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2912
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2880
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2848
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2816
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2784
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2752
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2720
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2688
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2656
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2624
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2592
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2560
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2528
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2496
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2464
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2432
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2400
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2368
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2336
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2304
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2272
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2240
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2208
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2176
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2144
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2112
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2080
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2048
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 2016
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 1984
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 1952
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 1920
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 1888
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 1856
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 1824
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 1792
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 1760
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 1728
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 1696
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 1664
-	xvstx	$xr0, $a0, $a6
-	ori	$a6, $a2, 1632
-	xvstx	$xr0, $a0, $a6
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a2, 1568
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1216
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1248
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1280
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1312
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1344
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1376
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1408
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1440
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1472
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1504
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1536
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1568
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1600
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1632
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1664
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1696
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1728
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1760
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1792
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1824
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1856
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1888
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1920
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1952
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 1984
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2016
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2048
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2080
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2112
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2144
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2176
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2208
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2240
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2272
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2304
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2336
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2368
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2400
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2432
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2464
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2496
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2528
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2560
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2592
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2624
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2656
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2688
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2720
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2752
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2784
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2816
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2848
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2880
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2912
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2944
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 2976
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3008
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3040
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3072
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3104
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3136
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3168
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3200
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3232
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3264
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3296
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3328
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3360
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3392
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3424
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3456
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3488
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3520
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3552
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3584
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3616
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3648
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3680
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3712
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3744
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3776
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3808
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3840
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3872
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3904
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3936
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 3968
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 4000
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a3, 4032
-	xvstx	$xr0, $a0, $a2
-	ori	$a3, $a3, 4064
-	lu12i.w	$a2, 21
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a2
-	ori	$a3, $a2, 32
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 64
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 96
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 128
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 160
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 192
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 224
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 256
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 288
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 320
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 352
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 384
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 416
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 448
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 480
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 512
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 544
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 576
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 608
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 640
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 672
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 704
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 736
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 768
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 800
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 832
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 864
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 896
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 928
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 960
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 992
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1024
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1056
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1088
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1120
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1152
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1184
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1216
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1248
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1280
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1312
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1344
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1376
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1408
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1440
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1472
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1504
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1536
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1568
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1600
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1632
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1664
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1696
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1728
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1760
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1792
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1824
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1856
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1888
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1920
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1952
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1984
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2016
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2048
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2080
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2112
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2144
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2176
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2208
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2240
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2272
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2304
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2336
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2368
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2400
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2432
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2464
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2496
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2528
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2560
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2592
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2624
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2656
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2688
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2720
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2752
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2784
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2816
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2848
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2880
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2912
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2944
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2976
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3008
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3040
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3072
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3104
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3136
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3168
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3200
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3232
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3264
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3296
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3328
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3360
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3392
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3424
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3456
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3488
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3520
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3552
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3584
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3616
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3648
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3680
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3712
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3744
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3776
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3808
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3840
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3872
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3904
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3936
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3968
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 4000
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 4032
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a2, 4064
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a5
-	ori	$a2, $a5, 32
-	ori	$a3, $a5, 64
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 96
-	ori	$a3, $a5, 128
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 160
-	ori	$a3, $a5, 192
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 224
-	ori	$a3, $a5, 256
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 288
-	ori	$a3, $a5, 320
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 352
-	ori	$a3, $a5, 384
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 416
-	ori	$a3, $a5, 448
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 480
-	ori	$a3, $a5, 512
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 544
-	ori	$a3, $a5, 576
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 608
-	ori	$a3, $a5, 640
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 672
-	ori	$a3, $a5, 704
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 736
-	ori	$a3, $a5, 768
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 800
-	ori	$a3, $a5, 832
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 864
-	ori	$a3, $a5, 896
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 928
-	ori	$a3, $a5, 960
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 992
-	ori	$a3, $a5, 1024
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1056
-	ori	$a3, $a5, 1088
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a5, 1120
-	ori	$a3, $a5, 1152
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 736
-	ori	$a3, $a4, 800
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a4, 768
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 832
-	xvstx	$xr0, $a0, $a2
-	ori	$a2, $a4, 864
-	ori	$a3, $a4, 896
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 928
-	ori	$a3, $a4, 960
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 992
-	ori	$a3, $a4, 1024
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1056
-	ori	$a3, $a4, 1088
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1120
-	ori	$a3, $a4, 1152
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1184
-	ori	$a3, $a4, 1216
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1248
-	ori	$a3, $a4, 1280
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1312
-	ori	$a3, $a4, 1344
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1376
-	ori	$a3, $a4, 1408
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1440
-	ori	$a3, $a4, 1472
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1504
-	ori	$a3, $a4, 1536
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1568
-	ori	$a3, $a4, 1600
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1632
-	ori	$a3, $a4, 1664
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1696
-	ori	$a3, $a4, 1728
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1760
-	ori	$a3, $a4, 1792
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1824
-	ori	$a3, $a4, 1856
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1888
-	ori	$a3, $a4, 1920
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 1952
-	ori	$a3, $a4, 1984
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2016
-	ori	$a3, $a4, 2048
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2080
-	ori	$a3, $a4, 2112
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2144
-	ori	$a3, $a4, 2176
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2208
-	ori	$a3, $a4, 2240
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2272
-	ori	$a3, $a4, 2304
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2336
-	ori	$a3, $a4, 2368
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2400
-	ori	$a3, $a4, 2432
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2464
-	ori	$a3, $a4, 2496
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2528
-	ori	$a3, $a4, 2560
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2592
-	ori	$a3, $a4, 2624
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2656
-	ori	$a3, $a4, 2688
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2720
-	ori	$a3, $a4, 2752
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2784
-	ori	$a3, $a4, 2816
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2848
-	ori	$a3, $a4, 2880
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2912
-	ori	$a3, $a4, 2944
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 2976
-	ori	$a3, $a4, 3008
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3040
-	ori	$a3, $a4, 3072
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3104
-	ori	$a3, $a4, 3136
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3168
-	ori	$a3, $a4, 3200
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3232
-	ori	$a3, $a4, 3264
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3296
-	ori	$a3, $a4, 3328
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3360
-	ori	$a3, $a4, 3392
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3424
-	ori	$a3, $a4, 3456
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3488
-	ori	$a3, $a4, 3520
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3552
-	ori	$a3, $a4, 3584
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3616
-	ori	$a3, $a4, 3648
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3680
-	ori	$a3, $a4, 3712
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3744
-	ori	$a3, $a4, 3776
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3808
-	ori	$a3, $a4, 3840
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3872
-	ori	$a3, $a4, 3904
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 3936
-	ori	$a3, $a4, 3968
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a4, 4000
-	ori	$a3, $a4, 4032
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a4, 4064
-	lu12i.w	$a2, 25
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a2
-	ori	$a3, $a2, 32
-	ori	$a4, $a2, 64
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 96
-	ori	$a4, $a2, 128
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 160
-	ori	$a4, $a2, 192
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 224
-	ori	$a4, $a2, 256
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 288
-	ori	$a4, $a2, 320
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 352
-	ori	$a4, $a2, 384
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 416
-	ori	$a4, $a2, 448
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 480
-	ori	$a4, $a2, 512
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 544
-	ori	$a4, $a2, 576
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 608
-	ori	$a4, $a2, 640
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 672
-	ori	$a4, $a2, 704
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 736
-	ori	$a4, $a2, 768
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 800
-	ori	$a4, $a2, 832
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 864
-	ori	$a4, $a2, 896
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 928
-	ori	$a4, $a2, 960
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 992
-	ori	$a4, $a2, 1024
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1056
-	ori	$a4, $a2, 1088
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1120
-	ori	$a4, $a2, 1152
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1184
-	ori	$a4, $a2, 1216
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1248
-	ori	$a4, $a2, 1280
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1312
-	ori	$a4, $a2, 1344
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1376
-	ori	$a4, $a2, 1408
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1440
-	ori	$a4, $a2, 1472
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1504
-	ori	$a4, $a2, 1536
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1568
-	ori	$a4, $a2, 1600
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1632
-	ori	$a4, $a2, 1664
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1696
-	ori	$a4, $a2, 1728
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1760
-	ori	$a4, $a2, 1792
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1824
-	ori	$a4, $a2, 1856
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1888
-	ori	$a4, $a2, 1920
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1952
-	ori	$a4, $a2, 1984
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2016
-	ori	$a4, $a2, 2048
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2080
-	ori	$a4, $a2, 2112
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2144
-	ori	$a4, $a2, 2176
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2208
-	ori	$a4, $a2, 2240
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2272
-	ori	$a4, $a2, 2304
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2336
-	ori	$a4, $a2, 2368
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2400
-	ori	$a4, $a2, 2432
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2464
-	ori	$a4, $a2, 2496
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2528
-	ori	$a4, $a2, 2560
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2592
-	ori	$a4, $a2, 2624
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2656
-	ori	$a4, $a2, 2688
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2720
-	ori	$a4, $a2, 2752
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2784
-	ori	$a4, $a2, 2816
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2848
-	ori	$a4, $a2, 2880
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2912
-	ori	$a4, $a2, 2944
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2976
-	ori	$a4, $a2, 3008
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3040
-	ori	$a4, $a2, 3072
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3104
-	ori	$a4, $a2, 3136
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3168
-	ori	$a4, $a2, 3200
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3232
-	ori	$a4, $a2, 3264
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3296
-	ori	$a4, $a2, 3328
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3360
-	ori	$a4, $a2, 3392
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3424
-	ori	$a4, $a2, 3456
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3488
-	ori	$a4, $a2, 3520
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3552
-	ori	$a4, $a2, 3584
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3616
-	ori	$a4, $a2, 3648
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3680
-	ori	$a4, $a2, 3712
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3744
-	ori	$a4, $a2, 3776
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3808
-	ori	$a4, $a2, 3840
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3872
-	ori	$a4, $a2, 3904
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3936
-	ori	$a4, $a2, 3968
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 4000
-	ori	$a4, $a2, 4032
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 4064
-	lu12i.w	$a2, 26
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 32
-	ori	$a4, $a2, 64
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 96
-	ori	$a4, $a2, 128
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 160
-	ori	$a4, $a2, 192
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 224
-	ori	$a4, $a2, 256
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 288
-	ori	$a4, $a2, 320
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 352
-	ori	$a4, $a2, 384
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 416
-	ori	$a4, $a2, 448
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 480
-	ori	$a4, $a2, 512
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 544
-	ori	$a4, $a2, 576
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 608
-	ori	$a4, $a2, 640
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 672
-	ori	$a4, $a2, 704
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 736
-	ori	$a4, $a2, 768
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	lu12i.w	$a3, 28
-	ori	$a4, $a3, 416
-	xvstx	$xr0, $a0, $a4
-	lu12i.w	$a4, 29
-	ori	$a5, $a4, 32
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 4064
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 4032
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 4000
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3968
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3936
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3904
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3872
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3840
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3808
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3776
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3744
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3712
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3680
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3648
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3616
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3584
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3552
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3520
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3488
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3456
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3424
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3392
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3360
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3328
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3296
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3264
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3232
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3200
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3168
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3136
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3104
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3072
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3040
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 3008
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2976
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2944
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2912
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2880
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2848
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2816
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2784
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2752
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2720
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2688
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2656
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2624
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2592
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2560
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2528
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2496
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2464
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2432
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2400
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2368
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2336
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2304
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2272
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2240
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2208
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2176
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2144
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2112
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2080
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2048
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 2016
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1984
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1952
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1920
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1888
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1856
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1824
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1792
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1760
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1728
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1696
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1664
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1632
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1600
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1568
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1536
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1504
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1472
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1440
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1408
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1376
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1344
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1312
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1280
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1248
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1216
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1184
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1152
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1120
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1088
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1056
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 1024
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 992
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 960
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 928
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 896
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 864
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 832
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 800
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 768
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 736
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 704
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 672
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 640
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 608
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 576
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 544
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 512
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 480
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 448
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 416
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 384
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 352
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 320
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 288
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 256
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 224
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 192
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 160
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 128
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 96
-	xvstx	$xr0, $a0, $a5
-	ori	$a5, $a4, 64
-	xvstx	$xr0, $a0, $a5
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 4064
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 4032
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 4000
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3968
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3936
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3904
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3872
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3840
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3808
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3776
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3744
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3712
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3680
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3648
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3616
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3584
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3552
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3520
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3488
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3456
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3424
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3392
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3360
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3328
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3296
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3264
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3232
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3200
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3168
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3136
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3104
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3072
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3040
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3008
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2976
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2944
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2912
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2880
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2848
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2816
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2784
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2752
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2720
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2688
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2656
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2624
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2592
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2560
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2528
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2496
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2464
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2432
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2400
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2368
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2336
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2304
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2272
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2240
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2208
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2176
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2144
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2112
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2080
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2048
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2016
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1984
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1952
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1920
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1888
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1856
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1824
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1792
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1760
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1728
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1696
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1664
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1632
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1600
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1568
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1536
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1504
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1472
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1440
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1408
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1376
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1344
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1312
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1280
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1248
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1216
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1184
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1152
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1120
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1088
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1056
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1024
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 992
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 960
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 928
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 896
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 864
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 832
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 800
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 768
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 736
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 704
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 672
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 640
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 608
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 576
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 544
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 512
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 480
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 448
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 384
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 352
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 320
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 288
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 256
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 224
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 192
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 160
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 128
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 96
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 64
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 32
-	xvstx	$xr0, $a0, $a4
-	xvstx	$xr0, $a0, $a3
-	lu12i.w	$a3, 27
-	ori	$a4, $a3, 4064
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 4032
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 4000
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3968
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3936
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3904
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3872
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3840
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3808
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3776
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3744
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3712
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3680
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3648
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3616
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3584
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3552
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3520
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3488
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3456
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3424
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3392
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3360
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3328
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3296
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3264
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3232
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3200
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3168
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3136
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3104
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3072
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3040
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 3008
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2976
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2944
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2912
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2880
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2848
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2816
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2784
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2752
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2720
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2688
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2656
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2624
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2592
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2560
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2528
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2496
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2464
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2432
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2400
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2368
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2336
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2304
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2272
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2240
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2208
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2176
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2144
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2112
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2080
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2048
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 2016
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1984
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1952
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1920
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1888
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1856
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1824
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1792
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1760
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1728
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1696
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1664
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1632
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1600
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1568
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1536
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1504
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1472
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1440
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1408
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1376
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1344
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1312
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1280
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1248
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1216
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1184
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1152
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1120
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1088
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1056
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 1024
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 992
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 960
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 928
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 896
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 864
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 832
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 800
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 768
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 736
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 704
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 672
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 640
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 608
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 576
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 544
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 512
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 480
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 448
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 416
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 384
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 352
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 320
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 288
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 256
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 224
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 192
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 160
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 128
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 96
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 64
-	xvstx	$xr0, $a0, $a4
-	ori	$a4, $a3, 32
-	xvstx	$xr0, $a0, $a4
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 4064
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 4032
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 4000
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3968
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3936
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3904
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3872
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3840
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3808
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3776
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3744
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3712
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3680
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3648
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3616
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3584
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3552
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3520
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3488
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3456
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3424
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3392
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3360
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3328
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3296
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3264
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3232
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3200
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3168
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3136
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3104
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3072
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3040
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 3008
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2976
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2944
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2912
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2880
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2848
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2816
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2784
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2752
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2720
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2688
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2656
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2624
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2592
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2560
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2528
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2496
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2464
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2432
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2400
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2368
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2336
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2304
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2272
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2240
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2208
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2176
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2144
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2112
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2080
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2048
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 2016
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1984
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1952
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1920
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1888
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1856
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1824
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1792
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1760
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1728
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1696
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1664
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1632
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1600
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1568
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1536
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1504
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1472
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1440
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1408
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1376
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1344
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1312
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1280
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1248
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1216
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1184
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1152
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1120
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1088
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1056
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 1024
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 992
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 960
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 928
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 896
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 864
-	xvstx	$xr0, $a0, $a3
-	ori	$a3, $a2, 832
-	xvstx	$xr0, $a0, $a3
-	ori	$a2, $a2, 800
-	xvstx	$xr0, $a0, $a2
-	lu12i.w	$a2, 30
-	xvstx	$xr0, $a0, $a2
-	ori	$a3, $a2, 32
-	ori	$a4, $a2, 64
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 96
-	ori	$a4, $a2, 128
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 160
-	ori	$a4, $a2, 192
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 224
-	ori	$a4, $a2, 256
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 288
-	ori	$a4, $a2, 320
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 352
-	ori	$a4, $a2, 384
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 416
-	ori	$a4, $a2, 448
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 480
-	ori	$a4, $a2, 512
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 544
-	ori	$a4, $a2, 576
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 608
-	ori	$a4, $a2, 640
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 672
-	ori	$a4, $a2, 704
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 736
-	ori	$a4, $a2, 768
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 800
-	ori	$a4, $a2, 832
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 864
-	ori	$a4, $a2, 896
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 928
-	ori	$a4, $a2, 960
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 992
-	ori	$a4, $a2, 1024
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1056
-	ori	$a4, $a2, 1088
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1120
-	ori	$a4, $a2, 1152
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1184
-	ori	$a4, $a2, 1216
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1248
-	ori	$a4, $a2, 1280
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1312
-	ori	$a4, $a2, 1344
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1376
-	ori	$a4, $a2, 1408
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1440
-	ori	$a4, $a2, 1472
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1504
-	ori	$a4, $a2, 1536
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1568
-	ori	$a4, $a2, 1600
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1632
-	ori	$a4, $a2, 1664
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1696
-	ori	$a4, $a2, 1728
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1760
-	ori	$a4, $a2, 1792
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1824
-	ori	$a4, $a2, 1856
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1888
-	ori	$a4, $a2, 1920
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1952
-	ori	$a4, $a2, 1984
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2016
-	ori	$a4, $a2, 2048
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2080
-	ori	$a4, $a2, 2112
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2144
-	ori	$a4, $a2, 2176
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2208
-	ori	$a4, $a2, 2240
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2272
-	ori	$a4, $a2, 2304
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2336
-	ori	$a4, $a2, 2368
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2400
-	ori	$a4, $a2, 2432
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2464
-	ori	$a4, $a2, 2496
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2528
-	ori	$a4, $a2, 2560
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2592
-	ori	$a4, $a2, 2624
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2656
-	ori	$a4, $a2, 2688
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2720
-	ori	$a4, $a2, 2752
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2784
-	ori	$a4, $a2, 2816
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2848
-	ori	$a4, $a2, 2880
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2912
-	ori	$a4, $a2, 2944
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2976
-	ori	$a4, $a2, 3008
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3040
-	ori	$a4, $a2, 3072
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3104
-	ori	$a4, $a2, 3136
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3168
-	ori	$a4, $a2, 3200
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3232
-	ori	$a4, $a2, 3264
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3296
-	ori	$a4, $a2, 3328
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3360
-	ori	$a4, $a2, 3392
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3424
-	ori	$a4, $a2, 3456
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3488
-	ori	$a4, $a2, 3520
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3552
-	ori	$a4, $a2, 3584
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3616
-	ori	$a4, $a2, 3648
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3680
-	ori	$a4, $a2, 3712
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3744
-	ori	$a4, $a2, 3776
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3808
-	ori	$a4, $a2, 3840
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3872
-	ori	$a4, $a2, 3904
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3936
-	ori	$a4, $a2, 3968
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 4000
-	ori	$a4, $a2, 4032
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 4064
-	lu12i.w	$a2, 31
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a2
-	ori	$a3, $a2, 32
-	ori	$a4, $a2, 64
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 96
-	ori	$a4, $a2, 128
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 160
-	ori	$a4, $a2, 192
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 224
-	ori	$a4, $a2, 256
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 288
-	ori	$a4, $a2, 320
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 352
-	ori	$a4, $a2, 384
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 416
-	ori	$a4, $a2, 448
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 480
-	ori	$a4, $a2, 512
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 544
-	ori	$a4, $a2, 576
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 608
-	ori	$a4, $a2, 640
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 672
-	ori	$a4, $a2, 704
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 736
-	ori	$a4, $a2, 768
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 800
-	ori	$a4, $a2, 832
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 864
-	ori	$a4, $a2, 896
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 928
-	ori	$a4, $a2, 960
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 992
-	ori	$a4, $a2, 1024
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1056
-	ori	$a4, $a2, 1088
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1120
-	ori	$a4, $a2, 1152
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1184
-	ori	$a4, $a2, 1216
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1248
-	ori	$a4, $a2, 1280
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1312
-	ori	$a4, $a2, 1344
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1376
-	ori	$a4, $a2, 1408
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1440
-	ori	$a4, $a2, 1472
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1504
-	ori	$a4, $a2, 1536
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1568
-	ori	$a4, $a2, 1600
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1632
-	ori	$a4, $a2, 1664
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1696
-	ori	$a4, $a2, 1728
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1760
-	ori	$a4, $a2, 1792
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1824
-	ori	$a4, $a2, 1856
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1888
-	ori	$a4, $a2, 1920
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 1952
-	ori	$a4, $a2, 1984
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2016
-	ori	$a4, $a2, 2048
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2080
-	ori	$a4, $a2, 2112
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2144
-	ori	$a4, $a2, 2176
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2208
-	ori	$a4, $a2, 2240
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2272
-	ori	$a4, $a2, 2304
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2336
-	ori	$a4, $a2, 2368
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2400
-	ori	$a4, $a2, 2432
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2464
-	ori	$a4, $a2, 2496
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2528
-	ori	$a4, $a2, 2560
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2592
-	ori	$a4, $a2, 2624
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2656
-	ori	$a4, $a2, 2688
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2720
-	ori	$a4, $a2, 2752
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2784
-	ori	$a4, $a2, 2816
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2848
-	ori	$a4, $a2, 2880
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2912
-	ori	$a4, $a2, 2944
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 2976
-	ori	$a4, $a2, 3008
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3040
-	ori	$a4, $a2, 3072
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3104
-	ori	$a4, $a2, 3136
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3168
-	ori	$a4, $a2, 3200
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3232
-	ori	$a4, $a2, 3264
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3296
-	ori	$a4, $a2, 3328
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3360
-	ori	$a4, $a2, 3392
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3424
-	ori	$a4, $a2, 3456
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3488
-	ori	$a4, $a2, 3520
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3552
-	ori	$a4, $a2, 3584
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3616
-	ori	$a4, $a2, 3648
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3680
-	ori	$a4, $a2, 3712
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3744
-	ori	$a4, $a2, 3776
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3808
-	ori	$a4, $a2, 3840
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3872
-	ori	$a4, $a2, 3904
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 3936
-	ori	$a4, $a2, 3968
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a3, $a2, 4000
-	ori	$a4, $a2, 4032
-	xvstx	$xr0, $a0, $a3
-	xvstx	$xr0, $a0, $a4
-	ori	$a2, $a2, 4064
-	ori	$a1, $a1, 3296
-	xvstx	$xr0, $a0, $a2
-	xvstx	$xr0, $a0, $a1
+	ori	$a3, $a2, 16
+	.p2align	4, , 16
+.LBB9_9:                                # %vector.body37
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a4, $a0, $a1
+	vstx	$vr0, $a4, $a2
+	addi.d	$a1, $a1, 32
+	vstx	$vr0, $a4, $a3
+	bnez	$a1, .LBB9_9
+# %bb.10:                               # %vector.ph41
+	lu12i.w	$a1, -1
+	lu12i.w	$a2, 6
+	ori	$a3, $a2, 16
+	.p2align	4, , 16
+.LBB9_11:                               # %vector.body44
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a4, $a0, $a1
+	vstx	$vr0, $a4, $a2
+	addi.d	$a1, $a1, 32
+	vstx	$vr0, $a4, $a3
+	bnez	$a1, .LBB9_11
+# %bb.12:                               # %vector.ph48
+	lu12i.w	$a1, -1
+	lu12i.w	$a3, 7
+	ori	$a2, $a3, 16
+	.p2align	4, , 16
+.LBB9_13:                               # %vector.body51
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a4, $a0, $a1
+	vstx	$vr0, $a4, $a3
+	addi.d	$a1, $a1, 32
+	vstx	$vr0, $a4, $a2
+	bnez	$a1, .LBB9_13
+# %bb.14:                               # %vector.ph55
+	add.d	$a1, $a0, $a2
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_15:                               # %vector.body58
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_15
+# %bb.16:                               # %vector.ph62
+	lu12i.w	$a1, 8
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_17:                               # %vector.body65
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_17
+# %bb.18:                               # %vector.ph69
+	lu12i.w	$a1, 9
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_19:                               # %vector.body72
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_19
+# %bb.20:                               # %vector.ph76
+	lu12i.w	$a1, 10
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_21:                               # %vector.body79
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_21
+# %bb.22:                               # %vector.ph83
+	lu12i.w	$a1, 11
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_23:                               # %vector.body86
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_23
+# %bb.24:                               # %vector.ph90
+	lu12i.w	$a1, 12
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_25:                               # %vector.body93
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_25
+# %bb.26:                               # %vector.ph97
+	lu12i.w	$a1, 13
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_27:                               # %vector.body100
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_27
+# %bb.28:                               # %vector.ph104
+	lu12i.w	$a1, 14
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_29:                               # %vector.body107
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_29
+# %bb.30:                               # %vector.ph111
+	lu12i.w	$a1, 15
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_31:                               # %vector.body114
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_31
+# %bb.32:                               # %vector.ph118
+	addu16i.d	$a1, $a0, 1
+	addi.d	$a1, $a1, 16
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_33:                               # %vector.body121
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_33
+# %bb.34:                               # %vector.ph125
+	lu12i.w	$a1, 17
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_35:                               # %vector.body128
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_35
+# %bb.36:                               # %vector.ph132
+	lu12i.w	$a1, 18
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_37:                               # %vector.body135
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_37
+# %bb.38:                               # %vector.ph139
+	lu12i.w	$a1, 19
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_39:                               # %vector.body142
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_39
+# %bb.40:                               # %vector.ph146
+	lu12i.w	$a1, 20
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_41:                               # %vector.body149
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_41
+# %bb.42:                               # %vector.ph153
+	lu12i.w	$a1, 21
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_43:                               # %vector.body156
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_43
+# %bb.44:                               # %vector.ph160
+	lu12i.w	$a1, 22
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_45:                               # %vector.body163
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_45
+# %bb.46:                               # %vector.ph167
+	lu12i.w	$a1, 23
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_47:                               # %vector.body170
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_47
+# %bb.48:                               # %vector.ph174
+	lu12i.w	$a1, 24
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_49:                               # %vector.body177
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_49
+# %bb.50:                               # %vector.ph181
+	lu12i.w	$a1, 25
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_51:                               # %vector.body184
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_51
+# %bb.52:                               # %vector.ph188
+	lu12i.w	$a1, 26
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_53:                               # %vector.body191
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_53
+# %bb.54:                               # %vector.ph195
+	lu12i.w	$a1, 27
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_55:                               # %vector.body198
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_55
+# %bb.56:                               # %vector.ph202
+	lu12i.w	$a1, 28
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_57:                               # %vector.body205
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_57
+# %bb.58:                               # %vector.ph209
+	lu12i.w	$a1, 29
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_59:                               # %vector.body212
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_59
+# %bb.60:                               # %vector.ph216
+	lu12i.w	$a1, 30
+	ori	$a1, $a1, 16
+	add.d	$a1, $a0, $a1
+	ori	$a2, $zero, 1024
+	.p2align	4, , 16
+.LBB9_61:                               # %vector.body219
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB9_61
+# %bb.62:                               # %vector.ph223
+	lu12i.w	$a1, 31
+	ori	$a1, $a1, 16
+	add.d	$a0, $a0, $a1
+	ori	$a1, $zero, 1024
+	.p2align	4, , 16
+.LBB9_63:                               # %vector.body226
+                                        # =>This Inner Loop Header: Depth=1
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -8
+	addi.d	$a0, $a0, 32
+	bnez	$a1, .LBB9_63
+# %bb.64:                               # %middle.block229
 	ret
 .Lfunc_end9:
 	.size	_Z8example8i, .Lfunc_end9-_Z8example8i
@@ -8852,37 +845,35 @@ _Z8example8i:                           # @_Z8example8i
 	.type	_Z8example9Pj,@function
 _Z8example9Pj:                          # @_Z8example9Pj
 # %bb.0:                                # %vector.ph
-	xvrepli.b	$xr0, 0
+	vrepli.b	$vr0, 0
 	lu12i.w	$a1, -1
 	pcalau12i	$a2, %pc_hi20(ub)
 	addi.d	$a2, $a2, %pc_lo12(ub)
 	lu12i.w	$a3, 1
-	ori	$a4, $a3, 32
+	ori	$a4, $a3, 16
 	pcalau12i	$a5, %pc_hi20(uc)
 	addi.d	$a5, $a5, %pc_lo12(uc)
-	xvori.b	$xr1, $xr0, 0
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB10_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a6, $a2, $a1
-	xvldx	$xr2, $a6, $a3
-	xvldx	$xr3, $a6, $a4
+	vldx	$vr2, $a6, $a3
+	vldx	$vr3, $a6, $a4
 	add.d	$a6, $a5, $a1
-	xvldx	$xr4, $a6, $a3
-	xvldx	$xr5, $a6, $a4
-	xvadd.w	$xr0, $xr2, $xr0
-	xvadd.w	$xr1, $xr3, $xr1
-	xvsub.w	$xr0, $xr0, $xr4
-	addi.d	$a1, $a1, 64
-	xvsub.w	$xr1, $xr1, $xr5
+	vldx	$vr4, $a6, $a3
+	vldx	$vr5, $a6, $a4
+	vadd.w	$vr0, $vr2, $vr0
+	vadd.w	$vr1, $vr3, $vr1
+	vsub.w	$vr0, $vr0, $vr4
+	addi.d	$a1, $a1, 32
+	vsub.w	$vr1, $vr1, $vr5
 	bnez	$a1, .LBB10_1
 # %bb.2:                                # %middle.block
-	xvadd.w	$xr0, $xr1, $xr0
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a1, $xr0, 0
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	st.w	$a1, $a0, 0
 	ret
 .Lfunc_end10:
@@ -8899,18 +890,21 @@ _Z10example10aPsS_S_PiS0_S0_:           # @_Z10example10aPsS_S_PiS0_S0_
 	.p2align	4, , 16
 .LBB11_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, 0
-	xvld	$xr1, $a5, 0
-	vldx	$vr2, $a1, $a6
-	vldx	$vr3, $a2, $a6
-	xvadd.w	$xr0, $xr1, $xr0
-	xvst	$xr0, $a3, 0
-	vadd.h	$vr0, $vr3, $vr2
-	vstx	$vr0, $a0, $a6
-	addi.d	$a6, $a6, 16
-	addi.d	$a3, $a3, 32
-	addi.d	$a5, $a5, 32
-	addi.d	$a4, $a4, 32
+	vld	$vr0, $a4, 0
+	vld	$vr1, $a5, 0
+	ldx.d	$t0, $a1, $a6
+	ldx.d	$t1, $a2, $a6
+	vadd.w	$vr0, $vr1, $vr0
+	vinsgr2vr.d	$vr1, $t0, 0
+	vst	$vr0, $a3, 0
+	vinsgr2vr.d	$vr0, $t1, 0
+	vadd.h	$vr0, $vr0, $vr1
+	add.d	$t0, $a0, $a6
+	vstelm.d	$vr0, $t0, 0, 0
+	addi.d	$a6, $a6, 8
+	addi.d	$a3, $a3, 16
+	addi.d	$a5, $a5, 16
+	addi.d	$a4, $a4, 16
 	bne	$a6, $a7, .LBB11_1
 # %bb.2:                                # %middle.block
 	ret
@@ -8924,38 +918,38 @@ _Z10example10aPsS_S_PiS0_S0_:           # @_Z10example10aPsS_S_PiS0_S0_
 _Z10example10bPsS_S_PiS0_S0_:           # @_Z10example10bPsS_S_PiS0_S0_
 # %bb.0:                                # %vector.ph
 	move	$a0, $zero
-	addi.d	$a2, $a3, 32
+	addi.d	$a2, $a3, 16
 	ori	$a3, $zero, 2048
 	.p2align	4, , 16
 .LBB12_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $a1, $a0
-	vldx	$vr0, $a1, $a0
-	vld	$vr1, $a4, 16
-	vext2xv.w.h	$xr0, $xr0
-	vext2xv.w.h	$xr1, $xr1
-	xvst	$xr0, $a2, -32
-	xvst	$xr1, $a2, 0
-	addi.d	$a0, $a0, 32
-	addi.d	$a2, $a2, 64
+	ldx.d	$a5, $a1, $a0
+	ld.d	$a4, $a4, 8
+	vinsgr2vr.d	$vr0, $a5, 0
+	vinsgr2vr.d	$vr1, $a4, 0
+	vslti.h	$vr2, $vr0, 0
+	vilvl.h	$vr0, $vr2, $vr0
+	vslti.h	$vr2, $vr1, 0
+	vilvl.h	$vr1, $vr2, $vr1
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$a0, $a0, 16
+	addi.d	$a2, $a2, 32
 	bne	$a0, $a3, .LBB12_1
 # %bb.2:                                # %middle.block
 	ret
 .Lfunc_end12:
 	.size	_Z10example10bPsS_S_PiS0_S0_, .Lfunc_end12-_Z10example10bPsS_S_PiS0_S0_
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9example11v
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9example11v
 .LCPI13_0:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
-	.dword	6                               # 0x6
-	.dword	7                               # 0x7
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI13_1:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	_Z9example11v
 	.p2align	2
@@ -8966,9 +960,9 @@ _Z9example11v:                          # @_Z9example11v
 	addi.d	$sp, $sp, -16
 	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI13_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI13_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI13_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI13_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI13_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI13_1)
 	pcalau12i	$a0, %pc_hi20(b)
 	addi.d	$a0, $a0, %pc_lo12(b)
 	pcalau12i	$a1, %pc_hi20(c)
@@ -8982,119 +976,67 @@ _Z9example11v:                          # @_Z9example11v
 	.p2align	4, , 16
 .LBB13_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr5, $xr0, 1
-	xvslli.d	$xr4, $xr1, 1
-	xvpickve2gr.d	$a6, $xr4, 0
-	xvpickve2gr.d	$a7, $xr4, 1
-	xvbitseti.d	$xr2, $xr5, 0
-	xvbitseti.d	$xr3, $xr4, 0
-	xvpickve2gr.d	$t0, $xr3, 0
-	xvpickve2gr.d	$t1, $xr3, 1
-	xvpickve2gr.d	$t2, $xr3, 2
-	xvpickve2gr.d	$t3, $xr3, 3
-	xvpickve2gr.d	$t4, $xr2, 0
-	xvpickve2gr.d	$t5, $xr2, 1
-	xvpickve2gr.d	$t6, $xr2, 2
-	xvpickve2gr.d	$t7, $xr2, 3
-	slli.d	$t8, $t0, 2
-	slli.d	$t1, $t1, 2
+	vslli.d	$vr2, $vr0, 1
+	vslli.d	$vr3, $vr1, 1
+	vpickve2gr.d	$a6, $vr3, 0
+	vpickve2gr.d	$a7, $vr3, 1
+	vpickve2gr.d	$t0, $vr2, 0
+	vpickve2gr.d	$t1, $vr2, 1
+	vbitseti.d	$vr2, $vr2, 0
+	vbitseti.d	$vr3, $vr3, 0
+	vpickve2gr.d	$t2, $vr3, 0
+	vpickve2gr.d	$t3, $vr3, 1
+	vpickve2gr.d	$t4, $vr2, 0
+	vpickve2gr.d	$t5, $vr2, 1
 	slli.d	$t2, $t2, 2
-	ldx.w	$fp, $a0, $t8
 	slli.d	$t3, $t3, 2
-	slli.d	$t0, $t4, 2
-	ldx.w	$t4, $a0, $t1
-	vinsgr2vr.w	$vr2, $fp, 0
-	ldx.w	$fp, $a0, $t2
+	slli.d	$t4, $t4, 2
 	slli.d	$t5, $t5, 2
-	vinsgr2vr.w	$vr2, $t4, 1
-	ldx.w	$t4, $a0, $t3
-	vinsgr2vr.w	$vr2, $fp, 2
-	ldx.w	$fp, $a0, $t0
-	slli.d	$t6, $t6, 2
-	vinsgr2vr.w	$vr2, $t4, 3
-	ldx.w	$t4, $a0, $t5
-	vinsgr2vr.w	$vr3, $fp, 0
-	ldx.w	$fp, $a0, $t6
-	slli.d	$t7, $t7, 2
-	vinsgr2vr.w	$vr3, $t4, 1
-	ldx.w	$t4, $a0, $t7
-	vinsgr2vr.w	$vr3, $fp, 2
-	xvpickve2gr.d	$fp, $xr4, 2
-	ldx.w	$t8, $a1, $t8
-	vinsgr2vr.w	$vr3, $t4, 3
-	xvpickve2gr.d	$t4, $xr4, 3
-	ldx.w	$t1, $a1, $t1
-	vinsgr2vr.w	$vr4, $t8, 0
-	xvpickve2gr.d	$t8, $xr5, 0
+	ldx.w	$t6, $a0, $t2
+	ldx.w	$t7, $a0, $t3
+	ldx.w	$t8, $a0, $t4
+	ldx.w	$fp, $a0, $t5
+	vinsgr2vr.w	$vr2, $t6, 0
+	vinsgr2vr.w	$vr2, $t7, 1
+	vinsgr2vr.w	$vr2, $t8, 2
+	vinsgr2vr.w	$vr2, $fp, 3
 	ldx.w	$t2, $a1, $t2
 	ldx.w	$t3, $a1, $t3
-	vinsgr2vr.w	$vr4, $t1, 1
-	xvpickve2gr.d	$t1, $xr5, 1
-	vinsgr2vr.w	$vr4, $t2, 2
-	xvpickve2gr.d	$t2, $xr5, 2
-	vinsgr2vr.w	$vr4, $t3, 3
-	xvpickve2gr.d	$t3, $xr5, 3
-	ldx.w	$t0, $a1, $t0
+	ldx.w	$t4, $a1, $t4
 	ldx.w	$t5, $a1, $t5
-	ldx.w	$t6, $a1, $t6
-	ldx.w	$t7, $a1, $t7
-	vinsgr2vr.w	$vr5, $t0, 0
-	vinsgr2vr.w	$vr5, $t5, 1
-	vinsgr2vr.w	$vr5, $t6, 2
-	vinsgr2vr.w	$vr5, $t7, 3
+	vinsgr2vr.w	$vr3, $t2, 0
+	vinsgr2vr.w	$vr3, $t3, 1
+	vinsgr2vr.w	$vr3, $t4, 2
+	vinsgr2vr.w	$vr3, $t5, 3
+	vmul.w	$vr4, $vr3, $vr2
 	slli.d	$a6, $a6, 2
 	slli.d	$a7, $a7, 2
-	slli.d	$t0, $fp, 2
-	slli.d	$t4, $t4, 2
-	slli.d	$t5, $t8, 2
+	slli.d	$t0, $t0, 2
 	slli.d	$t1, $t1, 2
-	slli.d	$t2, $t2, 2
-	slli.d	$t3, $t3, 2
-	ldx.w	$t6, $a0, $a6
-	ldx.w	$t7, $a0, $a7
-	ldx.w	$t8, $a0, $t0
-	ldx.w	$fp, $a0, $t4
-	vinsgr2vr.w	$vr6, $t6, 0
-	ldx.w	$t6, $a0, $t5
-	vinsgr2vr.w	$vr6, $t7, 1
-	ldx.w	$t7, $a0, $t1
-	vinsgr2vr.w	$vr6, $t8, 2
-	ldx.w	$t8, $a0, $t2
-	vinsgr2vr.w	$vr6, $fp, 3
-	ldx.w	$fp, $a0, $t3
-	vinsgr2vr.w	$vr7, $t6, 0
-	vinsgr2vr.w	$vr7, $t7, 1
-	vinsgr2vr.w	$vr7, $t8, 2
-	vinsgr2vr.w	$vr7, $fp, 3
+	ldx.w	$t2, $a0, $a6
+	ldx.w	$t3, $a0, $a7
+	ldx.w	$t4, $a0, $t0
+	ldx.w	$t5, $a0, $t1
+	vinsgr2vr.w	$vr5, $t2, 0
+	vinsgr2vr.w	$vr5, $t3, 1
+	vinsgr2vr.w	$vr5, $t4, 2
+	vinsgr2vr.w	$vr5, $t5, 3
 	ldx.w	$a6, $a1, $a6
 	ldx.w	$a7, $a1, $a7
 	ldx.w	$t0, $a1, $t0
-	ldx.w	$t4, $a1, $t4
-	vinsgr2vr.w	$vr8, $a6, 0
-	vinsgr2vr.w	$vr8, $a7, 1
-	vinsgr2vr.w	$vr8, $t0, 2
-	vinsgr2vr.w	$vr8, $t4, 3
-	ldx.w	$a6, $a1, $t5
-	ldx.w	$a7, $a1, $t1
-	ldx.w	$t0, $a1, $t2
-	ldx.w	$t1, $a1, $t3
-	vinsgr2vr.w	$vr9, $a6, 0
-	vinsgr2vr.w	$vr9, $a7, 1
-	vinsgr2vr.w	$vr9, $t0, 2
-	vinsgr2vr.w	$vr9, $t1, 3
-	xvpermi.q	$xr2, $xr3, 2
-	xvpermi.q	$xr4, $xr5, 2
-	xvpermi.q	$xr6, $xr7, 2
-	xvmul.w	$xr3, $xr4, $xr2
-	xvpermi.q	$xr8, $xr9, 2
-	xvmsub.w	$xr3, $xr8, $xr6
-	xvstx	$xr3, $a2, $a4
-	xvmul.w	$xr2, $xr8, $xr2
-	xvmadd.w	$xr2, $xr6, $xr4
-	xvstx	$xr2, $a3, $a4
-	xvaddi.du	$xr1, $xr1, 8
-	addi.d	$a4, $a4, 32
-	xvaddi.du	$xr0, $xr0, 8
+	ldx.w	$t1, $a1, $t1
+	vinsgr2vr.w	$vr6, $a6, 0
+	vinsgr2vr.w	$vr6, $a7, 1
+	vinsgr2vr.w	$vr6, $t0, 2
+	vinsgr2vr.w	$vr6, $t1, 3
+	vmsub.w	$vr4, $vr6, $vr5
+	vstx	$vr4, $a2, $a4
+	vmul.w	$vr2, $vr6, $vr2
+	vmadd.w	$vr2, $vr5, $vr3
+	vstx	$vr2, $a3, $a4
+	vaddi.du	$vr1, $vr1, 4
+	addi.d	$a4, $a4, 16
+	vaddi.du	$vr0, $vr0, 4
 	bne	$a4, $a5, .LBB13_1
 # %bb.2:                                # %middle.block
 	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
@@ -9103,17 +1045,13 @@ _Z9example11v:                          # @_Z9example11v
 .Lfunc_end13:
 	.size	_Z9example11v, .Lfunc_end13-_Z9example11v
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9example12v
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9example12v
 .LCPI14_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 	.text
 	.globl	_Z9example12v
 	.p2align	2
@@ -9122,21 +1060,21 @@ _Z9example11v:                          # @_Z9example11v
 _Z9example12v:                          # @_Z9example12v
 # %bb.0:                                # %vector.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI14_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI14_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI14_0)
 	lu12i.w	$a0, -1
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$a1, $a1, %pc_lo12(a)
 	lu12i.w	$a2, 1
-	ori	$a3, $a2, 32
+	ori	$a3, $a2, 16
 	.p2align	4, , 16
 .LBB14_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.wu	$xr1, $xr0, 8
+	vaddi.wu	$vr1, $vr0, 4
 	add.d	$a4, $a1, $a0
-	xvstx	$xr0, $a4, $a2
-	xvstx	$xr1, $a4, $a3
-	addi.d	$a0, $a0, 64
-	xvaddi.wu	$xr0, $xr0, 16
+	vstx	$vr0, $a4, $a2
+	vstx	$vr1, $a4, $a3
+	addi.d	$a0, $a0, 32
+	vaddi.wu	$vr0, $vr0, 8
 	bnez	$a0, .LBB14_1
 # %bb.2:                                # %middle.block
 	ret
@@ -9149,169 +1087,106 @@ _Z9example12v:                          # @_Z9example12v
 	.type	_Z9example13PPiS0_S_,@function
 _Z9example13PPiS0_S_:                   # @_Z9example13PPiS0_S_
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$fp, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
 	move	$a3, $zero
-	xvrepli.b	$xr0, 0
-	ori	$a5, $zero, 3840
-	ori	$a6, $zero, 3872
-	ori	$a7, $zero, 3904
-	ori	$t0, $zero, 3936
-	ori	$t1, $zero, 3968
-	ori	$t2, $zero, 4000
-	ori	$t3, $zero, 4032
-	ori	$t4, $zero, 4064
-	lu12i.w	$t5, 1
-	ori	$s5, $zero, 3616
-	ori	$s6, $zero, 3648
-	ori	$s7, $zero, 3680
-	ori	$s8, $zero, 3712
-	ori	$ra, $zero, 3744
-	ori	$t8, $zero, 3776
-	ori	$fp, $zero, 3808
+	vrepli.b	$vr0, 0
+	lu12i.w	$a4, -1
+	ori	$a5, $zero, 3968
+	ori	$a6, $zero, 4000
+	ori	$a7, $zero, 4032
+	ori	$t0, $zero, 4064
+	lu12i.w	$t1, 1
+	ori	$t2, $t1, 32
+	ori	$t3, $t1, 64
+	ori	$t4, $t1, 96
+	ori	$t5, $zero, 3872
+	ori	$t6, $zero, 3904
+	ori	$t7, $zero, 3936
+	ori	$t8, $zero, 32
 	.p2align	4, , 16
 .LBB15_1:                               # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB15_2 Depth 2
-	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
-	slli.d	$a2, $a3, 3
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	ldx.d	$a3, $a0, $a2
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	ldx.d	$a2, $a0, $a2
-	addi.d	$a4, $a3, 256
-	addi.d	$a3, $a2, 480
-	lu12i.w	$a2, -1
-	xvori.b	$xr1, $xr0, 0
-	xvori.b	$xr2, $xr0, 0
-	ori	$s0, $t5, 96
-	ori	$s1, $t5, 128
-	ori	$s2, $t5, 160
-	ori	$s3, $t5, 192
-	ori	$s4, $t5, 224
+	slli.d	$fp, $a3, 3
+	ldx.d	$s0, $a0, $fp
+	ldx.d	$s1, $a1, $fp
+	addi.d	$fp, $s0, 128
+	addi.d	$s0, $s1, 224
+	move	$s1, $a4
+	vori.b	$vr1, $vr0, 0
+	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB15_2:                               # %vector.body
                                         #   Parent Loop BB15_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$a1, $a4, $a2
-	ldx.w	$a0, $a1, $t1
-	ldx.w	$t6, $a1, $t2
-	ldx.w	$t7, $a1, $t3
-	vinsgr2vr.w	$vr3, $a0, 0
-	ldx.w	$a0, $a1, $t4
-	vinsgr2vr.w	$vr3, $t6, 1
-	ldx.w	$t6, $a1, $a5
-	vinsgr2vr.w	$vr3, $t7, 2
-	ldx.w	$t7, $a1, $a6
-	vinsgr2vr.w	$vr3, $a0, 3
-	ldx.w	$a0, $a1, $a7
-	vinsgr2vr.w	$vr4, $t6, 0
-	ldx.w	$t6, $a1, $t0
-	vinsgr2vr.w	$vr4, $t7, 1
-	vinsgr2vr.w	$vr4, $a0, 2
-	ldx.w	$a0, $a1, $s1
-	vinsgr2vr.w	$vr4, $t6, 3
-	ldx.w	$t6, $a1, $s2
-	ldx.w	$t7, $a1, $s3
-	vinsgr2vr.w	$vr5, $a0, 0
-	ldx.w	$a0, $a1, $s4
-	vinsgr2vr.w	$vr5, $t6, 1
-	ldx.w	$t6, $a1, $t5
-	vinsgr2vr.w	$vr5, $t7, 2
-	ori	$t7, $t5, 32
-	ldx.w	$t7, $a1, $t7
-	vinsgr2vr.w	$vr5, $a0, 3
-	ori	$a0, $t5, 64
-	ldx.w	$a0, $a1, $a0
-	ldx.w	$a1, $a1, $s0
-	vinsgr2vr.w	$vr6, $t6, 0
-	vinsgr2vr.w	$vr6, $t7, 1
-	vinsgr2vr.w	$vr6, $a0, 2
-	add.d	$a0, $a3, $a2
-	ldx.w	$t6, $a0, $ra
-	vinsgr2vr.w	$vr6, $a1, 3
-	ldx.w	$a1, $a0, $t8
-	ldx.w	$t7, $a0, $fp
-	vinsgr2vr.w	$vr7, $t6, 0
-	ldx.w	$t6, $a0, $a5
-	vinsgr2vr.w	$vr7, $a1, 1
-	ldx.w	$a1, $a0, $s5
-	vinsgr2vr.w	$vr7, $t7, 2
-	ldx.w	$t7, $a0, $s6
-	vinsgr2vr.w	$vr7, $t6, 3
-	ldx.w	$t6, $a0, $s7
-	vinsgr2vr.w	$vr8, $a1, 0
-	ldx.w	$a1, $a0, $s8
-	vinsgr2vr.w	$vr8, $t7, 1
-	vinsgr2vr.w	$vr8, $t6, 2
-	ldx.w	$t6, $a0, $t2
-	vinsgr2vr.w	$vr8, $a1, 3
-	ldx.w	$a1, $a0, $t3
-	ldx.w	$t7, $a0, $t4
-	vinsgr2vr.w	$vr9, $t6, 0
-	ldx.w	$t6, $a0, $t5
-	vinsgr2vr.w	$vr9, $a1, 1
-	ldx.w	$a1, $a0, $a6
-	vinsgr2vr.w	$vr9, $t7, 2
-	ldx.w	$t7, $a0, $a7
-	vinsgr2vr.w	$vr9, $t6, 3
-	ldx.w	$t6, $a0, $t0
-	ldx.w	$a0, $a0, $t1
-	vinsgr2vr.w	$vr10, $a1, 0
-	vinsgr2vr.w	$vr10, $t7, 1
-	vinsgr2vr.w	$vr10, $t6, 2
-	vinsgr2vr.w	$vr10, $a0, 3
-	xvpermi.q	$xr4, $xr3, 2
-	xvpermi.q	$xr6, $xr5, 2
-	xvpermi.q	$xr8, $xr7, 2
-	xvpermi.q	$xr10, $xr9, 2
-	xvadd.w	$xr1, $xr4, $xr1
-	xvadd.w	$xr2, $xr6, $xr2
-	xvsub.w	$xr1, $xr1, $xr8
-	addi.d	$a2, $a2, 512
-	xvsub.w	$xr2, $xr2, $xr10
-	bnez	$a2, .LBB15_2
+	add.d	$s2, $fp, $s1
+	ldx.w	$s3, $s2, $a5
+	ldx.w	$s4, $s2, $a6
+	ldx.w	$s5, $s2, $a7
+	ldx.w	$s6, $s2, $t0
+	vinsgr2vr.w	$vr3, $s3, 0
+	vinsgr2vr.w	$vr3, $s4, 1
+	vinsgr2vr.w	$vr3, $s5, 2
+	vinsgr2vr.w	$vr3, $s6, 3
+	ldx.w	$s3, $s2, $t1
+	ldx.w	$s4, $s2, $t2
+	ldx.w	$s5, $s2, $t3
+	ldx.w	$s2, $s2, $t4
+	vinsgr2vr.w	$vr4, $s3, 0
+	vinsgr2vr.w	$vr4, $s4, 1
+	vinsgr2vr.w	$vr4, $s5, 2
+	vinsgr2vr.w	$vr4, $s2, 3
+	add.d	$s2, $s0, $s1
+	ldx.w	$s3, $s2, $t5
+	ldx.w	$s4, $s2, $t6
+	ldx.w	$s5, $s2, $t7
+	ldx.w	$s6, $s2, $a5
+	vinsgr2vr.w	$vr5, $s3, 0
+	vinsgr2vr.w	$vr5, $s4, 1
+	vinsgr2vr.w	$vr5, $s5, 2
+	vinsgr2vr.w	$vr5, $s6, 3
+	ldx.w	$s3, $s2, $a6
+	ldx.w	$s4, $s2, $a7
+	ldx.w	$s5, $s2, $t0
+	ldx.w	$s2, $s2, $t1
+	vinsgr2vr.w	$vr6, $s3, 0
+	vinsgr2vr.w	$vr6, $s4, 1
+	vinsgr2vr.w	$vr6, $s5, 2
+	vinsgr2vr.w	$vr6, $s2, 3
+	vadd.w	$vr1, $vr3, $vr1
+	vadd.w	$vr2, $vr4, $vr2
+	vsub.w	$vr1, $vr1, $vr5
+	addi.d	$s1, $s1, 256
+	vsub.w	$vr2, $vr2, $vr6
+	bnez	$s1, .LBB15_2
 # %bb.3:                                # %middle.block
                                         #   in Loop: Header=BB15_1 Depth=1
-	xvadd.w	$xr1, $xr2, $xr1
-	xvhaddw.d.w	$xr1, $xr1, $xr1
-	xvhaddw.q.d	$xr1, $xr1, $xr1
-	xvpermi.d	$xr2, $xr1, 2
-	xvadd.d	$xr1, $xr2, $xr1
-	xvpickve2gr.d	$a0, $xr1, 0
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	slli.d	$a1, $a3, 2
+	vadd.w	$vr1, $vr2, $vr1
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$fp, $vr1, 0
+	slli.d	$s0, $a3, 2
 	addi.d	$a3, $a3, 1
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
-	stx.w	$a0, $a2, $a1
-	ori	$a0, $zero, 32
-	bne	$a3, $a0, .LBB15_1
+	stx.w	$fp, $a2, $s0
+	bne	$a3, $t8, .LBB15_1
 # %bb.4:
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end15:
 	.size	_Z9example13PPiS0_S_, .Lfunc_end15-_Z9example13PPiS0_S_
@@ -9322,11 +1197,9 @@ _Z9example13PPiS0_S_:                   # @_Z9example13PPiS0_S_
 	.type	_Z9example14PPiS0_S_,@function
 _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 # %bb.0:                                # %.preheader19
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
 	move	$a3, $zero
 	move	$a7, $zero
-	addi.d	$a4, $a0, 56
+	addi.d	$a4, $a0, 24
 	vrepli.b	$vr0, 0
 	lu12i.w	$a5, -2
 	ori	$a6, $zero, 32
@@ -9344,64 +1217,39 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
                                         #   Parent Loop BB16_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t1, $a4, $t0
-	ldptr.d	$t2, $t1, 8136
-	ldptr.d	$t3, $t1, 8144
-	ldptr.d	$t4, $t1, 8152
-	ldptr.d	$t5, $t1, 8160
-	ldptr.d	$t6, $t1, 8168
-	ldptr.d	$t7, $t1, 8176
-	ldptr.d	$t8, $t1, 8184
+	ldptr.d	$t2, $t1, 8168
+	ldptr.d	$t3, $t1, 8176
+	ldptr.d	$t4, $t1, 8184
 	ldptr.d	$t1, $t1, 8192
 	ldx.w	$t2, $t2, $a7
 	ldx.w	$t3, $t3, $a7
 	ldx.w	$t4, $t4, $a7
-	ldx.w	$t5, $t5, $a7
+	ldx.w	$t1, $t1, $a7
 	vinsgr2vr.w	$vr3, $t2, 0
 	vinsgr2vr.w	$vr3, $t3, 1
-	vinsgr2vr.w	$vr3, $t4, 2
-	vinsgr2vr.w	$vr3, $t5, 3
-	ldx.w	$t2, $t6, $a7
-	ldx.w	$t3, $t7, $a7
-	ldx.w	$t4, $t8, $a7
-	ldx.w	$t1, $t1, $a7
-	vinsgr2vr.w	$vr4, $t2, 0
-	vinsgr2vr.w	$vr4, $t3, 1
-	vinsgr2vr.w	$vr4, $t4, 2
-	vinsgr2vr.w	$vr4, $t1, 3
+	vinsgr2vr.w	$vr4, $t4, 0
+	vinsgr2vr.w	$vr4, $t1, 1
 	add.d	$t1, $a1, $t0
 	ldptr.d	$t2, $t1, 8192
 	ldptr.d	$t3, $t1, 8200
 	ldptr.d	$t4, $t1, 8208
-	ldptr.d	$t5, $t1, 8216
-	ldptr.d	$t6, $t1, 8224
-	ldptr.d	$t7, $t1, 8232
-	ldptr.d	$t8, $t1, 8240
-	ldptr.d	$t1, $t1, 8248
+	ldptr.d	$t1, $t1, 8216
 	ldx.w	$t2, $t2, $a7
 	ldx.w	$t3, $t3, $a7
 	ldx.w	$t4, $t4, $a7
-	ldx.w	$t5, $t5, $a7
+	ldx.w	$t1, $t1, $a7
 	vinsgr2vr.w	$vr5, $t2, 0
 	vinsgr2vr.w	$vr5, $t3, 1
-	vinsgr2vr.w	$vr5, $t4, 2
-	vinsgr2vr.w	$vr5, $t5, 3
-	ldx.w	$t2, $t6, $a7
-	ldx.w	$t3, $t7, $a7
-	ldx.w	$t4, $t8, $a7
-	ldx.w	$t1, $t1, $a7
-	vinsgr2vr.w	$vr6, $t2, 0
-	vinsgr2vr.w	$vr6, $t3, 1
-	vinsgr2vr.w	$vr6, $t4, 2
-	vinsgr2vr.w	$vr6, $t1, 3
+	vinsgr2vr.w	$vr6, $t4, 0
+	vinsgr2vr.w	$vr6, $t1, 1
 	vmadd.w	$vr1, $vr5, $vr3
-	addi.d	$t0, $t0, 64
+	addi.d	$t0, $t0, 32
 	vmadd.w	$vr2, $vr6, $vr4
 	bnez	$t0, .LBB16_2
 # %bb.3:                                # %middle.block
                                         #   in Loop: Header=BB16_1 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
 	vhaddw.d.w	$vr1, $vr1, $vr1
-	vhaddw.q.d	$vr1, $vr1, $vr1
 	addi.d	$a3, $a3, 1
 	vpickve2gr.d	$a7, $vr1, 0
 	bne	$a3, $a6, .LBB16_1
@@ -9409,8 +1257,8 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 	move	$a3, $zero
 	move	$t0, $zero
 	st.w	$a7, $a2, 0
-	addi.d	$a4, $a1, 56
-	addi.d	$a5, $a0, 32
+	addi.d	$a4, $a1, 24
+	addi.d	$a5, $a0, 16
 	vrepli.b	$vr0, 0
 	lu12i.w	$a6, -2
 	ori	$a7, $zero, 32
@@ -9428,64 +1276,39 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
                                         #   Parent Loop BB16_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t2, $a5, $t1
-	ldptr.d	$t3, $t2, 8168
-	ldptr.d	$t4, $t2, 8176
-	ldptr.d	$t5, $t2, 8184
-	ldptr.d	$t6, $t2, 8192
-	ldptr.d	$t7, $t2, 8200
-	ldptr.d	$t8, $t2, 8208
-	ldptr.d	$fp, $t2, 8216
-	ldptr.d	$t2, $t2, 8224
+	ldptr.d	$t3, $t2, 8184
+	ldptr.d	$t4, $t2, 8192
+	ldptr.d	$t5, $t2, 8200
+	ldptr.d	$t2, $t2, 8208
 	ldx.w	$t3, $t3, $t0
 	ldx.w	$t4, $t4, $t0
 	ldx.w	$t5, $t5, $t0
-	ldx.w	$t6, $t6, $t0
+	ldx.w	$t2, $t2, $t0
 	vinsgr2vr.w	$vr3, $t3, 0
 	vinsgr2vr.w	$vr3, $t4, 1
-	vinsgr2vr.w	$vr3, $t5, 2
-	vinsgr2vr.w	$vr3, $t6, 3
-	ldx.w	$t3, $t7, $t0
-	ldx.w	$t4, $t8, $t0
-	ldx.w	$t5, $fp, $t0
-	ldx.w	$t2, $t2, $t0
-	vinsgr2vr.w	$vr4, $t3, 0
-	vinsgr2vr.w	$vr4, $t4, 1
-	vinsgr2vr.w	$vr4, $t5, 2
-	vinsgr2vr.w	$vr4, $t2, 3
+	vinsgr2vr.w	$vr4, $t5, 0
+	vinsgr2vr.w	$vr4, $t2, 1
 	add.d	$t2, $a4, $t1
-	ldptr.d	$t3, $t2, 8136
-	ldptr.d	$t4, $t2, 8144
-	ldptr.d	$t5, $t2, 8152
-	ldptr.d	$t6, $t2, 8160
-	ldptr.d	$t7, $t2, 8168
-	ldptr.d	$t8, $t2, 8176
-	ldptr.d	$fp, $t2, 8184
+	ldptr.d	$t3, $t2, 8168
+	ldptr.d	$t4, $t2, 8176
+	ldptr.d	$t5, $t2, 8184
 	ldptr.d	$t2, $t2, 8192
 	ldx.w	$t3, $t3, $t0
 	ldx.w	$t4, $t4, $t0
 	ldx.w	$t5, $t5, $t0
-	ldx.w	$t6, $t6, $t0
+	ldx.w	$t2, $t2, $t0
 	vinsgr2vr.w	$vr5, $t3, 0
 	vinsgr2vr.w	$vr5, $t4, 1
-	vinsgr2vr.w	$vr5, $t5, 2
-	vinsgr2vr.w	$vr5, $t6, 3
-	ldx.w	$t3, $t7, $t0
-	ldx.w	$t4, $t8, $t0
-	ldx.w	$t5, $fp, $t0
-	ldx.w	$t2, $t2, $t0
-	vinsgr2vr.w	$vr6, $t3, 0
-	vinsgr2vr.w	$vr6, $t4, 1
-	vinsgr2vr.w	$vr6, $t5, 2
-	vinsgr2vr.w	$vr6, $t2, 3
+	vinsgr2vr.w	$vr6, $t5, 0
+	vinsgr2vr.w	$vr6, $t2, 1
 	vmadd.w	$vr1, $vr5, $vr3
-	addi.d	$t1, $t1, 64
+	addi.d	$t1, $t1, 32
 	vmadd.w	$vr2, $vr6, $vr4
 	bnez	$t1, .LBB16_6
 # %bb.7:                                # %middle.block51
                                         #   in Loop: Header=BB16_5 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
 	vhaddw.d.w	$vr1, $vr1, $vr1
-	vhaddw.q.d	$vr1, $vr1, $vr1
 	addi.d	$a3, $a3, 1
 	vpickve2gr.d	$t0, $vr1, 0
 	bne	$a3, $a7, .LBB16_5
@@ -9493,7 +1316,7 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 	move	$a3, $zero
 	move	$a7, $zero
 	st.w	$t0, $a2, 4
-	addi.d	$a4, $a0, 72
+	addi.d	$a4, $a0, 40
 	vrepli.b	$vr0, 0
 	lu12i.w	$a5, -2
 	ori	$a6, $zero, 32
@@ -9511,64 +1334,39 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
                                         #   Parent Loop BB16_9 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t1, $a4, $t0
-	ldptr.d	$t2, $t1, 8136
-	ldptr.d	$t3, $t1, 8144
-	ldptr.d	$t4, $t1, 8152
-	ldptr.d	$t5, $t1, 8160
-	ldptr.d	$t6, $t1, 8168
-	ldptr.d	$t7, $t1, 8176
-	ldptr.d	$t8, $t1, 8184
+	ldptr.d	$t2, $t1, 8168
+	ldptr.d	$t3, $t1, 8176
+	ldptr.d	$t4, $t1, 8184
 	ldptr.d	$t1, $t1, 8192
 	ldx.w	$t2, $t2, $a7
 	ldx.w	$t3, $t3, $a7
 	ldx.w	$t4, $t4, $a7
-	ldx.w	$t5, $t5, $a7
+	ldx.w	$t1, $t1, $a7
 	vinsgr2vr.w	$vr3, $t2, 0
 	vinsgr2vr.w	$vr3, $t3, 1
-	vinsgr2vr.w	$vr3, $t4, 2
-	vinsgr2vr.w	$vr3, $t5, 3
-	ldx.w	$t2, $t6, $a7
-	ldx.w	$t3, $t7, $a7
-	ldx.w	$t4, $t8, $a7
-	ldx.w	$t1, $t1, $a7
-	vinsgr2vr.w	$vr4, $t2, 0
-	vinsgr2vr.w	$vr4, $t3, 1
-	vinsgr2vr.w	$vr4, $t4, 2
-	vinsgr2vr.w	$vr4, $t1, 3
+	vinsgr2vr.w	$vr4, $t4, 0
+	vinsgr2vr.w	$vr4, $t1, 1
 	add.d	$t1, $a1, $t0
 	ldptr.d	$t2, $t1, 8192
 	ldptr.d	$t3, $t1, 8200
 	ldptr.d	$t4, $t1, 8208
-	ldptr.d	$t5, $t1, 8216
-	ldptr.d	$t6, $t1, 8224
-	ldptr.d	$t7, $t1, 8232
-	ldptr.d	$t8, $t1, 8240
-	ldptr.d	$t1, $t1, 8248
+	ldptr.d	$t1, $t1, 8216
 	ldx.w	$t2, $t2, $a7
 	ldx.w	$t3, $t3, $a7
 	ldx.w	$t4, $t4, $a7
-	ldx.w	$t5, $t5, $a7
+	ldx.w	$t1, $t1, $a7
 	vinsgr2vr.w	$vr5, $t2, 0
 	vinsgr2vr.w	$vr5, $t3, 1
-	vinsgr2vr.w	$vr5, $t4, 2
-	vinsgr2vr.w	$vr5, $t5, 3
-	ldx.w	$t2, $t6, $a7
-	ldx.w	$t3, $t7, $a7
-	ldx.w	$t4, $t8, $a7
-	ldx.w	$t1, $t1, $a7
-	vinsgr2vr.w	$vr6, $t2, 0
-	vinsgr2vr.w	$vr6, $t3, 1
-	vinsgr2vr.w	$vr6, $t4, 2
-	vinsgr2vr.w	$vr6, $t1, 3
+	vinsgr2vr.w	$vr6, $t4, 0
+	vinsgr2vr.w	$vr6, $t1, 1
 	vmadd.w	$vr1, $vr5, $vr3
-	addi.d	$t0, $t0, 64
+	addi.d	$t0, $t0, 32
 	vmadd.w	$vr2, $vr6, $vr4
 	bnez	$t0, .LBB16_10
 # %bb.11:                               # %middle.block63
                                         #   in Loop: Header=BB16_9 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
 	vhaddw.d.w	$vr1, $vr1, $vr1
-	vhaddw.q.d	$vr1, $vr1, $vr1
 	addi.d	$a3, $a3, 1
 	vpickve2gr.d	$a7, $vr1, 0
 	bne	$a3, $a6, .LBB16_9
@@ -9576,7 +1374,7 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 	move	$a3, $zero
 	move	$a6, $zero
 	st.w	$a7, $a2, 8
-	addi.d	$a0, $a0, 80
+	addi.d	$a0, $a0, 48
 	vrepli.b	$vr0, 0
 	lu12i.w	$a4, -2
 	ori	$a5, $zero, 32
@@ -9594,71 +1392,44 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
                                         #   Parent Loop BB16_13 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t0, $a0, $a7
-	ldptr.d	$t1, $t0, 8136
-	ldptr.d	$t2, $t0, 8144
-	ldptr.d	$t3, $t0, 8152
-	ldptr.d	$t4, $t0, 8160
-	ldptr.d	$t5, $t0, 8168
-	ldptr.d	$t6, $t0, 8176
-	ldptr.d	$t7, $t0, 8184
+	ldptr.d	$t1, $t0, 8168
+	ldptr.d	$t2, $t0, 8176
+	ldptr.d	$t3, $t0, 8184
 	ldptr.d	$t0, $t0, 8192
 	ldx.w	$t1, $t1, $a6
 	ldx.w	$t2, $t2, $a6
 	ldx.w	$t3, $t3, $a6
-	ldx.w	$t4, $t4, $a6
+	ldx.w	$t0, $t0, $a6
 	vinsgr2vr.w	$vr3, $t1, 0
 	vinsgr2vr.w	$vr3, $t2, 1
-	vinsgr2vr.w	$vr3, $t3, 2
-	vinsgr2vr.w	$vr3, $t4, 3
-	ldx.w	$t1, $t5, $a6
-	ldx.w	$t2, $t6, $a6
-	ldx.w	$t3, $t7, $a6
-	ldx.w	$t0, $t0, $a6
-	vinsgr2vr.w	$vr4, $t1, 0
-	vinsgr2vr.w	$vr4, $t2, 1
-	vinsgr2vr.w	$vr4, $t3, 2
-	vinsgr2vr.w	$vr4, $t0, 3
+	vinsgr2vr.w	$vr4, $t3, 0
+	vinsgr2vr.w	$vr4, $t0, 1
 	add.d	$t0, $a1, $a7
 	ldptr.d	$t1, $t0, 8192
 	ldptr.d	$t2, $t0, 8200
 	ldptr.d	$t3, $t0, 8208
-	ldptr.d	$t4, $t0, 8216
-	ldptr.d	$t5, $t0, 8224
-	ldptr.d	$t6, $t0, 8232
-	ldptr.d	$t7, $t0, 8240
-	ldptr.d	$t0, $t0, 8248
+	ldptr.d	$t0, $t0, 8216
 	ldx.w	$t1, $t1, $a6
 	ldx.w	$t2, $t2, $a6
 	ldx.w	$t3, $t3, $a6
-	ldx.w	$t4, $t4, $a6
+	ldx.w	$t0, $t0, $a6
 	vinsgr2vr.w	$vr5, $t1, 0
 	vinsgr2vr.w	$vr5, $t2, 1
-	vinsgr2vr.w	$vr5, $t3, 2
-	vinsgr2vr.w	$vr5, $t4, 3
-	ldx.w	$t1, $t5, $a6
-	ldx.w	$t2, $t6, $a6
-	ldx.w	$t3, $t7, $a6
-	ldx.w	$t0, $t0, $a6
-	vinsgr2vr.w	$vr6, $t1, 0
-	vinsgr2vr.w	$vr6, $t2, 1
-	vinsgr2vr.w	$vr6, $t3, 2
-	vinsgr2vr.w	$vr6, $t0, 3
+	vinsgr2vr.w	$vr6, $t3, 0
+	vinsgr2vr.w	$vr6, $t0, 1
 	vmadd.w	$vr1, $vr5, $vr3
-	addi.d	$a7, $a7, 64
+	addi.d	$a7, $a7, 32
 	vmadd.w	$vr2, $vr6, $vr4
 	bnez	$a7, .LBB16_14
 # %bb.15:                               # %middle.block75
                                         #   in Loop: Header=BB16_13 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
 	vhaddw.d.w	$vr1, $vr1, $vr1
-	vhaddw.q.d	$vr1, $vr1, $vr1
 	addi.d	$a3, $a3, 1
 	vpickve2gr.d	$a6, $vr1, 0
 	bne	$a3, $a5, .LBB16_13
 # %bb.16:
 	st.w	$a6, $a2, 12
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
 	ret
 .Lfunc_end16:
 	.size	_Z9example14PPiS0_S_, .Lfunc_end16-_Z9example14PPiS0_S_
@@ -9670,98 +1441,58 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 _Z9example21Pii:                        # @_Z9example21Pii
 # %bb.0:
 	blez	$a1, .LBB17_3
-# %bb.1:                                # %iter.check
-	ori	$a2, $zero, 4
+# %bb.1:                                # %.lr.ph.preheader
+	ori	$a2, $zero, 8
 	bgeu	$a1, $a2, .LBB17_4
 # %bb.2:
 	move	$a4, $zero
 	move	$a2, $a1
-	b	.LBB17_13
+	b	.LBB17_7
 .LBB17_3:
 	move	$a4, $zero
 	st.w	$a4, $a0, 0
 	ret
-.LBB17_4:                               # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB17_6
-# %bb.5:
-	move	$a3, $zero
-	move	$a4, $zero
-	b	.LBB17_10
-.LBB17_6:                               # %vector.ph
-	andi	$a5, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a3, $a2, 4
-	andi	$a2, $a1, 15
+.LBB17_4:                               # %vector.ph
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a3, $a2, 3
+	andi	$a2, $a1, 7
 	alsl.d	$a4, $a1, $a0, 2
-	xvrepli.b	$xr0, 0
-	addi.d	$a4, $a4, -32
-	move	$a6, $a3
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB17_7:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a4, 0
-	xvld	$xr3, $a4, -32
-	xvpermi.d	$xr2, $xr2, 78
-	xvshuf4i.w	$xr2, $xr2, 27
-	xvpermi.d	$xr3, $xr3, 78
-	xvshuf4i.w	$xr3, $xr3, 27
-	xvadd.w	$xr0, $xr2, $xr0
-	xvadd.w	$xr1, $xr3, $xr1
-	addi.d	$a6, $a6, -16
-	addi.d	$a4, $a4, -64
-	bnez	$a6, .LBB17_7
-# %bb.8:                                # %middle.block
-	xvadd.w	$xr0, $xr1, $xr0
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a4, $xr0, 0
-	beq	$a3, $a1, .LBB17_15
-# %bb.9:                                # %vec.epilog.iter.check
-	beqz	$a5, .LBB17_13
-.LBB17_10:                              # %vec.epilog.ph
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a5, $a2, 2
-	andi	$a2, $a1, 3
 	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a4, 0
-	slli.d	$a4, $a1, 2
-	slli.d	$a6, $a3, 2
-	sub.d	$a4, $a4, $a6
-	add.d	$a4, $a4, $a0
 	addi.d	$a4, $a4, -16
-	sub.d	$a3, $a3, $a5
+	move	$a5, $a3
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB17_11:                              # %vec.epilog.vector.body
+.LBB17_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a4, 0
-	vshuf4i.w	$vr1, $vr1, 27
+	vld	$vr2, $a4, 0
+	vld	$vr3, $a4, -16
+	vshuf4i.w	$vr2, $vr2, 27
+	vshuf4i.w	$vr3, $vr3, 27
+	vadd.w	$vr0, $vr2, $vr0
+	vadd.w	$vr1, $vr3, $vr1
+	addi.d	$a5, $a5, -8
+	addi.d	$a4, $a4, -32
+	bnez	$a5, .LBB17_5
+# %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, -16
-	bnez	$a3, .LBB17_11
-# %bb.12:                               # %vec.epilog.middle.block
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a4, $vr0, 0
-	beq	$a5, $a1, .LBB17_15
-.LBB17_13:                              # %.lr.ph.preheader
+	beq	$a3, $a1, .LBB17_9
+.LBB17_7:                               # %.lr.ph.preheader13
 	addi.d	$a1, $a2, 1
 	alsl.d	$a2, $a2, $a0, 2
 	addi.d	$a2, $a2, -4
 	ori	$a3, $zero, 1
 	.p2align	4, , 16
-.LBB17_14:                              # %.lr.ph
+.LBB17_8:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a2, 0
 	add.d	$a4, $a5, $a4
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, -4
-	bltu	$a3, $a1, .LBB17_14
-.LBB17_15:                              # %._crit_edge
+	bltu	$a3, $a1, .LBB17_8
+.LBB17_9:                               # %._crit_edge
 	st.w	$a4, $a0, 0
 	ret
 .Lfunc_end17:
@@ -9773,134 +1504,28 @@ _Z9example21Pii:                        # @_Z9example21Pii
 	.type	_Z9example23PtPj,@function
 _Z9example23PtPj:                       # @_Z9example23PtPj
 # %bb.0:                                # %vector.ph
-	vld	$vr0, $a0, 0
-	vld	$vr1, $a0, 16
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr1
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 0
-	vld	$vr0, $a0, 32
-	vld	$vr2, $a0, 48
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 32
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 64
-	vld	$vr0, $a0, 64
-	vld	$vr2, $a0, 80
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 96
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 128
-	vld	$vr0, $a0, 96
-	vld	$vr2, $a0, 112
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 160
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 192
-	vld	$vr0, $a0, 128
-	vld	$vr2, $a0, 144
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 224
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 256
-	vld	$vr0, $a0, 160
-	vld	$vr2, $a0, 176
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 288
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 320
-	vld	$vr0, $a0, 192
-	vld	$vr2, $a0, 208
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 352
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 384
-	vld	$vr0, $a0, 224
-	vld	$vr2, $a0, 240
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 416
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 448
-	vld	$vr0, $a0, 256
-	vld	$vr2, $a0, 272
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 480
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 512
-	vld	$vr0, $a0, 288
-	vld	$vr2, $a0, 304
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 544
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 576
-	vld	$vr0, $a0, 320
-	vld	$vr2, $a0, 336
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 608
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 640
-	vld	$vr0, $a0, 352
-	vld	$vr2, $a0, 368
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 672
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 704
-	vld	$vr0, $a0, 384
-	vld	$vr2, $a0, 400
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 736
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 768
-	vld	$vr0, $a0, 416
-	vld	$vr2, $a0, 432
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 800
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 832
-	vld	$vr0, $a0, 448
-	vld	$vr2, $a0, 464
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 864
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvst	$xr0, $a1, 896
-	vld	$vr0, $a0, 480
-	vld	$vr2, $a0, 496
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr1, $a1, 928
-	vext2xv.wu.hu	$xr0, $xr0
-	vext2xv.wu.hu	$xr1, $xr2
-	xvslli.w	$xr0, $xr0, 7
-	xvslli.w	$xr1, $xr1, 7
-	xvst	$xr0, $a1, 960
-	xvst	$xr1, $a1, 992
+	move	$a2, $zero
+	addi.d	$a0, $a0, 8
+	vrepli.b	$vr0, 0
+	ori	$a3, $zero, 1024
+	.p2align	4, , 16
+.LBB18_1:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a4, $a0, -8
+	ld.d	$a5, $a0, 0
+	add.d	$a6, $a1, $a2
+	vinsgr2vr.d	$vr1, $a4, 0
+	vinsgr2vr.d	$vr2, $a5, 0
+	vilvl.h	$vr1, $vr0, $vr1
+	vilvl.h	$vr2, $vr0, $vr2
+	vslli.w	$vr1, $vr1, 7
+	vslli.w	$vr2, $vr2, 7
+	vstx	$vr1, $a1, $a2
+	vst	$vr2, $a6, 16
+	addi.d	$a2, $a2, 32
+	addi.d	$a0, $a0, 16
+	bne	$a2, $a3, .LBB18_1
+# %bb.2:                                # %middle.block
 	ret
 .Lfunc_end18:
 	.size	_Z9example23PtPj, .Lfunc_end18-_Z9example23PtPj
@@ -9911,36 +1536,44 @@ _Z9example23PtPj:                       # @_Z9example23PtPj
 	.type	_Z9example24ss,@function
 _Z9example24ss:                         # @_Z9example24ss
 # %bb.0:                                # %vector.ph
-	vreplgr2vr.h	$vr0, $a0
-	vreplgr2vr.h	$vr1, $a1
+	vinsgr2vr.h	$vr0, $a0, 0
+	vinsgr2vr.h	$vr0, $a0, 1
+	vinsgr2vr.h	$vr0, $a0, 2
+	vinsgr2vr.h	$vr0, $a0, 3
+	vinsgr2vr.h	$vr1, $a1, 0
+	vinsgr2vr.h	$vr1, $a1, 1
+	vinsgr2vr.h	$vr1, $a1, 2
+	vinsgr2vr.h	$vr1, $a1, 3
 	lu12i.w	$a0, -1
 	pcalau12i	$a1, %pc_hi20(fa)
 	addi.d	$a1, $a1, %pc_lo12(fa)
 	lu12i.w	$a2, 1
-	ori	$a3, $a2, 32
+	ori	$a3, $a2, 16
 	pcalau12i	$a4, %pc_hi20(fb)
 	addi.d	$a4, $a4, %pc_lo12(fb)
-	vext2xv.w.h	$xr0, $xr0
-	vext2xv.w.h	$xr1, $xr1
+	vslti.h	$vr2, $vr0, 0
+	vilvl.h	$vr0, $vr2, $vr0
+	vslti.h	$vr2, $vr1, 0
+	vilvl.h	$vr1, $vr2, $vr1
 	pcalau12i	$a5, %pc_hi20(ic)
 	addi.d	$a5, $a5, %pc_lo12(ic)
 	.p2align	4, , 16
 .LBB19_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a6, $a1, $a0
-	xvldx	$xr2, $a6, $a2
-	xvldx	$xr3, $a6, $a3
+	vldx	$vr2, $a6, $a2
+	vldx	$vr3, $a6, $a3
 	add.d	$a6, $a4, $a0
-	xvldx	$xr4, $a6, $a2
-	xvldx	$xr5, $a6, $a3
-	xvfcmp.clt.s	$xr2, $xr2, $xr4
-	xvfcmp.clt.s	$xr3, $xr3, $xr5
-	xvbitsel.v	$xr2, $xr1, $xr0, $xr2
-	xvbitsel.v	$xr3, $xr1, $xr0, $xr3
+	vldx	$vr4, $a6, $a2
+	vldx	$vr5, $a6, $a3
+	vfcmp.clt.s	$vr2, $vr2, $vr4
+	vfcmp.clt.s	$vr3, $vr3, $vr5
+	vbitsel.v	$vr2, $vr1, $vr0, $vr2
+	vbitsel.v	$vr3, $vr1, $vr0, $vr3
 	add.d	$a6, $a5, $a0
-	xvstx	$xr2, $a6, $a2
-	addi.d	$a0, $a0, 64
-	xvstx	$xr3, $a6, $a3
+	vstx	$vr2, $a6, $a2
+	addi.d	$a0, $a0, 32
+	vstx	$vr3, $a6, $a3
 	bnez	$a0, .LBB19_1
 # %bb.2:                                # %middle.block
 	ret
@@ -9957,43 +1590,43 @@ _Z9example25v:                          # @_Z9example25v
 	pcalau12i	$a1, %pc_hi20(da)
 	addi.d	$a1, $a1, %pc_lo12(da)
 	lu12i.w	$a2, 1
-	ori	$a3, $a2, 32
+	ori	$a3, $a2, 16
 	pcalau12i	$a4, %pc_hi20(db)
 	addi.d	$a4, $a4, %pc_lo12(db)
 	pcalau12i	$a5, %pc_hi20(dc)
 	addi.d	$a5, $a5, %pc_lo12(dc)
 	pcalau12i	$a6, %pc_hi20(dd)
 	addi.d	$a6, $a6, %pc_lo12(dd)
-	xvrepli.w	$xr0, 1
+	vrepli.w	$vr0, 1
 	pcalau12i	$a7, %pc_hi20(dj)
 	addi.d	$a7, $a7, %pc_lo12(dj)
 	.p2align	4, , 16
 .LBB20_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$t0, $a1, $a0
-	xvldx	$xr1, $t0, $a2
-	xvldx	$xr2, $t0, $a3
+	vldx	$vr1, $t0, $a2
+	vldx	$vr2, $t0, $a3
 	add.d	$t0, $a4, $a0
-	xvldx	$xr3, $t0, $a2
-	xvldx	$xr4, $t0, $a3
+	vldx	$vr3, $t0, $a2
+	vldx	$vr4, $t0, $a3
 	add.d	$t0, $a5, $a0
-	xvldx	$xr5, $t0, $a2
-	xvldx	$xr6, $t0, $a3
+	vldx	$vr5, $t0, $a2
+	vldx	$vr6, $t0, $a3
 	add.d	$t0, $a6, $a0
-	xvldx	$xr7, $t0, $a2
-	xvldx	$xr8, $t0, $a3
-	xvfcmp.clt.s	$xr1, $xr1, $xr3
-	xvfcmp.clt.s	$xr2, $xr2, $xr4
-	xvfcmp.clt.s	$xr3, $xr5, $xr7
-	xvfcmp.clt.s	$xr4, $xr6, $xr8
-	xvand.v	$xr1, $xr1, $xr3
-	xvand.v	$xr1, $xr1, $xr0
-	xvand.v	$xr2, $xr2, $xr4
-	xvand.v	$xr2, $xr2, $xr0
+	vldx	$vr7, $t0, $a2
+	vldx	$vr8, $t0, $a3
+	vfcmp.clt.s	$vr1, $vr1, $vr3
+	vfcmp.clt.s	$vr2, $vr2, $vr4
+	vfcmp.clt.s	$vr3, $vr5, $vr7
+	vfcmp.clt.s	$vr4, $vr6, $vr8
+	vand.v	$vr1, $vr1, $vr3
+	vand.v	$vr2, $vr2, $vr4
+	vand.v	$vr1, $vr1, $vr0
+	vand.v	$vr2, $vr2, $vr0
 	add.d	$t0, $a7, $a0
-	xvstx	$xr1, $t0, $a2
-	addi.d	$a0, $a0, 64
-	xvstx	$xr2, $t0, $a3
+	vstx	$vr1, $t0, $a2
+	addi.d	$a0, $a0, 32
+	vstx	$vr2, $t0, $a3
 	bnez	$a0, .LBB20_1
 # %bb.2:                                # %middle.block
 	ret
@@ -10836,9 +2469,11 @@ main:                                   # @main
 .Ltmp13:                                # EH_LABEL
 # %bb.75:                               # %.noexc280
 	move	$fp, $a0
-	xvld	$xr0, $s0, 0
+	vld	$vr0, $s0, 0
+	vld	$vr1, $s0, 16
 	st.w	$s1, $a0, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	ori	$a1, $zero, 32
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -10962,12 +2597,16 @@ main:                                   # @main
 .Ltmp16:                                # EH_LABEL
 # %bb.86:                               # %.noexc308
 	move	$s0, $a0
-	xvld	$xr0, $fp, 0
-	xvld	$xr1, $fp, 32
 	addi.d	$s3, $a0, 64
 	st.w	$s1, $a0, 64
-	xvst	$xr0, $a0, 0
-	xvst	$xr1, $a0, 32
+	vld	$vr0, $fp, 0
+	vld	$vr1, $fp, 16
+	vld	$vr2, $fp, 32
+	vld	$vr3, $fp, 48
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
+	vst	$vr2, $a0, 32
+	vst	$vr3, $a0, 48
 	ori	$a1, $zero, 64
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -11037,7 +2676,7 @@ main:                                   # @main
 	sub.d	$s1, $s5, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB24_174
+	beq	$s1, $a0, .LBB24_168
 # %bb.94:                               # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i316
 	srai.d	$a0, $s1, 2
 	ori	$a1, $zero, 1
@@ -11127,7 +2766,7 @@ main:                                   # @main
 	sub.d	$s1, $s5, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB24_176
+	beq	$s1, $a0, .LBB24_170
 # %bb.105:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i330
 	srai.d	$a0, $s1, 2
 	ori	$a1, $zero, 1
@@ -11210,7 +2849,7 @@ main:                                   # @main
 	sub.d	$s1, $s5, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB24_178
+	beq	$s1, $a0, .LBB24_172
 # %bb.114:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i344
 	srai.d	$a0, $s1, 2
 	ori	$a1, $zero, 1
@@ -11306,7 +2945,7 @@ main:                                   # @main
 	sub.d	$s1, $s5, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB24_180
+	beq	$s1, $a0, .LBB24_174
 # %bb.125:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i358
 	srai.d	$a0, $s1, 2
 	ori	$a1, $zero, 1
@@ -11384,7 +3023,7 @@ main:                                   # @main
 	sub.d	$s1, $s5, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB24_182
+	beq	$s1, $a0, .LBB24_176
 # %bb.134:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i367
 	srai.d	$a0, $s1, 2
 	ori	$a1, $zero, 1
@@ -11474,7 +3113,7 @@ main:                                   # @main
 	sub.d	$s1, $s5, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB24_184
+	beq	$s1, $a0, .LBB24_178
 # %bb.145:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i381
 	srai.d	$a0, $s1, 2
 	ori	$a1, $zero, 1
@@ -11540,88 +3179,55 @@ main:                                   # @main
 # %bb.150:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
 	addi.d	$s0, $s2, 4
 	beq	$fp, $s0, .LBB24_153
-# %bb.151:                              # %iter.check
-	sub.d	$a1, $s2, $fp
-	ori	$a0, $zero, 12
-	bgeu	$a1, $a0, .LBB24_154
+# %bb.151:                              # %.lr.ph.i391.preheader
+	sub.d	$a0, $s2, $fp
+	ori	$a1, $zero, 28
+	bgeu	$a0, $a1, .LBB24_154
 # %bb.152:
 	move	$a3, $zero
-	move	$a1, $fp
-	b	.LBB24_163
+	move	$a0, $fp
+	b	.LBB24_157
 .LBB24_153:
 	move	$a3, $zero
-	b	.LBB24_165
-.LBB24_154:                             # %vector.main.loop.iter.check
-	srli.d	$a0, $a1, 2
-	ori	$a2, $zero, 60
-	addi.d	$a0, $a0, 1
-	bgeu	$a1, $a2, .LBB24_156
-# %bb.155:
-	move	$a2, $zero
-	move	$a3, $zero
-	b	.LBB24_160
-.LBB24_156:                             # %vector.ph
-	andi	$a4, $a0, 12
-	bstrpick.d	$a1, $a0, 62, 4
-	slli.d	$a2, $a1, 4
-	slli.d	$a1, $a1, 6
-	add.d	$a1, $fp, $a1
-	xvrepli.b	$xr0, 0
-	addi.d	$a3, $fp, 32
-	move	$a5, $a2
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB24_157:                             # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a3, -32
-	xvld	$xr3, $a3, 0
-	xvadd.w	$xr0, $xr2, $xr0
-	xvadd.w	$xr1, $xr3, $xr1
-	addi.d	$a5, $a5, -16
-	addi.d	$a3, $a3, 64
-	bnez	$a5, .LBB24_157
-# %bb.158:                              # %middle.block
-	xvadd.w	$xr0, $xr1, $xr0
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a3, $xr0, 0
-	beq	$a0, $a2, .LBB24_165
-# %bb.159:                              # %vec.epilog.iter.check
-	beqz	$a4, .LBB24_163
-.LBB24_160:                             # %vec.epilog.ph
-	bstrpick.d	$a1, $a0, 62, 2
-	slli.d	$a4, $a1, 2
-	alsl.d	$a1, $a1, $fp, 4
+	b	.LBB24_159
+.LBB24_154:                             # %vector.ph
+	srli.d	$a0, $a0, 2
+	addi.d	$a1, $a0, 1
+	bstrpick.d	$a0, $a1, 62, 3
+	slli.d	$a2, $a0, 3
+	slli.d	$a0, $a0, 5
+	add.d	$a0, $fp, $a0
 	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a3, 0
-	sub.d	$a3, $a2, $a4
-	alsl.d	$a2, $a2, $fp, 2
+	addi.d	$a3, $fp, 16
+	move	$a4, $a2
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB24_161:                             # %vec.epilog.vector.body
+.LBB24_155:                             # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a2, 0
+	vld	$vr2, $a3, -16
+	vld	$vr3, $a3, 0
+	vadd.w	$vr0, $vr2, $vr0
+	vadd.w	$vr1, $vr3, $vr1
+	addi.d	$a4, $a4, -8
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB24_155
+# %bb.156:                              # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	addi.d	$a3, $a3, 4
-	addi.d	$a2, $a2, 16
-	bnez	$a3, .LBB24_161
-# %bb.162:                              # %vec.epilog.middle.block
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
-	beq	$a0, $a4, .LBB24_165
-.LBB24_163:                             # %.lr.ph.i391.preheader
-	addi.d	$a0, $a1, -4
+	beq	$a1, $a2, .LBB24_159
+.LBB24_157:                             # %.lr.ph.i391.preheader620
+	addi.d	$a0, $a0, -4
 	.p2align	4, , 16
-.LBB24_164:                             # %.lr.ph.i391
+.LBB24_158:                             # %.lr.ph.i391
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $a0, 4
 	addi.d	$a2, $a0, 4
 	add.d	$a3, $a1, $a3
 	move	$a0, $a2
-	bne	$a2, $s2, .LBB24_164
-.LBB24_165:                             # %_ZSt10accumulateIN9__gnu_cxx17__normal_iteratorIPjSt6vectorIjSaIjEEEEiET0_T_S8_S7_.exit
+	bne	$a2, $s2, .LBB24_158
+.LBB24_159:                             # %_ZSt10accumulateIN9__gnu_cxx17__normal_iteratorIPjSt6vectorIjSaIjEEEEiET0_T_S8_S7_.exit
 .Ltmp32:                                # EH_LABEL
 	addi.w	$a1, $a3, 0
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
@@ -11629,7 +3235,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp33:                                # EH_LABEL
-# %bb.166:
+# %bb.160:
 .Ltmp34:                                # EH_LABEL
 	pcalau12i	$a1, %pc_hi20(.L.str.18)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.18)
@@ -11637,9 +3243,9 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp35:                                # EH_LABEL
-# %bb.167:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit394.preheader
-	beq	$s0, $fp, .LBB24_172
-# %bb.168:                              # %.lr.ph.preheader
+# %bb.161:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit394.preheader
+	beq	$s0, $fp, .LBB24_166
+# %bb.162:                              # %.lr.ph.preheader
 	sub.d	$a0, $s0, $fp
 	srai.d	$s2, $a0, 2
 	ori	$s3, $zero, 1
@@ -11649,7 +3255,7 @@ main:                                   # @main
 	addi.d	$s1, $a0, %pc_lo12(.L.str.19)
 	move	$s4, $zero
 	.p2align	4, , 16
-.LBB24_169:                             # %.lr.ph
+.LBB24_163:                             # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 .Ltmp36:                                # EH_LABEL
 	ori	$a2, $zero, 1
@@ -11658,8 +3264,8 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp37:                                # EH_LABEL
-# %bb.170:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit398
-                                        #   in Loop: Header=BB24_169 Depth=1
+# %bb.164:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit398
+                                        #   in Loop: Header=BB24_163 Depth=1
 	slli.d	$a0, $s4, 2
 	ldx.wu	$a1, $fp, $a0
 .Ltmp38:                                # EH_LABEL
@@ -11667,12 +3273,12 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertImEERSoT_)
 	jirl	$ra, $ra, 0
 .Ltmp39:                                # EH_LABEL
-# %bb.171:                              # %_ZNSolsEj.exit
-                                        #   in Loop: Header=BB24_169 Depth=1
+# %bb.165:                              # %_ZNSolsEj.exit
+                                        #   in Loop: Header=BB24_163 Depth=1
 	bstrpick.d	$s4, $s3, 31, 0
 	addi.w	$s3, $s3, 1
-	bltu	$s4, $s2, .LBB24_169
-.LBB24_172:                             # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit394._crit_edge
+	bltu	$s4, $s2, .LBB24_163
+.LBB24_166:                             # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit394._crit_edge
 .Ltmp41:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cout)
@@ -11682,7 +3288,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp42:                                # EH_LABEL
-# %bb.173:                              # %_ZNSt6vectorIjSaIjEED2Ev.exit
+# %bb.167:                              # %_ZNSt6vectorIjSaIjEED2Ev.exit
 	sub.d	$a1, $s5, $fp
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -11701,112 +3307,112 @@ main:                                   # @main
 	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 176
 	ret
-.LBB24_174:
+.LBB24_168:
 .Ltmp59:                                # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp60:                                # EH_LABEL
-# %bb.175:                              # %.noexc321
-.LBB24_176:
+# %bb.169:                              # %.noexc321
+.LBB24_170:
 .Ltmp56:                                # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp57:                                # EH_LABEL
-# %bb.177:                              # %.noexc335
-.LBB24_178:
+# %bb.171:                              # %.noexc335
+.LBB24_172:
 .Ltmp53:                                # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp54:                                # EH_LABEL
-# %bb.179:                              # %.noexc349
-.LBB24_180:
+# %bb.173:                              # %.noexc349
+.LBB24_174:
 .Ltmp50:                                # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp51:                                # EH_LABEL
-# %bb.181:                              # %.noexc363
-.LBB24_182:
+# %bb.175:                              # %.noexc363
+.LBB24_176:
 .Ltmp47:                                # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp48:                                # EH_LABEL
-# %bb.183:                              # %.noexc372
-.LBB24_184:
+# %bb.177:                              # %.noexc372
+.LBB24_178:
 .Ltmp44:                                # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp45:                                # EH_LABEL
-# %bb.185:                              # %.noexc386
-.LBB24_186:
+# %bb.179:                              # %.noexc386
+.LBB24_180:
 .Ltmp17:                                # EH_LABEL
-	b	.LBB24_198
-.LBB24_187:
+	b	.LBB24_192
+.LBB24_181:
 .Ltmp46:                                # EH_LABEL
-	b	.LBB24_192
-.LBB24_188:
+	b	.LBB24_186
+.LBB24_182:
 .Ltmp49:                                # EH_LABEL
-	b	.LBB24_197
-.LBB24_189:
+	b	.LBB24_191
+.LBB24_183:
 .Ltmp52:                                # EH_LABEL
-	b	.LBB24_192
-.LBB24_190:
+	b	.LBB24_186
+.LBB24_184:
 .Ltmp55:                                # EH_LABEL
-	b	.LBB24_197
-.LBB24_191:
+	b	.LBB24_191
+.LBB24_185:
 .Ltmp58:                                # EH_LABEL
-.LBB24_192:                             # %.thread
+.LBB24_186:                             # %.thread
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	b	.LBB24_195
-.LBB24_193:
+	b	.LBB24_189
+.LBB24_187:
 .Ltmp61:                                # EH_LABEL
-	b	.LBB24_197
-.LBB24_194:
+	b	.LBB24_191
+.LBB24_188:
 .Ltmp14:                                # EH_LABEL
 	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
-.LBB24_195:                             # %.thread
+.LBB24_189:                             # %.thread
 	move	$s1, $a0
-	b	.LBB24_200
-.LBB24_196:
+	b	.LBB24_194
+.LBB24_190:
 .Ltmp11:                                # EH_LABEL
-.LBB24_197:                             # %.thread
+.LBB24_191:                             # %.thread
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-.LBB24_198:                             # %.thread
+.LBB24_192:                             # %.thread
 	move	$s1, $a0
-	b	.LBB24_202
-.LBB24_199:
+	b	.LBB24_196
+.LBB24_193:
 .Ltmp8:                                 # EH_LABEL
 	move	$s1, $a0
 	addi.d	$a0, $s0, 8
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-.LBB24_200:                             # %.thread
+.LBB24_194:                             # %.thread
 	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN5TimerD2Ev)
 	jirl	$ra, $ra, 0
 	move	$fp, $s0
-	b	.LBB24_207
-.LBB24_201:
+	b	.LBB24_201
+.LBB24_195:
 .Ltmp5:                                 # EH_LABEL
 	move	$s1, $a0
 	addi.d	$a0, $fp, 4
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-.LBB24_202:                             # %.thread
+.LBB24_196:                             # %.thread
 	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN5TimerD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB24_207
-.LBB24_203:                             # %.thread500
+	b	.LBB24_201
+.LBB24_197:                             # %.thread500
 .Ltmp2:                                 # EH_LABEL
 	move	$s1, $a0
 	addi.d	$a0, $sp, 32
@@ -11815,15 +3421,15 @@ main:                                   # @main
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB24_204:
+.LBB24_198:
 .Ltmp43:                                # EH_LABEL
-	b	.LBB24_206
-.LBB24_205:
+	b	.LBB24_200
+.LBB24_199:
 .Ltmp40:                                # EH_LABEL
-.LBB24_206:                             # %.thread
+.LBB24_200:                             # %.thread
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	move	$s1, $a0
-.LBB24_207:                             # %.thread
+.LBB24_201:                             # %.thread
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	sub.d	$a1, $a0, $fp
 	move	$a0, $fp
@@ -12295,21 +3901,21 @@ s:
 
 	.type	a,@object                       # @a
 	.globl	a
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 a:
 	.space	8192
 	.size	a, 8192
 
 	.type	b,@object                       # @b
 	.globl	b
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 b:
 	.space	8192
 	.size	b, 8192
 
 	.type	c,@object                       # @c
 	.globl	c
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 c:
 	.space	8192
 	.size	c, 8192
@@ -12323,7 +3929,7 @@ d:
 
 	.type	G,@object                       # @G
 	.globl	G
-	.p2align	5, 0x0
+	.p2align	2, 0x0
 G:
 	.space	131072
 	.size	G, 131072

@@ -518,12 +518,12 @@ III_format_bitstream:                   # @III_format_bitstream
 	move	$t1, $zero
 	b	.LBB1_22
 	.p2align	4, , 16
-.LBB1_19:                               # %vector.body134.preheader
+.LBB1_19:                               # %vector.body135.preheader
                                         #   in Loop: Header=BB1_17 Depth=1
 	move	$t0, $a6
 	move	$t1, $a2
 	.p2align	4, , 16
-.LBB1_20:                               # %vector.body134
+.LBB1_20:                               # %vector.body135
                                         #   Parent Loop BB1_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$t2, $t0, -16
@@ -541,16 +541,16 @@ III_format_bitstream:                   # @III_format_bitstream
 	addi.d	$t1, $t1, -4
 	addi.d	$t0, $t0, 32
 	bnez	$t1, .LBB1_20
-# %bb.21:                               # %middle.block138
+# %bb.21:                               # %middle.block140
                                         #   in Loop: Header=BB1_17 Depth=1
 	move	$t1, $a2
 	beq	$a2, $a1, .LBB1_16
-.LBB1_22:                               # %scalar.ph129.preheader
+.LBB1_22:                               # %scalar.ph130.preheader
                                         #   in Loop: Header=BB1_17 Depth=1
 	sub.d	$t0, $a1, $t1
 	alsl.d	$t1, $t1, $a4, 3
 	.p2align	4, , 16
-.LBB1_23:                               # %scalar.ph129
+.LBB1_23:                               # %scalar.ph130
                                         #   Parent Loop BB1_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$t2, $t1, 0
@@ -2951,12 +2951,12 @@ III_format_bitstream:                   # @III_format_bitstream
 	move	$t1, $zero
 	b	.LBB1_60
 	.p2align	4, , 16
-.LBB1_57:                               # %vector.body146.preheader
+.LBB1_57:                               # %vector.body148.preheader
                                         #   in Loop: Header=BB1_55 Depth=1
 	move	$t0, $a5
 	move	$t1, $a6
 	.p2align	4, , 16
-.LBB1_58:                               # %vector.body146
+.LBB1_58:                               # %vector.body148
                                         #   Parent Loop BB1_55 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$t2, $t0, -16
@@ -2974,16 +2974,16 @@ III_format_bitstream:                   # @III_format_bitstream
 	addi.d	$t1, $t1, -4
 	addi.d	$t0, $t0, 32
 	bnez	$t1, .LBB1_58
-# %bb.59:                               # %middle.block150
+# %bb.59:                               # %middle.block153
                                         #   in Loop: Header=BB1_55 Depth=1
 	move	$t1, $a6
 	beq	$a6, $a1, .LBB1_54
-.LBB1_60:                               # %scalar.ph141.preheader
+.LBB1_60:                               # %scalar.ph143.preheader
                                         #   in Loop: Header=BB1_55 Depth=1
 	sub.d	$t0, $a1, $t1
 	alsl.d	$t1, $t1, $a3, 3
 	.p2align	4, , 16
-.LBB1_61:                               # %scalar.ph141
+.LBB1_61:                               # %scalar.ph143
                                         #   Parent Loop BB1_55 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$t2, $t1, 0
@@ -3017,12 +3017,12 @@ III_format_bitstream:                   # @III_format_bitstream
 	move	$t0, $zero
 	b	.LBB1_69
 	.p2align	4, , 16
-.LBB1_66:                               # %vector.body158.preheader
+.LBB1_66:                               # %vector.body161.preheader
                                         #   in Loop: Header=BB1_64 Depth=1
 	move	$a7, $a5
 	move	$t0, $a2
 	.p2align	4, , 16
-.LBB1_67:                               # %vector.body158
+.LBB1_67:                               # %vector.body161
                                         #   Parent Loop BB1_64 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$t1, $a7, -16
@@ -3040,16 +3040,16 @@ III_format_bitstream:                   # @III_format_bitstream
 	addi.d	$t0, $t0, -4
 	addi.d	$a7, $a7, 32
 	bnez	$t0, .LBB1_67
-# %bb.68:                               # %middle.block162
+# %bb.68:                               # %middle.block166
                                         #   in Loop: Header=BB1_64 Depth=1
 	move	$t0, $a2
 	beq	$a2, $a1, .LBB1_63
-.LBB1_69:                               # %scalar.ph153.preheader
+.LBB1_69:                               # %scalar.ph156.preheader
                                         #   in Loop: Header=BB1_64 Depth=1
 	sub.d	$a7, $a1, $t0
 	alsl.d	$t0, $t0, $a3, 3
 	.p2align	4, , 16
-.LBB1_70:                               # %scalar.ph153
+.LBB1_70:                               # %scalar.ph156
                                         #   Parent Loop BB1_64 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$t1, $t0, 0

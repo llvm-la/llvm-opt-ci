@@ -824,11 +824,13 @@ _ZN11NCoderMixer14CCoderMixer2MT11SetBindInfoERKNS_9CBindInfoE: # @_ZN11NCoderMi
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ld.h	$a0, $sp, 176
-	xvld	$xr0, $s3, 0
+	vld	$vr0, $s3, 0
+	vld	$vr1, $s3, 16
 	st.h	$a0, $s2, 144
-	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr1, $s2, 128
-	xvst	$xr0, $s2, 152
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr2, $s2, 128
+	vst	$vr0, $s2, 152
+	vst	$vr1, $s2, 168
 .Ltmp23:                                # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)

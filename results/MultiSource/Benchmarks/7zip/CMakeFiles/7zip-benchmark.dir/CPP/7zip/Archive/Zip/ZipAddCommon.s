@@ -431,8 +431,10 @@ _ZN8NArchive4NZip22CCompressionMethodModeC2ERKS1_: # @_ZN8NArchive4NZip22CCompre
 	bnez	$a2, .LBB3_11
 # %bb.12:
 	st.w	$s2, $fp, 40
-	xvld	$xr0, $s0, 48
-	xvst	$xr0, $fp, 48
+	vld	$vr0, $s0, 48
+	vst	$vr0, $fp, 48
+	vld	$vr0, $s0, 64
+	vst	$vr0, $fp, 64
 	ld.d	$a0, $s0, 77
 	st.d	$a0, $fp, 77
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
@@ -578,27 +580,27 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
 	lu12i.w	$a5, 3
-	ori	$a5, $a5, 2384
+	ori	$a5, $a5, 2352
 	sub.d	$sp, $sp, $a5
-	.cfi_def_cfa_offset 16704
+	.cfi_def_cfa_offset 16672
 	move	$s4, $a1
 	ld.d	$a1, $a1, 0
-	st.d	$zero, $sp, 232
+	st.d	$zero, $sp, 200
 	ld.d	$a5, $a1, 0
 	move	$s7, $a4
-	st.d	$a3, $sp, 192                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 160                   # 8-byte Folded Spill
 	move	$s5, $a2
 	move	$s3, $a0
 .Ltmp29:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(IID_IInStream)
 	ld.d	$a1, $a0, %got_pc_lo12(IID_IInStream)
-	addi.d	$a2, $sp, 232
+	addi.d	$a2, $sp, 200
 	move	$a0, $s4
 	jirl	$ra, $a5, 0
 .Ltmp30:                                # EH_LABEL
 # %bb.1:
 	move	$s8, $a0
-	ld.d	$a0, $sp, 232
+	ld.d	$a0, $sp, 200
 	beqz	$s8, .LBB4_3
 # %bb.2:
 	move	$fp, $zero
@@ -630,7 +632,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	jirl	$ra, $a1, 0
 .Ltmp35:                                # EH_LABEL
 # %bb.6:                                # %_ZN9CMyComPtrI19ISequentialInStreamEaSEPS0_.exit
-	ld.d	$s2, $sp, 232
+	ld.d	$s2, $sp, 200
 	beqz	$s2, .LBB4_8
 # %bb.7:
 	ld.d	$a0, $s2, 0
@@ -702,7 +704,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	st.b	$zero, $s0, 36
 	move	$s1, $s0
 .LBB4_17:                               # %.sink.split
-	ld.d	$a0, $sp, 232
+	ld.d	$a0, $sp, 200
 	addi.w	$a1, $zero, -1
 	lu32i.d	$a1, 0
 	st.w	$a1, $s0, 32
@@ -728,7 +730,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .LBB4_22:                               # %_ZN9CMyComPtrI19ISequentialInStreamED2Ev.exit
 	addi.w	$a0, $s8, 0
 	lu12i.w	$a1, 3
-	ori	$a1, $a1, 2384
+	ori	$a1, $a1, 2352
 	add.d	$sp, $sp, $a1
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
@@ -747,7 +749,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	ld.w	$a1, $s3, 12
 	ori	$a2, $zero, 1
 	lu12i.w	$a0, -524284
-	st.d	$s7, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 152                   # 8-byte Folded Spill
 	bge	$a2, $a1, .LBB4_27
 # %bb.24:
 	bnez	$s6, .LBB4_26
@@ -757,10 +759,10 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	bnez	$a2, .LBB4_29
 .LBB4_26:                               # %.thread736
 	addi.d	$a2, $s7, 22
-	st.d	$a2, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
 	ori	$a2, $zero, 10
 	st.b	$a2, $s7, 22
-	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	b	.LBB4_32
 .LBB4_27:
 	bnez	$s6, .LBB4_30
@@ -776,48 +778,46 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	ori	$a3, $zero, 1
 	st.b	$a2, $s7, 22
 	ori	$a2, $zero, 1
-	st.d	$a2, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
 	bne	$a1, $a3, .LBB4_162
 # %bb.31:
 	addi.d	$a1, $s7, 22
-	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
 .LBB4_32:                               # %.lr.ph
 	move	$a3, $s7
 	sltui	$a1, $s6, 1
 	pcalau12i	$a2, %got_pc_hi20(_ZTVN7NCrypto4NZip8CEncoderE)
 	ld.d	$a2, $a2, %got_pc_lo12(_ZTVN7NCrypto4NZip8CEncoderE)
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$a2, $a2, 24
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
 	pcalau12i	$a2, %got_pc_hi20(_ZTVN7NCrypto6NWzAes8CEncoderE)
 	ld.d	$a2, $a2, %got_pc_lo12(_ZTVN7NCrypto6NWzAes8CEncoderE)
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
 	ld.d	$a2, $a2, 24
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a2, %got_pc_hi20(_ZTVN9NCompress10CCopyCoderE)
 	ld.d	$a2, $a2, %got_pc_lo12(_ZTVN9NCompress10CCopyCoderE)
 	move	$s7, $zero
+	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 168                 # 8-byte Folded Spill
-	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	ld.d	$a2, $a2, 24
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	addi.d	$a2, $a3, 8
-	st.d	$a2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
 	masknez	$a2, $s6, $a1
 	maskeqz	$a1, $s1, $a1
 	or	$a1, $a1, $a2
-	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 3400
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	ori	$a0, $a0, 1
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
 .LBB4_33:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_69 Depth 2
 	ori	$a0, $zero, 10
@@ -895,7 +895,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	pcalau12i	$a0, %pc_hi20(_ZTV7CBufferIhE+16)
 	addi.d	$s0, $a0, %pc_lo12(_ZTV7CBufferIhE+16)
 	st.d	$s0, $s8, 48
-	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
 	vst	$vr0, $s8, 56
 	ori	$a0, $zero, 3
 	st.w	$a0, $s8, 24
@@ -905,7 +905,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	jirl	$ra, $ra, 0
 .Ltmp98:                                # EH_LABEL
 # %bb.46:                               #   in Loop: Header=BB4_33 Depth=1
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 16
 	st.d	$a0, $s8, 0
 	ld.d	$s0, $s3, 144
@@ -914,7 +914,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	st.d	$s8, $s3, 168
 .Ltmp100:                               # EH_LABEL
 	move	$a0, $s8
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	jirl	$ra, $a1, 0
 .Ltmp101:                               # EH_LABEL
 # %bb.47:                               # %.noexc340
@@ -1005,7 +1005,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 # %bb.62:                               #   in Loop: Header=BB4_33 Depth=1
 	move	$s2, $a0
 	st.w	$zero, $a0, 16
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 16
 	st.d	$a0, $s2, 0
 	addi.d	$a0, $a1, 96
@@ -1013,7 +1013,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	st.d	$s2, $s3, 160
 .Ltmp75:                                # EH_LABEL
 	move	$a0, $s2
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	jirl	$ra, $a1, 0
 .Ltmp76:                                # EH_LABEL
 # %bb.63:                               # %.noexc344
@@ -1040,8 +1040,8 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	ld.d	$a0, $s4, 0
 	ld.d	$a4, $a0, 40
 .Ltmp81:                                # EH_LABEL
-	addi.d	$a1, $sp, 232
-	addi.d	$a3, $sp, 208
+	addi.d	$a1, $sp, 200
+	addi.d	$a3, $sp, 176
 	move	$a0, $s4
 	lu12i.w	$a2, 4
 	jirl	$ra, $a4, 0
@@ -1053,20 +1053,20 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
                                         #   in Loop: Header=BB4_33 Depth=1
 	sltui	$a0, $s8, 1
 	masknez	$a1, $s8, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	addi.w	$s2, $zero, -1
 	.p2align	4, , 16
 .LBB4_69:                               # %.lr.ph.i
                                         #   Parent Loop BB4_33 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.wu	$a2, $sp, 208
+	ld.wu	$a2, $sp, 176
 	beqz	$a2, .LBB4_73
 # %bb.70:                               #   in Loop: Header=BB4_69 Depth=2
 .Ltmp84:                                # EH_LABEL
-	addi.d	$a1, $sp, 232
+	addi.d	$a1, $sp, 200
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(CrcUpdate)
 	jirl	$ra, $ra, 0
@@ -1077,8 +1077,8 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	ld.d	$a0, $s4, 0
 	ld.d	$a4, $a0, 40
 .Ltmp86:                                # EH_LABEL
-	addi.d	$a1, $sp, 232
-	addi.d	$a3, $sp, 208
+	addi.d	$a1, $sp, 200
+	addi.d	$a3, $sp, 176
 	move	$a0, $s4
 	lu12i.w	$a2, 4
 	jirl	$ra, $a4, 0
@@ -1125,7 +1125,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	bnez	$a0, .LBB4_169
 # %bb.79:                               #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$a0, $s3, 144
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 .LBB4_80:                               #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$a0, $s3, 16
 	ldx.bu	$s0, $a0, $s7
@@ -1151,48 +1151,49 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .Ltmp141:                               # EH_LABEL
 # %bb.85:                               #   in Loop: Header=BB4_33 Depth=1
 	move	$s8, $a0
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $a0, 8
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
+	vst	$vr0, $a0, 8
 	st.d	$zero, $a0, 40
+	vst	$vr0, $a0, 24
 	pcalau12i	$a0, %pc_hi20(_ZTVN8NArchive4NZip12CLzmaEncoderE+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTVN8NArchive4NZip12CLzmaEncoderE+16)
 	ld.w	$a1, $s3, 80
 	ld.w	$a2, $s3, 48
 	ld.w	$a3, $s3, 68
 	st.d	$a0, $s8, 0
-	st.w	$a1, $sp, 240
-	st.w	$a2, $sp, 256
-	st.w	$a3, $sp, 272
+	st.w	$a1, $sp, 208
+	st.w	$a2, $sp, 224
+	st.w	$a3, $sp, 240
 	ld.w	$a0, $s3, 56
 	ori	$a1, $zero, 1
 	st.w	$a1, $s8, 8
 	st.d	$s8, $s3, 128
-	st.w	$s1, $sp, 232
-	st.w	$a0, $sp, 288
+	st.w	$s1, $sp, 200
+	st.w	$a0, $sp, 256
 	ld.d	$a1, $s3, 32
+	st.w	$s1, $sp, 216
+	st.w	$s1, $sp, 232
 	st.w	$s1, $sp, 248
-	st.w	$s1, $sp, 264
-	st.w	$s1, $sp, 280
 .Ltmp143:                               # EH_LABEL
-	addi.d	$a0, $sp, 296
+	addi.d	$a0, $sp, 264
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariantC1EPw)
 	jirl	$ra, $ra, 0
 .Ltmp144:                               # EH_LABEL
 # %bb.86:                               #   in Loop: Header=BB4_33 Depth=1
 	ld.w	$a0, $s3, 64
-	st.w	$s1, $sp, 312
-	st.w	$a0, $sp, 320
+	st.w	$s1, $sp, 280
+	st.w	$a0, $sp, 288
 	pcalau12i	$a0, %pc_hi20(.L__const._ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICompressProgressInfoRNS0_18CCompressingResultE.propIDs)
 	addi.d	$a0, $a0, %pc_lo12(.L__const._ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICompressProgressInfoRNS0_18CCompressingResultE.propIDs)
 	ld.d	$a1, $a0, 16
 	vld	$vr0, $a0, 0
 	ld.bu	$a0, $s3, 60
-	st.d	$a1, $sp, 224
-	vst	$vr0, $sp, 208
+	st.d	$a1, $sp, 192
+	vst	$vr0, $sp, 176
 .Ltmp155:                               # EH_LABEL
 	addi.d	$a3, $a0, 5
-	addi.d	$a1, $sp, 208
-	addi.d	$a2, $sp, 232
+	addi.d	$a1, $sp, 176
+	addi.d	$a2, $sp, 200
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZN8NArchive4NZip12CLzmaEncoder18SetCoderPropertiesEPKjPK14tagPROPVARIANTj)
 	jirl	$ra, $ra, 0
@@ -1200,42 +1201,42 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 # %bb.87:                               #   in Loop: Header=BB4_33 Depth=1
 .Ltmp171:                               # EH_LABEL
 	move	$s8, $a0
-	addi.d	$a0, $sp, 312
+	addi.d	$a0, $sp, 280
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp172:                               # EH_LABEL
 # %bb.88:                               # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit372
                                         #   in Loop: Header=BB4_33 Depth=1
 .Ltmp173:                               # EH_LABEL
-	addi.d	$a0, $sp, 296
+	addi.d	$a0, $sp, 264
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp174:                               # EH_LABEL
 # %bb.89:                               # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit372.1
                                         #   in Loop: Header=BB4_33 Depth=1
 .Ltmp175:                               # EH_LABEL
-	addi.d	$a0, $sp, 280
+	addi.d	$a0, $sp, 248
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp176:                               # EH_LABEL
 # %bb.90:                               # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit372.2
                                         #   in Loop: Header=BB4_33 Depth=1
 .Ltmp177:                               # EH_LABEL
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 232
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp178:                               # EH_LABEL
 # %bb.91:                               # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit372.3
                                         #   in Loop: Header=BB4_33 Depth=1
 .Ltmp179:                               # EH_LABEL
-	addi.d	$a0, $sp, 248
+	addi.d	$a0, $sp, 216
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp180:                               # EH_LABEL
 # %bb.92:                               # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit372.4
                                         #   in Loop: Header=BB4_33 Depth=1
 .Ltmp181:                               # EH_LABEL
-	addi.d	$a0, $sp, 232
+	addi.d	$a0, $sp, 200
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp182:                               # EH_LABEL
@@ -1266,17 +1267,17 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 # %bb.98:                               #   in Loop: Header=BB4_33 Depth=1
 	move	$s2, $a0
 	st.w	$zero, $a0, 16
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 16
 	st.d	$a0, $s2, 0
 	addi.d	$a0, $a1, 88
 	st.d	$a0, $s2, 8
-	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
 	vst	$vr0, $s2, 24
 	st.d	$s2, $s3, 112
 .Ltmp259:                               # EH_LABEL
 	move	$a0, $s2
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	jirl	$ra, $a1, 0
 .Ltmp260:                               # EH_LABEL
 # %bb.99:                               # %.noexc353
@@ -1307,7 +1308,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	ori	$a0, $zero, 63
 	st.b	$a0, $s3, 136
 .Ltmp113:                               # EH_LABEL
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp114:                               # EH_LABEL
@@ -1339,23 +1340,23 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .LBB4_108:                              #   in Loop: Header=BB4_33 Depth=1
 	ld.w	$a0, $s3, 48
 	st.d	$s8, $s3, 128
-	st.w	$s1, $sp, 232
+	st.w	$s1, $sp, 200
 	ld.w	$a1, $s3, 72
-	st.w	$a0, $sp, 240
+	st.w	$a0, $sp, 208
 	ld.w	$a0, $s3, 76
-	st.w	$s1, $sp, 248
-	st.w	$a1, $sp, 256
-	st.w	$s1, $sp, 264
-	st.w	$a0, $sp, 272
+	st.w	$s1, $sp, 216
+	st.w	$a1, $sp, 224
+	st.w	$s1, $sp, 232
+	st.w	$a0, $sp, 240
 	pcalau12i	$a0, %pc_hi20(.L__const._ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICompressProgressInfoRNS0_18CCompressingResultE.propIDs.1)
 	addi.d	$a0, $a0, %pc_lo12(.L__const._ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICompressProgressInfoRNS0_18CCompressingResultE.propIDs.1)
 	ld.w	$a1, $a0, 8
 	ld.d	$a0, $a0, 0
-	st.w	$a1, $sp, 216
-	st.d	$a0, $sp, 208
+	st.w	$a1, $sp, 184
+	st.d	$a0, $sp, 176
 .Ltmp123:                               # EH_LABEL
-	addi.d	$a1, $sp, 208
-	addi.d	$a2, $sp, 232
+	addi.d	$a1, $sp, 176
+	addi.d	$a2, $sp, 200
 	ori	$a3, $zero, 3
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZN9NCompress8NPpmdZip8CEncoder18SetCoderPropertiesEPKjPK14tagPROPVARIANTj)
@@ -1364,21 +1365,21 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 # %bb.109:                              #   in Loop: Header=BB4_33 Depth=1
 .Ltmp133:                               # EH_LABEL
 	move	$s8, $a0
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 232
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp134:                               # EH_LABEL
 # %bb.110:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit379
                                         #   in Loop: Header=BB4_33 Depth=1
 .Ltmp135:                               # EH_LABEL
-	addi.d	$a0, $sp, 248
+	addi.d	$a0, $sp, 216
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp136:                               # EH_LABEL
 # %bb.111:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit379.1
                                         #   in Loop: Header=BB4_33 Depth=1
 .Ltmp137:                               # EH_LABEL
-	addi.d	$a0, $sp, 232
+	addi.d	$a0, $sp, 200
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp138:                               # EH_LABEL
@@ -1424,51 +1425,51 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 # %bb.117:                              #   in Loop: Header=BB4_33 Depth=1
 	ld.w	$a1, $s3, 48
 	ld.w	$a2, $s3, 52
-	st.w	$s1, $sp, 232
-	st.w	$a1, $sp, 240
-	st.w	$s1, $sp, 248
-	st.w	$a2, $sp, 256
+	st.w	$s1, $sp, 200
+	st.w	$a1, $sp, 208
+	st.w	$s1, $sp, 216
+	st.w	$a2, $sp, 224
 	ld.w	$a1, $s3, 56
 	pcalau12i	$a2, %pc_hi20(.L__const._ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICompressProgressInfoRNS0_18CCompressingResultE.propIDs.2)
 	vld	$vr0, $a2, %pc_lo12(.L__const._ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICompressProgressInfoRNS0_18CCompressingResultE.propIDs.2)
 	ld.w	$a2, $s3, 64
-	st.w	$s1, $sp, 264
-	st.w	$a1, $sp, 272
-	st.w	$s1, $sp, 280
-	st.w	$a2, $sp, 288
-	vst	$vr0, $sp, 208
-	st.d	$zero, $sp, 200
+	st.w	$s1, $sp, 232
+	st.w	$a1, $sp, 240
+	st.w	$s1, $sp, 248
+	st.w	$a2, $sp, 256
+	vst	$vr0, $sp, 176
+	st.d	$zero, $sp, 168
 	ld.d	$a1, $a0, 0
 	ld.bu	$s1, $s3, 60
 	ld.d	$a3, $a1, 0
 .Ltmp213:                               # EH_LABEL
 	pcalau12i	$a1, %got_pc_hi20(IID_ICompressSetCoderProperties)
 	ld.d	$a1, $a1, %got_pc_lo12(IID_ICompressSetCoderProperties)
-	addi.d	$a2, $sp, 200
+	addi.d	$a2, $sp, 168
 	jirl	$ra, $a3, 0
 .Ltmp214:                               # EH_LABEL
 # %bb.118:                              # %_ZNK9CMyComPtrI14ICompressCoderE14QueryInterfaceI27ICompressSetCoderPropertiesEEiRK4GUIDPPT_.exit
                                         #   in Loop: Header=BB4_33 Depth=1
-	ld.d	$a0, $sp, 200
+	ld.d	$a0, $sp, 168
 	beqz	$a0, .LBB4_132
 # %bb.119:                              #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a4, $a1, 40
 	addi.d	$a3, $s1, 3
 .Ltmp216:                               # EH_LABEL
-	addi.d	$a1, $sp, 208
-	addi.d	$a2, $sp, 232
+	addi.d	$a1, $sp, 176
+	addi.d	$a2, $sp, 200
 	jirl	$ra, $a4, 0
 	move	$a1, $a0
 .Ltmp217:                               # EH_LABEL
 # %bb.120:                              #   in Loop: Header=BB4_33 Depth=1
-	ld.d	$a0, $sp, 200
+	ld.d	$a0, $sp, 168
 	sltui	$s1, $a1, 1
 	masknez	$a1, $a1, $s1
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	maskeqz	$a2, $a2, $s1
 	or	$a1, $a2, $a1
-	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
 	beqz	$a0, .LBB4_133
 # %bb.121:                              #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$a1, $a0, 0
@@ -1489,7 +1490,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	move	$a2, $s2
 	move	$a3, $zero
 	move	$a4, $zero
-	ld.d	$a5, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 160                   # 8-byte Folded Reload
 	jirl	$ra, $a6, 0
 .Ltmp270:                               # EH_LABEL
 # %bb.124:                              #   in Loop: Header=BB4_33 Depth=1
@@ -1508,51 +1509,51 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	bne	$s0, $a1, .LBB4_142
 # %bb.127:                              #   in Loop: Header=BB4_33 Depth=1
 	ld.w	$a1, $s3, 68
-	st.w	$s1, $sp, 232
+	st.w	$s1, $sp, 200
 	ld.w	$a2, $s3, 52
-	st.w	$a1, $sp, 240
+	st.w	$a1, $sp, 208
 	ld.w	$a1, $s3, 80
-	st.w	$s1, $sp, 248
-	st.w	$a2, $sp, 256
-	st.w	$s1, $sp, 264
-	st.w	$a1, $sp, 272
+	st.w	$s1, $sp, 216
+	st.w	$a2, $sp, 224
+	st.w	$s1, $sp, 232
+	st.w	$a1, $sp, 240
 	pcalau12i	$a1, %pc_hi20(.L__const._ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICompressProgressInfoRNS0_18CCompressingResultE.propIDs.3)
 	addi.d	$a1, $a1, %pc_lo12(.L__const._ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICompressProgressInfoRNS0_18CCompressingResultE.propIDs.3)
 	ld.w	$a2, $a1, 8
 	ld.d	$a1, $a1, 0
-	st.w	$a2, $sp, 216
-	st.d	$a1, $sp, 208
-	st.d	$zero, $sp, 200
+	st.w	$a2, $sp, 184
+	st.d	$a1, $sp, 176
+	st.d	$zero, $sp, 168
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 0
 .Ltmp187:                               # EH_LABEL
 	pcalau12i	$a1, %got_pc_hi20(IID_ICompressSetCoderProperties)
 	ld.d	$a1, $a1, %got_pc_lo12(IID_ICompressSetCoderProperties)
-	addi.d	$a2, $sp, 200
+	addi.d	$a2, $sp, 168
 	jirl	$ra, $a3, 0
 .Ltmp188:                               # EH_LABEL
 # %bb.128:                              # %_ZNK9CMyComPtrI14ICompressCoderE14QueryInterfaceI27ICompressSetCoderPropertiesEEiRK4GUIDPPT_.exit388
                                         #   in Loop: Header=BB4_33 Depth=1
-	ld.d	$a0, $sp, 200
+	ld.d	$a0, $sp, 168
 	beqz	$a0, .LBB4_137
 # %bb.129:                              #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a4, $a1, 40
 .Ltmp190:                               # EH_LABEL
-	addi.d	$a1, $sp, 208
-	addi.d	$a2, $sp, 232
+	addi.d	$a1, $sp, 176
+	addi.d	$a2, $sp, 200
 	ori	$a3, $zero, 3
 	jirl	$ra, $a4, 0
 	move	$a1, $a0
 .Ltmp191:                               # EH_LABEL
 # %bb.130:                              #   in Loop: Header=BB4_33 Depth=1
-	ld.d	$a0, $sp, 200
+	ld.d	$a0, $sp, 168
 	sltui	$s1, $a1, 1
 	masknez	$a1, $a1, $s1
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	maskeqz	$a2, $a2, $s1
 	or	$a1, $a2, $a1
-	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
 	beqz	$a0, .LBB4_138
 # %bb.131:                              #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$a1, $a0, 0
@@ -1566,28 +1567,28 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .LBB4_133:                              # %_ZN9CMyComPtrI27ICompressSetCoderPropertiesED2Ev.exit
                                         #   in Loop: Header=BB4_33 Depth=1
 .Ltmp234:                               # EH_LABEL
-	addi.d	$a0, $sp, 280
+	addi.d	$a0, $sp, 248
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp235:                               # EH_LABEL
 # %bb.134:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit383
                                         #   in Loop: Header=BB4_33 Depth=1
 .Ltmp236:                               # EH_LABEL
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 232
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp237:                               # EH_LABEL
 # %bb.135:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit383.1
                                         #   in Loop: Header=BB4_33 Depth=1
 .Ltmp238:                               # EH_LABEL
-	addi.d	$a0, $sp, 248
+	addi.d	$a0, $sp, 216
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp239:                               # EH_LABEL
 # %bb.136:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit383.2
                                         #   in Loop: Header=BB4_33 Depth=1
 .Ltmp240:                               # EH_LABEL
-	addi.d	$a0, $sp, 232
+	addi.d	$a0, $sp, 200
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp241:                               # EH_LABEL
@@ -1597,21 +1598,21 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .LBB4_138:                              # %_ZN9CMyComPtrI27ICompressSetCoderPropertiesED2Ev.exit390
                                         #   in Loop: Header=BB4_33 Depth=1
 .Ltmp206:                               # EH_LABEL
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 232
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp207:                               # EH_LABEL
 # %bb.139:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit391
                                         #   in Loop: Header=BB4_33 Depth=1
 .Ltmp208:                               # EH_LABEL
-	addi.d	$a0, $sp, 248
+	addi.d	$a0, $sp, 216
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp209:                               # EH_LABEL
 # %bb.140:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit391.1
                                         #   in Loop: Header=BB4_33 Depth=1
 .Ltmp210:                               # EH_LABEL
-	addi.d	$a0, $sp, 232
+	addi.d	$a0, $sp, 200
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp211:                               # EH_LABEL
@@ -1624,7 +1625,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	beqz	$a0, .LBB4_145
 # %bb.143:                              #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$s2, $s3, 152
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
 	beqz	$s2, .LBB4_160
 # %bb.144:                              #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$a0, $s2, 0
@@ -1642,7 +1643,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	jirl	$ra, $a1, 0
 .Ltmp244:                               # EH_LABEL
 	move	$s2, $s5
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
 .LBB4_146:                              # %_ZN9CMyComPtrI20ISequentialOutStreamEaSERKS1_.exit399
                                         #   in Loop: Header=BB4_33 Depth=1
 	ld.bu	$a0, $s3, 136
@@ -1660,7 +1661,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	move	$a2, $s2
 	move	$a3, $zero
 	move	$a4, $zero
-	ld.d	$a5, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 160                   # 8-byte Folded Reload
 	jirl	$ra, $a6, 0
 .Ltmp249:                               # EH_LABEL
 # %bb.149:                              #   in Loop: Header=BB4_33 Depth=1
@@ -1683,17 +1684,17 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	ori	$a2, $zero, 1
 	move	$a0, $s5
 	move	$a1, $zero
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
 	jirl	$ra, $a4, 0
 .Ltmp279:                               # EH_LABEL
 # %bb.153:                              #   in Loop: Header=BB4_33 Depth=1
 	move	$s8, $a0
 	bnez	$a0, .LBB4_169
 # %bb.154:                              #   in Loop: Header=BB4_33 Depth=1
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	ld.w	$a0, $a2, 32
 	nor	$a0, $a0, $zero
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	st.w	$a0, $a1, 16
 	ld.d	$a0, $a2, 24
 	st.d	$a0, $a1, 0
@@ -1716,7 +1717,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	bltu	$a1, $a0, .LBB4_163
 # %bb.159:                              #   in Loop: Header=BB4_33 Depth=1
 	addi.d	$s7, $s7, 1
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	bne	$s7, $a0, .LBB4_33
 	b	.LBB4_163
 .LBB4_160:                              #   in Loop: Header=BB4_33 Depth=1
@@ -1729,11 +1730,11 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	move	$s8, $a0
 	b	.LBB4_169
 .LBB4_162:
-	st.d	$zero, $sp, 168                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
 	move	$s0, $zero
 .LBB4_163:                              # %._crit_edge
 	ld.bu	$a0, $s3, 104
-	ld.d	$s1, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 152                   # 8-byte Folded Reload
 	beqz	$a0, .LBB4_168
 # %bb.164:
 	ld.d	$a0, $s3, 168
@@ -1762,7 +1763,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	move	$s8, $zero
 	st.h	$s0, $s1, 20
 .LBB4_169:                              # %.thread467
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	beqz	$a0, .LBB4_20
 # %bb.170:
 	ld.d	$a1, $a0, 0
@@ -1772,10 +1773,10 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .Ltmp294:                               # EH_LABEL
 	b	.LBB4_20
 .LBB4_171:
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
 	b	.LBB4_169
 .LBB4_172:
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
 	b	.LBB4_169
 .LBB4_173:
 .Ltmp205:                               # EH_LABEL
@@ -1792,7 +1793,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .Ltmp189:                               # EH_LABEL
 .LBB4_177:
 	move	$s1, $a0
-	ld.d	$a0, $sp, 200
+	ld.d	$a0, $sp, 168
 	beqz	$a0, .LBB4_179
 # %bb.178:
 	ld.d	$a1, $a0, 0
@@ -1802,19 +1803,19 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .Ltmp194:                               # EH_LABEL
 .LBB4_179:                              # %_ZN9CMyComPtrI27ICompressSetCoderPropertiesED2Ev.exit393
 .Ltmp196:                               # EH_LABEL
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 232
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp197:                               # EH_LABEL
 # %bb.180:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit394
 .Ltmp198:                               # EH_LABEL
-	addi.d	$a0, $sp, 248
+	addi.d	$a0, $sp, 216
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp199:                               # EH_LABEL
 # %bb.181:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit394.1
 .Ltmp200:                               # EH_LABEL
-	addi.d	$a0, $sp, 232
+	addi.d	$a0, $sp, 200
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp201:                               # EH_LABEL
@@ -1837,7 +1838,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .Ltmp215:                               # EH_LABEL
 .LBB4_187:
 	move	$s1, $a0
-	ld.d	$a0, $sp, 200
+	ld.d	$a0, $sp, 168
 	beqz	$a0, .LBB4_189
 # %bb.188:
 	ld.d	$a1, $a0, 0
@@ -1847,25 +1848,25 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .Ltmp220:                               # EH_LABEL
 .LBB4_189:                              # %_ZN9CMyComPtrI27ICompressSetCoderPropertiesED2Ev.exit385
 .Ltmp222:                               # EH_LABEL
-	addi.d	$a0, $sp, 280
+	addi.d	$a0, $sp, 248
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp223:                               # EH_LABEL
 # %bb.190:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit386
 .Ltmp224:                               # EH_LABEL
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 232
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp225:                               # EH_LABEL
 # %bb.191:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit386.1
 .Ltmp226:                               # EH_LABEL
-	addi.d	$a0, $sp, 248
+	addi.d	$a0, $sp, 216
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp227:                               # EH_LABEL
 # %bb.192:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit386.2
 .Ltmp228:                               # EH_LABEL
-	addi.d	$a0, $sp, 232
+	addi.d	$a0, $sp, 200
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp229:                               # EH_LABEL
@@ -1892,19 +1893,19 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .Ltmp125:                               # EH_LABEL
 	move	$s1, $a0
 .Ltmp126:                               # EH_LABEL
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 232
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp127:                               # EH_LABEL
 # %bb.199:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit380
 .Ltmp128:                               # EH_LABEL
-	addi.d	$a0, $sp, 248
+	addi.d	$a0, $sp, 216
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp129:                               # EH_LABEL
 # %bb.200:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit380.1
 .Ltmp130:                               # EH_LABEL
-	addi.d	$a0, $sp, 232
+	addi.d	$a0, $sp, 200
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp131:                               # EH_LABEL
@@ -1917,7 +1918,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .Ltmp117:                               # EH_LABEL
 	move	$s1, $a0
 	move	$a0, $s8
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	b	.LBB4_255
@@ -1925,37 +1926,37 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .Ltmp157:                               # EH_LABEL
 	move	$s1, $a0
 .Ltmp158:                               # EH_LABEL
-	addi.d	$a0, $sp, 312
+	addi.d	$a0, $sp, 280
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp159:                               # EH_LABEL
 # %bb.204:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit373
 .Ltmp160:                               # EH_LABEL
-	addi.d	$a0, $sp, 296
+	addi.d	$a0, $sp, 264
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp161:                               # EH_LABEL
 # %bb.205:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit373.1
 .Ltmp162:                               # EH_LABEL
-	addi.d	$a0, $sp, 280
+	addi.d	$a0, $sp, 248
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp163:                               # EH_LABEL
 # %bb.206:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit373.2
 .Ltmp164:                               # EH_LABEL
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 232
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp165:                               # EH_LABEL
 # %bb.207:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit373.3
 .Ltmp166:                               # EH_LABEL
-	addi.d	$a0, $sp, 248
+	addi.d	$a0, $sp, 216
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp167:                               # EH_LABEL
 # %bb.208:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit373.4
 .Ltmp168:                               # EH_LABEL
-	addi.d	$a0, $sp, 232
+	addi.d	$a0, $sp, 200
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp169:                               # EH_LABEL
@@ -1968,25 +1969,25 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .Ltmp145:                               # EH_LABEL
 	move	$s1, $a0
 .Ltmp146:                               # EH_LABEL
-	addi.d	$a0, $sp, 280
+	addi.d	$a0, $sp, 248
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp147:                               # EH_LABEL
 # %bb.211:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit
 .Ltmp148:                               # EH_LABEL
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 232
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp149:                               # EH_LABEL
 # %bb.212:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit.1
 .Ltmp150:                               # EH_LABEL
-	addi.d	$a0, $sp, 248
+	addi.d	$a0, $sp, 216
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp151:                               # EH_LABEL
 # %bb.213:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit.2
 .Ltmp152:                               # EH_LABEL
-	addi.d	$a0, $sp, 232
+	addi.d	$a0, $sp, 200
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp153:                               # EH_LABEL
@@ -2137,7 +2138,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .Ltmp48:                                # EH_LABEL
 	move	$s1, $a0
 .LBB4_250:
-	ld.d	$a0, $sp, 232
+	ld.d	$a0, $sp, 200
 	beqz	$a0, .LBB4_257
 # %bb.251:
 	ld.d	$a1, $a0, 0
@@ -2155,10 +2156,10 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .LBB4_254:                              # %_ZN9CMyComPtrI20ISequentialOutStreamED2Ev.exit366
 	move	$s1, $a0
 .LBB4_255:                              # %_ZN9CMyComPtrI20ISequentialOutStreamED2Ev.exit366
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	beqz	$a0, .LBB4_257
 # %bb.256:                              # %_ZN9CMyComPtrI20ISequentialOutStreamED2Ev.exit366.thread
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 80
 .Ltmp287:                               # EH_LABEL

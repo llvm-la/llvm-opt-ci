@@ -550,19 +550,19 @@ _Z10deque_testPdS_i:                    # @_Z10deque_testPdS_i
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception2
 # %bb.0:
-	addi.d	$sp, $sp, -384
-	.cfi_def_cfa_offset 384
-	st.d	$ra, $sp, 376                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 312                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 296                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -304
+	.cfi_def_cfa_offset 304
+	st.d	$ra, $sp, 296                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 280                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 264                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 216                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -574,284 +574,288 @@ _Z10deque_testPdS_i:                    # @_Z10deque_testPdS_i
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	move	$fp, $a0
+	move	$s0, $a0
 	sub.d	$a0, $a1, $a0
-	srai.d	$s0, $a0, 3
-	srli.d	$a0, $s0, 60
-	st.d	$zero, $sp, 264
-	bnez	$a0, .LBB5_42
+	srai.d	$s1, $a0, 3
+	srli.d	$a0, $s1, 60
+	st.d	$zero, $sp, 184
+	bnez	$a0, .LBB5_41
 # %bb.1:                                # %_ZNSt5dequeIdSaIdEE17_S_check_init_lenEmRKS0_.exit.i
-	move	$s1, $a1
-	addi.d	$a0, $sp, 88
+	move	$s2, $a1
+	addi.d	$a0, $sp, 8
 	ori	$a2, $zero, 80
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp10:                                # EH_LABEL
-	addi.d	$a0, $sp, 88
-	move	$a1, $s0
+	addi.d	$a0, $sp, 8
+	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZNSt11_Deque_baseIdSaIdEE17_M_initialize_mapEm)
 	jirl	$ra, $ra, 0
 .Ltmp11:                                # EH_LABEL
 # %bb.2:                                # %.noexc9
 .Ltmp12:                                # EH_LABEL
-	addi.d	$a0, $sp, 88
-	addi.d	$a1, $sp, 264
+	addi.d	$a0, $sp, 8
+	addi.d	$a1, $sp, 184
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIdSaIdEE18_M_fill_initializeERKd)
 	jirl	$ra, $ra, 0
 .Ltmp13:                                # EH_LABEL
 # %bb.3:                                # %_ZNSt5dequeIdSaIdEEC2EmRKdRKS0_.exit
-	xvld	$xr0, $sp, 104
-	beq	$s1, $fp, .LBB5_16
+	ld.d	$fp, $sp, 24
+	ld.d	$s4, $sp, 32
+	ld.d	$s5, $sp, 40
+	ld.d	$s3, $sp, 48
+	beq	$s2, $s0, .LBB5_16
 # %bb.4:                                # %.lr.ph.i.i.i.preheader
-	xvpickve2gr.d	$s5, $xr0, 3
-	xvpickve2gr.d	$s7, $xr0, 2
-	xvpickve2gr.d	$s6, $xr0, 1
-	xvpickve2gr.d	$s1, $xr0, 0
 	ori	$s2, $zero, 2
-	ori	$s3, $zero, 63
-	ori	$s4, $zero, 1
+	ori	$s6, $zero, 63
+	ori	$s7, $zero, 1
 	b	.LBB5_7
 	.p2align	4, , 16
 .LBB5_5:                                #   in Loop: Header=BB5_7 Depth=1
 	srai.d	$a1, $a0, 6
 .LBB5_6:                                #   in Loop: Header=BB5_7 Depth=1
 	slli.d	$a2, $a1, 3
-	ldx.d	$s6, $s5, $a2
-	alsl.d	$s5, $a1, $s5, 3
-	addi.d	$s7, $s6, 512
+	ldx.d	$s4, $s3, $a2
+	alsl.d	$s3, $a1, $s3, 3
+	addi.d	$s5, $s4, 512
 	slli.d	$a1, $a1, 6
 	sub.d	$a0, $a0, $a1
-	alsl.d	$s1, $a0, $s6, 3
-	sub.d	$s0, $s0, $s8
-	alsl.d	$fp, $s8, $fp, 3
-	blez	$s0, .LBB5_15
+	alsl.d	$fp, $a0, $s4, 3
+	sub.d	$s1, $s1, $s8
+	alsl.d	$s0, $s8, $s0, 3
+	blez	$s1, .LBB5_15
 .LBB5_7:                                # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	sub.d	$a0, $s7, $s1
+	sub.d	$a0, $s5, $fp
 	srai.d	$a0, $a0, 3
-	slt	$a1, $a0, $s0
+	slt	$a1, $a0, $s1
 	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s0, $a1
+	masknez	$a1, $s1, $a1
 	or	$s8, $a0, $a1
 	blt	$s8, $s2, .LBB5_13
 # %bb.8:                                #   in Loop: Header=BB5_7 Depth=1
 	slli.d	$a2, $s8, 3
-	move	$a0, $s1
-	move	$a1, $fp
+	move	$a0, $fp
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 .LBB5_9:                                # %_ZSt14__copy_move_a1ILb0EPdS0_ET1_T0_S2_S1_.exit.i.i.i
                                         #   in Loop: Header=BB5_7 Depth=1
-	sub.d	$a0, $s1, $s6
+	sub.d	$a0, $fp, $s4
 	srai.d	$a0, $a0, 3
 	add.d	$a0, $s8, $a0
 	bltz	$a0, .LBB5_5
 # %bb.10:                               #   in Loop: Header=BB5_7 Depth=1
-	bltu	$s3, $a0, .LBB5_12
+	bltu	$s6, $a0, .LBB5_12
 # %bb.11:                               #   in Loop: Header=BB5_7 Depth=1
-	alsl.d	$s1, $s8, $s1, 3
-	sub.d	$s0, $s0, $s8
 	alsl.d	$fp, $s8, $fp, 3
-	bgtz	$s0, .LBB5_7
+	sub.d	$s1, $s1, $s8
+	alsl.d	$s0, $s8, $s0, 3
+	bgtz	$s1, .LBB5_7
 	b	.LBB5_15
 	.p2align	4, , 16
 .LBB5_12:                               #   in Loop: Header=BB5_7 Depth=1
 	srli.d	$a1, $a0, 6
 	b	.LBB5_6
 .LBB5_13:                               #   in Loop: Header=BB5_7 Depth=1
-	bne	$s8, $s4, .LBB5_9
+	bne	$s8, $s7, .LBB5_9
 # %bb.14:                               #   in Loop: Header=BB5_7 Depth=1
-	fld.d	$fa0, $fp, 0
-	fst.d	$fa0, $s1, 0
+	fld.d	$fa0, $s0, 0
+	fst.d	$fa0, $fp, 0
 	b	.LBB5_9
 .LBB5_15:                               # %_ZSt4copyIPdSt15_Deque_iteratorIdRdS0_EET0_T_S5_S4_.exit.loopexit
-	xvld	$xr0, $sp, 104
+	ld.d	$fp, $sp, 24
+	ld.d	$s4, $sp, 32
+	ld.d	$s5, $sp, 40
+	ld.d	$s3, $sp, 48
 .LBB5_16:                               # %_ZSt4copyIPdSt15_Deque_iteratorIdRdS0_EET0_T_S5_S4_.exit
-	xvld	$xr1, $sp, 136
-	xvpickve2gr.d	$a0, $xr0, 0
-	xvpickve2gr.d	$a1, $xr1, 0
-	beq	$a0, $a1, .LBB5_27
+	ld.d	$s1, $sp, 56
+	ld.d	$s0, $sp, 80
+	beq	$fp, $s1, .LBB5_34
 # %bb.17:
-	xvst	$xr0, $sp, 264
-	xvst	$xr1, $sp, 232
-	xvpickve2gr.d	$a2, $xr1, 3
-	xvpickve2gr.d	$a3, $xr0, 3
-	sub.d	$a3, $a2, $a3
-	srli.d	$a3, $a3, 3
-	sltu	$a2, $zero, $a2
-	sub.d	$a2, $a3, $a2
-	slli.d	$a2, $a2, 6
-	xvst	$xr1, $sp, 48                   # 32-byte Folded Spill
-	xvpickve2gr.d	$a3, $xr1, 1
-	sub.d	$a1, $a1, $a3
+	ld.d	$s2, $sp, 64
+	ld.d	$s6, $sp, 72
+	st.d	$fp, $sp, 184
+	st.d	$s4, $sp, 192
+	st.d	$s5, $sp, 200
+	st.d	$s3, $sp, 208
+	st.d	$s1, $sp, 152
+	st.d	$s2, $sp, 160
+	st.d	$s6, $sp, 168
+	st.d	$s0, $sp, 176
+	sub.d	$a0, $s0, $s3
+	srli.d	$a0, $a0, 3
+	sltu	$a1, $zero, $s0
+	sub.d	$a0, $a0, $a1
+	slli.d	$a0, $a0, 6
+	sub.d	$a1, $s1, $s2
 	srai.d	$a1, $a1, 3
-	xvpickve2gr.d	$a3, $xr0, 2
-	sub.d	$a0, $a3, $a0
-	srai.d	$a0, $a0, 3
+	sub.d	$a2, $s5, $fp
+	srai.d	$a2, $a2, 3
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	add.d	$a0, $a0, $a2
 	clz.d	$a0, $a0
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 126
 	sub.d	$a2, $a1, $a0
 .Ltmp15:                                # EH_LABEL
-	addi.d	$a0, $sp, 264
-	addi.d	$a1, $sp, 232
+	addi.d	$a0, $sp, 184
+	addi.d	$a1, $sp, 152
 	move	$a3, $zero
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZSt16__introsort_loopISt15_Deque_iteratorIdRdPdElN9__gnu_cxx5__ops15_Iter_less_iterEEvT_S7_T0_T1_)
 	jirl	$ra, $ra, 0
 .Ltmp16:                                # EH_LABEL
 # %bb.18:                               # %.noexc10
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $sp, 200
-	xvld	$xr0, $sp, 48                   # 32-byte Folded Reload
-	xvst	$xr0, $sp, 168
+	st.d	$fp, $sp, 120
+	st.d	$s4, $sp, 128
+	st.d	$s5, $sp, 136
+	st.d	$s3, $sp, 144
+	st.d	$s1, $sp, 88
+	st.d	$s2, $sp, 96
+	st.d	$s6, $sp, 104
+	st.d	$s0, $sp, 112
 .Ltmp17:                                # EH_LABEL
-	addi.d	$a0, $sp, 200
-	addi.d	$a1, $sp, 168
+	addi.d	$a0, $sp, 120
+	addi.d	$a1, $sp, 88
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZSt22__final_insertion_sortISt15_Deque_iteratorIdRdPdEN9__gnu_cxx5__ops15_Iter_less_iterEEvT_S7_T0_)
 	jirl	$ra, $ra, 0
 .Ltmp18:                                # EH_LABEL
 # %bb.19:
-	ld.d	$a6, $sp, 104
-	ld.d	$a1, $sp, 128
-	ld.d	$a0, $sp, 136
-	ld.d	$fp, $sp, 160
-	beq	$a6, $a0, .LBB5_28
+	ld.d	$a5, $sp, 24
+	ld.d	$s3, $sp, 48
+	ld.d	$a0, $sp, 56
+	ld.d	$s0, $sp, 80
+	beq	$a5, $a0, .LBB5_34
 # %bb.20:                               # %.preheader.i.i.preheader
-	ld.d	$a7, $sp, 120
-	move	$t0, $a1
+	ld.d	$a6, $sp, 40
+	move	$a7, $s3
 	.p2align	4, , 16
 .LBB5_21:                               # %.preheader.i.i
                                         # =>This Inner Loop Header: Depth=1
-	move	$a2, $a6
-	addi.d	$a4, $a6, 8
-	move	$a3, $t0
-	move	$a5, $a7
-	move	$a6, $a4
-	bne	$a4, $a7, .LBB5_23
+	move	$a1, $a5
+	addi.d	$a3, $a5, 8
+	move	$a2, $a7
+	move	$a4, $a6
+	move	$a5, $a3
+	bne	$a3, $a6, .LBB5_23
 # %bb.22:                               #   in Loop: Header=BB5_21 Depth=1
-	ld.d	$a6, $a3, 8
-	addi.d	$t0, $a3, 8
-	addi.d	$a7, $a6, 512
+	ld.d	$a5, $a2, 8
+	addi.d	$a7, $a2, 8
+	addi.d	$a6, $a5, 512
 .LBB5_23:                               # %_ZNSt15_Deque_iteratorIdRdPdEppEv.exit.i.i.i
                                         #   in Loop: Header=BB5_21 Depth=1
-	beq	$a6, $a0, .LBB5_28
+	beq	$a5, $a0, .LBB5_34
 # %bb.24:                               #   in Loop: Header=BB5_21 Depth=1
-	fld.d	$fa0, $a2, 0
-	fld.d	$fa1, $a6, 0
+	fld.d	$fa0, $a1, 0
+	fld.d	$fa1, $a5, 0
 	fcmp.cune.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB5_21
 # %bb.25:                               # %_ZSt15__adjacent_findISt15_Deque_iteratorIdRdPdEN9__gnu_cxx5__ops19_Iter_equal_to_iterEET_S7_S7_T0_.exit.i.i
-	move	$a6, $a3
-	move	$a7, $a5
-	bne	$a4, $a5, .LBB5_37
+	move	$a5, $a2
+	move	$a6, $a4
+	bne	$a3, $a4, .LBB5_29
 # %bb.26:
-	ld.d	$a4, $a3, 8
-	addi.d	$a6, $a3, 8
-	addi.d	$a7, $a4, 512
-	b	.LBB5_37
-.LBB5_27:                               # %.thread
-	xvpickve2gr.d	$a1, $xr0, 3
-	xvpickve2gr.d	$fp, $xr1, 3
-.LBB5_28:                               # %_ZSt6uniqueISt15_Deque_iteratorIdRdPdEET_S4_S4_.exit
-	ld.d	$a0, $sp, 88
-	beqz	$a0, .LBB5_34
-# %bb.29:
-	addi.d	$a2, $fp, 8
-	bgeu	$a1, $a2, .LBB5_33
-# %bb.30:                               # %.lr.ph.i.i.i17.preheader
-	addi.d	$a1, $a1, -8
+	ld.d	$a3, $a2, 8
+	addi.d	$a5, $a2, 8
+	addi.d	$a6, $a3, 512
+	b	.LBB5_29
+.LBB5_27:                               #   in Loop: Header=BB5_29 Depth=1
+	addi.d	$a1, $a1, 8
+	beq	$a1, $a4, .LBB5_33
+.LBB5_28:                               # %_ZNSt15_Deque_iteratorIdRdPdEppEv.exit2.i.i
+                                        #   in Loop: Header=BB5_29 Depth=1
+	fst.d	$fa1, $a1, 0
+	fmov.d	$fa0, $fa1
 	.p2align	4, , 16
-.LBB5_31:                               # %.lr.ph.i.i.i17
+.LBB5_29:                               # %_ZNSt15_Deque_iteratorIdRdPdEppEv.exit.i.i
+                                        # =>This Inner Loop Header: Depth=1
+	addi.d	$a3, $a3, 8
+	bne	$a3, $a6, .LBB5_31
+# %bb.30:                               #   in Loop: Header=BB5_29 Depth=1
+	ld.d	$a3, $a5, 8
+	addi.d	$a5, $a5, 8
+	addi.d	$a6, $a3, 512
+.LBB5_31:                               # %_ZNSt15_Deque_iteratorIdRdPdEppEv.exit1.i.i
+                                        #   in Loop: Header=BB5_29 Depth=1
+	beq	$a3, $a0, .LBB5_34
+# %bb.32:                               #   in Loop: Header=BB5_29 Depth=1
+	fld.d	$fa1, $a3, 0
+	fcmp.ceq.d	$fcc0, $fa0, $fa1
+	bcnez	$fcc0, .LBB5_29
+	b	.LBB5_27
+.LBB5_33:                               #   in Loop: Header=BB5_29 Depth=1
+	ld.d	$a1, $a2, 8
+	addi.d	$a2, $a2, 8
+	addi.d	$a4, $a1, 512
+	b	.LBB5_28
+.LBB5_34:                               # %_ZSt6uniqueISt15_Deque_iteratorIdRdPdEET_S4_S4_.exit
+	ld.d	$a0, $sp, 8
+	beqz	$a0, .LBB5_40
+# %bb.35:
+	addi.d	$a1, $s0, 8
+	bgeu	$s3, $a1, .LBB5_39
+# %bb.36:                               # %.lr.ph.i.i.i17.preheader
+	addi.d	$a1, $s3, -8
+	.p2align	4, , 16
+.LBB5_37:                               # %.lr.ph.i.i.i17
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $a1, 8
-	addi.d	$s0, $a1, 8
+	addi.d	$fp, $a1, 8
 	ori	$a1, $zero, 512
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	move	$a1, $s0
-	bltu	$s0, $fp, .LBB5_31
-# %bb.32:                               # %_ZNSt11_Deque_baseIdSaIdEE16_M_destroy_nodesEPPdS3_.exit.loopexit.i.i
-	ld.d	$a0, $sp, 88
-.LBB5_33:                               # %_ZNSt11_Deque_baseIdSaIdEE16_M_destroy_nodesEPPdS3_.exit.i.i
-	ld.d	$a1, $sp, 96
+	move	$a1, $fp
+	bltu	$fp, $s0, .LBB5_37
+# %bb.38:                               # %_ZNSt11_Deque_baseIdSaIdEE16_M_destroy_nodesEPPdS3_.exit.loopexit.i.i
+	ld.d	$a0, $sp, 8
+.LBB5_39:                               # %_ZNSt11_Deque_baseIdSaIdEE16_M_destroy_nodesEPPdS3_.exit.i.i
+	ld.d	$a1, $sp, 16
 	slli.d	$a1, $a1, 3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_34:                               # %_ZNSt5dequeIdSaIdEED2Ev.exit
-	ld.d	$s8, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 384
+.LBB5_40:                               # %_ZNSt5dequeIdSaIdEED2Ev.exit
+	ld.d	$s8, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 296                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 304
 	ret
-.LBB5_35:                               #   in Loop: Header=BB5_37 Depth=1
-	addi.d	$a2, $a2, 8
-	beq	$a2, $a5, .LBB5_41
-.LBB5_36:                               # %_ZNSt15_Deque_iteratorIdRdPdEppEv.exit2.i.i
-                                        #   in Loop: Header=BB5_37 Depth=1
-	fst.d	$fa1, $a2, 0
-	fmov.d	$fa0, $fa1
-	.p2align	4, , 16
-.LBB5_37:                               # %_ZNSt15_Deque_iteratorIdRdPdEppEv.exit.i.i
-                                        # =>This Inner Loop Header: Depth=1
-	addi.d	$a4, $a4, 8
-	bne	$a4, $a7, .LBB5_39
-# %bb.38:                               #   in Loop: Header=BB5_37 Depth=1
-	ld.d	$a4, $a6, 8
-	addi.d	$a6, $a6, 8
-	addi.d	$a7, $a4, 512
-.LBB5_39:                               # %_ZNSt15_Deque_iteratorIdRdPdEppEv.exit1.i.i
-                                        #   in Loop: Header=BB5_37 Depth=1
-	beq	$a4, $a0, .LBB5_28
-# %bb.40:                               #   in Loop: Header=BB5_37 Depth=1
-	fld.d	$fa1, $a4, 0
-	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	bcnez	$fcc0, .LBB5_37
-	b	.LBB5_35
-.LBB5_41:                               #   in Loop: Header=BB5_37 Depth=1
-	ld.d	$a2, $a3, 8
-	addi.d	$a3, $a3, 8
-	addi.d	$a5, $a2, 512
-	b	.LBB5_36
-.LBB5_42:
+.LBB5_41:
 .Ltmp20:                                # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp21:                                # EH_LABEL
-# %bb.43:                               # %.noexc
-.LBB5_44:
+# %bb.42:                               # %.noexc
+.LBB5_43:
 .Ltmp14:                                # EH_LABEL
 	move	$fp, $a0
-	addi.d	$a0, $sp, 88
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(_ZNSt11_Deque_baseIdSaIdEED2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB5_45:
+.LBB5_44:
 .Ltmp19:                                # EH_LABEL
 	move	$fp, $a0
-	addi.d	$a0, $sp, 88
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIdSaIdEED2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB5_46:
+.LBB5_45:
 .Ltmp22:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
@@ -4040,7 +4044,7 @@ _ZNSt5dequeIdSaIdEE18_M_fill_initializeERKd: # @_ZNSt5dequeIdSaIdEE18_M_fill_ini
 	fld.d	$fa0, $a1, 0
 	sub.d	$a1, $a0, $a4
 	addi.d	$a1, $a1, -8
-	ori	$a2, $zero, 56
+	ori	$a2, $zero, 24
 	bgeu	$a1, $a2, .LBB26_5
 # %bb.4:
 	move	$a1, $a4
@@ -4048,20 +4052,20 @@ _ZNSt5dequeIdSaIdEE18_M_fill_initializeERKd: # @_ZNSt5dequeIdSaIdEE18_M_fill_ini
 .LBB26_5:                               # %vector.ph
 	srli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 1
-	bstrpick.d	$a1, $a2, 61, 3
-	slli.d	$a3, $a1, 3
-	slli.d	$a1, $a1, 6
+	bstrpick.d	$a1, $a2, 61, 2
+	slli.d	$a3, $a1, 2
+	slli.d	$a1, $a1, 5
 	add.d	$a1, $a4, $a1
-	xvreplve0.d	$xr1, $xr0
-	addi.d	$a4, $a4, 32
+	vreplvei.d	$vr1, $vr0, 0
+	addi.d	$a4, $a4, 16
 	move	$a5, $a3
 	.p2align	4, , 16
 .LBB26_6:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr1, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 64
+	vst	$vr1, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB26_6
 # %bb.7:                                # %middle.block
 	beq	$a2, $a3, .LBB26_9
@@ -4406,18 +4410,24 @@ _ZSt16__introsort_loopISt15_Deque_iteratorIdRdPdElN9__gnu_cxx5__ops15_Iter_less_
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(_ZSt27__unguarded_partition_pivotISt15_Deque_iteratorIdRdPdEN9__gnu_cxx5__ops15_Iter_less_iterEET_S7_S7_T0_)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 144
-	xvld	$xr1, $fp, 0
-	xvst	$xr0, $sp, 48
-	xvst	$xr1, $sp, 16
+	vld	$vr0, $sp, 144
+	vld	$vr1, $sp, 160
+	vld	$vr2, $fp, 0
+	vld	$vr3, $fp, 16
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
+	vst	$vr2, $sp, 16
+	vst	$vr3, $sp, 32
 	addi.d	$a0, $sp, 48
 	addi.d	$a1, $sp, 16
 	move	$a2, $s1
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(_ZSt16__introsort_loopISt15_Deque_iteratorIdRdPdElN9__gnu_cxx5__ops15_Iter_less_iterEEvT_S7_T0_T1_)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 144
-	xvst	$xr0, $fp, 0
+	vld	$vr0, $sp, 160
+	vld	$vr1, $sp, 144
+	vst	$vr0, $fp, 16
+	vst	$vr1, $fp, 0
 	addi.d	$s1, $s1, -1
 	b	.LBB29_1
 .LBB29_4:
@@ -4686,66 +4696,76 @@ _ZSt14__partial_sortISt15_Deque_iteratorIdRdPdEN9__gnu_cxx5__ops15_Iter_less_ite
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
-	move	$fp, $a1
-	move	$s0, $a0
-	xvld	$xr0, $a0, 0
-	xvld	$xr1, $a1, 0
-	xvld	$xr2, $a2, 0
-	xvst	$xr0, $sp, 112
-	xvst	$xr1, $sp, 80
-	xvst	$xr2, $sp, 48
+	move	$fp, $a0
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 16
+	move	$s0, $a1
+	vst	$vr0, $sp, 112
+	vst	$vr1, $sp, 128
+	vld	$vr0, $a1, 0
+	vld	$vr1, $a1, 16
+	vld	$vr2, $a2, 0
+	vld	$vr3, $a2, 16
+	vst	$vr0, $sp, 80
+	vst	$vr1, $sp, 96
+	vst	$vr2, $sp, 48
+	vst	$vr3, $sp, 64
 	addi.d	$a0, $sp, 112
 	addi.d	$a1, $sp, 80
 	addi.d	$a2, $sp, 48
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(_ZSt13__heap_selectISt15_Deque_iteratorIdRdPdEN9__gnu_cxx5__ops15_Iter_less_iterEEvT_S7_S7_T0_)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s0, 0
-	ld.d	$s0, $s0, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$s1, $fp, 8
-	ld.d	$s3, $fp, 24
-	xvpickve2gr.d	$fp, $xr0, 3
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
-	xvpickve2gr.d	$a1, $xr0, 2
-	sub.d	$a1, $a1, $s0
-	srai.d	$s2, $a1, 3
-	sub.d	$a1, $s3, $fp
+	ld.d	$s1, $fp, 0
+	vld	$vr0, $fp, 16
+	ld.d	$a0, $s0, 0
+	ld.d	$s2, $s0, 8
+	ld.d	$s4, $s0, 24
+	vpickve2gr.d	$s0, $vr0, 1
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vpickve2gr.d	$a1, $vr0, 0
+	sub.d	$a1, $a1, $s1
+	srai.d	$s3, $a1, 3
+	sub.d	$a1, $s4, $s0
 	srai.d	$a1, $a1, 3
-	sltu	$a2, $zero, $s3
+	sltu	$a2, $zero, $s4
 	sub.d	$a2, $a1, $a2
 	slli.d	$a2, $a2, 6
-	sub.d	$a3, $a0, $s1
+	sub.d	$a3, $a0, $s2
 	srai.d	$a3, $a3, 3
-	add.d	$a3, $a3, $s2
+	add.d	$a3, $a3, $s3
 	add.d	$a2, $a3, $a2
 	ori	$a3, $zero, 2
 	blt	$a2, $a3, .LBB31_6
 # %bb.1:                                # %.lr.ph.preheader
-	ori	$s4, $zero, 1
+	vld	$vr0, $fp, 0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	ori	$fp, $zero, 1
 	b	.LBB31_4
 	.p2align	4, , 16
 .LBB31_2:                               #   in Loop: Header=BB31_4 Depth=1
-	ld.d	$s1, $s3, -8
-	addi.d	$s3, $s3, -8
-	sub.d	$a0, $s3, $fp
+	ld.d	$s2, $s4, -8
+	addi.d	$s4, $s4, -8
+	sub.d	$a0, $s4, $s0
 	srai.d	$s5, $a0, 3
-	addi.d	$a0, $s1, 512
+	addi.d	$a0, $s2, 512
 	move	$a1, $s5
 .LBB31_3:                               # %_ZNSt15_Deque_iteratorIdRdPdEmmEv.exit.i
                                         #   in Loop: Header=BB31_4 Depth=1
-	fld.d	$fa1, $s0, 0
+	fld.d	$fa1, $s1, 0
 	addi.d	$s6, $a0, -8
 	fld.d	$fa0, $a0, -8
 	fst.d	$fa1, $a0, -8
-	xvld	$xr1, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr1, $sp, 144
-	sltu	$s7, $zero, $s3
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr1, $sp, 144
+	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
+	vst	$vr1, $sp, 160
+	sltu	$s7, $zero, $s4
 	sub.d	$a0, $a1, $s7
 	slli.d	$a0, $a0, 6
-	sub.d	$a1, $s6, $s1
+	sub.d	$a1, $s6, $s2
 	srai.d	$a1, $a1, 3
-	add.d	$a0, $a0, $s2
+	add.d	$a0, $a0, $s3
 	add.d	$a2, $a0, $a1
 	addi.d	$a0, $sp, 144
 	move	$a1, $zero
@@ -4754,19 +4774,19 @@ _ZSt14__partial_sortISt15_Deque_iteratorIdRdPdEN9__gnu_cxx5__ops15_Iter_less_ite
 	jirl	$ra, $ra, 0
 	sub.d	$a0, $s5, $s7
 	slli.d	$a0, $a0, 6
-	sub.d	$a1, $s6, $s1
+	sub.d	$a1, $s6, $s2
 	srai.d	$a1, $a1, 3
-	add.d	$a1, $a1, $s2
+	add.d	$a1, $a1, $s3
 	add.d	$a2, $a1, $a0
 	move	$a1, $s5
 	move	$a0, $s6
-	bge	$s4, $a2, .LBB31_6
+	bge	$fp, $a2, .LBB31_6
 .LBB31_4:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	beq	$a0, $s1, .LBB31_2
+	beq	$a0, $s2, .LBB31_2
 # %bb.5:                                # %.lr.ph._ZNSt15_Deque_iteratorIdRdPdEmmEv.exit.i_crit_edge
                                         #   in Loop: Header=BB31_4 Depth=1
-	sub.d	$a2, $s3, $fp
+	sub.d	$a2, $s4, $s0
 	srai.d	$s5, $a2, 3
 	b	.LBB31_3
 .LBB31_6:                               # %_ZSt11__sort_heapISt15_Deque_iteratorIdRdPdEN9__gnu_cxx5__ops15_Iter_less_iterEEvT_S7_RT0_.exit
@@ -5076,11 +5096,12 @@ _ZSt13__heap_selectISt15_Deque_iteratorIdRdPdEN9__gnu_cxx5__ops15_Iter_less_iter
 	.cfi_offset 31, -88
 	move	$fp, $a1
 	move	$s0, $a0
-	xvld	$xr1, $a0, 0
+	vld	$vr1, $a0, 0
+	vld	$vr0, $a0, 16
 	ld.d	$s4, $a1, 24
 	ld.d	$s3, $a1, 0
 	ld.d	$a0, $a1, 8
-	xvpickve2gr.d	$s5, $xr1, 3
+	vpickve2gr.d	$s5, $vr0, 1
 	sub.d	$a1, $s4, $s5
 	srli.d	$a1, $a1, 3
 	sltu	$a3, $zero, $s4
@@ -5088,8 +5109,9 @@ _ZSt13__heap_selectISt15_Deque_iteratorIdRdPdEN9__gnu_cxx5__ops15_Iter_less_iter
 	slli.d	$a1, $a1, 6
 	sub.d	$a0, $s3, $a0
 	srai.d	$a3, $a0, 3
-	xvpickve2gr.d	$a4, $xr1, 2
-	xvpickve2gr.d	$a0, $xr1, 0
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vpickve2gr.d	$a4, $vr0, 0
+	vpickve2gr.d	$a0, $vr1, 0
 	sub.d	$a4, $a4, $a0
 	srai.d	$a4, $a4, 3
 	add.d	$a3, $a3, $a4
@@ -5100,13 +5122,13 @@ _ZSt13__heap_selectISt15_Deque_iteratorIdRdPdEN9__gnu_cxx5__ops15_Iter_less_iter
 # %bb.1:
 	addi.d	$a1, $s2, -2
 	srli.d	$s3, $a1, 1
-	xvpickve2gr.d	$a1, $xr1, 1
+	vpickve2gr.d	$a1, $vr1, 1
 	sub.d	$a1, $a0, $a1
 	srai.d	$s4, $a1, 3
 	alsl.d	$s6, $s3, $a0, 3
 	ori	$s7, $zero, 64
 	addi.w	$s8, $zero, -1
-	xvst	$xr1, $sp, 16                   # 32-byte Folded Spill
+	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB33_5
 	.p2align	4, , 16
 .LBB33_2:                               #   in Loop: Header=BB33_5 Depth=1
@@ -5120,14 +5142,16 @@ _ZSt13__heap_selectISt15_Deque_iteratorIdRdPdEN9__gnu_cxx5__ops15_Iter_less_iter
 .LBB33_4:                               # %_ZStplRKSt15_Deque_iteratorIdRdPdEl.exit.i
                                         #   in Loop: Header=BB33_5 Depth=1
 	fld.d	$fa0, $a1, 0
-	xvst	$xr1, $sp, 56
-	addi.d	$a0, $sp, 56
+	vst	$vr1, $sp, 48
+	vld	$vr2, $sp, 32                   # 16-byte Folded Reload
+	vst	$vr2, $sp, 64
+	addi.d	$a0, $sp, 48
 	move	$a1, $s3
 	move	$a2, $s2
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(_ZSt13__adjust_heapISt15_Deque_iteratorIdRdPdEldN9__gnu_cxx5__ops15_Iter_less_iterEEvT_T0_S8_T1_T2_)
 	jirl	$ra, $ra, 0
-	xvld	$xr1, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	addi.d	$s3, $s3, -1
 	addi.d	$s6, $s6, -8
 	beq	$s3, $s8, .LBB33_8
@@ -5186,10 +5210,10 @@ _ZSt13__heap_selectISt15_Deque_iteratorIdRdPdEN9__gnu_cxx5__ops15_Iter_less_iter
 	ld.d	$a4, $fp, 24
 	fst.d	$fa1, $s3, 0
 	vld	$vr1, $s0, 8
-	st.d	$a0, $sp, 56
+	st.d	$a0, $sp, 48
 	ld.d	$a5, $s0, 16
-	vst	$vr1, $sp, 64
-	st.d	$a1, $sp, 80
+	vst	$vr1, $sp, 56
+	st.d	$a1, $sp, 72
 	sub.d	$a1, $a4, $a1
 	srli.d	$a1, $a1, 3
 	sltu	$a4, $zero, $a4
@@ -5201,7 +5225,7 @@ _ZSt13__heap_selectISt15_Deque_iteratorIdRdPdEN9__gnu_cxx5__ops15_Iter_less_iter
 	srai.d	$a0, $a0, 3
 	add.d	$a0, $a2, $a0
 	add.d	$a2, $a0, $a1
-	addi.d	$a0, $sp, 56
+	addi.d	$a0, $sp, 48
 	move	$a1, $zero
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(_ZSt13__adjust_heapISt15_Deque_iteratorIdRdPdEldN9__gnu_cxx5__ops15_Iter_less_iterEEvT_T0_S8_T1_T2_)
@@ -5239,9 +5263,9 @@ _ZSt13__heap_selectISt15_Deque_iteratorIdRdPdEN9__gnu_cxx5__ops15_Iter_less_iter
 _ZSt13__adjust_heapISt15_Deque_iteratorIdRdPdEldN9__gnu_cxx5__ops15_Iter_less_iterEEvT_T0_S8_T1_T2_: # @_ZSt13__adjust_heapISt15_Deque_iteratorIdRdPdEldN9__gnu_cxx5__ops15_Iter_less_iterEEvT_T0_S8_T1_T2_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	addi.d	$a3, $a2, -1
 	srli.d	$a4, $a3, 63
@@ -5422,15 +5446,17 @@ _ZSt13__adjust_heapISt15_Deque_iteratorIdRdPdEldN9__gnu_cxx5__ops15_Iter_less_it
 .LBB34_38:                              # %_ZStplRKSt15_Deque_iteratorIdRdPdEl.exit31
 	fst.d	$fa1, $a2, 0
 .LBB34_39:
-	xvld	$xr1, $a0, 0
-	xvst	$xr1, $sp, 0
-	addi.d	$a0, $sp, 0
-	addi.d	$a3, $sp, 39
+	vld	$vr1, $a0, 0
+	vld	$vr2, $a0, 16
+	vst	$vr1, $sp, 16
+	vst	$vr2, $sp, 32
+	addi.d	$a0, $sp, 16
+	addi.d	$a3, $sp, 55
 	move	$a2, $a4
 	pcaddu18i	$ra, %call36(_ZSt11__push_heapISt15_Deque_iteratorIdRdPdEldN9__gnu_cxx5__ops14_Iter_less_valEEvT_T0_S8_T1_RT2_)
 	jirl	$ra, $ra, 0
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end34:
 	.size	_ZSt13__adjust_heapISt15_Deque_iteratorIdRdPdEldN9__gnu_cxx5__ops15_Iter_less_iterEEvT_T0_S8_T1_T2_, .Lfunc_end34-_ZSt13__adjust_heapISt15_Deque_iteratorIdRdPdEldN9__gnu_cxx5__ops15_Iter_less_iterEEvT_T0_S8_T1_T2_

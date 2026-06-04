@@ -9,7 +9,7 @@ Sum:                                    # @Sum
 	ld.w	$a2, $a0, 0
 	blez	$a2, .LBB0_3
 # %bb.1:                                # %.lr.ph.preheader
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB0_4
 # %bb.2:
 	move	$a3, $zero
@@ -20,44 +20,32 @@ Sum:                                    # @Sum
 	move	$a0, $a1
 	ret
 .LBB0_4:                                # %vector.ph
-	bstrpick.d	$a1, $a2, 30, 3
-	slli.d	$a3, $a1, 3
-	xvrepli.b	$xr0, 0
-	addi.d	$a1, $a0, 130
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a3, $a1, 2
+	vrepli.b	$vr0, 0
+	addi.d	$a1, $a0, 70
 	move	$a4, $a3
-	xvori.b	$xr1, $xr0, 0
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB0_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a5, $a1, -60
 	ld.d	$a6, $a1, -30
-	ld.d	$a7, $a1, -120
-	ld.d	$t0, $a1, -90
-	vinsgr2vr.d	$vr2, $a5, 0
-	vinsgr2vr.d	$vr2, $a6, 1
-	vinsgr2vr.d	$vr3, $a7, 0
-	vinsgr2vr.d	$vr3, $t0, 1
-	xvpermi.q	$xr3, $xr2, 2
-	ld.d	$a5, $a1, 60
-	ld.d	$a6, $a1, 90
 	ld.d	$a7, $a1, 0
 	ld.d	$t0, $a1, 30
 	vinsgr2vr.d	$vr2, $a5, 0
 	vinsgr2vr.d	$vr2, $a6, 1
-	vinsgr2vr.d	$vr4, $a7, 0
-	vinsgr2vr.d	$vr4, $t0, 1
-	xvpermi.q	$xr4, $xr2, 2
-	xvadd.d	$xr0, $xr3, $xr0
-	xvadd.d	$xr1, $xr4, $xr1
-	addi.d	$a4, $a4, -8
-	addi.d	$a1, $a1, 240
+	vinsgr2vr.d	$vr3, $a7, 0
+	vinsgr2vr.d	$vr3, $t0, 1
+	vadd.d	$vr0, $vr2, $vr0
+	vadd.d	$vr1, $vr3, $vr1
+	addi.d	$a4, $a4, -4
+	addi.d	$a1, $a1, 120
 	bnez	$a4, .LBB0_5
 # %bb.6:                                # %middle.block
-	xvadd.d	$xr0, $xr1, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a1, $xr0, 0
+	vadd.d	$vr0, $vr1, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a3, $a2, .LBB0_9
 .LBB0_7:                                # %.lr.ph.preheader10
 	ori	$a4, $zero, 30
@@ -88,7 +76,7 @@ Sum2:                                   # @Sum2
 	ld.w	$a2, $a0, 0
 	blez	$a2, .LBB1_3
 # %bb.1:                                # %.lr.ph.preheader
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB1_4
 # %bb.2:
 	move	$a3, $zero
@@ -99,44 +87,32 @@ Sum2:                                   # @Sum2
 	move	$a0, $a1
 	ret
 .LBB1_4:                                # %vector.ph
-	bstrpick.d	$a1, $a2, 30, 3
-	slli.d	$a3, $a1, 3
-	xvrepli.b	$xr0, 0
-	addi.d	$a1, $a0, 138
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a3, $a1, 2
+	vrepli.b	$vr0, 0
+	addi.d	$a1, $a0, 78
 	move	$a4, $a3
-	xvori.b	$xr1, $xr0, 0
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB1_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a5, $a1, -60
 	ld.d	$a6, $a1, -30
-	ld.d	$a7, $a1, -120
-	ld.d	$t0, $a1, -90
-	vinsgr2vr.d	$vr2, $a5, 0
-	vinsgr2vr.d	$vr2, $a6, 1
-	vinsgr2vr.d	$vr3, $a7, 0
-	vinsgr2vr.d	$vr3, $t0, 1
-	xvpermi.q	$xr3, $xr2, 2
-	ld.d	$a5, $a1, 60
-	ld.d	$a6, $a1, 90
 	ld.d	$a7, $a1, 0
 	ld.d	$t0, $a1, 30
 	vinsgr2vr.d	$vr2, $a5, 0
 	vinsgr2vr.d	$vr2, $a6, 1
-	vinsgr2vr.d	$vr4, $a7, 0
-	vinsgr2vr.d	$vr4, $t0, 1
-	xvpermi.q	$xr4, $xr2, 2
-	xvadd.d	$xr0, $xr3, $xr0
-	xvadd.d	$xr1, $xr4, $xr1
-	addi.d	$a4, $a4, -8
-	addi.d	$a1, $a1, 240
+	vinsgr2vr.d	$vr3, $a7, 0
+	vinsgr2vr.d	$vr3, $t0, 1
+	vadd.d	$vr0, $vr2, $vr0
+	vadd.d	$vr1, $vr3, $vr1
+	addi.d	$a4, $a4, -4
+	addi.d	$a1, $a1, 120
 	bnez	$a4, .LBB1_5
 # %bb.6:                                # %middle.block
-	xvadd.d	$xr0, $xr1, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a1, $xr0, 0
+	vadd.d	$vr0, $vr1, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a3, $a2, .LBB1_9
 .LBB1_7:                                # %.lr.ph.preheader10
 	ori	$a4, $zero, 30

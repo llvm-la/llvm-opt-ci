@@ -458,13 +458,13 @@ BuildWord:                              # @BuildWord
 	st.h	$zero, $sp, 56
 	ld.bu	$s5, $a0, 0
 	st.d	$zero, $sp, 48
-	vrepli.b	$vr4, 0
-	vst	$vr4, $sp, 32
+	vrepli.b	$vr6, 0
+	vst	$vr6, $sp, 32
 	pcalau12i	$a0, %pc_hi20(alPhrase)
 	addi.d	$s0, $a0, %pc_lo12(alPhrase)
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
 	beqz	$s5, .LBB6_7
 # %bb.1:                                # %.lr.ph
+	vst	$vr6, $sp, 16                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $a0, 0
@@ -503,65 +503,82 @@ BuildWord:                              # @BuildWord
 	b	.LBB6_2
 .LBB6_6:                                # %.preheader.loopexit
 	ld.d	$a0, $sp, 32
-	ld.d	$a1, $sp, 40
+	ld.w	$a1, $sp, 36
+	ld.d	$a2, $sp, 40
+	ld.w	$a3, $sp, 44
 	vinsgr2vr.d	$vr0, $a0, 0
-	ld.bu	$a0, $sp, 48
-	vinsgr2vr.d	$vr1, $a1, 0
-	vext2xv.wu.bu	$xr0, $xr0
-	vext2xv.wu.bu	$xr1, $xr1
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vinsgr2vr.w	$vr1, $a1, 0
+	vinsgr2vr.d	$vr4, $a2, 0
+	vinsgr2vr.w	$vr5, $a3, 0
+	ld.bu	$a1, $sp, 48
+	vrepli.b	$vr6, 0
+	vilvl.b	$vr0, $vr6, $vr0
+	vilvl.h	$vr3, $vr6, $vr0
+	vilvl.b	$vr0, $vr6, $vr1
+	vilvl.h	$vr2, $vr6, $vr0
+	vilvl.b	$vr0, $vr6, $vr4
+	vilvl.h	$vr0, $vr6, $vr0
+	vilvl.b	$vr1, $vr6, $vr5
+	vilvl.h	$vr1, $vr6, $vr1
+	vld	$vr6, $sp, 16                   # 16-byte Folded Reload
 	b	.LBB6_8
 .LBB6_7:
-	xvrepli.b	$xr0, 0
-	move	$a0, $zero
+	move	$a1, $zero
 	move	$s1, $zero
-	xvori.b	$xr1, $xr0, 0
+	vori.b	$vr3, $vr6, 0
+	vori.b	$vr2, $vr6, 0
+	vori.b	$vr0, $vr6, 0
+	vori.b	$vr1, $vr6, 0
 .LBB6_8:                                # %.preheader
-	pcalau12i	$a1, %pc_hi20(auGlobalFrequency)
-	addi.d	$a1, $a1, %pc_lo12(auGlobalFrequency)
-	xvld	$xr2, $a1, 0
-	xvld	$xr3, $a1, 32
-	xvadd.w	$xr0, $xr2, $xr0
-	xvst	$xr0, $a1, 0
-	xvadd.w	$xr0, $xr3, $xr1
-	xvst	$xr0, $a1, 32
+	pcalau12i	$a0, %pc_hi20(auGlobalFrequency)
+	addi.d	$a0, $a0, %pc_lo12(auGlobalFrequency)
+	vld	$vr4, $a0, 0
+	vld	$vr5, $a0, 16
+	vadd.w	$vr3, $vr4, $vr3
+	vst	$vr3, $a0, 0
+	vld	$vr3, $a0, 32
+	vadd.w	$vr2, $vr5, $vr2
+	vld	$vr4, $a0, 48
+	vst	$vr2, $a0, 16
+	vadd.w	$vr0, $vr3, $vr0
+	vst	$vr0, $a0, 32
+	vadd.w	$vr0, $vr4, $vr1
+	vst	$vr0, $a0, 48
 	ld.bu	$a2, $sp, 49
 	ld.bu	$a3, $sp, 50
 	ld.bu	$a4, $sp, 51
-	ld.bu	$a5, $sp, 52
-	ld.bu	$a6, $sp, 53
-	ld.bu	$a7, $sp, 54
-	ld.bu	$t0, $sp, 55
-	xvld	$xr0, $a1, 64
-	vinsgr2vr.w	$vr1, $a5, 0
-	vinsgr2vr.w	$vr1, $a6, 1
-	vinsgr2vr.w	$vr1, $a7, 2
-	vinsgr2vr.w	$vr1, $t0, 3
-	vinsgr2vr.w	$vr2, $a0, 0
-	vinsgr2vr.w	$vr2, $a2, 1
-	vinsgr2vr.w	$vr2, $a3, 2
-	vinsgr2vr.w	$vr2, $a4, 3
-	xvpermi.q	$xr2, $xr1, 2
-	xvadd.w	$xr0, $xr0, $xr2
-	xvst	$xr0, $a1, 64
-	ld.bu	$a2, $sp, 56
-	ld.w	$a3, $a1, 96
-	ld.bu	$a4, $sp, 57
-	ld.w	$a5, $a1, 100
+	vld	$vr0, $a0, 64
+	vinsgr2vr.w	$vr1, $a1, 0
+	vinsgr2vr.w	$vr1, $a2, 1
+	vinsgr2vr.w	$vr1, $a3, 2
+	ld.w	$a1, $sp, 52
+	vinsgr2vr.w	$vr1, $a4, 3
+	vadd.w	$vr0, $vr0, $vr1
+	vst	$vr0, $a0, 64
+	vinsgr2vr.w	$vr0, $a1, 0
+	ld.bu	$a1, $sp, 56
+	ld.w	$a2, $a0, 96
+	vilvl.b	$vr0, $vr6, $vr0
+	vilvl.h	$vr0, $vr6, $vr0
+	vld	$vr1, $a0, 80
+	add.d	$a1, $a2, $a1
+	st.w	$a1, $a0, 96
+	ld.bu	$a2, $sp, 57
+	ld.w	$a3, $a0, 100
 	pcalau12i	$s2, %pc_hi20(cpwCand)
-	ld.wu	$a0, $s2, %pc_lo12(cpwCand)
+	ld.wu	$a1, $s2, %pc_lo12(cpwCand)
+	vadd.w	$vr0, $vr1, $vr0
 	add.d	$a2, $a3, $a2
-	st.w	$a2, $a1, 96
-	add.d	$a2, $a5, $a4
-	srli.d	$a3, $a0, 3
-	ori	$a4, $zero, 624
-	st.w	$a2, $a1, 100
-	bltu	$a4, $a3, .LBB6_14
+	st.w	$a2, $a0, 100
+	srli.d	$a2, $a1, 3
+	ori	$a3, $zero, 624
+	vst	$vr0, $a0, 80
+	bltu	$a3, $a2, .LBB6_14
 # %bb.9:
-	addi.w	$a1, $a0, 0
-	addi.d	$a0, $a0, 1
-	st.w	$a0, $s2, %pc_lo12(cpwCand)
-	slli.d	$a0, $a1, 3
+	addi.w	$a0, $a1, 0
+	addi.d	$a1, $a1, 1
+	st.w	$a1, $s2, %pc_lo12(cpwCand)
+	slli.d	$a0, $a0, 3
 	pcalau12i	$a1, %pc_hi20(apwCand)
 	addi.d	$s3, $a1, %pc_lo12(apwCand)
 	ldx.d	$a0, $s3, $a0
@@ -577,9 +594,9 @@ BuildWord:                              # @BuildWord
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	stx.d	$a0, $s3, $a1
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
 .LBB6_12:                               # %NextWord.exit
-	vst	$vr4, $a0, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 0
 	ld.wu	$a1, $s0, 12
 	ld.bu	$a2, $sp, 32
 	ld.w	$a3, $s0, 4
@@ -1850,7 +1867,7 @@ cchPhraseLength:
 
 	.type	auGlobalFrequency,@object       # @auGlobalFrequency
 	.globl	auGlobalFrequency
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 auGlobalFrequency:
 	.space	104
 	.size	auGlobalFrequency, 104

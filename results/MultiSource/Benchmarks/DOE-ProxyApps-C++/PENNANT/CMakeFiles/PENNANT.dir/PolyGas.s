@@ -150,33 +150,33 @@ GCC_except_table0:
 	.type	_ZN7PolyGas15calcStateAtHalfEPKdS1_S1_S1_S1_S1_dPdS2_ii,@function
 _ZN7PolyGas15calcStateAtHalfEPKdS1_S1_S1_S1_S1_dPdS2_ii: # @_ZN7PolyGas15calcStateAtHalfEPKdS1_S1_S1_S1_S1_dPdS2_ii
 # %bb.0:
-	addi.d	$sp, $sp, -208
-	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 104                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 96                   # 8-byte Folded Spill
-	ld.d	$s8, $sp, 224
-	ld.d	$s0, $sp, 216
+	addi.d	$sp, $sp, -192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 88                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 80                   # 8-byte Folded Spill
+	ld.d	$s8, $sp, 208
+	ld.d	$s0, $sp, 200
 	move	$fp, $a7
 	fmov.d	$fs0, $fa0
-	st.d	$a6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 72                    # 8-byte Folded Spill
 	move	$s1, $a5
-	st.d	$a4, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
 	move	$s2, $a3
 	move	$s3, $a2
 	move	$s4, $a1
 	move	$s6, $a0
-	ld.d	$s7, $sp, 208
+	ld.d	$s7, $sp, 192
 	sub.d	$s5, $s8, $s0
 	addi.w	$a0, $s5, 0
 	slli.d	$a0, $a0, 3
@@ -185,9 +185,9 @@ _ZN7PolyGas15calcStateAtHalfEPKdS1_S1_S1_S1_S1_dPdS2_ii: # @_ZN7PolyGas15calcSta
 	bge	$s0, $s8, .LBB1_9
 # %bb.1:                                # %.lr.ph.preheader.i
 	move	$ra, $s0
-	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
 	vldi	$vr0, -928
 	fmul.d	$ft2, $fs0, $fa0
 	fld.d	$fa0, $s6, 8
@@ -201,7 +201,7 @@ _ZN7PolyGas15calcStateAtHalfEPKdS1_S1_S1_S1_S1_dPdS2_ii: # @_ZN7PolyGas15calcSta
 	fsel	$fs1, $fa0, $fa2, $fcc0
 	alsl.d	$s6, $s0, $s7, 3
 	alsl.d	$s8, $s0, $fp, 3
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	alsl.d	$s0, $s0, $a1, 3
 	alsl.d	$s1, $ra, $s4, 3
 	movgr2fr.d	$fs2, $zero
@@ -240,26 +240,26 @@ _ZN7PolyGas15calcStateAtHalfEPKdS1_S1_S1_S1_S1_dPdS2_ii: # @_ZN7PolyGas15calcSta
 	b	.LBB1_5
 .LBB1_4:                                # %call.sqrt
                                         #   in Loop: Header=BB1_2 Depth=1
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	xvst	$xr10, $sp, 16                  # 32-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	vst	$vr10, $sp, 16                  # 16-byte Folded Spill
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
-	xvld	$xr10, $sp, 16                  # 32-byte Folded Reload
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	vld	$vr10, $sp, 16                  # 16-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	fmov.d	$fa1, $fa0
 	b	.LBB1_3
 .LBB1_5:                                # %.lr.ph.preheader
-	ld.d	$t8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$t8, $sp, 40                    # 8-byte Folded Reload
 	sub.d	$a1, $t8, $ra
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 6
 	bgeu	$a1, $a2, .LBB1_10
 # %bb.6:
 	move	$a7, $ra
-	ld.d	$t5, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$t6, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$t7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$t6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$t7, $sp, 48                    # 8-byte Folded Reload
 .LBB1_7:                                # %.lr.ph.preheader89
 	slli.d	$a1, $a7, 3
 	slli.d	$a2, $ra, 3
@@ -305,34 +305,34 @@ _ZN7PolyGas15calcStateAtHalfEPKdS1_S1_S1_S1_S1_dPdS2_ii: # @_ZN7PolyGas15calcSta
 	addi.d	$a2, $a2, 8
 	bnez	$a3, .LBB1_8
 .LBB1_9:                                # %._crit_edge
-	fld.d	$fs2, $sp, 96                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 104                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 208
+	fld.d	$fs2, $sp, 80                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 88                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 96                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	pcaddu18i	$t8, %call36(free)
 	jr	$t8
 .LBB1_10:                               # %vector.memcheck
 	alsl.d	$a2, $ra, $fp, 3
 	alsl.d	$a7, $t8, $fp, 3
-	ld.d	$t5, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 72                    # 8-byte Folded Reload
 	alsl.d	$a3, $ra, $t5, 3
 	alsl.d	$a4, $t8, $t5, 3
 	sltu	$a4, $a2, $a4
 	sltu	$a5, $a3, $a7
 	and	$a4, $a4, $a5
-	ld.d	$t6, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$t7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$t7, $sp, 48                    # 8-byte Folded Reload
 	bnez	$a4, .LBB1_19
 # %bb.11:                               # %vector.memcheck
 	alsl.d	$a4, $ra, $s3, 3
@@ -372,49 +372,49 @@ _ZN7PolyGas15calcStateAtHalfEPKdS1_S1_S1_S1_S1_dPdS2_ii: # @_ZN7PolyGas15calcSta
 	bnez	$t2, .LBB1_7
 # %bb.16:                               # %vector.ph
 	move	$t2, $a1
-	bstrins.d	$t2, $zero, 1, 0
+	bstrins.d	$t2, $zero, 0, 0
 	add.d	$a7, $t2, $ra
-	xvreplve0.d	$xr0, $xr10
-	xvldi	$xr1, -912
-	xvldi	$xr2, -928
+	vreplvei.d	$vr0, $vr10, 0
+	vldi	$vr1, -912
+	vldi	$vr2, -928
 	move	$t3, $t2
 	move	$t4, $a0
 	.p2align	4, , 16
 .LBB1_17:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr3, $a3, 0
-	xvld	$xr4, $a4, 0
-	xvld	$xr5, $a5, 0
-	xvfrecip.d	$xr3, $xr3
-	xvld	$xr6, $a6, 0
-	xvld	$xr7, $t0, 0
-	xvfsub.d	$xr4, $xr4, $xr5
-	xvfmul.d	$xr4, $xr3, $xr4
-	xvld	$xr5, $t4, 0
-	xvfmul.d	$xr8, $xr6, $xr7
-	xvld	$xr9, $t1, 0
-	xvfmul.d	$xr7, $xr7, $xr8
-	xvfmul.d	$xr8, $xr5, $xr2
-	xvfmadd.d	$xr8, $xr8, $xr4, $xr1
-	xvfmul.d	$xr9, $xr0, $xr9
-	xvfmul.d	$xr3, $xr3, $xr9
-	xvfmul.d	$xr6, $xr6, $xr7
-	xvbitrevi.d	$xr4, $xr4, 63
-	xvld	$xr7, $a2, 0
-	xvfmul.d	$xr4, $xr6, $xr4
-	xvfmadd.d	$xr3, $xr5, $xr3, $xr4
-	xvfdiv.d	$xr3, $xr3, $xr8
-	xvfadd.d	$xr3, $xr7, $xr3
-	xvst	$xr3, $a2, 0
-	addi.d	$t4, $t4, 32
-	addi.d	$t3, $t3, -4
-	addi.d	$a2, $a2, 32
-	addi.d	$t1, $t1, 32
-	addi.d	$t0, $t0, 32
-	addi.d	$a6, $a6, 32
-	addi.d	$a5, $a5, 32
-	addi.d	$a4, $a4, 32
-	addi.d	$a3, $a3, 32
+	vld	$vr3, $a3, 0
+	vld	$vr4, $a4, 0
+	vld	$vr5, $a5, 0
+	vfrecip.d	$vr3, $vr3
+	vld	$vr6, $a6, 0
+	vld	$vr7, $t0, 0
+	vfsub.d	$vr4, $vr4, $vr5
+	vfmul.d	$vr4, $vr3, $vr4
+	vld	$vr5, $t4, 0
+	vfmul.d	$vr8, $vr6, $vr7
+	vld	$vr9, $t1, 0
+	vfmul.d	$vr7, $vr7, $vr8
+	vfmul.d	$vr8, $vr5, $vr2
+	vfmadd.d	$vr8, $vr8, $vr4, $vr1
+	vfmul.d	$vr9, $vr0, $vr9
+	vfmul.d	$vr3, $vr3, $vr9
+	vfmul.d	$vr6, $vr6, $vr7
+	vbitrevi.d	$vr4, $vr4, 63
+	vld	$vr7, $a2, 0
+	vfmul.d	$vr4, $vr6, $vr4
+	vfmadd.d	$vr3, $vr5, $vr3, $vr4
+	vfdiv.d	$vr3, $vr3, $vr8
+	vfadd.d	$vr3, $vr7, $vr3
+	vst	$vr3, $a2, 0
+	addi.d	$t4, $t4, 16
+	addi.d	$t3, $t3, -2
+	addi.d	$a2, $a2, 16
+	addi.d	$t1, $t1, 16
+	addi.d	$t0, $t0, 16
+	addi.d	$a6, $a6, 16
+	addi.d	$a5, $a5, 16
+	addi.d	$a4, $a4, 16
+	addi.d	$a3, $a3, 16
 	bnez	$t3, .LBB1_17
 # %bb.18:                               # %middle.block
 	bne	$a1, $t2, .LBB1_7

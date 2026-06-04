@@ -316,18 +316,18 @@ Fft:                                    # @Fft
 	maskeqz	$a6, $a0, $a6
 	or	$a6, $a6, $a7
 	sub.d	$a7, $a1, $a2
-	slti	$t0, $a0, 8
-	sltui	$a7, $a7, 64
+	slti	$t0, $a0, 4
+	sltui	$a7, $a7, 32
 	or	$a7, $t0, $a7
-	bstrpick.d	$t0, $a6, 30, 3
-	slli.d	$t0, $t0, 3
-	srli.d	$t2, $a6, 3
+	bstrpick.d	$t0, $a6, 30, 2
+	slli.d	$t0, $t0, 2
+	srli.d	$t2, $a6, 2
 	ori	$t1, $zero, 1
-	bstrins.d	$t1, $t2, 30, 3
+	bstrins.d	$t1, $t2, 30, 2
 	addi.d	$t2, $a2, 4
 	slli.d	$t3, $a4, 3
-	addi.d	$t4, $a1, 40
-	addi.d	$t5, $a2, 40
+	addi.d	$t4, $a1, 24
+	addi.d	$t5, $a2, 24
 	addi.d	$t6, $a6, 1
 	b	.LBB7_2
 	.p2align	4, , 16
@@ -420,13 +420,13 @@ Fft:                                    # @Fft
 .LBB7_8:                                # %vector.body
                                         #   Parent Loop BB7_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr1, $t8, -32
-	xvld	$xr2, $t8, 0
-	xvst	$xr1, $fp, -32
-	xvst	$xr2, $fp, 0
-	addi.d	$fp, $fp, 64
-	addi.d	$t7, $t7, -8
-	addi.d	$t8, $t8, 64
+	vld	$vr1, $t8, -16
+	vld	$vr2, $t8, 0
+	vst	$vr1, $fp, -16
+	vst	$vr2, $fp, 0
+	addi.d	$fp, $fp, 32
+	addi.d	$t7, $t7, -4
+	addi.d	$t8, $t8, 32
 	bnez	$t7, .LBB7_8
 # %bb.9:                                # %middle.block
                                         #   in Loop: Header=BB7_2 Depth=1

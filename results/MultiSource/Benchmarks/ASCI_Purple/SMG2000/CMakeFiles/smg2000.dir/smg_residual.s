@@ -419,17 +419,17 @@ hypre_SMGResidual:                      # @hypre_SMGResidual
 	sub.d	$a5, $s8, $a5
 	sub.d	$a7, $a7, $t3
 	sub.d	$t0, $t0, $t2
-	ori	$t1, $zero, 7
+	ori	$t1, $zero, 3
 	sltu	$t1, $t1, $a1
 	addi.d	$t2, $a0, -1
 	sltui	$t2, $t2, 1
 	and	$t1, $t1, $t2
-	bstrpick.d	$t2, $a1, 30, 3
-	slli.d	$t2, $t2, 3
+	bstrpick.d	$t2, $a1, 30, 2
+	slli.d	$t2, $t2, 2
 	alsl.d	$t3, $s5, $s3, 3
-	addi.d	$t4, $t3, 32
+	addi.d	$t4, $t3, 16
 	alsl.d	$t5, $s2, $s1, 3
-	addi.d	$t6, $t5, 32
+	addi.d	$t6, $t5, 16
 	slli.d	$t7, $a0, 3
 	b	.LBB2_24
 	.p2align	4, , 16
@@ -470,7 +470,7 @@ hypre_SMGResidual:                      # @hypre_SMGResidual
 	add.d	$s0, $s2, $s4
 	alsl.d	$s0, $s0, $s1, 3
 	sub.d	$fp, $fp, $s0
-	ori	$s0, $zero, 64
+	ori	$s0, $zero, 32
 	bgeu	$fp, $s0, .LBB2_32
 .LBB2_28:                               #   in Loop: Header=BB2_26 Depth=4
 	move	$s0, $zero
@@ -516,13 +516,13 @@ hypre_SMGResidual:                      # @hypre_SMGResidual
                                         #       Parent Loop BB2_24 Depth=3
                                         #         Parent Loop BB2_26 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	xvld	$xr0, $s4, -32
-	xvld	$xr1, $s4, 0
-	xvst	$xr0, $s0, -32
-	xvst	$xr1, $s0, 0
-	addi.d	$s7, $s7, -8
-	addi.d	$s0, $s0, 64
-	addi.d	$s4, $s4, 64
+	vld	$vr0, $s4, -16
+	vld	$vr1, $s4, 0
+	vst	$vr0, $s0, -16
+	vst	$vr1, $s0, 0
+	addi.d	$s7, $s7, -4
+	addi.d	$s0, $s0, 32
+	addi.d	$s4, $s4, 32
 	bnez	$s7, .LBB2_33
 # %bb.34:                               # %middle.block818
                                         #   in Loop: Header=BB2_26 Depth=4
@@ -913,17 +913,17 @@ hypre_SMGResidual:                      # @hypre_SMGResidual
 	alsl.d	$t8, $a1, $a5, 3
 	alsl.d	$a0, $a0, $t8, 3
 	addi.d	$fp, $a0, 8
-	ori	$a0, $zero, 7
+	ori	$a0, $zero, 3
 	sltu	$a0, $a0, $a3
 	addi.d	$a1, $a2, -1
 	sltui	$a1, $a1, 1
 	and	$s4, $a0, $a1
-	bstrpick.d	$a0, $a3, 30, 3
-	slli.d	$t4, $a0, 3
+	bstrpick.d	$a0, $a3, 30, 2
+	slli.d	$t4, $a0, 2
 	slli.d	$a0, $s0, 3
 	alsl.d	$a0, $s2, $a0, 3
 	add.d	$a1, $a5, $a0
-	addi.d	$a0, $a1, 32
+	addi.d	$a0, $a1, 16
 	slli.d	$s7, $a2, 3
 	b	.LBB2_71
 	.p2align	4, , 16
@@ -991,9 +991,9 @@ hypre_SMGResidual:                      # @hypre_SMGResidual
 	add.d	$a5, $t4, $s3
 	add.d	$s2, $t4, $t2
 	add.d	$s6, $t4, $t3
-	addi.d	$s5, $s1, 32
+	addi.d	$s5, $s1, 16
 	alsl.d	$s3, $s3, $s5, 3
-	addi.d	$s5, $t6, 32
+	addi.d	$s5, $t6, 16
 	alsl.d	$t3, $t3, $s5, 3
 	alsl.d	$t2, $t2, $a0, 3
 	move	$s8, $t4
@@ -1006,22 +1006,22 @@ hypre_SMGResidual:                      # @hypre_SMGResidual
                                         #           Parent Loop BB2_71 Depth=5
                                         #             Parent Loop BB2_73 Depth=6
                                         # =>            This Inner Loop Header: Depth=7
-	xvld	$xr0, $t3, -32
-	xvld	$xr1, $t3, 0
-	xvld	$xr2, $t2, -32
-	xvld	$xr3, $t2, 0
-	xvld	$xr4, $s3, -32
-	xvld	$xr5, $s3, 0
-	xvbitrevi.d	$xr0, $xr0, 63
-	xvbitrevi.d	$xr1, $xr1, 63
-	xvfmadd.d	$xr0, $xr0, $xr2, $xr4
-	xvfmadd.d	$xr1, $xr1, $xr3, $xr5
-	xvst	$xr0, $s3, -32
-	xvst	$xr1, $s3, 0
-	addi.d	$s8, $s8, -8
-	addi.d	$s3, $s3, 64
-	addi.d	$t3, $t3, 64
-	addi.d	$t2, $t2, 64
+	vld	$vr0, $t3, -16
+	vld	$vr1, $t3, 0
+	vld	$vr2, $t2, -16
+	vld	$vr3, $t2, 0
+	vld	$vr4, $s3, -16
+	vld	$vr5, $s3, 0
+	vbitrevi.d	$vr0, $vr0, 63
+	vbitrevi.d	$vr1, $vr1, 63
+	vfmadd.d	$vr0, $vr0, $vr2, $vr4
+	vfmadd.d	$vr1, $vr1, $vr3, $vr5
+	vst	$vr0, $s3, -16
+	vst	$vr1, $s3, 0
+	addi.d	$s8, $s8, -4
+	addi.d	$s3, $s3, 32
+	addi.d	$t3, $t3, 32
+	addi.d	$t2, $t2, 32
 	bnez	$s8, .LBB2_77
 # %bb.78:                               # %middle.block
                                         #   in Loop: Header=BB2_73 Depth=6

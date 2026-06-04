@@ -2647,9 +2647,11 @@ _GLOBAL__sub_I_perf_counters_test.cc:   # @_GLOBAL__sub_I_perf_counters_test.cc
 	st.d	$a1, $sp, 120
 	pcalau12i	$a2, %pc_hi20(.L.str.7)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.7)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.b	$a2, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.b	$a2, $a0, 32
 	st.d	$a1, $sp, 112
 	stx.b	$zero, $a0, $a1

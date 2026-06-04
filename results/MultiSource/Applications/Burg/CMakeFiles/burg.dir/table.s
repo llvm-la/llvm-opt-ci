@@ -130,7 +130,7 @@ newTable:                               # @newTable
 .LBB1_11:                               # %.preheader
 	blez	$a0, .LBB1_14
 # %bb.12:                               # %.lr.ph23
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 4
 	bgeu	$a0, $a1, .LBB1_15
 # %bb.13:
 	move	$a1, $zero
@@ -140,48 +140,34 @@ newTable:                               # @newTable
 	ori	$a0, $zero, 8
 	b	.LBB1_21
 .LBB1_15:                               # %vector.ph
-	bstrpick.d	$a1, $a0, 30, 3
-	slli.d	$a1, $a1, 3
+	bstrpick.d	$a1, $a0, 30, 2
+	slli.d	$a1, $a1, 2
 	vrepli.w	$vr0, 1
-	addi.d	$a2, $fp, 40
+	addi.d	$a2, $fp, 48
 	move	$a3, $a1
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB1_16:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a4, $a2, -16
-	ld.d	$a5, $a2, -8
-	ld.d	$a6, $a2, 0
-	ld.d	$a7, $a2, 8
-	ld.d	$t0, $a2, 16
-	ld.d	$t1, $a2, 24
-	ld.d	$t2, $a2, 32
-	ld.d	$t3, $a2, 40
+	ld.d	$a4, $a2, -24
+	ld.d	$a5, $a2, -16
+	ld.d	$a6, $a2, -8
+	ld.d	$a7, $a2, 0
 	ld.w	$a4, $a4, 32
 	ld.w	$a5, $a5, 32
 	ld.w	$a6, $a6, 32
 	ld.w	$a7, $a7, 32
 	vinsgr2vr.w	$vr2, $a4, 0
 	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
-	ld.w	$a4, $t0, 32
-	ld.w	$a5, $t1, 32
-	ld.w	$a6, $t2, 32
-	ld.w	$a7, $t3, 32
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
+	vinsgr2vr.w	$vr3, $a6, 0
+	vinsgr2vr.w	$vr3, $a7, 1
 	vmul.w	$vr0, $vr2, $vr0
 	vmul.w	$vr1, $vr3, $vr1
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB1_16
 # %bb.17:                               # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a2, $vr0, 0
@@ -914,10 +900,10 @@ addToTable:                             # @addToTable
 	sltu	$a5, $s2, $a5
 	sltu	$a6, $a0, $a6
 	and	$a5, $a5, $a6
-	bstrpick.d	$a6, $s3, 30, 3
-	slli.d	$a6, $a6, 3
-	bstrpick.d	$a7, $a3, 33, 6
-	slli.d	$a7, $a7, 6
+	bstrpick.d	$a6, $s3, 30, 2
+	slli.d	$a6, $a6, 2
+	bstrpick.d	$a7, $a3, 33, 5
+	slli.d	$a7, $a7, 5
 	move	$t0, $a0
 	move	$t1, $s2
 	b	.LBB2_78
@@ -933,7 +919,7 @@ addToTable:                             # @addToTable
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB2_81 Depth 3
                                         #       Child Loop BB2_84 Depth 3
-	sltui	$t2, $s3, 8
+	sltui	$t2, $s3, 4
 	or	$t2, $t2, $a5
 	andi	$t2, $t2, 1
 	beqz	$t2, .LBB2_80
@@ -949,13 +935,13 @@ addToTable:                             # @addToTable
                                         #   Parent Loop BB2_5 Depth=1
                                         #     Parent Loop BB2_78 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvldx	$xr0, $t0, $t2
+	vldx	$vr0, $t0, $t2
 	add.d	$t3, $t0, $t2
-	xvld	$xr1, $t3, 32
+	vld	$vr1, $t3, 16
 	add.d	$t3, $t1, $t2
-	xvstx	$xr0, $t1, $t2
-	addi.d	$t2, $t2, 64
-	xvst	$xr1, $t3, 32
+	vstx	$vr0, $t1, $t2
+	addi.d	$t2, $t2, 32
+	vst	$vr1, $t3, 16
 	bne	$a7, $t2, .LBB2_81
 # %bb.82:                               # %middle.block
                                         #   in Loop: Header=BB2_78 Depth=2

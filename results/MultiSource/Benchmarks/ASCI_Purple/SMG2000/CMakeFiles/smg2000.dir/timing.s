@@ -540,7 +540,7 @@ hypre_ClearTiming:                      # @hypre_ClearTiming
 	ret
 .LBB5_7:                                # %vector.memcheck
 	sub.d	$a6, $a2, $a1
-	ori	$a5, $zero, 64
+	ori	$a5, $zero, 32
 	move	$a4, $zero
 	bltu	$a6, $a5, .LBB5_4
 # %bb.8:                                # %vector.memcheck
@@ -548,29 +548,29 @@ hypre_ClearTiming:                      # @hypre_ClearTiming
 	bltu	$a6, $a5, .LBB5_4
 # %bb.9:                                # %vector.memcheck
 	sub.d	$a5, $a3, $a2
-	ori	$a6, $zero, 64
+	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB5_4
 # %bb.10:                               # %vector.ph
-	bstrpick.d	$a4, $a0, 30, 3
-	slli.d	$a4, $a4, 3
-	addi.d	$a5, $a3, 32
-	addi.d	$a6, $a2, 32
-	addi.d	$a7, $a1, 32
-	xvrepli.b	$xr0, 0
+	bstrpick.d	$a4, $a0, 30, 2
+	slli.d	$a4, $a4, 2
+	addi.d	$a5, $a3, 16
+	addi.d	$a6, $a2, 16
+	addi.d	$a7, $a1, 16
+	vrepli.b	$vr0, 0
 	move	$t0, $a4
 	.p2align	4, , 16
 .LBB5_11:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a7, -32
-	xvst	$xr0, $a7, 0
-	xvst	$xr0, $a6, -32
-	xvst	$xr0, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr0, $a5, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	addi.d	$a7, $a7, 64
+	vst	$vr0, $a7, -16
+	vst	$vr0, $a7, 0
+	vst	$vr0, $a6, -16
+	vst	$vr0, $a6, 0
+	vst	$vr0, $a5, -16
+	vst	$vr0, $a5, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	addi.d	$a7, $a7, 32
 	bnez	$t0, .LBB5_11
 # %bb.12:                               # %middle.block
 	bne	$a4, $a0, .LBB5_4

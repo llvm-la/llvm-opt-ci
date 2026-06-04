@@ -235,7 +235,7 @@ Xzs_GetNumBlocks:                       # @Xzs_GetNumBlocks
 	beqz	$a1, .LBB6_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a2, $a0, 16
-	ori	$a0, $zero, 8
+	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB6_4
 # %bb.2:
 	move	$a3, $zero
@@ -246,43 +246,31 @@ Xzs_GetNumBlocks:                       # @Xzs_GetNumBlocks
 	ret
 .LBB6_4:                                # %vector.ph
 	move	$a3, $a1
-	bstrins.d	$a3, $zero, 2, 0
-	xvrepli.b	$xr0, 0
-	addi.d	$a0, $a2, 168
+	bstrins.d	$a3, $zero, 1, 0
+	vrepli.b	$vr0, 0
+	addi.d	$a0, $a2, 88
 	move	$a4, $a3
-	xvori.b	$xr1, $xr0, 0
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB6_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a5, $a0, -80
 	ld.d	$a6, $a0, -40
-	ld.d	$a7, $a0, -160
-	ld.d	$t0, $a0, -120
-	vinsgr2vr.d	$vr2, $a5, 0
-	vinsgr2vr.d	$vr2, $a6, 1
-	vinsgr2vr.d	$vr3, $a7, 0
-	vinsgr2vr.d	$vr3, $t0, 1
-	xvpermi.q	$xr3, $xr2, 2
-	ld.d	$a5, $a0, 80
-	ld.d	$a6, $a0, 120
 	ld.d	$a7, $a0, 0
 	ld.d	$t0, $a0, 40
 	vinsgr2vr.d	$vr2, $a5, 0
 	vinsgr2vr.d	$vr2, $a6, 1
-	vinsgr2vr.d	$vr4, $a7, 0
-	vinsgr2vr.d	$vr4, $t0, 1
-	xvpermi.q	$xr4, $xr2, 2
-	xvadd.d	$xr0, $xr3, $xr0
-	xvadd.d	$xr1, $xr4, $xr1
-	addi.d	$a4, $a4, -8
-	addi.d	$a0, $a0, 320
+	vinsgr2vr.d	$vr3, $a7, 0
+	vinsgr2vr.d	$vr3, $t0, 1
+	vadd.d	$vr0, $vr2, $vr0
+	vadd.d	$vr1, $vr3, $vr1
+	addi.d	$a4, $a4, -4
+	addi.d	$a0, $a0, 160
 	bnez	$a4, .LBB6_5
 # %bb.6:                                # %middle.block
-	xvadd.d	$xr0, $xr1, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a0, $xr0, 0
+	vadd.d	$vr0, $vr1, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$a1, $a3, .LBB6_9
 .LBB6_7:                                # %scalar.ph.preheader
 	sub.d	$a1, $a1, $a3
@@ -702,14 +690,16 @@ Xzs_ReadBackward:                       # @Xzs_ReadBackward
 	ld.d	$s5, $s3, 16
 .LBB8_41:                               #   in Loop: Header=BB8_5 Depth=1
 	addi.d	$a1, $a0, 1
-	xvld	$xr0, $sp, 48
+	vld	$vr0, $sp, 48
 	st.d	$a1, $s3, 0
 	slli.d	$a1, $a0, 5
 	alsl.d	$a0, $a0, $a1, 3
-	xvstx	$xr0, $s5, $a0
+	vstx	$vr0, $s5, $a0
 	ld.d	$a1, $sp, 80
 	add.d	$a0, $s5, $a0
 	st.d	$a1, $a0, 32
+	vld	$vr0, $sp, 64
+	vst	$vr0, $a0, 16
 	ld.d	$a0, $s2, 0
 	beqz	$a0, .LBB8_51
 # %bb.42:                               #   in Loop: Header=BB8_5 Depth=1

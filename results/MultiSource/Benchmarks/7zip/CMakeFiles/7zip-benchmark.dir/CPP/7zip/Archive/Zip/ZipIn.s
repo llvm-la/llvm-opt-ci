@@ -1160,7 +1160,7 @@ _ZN8NArchive4NZip10CInArchive12ReadFileNameEjR11CStringBaseIcE: # @_ZN8NArchive4
 	.cfi_offset 27, -56
 	move	$fp, $a2
 	move	$s0, $a1
-	beqz	$a1, .LBB15_9
+	beqz	$a1, .LBB15_12
 # %bb.1:                                # %.split
 	ld.w	$s4, $fp, 12
 	blt	$s0, $s4, .LBB15_27
@@ -1177,30 +1177,48 @@ _ZN8NArchive4NZip10CInArchive12ReadFileNameEjR11CStringBaseIcE: # @_ZN8NArchive4
 # %bb.4:                                # %.preheader.i.i
 	ld.w	$a1, $fp, 8
 	ld.d	$a0, $fp, 0
-	blez	$a1, .LBB15_15
+	blez	$a1, .LBB15_18
 # %bb.5:                                # %iter.check
 	ori	$a3, $zero, 16
 	move	$a2, $zero
 	bltu	$a1, $a3, .LBB15_23
 # %bb.6:                                # %iter.check
 	sub.d	$a4, $s2, $a0
-	ori	$a3, $zero, 64
+	ori	$a3, $zero, 32
 	bltu	$a4, $a3, .LBB15_23
 # %bb.7:                                # %vector.main.loop.iter.check
-	bgeu	$a1, $a3, .LBB15_16
+	bgeu	$a1, $a3, .LBB15_19
 # %bb.8:
 	move	$a2, $zero
-	b	.LBB15_20
-.LBB15_9:                               # %.split10
+.LBB15_9:                               # %vec.epilog.ph
+	move	$a5, $a2
+	bstrpick.d	$a2, $a1, 30, 4
+	slli.d	$a2, $a2, 4
+	sub.d	$a3, $a5, $a2
+	add.d	$a4, $s2, $a5
+	add.d	$a5, $a0, $a5
+	.p2align	4, , 16
+.LBB15_10:                              # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a5, 0
+	vst	$vr0, $a4, 0
+	addi.d	$a3, $a3, 16
+	addi.d	$a4, $a4, 16
+	addi.d	$a5, $a5, 16
+	bnez	$a3, .LBB15_10
+# %bb.11:                               # %vec.epilog.middle.block
+	bne	$a2, $a1, .LBB15_23
+	b	.LBB15_25
+.LBB15_12:                              # %.split10
 	ld.d	$a1, $fp, 0
 	st.w	$zero, $fp, 8
 	st.b	$zero, $a1, 0
 	ld.w	$a1, $fp, 12
-	blez	$a1, .LBB15_11
-# %bb.10:                               # %.split10._ZN11CStringBaseIcE9GetBufferEi.exit21_crit_edge
+	blez	$a1, .LBB15_14
+# %bb.13:                               # %.split10._ZN11CStringBaseIcE9GetBufferEi.exit21_crit_edge
 	ld.d	$s1, $fp, 0
-	b	.LBB15_12
-.LBB15_11:
+	b	.LBB15_15
+.LBB15_14:
 	move	$s2, $a0
 	ori	$a0, $zero, 1
 	ori	$s3, $zero, 1
@@ -1212,17 +1230,17 @@ _ZN8NArchive4NZip10CInArchive12ReadFileNameEjR11CStringBaseIcE: # @_ZN8NArchive4
 	st.d	$s1, $fp, 0
 	stx.b	$zero, $s1, $a1
 	st.w	$s3, $fp, 12
-.LBB15_12:                              # %_ZN11CStringBaseIcE9GetBufferEi.exit21
+.LBB15_15:                              # %_ZN11CStringBaseIcE9GetBufferEi.exit21
 	addi.d	$a3, $sp, 20
 	move	$a1, $s1
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZN8NArchive4NZip10CInArchive9ReadBytesEPvjPj)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB15_30
-# %bb.13:                               # %_ZN8NArchive4NZip10CInArchive20ReadBytesAndTestSizeEPvj.exit.i23
+# %bb.16:                               # %_ZN8NArchive4NZip10CInArchive20ReadBytesAndTestSizeEPvj.exit.i23
 	ld.w	$a0, $sp, 20
 	beqz	$a0, .LBB15_29
-.LBB15_14:
+.LBB15_17:
 	ori	$a0, $zero, 4
 	pcaddu18i	$ra, %call36(__cxa_allocate_exception)
 	jirl	$ra, $ra, 0
@@ -1232,49 +1250,31 @@ _ZN8NArchive4NZip10CInArchive12ReadFileNameEjR11CStringBaseIcE: # @_ZN8NArchive4
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(__cxa_throw)
 	jirl	$ra, $ra, 0
-.LBB15_15:                              # %._crit_edge.i.i
+.LBB15_18:                              # %._crit_edge.i.i
 	bnez	$a0, .LBB15_25
 	b	.LBB15_26
-.LBB15_16:                              # %vector.ph
-	andi	$a3, $a1, 48
-	bstrpick.d	$a2, $a1, 30, 6
-	slli.d	$a2, $a2, 6
-	addi.d	$a4, $s2, 32
-	addi.d	$a5, $a0, 32
+.LBB15_19:                              # %vector.ph
+	andi	$a3, $a1, 16
+	bstrpick.d	$a2, $a1, 30, 5
+	slli.d	$a2, $a2, 5
+	addi.d	$a4, $s2, 16
+	addi.d	$a5, $a0, 16
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB15_17:                              # %vector.body
+.LBB15_20:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a6, $a6, -64
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB15_17
-# %bb.18:                               # %middle.block
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a6, $a6, -32
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB15_20
+# %bb.21:                               # %middle.block
 	beq	$a2, $a1, .LBB15_25
-# %bb.19:                               # %vec.epilog.iter.check
-	beqz	$a3, .LBB15_23
-.LBB15_20:                              # %vec.epilog.ph
-	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	sub.d	$a3, $a5, $a2
-	add.d	$a4, $s2, $a5
-	add.d	$a5, $a0, $a5
-	.p2align	4, , 16
-.LBB15_21:                              # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a5, 0
-	vst	$vr0, $a4, 0
-	addi.d	$a3, $a3, 16
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB15_21
-# %bb.22:                               # %vec.epilog.middle.block
-	beq	$a2, $a1, .LBB15_25
+# %bb.22:                               # %vec.epilog.iter.check
+	bnez	$a3, .LBB15_9
 .LBB15_23:                              # %vec.epilog.scalar.ph.preheader
 	sub.d	$a1, $a1, $a2
 	add.d	$a3, $s2, $a2
@@ -1307,7 +1307,7 @@ _ZN8NArchive4NZip10CInArchive12ReadFileNameEjR11CStringBaseIcE: # @_ZN8NArchive4
 	bnez	$a0, .LBB15_30
 # %bb.28:                               # %_ZN8NArchive4NZip10CInArchive20ReadBytesAndTestSizeEPvj.exit.i
 	ld.w	$a0, $sp, 16
-	bne	$a0, $s0, .LBB15_14
+	bne	$a0, $s0, .LBB15_17
 .LBB15_29:                              # %_ZN8NArchive4NZip10CInArchive13SafeReadBytesEPvj.exit
 	bstrpick.d	$a0, $s0, 31, 0
 	stx.b	$zero, $s1, $a0
@@ -3069,107 +3069,124 @@ _ZN8NArchive4NZip10CInArchive10ReadCdItemERNS0_7CItemExE: # @_ZN8NArchive4NZip10
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function _ZN8NArchive4NZip10CInArchive8TryEcd64EyRNS0_7CCdInfoE
 .LCPI23_0:
-	.byte	1                               # 0x1
-	.byte	9                               # 0x9
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	20                              # 0x14
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	8                               # 0x8
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	28                              # 0x1c
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
 .LCPI23_1:
-	.byte	2                               # 0x2
-	.byte	10                              # 0xa
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
+	.byte	1                               # 0x1
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	20                              # 0x14
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	9                               # 0x9
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	28                              # 0x1c
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
 .LCPI23_2:
-	.byte	3                               # 0x3
-	.byte	11                              # 0xb
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
+	.byte	2                               # 0x2
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	20                              # 0x14
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	10                              # 0xa
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	28                              # 0x1c
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
 .LCPI23_3:
-	.byte	4                               # 0x4
-	.byte	12                              # 0xc
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
+	.byte	3                               # 0x3
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	20                              # 0x14
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	11                              # 0xb
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	28                              # 0x1c
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
 .LCPI23_4:
-	.byte	5                               # 0x5
-	.byte	13                              # 0xd
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
+	.byte	4                               # 0x4
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	20                              # 0x14
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	12                              # 0xc
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	28                              # 0x1c
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
 .LCPI23_5:
+	.byte	5                               # 0x5
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	20                              # 0x14
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	13                              # 0xd
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	28                              # 0x1c
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
+.LCPI23_6:
 	.byte	6                               # 0x6
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	20                              # 0x14
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
 	.byte	14                              # 0xe
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	28                              # 0x1c
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
 	.text
 	.globl	_ZN8NArchive4NZip10CInArchive8TryEcd64EyRNS0_7CCdInfoE
 	.p2align	2
@@ -3231,36 +3248,31 @@ _ZN8NArchive4NZip10CInArchive8TryEcd64EyRNS0_7CCdInfoE: # @_ZN8NArchive4NZip10CI
 	vld	$vr5, $a1, %pc_lo12(.LCPI23_4)
 	pcalau12i	$a1, %pc_hi20(.LCPI23_5)
 	vld	$vr6, $a1, %pc_lo12(.LCPI23_5)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
-	vshuf.b	$vr2, $vr0, $vr0, $vr2
-	vshuf.b	$vr3, $vr0, $vr0, $vr3
-	vshuf.b	$vr4, $vr0, $vr0, $vr4
-	vshuf.b	$vr5, $vr0, $vr0, $vr5
-	vshuf.b	$vr6, $vr0, $vr0, $vr6
-	vsrli.d	$vr7, $vr0, 56
-                                        # kill: def $vr0 killed $vr0 def $xr0
-	vextrins.b	$vr0, $vr0, 24
-	vext2xv.du.bu	$xr0, $xr0
-	vext2xv.du.bu	$xr1, $xr1
-	vslli.d	$vr1, $vr1, 8
-	vext2xv.du.bu	$xr2, $xr2
-	vslli.d	$vr2, $vr2, 16
-	vext2xv.du.bu	$xr3, $xr3
-	vslli.d	$vr3, $vr3, 24
-	vext2xv.du.bu	$xr4, $xr4
-	vext2xv.du.bu	$xr5, $xr5
-	vext2xv.du.bu	$xr6, $xr6
-	vslli.d	$vr7, $vr7, 56
-	vslli.d	$vr6, $vr6, 48
-	vslli.d	$vr5, $vr5, 40
-	vslli.d	$vr4, $vr4, 32
+	pcalau12i	$a1, %pc_hi20(.LCPI23_6)
+	vld	$vr7, $a1, %pc_lo12(.LCPI23_6)
+	vrepli.b	$vr8, 0
+	vshuf.b	$vr1, $vr8, $vr0, $vr1
+	vshuf.b	$vr2, $vr8, $vr0, $vr2
+	vslli.d	$vr2, $vr2, 8
+	vshuf.b	$vr3, $vr8, $vr0, $vr3
+	vslli.d	$vr3, $vr3, 16
+	vshuf.b	$vr4, $vr8, $vr0, $vr4
+	vslli.d	$vr4, $vr4, 24
+	vshuf.b	$vr5, $vr8, $vr0, $vr5
+	vshuf.b	$vr6, $vr8, $vr0, $vr6
+	vshuf.b	$vr7, $vr8, $vr0, $vr7
+	vsrli.d	$vr0, $vr0, 56
+	vslli.d	$vr0, $vr0, 56
+	vslli.d	$vr7, $vr7, 48
+	vslli.d	$vr6, $vr6, 40
+	vslli.d	$vr5, $vr5, 32
+	vor.v	$vr1, $vr2, $vr1
+	vor.v	$vr1, $vr1, $vr3
+	vor.v	$vr1, $vr1, $vr4
+	vor.v	$vr1, $vr1, $vr5
+	vor.v	$vr1, $vr1, $vr6
+	vor.v	$vr1, $vr1, $vr7
 	vor.v	$vr0, $vr1, $vr0
-	vor.v	$vr0, $vr0, $vr2
-	vor.v	$vr0, $vr0, $vr3
-	vor.v	$vr0, $vr0, $vr4
-	vor.v	$vr0, $vr0, $vr5
-	vor.v	$vr0, $vr0, $vr6
-	vor.v	$vr0, $vr0, $vr7
 	vst	$vr0, $fp, 0
 .LBB23_5:
 	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
@@ -4322,8 +4334,8 @@ _ZN8NArchive4NZip10CInArchive15ReadLocalsAndCdER13CObjectVectorINS0_7CItemExEEPN
 .LBB28_27:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB28_36 Depth 2
                                         #     Child Loop BB28_43 Depth 2
-                                        #     Child Loop BB28_74 Depth 2
-                                        #     Child Loop BB28_78 Depth 2
+                                        #     Child Loop BB28_77 Depth 2
+                                        #     Child Loop BB28_73 Depth 2
                                         #     Child Loop BB28_81 Depth 2
                                         #     Child Loop BB28_85 Depth 2
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -4602,7 +4614,7 @@ _ZN8NArchive4NZip10CInArchive15ReadLocalsAndCdER13CObjectVectorINS0_7CItemExEEPN
 # %bb.67:                               # %.preheader.i.i
                                         #   in Loop: Header=BB28_27 Depth=1
 	ld.d	$a0, $s6, 32
-	blez	$a1, .LBB28_72
+	blez	$a1, .LBB28_75
 # %bb.68:                               # %iter.check
                                         #   in Loop: Header=BB28_27 Depth=1
 	move	$a2, $zero
@@ -4611,45 +4623,15 @@ _ZN8NArchive4NZip10CInArchive15ReadLocalsAndCdER13CObjectVectorINS0_7CItemExEEPN
 # %bb.69:                               # %iter.check
                                         #   in Loop: Header=BB28_27 Depth=1
 	sub.d	$a3, $s5, $a0
-	ori	$a4, $zero, 64
+	ori	$a4, $zero, 32
 	bltu	$a3, $a4, .LBB28_80
 # %bb.70:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB28_27 Depth=1
-	ori	$a2, $zero, 64
-	bgeu	$a1, $a2, .LBB28_73
+	ori	$a2, $zero, 32
+	bgeu	$a1, $a2, .LBB28_76
 # %bb.71:                               #   in Loop: Header=BB28_27 Depth=1
 	move	$a2, $zero
-	b	.LBB28_77
-.LBB28_72:                              # %._crit_edge.i.i
-                                        #   in Loop: Header=BB28_27 Depth=1
-	bnez	$a0, .LBB28_82
-	b	.LBB28_83
-.LBB28_73:                              # %vector.ph
-                                        #   in Loop: Header=BB28_27 Depth=1
-	andi	$a3, $a1, 48
-	bstrpick.d	$a2, $a1, 30, 6
-	slli.d	$a2, $a2, 6
-	addi.d	$a4, $s5, 32
-	addi.d	$a5, $a0, 32
-	move	$a6, $a2
-.LBB28_74:                              # %vector.body
-                                        #   Parent Loop BB28_27 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a6, $a6, -64
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB28_74
-# %bb.75:                               # %middle.block
-                                        #   in Loop: Header=BB28_27 Depth=1
-	beq	$a2, $a1, .LBB28_82
-# %bb.76:                               # %vec.epilog.iter.check
-                                        #   in Loop: Header=BB28_27 Depth=1
-	beqz	$a3, .LBB28_80
-.LBB28_77:                              # %vec.epilog.ph
+.LBB28_72:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB28_27 Depth=1
 	move	$a5, $a2
 	bstrpick.d	$a2, $a1, 30, 4
@@ -4657,7 +4639,7 @@ _ZN8NArchive4NZip10CInArchive15ReadLocalsAndCdER13CObjectVectorINS0_7CItemExEEPN
 	sub.d	$a3, $a5, $a2
 	add.d	$a4, $s5, $a5
 	add.d	$a5, $a0, $a5
-.LBB28_78:                              # %vec.epilog.vector.body
+.LBB28_73:                              # %vec.epilog.vector.body
                                         #   Parent Loop BB28_27 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a5, 0
@@ -4665,10 +4647,40 @@ _ZN8NArchive4NZip10CInArchive15ReadLocalsAndCdER13CObjectVectorINS0_7CItemExEEPN
 	addi.d	$a3, $a3, 16
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB28_78
-# %bb.79:                               # %vec.epilog.middle.block
+	bnez	$a3, .LBB28_73
+# %bb.74:                               # %vec.epilog.middle.block
+                                        #   in Loop: Header=BB28_27 Depth=1
+	bne	$a2, $a1, .LBB28_80
+	b	.LBB28_82
+.LBB28_75:                              # %._crit_edge.i.i
+                                        #   in Loop: Header=BB28_27 Depth=1
+	bnez	$a0, .LBB28_82
+	b	.LBB28_83
+.LBB28_76:                              # %vector.ph
+                                        #   in Loop: Header=BB28_27 Depth=1
+	andi	$a3, $a1, 16
+	bstrpick.d	$a2, $a1, 30, 5
+	slli.d	$a2, $a2, 5
+	addi.d	$a4, $s5, 16
+	addi.d	$a5, $a0, 16
+	move	$a6, $a2
+.LBB28_77:                              # %vector.body
+                                        #   Parent Loop BB28_27 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a6, $a6, -32
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB28_77
+# %bb.78:                               # %middle.block
                                         #   in Loop: Header=BB28_27 Depth=1
 	beq	$a2, $a1, .LBB28_82
+# %bb.79:                               # %vec.epilog.iter.check
+                                        #   in Loop: Header=BB28_27 Depth=1
+	bnez	$a3, .LBB28_72
 .LBB28_80:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB28_27 Depth=1
 	sub.d	$a1, $a1, $a2
@@ -6440,9 +6452,11 @@ _ZN8NArchive4NZip5CItemC2ERKS1_:        # @_ZN8NArchive4NZip5CItemC2ERKS1_
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	move	$s0, $a1
-	xvld	$xr0, $a1, 0
+	vld	$vr0, $a1, 16
 	move	$fp, $a0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a1, 0
+	vst	$vr0, $a0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	vst	$vr0, $a0, 32
@@ -6495,8 +6509,10 @@ _ZN8NArchive4NZip5CItemC2ERKS1_:        # @_ZN8NArchive4NZip5CItemC2ERKS1_
 # %bb.7:                                # %_ZN8NArchive4NZip10CLocalItemC2ERKS1_.exit
 	ld.d	$a0, $s0, 112
 	st.d	$a0, $fp, 112
-	xvld	$xr0, $s0, 80
-	xvst	$xr0, $fp, 80
+	vld	$vr0, $s0, 96
+	vst	$vr0, $fp, 96
+	vld	$vr0, $s0, 80
+	vst	$vr0, $fp, 80
 	addi.d	$s1, $fp, 120
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $fp, 128

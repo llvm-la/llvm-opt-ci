@@ -11,8 +11,9 @@ bar:                                    # @bar
 	addi.d	$a3, $a3, 1
 	st.w	$a3, $a2, %pc_lo12(bar.n)
 	st.w	$a3, $a0, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 4
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 4
+	vst	$vr0, $a0, 20
 	st.b	$a1, $a0, 4
 	ret
 .Lfunc_end0:
@@ -49,9 +50,11 @@ foo:                                    # @foo
 	pcalau12i	$a0, %pc_hi20(a)
 	addi.d	$a0, $a0, %pc_lo12(a)
 	ld.w	$a1, $sp, 40
-	xvld	$xr0, $sp, 8
+	vld	$vr0, $sp, 24
+	vld	$vr1, $sp, 8
 	st.w	$a1, $a0, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 0
 	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 64
@@ -64,9 +67,11 @@ foo:                                    # @foo
 	pcaddu18i	$ra, %call36(bar)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 40
-	xvld	$xr0, $sp, 8
+	vld	$vr0, $sp, 24
+	vld	$vr1, $sp, 8
 	st.w	$a0, $fp, 32
-	xvst	$xr0, $fp, 0
+	vst	$vr0, $fp, 16
+	vst	$vr1, $fp, 0
 	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 64
@@ -94,9 +99,11 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(a)
 	addi.d	$s0, $a0, %pc_lo12(a)
 	ld.w	$a0, $sp, 40
-	xvld	$xr0, $sp, 8
+	vld	$vr0, $sp, 24
+	vld	$vr1, $sp, 8
 	st.w	$a0, $s0, 32
-	xvst	$xr0, $s0, 0
+	vst	$vr0, $s0, 16
+	vst	$vr1, $s0, 0
 	addi.d	$a0, $sp, 8
 	ori	$a1, $zero, 4
 	pcaddu18i	$ra, %call36(bar)

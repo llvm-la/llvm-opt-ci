@@ -58,8 +58,10 @@ main:                                   # @main
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.2)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $fp, 0
-	xvst	$xr0, $fp, 32
+	vld	$vr0, $fp, 0
+	vld	$vr1, $fp, 16
+	vst	$vr0, $fp, 32
+	vst	$vr1, $fp, 48
 	lu12i.w	$a0, 419430
 	ori	$a0, $a0, 1638
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
@@ -143,13 +145,15 @@ main:                                   # @main
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $fp, 0
-	xvst	$xr0, $fp, 32
-	xvpickve.d	$xr1, $xr0, 2
-	fadd.d	$fa1, $fs7, $fa1
-	fst.d	$fa1, $fp, 16
-	xvpickve.d	$xr0, $xr0, 3
-	fadd.d	$fa0, $fs2, $fa0
+	vld	$vr0, $fp, 0
+	fld.d	$fa1, $fp, 16
+	fld.d	$fa2, $fp, 24
+	vst	$vr0, $fp, 32
+	fst.d	$fa1, $fp, 48
+	fst.d	$fa2, $fp, 56
+	fadd.d	$fa0, $fs7, $fa1
+	fst.d	$fa0, $fp, 16
+	fadd.d	$fa0, $fs2, $fa2
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
 	fst.d	$fa0, $fp, 24
 	move	$a0, $fp

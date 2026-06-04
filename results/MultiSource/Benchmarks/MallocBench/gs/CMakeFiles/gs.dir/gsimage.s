@@ -131,45 +131,46 @@ image_init:                             # @image_init
 	st.w	$s4, $s7, 8
 	move	$a5, $s3
 	st.w	$s3, $s7, 12
-	ld.d	$t2, $sp, 32
-	ld.d	$t3, $sp, 48
+	fld.s	$fa0, $sp, 16
 	move	$a3, $s2
 	st.w	$s2, $s7, 16
-	vld	$vr0, $sp, 16
+	lu12i.w	$t0, 284672
+	movgr2fr.w	$fa2, $t0
+	fmul.s	$fa0, $fa0, $fa2
 	fld.s	$fa1, $sp, 64
-	or	$t0, $t3, $t2
+	ftintrz.l.s	$fa0, $fa0
+	movfr2gr.d	$t2, $fa0
+	fst.d	$fa0, $s7, 24
+	fmul.s	$fa0, $fa1, $fa2
+	ld.d	$t4, $sp, 32
+	ld.d	$t5, $sp, 48
+	ftintrz.l.s	$fa0, $fa0
+	movfr2gr.d	$t3, $fa0
+	fst.d	$fa0, $s7, 48
+	or	$t0, $t5, $t4
 	bstrpick.d	$t0, $t0, 62, 0
-	sltu	$t4, $zero, $t0
-	st.w	$t4, $s7, 100
-	movgr2fr.w	$fa2, $t2
-	movgr2fr.w	$fa3, $t3
-	lu12i.w	$t5, 284672
-	movgr2fr.w	$fa4, $t5
-	fmul.s	$fa2, $fa2, $fa4
-	ftintrz.l.s	$fa2, $fa2
-	movfr2gr.d	$t2, $fa2
-	fmul.s	$fa2, $fa3, $fa4
-	ftintrz.l.s	$fa2, $fa2
-	movfr2gr.d	$t3, $fa2
-	maskeqz	$t6, $t2, $t4
-	maskeqz	$t4, $t3, $t4
-	st.d	$t6, $s7, 32
-	fld.s	$fa2, $sp, 80
+	sltu	$t6, $zero, $t0
+	st.w	$t6, $s7, 100
+	movgr2fr.w	$fa0, $t4
+	movgr2fr.w	$fa1, $t5
+	fmul.s	$fa0, $fa0, $fa2
+	ftintrz.l.s	$fa0, $fa0
+	movfr2gr.d	$t4, $fa0
+	fmul.s	$fa0, $fa1, $fa2
+	ftintrz.l.s	$fa0, $fa0
+	movfr2gr.d	$t5, $fa0
+	maskeqz	$t7, $t4, $t6
+	maskeqz	$t6, $t5, $t6
+	fld.s	$fa0, $sp, 80
+	st.d	$t7, $s7, 32
+	st.d	$t6, $s7, 40
 	fld.s	$fa3, $sp, 96
-	st.d	$t4, $s7, 40
-	vextrins.w	$vr0, $vr1, 16
-	vextrins.w	$vr0, $vr2, 32
-	vextrins.w	$vr0, $vr3, 48
-	vreplgr2vr.w	$vr1, $t5
-	vfmul.s	$vr0, $vr0, $vr1
-	vftintrz.w.s	$vr0, $vr0
-	vext2xv.d.w	$xr0, $xr0
-	xvpickve2gr.d	$t4, $xr0, 0
-	xvstelm.d	$xr0, $s7, 24, 0
-	xvpickve2gr.d	$t5, $xr0, 1
-	xvstelm.d	$xr0, $s7, 48, 1
-	xvpermi.q	$xr1, $xr0, 1
-	vst	$vr1, $s7, 160
+	fmul.s	$fa0, $fa0, $fa2
+	ftintrz.l.s	$fa1, $fa0
+	fst.d	$fa1, $s7, 160
+	fmul.s	$fa0, $fa3, $fa2
+	ftintrz.l.s	$fa0, $fa0
+	fst.d	$fa0, $s7, 168
 	st.d	$fp, $s7, 72
 	st.d	$a0, $s7, 80
 	st.w	$s0, $s7, 88
@@ -242,23 +243,23 @@ image_init:                             # @image_init
 	stptr.w	$zero, $a1, 8360
 .LBB1_17:
 	ld.d	$t6, $fp, 264
-	mul.d	$a0, $t4, $a4
-	mul.d	$t4, $t5, $t1
+	mul.d	$a0, $t2, $a4
+	mul.d	$t2, $t3, $t1
 	beqz	$t0, .LBB1_19
 # %bb.18:
-	mul.d	$t1, $t3, $t1
+	mul.d	$t1, $t5, $t1
 	add.d	$t5, $t1, $a0
-	mul.d	$t1, $t2, $a4
-	add.d	$t4, $t1, $t4
+	mul.d	$t1, $t4, $a4
+	add.d	$t2, $t1, $t2
 	b	.LBB1_20
 .LBB1_19:
 	move	$t5, $a0
 .LBB1_20:
 	ld.d	$t8, $t6, 56
-	ld.d	$t3, $t6, 64
+	ld.d	$t4, $t6, 64
 	ld.d	$t7, $t6, 72
-	ld.d	$t2, $t6, 80
-	xvpickve2gr.d	$t1, $xr0, 2
+	ld.d	$t3, $t6, 80
+	movfr2gr.d	$t1, $fa1
 	bltz	$t5, .LBB1_23
 # %bb.21:
 	blt	$t1, $t8, .LBB1_27
@@ -272,14 +273,19 @@ image_init:                             # @image_init
 # %bb.24:
 	blt	$t7, $t1, .LBB1_27
 .LBB1_25:
-	xvpickve2gr.d	$t5, $xr0, 3
-	bltz	$t4, .LBB1_41
+	movfr2gr.d	$t5, $fa0
+	bltz	$t2, .LBB1_41
 # %bb.26:
-	slt	$t3, $t5, $t3
-	xori	$t3, $t3, 1
-	add.d	$t4, $t4, $t5
-	slt	$t2, $t2, $t4
-	b	.LBB1_42
+	slt	$t4, $t5, $t4
+	xori	$t4, $t4, 1
+	add.d	$t2, $t2, $t5
+	slt	$t2, $t3, $t2
+	xori	$t2, $t2, 1
+	and	$t3, $t4, $t2
+	st.w	$t3, $a1, 96
+	ori	$t2, $zero, 1
+	beqz	$t0, .LBB1_42
+	b	.LBB1_28
 .LBB1_27:                               # %.critedge
 	st.w	$zero, $a1, 96
 	ori	$t2, $zero, 1
@@ -355,27 +361,26 @@ image_init:                             # @image_init
 	addi.d	$sp, $sp, 192
 	ret
 .LBB1_41:
-	add.d	$t4, $t4, $t5
-	slt	$t3, $t4, $t3
-	xori	$t3, $t3, 1
-	slt	$t2, $t2, $t5
-.LBB1_42:
+	add.d	$t2, $t2, $t5
+	slt	$t2, $t2, $t4
 	xori	$t2, $t2, 1
-	and	$t3, $t3, $t2
+	slt	$t3, $t3, $t5
+	xori	$t3, $t3, 1
+	and	$t3, $t2, $t3
 	st.w	$t3, $a1, 96
 	ori	$t2, $zero, 1
 	bnez	$t0, .LBB1_28
-# %bb.43:
+.LBB1_42:
 	beqz	$t3, .LBB1_28
-# %bb.44:
+# %bb.43:
 	addi.w	$t0, $zero, -1
-	beq	$a7, $t0, .LBB1_47
+	beq	$a7, $t0, .LBB1_46
+# %bb.44:
+	beq	$a6, $t0, .LBB1_46
 # %bb.45:
-	beq	$a6, $t0, .LBB1_47
-# %bb.46:
 	move	$t2, $zero
 	b	.LBB1_28
-.LBB1_47:
+.LBB1_46:
 	ld.d	$a6, $fp, 312
 	ld.w	$a6, $a6, 16
 	sltu	$t2, $zero, $a6

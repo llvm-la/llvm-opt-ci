@@ -7,23 +7,26 @@
 	.p2align	3, 0x0                          # -- Begin function main
 .LCPI0_0:
 	.dword	0x3d719799812dea11              # double 9.9999999999999998E-13
-.LCPI0_4:
+.LCPI0_7:
 	.dword	0x408ff80000000000              # double 1023
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
 .LCPI0_1:
 	.dword	0xc080040000000000              # double -512.5
 	.dword	0xc080015555555555              # double -512.16666666666663
+.LCPI0_2:
 	.dword	0x0000000000000000              # double 0
 	.dword	0xc07ffd5555555555              # double -511.83333333333331
-.LCPI0_2:
+.LCPI0_3:
 	.dword	0xc080040000000000              # double -512.5
 	.dword	0x0000000000000000              # double 0
+.LCPI0_4:
 	.dword	0xc080015555555555              # double -512.16666666666663
 	.dword	0xc07ff80000000000              # double -511.5
-.LCPI0_3:
+.LCPI0_5:
 	.dword	0x0000000000000000              # double 0
 	.dword	0xc07ff80000000000              # double -511.5
+.LCPI0_6:
 	.dword	0xc07ffd5555555555              # double -511.83333333333331
 	.dword	0x0000000000000000              # double 0
 	.text
@@ -123,9 +126,9 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	add.d	$s3, $a0, $s2
-	st.d	$zero, $sp, 48
+	st.d	$zero, $sp, 40
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 56
+	vst	$vr0, $sp, 48
 	addi.w	$a0, $zero, -99
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
 	fld.d	$fs0, $a1, %pc_lo12(.LCPI0_0)
@@ -154,11 +157,11 @@ main:                                   # @main
 	fmul.d	$fa1, $fa0, $fa1
 	vldi	$vr2, -800
 	fmul.d	$fa2, $fa0, $fa2
-	fst.d	$fa1, $sp, 24
-	fst.d	$fa0, $sp, 32
-	fst.d	$fa2, $sp, 40
-	addi.d	$a3, $sp, 48
-	addi.d	$a4, $sp, 24
+	fst.d	$fa1, $sp, 16
+	fst.d	$fa0, $sp, 24
+	fst.d	$fa2, $sp, 32
+	addi.d	$a3, $sp, 40
+	addi.d	$a4, $sp, 16
 	vldi	$vr0, -912
 	move	$a0, $s0
 	move	$a1, $s1
@@ -195,20 +198,29 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_1)
-	xvst	$xr0, $sp, 72
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_2)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_3)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
-	fld.d	$fs1, $a0, %pc_lo12(.LCPI0_4)
-	xvst	$xr0, $sp, 104
-	xvst	$xr1, $sp, 136
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_4)
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 80
+	vst	$vr2, $sp, 96
+	vst	$vr3, $sp, 112
+	pcalau12i	$a0, %pc_hi20(.LCPI0_5)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_5)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_6)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_6)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_7)
+	fld.d	$fs1, $a0, %pc_lo12(.LCPI0_7)
+	vst	$vr0, $sp, 128
+	vst	$vr1, $sp, 144
 	movgr2fr.d	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(_ZL5light)
 	addi.d	$s2, $a0, %pc_lo12(_ZL5light)
-	addi.d	$s5, $sp, 72
+	addi.d	$s5, $sp, 64
 	lu52i.d	$a0, $zero, 1033
 	movgr2fr.d	$fs3, $a0
 	lu52i.d	$s6, $zero, 2047
@@ -220,7 +232,7 @@ main:                                   # @main
 	b	.LBB0_12
 	.p2align	4, , 16
 .LBB0_11:                               #   in Loop: Header=BB0_12 Depth=1
-	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	addi.w	$s4, $s4, -1
 	vldi	$vr0, -784
 	fadd.d	$fs1, $fs1, $fa0
@@ -236,7 +248,7 @@ main:                                   # @main
                                         #         Child Loop BB0_44 Depth 4
                                         #           Child Loop BB0_48 Depth 5
                                         #           Child Loop BB0_56 Depth 5
-	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	ori	$s4, $zero, 1024
 	fmov.d	$fs5, $fs2
 	b	.LBB0_15

@@ -504,13 +504,14 @@ _ZN34btPolyhedralConvexAabbCachingShape15recalcLocalAabbEv: # @_ZN34btPolyhedral
 	.size	_ZN34btPolyhedralConvexAabbCachingShape15recalcLocalAabbEv, .Lfunc_end5-_ZN34btPolyhedralConvexAabbCachingShape15recalcLocalAabbEv
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN34btPolyhedralConvexAabbCachingShapeC2Ev
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN34btPolyhedralConvexAabbCachingShapeC2Ev
 .LCPI6_0:
 	.word	0x3f800000                      # float 1
 	.word	0x3f800000                      # float 1
 	.word	0x3f800000                      # float 1
 	.word	0x00000000                      # float 0
+.LCPI6_1:
 	.word	0xbf800000                      # float -1
 	.word	0xbf800000                      # float -1
 	.word	0xbf800000                      # float -1
@@ -535,9 +536,12 @@ _ZN34btPolyhedralConvexAabbCachingShapeC2Ev: # @_ZN34btPolyhedralConvexAabbCachi
 	pcalau12i	$a0, %pc_hi20(_ZTV34btPolyhedralConvexAabbCachingShape+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV34btPolyhedralConvexAabbCachingShape+16)
 	pcalau12i	$a1, %pc_hi20(.LCPI6_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI6_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI6_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI6_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI6_1)
 	st.d	$a0, $fp, 0
-	xvst	$xr0, $fp, 64
+	vst	$vr0, $fp, 64
+	vst	$vr1, $fp, 80
 	st.b	$zero, $fp, 96
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
@@ -651,7 +655,8 @@ _ZNK34btPolyhedralConvexAabbCachingShape7getAabbERK11btTransformR9btVector3S4_: 
 	vextrins.w	$vr3, $vr4, 16
 	vshuf4i.w	$vr1, $vr3, 16
 	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr2, $xr2
+	vrepli.b	$vr3, 0
+	vilvl.w	$vr2, $vr3, $vr2
 	vor.v	$vr1, $vr1, $vr2
 	vstelm.d	$vr1, $s0, 0, 0
 	movfr2gr.s	$a0, $fa0

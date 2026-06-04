@@ -587,12 +587,14 @@ _ZN16btRaycastVehicle8addWheelERK9btVector3S2_S2_ffRKNS_15btVehicleTuningEb: # @
 .LBB6_11:                               # %_ZN20btAlignedObjectArrayI11btWheelInfoE9push_backERKS0_.exit
 	ld.d	$a0, $fp, 208
 	ori	$a2, $zero, 288
-	vld	$vr2, $s3, 32
-	xvld	$xr3, $s3, 0
 	mul.d	$a1, $a1, $a2
+	vld	$vr2, $s3, 32
+	vld	$vr3, $s3, 16
+	vld	$vr4, $s3, 0
 	add.d	$a0, $a0, $a1
 	vst	$vr2, $a0, 192
-	xvst	$xr3, $a0, 160
+	vst	$vr3, $a0, 176
+	vst	$vr4, $a0, 160
 	fst.s	$fa0, $a0, 208
 	fst.s	$fs4, $a0, 212
 	fst.s	$fa1, $a0, 216
@@ -730,12 +732,14 @@ _ZN16btRaycastVehicle23updateWheelTransformsWSER11btWheelInfob: # @_ZN16btRaycas
 	.cfi_offset 22, -16
 	ld.d	$a0, $a0, 168
 	st.b	$zero, $a1, 84
-	xvld	$xr0, $a0, 8
-	vld	$vr1, $a0, 40
-	vld	$vr2, $a0, 56
-	xvst	$xr0, $sp, 16
-	vst	$vr1, $sp, 48
-	vst	$vr2, $sp, 64
+	vld	$vr0, $a0, 8
+	vld	$vr1, $a0, 24
+	vld	$vr2, $a0, 40
+	vld	$vr3, $a0, 56
+	vst	$vr0, $sp, 16
+	vst	$vr1, $sp, 32
+	vst	$vr2, $sp, 48
+	vst	$vr3, $sp, 64
 	beqz	$a2, .LBB7_3
 # %bb.1:
 	ld.d	$a0, $a0, 512
@@ -809,7 +813,8 @@ _ZN16btRaycastVehicle23updateWheelTransformsWSER11btWheelInfob: # @_ZN16btRaycas
 	vextrins.w	$vr1, $vr3, 16
 	vshuf4i.w	$vr1, $vr1, 16
 	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr0, $xr0
+	vrepli.b	$vr2, 0
+	vilvl.w	$vr0, $vr2, $vr0
 	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a2, $vr0, 0
 	st.d	$a2, $a1, 52
@@ -2182,7 +2187,7 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	.cfi_offset 56, -88
 	.cfi_offset 57, -96
 	ld.w	$s2, $a0, 196
-	beqz	$s2, .LBB23_106
+	beqz	$s2, .LBB23_88
 # %bb.1:
 	move	$fp, $a0
 	fmov.s	$fs0, $fa0
@@ -2271,15 +2276,15 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 # %bb.20:                               # %_ZN20btAlignedObjectArrayIfE6resizeEiRKf.exit
 	ld.w	$s3, $fp, 108
 	st.w	$s2, $fp, 76
-	blt	$s3, $s2, .LBB23_44
+	blt	$s3, $s2, .LBB23_38
 .LBB23_21:                              # %_ZN20btAlignedObjectArrayIfE6resizeEiRKf.exit204
 	ld.w	$a0, $fp, 196
 	st.w	$s2, $fp, 108
-	bgtz	$a0, .LBB23_66
-	b	.LBB23_106
+	bgtz	$a0, .LBB23_54
+	b	.LBB23_88
 .LBB23_22:
 	ld.w	$a0, $fp, 80
-	bge	$a0, $s2, .LBB23_28
+	bge	$a0, $s2, .LBB23_32
 # %bb.23:                               # %_ZN20btAlignedObjectArrayIfE8allocateEi.exit.i.i
 	slli.d	$s0, $s2, 2
 	ori	$a1, $zero, 16
@@ -2289,98 +2294,71 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	ld.w	$a2, $fp, 76
 	ld.d	$a1, $fp, 88
 	move	$s1, $a0
-	blez	$a2, .LBB23_29
-# %bb.24:                               # %iter.check
-	ori	$a3, $zero, 4
+	blez	$a2, .LBB23_33
+# %bb.24:                               # %.lr.ph.i.i.i176
+	ori	$a3, $zero, 8
 	move	$a0, $zero
-	bltu	$a2, $a3, .LBB23_38
-# %bb.25:                               # %iter.check
+	bltu	$a2, $a3, .LBB23_29
+# %bb.25:                               # %.lr.ph.i.i.i176
 	sub.d	$a3, $s1, $a1
-	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB23_38
-# %bb.26:                               # %vector.main.loop.iter.check
-	ori	$a0, $zero, 16
-	bgeu	$a2, $a0, .LBB23_31
-# %bb.27:
-	move	$a0, $zero
-	b	.LBB23_35
-.LBB23_28:                              # %..lr.ph.i167_crit_edge
-	ld.d	$s1, $fp, 88
-	slli.d	$s0, $s2, 2
-	b	.LBB23_43
-.LBB23_29:                              # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i
-	beqz	$a1, .LBB23_42
-# %bb.30:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i
-	ld.b	$a0, $fp, 96
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB23_41
-	b	.LBB23_42
-.LBB23_31:                              # %vector.ph
-	andi	$a3, $a2, 12
-	bstrpick.d	$a0, $a2, 30, 4
-	slli.d	$a0, $a0, 4
-	addi.d	$a4, $a1, 32
-	addi.d	$a5, $s1, 32
-	move	$a6, $a0
-	.p2align	4, , 16
-.LBB23_32:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -16
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB23_32
-# %bb.33:                               # %middle.block
-	beq	$a0, $a2, .LBB23_40
-# %bb.34:                               # %vec.epilog.iter.check
-	beqz	$a3, .LBB23_38
-.LBB23_35:                              # %vec.epilog.ph
+	ori	$a4, $zero, 32
+	bltu	$a3, $a4, .LBB23_29
+# %bb.26:                               # %vector.ph
+	bstrpick.d	$a0, $a2, 30, 3
+	slli.d	$a0, $a0, 3
+	addi.d	$a3, $a1, 16
+	addi.d	$a4, $s1, 16
 	move	$a5, $a0
-	bstrpick.d	$a0, $a2, 30, 2
-	slli.d	$a0, $a0, 2
-	sub.d	$a3, $a5, $a0
-	alsl.d	$a4, $a5, $a1, 2
-	alsl.d	$a5, $a5, $s1, 2
 	.p2align	4, , 16
-.LBB23_36:                              # %vec.epilog.vector.body
+.LBB23_27:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB23_36
-# %bb.37:                               # %vec.epilog.middle.block
-	beq	$a0, $a2, .LBB23_40
-.LBB23_38:                              # %vec.epilog.scalar.ph.preheader
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB23_27
+# %bb.28:                               # %middle.block
+	beq	$a0, $a2, .LBB23_31
+.LBB23_29:                              # %scalar.ph.preheader
 	sub.d	$a2, $a2, $a0
 	alsl.d	$a3, $a0, $a1, 2
 	alsl.d	$a0, $a0, $s1, 2
 	.p2align	4, , 16
-.LBB23_39:                              # %vec.epilog.scalar.ph
+.LBB23_30:                              # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa0, $a3, 0
 	fst.s	$fa0, $a0, 0
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a0, $a0, 4
-	bnez	$a2, .LBB23_39
-.LBB23_40:                              # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.thread.i.i
+	bnez	$a2, .LBB23_30
+.LBB23_31:                              # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.thread.i.i
 	ld.bu	$a0, $fp, 96
-	beqz	$a0, .LBB23_42
-.LBB23_41:
+	bnez	$a0, .LBB23_35
+	b	.LBB23_36
+.LBB23_32:                              # %..lr.ph.i167_crit_edge
+	ld.d	$s1, $fp, 88
+	slli.d	$s0, $s2, 2
+	b	.LBB23_37
+.LBB23_33:                              # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i
+	beqz	$a1, .LBB23_36
+# %bb.34:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i
+	ld.b	$a0, $fp, 96
+	andi	$a0, $a0, 1
+	beqz	$a0, .LBB23_36
+.LBB23_35:
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB23_42:                              # %_ZN20btAlignedObjectArrayIfE10deallocateEv.exit.i.i
+.LBB23_36:                              # %_ZN20btAlignedObjectArrayIfE10deallocateEv.exit.i.i
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 96
 	st.d	$s1, $fp, 88
 	st.w	$s2, $fp, 80
-.LBB23_43:                              # %.lr.ph.i167
+.LBB23_37:                              # %.lr.ph.i167
 	slli.d	$a1, $s3, 2
 	alsl.d	$a0, $s3, $s1, 2
 	sub.d	$a2, $s0, $a1
@@ -2390,10 +2368,10 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	ld.w	$s3, $fp, 108
 	st.w	$s2, $fp, 76
 	bge	$s3, $s2, .LBB23_21
-.LBB23_44:
+.LBB23_38:
 	ld.w	$a0, $fp, 112
-	bge	$a0, $s2, .LBB23_50
-# %bb.45:                               # %_ZN20btAlignedObjectArrayIfE8allocateEi.exit.i.i189
+	bge	$a0, $s2, .LBB23_48
+# %bb.39:                               # %_ZN20btAlignedObjectArrayIfE8allocateEi.exit.i.i189
 	slli.d	$s0, $s2, 2
 	ori	$a1, $zero, 16
 	move	$a0, $s0
@@ -2402,98 +2380,71 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	ld.w	$a2, $fp, 108
 	ld.d	$a1, $fp, 120
 	move	$s1, $a0
-	blez	$a2, .LBB23_51
-# %bb.46:                               # %iter.check328
-	ori	$a3, $zero, 4
+	blez	$a2, .LBB23_49
+# %bb.40:                               # %.lr.ph.i.i.i195
+	ori	$a3, $zero, 8
 	move	$a0, $zero
-	bltu	$a2, $a3, .LBB23_60
-# %bb.47:                               # %iter.check328
+	bltu	$a2, $a3, .LBB23_45
+# %bb.41:                               # %.lr.ph.i.i.i195
 	sub.d	$a3, $s1, $a1
-	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB23_60
-# %bb.48:                               # %vector.main.loop.iter.check315
-	ori	$a0, $zero, 16
-	bgeu	$a2, $a0, .LBB23_53
-# %bb.49:
-	move	$a0, $zero
-	b	.LBB23_57
-.LBB23_50:                              # %..lr.ph.i181_crit_edge
-	ld.d	$s1, $fp, 120
-	slli.d	$s0, $s2, 2
-	b	.LBB23_65
-.LBB23_51:                              # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i191
-	beqz	$a1, .LBB23_64
-# %bb.52:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i191
-	ld.b	$a0, $fp, 128
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB23_63
-	b	.LBB23_64
-.LBB23_53:                              # %vector.ph317
-	andi	$a3, $a2, 12
-	bstrpick.d	$a0, $a2, 30, 4
-	slli.d	$a0, $a0, 4
-	addi.d	$a4, $a1, 32
-	addi.d	$a5, $s1, 32
-	move	$a6, $a0
-	.p2align	4, , 16
-.LBB23_54:                              # %vector.body320
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -16
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB23_54
-# %bb.55:                               # %middle.block325
-	beq	$a0, $a2, .LBB23_62
-# %bb.56:                               # %vec.epilog.iter.check330
-	beqz	$a3, .LBB23_60
-.LBB23_57:                              # %vec.epilog.ph332
+	ori	$a4, $zero, 32
+	bltu	$a3, $a4, .LBB23_45
+# %bb.42:                               # %vector.ph309
+	bstrpick.d	$a0, $a2, 30, 3
+	slli.d	$a0, $a0, 3
+	addi.d	$a3, $a1, 16
+	addi.d	$a4, $s1, 16
 	move	$a5, $a0
-	bstrpick.d	$a0, $a2, 30, 2
-	slli.d	$a0, $a0, 2
-	sub.d	$a3, $a5, $a0
-	alsl.d	$a4, $a5, $a1, 2
-	alsl.d	$a5, $a5, $s1, 2
 	.p2align	4, , 16
-.LBB23_58:                              # %vec.epilog.vector.body335
+.LBB23_43:                              # %vector.body312
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB23_58
-# %bb.59:                               # %vec.epilog.middle.block339
-	beq	$a0, $a2, .LBB23_62
-.LBB23_60:                              # %vec.epilog.scalar.ph329.preheader
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB23_43
+# %bb.44:                               # %middle.block317
+	beq	$a0, $a2, .LBB23_47
+.LBB23_45:                              # %scalar.ph307.preheader
 	sub.d	$a2, $a2, $a0
 	alsl.d	$a3, $a0, $a1, 2
 	alsl.d	$a0, $a0, $s1, 2
 	.p2align	4, , 16
-.LBB23_61:                              # %vec.epilog.scalar.ph329
+.LBB23_46:                              # %scalar.ph307
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa0, $a3, 0
 	fst.s	$fa0, $a0, 0
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a0, $a0, 4
-	bnez	$a2, .LBB23_61
-.LBB23_62:                              # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.thread.i.i200
+	bnez	$a2, .LBB23_46
+.LBB23_47:                              # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.thread.i.i200
 	ld.bu	$a0, $fp, 128
-	beqz	$a0, .LBB23_64
-.LBB23_63:
+	bnez	$a0, .LBB23_51
+	b	.LBB23_52
+.LBB23_48:                              # %..lr.ph.i181_crit_edge
+	ld.d	$s1, $fp, 120
+	slli.d	$s0, $s2, 2
+	b	.LBB23_53
+.LBB23_49:                              # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i191
+	beqz	$a1, .LBB23_52
+# %bb.50:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i191
+	ld.b	$a0, $fp, 128
+	andi	$a0, $a0, 1
+	beqz	$a0, .LBB23_52
+.LBB23_51:
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB23_64:                              # %_ZN20btAlignedObjectArrayIfE10deallocateEv.exit.i.i194
+.LBB23_52:                              # %_ZN20btAlignedObjectArrayIfE10deallocateEv.exit.i.i194
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 128
 	st.d	$s1, $fp, 120
 	st.w	$s2, $fp, 112
-.LBB23_65:                              # %.lr.ph.i181
+.LBB23_53:                              # %.lr.ph.i181
 	slli.d	$a1, $s3, 2
 	alsl.d	$a0, $s3, $s1, 2
 	sub.d	$a2, $s0, $a1
@@ -2502,79 +2453,51 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 196
 	st.w	$s2, $fp, 108
-	blez	$a0, .LBB23_106
-.LBB23_66:                              # %iter.check356
+	blez	$a0, .LBB23_88
+.LBB23_54:                              # %.lr.ph
 	ld.d	$a1, $fp, 120
 	ld.d	$a2, $fp, 88
-	ori	$a4, $zero, 4
+	ori	$a4, $zero, 8
 	move	$a3, $zero
-	bltu	$a0, $a4, .LBB23_77
-# %bb.67:                               # %iter.check356
+	bltu	$a0, $a4, .LBB23_59
+# %bb.55:                               # %.lr.ph
 	sub.d	$a4, $a2, $a1
-	ori	$a5, $zero, 64
-	bltu	$a4, $a5, .LBB23_77
-# %bb.68:                               # %vector.main.loop.iter.check345
-	ori	$a3, $zero, 16
-	bgeu	$a0, $a3, .LBB23_70
-# %bb.69:
-	move	$a3, $zero
-	b	.LBB23_74
-.LBB23_70:                              # %vector.ph347
-	andi	$a4, $a0, 12
-	bstrpick.d	$a3, $a0, 30, 4
-	slli.d	$a3, $a3, 4
-	addi.d	$a5, $a2, 32
-	addi.d	$a6, $a1, 32
-	xvrepli.b	$xr0, 0
-	move	$a7, $a3
-	.p2align	4, , 16
-.LBB23_71:                              # %vector.body350
-                                        # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a6, -32
-	xvst	$xr0, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr0, $a5, 0
-	addi.d	$a7, $a7, -16
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB23_71
-# %bb.72:                               # %middle.block353
-	beq	$a3, $a0, .LBB23_79
-# %bb.73:                               # %vec.epilog.iter.check358
-	beqz	$a4, .LBB23_77
-.LBB23_74:                              # %vec.epilog.ph360
-	move	$a6, $a3
-	bstrpick.d	$a3, $a0, 30, 2
-	slli.d	$a3, $a3, 2
-	sub.d	$a4, $a6, $a3
-	alsl.d	$a5, $a6, $a2, 2
-	alsl.d	$a6, $a6, $a1, 2
+	ori	$a5, $zero, 32
+	bltu	$a4, $a5, .LBB23_59
+# %bb.56:                               # %vector.ph324
+	bstrpick.d	$a3, $a0, 30, 3
+	slli.d	$a3, $a3, 3
+	addi.d	$a4, $a2, 16
+	addi.d	$a5, $a1, 16
 	vrepli.b	$vr0, 0
+	move	$a6, $a3
 	.p2align	4, , 16
-.LBB23_75:                              # %vec.epilog.vector.body363
+.LBB23_57:                              # %vector.body327
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr0, $a6, 0
+	vst	$vr0, $a5, -16
 	vst	$vr0, $a5, 0
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 16
-	addi.d	$a6, $a6, 16
-	bnez	$a4, .LBB23_75
-# %bb.76:                               # %vec.epilog.middle.block366
-	beq	$a3, $a0, .LBB23_79
-.LBB23_77:                              # %vec.epilog.scalar.ph357.preheader
+	vst	$vr0, $a4, -16
+	vst	$vr0, $a4, 0
+	addi.d	$a6, $a6, -8
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB23_57
+# %bb.58:                               # %middle.block330
+	beq	$a3, $a0, .LBB23_61
+.LBB23_59:                              # %scalar.ph322.preheader
 	alsl.d	$a2, $a3, $a2, 2
 	alsl.d	$a1, $a3, $a1, 2
 	sub.d	$a3, $a0, $a3
 	.p2align	4, , 16
-.LBB23_78:                              # %vec.epilog.scalar.ph357
+.LBB23_60:                              # %scalar.ph322
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$zero, $a1, 0
 	st.w	$zero, $a2, 0
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, -1
 	addi.d	$a1, $a1, 4
-	bnez	$a3, .LBB23_78
-.LBB23_79:                              # %.lr.ph256
+	bnez	$a3, .LBB23_60
+.LBB23_61:                              # %.lr.ph256
 	move	$s0, $zero
 	move	$s1, $zero
 	move	$s2, $zero
@@ -2584,20 +2507,20 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	addi.d	$s6, $sp, 56
 	movgr2fr.w	$fs1, $zero
 	pcalau12i	$s7, %pc_hi20(sideFrictionStiffness2)
-	b	.LBB23_81
+	b	.LBB23_63
 	.p2align	4, , 16
-.LBB23_80:                              #   in Loop: Header=BB23_81 Depth=1
+.LBB23_62:                              #   in Loop: Header=BB23_63 Depth=1
 	addi.d	$s3, $s3, 1
 	addi.d	$s2, $s2, 4
 	addi.d	$s1, $s1, 16
 	addi.d	$s0, $s0, 288
-	bge	$s3, $a0, .LBB23_83
-.LBB23_81:                              # =>This Inner Loop Header: Depth=1
+	bge	$s3, $a0, .LBB23_65
+.LBB23_63:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $fp, 208
 	add.d	$a1, $a3, $s0
 	ld.d	$a2, $a1, 88
-	beqz	$a2, .LBB23_80
-# %bb.82:                               #   in Loop: Header=BB23_81 Depth=1
+	beqz	$a2, .LBB23_62
+# %bb.64:                               #   in Loop: Header=BB23_63 Depth=1
 	vld	$vr0, $a1, 96
 	vst	$vr0, $sp, 56
 	vld	$vr0, $a1, 112
@@ -2695,10 +2618,10 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	fmul.s	$fa0, $fa0, $fa1
 	fstx.s	$fa0, $a0, $s2
 	ld.w	$a0, $fp, 196
-	b	.LBB23_80
-.LBB23_83:                              # %.preheader252
-	blez	$a0, .LBB23_106
-# %bb.84:                               # %.lr.ph259
+	b	.LBB23_62
+.LBB23_65:                              # %.preheader252
+	blez	$a0, .LBB23_88
+# %bb.66:                               # %.lr.ph259
 	ld.d	$a0, $fp, 208
 	move	$s0, $zero
 	move	$s1, $zero
@@ -2707,33 +2630,33 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	move	$s5, $zero
 	lu12i.w	$s4, 260096
 	vldi	$vr4, -1184
-	b	.LBB23_87
+	b	.LBB23_69
 	.p2align	4, , 16
-.LBB23_85:                              # %.critedge
-                                        #   in Loop: Header=BB23_87 Depth=1
+.LBB23_67:                              # %.critedge
+                                        #   in Loop: Header=BB23_69 Depth=1
 	ld.d	$a1, $fp, 88
 	stx.w	$zero, $a1, $s1
 	st.w	$s4, $s6, 284
-.LBB23_86:                              #   in Loop: Header=BB23_87 Depth=1
+.LBB23_68:                              #   in Loop: Header=BB23_69 Depth=1
 	ld.w	$a1, $fp, 196
 	addi.d	$s3, $s3, 1
 	addi.d	$s2, $s2, 16
 	addi.d	$s1, $s1, 4
 	addi.d	$s0, $s0, 288
-	bge	$s3, $a1, .LBB23_93
-.LBB23_87:                              # =>This Inner Loop Header: Depth=1
+	bge	$s3, $a1, .LBB23_75
+.LBB23_69:                              # =>This Inner Loop Header: Depth=1
 	add.d	$s6, $a0, $s0
 	ld.d	$a2, $s6, 88
-	beqz	$a2, .LBB23_85
-# %bb.88:                               #   in Loop: Header=BB23_87 Depth=1
+	beqz	$a2, .LBB23_67
+# %bb.70:                               #   in Loop: Header=BB23_69 Depth=1
 	fld.s	$fa0, $s6, 252
 	fcmp.ceq.s	$fcc0, $fa0, $fs1
-	bcnez	$fcc0, .LBB23_90
-# %bb.89:                               #   in Loop: Header=BB23_87 Depth=1
+	bcnez	$fcc0, .LBB23_72
+# %bb.71:                               #   in Loop: Header=BB23_69 Depth=1
 	fmul.s	$fa0, $fs0, $fa0
-	b	.LBB23_91
+	b	.LBB23_73
 	.p2align	4, , 16
-.LBB23_90:                              #   in Loop: Header=BB23_87 Depth=1
+.LBB23_72:                              #   in Loop: Header=BB23_69 Depth=1
 	fld.s	$fa0, $s6, 256
 	fcmp.ceq.s	$fcc0, $fa0, $fs1
 	ld.d	$a0, $fp, 24
@@ -2816,7 +2739,7 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	fneg.s	$fa1, $ft2
 	fcmp.clt.s	$fcc0, $fa0, $fa1
 	fsel	$fa0, $fa0, $fa1, $fcc0
-.LBB23_91:                              #   in Loop: Header=BB23_87 Depth=1
+.LBB23_73:                              #   in Loop: Header=BB23_69 Depth=1
 	ld.d	$a2, $fp, 88
 	stx.w	$zero, $a2, $s1
 	add.d	$a1, $a0, $s0
@@ -2833,44 +2756,44 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	fmul.s	$fa3, $fa3, $fa3
 	fmadd.s	$fa0, $fa0, $fa0, $fa3
 	fcmp.cule.s	$fcc0, $fa0, $fa2
-	bcnez	$fcc0, .LBB23_86
-# %bb.92:                               #   in Loop: Header=BB23_87 Depth=1
+	bcnez	$fcc0, .LBB23_68
+# %bb.74:                               #   in Loop: Header=BB23_69 Depth=1
 	fld.s	$fa2, $a1, 284
 	fsqrt.s	$fa0, $fa0
 	fdiv.s	$fa0, $fa1, $fa0
 	fmul.s	$fa0, $fa0, $fa2
 	fst.s	$fa0, $a1, 284
 	ori	$s5, $zero, 1
-	b	.LBB23_86
-.LBB23_93:                              # %._crit_edge
+	b	.LBB23_68
+.LBB23_75:                              # %._crit_edge
 	slti	$a0, $a1, 1
 	orn	$a0, $a0, $s5
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB23_99
-# %bb.94:                               # %.lr.ph262
+	bnez	$a0, .LBB23_81
+# %bb.76:                               # %.lr.ph262
 	ld.d	$a3, $fp, 208
 	ld.d	$a0, $fp, 120
 	ld.d	$a2, $fp, 88
 	addi.d	$a3, $a3, 284
 	vldi	$vr0, -1168
 	move	$a4, $a1
-	b	.LBB23_96
+	b	.LBB23_78
 	.p2align	4, , 16
-.LBB23_95:                              #   in Loop: Header=BB23_96 Depth=1
+.LBB23_77:                              #   in Loop: Header=BB23_78 Depth=1
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 288
 	addi.d	$a4, $a4, -1
 	addi.d	$a0, $a0, 4
-	beqz	$a4, .LBB23_99
-.LBB23_96:                              # =>This Inner Loop Header: Depth=1
+	beqz	$a4, .LBB23_81
+.LBB23_78:                              # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a0, 0
 	fcmp.ceq.s	$fcc0, $fa1, $fs1
-	bcnez	$fcc0, .LBB23_95
-# %bb.97:                               #   in Loop: Header=BB23_96 Depth=1
+	bcnez	$fcc0, .LBB23_77
+# %bb.79:                               #   in Loop: Header=BB23_78 Depth=1
 	fld.s	$fa1, $a3, 0
 	fcmp.cule.s	$fcc0, $fa0, $fa1
-	bcnez	$fcc0, .LBB23_95
-# %bb.98:                               #   in Loop: Header=BB23_96 Depth=1
+	bcnez	$fcc0, .LBB23_77
+# %bb.80:                               #   in Loop: Header=BB23_78 Depth=1
 	fld.s	$fa2, $a2, 0
 	fmul.s	$fa1, $fa1, $fa2
 	fst.s	$fa1, $a2, 0
@@ -2878,10 +2801,10 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	fld.s	$fa2, $a0, 0
 	fmul.s	$fa1, $fa1, $fa2
 	fst.s	$fa1, $a0, 0
-	b	.LBB23_95
-.LBB23_99:                              # %.loopexit251
-	blez	$a1, .LBB23_106
-# %bb.100:                              # %.lr.ph265
+	b	.LBB23_77
+.LBB23_81:                              # %.loopexit251
+	blez	$a1, .LBB23_88
+# %bb.82:                               # %.lr.ph265
 	move	$s1, $zero
 	move	$s2, $zero
 	move	$s3, $zero
@@ -2889,16 +2812,16 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	addi.d	$s5, $sp, 56
 	lu12i.w	$s6, -524288
 	lu32i.d	$s6, 0
-	b	.LBB23_102
+	b	.LBB23_84
 	.p2align	4, , 16
-.LBB23_101:                             #   in Loop: Header=BB23_102 Depth=1
+.LBB23_83:                              #   in Loop: Header=BB23_84 Depth=1
 	ld.w	$a0, $fp, 196
 	addi.d	$s4, $s4, 1
 	addi.d	$s3, $s3, 16
 	addi.d	$s2, $s2, 288
 	addi.d	$s1, $s1, 4
-	bge	$s4, $a0, .LBB23_106
-.LBB23_102:                             # =>This Inner Loop Header: Depth=1
+	bge	$s4, $a0, .LBB23_88
+.LBB23_84:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 208
 	ld.d	$a0, $fp, 168
 	add.d	$s7, $a1, $s2
@@ -2921,8 +2844,8 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	st.d	$a2, $sp, 64
 	fldx.s	$fa0, $a1, $s1
 	fcmp.ceq.s	$fcc0, $fa0, $fs1
-	bcnez	$fcc0, .LBB23_104
-# %bb.103:                              #   in Loop: Header=BB23_102 Depth=1
+	bcnez	$fcc0, .LBB23_86
+# %bb.85:                               #   in Loop: Header=BB23_84 Depth=1
 	ld.d	$a1, $fp, 24
 	add.d	$a2, $a1, $s3
 	fldx.s	$fa1, $a1, $s3
@@ -2942,12 +2865,12 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	addi.d	$a2, $sp, 56
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody12applyImpulseERK9btVector3S2_)
 	jirl	$ra, $ra, 0
-.LBB23_104:                             #   in Loop: Header=BB23_102 Depth=1
+.LBB23_86:                              #   in Loop: Header=BB23_84 Depth=1
 	ld.d	$a0, $fp, 120
 	fldx.s	$fa0, $a0, $s1
 	fcmp.ceq.s	$fcc0, $fa0, $fs1
-	bcnez	$fcc0, .LBB23_101
-# %bb.105:                              #   in Loop: Header=BB23_102 Depth=1
+	bcnez	$fcc0, .LBB23_83
+# %bb.87:                               #   in Loop: Header=BB23_84 Depth=1
 	ld.d	$a1, $fp, 208
 	add.d	$a1, $a1, $s2
 	ld.d	$s0, $a1, 88
@@ -3009,8 +2932,8 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody12applyImpulseERK9btVector3S2_)
 	jirl	$ra, $ra, 0
-	b	.LBB23_101
-.LBB23_106:                             # %.loopexit
+	b	.LBB23_83
+.LBB23_88:                              # %.loopexit
 	fld.d	$fs1, $sp, 112                  # 8-byte Folded Reload
 	fld.d	$fs0, $sp, 120                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload

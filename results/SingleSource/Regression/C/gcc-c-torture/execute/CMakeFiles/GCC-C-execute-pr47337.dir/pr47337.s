@@ -20,39 +20,71 @@ main:                                   # @main
 .LBB0_3:                                # %vector.body
 	pcalau12i	$a0, %pc_hi20(a)
 	addi.d	$a0, $a0, %pc_lo12(a)
-	xvrepli.w	$xr0, 1
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vrepli.w	$vr0, 1
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	bnez	$a1, .LBB0_5
 # %bb.4:
 	pcalau12i	$a1, %pc_hi20(b)
@@ -104,7 +136,7 @@ w:
 
 	.type	a,@object                       # @a
 	.local	a
-	.comm	a,1024,32
+	.comm	a,1024,16
 	.type	b,@object                       # @b
 	.local	b
 	.comm	b,4,4

@@ -552,8 +552,10 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.3)
 	addi.d	$s1, $a2, %pc_lo12(.L.str.3)
-	xvld	$xr0, $s1, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $s1, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s1, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $s1, 32
 	ld.h	$s2, $s1, 48
 	vst	$vr0, $a0, 32
@@ -648,10 +650,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 728
-	xvld	$xr0, $s1, 0
+	vld	$vr0, $s1, 0
 	st.d	$a0, $sp, 1992
 	st.d	$a1, $sp, 2008
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s1, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $s1, 32
 	vst	$vr0, $a0, 32
 	st.h	$s2, $a0, 48
@@ -748,8 +752,10 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.6)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.6)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -846,9 +852,11 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.8)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.8)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.b	$a2, $a2, 56
@@ -946,9 +954,11 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.10)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.10)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.b	$a2, $a2, 56
@@ -1045,13 +1055,15 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a0, $sp, 1992
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.12)
-	addi.d	$s2, $a2, %pc_lo12(.L.str.12)
-	xvld	$xr0, $s2, 0
-	ld.d	$s6, $s2, 32
-	ld.w	$s7, $s2, 40
-	xvst	$xr0, $a0, 0
-	st.d	$s6, $a0, 32
-	st.w	$s7, $a0, 40
+	addi.d	$s7, $a2, %pc_lo12(.L.str.12)
+	vld	$vr0, $s7, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s7, 16
+	ld.d	$fp, $s7, 32
+	ld.w	$s2, $s7, 40
+	vst	$vr0, $a0, 16
+	st.d	$fp, $a0, 32
+	st.w	$s2, $a0, 40
 	st.d	$a1, $sp, 2000
 	stx.b	$zero, $a0, $a1
 .Ltmp41:                                # EH_LABEL
@@ -1112,12 +1124,15 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 .Ltmp51:                                # EH_LABEL
 # %bb.75:                               # %.noexc117.i
 	ld.d	$a1, $sp, 664
-	pcalau12i	$a2, %pc_hi20(.L.str.14)
-	st.d	$a2, $sp, 336                   # 8-byte Folded Spill
-	xvld	$xr0, $a2, %pc_lo12(.L.str.14)
 	st.d	$a0, $sp, 696
 	st.d	$a1, $sp, 712
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.L.str.14)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.14)
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	st.d	$a2, $sp, 336                   # 8-byte Folded Spill
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 696
 	st.d	$a1, $sp, 704
 	stx.b	$zero, $a0, $a1
@@ -1147,8 +1162,10 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 680
 	pcalau12i	$a2, %pc_hi20(.L.str.15)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.15)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
@@ -1327,7 +1344,7 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	jirl	$ra, $ra, 0
 .Ltmp87:                                # EH_LABEL
 # %bb.87:                               # %.noexc.i144.i
-	addi.d	$s4, $sp, 1552
+	addi.d	$s5, $sp, 1552
 	addi.d	$a0, $sp, 488
 	st.d	$a0, $sp, 472
 	ori	$a0, $zero, 21
@@ -1357,12 +1374,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 .Ltmp92:                                # EH_LABEL
 	addi.d	$a1, $sp, 472
 	ori	$a2, $zero, 1
-	move	$a0, $s4
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp93:                                # EH_LABEL
 # %bb.89:                               # %.noexc.i148.i
-	addi.d	$s5, $sp, 1640
+	addi.d	$s6, $sp, 1640
 	addi.d	$a0, $sp, 456
 	st.d	$a0, $sp, 440
 	ori	$a0, $zero, 20
@@ -1392,7 +1409,7 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 .Ltmp98:                                # EH_LABEL
 	addi.d	$a1, $sp, 440
 	ori	$a2, $zero, 1
-	move	$a0, $s5
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp99:                                # EH_LABEL
@@ -1411,6 +1428,7 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	jirl	$ra, $ra, 0
 .Ltmp102:                               # EH_LABEL
 # %bb.92:                               # %.noexc153.i
+	move	$s2, $fp
 	ld.d	$a1, $sp, 376
 	st.d	$a0, $sp, 408
 	st.d	$a1, $sp, 424
@@ -1452,16 +1470,16 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	ori	$a0, $zero, 2
 	addi.d	$a1, $sp, 760
 	ori	$a2, $zero, 13
-	addi.d	$s2, $sp, 760
+	addi.d	$s4, $sp, 760
 	pcaddu18i	$ra, %call36(_Z8AddCases10TestCaseIDSt16initializer_listI8TestCaseE)
 	jirl	$ra, $ra, 0
 .Ltmp111:                               # EH_LABEL
 # %bb.95:
 	move	$fp, $a0
 	move	$s1, $zero
-	ori	$s4, $zero, 1
 	ori	$s5, $zero, 1
-	lu32i.d	$s5, 1
+	ori	$s6, $zero, 1
+	lu32i.d	$s6, 1
 	b	.LBB6_97
 	.p2align	4, , 16
 .LBB6_96:                               # %_ZN8TestCaseD2Ev.exit.i97
@@ -1470,13 +1488,13 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	addi.w	$s3, $zero, -1144
 	beq	$s1, $s3, .LBB6_108
 .LBB6_97:                               # =>This Inner Loop Header: Depth=1
-	add.d	$s3, $s2, $s1
+	add.d	$s3, $s4, $s1
 	ld.d	$s0, $s3, 1136
 	beqz	$s0, .LBB6_102
 # %bb.98:                               #   in Loop: Header=BB6_97 Depth=1
 	ld.d	$a0, $s0, 8
 	dbar	20
-	bne	$a0, $s5, .LBB6_100
+	bne	$a0, $s6, .LBB6_100
 # %bb.99:                               #   in Loop: Header=BB6_97 Depth=1
 	ld.d	$a0, $s0, 0
 	st.d	$zero, $s0, 8
@@ -1501,7 +1519,7 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	addi.d	$a1, $a0, -1
 	st.w	$a1, $s0, 8
 	addi.w	$a0, $a0, 0
-	beq	$a0, $s4, .LBB6_107
+	beq	$a0, $s5, .LBB6_107
 	.p2align	4, , 16
 .LBB6_102:                              # %_ZNSt12__shared_ptrIN9benchmark5RegexELN9__gnu_cxx12_Lock_policyE2EED2Ev.exit.i.i93
                                         #   in Loop: Header=BB6_97 Depth=1
@@ -1531,7 +1549,7 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	addi.w	$a2, $zero, -1
 	amadd_db.w	$a0, $a2, $a1
 	addi.w	$a0, $a0, 0
-	bne	$a0, $s4, .LBB6_102
+	bne	$a0, $s5, .LBB6_102
 .LBB6_107:                              #   in Loop: Header=BB6_97 Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv)
@@ -1669,13 +1687,15 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 728
-	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $s7, 0
 	st.d	$a0, $sp, 1992
 	st.d	$a1, $sp, 2008
-	xvst	$xr0, $a0, 0
-	st.d	$s6, $a0, 32
-	st.w	$s7, $a0, 40
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s7, 16
+	vst	$vr0, $a0, 16
+	st.d	$s2, $a0, 32
+	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
+	st.w	$a2, $a0, 40
 	st.d	$a1, $sp, 2000
 	stx.b	$zero, $a0, $a1
 .Ltmp113:                               # EH_LABEL
@@ -1734,10 +1754,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 # %bb.138:                              # %.noexc117.i121
 	ld.d	$a1, $sp, 664
 	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.14)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 696
 	st.d	$a1, $sp, 712
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 696
 	st.d	$a1, $sp, 704
 	stx.b	$zero, $a0, $a1
@@ -1764,10 +1786,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 # %bb.140:                              # %.noexc121.i129
 	ld.d	$a1, $sp, 632
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 664
 	st.d	$a1, $sp, 680
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	st.d	$a1, $sp, 672
@@ -2266,8 +2290,10 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.28)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.28)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.b	$a2, $a2, 48
 	vst	$vr0, $a0, 32
@@ -2330,10 +2356,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 # %bb.201:                              # %.noexc125.i264
 	ld.d	$a1, $sp, 664
 	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.14)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 696
 	st.d	$a1, $sp, 712
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 696
 	st.d	$a1, $sp, 704
 	stx.b	$zero, $a0, $a1
@@ -2360,10 +2388,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 # %bb.203:                              # %.noexc129.i268
 	ld.d	$a1, $sp, 632
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 664
 	st.d	$a1, $sp, 680
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	st.d	$a1, $sp, 672
@@ -2917,8 +2947,10 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.33)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.33)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.w	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -2981,10 +3013,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 # %bb.268:                              # %.noexc125.i395
 	ld.d	$a1, $sp, 664
 	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.14)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 696
 	st.d	$a1, $sp, 712
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 696
 	st.d	$a1, $sp, 704
 	stx.b	$zero, $a0, $a1
@@ -3011,10 +3045,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 # %bb.270:                              # %.noexc129.i403
 	ld.d	$a1, $sp, 632
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 664
 	st.d	$a1, $sp, 680
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	st.d	$a1, $sp, 672
@@ -3559,8 +3595,10 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.36)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.36)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.w	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -3623,10 +3661,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 # %bb.335:                              # %.noexc125.i561
 	ld.d	$a1, $sp, 664
 	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.14)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 696
 	st.d	$a1, $sp, 712
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 696
 	st.d	$a1, $sp, 704
 	stx.b	$zero, $a0, $a1
@@ -3653,10 +3693,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 # %bb.337:                              # %.noexc129.i569
 	ld.d	$a1, $sp, 632
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 664
 	st.d	$a1, $sp, 680
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	st.d	$a1, $sp, 672
@@ -4201,8 +4243,10 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.39)
 	addi.d	$s1, $a2, %pc_lo12(.L.str.39)
-	xvld	$xr0, $s1, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $s1, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s1, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $s1, 32
 	vst	$vr0, $a0, 32
 	st.d	$a1, $sp, 2000
@@ -4295,10 +4339,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 728
-	xvld	$xr0, $s1, 0
+	vld	$vr0, $s1, 0
 	st.d	$a0, $sp, 1992
 	st.d	$a1, $sp, 2008
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s1, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $s1, 32
 	vst	$vr0, $a0, 32
 	st.d	$a1, $sp, 2000
@@ -4394,8 +4440,10 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.42)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.42)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 45
 	vst	$vr0, $a0, 32
@@ -4492,8 +4540,10 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.44)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.44)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -4590,8 +4640,10 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.46)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.46)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -4722,11 +4774,13 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a0, $sp, 1992
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.50)
-	addi.d	$s4, $a2, %pc_lo12(.L.str.50)
-	xvld	$xr0, $s4, 0
-	ld.d	$s1, $s4, 32
-	xvst	$xr0, $a0, 0
-	st.d	$s1, $a0, 32
+	addi.d	$s1, $a2, %pc_lo12(.L.str.50)
+	vld	$vr0, $s1, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s1, 16
+	ld.d	$s4, $s1, 32
+	vst	$vr0, $a0, 16
+	st.d	$s4, $a0, 32
 	st.d	$a1, $sp, 2000
 	stx.b	$zero, $a0, $a1
 .Ltmp452:                               # EH_LABEL
@@ -4817,11 +4871,13 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 728
-	xvld	$xr0, $s4, 0
+	vld	$vr0, $s1, 0
 	st.d	$a0, $sp, 1992
 	st.d	$a1, $sp, 2008
-	xvst	$xr0, $a0, 0
-	st.d	$s1, $a0, 32
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s1, 16
+	vst	$vr0, $a0, 16
+	st.d	$s4, $a0, 32
 	st.d	$a1, $sp, 2000
 	stx.b	$zero, $a0, $a1
 .Ltmp458:                               # EH_LABEL
@@ -4912,11 +4968,13 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 728
-	xvld	$xr0, $s4, 0
+	vld	$vr0, $s1, 0
 	st.d	$a0, $sp, 1992
 	st.d	$a1, $sp, 2008
-	xvst	$xr0, $a0, 0
-	st.d	$s1, $a0, 32
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s1, 16
+	vst	$vr0, $a0, 16
+	st.d	$s4, $a0, 32
 	st.d	$a1, $sp, 2000
 	stx.b	$zero, $a0, $a1
 .Ltmp464:                               # EH_LABEL
@@ -5010,10 +5068,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.54)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.54)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 37
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 37
 	st.d	$a1, $sp, 2000
@@ -5108,10 +5168,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.56)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.56)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 39
 	st.d	$a1, $sp, 2000
@@ -5206,10 +5268,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.58)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.58)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 39
 	st.d	$a1, $sp, 2000
@@ -5304,11 +5368,13 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.60)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.60)
-	xvld	$xr0, $a2, 0
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
-	ld.h	$a2, $a2, 32
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
+	ld.h	$a2, $a2, 32
+	vst	$vr0, $a0, 16
+	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
 	st.h	$a2, $a0, 32
 	st.d	$a1, $sp, 2000
 	stx.b	$zero, $a0, $a1
@@ -5371,10 +5437,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 # %bb.550:                              # %.noexc117.i980
 	ld.d	$a1, $sp, 664
 	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.14)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 696
 	st.d	$a1, $sp, 712
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 696
 	st.d	$a1, $sp, 704
 	stx.b	$zero, $a0, $a1
@@ -5404,11 +5472,13 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 680
 	pcalau12i	$a2, %pc_hi20(.L.str.62)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.62)
-	xvld	$xr0, $a2, 0
-	st.d	$a2, $sp, 176                   # 8-byte Folded Spill
-	ld.d	$a2, $a2, 30
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
+	ld.d	$a2, $a2, 30
+	vst	$vr0, $a0, 0
+	st.d	$a2, $sp, 176                   # 8-byte Folded Spill
 	st.d	$a2, $a0, 30
 	st.d	$a1, $sp, 672
 	stx.b	$zero, $a0, $a1
@@ -5902,12 +5972,14 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 728
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	vld	$vr0, $a2, 0
 	st.d	$a0, $sp, 1992
 	st.d	$a1, $sp, 2008
-	xvst	$xr0, $a0, 0
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	st.h	$a2, $a0, 32
 	st.d	$a1, $sp, 2000
 	stx.b	$zero, $a0, $a1
@@ -5967,10 +6039,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 # %bb.613:                              # %.noexc117.i1135
 	ld.d	$a1, $sp, 664
 	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.14)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 696
 	st.d	$a1, $sp, 712
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 696
 	st.d	$a1, $sp, 704
 	stx.b	$zero, $a0, $a1
@@ -5996,12 +6070,14 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 .Ltmp576:                               # EH_LABEL
 # %bb.615:                              # %.noexc121.i1143
 	ld.d	$a1, $sp, 632
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 664
 	st.d	$a1, $sp, 680
-	xvst	$xr0, $a0, 0
-	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
 	st.d	$a2, $a0, 30
 	st.d	$a1, $sp, 672
 	stx.b	$zero, $a0, $a1
@@ -6492,12 +6568,14 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 728
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	vld	$vr0, $a2, 0
 	st.d	$a0, $sp, 1992
 	st.d	$a1, $sp, 2008
-	xvst	$xr0, $a0, 0
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	st.h	$a2, $a0, 32
 	st.d	$a1, $sp, 2000
 	stx.b	$zero, $a0, $a1
@@ -6557,10 +6635,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 # %bb.676:                              # %.noexc117.i1290
 	ld.d	$a1, $sp, 664
 	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.14)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 696
 	st.d	$a1, $sp, 712
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 696
 	st.d	$a1, $sp, 704
 	stx.b	$zero, $a0, $a1
@@ -6586,12 +6666,14 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 .Ltmp648:                               # EH_LABEL
 # %bb.678:                              # %.noexc121.i1298
 	ld.d	$a1, $sp, 632
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 664
 	st.d	$a1, $sp, 680
-	xvst	$xr0, $a0, 0
-	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
 	st.d	$a2, $a0, 30
 	st.d	$a1, $sp, 672
 	stx.b	$zero, $a0, $a1
@@ -7087,9 +7169,11 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.68)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.68)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a2, $a2, 31
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a2, $a0, 31
 	st.d	$a1, $sp, 2000
 	stx.b	$zero, $a0, $a1
@@ -7149,10 +7233,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 # %bb.739:                              # %.noexc125.i1445
 	ld.d	$a1, $sp, 664
 	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.14)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 696
 	st.d	$a1, $sp, 712
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 696
 	st.d	$a1, $sp, 704
 	stx.b	$zero, $a0, $a1
@@ -7178,12 +7264,14 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 .Ltmp720:                               # EH_LABEL
 # %bb.741:                              # %.noexc129.i1453
 	ld.d	$a1, $sp, 632
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 664
 	st.d	$a1, $sp, 680
-	xvst	$xr0, $a0, 0
-	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
 	st.d	$a2, $a0, 30
 	st.d	$a1, $sp, 672
 	stx.b	$zero, $a0, $a1
@@ -7723,10 +7811,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.70)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.70)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.b	$a2, $a2, 40
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.b	$a2, $a0, 40
 	st.d	$a1, $sp, 2000
@@ -7787,10 +7877,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 # %bb.806:                              # %.noexc125.i1611
 	ld.d	$a1, $sp, 664
 	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.14)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 696
 	st.d	$a1, $sp, 712
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 696
 	st.d	$a1, $sp, 704
 	stx.b	$zero, $a0, $a1
@@ -7816,12 +7908,14 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 .Ltmp798:                               # EH_LABEL
 # %bb.808:                              # %.noexc129.i1619
 	ld.d	$a1, $sp, 632
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 664
 	st.d	$a1, $sp, 680
-	xvst	$xr0, $a0, 0
-	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
 	st.d	$a2, $a0, 30
 	st.d	$a1, $sp, 672
 	stx.b	$zero, $a0, $a1
@@ -8361,10 +8455,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.72)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.72)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.b	$a2, $a2, 40
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.b	$a2, $a0, 40
 	st.d	$a1, $sp, 2000
@@ -8425,10 +8521,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 # %bb.873:                              # %.noexc125.i1777
 	ld.d	$a1, $sp, 664
 	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.14)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 696
 	st.d	$a1, $sp, 712
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 696
 	st.d	$a1, $sp, 704
 	stx.b	$zero, $a0, $a1
@@ -8454,12 +8552,14 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 .Ltmp876:                               # EH_LABEL
 # %bb.875:                              # %.noexc129.i1785
 	ld.d	$a1, $sp, 632
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 664
 	st.d	$a1, $sp, 680
-	xvst	$xr0, $a0, 0
-	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
 	st.d	$a2, $a0, 30
 	st.d	$a1, $sp, 672
 	stx.b	$zero, $a0, $a1
@@ -8998,11 +9098,13 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a0, $sp, 1992
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.74)
-	addi.d	$s2, $a2, %pc_lo12(.L.str.74)
-	xvld	$xr0, $s2, 0
-	ld.d	$s1, $s2, 30
-	xvst	$xr0, $a0, 0
-	st.d	$s1, $a0, 30
+	addi.d	$s1, $a2, %pc_lo12(.L.str.74)
+	vld	$vr0, $s1, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s1, 16
+	ld.d	$s2, $s1, 30
+	vst	$vr0, $a0, 16
+	st.d	$s2, $a0, 30
 	st.d	$a1, $sp, 2000
 	stx.b	$zero, $a0, $a1
 .Ltmp938:                               # EH_LABEL
@@ -9093,11 +9195,13 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 728
-	xvld	$xr0, $s2, 0
+	vld	$vr0, $s1, 0
 	st.d	$a0, $sp, 1992
 	st.d	$a1, $sp, 2008
-	xvst	$xr0, $a0, 0
-	st.d	$s1, $a0, 30
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s1, 16
+	vst	$vr0, $a0, 16
+	st.d	$s2, $a0, 30
 	st.d	$a1, $sp, 2000
 	stx.b	$zero, $a0, $a1
 .Ltmp944:                               # EH_LABEL
@@ -9191,10 +9295,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.77)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.77)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.w	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.w	$a2, $a0, 39
 	st.d	$a1, $sp, 2000
@@ -9289,10 +9395,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.79)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.79)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 37
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 37
 	st.d	$a1, $sp, 2000
@@ -9387,10 +9495,12 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	st.d	$a1, $sp, 2008
 	pcalau12i	$a2, %pc_hi20(.L.str.81)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.81)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 37
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 37
 	st.d	$a1, $sp, 2000
@@ -13783,10 +13893,10 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	move	$a0, $s5
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	move	$a0, $s4
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $s3
@@ -13853,7 +13963,7 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	move	$fp, $a0
 	move	$s2, $zero
 .LBB6_1660:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit200.i
-	move	$s5, $s8
+	move	$s6, $s8
 	b	.LBB6_1662
 .LBB6_1661:
 .Ltmp100:                               # EH_LABEL
@@ -13874,7 +13984,7 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	move	$fp, $a0
 	move	$s2, $zero
 .LBB6_1665:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit203.i
-	move	$s4, $s5
+	move	$s5, $s6
 	ld.d	$a0, $sp, 472
 	addi.d	$a1, $sp, 488
 	beq	$a0, $a1, .LBB6_1669
@@ -13897,7 +14007,7 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	move	$fp, $a0
 	move	$s2, $zero
 .LBB6_1669:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit206.i
-	move	$s3, $s4
+	move	$s3, $s5
 	ld.d	$a0, $sp, 504
 	addi.d	$a1, $sp, 520
 	beq	$a0, $a1, .LBB6_1675

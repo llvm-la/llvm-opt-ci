@@ -203,8 +203,9 @@ cli_regexec:                            # @cli_regexec
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	sll.d	$a0, $s1, $s0
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 176
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 176
+	vst	$vr0, $sp, 192
 	st.d	$s7, $sp, 8                     # 8-byte Folded Spill
 .LBB0_30:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_46 Depth 2

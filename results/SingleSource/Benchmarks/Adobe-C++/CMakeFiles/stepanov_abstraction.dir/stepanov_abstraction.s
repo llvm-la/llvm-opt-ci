@@ -520,26 +520,26 @@ main:                                   # @main
 # %bb.4:                                # %.lr.ph.i.preheader
 	sub.d	$a0, $s6, $s1
 	addi.d	$a1, $a0, -8
-	ori	$a2, $zero, 56
+	ori	$a2, $zero, 24
 	move	$a0, $s1
 	bltu	$a1, $a2, .LBB5_8
 # %bb.5:                                # %vector.ph
 	srli.d	$a0, $a1, 3
 	addi.d	$a1, $a0, 1
-	bstrpick.d	$a0, $a1, 61, 3
-	slli.d	$a2, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a1, 61, 2
+	slli.d	$a2, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a0, $s1, $a0
-	xvreplve0.d	$xr1, $xr0
-	addi.d	$a3, $s1, 32
+	vreplvei.d	$vr1, $vr0, 0
+	addi.d	$a3, $s1, 16
 	move	$a4, $a2
 	.p2align	4, , 16
 .LBB5_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr1, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vst	$vr1, $a3, -16
+	vst	$vr1, $a3, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB5_6
 # %bb.7:                                # %middle.block
 	beq	$a1, $a2, .LBB5_9
@@ -563,7 +563,7 @@ main:                                   # @main
 # %bb.11:                               # %.lr.ph.i68.preheader
 	sub.d	$a1, $a0, $a4
 	addi.d	$a1, $a1, -8
-	ori	$a2, $zero, 56
+	ori	$a2, $zero, 24
 	bgeu	$a1, $a2, .LBB5_13
 # %bb.12:
 	move	$a1, $a4
@@ -571,20 +571,20 @@ main:                                   # @main
 .LBB5_13:                               # %vector.ph298
 	srli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 1
-	bstrpick.d	$a1, $a2, 61, 3
-	slli.d	$a3, $a1, 3
-	slli.d	$a1, $a1, 6
+	bstrpick.d	$a1, $a2, 61, 2
+	slli.d	$a3, $a1, 2
+	slli.d	$a1, $a1, 5
 	add.d	$a1, $a4, $a1
-	xvreplve0.d	$xr1, $xr0
-	addi.d	$a4, $a4, 32
+	vreplvei.d	$vr1, $vr0, 0
+	addi.d	$a4, $a4, 16
 	move	$a5, $a3
 	.p2align	4, , 16
 .LBB5_14:                               # %vector.body303
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr1, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 64
+	vst	$vr1, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB5_14
 # %bb.15:                               # %middle.block307
 	beq	$a2, $a3, .LBB5_17
@@ -608,7 +608,7 @@ main:                                   # @main
 # %bb.19:                               # %.lr.ph.i71.preheader
 	sub.d	$a1, $a0, $a4
 	addi.d	$a1, $a1, -8
-	ori	$a2, $zero, 56
+	ori	$a2, $zero, 24
 	bgeu	$a1, $a2, .LBB5_21
 # %bb.20:
 	move	$a1, $a4
@@ -616,20 +616,20 @@ main:                                   # @main
 .LBB5_21:                               # %vector.ph312
 	srli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 1
-	bstrpick.d	$a1, $a2, 61, 3
-	slli.d	$a3, $a1, 3
-	slli.d	$a1, $a1, 6
+	bstrpick.d	$a1, $a2, 61, 2
+	slli.d	$a3, $a1, 2
+	slli.d	$a1, $a1, 5
 	add.d	$a1, $a4, $a1
-	xvreplve0.d	$xr1, $xr0
-	addi.d	$a4, $a4, 32
+	vreplvei.d	$vr1, $vr0, 0
+	addi.d	$a4, $a4, 16
 	move	$a5, $a3
 	.p2align	4, , 16
 .LBB5_22:                               # %vector.body317
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr1, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 64
+	vst	$vr1, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB5_22
 # %bb.23:                               # %middle.block321
 	beq	$a2, $a3, .LBB5_25
@@ -1129,32 +1129,32 @@ main:                                   # @main
 	sub.d	$a0, $s0, $fp
 	addi.d	$a1, $a0, -8
 	srli.d	$a0, $a1, 3
-	ori	$a2, $zero, 56
+	ori	$a2, $zero, 24
 	addi.d	$a0, $a0, 1
 	bltu	$a1, $a2, .LBB5_106
 # %bb.102:                              # %.lr.ph.i141.preheader
 	sub.d	$a2, $a5, $fp
-	ori	$a3, $zero, 64
+	ori	$a3, $zero, 32
 	bltu	$a2, $a3, .LBB5_106
 # %bb.103:                              # %vector.ph326
-	bstrpick.d	$a2, $a0, 61, 3
-	slli.d	$a4, $a2, 3
-	slli.d	$a3, $a2, 6
+	bstrpick.d	$a2, $a0, 61, 2
+	slli.d	$a4, $a2, 2
+	slli.d	$a3, $a2, 5
 	add.d	$a2, $a5, $a3
 	add.d	$a3, $fp, $a3
-	addi.d	$a6, $fp, 32
-	addi.d	$a5, $a5, 32
+	addi.d	$a6, $fp, 16
+	addi.d	$a5, $a5, 16
 	move	$a7, $a4
 	.p2align	4, , 16
 .LBB5_104:                              # %vector.body329
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a7, $a7, -8
-	addi.d	$a6, $a6, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a6, -16
+	vld	$vr1, $a6, 0
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a7, $a7, -4
+	addi.d	$a6, $a6, 32
+	addi.d	$a5, $a5, 32
 	bnez	$a7, .LBB5_104
 # %bb.105:                              # %middle.block335
 	bne	$a0, $a4, .LBB5_107
@@ -1174,31 +1174,31 @@ main:                                   # @main
 	bne	$a5, $s0, .LBB5_107
 .LBB5_108:                              # %_ZN9benchmark4copyIPdP12ValueWrapperIdEEEvT_S5_T0_.exit
 	ld.d	$a5, $s1, %pc_lo12(DV10Mpb)
-	ori	$a2, $zero, 56
+	ori	$a2, $zero, 24
 	bltu	$a1, $a2, .LBB5_113
 # %bb.109:                              # %_ZN9benchmark4copyIPdP12ValueWrapperIdEEEvT_S5_T0_.exit
 	sub.d	$a1, $a5, $fp
-	ori	$a2, $zero, 64
+	ori	$a2, $zero, 32
 	bltu	$a1, $a2, .LBB5_113
 # %bb.110:                              # %vector.ph343
-	bstrpick.d	$a1, $a0, 61, 3
-	slli.d	$a3, $a1, 3
-	slli.d	$a2, $a1, 6
+	bstrpick.d	$a1, $a0, 61, 2
+	slli.d	$a3, $a1, 2
+	slli.d	$a2, $a1, 5
 	add.d	$a1, $a5, $a2
 	add.d	$a2, $fp, $a2
-	addi.d	$a4, $fp, 32
-	addi.d	$a5, $a5, 32
+	addi.d	$a4, $fp, 16
+	addi.d	$a5, $a5, 16
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB5_111:                              # %vector.body346
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB5_111
 # %bb.112:                              # %middle.block353
 	bne	$a0, $a3, .LBB5_114
@@ -1517,13 +1517,13 @@ _Z19test_insertion_sortIPddEvT_S1_S1_S1_T0_PKc: # @_Z19test_insertion_sortIPddEv
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s7, $a1, $a0
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s8, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s8, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s0, $a0
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	add.d	$s4, $s2, $a0
@@ -1556,20 +1556,20 @@ _Z19test_insertion_sortIPddEvT_S1_S1_S1_T0_PKc: # @_Z19test_insertion_sortIPddEv
 	bnez	$s7, .LBB6_10
 # %bb.7:                                # %vector.body.preheader
                                         #   in Loop: Header=BB6_6 Depth=1
-	addi.d	$a0, $s0, 32
-	addi.d	$a1, $s2, 32
+	addi.d	$a0, $s0, 16
+	addi.d	$a1, $s2, 16
 	move	$a2, $s8
 	.p2align	4, , 16
 .LBB6_8:                                # %vector.body
                                         #   Parent Loop BB6_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a1, -32
-	xvld	$xr1, $a1, 0
-	xvst	$xr0, $a0, -32
-	xvst	$xr1, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a1, -16
+	vld	$vr1, $a1, 0
+	vst	$vr0, $a0, -16
+	vst	$vr1, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB6_8
 # %bb.9:                                # %middle.block
                                         #   in Loop: Header=BB6_6 Depth=1
@@ -1648,13 +1648,13 @@ _Z19test_insertion_sortIPddEvT_S1_S1_S1_T0_PKc: # @_Z19test_insertion_sortIPddEv
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s0, $a0
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	add.d	$a0, $s2, $a0
@@ -1687,20 +1687,20 @@ _Z19test_insertion_sortIPddEvT_S1_S1_S1_T0_PKc: # @_Z19test_insertion_sortIPddEv
 	bnez	$s6, .LBB6_28
 # %bb.25:                               # %vector.body60.preheader
                                         #   in Loop: Header=BB6_24 Depth=1
-	addi.d	$a0, $s0, 32
-	addi.d	$a1, $s2, 32
+	addi.d	$a0, $s0, 16
+	addi.d	$a1, $s2, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB6_26:                               # %vector.body60
                                         #   Parent Loop BB6_24 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a1, -32
-	xvld	$xr1, $a1, 0
-	xvst	$xr0, $a0, -32
-	xvst	$xr1, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a1, -16
+	vld	$vr1, $a1, 0
+	vst	$vr0, $a0, -16
+	vst	$vr1, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB6_26
 # %bb.27:                               # %middle.block67
                                         #   in Loop: Header=BB6_24 Depth=1
@@ -2021,13 +2021,13 @@ _Z19test_insertion_sortI14PointerWrapperIdEdEvT_S2_S2_S2_T0_PKc: # @_Z19test_ins
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s7, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s8, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s8, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s2, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s0, $a0
@@ -2063,20 +2063,20 @@ _Z19test_insertion_sortI14PointerWrapperIdEdEvT_S2_S2_S2_T0_PKc: # @_Z19test_ins
 	.p2align	4, , 16
 .LBB7_27:                               # %vector.body.preheader
                                         #   in Loop: Header=BB7_25 Depth=1
-	addi.d	$a0, $s2, 32
-	addi.d	$a1, $s0, 32
+	addi.d	$a0, $s2, 16
+	addi.d	$a1, $s0, 16
 	move	$a2, $s8
 	.p2align	4, , 16
 .LBB7_28:                               # %vector.body
                                         #   Parent Loop BB7_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a0, -32
-	xvld	$xr1, $a0, 0
-	xvst	$xr0, $a1, -32
-	xvst	$xr1, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a0, -16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB7_28
 # %bb.29:                               # %middle.block
                                         #   in Loop: Header=BB7_25 Depth=1
@@ -2153,13 +2153,13 @@ _Z19test_insertion_sortI14PointerWrapperIdEdEvT_S2_S2_S2_T0_PKc: # @_Z19test_ins
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s7, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s8, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s8, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s2, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s0, $a0
@@ -2196,20 +2196,20 @@ _Z19test_insertion_sortI14PointerWrapperIdEdEvT_S2_S2_S2_T0_PKc: # @_Z19test_ins
 	.p2align	4, , 16
 .LBB7_45:                               # %vector.body63.preheader
                                         #   in Loop: Header=BB7_43 Depth=1
-	addi.d	$a0, $s2, 32
-	addi.d	$a1, $s0, 32
+	addi.d	$a0, $s2, 16
+	addi.d	$a1, $s0, 16
 	move	$a2, $s8
 	.p2align	4, , 16
 .LBB7_46:                               # %vector.body63
                                         #   Parent Loop BB7_43 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a0, -32
-	xvld	$xr1, $a0, 0
-	xvst	$xr0, $a1, -32
-	xvst	$xr1, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a0, -16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB7_46
 # %bb.47:                               # %middle.block70
                                         #   in Loop: Header=BB7_43 Depth=1
@@ -2313,13 +2313,13 @@ _Z19test_insertion_sortIP12ValueWrapperIdES1_EvT_S3_S3_S3_T0_PKc: # @_Z19test_in
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s7, $a1, $a0
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s8, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s8, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s0, $a0
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	add.d	$s4, $s2, $a0
@@ -2352,20 +2352,20 @@ _Z19test_insertion_sortIP12ValueWrapperIdES1_EvT_S3_S3_S3_T0_PKc: # @_Z19test_in
 	bnez	$s7, .LBB8_10
 # %bb.7:                                # %vector.body.preheader
                                         #   in Loop: Header=BB8_6 Depth=1
-	addi.d	$a0, $s0, 32
-	addi.d	$a1, $s2, 32
+	addi.d	$a0, $s0, 16
+	addi.d	$a1, $s2, 16
 	move	$a2, $s8
 	.p2align	4, , 16
 .LBB8_8:                                # %vector.body
                                         #   Parent Loop BB8_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a1, -32
-	xvld	$xr1, $a1, 0
-	xvst	$xr0, $a0, -32
-	xvst	$xr1, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a1, -16
+	vld	$vr1, $a1, 0
+	vst	$vr0, $a0, -16
+	vst	$vr1, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB8_8
 # %bb.9:                                # %middle.block
                                         #   in Loop: Header=BB8_6 Depth=1
@@ -2445,13 +2445,13 @@ _Z19test_insertion_sortIP12ValueWrapperIdES1_EvT_S3_S3_S3_T0_PKc: # @_Z19test_in
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s0, $a0
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	add.d	$a0, $s2, $a0
@@ -2484,20 +2484,20 @@ _Z19test_insertion_sortIP12ValueWrapperIdES1_EvT_S3_S3_S3_T0_PKc: # @_Z19test_in
 	bnez	$s6, .LBB8_28
 # %bb.25:                               # %vector.body60.preheader
                                         #   in Loop: Header=BB8_24 Depth=1
-	addi.d	$a0, $s0, 32
-	addi.d	$a1, $s2, 32
+	addi.d	$a0, $s0, 16
+	addi.d	$a1, $s2, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB8_26:                               # %vector.body60
                                         #   Parent Loop BB8_24 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a1, -32
-	xvld	$xr1, $a1, 0
-	xvst	$xr0, $a0, -32
-	xvst	$xr1, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a1, -16
+	vld	$vr1, $a1, 0
+	vst	$vr0, $a0, -16
+	vst	$vr1, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB8_26
 # %bb.27:                               # %middle.block67
                                         #   in Loop: Header=BB8_24 Depth=1
@@ -2820,13 +2820,13 @@ _Z19test_insertion_sortI14PointerWrapperI12ValueWrapperIdEES2_EvT_S4_S4_S4_T0_PK
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s7, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s8, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s8, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s2, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s0, $a0
@@ -2862,20 +2862,20 @@ _Z19test_insertion_sortI14PointerWrapperI12ValueWrapperIdEES2_EvT_S4_S4_S4_T0_PK
 	.p2align	4, , 16
 .LBB9_27:                               # %vector.body.preheader
                                         #   in Loop: Header=BB9_25 Depth=1
-	addi.d	$a0, $s2, 32
-	addi.d	$a1, $s0, 32
+	addi.d	$a0, $s2, 16
+	addi.d	$a1, $s0, 16
 	move	$a2, $s8
 	.p2align	4, , 16
 .LBB9_28:                               # %vector.body
                                         #   Parent Loop BB9_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a0, -32
-	xvld	$xr1, $a0, 0
-	xvst	$xr0, $a1, -32
-	xvst	$xr1, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a0, -16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB9_28
 # %bb.29:                               # %middle.block
                                         #   in Loop: Header=BB9_25 Depth=1
@@ -2953,13 +2953,13 @@ _Z19test_insertion_sortI14PointerWrapperI12ValueWrapperIdEES2_EvT_S4_S4_S4_T0_PK
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s7, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s8, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s8, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s2, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s0, $a0
@@ -2996,20 +2996,20 @@ _Z19test_insertion_sortI14PointerWrapperI12ValueWrapperIdEES2_EvT_S4_S4_S4_T0_PK
 	.p2align	4, , 16
 .LBB9_45:                               # %vector.body64.preheader
                                         #   in Loop: Header=BB9_43 Depth=1
-	addi.d	$a0, $s2, 32
-	addi.d	$a1, $s0, 32
+	addi.d	$a0, $s2, 16
+	addi.d	$a1, $s0, 16
 	move	$a2, $s8
 	.p2align	4, , 16
 .LBB9_46:                               # %vector.body64
                                         #   Parent Loop BB9_43 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a0, -32
-	xvld	$xr1, $a0, 0
-	xvst	$xr0, $a1, -32
-	xvst	$xr1, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a0, -16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB9_46
 # %bb.47:                               # %middle.block71
                                         #   in Loop: Header=BB9_43 Depth=1
@@ -3113,13 +3113,13 @@ _Z19test_insertion_sortIP12ValueWrapperIS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IdEEE
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s7, $a1, $a0
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s8, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s8, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s0, $a0
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	add.d	$s4, $s2, $a0
@@ -3152,20 +3152,20 @@ _Z19test_insertion_sortIP12ValueWrapperIS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IdEEE
 	bnez	$s7, .LBB10_10
 # %bb.7:                                # %vector.body.preheader
                                         #   in Loop: Header=BB10_6 Depth=1
-	addi.d	$a0, $s0, 32
-	addi.d	$a1, $s2, 32
+	addi.d	$a0, $s0, 16
+	addi.d	$a1, $s2, 16
 	move	$a2, $s8
 	.p2align	4, , 16
 .LBB10_8:                               # %vector.body
                                         #   Parent Loop BB10_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a1, -32
-	xvld	$xr1, $a1, 0
-	xvst	$xr0, $a0, -32
-	xvst	$xr1, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a1, -16
+	vld	$vr1, $a1, 0
+	vst	$vr0, $a0, -16
+	vst	$vr1, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB10_8
 # %bb.9:                                # %middle.block
                                         #   in Loop: Header=BB10_6 Depth=1
@@ -3245,13 +3245,13 @@ _Z19test_insertion_sortIP12ValueWrapperIS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IdEEE
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s0, $a0
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	add.d	$a0, $s2, $a0
@@ -3284,20 +3284,20 @@ _Z19test_insertion_sortIP12ValueWrapperIS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IdEEE
 	bnez	$s6, .LBB10_28
 # %bb.25:                               # %vector.body60.preheader
                                         #   in Loop: Header=BB10_24 Depth=1
-	addi.d	$a0, $s0, 32
-	addi.d	$a1, $s2, 32
+	addi.d	$a0, $s0, 16
+	addi.d	$a1, $s2, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB10_26:                              # %vector.body60
                                         #   Parent Loop BB10_24 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a1, -32
-	xvld	$xr1, $a1, 0
-	xvst	$xr0, $a0, -32
-	xvst	$xr1, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a1, -16
+	vld	$vr1, $a1, 0
+	vst	$vr0, $a0, -16
+	vst	$vr1, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB10_26
 # %bb.27:                               # %middle.block67
                                         #   in Loop: Header=BB10_24 Depth=1
@@ -3620,13 +3620,13 @@ _Z19test_insertion_sortI14PointerWrapperI12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_I
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s7, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s8, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s8, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s2, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s0, $a0
@@ -3662,20 +3662,20 @@ _Z19test_insertion_sortI14PointerWrapperI12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_I
 	.p2align	4, , 16
 .LBB11_27:                              # %vector.body.preheader
                                         #   in Loop: Header=BB11_25 Depth=1
-	addi.d	$a0, $s2, 32
-	addi.d	$a1, $s0, 32
+	addi.d	$a0, $s2, 16
+	addi.d	$a1, $s0, 16
 	move	$a2, $s8
 	.p2align	4, , 16
 .LBB11_28:                              # %vector.body
                                         #   Parent Loop BB11_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a0, -32
-	xvld	$xr1, $a0, 0
-	xvst	$xr0, $a1, -32
-	xvst	$xr1, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a0, -16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB11_28
 # %bb.29:                               # %middle.block
                                         #   in Loop: Header=BB11_25 Depth=1
@@ -3753,13 +3753,13 @@ _Z19test_insertion_sortI14PointerWrapperI12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_I
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s7, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s8, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s8, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s2, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s0, $a0
@@ -3796,20 +3796,20 @@ _Z19test_insertion_sortI14PointerWrapperI12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_I
 	.p2align	4, , 16
 .LBB11_45:                              # %vector.body64.preheader
                                         #   in Loop: Header=BB11_43 Depth=1
-	addi.d	$a0, $s2, 32
-	addi.d	$a1, $s0, 32
+	addi.d	$a0, $s2, 16
+	addi.d	$a1, $s0, 16
 	move	$a2, $s8
 	.p2align	4, , 16
 .LBB11_46:                              # %vector.body64
                                         #   Parent Loop BB11_43 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a0, -32
-	xvld	$xr1, $a0, 0
-	xvst	$xr0, $a1, -32
-	xvst	$xr1, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a0, -16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB11_46
 # %bb.47:                               # %middle.block71
                                         #   in Loop: Header=BB11_43 Depth=1
@@ -3908,13 +3908,13 @@ _Z14test_quicksortIPddEvT_S1_S1_S1_T0_PKc: # @_Z14test_quicksortIPddEvT_S1_S1_S1
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s0, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s2, $a0
@@ -3946,20 +3946,20 @@ _Z14test_quicksortIPddEvT_S1_S1_S1_T0_PKc: # @_Z14test_quicksortIPddEvT_S1_S1_S1
 	bnez	$s6, .LBB12_9
 # %bb.6:                                # %vector.body.preheader
                                         #   in Loop: Header=BB12_5 Depth=1
-	addi.d	$a0, $s0, 32
-	addi.d	$a1, $s2, 32
+	addi.d	$a0, $s0, 16
+	addi.d	$a1, $s2, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB12_7:                               # %vector.body
                                         #   Parent Loop BB12_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a1, -32
-	xvld	$xr1, $a1, 0
-	xvst	$xr0, $a0, -32
-	xvst	$xr1, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a1, -16
+	vld	$vr1, $a1, 0
+	vst	$vr0, $a0, -16
+	vst	$vr1, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB12_7
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB12_5 Depth=1
@@ -4137,13 +4137,13 @@ _Z14test_quicksortI14PointerWrapperIdEdEvT_S2_S2_S2_T0_PKc: # @_Z14test_quicksor
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s2, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s0, $a0
@@ -4178,20 +4178,20 @@ _Z14test_quicksortI14PointerWrapperIdEdEvT_S2_S2_S2_T0_PKc: # @_Z14test_quicksor
 	.p2align	4, , 16
 .LBB13_13:                              # %vector.body.preheader
                                         #   in Loop: Header=BB13_11 Depth=1
-	addi.d	$a0, $s2, 32
-	addi.d	$a1, $s0, 32
+	addi.d	$a0, $s2, 16
+	addi.d	$a1, $s0, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB13_14:                              # %vector.body
                                         #   Parent Loop BB13_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a0, -32
-	xvld	$xr1, $a0, 0
-	xvst	$xr0, $a1, -32
-	xvst	$xr1, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a0, -16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB13_14
 # %bb.15:                               # %middle.block
                                         #   in Loop: Header=BB13_11 Depth=1
@@ -4293,13 +4293,13 @@ _Z14test_quicksortIP12ValueWrapperIdES1_EvT_S3_S3_S3_T0_PKc: # @_Z14test_quickso
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s0, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s2, $a0
@@ -4331,20 +4331,20 @@ _Z14test_quicksortIP12ValueWrapperIdES1_EvT_S3_S3_S3_T0_PKc: # @_Z14test_quickso
 	bnez	$s6, .LBB14_9
 # %bb.6:                                # %vector.body.preheader
                                         #   in Loop: Header=BB14_5 Depth=1
-	addi.d	$a0, $s0, 32
-	addi.d	$a1, $s2, 32
+	addi.d	$a0, $s0, 16
+	addi.d	$a1, $s2, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB14_7:                               # %vector.body
                                         #   Parent Loop BB14_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a1, -32
-	xvld	$xr1, $a1, 0
-	xvst	$xr0, $a0, -32
-	xvst	$xr1, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a1, -16
+	vld	$vr1, $a1, 0
+	vst	$vr0, $a0, -16
+	vst	$vr1, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB14_7
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB14_5 Depth=1
@@ -4522,13 +4522,13 @@ _Z14test_quicksortI14PointerWrapperI12ValueWrapperIdEES2_EvT_S4_S4_S4_T0_PKc: # 
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s2, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s0, $a0
@@ -4563,20 +4563,20 @@ _Z14test_quicksortI14PointerWrapperI12ValueWrapperIdEES2_EvT_S4_S4_S4_T0_PKc: # 
 	.p2align	4, , 16
 .LBB15_13:                              # %vector.body.preheader
                                         #   in Loop: Header=BB15_11 Depth=1
-	addi.d	$a0, $s2, 32
-	addi.d	$a1, $s0, 32
+	addi.d	$a0, $s2, 16
+	addi.d	$a1, $s0, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB15_14:                              # %vector.body
                                         #   Parent Loop BB15_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a0, -32
-	xvld	$xr1, $a0, 0
-	xvst	$xr0, $a1, -32
-	xvst	$xr1, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a0, -16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB15_14
 # %bb.15:                               # %middle.block
                                         #   in Loop: Header=BB15_11 Depth=1
@@ -4678,13 +4678,13 @@ _Z14test_quicksortIP12ValueWrapperIS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IdEEEEEEEE
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s0, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s2, $a0
@@ -4716,20 +4716,20 @@ _Z14test_quicksortIP12ValueWrapperIS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IdEEEEEEEE
 	bnez	$s6, .LBB16_9
 # %bb.6:                                # %vector.body.preheader
                                         #   in Loop: Header=BB16_5 Depth=1
-	addi.d	$a0, $s0, 32
-	addi.d	$a1, $s2, 32
+	addi.d	$a0, $s0, 16
+	addi.d	$a1, $s2, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB16_7:                               # %vector.body
                                         #   Parent Loop BB16_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a1, -32
-	xvld	$xr1, $a1, 0
-	xvst	$xr0, $a0, -32
-	xvst	$xr1, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a1, -16
+	vld	$vr1, $a1, 0
+	vst	$vr0, $a0, -16
+	vst	$vr1, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB16_7
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB16_5 Depth=1
@@ -4907,13 +4907,13 @@ _Z14test_quicksortI14PointerWrapperI12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s2, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s0, $a0
@@ -4948,20 +4948,20 @@ _Z14test_quicksortI14PointerWrapperI12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS
 	.p2align	4, , 16
 .LBB17_13:                              # %vector.body.preheader
                                         #   in Loop: Header=BB17_11 Depth=1
-	addi.d	$a0, $s2, 32
-	addi.d	$a1, $s0, 32
+	addi.d	$a0, $s2, 16
+	addi.d	$a1, $s0, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB17_14:                              # %vector.body
                                         #   Parent Loop BB17_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a0, -32
-	xvld	$xr1, $a0, 0
-	xvst	$xr0, $a1, -32
-	xvst	$xr1, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a0, -16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB17_14
 # %bb.15:                               # %middle.block
                                         #   in Loop: Header=BB17_11 Depth=1
@@ -5063,13 +5063,13 @@ _Z14test_heap_sortIPddEvT_S1_S1_S1_T0_PKc: # @_Z14test_heap_sortIPddEvT_S1_S1_S1
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s0, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s2, $a0
@@ -5101,20 +5101,20 @@ _Z14test_heap_sortIPddEvT_S1_S1_S1_T0_PKc: # @_Z14test_heap_sortIPddEvT_S1_S1_S1
 	bnez	$s6, .LBB18_9
 # %bb.6:                                # %vector.body.preheader
                                         #   in Loop: Header=BB18_5 Depth=1
-	addi.d	$a0, $s0, 32
-	addi.d	$a1, $s2, 32
+	addi.d	$a0, $s0, 16
+	addi.d	$a1, $s2, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB18_7:                               # %vector.body
                                         #   Parent Loop BB18_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a1, -32
-	xvld	$xr1, $a1, 0
-	xvst	$xr0, $a0, -32
-	xvst	$xr1, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a1, -16
+	vld	$vr1, $a1, 0
+	vst	$vr0, $a0, -16
+	vst	$vr1, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB18_7
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB18_5 Depth=1
@@ -5292,13 +5292,13 @@ _Z14test_heap_sortI14PointerWrapperIdEdEvT_S2_S2_S2_T0_PKc: # @_Z14test_heap_sor
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s2, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s0, $a0
@@ -5333,20 +5333,20 @@ _Z14test_heap_sortI14PointerWrapperIdEdEvT_S2_S2_S2_T0_PKc: # @_Z14test_heap_sor
 	.p2align	4, , 16
 .LBB19_13:                              # %vector.body.preheader
                                         #   in Loop: Header=BB19_11 Depth=1
-	addi.d	$a0, $s2, 32
-	addi.d	$a1, $s0, 32
+	addi.d	$a0, $s2, 16
+	addi.d	$a1, $s0, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB19_14:                              # %vector.body
                                         #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a0, -32
-	xvld	$xr1, $a0, 0
-	xvst	$xr0, $a1, -32
-	xvst	$xr1, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a0, -16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB19_14
 # %bb.15:                               # %middle.block
                                         #   in Loop: Header=BB19_11 Depth=1
@@ -5448,13 +5448,13 @@ _Z14test_heap_sortIP12ValueWrapperIdES1_EvT_S3_S3_S3_T0_PKc: # @_Z14test_heap_so
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s0, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s2, $a0
@@ -5486,20 +5486,20 @@ _Z14test_heap_sortIP12ValueWrapperIdES1_EvT_S3_S3_S3_T0_PKc: # @_Z14test_heap_so
 	bnez	$s6, .LBB20_9
 # %bb.6:                                # %vector.body.preheader
                                         #   in Loop: Header=BB20_5 Depth=1
-	addi.d	$a0, $s0, 32
-	addi.d	$a1, $s2, 32
+	addi.d	$a0, $s0, 16
+	addi.d	$a1, $s2, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB20_7:                               # %vector.body
                                         #   Parent Loop BB20_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a1, -32
-	xvld	$xr1, $a1, 0
-	xvst	$xr0, $a0, -32
-	xvst	$xr1, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a1, -16
+	vld	$vr1, $a1, 0
+	vst	$vr0, $a0, -16
+	vst	$vr1, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB20_7
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB20_5 Depth=1
@@ -5677,13 +5677,13 @@ _Z14test_heap_sortI14PointerWrapperI12ValueWrapperIdEES2_EvT_S4_S4_S4_T0_PKc: # 
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s2, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s0, $a0
@@ -5718,20 +5718,20 @@ _Z14test_heap_sortI14PointerWrapperI12ValueWrapperIdEES2_EvT_S4_S4_S4_T0_PKc: # 
 	.p2align	4, , 16
 .LBB21_13:                              # %vector.body.preheader
                                         #   in Loop: Header=BB21_11 Depth=1
-	addi.d	$a0, $s2, 32
-	addi.d	$a1, $s0, 32
+	addi.d	$a0, $s2, 16
+	addi.d	$a1, $s0, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB21_14:                              # %vector.body
                                         #   Parent Loop BB21_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a0, -32
-	xvld	$xr1, $a0, 0
-	xvst	$xr0, $a1, -32
-	xvst	$xr1, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a0, -16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB21_14
 # %bb.15:                               # %middle.block
                                         #   in Loop: Header=BB21_11 Depth=1
@@ -5833,13 +5833,13 @@ _Z14test_heap_sortIP12ValueWrapperIS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IdEEEEEEEE
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s0, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s2, $a0
@@ -5871,20 +5871,20 @@ _Z14test_heap_sortIP12ValueWrapperIS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IdEEEEEEEE
 	bnez	$s6, .LBB22_9
 # %bb.6:                                # %vector.body.preheader
                                         #   in Loop: Header=BB22_5 Depth=1
-	addi.d	$a0, $s0, 32
-	addi.d	$a1, $s2, 32
+	addi.d	$a0, $s0, 16
+	addi.d	$a1, $s2, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB22_7:                               # %vector.body
                                         #   Parent Loop BB22_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a1, -32
-	xvld	$xr1, $a1, 0
-	xvst	$xr0, $a0, -32
-	xvst	$xr1, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a1, -16
+	vld	$vr1, $a1, 0
+	vst	$vr0, $a0, -16
+	vst	$vr1, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB22_7
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB22_5 Depth=1
@@ -6062,13 +6062,13 @@ _Z14test_heap_sortI14PointerWrapperI12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS
 	addi.d	$a1, $a1, -8
 	srli.d	$a2, $a1, 3
 	addi.d	$a2, $a2, 1
-	sltui	$a1, $a1, 56
-	sltui	$a0, $a0, 64
+	sltui	$a1, $a1, 24
+	sltui	$a0, $a0, 32
 	or	$s6, $a1, $a0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $a2, 61, 3
-	slli.d	$s7, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a2, 61, 2
+	slli.d	$s7, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a1, $s2, $a0
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	add.d	$a0, $s0, $a0
@@ -6103,20 +6103,20 @@ _Z14test_heap_sortI14PointerWrapperI12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS
 	.p2align	4, , 16
 .LBB23_13:                              # %vector.body.preheader
                                         #   in Loop: Header=BB23_11 Depth=1
-	addi.d	$a0, $s2, 32
-	addi.d	$a1, $s0, 32
+	addi.d	$a0, $s2, 16
+	addi.d	$a1, $s0, 16
 	move	$a2, $s7
 	.p2align	4, , 16
 .LBB23_14:                              # %vector.body
                                         #   Parent Loop BB23_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a0, -32
-	xvld	$xr1, $a0, 0
-	xvst	$xr0, $a1, -32
-	xvst	$xr1, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a0, $a0, 64
+	vld	$vr0, $a0, -16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB23_14
 # %bb.15:                               # %middle.block
                                         #   in Loop: Header=BB23_11 Depth=1

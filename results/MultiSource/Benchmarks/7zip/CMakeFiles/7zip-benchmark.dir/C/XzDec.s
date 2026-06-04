@@ -545,7 +545,7 @@ MixCoder_Init:                          # @MixCoder_Init
 	blt	$a1, $a0, .LBB8_3
 # %bb.1:                                # %.lr.ph
 	addi.d	$a0, $a1, -1
-	ori	$a2, $zero, 9
+	ori	$a2, $zero, 5
 	bstrpick.d	$a0, $a0, 31, 0
 	bgeu	$a1, $a2, .LBB8_4
 # %bb.2:
@@ -556,23 +556,23 @@ MixCoder_Init:                          # @MixCoder_Init
 	beq	$a1, $a0, .LBB8_9
 	b	.LBB8_11
 .LBB8_4:                                # %vector.ph
-	addi.d	$a2, $fp, 56
-	bstrpick.d	$a1, $a0, 30, 3
-	slli.d	$a1, $a1, 3
-	addi.d	$a3, $fp, 36
-	xvrepli.b	$xr0, 0
+	bstrpick.d	$a1, $a0, 30, 2
+	slli.d	$a1, $a1, 2
+	addi.d	$a2, $fp, 48
+	addi.d	$a3, $fp, 28
+	vrepli.b	$vr0, 0
 	move	$a4, $a1
 	.p2align	4, , 16
 .LBB8_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, 0
-	xvst	$xr0, $a2, 32
-	xvst	$xr0, $a2, -24
-	xvst	$xr0, $a2, 8
-	xvst	$xr0, $a3, -16
-	addi.d	$a4, $a4, -8
-	addi.d	$a2, $a2, 64
-	addi.d	$a3, $a3, 32
+	vst	$vr0, $a2, 8
+	vst	$vr0, $a2, 24
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	vst	$vr0, $a3, -8
+	addi.d	$a4, $a4, -4
+	addi.d	$a2, $a2, 32
+	addi.d	$a3, $a3, 16
 	bnez	$a4, .LBB8_5
 # %bb.6:                                # %middle.block
 	beq	$a1, $a0, .LBB8_9
@@ -1349,46 +1349,42 @@ XzDec_Init:                             # @XzDec_Init
 # %bb.16:
 	pcalau12i	$a1, %pc_hi20(Lzma2State_Free)
 	addi.d	$a1, $a1, %pc_lo12(Lzma2State_Free)
+	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
 	st.d	$a1, $fp, 120
-	pcalau12i	$a2, %pc_hi20(Lzma2State_SetProps)
-	addi.d	$a2, $a2, %pc_lo12(Lzma2State_SetProps)
-	st.d	$a2, $fp, 128
-	pcalau12i	$a3, %pc_hi20(Lzma2State_Init)
-	addi.d	$a3, $a3, %pc_lo12(Lzma2State_Init)
-	st.d	$a3, $fp, 136
-	pcalau12i	$a4, %pc_hi20(Lzma2State_Code)
-	addi.d	$a4, $a4, %pc_lo12(Lzma2State_Code)
-	st.d	$a4, $fp, 144
+	pcalau12i	$a1, %pc_hi20(Lzma2State_SetProps)
+	addi.d	$a1, $a1, %pc_lo12(Lzma2State_SetProps)
+	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a1, $fp, 128
+	pcalau12i	$a1, %pc_hi20(Lzma2State_Init)
+	addi.d	$s7, $a1, %pc_lo12(Lzma2State_Init)
+	st.d	$s7, $fp, 136
+	pcalau12i	$a1, %pc_hi20(Lzma2State_Code)
+	addi.d	$s8, $a1, %pc_lo12(Lzma2State_Code)
+	st.d	$s8, $fp, 144
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
 	vst	$vr0, $a0, 16
 	beqz	$s3, .LBB13_26
 # %bb.17:                               # %.peel.next.preheader
-	addi.d	$s6, $fp, 88
-	addi.d	$s7, $fp, 152
-	vinsgr2vr.d	$vr0, $a3, 0
-	vinsgr2vr.d	$vr0, $a4, 1
-	vinsgr2vr.d	$vr1, $a1, 0
-	vinsgr2vr.d	$vr1, $a2, 1
-	xvpermi.q	$xr1, $xr0, 2
-	xvst	$xr1, $sp, 48                   # 32-byte Folded Spill
-	addi.w	$s5, $zero, -7
+	addi.d	$s1, $fp, 88
+	addi.d	$s5, $fp, 152
+	addi.w	$a0, $zero, -7
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	lu12i.w	$a0, 4
-	ori	$s1, $a0, 304
-	pcalau12i	$a0, %pc_hi20(BraState_Init)
-	addi.d	$a0, $a0, %pc_lo12(BraState_Init)
-	vinsgr2vr.d	$vr0, $a0, 0
-	pcalau12i	$a0, %pc_hi20(BraState_Code)
-	addi.d	$a0, $a0, %pc_lo12(BraState_Code)
-	vinsgr2vr.d	$vr0, $a0, 1
+	ori	$a0, $a0, 304
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(BraState_Free)
 	addi.d	$a0, $a0, %pc_lo12(BraState_Free)
-	vinsgr2vr.d	$vr1, $a0, 0
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(BraState_SetProps)
 	addi.d	$a0, $a0, %pc_lo12(BraState_SetProps)
-	vinsgr2vr.d	$vr1, $a0, 1
-	xvpermi.q	$xr1, $xr0, 2
-	xvst	$xr1, $sp, 16                   # 32-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(BraState_Init)
+	addi.d	$a0, $a0, %pc_lo12(BraState_Init)
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(BraState_Code)
+	addi.d	$a0, $a0, %pc_lo12(BraState_Code)
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ori	$a0, $zero, 4
 	b	.LBB13_21
 	.p2align	4, , 16
@@ -1397,41 +1393,52 @@ XzDec_Init:                             # @XzDec_Init
 	ld.d	$a2, $a0, 0
 	ori	$a1, $zero, 168
 	jirl	$ra, $a2, 0
-	st.d	$a0, $s7, 0
+	st.d	$a0, $s5, 0
 	beqz	$a0, .LBB13_25
 # %bb.19:                               #   in Loop: Header=BB13_21 Depth=1
-	xvld	$xr0, $sp, 48                   # 32-byte Folded Reload
-	xvst	$xr0, $s7, 8
-	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	st.d	$a1, $s5, 8
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	st.d	$a1, $s5, 16
+	st.d	$s7, $s5, 24
+	st.d	$s8, $s5, 32
+	vld	$vr0, $sp, 64                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 16
 .LBB13_20:                              #   in Loop: Header=BB13_21 Depth=1
 	addi.d	$s4, $s4, -32
-	addi.d	$s6, $s6, 8
-	addi.d	$s7, $s7, 40
+	addi.d	$s1, $s1, 8
+	addi.d	$s5, $s5, 40
 	ori	$a0, $zero, 4
 	beqz	$s4, .LBB13_27
 .LBB13_21:                              # %.peel.next
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a1, $s0, -8
-	ldx.d	$s8, $a1, $s4
-	st.d	$s8, $s6, 0
+	ldx.d	$s6, $a1, $s4
+	st.d	$s6, $s1, 0
 	ori	$a1, $zero, 33
-	beq	$s8, $a1, .LBB13_18
+	beq	$s6, $a1, .LBB13_18
 # %bb.22:                               #   in Loop: Header=BB13_21 Depth=1
-	addi.d	$a1, $s8, -10
-	bltu	$a1, $s5, .LBB13_42
+	addi.d	$a1, $s6, -10
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	bltu	$a1, $a2, .LBB13_42
 # %bb.23:                               #   in Loop: Header=BB13_21 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 0
-	st.d	$zero, $s7, 0
-	move	$a1, $s1
+	st.d	$zero, $s5, 0
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	jirl	$ra, $a2, 0
 	beqz	$a0, .LBB13_25
 # %bb.24:                               #   in Loop: Header=BB13_21 Depth=1
-	st.w	$s8, $a0, 24
-	st.d	$a0, $s7, 0
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $s7, 8
+	st.w	$s6, $a0, 24
+	st.d	$a0, $s5, 0
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	st.d	$a0, $s5, 8
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	st.d	$a0, $s5, 16
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	st.d	$a0, $s5, 24
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	st.d	$a0, $s5, 32
 	b	.LBB13_20
 .LBB13_25:
 	ori	$a0, $zero, 2
@@ -1465,7 +1472,7 @@ XzDec_Init:                             # @XzDec_Init
 	blt	$a1, $a0, .LBB13_33
 # %bb.31:                               # %.lr.ph.i69
 	addi.d	$a0, $a1, -1
-	ori	$a2, $zero, 9
+	ori	$a2, $zero, 5
 	bstrpick.d	$a0, $a0, 31, 0
 	bgeu	$a1, $a2, .LBB13_34
 # %bb.32:
@@ -1476,23 +1483,23 @@ XzDec_Init:                             # @XzDec_Init
 	beq	$a1, $a0, .LBB13_39
 	b	.LBB13_41
 .LBB13_34:                              # %vector.ph
-	addi.d	$a2, $fp, 56
-	bstrpick.d	$a1, $a0, 30, 3
-	slli.d	$a1, $a1, 3
-	addi.d	$a3, $fp, 36
-	xvrepli.b	$xr0, 0
+	bstrpick.d	$a1, $a0, 30, 2
+	slli.d	$a1, $a1, 2
+	addi.d	$a2, $fp, 48
+	addi.d	$a3, $fp, 28
+	vrepli.b	$vr0, 0
 	move	$a4, $a1
 	.p2align	4, , 16
 .LBB13_35:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, 0
-	xvst	$xr0, $a2, 32
-	xvst	$xr0, $a2, -24
-	xvst	$xr0, $a2, 8
-	xvst	$xr0, $a3, -16
-	addi.d	$a4, $a4, -8
-	addi.d	$a2, $a2, 64
-	addi.d	$a3, $a3, 32
+	vst	$vr0, $a2, 8
+	vst	$vr0, $a2, 24
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	vst	$vr0, $a3, -8
+	addi.d	$a4, $a4, -4
+	addi.d	$a2, $a2, 32
+	addi.d	$a3, $a3, 16
 	bnez	$a4, .LBB13_35
 # %bb.36:                               # %middle.block
 	beq	$a1, $a0, .LBB13_39

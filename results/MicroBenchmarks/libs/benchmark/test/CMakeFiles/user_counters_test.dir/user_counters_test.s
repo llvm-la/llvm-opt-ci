@@ -23043,9 +23043,11 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.2)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.2)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	vst	$vr0, $a0, 40
@@ -23495,9 +23497,11 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.8)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.8)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.d	$a2, $a2, 54
@@ -23716,16 +23720,19 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	pcalau12i	$a2, %pc_hi20(.L.str.12)
-	st.d	$a2, $sp, 208                   # 8-byte Folded Spill
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
 	ori	$a2, $zero, 2168
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
 	ori	$a2, $zero, 2184
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.L.str.12)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.12)
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	st.d	$a2, $sp, 208                   # 8-byte Folded Spill
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
@@ -23773,9 +23780,11 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.13)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.13)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.h	$a2, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.h	$a2, $a0, 32
 	ori	$a2, $zero, 2144
 	add.d	$a2, $sp, $a2
@@ -24448,8 +24457,10 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.26)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.26)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	ori	$a2, $zero, 2240
@@ -24812,10 +24823,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.33)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.33)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 37
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 37
 	ori	$a2, $zero, 2240
@@ -24883,7 +24896,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	jirl	$ra, $ra, 0
 .Ltmp2501:                              # EH_LABEL
 # %bb.177:                              # %.noexc.i148.i128
-	addi.d	$s1, $sp, 464
+	addi.d	$fp, $sp, 464
 	ori	$a0, $zero, 2184
 	add.d	$a0, $sp, $a0
 	ori	$a1, $zero, 2168
@@ -24907,14 +24920,16 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
-	ori	$a2, $zero, 2168
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2184
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	ori	$a3, $zero, 2168
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	ori	$a3, $zero, 2184
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
@@ -24926,12 +24941,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	ori	$a0, $zero, 2168
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s1
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp2507:                              # EH_LABEL
 # %bb.179:                              # %.noexc.i152.i
-	addi.d	$s1, $sp, 552
+	addi.d	$fp, $sp, 552
 	ori	$a0, $zero, 2152
 	add.d	$a0, $sp, $a0
 	ori	$a1, $zero, 2136
@@ -24962,8 +24977,10 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.35)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.35)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	ld.b	$a2, $a2, 48
 	vst	$vr0, $a0, 32
@@ -24976,12 +24993,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	ori	$a0, $zero, 2136
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s1
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp2513:                              # EH_LABEL
 # %bb.181:                              # %.noexc.i156.i134
-	addi.d	$s1, $sp, 640
+	addi.d	$fp, $sp, 640
 	ori	$a0, $zero, 2120
 	add.d	$a0, $sp, $a0
 	ori	$a1, $zero, 2104
@@ -25028,12 +25045,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	ori	$a0, $zero, 2104
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s1
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp2519:                              # EH_LABEL
 # %bb.183:                              # %.noexc.i160.i138
-	addi.d	$s1, $sp, 728
+	addi.d	$fp, $sp, 728
 	ori	$a0, $zero, 2088
 	add.d	$a0, $sp, $a0
 	ori	$a1, $zero, 2072
@@ -25073,12 +25090,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	ori	$a0, $zero, 2072
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s1
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp2525:                              # EH_LABEL
 # %bb.185:                              # %.noexc.i164.i142
-	addi.d	$s1, $sp, 816
+	addi.d	$fp, $sp, 816
 	ori	$a0, $zero, 2056
 	add.d	$a0, $sp, $a0
 	st.d	$a0, $sp, 2040
@@ -25110,7 +25127,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .Ltmp2530:                              # EH_LABEL
 	addi.d	$a1, $sp, 2040
 	ori	$a2, $zero, 1
-	move	$a0, $s1
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp2531:                              # EH_LABEL
@@ -25133,7 +25150,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	jirl	$ra, $ra, 0
 .Ltmp2534:                              # EH_LABEL
 # %bb.188:                              # %.noexc.i172.i
-	addi.d	$s1, $sp, 992
+	addi.d	$fp, $sp, 992
 	addi.d	$a0, $sp, 1992
 	st.d	$a0, $sp, 1976
 	ori	$a0, $zero, 20
@@ -25160,12 +25177,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .Ltmp2539:                              # EH_LABEL
 	addi.d	$a1, $sp, 1976
 	ori	$a2, $zero, 1
-	move	$a0, $s1
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp2540:                              # EH_LABEL
 # %bb.190:                              # %.noexc.i176.i
-	addi.d	$s1, $sp, 1080
+	addi.d	$fp, $sp, 1080
 	addi.d	$a0, $sp, 1960
 	st.d	$a0, $sp, 1944
 	ori	$a0, $zero, 21
@@ -25192,12 +25209,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .Ltmp2545:                              # EH_LABEL
 	addi.d	$a1, $sp, 1944
 	ori	$a2, $zero, 1
-	move	$a0, $s1
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp2546:                              # EH_LABEL
 # %bb.192:                              # %.noexc.i180.i
-	addi.d	$s1, $sp, 1168
+	addi.d	$fp, $sp, 1168
 	addi.d	$a0, $sp, 1928
 	st.d	$a0, $sp, 1912
 	ori	$a0, $zero, 20
@@ -25224,7 +25241,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .Ltmp2551:                              # EH_LABEL
 	addi.d	$a1, $sp, 1912
 	ori	$a2, $zero, 1
-	move	$a0, $s1
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp2552:                              # EH_LABEL
@@ -25364,22 +25381,22 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .Ltmp2575:                              # EH_LABEL
 	addi.d	$a1, $sp, 256
 	ori	$a2, $zero, 1
-	ori	$fp, $zero, 1
+	ori	$s1, $zero, 1
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp2576:                              # EH_LABEL
 # %bb.202:                              # %._crit_edge.i.i203.i
-	addi.d	$s1, $sp, 1696
+	addi.d	$fp, $sp, 1696
 	addi.d	$a0, $sp, 240
 	st.d	$a0, $sp, 224
 	ori	$a0, $zero, 125
 	st.h	$a0, $sp, 240
-	st.d	$fp, $sp, 232
+	st.d	$s1, $sp, 232
 .Ltmp2578:                              # EH_LABEL
 	addi.d	$a1, $sp, 224
 	ori	$a2, $zero, 1
-	move	$a0, $s1
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp2579:                              # EH_LABEL
@@ -25393,8 +25410,8 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	jirl	$ra, $ra, 0
 .Ltmp2582:                              # EH_LABEL
 # %bb.204:
-	move	$fp, $a0
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s0, $zero
 	ori	$s4, $zero, 1
 	ori	$s5, $zero, 1
 	lu32i.d	$s5, 1
@@ -25402,26 +25419,26 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	.p2align	4, , 16
 .LBB51_205:                             # %_ZN8TestCaseD2Ev.exit.i190
                                         #   in Loop: Header=BB51_206 Depth=1
-	addi.d	$s1, $s1, -88
+	addi.d	$s0, $s0, -88
 	addi.w	$a0, $zero, -1496
-	beq	$s1, $a0, .LBB51_217
+	beq	$s0, $a0, .LBB51_217
 .LBB51_206:                             # =>This Inner Loop Header: Depth=1
-	add.d	$s6, $s3, $s1
-	ld.d	$s0, $s6, 1488
-	beqz	$s0, .LBB51_211
+	add.d	$s6, $s3, $s0
+	ld.d	$fp, $s6, 1488
+	beqz	$fp, .LBB51_211
 # %bb.207:                              #   in Loop: Header=BB51_206 Depth=1
-	ld.d	$a0, $s0, 8
+	ld.d	$a0, $fp, 8
 	dbar	20
 	bne	$a0, $s5, .LBB51_209
 # %bb.208:                              #   in Loop: Header=BB51_206 Depth=1
-	ld.d	$a0, $s0, 0
-	st.d	$zero, $s0, 8
+	ld.d	$a0, $fp, 0
+	st.d	$zero, $fp, 8
 	ld.d	$a1, $a0, 16
-	move	$a0, $s0
+	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	ld.d	$a0, $s0, 0
+	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 24
-	move	$a0, $s0
+	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	ld.d	$a0, $s6, 1448
 	addi.d	$a1, $s6, 1464
@@ -25435,7 +25452,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	beqz	$a1, .LBB51_215
 # %bb.210:                              #   in Loop: Header=BB51_206 Depth=1
 	addi.d	$a1, $a0, -1
-	st.w	$a1, $s0, 8
+	st.w	$a1, $fp, 8
 	addi.w	$a0, $a0, 0
 	beq	$a0, $s4, .LBB51_216
 	.p2align	4, , 16
@@ -25463,13 +25480,13 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	jirl	$ra, $ra, 0
 	b	.LBB51_205
 .LBB51_215:                             #   in Loop: Header=BB51_206 Depth=1
-	addi.d	$a1, $s0, 8
+	addi.d	$a1, $fp, 8
 	addi.w	$a2, $zero, -1
 	amadd_db.w	$a0, $a2, $a1
 	addi.w	$a0, $a0, 0
 	bne	$a0, $s4, .LBB51_211
 .LBB51_216:                             #   in Loop: Header=BB51_206 Depth=1
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s6, 1448
@@ -25487,7 +25504,6 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	jirl	$ra, $ra, 0
 .LBB51_219:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit.i192
 	ld.d	$a0, $sp, 256
-	addi.d	$s1, $sp, 304
 	addi.d	$a1, $sp, 272
 	beq	$a0, $a1, .LBB51_221
 # %bb.220:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i207.i193
@@ -25665,7 +25681,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	jirl	$ra, $ra, 0
 .LBB51_251:                             # %__cxx_global_var_init.32.exit
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_18dummy100E)
-	st.w	$fp, $a0, %pc_lo12(_ZN12_GLOBAL__N_18dummy100E)
+	st.w	$s1, $a0, %pc_lo12(_ZN12_GLOBAL__N_18dummy100E)
 	ori	$a0, $zero, 2248
 	add.d	$a0, $sp, $a0
 	ori	$a1, $zero, 2232
@@ -25718,6 +25734,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	pcaddu18i	$ra, %call36(_Z8AddCases10TestCaseIDSt16initializer_listI8TestCaseE)
 	jirl	$ra, $ra, 0
 .Ltmp2588:                              # EH_LABEL
+	addi.d	$s1, $sp, 304
 # %bb.253:
 	move	$fp, $a0
 	ld.d	$s0, $sp, 368
@@ -25801,11 +25818,13 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	ori	$a1, $zero, 2232
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	xvld	$xr0, $s2, 0
-	ld.b	$a2, $s2, 32
+	vld	$vr0, $s2, 0
 	st.d	$a0, $sp, 288
 	st.d	$a1, $sp, 304
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s2, 16
+	ld.b	$a2, $s2, 32
+	vst	$vr0, $a0, 16
 	st.b	$a2, $a0, 32
 	st.d	$a1, $sp, 296
 	stx.b	$zero, $a0, $a1
@@ -25931,10 +25950,14 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.45)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.45)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
-	xvld	$xr0, $a2, 32
-	xvst	$xr0, $a0, 32
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 32
+	vst	$vr0, $a0, 32
+	vld	$vr0, $a2, 48
+	vst	$vr0, $a0, 48
 	ori	$a2, $zero, 2240
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
@@ -26149,14 +26172,16 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
-	ori	$a2, $zero, 2168
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2184
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	ori	$a3, $zero, 2168
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	ori	$a3, $zero, 2184
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
@@ -26196,15 +26221,18 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	ori	$a1, $zero, 2104
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	pcalau12i	$a2, %pc_hi20(.L.str.49)
-	xvld	$xr0, $a2, %pc_lo12(.L.str.49)
 	ori	$a2, $zero, 2136
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
 	ori	$a2, $zero, 2152
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.L.str.49)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.49)
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
@@ -26845,10 +26873,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.51)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.51)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 38
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 38
 	ori	$a2, $zero, 2240
@@ -27083,8 +27113,10 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.56)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.56)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -27301,14 +27333,16 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
-	ori	$a2, $zero, 2168
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2184
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	ori	$a3, $zero, 2168
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	ori	$a3, $zero, 2184
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
@@ -28002,9 +28036,11 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.62)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.62)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a2, $a2, 31
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a2, $a0, 31
 	ori	$a2, $zero, 2240
 	add.d	$a2, $sp, $a2
@@ -28346,9 +28382,11 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.69)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.69)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.w	$a2, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.w	$a2, $a0, 32
 	ori	$a2, $zero, 2240
 	add.d	$a2, $sp, $a2
@@ -28439,14 +28477,16 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
-	ori	$a2, $zero, 2168
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2184
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	ori	$a3, $zero, 2168
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	ori	$a3, $zero, 2184
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
@@ -28494,9 +28534,11 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.71)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.71)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a2, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a2, $a0, 32
 	ori	$a2, $zero, 2144
 	add.d	$a2, $sp, $a2
@@ -29135,8 +29177,10 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.73)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.73)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 46
 	vst	$vr0, $a0, 32
@@ -29502,10 +29546,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.80)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.80)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.w	$a2, $a2, 40
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.w	$a2, $a0, 40
 	ori	$a2, $zero, 2240
@@ -29597,14 +29643,16 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
-	ori	$a2, $zero, 2168
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2184
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	ori	$a3, $zero, 2168
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	ori	$a3, $zero, 2184
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
@@ -29652,8 +29700,10 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.82)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.82)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	ori	$a2, $zero, 2144
@@ -30291,9 +30341,11 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.84)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.84)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.d	$a2, $a2, 54
@@ -30402,11 +30454,14 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	ori	$a1, $zero, 2232
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	pcalau12i	$a2, %pc_hi20(.L.str.86)
-	xvld	$xr0, $a2, %pc_lo12(.L.str.86)
 	st.d	$a0, $sp, 288
 	st.d	$a1, $sp, 304
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.L.str.86)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.86)
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 288
 	st.d	$a1, $sp, 296
 	stx.b	$zero, $a0, $a1
@@ -30659,10 +30714,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.92)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.92)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 39
 	ori	$a2, $zero, 2240
@@ -30754,14 +30811,16 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
-	ori	$a2, $zero, 2168
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2184
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	ori	$a3, $zero, 2168
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	ori	$a3, $zero, 2184
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
@@ -30809,8 +30868,10 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.94)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.94)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	ld.w	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -31562,9 +31623,11 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $sp, 304
 	pcalau12i	$a2, %pc_hi20(.L.str.98)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.98)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.w	$a2, $a2, 31
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.w	$a2, $a0, 31
 	st.d	$a1, $sp, 296
 	stx.b	$zero, $a0, $a1
@@ -31817,8 +31880,10 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.104)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.104)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.w	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -31912,14 +31977,16 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
-	ori	$a2, $zero, 2168
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2184
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	ori	$a3, $zero, 2168
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	ori	$a3, $zero, 2184
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
@@ -31967,8 +32034,10 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.106)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.106)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -32720,9 +32789,11 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $sp, 304
 	pcalau12i	$a2, %pc_hi20(.L.str.110)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.110)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a2, $a2, 31
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a2, $a0, 31
 	st.d	$a1, $sp, 296
 	stx.b	$zero, $a0, $a1
@@ -32969,10 +33040,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.116)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.116)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.h	$a2, $a2, 40
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.h	$a2, $a0, 40
 	ori	$a2, $zero, 2240
@@ -33064,14 +33137,16 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
-	ori	$a2, $zero, 2168
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2184
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	ori	$a3, $zero, 2168
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	ori	$a3, $zero, 2184
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
@@ -33119,10 +33194,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.118)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.118)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 38
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 38
 	ori	$a2, $zero, 2144
@@ -33762,9 +33839,11 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.120)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.120)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.w	$a2, $a2, 56
@@ -34127,8 +34206,10 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.127)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.127)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.b	$a2, $a2, 48
 	vst	$vr0, $a0, 32
@@ -34222,14 +34303,16 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
-	ori	$a2, $zero, 2168
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2184
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	ori	$a3, $zero, 2168
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	ori	$a3, $zero, 2184
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
@@ -34277,8 +34360,10 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.129)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.129)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 45
 	vst	$vr0, $a0, 32
@@ -35028,11 +35113,13 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	ori	$a1, $zero, 2232
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	xvld	$xr0, $s2, 0
-	ld.d	$a2, $s2, 29
+	vld	$vr0, $s2, 0
 	st.d	$a0, $sp, 288
 	st.d	$a1, $sp, 304
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s2, 16
+	ld.d	$a2, $s2, 29
+	vst	$vr0, $a0, 16
 	st.d	$a2, $a0, 29
 	st.d	$a1, $sp, 296
 	stx.b	$zero, $a0, $a1
@@ -35279,9 +35366,11 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.138)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.138)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a2, $a2, 29
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a2, $a0, 29
 	ori	$a2, $zero, 2240
 	add.d	$a2, $sp, $a2
@@ -35372,14 +35461,16 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
-	ori	$a2, $zero, 2168
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2184
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	ori	$a3, $zero, 2168
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	ori	$a3, $zero, 2184
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
@@ -35427,10 +35518,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.140)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.140)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
 	ld.b	$a2, $a2, 40
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	st.b	$a2, $a0, 40
 	ori	$a2, $zero, 2144
@@ -36070,8 +36163,10 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.142)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.142)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -36433,10 +36528,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.149)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.149)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.h	$a2, $a2, 40
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.h	$a2, $a0, 40
 	ori	$a2, $zero, 2240
@@ -36528,14 +36625,16 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
-	ori	$a2, $zero, 2168
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2184
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	ori	$a3, $zero, 2168
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	ori	$a3, $zero, 2184
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
@@ -36583,10 +36682,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.151)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.151)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 38
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 38
 	ori	$a2, $zero, 2144
@@ -37226,9 +37327,11 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.153)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.153)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.w	$a2, $a2, 56
@@ -42258,7 +42361,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .LBB51_2094:                            # %.loopexit327.loopexit.i
 .Ltmp2583:                              # EH_LABEL
 	move	$s3, $a0
-	move	$a0, $s1
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $s8
@@ -42309,12 +42412,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	addi.d	$a0, $sp, 288
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	ori	$fp, $zero, 1
+	ori	$s1, $zero, 1
 	b	.LBB51_2096
 .LBB51_2095:
 .Ltmp2580:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 .LBB51_2096:                            # %.loopexit327.i
 	ld.d	$a0, $sp, 224
 	addi.d	$a1, $sp, 240
@@ -42325,12 +42428,12 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB51_2098:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit257.i172
-	move	$s8, $s1
+	move	$s8, $fp
 	b	.LBB51_2100
 .LBB51_2099:
 .Ltmp2577:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 .LBB51_2100:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit257.i172
 	ld.d	$a0, $sp, 256
 	addi.d	$a1, $sp, 272
@@ -42344,14 +42447,14 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .LBB51_2102:
 .Ltmp2574:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 .LBB51_2103:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit260.i167
 	move	$s7, $s8
 	b	.LBB51_2105
 .LBB51_2104:
 .Ltmp2571:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 .LBB51_2105:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit260.i167
 	ld.d	$a0, $sp, 1784
 	addi.d	$a1, $sp, 1800
@@ -42375,7 +42478,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .LBB51_2109:
 .Ltmp2568:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	ld.d	$a0, $sp, 1816
 	addi.d	$a1, $sp, 1832
 	bne	$a0, $a1, .LBB51_2108
@@ -42383,7 +42486,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .LBB51_2110:
 .Ltmp2565:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 .LBB51_2111:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit266.i157
 	move	$s5, $s6
 	ld.d	$a0, $sp, 1848
@@ -42549,10 +42652,10 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB51_2137:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i
-	addi.d	$s1, $sp, 288
-	xor	$a0, $s1, $s0
+	addi.d	$fp, $sp, 288
+	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
-	or	$a0, $fp, $a0
+	or	$a0, $s1, $a0
 	bnez	$a0, .LBB51_2139
 	.p2align	4, , 16
 .LBB51_2138:                            # %.preheader.i124
@@ -42561,7 +42664,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	bne	$s0, $s1, .LBB51_2138
+	bne	$s0, $fp, .LBB51_2138
 .LBB51_2139:                            # %.loopexit.i125
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
@@ -42569,7 +42672,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .LBB51_2140:
 .Ltmp2562:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	ld.d	$a0, $sp, 1848
 	addi.d	$a1, $sp, 1864
 	bne	$a0, $a1, .LBB51_2112
@@ -42577,7 +42680,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .LBB51_2141:
 .Ltmp2559:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	ld.d	$a0, $sp, 1880
 	addi.d	$a1, $sp, 1896
 	bne	$a0, $a1, .LBB51_2114
@@ -42585,13 +42688,13 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .LBB51_2142:
 .Ltmp2556:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	b	.LBB51_2115
 .LBB51_2143:
 .Ltmp2553:                              # EH_LABEL
-	move	$s0, $s1
+	move	$s0, $fp
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	ld.d	$a0, $sp, 1912
 	addi.d	$a1, $sp, 1928
 	bne	$a0, $a1, .LBB51_2116
@@ -42599,29 +42702,29 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .LBB51_2144:
 .Ltmp2550:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
-	move	$s0, $s1
+	move	$s1, $zero
+	move	$s0, $fp
 	b	.LBB51_2117
 .LBB51_2145:
 .Ltmp2547:                              # EH_LABEL
-	move	$s0, $s1
+	move	$s0, $fp
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	b	.LBB51_2117
 .LBB51_2146:
 .Ltmp2544:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
-	move	$s0, $s1
+	move	$s1, $zero
+	move	$s0, $fp
 	ld.d	$a0, $sp, 1976
 	addi.d	$a1, $sp, 1992
 	beq	$a0, $a1, .LBB51_2119
 	b	.LBB51_2122
 .LBB51_2147:
 .Ltmp2541:                              # EH_LABEL
-	move	$s0, $s1
+	move	$s0, $fp
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	ld.d	$a0, $sp, 1976
 	addi.d	$a1, $sp, 1992
 	beq	$a0, $a1, .LBB51_2119
@@ -42629,8 +42732,8 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .LBB51_2148:
 .Ltmp2538:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
-	move	$s0, $s1
+	move	$s1, $zero
+	move	$s0, $fp
 	ld.d	$a0, $sp, 2008
 	addi.d	$a1, $sp, 2024
 	beq	$a0, $a1, .LBB51_2120
@@ -42639,16 +42742,16 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .Ltmp2535:                              # EH_LABEL
 	move	$s0, $fp
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	ld.d	$a0, $sp, 2008
 	addi.d	$a1, $sp, 2024
 	beq	$a0, $a1, .LBB51_2120
 	b	.LBB51_2123
 .LBB51_2150:
 .Ltmp2532:                              # EH_LABEL
-	move	$s0, $s1
+	move	$s0, $fp
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	ld.d	$a0, $sp, 2040
 	ori	$a1, $zero, 2056
 	add.d	$a1, $sp, $a1
@@ -42657,61 +42760,61 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .LBB51_2151:
 .Ltmp2529:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
-	move	$s0, $s1
+	move	$s1, $zero
+	move	$s0, $fp
 	b	.LBB51_2125
 .LBB51_2152:
 .Ltmp2526:                              # EH_LABEL
-	move	$s0, $s1
+	move	$s0, $fp
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	b	.LBB51_2125
 .LBB51_2153:
 .Ltmp2523:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
-	move	$s0, $s1
+	move	$s1, $zero
+	move	$s0, $fp
 	b	.LBB51_2127
 .LBB51_2154:
 .Ltmp2520:                              # EH_LABEL
-	move	$s0, $s1
+	move	$s0, $fp
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	b	.LBB51_2127
 .LBB51_2155:
 .Ltmp2517:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
-	move	$s0, $s1
+	move	$s1, $zero
+	move	$s0, $fp
 	b	.LBB51_2129
 .LBB51_2156:
 .Ltmp2514:                              # EH_LABEL
-	move	$s0, $s1
+	move	$s0, $fp
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	b	.LBB51_2129
 .LBB51_2157:
 .Ltmp2511:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
-	move	$s0, $s1
+	move	$s1, $zero
+	move	$s0, $fp
 	b	.LBB51_2131
 .LBB51_2158:
 .Ltmp2508:                              # EH_LABEL
-	move	$s0, $s1
+	move	$s0, $fp
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	b	.LBB51_2131
 .LBB51_2159:
 .Ltmp2505:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
-	move	$s0, $s1
+	move	$s1, $zero
+	move	$s0, $fp
 	b	.LBB51_2133
 .LBB51_2160:
 .Ltmp2502:                              # EH_LABEL
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	b	.LBB51_2133
 .LBB51_2161:
 .Ltmp2499:                              # EH_LABEL
@@ -42720,7 +42823,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .Ltmp2496:                              # EH_LABEL
 .LBB51_2163:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i
 	move	$s3, $a0
-	move	$fp, $zero
+	move	$s1, $zero
 	b	.LBB51_2135
 .LBB51_2164:                            # %.loopexit.loopexit.i108
 .Ltmp2493:                              # EH_LABEL

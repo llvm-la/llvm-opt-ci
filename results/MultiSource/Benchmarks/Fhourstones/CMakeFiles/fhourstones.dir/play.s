@@ -17,13 +17,19 @@ reset:                                  # @reset
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(rows)
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, %pc_lo12(rows)
+	addi.d	$a0, $a0, %pc_lo12(rows)
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
 	pcalau12i	$a0, %pc_hi20(columns)
-	xvrepli.w	$xr0, 1
-	xvst	$xr0, $a0, %pc_lo12(columns)
-	pcalau12i	$a0, %pc_hi20(height)
-	xvst	$xr0, $a0, %pc_lo12(height)
+	addi.d	$a0, $a0, %pc_lo12(columns)
+	vrepli.w	$vr0, 1
+	vst	$vr0, $a0, 0
+	pcalau12i	$a1, %pc_hi20(height)
+	addi.d	$a1, $a1, %pc_lo12(height)
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a1, 16
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
@@ -82,13 +88,19 @@ play_init:                              # @play_init
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(rows)
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, %pc_lo12(rows)
+	addi.d	$a0, $a0, %pc_lo12(rows)
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
 	pcalau12i	$a0, %pc_hi20(columns)
-	xvrepli.w	$xr0, 1
-	xvst	$xr0, $a0, %pc_lo12(columns)
-	pcalau12i	$a0, %pc_hi20(height)
-	xvst	$xr0, $a0, %pc_lo12(height)
+	addi.d	$a0, $a0, %pc_lo12(columns)
+	vrepli.w	$vr0, 1
+	vst	$vr0, $a0, 0
+	pcalau12i	$a1, %pc_hi20(height)
+	addi.d	$a1, $a1, %pc_lo12(height)
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a1, 16
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
@@ -309,14 +321,14 @@ dias:
 
 	.type	columns,@object                 # @columns
 	.globl	columns
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 columns:
 	.space	512
 	.size	columns, 512
 
 	.type	height,@object                  # @height
 	.globl	height
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 height:
 	.space	512
 	.size	height, 512

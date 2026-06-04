@@ -129,8 +129,9 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	st.d	$zero, $sp, 8
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 16
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 16
+	vst	$vr0, $sp, 32
 	pcalau12i	$a0, %pc_hi20(.Lstr)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
 	pcaddu18i	$ra, %call36(puts)

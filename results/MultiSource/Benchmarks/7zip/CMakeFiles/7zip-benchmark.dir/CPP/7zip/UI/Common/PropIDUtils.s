@@ -1,11 +1,7 @@
 	.file	"PropIDUtils.cpp"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z18ConvertUInt32ToHexjPw
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z18ConvertUInt32ToHexjPw
 .LCPI0_0:
-	.word	0                               # 0x0
-	.word	24                              # 0x18
-	.word	20                              # 0x14
-	.word	16                              # 0x10
 	.word	12                              # 0xc
 	.word	8                               # 0x8
 	.word	4                               # 0x4
@@ -15,25 +11,18 @@
 	.word	24                              # 0x18
 	.word	20                              # 0x14
 	.word	16                              # 0x10
-	.word	12                              # 0xc
-	.word	8                               # 0x8
-	.word	4                               # 0x4
-	.word	0                               # 0x0
 .LCPI0_2:
+	.word	0                               # 0x0
+	.word	24                              # 0x18
+	.word	20                              # 0x14
+	.word	16                              # 0x10
+.LCPI0_3:
 	.word	4294967295                      # 0xffffffff
 	.word	15                              # 0xf
 	.word	15                              # 0xf
 	.word	15                              # 0xf
-	.word	15                              # 0xf
-	.word	15                              # 0xf
-	.word	15                              # 0xf
-	.word	15                              # 0xf
-.LCPI0_3:
+.LCPI0_4:
 	.word	2684354560                      # 0xa0000000
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
 	.word	10                              # 0xa
 	.word	10                              # 0xa
 	.word	10                              # 0xa
@@ -45,109 +34,88 @@
 _Z18ConvertUInt32ToHexjPw:              # @_Z18ConvertUInt32ToHexjPw
 # %bb.0:
 	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI0_0)
-	xvreplgr2vr.w	$xr1, $a0
-	xvsrl.w	$xr0, $xr1, $xr0
+	vld	$vr0, $a2, %pc_lo12(.LCPI0_0)
+	vreplgr2vr.w	$vr1, $a0
+	vsrl.w	$vr0, $vr1, $vr0
+	vrepli.w	$vr2, 15
+	vand.v	$vr0, $vr0, $vr2
+	vslti.wu	$vr2, $vr0, 10
+	vrepli.w	$vr3, 48
+	vor.v	$vr4, $vr0, $vr3
+	vrepli.w	$vr5, 55
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_1)
+	vld	$vr6, $a0, %pc_lo12(.LCPI0_1)
+	vadd.w	$vr0, $vr0, $vr5
+	vbitsel.v	$vr0, $vr0, $vr4, $vr2
+	vst	$vr0, $a1, 16
+	vsrl.w	$vr0, $vr1, $vr6
 	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI0_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI0_3)
-	xvsrl.w	$xr1, $xr1, $xr2
-	xvand.v	$xr0, $xr0, $xr3
-	xvand.v	$xr2, $xr1, $xr3
-	xvslt.wu	$xr3, $xr0, $xr4
-	xvrepli.w	$xr4, 48
-	xvor.v	$xr2, $xr2, $xr4
-	xvinsve0.w	$xr0, $xr1, 0
-	xvrepli.w	$xr1, 55
-	xvadd.w	$xr0, $xr0, $xr1
-	xvbitsel.v	$xr0, $xr0, $xr2, $xr3
-	xvst	$xr0, $a1, 0
+	vld	$vr4, $a0, %pc_lo12(.LCPI0_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
+	vld	$vr6, $a0, %pc_lo12(.LCPI0_4)
+	vsrl.w	$vr1, $vr1, $vr2
+	vand.v	$vr1, $vr1, $vr4
+	vand.v	$vr2, $vr0, $vr4
+	vslt.wu	$vr4, $vr1, $vr6
+	vor.v	$vr2, $vr2, $vr3
+	vextrins.w	$vr1, $vr0, 0
+	vadd.w	$vr0, $vr1, $vr5
+	vbitsel.v	$vr0, $vr0, $vr2, $vr4
+	vst	$vr0, $a1, 0
 	st.w	$zero, $a1, 32
 	ret
 .Lfunc_end0:
 	.size	_Z18ConvertUInt32ToHexjPw, .Lfunc_end0-_Z18ConvertUInt32ToHexjPw
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb
 .LCPI1_0:
 	.word	256                             # 0x100
 	.word	128                             # 0x80
 	.word	64                              # 0x40
 	.word	32                              # 0x20
-	.word	16                              # 0x10
-	.word	8                               # 0x8
-	.word	4                               # 0x4
-	.word	2                               # 0x2
 .LCPI1_1:
 	.word	114                             # 0x72
 	.word	119                             # 0x77
 	.word	120                             # 0x78
 	.word	114                             # 0x72
+.LCPI1_2:
+	.word	16                              # 0x10
+	.word	8                               # 0x8
+	.word	4                               # 0x4
+	.word	2                               # 0x2
+.LCPI1_3:
 	.word	119                             # 0x77
 	.word	120                             # 0x78
 	.word	114                             # 0x72
 	.word	119                             # 0x77
-.LCPI1_6:
-	.word	0                               # 0x0
-	.word	24                              # 0x18
-	.word	20                              # 0x14
-	.word	16                              # 0x10
-	.word	12                              # 0xc
-	.word	8                               # 0x8
-	.word	4                               # 0x4
-	.word	0                               # 0x0
-.LCPI1_7:
-	.word	28                              # 0x1c
-	.word	24                              # 0x18
-	.word	20                              # 0x14
-	.word	16                              # 0x10
-	.word	12                              # 0xc
-	.word	8                               # 0x8
-	.word	4                               # 0x4
-	.word	0                               # 0x0
-.LCPI1_8:
-	.word	4294967295                      # 0xffffffff
-	.word	15                              # 0xf
-	.word	15                              # 0xf
-	.word	15                              # 0xf
-	.word	15                              # 0xf
-	.word	15                              # 0xf
-	.word	15                              # 0xf
-	.word	15                              # 0xf
-.LCPI1_9:
-	.word	2684354560                      # 0xa0000000
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI1_2:
-	.word	28                              # 0x1c
-	.word	24                              # 0x18
-	.word	20                              # 0x14
-	.word	16                              # 0x10
-.LCPI1_3:
-	.word	0                               # 0x0
-	.word	24                              # 0x18
-	.word	20                              # 0x14
-	.word	16                              # 0x10
 .LCPI1_4:
+	.word	28                              # 0x1c
+	.word	24                              # 0x18
+	.word	20                              # 0x14
+	.word	16                              # 0x10
+.LCPI1_5:
+	.word	0                               # 0x0
+	.word	24                              # 0x18
+	.word	20                              # 0x14
+	.word	16                              # 0x10
+.LCPI1_6:
 	.word	4294967295                      # 0xffffffff
 	.word	15                              # 0xf
 	.word	15                              # 0xf
 	.word	15                              # 0xf
-.LCPI1_5:
+.LCPI1_7:
 	.word	2684354560                      # 0xa0000000
 	.word	10                              # 0xa
 	.word	10                              # 0xa
 	.word	10                              # 0xa
+.LCPI1_8:
+	.word	12                              # 0xc
+	.word	8                               # 0x8
+	.word	4                               # 0x4
+	.word	0                               # 0x0
 	.text
 	.globl	_Z23ConvertPropertyToStringRK14tagPROPVARIANTjb
 	.p2align	2
@@ -247,17 +215,26 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	pcalau12i	$a2, %pc_hi20(_ZL11kPosixTypes)
 	addi.d	$a2, $a2, %pc_lo12(_ZL11kPosixTypes)
 	ldx.b	$a1, $a2, $a1
+	pcalau12i	$a2, %pc_hi20(.LCPI1_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI1_0)
+	vreplgr2vr.w	$vr4, $s3
+	pcalau12i	$a2, %pc_hi20(.LCPI1_1)
+	vld	$vr2, $a2, %pc_lo12(.LCPI1_1)
+	vand.v	$vr0, $vr4, $vr0
+	vseqi.w	$vr1, $vr0, 0
+	vrepli.w	$vr3, 45
+	vbitsel.v	$vr0, $vr2, $vr3, $vr1
+	vst	$vr0, $sp, 68
+	pcalau12i	$a2, %pc_hi20(.LCPI1_2)
+	vld	$vr0, $a2, %pc_lo12(.LCPI1_2)
+	pcalau12i	$a2, %pc_hi20(.LCPI1_3)
+	vld	$vr2, $a2, %pc_lo12(.LCPI1_3)
 	st.w	$a1, $sp, 64
-	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_0)
-	xvreplgr2vr.w	$xr1, $s3
-	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI1_1)
-	xvand.v	$xr0, $xr1, $xr0
-	xvseqi.w	$xr0, $xr0, 0
-	xvrepli.w	$xr1, 45
-	xvbitsel.v	$xr1, $xr2, $xr1, $xr0
-	xvst	$xr1, $sp, 68
+	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
+	vand.v	$vr0, $vr4, $vr0
+	vseqi.w	$vr0, $vr0, 0
+	vbitsel.v	$vr2, $vr2, $vr3, $vr0
+	vst	$vr2, $sp, 84
 	andi	$a1, $s3, 1
 	sltui	$a1, $a1, 1
 	ori	$a2, $zero, 120
@@ -313,27 +290,37 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	bne	$a2, $a3, .LBB1_21
 # %bb.18:
 	ld.w	$a1, $a1, 8
-	pcalau12i	$a2, %pc_hi20(.LCPI1_6)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI1_6)
-	xvreplgr2vr.w	$xr1, $a1
-	xvsrl.w	$xr0, $xr1, $xr0
+	pcalau12i	$a2, %pc_hi20(.LCPI1_8)
+	vld	$vr0, $a2, %pc_lo12(.LCPI1_8)
+	vreplgr2vr.w	$vr1, $a1
+	vsrl.w	$vr0, $vr1, $vr0
+	vrepli.w	$vr2, 15
+	vand.v	$vr0, $vr0, $vr2
+	vslti.wu	$vr2, $vr0, 10
+	vrepli.w	$vr3, 48
+	vor.v	$vr4, $vr0, $vr3
+	vrepli.w	$vr5, 55
+	pcalau12i	$a1, %pc_hi20(.LCPI1_5)
+	vld	$vr6, $a1, %pc_lo12(.LCPI1_5)
+	vadd.w	$vr0, $vr0, $vr5
+	vbitsel.v	$vr0, $vr0, $vr4, $vr2
+	vst	$vr0, $sp, 80
+	vsrl.w	$vr0, $vr1, $vr6
+	pcalau12i	$a1, %pc_hi20(.LCPI1_4)
+	vld	$vr2, $a1, %pc_lo12(.LCPI1_4)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_6)
+	vld	$vr4, $a1, %pc_lo12(.LCPI1_6)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_7)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI1_7)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_8)
-	xvld	$xr3, $a1, %pc_lo12(.LCPI1_8)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_9)
-	xvld	$xr4, $a1, %pc_lo12(.LCPI1_9)
-	xvsrl.w	$xr1, $xr1, $xr2
-	xvand.v	$xr0, $xr0, $xr3
-	xvand.v	$xr2, $xr1, $xr3
-	xvslt.wu	$xr3, $xr0, $xr4
-	xvrepli.w	$xr4, 48
-	xvor.v	$xr2, $xr2, $xr4
-	xvinsve0.w	$xr0, $xr1, 0
-	xvrepli.w	$xr1, 55
-	xvadd.w	$xr0, $xr0, $xr1
-	xvbitsel.v	$xr0, $xr0, $xr2, $xr3
-	xvst	$xr0, $sp, 64
+	vld	$vr6, $a1, %pc_lo12(.LCPI1_7)
+	vsrl.w	$vr1, $vr1, $vr2
+	vand.v	$vr0, $vr0, $vr4
+	vand.v	$vr2, $vr1, $vr4
+	vslt.wu	$vr4, $vr0, $vr6
+	vor.v	$vr2, $vr2, $vr3
+	vextrins.w	$vr0, $vr1, 0
+	vadd.w	$vr0, $vr0, $vr5
+	vbitsel.v	$vr0, $vr0, $vr2, $vr4
+	vst	$vr0, $sp, 64
 	st.w	$zero, $sp, 96
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 0
@@ -383,7 +370,7 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	addi.d	$sp, $sp, 256
 	ret
 .LBB1_23:
-	xvpickve2gr.w	$a2, $xr0, 2
+	vpickve2gr.w	$a2, $vr1, 2
 	andi	$a2, $a2, 1
 	ori	$a3, $zero, 115
 	masknez	$a3, $a3, $a2
@@ -394,7 +381,7 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	andi	$a2, $s3, 1024
 	beqz	$a2, .LBB1_10
 .LBB1_24:
-	xvpickve2gr.w	$a2, $xr0, 5
+	vpickve2gr.w	$a2, $vr0, 1
 	andi	$a2, $a2, 1
 	ori	$a3, $zero, 115
 	masknez	$a3, $a3, $a2
@@ -443,18 +430,18 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	st.w	$s1, $a0, 8
 	beqz	$a1, .LBB1_22
 # %bb.30:
-	pcalau12i	$a0, %pc_hi20(.LCPI1_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI1_2)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI1_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_4)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_5)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_5)
 	vrepli.w	$vr2, 48
-	vreplgr2vr.w	$vr3, $s3
+	vld	$vr3, $sp, 16                   # 16-byte Folded Reload
 	vsrl.w	$vr0, $vr3, $vr0
 	vsrl.w	$vr1, $vr3, $vr1
-	pcalau12i	$a0, %pc_hi20(.LCPI1_4)
-	vld	$vr3, $a0, %pc_lo12(.LCPI1_4)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_5)
-	vld	$vr4, $a0, %pc_lo12(.LCPI1_5)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_6)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_6)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_7)
+	vld	$vr4, $a0, %pc_lo12(.LCPI1_7)
 	vst	$vr2, $sp, 80
 	vand.v	$vr1, $vr1, $vr3
 	vand.v	$vr3, $vr0, $vr3
@@ -1047,7 +1034,7 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s0, $zero
 	add.w	$a2, $s4, $a2
-	bgtz	$a2, .LBB2_21
+	bgtz	$a2, .LBB2_15
 # %bb.1:
 	ori	$a3, $zero, 64
 	slt	$a3, $a3, $s4
@@ -1071,7 +1058,7 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	or	$a2, $a2, $a3
 	add.w	$a2, $a2, $s4
 	addi.w	$s1, $a2, 1
-	beq	$s1, $s4, .LBB2_21
+	beq	$s1, $s4, .LBB2_15
 # %bb.2:
 	move	$s2, $a1
 	move	$s3, $a0
@@ -1084,99 +1071,72 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	blez	$s4, .LBB2_8
+	blez	$s4, .LBB2_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	blez	$s0, .LBB2_9
-# %bb.4:                                # %iter.check
-	ori	$a2, $zero, 4
+	blez	$s0, .LBB2_12
+# %bb.4:                                # %.lr.ph.i.i
+	ori	$a2, $zero, 8
 	move	$a1, $zero
-	bltu	$s0, $a2, .LBB2_17
-# %bb.5:                                # %iter.check
+	bltu	$s0, $a2, .LBB2_9
+# %bb.5:                                # %.lr.ph.i.i
 	sub.d	$a2, $fp, $a0
-	ori	$a3, $zero, 64
-	bltu	$a2, $a3, .LBB2_17
-# %bb.6:                                # %vector.main.loop.iter.check
-	ori	$a1, $zero, 16
-	bgeu	$s0, $a1, .LBB2_10
-# %bb.7:
-	move	$a1, $zero
-	b	.LBB2_14
-.LBB2_8:
-	move	$a2, $s3
-	move	$a1, $s2
-	b	.LBB2_20
-.LBB2_9:                                # %._crit_edge.i.i
-	move	$a2, $s3
-	move	$a1, $s2
-	bnez	$a0, .LBB2_19
-	b	.LBB2_20
-.LBB2_10:                               # %vector.ph
-	andi	$a2, $s0, 12
-	bstrpick.d	$a1, $s0, 30, 4
-	slli.d	$a1, $a1, 4
-	addi.d	$a3, $fp, 32
-	addi.d	$a4, $a0, 32
-	move	$a5, $a1
-	.p2align	4, , 16
-.LBB2_11:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a5, $a5, -16
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB2_11
-# %bb.12:                               # %middle.block
-	beq	$a1, $s0, .LBB2_19
-# %bb.13:                               # %vec.epilog.iter.check
-	beqz	$a2, .LBB2_17
-.LBB2_14:                               # %vec.epilog.ph
+	ori	$a3, $zero, 32
+	bltu	$a2, $a3, .LBB2_9
+# %bb.6:                                # %vector.ph
+	bstrpick.d	$a1, $s0, 30, 3
+	slli.d	$a1, $a1, 3
+	addi.d	$a2, $fp, 16
+	addi.d	$a3, $a0, 16
 	move	$a4, $a1
-	bstrpick.d	$a1, $s0, 30, 2
-	slli.d	$a1, $a1, 2
-	sub.d	$a2, $a4, $a1
-	alsl.d	$a3, $a4, $fp, 2
-	alsl.d	$a4, $a4, $a0, 2
 	.p2align	4, , 16
-.LBB2_15:                               # %vec.epilog.vector.body
+.LBB2_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a3, 0
-	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 16
-	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB2_15
-# %bb.16:                               # %vec.epilog.middle.block
-	beq	$a1, $s0, .LBB2_19
-.LBB2_17:                               # %vec.epilog.scalar.ph.preheader
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$a4, $a4, -8
+	addi.d	$a2, $a2, 32
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB2_7
+# %bb.8:                                # %middle.block
+	beq	$a1, $s0, .LBB2_13
+.LBB2_9:                                # %scalar.ph.preheader
 	sub.d	$a2, $s0, $a1
 	alsl.d	$a3, $a1, $fp, 2
 	alsl.d	$a1, $a1, $a0, 2
 	.p2align	4, , 16
-.LBB2_18:                               # %vec.epilog.scalar.ph
+.LBB2_10:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a1, 0
 	st.w	$a4, $a3, 0
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a1, $a1, 4
-	bnez	$a2, .LBB2_18
-.LBB2_19:                               # %._crit_edge.thread.i.i
+	bnez	$a2, .LBB2_10
+	b	.LBB2_13
+.LBB2_11:
+	move	$a2, $s3
+	move	$a1, $s2
+	b	.LBB2_14
+.LBB2_12:                               # %._crit_edge.i.i
+	move	$a2, $s3
+	move	$a1, $s2
+	beqz	$a0, .LBB2_14
+.LBB2_13:                               # %._crit_edge.thread.i.i
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a1, $s2
 	move	$a2, $s3
 	ld.w	$s0, $s3, 8
-.LBB2_20:
+.LBB2_14:
 	move	$a0, $a2
 	st.d	$fp, $a2, 0
 	slli.d	$a2, $s0, 2
 	stx.w	$zero, $fp, $a2
 	st.w	$s1, $a0, 12
-.LBB2_21:                               # %_ZN11CStringBaseIwE10GrowLengthEi.exit
+.LBB2_15:                               # %_ZN11CStringBaseIwE10GrowLengthEi.exit
 	ld.d	$a2, $a0, 0
 	slli.d	$a3, $s0, 2
 	stx.w	$a1, $a2, $a3
@@ -1227,7 +1187,7 @@ _ZN11CStringBaseIwEpLERKS0_:            # @_ZN11CStringBaseIwEpLERKS0_
 	ld.w	$a1, $a1, 8
 	nor	$a2, $s1, $zero
 	add.w	$a2, $s4, $a2
-	bge	$a2, $a1, .LBB3_21
+	bge	$a2, $a1, .LBB3_15
 # %bb.1:
 	ori	$a3, $zero, 64
 	slt	$a3, $a3, $s4
@@ -1250,7 +1210,7 @@ _ZN11CStringBaseIwEpLERKS0_:            # @_ZN11CStringBaseIwEpLERKS0_
 	or	$a1, $a1, $a2
 	add.w	$a1, $a1, $s4
 	addi.w	$s2, $a1, 1
-	beq	$s2, $s4, .LBB3_21
+	beq	$s2, $s4, .LBB3_15
 # %bb.2:
 	move	$s3, $a0
 	slti	$a0, $a1, -1
@@ -1262,108 +1222,81 @@ _ZN11CStringBaseIwEpLERKS0_:            # @_ZN11CStringBaseIwEpLERKS0_
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	blez	$s4, .LBB3_8
+	blez	$s4, .LBB3_11
 # %bb.3:                                # %.preheader.i.i
-	ld.d	$a0, $s3, 0
-	blez	$s1, .LBB3_9
-# %bb.4:                                # %iter.check
-	ori	$a2, $zero, 4
-	move	$a1, $zero
-	bltu	$s1, $a2, .LBB3_17
-# %bb.5:                                # %iter.check
-	sub.d	$a2, $s0, $a0
-	ori	$a3, $zero, 64
-	bltu	$a2, $a3, .LBB3_17
-# %bb.6:                                # %vector.main.loop.iter.check
-	ori	$a1, $zero, 16
-	bgeu	$s1, $a1, .LBB3_10
-# %bb.7:
-	move	$a1, $zero
-	b	.LBB3_14
-.LBB3_8:
-	move	$a1, $s3
-	b	.LBB3_20
-.LBB3_9:                                # %._crit_edge.i.i
-	move	$a1, $s3
-	bnez	$a0, .LBB3_19
-	b	.LBB3_20
-.LBB3_10:                               # %vector.ph
-	andi	$a2, $s1, 12
-	bstrpick.d	$a1, $s1, 30, 4
-	slli.d	$a1, $a1, 4
-	addi.d	$a3, $s0, 32
-	addi.d	$a4, $a0, 32
-	move	$a5, $a1
+	ld.d	$a1, $s3, 0
+	blez	$s1, .LBB3_12
+# %bb.4:                                # %.lr.ph.i.i
+	ori	$a2, $zero, 8
+	move	$a0, $zero
+	bltu	$s1, $a2, .LBB3_9
+# %bb.5:                                # %.lr.ph.i.i
+	sub.d	$a2, $s0, $a1
+	ori	$a3, $zero, 32
+	bltu	$a2, $a3, .LBB3_9
+# %bb.6:                                # %vector.ph
+	bstrpick.d	$a0, $s1, 30, 3
+	slli.d	$a0, $a0, 3
+	addi.d	$a2, $s0, 16
+	addi.d	$a3, $a1, 16
+	move	$a4, $a0
 	.p2align	4, , 16
-.LBB3_11:                               # %vector.body
+.LBB3_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a5, $a5, -16
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB3_11
-# %bb.12:                               # %middle.block
-	beq	$a1, $s1, .LBB3_19
-# %bb.13:                               # %vec.epilog.iter.check
-	beqz	$a2, .LBB3_17
-.LBB3_14:                               # %vec.epilog.ph
-	move	$a4, $a1
-	bstrpick.d	$a1, $s1, 30, 2
-	slli.d	$a1, $a1, 2
-	sub.d	$a2, $a4, $a1
-	alsl.d	$a3, $a4, $s0, 2
-	alsl.d	$a4, $a4, $a0, 2
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$a4, $a4, -8
+	addi.d	$a2, $a2, 32
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB3_7
+# %bb.8:                                # %middle.block
+	beq	$a0, $s1, .LBB3_13
+.LBB3_9:                                # %scalar.ph.preheader
+	sub.d	$a2, $s1, $a0
+	alsl.d	$a3, $a0, $s0, 2
+	alsl.d	$a0, $a0, $a1, 2
 	.p2align	4, , 16
-.LBB3_15:                               # %vec.epilog.vector.body
+.LBB3_10:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a3, 0
-	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 16
-	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB3_15
-# %bb.16:                               # %vec.epilog.middle.block
-	beq	$a1, $s1, .LBB3_19
-.LBB3_17:                               # %vec.epilog.scalar.ph.preheader
-	sub.d	$a2, $s1, $a1
-	alsl.d	$a3, $a1, $s0, 2
-	alsl.d	$a1, $a1, $a0, 2
-	.p2align	4, , 16
-.LBB3_18:                               # %vec.epilog.scalar.ph
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a1, 0
+	ld.w	$a4, $a0, 0
 	st.w	$a4, $a3, 0
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
-	addi.d	$a1, $a1, 4
-	bnez	$a2, .LBB3_18
-.LBB3_19:                               # %._crit_edge.thread.i.i
+	addi.d	$a0, $a0, 4
+	bnez	$a2, .LBB3_10
+	b	.LBB3_13
+.LBB3_11:
+	move	$a0, $s3
+	b	.LBB3_14
+.LBB3_12:                               # %._crit_edge.i.i
+	move	$a0, $s3
+	beqz	$a1, .LBB3_14
+.LBB3_13:                               # %._crit_edge.thread.i.i
+	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	move	$a1, $s3
+	move	$a0, $s3
 	ld.w	$s1, $s3, 8
-.LBB3_20:
-	move	$a0, $a1
-	st.d	$s0, $a1, 0
+.LBB3_14:
+	st.d	$s0, $a0, 0
 	slli.d	$a1, $s1, 2
 	stx.w	$zero, $s0, $a1
 	st.w	$s2, $a0, 12
-.LBB3_21:                               # %_ZN11CStringBaseIwE10GrowLengthEi.exit
+.LBB3_15:                               # %_ZN11CStringBaseIwE10GrowLengthEi.exit
 	ld.d	$a2, $a0, 0
 	ld.d	$a1, $fp, 0
 	alsl.d	$a2, $s1, $a2, 2
 	.p2align	4, , 16
-.LBB3_22:                               # =>This Inner Loop Header: Depth=1
+.LBB3_16:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a1, 0
 	addi.d	$a1, $a1, 4
 	addi.d	$a4, $a2, 4
 	st.w	$a3, $a2, 0
 	move	$a2, $a4
-	bnez	$a3, .LBB3_22
-# %bb.23:                               # %_Z12MyStringCopyIwEPT_S1_PKS0_.exit
+	bnez	$a3, .LBB3_16
+# %bb.17:                               # %_Z12MyStringCopyIwEPT_S1_PKS0_.exit
 	ld.w	$a1, $fp, 8
 	add.d	$a1, $a1, $s1
 	st.w	$a1, $a0, 8

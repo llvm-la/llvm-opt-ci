@@ -1118,8 +1118,10 @@ _ZN16intersection_4x4C2EPKc:            # @_ZN16intersection_4x4C2EPKc
 	st.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 64
 	st.d	$a1, $a0, 8
-	xvld	$xr0, $sp, 64
-	xvst	$xr0, $sp, 32
+	vld	$vr0, $sp, 64
+	vld	$vr1, $sp, 80
+	vst	$vr0, $sp, 32
+	vst	$vr1, $sp, 48
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cout)
 	addi.d	$a1, $sp, 32

@@ -70,104 +70,71 @@ plot:                                   # @plot
 	ld.w	$a3, $a1, %pc_lo12(num_refine)
 	move	$fp, $a0
 	bltz	$a3, .LBB0_8
-# %bb.6:                                # %iter.check
+# %bb.6:                                # %.lr.ph40
 	pcalau12i	$a0, %pc_hi20(num_blocks)
-	ld.d	$a0, $a0, %pc_lo12(num_blocks)
-	addi.d	$a1, $a3, 1
-	ori	$a2, $zero, 3
-	bstrpick.d	$a1, $a1, 31, 0
-	bgeu	$a3, $a2, .LBB0_9
+	ld.d	$a1, $a0, %pc_lo12(num_blocks)
+	addi.d	$a0, $a3, 1
+	ori	$a4, $zero, 7
+	bstrpick.d	$a2, $a0, 31, 0
+	bgeu	$a3, $a4, .LBB0_9
 # %bb.7:
-	move	$a2, $zero
-	move	$a7, $zero
-	b	.LBB0_18
+	move	$a4, $zero
+	move	$a0, $zero
+	b	.LBB0_12
 .LBB0_8:
-	move	$a7, $zero
-	b	.LBB0_20
-.LBB0_9:                                # %vector.main.loop.iter.check
-	ori	$a2, $zero, 15
-	bgeu	$a3, $a2, .LBB0_11
-# %bb.10:
-	move	$a2, $zero
-	move	$a7, $zero
-	b	.LBB0_15
-.LBB0_11:                               # %vector.ph
-	andi	$a4, $a1, 12
-	bstrpick.d	$a2, $a1, 31, 4
-	slli.d	$a2, $a2, 4
-	xvrepli.b	$xr0, 0
-	addi.d	$a5, $a0, 32
-	move	$a6, $a2
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB0_12:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a5, -32
-	xvld	$xr3, $a5, 0
-	xvadd.w	$xr0, $xr2, $xr0
-	xvadd.w	$xr1, $xr3, $xr1
-	addi.d	$a6, $a6, -16
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB0_12
-# %bb.13:                               # %middle.block
-	xvadd.w	$xr0, $xr1, $xr0
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a7, $xr0, 0
-	beq	$a2, $a1, .LBB0_20
-# %bb.14:                               # %vec.epilog.iter.check
-	beqz	$a4, .LBB0_18
-.LBB0_15:                               # %vec.epilog.ph
-	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 31, 2
-	slli.d	$a2, $a2, 2
+	move	$a0, $zero
+	b	.LBB0_14
+.LBB0_9:                                # %vector.ph
+	bstrpick.d	$a0, $a2, 31, 3
+	slli.d	$a4, $a0, 3
 	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a7, 0
-	sub.d	$a4, $a5, $a2
-	alsl.d	$a5, $a5, $a0, 2
+	addi.d	$a0, $a1, 16
+	move	$a5, $a4
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB0_16:                               # %vec.epilog.vector.body
+.LBB0_10:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a5, 0
+	vld	$vr2, $a0, -16
+	vld	$vr3, $a0, 0
+	vadd.w	$vr0, $vr2, $vr0
+	vadd.w	$vr1, $vr3, $vr1
+	addi.d	$a5, $a5, -8
+	addi.d	$a0, $a0, 32
+	bnez	$a5, .LBB0_10
+# %bb.11:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 16
-	bnez	$a4, .LBB0_16
-# %bb.17:                               # %vec.epilog.middle.block
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a7, $vr0, 0
-	beq	$a2, $a1, .LBB0_20
-.LBB0_18:                               # %vec.epilog.scalar.ph.preheader
-	alsl.d	$a0, $a2, $a0, 2
-	sub.d	$a1, $a1, $a2
+	vpickve2gr.d	$a0, $vr0, 0
+	beq	$a4, $a2, .LBB0_14
+.LBB0_12:                               # %scalar.ph.preheader
+	alsl.d	$a1, $a4, $a1, 2
+	sub.d	$a2, $a2, $a4
 	.p2align	4, , 16
-.LBB0_19:                               # %vec.epilog.scalar.ph
+.LBB0_13:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a2, $a0, 0
-	add.d	$a7, $a2, $a7
-	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, 4
-	bnez	$a1, .LBB0_19
-.LBB0_20:                               # %._crit_edge
-	pcalau12i	$a0, %pc_hi20(npx)
-	ld.w	$a0, $a0, %pc_lo12(npx)
-	pcalau12i	$a1, %pc_hi20(init_block_x)
-	ld.w	$a1, $a1, %pc_lo12(init_block_x)
-	pcalau12i	$a2, %pc_hi20(npy)
-	ld.w	$a2, $a2, %pc_lo12(npy)
+	ld.w	$a4, $a1, 0
+	add.d	$a0, $a4, $a0
+	addi.d	$a2, $a2, -1
+	addi.d	$a1, $a1, 4
+	bnez	$a2, .LBB0_13
+.LBB0_14:                               # %._crit_edge
+	pcalau12i	$a1, %pc_hi20(npx)
+	ld.w	$a1, $a1, %pc_lo12(npx)
+	pcalau12i	$a2, %pc_hi20(init_block_x)
+	ld.w	$a2, $a2, %pc_lo12(init_block_x)
+	pcalau12i	$a4, %pc_hi20(npy)
+	ld.w	$a5, $a4, %pc_lo12(npy)
 	pcalau12i	$a4, %pc_hi20(init_block_y)
-	ld.w	$a5, $a4, %pc_lo12(init_block_y)
+	ld.w	$a6, $a4, %pc_lo12(init_block_y)
 	pcalau12i	$a4, %pc_hi20(npz)
-	ld.w	$a6, $a4, %pc_lo12(npz)
+	ld.w	$a7, $a4, %pc_lo12(npz)
 	pcalau12i	$a4, %pc_hi20(init_block_z)
 	ld.w	$t0, $a4, %pc_lo12(init_block_z)
-	mul.w	$a4, $a1, $a0
-	mul.w	$a5, $a5, $a2
-	mul.w	$a6, $t0, $a6
-	addi.w	$a2, $a7, 0
+	mul.w	$a4, $a2, $a1
+	mul.w	$a5, $a6, $a5
+	mul.w	$a6, $t0, $a7
+	addi.w	$a2, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
 	move	$a0, $fp
@@ -182,25 +149,25 @@ plot:                                   # @plot
 	jirl	$ra, $ra, 0
 	pcalau12i	$s1, %pc_hi20(max_active_block)
 	ld.w	$a0, $s1, %pc_lo12(max_active_block)
-	blez	$a0, .LBB0_25
-# %bb.21:                               # %.lr.ph45.preheader
+	blez	$a0, .LBB0_19
+# %bb.15:                               # %.lr.ph45.preheader
 	pcalau12i	$s2, %pc_hi20(blocks)
 	ld.d	$a1, $s2, %pc_lo12(blocks)
 	pcalau12i	$a2, %pc_hi20(.L.str.3)
 	addi.d	$s0, $a2, %pc_lo12(.L.str.3)
 	move	$s3, $zero
 	move	$s4, $zero
-	b	.LBB0_23
+	b	.LBB0_17
 	.p2align	4, , 16
-.LBB0_22:                               #   in Loop: Header=BB0_23 Depth=1
+.LBB0_16:                               #   in Loop: Header=BB0_17 Depth=1
 	addi.d	$s4, $s4, 1
 	addi.d	$s3, $s3, 192
-	bge	$s4, $a0, .LBB0_25
-.LBB0_23:                               # %.lr.ph45
+	bge	$s4, $a0, .LBB0_19
+.LBB0_17:                               # %.lr.ph45
                                         # =>This Inner Loop Header: Depth=1
 	ldx.w	$a2, $a1, $s3
-	bltz	$a2, .LBB0_22
-# %bb.24:                               #   in Loop: Header=BB0_23 Depth=1
+	bltz	$a2, .LBB0_16
+# %bb.18:                               #   in Loop: Header=BB0_17 Depth=1
 	add.d	$a0, $a1, $s3
 	ld.w	$a2, $a0, 4
 	ld.w	$a3, $a0, 172
@@ -212,8 +179,8 @@ plot:                                   # @plot
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s2, %pc_lo12(blocks)
 	ld.w	$a0, $s1, %pc_lo12(max_active_block)
-	b	.LBB0_22
-.LBB0_25:                               # %._crit_edge46
+	b	.LBB0_16
+.LBB0_19:                               # %._crit_edge46
 	move	$a0, $fp
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload

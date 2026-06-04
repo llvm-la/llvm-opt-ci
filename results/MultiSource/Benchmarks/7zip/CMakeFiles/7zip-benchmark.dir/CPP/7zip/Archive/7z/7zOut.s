@@ -1692,108 +1692,76 @@ _ZN8NArchive3N7z11COutArchive16WriteHashDigestsERK13CRecordVectorIbERKS2_IjE: # 
 	.cfi_offset 26, -48
 	move	$fp, $a1
 	ld.w	$a1, $a1, 12
-	blez	$a1, .LBB14_45
-# %bb.1:                                # %iter.check
+	blez	$a1, .LBB14_39
+# %bb.1:                                # %.lr.ph
 	move	$s0, $a2
 	move	$s1, $a0
 	ld.d	$a0, $fp, 16
-	ori	$a2, $zero, 4
+	ori	$a2, $zero, 8
 	bgeu	$a1, $a2, .LBB14_3
 # %bb.2:
 	move	$a2, $zero
 	move	$a3, $zero
-	b	.LBB14_12
-.LBB14_3:                               # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB14_5
-# %bb.4:
-	move	$a2, $zero
-	move	$a3, $zero
-	b	.LBB14_9
-.LBB14_5:                               # %vector.ph
-	andi	$a4, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	xvrepli.b	$xr0, 0
-	addi.d	$a3, $a0, 8
-	move	$a5, $a2
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB14_6:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a3, -8
-	ld.d	$a7, $a3, 0
-	vinsgr2vr.d	$vr2, $a6, 0
-	vinsgr2vr.d	$vr3, $a7, 0
-	vext2xv.wu.bu	$xr2, $xr2
-	vext2xv.wu.bu	$xr3, $xr3
-	xvadd.w	$xr0, $xr0, $xr2
-	xvadd.w	$xr1, $xr1, $xr3
-	addi.d	$a5, $a5, -16
-	addi.d	$a3, $a3, 16
-	bnez	$a5, .LBB14_6
-# %bb.7:                                # %middle.block
-	xvadd.w	$xr0, $xr1, $xr0
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a3, $xr0, 0
-	beq	$a2, $a1, .LBB14_14
-# %bb.8:                                # %vec.epilog.iter.check
-	beqz	$a4, .LBB14_12
-.LBB14_9:                               # %vec.epilog.ph
-	move	$a4, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
+	b	.LBB14_6
+.LBB14_3:                               # %vector.ph
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
 	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a3, 0
-	sub.d	$a3, $a4, $a2
-	add.d	$a4, $a0, $a4
+	addi.d	$a3, $a0, 4
+	move	$a4, $a2
+	vori.b	$vr1, $vr0, 0
+	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
-.LBB14_10:                              # %vec.epilog.vector.body
+.LBB14_4:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a4, 0
-	vinsgr2vr.w	$vr1, $a5, 0
-	vext2xv.wu.bu	$xr1, $xr1
-	vadd.w	$vr0, $vr0, $vr1
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 4
-	bnez	$a3, .LBB14_10
-# %bb.11:                               # %vec.epilog.middle.block
+	ld.w	$a5, $a3, -4
+	ld.w	$a6, $a3, 0
+	vinsgr2vr.w	$vr3, $a5, 0
+	vinsgr2vr.w	$vr4, $a6, 0
+	vilvl.b	$vr3, $vr0, $vr3
+	vilvl.h	$vr3, $vr0, $vr3
+	vilvl.b	$vr4, $vr0, $vr4
+	vilvl.h	$vr4, $vr0, $vr4
+	vadd.w	$vr1, $vr1, $vr3
+	vadd.w	$vr2, $vr2, $vr4
+	addi.d	$a4, $a4, -8
+	addi.d	$a3, $a3, 8
+	bnez	$a4, .LBB14_4
+# %bb.5:                                # %middle.block
+	vadd.w	$vr0, $vr2, $vr1
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
-	beq	$a2, $a1, .LBB14_14
-.LBB14_12:                              # %vec.epilog.scalar.ph.preheader
+	beq	$a2, $a1, .LBB14_8
+.LBB14_6:                               # %scalar.ph.preheader
 	add.d	$a0, $a0, $a2
 	sub.d	$a1, $a1, $a2
 	.p2align	4, , 16
-.LBB14_13:                              # %vec.epilog.scalar.ph
+.LBB14_7:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a2, $a0, 0
 	add.d	$a3, $a3, $a2
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 1
-	bnez	$a1, .LBB14_13
-.LBB14_14:                              # %._crit_edge
+	bnez	$a1, .LBB14_7
+.LBB14_8:                               # %._crit_edge
 	addi.w	$s2, $a3, 0
-	beqz	$s2, .LBB14_45
-# %bb.15:
+	beqz	$s2, .LBB14_39
+# %bb.9:
 	ld.bu	$a0, $s1, 8
-	beqz	$a0, .LBB14_17
-# %bb.16:
+	beqz	$a0, .LBB14_11
+# %bb.10:
 	ld.d	$a0, $s1, 16
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s1, 16
 	ld.w	$a1, $fp, 12
 	ld.bu	$a0, $s1, 8
-	beq	$s2, $a1, .LBB14_21
-	b	.LBB14_25
-.LBB14_17:
+	beq	$s2, $a1, .LBB14_15
+	b	.LBB14_19
+.LBB14_11:
 	ld.bu	$a0, $s1, 9
-	beqz	$a0, .LBB14_23
-# %bb.18:
+	beqz	$a0, .LBB14_17
+# %bb.12:
 	ld.wu	$a0, $s1, 40
 	ld.d	$a1, $s1, 32
 	addi.d	$a2, $a0, 1
@@ -1802,12 +1770,12 @@ _ZN8NArchive3N7z11COutArchive16WriteHashDigestsERK13CRecordVectorIbERKS2_IjE: # 
 	stx.b	$a2, $a1, $a0
 	ld.w	$a0, $s1, 40
 	ld.w	$a1, $s1, 44
-	bne	$a0, $a1, .LBB14_20
-# %bb.19:
+	bne	$a0, $a1, .LBB14_14
+# %bb.13:
 	addi.d	$a0, $s1, 32
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer14FlushWithCheckEv)
 	jirl	$ra, $ra, 0
-.LBB14_20:                              # %_ZN10COutBuffer9WriteByteEh.exit.i
+.LBB14_14:                              # %_ZN10COutBuffer9WriteByteEh.exit.i
 	ld.wu	$a0, $s1, 24
 	andi	$a1, $a0, 255
 	xori	$a1, $a1, 10
@@ -1820,19 +1788,19 @@ _ZN8NArchive3N7z11COutArchive16WriteHashDigestsERK13CRecordVectorIbERKS2_IjE: # 
 	st.w	$a0, $s1, 24
 	ld.w	$a1, $fp, 12
 	ld.bu	$a0, $s1, 8
-	bne	$s2, $a1, .LBB14_25
-.LBB14_21:
-	beqz	$a0, .LBB14_27
-# %bb.22:
+	bne	$s2, $a1, .LBB14_19
+.LBB14_15:
+	beqz	$a0, .LBB14_21
+# %bb.16:
 	ld.d	$a0, $s1, 16
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s1, 16
-	b	.LBB14_40
-.LBB14_23:
+	b	.LBB14_34
+.LBB14_17:
 	ld.d	$a1, $s1, 96
 	ld.d	$a0, $s1, 104
-	beq	$a1, $a0, .LBB14_46
-# %bb.24:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i
+	beq	$a1, $a0, .LBB14_40
+# %bb.18:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i
 	ld.d	$a1, $s1, 88
 	addi.d	$a2, $a0, 1
 	st.d	$a2, $s1, 104
@@ -1840,18 +1808,18 @@ _ZN8NArchive3N7z11COutArchive16WriteHashDigestsERK13CRecordVectorIbERKS2_IjE: # 
 	stx.b	$a2, $a1, $a0
 	ld.w	$a1, $fp, 12
 	ld.bu	$a0, $s1, 8
-	beq	$s2, $a1, .LBB14_21
-.LBB14_25:
-	beqz	$a0, .LBB14_31
-# %bb.26:
+	beq	$s2, $a1, .LBB14_15
+.LBB14_19:
+	beqz	$a0, .LBB14_25
+# %bb.20:
 	ld.d	$a0, $s1, 16
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s1, 16
-	b	.LBB14_39
-.LBB14_27:
+	b	.LBB14_33
+.LBB14_21:
 	ld.bu	$a0, $s1, 9
-	beqz	$a0, .LBB14_35
-# %bb.28:
+	beqz	$a0, .LBB14_29
+# %bb.22:
 	ld.wu	$a0, $s1, 40
 	ld.d	$a1, $s1, 32
 	addi.d	$a2, $a0, 1
@@ -1860,12 +1828,12 @@ _ZN8NArchive3N7z11COutArchive16WriteHashDigestsERK13CRecordVectorIbERKS2_IjE: # 
 	stx.b	$a2, $a1, $a0
 	ld.w	$a0, $s1, 40
 	ld.w	$a1, $s1, 44
-	bne	$a0, $a1, .LBB14_30
-# %bb.29:
+	bne	$a0, $a1, .LBB14_24
+# %bb.23:
 	addi.d	$a0, $s1, 32
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer14FlushWithCheckEv)
 	jirl	$ra, $ra, 0
-.LBB14_30:                              # %_ZN10COutBuffer9WriteByteEh.exit.i20
+.LBB14_24:                              # %_ZN10COutBuffer9WriteByteEh.exit.i20
 	ld.wu	$a0, $s1, 24
 	andi	$a1, $a0, 255
 	xori	$a1, $a1, 1
@@ -1876,11 +1844,11 @@ _ZN8NArchive3N7z11COutArchive16WriteHashDigestsERK13CRecordVectorIbERKS2_IjE: # 
 	srli.d	$a0, $a0, 8
 	xor	$a0, $a1, $a0
 	st.w	$a0, $s1, 24
-	b	.LBB14_40
-.LBB14_31:
+	b	.LBB14_34
+.LBB14_25:
 	ld.bu	$a0, $s1, 9
-	beqz	$a0, .LBB14_37
-# %bb.32:
+	beqz	$a0, .LBB14_31
+# %bb.26:
 	ld.wu	$a0, $s1, 40
 	ld.d	$a1, $s1, 32
 	addi.d	$a2, $a0, 1
@@ -1888,12 +1856,12 @@ _ZN8NArchive3N7z11COutArchive16WriteHashDigestsERK13CRecordVectorIbERKS2_IjE: # 
 	stx.b	$zero, $a1, $a0
 	ld.w	$a0, $s1, 40
 	ld.w	$a1, $s1, 44
-	bne	$a0, $a1, .LBB14_34
-# %bb.33:
+	bne	$a0, $a1, .LBB14_28
+# %bb.27:
 	addi.d	$a0, $s1, 32
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer14FlushWithCheckEv)
 	jirl	$ra, $ra, 0
-.LBB14_34:                              # %_ZN10COutBuffer9WriteByteEh.exit.i25
+.LBB14_28:                              # %_ZN10COutBuffer9WriteByteEh.exit.i25
 	ld.wu	$a0, $s1, 24
 	andi	$a1, $a0, 255
 	slli.d	$a1, $a1, 2
@@ -1903,57 +1871,57 @@ _ZN8NArchive3N7z11COutArchive16WriteHashDigestsERK13CRecordVectorIbERKS2_IjE: # 
 	srli.d	$a0, $a0, 8
 	xor	$a0, $a1, $a0
 	st.w	$a0, $s1, 24
-	b	.LBB14_39
-.LBB14_35:
+	b	.LBB14_33
+.LBB14_29:
 	ld.d	$a1, $s1, 96
 	ld.d	$a0, $s1, 104
-	beq	$a1, $a0, .LBB14_46
-# %bb.36:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i19
+	beq	$a1, $a0, .LBB14_40
+# %bb.30:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i19
 	ld.d	$a1, $s1, 88
 	addi.d	$a2, $a0, 1
 	st.d	$a2, $s1, 104
 	ori	$a2, $zero, 1
 	stx.b	$a2, $a1, $a0
-	b	.LBB14_40
-.LBB14_37:
+	b	.LBB14_34
+.LBB14_31:
 	ld.d	$a1, $s1, 96
 	ld.d	$a0, $s1, 104
-	beq	$a1, $a0, .LBB14_46
-# %bb.38:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i24
+	beq	$a1, $a0, .LBB14_40
+# %bb.32:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i24
 	ld.d	$a1, $s1, 88
 	addi.d	$a2, $a0, 1
 	st.d	$a2, $s1, 104
 	stx.b	$zero, $a1, $a0
-.LBB14_39:                              # %_ZN8NArchive3N7z11COutArchive9WriteByteEh.exit28
+.LBB14_33:                              # %_ZN8NArchive3N7z11COutArchive9WriteByteEh.exit28
 	move	$a0, $s1
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z11COutArchive15WriteBoolVectorERK13CRecordVectorIbE)
 	jirl	$ra, $ra, 0
-.LBB14_40:                              # %_ZN8NArchive3N7z11COutArchive9WriteByteEh.exit23
+.LBB14_34:                              # %_ZN8NArchive3N7z11COutArchive9WriteByteEh.exit23
 	ld.w	$a0, $s0, 12
-	blez	$a0, .LBB14_45
-# %bb.41:                               # %.lr.ph32
+	blez	$a0, .LBB14_39
+# %bb.35:                               # %.lr.ph32
 	move	$s2, $zero
 	move	$s3, $zero
-	b	.LBB14_43
+	b	.LBB14_37
 	.p2align	4, , 16
-.LBB14_42:                              #   in Loop: Header=BB14_43 Depth=1
+.LBB14_36:                              #   in Loop: Header=BB14_37 Depth=1
 	addi.d	$s3, $s3, 1
 	addi.d	$s2, $s2, 4
-	bge	$s3, $a0, .LBB14_45
-.LBB14_43:                              # =>This Inner Loop Header: Depth=1
+	bge	$s3, $a0, .LBB14_39
+.LBB14_37:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 16
 	ldx.bu	$a1, $a1, $s3
-	beqz	$a1, .LBB14_42
-# %bb.44:                               #   in Loop: Header=BB14_43 Depth=1
+	beqz	$a1, .LBB14_36
+# %bb.38:                               #   in Loop: Header=BB14_37 Depth=1
 	ld.d	$a0, $s0, 16
 	ldx.w	$a1, $a0, $s2
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z11COutArchive11WriteUInt32Ej)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 12
-	b	.LBB14_42
-.LBB14_45:                              # %.loopexit
+	b	.LBB14_36
+.LBB14_39:                              # %.loopexit
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -1962,7 +1930,7 @@ _ZN8NArchive3N7z11COutArchive16WriteHashDigestsERK13CRecordVectorIbERKS2_IjE: # 
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
 	ret
-.LBB14_46:
+.LBB14_40:
 	ori	$a0, $zero, 4
 	pcaddu18i	$ra, %call36(__cxa_allocate_exception)
 	jirl	$ra, $ra, 0
@@ -3504,123 +3472,91 @@ _ZN8NArchive3N7z11COutArchive20WriteUInt64DefVectorERKNS0_16CUInt64DefVectorEh: 
 	.cfi_offset 25, -40
 	move	$fp, $a1
 	ld.w	$a1, $a1, 44
-	blez	$a1, .LBB20_20
-# %bb.1:                                # %iter.check
+	blez	$a1, .LBB20_14
+# %bb.1:                                # %.lr.ph
 	move	$a3, $a2
 	move	$s0, $a0
 	ld.d	$a0, $fp, 48
-	ori	$a2, $zero, 4
+	ori	$a2, $zero, 8
 	bgeu	$a1, $a2, .LBB20_3
 # %bb.2:
 	move	$a2, $zero
 	move	$a4, $zero
-	b	.LBB20_12
-.LBB20_3:                               # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB20_5
-# %bb.4:
-	move	$a2, $zero
-	move	$a4, $zero
-	b	.LBB20_9
-.LBB20_5:                               # %vector.ph
-	andi	$a5, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	xvrepli.b	$xr0, 0
-	addi.d	$a4, $a0, 8
-	move	$a6, $a2
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB20_6:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a7, $a4, -8
-	ld.d	$t0, $a4, 0
-	vinsgr2vr.d	$vr2, $a7, 0
-	vinsgr2vr.d	$vr3, $t0, 0
-	vext2xv.wu.bu	$xr2, $xr2
-	vext2xv.wu.bu	$xr3, $xr3
-	xvadd.w	$xr0, $xr0, $xr2
-	xvadd.w	$xr1, $xr1, $xr3
-	addi.d	$a6, $a6, -16
-	addi.d	$a4, $a4, 16
-	bnez	$a6, .LBB20_6
-# %bb.7:                                # %middle.block
-	xvadd.w	$xr0, $xr1, $xr0
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a4, $xr0, 0
-	beq	$a2, $a1, .LBB20_14
-# %bb.8:                                # %vec.epilog.iter.check
-	beqz	$a5, .LBB20_12
-.LBB20_9:                               # %vec.epilog.ph
-	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
+	b	.LBB20_6
+.LBB20_3:                               # %vector.ph
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
 	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a4, 0
-	sub.d	$a4, $a5, $a2
-	add.d	$a5, $a0, $a5
+	addi.d	$a4, $a0, 4
+	move	$a5, $a2
+	vori.b	$vr1, $vr0, 0
+	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
-.LBB20_10:                              # %vec.epilog.vector.body
+.LBB20_4:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a5, 0
-	vinsgr2vr.w	$vr1, $a6, 0
-	vext2xv.wu.bu	$xr1, $xr1
-	vadd.w	$vr0, $vr0, $vr1
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 4
-	bnez	$a4, .LBB20_10
-# %bb.11:                               # %vec.epilog.middle.block
+	ld.w	$a6, $a4, -4
+	ld.w	$a7, $a4, 0
+	vinsgr2vr.w	$vr3, $a6, 0
+	vinsgr2vr.w	$vr4, $a7, 0
+	vilvl.b	$vr3, $vr0, $vr3
+	vilvl.h	$vr3, $vr0, $vr3
+	vilvl.b	$vr4, $vr0, $vr4
+	vilvl.h	$vr4, $vr0, $vr4
+	vadd.w	$vr1, $vr1, $vr3
+	vadd.w	$vr2, $vr2, $vr4
+	addi.d	$a5, $a5, -8
+	addi.d	$a4, $a4, 8
+	bnez	$a5, .LBB20_4
+# %bb.5:                                # %middle.block
+	vadd.w	$vr0, $vr2, $vr1
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a4, $vr0, 0
-	beq	$a2, $a1, .LBB20_14
-.LBB20_12:                              # %vec.epilog.scalar.ph.preheader
+	beq	$a2, $a1, .LBB20_8
+.LBB20_6:                               # %scalar.ph.preheader
 	add.d	$a0, $a0, $a2
 	sub.d	$a1, $a1, $a2
 	.p2align	4, , 16
-.LBB20_13:                              # %vec.epilog.scalar.ph
+.LBB20_7:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a2, $a0, 0
 	add.d	$a4, $a4, $a2
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 1
-	bnez	$a1, .LBB20_13
-.LBB20_14:                              # %._crit_edge
+	bnez	$a1, .LBB20_7
+.LBB20_8:                               # %._crit_edge
 	addi.w	$a2, $a4, 0
-	beqz	$a2, .LBB20_20
-# %bb.15:
+	beqz	$a2, .LBB20_14
+# %bb.9:
 	addi.d	$a1, $fp, 32
 	ori	$a4, $zero, 8
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z11COutArchive22WriteAlignedBoolHeaderERK13CRecordVectorIbEihj)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
-	blez	$a0, .LBB20_20
-# %bb.16:                               # %.lr.ph24
+	blez	$a0, .LBB20_14
+# %bb.10:                               # %.lr.ph24
 	move	$s1, $zero
 	move	$s2, $zero
-	b	.LBB20_18
+	b	.LBB20_12
 	.p2align	4, , 16
-.LBB20_17:                              #   in Loop: Header=BB20_18 Depth=1
+.LBB20_11:                              #   in Loop: Header=BB20_12 Depth=1
 	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 8
-	bge	$s2, $a0, .LBB20_20
-.LBB20_18:                              # =>This Inner Loop Header: Depth=1
+	bge	$s2, $a0, .LBB20_14
+.LBB20_12:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 48
 	ldx.bu	$a1, $a1, $s2
-	beqz	$a1, .LBB20_17
-# %bb.19:                               #   in Loop: Header=BB20_18 Depth=1
+	beqz	$a1, .LBB20_11
+# %bb.13:                               #   in Loop: Header=BB20_12 Depth=1
 	ld.d	$a0, $fp, 16
 	ldx.d	$a1, $a0, $s1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z11COutArchive11WriteUInt64Ey)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
-	b	.LBB20_17
-.LBB20_20:                              # %.loopexit
+	b	.LBB20_11
+.LBB20_14:                              # %.loopexit
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -4064,7 +4000,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	blez	$a1, .LBB23_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $s0, 16
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bgeu	$a1, $a2, .LBB23_4
 # %bb.2:
 	move	$a2, $zero
@@ -4074,28 +4010,26 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	move	$a4, $zero
 	b	.LBB23_9
 .LBB23_4:                               # %vector.ph
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	xvrepli.b	$xr0, 0
-	addi.d	$a4, $a0, 32
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	vrepli.b	$vr0, 0
+	addi.d	$a4, $a0, 16
 	move	$a5, $a2
-	xvori.b	$xr1, $xr0, 0
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB23_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a4, -32
-	xvld	$xr3, $a4, 0
-	xvadd.d	$xr0, $xr2, $xr0
-	xvadd.d	$xr1, $xr3, $xr1
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 64
+	vld	$vr2, $a4, -16
+	vld	$vr3, $a4, 0
+	vadd.d	$vr0, $vr2, $vr0
+	vadd.d	$vr1, $vr3, $vr1
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB23_5
 # %bb.6:                                # %middle.block
-	xvadd.d	$xr0, $xr1, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a4, $xr0, 0
+	vadd.d	$vr0, $vr1, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
 	beq	$a2, $a1, .LBB23_9
 .LBB23_7:                               # %scalar.ph.preheader
 	alsl.d	$a0, $a2, $a0, 3
@@ -4157,7 +4091,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 .LBB23_15:
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB23_266
+	beq	$a1, $a0, .LBB23_242
 # %bb.16:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i
 	ld.d	$a1, $fp, 88
 	addi.d	$a2, $a0, 1
@@ -4208,7 +4142,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 .LBB23_23:
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB23_266
+	beq	$a1, $a0, .LBB23_242
 # %bb.24:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i155
 	ld.d	$a1, $fp, 88
 	addi.d	$a2, $a0, 1
@@ -4356,7 +4290,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 .LBB23_40:
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB23_267
+	beq	$a1, $a0, .LBB23_243
 # %bb.41:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i160
 	ld.d	$a1, $fp, 88
 	addi.d	$a2, $a0, 1
@@ -4384,7 +4318,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	st.d	$a0, $fp, 16
 	b	.LBB23_59
 .LBB23_46:
-	bnez	$a0, .LBB23_264
+	bnez	$a0, .LBB23_240
 .LBB23_47:
 	ld.bu	$a0, $fp, 9
 	beqz	$a0, .LBB23_55
@@ -4411,7 +4345,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	srli.d	$a0, $a0, 8
 	xor	$a0, $a1, $a0
 	st.w	$a0, $fp, 24
-	b	.LBB23_265
+	b	.LBB23_241
 .LBB23_51:
 	ld.bu	$a0, $fp, 9
 	beqz	$a0, .LBB23_57
@@ -4444,17 +4378,17 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 .LBB23_55:
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB23_266
+	beq	$a1, $a0, .LBB23_242
 # %bb.56:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i272
 	ld.d	$a1, $fp, 88
 	addi.d	$a2, $a0, 1
 	st.d	$a2, $fp, 104
 	stx.b	$zero, $a1, $a0
-	b	.LBB23_265
+	b	.LBB23_241
 .LBB23_57:
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB23_266
+	beq	$a1, $a0, .LBB23_242
 # %bb.58:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i171
 	ld.d	$a1, $fp, 88
 	addi.d	$a2, $a0, 1
@@ -4575,7 +4509,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 .LBB23_75:
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB23_269
+	beq	$a1, $a0, .LBB23_245
 # %bb.76:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i180
 	ld.d	$a1, $fp, 88
 	addi.d	$a2, $a0, 1
@@ -4726,7 +4660,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 .LBB23_98:
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB23_271
+	beq	$a1, $a0, .LBB23_247
 # %bb.99:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i191
 	ld.d	$a1, $fp, 88
 	addi.d	$a2, $a0, 1
@@ -4793,7 +4727,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 .LBB23_109:
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB23_271
+	beq	$a1, $a0, .LBB23_247
 # %bb.110:                              # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i198
 	ld.d	$a1, $fp, 88
 	addi.d	$a2, $a0, 1
@@ -4828,10 +4762,11 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVectorD2Ev)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 172
+	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
 	blez	$a0, .LBB23_160
 # %bb.115:                              # %.lr.ph318
 	ld.d	$a1, $s0, 176
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bgeu	$a0, $a2, .LBB23_117
 # %bb.116:
 	move	$a2, $zero
@@ -4839,67 +4774,54 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	move	$a3, $zero
 	b	.LBB23_120
 .LBB23_117:                             # %vector.ph401
-	bstrpick.d	$a2, $a0, 30, 3
-	slli.d	$a2, $a2, 3
-	xvrepli.b	$xr0, 0
-	addi.d	$a3, $a1, 32
+	bstrpick.d	$a2, $a0, 30, 2
+	slli.d	$a2, $a2, 2
+	vrepli.b	$vr0, 0
+	addi.d	$a3, $a1, 16
 	move	$a4, $a2
-	xvori.b	$xr3, $xr0, 0
-	vld	$vr2, $sp, 32                   # 16-byte Folded Reload
-	vori.b	$vr1, $vr2, 0
+	vori.b	$vr1, $vr0, 0
+	vori.b	$vr2, $vr0, 0
+	vori.b	$vr3, $vr0, 0
 	.p2align	4, , 16
 .LBB23_118:                             # %vector.body404
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a3, -32
-	ld.d	$a6, $a3, -24
-	ld.d	$a7, $a3, -16
-	ld.d	$t0, $a3, -8
-	ld.d	$t1, $a3, 0
-	ld.d	$t2, $a3, 8
-	ld.d	$t3, $a3, 16
-	ld.d	$t4, $a3, 24
+	ld.d	$a5, $a3, -16
+	ld.d	$a6, $a3, -8
+	ld.d	$a7, $a3, 0
+	ld.d	$t0, $a3, 8
 	ld.w	$a5, $a5, 24
 	ld.w	$a6, $a6, 24
 	ld.w	$a7, $a7, 24
 	ld.w	$t0, $t0, 24
 	vinsgr2vr.w	$vr4, $a5, 0
 	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
-	ld.w	$a5, $t1, 24
-	ld.w	$a6, $t2, 24
-	ld.w	$a7, $t3, 24
-	ld.w	$t0, $t4, 24
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr5, $a6, 1
-	vinsgr2vr.w	$vr5, $a7, 2
-	vinsgr2vr.w	$vr5, $t0, 3
+	vinsgr2vr.w	$vr5, $a7, 0
+	vinsgr2vr.w	$vr5, $t0, 1
 	vseqi.w	$vr6, $vr4, 0
 	vseqi.w	$vr7, $vr5, 0
-	vadd.w	$vr1, $vr1, $vr6
-	vaddi.wu	$vr1, $vr1, 1
-	vadd.w	$vr2, $vr2, $vr7
-	vaddi.wu	$vr2, $vr2, 1
+	vadd.w	$vr0, $vr0, $vr6
+	vaddi.wu	$vr0, $vr0, 1
+	vadd.w	$vr3, $vr3, $vr7
+	vaddi.wu	$vr3, $vr3, 1
 	vslli.w	$vr4, $vr4, 1
 	vslli.w	$vr5, $vr5, 1
 	vaddi.wu	$vr4, $vr4, 2
 	vaddi.wu	$vr5, $vr5, 2
-	vext2xv.d.w	$xr4, $xr4
-	vext2xv.d.w	$xr5, $xr5
-	xvadd.d	$xr0, $xr0, $xr4
-	xvadd.d	$xr3, $xr3, $xr5
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vslti.w	$vr6, $vr4, 0
+	vilvl.w	$vr4, $vr6, $vr4
+	vslti.w	$vr6, $vr5, 0
+	vilvl.w	$vr5, $vr6, $vr5
+	vadd.d	$vr1, $vr1, $vr4
+	vadd.d	$vr2, $vr2, $vr5
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB23_118
 # %bb.119:                              # %middle.block413
-	xvadd.d	$xr0, $xr3, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr3, $xr0, 2
-	xvadd.d	$xr0, $xr3, $xr0
-	xvpickve2gr.d	$s2, $xr0, 0
-	vadd.w	$vr0, $vr2, $vr1
+	vadd.d	$vr1, $vr2, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$s2, $vr1, 0
+	vadd.w	$vr0, $vr3, $vr0
 	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
 	beq	$a2, $a0, .LBB23_122
 .LBB23_120:                             # %scalar.ph399.preheader
@@ -4961,7 +4883,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 .LBB23_129:
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB23_266
+	beq	$a1, $a0, .LBB23_242
 # %bb.130:                              # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i205
 	ld.d	$a1, $fp, 88
 	addi.d	$a2, $a0, 1
@@ -4979,6 +4901,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	ld.d	$a0, $fp, 16
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $fp, 16
+	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s0, 172
 	bgtz	$a0, .LBB23_139
 	b	.LBB23_160
@@ -5008,13 +4931,15 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	srli.d	$a0, $a0, 8
 	xor	$a0, $a1, $a0
 	st.w	$a0, $fp, 24
+	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s0, 172
 	bgtz	$a0, .LBB23_139
 	b	.LBB23_160
 .LBB23_137:
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB23_266
+	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
+	beq	$a1, $a0, .LBB23_242
 # %bb.138:                              # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i210
 	ld.d	$a1, $fp, 88
 	addi.d	$a2, $a0, 1
@@ -5091,6 +5016,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer14FlushWithCheckEv)
 	jirl	$ra, $ra, 0
+	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
 .LBB23_151:                             # %_ZN10COutBuffer9WriteByteEh.exit.i216
                                         #   in Loop: Header=BB23_146 Depth=2
 	ld.wu	$a0, $fp, 24
@@ -5108,7 +5034,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 .LBB23_152:                             #   in Loop: Header=BB23_146 Depth=2
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB23_266
+	beq	$a1, $a0, .LBB23_242
 # %bb.153:                              # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i215
                                         #   in Loop: Header=BB23_146 Depth=2
 	ld.d	$a1, $fp, 88
@@ -5134,6 +5060,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer14FlushWithCheckEv)
 	jirl	$ra, $ra, 0
+	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
 .LBB23_157:                             # %_ZN10COutBuffer9WriteByteEh.exit.i221
                                         #   in Loop: Header=BB23_146 Depth=2
 	ld.wu	$a0, $fp, 24
@@ -5149,7 +5076,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 .LBB23_158:                             #   in Loop: Header=BB23_146 Depth=2
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB23_266
+	beq	$a1, $a0, .LBB23_242
 # %bb.159:                              # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i220
                                         #   in Loop: Header=BB23_146 Depth=2
 	ld.d	$a1, $fp, 88
@@ -5160,484 +5087,362 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 .LBB23_160:                             # %.loopexit287
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.bu	$a0, $s3, 1
-	beqz	$a0, .LBB23_181
+	beqz	$a0, .LBB23_175
 # %bb.161:
 	ld.w	$a0, $s0, 236
-	blez	$a0, .LBB23_181
-# %bb.162:                              # %iter.check
+	blez	$a0, .LBB23_175
+# %bb.162:                              # %.lr.ph.i
 	ld.d	$a1, $s0, 240
-	ori	$a2, $zero, 4
+	ori	$a2, $zero, 8
 	bgeu	$a0, $a2, .LBB23_164
 # %bb.163:
 	move	$a2, $zero
 	move	$a3, $zero
-	b	.LBB23_173
-.LBB23_164:                             # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$a0, $a2, .LBB23_166
-# %bb.165:
-	move	$a2, $zero
-	move	$a3, $zero
-	b	.LBB23_170
-.LBB23_166:                             # %vector.ph423
-	andi	$a4, $a0, 12
-	bstrpick.d	$a2, $a0, 30, 4
-	slli.d	$a2, $a2, 4
-	xvrepli.b	$xr0, 0
-	addi.d	$a3, $a1, 8
-	move	$a5, $a2
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB23_167:                             # %vector.body426
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a3, -8
-	ld.d	$a7, $a3, 0
-	vinsgr2vr.d	$vr2, $a6, 0
-	vinsgr2vr.d	$vr3, $a7, 0
-	vext2xv.wu.bu	$xr2, $xr2
-	vext2xv.wu.bu	$xr3, $xr3
-	xvadd.w	$xr0, $xr0, $xr2
-	xvadd.w	$xr1, $xr1, $xr3
-	addi.d	$a5, $a5, -16
-	addi.d	$a3, $a3, 16
-	bnez	$a5, .LBB23_167
-# %bb.168:                              # %middle.block433
-	xvadd.w	$xr0, $xr1, $xr0
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a3, $xr0, 0
-	beq	$a2, $a0, .LBB23_175
-# %bb.169:                              # %vec.epilog.iter.check
-	beqz	$a4, .LBB23_173
-.LBB23_170:                             # %vec.epilog.ph
+	b	.LBB23_167
+.LBB23_164:                             # %vector.ph422
+	bstrpick.d	$a2, $a0, 30, 3
+	slli.d	$a2, $a2, 3
+	vrepli.b	$vr0, 0
+	addi.d	$a3, $a1, 4
 	move	$a4, $a2
-	bstrpick.d	$a2, $a0, 30, 2
-	slli.d	$a2, $a2, 2
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vinsgr2vr.w	$vr0, $a3, 0
-	sub.d	$a3, $a4, $a2
-	add.d	$a4, $a1, $a4
+	vori.b	$vr1, $vr0, 0
+	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
-.LBB23_171:                             # %vec.epilog.vector.body
+.LBB23_165:                             # %vector.body425
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a4, 0
-	vinsgr2vr.w	$vr1, $a5, 0
-	vext2xv.wu.bu	$xr1, $xr1
-	vadd.w	$vr0, $vr0, $vr1
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 4
-	bnez	$a3, .LBB23_171
-# %bb.172:                              # %vec.epilog.middle.block
+	ld.w	$a5, $a3, -4
+	ld.w	$a6, $a3, 0
+	vinsgr2vr.w	$vr3, $a5, 0
+	vinsgr2vr.w	$vr4, $a6, 0
+	vilvl.b	$vr3, $vr0, $vr3
+	vilvl.h	$vr3, $vr0, $vr3
+	vilvl.b	$vr4, $vr0, $vr4
+	vilvl.h	$vr4, $vr0, $vr4
+	vadd.w	$vr1, $vr1, $vr3
+	vadd.w	$vr2, $vr2, $vr4
+	addi.d	$a4, $a4, -8
+	addi.d	$a3, $a3, 8
+	bnez	$a4, .LBB23_165
+# %bb.166:                              # %middle.block432
+	vadd.w	$vr0, $vr2, $vr1
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
-	beq	$a2, $a0, .LBB23_175
-.LBB23_173:                             # %vec.epilog.scalar.ph.preheader
+	beq	$a2, $a0, .LBB23_169
+.LBB23_167:                             # %scalar.ph420.preheader
 	sub.d	$a0, $a0, $a2
 	add.d	$a1, $a1, $a2
 	.p2align	4, , 16
-.LBB23_174:                             # %vec.epilog.scalar.ph
+.LBB23_168:                             # %scalar.ph420
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a2, $a1, 0
 	add.d	$a3, $a3, $a2
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 1
-	bnez	$a0, .LBB23_174
-.LBB23_175:                             # %._crit_edge.i
+	bnez	$a0, .LBB23_168
+.LBB23_169:                             # %._crit_edge.i
 	addi.w	$a2, $a3, 0
-	beqz	$a2, .LBB23_181
-# %bb.176:
+	beqz	$a2, .LBB23_175
+# %bb.170:
 	addi.d	$a1, $s0, 224
 	ori	$a3, $zero, 18
 	ori	$a4, $zero, 8
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z11COutArchive22WriteAlignedBoolHeaderERK13CRecordVectorIbEihj)
 	jirl	$ra, $ra, 0
+	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s0, 236
-	blez	$a0, .LBB23_181
-# %bb.177:                              # %.lr.ph24.i
+	blez	$a0, .LBB23_175
+# %bb.171:                              # %.lr.ph24.i
 	move	$s1, $zero
 	move	$s2, $zero
-	b	.LBB23_179
+	b	.LBB23_173
 	.p2align	4, , 16
-.LBB23_178:                             #   in Loop: Header=BB23_179 Depth=1
+.LBB23_172:                             #   in Loop: Header=BB23_173 Depth=1
 	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 8
-	bge	$s2, $a0, .LBB23_181
-.LBB23_179:                             # =>This Inner Loop Header: Depth=1
+	bge	$s2, $a0, .LBB23_175
+.LBB23_173:                             # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 240
 	ldx.bu	$a1, $a1, $s2
-	beqz	$a1, .LBB23_178
-# %bb.180:                              #   in Loop: Header=BB23_179 Depth=1
+	beqz	$a1, .LBB23_172
+# %bb.174:                              #   in Loop: Header=BB23_173 Depth=1
 	ld.d	$a0, $s0, 208
 	ldx.d	$a1, $a0, $s1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z11COutArchive11WriteUInt64Ey)
 	jirl	$ra, $ra, 0
+	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s0, 236
-	b	.LBB23_178
-.LBB23_181:                             # %_ZN8NArchive3N7z11COutArchive20WriteUInt64DefVectorERKNS0_16CUInt64DefVectorEh.exit
+	b	.LBB23_172
+.LBB23_175:                             # %_ZN8NArchive3N7z11COutArchive20WriteUInt64DefVectorERKNS0_16CUInt64DefVectorEh.exit
 	ld.bu	$a0, $s3, 2
-	beqz	$a0, .LBB23_202
-# %bb.182:
+	beqz	$a0, .LBB23_190
+# %bb.176:
 	ld.w	$a0, $s0, 300
-	blez	$a0, .LBB23_202
-# %bb.183:                              # %iter.check465
+	blez	$a0, .LBB23_190
+# %bb.177:                              # %.lr.ph.i226
 	ld.d	$a1, $s0, 304
-	ori	$a2, $zero, 4
-	bgeu	$a0, $a2, .LBB23_185
-# %bb.184:
+	ori	$a2, $zero, 8
+	bgeu	$a0, $a2, .LBB23_179
+# %bb.178:
 	move	$a2, $zero
 	move	$a3, $zero
-	b	.LBB23_194
-.LBB23_185:                             # %vector.main.loop.iter.check448
-	ori	$a2, $zero, 16
-	bgeu	$a0, $a2, .LBB23_187
-# %bb.186:
-	move	$a2, $zero
-	move	$a3, $zero
-	b	.LBB23_191
-.LBB23_187:                             # %vector.ph450
-	andi	$a4, $a0, 12
-	bstrpick.d	$a2, $a0, 30, 4
-	slli.d	$a2, $a2, 4
-	xvrepli.b	$xr0, 0
-	addi.d	$a3, $a1, 8
-	move	$a5, $a2
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB23_188:                             # %vector.body453
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a3, -8
-	ld.d	$a7, $a3, 0
-	vinsgr2vr.d	$vr2, $a6, 0
-	vinsgr2vr.d	$vr3, $a7, 0
-	vext2xv.wu.bu	$xr2, $xr2
-	vext2xv.wu.bu	$xr3, $xr3
-	xvadd.w	$xr0, $xr0, $xr2
-	xvadd.w	$xr1, $xr1, $xr3
-	addi.d	$a5, $a5, -16
-	addi.d	$a3, $a3, 16
-	bnez	$a5, .LBB23_188
-# %bb.189:                              # %middle.block460
-	xvadd.w	$xr0, $xr1, $xr0
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a3, $xr0, 0
-	beq	$a2, $a0, .LBB23_196
-# %bb.190:                              # %vec.epilog.iter.check467
-	beqz	$a4, .LBB23_194
-.LBB23_191:                             # %vec.epilog.ph469
+	b	.LBB23_182
+.LBB23_179:                             # %vector.ph439
+	bstrpick.d	$a2, $a0, 30, 3
+	slli.d	$a2, $a2, 3
+	vrepli.b	$vr0, 0
+	addi.d	$a3, $a1, 4
 	move	$a4, $a2
-	bstrpick.d	$a2, $a0, 30, 2
-	slli.d	$a2, $a2, 2
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vinsgr2vr.w	$vr0, $a3, 0
-	sub.d	$a3, $a4, $a2
-	add.d	$a4, $a1, $a4
+	vori.b	$vr1, $vr0, 0
+	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
-.LBB23_192:                             # %vec.epilog.vector.body472
+.LBB23_180:                             # %vector.body442
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a4, 0
-	vinsgr2vr.w	$vr1, $a5, 0
-	vext2xv.wu.bu	$xr1, $xr1
-	vadd.w	$vr0, $vr0, $vr1
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 4
-	bnez	$a3, .LBB23_192
-# %bb.193:                              # %vec.epilog.middle.block477
+	ld.w	$a5, $a3, -4
+	ld.w	$a6, $a3, 0
+	vinsgr2vr.w	$vr3, $a5, 0
+	vinsgr2vr.w	$vr4, $a6, 0
+	vilvl.b	$vr3, $vr0, $vr3
+	vilvl.h	$vr3, $vr0, $vr3
+	vilvl.b	$vr4, $vr0, $vr4
+	vilvl.h	$vr4, $vr0, $vr4
+	vadd.w	$vr1, $vr1, $vr3
+	vadd.w	$vr2, $vr2, $vr4
+	addi.d	$a4, $a4, -8
+	addi.d	$a3, $a3, 8
+	bnez	$a4, .LBB23_180
+# %bb.181:                              # %middle.block449
+	vadd.w	$vr0, $vr2, $vr1
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
-	beq	$a2, $a0, .LBB23_196
-.LBB23_194:                             # %vec.epilog.scalar.ph466.preheader
+	beq	$a2, $a0, .LBB23_184
+.LBB23_182:                             # %scalar.ph437.preheader
 	sub.d	$a0, $a0, $a2
 	add.d	$a1, $a1, $a2
 	.p2align	4, , 16
-.LBB23_195:                             # %vec.epilog.scalar.ph466
+.LBB23_183:                             # %scalar.ph437
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a2, $a1, 0
 	add.d	$a3, $a3, $a2
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 1
-	bnez	$a0, .LBB23_195
-.LBB23_196:                             # %._crit_edge.i233
+	bnez	$a0, .LBB23_183
+.LBB23_184:                             # %._crit_edge.i233
 	addi.w	$a2, $a3, 0
-	beqz	$a2, .LBB23_202
-# %bb.197:
+	beqz	$a2, .LBB23_190
+# %bb.185:
 	addi.d	$a1, $s0, 288
 	ori	$a3, $zero, 19
 	ori	$a4, $zero, 8
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z11COutArchive22WriteAlignedBoolHeaderERK13CRecordVectorIbEihj)
 	jirl	$ra, $ra, 0
+	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s0, 300
-	blez	$a0, .LBB23_202
-# %bb.198:                              # %.lr.ph24.i234
+	blez	$a0, .LBB23_190
+# %bb.186:                              # %.lr.ph24.i234
 	move	$s1, $zero
 	move	$s2, $zero
-	b	.LBB23_200
+	b	.LBB23_188
 	.p2align	4, , 16
-.LBB23_199:                             #   in Loop: Header=BB23_200 Depth=1
+.LBB23_187:                             #   in Loop: Header=BB23_188 Depth=1
 	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 8
-	bge	$s2, $a0, .LBB23_202
-.LBB23_200:                             # =>This Inner Loop Header: Depth=1
+	bge	$s2, $a0, .LBB23_190
+.LBB23_188:                             # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 304
 	ldx.bu	$a1, $a1, $s2
-	beqz	$a1, .LBB23_199
-# %bb.201:                              #   in Loop: Header=BB23_200 Depth=1
+	beqz	$a1, .LBB23_187
+# %bb.189:                              #   in Loop: Header=BB23_188 Depth=1
 	ld.d	$a0, $s0, 272
 	ldx.d	$a1, $a0, $s1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z11COutArchive11WriteUInt64Ey)
 	jirl	$ra, $ra, 0
+	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s0, 300
-	b	.LBB23_199
-.LBB23_202:                             # %_ZN8NArchive3N7z11COutArchive20WriteUInt64DefVectorERKNS0_16CUInt64DefVectorEh.exit238
+	b	.LBB23_187
+.LBB23_190:                             # %_ZN8NArchive3N7z11COutArchive20WriteUInt64DefVectorERKNS0_16CUInt64DefVectorEh.exit238
 	ld.bu	$a0, $s3, 3
-	beqz	$a0, .LBB23_223
-# %bb.203:
+	beqz	$a0, .LBB23_205
+# %bb.191:
 	ld.w	$a0, $s0, 364
-	blez	$a0, .LBB23_223
-# %bb.204:                              # %iter.check500
+	blez	$a0, .LBB23_205
+# %bb.192:                              # %.lr.ph.i239
 	ld.d	$a1, $s0, 368
-	ori	$a2, $zero, 4
-	bgeu	$a0, $a2, .LBB23_206
-# %bb.205:
+	ori	$a2, $zero, 8
+	bgeu	$a0, $a2, .LBB23_194
+# %bb.193:
 	move	$a2, $zero
 	move	$a3, $zero
-	b	.LBB23_215
-.LBB23_206:                             # %vector.main.loop.iter.check483
-	ori	$a2, $zero, 16
-	bgeu	$a0, $a2, .LBB23_208
-# %bb.207:
-	move	$a2, $zero
-	move	$a3, $zero
-	b	.LBB23_212
-.LBB23_208:                             # %vector.ph485
-	andi	$a4, $a0, 12
-	bstrpick.d	$a2, $a0, 30, 4
-	slli.d	$a2, $a2, 4
-	xvrepli.b	$xr0, 0
-	addi.d	$a3, $a1, 8
-	move	$a5, $a2
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB23_209:                             # %vector.body488
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a3, -8
-	ld.d	$a7, $a3, 0
-	vinsgr2vr.d	$vr2, $a6, 0
-	vinsgr2vr.d	$vr3, $a7, 0
-	vext2xv.wu.bu	$xr2, $xr2
-	vext2xv.wu.bu	$xr3, $xr3
-	xvadd.w	$xr0, $xr0, $xr2
-	xvadd.w	$xr1, $xr1, $xr3
-	addi.d	$a5, $a5, -16
-	addi.d	$a3, $a3, 16
-	bnez	$a5, .LBB23_209
-# %bb.210:                              # %middle.block495
-	xvadd.w	$xr0, $xr1, $xr0
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a3, $xr0, 0
-	beq	$a2, $a0, .LBB23_217
-# %bb.211:                              # %vec.epilog.iter.check502
-	beqz	$a4, .LBB23_215
-.LBB23_212:                             # %vec.epilog.ph504
+	b	.LBB23_197
+.LBB23_194:                             # %vector.ph456
+	bstrpick.d	$a2, $a0, 30, 3
+	slli.d	$a2, $a2, 3
+	vrepli.b	$vr0, 0
+	addi.d	$a3, $a1, 4
 	move	$a4, $a2
-	bstrpick.d	$a2, $a0, 30, 2
-	slli.d	$a2, $a2, 2
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vinsgr2vr.w	$vr0, $a3, 0
-	sub.d	$a3, $a4, $a2
-	add.d	$a4, $a1, $a4
+	vori.b	$vr1, $vr0, 0
+	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
-.LBB23_213:                             # %vec.epilog.vector.body507
+.LBB23_195:                             # %vector.body459
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a4, 0
-	vinsgr2vr.w	$vr1, $a5, 0
-	vext2xv.wu.bu	$xr1, $xr1
-	vadd.w	$vr0, $vr0, $vr1
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 4
-	bnez	$a3, .LBB23_213
-# %bb.214:                              # %vec.epilog.middle.block512
+	ld.w	$a5, $a3, -4
+	ld.w	$a6, $a3, 0
+	vinsgr2vr.w	$vr3, $a5, 0
+	vinsgr2vr.w	$vr4, $a6, 0
+	vilvl.b	$vr3, $vr0, $vr3
+	vilvl.h	$vr3, $vr0, $vr3
+	vilvl.b	$vr4, $vr0, $vr4
+	vilvl.h	$vr4, $vr0, $vr4
+	vadd.w	$vr1, $vr1, $vr3
+	vadd.w	$vr2, $vr2, $vr4
+	addi.d	$a4, $a4, -8
+	addi.d	$a3, $a3, 8
+	bnez	$a4, .LBB23_195
+# %bb.196:                              # %middle.block466
+	vadd.w	$vr0, $vr2, $vr1
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
-	beq	$a2, $a0, .LBB23_217
-.LBB23_215:                             # %vec.epilog.scalar.ph501.preheader
+	beq	$a2, $a0, .LBB23_199
+.LBB23_197:                             # %scalar.ph454.preheader
 	sub.d	$a0, $a0, $a2
 	add.d	$a1, $a1, $a2
 	.p2align	4, , 16
-.LBB23_216:                             # %vec.epilog.scalar.ph501
+.LBB23_198:                             # %scalar.ph454
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a2, $a1, 0
 	add.d	$a3, $a3, $a2
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 1
-	bnez	$a0, .LBB23_216
-.LBB23_217:                             # %._crit_edge.i246
+	bnez	$a0, .LBB23_198
+.LBB23_199:                             # %._crit_edge.i246
 	addi.w	$a2, $a3, 0
-	beqz	$a2, .LBB23_223
-# %bb.218:
+	beqz	$a2, .LBB23_205
+# %bb.200:
 	addi.d	$a1, $s0, 352
 	ori	$a3, $zero, 20
 	ori	$a4, $zero, 8
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z11COutArchive22WriteAlignedBoolHeaderERK13CRecordVectorIbEihj)
 	jirl	$ra, $ra, 0
+	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s0, 364
-	blez	$a0, .LBB23_223
-# %bb.219:                              # %.lr.ph24.i247
+	blez	$a0, .LBB23_205
+# %bb.201:                              # %.lr.ph24.i247
 	move	$s1, $zero
 	move	$s2, $zero
-	b	.LBB23_221
+	b	.LBB23_203
 	.p2align	4, , 16
-.LBB23_220:                             #   in Loop: Header=BB23_221 Depth=1
+.LBB23_202:                             #   in Loop: Header=BB23_203 Depth=1
 	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 8
-	bge	$s2, $a0, .LBB23_223
-.LBB23_221:                             # =>This Inner Loop Header: Depth=1
+	bge	$s2, $a0, .LBB23_205
+.LBB23_203:                             # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 368
 	ldx.bu	$a1, $a1, $s2
-	beqz	$a1, .LBB23_220
-# %bb.222:                              #   in Loop: Header=BB23_221 Depth=1
+	beqz	$a1, .LBB23_202
+# %bb.204:                              #   in Loop: Header=BB23_203 Depth=1
 	ld.d	$a0, $s0, 336
 	ldx.d	$a1, $a0, $s1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z11COutArchive11WriteUInt64Ey)
 	jirl	$ra, $ra, 0
+	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s0, 364
-	b	.LBB23_220
-.LBB23_223:                             # %_ZN8NArchive3N7z11COutArchive20WriteUInt64DefVectorERKNS0_16CUInt64DefVectorEh.exit251
+	b	.LBB23_202
+.LBB23_205:                             # %_ZN8NArchive3N7z11COutArchive20WriteUInt64DefVectorERKNS0_16CUInt64DefVectorEh.exit251
 	ld.w	$a0, $s0, 428
-	blez	$a0, .LBB23_243
-# %bb.224:                              # %iter.check535
+	blez	$a0, .LBB23_219
+# %bb.206:                              # %.lr.ph.i252
 	ld.d	$a1, $s0, 432
-	ori	$a2, $zero, 4
-	bgeu	$a0, $a2, .LBB23_226
-# %bb.225:
+	ori	$a2, $zero, 8
+	bgeu	$a0, $a2, .LBB23_208
+# %bb.207:
 	move	$a2, $zero
 	move	$a3, $zero
-	b	.LBB23_235
-.LBB23_226:                             # %vector.main.loop.iter.check518
-	ori	$a2, $zero, 16
-	bgeu	$a0, $a2, .LBB23_228
-# %bb.227:
-	move	$a2, $zero
-	move	$a3, $zero
-	b	.LBB23_232
-.LBB23_228:                             # %vector.ph520
-	andi	$a4, $a0, 12
-	bstrpick.d	$a2, $a0, 30, 4
-	slli.d	$a2, $a2, 4
-	xvrepli.b	$xr0, 0
-	addi.d	$a3, $a1, 8
-	move	$a5, $a2
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB23_229:                             # %vector.body523
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a3, -8
-	ld.d	$a7, $a3, 0
-	vinsgr2vr.d	$vr2, $a6, 0
-	vinsgr2vr.d	$vr3, $a7, 0
-	vext2xv.wu.bu	$xr2, $xr2
-	vext2xv.wu.bu	$xr3, $xr3
-	xvadd.w	$xr0, $xr0, $xr2
-	xvadd.w	$xr1, $xr1, $xr3
-	addi.d	$a5, $a5, -16
-	addi.d	$a3, $a3, 16
-	bnez	$a5, .LBB23_229
-# %bb.230:                              # %middle.block530
-	xvadd.w	$xr0, $xr1, $xr0
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a3, $xr0, 0
-	beq	$a2, $a0, .LBB23_237
-# %bb.231:                              # %vec.epilog.iter.check537
-	beqz	$a4, .LBB23_235
-.LBB23_232:                             # %vec.epilog.ph539
+	b	.LBB23_211
+.LBB23_208:                             # %vector.ph473
+	bstrpick.d	$a2, $a0, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $a1, 4
 	move	$a4, $a2
-	bstrpick.d	$a2, $a0, 30, 2
-	slli.d	$a2, $a2, 2
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vinsgr2vr.w	$vr0, $a3, 0
-	sub.d	$a3, $a4, $a2
-	add.d	$a4, $a1, $a4
+	vori.b	$vr0, $vr8, 0
+	vori.b	$vr1, $vr8, 0
 	.p2align	4, , 16
-.LBB23_233:                             # %vec.epilog.vector.body542
+.LBB23_209:                             # %vector.body476
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a4, 0
-	vinsgr2vr.w	$vr1, $a5, 0
-	vext2xv.wu.bu	$xr1, $xr1
-	vadd.w	$vr0, $vr0, $vr1
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 4
-	bnez	$a3, .LBB23_233
-# %bb.234:                              # %vec.epilog.middle.block547
+	ld.w	$a5, $a3, -4
+	ld.w	$a6, $a3, 0
+	vinsgr2vr.w	$vr2, $a5, 0
+	vinsgr2vr.w	$vr3, $a6, 0
+	vilvl.b	$vr2, $vr8, $vr2
+	vilvl.h	$vr2, $vr8, $vr2
+	vilvl.b	$vr3, $vr8, $vr3
+	vilvl.h	$vr3, $vr8, $vr3
+	vadd.w	$vr0, $vr0, $vr2
+	vadd.w	$vr1, $vr1, $vr3
+	addi.d	$a4, $a4, -8
+	addi.d	$a3, $a3, 8
+	bnez	$a4, .LBB23_209
+# %bb.210:                              # %middle.block483
+	vadd.w	$vr0, $vr1, $vr0
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
-	beq	$a2, $a0, .LBB23_237
-.LBB23_235:                             # %vec.epilog.scalar.ph536.preheader
+	beq	$a2, $a0, .LBB23_213
+.LBB23_211:                             # %scalar.ph471.preheader
 	sub.d	$a0, $a0, $a2
 	add.d	$a1, $a1, $a2
 	.p2align	4, , 16
-.LBB23_236:                             # %vec.epilog.scalar.ph536
+.LBB23_212:                             # %scalar.ph471
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a2, $a1, 0
 	add.d	$a3, $a3, $a2
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 1
-	bnez	$a0, .LBB23_236
-.LBB23_237:                             # %._crit_edge.i259
+	bnez	$a0, .LBB23_212
+.LBB23_213:                             # %._crit_edge.i259
 	addi.w	$a2, $a3, 0
-	beqz	$a2, .LBB23_243
-# %bb.238:
+	beqz	$a2, .LBB23_219
+# %bb.214:
 	addi.d	$a1, $s0, 416
 	ori	$a3, $zero, 24
 	ori	$a4, $zero, 8
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z11COutArchive22WriteAlignedBoolHeaderERK13CRecordVectorIbEihj)
 	jirl	$ra, $ra, 0
+	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s0, 428
-	blez	$a0, .LBB23_243
-# %bb.239:                              # %.lr.ph24.i260
+	blez	$a0, .LBB23_219
+# %bb.215:                              # %.lr.ph24.i260
 	move	$s1, $zero
 	move	$s2, $zero
-	b	.LBB23_241
+	b	.LBB23_217
 	.p2align	4, , 16
-.LBB23_240:                             #   in Loop: Header=BB23_241 Depth=1
+.LBB23_216:                             #   in Loop: Header=BB23_217 Depth=1
 	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 8
-	bge	$s2, $a0, .LBB23_243
-.LBB23_241:                             # =>This Inner Loop Header: Depth=1
+	bge	$s2, $a0, .LBB23_219
+.LBB23_217:                             # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 432
 	ldx.bu	$a1, $a1, $s2
-	beqz	$a1, .LBB23_240
-# %bb.242:                              #   in Loop: Header=BB23_241 Depth=1
+	beqz	$a1, .LBB23_216
+# %bb.218:                              #   in Loop: Header=BB23_217 Depth=1
 	ld.d	$a0, $s0, 400
 	ldx.d	$a1, $a0, $s1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z11COutArchive11WriteUInt64Ey)
 	jirl	$ra, $ra, 0
+	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s0, 428
-	b	.LBB23_240
-.LBB23_243:                             # %_ZN8NArchive3N7z11COutArchive20WriteUInt64DefVectorERKNS0_16CUInt64DefVectorEh.exit264
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 128
+	b	.LBB23_216
+.LBB23_219:                             # %_ZN8NArchive3N7z11COutArchive20WriteUInt64DefVectorERKNS0_16CUInt64DefVectorEh.exit264
+	vst	$vr8, $sp, 128
 	ld.w	$a1, $s0, 172
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 144
@@ -5648,15 +5453,15 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector7ReserveEi)
 	jirl	$ra, $ra, 0
 .Ltmp111:                               # EH_LABEL
-# %bb.244:                              # %.preheader286
+# %bb.220:                              # %.preheader286
 	ld.w	$a0, $s0, 172
-	blez	$a0, .LBB23_256
-# %bb.245:                              # %.lr.ph331
+	blez	$a0, .LBB23_232
+# %bb.221:                              # %.lr.ph331
 	move	$s2, $zero
 	move	$s3, $zero
 	move	$s1, $zero
 	.p2align	4, , 16
-.LBB23_246:                             # =>This Inner Loop Header: Depth=1
+.LBB23_222:                             # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 176
 	ldx.d	$a0, $a0, $s2
 	ld.bu	$s4, $a0, 35
@@ -5665,7 +5470,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)
 	jirl	$ra, $ra, 0
 .Ltmp114:                               # EH_LABEL
-# %bb.247:                              #   in Loop: Header=BB23_246 Depth=1
+# %bb.223:                              #   in Loop: Header=BB23_222 Depth=1
 	ld.d	$a0, $sp, 136
 	ld.w	$a1, $sp, 132
 	stx.b	$s4, $a0, $a1
@@ -5675,10 +5480,10 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	add.w	$s1, $s1, $s4
 	addi.d	$s3, $s3, 1
 	addi.d	$s2, $s2, 8
-	blt	$s3, $a1, .LBB23_246
-# %bb.248:                              # %._crit_edge332
-	beqz	$s1, .LBB23_256
-# %bb.249:
+	blt	$s3, $a1, .LBB23_222
+# %bb.224:                              # %._crit_edge332
+	beqz	$s1, .LBB23_232
+# %bb.225:
 .Ltmp116:                               # EH_LABEL
 	addi.d	$a1, $sp, 120
 	ori	$a3, $zero, 21
@@ -5688,51 +5493,51 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z11COutArchive22WriteAlignedBoolHeaderERK13CRecordVectorIbEihj)
 	jirl	$ra, $ra, 0
 .Ltmp117:                               # EH_LABEL
-# %bb.250:                              # %.preheader
+# %bb.226:                              # %.preheader
 	ld.w	$a0, $s0, 172
-	blez	$a0, .LBB23_256
-# %bb.251:                              # %.lr.ph335
+	blez	$a0, .LBB23_232
+# %bb.227:                              # %.lr.ph335
 	move	$s1, $zero
 	move	$s2, $zero
-	b	.LBB23_254
+	b	.LBB23_230
 	.p2align	4, , 16
-.LBB23_252:                             # %._crit_edge357
-                                        #   in Loop: Header=BB23_254 Depth=1
+.LBB23_228:                             # %._crit_edge357
+                                        #   in Loop: Header=BB23_230 Depth=1
 	ld.w	$a0, $s0, 172
-.LBB23_253:                             #   in Loop: Header=BB23_254 Depth=1
+.LBB23_229:                             #   in Loop: Header=BB23_230 Depth=1
 	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 8
-	bge	$s2, $a0, .LBB23_256
-.LBB23_254:                             # =>This Inner Loop Header: Depth=1
+	bge	$s2, $a0, .LBB23_232
+.LBB23_230:                             # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 176
 	ldx.d	$a1, $a1, $s1
 	ld.bu	$a2, $a1, 35
-	beqz	$a2, .LBB23_253
-# %bb.255:                              #   in Loop: Header=BB23_254 Depth=1
+	beqz	$a2, .LBB23_229
+# %bb.231:                              #   in Loop: Header=BB23_230 Depth=1
 	ld.w	$a1, $a1, 8
 .Ltmp119:                               # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z11COutArchive11WriteUInt32Ej)
 	jirl	$ra, $ra, 0
 .Ltmp120:                               # EH_LABEL
-	b	.LBB23_252
-.LBB23_256:                             # %.loopexit
+	b	.LBB23_228
+.LBB23_232:                             # %.loopexit
 	addi.d	$a0, $sp, 120
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVectorD2Ev)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 8
-	beqz	$a0, .LBB23_258
-# %bb.257:
+	beqz	$a0, .LBB23_234
+# %bb.233:
 	ld.d	$a0, $fp, 16
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $fp, 16
 	ld.bu	$a0, $fp, 8
 	beqz	$a0, .LBB23_47
-	b	.LBB23_264
-.LBB23_258:
+	b	.LBB23_240
+.LBB23_234:
 	ld.bu	$a0, $fp, 9
-	beqz	$a0, .LBB23_262
-# %bb.259:
+	beqz	$a0, .LBB23_238
+# %bb.235:
 	ld.wu	$a0, $fp, 40
 	ld.d	$a1, $fp, 32
 	addi.d	$a2, $a0, 1
@@ -5740,12 +5545,12 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	stx.b	$zero, $a1, $a0
 	ld.w	$a0, $fp, 40
 	ld.w	$a1, $fp, 44
-	bne	$a0, $a1, .LBB23_261
-# %bb.260:
+	bne	$a0, $a1, .LBB23_237
+# %bb.236:
 	addi.d	$a0, $fp, 32
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer14FlushWithCheckEv)
 	jirl	$ra, $ra, 0
-.LBB23_261:                             # %_ZN10COutBuffer9WriteByteEh.exit.i268
+.LBB23_237:                             # %_ZN10COutBuffer9WriteByteEh.exit.i268
 	ld.wu	$a0, $fp, 24
 	andi	$a1, $a0, 255
 	slli.d	$a1, $a1, 2
@@ -5757,23 +5562,23 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	st.w	$a0, $fp, 24
 	ld.bu	$a0, $fp, 8
 	beqz	$a0, .LBB23_47
-	b	.LBB23_264
-.LBB23_262:
+	b	.LBB23_240
+.LBB23_238:
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB23_266
-# %bb.263:                              # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i267
+	beq	$a1, $a0, .LBB23_242
+# %bb.239:                              # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i267
 	ld.d	$a1, $fp, 88
 	addi.d	$a2, $a0, 1
 	st.d	$a2, $fp, 104
 	stx.b	$zero, $a1, $a0
 	ld.bu	$a0, $fp, 8
 	beqz	$a0, .LBB23_47
-.LBB23_264:
+.LBB23_240:
 	ld.d	$a0, $fp, 16
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $fp, 16
-.LBB23_265:                             # %_ZN8NArchive3N7z11COutArchive9WriteByteEh.exit170
+.LBB23_241:                             # %_ZN8NArchive3N7z11COutArchive9WriteByteEh.exit170
 	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
@@ -5787,7 +5592,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 240
 	ret
-.LBB23_266:
+.LBB23_242:
 	ori	$a0, $zero, 4
 	pcaddu18i	$ra, %call36(__cxa_allocate_exception)
 	jirl	$ra, $ra, 0
@@ -5798,7 +5603,7 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(__cxa_throw)
 	jirl	$ra, $ra, 0
-.LBB23_267:
+.LBB23_243:
 	ori	$a0, $zero, 4
 	pcaddu18i	$ra, %call36(__cxa_allocate_exception)
 	jirl	$ra, $ra, 0
@@ -5811,8 +5616,8 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	pcaddu18i	$ra, %call36(__cxa_throw)
 	jirl	$ra, $ra, 0
 .Ltmp63:                                # EH_LABEL
-# %bb.268:                              # %.noexc164
-.LBB23_269:
+# %bb.244:                              # %.noexc164
+.LBB23_245:
 	ori	$a0, $zero, 4
 	pcaddu18i	$ra, %call36(__cxa_allocate_exception)
 	jirl	$ra, $ra, 0
@@ -5825,8 +5630,8 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	pcaddu18i	$ra, %call36(__cxa_throw)
 	jirl	$ra, $ra, 0
 .Ltmp76:                                # EH_LABEL
-# %bb.270:                              # %.noexc185
-.LBB23_271:                             # %.invoke
+# %bb.246:                              # %.noexc185
+.LBB23_247:                             # %.invoke
 	ori	$a0, $zero, 4
 	pcaddu18i	$ra, %call36(__cxa_allocate_exception)
 	jirl	$ra, $ra, 0
@@ -5839,43 +5644,43 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	pcaddu18i	$ra, %call36(__cxa_throw)
 	jirl	$ra, $ra, 0
 .Ltmp102:                               # EH_LABEL
-# %bb.272:                              # %.cont
-.LBB23_273:
+# %bb.248:                              # %.cont
+.LBB23_249:
 .Ltmp118:                               # EH_LABEL
-	b	.LBB23_285
-.LBB23_274:
+	b	.LBB23_261
+.LBB23_250:
 .Ltmp109:                               # EH_LABEL
-	b	.LBB23_287
-.LBB23_275:
+	b	.LBB23_263
+.LBB23_251:
 .Ltmp88:                                # EH_LABEL
-	b	.LBB23_287
-.LBB23_276:                             # %.loopexit.split-lp
+	b	.LBB23_263
+.LBB23_252:                             # %.loopexit.split-lp
 .Ltmp83:                                # EH_LABEL
-	b	.LBB23_285
-.LBB23_277:
+	b	.LBB23_261
+.LBB23_253:
 .Ltmp112:                               # EH_LABEL
-	b	.LBB23_285
-.LBB23_278:
+	b	.LBB23_261
+.LBB23_254:
 .Ltmp69:                                # EH_LABEL
-	b	.LBB23_285
-.LBB23_279:
+	b	.LBB23_261
+.LBB23_255:
 .Ltmp66:                                # EH_LABEL
-	b	.LBB23_287
-.LBB23_280:
+	b	.LBB23_263
+.LBB23_256:
 .Ltmp121:                               # EH_LABEL
-	b	.LBB23_285
-.LBB23_281:
+	b	.LBB23_261
+.LBB23_257:
 .Ltmp91:                                # EH_LABEL
-	b	.LBB23_287
-.LBB23_282:
+	b	.LBB23_263
+.LBB23_258:
 .Ltmp94:                                # EH_LABEL
-	b	.LBB23_287
-.LBB23_283:
+	b	.LBB23_263
+.LBB23_259:
 .Ltmp115:                               # EH_LABEL
-	b	.LBB23_285
-.LBB23_284:                             # %.loopexit290
+	b	.LBB23_261
+.LBB23_260:                             # %.loopexit290
 .Ltmp74:                                # EH_LABEL
-.LBB23_285:
+.LBB23_261:
 	move	$fp, $a0
 	addi.d	$a0, $sp, 120
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVectorD2Ev)
@@ -5883,9 +5688,9 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB23_286:
+.LBB23_262:
 .Ltmp59:                                # EH_LABEL
-.LBB23_287:
+.LBB23_263:
 	move	$fp, $a0
 	addi.d	$a0, $sp, 56
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVectorD2Ev)
@@ -6428,34 +6233,32 @@ _ZN8NArchive3N7z11COutArchive13WriteDatabaseERKNS0_16CArchiveDatabaseEPKNS0_22CC
 	blez	$a0, .LBB24_64
 # %bb.57:                               # %.lr.ph
 	ld.d	$a1, $sp, 168
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bgeu	$a0, $a2, .LBB24_59
 # %bb.58:
 	move	$a2, $zero
 	b	.LBB24_62
 .LBB24_59:                              # %vector.ph
-	bstrpick.d	$a2, $a0, 30, 3
-	xvrepli.b	$xr0, 0
-	slli.d	$a2, $a2, 3
-	xvori.b	$xr1, $xr0, 0
-	xvinsgr2vr.d	$xr1, $s4, 0
-	addi.d	$a3, $a1, 32
+	bstrpick.d	$a2, $a0, 30, 2
+	slli.d	$a2, $a2, 2
+	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
+	vori.b	$vr0, $vr3, 0
+	vinsgr2vr.d	$vr0, $s4, 0
+	addi.d	$a3, $a1, 16
 	move	$a4, $a2
 .LBB24_60:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a3, -32
-	xvld	$xr3, $a3, 0
-	xvadd.d	$xr1, $xr1, $xr2
-	xvadd.d	$xr0, $xr0, $xr3
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vld	$vr1, $a3, -16
+	vld	$vr2, $a3, 0
+	vadd.d	$vr0, $vr0, $vr1
+	vadd.d	$vr3, $vr3, $vr2
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB24_60
 # %bb.61:                               # %middle.block
-	xvadd.d	$xr0, $xr0, $xr1
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$s4, $xr0, 0
+	vadd.d	$vr0, $vr3, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$s4, $vr0, 0
 	beq	$a2, $a0, .LBB24_64
 .LBB24_62:                              # %scalar.ph.preheader
 	alsl.d	$a1, $a2, $a1, 3

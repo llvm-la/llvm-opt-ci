@@ -4692,8 +4692,10 @@ _ZN9benchmark17BenchmarkReporter3RunC2EOS1_: # @_ZN9benchmark17BenchmarkReporter
 	st.w	$a1, $fp, 504
 	vld	$vr0, $s0, 544
 	vst	$vr0, $fp, 544
-	xvld	$xr0, $s0, 560
-	xvst	$xr0, $fp, 560
+	vld	$vr0, $s0, 560
+	vst	$vr0, $fp, 560
+	vld	$vr0, $s0, 576
+	vst	$vr0, $fp, 576
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -5426,8 +5428,10 @@ _ZN9benchmark17BenchmarkReporter3RunaSEOS1_: # @_ZN9benchmark17BenchmarkReporter
 .LBB34_42:                              # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEEaSEOSE_.exit
 	vld	$vr0, $s0, 576
 	vst	$vr0, $fp, 576
-	xvld	$xr0, $s0, 544
-	xvst	$xr0, $fp, 544
+	vld	$vr0, $s0, 560
+	vst	$vr0, $fp, 560
+	vld	$vr0, $s0, 544
+	vst	$vr0, $fp, 544
 	move	$a0, $fp
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -6076,8 +6080,10 @@ _ZNSt11__copy_moveILb0ELb0ESt26random_access_iterator_tagE8__copy_mIPKN9benchmar
 	jirl	$ra, $ra, 0
 	vld	$vr0, $s0, 544
 	vst	$vr0, $fp, 544
-	xvld	$xr0, $s0, 560
-	xvst	$xr0, $fp, 560
+	vld	$vr0, $s0, 560
+	vst	$vr0, $fp, 560
+	vld	$vr0, $s0, 576
+	vst	$vr0, $fp, 576
 	addi.d	$fp, $fp, 592
 	addi.d	$s1, $s1, -1
 	addi.d	$s0, $s0, 592
@@ -6947,8 +6953,10 @@ _ZN9benchmark17BenchmarkReporter3RunC2ERKS1_: # @_ZN9benchmark17BenchmarkReporte
 .LBB42_28:                              # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEEC2ERKSE_.exit
 	vld	$vr0, $s1, 576
 	vst	$vr0, $fp, 576
-	xvld	$xr0, $s1, 544
-	xvst	$xr0, $fp, 544
+	vld	$vr0, $s1, 560
+	vst	$vr0, $fp, 560
+	vld	$vr0, $s1, 544
+	vst	$vr0, $fp, 544
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
@@ -8535,11 +8543,13 @@ _GLOBAL__sub_I_skip_with_error_test.cc: # @_GLOBAL__sub_I_skip_with_error_test.c
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 144
-	xvld	$xr0, $fp, 0
-	ld.b	$a2, $fp, 32
+	vld	$vr0, $fp, 0
 	st.d	$a0, $sp, 720
 	st.d	$a1, $sp, 736
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $fp, 16
+	ld.b	$a2, $fp, 32
+	vst	$vr0, $a0, 16
 	st.b	$a2, $a0, 32
 	st.d	$a1, $sp, 728
 	stx.b	$zero, $a0, $a1
@@ -9036,11 +9046,13 @@ _GLOBAL__sub_I_skip_with_error_test.cc: # @_GLOBAL__sub_I_skip_with_error_test.c
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 144
-	xvld	$xr0, $fp, 0
-	ld.h	$a2, $fp, 32
+	vld	$vr0, $fp, 0
 	st.d	$a0, $sp, 720
 	st.d	$a1, $sp, 736
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $fp, 16
+	ld.h	$a2, $fp, 32
+	vst	$vr0, $a0, 16
 	st.h	$a2, $a0, 32
 	st.d	$a1, $sp, 728
 	stx.b	$zero, $a0, $a1

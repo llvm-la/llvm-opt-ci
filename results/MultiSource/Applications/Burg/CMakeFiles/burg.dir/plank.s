@@ -145,34 +145,34 @@ makePlanks:                             # @makePlanks
 	blt	$a1, $s0, .LBB2_8
 # %bb.1:                                # %.lr.ph.i
 	ld.d	$a2, $a2, 24
-	ori	$a4, $zero, 9
+	ori	$a4, $zero, 7
 	ori	$a3, $zero, 1
 	bltu	$a1, $a4, .LBB2_6
 # %bb.2:                                # %vector.memcheck
 	sub.d	$a4, $a0, $a2
 	addi.d	$a4, $a4, -8
-	ori	$a5, $zero, 64
+	ori	$a5, $zero, 32
 	bltu	$a4, $a5, .LBB2_6
 # %bb.3:                                # %vector.ph
 	addi.d	$a4, $a1, -1
 	move	$a5, $a4
-	bstrins.d	$a5, $zero, 2, 0
+	bstrins.d	$a5, $zero, 1, 0
 	ori	$a6, $zero, 1
 	move	$a3, $a4
-	bstrins.d	$a3, $a6, 2, 0
-	addi.d	$a6, $a2, 40
-	addi.d	$a7, $a0, 32
+	bstrins.d	$a3, $a6, 1, 0
+	addi.d	$a6, $a2, 24
+	addi.d	$a7, $a0, 16
 	move	$t0, $a5
 	.p2align	4, , 16
 .LBB2_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvst	$xr0, $a7, -32
-	xvst	$xr1, $a7, 0
-	addi.d	$a6, $a6, 64
-	addi.d	$t0, $t0, -8
-	addi.d	$a7, $a7, 64
+	vld	$vr0, $a6, -16
+	vld	$vr1, $a6, 0
+	vst	$vr0, $a7, -16
+	vst	$vr1, $a7, 0
+	addi.d	$a6, $a6, 32
+	addi.d	$t0, $t0, -4
+	addi.d	$a7, $a7, 32
 	bnez	$t0, .LBB2_4
 # %bb.5:                                # %middle.block
 	beq	$a4, $a5, .LBB2_8

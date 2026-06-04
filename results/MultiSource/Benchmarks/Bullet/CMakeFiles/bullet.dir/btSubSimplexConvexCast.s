@@ -225,57 +225,57 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	jirl	$ra, $a2, 0
 	movgr2fr.w	$fa0, $a0
 	srli.d	$a0, $a0, 32
-	movgr2fr.w	$fa1, $a0
-	fld.s	$fa2, $s2, 4
+	fld.s	$fa1, $s2, 4
+	movgr2fr.w	$fa2, $a0
 	fld.s	$fa3, $s2, 0
-	fld.s	$fa4, $s2, 8
-	movgr2fr.w	$fa5, $a1
-	fmul.s	$fa2, $fa2, $fa1
-	fmadd.s	$fa2, $fa3, $fa0, $fa2
-	fmadd.s	$fa2, $fa4, $fa5, $fa2
-	fld.s	$fa3, $s2, 20
-	fld.s	$fa4, $s2, 48
-	fld.s	$fa6, $s2, 16
+	movgr2fr.w	$fa4, $a1
+	fmul.s	$fa1, $fa1, $fa2
+	fld.s	$fa5, $s2, 8
+	fmadd.s	$fa1, $fa3, $fa0, $fa1
+	fld.s	$fa3, $s2, 48
+	fld.s	$fa6, $s2, 20
+	fmadd.s	$fa1, $fa5, $fa4, $fa1
+	fld.s	$fa5, $s2, 16
+	fadd.s	$fa1, $fa3, $fa1
+	fmul.s	$fa3, $fa6, $fa2
+	fld.s	$fa6, $s2, 36
+	fmadd.s	$fa3, $fa5, $fa0, $fa3
+	fld.s	$fa5, $s2, 32
 	fld.s	$fa7, $s2, 24
-	fmul.s	$fa3, $fa3, $fa1
-	fld.s	$ft0, $s2, 36
-	fmadd.s	$fa3, $fa6, $fa0, $fa3
-	fmadd.s	$fa3, $fa7, $fa5, $fa3
-	fld.s	$fa6, $s2, 32
-	fmul.s	$fa1, $ft0, $fa1
-	fld.s	$fa7, $s2, 40
-	fld.s	$ft0, $s2, 56
-	fmadd.s	$fa0, $fa6, $fa0, $fa1
-	fld.s	$fa1, $s2, 52
-	fmadd.s	$fa0, $fa7, $fa5, $fa0
-	fadd.s	$fa0, $ft0, $fa0
-	movfr2gr.s	$a0, $fa0
-	bstrpick.d	$a0, $a0, 31, 0
-	st.d	$a0, $sp, 192
+	fmul.s	$fa2, $fa6, $fa2
+	fld.s	$fa6, $s2, 52
+	fmadd.s	$fa0, $fa5, $fa0, $fa2
+	fld.s	$fa2, $s2, 40
+	fld.s	$fa5, $s2, 56
+	fmadd.s	$fa3, $fa7, $fa4, $fa3
+	fadd.s	$fa3, $fa6, $fa3
+	fmadd.s	$fa0, $fa2, $fa4, $fa0
+	fadd.s	$fa0, $fa5, $fa0
+	movfr2gr.s	$a0, $fa1
+	movfr2gr.s	$a1, $fa3
+	bstrins.d	$a0, $a1, 63, 32
+	movfr2gr.s	$a1, $fa0
+	bstrpick.d	$a1, $a1, 31, 0
+	st.d	$a0, $sp, 184
+	st.d	$a1, $sp, 192
+	fsub.s	$fa1, $fs2, $fa1
+	fsub.s	$fa2, $fs6, $fa3
 	fsub.s	$fa0, $fs5, $fa0
-	fadd.s	$fa2, $fa4, $fa2
-	fadd.s	$fa1, $fa1, $fa3
-	fsub.s	$fa3, $fs2, $fa2
-	fsub.s	$fa4, $fs6, $fa1
-	vextrins.w	$vr2, $vr3, 16
-	vextrins.w	$vr1, $vr4, 16
-	vshuf4i.w	$vr1, $vr1, 16
-	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr2, $xr2
-	vor.v	$vr1, $vr1, $vr2
-	vstelm.d	$vr1, $sp, 184, 0
-	movfr2gr.s	$a0, $fa0
-	bstrpick.d	$a0, $a0, 31, 0
-	vstelm.d	$vr1, $sp, 216, 1
-	fmul.s	$fa1, $fa4, $fa4
-	fmadd.s	$fa1, $fa3, $fa3, $fa1
+	movfr2gr.s	$a0, $fa1
+	movfr2gr.s	$a1, $fa2
+	bstrins.d	$a0, $a1, 63, 32
+	movfr2gr.s	$a1, $fa0
+	bstrpick.d	$a1, $a1, 31, 0
+	st.d	$a0, $sp, 216
+	fmul.s	$fa2, $fa2, $fa2
+	fmadd.s	$fa1, $fa1, $fa1, $fa2
 	fmadd.s	$fa0, $fa0, $fa0, $fa1
-	lu12i.w	$a1, 232731
-	ori	$a1, $a1, 1815
-	movgr2fr.w	$fa1, $a1
+	lu12i.w	$a0, 232731
+	ori	$a0, $a0, 1815
+	movgr2fr.w	$fa1, $a0
 	fst.s	$fa1, $sp, 32                   # 4-byte Folded Spill
 	fcmp.cule.s	$fcc0, $fa0, $fa1
-	st.d	$a0, $sp, 224
+	st.d	$a1, $sp, 224
 	movgr2fr.w	$fs0, $zero
 	bcnez	$fcc0, .LBB1_9
 # %bb.1:                                # %.lr.ph
@@ -391,50 +391,50 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	fmul.s	$fa3, $fs1, $fa1
 	fmadd.s	$fa3, $fs0, $fa0, $fa3
 	fld.s	$fs0, $sp, 124                  # 4-byte Folded Reload
-	fmadd.s	$fa4, $fs2, $fa2, $fa3
-	fmul.s	$fa3, $fs4, $fa1
-	fmadd.s	$fa3, $fs3, $fa0, $fa3
-	fmadd.s	$fa5, $fs5, $fa2, $fa3
+	fmadd.s	$fa3, $fs2, $fa2, $fa3
+	fld.s	$fa4, $sp, 108                  # 4-byte Folded Reload
+	fadd.s	$fa3, $fa4, $fa3
+	fmul.s	$fa4, $fs4, $fa1
+	fmadd.s	$fa4, $fs3, $fa0, $fa4
+	fmadd.s	$fa4, $fs5, $fa2, $fa4
+	fld.s	$fa5, $sp, 104                  # 4-byte Folded Reload
+	fadd.s	$fa4, $fa5, $fa4
 	fmul.s	$fa1, $fs7, $fa1
-	fld.s	$fa3, $sp, 128                  # 4-byte Folded Reload
-	fmadd.s	$fa0, $fa3, $fa0, $fa1
+	fld.s	$fa5, $sp, 128                  # 4-byte Folded Reload
+	fmadd.s	$fa0, $fa5, $fa0, $fa1
 	fmadd.s	$fa0, $fs6, $fa2, $fa0
 	fld.s	$fa1, $sp, 100                  # 4-byte Folded Reload
 	fadd.s	$fa0, $fa1, $fa0
-	movfr2gr.s	$a0, $fa0
-	bstrpick.d	$a0, $a0, 31, 0
-	fld.s	$fa1, $sp, 208
-	st.d	$a0, $sp, 192
-	fld.s	$fa2, $sp, 200
-	fld.s	$fa6, $sp, 204
-	fsub.s	$fa3, $fa1, $fa0
-	fld.s	$fa0, $sp, 108                  # 4-byte Folded Reload
-	fadd.s	$fa0, $fa0, $fa4
-	fld.s	$fa1, $sp, 104                  # 4-byte Folded Reload
-	fadd.s	$fa1, $fa1, $fa5
-	fsub.s	$fa4, $fa2, $fa0
-	fsub.s	$fa5, $fa6, $fa1
-	vextrins.w	$vr0, $vr4, 16
-	vextrins.w	$vr1, $vr5, 16
-	vshuf4i.w	$vr1, $vr1, 16
-	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr0, $xr0
-	vor.v	$vr0, $vr1, $vr0
-	vstelm.d	$vr0, $sp, 184, 0
 	movfr2gr.s	$a0, $fa3
-	bstrpick.d	$a0, $a0, 31, 0
-	vstelm.d	$vr0, $sp, 168, 1
+	movfr2gr.s	$a1, $fa4
+	fld.s	$fa1, $sp, 200
+	bstrins.d	$a0, $a1, 63, 32
+	movfr2gr.s	$a1, $fa0
+	bstrpick.d	$a1, $a1, 31, 0
+	fsub.s	$fa3, $fa1, $fa3
+	fld.s	$fa1, $sp, 204
+	fld.s	$fa2, $sp, 208
+	st.d	$a0, $sp, 184
+	st.d	$a1, $sp, 192
+	fsub.s	$fa5, $fa1, $fa4
+	fsub.s	$fa4, $fa2, $fa0
+	movfr2gr.s	$a0, $fa3
+	movfr2gr.s	$a1, $fa5
+	bstrins.d	$a0, $a1, 63, 32
+	movfr2gr.s	$a1, $fa4
+	bstrpick.d	$a1, $a1, 31, 0
+	st.d	$a0, $sp, 168
 	vldi	$vr0, -1168
 	fcmp.clt.s	$fcc0, $fa0, $fs0
-	st.d	$a0, $sp, 176
+	st.d	$a1, $sp, 176
 	bcnez	$fcc0, .LBB1_15
 # %bb.3:                                #   in Loop: Header=BB1_2 Depth=1
 	fld.s	$fa0, $sp, 220
 	fld.s	$fa1, $sp, 216
 	fld.s	$fa2, $sp, 224
 	fmul.s	$fa5, $fa0, $fa5
-	fmadd.s	$fa4, $fa1, $fa4, $fa5
-	fmadd.s	$fa3, $fa2, $fa3, $fa4
+	fmadd.s	$fa3, $fa1, $fa3, $fa5
+	fmadd.s	$fa3, $fa2, $fa4, $fa3
 	movgr2fr.w	$fa4, $zero
 	fcmp.cule.s	$fcc0, $fa3, $fa4
 	bcnez	$fcc0, .LBB1_6

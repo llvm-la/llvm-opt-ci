@@ -529,7 +529,8 @@ _ZNK19btTriangleMeshShape7getAabbERK11btTransformR9btVector3S4_: # @_ZNK19btTria
 	vextrins.w	$vr4, $vr3, 16
 	vshuf4i.w	$vr1, $vr4, 16
 	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr2, $xr2
+	vrepli.b	$vr3, 0
+	vilvl.w	$vr2, $vr3, $vr2
 	vor.v	$vr1, $vr1, $vr2
 	vstelm.d	$vr1, $s0, 0, 0
 	movfr2gr.s	$a0, $fa0

@@ -31,17 +31,17 @@ main:                                   # @main
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -512
-	.cfi_def_cfa_offset 4592
+	addi.d	$sp, $sp, -528
+	.cfi_def_cfa_offset 4608
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 264
+	ori	$a0, $a0, 272
 	add.d	$a0, $sp, $a0
 	ori	$a2, $zero, 80
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 264
+	ori	$a0, $a0, 272
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZNSt11_Deque_baseINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_initialize_mapEm)
@@ -56,7 +56,7 @@ main:                                   # @main
 	ld.d	$a3, $a1, 24
 .Ltmp0:                                 # EH_LABEL
 	lu12i.w	$a2, 1
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 16
 	jirl	$ra, $a3, 0
 .Ltmp1:                                 # EH_LABEL
 # %bb.1:                                # %_ZNSt15basic_streambufIcSt11char_traitsIcEE9pubsetbufEPcl.exit
@@ -70,7 +70,7 @@ main:                                   # @main
 	ld.d	$a3, $a1, 24
 .Ltmp2:                                 # EH_LABEL
 	lu12i.w	$a2, 1
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 16
 	jirl	$ra, $a3, 0
 .Ltmp3:                                 # EH_LABEL
 # %bb.2:                                # %_ZNSt15basic_streambufIcSt11char_traitsIcEE9pubsetbufEPcl.exit6.preheader
@@ -81,7 +81,7 @@ main:                                   # @main
 	beqz	$s1, .LBB0_28
 # %bb.3:                                # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i.lr.ph
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 424
+	ori	$a0, $a0, 432
 	add.d	$s0, $sp, $a0
 	ori	$s3, $zero, 16
 	ori	$s4, $zero, 1
@@ -91,32 +91,32 @@ main:                                   # @main
                                         #   in Loop: Header=BB0_7 Depth=1
 	st.d	$a1, $s1, -32
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 424
+	ori	$a0, $a0, 432
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $s1, -16
 .LBB0_5:                                # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE10push_frontEOS5_.exit.thread
                                         #   in Loop: Header=BB0_7 Depth=1
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 416
+	ori	$a0, $a0, 424
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $s1, -24
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 280
+	ori	$a0, $a0, 288
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 408
+	ori	$a1, $a1, 416
 	add.d	$a1, $sp, $a1
 	st.d	$s0, $a1, 0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 416
+	ori	$a1, $a1, 424
 	add.d	$a1, $sp, $a1
 	st.d	$zero, $a1, 0
 	addi.d	$a0, $a0, -32
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 280
+	ori	$a1, $a1, 288
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 .LBB0_6:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
@@ -154,7 +154,7 @@ main:                                   # @main
 .Ltmp8:                                 # EH_LABEL
 	ext.w.b	$a3, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 8
+	ori	$a0, $a0, 16
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 256
 	move	$a0, $fp
@@ -170,17 +170,17 @@ main:                                   # @main
 	bnez	$a0, .LBB0_26
 # %bb.13:                               #   in Loop: Header=BB0_7 Depth=1
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 408
+	ori	$a0, $a0, 416
 	add.d	$a0, $sp, $a0
 	st.d	$s0, $a0, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 8
+	ori	$a0, $a0, 16
 	add.d	$a0, $sp, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 376
+	ori	$a1, $a1, 384
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	move	$a0, $s0
@@ -189,10 +189,10 @@ main:                                   # @main
                                         #   in Loop: Header=BB0_7 Depth=1
 .Ltmp14:                                # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 408
+	ori	$a0, $a0, 416
 	add.d	$a0, $sp, $a0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 376
+	ori	$a1, $a1, 384
 	add.d	$a1, $sp, $a1
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
@@ -201,15 +201,15 @@ main:                                   # @main
 # %bb.15:                               # %.noexc10
                                         #   in Loop: Header=BB0_7 Depth=1
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 376
+	ori	$a1, $a1, 384
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 408
+	ori	$a2, $a2, 416
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 424
+	ori	$a2, $a2, 432
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 .LBB0_16:                               # %._crit_edge.i.i
@@ -218,7 +218,7 @@ main:                                   # @main
 # %bb.17:                               # %._crit_edge.i.i
                                         #   in Loop: Header=BB0_7 Depth=1
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 8
+	ori	$a1, $a1, 16
 	add.d	$a1, $sp, $a1
 	bne	$s1, $s4, .LBB0_19
 # %bb.18:                               #   in Loop: Header=BB0_7 Depth=1
@@ -232,24 +232,24 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 .LBB0_20:                               #   in Loop: Header=BB0_7 Depth=1
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 376
+	ori	$a0, $a0, 384
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 408
+	ori	$a1, $a1, 416
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 416
+	ori	$a2, $a2, 424
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
 	stx.b	$zero, $a1, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 280
+	ori	$a0, $a0, 288
 	add.d	$a0, $sp, $a0
 	ld.d	$s1, $a0, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 288
+	ori	$a0, $a0, 296
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	beq	$s1, $a0, .LBB0_23
@@ -257,13 +257,13 @@ main:                                   # @main
 	addi.d	$a0, $s1, -16
 	st.d	$a0, $s1, -32
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 408
+	ori	$a1, $a1, 416
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	bne	$a1, $s0, .LBB0_4
 # %bb.22:                               #   in Loop: Header=BB0_7 Depth=1
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 416
+	ori	$a1, $a1, 424
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a2, $a1, 1
@@ -275,10 +275,10 @@ main:                                   # @main
 .LBB0_23:                               #   in Loop: Header=BB0_7 Depth=1
 .Ltmp17:                                # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 264
+	ori	$a0, $a0, 272
 	add.d	$a0, $sp, $a0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 408
+	ori	$a1, $a1, 416
 	add.d	$a1, $sp, $a1
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_push_front_auxIJS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
@@ -286,14 +286,14 @@ main:                                   # @main
 # %bb.24:                               # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE10push_frontEOS5_.exit
                                         #   in Loop: Header=BB0_7 Depth=1
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 408
+	ori	$a0, $a0, 416
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	beq	$a0, $s0, .LBB0_6
 # %bb.25:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
                                         #   in Loop: Header=BB0_7 Depth=1
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 424
+	ori	$a1, $a1, 432
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
@@ -302,56 +302,72 @@ main:                                   # @main
 	b	.LBB0_6
 .LBB0_26:
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 280
+	ori	$a0, $a0, 288
 	add.d	$a0, $sp, $a0
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 312
+	ori	$a0, $a0, 304
 	add.d	$a0, $sp, $a0
-	xvld	$xr1, $a0, 0
+	vld	$vr1, $a0, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 408
+	ori	$a0, $a0, 320
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0
+	vld	$vr2, $a0, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 376
+	ori	$a0, $a0, 336
 	add.d	$a0, $sp, $a0
-	xvst	$xr1, $a0, 0
+	vld	$vr3, $a0, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 360
+	ori	$a0, $a0, 416
+	add.d	$a0, $sp, $a0
+	vst	$vr0, $a0, 0
+	lu12i.w	$a0, 1
+	ori	$a0, $a0, 432
+	add.d	$a0, $sp, $a0
+	vst	$vr1, $a0, 0
+	lu12i.w	$a0, 1
+	ori	$a0, $a0, 384
+	add.d	$a0, $sp, $a0
+	vst	$vr2, $a0, 0
+	lu12i.w	$a0, 1
+	ori	$a0, $a0, 400
+	add.d	$a0, $sp, $a0
+	vst	$vr3, $a0, 0
+	lu12i.w	$a0, 1
+	ori	$a0, $a0, 368
 	add.d	$a0, $sp, $a0
 	st.d	$s2, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 368
+	ori	$a1, $a1, 376
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 .Ltmp11:                                # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 344
+	ori	$a0, $a0, 352
 	add.d	$a0, $sp, $a0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 408
+	ori	$a1, $a1, 416
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 376
+	ori	$a2, $a2, 384
 	add.d	$a2, $sp, $a2
 	lu12i.w	$a3, 1
-	ori	$a3, $a3, 360
+	ori	$a3, $a3, 368
 	add.d	$a3, $sp, $a3
 	pcaddu18i	$ra, %call36(_ZSt15__copy_move_ditILb0ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERS5_PS5_St16ostream_iteratorIS5_cS3_EET3_St15_Deque_iteratorIT0_T1_T2_ESF_SA_)
 	jirl	$ra, $ra, 0
 .Ltmp12:                                # EH_LABEL
 # %bb.27:
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 264
+	ori	$a0, $a0, 272
 	add.d	$a0, $sp, $a0
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 528
+	addi.d	$sp, $sp, 544
 	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
 	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
 	ld.d	$s2, $sp, 1992                  # 8-byte Folded Reload
@@ -373,14 +389,14 @@ main:                                   # @main
 .LBB0_31:
 .Ltmp19:                                # EH_LABEL
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 408
+	ori	$a1, $a1, 416
 	add.d	$a1, $sp, $a1
 	ld.d	$a2, $a1, 0
 	move	$fp, $a0
 	beq	$a2, $s0, .LBB0_37
 # %bb.32:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i12
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 424
+	ori	$a0, $a0, 432
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	addi.d	$a1, $a0, 1
@@ -400,7 +416,7 @@ main:                                   # @main
 	move	$fp, $a0
 .LBB0_37:
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 264
+	ori	$a0, $a0, 272
 	add.d	$a0, $sp, $a0
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev)
 	jirl	$ra, $ra, 0
@@ -492,10 +508,14 @@ _ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev: # 
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	move	$fp, $a0
-	xvld	$xr0, $a0, 16
-	xvld	$xr1, $a0, 48
-	xvst	$xr0, $sp, 48
-	xvst	$xr1, $sp, 16
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 32
+	vld	$vr2, $a0, 48
+	vld	$vr3, $a0, 64
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
+	vst	$vr2, $sp, 16
+	vst	$vr3, $sp, 32
 .Ltmp23:                                # EH_LABEL
 	addi.d	$a1, $sp, 48
 	addi.d	$a2, $sp, 16

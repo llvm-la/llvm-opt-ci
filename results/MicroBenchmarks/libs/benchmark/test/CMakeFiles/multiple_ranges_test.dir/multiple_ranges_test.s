@@ -2219,28 +2219,23 @@ _ZNSt8_Rb_treeISt6vectorIlSaIlEES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE16_M_ins
 	.size	_ZNSt8_Rb_treeISt6vectorIlSaIlEES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE16_M_insert_uniqueIRKS2_EESt4pairISt17_Rb_tree_iteratorIS2_EbEOT_, .Lfunc_end21-_ZNSt8_Rb_treeISt6vectorIlSaIlEES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE16_M_insert_uniqueIRKS2_EESt4pairISt17_Rb_tree_iteratorIS2_EbEOT_
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _GLOBAL__sub_I_multiple_ranges_test.cc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _GLOBAL__sub_I_multiple_ranges_test.cc
 .LCPI22_0:
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
+.LCPI22_1:
 	.dword	3                               # 0x3
 	.dword	7                               # 0x7
 .LCPI22_2:
-	.dword	1                               # 0x1
-	.dword	5                               # 0x5
-	.dword	6                               # 0x6
-	.dword	10                              # 0xa
-.LCPI22_3:
-	.dword	5                               # 0x5
-	.dword	5                               # 0x5
-	.dword	6                               # 0x6
-	.dword	6                               # 0x6
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI22_1:
 	.dword	5                               # 0x5
 	.dword	15                              # 0xf
+.LCPI22_3:
+	.dword	1                               # 0x1
+	.dword	5                               # 0x5
+.LCPI22_4:
+	.dword	6                               # 0x6
+	.dword	10                              # 0xa
 	.section	.text.startup,"ax",@progbits
 	.p2align	2
 	.prefalign	5, .Lfunc_end22, nop
@@ -3082,14 +3077,17 @@ _GLOBAL__sub_I_multiple_ranges_test.cc: # @_GLOBAL__sub_I_multiple_ranges_test.c
 .Ltmp171:                               # EH_LABEL
 # %bb.86:
 	st.d	$a0, $sp, 64
-	pcalau12i	$a1, %pc_hi20(.LCPI22_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI22_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI22_1)
-	vld	$vr1, $a1, %pc_lo12(.LCPI22_1)
 	addi.d	$a1, $a0, 48
+	pcalau12i	$a2, %pc_hi20(.LCPI22_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI22_0)
+	pcalau12i	$a2, %pc_hi20(.LCPI22_1)
+	vld	$vr1, $a2, %pc_lo12(.LCPI22_1)
+	pcalau12i	$a2, %pc_hi20(.LCPI22_2)
+	vld	$vr2, $a2, %pc_lo12(.LCPI22_2)
 	st.d	$a1, $sp, 80
-	xvst	$xr0, $a0, 0
-	vst	$vr1, $a0, 32
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
+	vst	$vr2, $a0, 32
 	st.d	$a1, $sp, 72
 .Ltmp173:                               # EH_LABEL
 	addi.d	$a1, $sp, 64
@@ -3171,12 +3169,15 @@ _GLOBAL__sub_I_multiple_ranges_test.cc: # @_GLOBAL__sub_I_multiple_ranges_test.c
 	jirl	$ra, $ra, 0
 .Ltmp186:                               # EH_LABEL
 # %bb.97:
-	pcalau12i	$a1, %pc_hi20(.LCPI22_2)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI22_2)
 	st.d	$a0, $sp, 64
+	pcalau12i	$a1, %pc_hi20(.LCPI22_3)
+	vld	$vr0, $a1, %pc_lo12(.LCPI22_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI22_4)
+	vld	$vr1, $a1, %pc_lo12(.LCPI22_4)
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 80
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 72
 .Ltmp188:                               # EH_LABEL
 	addi.d	$a1, $sp, 64
@@ -3235,12 +3236,13 @@ _GLOBAL__sub_I_multiple_ranges_test.cc: # @_GLOBAL__sub_I_multiple_ranges_test.c
 	jirl	$ra, $ra, 0
 .Ltmp195:                               # EH_LABEL
 # %bb.106:
-	pcalau12i	$a1, %pc_hi20(.LCPI22_3)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI22_3)
 	st.d	$a0, $sp, 64
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 80
-	xvst	$xr0, $a0, 0
+	vrepli.d	$vr0, 5
+	vst	$vr0, $a0, 0
+	vrepli.d	$vr0, 6
+	vst	$vr0, $a0, 16
 	st.d	$a1, $sp, 72
 .Ltmp197:                               # EH_LABEL
 	addi.d	$a1, $sp, 64

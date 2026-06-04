@@ -151,13 +151,16 @@ _ZL12PrintResultsP8_IO_FILERK10CBenchInfoyR14CTotalBenchRes: # @_ZL12PrintResult
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(_ZL12PrintResultsP8_IO_FILEyyy)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $fp, 0
-	xvrepli.d	$xr1, 1
-	xvinsgr2vr.d	$xr1, $s0, 1
-	xvinsgr2vr.d	$xr1, $s3, 2
-	xvinsgr2vr.d	$xr1, $s1, 3
-	xvadd.d	$xr0, $xr0, $xr1
-	xvst	$xr0, $fp, 0
+	vld	$vr0, $fp, 0
+	vrepli.d	$vr1, 1
+	vinsgr2vr.d	$vr1, $s0, 1
+	vadd.d	$vr0, $vr0, $vr1
+	vld	$vr1, $fp, 16
+	vst	$vr0, $fp, 0
+	vinsgr2vr.d	$vr0, $s3, 0
+	vinsgr2vr.d	$vr0, $s1, 1
+	vadd.d	$vr0, $vr1, $vr0
+	vst	$vr0, $fp, 16
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
@@ -218,11 +221,13 @@ _ZN14CBenchCallback15SetDecodeResultERK10CBenchInfob: # @_ZN14CBenchCallback15Se
 	ori	$s2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
+	vld	$vr0, $s0, 16
 	ld.d	$a0, $s0, 48
-	xvld	$xr0, $s0, 0
+	vld	$vr1, $s0, 0
+	vst	$vr0, $sp, 32
 	st.d	$a0, $sp, 64
 	ld.d	$a1, $s0, 32
-	xvst	$xr0, $sp, 16
+	vst	$vr1, $sp, 16
 	ld.d	$a2, $s0, 40
 	bstrpick.d	$a0, $a0, 31, 0
 	mul.d	$a1, $a1, $a0
@@ -393,9 +398,11 @@ _Z12LzmaBenchConP8_IO_FILEjjj:          # @_Z12LzmaBenchConP8_IO_FILEjjj
 	pcalau12i	$a0, %pc_hi20(_ZTV14CBenchCallback+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV14CBenchCallback+16)
 	st.d	$a0, $sp, 16
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 24
-	xvst	$xr0, $sp, 56
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 24
+	vst	$vr0, $sp, 40
+	vst	$vr0, $sp, 56
+	vst	$vr0, $sp, 72
 	st.d	$fp, $sp, 88
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.4)

@@ -533,37 +533,129 @@ board_full:                             # @board_full
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
-	.byte	2                               # 0x2
-	.byte	18                              # 0x12
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
 .LCPI5_1:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	16                              # 0x10
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	17                              # 0x11
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
-	.byte	3                               # 0x3
-	.byte	19                              # 0x13
 	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI5_2:
-	.dword	4294967296                      # 0x100000000
-	.dword	8589934592                      # 0x200000000
-	.dword	17179869184                     # 0x400000000
-	.dword	34359738368                     # 0x800000000
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	16                              # 0x10
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	17                              # 0x11
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
 .LCPI5_3:
-	.dword	68719476736                     # 0x1000000000
-	.dword	137438953472                    # 0x2000000000
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	16                              # 0x10
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	10                              # 0xa
+	.byte	17                              # 0x11
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI5_4:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	4                               # 0x4
+	.byte	16                              # 0x10
+	.byte	255                             # 0xff
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	10                              # 0xa
+	.byte	11                              # 0xb
+	.byte	17                              # 0x11
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI5_5:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	4                               # 0x4
+	.byte	5                               # 0x5
+	.byte	16                              # 0x10
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	10                              # 0xa
+	.byte	11                              # 0xb
+	.byte	12                              # 0xc
+	.byte	17                              # 0x11
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI5_6:
+	.dword	16777216                        # 0x1000000
+	.dword	33554432                        # 0x2000000
+.LCPI5_7:
+	.dword	268435456                       # 0x10000000
+	.dword	536870912                       # 0x20000000
+.LCPI5_8:
+	.dword	67108864                        # 0x4000000
+	.dword	134217728                       # 0x8000000
+.LCPI5_9:
+	.dword	1073741824                      # 0x40000000
+	.dword	2147483648                      # 0x80000000
+.LCPI5_10:
+	.dword	4194304                         # 0x400000
+	.dword	8388608                         # 0x800000
+.LCPI5_11:
+	.dword	262144                          # 0x40000
+	.dword	524288                          # 0x80000
+.LCPI5_12:
+	.dword	1048576                         # 0x100000
+	.dword	2097152                         # 0x200000
+.LCPI5_13:
+	.dword	65536                           # 0x10000
+	.dword	131072                          # 0x20000
+.LCPI5_14:
 	.dword	274877906944                    # 0x4000000000
 	.dword	549755813888                    # 0x8000000000
+.LCPI5_15:
+	.dword	17179869184                     # 0x400000000
+	.dword	34359738368                     # 0x800000000
+.LCPI5_16:
+	.dword	68719476736                     # 0x1000000000
+	.dword	137438953472                    # 0x2000000000
+.LCPI5_17:
+	.dword	4294967296                      # 0x100000000
+	.dword	8589934592                      # 0x200000000
 	.text
 	.globl	find_winner_p
 	.p2align	2
@@ -571,574 +663,480 @@ board_full:                             # @board_full
 	.type	find_winner_p,@function
 find_winner_p:                          # @find_winner_p
 # %bb.0:
-	ld.b	$a1, $a0, 6
-	ld.b	$a2, $a0, 13
-	ld.b	$a3, $a0, 20
-	add.d	$a1, $a2, $a1
-	add.d	$a1, $a1, $a3
-	ld.b	$a2, $a0, 27
-	ld.b	$a3, $a0, 34
-	ld.b	$a4, $a0, 41
-	ld.b	$a5, $a0, 48
-	add.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $a3
-	add.d	$a1, $a1, $a4
-	add.w	$a2, $a1, $a5
+	move	$a1, $a0
+	ld.b	$a0, $a0, 6
+	ld.b	$a2, $a1, 13
+	ld.b	$a3, $a1, 20
+	add.d	$a0, $a2, $a0
+	add.d	$a0, $a0, $a3
+	ld.b	$a2, $a1, 27
+	ld.b	$a3, $a1, 34
+	ld.b	$a4, $a1, 41
+	ld.b	$a5, $a1, 48
+	add.d	$a0, $a0, $a2
+	add.d	$a0, $a0, $a3
+	add.d	$a0, $a0, $a4
+	add.w	$a2, $a0, $a5
 	ori	$a3, $zero, 42
-	ori	$a1, $zero, 2
+	ori	$a0, $zero, 2
 	beq	$a2, $a3, .LBB5_71
 # %bb.1:                                # %.preheader63.preheader
-	ld.b	$a3, $a0, 4
-	ld.w	$a5, $a0, 0
-	ld.b	$a4, $a0, 11
-	ld.b	$a2, $a0, 18
-	ld.b	$a1, $a0, 25
-	vinsgr2vr.w	$vr4, $a5, 0
-	ld.w	$a5, $a0, 7
-	ld.w	$a6, $a0, 14
-	ld.w	$a7, $a0, 21
-	ld.w	$t0, $a0, 28
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	vinsgr2vr.w	$vr3, $a7, 0
-	vinsgr2vr.w	$vr2, $t0, 0
-	ld.w	$a5, $a0, 35
-	ld.w	$a6, $a0, 42
-	pcalau12i	$a7, %pc_hi20(.LCPI5_0)
-	vld	$vr7, $a7, %pc_lo12(.LCPI5_0)
-	pcalau12i	$a7, %pc_hi20(.LCPI5_1)
-	vld	$vr8, $a7, %pc_lo12(.LCPI5_1)
-	vinsgr2vr.w	$vr1, $a5, 0
-	vinsgr2vr.w	$vr0, $a6, 0
-	vshuf.b	$vr7, $vr5, $vr4, $vr7
-	vshuf.b	$vr5, $vr5, $vr4, $vr8
-	vextrins.b	$vr4, $vr6, 2
-	vextrins.b	$vr4, $vr5, 85
-	vextrins.b	$vr4, $vr5, 102
-	vextrins.b	$vr4, $vr6, 115
-	vori.b	$vr5, $vr7, 0
-	vextrins.b	$vr5, $vr6, 32
-	vextrins.b	$vr5, $vr7, 119
-	vextrins.b	$vr5, $vr7, 136
-	vextrins.b	$vr5, $vr6, 145
-	vextrins.b	$vr5, $vr7, 238
-	vextrins.b	$vr5, $vr7, 255
-	vpickve2gr.b	$a5, $vr5, 14
-	vpickve2gr.b	$a6, $vr5, 15
-	xvori.b	$xr6, $xr5, 0
-	xvpermi.q	$xr6, $xr4, 2
-	xvpermi.d	$xr5, $xr6, 14
-	vpickve2gr.b	$a7, $vr5, 0
-	vinsgr2vr.b	$vr4, $a7, 0
-	vextrins.b	$vr4, $vr3, 18
-	vpickve2gr.b	$a7, $vr5, 5
-	vinsgr2vr.b	$vr4, $a7, 5
-	vpickve2gr.b	$a7, $vr5, 6
-	vinsgr2vr.b	$vr4, $a7, 6
-	vpickve2gr.b	$a7, $vr5, 7
-	vinsgr2vr.b	$vr4, $a7, 7
-	vextrins.b	$vr4, $vr3, 131
-	vpickve2gr.b	$a7, $vr6, 0
-	vinsgr2vr.b	$vr5, $a7, 0
-	vpickve2gr.b	$a7, $vr6, 1
-	vinsgr2vr.b	$vr5, $a7, 1
-	vpickve2gr.b	$a7, $vr6, 2
-	vinsgr2vr.b	$vr5, $a7, 2
-	vextrins.b	$vr5, $vr3, 48
-	vpickve2gr.b	$a7, $vr6, 7
-	vinsgr2vr.b	$vr5, $a7, 7
-	vpickve2gr.b	$a7, $vr6, 8
-	vinsgr2vr.b	$vr5, $a7, 8
-	vpickve2gr.b	$a7, $vr6, 9
-	vinsgr2vr.b	$vr5, $a7, 9
-	vextrins.b	$vr5, $vr3, 161
-	vinsgr2vr.b	$vr5, $a5, 14
-	vinsgr2vr.b	$vr5, $a6, 15
-	vpickve2gr.b	$a5, $vr5, 14
-	vpickve2gr.b	$a6, $vr5, 15
-	xvpermi.q	$xr5, $xr4, 2
-	xvpermi.d	$xr4, $xr5, 14
-	vpickve2gr.b	$a7, $vr4, 0
-	vinsgr2vr.b	$vr3, $a7, 0
-	vpickve2gr.b	$a7, $vr4, 1
-	vinsgr2vr.b	$vr3, $a7, 1
-	vextrins.b	$vr3, $vr2, 34
-	vpickve2gr.b	$a7, $vr4, 5
-	vinsgr2vr.b	$vr3, $a7, 5
-	vpickve2gr.b	$a7, $vr4, 6
-	vinsgr2vr.b	$vr3, $a7, 6
-	vpickve2gr.b	$a7, $vr4, 7
-	vinsgr2vr.b	$vr3, $a7, 7
-	vpickve2gr.b	$a7, $vr4, 8
-	vinsgr2vr.b	$vr3, $a7, 8
-	vextrins.b	$vr3, $vr2, 147
-	vpickve2gr.b	$a7, $vr5, 0
-	vinsgr2vr.b	$vr4, $a7, 0
-	vpickve2gr.b	$a7, $vr5, 1
-	vinsgr2vr.b	$vr4, $a7, 1
-	vpickve2gr.b	$a7, $vr5, 2
-	vinsgr2vr.b	$vr4, $a7, 2
-	vpickve2gr.b	$a7, $vr5, 3
-	vinsgr2vr.b	$vr4, $a7, 3
-	vextrins.b	$vr4, $vr2, 64
-	vpickve2gr.b	$a7, $vr5, 7
-	vinsgr2vr.b	$vr4, $a7, 7
-	vpickve2gr.b	$a7, $vr5, 8
-	vinsgr2vr.b	$vr4, $a7, 8
-	vpickve2gr.b	$a7, $vr5, 9
-	vinsgr2vr.b	$vr4, $a7, 9
-	vpickve2gr.b	$a7, $vr5, 10
-	vinsgr2vr.b	$vr4, $a7, 10
-	vextrins.b	$vr4, $vr2, 177
-	vinsgr2vr.b	$vr4, $a5, 14
-	vinsgr2vr.b	$vr4, $a6, 15
-	vpickve2gr.b	$a5, $vr4, 14
-	vpickve2gr.b	$a6, $vr4, 15
-	xvpermi.q	$xr4, $xr3, 2
-	xvpermi.d	$xr2, $xr4, 14
-	vpickve2gr.b	$a7, $vr2, 0
-	vinsgr2vr.b	$vr3, $a7, 0
-	vpickve2gr.b	$a7, $vr2, 1
-	vinsgr2vr.b	$vr3, $a7, 1
-	vpickve2gr.b	$a7, $vr2, 2
-	vinsgr2vr.b	$vr3, $a7, 2
-	vextrins.b	$vr3, $vr1, 50
-	vpickve2gr.b	$a7, $vr2, 5
-	vinsgr2vr.b	$vr3, $a7, 5
-	vpickve2gr.b	$a7, $vr2, 6
-	vinsgr2vr.b	$vr3, $a7, 6
-	vpickve2gr.b	$a7, $vr2, 7
-	vinsgr2vr.b	$vr3, $a7, 7
-	vpickve2gr.b	$a7, $vr2, 8
-	vinsgr2vr.b	$vr3, $a7, 8
-	vpickve2gr.b	$a7, $vr2, 9
-	vinsgr2vr.b	$vr3, $a7, 9
-	vextrins.b	$vr3, $vr1, 163
-	vpickve2gr.b	$a7, $vr4, 0
-	vinsgr2vr.b	$vr2, $a7, 0
-	vpickve2gr.b	$a7, $vr4, 1
-	vinsgr2vr.b	$vr2, $a7, 1
-	vpickve2gr.b	$a7, $vr4, 2
-	vinsgr2vr.b	$vr2, $a7, 2
-	vpickve2gr.b	$a7, $vr4, 3
-	vinsgr2vr.b	$vr2, $a7, 3
-	vpickve2gr.b	$a7, $vr4, 4
-	vinsgr2vr.b	$vr2, $a7, 4
-	vextrins.b	$vr2, $vr1, 80
-	vpickve2gr.b	$a7, $vr4, 7
-	vinsgr2vr.b	$vr2, $a7, 7
-	vpickve2gr.b	$a7, $vr4, 8
-	vinsgr2vr.b	$vr2, $a7, 8
-	vpickve2gr.b	$a7, $vr4, 9
-	vinsgr2vr.b	$vr2, $a7, 9
-	vpickve2gr.b	$a7, $vr4, 10
-	vinsgr2vr.b	$vr2, $a7, 10
-	vpickve2gr.b	$a7, $vr4, 11
-	vinsgr2vr.b	$vr2, $a7, 11
-	vextrins.b	$vr2, $vr1, 193
-	vinsgr2vr.b	$vr2, $a5, 14
-	vinsgr2vr.b	$vr2, $a6, 15
-	xvpermi.q	$xr2, $xr3, 2
-	xvpermi.d	$xr3, $xr2, 14
-	vpickve2gr.b	$a5, $vr3, 0
-	vinsgr2vr.b	$vr1, $a5, 0
-	vpickve2gr.b	$a5, $vr3, 1
-	vinsgr2vr.b	$vr1, $a5, 1
-	vpickve2gr.b	$a5, $vr3, 2
-	vinsgr2vr.b	$vr1, $a5, 2
-	vpickve2gr.b	$a5, $vr3, 3
-	vinsgr2vr.b	$vr1, $a5, 3
-	vextrins.b	$vr1, $vr0, 66
-	vpickve2gr.b	$a5, $vr3, 5
-	vinsgr2vr.b	$vr1, $a5, 5
-	vpickve2gr.b	$a5, $vr3, 6
-	vinsgr2vr.b	$vr1, $a5, 6
-	vpickve2gr.b	$a5, $vr3, 7
-	vinsgr2vr.b	$vr1, $a5, 7
-	vpickve2gr.b	$a5, $vr3, 8
-	vinsgr2vr.b	$vr1, $a5, 8
-	vpickve2gr.b	$a5, $vr3, 9
-	vinsgr2vr.b	$vr1, $a5, 9
-	vpickve2gr.b	$a5, $vr3, 10
-	vinsgr2vr.b	$vr1, $a5, 10
-	vextrins.b	$vr1, $vr0, 179
-	vpickve2gr.b	$a5, $vr2, 0
-	vinsgr2vr.b	$vr3, $a5, 0
-	vpickve2gr.b	$a5, $vr2, 1
-	vinsgr2vr.b	$vr3, $a5, 1
-	vpickve2gr.b	$a5, $vr2, 2
-	vinsgr2vr.b	$vr3, $a5, 2
-	vpickve2gr.b	$a5, $vr2, 3
-	vinsgr2vr.b	$vr3, $a5, 3
-	vpickve2gr.b	$a5, $vr2, 4
-	vinsgr2vr.b	$vr3, $a5, 4
-	vpickve2gr.b	$a5, $vr2, 5
-	vinsgr2vr.b	$vr3, $a5, 5
-	vextrins.b	$vr3, $vr0, 96
-	vpickve2gr.b	$a5, $vr2, 7
-	vinsgr2vr.b	$vr3, $a5, 7
-	vpickve2gr.b	$a5, $vr2, 8
-	vinsgr2vr.b	$vr3, $a5, 8
-	vpickve2gr.b	$a5, $vr2, 9
-	vinsgr2vr.b	$vr3, $a5, 9
-	vpickve2gr.b	$a5, $vr2, 10
-	vinsgr2vr.b	$vr3, $a5, 10
-	vpickve2gr.b	$a5, $vr2, 11
-	vinsgr2vr.b	$vr3, $a5, 11
-	vpickve2gr.b	$a5, $vr2, 12
-	vinsgr2vr.b	$vr3, $a5, 12
-	vextrins.b	$vr3, $vr0, 209
-	vpickve2gr.b	$a5, $vr2, 14
-	vinsgr2vr.b	$vr3, $a5, 14
-	vpickve2gr.b	$a5, $vr2, 15
-	vinsgr2vr.b	$vr3, $a5, 15
-	xvpermi.q	$xr3, $xr1, 2
-	xvreplgr2vr.b	$xr0, $a3
-	xvpermi.q	$xr0, $xr3, 48
-	xvextrins.b	$xr3, $xr0, 204
-	xvreplgr2vr.b	$xr0, $a4
-	xvpermi.q	$xr0, $xr3, 48
-	xvextrins.b	$xr3, $xr0, 221
-	xvreplgr2vr.b	$xr0, $a2
-	xvpermi.q	$xr0, $xr3, 48
-	xvextrins.b	$xr3, $xr0, 238
-	xvreplgr2vr.b	$xr0, $a1
-	xvpermi.q	$xr0, $xr3, 48
-	xvextrins.b	$xr3, $xr0, 255
-	xvrepli.b	$xr0, 111
-	xvseq.b	$xr0, $xr3, $xr0
-	xvmskltz.b	$xr0, $xr0
-	xvpickve2gr.wu	$a1, $xr0, 0
-	xvpickve2gr.wu	$a2, $xr0, 4
-	bstrins.d	$a1, $a2, 31, 16
-	ld.b	$a2, $a0, 39
-	ld.b	$a3, $a0, 46
-	ld.h	$a4, $a0, 32
-	ld.b	$a5, $a0, 5
-	ld.b	$a6, $a0, 12
-	ld.b	$a7, $a0, 19
-	vinsgr2vr.h	$vr0, $a4, 0
-	ld.b	$a4, $a0, 26
-	vori.b	$vr1, $vr0, 0
-	vinsgr2vr.b	$vr1, $a2, 1
-	vinsgr2vr.b	$vr1, $a3, 2
-	vinsgr2vr.b	$vr1, $a5, 3
-	vinsgr2vr.b	$vr1, $a6, 4
-	vinsgr2vr.b	$vr1, $a7, 5
-	vinsgr2vr.b	$vr1, $a4, 6
-	vextrins.b	$vr1, $vr0, 113
+	ld.h	$a0, $a1, 0
+	ld.b	$a2, $a1, 2
+	ld.b	$a3, $a1, 9
+	vinsgr2vr.h	$vr0, $a0, 0
+	ld.h	$a0, $a1, 7
+	ld.h	$a4, $a1, 14
+	ld.h	$a5, $a1, 21
+	ld.h	$a6, $a1, 28
+	vinsgr2vr.h	$vr1, $a0, 0
+	vinsgr2vr.h	$vr2, $a4, 0
+	vinsgr2vr.h	$vr3, $a5, 0
+	vinsgr2vr.h	$vr4, $a6, 0
+	ld.h	$a0, $a1, 35
+	ld.h	$a4, $a1, 42
+	pcalau12i	$a5, %pc_hi20(.LCPI5_0)
+	vld	$vr5, $a5, %pc_lo12(.LCPI5_0)
+	pcalau12i	$a5, %pc_hi20(.LCPI5_1)
+	vld	$vr6, $a5, %pc_lo12(.LCPI5_1)
+	vinsgr2vr.h	$vr7, $a0, 0
+	vinsgr2vr.h	$vr8, $a4, 0
+	vshuf.b	$vr0, $vr1, $vr0, $vr5
+	vshuf.b	$vr0, $vr2, $vr0, $vr6
+	pcalau12i	$a0, %pc_hi20(.LCPI5_2)
+	vld	$vr1, $a0, %pc_lo12(.LCPI5_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI5_3)
+	vld	$vr2, $a0, %pc_lo12(.LCPI5_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI5_4)
+	vld	$vr9, $a0, %pc_lo12(.LCPI5_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI5_5)
+	vld	$vr10, $a0, %pc_lo12(.LCPI5_5)
+	vshuf.b	$vr0, $vr3, $vr0, $vr1
+	vshuf.b	$vr0, $vr4, $vr0, $vr2
+	vshuf.b	$vr0, $vr7, $vr0, $vr9
+	vshuf.b	$vr3, $vr8, $vr0, $vr10
+	vinsgr2vr.b	$vr3, $a2, 14
+	vinsgr2vr.b	$vr3, $a3, 15
 	vrepli.b	$vr0, 111
-	vseq.b	$vr0, $vr1, $vr0
-	vsrli.d	$vr1, $vr0, 32
-	vext2xv.d.b	$xr1, $xr1
-	pcalau12i	$a2, %pc_hi20(.LCPI5_2)
-	xvld	$xr2, $a2, %pc_lo12(.LCPI5_2)
-	pcalau12i	$a2, %pc_hi20(.LCPI5_3)
-	xvld	$xr3, $a2, %pc_lo12(.LCPI5_3)
-	vext2xv.d.b	$xr0, $xr0
-	ld.bu	$a2, $a0, 40
-	xvand.v	$xr0, $xr0, $xr2
-	xvand.v	$xr1, $xr1, $xr3
-	ld.bu	$a0, $a0, 47
+	vseq.b	$vr3, $vr3, $vr0
+	vmskltz.b	$vr3, $vr3
+	vpickve2gr.hu	$a0, $vr3, 0
+	ld.b	$a2, $a1, 18
+	ld.h	$a3, $a1, 16
+	ld.h	$a4, $a1, 23
+	ld.h	$a5, $a1, 30
+	ld.b	$a6, $a1, 25
+	vinsgr2vr.h	$vr3, $a3, 0
+	vinsgr2vr.h	$vr4, $a4, 0
+	vinsgr2vr.h	$vr7, $a5, 0
+	ld.h	$a3, $a1, 37
+	ld.h	$a4, $a1, 44
+	ld.h	$a5, $a1, 3
+	ld.h	$a7, $a1, 10
+	vinsgr2vr.h	$vr8, $a3, 0
+	vinsgr2vr.h	$vr11, $a4, 0
+	vinsgr2vr.h	$vr12, $a5, 0
+	vinsgr2vr.h	$vr13, $a7, 0
+	vshuf.b	$vr3, $vr4, $vr3, $vr5
+	vshuf.b	$vr3, $vr7, $vr3, $vr6
+	vshuf.b	$vr1, $vr8, $vr3, $vr1
+	vshuf.b	$vr1, $vr11, $vr1, $vr2
+	vshuf.b	$vr1, $vr12, $vr1, $vr9
+	vshuf.b	$vr1, $vr13, $vr1, $vr10
+	vinsgr2vr.b	$vr1, $a2, 14
+	vinsgr2vr.b	$vr1, $a6, 15
+	vseq.b	$vr1, $vr1, $vr0
+	vilvl.b	$vr2, $vr1, $vr1
+	vslti.h	$vr3, $vr2, 0
+	vilvl.h	$vr4, $vr3, $vr2
+	vslti.w	$vr5, $vr4, 0
+	vilvl.w	$vr9, $vr5, $vr4
+	vilvh.h	$vr2, $vr3, $vr2
+	vslti.w	$vr3, $vr2, 0
+	vilvl.w	$vr8, $vr3, $vr2
+	vilvh.w	$vr7, $vr5, $vr4
+	vilvh.w	$vr6, $vr3, $vr2
+	vilvh.b	$vr1, $vr1, $vr1
+	vslti.h	$vr2, $vr1, 0
+	vilvh.h	$vr3, $vr2, $vr1
+	vslti.w	$vr4, $vr3, 0
+	vilvh.w	$vr10, $vr4, $vr3
+	vilvl.h	$vr1, $vr2, $vr1
+	vslti.w	$vr2, $vr1, 0
+	vilvh.w	$vr11, $vr2, $vr1
+	vilvl.w	$vr3, $vr4, $vr3
+	vilvl.w	$vr1, $vr2, $vr1
+	pcalau12i	$a2, %pc_hi20(.LCPI5_6)
+	vld	$vr2, $a2, %pc_lo12(.LCPI5_6)
+	vrepli.b	$vr5, 0
+	pcalau12i	$a2, %pc_hi20(.LCPI5_7)
+	vld	$vr4, $a2, %pc_lo12(.LCPI5_7)
+	pcalau12i	$a2, %pc_hi20(.LCPI5_8)
+	vld	$vr12, $a2, %pc_lo12(.LCPI5_8)
+	pcalau12i	$a2, %pc_hi20(.LCPI5_9)
+	vld	$vr13, $a2, %pc_lo12(.LCPI5_9)
+	vbitsel.v	$vr1, $vr5, $vr2, $vr1
+	vbitsel.v	$vr2, $vr5, $vr4, $vr3
+	vbitsel.v	$vr3, $vr5, $vr12, $vr11
+	vbitsel.v	$vr4, $vr5, $vr13, $vr10
+	pcalau12i	$a2, %pc_hi20(.LCPI5_10)
+	vld	$vr10, $a2, %pc_lo12(.LCPI5_10)
+	pcalau12i	$a2, %pc_hi20(.LCPI5_11)
+	vld	$vr11, $a2, %pc_lo12(.LCPI5_11)
+	pcalau12i	$a2, %pc_hi20(.LCPI5_12)
+	vld	$vr12, $a2, %pc_lo12(.LCPI5_12)
+	pcalau12i	$a2, %pc_hi20(.LCPI5_13)
+	vld	$vr13, $a2, %pc_lo12(.LCPI5_13)
+	vbitsel.v	$vr6, $vr5, $vr10, $vr6
+	vbitsel.v	$vr7, $vr5, $vr11, $vr7
+	vbitsel.v	$vr8, $vr5, $vr12, $vr8
+	vbitsel.v	$vr9, $vr5, $vr13, $vr9
+	ld.b	$a2, $a1, 39
+	ld.b	$a3, $a1, 46
+	ld.h	$a4, $a1, 32
+	ld.b	$a5, $a1, 5
+	ld.b	$a6, $a1, 12
+	ld.b	$a7, $a1, 19
+	vinsgr2vr.h	$vr10, $a4, 0
+	ld.b	$a4, $a1, 26
+	vori.b	$vr11, $vr10, 0
+	vinsgr2vr.b	$vr11, $a2, 1
+	vinsgr2vr.b	$vr11, $a3, 2
+	vinsgr2vr.b	$vr11, $a5, 3
+	vinsgr2vr.b	$vr11, $a6, 4
+	vinsgr2vr.b	$vr11, $a7, 5
+	vinsgr2vr.b	$vr11, $a4, 6
+	vextrins.b	$vr11, $vr10, 113
+	vseq.b	$vr0, $vr11, $vr0
+	vilvl.b	$vr0, $vr0, $vr0
+	vilvl.h	$vr10, $vr0, $vr0
+	vslti.w	$vr11, $vr10, 0
+	vilvl.w	$vr12, $vr11, $vr10
+	vilvh.h	$vr0, $vr0, $vr0
+	vslti.w	$vr13, $vr0, 0
+	pcalau12i	$a2, %pc_hi20(.LCPI5_14)
+	vld	$vr14, $a2, %pc_lo12(.LCPI5_14)
+	vilvl.w	$vr15, $vr13, $vr0
+	vilvh.w	$vr10, $vr11, $vr10
+	vilvh.w	$vr0, $vr13, $vr0
+	vbitsel.v	$vr0, $vr5, $vr14, $vr0
+	pcalau12i	$a2, %pc_hi20(.LCPI5_15)
+	vld	$vr11, $a2, %pc_lo12(.LCPI5_15)
+	pcalau12i	$a2, %pc_hi20(.LCPI5_16)
+	vld	$vr13, $a2, %pc_lo12(.LCPI5_16)
+	pcalau12i	$a2, %pc_hi20(.LCPI5_17)
+	vld	$vr14, $a2, %pc_lo12(.LCPI5_17)
+	vbitsel.v	$vr10, $vr5, $vr11, $vr10
+	ld.bu	$a2, $a1, 40
+	vbitsel.v	$vr11, $vr5, $vr13, $vr15
+	vbitsel.v	$vr5, $vr5, $vr14, $vr12
+	ld.bu	$a1, $a1, 47
 	addi.d	$a2, $a2, -111
 	sltui	$a2, $a2, 1
 	slli.d	$a3, $a2, 40
-	addi.d	$a0, $a0, -111
-	sltui	$a0, $a0, 1
-	slli.d	$a0, $a0, 41
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.q	$xr1, $xr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	addi.d	$a1, $a1, -111
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 41
+	vor.v	$vr5, $vr9, $vr5
+	vor.v	$vr8, $vr8, $vr11
+	vor.v	$vr7, $vr7, $vr10
+	vor.v	$vr0, $vr6, $vr0
+	vor.v	$vr0, $vr0, $vr4
+	vor.v	$vr3, $vr7, $vr3
+	vor.v	$vr0, $vr3, $vr0
+	vor.v	$vr2, $vr8, $vr2
+	vor.v	$vr1, $vr5, $vr1
+	vor.v	$vr1, $vr1, $vr2
+	vor.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 8
 	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a4, $vr0, 0
 	pcalau12i	$a2, %pc_hi20(C4VERT)
 	ld.d	$a2, $a2, %pc_lo12(C4VERT)
-	or	$a1, $a4, $a1
-	or	$a1, $a1, $a3
-	or	$a0, $a1, $a0
-	andn	$a3, $a2, $a0
-	ori	$a1, $zero, 1
+	or	$a0, $a4, $a0
+	or	$a0, $a0, $a3
+	or	$a1, $a0, $a1
+	andn	$a3, $a2, $a1
+	ori	$a0, $zero, 1
 	beqz	$a3, .LBB5_71
 # %bb.2:
 	slli.d	$a3, $a2, 1
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.3:
 	slli.d	$a3, $a2, 2
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.4:
 	slli.d	$a3, $a2, 3
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.5:
 	slli.d	$a3, $a2, 4
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.6:
 	slli.d	$a3, $a2, 5
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.7:
 	slli.d	$a3, $a2, 6
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.8:
 	slli.d	$a3, $a2, 7
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.9:
 	slli.d	$a3, $a2, 8
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.10:
 	slli.d	$a3, $a2, 9
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.11:
 	slli.d	$a3, $a2, 10
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.12:
 	slli.d	$a3, $a2, 11
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.13:
 	slli.d	$a3, $a2, 12
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.14:
 	slli.d	$a3, $a2, 13
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.15:
 	slli.d	$a3, $a2, 14
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.16:
 	slli.d	$a3, $a2, 15
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.17:
 	slli.d	$a3, $a2, 16
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.18:
 	slli.d	$a3, $a2, 17
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.19:
 	slli.d	$a3, $a2, 18
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.20:
 	slli.d	$a3, $a2, 19
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.21:
 	slli.d	$a2, $a2, 20
-	andn	$a2, $a2, $a0
+	andn	$a2, $a2, $a1
 	beqz	$a2, .LBB5_71
 # %bb.22:                               # %.preheader60
 	pcalau12i	$a2, %pc_hi20(C4HORIZ)
 	ld.d	$a2, $a2, %pc_lo12(C4HORIZ)
-	andn	$a3, $a2, $a0
+	andn	$a3, $a2, $a1
 	beqz	$a3, .LBB5_71
 # %bb.23:
 	slli.d	$a3, $a2, 1
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.24:
 	slli.d	$a3, $a2, 2
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.25:
 	slli.d	$a3, $a2, 3
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.26:                               # %.preheader58.1
 	slli.d	$a3, $a2, 7
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.27:
 	slli.d	$a3, $a2, 8
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.28:
 	slli.d	$a3, $a2, 9
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.29:
 	slli.d	$a3, $a2, 10
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.30:                               # %.preheader58.2
 	slli.d	$a3, $a2, 14
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.31:
 	slli.d	$a3, $a2, 15
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.32:
 	slli.d	$a3, $a2, 16
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.33:
 	slli.d	$a3, $a2, 17
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.34:                               # %.preheader58.3
 	slli.d	$a3, $a2, 21
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.35:
 	slli.d	$a3, $a2, 22
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.36:
 	slli.d	$a3, $a2, 23
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.37:
 	slli.d	$a3, $a2, 24
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.38:                               # %.preheader58.4
 	slli.d	$a3, $a2, 28
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.39:
 	slli.d	$a3, $a2, 29
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.40:
 	slli.d	$a3, $a2, 30
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.41:
 	slli.d	$a3, $a2, 31
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.42:                               # %.preheader58.5
 	slli.d	$a3, $a2, 35
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.43:
 	slli.d	$a3, $a2, 36
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.44:
 	slli.d	$a3, $a2, 37
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.45:
 	slli.d	$a2, $a2, 38
-	andn	$a2, $a2, $a0
+	andn	$a2, $a2, $a1
 	beqz	$a2, .LBB5_71
 # %bb.46:                               # %.preheader57
 	pcalau12i	$a2, %pc_hi20(C4UP_R)
 	ld.d	$a2, $a2, %pc_lo12(C4UP_R)
-	andn	$a3, $a2, $a0
+	andn	$a3, $a2, $a1
 	beqz	$a3, .LBB5_71
 # %bb.47:
 	slli.d	$a3, $a2, 1
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.48:
 	slli.d	$a3, $a2, 2
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.49:
 	slli.d	$a3, $a2, 3
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.50:                               # %.preheader55.1
 	slli.d	$a3, $a2, 7
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.51:
 	slli.d	$a3, $a2, 8
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.52:
 	slli.d	$a3, $a2, 9
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.53:
 	slli.d	$a3, $a2, 10
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.54:                               # %.preheader55.2
 	slli.d	$a3, $a2, 14
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.55:
 	slli.d	$a3, $a2, 15
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.56:
 	slli.d	$a3, $a2, 16
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.57:
 	slli.d	$a2, $a2, 17
-	andn	$a2, $a2, $a0
+	andn	$a2, $a2, $a1
 	beqz	$a2, .LBB5_71
 # %bb.58:                               # %.preheader53
 	pcalau12i	$a2, %pc_hi20(C4UP_L)
 	ld.d	$a2, $a2, %pc_lo12(C4UP_L)
-	andn	$a3, $a2, $a0
+	andn	$a3, $a2, $a1
 	beqz	$a3, .LBB5_71
 # %bb.59:
 	slli.d	$a3, $a2, 1
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.60:
 	slli.d	$a3, $a2, 2
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.61:
 	slli.d	$a3, $a2, 3
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.62:                               # %.preheader.1
 	slli.d	$a3, $a2, 7
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.63:
 	slli.d	$a3, $a2, 8
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.64:
 	slli.d	$a3, $a2, 9
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.65:
 	slli.d	$a3, $a2, 10
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.66:                               # %.preheader.2
 	slli.d	$a3, $a2, 14
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.67:
 	slli.d	$a3, $a2, 15
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.68:
 	slli.d	$a3, $a2, 16
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB5_71
 # %bb.69:
 	slli.d	$a2, $a2, 17
-	andn	$a0, $a2, $a0
-	beqz	$a0, .LBB5_71
+	andn	$a1, $a2, $a1
+	beqz	$a1, .LBB5_71
 # %bb.70:
-	move	$a1, $zero
+	move	$a0, $zero
 .LBB5_71:                               # %.loopexit
-	move	$a0, $a1
 	ret
 .Lfunc_end5:
 	.size	find_winner_p, .Lfunc_end5-find_winner_p
@@ -1160,37 +1158,129 @@ find_winner_p:                          # @find_winner_p
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
-	.byte	2                               # 0x2
-	.byte	18                              # 0x12
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
 .LCPI6_1:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	16                              # 0x10
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	17                              # 0x11
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
-	.byte	3                               # 0x3
-	.byte	19                              # 0x13
 	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI6_2:
-	.dword	4294967296                      # 0x100000000
-	.dword	8589934592                      # 0x200000000
-	.dword	17179869184                     # 0x400000000
-	.dword	34359738368                     # 0x800000000
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	16                              # 0x10
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	17                              # 0x11
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
 .LCPI6_3:
-	.dword	68719476736                     # 0x1000000000
-	.dword	137438953472                    # 0x2000000000
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	16                              # 0x10
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	10                              # 0xa
+	.byte	17                              # 0x11
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI6_4:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	4                               # 0x4
+	.byte	16                              # 0x10
+	.byte	255                             # 0xff
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	10                              # 0xa
+	.byte	11                              # 0xb
+	.byte	17                              # 0x11
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI6_5:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	4                               # 0x4
+	.byte	5                               # 0x5
+	.byte	16                              # 0x10
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	10                              # 0xa
+	.byte	11                              # 0xb
+	.byte	12                              # 0xc
+	.byte	17                              # 0x11
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI6_6:
+	.dword	16777216                        # 0x1000000
+	.dword	33554432                        # 0x2000000
+.LCPI6_7:
+	.dword	268435456                       # 0x10000000
+	.dword	536870912                       # 0x20000000
+.LCPI6_8:
+	.dword	67108864                        # 0x4000000
+	.dword	134217728                       # 0x8000000
+.LCPI6_9:
+	.dword	1073741824                      # 0x40000000
+	.dword	2147483648                      # 0x80000000
+.LCPI6_10:
+	.dword	4194304                         # 0x400000
+	.dword	8388608                         # 0x800000
+.LCPI6_11:
+	.dword	262144                          # 0x40000
+	.dword	524288                          # 0x80000
+.LCPI6_12:
+	.dword	1048576                         # 0x100000
+	.dword	2097152                         # 0x200000
+.LCPI6_13:
+	.dword	65536                           # 0x10000
+	.dword	131072                          # 0x20000
+.LCPI6_14:
 	.dword	274877906944                    # 0x4000000000
 	.dword	549755813888                    # 0x8000000000
+.LCPI6_15:
+	.dword	17179869184                     # 0x400000000
+	.dword	34359738368                     # 0x800000000
+.LCPI6_16:
+	.dword	68719476736                     # 0x1000000000
+	.dword	137438953472                    # 0x2000000000
+.LCPI6_17:
+	.dword	4294967296                      # 0x100000000
+	.dword	8589934592                      # 0x200000000
 	.text
 	.globl	find_winner_c
 	.p2align	2
@@ -1198,574 +1288,480 @@ find_winner_p:                          # @find_winner_p
 	.type	find_winner_c,@function
 find_winner_c:                          # @find_winner_c
 # %bb.0:
-	ld.b	$a1, $a0, 6
-	ld.b	$a2, $a0, 13
-	ld.b	$a3, $a0, 20
-	add.d	$a1, $a2, $a1
-	add.d	$a1, $a1, $a3
-	ld.b	$a2, $a0, 27
-	ld.b	$a3, $a0, 34
-	ld.b	$a4, $a0, 41
-	ld.b	$a5, $a0, 48
-	add.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $a3
-	add.d	$a1, $a1, $a4
-	add.w	$a2, $a1, $a5
+	move	$a1, $a0
+	ld.b	$a0, $a0, 6
+	ld.b	$a2, $a1, 13
+	ld.b	$a3, $a1, 20
+	add.d	$a0, $a2, $a0
+	add.d	$a0, $a0, $a3
+	ld.b	$a2, $a1, 27
+	ld.b	$a3, $a1, 34
+	ld.b	$a4, $a1, 41
+	ld.b	$a5, $a1, 48
+	add.d	$a0, $a0, $a2
+	add.d	$a0, $a0, $a3
+	add.d	$a0, $a0, $a4
+	add.w	$a2, $a0, $a5
 	ori	$a3, $zero, 42
-	ori	$a1, $zero, 2
+	ori	$a0, $zero, 2
 	beq	$a2, $a3, .LBB6_71
 # %bb.1:                                # %.preheader63.preheader
-	ld.b	$a3, $a0, 4
-	ld.w	$a5, $a0, 0
-	ld.b	$a4, $a0, 11
-	ld.b	$a2, $a0, 18
-	ld.b	$a1, $a0, 25
-	vinsgr2vr.w	$vr4, $a5, 0
-	ld.w	$a5, $a0, 7
-	ld.w	$a6, $a0, 14
-	ld.w	$a7, $a0, 21
-	ld.w	$t0, $a0, 28
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	vinsgr2vr.w	$vr3, $a7, 0
-	vinsgr2vr.w	$vr2, $t0, 0
-	ld.w	$a5, $a0, 35
-	ld.w	$a6, $a0, 42
-	pcalau12i	$a7, %pc_hi20(.LCPI6_0)
-	vld	$vr7, $a7, %pc_lo12(.LCPI6_0)
-	pcalau12i	$a7, %pc_hi20(.LCPI6_1)
-	vld	$vr8, $a7, %pc_lo12(.LCPI6_1)
-	vinsgr2vr.w	$vr1, $a5, 0
-	vinsgr2vr.w	$vr0, $a6, 0
-	vshuf.b	$vr7, $vr5, $vr4, $vr7
-	vshuf.b	$vr5, $vr5, $vr4, $vr8
-	vextrins.b	$vr4, $vr6, 2
-	vextrins.b	$vr4, $vr5, 85
-	vextrins.b	$vr4, $vr5, 102
-	vextrins.b	$vr4, $vr6, 115
-	vori.b	$vr5, $vr7, 0
-	vextrins.b	$vr5, $vr6, 32
-	vextrins.b	$vr5, $vr7, 119
-	vextrins.b	$vr5, $vr7, 136
-	vextrins.b	$vr5, $vr6, 145
-	vextrins.b	$vr5, $vr7, 238
-	vextrins.b	$vr5, $vr7, 255
-	vpickve2gr.b	$a5, $vr5, 14
-	vpickve2gr.b	$a6, $vr5, 15
-	xvori.b	$xr6, $xr5, 0
-	xvpermi.q	$xr6, $xr4, 2
-	xvpermi.d	$xr5, $xr6, 14
-	vpickve2gr.b	$a7, $vr5, 0
-	vinsgr2vr.b	$vr4, $a7, 0
-	vextrins.b	$vr4, $vr3, 18
-	vpickve2gr.b	$a7, $vr5, 5
-	vinsgr2vr.b	$vr4, $a7, 5
-	vpickve2gr.b	$a7, $vr5, 6
-	vinsgr2vr.b	$vr4, $a7, 6
-	vpickve2gr.b	$a7, $vr5, 7
-	vinsgr2vr.b	$vr4, $a7, 7
-	vextrins.b	$vr4, $vr3, 131
-	vpickve2gr.b	$a7, $vr6, 0
-	vinsgr2vr.b	$vr5, $a7, 0
-	vpickve2gr.b	$a7, $vr6, 1
-	vinsgr2vr.b	$vr5, $a7, 1
-	vpickve2gr.b	$a7, $vr6, 2
-	vinsgr2vr.b	$vr5, $a7, 2
-	vextrins.b	$vr5, $vr3, 48
-	vpickve2gr.b	$a7, $vr6, 7
-	vinsgr2vr.b	$vr5, $a7, 7
-	vpickve2gr.b	$a7, $vr6, 8
-	vinsgr2vr.b	$vr5, $a7, 8
-	vpickve2gr.b	$a7, $vr6, 9
-	vinsgr2vr.b	$vr5, $a7, 9
-	vextrins.b	$vr5, $vr3, 161
-	vinsgr2vr.b	$vr5, $a5, 14
-	vinsgr2vr.b	$vr5, $a6, 15
-	vpickve2gr.b	$a5, $vr5, 14
-	vpickve2gr.b	$a6, $vr5, 15
-	xvpermi.q	$xr5, $xr4, 2
-	xvpermi.d	$xr4, $xr5, 14
-	vpickve2gr.b	$a7, $vr4, 0
-	vinsgr2vr.b	$vr3, $a7, 0
-	vpickve2gr.b	$a7, $vr4, 1
-	vinsgr2vr.b	$vr3, $a7, 1
-	vextrins.b	$vr3, $vr2, 34
-	vpickve2gr.b	$a7, $vr4, 5
-	vinsgr2vr.b	$vr3, $a7, 5
-	vpickve2gr.b	$a7, $vr4, 6
-	vinsgr2vr.b	$vr3, $a7, 6
-	vpickve2gr.b	$a7, $vr4, 7
-	vinsgr2vr.b	$vr3, $a7, 7
-	vpickve2gr.b	$a7, $vr4, 8
-	vinsgr2vr.b	$vr3, $a7, 8
-	vextrins.b	$vr3, $vr2, 147
-	vpickve2gr.b	$a7, $vr5, 0
-	vinsgr2vr.b	$vr4, $a7, 0
-	vpickve2gr.b	$a7, $vr5, 1
-	vinsgr2vr.b	$vr4, $a7, 1
-	vpickve2gr.b	$a7, $vr5, 2
-	vinsgr2vr.b	$vr4, $a7, 2
-	vpickve2gr.b	$a7, $vr5, 3
-	vinsgr2vr.b	$vr4, $a7, 3
-	vextrins.b	$vr4, $vr2, 64
-	vpickve2gr.b	$a7, $vr5, 7
-	vinsgr2vr.b	$vr4, $a7, 7
-	vpickve2gr.b	$a7, $vr5, 8
-	vinsgr2vr.b	$vr4, $a7, 8
-	vpickve2gr.b	$a7, $vr5, 9
-	vinsgr2vr.b	$vr4, $a7, 9
-	vpickve2gr.b	$a7, $vr5, 10
-	vinsgr2vr.b	$vr4, $a7, 10
-	vextrins.b	$vr4, $vr2, 177
-	vinsgr2vr.b	$vr4, $a5, 14
-	vinsgr2vr.b	$vr4, $a6, 15
-	vpickve2gr.b	$a5, $vr4, 14
-	vpickve2gr.b	$a6, $vr4, 15
-	xvpermi.q	$xr4, $xr3, 2
-	xvpermi.d	$xr2, $xr4, 14
-	vpickve2gr.b	$a7, $vr2, 0
-	vinsgr2vr.b	$vr3, $a7, 0
-	vpickve2gr.b	$a7, $vr2, 1
-	vinsgr2vr.b	$vr3, $a7, 1
-	vpickve2gr.b	$a7, $vr2, 2
-	vinsgr2vr.b	$vr3, $a7, 2
-	vextrins.b	$vr3, $vr1, 50
-	vpickve2gr.b	$a7, $vr2, 5
-	vinsgr2vr.b	$vr3, $a7, 5
-	vpickve2gr.b	$a7, $vr2, 6
-	vinsgr2vr.b	$vr3, $a7, 6
-	vpickve2gr.b	$a7, $vr2, 7
-	vinsgr2vr.b	$vr3, $a7, 7
-	vpickve2gr.b	$a7, $vr2, 8
-	vinsgr2vr.b	$vr3, $a7, 8
-	vpickve2gr.b	$a7, $vr2, 9
-	vinsgr2vr.b	$vr3, $a7, 9
-	vextrins.b	$vr3, $vr1, 163
-	vpickve2gr.b	$a7, $vr4, 0
-	vinsgr2vr.b	$vr2, $a7, 0
-	vpickve2gr.b	$a7, $vr4, 1
-	vinsgr2vr.b	$vr2, $a7, 1
-	vpickve2gr.b	$a7, $vr4, 2
-	vinsgr2vr.b	$vr2, $a7, 2
-	vpickve2gr.b	$a7, $vr4, 3
-	vinsgr2vr.b	$vr2, $a7, 3
-	vpickve2gr.b	$a7, $vr4, 4
-	vinsgr2vr.b	$vr2, $a7, 4
-	vextrins.b	$vr2, $vr1, 80
-	vpickve2gr.b	$a7, $vr4, 7
-	vinsgr2vr.b	$vr2, $a7, 7
-	vpickve2gr.b	$a7, $vr4, 8
-	vinsgr2vr.b	$vr2, $a7, 8
-	vpickve2gr.b	$a7, $vr4, 9
-	vinsgr2vr.b	$vr2, $a7, 9
-	vpickve2gr.b	$a7, $vr4, 10
-	vinsgr2vr.b	$vr2, $a7, 10
-	vpickve2gr.b	$a7, $vr4, 11
-	vinsgr2vr.b	$vr2, $a7, 11
-	vextrins.b	$vr2, $vr1, 193
-	vinsgr2vr.b	$vr2, $a5, 14
-	vinsgr2vr.b	$vr2, $a6, 15
-	xvpermi.q	$xr2, $xr3, 2
-	xvpermi.d	$xr3, $xr2, 14
-	vpickve2gr.b	$a5, $vr3, 0
-	vinsgr2vr.b	$vr1, $a5, 0
-	vpickve2gr.b	$a5, $vr3, 1
-	vinsgr2vr.b	$vr1, $a5, 1
-	vpickve2gr.b	$a5, $vr3, 2
-	vinsgr2vr.b	$vr1, $a5, 2
-	vpickve2gr.b	$a5, $vr3, 3
-	vinsgr2vr.b	$vr1, $a5, 3
-	vextrins.b	$vr1, $vr0, 66
-	vpickve2gr.b	$a5, $vr3, 5
-	vinsgr2vr.b	$vr1, $a5, 5
-	vpickve2gr.b	$a5, $vr3, 6
-	vinsgr2vr.b	$vr1, $a5, 6
-	vpickve2gr.b	$a5, $vr3, 7
-	vinsgr2vr.b	$vr1, $a5, 7
-	vpickve2gr.b	$a5, $vr3, 8
-	vinsgr2vr.b	$vr1, $a5, 8
-	vpickve2gr.b	$a5, $vr3, 9
-	vinsgr2vr.b	$vr1, $a5, 9
-	vpickve2gr.b	$a5, $vr3, 10
-	vinsgr2vr.b	$vr1, $a5, 10
-	vextrins.b	$vr1, $vr0, 179
-	vpickve2gr.b	$a5, $vr2, 0
-	vinsgr2vr.b	$vr3, $a5, 0
-	vpickve2gr.b	$a5, $vr2, 1
-	vinsgr2vr.b	$vr3, $a5, 1
-	vpickve2gr.b	$a5, $vr2, 2
-	vinsgr2vr.b	$vr3, $a5, 2
-	vpickve2gr.b	$a5, $vr2, 3
-	vinsgr2vr.b	$vr3, $a5, 3
-	vpickve2gr.b	$a5, $vr2, 4
-	vinsgr2vr.b	$vr3, $a5, 4
-	vpickve2gr.b	$a5, $vr2, 5
-	vinsgr2vr.b	$vr3, $a5, 5
-	vextrins.b	$vr3, $vr0, 96
-	vpickve2gr.b	$a5, $vr2, 7
-	vinsgr2vr.b	$vr3, $a5, 7
-	vpickve2gr.b	$a5, $vr2, 8
-	vinsgr2vr.b	$vr3, $a5, 8
-	vpickve2gr.b	$a5, $vr2, 9
-	vinsgr2vr.b	$vr3, $a5, 9
-	vpickve2gr.b	$a5, $vr2, 10
-	vinsgr2vr.b	$vr3, $a5, 10
-	vpickve2gr.b	$a5, $vr2, 11
-	vinsgr2vr.b	$vr3, $a5, 11
-	vpickve2gr.b	$a5, $vr2, 12
-	vinsgr2vr.b	$vr3, $a5, 12
-	vextrins.b	$vr3, $vr0, 209
-	vpickve2gr.b	$a5, $vr2, 14
-	vinsgr2vr.b	$vr3, $a5, 14
-	vpickve2gr.b	$a5, $vr2, 15
-	vinsgr2vr.b	$vr3, $a5, 15
-	xvpermi.q	$xr3, $xr1, 2
-	xvreplgr2vr.b	$xr0, $a3
-	xvpermi.q	$xr0, $xr3, 48
-	xvextrins.b	$xr3, $xr0, 204
-	xvreplgr2vr.b	$xr0, $a4
-	xvpermi.q	$xr0, $xr3, 48
-	xvextrins.b	$xr3, $xr0, 221
-	xvreplgr2vr.b	$xr0, $a2
-	xvpermi.q	$xr0, $xr3, 48
-	xvextrins.b	$xr3, $xr0, 238
-	xvreplgr2vr.b	$xr0, $a1
-	xvpermi.q	$xr0, $xr3, 48
-	xvextrins.b	$xr3, $xr0, 255
-	xvrepli.b	$xr0, 120
-	xvseq.b	$xr0, $xr3, $xr0
-	xvmskltz.b	$xr0, $xr0
-	xvpickve2gr.wu	$a1, $xr0, 0
-	xvpickve2gr.wu	$a2, $xr0, 4
-	bstrins.d	$a1, $a2, 31, 16
-	ld.b	$a2, $a0, 39
-	ld.b	$a3, $a0, 46
-	ld.h	$a4, $a0, 32
-	ld.b	$a5, $a0, 5
-	ld.b	$a6, $a0, 12
-	ld.b	$a7, $a0, 19
-	vinsgr2vr.h	$vr0, $a4, 0
-	ld.b	$a4, $a0, 26
-	vori.b	$vr1, $vr0, 0
-	vinsgr2vr.b	$vr1, $a2, 1
-	vinsgr2vr.b	$vr1, $a3, 2
-	vinsgr2vr.b	$vr1, $a5, 3
-	vinsgr2vr.b	$vr1, $a6, 4
-	vinsgr2vr.b	$vr1, $a7, 5
-	vinsgr2vr.b	$vr1, $a4, 6
-	vextrins.b	$vr1, $vr0, 113
+	ld.h	$a0, $a1, 0
+	ld.b	$a2, $a1, 2
+	ld.b	$a3, $a1, 9
+	vinsgr2vr.h	$vr0, $a0, 0
+	ld.h	$a0, $a1, 7
+	ld.h	$a4, $a1, 14
+	ld.h	$a5, $a1, 21
+	ld.h	$a6, $a1, 28
+	vinsgr2vr.h	$vr1, $a0, 0
+	vinsgr2vr.h	$vr2, $a4, 0
+	vinsgr2vr.h	$vr3, $a5, 0
+	vinsgr2vr.h	$vr4, $a6, 0
+	ld.h	$a0, $a1, 35
+	ld.h	$a4, $a1, 42
+	pcalau12i	$a5, %pc_hi20(.LCPI6_0)
+	vld	$vr5, $a5, %pc_lo12(.LCPI6_0)
+	pcalau12i	$a5, %pc_hi20(.LCPI6_1)
+	vld	$vr6, $a5, %pc_lo12(.LCPI6_1)
+	vinsgr2vr.h	$vr7, $a0, 0
+	vinsgr2vr.h	$vr8, $a4, 0
+	vshuf.b	$vr0, $vr1, $vr0, $vr5
+	vshuf.b	$vr0, $vr2, $vr0, $vr6
+	pcalau12i	$a0, %pc_hi20(.LCPI6_2)
+	vld	$vr1, $a0, %pc_lo12(.LCPI6_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI6_3)
+	vld	$vr2, $a0, %pc_lo12(.LCPI6_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI6_4)
+	vld	$vr9, $a0, %pc_lo12(.LCPI6_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI6_5)
+	vld	$vr10, $a0, %pc_lo12(.LCPI6_5)
+	vshuf.b	$vr0, $vr3, $vr0, $vr1
+	vshuf.b	$vr0, $vr4, $vr0, $vr2
+	vshuf.b	$vr0, $vr7, $vr0, $vr9
+	vshuf.b	$vr3, $vr8, $vr0, $vr10
+	vinsgr2vr.b	$vr3, $a2, 14
+	vinsgr2vr.b	$vr3, $a3, 15
 	vrepli.b	$vr0, 120
-	vseq.b	$vr0, $vr1, $vr0
-	vsrli.d	$vr1, $vr0, 32
-	vext2xv.d.b	$xr1, $xr1
-	pcalau12i	$a2, %pc_hi20(.LCPI6_2)
-	xvld	$xr2, $a2, %pc_lo12(.LCPI6_2)
-	pcalau12i	$a2, %pc_hi20(.LCPI6_3)
-	xvld	$xr3, $a2, %pc_lo12(.LCPI6_3)
-	vext2xv.d.b	$xr0, $xr0
-	ld.bu	$a2, $a0, 40
-	xvand.v	$xr0, $xr0, $xr2
-	xvand.v	$xr1, $xr1, $xr3
-	ld.bu	$a0, $a0, 47
+	vseq.b	$vr3, $vr3, $vr0
+	vmskltz.b	$vr3, $vr3
+	vpickve2gr.hu	$a0, $vr3, 0
+	ld.b	$a2, $a1, 18
+	ld.h	$a3, $a1, 16
+	ld.h	$a4, $a1, 23
+	ld.h	$a5, $a1, 30
+	ld.b	$a6, $a1, 25
+	vinsgr2vr.h	$vr3, $a3, 0
+	vinsgr2vr.h	$vr4, $a4, 0
+	vinsgr2vr.h	$vr7, $a5, 0
+	ld.h	$a3, $a1, 37
+	ld.h	$a4, $a1, 44
+	ld.h	$a5, $a1, 3
+	ld.h	$a7, $a1, 10
+	vinsgr2vr.h	$vr8, $a3, 0
+	vinsgr2vr.h	$vr11, $a4, 0
+	vinsgr2vr.h	$vr12, $a5, 0
+	vinsgr2vr.h	$vr13, $a7, 0
+	vshuf.b	$vr3, $vr4, $vr3, $vr5
+	vshuf.b	$vr3, $vr7, $vr3, $vr6
+	vshuf.b	$vr1, $vr8, $vr3, $vr1
+	vshuf.b	$vr1, $vr11, $vr1, $vr2
+	vshuf.b	$vr1, $vr12, $vr1, $vr9
+	vshuf.b	$vr1, $vr13, $vr1, $vr10
+	vinsgr2vr.b	$vr1, $a2, 14
+	vinsgr2vr.b	$vr1, $a6, 15
+	vseq.b	$vr1, $vr1, $vr0
+	vilvl.b	$vr2, $vr1, $vr1
+	vslti.h	$vr3, $vr2, 0
+	vilvl.h	$vr4, $vr3, $vr2
+	vslti.w	$vr5, $vr4, 0
+	vilvl.w	$vr9, $vr5, $vr4
+	vilvh.h	$vr2, $vr3, $vr2
+	vslti.w	$vr3, $vr2, 0
+	vilvl.w	$vr8, $vr3, $vr2
+	vilvh.w	$vr7, $vr5, $vr4
+	vilvh.w	$vr6, $vr3, $vr2
+	vilvh.b	$vr1, $vr1, $vr1
+	vslti.h	$vr2, $vr1, 0
+	vilvh.h	$vr3, $vr2, $vr1
+	vslti.w	$vr4, $vr3, 0
+	vilvh.w	$vr10, $vr4, $vr3
+	vilvl.h	$vr1, $vr2, $vr1
+	vslti.w	$vr2, $vr1, 0
+	vilvh.w	$vr11, $vr2, $vr1
+	vilvl.w	$vr3, $vr4, $vr3
+	vilvl.w	$vr1, $vr2, $vr1
+	pcalau12i	$a2, %pc_hi20(.LCPI6_6)
+	vld	$vr2, $a2, %pc_lo12(.LCPI6_6)
+	vrepli.b	$vr5, 0
+	pcalau12i	$a2, %pc_hi20(.LCPI6_7)
+	vld	$vr4, $a2, %pc_lo12(.LCPI6_7)
+	pcalau12i	$a2, %pc_hi20(.LCPI6_8)
+	vld	$vr12, $a2, %pc_lo12(.LCPI6_8)
+	pcalau12i	$a2, %pc_hi20(.LCPI6_9)
+	vld	$vr13, $a2, %pc_lo12(.LCPI6_9)
+	vbitsel.v	$vr1, $vr5, $vr2, $vr1
+	vbitsel.v	$vr2, $vr5, $vr4, $vr3
+	vbitsel.v	$vr3, $vr5, $vr12, $vr11
+	vbitsel.v	$vr4, $vr5, $vr13, $vr10
+	pcalau12i	$a2, %pc_hi20(.LCPI6_10)
+	vld	$vr10, $a2, %pc_lo12(.LCPI6_10)
+	pcalau12i	$a2, %pc_hi20(.LCPI6_11)
+	vld	$vr11, $a2, %pc_lo12(.LCPI6_11)
+	pcalau12i	$a2, %pc_hi20(.LCPI6_12)
+	vld	$vr12, $a2, %pc_lo12(.LCPI6_12)
+	pcalau12i	$a2, %pc_hi20(.LCPI6_13)
+	vld	$vr13, $a2, %pc_lo12(.LCPI6_13)
+	vbitsel.v	$vr6, $vr5, $vr10, $vr6
+	vbitsel.v	$vr7, $vr5, $vr11, $vr7
+	vbitsel.v	$vr8, $vr5, $vr12, $vr8
+	vbitsel.v	$vr9, $vr5, $vr13, $vr9
+	ld.b	$a2, $a1, 39
+	ld.b	$a3, $a1, 46
+	ld.h	$a4, $a1, 32
+	ld.b	$a5, $a1, 5
+	ld.b	$a6, $a1, 12
+	ld.b	$a7, $a1, 19
+	vinsgr2vr.h	$vr10, $a4, 0
+	ld.b	$a4, $a1, 26
+	vori.b	$vr11, $vr10, 0
+	vinsgr2vr.b	$vr11, $a2, 1
+	vinsgr2vr.b	$vr11, $a3, 2
+	vinsgr2vr.b	$vr11, $a5, 3
+	vinsgr2vr.b	$vr11, $a6, 4
+	vinsgr2vr.b	$vr11, $a7, 5
+	vinsgr2vr.b	$vr11, $a4, 6
+	vextrins.b	$vr11, $vr10, 113
+	vseq.b	$vr0, $vr11, $vr0
+	vilvl.b	$vr0, $vr0, $vr0
+	vilvl.h	$vr10, $vr0, $vr0
+	vslti.w	$vr11, $vr10, 0
+	vilvl.w	$vr12, $vr11, $vr10
+	vilvh.h	$vr0, $vr0, $vr0
+	vslti.w	$vr13, $vr0, 0
+	pcalau12i	$a2, %pc_hi20(.LCPI6_14)
+	vld	$vr14, $a2, %pc_lo12(.LCPI6_14)
+	vilvl.w	$vr15, $vr13, $vr0
+	vilvh.w	$vr10, $vr11, $vr10
+	vilvh.w	$vr0, $vr13, $vr0
+	vbitsel.v	$vr0, $vr5, $vr14, $vr0
+	pcalau12i	$a2, %pc_hi20(.LCPI6_15)
+	vld	$vr11, $a2, %pc_lo12(.LCPI6_15)
+	pcalau12i	$a2, %pc_hi20(.LCPI6_16)
+	vld	$vr13, $a2, %pc_lo12(.LCPI6_16)
+	pcalau12i	$a2, %pc_hi20(.LCPI6_17)
+	vld	$vr14, $a2, %pc_lo12(.LCPI6_17)
+	vbitsel.v	$vr10, $vr5, $vr11, $vr10
+	ld.bu	$a2, $a1, 40
+	vbitsel.v	$vr11, $vr5, $vr13, $vr15
+	vbitsel.v	$vr5, $vr5, $vr14, $vr12
+	ld.bu	$a1, $a1, 47
 	addi.d	$a2, $a2, -120
 	sltui	$a2, $a2, 1
 	slli.d	$a3, $a2, 40
-	addi.d	$a0, $a0, -120
-	sltui	$a0, $a0, 1
-	slli.d	$a0, $a0, 41
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.q	$xr1, $xr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	addi.d	$a1, $a1, -120
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 41
+	vor.v	$vr5, $vr9, $vr5
+	vor.v	$vr8, $vr8, $vr11
+	vor.v	$vr7, $vr7, $vr10
+	vor.v	$vr0, $vr6, $vr0
+	vor.v	$vr0, $vr0, $vr4
+	vor.v	$vr3, $vr7, $vr3
+	vor.v	$vr0, $vr3, $vr0
+	vor.v	$vr2, $vr8, $vr2
+	vor.v	$vr1, $vr5, $vr1
+	vor.v	$vr1, $vr1, $vr2
+	vor.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 8
 	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a4, $vr0, 0
 	pcalau12i	$a2, %pc_hi20(C4VERT)
 	ld.d	$a2, $a2, %pc_lo12(C4VERT)
-	or	$a1, $a4, $a1
-	or	$a1, $a1, $a3
-	or	$a0, $a1, $a0
-	andn	$a3, $a2, $a0
-	ori	$a1, $zero, 1
+	or	$a0, $a4, $a0
+	or	$a0, $a0, $a3
+	or	$a1, $a0, $a1
+	andn	$a3, $a2, $a1
+	ori	$a0, $zero, 1
 	beqz	$a3, .LBB6_71
 # %bb.2:
 	slli.d	$a3, $a2, 1
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.3:
 	slli.d	$a3, $a2, 2
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.4:
 	slli.d	$a3, $a2, 3
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.5:
 	slli.d	$a3, $a2, 4
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.6:
 	slli.d	$a3, $a2, 5
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.7:
 	slli.d	$a3, $a2, 6
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.8:
 	slli.d	$a3, $a2, 7
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.9:
 	slli.d	$a3, $a2, 8
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.10:
 	slli.d	$a3, $a2, 9
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.11:
 	slli.d	$a3, $a2, 10
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.12:
 	slli.d	$a3, $a2, 11
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.13:
 	slli.d	$a3, $a2, 12
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.14:
 	slli.d	$a3, $a2, 13
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.15:
 	slli.d	$a3, $a2, 14
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.16:
 	slli.d	$a3, $a2, 15
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.17:
 	slli.d	$a3, $a2, 16
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.18:
 	slli.d	$a3, $a2, 17
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.19:
 	slli.d	$a3, $a2, 18
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.20:
 	slli.d	$a3, $a2, 19
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.21:
 	slli.d	$a2, $a2, 20
-	andn	$a2, $a2, $a0
+	andn	$a2, $a2, $a1
 	beqz	$a2, .LBB6_71
 # %bb.22:                               # %.preheader60
 	pcalau12i	$a2, %pc_hi20(C4HORIZ)
 	ld.d	$a2, $a2, %pc_lo12(C4HORIZ)
-	andn	$a3, $a2, $a0
+	andn	$a3, $a2, $a1
 	beqz	$a3, .LBB6_71
 # %bb.23:
 	slli.d	$a3, $a2, 1
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.24:
 	slli.d	$a3, $a2, 2
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.25:
 	slli.d	$a3, $a2, 3
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.26:                               # %.preheader58.1
 	slli.d	$a3, $a2, 7
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.27:
 	slli.d	$a3, $a2, 8
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.28:
 	slli.d	$a3, $a2, 9
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.29:
 	slli.d	$a3, $a2, 10
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.30:                               # %.preheader58.2
 	slli.d	$a3, $a2, 14
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.31:
 	slli.d	$a3, $a2, 15
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.32:
 	slli.d	$a3, $a2, 16
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.33:
 	slli.d	$a3, $a2, 17
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.34:                               # %.preheader58.3
 	slli.d	$a3, $a2, 21
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.35:
 	slli.d	$a3, $a2, 22
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.36:
 	slli.d	$a3, $a2, 23
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.37:
 	slli.d	$a3, $a2, 24
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.38:                               # %.preheader58.4
 	slli.d	$a3, $a2, 28
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.39:
 	slli.d	$a3, $a2, 29
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.40:
 	slli.d	$a3, $a2, 30
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.41:
 	slli.d	$a3, $a2, 31
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.42:                               # %.preheader58.5
 	slli.d	$a3, $a2, 35
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.43:
 	slli.d	$a3, $a2, 36
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.44:
 	slli.d	$a3, $a2, 37
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.45:
 	slli.d	$a2, $a2, 38
-	andn	$a2, $a2, $a0
+	andn	$a2, $a2, $a1
 	beqz	$a2, .LBB6_71
 # %bb.46:                               # %.preheader57
 	pcalau12i	$a2, %pc_hi20(C4UP_R)
 	ld.d	$a2, $a2, %pc_lo12(C4UP_R)
-	andn	$a3, $a2, $a0
+	andn	$a3, $a2, $a1
 	beqz	$a3, .LBB6_71
 # %bb.47:
 	slli.d	$a3, $a2, 1
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.48:
 	slli.d	$a3, $a2, 2
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.49:
 	slli.d	$a3, $a2, 3
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.50:                               # %.preheader55.1
 	slli.d	$a3, $a2, 7
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.51:
 	slli.d	$a3, $a2, 8
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.52:
 	slli.d	$a3, $a2, 9
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.53:
 	slli.d	$a3, $a2, 10
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.54:                               # %.preheader55.2
 	slli.d	$a3, $a2, 14
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.55:
 	slli.d	$a3, $a2, 15
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.56:
 	slli.d	$a3, $a2, 16
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.57:
 	slli.d	$a2, $a2, 17
-	andn	$a2, $a2, $a0
+	andn	$a2, $a2, $a1
 	beqz	$a2, .LBB6_71
 # %bb.58:                               # %.preheader53
 	pcalau12i	$a2, %pc_hi20(C4UP_L)
 	ld.d	$a2, $a2, %pc_lo12(C4UP_L)
-	andn	$a3, $a2, $a0
+	andn	$a3, $a2, $a1
 	beqz	$a3, .LBB6_71
 # %bb.59:
 	slli.d	$a3, $a2, 1
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.60:
 	slli.d	$a3, $a2, 2
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.61:
 	slli.d	$a3, $a2, 3
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.62:                               # %.preheader.1
 	slli.d	$a3, $a2, 7
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.63:
 	slli.d	$a3, $a2, 8
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.64:
 	slli.d	$a3, $a2, 9
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.65:
 	slli.d	$a3, $a2, 10
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.66:                               # %.preheader.2
 	slli.d	$a3, $a2, 14
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.67:
 	slli.d	$a3, $a2, 15
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.68:
 	slli.d	$a3, $a2, 16
-	andn	$a3, $a3, $a0
+	andn	$a3, $a3, $a1
 	beqz	$a3, .LBB6_71
 # %bb.69:
 	slli.d	$a2, $a2, 17
-	andn	$a0, $a2, $a0
-	beqz	$a0, .LBB6_71
+	andn	$a1, $a2, $a1
+	beqz	$a1, .LBB6_71
 # %bb.70:
-	move	$a1, $zero
+	move	$a0, $zero
 .LBB6_71:                               # %.loopexit
-	move	$a0, $a1
 	ret
 .Lfunc_end6:
 	.size	find_winner_c, .Lfunc_end6-find_winner_c

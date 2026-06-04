@@ -148,8 +148,10 @@ alloc:                                  # @alloc
 # %bb.9:
 	vld	$vr0, $s0, 32
 	vst	$vr0, $a1, 32
-	xvld	$xr0, $s0, 0
-	xvst	$xr0, $a1, 0
+	vld	$vr0, $s0, 16
+	vst	$vr0, $a1, 16
+	vld	$vr0, $s0, 0
+	vst	$vr0, $a1, 0
 	ld.d	$a2, $s0, 48
 	b	.LBB2_12
 .LBB2_10:
@@ -159,17 +161,17 @@ alloc:                                  # @alloc
 	move	$a2, $zero
 .LBB2_12:                               # %alloc_add_chunk.exit
 	ld.wu	$a1, $s0, 56
-	move	$a3, $a0
-	addi.d	$a0, $a0, 48
-	st.d	$a0, $s0, 8
-	st.d	$a0, $s0, 0
-	add.d	$a1, $a3, $a1
+	addi.d	$a3, $a0, 48
+	st.d	$a3, $s0, 8
+	st.d	$a3, $s0, 0
+	add.d	$a1, $a0, $a1
 	ld.w	$a4, $s0, 376
 	st.d	$a1, $s0, 16
 	st.d	$a1, $s0, 24
 	st.d	$a2, $s0, 40
 	st.w	$a4, $s0, 32
-	st.d	$a3, $s0, 48
+	st.d	$a0, $s0, 48
+	move	$a0, $a3
 .LBB2_13:
 	ori	$a2, $zero, 1
 	bne	$fp, $a2, .LBB2_15
@@ -274,8 +276,10 @@ alloc_add_chunk:                        # @alloc_add_chunk
 # %bb.2:
 	vld	$vr0, $fp, 32
 	vst	$vr0, $a1, 32
-	xvld	$xr0, $fp, 0
-	xvst	$xr0, $a1, 0
+	vld	$vr0, $fp, 16
+	vst	$vr0, $a1, 16
+	vld	$vr0, $fp, 0
+	vst	$vr0, $a1, 0
 	ld.d	$a1, $fp, 48
 	b	.LBB4_5
 .LBB4_3:
@@ -582,7 +586,7 @@ alloc_shrink:                           # @alloc_shrink
 	addi.w	$t0, $a6, 0
 	mul.d	$s1, $a3, $a2
 	addi.w	$a7, $s1, 0
-	beq	$a7, $t0, .LBB8_19
+	beq	$a7, $t0, .LBB8_15
 # %bb.1:
 	pcalau12i	$a5, %pc_hi20(as_current)
 	addi.d	$a5, $a5, %pc_lo12(as_current)
@@ -607,7 +611,7 @@ alloc_shrink:                           # @alloc_shrink
 	pcaddu18i	$ra, %call36(alloc_free)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
-	b	.LBB8_19
+	b	.LBB8_15
 .LBB8_4:
 	move	$fp, $a1
 	move	$s2, $a0
@@ -631,76 +635,62 @@ alloc_shrink:                           # @alloc_shrink
 	pcaddu18i	$ra, %call36(alloc_free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
-	b	.LBB8_19
+	b	.LBB8_15
 .LBB8_6:
-	bstrpick.d	$a4, $a6, 31, 0
-	add.d	$a6, $a0, $a4
-	beqz	$a7, .LBB8_15
-# %bb.7:                                # %iter.check
-	bstrpick.d	$t0, $s1, 31, 0
-	add.d	$a7, $a0, $t0
-	addi.d	$a1, $a7, -1
-	sltu	$a2, $a0, $a1
-	masknez	$a1, $a1, $a2
-	maskeqz	$a2, $a0, $a2
-	or	$a1, $a2, $a1
-	sub.d	$a2, $a7, $a1
-	ori	$a1, $zero, 16
-	bltu	$a2, $a1, .LBB8_16
-# %bb.8:                                # %iter.check
-	sub.d	$a3, $t0, $a4
-	ori	$a1, $zero, 32
-	bltu	$a3, $a1, .LBB8_16
-# %bb.9:                                # %vector.main.loop.iter.check
-	bgeu	$a2, $a1, .LBB8_20
-# %bb.10:
-	move	$t1, $zero
-.LBB8_11:                               # %vec.epilog.ph
-	move	$t2, $a2
-	bstrins.d	$t2, $zero, 3, 0
-	sub.d	$a1, $a6, $t2
-	sub.d	$a3, $a7, $t2
-	sub.d	$a6, $t1, $t2
-	sub.d	$a7, $t0, $t1
+	bstrpick.d	$a6, $a6, 31, 0
+	add.d	$a1, $a0, $a6
+	beqz	$a7, .LBB8_13
+# %bb.7:                                # %.lr.ph.preheader
+	bstrpick.d	$a7, $s1, 31, 0
+	add.d	$a2, $a0, $a7
+	addi.d	$a3, $a2, -1
+	sltu	$a4, $a0, $a3
+	masknez	$a3, $a3, $a4
+	maskeqz	$a4, $a0, $a4
+	or	$a3, $a4, $a3
+	sub.d	$a3, $a2, $a3
+	ori	$a4, $zero, 16
+	bltu	$a3, $a4, .LBB8_12
+# %bb.8:                                # %.lr.ph.preheader
+	sub.d	$t0, $a7, $a6
+	bltu	$t0, $a4, .LBB8_12
+# %bb.9:                                # %vector.ph
+	move	$a4, $a3
+	bstrins.d	$a4, $zero, 3, 0
+	sub.d	$a1, $a1, $a4
+	sub.d	$a2, $a2, $a4
 	add.d	$a7, $a7, $a0
 	addi.d	$a7, $a7, -16
-	sub.d	$a4, $a4, $t1
-	add.d	$a4, $a4, $a0
-	addi.d	$a4, $a4, -16
+	add.d	$a6, $a6, $a0
+	addi.d	$a6, $a6, -16
+	move	$t0, $a4
 	.p2align	4, , 16
-.LBB8_12:                               # %vec.epilog.vector.body
+.LBB8_10:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a7, 0
-	vst	$vr0, $a4, 0
-	addi.d	$a6, $a6, 16
+	vst	$vr0, $a6, 0
+	addi.d	$t0, $t0, -16
 	addi.d	$a7, $a7, -16
-	addi.d	$a4, $a4, -16
-	bnez	$a6, .LBB8_12
-# %bb.13:                               # %vec.epilog.middle.block
-	bne	$a2, $t2, .LBB8_17
-	b	.LBB8_18
-.LBB8_14:
-	move	$a0, $s2
-	b	.LBB8_19
-.LBB8_15:
-	move	$a1, $a6
-	b	.LBB8_18
-.LBB8_16:
-	move	$a1, $a6
-	move	$a3, $a7
+	addi.d	$a6, $a6, -16
+	bnez	$t0, .LBB8_10
+# %bb.11:                               # %middle.block
+	beq	$a3, $a4, .LBB8_13
 	.p2align	4, , 16
-.LBB8_17:                               # %.lr.ph
+.LBB8_12:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$a2, $a3, -1
-	addi.d	$a4, $a3, -1
-	st.b	$a2, $a1, -1
+	ld.b	$a3, $a2, -1
+	addi.d	$a4, $a2, -1
+	st.b	$a3, $a1, -1
 	addi.d	$a1, $a1, -1
-	move	$a3, $a4
-	bltu	$a0, $a4, .LBB8_17
-.LBB8_18:                               # %._crit_edge
+	move	$a2, $a4
+	bltu	$a0, $a4, .LBB8_12
+.LBB8_13:                               # %._crit_edge
 	st.d	$a1, $a5, 16
 	move	$a0, $a1
-.LBB8_19:
+	b	.LBB8_15
+.LBB8_14:
+	move	$a0, $s2
+.LBB8_15:
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -708,31 +698,6 @@ alloc_shrink:                           # @alloc_shrink
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
 	ret
-.LBB8_20:                               # %vector.ph
-	andi	$t2, $a2, 16
-	move	$t1, $a2
-	bstrins.d	$t1, $zero, 4, 0
-	sub.d	$a1, $a6, $t1
-	sub.d	$a3, $a7, $t1
-	add.d	$t3, $t0, $a0
-	addi.d	$t3, $t3, -32
-	add.d	$t4, $a4, $a0
-	addi.d	$t4, $t4, -32
-	move	$t5, $t1
-	.p2align	4, , 16
-.LBB8_21:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $t3, 0
-	xvst	$xr0, $t4, 0
-	addi.d	$t5, $t5, -32
-	addi.d	$t3, $t3, -32
-	addi.d	$t4, $t4, -32
-	bnez	$t5, .LBB8_21
-# %bb.22:                               # %middle.block
-	beq	$a2, $t1, .LBB8_18
-# %bb.23:                               # %vec.epilog.iter.check
-	beqz	$t2, .LBB8_17
-	b	.LBB8_11
 .Lfunc_end8:
 	.size	alloc_shrink, .Lfunc_end8-alloc_shrink
                                         # -- End function
@@ -982,8 +947,10 @@ alloc_restore_state:                    # @alloc_restore_state
 	vld	$vr0, $s0, 32
 	ld.d	$s2, $s0, 368
 	vst	$vr0, $a0, 32
-	xvld	$xr0, $s0, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $s0, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s0, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $s0, 360
 	beqz	$a0, .LBB14_4
 	.p2align	4, , 16

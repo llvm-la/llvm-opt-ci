@@ -41,101 +41,66 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	ld.d	$a5, $a3, 8
 	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$a3, $a3, 0
-	sub.d	$a6, $a5, $a3
-	srli.d	$a5, $a6, 2
-	addi.w	$a7, $a5, 0
+	sub.d	$a5, $a5, $a3
+	srli.d	$a5, $a5, 2
+	addi.w	$a6, $a5, 0
 	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	move	$s3, $a1
 	move	$s0, $a0
-	blez	$a7, .LBB0_3
-# %bb.1:                                # %iter.check
+	blez	$a6, .LBB0_3
+# %bb.1:                                # %.lr.ph.preheader
 	bstrpick.d	$a0, $a5, 30, 0
-	ori	$a1, $zero, 4
+	ori	$a1, $zero, 8
 	bgeu	$a0, $a1, .LBB0_4
 # %bb.2:
 	move	$a1, $zero
 	ori	$fp, $zero, 1
-	b	.LBB0_13
+	b	.LBB0_7
 .LBB0_3:                                # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i.thread
 	ori	$fp, $zero, 1
-	b	.LBB0_17
-.LBB0_4:                                # %vector.main.loop.iter.check
-	ori	$a1, $zero, 16
-	bgeu	$a0, $a1, .LBB0_6
-# %bb.5:
-	move	$a1, $zero
-	ori	$fp, $zero, 1
-	b	.LBB0_10
-.LBB0_6:                                # %vector.ph
-	bstrpick.d	$a1, $a5, 30, 4
-	slli.d	$a1, $a1, 4
-	xvrepli.w	$xr0, 1
-	addi.d	$a2, $a3, 32
-	move	$a4, $a1
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB0_7:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a2, -32
-	xvld	$xr3, $a2, 0
-	xvmul.w	$xr0, $xr2, $xr0
-	xvmul.w	$xr1, $xr3, $xr1
-	addi.d	$a4, $a4, -16
-	addi.d	$a2, $a2, 64
-	bnez	$a4, .LBB0_7
-# %bb.8:                                # %middle.block
-	xvmul.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvshuf4i.w	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvrepl128vei.w	$xr1, $xr0, 1
-	xvmul.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$fp, $xr0, 0
-	beq	$a0, $a1, .LBB0_15
-# %bb.9:                                # %vec.epilog.iter.check
-	andi	$a2, $a6, 48
-	beqz	$a2, .LBB0_13
-.LBB0_10:                               # %vec.epilog.ph
-	move	$a4, $a1
-	bstrpick.d	$a1, $a5, 30, 2
-	slli.d	$a1, $a1, 2
+	b	.LBB0_11
+.LBB0_4:                                # %vector.ph
+	bstrpick.d	$a1, $a5, 30, 3
+	slli.d	$a1, $a1, 3
 	vrepli.w	$vr0, 1
-	vinsgr2vr.w	$vr0, $fp, 0
-	sub.d	$a2, $a4, $a1
-	alsl.d	$a4, $a4, $a3, 2
+	addi.d	$a2, $a3, 16
+	move	$a4, $a1
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB0_11:                               # %vec.epilog.vector.body
+.LBB0_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a4, 0
+	vld	$vr2, $a2, -16
+	vld	$vr3, $a2, 0
+	vmul.w	$vr0, $vr2, $vr0
+	vmul.w	$vr1, $vr3, $vr1
+	addi.d	$a4, $a4, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a4, .LBB0_5
+# %bb.6:                                # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	addi.d	$a2, $a2, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB0_11
-# %bb.12:                               # %vec.epilog.middle.block
 	vshuf4i.w	$vr1, $vr0, 14
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$fp, $vr0, 0
-	beq	$a0, $a1, .LBB0_15
-.LBB0_13:                               # %.lr.ph.preheader
+	beq	$a0, $a1, .LBB0_9
+.LBB0_7:                                # %.lr.ph.preheader105
 	alsl.d	$a2, $a1, $a3, 2
 	sub.d	$a0, $a1, $a0
 	.p2align	4, , 16
-.LBB0_14:                               # %.lr.ph
+.LBB0_8:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $a2, 0
 	mul.w	$fp, $a1, $fp
 	addi.d	$a0, $a0, 1
 	addi.d	$a2, $a2, 4
-	bnez	$a0, .LBB0_14
-.LBB0_15:                               # %._crit_edge
-	bltz	$fp, .LBB0_72
-# %bb.16:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
-	beqz	$fp, .LBB0_22
-.LBB0_17:                               # %.noexc43
+	bnez	$a0, .LBB0_8
+.LBB0_9:                                # %._crit_edge
+	bltz	$fp, .LBB0_66
+# %bb.10:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
+	beqz	$fp, .LBB0_16
+.LBB0_11:                               # %.noexc43
 	slli.d	$s4, $fp, 2
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -153,29 +118,29 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp1:                                 # EH_LABEL
-# %bb.18:                               # %.noexc46
+# %bb.12:                               # %.noexc46
 	st.d	$a0, $sp, 512
 	alsl.d	$a1, $fp, $a0, 3
 	st.d	$a1, $sp, 528
 	st.d	$zero, $a0, 0
 	addi.d	$s1, $fp, -1
 	addi.d	$s5, $a0, 8
-	beqz	$s1, .LBB0_20
-# %bb.19:                               # %_ZSt6fill_nIPPN2PP3CmdEmS2_ET_S4_T0_RKT1_.exit.loopexit.i.i.i.i.i
+	beqz	$s1, .LBB0_14
+# %bb.13:                               # %_ZSt6fill_nIPPN2PP3CmdEmS2_ET_S4_T0_RKT1_.exit.loopexit.i.i.i.i.i
 	slli.d	$a2, $s1, 3
 	move	$a0, $s5
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	alsl.d	$s5, $s1, $s5, 3
-.LBB0_20:
+.LBB0_14:
 	st.d	$s5, $sp, 520
 .Ltmp3:                                 # EH_LABEL
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp4:                                 # EH_LABEL
-# %bb.21:                               # %.noexc55
+# %bb.15:                               # %.noexc55
 	move	$s5, $a0
 	st.d	$a0, $sp, 488
 	alsl.d	$a0, $fp, $a0, 2
@@ -186,8 +151,8 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	add.d	$a0, $s5, $s4
-	b	.LBB0_23
-.LBB0_22:                               # %_ZNSt12_Vector_baseIiSaIiEEC2EmRKS0_.exit.thread.i53
+	b	.LBB0_17
+.LBB0_16:                               # %_ZNSt12_Vector_baseIiSaIiEEC2EmRKS0_.exit.thread.i53
 	move	$a0, $zero
 	st.d	$zero, $sp, 552
 	vrepli.b	$vr0, 0
@@ -196,7 +161,7 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	vst	$vr0, $sp, 512
 	st.d	$zero, $sp, 504
 	vst	$vr0, $sp, 488
-.LBB0_23:                               # %.loopexit
+.LBB0_17:                               # %.loopexit
 	st.d	$a0, $sp, 496
 	st.w	$zero, $sp, 484
 .Ltmp6:                                 # EH_LABEL
@@ -204,17 +169,17 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEC1Ev)
 	jirl	$ra, $ra, 0
 .Ltmp7:                                 # EH_LABEL
-# %bb.24:
+# %bb.18:
 	pcalau12i	$a0, %pc_hi20(_ZN2PPL14case_sensitiveE)
 	ld.bu	$a0, $a0, %pc_lo12(_ZN2PPL14case_sensitiveE)
-	bnez	$a0, .LBB0_28
-# %bb.25:
+	bnez	$a0, .LBB0_22
+# %bb.19:
 	ld.d	$fp, $s3, 8
-	beqz	$fp, .LBB0_28
-# %bb.26:                               # %.lr.ph.i.preheader
+	beqz	$fp, .LBB0_22
+# %bb.20:                               # %.lr.ph.i.preheader
 	ld.d	$s1, $s3, 0
 	.p2align	4, , 16
-.LBB0_27:                               # %.lr.ph.i
+.LBB0_21:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$a0, $s1, 0
 	pcaddu18i	$ra, %call36(tolower)
@@ -222,8 +187,8 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	st.b	$a0, $s1, 0
 	addi.d	$fp, $fp, -1
 	addi.d	$s1, $s1, 1
-	bnez	$fp, .LBB0_27
-.LBB0_28:                               # %_ZSt9transformIN9__gnu_cxx17__normal_iteratorIPcNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEES9_PDoFiiEET0_T_SD_SC_T1_.exit
+	bnez	$fp, .LBB0_21
+.LBB0_22:                               # %_ZSt9transformIN9__gnu_cxx17__normal_iteratorIPcNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEES9_PDoFiiEET0_T_SD_SC_T1_.exit
 	move	$s8, $zero
 	move	$s4, $zero
 	addi.d	$s1, $sp, 72
@@ -232,14 +197,14 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	lu32i.d	$a0, -155345
 	lu52i.d	$s2, $a0, -1973
 	ori	$fp, $zero, 16
-	b	.LBB0_32
-.LBB0_29:                               #   in Loop: Header=BB0_32 Depth=1
+	b	.LBB0_26
+.LBB0_23:                               #   in Loop: Header=BB0_26 Depth=1
 	move	$a1, $s7
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB0_30:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
-                                        #   in Loop: Header=BB0_32 Depth=1
+.LBB0_24:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
+                                        #   in Loop: Header=BB0_26 Depth=1
 	ld.d	$a0, $sp, 56
 	ld.d	$a1, $s5, 0
 	st.d	$a0, $s5, 8
@@ -247,11 +212,11 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	ld.d	$a0, $s0, 1040
 	addi.d	$a0, $a0, 32
 	st.d	$a0, $s0, 1040
-.LBB0_31:                               # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
-                                        #   in Loop: Header=BB0_32 Depth=1
+.LBB0_25:                               # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
+                                        #   in Loop: Header=BB0_26 Depth=1
 	addi.d	$s4, $s4, 1
 	addi.d	$s8, $s8, 432
-.LBB0_32:                               # =>This Inner Loop Header: Depth=1
+.LBB0_26:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 984
 	ld.d	$a2, $a1, 72
 	ld.d	$a0, $a1, 40
@@ -271,31 +236,31 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	srli.d	$a4, $a4, 4
 	mul.d	$a4, $a4, $s2
 	add.w	$a3, $a3, $a4
-	bge	$s4, $a3, .LBB0_62
-# %bb.33:                               #   in Loop: Header=BB0_32 Depth=1
+	bge	$s4, $a3, .LBB0_56
+# %bb.27:                               #   in Loop: Header=BB0_26 Depth=1
 	ld.d	$a1, $a1, 24
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 4
 	mul.d	$a1, $a1, $s2
 	add.d	$a1, $s4, $a1
-	beqz	$a1, .LBB0_35
-# %bb.34:                               #   in Loop: Header=BB0_32 Depth=1
+	beqz	$a1, .LBB0_29
+# %bb.28:                               #   in Loop: Header=BB0_26 Depth=1
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
-	b	.LBB0_36
+	b	.LBB0_30
 	.p2align	4, , 16
-.LBB0_35:                               #   in Loop: Header=BB0_32 Depth=1
+.LBB0_29:                               #   in Loop: Header=BB0_26 Depth=1
 	add.d	$a0, $a2, $s8
-.LBB0_36:                               # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit
-                                        #   in Loop: Header=BB0_32 Depth=1
+.LBB0_30:                               # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit
+                                        #   in Loop: Header=BB0_26 Depth=1
 	ld.d	$s5, $a0, 248
 	ld.d	$s6, $a0, 240
 	st.d	$s1, $sp, 56
 	st.d	$s5, $sp, 560
 	move	$a0, $s1
-	bltu	$s5, $fp, .LBB0_39
-# %bb.37:                               # %.noexc.i.i
-                                        #   in Loop: Header=BB0_32 Depth=1
+	bltu	$s5, $fp, .LBB0_33
+# %bb.31:                               # %.noexc.i.i
+                                        #   in Loop: Header=BB0_26 Depth=1
 .Ltmp12:                                # EH_LABEL
 	addi.d	$a0, $sp, 56
 	addi.d	$a1, $sp, 560
@@ -303,64 +268,64 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp13:                                # EH_LABEL
-# %bb.38:                               # %.noexc57
-                                        #   in Loop: Header=BB0_32 Depth=1
+# %bb.32:                               # %.noexc57
+                                        #   in Loop: Header=BB0_26 Depth=1
 	ld.d	$a1, $sp, 560
 	st.d	$a0, $sp, 56
 	st.d	$a1, $sp, 72
-.LBB0_39:                               # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB0_32 Depth=1
-	beqz	$s5, .LBB0_43
-# %bb.40:                               # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB0_32 Depth=1
+.LBB0_33:                               # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB0_26 Depth=1
+	beqz	$s5, .LBB0_37
+# %bb.34:                               # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB0_26 Depth=1
 	ori	$a1, $zero, 1
-	bne	$s5, $a1, .LBB0_42
-# %bb.41:                               #   in Loop: Header=BB0_32 Depth=1
+	bne	$s5, $a1, .LBB0_36
+# %bb.35:                               #   in Loop: Header=BB0_26 Depth=1
 	ld.b	$a1, $s6, 0
 	st.b	$a1, $a0, 0
-	b	.LBB0_43
+	b	.LBB0_37
 	.p2align	4, , 16
-.LBB0_42:                               #   in Loop: Header=BB0_32 Depth=1
+.LBB0_36:                               #   in Loop: Header=BB0_26 Depth=1
 	move	$a1, $s6
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB0_43:                               #   in Loop: Header=BB0_32 Depth=1
+.LBB0_37:                               #   in Loop: Header=BB0_26 Depth=1
 	ld.d	$a0, $sp, 560
 	ld.d	$a1, $sp, 56
 	st.d	$a0, $sp, 64
 	stx.b	$zero, $a1, $a0
 	ld.d	$a2, $sp, 64
 	ld.d	$a0, $s3, 8
-	bne	$a2, $a0, .LBB0_46
-# %bb.44:                               #   in Loop: Header=BB0_32 Depth=1
+	bne	$a2, $a0, .LBB0_40
+# %bb.38:                               #   in Loop: Header=BB0_26 Depth=1
 	ld.d	$s5, $sp, 56
-	beqz	$a2, .LBB0_51
-# %bb.45:                               #   in Loop: Header=BB0_32 Depth=1
+	beqz	$a2, .LBB0_45
+# %bb.39:                               #   in Loop: Header=BB0_26 Depth=1
 	ld.d	$a1, $s3, 0
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$s6, $a0, 1
-	bne	$s5, $s1, .LBB0_47
-	b	.LBB0_48
+	bne	$s5, $s1, .LBB0_41
+	b	.LBB0_42
 	.p2align	4, , 16
-.LBB0_46:                               # %._ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit_crit_edge
-                                        #   in Loop: Header=BB0_32 Depth=1
+.LBB0_40:                               # %._ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit_crit_edge
+                                        #   in Loop: Header=BB0_26 Depth=1
 	ld.d	$s5, $sp, 56
 	move	$s6, $zero
-	beq	$s5, $s1, .LBB0_48
-.LBB0_47:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-                                        #   in Loop: Header=BB0_32 Depth=1
+	beq	$s5, $s1, .LBB0_42
+.LBB0_41:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+                                        #   in Loop: Header=BB0_26 Depth=1
 	ld.d	$a0, $sp, 72
 	addi.d	$a1, $a0, 1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB0_48:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
-                                        #   in Loop: Header=BB0_32 Depth=1
-	beqz	$s6, .LBB0_31
-# %bb.49:                               #   in Loop: Header=BB0_32 Depth=1
+.LBB0_42:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
+                                        #   in Loop: Header=BB0_26 Depth=1
+	beqz	$s6, .LBB0_25
+# %bb.43:                               #   in Loop: Header=BB0_26 Depth=1
 	ld.d	$a0, $s0, 984
 	ld.d	$a1, $a0, 16
 	ld.d	$a2, $a0, 24
@@ -368,20 +333,20 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	srai.d	$a2, $a2, 4
 	mul.d	$a2, $a2, $s2
 	add.d	$a2, $s4, $a2
-	beqz	$a2, .LBB0_52
-# %bb.50:                               #   in Loop: Header=BB0_32 Depth=1
+	beqz	$a2, .LBB0_46
+# %bb.44:                               #   in Loop: Header=BB0_26 Depth=1
 	ld.d	$a0, $a0, 40
 	slli.d	$a1, $a2, 3
 	ldx.d	$a0, $a0, $a1
-	b	.LBB0_53
-.LBB0_51:                               #   in Loop: Header=BB0_32 Depth=1
+	b	.LBB0_47
+.LBB0_45:                               #   in Loop: Header=BB0_26 Depth=1
 	ori	$s6, $zero, 1
-	bne	$s5, $s1, .LBB0_47
-	b	.LBB0_48
-.LBB0_52:                               #   in Loop: Header=BB0_32 Depth=1
+	bne	$s5, $s1, .LBB0_41
+	b	.LBB0_42
+.LBB0_46:                               #   in Loop: Header=BB0_26 Depth=1
 	add.d	$a0, $a1, $s8
-.LBB0_53:                               # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit59
-                                        #   in Loop: Header=BB0_32 Depth=1
+.LBB0_47:                               # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit59
+                                        #   in Loop: Header=BB0_26 Depth=1
 	ldptr.w	$a6, $s0, 2792
 .Ltmp15:                                # EH_LABEL
 	addi.d	$a1, $sp, 484
@@ -399,20 +364,20 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd7get_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPiRKSt6vectorIiSaIiEERS9_IPS0_SaISE_EERSB_iSI_bRNS1_18basic_stringstreamIcS4_S5_EERi)
 	jirl	$ra, $ra, 0
 .Ltmp16:                                # EH_LABEL
-# %bb.54:                               #   in Loop: Header=BB0_32 Depth=1
+# %bb.48:                               #   in Loop: Header=BB0_26 Depth=1
 	ld.d	$a0, $s0, 1056
 	ld.d	$s5, $s0, 1040
 	addi.d	$a0, $a0, -32
-	beq	$s5, $a0, .LBB0_61
-# %bb.55:                               #   in Loop: Header=BB0_32 Depth=1
+	beq	$s5, $a0, .LBB0_55
+# %bb.49:                               #   in Loop: Header=BB0_26 Depth=1
 	addi.d	$a0, $s5, 16
 	st.d	$a0, $s5, 0
 	ld.d	$s6, $s3, 8
 	ld.d	$s7, $s3, 0
 	st.d	$s6, $sp, 56
-	bltu	$s6, $fp, .LBB0_58
-# %bb.56:                               # %.noexc.i.i62
-                                        #   in Loop: Header=BB0_32 Depth=1
+	bltu	$s6, $fp, .LBB0_52
+# %bb.50:                               # %.noexc.i.i62
+                                        #   in Loop: Header=BB0_26 Depth=1
 .Ltmp17:                                # EH_LABEL
 	addi.d	$a1, $sp, 56
 	move	$a0, $s5
@@ -420,31 +385,31 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp18:                                # EH_LABEL
-# %bb.57:                               # %.noexc63
-                                        #   in Loop: Header=BB0_32 Depth=1
+# %bb.51:                               # %.noexc63
+                                        #   in Loop: Header=BB0_26 Depth=1
 	st.d	$a0, $s5, 0
 	ld.d	$a1, $sp, 56
 	st.d	$a1, $s5, 16
-.LBB0_58:                               # %._crit_edge.i.i.i61
-                                        #   in Loop: Header=BB0_32 Depth=1
-	beqz	$s6, .LBB0_30
-# %bb.59:                               # %._crit_edge.i.i.i61
-                                        #   in Loop: Header=BB0_32 Depth=1
+.LBB0_52:                               # %._crit_edge.i.i.i61
+                                        #   in Loop: Header=BB0_26 Depth=1
+	beqz	$s6, .LBB0_24
+# %bb.53:                               # %._crit_edge.i.i.i61
+                                        #   in Loop: Header=BB0_26 Depth=1
 	ori	$a1, $zero, 1
-	bne	$s6, $a1, .LBB0_29
-# %bb.60:                               #   in Loop: Header=BB0_32 Depth=1
+	bne	$s6, $a1, .LBB0_23
+# %bb.54:                               #   in Loop: Header=BB0_26 Depth=1
 	ld.b	$a1, $s7, 0
 	st.b	$a1, $a0, 0
-	b	.LBB0_30
-.LBB0_61:                               #   in Loop: Header=BB0_32 Depth=1
+	b	.LBB0_24
+.LBB0_55:                               #   in Loop: Header=BB0_26 Depth=1
 .Ltmp19:                                # EH_LABEL
 	addi.d	$a0, $s0, 992
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE16_M_push_back_auxIJRKS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp20:                                # EH_LABEL
-	b	.LBB0_31
-.LBB0_62:
+	b	.LBB0_25
+.LBB0_56:
 .Ltmp9:                                 # EH_LABEL
 	addi.d	$a1, $sp, 88
 	addi.d	$a2, $sp, 484
@@ -453,7 +418,7 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser13process_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp10:                                # EH_LABEL
-# %bb.63:
+# %bb.57:
 	pcalau12i	$a0, %got_pc_hi20(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$fp, $a0, %got_pc_lo12(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $fp, 0
@@ -469,13 +434,13 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	addi.d	$a1, $a1, 16
 	addi.d	$a2, $sp, 200
 	st.d	$a1, $sp, 112
-	beq	$a0, $a2, .LBB0_65
-# %bb.64:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
+	beq	$a0, $a2, .LBB0_59
+# %bb.58:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
 	ld.d	$a1, $sp, 200
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB0_65:                               # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
+.LBB0_59:                               # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	addi.d	$a0, $a0, 16
@@ -494,29 +459,29 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 488
-	beqz	$a0, .LBB0_67
-# %bb.66:
+	beqz	$a0, .LBB0_61
+# %bb.60:
 	ld.d	$a1, $sp, 504
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB0_67:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit
+.LBB0_61:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB0_69
-# %bb.68:
+	beqz	$a0, .LBB0_63
+# %bb.62:
 	ld.d	$a1, $sp, 528
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB0_69:                               # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit
+.LBB0_63:                               # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB0_71
-# %bb.70:
+	beqz	$a0, .LBB0_65
+# %bb.64:
 	ld.d	$a1, $sp, 552
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB0_71:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit67
+.LBB0_65:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit67
 	ld.d	$s8, $sp, 568                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 576                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 584                   # 8-byte Folded Reload
@@ -530,68 +495,68 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	ld.d	$ra, $sp, 648                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 656
 	ret
-.LBB0_72:                               # %.noexc
+.LBB0_66:                               # %.noexc
 	pcalau12i	$a0, %pc_hi20(.L.str.240)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.240)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
-.LBB0_73:
+.LBB0_67:
 .Ltmp5:                                 # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB0_82
-	b	.LBB0_85
-.LBB0_74:
+	beqz	$a0, .LBB0_76
+	b	.LBB0_79
+.LBB0_68:
 .Ltmp2:                                 # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB0_83
-	b	.LBB0_86
-.LBB0_75:
+	beqz	$a0, .LBB0_77
+	b	.LBB0_80
+.LBB0_69:
 .Ltmp11:                                # EH_LABEL
-	b	.LBB0_79
-.LBB0_76:
+	b	.LBB0_73
+.LBB0_70:
 .Ltmp8:                                 # EH_LABEL
 	move	$fp, $a0
-	b	.LBB0_80
-.LBB0_77:
+	b	.LBB0_74
+.LBB0_71:
 .Ltmp14:                                # EH_LABEL
-	b	.LBB0_79
-.LBB0_78:
+	b	.LBB0_73
+.LBB0_72:
 .Ltmp21:                                # EH_LABEL
-.LBB0_79:
+.LBB0_73:
 	move	$fp, $a0
 	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev)
 	jirl	$ra, $ra, 0
-.LBB0_80:
+.LBB0_74:
 	ld.d	$a0, $sp, 488
-	bnez	$a0, .LBB0_84
-# %bb.81:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit69
+	bnez	$a0, .LBB0_78
+# %bb.75:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit69
 	ld.d	$a0, $sp, 512
-	bnez	$a0, .LBB0_85
-.LBB0_82:                               # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit71
+	bnez	$a0, .LBB0_79
+.LBB0_76:                               # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit71
 	ld.d	$a0, $sp, 536
-	bnez	$a0, .LBB0_86
-.LBB0_83:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit73
+	bnez	$a0, .LBB0_80
+.LBB0_77:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit73
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB0_84:
+.LBB0_78:
 	ld.d	$a1, $sp, 504
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB0_82
-.LBB0_85:
+	beqz	$a0, .LBB0_76
+.LBB0_79:
 	ld.d	$a1, $sp, 528
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB0_83
-.LBB0_86:
+	beqz	$a0, .LBB0_77
+.LBB0_80:
 	ld.d	$a1, $sp, 552
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -1226,101 +1191,66 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	ld.d	$a5, $a3, 8
 	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$a3, $a3, 0
-	sub.d	$a6, $a5, $a3
-	srli.d	$a5, $a6, 2
-	addi.w	$a7, $a5, 0
+	sub.d	$a5, $a5, $a3
+	srli.d	$a5, $a5, 2
+	addi.w	$a6, $a5, 0
 	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	move	$s3, $a1
 	move	$s0, $a0
-	blez	$a7, .LBB2_3
-# %bb.1:                                # %iter.check
+	blez	$a6, .LBB2_3
+# %bb.1:                                # %.lr.ph.preheader
 	bstrpick.d	$a0, $a5, 30, 0
-	ori	$a1, $zero, 4
+	ori	$a1, $zero, 8
 	bgeu	$a0, $a1, .LBB2_4
 # %bb.2:
 	move	$a1, $zero
 	ori	$fp, $zero, 1
-	b	.LBB2_13
+	b	.LBB2_7
 .LBB2_3:                                # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i.thread
 	ori	$fp, $zero, 1
-	b	.LBB2_17
-.LBB2_4:                                # %vector.main.loop.iter.check
-	ori	$a1, $zero, 16
-	bgeu	$a0, $a1, .LBB2_6
-# %bb.5:
-	move	$a1, $zero
-	ori	$fp, $zero, 1
-	b	.LBB2_10
-.LBB2_6:                                # %vector.ph
-	bstrpick.d	$a1, $a5, 30, 4
-	slli.d	$a1, $a1, 4
-	xvrepli.w	$xr0, 1
-	addi.d	$a2, $a3, 32
-	move	$a4, $a1
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB2_7:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a2, -32
-	xvld	$xr3, $a2, 0
-	xvmul.w	$xr0, $xr2, $xr0
-	xvmul.w	$xr1, $xr3, $xr1
-	addi.d	$a4, $a4, -16
-	addi.d	$a2, $a2, 64
-	bnez	$a4, .LBB2_7
-# %bb.8:                                # %middle.block
-	xvmul.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvshuf4i.w	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvrepl128vei.w	$xr1, $xr0, 1
-	xvmul.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$fp, $xr0, 0
-	beq	$a0, $a1, .LBB2_15
-# %bb.9:                                # %vec.epilog.iter.check
-	andi	$a2, $a6, 48
-	beqz	$a2, .LBB2_13
-.LBB2_10:                               # %vec.epilog.ph
-	move	$a4, $a1
-	bstrpick.d	$a1, $a5, 30, 2
-	slli.d	$a1, $a1, 2
+	b	.LBB2_11
+.LBB2_4:                                # %vector.ph
+	bstrpick.d	$a1, $a5, 30, 3
+	slli.d	$a1, $a1, 3
 	vrepli.w	$vr0, 1
-	vinsgr2vr.w	$vr0, $fp, 0
-	sub.d	$a2, $a4, $a1
-	alsl.d	$a4, $a4, $a3, 2
+	addi.d	$a2, $a3, 16
+	move	$a4, $a1
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB2_11:                               # %vec.epilog.vector.body
+.LBB2_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a4, 0
+	vld	$vr2, $a2, -16
+	vld	$vr3, $a2, 0
+	vmul.w	$vr0, $vr2, $vr0
+	vmul.w	$vr1, $vr3, $vr1
+	addi.d	$a4, $a4, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a4, .LBB2_5
+# %bb.6:                                # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	addi.d	$a2, $a2, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB2_11
-# %bb.12:                               # %vec.epilog.middle.block
 	vshuf4i.w	$vr1, $vr0, 14
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$fp, $vr0, 0
-	beq	$a0, $a1, .LBB2_15
-.LBB2_13:                               # %.lr.ph.preheader
+	beq	$a0, $a1, .LBB2_9
+.LBB2_7:                                # %.lr.ph.preheader105
 	alsl.d	$a2, $a1, $a3, 2
 	sub.d	$a0, $a1, $a0
 	.p2align	4, , 16
-.LBB2_14:                               # %.lr.ph
+.LBB2_8:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $a2, 0
 	mul.w	$fp, $a1, $fp
 	addi.d	$a0, $a0, 1
 	addi.d	$a2, $a2, 4
-	bnez	$a0, .LBB2_14
-.LBB2_15:                               # %._crit_edge
-	bltz	$fp, .LBB2_72
-# %bb.16:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
-	beqz	$fp, .LBB2_22
-.LBB2_17:                               # %.noexc43
+	bnez	$a0, .LBB2_8
+.LBB2_9:                                # %._crit_edge
+	bltz	$fp, .LBB2_66
+# %bb.10:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
+	beqz	$fp, .LBB2_16
+.LBB2_11:                               # %.noexc43
 	slli.d	$s4, $fp, 2
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -1338,29 +1268,29 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp88:                                # EH_LABEL
-# %bb.18:                               # %.noexc46
+# %bb.12:                               # %.noexc46
 	st.d	$a0, $sp, 512
 	alsl.d	$a1, $fp, $a0, 3
 	st.d	$a1, $sp, 528
 	st.d	$zero, $a0, 0
 	addi.d	$s1, $fp, -1
 	addi.d	$s5, $a0, 8
-	beqz	$s1, .LBB2_20
-# %bb.19:                               # %_ZSt6fill_nIPPN2PP3CmdEmS2_ET_S4_T0_RKT1_.exit.loopexit.i.i.i.i.i
+	beqz	$s1, .LBB2_14
+# %bb.13:                               # %_ZSt6fill_nIPPN2PP3CmdEmS2_ET_S4_T0_RKT1_.exit.loopexit.i.i.i.i.i
 	slli.d	$a2, $s1, 3
 	move	$a0, $s5
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	alsl.d	$s5, $s1, $s5, 3
-.LBB2_20:
+.LBB2_14:
 	st.d	$s5, $sp, 520
 .Ltmp90:                                # EH_LABEL
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp91:                                # EH_LABEL
-# %bb.21:                               # %.noexc55
+# %bb.15:                               # %.noexc55
 	move	$s5, $a0
 	st.d	$a0, $sp, 488
 	alsl.d	$a0, $fp, $a0, 2
@@ -1371,8 +1301,8 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	add.d	$a0, $s5, $s4
-	b	.LBB2_23
-.LBB2_22:                               # %_ZNSt12_Vector_baseIiSaIiEEC2EmRKS0_.exit.thread.i53
+	b	.LBB2_17
+.LBB2_16:                               # %_ZNSt12_Vector_baseIiSaIiEEC2EmRKS0_.exit.thread.i53
 	move	$a0, $zero
 	st.d	$zero, $sp, 552
 	vrepli.b	$vr0, 0
@@ -1381,7 +1311,7 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	vst	$vr0, $sp, 512
 	st.d	$zero, $sp, 504
 	vst	$vr0, $sp, 488
-.LBB2_23:                               # %.loopexit
+.LBB2_17:                               # %.loopexit
 	st.d	$a0, $sp, 496
 	st.w	$zero, $sp, 484
 .Ltmp93:                                # EH_LABEL
@@ -1389,17 +1319,17 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEC1Ev)
 	jirl	$ra, $ra, 0
 .Ltmp94:                                # EH_LABEL
-# %bb.24:
+# %bb.18:
 	pcalau12i	$a0, %pc_hi20(_ZN2PPL14case_sensitiveE)
 	ld.bu	$a0, $a0, %pc_lo12(_ZN2PPL14case_sensitiveE)
-	bnez	$a0, .LBB2_28
-# %bb.25:
+	bnez	$a0, .LBB2_22
+# %bb.19:
 	ld.d	$fp, $s3, 8
-	beqz	$fp, .LBB2_28
-# %bb.26:                               # %.lr.ph.i.preheader
+	beqz	$fp, .LBB2_22
+# %bb.20:                               # %.lr.ph.i.preheader
 	ld.d	$s1, $s3, 0
 	.p2align	4, , 16
-.LBB2_27:                               # %.lr.ph.i
+.LBB2_21:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$a0, $s1, 0
 	pcaddu18i	$ra, %call36(tolower)
@@ -1407,8 +1337,8 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	st.b	$a0, $s1, 0
 	addi.d	$fp, $fp, -1
 	addi.d	$s1, $s1, 1
-	bnez	$fp, .LBB2_27
-.LBB2_28:                               # %_ZSt9transformIN9__gnu_cxx17__normal_iteratorIPcNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEES9_PDoFiiEET0_T_SD_SC_T1_.exit
+	bnez	$fp, .LBB2_21
+.LBB2_22:                               # %_ZSt9transformIN9__gnu_cxx17__normal_iteratorIPcNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEES9_PDoFiiEET0_T_SD_SC_T1_.exit
 	move	$s8, $zero
 	move	$s4, $zero
 	addi.d	$s1, $sp, 72
@@ -1417,14 +1347,14 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	lu32i.d	$a0, -155345
 	lu52i.d	$s2, $a0, -1973
 	ori	$fp, $zero, 16
-	b	.LBB2_32
-.LBB2_29:                               #   in Loop: Header=BB2_32 Depth=1
+	b	.LBB2_26
+.LBB2_23:                               #   in Loop: Header=BB2_26 Depth=1
 	move	$a1, $s7
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB2_30:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
-                                        #   in Loop: Header=BB2_32 Depth=1
+.LBB2_24:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
+                                        #   in Loop: Header=BB2_26 Depth=1
 	ld.d	$a0, $sp, 56
 	ld.d	$a1, $s5, 0
 	st.d	$a0, $s5, 8
@@ -1432,11 +1362,11 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	ld.d	$a0, $s0, 1040
 	addi.d	$a0, $a0, 32
 	st.d	$a0, $s0, 1040
-.LBB2_31:                               # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
-                                        #   in Loop: Header=BB2_32 Depth=1
+.LBB2_25:                               # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
+                                        #   in Loop: Header=BB2_26 Depth=1
 	addi.d	$s4, $s4, 1
 	addi.d	$s8, $s8, 432
-.LBB2_32:                               # =>This Inner Loop Header: Depth=1
+.LBB2_26:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 984
 	ld.d	$a2, $a1, 72
 	ld.d	$a0, $a1, 40
@@ -1456,31 +1386,31 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	srli.d	$a4, $a4, 4
 	mul.d	$a4, $a4, $s2
 	add.w	$a3, $a3, $a4
-	bge	$s4, $a3, .LBB2_62
-# %bb.33:                               #   in Loop: Header=BB2_32 Depth=1
+	bge	$s4, $a3, .LBB2_56
+# %bb.27:                               #   in Loop: Header=BB2_26 Depth=1
 	ld.d	$a1, $a1, 24
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 4
 	mul.d	$a1, $a1, $s2
 	add.d	$a1, $s4, $a1
-	beqz	$a1, .LBB2_35
-# %bb.34:                               #   in Loop: Header=BB2_32 Depth=1
+	beqz	$a1, .LBB2_29
+# %bb.28:                               #   in Loop: Header=BB2_26 Depth=1
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
-	b	.LBB2_36
+	b	.LBB2_30
 	.p2align	4, , 16
-.LBB2_35:                               #   in Loop: Header=BB2_32 Depth=1
+.LBB2_29:                               #   in Loop: Header=BB2_26 Depth=1
 	add.d	$a0, $a2, $s8
-.LBB2_36:                               # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit
-                                        #   in Loop: Header=BB2_32 Depth=1
+.LBB2_30:                               # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit
+                                        #   in Loop: Header=BB2_26 Depth=1
 	ld.d	$s5, $a0, 248
 	ld.d	$s6, $a0, 240
 	st.d	$s1, $sp, 56
 	st.d	$s5, $sp, 560
 	move	$a0, $s1
-	bltu	$s5, $fp, .LBB2_39
-# %bb.37:                               # %.noexc.i.i
-                                        #   in Loop: Header=BB2_32 Depth=1
+	bltu	$s5, $fp, .LBB2_33
+# %bb.31:                               # %.noexc.i.i
+                                        #   in Loop: Header=BB2_26 Depth=1
 .Ltmp99:                                # EH_LABEL
 	addi.d	$a0, $sp, 56
 	addi.d	$a1, $sp, 560
@@ -1488,64 +1418,64 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp100:                               # EH_LABEL
-# %bb.38:                               # %.noexc57
-                                        #   in Loop: Header=BB2_32 Depth=1
+# %bb.32:                               # %.noexc57
+                                        #   in Loop: Header=BB2_26 Depth=1
 	ld.d	$a1, $sp, 560
 	st.d	$a0, $sp, 56
 	st.d	$a1, $sp, 72
-.LBB2_39:                               # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB2_32 Depth=1
-	beqz	$s5, .LBB2_43
-# %bb.40:                               # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB2_32 Depth=1
+.LBB2_33:                               # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB2_26 Depth=1
+	beqz	$s5, .LBB2_37
+# %bb.34:                               # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB2_26 Depth=1
 	ori	$a1, $zero, 1
-	bne	$s5, $a1, .LBB2_42
-# %bb.41:                               #   in Loop: Header=BB2_32 Depth=1
+	bne	$s5, $a1, .LBB2_36
+# %bb.35:                               #   in Loop: Header=BB2_26 Depth=1
 	ld.b	$a1, $s6, 0
 	st.b	$a1, $a0, 0
-	b	.LBB2_43
+	b	.LBB2_37
 	.p2align	4, , 16
-.LBB2_42:                               #   in Loop: Header=BB2_32 Depth=1
+.LBB2_36:                               #   in Loop: Header=BB2_26 Depth=1
 	move	$a1, $s6
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB2_43:                               #   in Loop: Header=BB2_32 Depth=1
+.LBB2_37:                               #   in Loop: Header=BB2_26 Depth=1
 	ld.d	$a0, $sp, 560
 	ld.d	$a1, $sp, 56
 	st.d	$a0, $sp, 64
 	stx.b	$zero, $a1, $a0
 	ld.d	$a2, $sp, 64
 	ld.d	$a0, $s3, 8
-	bne	$a2, $a0, .LBB2_46
-# %bb.44:                               #   in Loop: Header=BB2_32 Depth=1
+	bne	$a2, $a0, .LBB2_40
+# %bb.38:                               #   in Loop: Header=BB2_26 Depth=1
 	ld.d	$s5, $sp, 56
-	beqz	$a2, .LBB2_51
-# %bb.45:                               #   in Loop: Header=BB2_32 Depth=1
+	beqz	$a2, .LBB2_45
+# %bb.39:                               #   in Loop: Header=BB2_26 Depth=1
 	ld.d	$a1, $s3, 0
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$s6, $a0, 1
-	bne	$s5, $s1, .LBB2_47
-	b	.LBB2_48
+	bne	$s5, $s1, .LBB2_41
+	b	.LBB2_42
 	.p2align	4, , 16
-.LBB2_46:                               # %._ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit_crit_edge
-                                        #   in Loop: Header=BB2_32 Depth=1
+.LBB2_40:                               # %._ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit_crit_edge
+                                        #   in Loop: Header=BB2_26 Depth=1
 	ld.d	$s5, $sp, 56
 	move	$s6, $zero
-	beq	$s5, $s1, .LBB2_48
-.LBB2_47:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-                                        #   in Loop: Header=BB2_32 Depth=1
+	beq	$s5, $s1, .LBB2_42
+.LBB2_41:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+                                        #   in Loop: Header=BB2_26 Depth=1
 	ld.d	$a0, $sp, 72
 	addi.d	$a1, $a0, 1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB2_48:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
-                                        #   in Loop: Header=BB2_32 Depth=1
-	beqz	$s6, .LBB2_31
-# %bb.49:                               #   in Loop: Header=BB2_32 Depth=1
+.LBB2_42:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
+                                        #   in Loop: Header=BB2_26 Depth=1
+	beqz	$s6, .LBB2_25
+# %bb.43:                               #   in Loop: Header=BB2_26 Depth=1
 	ld.d	$a0, $s0, 984
 	ld.d	$a1, $a0, 16
 	ld.d	$a2, $a0, 24
@@ -1553,20 +1483,20 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	srai.d	$a2, $a2, 4
 	mul.d	$a2, $a2, $s2
 	add.d	$a2, $s4, $a2
-	beqz	$a2, .LBB2_52
-# %bb.50:                               #   in Loop: Header=BB2_32 Depth=1
+	beqz	$a2, .LBB2_46
+# %bb.44:                               #   in Loop: Header=BB2_26 Depth=1
 	ld.d	$a0, $a0, 40
 	slli.d	$a1, $a2, 3
 	ldx.d	$a0, $a0, $a1
-	b	.LBB2_53
-.LBB2_51:                               #   in Loop: Header=BB2_32 Depth=1
+	b	.LBB2_47
+.LBB2_45:                               #   in Loop: Header=BB2_26 Depth=1
 	ori	$s6, $zero, 1
-	bne	$s5, $s1, .LBB2_47
-	b	.LBB2_48
-.LBB2_52:                               #   in Loop: Header=BB2_32 Depth=1
+	bne	$s5, $s1, .LBB2_41
+	b	.LBB2_42
+.LBB2_46:                               #   in Loop: Header=BB2_26 Depth=1
 	add.d	$a0, $a1, $s8
-.LBB2_53:                               # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit59
-                                        #   in Loop: Header=BB2_32 Depth=1
+.LBB2_47:                               # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit59
+                                        #   in Loop: Header=BB2_26 Depth=1
 	ldptr.w	$a6, $s0, 2792
 .Ltmp102:                               # EH_LABEL
 	addi.d	$a1, $sp, 484
@@ -1584,20 +1514,20 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd7get_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPlRKSt6vectorIiSaIiEERS9_IPS0_SaISE_EERSB_iSI_bRNS1_18basic_stringstreamIcS4_S5_EERi)
 	jirl	$ra, $ra, 0
 .Ltmp103:                               # EH_LABEL
-# %bb.54:                               #   in Loop: Header=BB2_32 Depth=1
+# %bb.48:                               #   in Loop: Header=BB2_26 Depth=1
 	ld.d	$a0, $s0, 1056
 	ld.d	$s5, $s0, 1040
 	addi.d	$a0, $a0, -32
-	beq	$s5, $a0, .LBB2_61
-# %bb.55:                               #   in Loop: Header=BB2_32 Depth=1
+	beq	$s5, $a0, .LBB2_55
+# %bb.49:                               #   in Loop: Header=BB2_26 Depth=1
 	addi.d	$a0, $s5, 16
 	st.d	$a0, $s5, 0
 	ld.d	$s6, $s3, 8
 	ld.d	$s7, $s3, 0
 	st.d	$s6, $sp, 56
-	bltu	$s6, $fp, .LBB2_58
-# %bb.56:                               # %.noexc.i.i62
-                                        #   in Loop: Header=BB2_32 Depth=1
+	bltu	$s6, $fp, .LBB2_52
+# %bb.50:                               # %.noexc.i.i62
+                                        #   in Loop: Header=BB2_26 Depth=1
 .Ltmp104:                               # EH_LABEL
 	addi.d	$a1, $sp, 56
 	move	$a0, $s5
@@ -1605,31 +1535,31 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp105:                               # EH_LABEL
-# %bb.57:                               # %.noexc63
-                                        #   in Loop: Header=BB2_32 Depth=1
+# %bb.51:                               # %.noexc63
+                                        #   in Loop: Header=BB2_26 Depth=1
 	st.d	$a0, $s5, 0
 	ld.d	$a1, $sp, 56
 	st.d	$a1, $s5, 16
-.LBB2_58:                               # %._crit_edge.i.i.i61
-                                        #   in Loop: Header=BB2_32 Depth=1
-	beqz	$s6, .LBB2_30
-# %bb.59:                               # %._crit_edge.i.i.i61
-                                        #   in Loop: Header=BB2_32 Depth=1
+.LBB2_52:                               # %._crit_edge.i.i.i61
+                                        #   in Loop: Header=BB2_26 Depth=1
+	beqz	$s6, .LBB2_24
+# %bb.53:                               # %._crit_edge.i.i.i61
+                                        #   in Loop: Header=BB2_26 Depth=1
 	ori	$a1, $zero, 1
-	bne	$s6, $a1, .LBB2_29
-# %bb.60:                               #   in Loop: Header=BB2_32 Depth=1
+	bne	$s6, $a1, .LBB2_23
+# %bb.54:                               #   in Loop: Header=BB2_26 Depth=1
 	ld.b	$a1, $s7, 0
 	st.b	$a1, $a0, 0
-	b	.LBB2_30
-.LBB2_61:                               #   in Loop: Header=BB2_32 Depth=1
+	b	.LBB2_24
+.LBB2_55:                               #   in Loop: Header=BB2_26 Depth=1
 .Ltmp106:                               # EH_LABEL
 	addi.d	$a0, $s0, 992
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE16_M_push_back_auxIJRKS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp107:                               # EH_LABEL
-	b	.LBB2_31
-.LBB2_62:
+	b	.LBB2_25
+.LBB2_56:
 .Ltmp96:                                # EH_LABEL
 	addi.d	$a1, $sp, 88
 	addi.d	$a2, $sp, 484
@@ -1638,7 +1568,7 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser13process_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp97:                                # EH_LABEL
-# %bb.63:
+# %bb.57:
 	pcalau12i	$a0, %got_pc_hi20(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$fp, $a0, %got_pc_lo12(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $fp, 0
@@ -1654,13 +1584,13 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	addi.d	$a1, $a1, 16
 	addi.d	$a2, $sp, 200
 	st.d	$a1, $sp, 112
-	beq	$a0, $a2, .LBB2_65
-# %bb.64:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
+	beq	$a0, $a2, .LBB2_59
+# %bb.58:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
 	ld.d	$a1, $sp, 200
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB2_65:                               # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
+.LBB2_59:                               # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	addi.d	$a0, $a0, 16
@@ -1679,29 +1609,29 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 488
-	beqz	$a0, .LBB2_67
-# %bb.66:
+	beqz	$a0, .LBB2_61
+# %bb.60:
 	ld.d	$a1, $sp, 504
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB2_67:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit
+.LBB2_61:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB2_69
-# %bb.68:
+	beqz	$a0, .LBB2_63
+# %bb.62:
 	ld.d	$a1, $sp, 528
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB2_69:                               # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit
+.LBB2_63:                               # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB2_71
-# %bb.70:
+	beqz	$a0, .LBB2_65
+# %bb.64:
 	ld.d	$a1, $sp, 552
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB2_71:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit67
+.LBB2_65:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit67
 	ld.d	$s8, $sp, 568                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 576                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 584                   # 8-byte Folded Reload
@@ -1715,68 +1645,68 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	ld.d	$ra, $sp, 648                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 656
 	ret
-.LBB2_72:                               # %.noexc
+.LBB2_66:                               # %.noexc
 	pcalau12i	$a0, %pc_hi20(.L.str.240)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.240)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
-.LBB2_73:
+.LBB2_67:
 .Ltmp92:                                # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB2_82
-	b	.LBB2_85
-.LBB2_74:
+	beqz	$a0, .LBB2_76
+	b	.LBB2_79
+.LBB2_68:
 .Ltmp89:                                # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB2_83
-	b	.LBB2_86
-.LBB2_75:
+	beqz	$a0, .LBB2_77
+	b	.LBB2_80
+.LBB2_69:
 .Ltmp98:                                # EH_LABEL
-	b	.LBB2_79
-.LBB2_76:
+	b	.LBB2_73
+.LBB2_70:
 .Ltmp95:                                # EH_LABEL
 	move	$fp, $a0
-	b	.LBB2_80
-.LBB2_77:
+	b	.LBB2_74
+.LBB2_71:
 .Ltmp101:                               # EH_LABEL
-	b	.LBB2_79
-.LBB2_78:
+	b	.LBB2_73
+.LBB2_72:
 .Ltmp108:                               # EH_LABEL
-.LBB2_79:
+.LBB2_73:
 	move	$fp, $a0
 	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev)
 	jirl	$ra, $ra, 0
-.LBB2_80:
+.LBB2_74:
 	ld.d	$a0, $sp, 488
-	bnez	$a0, .LBB2_84
-# %bb.81:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit69
+	bnez	$a0, .LBB2_78
+# %bb.75:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit69
 	ld.d	$a0, $sp, 512
-	bnez	$a0, .LBB2_85
-.LBB2_82:                               # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit71
+	bnez	$a0, .LBB2_79
+.LBB2_76:                               # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit71
 	ld.d	$a0, $sp, 536
-	bnez	$a0, .LBB2_86
-.LBB2_83:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit73
+	bnez	$a0, .LBB2_80
+.LBB2_77:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit73
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB2_84:
+.LBB2_78:
 	ld.d	$a1, $sp, 504
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB2_82
-.LBB2_85:
+	beqz	$a0, .LBB2_76
+.LBB2_79:
 	ld.d	$a1, $sp, 528
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB2_83
-.LBB2_86:
+	beqz	$a0, .LBB2_77
+.LBB2_80:
 	ld.d	$a1, $sp, 552
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -20822,10 +20752,14 @@ _ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev: # 
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	move	$fp, $a0
-	xvld	$xr0, $a0, 16
-	xvld	$xr1, $a0, 48
-	xvst	$xr0, $sp, 48
-	xvst	$xr1, $sp, 16
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 32
+	vld	$vr2, $a0, 48
+	vld	$vr3, $a0, 64
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
+	vst	$vr2, $sp, 16
+	vst	$vr3, $sp, 32
 .Ltmp705:                               # EH_LABEL
 	addi.d	$a1, $sp, 48
 	addi.d	$a2, $sp, 16
@@ -20924,10 +20858,14 @@ _ZNSt5dequeIN2PP12RestartblockESaIS1_EED2Ev: # @_ZNSt5dequeIN2PP12RestartblockES
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	move	$fp, $a0
-	xvld	$xr0, $a0, 16
-	xvld	$xr1, $a0, 48
-	xvst	$xr0, $sp, 48
-	xvst	$xr1, $sp, 16
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 32
+	vld	$vr2, $a0, 48
+	vld	$vr3, $a0, 64
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
+	vst	$vr2, $sp, 16
+	vst	$vr3, $sp, 32
 .Ltmp708:                               # EH_LABEL
 	addi.d	$a1, $sp, 48
 	addi.d	$a2, $sp, 16
@@ -23148,19 +23086,19 @@ _ZN2PP11PowerParserD2Ev:                # @_ZN2PP11PowerParserD2Ev
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception16
 # %bb.0:
-	addi.d	$sp, $sp, -208
-	.cfi_def_cfa_offset 208
-	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	.cfi_def_cfa_offset 176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -23215,43 +23153,52 @@ _ZN2PP11PowerParserD2Ev:                # @_ZN2PP11PowerParserD2Ev
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB20_7:
-	xvld	$xr1, $fp, 608
-	xvld	$xr0, $fp, 640
 	addi.d	$a0, $fp, 592
-	xvst	$xr1, $sp, 16                   # 32-byte Folded Spill
-	xvst	$xr1, $sp, 88
-	xvst	$xr0, $sp, 56
+	ld.d	$s2, $fp, 608
+	ld.d	$s3, $fp, 616
+	ld.d	$s0, $fp, 624
+	ld.d	$s1, $fp, 632
+	st.d	$s2, $sp, 48
+	st.d	$s3, $sp, 56
+	vld	$vr0, $fp, 640
+	vld	$vr1, $fp, 656
+	st.d	$s0, $sp, 64
+	st.d	$s1, $sp, 72
+	vst	$vr0, $sp, 16
+	vst	$vr1, $sp, 32
 .Ltmp860:                               # EH_LABEL
-	addi.d	$a1, $sp, 88
-	addi.d	$a2, $sp, 56
+	addi.d	$a1, $sp, 48
+	addi.d	$a2, $sp, 16
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE19_M_destroy_data_auxESt15_Deque_iteratorIS5_RS5_PS5_ESB_)
 	jirl	$ra, $ra, 0
 .Ltmp861:                               # EH_LABEL
 # %bb.8:                                # %.noexc.i
-	ld.d	$s0, $fp, 664
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvpickve2gr.d	$a1, $xr0, 3
-	bgeu	$a1, $s0, .LBB20_10
+	ld.d	$s4, $fp, 664
+	bgeu	$s1, $s4, .LBB20_11
+# %bb.9:                                # %.lr.ph.i.i.i.preheader
+	move	$a1, $s1
 	.p2align	4, , 16
-.LBB20_9:                               # %.lr.ph.i.i.i
+.LBB20_10:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $a1, 8
-	addi.d	$s1, $a1, 8
+	addi.d	$s5, $a1, 8
 	ori	$a1, $zero, 512
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	move	$a1, $s1
-	bltu	$s1, $s0, .LBB20_9
-.LBB20_10:                              # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE5clearEv.exit
+	move	$a1, $s5
+	bltu	$s5, $s4, .LBB20_10
+.LBB20_11:                              # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE5clearEv.exit
+	st.d	$s2, $fp, 640
+	st.d	$s3, $fp, 648
 	ld.d	$a1, $fp, 696
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $fp, 640
+	st.d	$s0, $fp, 656
+	st.d	$s1, $fp, 664
 	addi.d	$a0, $fp, 680
 .Ltmp863:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N2PP8VariableEESt10_Select1stISA_ESt4lessIS5_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E)
 	jirl	$ra, $ra, 0
 .Ltmp864:                               # EH_LABEL
-# %bb.11:                               # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN2PP8VariableESt4lessIS5_ESaISt4pairIKS5_S7_EEE5clearEv.exit
+# %bb.12:                               # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN2PP8VariableESt4lessIS5_ESaISt4pairIKS5_S7_EEE5clearEv.exit
 	addi.d	$a0, $fp, 688
 	st.d	$zero, $fp, 696
 	st.d	$a0, $fp, 704
@@ -23263,74 +23210,86 @@ _ZN2PP11PowerParserD2Ev:                # @_ZN2PP11PowerParserD2Ev
 	pcaddu18i	$ra, %call36(_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N2PP8FunctionEESt10_Select1stISA_ESt4lessIS5_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E)
 	jirl	$ra, $ra, 0
 .Ltmp867:                               # EH_LABEL
-# %bb.12:                               # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN2PP8FunctionESt4lessIS5_ESaISt4pairIKS5_S7_EEE5clearEv.exit
+# %bb.13:                               # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN2PP8FunctionESt4lessIS5_ESaISt4pairIKS5_S7_EEE5clearEv.exit
 	addi.d	$a0, $fp, 784
 	st.d	$zero, $fp, 792
 	st.d	$a0, $fp, 800
-	xvld	$xr0, $fp, 840
 	st.d	$a0, $fp, 808
+	vld	$vr0, $fp, 840
+	vld	$vr1, $fp, 856
 	st.d	$zero, $fp, 816
 	addi.d	$a0, $fp, 824
-	xvst	$xr0, $sp, 88
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
 .Ltmp869:                               # EH_LABEL
-	addi.d	$a1, $sp, 88
+	addi.d	$a1, $sp, 48
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP3CmdESaIS1_EE15_M_erase_at_endESt15_Deque_iteratorIS1_RS1_PS1_E)
 	jirl	$ra, $ra, 0
 .Ltmp870:                               # EH_LABEL
-# %bb.13:                               # %_ZNSt5dequeIN2PP3CmdESaIS1_EE5clearEv.exit
-	xvld	$xr0, $fp, 920
+# %bb.14:                               # %_ZNSt5dequeIN2PP3CmdESaIS1_EE5clearEv.exit
+	vld	$vr0, $fp, 920
+	vld	$vr1, $fp, 936
 	addi.d	$a0, $fp, 904
-	xvst	$xr0, $sp, 88
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
 .Ltmp872:                               # EH_LABEL
-	addi.d	$a1, $sp, 88
+	addi.d	$a1, $sp, 48
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP3CmdESaIS1_EE15_M_erase_at_endESt15_Deque_iteratorIS1_RS1_PS1_E)
 	jirl	$ra, $ra, 0
 .Ltmp873:                               # EH_LABEL
-# %bb.14:                               # %_ZNSt5dequeIN2PP3CmdESaIS1_EE5clearEv.exit3
+# %bb.15:                               # %_ZNSt5dequeIN2PP3CmdESaIS1_EE5clearEv.exit3
 	addi.d	$s8, $fp, 2047
 	addi.d	$s5, $s8, 249
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP8WhenthenESaIS1_EE5clearEv)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2392
-	xvldx	$xr1, $fp, $a0
-	ori	$a0, $zero, 2424
-	xvldx	$xr0, $fp, $a0
 	addi.d	$s6, $s8, 329
-	xvst	$xr1, $sp, 16                   # 32-byte Folded Spill
-	xvst	$xr1, $sp, 88
-	xvst	$xr0, $sp, 56
+	ldptr.d	$s0, $fp, 2392
+	ldptr.d	$s1, $fp, 2400
+	ori	$a0, $zero, 2424
+	vldx	$vr0, $fp, $a0
+	ldptr.d	$s2, $fp, 2408
+	ldptr.d	$s3, $fp, 2416
+	st.d	$s0, $sp, 48
+	vst	$vr0, $sp, 16
+	ori	$a0, $zero, 2440
+	vldx	$vr0, $fp, $a0
+	st.d	$s1, $sp, 56
+	st.d	$s2, $sp, 64
+	st.d	$s3, $sp, 72
+	vst	$vr0, $sp, 32
 .Ltmp875:                               # EH_LABEL
-	addi.d	$a1, $sp, 88
-	addi.d	$a2, $sp, 56
+	addi.d	$a1, $sp, 48
+	addi.d	$a2, $sp, 16
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP12RestartblockESaIS1_EE19_M_destroy_data_auxESt15_Deque_iteratorIS1_RS1_PS1_ES7_)
 	jirl	$ra, $ra, 0
 .Ltmp876:                               # EH_LABEL
-# %bb.15:                               # %.noexc.i4
-	ldptr.d	$s0, $fp, 2448
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvpickve2gr.d	$a1, $xr0, 3
-	bgeu	$a1, $s0, .LBB20_17
+# %bb.16:                               # %.noexc.i4
+	ldptr.d	$s4, $fp, 2448
+	bgeu	$s3, $s4, .LBB20_19
+# %bb.17:                               # %.lr.ph.i.i.i5.preheader
+	move	$a1, $s3
 	.p2align	4, , 16
-.LBB20_16:                              # %.lr.ph.i.i.i5
+.LBB20_18:                              # %.lr.ph.i.i.i5
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $a1, 8
-	addi.d	$s1, $a1, 8
+	addi.d	$s7, $a1, 8
 	ori	$a1, $zero, 520
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	move	$a1, $s1
-	bltu	$s1, $s0, .LBB20_16
-.LBB20_17:                              # %_ZNSt5dequeIN2PP12RestartblockESaIS1_EE5clearEv.exit
-	ori	$a0, $zero, 2424
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvstx	$xr0, $fp, $a0
-	addi.d	$s7, $sp, 104
-	st.d	$s7, $sp, 88
+	move	$a1, $s7
+	bltu	$s7, $s4, .LBB20_18
+.LBB20_19:                              # %_ZNSt5dequeIN2PP12RestartblockESaIS1_EE5clearEv.exit
+	stptr.d	$s0, $fp, 2424
+	stptr.d	$s1, $fp, 2432
+	stptr.d	$s2, $fp, 2440
+	stptr.d	$s3, $fp, 2448
+	addi.d	$s7, $sp, 64
+	st.d	$s7, $sp, 48
 	ld.d	$a2, $fp, 1576
-	st.d	$zero, $sp, 96
-	st.b	$zero, $sp, 104
+	st.d	$zero, $sp, 56
+	st.b	$zero, $sp, 64
 	addi.d	$a0, $fp, 1568
 .Ltmp878:                               # EH_LABEL
 	move	$a1, $zero
@@ -23339,7 +23298,7 @@ _ZN2PP11PowerParserD2Ev:                # @_ZN2PP11PowerParserD2Ev
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEmmPKcm)
 	jirl	$ra, $ra, 0
 .Ltmp879:                               # EH_LABEL
-# %bb.18:                               # %.noexc10
+# %bb.20:                               # %.noexc10
 	ld.wu	$a2, $fp, 1560
 	addi.d	$a0, $fp, 1496
 	ld.d	$a3, $fp, 1576
@@ -23352,26 +23311,26 @@ _ZN2PP11PowerParserD2Ev:                # @_ZN2PP11PowerParserD2Ev
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEE7_M_syncEPcmm)
 	jirl	$ra, $ra, 0
 .Ltmp881:                               # EH_LABEL
-# %bb.19:                               # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEE3strERKNS_12basic_stringIcS2_S3_EE.exit
-	ld.d	$a0, $sp, 88
-	beq	$a0, $s7, .LBB20_21
-# %bb.20:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-	ld.d	$a1, $sp, 104
+# %bb.21:                               # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEE3strERKNS_12basic_stringIcS2_S3_EE.exit
+	ld.d	$a0, $sp, 48
+	beq	$a0, $s7, .LBB20_23
+# %bb.22:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+	ld.d	$a1, $sp, 64
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB20_21:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
+.LBB20_23:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
 	ldptr.d	$a0, $fp, 2712
-	beqz	$a0, .LBB20_27
-# %bb.22:
+	beqz	$a0, .LBB20_29
+# %bb.24:
 	ldptr.d	$s0, $fp, 2784
 	ldptr.d	$a1, $fp, 2752
 	addi.d	$a2, $s0, 8
-	bgeu	$a1, $a2, .LBB20_26
-# %bb.23:                               # %.lr.ph.i.i.i12.preheader
+	bgeu	$a1, $a2, .LBB20_28
+# %bb.25:                               # %.lr.ph.i.i.i12.preheader
 	addi.d	$a1, $a1, -8
 	.p2align	4, , 16
-.LBB20_24:                              # %.lr.ph.i.i.i12
+.LBB20_26:                              # %.lr.ph.i.i.i12
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $a1, 8
 	addi.d	$s1, $a1, 8
@@ -23379,26 +23338,26 @@ _ZN2PP11PowerParserD2Ev:                # @_ZN2PP11PowerParserD2Ev
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	move	$a1, $s1
-	bltu	$s1, $s0, .LBB20_24
-# %bb.25:                               # %_ZNSt11_Deque_baseIiSaIiEE16_M_destroy_nodesEPPiS3_.exit.loopexit.i.i
+	bltu	$s1, $s0, .LBB20_26
+# %bb.27:                               # %_ZNSt11_Deque_baseIiSaIiEE16_M_destroy_nodesEPPiS3_.exit.loopexit.i.i
 	ldptr.d	$a0, $fp, 2712
-.LBB20_26:                              # %_ZNSt11_Deque_baseIiSaIiEE16_M_destroy_nodesEPPiS3_.exit.i.i
+.LBB20_28:                              # %_ZNSt11_Deque_baseIiSaIiEE16_M_destroy_nodesEPPiS3_.exit.i.i
 	ldptr.d	$a1, $fp, 2720
 	slli.d	$a1, $a1, 3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB20_27:                              # %_ZNSt5dequeIiSaIiEED2Ev.exit
+.LBB20_29:                              # %_ZNSt5dequeIiSaIiEED2Ev.exit
 	ldptr.d	$a0, $fp, 2632
-	beqz	$a0, .LBB20_33
-# %bb.28:
+	beqz	$a0, .LBB20_35
+# %bb.30:
 	ldptr.d	$s0, $fp, 2704
 	ldptr.d	$a1, $fp, 2672
 	addi.d	$a2, $s0, 8
-	bgeu	$a1, $a2, .LBB20_32
-# %bb.29:                               # %.lr.ph.i.i.i15.preheader
+	bgeu	$a1, $a2, .LBB20_34
+# %bb.31:                               # %.lr.ph.i.i.i15.preheader
 	addi.d	$a1, $a1, -8
 	.p2align	4, , 16
-.LBB20_30:                              # %.lr.ph.i.i.i15
+.LBB20_32:                              # %.lr.ph.i.i.i15
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $a1, 8
 	addi.d	$s1, $a1, 8
@@ -23406,26 +23365,26 @@ _ZN2PP11PowerParserD2Ev:                # @_ZN2PP11PowerParserD2Ev
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	move	$a1, $s1
-	bltu	$s1, $s0, .LBB20_30
-# %bb.31:                               # %_ZNSt11_Deque_baseIbSaIbEE16_M_destroy_nodesEPPbS3_.exit.loopexit.i.i
+	bltu	$s1, $s0, .LBB20_32
+# %bb.33:                               # %_ZNSt11_Deque_baseIbSaIbEE16_M_destroy_nodesEPPbS3_.exit.loopexit.i.i
 	ldptr.d	$a0, $fp, 2632
-.LBB20_32:                              # %_ZNSt11_Deque_baseIbSaIbEE16_M_destroy_nodesEPPbS3_.exit.i.i
+.LBB20_34:                              # %_ZNSt11_Deque_baseIbSaIbEE16_M_destroy_nodesEPPbS3_.exit.i.i
 	ldptr.d	$a1, $fp, 2640
 	slli.d	$a1, $a1, 3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB20_33:                              # %_ZNSt5dequeIbSaIbEED2Ev.exit
+.LBB20_35:                              # %_ZNSt5dequeIbSaIbEED2Ev.exit
 	ldptr.d	$a0, $fp, 2544
-	beqz	$a0, .LBB20_39
-# %bb.34:
+	beqz	$a0, .LBB20_41
+# %bb.36:
 	ldptr.d	$s0, $fp, 2616
 	ldptr.d	$a1, $fp, 2584
 	addi.d	$a2, $s0, 8
-	bgeu	$a1, $a2, .LBB20_38
-# %bb.35:                               # %.lr.ph.i.i.i20.preheader
+	bgeu	$a1, $a2, .LBB20_40
+# %bb.37:                               # %.lr.ph.i.i.i20.preheader
 	addi.d	$a1, $a1, -8
 	.p2align	4, , 16
-.LBB20_36:                              # %.lr.ph.i.i.i20
+.LBB20_38:                              # %.lr.ph.i.i.i20
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $a1, 8
 	addi.d	$s1, $a1, 8
@@ -23433,15 +23392,15 @@ _ZN2PP11PowerParserD2Ev:                # @_ZN2PP11PowerParserD2Ev
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	move	$a1, $s1
-	bltu	$s1, $s0, .LBB20_36
-# %bb.37:                               # %_ZNSt11_Deque_baseIbSaIbEE16_M_destroy_nodesEPPbS3_.exit.loopexit.i.i22
+	bltu	$s1, $s0, .LBB20_38
+# %bb.39:                               # %_ZNSt11_Deque_baseIbSaIbEE16_M_destroy_nodesEPPbS3_.exit.loopexit.i.i22
 	ldptr.d	$a0, $fp, 2544
-.LBB20_38:                              # %_ZNSt11_Deque_baseIbSaIbEE16_M_destroy_nodesEPPbS3_.exit.i.i19
+.LBB20_40:                              # %_ZNSt11_Deque_baseIbSaIbEE16_M_destroy_nodesEPPbS3_.exit.i.i19
 	ldptr.d	$a1, $fp, 2552
 	slli.d	$a1, $a1, 3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB20_39:                              # %_ZNSt5dequeIbSaIbEED2Ev.exit24
+.LBB20_41:                              # %_ZNSt5dequeIbSaIbEED2Ev.exit24
 	addi.d	$a0, $s8, 417
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev)
 	jirl	$ra, $ra, 0
@@ -23453,13 +23412,13 @@ _ZN2PP11PowerParserD2Ev:                # @_ZN2PP11PowerParserD2Ev
 	jirl	$ra, $ra, 0
 	ldptr.d	$a0, $fp, 2264
 	addi.d	$a1, $s8, 233
-	beq	$a0, $a1, .LBB20_41
-# %bb.40:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i25
+	beq	$a0, $a1, .LBB20_43
+# %bb.42:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i25
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB20_41:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit27
+.LBB20_43:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit27
 	addi.d	$s0, $fp, 1472
 	addi.d	$s4, $fp, 1864
 	pcalau12i	$a0, %got_pc_hi20(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
@@ -23477,13 +23436,13 @@ _ZN2PP11PowerParserD2Ev:                # @_ZN2PP11PowerParserD2Ev
 	addi.d	$s8, $a1, 16
 	addi.d	$a1, $fp, 1976
 	st.d	$s8, $fp, 1888
-	beq	$a0, $a1, .LBB20_43
-# %bb.42:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
+	beq	$a0, $a1, .LBB20_45
+# %bb.44:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB20_43:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
+.LBB20_45:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	addi.d	$s2, $a0, 16
@@ -23507,13 +23466,13 @@ _ZN2PP11PowerParserD2Ev:                # @_ZN2PP11PowerParserD2Ev
 	st.d	$s5, $fp, 1488
 	addi.d	$a1, $fp, 1584
 	st.d	$s8, $fp, 1496
-	beq	$a0, $a1, .LBB20_45
-# %bb.44:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i28
+	beq	$a0, $a1, .LBB20_47
+# %bb.46:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i28
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB20_45:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit30
+.LBB20_47:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit30
 	st.d	$s2, $fp, 1496
 	addi.d	$a0, $fp, 1552
 	pcaddu18i	$ra, %call36(_ZNSt6localeD1Ev)
@@ -23533,13 +23492,14 @@ _ZN2PP11PowerParserD2Ev:                # @_ZN2PP11PowerParserD2Ev
 	st.d	$s5, $fp, 1096
 	addi.d	$a1, $fp, 1192
 	st.d	$s8, $fp, 1104
-	beq	$a0, $a1, .LBB20_47
-# %bb.46:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i31
+	addi.d	$s4, $fp, 776
+	beq	$a0, $a1, .LBB20_49
+# %bb.48:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i31
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB20_47:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit33
+.LBB20_49:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit33
 	st.d	$s2, $fp, 1104
 	addi.d	$a0, $fp, 1160
 	pcaddu18i	$ra, %call36(_ZNSt6localeD1Ev)
@@ -23562,100 +23522,100 @@ _ZN2PP11PowerParserD2Ev:                # @_ZN2PP11PowerParserD2Ev
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 792
 .Ltmp883:                               # EH_LABEL
-	addi.d	$a0, $fp, 776
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N2PP8FunctionEESt10_Select1stISA_ESt4lessIS5_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E)
 	jirl	$ra, $ra, 0
 .Ltmp884:                               # EH_LABEL
-# %bb.48:                               # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN2PP8FunctionESt4lessIS5_ESaISt4pairIKS5_S7_EEED2Ev.exit
+	addi.d	$s0, $fp, 592
+# %bb.50:                               # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN2PP8FunctionESt4lessIS5_ESaISt4pairIKS5_S7_EEED2Ev.exit
 	ld.d	$a1, $fp, 744
 	addi.d	$a0, $fp, 728
 .Ltmp886:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSt8_Rb_treeIiSt4pairIKiNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEESt10_Select1stIS8_ESt4lessIiESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E)
 	jirl	$ra, $ra, 0
 .Ltmp887:                               # EH_LABEL
-	addi.d	$s0, $fp, 592
-	addi.d	$a0, $fp, 680
-# %bb.49:                               # %_ZNSt3mapIiNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4lessIiESaISt4pairIKiS5_EEED2Ev.exit
+# %bb.51:                               # %_ZNSt3mapIiNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4lessIiESaISt4pairIKiS5_EEED2Ev.exit
 	ld.d	$a1, $fp, 696
 .Ltmp889:                               # EH_LABEL
+	addi.d	$a0, $fp, 680
 	pcaddu18i	$ra, %call36(_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N2PP8VariableEESt10_Select1stISA_ESt4lessIS5_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E)
 	jirl	$ra, $ra, 0
 .Ltmp890:                               # EH_LABEL
-# %bb.50:                               # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN2PP8VariableESt4lessIS5_ESaISt4pairIKS5_S7_EEED2Ev.exit
+# %bb.52:                               # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN2PP8VariableESt4lessIS5_ESaISt4pairIKS5_S7_EEED2Ev.exit
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 560
 	addi.d	$a1, $fp, 576
-	beq	$a0, $a1, .LBB20_52
-# %bb.51:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i34
+	beq	$a0, $a1, .LBB20_54
+# %bb.53:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i34
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB20_52:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit36
+.LBB20_54:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit36
 	ld.d	$a0, $fp, 528
 	addi.d	$a1, $fp, 544
-	beq	$a0, $a1, .LBB20_54
-# %bb.53:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i37
+	beq	$a0, $a1, .LBB20_56
+# %bb.55:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i37
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB20_54:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit39
+.LBB20_56:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit39
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 208
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
-.LBB20_55:
+.LBB20_57:
 .Ltmp891:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB20_56:
+.LBB20_58:
 .Ltmp888:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB20_57:
+.LBB20_59:
 .Ltmp885:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB20_58:
+.LBB20_60:
 .Ltmp877:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB20_59:
+.LBB20_61:
 .Ltmp874:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB20_60:
+.LBB20_62:
 .Ltmp871:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB20_61:
+.LBB20_63:
 .Ltmp868:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB20_62:
+.LBB20_64:
 .Ltmp865:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB20_63:
+.LBB20_65:
 .Ltmp862:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB20_64:
+.LBB20_66:
 .Ltmp882:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -23789,6 +23749,7 @@ _ZNSt5dequeIN2PP8WhenthenESaIS1_EE5clearEv: # @_ZNSt5dequeIN2PP8WhenthenESaIS1_E
 	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -23797,20 +23758,22 @@ _ZNSt5dequeIN2PP8WhenthenESaIS1_EE5clearEv: # @_ZNSt5dequeIN2PP8WhenthenESaIS1_E
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
+	.cfi_offset 29, -72
 	move	$fp, $a0
-	xvld	$xr0, $a0, 16
-	ld.d	$s2, $a0, 16
-	ld.d	$s0, $a0, 48
-	ld.d	$s4, $a0, 72
-	ld.d	$s1, $a0, 56
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
-	xvpickve2gr.d	$s3, $xr0, 3
-	addi.d	$s5, $s3, 8
-	bgeu	$s5, $s4, .LBB22_3
+	vld	$vr0, $a0, 16
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	ld.d	$s3, $a0, 16
+	ld.d	$s0, $a0, 32
+	ld.d	$s4, $a0, 40
+	ld.d	$s1, $a0, 48
+	ld.d	$s5, $a0, 72
+	ld.d	$s2, $a0, 56
+	addi.d	$s6, $s4, 8
+	bgeu	$s6, $s5, .LBB22_3
 	.p2align	4, , 16
 .LBB22_1:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s5, 0
+	ld.d	$a0, $s6, 0
 	addi.d	$a1, $a0, 568
 .Ltmp892:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSt12_Destroy_auxILb0EE9__destroyIPN2PP8WhenthenEEEvT_S5_)
@@ -23818,44 +23781,48 @@ _ZNSt5dequeIN2PP8WhenthenESaIS1_EE5clearEv: # @_ZNSt5dequeIN2PP8WhenthenESaIS1_E
 .Ltmp893:                               # EH_LABEL
 # %bb.2:                                # %.noexc
                                         #   in Loop: Header=BB22_1 Depth=1
-	addi.d	$s5, $s5, 8
-	bltu	$s5, $s4, .LBB22_1
+	addi.d	$s6, $s6, 8
+	bltu	$s6, $s5, .LBB22_1
 .LBB22_3:                               # %._crit_edge.i.i.i
-	beq	$s3, $s4, .LBB22_5
+	beq	$s4, $s5, .LBB22_5
 # %bb.4:
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvpickve2gr.d	$a1, $xr0, 2
 .Ltmp895:                               # EH_LABEL
-	move	$a0, $s2
+	move	$a0, $s3
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZNSt12_Destroy_auxILb0EE9__destroyIPN2PP8WhenthenEEEvT_S5_)
 	jirl	$ra, $ra, 0
 .Ltmp896:                               # EH_LABEL
 	b	.LBB22_6
 .LBB22_5:
-	move	$s1, $s2
+	move	$s2, $s3
 .LBB22_6:                               # %_ZNSt5dequeIN2PP8WhenthenESaIS1_EE15_M_destroy_dataESt15_Deque_iteratorIS1_RS1_PS1_ES7_RKS2_.exit.i
 .Ltmp897:                               # EH_LABEL
-	move	$a0, $s1
-	move	$a1, $s0
+	move	$a0, $s2
+	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZNSt12_Destroy_auxILb0EE9__destroyIPN2PP8WhenthenEEEvT_S5_)
 	jirl	$ra, $ra, 0
 .Ltmp898:                               # EH_LABEL
 # %bb.7:                                # %.noexc2
-	ld.d	$s0, $fp, 72
-	bgeu	$s3, $s0, .LBB22_9
+	ld.d	$s1, $fp, 72
+	bgeu	$s4, $s1, .LBB22_10
+# %bb.8:                                # %.lr.ph.i.i.preheader
+	move	$a1, $s4
 	.p2align	4, , 16
-.LBB22_8:                               # %.lr.ph.i.i
+.LBB22_9:                               # %.lr.ph.i.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s3, 8
-	addi.d	$s1, $s3, 8
+	ld.d	$a0, $a1, 8
+	addi.d	$s2, $a1, 8
 	ori	$a1, $zero, 568
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	move	$s3, $s1
-	bltu	$s1, $s0, .LBB22_8
-.LBB22_9:                               # %.loopexit
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $fp, 48
+	move	$a1, $s2
+	bltu	$s2, $s1, .LBB22_9
+.LBB22_10:                              # %.loopexit
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $fp, 48
+	st.d	$s0, $fp, 64
+	st.d	$s4, $fp, 72
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
@@ -23866,11 +23833,11 @@ _ZNSt5dequeIN2PP8WhenthenESaIS1_EE5clearEv: # @_ZNSt5dequeIN2PP8WhenthenESaIS1_E
 	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 112
 	ret
-.LBB22_10:                              # %.loopexit.split-lp
+.LBB22_11:                              # %.loopexit.split-lp
 .Ltmp899:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB22_11:                              # %.loopexit4
+.LBB22_12:                              # %.loopexit4
 .Ltmp894:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -24863,7 +24830,7 @@ _ZN2PP11PowerParser16broadcast_bufferERNSt7__cxx1112basic_stringIcSt11char_trait
 	ld.w	$s2, $sp, 12
 	bltz	$s2, .LBB24_28
 # %bb.5:                                # %_ZNSt6vectorIcSaIcEE17_S_check_init_lenEmRKS0_.exit.i
-	beqz	$s2, .LBB24_11
+	beqz	$s2, .LBB24_14
 # %bb.6:                                # %_ZNSt6vectorIcSaIcEEC2EmRKcRKS0_.exit
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -24886,51 +24853,51 @@ _ZN2PP11PowerParser16broadcast_bufferERNSt7__cxx1112basic_stringIcSt11char_trait
 	bltu	$s2, $a4, .LBB24_19
 # %bb.8:                                # %iter.check
 	sub.d	$a5, $s1, $a1
-	ori	$a4, $zero, 64
+	ori	$a4, $zero, 32
 	bltu	$a5, $a4, .LBB24_19
 # %bb.9:                                # %vector.main.loop.iter.check
-	bgeu	$s2, $a4, .LBB24_12
+	bgeu	$s2, $a4, .LBB24_15
 # %bb.10:
 	move	$a3, $zero
-	b	.LBB24_16
-.LBB24_11:                              # %_ZNSt6vectorIcSaIcEEC2EmRKcRKS0_.exit.thread
-	ld.d	$a0, $s0, 520
-	move	$s1, $zero
-	move	$s3, $zero
-	b	.LBB24_20
-.LBB24_12:                              # %vector.ph
-	move	$a5, $zero
-	andi	$a4, $a2, 48
-	bstrpick.d	$a3, $a2, 30, 6
-	slli.d	$a3, $a3, 6
-	.p2align	4, , 16
-.LBB24_13:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvldx	$xr0, $a1, $a5
-	add.d	$a6, $a1, $a5
-	xvld	$xr1, $a6, 32
-	add.d	$a6, $s1, $a5
-	xvstx	$xr0, $s1, $a5
-	addi.d	$a5, $a5, 64
-	xvst	$xr1, $a6, 32
-	bne	$a3, $a5, .LBB24_13
-# %bb.14:                               # %middle.block
-	beq	$a3, $a2, .LBB24_20
-# %bb.15:                               # %vec.epilog.iter.check
-	beqz	$a4, .LBB24_19
-.LBB24_16:                              # %vec.epilog.ph
+.LBB24_11:                              # %vec.epilog.ph
 	move	$a4, $a3
 	bstrpick.d	$a3, $a2, 30, 4
 	slli.d	$a3, $a3, 4
 	.p2align	4, , 16
-.LBB24_17:                              # %vec.epilog.vector.body
+.LBB24_12:                              # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vldx	$vr0, $a1, $a4
 	vstx	$vr0, $s1, $a4
 	addi.d	$a4, $a4, 16
-	bne	$a3, $a4, .LBB24_17
-# %bb.18:                               # %vec.epilog.middle.block
+	bne	$a3, $a4, .LBB24_12
+# %bb.13:                               # %vec.epilog.middle.block
+	bne	$a3, $a2, .LBB24_19
+	b	.LBB24_20
+.LBB24_14:                              # %_ZNSt6vectorIcSaIcEEC2EmRKcRKS0_.exit.thread
+	ld.d	$a0, $s0, 520
+	move	$s1, $zero
+	move	$s3, $zero
+	b	.LBB24_20
+.LBB24_15:                              # %vector.ph
+	move	$a5, $zero
+	andi	$a4, $a2, 16
+	bstrpick.d	$a3, $a2, 30, 5
+	slli.d	$a3, $a3, 5
+	.p2align	4, , 16
+.LBB24_16:                              # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vldx	$vr0, $a1, $a5
+	add.d	$a6, $a1, $a5
+	vld	$vr1, $a6, 16
+	add.d	$a6, $s1, $a5
+	vstx	$vr0, $s1, $a5
+	addi.d	$a5, $a5, 32
+	vst	$vr1, $a6, 16
+	bne	$a3, $a5, .LBB24_16
+# %bb.17:                               # %middle.block
 	beq	$a3, $a2, .LBB24_20
+# %bb.18:                               # %vec.epilog.iter.check
+	bnez	$a4, .LBB24_11
 	.p2align	4, , 16
 .LBB24_19:                              # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -25063,22 +25030,11 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	addi.d	$sp, $sp, -368
-	.cfi_def_cfa_offset 2400
-	st.d	$a2, $sp, 336                   # 8-byte Folded Spill
-	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -336
+	.cfi_def_cfa_offset 2368
+	st.d	$a2, $sp, 304                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
 	move	$a1, $a0
-	ori	$a0, $zero, 2296
-	add.d	$a0, $sp, $a0
-	ori	$a2, $zero, 2280
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	ori	$a0, $zero, 2288
-	add.d	$a0, $sp, $a0
-	st.d	$zero, $a0, 0
-	ori	$a0, $zero, 2296
-	add.d	$a0, $sp, $a0
-	st.b	$zero, $a0, 0
 	ori	$a0, $zero, 2264
 	add.d	$a0, $sp, $a0
 	ori	$a2, $zero, 2248
@@ -25090,44 +25046,53 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	ori	$a0, $zero, 2264
 	add.d	$a0, $sp, $a0
 	st.b	$zero, $a0, 0
+	ori	$a0, $zero, 2232
+	add.d	$a0, $sp, $a0
+	ori	$a2, $zero, 2216
+	add.d	$a2, $sp, $a2
+	st.d	$a0, $a2, 0
+	ori	$a0, $zero, 2224
+	add.d	$a0, $sp, $a0
+	st.d	$zero, $a0, 0
+	ori	$a0, $zero, 2232
+	add.d	$a0, $sp, $a0
+	st.b	$zero, $a0, 0
 	addi.d	$a0, $a1, 592
-	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
-	st.d	$zero, $sp, 360                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 320                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 328                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 288                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 32                  # 8-byte Folded Spill
 	ld.d	$a2, $a0, 16
-	st.d	$a2, $sp, 304                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 272                   # 8-byte Folded Spill
 	ld.d	$a2, $a0, 24
-	st.d	$a2, $sp, 312                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 280                   # 8-byte Folded Spill
 	ld.d	$a2, $a0, 32
-	st.d	$a2, $sp, 224                   # 8-byte Folded Spill
-	ld.d	$a2, $a0, 40
-	st.d	$a2, $sp, 216                   # 8-byte Folded Spill
-	ld.d	$a2, $a0, 8
 	st.d	$a2, $sp, 208                   # 8-byte Folded Spill
-	ld.d	$a2, $a0, 48
+	ld.d	$a2, $a0, 40
 	st.d	$a2, $sp, 200                   # 8-byte Folded Spill
+	ld.d	$a2, $a0, 8
+	st.d	$a2, $sp, 192                   # 8-byte Folded Spill
+	ld.d	$a2, $a0, 48
+	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
 	ld.d	$a2, $a0, 0
-	st.d	$a2, $sp, 264                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 248                   # 8-byte Folded Spill
 	ld.d	$a2, $a0, 64
-	st.d	$a2, $sp, 256                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 240                   # 8-byte Folded Spill
 	ld.d	$a0, $a0, 72
-	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, -1
-	st.d	$a0, $sp, 344                   # 8-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 272                  # 32-byte Folded Spill
+	st.d	$a0, $sp, 312                   # 8-byte Folded Spill
 	lu12i.w	$a0, 390982
 	ori	$a0, $a0, 1395
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 176                  # 16-byte Folded Spill
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	vst	$vr0, $sp, 256                  # 16-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	lu32i.d	$a0, 290409
 	lu52i.d	$a0, $a0, 1622
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	lu12i.w	$a0, 398885
 	ori	$a2, $a0, 3960
 	lu32i.d	$a2, -39565
@@ -25135,60 +25100,60 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	ori	$a0, $a0, 865
 	lu32i.d	$a0, 157050
 	lu52i.d	$a0, $a0, 1783
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	lu12i.w	$a0, 452183
 	ori	$a0, $a0, 863
 	lu32i.d	$a0, 289139
 	lu52i.d	$a0, $a0, 1687
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	lu12i.w	$a0, 472806
 	ori	$a0, $a0, 2399
 	lu32i.d	$a0, 224869
 	lu52i.d	$a0, $a0, 1687
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	lu12i.w	$a0, 415590
 	ori	$a0, $a0, 2420
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	lu12i.w	$a0, 390983
 	ori	$a0, $a0, 1392
 	lu32i.d	$a0, 358501
 	lu52i.d	$a0, $a0, 1526
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	lu12i.w	$a0, 472695
 	ori	$a0, $a0, 609
 	lu32i.d	$a0, 354399
 	lu52i.d	$a0, $a0, 1830
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	lu12i.w	$a0, 443958
 	ori	$a0, $a0, 3689
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	lu12i.w	$a0, 415303
 	ori	$a0, $a0, 1388
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	addi.d	$a0, $a1, 776
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
 	addi.d	$a0, $a1, 680
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	addi.d	$a0, $a1, 824
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	addi.d	$s5, $sp, 480
-	addi.d	$a0, $a1, 728
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 328                   # 8-byte Folded Spill
+	addi.d	$s5, $sp, 448
+	addi.d	$a0, $a1, 728
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 296                   # 8-byte Folded Spill
 	addi.d	$a0, $a1, 736
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	ori	$s6, $zero, 15
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
 	lu52i.d	$a0, $a2, 1957
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	lu12i.w	$a0, 6
 	ori	$a0, $a0, 1390
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	b	.LBB25_2
 	.p2align	4, , 16
 .LBB25_1:                               # %_ZN2PP11PowerParser23get_sc_line_from_stringERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_Ri.exit.thread
                                         #   in Loop: Header=BB25_2 Depth=1
-	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 320                   # 8-byte Folded Reload
 	blt	$a0, $s3, .LBB25_403
 .LBB25_2:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB25_8 Depth 2
@@ -25198,13 +25163,13 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #       Child Loop BB25_96 Depth 3
                                         #       Child Loop BB25_130 Depth 3
                                         #       Child Loop BB25_245 Depth 3
-	ori	$a0, $zero, 2288
+	ori	$a0, $zero, 2256
 	add.d	$a0, $sp, $a0
 	ld.d	$a2, $a0, 0
 .Ltmp1043:                              # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a3, $a0, %pc_lo12(.L.str)
-	ori	$a0, $zero, 2280
+	ori	$a0, $zero, 2248
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	move	$a4, $zero
@@ -25213,9 +25178,9 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1044:                              # EH_LABEL
 # %bb.3:                                # %.noexc126
                                         #   in Loop: Header=BB25_2 Depth=1
-	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
 	ld.w	$fp, $a0, 8
-	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	bge	$a0, $fp, .LBB25_349
 # %bb.4:                                # %.preheader.i
                                         #   in Loop: Header=BB25_2 Depth=1
@@ -25224,28 +25189,28 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	.p2align	4, , 16
 .LBB25_5:                               # %.noexc127
                                         #   in Loop: Header=BB25_8 Depth=2
-	ori	$a0, $zero, 2280
+	ori	$a0, $zero, 2248
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 .LBB25_6:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEpLEc.exit.i
                                         #   in Loop: Header=BB25_8 Depth=2
 	stx.b	$s3, $a0, $s0
-	ori	$a0, $zero, 2280
+	ori	$a0, $zero, 2248
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2288
+	ori	$a1, $zero, 2256
 	add.d	$a1, $sp, $a1
 	st.d	$s4, $a1, 0
 	stx.b	$zero, $a0, $s4
 .LBB25_7:                               #   in Loop: Header=BB25_8 Depth=2
-	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	addi.w	$a0, $a0, 1
 	addi.d	$s1, $s1, 1
 	beq	$fp, $a0, .LBB25_12
 .LBB25_8:                               #   Parent Loop BB25_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.d	$a0, $sp, 360                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 328                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ldx.bu	$s3, $a0, $s1
 	ori	$a0, $zero, 13
@@ -25255,17 +25220,17 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	beq	$s3, $a0, .LBB25_13
 # %bb.10:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE8capacityEv.exit.i.i.i
                                         #   in Loop: Header=BB25_8 Depth=2
-	ori	$a0, $zero, 2288
+	ori	$a0, $zero, 2256
 	add.d	$a0, $sp, $a0
 	ld.d	$s0, $a0, 0
-	ori	$a0, $zero, 2280
+	ori	$a0, $zero, 2248
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2296
+	ori	$a1, $zero, 2264
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$s4, $s0, 1
-	ori	$a2, $zero, 2296
+	ori	$a2, $zero, 2264
 	add.d	$a2, $sp, $a2
 	xor	$a2, $a0, $a2
 	sltui	$a2, $a2, 1
@@ -25275,7 +25240,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	bgeu	$a1, $s4, .LBB25_6
 # %bb.11:                               #   in Loop: Header=BB25_8 Depth=2
 .Ltmp1060:                              # EH_LABEL
-	ori	$a0, $zero, 2280
+	ori	$a0, $zero, 2248
 	add.d	$a0, $sp, $a0
 	ori	$a4, $zero, 1
 	move	$a1, $s0
@@ -25287,16 +25252,16 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB25_5
 	.p2align	4, , 16
 .LBB25_12:                              #   in Loop: Header=BB25_2 Depth=1
-	st.d	$fp, $sp, 360                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 328                   # 8-byte Folded Spill
 	b	.LBB25_14
 	.p2align	4, , 16
 .LBB25_13:                              #   in Loop: Header=BB25_2 Depth=1
-	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	addi.w	$a0, $a0, 1
-	st.d	$a0, $sp, 360                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 328                   # 8-byte Folded Spill
 .LBB25_14:                              # %_ZN2PP11PowerParser20get_line_from_stringERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_Ri.exit
                                         #   in Loop: Header=BB25_2 Depth=1
-	ld.d	$fp, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 296                   # 8-byte Folded Reload
 	ld.w	$a0, $fp, 672
 	ld.d	$a1, $fp, 656
 	ld.d	$s0, $fp, 640
@@ -25308,18 +25273,18 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 # %bb.15:                               #   in Loop: Header=BB25_2 Depth=1
 	addi.d	$a0, $s0, 16
 	st.d	$a0, $s0, 0
-	ori	$a1, $zero, 2288
+	ori	$a1, $zero, 2256
 	add.d	$a1, $sp, $a1
 	ld.d	$s4, $a1, 0
-	ori	$a1, $zero, 2280
+	ori	$a1, $zero, 2248
 	add.d	$a1, $sp, $a1
 	ld.d	$s8, $a1, 0
-	st.d	$s4, $sp, 1416
+	st.d	$s4, $sp, 1384
 	bltu	$s4, $a2, .LBB25_18
 # %bb.16:                               # %.noexc.i.i
                                         #   in Loop: Header=BB25_2 Depth=1
 .Ltmp1063:                              # EH_LABEL
-	addi.d	$a1, $sp, 1416
+	addi.d	$a1, $sp, 1384
 	move	$a0, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
@@ -25328,9 +25293,9 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 # %bb.17:                               # %.noexc129
                                         #   in Loop: Header=BB25_2 Depth=1
 	st.d	$a0, $s0, 0
-	ld.d	$a1, $sp, 1416
+	ld.d	$a1, $sp, 1384
 	st.d	$a1, $s0, 16
-	ld.d	$fp, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 296                   # 8-byte Folded Reload
 .LBB25_18:                              # %._crit_edge.i.i.i
                                         #   in Loop: Header=BB25_2 Depth=1
 	beqz	$s4, .LBB25_23
@@ -25345,9 +25310,9 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	.p2align	4, , 16
 .LBB25_21:                              #   in Loop: Header=BB25_2 Depth=1
 .Ltmp1065:                              # EH_LABEL
-	ori	$a0, $zero, 2280
+	ori	$a0, $zero, 2248
 	add.d	$a1, $sp, $a0
-	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE16_M_push_back_auxIJRKS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp1066:                              # EH_LABEL
@@ -25360,7 +25325,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .LBB25_23:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
                                         #   in Loop: Header=BB25_2 Depth=1
-	ld.d	$a0, $sp, 1416
+	ld.d	$a0, $sp, 1384
 	ld.d	$a1, $s0, 0
 	st.d	$a0, $s0, 8
 	stx.b	$zero, $a1, $a0
@@ -25370,9 +25335,9 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB25_24:                              # %.outer.preheader
                                         #   in Loop: Header=BB25_2 Depth=1
 	move	$s7, $zero
-	ld.d	$a0, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
 	addi.w	$a0, $a0, 1
-	st.d	$a0, $sp, 320                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 288                   # 8-byte Folded Spill
 .LBB25_25:                              # %.outer
                                         #   Parent Loop BB25_2 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -25381,7 +25346,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #       Child Loop BB25_96 Depth 3
                                         #       Child Loop BB25_130 Depth 3
                                         #       Child Loop BB25_245 Depth 3
-	ori	$a0, $zero, 2256
+	ori	$a0, $zero, 2224
 	add.d	$a0, $sp, $a0
 	ld.d	$a2, $a0, 0
 	.p2align	4, , 16
@@ -25393,7 +25358,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	move	$fp, $s7
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a3, $a0, %pc_lo12(.L.str)
-	ori	$a0, $zero, 2248
+	ori	$a0, $zero, 2216
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	move	$a4, $zero
@@ -25402,17 +25367,17 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1069:                              # EH_LABEL
 # %bb.27:                               # %.noexc142
                                         #   in Loop: Header=BB25_26 Depth=3
-	ori	$a0, $zero, 2288
+	ori	$a0, $zero, 2256
 	add.d	$a0, $sp, $a0
 	ld.w	$s3, $a0, 0
-	st.d	$fp, $sp, 352                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 320                   # 8-byte Folded Spill
 	bge	$fp, $s3, .LBB25_1
 # %bb.28:                               # %.preheader.i132
                                         #   in Loop: Header=BB25_26 Depth=3
 	move	$s2, $s5
 	move	$s1, $zero
 	slli.d	$a0, $s3, 32
-	ld.d	$a1, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a1
 	srai.d	$s8, $a0, 32
 	move	$s4, $fp
@@ -25422,10 +25387,10 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB25_29:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEpLEc.exit.i137
                                         #   in Loop: Header=BB25_30 Depth=4
 	stx.b	$fp, $a0, $s0
-	ori	$a0, $zero, 2248
+	ori	$a0, $zero, 2216
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2256
+	ori	$a1, $zero, 2224
 	add.d	$a1, $sp, $a1
 	st.d	$s7, $a1, 0
 	stx.b	$zero, $a0, $s7
@@ -25436,7 +25401,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #     Parent Loop BB25_25 Depth=2
                                         #       Parent Loop BB25_26 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ori	$a0, $zero, 2280
+	ori	$a0, $zero, 2248
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	ldx.bu	$fp, $a0, $s5
@@ -25478,17 +25443,17 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	.p2align	4, , 16
 .LBB25_39:                              # %.thread.i
                                         #   in Loop: Header=BB25_30 Depth=4
-	ori	$a0, $zero, 2256
+	ori	$a0, $zero, 2224
 	add.d	$a0, $sp, $a0
 	ld.d	$s0, $a0, 0
-	ori	$a0, $zero, 2248
+	ori	$a0, $zero, 2216
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2264
+	ori	$a1, $zero, 2232
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$s7, $s0, 1
-	ori	$a2, $zero, 2264
+	ori	$a2, $zero, 2232
 	add.d	$a2, $sp, $a2
 	xor	$a2, $a0, $a2
 	sltui	$a2, $a2, 1
@@ -25498,7 +25463,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	bgeu	$a1, $s7, .LBB25_29
 # %bb.40:                               #   in Loop: Header=BB25_30 Depth=4
 .Ltmp1071:                              # EH_LABEL
-	ori	$a0, $zero, 2248
+	ori	$a0, $zero, 2216
 	add.d	$a0, $sp, $a0
 	ori	$a4, $zero, 1
 	move	$a1, $s0
@@ -25509,7 +25474,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1072:                              # EH_LABEL
 # %bb.41:                               # %.noexc143
                                         #   in Loop: Header=BB25_30 Depth=4
-	ori	$a0, $zero, 2248
+	ori	$a0, $zero, 2216
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	b	.LBB25_29
@@ -25519,7 +25484,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB25_43:                              # %_ZN2PP11PowerParser23get_sc_line_from_stringERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_Ri.exit
                                         #   in Loop: Header=BB25_26 Depth=3
 .Ltmp1074:                              # EH_LABEL
-	ori	$a0, $zero, 2248
+	ori	$a0, $zero, 2216
 	add.d	$a1, $sp, $a0
                                         # implicit-def: $r4
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser21eliminate_white_spaceERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE)
@@ -25528,7 +25493,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	ori	$s0, $zero, 24
 # %bb.44:                               #   in Loop: Header=BB25_26 Depth=3
 	move	$s5, $s2
-	ori	$a0, $zero, 2256
+	ori	$a0, $zero, 2224
 	add.d	$a0, $sp, $a0
 	ld.d	$a2, $a0, 0
 	slli.d	$a0, $a2, 32
@@ -25539,31 +25504,32 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB25_43
 	.p2align	4, , 16
 .LBB25_46:                              #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a0, $sp, 1984
+	addi.d	$a0, $sp, 1952
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseC2Ev)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt9basic_iosIcSt11char_traitsIcEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVSt9basic_iosIcSt11char_traitsIcEE)
 	addi.d	$a0, $a0, 16
-	st.d	$a0, $sp, 1984
-	ori	$a0, $zero, 2200
+	st.d	$a0, $sp, 1952
+	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	st.d	$zero, $a0, 0
-	ori	$a0, $zero, 2208
+	ori	$a0, $zero, 2176
 	add.d	$a0, $sp, $a0
 	st.h	$zero, $a0, 0
-	ori	$a0, $zero, 2216
+	ori	$a0, $zero, 2184
 	add.d	$a0, $sp, $a0
-	xvld	$xr0, $sp, 272                  # 32-byte Folded Reload
-	xvst	$xr0, $a0, 0
-	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 1856
+	vld	$vr0, $sp, 256                  # 16-byte Folded Reload
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 1824
 	ld.d	$a0, $a0, -24
-	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
-	addi.d	$a2, $sp, 1856
+	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
+	addi.d	$a2, $sp, 1824
 	stx.d	$a1, $a0, $a2
-	ld.d	$a0, $sp, 1856
-	st.d	$zero, $sp, 1864
+	ld.d	$a0, $sp, 1824
+	st.d	$zero, $sp, 1832
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $a2, $a0
 .Ltmp1077:                              # EH_LABEL
@@ -25573,13 +25539,13 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1078:                              # EH_LABEL
 # %bb.47:                               # %.noexc.i144
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 1872
+	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 1840
 	ld.d	$a0, $a0, -24
-	addi.d	$a1, $sp, 1872
-	ld.d	$a2, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$a1, $sp, 1840
+	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
 	stx.d	$a2, $a1, $a0
-	ld.d	$a0, $sp, 1872
+	ld.d	$a0, $sp, 1840
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $a1, $a0
 .Ltmp1080:                              # EH_LABEL
@@ -25588,17 +25554,17 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .Ltmp1081:                              # EH_LABEL
 # %bb.48:                               #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, -24
-	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
-	addi.d	$fp, $sp, 1856
+	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$fp, $sp, 1824
 	stx.d	$a1, $a0, $fp
 	pcalau12i	$a0, %got_pc_hi20(_ZTVNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	addi.d	$a1, $a0, 24
-	st.d	$a1, $sp, 1856
+	st.d	$a1, $sp, 1824
 	addi.d	$a1, $a0, 104
-	st.d	$a1, $sp, 1984
+	st.d	$a1, $sp, 1952
 	addi.d	$a0, $a0, 64
 	vinsgr2vr.d	$vr0, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
@@ -25606,62 +25572,62 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	addi.d	$a0, $a0, 16
 	move	$s1, $a0
 	vinsgr2vr.d	$vr0, $a0, 1
-	vst	$vr0, $sp, 1872
-	addi.d	$a0, $sp, 1888
-	vld	$vr0, $sp, 176                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 1840
+	addi.d	$a0, $sp, 1856
+	vld	$vr0, $sp, 256                  # 16-byte Folded Reload
 	vst	$vr0, $a0, 0
-	xvld	$xr0, $sp, 272                  # 32-byte Folded Reload
-	xvst	$xr0, $a0, 16
-	addi.d	$a0, $sp, 1936
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	addi.d	$a0, $sp, 1904
 	pcaddu18i	$ra, %call36(_ZNSt6localeC1Ev)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(_ZTVNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEEE)
 	addi.d	$a0, $a0, 16
 	move	$s2, $a0
-	st.d	$a0, $sp, 1880
-	st.w	$s0, $sp, 1944
-	ld.d	$a0, $sp, 1856
-	addi.d	$a1, $sp, 1968
-	st.d	$a1, $sp, 1952
-	st.d	$zero, $sp, 1960
-	st.b	$zero, $sp, 1968
+	st.d	$a0, $sp, 1848
+	st.w	$s0, $sp, 1912
+	ld.d	$a0, $sp, 1824
+	addi.d	$a1, $sp, 1936
+	st.d	$a1, $sp, 1920
+	st.d	$zero, $sp, 1928
+	st.b	$zero, $sp, 1936
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 .Ltmp1083:                              # EH_LABEL
-	addi.d	$a1, $sp, 1880
+	addi.d	$a1, $sp, 1848
 	pcaddu18i	$ra, %call36(_ZNSt9basic_iosIcSt11char_traitsIcEE4initEPSt15basic_streambufIcS1_E)
 	jirl	$ra, $ra, 0
 .Ltmp1084:                              # EH_LABEL
-	ld.d	$fp, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 296                   # 8-byte Folded Reload
 # %bb.49:                               # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEC1Ev.exit
                                         #   in Loop: Header=BB25_25 Depth=2
-	ori	$a0, $zero, 2256
+	ori	$a0, $zero, 2224
 	add.d	$a0, $sp, $a0
 	ld.d	$s0, $a0, 0
-	ori	$a0, $zero, 2248
+	ori	$a0, $zero, 2216
 	add.d	$a0, $sp, $a0
 	ld.d	$s8, $a0, 0
-	st.w	$zero, $sp, 1852
-	addi.d	$a0, $sp, 1400
-	st.d	$a0, $sp, 1384
-	st.d	$s0, $sp, 864
+	st.w	$zero, $sp, 1820
+	addi.d	$a0, $sp, 1368
+	st.d	$a0, $sp, 1352
+	st.d	$s0, $sp, 832
 	ori	$a1, $zero, 16
 	bltu	$s0, $a1, .LBB25_52
 # %bb.50:                               # %.noexc.i146
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1086:                              # EH_LABEL
-	addi.d	$a0, $sp, 1384
-	addi.d	$a1, $sp, 864
+	addi.d	$a0, $sp, 1352
+	addi.d	$a1, $sp, 832
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1087:                              # EH_LABEL
 # %bb.51:                               # %.noexc147
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 864
-	st.d	$a0, $sp, 1384
-	st.d	$a1, $sp, 1400
+	ld.d	$a1, $sp, 832
+	st.d	$a0, $sp, 1352
+	st.d	$a1, $sp, 1368
 .LBB25_52:                              # %._crit_edge.i.i145
                                         #   in Loop: Header=BB25_25 Depth=2
 	beqz	$s0, .LBB25_56
@@ -25679,33 +25645,33 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB25_56:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 864
-	ld.d	$a1, $sp, 1384
-	st.d	$a0, $sp, 1392
+	ld.d	$a0, $sp, 832
+	ld.d	$a1, $sp, 1352
+	st.d	$a0, $sp, 1360
 	stx.b	$zero, $a1, $a0
 	ld.w	$s8, $fp, 672
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$s0, $a0, 8
 	ld.d	$s4, $a0, 0
-	addi.d	$a0, $sp, 1368
-	st.d	$a0, $sp, 1352
-	st.d	$s0, $sp, 864
+	addi.d	$a0, $sp, 1336
+	st.d	$a0, $sp, 1320
+	st.d	$s0, $sp, 832
 	ori	$a1, $zero, 16
 	bltu	$s0, $a1, .LBB25_59
 # %bb.57:                               # %.noexc.i149
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1089:                              # EH_LABEL
-	addi.d	$a0, $sp, 1352
-	addi.d	$a1, $sp, 864
+	addi.d	$a0, $sp, 1320
+	addi.d	$a1, $sp, 832
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1090:                              # EH_LABEL
 # %bb.58:                               # %.noexc150
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 864
-	st.d	$a0, $sp, 1352
-	st.d	$a1, $sp, 1368
+	ld.d	$a1, $sp, 832
+	st.d	$a0, $sp, 1320
+	st.d	$a1, $sp, 1336
 .LBB25_59:                              # %._crit_edge.i.i148
                                         #   in Loop: Header=BB25_25 Depth=2
 	beqz	$s0, .LBB25_63
@@ -25723,67 +25689,67 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB25_63:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 864
-	ld.d	$a1, $sp, 1352
-	st.d	$a0, $sp, 1360
+	ld.d	$a0, $sp, 832
+	ld.d	$a1, $sp, 1320
+	st.d	$a0, $sp, 1328
 	stx.b	$zero, $a1, $a0
 .Ltmp1092:                              # EH_LABEL
-	addi.d	$a0, $sp, 1852
+	addi.d	$a0, $sp, 1820
 	st.d	$a0, $sp, 8
-	addi.d	$a0, $sp, 1416
-	addi.d	$a1, $sp, 1384
-	addi.d	$a7, $sp, 1352
-	addi.d	$a2, $sp, 1856
+	addi.d	$a0, $sp, 1384
+	addi.d	$a1, $sp, 1352
+	addi.d	$a7, $sp, 1320
+	addi.d	$a2, $sp, 1824
 	st.d	$a2, $sp, 0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 224                   # 8-byte Folded Reload
 	move	$a5, $s8
-	ld.d	$a6, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 288                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP3CmdC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPSt3mapIS6_NS_8VariableESt4lessIS6_ESaISt4pairIKS6_S8_EEEPS7_IS6_NS_8FunctionESA_SaISB_ISC_SH_EEEPSt5dequeIS6_SaIS6_EEiiS6_RNS1_18basic_stringstreamIcS4_S5_EERi)
 	jirl	$ra, $ra, 0
 .Ltmp1093:                              # EH_LABEL
 # %bb.64:                               #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 1352
-	addi.d	$a1, $sp, 1368
+	ld.d	$a0, $sp, 1320
+	addi.d	$a1, $sp, 1336
 	beq	$a0, $a1, .LBB25_66
 # %bb.65:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 1368
+	ld.d	$a1, $sp, 1336
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_66:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 1384
-	addi.d	$a1, $sp, 1400
+	ld.d	$a0, $sp, 1352
+	addi.d	$a1, $sp, 1368
 	beq	$a0, $a1, .LBB25_68
 # %bb.67:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i152
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 1400
+	ld.d	$a1, $sp, 1368
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_68:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit154
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1095:                              # EH_LABEL
-	addi.d	$a1, $sp, 1856
-	addi.d	$a2, $sp, 1852
+	addi.d	$a1, $sp, 1824
+	addi.d	$a2, $sp, 1820
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser13process_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp1096:                              # EH_LABEL
 # %bb.69:                               #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 1648
-	ld.d	$a0, $sp, 1616
+	ld.d	$a1, $sp, 1616
+	ld.d	$a0, $sp, 1584
 	sub.d	$a2, $a1, $a0
 	srli.d	$a2, $a2, 3
 	sltu	$a1, $zero, $a1
-	ld.d	$a3, $sp, 1624
-	ld.d	$a4, $sp, 1632
+	ld.d	$a3, $sp, 1592
+	ld.d	$a4, $sp, 1600
 	sub.d	$a2, $a2, $a1
-	ld.d	$a5, $sp, 1608
-	ld.d	$a1, $sp, 1592
+	ld.d	$a5, $sp, 1576
+	ld.d	$a1, $sp, 1560
 	sub.d	$a3, $a3, $a4
 	srli.d	$a3, $a3, 7
 	alsl.d	$a2, $a2, $a3, 2
@@ -25792,7 +25758,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.w	$a2, $a2, $a3
 	blez	$a2, .LBB25_103
 # %bb.70:                               #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a2, $sp, 1600
+	ld.d	$a2, $sp, 1568
 	sub.d	$a3, $a1, $a2
 	srai.d	$a2, $a3, 7
 	bltz	$a3, .LBB25_73
@@ -25813,27 +25779,27 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.d	$a1, $a0, $a1
 .LBB25_75:                              # %_ZNSt5dequeIN2PP4WordESaIS1_EEixEm.exit.i
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a0, $sp, 880
-	st.d	$a0, $sp, 864
+	addi.d	$a0, $sp, 848
+	st.d	$a0, $sp, 832
 	ld.d	$s0, $a1, 8
 	ld.d	$s4, $a1, 0
-	st.d	$s0, $sp, 464
+	st.d	$s0, $sp, 432
 	ori	$a1, $zero, 16
 	bltu	$s0, $a1, .LBB25_78
 # %bb.76:                               # %.noexc.i.i.i
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1097:                              # EH_LABEL
-	addi.d	$a0, $sp, 864
-	addi.d	$a1, $sp, 464
+	addi.d	$a0, $sp, 832
+	addi.d	$a1, $sp, 432
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1098:                              # EH_LABEL
 # %bb.77:                               # %.noexc157
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 464
-	st.d	$a0, $sp, 864
-	st.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 432
+	st.d	$a0, $sp, 832
+	st.d	$a1, $sp, 848
 .LBB25_78:                              # %._crit_edge.i.i.i.i
                                         #   in Loop: Header=BB25_25 Depth=2
 	beqz	$s0, .LBB25_82
@@ -25852,12 +25818,12 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .LBB25_82:                              # %_ZN2PP3Cmd10get_stringB5cxx11Ei.exit
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 464
-	ld.d	$a1, $sp, 864
-	st.d	$a0, $sp, 872
+	ld.d	$a0, $sp, 432
+	ld.d	$a1, $sp, 832
+	st.d	$a0, $sp, 840
 	stx.b	$zero, $a1, $a0
-	ld.d	$a1, $sp, 872
-	ld.d	$a0, $sp, 864
+	ld.d	$a1, $sp, 840
+	ld.d	$a0, $sp, 832
 	move	$fp, $zero
 	ori	$a2, $zero, 19
 	bne	$a1, $a2, .LBB25_84
@@ -25865,22 +25831,22 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a0, 8
 	ld.d	$a3, $a0, 11
-	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
 	xor	$a1, $a1, $a4
-	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
-	xor	$a2, $a2, $a4
 	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+	xor	$a2, $a2, $a4
+	ld.d	$a4, $sp, 120                   # 8-byte Folded Reload
 	xor	$a3, $a3, $a4
 	or	$a1, $a1, $a2
 	or	$a1, $a1, $a3
 	sltui	$fp, $a1, 1
 .LBB25_84:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a1, $sp, 880
+	addi.d	$a1, $sp, 848
 	beq	$a0, $a1, .LBB25_86
 # %bb.85:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit160
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 848
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -25889,44 +25855,44 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	beqz	$fp, .LBB25_103
 # %bb.87:                               #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1100:                              # EH_LABEL
-	addi.d	$a0, $sp, 1416
+	addi.d	$a0, $sp, 1384
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd14set_index_baseEi)
 	jirl	$ra, $ra, 0
 .Ltmp1101:                              # EH_LABEL
 # %bb.88:                               #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1102:                              # EH_LABEL
-	addi.d	$a0, $sp, 864
+	addi.d	$a0, $sp, 832
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP8VariableC1Ei)
 	jirl	$ra, $ra, 0
 .Ltmp1103:                              # EH_LABEL
 # %bb.89:                               #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 968
+	ld.d	$a0, $sp, 936
 	pcalau12i	$a1, %pc_hi20(_ZN2PPL10index_baseE)
 	ori	$a2, $zero, 1
 	st.b	$a2, $a1, %pc_lo12(_ZN2PPL10index_baseE)
-	addi.d	$a1, $sp, 984
+	addi.d	$a1, $sp, 952
 	beq	$a0, $a1, .LBB25_91
 # %bb.90:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 984
+	ld.d	$a1, $sp, 952
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_91:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit.i
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 936
+	ld.d	$a0, $sp, 904
 	beqz	$a0, .LBB25_93
 # %bb.92:                               #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 952
+	ld.d	$a1, $sp, 920
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_93:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit.i
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 896
-	ld.d	$fp, $sp, 904
+	ld.d	$a0, $sp, 864
+	ld.d	$fp, $sp, 872
 	beq	$a0, $fp, .LBB25_99
 # %bb.94:                               # %.lr.ph.i.i.i.i.preheader
                                         #   in Loop: Header=BB25_25 Depth=2
@@ -25953,38 +25919,38 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB25_95
 .LBB25_98:                              # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exitthread-pre-split.i.i
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 896
+	ld.d	$a0, $sp, 864
 .LBB25_99:                              # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exit.i.i
                                         #   in Loop: Header=BB25_25 Depth=2
 	beqz	$a0, .LBB25_101
 # %bb.100:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 912
+	ld.d	$a1, $sp, 880
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_101:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev.exit.i
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 864
-	addi.d	$a1, $sp, 880
+	ld.d	$a0, $sp, 832
+	addi.d	$a1, $sp, 848
 	beq	$a0, $a1, .LBB25_103
 # %bb.102:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i2.i
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 848
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	.p2align	4, , 16
 .LBB25_103:                             #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 1648
-	ld.d	$a0, $sp, 1616
+	ld.d	$a1, $sp, 1616
+	ld.d	$a0, $sp, 1584
 	sub.d	$a2, $a1, $a0
 	srli.d	$a2, $a2, 3
 	sltu	$a1, $zero, $a1
-	ld.d	$a3, $sp, 1624
-	ld.d	$a4, $sp, 1632
+	ld.d	$a3, $sp, 1592
+	ld.d	$a4, $sp, 1600
 	sub.d	$a2, $a2, $a1
-	ld.d	$a5, $sp, 1608
-	ld.d	$a1, $sp, 1592
+	ld.d	$a5, $sp, 1576
+	ld.d	$a1, $sp, 1560
 	sub.d	$a3, $a3, $a4
 	srli.d	$a3, $a3, 7
 	alsl.d	$a2, $a2, $a3, 2
@@ -25993,7 +25959,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.w	$a2, $a2, $a3
 	blez	$a2, .LBB25_137
 # %bb.104:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a2, $sp, 1600
+	ld.d	$a2, $sp, 1568
 	sub.d	$a3, $a1, $a2
 	srai.d	$a2, $a3, 7
 	bltz	$a3, .LBB25_107
@@ -26014,27 +25980,27 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.d	$a1, $a0, $a1
 .LBB25_109:                             # %_ZNSt5dequeIN2PP4WordESaIS1_EEixEm.exit.i173
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a0, $sp, 880
-	st.d	$a0, $sp, 864
+	addi.d	$a0, $sp, 848
+	st.d	$a0, $sp, 832
 	ld.d	$s0, $a1, 8
 	ld.d	$s4, $a1, 0
-	st.d	$s0, $sp, 464
+	st.d	$s0, $sp, 432
 	ori	$a1, $zero, 16
 	bltu	$s0, $a1, .LBB25_112
 # %bb.110:                              # %.noexc.i.i.i177
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1105:                              # EH_LABEL
-	addi.d	$a0, $sp, 864
-	addi.d	$a1, $sp, 464
+	addi.d	$a0, $sp, 832
+	addi.d	$a1, $sp, 432
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1106:                              # EH_LABEL
 # %bb.111:                              # %.noexc178
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 464
-	st.d	$a0, $sp, 864
-	st.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 432
+	st.d	$a0, $sp, 832
+	st.d	$a1, $sp, 848
 .LBB25_112:                             # %._crit_edge.i.i.i.i175
                                         #   in Loop: Header=BB25_25 Depth=2
 	beqz	$s0, .LBB25_116
@@ -26053,12 +26019,12 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .LBB25_116:                             # %_ZN2PP3Cmd10get_stringB5cxx11Ei.exit179
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 464
-	ld.d	$a1, $sp, 864
-	st.d	$a0, $sp, 872
+	ld.d	$a0, $sp, 432
+	ld.d	$a1, $sp, 832
+	st.d	$a0, $sp, 840
 	stx.b	$zero, $a1, $a0
-	ld.d	$a1, $sp, 872
-	ld.d	$a0, $sp, 864
+	ld.d	$a1, $sp, 840
+	ld.d	$a0, $sp, 832
 	move	$fp, $zero
 	ori	$a2, $zero, 18
 	bne	$a1, $a2, .LBB25_118
@@ -26066,23 +26032,23 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a0, 8
 	ld.hu	$a3, $a0, 16
-	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
 	xor	$a1, $a1, $a4
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
 	lu52i.d	$a4, $a4, 1781
 	xor	$a2, $a2, $a4
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 	xor	$a3, $a3, $a4
 	or	$a1, $a1, $a2
 	or	$a1, $a1, $a3
 	sltui	$fp, $a1, 1
 .LBB25_118:                             # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit181
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a1, $sp, 880
+	addi.d	$a1, $sp, 848
 	beq	$a0, $a1, .LBB25_120
 # %bb.119:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit184
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 848
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -26091,43 +26057,43 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	beqz	$fp, .LBB25_137
 # %bb.121:                              #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1108:                              # EH_LABEL
-	addi.d	$a0, $sp, 1416
+	addi.d	$a0, $sp, 1384
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd14set_index_baseEi)
 	jirl	$ra, $ra, 0
 .Ltmp1109:                              # EH_LABEL
 # %bb.122:                              #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1110:                              # EH_LABEL
-	addi.d	$a0, $sp, 864
+	addi.d	$a0, $sp, 832
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(_ZN2PP8VariableC1Ei)
 	jirl	$ra, $ra, 0
 .Ltmp1111:                              # EH_LABEL
 # %bb.123:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 968
+	ld.d	$a0, $sp, 936
 	pcalau12i	$a1, %pc_hi20(_ZN2PPL10index_baseE)
 	st.b	$zero, $a1, %pc_lo12(_ZN2PPL10index_baseE)
-	addi.d	$a1, $sp, 984
+	addi.d	$a1, $sp, 952
 	beq	$a0, $a1, .LBB25_125
 # %bb.124:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i185
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 984
+	ld.d	$a1, $sp, 952
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_125:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit.i186
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 936
+	ld.d	$a0, $sp, 904
 	beqz	$a0, .LBB25_127
 # %bb.126:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 952
+	ld.d	$a1, $sp, 920
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_127:                             # %_ZNSt6vectorIiSaIiEED2Ev.exit.i188
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 896
-	ld.d	$fp, $sp, 904
+	ld.d	$a0, $sp, 864
+	ld.d	$fp, $sp, 872
 	beq	$a0, $fp, .LBB25_133
 # %bb.128:                              # %.lr.ph.i.i.i.i190.preheader
                                         #   in Loop: Header=BB25_25 Depth=2
@@ -26154,38 +26120,38 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB25_129
 .LBB25_132:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exitthread-pre-split.i.i195
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 896
+	ld.d	$a0, $sp, 864
 .LBB25_133:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exit.i.i197
                                         #   in Loop: Header=BB25_25 Depth=2
 	beqz	$a0, .LBB25_135
 # %bb.134:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 912
+	ld.d	$a1, $sp, 880
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_135:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev.exit.i199
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 864
-	addi.d	$a1, $sp, 880
+	ld.d	$a0, $sp, 832
+	addi.d	$a1, $sp, 848
 	beq	$a0, $a1, .LBB25_137
 # %bb.136:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i2.i200
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 848
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	.p2align	4, , 16
 .LBB25_137:                             #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 1648
-	ld.d	$a0, $sp, 1616
+	ld.d	$a1, $sp, 1616
+	ld.d	$a0, $sp, 1584
 	sub.d	$a2, $a1, $a0
 	srli.d	$a2, $a2, 3
 	sltu	$a1, $zero, $a1
-	ld.d	$a3, $sp, 1624
-	ld.d	$a4, $sp, 1632
+	ld.d	$a3, $sp, 1592
+	ld.d	$a4, $sp, 1600
 	sub.d	$a2, $a2, $a1
-	ld.d	$a5, $sp, 1608
-	ld.d	$a1, $sp, 1592
+	ld.d	$a5, $sp, 1576
+	ld.d	$a1, $sp, 1560
 	sub.d	$a3, $a3, $a4
 	srli.d	$a3, $a3, 7
 	alsl.d	$a2, $a2, $a3, 2
@@ -26194,7 +26160,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.w	$a2, $a2, $a3
 	blez	$a2, .LBB25_157
 # %bb.138:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a2, $sp, 1600
+	ld.d	$a2, $sp, 1568
 	sub.d	$a3, $a1, $a2
 	srai.d	$a2, $a3, 7
 	bltz	$a3, .LBB25_141
@@ -26215,27 +26181,27 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.d	$a1, $a0, $a1
 .LBB25_143:                             # %_ZNSt5dequeIN2PP4WordESaIS1_EEixEm.exit.i211
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a0, $sp, 880
-	st.d	$a0, $sp, 864
+	addi.d	$a0, $sp, 848
+	st.d	$a0, $sp, 832
 	ld.d	$s0, $a1, 8
 	ld.d	$s4, $a1, 0
-	st.d	$s0, $sp, 464
+	st.d	$s0, $sp, 432
 	ori	$a1, $zero, 16
 	bltu	$s0, $a1, .LBB25_146
 # %bb.144:                              # %.noexc.i.i.i215
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1113:                              # EH_LABEL
-	addi.d	$a0, $sp, 864
-	addi.d	$a1, $sp, 464
+	addi.d	$a0, $sp, 832
+	addi.d	$a1, $sp, 432
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1114:                              # EH_LABEL
 # %bb.145:                              # %.noexc216
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 464
-	st.d	$a0, $sp, 864
-	st.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 432
+	st.d	$a0, $sp, 832
+	st.d	$a1, $sp, 848
 .LBB25_146:                             # %._crit_edge.i.i.i.i213
                                         #   in Loop: Header=BB25_25 Depth=2
 	beqz	$s0, .LBB25_150
@@ -26254,24 +26220,24 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .LBB25_150:                             # %_ZN2PP3Cmd10get_stringB5cxx11Ei.exit217
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 464
-	ld.d	$a1, $sp, 864
-	st.d	$a0, $sp, 872
+	ld.d	$a0, $sp, 432
+	ld.d	$a1, $sp, 832
+	st.d	$a0, $sp, 840
 	stx.b	$zero, $a1, $a0
-	ld.d	$a1, $sp, 872
-	ld.d	$a0, $sp, 864
+	ld.d	$a1, $sp, 840
+	ld.d	$a0, $sp, 832
 	move	$fp, $zero
 	ori	$a2, $zero, 18
 	bne	$a1, $a2, .LBB25_152
 # %bb.151:                              #   in Loop: Header=BB25_25 Depth=2
 	ld.d	$a1, $a0, 0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	lu32i.d	$a2, 221539
 	ld.d	$a3, $a0, 8
 	lu52i.d	$a2, $a2, 1623
 	ld.hu	$a4, $a0, 16
 	xor	$a1, $a1, $a2
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	xor	$a2, $a3, $a2
 	lu12i.w	$a3, 6
 	ori	$a3, $a3, 1398
@@ -26281,11 +26247,11 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	sltui	$fp, $a1, 1
 .LBB25_152:                             # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit219
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a1, $sp, 880
+	addi.d	$a1, $sp, 848
 	beq	$a0, $a1, .LBB25_154
 # %bb.153:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit222
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 848
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -26294,7 +26260,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	beqz	$fp, .LBB25_157
 # %bb.155:                              #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1116:                              # EH_LABEL
-	addi.d	$a0, $sp, 1416
+	addi.d	$a0, $sp, 1384
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd18set_case_sensitiveEb)
 	jirl	$ra, $ra, 0
@@ -26304,16 +26270,16 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	ori	$a1, $zero, 1
 	st.b	$a1, $a0, %pc_lo12(_ZN2PPL14case_sensitiveE)
 .LBB25_157:                             #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 1648
-	ld.d	$a0, $sp, 1616
+	ld.d	$a1, $sp, 1616
+	ld.d	$a0, $sp, 1584
 	sub.d	$a2, $a1, $a0
 	srli.d	$a2, $a2, 3
 	sltu	$a1, $zero, $a1
-	ld.d	$a3, $sp, 1624
-	ld.d	$a4, $sp, 1632
+	ld.d	$a3, $sp, 1592
+	ld.d	$a4, $sp, 1600
 	sub.d	$a2, $a2, $a1
-	ld.d	$a5, $sp, 1608
-	ld.d	$a1, $sp, 1592
+	ld.d	$a5, $sp, 1576
+	ld.d	$a1, $sp, 1560
 	sub.d	$a3, $a3, $a4
 	srli.d	$a3, $a3, 7
 	alsl.d	$a2, $a2, $a3, 2
@@ -26322,7 +26288,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.w	$a2, $a2, $a3
 	blez	$a2, .LBB25_177
 # %bb.158:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a2, $sp, 1600
+	ld.d	$a2, $sp, 1568
 	sub.d	$a3, $a1, $a2
 	srai.d	$a2, $a3, 7
 	bltz	$a3, .LBB25_161
@@ -26343,27 +26309,27 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.d	$a1, $a0, $a1
 .LBB25_163:                             # %_ZNSt5dequeIN2PP4WordESaIS1_EEixEm.exit.i229
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a0, $sp, 880
-	st.d	$a0, $sp, 864
+	addi.d	$a0, $sp, 848
+	st.d	$a0, $sp, 832
 	ld.d	$s0, $a1, 8
 	ld.d	$s4, $a1, 0
-	st.d	$s0, $sp, 464
+	st.d	$s0, $sp, 432
 	ori	$a1, $zero, 16
 	bltu	$s0, $a1, .LBB25_166
 # %bb.164:                              # %.noexc.i.i.i233
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1118:                              # EH_LABEL
-	addi.d	$a0, $sp, 864
-	addi.d	$a1, $sp, 464
+	addi.d	$a0, $sp, 832
+	addi.d	$a1, $sp, 432
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1119:                              # EH_LABEL
 # %bb.165:                              # %.noexc234
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 464
-	st.d	$a0, $sp, 864
-	st.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 432
+	st.d	$a0, $sp, 832
+	st.d	$a1, $sp, 848
 .LBB25_166:                             # %._crit_edge.i.i.i.i231
                                         #   in Loop: Header=BB25_25 Depth=2
 	beqz	$s0, .LBB25_170
@@ -26382,37 +26348,37 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .LBB25_170:                             # %_ZN2PP3Cmd10get_stringB5cxx11Ei.exit235
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 464
-	ld.d	$a1, $sp, 864
-	st.d	$a0, $sp, 872
+	ld.d	$a0, $sp, 432
+	ld.d	$a1, $sp, 832
+	st.d	$a0, $sp, 840
 	stx.b	$zero, $a1, $a0
-	ld.d	$a1, $sp, 872
-	ld.d	$a0, $sp, 864
+	ld.d	$a1, $sp, 840
+	ld.d	$a0, $sp, 832
 	move	$fp, $zero
 	ori	$a2, $zero, 20
 	bne	$a1, $a2, .LBB25_172
 # %bb.171:                              #   in Loop: Header=BB25_25 Depth=2
 	ld.d	$a1, $a0, 0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	lu32i.d	$a2, 221539
 	ld.d	$a3, $a0, 8
 	ld.wu	$a4, $a0, 16
 	lu52i.d	$a2, $a2, 1623
 	xor	$a1, $a1, $a2
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	xor	$a2, $a3, $a2
-	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	xor	$a3, $a4, $a3
 	or	$a1, $a1, $a2
 	or	$a1, $a1, $a3
 	sltui	$fp, $a1, 1
 .LBB25_172:                             # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit237
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a1, $sp, 880
+	addi.d	$a1, $sp, 848
 	beq	$a0, $a1, .LBB25_174
 # %bb.173:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit240
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 848
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -26421,7 +26387,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	beqz	$fp, .LBB25_177
 # %bb.175:                              #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1121:                              # EH_LABEL
-	addi.d	$a0, $sp, 1416
+	addi.d	$a0, $sp, 1384
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd18set_case_sensitiveEb)
 	jirl	$ra, $ra, 0
@@ -26430,16 +26396,16 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcalau12i	$a0, %pc_hi20(_ZN2PPL14case_sensitiveE)
 	st.b	$zero, $a0, %pc_lo12(_ZN2PPL14case_sensitiveE)
 .LBB25_177:                             #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 1648
-	ld.d	$a0, $sp, 1616
+	ld.d	$a1, $sp, 1616
+	ld.d	$a0, $sp, 1584
 	sub.d	$a2, $a1, $a0
 	srli.d	$a2, $a2, 3
 	sltu	$a1, $zero, $a1
-	ld.d	$a3, $sp, 1624
-	ld.d	$a4, $sp, 1632
+	ld.d	$a3, $sp, 1592
+	ld.d	$a4, $sp, 1600
 	sub.d	$a2, $a2, $a1
-	ld.d	$a5, $sp, 1608
-	ld.d	$a1, $sp, 1592
+	ld.d	$a5, $sp, 1576
+	ld.d	$a1, $sp, 1560
 	sub.d	$a3, $a3, $a4
 	srli.d	$a3, $a3, 7
 	alsl.d	$a2, $a2, $a3, 2
@@ -26448,7 +26414,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.w	$a2, $a2, $a3
 	blez	$a2, .LBB25_203
 # %bb.178:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a2, $sp, 1600
+	ld.d	$a2, $sp, 1568
 	sub.d	$a3, $a1, $a2
 	srai.d	$a2, $a3, 7
 	bltz	$a3, .LBB25_181
@@ -26469,27 +26435,27 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.d	$a1, $a0, $a1
 .LBB25_183:                             # %_ZNSt5dequeIN2PP4WordESaIS1_EEixEm.exit.i247
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a0, $sp, 880
-	st.d	$a0, $sp, 864
+	addi.d	$a0, $sp, 848
+	st.d	$a0, $sp, 832
 	ld.d	$s0, $a1, 8
 	ld.d	$s4, $a1, 0
-	st.d	$s0, $sp, 464
+	st.d	$s0, $sp, 432
 	ori	$a1, $zero, 16
 	bltu	$s0, $a1, .LBB25_186
 # %bb.184:                              # %.noexc.i.i.i251
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1123:                              # EH_LABEL
-	addi.d	$a0, $sp, 864
-	addi.d	$a1, $sp, 464
+	addi.d	$a0, $sp, 832
+	addi.d	$a1, $sp, 432
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1124:                              # EH_LABEL
 # %bb.185:                              # %.noexc252
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 464
-	st.d	$a0, $sp, 864
-	st.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 432
+	st.d	$a0, $sp, 832
+	st.d	$a1, $sp, 848
 .LBB25_186:                             # %._crit_edge.i.i.i.i249
                                         #   in Loop: Header=BB25_25 Depth=2
 	beqz	$s0, .LBB25_190
@@ -26508,12 +26474,12 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .LBB25_190:                             # %_ZN2PP3Cmd10get_stringB5cxx11Ei.exit253
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 464
-	ld.d	$a1, $sp, 864
-	st.d	$a0, $sp, 872
+	ld.d	$a0, $sp, 432
+	ld.d	$a1, $sp, 832
+	st.d	$a0, $sp, 840
 	stx.b	$zero, $a1, $a0
-	ld.d	$a1, $sp, 872
-	ld.d	$a0, $sp, 864
+	ld.d	$a1, $sp, 840
+	ld.d	$a0, $sp, 832
 	move	$fp, $zero
 	ori	$a2, $zero, 17
 	bne	$a1, $a2, .LBB25_192
@@ -26521,9 +26487,9 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a0, 8
 	ld.bu	$a3, $a0, 16
-	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	xor	$a1, $a1, $a4
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	xor	$a2, $a2, $a4
 	xori	$a3, $a3, 101
 	or	$a1, $a1, $a2
@@ -26531,67 +26497,67 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	sltui	$fp, $a1, 1
 .LBB25_192:                             # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit255
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a1, $sp, 880
+	addi.d	$a1, $sp, 848
 	beq	$a0, $a1, .LBB25_202
 # %bb.193:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit258
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 848
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	beqz	$fp, .LBB25_203
 .LBB25_194:                             #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$fp, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 296                   # 8-byte Folded Reload
 	ldptr.d	$a0, $fp, 2272
 	beqz	$a0, .LBB25_237
 # %bb.195:                              # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a0, $sp, 1336
-	st.d	$a0, $sp, 1320
+	addi.d	$a0, $sp, 1304
+	st.d	$a0, $sp, 1288
 	ori	$a0, $zero, 24
-	st.d	$a0, $sp, 864
+	st.d	$a0, $sp, 832
 .Ltmp1247:                              # EH_LABEL
-	addi.d	$a0, $sp, 1320
-	addi.d	$a1, $sp, 864
+	addi.d	$a0, $sp, 1288
+	addi.d	$a1, $sp, 832
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1248:                              # EH_LABEL
 # %bb.196:                              # %.noexc261
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 864
-	st.d	$a0, $sp, 1320
-	st.d	$a1, $sp, 1336
+	ld.d	$a1, $sp, 832
+	st.d	$a0, $sp, 1288
+	st.d	$a1, $sp, 1304
 	pcalau12i	$a2, %pc_hi20(.L.str.10)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.10)
 	vld	$vr0, $a2, 0
 	ld.d	$a2, $a2, 16
 	vst	$vr0, $a0, 0
 	st.d	$a2, $a0, 16
-	ld.d	$a0, $sp, 1320
-	st.d	$a1, $sp, 1328
+	ld.d	$a0, $sp, 1288
+	st.d	$a1, $sp, 1296
 	stx.b	$zero, $a0, $a1
 	ldptr.d	$s0, $fp, 2272
 	ldptr.d	$s4, $fp, 2264
-	addi.d	$a0, $sp, 1304
-	st.d	$a0, $sp, 1288
-	st.d	$s0, $sp, 864
+	addi.d	$a0, $sp, 1272
+	st.d	$a0, $sp, 1256
+	st.d	$s0, $sp, 832
 	ori	$a1, $zero, 16
 	bltu	$s0, $a1, .LBB25_199
 # %bb.197:                              # %.noexc.i264
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1250:                              # EH_LABEL
-	addi.d	$a0, $sp, 1288
-	addi.d	$a1, $sp, 864
+	addi.d	$a0, $sp, 1256
+	addi.d	$a1, $sp, 832
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1251:                              # EH_LABEL
 # %bb.198:                              # %.noexc265
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 864
-	st.d	$a0, $sp, 1288
-	st.d	$a1, $sp, 1304
+	ld.d	$a1, $sp, 832
+	st.d	$a0, $sp, 1256
+	st.d	$a1, $sp, 1272
 .LBB25_199:                             # %._crit_edge.i.i263
                                         #   in Loop: Header=BB25_25 Depth=2
 	beqz	$s0, .LBB25_232
@@ -26608,9 +26574,9 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	bnez	$fp, .LBB25_194
 	.p2align	4, , 16
 .LBB25_203:                             #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a2, $sp, 1592
-	ld.d	$a1, $sp, 1600
-	ld.d	$a0, $sp, 1616
+	ld.d	$a2, $sp, 1560
+	ld.d	$a1, $sp, 1568
+	ld.d	$a0, $sp, 1584
 	sub.d	$a3, $a2, $a1
 	srai.d	$a1, $a3, 7
 	bltz	$a3, .LBB25_206
@@ -26631,27 +26597,27 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.d	$a2, $a0, $a1
 .LBB25_208:                             # %_ZNSt5dequeIN2PP4WordESaIS1_EEixEm.exit.i282
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a0, $sp, 880
-	st.d	$a0, $sp, 864
+	addi.d	$a0, $sp, 848
+	st.d	$a0, $sp, 832
 	ld.d	$s0, $a2, 8
 	ld.d	$s4, $a2, 0
-	st.d	$s0, $sp, 464
+	st.d	$s0, $sp, 432
 	ori	$a1, $zero, 16
 	bltu	$s0, $a1, .LBB25_211
 # %bb.209:                              # %.noexc.i.i.i290
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1126:                              # EH_LABEL
-	addi.d	$a0, $sp, 864
-	addi.d	$a1, $sp, 464
+	addi.d	$a0, $sp, 832
+	addi.d	$a1, $sp, 432
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1127:                              # EH_LABEL
 # %bb.210:                              # %.noexc291
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 464
-	st.d	$a0, $sp, 864
-	st.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 432
+	st.d	$a0, $sp, 832
+	st.d	$a1, $sp, 848
 .LBB25_211:                             # %._crit_edge.i.i.i.i284
                                         #   in Loop: Header=BB25_25 Depth=2
 	beqz	$s0, .LBB25_215
@@ -26670,31 +26636,31 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .LBB25_215:                             # %_ZN2PP4Word10get_stringB5cxx11Ev.exit.i285
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 464
-	ld.d	$a1, $sp, 864
-	st.d	$a0, $sp, 872
+	ld.d	$a0, $sp, 432
+	ld.d	$a1, $sp, 832
+	st.d	$a0, $sp, 840
 	stx.b	$zero, $a1, $a0
-	ld.d	$a1, $sp, 872
-	ld.d	$a0, $sp, 864
+	ld.d	$a1, $sp, 840
+	ld.d	$a0, $sp, 832
 	move	$fp, $zero
 	ori	$a2, $zero, 7
 	bne	$a1, $a2, .LBB25_217
 # %bb.216:                              #   in Loop: Header=BB25_25 Depth=2
 	ld.w	$a1, $a0, 0
 	ld.w	$a2, $a0, 3
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	xor	$a1, $a1, $a3
-	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
 	xor	$a2, $a2, $a3
 	or	$a1, $a1, $a2
 	sltui	$fp, $a1, 1
 .LBB25_217:                             # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.i
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a1, $sp, 880
+	addi.d	$a1, $sp, 848
 	beq	$a0, $a1, .LBB25_219
 # %bb.218:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i286
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 848
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -26702,67 +26668,67 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	beqz	$fp, .LBB25_227
 # %bb.220:                              # %._crit_edge.i.i292
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a0, $sp, 1272
-	st.d	$a0, $sp, 1256
-	st.d	$zero, $sp, 1264
-	st.b	$zero, $sp, 1272
+	addi.d	$a0, $sp, 1240
+	st.d	$a0, $sp, 1224
+	st.d	$zero, $sp, 1232
+	st.b	$zero, $sp, 1240
 .Ltmp1133:                              # EH_LABEL
-	addi.d	$a0, $sp, 864
+	addi.d	$a0, $sp, 832
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEC1Ev)
 	jirl	$ra, $ra, 0
 .Ltmp1134:                              # EH_LABEL
 # %bb.221:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$fp, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a0, $fp, 520
 	ld.w	$a1, $a0, 8
 	ld.w	$a0, $a0, 12
 	bne	$a1, $a0, .LBB25_242
 # %bb.222:                              #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1136:                              # EH_LABEL
-	addi.d	$a0, $sp, 464
-	addi.d	$a1, $sp, 1416
-	addi.d	$a2, $sp, 864
+	addi.d	$a0, $sp, 432
+	addi.d	$a1, $sp, 1384
+	addi.d	$a2, $sp, 832
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd16get_cmd_filenameERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	jirl	$ra, $ra, 0
 .Ltmp1137:                              # EH_LABEL
 # %bb.223:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 1256
-	ld.d	$a1, $sp, 464
-	addi.d	$a2, $sp, 1272
+	ld.d	$a0, $sp, 1224
+	ld.d	$a1, $sp, 432
+	addi.d	$a2, $sp, 1240
 	beq	$a0, $a2, .LBB25_238
 # %bb.224:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i
                                         #   in Loop: Header=BB25_25 Depth=2
 	beq	$a1, $s5, .LBB25_264
 # %bb.225:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit23.thread25.i
                                         #   in Loop: Header=BB25_25 Depth=2
-	vld	$vr0, $sp, 472
-	ld.d	$a2, $sp, 1272
-	st.d	$a1, $sp, 1256
-	vst	$vr0, $sp, 1264
+	vld	$vr0, $sp, 440
+	ld.d	$a2, $sp, 1240
+	st.d	$a1, $sp, 1224
+	vst	$vr0, $sp, 1232
 	beqz	$a0, .LBB25_240
 # %bb.226:                              #   in Loop: Header=BB25_25 Depth=2
-	st.d	$a0, $sp, 464
-	st.d	$a2, $sp, 480
-	st.d	$zero, $sp, 472
+	st.d	$a0, $sp, 432
+	st.d	$a2, $sp, 448
+	st.d	$zero, $sp, 440
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 464
+	ld.d	$a0, $sp, 432
 	bne	$a0, $s5, .LBB25_241
 	b	.LBB25_242
 .LBB25_227:                             #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 888
 	ld.d	$a0, $a0, 872
 	addi.d	$a1, $a1, -432
 	beq	$a0, $a1, .LBB25_230
 # %bb.228:                              #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1128:                              # EH_LABEL
-	addi.d	$a1, $sp, 1416
+	addi.d	$a1, $sp, 1384
 	pcaddu18i	$ra, %call36(_ZN2PP3CmdC2ERKS0_)
 	jirl	$ra, $ra, 0
 .Ltmp1129:                              # EH_LABEL
 # %bb.229:                              # %.noexc365
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a0, $a1, 872
 	addi.d	$a0, $a0, 432
 	st.d	$a0, $a1, 872
@@ -26771,8 +26737,8 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB25_230:                             #   in Loop: Header=BB25_25 Depth=2
 	ori	$fp, $zero, 1
 .Ltmp1130:                              # EH_LABEL
-	addi.d	$a1, $sp, 1416
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	addi.d	$a1, $sp, 1384
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP3CmdESaIS1_EE16_M_push_back_auxIJRKS1_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp1131:                              # EH_LABEL
@@ -26783,37 +26749,37 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB25_232:                             #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 864
-	ld.d	$a1, $sp, 1288
-	st.d	$a0, $sp, 1296
+	ld.d	$a0, $sp, 832
+	ld.d	$a1, $sp, 1256
+	st.d	$a0, $sp, 1264
 	stx.b	$zero, $a1, $a0
 .Ltmp1253:                              # EH_LABEL
-	addi.d	$a1, $sp, 1320
-	addi.d	$a2, $sp, 1288
+	addi.d	$a1, $sp, 1288
+	addi.d	$a2, $sp, 1256
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_)
 	jirl	$ra, $ra, 0
 .Ltmp1254:                              # EH_LABEL
 # %bb.233:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 1288
-	addi.d	$a1, $sp, 1304
+	ld.d	$a0, $sp, 1256
+	addi.d	$a1, $sp, 1272
 	beq	$a0, $a1, .LBB25_235
 # %bb.234:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i267
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 1304
+	ld.d	$a1, $sp, 1272
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_235:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit269
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 1320
+	ld.d	$a0, $sp, 1288
 	ori	$a1, $zero, 1
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	addi.d	$a1, $sp, 1336
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$a1, $sp, 1304
 	beq	$a0, $a1, .LBB25_237
 # %bb.236:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i270
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 1336
+	ld.d	$a1, $sp, 1304
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -26825,25 +26791,25 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	beq	$a1, $s5, .LBB25_264
 # %bb.239:                              # %.thread.i298
                                         #   in Loop: Header=BB25_25 Depth=2
-	vld	$vr0, $sp, 472
-	st.d	$a1, $sp, 1256
-	vst	$vr0, $sp, 1264
+	vld	$vr0, $sp, 440
+	st.d	$a1, $sp, 1224
+	vst	$vr0, $sp, 1232
 .LBB25_240:                             #   in Loop: Header=BB25_25 Depth=2
-	st.d	$s5, $sp, 464
+	st.d	$s5, $sp, 432
 	move	$a0, $s5
-	st.d	$zero, $sp, 472
+	st.d	$zero, $sp, 440
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 464
+	ld.d	$a0, $sp, 432
 	beq	$a0, $s5, .LBB25_242
 .LBB25_241:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i299
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 480
+	ld.d	$a1, $sp, 448
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_242:                             #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1139:                              # EH_LABEL
-	addi.d	$a1, $sp, 1256
+	addi.d	$a1, $sp, 1224
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser16broadcast_bufferERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE)
 	jirl	$ra, $ra, 0
@@ -26851,12 +26817,12 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 # %bb.243:                              #   in Loop: Header=BB25_25 Depth=2
 	ld.w	$a2, $fp, 768
 	ld.d	$a3, $fp, 744
-	st.w	$a2, $sp, 860
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	st.w	$a2, $sp, 828
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	beqz	$a3, .LBB25_248
 # %bb.244:                              # %.lr.ph.i.i.i.i302.preheader
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	ori	$a7, $zero, 24
 	ori	$t0, $zero, 16
 	.p2align	4, , 16
@@ -26876,7 +26842,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	bnez	$a3, .LBB25_245
 # %bb.246:                              # %_ZNSt3mapIiNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4lessIiESaISt4pairIKiS5_EEE11lower_boundERS9_.exit.i
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
 	move	$a1, $a3
 	beq	$a0, $a3, .LBB25_248
 # %bb.247:                              #   in Loop: Header=BB25_25 Depth=2
@@ -26885,50 +26851,50 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	bge	$a2, $a3, .LBB25_249
 .LBB25_248:                             # %.critedge.i
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a0, $sp, 860
-	st.d	$a0, $sp, 464
+	addi.d	$a0, $sp, 828
+	st.d	$a0, $sp, 432
 .Ltmp1142:                              # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(_ZSt19piecewise_construct)
 	addi.d	$a2, $a0, %pc_lo12(_ZSt19piecewise_construct)
-	addi.d	$a3, $sp, 464
-	addi.d	$a4, $sp, 432
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$a3, $sp, 432
+	addi.d	$a4, $sp, 400
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt8_Rb_treeIiSt4pairIKiNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEESt10_Select1stIS8_ESt4lessIiESaIS8_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJRS1_EESJ_IJEEEEESt17_Rb_tree_iteratorIS8_ESt23_Rb_tree_const_iteratorIS8_EDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp1143:                              # EH_LABEL
 .LBB25_249:                             #   in Loop: Header=BB25_25 Depth=2
 	addi.d	$a0, $a0, 40
 .Ltmp1144:                              # EH_LABEL
-	addi.d	$a1, $sp, 1256
+	addi.d	$a1, $sp, 1224
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_assignERKS4_)
 	jirl	$ra, $ra, 0
 .Ltmp1145:                              # EH_LABEL
 # %bb.250:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEaSERKS4_.exit
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$s8, $sp, 1264
+	ld.d	$s8, $sp, 1232
 	beqz	$s8, .LBB25_256
 # %bb.251:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit307.thread521
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$s0, $sp, 1256
-	addi.d	$a0, $sp, 416
-	st.d	$a0, $sp, 400
-	st.d	$s8, $sp, 464
+	ld.d	$s0, $sp, 1224
+	addi.d	$a0, $sp, 384
+	st.d	$a0, $sp, 368
+	st.d	$s8, $sp, 432
 	ori	$a1, $zero, 16
 	bltu	$s8, $a1, .LBB25_254
 # %bb.252:                              # %.noexc.i346
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1241:                              # EH_LABEL
-	addi.d	$a0, $sp, 400
-	addi.d	$a1, $sp, 464
+	addi.d	$a0, $sp, 368
+	addi.d	$a1, $sp, 432
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1242:                              # EH_LABEL
 # %bb.253:                              # %.noexc347
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 464
-	st.d	$a0, $sp, 400
-	st.d	$a1, $sp, 416
+	ld.d	$a1, $sp, 432
+	st.d	$a0, $sp, 368
+	st.d	$a1, $sp, 384
 .LBB25_254:                             # %._crit_edge.i.i345
                                         #   in Loop: Header=BB25_25 Depth=2
 	ori	$a1, $zero, 1
@@ -26940,14 +26906,14 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB25_256:                             # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit307.thread
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1146:                              # EH_LABEL
-	addi.d	$a0, $sp, 464
+	addi.d	$a0, $sp, 432
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEC1Ev)
 	jirl	$ra, $ra, 0
 .Ltmp1147:                              # EH_LABEL
 # %bb.257:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 480
+	ld.d	$a0, $sp, 448
 	ld.d	$a0, $a0, -24
-	addi.d	$a1, $sp, 480
+	addi.d	$a1, $sp, 448
 	add.d	$a0, $a1, $a0
 	ld.d	$s0, $a0, 240
 	beqz	$s0, .LBB25_408
@@ -26964,30 +26930,30 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB25_261:                             #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 464
-	ld.d	$a1, $sp, 400
-	st.d	$a0, $sp, 408
+	ld.d	$a0, $sp, 432
+	ld.d	$a1, $sp, 368
+	st.d	$a0, $sp, 376
 	stx.b	$zero, $a1, $a0
 .Ltmp1244:                              # EH_LABEL
-	addi.d	$a1, $sp, 400
+	addi.d	$a1, $sp, 368
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser10parse_fileENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE)
 	jirl	$ra, $ra, 0
 .Ltmp1245:                              # EH_LABEL
 # %bb.262:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 400
-	addi.d	$a1, $sp, 416
-	addi.d	$fp, $sp, 864
+	ld.d	$a0, $sp, 368
+	addi.d	$a1, $sp, 384
+	addi.d	$fp, $sp, 832
 	beq	$a0, $a1, .LBB25_339
 # %bb.263:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i349
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 416
+	ld.d	$a1, $sp, 384
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	b	.LBB25_339
 .LBB25_264:                             #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a2, $sp, 472
+	ld.d	$a2, $sp, 440
 	beqz	$a2, .LBB25_348
 # %bb.265:                              #   in Loop: Header=BB25_25 Depth=2
 	ori	$a3, $zero, 1
@@ -27015,7 +26981,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1153:                              # EH_LABEL
 	ext.w.b	$a1, $a0
-	addi.d	$a0, $sp, 480
+	addi.d	$a0, $sp, 448
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp1154:                              # EH_LABEL
@@ -27031,15 +26997,15 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.11)
 	ori	$a2, $zero, 24
-	addi.d	$a0, $sp, 480
+	addi.d	$a0, $sp, 448
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1158:                              # EH_LABEL
 # %bb.272:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1159:                              # EH_LABEL
-	addi.d	$a0, $sp, 480
-	ld.d	$a1, $sp, 320                   # 8-byte Folded Reload
+	addi.d	$a0, $sp, 448
+	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp1160:                              # EH_LABEL
@@ -27102,7 +27068,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.13)
 	ori	$a2, $zero, 4
-	addi.d	$a0, $sp, 480
+	addi.d	$a0, $sp, 448
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1172:                              # EH_LABEL
@@ -27140,7 +27106,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a0, 8
 .Ltmp1173:                              # EH_LABEL
-	addi.d	$a0, $sp, 480
+	addi.d	$a0, $sp, 448
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1174:                              # EH_LABEL
@@ -27194,17 +27160,17 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
 	ori	$a2, $zero, 9
-	addi.d	$a0, $sp, 480
+	addi.d	$a0, $sp, 448
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1184:                              # EH_LABEL
 # %bb.297:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit320
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a0, 8
 .Ltmp1185:                              # EH_LABEL
-	addi.d	$a0, $sp, 480
+	addi.d	$a0, $sp, 448
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1186:                              # EH_LABEL
@@ -27258,15 +27224,15 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.15)
 	ori	$a2, $zero, 28
-	addi.d	$a0, $sp, 480
+	addi.d	$a0, $sp, 448
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1196:                              # EH_LABEL
 # %bb.306:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit326
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 480
+	ld.d	$a0, $sp, 448
 	ld.d	$a0, $a0, -24
-	addi.d	$a1, $sp, 480
+	addi.d	$a1, $sp, 448
 	add.d	$a0, $a1, $a0
 	ld.d	$s0, $a0, 240
 	beqz	$s0, .LBB25_408
@@ -27296,7 +27262,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1201:                              # EH_LABEL
 	ext.w.b	$a1, $a0
-	addi.d	$a0, $sp, 480
+	addi.d	$a0, $sp, 448
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp1202:                              # EH_LABEL
@@ -27312,15 +27278,15 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
 	ori	$a2, $zero, 44
-	addi.d	$a0, $sp, 480
+	addi.d	$a0, $sp, 448
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1206:                              # EH_LABEL
 # %bb.314:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit330
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 480
+	ld.d	$a0, $sp, 448
 	ld.d	$a0, $a0, -24
-	addi.d	$a1, $sp, 480
+	addi.d	$a1, $sp, 448
 	add.d	$a0, $a1, $a0
 	ld.d	$s0, $a0, 240
 	beqz	$s0, .LBB25_408
@@ -27350,7 +27316,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1211:                              # EH_LABEL
 	ext.w.b	$a1, $a0
-	addi.d	$a0, $sp, 480
+	addi.d	$a0, $sp, 448
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp1212:                              # EH_LABEL
@@ -27362,25 +27328,25 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1214:                              # EH_LABEL
 # %bb.321:                              # %_ZNSolsEPFRSoS_E.exit332
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 928
-	addi.d	$a1, $sp, 448
-	st.d	$a1, $sp, 432
-	st.d	$zero, $sp, 440
-	st.b	$zero, $sp, 448
+	ld.d	$a0, $sp, 896
+	addi.d	$a1, $sp, 416
+	st.d	$a1, $sp, 400
+	st.d	$zero, $sp, 408
+	st.b	$zero, $sp, 416
 	beqz	$a0, .LBB25_324
 # %bb.322:                              # %_ZNSolsEPFRSoS_E.exit332
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 912
+	ld.d	$a1, $sp, 880
 	sltu	$a2, $a1, $a0
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
 	or	$a0, $a0, $a1
 	beqz	$a0, .LBB25_324
 # %bb.323:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a3, $sp, 920
+	ld.d	$a3, $sp, 888
 	sub.d	$a4, $a0, $a3
 .Ltmp1216:                              # EH_LABEL
-	addi.d	$a0, $sp, 432
+	addi.d	$a0, $sp, 400
 	move	$a1, $zero
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEmmPKcm)
@@ -27389,17 +27355,17 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB25_325
 .LBB25_324:                             #   in Loop: Header=BB25_25 Depth=2
 .Ltmp1218:                              # EH_LABEL
-	addi.d	$a0, $sp, 432
-	addi.d	$a1, $sp, 960
+	addi.d	$a0, $sp, 400
+	addi.d	$a1, $sp, 928
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_assignERKS4_)
 	jirl	$ra, $ra, 0
 .Ltmp1219:                              # EH_LABEL
 .LBB25_325:                             # %_ZNKSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEE3strEv.exit
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 432
-	ld.d	$a2, $sp, 440
+	ld.d	$a1, $sp, 400
+	ld.d	$a2, $sp, 408
 .Ltmp1221:                              # EH_LABEL
-	addi.d	$a0, $sp, 480
+	addi.d	$a0, $sp, 448
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1222:                              # EH_LABEL
@@ -27449,102 +27415,102 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1230:                              # EH_LABEL
 # %bb.333:                              # %_ZNSolsEPFRSoS_E.exit338
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 432
-	addi.d	$a1, $sp, 448
+	ld.d	$a0, $sp, 400
+	addi.d	$a1, $sp, 416
 	beq	$a0, $a1, .LBB25_335
 # %bb.334:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i339
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 448
+	ld.d	$a1, $sp, 416
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_335:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit341
                                         #   in Loop: Header=BB25_25 Depth=2
 	ori	$a0, $zero, 2
-	st.w	$a0, $sp, 432
+	st.w	$a0, $sp, 400
 .Ltmp1232:                              # EH_LABEL
-	addi.d	$a1, $sp, 464
-	addi.d	$a2, $sp, 432
+	addi.d	$a1, $sp, 432
+	addi.d	$a2, $sp, 400
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser13process_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp1233:                              # EH_LABEL
 # %bb.336:                              #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 464
+	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 432
 	ld.d	$a0, $a0, -24
-	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
-	addi.d	$a2, $sp, 464
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
+	addi.d	$a2, $sp, 432
 	stx.d	$a1, $a0, $a2
-	ld.d	$a0, $sp, 560
-	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
-	st.d	$a1, $sp, 480
-	st.d	$s2, $sp, 488
-	addi.d	$a1, $sp, 576
-	addi.d	$fp, $sp, 864
+	ld.d	$a0, $sp, 528
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 448
+	st.d	$s2, $sp, 456
+	addi.d	$a1, $sp, 544
+	addi.d	$fp, $sp, 832
 	beq	$a0, $a1, .LBB25_338
 # %bb.337:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 576
+	ld.d	$a1, $sp, 544
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_338:                             # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
                                         #   in Loop: Header=BB25_25 Depth=2
-	st.d	$s1, $sp, 488
-	addi.d	$a0, $sp, 544
+	st.d	$s1, $sp, 456
+	addi.d	$a0, $sp, 512
 	pcaddu18i	$ra, %call36(_ZNSt6localeD1Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 464
+	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 432
 	ld.d	$a0, $a0, -24
-	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
-	addi.d	$a2, $sp, 464
+	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
+	addi.d	$a2, $sp, 432
 	stx.d	$a1, $a0, $a2
-	st.d	$zero, $sp, 472
-	addi.d	$a0, $sp, 592
+	st.d	$zero, $sp, 440
+	addi.d	$a0, $sp, 560
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
 .LBB25_339:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit351
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 864
+	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 832
 	ld.d	$a0, $a0, -24
-	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	stx.d	$a1, $a0, $fp
-	ld.d	$a0, $sp, 960
-	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
-	st.d	$a1, $sp, 880
-	st.d	$s2, $sp, 888
-	addi.d	$a1, $sp, 976
+	ld.d	$a0, $sp, 928
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 848
+	st.d	$s2, $sp, 856
+	addi.d	$a1, $sp, 944
 	beq	$a0, $a1, .LBB25_341
 # %bb.340:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i352
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 976
+	ld.d	$a1, $sp, 944
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_341:                             # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit354
                                         #   in Loop: Header=BB25_25 Depth=2
-	st.d	$s1, $sp, 888
-	addi.d	$a0, $sp, 944
+	st.d	$s1, $sp, 856
+	addi.d	$a0, $sp, 912
 	pcaddu18i	$ra, %call36(_ZNSt6localeD1Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 864
+	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 832
 	ld.d	$a0, $a0, -24
-	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
 	stx.d	$a1, $a0, $fp
-	st.d	$zero, $sp, 872
-	addi.d	$a0, $sp, 992
+	st.d	$zero, $sp, 840
+	addi.d	$a0, $sp, 960
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 1256
-	addi.d	$a1, $sp, 1272
+	ld.d	$a0, $sp, 1224
+	addi.d	$a1, $sp, 1240
 	beq	$a0, $a1, .LBB25_343
 # %bb.342:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i355
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 1272
+	ld.d	$a1, $sp, 1240
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -27553,41 +27519,41 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	sltu	$fp, $zero, $s8
 .LBB25_344:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit272
                                         #   in Loop: Header=BB25_25 Depth=2
-	addi.d	$a0, $sp, 1416
+	addi.d	$a0, $sp, 1384
 	pcaddu18i	$ra, %call36(_ZN2PP3CmdD2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 1856
+	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 1824
 	ld.d	$a0, $a0, -24
-	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
-	addi.d	$a2, $sp, 1856
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
+	addi.d	$a2, $sp, 1824
 	stx.d	$a1, $a0, $a2
-	ld.d	$a0, $sp, 1952
-	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
-	st.d	$a1, $sp, 1872
-	st.d	$s2, $sp, 1880
-	addi.d	$a1, $sp, 1968
+	ld.d	$a0, $sp, 1920
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 1840
+	st.d	$s2, $sp, 1848
+	addi.d	$a1, $sp, 1936
 	beq	$a0, $a1, .LBB25_346
 # %bb.345:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i367
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a1, $sp, 1968
+	ld.d	$a1, $sp, 1936
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_346:                             # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit369
                                         #   in Loop: Header=BB25_25 Depth=2
-	st.d	$s1, $sp, 1880
-	addi.d	$a0, $sp, 1936
+	st.d	$s1, $sp, 1848
+	addi.d	$a0, $sp, 1904
 	pcaddu18i	$ra, %call36(_ZNSt6localeD1Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 1856
+	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 1824
 	ld.d	$a0, $a0, -24
-	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
-	addi.d	$a2, $sp, 1856
+	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
+	addi.d	$a2, $sp, 1824
 	stx.d	$a1, $a0, $a2
-	st.d	$zero, $sp, 1864
-	addi.d	$a0, $sp, 1984
+	st.d	$zero, $sp, 1832
+	addi.d	$a0, $sp, 1952
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
 	bnez	$fp, .LBB25_25
@@ -27597,18 +27563,18 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .LBB25_348:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7_S_copyEPcPKcm.exit.i
                                         #   in Loop: Header=BB25_25 Depth=2
-	ld.d	$a0, $sp, 472
-	ld.d	$a1, $sp, 1256
-	st.d	$a0, $sp, 1264
+	ld.d	$a0, $sp, 440
+	ld.d	$a1, $sp, 1224
+	st.d	$a0, $sp, 1232
 	stx.b	$zero, $a1, $a0
-	ld.d	$a0, $sp, 464
-	st.d	$zero, $sp, 472
+	ld.d	$a0, $sp, 432
+	st.d	$zero, $sp, 440
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 464
+	ld.d	$a0, $sp, 432
 	bne	$a0, $s5, .LBB25_241
 	b	.LBB25_242
 .LBB25_349:                             # %_ZN2PP11PowerParser20get_line_from_stringERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_Ri.exit.thread
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 8
 	ori	$a1, $zero, 12
 	beq	$a0, $a1, .LBB25_352
@@ -27616,7 +27582,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	ori	$a1, $zero, 24
 	bne	$a0, $a1, .LBB25_353
 # %bb.351:                              # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit372
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a0, 0
 	lu12i.w	$a2, 407127
@@ -27641,7 +27607,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	bnez	$a0, .LBB25_353
 	b	.LBB25_403
 .LBB25_352:                             # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit375
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a0, 0
 	lu12i.w	$a2, 390743
@@ -27656,16 +27622,16 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	or	$a0, $a1, $a0
 	beqz	$a0, .LBB25_403
 .LBB25_353:                             # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit375.thread
-	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	ldptr.d	$a0, $a0, 2272
 	beqz	$a0, .LBB25_403
 # %bb.354:                              # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit378.thread
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB25_378
 # %bb.355:                              # %.preheader
 	move	$fp, $zero
-	addi.d	$s2, $sp, 1432
+	addi.d	$s2, $sp, 1400
 	lu12i.w	$a0, 427197
 	ori	$a0, $a0, 2579
 	lu32i.d	$a0, -155345
@@ -27684,7 +27650,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB25_356:                             #   in Loop: Header=BB25_357 Depth=1
 	addi.w	$fp, $fp, 1
 .LBB25_357:                             # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a1, $a5, 896
 	ld.d	$a0, $a5, 864
 	sub.d	$a2, $a1, $a0
@@ -27705,7 +27671,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.w	$a2, $a2, $a3
 	bge	$fp, $a2, .LBB25_403
 # %bb.358:                              #   in Loop: Header=BB25_357 Depth=1
-	ld.d	$a2, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, 848
 	sub.d	$a2, $a1, $a2
 	srai.d	$a2, $a2, 4
@@ -27724,24 +27690,24 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB25_357 Depth=1
 	ld.d	$s0, $a0, 16
 	ld.d	$s1, $a0, 8
-	st.d	$s2, $sp, 1416
-	st.d	$s0, $sp, 1856
+	st.d	$s2, $sp, 1384
+	st.d	$s0, $sp, 1824
 	move	$a0, $s2
 	bltu	$s0, $s5, .LBB25_364
 # %bb.362:                              # %.noexc.i.i382
                                         #   in Loop: Header=BB25_357 Depth=1
 .Ltmp1054:                              # EH_LABEL
-	addi.d	$a0, $sp, 1416
-	addi.d	$a1, $sp, 1856
+	addi.d	$a0, $sp, 1384
+	addi.d	$a1, $sp, 1824
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1055:                              # EH_LABEL
 # %bb.363:                              # %.noexc383
                                         #   in Loop: Header=BB25_357 Depth=1
-	ld.d	$a1, $sp, 1856
-	st.d	$a0, $sp, 1416
-	st.d	$a1, $sp, 1432
+	ld.d	$a1, $sp, 1824
+	st.d	$a0, $sp, 1384
+	st.d	$a1, $sp, 1400
 .LBB25_364:                             # %._crit_edge.i.i.i380
                                         #   in Loop: Header=BB25_357 Depth=1
 	beqz	$s0, .LBB25_368
@@ -27760,12 +27726,12 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB25_368:                             #   in Loop: Header=BB25_357 Depth=1
-	ld.d	$a0, $sp, 1856
-	ld.d	$a1, $sp, 1416
-	st.d	$a0, $sp, 1424
+	ld.d	$a0, $sp, 1824
+	ld.d	$a1, $sp, 1384
+	st.d	$a0, $sp, 1392
 	stx.b	$zero, $a1, $a0
-	ld.d	$a1, $sp, 1424
-	ld.d	$a0, $sp, 1416
+	ld.d	$a1, $sp, 1392
+	ld.d	$a0, $sp, 1384
 	move	$s0, $zero
 	bne	$a1, $s6, .LBB25_370
 # %bb.369:                              #   in Loop: Header=BB25_357 Depth=1
@@ -27780,7 +27746,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	beq	$a0, $s2, .LBB25_372
 # %bb.371:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i386
                                         #   in Loop: Header=BB25_357 Depth=1
-	ld.d	$a1, $sp, 1432
+	ld.d	$a1, $sp, 1400
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -27788,7 +27754,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB25_357 Depth=1
 	beqz	$s0, .LBB25_356
 # %bb.373:                              #   in Loop: Header=BB25_357 Depth=1
-	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a2, $a0, 840
 	ld.d	$a1, $a0, 848
 	ld.d	$a0, $a0, 864
@@ -27809,15 +27775,15 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.d	$a2, $a2, $a3
 .LBB25_376:                             # %_ZStplRKSt15_Deque_iteratorIN2PP3CmdERS1_PS1_El.exit
                                         #   in Loop: Header=BB25_357 Depth=1
-	st.d	$a2, $sp, 1416
-	st.d	$a1, $sp, 1424
+	st.d	$a2, $sp, 1384
+	st.d	$a1, $sp, 1392
 	addi.d	$a1, $a1, 432
-	st.d	$a1, $sp, 1432
-	st.d	$a0, $sp, 1440
+	st.d	$a1, $sp, 1400
+	st.d	$a0, $sp, 1408
 .Ltmp1057:                              # EH_LABEL
-	addi.d	$a0, $sp, 1856
-	addi.d	$a2, $sp, 1416
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	addi.d	$a0, $sp, 1824
+	addi.d	$a2, $sp, 1384
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP3CmdESaIS1_EE8_M_eraseESt15_Deque_iteratorIS1_RS1_PS1_E)
 	jirl	$ra, $ra, 0
 .Ltmp1058:                              # EH_LABEL
@@ -27825,8 +27791,8 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	addi.d	$fp, $fp, -1
 	b	.LBB25_356
 .LBB25_378:                             # %.preheader529
-	addi.d	$fp, $sp, 1432
-	addi.d	$s7, $sp, 384
+	addi.d	$fp, $sp, 1400
+	addi.d	$s7, $sp, 352
 	lu12i.w	$a0, 427197
 	ori	$a0, $a0, 2579
 	lu32i.d	$a0, -155345
@@ -27848,7 +27814,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	addi.d	$s5, $s5, 1
 	addi.d	$s4, $s4, 432
 .LBB25_380:                             # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a1, $a5, 896
 	ld.d	$a0, $a5, 864
 	sub.d	$a2, $a1, $a0
@@ -27869,7 +27835,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.w	$a2, $a2, $a3
 	bge	$s5, $a2, .LBB25_403
 # %bb.381:                              #   in Loop: Header=BB25_380 Depth=1
-	ld.d	$a2, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, 848
 	sub.d	$a2, $a1, $a2
 	srai.d	$a2, $a2, 4
@@ -27887,25 +27853,25 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB25_380 Depth=1
 	ld.d	$s0, $a0, 16
 	ld.d	$s1, $a0, 8
-	st.d	$fp, $sp, 1416
-	st.d	$s0, $sp, 1856
+	st.d	$fp, $sp, 1384
+	st.d	$s0, $sp, 1824
 	move	$a0, $fp
 	ori	$a1, $zero, 16
 	bltu	$s0, $a1, .LBB25_387
 # %bb.385:                              # %.noexc.i.i398
                                         #   in Loop: Header=BB25_380 Depth=1
 .Ltmp1045:                              # EH_LABEL
-	addi.d	$a0, $sp, 1416
-	addi.d	$a1, $sp, 1856
+	addi.d	$a0, $sp, 1384
+	addi.d	$a1, $sp, 1824
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1046:                              # EH_LABEL
 # %bb.386:                              # %.noexc399
                                         #   in Loop: Header=BB25_380 Depth=1
-	ld.d	$a1, $sp, 1856
-	st.d	$a0, $sp, 1416
-	st.d	$a1, $sp, 1432
+	ld.d	$a1, $sp, 1824
+	st.d	$a0, $sp, 1384
+	st.d	$a1, $sp, 1400
 .LBB25_387:                             # %._crit_edge.i.i.i396
                                         #   in Loop: Header=BB25_380 Depth=1
 	beqz	$s0, .LBB25_391
@@ -27924,12 +27890,12 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB25_391:                             #   in Loop: Header=BB25_380 Depth=1
-	ld.d	$a0, $sp, 1856
-	ld.d	$a1, $sp, 1416
-	st.d	$a0, $sp, 1424
+	ld.d	$a0, $sp, 1824
+	ld.d	$a1, $sp, 1384
+	st.d	$a0, $sp, 1392
 	stx.b	$zero, $a1, $a0
-	ld.d	$a1, $sp, 1424
-	ld.d	$a0, $sp, 1416
+	ld.d	$a1, $sp, 1392
+	ld.d	$a0, $sp, 1384
 	move	$s0, $zero
 	ori	$a2, $zero, 12
 	bne	$a1, $a2, .LBB25_393
@@ -27945,7 +27911,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	beq	$a0, $fp, .LBB25_395
 # %bb.394:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i403
                                         #   in Loop: Header=BB25_380 Depth=1
-	ld.d	$a1, $sp, 1432
+	ld.d	$a1, $sp, 1400
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -27953,7 +27919,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB25_380 Depth=1
 	beqz	$s0, .LBB25_379
 # %bb.396:                              #   in Loop: Header=BB25_380 Depth=1
-	ld.d	$a2, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a0, $a2, 840
 	ld.d	$a1, $a2, 848
 	sub.d	$a1, $a0, $a1
@@ -27970,74 +27936,74 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	add.d	$s0, $a0, $s4
 .LBB25_399:                             # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit407
                                         #   in Loop: Header=BB25_380 Depth=1
-	st.d	$s7, $sp, 368
+	st.d	$s7, $sp, 336
 	ori	$a0, $zero, 24
-	st.d	$a0, $sp, 1416
+	st.d	$a0, $sp, 1384
 .Ltmp1048:                              # EH_LABEL
-	addi.d	$a0, $sp, 368
-	addi.d	$a1, $sp, 1416
+	addi.d	$a0, $sp, 336
+	addi.d	$a1, $sp, 1384
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1049:                              # EH_LABEL
 # %bb.400:                              # %.noexc410
                                         #   in Loop: Header=BB25_380 Depth=1
-	ld.d	$a1, $sp, 1416
+	ld.d	$a1, $sp, 1384
 	vld	$vr0, $s2, 0
 	ld.d	$a2, $s2, 16
-	st.d	$a0, $sp, 368
-	st.d	$a1, $sp, 384
+	st.d	$a0, $sp, 336
+	st.d	$a1, $sp, 352
 	vst	$vr0, $a0, 0
 	st.d	$a2, $a0, 16
-	ld.d	$a0, $sp, 368
-	st.d	$a1, $sp, 376
+	ld.d	$a0, $sp, 336
+	st.d	$a1, $sp, 344
 	stx.b	$zero, $a0, $a1
 .Ltmp1051:                              # EH_LABEL
-	addi.d	$a1, $sp, 368
+	addi.d	$a1, $sp, 336
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd12set_filenameENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE)
 	jirl	$ra, $ra, 0
 .Ltmp1052:                              # EH_LABEL
 # %bb.401:                              #   in Loop: Header=BB25_380 Depth=1
-	ld.d	$a0, $sp, 368
+	ld.d	$a0, $sp, 336
 	beq	$a0, $s7, .LBB25_379
 # %bb.402:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i412
                                         #   in Loop: Header=BB25_380 Depth=1
-	ld.d	$a1, $sp, 384
+	ld.d	$a1, $sp, 352
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	b	.LBB25_379
 .LBB25_403:                             # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit372.thread522
-	ori	$a0, $zero, 2248
+	ori	$a0, $zero, 2216
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2264
+	ori	$a1, $zero, 2232
 	add.d	$a1, $sp, $a1
 	beq	$a0, $a1, .LBB25_405
 # %bb.404:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i421
-	ori	$a1, $zero, 2264
+	ori	$a1, $zero, 2232
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_405:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit423
-	ori	$a0, $zero, 2280
+	ori	$a0, $zero, 2248
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2296
+	ori	$a1, $zero, 2264
 	add.d	$a1, $sp, $a1
 	beq	$a0, $a1, .LBB25_407
 # %bb.406:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i424
-	ori	$a1, $zero, 2296
+	ori	$a1, $zero, 2264
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_407:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit426
-	addi.d	$sp, $sp, 368
+	addi.d	$sp, $sp, 336
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
 	ld.d	$s6, $sp, 1960                  # 8-byte Folded Reload
@@ -28079,7 +28045,7 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB25_461
 .LBB25_416:
 .Ltmp1220:                              # EH_LABEL
-	ld.d	$a2, $sp, 432
+	ld.d	$a2, $sp, 400
 	move	$fp, $a0
 	b	.LBB25_442
 .LBB25_417:
@@ -28093,11 +28059,11 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB25_473
 .LBB25_420:
 .Ltmp1053:                              # EH_LABEL
-	ld.d	$a2, $sp, 368
+	ld.d	$a2, $sp, 336
 	move	$fp, $a0
 	beq	$a2, $s7, .LBB25_474
 # %bb.421:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i418
-	ld.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 352
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -28112,34 +28078,34 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB25_463
 .LBB25_424:
 .Ltmp1255:                              # EH_LABEL
-	ld.d	$a2, $sp, 1288
+	ld.d	$a2, $sp, 1256
 	move	$fp, $a0
-	addi.d	$a0, $sp, 1304
+	addi.d	$a0, $sp, 1272
 	beq	$a2, $a0, .LBB25_426
 # %bb.425:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i276
-	ld.d	$a0, $sp, 1304
+	ld.d	$a0, $sp, 1272
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_426:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit278
-	ld.d	$a0, $sp, 1320
-	addi.d	$a1, $sp, 1336
+	ld.d	$a0, $sp, 1288
+	addi.d	$a1, $sp, 1304
 	beq	$a0, $a1, .LBB25_467
 # %bb.427:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i279
-	ld.d	$a1, $sp, 1336
+	ld.d	$a1, $sp, 1304
 	b	.LBB25_466
 .LBB25_428:
 .Ltmp1249:                              # EH_LABEL
 	b	.LBB25_459
 .LBB25_429:
 .Ltmp1246:                              # EH_LABEL
-	ld.d	$a2, $sp, 400
+	ld.d	$a2, $sp, 368
 	move	$fp, $a0
-	addi.d	$a0, $sp, 416
+	addi.d	$a0, $sp, 384
 	beq	$a2, $a0, .LBB25_463
 # %bb.430:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i358
-	ld.d	$a0, $sp, 416
+	ld.d	$a0, $sp, 384
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -28178,12 +28144,12 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1231:                              # EH_LABEL
 .LBB25_441:
 	move	$fp, $a0
-	ld.d	$a2, $sp, 432
+	ld.d	$a2, $sp, 400
 .LBB25_442:
-	addi.d	$a0, $sp, 448
+	addi.d	$a0, $sp, 416
 	beq	$a2, $a0, .LBB25_462
 # %bb.443:                              # %.body333.sink.split
-	ld.d	$a0, $sp, 448
+	ld.d	$a0, $sp, 416
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -28206,22 +28172,22 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB25_461
 .LBB25_448:
 .Ltmp1094:                              # EH_LABEL
-	ld.d	$a2, $sp, 1352
+	ld.d	$a2, $sp, 1320
 	move	$fp, $a0
-	addi.d	$a0, $sp, 1368
+	addi.d	$a0, $sp, 1336
 	beq	$a2, $a0, .LBB25_450
 # %bb.449:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i161
-	ld.d	$a0, $sp, 1368
+	ld.d	$a0, $sp, 1336
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_450:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit163
-	ld.d	$a0, $sp, 1384
-	addi.d	$a1, $sp, 1400
+	ld.d	$a0, $sp, 1352
+	addi.d	$a1, $sp, 1368
 	beq	$a0, $a1, .LBB25_468
 # %bb.451:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i164
-	ld.d	$a1, $sp, 1400
+	ld.d	$a1, $sp, 1368
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -28232,30 +28198,30 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB25_456
 .LBB25_453:
 .Ltmp1082:                              # EH_LABEL
-	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
-	st.d	$a1, $sp, 1856
+	ld.d	$a1, $sp, 272                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 1824
 	ld.d	$a1, $a1, -24
 	move	$fp, $a0
-	addi.d	$a0, $sp, 1856
-	ld.d	$a2, $sp, 312                   # 8-byte Folded Reload
+	addi.d	$a0, $sp, 1824
+	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
 	stx.d	$a2, $a1, $a0
 	b	.LBB25_455
 .LBB25_454:
 .Ltmp1085:                              # EH_LABEL
 	move	$fp, $a0
-	addi.d	$a0, $sp, 1880
+	addi.d	$a0, $sp, 1848
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEED2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 1856
+	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 1824
 	ld.d	$a0, $a0, -24
-	addi.d	$a1, $sp, 1856
-	ld.d	$a2, $sp, 312                   # 8-byte Folded Reload
+	addi.d	$a1, $sp, 1824
+	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
 	stx.d	$a2, $a0, $a1
 .LBB25_455:                             # %.body.i
-	st.d	$zero, $sp, 1864
+	st.d	$zero, $sp, 1832
 .LBB25_456:                             # %.body.i
-	addi.d	$a0, $sp, 1984
+	addi.d	$a0, $sp, 1952
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB25_474
@@ -28272,29 +28238,29 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB25_461:
 	move	$fp, $a0
 .LBB25_462:
-	addi.d	$a0, $sp, 464
+	addi.d	$a0, $sp, 432
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev)
 	jirl	$ra, $ra, 0
 .LBB25_463:
-	addi.d	$a0, $sp, 864
+	addi.d	$a0, $sp, 832
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev)
 	jirl	$ra, $ra, 0
 .LBB25_464:
-	ld.d	$a0, $sp, 1256
-	addi.d	$a1, $sp, 1272
+	ld.d	$a0, $sp, 1224
+	addi.d	$a1, $sp, 1240
 	beq	$a0, $a1, .LBB25_467
 # %bb.465:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i361
-	ld.d	$a1, $sp, 1272
+	ld.d	$a1, $sp, 1240
 .LBB25_466:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit281
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_467:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit281
-	addi.d	$a0, $sp, 1416
+	addi.d	$a0, $sp, 1384
 	pcaddu18i	$ra, %call36(_ZN2PP3CmdD2Ev)
 	jirl	$ra, $ra, 0
 .LBB25_468:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit166
-	addi.d	$a0, $sp, 1856
+	addi.d	$a0, $sp, 1824
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB25_474
@@ -28312,28 +28278,28 @@ _ZN2PP11PowerParser12parse_stringENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB25_473:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit420
 	move	$fp, $a0
 .LBB25_474:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit420
-	ori	$a0, $zero, 2248
+	ori	$a0, $zero, 2216
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2264
+	ori	$a1, $zero, 2232
 	add.d	$a1, $sp, $a1
 	beq	$a0, $a1, .LBB25_476
 # %bb.475:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i427
-	ori	$a1, $zero, 2264
+	ori	$a1, $zero, 2232
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB25_476:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit429
-	ori	$a0, $zero, 2280
+	ori	$a0, $zero, 2248
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2296
+	ori	$a1, $zero, 2264
 	add.d	$a1, $sp, $a1
 	beq	$a0, $a1, .LBB25_478
 # %bb.477:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i430
-	ori	$a1, $zero, 2296
+	ori	$a1, $zero, 2264
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
@@ -30754,48 +30720,65 @@ _ZN2PP11PowerParser14clear_and_initEv:  # @_ZN2PP11PowerParser14clear_and_initEv
 	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
 	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
 	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
+	.cfi_offset 25, -40
+	.cfi_offset 26, -48
+	.cfi_offset 27, -56
+	.cfi_offset 28, -64
 	move	$fp, $a0
-	xvld	$xr1, $a0, 608
-	xvld	$xr0, $a0, 640
 	addi.d	$a0, $a0, 592
-	xvst	$xr1, $sp, 16                   # 32-byte Folded Spill
-	xvst	$xr1, $sp, 80
-	xvst	$xr0, $sp, 48
+	ld.d	$s2, $fp, 608
+	ld.d	$s3, $fp, 616
+	ld.d	$s0, $fp, 624
+	ld.d	$s1, $fp, 632
+	st.d	$s2, $sp, 48
+	st.d	$s3, $sp, 56
+	vld	$vr0, $fp, 640
+	vld	$vr1, $fp, 656
+	st.d	$s0, $sp, 64
+	st.d	$s1, $sp, 72
+	vst	$vr0, $sp, 16
+	vst	$vr1, $sp, 32
 .Ltmp1299:                              # EH_LABEL
-	addi.d	$a1, $sp, 80
-	addi.d	$a2, $sp, 48
+	addi.d	$a1, $sp, 48
+	addi.d	$a2, $sp, 16
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE19_M_destroy_data_auxESt15_Deque_iteratorIS5_RS5_PS5_ESB_)
 	jirl	$ra, $ra, 0
 .Ltmp1300:                              # EH_LABEL
 # %bb.1:                                # %.noexc.i
-	ld.d	$s0, $fp, 664
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvpickve2gr.d	$a1, $xr0, 3
-	bgeu	$a1, $s0, .LBB40_3
+	ld.d	$s4, $fp, 664
+	bgeu	$s1, $s4, .LBB40_4
+# %bb.2:                                # %.lr.ph.i.i.i.preheader
+	move	$a1, $s1
 	.p2align	4, , 16
-.LBB40_2:                               # %.lr.ph.i.i.i
+.LBB40_3:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $a1, 8
-	addi.d	$s1, $a1, 8
+	addi.d	$s5, $a1, 8
 	ori	$a1, $zero, 512
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	move	$a1, $s1
-	bltu	$s1, $s0, .LBB40_2
-.LBB40_3:                               # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE5clearEv.exit
+	move	$a1, $s5
+	bltu	$s5, $s4, .LBB40_3
+.LBB40_4:                               # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE5clearEv.exit
+	st.d	$s2, $fp, 640
+	st.d	$s3, $fp, 648
 	ld.d	$a1, $fp, 696
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $fp, 640
+	st.d	$s0, $fp, 656
+	st.d	$s1, $fp, 664
 	addi.d	$a0, $fp, 680
 .Ltmp1302:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N2PP8VariableEESt10_Select1stISA_ESt4lessIS5_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E)
 	jirl	$ra, $ra, 0
 .Ltmp1303:                              # EH_LABEL
-# %bb.4:                                # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN2PP8VariableESt4lessIS5_ESaISt4pairIKS5_S7_EEE5clearEv.exit
+# %bb.5:                                # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN2PP8VariableESt4lessIS5_ESaISt4pairIKS5_S7_EEE5clearEv.exit
 	addi.d	$a0, $fp, 688
 	st.d	$zero, $fp, 696
 	st.d	$a0, $fp, 704
@@ -30807,72 +30790,84 @@ _ZN2PP11PowerParser14clear_and_initEv:  # @_ZN2PP11PowerParser14clear_and_initEv
 	pcaddu18i	$ra, %call36(_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N2PP8FunctionEESt10_Select1stISA_ESt4lessIS5_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E)
 	jirl	$ra, $ra, 0
 .Ltmp1306:                              # EH_LABEL
-# %bb.5:                                # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN2PP8FunctionESt4lessIS5_ESaISt4pairIKS5_S7_EEE5clearEv.exit
+# %bb.6:                                # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN2PP8FunctionESt4lessIS5_ESaISt4pairIKS5_S7_EEE5clearEv.exit
 	addi.d	$a0, $fp, 784
 	st.d	$zero, $fp, 792
 	st.d	$a0, $fp, 800
-	xvld	$xr0, $fp, 840
 	st.d	$a0, $fp, 808
+	vld	$vr0, $fp, 840
+	vld	$vr1, $fp, 856
 	st.d	$zero, $fp, 816
 	addi.d	$a0, $fp, 824
-	xvst	$xr0, $sp, 80
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
 .Ltmp1308:                              # EH_LABEL
-	addi.d	$a1, $sp, 80
+	addi.d	$a1, $sp, 48
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP3CmdESaIS1_EE15_M_erase_at_endESt15_Deque_iteratorIS1_RS1_PS1_E)
 	jirl	$ra, $ra, 0
 .Ltmp1309:                              # EH_LABEL
-# %bb.6:                                # %_ZNSt5dequeIN2PP3CmdESaIS1_EE5clearEv.exit
-	xvld	$xr0, $fp, 920
+# %bb.7:                                # %_ZNSt5dequeIN2PP3CmdESaIS1_EE5clearEv.exit
+	vld	$vr0, $fp, 920
+	vld	$vr1, $fp, 936
 	addi.d	$a0, $fp, 904
-	xvst	$xr0, $sp, 80
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
 .Ltmp1311:                              # EH_LABEL
-	addi.d	$a1, $sp, 80
+	addi.d	$a1, $sp, 48
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP3CmdESaIS1_EE15_M_erase_at_endESt15_Deque_iteratorIS1_RS1_PS1_E)
 	jirl	$ra, $ra, 0
 .Ltmp1312:                              # EH_LABEL
-# %bb.7:                                # %_ZNSt5dequeIN2PP3CmdESaIS1_EE5clearEv.exit4
+# %bb.8:                                # %_ZNSt5dequeIN2PP3CmdESaIS1_EE5clearEv.exit4
 	addi.d	$s0, $fp, 2047
 	addi.d	$a0, $s0, 249
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP8WhenthenESaIS1_EE5clearEv)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2392
-	xvldx	$xr1, $fp, $a0
-	ori	$a0, $zero, 2424
-	xvldx	$xr0, $fp, $a0
 	addi.d	$a0, $s0, 329
-	xvst	$xr1, $sp, 16                   # 32-byte Folded Spill
-	xvst	$xr1, $sp, 80
-	xvst	$xr0, $sp, 48
+	ldptr.d	$s0, $fp, 2392
+	ldptr.d	$s1, $fp, 2400
+	ori	$a1, $zero, 2424
+	vldx	$vr0, $fp, $a1
+	ldptr.d	$s2, $fp, 2408
+	ldptr.d	$s3, $fp, 2416
+	st.d	$s0, $sp, 48
+	vst	$vr0, $sp, 16
+	ori	$a1, $zero, 2440
+	vldx	$vr0, $fp, $a1
+	st.d	$s1, $sp, 56
+	st.d	$s2, $sp, 64
+	st.d	$s3, $sp, 72
+	vst	$vr0, $sp, 32
 .Ltmp1314:                              # EH_LABEL
-	addi.d	$a1, $sp, 80
-	addi.d	$a2, $sp, 48
+	addi.d	$a1, $sp, 48
+	addi.d	$a2, $sp, 16
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP12RestartblockESaIS1_EE19_M_destroy_data_auxESt15_Deque_iteratorIS1_RS1_PS1_ES7_)
 	jirl	$ra, $ra, 0
 .Ltmp1315:                              # EH_LABEL
-# %bb.8:                                # %.noexc.i5
-	ldptr.d	$s0, $fp, 2448
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvpickve2gr.d	$a1, $xr0, 3
-	bgeu	$a1, $s0, .LBB40_10
+# %bb.9:                                # %.noexc.i5
+	ldptr.d	$s4, $fp, 2448
+	bgeu	$s3, $s4, .LBB40_12
+# %bb.10:                               # %.lr.ph.i.i.i6.preheader
+	move	$a1, $s3
 	.p2align	4, , 16
-.LBB40_9:                               # %.lr.ph.i.i.i6
+.LBB40_11:                              # %.lr.ph.i.i.i6
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $a1, 8
-	addi.d	$s1, $a1, 8
+	addi.d	$s5, $a1, 8
 	ori	$a1, $zero, 520
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	move	$a1, $s1
-	bltu	$s1, $s0, .LBB40_9
-.LBB40_10:                              # %_ZNSt5dequeIN2PP12RestartblockESaIS1_EE5clearEv.exit
-	ori	$a0, $zero, 2424
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvstx	$xr0, $fp, $a0
-	addi.d	$s0, $sp, 96
-	st.d	$s0, $sp, 80
+	move	$a1, $s5
+	bltu	$s5, $s4, .LBB40_11
+.LBB40_12:                              # %_ZNSt5dequeIN2PP12RestartblockESaIS1_EE5clearEv.exit
+	stptr.d	$s0, $fp, 2424
+	stptr.d	$s1, $fp, 2432
+	stptr.d	$s2, $fp, 2440
+	stptr.d	$s3, $fp, 2448
+	addi.d	$s0, $sp, 64
+	st.d	$s0, $sp, 48
 	ld.d	$a2, $fp, 1576
-	st.d	$zero, $sp, 88
-	st.b	$zero, $sp, 96
+	st.d	$zero, $sp, 56
+	st.b	$zero, $sp, 64
 	addi.d	$a0, $fp, 1568
 .Ltmp1317:                              # EH_LABEL
 	move	$a1, $zero
@@ -30881,7 +30876,7 @@ _ZN2PP11PowerParser14clear_and_initEv:  # @_ZN2PP11PowerParser14clear_and_initEv
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEmmPKcm)
 	jirl	$ra, $ra, 0
 .Ltmp1318:                              # EH_LABEL
-# %bb.11:                               # %.noexc10
+# %bb.13:                               # %.noexc10
 	ld.wu	$a2, $fp, 1560
 	addi.d	$a0, $fp, 1496
 	ld.d	$a3, $fp, 1576
@@ -30894,60 +30889,64 @@ _ZN2PP11PowerParser14clear_and_initEv:  # @_ZN2PP11PowerParser14clear_and_initEv
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEE7_M_syncEPcmm)
 	jirl	$ra, $ra, 0
 .Ltmp1320:                              # EH_LABEL
-# %bb.12:                               # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEE3strERKNS_12basic_stringIcS2_S3_EE.exit
-	ld.d	$a0, $sp, 80
-	beq	$a0, $s0, .LBB40_14
-# %bb.13:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-	ld.d	$a1, $sp, 96
+# %bb.14:                               # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEE3strERKNS_12basic_stringIcS2_S3_EE.exit
+	ld.d	$a0, $sp, 48
+	beq	$a0, $s0, .LBB40_16
+# %bb.15:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+	ld.d	$a1, $sp, 64
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB40_14:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
+.LBB40_16:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser4initEv)
 	jirl	$ra, $ra, 0
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 144
 	ret
-.LBB40_15:
+.LBB40_17:
 .Ltmp1316:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB40_16:
+.LBB40_18:
 .Ltmp1313:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB40_17:
+.LBB40_19:
 .Ltmp1310:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB40_18:
+.LBB40_20:
 .Ltmp1307:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB40_19:
+.LBB40_21:
 .Ltmp1304:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB40_20:
+.LBB40_22:
 .Ltmp1301:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB40_21:
+.LBB40_23:
 .Ltmp1321:                              # EH_LABEL
-	ld.d	$a2, $sp, 80
+	ld.d	$a2, $sp, 48
 	move	$fp, $a0
-	beq	$a2, $s0, .LBB40_23
-# %bb.22:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i12
-	ld.d	$a0, $sp, 96
+	beq	$a2, $s0, .LBB40_25
+# %bb.24:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i12
+	ld.d	$a0, $sp, 64
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB40_23:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit14
+.LBB40_25:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit14
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
@@ -31295,107 +31294,111 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	addi.d	$sp, $sp, -832
-	.cfi_def_cfa_offset 2864
+	addi.d	$sp, $sp, -816
+	.cfi_def_cfa_offset 2848
 	move	$s5, $a1
 	move	$fp, $a0
-	ori	$a0, $zero, 2760
+	ori	$a0, $zero, 2744
 	add.d	$a0, $sp, $a0
-	ori	$a1, $zero, 2744
+	ori	$a1, $zero, 2728
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	ori	$a0, $zero, 47
-	st.d	$a0, $sp, 376
-	ori	$a0, $zero, 2744
+	st.d	$a0, $sp, 360
+	ori	$a0, $zero, 2728
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 376
+	addi.d	$a1, $sp, 360
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 376
-	ori	$a2, $zero, 2744
+	ld.d	$a1, $sp, 360
+	ori	$a2, $zero, 2728
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2760
+	ori	$a2, $zero, 2744
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.18)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.18)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 39
-	ori	$a2, $zero, 2752
+	ori	$a2, $zero, 2736
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	stx.b	$zero, $a0, $a1
-	ori	$a0, $zero, 2728
+	ori	$a0, $zero, 2712
 	add.d	$a0, $sp, $a0
-	ori	$a1, $zero, 2712
+	ori	$a1, $zero, 2696
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	ori	$a0, $zero, 51
-	st.d	$a0, $sp, 376
+	st.d	$a0, $sp, 360
 .Ltmp1327:                              # EH_LABEL
-	ori	$a0, $zero, 2712
+	ori	$a0, $zero, 2696
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 376
+	addi.d	$a1, $sp, 360
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1328:                              # EH_LABEL
 # %bb.1:                                # %.noexc444
-	ld.d	$a1, $sp, 376
-	ori	$a2, $zero, 2712
+	ld.d	$a1, $sp, 360
+	ori	$a2, $zero, 2696
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2728
+	ori	$a2, $zero, 2712
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.19)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.19)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	ld.w	$a2, $a2, 47
 	vst	$vr0, $a0, 32
 	st.w	$a2, $a0, 47
-	ori	$a2, $zero, 2720
+	ori	$a2, $zero, 2704
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	stx.b	$zero, $a0, $a1
-	ori	$a0, $zero, 2696
+	ori	$a0, $zero, 2680
 	add.d	$s0, $sp, $a0
-	ori	$a0, $zero, 2752
+	ori	$a0, $zero, 2736
 	add.d	$a0, $sp, $a0
 	ld.d	$s1, $a0, 0
-	ori	$a0, $zero, 2744
+	ori	$a0, $zero, 2728
 	add.d	$a0, $sp, $a0
 	ld.d	$s2, $a0, 0
-	ori	$a0, $zero, 2680
+	ori	$a0, $zero, 2664
 	add.d	$a0, $sp, $a0
 	st.d	$s0, $a0, 0
 	ori	$a1, $zero, 16
-	st.d	$s1, $sp, 376
+	st.d	$s1, $sp, 360
 	move	$a0, $s0
 	bltu	$s1, $a1, .LBB43_4
 # %bb.2:                                # %.noexc.i447
 .Ltmp1330:                              # EH_LABEL
-	ori	$a0, $zero, 2680
+	ori	$a0, $zero, 2664
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 376
+	addi.d	$a1, $sp, 360
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1331:                              # EH_LABEL
 # %bb.3:                                # %.noexc448
-	ld.d	$a1, $sp, 376
-	ori	$a2, $zero, 2680
+	ld.d	$a1, $sp, 360
+	ori	$a2, $zero, 2664
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2696
+	ori	$a2, $zero, 2680
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 .LBB43_4:                               # %._crit_edge.i.i446
@@ -31413,44 +31416,44 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_8:
-	ld.d	$a0, $sp, 376
-	ori	$a1, $zero, 2680
+	ld.d	$a0, $sp, 360
+	ori	$a1, $zero, 2664
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	ori	$a2, $zero, 2688
+	ori	$a2, $zero, 2672
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
 	stx.b	$zero, $a1, $a0
-	ori	$a0, $zero, 2664
+	ori	$a0, $zero, 2648
 	add.d	$s3, $sp, $a0
-	ori	$a0, $zero, 2720
+	ori	$a0, $zero, 2704
 	add.d	$a0, $sp, $a0
 	ld.d	$s1, $a0, 0
-	ori	$a0, $zero, 2712
+	ori	$a0, $zero, 2696
 	add.d	$a0, $sp, $a0
 	ld.d	$s2, $a0, 0
-	ori	$a0, $zero, 2648
+	ori	$a0, $zero, 2632
 	add.d	$a0, $sp, $a0
 	st.d	$s3, $a0, 0
 	ori	$a1, $zero, 16
-	st.d	$s1, $sp, 376
+	st.d	$s1, $sp, 360
 	move	$a0, $s3
 	bltu	$s1, $a1, .LBB43_11
 # %bb.9:                                # %.noexc.i450
 .Ltmp1333:                              # EH_LABEL
-	ori	$a0, $zero, 2648
+	ori	$a0, $zero, 2632
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 376
+	addi.d	$a1, $sp, 360
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1334:                              # EH_LABEL
 # %bb.10:                               # %.noexc451
-	ld.d	$a1, $sp, 376
-	ori	$a2, $zero, 2648
+	ld.d	$a1, $sp, 360
+	ori	$a2, $zero, 2632
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2664
+	ori	$a2, $zero, 2648
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 .LBB43_11:                              # %._crit_edge.i.i449
@@ -31468,68 +31471,68 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_15:                              # %._crit_edge.i.i453
-	ld.d	$a0, $sp, 376
-	ori	$a1, $zero, 2648
+	ld.d	$a0, $sp, 360
+	ori	$a1, $zero, 2632
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	ori	$a2, $zero, 2656
+	ori	$a2, $zero, 2640
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
 	stx.b	$zero, $a1, $a0
-	ori	$a0, $zero, 2632
-	add.d	$s1, $sp, $a0
 	ori	$a0, $zero, 2616
+	add.d	$s1, $sp, $a0
+	ori	$a0, $zero, 2600
 	add.d	$a0, $sp, $a0
 	st.d	$s1, $a0, 0
-	ori	$a0, $zero, 2624
+	ori	$a0, $zero, 2608
 	add.d	$a0, $sp, $a0
 	st.d	$zero, $a0, 0
-	ori	$a0, $zero, 2632
+	ori	$a0, $zero, 2616
 	add.d	$a0, $sp, $a0
 	st.b	$zero, $a0, 0
 	addi.d	$a4, $fp, 1472
 .Ltmp1336:                              # EH_LABEL
-	ori	$a0, $zero, 2680
+	ori	$a0, $zero, 2664
 	add.d	$a1, $sp, $a0
-	ori	$a0, $zero, 2648
+	ori	$a0, $zero, 2632
 	add.d	$a2, $sp, $a0
-	ori	$a0, $zero, 2616
+	ori	$a0, $zero, 2600
 	add.d	$a3, $sp, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_S6_RNS1_18basic_stringstreamIcS4_S5_EE)
 	jirl	$ra, $ra, 0
 .Ltmp1337:                              # EH_LABEL
 # %bb.16:
-	ori	$a0, $zero, 2616
+	ori	$a0, $zero, 2600
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	beq	$a0, $s1, .LBB43_18
 # %bb.17:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-	ori	$a1, $zero, 2632
+	ori	$a1, $zero, 2616
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_18:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
-	ori	$a0, $zero, 2648
+	ori	$a0, $zero, 2632
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	beq	$a0, $s3, .LBB43_20
 # %bb.19:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i457
-	ori	$a1, $zero, 2664
+	ori	$a1, $zero, 2648
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_20:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit459
-	ori	$a0, $zero, 2680
+	ori	$a0, $zero, 2664
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	beq	$a0, $s0, .LBB43_22
 # %bb.21:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i460
-	ori	$a1, $zero, 2696
+	ori	$a1, $zero, 2680
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
@@ -31539,7 +31542,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	move	$s0, $zero
 	move	$s1, $zero
 	st.w	$zero, $s5, 0
-	ori	$a0, $zero, 2612
+	ori	$a0, $zero, 2596
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
 	lu12i.w	$a0, 427197
@@ -31606,7 +31609,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_31:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit473
                                         #   in Loop: Header=BB43_23 Depth=1
 .Ltmp1826:                              # EH_LABEL
-	ori	$a1, $zero, 2612
+	ori	$a1, $zero, 2596
 	add.d	$a1, $sp, $a1
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd19multi_line_commentsERi)
 	jirl	$ra, $ra, 0
@@ -31616,11 +31619,11 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	addi.d	$s0, $s0, 432
 	b	.LBB43_23
 .LBB43_33:
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
 .Ltmp1339:                              # EH_LABEL
-	ori	$a0, $zero, 2216
+	ori	$a0, $zero, 2200
 	add.d	$a0, $sp, $a0
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEC1Ev)
 	jirl	$ra, $ra, 0
@@ -31667,9 +31670,9 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_39:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit476
                                         #   in Loop: Header=BB43_35 Depth=1
 .Ltmp1821:                              # EH_LABEL
-	ori	$a1, $zero, 2216
+	ori	$a1, $zero, 2200
 	add.d	$a1, $sp, $a1
-	ori	$a2, $zero, 2608
+	ori	$a2, $zero, 2592
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd13handle_quotesERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
@@ -31680,9 +31683,9 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_35
 .LBB43_41:
 .Ltmp1342:                              # EH_LABEL
-	ori	$a0, $zero, 2216
+	ori	$a0, $zero, 2200
 	add.d	$a1, $sp, $a0
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a2, $sp, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser24process_error_return_intERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
@@ -31703,7 +31706,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .Ltmp1345:                              # EH_LABEL
 # %bb.44:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	ld.w	$a1, $a0, 0
 .Ltmp1346:                              # EH_LABEL
@@ -31831,14 +31834,14 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	add.d	$a1, $a1, $a2
 .LBB43_63:                              # %_ZStplRKSt15_Deque_iteratorIN2PP3CmdERS1_PS1_El.exit
                                         #   in Loop: Header=BB43_55 Depth=1
-	st.d	$a1, $sp, 376
-	st.d	$a3, $sp, 384
+	st.d	$a1, $sp, 360
+	st.d	$a3, $sp, 368
 	addi.d	$a1, $a3, 432
-	st.d	$a1, $sp, 392
-	st.d	$a0, $sp, 400
+	st.d	$a1, $sp, 376
+	st.d	$a0, $sp, 384
 .Ltmp1815:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	addi.d	$a2, $sp, 376
+	addi.d	$a0, $sp, 1184
+	addi.d	$a2, $sp, 360
 	addi.d	$a1, $fp, 824
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP3CmdESaIS1_EE8_M_eraseESt15_Deque_iteratorIS1_RS1_PS1_E)
 	jirl	$ra, $ra, 0
@@ -31847,15 +31850,15 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	addi.d	$s0, $s0, -1
 	b	.LBB43_54
 .LBB43_65:                              # %.preheader1278
-	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 296                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 280                   # 8-byte Folded Spill
 	blez	$a3, .LBB43_172
 # %bb.66:                               # %.lr.ph1461
-	addi.d	$s1, $sp, 392
-	ori	$a0, $zero, 2200
+	addi.d	$s1, $sp, 376
+	ori	$a0, $zero, 2184
 	add.d	$s5, $sp, $a0
 	bstrpick.d	$a0, $a2, 30, 0
-	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 	ori	$s6, $zero, 3
 	b	.LBB43_70
 	.p2align	4, , 16
@@ -31866,14 +31869,14 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	move	$a1, $a0
 .LBB43_68:                              # %_ZStplRKSt15_Deque_iteratorIN2PP3CmdERS1_PS1_El.exit523
                                         #   in Loop: Header=BB43_70 Depth=1
-	st.d	$a1, $sp, 376
-	st.d	$a0, $sp, 384
+	st.d	$a1, $sp, 360
+	st.d	$a0, $sp, 368
 	addi.d	$a0, $a0, 432
-	st.d	$a0, $sp, 392
-	st.d	$a3, $sp, 400
+	st.d	$a0, $sp, 376
+	st.d	$a3, $sp, 384
 .Ltmp1377:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	addi.d	$a2, $sp, 376
+	addi.d	$a0, $sp, 1184
+	addi.d	$a2, $sp, 360
 	addi.d	$a1, $fp, 824
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP3CmdESaIS1_EE8_M_eraseESt15_Deque_iteratorIS1_RS1_PS1_E)
 	jirl	$ra, $ra, 0
@@ -31885,14 +31888,14 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
                                         #     Child Loop BB43_109 Depth 2
 	ld.d	$a1, $fp, 840
 	ld.d	$a0, $fp, 848
-	ld.d	$s7, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 232                   # 8-byte Folded Reload
 	addi.d	$a4, $s7, -1
 	sub.d	$a0, $a1, $a0
 	srai.d	$a0, $a0, 4
 	mul.d	$a0, $a0, $s8
 	add.d	$a3, $a0, $a4
 	slli.d	$a2, $a3, 3
-	st.d	$a4, $sp, 240                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 232                   # 8-byte Folded Spill
 	ori	$a0, $zero, 432
 	mul.d	$a4, $a4, $a0
 	beqz	$a3, .LBB43_73
@@ -31912,7 +31915,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	add.d	$a1, $a1, $a4
 .LBB43_75:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit488
                                         #   in Loop: Header=BB43_70 Depth=1
-	st.d	$a4, $sp, 248                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 240                   # 8-byte Folded Spill
 	ld.d	$a2, $a0, 232
 	ld.d	$a3, $a0, 200
 	sub.d	$a3, $a2, $a3
@@ -31931,18 +31934,18 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	add.d	$a0, $a2, $a0
 	addi.w	$s2, $a0, -1
 .Ltmp1356:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
+	addi.d	$a0, $sp, 360
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10get_stringB5cxx11Ei)
 	jirl	$ra, $ra, 0
 .Ltmp1357:                              # EH_LABEL
 # %bb.76:                               #   in Loop: Header=BB43_70 Depth=1
-	ld.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 368
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB43_78
 # %bb.77:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
                                         #   in Loop: Header=BB43_70 Depth=1
-	ld.d	$a0, $sp, 376
+	ld.d	$a0, $sp, 360
 	ld.bu	$a1, $a0, 0
 	ori	$s0, $zero, 1
 	ori	$a2, $zero, 38
@@ -31964,48 +31967,48 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_81
 	.p2align	4, , 16
 .LBB43_80:                              #   in Loop: Header=BB43_70 Depth=1
-	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	add.d	$a1, $a0, $a1
 .LBB43_81:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit490
                                         #   in Loop: Header=BB43_70 Depth=1
 .Ltmp1359:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
+	addi.d	$a0, $sp, 1184
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10get_stringB5cxx11Ei)
 	jirl	$ra, $ra, 0
 .Ltmp1360:                              # EH_LABEL
 # %bb.82:                               #   in Loop: Header=BB43_70 Depth=1
-	ld.d	$a1, $sp, 1208
-	ld.d	$a0, $sp, 1200
+	ld.d	$a1, $sp, 1192
+	ld.d	$a0, $sp, 1184
 	ori	$a2, $zero, 1
 	bne	$a1, $a2, .LBB43_84
 # %bb.83:                               #   in Loop: Header=BB43_70 Depth=1
 	ld.bu	$a1, $a0, 0
 	addi.d	$a1, $a1, -44
 	sltui	$s0, $a1, 1
-	addi.d	$a1, $sp, 1216
+	addi.d	$a1, $sp, 1200
 	bne	$a0, $a1, .LBB43_85
 	b	.LBB43_86
 	.p2align	4, , 16
 .LBB43_84:                              #   in Loop: Header=BB43_70 Depth=1
 	move	$s0, $zero
-	addi.d	$a1, $sp, 1216
+	addi.d	$a1, $sp, 1200
 	beq	$a0, $a1, .LBB43_86
 .LBB43_85:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i493
                                         #   in Loop: Header=BB43_70 Depth=1
-	ld.d	$a1, $sp, 1216
+	ld.d	$a1, $sp, 1200
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_86:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit495
                                         #   in Loop: Header=BB43_70 Depth=1
-	ld.d	$a0, $sp, 376
+	ld.d	$a0, $sp, 360
 .LBB43_87:                              # %.critedge
                                         #   in Loop: Header=BB43_70 Depth=1
 	beq	$a0, $s1, .LBB43_89
 # %bb.88:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i496
                                         #   in Loop: Header=BB43_70 Depth=1
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -32027,19 +32030,19 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ldx.d	$a1, $a0, $a1
 	b	.LBB43_93
 .LBB43_92:                              #   in Loop: Header=BB43_70 Depth=1
-	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	add.d	$a1, $a0, $a1
 .LBB43_93:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit500
                                         #   in Loop: Header=BB43_70 Depth=1
 .Ltmp1362:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
+	addi.d	$a0, $sp, 360
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10get_stringB5cxx11Ei)
 	jirl	$ra, $ra, 0
 .Ltmp1363:                              # EH_LABEL
 # %bb.94:                               #   in Loop: Header=BB43_70 Depth=1
-	ld.d	$a1, $sp, 384
-	ld.d	$a0, $sp, 376
+	ld.d	$a1, $sp, 368
+	ld.d	$a0, $sp, 360
 	ori	$a2, $zero, 1
 	bne	$a1, $a2, .LBB43_96
 # %bb.95:                               #   in Loop: Header=BB43_70 Depth=1
@@ -32054,7 +32057,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	beq	$a0, $s1, .LBB43_98
 .LBB43_97:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i503
                                         #   in Loop: Header=BB43_70 Depth=1
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -32076,7 +32079,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ldx.d	$a0, $a0, $a1
 	b	.LBB43_102
 .LBB43_101:                             #   in Loop: Header=BB43_70 Depth=1
-	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a1
 .LBB43_102:                             # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit507
                                         #   in Loop: Header=BB43_70 Depth=1
@@ -32143,7 +32146,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ld.d	$a1, $fp, 848
 	sub.d	$a1, $a0, $a1
 	srai.d	$a1, $a1, 4
-	ld.d	$a2, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
 	mul.d	$a1, $a1, $a2
 	addi.d	$a2, $s7, -1
 	add.d	$a2, $a1, $a2
@@ -32161,7 +32164,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_114
 	.p2align	4, , 16
 .LBB43_112:                             #   in Loop: Header=BB43_109 Depth=2
-	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 240                   # 8-byte Folded Reload
 	add.d	$s2, $a0, $a2
 	add.d	$a2, $a1, $s7
 	bnez	$a2, .LBB43_111
@@ -32200,13 +32203,13 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	.p2align	4, , 16
 .LBB43_118:                             # %._crit_edge.i.i.i
                                         #   in Loop: Header=BB43_109 Depth=2
-	ori	$a2, $zero, 2184
+	ori	$a2, $zero, 2168
 	add.d	$a2, $sp, $a2
 	st.d	$s5, $a2, 0
-	ori	$a2, $zero, 2192
+	ori	$a2, $zero, 2176
 	add.d	$a2, $sp, $a2
 	st.d	$zero, $a2, 0
-	ori	$a2, $zero, 2200
+	ori	$a2, $zero, 2184
 	add.d	$a2, $sp, $a2
 	st.b	$zero, $a2, 0
 	add.d	$a2, $a1, $s7
@@ -32230,32 +32233,32 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	add.d	$a0, $a2, $a0
 .LBB43_123:                             # %_ZNSt5dequeIN2PP4WordESaIS1_EEixEm.exit.i
                                         #   in Loop: Header=BB43_109 Depth=2
-	ori	$a1, $zero, 2184
+	ori	$a1, $zero, 2168
 	add.d	$a1, $sp, $a1
 	st.d	$s5, $a1, 0
 	ld.d	$s3, $a0, 8
 	ld.d	$s4, $a0, 0
-	st.d	$s3, $sp, 376
+	st.d	$s3, $sp, 360
 	move	$a0, $s5
 	ori	$a1, $zero, 16
 	bltu	$s3, $a1, .LBB43_126
 # %bb.124:                              # %.noexc.i.i.i
                                         #   in Loop: Header=BB43_109 Depth=2
 .Ltmp1368:                              # EH_LABEL
-	ori	$a0, $zero, 2184
+	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 376
+	addi.d	$a1, $sp, 360
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1369:                              # EH_LABEL
 # %bb.125:                              # %.noexc531
                                         #   in Loop: Header=BB43_109 Depth=2
-	ld.d	$a1, $sp, 376
-	ori	$a2, $zero, 2184
+	ld.d	$a1, $sp, 360
+	ori	$a2, $zero, 2168
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2200
+	ori	$a2, $zero, 2184
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 .LBB43_126:                             # %._crit_edge.i.i.i.i
@@ -32276,11 +32279,11 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .LBB43_130:                             # %_ZN2PP4Word10get_stringB5cxx11Ev.exit.i
                                         #   in Loop: Header=BB43_109 Depth=2
-	ld.d	$a0, $sp, 376
-	ori	$a1, $zero, 2184
+	ld.d	$a0, $sp, 360
+	ori	$a1, $zero, 2168
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	ori	$a2, $zero, 2192
+	ori	$a2, $zero, 2176
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
 	stx.b	$zero, $a1, $a0
@@ -32288,7 +32291,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ld.d	$a1, $fp, 848
 	sub.d	$a1, $a0, $a1
 	srai.d	$a1, $a1, 4
-	ld.d	$a2, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
 	mul.d	$a1, $a1, $a2
 	add.d	$a2, $a1, $s7
 	slli.d	$a1, $a2, 3
@@ -32401,31 +32404,31 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
                                         #   in Loop: Header=BB43_109 Depth=2
 	ld.d	$s5, $a0, 96
 	ld.d	$s6, $a0, 88
-	ori	$a0, $zero, 2168
+	ori	$a0, $zero, 2152
 	add.d	$a0, $sp, $a0
-	ori	$a1, $zero, 2152
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
-	st.d	$s5, $sp, 376
+	st.d	$s5, $sp, 360
 	ori	$a1, $zero, 16
 	bltu	$s5, $a1, .LBB43_157
 # %bb.155:                              # %.noexc.i.i.i545
                                         #   in Loop: Header=BB43_109 Depth=2
 .Ltmp1371:                              # EH_LABEL
-	ori	$a0, $zero, 2152
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 376
+	addi.d	$a1, $sp, 360
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1372:                              # EH_LABEL
 # %bb.156:                              # %.noexc546
                                         #   in Loop: Header=BB43_109 Depth=2
-	ld.d	$a1, $sp, 376
-	ori	$a2, $zero, 2152
+	ld.d	$a1, $sp, 360
+	ori	$a2, $zero, 2136
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2168
+	ori	$a2, $zero, 2152
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 .LBB43_157:                             # %._crit_edge.i.i.i.i544
@@ -32446,18 +32449,18 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_161:                             #   in Loop: Header=BB43_109 Depth=2
-	ld.d	$a0, $sp, 376
-	ori	$a1, $zero, 2152
+	ld.d	$a0, $sp, 360
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	ori	$a2, $zero, 2160
+	ori	$a2, $zero, 2144
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
 	stx.b	$zero, $a1, $a0
 .Ltmp1374:                              # EH_LABEL
-	ori	$a0, $zero, 2184
+	ori	$a0, $zero, 2168
 	add.d	$a1, $sp, $a0
-	ori	$a0, $zero, 2152
+	ori	$a0, $zero, 2136
 	add.d	$a4, $sp, $a0
 	move	$a0, $s2
 	move	$a2, $s3
@@ -32466,17 +32469,17 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .Ltmp1375:                              # EH_LABEL
 # %bb.162:                              #   in Loop: Header=BB43_109 Depth=2
-	ori	$a0, $zero, 2152
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2200
+	ori	$a1, $zero, 2184
 	add.d	$s5, $sp, $a1
-	ori	$a1, $zero, 2168
+	ori	$a1, $zero, 2152
 	add.d	$a1, $sp, $a1
 	beq	$a0, $a1, .LBB43_164
 # %bb.163:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i547
                                         #   in Loop: Header=BB43_109 Depth=2
-	ori	$a1, $zero, 2168
+	ori	$a1, $zero, 2152
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
@@ -32484,14 +32487,14 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .LBB43_164:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit549
                                         #   in Loop: Header=BB43_109 Depth=2
-	ori	$a0, $zero, 2184
+	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	ori	$s6, $zero, 3
 	beq	$a0, $s5, .LBB43_108
 # %bb.165:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i550
                                         #   in Loop: Header=BB43_109 Depth=2
-	ori	$a1, $zero, 2200
+	ori	$a1, $zero, 2184
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
@@ -32505,15 +32508,15 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ld.d	$a0, $fp, 848
 	sub.d	$a2, $a1, $a0
 	srai.d	$a2, $a2, 4
-	ld.d	$s8, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 280                   # 8-byte Folded Reload
 	mul.d	$a2, $a2, $s8
-	addi.d	$s1, $sp, 392
+	addi.d	$s1, $sp, 376
 .LBB43_167:                             # %._crit_edge
                                         #   in Loop: Header=BB43_70 Depth=1
 	ld.d	$a3, $fp, 864
 	addi.d	$a4, $s7, -1
 	add.d	$a2, $a2, $a4
-	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 240                   # 8-byte Folded Reload
 	beqz	$a2, .LBB43_169
 # %bb.168:                              #   in Loop: Header=BB43_70 Depth=1
 	slli.d	$a0, $a2, 3
@@ -32584,17 +32587,17 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	addi.d	$s0, $s0, 432
 	b	.LBB43_173
 .LBB43_179:                             # %._crit_edge.i.i560
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
-	addi.d	$a3, $sp, 392
-	st.d	$a3, $sp, 376
-	ori	$a0, $zero, 2320
+	addi.d	$a3, $sp, 376
+	st.d	$a3, $sp, 360
+	ori	$a0, $zero, 2304
 	add.d	$a0, $sp, $a0
 	ld.d	$a2, $a0, 0
-	st.d	$zero, $sp, 384
-	st.b	$zero, $sp, 392
-	ori	$a0, $zero, 2312
+	st.d	$zero, $sp, 368
+	st.b	$zero, $sp, 376
+	ori	$a0, $zero, 2296
 	add.d	$s4, $sp, $a0
 .Ltmp1380:                              # EH_LABEL
 	move	$a0, $s4
@@ -32604,15 +32607,15 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .Ltmp1381:                              # EH_LABEL
 # %bb.180:                              # %.noexc566
-	ori	$a0, $zero, 2304
+	ori	$a0, $zero, 2288
 	add.d	$a0, $sp, $a0
 	ld.wu	$a0, $a0, 0
-	ori	$a1, $zero, 2240
+	ori	$a1, $zero, 2224
 	add.d	$s3, $sp, $a1
-	ori	$a1, $zero, 2320
+	ori	$a1, $zero, 2304
 	add.d	$a1, $sp, $a1
 	ld.d	$a2, $a1, 0
-	ori	$a1, $zero, 2312
+	ori	$a1, $zero, 2296
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	andi	$a0, $a0, 3
@@ -32625,11 +32628,11 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .Ltmp1383:                              # EH_LABEL
 # %bb.181:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEE3strERKNS_12basic_stringIcS2_S3_EE.exit
-	ld.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 392
+	ld.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_183
 # %bb.182:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i568
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -32678,9 +32681,9 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_189:                             # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit576
                                         #   in Loop: Header=BB43_185 Depth=1
 .Ltmp1806:                              # EH_LABEL
-	ori	$a1, $zero, 2216
+	ori	$a1, $zero, 2200
 	add.d	$a1, $sp, $a1
-	ori	$a2, $zero, 2608
+	ori	$a2, $zero, 2592
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd19check_for_dimensionERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
@@ -32708,14 +32711,14 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	add.d	$a2, $a2, $a3
 .LBB43_194:                             # %_ZStplRKSt15_Deque_iteratorIN2PP3CmdERS1_PS1_El.exit578
                                         #   in Loop: Header=BB43_185 Depth=1
-	st.d	$a2, $sp, 376
-	st.d	$a1, $sp, 384
+	st.d	$a2, $sp, 360
+	st.d	$a1, $sp, 368
 	addi.d	$a1, $a1, 432
-	st.d	$a1, $sp, 392
-	st.d	$a0, $sp, 400
+	st.d	$a1, $sp, 376
+	st.d	$a0, $sp, 384
 .Ltmp1809:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	addi.d	$a2, $sp, 376
+	addi.d	$a0, $sp, 1184
+	addi.d	$a2, $sp, 360
 	addi.d	$a1, $fp, 824
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP3CmdESaIS1_EE8_M_eraseESt15_Deque_iteratorIS1_RS1_PS1_E)
 	jirl	$ra, $ra, 0
@@ -32725,9 +32728,9 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_184
 .LBB43_196:
 .Ltmp1385:                              # EH_LABEL
-	ori	$a0, $zero, 2216
+	ori	$a0, $zero, 2200
 	add.d	$a1, $sp, $a0
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a2, $sp, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser24process_error_return_intERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
@@ -32747,7 +32750,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .Ltmp1388:                              # EH_LABEL
 # %bb.199:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit582
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	ld.w	$a1, $a0, 0
 .Ltmp1389:                              # EH_LABEL
@@ -32847,16 +32850,16 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	addi.d	$s0, $s0, 432
 	b	.LBB43_209
 .LBB43_215:                             # %._crit_edge.i.i586
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
-	ori	$a0, $zero, 2320
+	ori	$a0, $zero, 2304
 	add.d	$a0, $sp, $a0
 	ld.d	$a2, $a0, 0
-	addi.d	$a3, $sp, 392
-	st.d	$a3, $sp, 376
-	st.d	$zero, $sp, 384
-	st.b	$zero, $sp, 392
+	addi.d	$a3, $sp, 376
+	st.d	$a3, $sp, 360
+	st.d	$zero, $sp, 368
+	st.b	$zero, $sp, 376
 .Ltmp1399:                              # EH_LABEL
 	move	$a0, $s4
 	move	$a1, $zero
@@ -32865,13 +32868,13 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .Ltmp1400:                              # EH_LABEL
 # %bb.216:                              # %.noexc594
-	ori	$a0, $zero, 2304
+	ori	$a0, $zero, 2288
 	add.d	$a0, $sp, $a0
 	ld.wu	$a0, $a0, 0
-	ori	$a1, $zero, 2320
+	ori	$a1, $zero, 2304
 	add.d	$a1, $sp, $a1
 	ld.d	$a2, $a1, 0
-	ori	$a1, $zero, 2312
+	ori	$a1, $zero, 2296
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	andi	$a0, $a0, 3
@@ -32884,18 +32887,18 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .Ltmp1402:                              # EH_LABEL
 # %bb.217:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEE3strERKNS_12basic_stringIcS2_S3_EE.exit596
-	ld.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 392
+	ld.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_219
 # %bb.218:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i597
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_219:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit599
-	ori	$a0, $zero, 2136
+	ori	$a0, $zero, 2120
 	add.d	$a0, $sp, $a0
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2104
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
@@ -32904,21 +32907,21 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ld.b	$a0, $a0, 4
 	st.d	$zero, $sp, 256                 # 8-byte Folded Spill
 	move	$s7, $zero
-	ori	$a2, $zero, 2136
+	ori	$a2, $zero, 2120
 	add.d	$a2, $sp, $a2
 	st.w	$a1, $a2, 0
-	ori	$a1, $zero, 2140
+	ori	$a1, $zero, 2124
 	add.d	$a1, $sp, $a1
 	st.b	$a0, $a1, 0
 	ori	$a0, $zero, 5
-	ori	$a1, $zero, 2128
+	ori	$a1, $zero, 2112
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
-	ori	$a0, $zero, 2141
+	ori	$a0, $zero, 2125
 	add.d	$a0, $sp, $a0
 	st.b	$zero, $a0, 0
-	addi.d	$s6, $sp, 392
-	ori	$a0, $zero, 2104
+	addi.d	$s6, $sp, 376
+	ori	$a0, $zero, 2088
 	add.d	$s1, $sp, $a0
 	ori	$a1, $zero, 432
 	ori	$s8, $zero, 16
@@ -32926,13 +32929,13 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ori	$a0, $a0, 1380
 	lu32i.d	$a0, -39827
 	lu52i.d	$a0, $a0, 1605
-	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
 	lu12i.w	$a0, 6
 	ori	$a0, $a0, 1395
-	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 	lu12i.w	$a0, 411462
 	ori	$a0, $a0, 365
-	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
 .LBB43_220:                             # %.outer
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB43_222 Depth 2
@@ -32959,7 +32962,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ld.d	$a4, $fp, 856
 	ld.d	$a1, $fp, 840
 	srli.d	$a3, $a3, 4
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 280                   # 8-byte Folded Reload
 	mul.d	$a3, $a3, $a5
 	add.d	$a2, $a2, $a3
 	sub.d	$a3, $a4, $a1
@@ -32985,24 +32988,24 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
                                         #   in Loop: Header=BB43_222 Depth=2
 	ld.d	$s3, $a0, 248
 	ld.d	$s4, $a0, 240
-	addi.d	$a0, $sp, 392
-	st.d	$a0, $sp, 376
-	st.d	$s3, $sp, 1200
+	addi.d	$a0, $sp, 376
+	st.d	$a0, $sp, 360
+	st.d	$s3, $sp, 1184
 	bltu	$s3, $s8, .LBB43_229
 # %bb.227:                              # %.noexc.i.i
                                         #   in Loop: Header=BB43_222 Depth=2
 .Ltmp1783:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1200
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1184
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1784:                              # EH_LABEL
 # %bb.228:                              # %.noexc611
                                         #   in Loop: Header=BB43_222 Depth=2
-	ld.d	$a1, $sp, 1200
-	st.d	$a0, $sp, 376
-	st.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 1184
+	st.d	$a0, $sp, 360
+	st.d	$a1, $sp, 376
 .LBB43_229:                             # %._crit_edge.i.i.i610
                                         #   in Loop: Header=BB43_222 Depth=2
 	beqz	$s3, .LBB43_233
@@ -33021,31 +33024,31 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_233:                             #   in Loop: Header=BB43_222 Depth=2
-	ld.d	$a0, $sp, 1200
-	ld.d	$a1, $sp, 376
-	st.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 1184
+	ld.d	$a1, $sp, 360
+	st.d	$a0, $sp, 368
 	stx.b	$zero, $a1, $a0
-	ld.d	$a1, $sp, 384
-	ld.d	$a0, $sp, 376
+	ld.d	$a1, $sp, 368
+	ld.d	$a0, $sp, 360
 	move	$s3, $zero
 	ori	$a2, $zero, 10
 	bne	$a1, $a2, .LBB43_235
 # %bb.234:                              #   in Loop: Header=BB43_222 Depth=2
 	ld.d	$a1, $a0, 0
 	ld.hu	$a2, $a0, 8
-	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
-	xor	$a1, $a1, $a3
 	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a3
+	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	xor	$a2, $a2, $a3
 	or	$a1, $a1, $a2
 	sltui	$s3, $a1, 1
 .LBB43_235:                             # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit613
                                         #   in Loop: Header=BB43_222 Depth=2
-	addi.d	$a1, $sp, 392
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_237
 # %bb.236:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i614
                                         #   in Loop: Header=BB43_222 Depth=2
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -33057,7 +33060,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ld.d	$a1, $fp, 848
 	sub.d	$a1, $a0, $a1
 	srai.d	$a1, $a1, 4
-	ld.d	$a2, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
 	mul.d	$a1, $a1, $a2
 	add.d	$a1, $s0, $a1
 	beqz	$a1, .LBB43_240
@@ -33073,24 +33076,24 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
                                         #   in Loop: Header=BB43_222 Depth=2
 	ld.d	$s3, $a0, 248
 	ld.d	$s4, $a0, 240
-	st.d	$s6, $sp, 376
-	st.d	$s3, $sp, 1200
+	st.d	$s6, $sp, 360
+	st.d	$s3, $sp, 1184
 	move	$a0, $s6
 	bltu	$s3, $s8, .LBB43_244
 # %bb.242:                              # %.noexc.i.i633
                                         #   in Loop: Header=BB43_222 Depth=2
 .Ltmp1786:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1200
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1184
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1787:                              # EH_LABEL
 # %bb.243:                              # %.noexc634
                                         #   in Loop: Header=BB43_222 Depth=2
-	ld.d	$a1, $sp, 1200
-	st.d	$a0, $sp, 376
-	st.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 1184
+	st.d	$a0, $sp, 360
+	st.d	$a1, $sp, 376
 .LBB43_244:                             # %._crit_edge.i.i.i632
                                         #   in Loop: Header=BB43_222 Depth=2
 	beqz	$s3, .LBB43_248
@@ -33109,19 +33112,19 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_248:                             #   in Loop: Header=BB43_222 Depth=2
-	ld.d	$a0, $sp, 1200
-	ld.d	$a1, $sp, 376
-	st.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 1184
+	ld.d	$a1, $sp, 360
+	st.d	$a0, $sp, 368
 	stx.b	$zero, $a1, $a0
-	ld.d	$a1, $sp, 384
-	ld.d	$a0, $sp, 376
+	ld.d	$a1, $sp, 368
+	ld.d	$a0, $sp, 360
 	ori	$s3, $zero, 1
 	ori	$a2, $zero, 6
 	bne	$a1, $a2, .LBB43_250
 # %bb.249:                              #   in Loop: Header=BB43_222 Depth=2
 	ld.w	$a1, $a0, 0
 	ld.hu	$a2, $a0, 4
-	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 224                   # 8-byte Folded Reload
 	xor	$a1, $a1, $a3
 	lu12i.w	$a3, 6
 	ori	$a3, $a3, 1637
@@ -33135,7 +33138,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	beq	$a0, $s6, .LBB43_252
 # %bb.251:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i638
                                         #   in Loop: Header=BB43_222 Depth=2
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -33144,13 +33147,13 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	andi	$a0, $s3, 1
 	bnez	$a0, .LBB43_254
 # %bb.253:                              #   in Loop: Header=BB43_222 Depth=2
-	ori	$a0, $zero, 2128
+	ori	$a0, $zero, 2112
 	add.d	$a0, $sp, $a0
 	ld.d	$a2, $a0, 0
 .Ltmp1789:                              # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.27)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.27)
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2104
 	add.d	$a0, $sp, $a0
 	ori	$a4, $zero, 3
 	move	$a1, $zero
@@ -33163,7 +33166,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ld.d	$a1, $fp, 848
 	sub.d	$a1, $a0, $a1
 	srai.d	$a1, $a1, 4
-	ld.d	$a2, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
 	mul.d	$a1, $a1, $a2
 	add.d	$a1, $s0, $a1
 	beqz	$a1, .LBB43_256
@@ -33177,35 +33180,35 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	add.d	$s3, $a0, $s2
 .LBB43_257:                             # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit646
                                         #   in Loop: Header=BB43_222 Depth=2
-	ori	$a0, $zero, 2128
+	ori	$a0, $zero, 2112
 	add.d	$a0, $sp, $a0
 	ld.d	$s4, $a0, 0
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2104
 	add.d	$a0, $sp, $a0
 	ld.d	$s5, $a0, 0
-	ori	$a0, $zero, 2088
+	ori	$a0, $zero, 2072
 	add.d	$a0, $sp, $a0
 	st.d	$s1, $a0, 0
-	st.d	$s4, $sp, 376
+	st.d	$s4, $sp, 360
 	move	$a0, $s1
 	bltu	$s4, $s8, .LBB43_260
 # %bb.258:                              # %.noexc.i648
                                         #   in Loop: Header=BB43_222 Depth=2
 .Ltmp1791:                              # EH_LABEL
-	ori	$a0, $zero, 2088
+	ori	$a0, $zero, 2072
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 376
+	addi.d	$a1, $sp, 360
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1792:                              # EH_LABEL
 # %bb.259:                              # %.noexc649
                                         #   in Loop: Header=BB43_222 Depth=2
-	ld.d	$a1, $sp, 376
-	ori	$a2, $zero, 2088
+	ld.d	$a1, $sp, 360
+	ori	$a2, $zero, 2072
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
-	ori	$a2, $zero, 2104
+	ori	$a2, $zero, 2088
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 .LBB43_260:                             # %._crit_edge.i.i647
@@ -33226,33 +33229,33 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_264:                             #   in Loop: Header=BB43_222 Depth=2
-	ld.d	$a0, $sp, 376
-	ori	$a1, $zero, 2088
+	ld.d	$a0, $sp, 360
+	ori	$a1, $zero, 2072
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	ori	$a2, $zero, 2096
+	ori	$a2, $zero, 2080
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
 	stx.b	$zero, $a1, $a0
 .Ltmp1794:                              # EH_LABEL
-	ori	$a0, $zero, 2088
+	ori	$a0, $zero, 2072
 	add.d	$a1, $sp, $a0
-	ori	$a0, $zero, 2216
+	ori	$a0, $zero, 2200
 	add.d	$a2, $sp, $a0
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a3, $sp, $a0
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd18deprecated_input01ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERNS1_18basic_stringstreamIcS4_S5_EERi)
 	jirl	$ra, $ra, 0
 .Ltmp1795:                              # EH_LABEL
 # %bb.265:                              #   in Loop: Header=BB43_222 Depth=2
-	ori	$a0, $zero, 2088
+	ori	$a0, $zero, 2072
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	beq	$a0, $s1, .LBB43_221
 # %bb.266:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i651
                                         #   in Loop: Header=BB43_222 Depth=2
-	ori	$a1, $zero, 2104
+	ori	$a1, $zero, 2088
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
@@ -33265,7 +33268,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ld.d	$a1, $fp, 848
 	sub.d	$a1, $a0, $a1
 	srai.d	$a1, $a1, 4
-	ld.d	$a2, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
 	mul.d	$a1, $a1, $a2
 	add.d	$a1, $a1, $s0
 	beqz	$a1, .LBB43_269
@@ -33279,64 +33282,64 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_270:                             # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit618
                                         #   in Loop: Header=BB43_220 Depth=1
 .Ltmp1797:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
+	addi.d	$a0, $sp, 360
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10get_stringB5cxx11Ei)
 	jirl	$ra, $ra, 0
 .Ltmp1798:                              # EH_LABEL
 # %bb.271:                              #   in Loop: Header=BB43_220 Depth=1
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2104
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a1, $sp, 376
-	ori	$a2, $zero, 2136
+	ld.d	$a1, $sp, 360
+	ori	$a2, $zero, 2120
 	add.d	$a2, $sp, $a2
 	beq	$a0, $a2, .LBB43_275
 # %bb.272:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i
                                         #   in Loop: Header=BB43_220 Depth=1
-	addi.d	$a2, $sp, 392
+	addi.d	$a2, $sp, 376
 	beq	$a1, $a2, .LBB43_278
 # %bb.273:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit23.thread25.i
                                         #   in Loop: Header=BB43_220 Depth=1
-	vld	$vr0, $sp, 384
-	ori	$a2, $zero, 2136
+	vld	$vr0, $sp, 368
+	ori	$a2, $zero, 2120
 	add.d	$a2, $sp, $a2
 	ld.d	$a2, $a2, 0
-	ori	$a3, $zero, 2120
+	ori	$a3, $zero, 2104
 	add.d	$a3, $sp, $a3
 	st.d	$a1, $a3, 0
-	ori	$a1, $zero, 2128
+	ori	$a1, $zero, 2112
 	add.d	$a1, $sp, $a1
 	vst	$vr0, $a1, 0
 	beqz	$a0, .LBB43_277
 # %bb.274:                              #   in Loop: Header=BB43_220 Depth=1
-	st.d	$a0, $sp, 376
-	st.d	$a2, $sp, 392
+	st.d	$a0, $sp, 360
+	st.d	$a2, $sp, 376
 	b	.LBB43_283
 .LBB43_275:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i
                                         #   in Loop: Header=BB43_220 Depth=1
-	addi.d	$a2, $sp, 392
+	addi.d	$a2, $sp, 376
 	beq	$a1, $a2, .LBB43_278
 # %bb.276:                              # %.thread.i
                                         #   in Loop: Header=BB43_220 Depth=1
-	vld	$vr0, $sp, 384
-	ori	$a0, $zero, 2120
+	vld	$vr0, $sp, 368
+	ori	$a0, $zero, 2104
 	add.d	$a0, $sp, $a0
 	st.d	$a1, $a0, 0
-	ori	$a0, $zero, 2128
+	ori	$a0, $zero, 2112
 	add.d	$a0, $sp, $a0
 	vst	$vr0, $a0, 0
 .LBB43_277:                             #   in Loop: Header=BB43_220 Depth=1
-	addi.d	$a1, $sp, 392
-	st.d	$a1, $sp, 376
+	addi.d	$a1, $sp, 376
+	st.d	$a1, $sp, 360
 	move	$a0, $a1
-	st.d	$zero, $sp, 384
+	st.d	$zero, $sp, 368
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 376
+	ld.d	$a0, $sp, 360
 	bne	$a0, $a1, .LBB43_284
 	b	.LBB43_285
 .LBB43_278:                             #   in Loop: Header=BB43_220 Depth=1
-	ld.d	$a2, $sp, 384
+	ld.d	$a2, $sp, 368
 	beqz	$a2, .LBB43_282
 # %bb.279:                              #   in Loop: Header=BB43_220 Depth=1
 	ori	$a3, $zero, 1
@@ -33350,25 +33353,25 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .LBB43_282:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7_S_copyEPcPKcm.exit.i
                                         #   in Loop: Header=BB43_220 Depth=1
-	ld.d	$a0, $sp, 384
-	ori	$a1, $zero, 2120
+	ld.d	$a0, $sp, 368
+	ori	$a1, $zero, 2104
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	ori	$a2, $zero, 2128
+	ori	$a2, $zero, 2112
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
 	stx.b	$zero, $a1, $a0
-	ld.d	$a0, $sp, 376
+	ld.d	$a0, $sp, 360
 .LBB43_283:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEaSEOS4_.exit
                                         #   in Loop: Header=BB43_220 Depth=1
-	addi.d	$a1, $sp, 392
-	st.d	$zero, $sp, 384
+	addi.d	$a1, $sp, 376
+	st.d	$zero, $sp, 368
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 376
+	ld.d	$a0, $sp, 360
 	beq	$a0, $a1, .LBB43_285
 .LBB43_284:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i620
                                         #   in Loop: Header=BB43_220 Depth=1
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -33379,7 +33382,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ld.d	$a0, $fp, 864
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 4
-	ld.d	$a3, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 280                   # 8-byte Folded Reload
 	mul.d	$a1, $a1, $a3
 	add.d	$a3, $a1, $s0
 	beqz	$a3, .LBB43_287
@@ -33394,14 +33397,14 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	add.d	$a2, $a2, $s2
 .LBB43_288:                             # %_ZStplRKSt15_Deque_iteratorIN2PP3CmdERS1_PS1_El.exit624
                                         #   in Loop: Header=BB43_220 Depth=1
-	st.d	$a2, $sp, 376
-	st.d	$a1, $sp, 384
+	st.d	$a2, $sp, 360
+	st.d	$a1, $sp, 368
 	addi.d	$a1, $a1, 432
-	st.d	$a1, $sp, 392
-	st.d	$a0, $sp, 400
+	st.d	$a1, $sp, 376
+	st.d	$a0, $sp, 384
 .Ltmp1800:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	addi.d	$a2, $sp, 376
+	addi.d	$a0, $sp, 1184
+	addi.d	$a2, $sp, 360
 	addi.d	$a1, $fp, 824
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP3CmdESaIS1_EE8_M_eraseESt15_Deque_iteratorIS1_RS1_PS1_E)
 	jirl	$ra, $ra, 0
@@ -33413,15 +33416,15 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_220
 .LBB43_290:
 .Ltmp1404:                              # EH_LABEL
-	ori	$a0, $zero, 2216
+	ori	$a0, $zero, 2200
 	add.d	$a1, $sp, $a0
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a2, $sp, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser24process_error_return_intERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp1405:                              # EH_LABEL
-	ld.d	$s8, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
 # %bb.291:
 	move	$s1, $a0
 	st.w	$a0, $s8, 0
@@ -33437,7 +33440,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .Ltmp1407:                              # EH_LABEL
 # %bb.293:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit658
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	ld.w	$a1, $a0, 0
 .Ltmp1408:                              # EH_LABEL
@@ -33489,92 +33492,92 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ori	$a0, $zero, 1
 	bne	$s1, $a0, .LBB43_792
 .LBB43_302:
-	addi.d	$a0, $sp, 2008
+	addi.d	$a0, $sp, 1992
 	ori	$a2, $zero, 80
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp1418:                              # EH_LABEL
-	addi.d	$a0, $sp, 2008
+	addi.d	$a0, $sp, 1992
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZNSt11_Deque_baseIbSaIbEE17_M_initialize_mapEm)
 	jirl	$ra, $ra, 0
 .Ltmp1419:                              # EH_LABEL
 # %bb.303:                              # %_ZNSt5dequeIbSaIbEEC2Ev.exit
-	addi.d	$a0, $sp, 1928
+	addi.d	$a0, $sp, 1912
 	ori	$a2, $zero, 80
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp1421:                              # EH_LABEL
-	addi.d	$a0, $sp, 1928
+	addi.d	$a0, $sp, 1912
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZNSt11_Deque_baseIbSaIbEE17_M_initialize_mapEm)
 	jirl	$ra, $ra, 0
 .Ltmp1422:                              # EH_LABEL
 # %bb.304:                              # %_ZNSt5dequeIbSaIbEEC2Ev.exit663
-	addi.d	$a0, $sp, 1848
+	addi.d	$a0, $sp, 1832
 	ori	$a2, $zero, 80
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp1424:                              # EH_LABEL
-	addi.d	$a0, $sp, 1848
+	addi.d	$a0, $sp, 1832
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZNSt11_Deque_baseIiSaIiEE17_M_initialize_mapEm)
 	jirl	$ra, $ra, 0
 .Ltmp1425:                              # EH_LABEL
 # %bb.305:                              # %_ZNSt5dequeIiSaIiEEC2Ev.exit
-	addi.d	$a0, $sp, 1832
-	st.d	$a0, $sp, 1816
-	st.d	$zero, $sp, 1824
-	st.b	$zero, $sp, 1832
-	addi.d	$a0, $sp, 1736
+	addi.d	$a0, $sp, 1816
+	st.d	$a0, $sp, 1800
+	st.d	$zero, $sp, 1808
+	st.b	$zero, $sp, 1816
+	addi.d	$a0, $sp, 1720
 	ori	$a2, $zero, 80
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp1427:                              # EH_LABEL
-	addi.d	$a0, $sp, 1736
+	addi.d	$a0, $sp, 1720
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZNSt11_Deque_baseIiSaIiEE17_M_initialize_mapEm)
 	jirl	$ra, $ra, 0
 .Ltmp1428:                              # EH_LABEL
 # %bb.306:                              # %_ZNSt5dequeIiSaIiEEC2Ev.exit670
-	addi.d	$a0, $sp, 1656
+	addi.d	$a0, $sp, 1640
 	ori	$a2, $zero, 80
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp1430:                              # EH_LABEL
-	addi.d	$a0, $sp, 1656
+	addi.d	$a0, $sp, 1640
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZNSt11_Deque_baseIiSaIiEE17_M_initialize_mapEm)
 	jirl	$ra, $ra, 0
 .Ltmp1431:                              # EH_LABEL
 # %bb.307:                              # %_ZNSt5dequeIiSaIiEEC2Ev.exit672
 	move	$a0, $zero
-	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
-	st.w	$zero, $sp, 1652
-	st.b	$zero, $sp, 1651
-	st.w	$zero, $sp, 1644
-	st.b	$zero, $sp, 1643
-	st.b	$zero, $sp, 1642
+	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 72                  # 8-byte Folded Spill
+	st.w	$zero, $sp, 1636
+	st.b	$zero, $sp, 1635
+	st.w	$zero, $sp, 1628
+	st.b	$zero, $sp, 1627
+	st.b	$zero, $sp, 1626
 	addi.d	$a1, $fp, 2047
 	addi.d	$a2, $a1, 417
-	st.d	$a2, $sp, 200                   # 8-byte Folded Spill
-	addi.d	$a2, $a1, 497
 	st.d	$a2, $sp, 192                   # 8-byte Folded Spill
-	addi.d	$a2, $a1, 665
+	addi.d	$a2, $a1, 497
 	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
-	addi.d	$a2, $a1, 585
+	addi.d	$a2, $a1, 665
 	st.d	$a2, $sp, 176                   # 8-byte Folded Spill
+	addi.d	$a2, $a1, 585
+	st.d	$a2, $sp, 168                   # 8-byte Folded Spill
 	addi.d	$a2, $a1, 329
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
 	addi.d	$a1, $a1, 249
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
 	lu12i.w	$a1, 472870
 	ori	$a2, $a1, 368
 	lu32i.d	$a2, -36251
@@ -33582,22 +33585,22 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ori	$a1, $a1, 1125
 	lu32i.d	$a1, 287589
 	lu52i.d	$a1, $a1, 1527
-	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 224                   # 8-byte Folded Spill
 	lu12i.w	$a1, 390903
 	ori	$a1, $a1, 1119
 	lu32i.d	$a1, -235162
 	lu52i.d	$a1, $a1, 1622
-	st.d	$a1, $sp, 224                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
 	lu12i.w	$a1, 476982
 	ori	$a1, $a1, 1394
 	lu32i.d	$a1, 291425
 	lu52i.d	$a1, $a1, 1527
-	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
 	lu12i.w	$a1, 402935
 	ori	$a1, $a1, 1138
 	lu32i.d	$a1, 225132
 	lu52i.d	$a1, $a1, 1718
-	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
 	lu12i.w	$a1, -258112
 	ori	$a1, $a1, 4033
 	lu32i.d	$a1, 64527
@@ -33606,53 +33609,53 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ori	$a1, $a1, 3685
 	lu32i.d	$a1, 222578
 	lu52i.d	$a1, $a1, 1863
-	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
 	lu12i.w	$a1, 390983
 	ori	$a1, $a1, 609
 	lu32i.d	$a1, -37790
 	lu52i.d	$a1, $a1, 1590
-	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
 	lu12i.w	$a1, 472646
 	ori	$a1, $a1, 3685
 	lu32i.d	$a1, 156277
 	lu52i.d	$a1, $a1, 1783
-	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
 	lu12i.w	$a1, 481015
 	ori	$a1, $a1, 610
 	lu32i.d	$a1, -104076
 	lu52i.d	$a1, $a1, 1622
-	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	lu12i.w	$a1, 398999
 	ori	$a1, $a1, 609
 	lu32i.d	$a1, 355426
 	lu52i.d	$a1, $a1, 1846
-	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	lu12i.w	$a1, 476726
 	ori	$a1, $a1, 3701
 	lu32i.d	$a1, -102551
 	lu52i.d	$a1, $a1, 1846
-	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	lu12i.w	$a1, 476902
 	ori	$a1, $a1, 2418
 	lu32i.d	$a1, 157279
 	lu52i.d	$a1, $a1, 1878
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	lu12i.w	$a1, 468566
 	ori	$a1, $a1, 1638
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	lu12i.w	$a1, -118150
 	ori	$a1, $a1, 2423
 	lu32i.d	$a1, -177225
 	lu52i.d	$a1, $a1, 403
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$s4, $sp, 1152
-	ori	$a1, $zero, 2232
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$s4, $sp, 1136
+	ori	$a1, $zero, 2216
 	add.d	$s6, $sp, $a1
-	addi.d	$s1, $sp, 1184
-	addi.d	$s2, $sp, 1120
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
+	addi.d	$s1, $sp, 1168
+	addi.d	$s2, $sp, 1104
+	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
 	lu52i.d	$a1, $a2, 1829
-	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB43_308:                             # =>This Loop Header: Depth=1
                                         #     Child Loop BB43_357 Depth 2
@@ -33670,14 +33673,14 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ld.d	$a5, $fp, 856
 	ld.d	$a2, $fp, 840
 	srli.d	$a4, $a4, 4
-	ld.d	$a6, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 280                   # 8-byte Folded Reload
 	mul.d	$a4, $a4, $a6
 	add.d	$a3, $a3, $a4
 	sub.d	$a4, $a5, $a2
 	srli.d	$a4, $a4, 4
 	mul.d	$a4, $a4, $a6
 	add.w	$a3, $a3, $a4
-	st.w	$a0, $sp, 1636
+	st.w	$a0, $sp, 1620
 	bge	$a0, $a3, .LBB43_686
 # %bb.309:                              #   in Loop: Header=BB43_308 Depth=1
 	ld.d	$a3, $fp, 848
@@ -33698,32 +33701,32 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_312:                             # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit675
                                         #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1433:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
+	addi.d	$a0, $sp, 1184
 	pcaddu18i	$ra, %call36(_ZN2PP3CmdC2ERKS0_)
 	jirl	$ra, $ra, 0
 .Ltmp1434:                              # EH_LABEL
 # %bb.313:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$s7, $sp, 1448
-	ld.d	$s5, $sp, 1440
-	addi.d	$a0, $sp, 392
-	st.d	$a0, $sp, 376
-	st.d	$s7, $sp, 1168
+	ld.d	$s7, $sp, 1432
+	ld.d	$s5, $sp, 1424
+	addi.d	$a0, $sp, 376
+	st.d	$a0, $sp, 360
+	st.d	$s7, $sp, 1152
 	ori	$a1, $zero, 16
 	bltu	$s7, $a1, .LBB43_316
 # %bb.314:                              # %.noexc.i.i677
                                         #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1436:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1168
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1152
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1437:                              # EH_LABEL
 # %bb.315:                              # %.noexc678
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1168
-	st.d	$a0, $sp, 376
-	st.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 1152
+	st.d	$a0, $sp, 360
+	st.d	$a1, $sp, 376
 .LBB43_316:                             # %._crit_edge.i.i.i676
                                         #   in Loop: Header=BB43_308 Depth=1
 	beqz	$s7, .LBB43_320
@@ -33742,12 +33745,12 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_320:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1168
-	ld.d	$a1, $sp, 376
-	st.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 1152
+	ld.d	$a1, $sp, 360
+	st.d	$a0, $sp, 368
 	stx.b	$zero, $a1, $a0
-	ld.d	$a1, $sp, 384
-	ld.d	$a0, $sp, 376
+	ld.d	$a1, $sp, 368
+	ld.d	$a0, $sp, 360
 	move	$s0, $zero
 	ori	$a2, $zero, 23
 	bne	$a1, $a2, .LBB43_322
@@ -33755,22 +33758,22 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a0, 8
 	ld.d	$a3, $a0, 15
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 208                   # 8-byte Folded Reload
 	xor	$a1, $a1, $a4
-	ld.d	$a4, $sp, 232                   # 8-byte Folded Reload
-	xor	$a2, $a2, $a4
 	ld.d	$a4, $sp, 224                   # 8-byte Folded Reload
+	xor	$a2, $a2, $a4
+	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
 	xor	$a3, $a3, $a4
 	or	$a1, $a1, $a2
 	or	$a1, $a1, $a3
 	sltui	$s0, $a1, 1
 .LBB43_322:                             # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit681
                                         #   in Loop: Header=BB43_308 Depth=1
-	addi.d	$a1, $sp, 392
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_324
 # %bb.323:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i682
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -33778,83 +33781,83 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
                                         #   in Loop: Header=BB43_308 Depth=1
 	beqz	$s0, .LBB43_331
 # %bb.325:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1432
-	ld.d	$a1, $sp, 1400
+	ld.d	$a0, $sp, 1416
+	ld.d	$a1, $sp, 1384
 	sub.d	$a1, $a0, $a1
-	ld.d	$a2, $sp, 1408
-	ld.d	$a3, $sp, 1416
+	ld.d	$a2, $sp, 1392
+	ld.d	$a3, $sp, 1400
 	srli.d	$a1, $a1, 3
 	sltu	$a0, $zero, $a0
 	sub.d	$a0, $a1, $a0
 	sub.d	$a1, $a2, $a3
 	srli.d	$a1, $a1, 7
-	ld.d	$a2, $sp, 1392
-	ld.d	$a3, $sp, 1376
+	ld.d	$a2, $sp, 1376
+	ld.d	$a3, $sp, 1360
 	alsl.d	$a0, $a0, $a1, 2
-	addi.d	$a1, $sp, 392
-	st.d	$a1, $sp, 376
-	st.d	$zero, $sp, 384
+	addi.d	$a1, $sp, 376
+	st.d	$a1, $sp, 360
+	st.d	$zero, $sp, 368
 	sub.d	$a1, $a2, $a3
 	srli.d	$a1, $a1, 7
 	add.w	$a0, $a0, $a1
-	st.b	$zero, $sp, 392
+	st.b	$zero, $sp, 376
 	ori	$a1, $zero, 2
 	blt	$a0, $a1, .LBB43_334
 # %bb.326:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1768:                              # EH_LABEL
-	addi.d	$a0, $sp, 1168
-	addi.d	$a1, $sp, 1200
+	addi.d	$a0, $sp, 1152
+	addi.d	$a1, $sp, 1184
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10get_stringB5cxx11Ei)
 	jirl	$ra, $ra, 0
 .Ltmp1769:                              # EH_LABEL
 # %bb.327:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 376
-	ld.d	$a1, $sp, 1168
-	addi.d	$a2, $sp, 392
+	ld.d	$a0, $sp, 360
+	ld.d	$a1, $sp, 1152
+	addi.d	$a2, $sp, 376
 	beq	$a0, $a2, .LBB43_342
 # %bb.328:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i686
                                         #   in Loop: Header=BB43_308 Depth=1
 	beq	$a1, $s1, .LBB43_351
 # %bb.329:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit23.thread25.i687
                                         #   in Loop: Header=BB43_308 Depth=1
-	vld	$vr0, $sp, 1176
-	ld.d	$a2, $sp, 392
-	st.d	$a1, $sp, 376
-	vst	$vr0, $sp, 384
+	vld	$vr0, $sp, 1160
+	ld.d	$a2, $sp, 376
+	st.d	$a1, $sp, 360
+	vst	$vr0, $sp, 368
 	beqz	$a0, .LBB43_344
 # %bb.330:                              #   in Loop: Header=BB43_308 Depth=1
-	st.d	$a0, $sp, 1168
-	st.d	$a2, $sp, 1184
-	st.d	$zero, $sp, 1176
+	st.d	$a0, $sp, 1152
+	st.d	$a2, $sp, 1168
+	st.d	$zero, $sp, 1160
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 1168
+	ld.d	$a0, $sp, 1152
 	bne	$a0, $s1, .LBB43_345
 	b	.LBB43_346
 	.p2align	4, , 16
 .LBB43_331:                             #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1439:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1200
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1184
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10get_stringB5cxx11Ei)
 	jirl	$ra, $ra, 0
 .Ltmp1440:                              # EH_LABEL
 # %bb.332:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 384
-	ld.d	$a0, $sp, 376
+	ld.d	$a1, $sp, 368
+	ld.d	$a0, $sp, 360
 	ori	$a2, $zero, 13
 	bne	$a1, $a2, .LBB43_335
 # %bb.333:                              #   in Loop: Header=BB43_308 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a0, 5
-	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
-	xor	$a1, $a1, $a3
 	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a3
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
 	xor	$a2, $a2, $a3
 	or	$a1, $a1, $a2
 	sltui	$s0, $a1, 1
-	addi.d	$a1, $sp, 392
+	addi.d	$a1, $sp, 376
 	bne	$a0, $a1, .LBB43_336
 	b	.LBB43_337
 	.p2align	4, , 16
@@ -33862,7 +33865,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1766:                              # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.30)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.30)
-	addi.d	$a0, $sp, 376
+	addi.d	$a0, $sp, 360
 	ori	$a4, $zero, 10
 	move	$a1, $zero
 	move	$a2, $zero
@@ -33873,11 +33876,11 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	.p2align	4, , 16
 .LBB43_335:                             #   in Loop: Header=BB43_308 Depth=1
 	move	$s0, $zero
-	addi.d	$a1, $sp, 392
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_337
 .LBB43_336:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i713
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -33886,22 +33889,22 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	beqz	$s0, .LBB43_416
 # %bb.338:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1442:                              # EH_LABEL
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	st.d	$a0, $sp, 16
-	ori	$a0, $zero, 2216
+	ori	$a0, $zero, 2200
 	add.d	$a0, $sp, $a0
 	st.d	$a0, $sp, 8
-	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1644
-	addi.d	$a2, $sp, 1200
-	addi.d	$a3, $sp, 1642
-	addi.d	$a4, $sp, 1643
-	ld.d	$a5, $sp, 176                   # 8-byte Folded Reload
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1628
+	addi.d	$a2, $sp, 1184
+	addi.d	$a3, $sp, 1626
+	addi.d	$a4, $sp, 1627
+	ld.d	$a5, $sp, 168                   # 8-byte Folded Reload
 	st.d	$a5, $sp, 0
-	ld.d	$a5, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$a7, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 176                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP12RestartblockC1ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISB_EERS5_IbSaIbEERS5_IiSaIiEESH_RNS6_18basic_stringstreamIcS9_SA_EES1_)
 	jirl	$ra, $ra, 0
 .Ltmp1443:                              # EH_LABEL
@@ -33912,7 +33915,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	beq	$a0, $a1, .LBB43_354
 # %bb.340:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1445:                              # EH_LABEL
-	addi.d	$a1, $sp, 376
+	addi.d	$a1, $sp, 360
 	pcaddu18i	$ra, %call36(_ZN2PP12RestartblockC2ERKS0_)
 	jirl	$ra, $ra, 0
 .Ltmp1446:                              # EH_LABEL
@@ -33927,19 +33930,19 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	beq	$a1, $s1, .LBB43_351
 # %bb.343:                              # %.thread.i692
                                         #   in Loop: Header=BB43_308 Depth=1
-	vld	$vr0, $sp, 1176
-	st.d	$a1, $sp, 376
-	vst	$vr0, $sp, 384
+	vld	$vr0, $sp, 1160
+	st.d	$a1, $sp, 360
+	vst	$vr0, $sp, 368
 .LBB43_344:                             #   in Loop: Header=BB43_308 Depth=1
-	st.d	$s1, $sp, 1168
+	st.d	$s1, $sp, 1152
 	move	$a0, $s1
-	st.d	$zero, $sp, 1176
+	st.d	$zero, $sp, 1160
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 1168
+	ld.d	$a0, $sp, 1152
 	beq	$a0, $s1, .LBB43_346
 .LBB43_345:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i694
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1184
+	ld.d	$a1, $sp, 1168
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -33962,7 +33965,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s7, $a0
 	ld.d	$a0, $a0, 232
-	ld.d	$a1, $sp, 376
+	ld.d	$a1, $sp, 360
 	st.d	$a0, $fp, 512
 .Ltmp1773:                              # EH_LABEL
 	ori	$a2, $zero, 16
@@ -33981,7 +33984,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	move	$a1, $zero
 	b	.LBB43_430
 .LBB43_351:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a2, $sp, 1176
+	ld.d	$a2, $sp, 1160
 	beqz	$a2, .LBB43_444
 # %bb.352:                              #   in Loop: Header=BB43_308 Depth=1
 	ori	$a3, $zero, 1
@@ -33992,8 +33995,8 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_444
 .LBB43_354:                             #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1447:                              # EH_LABEL
-	addi.d	$a1, $sp, 376
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	addi.d	$a1, $sp, 360
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP12RestartblockESaIS1_EE16_M_push_back_auxIJRKS1_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp1448:                              # EH_LABEL
@@ -34004,21 +34007,21 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ori	$a0, $zero, 520
 	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
 	b	.LBB43_357
 	.p2align	4, , 16
 .LBB43_356:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit730
                                         #   in Loop: Header=BB43_357 Depth=2
-	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 1
-	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 520
 	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
-	ld.d	$s0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
 	addi.w	$s0, $s0, 1
-	addi.d	$s1, $sp, 1184
-	addi.d	$s2, $sp, 1120
+	addi.d	$s1, $sp, 1168
+	addi.d	$s2, $sp, 1104
 .LBB43_357:                             # %_ZNSt5dequeIN2PP12RestartblockESaIS1_EE9push_backERKS1_.exit
                                         #   Parent Loop BB43_308 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -34062,25 +34065,25 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
                                         #   in Loop: Header=BB43_357 Depth=2
 	ld.d	$s7, $a0, 496
 	ld.d	$s5, $a0, 488
-	addi.d	$a0, $sp, 1184
-	st.d	$a0, $sp, 1168
-	st.d	$s7, $sp, 1136
+	addi.d	$a0, $sp, 1168
+	st.d	$a0, $sp, 1152
+	st.d	$s7, $sp, 1120
 	ori	$a1, $zero, 16
 	bltu	$s7, $a1, .LBB43_364
 # %bb.362:                              # %.noexc.i.i725
                                         #   in Loop: Header=BB43_357 Depth=2
 .Ltmp1732:                              # EH_LABEL
-	addi.d	$a0, $sp, 1168
-	addi.d	$a1, $sp, 1136
+	addi.d	$a0, $sp, 1152
+	addi.d	$a1, $sp, 1120
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1733:                              # EH_LABEL
 # %bb.363:                              # %.noexc726
                                         #   in Loop: Header=BB43_357 Depth=2
-	ld.d	$a1, $sp, 1136
-	st.d	$a0, $sp, 1168
-	st.d	$a1, $sp, 1184
+	ld.d	$a1, $sp, 1120
+	st.d	$a0, $sp, 1152
+	st.d	$a1, $sp, 1168
 .LBB43_364:                             # %._crit_edge.i.i.i724
                                         #   in Loop: Header=BB43_357 Depth=2
 	beqz	$s7, .LBB43_368
@@ -34099,21 +34102,21 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_368:                             #   in Loop: Header=BB43_357 Depth=2
-	ld.d	$a0, $sp, 1136
-	ld.d	$a1, $sp, 1168
-	st.d	$a0, $sp, 1176
+	ld.d	$a0, $sp, 1120
+	ld.d	$a1, $sp, 1152
+	st.d	$a0, $sp, 1160
 	stx.b	$zero, $a1, $a0
 	addi.d	$s8, $s8, 1
-	st.d	$s0, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
 	move	$s2, $s0
 	ld.d	$s0, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 240                   # 8-byte Folded Reload
 	b	.LBB43_371
 	.p2align	4, , 16
 .LBB43_369:                             # %_ZNSolsEPFRSoS_E.exit749
                                         #   in Loop: Header=BB43_371 Depth=3
 	ori	$a0, $zero, 2
-	ori	$a1, $zero, 2608
+	ori	$a1, $zero, 2592
 	add.d	$a1, $sp, $a1
 	st.w	$a0, $a1, 0
 .LBB43_370:                             #   in Loop: Header=BB43_371 Depth=3
@@ -34160,25 +34163,25 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
                                         #   in Loop: Header=BB43_371 Depth=3
 	ld.d	$s7, $a0, 496
 	ld.d	$s5, $a0, 488
-	st.d	$s4, $sp, 1136
-	st.d	$s7, $sp, 1104
+	st.d	$s4, $sp, 1120
+	st.d	$s7, $sp, 1088
 	move	$a0, $s4
 	ori	$a1, $zero, 16
 	bltu	$s7, $a1, .LBB43_378
 # %bb.376:                              # %.noexc.i.i734
                                         #   in Loop: Header=BB43_371 Depth=3
 .Ltmp1735:                              # EH_LABEL
-	addi.d	$a0, $sp, 1136
-	addi.d	$a1, $sp, 1104
+	addi.d	$a0, $sp, 1120
+	addi.d	$a1, $sp, 1088
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1736:                              # EH_LABEL
 # %bb.377:                              # %.noexc735
                                         #   in Loop: Header=BB43_371 Depth=3
-	ld.d	$a1, $sp, 1104
-	st.d	$a0, $sp, 1136
-	st.d	$a1, $sp, 1152
+	ld.d	$a1, $sp, 1088
+	st.d	$a0, $sp, 1120
+	st.d	$a1, $sp, 1136
 .LBB43_378:                             # %._crit_edge.i.i.i733
                                         #   in Loop: Header=BB43_371 Depth=3
 	beqz	$s7, .LBB43_382
@@ -34197,18 +34200,18 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_382:                             #   in Loop: Header=BB43_371 Depth=3
-	ld.d	$a0, $sp, 1104
-	ld.d	$a1, $sp, 1136
-	st.d	$a0, $sp, 1144
+	ld.d	$a0, $sp, 1088
+	ld.d	$a1, $sp, 1120
+	st.d	$a0, $sp, 1128
 	stx.b	$zero, $a1, $a0
-	ld.d	$a2, $sp, 1176
-	ld.d	$a0, $sp, 1144
+	ld.d	$a2, $sp, 1160
+	ld.d	$a0, $sp, 1128
 	bne	$a2, $a0, .LBB43_385
 # %bb.383:                              #   in Loop: Header=BB43_371 Depth=3
-	ld.d	$s5, $sp, 1136
+	ld.d	$s5, $sp, 1120
 	beqz	$a2, .LBB43_393
 # %bb.384:                              #   in Loop: Header=BB43_371 Depth=3
-	ld.d	$a0, $sp, 1168
+	ld.d	$a0, $sp, 1152
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
@@ -34218,12 +34221,12 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	.p2align	4, , 16
 .LBB43_385:                             # %._ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit_crit_edge
                                         #   in Loop: Header=BB43_371 Depth=3
-	ld.d	$s5, $sp, 1136
+	ld.d	$s5, $sp, 1120
 	move	$s7, $zero
 	beq	$s5, $s4, .LBB43_387
 .LBB43_386:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i738
                                         #   in Loop: Header=BB43_371 Depth=3
-	ld.d	$a0, $sp, 1152
+	ld.d	$a0, $sp, 1136
 	addi.d	$a1, $a0, 1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -34233,10 +34236,10 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	beqz	$s7, .LBB43_370
 # %bb.388:                              #   in Loop: Header=BB43_371 Depth=3
 .Ltmp1738:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	ori	$a1, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	ori	$a1, $zero, 2200
 	add.d	$a2, $sp, $a1
-	ori	$a1, $zero, 2608
+	ori	$a1, $zero, 2592
 	add.d	$a3, $sp, $a1
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd11fatal_errorEiRNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
@@ -34253,7 +34256,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1741:                              # EH_LABEL
 # %bb.390:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit742
                                         #   in Loop: Header=BB43_371 Depth=3
-	ori	$a0, $zero, 2232
+	ori	$a0, $zero, 2216
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a0, $a0, -24
@@ -34312,8 +34315,8 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1751:                              # EH_LABEL
 # %bb.399:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit746
                                         #   in Loop: Header=BB43_371 Depth=3
-	ld.d	$a1, $sp, 1168
-	ld.d	$a2, $sp, 1176
+	ld.d	$a1, $sp, 1152
+	ld.d	$a2, $sp, 1160
 .Ltmp1752:                              # EH_LABEL
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
@@ -34366,77 +34369,77 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_369
 	.p2align	4, , 16
 .LBB43_407:                             #   in Loop: Header=BB43_357 Depth=2
-	ld.d	$a0, $sp, 1168
-	addi.d	$a1, $sp, 1184
+	ld.d	$a0, $sp, 1152
+	addi.d	$a1, $sp, 1168
 	beq	$a0, $a1, .LBB43_356
 # %bb.408:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i728
                                         #   in Loop: Header=BB43_357 Depth=2
-	ld.d	$a1, $sp, 1184
+	ld.d	$a1, $sp, 1168
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	b	.LBB43_356
 	.p2align	4, , 16
 .LBB43_409:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.bu	$a1, $sp, 1643
-	ld.bu	$a0, $sp, 1642
+	ld.bu	$a1, $sp, 1627
+	ld.bu	$a0, $sp, 1626
 	beqz	$a1, .LBB43_413
 # %bb.410:                              #   in Loop: Header=BB43_308 Depth=1
 	beqz	$a0, .LBB43_413
 # %bb.411:                              #   in Loop: Header=BB43_308 Depth=1
-	st.b	$zero, $sp, 1642
-	ld.d	$s8, $sp, 208                   # 8-byte Folded Reload
+	st.b	$zero, $sp, 1626
+	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
 .LBB43_412:                             # %.thread
                                         #   in Loop: Header=BB43_308 Depth=1
-	addi.d	$a0, $sp, 376
+	addi.d	$a0, $sp, 360
 	pcaddu18i	$ra, %call36(_ZN2PP12RestartblockD2Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB43_434
 .LBB43_413:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$s8, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
 	beqz	$a1, .LBB43_412
 # %bb.414:                              #   in Loop: Header=BB43_308 Depth=1
 	bnez	$a0, .LBB43_412
 # %bb.415:                              #   in Loop: Header=BB43_308 Depth=1
-	addi.d	$a0, $sp, 376
+	addi.d	$a0, $sp, 360
 	pcaddu18i	$ra, %call36(_ZN2PP12RestartblockD2Ev)
 	jirl	$ra, $ra, 0
 	.p2align	4, , 16
 .LBB43_416:                             #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1450:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1200
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1184
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10get_stringB5cxx11Ei)
 	jirl	$ra, $ra, 0
 .Ltmp1451:                              # EH_LABEL
 # %bb.417:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 384
-	ld.d	$a0, $sp, 376
+	ld.d	$a1, $sp, 368
+	ld.d	$a0, $sp, 360
 	ori	$a2, $zero, 17
 	bne	$a1, $a2, .LBB43_419
 # %bb.418:                              #   in Loop: Header=BB43_308 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a0, 8
 	ld.bu	$a3, $a0, 16
-	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
-	xor	$a1, $a1, $a4
 	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a4
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
 	xor	$a2, $a2, $a4
 	xori	$a3, $a3, 107
 	or	$a1, $a1, $a2
 	or	$a1, $a1, $a3
 	sltui	$s0, $a1, 1
-	addi.d	$a1, $sp, 392
+	addi.d	$a1, $sp, 376
 	bne	$a0, $a1, .LBB43_420
 	b	.LBB43_421
 .LBB43_419:                             #   in Loop: Header=BB43_308 Depth=1
 	move	$s0, $zero
-	addi.d	$a1, $sp, 392
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_421
 .LBB43_420:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i755
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -34444,42 +34447,42 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
                                         #   in Loop: Header=BB43_308 Depth=1
 	beqz	$s0, .LBB43_423
 # %bb.422:                              #   in Loop: Header=BB43_308 Depth=1
-	st.b	$zero, $sp, 1642
+	st.b	$zero, $sp, 1626
 	b	.LBB43_434
 .LBB43_423:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.bu	$a0, $sp, 1642
+	ld.bu	$a0, $sp, 1626
 	bnez	$a0, .LBB43_434
 # %bb.424:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB43_436
 # %bb.425:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1729:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1200
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1184
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10get_stringB5cxx11Ei)
 	jirl	$ra, $ra, 0
 .Ltmp1730:                              # EH_LABEL
 # %bb.426:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 384
-	ld.d	$a0, $sp, 376
+	ld.d	$a1, $sp, 368
+	ld.d	$a0, $sp, 360
 	ori	$a3, $zero, 1
 	ori	$a2, $zero, 13
 	bne	$a1, $a2, .LBB43_428
 # %bb.427:                              #   in Loop: Header=BB43_308 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a0, 5
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
-	xor	$a1, $a1, $a3
 	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	xor	$a1, $a1, $a3
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
 	xor	$a2, $a2, $a3
 	or	$a1, $a1, $a2
 	sltu	$a3, $zero, $a1
 .LBB43_428:                             # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit762
                                         #   in Loop: Header=BB43_308 Depth=1
-	st.d	$a3, $sp, 136                   # 8-byte Folded Spill
-	addi.d	$a1, $sp, 392
+	st.d	$a3, $sp, 128                   # 8-byte Folded Spill
+	addi.d	$a1, $sp, 376
 	bne	$a0, $a1, .LBB43_433
 	b	.LBB43_434
 .LBB43_429:                             #   in Loop: Header=BB43_308 Depth=1
@@ -34501,53 +34504,53 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .Ltmp1778:                              # EH_LABEL
 .LBB43_432:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 392
+	ld.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_434
 .LBB43_433:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i705
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_434:                             # %.thread1251
                                         #   in Loop: Header=BB43_308 Depth=1
-	addi.d	$a0, $sp, 1200
+	addi.d	$a0, $sp, 1184
 	pcaddu18i	$ra, %call36(_ZN2PP3CmdD2Ev)
 	jirl	$ra, $ra, 0
 .LBB43_435:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.w	$a0, $sp, 1636
+	ld.w	$a0, $sp, 1620
 	addi.w	$a0, $a0, 1
 	b	.LBB43_308
 .LBB43_436:                             #   in Loop: Header=BB43_308 Depth=1
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	ld.w	$a0, $a0, 0
 	st.w	$a0, $s8, 0
 	ori	$a1, $zero, 2
 	bge	$a0, $a1, .LBB43_682
 # %bb.437:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$s7, $sp, 1448
-	ld.d	$s5, $sp, 1440
-	addi.d	$a0, $sp, 392
-	st.d	$a0, $sp, 376
-	st.d	$s7, $sp, 1168
+	ld.d	$s7, $sp, 1432
+	ld.d	$s5, $sp, 1424
+	addi.d	$a0, $sp, 376
+	st.d	$a0, $sp, 360
+	st.d	$s7, $sp, 1152
 	ori	$a1, $zero, 16
 	bltu	$s7, $a1, .LBB43_440
 # %bb.438:                              # %.noexc.i.i770
                                         #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1453:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1168
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1152
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1454:                              # EH_LABEL
 # %bb.439:                              # %.noexc771
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1168
-	st.d	$a0, $sp, 376
-	st.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 1152
+	st.d	$a0, $sp, 360
+	st.d	$a1, $sp, 376
 .LBB43_440:                             # %._crit_edge.i.i.i769
                                         #   in Loop: Header=BB43_308 Depth=1
 	beqz	$s7, .LBB43_446
@@ -34564,14 +34567,14 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .LBB43_444:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7_S_copyEPcPKcm.exit.i689
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1176
-	ld.d	$a1, $sp, 376
-	st.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 1160
+	ld.d	$a1, $sp, 360
+	st.d	$a0, $sp, 368
 	stx.b	$zero, $a1, $a0
-	ld.d	$a0, $sp, 1168
-	st.d	$zero, $sp, 1176
+	ld.d	$a0, $sp, 1152
+	st.d	$zero, $sp, 1160
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 1168
+	ld.d	$a0, $sp, 1152
 	bne	$a0, $s1, .LBB43_345
 	b	.LBB43_346
 .LBB43_445:                             #   in Loop: Header=BB43_308 Depth=1
@@ -34580,18 +34583,18 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_446:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1168
-	ld.d	$a1, $sp, 376
-	st.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 1152
+	ld.d	$a1, $sp, 360
+	st.d	$a0, $sp, 368
 	stx.b	$zero, $a1, $a0
-	ld.d	$a1, $sp, 384
-	ld.d	$a0, $sp, 376
+	ld.d	$a1, $sp, 368
+	ld.d	$a0, $sp, 360
 	move	$s0, $zero
 	ori	$a2, $zero, 21
 	bne	$a1, $a2, .LBB43_448
 # %bb.447:                              #   in Loop: Header=BB43_308 Depth=1
 	ld.d	$a1, $a0, 0
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	lu52i.d	$a2, $a2, 1733
 	xor	$a1, $a1, $a2
 	ld.d	$a2, $a0, 8
@@ -34601,18 +34604,18 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	lu32i.d	$a3, 156022
 	lu52i.d	$a3, $a3, 1687
 	xor	$a2, $a2, $a3
-	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	xor	$a3, $a4, $a3
 	or	$a1, $a1, $a2
 	or	$a1, $a1, $a3
 	sltui	$s0, $a1, 1
 .LBB43_448:                             # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit774
                                         #   in Loop: Header=BB43_308 Depth=1
-	addi.d	$a1, $sp, 392
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_450
 # %bb.449:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i775
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -34621,13 +34624,13 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	beqz	$s0, .LBB43_459
 # %bb.451:                              # %.noexc.i779
                                         #   in Loop: Header=BB43_308 Depth=1
-	addi.d	$a0, $sp, 392
-	st.d	$a0, $sp, 376
-	ori	$a0, $zero, 77
-	st.d	$a0, $sp, 1168
-.Ltmp1689:                              # EH_LABEL
 	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1168
+	st.d	$a0, $sp, 360
+	ori	$a0, $zero, 77
+	st.d	$a0, $sp, 1152
+.Ltmp1689:                              # EH_LABEL
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1152
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
@@ -34635,113 +34638,115 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 # %bb.452:                              # %.noexc780
                                         #   in Loop: Header=BB43_308 Depth=1
 	move	$s5, $a0
-	ld.d	$s0, $sp, 1168
-	st.d	$a0, $sp, 376
-	st.d	$s0, $sp, 392
+	ld.d	$s0, $sp, 1152
+	st.d	$a0, $sp, 360
+	st.d	$s0, $sp, 376
 	pcalau12i	$a0, %pc_hi20(.L.str.37)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.37)
 	ori	$a2, $zero, 77
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	st.d	$s0, $sp, 384
+	st.d	$s0, $sp, 368
 	stx.b	$zero, $s5, $s0
-	st.d	$s1, $sp, 1168
+	st.d	$s1, $sp, 1152
 	ori	$a0, $zero, 56
-	st.d	$a0, $sp, 1136
+	st.d	$a0, $sp, 1120
 .Ltmp1692:                              # EH_LABEL
-	addi.d	$a0, $sp, 1168
-	addi.d	$a1, $sp, 1136
+	addi.d	$a0, $sp, 1152
+	addi.d	$a1, $sp, 1120
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1693:                              # EH_LABEL
 # %bb.453:                              # %.noexc784
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1136
-	st.d	$a0, $sp, 1168
-	st.d	$a1, $sp, 1184
+	ld.d	$a1, $sp, 1120
+	st.d	$a0, $sp, 1152
+	st.d	$a1, $sp, 1168
 	pcalau12i	$a2, %pc_hi20(.L.str.38)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.38)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	vst	$vr0, $a0, 40
-	st.d	$a1, $sp, 1176
+	st.d	$a1, $sp, 1160
 	stx.b	$zero, $a0, $a1
-	ld.d	$a0, $sp, 1432
-	ld.d	$a1, $sp, 1400
-	addi.d	$a2, $sp, 1152
-	st.d	$a2, $sp, 1136
+	ld.d	$a0, $sp, 1416
+	ld.d	$a1, $sp, 1384
+	addi.d	$a2, $sp, 1136
+	st.d	$a2, $sp, 1120
 	sub.d	$a1, $a0, $a1
-	ld.d	$a2, $sp, 1408
-	ld.d	$a3, $sp, 1416
+	ld.d	$a2, $sp, 1392
+	ld.d	$a3, $sp, 1400
 	srli.d	$a1, $a1, 3
 	sltu	$a0, $zero, $a0
 	sub.d	$a0, $a1, $a0
 	sub.d	$a1, $a2, $a3
-	ld.d	$a2, $sp, 1392
-	ld.d	$a3, $sp, 1376
-	st.d	$zero, $sp, 1144
+	ld.d	$a2, $sp, 1376
+	ld.d	$a3, $sp, 1360
+	st.d	$zero, $sp, 1128
 	srli.d	$a1, $a1, 7
 	alsl.d	$a0, $a0, $a1, 2
 	sub.d	$a1, $a2, $a3
 	srli.d	$a1, $a1, 7
 	add.w	$a0, $a0, $a1
-	st.b	$zero, $sp, 1152
+	st.b	$zero, $sp, 1136
 	ori	$a1, $zero, 2
 	blt	$a0, $a1, .LBB43_538
 # %bb.454:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1695:                              # EH_LABEL
-	addi.d	$a0, $sp, 1104
-	addi.d	$a1, $sp, 1200
+	addi.d	$a0, $sp, 1088
+	addi.d	$a1, $sp, 1184
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10get_stringB5cxx11Ei)
 	jirl	$ra, $ra, 0
 .Ltmp1696:                              # EH_LABEL
 # %bb.455:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1136
-	ld.d	$a1, $sp, 1104
-	addi.d	$a2, $sp, 1152
+	ld.d	$a0, $sp, 1120
+	ld.d	$a1, $sp, 1088
+	addi.d	$a2, $sp, 1136
 	beq	$a0, $a2, .LBB43_487
 # %bb.456:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i791
                                         #   in Loop: Header=BB43_308 Depth=1
 	beq	$a1, $s2, .LBB43_490
 # %bb.457:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit23.thread25.i792
                                         #   in Loop: Header=BB43_308 Depth=1
-	vld	$vr0, $sp, 1112
-	ld.d	$a2, $sp, 1152
-	st.d	$a1, $sp, 1136
-	vst	$vr0, $sp, 1144
+	vld	$vr0, $sp, 1096
+	ld.d	$a2, $sp, 1136
+	st.d	$a1, $sp, 1120
+	vst	$vr0, $sp, 1128
 	beqz	$a0, .LBB43_489
 # %bb.458:                              #   in Loop: Header=BB43_308 Depth=1
-	st.d	$a0, $sp, 1104
-	st.d	$a2, $sp, 1120
+	st.d	$a0, $sp, 1088
+	st.d	$a2, $sp, 1104
 	b	.LBB43_536
 .LBB43_459:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$s7, $sp, 1448
-	ld.d	$s5, $sp, 1440
-	addi.d	$a0, $sp, 392
-	st.d	$a0, $sp, 376
-	st.d	$s7, $sp, 1168
+	ld.d	$s7, $sp, 1432
+	ld.d	$s5, $sp, 1424
+	addi.d	$a0, $sp, 376
+	st.d	$a0, $sp, 360
+	st.d	$s7, $sp, 1152
 	ori	$a1, $zero, 16
 	bltu	$s7, $a1, .LBB43_462
 # %bb.460:                              # %.noexc.i.i858
                                         #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1456:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1168
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1152
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1457:                              # EH_LABEL
 # %bb.461:                              # %.noexc859
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1168
-	st.d	$a0, $sp, 376
-	st.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 1152
+	st.d	$a0, $sp, 360
+	st.d	$a1, $sp, 376
 .LBB43_462:                             # %._crit_edge.i.i.i857
                                         #   in Loop: Header=BB43_308 Depth=1
 	beqz	$s7, .LBB43_466
@@ -34759,18 +34764,18 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_466:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1168
-	ld.d	$a1, $sp, 376
-	st.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 1152
+	ld.d	$a1, $sp, 360
+	st.d	$a0, $sp, 368
 	stx.b	$zero, $a1, $a0
-	ld.d	$a1, $sp, 384
-	ld.d	$a0, $sp, 376
+	ld.d	$a1, $sp, 368
+	ld.d	$a0, $sp, 360
 	move	$s0, $zero
 	ori	$a2, $zero, 21
 	bne	$a1, $a2, .LBB43_468
 # %bb.467:                              #   in Loop: Header=BB43_308 Depth=1
 	ld.d	$a1, $a0, 0
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	lu52i.d	$a2, $a2, 1733
 	xor	$a1, $a1, $a2
 	ld.d	$a2, $a0, 8
@@ -34780,18 +34785,18 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	lu32i.d	$a3, -101018
 	lu52i.d	$a3, $a3, 1590
 	xor	$a2, $a2, $a3
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	xor	$a3, $a4, $a3
 	or	$a1, $a1, $a2
 	or	$a1, $a1, $a3
 	sltui	$s0, $a1, 1
 .LBB43_468:                             # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit862
                                         #   in Loop: Header=BB43_308 Depth=1
-	addi.d	$a1, $sp, 392
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_470
 # %bb.469:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i863
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -34800,13 +34805,13 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	beqz	$s0, .LBB43_481
 # %bb.471:                              # %.noexc.i867
                                         #   in Loop: Header=BB43_308 Depth=1
-	addi.d	$a0, $sp, 392
-	st.d	$a0, $sp, 376
-	ori	$a0, $zero, 66
-	st.d	$a0, $sp, 1168
-.Ltmp1670:                              # EH_LABEL
 	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1168
+	st.d	$a0, $sp, 360
+	ori	$a0, $zero, 66
+	st.d	$a0, $sp, 1152
+.Ltmp1670:                              # EH_LABEL
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1152
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
@@ -34814,41 +34819,43 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 # %bb.472:                              # %.noexc868
                                         #   in Loop: Header=BB43_308 Depth=1
 	move	$s5, $a0
-	ld.d	$s0, $sp, 1168
-	st.d	$a0, $sp, 376
-	st.d	$s0, $sp, 392
+	ld.d	$s0, $sp, 1152
+	st.d	$a0, $sp, 360
+	st.d	$s0, $sp, 376
 	pcalau12i	$a0, %pc_hi20(.L.str.40)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.40)
 	ori	$a2, $zero, 66
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	st.d	$s0, $sp, 384
+	st.d	$s0, $sp, 368
 	stx.b	$zero, $s5, $s0
-	st.d	$s1, $sp, 1168
+	st.d	$s1, $sp, 1152
 	ori	$a0, $zero, 46
-	st.d	$a0, $sp, 1136
+	st.d	$a0, $sp, 1120
 .Ltmp1673:                              # EH_LABEL
-	addi.d	$a0, $sp, 1168
-	addi.d	$a1, $sp, 1136
+	addi.d	$a0, $sp, 1152
+	addi.d	$a1, $sp, 1120
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1674:                              # EH_LABEL
 # %bb.473:                              # %.noexc872
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1136
-	st.d	$a0, $sp, 1168
-	st.d	$a1, $sp, 1184
+	ld.d	$a1, $sp, 1120
+	st.d	$a0, $sp, 1152
+	st.d	$a1, $sp, 1168
 	pcalau12i	$a2, %pc_hi20(.L.str.41)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.41)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 38
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 38
-	st.d	$a1, $sp, 1176
+	st.d	$a1, $sp, 1160
 	stx.b	$zero, $a0, $a1
 	ld.d	$a0, $fp, 520
 	ld.w	$a1, $a0, 8
@@ -34863,27 +34870,27 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1677:                              # EH_LABEL
 .LBB43_475:                             # %_ZNSolsEPFRSoS_E.exit875
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$s7, $sp, 384
-	ld.d	$s5, $sp, 376
-	addi.d	$a0, $sp, 992
-	st.d	$a0, $sp, 976
-	st.d	$s7, $sp, 1136
+	ld.d	$s7, $sp, 368
+	ld.d	$s5, $sp, 360
+	addi.d	$a0, $sp, 976
+	st.d	$a0, $sp, 960
+	st.d	$s7, $sp, 1120
 	ori	$a1, $zero, 16
 	bltu	$s7, $a1, .LBB43_478
 # %bb.476:                              # %.noexc.i880
                                         #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1678:                              # EH_LABEL
-	addi.d	$a0, $sp, 976
-	addi.d	$a1, $sp, 1136
+	addi.d	$a0, $sp, 960
+	addi.d	$a1, $sp, 1120
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1679:                              # EH_LABEL
 # %bb.477:                              # %.noexc881
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1136
-	st.d	$a0, $sp, 976
-	st.d	$a1, $sp, 992
+	ld.d	$a1, $sp, 1120
+	st.d	$a0, $sp, 960
+	st.d	$a1, $sp, 976
 .LBB43_478:                             # %._crit_edge.i.i879
                                         #   in Loop: Header=BB43_308 Depth=1
 	beqz	$s7, .LBB43_517
@@ -34896,27 +34903,27 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	st.b	$a1, $a0, 0
 	b	.LBB43_517
 .LBB43_481:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$s7, $sp, 1448
-	ld.d	$s5, $sp, 1440
-	addi.d	$a0, $sp, 392
-	st.d	$a0, $sp, 376
-	st.d	$s7, $sp, 1168
+	ld.d	$s7, $sp, 1432
+	ld.d	$s5, $sp, 1424
+	addi.d	$a0, $sp, 376
+	st.d	$a0, $sp, 360
+	st.d	$s7, $sp, 1152
 	ori	$a1, $zero, 16
 	bltu	$s7, $a1, .LBB43_484
 # %bb.482:                              # %.noexc.i.i914
                                         #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1459:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1168
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1152
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1460:                              # EH_LABEL
 # %bb.483:                              # %.noexc915
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1168
-	st.d	$a0, $sp, 376
-	st.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 1152
+	st.d	$a0, $sp, 360
+	st.d	$a1, $sp, 376
 .LBB43_484:                             # %._crit_edge.i.i.i913
                                         #   in Loop: Header=BB43_308 Depth=1
 	beqz	$s7, .LBB43_494
@@ -34933,15 +34940,15 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	beq	$a1, $s2, .LBB43_490
 # %bb.488:                              # %.thread.i797
                                         #   in Loop: Header=BB43_308 Depth=1
-	vld	$vr0, $sp, 1112
-	st.d	$a1, $sp, 1136
-	vst	$vr0, $sp, 1144
+	vld	$vr0, $sp, 1096
+	st.d	$a1, $sp, 1120
+	vst	$vr0, $sp, 1128
 .LBB43_489:                             #   in Loop: Header=BB43_308 Depth=1
-	st.d	$s2, $sp, 1104
+	st.d	$s2, $sp, 1088
 	move	$a0, $s2
 	b	.LBB43_536
 .LBB43_490:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a2, $sp, 1112
+	ld.d	$a2, $sp, 1096
 	beqz	$a2, .LBB43_535
 # %bb.491:                              #   in Loop: Header=BB43_308 Depth=1
 	ori	$a3, $zero, 1
@@ -34956,12 +34963,12 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_494:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1168
-	ld.d	$a1, $sp, 376
-	st.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 1152
+	ld.d	$a1, $sp, 360
+	st.d	$a0, $sp, 368
 	stx.b	$zero, $a1, $a0
-	ld.d	$a1, $sp, 384
-	ld.d	$a0, $sp, 376
+	ld.d	$a1, $sp, 368
+	ld.d	$a0, $sp, 360
 	move	$s0, $zero
 	ori	$a2, $zero, 20
 	bne	$a1, $a2, .LBB43_496
@@ -34969,23 +34976,23 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a0, 8
 	ld.wu	$a3, $a0, 16
-	ld.d	$a4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
 	lu52i.d	$a4, $a4, 1797
 	xor	$a1, $a1, $a4
-	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
-	xor	$a2, $a2, $a4
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
+	xor	$a2, $a2, $a4
+	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	xor	$a3, $a3, $a4
 	or	$a1, $a1, $a2
 	or	$a1, $a1, $a3
 	sltui	$s0, $a1, 1
 .LBB43_496:                             # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit918
                                         #   in Loop: Header=BB43_308 Depth=1
-	addi.d	$a1, $sp, 392
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_498
 # %bb.497:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i919
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -34993,14 +35000,14 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
                                         #   in Loop: Header=BB43_308 Depth=1
 	beqz	$s0, .LBB43_500
 # %bb.499:                              #   in Loop: Header=BB43_308 Depth=1
-	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	b	.LBB43_434
 .LBB43_500:                             #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1462:                              # EH_LABEL
-	addi.d	$a0, $sp, 1168
-	addi.d	$a1, $sp, 1200
+	addi.d	$a0, $sp, 1152
+	addi.d	$a1, $sp, 1184
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10get_stringB5cxx11Ei)
 	jirl	$ra, $ra, 0
@@ -35009,7 +35016,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1465:                              # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.43)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.43)
-	addi.d	$a0, $sp, 1168
+	addi.d	$a0, $sp, 1152
 	pcaddu18i	$ra, %call36(_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_)
 	jirl	$ra, $ra, 0
 .Ltmp1466:                              # EH_LABEL
@@ -35019,7 +35026,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1467:                              # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.44)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.44)
-	addi.d	$a0, $sp, 1168
+	addi.d	$a0, $sp, 1152
 	pcaddu18i	$ra, %call36(_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_)
 	jirl	$ra, $ra, 0
 .Ltmp1468:                              # EH_LABEL
@@ -35027,49 +35034,49 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	beqz	$a0, .LBB43_509
 .LBB43_505:                             #   in Loop: Header=BB43_308 Depth=1
 	ori	$a0, $zero, 1
-	st.b	$a0, $sp, 1136
+	st.b	$a0, $sp, 1120
 .Ltmp1469:                              # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.44)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.44)
-	addi.d	$a0, $sp, 1168
+	addi.d	$a0, $sp, 1152
 	pcaddu18i	$ra, %call36(_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_)
 	jirl	$ra, $ra, 0
 .Ltmp1470:                              # EH_LABEL
 # %bb.506:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1472:                              # EH_LABEL
 	move	$a5, $a0
-	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1652
-	addi.d	$a2, $sp, 1200
-	addi.d	$a3, $sp, 1136
-	addi.d	$a4, $sp, 1651
-	ori	$a6, $zero, 2216
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1636
+	addi.d	$a2, $sp, 1184
+	addi.d	$a3, $sp, 1120
+	addi.d	$a4, $sp, 1635
+	ori	$a6, $zero, 2200
 	add.d	$a6, $sp, $a6
-	ori	$a7, $zero, 2608
+	ori	$a7, $zero, 2592
 	add.d	$a7, $sp, $a7
 	pcaddu18i	$ra, %call36(_ZN2PP8WhenthenC1ERiRNS_3CmdERbS4_bRNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEES1_)
 	jirl	$ra, $ra, 0
 .Ltmp1473:                              # EH_LABEL
 # %bb.507:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1475:                              # EH_LABEL
-	addi.d	$a1, $sp, 376
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	addi.d	$a1, $sp, 360
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP8WhenthenESaIS1_EE9push_backERKS1_)
 	jirl	$ra, $ra, 0
 .Ltmp1476:                              # EH_LABEL
 # %bb.508:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.bu	$s0, $sp, 1136
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.bu	$s0, $sp, 1120
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	addi.w	$a0, $a0, 1
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	addi.d	$a0, $sp, 376
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	addi.d	$a0, $sp, 360
 	pcaddu18i	$ra, %call36(_ZN2PP8WhenthenD2Ev)
 	jirl	$ra, $ra, 0
 	bnez	$s0, .LBB43_612
 .LBB43_509:                             #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1478:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1200
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1184
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10get_stringB5cxx11Ei)
 	jirl	$ra, $ra, 0
@@ -35078,18 +35085,18 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1481:                              # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.45)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.45)
-	addi.d	$a0, $sp, 376
+	addi.d	$a0, $sp, 360
 	pcaddu18i	$ra, %call36(_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_)
 	jirl	$ra, $ra, 0
 .Ltmp1482:                              # EH_LABEL
 # %bb.511:                              #   in Loop: Header=BB43_308 Depth=1
 	move	$s5, $a0
-	ld.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 392
+	ld.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_513
 # %bb.512:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i925
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -35097,11 +35104,11 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
                                         #   in Loop: Header=BB43_308 Depth=1
 	beqz	$s5, .LBB43_531
 # %bb.514:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	blez	$a0, .LBB43_597
 # %bb.515:                              # %thread-pre-split
                                         #   in Loop: Header=BB43_308 Depth=1
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	ld.w	$a0, $a0, 0
 	b	.LBB43_605
@@ -35111,31 +35118,31 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_517:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1136
-	ld.d	$a1, $sp, 976
-	st.d	$a0, $sp, 984
+	ld.d	$a0, $sp, 1120
+	ld.d	$a1, $sp, 960
+	st.d	$a0, $sp, 968
 	stx.b	$zero, $a1, $a0
-	ld.d	$s7, $sp, 1176
-	ld.d	$s5, $sp, 1168
-	addi.d	$a0, $sp, 960
-	st.d	$a0, $sp, 944
-	st.d	$s7, $sp, 1136
+	ld.d	$s7, $sp, 1160
+	ld.d	$s5, $sp, 1152
+	addi.d	$a0, $sp, 944
+	st.d	$a0, $sp, 928
+	st.d	$s7, $sp, 1120
 	ori	$a1, $zero, 16
 	bltu	$s7, $a1, .LBB43_520
 # %bb.518:                              # %.noexc.i884
                                         #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1680:                              # EH_LABEL
-	addi.d	$a0, $sp, 944
-	addi.d	$a1, $sp, 1136
+	addi.d	$a0, $sp, 928
+	addi.d	$a1, $sp, 1120
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1681:                              # EH_LABEL
 # %bb.519:                              # %.noexc885
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1136
-	st.d	$a0, $sp, 944
-	st.d	$a1, $sp, 960
+	ld.d	$a1, $sp, 1120
+	st.d	$a0, $sp, 928
+	st.d	$a1, $sp, 944
 .LBB43_520:                             # %._crit_edge.i.i883
                                         #   in Loop: Header=BB43_308 Depth=1
 	beqz	$s7, .LBB43_524
@@ -35153,35 +35160,35 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_524:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1136
-	ld.d	$a1, $sp, 944
-	st.d	$a0, $sp, 952
+	ld.d	$a0, $sp, 1120
+	ld.d	$a1, $sp, 928
+	st.d	$a0, $sp, 936
 	stx.b	$zero, $a1, $a0
 .Ltmp1683:                              # EH_LABEL
-	addi.d	$a1, $sp, 976
-	addi.d	$a2, $sp, 944
+	addi.d	$a1, $sp, 960
+	addi.d	$a2, $sp, 928
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser10list_funcsENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_)
 	jirl	$ra, $ra, 0
 .Ltmp1684:                              # EH_LABEL
 # %bb.525:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 944
-	addi.d	$a1, $sp, 960
+	ld.d	$a0, $sp, 928
+	addi.d	$a1, $sp, 944
 	beq	$a0, $a1, .LBB43_527
 # %bb.526:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i887
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 960
+	ld.d	$a1, $sp, 944
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_527:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit889
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 976
-	addi.d	$a1, $sp, 992
+	ld.d	$a0, $sp, 960
+	addi.d	$a1, $sp, 976
 	beq	$a0, $a1, .LBB43_529
 # %bb.528:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i890
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 992
+	ld.d	$a1, $sp, 976
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -35200,21 +35207,21 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1687:                              # EH_LABEL
 	b	.LBB43_584
 .LBB43_531:                             #   in Loop: Header=BB43_308 Depth=1
-	st.b	$zero, $sp, 375
+	st.b	$zero, $sp, 359
 .Ltmp1484:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	addi.d	$a1, $sp, 375
-	addi.d	$a2, $sp, 2008
-	addi.d	$a3, $sp, 1928
-	ori	$a4, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	addi.d	$a1, $sp, 359
+	addi.d	$a2, $sp, 1992
+	addi.d	$a3, $sp, 1912
+	ori	$a4, $zero, 2200
 	add.d	$a4, $sp, $a4
-	ori	$a5, $zero, 2608
+	ori	$a5, $zero, 2592
 	add.d	$a5, $sp, $a5
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp1485:                              # EH_LABEL
 # %bb.532:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.bu	$a0, $sp, 375
+	ld.bu	$a0, $sp, 359
 	beqz	$a0, .LBB43_589
 .LBB43_533:                             #   in Loop: Header=BB43_308 Depth=1
 	move	$a3, $zero
@@ -35225,20 +35232,20 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .LBB43_535:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7_S_copyEPcPKcm.exit.i794
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1112
-	ld.d	$a1, $sp, 1136
-	st.d	$a0, $sp, 1144
+	ld.d	$a0, $sp, 1096
+	ld.d	$a1, $sp, 1120
+	st.d	$a0, $sp, 1128
 	stx.b	$zero, $a1, $a0
-	ld.d	$a0, $sp, 1104
+	ld.d	$a0, $sp, 1088
 .LBB43_536:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEaSEOS4_.exit798
                                         #   in Loop: Header=BB43_308 Depth=1
-	st.d	$zero, $sp, 1112
+	st.d	$zero, $sp, 1096
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 1104
+	ld.d	$a0, $sp, 1088
 	beq	$a0, $s2, .LBB43_538
 # %bb.537:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i799
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1120
+	ld.d	$a1, $sp, 1104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -35294,27 +35301,27 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1705:                              # EH_LABEL
 .LBB43_546:                             # %_ZNSolsEPFRSoS_E.exit806
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$s7, $sp, 384
-	ld.d	$s5, $sp, 376
-	addi.d	$a0, $sp, 1088
-	st.d	$a0, $sp, 1072
-	st.d	$s7, $sp, 1104
+	ld.d	$s7, $sp, 368
+	ld.d	$s5, $sp, 360
+	addi.d	$a0, $sp, 1072
+	st.d	$a0, $sp, 1056
+	st.d	$s7, $sp, 1088
 	ori	$a1, $zero, 16
 	bltu	$s7, $a1, .LBB43_549
 # %bb.547:                              # %.noexc.i808
                                         #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1706:                              # EH_LABEL
-	addi.d	$a0, $sp, 1072
-	addi.d	$a1, $sp, 1104
+	addi.d	$a0, $sp, 1056
+	addi.d	$a1, $sp, 1088
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1707:                              # EH_LABEL
 # %bb.548:                              # %.noexc809
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1104
-	st.d	$a0, $sp, 1072
-	st.d	$a1, $sp, 1088
+	ld.d	$a1, $sp, 1088
+	st.d	$a0, $sp, 1056
+	st.d	$a1, $sp, 1072
 .LBB43_549:                             # %._crit_edge.i.i807
                                         #   in Loop: Header=BB43_308 Depth=1
 	beqz	$s7, .LBB43_553
@@ -35332,31 +35339,31 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_553:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1104
-	ld.d	$a1, $sp, 1072
-	st.d	$a0, $sp, 1080
+	ld.d	$a0, $sp, 1088
+	ld.d	$a1, $sp, 1056
+	st.d	$a0, $sp, 1064
 	stx.b	$zero, $a1, $a0
-	ld.d	$s7, $sp, 1176
-	ld.d	$s5, $sp, 1168
-	addi.d	$a0, $sp, 1056
-	st.d	$a0, $sp, 1040
-	st.d	$s7, $sp, 1104
+	ld.d	$s7, $sp, 1160
+	ld.d	$s5, $sp, 1152
+	addi.d	$a0, $sp, 1040
+	st.d	$a0, $sp, 1024
+	st.d	$s7, $sp, 1088
 	ori	$a1, $zero, 16
 	bltu	$s7, $a1, .LBB43_556
 # %bb.554:                              # %.noexc.i812
                                         #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1708:                              # EH_LABEL
-	addi.d	$a0, $sp, 1040
-	addi.d	$a1, $sp, 1104
+	addi.d	$a0, $sp, 1024
+	addi.d	$a1, $sp, 1088
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1709:                              # EH_LABEL
 # %bb.555:                              # %.noexc813
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1104
-	st.d	$a0, $sp, 1040
-	st.d	$a1, $sp, 1056
+	ld.d	$a1, $sp, 1088
+	st.d	$a0, $sp, 1024
+	st.d	$a1, $sp, 1040
 .LBB43_556:                             # %._crit_edge.i.i811
                                         #   in Loop: Header=BB43_308 Depth=1
 	beqz	$s7, .LBB43_560
@@ -35374,31 +35381,31 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_560:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1104
-	ld.d	$a1, $sp, 1040
-	st.d	$a0, $sp, 1048
+	ld.d	$a0, $sp, 1088
+	ld.d	$a1, $sp, 1024
+	st.d	$a0, $sp, 1032
 	stx.b	$zero, $a1, $a0
-	ld.d	$s7, $sp, 1144
-	ld.d	$s5, $sp, 1136
-	addi.d	$a0, $sp, 1024
-	st.d	$a0, $sp, 1008
-	st.d	$s7, $sp, 1104
+	ld.d	$s7, $sp, 1128
+	ld.d	$s5, $sp, 1120
+	addi.d	$a0, $sp, 1008
+	st.d	$a0, $sp, 992
+	st.d	$s7, $sp, 1088
 	ori	$a1, $zero, 16
 	bltu	$s7, $a1, .LBB43_563
 # %bb.561:                              # %.noexc.i816
                                         #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1711:                              # EH_LABEL
-	addi.d	$a0, $sp, 1008
-	addi.d	$a1, $sp, 1104
+	addi.d	$a0, $sp, 992
+	addi.d	$a1, $sp, 1088
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1712:                              # EH_LABEL
 # %bb.562:                              # %.noexc817
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1104
-	st.d	$a0, $sp, 1008
-	st.d	$a1, $sp, 1024
+	ld.d	$a1, $sp, 1088
+	st.d	$a0, $sp, 992
+	st.d	$a1, $sp, 1008
 .LBB43_563:                             # %._crit_edge.i.i815
                                         #   in Loop: Header=BB43_308 Depth=1
 	beqz	$s7, .LBB43_567
@@ -35416,47 +35423,47 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB43_567:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1104
-	ld.d	$a1, $sp, 1008
-	st.d	$a0, $sp, 1016
+	ld.d	$a0, $sp, 1088
+	ld.d	$a1, $sp, 992
+	st.d	$a0, $sp, 1000
 	stx.b	$zero, $a1, $a0
 .Ltmp1714:                              # EH_LABEL
-	addi.d	$a1, $sp, 1072
-	addi.d	$a2, $sp, 1040
-	addi.d	$a3, $sp, 1008
+	addi.d	$a1, $sp, 1056
+	addi.d	$a2, $sp, 1024
+	addi.d	$a3, $sp, 992
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser9list_varsENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_S6_)
 	jirl	$ra, $ra, 0
 .Ltmp1715:                              # EH_LABEL
 # %bb.568:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1008
-	addi.d	$a1, $sp, 1024
+	ld.d	$a0, $sp, 992
+	addi.d	$a1, $sp, 1008
 	beq	$a0, $a1, .LBB43_570
 # %bb.569:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i819
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1024
+	ld.d	$a1, $sp, 1008
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_570:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit821
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1040
-	addi.d	$a1, $sp, 1056
+	ld.d	$a0, $sp, 1024
+	addi.d	$a1, $sp, 1040
 	beq	$a0, $a1, .LBB43_572
 # %bb.571:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i822
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1056
+	ld.d	$a1, $sp, 1040
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_572:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit824
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1072
-	addi.d	$a1, $sp, 1088
+	ld.d	$a0, $sp, 1056
+	addi.d	$a1, $sp, 1072
 	beq	$a0, $a1, .LBB43_574
 # %bb.573:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i825
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1088
+	ld.d	$a1, $sp, 1072
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -35513,64 +35520,64 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1724:                              # EH_LABEL
 .LBB43_582:                             # %_ZNSolsEPFRSoS_E.exit829
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1136
-	addi.d	$a1, $sp, 1152
+	ld.d	$a0, $sp, 1120
+	addi.d	$a1, $sp, 1136
 	beq	$a0, $a1, .LBB43_584
 # %bb.583:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i839
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1152
+	ld.d	$a1, $sp, 1136
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_584:                             # %_ZNSolsEPFRSoS_E.exit894
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1168
+	ld.d	$a0, $sp, 1152
 	beq	$a0, $s1, .LBB43_586
 # %bb.585:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i901
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1184
+	ld.d	$a1, $sp, 1168
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_586:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit903
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 392
+	ld.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_588
 # %bb.587:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i904
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_588:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit906
                                         #   in Loop: Header=BB43_308 Depth=1
-	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
 	b	.LBB43_434
 .LBB43_589:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.w	$a0, $sp, 1636
-	st.w	$a0, $sp, 1136
-	st.b	$zero, $sp, 374
-	st.w	$zero, $sp, 1104
+	ld.w	$a0, $sp, 1620
+	st.w	$a0, $sp, 1120
+	st.b	$zero, $sp, 358
+	st.w	$zero, $sp, 1088
 .Ltmp1487:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	addi.d	$a1, $sp, 375
-	addi.d	$a2, $sp, 1848
-	addi.d	$a3, $sp, 1136
-	addi.d	$a4, $sp, 374
-	ori	$a5, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	addi.d	$a1, $sp, 359
+	addi.d	$a2, $sp, 1832
+	addi.d	$a3, $sp, 1120
+	addi.d	$a4, $sp, 358
+	ori	$a5, $zero, 2200
 	add.d	$a5, $sp, $a5
-	addi.d	$a6, $sp, 1104
+	addi.d	$a6, $sp, 1088
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEES6_)
 	jirl	$ra, $ra, 0
 .Ltmp1488:                              # EH_LABEL
 # %bb.590:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.w	$a0, $sp, 1104
+	ld.w	$a0, $sp, 1088
 	ori	$a1, $zero, 2
 	bne	$a0, $a1, .LBB43_613
 # %bb.591:                              #   in Loop: Header=BB43_308 Depth=1
 	ld.w	$a0, $s8, 0
-	ori	$a2, $zero, 2608
+	ori	$a2, $zero, 2592
 	add.d	$a2, $sp, $a2
 	st.w	$a1, $a2, 0
 	ori	$a1, $zero, 1
@@ -35590,7 +35597,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1550:                              # EH_LABEL
 # %bb.594:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit948
                                         #   in Loop: Header=BB43_308 Depth=1
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	ld.w	$a1, $a0, 0
 .Ltmp1551:                              # EH_LABEL
@@ -35610,10 +35617,10 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_616
 .LBB43_597:                             #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1556:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	ori	$a1, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	ori	$a1, $zero, 2200
 	add.d	$a2, $sp, $a1
-	ori	$a1, $zero, 2608
+	ori	$a1, $zero, 2592
 	add.d	$a3, $sp, $a1
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd11fatal_errorEiRNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
@@ -35673,7 +35680,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 # %bb.604:                              # %_ZNSolsEPFRSoS_E.exit939
                                         #   in Loop: Header=BB43_308 Depth=1
 	ori	$a0, $zero, 2
-	ori	$a1, $zero, 2608
+	ori	$a1, $zero, 2592
 	add.d	$a1, $sp, $a1
 	st.w	$a0, $a1, 0
 .LBB43_605:                             #   in Loop: Header=BB43_308 Depth=1
@@ -35682,9 +35689,9 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 # %bb.606:                              #   in Loop: Header=BB43_308 Depth=1
 	st.w	$a0, $s8, 0
 .LBB43_607:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	addi.w	$a1, $a1, -1
-	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
 	blez	$a0, .LBB43_612
 # %bb.608:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1570:                              # EH_LABEL
@@ -35698,7 +35705,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1571:                              # EH_LABEL
 # %bb.609:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit944
                                         #   in Loop: Header=BB43_308 Depth=1
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	ld.w	$a1, $a0, 0
 .Ltmp1572:                              # EH_LABEL
@@ -35713,23 +35720,23 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .Ltmp1575:                              # EH_LABEL
 # %bb.611:                              #   in Loop: Header=BB43_308 Depth=1
-	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
 	ori	$s0, $zero, 1
 	b	.LBB43_617
 .LBB43_612:                             #   in Loop: Header=BB43_308 Depth=1
-	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
 	ori	$s0, $zero, 31
 	b	.LBB43_617
 .LBB43_613:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.bu	$a0, $sp, 374
+	ld.bu	$a0, $sp, 358
 	beqz	$a0, .LBB43_621
 # %bb.614:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1547:                              # EH_LABEL
-	addi.d	$a1, $sp, 1636
-	addi.d	$a2, $sp, 1848
-	ori	$a0, $zero, 2216
+	addi.d	$a1, $sp, 1620
+	addi.d	$a2, $sp, 1832
+	ori	$a0, $zero, 2200
 	add.d	$a3, $sp, $a0
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a4, $sp, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser11end_do_loopERiRSt5dequeIiSaIiEERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEES1_)
@@ -35743,20 +35750,20 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	maskeqz	$a0, $a2, $a0
 	or	$s0, $a0, $a1
 .LBB43_616:                             #   in Loop: Header=BB43_308 Depth=1
-	st.d	$a3, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 128                   # 8-byte Folded Spill
 .LBB43_617:                             # %_ZNSolsEPFRSoS_E.exit946
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 1168
+	ld.d	$a0, $sp, 1152
 	beq	$a0, $s1, .LBB43_619
 # %bb.618:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i977
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1184
+	ld.d	$a1, $sp, 1168
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_619:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i978
                                         #   in Loop: Header=BB43_308 Depth=1
-	addi.d	$a0, $sp, 1200
+	addi.d	$a0, $sp, 1184
 	pcaddu18i	$ra, %call36(_ZN2PP3CmdD2Ev)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 31
@@ -35766,33 +35773,33 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	beqz	$s0, .LBB43_435
 	b	.LBB43_685
 .LBB43_621:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.w	$a0, $sp, 1136
-	ld.bu	$a1, $sp, 375
-	st.w	$a0, $sp, 1636
+	ld.w	$a0, $sp, 1120
+	ld.bu	$a1, $sp, 359
+	st.w	$a0, $sp, 1620
 	bnez	$a1, .LBB43_533
 # %bb.622:                              #   in Loop: Header=BB43_308 Depth=1
-	st.b	$zero, $sp, 373
-	st.b	$zero, $sp, 372
+	st.b	$zero, $sp, 357
+	st.b	$zero, $sp, 356
 .Ltmp1489:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	addi.d	$a1, $sp, 375
-	addi.d	$a2, $sp, 373
-	addi.d	$a3, $sp, 1816
-	addi.d	$a4, $sp, 372
-	ori	$a5, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	addi.d	$a1, $sp, 359
+	addi.d	$a2, $sp, 357
+	addi.d	$a3, $sp, 1800
+	addi.d	$a4, $sp, 356
+	ori	$a5, $zero, 2200
 	add.d	$a5, $sp, $a5
-	ori	$a6, $zero, 2608
+	ori	$a6, $zero, 2592
 	add.d	$a6, $sp, $a6
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd18handle_subroutinesERbS1_RNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES1_RNS2_18basic_stringstreamIcS5_S6_EERi)
 	jirl	$ra, $ra, 0
 .Ltmp1490:                              # EH_LABEL
 # %bb.623:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.bu	$a0, $sp, 372
+	ld.bu	$a0, $sp, 356
 	beqz	$a0, .LBB43_630
 # %bb.624:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1536:                              # EH_LABEL
-	addi.d	$a1, $sp, 1636
-	addi.d	$a2, $sp, 1848
+	addi.d	$a1, $sp, 1620
+	addi.d	$a2, $sp, 1832
                                         # implicit-def: $r7
                                         # implicit-def: $r8
 	move	$a0, $fp
@@ -35801,12 +35808,12 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1537:                              # EH_LABEL
 # %bb.625:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1538:                              # EH_LABEL
-	addi.d	$a1, $sp, 1636
-	addi.d	$a2, $sp, 1736
-	addi.d	$a3, $sp, 1656
-	ori	$a0, $zero, 2216
+	addi.d	$a1, $sp, 1620
+	addi.d	$a2, $sp, 1720
+	addi.d	$a3, $sp, 1640
+	ori	$a0, $zero, 2200
 	add.d	$a4, $sp, $a0
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a5, $sp, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser12jump_to_callERiRSt5dequeIiSaIiEES5_RNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEES1_)
@@ -35825,23 +35832,23 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	addi.d	$a1, $a0, %pc_lo12(.L.str.50)
 	b	.LBB43_650
 .LBB43_630:                             #   in Loop: Header=BB43_308 Depth=1
-	ld.bu	$a0, $sp, 373
+	ld.bu	$a0, $sp, 357
 	beqz	$a0, .LBB43_633
 # %bb.631:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1800
-	ld.d	$a0, $sp, 1784
+	ld.d	$a1, $sp, 1784
+	ld.d	$a0, $sp, 1768
 	addi.d	$a1, $a1, -4
 	beq	$a0, $a1, .LBB43_641
 # %bb.632:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.w	$a1, $sp, 1636
+	ld.w	$a1, $sp, 1620
 	st.w	$a1, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $sp, 1784
+	st.d	$a0, $sp, 1768
 	b	.LBB43_642
 .LBB43_633:                             #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1491:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1200
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1184
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10get_stringB5cxx11Ei)
 	jirl	$ra, $ra, 0
@@ -35850,18 +35857,18 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1494:                              # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.52)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.52)
-	addi.d	$a0, $sp, 376
+	addi.d	$a0, $sp, 360
 	pcaddu18i	$ra, %call36(_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_)
 	jirl	$ra, $ra, 0
 .Ltmp1495:                              # EH_LABEL
 # %bb.635:                              #   in Loop: Header=BB43_308 Depth=1
 	move	$s5, $a0
-	ld.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 392
+	ld.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_637
 # %bb.636:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i964
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -35872,10 +35879,10 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	bnez	$s5, .LBB43_616
 # %bb.638:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1497:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	ori	$a1, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	ori	$a1, $zero, 2200
 	add.d	$a1, $sp, $a1
-	ori	$a2, $zero, 2608
+	ori	$a2, $zero, 2592
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd25check_for_var_descriptionERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
@@ -35887,19 +35894,19 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_616
 .LBB43_641:                             #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1530:                              # EH_LABEL
-	addi.d	$a0, $sp, 1736
-	addi.d	$a1, $sp, 1636
+	addi.d	$a0, $sp, 1720
+	addi.d	$a1, $sp, 1620
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIiSaIiEE16_M_push_back_auxIJRKiEEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp1531:                              # EH_LABEL
 .LBB43_642:                             # %_ZNSt5dequeIiSaIiEE9push_backERKi.exit
                                         #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1532:                              # EH_LABEL
-	addi.d	$a1, $sp, 1636
-	addi.d	$a2, $sp, 1816
-	ori	$a0, $zero, 2216
+	addi.d	$a1, $sp, 1620
+	addi.d	$a2, $sp, 1800
+	ori	$a0, $zero, 2200
 	add.d	$a3, $sp, $a0
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a4, $sp, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser11jump_to_subERiRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERNS2_18basic_stringstreamIcS5_S6_EES1_)
@@ -35907,20 +35914,20 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1533:                              # EH_LABEL
 # %bb.643:                              #   in Loop: Header=BB43_308 Depth=1
 	move	$s5, $a0
-	ld.d	$a1, $sp, 1720
-	ld.d	$a0, $sp, 1704
+	ld.d	$a1, $sp, 1704
+	ld.d	$a0, $sp, 1688
 	addi.d	$a1, $a1, -4
 	beq	$a0, $a1, .LBB43_645
 # %bb.644:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.w	$a1, $sp, 1636
+	ld.w	$a1, $sp, 1620
 	st.w	$a1, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $sp, 1704
+	st.d	$a0, $sp, 1688
 	b	.LBB43_646
 .LBB43_645:                             #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1534:                              # EH_LABEL
-	addi.d	$a0, $sp, 1656
-	addi.d	$a1, $sp, 1636
+	addi.d	$a0, $sp, 1640
+	addi.d	$a1, $sp, 1620
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIiSaIiEE16_M_push_back_auxIJRKiEEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp1535:                              # EH_LABEL
@@ -35946,7 +35953,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1541:                              # EH_LABEL
 # %bb.651:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit961.invoke
                                         #   in Loop: Header=BB43_308 Depth=1
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	ld.w	$a1, $a0, 0
 .Ltmp1542:                              # EH_LABEL
@@ -35964,10 +35971,10 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_533
 .LBB43_653:                             #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1499:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	ori	$a1, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	ori	$a1, $zero, 2200
 	add.d	$a2, $sp, $a1
-	ori	$a1, $zero, 2608
+	ori	$a1, $zero, 2592
 	add.d	$a3, $sp, $a1
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd15check_input_endEbRNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
@@ -35976,10 +35983,12 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 # %bb.654:                              #   in Loop: Header=BB43_308 Depth=1
 	beqz	$a0, .LBB43_658
 # %bb.655:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 1888
-	ld.d	$s0, $sp, 1920
-	xvld	$xr0, $sp, 1864
-	xvst	$xr0, $sp, 256                  # 32-byte Folded Spill
+	vld	$vr0, $sp, 1848
+	vst	$vr0, $sp, 256                  # 16-byte Folded Spill
+	ld.d	$a1, $sp, 1872
+	ld.d	$s0, $sp, 1904
+	vld	$vr0, $sp, 1864
+	vst	$vr0, $sp, 240                  # 16-byte Folded Spill
 	bgeu	$a1, $s0, .LBB43_657
 .LBB43_656:                             # %.lr.ph.i.i.i
                                         #   Parent Loop BB43_308 Depth=1
@@ -35994,100 +36003,102 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_657:                             # %_ZNSt5dequeIiSaIiEE5clearEv.exit
                                         #   in Loop: Header=BB43_308 Depth=1
 	move	$a3, $zero
-	xvld	$xr0, $sp, 256                  # 32-byte Folded Reload
-	xvst	$xr0, $sp, 1896
+	vld	$vr0, $sp, 256                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 1880
+	vld	$vr0, $sp, 240                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 1896
 	ori	$s0, $zero, 29
 	b	.LBB43_681
 .LBB43_658:                             #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1501:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	ori	$a1, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	ori	$a1, $zero, 2200
 	add.d	$a1, $sp, $a1
-	ori	$a2, $zero, 2608
+	ori	$a2, $zero, 2592
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd9math_evalERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp1502:                              # EH_LABEL
 # %bb.659:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1503:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	ori	$a1, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	ori	$a1, $zero, 2200
 	add.d	$a1, $sp, $a1
-	ori	$a2, $zero, 2608
+	ori	$a2, $zero, 2592
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd20substitute_variablesERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp1504:                              # EH_LABEL
 # %bb.660:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1505:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	ori	$a1, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	ori	$a1, $zero, 2200
 	add.d	$a1, $sp, $a1
-	ori	$a2, $zero, 2608
+	ori	$a2, $zero, 2592
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10check_ppmmERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp1506:                              # EH_LABEL
 # %bb.661:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1507:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
+	addi.d	$a0, $sp, 1184
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd13remove_commasEv)
 	jirl	$ra, $ra, 0
 .Ltmp1508:                              # EH_LABEL
 # %bb.662:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1509:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	ori	$a1, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	ori	$a1, $zero, 2200
 	add.d	$a1, $sp, $a1
-	ori	$a2, $zero, 2608
+	ori	$a2, $zero, 2592
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd22handle_cmd_unary_minusERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp1510:                              # EH_LABEL
 # %bb.663:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1511:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	ori	$a1, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	ori	$a1, $zero, 2200
 	add.d	$a1, $sp, $a1
-	ori	$a2, $zero, 2608
+	ori	$a2, $zero, 2592
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd21handle_cmd_unary_plusERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp1512:                              # EH_LABEL
 # %bb.664:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1513:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	ori	$a1, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	ori	$a1, $zero, 2200
 	add.d	$a1, $sp, $a1
-	ori	$a2, $zero, 2608
+	ori	$a2, $zero, 2592
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd23handle_cmd_multiplicityERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp1514:                              # EH_LABEL
 # %bb.665:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1515:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	ori	$a1, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	ori	$a1, $zero, 2200
 	add.d	$a1, $sp, $a1
-	ori	$a2, $zero, 2608
+	ori	$a2, $zero, 2592
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd20check_misplaced_mathERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp1516:                              # EH_LABEL
 # %bb.666:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1517:                              # EH_LABEL
-	addi.d	$a0, $sp, 1200
-	ori	$a1, $zero, 2216
+	addi.d	$a0, $sp, 1184
+	ori	$a1, $zero, 2200
 	add.d	$a1, $sp, $a1
-	ori	$a2, $zero, 2608
+	ori	$a2, $zero, 2592
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd13set_variablesERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp1518:                              # EH_LABEL
 # %bb.667:                              #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1519:                              # EH_LABEL
-	addi.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 1200
+	addi.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 1184
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd12get_cmd_typeB5cxx11Ev)
 	jirl	$ra, $ra, 0
 .Ltmp1520:                              # EH_LABEL
@@ -36095,18 +36106,18 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1522:                              # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.53)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.53)
-	addi.d	$a0, $sp, 376
+	addi.d	$a0, $sp, 360
 	pcaddu18i	$ra, %call36(_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_)
 	jirl	$ra, $ra, 0
 .Ltmp1523:                              # EH_LABEL
 # %bb.669:                              #   in Loop: Header=BB43_308 Depth=1
 	move	$s5, $a0
-	ld.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 392
+	ld.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_671
 # %bb.670:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i970
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -36114,16 +36125,16 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
                                         #   in Loop: Header=BB43_308 Depth=1
 	beqz	$s5, .LBB43_680
 # %bb.672:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	blez	$a0, .LBB43_675
 # %bb.673:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.w	$a1, $sp, 1652
+	ld.w	$a1, $sp, 1636
 	ldptr.d	$a0, $fp, 2312
 	ldptr.d	$a2, $fp, 2320
 	addi.w	$a1, $a1, -1
 	sub.d	$a2, $a0, $a2
 	srai.d	$a2, $a2, 3
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
 	mul.d	$a2, $a2, $a3
 	add.d	$a2, $a2, $a1
 	beqz	$a2, .LBB43_676
@@ -36134,7 +36145,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_677
 .LBB43_675:                             #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1525:                              # EH_LABEL
-	addi.d	$a1, $sp, 1200
+	addi.d	$a1, $sp, 1184
 	addi.d	$a0, $fp, 904
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP3CmdESaIS1_EE9push_backERKS1_)
 	jirl	$ra, $ra, 0
@@ -36147,31 +36158,31 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_677:                             # %_ZNSt5dequeIN2PP8WhenthenESaIS1_EEixEm.exit
                                         #   in Loop: Header=BB43_308 Depth=1
 .Ltmp1527:                              # EH_LABEL
-	addi.d	$a1, $sp, 1200
+	addi.d	$a1, $sp, 1184
 	pcaddu18i	$ra, %call36(_ZN2PP8Whenthen8add_cmdfERNS_3CmdE)
 	jirl	$ra, $ra, 0
 .Ltmp1528:                              # EH_LABEL
 # %bb.678:                              #   in Loop: Header=BB43_308 Depth=1
-	ld.bu	$a0, $sp, 1651
+	ld.bu	$a0, $sp, 1635
 	beqz	$a0, .LBB43_680
 # %bb.679:                              #   in Loop: Header=BB43_308 Depth=1
 	move	$s0, $zero
 	move	$a3, $zero
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	addi.w	$a0, $a0, -1
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	st.b	$zero, $sp, 1651
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.b	$zero, $sp, 1635
 	b	.LBB43_681
 .LBB43_680:                             #   in Loop: Header=BB43_308 Depth=1
 	move	$s0, $zero
 	move	$a3, $zero
 .LBB43_681:                             # %_ZNSolsEPFRSoS_E.exit954
                                         #   in Loop: Header=BB43_308 Depth=1
-	ld.d	$s8, $sp, 208                   # 8-byte Folded Reload
-	addi.d	$s1, $sp, 1184
+	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$s1, $sp, 1168
 	b	.LBB43_616
 .LBB43_682:                             # %.thread1269
-	addi.d	$a0, $sp, 1200
+	addi.d	$a0, $sp, 1184
 	pcaddu18i	$ra, %call36(_ZN2PP3CmdD2Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB43_760
@@ -36186,9 +36197,9 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	bne	$s0, $a0, .LBB43_760
 .LBB43_686:
 .Ltmp1577:                              # EH_LABEL
-	ori	$a0, $zero, 2216
+	ori	$a0, $zero, 2200
 	add.d	$a1, $sp, $a0
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a2, $sp, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser24process_error_return_intERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
@@ -36207,10 +36218,10 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	bne	$a0, $a1, .LBB43_760
 .LBB43_691:
 .Ltmp1579:                              # EH_LABEL
-	addi.d	$a1, $sp, 1848
-	ori	$a0, $zero, 2216
+	addi.d	$a1, $sp, 1832
+	ori	$a0, $zero, 2200
 	add.d	$a2, $sp, $a0
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a3, $sp, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser11check_enddoERSt5dequeIiSaIiEERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
@@ -36218,9 +36229,9 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1580:                              # EH_LABEL
 # %bb.692:
 .Ltmp1581:                              # EH_LABEL
-	ori	$a0, $zero, 2216
+	ori	$a0, $zero, 2200
 	add.d	$a1, $sp, $a0
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a2, $sp, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser24process_error_return_intERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
@@ -36251,7 +36262,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .Ltmp1584:                              # EH_LABEL
 # %bb.698:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit984
-	ori	$a0, $zero, 2608
+	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	ld.w	$a1, $a0, 0
 .Ltmp1585:                              # EH_LABEL
@@ -36319,7 +36330,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	ld.d	$a4, $fp, 936
 	ld.d	$a1, $fp, 920
 	srli.d	$a3, $a3, 4
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 280                   # 8-byte Folded Reload
 	mul.d	$a3, $a3, $a5
 	add.d	$a2, $a2, $a3
 	sub.d	$a3, $a4, $a1
@@ -36435,7 +36446,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .Ltmp1610:                              # EH_LABEL
 .LBB43_729:                             # %_ZNSolsEPFRSoS_E.exit993
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB43_760
 # %bb.730:
@@ -36484,8 +36495,8 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1619:                              # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
-	addi.d	$a0, $sp, 336
-	addi.d	$a2, $sp, 376
+	addi.d	$a0, $sp, 320
+	addi.d	$a2, $sp, 360
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2IS3_EEPKcRKS3_)
 	jirl	$ra, $ra, 0
 .Ltmp1620:                              # EH_LABEL
@@ -36493,34 +36504,34 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1622:                              # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
-	addi.d	$a0, $sp, 304
-	addi.d	$a2, $sp, 1200
+	addi.d	$a0, $sp, 288
+	addi.d	$a2, $sp, 1184
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2IS3_EEPKcRKS3_)
 	jirl	$ra, $ra, 0
 .Ltmp1623:                              # EH_LABEL
 # %bb.737:
 .Ltmp1625:                              # EH_LABEL
-	addi.d	$a1, $sp, 336
-	addi.d	$a2, $sp, 304
+	addi.d	$a1, $sp, 320
+	addi.d	$a2, $sp, 288
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser10list_cmdsfENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_)
 	jirl	$ra, $ra, 0
 .Ltmp1626:                              # EH_LABEL
 # %bb.738:
-	ld.d	$a0, $sp, 304
-	addi.d	$a1, $sp, 320
+	ld.d	$a0, $sp, 288
+	addi.d	$a1, $sp, 304
 	beq	$a0, $a1, .LBB43_740
 # %bb.739:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1002
-	ld.d	$a1, $sp, 320
+	ld.d	$a1, $sp, 304
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_740:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1004
-	ld.d	$a0, $sp, 336
-	addi.d	$a1, $sp, 352
+	ld.d	$a0, $sp, 320
+	addi.d	$a1, $sp, 336
 	beq	$a0, $a1, .LBB43_742
 # %bb.741:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1005
-	ld.d	$a1, $sp, 352
+	ld.d	$a1, $sp, 336
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -36682,11 +36693,11 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	jirl	$ra, $ra, 0
 .Ltmp1663:                              # EH_LABEL
 .LBB43_760:                             # %_ZNSolsEPFRSoS_E.exit1039
-	ld.d	$a0, $sp, 1656
+	ld.d	$a0, $sp, 1640
 	beqz	$a0, .LBB43_766
 # %bb.761:
-	ld.d	$fp, $sp, 1728
-	ld.d	$a1, $sp, 1696
+	ld.d	$fp, $sp, 1712
+	ld.d	$a1, $sp, 1680
 	addi.d	$a2, $fp, 8
 	bgeu	$a1, $a2, .LBB43_765
 # %bb.762:                              # %.lr.ph.i.i.i1046.preheader
@@ -36702,18 +36713,18 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	move	$a1, $s0
 	bltu	$s0, $fp, .LBB43_763
 # %bb.764:                              # %_ZNSt11_Deque_baseIiSaIiEE16_M_destroy_nodesEPPiS3_.exit.loopexit.i.i
-	ld.d	$a0, $sp, 1656
+	ld.d	$a0, $sp, 1640
 .LBB43_765:                             # %_ZNSt11_Deque_baseIiSaIiEE16_M_destroy_nodesEPPiS3_.exit.i.i
-	ld.d	$a1, $sp, 1664
+	ld.d	$a1, $sp, 1648
 	slli.d	$a1, $a1, 3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_766:                             # %_ZNSt5dequeIiSaIiEED2Ev.exit
-	ld.d	$a0, $sp, 1736
+	ld.d	$a0, $sp, 1720
 	beqz	$a0, .LBB43_772
 # %bb.767:
-	ld.d	$fp, $sp, 1808
-	ld.d	$a1, $sp, 1776
+	ld.d	$fp, $sp, 1792
+	ld.d	$a1, $sp, 1760
 	addi.d	$a2, $fp, 8
 	bgeu	$a1, $a2, .LBB43_771
 # %bb.768:                              # %.lr.ph.i.i.i1050.preheader
@@ -36729,27 +36740,27 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	move	$a1, $s0
 	bltu	$s0, $fp, .LBB43_769
 # %bb.770:                              # %_ZNSt11_Deque_baseIiSaIiEE16_M_destroy_nodesEPPiS3_.exit.loopexit.i.i1052
-	ld.d	$a0, $sp, 1736
+	ld.d	$a0, $sp, 1720
 .LBB43_771:                             # %_ZNSt11_Deque_baseIiSaIiEE16_M_destroy_nodesEPPiS3_.exit.i.i1049
-	ld.d	$a1, $sp, 1744
+	ld.d	$a1, $sp, 1728
 	slli.d	$a1, $a1, 3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_772:                             # %_ZNSt5dequeIiSaIiEED2Ev.exit1054
-	ld.d	$a0, $sp, 1816
-	addi.d	$a1, $sp, 1832
+	ld.d	$a0, $sp, 1800
+	addi.d	$a1, $sp, 1816
 	beq	$a0, $a1, .LBB43_774
 # %bb.773:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1055
-	ld.d	$a1, $sp, 1832
+	ld.d	$a1, $sp, 1816
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_774:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1057
-	ld.d	$a0, $sp, 1848
+	ld.d	$a0, $sp, 1832
 	beqz	$a0, .LBB43_780
 # %bb.775:
-	ld.d	$fp, $sp, 1920
-	ld.d	$a1, $sp, 1888
+	ld.d	$fp, $sp, 1904
+	ld.d	$a1, $sp, 1872
 	addi.d	$a2, $fp, 8
 	bgeu	$a1, $a2, .LBB43_779
 # %bb.776:                              # %.lr.ph.i.i.i1060.preheader
@@ -36765,18 +36776,18 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	move	$a1, $s0
 	bltu	$s0, $fp, .LBB43_777
 # %bb.778:                              # %_ZNSt11_Deque_baseIiSaIiEE16_M_destroy_nodesEPPiS3_.exit.loopexit.i.i1062
-	ld.d	$a0, $sp, 1848
+	ld.d	$a0, $sp, 1832
 .LBB43_779:                             # %_ZNSt11_Deque_baseIiSaIiEE16_M_destroy_nodesEPPiS3_.exit.i.i1059
-	ld.d	$a1, $sp, 1856
+	ld.d	$a1, $sp, 1840
 	slli.d	$a1, $a1, 3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_780:                             # %_ZNSt5dequeIiSaIiEED2Ev.exit1064
-	ld.d	$a0, $sp, 1928
+	ld.d	$a0, $sp, 1912
 	beqz	$a0, .LBB43_786
 # %bb.781:
-	ld.d	$fp, $sp, 2000
-	ld.d	$a1, $sp, 1968
+	ld.d	$fp, $sp, 1984
+	ld.d	$a1, $sp, 1952
 	addi.d	$a2, $fp, 8
 	bgeu	$a1, $a2, .LBB43_785
 # %bb.782:                              # %.lr.ph.i.i.i1066.preheader
@@ -36792,22 +36803,20 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	move	$a1, $s0
 	bltu	$s0, $fp, .LBB43_783
 # %bb.784:                              # %_ZNSt11_Deque_baseIbSaIbEE16_M_destroy_nodesEPPbS3_.exit.loopexit.i.i
-	ld.d	$a0, $sp, 1928
+	ld.d	$a0, $sp, 1912
 .LBB43_785:                             # %_ZNSt11_Deque_baseIbSaIbEE16_M_destroy_nodesEPPbS3_.exit.i.i
-	ld.d	$a1, $sp, 1936
+	ld.d	$a1, $sp, 1920
 	slli.d	$a1, $a1, 3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_786:                             # %_ZNSt5dequeIbSaIbEED2Ev.exit
-	ld.d	$a0, $sp, 2008
+	ld.d	$a0, $sp, 1992
 	beqz	$a0, .LBB43_792
 # %bb.787:
-	ori	$a1, $zero, 2080
+	ori	$a1, $zero, 2064
 	add.d	$a1, $sp, $a1
 	ld.d	$fp, $a1, 0
-	ori	$a1, $zero, 2048
-	add.d	$a1, $sp, $a1
-	ld.d	$a1, $a1, 0
+	ld.d	$a1, $sp, 2032
 	addi.d	$a2, $fp, 8
 	bgeu	$a1, $a2, .LBB43_791
 # %bb.788:                              # %.lr.ph.i.i.i1071.preheader
@@ -36823,21 +36832,21 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	move	$a1, $s0
 	bltu	$s0, $fp, .LBB43_789
 # %bb.790:                              # %_ZNSt11_Deque_baseIbSaIbEE16_M_destroy_nodesEPPbS3_.exit.loopexit.i.i1073
-	ld.d	$a0, $sp, 2008
+	ld.d	$a0, $sp, 1992
 .LBB43_791:                             # %_ZNSt11_Deque_baseIbSaIbEE16_M_destroy_nodesEPPbS3_.exit.i.i1070
-	ld.d	$a1, $sp, 2016
+	ld.d	$a1, $sp, 2000
 	slli.d	$a1, $a1, 3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_792:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2104
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2136
+	ori	$a1, $zero, 2120
 	add.d	$a1, $sp, $a1
 	beq	$a0, $a1, .LBB43_794
 # %bb.793:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1079
-	ori	$a1, $zero, 2136
+	ori	$a1, $zero, 2120
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
@@ -36847,32 +36856,32 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcalau12i	$a0, %got_pc_hi20(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$fp, $a0, %got_pc_lo12(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $fp, 0
-	ori	$a1, $zero, 2216
+	ori	$a1, $zero, 2200
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	ld.d	$a1, $fp, 64
 	ld.d	$a0, $a0, -24
 	ld.d	$a2, $fp, 72
-	ori	$a3, $zero, 2216
+	ori	$a3, $zero, 2200
 	add.d	$s0, $sp, $a3
 	stx.d	$a1, $a0, $s0
-	ori	$a0, $zero, 2232
+	ori	$a0, $zero, 2216
 	add.d	$a0, $sp, $a0
 	st.d	$a2, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(_ZTVNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a1, $a0, %got_pc_lo12(_ZTVNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEEE)
-	ori	$a0, $zero, 2312
+	ori	$a0, $zero, 2296
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	addi.d	$a1, $a1, 16
-	ori	$a2, $zero, 2328
+	ori	$a2, $zero, 2312
 	add.d	$a2, $sp, $a2
-	ori	$a3, $zero, 2240
+	ori	$a3, $zero, 2224
 	add.d	$a3, $sp, $a3
 	st.d	$a1, $a3, 0
 	beq	$a0, $a2, .LBB43_796
 # %bb.795:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
-	ori	$a1, $zero, 2328
+	ori	$a1, $zero, 2312
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
@@ -36882,56 +36891,56 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	addi.d	$a0, $a0, 16
-	ori	$a1, $zero, 2240
+	ori	$a1, $zero, 2224
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
-	ori	$a0, $zero, 2296
+	ori	$a0, $zero, 2280
 	add.d	$a0, $sp, $a0
 	pcaddu18i	$ra, %call36(_ZNSt6localeD1Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 16
-	ori	$a1, $zero, 2216
+	ori	$a1, $zero, 2200
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	ld.d	$a1, $fp, 24
 	ld.d	$a0, $a0, -24
 	stx.d	$a1, $a0, $s0
-	ori	$a0, $zero, 2224
+	ori	$a0, $zero, 2208
 	add.d	$a0, $sp, $a0
 	st.d	$zero, $a0, 0
-	ori	$a0, $zero, 2344
+	ori	$a0, $zero, 2328
 	add.d	$a0, $sp, $a0
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2712
+	ori	$a0, $zero, 2696
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2728
+	ori	$a1, $zero, 2712
 	add.d	$a1, $sp, $a1
 	beq	$a0, $a1, .LBB43_798
 # %bb.797:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1085
-	ori	$a1, $zero, 2728
+	ori	$a1, $zero, 2712
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_798:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1087
-	ori	$a0, $zero, 2744
+	ori	$a0, $zero, 2728
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2760
+	ori	$a1, $zero, 2744
 	add.d	$a1, $sp, $a1
 	beq	$a0, $a1, .LBB43_800
 # %bb.799:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1088
-	ori	$a1, $zero, 2760
+	ori	$a1, $zero, 2744
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_800:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1090
-	addi.d	$sp, $sp, 832
+	addi.d	$sp, $sp, 816
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
 	ld.d	$s6, $sp, 1960                  # 8-byte Folded Reload
@@ -36996,12 +37005,12 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_817:
 .Ltmp1483:                              # EH_LABEL
 .LBB43_818:
-	ld.d	$a2, $sp, 376
+	ld.d	$a2, $sp, 360
 	move	$fp, $a0
-	addi.d	$a0, $sp, 392
+	addi.d	$a0, $sp, 376
 	beq	$a2, $a0, .LBB43_847
 # %bb.819:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i940
-	ld.d	$a0, $sp, 392
+	ld.d	$a0, $sp, 376
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -37013,7 +37022,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_821:
 .Ltmp1477:                              # EH_LABEL
 	move	$fp, $a0
-	addi.d	$a0, $sp, 376
+	addi.d	$a0, $sp, 360
 	pcaddu18i	$ra, %call36(_ZN2PP8WhenthenD2Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB43_847
@@ -37025,12 +37034,12 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_846
 .LBB43_824:
 .Ltmp1627:                              # EH_LABEL
-	ld.d	$a2, $sp, 304
-	addi.d	$a1, $sp, 320
+	ld.d	$a2, $sp, 288
+	addi.d	$a1, $sp, 304
 	move	$fp, $a0
 	beq	$a2, $a1, .LBB43_827
 # %bb.825:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1040
-	ld.d	$a0, $sp, 320
+	ld.d	$a0, $sp, 304
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -37040,11 +37049,11 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1624:                              # EH_LABEL
 	move	$fp, $a0
 .LBB43_827:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1042
-	ld.d	$a0, $sp, 336
-	addi.d	$a1, $sp, 352
+	ld.d	$a0, $sp, 320
+	addi.d	$a1, $sp, 336
 	beq	$a0, $a1, .LBB43_938
 # %bb.828:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1043
-	ld.d	$a1, $sp, 352
+	ld.d	$a1, $sp, 336
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -37071,31 +37080,31 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_834:
 .Ltmp1713:                              # EH_LABEL
 	move	$fp, $a0
-	ld.d	$a0, $sp, 1040
-	addi.d	$a1, $sp, 1056
+	ld.d	$a0, $sp, 1024
+	addi.d	$a1, $sp, 1040
 	beq	$a0, $a1, .LBB43_853
 .LBB43_835:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i833
-	ld.d	$a1, $sp, 1056
+	ld.d	$a1, $sp, 1040
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 1072
-	addi.d	$a1, $sp, 1088
+	ld.d	$a0, $sp, 1056
+	addi.d	$a1, $sp, 1072
 	beq	$a0, $a1, .LBB43_854
 .LBB43_836:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i836
-	ld.d	$a1, $sp, 1088
+	ld.d	$a1, $sp, 1072
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 1136
-	addi.d	$a1, $sp, 1152
+	ld.d	$a0, $sp, 1120
+	addi.d	$a1, $sp, 1136
 	bne	$a0, $a1, .LBB43_871
 	b	.LBB43_873
 .LBB43_837:
 .Ltmp1710:                              # EH_LABEL
 	move	$fp, $a0
-	ld.d	$a0, $sp, 1072
-	addi.d	$a1, $sp, 1088
+	ld.d	$a0, $sp, 1056
+	addi.d	$a1, $sp, 1072
 	beq	$a0, $a1, .LBB43_854
 	b	.LBB43_836
 .LBB43_838:
@@ -37103,22 +37112,22 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_870
 .LBB43_839:
 .Ltmp1685:                              # EH_LABEL
-	ld.d	$a2, $sp, 944
+	ld.d	$a2, $sp, 928
 	move	$fp, $a0
-	addi.d	$a0, $sp, 960
+	addi.d	$a0, $sp, 944
 	beq	$a2, $a0, .LBB43_841
 # %bb.840:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i895
-	ld.d	$a0, $sp, 960
+	ld.d	$a0, $sp, 944
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_841:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit897
-	ld.d	$a0, $sp, 976
-	addi.d	$a1, $sp, 992
+	ld.d	$a0, $sp, 960
+	addi.d	$a1, $sp, 976
 	beq	$a0, $a1, .LBB43_873
 # %bb.842:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i898
-	ld.d	$a1, $sp, 992
+	ld.d	$a1, $sp, 976
 	b	.LBB43_872
 .LBB43_843:
 .Ltmp1675:                              # EH_LABEL
@@ -37132,11 +37141,11 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_846:
 	move	$fp, $a0
 .LBB43_847:
-	ld.d	$a0, $sp, 1168
-	addi.d	$a1, $sp, 1184
+	ld.d	$a0, $sp, 1152
+	addi.d	$a1, $sp, 1168
 	beq	$a0, $a1, .LBB43_937
 # %bb.848:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i980
-	ld.d	$a1, $sp, 1184
+	ld.d	$a1, $sp, 1168
 	b	.LBB43_911
 .LBB43_849:
 .Ltmp1688:                              # EH_LABEL
@@ -37147,31 +37156,31 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_870
 .LBB43_851:
 .Ltmp1716:                              # EH_LABEL
-	ld.d	$a2, $sp, 1008
+	ld.d	$a2, $sp, 992
 	move	$fp, $a0
-	addi.d	$a0, $sp, 1024
+	addi.d	$a0, $sp, 1008
 	bne	$a2, $a0, .LBB43_855
 # %bb.852:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit832
-	ld.d	$a0, $sp, 1040
-	addi.d	$a1, $sp, 1056
+	ld.d	$a0, $sp, 1024
+	addi.d	$a1, $sp, 1040
 	bne	$a0, $a1, .LBB43_835
 .LBB43_853:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit835
-	ld.d	$a0, $sp, 1072
-	addi.d	$a1, $sp, 1088
+	ld.d	$a0, $sp, 1056
+	addi.d	$a1, $sp, 1072
 	bne	$a0, $a1, .LBB43_836
 .LBB43_854:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit838
-	ld.d	$a0, $sp, 1136
-	addi.d	$a1, $sp, 1152
+	ld.d	$a0, $sp, 1120
+	addi.d	$a1, $sp, 1136
 	bne	$a0, $a1, .LBB43_871
 	b	.LBB43_873
 .LBB43_855:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i830
-	ld.d	$a0, $sp, 1024
+	ld.d	$a0, $sp, 1008
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 1040
-	addi.d	$a1, $sp, 1056
+	ld.d	$a0, $sp, 1024
+	addi.d	$a1, $sp, 1040
 	beq	$a0, $a1, .LBB43_853
 	b	.LBB43_835
 .LBB43_856:
@@ -37217,7 +37226,7 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_867:
 .Ltmp1335:                              # EH_LABEL
 	move	$fp, $a0
-	ori	$a0, $zero, 2680
+	ori	$a0, $zero, 2664
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	bne	$a0, $s0, .LBB43_882
@@ -37230,21 +37239,21 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1725:                              # EH_LABEL
 .LBB43_870:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit838
 	move	$fp, $a0
-	ld.d	$a0, $sp, 1136
-	addi.d	$a1, $sp, 1152
+	ld.d	$a0, $sp, 1120
+	addi.d	$a1, $sp, 1136
 	beq	$a0, $a1, .LBB43_873
 .LBB43_871:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i848
-	ld.d	$a1, $sp, 1152
+	ld.d	$a1, $sp, 1136
 .LBB43_872:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit850
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_873:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit850
-	ld.d	$a0, $sp, 1168
-	addi.d	$a1, $sp, 1184
+	ld.d	$a0, $sp, 1152
+	addi.d	$a1, $sp, 1168
 	beq	$a0, $a1, .LBB43_909
 # %bb.874:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i851
-	ld.d	$a1, $sp, 1184
+	ld.d	$a1, $sp, 1168
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -37258,47 +37267,47 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_950
 .LBB43_877:
 .Ltmp1338:                              # EH_LABEL
-	ori	$a1, $zero, 2616
+	ori	$a1, $zero, 2600
 	add.d	$a1, $sp, $a1
 	ld.d	$a2, $a1, 0
 	move	$fp, $a0
 	bne	$a2, $s1, .LBB43_880
 # %bb.878:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit465
-	ori	$a0, $zero, 2648
+	ori	$a0, $zero, 2632
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	bne	$a0, $s3, .LBB43_881
 .LBB43_879:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit468
-	ori	$a0, $zero, 2680
+	ori	$a0, $zero, 2664
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	bne	$a0, $s0, .LBB43_882
 	b	.LBB43_950
 .LBB43_880:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i463
-	ori	$a0, $zero, 2632
+	ori	$a0, $zero, 2616
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2648
+	ori	$a0, $zero, 2632
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	beq	$a0, $s3, .LBB43_879
 .LBB43_881:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i466
-	ori	$a1, $zero, 2664
+	ori	$a1, $zero, 2648
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2680
+	ori	$a0, $zero, 2664
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	beq	$a0, $s0, .LBB43_950
 .LBB43_882:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i469
-	ori	$a1, $zero, 2696
+	ori	$a1, $zero, 2680
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
@@ -37312,9 +37321,9 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_884:
 .Ltmp1384:                              # EH_LABEL
 .LBB43_885:
-	ld.d	$a2, $sp, 376
+	ld.d	$a2, $sp, 360
 	move	$fp, $a0
-	addi.d	$a0, $sp, 392
+	addi.d	$a0, $sp, 376
 	bne	$a2, $a0, .LBB43_905
 	b	.LBB43_949
 .LBB43_886:
@@ -37376,11 +37385,11 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_938
 .LBB43_904:
 .Ltmp1361:                              # EH_LABEL
-	ld.d	$a2, $sp, 376
+	ld.d	$a2, $sp, 360
 	move	$fp, $a0
 	beq	$a2, $s1, .LBB43_949
 .LBB43_905:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i511
-	ld.d	$a0, $sp, 392
+	ld.d	$a0, $sp, 376
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	b	.LBB43_948
@@ -37392,11 +37401,11 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_908:
 	move	$fp, $a0
 .LBB43_909:
-	ld.d	$a0, $sp, 376
-	addi.d	$a1, $sp, 392
+	ld.d	$a0, $sp, 360
+	addi.d	$a1, $sp, 376
 	beq	$a0, $a1, .LBB43_937
 # %bb.910:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i708
-	ld.d	$a1, $sp, 392
+	ld.d	$a1, $sp, 376
 .LBB43_911:
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -37407,13 +37416,13 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	b	.LBB43_922
 .LBB43_913:
 .Ltmp1796:                              # EH_LABEL
-	ori	$a1, $zero, 2088
+	ori	$a1, $zero, 2072
 	add.d	$a1, $sp, $a1
 	ld.d	$a2, $a1, 0
 	move	$fp, $a0
 	beq	$a2, $s1, .LBB43_945
 # %bb.914:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i654
-	ori	$a0, $zero, 2104
+	ori	$a0, $zero, 2088
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	addi.d	$a1, $a0, 1
@@ -37455,22 +37464,22 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .LBB43_926:
 .Ltmp1373:                              # EH_LABEL
 	move	$fp, $a0
-	ori	$a0, $zero, 2200
+	ori	$a0, $zero, 2184
 	add.d	$s0, $sp, $a0
 	b	.LBB43_929
 .LBB43_927:
 .Ltmp1376:                              # EH_LABEL
-	ori	$a1, $zero, 2152
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ld.d	$a2, $a1, 0
 	move	$fp, $a0
-	ori	$a0, $zero, 2200
+	ori	$a0, $zero, 2184
 	add.d	$s0, $sp, $a0
-	ori	$a0, $zero, 2168
+	ori	$a0, $zero, 2152
 	add.d	$a0, $sp, $a0
 	beq	$a2, $a0, .LBB43_929
 # %bb.928:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i553
-	ori	$a0, $zero, 2168
+	ori	$a0, $zero, 2152
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	addi.d	$a1, $a0, 1
@@ -37478,12 +37487,12 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_929:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit555
-	ori	$a0, $zero, 2184
+	ori	$a0, $zero, 2168
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	beq	$a0, $s0, .LBB43_949
 # %bb.930:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i556
-	ori	$a1, $zero, 2200
+	ori	$a1, $zero, 2184
 	b	.LBB43_947
 .LBB43_931:
 .Ltmp1737:                              # EH_LABEL
@@ -37495,60 +37504,60 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 .Ltmp1762:                              # EH_LABEL
 .LBB43_934:
 	move	$fp, $a0
-	ld.d	$a0, $sp, 1168
-	addi.d	$a1, $sp, 1184
+	ld.d	$a0, $sp, 1152
+	addi.d	$a1, $sp, 1168
 	beq	$a0, $a1, .LBB43_936
 # %bb.935:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i750
-	ld.d	$a1, $sp, 1184
+	ld.d	$a1, $sp, 1168
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_936:
-	addi.d	$a0, $sp, 376
+	addi.d	$a0, $sp, 360
 	pcaddu18i	$ra, %call36(_ZN2PP12RestartblockD2Ev)
 	jirl	$ra, $ra, 0
 .LBB43_937:
-	addi.d	$a0, $sp, 1200
+	addi.d	$a0, $sp, 1184
 	pcaddu18i	$ra, %call36(_ZN2PP3CmdD2Ev)
 	jirl	$ra, $ra, 0
 .LBB43_938:
-	addi.d	$a0, $sp, 1656
+	addi.d	$a0, $sp, 1640
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIiSaIiEED2Ev)
 	jirl	$ra, $ra, 0
 .LBB43_939:
-	addi.d	$a0, $sp, 1736
+	addi.d	$a0, $sp, 1720
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIiSaIiEED2Ev)
 	jirl	$ra, $ra, 0
 .LBB43_940:
-	ld.d	$a0, $sp, 1816
-	addi.d	$a1, $sp, 1832
+	ld.d	$a0, $sp, 1800
+	addi.d	$a1, $sp, 1816
 	beq	$a0, $a1, .LBB43_942
 # %bb.941:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1076
-	ld.d	$a1, $sp, 1832
+	ld.d	$a1, $sp, 1816
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_942:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1078
-	addi.d	$a0, $sp, 1848
+	addi.d	$a0, $sp, 1832
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIiSaIiEED2Ev)
 	jirl	$ra, $ra, 0
 .LBB43_943:
-	addi.d	$a0, $sp, 1928
+	addi.d	$a0, $sp, 1912
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIbSaIbEED2Ev)
 	jirl	$ra, $ra, 0
 .LBB43_944:
-	addi.d	$a0, $sp, 2008
+	addi.d	$a0, $sp, 1992
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIbSaIbEED2Ev)
 	jirl	$ra, $ra, 0
 .LBB43_945:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit656
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2104
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2136
+	ori	$a1, $zero, 2120
 	add.d	$a1, $sp, $a1
 	beq	$a0, $a1, .LBB43_949
 # %bb.946:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1082
-	ori	$a1, $zero, 2136
+	ori	$a1, $zero, 2120
 .LBB43_947:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit558
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
@@ -37557,33 +37566,33 @@ _ZN2PP11PowerParser14compile_bufferERi: # @_ZN2PP11PowerParser14compile_bufferER
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_949:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit558
-	ori	$a0, $zero, 2216
+	ori	$a0, $zero, 2200
 	add.d	$a0, $sp, $a0
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev)
 	jirl	$ra, $ra, 0
 .LBB43_950:
-	ori	$a0, $zero, 2728
-	add.d	$a1, $sp, $a0
 	ori	$a0, $zero, 2712
+	add.d	$a1, $sp, $a0
+	ori	$a0, $zero, 2696
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	beq	$a0, $a1, .LBB43_952
 # %bb.951:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1091
-	ori	$a1, $zero, 2728
+	ori	$a1, $zero, 2712
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB43_952:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1093
-	ori	$a0, $zero, 2760
-	add.d	$a1, $sp, $a0
 	ori	$a0, $zero, 2744
+	add.d	$a1, $sp, $a0
+	ori	$a0, $zero, 2728
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	beq	$a0, $a1, .LBB43_954
 # %bb.953:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1094
-	ori	$a1, $zero, 2760
+	ori	$a1, $zero, 2744
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
@@ -38227,19 +38236,19 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception29
 # %bb.0:
-	addi.d	$sp, $sp, -1040
-	.cfi_def_cfa_offset 1040
-	st.d	$ra, $sp, 1032                  # 8-byte Folded Spill
-	st.d	$fp, $sp, 1024                  # 8-byte Folded Spill
-	st.d	$s0, $sp, 1016                  # 8-byte Folded Spill
-	st.d	$s1, $sp, 1008                  # 8-byte Folded Spill
-	st.d	$s2, $sp, 1000                  # 8-byte Folded Spill
-	st.d	$s3, $sp, 992                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 984                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 976                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 968                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 960                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 952                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -1008
+	.cfi_def_cfa_offset 1008
+	st.d	$ra, $sp, 1000                  # 8-byte Folded Spill
+	st.d	$fp, $sp, 992                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 984                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 976                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 968                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 960                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 952                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 944                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 936                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 928                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 920                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -38255,15 +38264,15 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	ld.d	$a0, $a0, 520
 	ld.w	$a5, $a0, 8
 	ld.w	$a0, $a0, 12
-	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
 	bne	$a5, $a0, .LBB44_280
 # %bb.1:
-	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
 	ld.d	$a3, $a1, 0
 	ld.d	$a2, $a1, 8
-	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
 	addi.d	$a0, $a4, 16
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	move	$a1, $a3
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
@@ -38296,75 +38305,75 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $sp, 936
+	st.d	$zero, $sp, 904
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 920
-	st.d	$zero, $sp, 912
-	vst	$vr0, $sp, 288                  # 16-byte Folded Spill
-	vst	$vr0, $sp, 896
-	addi.d	$fp, $sp, 400
-	st.d	$fp, $sp, 384
+	vst	$vr0, $sp, 888
+	st.d	$zero, $sp, 880
+	vst	$vr0, $sp, 256                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 864
+	addi.d	$fp, $sp, 368
+	st.d	$fp, $sp, 352
 	pcalau12i	$a0, %pc_hi20(.L.str.222)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.222)
 	ld.d	$a1, $a0, 0
 	ld.d	$a0, $a0, 5
-	st.d	$a1, $sp, 400
-	st.d	$a0, $sp, 405
+	st.d	$a1, $sp, 368
+	st.d	$a0, $sp, 373
 	ori	$a0, $zero, 13
-	st.d	$a0, $sp, 392
-	st.b	$zero, $sp, 413
+	st.d	$a0, $sp, 360
+	st.b	$zero, $sp, 381
 .Ltmp1829:                              # EH_LABEL
-	addi.d	$a0, $sp, 896
-	addi.d	$a1, $sp, 384
+	addi.d	$a0, $sp, 864
+	addi.d	$a1, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp1830:                              # EH_LABEL
 # %bb.6:                                # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit
-	ld.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 352
 	beq	$a0, $fp, .LBB44_8
 # %bb.7:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-	ld.d	$a1, $sp, 400
+	ld.d	$a1, $sp, 368
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB44_8:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
-	addi.d	$fp, $sp, 400
-	st.d	$fp, $sp, 384
+	addi.d	$fp, $sp, 368
+	st.d	$fp, $sp, 352
 	pcalau12i	$a0, %pc_hi20(.L.str.223)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.223)
 	ld.w	$a1, $a0, 0
 	ld.b	$a2, $a0, 4
-	st.w	$a1, $sp, 400
-	ld.d	$a0, $sp, 904
-	ld.d	$a1, $sp, 912
-	st.b	$a2, $sp, 404
+	st.w	$a1, $sp, 368
+	ld.d	$a0, $sp, 872
+	ld.d	$a1, $sp, 880
+	st.b	$a2, $sp, 372
 	ori	$a2, $zero, 5
-	st.d	$a2, $sp, 392
-	st.b	$zero, $sp, 405
+	st.d	$a2, $sp, 360
+	st.b	$zero, $sp, 373
 	beq	$a0, $a1, .LBB44_11
 # %bb.9:
 	addi.d	$a1, $a0, 16
 	st.d	$a1, $a0, 0
-	ld.d	$a2, $sp, 384
+	ld.d	$a2, $sp, 352
 	beq	$a2, $fp, .LBB44_14
 # %bb.10:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i75
 	st.d	$a2, $a0, 0
-	ld.d	$a1, $sp, 400
+	ld.d	$a1, $sp, 368
 	st.d	$a1, $a0, 16
 	b	.LBB44_15
 .LBB44_11:
 .Ltmp1832:                              # EH_LABEL
-	addi.d	$a0, $sp, 896
-	addi.d	$a1, $sp, 384
+	addi.d	$a0, $sp, 864
+	addi.d	$a1, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp1833:                              # EH_LABEL
 # %bb.12:                               # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit78
-	ld.d	$a0, $sp, 384
-	addi.d	$fp, $sp, 400
+	ld.d	$a0, $sp, 352
+	addi.d	$fp, $sp, 368
 	beq	$a0, $fp, .LBB44_16
 # %bb.13:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i79
-	ld.d	$a1, $sp, 400
+	ld.d	$a1, $sp, 368
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -38377,47 +38386,47 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_15:                              # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit78.thread
 	ori	$a1, $zero, 5
 	st.d	$a1, $a0, 8
-	st.d	$fp, $sp, 384
-	st.d	$zero, $sp, 392
+	st.d	$fp, $sp, 352
+	st.d	$zero, $sp, 360
 	addi.d	$a0, $a0, 32
-	st.d	$a0, $sp, 904
+	st.d	$a0, $sp, 872
 .LBB44_16:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit81
-	st.d	$fp, $sp, 384
+	st.d	$fp, $sp, 352
 	pcalau12i	$a0, %pc_hi20(.L.str.224)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.224)
 	ld.d	$a1, $a0, 0
 	ld.w	$a2, $a0, 7
-	st.d	$a1, $sp, 400
-	ld.d	$a0, $sp, 904
-	ld.d	$a1, $sp, 912
-	st.w	$a2, $sp, 407
+	st.d	$a1, $sp, 368
+	ld.d	$a0, $sp, 872
+	ld.d	$a1, $sp, 880
+	st.w	$a2, $sp, 375
 	ori	$a2, $zero, 11
-	st.d	$a2, $sp, 392
-	st.b	$zero, $sp, 411
+	st.d	$a2, $sp, 360
+	st.b	$zero, $sp, 379
 	beq	$a0, $a1, .LBB44_19
 # %bb.17:
 	addi.d	$a1, $a0, 16
 	st.d	$a1, $a0, 0
-	ld.d	$a2, $sp, 384
+	ld.d	$a2, $sp, 352
 	beq	$a2, $fp, .LBB44_22
 # %bb.18:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i87
 	st.d	$a2, $a0, 0
-	ld.d	$a1, $sp, 400
+	ld.d	$a1, $sp, 368
 	st.d	$a1, $a0, 16
 	b	.LBB44_23
 .LBB44_19:
 .Ltmp1835:                              # EH_LABEL
-	addi.d	$a0, $sp, 896
-	addi.d	$a1, $sp, 384
+	addi.d	$a0, $sp, 864
+	addi.d	$a1, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp1836:                              # EH_LABEL
 # %bb.20:                               # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit90
-	ld.d	$a0, $sp, 384
-	addi.d	$a1, $sp, 400
+	ld.d	$a0, $sp, 352
+	addi.d	$a1, $sp, 368
 	beq	$a0, $a1, .LBB44_24
 # %bb.21:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i91
-	ld.d	$a1, $sp, 400
+	ld.d	$a1, $sp, 368
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -38430,73 +38439,71 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_23:                              # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit90.thread
 	ori	$a1, $zero, 11
 	st.d	$a1, $a0, 8
-	st.d	$fp, $sp, 384
-	st.d	$zero, $sp, 392
+	st.d	$fp, $sp, 352
+	st.d	$zero, $sp, 360
 	addi.d	$a0, $a0, 32
-	st.d	$a0, $sp, 904
+	st.d	$a0, $sp, 872
 .LBB44_24:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit93
 .Ltmp1838:                              # EH_LABEL
-	addi.d	$a0, $sp, 920
-	addi.d	$a1, $sp, 896
+	addi.d	$a0, $sp, 888
+	addi.d	$a1, $sp, 864
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EE9push_backERKS7_)
 	jirl	$ra, $ra, 0
 .Ltmp1839:                              # EH_LABEL
 # %bb.25:
-	ld.d	$a0, $sp, 928
+	ld.d	$a0, $sp, 896
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 888
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 920
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	lu12i.w	$a0, -349526
 	ori	$a0, $a0, 2731
 	ld.d	$a2, $s0, 704
 	lu32i.d	$a0, -349526
 	lu52i.d	$a0, $a0, -1366
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	addi.d	$a0, $s0, 688
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	beq	$a2, $a0, .LBB44_240
 # %bb.26:                               # %.lr.ph656
-	ld.d	$a0, $sp, 904
-	ld.d	$a1, $sp, 896
+	ld.d	$a0, $sp, 872
+	ld.d	$a1, $sp, 864
 	sub.d	$a0, $a0, $a1
 	srli.d	$a0, $a0, 5
-	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a1, $a0, 16
-	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 24
 	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 24
+	st.d	$a1, $sp, 224                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 32
-	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 40
-	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 8
-	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 48
-	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 0
-	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 64
-	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
 	ld.d	$a0, $a0, 72
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	ori	$s1, $zero, 16
 	ori	$s5, $zero, 1
 	lu12i.w	$a0, 349525
 	ori	$a0, $a0, 1365
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 224                  # 32-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	b	.LBB44_28
 	.p2align	4, , 16
 .LBB44_27:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit176
                                         #   in Loop: Header=BB44_28 Depth=1
-	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	beq	$a2, $a0, .LBB44_240
 .LBB44_28:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB44_53 Depth 2
@@ -38510,26 +38517,26 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #       Child Loop BB44_215 Depth 3
                                         #       Child Loop BB44_221 Depth 3
 	ld.d	$s0, $a2, 40
-	st.d	$a2, $sp, 280                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 248                   # 8-byte Folded Spill
 	ld.d	$s2, $a2, 32
-	addi.d	$a0, $sp, 880
-	st.d	$a0, $sp, 864
-	st.d	$s0, $sp, 384
+	addi.d	$a0, $sp, 848
+	st.d	$a0, $sp, 832
+	st.d	$s0, $sp, 352
 	bltu	$s0, $s1, .LBB44_31
 # %bb.29:                               # %.noexc.i95
                                         #   in Loop: Header=BB44_28 Depth=1
 .Ltmp1841:                              # EH_LABEL
-	addi.d	$a0, $sp, 864
-	addi.d	$a1, $sp, 384
+	addi.d	$a0, $sp, 832
+	addi.d	$a1, $sp, 352
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1842:                              # EH_LABEL
 # %bb.30:                               # %.noexc96
                                         #   in Loop: Header=BB44_28 Depth=1
-	ld.d	$a1, $sp, 384
-	st.d	$a0, $sp, 864
-	st.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 352
+	st.d	$a0, $sp, 832
+	st.d	$a1, $sp, 848
 .LBB44_31:                              # %._crit_edge.i.i94
                                         #   in Loop: Header=BB44_28 Depth=1
 	beqz	$s0, .LBB44_35
@@ -38547,21 +38554,21 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB44_35:                              #   in Loop: Header=BB44_28 Depth=1
-	ld.d	$a0, $sp, 384
-	ld.d	$a1, $sp, 864
-	st.d	$a0, $sp, 872
+	ld.d	$a0, $sp, 352
+	ld.d	$a1, $sp, 832
+	st.d	$a0, $sp, 840
 	stx.b	$zero, $a1, $a0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a2, $a0, 8
 	beqz	$a2, .LBB44_38
 # %bb.36:                               # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread
                                         #   in Loop: Header=BB44_28 Depth=1
-	ld.d	$a0, $sp, 872
-	ld.d	$s0, $sp, 864
+	ld.d	$a0, $sp, 840
+	ld.d	$s0, $sp, 832
 	bne	$a0, $a2, .LBB44_238
 # %bb.37:                               # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit
                                         #   in Loop: Header=BB44_28 Depth=1
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(bcmp)
@@ -38569,29 +38576,29 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	bnez	$a0, .LBB44_238
 .LBB44_38:                              # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread378
                                         #   in Loop: Header=BB44_28 Depth=1
-	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	ld.d	$fp, $a0, 104
 	ld.d	$s3, $a0, 96
 	ld.d	$s0, $a0, 176
 	ld.d	$s2, $a0, 168
-	addi.d	$a0, $sp, 848
-	st.d	$a0, $sp, 832
-	st.d	$s0, $sp, 384
+	addi.d	$a0, $sp, 816
+	st.d	$a0, $sp, 800
+	st.d	$s0, $sp, 352
 	bltu	$s0, $s1, .LBB44_41
 # %bb.39:                               # %.noexc.i.i
                                         #   in Loop: Header=BB44_28 Depth=1
 .Ltmp1844:                              # EH_LABEL
-	addi.d	$a0, $sp, 832
-	addi.d	$a1, $sp, 384
+	addi.d	$a0, $sp, 800
+	addi.d	$a1, $sp, 352
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1845:                              # EH_LABEL
 # %bb.40:                               # %.noexc107
                                         #   in Loop: Header=BB44_28 Depth=1
-	ld.d	$a1, $sp, 384
-	st.d	$a0, $sp, 832
-	st.d	$a1, $sp, 848
+	ld.d	$a1, $sp, 352
+	st.d	$a0, $sp, 800
+	st.d	$a1, $sp, 816
 .LBB44_41:                              # %._crit_edge.i.i.i
                                         #   in Loop: Header=BB44_28 Depth=1
 	beqz	$s0, .LBB44_45
@@ -38608,11 +38615,11 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB44_45:                              #   in Loop: Header=BB44_28 Depth=1
-	ld.d	$a0, $sp, 384
-	ld.d	$a1, $sp, 832
-	st.d	$a0, $sp, 840
+	ld.d	$a0, $sp, 352
+	ld.d	$a1, $sp, 800
+	st.d	$a0, $sp, 808
 	stx.b	$zero, $a1, $a0
-	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	ld.w	$s4, $a0, 120
 	bltz	$s4, .LBB44_301
 # %bb.46:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
@@ -38629,10 +38636,10 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 # %bb.48:                               # %.noexc109
                                         #   in Loop: Header=BB44_28 Depth=1
 	move	$s0, $a0
-	st.d	$a0, $sp, 808
+	st.d	$a0, $sp, 776
 	move	$s4, $a1
 	alsl.d	$a0, $a1, $a0, 2
-	st.d	$a0, $sp, 824
+	st.d	$a0, $sp, 792
 	move	$a0, $s0
 	move	$a1, $zero
 	move	$a2, $s2
@@ -38644,41 +38651,41 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB44_28 Depth=1
 	move	$s0, $zero
 	move	$a1, $zero
-	st.d	$zero, $sp, 824
-	vld	$vr0, $sp, 288                  # 16-byte Folded Reload
-	vst	$vr0, $sp, 808
+	st.d	$zero, $sp, 792
+	vld	$vr0, $sp, 256                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 776
 .LBB44_50:                              # %.loopexit391
                                         #   in Loop: Header=BB44_28 Depth=1
 	sub.d	$a0, $fp, $s3
 	srli.d	$a0, $a0, 5
 	addi.w	$a2, $a0, 0
-	st.d	$a1, $sp, 816
-	st.d	$a2, $sp, 272                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 784
+	st.d	$a2, $sp, 240                   # 8-byte Folded Spill
 	blez	$a2, .LBB44_233
 # %bb.51:                               # %.lr.ph651
                                         #   in Loop: Header=BB44_28 Depth=1
-	st.d	$zero, $sp, 304                 # 8-byte Folded Spill
-	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
+	st.d	$zero, $sp, 272                 # 8-byte Folded Spill
+	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
 	addi.d	$a1, $a1, 64
-	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 200                   # 8-byte Folded Spill
 	addi.w	$a1, $s4, -1
-	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
 	sltu	$a1, $s5, $s4
 	masknez	$a2, $s5, $a1
-	st.d	$s4, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
 	maskeqz	$a1, $s4, $a1
 	or	$a1, $a1, $a2
-	st.d	$a1, $sp, 320                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 288                   # 8-byte Folded Spill
 	bstrpick.d	$a0, $a0, 30, 0
-	st.d	$a0, $sp, 264                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 	b	.LBB44_53
 	.p2align	4, , 16
 .LBB44_52:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit165
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 1
-	st.d	$a0, $sp, 304                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 272                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB44_232
 .LBB44_53:                              #   Parent Loop BB44_28 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -38691,26 +38698,26 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #       Child Loop BB44_190 Depth 3
                                         #       Child Loop BB44_215 Depth 3
                                         #       Child Loop BB44_221 Depth 3
-	ld.d	$s0, $sp, 872
-	ld.d	$s2, $sp, 864
-	addi.d	$a0, $sp, 792
-	st.d	$a0, $sp, 776
-	st.d	$s0, $sp, 384
+	ld.d	$s0, $sp, 840
+	ld.d	$s2, $sp, 832
+	addi.d	$a0, $sp, 760
+	st.d	$a0, $sp, 744
+	st.d	$s0, $sp, 352
 	bltu	$s0, $s1, .LBB44_56
 # %bb.54:                               # %.noexc.i114
                                         #   in Loop: Header=BB44_53 Depth=2
 .Ltmp1850:                              # EH_LABEL
-	addi.d	$a0, $sp, 776
-	addi.d	$a1, $sp, 384
+	addi.d	$a0, $sp, 744
+	addi.d	$a1, $sp, 352
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1851:                              # EH_LABEL
 # %bb.55:                               # %.noexc115
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a1, $sp, 384
-	st.d	$a0, $sp, 776
-	st.d	$a1, $sp, 792
+	ld.d	$a1, $sp, 352
+	st.d	$a0, $sp, 744
+	st.d	$a1, $sp, 760
 .LBB44_56:                              # %._crit_edge.i.i113
                                         #   in Loop: Header=BB44_53 Depth=2
 	beqz	$s0, .LBB44_60
@@ -38728,43 +38735,44 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB44_60:                              #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 384
-	ld.d	$a1, $sp, 776
-	st.d	$a0, $sp, 784
+	ld.d	$a0, $sp, 352
+	ld.d	$a1, $sp, 744
+	st.d	$a0, $sp, 752
 	stx.b	$zero, $a1, $a0
-	addi.d	$fp, $sp, 400
-	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 272                   # 8-byte Folded Reload
+	addi.d	$fp, $sp, 368
+	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	beq	$a1, $s5, .LBB44_90
 # %bb.61:                               #   in Loop: Header=BB44_53 Depth=2
 .Ltmp1853:                              # EH_LABEL
-	addi.d	$a2, $sp, 808
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
+	addi.d	$a2, $sp, 776
+	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 272                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP8Variable11get_indicesEiRSt6vectorIiSaIiEE)
 	jirl	$ra, $ra, 0
 .Ltmp1854:                              # EH_LABEL
 # %bb.62:                               #   in Loop: Header=BB44_53 Depth=2
-	addi.d	$a0, $sp, 512
+	addi.d	$a0, $sp, 480
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseC2Ev)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt9basic_iosIcSt11char_traitsIcEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVSt9basic_iosIcSt11char_traitsIcEE)
 	addi.d	$a0, $a0, 16
-	st.d	$a0, $sp, 512
-	st.d	$zero, $sp, 728
-	st.h	$zero, $sp, 736
-	addi.d	$a0, $sp, 744
-	xvld	$xr0, $sp, 224                  # 32-byte Folded Reload
-	xvst	$xr0, $a0, 0
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 384
+	st.d	$a0, $sp, 480
+	st.d	$zero, $sp, 696
+	st.h	$zero, $sp, 704
+	vld	$vr0, $sp, 256                  # 16-byte Folded Reload
+	addi.d	$a0, $sp, 712
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$s1, $sp, 384
+	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
+	addi.d	$s1, $sp, 352
 	stx.d	$a1, $a0, $s1
-	ld.d	$a0, $sp, 384
-	st.d	$zero, $sp, 392
+	ld.d	$a0, $sp, 352
+	st.d	$zero, $sp, 360
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s1, $a0
 .Ltmp1856:                              # EH_LABEL
@@ -38774,12 +38782,12 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1857:                              # EH_LABEL
 # %bb.63:                               # %.noexc.i117
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 400
+	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 368
 	ld.d	$a0, $a0, -24
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	stx.d	$a1, $fp, $a0
-	ld.d	$a0, $sp, 400
+	ld.d	$a0, $sp, 368
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 .Ltmp1859:                              # EH_LABEL
@@ -38788,60 +38796,60 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .Ltmp1860:                              # EH_LABEL
 # %bb.64:                               #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	stx.d	$a1, $a0, $s1
 	pcalau12i	$a0, %got_pc_hi20(_ZTVNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	addi.d	$a1, $a0, 24
-	st.d	$a1, $sp, 384
+	st.d	$a1, $sp, 352
 	addi.d	$a1, $a0, 104
-	st.d	$a1, $sp, 512
+	st.d	$a1, $sp, 480
 	addi.d	$a0, $a0, 64
 	vinsgr2vr.d	$vr0, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	addi.d	$fp, $a0, 16
 	vinsgr2vr.d	$vr0, $fp, 1
-	vst	$vr0, $sp, 400
-	vld	$vr0, $sp, 288                  # 16-byte Folded Reload
-	addi.d	$a0, $sp, 416
+	vst	$vr0, $sp, 368
+	vld	$vr0, $sp, 256                  # 16-byte Folded Reload
+	addi.d	$a0, $sp, 384
 	vst	$vr0, $a0, 0
-	xvld	$xr0, $sp, 224                  # 32-byte Folded Reload
-	xvst	$xr0, $a0, 16
-	addi.d	$a0, $sp, 464
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	addi.d	$a0, $sp, 432
 	pcaddu18i	$ra, %call36(_ZNSt6localeC1Ev)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(_ZTVNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEEE)
 	addi.d	$s0, $a0, 16
-	st.d	$s0, $sp, 408
+	st.d	$s0, $sp, 376
 	ori	$a0, $zero, 24
-	st.w	$a0, $sp, 472
-	ld.d	$a0, $sp, 384
-	addi.d	$a1, $sp, 496
-	st.d	$a1, $sp, 480
-	st.d	$zero, $sp, 488
-	st.b	$zero, $sp, 496
+	st.w	$a0, $sp, 440
+	ld.d	$a0, $sp, 352
+	addi.d	$a1, $sp, 464
+	st.d	$a1, $sp, 448
+	st.d	$zero, $sp, 456
+	st.b	$zero, $sp, 464
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s1, $a0
 .Ltmp1862:                              # EH_LABEL
-	addi.d	$a1, $sp, 408
+	addi.d	$a1, $sp, 376
 	pcaddu18i	$ra, %call36(_ZNSt9basic_iosIcSt11char_traitsIcEE4initEPSt15basic_streambufIcS1_E)
 	jirl	$ra, $ra, 0
 .Ltmp1863:                              # EH_LABEL
 # %bb.65:                               # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEC1Ev.exit
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a1, $sp, 864
-	ld.d	$a2, $sp, 872
+	ld.d	$a1, $sp, 832
+	ld.d	$a2, $sp, 840
 .Ltmp1865:                              # EH_LABEL
-	addi.d	$a0, $sp, 400
+	addi.d	$a0, $sp, 368
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1866:                              # EH_LABEL
-	ld.d	$s1, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
 # %bb.66:                               # %_ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKNSt7__cxx1112basic_stringIS4_S5_T1_EE.exit
                                         #   in Loop: Header=BB44_53 Depth=2
 .Ltmp1867:                              # EH_LABEL
@@ -38853,7 +38861,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1868:                              # EH_LABEL
 # %bb.67:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit.preheader
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
 	beqz	$a0, .LBB44_74
 # %bb.68:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB44_53 Depth=2
@@ -38862,26 +38870,26 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	.p2align	4, , 16
 .LBB44_69:                              #   in Loop: Header=BB44_71 Depth=3
 .Ltmp1869:                              # EH_LABEL
-	addi.d	$a0, $sp, 400
+	addi.d	$a0, $sp, 368
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp1870:                              # EH_LABEL
 .LBB44_70:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit123
                                         #   in Loop: Header=BB44_71 Depth=3
 	addi.d	$s2, $s2, 1
-	ld.d	$a0, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
 	beq	$s2, $a0, .LBB44_74
 .LBB44_71:                              # %.lr.ph
                                         #   Parent Loop BB44_28 Depth=1
                                         #     Parent Loop BB44_53 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$a0, $sp, 808
+	ld.d	$a0, $sp, 776
 	slli.d	$a1, $s2, 2
 	ldx.w	$a1, $a0, $a1
 	bge	$s2, $s1, .LBB44_69
 # %bb.72:                               #   in Loop: Header=BB44_71 Depth=3
 .Ltmp1871:                              # EH_LABEL
-	addi.d	$a0, $sp, 400
+	addi.d	$a0, $sp, 368
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp1872:                              # EH_LABEL
@@ -38901,31 +38909,31 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcalau12i	$a0, %pc_hi20(.L.str.225)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.225)
 	ori	$a2, $zero, 1
-	addi.d	$a0, $sp, 400
+	addi.d	$a0, $sp, 368
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1877:                              # EH_LABEL
 # %bb.75:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit121
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 448
-	addi.d	$s1, $sp, 368
-	st.d	$s1, $sp, 352
-	st.d	$zero, $sp, 360
-	st.b	$zero, $sp, 368
+	ld.d	$a0, $sp, 416
+	addi.d	$s1, $sp, 336
+	st.d	$s1, $sp, 320
+	st.d	$zero, $sp, 328
+	st.b	$zero, $sp, 336
 	beqz	$a0, .LBB44_78
 # %bb.76:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit121
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a1, $sp, 432
+	ld.d	$a1, $sp, 400
 	sltu	$a2, $a1, $a0
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
 	or	$a0, $a0, $a1
 	beqz	$a0, .LBB44_78
 # %bb.77:                               #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a3, $sp, 440
+	ld.d	$a3, $sp, 408
 	sub.d	$a4, $a0, $a3
 .Ltmp1879:                              # EH_LABEL
-	addi.d	$a0, $sp, 352
+	addi.d	$a0, $sp, 320
 	move	$a1, $zero
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEmmPKcm)
@@ -38935,33 +38943,33 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	.p2align	4, , 16
 .LBB44_78:                              #   in Loop: Header=BB44_53 Depth=2
 .Ltmp1881:                              # EH_LABEL
-	addi.d	$a0, $sp, 352
-	addi.d	$a1, $sp, 480
+	addi.d	$a0, $sp, 320
+	addi.d	$a1, $sp, 448
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_assignERKS4_)
 	jirl	$ra, $ra, 0
 .Ltmp1882:                              # EH_LABEL
 .LBB44_79:                              # %_ZNKSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEE3strEv.exit
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 776
-	ld.d	$a1, $sp, 352
-	addi.d	$a2, $sp, 792
+	ld.d	$a0, $sp, 744
+	ld.d	$a1, $sp, 320
+	addi.d	$a2, $sp, 760
 	beq	$a0, $a2, .LBB44_83
 # %bb.80:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i
                                         #   in Loop: Header=BB44_53 Depth=2
 	beq	$a1, $s1, .LBB44_210
 # %bb.81:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit23.thread25.i
                                         #   in Loop: Header=BB44_53 Depth=2
-	vld	$vr0, $sp, 360
-	ld.d	$a2, $sp, 792
-	st.d	$a1, $sp, 776
-	vst	$vr0, $sp, 784
+	vld	$vr0, $sp, 328
+	ld.d	$a2, $sp, 760
+	st.d	$a1, $sp, 744
+	vst	$vr0, $sp, 752
 	beqz	$a0, .LBB44_85
 # %bb.82:                               #   in Loop: Header=BB44_53 Depth=2
-	st.d	$a0, $sp, 352
-	st.d	$a2, $sp, 368
-	st.d	$zero, $sp, 360
+	st.d	$a0, $sp, 320
+	st.d	$a2, $sp, 336
+	st.d	$zero, $sp, 328
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 352
+	ld.d	$a0, $sp, 320
 	bne	$a0, $s1, .LBB44_86
 	b	.LBB44_87
 .LBB44_83:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i
@@ -38969,85 +38977,85 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	beq	$a1, $s1, .LBB44_210
 # %bb.84:                               # %.thread.i
                                         #   in Loop: Header=BB44_53 Depth=2
-	vld	$vr0, $sp, 360
-	st.d	$a1, $sp, 776
-	vst	$vr0, $sp, 784
+	vld	$vr0, $sp, 328
+	st.d	$a1, $sp, 744
+	vst	$vr0, $sp, 752
 .LBB44_85:                              #   in Loop: Header=BB44_53 Depth=2
-	st.d	$s1, $sp, 352
+	st.d	$s1, $sp, 320
 	move	$a0, $s1
-	st.d	$zero, $sp, 360
+	st.d	$zero, $sp, 328
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 352
+	ld.d	$a0, $sp, 320
 	beq	$a0, $s1, .LBB44_87
 .LBB44_86:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i127
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a1, $sp, 368
+	ld.d	$a1, $sp, 336
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB44_87:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit129
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	addi.d	$s1, $sp, 384
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$s1, $sp, 352
 	stx.d	$a1, $a0, $s1
-	ld.d	$a0, $sp, 480
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	st.d	$a1, $sp, 400
-	st.d	$s0, $sp, 408
-	addi.d	$a1, $sp, 496
+	ld.d	$a0, $sp, 448
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 368
+	st.d	$s0, $sp, 376
+	addi.d	$a1, $sp, 464
 	beq	$a0, $a1, .LBB44_89
 # %bb.88:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a1, $sp, 496
+	ld.d	$a1, $sp, 464
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB44_89:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
                                         #   in Loop: Header=BB44_53 Depth=2
-	st.d	$fp, $sp, 408
-	addi.d	$a0, $sp, 464
+	st.d	$fp, $sp, 376
+	addi.d	$a0, $sp, 432
 	pcaddu18i	$ra, %call36(_ZNSt6localeD1Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
 	stx.d	$a1, $a0, $s1
-	st.d	$zero, $sp, 392
-	addi.d	$a0, $sp, 512
+	st.d	$zero, $sp, 360
+	addi.d	$a0, $sp, 480
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
-	addi.d	$fp, $sp, 400
-	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
+	addi.d	$fp, $sp, 368
+	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	ori	$s1, $zero, 16
 .LBB44_90:                              #   in Loop: Header=BB44_53 Depth=2
 	ld.d	$a0, $a0, 96
-	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 272                   # 8-byte Folded Reload
 	slli.d	$a1, $a1, 5
 	add.d	$a2, $a0, $a1
-	st.d	$fp, $sp, 384
+	st.d	$fp, $sp, 352
 	ld.d	$s0, $a2, 8
 	ldx.d	$s2, $a0, $a1
-	st.d	$s0, $sp, 352
+	st.d	$s0, $sp, 320
 	move	$a0, $fp
 	bltu	$s0, $s1, .LBB44_93
 # %bb.91:                               # %.noexc.i.i131
                                         #   in Loop: Header=BB44_53 Depth=2
 .Ltmp1884:                              # EH_LABEL
-	addi.d	$a0, $sp, 384
-	addi.d	$a1, $sp, 352
+	addi.d	$a0, $sp, 352
+	addi.d	$a1, $sp, 320
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1885:                              # EH_LABEL
 # %bb.92:                               # %.noexc132
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a1, $sp, 352
-	st.d	$a0, $sp, 384
-	st.d	$a1, $sp, 400
+	ld.d	$a1, $sp, 320
+	st.d	$a0, $sp, 352
+	st.d	$a1, $sp, 368
 .LBB44_93:                              # %._crit_edge.i.i.i130
                                         #   in Loop: Header=BB44_53 Depth=2
 	beqz	$s0, .LBB44_97
@@ -39065,34 +39073,34 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB44_97:                              #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 352
-	ld.d	$a1, $sp, 384
-	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 320
+	ld.d	$a1, $sp, 352
+	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
 	addi.w	$s4, $a2, 0
-	st.d	$a0, $sp, 392
+	st.d	$a0, $sp, 360
 	stx.b	$zero, $a1, $a0
-	st.d	$zero, $sp, 368
-	vld	$vr0, $sp, 288                  # 16-byte Folded Reload
-	vst	$vr0, $sp, 352
+	st.d	$zero, $sp, 336
+	vld	$vr0, $sp, 256                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 320
 	move	$s2, $zero
 	blez	$s4, .LBB44_177
 # %bb.98:                               # %.lr.ph646.preheader
                                         #   in Loop: Header=BB44_53 Depth=2
 	move	$fp, $zero
-	st.d	$s4, $sp, 312                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 280                   # 8-byte Folded Spill
 	b	.LBB44_102
 .LBB44_99:                              #   in Loop: Header=BB44_102 Depth=3
 	ld.b	$a1, $s3, 0
 	st.b	$a1, $a0, 0
 .LBB44_100:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit.thread
                                         #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$a0, $sp, 944
+	ld.d	$a0, $sp, 912
 	ld.d	$a1, $s2, 0
 	st.d	$a0, $s2, 8
 	stx.b	$zero, $a1, $a0
-	ld.d	$a0, $sp, 360
+	ld.d	$a0, $sp, 328
 	addi.d	$s2, $a0, 32
-	st.d	$s2, $sp, 360
+	st.d	$s2, $sp, 328
 .LBB44_101:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit158
                                         #   in Loop: Header=BB44_102 Depth=3
 	addi.w	$fp, $fp, 1
@@ -39114,20 +39122,20 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	bne	$fp, $a0, .LBB44_101
 # %bb.105:                              # %.lr.ph646._crit_edge700
                                         #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$s8, $sp, 368
+	ld.d	$s8, $sp, 336
 .LBB44_106:                             #   in Loop: Header=BB44_102 Depth=3
 	beq	$s2, $s8, .LBB44_119
 # %bb.107:                              #   in Loop: Header=BB44_102 Depth=3
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $s2, 0
-	ld.d	$s0, $sp, 840
-	ld.d	$s3, $sp, 832
-	st.d	$s0, $sp, 944
+	ld.d	$s0, $sp, 808
+	ld.d	$s3, $sp, 800
+	st.d	$s0, $sp, 912
 	bltu	$s0, $s1, .LBB44_116
 # %bb.108:                              # %.noexc.i.i155
                                         #   in Loop: Header=BB44_102 Depth=3
 .Ltmp1894:                              # EH_LABEL
-	addi.d	$a1, $sp, 944
+	addi.d	$a1, $sp, 912
 	move	$a0, $s2
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
@@ -39136,19 +39144,19 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB44_115
 	.p2align	4, , 16
 .LBB44_109:                             #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$s8, $sp, 368
+	ld.d	$s8, $sp, 336
 	beq	$s2, $s8, .LBB44_127
 # %bb.110:                              #   in Loop: Header=BB44_102 Depth=3
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $s2, 0
-	ld.d	$s0, $sp, 392
-	ld.d	$s3, $sp, 384
-	st.d	$s0, $sp, 944
+	ld.d	$s0, $sp, 360
+	ld.d	$s3, $sp, 352
+	st.d	$s0, $sp, 912
 	bltu	$s0, $s1, .LBB44_116
 # %bb.111:                              # %.noexc.i.i148
                                         #   in Loop: Header=BB44_102 Depth=3
 .Ltmp1887:                              # EH_LABEL
-	addi.d	$a1, $sp, 944
+	addi.d	$a1, $sp, 912
 	move	$a0, $s2
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
@@ -39157,19 +39165,19 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB44_115
 	.p2align	4, , 16
 .LBB44_112:                             #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$a0, $sp, 368
+	ld.d	$a0, $sp, 336
 	beq	$s2, $a0, .LBB44_135
 # %bb.113:                              #   in Loop: Header=BB44_102 Depth=3
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $s2, 0
-	ld.d	$s0, $sp, 784
-	ld.d	$s3, $sp, 776
-	st.d	$s0, $sp, 944
+	ld.d	$s0, $sp, 752
+	ld.d	$s3, $sp, 744
+	st.d	$s0, $sp, 912
 	bltu	$s0, $s1, .LBB44_116
 # %bb.114:                              # %.noexc.i.i142
                                         #   in Loop: Header=BB44_102 Depth=3
 .Ltmp1901:                              # EH_LABEL
-	addi.d	$a1, $sp, 944
+	addi.d	$a1, $sp, 912
 	move	$a0, $s2
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
@@ -39178,7 +39186,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_115:                             # %.noexc156
                                         #   in Loop: Header=BB44_102 Depth=3
 	st.d	$a0, $s2, 0
-	ld.d	$a1, $sp, 944
+	ld.d	$a1, $sp, 912
 	st.d	$a1, $s2, 16
 	ori	$s1, $zero, 16
 .LBB44_116:                             # %._crit_edge.i.i.i153
@@ -39194,7 +39202,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 	b	.LBB44_100
 .LBB44_119:                             #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$s2, $sp, 352
+	ld.d	$s2, $sp, 320
 	sub.d	$s1, $s8, $s2
 	addi.w	$a0, $zero, -32
 	lu52i.d	$a0, $a0, 2047
@@ -39227,17 +39235,17 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB44_102 Depth=3
 	move	$s6, $a0
 	add.d	$s0, $a0, $s1
-	ld.d	$s4, $sp, 840
-	ld.d	$s7, $sp, 832
+	ld.d	$s4, $sp, 808
+	ld.d	$s7, $sp, 800
 	addi.d	$a0, $s0, 16
 	stx.d	$a0, $s6, $s1
-	st.d	$s4, $sp, 944
+	st.d	$s4, $sp, 912
 	ori	$s1, $zero, 16
 	bltu	$s4, $s1, .LBB44_124
 # %bb.122:                              # %.noexc.i.i336
                                         #   in Loop: Header=BB44_102 Depth=3
 .Ltmp1898:                              # EH_LABEL
-	addi.d	$a1, $sp, 944
+	addi.d	$a1, $sp, 912
 	move	$a0, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
@@ -39245,7 +39253,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1899:                              # EH_LABEL
 # %bb.123:                              # %.noexc.i338
                                         #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$a1, $sp, 944
+	ld.d	$a1, $sp, 912
 	st.d	$a0, $s0, 0
 	st.d	$a1, $s0, 16
 .LBB44_124:                             # %._crit_edge.i.i.i323
@@ -39259,7 +39267,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	st.b	$a1, $a0, 0
 	b	.LBB44_144
 .LBB44_127:                             #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$s2, $sp, 352
+	ld.d	$s2, $sp, 320
 	sub.d	$s1, $s8, $s2
 	addi.w	$a0, $zero, -32
 	lu52i.d	$a0, $a0, 2047
@@ -39292,17 +39300,17 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB44_102 Depth=3
 	move	$s6, $a0
 	add.d	$s0, $a0, $s1
-	ld.d	$s4, $sp, 392
-	ld.d	$s7, $sp, 384
+	ld.d	$s4, $sp, 360
+	ld.d	$s7, $sp, 352
 	addi.d	$a0, $s0, 16
 	stx.d	$a0, $s6, $s1
-	st.d	$s4, $sp, 944
+	st.d	$s4, $sp, 912
 	ori	$s1, $zero, 16
 	bltu	$s4, $s1, .LBB44_132
 # %bb.130:                              # %.noexc.i.i313
                                         #   in Loop: Header=BB44_102 Depth=3
 .Ltmp1891:                              # EH_LABEL
-	addi.d	$a1, $sp, 944
+	addi.d	$a1, $sp, 912
 	move	$a0, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
@@ -39310,7 +39318,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1892:                              # EH_LABEL
 # %bb.131:                              # %.noexc.i315
                                         #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$a1, $sp, 944
+	ld.d	$a1, $sp, 912
 	st.d	$a0, $s0, 0
 	st.d	$a1, $s0, 16
 .LBB44_132:                             # %._crit_edge.i.i.i300
@@ -39324,7 +39332,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	st.b	$a1, $a0, 0
 	b	.LBB44_155
 .LBB44_135:                             #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$s3, $sp, 352
+	ld.d	$s3, $sp, 320
 	sub.d	$s1, $s2, $s3
 	addi.w	$a0, $zero, -32
 	lu52i.d	$a0, $a0, 2047
@@ -39357,17 +39365,17 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB44_102 Depth=3
 	move	$s8, $a0
 	add.d	$s0, $a0, $s1
-	ld.d	$s4, $sp, 784
-	ld.d	$s7, $sp, 776
+	ld.d	$s4, $sp, 752
+	ld.d	$s7, $sp, 744
 	addi.d	$a0, $s0, 16
 	stx.d	$a0, $s8, $s1
-	st.d	$s4, $sp, 944
+	st.d	$s4, $sp, 912
 	ori	$s1, $zero, 16
 	bltu	$s4, $s1, .LBB44_140
 # %bb.138:                              # %.noexc.i.i292
                                         #   in Loop: Header=BB44_102 Depth=3
 .Ltmp1906:                              # EH_LABEL
-	addi.d	$a1, $sp, 944
+	addi.d	$a1, $sp, 912
 	move	$a0, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
@@ -39375,7 +39383,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1907:                              # EH_LABEL
 # %bb.139:                              # %.noexc.i293
                                         #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$a1, $sp, 944
+	ld.d	$a1, $sp, 912
 	st.d	$a0, $s0, 0
 	st.d	$a1, $s0, 16
 .LBB44_140:                             # %._crit_edge.i.i.i284
@@ -39394,7 +39402,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB44_144:                             #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$a0, $sp, 944
+	ld.d	$a0, $sp, 912
 	ld.d	$a1, $s0, 0
 	st.d	$a0, $s0, 8
 	stx.b	$zero, $a1, $a0
@@ -39448,7 +39456,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB44_102 Depth=3
 	beqz	$s2, .LBB44_153
 # %bb.152:                              #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$a0, $sp, 368
+	ld.d	$a0, $sp, 336
 	sub.d	$a1, $a0, $s2
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -39456,8 +39464,8 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_153:                             # %.noexc157
                                         #   in Loop: Header=BB44_102 Depth=3
 	addi.d	$s2, $s0, 32
-	st.d	$s6, $sp, 352
-	st.d	$s2, $sp, 360
+	st.d	$s6, $sp, 320
+	st.d	$s2, $sp, 328
 	add.d	$a0, $s6, $s3
 	b	.LBB44_176
 .LBB44_154:                             #   in Loop: Header=BB44_102 Depth=3
@@ -39466,7 +39474,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB44_155:                             #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$a0, $sp, 944
+	ld.d	$a0, $sp, 912
 	ld.d	$a1, $s0, 0
 	st.d	$a0, $s0, 8
 	stx.b	$zero, $a1, $a0
@@ -39520,7 +39528,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB44_102 Depth=3
 	beqz	$s2, .LBB44_164
 # %bb.163:                              #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$a0, $sp, 368
+	ld.d	$a0, $sp, 336
 	sub.d	$a1, $a0, $s2
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -39528,12 +39536,12 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_164:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit151
                                         #   in Loop: Header=BB44_102 Depth=3
 	addi.d	$s2, $s0, 32
-	st.d	$s6, $sp, 352
-	st.d	$s2, $sp, 360
+	st.d	$s6, $sp, 320
+	st.d	$s2, $sp, 328
 	add.d	$s8, $s6, $s3
-	st.d	$s8, $sp, 368
+	st.d	$s8, $sp, 336
 	ori	$a0, $zero, 2
-	ld.d	$s4, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 280                   # 8-byte Folded Reload
 	bne	$fp, $a0, .LBB44_101
 	b	.LBB44_106
 .LBB44_165:                             #   in Loop: Header=BB44_102 Depth=3
@@ -39542,7 +39550,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB44_166:                             #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$a0, $sp, 944
+	ld.d	$a0, $sp, 912
 	ld.d	$a1, $s0, 0
 	st.d	$a0, $s0, 8
 	stx.b	$zero, $a1, $a0
@@ -39596,7 +39604,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB44_102 Depth=3
 	beqz	$s3, .LBB44_175
 # %bb.174:                              #   in Loop: Header=BB44_102 Depth=3
-	ld.d	$a0, $sp, 368
+	ld.d	$a0, $sp, 336
 	sub.d	$a1, $a0, $s3
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -39604,26 +39612,26 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_175:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
                                         #   in Loop: Header=BB44_102 Depth=3
 	addi.d	$s2, $s0, 32
-	st.d	$s8, $sp, 352
-	st.d	$s2, $sp, 360
+	st.d	$s8, $sp, 320
+	st.d	$s2, $sp, 328
 	add.d	$a0, $s8, $s6
 .LBB44_176:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit158
                                         #   in Loop: Header=BB44_102 Depth=3
-	st.d	$a0, $sp, 368
-	ld.d	$s4, $sp, 312                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 336
+	ld.d	$s4, $sp, 280                   # 8-byte Folded Reload
 	b	.LBB44_101
 	.p2align	4, , 16
 .LBB44_177:                             # %._crit_edge
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a1, $sp, 928
-	ld.d	$a0, $sp, 936
+	ld.d	$a1, $sp, 896
+	ld.d	$a0, $sp, 904
 	beq	$a1, $a0, .LBB44_182
 # %bb.178:                              #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 352
+	ld.d	$a0, $sp, 320
 	sub.d	$s0, $s2, $a0
 	st.d	$zero, $a1, 16
-	vld	$vr0, $sp, 288                  # 16-byte Folded Reload
-	st.d	$a1, $sp, 312                   # 8-byte Folded Spill
+	vld	$vr0, $sp, 256                  # 16-byte Folded Reload
+	st.d	$a1, $sp, 280                   # 8-byte Folded Spill
 	vst	$vr0, $a1, 0
 	beq	$s2, $a0, .LBB44_196
 # %bb.179:                              #   in Loop: Header=BB44_53 Depth=2
@@ -39643,7 +39651,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB44_197
 	.p2align	4, , 16
 .LBB44_182:                             #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$s3, $sp, 920
+	ld.d	$s3, $sp, 888
 	sub.d	$s0, $a1, $s3
 	addi.w	$a0, $zero, -8
 	lu52i.d	$a0, $a0, 2047
@@ -39652,7 +39660,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB44_53 Depth=2
 	move	$fp, $a1
 	srai.d	$a0, $s0, 3
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a1
 	sltu	$a1, $s5, $a0
 	maskeqz	$a2, $a0, $a1
@@ -39660,7 +39668,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	sltu	$a1, $a0, $a1
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	bstrins.d	$a2, $a2, 58, 32
 	sltu	$a3, $a0, $a2
 	maskeqz	$a0, $a0, $a3
@@ -39672,30 +39680,30 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	slli.d	$a0, $s7, 4
 	alsl.d	$a0, $s7, $a0, 3
 .Ltmp1927:                              # EH_LABEL
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp1928:                              # EH_LABEL
 # %bb.184:                              # %.noexc275
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$s6, $sp, 352
+	ld.d	$s6, $sp, 320
 	add.d	$a1, $a0, $s0
 	sub.d	$s4, $s2, $s6
-	st.d	$a0, $sp, 312                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 280                   # 8-byte Folded Spill
 	stx.d	$zero, $a0, $s0
-	vld	$vr0, $sp, 288                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 256                  # 16-byte Folded Reload
 	vst	$vr0, $a1, 8
 	beq	$s2, $s6, .LBB44_213
 # %bb.185:                              #   in Loop: Header=BB44_53 Depth=2
-	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
 	addi.w	$a0, $zero, -31
 	lu52i.d	$a0, $a0, 2047
 	bgeu	$s4, $a0, .LBB44_293
 # %bb.186:                              # %_ZNSt15__new_allocatorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE8allocateEmPKv.exit.i.i.i.i.i270
                                         #   in Loop: Header=BB44_53 Depth=2
 .Ltmp1930:                              # EH_LABEL
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
@@ -39704,10 +39712,10 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB44_53 Depth=2
 	move	$s0, $a0
 	move	$s8, $zero
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	st.d	$a0, $a1, 0
 	addi.d	$a0, $a1, 8
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	st.d	$s0, $a1, 8
 	add.d	$a0, $s0, $s4
 	st.d	$a0, $a1, 16
@@ -39719,7 +39727,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB44_189:                             #   in Loop: Header=BB44_190 Depth=3
-	ld.d	$a0, $sp, 944
+	ld.d	$a0, $sp, 912
 	ldx.d	$a1, $s0, $s8
 	st.d	$a0, $s4, 8
 	stx.b	$zero, $a1, $a0
@@ -39736,12 +39744,12 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	stx.d	$a0, $s0, $s8
 	ld.d	$s7, $s3, 8
 	ldx.d	$s5, $s6, $s8
-	st.d	$s7, $sp, 944
+	st.d	$s7, $sp, 912
 	bltu	$s7, $s1, .LBB44_193
 # %bb.191:                              # %.noexc.i.i.i362
                                         #   in Loop: Header=BB44_190 Depth=3
 .Ltmp1933:                              # EH_LABEL
-	addi.d	$a1, $sp, 944
+	addi.d	$a1, $sp, 912
 	move	$a0, $s4
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
@@ -39749,7 +39757,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1934:                              # EH_LABEL
 # %bb.192:                              # %.noexc.i363
                                         #   in Loop: Header=BB44_190 Depth=3
-	ld.d	$a1, $sp, 944
+	ld.d	$a1, $sp, 912
 	st.d	$a0, $s4, 0
 	st.d	$a1, $s4, 16
 .LBB44_193:                             # %._crit_edge.i.i.i.i359
@@ -39769,11 +39777,11 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	move	$s2, $zero
 .LBB44_197:                             # %.noexc136
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
 	st.d	$s2, $a1, 0
 	st.d	$s2, $a1, 8
-	ld.d	$s5, $sp, 352
-	ld.d	$s6, $sp, 360
+	ld.d	$s5, $sp, 320
+	ld.d	$s6, $sp, 328
 	add.d	$a0, $s2, $s0
 	st.d	$a0, $a1, 16
 	beq	$s5, $s6, .LBB44_208
@@ -39788,7 +39796,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB44_200:                             #   in Loop: Header=BB44_201 Depth=3
-	ld.d	$a0, $sp, 944
+	ld.d	$a0, $sp, 912
 	ldx.d	$a1, $s2, $s7
 	st.d	$a0, $s0, 8
 	stx.b	$zero, $a1, $a0
@@ -39805,12 +39813,12 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	stx.d	$a0, $s2, $s7
 	ld.d	$s3, $s8, 8
 	ldx.d	$s4, $s5, $s7
-	st.d	$s3, $sp, 944
+	st.d	$s3, $sp, 912
 	bltu	$s3, $s1, .LBB44_204
 # %bb.202:                              # %.noexc.i.i.i279
                                         #   in Loop: Header=BB44_201 Depth=3
 .Ltmp1916:                              # EH_LABEL
-	addi.d	$a1, $sp, 944
+	addi.d	$a1, $sp, 912
 	move	$a0, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
@@ -39818,7 +39826,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1917:                              # EH_LABEL
 # %bb.203:                              # %.noexc.i280
                                         #   in Loop: Header=BB44_201 Depth=3
-	ld.d	$a1, $sp, 944
+	ld.d	$a1, $sp, 912
 	st.d	$a0, $s0, 0
 	st.d	$a1, $s0, 16
 .LBB44_204:                             # %._crit_edge.i.i.i.i
@@ -39835,17 +39843,17 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_207:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EEC2ERKS7_.exit.i.loopexit
                                         #   in Loop: Header=BB44_53 Depth=2
 	add.d	$s2, $s2, $s7
-	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
 .LBB44_208:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EEC2ERKS7_.exit.i
                                         #   in Loop: Header=BB44_53 Depth=2
 	st.d	$s2, $a1, 8
-	ld.d	$a0, $sp, 928
+	ld.d	$a0, $sp, 896
 	addi.d	$a0, $a0, 24
-	st.d	$a0, $sp, 928
-	addi.d	$s0, $sp, 400
+	st.d	$a0, $sp, 896
+	addi.d	$s0, $sp, 368
 	ori	$s5, $zero, 1
-	ld.d	$a0, $sp, 352
-	ld.d	$fp, $sp, 360
+	ld.d	$a0, $sp, 320
+	ld.d	$fp, $sp, 328
 	bne	$a0, $fp, .LBB44_219
 	b	.LBB44_224
 	.p2align	4, , 16
@@ -39853,16 +39861,16 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB44_53 Depth=2
 	add.d	$a0, $s0, $s8
 	ori	$s5, $zero, 1
-	ld.d	$s3, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	st.d	$a0, $a2, 0
-	ld.d	$s0, $sp, 312                   # 8-byte Folded Reload
-	vld	$vr1, $sp, 288                  # 16-byte Folded Reload
+	ld.d	$s0, $sp, 280                   # 8-byte Folded Reload
+	vld	$vr1, $sp, 256                  # 16-byte Folded Reload
 	bne	$s3, $fp, .LBB44_214
 	b	.LBB44_216
 .LBB44_210:                             #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a2, $sp, 360
+	ld.d	$a2, $sp, 328
 	beqz	$a2, .LBB44_231
 # %bb.211:                              #   in Loop: Header=BB44_53 Depth=2
 	bne	$a2, $s5, .LBB44_230
@@ -39877,12 +39885,12 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	vst	$vr0, $a1, 0
 	st.d	$s4, $a1, 16
 	st.d	$a0, $a2, 0
-	ld.d	$s0, $sp, 312                   # 8-byte Folded Reload
-	vld	$vr1, $sp, 288                  # 16-byte Folded Reload
+	ld.d	$s0, $sp, 280                   # 8-byte Folded Reload
+	vld	$vr1, $sp, 256                  # 16-byte Folded Reload
 	beq	$s3, $fp, .LBB44_216
 .LBB44_214:                             # %.lr.ph.i.i.i.i.preheader
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$s0, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 280                   # 8-byte Folded Reload
 	move	$a0, $s3
 	.p2align	4, , 16
 .LBB44_215:                             # %.lr.ph.i.i.i.i
@@ -39902,7 +39910,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
                                         #   in Loop: Header=BB44_53 Depth=2
 	beqz	$s3, .LBB44_218
 # %bb.217:                              #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 936
+	ld.d	$a0, $sp, 904
 	sub.d	$a1, $a0, $s3
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -39910,16 +39918,16 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_218:                             # %.noexc139
                                         #   in Loop: Header=BB44_53 Depth=2
 	addi.d	$a0, $s0, 24
-	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
-	st.d	$a1, $sp, 920
-	st.d	$a0, $sp, 928
+	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 888
+	st.d	$a0, $sp, 896
 	ori	$a0, $zero, 24
 	mul.d	$a0, $s7, $a0
 	add.d	$a0, $a1, $a0
-	st.d	$a0, $sp, 936
-	addi.d	$s0, $sp, 400
-	ld.d	$a0, $sp, 352
-	ld.d	$fp, $sp, 360
+	st.d	$a0, $sp, 904
+	addi.d	$s0, $sp, 368
+	ld.d	$a0, $sp, 320
+	ld.d	$fp, $sp, 328
 	beq	$a0, $fp, .LBB44_224
 .LBB44_219:                             # %.lr.ph.i.i.i.preheader
                                         #   in Loop: Header=BB44_53 Depth=2
@@ -39947,34 +39955,34 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	.p2align	4, , 16
 .LBB44_223:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exitthread-pre-split.i
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 352
-	addi.d	$s0, $sp, 400
+	ld.d	$a0, $sp, 320
+	addi.d	$s0, $sp, 368
 .LBB44_224:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exit.i
                                         #   in Loop: Header=BB44_53 Depth=2
 	beqz	$a0, .LBB44_226
 # %bb.225:                              #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a1, $sp, 368
+	ld.d	$a1, $sp, 336
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB44_226:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev.exit
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 352
 	beq	$a0, $s0, .LBB44_228
 # %bb.227:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i160
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a1, $sp, 400
+	ld.d	$a1, $sp, 368
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB44_228:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit162
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 776
-	addi.d	$a1, $sp, 792
+	ld.d	$a0, $sp, 744
+	addi.d	$a1, $sp, 760
 	beq	$a0, $a1, .LBB44_52
 # %bb.229:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i163
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a1, $sp, 792
+	ld.d	$a1, $sp, 760
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -39984,50 +39992,50 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .LBB44_231:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7_S_copyEPcPKcm.exit.i
                                         #   in Loop: Header=BB44_53 Depth=2
-	ld.d	$a0, $sp, 360
-	ld.d	$a1, $sp, 776
-	st.d	$a0, $sp, 784
+	ld.d	$a0, $sp, 328
+	ld.d	$a1, $sp, 744
+	st.d	$a0, $sp, 752
 	stx.b	$zero, $a1, $a0
-	ld.d	$a0, $sp, 352
-	st.d	$zero, $sp, 360
+	ld.d	$a0, $sp, 320
+	st.d	$zero, $sp, 328
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 352
+	ld.d	$a0, $sp, 320
 	bne	$a0, $s1, .LBB44_86
 	b	.LBB44_87
 	.p2align	4, , 16
 .LBB44_232:                             # %._crit_edge652.loopexit
                                         #   in Loop: Header=BB44_28 Depth=1
-	ld.d	$s0, $sp, 808
+	ld.d	$s0, $sp, 776
 .LBB44_233:                             # %._crit_edge652
                                         #   in Loop: Header=BB44_28 Depth=1
 	beqz	$s0, .LBB44_235
 # %bb.234:                              #   in Loop: Header=BB44_28 Depth=1
-	ld.d	$a0, $sp, 824
+	ld.d	$a0, $sp, 792
 	sub.d	$a1, $a0, $s0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB44_235:                             # %_ZNSt6vectorIiSaIiEED2Ev.exit
                                         #   in Loop: Header=BB44_28 Depth=1
-	ld.d	$a0, $sp, 832
-	addi.d	$a1, $sp, 848
+	ld.d	$a0, $sp, 800
+	addi.d	$a1, $sp, 816
 	beq	$a0, $a1, .LBB44_237
 # %bb.236:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i110
                                         #   in Loop: Header=BB44_28 Depth=1
-	ld.d	$a1, $sp, 848
+	ld.d	$a1, $sp, 816
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB44_237:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit112
                                         #   in Loop: Header=BB44_28 Depth=1
-	ld.d	$s0, $sp, 864
+	ld.d	$s0, $sp, 832
 .LBB44_238:                             # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit.thread
                                         #   in Loop: Header=BB44_28 Depth=1
-	addi.d	$a0, $sp, 880
+	addi.d	$a0, $sp, 848
 	beq	$s0, $a0, .LBB44_27
 # %bb.239:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i174
                                         #   in Loop: Header=BB44_28 Depth=1
-	ld.d	$a0, $sp, 880
+	ld.d	$a0, $sp, 848
 	addi.d	$a1, $a0, 1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -40039,21 +40047,21 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	ori	$a1, $zero, 1
 	andn	$a1, $a1, $a0
 .Ltmp1953:                              # EH_LABEL
-	addi.d	$a0, $sp, 384
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZN2PP12Parser_utilsC1Ei)
 	jirl	$ra, $ra, 0
 .Ltmp1954:                              # EH_LABEL
 # %bb.241:
-	ld.d	$fp, $sp, 928
-	ld.d	$s0, $sp, 920
+	ld.d	$fp, $sp, 896
+	ld.d	$s0, $sp, 888
 	sub.d	$s1, $fp, $s0
-	st.d	$zero, $sp, 328
-	vld	$vr0, $sp, 288                  # 16-byte Folded Reload
-	vst	$vr0, $sp, 336
+	st.d	$zero, $sp, 296
+	vld	$vr0, $sp, 256                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 304
 	beq	$fp, $s0, .LBB44_245
 # %bb.242:
 	srai.d	$a0, $s1, 3
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a1
 	lu12i.w	$a1, 349525
 	ori	$a1, $a1, 1366
@@ -40072,10 +40080,10 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_245:
 	move	$a2, $zero
 .LBB44_246:                             # %.noexc187
-	st.d	$a2, $sp, 328
-	st.d	$a2, $sp, 336
+	st.d	$a2, $sp, 296
+	st.d	$a2, $sp, 304
 	add.d	$a0, $a2, $s1
-	st.d	$a0, $sp, 344
+	st.d	$a0, $sp, 312
 .Ltmp1959:                              # EH_LABEL
 	move	$a0, $s0
 	move	$a1, $fp
@@ -40083,41 +40091,41 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .Ltmp1960:                              # EH_LABEL
 # %bb.247:
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	sub.d	$a1, $a1, $a2
 	srai.d	$a1, $a1, 3
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	mul.w	$a2, $a1, $a2
-	st.d	$a0, $sp, 336
+	st.d	$a0, $sp, 304
 .Ltmp1962:                              # EH_LABEL
-	addi.d	$a0, $sp, 384
-	addi.d	$a1, $sp, 328
+	addi.d	$a0, $sp, 352
+	addi.d	$a1, $sp, 296
 	ori	$a3, $zero, 3
 	ori	$a4, $zero, 3
 	ori	$a5, $zero, 85
-	ld.d	$a6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP12Parser_utils13print_stringsESt6vectorIS1_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EESaIS9_EEiiiiRNS2_18basic_stringstreamIcS5_S6_EE)
 	jirl	$ra, $ra, 0
 .Ltmp1963:                              # EH_LABEL
 # %bb.248:
-	ld.d	$fp, $sp, 328
-	ld.d	$s0, $sp, 336
+	ld.d	$fp, $sp, 296
+	ld.d	$s0, $sp, 304
 	bne	$fp, $s0, .LBB44_256
 # %bb.249:                              # %_ZSt8_DestroyIPSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EES8_EvT_SA_RSaIT0_E.exit.i
 	beqz	$fp, .LBB44_251
 .LBB44_250:
-	ld.d	$a0, $sp, 344
+	ld.d	$a0, $sp, 312
 	sub.d	$a1, $a0, $fp
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB44_251:                             # %_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EED2Ev.exit
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a0, 8
 .Ltmp1965:                              # EH_LABEL
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1966:                              # EH_LABEL
@@ -40181,7 +40189,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 	b	.LBB44_255
 .LBB44_264:                             # %_ZSt8_DestroyIPSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EES8_EvT_SA_RSaIT0_E.exitthread-pre-split.i
-	ld.d	$fp, $sp, 328
+	ld.d	$fp, $sp, 296
 	bnez	$fp, .LBB44_250
 	b	.LBB44_251
 .LBB44_265:
@@ -40211,8 +40219,8 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .Ltmp1974:                              # EH_LABEL
 # %bb.269:                              # %_ZNSolsEPFRSoS_E.exit
-	ld.d	$a0, $sp, 896
-	ld.d	$fp, $sp, 904
+	ld.d	$a0, $sp, 864
+	ld.d	$fp, $sp, 872
 	beq	$a0, $fp, .LBB44_275
 # %bb.270:                              # %.lr.ph.i.i.i201.preheader
 	addi.d	$s0, $a0, 16
@@ -40235,39 +40243,39 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 	b	.LBB44_271
 .LBB44_274:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exitthread-pre-split.i206
-	ld.d	$a0, $sp, 896
+	ld.d	$a0, $sp, 864
 .LBB44_275:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exit.i208
 	beqz	$a0, .LBB44_277
 # %bb.276:
-	ld.d	$a1, $sp, 912
+	ld.d	$a1, $sp, 880
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB44_277:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev.exit211
-	ld.d	$fp, $sp, 920
-	ld.d	$s0, $sp, 928
+	ld.d	$fp, $sp, 888
+	ld.d	$s0, $sp, 896
 	bne	$fp, $s0, .LBB44_282
 # %bb.278:                              # %_ZSt8_DestroyIPSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EES8_EvT_SA_RSaIT0_E.exit.i229
 	beqz	$fp, .LBB44_280
 .LBB44_279:
-	ld.d	$a0, $sp, 936
+	ld.d	$a0, $sp, 904
 	sub.d	$a1, $a0, $fp
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB44_280:
-	ld.d	$s8, $sp, 952                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 960                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 968                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 976                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 984                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 992                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1000                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 1008                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 1016                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 1024                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 1032                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 1040
+	ld.d	$s8, $sp, 920                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 928                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 936                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 944                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 952                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 960                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 968                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 976                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 984                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 992                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 1000                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 1008
 	ret
 	.p2align	4, , 16
 .LBB44_281:                             # %_ZSt8_DestroyISt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EEEvPT_.exit.i.i.i225
@@ -40316,7 +40324,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 	b	.LBB44_281
 .LBB44_290:                             # %_ZSt8_DestroyIPSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EES8_EvT_SA_RSaIT0_E.exitthread-pre-split.i227
-	ld.d	$fp, $sp, 920
+	ld.d	$fp, $sp, 888
 	bnez	$fp, .LBB44_279
 	b	.LBB44_280
 .LBB44_291:                             # %.noexc.i.i.i
@@ -40376,25 +40384,25 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_307:
 .Ltmp1834:                              # EH_LABEL
 .LBB44_308:
-	ld.d	$a2, $sp, 384
+	ld.d	$a2, $sp, 352
 	move	$s0, $a0
-	addi.d	$a0, $sp, 400
+	addi.d	$a0, $sp, 368
 	bne	$a2, $a0, .LBB44_314
 	b	.LBB44_374
 .LBB44_309:
 .Ltmp1964:                              # EH_LABEL
 	move	$s0, $a0
-	addi.d	$a0, $sp, 328
+	addi.d	$a0, $sp, 296
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EED2Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB44_374
 .LBB44_310:
 .Ltmp1961:                              # EH_LABEL
-	ld.d	$a2, $sp, 328
+	ld.d	$a2, $sp, 296
 	move	$s0, $a0
 	beqz	$a2, .LBB44_374
 # %bb.311:
-	ld.d	$a0, $sp, 344
+	ld.d	$a0, $sp, 312
 	sub.d	$a1, $a0, $a2
 	b	.LBB44_315
 .LBB44_312:
@@ -40403,11 +40411,11 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB44_374
 .LBB44_313:
 .Ltmp1831:                              # EH_LABEL
-	ld.d	$a2, $sp, 384
+	ld.d	$a2, $sp, 352
 	move	$s0, $a0
 	beq	$a2, $fp, .LBB44_374
 .LBB44_314:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i98
-	ld.d	$a0, $sp, 400
+	ld.d	$a0, $sp, 368
 	addi.d	$a1, $a0, 1
 .LBB44_315:
 	move	$a0, $a2
@@ -40415,8 +40423,8 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_316:
 .Ltmp1846:                              # EH_LABEL
 	move	$s0, $a0
-	ld.d	$a0, $sp, 864
-	addi.d	$a1, $sp, 880
+	ld.d	$a0, $sp, 832
+	addi.d	$a1, $sp, 848
 	bne	$a0, $a1, .LBB44_372
 	b	.LBB44_374
 .LBB44_317:                             # %.loopexit392
@@ -40426,8 +40434,8 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .Ltmp1952:                              # EH_LABEL
 .LBB44_319:                             # %_ZNSt6vectorIiSaIiEED2Ev.exit173
 	move	$s0, $a0
-	ld.d	$a0, $sp, 832
-	addi.d	$a1, $sp, 848
+	ld.d	$a0, $sp, 800
+	addi.d	$a1, $sp, 816
 	beq	$a0, $a1, .LBB44_367
 	b	.LBB44_371
 .LBB44_320:
@@ -40439,11 +40447,11 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	b	.LBB44_359
 .LBB44_322:
 .Ltmp1883:                              # EH_LABEL
-	ld.d	$a2, $sp, 352
+	ld.d	$a2, $sp, 320
 	move	$s0, $a0
 	beq	$a2, $s1, .LBB44_357
 # %bb.323:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i
-	ld.d	$a0, $sp, 368
+	ld.d	$a0, $sp, 336
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -40456,53 +40464,53 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_325:
 .Ltmp1852:                              # EH_LABEL
 	move	$s0, $a0
-	ld.d	$a0, $sp, 808
+	ld.d	$a0, $sp, 776
 	beqz	$a0, .LBB44_366
 	b	.LBB44_370
 .LBB44_326:
 .Ltmp1886:                              # EH_LABEL
 	move	$s0, $a0
-	ld.d	$a0, $sp, 776
-	addi.d	$a1, $sp, 792
+	ld.d	$a0, $sp, 744
+	addi.d	$a1, $sp, 760
 	beq	$a0, $a1, .LBB44_365
 	b	.LBB44_369
 .LBB44_327:
 .Ltmp1864:                              # EH_LABEL
 	move	$s0, $a0
-	addi.d	$a0, $sp, 408
+	addi.d	$a0, $sp, 376
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEED2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	addi.d	$a1, $sp, 384
-	ld.d	$a2, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$a1, $sp, 352
+	ld.d	$a2, $sp, 224                   # 8-byte Folded Reload
 	stx.d	$a2, $a0, $a1
 	b	.LBB44_330
 .LBB44_328:
 .Ltmp1855:                              # EH_LABEL
 	move	$s0, $a0
-	ld.d	$a0, $sp, 776
-	addi.d	$a1, $sp, 792
+	ld.d	$a0, $sp, 744
+	addi.d	$a1, $sp, 760
 	beq	$a0, $a1, .LBB44_365
 	b	.LBB44_369
 .LBB44_329:
 .Ltmp1861:                              # EH_LABEL
-	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
-	st.d	$a1, $sp, 384
+	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 352
 	ld.d	$a1, $a1, -24
 	move	$s0, $a0
-	addi.d	$a0, $sp, 384
-	ld.d	$a2, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$a0, $sp, 352
+	ld.d	$a2, $sp, 224                   # 8-byte Folded Reload
 	stx.d	$a2, $a1, $a0
 .LBB44_330:                             # %.body.i
-	st.d	$zero, $sp, 392
+	st.d	$zero, $sp, 360
 .LBB44_331:                             # %.body.i
-	addi.d	$a0, $sp, 512
+	addi.d	$a0, $sp, 480
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 776
-	addi.d	$a1, $sp, 792
+	ld.d	$a0, $sp, 744
+	addi.d	$a1, $sp, 760
 	beq	$a0, $a1, .LBB44_365
 	b	.LBB44_369
 .LBB44_332:                             # %.loopexit381
@@ -40559,7 +40567,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .Ltmp1942:                              # EH_LABEL
 # %bb.343:                              # %.body364
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a1, 0
 	beqz	$a0, .LBB44_360
 # %bb.344:
@@ -40599,7 +40607,7 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 .Ltmp1925:                              # EH_LABEL
 # %bb.351:                              # %.body281
-	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$a0, $a1, 0
 	beqz	$a0, .LBB44_363
 # %bb.352:
@@ -40620,11 +40628,11 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_356:
 	move	$s0, $a0
 .LBB44_357:
-	addi.d	$a0, $sp, 384
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 776
-	addi.d	$a1, $sp, 792
+	ld.d	$a0, $sp, 744
+	addi.d	$a1, $sp, 760
 	beq	$a0, $a1, .LBB44_365
 	b	.LBB44_369
 .LBB44_358:                             # %.loopexit.split-lp387
@@ -40632,8 +40640,8 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_359:                             # %_ZZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EE17_M_realloc_appendIJRKS7_EEEvDpOT_EN6_GuardD2Ev.exit24.i
 	move	$s0, $a0
 .LBB44_360:                             # %_ZZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EE17_M_realloc_appendIJRKS7_EEEvDpOT_EN6_GuardD2Ev.exit24.i
-	ld.d	$a0, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	b	.LBB44_363
@@ -40642,74 +40650,74 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 .LBB44_362:                             # %.body296
 	move	$s0, $a0
 .LBB44_363:                             # %.body296
-	addi.d	$a0, $sp, 352
+	addi.d	$a0, $sp, 320
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 384
-	addi.d	$a1, $sp, 400
+	ld.d	$a0, $sp, 352
+	addi.d	$a1, $sp, 368
 	bne	$a0, $a1, .LBB44_368
 # %bb.364:
-	ld.d	$a0, $sp, 776
-	addi.d	$a1, $sp, 792
+	ld.d	$a0, $sp, 744
+	addi.d	$a1, $sp, 760
 	bne	$a0, $a1, .LBB44_369
 .LBB44_365:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit171
-	ld.d	$a0, $sp, 808
+	ld.d	$a0, $sp, 776
 	bnez	$a0, .LBB44_370
 .LBB44_366:                             # %_ZNSt6vectorIiSaIiEED2Ev.exit173
-	ld.d	$a0, $sp, 832
-	addi.d	$a1, $sp, 848
+	ld.d	$a0, $sp, 800
+	addi.d	$a1, $sp, 816
 	bne	$a0, $a1, .LBB44_371
 .LBB44_367:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit179
-	ld.d	$a0, $sp, 864
-	addi.d	$a1, $sp, 880
+	ld.d	$a0, $sp, 832
+	addi.d	$a1, $sp, 848
 	beq	$a0, $a1, .LBB44_374
 	b	.LBB44_372
 .LBB44_368:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i166
-	ld.d	$a1, $sp, 400
+	ld.d	$a1, $sp, 368
+	addi.d	$a1, $a1, 1
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 744
+	addi.d	$a1, $sp, 760
+	beq	$a0, $a1, .LBB44_365
+.LBB44_369:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i169
+	ld.d	$a1, $sp, 760
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 776
-	addi.d	$a1, $sp, 792
-	beq	$a0, $a1, .LBB44_365
-.LBB44_369:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i169
-	ld.d	$a1, $sp, 792
-	addi.d	$a1, $a1, 1
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 808
 	beqz	$a0, .LBB44_366
 .LBB44_370:
-	ld.d	$a1, $sp, 824
+	ld.d	$a1, $sp, 792
 	sub.d	$a1, $a1, $a0
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 800
+	addi.d	$a1, $sp, 816
+	beq	$a0, $a1, .LBB44_367
+.LBB44_371:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i177
+	ld.d	$a1, $sp, 816
+	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 832
 	addi.d	$a1, $sp, 848
-	beq	$a0, $a1, .LBB44_367
-.LBB44_371:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i177
-	ld.d	$a1, $sp, 848
-	addi.d	$a1, $a1, 1
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 864
-	addi.d	$a1, $sp, 880
 	beq	$a0, $a1, .LBB44_374
 .LBB44_372:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i180
-	ld.d	$a1, $sp, 880
+	ld.d	$a1, $sp, 848
 	addi.d	$a1, $a1, 1
 .LBB44_373:
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB44_374:
-	ld.d	$a0, $sp, 896
-	ld.d	$fp, $sp, 904
+	ld.d	$a0, $sp, 864
+	ld.d	$fp, $sp, 872
 	bne	$a0, $fp, .LBB44_377
 # %bb.375:                              # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exit.i242
 	bnez	$a0, .LBB44_382
 .LBB44_376:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev.exit245
-	ld.d	$fp, $sp, 920
-	ld.d	$s1, $sp, 928
+	ld.d	$fp, $sp, 888
+	ld.d	$s1, $sp, 896
 	bne	$fp, $s1, .LBB44_386
 	b	.LBB44_383
 .LBB44_377:                             # %.lr.ph.i.i.i235.preheader
@@ -40733,15 +40741,15 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 	b	.LBB44_378
 .LBB44_381:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exitthread-pre-split.i240
-	ld.d	$a0, $sp, 896
+	ld.d	$a0, $sp, 864
 	beqz	$a0, .LBB44_376
 .LBB44_382:
-	ld.d	$a1, $sp, 912
+	ld.d	$a1, $sp, 880
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 920
-	ld.d	$s1, $sp, 928
+	ld.d	$fp, $sp, 888
+	ld.d	$s1, $sp, 896
 	bne	$fp, $s1, .LBB44_386
 .LBB44_383:                             # %_ZSt8_DestroyIPSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EES8_EvT_SA_RSaIT0_E.exit.i263
 	bnez	$fp, .LBB44_395
@@ -40796,10 +40804,10 @@ _ZN2PP11PowerParser12list_vars_ssENSt7__cxx1112basic_stringIcSt11char_traitsIcES
 	jirl	$ra, $ra, 0
 	b	.LBB44_385
 .LBB44_394:                             # %_ZSt8_DestroyIPSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EES8_EvT_SA_RSaIT0_E.exitthread-pre-split.i261
-	ld.d	$fp, $sp, 920
+	ld.d	$fp, $sp, 888
 	beqz	$fp, .LBB44_384
 .LBB44_395:
-	ld.d	$a0, $sp, 936
+	ld.d	$a0, $sp, 904
 	sub.d	$a1, $a0, $fp
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -51971,19 +51979,19 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception43
 # %bb.0:
-	addi.d	$sp, $sp, -944
-	.cfi_def_cfa_offset 944
-	st.d	$ra, $sp, 936                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 928                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 920                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 912                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 904                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 896                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 888                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 880                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 872                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 864                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 856                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -912
+	.cfi_def_cfa_offset 912
+	st.d	$ra, $sp, 904                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 896                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 888                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 880                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 872                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 864                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 856                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 848                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 840                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 832                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 824                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -51998,65 +52006,65 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
 	move	$fp, $a1
 	move	$s0, $a0
-	st.d	$zero, $sp, 840
+	st.d	$zero, $sp, 808
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 824
-	st.d	$zero, $sp, 816
-	vst	$vr0, $sp, 192                  # 16-byte Folded Spill
-	vst	$vr0, $sp, 800
-	addi.d	$s3, $sp, 280
-	st.d	$s3, $sp, 264
+	vst	$vr0, $sp, 792
+	st.d	$zero, $sp, 784
+	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 768
+	addi.d	$s3, $sp, 248
+	st.d	$s3, $sp, 232
 	ori	$a0, $zero, 32
-	st.h	$a0, $sp, 280
+	st.h	$a0, $sp, 248
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 272
+	st.d	$a0, $sp, 240
 .Ltmp2630:                              # EH_LABEL
-	addi.d	$a0, $sp, 800
-	addi.d	$a1, $sp, 264
+	addi.d	$a0, $sp, 768
+	addi.d	$a1, $sp, 232
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2631:                              # EH_LABEL
 # %bb.1:                                # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit
-	ld.d	$a0, $sp, 264
+	ld.d	$a0, $sp, 232
 	beq	$a0, $s3, .LBB70_3
 # %bb.2:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-	ld.d	$a1, $sp, 280
+	ld.d	$a1, $sp, 248
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_3:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
-	st.d	$s3, $sp, 264
+	st.d	$s3, $sp, 232
 	lu12i.w	$a0, 415462
 	ori	$a1, $a0, 2380
-	ld.d	$a0, $sp, 808
-	ld.d	$a2, $sp, 816
-	st.w	$a1, $sp, 280
+	ld.d	$a0, $sp, 776
+	ld.d	$a2, $sp, 784
+	st.w	$a1, $sp, 248
 	ori	$a1, $zero, 4
-	st.d	$a1, $sp, 272
-	st.b	$zero, $sp, 284
+	st.d	$a1, $sp, 240
+	st.b	$zero, $sp, 252
 	beq	$a0, $a2, .LBB70_6
 # %bb.4:
 	addi.d	$a1, $a0, 16
 	st.d	$a1, $a0, 0
-	ld.d	$a2, $sp, 264
+	ld.d	$a2, $sp, 232
 	beq	$a2, $s3, .LBB70_9
 # %bb.5:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i102
 	st.d	$a2, $a0, 0
-	ld.d	$a1, $sp, 280
+	ld.d	$a1, $sp, 248
 	st.d	$a1, $a0, 16
 	b	.LBB70_10
 .LBB70_6:
 .Ltmp2633:                              # EH_LABEL
-	addi.d	$a0, $sp, 800
-	addi.d	$a1, $sp, 264
+	addi.d	$a0, $sp, 768
+	addi.d	$a1, $sp, 232
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2634:                              # EH_LABEL
 # %bb.7:                                # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit105
-	ld.d	$a0, $sp, 264
+	ld.d	$a0, $sp, 232
 	beq	$a0, $s3, .LBB70_11
 # %bb.8:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i106
-	ld.d	$a1, $sp, 280
+	ld.d	$a1, $sp, 248
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -52069,121 +52077,121 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .LBB70_10:                              # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit105.thread
 	ori	$a1, $zero, 4
 	st.d	$a1, $a0, 8
-	st.d	$s3, $sp, 264
-	st.d	$zero, $sp, 272
+	st.d	$s3, $sp, 232
+	st.d	$zero, $sp, 240
 	addi.d	$a0, $a0, 32
-	st.d	$a0, $sp, 808
+	st.d	$a0, $sp, 776
 .LBB70_11:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit108
-	st.d	$s3, $sp, 264
-	ld.d	$a0, $sp, 808
-	ld.d	$a1, $sp, 816
+	st.d	$s3, $sp, 232
+	ld.d	$a0, $sp, 776
+	ld.d	$a1, $sp, 784
 	ori	$a2, $zero, 32
-	st.h	$a2, $sp, 280
+	st.h	$a2, $sp, 248
 	ori	$a2, $zero, 1
-	st.d	$a2, $sp, 272
+	st.d	$a2, $sp, 240
 	beq	$a0, $a1, .LBB70_14
 # %bb.12:
 	addi.d	$a1, $a0, 16
 	st.d	$a1, $a0, 0
-	ld.d	$a2, $sp, 264
+	ld.d	$a2, $sp, 232
 	beq	$a2, $s3, .LBB70_17
 # %bb.13:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i114
 	st.d	$a2, $a0, 0
-	ld.d	$a1, $sp, 280
+	ld.d	$a1, $sp, 248
 	st.d	$a1, $a0, 16
 	b	.LBB70_18
 .LBB70_14:
 .Ltmp2636:                              # EH_LABEL
-	addi.d	$a0, $sp, 800
-	addi.d	$a1, $sp, 264
+	addi.d	$a0, $sp, 768
+	addi.d	$a1, $sp, 232
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2637:                              # EH_LABEL
 # %bb.15:                               # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit117
-	ld.d	$a0, $sp, 264
+	ld.d	$a0, $sp, 232
 	beq	$a0, $s3, .LBB70_19
 # %bb.16:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i118
-	ld.d	$a1, $sp, 280
+	ld.d	$a1, $sp, 248
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	b	.LBB70_19
 .LBB70_17:
-	ld.h	$a2, $sp, 280
+	ld.h	$a2, $sp, 248
 	st.h	$a2, $a1, 0
 .LBB70_18:                              # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit117.thread
 	ori	$a1, $zero, 1
 	st.d	$a1, $a0, 8
-	st.d	$s3, $sp, 264
-	st.d	$zero, $sp, 272
+	st.d	$s3, $sp, 232
+	st.d	$zero, $sp, 240
 	addi.d	$a0, $a0, 32
-	st.d	$a0, $sp, 808
+	st.d	$a0, $sp, 776
 .LBB70_19:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit120
 .Ltmp2639:                              # EH_LABEL
-	addi.d	$a0, $sp, 824
-	addi.d	$a1, $sp, 800
+	addi.d	$a0, $sp, 792
+	addi.d	$a1, $sp, 768
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EE9push_backERKS7_)
 	jirl	$ra, $ra, 0
 .Ltmp2640:                              # EH_LABEL
 # %bb.20:
 	pcalau12i	$a0, %pc_hi20(.LCPI70_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI70_0)
-	st.d	$zero, $sp, 792
-	vld	$vr1, $sp, 192                  # 16-byte Folded Reload
-	vst	$vr1, $sp, 776
-	st.d	$s3, $sp, 264
-	vst	$vr0, $sp, 272
-	st.b	$zero, $sp, 288
+	st.d	$zero, $sp, 760
+	vld	$vr1, $sp, 160                  # 16-byte Folded Reload
+	vst	$vr1, $sp, 744
+	st.d	$s3, $sp, 232
+	vst	$vr0, $sp, 240
+	st.b	$zero, $sp, 256
 .Ltmp2642:                              # EH_LABEL
-	addi.d	$a0, $sp, 776
-	addi.d	$a1, $sp, 264
+	addi.d	$a0, $sp, 744
+	addi.d	$a1, $sp, 232
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2643:                              # EH_LABEL
 # %bb.21:                               # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit129
-	ld.d	$a0, $sp, 264
+	ld.d	$a0, $sp, 232
 	beq	$a0, $s3, .LBB70_23
 # %bb.22:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i130
-	ld.d	$a1, $sp, 280
+	ld.d	$a1, $sp, 248
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_23:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit132
-	st.d	$s3, $sp, 264
+	st.d	$s3, $sp, 232
 	pcalau12i	$a0, %pc_hi20(.L.str.114)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.114)
 	ld.w	$a1, $a0, 0
 	ld.h	$a2, $a0, 4
-	st.w	$a1, $sp, 280
-	ld.d	$a0, $sp, 784
-	ld.d	$a1, $sp, 792
-	st.h	$a2, $sp, 284
+	st.w	$a1, $sp, 248
+	ld.d	$a0, $sp, 752
+	ld.d	$a1, $sp, 760
+	st.h	$a2, $sp, 252
 	ori	$a2, $zero, 6
-	st.d	$a2, $sp, 272
-	st.b	$zero, $sp, 286
+	st.d	$a2, $sp, 240
+	st.b	$zero, $sp, 254
 	beq	$a0, $a1, .LBB70_26
 # %bb.24:
 	addi.d	$a1, $a0, 16
 	st.d	$a1, $a0, 0
-	ld.d	$a2, $sp, 264
+	ld.d	$a2, $sp, 232
 	beq	$a2, $s3, .LBB70_29
 # %bb.25:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i138
 	st.d	$a2, $a0, 0
-	ld.d	$a1, $sp, 280
+	ld.d	$a1, $sp, 248
 	st.d	$a1, $a0, 16
 	b	.LBB70_30
 .LBB70_26:
 .Ltmp2645:                              # EH_LABEL
-	addi.d	$a0, $sp, 776
-	addi.d	$a1, $sp, 264
+	addi.d	$a0, $sp, 744
+	addi.d	$a1, $sp, 232
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2646:                              # EH_LABEL
 # %bb.27:                               # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit141
-	ld.d	$a0, $sp, 264
+	ld.d	$a0, $sp, 232
 	beq	$a0, $s3, .LBB70_31
 # %bb.28:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i142
-	ld.d	$a1, $sp, 280
+	ld.d	$a1, $sp, 248
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -52196,67 +52204,67 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .LBB70_30:                              # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit141.thread
 	ori	$a1, $zero, 6
 	st.d	$a1, $a0, 8
-	st.d	$s3, $sp, 264
-	st.d	$zero, $sp, 272
+	st.d	$s3, $sp, 232
+	st.d	$zero, $sp, 240
 	addi.d	$a0, $a0, 32
-	st.d	$a0, $sp, 784
+	st.d	$a0, $sp, 752
 .LBB70_31:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit144
-	st.d	$s3, $sp, 264
+	st.d	$s3, $sp, 232
 	pcalau12i	$a0, %pc_hi20(.L.str.115)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.115)
 	ld.w	$a1, $a0, 0
 	ld.w	$a2, $a0, 3
-	st.w	$a1, $sp, 280
-	ld.d	$a0, $sp, 784
-	ld.d	$a3, $sp, 792
-	st.w	$a2, $sp, 283
+	st.w	$a1, $sp, 248
+	ld.d	$a0, $sp, 752
+	ld.d	$a3, $sp, 760
+	st.w	$a2, $sp, 251
 	ori	$a1, $zero, 7
-	st.d	$a1, $sp, 272
-	st.b	$zero, $sp, 287
+	st.d	$a1, $sp, 240
+	st.b	$zero, $sp, 255
 	beq	$a0, $a3, .LBB70_33
 # %bb.32:                               # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit153.thread
 	addi.d	$a2, $a0, 16
 	st.d	$a2, $a0, 0
-	ld.d	$a3, $sp, 264
+	ld.d	$a3, $sp, 232
 	xor	$a4, $a3, $s3
 	sltui	$a4, $a4, 1
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a3
 	st.d	$a2, $a0, 0
-	ld.d	$a2, $sp, 280
+	ld.d	$a2, $sp, 248
 	st.d	$a2, $a0, 16
 	st.d	$a1, $a0, 8
-	st.d	$s3, $sp, 264
-	st.d	$zero, $sp, 272
+	st.d	$s3, $sp, 232
+	st.d	$zero, $sp, 240
 	addi.d	$a0, $a0, 32
-	st.d	$a0, $sp, 784
+	st.d	$a0, $sp, 752
 	b	.LBB70_36
 .LBB70_33:
 .Ltmp2648:                              # EH_LABEL
-	addi.d	$a0, $sp, 776
-	addi.d	$a1, $sp, 264
+	addi.d	$a0, $sp, 744
+	addi.d	$a1, $sp, 232
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2649:                              # EH_LABEL
 # %bb.34:                               # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit153
-	ld.d	$a0, $sp, 264
+	ld.d	$a0, $sp, 232
 	beq	$a0, $s3, .LBB70_36
 # %bb.35:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i154
-	ld.d	$a1, $sp, 280
+	ld.d	$a1, $sp, 248
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_36:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit156
 .Ltmp2651:                              # EH_LABEL
-	addi.d	$a0, $sp, 824
-	addi.d	$a1, $sp, 776
+	addi.d	$a0, $sp, 792
+	addi.d	$a1, $sp, 744
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EE9push_backERKS7_)
 	jirl	$ra, $ra, 0
 .Ltmp2652:                              # EH_LABEL
 # %bb.37:
-	ld.d	$a0, $sp, 832
-	ld.d	$a1, $sp, 824
+	ld.d	$a0, $sp, 800
+	ld.d	$a1, $sp, 792
 	sub.d	$a0, $a0, $a1
 	srai.d	$a1, $a0, 3
 	lu12i.w	$a0, -349526
@@ -52296,9 +52304,9 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	mul.w	$a1, $a1, $a4
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $s0, 984
-	st.d	$zero, $sp, 768
-	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
-	vst	$vr0, $sp, 752
+	st.d	$zero, $sp, 736
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 720
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	st.b	$zero, $a1, 0
 	pcalau12i	$a1, %got_pc_hi20(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
@@ -52324,12 +52332,10 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	ori	$a1, $a1, 2579
 	lu32i.d	$a1, -155345
 	lu52i.d	$fp, $a1, -1973
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 160                  # 32-byte Folded Spill
 	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 64                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
 	b	.LBB70_45
 	.p2align	4, , 16
 .LBB70_44:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit294
@@ -52382,7 +52388,7 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .LBB70_49:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit
                                         #   in Loop: Header=BB70_45 Depth=1
 .Ltmp2761:                              # EH_LABEL
-	addi.d	$a0, $sp, 720
+	addi.d	$a0, $sp, 688
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10get_stringB5cxx11Ei)
 	jirl	$ra, $ra, 0
@@ -52408,36 +52414,36 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
                                         #   in Loop: Header=BB70_45 Depth=1
 .Ltmp2764:                              # EH_LABEL
 	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$a0, $sp, 688
+	addi.d	$a0, $sp, 656
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd10get_stringB5cxx11Ei)
 	jirl	$ra, $ra, 0
 .Ltmp2765:                              # EH_LABEL
 # %bb.54:                               #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a0, $sp, 696
+	ld.d	$a0, $sp, 664
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB70_56
 # %bb.55:                               #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a0, $sp, 688
+	ld.d	$a0, $sp, 656
 	ld.bu	$a0, $a0, 0
 	ori	$a1, $zero, 40
 	beq	$a0, $a1, .LBB70_187
 .LBB70_56:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.preheader
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a1, $sp, 760
-	ld.d	$a0, $sp, 752
+	ld.d	$a1, $sp, 728
+	ld.d	$a0, $sp, 720
 	sub.d	$a1, $a1, $a0
 	srli.d	$a1, $a1, 5
 	addi.w	$a2, $a1, 0
 	blez	$a2, .LBB70_65
 # %bb.57:                               # %.lr.ph
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$fp, $sp, 728
+	ld.d	$fp, $sp, 696
 	bstrpick.d	$s0, $a1, 30, 0
 	beqz	$fp, .LBB70_62
 # %bb.58:                               # %.lr.ph.split.preheader
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$s6, $sp, 720
+	ld.d	$s6, $sp, 688
 	addi.d	$s1, $a0, 8
 	b	.LBB70_60
 	.p2align	4, , 16
@@ -52500,7 +52506,7 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	srli.d	$a4, $a2, 4
 	ld.d	$a5, $a1, 32
 	ld.d	$a2, $a1, 16
-	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 176                   # 8-byte Folded Reload
 	mul.d	$a4, $a4, $a6
 	add.d	$a3, $a3, $a4
 	addi.d	$s4, $s4, 1
@@ -52559,11 +52565,11 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	.p2align	4, , 16
 .LBB70_74:                              # %_ZN2PP3Cmd10get_stringB5cxx11Ei.exit.thread
                                         #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a0, $sp, 728
-	addi.d	$a1, $sp, 672
-	st.d	$a1, $sp, 656
-	st.d	$zero, $sp, 664
-	st.b	$zero, $sp, 672
+	ld.d	$a0, $sp, 696
+	addi.d	$a1, $sp, 640
+	st.d	$a1, $sp, 624
+	st.d	$zero, $sp, 632
+	st.b	$zero, $sp, 640
 	bnez	$a0, .LBB70_138
 	b	.LBB70_87
 	.p2align	4, , 16
@@ -52578,27 +52584,27 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	add.d	$a2, $a0, $a1
 .LBB70_77:                              # %_ZNSt5dequeIN2PP4WordESaIS1_EEixEm.exit.i
                                         #   in Loop: Header=BB70_66 Depth=2
-	addi.d	$a0, $sp, 672
-	st.d	$a0, $sp, 656
+	addi.d	$a0, $sp, 640
+	st.d	$a0, $sp, 624
 	ld.d	$fp, $a2, 8
 	ld.d	$s6, $a2, 0
-	st.d	$fp, $sp, 264
+	st.d	$fp, $sp, 232
 	ori	$a1, $zero, 16
 	bltu	$fp, $a1, .LBB70_80
 # %bb.78:                               # %.noexc.i.i.i
                                         #   in Loop: Header=BB70_66 Depth=2
 .Ltmp2784:                              # EH_LABEL
-	addi.d	$a0, $sp, 656
-	addi.d	$a1, $sp, 264
+	addi.d	$a0, $sp, 624
+	addi.d	$a1, $sp, 232
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp2785:                              # EH_LABEL
 # %bb.79:                               # %.noexc182
                                         #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a1, $sp, 264
-	st.d	$a0, $sp, 656
-	st.d	$a1, $sp, 672
+	ld.d	$a1, $sp, 232
+	st.d	$a0, $sp, 624
+	st.d	$a1, $sp, 640
 .LBB70_80:                              # %._crit_edge.i.i.i.i
                                         #   in Loop: Header=BB70_66 Depth=2
 	beqz	$fp, .LBB70_84
@@ -52618,42 +52624,43 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	jirl	$ra, $ra, 0
 .LBB70_84:                              # %_ZN2PP3Cmd10get_stringB5cxx11Ei.exit
                                         #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a0, $sp, 264
-	ld.d	$a1, $sp, 656
-	st.d	$a0, $sp, 664
+	ld.d	$a0, $sp, 232
+	ld.d	$a1, $sp, 624
+	st.d	$a0, $sp, 632
 	stx.b	$zero, $a1, $a0
-	ld.d	$a2, $sp, 664
-	ld.d	$a0, $sp, 728
+	ld.d	$a2, $sp, 632
+	ld.d	$a0, $sp, 696
 	bne	$a0, $a2, .LBB70_138
 # %bb.85:                               #   in Loop: Header=BB70_66 Depth=2
 	beqz	$a2, .LBB70_87
 # %bb.86:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit184
                                         #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a1, $sp, 656
-	ld.d	$a0, $sp, 720
+	ld.d	$a1, $sp, 624
+	ld.d	$a0, $sp, 688
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB70_138
 .LBB70_87:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit184.thread
                                         #   in Loop: Header=BB70_66 Depth=2
-	addi.d	$a0, $sp, 392
+	addi.d	$a0, $sp, 360
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseC2Ev)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt9basic_iosIcSt11char_traitsIcEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVSt9basic_iosIcSt11char_traitsIcEE)
 	addi.d	$a0, $a0, 16
-	st.d	$a0, $sp, 392
-	st.d	$zero, $sp, 608
-	st.h	$zero, $sp, 616
-	addi.d	$a0, $sp, 624
-	xvld	$xr0, $sp, 160                  # 32-byte Folded Reload
-	xvst	$xr0, $a0, 0
-	st.d	$s2, $sp, 264
+	st.d	$a0, $sp, 360
+	st.d	$zero, $sp, 576
+	st.h	$zero, $sp, 584
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
+	addi.d	$a0, $sp, 592
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	st.d	$s2, $sp, 232
 	ld.d	$a0, $s2, -24
-	addi.d	$a1, $sp, 264
+	addi.d	$a1, $sp, 232
 	stx.d	$s8, $a0, $a1
-	ld.d	$a0, $sp, 264
-	st.d	$zero, $sp, 272
+	ld.d	$a0, $sp, 232
+	st.d	$zero, $sp, 240
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $a1, $a0
 .Ltmp2787:                              # EH_LABEL
@@ -52664,11 +52671,11 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 # %bb.88:                               # %.noexc.i185
                                         #   in Loop: Header=BB70_66 Depth=2
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 280
+	st.d	$a0, $sp, 248
 	ld.d	$a0, $a0, -24
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	stx.d	$a1, $s3, $a0
-	ld.d	$a0, $sp, 280
+	ld.d	$a0, $sp, 248
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s3, $a0
 .Ltmp2790:                              # EH_LABEL
@@ -52680,14 +52687,14 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, -24
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	addi.d	$fp, $sp, 264
+	addi.d	$fp, $sp, 232
 	stx.d	$a1, $a0, $fp
 	pcalau12i	$a0, %got_pc_hi20(_ZTVNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	addi.d	$a1, $a0, 24
-	st.d	$a1, $sp, 264
+	st.d	$a1, $sp, 232
 	addi.d	$a1, $a0, 104
-	st.d	$a1, $sp, 392
+	st.d	$a1, $sp, 360
 	addi.d	$a0, $a0, 64
 	vinsgr2vr.d	$vr0, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
@@ -52695,31 +52702,31 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	addi.d	$a0, $a0, 16
 	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	vinsgr2vr.d	$vr0, $a0, 1
-	vst	$vr0, $sp, 280
-	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
-	addi.d	$a0, $sp, 296
+	vst	$vr0, $sp, 248
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
+	addi.d	$a0, $sp, 264
 	vst	$vr0, $a0, 0
-	xvld	$xr0, $sp, 160                  # 32-byte Folded Reload
-	xvst	$xr0, $a0, 16
-	addi.d	$a0, $sp, 344
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	addi.d	$a0, $sp, 312
 	pcaddu18i	$ra, %call36(_ZNSt6localeC1Ev)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(_ZTVNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEEE)
 	addi.d	$a0, $a0, 16
 	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
-	st.d	$a0, $sp, 288
+	st.d	$a0, $sp, 256
 	ori	$a0, $zero, 24
-	st.w	$a0, $sp, 352
-	ld.d	$a0, $sp, 264
-	addi.d	$a1, $sp, 376
-	st.d	$a1, $sp, 360
-	st.d	$zero, $sp, 368
-	st.b	$zero, $sp, 376
+	st.w	$a0, $sp, 320
+	ld.d	$a0, $sp, 232
+	addi.d	$a1, $sp, 344
+	st.d	$a1, $sp, 328
+	st.d	$zero, $sp, 336
+	st.b	$zero, $sp, 344
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 .Ltmp2793:                              # EH_LABEL
-	addi.d	$a1, $sp, 288
+	addi.d	$a1, $sp, 256
 	pcaddu18i	$ra, %call36(_ZNSt9basic_iosIcSt11char_traitsIcEE4initEPSt15basic_streambufIcS1_E)
 	jirl	$ra, $ra, 0
 .Ltmp2794:                              # EH_LABEL
@@ -52729,17 +52736,17 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	bnez	$a0, .LBB70_104
 # %bb.91:                               #   in Loop: Header=BB70_66 Depth=2
 	ld.d	$a0, $s1, 984
-	st.d	$zero, $sp, 256
+	st.d	$zero, $sp, 224
 	ld.d	$a1, $a0, 16
 	ld.d	$a2, $a0, 24
 	sub.d	$a2, $a1, $a2
 	srai.d	$a2, $a2, 4
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 176                   # 8-byte Folded Reload
 	mul.d	$a2, $a2, $a3
 	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	add.d	$a2, $a2, $a3
-	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
-	vst	$vr0, $sp, 240
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 208
 	beqz	$a2, .LBB70_93
 # %bb.92:                               #   in Loop: Header=BB70_66 Depth=2
 	ld.d	$a0, $a0, 40
@@ -52752,22 +52759,22 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .LBB70_94:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit187
                                         #   in Loop: Header=BB70_66 Depth=2
 .Ltmp2796:                              # EH_LABEL
-	addi.d	$a1, $sp, 240
+	addi.d	$a1, $sp, 208
 	move	$a0, $s1
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser11set_dup_rowERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EERNS_3CmdEi)
 	jirl	$ra, $ra, 0
 .Ltmp2797:                              # EH_LABEL
 # %bb.95:                               #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$s0, $sp, 832
-	ld.d	$a0, $sp, 840
+	ld.d	$s0, $sp, 800
+	ld.d	$a0, $sp, 808
 	beq	$s0, $a0, .LBB70_100
 # %bb.96:                               #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a0, $sp, 248
-	ld.d	$a1, $sp, 240
+	ld.d	$a0, $sp, 216
+	ld.d	$a1, $sp, 208
 	sub.d	$fp, $a0, $a1
 	st.d	$zero, $s0, 16
-	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
 	vst	$vr0, $s0, 0
 	beq	$a0, $a1, .LBB70_140
 # %bb.97:                               #   in Loop: Header=BB70_66 Depth=2
@@ -52786,36 +52793,36 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	b	.LBB70_141
 .LBB70_100:                             #   in Loop: Header=BB70_66 Depth=2
 .Ltmp2806:                              # EH_LABEL
-	addi.d	$a0, $sp, 824
-	addi.d	$a1, $sp, 240
+	addi.d	$a0, $sp, 792
+	addi.d	$a1, $sp, 208
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EE17_M_realloc_appendIJRKS7_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2807:                              # EH_LABEL
 # %bb.101:                              # %_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EE9push_backERKS7_.exit
                                         #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a0, $sp, 240
-	ld.d	$fp, $sp, 248
+	ld.d	$a0, $sp, 208
+	ld.d	$fp, $sp, 216
 	bne	$a0, $fp, .LBB70_143
 .LBB70_102:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exit.i
                                         #   in Loop: Header=BB70_66 Depth=2
 	beqz	$a0, .LBB70_104
 .LBB70_103:                             #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a1, $sp, 256
+	ld.d	$a1, $sp, 224
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_104:                             #   in Loop: Header=BB70_66 Depth=2
 	ld.d	$a0, $s1, 984
-	st.d	$zero, $sp, 256
+	st.d	$zero, $sp, 224
 	ld.d	$a1, $a0, 16
 	ld.d	$a2, $a0, 24
 	sub.d	$a2, $a1, $a2
 	srai.d	$a2, $a2, 4
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 176                   # 8-byte Folded Reload
 	mul.d	$a2, $a2, $a3
 	add.d	$a2, $a2, $s4
-	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
-	vst	$vr0, $sp, 240
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 208
 	beqz	$a2, .LBB70_106
 # %bb.105:                              #   in Loop: Header=BB70_66 Depth=2
 	ld.d	$a0, $a0, 40
@@ -52829,22 +52836,22 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .LBB70_107:                             # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit196
                                         #   in Loop: Header=BB70_66 Depth=2
 .Ltmp2809:                              # EH_LABEL
-	addi.d	$a1, $sp, 240
+	addi.d	$a1, $sp, 208
 	move	$a0, $s1
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser11set_dup_rowERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EERNS_3CmdEi)
 	jirl	$ra, $ra, 0
 .Ltmp2810:                              # EH_LABEL
 # %bb.108:                              #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$s5, $sp, 832
-	ld.d	$a0, $sp, 840
+	ld.d	$s5, $sp, 800
+	ld.d	$a0, $sp, 808
 	beq	$s5, $a0, .LBB70_113
 # %bb.109:                              #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a0, $sp, 248
-	ld.d	$a1, $sp, 240
+	ld.d	$a0, $sp, 216
+	ld.d	$a1, $sp, 208
 	sub.d	$fp, $a0, $a1
 	st.d	$zero, $s5, 16
-	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
 	vst	$vr0, $s5, 0
 	beq	$a0, $a1, .LBB70_114
 # %bb.110:                              #   in Loop: Header=BB70_66 Depth=2
@@ -52863,8 +52870,8 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	b	.LBB70_115
 .LBB70_113:                             #   in Loop: Header=BB70_66 Depth=2
 .Ltmp2827:                              # EH_LABEL
-	addi.d	$a0, $sp, 824
-	addi.d	$a1, $sp, 240
+	addi.d	$a0, $sp, 792
+	addi.d	$a1, $sp, 208
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EE17_M_realloc_appendIJRKS7_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2828:                              # EH_LABEL
@@ -52875,8 +52882,8 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
                                         #   in Loop: Header=BB70_66 Depth=2
 	st.d	$s6, $s5, 0
 	st.d	$s6, $s5, 8
-	ld.d	$s0, $sp, 240
-	ld.d	$s2, $sp, 248
+	ld.d	$s0, $sp, 208
+	ld.d	$s2, $sp, 216
 	add.d	$a0, $s6, $fp
 	st.d	$a0, $s5, 16
 	beq	$s0, $s2, .LBB70_126
@@ -52891,7 +52898,7 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB70_118:                             #   in Loop: Header=BB70_119 Depth=3
-	ld.d	$a0, $sp, 848
+	ld.d	$a0, $sp, 816
 	ldx.d	$a1, $s6, $s3
 	st.d	$a0, $s7, 8
 	stx.b	$zero, $a1, $a0
@@ -52908,13 +52915,13 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	stx.d	$a0, $s6, $s3
 	ld.d	$s8, $s1, 8
 	ldx.d	$fp, $s0, $s3
-	st.d	$s8, $sp, 848
+	st.d	$s8, $sp, 816
 	ori	$a1, $zero, 16
 	bltu	$s8, $a1, .LBB70_122
 # %bb.120:                              # %.noexc.i.i.i416
                                         #   in Loop: Header=BB70_119 Depth=3
 .Ltmp2816:                              # EH_LABEL
-	addi.d	$a1, $sp, 848
+	addi.d	$a1, $sp, 816
 	move	$a0, $s7
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
@@ -52922,7 +52929,7 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .Ltmp2817:                              # EH_LABEL
 # %bb.121:                              # %.noexc.i417
                                         #   in Loop: Header=BB70_119 Depth=3
-	ld.d	$a1, $sp, 848
+	ld.d	$a1, $sp, 816
 	st.d	$a0, $s7, 0
 	st.d	$a1, $s7, 16
 .LBB70_122:                             # %._crit_edge.i.i.i.i414
@@ -52940,19 +52947,19 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
                                         #   in Loop: Header=BB70_66 Depth=2
 	add.d	$s6, $s6, $s3
 	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
-	addi.d	$s3, $sp, 280
+	addi.d	$s3, $sp, 248
 	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
 .LBB70_126:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EEC2ERKS7_.exit.i202
                                         #   in Loop: Header=BB70_66 Depth=2
 	st.d	$s6, $s5, 8
-	ld.d	$a0, $sp, 832
+	ld.d	$a0, $sp, 800
 	addi.d	$a0, $a0, 24
-	st.d	$a0, $sp, 832
+	st.d	$a0, $sp, 800
 	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
 .LBB70_127:                             # %_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EE9push_backERKS7_.exit209
                                         #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a0, $sp, 240
-	ld.d	$fp, $sp, 248
+	ld.d	$a0, $sp, 208
+	ld.d	$fp, $sp, 216
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	ori	$a2, $zero, 1
 	st.b	$a2, $a1, 0
@@ -52983,60 +52990,60 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	.p2align	4, , 16
 .LBB70_132:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exitthread-pre-split.i216
                                         #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a0, $sp, 240
+	ld.d	$a0, $sp, 208
 .LBB70_133:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exit.i218
                                         #   in Loop: Header=BB70_66 Depth=2
 	beqz	$a0, .LBB70_135
 # %bb.134:                              #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a1, $sp, 256
+	ld.d	$a1, $sp, 224
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_135:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev.exit221
                                         #   in Loop: Header=BB70_66 Depth=2
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 264
+	st.d	$a0, $sp, 232
 	ld.d	$a0, $a0, -24
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	addi.d	$a2, $sp, 264
+	addi.d	$a2, $sp, 232
 	stx.d	$a1, $a0, $a2
-	ld.d	$a0, $sp, 360
+	ld.d	$a0, $sp, 328
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	st.d	$a1, $sp, 280
+	st.d	$a1, $sp, 248
 	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
-	st.d	$a1, $sp, 288
-	addi.d	$a1, $sp, 376
+	st.d	$a1, $sp, 256
+	addi.d	$a1, $sp, 344
 	beq	$a0, $a1, .LBB70_137
 # %bb.136:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
                                         #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a1, $sp, 376
+	ld.d	$a1, $sp, 344
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_137:                             # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
                                         #   in Loop: Header=BB70_66 Depth=2
 	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 288
-	addi.d	$a0, $sp, 344
+	st.d	$a0, $sp, 256
+	addi.d	$a0, $sp, 312
 	pcaddu18i	$ra, %call36(_ZNSt6localeD1Ev)
 	jirl	$ra, $ra, 0
-	st.d	$s2, $sp, 264
+	st.d	$s2, $sp, 232
 	ld.d	$a0, $s2, -24
-	addi.d	$a1, $sp, 264
+	addi.d	$a1, $sp, 232
 	stx.d	$s8, $a0, $a1
-	st.d	$zero, $sp, 272
-	addi.d	$a0, $sp, 392
+	st.d	$zero, $sp, 240
+	addi.d	$a0, $sp, 360
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
 	ori	$s7, $zero, 1
 .LBB70_138:                             # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit184.thread523
                                         #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a0, $sp, 656
-	addi.d	$a1, $sp, 672
+	ld.d	$a0, $sp, 624
+	addi.d	$a1, $sp, 640
 	beq	$a0, $a1, .LBB70_66
 # %bb.139:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i225
                                         #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a1, $sp, 672
+	ld.d	$a1, $sp, 640
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -53047,8 +53054,8 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
                                         #   in Loop: Header=BB70_66 Depth=2
 	st.d	$a2, $s0, 0
 	st.d	$a2, $s0, 8
-	ld.d	$a0, $sp, 240
-	ld.d	$a1, $sp, 248
+	ld.d	$a0, $sp, 208
+	ld.d	$a1, $sp, 216
 	add.d	$a3, $a2, $fp
 	st.d	$a3, $s0, 16
 .Ltmp2803:                              # EH_LABEL
@@ -53058,11 +53065,11 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 # %bb.142:                              # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EEC2ERKS7_.exit.i
                                         #   in Loop: Header=BB70_66 Depth=2
 	st.d	$a0, $s0, 8
-	ld.d	$a0, $sp, 832
+	ld.d	$a0, $sp, 800
 	addi.d	$a0, $a0, 24
-	st.d	$a0, $sp, 832
-	ld.d	$a0, $sp, 240
-	ld.d	$fp, $sp, 248
+	st.d	$a0, $sp, 800
+	ld.d	$a0, $sp, 208
+	ld.d	$fp, $sp, 216
 	beq	$a0, $fp, .LBB70_102
 .LBB70_143:                             # %.lr.ph.i.i.i.preheader
                                         #   in Loop: Header=BB70_66 Depth=2
@@ -53089,7 +53096,7 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	b	.LBB70_144
 .LBB70_147:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exitthread-pre-split.i
                                         #   in Loop: Header=BB70_66 Depth=2
-	ld.d	$a0, $sp, 240
+	ld.d	$a0, $sp, 208
 	bnez	$a0, .LBB70_103
 	b	.LBB70_104
 	.p2align	4, , 16
@@ -53098,22 +53105,22 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a0, .LBB70_187
 # %bb.149:                              #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$s6, $sp, 760
-	ld.d	$a0, $sp, 768
+	ld.d	$s6, $sp, 728
+	ld.d	$a0, $sp, 736
 	beq	$s6, $a0, .LBB70_156
 # %bb.150:                              #   in Loop: Header=BB70_45 Depth=1
 	addi.d	$a0, $s6, 16
 	st.d	$a0, $s6, 0
-	ld.d	$fp, $sp, 728
-	ld.d	$s7, $sp, 720
-	st.d	$fp, $sp, 264
+	ld.d	$fp, $sp, 696
+	ld.d	$s7, $sp, 688
+	st.d	$fp, $sp, 232
 	ori	$a1, $zero, 16
 	ori	$s0, $zero, 32
 	bltu	$fp, $a1, .LBB70_153
 # %bb.151:                              # %.noexc.i.i
                                         #   in Loop: Header=BB70_45 Depth=1
 .Ltmp2767:                              # EH_LABEL
-	addi.d	$a1, $sp, 264
+	addi.d	$a1, $sp, 232
 	move	$a0, $s6
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
@@ -53122,7 +53129,7 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 # %bb.152:                              # %.noexc230
                                         #   in Loop: Header=BB70_45 Depth=1
 	st.d	$a0, $s6, 0
-	ld.d	$a1, $sp, 264
+	ld.d	$a1, $sp, 232
 	st.d	$a1, $s6, 16
 .LBB70_153:                             # %._crit_edge.i.i.i229
                                         #   in Loop: Header=BB70_45 Depth=1
@@ -53137,8 +53144,8 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	b	.LBB70_158
 .LBB70_156:                             #   in Loop: Header=BB70_45 Depth=1
 .Ltmp2769:                              # EH_LABEL
-	addi.d	$a0, $sp, 752
-	addi.d	$a1, $sp, 720
+	addi.d	$a0, $sp, 720
+	addi.d	$a1, $sp, 688
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJRKS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2770:                              # EH_LABEL
@@ -53151,146 +53158,146 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	jirl	$ra, $ra, 0
 .LBB70_158:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a0, $sp, 264
+	ld.d	$a0, $sp, 232
 	ld.d	$a1, $s6, 0
 	st.d	$a0, $s6, 8
 	stx.b	$zero, $a1, $a0
-	ld.d	$a0, $sp, 760
+	ld.d	$a0, $sp, 728
 	addi.d	$a0, $a0, 32
-	st.d	$a0, $sp, 760
+	st.d	$a0, $sp, 728
 .LBB70_159:                             #   in Loop: Header=BB70_45 Depth=1
-	st.d	$zero, $sp, 672
-	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
-	vst	$vr0, $sp, 656
-	st.d	$s3, $sp, 264
-	st.h	$s0, $sp, 280
+	st.d	$zero, $sp, 640
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 624
+	st.d	$s3, $sp, 232
+	st.h	$s0, $sp, 248
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 272
+	st.d	$a0, $sp, 240
 .Ltmp2772:                              # EH_LABEL
-	addi.d	$a0, $sp, 656
-	addi.d	$a1, $sp, 264
+	addi.d	$a0, $sp, 624
+	addi.d	$a1, $sp, 232
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2773:                              # EH_LABEL
 # %bb.160:                              # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit240
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a0, $sp, 264
+	ld.d	$a0, $sp, 232
 	beq	$a0, $s3, .LBB70_162
 # %bb.161:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i241
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a1, $sp, 280
+	ld.d	$a1, $sp, 248
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_162:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit243
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a0, $sp, 664
-	ld.d	$a1, $sp, 672
-	st.d	$s3, $sp, 264
-	st.h	$s0, $sp, 280
+	ld.d	$a0, $sp, 632
+	ld.d	$a1, $sp, 640
+	st.d	$s3, $sp, 232
+	st.h	$s0, $sp, 248
 	ori	$a2, $zero, 1
-	st.d	$a2, $sp, 272
+	st.d	$a2, $sp, 240
 	beq	$a0, $a1, .LBB70_165
 # %bb.163:                              #   in Loop: Header=BB70_45 Depth=1
 	addi.d	$a1, $a0, 16
 	st.d	$a1, $a0, 0
-	ld.d	$a2, $sp, 264
+	ld.d	$a2, $sp, 232
 	beq	$a2, $s3, .LBB70_168
 # %bb.164:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i249
                                         #   in Loop: Header=BB70_45 Depth=1
 	st.d	$a2, $a0, 0
-	ld.d	$a1, $sp, 280
+	ld.d	$a1, $sp, 248
 	st.d	$a1, $a0, 16
 	b	.LBB70_169
 .LBB70_165:                             #   in Loop: Header=BB70_45 Depth=1
 .Ltmp2775:                              # EH_LABEL
-	addi.d	$a0, $sp, 656
-	addi.d	$a1, $sp, 264
+	addi.d	$a0, $sp, 624
+	addi.d	$a1, $sp, 232
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2776:                              # EH_LABEL
 # %bb.166:                              # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit252
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a0, $sp, 264
+	ld.d	$a0, $sp, 232
 	beq	$a0, $s3, .LBB70_170
 # %bb.167:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i253
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a1, $sp, 280
+	ld.d	$a1, $sp, 248
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	b	.LBB70_170
 .LBB70_168:                             #   in Loop: Header=BB70_45 Depth=1
-	ld.h	$a2, $sp, 280
+	ld.h	$a2, $sp, 248
 	st.h	$a2, $a1, 0
 .LBB70_169:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit252.thread
                                         #   in Loop: Header=BB70_45 Depth=1
 	ori	$a1, $zero, 1
 	st.d	$a1, $a0, 8
-	st.d	$s3, $sp, 264
-	st.d	$zero, $sp, 272
+	st.d	$s3, $sp, 232
+	st.d	$zero, $sp, 240
 	addi.d	$a0, $a0, 32
-	st.d	$a0, $sp, 664
+	st.d	$a0, $sp, 632
 .LBB70_170:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit255
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a0, $sp, 664
-	ld.d	$a1, $sp, 672
-	st.d	$s3, $sp, 264
-	st.h	$s0, $sp, 280
+	ld.d	$a0, $sp, 632
+	ld.d	$a1, $sp, 640
+	st.d	$s3, $sp, 232
+	st.h	$s0, $sp, 248
 	ori	$a2, $zero, 1
-	st.d	$a2, $sp, 272
+	st.d	$a2, $sp, 240
 	beq	$a0, $a1, .LBB70_173
 # %bb.171:                              #   in Loop: Header=BB70_45 Depth=1
 	addi.d	$a1, $a0, 16
 	st.d	$a1, $a0, 0
-	ld.d	$a2, $sp, 264
+	ld.d	$a2, $sp, 232
 	beq	$a2, $s3, .LBB70_176
 # %bb.172:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i261
                                         #   in Loop: Header=BB70_45 Depth=1
 	st.d	$a2, $a0, 0
-	ld.d	$a1, $sp, 280
+	ld.d	$a1, $sp, 248
 	st.d	$a1, $a0, 16
 	b	.LBB70_177
 .LBB70_173:                             #   in Loop: Header=BB70_45 Depth=1
 .Ltmp2778:                              # EH_LABEL
-	addi.d	$a0, $sp, 656
-	addi.d	$a1, $sp, 264
+	addi.d	$a0, $sp, 624
+	addi.d	$a1, $sp, 232
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_appendIJS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2779:                              # EH_LABEL
 # %bb.174:                              # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit264
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a0, $sp, 264
+	ld.d	$a0, $sp, 232
 	beq	$a0, $s3, .LBB70_178
 # %bb.175:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i265
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a1, $sp, 280
+	ld.d	$a1, $sp, 248
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	b	.LBB70_178
 .LBB70_176:                             #   in Loop: Header=BB70_45 Depth=1
-	ld.h	$a2, $sp, 280
+	ld.h	$a2, $sp, 248
 	st.h	$a2, $a1, 0
 .LBB70_177:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backEOS5_.exit264.thread
                                         #   in Loop: Header=BB70_45 Depth=1
 	ori	$a1, $zero, 1
 	st.d	$a1, $a0, 8
-	st.d	$s3, $sp, 264
-	st.d	$zero, $sp, 272
+	st.d	$s3, $sp, 232
+	st.d	$zero, $sp, 240
 	addi.d	$a0, $a0, 32
-	st.d	$a0, $sp, 664
+	st.d	$a0, $sp, 632
 .LBB70_178:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit267
                                         #   in Loop: Header=BB70_45 Depth=1
 .Ltmp2781:                              # EH_LABEL
-	addi.d	$a0, $sp, 824
-	addi.d	$a1, $sp, 656
+	addi.d	$a0, $sp, 792
+	addi.d	$a1, $sp, 624
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EE9push_backERKS7_)
 	jirl	$ra, $ra, 0
 .Ltmp2782:                              # EH_LABEL
 # %bb.179:                              #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a0, $sp, 656
-	ld.d	$fp, $sp, 664
+	ld.d	$a0, $sp, 624
+	ld.d	$fp, $sp, 632
 	beq	$a0, $fp, .LBB70_185
 # %bb.180:                              # %.lr.ph.i.i.i269.preheader
                                         #   in Loop: Header=BB70_45 Depth=1
@@ -53316,37 +53323,37 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	b	.LBB70_181
 .LBB70_184:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exitthread-pre-split.i274
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a0, $sp, 656
+	ld.d	$a0, $sp, 624
 .LBB70_185:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exit.i276
                                         #   in Loop: Header=BB70_45 Depth=1
 	beqz	$a0, .LBB70_187
 # %bb.186:                              #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a1, $sp, 672
+	ld.d	$a1, $sp, 640
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	.p2align	4, , 16
 .LBB70_187:                             # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a0, $sp, 688
-	addi.d	$a1, $sp, 704
+	ld.d	$a0, $sp, 656
+	addi.d	$a1, $sp, 672
 	beq	$a0, $a1, .LBB70_189
 # %bb.188:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i289
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a1, $sp, 704
+	ld.d	$a1, $sp, 672
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_189:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit291
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a0, $sp, 720
-	addi.d	$a1, $sp, 736
+	ld.d	$a0, $sp, 688
+	addi.d	$a1, $sp, 704
 	ld.d	$s0, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB70_44
 # %bb.190:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i292
                                         #   in Loop: Header=BB70_45 Depth=1
-	ld.d	$a1, $sp, 736
+	ld.d	$a1, $sp, 704
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -53722,7 +53729,7 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .Ltmp2723:                              # EH_LABEL
 # %bb.252:                              # %_ZNSolsEPFRSoS_E.exit326
 .Ltmp2724:                              # EH_LABEL
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 232
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEC1Ev)
 	jirl	$ra, $ra, 0
 .Ltmp2725:                              # EH_LABEL
@@ -53732,17 +53739,17 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	ori	$a1, $zero, 1
 	andn	$a1, $a1, $a0
 .Ltmp2727:                              # EH_LABEL
-	addi.d	$a0, $sp, 688
+	addi.d	$a0, $sp, 656
 	pcaddu18i	$ra, %call36(_ZN2PP12Parser_utilsC1Ei)
 	jirl	$ra, $ra, 0
 .Ltmp2728:                              # EH_LABEL
 # %bb.254:
-	ld.d	$s3, $sp, 832
-	ld.d	$s1, $sp, 824
+	ld.d	$s3, $sp, 800
+	ld.d	$s1, $sp, 792
 	sub.d	$fp, $s3, $s1
-	st.d	$zero, $sp, 216
-	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
-	vst	$vr0, $sp, 224
+	st.d	$zero, $sp, 184
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 192
 	beq	$s3, $s1, .LBB70_258
 # %bb.255:
 	srai.d	$a0, $fp, 3
@@ -53765,10 +53772,10 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .LBB70_258:
 	move	$a2, $zero
 .LBB70_259:                             # %.noexc331
-	st.d	$a2, $sp, 216
-	st.d	$a2, $sp, 224
+	st.d	$a2, $sp, 184
+	st.d	$a2, $sp, 192
 	add.d	$a0, $a2, $fp
-	st.d	$a0, $sp, 232
+	st.d	$a0, $sp, 200
 .Ltmp2734:                              # EH_LABEL
 	move	$a0, $s1
 	move	$a1, $s3
@@ -53776,49 +53783,49 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	jirl	$ra, $ra, 0
 .Ltmp2735:                              # EH_LABEL
 # %bb.260:
-	st.d	$a0, $sp, 224
+	st.d	$a0, $sp, 192
 .Ltmp2737:                              # EH_LABEL
-	addi.d	$a0, $sp, 688
-	addi.d	$a1, $sp, 216
+	addi.d	$a0, $sp, 656
+	addi.d	$a1, $sp, 184
 	ori	$a3, $zero, 4
 	ori	$a4, $zero, 3
 	ori	$a5, $zero, 80
-	addi.d	$a6, $sp, 264
+	addi.d	$a6, $sp, 232
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP12Parser_utils13print_stringsESt6vectorIS1_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EESaIS9_EEiiiiRNS2_18basic_stringstreamIcS5_S6_EE)
 	jirl	$ra, $ra, 0
 .Ltmp2738:                              # EH_LABEL
 # %bb.261:
-	ld.d	$fp, $sp, 216
-	ld.d	$s0, $sp, 224
+	ld.d	$fp, $sp, 184
+	ld.d	$s0, $sp, 192
 	bne	$fp, $s0, .LBB70_268
 # %bb.262:                              # %_ZSt8_DestroyIPSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EES8_EvT_SA_RSaIT0_E.exit.i
 	beqz	$fp, .LBB70_264
 .LBB70_263:
-	ld.d	$a0, $sp, 232
+	ld.d	$a0, $sp, 200
 	sub.d	$a1, $a0, $fp
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_264:                             # %_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EED2Ev.exit
-	ld.d	$a0, $sp, 328
-	addi.d	$a1, $sp, 736
-	st.d	$a1, $sp, 720
-	st.d	$zero, $sp, 728
-	st.b	$zero, $sp, 736
+	ld.d	$a0, $sp, 296
+	addi.d	$a1, $sp, 704
+	st.d	$a1, $sp, 688
+	st.d	$zero, $sp, 696
+	st.b	$zero, $sp, 704
 	beqz	$a0, .LBB70_277
 # %bb.265:                              # %_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EED2Ev.exit
-	ld.d	$a1, $sp, 312
+	ld.d	$a1, $sp, 280
 	sltu	$a2, $a1, $a0
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
 	or	$a0, $a0, $a1
 	beqz	$a0, .LBB70_277
 # %bb.266:
-	ld.d	$a3, $sp, 320
+	ld.d	$a3, $sp, 288
 	sub.d	$a4, $a0, $a3
 .Ltmp2740:                              # EH_LABEL
-	addi.d	$a0, $sp, 720
+	addi.d	$a0, $sp, 688
 	move	$a1, $zero
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEmmPKcm)
@@ -53873,19 +53880,19 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	jirl	$ra, $ra, 0
 	b	.LBB70_267
 .LBB70_276:                             # %_ZSt8_DestroyIPSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EES8_EvT_SA_RSaIT0_E.exitthread-pre-split.i
-	ld.d	$fp, $sp, 216
+	ld.d	$fp, $sp, 184
 	bnez	$fp, .LBB70_263
 	b	.LBB70_264
 .LBB70_277:
-	addi.d	$a1, $sp, 360
+	addi.d	$a1, $sp, 328
 .Ltmp2742:                              # EH_LABEL
-	addi.d	$a0, $sp, 720
+	addi.d	$a0, $sp, 688
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_assignERKS4_)
 	jirl	$ra, $ra, 0
 .Ltmp2743:                              # EH_LABEL
 .LBB70_278:                             # %_ZNKSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEE3strEv.exit
-	ld.d	$a1, $sp, 720
-	ld.d	$a2, $sp, 728
+	ld.d	$a1, $sp, 688
+	ld.d	$a2, $sp, 696
 .Ltmp2745:                              # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cout)
@@ -53932,32 +53939,32 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	jirl	$ra, $ra, 0
 .Ltmp2754:                              # EH_LABEL
 # %bb.286:                              # %_ZNSolsEPFRSoS_E.exit346
-	ld.d	$a0, $sp, 720
-	addi.d	$a1, $sp, 736
+	ld.d	$a0, $sp, 688
+	addi.d	$a1, $sp, 704
 	beq	$a0, $a1, .LBB70_288
 # %bb.287:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i347
-	ld.d	$a1, $sp, 736
+	ld.d	$a1, $sp, 704
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_288:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit349
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 264
+	st.d	$a0, $sp, 232
 	ld.d	$a0, $a0, -24
-	addi.d	$fp, $sp, 264
+	addi.d	$fp, $sp, 232
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	stx.d	$a1, $a0, $fp
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 280
+	st.d	$a0, $sp, 248
 	pcalau12i	$a0, %got_pc_hi20(_ZTVNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a1, $a0, %got_pc_lo12(_ZTVNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEEE)
-	ld.d	$a0, $sp, 360
+	ld.d	$a0, $sp, 328
 	addi.d	$a1, $a1, 16
-	st.d	$a1, $sp, 288
-	addi.d	$a1, $sp, 376
+	st.d	$a1, $sp, 256
+	addi.d	$a1, $sp, 344
 	beq	$a0, $a1, .LBB70_290
 # %bb.289:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i350
-	ld.d	$a1, $sp, 376
+	ld.d	$a1, $sp, 344
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -53965,20 +53972,20 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	addi.d	$a0, $a0, 16
-	st.d	$a0, $sp, 288
-	addi.d	$a0, $sp, 344
+	st.d	$a0, $sp, 256
+	addi.d	$a0, $sp, 312
 	pcaddu18i	$ra, %call36(_ZNSt6localeD1Ev)
 	jirl	$ra, $ra, 0
-	st.d	$s2, $sp, 264
+	st.d	$s2, $sp, 232
 	ld.d	$a0, $s2, -24
 	stx.d	$s8, $a0, $fp
-	st.d	$zero, $sp, 272
-	addi.d	$a0, $sp, 392
+	st.d	$zero, $sp, 240
+	addi.d	$a0, $sp, 360
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
 .LBB70_291:
-	ld.d	$a0, $sp, 752
-	ld.d	$fp, $sp, 760
+	ld.d	$a0, $sp, 720
+	ld.d	$fp, $sp, 728
 	beq	$a0, $fp, .LBB70_297
 # %bb.292:                              # %.lr.ph.i.i.i357.preheader
 	addi.d	$s0, $a0, 16
@@ -54001,17 +54008,17 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	jirl	$ra, $ra, 0
 	b	.LBB70_293
 .LBB70_296:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exitthread-pre-split.i362
-	ld.d	$a0, $sp, 752
+	ld.d	$a0, $sp, 720
 .LBB70_297:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exit.i364
 	beqz	$a0, .LBB70_299
 # %bb.298:
-	ld.d	$a1, $sp, 768
+	ld.d	$a1, $sp, 736
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_299:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev.exit367
-	ld.d	$a0, $sp, 776
-	ld.d	$fp, $sp, 784
+	ld.d	$a0, $sp, 744
+	ld.d	$fp, $sp, 752
 	beq	$a0, $fp, .LBB70_305
 # %bb.300:                              # %.lr.ph.i.i.i369.preheader
 	addi.d	$s0, $a0, 16
@@ -54034,17 +54041,17 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	jirl	$ra, $ra, 0
 	b	.LBB70_301
 .LBB70_304:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exitthread-pre-split.i374
-	ld.d	$a0, $sp, 776
+	ld.d	$a0, $sp, 744
 .LBB70_305:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exit.i376
 	beqz	$a0, .LBB70_307
 # %bb.306:
-	ld.d	$a1, $sp, 792
+	ld.d	$a1, $sp, 760
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_307:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev.exit379
-	ld.d	$a0, $sp, 800
-	ld.d	$fp, $sp, 808
+	ld.d	$a0, $sp, 768
+	ld.d	$fp, $sp, 776
 	beq	$a0, $fp, .LBB70_313
 # %bb.308:                              # %.lr.ph.i.i.i381.preheader
 	addi.d	$s0, $a0, 16
@@ -54067,39 +54074,39 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	jirl	$ra, $ra, 0
 	b	.LBB70_309
 .LBB70_312:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exitthread-pre-split.i386
-	ld.d	$a0, $sp, 800
+	ld.d	$a0, $sp, 768
 .LBB70_313:                             # %_ZSt8_DestroyIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EvT_S7_RSaIT0_E.exit.i388
 	beqz	$a0, .LBB70_315
 # %bb.314:
-	ld.d	$a1, $sp, 816
+	ld.d	$a1, $sp, 784
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_315:                             # %_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev.exit391
-	ld.d	$fp, $sp, 824
-	ld.d	$s0, $sp, 832
+	ld.d	$fp, $sp, 792
+	ld.d	$s0, $sp, 800
 	bne	$fp, $s0, .LBB70_320
 # %bb.316:                              # %_ZSt8_DestroyIPSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EES8_EvT_SA_RSaIT0_E.exit.i409
 	beqz	$fp, .LBB70_318
 .LBB70_317:
-	ld.d	$a0, $sp, 840
+	ld.d	$a0, $sp, 808
 	sub.d	$a1, $a0, $fp
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_318:                             # %_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EED2Ev.exit413
-	ld.d	$s8, $sp, 856                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 864                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 872                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 880                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 888                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 896                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 904                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 912                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 920                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 928                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 936                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 944
+	ld.d	$s8, $sp, 824                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 832                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 840                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 848                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 856                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 864                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 872                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 880                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 888                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 896                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 904                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 912
 	ret
 	.p2align	4, , 16
 .LBB70_319:                             # %_ZSt8_DestroyISt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EEEvPT_.exit.i.i.i405
@@ -54148,7 +54155,7 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	jirl	$ra, $ra, 0
 	b	.LBB70_319
 .LBB70_328:                             # %_ZSt8_DestroyIPSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EES8_EvT_SA_RSaIT0_E.exitthread-pre-split.i407
-	ld.d	$fp, $sp, 824
+	ld.d	$fp, $sp, 792
 	bnez	$fp, .LBB70_317
 	b	.LBB70_318
 .LBB70_329:                             # %.noexc.i.i.i203
@@ -54187,17 +54194,17 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .LBB70_340:
 .Ltmp2739:                              # EH_LABEL
 	move	$fp, $a0
-	addi.d	$a0, $sp, 216
+	addi.d	$a0, $sp, 184
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EED2Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB70_375
 .LBB70_341:
 .Ltmp2736:                              # EH_LABEL
-	ld.d	$a2, $sp, 216
+	ld.d	$a2, $sp, 184
 	move	$fp, $a0
 	beqz	$a2, .LBB70_375
 # %bb.342:
-	ld.d	$a0, $sp, 232
+	ld.d	$a0, $sp, 200
 	sub.d	$a1, $a0, $a2
 	b	.LBB70_359
 .LBB70_343:
@@ -54222,11 +54229,11 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .LBB70_349:
 .Ltmp2644:                              # EH_LABEL
 .LBB70_350:
-	ld.d	$a2, $sp, 264
+	ld.d	$a2, $sp, 232
 	move	$fp, $a0
 	beq	$a2, $s3, .LBB70_401
 # %bb.351:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i166
-	ld.d	$a0, $sp, 280
+	ld.d	$a0, $sp, 248
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -54239,11 +54246,11 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .LBB70_353:
 .Ltmp2632:                              # EH_LABEL
 .LBB70_354:
-	ld.d	$a2, $sp, 264
+	ld.d	$a2, $sp, 232
 	move	$fp, $a0
 	beq	$a2, $s3, .LBB70_402
 # %bb.355:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i157
-	ld.d	$a0, $sp, 280
+	ld.d	$a0, $sp, 248
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -54252,12 +54259,12 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .LBB70_356:
 .Ltmp2757:                              # EH_LABEL
 .LBB70_357:
-	ld.d	$a2, $sp, 720
+	ld.d	$a2, $sp, 688
 	move	$fp, $a0
-	addi.d	$a0, $sp, 736
+	addi.d	$a0, $sp, 704
 	beq	$a2, $a0, .LBB70_375
 # %bb.358:                              # %.body342.sink.split
-	ld.d	$a0, $sp, 736
+	ld.d	$a0, $sp, 704
 	addi.d	$a1, $a0, 1
 .LBB70_359:                             # %.body332
 	move	$a0, $a2
@@ -54279,11 +54286,11 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .LBB70_364:
 .Ltmp2774:                              # EH_LABEL
 .LBB70_365:
-	ld.d	$a2, $sp, 264
+	ld.d	$a2, $sp, 232
 	move	$fp, $a0
 	beq	$a2, $s3, .LBB70_368
 # %bb.366:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i280
-	ld.d	$a0, $sp, 280
+	ld.d	$a0, $sp, 248
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -54293,11 +54300,11 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .Ltmp2783:                              # EH_LABEL
 	move	$fp, $a0
 .LBB70_368:
-	addi.d	$a0, $sp, 656
+	addi.d	$a0, $sp, 624
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 688
-	addi.d	$a1, $sp, 704
+	ld.d	$a0, $sp, 656
+	addi.d	$a1, $sp, 672
 	beq	$a0, $a1, .LBB70_398
 	b	.LBB70_404
 .LBB70_369:
@@ -54308,8 +54315,8 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .LBB70_371:
 .Ltmp2766:                              # EH_LABEL
 	move	$fp, $a0
-	ld.d	$a0, $sp, 720
-	addi.d	$a1, $sp, 736
+	ld.d	$a0, $sp, 688
+	addi.d	$a1, $sp, 704
 	bne	$a0, $a1, .LBB70_399
 	b	.LBB70_400
 .LBB70_372:
@@ -54328,7 +54335,7 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .Ltmp2733:                              # EH_LABEL
 	move	$fp, $a0
 .LBB70_375:                             # %.body332
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 232
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB70_400
@@ -54339,8 +54346,8 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .Ltmp2786:                              # EH_LABEL
 .LBB70_378:
 	move	$fp, $a0
-	ld.d	$a0, $sp, 688
-	addi.d	$a1, $sp, 704
+	ld.d	$a0, $sp, 656
+	addi.d	$a1, $sp, 672
 	beq	$a0, $a1, .LBB70_398
 	b	.LBB70_404
 .LBB70_379:
@@ -54349,26 +54356,26 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 	b	.LBB70_383
 .LBB70_380:
 .Ltmp2792:                              # EH_LABEL
-	st.d	$s2, $sp, 264
+	st.d	$s2, $sp, 232
 	ld.d	$a1, $s2, -24
 	move	$fp, $a0
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 232
 	stx.d	$s8, $a1, $a0
 	b	.LBB70_382
 .LBB70_381:
 .Ltmp2795:                              # EH_LABEL
 	move	$fp, $a0
-	addi.d	$a0, $sp, 288
+	addi.d	$a0, $sp, 256
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEED2Ev)
 	jirl	$ra, $ra, 0
-	st.d	$s2, $sp, 264
+	st.d	$s2, $sp, 232
 	ld.d	$a0, $s2, -24
-	addi.d	$a1, $sp, 264
+	addi.d	$a1, $sp, 232
 	stx.d	$s8, $a0, $a1
 .LBB70_382:                             # %.body.i
-	st.d	$zero, $sp, 272
+	st.d	$zero, $sp, 240
 .LBB70_383:                             # %.body.i
-	addi.d	$a0, $sp, 392
+	addi.d	$a0, $sp, 360
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB70_396
@@ -54419,62 +54426,62 @@ _ZN2PP11PowerParser16check_dup_scalarEiRb: # @_ZN2PP11PowerParser16check_dup_sca
 .LBB70_394:                             # %.body206
 	move	$fp, $a0
 .LBB70_395:                             # %.body206
-	addi.d	$a0, $sp, 240
+	addi.d	$a0, $sp, 208
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 232
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev)
 	jirl	$ra, $ra, 0
 .LBB70_396:                             # %.body
-	ld.d	$a0, $sp, 656
-	addi.d	$a1, $sp, 672
+	ld.d	$a0, $sp, 624
+	addi.d	$a1, $sp, 640
 	bne	$a0, $a1, .LBB70_403
 # %bb.397:
-	ld.d	$a0, $sp, 688
-	addi.d	$a1, $sp, 704
+	ld.d	$a0, $sp, 656
+	addi.d	$a1, $sp, 672
 	bne	$a0, $a1, .LBB70_404
 .LBB70_398:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit297
-	ld.d	$a0, $sp, 720
-	addi.d	$a1, $sp, 736
+	ld.d	$a0, $sp, 688
+	addi.d	$a1, $sp, 704
 	beq	$a0, $a1, .LBB70_400
 .LBB70_399:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i298
-	ld.d	$a1, $sp, 736
+	ld.d	$a1, $sp, 704
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB70_400:
-	addi.d	$a0, $sp, 752
+	addi.d	$a0, $sp, 720
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev)
 	jirl	$ra, $ra, 0
 .LBB70_401:
-	addi.d	$a0, $sp, 776
+	addi.d	$a0, $sp, 744
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev)
 	jirl	$ra, $ra, 0
 .LBB70_402:
-	addi.d	$a0, $sp, 800
+	addi.d	$a0, $sp, 768
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 824
+	addi.d	$a0, $sp, 792
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EED2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB70_403:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i222
+	ld.d	$a1, $sp, 640
+	addi.d	$a1, $a1, 1
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 656
+	addi.d	$a1, $sp, 672
+	beq	$a0, $a1, .LBB70_398
+.LBB70_404:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i295
 	ld.d	$a1, $sp, 672
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 688
 	addi.d	$a1, $sp, 704
-	beq	$a0, $a1, .LBB70_398
-.LBB70_404:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i295
-	ld.d	$a1, $sp, 704
-	addi.d	$a1, $a1, 1
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 720
-	addi.d	$a1, $sp, 736
 	bne	$a0, $a1, .LBB70_399
 	b	.LBB70_400
 .Lfunc_end70:
@@ -57370,101 +57377,66 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	ld.d	$a5, $a3, 8
 	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$a3, $a3, 0
-	sub.d	$a6, $a5, $a3
-	srli.d	$a5, $a6, 2
-	addi.w	$a7, $a5, 0
+	sub.d	$a5, $a5, $a3
+	srli.d	$a5, $a5, 2
+	addi.w	$a6, $a5, 0
 	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	move	$s3, $a1
 	move	$s0, $a0
-	blez	$a7, .LBB82_3
-# %bb.1:                                # %iter.check
+	blez	$a6, .LBB82_3
+# %bb.1:                                # %.lr.ph.preheader
 	bstrpick.d	$a0, $a5, 30, 0
-	ori	$a1, $zero, 4
+	ori	$a1, $zero, 8
 	bgeu	$a0, $a1, .LBB82_4
 # %bb.2:
 	move	$a1, $zero
 	ori	$fp, $zero, 1
-	b	.LBB82_13
+	b	.LBB82_7
 .LBB82_3:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i.thread
 	ori	$fp, $zero, 1
-	b	.LBB82_17
-.LBB82_4:                               # %vector.main.loop.iter.check
-	ori	$a1, $zero, 16
-	bgeu	$a0, $a1, .LBB82_6
-# %bb.5:
-	move	$a1, $zero
-	ori	$fp, $zero, 1
-	b	.LBB82_10
-.LBB82_6:                               # %vector.ph
-	bstrpick.d	$a1, $a5, 30, 4
-	slli.d	$a1, $a1, 4
-	xvrepli.w	$xr0, 1
-	addi.d	$a2, $a3, 32
-	move	$a4, $a1
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB82_7:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a2, -32
-	xvld	$xr3, $a2, 0
-	xvmul.w	$xr0, $xr2, $xr0
-	xvmul.w	$xr1, $xr3, $xr1
-	addi.d	$a4, $a4, -16
-	addi.d	$a2, $a2, 64
-	bnez	$a4, .LBB82_7
-# %bb.8:                                # %middle.block
-	xvmul.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvshuf4i.w	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvrepl128vei.w	$xr1, $xr0, 1
-	xvmul.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$fp, $xr0, 0
-	beq	$a0, $a1, .LBB82_15
-# %bb.9:                                # %vec.epilog.iter.check
-	andi	$a2, $a6, 48
-	beqz	$a2, .LBB82_13
-.LBB82_10:                              # %vec.epilog.ph
-	move	$a4, $a1
-	bstrpick.d	$a1, $a5, 30, 2
-	slli.d	$a1, $a1, 2
+	b	.LBB82_11
+.LBB82_4:                               # %vector.ph
+	bstrpick.d	$a1, $a5, 30, 3
+	slli.d	$a1, $a1, 3
 	vrepli.w	$vr0, 1
-	vinsgr2vr.w	$vr0, $fp, 0
-	sub.d	$a2, $a4, $a1
-	alsl.d	$a4, $a4, $a3, 2
+	addi.d	$a2, $a3, 16
+	move	$a4, $a1
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB82_11:                              # %vec.epilog.vector.body
+.LBB82_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a4, 0
+	vld	$vr2, $a2, -16
+	vld	$vr3, $a2, 0
+	vmul.w	$vr0, $vr2, $vr0
+	vmul.w	$vr1, $vr3, $vr1
+	addi.d	$a4, $a4, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a4, .LBB82_5
+# %bb.6:                                # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	addi.d	$a2, $a2, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB82_11
-# %bb.12:                               # %vec.epilog.middle.block
 	vshuf4i.w	$vr1, $vr0, 14
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$fp, $vr0, 0
-	beq	$a0, $a1, .LBB82_15
-.LBB82_13:                              # %.lr.ph.preheader
+	beq	$a0, $a1, .LBB82_9
+.LBB82_7:                               # %.lr.ph.preheader105
 	alsl.d	$a2, $a1, $a3, 2
 	sub.d	$a0, $a1, $a0
 	.p2align	4, , 16
-.LBB82_14:                              # %.lr.ph
+.LBB82_8:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $a2, 0
 	mul.w	$fp, $a1, $fp
 	addi.d	$a0, $a0, 1
 	addi.d	$a2, $a2, 4
-	bnez	$a0, .LBB82_14
-.LBB82_15:                              # %._crit_edge
-	bltz	$fp, .LBB82_72
-# %bb.16:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
-	beqz	$fp, .LBB82_22
-.LBB82_17:                              # %.noexc43
+	bnez	$a0, .LBB82_8
+.LBB82_9:                               # %._crit_edge
+	bltz	$fp, .LBB82_66
+# %bb.10:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
+	beqz	$fp, .LBB82_16
+.LBB82_11:                              # %.noexc43
 	slli.d	$s4, $fp, 2
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -57482,29 +57454,29 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp2914:                              # EH_LABEL
-# %bb.18:                               # %.noexc46
+# %bb.12:                               # %.noexc46
 	st.d	$a0, $sp, 512
 	alsl.d	$a1, $fp, $a0, 3
 	st.d	$a1, $sp, 528
 	st.d	$zero, $a0, 0
 	addi.d	$s1, $fp, -1
 	addi.d	$s5, $a0, 8
-	beqz	$s1, .LBB82_20
-# %bb.19:                               # %_ZSt6fill_nIPPN2PP3CmdEmS2_ET_S4_T0_RKT1_.exit.loopexit.i.i.i.i.i
+	beqz	$s1, .LBB82_14
+# %bb.13:                               # %_ZSt6fill_nIPPN2PP3CmdEmS2_ET_S4_T0_RKT1_.exit.loopexit.i.i.i.i.i
 	slli.d	$a2, $s1, 3
 	move	$a0, $s5
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	alsl.d	$s5, $s1, $s5, 3
-.LBB82_20:
+.LBB82_14:
 	st.d	$s5, $sp, 520
 .Ltmp2916:                              # EH_LABEL
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp2917:                              # EH_LABEL
-# %bb.21:                               # %.noexc55
+# %bb.15:                               # %.noexc55
 	move	$s5, $a0
 	st.d	$a0, $sp, 488
 	alsl.d	$a0, $fp, $a0, 2
@@ -57515,8 +57487,8 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	add.d	$a0, $s5, $s4
-	b	.LBB82_23
-.LBB82_22:                              # %_ZNSt12_Vector_baseIiSaIiEEC2EmRKS0_.exit.thread.i53
+	b	.LBB82_17
+.LBB82_16:                              # %_ZNSt12_Vector_baseIiSaIiEEC2EmRKS0_.exit.thread.i53
 	move	$a0, $zero
 	st.d	$zero, $sp, 552
 	vrepli.b	$vr0, 0
@@ -57525,7 +57497,7 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	vst	$vr0, $sp, 512
 	st.d	$zero, $sp, 504
 	vst	$vr0, $sp, 488
-.LBB82_23:                              # %.loopexit
+.LBB82_17:                              # %.loopexit
 	st.d	$a0, $sp, 496
 	st.w	$zero, $sp, 484
 .Ltmp2919:                              # EH_LABEL
@@ -57533,17 +57505,17 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEC1Ev)
 	jirl	$ra, $ra, 0
 .Ltmp2920:                              # EH_LABEL
-# %bb.24:
+# %bb.18:
 	pcalau12i	$a0, %pc_hi20(_ZN2PPL14case_sensitiveE)
 	ld.bu	$a0, $a0, %pc_lo12(_ZN2PPL14case_sensitiveE)
-	bnez	$a0, .LBB82_28
-# %bb.25:
+	bnez	$a0, .LBB82_22
+# %bb.19:
 	ld.d	$fp, $s3, 8
-	beqz	$fp, .LBB82_28
-# %bb.26:                               # %.lr.ph.i.preheader
+	beqz	$fp, .LBB82_22
+# %bb.20:                               # %.lr.ph.i.preheader
 	ld.d	$s1, $s3, 0
 	.p2align	4, , 16
-.LBB82_27:                              # %.lr.ph.i
+.LBB82_21:                              # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$a0, $s1, 0
 	pcaddu18i	$ra, %call36(tolower)
@@ -57551,8 +57523,8 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	st.b	$a0, $s1, 0
 	addi.d	$fp, $fp, -1
 	addi.d	$s1, $s1, 1
-	bnez	$fp, .LBB82_27
-.LBB82_28:                              # %_ZSt9transformIN9__gnu_cxx17__normal_iteratorIPcNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEES9_PDoFiiEET0_T_SD_SC_T1_.exit
+	bnez	$fp, .LBB82_21
+.LBB82_22:                              # %_ZSt9transformIN9__gnu_cxx17__normal_iteratorIPcNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEES9_PDoFiiEET0_T_SD_SC_T1_.exit
 	move	$s8, $zero
 	move	$s4, $zero
 	addi.d	$s1, $sp, 72
@@ -57561,14 +57533,14 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	lu32i.d	$a0, -155345
 	lu52i.d	$s2, $a0, -1973
 	ori	$fp, $zero, 16
-	b	.LBB82_32
-.LBB82_29:                              #   in Loop: Header=BB82_32 Depth=1
+	b	.LBB82_26
+.LBB82_23:                              #   in Loop: Header=BB82_26 Depth=1
 	move	$a1, $s7
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB82_30:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
-                                        #   in Loop: Header=BB82_32 Depth=1
+.LBB82_24:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
+                                        #   in Loop: Header=BB82_26 Depth=1
 	ld.d	$a0, $sp, 56
 	ld.d	$a1, $s5, 0
 	st.d	$a0, $s5, 8
@@ -57576,11 +57548,11 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	ld.d	$a0, $s0, 1040
 	addi.d	$a0, $a0, 32
 	st.d	$a0, $s0, 1040
-.LBB82_31:                              # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
-                                        #   in Loop: Header=BB82_32 Depth=1
+.LBB82_25:                              # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
+                                        #   in Loop: Header=BB82_26 Depth=1
 	addi.d	$s4, $s4, 1
 	addi.d	$s8, $s8, 432
-.LBB82_32:                              # =>This Inner Loop Header: Depth=1
+.LBB82_26:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 984
 	ld.d	$a2, $a1, 72
 	ld.d	$a0, $a1, 40
@@ -57600,31 +57572,31 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	srli.d	$a4, $a4, 4
 	mul.d	$a4, $a4, $s2
 	add.w	$a3, $a3, $a4
-	bge	$s4, $a3, .LBB82_62
-# %bb.33:                               #   in Loop: Header=BB82_32 Depth=1
+	bge	$s4, $a3, .LBB82_56
+# %bb.27:                               #   in Loop: Header=BB82_26 Depth=1
 	ld.d	$a1, $a1, 24
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 4
 	mul.d	$a1, $a1, $s2
 	add.d	$a1, $s4, $a1
-	beqz	$a1, .LBB82_35
-# %bb.34:                               #   in Loop: Header=BB82_32 Depth=1
+	beqz	$a1, .LBB82_29
+# %bb.28:                               #   in Loop: Header=BB82_26 Depth=1
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
-	b	.LBB82_36
+	b	.LBB82_30
 	.p2align	4, , 16
-.LBB82_35:                              #   in Loop: Header=BB82_32 Depth=1
+.LBB82_29:                              #   in Loop: Header=BB82_26 Depth=1
 	add.d	$a0, $a2, $s8
-.LBB82_36:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit
-                                        #   in Loop: Header=BB82_32 Depth=1
+.LBB82_30:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit
+                                        #   in Loop: Header=BB82_26 Depth=1
 	ld.d	$s5, $a0, 248
 	ld.d	$s6, $a0, 240
 	st.d	$s1, $sp, 56
 	st.d	$s5, $sp, 560
 	move	$a0, $s1
-	bltu	$s5, $fp, .LBB82_39
-# %bb.37:                               # %.noexc.i.i
-                                        #   in Loop: Header=BB82_32 Depth=1
+	bltu	$s5, $fp, .LBB82_33
+# %bb.31:                               # %.noexc.i.i
+                                        #   in Loop: Header=BB82_26 Depth=1
 .Ltmp2925:                              # EH_LABEL
 	addi.d	$a0, $sp, 56
 	addi.d	$a1, $sp, 560
@@ -57632,64 +57604,64 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp2926:                              # EH_LABEL
-# %bb.38:                               # %.noexc57
-                                        #   in Loop: Header=BB82_32 Depth=1
+# %bb.32:                               # %.noexc57
+                                        #   in Loop: Header=BB82_26 Depth=1
 	ld.d	$a1, $sp, 560
 	st.d	$a0, $sp, 56
 	st.d	$a1, $sp, 72
-.LBB82_39:                              # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB82_32 Depth=1
-	beqz	$s5, .LBB82_43
-# %bb.40:                               # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB82_32 Depth=1
+.LBB82_33:                              # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB82_26 Depth=1
+	beqz	$s5, .LBB82_37
+# %bb.34:                               # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB82_26 Depth=1
 	ori	$a1, $zero, 1
-	bne	$s5, $a1, .LBB82_42
-# %bb.41:                               #   in Loop: Header=BB82_32 Depth=1
+	bne	$s5, $a1, .LBB82_36
+# %bb.35:                               #   in Loop: Header=BB82_26 Depth=1
 	ld.b	$a1, $s6, 0
 	st.b	$a1, $a0, 0
-	b	.LBB82_43
+	b	.LBB82_37
 	.p2align	4, , 16
-.LBB82_42:                              #   in Loop: Header=BB82_32 Depth=1
+.LBB82_36:                              #   in Loop: Header=BB82_26 Depth=1
 	move	$a1, $s6
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB82_43:                              #   in Loop: Header=BB82_32 Depth=1
+.LBB82_37:                              #   in Loop: Header=BB82_26 Depth=1
 	ld.d	$a0, $sp, 560
 	ld.d	$a1, $sp, 56
 	st.d	$a0, $sp, 64
 	stx.b	$zero, $a1, $a0
 	ld.d	$a2, $sp, 64
 	ld.d	$a0, $s3, 8
-	bne	$a2, $a0, .LBB82_46
-# %bb.44:                               #   in Loop: Header=BB82_32 Depth=1
+	bne	$a2, $a0, .LBB82_40
+# %bb.38:                               #   in Loop: Header=BB82_26 Depth=1
 	ld.d	$s5, $sp, 56
-	beqz	$a2, .LBB82_51
-# %bb.45:                               #   in Loop: Header=BB82_32 Depth=1
+	beqz	$a2, .LBB82_45
+# %bb.39:                               #   in Loop: Header=BB82_26 Depth=1
 	ld.d	$a1, $s3, 0
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$s6, $a0, 1
-	bne	$s5, $s1, .LBB82_47
-	b	.LBB82_48
+	bne	$s5, $s1, .LBB82_41
+	b	.LBB82_42
 	.p2align	4, , 16
-.LBB82_46:                              # %._ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit_crit_edge
-                                        #   in Loop: Header=BB82_32 Depth=1
+.LBB82_40:                              # %._ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit_crit_edge
+                                        #   in Loop: Header=BB82_26 Depth=1
 	ld.d	$s5, $sp, 56
 	move	$s6, $zero
-	beq	$s5, $s1, .LBB82_48
-.LBB82_47:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-                                        #   in Loop: Header=BB82_32 Depth=1
+	beq	$s5, $s1, .LBB82_42
+.LBB82_41:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+                                        #   in Loop: Header=BB82_26 Depth=1
 	ld.d	$a0, $sp, 72
 	addi.d	$a1, $a0, 1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB82_48:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
-                                        #   in Loop: Header=BB82_32 Depth=1
-	beqz	$s6, .LBB82_31
-# %bb.49:                               #   in Loop: Header=BB82_32 Depth=1
+.LBB82_42:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
+                                        #   in Loop: Header=BB82_26 Depth=1
+	beqz	$s6, .LBB82_25
+# %bb.43:                               #   in Loop: Header=BB82_26 Depth=1
 	ld.d	$a0, $s0, 984
 	ld.d	$a1, $a0, 16
 	ld.d	$a2, $a0, 24
@@ -57697,20 +57669,20 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	srai.d	$a2, $a2, 4
 	mul.d	$a2, $a2, $s2
 	add.d	$a2, $s4, $a2
-	beqz	$a2, .LBB82_52
-# %bb.50:                               #   in Loop: Header=BB82_32 Depth=1
+	beqz	$a2, .LBB82_46
+# %bb.44:                               #   in Loop: Header=BB82_26 Depth=1
 	ld.d	$a0, $a0, 40
 	slli.d	$a1, $a2, 3
 	ldx.d	$a0, $a0, $a1
-	b	.LBB82_53
-.LBB82_51:                              #   in Loop: Header=BB82_32 Depth=1
+	b	.LBB82_47
+.LBB82_45:                              #   in Loop: Header=BB82_26 Depth=1
 	ori	$s6, $zero, 1
-	bne	$s5, $s1, .LBB82_47
-	b	.LBB82_48
-.LBB82_52:                              #   in Loop: Header=BB82_32 Depth=1
+	bne	$s5, $s1, .LBB82_41
+	b	.LBB82_42
+.LBB82_46:                              #   in Loop: Header=BB82_26 Depth=1
 	add.d	$a0, $a1, $s8
-.LBB82_53:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit59
-                                        #   in Loop: Header=BB82_32 Depth=1
+.LBB82_47:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit59
+                                        #   in Loop: Header=BB82_26 Depth=1
 	ldptr.w	$a6, $s0, 2792
 .Ltmp2928:                              # EH_LABEL
 	addi.d	$a1, $sp, 484
@@ -57728,20 +57700,20 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPiRKSt6vectorIiSaIiEERS9_IPS0_SaISE_EERSB_iSI_bRNS1_18basic_stringstreamIcS4_S5_EERi)
 	jirl	$ra, $ra, 0
 .Ltmp2929:                              # EH_LABEL
-# %bb.54:                               #   in Loop: Header=BB82_32 Depth=1
+# %bb.48:                               #   in Loop: Header=BB82_26 Depth=1
 	ld.d	$a0, $s0, 1056
 	ld.d	$s5, $s0, 1040
 	addi.d	$a0, $a0, -32
-	beq	$s5, $a0, .LBB82_61
-# %bb.55:                               #   in Loop: Header=BB82_32 Depth=1
+	beq	$s5, $a0, .LBB82_55
+# %bb.49:                               #   in Loop: Header=BB82_26 Depth=1
 	addi.d	$a0, $s5, 16
 	st.d	$a0, $s5, 0
 	ld.d	$s6, $s3, 8
 	ld.d	$s7, $s3, 0
 	st.d	$s6, $sp, 56
-	bltu	$s6, $fp, .LBB82_58
-# %bb.56:                               # %.noexc.i.i62
-                                        #   in Loop: Header=BB82_32 Depth=1
+	bltu	$s6, $fp, .LBB82_52
+# %bb.50:                               # %.noexc.i.i62
+                                        #   in Loop: Header=BB82_26 Depth=1
 .Ltmp2930:                              # EH_LABEL
 	addi.d	$a1, $sp, 56
 	move	$a0, $s5
@@ -57749,31 +57721,31 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp2931:                              # EH_LABEL
-# %bb.57:                               # %.noexc63
-                                        #   in Loop: Header=BB82_32 Depth=1
+# %bb.51:                               # %.noexc63
+                                        #   in Loop: Header=BB82_26 Depth=1
 	st.d	$a0, $s5, 0
 	ld.d	$a1, $sp, 56
 	st.d	$a1, $s5, 16
-.LBB82_58:                              # %._crit_edge.i.i.i61
-                                        #   in Loop: Header=BB82_32 Depth=1
-	beqz	$s6, .LBB82_30
-# %bb.59:                               # %._crit_edge.i.i.i61
-                                        #   in Loop: Header=BB82_32 Depth=1
+.LBB82_52:                              # %._crit_edge.i.i.i61
+                                        #   in Loop: Header=BB82_26 Depth=1
+	beqz	$s6, .LBB82_24
+# %bb.53:                               # %._crit_edge.i.i.i61
+                                        #   in Loop: Header=BB82_26 Depth=1
 	ori	$a1, $zero, 1
-	bne	$s6, $a1, .LBB82_29
-# %bb.60:                               #   in Loop: Header=BB82_32 Depth=1
+	bne	$s6, $a1, .LBB82_23
+# %bb.54:                               #   in Loop: Header=BB82_26 Depth=1
 	ld.b	$a1, $s7, 0
 	st.b	$a1, $a0, 0
-	b	.LBB82_30
-.LBB82_61:                              #   in Loop: Header=BB82_32 Depth=1
+	b	.LBB82_24
+.LBB82_55:                              #   in Loop: Header=BB82_26 Depth=1
 .Ltmp2932:                              # EH_LABEL
 	addi.d	$a0, $s0, 992
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE16_M_push_back_auxIJRKS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2933:                              # EH_LABEL
-	b	.LBB82_31
-.LBB82_62:
+	b	.LBB82_25
+.LBB82_56:
 .Ltmp2922:                              # EH_LABEL
 	addi.d	$a1, $sp, 88
 	addi.d	$a2, $sp, 484
@@ -57782,7 +57754,7 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser13process_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp2923:                              # EH_LABEL
-# %bb.63:
+# %bb.57:
 	pcalau12i	$a0, %got_pc_hi20(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$fp, $a0, %got_pc_lo12(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $fp, 0
@@ -57798,13 +57770,13 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	addi.d	$a1, $a1, 16
 	addi.d	$a2, $sp, 200
 	st.d	$a1, $sp, 112
-	beq	$a0, $a2, .LBB82_65
-# %bb.64:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
+	beq	$a0, $a2, .LBB82_59
+# %bb.58:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
 	ld.d	$a1, $sp, 200
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB82_65:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
+.LBB82_59:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	addi.d	$a0, $a0, 16
@@ -57823,29 +57795,29 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 488
-	beqz	$a0, .LBB82_67
-# %bb.66:
+	beqz	$a0, .LBB82_61
+# %bb.60:
 	ld.d	$a1, $sp, 504
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB82_67:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit
+.LBB82_61:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB82_69
-# %bb.68:
+	beqz	$a0, .LBB82_63
+# %bb.62:
 	ld.d	$a1, $sp, 528
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB82_69:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit
+.LBB82_63:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB82_71
-# %bb.70:
+	beqz	$a0, .LBB82_65
+# %bb.64:
 	ld.d	$a1, $sp, 552
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB82_71:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit67
+.LBB82_65:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit67
 	ld.d	$s8, $sp, 568                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 576                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 584                   # 8-byte Folded Reload
@@ -57859,68 +57831,68 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	ld.d	$ra, $sp, 648                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 656
 	ret
-.LBB82_72:                              # %.noexc
+.LBB82_66:                              # %.noexc
 	pcalau12i	$a0, %pc_hi20(.L.str.240)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.240)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
-.LBB82_73:
+.LBB82_67:
 .Ltmp2918:                              # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB82_82
-	b	.LBB82_85
-.LBB82_74:
+	beqz	$a0, .LBB82_76
+	b	.LBB82_79
+.LBB82_68:
 .Ltmp2915:                              # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB82_83
-	b	.LBB82_86
-.LBB82_75:
+	beqz	$a0, .LBB82_77
+	b	.LBB82_80
+.LBB82_69:
 .Ltmp2924:                              # EH_LABEL
-	b	.LBB82_79
-.LBB82_76:
+	b	.LBB82_73
+.LBB82_70:
 .Ltmp2921:                              # EH_LABEL
 	move	$fp, $a0
-	b	.LBB82_80
-.LBB82_77:
+	b	.LBB82_74
+.LBB82_71:
 .Ltmp2927:                              # EH_LABEL
-	b	.LBB82_79
-.LBB82_78:
+	b	.LBB82_73
+.LBB82_72:
 .Ltmp2934:                              # EH_LABEL
-.LBB82_79:
+.LBB82_73:
 	move	$fp, $a0
 	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev)
 	jirl	$ra, $ra, 0
-.LBB82_80:
+.LBB82_74:
 	ld.d	$a0, $sp, 488
-	bnez	$a0, .LBB82_84
-# %bb.81:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit69
+	bnez	$a0, .LBB82_78
+# %bb.75:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit69
 	ld.d	$a0, $sp, 512
-	bnez	$a0, .LBB82_85
-.LBB82_82:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit71
+	bnez	$a0, .LBB82_79
+.LBB82_76:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit71
 	ld.d	$a0, $sp, 536
-	bnez	$a0, .LBB82_86
-.LBB82_83:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit73
+	bnez	$a0, .LBB82_80
+.LBB82_77:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit73
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB82_84:
+.LBB82_78:
 	ld.d	$a1, $sp, 504
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB82_82
-.LBB82_85:
+	beqz	$a0, .LBB82_76
+.LBB82_79:
 	ld.d	$a1, $sp, 528
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB82_83
-.LBB82_86:
+	beqz	$a0, .LBB82_77
+.LBB82_80:
 	ld.d	$a1, $sp, 552
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -58178,101 +58150,66 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	ld.d	$a5, $a3, 8
 	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$a3, $a3, 0
-	sub.d	$a6, $a5, $a3
-	srli.d	$a5, $a6, 2
-	addi.w	$a7, $a5, 0
+	sub.d	$a5, $a5, $a3
+	srli.d	$a5, $a5, 2
+	addi.w	$a6, $a5, 0
 	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	move	$s3, $a1
 	move	$s0, $a0
-	blez	$a7, .LBB84_3
-# %bb.1:                                # %iter.check
+	blez	$a6, .LBB84_3
+# %bb.1:                                # %.lr.ph.preheader
 	bstrpick.d	$a0, $a5, 30, 0
-	ori	$a1, $zero, 4
+	ori	$a1, $zero, 8
 	bgeu	$a0, $a1, .LBB84_4
 # %bb.2:
 	move	$a1, $zero
 	ori	$fp, $zero, 1
-	b	.LBB84_13
+	b	.LBB84_7
 .LBB84_3:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i.thread
 	ori	$fp, $zero, 1
-	b	.LBB84_17
-.LBB84_4:                               # %vector.main.loop.iter.check
-	ori	$a1, $zero, 16
-	bgeu	$a0, $a1, .LBB84_6
-# %bb.5:
-	move	$a1, $zero
-	ori	$fp, $zero, 1
-	b	.LBB84_10
-.LBB84_6:                               # %vector.ph
-	bstrpick.d	$a1, $a5, 30, 4
-	slli.d	$a1, $a1, 4
-	xvrepli.w	$xr0, 1
-	addi.d	$a2, $a3, 32
-	move	$a4, $a1
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB84_7:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a2, -32
-	xvld	$xr3, $a2, 0
-	xvmul.w	$xr0, $xr2, $xr0
-	xvmul.w	$xr1, $xr3, $xr1
-	addi.d	$a4, $a4, -16
-	addi.d	$a2, $a2, 64
-	bnez	$a4, .LBB84_7
-# %bb.8:                                # %middle.block
-	xvmul.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvshuf4i.w	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvrepl128vei.w	$xr1, $xr0, 1
-	xvmul.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$fp, $xr0, 0
-	beq	$a0, $a1, .LBB84_15
-# %bb.9:                                # %vec.epilog.iter.check
-	andi	$a2, $a6, 48
-	beqz	$a2, .LBB84_13
-.LBB84_10:                              # %vec.epilog.ph
-	move	$a4, $a1
-	bstrpick.d	$a1, $a5, 30, 2
-	slli.d	$a1, $a1, 2
+	b	.LBB84_11
+.LBB84_4:                               # %vector.ph
+	bstrpick.d	$a1, $a5, 30, 3
+	slli.d	$a1, $a1, 3
 	vrepli.w	$vr0, 1
-	vinsgr2vr.w	$vr0, $fp, 0
-	sub.d	$a2, $a4, $a1
-	alsl.d	$a4, $a4, $a3, 2
+	addi.d	$a2, $a3, 16
+	move	$a4, $a1
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB84_11:                              # %vec.epilog.vector.body
+.LBB84_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a4, 0
+	vld	$vr2, $a2, -16
+	vld	$vr3, $a2, 0
+	vmul.w	$vr0, $vr2, $vr0
+	vmul.w	$vr1, $vr3, $vr1
+	addi.d	$a4, $a4, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a4, .LBB84_5
+# %bb.6:                                # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	addi.d	$a2, $a2, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB84_11
-# %bb.12:                               # %vec.epilog.middle.block
 	vshuf4i.w	$vr1, $vr0, 14
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$fp, $vr0, 0
-	beq	$a0, $a1, .LBB84_15
-.LBB84_13:                              # %.lr.ph.preheader
+	beq	$a0, $a1, .LBB84_9
+.LBB84_7:                               # %.lr.ph.preheader98
 	alsl.d	$a2, $a1, $a3, 2
 	sub.d	$a0, $a1, $a0
 	.p2align	4, , 16
-.LBB84_14:                              # %.lr.ph
+.LBB84_8:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $a2, 0
 	mul.w	$fp, $a1, $fp
 	addi.d	$a0, $a0, 1
 	addi.d	$a2, $a2, 4
-	bnez	$a0, .LBB84_14
-.LBB84_15:                              # %._crit_edge
-	bltz	$fp, .LBB84_68
-# %bb.16:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
-	beqz	$fp, .LBB84_22
-.LBB84_17:                              # %.noexc37
+	bnez	$a0, .LBB84_8
+.LBB84_9:                               # %._crit_edge
+	bltz	$fp, .LBB84_62
+# %bb.10:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
+	beqz	$fp, .LBB84_16
+.LBB84_11:                              # %.noexc37
 	slli.d	$s4, $fp, 2
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -58290,29 +58227,29 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp2939:                              # EH_LABEL
-# %bb.18:                               # %.noexc40
+# %bb.12:                               # %.noexc40
 	st.d	$a0, $sp, 512
 	alsl.d	$a1, $fp, $a0, 3
 	st.d	$a1, $sp, 528
 	st.d	$zero, $a0, 0
 	addi.d	$s1, $fp, -1
 	addi.d	$s5, $a0, 8
-	beqz	$s1, .LBB84_20
-# %bb.19:                               # %_ZSt6fill_nIPPN2PP3CmdEmS2_ET_S4_T0_RKT1_.exit.loopexit.i.i.i.i.i
+	beqz	$s1, .LBB84_14
+# %bb.13:                               # %_ZSt6fill_nIPPN2PP3CmdEmS2_ET_S4_T0_RKT1_.exit.loopexit.i.i.i.i.i
 	slli.d	$a2, $s1, 3
 	move	$a0, $s5
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	alsl.d	$s5, $s1, $s5, 3
-.LBB84_20:
+.LBB84_14:
 	st.d	$s5, $sp, 520
 .Ltmp2941:                              # EH_LABEL
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp2942:                              # EH_LABEL
-# %bb.21:                               # %.noexc49
+# %bb.15:                               # %.noexc49
 	move	$s5, $a0
 	st.d	$a0, $sp, 488
 	alsl.d	$a0, $fp, $a0, 2
@@ -58323,8 +58260,8 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	add.d	$a0, $s5, $s4
-	b	.LBB84_23
-.LBB84_22:                              # %_ZNSt12_Vector_baseIiSaIiEEC2EmRKS0_.exit.thread.i47
+	b	.LBB84_17
+.LBB84_16:                              # %_ZNSt12_Vector_baseIiSaIiEEC2EmRKS0_.exit.thread.i47
 	move	$a0, $zero
 	st.d	$zero, $sp, 552
 	vrepli.b	$vr0, 0
@@ -58333,7 +58270,7 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	vst	$vr0, $sp, 512
 	st.d	$zero, $sp, 504
 	vst	$vr0, $sp, 488
-.LBB84_23:                              # %.loopexit
+.LBB84_17:                              # %.loopexit
 	st.d	$a0, $sp, 496
 	st.w	$zero, $sp, 484
 .Ltmp2944:                              # EH_LABEL
@@ -58341,7 +58278,7 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEC1Ev)
 	jirl	$ra, $ra, 0
 .Ltmp2945:                              # EH_LABEL
-# %bb.24:                               # %.preheader
+# %bb.18:                               # %.preheader
 	move	$s4, $zero
 	move	$s8, $zero
 	addi.d	$s1, $sp, 72
@@ -58350,14 +58287,14 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	lu32i.d	$a0, -155345
 	lu52i.d	$s2, $a0, -1973
 	ori	$fp, $zero, 16
-	b	.LBB84_28
-.LBB84_25:                              #   in Loop: Header=BB84_28 Depth=1
+	b	.LBB84_22
+.LBB84_19:                              #   in Loop: Header=BB84_22 Depth=1
 	move	$a1, $s7
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB84_26:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
-                                        #   in Loop: Header=BB84_28 Depth=1
+.LBB84_20:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
+                                        #   in Loop: Header=BB84_22 Depth=1
 	ld.d	$a0, $sp, 56
 	ld.d	$a1, $s5, 0
 	st.d	$a0, $s5, 8
@@ -58365,11 +58302,11 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	ld.d	$a0, $s0, 1040
 	addi.d	$a0, $a0, 32
 	st.d	$a0, $s0, 1040
-.LBB84_27:                              # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
-                                        #   in Loop: Header=BB84_28 Depth=1
+.LBB84_21:                              # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
+                                        #   in Loop: Header=BB84_22 Depth=1
 	addi.d	$s8, $s8, 1
 	addi.d	$s4, $s4, 432
-.LBB84_28:                              # =>This Inner Loop Header: Depth=1
+.LBB84_22:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 984
 	ld.d	$a2, $a1, 72
 	ld.d	$a0, $a1, 40
@@ -58389,31 +58326,31 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	srli.d	$a4, $a4, 4
 	mul.d	$a4, $a4, $s2
 	add.w	$a3, $a3, $a4
-	bge	$s8, $a3, .LBB84_58
-# %bb.29:                               #   in Loop: Header=BB84_28 Depth=1
+	bge	$s8, $a3, .LBB84_52
+# %bb.23:                               #   in Loop: Header=BB84_22 Depth=1
 	ld.d	$a1, $a1, 24
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 4
 	mul.d	$a1, $a1, $s2
 	add.d	$a1, $s8, $a1
-	beqz	$a1, .LBB84_31
-# %bb.30:                               #   in Loop: Header=BB84_28 Depth=1
+	beqz	$a1, .LBB84_25
+# %bb.24:                               #   in Loop: Header=BB84_22 Depth=1
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
-	b	.LBB84_32
+	b	.LBB84_26
 	.p2align	4, , 16
-.LBB84_31:                              #   in Loop: Header=BB84_28 Depth=1
+.LBB84_25:                              #   in Loop: Header=BB84_22 Depth=1
 	add.d	$a0, $a2, $s4
-.LBB84_32:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit
-                                        #   in Loop: Header=BB84_28 Depth=1
+.LBB84_26:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit
+                                        #   in Loop: Header=BB84_22 Depth=1
 	ld.d	$s5, $a0, 248
 	ld.d	$s6, $a0, 240
 	st.d	$s1, $sp, 56
 	st.d	$s5, $sp, 560
 	move	$a0, $s1
-	bltu	$s5, $fp, .LBB84_35
-# %bb.33:                               # %.noexc.i.i
-                                        #   in Loop: Header=BB84_28 Depth=1
+	bltu	$s5, $fp, .LBB84_29
+# %bb.27:                               # %.noexc.i.i
+                                        #   in Loop: Header=BB84_22 Depth=1
 .Ltmp2950:                              # EH_LABEL
 	addi.d	$a0, $sp, 56
 	addi.d	$a1, $sp, 560
@@ -58421,64 +58358,64 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp2951:                              # EH_LABEL
-# %bb.34:                               # %.noexc51
-                                        #   in Loop: Header=BB84_28 Depth=1
+# %bb.28:                               # %.noexc51
+                                        #   in Loop: Header=BB84_22 Depth=1
 	ld.d	$a1, $sp, 560
 	st.d	$a0, $sp, 56
 	st.d	$a1, $sp, 72
-.LBB84_35:                              # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB84_28 Depth=1
-	beqz	$s5, .LBB84_39
-# %bb.36:                               # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB84_28 Depth=1
+.LBB84_29:                              # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB84_22 Depth=1
+	beqz	$s5, .LBB84_33
+# %bb.30:                               # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB84_22 Depth=1
 	ori	$a1, $zero, 1
-	bne	$s5, $a1, .LBB84_38
-# %bb.37:                               #   in Loop: Header=BB84_28 Depth=1
+	bne	$s5, $a1, .LBB84_32
+# %bb.31:                               #   in Loop: Header=BB84_22 Depth=1
 	ld.b	$a1, $s6, 0
 	st.b	$a1, $a0, 0
-	b	.LBB84_39
+	b	.LBB84_33
 	.p2align	4, , 16
-.LBB84_38:                              #   in Loop: Header=BB84_28 Depth=1
+.LBB84_32:                              #   in Loop: Header=BB84_22 Depth=1
 	move	$a1, $s6
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB84_39:                              #   in Loop: Header=BB84_28 Depth=1
+.LBB84_33:                              #   in Loop: Header=BB84_22 Depth=1
 	ld.d	$a0, $sp, 560
 	ld.d	$a1, $sp, 56
 	st.d	$a0, $sp, 64
 	stx.b	$zero, $a1, $a0
 	ld.d	$a2, $sp, 64
 	ld.d	$a0, $s3, 8
-	bne	$a2, $a0, .LBB84_42
-# %bb.40:                               #   in Loop: Header=BB84_28 Depth=1
+	bne	$a2, $a0, .LBB84_36
+# %bb.34:                               #   in Loop: Header=BB84_22 Depth=1
 	ld.d	$s5, $sp, 56
-	beqz	$a2, .LBB84_47
-# %bb.41:                               #   in Loop: Header=BB84_28 Depth=1
+	beqz	$a2, .LBB84_41
+# %bb.35:                               #   in Loop: Header=BB84_22 Depth=1
 	ld.d	$a1, $s3, 0
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$s6, $a0, 1
-	bne	$s5, $s1, .LBB84_43
-	b	.LBB84_44
+	bne	$s5, $s1, .LBB84_37
+	b	.LBB84_38
 	.p2align	4, , 16
-.LBB84_42:                              # %._ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit_crit_edge
-                                        #   in Loop: Header=BB84_28 Depth=1
+.LBB84_36:                              # %._ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit_crit_edge
+                                        #   in Loop: Header=BB84_22 Depth=1
 	ld.d	$s5, $sp, 56
 	move	$s6, $zero
-	beq	$s5, $s1, .LBB84_44
-.LBB84_43:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-                                        #   in Loop: Header=BB84_28 Depth=1
+	beq	$s5, $s1, .LBB84_38
+.LBB84_37:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+                                        #   in Loop: Header=BB84_22 Depth=1
 	ld.d	$a0, $sp, 72
 	addi.d	$a1, $a0, 1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB84_44:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
-                                        #   in Loop: Header=BB84_28 Depth=1
-	beqz	$s6, .LBB84_27
-# %bb.45:                               #   in Loop: Header=BB84_28 Depth=1
+.LBB84_38:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
+                                        #   in Loop: Header=BB84_22 Depth=1
+	beqz	$s6, .LBB84_21
+# %bb.39:                               #   in Loop: Header=BB84_22 Depth=1
 	ld.d	$a0, $s0, 984
 	ld.d	$a1, $a0, 16
 	ld.d	$a2, $a0, 24
@@ -58486,20 +58423,20 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	srai.d	$a2, $a2, 4
 	mul.d	$a2, $a2, $s2
 	add.d	$a2, $s8, $a2
-	beqz	$a2, .LBB84_48
-# %bb.46:                               #   in Loop: Header=BB84_28 Depth=1
+	beqz	$a2, .LBB84_42
+# %bb.40:                               #   in Loop: Header=BB84_22 Depth=1
 	ld.d	$a0, $a0, 40
 	slli.d	$a1, $a2, 3
 	ldx.d	$a0, $a0, $a1
-	b	.LBB84_49
-.LBB84_47:                              #   in Loop: Header=BB84_28 Depth=1
+	b	.LBB84_43
+.LBB84_41:                              #   in Loop: Header=BB84_22 Depth=1
 	ori	$s6, $zero, 1
-	bne	$s5, $s1, .LBB84_43
-	b	.LBB84_44
-.LBB84_48:                              #   in Loop: Header=BB84_28 Depth=1
+	bne	$s5, $s1, .LBB84_37
+	b	.LBB84_38
+.LBB84_42:                              #   in Loop: Header=BB84_22 Depth=1
 	add.d	$a0, $a1, $s4
-.LBB84_49:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit53
-                                        #   in Loop: Header=BB84_28 Depth=1
+.LBB84_43:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit53
+                                        #   in Loop: Header=BB84_22 Depth=1
 	ldptr.w	$a6, $s0, 2792
 .Ltmp2953:                              # EH_LABEL
 	addi.d	$a1, $sp, 484
@@ -58517,20 +58454,20 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPbRKSt6vectorIiSaIiEERS9_IPS0_SaISE_EERSB_iSI_bRNS1_18basic_stringstreamIcS4_S5_EERi)
 	jirl	$ra, $ra, 0
 .Ltmp2954:                              # EH_LABEL
-# %bb.50:                               #   in Loop: Header=BB84_28 Depth=1
+# %bb.44:                               #   in Loop: Header=BB84_22 Depth=1
 	ld.d	$a0, $s0, 1056
 	ld.d	$s5, $s0, 1040
 	addi.d	$a0, $a0, -32
-	beq	$s5, $a0, .LBB84_57
-# %bb.51:                               #   in Loop: Header=BB84_28 Depth=1
+	beq	$s5, $a0, .LBB84_51
+# %bb.45:                               #   in Loop: Header=BB84_22 Depth=1
 	addi.d	$a0, $s5, 16
 	st.d	$a0, $s5, 0
 	ld.d	$s6, $s3, 8
 	ld.d	$s7, $s3, 0
 	st.d	$s6, $sp, 56
-	bltu	$s6, $fp, .LBB84_54
-# %bb.52:                               # %.noexc.i.i55
-                                        #   in Loop: Header=BB84_28 Depth=1
+	bltu	$s6, $fp, .LBB84_48
+# %bb.46:                               # %.noexc.i.i55
+                                        #   in Loop: Header=BB84_22 Depth=1
 .Ltmp2955:                              # EH_LABEL
 	addi.d	$a1, $sp, 56
 	move	$a0, $s5
@@ -58538,31 +58475,31 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp2956:                              # EH_LABEL
-# %bb.53:                               # %.noexc56
-                                        #   in Loop: Header=BB84_28 Depth=1
+# %bb.47:                               # %.noexc56
+                                        #   in Loop: Header=BB84_22 Depth=1
 	st.d	$a0, $s5, 0
 	ld.d	$a1, $sp, 56
 	st.d	$a1, $s5, 16
-.LBB84_54:                              # %._crit_edge.i.i.i54
-                                        #   in Loop: Header=BB84_28 Depth=1
-	beqz	$s6, .LBB84_26
-# %bb.55:                               # %._crit_edge.i.i.i54
-                                        #   in Loop: Header=BB84_28 Depth=1
+.LBB84_48:                              # %._crit_edge.i.i.i54
+                                        #   in Loop: Header=BB84_22 Depth=1
+	beqz	$s6, .LBB84_20
+# %bb.49:                               # %._crit_edge.i.i.i54
+                                        #   in Loop: Header=BB84_22 Depth=1
 	ori	$a1, $zero, 1
-	bne	$s6, $a1, .LBB84_25
-# %bb.56:                               #   in Loop: Header=BB84_28 Depth=1
+	bne	$s6, $a1, .LBB84_19
+# %bb.50:                               #   in Loop: Header=BB84_22 Depth=1
 	ld.b	$a1, $s7, 0
 	st.b	$a1, $a0, 0
-	b	.LBB84_26
-.LBB84_57:                              #   in Loop: Header=BB84_28 Depth=1
+	b	.LBB84_20
+.LBB84_51:                              #   in Loop: Header=BB84_22 Depth=1
 .Ltmp2957:                              # EH_LABEL
 	addi.d	$a0, $s0, 992
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE16_M_push_back_auxIJRKS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2958:                              # EH_LABEL
-	b	.LBB84_27
-.LBB84_58:
+	b	.LBB84_21
+.LBB84_52:
 .Ltmp2947:                              # EH_LABEL
 	addi.d	$a1, $sp, 88
 	addi.d	$a2, $sp, 484
@@ -58571,7 +58508,7 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser13process_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp2948:                              # EH_LABEL
-# %bb.59:
+# %bb.53:
 	pcalau12i	$a0, %got_pc_hi20(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$fp, $a0, %got_pc_lo12(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $fp, 0
@@ -58587,13 +58524,13 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	addi.d	$a1, $a1, 16
 	addi.d	$a2, $sp, 200
 	st.d	$a1, $sp, 112
-	beq	$a0, $a2, .LBB84_61
-# %bb.60:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
+	beq	$a0, $a2, .LBB84_55
+# %bb.54:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
 	ld.d	$a1, $sp, 200
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB84_61:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
+.LBB84_55:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	addi.d	$a0, $a0, 16
@@ -58612,29 +58549,29 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 488
-	beqz	$a0, .LBB84_63
-# %bb.62:
+	beqz	$a0, .LBB84_57
+# %bb.56:
 	ld.d	$a1, $sp, 504
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB84_63:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit
+.LBB84_57:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB84_65
-# %bb.64:
+	beqz	$a0, .LBB84_59
+# %bb.58:
 	ld.d	$a1, $sp, 528
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB84_65:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit
+.LBB84_59:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB84_67
-# %bb.66:
+	beqz	$a0, .LBB84_61
+# %bb.60:
 	ld.d	$a1, $sp, 552
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB84_67:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit60
+.LBB84_61:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit60
 	ld.d	$s8, $sp, 568                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 576                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 584                   # 8-byte Folded Reload
@@ -58648,68 +58585,68 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	ld.d	$ra, $sp, 648                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 656
 	ret
-.LBB84_68:                              # %.noexc
+.LBB84_62:                              # %.noexc
 	pcalau12i	$a0, %pc_hi20(.L.str.240)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.240)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
-.LBB84_69:
+.LBB84_63:
 .Ltmp2943:                              # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB84_78
-	b	.LBB84_81
-.LBB84_70:
+	beqz	$a0, .LBB84_72
+	b	.LBB84_75
+.LBB84_64:
 .Ltmp2940:                              # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB84_79
-	b	.LBB84_82
-.LBB84_71:
+	beqz	$a0, .LBB84_73
+	b	.LBB84_76
+.LBB84_65:
 .Ltmp2949:                              # EH_LABEL
-	b	.LBB84_75
-.LBB84_72:
+	b	.LBB84_69
+.LBB84_66:
 .Ltmp2946:                              # EH_LABEL
 	move	$fp, $a0
-	b	.LBB84_76
-.LBB84_73:
+	b	.LBB84_70
+.LBB84_67:
 .Ltmp2952:                              # EH_LABEL
-	b	.LBB84_75
-.LBB84_74:
+	b	.LBB84_69
+.LBB84_68:
 .Ltmp2959:                              # EH_LABEL
-.LBB84_75:
+.LBB84_69:
 	move	$fp, $a0
 	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev)
 	jirl	$ra, $ra, 0
-.LBB84_76:
+.LBB84_70:
 	ld.d	$a0, $sp, 488
-	bnez	$a0, .LBB84_80
-# %bb.77:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit62
+	bnez	$a0, .LBB84_74
+# %bb.71:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit62
 	ld.d	$a0, $sp, 512
-	bnez	$a0, .LBB84_81
-.LBB84_78:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit64
+	bnez	$a0, .LBB84_75
+.LBB84_72:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit64
 	ld.d	$a0, $sp, 536
-	bnez	$a0, .LBB84_82
-.LBB84_79:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit66
+	bnez	$a0, .LBB84_76
+.LBB84_73:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit66
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB84_80:
+.LBB84_74:
 	ld.d	$a1, $sp, 504
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB84_78
-.LBB84_81:
+	beqz	$a0, .LBB84_72
+.LBB84_75:
 	ld.d	$a1, $sp, 528
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB84_79
-.LBB84_82:
+	beqz	$a0, .LBB84_73
+.LBB84_76:
 	ld.d	$a1, $sp, 552
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -58967,101 +58904,66 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	ld.d	$a5, $a3, 8
 	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$a3, $a3, 0
-	sub.d	$a6, $a5, $a3
-	srli.d	$a5, $a6, 2
-	addi.w	$a7, $a5, 0
+	sub.d	$a5, $a5, $a3
+	srli.d	$a5, $a5, 2
+	addi.w	$a6, $a5, 0
 	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	move	$s3, $a1
 	move	$s0, $a0
-	blez	$a7, .LBB86_3
-# %bb.1:                                # %iter.check
+	blez	$a6, .LBB86_3
+# %bb.1:                                # %.lr.ph.preheader
 	bstrpick.d	$a0, $a5, 30, 0
-	ori	$a1, $zero, 4
+	ori	$a1, $zero, 8
 	bgeu	$a0, $a1, .LBB86_4
 # %bb.2:
 	move	$a1, $zero
 	ori	$fp, $zero, 1
-	b	.LBB86_13
+	b	.LBB86_7
 .LBB86_3:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i.thread
 	ori	$fp, $zero, 1
-	b	.LBB86_17
-.LBB86_4:                               # %vector.main.loop.iter.check
-	ori	$a1, $zero, 16
-	bgeu	$a0, $a1, .LBB86_6
-# %bb.5:
-	move	$a1, $zero
-	ori	$fp, $zero, 1
-	b	.LBB86_10
-.LBB86_6:                               # %vector.ph
-	bstrpick.d	$a1, $a5, 30, 4
-	slli.d	$a1, $a1, 4
-	xvrepli.w	$xr0, 1
-	addi.d	$a2, $a3, 32
-	move	$a4, $a1
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB86_7:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a2, -32
-	xvld	$xr3, $a2, 0
-	xvmul.w	$xr0, $xr2, $xr0
-	xvmul.w	$xr1, $xr3, $xr1
-	addi.d	$a4, $a4, -16
-	addi.d	$a2, $a2, 64
-	bnez	$a4, .LBB86_7
-# %bb.8:                                # %middle.block
-	xvmul.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvshuf4i.w	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvrepl128vei.w	$xr1, $xr0, 1
-	xvmul.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$fp, $xr0, 0
-	beq	$a0, $a1, .LBB86_15
-# %bb.9:                                # %vec.epilog.iter.check
-	andi	$a2, $a6, 48
-	beqz	$a2, .LBB86_13
-.LBB86_10:                              # %vec.epilog.ph
-	move	$a4, $a1
-	bstrpick.d	$a1, $a5, 30, 2
-	slli.d	$a1, $a1, 2
+	b	.LBB86_11
+.LBB86_4:                               # %vector.ph
+	bstrpick.d	$a1, $a5, 30, 3
+	slli.d	$a1, $a1, 3
 	vrepli.w	$vr0, 1
-	vinsgr2vr.w	$vr0, $fp, 0
-	sub.d	$a2, $a4, $a1
-	alsl.d	$a4, $a4, $a3, 2
+	addi.d	$a2, $a3, 16
+	move	$a4, $a1
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB86_11:                              # %vec.epilog.vector.body
+.LBB86_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a4, 0
+	vld	$vr2, $a2, -16
+	vld	$vr3, $a2, 0
+	vmul.w	$vr0, $vr2, $vr0
+	vmul.w	$vr1, $vr3, $vr1
+	addi.d	$a4, $a4, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a4, .LBB86_5
+# %bb.6:                                # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	addi.d	$a2, $a2, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB86_11
-# %bb.12:                               # %vec.epilog.middle.block
 	vshuf4i.w	$vr1, $vr0, 14
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$fp, $vr0, 0
-	beq	$a0, $a1, .LBB86_15
-.LBB86_13:                              # %.lr.ph.preheader
+	beq	$a0, $a1, .LBB86_9
+.LBB86_7:                               # %.lr.ph.preheader105
 	alsl.d	$a2, $a1, $a3, 2
 	sub.d	$a0, $a1, $a0
 	.p2align	4, , 16
-.LBB86_14:                              # %.lr.ph
+.LBB86_8:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $a2, 0
 	mul.w	$fp, $a1, $fp
 	addi.d	$a0, $a0, 1
 	addi.d	$a2, $a2, 4
-	bnez	$a0, .LBB86_14
-.LBB86_15:                              # %._crit_edge
-	bltz	$fp, .LBB86_72
-# %bb.16:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
-	beqz	$fp, .LBB86_22
-.LBB86_17:                              # %.noexc43
+	bnez	$a0, .LBB86_8
+.LBB86_9:                               # %._crit_edge
+	bltz	$fp, .LBB86_66
+# %bb.10:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
+	beqz	$fp, .LBB86_16
+.LBB86_11:                              # %.noexc43
 	slli.d	$s4, $fp, 2
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -59079,29 +58981,29 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp2964:                              # EH_LABEL
-# %bb.18:                               # %.noexc46
+# %bb.12:                               # %.noexc46
 	st.d	$a0, $sp, 512
 	alsl.d	$a1, $fp, $a0, 3
 	st.d	$a1, $sp, 528
 	st.d	$zero, $a0, 0
 	addi.d	$s1, $fp, -1
 	addi.d	$s5, $a0, 8
-	beqz	$s1, .LBB86_20
-# %bb.19:                               # %_ZSt6fill_nIPPN2PP3CmdEmS2_ET_S4_T0_RKT1_.exit.loopexit.i.i.i.i.i
+	beqz	$s1, .LBB86_14
+# %bb.13:                               # %_ZSt6fill_nIPPN2PP3CmdEmS2_ET_S4_T0_RKT1_.exit.loopexit.i.i.i.i.i
 	slli.d	$a2, $s1, 3
 	move	$a0, $s5
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	alsl.d	$s5, $s1, $s5, 3
-.LBB86_20:
+.LBB86_14:
 	st.d	$s5, $sp, 520
 .Ltmp2966:                              # EH_LABEL
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp2967:                              # EH_LABEL
-# %bb.21:                               # %.noexc55
+# %bb.15:                               # %.noexc55
 	move	$s5, $a0
 	st.d	$a0, $sp, 488
 	alsl.d	$a0, $fp, $a0, 2
@@ -59112,8 +59014,8 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	add.d	$a0, $s5, $s4
-	b	.LBB86_23
-.LBB86_22:                              # %_ZNSt12_Vector_baseIiSaIiEEC2EmRKS0_.exit.thread.i53
+	b	.LBB86_17
+.LBB86_16:                              # %_ZNSt12_Vector_baseIiSaIiEEC2EmRKS0_.exit.thread.i53
 	move	$a0, $zero
 	st.d	$zero, $sp, 552
 	vrepli.b	$vr0, 0
@@ -59122,7 +59024,7 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	vst	$vr0, $sp, 512
 	st.d	$zero, $sp, 504
 	vst	$vr0, $sp, 488
-.LBB86_23:                              # %.loopexit
+.LBB86_17:                              # %.loopexit
 	st.d	$a0, $sp, 496
 	st.w	$zero, $sp, 484
 .Ltmp2969:                              # EH_LABEL
@@ -59130,17 +59032,17 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEC1Ev)
 	jirl	$ra, $ra, 0
 .Ltmp2970:                              # EH_LABEL
-# %bb.24:
+# %bb.18:
 	pcalau12i	$a0, %pc_hi20(_ZN2PPL14case_sensitiveE)
 	ld.bu	$a0, $a0, %pc_lo12(_ZN2PPL14case_sensitiveE)
-	bnez	$a0, .LBB86_28
-# %bb.25:
+	bnez	$a0, .LBB86_22
+# %bb.19:
 	ld.d	$fp, $s3, 8
-	beqz	$fp, .LBB86_28
-# %bb.26:                               # %.lr.ph.i.preheader
+	beqz	$fp, .LBB86_22
+# %bb.20:                               # %.lr.ph.i.preheader
 	ld.d	$s1, $s3, 0
 	.p2align	4, , 16
-.LBB86_27:                              # %.lr.ph.i
+.LBB86_21:                              # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$a0, $s1, 0
 	pcaddu18i	$ra, %call36(tolower)
@@ -59148,8 +59050,8 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	st.b	$a0, $s1, 0
 	addi.d	$fp, $fp, -1
 	addi.d	$s1, $s1, 1
-	bnez	$fp, .LBB86_27
-.LBB86_28:                              # %_ZSt9transformIN9__gnu_cxx17__normal_iteratorIPcNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEES9_PDoFiiEET0_T_SD_SC_T1_.exit
+	bnez	$fp, .LBB86_21
+.LBB86_22:                              # %_ZSt9transformIN9__gnu_cxx17__normal_iteratorIPcNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEES9_PDoFiiEET0_T_SD_SC_T1_.exit
 	move	$s8, $zero
 	move	$s4, $zero
 	addi.d	$s1, $sp, 72
@@ -59158,14 +59060,14 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	lu32i.d	$a0, -155345
 	lu52i.d	$s2, $a0, -1973
 	ori	$fp, $zero, 16
-	b	.LBB86_32
-.LBB86_29:                              #   in Loop: Header=BB86_32 Depth=1
+	b	.LBB86_26
+.LBB86_23:                              #   in Loop: Header=BB86_26 Depth=1
 	move	$a1, $s7
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB86_30:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
-                                        #   in Loop: Header=BB86_32 Depth=1
+.LBB86_24:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
+                                        #   in Loop: Header=BB86_26 Depth=1
 	ld.d	$a0, $sp, 56
 	ld.d	$a1, $s5, 0
 	st.d	$a0, $s5, 8
@@ -59173,11 +59075,11 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	ld.d	$a0, $s0, 1040
 	addi.d	$a0, $a0, 32
 	st.d	$a0, $s0, 1040
-.LBB86_31:                              # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
-                                        #   in Loop: Header=BB86_32 Depth=1
+.LBB86_25:                              # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
+                                        #   in Loop: Header=BB86_26 Depth=1
 	addi.d	$s4, $s4, 1
 	addi.d	$s8, $s8, 432
-.LBB86_32:                              # =>This Inner Loop Header: Depth=1
+.LBB86_26:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 984
 	ld.d	$a2, $a1, 72
 	ld.d	$a0, $a1, 40
@@ -59197,31 +59099,31 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	srli.d	$a4, $a4, 4
 	mul.d	$a4, $a4, $s2
 	add.w	$a3, $a3, $a4
-	bge	$s4, $a3, .LBB86_62
-# %bb.33:                               #   in Loop: Header=BB86_32 Depth=1
+	bge	$s4, $a3, .LBB86_56
+# %bb.27:                               #   in Loop: Header=BB86_26 Depth=1
 	ld.d	$a1, $a1, 24
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 4
 	mul.d	$a1, $a1, $s2
 	add.d	$a1, $s4, $a1
-	beqz	$a1, .LBB86_35
-# %bb.34:                               #   in Loop: Header=BB86_32 Depth=1
+	beqz	$a1, .LBB86_29
+# %bb.28:                               #   in Loop: Header=BB86_26 Depth=1
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
-	b	.LBB86_36
+	b	.LBB86_30
 	.p2align	4, , 16
-.LBB86_35:                              #   in Loop: Header=BB86_32 Depth=1
+.LBB86_29:                              #   in Loop: Header=BB86_26 Depth=1
 	add.d	$a0, $a2, $s8
-.LBB86_36:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit
-                                        #   in Loop: Header=BB86_32 Depth=1
+.LBB86_30:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit
+                                        #   in Loop: Header=BB86_26 Depth=1
 	ld.d	$s5, $a0, 248
 	ld.d	$s6, $a0, 240
 	st.d	$s1, $sp, 56
 	st.d	$s5, $sp, 560
 	move	$a0, $s1
-	bltu	$s5, $fp, .LBB86_39
-# %bb.37:                               # %.noexc.i.i
-                                        #   in Loop: Header=BB86_32 Depth=1
+	bltu	$s5, $fp, .LBB86_33
+# %bb.31:                               # %.noexc.i.i
+                                        #   in Loop: Header=BB86_26 Depth=1
 .Ltmp2975:                              # EH_LABEL
 	addi.d	$a0, $sp, 56
 	addi.d	$a1, $sp, 560
@@ -59229,64 +59131,64 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp2976:                              # EH_LABEL
-# %bb.38:                               # %.noexc57
-                                        #   in Loop: Header=BB86_32 Depth=1
+# %bb.32:                               # %.noexc57
+                                        #   in Loop: Header=BB86_26 Depth=1
 	ld.d	$a1, $sp, 560
 	st.d	$a0, $sp, 56
 	st.d	$a1, $sp, 72
-.LBB86_39:                              # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB86_32 Depth=1
-	beqz	$s5, .LBB86_43
-# %bb.40:                               # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB86_32 Depth=1
+.LBB86_33:                              # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB86_26 Depth=1
+	beqz	$s5, .LBB86_37
+# %bb.34:                               # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB86_26 Depth=1
 	ori	$a1, $zero, 1
-	bne	$s5, $a1, .LBB86_42
-# %bb.41:                               #   in Loop: Header=BB86_32 Depth=1
+	bne	$s5, $a1, .LBB86_36
+# %bb.35:                               #   in Loop: Header=BB86_26 Depth=1
 	ld.b	$a1, $s6, 0
 	st.b	$a1, $a0, 0
-	b	.LBB86_43
+	b	.LBB86_37
 	.p2align	4, , 16
-.LBB86_42:                              #   in Loop: Header=BB86_32 Depth=1
+.LBB86_36:                              #   in Loop: Header=BB86_26 Depth=1
 	move	$a1, $s6
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB86_43:                              #   in Loop: Header=BB86_32 Depth=1
+.LBB86_37:                              #   in Loop: Header=BB86_26 Depth=1
 	ld.d	$a0, $sp, 560
 	ld.d	$a1, $sp, 56
 	st.d	$a0, $sp, 64
 	stx.b	$zero, $a1, $a0
 	ld.d	$a2, $sp, 64
 	ld.d	$a0, $s3, 8
-	bne	$a2, $a0, .LBB86_46
-# %bb.44:                               #   in Loop: Header=BB86_32 Depth=1
+	bne	$a2, $a0, .LBB86_40
+# %bb.38:                               #   in Loop: Header=BB86_26 Depth=1
 	ld.d	$s5, $sp, 56
-	beqz	$a2, .LBB86_51
-# %bb.45:                               #   in Loop: Header=BB86_32 Depth=1
+	beqz	$a2, .LBB86_45
+# %bb.39:                               #   in Loop: Header=BB86_26 Depth=1
 	ld.d	$a1, $s3, 0
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$s6, $a0, 1
-	bne	$s5, $s1, .LBB86_47
-	b	.LBB86_48
+	bne	$s5, $s1, .LBB86_41
+	b	.LBB86_42
 	.p2align	4, , 16
-.LBB86_46:                              # %._ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit_crit_edge
-                                        #   in Loop: Header=BB86_32 Depth=1
+.LBB86_40:                              # %._ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit_crit_edge
+                                        #   in Loop: Header=BB86_26 Depth=1
 	ld.d	$s5, $sp, 56
 	move	$s6, $zero
-	beq	$s5, $s1, .LBB86_48
-.LBB86_47:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-                                        #   in Loop: Header=BB86_32 Depth=1
+	beq	$s5, $s1, .LBB86_42
+.LBB86_41:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+                                        #   in Loop: Header=BB86_26 Depth=1
 	ld.d	$a0, $sp, 72
 	addi.d	$a1, $a0, 1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB86_48:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
-                                        #   in Loop: Header=BB86_32 Depth=1
-	beqz	$s6, .LBB86_31
-# %bb.49:                               #   in Loop: Header=BB86_32 Depth=1
+.LBB86_42:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
+                                        #   in Loop: Header=BB86_26 Depth=1
+	beqz	$s6, .LBB86_25
+# %bb.43:                               #   in Loop: Header=BB86_26 Depth=1
 	ld.d	$a0, $s0, 984
 	ld.d	$a1, $a0, 16
 	ld.d	$a2, $a0, 24
@@ -59294,20 +59196,20 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	srai.d	$a2, $a2, 4
 	mul.d	$a2, $a2, $s2
 	add.d	$a2, $s4, $a2
-	beqz	$a2, .LBB86_52
-# %bb.50:                               #   in Loop: Header=BB86_32 Depth=1
+	beqz	$a2, .LBB86_46
+# %bb.44:                               #   in Loop: Header=BB86_26 Depth=1
 	ld.d	$a0, $a0, 40
 	slli.d	$a1, $a2, 3
 	ldx.d	$a0, $a0, $a1
-	b	.LBB86_53
-.LBB86_51:                              #   in Loop: Header=BB86_32 Depth=1
+	b	.LBB86_47
+.LBB86_45:                              #   in Loop: Header=BB86_26 Depth=1
 	ori	$s6, $zero, 1
-	bne	$s5, $s1, .LBB86_47
-	b	.LBB86_48
-.LBB86_52:                              #   in Loop: Header=BB86_32 Depth=1
+	bne	$s5, $s1, .LBB86_41
+	b	.LBB86_42
+.LBB86_46:                              #   in Loop: Header=BB86_26 Depth=1
 	add.d	$a0, $a1, $s8
-.LBB86_53:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit59
-                                        #   in Loop: Header=BB86_32 Depth=1
+.LBB86_47:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit59
+                                        #   in Loop: Header=BB86_26 Depth=1
 	ldptr.w	$a6, $s0, 2792
 .Ltmp2978:                              # EH_LABEL
 	addi.d	$a1, $sp, 484
@@ -59325,20 +59227,20 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPdRKSt6vectorIiSaIiEERS9_IPS0_SaISE_EERSB_iSI_bRNS1_18basic_stringstreamIcS4_S5_EERi)
 	jirl	$ra, $ra, 0
 .Ltmp2979:                              # EH_LABEL
-# %bb.54:                               #   in Loop: Header=BB86_32 Depth=1
+# %bb.48:                               #   in Loop: Header=BB86_26 Depth=1
 	ld.d	$a0, $s0, 1056
 	ld.d	$s5, $s0, 1040
 	addi.d	$a0, $a0, -32
-	beq	$s5, $a0, .LBB86_61
-# %bb.55:                               #   in Loop: Header=BB86_32 Depth=1
+	beq	$s5, $a0, .LBB86_55
+# %bb.49:                               #   in Loop: Header=BB86_26 Depth=1
 	addi.d	$a0, $s5, 16
 	st.d	$a0, $s5, 0
 	ld.d	$s6, $s3, 8
 	ld.d	$s7, $s3, 0
 	st.d	$s6, $sp, 56
-	bltu	$s6, $fp, .LBB86_58
-# %bb.56:                               # %.noexc.i.i62
-                                        #   in Loop: Header=BB86_32 Depth=1
+	bltu	$s6, $fp, .LBB86_52
+# %bb.50:                               # %.noexc.i.i62
+                                        #   in Loop: Header=BB86_26 Depth=1
 .Ltmp2980:                              # EH_LABEL
 	addi.d	$a1, $sp, 56
 	move	$a0, $s5
@@ -59346,31 +59248,31 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp2981:                              # EH_LABEL
-# %bb.57:                               # %.noexc63
-                                        #   in Loop: Header=BB86_32 Depth=1
+# %bb.51:                               # %.noexc63
+                                        #   in Loop: Header=BB86_26 Depth=1
 	st.d	$a0, $s5, 0
 	ld.d	$a1, $sp, 56
 	st.d	$a1, $s5, 16
-.LBB86_58:                              # %._crit_edge.i.i.i61
-                                        #   in Loop: Header=BB86_32 Depth=1
-	beqz	$s6, .LBB86_30
-# %bb.59:                               # %._crit_edge.i.i.i61
-                                        #   in Loop: Header=BB86_32 Depth=1
+.LBB86_52:                              # %._crit_edge.i.i.i61
+                                        #   in Loop: Header=BB86_26 Depth=1
+	beqz	$s6, .LBB86_24
+# %bb.53:                               # %._crit_edge.i.i.i61
+                                        #   in Loop: Header=BB86_26 Depth=1
 	ori	$a1, $zero, 1
-	bne	$s6, $a1, .LBB86_29
-# %bb.60:                               #   in Loop: Header=BB86_32 Depth=1
+	bne	$s6, $a1, .LBB86_23
+# %bb.54:                               #   in Loop: Header=BB86_26 Depth=1
 	ld.b	$a1, $s7, 0
 	st.b	$a1, $a0, 0
-	b	.LBB86_30
-.LBB86_61:                              #   in Loop: Header=BB86_32 Depth=1
+	b	.LBB86_24
+.LBB86_55:                              #   in Loop: Header=BB86_26 Depth=1
 .Ltmp2982:                              # EH_LABEL
 	addi.d	$a0, $s0, 992
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE16_M_push_back_auxIJRKS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp2983:                              # EH_LABEL
-	b	.LBB86_31
-.LBB86_62:
+	b	.LBB86_25
+.LBB86_56:
 .Ltmp2972:                              # EH_LABEL
 	addi.d	$a1, $sp, 88
 	addi.d	$a2, $sp, 484
@@ -59379,7 +59281,7 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser13process_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp2973:                              # EH_LABEL
-# %bb.63:
+# %bb.57:
 	pcalau12i	$a0, %got_pc_hi20(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$fp, $a0, %got_pc_lo12(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $fp, 0
@@ -59395,13 +59297,13 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	addi.d	$a1, $a1, 16
 	addi.d	$a2, $sp, 200
 	st.d	$a1, $sp, 112
-	beq	$a0, $a2, .LBB86_65
-# %bb.64:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
+	beq	$a0, $a2, .LBB86_59
+# %bb.58:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
 	ld.d	$a1, $sp, 200
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB86_65:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
+.LBB86_59:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	addi.d	$a0, $a0, 16
@@ -59420,29 +59322,29 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 488
-	beqz	$a0, .LBB86_67
-# %bb.66:
+	beqz	$a0, .LBB86_61
+# %bb.60:
 	ld.d	$a1, $sp, 504
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB86_67:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit
+.LBB86_61:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB86_69
-# %bb.68:
+	beqz	$a0, .LBB86_63
+# %bb.62:
 	ld.d	$a1, $sp, 528
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB86_69:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit
+.LBB86_63:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB86_71
-# %bb.70:
+	beqz	$a0, .LBB86_65
+# %bb.64:
 	ld.d	$a1, $sp, 552
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB86_71:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit67
+.LBB86_65:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit67
 	ld.d	$s8, $sp, 568                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 576                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 584                   # 8-byte Folded Reload
@@ -59456,68 +59358,68 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	ld.d	$ra, $sp, 648                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 656
 	ret
-.LBB86_72:                              # %.noexc
+.LBB86_66:                              # %.noexc
 	pcalau12i	$a0, %pc_hi20(.L.str.240)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.240)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
-.LBB86_73:
+.LBB86_67:
 .Ltmp2968:                              # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB86_82
-	b	.LBB86_85
-.LBB86_74:
+	beqz	$a0, .LBB86_76
+	b	.LBB86_79
+.LBB86_68:
 .Ltmp2965:                              # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB86_83
-	b	.LBB86_86
-.LBB86_75:
+	beqz	$a0, .LBB86_77
+	b	.LBB86_80
+.LBB86_69:
 .Ltmp2974:                              # EH_LABEL
-	b	.LBB86_79
-.LBB86_76:
+	b	.LBB86_73
+.LBB86_70:
 .Ltmp2971:                              # EH_LABEL
 	move	$fp, $a0
-	b	.LBB86_80
-.LBB86_77:
+	b	.LBB86_74
+.LBB86_71:
 .Ltmp2977:                              # EH_LABEL
-	b	.LBB86_79
-.LBB86_78:
+	b	.LBB86_73
+.LBB86_72:
 .Ltmp2984:                              # EH_LABEL
-.LBB86_79:
+.LBB86_73:
 	move	$fp, $a0
 	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev)
 	jirl	$ra, $ra, 0
-.LBB86_80:
+.LBB86_74:
 	ld.d	$a0, $sp, 488
-	bnez	$a0, .LBB86_84
-# %bb.81:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit69
+	bnez	$a0, .LBB86_78
+# %bb.75:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit69
 	ld.d	$a0, $sp, 512
-	bnez	$a0, .LBB86_85
-.LBB86_82:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit71
+	bnez	$a0, .LBB86_79
+.LBB86_76:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit71
 	ld.d	$a0, $sp, 536
-	bnez	$a0, .LBB86_86
-.LBB86_83:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit73
+	bnez	$a0, .LBB86_80
+.LBB86_77:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit73
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB86_84:
+.LBB86_78:
 	ld.d	$a1, $sp, 504
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 512
-	beqz	$a0, .LBB86_82
-.LBB86_85:
+	beqz	$a0, .LBB86_76
+.LBB86_79:
 	ld.d	$a1, $sp, 528
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 536
-	beqz	$a0, .LBB86_83
-.LBB86_86:
+	beqz	$a0, .LBB86_77
+.LBB86_80:
 	ld.d	$a1, $sp, 552
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -59775,102 +59677,67 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	ld.d	$a6, $a3, 8
 	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
 	ld.d	$a3, $a3, 0
-	sub.d	$a7, $a6, $a3
-	srli.d	$a6, $a7, 2
-	addi.w	$t0, $a6, 0
+	sub.d	$a6, $a6, $a3
+	srli.d	$a6, $a6, 2
+	addi.w	$a7, $a6, 0
 	st.d	$a5, $sp, 56                    # 8-byte Folded Spill
 	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
 	move	$s4, $a1
 	move	$s0, $a0
-	blez	$t0, .LBB88_3
-# %bb.1:                                # %iter.check
+	blez	$a7, .LBB88_3
+# %bb.1:                                # %.lr.ph.preheader
 	bstrpick.d	$a0, $a6, 30, 0
-	ori	$a1, $zero, 4
+	ori	$a1, $zero, 8
 	bgeu	$a0, $a1, .LBB88_4
 # %bb.2:
 	move	$a1, $zero
 	ori	$fp, $zero, 1
-	b	.LBB88_13
+	b	.LBB88_7
 .LBB88_3:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i.thread
 	ori	$fp, $zero, 1
-	b	.LBB88_17
-.LBB88_4:                               # %vector.main.loop.iter.check
-	ori	$a1, $zero, 16
-	bgeu	$a0, $a1, .LBB88_6
-# %bb.5:
-	move	$a1, $zero
-	ori	$fp, $zero, 1
-	b	.LBB88_10
-.LBB88_6:                               # %vector.ph
-	bstrpick.d	$a1, $a6, 30, 4
-	slli.d	$a1, $a1, 4
-	xvrepli.w	$xr0, 1
-	addi.d	$a2, $a3, 32
-	move	$a4, $a1
-	xvori.b	$xr1, $xr0, 0
-	.p2align	4, , 16
-.LBB88_7:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a2, -32
-	xvld	$xr3, $a2, 0
-	xvmul.w	$xr0, $xr2, $xr0
-	xvmul.w	$xr1, $xr3, $xr1
-	addi.d	$a4, $a4, -16
-	addi.d	$a2, $a2, 64
-	bnez	$a4, .LBB88_7
-# %bb.8:                                # %middle.block
-	xvmul.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvshuf4i.w	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvrepl128vei.w	$xr1, $xr0, 1
-	xvmul.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$fp, $xr0, 0
-	beq	$a0, $a1, .LBB88_15
-# %bb.9:                                # %vec.epilog.iter.check
-	andi	$a2, $a7, 48
-	beqz	$a2, .LBB88_13
-.LBB88_10:                              # %vec.epilog.ph
-	move	$a4, $a1
-	bstrpick.d	$a1, $a6, 30, 2
-	slli.d	$a1, $a1, 2
+	b	.LBB88_11
+.LBB88_4:                               # %vector.ph
+	bstrpick.d	$a1, $a6, 30, 3
+	slli.d	$a1, $a1, 3
 	vrepli.w	$vr0, 1
-	vinsgr2vr.w	$vr0, $fp, 0
-	sub.d	$a2, $a4, $a1
-	alsl.d	$a4, $a4, $a3, 2
+	addi.d	$a2, $a3, 16
+	move	$a4, $a1
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB88_11:                              # %vec.epilog.vector.body
+.LBB88_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a4, 0
+	vld	$vr2, $a2, -16
+	vld	$vr3, $a2, 0
+	vmul.w	$vr0, $vr2, $vr0
+	vmul.w	$vr1, $vr3, $vr1
+	addi.d	$a4, $a4, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a4, .LBB88_5
+# %bb.6:                                # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	addi.d	$a2, $a2, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB88_11
-# %bb.12:                               # %vec.epilog.middle.block
 	vshuf4i.w	$vr1, $vr0, 14
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$fp, $vr0, 0
-	beq	$a0, $a1, .LBB88_15
-.LBB88_13:                              # %.lr.ph.preheader
+	beq	$a0, $a1, .LBB88_9
+.LBB88_7:                               # %.lr.ph.preheader106
 	alsl.d	$a2, $a1, $a3, 2
 	sub.d	$a0, $a1, $a0
 	.p2align	4, , 16
-.LBB88_14:                              # %.lr.ph
+.LBB88_8:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $a2, 0
 	mul.w	$fp, $a1, $fp
 	addi.d	$a0, $a0, 1
 	addi.d	$a2, $a2, 4
-	bnez	$a0, .LBB88_14
-.LBB88_15:                              # %._crit_edge
-	bltz	$fp, .LBB88_72
-# %bb.16:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
-	beqz	$fp, .LBB88_22
-.LBB88_17:                              # %.noexc44
+	bnez	$a0, .LBB88_8
+.LBB88_9:                               # %._crit_edge
+	bltz	$fp, .LBB88_66
+# %bb.10:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
+	beqz	$fp, .LBB88_16
+.LBB88_11:                              # %.noexc44
 	slli.d	$s5, $fp, 2
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -59888,29 +59755,29 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp2989:                              # EH_LABEL
-# %bb.18:                               # %.noexc47
+# %bb.12:                               # %.noexc47
 	st.d	$a0, $sp, 528
 	alsl.d	$a1, $fp, $a0, 3
 	st.d	$a1, $sp, 544
 	st.d	$zero, $a0, 0
 	addi.d	$s1, $fp, -1
 	addi.d	$s6, $a0, 8
-	beqz	$s1, .LBB88_20
-# %bb.19:                               # %_ZSt6fill_nIPPN2PP3CmdEmS2_ET_S4_T0_RKT1_.exit.loopexit.i.i.i.i.i
+	beqz	$s1, .LBB88_14
+# %bb.13:                               # %_ZSt6fill_nIPPN2PP3CmdEmS2_ET_S4_T0_RKT1_.exit.loopexit.i.i.i.i.i
 	slli.d	$a2, $s1, 3
 	move	$a0, $s6
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	alsl.d	$s6, $s1, $s6, 3
-.LBB88_20:
+.LBB88_14:
 	st.d	$s6, $sp, 536
 .Ltmp2991:                              # EH_LABEL
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp2992:                              # EH_LABEL
-# %bb.21:                               # %.noexc56
+# %bb.15:                               # %.noexc56
 	move	$s6, $a0
 	st.d	$a0, $sp, 504
 	alsl.d	$a0, $fp, $a0, 2
@@ -59921,8 +59788,8 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	add.d	$a0, $s6, $s5
-	b	.LBB88_23
-.LBB88_22:                              # %_ZNSt12_Vector_baseIiSaIiEEC2EmRKS0_.exit.thread.i54
+	b	.LBB88_17
+.LBB88_16:                              # %_ZNSt12_Vector_baseIiSaIiEEC2EmRKS0_.exit.thread.i54
 	move	$a0, $zero
 	st.d	$zero, $sp, 568
 	vrepli.b	$vr0, 0
@@ -59931,7 +59798,7 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	vst	$vr0, $sp, 528
 	st.d	$zero, $sp, 520
 	vst	$vr0, $sp, 504
-.LBB88_23:                              # %.loopexit
+.LBB88_17:                              # %.loopexit
 	st.d	$a0, $sp, 512
 	st.w	$zero, $sp, 500
 .Ltmp2994:                              # EH_LABEL
@@ -59939,17 +59806,17 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEC1Ev)
 	jirl	$ra, $ra, 0
 .Ltmp2995:                              # EH_LABEL
-# %bb.24:
+# %bb.18:
 	pcalau12i	$a0, %pc_hi20(_ZN2PPL14case_sensitiveE)
 	ld.bu	$a0, $a0, %pc_lo12(_ZN2PPL14case_sensitiveE)
-	bnez	$a0, .LBB88_28
-# %bb.25:
+	bnez	$a0, .LBB88_22
+# %bb.19:
 	ld.d	$fp, $s4, 8
-	beqz	$fp, .LBB88_28
-# %bb.26:                               # %.lr.ph.i.preheader
+	beqz	$fp, .LBB88_22
+# %bb.20:                               # %.lr.ph.i.preheader
 	ld.d	$s1, $s4, 0
 	.p2align	4, , 16
-.LBB88_27:                              # %.lr.ph.i
+.LBB88_21:                              # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$a0, $s1, 0
 	pcaddu18i	$ra, %call36(tolower)
@@ -59957,8 +59824,8 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	st.b	$a0, $s1, 0
 	addi.d	$fp, $fp, -1
 	addi.d	$s1, $s1, 1
-	bnez	$fp, .LBB88_27
-.LBB88_28:                              # %_ZSt9transformIN9__gnu_cxx17__normal_iteratorIPcNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEES9_PDoFiiEET0_T_SD_SC_T1_.exit
+	bnez	$fp, .LBB88_21
+.LBB88_22:                              # %_ZSt9transformIN9__gnu_cxx17__normal_iteratorIPcNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEES9_PDoFiiEET0_T_SD_SC_T1_.exit
 	move	$s5, $zero
 	move	$s1, $zero
 	addi.d	$s2, $sp, 88
@@ -59967,14 +59834,14 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	lu32i.d	$a0, -155345
 	lu52i.d	$s3, $a0, -1973
 	ori	$fp, $zero, 16
-	b	.LBB88_32
-.LBB88_29:                              #   in Loop: Header=BB88_32 Depth=1
+	b	.LBB88_26
+.LBB88_23:                              #   in Loop: Header=BB88_26 Depth=1
 	move	$a1, $s8
 	move	$a2, $s7
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB88_30:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
-                                        #   in Loop: Header=BB88_32 Depth=1
+.LBB88_24:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
+                                        #   in Loop: Header=BB88_26 Depth=1
 	ld.d	$a0, $sp, 72
 	ld.d	$a1, $s6, 0
 	st.d	$a0, $s6, 8
@@ -59982,11 +59849,11 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	ld.d	$a0, $s0, 1040
 	addi.d	$a0, $a0, 32
 	st.d	$a0, $s0, 1040
-.LBB88_31:                              # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
-                                        #   in Loop: Header=BB88_32 Depth=1
+.LBB88_25:                              # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
+                                        #   in Loop: Header=BB88_26 Depth=1
 	addi.d	$s1, $s1, 1
 	addi.d	$s5, $s5, 432
-.LBB88_32:                              # =>This Inner Loop Header: Depth=1
+.LBB88_26:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 984
 	ld.d	$a2, $a1, 72
 	ld.d	$a0, $a1, 40
@@ -60006,31 +59873,31 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	srli.d	$a4, $a4, 4
 	mul.d	$a4, $a4, $s3
 	add.w	$a3, $a3, $a4
-	bge	$s1, $a3, .LBB88_62
-# %bb.33:                               #   in Loop: Header=BB88_32 Depth=1
+	bge	$s1, $a3, .LBB88_56
+# %bb.27:                               #   in Loop: Header=BB88_26 Depth=1
 	ld.d	$a1, $a1, 24
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 4
 	mul.d	$a1, $a1, $s3
 	add.d	$a1, $s1, $a1
-	beqz	$a1, .LBB88_35
-# %bb.34:                               #   in Loop: Header=BB88_32 Depth=1
+	beqz	$a1, .LBB88_29
+# %bb.28:                               #   in Loop: Header=BB88_26 Depth=1
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
-	b	.LBB88_36
+	b	.LBB88_30
 	.p2align	4, , 16
-.LBB88_35:                              #   in Loop: Header=BB88_32 Depth=1
+.LBB88_29:                              #   in Loop: Header=BB88_26 Depth=1
 	add.d	$a0, $a2, $s5
-.LBB88_36:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit
-                                        #   in Loop: Header=BB88_32 Depth=1
+.LBB88_30:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit
+                                        #   in Loop: Header=BB88_26 Depth=1
 	ld.d	$s6, $a0, 248
 	ld.d	$s7, $a0, 240
 	st.d	$s2, $sp, 72
 	st.d	$s6, $sp, 576
 	move	$a0, $s2
-	bltu	$s6, $fp, .LBB88_39
-# %bb.37:                               # %.noexc.i.i
-                                        #   in Loop: Header=BB88_32 Depth=1
+	bltu	$s6, $fp, .LBB88_33
+# %bb.31:                               # %.noexc.i.i
+                                        #   in Loop: Header=BB88_26 Depth=1
 .Ltmp3000:                              # EH_LABEL
 	addi.d	$a0, $sp, 72
 	addi.d	$a1, $sp, 576
@@ -60038,64 +59905,64 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp3001:                              # EH_LABEL
-# %bb.38:                               # %.noexc58
-                                        #   in Loop: Header=BB88_32 Depth=1
+# %bb.32:                               # %.noexc58
+                                        #   in Loop: Header=BB88_26 Depth=1
 	ld.d	$a1, $sp, 576
 	st.d	$a0, $sp, 72
 	st.d	$a1, $sp, 88
-.LBB88_39:                              # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB88_32 Depth=1
-	beqz	$s6, .LBB88_43
-# %bb.40:                               # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB88_32 Depth=1
+.LBB88_33:                              # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB88_26 Depth=1
+	beqz	$s6, .LBB88_37
+# %bb.34:                               # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB88_26 Depth=1
 	ori	$a1, $zero, 1
-	bne	$s6, $a1, .LBB88_42
-# %bb.41:                               #   in Loop: Header=BB88_32 Depth=1
+	bne	$s6, $a1, .LBB88_36
+# %bb.35:                               #   in Loop: Header=BB88_26 Depth=1
 	ld.b	$a1, $s7, 0
 	st.b	$a1, $a0, 0
-	b	.LBB88_43
+	b	.LBB88_37
 	.p2align	4, , 16
-.LBB88_42:                              #   in Loop: Header=BB88_32 Depth=1
+.LBB88_36:                              #   in Loop: Header=BB88_26 Depth=1
 	move	$a1, $s7
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB88_43:                              #   in Loop: Header=BB88_32 Depth=1
+.LBB88_37:                              #   in Loop: Header=BB88_26 Depth=1
 	ld.d	$a0, $sp, 576
 	ld.d	$a1, $sp, 72
 	st.d	$a0, $sp, 80
 	stx.b	$zero, $a1, $a0
 	ld.d	$a2, $sp, 80
 	ld.d	$a0, $s4, 8
-	bne	$a2, $a0, .LBB88_46
-# %bb.44:                               #   in Loop: Header=BB88_32 Depth=1
+	bne	$a2, $a0, .LBB88_40
+# %bb.38:                               #   in Loop: Header=BB88_26 Depth=1
 	ld.d	$s6, $sp, 72
-	beqz	$a2, .LBB88_51
-# %bb.45:                               #   in Loop: Header=BB88_32 Depth=1
+	beqz	$a2, .LBB88_45
+# %bb.39:                               #   in Loop: Header=BB88_26 Depth=1
 	ld.d	$a1, $s4, 0
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$s7, $a0, 1
-	bne	$s6, $s2, .LBB88_47
-	b	.LBB88_48
+	bne	$s6, $s2, .LBB88_41
+	b	.LBB88_42
 	.p2align	4, , 16
-.LBB88_46:                              # %._ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit_crit_edge
-                                        #   in Loop: Header=BB88_32 Depth=1
+.LBB88_40:                              # %._ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit_crit_edge
+                                        #   in Loop: Header=BB88_26 Depth=1
 	ld.d	$s6, $sp, 72
 	move	$s7, $zero
-	beq	$s6, $s2, .LBB88_48
-.LBB88_47:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-                                        #   in Loop: Header=BB88_32 Depth=1
+	beq	$s6, $s2, .LBB88_42
+.LBB88_41:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+                                        #   in Loop: Header=BB88_26 Depth=1
 	ld.d	$a0, $sp, 88
 	addi.d	$a1, $a0, 1
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB88_48:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
-                                        #   in Loop: Header=BB88_32 Depth=1
-	beqz	$s7, .LBB88_31
-# %bb.49:                               #   in Loop: Header=BB88_32 Depth=1
+.LBB88_42:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
+                                        #   in Loop: Header=BB88_26 Depth=1
+	beqz	$s7, .LBB88_25
+# %bb.43:                               #   in Loop: Header=BB88_26 Depth=1
 	ld.d	$a0, $s0, 984
 	ld.d	$a1, $a0, 16
 	ld.d	$a2, $a0, 24
@@ -60103,20 +59970,20 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	srai.d	$a2, $a2, 4
 	mul.d	$a2, $a2, $s3
 	add.d	$a2, $s1, $a2
-	beqz	$a2, .LBB88_52
-# %bb.50:                               #   in Loop: Header=BB88_32 Depth=1
+	beqz	$a2, .LBB88_46
+# %bb.44:                               #   in Loop: Header=BB88_26 Depth=1
 	ld.d	$a0, $a0, 40
 	slli.d	$a1, $a2, 3
 	ldx.d	$a0, $a0, $a1
-	b	.LBB88_53
-.LBB88_51:                              #   in Loop: Header=BB88_32 Depth=1
+	b	.LBB88_47
+.LBB88_45:                              #   in Loop: Header=BB88_26 Depth=1
 	ori	$s7, $zero, 1
-	bne	$s6, $s2, .LBB88_47
-	b	.LBB88_48
-.LBB88_52:                              #   in Loop: Header=BB88_32 Depth=1
+	bne	$s6, $s2, .LBB88_41
+	b	.LBB88_42
+.LBB88_46:                              #   in Loop: Header=BB88_26 Depth=1
 	add.d	$a0, $a1, $s5
-.LBB88_53:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit60
-                                        #   in Loop: Header=BB88_32 Depth=1
+.LBB88_47:                              # %_ZNSt5dequeIN2PP3CmdESaIS1_EEixEm.exit60
+                                        #   in Loop: Header=BB88_26 Depth=1
 	ldptr.w	$a7, $s0, 2792
 .Ltmp3003:                              # EH_LABEL
 	addi.d	$a1, $sp, 500
@@ -60136,20 +60003,20 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIS6_SaIS6_EERKS8_IiSaIiEEbRS8_IPS0_SaISG_EERSD_iSK_bRNS1_18basic_stringstreamIcS4_S5_EERi)
 	jirl	$ra, $ra, 0
 .Ltmp3004:                              # EH_LABEL
-# %bb.54:                               #   in Loop: Header=BB88_32 Depth=1
+# %bb.48:                               #   in Loop: Header=BB88_26 Depth=1
 	ld.d	$a0, $s0, 1056
 	ld.d	$s6, $s0, 1040
 	addi.d	$a0, $a0, -32
-	beq	$s6, $a0, .LBB88_61
-# %bb.55:                               #   in Loop: Header=BB88_32 Depth=1
+	beq	$s6, $a0, .LBB88_55
+# %bb.49:                               #   in Loop: Header=BB88_26 Depth=1
 	addi.d	$a0, $s6, 16
 	st.d	$a0, $s6, 0
 	ld.d	$s7, $s4, 8
 	ld.d	$s8, $s4, 0
 	st.d	$s7, $sp, 72
-	bltu	$s7, $fp, .LBB88_58
-# %bb.56:                               # %.noexc.i.i63
-                                        #   in Loop: Header=BB88_32 Depth=1
+	bltu	$s7, $fp, .LBB88_52
+# %bb.50:                               # %.noexc.i.i63
+                                        #   in Loop: Header=BB88_26 Depth=1
 .Ltmp3005:                              # EH_LABEL
 	addi.d	$a1, $sp, 72
 	move	$a0, $s6
@@ -60157,31 +60024,31 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp3006:                              # EH_LABEL
-# %bb.57:                               # %.noexc64
-                                        #   in Loop: Header=BB88_32 Depth=1
+# %bb.51:                               # %.noexc64
+                                        #   in Loop: Header=BB88_26 Depth=1
 	st.d	$a0, $s6, 0
 	ld.d	$a1, $sp, 72
 	st.d	$a1, $s6, 16
-.LBB88_58:                              # %._crit_edge.i.i.i62
-                                        #   in Loop: Header=BB88_32 Depth=1
-	beqz	$s7, .LBB88_30
-# %bb.59:                               # %._crit_edge.i.i.i62
-                                        #   in Loop: Header=BB88_32 Depth=1
+.LBB88_52:                              # %._crit_edge.i.i.i62
+                                        #   in Loop: Header=BB88_26 Depth=1
+	beqz	$s7, .LBB88_24
+# %bb.53:                               # %._crit_edge.i.i.i62
+                                        #   in Loop: Header=BB88_26 Depth=1
 	ori	$a1, $zero, 1
-	bne	$s7, $a1, .LBB88_29
-# %bb.60:                               #   in Loop: Header=BB88_32 Depth=1
+	bne	$s7, $a1, .LBB88_23
+# %bb.54:                               #   in Loop: Header=BB88_26 Depth=1
 	ld.b	$a1, $s8, 0
 	st.b	$a1, $a0, 0
-	b	.LBB88_30
-.LBB88_61:                              #   in Loop: Header=BB88_32 Depth=1
+	b	.LBB88_24
+.LBB88_55:                              #   in Loop: Header=BB88_26 Depth=1
 .Ltmp3007:                              # EH_LABEL
 	addi.d	$a0, $s0, 992
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE16_M_push_back_auxIJRKS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp3008:                              # EH_LABEL
-	b	.LBB88_31
-.LBB88_62:
+	b	.LBB88_25
+.LBB88_56:
 .Ltmp2997:                              # EH_LABEL
 	addi.d	$a1, $sp, 104
 	addi.d	$a2, $sp, 500
@@ -60190,7 +60057,7 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZN2PP11PowerParser13process_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 .Ltmp2998:                              # EH_LABEL
-# %bb.63:
+# %bb.57:
 	pcalau12i	$a0, %got_pc_hi20(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$fp, $a0, %got_pc_lo12(_ZTTNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE)
 	ld.d	$a0, $fp, 0
@@ -60206,13 +60073,13 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	addi.d	$a1, $a1, 16
 	addi.d	$a2, $sp, 216
 	st.d	$a1, $sp, 128
-	beq	$a0, $a2, .LBB88_65
-# %bb.64:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
+	beq	$a0, $a2, .LBB88_59
+# %bb.58:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
 	ld.d	$a1, $sp, 216
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB88_65:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
+.LBB88_59:                              # %_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev.exit
 	pcalau12i	$a0, %got_pc_hi20(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTVSt15basic_streambufIcSt11char_traitsIcEE)
 	addi.d	$a0, $a0, 16
@@ -60231,29 +60098,29 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	pcaddu18i	$ra, %call36(_ZNSt8ios_baseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 504
-	beqz	$a0, .LBB88_67
-# %bb.66:
+	beqz	$a0, .LBB88_61
+# %bb.60:
 	ld.d	$a1, $sp, 520
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB88_67:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit
+.LBB88_61:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit
 	ld.d	$a0, $sp, 528
-	beqz	$a0, .LBB88_69
-# %bb.68:
+	beqz	$a0, .LBB88_63
+# %bb.62:
 	ld.d	$a1, $sp, 544
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB88_69:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit
+.LBB88_63:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit
 	ld.d	$a0, $sp, 552
-	beqz	$a0, .LBB88_71
-# %bb.70:
+	beqz	$a0, .LBB88_65
+# %bb.64:
 	ld.d	$a1, $sp, 568
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB88_71:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit68
+.LBB88_65:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit68
 	ld.d	$s8, $sp, 584                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 592                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 600                   # 8-byte Folded Reload
@@ -60267,68 +60134,68 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	ld.d	$ra, $sp, 664                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 672
 	ret
-.LBB88_72:                              # %.noexc
+.LBB88_66:                              # %.noexc
 	pcalau12i	$a0, %pc_hi20(.L.str.240)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.240)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
-.LBB88_73:
+.LBB88_67:
 .Ltmp2993:                              # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 528
-	beqz	$a0, .LBB88_82
-	b	.LBB88_85
-.LBB88_74:
+	beqz	$a0, .LBB88_76
+	b	.LBB88_79
+.LBB88_68:
 .Ltmp2990:                              # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 552
-	beqz	$a0, .LBB88_83
-	b	.LBB88_86
-.LBB88_75:
+	beqz	$a0, .LBB88_77
+	b	.LBB88_80
+.LBB88_69:
 .Ltmp2999:                              # EH_LABEL
-	b	.LBB88_79
-.LBB88_76:
+	b	.LBB88_73
+.LBB88_70:
 .Ltmp2996:                              # EH_LABEL
 	move	$fp, $a0
-	b	.LBB88_80
-.LBB88_77:
+	b	.LBB88_74
+.LBB88_71:
 .Ltmp3002:                              # EH_LABEL
-	b	.LBB88_79
-.LBB88_78:
+	b	.LBB88_73
+.LBB88_72:
 .Ltmp3009:                              # EH_LABEL
-.LBB88_79:
+.LBB88_73:
 	move	$fp, $a0
 	addi.d	$a0, $sp, 104
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEED1Ev)
 	jirl	$ra, $ra, 0
-.LBB88_80:
+.LBB88_74:
 	ld.d	$a0, $sp, 504
-	bnez	$a0, .LBB88_84
-# %bb.81:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit70
+	bnez	$a0, .LBB88_78
+# %bb.75:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit70
 	ld.d	$a0, $sp, 528
-	bnez	$a0, .LBB88_85
-.LBB88_82:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit72
+	bnez	$a0, .LBB88_79
+.LBB88_76:                              # %_ZNSt6vectorIPN2PP3CmdESaIS2_EED2Ev.exit72
 	ld.d	$a0, $sp, 552
-	bnez	$a0, .LBB88_86
-.LBB88_83:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit74
+	bnez	$a0, .LBB88_80
+.LBB88_77:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit74
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB88_84:
+.LBB88_78:
 	ld.d	$a1, $sp, 520
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 528
-	beqz	$a0, .LBB88_82
-.LBB88_85:
+	beqz	$a0, .LBB88_76
+.LBB88_79:
 	ld.d	$a1, $sp, 544
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 552
-	beqz	$a0, .LBB88_83
-.LBB88_86:
+	beqz	$a0, .LBB88_77
+.LBB88_80:
 	ld.d	$a1, $sp, 568
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -62368,36 +62235,13 @@ _ZN2PP11PowerParser9wt_carrayEiPci:     # @_ZN2PP11PowerParser9wt_carrayEiPci
 	bltu	$a1, $a4, .LBB98_16
 # %bb.6:                                # %iter.check
 	sub.d	$a5, $fp, $a0
-	ori	$a4, $zero, 64
+	ori	$a4, $zero, 32
 	bltu	$a5, $a4, .LBB98_16
 # %bb.7:                                # %vector.main.loop.iter.check
-	bgeu	$a1, $a4, .LBB98_9
+	bgeu	$a1, $a4, .LBB98_12
 # %bb.8:
 	move	$a2, $zero
-	b	.LBB98_13
-.LBB98_9:                               # %vector.ph
-	andi	$a4, $a3, 48
-	bstrpick.d	$a2, $a3, 30, 6
-	slli.d	$a2, $a2, 6
-	addi.d	$a5, $fp, 32
-	addi.d	$a6, $a0, 32
-	move	$a7, $a2
-	.p2align	4, , 16
-.LBB98_10:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a7, $a7, -64
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB98_10
-# %bb.11:                               # %middle.block
-	beq	$a1, $a2, .LBB98_18
-# %bb.12:                               # %vec.epilog.iter.check
-	beqz	$a4, .LBB98_16
-.LBB98_13:                              # %vec.epilog.ph
+.LBB98_9:                               # %vec.epilog.ph
 	move	$a5, $a2
 	bstrpick.d	$a2, $a3, 30, 4
 	slli.d	$a2, $a2, 4
@@ -62405,16 +62249,39 @@ _ZN2PP11PowerParser9wt_carrayEiPci:     # @_ZN2PP11PowerParser9wt_carrayEiPci
 	add.d	$a4, $fp, $a5
 	add.d	$a5, $a0, $a5
 	.p2align	4, , 16
-.LBB98_14:                              # %vec.epilog.vector.body
+.LBB98_10:                              # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a5, 0
 	vst	$vr0, $a4, 0
 	addi.d	$a3, $a3, 16
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB98_14
-# %bb.15:                               # %vec.epilog.middle.block
+	bnez	$a3, .LBB98_10
+# %bb.11:                               # %vec.epilog.middle.block
+	bne	$a1, $a2, .LBB98_16
+	b	.LBB98_18
+.LBB98_12:                              # %vector.ph
+	andi	$a4, $a3, 16
+	bstrpick.d	$a2, $a3, 30, 5
+	slli.d	$a2, $a2, 5
+	addi.d	$a5, $fp, 16
+	addi.d	$a6, $a0, 16
+	move	$a7, $a2
+	.p2align	4, , 16
+.LBB98_13:                              # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a6, -16
+	vld	$vr1, $a6, 0
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a7, $a7, -32
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	bnez	$a7, .LBB98_13
+# %bb.14:                               # %middle.block
 	beq	$a1, $a2, .LBB98_18
+# %bb.15:                               # %vec.epilog.iter.check
+	bnez	$a4, .LBB98_9
 .LBB98_16:                              # %vec.epilog.scalar.ph.preheader
 	add.d	$a3, $fp, $a2
 	add.d	$a4, $a0, $a2
@@ -63228,19 +63095,19 @@ _ZN2PP11PowerParser12set_rb_namesERSt6vectorINSt7__cxx1112basic_stringIcSt11char
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception64
 # %bb.0:
-	addi.d	$sp, $sp, -208
-	.cfi_def_cfa_offset 208
-	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	.cfi_def_cfa_offset 176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -63254,70 +63121,78 @@ _ZN2PP11PowerParser12set_rb_namesERSt6vectorINSt7__cxx1112basic_stringIcSt11char
 	.cfi_offset 31, -88
 	move	$fp, $a1
 	move	$s0, $a0
-	ori	$a0, $zero, 2480
-	xvldx	$xr1, $s0, $a0
-	ori	$a0, $zero, 2512
-	xvldx	$xr0, $s0, $a0
-	addi.d	$a0, $s0, 2047
+	addi.d	$a0, $a0, 2047
 	addi.d	$s1, $a0, 417
-	xvst	$xr1, $sp, 16                   # 32-byte Folded Spill
-	xvst	$xr1, $sp, 88
-	xvst	$xr0, $sp, 56
+	ldptr.d	$s2, $s0, 2480
+	ldptr.d	$s3, $s0, 2488
+	ori	$a0, $zero, 2512
+	vldx	$vr0, $s0, $a0
+	ldptr.d	$s4, $s0, 2496
+	ldptr.d	$s5, $s0, 2504
+	st.d	$s2, $sp, 56
+	vst	$vr0, $sp, 16
+	ori	$a0, $zero, 2528
+	vldx	$vr0, $s0, $a0
+	st.d	$s3, $sp, 64
+	st.d	$s4, $sp, 72
+	st.d	$s5, $sp, 80
+	vst	$vr0, $sp, 32
 .Ltmp3048:                              # EH_LABEL
-	addi.d	$a1, $sp, 88
-	addi.d	$a2, $sp, 56
+	addi.d	$a1, $sp, 56
+	addi.d	$a2, $sp, 16
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE19_M_destroy_data_auxESt15_Deque_iteratorIS5_RS5_PS5_ESB_)
 	jirl	$ra, $ra, 0
 .Ltmp3049:                              # EH_LABEL
 # %bb.1:                                # %.noexc.i
-	ldptr.d	$s2, $s0, 2536
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvpickve2gr.d	$a1, $xr0, 3
-	bgeu	$a1, $s2, .LBB108_3
+	ldptr.d	$s6, $s0, 2536
+	bgeu	$s5, $s6, .LBB108_4
+# %bb.2:                                # %.lr.ph.i.i.i.preheader
+	move	$a1, $s5
 	.p2align	4, , 16
-.LBB108_2:                              # %.lr.ph.i.i.i
+.LBB108_3:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $a1, 8
-	addi.d	$s3, $a1, 8
+	addi.d	$s7, $a1, 8
 	ori	$a1, $zero, 512
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	move	$a1, $s3
-	bltu	$s3, $s2, .LBB108_2
-.LBB108_3:                              # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE5clearEv.exit
-	ori	$a0, $zero, 2512
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvstx	$xr0, $s0, $a0
+	move	$a1, $s7
+	bltu	$s7, $s6, .LBB108_3
+.LBB108_4:                              # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE5clearEv.exit
+	stptr.d	$s2, $s0, 2512
+	stptr.d	$s3, $s0, 2520
+	stptr.d	$s4, $s0, 2528
+	stptr.d	$s5, $s0, 2536
 	ld.d	$a0, $fp, 8
 	ld.d	$a2, $fp, 0
 	sub.d	$a0, $a0, $a2
 	srli.d	$a0, $a0, 5
 	addi.w	$a0, $a0, 0
-	blez	$a0, .LBB108_15
-# %bb.4:                                # %.lr.ph.preheader
+	blez	$a0, .LBB108_16
+# %bb.5:                                # %.lr.ph.preheader
 	move	$s5, $zero
 	move	$s6, $zero
 	ori	$s7, $zero, 16
 	ori	$s8, $zero, 1
-	b	.LBB108_8
+	b	.LBB108_9
 	.p2align	4, , 16
-.LBB108_5:                              #   in Loop: Header=BB108_8 Depth=1
+.LBB108_6:                              #   in Loop: Header=BB108_9 Depth=1
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB108_6:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
-                                        #   in Loop: Header=BB108_8 Depth=1
-	ld.d	$a0, $sp, 88
+.LBB108_7:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit.i
+                                        #   in Loop: Header=BB108_9 Depth=1
+	ld.d	$a0, $sp, 56
 	ld.d	$a1, $s2, 0
 	st.d	$a0, $s2, 8
 	stx.b	$zero, $a1, $a0
 	ldptr.d	$a0, $s0, 2512
 	addi.d	$a0, $a0, 32
 	stptr.d	$a0, $s0, 2512
-.LBB108_7:                              # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
-                                        #   in Loop: Header=BB108_8 Depth=1
+.LBB108_8:                              # %_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE9push_backERKS5_.exit
+                                        #   in Loop: Header=BB108_9 Depth=1
 	ld.d	$a0, $fp, 8
 	ld.d	$a2, $fp, 0
 	addi.d	$s6, $s6, 1
@@ -63325,62 +63200,62 @@ _ZN2PP11PowerParser12set_rb_namesERSt6vectorINSt7__cxx1112basic_stringIcSt11char
 	slli.d	$a0, $a0, 27
 	srai.d	$a0, $a0, 32
 	addi.d	$s5, $s5, 32
-	bge	$s6, $a0, .LBB108_15
-.LBB108_8:                              # %.lr.ph
+	bge	$s6, $a0, .LBB108_16
+.LBB108_9:                              # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ldptr.d	$a0, $s0, 2528
 	ldptr.d	$s2, $s0, 2512
 	addi.d	$a0, $a0, -32
 	add.d	$a1, $a2, $s5
-	beq	$s2, $a0, .LBB108_14
-# %bb.9:                                #   in Loop: Header=BB108_8 Depth=1
+	beq	$s2, $a0, .LBB108_15
+# %bb.10:                               #   in Loop: Header=BB108_9 Depth=1
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $s2, 0
 	ld.d	$s3, $a1, 8
 	ldx.d	$s4, $a2, $s5
-	st.d	$s3, $sp, 88
-	bltu	$s3, $s7, .LBB108_11
-# %bb.10:                               # %.noexc.i.i
-                                        #   in Loop: Header=BB108_8 Depth=1
-	addi.d	$a1, $sp, 88
+	st.d	$s3, $sp, 56
+	bltu	$s3, $s7, .LBB108_12
+# %bb.11:                               # %.noexc.i.i
+                                        #   in Loop: Header=BB108_9 Depth=1
+	addi.d	$a1, $sp, 56
 	move	$a0, $s2
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s2, 0
-	ld.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 56
 	st.d	$a1, $s2, 16
-.LBB108_11:                             # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB108_8 Depth=1
-	beqz	$s3, .LBB108_6
-# %bb.12:                               # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB108_8 Depth=1
-	bne	$s3, $s8, .LBB108_5
-# %bb.13:                               #   in Loop: Header=BB108_8 Depth=1
+.LBB108_12:                             # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB108_9 Depth=1
+	beqz	$s3, .LBB108_7
+# %bb.13:                               # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB108_9 Depth=1
+	bne	$s3, $s8, .LBB108_6
+# %bb.14:                               #   in Loop: Header=BB108_9 Depth=1
 	ld.b	$a1, $s4, 0
 	st.b	$a1, $a0, 0
-	b	.LBB108_6
+	b	.LBB108_7
 	.p2align	4, , 16
-.LBB108_14:                             #   in Loop: Header=BB108_8 Depth=1
+.LBB108_15:                             #   in Loop: Header=BB108_9 Depth=1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE16_M_push_back_auxIJRKS5_EEEvDpOT_)
 	jirl	$ra, $ra, 0
-	b	.LBB108_7
-.LBB108_15:                             # %._crit_edge
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 208
+	b	.LBB108_8
+.LBB108_16:                             # %._crit_edge
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
-.LBB108_16:
+.LBB108_17:
 .Ltmp3050:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -63499,11 +63374,14 @@ _ZN2PP11PowerParser13set_rb_aflagsEPii: # @_ZN2PP11PowerParser13set_rb_aflagsEPi
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	move	$s1, $a0
-	ldptr.d	$a3, $a0, 2584
 	ori	$a0, $zero, 2560
+	vldx	$vr0, $s1, $a0
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	ldptr.d	$a3, $s1, 2584
+	ori	$a0, $zero, 2576
 	ldptr.d	$s2, $s1, 2616
-	xvldx	$xr0, $s1, $a0
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	vldx	$vr0, $s1, $a0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	move	$fp, $a2
 	move	$s0, $a1
 	bgeu	$a3, $s2, .LBB110_2
@@ -63519,8 +63397,11 @@ _ZN2PP11PowerParser13set_rb_aflagsEPii: # @_ZN2PP11PowerParser13set_rb_aflagsEPi
 	bltu	$s3, $s2, .LBB110_1
 .LBB110_2:                              # %_ZNSt5dequeIbSaIbEE5clearEv.exit
 	ori	$a0, $zero, 2592
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvstx	$xr0, $s1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vstx	$vr0, $s1, $a0
+	ori	$a0, $zero, 2608
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vstx	$vr0, $s1, $a0
 	blez	$fp, .LBB110_5
 # %bb.3:                                # %.lr.ph.preheader
 	addi.d	$a0, $s1, 2047
@@ -63737,11 +63618,14 @@ _ZN2PP11PowerParser13set_rb_satprbEPii: # @_ZN2PP11PowerParser13set_rb_satprbEPi
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	move	$fp, $a0
-	ldptr.d	$a3, $a0, 2752
 	ori	$a0, $zero, 2728
+	vldx	$vr0, $fp, $a0
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	ldptr.d	$a3, $fp, 2752
+	ori	$a0, $zero, 2744
 	ldptr.d	$s2, $fp, 2784
-	xvldx	$xr0, $fp, $a0
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	vldx	$vr0, $fp, $a0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	move	$s0, $a2
 	move	$s1, $a1
 	bgeu	$a3, $s2, .LBB114_2
@@ -63757,8 +63641,11 @@ _ZN2PP11PowerParser13set_rb_satprbEPii: # @_ZN2PP11PowerParser13set_rb_satprbEPi
 	bltu	$s3, $s2, .LBB114_1
 .LBB114_2:                              # %_ZNSt5dequeIiSaIiEE5clearEv.exit
 	ori	$a0, $zero, 2760
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvstx	$xr0, $fp, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vstx	$vr0, $fp, $a0
+	ori	$a0, $zero, 2776
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vstx	$vr0, $fp, $a0
 	blez	$s0, .LBB114_7
 # %bb.3:                                # %.lr.ph.preheader
 	addi.d	$a0, $fp, 2047
@@ -63976,11 +63863,14 @@ _ZN2PP11PowerParser10set_rb_satEPii:    # @_ZN2PP11PowerParser10set_rb_satEPii
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	move	$s1, $a0
-	ldptr.d	$a3, $a0, 2672
 	ori	$a0, $zero, 2648
+	vldx	$vr0, $s1, $a0
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	ldptr.d	$a3, $s1, 2672
+	ori	$a0, $zero, 2664
 	ldptr.d	$s2, $s1, 2704
-	xvldx	$xr0, $s1, $a0
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	vldx	$vr0, $s1, $a0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	move	$fp, $a2
 	move	$s0, $a1
 	bgeu	$a3, $s2, .LBB116_2
@@ -63996,8 +63886,11 @@ _ZN2PP11PowerParser10set_rb_satEPii:    # @_ZN2PP11PowerParser10set_rb_satEPii
 	bltu	$s3, $s2, .LBB116_1
 .LBB116_2:                              # %_ZNSt5dequeIbSaIbEE5clearEv.exit
 	ori	$a0, $zero, 2680
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvstx	$xr0, $s1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vstx	$vr0, $s1, $a0
+	ori	$a0, $zero, 2696
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vstx	$vr0, $s1, $a0
 	blez	$fp, .LBB116_5
 # %bb.3:                                # %.lr.ph.preheader
 	addi.d	$a0, $s1, 2047
@@ -72772,10 +72665,14 @@ _ZNSt5dequeIN2PP4WordESaIS1_EED2Ev:     # @_ZNSt5dequeIN2PP4WordESaIS1_EED2Ev
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	move	$fp, $a0
-	xvld	$xr0, $a0, 16
-	xvld	$xr1, $a0, 48
-	xvst	$xr0, $sp, 48
-	xvst	$xr1, $sp, 16
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 32
+	vld	$vr2, $a0, 48
+	vld	$vr3, $a0, 64
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
+	vst	$vr2, $sp, 16
+	vst	$vr3, $sp, 32
 .Ltmp3453:                              # EH_LABEL
 	addi.d	$a1, $sp, 48
 	addi.d	$a2, $sp, 16
@@ -73055,12 +72952,18 @@ _ZNSt5dequeIN2PP4WordESaIS1_EEC2ERKS3_: # @_ZNSt5dequeIN2PP4WordESaIS1_EEC2ERKS3
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZNSt11_Deque_baseIN2PP4WordESaIS1_EE17_M_initialize_mapEm)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s0, 16
-	xvld	$xr1, $s0, 48
-	xvld	$xr2, $fp, 16
-	xvst	$xr0, $sp, 112
-	xvst	$xr1, $sp, 80
-	xvst	$xr2, $sp, 48
+	vld	$vr0, $s0, 16
+	vld	$vr1, $s0, 32
+	vst	$vr0, $sp, 112
+	vst	$vr1, $sp, 128
+	vld	$vr0, $s0, 48
+	vld	$vr1, $s0, 64
+	vld	$vr2, $fp, 16
+	vld	$vr3, $fp, 32
+	vst	$vr0, $sp, 80
+	vst	$vr1, $sp, 96
+	vst	$vr2, $sp, 48
+	vst	$vr3, $sp, 64
 .Ltmp3456:                              # EH_LABEL
 	addi.d	$a0, $sp, 16
 	addi.d	$a1, $sp, 112
@@ -73540,19 +73443,21 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorIN2PP4WordERKS2_PS3_ES0_IS2_RS2_PS2_EE
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	xvld	$xr0, $a3, 0
 	move	$s3, $a1
-	move	$s1, $a0
-	xvst	$xr0, $a0, 0
+	move	$s0, $a0
+	ld.d	$fp, $a3, 0
+	ld.d	$s4, $a3, 8
+	ld.d	$s6, $a3, 16
+	ld.d	$s5, $a3, 24
 	ld.d	$a1, $a1, 0
 	ld.d	$a0, $a2, 0
-	xvpickve2gr.d	$fp, $xr0, 0
-	xvpickve2gr.d	$s4, $xr0, 1
-	xvpickve2gr.d	$s6, $xr0, 2
-	xvpickve2gr.d	$s5, $xr0, 3
+	st.d	$fp, $s0, 0
+	st.d	$s4, $s0, 8
+	st.d	$s6, $s0, 16
+	st.d	$s5, $s0, 24
 	beq	$a1, $a0, .LBB154_8
 # %bb.1:                                # %.lr.ph
-	move	$s0, $a3
+	move	$s1, $a3
 	move	$s2, $a2
 	b	.LBB154_3
 	.p2align	4, , 16
@@ -73597,10 +73502,10 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorIN2PP4WordERKS2_PS3_ES0_IS2_RS2_PS2_EE
 	move	$fp, $s4
 	b	.LBB154_2
 .LBB154_8:                              # %._crit_edge
-	st.d	$fp, $s1, 0
-	st.d	$s6, $s1, 16
-	st.d	$s5, $s1, 24
-	st.d	$s4, $s1, 8
+	st.d	$fp, $s0, 0
+	st.d	$s6, $s0, 16
+	st.d	$s5, $s0, 24
+	st.d	$s4, $s0, 8
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -73614,14 +73519,14 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorIN2PP4WordERKS2_PS3_ES0_IS2_RS2_PS2_EE
 	ret
 .LBB154_9:
 .Ltmp3479:                              # EH_LABEL
-	st.d	$fp, $s1, 0
-	st.d	$s6, $s1, 16
-	st.d	$s5, $s1, 24
-	st.d	$s4, $s1, 8
+	st.d	$fp, $s0, 0
+	st.d	$s6, $s0, 16
+	st.d	$s5, $s0, 24
+	st.d	$s4, $s0, 8
 	pcaddu18i	$ra, %call36(__cxa_begin_catch)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $s0, 0
-	bne	$s1, $fp, .LBB154_12
+	ld.d	$s0, $s1, 0
+	bne	$s0, $fp, .LBB154_12
 .LBB154_10:                             # %_ZSt8_DestroyISt15_Deque_iteratorIN2PP4WordERS2_PS2_EEvT_S6_.exit
 .Ltmp3480:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__cxa_rethrow)
@@ -73629,24 +73534,24 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorIN2PP4WordERKS2_PS3_ES0_IS2_RS2_PS2_EE
 .Ltmp3481:                              # EH_LABEL
 # %bb.11:
 .LBB154_12:                             # %.lr.ph.i.i.preheader
-	ld.d	$s2, $s0, 24
-	ld.d	$s0, $s0, 16
+	ld.d	$s2, $s1, 24
+	ld.d	$s1, $s1, 16
 	b	.LBB154_14
 	.p2align	4, , 16
 .LBB154_13:                             # %_ZNSt15_Deque_iteratorIN2PP4WordERS1_PS1_EppEv.exit.i.i
                                         #   in Loop: Header=BB154_14 Depth=1
-	beq	$s1, $fp, .LBB154_10
+	beq	$s0, $fp, .LBB154_10
 .LBB154_14:                             # %.lr.ph.i.i
                                         # =>This Inner Loop Header: Depth=1
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN2PP4WordD1Ev)
 	jirl	$ra, $ra, 0
-	addi.d	$s1, $s1, 128
-	bne	$s1, $s0, .LBB154_13
+	addi.d	$s0, $s0, 128
+	bne	$s0, $s1, .LBB154_13
 # %bb.15:                               #   in Loop: Header=BB154_14 Depth=1
-	ld.d	$s1, $s2, 8
+	ld.d	$s0, $s2, 8
 	addi.d	$s2, $s2, 8
-	addi.d	$s0, $s1, 512
+	addi.d	$s1, $s0, 512
 	b	.LBB154_13
 .LBB154_16:
 .Ltmp3482:                              # EH_LABEL
@@ -75404,19 +75309,19 @@ _ZNSt5dequeIN2PP12RestartblockESaIS1_EE19_M_destroy_data_auxESt15_Deque_iterator
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception95
 # %bb.0:
-	addi.d	$sp, $sp, -176
-	.cfi_def_cfa_offset 176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -75429,12 +75334,12 @@ _ZNSt5dequeIN2PP12RestartblockESaIS1_EE19_M_destroy_data_auxESt15_Deque_iterator
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
 	ld.d	$a3, $a1, 24
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a0, $a2, 24
 	addi.d	$s4, $a3, 8
 	bgeu	$s4, $a0, .LBB167_79
 # %bb.1:
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB167_4
 	.p2align	4, , 16
 .LBB167_2:                              # %_ZNSt11_Deque_baseIN2PP4WordESaIS1_EE16_M_destroy_nodesEPPS1_S5_.exit.i.i
@@ -75445,7 +75350,7 @@ _ZNSt5dequeIN2PP12RestartblockESaIS1_EE19_M_destroy_data_auxESt15_Deque_iterator
 	jirl	$ra, $ra, 0
 .LBB167_3:                              # %_ZNSt5dequeIN2PP4WordESaIS1_EED2Ev.exit
                                         #   in Loop: Header=BB167_4 Depth=1
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 24
 	addi.d	$s4, $s4, 8
 	bgeu	$s4, $a0, .LBB167_78
@@ -75517,14 +75422,18 @@ _ZNSt5dequeIN2PP12RestartblockESaIS1_EE19_M_destroy_data_auxESt15_Deque_iterator
 	jirl	$ra, $ra, 0
 .LBB167_12:                             # %_ZN2PP12RestartblockD2Ev.exit
                                         #   in Loop: Header=BB167_4 Depth=1
-	xvld	$xr0, $s5, 336
-	xvld	$xr1, $s5, 368
 	addi.d	$s1, $s5, 320
-	xvst	$xr0, $sp, 56
-	xvst	$xr1, $sp, 24
+	vld	$vr0, $s5, 336
+	vld	$vr1, $s5, 352
+	vld	$vr2, $s5, 368
+	vld	$vr3, $s5, 384
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 80
+	vst	$vr2, $sp, 32
+	vst	$vr3, $sp, 48
 .Ltmp3523:                              # EH_LABEL
-	addi.d	$a1, $sp, 56
-	addi.d	$a2, $sp, 24
+	addi.d	$a1, $sp, 64
+	addi.d	$a2, $sp, 32
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE19_M_destroy_data_auxESt15_Deque_iteratorIS5_RS5_PS5_ESB_)
 	jirl	$ra, $ra, 0
@@ -75956,7 +75865,7 @@ _ZNSt5dequeIN2PP12RestartblockESaIS1_EE19_M_destroy_data_auxESt15_Deque_iterator
 	ld.d	$a0, $s5, 0
 	b	.LBB167_2
 .LBB167_78:                             # %._crit_edge.loopexit
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a3, $a1, 24
 .LBB167_79:                             # %._crit_edge
 	ld.d	$s1, $a1, 0
@@ -75973,7 +75882,7 @@ _ZNSt5dequeIN2PP12RestartblockESaIS1_EE19_M_destroy_data_auxESt15_Deque_iterator
 	addi.d	$s1, $s1, 520
 	bne	$s1, $fp, .LBB167_81
 .LBB167_82:                             # %_ZSt8_DestroyIPN2PP12RestartblockEEvT_S3_.exit9
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s0, $a0, 8
 	ld.d	$fp, $a0, 0
 	beq	$s0, $fp, .LBB167_86
@@ -75987,7 +75896,7 @@ _ZNSt5dequeIN2PP12RestartblockESaIS1_EE19_M_destroy_data_auxESt15_Deque_iterator
 	bne	$s0, $fp, .LBB167_83
 	b	.LBB167_86
 .LBB167_84:
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$fp, $a0, 0
 	beq	$s1, $fp, .LBB167_86
 	.p2align	4, , 16
@@ -75999,18 +75908,18 @@ _ZNSt5dequeIN2PP12RestartblockESaIS1_EE19_M_destroy_data_auxESt15_Deque_iterator
 	addi.d	$s1, $s1, 520
 	bne	$s1, $fp, .LBB167_85
 .LBB167_86:                             # %_ZSt8_DestroyIPN2PP12RestartblockEEvT_S3_.exit14
-	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB167_87:
 .Ltmp3525:                              # EH_LABEL
@@ -76206,8 +76115,10 @@ _ZNSt5dequeIN2PP3CmdESaIS1_EE15_M_erase_at_endESt15_Deque_iteratorIS1_RS1_PS1_E:
 	move	$a1, $s2
 	bltu	$s2, $s1, .LBB169_10
 .LBB169_11:                             # %_ZNSt11_Deque_baseIN2PP3CmdESaIS1_EE16_M_destroy_nodesEPPS1_S5_.exit
-	xvld	$xr0, $s0, 0
-	xvst	$xr0, $fp, 48
+	vld	$vr0, $s0, 16
+	vst	$vr0, $fp, 64
+	vld	$vr0, $s0, 0
+	vst	$vr0, $fp, 48
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
@@ -77329,68 +77240,71 @@ _ZNSt5dequeIN2PP3CmdESaIS1_EE8_M_eraseESt15_Deque_iteratorIS1_RS1_PS1_E: # @_ZNS
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	xvld	$xr0, $a2, 0
-	xvpickve2gr.d	$a4, $xr0, 0
-	addi.d	$a3, $a4, 432
-	xvpickve2gr.d	$a2, $xr0, 2
-	xvpickve2gr.d	$t0, $xr0, 1
-	xvpickve2gr.d	$t1, $xr0, 3
+	ld.d	$a5, $a2, 0
+	ld.d	$a4, $a2, 8
+	ld.d	$a3, $a2, 16
+	ld.d	$a2, $a2, 24
+	addi.d	$a6, $a5, 432
 	move	$s0, $a1
 	move	$fp, $a0
-	move	$a5, $t0
-	move	$a1, $t1
-	bne	$a3, $a2, .LBB177_2
+	move	$t0, $a4
+	move	$a7, $a3
+	move	$a1, $a2
+	bne	$a6, $a3, .LBB177_2
 # %bb.1:
-	ld.d	$a3, $t1, 8
-	addi.d	$a1, $t1, 8
-	addi.d	$a2, $a3, 432
-	move	$a5, $a3
+	ld.d	$a6, $a2, 8
+	addi.d	$a1, $a2, 8
+	addi.d	$a7, $a6, 432
+	move	$t0, $a6
 .LBB177_2:                              # %_ZNSt15_Deque_iteratorIN2PP3CmdERS1_PS1_EppEv.exit
-	ld.d	$a7, $s0, 40
+	ld.d	$t2, $s0, 40
 	ld.d	$s1, $s0, 16
-	ld.d	$a6, $s0, 32
-	sub.d	$a0, $t1, $a7
+	ld.d	$t1, $s0, 32
+	sub.d	$a0, $a2, $t2
 	srai.d	$a0, $a0, 3
-	sltu	$t1, $zero, $t1
-	sub.d	$t0, $a4, $t0
-	srai.d	$t0, $t0, 4
-	lu12i.w	$t2, 427197
-	ori	$t2, $t2, 2579
-	lu32i.d	$t2, -155345
-	lu52i.d	$s2, $t2, -1973
-	mul.d	$t0, $t0, $s2
-	sub.d	$t2, $a6, $s1
-	srai.d	$t2, $t2, 4
-	mul.d	$t2, $t2, $s2
-	sub.d	$t0, $t0, $t1
-	add.d	$t0, $t0, $t2
-	ld.d	$t1, $s0, 72
-	add.d	$s3, $t0, $a0
-	ld.d	$t0, $s0, 48
-	ld.d	$a0, $s0, 56
-	sub.d	$t3, $t1, $a7
-	srai.d	$t3, $t3, 3
-	sltu	$t4, $zero, $t1
-	sub.d	$t5, $t0, $a0
+	sltu	$t3, $zero, $a2
+	sub.d	$t4, $a5, $a4
+	srai.d	$t4, $t4, 4
+	lu12i.w	$t5, 427197
+	ori	$t5, $t5, 2579
+	lu32i.d	$t5, -155345
+	lu52i.d	$s2, $t5, -1973
+	mul.d	$t4, $t4, $s2
+	sub.d	$t5, $t1, $s1
 	srai.d	$t5, $t5, 4
 	mul.d	$t5, $t5, $s2
-	sub.d	$t2, $t2, $t4
-	add.d	$t2, $t2, $t3
-	add.d	$t2, $t2, $t5
-	srli.d	$t2, $t2, 1
-	bgeu	$s3, $t2, .LBB177_7
+	sub.d	$t3, $t4, $t3
+	add.d	$t3, $t3, $t5
+	ld.d	$t4, $s0, 72
+	add.d	$s3, $t3, $a0
+	ld.d	$t3, $s0, 48
+	ld.d	$a0, $s0, 56
+	sub.d	$t6, $t4, $t2
+	srai.d	$t6, $t6, 3
+	sltu	$t7, $zero, $t4
+	sub.d	$t8, $t3, $a0
+	srai.d	$t8, $t8, 4
+	mul.d	$t8, $t8, $s2
+	sub.d	$t5, $t5, $t7
+	add.d	$t5, $t5, $t6
+	add.d	$t5, $t5, $t8
+	srli.d	$t5, $t5, 1
+	bgeu	$s3, $t5, .LBB177_7
 # %bb.3:
-	beq	$a4, $s1, .LBB177_5
+	beq	$a5, $s1, .LBB177_5
 # %bb.4:
 	ld.d	$a0, $s0, 24
 	st.d	$s1, $sp, 104
 	st.d	$a0, $sp, 112
-	st.d	$a6, $sp, 120
-	st.d	$a7, $sp, 128
-	xvst	$xr0, $sp, 72
-	st.d	$a3, $sp, 40
-	st.d	$a5, $sp, 48
-	st.d	$a2, $sp, 56
+	st.d	$t1, $sp, 120
+	st.d	$t2, $sp, 128
+	st.d	$a5, $sp, 72
+	st.d	$a4, $sp, 80
+	st.d	$a3, $sp, 88
+	st.d	$a2, $sp, 96
+	st.d	$a6, $sp, 40
+	st.d	$t0, $sp, 48
+	st.d	$a7, $sp, 56
 	st.d	$a1, $sp, 64
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 104
@@ -77399,9 +77313,9 @@ _ZNSt5dequeIN2PP3CmdESaIS1_EE8_M_eraseESt15_Deque_iteratorIS1_RS1_PS1_E: # @_ZNS
 	pcaddu18i	$ra, %call36(_ZSt24__copy_move_backward_ditILb1EN2PP3CmdERS1_PS1_St15_Deque_iteratorIS1_S2_S3_EET3_S4_IT0_T1_T2_ESA_S6_)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s0, 16
-	ld.d	$a6, $s0, 32
+	ld.d	$t1, $s0, 32
 .LBB177_5:
-	addi.d	$s4, $a6, -432
+	addi.d	$s4, $t1, -432
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN2PP3CmdD2Ev)
 	jirl	$ra, $ra, 0
@@ -77412,30 +77326,33 @@ _ZNSt5dequeIN2PP3CmdESaIS1_EE8_M_eraseESt15_Deque_iteratorIS1_RS1_PS1_E: # @_ZNS
 	st.d	$a0, $s0, 16
 	b	.LBB177_14
 .LBB177_7:
-	beq	$a3, $t0, .LBB177_9
+	beq	$a6, $t3, .LBB177_9
 # %bb.8:
-	ld.d	$a4, $s0, 64
-	st.d	$a3, $sp, 104
-	st.d	$a5, $sp, 112
-	st.d	$a2, $sp, 120
+	ld.d	$t1, $s0, 64
+	st.d	$a6, $sp, 104
+	st.d	$t0, $sp, 112
+	st.d	$a7, $sp, 120
 	st.d	$a1, $sp, 128
-	st.d	$t0, $sp, 72
+	st.d	$t3, $sp, 72
 	st.d	$a0, $sp, 80
-	st.d	$a4, $sp, 88
-	st.d	$t1, $sp, 96
-	xvst	$xr0, $sp, 40
+	st.d	$t1, $sp, 88
+	st.d	$t4, $sp, 96
+	st.d	$a5, $sp, 40
+	st.d	$a4, $sp, 48
+	st.d	$a3, $sp, 56
+	st.d	$a2, $sp, 64
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 104
 	addi.d	$a2, $sp, 72
 	addi.d	$a3, $sp, 40
 	pcaddu18i	$ra, %call36(_ZSt15__copy_move_ditILb1EN2PP3CmdERS1_PS1_St15_Deque_iteratorIS1_S2_S3_EET3_S4_IT0_T1_T2_ESA_S6_)
 	jirl	$ra, $ra, 0
-	ld.d	$t0, $s0, 48
+	ld.d	$t3, $s0, 48
 	ld.d	$a0, $s0, 56
 .LBB177_9:
-	beq	$t0, $a0, .LBB177_12
+	beq	$t3, $a0, .LBB177_12
 # %bb.10:
-	addi.d	$a0, $t0, -432
+	addi.d	$a0, $t3, -432
 	b	.LBB177_13
 .LBB177_11:
 	ld.d	$a0, $s0, 24
@@ -78413,8 +78330,10 @@ _ZN2PP3CmdaSEOS0_:                      # @_ZN2PP3CmdaSEOS0_
 .LBB179_94:                             # %_ZNSt6vectorIbSaIbEEaSEOS1_.exit
 	ld.d	$a0, $fp, 384
 	st.d	$a0, $s0, 384
-	xvld	$xr0, $fp, 352
-	xvst	$xr0, $s0, 352
+	vld	$vr0, $fp, 368
+	vst	$vr0, $s0, 368
+	vld	$vr0, $fp, 352
+	vst	$vr0, $s0, 352
 	st.d	$zero, $fp, 352
 	st.w	$zero, $fp, 360
 	st.d	$zero, $fp, 368
@@ -78435,8 +78354,10 @@ _ZN2PP3CmdaSEOS0_:                      # @_ZN2PP3CmdaSEOS0_
 .LBB179_96:                             # %_ZNSt6vectorIbSaIbEEaSEOS1_.exit78
 	ld.d	$a0, $fp, 424
 	st.d	$a0, $s0, 424
-	xvld	$xr0, $fp, 392
-	xvst	$xr0, $s0, 392
+	vld	$vr0, $fp, 408
+	vst	$vr0, $s0, 408
+	vld	$vr0, $fp, 392
+	vst	$vr0, $s0, 392
 	st.d	$zero, $fp, 392
 	st.w	$zero, $fp, 400
 	st.d	$zero, $fp, 408
@@ -78485,24 +78406,42 @@ _ZNSt5dequeIN2PP4WordESaIS1_EE15_M_move_assign1EOS3_St17integral_constantIbLb1EE
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception99
 # %bb.0:
-	addi.d	$sp, $sp, -176
-	.cfi_def_cfa_offset 176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
+	.cfi_offset 25, -40
+	.cfi_offset 26, -48
+	.cfi_offset 27, -56
+	.cfi_offset 28, -64
+	.cfi_offset 29, -72
+	.cfi_offset 30, -80
+	.cfi_offset 31, -88
 	move	$s0, $a0
 	vld	$vr0, $a0, 0
-	xvld	$xr1, $a0, 16
-	xvst	$xr1, $sp, 48                   # 32-byte Folded Spill
-	xvld	$xr1, $a0, 48
-	xvst	$xr1, $sp, 16                   # 32-byte Folded Spill
+	ld.d	$s1, $a0, 16
+	ld.d	$s2, $a0, 24
+	ld.d	$s3, $a0, 32
+	ld.d	$s4, $a0, 40
+	ld.d	$s5, $a0, 48
+	ld.d	$s6, $a0, 56
+	ld.d	$s7, $a0, 64
+	ld.d	$s8, $a0, 72
 	move	$fp, $a1
-	vst	$vr0, $sp, 112
+	vst	$vr0, $sp, 40
 	ori	$a2, $zero, 80
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
@@ -78512,46 +78451,65 @@ _ZNSt5dequeIN2PP4WordESaIS1_EE15_M_move_assign1EOS3_St17integral_constantIbLb1EE
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 112
+	vld	$vr0, $sp, 40
 	vst	$vr0, $fp, 0
-	xvld	$xr1, $sp, 48                   # 32-byte Folded Reload
-	xvst	$xr1, $fp, 16
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $fp, 48
-	xvst	$xr1, $sp, 112
-	xvst	$xr0, $sp, 80
+	st.d	$s1, $fp, 16
+	st.d	$s2, $fp, 24
+	st.d	$s3, $fp, 32
+	st.d	$s4, $fp, 40
+	st.d	$s5, $fp, 48
+	st.d	$s6, $fp, 56
+	st.d	$s7, $fp, 64
+	st.d	$s8, $fp, 72
+	st.d	$s1, $sp, 40
+	st.d	$s2, $sp, 48
+	st.d	$s3, $sp, 56
+	st.d	$s4, $sp, 64
+	st.d	$s5, $sp, 8
+	st.d	$s6, $sp, 16
+	st.d	$s7, $sp, 24
+	st.d	$s8, $sp, 32
 .Ltmp3547:                              # EH_LABEL
-	addi.d	$a1, $sp, 112
-	addi.d	$a2, $sp, 80
+	addi.d	$a1, $sp, 40
+	addi.d	$a2, $sp, 8
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EE19_M_destroy_data_auxESt15_Deque_iteratorIS1_RS1_PS1_ES7_)
 	jirl	$ra, $ra, 0
 .Ltmp3548:                              # EH_LABEL
 # %bb.1:                                # %.noexc.i
 	ld.d	$s0, $fp, 72
-	xvld	$xr0, $sp, 48                   # 32-byte Folded Reload
-	xvpickve2gr.d	$a1, $xr0, 3
-	bgeu	$a1, $s0, .LBB180_3
+	bgeu	$s4, $s0, .LBB180_4
+# %bb.2:                                # %.lr.ph.i.i.i.preheader
+	move	$a1, $s4
 	.p2align	4, , 16
-.LBB180_2:                              # %.lr.ph.i.i.i
+.LBB180_3:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $a1, 8
-	addi.d	$s1, $a1, 8
+	addi.d	$s5, $a1, 8
 	ori	$a1, $zero, 512
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	move	$a1, $s1
-	bltu	$s1, $s0, .LBB180_2
-.LBB180_3:                              # %_ZNSt5dequeIN2PP4WordESaIS1_EE5clearEv.exit
-	xvld	$xr0, $sp, 48                   # 32-byte Folded Reload
-	xvst	$xr0, $fp, 48
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+	move	$a1, $s5
+	bltu	$s5, $s0, .LBB180_3
+.LBB180_4:                              # %_ZNSt5dequeIN2PP4WordESaIS1_EE5clearEv.exit
+	st.d	$s1, $fp, 48
+	st.d	$s2, $fp, 56
+	st.d	$s3, $fp, 64
+	st.d	$s4, $fp, 72
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
-.LBB180_4:
+.LBB180_5:
 .Ltmp3549:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -79442,12 +79400,18 @@ _ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EEC2ERKS7_
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZNSt11_Deque_baseINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_initialize_mapEm)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s0, 16
-	xvld	$xr1, $s0, 48
-	xvld	$xr2, $fp, 16
-	xvst	$xr0, $sp, 112
-	xvst	$xr1, $sp, 80
-	xvst	$xr2, $sp, 48
+	vld	$vr0, $s0, 16
+	vld	$vr1, $s0, 32
+	vst	$vr0, $sp, 112
+	vst	$vr1, $sp, 128
+	vld	$vr0, $s0, 48
+	vld	$vr1, $s0, 64
+	vld	$vr2, $fp, 16
+	vld	$vr3, $fp, 32
+	vst	$vr0, $sp, 80
+	vst	$vr1, $sp, 96
+	vst	$vr2, $sp, 48
+	vst	$vr3, $sp, 64
 .Ltmp3577:                              # EH_LABEL
 	addi.d	$a0, $sp, 16
 	addi.d	$a1, $sp, 112
@@ -79546,12 +79510,18 @@ _ZNSt5dequeIbSaIbEEC2ERKS1_:            # @_ZNSt5dequeIbSaIbEEC2ERKS1_
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZNSt11_Deque_baseIbSaIbEE17_M_initialize_mapEm)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s0, 16
-	xvld	$xr1, $s0, 48
-	xvld	$xr2, $fp, 16
-	xvst	$xr0, $sp, 112
-	xvst	$xr1, $sp, 80
-	xvst	$xr2, $sp, 48
+	vld	$vr0, $s0, 16
+	vld	$vr1, $s0, 32
+	vst	$vr0, $sp, 112
+	vst	$vr1, $sp, 128
+	vld	$vr0, $s0, 48
+	vld	$vr1, $s0, 64
+	vld	$vr2, $fp, 16
+	vld	$vr3, $fp, 32
+	vst	$vr0, $sp, 80
+	vst	$vr1, $sp, 96
+	vst	$vr2, $sp, 48
+	vst	$vr3, $sp, 64
 .Ltmp3580:                              # EH_LABEL
 	addi.d	$a0, $sp, 16
 	addi.d	$a1, $sp, 112
@@ -79614,19 +79584,19 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorINSt7__cxx1112basic_stringIcSt11char_t
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception104
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	.cfi_def_cfa_offset 192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	.cfi_def_cfa_offset 176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -79638,22 +79608,23 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorINSt7__cxx1112basic_stringIcSt11char_t
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	xvld	$xr0, $a3, 0
 	move	$s3, $a1
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	xvst	$xr0, $a0, 0
+	move	$fp, $a0
+	ld.d	$s0, $a3, 0
+	ld.d	$s6, $a3, 8
+	ld.d	$s8, $a3, 16
+	ld.d	$s7, $a3, 24
 	ld.d	$a1, $a1, 0
 	ld.d	$a0, $a2, 0
-	xvpickve2gr.d	$s1, $xr0, 0
-	xvpickve2gr.d	$s6, $xr0, 1
-	xvpickve2gr.d	$s8, $xr0, 2
-	xvpickve2gr.d	$s7, $xr0, 3
+	st.d	$s0, $fp, 0
+	st.d	$s6, $fp, 8
+	st.d	$s8, $fp, 16
+	st.d	$s7, $fp, 24
 	beq	$a1, $a0, .LBB186_14
 # %bb.1:                                # %.lr.ph
 	move	$s2, $a2
-	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
-	ori	$s0, $zero, 16
-	ori	$fp, $zero, 1
+	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
+	ori	$s1, $zero, 16
 	b	.LBB186_3
 	.p2align	4, , 16
 .LBB186_2:                              # %_ZNSt15_Deque_iteratorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERS5_PS5_EppEv.exit
@@ -79661,32 +79632,33 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorINSt7__cxx1112basic_stringIcSt11char_t
 	ld.d	$a0, $s2, 0
 	beq	$a1, $a0, .LBB186_14
 .LBB186_3:                              # =>This Inner Loop Header: Depth=1
-	addi.d	$a0, $s1, 16
-	st.d	$a0, $s1, 0
+	addi.d	$a0, $s0, 16
+	st.d	$a0, $s0, 0
 	ld.d	$s4, $a1, 8
 	ld.d	$s5, $a1, 0
-	st.d	$s4, $sp, 96
-	bltu	$s4, $s0, .LBB186_6
+	st.d	$s4, $sp, 80
+	bltu	$s4, $s1, .LBB186_6
 # %bb.4:                                # %.noexc.i.i
                                         #   in Loop: Header=BB186_3 Depth=1
 .Ltmp3583:                              # EH_LABEL
-	addi.d	$a1, $sp, 96
-	move	$a0, $s1
+	addi.d	$a1, $sp, 80
+	move	$a0, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp3584:                              # EH_LABEL
 # %bb.5:                                # %.noexc
                                         #   in Loop: Header=BB186_3 Depth=1
-	ld.d	$a1, $sp, 96
-	st.d	$a0, $s1, 0
-	st.d	$a1, $s1, 16
+	ld.d	$a1, $sp, 80
+	st.d	$a0, $s0, 0
+	st.d	$a1, $s0, 16
 .LBB186_6:                              # %._crit_edge.i.i.i
                                         #   in Loop: Header=BB186_3 Depth=1
 	beqz	$s4, .LBB186_10
 # %bb.7:                                # %._crit_edge.i.i.i
                                         #   in Loop: Header=BB186_3 Depth=1
-	bne	$s4, $fp, .LBB186_9
+	ori	$a1, $zero, 1
+	bne	$s4, $a1, .LBB186_9
 # %bb.8:                                #   in Loop: Header=BB186_3 Depth=1
 	ld.b	$a1, $s5, 0
 	st.b	$a1, $a0, 0
@@ -79698,9 +79670,9 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorINSt7__cxx1112basic_stringIcSt11char_t
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB186_10:                             #   in Loop: Header=BB186_3 Depth=1
-	ld.d	$a0, $sp, 96
-	ld.d	$a1, $s1, 0
-	st.d	$a0, $s1, 8
+	ld.d	$a0, $sp, 80
+	ld.d	$a1, $s0, 0
+	st.d	$a0, $s0, 8
 	stx.b	$zero, $a1, $a0
 	ld.d	$a0, $s3, 0
 	ld.d	$a2, $s3, 16
@@ -79709,8 +79681,8 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorINSt7__cxx1112basic_stringIcSt11char_t
 	beq	$a1, $a2, .LBB186_12
 # %bb.11:                               # %_ZNSt15_Deque_iteratorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS5_PS6_EppEv.exit
                                         #   in Loop: Header=BB186_3 Depth=1
-	addi.d	$s1, $s1, 32
-	bne	$s1, $s8, .LBB186_2
+	addi.d	$s0, $s0, 32
+	bne	$s0, $s8, .LBB186_2
 	b	.LBB186_13
 	.p2align	4, , 16
 .LBB186_12:                             #   in Loop: Header=BB186_3 Depth=1
@@ -79722,52 +79694,52 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorINSt7__cxx1112basic_stringIcSt11char_t
 	addi.d	$a0, $a1, 512
 	st.d	$a0, $s3, 16
 	st.d	$a1, $s3, 0
-	addi.d	$s1, $s1, 32
-	bne	$s1, $s8, .LBB186_2
+	addi.d	$s0, $s0, 32
+	bne	$s0, $s8, .LBB186_2
 .LBB186_13:                             #   in Loop: Header=BB186_3 Depth=1
 	ld.d	$s6, $s7, 8
 	addi.d	$s7, $s7, 8
 	addi.d	$s8, $s6, 512
-	move	$s1, $s6
+	move	$s0, $s6
 	b	.LBB186_2
 .LBB186_14:                             # %._crit_edge
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	st.d	$s1, $a0, 0
-	st.d	$s8, $a0, 16
-	st.d	$s7, $a0, 24
-	st.d	$s6, $a0, 8
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	st.d	$s0, $fp, 0
+	st.d	$s8, $fp, 16
+	st.d	$s7, $fp, 24
+	st.d	$s6, $fp, 8
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .LBB186_15:
 .Ltmp3585:                              # EH_LABEL
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	st.d	$s1, $a1, 0
-	st.d	$s8, $a1, 16
-	st.d	$s7, $a1, 24
-	st.d	$s6, $a1, 8
+	st.d	$s0, $fp, 0
+	st.d	$s8, $fp, 16
+	st.d	$s7, $fp, 24
+	st.d	$s6, $fp, 8
 	pcaddu18i	$ra, %call36(__cxa_begin_catch)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 64
-	st.d	$s1, $sp, 32
-	st.d	$s6, $sp, 40
-	st.d	$s8, $sp, 48
-	st.d	$s7, $sp, 56
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 16
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
+	st.d	$s0, $sp, 16
+	st.d	$s6, $sp, 24
+	st.d	$s8, $sp, 32
+	st.d	$s7, $sp, 40
 .Ltmp3586:                              # EH_LABEL
-	addi.d	$a0, $sp, 64
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(_ZSt8_DestroyISt15_Deque_iteratorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERS6_PS6_EEvT_SA_)
 	jirl	$ra, $ra, 0
 .Ltmp3587:                              # EH_LABEL
@@ -80826,12 +80798,18 @@ _ZNSt5dequeIN2PP3CmdESaIS1_EEC2ERKS3_:  # @_ZNSt5dequeIN2PP3CmdESaIS1_EEC2ERKS3_
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZNSt11_Deque_baseIN2PP3CmdESaIS1_EE17_M_initialize_mapEm)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s0, 16
-	xvld	$xr1, $s0, 48
-	xvld	$xr2, $fp, 16
-	xvst	$xr0, $sp, 112
-	xvst	$xr1, $sp, 80
-	xvst	$xr2, $sp, 48
+	vld	$vr0, $s0, 16
+	vld	$vr1, $s0, 32
+	vst	$vr0, $sp, 112
+	vst	$vr1, $sp, 128
+	vld	$vr0, $s0, 48
+	vld	$vr1, $s0, 64
+	vld	$vr2, $fp, 16
+	vld	$vr3, $fp, 32
+	vst	$vr0, $sp, 80
+	vst	$vr1, $sp, 96
+	vst	$vr2, $sp, 48
+	vst	$vr3, $sp, 64
 .Ltmp3621:                              # EH_LABEL
 	addi.d	$a0, $sp, 16
 	addi.d	$a1, $sp, 112
@@ -80914,19 +80892,21 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorIN2PP3CmdERKS2_PS3_ES0_IS2_RS2_PS2_EET
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	xvld	$xr0, $a3, 0
 	move	$s3, $a1
-	move	$s1, $a0
-	xvst	$xr0, $a0, 0
+	move	$s0, $a0
+	ld.d	$fp, $a3, 0
+	ld.d	$s4, $a3, 8
+	ld.d	$s6, $a3, 16
+	ld.d	$s5, $a3, 24
 	ld.d	$a1, $a1, 0
 	ld.d	$a0, $a2, 0
-	xvpickve2gr.d	$fp, $xr0, 0
-	xvpickve2gr.d	$s4, $xr0, 1
-	xvpickve2gr.d	$s6, $xr0, 2
-	xvpickve2gr.d	$s5, $xr0, 3
+	st.d	$fp, $s0, 0
+	st.d	$s4, $s0, 8
+	st.d	$s6, $s0, 16
+	st.d	$s5, $s0, 24
 	beq	$a1, $a0, .LBB193_8
 # %bb.1:                                # %.lr.ph
-	move	$s0, $a3
+	move	$s1, $a3
 	move	$s2, $a2
 	b	.LBB193_3
 	.p2align	4, , 16
@@ -80971,10 +80951,10 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorIN2PP3CmdERKS2_PS3_ES0_IS2_RS2_PS2_EET
 	move	$fp, $s4
 	b	.LBB193_2
 .LBB193_8:                              # %._crit_edge
-	st.d	$fp, $s1, 0
-	st.d	$s6, $s1, 16
-	st.d	$s5, $s1, 24
-	st.d	$s4, $s1, 8
+	st.d	$fp, $s0, 0
+	st.d	$s6, $s0, 16
+	st.d	$s5, $s0, 24
+	st.d	$s4, $s0, 8
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -80988,14 +80968,14 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorIN2PP3CmdERKS2_PS3_ES0_IS2_RS2_PS2_EET
 	ret
 .LBB193_9:
 .Ltmp3626:                              # EH_LABEL
-	st.d	$fp, $s1, 0
-	st.d	$s6, $s1, 16
-	st.d	$s5, $s1, 24
-	st.d	$s4, $s1, 8
+	st.d	$fp, $s0, 0
+	st.d	$s6, $s0, 16
+	st.d	$s5, $s0, 24
+	st.d	$s4, $s0, 8
 	pcaddu18i	$ra, %call36(__cxa_begin_catch)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $s0, 0
-	bne	$s1, $fp, .LBB193_12
+	ld.d	$s0, $s1, 0
+	bne	$s0, $fp, .LBB193_12
 .LBB193_10:                             # %_ZSt8_DestroyISt15_Deque_iteratorIN2PP3CmdERS2_PS2_EEvT_S6_.exit
 .Ltmp3627:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__cxa_rethrow)
@@ -81003,24 +80983,24 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorIN2PP3CmdERKS2_PS3_ES0_IS2_RS2_PS2_EET
 .Ltmp3628:                              # EH_LABEL
 # %bb.11:
 .LBB193_12:                             # %.lr.ph.i.i.preheader
-	ld.d	$s2, $s0, 24
-	ld.d	$s0, $s0, 16
+	ld.d	$s2, $s1, 24
+	ld.d	$s1, $s1, 16
 	b	.LBB193_14
 	.p2align	4, , 16
 .LBB193_13:                             # %_ZNSt15_Deque_iteratorIN2PP3CmdERS1_PS1_EppEv.exit.i.i
                                         #   in Loop: Header=BB193_14 Depth=1
-	beq	$s1, $fp, .LBB193_10
+	beq	$s0, $fp, .LBB193_10
 .LBB193_14:                             # %.lr.ph.i.i
                                         # =>This Inner Loop Header: Depth=1
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN2PP3CmdD2Ev)
 	jirl	$ra, $ra, 0
-	addi.d	$s1, $s1, 432
-	bne	$s1, $s0, .LBB193_13
+	addi.d	$s0, $s0, 432
+	bne	$s0, $s1, .LBB193_13
 # %bb.15:                               #   in Loop: Header=BB193_14 Depth=1
-	ld.d	$s1, $s2, 8
+	ld.d	$s0, $s2, 8
 	addi.d	$s2, $s2, 8
-	addi.d	$s0, $s1, 432
+	addi.d	$s1, $s0, 432
 	b	.LBB193_13
 .LBB193_16:
 .Ltmp3629:                              # EH_LABEL
@@ -81525,104 +81505,110 @@ _ZNSt5dequeIiSaIiEE8_M_eraseESt15_Deque_iteratorIiRiPiE: # @_ZNSt5dequeIiSaIiEE8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	xvld	$xr0, $a2, 0
-	xvpickve2gr.d	$a5, $xr0, 0
-	addi.d	$a3, $a5, 4
-	xvpickve2gr.d	$a2, $xr0, 2
-	xvpickve2gr.d	$t1, $xr0, 1
-	xvpickve2gr.d	$t2, $xr0, 3
+	ld.d	$a5, $a2, 0
+	ld.d	$a4, $a2, 8
+	ld.d	$a3, $a2, 16
+	ld.d	$a2, $a2, 24
+	addi.d	$a6, $a5, 4
 	move	$s0, $a1
 	move	$fp, $a0
-	move	$a6, $t1
-	move	$a4, $t2
-	bne	$a3, $a2, .LBB197_2
+	move	$t1, $a4
+	move	$t0, $a3
+	move	$a7, $a2
+	bne	$a6, $a3, .LBB197_2
 # %bb.1:
-	ld.d	$a3, $t2, 8
-	addi.d	$a4, $t2, 8
-	addi.d	$a2, $a3, 512
-	move	$a6, $a3
+	ld.d	$a6, $a2, 8
+	addi.d	$a7, $a2, 8
+	addi.d	$t0, $a6, 512
+	move	$t1, $a6
 .LBB197_2:                              # %_ZNSt15_Deque_iteratorIiRiPiEppEv.exit
-	ld.d	$t0, $s0, 40
-	ld.d	$a7, $s0, 16
+	ld.d	$t3, $s0, 40
+	ld.d	$t2, $s0, 16
 	ld.d	$a1, $s0, 32
-	sub.d	$a0, $t2, $t0
+	sub.d	$a0, $a2, $t3
 	srli.d	$a0, $a0, 3
-	sltu	$t2, $zero, $t2
-	sub.d	$a0, $a0, $t2
+	sltu	$t4, $zero, $a2
+	sub.d	$a0, $a0, $t4
 	slli.d	$a0, $a0, 7
-	sub.d	$t1, $a5, $t1
-	srai.d	$t1, $t1, 2
-	sub.d	$t3, $a1, $a7
-	ld.d	$t2, $s0, 72
-	srai.d	$t3, $t3, 2
-	add.d	$t1, $t3, $t1
-	add.d	$s1, $t1, $a0
-	sub.d	$a0, $t2, $t0
-	srli.d	$t4, $a0, 3
-	ld.d	$t1, $s0, 48
+	sub.d	$t4, $a5, $a4
+	srai.d	$t4, $t4, 2
+	sub.d	$t6, $a1, $t2
+	ld.d	$t5, $s0, 72
+	srai.d	$t6, $t6, 2
+	add.d	$t4, $t6, $t4
+	add.d	$s1, $t4, $a0
+	sub.d	$a0, $t5, $t3
+	srli.d	$t7, $a0, 3
+	ld.d	$t4, $s0, 48
 	ld.d	$a0, $s0, 56
-	sltu	$t5, $zero, $t2
-	sub.d	$t4, $t4, $t5
-	slli.d	$t4, $t4, 7
-	sub.d	$t5, $t1, $a0
-	srai.d	$t5, $t5, 2
-	add.d	$t3, $t5, $t3
-	add.d	$t3, $t3, $t4
-	srli.d	$t3, $t3, 1
-	bgeu	$s1, $t3, .LBB197_7
+	sltu	$t8, $zero, $t5
+	sub.d	$t7, $t7, $t8
+	slli.d	$t7, $t7, 7
+	sub.d	$t8, $t4, $a0
+	srai.d	$t8, $t8, 2
+	add.d	$t6, $t8, $t6
+	add.d	$t6, $t6, $t7
+	srli.d	$t6, $t6, 1
+	bgeu	$s1, $t6, .LBB197_7
 # %bb.3:
-	beq	$a5, $a7, .LBB197_5
+	beq	$a5, $t2, .LBB197_5
 # %bb.4:
 	ld.d	$a0, $s0, 24
-	st.d	$a7, $sp, 112
+	st.d	$t2, $sp, 112
 	st.d	$a0, $sp, 120
 	st.d	$a1, $sp, 128
-	st.d	$t0, $sp, 136
-	xvst	$xr0, $sp, 80
-	st.d	$a3, $sp, 48
-	st.d	$a6, $sp, 56
-	st.d	$a2, $sp, 64
-	st.d	$a4, $sp, 72
+	st.d	$t3, $sp, 136
+	st.d	$a5, $sp, 80
+	st.d	$a4, $sp, 88
+	st.d	$a3, $sp, 96
+	st.d	$a2, $sp, 104
+	st.d	$a6, $sp, 48
+	st.d	$t1, $sp, 56
+	st.d	$t0, $sp, 64
+	st.d	$a7, $sp, 72
 	addi.d	$a0, $sp, 16
 	addi.d	$a1, $sp, 112
 	addi.d	$a2, $sp, 80
 	addi.d	$a3, $sp, 48
 	pcaddu18i	$ra, %call36(_ZSt24__copy_move_backward_ditILb1EiRiPiSt15_Deque_iteratorIiS0_S1_EET3_S2_IT0_T1_T2_ES8_S4_)
 	jirl	$ra, $ra, 0
-	ld.d	$a7, $s0, 16
+	ld.d	$t2, $s0, 16
 	ld.d	$a1, $s0, 32
 .LBB197_5:
 	addi.d	$a0, $a1, -4
-	beq	$a7, $a0, .LBB197_11
+	beq	$t2, $a0, .LBB197_11
 # %bb.6:
-	addi.d	$a0, $a7, 4
+	addi.d	$a0, $t2, 4
 	st.d	$a0, $s0, 16
 	b	.LBB197_14
 .LBB197_7:
-	beq	$a3, $t1, .LBB197_9
+	beq	$a6, $t4, .LBB197_9
 # %bb.8:
 	ld.d	$a1, $s0, 64
-	st.d	$a3, $sp, 112
-	st.d	$a6, $sp, 120
-	st.d	$a2, $sp, 128
-	st.d	$a4, $sp, 136
-	st.d	$t1, $sp, 80
+	st.d	$a6, $sp, 112
+	st.d	$t1, $sp, 120
+	st.d	$t0, $sp, 128
+	st.d	$a7, $sp, 136
+	st.d	$t4, $sp, 80
 	st.d	$a0, $sp, 88
 	st.d	$a1, $sp, 96
-	st.d	$t2, $sp, 104
-	xvst	$xr0, $sp, 48
+	st.d	$t5, $sp, 104
+	st.d	$a5, $sp, 48
+	st.d	$a4, $sp, 56
+	st.d	$a3, $sp, 64
+	st.d	$a2, $sp, 72
 	addi.d	$a0, $sp, 16
 	addi.d	$a1, $sp, 112
 	addi.d	$a2, $sp, 80
 	addi.d	$a3, $sp, 48
 	pcaddu18i	$ra, %call36(_ZSt15__copy_move_ditILb1EiRiPiSt15_Deque_iteratorIiS0_S1_EET3_S2_IT0_T1_T2_ES8_S4_)
 	jirl	$ra, $ra, 0
-	ld.d	$t1, $s0, 48
+	ld.d	$t4, $s0, 48
 	ld.d	$a0, $s0, 56
 .LBB197_9:
-	beq	$t1, $a0, .LBB197_12
+	beq	$t4, $a0, .LBB197_12
 # %bb.10:
-	addi.d	$a2, $t1, -4
+	addi.d	$a2, $t4, -4
 	b	.LBB197_13
 .LBB197_11:
 	ld.d	$a0, $s0, 24

@@ -524,25 +524,25 @@ FlushInners:                            # @FlushInners
 	.type	ExpandRecursives,@function
 ExpandRecursives:                       # @ExpandRecursives
 # %bb.0:
-	addi.d	$sp, $sp, -336
-	st.d	$ra, $sp, 328                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 312                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 296                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 280                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 256                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 248                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -304
+	st.d	$ra, $sp, 296                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 280                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 264                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 216                   # 8-byte Folded Spill
 	move	$s2, $a0
 	lu12i.w	$a0, 2047
 	ori	$a0, $a0, 4095
-	st.w	$a0, $sp, 240
+	st.w	$a0, $sp, 208
 	bstrins.d	$a0, $a0, 54, 32
-	st.d	$a0, $sp, 232
-	st.d	$zero, $sp, 192
+	st.d	$a0, $sp, 200
+	st.d	$zero, $sp, 160
 	bnez	$s2, .LBB2_2
 # %bb.1:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
@@ -573,14 +573,12 @@ ExpandRecursives:                       # @ExpandRecursives
 	ld.d	$fp, $a1, %got_pc_lo12(zz_free)
 	pcalau12i	$a1, %got_pc_hi20(no_fpos)
 	ld.d	$a1, $a1, %got_pc_lo12(no_fpos)
-	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
 	lu12i.w	$a1, -2
 	ori	$a1, $a1, 3967
-	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 80                   # 32-byte Folded Spill
+	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	lu12i.w	$a1, 14
 	ori	$a1, $a1, 3837
 	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
@@ -588,10 +586,10 @@ ExpandRecursives:                       # @ExpandRecursives
 	ld.d	$s4, $a1, %got_pc_lo12(zz_res)
 	pcalau12i	$a1, %got_pc_hi20(zz_tmp)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_tmp)
-	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
                                         # implicit-def: $r5
                                         # kill: killed $r5
-	st.d	$s2, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 112                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB2_4:                                # %.preheader238
                                         # =>This Loop Header: Depth=1
@@ -661,7 +659,7 @@ ExpandRecursives:                       # @ExpandRecursives
 	ori	$a1, $zero, 123
 	beq	$a0, $a1, .LBB2_12
 # %bb.11:                               #   in Loop: Header=BB2_4 Depth=1
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a4, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.1)
@@ -687,7 +685,7 @@ ExpandRecursives:                       # @ExpandRecursives
 	b	.LBB2_15
 	.p2align	4, , 16
 .LBB2_14:                               #   in Loop: Header=BB2_4 Depth=1
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	pcaddu18i	$ra, %call36(GetMemory)
 	jirl	$ra, $ra, 0
@@ -703,14 +701,14 @@ ExpandRecursives:                       # @ExpandRecursives
 	ld.d	$a0, $s3, 80
 	ld.h	$a1, $s2, 42
 	st.d	$a0, $s2, 80
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	and	$a0, $a1, $a0
 	addi.d	$a0, $a0, 128
 	st.h	$a0, $s2, 42
-	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
 	vst	$vr0, $s2, 104
-	xvld	$xr1, $sp, 80                   # 32-byte Folded Reload
-	xvst	$xr1, $s2, 128
+	vst	$vr0, $s2, 128
+	vst	$vr0, $s2, 144
 	ld.d	$a1, $s3, 80
 	ld.b	$a1, $a1, 43
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
@@ -742,7 +740,7 @@ ExpandRecursives:                       # @ExpandRecursives
 	b	.LBB2_18
 	.p2align	4, , 16
 .LBB2_17:                               #   in Loop: Header=BB2_4 Depth=1
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	move	$a0, $a2
 	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
@@ -762,7 +760,7 @@ ExpandRecursives:                       # @ExpandRecursives
 	st.d	$a1, $s4, 0
 	st.d	$s2, $s7, 0
 	ld.d	$a0, $s2, 0
-	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
 	st.d	$a0, $a3, 0
 	ld.d	$a0, $a1, 0
 	st.d	$a0, $s2, 0
@@ -783,7 +781,7 @@ ExpandRecursives:                       # @ExpandRecursives
 # %bb.20:                               #   in Loop: Header=BB2_4 Depth=1
 	ld.d	$a1, $s5, 16
 	ld.d	$a2, $a0, 16
-	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
 	st.d	$a1, $a3, 0
 	st.d	$a2, $s5, 16
 	st.d	$s5, $a2, 24
@@ -803,7 +801,7 @@ ExpandRecursives:                       # @ExpandRecursives
 	b	.LBB2_24
 	.p2align	4, , 16
 .LBB2_23:                               #   in Loop: Header=BB2_4 Depth=1
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	move	$a0, $a2
 	move	$s5, $s3
@@ -813,7 +811,7 @@ ExpandRecursives:                       # @ExpandRecursives
 	move	$a4, $s3
 	move	$s3, $s5
 .LBB2_24:                               #   in Loop: Header=BB2_4 Depth=1
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
 	st.b	$zero, $a0, 32
 	st.d	$a0, $a0, 24
 	st.d	$a0, $a0, 16
@@ -855,13 +853,13 @@ ExpandRecursives:                       # @ExpandRecursives
 	andi	$a3, $a0, 1
 	addi.d	$a6, $s3, 64
 	st.d	$zero, $sp, 32
-	addi.d	$a0, $sp, 184
+	addi.d	$a0, $sp, 152
 	st.d	$a0, $sp, 24
-	addi.d	$a0, $sp, 176
+	addi.d	$a0, $sp, 144
 	st.d	$a0, $sp, 16
-	addi.d	$a0, $sp, 192
+	addi.d	$a0, $sp, 160
 	st.d	$a0, $sp, 8
-	addi.d	$a7, $sp, 232
+	addi.d	$a7, $sp, 200
 	st.d	$zero, $sp, 0
 	move	$a0, $s2
 	move	$a1, $a4
@@ -869,22 +867,22 @@ ExpandRecursives:                       # @ExpandRecursives
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(SizeGalley)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $sp, 216
-	addi.d	$a3, $sp, 168
+	addi.d	$a1, $sp, 184
+	addi.d	$a3, $sp, 136
 	move	$a0, $s3
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(Constrained)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 48
-	ld.w	$a0, $sp, 216
+	ld.w	$a0, $sp, 184
 	blt	$a0, $a1, .LBB2_29
 # %bb.27:                               #   in Loop: Header=BB2_4 Depth=1
 	ld.w	$a2, $s2, 56
-	ld.w	$a0, $sp, 220
+	ld.w	$a0, $sp, 188
 	add.w	$a3, $a2, $a1
 	blt	$a0, $a3, .LBB2_29
 # %bb.28:                               #   in Loop: Header=BB2_4 Depth=1
-	ld.w	$a0, $sp, 224
+	ld.w	$a0, $sp, 192
 	bge	$a0, $a2, .LBB2_52
 .LBB2_29:                               #   in Loop: Header=BB2_4 Depth=1
 	ld.d	$a0, $s2, 24
@@ -903,7 +901,7 @@ ExpandRecursives:                       # @ExpandRecursives
 .LBB2_31:                               #   in Loop: Header=BB2_4 Depth=1
 	move	$a2, $zero
 .LBB2_32:                               #   in Loop: Header=BB2_4 Depth=1
-	ld.d	$s2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
 	pcalau12i	$a1, %got_pc_hi20(xx_tmp)
 	ld.d	$a1, $a1, %got_pc_lo12(xx_tmp)
 	ld.d	$a3, $a0, 8
@@ -944,13 +942,13 @@ ExpandRecursives:                       # @ExpandRecursives
 	ld.d	$a1, $a0, 24
 	beq	$a1, $a0, .LBB2_51
 # %bb.35:                               #   in Loop: Header=BB2_4 Depth=1
-	ld.d	$a0, $sp, 184
+	ld.d	$a0, $sp, 152
 	beqz	$a0, .LBB2_37
 .LBB2_36:                               #   in Loop: Header=BB2_4 Depth=1
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
 .LBB2_37:                               #   in Loop: Header=BB2_4 Depth=1
-	ld.d	$a0, $sp, 176
+	ld.d	$a0, $sp, 144
 	beqz	$a0, .LBB2_39
 # %bb.38:                               #   in Loop: Header=BB2_4 Depth=1
 	pcaddu18i	$ra, %call36(DisposeObject)
@@ -1072,7 +1070,7 @@ ExpandRecursives:                       # @ExpandRecursives
 .LBB2_51:                               #   in Loop: Header=BB2_4 Depth=1
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 184
+	ld.d	$a0, $sp, 152
 	bnez	$a0, .LBB2_36
 	b	.LBB2_37
 .LBB2_52:                               #   in Loop: Header=BB2_4 Depth=1
@@ -1080,9 +1078,9 @@ ExpandRecursives:                       # @ExpandRecursives
 	andi	$a0, $a0, 16
 	bnez	$a0, .LBB2_61
 # %bb.53:                               #   in Loop: Header=BB2_4 Depth=1
-	addi.d	$a1, $sp, 200
+	addi.d	$a1, $sp, 168
 	ori	$a2, $zero, 1
-	addi.d	$a3, $sp, 168
+	addi.d	$a3, $sp, 136
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(Constrained)
 	jirl	$ra, $ra, 0
@@ -1095,7 +1093,7 @@ ExpandRecursives:                       # @ExpandRecursives
 	beqz	$a0, .LBB2_54
 # %bb.55:                               #   in Loop: Header=BB2_4 Depth=1
 	ld.w	$a0, $a3, 52
-	ld.w	$a1, $sp, 200
+	ld.w	$a1, $sp, 168
 	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
 	bge	$a1, $a0, .LBB2_58
 .LBB2_56:                               #   in Loop: Header=BB2_4 Depth=1
@@ -1113,11 +1111,11 @@ ExpandRecursives:                       # @ExpandRecursives
 	b	.LBB2_104
 .LBB2_58:                               #   in Loop: Header=BB2_4 Depth=1
 	ld.w	$a1, $a3, 60
-	ld.w	$a2, $sp, 204
+	ld.w	$a2, $sp, 172
 	add.w	$a0, $a1, $a0
 	blt	$a2, $a0, .LBB2_56
 # %bb.59:                               #   in Loop: Header=BB2_4 Depth=1
-	ld.w	$a0, $sp, 208
+	ld.w	$a0, $sp, 176
 	blt	$a0, $a1, .LBB2_56
 # %bb.60:                               # %._crit_edge291
                                         #   in Loop: Header=BB2_4 Depth=1
@@ -1286,7 +1284,7 @@ ExpandRecursives:                       # @ExpandRecursives
 	stx.d	$a1, $fp, $a0
 	ld.d	$a0, $s1, 24
 	st.d	$s1, $s3, 0
-	ld.d	$s2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
 	bne	$a0, $s1, .LBB2_77
 	b	.LBB2_82
 	.p2align	4, , 16
@@ -1413,7 +1411,7 @@ ExpandRecursives:                       # @ExpandRecursives
 	st.d	$a1, $s1, 0
 	ld.d	$a1, $s7, 0
 	ld.w	$a2, $s0, 0
-	ld.d	$a0, $sp, 184
+	ld.d	$a0, $sp, 152
 	slli.d	$a2, $a2, 3
 	stx.d	$a1, $fp, $a2
 	beqz	$a0, .LBB2_89
@@ -1422,7 +1420,7 @@ ExpandRecursives:                       # @ExpandRecursives
 	pcaddu18i	$ra, %call36(FlushInners)
 	jirl	$ra, $ra, 0
 .LBB2_89:                               #   in Loop: Header=BB2_4 Depth=1
-	ld.d	$a1, $sp, 176
+	ld.d	$a1, $sp, 144
 	beqz	$a1, .LBB2_102
 # %bb.90:                               #   in Loop: Header=BB2_4 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(xx_res)
@@ -1534,7 +1532,7 @@ ExpandRecursives:                       # @ExpandRecursives
 .LBB2_103:                              #   in Loop: Header=BB2_4 Depth=1
 	move	$a2, $zero
 .LBB2_104:                              #   in Loop: Header=BB2_4 Depth=1
-	ld.d	$s2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
 	pcalau12i	$a1, %got_pc_hi20(xx_tmp)
 	ld.d	$a1, $a1, %got_pc_lo12(xx_tmp)
 	ld.d	$a3, $a0, 8
@@ -1578,13 +1576,13 @@ ExpandRecursives:                       # @ExpandRecursives
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
 .LBB2_108:                              #   in Loop: Header=BB2_4 Depth=1
-	ld.d	$a0, $sp, 184
+	ld.d	$a0, $sp, 152
 	beqz	$a0, .LBB2_110
 # %bb.109:                              #   in Loop: Header=BB2_4 Depth=1
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
 .LBB2_110:                              #   in Loop: Header=BB2_4 Depth=1
-	ld.d	$a0, $sp, 176
+	ld.d	$a0, $sp, 144
 	beqz	$a0, .LBB2_112
 # %bb.111:                              #   in Loop: Header=BB2_4 Depth=1
 	pcaddu18i	$ra, %call36(DisposeObject)
@@ -1729,18 +1727,18 @@ ExpandRecursives:                       # @ExpandRecursives
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $a1, 3
 	stx.d	$a0, $a3, $a1
-	ld.d	$s8, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 328                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 336
+	ld.d	$s8, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 296                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 304
 	ret
 .Lfunc_end2:
 	.size	ExpandRecursives, .Lfunc_end2-ExpandRecursives

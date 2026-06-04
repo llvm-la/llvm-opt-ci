@@ -193,7 +193,8 @@ _ZN22SphereTriangleDetector16getClosestPointsERKN36btDiscreteCollisionDetectorIn
 	vextrins.w	$vr6, $vr5, 16
 	vshuf4i.w	$vr2, $vr6, 16
 	vslli.d	$vr2, $vr2, 32
-	vext2xv.du.wu	$xr3, $xr4
+	vrepli.b	$vr3, 0
+	vilvl.w	$vr3, $vr3, $vr4
 	ld.d	$a0, $fp, 0
 	vor.v	$vr2, $vr2, $vr3
 	vstelm.d	$vr2, $sp, 24, 0
@@ -246,7 +247,8 @@ _ZN22SphereTriangleDetector16getClosestPointsERKN36btDiscreteCollisionDetectorIn
 	vextrins.w	$vr9, $vr2, 16
 	vshuf4i.w	$vr0, $vr9, 16
 	vslli.d	$vr0, $vr0, 32
-	vext2xv.du.wu	$xr2, $xr4
+	vrepli.b	$vr2, 0
+	vilvl.w	$vr2, $vr2, $vr4
 	vor.v	$vr2, $vr0, $vr2
 	ld.d	$a0, $fp, 0
 	vstelm.d	$vr2, $sp, 24, 0

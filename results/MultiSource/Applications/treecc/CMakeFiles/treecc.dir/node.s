@@ -180,13 +180,14 @@ TreeCCNodeCreate:                       # @TreeCCNodeCreate
 .LBB2_11:
 	ori	$a0, $s5, 80
 	ldx.w	$a0, $fp, $a0
-	xvrepli.b	$xr0, 0
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr1, $s3, 16
 	ori	$a1, $zero, 1
 	st.w	$a1, $s3, 40
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $fp, 8272
 	ldptr.d	$a1, $fp, 8192
-	xvst	$xr0, $s3, 0
+	vst	$vr1, $s3, 0
 	st.d	$s4, $s3, 32
 	st.w	$a0, $s3, 44
 	ld.d	$a1, $a1, 32
@@ -195,7 +196,6 @@ TreeCCNodeCreate:                       # @TreeCCNodeCreate
 	ld.bu	$a0, $s4, 0
 	st.d	$a1, $s3, 56
 	st.d	$s1, $s3, 64
-	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr1, $s3, 72
 	vst	$vr0, $s3, 96
 	beqz	$a0, .LBB2_19

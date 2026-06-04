@@ -332,8 +332,9 @@ _ZN12gjkepa2_implL10InitializeEPK13btConvexShapeRK11btTransformS2_S5_RN15btGjkEp
 	fst.d	$fs0, $sp, 8                    # 8-byte Folded Spill
 	fst.d	$fs1, $sp, 0                    # 8-byte Folded Spill
 	st.w	$zero, $a4, 32
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a4, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a4, 16
+	vst	$vr0, $a4, 0
 	st.d	$a0, $a5, 0
 	fld.s	$fa0, $a3, 0
 	fld.s	$fa1, $a3, 16
@@ -1340,7 +1341,8 @@ _ZN15btGjkEpaSolver211PenetrationEPK13btConvexShapeRK11btTransformS2_S5_RK9btVec
 	vextrins.w	$vr7, $vr2, 16
 	vshuf4i.w	$vr1, $vr7, 16
 	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr2, $xr6
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	vilvl.w	$vr2, $vr2, $vr6
 	vor.v	$vr1, $vr1, $vr2
 	vpickve2gr.d	$a2, $vr1, 0
 	st.d	$a2, $fp, 20

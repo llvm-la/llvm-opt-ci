@@ -1,15 +1,11 @@
 	.file	"loop-2d.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function f
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function f
 .LCPI0_0:
 	.word	0                               # 0x0
 	.word	4294967295                      # 0xffffffff
 	.word	4294967294                      # 0xfffffffe
 	.word	4294967293                      # 0xfffffffd
-	.word	4294967292                      # 0xfffffffc
-	.word	4294967291                      # 0xfffffffb
-	.word	4294967290                      # 0xfffffffa
-	.word	4294967289                      # 0xfffffff9
 	.text
 	.globl	f
 	.p2align	2
@@ -33,32 +29,37 @@ f:                                      # @f
 	slli.d	$a5, $a2, 3
 	slli.d	$a2, $a2, 5
 	pcalau12i	$a6, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a6, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a6, %pc_lo12(.LCPI0_0)
 	sub.d	$a3, $a3, $a2
 	sub.w	$a2, $a0, $a5
-	xvreplgr2vr.w	$xr1, $a0
-	xvadd.w	$xr0, $xr1, $xr0
+	vreplgr2vr.w	$vr1, $a0
+	vadd.w	$vr0, $vr1, $vr0
 	alsl.d	$a0, $a0, $a1, 2
-	addi.d	$a0, $a0, -32
-	xvrepli.w	$xr1, 3
+	addi.d	$a0, $a0, -16
+	vrepli.w	$vr1, 3
 	addi.d	$a6, $a1, -3
-	xvreplgr2vr.w	$xr2, $a6
+	vreplgr2vr.w	$vr2, $a6
+	addi.d	$a6, $a1, -15
+	vreplgr2vr.w	$vr3, $a6
 	move	$a6, $a5
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvori.b	$xr3, $xr2, 0
-	xvmadd.w	$xr3, $xr0, $xr1
-	xvpermi.d	$xr3, $xr3, 78
-	xvshuf4i.w	$xr3, $xr3, 27
-	xvst	$xr3, $a0, 0
-	xvsubi.wu	$xr0, $xr0, 8
+	vori.b	$vr4, $vr2, 0
+	vmadd.w	$vr4, $vr0, $vr1
+	vori.b	$vr5, $vr3, 0
+	vmadd.w	$vr5, $vr0, $vr1
+	vshuf4i.w	$vr4, $vr4, 27
+	vshuf4i.w	$vr5, $vr5, 27
+	vst	$vr4, $a0, 0
+	vst	$vr5, $a0, -16
+	vsubi.wu	$vr0, $vr0, 8
 	addi.d	$a6, $a6, -8
 	addi.d	$a0, $a0, -32
 	bnez	$a6, .LBB0_4
 # %bb.5:                                # %middle.block
 	beq	$a5, $a4, .LBB0_8
-.LBB0_6:                                # %.lr.ph.preheader11
+.LBB0_6:                                # %.lr.ph.preheader12
 	addi.d	$a0, $a3, -4
 	alsl.d	$a3, $a2, $a2, 1
 	add.d	$a1, $a3, $a1

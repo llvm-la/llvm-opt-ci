@@ -1,20 +1,22 @@
 	.file	"btGeneric6DofConstraint.cpp"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN23btGeneric6DofConstraintC2Ev
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN23btGeneric6DofConstraintC2Ev
 .LCPI0_0:
 	.word	0x3f800000                      # float 1
 	.word	0xbf800000                      # float -1
 	.word	0x00000000                      # float 0
 	.word	0x3dcccccd                      # float 0.100000001
+.LCPI0_1:
 	.word	0x43960000                      # float 300
 	.word	0x3f800000                      # float 1
 	.word	0x3f000000                      # float 0.5
 	.word	0x3f000000                      # float 0.5
-.LCPI0_1:
+.LCPI0_2:
 	.word	0x00000000                      # float 0
 	.word	0x3f800000                      # float 1
 	.word	0xbf800000                      # float -1
 	.word	0x00000000                      # float 0
+.LCPI0_3:
 	.word	0x3dcccccd                      # float 0.100000001
 	.word	0x43960000                      # float 300
 	.word	0x3f800000                      # float 1
@@ -42,8 +44,8 @@ _ZN23btGeneric6DofConstraintC2Ev:       # @_ZN23btGeneric6DofConstraintC2Ev
 	st.d	$a0, $fp, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $fp, 728
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 744
+	vst	$vr0, $fp, 744
+	vst	$vr0, $fp, 760
 	lu12i.w	$a0, 258867
 	ori	$a0, $a0, 819
 	lu52i.d	$a0, $a0, 1016
@@ -54,24 +56,31 @@ _ZN23btGeneric6DofConstraintC2Ev:       # @_ZN23btGeneric6DofConstraintC2Ev
 	st.b	$zero, $fp, 790
 	st.d	$zero, $fp, 792
 	st.w	$zero, $fp, 800
-	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_0)
 	st.d	$zero, $fp, 808
-	st.w	$zero, $fp, 816
-	st.w	$zero, $fp, 900
-	xvst	$xr0, $fp, 868
-	st.w	$zero, $fp, 916
+	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI0_1)
+	st.w	$zero, $fp, 816
+	vst	$vr0, $fp, 868
+	st.w	$zero, $fp, 900
+	vst	$vr1, $fp, 884
+	st.w	$zero, $fp, 916
 	st.w	$zero, $fp, 908
+	pcalau12i	$a1, %pc_hi20(.LCPI0_2)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_3)
+	vld	$vr1, $a1, %pc_lo12(.LCPI0_3)
 	st.b	$zero, $fp, 904
+	vst	$vr0, $fp, 920
 	st.d	$a0, $fp, 952
-	xvst	$xr0, $fp, 920
+	vst	$vr1, $fp, 936
 	st.w	$zero, $fp, 972
 	st.w	$zero, $fp, 964
 	st.b	$zero, $fp, 960
+	vst	$vr0, $fp, 976
 	st.d	$a0, $fp, 1008
-	xvst	$xr0, $fp, 976
+	vst	$vr1, $fp, 992
 	st.d	$zero, $fp, 1028
 	st.w	$zero, $fp, 1020
 	st.b	$zero, $fp, 1016
@@ -85,22 +94,24 @@ _ZN23btGeneric6DofConstraintC2Ev:       # @_ZN23btGeneric6DofConstraintC2Ev
 	.size	_ZN23btGeneric6DofConstraintC2Ev, .Lfunc_end0-_ZN23btGeneric6DofConstraintC2Ev
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN23btGeneric6DofConstraintC2ER11btRigidBodyS1_RK11btTransformS4_b
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN23btGeneric6DofConstraintC2ER11btRigidBodyS1_RK11btTransformS4_b
 .LCPI1_0:
 	.word	0x3f800000                      # float 1
 	.word	0xbf800000                      # float -1
 	.word	0x00000000                      # float 0
 	.word	0x3dcccccd                      # float 0.100000001
+.LCPI1_1:
 	.word	0x43960000                      # float 300
 	.word	0x3f800000                      # float 1
 	.word	0x3f000000                      # float 0.5
 	.word	0x3f000000                      # float 0.5
-.LCPI1_1:
+.LCPI1_2:
 	.word	0x00000000                      # float 0
 	.word	0x3f800000                      # float 1
 	.word	0xbf800000                      # float -1
 	.word	0x00000000                      # float 0
+.LCPI1_3:
 	.word	0x3dcccccd                      # float 0.100000001
 	.word	0x43960000                      # float 300
 	.word	0x3f800000                      # float 1
@@ -153,9 +164,9 @@ _ZN23btGeneric6DofConstraintC2ER11btRigidBodyS1_RK11btTransformS4_b: # @_ZN23btG
 	vst	$vr0, $s0, 192
 	vld	$vr0, $s1, 48
 	vst	$vr0, $s0, 208
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $s0, 728
 	vrepli.b	$vr0, 0
+	vst	$vr0, $s0, 728
+	vst	$vr0, $s0, 744
 	vst	$vr0, $s0, 760
 	lu12i.w	$a0, 258867
 	ori	$a0, $a0, 819
@@ -167,24 +178,31 @@ _ZN23btGeneric6DofConstraintC2ER11btRigidBodyS1_RK11btTransformS4_b: # @_ZN23btG
 	st.h	$zero, $s0, 788
 	st.d	$zero, $s0, 792
 	st.w	$zero, $s0, 800
-	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_0)
 	st.d	$zero, $s0, 808
-	st.w	$zero, $s0, 816
-	st.w	$zero, $s0, 900
-	xvst	$xr0, $s0, 868
-	st.w	$zero, $s0, 916
+	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI1_0)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI1_1)
+	st.w	$zero, $s0, 816
+	vst	$vr0, $s0, 868
+	st.w	$zero, $s0, 900
+	vst	$vr1, $s0, 884
+	st.w	$zero, $s0, 916
 	st.w	$zero, $s0, 908
+	pcalau12i	$a1, %pc_hi20(.LCPI1_2)
+	vld	$vr0, $a1, %pc_lo12(.LCPI1_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_3)
+	vld	$vr1, $a1, %pc_lo12(.LCPI1_3)
 	st.b	$zero, $s0, 904
+	vst	$vr0, $s0, 920
 	st.d	$a0, $s0, 952
-	xvst	$xr0, $s0, 920
+	vst	$vr1, $s0, 936
 	st.w	$zero, $s0, 972
 	st.w	$zero, $s0, 964
 	st.b	$zero, $s0, 960
+	vst	$vr0, $s0, 976
 	st.d	$a0, $s0, 1008
-	xvst	$xr0, $s0, 976
+	vst	$vr1, $s0, 992
 	st.d	$zero, $s0, 1028
 	st.w	$zero, $s0, 1020
 	st.b	$zero, $s0, 1016

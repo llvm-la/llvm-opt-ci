@@ -24427,9 +24427,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.2)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.2)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	vst	$vr0, $a0, 40
@@ -25003,10 +25005,12 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.10)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.10)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.w	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.w	$a2, $a0, 39
 	ori	$a2, $zero, 2112
@@ -25084,14 +25088,17 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 .Ltmp2645:                              # EH_LABEL
 # %bb.74:                               # %.noexc133.i
 	ld.d	$a1, $sp, 2008
-	pcalau12i	$a2, %pc_hi20(.L.str.12)
-	st.d	$a2, $sp, 200                   # 8-byte Folded Spill
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
 	st.d	$a0, $sp, 2040
 	ori	$a2, $zero, 2056
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.L.str.12)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.12)
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	st.d	$a2, $sp, 200                   # 8-byte Folded Spill
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 2040
 	ori	$a2, $zero, 2048
 	add.d	$a2, $sp, $a2
@@ -25123,10 +25130,12 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 2024
 	pcalau12i	$a2, %pc_hi20(.L.str.13)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.13)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 39
 	st.d	$a1, $sp, 2016
@@ -25751,9 +25760,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.26)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.26)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.d	$a2, $a2, 53
@@ -26132,9 +26143,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.34)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.34)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.h	$a2, $a2, 56
@@ -26216,12 +26229,14 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 # %bb.181:                              # %.noexc141.i131
 	ld.d	$a1, $sp, 2008
 	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 2040
-	ori	$a2, $zero, 2056
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	ori	$a3, $zero, 2056
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 2040
 	ori	$a2, $zero, 2048
 	add.d	$a2, $sp, $a2
@@ -26252,9 +26267,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 2024
 	pcalau12i	$a2, %pc_hi20(.L.str.36)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.36)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.d	$a2, $a2, 54
@@ -27026,10 +27043,12 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 264
 	pcalau12i	$a2, %pc_hi20(.L.str.43)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.43)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 38
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 38
 	st.d	$a1, $sp, 256
@@ -27285,10 +27304,12 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.49)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.49)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.b	$a2, $a2, 40
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.b	$a2, $a0, 40
 	ori	$a2, $zero, 2112
@@ -27367,12 +27388,14 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 # %bb.293:                              # %.noexc133.i347
 	ld.d	$a1, $sp, 2008
 	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 2040
-	ori	$a2, $zero, 2056
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	ori	$a3, $zero, 2056
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 2040
 	ori	$a2, $zero, 2048
 	add.d	$a2, $sp, $a2
@@ -27403,10 +27426,12 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 2024
 	pcalau12i	$a2, %pc_hi20(.L.str.51)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.51)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 37
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 37
 	st.d	$a1, $sp, 2016
@@ -27998,9 +28023,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.53)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.53)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.w	$a2, $a2, 55
@@ -28375,9 +28402,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.61)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.61)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.h	$a2, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.h	$a2, $a0, 32
 	ori	$a2, $zero, 2112
 	add.d	$a2, $sp, $a2
@@ -28455,12 +28484,14 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 # %bb.400:                              # %.noexc133.i588
 	ld.d	$a1, $sp, 2008
 	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 2040
-	ori	$a2, $zero, 2056
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	ori	$a3, $zero, 2056
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 2040
 	ori	$a2, $zero, 2048
 	add.d	$a2, $sp, $a2
@@ -28491,9 +28522,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 2024
 	pcalau12i	$a2, %pc_hi20(.L.str.63)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.63)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a2, $a2, 30
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a2, $a0, 30
 	st.d	$a1, $sp, 2016
 	stx.b	$zero, $a0, $a1
@@ -29084,8 +29117,10 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.65)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.65)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.w	$a2, $a2, 48
 	vst	$vr0, $a0, 32
@@ -29457,8 +29492,10 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.73)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.73)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.b	$a2, $a2, 48
 	vst	$vr0, $a0, 32
@@ -29539,12 +29576,14 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 # %bb.507:                              # %.noexc133.i829
 	ld.d	$a1, $sp, 2008
 	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 2040
-	ori	$a2, $zero, 2056
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	ori	$a3, $zero, 2056
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 2040
 	ori	$a2, $zero, 2048
 	add.d	$a2, $sp, $a2
@@ -29575,8 +29614,10 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 2024
 	pcalau12i	$a2, %pc_hi20(.L.str.75)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.75)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 45
 	vst	$vr0, $a0, 32
@@ -30284,9 +30325,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 264
 	pcalau12i	$a2, %pc_hi20(.L.str.79)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.79)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a2, $a2, 29
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a2, $a0, 29
 	st.d	$a1, $sp, 256
 	stx.b	$zero, $a0, $a1
@@ -30541,10 +30584,12 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.85)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.85)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.w	$a2, $a2, 40
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.w	$a2, $a0, 40
 	ori	$a2, $zero, 2112
@@ -30623,12 +30668,14 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 # %bb.614:                              # %.noexc133.i1070
 	ld.d	$a1, $sp, 2008
 	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 2040
-	ori	$a2, $zero, 2056
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	ori	$a3, $zero, 2056
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 2040
 	ori	$a2, $zero, 2048
 	add.d	$a2, $sp, $a2
@@ -30659,8 +30706,10 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 2024
 	pcalau12i	$a2, %pc_hi20(.L.str.87)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.87)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	st.d	$a1, $sp, 2016
@@ -31252,9 +31301,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.89)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.89)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.d	$a2, $a2, 54
@@ -31365,11 +31416,14 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	ori	$a1, $zero, 2104
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	pcalau12i	$a2, %pc_hi20(.L.str.91)
-	xvld	$xr0, $a2, %pc_lo12(.L.str.91)
 	st.d	$a0, $sp, 248
 	st.d	$a1, $sp, 264
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.L.str.91)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.91)
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 248
 	st.d	$a1, $sp, 256
 	stx.b	$zero, $a0, $a1
@@ -31624,10 +31678,12 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.97)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.97)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 39
 	ori	$a2, $zero, 2112
@@ -31706,12 +31762,14 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 # %bb.721:                              # %.noexc133.i1311
 	ld.d	$a1, $sp, 2008
 	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 2040
-	ori	$a2, $zero, 2056
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	ori	$a3, $zero, 2056
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 2040
 	ori	$a2, $zero, 2048
 	add.d	$a2, $sp, $a2
@@ -31742,8 +31800,10 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 2024
 	pcalau12i	$a2, %pc_hi20(.L.str.99)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.99)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	ld.w	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -32451,9 +32511,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 264
 	pcalau12i	$a2, %pc_hi20(.L.str.103)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.103)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.w	$a2, $a2, 31
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.w	$a2, $a0, 31
 	st.d	$a1, $sp, 256
 	stx.b	$zero, $a0, $a1
@@ -32708,8 +32770,10 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.109)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.109)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.w	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -32790,12 +32854,14 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 # %bb.828:                              # %.noexc133.i1552
 	ld.d	$a1, $sp, 2008
 	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 2040
-	ori	$a2, $zero, 2056
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	ori	$a3, $zero, 2056
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 2040
 	ori	$a2, $zero, 2048
 	add.d	$a2, $sp, $a2
@@ -32826,8 +32892,10 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 2024
 	pcalau12i	$a2, %pc_hi20(.L.str.111)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.111)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -33535,9 +33603,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 264
 	pcalau12i	$a2, %pc_hi20(.L.str.115)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.115)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a2, $a2, 31
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a2, $a0, 31
 	st.d	$a1, $sp, 256
 	stx.b	$zero, $a0, $a1
@@ -33792,8 +33862,10 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.121)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.121)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -33874,12 +33946,14 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 # %bb.935:                              # %.noexc133.i1793
 	ld.d	$a1, $sp, 2008
 	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 2040
-	ori	$a2, $zero, 2056
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	ori	$a3, $zero, 2056
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 2040
 	ori	$a2, $zero, 2048
 	add.d	$a2, $sp, $a2
@@ -33910,9 +33984,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 2024
 	pcalau12i	$a2, %pc_hi20(.L.str.123)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.123)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.w	$a2, $a2, 55
@@ -34621,10 +34697,12 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 264
 	pcalau12i	$a2, %pc_hi20(.L.str.127)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.127)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.w	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.w	$a2, $a0, 39
 	st.d	$a1, $sp, 256
@@ -34880,9 +34958,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.133)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.133)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.d	$a2, $a2, 54
@@ -34964,12 +35044,14 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 # %bb.1042:                             # %.noexc133.i2034
 	ld.d	$a1, $sp, 2008
 	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 2040
-	ori	$a2, $zero, 2056
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	ori	$a3, $zero, 2056
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 2040
 	ori	$a2, $zero, 2048
 	add.d	$a2, $sp, $a2
@@ -35708,8 +35790,10 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 264
 	pcalau12i	$a2, %pc_hi20(.L.str.139)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.139)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.h	$a2, $a2, 48
 	vst	$vr0, $a0, 32
@@ -35967,8 +36051,10 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.145)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.145)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.h	$a2, $a2, 48
 	vst	$vr0, $a0, 32
@@ -36049,12 +36135,14 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 # %bb.1149:                             # %.noexc133.i2275
 	ld.d	$a1, $sp, 2008
 	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 2040
-	ori	$a2, $zero, 2056
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	ori	$a3, $zero, 2056
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 2040
 	ori	$a2, $zero, 2048
 	add.d	$a2, $sp, $a2
@@ -36085,8 +36173,10 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 2024
 	pcalau12i	$a2, %pc_hi20(.L.str.147)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.147)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 46
 	vst	$vr0, $a0, 32
@@ -36794,9 +36884,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 264
 	pcalau12i	$a2, %pc_hi20(.L.str.151)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.151)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a2, $a2, 30
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a2, $a0, 30
 	st.d	$a1, $sp, 256
 	stx.b	$zero, $a0, $a1
@@ -37051,8 +37143,10 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.157)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.157)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -37133,12 +37227,14 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 # %bb.1256:                             # %.noexc133.i2516
 	ld.d	$a1, $sp, 2008
 	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.12)
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 2040
-	ori	$a2, $zero, 2056
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	ori	$a3, $zero, 2056
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 2040
 	ori	$a2, $zero, 2048
 	add.d	$a2, $sp, $a2
@@ -37169,9 +37265,11 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 2024
 	pcalau12i	$a2, %pc_hi20(.L.str.159)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.159)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.w	$a2, $a2, 55
@@ -37880,10 +37978,12 @@ _GLOBAL__sub_I_user_counters_threads_test.cc: # @_GLOBAL__sub_I_user_counters_th
 	st.d	$a1, $sp, 264
 	pcalau12i	$a2, %pc_hi20(.L.str.163)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.163)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.w	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.w	$a2, $a0, 39
 	st.d	$a1, $sp, 256

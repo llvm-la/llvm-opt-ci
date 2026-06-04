@@ -62,9 +62,11 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 104
-	xvld	$xr0, $sp, 72
+	vld	$vr0, $sp, 88
+	vld	$vr1, $sp, 72
 	st.w	$a0, $sp, 64
-	xvst	$xr0, $sp, 32
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 32
 	addi.d	$a0, $sp, 32
 	move	$a1, $fp
 	move	$a2, $zero
@@ -307,10 +309,12 @@ mu:                                     # @mu
 .LBB1_25:
 	move	$s1, $a3
 	ld.w	$a2, $a0, 32
+	vld	$vr0, $a0, 16
 	move	$s2, $a0
-	xvld	$xr0, $a0, 0
+	vld	$vr1, $a0, 0
 	st.w	$a2, $sp, 88
-	xvst	$xr0, $sp, 56
+	vst	$vr0, $sp, 72
+	vst	$vr1, $sp, 56
 	addi.d	$a0, $sp, 56
 	ori	$a3, $zero, 1
 	move	$s3, $a1
@@ -498,9 +502,11 @@ md:                                     # @md
 	beq	$s1, $a0, .LBB2_10
 .LBB2_7:
 	ld.w	$a0, $s0, 32
-	xvld	$xr0, $s0, 0
+	vld	$vr0, $s0, 16
+	vld	$vr1, $s0, 0
 	st.w	$a0, $sp, 88
-	xvst	$xr0, $sp, 56
+	vst	$vr0, $sp, 72
+	vst	$vr1, $sp, 56
 	addi.d	$a0, $sp, 56
 	ori	$a3, $zero, 1
 	move	$s3, $a1

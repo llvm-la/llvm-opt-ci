@@ -746,8 +746,10 @@ cli_cvdverify:                          # @cli_cvdverify
 	st.d	$a0, $s1, 48
 	vld	$vr0, $fp, 32
 	vst	$vr0, $s1, 32
-	xvld	$xr0, $fp, 0
-	xvst	$xr0, $s1, 0
+	vld	$vr0, $fp, 16
+	vst	$vr0, $s1, 16
+	vld	$vr0, $fp, 0
+	vst	$vr0, $s1, 0
 .LBB5_8:
 	move	$a0, $s0
 	move	$a1, $zero

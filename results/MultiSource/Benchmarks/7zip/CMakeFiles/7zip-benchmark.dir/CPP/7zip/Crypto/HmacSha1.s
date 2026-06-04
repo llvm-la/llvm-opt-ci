@@ -18,10 +18,12 @@ _ZN7NCrypto5NSha15CHmac6SetKeyEPKhm:    # @_ZN7NCrypto5NSha15CHmac6SetKeyEPKhm
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	move	$fp, $a0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 48
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 64
+	vst	$vr0, $sp, 48
+	vst	$vr0, $sp, 32
 	ori	$a0, $zero, 64
-	xvst	$xr0, $sp, 16
+	vst	$vr0, $sp, 16
 	bgeu	$a0, $a2, .LBB0_2
 # %bb.1:
 	move	$a0, $fp
@@ -47,12 +49,18 @@ _ZN7NCrypto5NSha15CHmac6SetKeyEPKhm:    # @_ZN7NCrypto5NSha15CHmac6SetKeyEPKhm
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB0_4:                                # %.loopexit
-	xvld	$xr0, $sp, 16
-	xvld	$xr1, $sp, 48
-	xvxori.b	$xr0, $xr0, 54
-	xvst	$xr0, $sp, 16
-	xvxori.b	$xr0, $xr1, 54
-	xvst	$xr0, $sp, 48
+	vld	$vr0, $sp, 16
+	vld	$vr1, $sp, 32
+	vxori.b	$vr0, $vr0, 54
+	vst	$vr0, $sp, 16
+	vld	$vr0, $sp, 48
+	vxori.b	$vr1, $vr1, 54
+	vld	$vr2, $sp, 64
+	vst	$vr1, $sp, 32
+	vxori.b	$vr0, $vr0, 54
+	vst	$vr0, $sp, 48
+	vxori.b	$vr0, $vr2, 54
+	vst	$vr0, $sp, 64
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN7NCrypto5NSha112CContextBase4InitEv)
 	jirl	$ra, $ra, 0
@@ -62,12 +70,18 @@ _ZN7NCrypto5NSha15CHmac6SetKeyEPKhm:    # @_ZN7NCrypto5NSha15CHmac6SetKeyEPKhm
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN7NCrypto5NSha18CContext6UpdateEPKhm)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 16
-	xvld	$xr1, $sp, 48
-	xvxori.b	$xr0, $xr0, 106
-	xvst	$xr0, $sp, 16
-	xvxori.b	$xr0, $xr1, 106
-	xvst	$xr0, $sp, 48
+	vld	$vr0, $sp, 16
+	vld	$vr1, $sp, 32
+	vxori.b	$vr0, $vr0, 106
+	vst	$vr0, $sp, 16
+	vld	$vr0, $sp, 48
+	vxori.b	$vr1, $vr1, 106
+	vld	$vr2, $sp, 64
+	vst	$vr1, $sp, 32
+	vxori.b	$vr0, $vr0, 106
+	vst	$vr0, $sp, 48
+	vxori.b	$vr0, $vr2, 106
+	vst	$vr0, $sp, 64
 	addi.d	$s0, $fp, 104
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN7NCrypto5NSha112CContextBase4InitEv)
@@ -143,72 +157,55 @@ _ZN7NCrypto5NSha15CHmac5FinalEPhm:      # @_ZN7NCrypto5NSha15CHmac5FinalEPhm
 	.p2align	4, 0x0                          # -- Begin function _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 .LCPI2_0:
 	.byte	1                               # 0x1
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
 	.byte	4                               # 0x4
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
 	.byte	9                               # 0x9
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
 	.byte	12                              # 0xc
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
 .LCPI2_1:
 	.byte	0                               # 0x0
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
 	.byte	5                               # 0x5
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
 	.byte	8                               # 0x8
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
 	.byte	13                              # 0xd
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
 .LCPI2_2:
 	.byte	2                               # 0x2
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
 	.byte	6                               # 0x6
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
 	.byte	10                              # 0xa
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
 	.byte	14                              # 0xe
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI2_3:
-	.byte	3                               # 0x3
-	.byte	7                               # 0x7
-	.byte	11                              # 0xb
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
 	.text
 	.globl	_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	.p2align	2
@@ -228,10 +225,12 @@ _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm:  # @_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	move	$fp, $a0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 176
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 192
+	vst	$vr0, $sp, 176
+	vst	$vr0, $sp, 160
 	ori	$a0, $zero, 64
-	xvst	$xr0, $sp, 144
+	vst	$vr0, $sp, 144
 	bgeu	$a0, $a2, .LBB2_2
 # %bb.1:
 	addi.d	$a0, $sp, 40
@@ -252,35 +251,30 @@ _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm:  # @_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	vld	$vr0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
 	vld	$vr1, $a0, %pc_lo12(.LCPI2_0)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
-	vext2xv.wu.bu	$xr1, $xr1
+	vrepli.b	$vr2, 0
+	vshuf.b	$vr1, $vr2, $vr0, $vr1
 	pcalau12i	$a0, %pc_hi20(.LCPI2_1)
-	vld	$vr2, $a0, %pc_lo12(.LCPI2_1)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_1)
 	ori	$a0, $zero, 16
 	lu32i.d	$a0, 24
-	vreplgr2vr.d	$vr3, $a0
-	vsll.w	$vr1, $vr1, $vr3
-	vshuf.b	$vr2, $vr0, $vr0, $vr2
-	vext2xv.wu.bu	$xr2, $xr2
+	vreplgr2vr.d	$vr4, $a0
+	vsll.w	$vr1, $vr1, $vr4
+	vshuf.b	$vr3, $vr2, $vr0, $vr3
 	pcalau12i	$a0, %pc_hi20(.LCPI2_2)
-	vld	$vr3, $a0, %pc_lo12(.LCPI2_2)
+	vld	$vr4, $a0, %pc_lo12(.LCPI2_2)
 	ori	$a0, $zero, 24
 	lu32i.d	$a0, 16
-	vreplgr2vr.d	$vr4, $a0
-	vsll.w	$vr2, $vr2, $vr4
-	vor.v	$vr1, $vr2, $vr1
-	vshuf.b	$vr2, $vr0, $vr0, $vr3
-	vext2xv.wu.bu	$xr2, $xr2
-	pcalau12i	$a0, %pc_hi20(.LCPI2_3)
-	vld	$vr3, $a0, %pc_lo12(.LCPI2_3)
+	vreplgr2vr.d	$vr5, $a0
+	vsll.w	$vr3, $vr3, $vr5
+	vor.v	$vr1, $vr3, $vr1
+	vshuf.b	$vr2, $vr2, $vr0, $vr4
 	vslli.w	$vr2, $vr2, 8
-	vor.v	$vr1, $vr1, $vr2
 	ld.w	$a0, $sp, 32
-	vshuf.b	$vr0, $vr0, $vr0, $vr3
-	vext2xv.wu.bu	$xr0, $xr0
+	vor.v	$vr1, $vr1, $vr2
+	vsrli.w	$vr0, $vr0, 24
 	vor.v	$vr0, $vr1, $vr0
 	revb.2w	$a0, $a0
-	b	.LBB2_7
+	b	.LBB2_6
 .LBB2_2:                                # %.preheader
 	move	$a0, $zero
 	beqz	$a2, .LBB2_6
@@ -305,21 +299,28 @@ _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm:  # @_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 # %bb.5:                                # %.loopexit.loopexit
 	vld	$vr0, $sp, 144
 	ld.w	$a0, $sp, 160
-	b	.LBB2_7
-.LBB2_6:
-	vrepli.b	$vr0, 0
-.LBB2_7:                                # %.loopexit
-	ld.w	$a1, $sp, 164
-	xvld	$xr1, $sp, 168
-	vinsgr2vr.w	$vr2, $a0, 0
-	vinsgr2vr.w	$vr2, $a1, 1
-	xvpermi.q	$xr0, $xr2, 2
-	xvld	$xr2, $sp, 176
-	xvinsve0.d	$xr0, $xr1, 3
-	xvxori.b	$xr0, $xr0, 54
-	xvst	$xr0, $sp, 144
-	xvxori.b	$xr0, $xr2, 54
-	xvst	$xr0, $sp, 176
+.LBB2_6:                                # %.loopexit
+	vxori.b	$vr0, $vr0, 54
+	vst	$vr0, $sp, 144
+	lu12i.w	$a1, 222051
+	vld	$vr0, $sp, 164
+	ori	$a1, $a1, 1590
+	xor	$a0, $a0, $a1
+	st.w	$a0, $sp, 160
+	vxori.b	$vr0, $vr0, 54
+	ld.w	$a0, $sp, 196
+	vst	$vr0, $sp, 164
+	ld.w	$a2, $sp, 200
+	vld	$vr0, $sp, 180
+	xor	$a0, $a0, $a1
+	st.w	$a0, $sp, 196
+	xor	$a0, $a2, $a1
+	ld.w	$a2, $sp, 204
+	st.w	$a0, $sp, 200
+	vxori.b	$vr0, $vr0, 54
+	vst	$vr0, $sp, 180
+	xor	$a0, $a2, $a1
+	st.w	$a0, $sp, 204
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN7NCrypto5NSha112CContextBase4InitEv)
 	jirl	$ra, $ra, 0
@@ -329,12 +330,18 @@ _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm:  # @_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN7NCrypto5NSha110CContext326UpdateEPKjm)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 144
-	xvld	$xr1, $sp, 176
-	xvxori.b	$xr0, $xr0, 106
-	xvst	$xr0, $sp, 144
-	xvxori.b	$xr0, $xr1, 106
-	xvst	$xr0, $sp, 176
+	vld	$vr0, $sp, 144
+	vld	$vr1, $sp, 160
+	vxori.b	$vr0, $vr0, 106
+	vst	$vr0, $sp, 144
+	vld	$vr0, $sp, 176
+	vxori.b	$vr1, $vr1, 106
+	vld	$vr2, $sp, 192
+	vst	$vr1, $sp, 160
+	vxori.b	$vr0, $vr0, 106
+	vst	$vr0, $sp, 176
+	vxori.b	$vr0, $vr2, 106
+	vst	$vr0, $sp, 192
 	addi.d	$s0, $fp, 104
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN7NCrypto5NSha112CContextBase4InitEv)

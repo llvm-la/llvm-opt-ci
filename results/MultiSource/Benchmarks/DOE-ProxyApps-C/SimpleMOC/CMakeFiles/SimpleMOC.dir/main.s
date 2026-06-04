@@ -52,19 +52,25 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(get_time)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 352
-	xvld	$xr1, $sp, 320
-	xvst	$xr0, $sp, 88
-	xvst	$xr1, $sp, 56
+	vld	$vr0, $sp, 368
+	vld	$vr1, $sp, 352
+	vld	$vr2, $sp, 336
+	vld	$vr3, $sp, 320
+	vst	$vr0, $sp, 104
+	vst	$vr1, $sp, 88
+	vst	$vr2, $sp, 72
+	vst	$vr3, $sp, 56
 	addi.d	$a0, $sp, 120
 	addi.d	$a1, $sp, 384
 	ori	$a2, $zero, 152
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 304
-	xvld	$xr1, $sp, 272
+	vld	$vr1, $sp, 288
+	vld	$vr2, $sp, 272
 	vst	$vr0, $sp, 40
-	xvst	$xr1, $sp, 8
+	vst	$vr1, $sp, 24
+	vst	$vr2, $sp, 8
 	addi.d	$a0, $sp, 56
 	addi.d	$a1, $sp, 120
 	addi.d	$a2, $sp, 8
@@ -74,10 +80,14 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(get_time)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 352
-	xvld	$xr1, $sp, 320
-	xvst	$xr0, $sp, 88
-	xvst	$xr1, $sp, 56
+	vld	$vr0, $sp, 368
+	vld	$vr1, $sp, 352
+	vld	$vr2, $sp, 336
+	vld	$vr3, $sp, 320
+	vst	$vr0, $sp, 104
+	vst	$vr1, $sp, 88
+	vst	$vr2, $sp, 72
+	vst	$vr3, $sp, 56
 	addi.d	$a0, $sp, 120
 	addi.d	$a1, $sp, 384
 	ori	$a2, $zero, 152
@@ -92,19 +102,25 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(get_time)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 352
-	xvld	$xr1, $sp, 320
-	xvst	$xr0, $sp, 88
-	xvst	$xr1, $sp, 56
+	vld	$vr0, $sp, 368
+	vld	$vr1, $sp, 352
+	vld	$vr2, $sp, 336
+	vld	$vr3, $sp, 320
+	vst	$vr0, $sp, 104
+	vst	$vr1, $sp, 88
+	vst	$vr2, $sp, 72
+	vst	$vr3, $sp, 56
 	addi.d	$a0, $sp, 120
 	addi.d	$a1, $sp, 384
 	ori	$a2, $zero, 152
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 304
-	xvld	$xr1, $sp, 272
+	vld	$vr1, $sp, 288
+	vld	$vr2, $sp, 272
 	vst	$vr0, $sp, 40
-	xvst	$xr1, $sp, 8
+	vst	$vr1, $sp, 24
+	vst	$vr2, $sp, 8
 	addi.d	$a0, $sp, 56
 	addi.d	$a1, $sp, 120
 	addi.d	$a2, $sp, 8

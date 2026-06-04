@@ -948,8 +948,9 @@ calculate_macro_xs:                     # @calculate_macro_xs
 	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 160                  # 8-byte Folded Spill
 	move	$s0, $a0
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $a0, 0
+	vrepli.b	$vr1, 0
+	vst	$vr1, $a0, 16
+	vst	$vr1, $a0, 0
 	ld.d	$a0, $a3, 16
 	slli.d	$s5, $a1, 2
 	ldx.w	$a0, $a0, $s5
@@ -969,12 +970,18 @@ calculate_macro_xs:                     # @calculate_macro_xs
 	b	.LBB1_4
 	.p2align	4, , 16
 .LBB1_2:                                #   in Loop: Header=BB1_4 Depth=1
-	xvld	$xr0, $s4, 0
-	xvld	$xr1, $fp, 32
-	xvld	$xr2, $fp, 0
-	xvst	$xr0, $sp, 96
-	xvst	$xr1, $sp, 64
-	xvst	$xr2, $sp, 32
+	vld	$vr0, $s4, 16
+	vld	$vr1, $s4, 0
+	vst	$vr0, $sp, 112
+	vst	$vr1, $sp, 96
+	vld	$vr0, $fp, 48
+	vld	$vr1, $fp, 32
+	vld	$vr2, $fp, 16
+	vld	$vr3, $fp, 0
+	vst	$vr0, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr2, $sp, 48
+	vst	$vr3, $sp, 32
 	addi.d	$a0, $sp, 128
 	addi.d	$a2, $sp, 96
 	addi.d	$a3, $sp, 32
@@ -1020,12 +1027,18 @@ calculate_macro_xs:                     # @calculate_macro_xs
 	ldx.w	$a1, $a0, $s6
 	beq	$a2, $s2, .LBB1_2
 # %bb.5:                                #   in Loop: Header=BB1_4 Depth=1
-	xvld	$xr0, $s4, 0
-	xvld	$xr1, $fp, 32
-	xvld	$xr2, $fp, 0
-	xvst	$xr0, $sp, 96
-	xvst	$xr1, $sp, 64
-	xvst	$xr2, $sp, 32
+	vld	$vr0, $s4, 16
+	vld	$vr1, $s4, 0
+	vst	$vr0, $sp, 112
+	vst	$vr1, $sp, 96
+	vld	$vr0, $fp, 48
+	vld	$vr1, $fp, 32
+	vld	$vr2, $fp, 16
+	vld	$vr3, $fp, 0
+	vst	$vr0, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr2, $sp, 48
+	vst	$vr3, $sp, 32
 	addi.d	$a0, $sp, 128
 	addi.d	$a2, $sp, 96
 	addi.d	$a3, $sp, 32

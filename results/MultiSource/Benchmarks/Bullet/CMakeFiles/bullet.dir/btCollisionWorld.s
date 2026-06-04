@@ -411,29 +411,29 @@ _ZN16btCollisionWorld18addCollisionObjectEP17btCollisionObjectss: # @_ZN16btColl
 	ld.d	$a0, $s2, 24
 	blez	$a4, .LBB4_13
 .LBB4_4:                                # %.lr.ph.i.i.i
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	move	$a1, $zero
 	bltu	$a4, $a2, .LBB4_9
 # %bb.5:                                # %.lr.ph.i.i.i
 	sub.d	$a2, $s3, $a0
-	ori	$a3, $zero, 64
+	ori	$a3, $zero, 32
 	bltu	$a2, $a3, .LBB4_9
 # %bb.6:                                # %vector.ph
-	bstrpick.d	$a1, $a4, 30, 3
-	slli.d	$a1, $a1, 3
-	addi.d	$a2, $a0, 32
-	addi.d	$a3, $s3, 32
+	bstrpick.d	$a1, $a4, 30, 2
+	slli.d	$a1, $a1, 2
+	addi.d	$a2, $a0, 16
+	addi.d	$a3, $s3, 16
 	move	$a5, $a1
 	.p2align	4, , 16
 .LBB4_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a2, -32
-	xvld	$xr1, $a2, 0
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a2, $a2, 64
-	addi.d	$a3, $a3, 64
+	vld	$vr0, $a2, -16
+	vld	$vr1, $a2, 0
+	vst	$vr0, $a3, -16
+	vst	$vr1, $a3, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a2, $a2, 32
+	addi.d	$a3, $a3, 32
 	bnez	$a5, .LBB4_7
 # %bb.8:                                # %middle.block
 	beq	$a1, $a4, .LBB4_11
@@ -479,11 +479,15 @@ _ZN16btCollisionWorld18addCollisionObjectEP17btCollisionObjectss: # @_ZN16btColl
 	stx.d	$fp, $a0, $a1
 	addi.d	$a0, $a4, 1
 	st.w	$a0, $s2, 12
-	xvld	$xr0, $fp, 8
-	xvld	$xr1, $fp, 40
+	vld	$vr0, $fp, 8
+	vst	$vr0, $sp, 56
+	vld	$vr0, $fp, 24
+	vld	$vr1, $fp, 40
+	vld	$vr2, $fp, 56
 	ld.d	$a0, $fp, 200
-	xvst	$xr0, $sp, 56
-	xvst	$xr1, $sp, 88
+	vst	$vr0, $sp, 72
+	vst	$vr1, $sp, 88
+	vst	$vr2, $sp, 104
 	ld.d	$a1, $a0, 0
 	ld.d	$a4, $a1, 16
 	addi.d	$a1, $sp, 56
@@ -1259,7 +1263,8 @@ _ZN16btCollisionWorld13rayTestSingleERK11btTransformS2_P17btCollisionObjectPK16b
 	vextrins.w	$vr4, $vr5, 16
 	vshuf4i.w	$vr4, $vr4, 16
 	vslli.d	$vr4, $vr4, 32
-	vext2xv.du.wu	$xr5, $xr7
+	vrepli.b	$vr5, 0
+	vilvl.w	$vr5, $vr5, $vr7
 	vor.v	$vr4, $vr4, $vr5
 	vstelm.d	$vr4, $sp, 464, 0
 	st.d	$a0, $sp, 472
@@ -1458,7 +1463,8 @@ _ZN16btCollisionWorld13rayTestSingleERK11btTransformS2_P17btCollisionObjectPK16b
 	vextrins.w	$vr4, $vr5, 16
 	vshuf4i.w	$vr4, $vr4, 16
 	vslli.d	$vr4, $vr4, 32
-	vext2xv.du.wu	$xr5, $xr7
+	vrepli.b	$vr5, 0
+	vilvl.w	$vr5, $vr5, $vr7
 	vor.v	$vr4, $vr4, $vr5
 	vstelm.d	$vr4, $sp, 464, 0
 	st.d	$a0, $sp, 472
@@ -2694,15 +2700,21 @@ _ZNK16btCollisionWorld15convexSweepTestEPK13btConvexShapeRK11btTransformS5_RNS_2
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager13Start_ProfileEPKc)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s3, 0
-	xvst	$xr0, $sp, 400
-	xvld	$xr0, $s3, 32
-	vld	$vr1, $s2, 0
-	xvld	$xr2, $s2, 16
+	vld	$vr0, $s3, 0
+	vld	$vr1, $s3, 16
+	vld	$vr2, $s3, 32
+	vld	$vr3, $s3, 48
+	vst	$vr0, $sp, 400
+	vst	$vr1, $sp, 416
+	vst	$vr2, $sp, 432
+	vst	$vr3, $sp, 448
+	vld	$vr0, $s2, 0
+	vld	$vr1, $s2, 16
+	vld	$vr2, $s2, 32
 	vld	$vr3, $s2, 48
-	xvst	$xr0, $sp, 432
-	vst	$vr1, $sp, 336
-	xvst	$xr2, $sp, 352
+	vst	$vr0, $sp, 336
+	vst	$vr1, $sp, 352
+	vst	$vr2, $sp, 368
 	vst	$vr3, $sp, 384
 .Ltmp126:                               # EH_LABEL
 	addi.d	$a0, $sp, 400

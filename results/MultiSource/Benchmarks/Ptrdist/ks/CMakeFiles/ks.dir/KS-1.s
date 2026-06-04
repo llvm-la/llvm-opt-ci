@@ -345,68 +345,43 @@ ComputeNetCosts:                        # @ComputeNetCosts
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(numNets)
 	ld.d	$a0, $a0, %pc_lo12(numNets)
-	beqz	$a0, .LBB2_14
-# %bb.1:                                # %iter.check
-	ori	$a2, $zero, 4
+	beqz	$a0, .LBB2_8
+# %bb.1:                                # %.lr.ph.preheader
+	ori	$a2, $zero, 8
 	pcalau12i	$a1, %pc_hi20(cost)
 	addi.d	$a1, $a1, %pc_lo12(cost)
 	bgeu	$a0, $a2, .LBB2_3
 # %bb.2:
 	move	$a2, $zero
-	b	.LBB2_12
-.LBB2_3:                                # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$a0, $a2, .LBB2_5
-# %bb.4:
-	move	$a2, $zero
-	b	.LBB2_9
-.LBB2_5:                                # %vector.ph
-	andi	$a3, $a0, 12
-	addi.d	$a4, $a1, 32
+	b	.LBB2_6
+.LBB2_3:                                # %vector.ph
+	addi.d	$a3, $a1, 16
 	move	$a2, $a0
-	bstrins.d	$a2, $zero, 3, 0
-	xvldi	$xr0, -1424
-	move	$a5, $a2
-	.p2align	4, , 16
-.LBB2_6:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a4, -32
-	xvst	$xr0, $a4, 0
-	addi.d	$a5, $a5, -16
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB2_6
-# %bb.7:                                # %middle.block
-	beq	$a0, $a2, .LBB2_14
-# %bb.8:                                # %vec.epilog.iter.check
-	beqz	$a3, .LBB2_12
-.LBB2_9:                                # %vec.epilog.ph
-	move	$a4, $a2
-	move	$a2, $a0
-	bstrins.d	$a2, $zero, 1, 0
-	sub.d	$a3, $a4, $a2
-	alsl.d	$a4, $a4, $a1, 2
+	bstrins.d	$a2, $zero, 2, 0
 	vldi	$vr0, -1424
+	move	$a4, $a2
 	.p2align	4, , 16
-.LBB2_10:                               # %vec.epilog.vector.body
+.LBB2_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr0, $a4, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a3, .LBB2_10
-# %bb.11:                               # %vec.epilog.middle.block
-	beq	$a0, $a2, .LBB2_14
-.LBB2_12:                               # %.lr.ph.preheader
+	vst	$vr0, $a3, -16
+	vst	$vr0, $a3, 0
+	addi.d	$a4, $a4, -8
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB2_4
+# %bb.5:                                # %middle.block
+	beq	$a0, $a2, .LBB2_8
+.LBB2_6:                                # %.lr.ph.preheader4
 	sub.d	$a0, $a0, $a2
 	alsl.d	$a1, $a2, $a1, 2
 	lu12i.w	$a2, 260096
 	.p2align	4, , 16
-.LBB2_13:                               # %.lr.ph
+.LBB2_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a2, $a1, 0
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 4
-	bnez	$a0, .LBB2_13
-.LBB2_14:                               # %._crit_edge
+	bnez	$a0, .LBB2_7
+.LBB2_8:                                # %._crit_edge
 	ret
 .Lfunc_end2:
 	.size	ComputeNetCosts, .Lfunc_end2-ComputeNetCosts

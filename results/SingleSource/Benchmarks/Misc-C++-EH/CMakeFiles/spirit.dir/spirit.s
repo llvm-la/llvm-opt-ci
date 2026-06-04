@@ -656,8 +656,9 @@ _ZN5boost6spirit4impl19object_with_id_baseINS1_11grammar_tagEmE17acquire_object_
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN5boost10shared_ptrINS_6spirit4impl26object_with_id_base_supplyImEEE5resetIS4_EEvPT_)
 	jirl	$ra, $ra, 0
@@ -2118,8 +2119,9 @@ _ZN5boost6spirit4impl14grammar_helperINS0_7grammarI9c_grammarNS0_14parser_contex
 	addi.d	$a0, $a0, %pc_lo12(_ZTVN5boost6spirit4impl14grammar_helperINS0_7grammarI9c_grammarNS0_14parser_contextINS0_5nil_tEEEEES4_NS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEE+16)
 	st.d	$a0, $fp, 0
 	addi.d	$a0, $fp, 40
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $fp, 8
+	vst	$vr0, $fp, 24
 .Ltmp78:                                # EH_LABEL
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZN5boost10shared_ptrINS_6spirit4impl14grammar_helperINS1_7grammarI9c_grammarNS1_14parser_contextINS1_5nil_tEEEEES5_NS1_7scannerIPKcNS1_16scanner_policiesINS1_28skip_parser_iteration_policyI12skip_grammarNS1_16iteration_policyEEENS1_12match_policyENS1_13action_policyEEEEEEEEC2ISM_EEPT_)
@@ -14291,10 +14293,12 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_8sequenceINS4_INS4_
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_8sequenceINS4_INS4_INS0_8optionalINS0_5chlitIcEEEES7_EENS0_11kleene_starINS0_11alternativeINS0_6strlitIPKcEENS0_10differenceINS0_14anychar_parserES7_EEEEEEEES7_EEEENS0_7scannerISE_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEEE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_8sequenceINS4_INS4_INS0_8optionalINS0_5chlitIcEEEES7_EENS0_11kleene_starINS0_11alternativeINS0_6strlitIPKcEENS0_10differenceINS0_14anychar_parserES7_EEEEEEEES7_EEEENS0_7scannerISE_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEEE+16)
 	ld.d	$a2, $fp, 8
-	xvld	$xr0, $fp, 16
+	vld	$vr0, $fp, 16
+	vld	$vr1, $fp, 32
 	st.d	$a1, $a0, 0
 	st.d	$a2, $a0, 8
-	xvst	$xr0, $a0, 16
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 32
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -15588,9 +15592,11 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS0_4ruleINS
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EESI_EESI_EESI_EESG_SH_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EESI_EESI_EESI_EESG_SH_EE+16)
-	xvld	$xr0, $fp, 8
+	vld	$vr0, $fp, 8
+	vld	$vr1, $fp, 24
 	st.d	$a1, $a0, 0
-	xvst	$xr0, $a0, 8
+	vst	$vr0, $a0, 8
+	vst	$vr1, $a0, 24
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -16847,10 +16853,12 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS0_4ruleINS
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EESI_EESI_EENS0_8sequenceINSL_INS0_5chlitIcEESI_EESN_EEEESG_SH_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EESI_EESI_EENS0_8sequenceINSL_INS0_5chlitIcEESI_EESN_EEEESG_SH_EE+16)
 	vld	$vr0, $fp, 8
-	xvld	$xr1, $fp, 24
+	vld	$vr1, $fp, 24
+	vld	$vr2, $fp, 40
 	st.d	$a1, $a0, 0
 	vst	$vr0, $a0, 8
-	xvst	$xr1, $a0, 24
+	vst	$vr1, $a0, 24
+	vst	$vr2, $a0, 40
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -18330,10 +18338,12 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS4
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS4_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESK_EEEES6_EESL_EESL_EESJ_SK_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS4_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESK_EEEES6_EESL_EESL_EESJ_SK_EE+16)
 	ld.d	$a2, $fp, 8
-	xvld	$xr0, $fp, 16
+	vld	$vr0, $fp, 16
+	vld	$vr1, $fp, 32
 	st.d	$a1, $a0, 0
 	st.d	$a2, $a0, 8
-	xvst	$xr0, $a0, 16
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 32
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -18536,13 +18546,15 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS3
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS3_INS4_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESK_EEEESM_EESM_EESL_EENS0_14epsilon_parserEEESJ_SK_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS3_INS4_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESK_EEEESM_EESM_EESL_EENS0_14epsilon_parserEEESJ_SK_EE+16)
-	ld.d	$a2, $fp, 8
-	vld	$vr0, $fp, 16
-	xvld	$xr1, $fp, 32
 	st.d	$a1, $a0, 0
-	st.d	$a2, $a0, 8
+	ld.d	$a1, $fp, 8
+	vld	$vr0, $fp, 16
+	vld	$vr1, $fp, 32
+	vld	$vr2, $fp, 48
+	st.d	$a1, $a0, 8
 	vst	$vr0, $a0, 16
-	xvst	$xr1, $a0, 32
+	vst	$vr1, $a0, 32
+	vst	$vr2, $a0, 48
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -18726,10 +18738,12 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESK_EEEESM_EESL_EENS0_14epsilon_parserEEESJ_SK_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESK_EEEESM_EESL_EENS0_14epsilon_parserEEESJ_SK_EE+16)
 	ld.d	$a2, $fp, 8
-	xvld	$xr0, $fp, 16
+	vld	$vr0, $fp, 16
+	vld	$vr1, $fp, 32
 	st.d	$a1, $a0, 0
 	st.d	$a2, $a0, 8
-	xvst	$xr0, $a0, 16
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 32
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -18941,13 +18955,15 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4_INS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS7_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESK_EEEESM_EESL_EENS0_14epsilon_parserEEESJ_SK_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4_INS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS7_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESK_EEEESM_EESL_EENS0_14epsilon_parserEEESJ_SK_EE+16)
-	ld.d	$a2, $fp, 8
-	vld	$vr0, $fp, 16
-	xvld	$xr1, $fp, 32
 	st.d	$a1, $a0, 0
-	st.d	$a2, $a0, 8
+	ld.d	$a1, $fp, 8
+	vld	$vr0, $fp, 16
+	vld	$vr1, $fp, 32
+	vld	$vr2, $fp, 48
+	st.d	$a1, $a0, 8
 	vst	$vr0, $a0, 16
-	xvst	$xr1, $a0, 32
+	vst	$vr1, $a0, 32
+	vst	$vr2, $a0, 48
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -19372,9 +19388,11 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS7_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESK_EEEESL_EENS0_14epsilon_parserEEESJ_SK_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS7_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESK_EEEESL_EENS0_14epsilon_parserEEESJ_SK_EE+16)
-	xvld	$xr0, $fp, 8
+	vld	$vr0, $fp, 8
+	vld	$vr1, $fp, 24
 	st.d	$a1, $a0, 0
-	xvst	$xr0, $a0, 8
+	vst	$vr0, $a0, 8
+	vst	$vr1, $a0, 24
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -19455,10 +19473,12 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS4
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS4_INS4_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESK_EEEES6_EESL_EESL_EENS0_14epsilon_parserEEESJ_SK_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS4_INS4_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESK_EEEES6_EESL_EESL_EENS0_14epsilon_parserEEESJ_SK_EE+16)
 	ld.d	$a2, $fp, 8
-	xvld	$xr0, $fp, 16
+	vld	$vr0, $fp, 16
+	vld	$vr1, $fp, 32
 	st.d	$a1, $a0, 0
 	st.d	$a2, $a0, 8
-	xvst	$xr0, $a0, 16
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 32
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -19699,9 +19719,11 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EESJ_EESJ_EESJ_EESH_SI_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EESJ_EESJ_EESJ_EESH_SI_EE+16)
-	xvld	$xr0, $fp, 8
+	vld	$vr0, $fp, 8
+	vld	$vr1, $fp, 24
 	st.d	$a1, $a0, 0
-	xvst	$xr0, $a0, 8
+	vst	$vr0, $a0, 8
+	vst	$vr1, $a0, 24
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -20752,9 +20774,11 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_11alternativeINS4_INS0
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_11alternativeINS4_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EESJ_EESJ_EENS0_8optionalISJ_EEEESH_SI_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_11alternativeINS4_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EESJ_EESJ_EENS0_8optionalISJ_EEEESH_SI_EE+16)
-	xvld	$xr0, $fp, 8
+	vld	$vr0, $fp, 8
+	vld	$vr1, $fp, 24
 	st.d	$a1, $a0, 0
-	xvst	$xr0, $a0, 8
+	vst	$vr0, $a0, 8
+	vst	$vr1, $a0, 24
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -20936,10 +20960,12 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS0_4ru
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EESI_EESI_EESI_EESI_EESG_SH_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EESI_EESI_EESI_EESI_EESG_SH_EE+16)
 	ld.d	$a2, $fp, 8
-	xvld	$xr0, $fp, 16
+	vld	$vr0, $fp, 16
+	vld	$vr1, $fp, 32
 	st.d	$a1, $a0, 0
 	st.d	$a2, $a0, 8
-	xvst	$xr0, $a0, 16
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 32
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -21354,11 +21380,15 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_4ruleINS0_7scannerIPKc
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EENS0_11alternativeINS3_ISI_NS0_8optionalINS3_INS3_ISI_SI_EESI_EEEEEESM_EEEESG_SH_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EENS0_11alternativeINS3_ISI_NS0_8optionalINS3_INS3_ISI_SI_EESI_EEEEEESM_EEEESG_SH_EE+16)
-	xvld	$xr0, $fp, 8
-	xvld	$xr1, $fp, 40
 	st.d	$a1, $a0, 0
-	xvst	$xr0, $a0, 8
-	xvst	$xr1, $a0, 40
+	vld	$vr0, $fp, 8
+	vld	$vr1, $fp, 24
+	vld	$vr2, $fp, 40
+	vld	$vr3, $fp, 56
+	vst	$vr0, $a0, 8
+	vst	$vr1, $a0, 24
+	vst	$vr2, $a0, 40
+	vst	$vr3, $a0, 56
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -22085,10 +22115,12 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS3_INS3_INS3_INS0_4ruleIN
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_8sequenceINS3_INS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EENS0_8optionalISI_EEEESI_EESI_EESI_EESG_SH_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_8sequenceINS3_INS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EENS0_8optionalISI_EEEESI_EESI_EESI_EESG_SH_EE+16)
 	ld.d	$a2, $fp, 8
-	xvld	$xr0, $fp, 16
+	vld	$vr0, $fp, 16
+	vld	$vr1, $fp, 32
 	st.d	$a1, $a0, 0
 	st.d	$a2, $a0, 8
-	xvst	$xr0, $a0, 16
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 32
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -22377,10 +22409,12 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_11alternativeINS0_4rul
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EENS3_INS3_INS0_5chlitIcEESJ_EESL_EEEESJ_EESH_SI_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EENS3_INS3_INS0_5chlitIcEESJ_EESL_EEEESJ_EESH_SI_EE+16)
 	ld.d	$a2, $fp, 8
-	xvld	$xr0, $fp, 16
+	vld	$vr0, $fp, 16
+	vld	$vr1, $fp, 32
 	st.d	$a1, $a0, 0
 	st.d	$a2, $a0, 8
-	xvst	$xr0, $a0, 16
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 32
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -22592,11 +22626,15 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4_INS4_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EENS0_8optionalISJ_EEEESJ_EENS4_INS4_INS0_5chlitIcEENSK_INS3_ISJ_SJ_EEEEEESP_EEEESJ_EENS0_14epsilon_parserEEESH_SI_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4_INS4_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EENS0_8optionalISJ_EEEESJ_EENS4_INS4_INS0_5chlitIcEENSK_INS3_ISJ_SJ_EEEEEESP_EEEESJ_EENS0_14epsilon_parserEEESH_SI_EE+16)
-	xvld	$xr0, $fp, 8
-	xvld	$xr1, $fp, 40
 	st.d	$a1, $a0, 0
-	xvst	$xr0, $a0, 8
-	xvst	$xr1, $a0, 40
+	vld	$vr0, $fp, 8
+	vld	$vr1, $fp, 24
+	vld	$vr2, $fp, 40
+	vld	$vr3, $fp, 56
+	vst	$vr0, $a0, 8
+	vst	$vr1, $a0, 24
+	vst	$vr2, $a0, 40
+	vst	$vr3, $a0, 56
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -22986,9 +23024,11 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_4ruleINS0_7scannerIPKc
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EENS0_8optionalINS3_INS0_5chlitIcEENS0_6strlitIS7_EEEEEEEESG_SH_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EENS0_8optionalINS3_INS0_5chlitIcEENS0_6strlitIS7_EEEEEEEESG_SH_EE+16)
-	xvld	$xr0, $fp, 8
+	vld	$vr0, $fp, 8
+	vld	$vr1, $fp, 24
 	st.d	$a1, $a0, 0
-	xvst	$xr0, $a0, 8
+	vst	$vr0, $a0, 8
+	vst	$vr1, $a0, 24
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -23841,13 +23881,15 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4_INS4_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EENS0_8optionalISJ_EEEESJ_EENS4_INS4_INS0_5chlitIcEESL_EESP_EEEESJ_EENS0_14epsilon_parserEEESH_SI_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4_INS4_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EENS0_8optionalISJ_EEEESJ_EENS4_INS4_INS0_5chlitIcEESL_EESP_EEEESJ_EENS0_14epsilon_parserEEESH_SI_EE+16)
-	ld.d	$a2, $fp, 8
-	vld	$vr0, $fp, 16
-	xvld	$xr1, $fp, 32
 	st.d	$a1, $a0, 0
-	st.d	$a2, $a0, 8
+	ld.d	$a1, $fp, 8
+	vld	$vr0, $fp, 16
+	vld	$vr1, $fp, 32
+	vld	$vr2, $fp, 48
+	st.d	$a1, $a0, 8
 	vst	$vr0, $a0, 16
-	xvst	$xr1, $a0, 32
+	vst	$vr1, $a0, 32
+	vst	$vr2, $a0, 48
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -24037,10 +24079,12 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_4ruleINS0_7scanner
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EENS0_8sequenceINSJ_INSJ_ISI_SI_EENS0_8optionalINS0_5chlitIcEEEEEESI_EEEESG_SH_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EENS0_8sequenceINSJ_INSJ_ISI_SI_EENS0_8optionalINS0_5chlitIcEEEEEESI_EEEESG_SH_EE+16)
 	ld.d	$a2, $fp, 8
-	xvld	$xr0, $fp, 16
+	vld	$vr0, $fp, 16
+	vld	$vr1, $fp, 32
 	st.d	$a1, $a0, 0
 	st.d	$a2, $a0, 8
-	xvst	$xr0, $a0, 16
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 32
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -24260,10 +24304,12 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EESI_EESI_EESI_EESI_EESI_EESG_SH_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EESI_EESI_EESI_EESI_EESI_EESG_SH_EE+16)
 	vld	$vr0, $fp, 8
-	xvld	$xr1, $fp, 24
+	vld	$vr1, $fp, 24
+	vld	$vr2, $fp, 40
 	st.d	$a1, $a0, 0
 	vst	$vr0, $a0, 8
-	xvst	$xr1, $a0, 24
+	vst	$vr1, $a0, 24
+	vst	$vr2, $a0, 40
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -24594,9 +24640,11 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS3_INS0_4ruleINS0_7scanne
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_8sequenceINS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EENS0_8optionalINS0_13sequential_orISI_SI_EEEEEESI_EESG_SH_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_8sequenceINS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EENS0_8optionalINS0_13sequential_orISI_SI_EEEEEESI_EESG_SH_EE+16)
-	xvld	$xr0, $fp, 8
+	vld	$vr0, $fp, 8
+	vld	$vr1, $fp, 24
 	st.d	$a1, $a0, 0
-	xvst	$xr0, $a0, 8
+	vst	$vr0, $a0, 8
+	vst	$vr1, $a0, 24
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -25916,9 +25964,11 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS3_INS3_INS0_8optionalINS
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZTVN5boost6spirit4impl15concrete_parserINS0_8sequenceINS3_INS3_INS0_8optionalINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESJ_EESK_EESJ_EESH_SI_EE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVN5boost6spirit4impl15concrete_parserINS0_8sequenceINS3_INS3_INS0_8optionalINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESJ_EESK_EESJ_EESH_SI_EE+16)
-	xvld	$xr0, $fp, 8
+	vld	$vr0, $fp, 8
+	vld	$vr1, $fp, 24
 	st.d	$a1, $a0, 0
-	xvst	$xr0, $a0, 8
+	vst	$vr0, $a0, 8
+	vst	$vr1, $a0, 24
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -26544,8 +26594,9 @@ _ZN5boost6spirit4impl14grammar_helperINS0_7grammarI12skip_grammarNS0_14parser_co
 	addi.d	$a0, $a0, %pc_lo12(_ZTVN5boost6spirit4impl14grammar_helperINS0_7grammarI12skip_grammarNS0_14parser_contextINS0_5nil_tEEEEES4_NS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS4_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEE+16)
 	st.d	$a0, $fp, 0
 	addi.d	$a0, $fp, 40
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $fp, 8
+	vst	$vr0, $fp, 24
 .Ltmp679:                               # EH_LABEL
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZN5boost10shared_ptrINS_6spirit4impl14grammar_helperINS1_7grammarI12skip_grammarNS1_14parser_contextINS1_5nil_tEEEEES5_NS1_7scannerIPKcNS1_16scanner_policiesINS1_27no_skipper_iteration_policyINS1_28skip_parser_iteration_policyIS5_NS1_16iteration_policyEEEEENS1_12match_policyENS1_13action_policyEEEEEEEEC2ISN_EEPT_)

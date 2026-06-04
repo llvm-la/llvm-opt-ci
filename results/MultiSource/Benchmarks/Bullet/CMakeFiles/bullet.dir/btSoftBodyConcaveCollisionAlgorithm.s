@@ -1246,63 +1246,63 @@ _ZN26btSoftBodyTriangleCallback15processTriangleEP9btVector3ii: # @_ZN26btSoftBo
 	addi.d	$a3, $sp, 16
 	jirl	$ra, $a4, 0
 	ld.d	$a0, $s0, 72
-	ld.d	$a0, $a0, 24
 	fld.s	$fa0, $s4, 8
 	fld.s	$fa1, $s4, 12
-	fld.s	$fa2, $s4, 16
-	fld.s	$fa3, $s1, 40
-	fld.s	$fa4, $s4, 56
-	fld.s	$fa5, $s4, 24
-	fld.s	$fa6, $s4, 28
-	fld.s	$fa7, $s4, 32
-	fld.s	$ft0, $s4, 60
-	fld.s	$ft1, $s4, 40
-	fld.s	$ft2, $s4, 44
-	fld.s	$ft3, $s4, 48
-	fld.s	$ft4, $s1, 36
-	fld.s	$ft5, $s1, 32
-	fld.s	$ft6, $s4, 64
-	fld.s	$ft7, $s1, 8
-	fmul.s	$ft8, $ft4, $ft2
-	fmadd.s	$ft8, $ft1, $ft5, $ft8
-	fmadd.s	$ft8, $ft3, $fa3, $ft8
-	fadd.s	$ft8, $ft6, $ft8
-	fld.s	$ft9, $s1, 4
-	movfr2gr.s	$a1, $ft8
-	fld.s	$ft8, $s1, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	fmul.s	$ft10, $fa1, $ft9
-	fmul.s	$fa1, $fa1, $ft4
-	fmadd.s	$ft10, $fa0, $ft8, $ft10
-	fmadd.s	$fa0, $fa0, $ft5, $fa1
-	fmadd.s	$fa1, $fa2, $ft7, $ft10
-	fmadd.s	$fa0, $fa2, $fa3, $fa0
-	fadd.s	$fa1, $fa4, $fa1
-	fadd.s	$fa0, $fa0, $fa4
-	fmul.s	$fa2, $fa6, $ft9
-	fmul.s	$fa4, $ft4, $fa6
-	fmadd.s	$fa2, $fa5, $ft8, $fa2
-	fmadd.s	$fa4, $fa5, $ft5, $fa4
-	fmadd.s	$fa2, $fa7, $ft7, $fa2
-	fmadd.s	$fa3, $fa7, $fa3, $fa4
-	fadd.s	$fa2, $ft0, $fa2
-	fadd.s	$fa3, $ft0, $fa3
-	vextrins.w	$vr0, $vr1, 16
-	vextrins.w	$vr3, $vr2, 16
-	vshuf4i.w	$vr1, $vr3, 16
-	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr0, $xr0
-	vor.v	$vr0, $vr1, $vr0
-	vstelm.d	$vr0, $sp, 128, 0
-	st.d	$a1, $sp, 136
-	fmul.s	$fa1, $ft2, $ft9
-	fmadd.s	$fa1, $ft1, $ft8, $fa1
-	fmadd.s	$fa1, $ft3, $ft7, $fa1
-	fadd.s	$fa1, $ft6, $fa1
-	movfr2gr.s	$a1, $fa1
-	bstrpick.d	$a1, $a1, 31, 0
-	vstelm.d	$vr0, $sp, 112, 1
-	st.d	$a1, $sp, 120
+	fld.s	$fa2, $s1, 36
+	fld.s	$fa3, $s1, 32
+	fld.s	$fa4, $s4, 16
+	fld.s	$fa5, $s1, 40
+	fmul.s	$fa6, $fa1, $fa2
+	fmadd.s	$fa6, $fa0, $fa3, $fa6
+	fld.s	$fa7, $s4, 28
+	fmadd.s	$fa6, $fa4, $fa5, $fa6
+	fld.s	$ft0, $s4, 24
+	fld.s	$ft1, $s4, 56
+	fmul.s	$ft2, $fa2, $fa7
+	fld.s	$ft3, $s4, 32
+	fmadd.s	$ft2, $ft0, $fa3, $ft2
+	fld.s	$ft4, $s4, 44
+	fld.s	$ft5, $s4, 40
+	fmadd.s	$ft2, $ft3, $fa5, $ft2
+	fld.s	$ft6, $s4, 48
+	fmul.s	$fa2, $fa2, $ft4
+	fmadd.s	$fa2, $ft5, $fa3, $fa2
+	fld.s	$fa3, $s4, 60
+	fmadd.s	$fa2, $ft6, $fa5, $fa2
+	fld.s	$fa5, $s4, 64
+	ld.d	$a0, $a0, 24
+	fadd.s	$fa6, $fa6, $ft1
+	fadd.s	$ft2, $fa3, $ft2
+	fadd.s	$fa2, $fa5, $fa2
+	movfr2gr.s	$a1, $fa6
+	movfr2gr.s	$a2, $ft2
+	bstrins.d	$a1, $a2, 63, 32
+	movfr2gr.s	$a2, $fa2
+	bstrpick.d	$a2, $a2, 31, 0
+	st.d	$a1, $sp, 128
+	fld.s	$fa2, $s1, 4
+	fld.s	$fa6, $s1, 0
+	fld.s	$ft2, $s1, 8
+	st.d	$a2, $sp, 136
+	fmul.s	$fa1, $fa1, $fa2
+	fmadd.s	$fa0, $fa0, $fa6, $fa1
+	fmadd.s	$fa0, $fa4, $ft2, $fa0
+	fadd.s	$fa0, $ft1, $fa0
+	fmul.s	$fa1, $fa7, $fa2
+	fmadd.s	$fa1, $ft0, $fa6, $fa1
+	fmadd.s	$fa1, $ft3, $ft2, $fa1
+	fadd.s	$fa1, $fa3, $fa1
+	fmul.s	$fa2, $ft4, $fa2
+	fmadd.s	$fa2, $ft5, $fa6, $fa2
+	fmadd.s	$fa2, $ft6, $ft2, $fa2
+	fadd.s	$fa2, $fa5, $fa2
+	movfr2gr.s	$a1, $fa0
+	movfr2gr.s	$a2, $fa1
+	bstrins.d	$a1, $a2, 63, 32
+	movfr2gr.s	$a2, $fa2
+	bstrpick.d	$a2, $a2, 31, 0
+	st.d	$a1, $sp, 112
+	st.d	$a2, $sp, 120
 	ld.d	$a1, $a0, 0
 	ld.d	$a4, $a1, 40
 	addi.d	$a1, $sp, 128
@@ -1390,106 +1390,100 @@ _ZN26btSoftBodyTriangleCallback15processTriangleEP9btVector3ii: # @_ZN26btSoftBo
 	st.d	$s2, $s4, 200
 	b	.LBB10_13
 .LBB10_11:                              # %_ZN9btHashMapI9btHashKeyI10btTriIndexES1_EixERKS2_.exit.thread
-	fld.s	$fa1, $s1, 24
-	fld.s	$fa4, $s1, 8
-	fld.s	$fa0, $s1, 40
-	fsub.s	$fa7, $fa1, $fa4
-	fsub.s	$ft0, $fa0, $fa4
-	fneg.s	$ft1, $ft0
-	fld.s	$fa5, $s1, 20
-	fld.s	$fa6, $s1, 16
-	fld.s	$ft2, $s1, 0
-	fld.s	$ft3, $s1, 4
-	fld.s	$fa3, $s1, 32
+	fld.s	$fa1, $s1, 16
+	fld.s	$fa6, $s1, 0
+	fld.s	$fa4, $s1, 20
+	fld.s	$fa7, $s1, 4
+	fsub.s	$ft1, $fa1, $fa6
+	fsub.s	$ft2, $fa4, $fa7
+	fld.s	$fa5, $s1, 24
+	fld.s	$ft0, $s1, 8
+	fld.s	$fa0, $s1, 32
 	fld.s	$fa2, $s1, 36
-	fsub.s	$ft4, $fa6, $ft2
-	fsub.s	$ft5, $fa5, $ft3
-	fsub.s	$ft6, $fa3, $ft2
-	fsub.s	$ft7, $fa2, $ft3
-	fneg.s	$ft8, $ft7
-	fmul.s	$ft8, $fa7, $ft8
-	fmadd.s	$ft0, $ft5, $ft0, $ft8
-	fmul.s	$ft1, $ft4, $ft1
-	fmadd.s	$fa7, $fa7, $ft6, $ft1
-	fneg.s	$ft1, $ft6
-	fmul.s	$ft1, $ft5, $ft1
-	fmadd.s	$ft1, $ft4, $ft7, $ft1
-	fmul.s	$ft4, $fa7, $fa7
-	fmadd.s	$ft4, $ft0, $ft0, $ft4
-	fmadd.s	$ft4, $ft1, $ft1, $ft4
-	frsqrt.s	$ft4, $ft4
-	fmul.s	$ft0, $ft0, $ft4
-	fmul.s	$ft5, $fa7, $ft4
-	fmul.s	$ft1, $ft1, $ft4
+	fld.s	$fa3, $s1, 40
+	fsub.s	$ft3, $fa5, $ft0
+	fsub.s	$ft4, $fa0, $fa6
+	fsub.s	$ft5, $fa2, $fa7
+	fsub.s	$ft6, $fa3, $ft0
+	fneg.s	$ft7, $ft5
+	fmul.s	$ft7, $ft3, $ft7
+	fmadd.s	$ft7, $ft2, $ft6, $ft7
+	fneg.s	$ft6, $ft6
+	fmul.s	$ft6, $ft1, $ft6
+	fmadd.s	$ft3, $ft3, $ft4, $ft6
+	fneg.s	$ft4, $ft4
+	fmul.s	$ft2, $ft2, $ft4
+	fmadd.s	$ft1, $ft1, $ft5, $ft2
+	fmul.s	$ft2, $ft3, $ft3
+	fmadd.s	$ft2, $ft7, $ft7, $ft2
+	fmadd.s	$ft2, $ft1, $ft1, $ft2
+	frsqrt.s	$ft2, $ft2
+	fmul.s	$ft4, $ft7, $ft2
+	fmul.s	$ft3, $ft3, $ft2
+	fmul.s	$ft1, $ft1, $ft2
 	lu12i.w	$a0, 251740
 	ori	$a0, $a0, 655
-	movgr2fr.w	$ft4, $a0
-	fmul.s	$fa7, $ft0, $ft4
-	fmul.s	$ft0, $ft5, $ft4
-	fmul.s	$ft1, $ft1, $ft4
-	fadd.s	$ft4, $fa4, $ft1
-	movfr2gr.s	$a0, $ft4
-	bstrpick.d	$a0, $a0, 31, 0
-	fsub.s	$ft4, $ft2, $fa7
-	fadd.s	$ft5, $fa3, $fa7
-	fadd.s	$ft6, $fa6, $fa7
-	fadd.s	$ft2, $ft2, $fa7
-	fsub.s	$ft7, $ft3, $ft0
-	fadd.s	$ft8, $fa2, $ft0
-	fadd.s	$ft9, $fa5, $ft0
-	fadd.s	$ft3, $ft3, $ft0
-	vextrins.w	$vr10, $vr14, 16
-	vextrins.w	$vr10, $vr13, 32
-	vextrins.w	$vr10, $vr12, 48
-	vextrins.w	$vr11, $vr17, 16
-	vextrins.w	$vr11, $vr16, 32
-	vextrins.w	$vr11, $vr15, 48
-	vpickve2gr.w	$a1, $vr11, 2
-	vinsgr2vr.d	$vr12, $a1, 0
-	vpickve2gr.w	$a1, $vr11, 3
-	vinsgr2vr.d	$vr12, $a1, 1
-	vpickve2gr.w	$a1, $vr11, 0
-	vinsgr2vr.d	$vr13, $a1, 0
-	vpickve2gr.w	$a1, $vr11, 1
-	vinsgr2vr.d	$vr13, $a1, 1
-	xvpermi.q	$xr13, $xr12, 2
-	xvslli.d	$xr11, $xr13, 32
-	vext2xv.du.wu	$xr10, $xr10
-	xvor.v	$xr10, $xr11, $xr10
-	xvstelm.d	$xr10, $sp, 16, 0
-	st.d	$a0, $sp, 24
-	fadd.s	$ft3, $fa1, $ft1
-	movfr2gr.s	$a0, $ft3
-	bstrpick.d	$a0, $a0, 31, 0
-	xvstelm.d	$xr10, $sp, 32, 1
-	st.d	$a0, $sp, 40
-	fadd.s	$ft3, $fa0, $ft1
-	movfr2gr.s	$a0, $ft3
-	bstrpick.d	$a0, $a0, 31, 0
-	xvstelm.d	$xr10, $sp, 48, 2
-	st.d	$a0, $sp, 56
-	fsub.s	$fa4, $fa4, $ft1
-	movfr2gr.s	$a0, $fa4
-	bstrpick.d	$a0, $a0, 31, 0
-	xvstelm.d	$xr10, $sp, 64, 3
-	st.d	$a0, $sp, 72
-	fsub.s	$fa4, $fa6, $fa7
-	fsub.s	$fa5, $fa5, $ft0
-	fsub.s	$fa1, $fa1, $ft1
-	movfr2gr.s	$a0, $fa4
-	movfr2gr.s	$a1, $fa5
+	movgr2fr.w	$ft2, $a0
+	fmul.s	$ft4, $ft4, $ft2
+	fmul.s	$ft3, $ft3, $ft2
+	fmul.s	$ft1, $ft1, $ft2
+	fadd.s	$ft2, $fa6, $ft4
+	fadd.s	$ft5, $fa7, $ft3
+	fadd.s	$ft6, $ft0, $ft1
+	movfr2gr.s	$a0, $ft2
+	movfr2gr.s	$a1, $ft5
 	bstrins.d	$a0, $a1, 63, 32
-	movfr2gr.s	$a1, $fa1
+	movfr2gr.s	$a1, $ft6
+	bstrpick.d	$a1, $a1, 31, 0
+	st.d	$a0, $sp, 16
+	st.d	$a1, $sp, 24
+	fadd.s	$ft2, $fa1, $ft4
+	fadd.s	$ft5, $fa4, $ft3
+	fadd.s	$ft6, $fa5, $ft1
+	movfr2gr.s	$a0, $ft2
+	movfr2gr.s	$a1, $ft5
+	bstrins.d	$a0, $a1, 63, 32
+	movfr2gr.s	$a1, $ft6
+	bstrpick.d	$a1, $a1, 31, 0
+	st.d	$a0, $sp, 32
+	st.d	$a1, $sp, 40
+	fadd.s	$ft2, $fa0, $ft4
+	fadd.s	$ft5, $fa2, $ft3
+	fadd.s	$ft6, $fa3, $ft1
+	movfr2gr.s	$a0, $ft2
+	movfr2gr.s	$a1, $ft5
+	bstrins.d	$a0, $a1, 63, 32
+	movfr2gr.s	$a1, $ft6
+	bstrpick.d	$a1, $a1, 31, 0
+	st.d	$a0, $sp, 48
+	st.d	$a1, $sp, 56
+	fsub.s	$fa6, $fa6, $ft4
+	fsub.s	$fa7, $fa7, $ft3
+	fsub.s	$ft0, $ft0, $ft1
+	movfr2gr.s	$a0, $fa6
+	movfr2gr.s	$a1, $fa7
+	bstrins.d	$a0, $a1, 63, 32
+	movfr2gr.s	$a1, $ft0
+	bstrpick.d	$a1, $a1, 31, 0
+	st.d	$a0, $sp, 64
+	st.d	$a1, $sp, 72
+	fsub.s	$fa1, $fa1, $ft4
+	fsub.s	$fa4, $fa4, $ft3
+	fsub.s	$fa5, $fa5, $ft1
+	movfr2gr.s	$a0, $fa1
+	movfr2gr.s	$a1, $fa4
+	bstrins.d	$a0, $a1, 63, 32
+	movfr2gr.s	$a1, $fa5
 	bstrpick.d	$a1, $a1, 31, 0
 	st.d	$a0, $sp, 80
 	st.d	$a1, $sp, 88
-	fsub.s	$fa1, $fa3, $fa7
-	fsub.s	$fa2, $fa2, $ft0
-	fsub.s	$fa0, $fa0, $ft1
-	movfr2gr.s	$a0, $fa1
-	movfr2gr.s	$a1, $fa2
+	fsub.s	$fa0, $fa0, $ft4
+	fsub.s	$fa1, $fa2, $ft3
+	fsub.s	$fa2, $fa3, $ft1
+	movfr2gr.s	$a0, $fa0
+	movfr2gr.s	$a1, $fa1
 	bstrins.d	$a0, $a1, 63, 32
-	movfr2gr.s	$a1, $fa0
+	movfr2gr.s	$a1, $fa2
 	bstrpick.d	$a1, $a1, 31, 0
 	st.d	$a0, $sp, 96
 	st.d	$a1, $sp, 104
@@ -1712,7 +1706,7 @@ _ZN9btHashMapI9btHashKeyI10btTriIndexES1_E6insertERKS2_RKS1_: # @_ZN9btHashMapI9
 	vld	$vr0, $a2, 0
 	slli.d	$a0, $a0, 4
 	vstx	$vr0, $a1, $a0
-	b	.LBB11_43
+	b	.LBB11_37
 .LBB11_10:
 	move	$s1, $zero
 	move	$a1, $s3
@@ -1754,7 +1748,7 @@ _ZN9btHashMapI9btHashKeyI10btTriIndexES1_E6insertERKS2_RKS1_: # @_ZN9btHashMapI9
 	ld.w	$a2, $fp, 104
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 68
-	bne	$a1, $a2, .LBB11_40
+	bne	$a1, $a2, .LBB11_34
 # %bb.18:
 	sltui	$a0, $a1, 1
 	slli.w	$a2, $a1, 1
@@ -1762,9 +1756,9 @@ _ZN9btHashMapI9btHashKeyI10btTriIndexES1_E6insertERKS2_RKS1_: # @_ZN9btHashMapI9
 	ori	$a3, $zero, 1
 	maskeqz	$a0, $a3, $a0
 	or	$s5, $a0, $a2
-	bge	$a1, $s5, .LBB11_40
+	bge	$a1, $s5, .LBB11_34
 # %bb.19:
-	beqz	$s5, .LBB11_25
+	beqz	$s5, .LBB11_28
 # %bb.20:
 	slli.d	$a0, $s5, 2
 	ori	$a1, $zero, 16
@@ -1773,95 +1767,68 @@ _ZN9btHashMapI9btHashKeyI10btTriIndexES1_E6insertERKS2_RKS1_: # @_ZN9btHashMapI9
 	ld.w	$a1, $fp, 100
 	move	$s1, $a0
 	ld.d	$a0, $fp, 112
-	blez	$a1, .LBB11_26
-.LBB11_21:                              # %iter.check
-	ori	$a3, $zero, 4
+	blez	$a1, .LBB11_29
+.LBB11_21:                              # %.lr.ph.i.i.i22
+	ori	$a3, $zero, 8
 	move	$a2, $zero
-	bltu	$a1, $a3, .LBB11_34
-# %bb.22:                               # %iter.check
+	bltu	$a1, $a3, .LBB11_26
+# %bb.22:                               # %.lr.ph.i.i.i22
 	sub.d	$a3, $s1, $a0
-	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB11_34
-# %bb.23:                               # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB11_27
-# %bb.24:
-	move	$a2, $zero
-	b	.LBB11_31
-.LBB11_25:
-	move	$s1, $zero
-	ld.d	$a0, $fp, 112
-	bgtz	$a1, .LBB11_21
-.LBB11_26:                              # %_ZNK20btAlignedObjectArrayI9btHashKeyI10btTriIndexEE4copyEiiPS2_.exit.i.i
-	bnez	$a0, .LBB11_36
-	b	.LBB11_39
-.LBB11_27:                              # %vector.ph
-	andi	$a3, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a4, $a0, 32
-	addi.d	$a5, $s1, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB11_28:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -16
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB11_28
-# %bb.29:                               # %middle.block
-	beq	$a2, $a1, .LBB11_36
-# %bb.30:                               # %vec.epilog.iter.check
-	beqz	$a3, .LBB11_34
-.LBB11_31:                              # %vec.epilog.ph
+	ori	$a4, $zero, 32
+	bltu	$a3, $a4, .LBB11_26
+# %bb.23:                               # %vector.ph
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s1, 16
 	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a5, $a2
-	alsl.d	$a4, $a5, $a0, 2
-	alsl.d	$a5, $a5, $s1, 2
 	.p2align	4, , 16
-.LBB11_32:                              # %vec.epilog.vector.body
+.LBB11_24:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB11_32
-# %bb.33:                               # %vec.epilog.middle.block
-	beq	$a2, $a1, .LBB11_36
-.LBB11_34:                              # %vec.epilog.scalar.ph.preheader
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB11_24
+# %bb.25:                               # %middle.block
+	beq	$a2, $a1, .LBB11_30
+.LBB11_26:                              # %scalar.ph.preheader
 	sub.d	$a1, $a1, $a2
 	alsl.d	$a3, $a2, $a0, 2
 	alsl.d	$a2, $a2, $s1, 2
 	.p2align	4, , 16
-.LBB11_35:                              # %vec.epilog.scalar.ph
+.LBB11_27:                              # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a3, 0
 	st.w	$a4, $a2, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
-	bnez	$a1, .LBB11_35
-.LBB11_36:                              # %_ZNK20btAlignedObjectArrayI9btHashKeyI10btTriIndexEE4copyEiiPS2_.exit.thread.i.i
+	bnez	$a1, .LBB11_27
+	b	.LBB11_30
+.LBB11_28:
+	move	$s1, $zero
+	ld.d	$a0, $fp, 112
+	bgtz	$a1, .LBB11_21
+.LBB11_29:                              # %_ZNK20btAlignedObjectArrayI9btHashKeyI10btTriIndexEE4copyEiiPS2_.exit.i.i
+	beqz	$a0, .LBB11_33
+.LBB11_30:                              # %_ZNK20btAlignedObjectArrayI9btHashKeyI10btTriIndexEE4copyEiiPS2_.exit.thread.i.i
 	ld.bu	$a1, $fp, 120
-	beqz	$a1, .LBB11_38
-# %bb.37:
+	beqz	$a1, .LBB11_32
+# %bb.31:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB11_38:
+.LBB11_32:
 	ld.w	$a1, $fp, 100
-.LBB11_39:                              # %_ZN20btAlignedObjectArrayI9btHashKeyI10btTriIndexEE10deallocateEv.exit.i.i
+.LBB11_33:                              # %_ZN20btAlignedObjectArrayI9btHashKeyI10btTriIndexEE10deallocateEv.exit.i.i
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 120
 	st.d	$s1, $fp, 112
 	st.w	$s5, $fp, 104
-.LBB11_40:                              # %_ZN20btAlignedObjectArrayI9btHashKeyI10btTriIndexEE9push_backERKS2_.exit
+.LBB11_34:                              # %_ZN20btAlignedObjectArrayI9btHashKeyI10btTriIndexEE9push_backERKS2_.exit
 	ld.d	$a0, $fp, 112
 	ld.w	$a2, $s0, 0
 	slli.d	$a1, $a1, 2
@@ -1870,8 +1837,8 @@ _ZN9btHashMapI9btHashKeyI10btTriIndexES1_E6insertERKS2_RKS1_: # @_ZN9btHashMapI9
 	ld.w	$a1, $fp, 72
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 100
-	bge	$s3, $a1, .LBB11_42
-# %bb.41:
+	bge	$s3, $a1, .LBB11_36
+# %bb.35:
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZN9btHashMapI9btHashKeyI10btTriIndexES1_E10growTablesERKS2_)
@@ -1893,7 +1860,7 @@ _ZN9btHashMapI9btHashKeyI10btTriIndexES1_E6insertERKS2_RKS1_: # @_ZN9btHashMapI9
 	xor	$a0, $a1, $a0
 	addi.d	$a1, $a2, -1
 	and	$s4, $a0, $a1
-.LBB11_42:
+.LBB11_36:
 	ld.d	$a0, $fp, 16
 	addi.w	$a1, $s4, 0
 	slli.d	$a1, $a1, 2
@@ -1902,7 +1869,7 @@ _ZN9btHashMapI9btHashKeyI10btTriIndexES1_E6insertERKS2_RKS1_: # @_ZN9btHashMapI9
 	slli.d	$a4, $s2, 2
 	stx.w	$a2, $a3, $a4
 	stx.w	$s2, $a0, $a1
-.LBB11_43:                              # %_ZNK9btHashMapI9btHashKeyI10btTriIndexES1_E9findIndexERKS2_.exit
+.LBB11_37:                              # %_ZNK9btHashMapI9btHashKeyI10btTriIndexES1_E9findIndexERKS2_.exit
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -2805,12 +2772,14 @@ _ZZN35btSoftBodyConcaveCollisionAlgorithm21calculateTimeOfImpactEP17btCollisionO
 	pcalau12i	$a0, %pc_hi20(_ZTV15btTriangleShape+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV15btTriangleShape+16)
 	st.d	$a0, $sp, 400
-	vld	$vr0, $s0, 0
-	xvld	$xr1, $s0, 16
 	ori	$a0, $zero, 1
+	vld	$vr0, $s0, 0
+	vld	$vr1, $s0, 16
+	vld	$vr2, $s0, 32
 	st.w	$a0, $sp, 408
 	vst	$vr0, $sp, 464
-	xvst	$xr1, $sp, 480
+	vst	$vr1, $sp, 480
+	vst	$vr2, $sp, 496
 	st.b	$zero, $sp, 372
 .Ltmp69:                                # EH_LABEL
 	addi.d	$a0, $sp, 8
@@ -3772,13 +3741,13 @@ _ZN9btHashMapI9btHashKeyI10btTriIndexES1_E10growTablesERKS2_: # @_ZN9btHashMapI9
 	.cfi_offset 27, -56
 	ld.w	$s3, $a0, 72
 	ld.w	$s2, $a0, 4
-	bge	$s2, $s3, .LBB42_54
+	bge	$s2, $s3, .LBB42_42
 # %bb.1:
 	move	$fp, $a0
 	ld.w	$a0, $a0, 8
-	bge	$a0, $s3, .LBB42_8
+	bge	$a0, $s3, .LBB42_12
 # %bb.2:
-	beqz	$s3, .LBB42_9
+	beqz	$s3, .LBB42_13
 # %bb.3:
 	slli.d	$a0, $s3, 2
 	ori	$a1, $zero, 16
@@ -3787,101 +3756,74 @@ _ZN9btHashMapI9btHashKeyI10btTriIndexES1_E10growTablesERKS2_: # @_ZN9btHashMapI9
 	ld.w	$a1, $fp, 4
 	move	$s0, $a0
 	ld.d	$a0, $fp, 16
-	blez	$a1, .LBB42_10
-.LBB42_4:                               # %iter.check
-	ori	$a3, $zero, 4
+	blez	$a1, .LBB42_14
+.LBB42_4:                               # %.lr.ph.i.i.i
+	ori	$a3, $zero, 8
 	move	$a2, $zero
-	bltu	$a1, $a3, .LBB42_19
-# %bb.5:                                # %iter.check
+	bltu	$a1, $a3, .LBB42_9
+# %bb.5:                                # %.lr.ph.i.i.i
 	sub.d	$a3, $s0, $a0
-	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB42_19
-# %bb.6:                                # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB42_12
-# %bb.7:
-	move	$a2, $zero
-	b	.LBB42_16
-.LBB42_8:                               # %..lr.ph.i_crit_edge
-	ld.d	$s0, $fp, 16
-	b	.LBB42_24
-.LBB42_9:
-	move	$s0, $zero
-	move	$a1, $s2
-	ld.d	$a0, $fp, 16
-	bgtz	$a1, .LBB42_4
-.LBB42_10:                              # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
-	beqz	$a0, .LBB42_23
-# %bb.11:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
-	ld.b	$a1, $fp, 24
-	andi	$a1, $a1, 1
-	bnez	$a1, .LBB42_22
-	b	.LBB42_23
-.LBB42_12:                              # %vector.ph
-	andi	$a3, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a4, $a0, 32
-	addi.d	$a5, $s0, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB42_13:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -16
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB42_13
-# %bb.14:                               # %middle.block
-	beq	$a2, $a1, .LBB42_21
-# %bb.15:                               # %vec.epilog.iter.check
-	beqz	$a3, .LBB42_19
-.LBB42_16:                              # %vec.epilog.ph
+	ori	$a4, $zero, 32
+	bltu	$a3, $a4, .LBB42_9
+# %bb.6:                                # %vector.ph
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s0, 16
 	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a5, $a2
-	alsl.d	$a4, $a5, $a0, 2
-	alsl.d	$a5, $a5, $s0, 2
 	.p2align	4, , 16
-.LBB42_17:                              # %vec.epilog.vector.body
+.LBB42_7:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB42_17
-# %bb.18:                               # %vec.epilog.middle.block
-	beq	$a2, $a1, .LBB42_21
-.LBB42_19:                              # %vec.epilog.scalar.ph.preheader
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB42_7
+# %bb.8:                                # %middle.block
+	beq	$a2, $a1, .LBB42_11
+.LBB42_9:                               # %scalar.ph.preheader
 	sub.d	$a1, $a1, $a2
 	alsl.d	$a3, $a2, $a0, 2
 	alsl.d	$a2, $a2, $s0, 2
 	.p2align	4, , 16
-.LBB42_20:                              # %vec.epilog.scalar.ph
+.LBB42_10:                              # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a3, 0
 	st.w	$a4, $a2, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
-	bnez	$a1, .LBB42_20
-.LBB42_21:                              # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i
+	bnez	$a1, .LBB42_10
+.LBB42_11:                              # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i
 	ld.bu	$a1, $fp, 24
-	beqz	$a1, .LBB42_23
-.LBB42_22:
+	bnez	$a1, .LBB42_16
+	b	.LBB42_17
+.LBB42_12:                              # %..lr.ph.i_crit_edge
+	ld.d	$s0, $fp, 16
+	b	.LBB42_18
+.LBB42_13:
+	move	$s0, $zero
+	move	$a1, $s2
+	ld.d	$a0, $fp, 16
+	bgtz	$a1, .LBB42_4
+.LBB42_14:                              # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
+	beqz	$a0, .LBB42_17
+# %bb.15:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
+	ld.b	$a1, $fp, 24
+	andi	$a1, $a1, 1
+	beqz	$a1, .LBB42_17
+.LBB42_16:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB42_23:                              # %_ZN20btAlignedObjectArrayIiE10deallocateEv.exit.i.i
+.LBB42_17:                              # %_ZN20btAlignedObjectArrayIiE10deallocateEv.exit.i.i
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 24
 	st.d	$s0, $fp, 16
 	st.w	$s3, $fp, 8
-.LBB42_24:                              # %.lr.ph.i
+.LBB42_18:                              # %.lr.ph.i
 	slli.d	$a1, $s2, 2
 	alsl.d	$a0, $s2, $s0, 2
 	slli.d	$s0, $s3, 2
@@ -3891,13 +3833,13 @@ _ZN9btHashMapI9btHashKeyI10btTriIndexES1_E10growTablesERKS2_: # @_ZN9btHashMapI9
 	jirl	$ra, $ra, 0
 	ld.w	$s4, $fp, 36
 	st.w	$s3, $fp, 4
-	bge	$s4, $s3, .LBB42_49
-# %bb.25:
+	bge	$s4, $s3, .LBB42_37
+# %bb.19:
 	ld.w	$a0, $fp, 40
-	bge	$a0, $s3, .LBB42_32
-# %bb.26:
-	beqz	$s3, .LBB42_33
-# %bb.27:
+	bge	$a0, $s3, .LBB42_30
+# %bb.20:
+	beqz	$s3, .LBB42_31
+# %bb.21:
 	ori	$a1, $zero, 16
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
@@ -3905,111 +3847,84 @@ _ZN9btHashMapI9btHashKeyI10btTriIndexES1_E10growTablesERKS2_: # @_ZN9btHashMapI9
 	ld.w	$a1, $fp, 36
 	move	$s1, $a0
 	ld.d	$a0, $fp, 48
-	blez	$a1, .LBB42_34
-.LBB42_28:                              # %iter.check84
-	ori	$a3, $zero, 4
+	blez	$a1, .LBB42_32
+.LBB42_22:                              # %.lr.ph.i.i.i34
+	ori	$a3, $zero, 8
 	move	$a2, $zero
-	bltu	$a1, $a3, .LBB42_43
-# %bb.29:                               # %iter.check84
+	bltu	$a1, $a3, .LBB42_27
+# %bb.23:                               # %.lr.ph.i.i.i34
 	sub.d	$a3, $s1, $a0
-	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB42_43
-# %bb.30:                               # %vector.main.loop.iter.check71
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB42_36
-# %bb.31:
-	move	$a2, $zero
-	b	.LBB42_40
-.LBB42_32:                              # %..lr.ph.i20_crit_edge
-	ld.d	$s1, $fp, 48
-	b	.LBB42_48
-.LBB42_33:
-	move	$s1, $zero
-	move	$a1, $s4
-	ld.d	$a0, $fp, 48
-	bgtz	$a1, .LBB42_28
-.LBB42_34:                              # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i30
-	beqz	$a0, .LBB42_47
-# %bb.35:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i30
-	ld.b	$a1, $fp, 56
-	andi	$a1, $a1, 1
-	bnez	$a1, .LBB42_46
-	b	.LBB42_47
-.LBB42_36:                              # %vector.ph73
-	andi	$a3, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a4, $a0, 32
-	addi.d	$a5, $s1, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB42_37:                              # %vector.body76
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -16
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB42_37
-# %bb.38:                               # %middle.block81
-	beq	$a2, $a1, .LBB42_45
-# %bb.39:                               # %vec.epilog.iter.check86
-	beqz	$a3, .LBB42_43
-.LBB42_40:                              # %vec.epilog.ph88
+	ori	$a4, $zero, 32
+	bltu	$a3, $a4, .LBB42_27
+# %bb.24:                               # %vector.ph65
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s1, 16
 	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a5, $a2
-	alsl.d	$a4, $a5, $a0, 2
-	alsl.d	$a5, $a5, $s1, 2
 	.p2align	4, , 16
-.LBB42_41:                              # %vec.epilog.vector.body91
+.LBB42_25:                              # %vector.body68
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB42_41
-# %bb.42:                               # %vec.epilog.middle.block95
-	beq	$a2, $a1, .LBB42_45
-.LBB42_43:                              # %vec.epilog.scalar.ph85.preheader
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB42_25
+# %bb.26:                               # %middle.block73
+	beq	$a2, $a1, .LBB42_29
+.LBB42_27:                              # %scalar.ph63.preheader
 	sub.d	$a1, $a1, $a2
 	alsl.d	$a3, $a2, $a0, 2
 	alsl.d	$a2, $a2, $s1, 2
 	.p2align	4, , 16
-.LBB42_44:                              # %vec.epilog.scalar.ph85
+.LBB42_28:                              # %scalar.ph63
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a3, 0
 	st.w	$a4, $a2, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
-	bnez	$a1, .LBB42_44
-.LBB42_45:                              # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i39
+	bnez	$a1, .LBB42_28
+.LBB42_29:                              # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i39
 	ld.bu	$a1, $fp, 56
-	beqz	$a1, .LBB42_47
-.LBB42_46:
+	bnez	$a1, .LBB42_34
+	b	.LBB42_35
+.LBB42_30:                              # %..lr.ph.i20_crit_edge
+	ld.d	$s1, $fp, 48
+	b	.LBB42_36
+.LBB42_31:
+	move	$s1, $zero
+	move	$a1, $s4
+	ld.d	$a0, $fp, 48
+	bgtz	$a1, .LBB42_22
+.LBB42_32:                              # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i30
+	beqz	$a0, .LBB42_35
+# %bb.33:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i30
+	ld.b	$a1, $fp, 56
+	andi	$a1, $a1, 1
+	beqz	$a1, .LBB42_35
+.LBB42_34:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB42_47:                              # %_ZN20btAlignedObjectArrayIiE10deallocateEv.exit.i.i33
+.LBB42_35:                              # %_ZN20btAlignedObjectArrayIiE10deallocateEv.exit.i.i33
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 56
 	st.d	$s1, $fp, 48
 	st.w	$s3, $fp, 40
-.LBB42_48:                              # %.lr.ph.i20
+.LBB42_36:                              # %.lr.ph.i20
 	slli.d	$a1, $s4, 2
 	alsl.d	$a0, $s4, $s1, 2
 	sub.d	$a2, $s0, $a1
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-.LBB42_49:                              # %_ZN20btAlignedObjectArrayIiE6resizeEiRKi.exit43
+.LBB42_37:                              # %_ZN20btAlignedObjectArrayIiE6resizeEiRKi.exit43
 	st.w	$s3, $fp, 36
-	blez	$s3, .LBB42_51
-# %bb.50:                               # %.lr.ph48
+	blez	$s3, .LBB42_39
+# %bb.38:                               # %.lr.ph48
 	ld.d	$a0, $fp, 16
 	ori	$a1, $zero, 255
 	move	$a2, $s0
@@ -4020,15 +3935,15 @@ _ZN9btHashMapI9btHashKeyI10btTriIndexES1_E10growTablesERKS2_: # @_ZN9btHashMapI9
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-.LBB42_51:                              # %.preheader
-	blez	$s2, .LBB42_54
-# %bb.52:                               # %.lr.ph50
+.LBB42_39:                              # %.preheader
+	blez	$s2, .LBB42_42
+# %bb.40:                               # %.lr.ph50
 	ld.d	$a0, $fp, 112
 	ld.d	$a1, $fp, 16
 	ld.d	$a2, $fp, 48
 	move	$a3, $zero
 	.p2align	4, , 16
-.LBB42_53:                              # =>This Inner Loop Header: Depth=1
+.LBB42_41:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a0, 0
 	slli.d	$a5, $a4, 15
 	nor	$a5, $a5, $zero
@@ -4054,8 +3969,8 @@ _ZN9btHashMapI9btHashKeyI10btTriIndexES1_E10growTablesERKS2_: # @_ZN9btHashMapI9
 	addi.d	$a2, $a2, 4
 	addi.d	$s2, $s2, -1
 	addi.d	$a0, $a0, 4
-	bnez	$s2, .LBB42_53
-.LBB42_54:                              # %.loopexit
+	bnez	$s2, .LBB42_41
+.LBB42_42:                              # %.loopexit
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload

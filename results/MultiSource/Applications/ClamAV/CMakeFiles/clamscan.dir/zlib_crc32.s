@@ -284,46 +284,54 @@ crc32_combine:                          # @crc32_combine
 .Lfunc_end3:
 	.size	crc32_combine, .Lfunc_end3-crc32_combine
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function crc32_combine_
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function crc32_combine_
 .LCPI4_0:
 	.dword	3988292384                      # 0xedb88320
 	.dword	1                               # 0x1
+.LCPI4_1:
 	.dword	2                               # 0x2
 	.dword	4                               # 0x4
-.LCPI4_1:
+.LCPI4_2:
 	.dword	8                               # 0x8
 	.dword	16                              # 0x10
+.LCPI4_3:
 	.dword	32                              # 0x20
 	.dword	64                              # 0x40
-.LCPI4_2:
+.LCPI4_4:
 	.dword	128                             # 0x80
 	.dword	256                             # 0x100
+.LCPI4_5:
 	.dword	512                             # 0x200
 	.dword	1024                            # 0x400
-.LCPI4_3:
+.LCPI4_6:
 	.dword	2048                            # 0x800
 	.dword	4096                            # 0x1000
+.LCPI4_7:
 	.dword	8192                            # 0x2000
 	.dword	16384                           # 0x4000
-.LCPI4_4:
+.LCPI4_8:
 	.dword	32768                           # 0x8000
 	.dword	65536                           # 0x10000
+.LCPI4_9:
 	.dword	131072                          # 0x20000
 	.dword	262144                          # 0x40000
-.LCPI4_5:
+.LCPI4_10:
 	.dword	524288                          # 0x80000
 	.dword	1048576                         # 0x100000
+.LCPI4_11:
 	.dword	2097152                         # 0x200000
 	.dword	4194304                         # 0x400000
-.LCPI4_6:
+.LCPI4_12:
 	.dword	8388608                         # 0x800000
 	.dword	16777216                        # 0x1000000
+.LCPI4_13:
 	.dword	33554432                        # 0x2000000
 	.dword	67108864                        # 0x4000000
-.LCPI4_7:
+.LCPI4_14:
 	.dword	134217728                       # 0x8000000
 	.dword	268435456                       # 0x10000000
+.LCPI4_15:
 	.dword	536870912                       # 0x20000000
 	.dword	1073741824                      # 0x40000000
 	.text
@@ -337,29 +345,53 @@ crc32_combine_:                         # @crc32_combine_
 	addi.d	$sp, $sp, -528
 	move	$a3, $zero
 	pcalau12i	$a4, %pc_hi20(.LCPI4_0)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI4_0)
+	vld	$vr0, $a4, %pc_lo12(.LCPI4_0)
 	pcalau12i	$a4, %pc_hi20(.LCPI4_1)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI4_1)
+	vld	$vr1, $a4, %pc_lo12(.LCPI4_1)
 	pcalau12i	$a4, %pc_hi20(.LCPI4_2)
-	xvld	$xr2, $a4, %pc_lo12(.LCPI4_2)
+	vld	$vr2, $a4, %pc_lo12(.LCPI4_2)
 	pcalau12i	$a4, %pc_hi20(.LCPI4_3)
-	xvld	$xr3, $a4, %pc_lo12(.LCPI4_3)
-	xvst	$xr0, $sp, 16
-	xvst	$xr1, $sp, 48
-	xvst	$xr2, $sp, 80
-	xvst	$xr3, $sp, 112
+	vld	$vr3, $a4, %pc_lo12(.LCPI4_3)
+	vst	$vr0, $sp, 16
+	vst	$vr1, $sp, 32
+	vst	$vr2, $sp, 48
+	vst	$vr3, $sp, 64
 	pcalau12i	$a4, %pc_hi20(.LCPI4_4)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI4_4)
+	vld	$vr0, $a4, %pc_lo12(.LCPI4_4)
 	pcalau12i	$a4, %pc_hi20(.LCPI4_5)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI4_5)
+	vld	$vr1, $a4, %pc_lo12(.LCPI4_5)
 	pcalau12i	$a4, %pc_hi20(.LCPI4_6)
-	xvld	$xr2, $a4, %pc_lo12(.LCPI4_6)
+	vld	$vr2, $a4, %pc_lo12(.LCPI4_6)
 	pcalau12i	$a4, %pc_hi20(.LCPI4_7)
-	xvld	$xr3, $a4, %pc_lo12(.LCPI4_7)
-	xvst	$xr0, $sp, 144
-	xvst	$xr1, $sp, 176
-	xvst	$xr2, $sp, 208
-	xvst	$xr3, $sp, 240
+	vld	$vr3, $a4, %pc_lo12(.LCPI4_7)
+	vst	$vr0, $sp, 80
+	vst	$vr1, $sp, 96
+	vst	$vr2, $sp, 112
+	vst	$vr3, $sp, 128
+	pcalau12i	$a4, %pc_hi20(.LCPI4_8)
+	vld	$vr0, $a4, %pc_lo12(.LCPI4_8)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_9)
+	vld	$vr1, $a4, %pc_lo12(.LCPI4_9)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_10)
+	vld	$vr2, $a4, %pc_lo12(.LCPI4_10)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_11)
+	vld	$vr3, $a4, %pc_lo12(.LCPI4_11)
+	vst	$vr0, $sp, 144
+	vst	$vr1, $sp, 160
+	vst	$vr2, $sp, 176
+	vst	$vr3, $sp, 192
+	pcalau12i	$a4, %pc_hi20(.LCPI4_12)
+	vld	$vr0, $a4, %pc_lo12(.LCPI4_12)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_13)
+	vld	$vr1, $a4, %pc_lo12(.LCPI4_13)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_14)
+	vld	$vr2, $a4, %pc_lo12(.LCPI4_14)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_15)
+	vld	$vr3, $a4, %pc_lo12(.LCPI4_15)
+	vst	$vr0, $sp, 208
+	vst	$vr1, $sp, 224
+	vst	$vr2, $sp, 240
+	vst	$vr3, $sp, 256
 	addi.d	$a4, $sp, 16
 	addi.d	$a5, $sp, 272
 	ori	$a6, $zero, 32

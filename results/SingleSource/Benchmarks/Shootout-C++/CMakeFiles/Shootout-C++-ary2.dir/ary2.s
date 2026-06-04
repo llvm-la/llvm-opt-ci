@@ -75,32 +75,32 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	move	$a1, $zero
 	add.d	$a0, $s1, $fp
-	addi.d	$a2, $s0, 36
-	ori	$a3, $zero, 3
+	addi.d	$a2, $s0, 32
+	ori	$a3, $zero, 7
 	.p2align	4, , 16
 .LBB0_6:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a4, $a3, 4
-	addi.d	$a5, $a3, 3
-	addi.d	$a6, $a3, 2
-	addi.d	$a7, $a3, 1
-	addi.d	$t0, $a3, -1
-	addi.d	$t1, $a3, -2
-	addi.d	$t2, $a3, -3
+	addi.d	$a4, $a3, -4
+	addi.d	$a5, $a3, -5
+	addi.d	$a6, $a3, -6
+	addi.d	$a7, $a3, -7
 	vinsgr2vr.w	$vr0, $a7, 0
 	vinsgr2vr.w	$vr0, $a6, 1
 	vinsgr2vr.w	$vr0, $a5, 2
 	vinsgr2vr.w	$vr0, $a4, 3
-	vinsgr2vr.w	$vr1, $t2, 0
-	vinsgr2vr.w	$vr1, $t1, 1
-	vinsgr2vr.w	$vr1, $t0, 2
-	vinsgr2vr.w	$vr1, $a3, 3
-	xvpermi.q	$xr1, $xr0, 2
-	xvst	$xr1, $a2, -36
+	vst	$vr0, $a2, -32
+	addi.d	$a4, $a3, -1
+	addi.d	$a5, $a3, -2
+	addi.d	$a6, $a1, 4
+	vinsgr2vr.w	$vr0, $a6, 0
+	vinsgr2vr.w	$vr0, $a5, 1
+	vinsgr2vr.w	$vr0, $a4, 2
+	vinsgr2vr.w	$vr0, $a3, 3
+	vst	$vr0, $a2, -16
 	addi.d	$a4, $a1, 8
-	st.w	$a4, $a2, -4
-	addi.d	$a4, $a1, 9
 	st.w	$a4, $a2, 0
+	addi.d	$a4, $a1, 9
+	st.w	$a4, $a2, 4
 	addi.d	$a1, $a1, 10
 	addi.d	$a3, $a3, 10
 	addi.d	$a2, $a2, 40
@@ -114,10 +114,12 @@ main:                                   # @main
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $s0, $a2
 	ld.d	$a5, $a4, -8
-	xvld	$xr0, $a4, -40
+	vld	$vr0, $a4, -24
+	vld	$vr1, $a4, -40
 	add.d	$a4, $s1, $a2
 	st.d	$a5, $a4, -8
-	xvst	$xr0, $a4, -40
+	vst	$vr0, $a4, -24
+	vst	$vr1, $a4, -40
 	addi.d	$a1, $a1, -10
 	addi.d	$a2, $a2, -40
 	bltu	$a3, $a1, .LBB0_8

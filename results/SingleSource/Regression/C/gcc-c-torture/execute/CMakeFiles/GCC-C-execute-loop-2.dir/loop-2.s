@@ -1,18 +1,7 @@
 	.file	"loop-2.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function f
-.LCPI0_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI0_1:
+	.p2align	4, 0x0                          # -- Begin function f
+.LCPI0_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
@@ -24,79 +13,49 @@
 	.type	f,@function
 f:                                      # @f
 # %bb.0:
-	beqz	$a0, .LBB0_14
-# %bb.1:                                # %iter.check
+	beqz	$a0, .LBB0_8
+# %bb.1:                                # %.lr.ph.preheader
 	bstrpick.d	$a1, $a0, 31, 0
-	ori	$a3, $zero, 4
+	ori	$a3, $zero, 8
 	pcalau12i	$a2, %pc_hi20(a)
 	addi.d	$a2, $a2, %pc_lo12(a)
 	bgeu	$a0, $a3, .LBB0_3
 # %bb.2:
 	move	$a0, $zero
-	b	.LBB0_12
-.LBB0_3:                                # %vector.main.loop.iter.check
-	ori	$a3, $zero, 16
-	bgeu	$a0, $a3, .LBB0_5
-# %bb.4:
-	move	$a0, $zero
-	b	.LBB0_9
-.LBB0_5:                                # %vector.ph
-	andi	$a3, $a1, 12
+	b	.LBB0_6
+.LBB0_3:                                # %vector.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
-	bstrpick.d	$a0, $a1, 31, 4
-	slli.d	$a0, $a0, 4
-	addi.d	$a4, $a2, 32
-	move	$a5, $a0
-	.p2align	4, , 16
-.LBB0_6:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvsubi.wu	$xr1, $xr0, 2
-	xvaddi.wu	$xr2, $xr0, 6
-	xvst	$xr1, $a4, -32
-	xvst	$xr2, $a4, 0
-	xvaddi.wu	$xr0, $xr0, 16
-	addi.d	$a5, $a5, -16
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB0_6
-# %bb.7:                                # %middle.block
-	beq	$a0, $a1, .LBB0_14
-# %bb.8:                                # %vec.epilog.iter.check
-	beqz	$a3, .LBB0_12
-.LBB0_9:                                # %vec.epilog.ph
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
+	bstrpick.d	$a0, $a1, 31, 3
+	slli.d	$a0, $a0, 3
+	addi.d	$a3, $a2, 16
 	move	$a4, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_1)
-	bstrpick.d	$a0, $a1, 31, 2
-	slli.d	$a0, $a0, 2
-	vreplgr2vr.w	$vr1, $a4
-	vor.v	$vr0, $vr1, $vr0
-	sub.d	$a3, $a4, $a0
-	alsl.d	$a4, $a4, $a2, 2
 	.p2align	4, , 16
-.LBB0_10:                               # %vec.epilog.vector.body
+.LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vsubi.wu	$vr1, $vr0, 2
-	vst	$vr1, $a4, 0
-	vaddi.wu	$vr0, $vr0, 4
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a3, .LBB0_10
-# %bb.11:                               # %vec.epilog.middle.block
-	beq	$a0, $a1, .LBB0_14
-.LBB0_12:                               # %.lr.ph.preheader
+	vaddi.wu	$vr2, $vr0, 2
+	vst	$vr1, $a3, -16
+	vst	$vr2, $a3, 0
+	vaddi.wu	$vr0, $vr0, 8
+	addi.d	$a4, $a4, -8
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB0_4
+# %bb.5:                                # %middle.block
+	beq	$a0, $a1, .LBB0_8
+.LBB0_6:                                # %.lr.ph.preheader7
 	alsl.d	$a2, $a0, $a2, 2
 	addi.d	$a3, $a0, -2
 	sub.d	$a0, $a1, $a0
 	.p2align	4, , 16
-.LBB0_13:                               # %.lr.ph
+.LBB0_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a3, $a2, 0
 	addi.d	$a2, $a2, 4
 	addi.d	$a0, $a0, -1
 	addi.d	$a3, $a3, 1
-	bnez	$a0, .LBB0_13
-.LBB0_14:                               # %._crit_edge
+	bnez	$a0, .LBB0_7
+.LBB0_8:                                # %._crit_edge
 	move	$a0, $zero
 	ret
 .Lfunc_end0:

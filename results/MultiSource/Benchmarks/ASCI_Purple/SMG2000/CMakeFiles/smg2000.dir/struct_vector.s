@@ -466,9 +466,9 @@ hypre_StructVectorSetBoxValues:         # @hypre_StructVectorSetBoxValues
 	beqz	$s0, .LBB7_56
 # %bb.7:                                # %.lr.ph553.split.preheader
 	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
-	addi.d	$s8, $s2, 32
-	ori	$s7, $zero, 8
-	ori	$s1, $zero, 64
+	addi.d	$s8, $s2, 16
+	ori	$s7, $zero, 4
+	ori	$s1, $zero, 32
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	beqz	$s0, .LBB7_54
@@ -616,9 +616,9 @@ hypre_StructVectorSetBoxValues:         # @hypre_StructVectorSetBoxValues
 	addi.d	$t1, $t1, 8
 	addi.d	$t3, $s2, 8
 	alsl.d	$t2, $t2, $t3, 3
-	bstrpick.d	$t3, $a1, 30, 3
-	slli.d	$t3, $t3, 3
-	addi.d	$t4, $t0, 32
+	bstrpick.d	$t3, $a1, 30, 2
+	slli.d	$t3, $t3, 2
+	addi.d	$t4, $t0, 16
 	b	.LBB7_23
 	.p2align	4, , 16
 .LBB7_22:                               # %._crit_edge479.split.us.us.us.us.us.us
@@ -695,17 +695,17 @@ hypre_StructVectorSetBoxValues:         # @hypre_StructVectorSetBoxValues
                                         #   Parent Loop BB7_23 Depth=1
                                         #     Parent Loop BB7_25 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvld	$xr0, $fp, -32
-	xvld	$xr1, $fp, 0
-	xvld	$xr2, $t6, -32
-	xvld	$xr3, $t6, 0
-	xvfadd.d	$xr0, $xr0, $xr2
-	xvfadd.d	$xr1, $xr1, $xr3
-	xvst	$xr0, $t6, -32
-	xvst	$xr1, $t6, 0
-	addi.d	$s0, $s0, -8
-	addi.d	$t6, $t6, 64
-	addi.d	$fp, $fp, 64
+	vld	$vr0, $fp, -16
+	vld	$vr1, $fp, 0
+	vld	$vr2, $t6, -16
+	vld	$vr3, $t6, 0
+	vfadd.d	$vr0, $vr0, $vr2
+	vfadd.d	$vr1, $vr1, $vr3
+	vst	$vr0, $t6, -16
+	vst	$vr1, $t6, 0
+	addi.d	$s0, $s0, -4
+	addi.d	$t6, $t6, 32
+	addi.d	$fp, $fp, 32
 	bnez	$s0, .LBB7_32
 # %bb.33:                               # %middle.block648
                                         #   in Loop: Header=BB7_25 Depth=2
@@ -793,10 +793,10 @@ hypre_StructVectorSetBoxValues:         # @hypre_StructVectorSetBoxValues
 	srli.d	$t1, $t1, 31
 	and	$t0, $t1, $t0
 	add.w	$t0, $t8, $t0
-	bstrpick.d	$t1, $a1, 30, 3
-	slli.d	$t1, $t1, 3
+	bstrpick.d	$t1, $a1, 30, 2
+	slli.d	$t1, $t1, 2
 	alsl.d	$t2, $fp, $s5, 3
-	addi.d	$t3, $t2, 32
+	addi.d	$t3, $t2, 16
 	b	.LBB7_44
 	.p2align	4, , 16
 .LBB7_43:                               # %._crit_edge518.split.us.us.us.us.us.us
@@ -868,13 +868,13 @@ hypre_StructVectorSetBoxValues:         # @hypre_StructVectorSetBoxValues
                                         #   Parent Loop BB7_44 Depth=1
                                         #     Parent Loop BB7_46 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvld	$xr0, $t7, -32
-	xvld	$xr1, $t7, 0
-	xvst	$xr0, $t5, -32
-	xvst	$xr1, $t5, 0
-	addi.d	$t8, $t8, -8
-	addi.d	$t5, $t5, 64
-	addi.d	$t7, $t7, 64
+	vld	$vr0, $t7, -16
+	vld	$vr1, $t7, 0
+	vst	$vr0, $t5, -16
+	vst	$vr1, $t5, 0
+	addi.d	$t8, $t8, -4
+	addi.d	$t5, $t5, 32
+	addi.d	$t7, $t7, 32
 	bnez	$t8, .LBB7_52
 # %bb.53:                               # %middle.block
                                         #   in Loop: Header=BB7_46 Depth=2
@@ -1091,9 +1091,9 @@ hypre_StructVectorGetBoxValues:         # @hypre_StructVectorGetBoxValues
 	beqz	$s2, .LBB9_32
 # %bb.7:                                # %.lr.ph300.split.preheader
 	move	$ra, $zero
-	addi.d	$s6, $s1, 32
-	ori	$s7, $zero, 8
-	ori	$s8, $zero, 64
+	addi.d	$s6, $s1, 16
+	ori	$s7, $zero, 4
+	ori	$s8, $zero, 32
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	beqz	$s2, .LBB9_30
@@ -1222,10 +1222,10 @@ hypre_StructVectorGetBoxValues:         # @hypre_StructVectorGetBoxValues
 	srli.d	$t1, $t1, 31
 	and	$t0, $t1, $t0
 	add.w	$t0, $t6, $t0
-	bstrpick.d	$t1, $s2, 30, 3
-	slli.d	$t1, $t1, 3
+	bstrpick.d	$t1, $s2, 30, 2
+	slli.d	$t1, $t1, 2
 	alsl.d	$t2, $fp, $s4, 3
-	addi.d	$t3, $t2, 32
+	addi.d	$t3, $t2, 16
 	b	.LBB9_20
 	.p2align	4, , 16
 .LBB9_19:                               # %._crit_edge268.split.us.us.us.us.us.us
@@ -1297,13 +1297,13 @@ hypre_StructVectorGetBoxValues:         # @hypre_StructVectorGetBoxValues
                                         #   Parent Loop BB9_20 Depth=1
                                         #     Parent Loop BB9_22 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvld	$xr0, $t5, -32
-	xvld	$xr1, $t5, 0
-	xvst	$xr0, $t7, -32
-	xvst	$xr1, $t7, 0
-	addi.d	$t8, $t8, -8
-	addi.d	$t7, $t7, 64
-	addi.d	$t5, $t5, 64
+	vld	$vr0, $t5, -16
+	vld	$vr1, $t5, 0
+	vst	$vr0, $t7, -16
+	vst	$vr1, $t7, 0
+	addi.d	$t8, $t8, -4
+	addi.d	$t7, $t7, 32
+	addi.d	$t5, $t5, 32
 	bnez	$t8, .LBB9_28
 # %bb.29:                               # %middle.block
                                         #   in Loop: Header=BB9_22 Depth=2
@@ -1385,36 +1385,36 @@ hypre_StructVectorAssemble:             # @hypre_StructVectorAssemble
 	.type	hypre_StructVectorSetConstantValues,@function
 hypre_StructVectorSetConstantValues:    # @hypre_StructVectorSetConstantValues
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 8
 	ld.d	$a1, $a0, 8
 	ld.w	$a0, $a1, 8
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
 	blez	$a0, .LBB12_21
 # %bb.1:                                # %.lr.ph
 	move	$s2, $zero
-	xvreplve0.d	$xr1, $xr0
-	ori	$s3, $zero, 8
-	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
-	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
-	xvst	$xr1, $sp, 16                   # 32-byte Folded Spill
+	vreplvei.d	$vr1, $vr0, 0
+	ori	$s3, $zero, 4
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB12_3
 	.p2align	4, , 16
 .LBB12_2:                               # %._crit_edge
                                         #   in Loop: Header=BB12_3 Depth=1
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a0, $a1, 8
 	addi.d	$s2, $s2, 1
 	bge	$s2, $a0, .LBB12_21
@@ -1434,7 +1434,7 @@ hypre_StructVectorSetConstantValues:    # @hypre_StructVectorSetConstantValues
 	slli.d	$s1, $a1, 3
 	add.d	$s0, $s6, $s1
 	add.d	$s8, $s7, $s1
-	addi.d	$a1, $sp, 92
+	addi.d	$a1, $sp, 60
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(hypre_BoxGetSize)
 	jirl	$ra, $ra, 0
@@ -1453,9 +1453,9 @@ hypre_StructVectorSetConstantValues:    # @hypre_StructVectorSetConstantValues
 .LBB12_5:                               #   in Loop: Header=BB12_3 Depth=1
 	move	$a7, $zero
 .LBB12_6:                               #   in Loop: Header=BB12_3 Depth=1
-	ld.w	$a0, $sp, 92
-	ld.w	$a1, $sp, 96
-	ld.w	$a2, $sp, 100
+	ld.w	$a0, $sp, 60
+	ld.w	$a1, $sp, 64
+	ld.w	$a2, $sp, 68
 	slt	$a3, $a0, $a1
 	masknez	$t0, $a0, $a3
 	maskeqz	$a3, $a1, $a3
@@ -1464,8 +1464,8 @@ hypre_StructVectorSetConstantValues:    # @hypre_StructVectorSetConstantValues
 	masknez	$a3, $a3, $t0
 	maskeqz	$t0, $a2, $t0
 	or	$a3, $t0, $a3
-	xvld	$xr0, $sp, 48                   # 32-byte Folded Reload
-	xvld	$xr1, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	blez	$a3, .LBB12_2
 # %bb.7:                                # %.preheader155.lr.ph
                                         #   in Loop: Header=BB12_3 Depth=1
@@ -1502,10 +1502,10 @@ hypre_StructVectorSetConstantValues:    # @hypre_StructVectorSetConstantValues
 	srli.d	$a7, $a7, 31
 	and	$a6, $a7, $a6
 	add.w	$t3, $t0, $a6
-	bstrpick.d	$a6, $a0, 30, 3
-	slli.d	$a6, $a6, 3
+	bstrpick.d	$a6, $a0, 30, 2
+	slli.d	$a6, $a6, 2
 	alsl.d	$a7, $s5, $s4, 3
-	addi.d	$t0, $a7, 32
+	addi.d	$t0, $a7, 16
 	b	.LBB12_12
 	.p2align	4, , 16
 .LBB12_11:                              # %._crit_edge160.split.us.us.us.us.us.us
@@ -1550,10 +1550,10 @@ hypre_StructVectorSetConstantValues:    # @hypre_StructVectorSetConstantValues
                                         #     Parent Loop BB12_12 Depth=2
                                         #       Parent Loop BB12_14 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	xvst	$xr1, $t3, -32
-	xvst	$xr1, $t3, 0
-	addi.d	$t4, $t4, -8
-	addi.d	$t3, $t3, 64
+	vst	$vr1, $t3, -16
+	vst	$vr1, $t3, 0
+	addi.d	$t4, $t4, -4
+	addi.d	$t3, $t3, 32
 	bnez	$t4, .LBB12_17
 # %bb.18:                               # %middle.block
                                         #   in Loop: Header=BB12_14 Depth=3
@@ -1577,18 +1577,18 @@ hypre_StructVectorSetConstantValues:    # @hypre_StructVectorSetConstantValues
 	b	.LBB12_13
 .LBB12_21:                              # %._crit_edge183
 	move	$a0, $zero
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .Lfunc_end12:
 	.size	hypre_StructVectorSetConstantValues, .Lfunc_end12-hypre_StructVectorSetConstantValues
@@ -1886,16 +1886,16 @@ hypre_StructVectorClearAllValues:       # @hypre_StructVectorClearAllValues
 	mul.d	$a6, $a1, $a5
 	sub.d	$a6, $t2, $a6
 	sub.d	$a7, $a7, $t1
-	ori	$t0, $zero, 7
+	ori	$t0, $zero, 3
 	sltu	$t0, $t0, $a1
 	addi.d	$t1, $a5, -1
 	sltui	$t1, $t1, 1
 	and	$t0, $t0, $t1
-	bstrpick.d	$t1, $a1, 30, 3
-	slli.d	$t1, $t1, 3
-	addi.d	$t2, $fp, 32
+	bstrpick.d	$t1, $a1, 30, 2
+	slli.d	$t1, $t1, 2
+	addi.d	$t2, $fp, 16
 	slli.d	$t3, $a5, 3
-	xvrepli.b	$xr0, 0
+	vrepli.b	$vr0, 0
 	b	.LBB14_9
 	.p2align	4, , 16
 .LBB14_8:                               # %._crit_edge145.split.us.us.us.us.us.us
@@ -1932,10 +1932,10 @@ hypre_StructVectorClearAllValues:       # @hypre_StructVectorClearAllValues
                                         #   Parent Loop BB14_9 Depth=1
                                         #     Parent Loop BB14_11 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvst	$xr0, $t5, -32
-	xvst	$xr0, $t5, 0
-	addi.d	$t7, $t7, -8
-	addi.d	$t5, $t5, 64
+	vst	$vr0, $t5, -16
+	vst	$vr0, $t5, 0
+	addi.d	$t7, $t7, -4
+	addi.d	$t5, $t5, 32
 	bnez	$t7, .LBB14_13
 # %bb.14:                               # %middle.block
                                         #   in Loop: Header=BB14_11 Depth=2

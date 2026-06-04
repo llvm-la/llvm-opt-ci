@@ -949,9 +949,9 @@ loadForceBuffer:                        # @loadForceBuffer
 	alsl.d	$a0, $a2, $a0, 3
 	ld.d	$a0, $a0, 24
 	ld.d	$a2, $a7, 120
-	addi.d	$a7, $a3, 32
-	ori	$t0, $zero, 8
-	ori	$t1, $zero, 64
+	addi.d	$a7, $a3, 16
+	ori	$t0, $zero, 4
+	ori	$t1, $zero, 32
 	b	.LBB5_3
 	.p2align	4, , 16
 .LBB5_2:                                # %._crit_edge
@@ -989,24 +989,24 @@ loadForceBuffer:                        # @loadForceBuffer
                                         #   in Loop: Header=BB5_3 Depth=1
 	slli.d	$t7, $a5, 3
 	slli.d	$t8, $t2, 3
-	andi	$t5, $t5, 7
+	andi	$t5, $t5, 3
 	sub.d	$t6, $t6, $t5
 	add.d	$a5, $t6, $a5
 	add.d	$t2, $t6, $t2
 	add.d	$t7, $a7, $t7
 	add.d	$t8, $t4, $t8
-	addi.d	$t8, $t8, 32
+	addi.d	$t8, $t8, 16
 	.p2align	4, , 16
 .LBB5_7:                                # %vector.body
                                         #   Parent Loop BB5_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $t8, -32
-	xvld	$xr1, $t8, 0
-	xvst	$xr0, $t7, -32
-	xvst	$xr1, $t7, 0
-	addi.d	$t7, $t7, 64
-	addi.d	$t6, $t6, -8
-	addi.d	$t8, $t8, 64
+	vld	$vr0, $t8, -16
+	vld	$vr1, $t8, 0
+	vst	$vr0, $t7, -16
+	vst	$vr1, $t7, 0
+	addi.d	$t7, $t7, 32
+	addi.d	$t6, $t6, -4
+	addi.d	$t8, $t8, 32
 	bnez	$t6, .LBB5_7
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB5_3 Depth=1
@@ -1052,9 +1052,9 @@ unloadForceBuffer:                      # @unloadForceBuffer
 	alsl.d	$a0, $a2, $a0, 3
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $a7, 120
-	addi.d	$a7, $a4, 32
-	ori	$t0, $zero, 8
-	ori	$t1, $zero, 64
+	addi.d	$a7, $a4, 16
+	ori	$t0, $zero, 4
+	ori	$t1, $zero, 32
 	b	.LBB6_3
 	.p2align	4, , 16
 .LBB6_2:                                # %._crit_edge
@@ -1092,24 +1092,24 @@ unloadForceBuffer:                      # @unloadForceBuffer
                                         #   in Loop: Header=BB6_3 Depth=1
 	slli.d	$t7, $t2, 3
 	slli.d	$t8, $a6, 3
-	andi	$t5, $t5, 7
+	andi	$t5, $t5, 3
 	sub.d	$t6, $t6, $t5
 	add.d	$a6, $t6, $a6
 	add.d	$t2, $t6, $t2
 	add.d	$t7, $t4, $t7
-	addi.d	$t7, $t7, 32
+	addi.d	$t7, $t7, 16
 	add.d	$t8, $a7, $t8
 	.p2align	4, , 16
 .LBB6_7:                                # %vector.body
                                         #   Parent Loop BB6_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $t8, -32
-	xvld	$xr1, $t8, 0
-	xvst	$xr0, $t7, -32
-	xvst	$xr1, $t7, 0
-	addi.d	$t7, $t7, 64
-	addi.d	$t6, $t6, -8
-	addi.d	$t8, $t8, 64
+	vld	$vr0, $t8, -16
+	vld	$vr1, $t8, 0
+	vst	$vr0, $t7, -16
+	vst	$vr1, $t7, 0
+	addi.d	$t7, $t7, 32
+	addi.d	$t6, $t6, -4
+	addi.d	$t8, $t8, 32
 	bnez	$t6, .LBB6_7
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB6_3 Depth=1

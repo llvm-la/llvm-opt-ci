@@ -216,8 +216,8 @@ HYPRE_StructDiagScale:                  # @HYPRE_StructDiagScale
 	blez	$a0, .LBB13_30
 # %bb.1:                                # %.lr.ph
 	move	$s8, $zero
-	ori	$s6, $zero, 8
-	ori	$s7, $zero, 64
+	ori	$s6, $zero, 4
+	ori	$s7, $zero, 32
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	b	.LBB13_3
 	.p2align	4, , 16
@@ -418,12 +418,12 @@ HYPRE_StructDiagScale:                  # @HYPRE_StructDiagScale
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$t4, $sp, 40                    # 8-byte Folded Reload
 	alsl.d	$t4, $t4, $a2, 3
-	bstrpick.d	$a2, $a0, 30, 3
-	slli.d	$t5, $a2, 3
-	addi.d	$t6, $t4, 32
+	bstrpick.d	$a2, $a0, 30, 2
+	slli.d	$t5, $a2, 2
+	addi.d	$t6, $t4, 16
 	alsl.d	$t7, $s5, $s8, 3
-	addi.d	$t8, $t7, 32
-	addi.d	$fp, $s3, 32
+	addi.d	$t8, $t7, 16
+	addi.d	$fp, $s3, 16
 	b	.LBB13_18
 	.p2align	4, , 16
 .LBB13_17:                              # %._crit_edge295.split.us.us.us.us.us.us
@@ -518,18 +518,18 @@ HYPRE_StructDiagScale:                  # @HYPRE_StructDiagScale
                                         #     Parent Loop BB13_18 Depth=2
                                         #       Parent Loop BB13_20 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	xvld	$xr0, $s1, -32
-	xvld	$xr1, $s1, 0
-	xvld	$xr2, $s2, -32
-	xvld	$xr3, $s2, 0
-	xvfdiv.d	$xr0, $xr0, $xr2
-	xvfdiv.d	$xr1, $xr1, $xr3
-	xvst	$xr0, $a2, -32
-	xvst	$xr1, $a2, 0
-	addi.d	$ra, $ra, -8
-	addi.d	$a2, $a2, 64
-	addi.d	$s1, $s1, 64
-	addi.d	$s2, $s2, 64
+	vld	$vr0, $s1, -16
+	vld	$vr1, $s1, 0
+	vld	$vr2, $s2, -16
+	vld	$vr3, $s2, 0
+	vfdiv.d	$vr0, $vr0, $vr2
+	vfdiv.d	$vr1, $vr1, $vr3
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$ra, $ra, -4
+	addi.d	$a2, $a2, 32
+	addi.d	$s1, $s1, 32
+	addi.d	$s2, $s2, 32
 	bnez	$ra, .LBB13_28
 # %bb.29:                               # %middle.block
                                         #   in Loop: Header=BB13_20 Depth=3

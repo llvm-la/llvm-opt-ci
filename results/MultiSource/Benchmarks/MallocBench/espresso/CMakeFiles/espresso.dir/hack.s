@@ -387,17 +387,17 @@ map_dcset:                              # @map_dcset
 	or	$a3, $a3, $a5
 	sub.d	$a3, $a3, $a1
 	addi.d	$a3, $a3, -2
-	ori	$a4, $zero, 8
+	ori	$a4, $zero, 4
 	addi.d	$a1, $a1, 2
 	bltu	$a3, $a4, .LBB0_33
 # %bb.30:                               # %vector.ph
-	addi.w	$a6, $zero, -8
+	addi.w	$a6, $zero, -4
 	and	$a4, $a3, $a6
 	add.d	$a1, $a1, $a4
 	slli.d	$a5, $s6, 3
 	bstrins.d	$a5, $zero, 3, 0
 	add.d	$a5, $a2, $a5
-	addi.d	$a5, $a5, 32
+	addi.d	$a5, $a5, 16
 	move	$a7, $s6
 	bstrins.d	$a7, $zero, 0, 0
 	addi.d	$t0, $a7, 3
@@ -411,12 +411,12 @@ map_dcset:                              # @map_dcset
 	.p2align	4, , 16
 .LBB0_31:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -16
-	xvld	$xr1, $a5, 16
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a5, 0
+	vld	$vr1, $a5, 16
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB0_31
 # %bb.32:                               # %middle.block
 	beq	$a3, $a4, .LBB0_35
@@ -1161,34 +1161,32 @@ map_symbolic:                           # @map_symbolic
 	ld.w	$a1, $s4, 4
 	alsl.d	$a3, $a1, $a2, 2
 	ld.w	$a3, $a3, -4
-	ld.w	$a4, $s4, 8
-	st.d	$s2, $sp, 32                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	ld.w	$a6, $s4, 8
+	move	$s6, $a0
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
 	alsl.d	$a0, $s2, $a0, 2
-	addi.w	$a5, $a1, -1
+	addi.w	$a4, $a1, -1
 	st.w	$a3, $a0, -4
-	bge	$a4, $a5, .LBB3_26
-# %bb.21:                               # %iter.check
-	nor	$a0, $a4, $zero
+	bge	$a6, $a4, .LBB3_26
+# %bb.21:                               # %.lr.ph156.preheader
+	nor	$a0, $a6, $zero
 	add.d	$a3, $a0, $a1
-	ori	$a5, $zero, 4
+	ori	$a4, $zero, 8
 	slli.d	$a0, $s5, 2
-	bltu	$a3, $a5, .LBB3_23
+	bltu	$a3, $a4, .LBB3_23
 # %bb.22:                               # %vector.memcheck
-	alsl.d	$a5, $s5, $a2, 2
-	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
-	sub.d	$a5, $a6, $a5
-	ori	$a6, $zero, 64
-	bgeu	$a5, $a6, .LBB3_45
+	alsl.d	$a4, $s5, $a2, 2
+	sub.d	$a4, $s6, $a4
+	ori	$a5, $zero, 32
+	bgeu	$a4, $a5, .LBB3_45
 .LBB3_23:
-	move	$a5, $a4
-.LBB3_24:                               # %.lr.ph156.preheader
-	slli.d	$a3, $a5, 2
+	move	$a4, $a6
+.LBB3_24:                               # %.lr.ph156.preheader184
+	slli.d	$a3, $a4, 2
 	sub.d	$a0, $a3, $a0
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
-	add.d	$a0, $a3, $a0
-	alsl.d	$a2, $a5, $a2, 2
-	nor	$a3, $a5, $zero
+	add.d	$a0, $s6, $a0
+	alsl.d	$a2, $a4, $a2, 2
+	nor	$a3, $a4, $zero
 	add.d	$a1, $a3, $a1
 	.p2align	4, , 16
 .LBB3_25:                               # %.lr.ph156
@@ -1201,7 +1199,7 @@ map_symbolic:                           # @map_symbolic
 	bnez	$a1, .LBB3_25
 .LBB3_26:                               # %._crit_edge157
 	ld.w	$a0, $s4, 124
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$a1, $s4, 16
 	slli.d	$a0, $a0, 2
 	ldx.w	$s4, $a1, $a0
@@ -1223,6 +1221,7 @@ map_symbolic:                           # @map_symbolic
 	st.d	$a0, $fp, 8
 	move	$a0, $a1
 	move	$a1, $s4
+	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(sf_addcol)
 	jirl	$ra, $ra, 0
@@ -1230,7 +1229,7 @@ map_symbolic:                           # @map_symbolic
 	st.d	$a0, $fp, 16
 	beqz	$s3, .LBB3_40
 # %bb.27:                               # %.lr.ph164.preheader
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 4
 	nor	$a1, $s5, $zero
 	add.w	$s7, $a0, $a1
@@ -1239,31 +1238,32 @@ map_symbolic:                           # @map_symbolic
 .LBB3_28:                               # %map_symbolic_cover.exit127
                                         #   in Loop: Header=BB3_29 Depth=1
 	ld.wu	$a0, $s3, 8
-	st.d	$s2, $fp, 16
+	st.d	$s8, $fp, 16
 	ori	$a1, $zero, 1
 	sll.w	$a0, $a1, $a0
 	ld.d	$s3, $s3, 32
 	add.w	$s4, $a0, $s4
 	slli.d	$a1, $s7, 2
 	addi.d	$s7, $s7, 1
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	stx.w	$a0, $a2, $a1
+	move	$s6, $s0
+	stx.w	$a0, $s0, $a1
 	beqz	$s3, .LBB3_40
 .LBB3_29:                               # %.lr.ph164
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_31 Depth 2
                                         #     Child Loop BB3_35 Depth 2
                                         #     Child Loop BB3_39 Depth 2
-	ld.d	$s2, $fp, 0
-	ld.w	$a0, $s2, 12
-	ld.w	$a1, $s2, 0
+	move	$s0, $s6
+	ld.d	$s8, $fp, 0
+	ld.w	$a0, $s8, 12
+	ld.w	$a1, $s8, 0
 	ld.d	$s5, $s3, 0
 	mul.w	$a0, $a1, $a0
 	blez	$a0, .LBB3_33
 # %bb.30:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB3_29 Depth=1
-	ld.d	$s6, $s2, 24
-	alsl.d	$s8, $a0, $s6, 2
+	ld.d	$s6, $s8, 24
+	alsl.d	$s2, $a0, $s6, 2
 	.p2align	4, , 16
 .LBB3_31:                               # %.lr.ph.i
                                         #   Parent Loop BB3_29 Depth=1
@@ -1274,24 +1274,24 @@ map_symbolic:                           # @map_symbolic
 	move	$a3, $s5
 	pcaddu18i	$ra, %call36(form_bitvector)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s2, 0
+	ld.w	$a0, $s8, 0
 	alsl.d	$s6, $a0, $s6, 2
-	bltu	$s6, $s8, .LBB3_31
+	bltu	$s6, $s2, .LBB3_31
 # %bb.32:                               # %map_symbolic_cover.exit.loopexit
                                         #   in Loop: Header=BB3_29 Depth=1
 	ld.d	$s5, $s3, 0
 .LBB3_33:                               # %map_symbolic_cover.exit
                                         #   in Loop: Header=BB3_29 Depth=1
-	ld.d	$s8, $fp, 8
-	ld.w	$a0, $s8, 12
-	ld.w	$a1, $s8, 0
+	ld.d	$s2, $fp, 8
+	ld.w	$a0, $s2, 12
+	ld.w	$a1, $s2, 0
 	mul.w	$a0, $a1, $a0
-	st.d	$s2, $fp, 0
+	st.d	$s8, $fp, 0
 	blez	$a0, .LBB3_37
 # %bb.34:                               # %.lr.ph.i121.preheader
                                         #   in Loop: Header=BB3_29 Depth=1
-	ld.d	$s6, $s8, 24
-	alsl.d	$s2, $a0, $s6, 2
+	ld.d	$s6, $s2, 24
+	alsl.d	$s8, $a0, $s6, 2
 	.p2align	4, , 16
 .LBB3_35:                               # %.lr.ph.i121
                                         #   Parent Loop BB3_29 Depth=1
@@ -1302,24 +1302,24 @@ map_symbolic:                           # @map_symbolic
 	move	$a3, $s5
 	pcaddu18i	$ra, %call36(form_bitvector)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s8, 0
+	ld.w	$a0, $s2, 0
 	alsl.d	$s6, $a0, $s6, 2
-	bltu	$s6, $s2, .LBB3_35
+	bltu	$s6, $s8, .LBB3_35
 # %bb.36:                               # %map_symbolic_cover.exit123.loopexit
                                         #   in Loop: Header=BB3_29 Depth=1
 	ld.d	$s5, $s3, 0
 .LBB3_37:                               # %map_symbolic_cover.exit123
                                         #   in Loop: Header=BB3_29 Depth=1
-	ld.d	$s2, $fp, 16
-	ld.w	$a0, $s2, 12
-	ld.w	$a1, $s2, 0
+	ld.d	$s8, $fp, 16
+	ld.w	$a0, $s8, 12
+	ld.w	$a1, $s8, 0
 	mul.w	$a0, $a1, $a0
-	st.d	$s8, $fp, 8
+	st.d	$s2, $fp, 8
 	blez	$a0, .LBB3_28
 # %bb.38:                               # %.lr.ph.i125.preheader
                                         #   in Loop: Header=BB3_29 Depth=1
-	ld.d	$s6, $s2, 24
-	alsl.d	$s8, $a0, $s6, 2
+	ld.d	$s6, $s8, 24
+	alsl.d	$s2, $a0, $s6, 2
 	.p2align	4, , 16
 .LBB3_39:                               # %.lr.ph.i125
                                         #   Parent Loop BB3_29 Depth=1
@@ -1330,9 +1330,9 @@ map_symbolic:                           # @map_symbolic
 	move	$a3, $s5
 	pcaddu18i	$ra, %call36(form_bitvector)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s2, 0
+	ld.w	$a0, $s8, 0
 	alsl.d	$s6, $a0, $s6, 2
-	bltu	$s6, $s8, .LBB3_39
+	bltu	$s6, $s2, .LBB3_39
 	b	.LBB3_28
 .LBB3_40:                               # %._crit_edge165
 	ld.d	$a0, $fp, 0
@@ -1352,13 +1352,13 @@ map_symbolic:                           # @map_symbolic
 	pcaddu18i	$ra, %call36(sf_compress)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 64
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a4, $s2, 0
 	st.d	$a0, $fp, 16
 	move	$a0, $fp
 	move	$a2, $s1
 	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
-	move	$a5, $s0
+	ld.d	$a5, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(symbolic_hack_labels)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(setdown_cube)
@@ -1369,12 +1369,11 @@ map_symbolic:                           # @map_symbolic
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB3_42:
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	st.w	$a0, $s2, 4
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	st.w	$a0, $s2, 8
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	st.d	$a0, $s2, 32
+	st.d	$s6, $s2, 32
 	pcaddu18i	$ra, %call36(cube_setup)
 	jirl	$ra, $ra, 0
 	beqz	$s1, .LBB3_44
@@ -1397,60 +1396,29 @@ map_symbolic:                           # @map_symbolic
 	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 144
 	ret
-.LBB3_45:                               # %vector.main.loop.iter.check
-	ori	$a5, $zero, 16
-	bgeu	$a3, $a5, .LBB3_47
-# %bb.46:
-	move	$a6, $zero
-	b	.LBB3_51
-.LBB3_47:                               # %vector.ph
-	andi	$a7, $a3, 12
-	move	$a6, $a3
-	bstrins.d	$a6, $zero, 3, 0
-	add.d	$a5, $a6, $a4
-	slli.d	$t0, $a4, 2
-	addi.d	$t1, $t0, 32
-	sub.d	$t0, $t1, $a0
-	ld.d	$t2, $sp, 48                    # 8-byte Folded Reload
-	add.d	$t0, $t2, $t0
-	add.d	$t1, $a2, $t1
-	move	$t2, $a6
+.LBB3_45:                               # %vector.ph
+	move	$a5, $a3
+	bstrins.d	$a5, $zero, 2, 0
+	add.d	$a4, $a5, $a6
+	slli.d	$a6, $a6, 2
+	addi.d	$a7, $a6, 16
+	sub.d	$a6, $a7, $a0
+	add.d	$a6, $s6, $a6
+	add.d	$a7, $a2, $a7
+	move	$t0, $a5
 	.p2align	4, , 16
-.LBB3_48:                               # %vector.body
+.LBB3_46:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $t1, -32
-	xvld	$xr1, $t1, 0
-	xvst	$xr0, $t0, -32
-	xvst	$xr1, $t0, 0
-	addi.d	$t2, $t2, -16
-	addi.d	$t0, $t0, 64
-	addi.d	$t1, $t1, 64
-	bnez	$t2, .LBB3_48
-# %bb.49:                               # %middle.block
-	beq	$a3, $a6, .LBB3_26
-# %bb.50:                               # %vec.epilog.iter.check
-	beqz	$a7, .LBB3_24
-.LBB3_51:                               # %vec.epilog.ph
-	move	$a7, $a3
-	bstrins.d	$a7, $zero, 1, 0
-	add.d	$a5, $a7, $a4
-	sub.d	$t0, $a6, $a7
-	add.d	$a6, $a6, $a4
-	sub.d	$a4, $a6, $s5
-	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
-	alsl.d	$a4, $a4, $t1, 2
-	alsl.d	$a6, $a6, $a2, 2
-	.p2align	4, , 16
-.LBB3_52:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a6, 0
-	vst	$vr0, $a4, 0
-	addi.d	$t0, $t0, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a6, $a6, 16
-	bnez	$t0, .LBB3_52
-# %bb.53:                               # %vec.epilog.middle.block
-	beq	$a3, $a7, .LBB3_26
+	vld	$vr0, $a7, -16
+	vld	$vr1, $a7, 0
+	vst	$vr0, $a6, -16
+	vst	$vr1, $a6, 0
+	addi.d	$t0, $t0, -8
+	addi.d	$a6, $a6, 32
+	addi.d	$a7, $a7, 32
+	bnez	$t0, .LBB3_46
+# %bb.47:                               # %middle.block
+	beq	$a3, $a5, .LBB3_26
 	b	.LBB3_24
 .Lfunc_end3:
 	.size	map_symbolic, .Lfunc_end3-map_symbolic

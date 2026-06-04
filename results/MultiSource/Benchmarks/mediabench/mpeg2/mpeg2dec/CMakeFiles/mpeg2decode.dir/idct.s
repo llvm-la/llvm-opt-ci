@@ -287,6 +287,11 @@ Fast_IDCT:                              # @Fast_IDCT
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function Initialize_Fast_IDCT
 .LCPI1_0:
+	.word	4294966788                      # 0xfffffe04
+	.word	4294966789                      # 0xfffffe05
+	.word	4294966790                      # 0xfffffe06
+	.word	4294966791                      # 0xfffffe07
+.LCPI1_1:
 	.word	4294966784                      # 0xfffffe00
 	.word	4294966785                      # 0xfffffe01
 	.word	4294966786                      # 0xfffffe02
@@ -306,23 +311,32 @@ Initialize_Fast_IDCT:                   # @Initialize_Fast_IDCT
 	st.d	$a2, $a3, %pc_lo12(iclp)
 	pcalau12i	$a2, %pc_hi20(.LCPI1_0)
 	vld	$vr0, $a2, %pc_lo12(.LCPI1_0)
-	vrepli.w	$vr1, -256
-	vrepli.w	$vr2, 255
+	pcalau12i	$a2, %pc_hi20(.LCPI1_1)
+	vld	$vr1, $a2, %pc_lo12(.LCPI1_1)
+	vrepli.w	$vr2, -256
+	vrepli.w	$vr3, 255
 	ori	$a2, $zero, 2048
 	.p2align	4, , 16
 .LBB1_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr3, $vr0, 4
-	vmax.w	$vr4, $vr0, $vr1
-	vmax.w	$vr3, $vr3, $vr1
-	vmin.w	$vr4, $vr4, $vr2
-	vmin.w	$vr3, $vr3, $vr2
-	vpickev.h	$vr4, $vr4, $vr4
-	vpickev.h	$vr3, $vr3, $vr3
-	vpackev.d	$vr3, $vr3, $vr4
-	vstx	$vr3, $a0, $a1
-	addi.d	$a1, $a1, 16
-	vaddi.wu	$vr0, $vr0, 8
+	vaddi.wu	$vr4, $vr1, 8
+	vaddi.wu	$vr5, $vr0, 8
+	vmax.w	$vr6, $vr0, $vr2
+	vmax.w	$vr7, $vr1, $vr2
+	vmax.w	$vr5, $vr5, $vr2
+	vmax.w	$vr4, $vr4, $vr2
+	vmin.w	$vr7, $vr7, $vr3
+	vmin.w	$vr6, $vr6, $vr3
+	vmin.w	$vr4, $vr4, $vr3
+	vmin.w	$vr5, $vr5, $vr3
+	vpickev.h	$vr6, $vr6, $vr7
+	vpickev.h	$vr4, $vr5, $vr4
+	add.d	$a3, $a0, $a1
+	vstx	$vr6, $a0, $a1
+	vst	$vr4, $a3, 16
+	vaddi.wu	$vr1, $vr1, 16
+	addi.d	$a1, $a1, 32
+	vaddi.wu	$vr0, $vr0, 16
 	bne	$a1, $a2, .LBB1_1
 # %bb.2:                                # %middle.block
 	ret

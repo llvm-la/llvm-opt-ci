@@ -163,8 +163,8 @@ PDFFont_AddFont:                        # @PDFFont_AddFont
 	st.d	$zero, $sp, 98
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 82
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 50
+	vst	$vr0, $sp, 66
+	vst	$vr0, $sp, 50
 	lu12i.w	$a0, 4
 	ori	$a0, $a0, 1583
 	st.h	$a0, $sp, 48
@@ -4344,13 +4344,15 @@ PDFFile_Cleanup:                        # @PDFFile_Cleanup
 	b	.LBB26_43
 	.p2align	4, , 16
 .LBB26_42:                              #   in Loop: Header=BB26_40 Depth=1
+	addi.w	$s6, $s7, -255
 	ld.d	$a0, $s8, 37
 	ld.d	$a1, $s8, 32
-	xvld	$xr0, $s8, 0
-	addi.w	$s6, $s7, -255
+	vld	$vr0, $s8, 16
+	vld	$vr1, $s8, 0
 	st.d	$a0, $sp, 109
 	st.d	$a1, $sp, 104
-	xvst	$xr0, $sp, 72
+	vst	$vr0, $sp, 88
+	vst	$vr1, $sp, 72
 	addi.d	$a0, $sp, 72
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -4534,11 +4536,13 @@ PDFFile_Cleanup:                        # @PDFFile_Cleanup
 .LBB26_60:                              #   in Loop: Header=BB26_55 Depth=1
 	ld.w	$a0, $s1, 47
 	vld	$vr0, $s1, 32
-	xvld	$xr1, $s1, 0
+	vld	$vr1, $s1, 16
 	st.w	$a0, $sp, 119
 	vst	$vr0, $sp, 104
-	xvst	$xr1, $sp, 72
+	vst	$vr1, $sp, 88
+	vld	$vr0, $s1, 0
 	ld.d	$a1, $fp, 16
+	vst	$vr0, $sp, 72
 	addi.d	$a0, $sp, 72
 	pcaddu18i	$ra, %call36(strcat)
 	jirl	$ra, $ra, 0

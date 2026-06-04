@@ -101,14 +101,16 @@ main:                                   # @main
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
+	vld	$vr0, $s0, 8
 	move	$s3, $zero
 	ld.d	$a0, $s0, 0
-	vld	$vr0, $s0, 8
-	xvld	$xr1, $s0, 24
-	ld.w	$a1, $s0, 56
-	st.d	$a0, $fp, 287
+	vld	$vr1, $s0, 24
 	vst	$vr0, $fp, 295
-	xvst	$xr1, $fp, 311
+	vld	$vr0, $s0, 40
+	ld.w	$a1, $s0, 56
+	vst	$vr1, $fp, 311
+	st.d	$a0, $fp, 287
+	vst	$vr0, $fp, 327
 	st.w	$a1, $fp, 343
 	lu12i.w	$a0, 2441
 	ori	$s4, $a0, 1664

@@ -940,8 +940,8 @@ _Z24allocateLoopSuiteRunInfoRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	st.d	$zero, $s5, 40
 	vst	$vr0, $s5, 48
 	st.w	$zero, $s5, 64
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $s5, 104
+	vst	$vr0, $s5, 104
+	vst	$vr0, $s5, 120
 	st.w	$zero, $s5, 136
 	ori	$a2, $zero, 408
 	move	$a1, $zero
@@ -5217,9 +5217,11 @@ _ZN12_GLOBAL__N_124writeTimingSummaryReportERKSt6vectorINSt7__cxx1112basic_strin
 	st.d	$a1, $sp, 360
 	pcalau12i	$a2, %pc_hi20(.L.str.26)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.26)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	vst	$vr0, $a0, 40
@@ -5242,10 +5244,12 @@ _ZN12_GLOBAL__N_124writeTimingSummaryReportERKSt6vectorINSt7__cxx1112basic_strin
 	st.d	$a1, $sp, 328
 	pcalau12i	$a2, %pc_hi20(.L.str.27)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.27)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 37
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 37
 	st.d	$a1, $sp, 320
@@ -8263,9 +8267,11 @@ _ZN12_GLOBAL__N_119writeChecksumReportERKSt6vectorINSt7__cxx1112basic_stringIcSt
 	st.d	$a1, $sp, 344
 	pcalau12i	$a2, %pc_hi20(.L.str.26)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.26)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	vst	$vr0, $a0, 40
@@ -8288,10 +8294,12 @@ _ZN12_GLOBAL__N_119writeChecksumReportERKSt6vectorINSt7__cxx1112basic_stringIcSt
 	st.d	$a1, $sp, 312
 	pcalau12i	$a2, %pc_hi20(.L.str.27)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.27)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 37
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 37
 	st.d	$a1, $sp, 304
@@ -10623,9 +10631,11 @@ _ZN12_GLOBAL__N_114writeFOMReportERKSt6vectorINSt7__cxx1112basic_stringIcSt11cha
 	st.d	$a1, $sp, 168
 	pcalau12i	$a2, %pc_hi20(.L.str.26)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.26)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	vst	$vr0, $a0, 40
@@ -10648,10 +10658,12 @@ _ZN12_GLOBAL__N_114writeFOMReportERKSt6vectorINSt7__cxx1112basic_stringIcSt11cha
 	st.d	$a1, $sp, 136
 	pcalau12i	$a2, %pc_hi20(.L.str.27)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.27)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 37
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 37
 	st.d	$a1, $sp, 128

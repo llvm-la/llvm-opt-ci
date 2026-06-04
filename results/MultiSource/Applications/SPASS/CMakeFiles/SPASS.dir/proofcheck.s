@@ -1243,8 +1243,8 @@ pcheck_BuildTableauFromProof:           # @pcheck_BuildTableauFromProof
 	move	$a1, $a0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 16
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
 	st.d	$a0, $s0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(tab_PathCreate)

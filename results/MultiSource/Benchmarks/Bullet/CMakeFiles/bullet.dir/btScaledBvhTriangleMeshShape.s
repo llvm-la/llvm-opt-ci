@@ -410,7 +410,8 @@ _ZNK28btScaledBvhTriangleMeshShape7getAabbERK11btTransformR9btVector3S4_: # @_ZN
 	vextrins.w	$vr4, $vr3, 16
 	vshuf4i.w	$vr1, $vr4, 16
 	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr2, $xr2
+	vrepli.b	$vr3, 0
+	vilvl.w	$vr2, $vr3, $vr2
 	vor.v	$vr1, $vr1, $vr2
 	vstelm.d	$vr1, $s0, 0, 0
 	movfr2gr.s	$a0, $fa0
@@ -613,7 +614,8 @@ _ZN24btScaledTriangleCallback15processTriangleEP9btVector3ii: # @_ZN24btScaledTr
 	vextrins.w	$vr3, $vr5, 16
 	vshuf4i.w	$vr0, $vr3, 16
 	vslli.d	$vr0, $vr0, 32
-	vext2xv.du.wu	$xr1, $xr1
+	vrepli.b	$vr3, 0
+	vilvl.w	$vr1, $vr3, $vr1
 	ld.d	$a0, $a0, 8
 	vor.v	$vr0, $vr0, $vr1
 	vstelm.d	$vr0, $sp, 24, 0

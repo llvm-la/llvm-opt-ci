@@ -950,16 +950,15 @@ _ZNSt17_Function_handlerIFvPN9benchmark9BenchmarkEEPS3_E10_M_managerERSt9_Any_da
 	.size	_ZNSt17_Function_handlerIFvPN9benchmark9BenchmarkEEPS3_E10_M_managerERSt9_Any_dataRKS6_St18_Manager_operation, .Lfunc_end10-_ZNSt17_Function_handlerIFvPN9benchmark9BenchmarkEEPS3_E10_M_managerERSt9_Any_dataRKS6_St18_Manager_operation
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _GLOBAL__sub_I_options_test.cc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _GLOBAL__sub_I_options_test.cc
 .LCPI11_0:
-	.dword	64                              # 0x40
-	.dword	512                             # 0x200
 	.dword	64                              # 0x40
 	.dword	512                             # 0x200
 .LCPI11_5:
 	.dword	-64                             # 0xffffffffffffffc0
 	.dword	1                               # 0x1
+.LCPI11_6:
 	.dword	-8                              # 0xfffffffffffffff8
 	.dword	-1                              # 0xffffffffffffffff
 	.section	.rodata.cst8,"aM",@progbits,8
@@ -1462,11 +1461,12 @@ _GLOBAL__sub_I_options_test.cc:         # @_GLOBAL__sub_I_options_test.cc
 .Ltmp84:                                # EH_LABEL
 # %bb.69:
 	pcalau12i	$a1, %pc_hi20(.LCPI11_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI11_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI11_0)
 	st.d	$a0, $sp, 8
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 24
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a1, $sp, 16
 .Ltmp86:                                # EH_LABEL
 	addi.d	$a1, $sp, 8
@@ -1980,12 +1980,15 @@ _GLOBAL__sub_I_options_test.cc:         # @_GLOBAL__sub_I_options_test.cc
 	jirl	$ra, $ra, 0
 .Ltmp154:                               # EH_LABEL
 # %bb.147:
-	pcalau12i	$a1, %pc_hi20(.LCPI11_5)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI11_5)
 	st.d	$a0, $sp, 8
+	pcalau12i	$a1, %pc_hi20(.LCPI11_5)
+	vld	$vr0, $a1, %pc_lo12(.LCPI11_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI11_6)
+	vld	$vr1, $a1, %pc_lo12(.LCPI11_6)
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 24
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 16
 .Ltmp156:                               # EH_LABEL
 	addi.d	$a1, $sp, 8

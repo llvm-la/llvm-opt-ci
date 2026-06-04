@@ -73,8 +73,8 @@ foo:                                    # @foo
 	st.w	$zero, $sp, 60
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 44
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 12
+	vst	$vr0, $sp, 28
+	vst	$vr0, $sp, 12
 	addi.d	$fp, $a0, 1
 	.p2align	4, , 16
 .LBB1_1:                                # =>This Inner Loop Header: Depth=1

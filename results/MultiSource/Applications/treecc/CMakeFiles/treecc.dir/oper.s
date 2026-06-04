@@ -325,11 +325,12 @@ TreeCCOperationAddCase:                 # @TreeCCOperationAddCase
 	st.d	$zero, $a0, 8
 	st.d	$fp, $a0, 16
 	st.w	$zero, $a0, 24
-	ld.d	$a1, $fp, 80
 	st.d	$s1, $a0, 32
+	ld.d	$a1, $fp, 80
 	st.d	$s0, $a0, 40
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 48
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
 	beqz	$a1, .LBB3_7
 # %bb.6:
 	st.d	$a0, $a1, 64

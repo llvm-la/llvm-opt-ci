@@ -468,9 +468,11 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 # %bb.58:                               #   in Loop: Header=BB0_56 Depth=1
 	vld	$vr0, $s5, 32
 	vst	$vr0, $a0, 32
-	xvld	$xr0, $s5, 0
+	vld	$vr0, $s5, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s5, 0
 	move	$s6, $zero
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	b	.LBB0_55
 	.p2align	4, , 16
 .LBB0_59:                               #   in Loop: Header=BB0_56 Depth=1

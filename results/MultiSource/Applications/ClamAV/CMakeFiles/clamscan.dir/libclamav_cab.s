@@ -97,10 +97,11 @@ cab_open:                               # @cab_open
 	jirl	$ra, $ra, 0
 	beq	$a0, $s6, .LBB1_25
 # %bb.4:
-	ld.w	$a1, $sp, 268
 	ld.d	$s5, $sp, 152
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 0
+	ld.w	$a1, $sp, 268
+	vrepli.b	$vr0, 0
+	vst	$vr0, $fp, 0
+	vst	$vr0, $fp, 16
 	st.w	$a1, $fp, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)

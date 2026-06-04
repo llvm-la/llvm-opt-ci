@@ -25,17 +25,13 @@ loop:                                   # @loop
 .Lfunc_end0:
 	.size	loop, .Lfunc_end0-loop
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI1_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 	.text
 	.globl	main
 	.p2align	2
@@ -63,7 +59,7 @@ main:                                   # @main
 	ori	$a3, $a3, 3277
 	movgr2fr.w	$fa4, $a3
 	pcalau12i	$a3, %pc_hi20(.LCPI1_0)
-	xvld	$xr5, $a3, %pc_lo12(.LCPI1_0)
+	vld	$vr5, $a3, %pc_lo12(.LCPI1_0)
 	lu12i.w	$a3, -2
 	lu12i.w	$a4, 2
 	ori	$a4, $a4, 8
@@ -88,23 +84,23 @@ main:                                   # @main
 	movgr2cf	$fcc0, $t0
 	fsel	$ft0, $fa1, $ft0, $fcc0
 	fsel	$fa7, $fa2, $fa7, $fcc0
-	xvreplve0.w	$xr9, $xr8
-	xvreplve0.w	$xr10, $xr7
+	vreplvei.w	$vr9, $vr8, 0
+	vreplvei.w	$vr10, $vr7, 0
 	move	$t0, $a3
-	xvori.b	$xr11, $xr5, 0
+	vori.b	$vr11, $vr5, 0
 	.p2align	4, , 16
 .LBB1_2:                                # %vector.body
                                         #   Parent Loop BB1_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvffint.s.wu	$xr12, $xr11
-	xvfadd.s	$xr13, $xr9, $xr12
+	vffint.s.wu	$vr12, $vr11
+	vfadd.s	$vr13, $vr9, $vr12
 	add.d	$t1, $a4, $t0
-	xvstx	$xr13, $t1, $a5
-	xvfadd.s	$xr12, $xr10, $xr12
+	vstx	$vr13, $t1, $a5
+	vfadd.s	$vr12, $vr10, $vr12
 	add.d	$t1, $a6, $t0
-	xvstx	$xr12, $t1, $a5
-	addi.d	$t0, $t0, 32
-	xvaddi.wu	$xr11, $xr11, 8
+	vstx	$vr12, $t1, $a5
+	addi.d	$t0, $t0, 16
+	vaddi.wu	$vr11, $vr11, 4
 	bnez	$t0, .LBB1_2
 # %bb.3:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB1_1 Depth=1

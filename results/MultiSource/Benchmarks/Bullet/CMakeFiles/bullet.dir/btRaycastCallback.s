@@ -310,13 +310,15 @@ _ZN28btTriangleConvexcastCallback15processTriangleEP9btVector3ii: # @_ZN28btTria
 	addi.d	$a0, $a0, %pc_lo12(_ZTV15btTriangleShape+16)
 	st.d	$a0, $sp, 616
 	ori	$a0, $zero, 1
-	vld	$vr0, $s2, 0
-	xvld	$xr1, $s2, 16
-	fld.s	$fa2, $s1, 212
 	st.w	$a0, $sp, 624
+	vld	$vr0, $s2, 0
+	vld	$vr1, $s2, 16
+	vld	$vr2, $s2, 32
+	fld.s	$fa3, $s1, 212
 	vst	$vr0, $sp, 680
-	xvst	$xr1, $sp, 696
-	fst.s	$fa2, $sp, 672
+	vst	$vr1, $sp, 696
+	vst	$vr2, $sp, 712
+	fst.s	$fa3, $sp, 672
 	st.b	$zero, $sp, 588
 	pcalau12i	$a0, %got_pc_hi20(_ZTV30btGjkEpaPenetrationDepthSolver)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTV30btGjkEpaPenetrationDepthSolver)

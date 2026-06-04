@@ -1,30 +1,30 @@
 	.file	"btSliderConstraint.cpp"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN18btSliderConstraint10initParamsEv
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN18btSliderConstraint10initParamsEv
 .LCPI0_0:
 	.word	0x3f800000                      # float 1
 	.word	0xbf800000                      # float -1
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
+.LCPI0_1:
 	.word	0x3f800000                      # float 1
 	.word	0x3f333333                      # float 0.699999988
 	.word	0x00000000                      # float 0
 	.word	0x3f800000                      # float 1
 .LCPI0_2:
+	.word	0x3f800000                      # float 1
+	.word	0x3f333333                      # float 0.699999988
+	.word	0x3f800000                      # float 1
+	.word	0x3f800000                      # float 1
+.LCPI0_3:
 	.word	0x3f333333                      # float 0.699999988
 	.word	0x00000000                      # float 0
 	.word	0x3f800000                      # float 1
 	.word	0x3f333333                      # float 0.699999988
+.LCPI0_4:
 	.word	0x3f800000                      # float 1
 	.word	0x3f800000                      # float 1
 	.word	0x3f333333                      # float 0.699999988
-	.word	0x3f800000                      # float 1
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI0_1:
-	.word	0x3f800000                      # float 1
-	.word	0x3f333333                      # float 0.699999988
-	.word	0x3f800000                      # float 1
 	.word	0x3f800000                      # float 1
 	.text
 	.globl	_ZN18btSliderConstraint10initParamsEv
@@ -34,18 +34,24 @@
 _ZN18btSliderConstraint10initParamsEv:  # @_ZN18btSliderConstraint10initParamsEv
 # %bb.0:
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
 	vld	$vr1, $a1, %pc_lo12(.LCPI0_1)
-	xvst	$xr0, $a0, 232
-	vst	$vr1, $a0, 296
 	pcalau12i	$a1, %pc_hi20(.LCPI0_2)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_2)
+	vld	$vr2, $a1, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_3)
+	vld	$vr3, $a1, %pc_lo12(.LCPI0_3)
+	vst	$vr0, $a0, 232
+	vst	$vr1, $a0, 248
+	vst	$vr2, $a0, 296
+	vst	$vr3, $a0, 264
+	pcalau12i	$a1, %pc_hi20(.LCPI0_4)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_4)
 	lu12i.w	$a1, 258867
 	ori	$a1, $a1, 819
 	lu52i.d	$a1, $a1, 1016
 	st.d	$a1, $a0, 312
-	xvst	$xr0, $a0, 264
+	vst	$vr0, $a0, 280
 	st.b	$zero, $a0, 1116
 	st.d	$zero, $a0, 1136
 	st.w	$zero, $a0, 1144
@@ -55,32 +61,32 @@ _ZN18btSliderConstraint10initParamsEv:  # @_ZN18btSliderConstraint10initParamsEv
 .Lfunc_end0:
 	.size	_ZN18btSliderConstraint10initParamsEv, .Lfunc_end0-_ZN18btSliderConstraint10initParamsEv
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN18btSliderConstraintC2Ev
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN18btSliderConstraintC2Ev
 .LCPI1_0:
 	.word	0x3f800000                      # float 1
 	.word	0xbf800000                      # float -1
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
+.LCPI1_1:
 	.word	0x3f800000                      # float 1
 	.word	0x3f333333                      # float 0.699999988
 	.word	0x00000000                      # float 0
 	.word	0x3f800000                      # float 1
 .LCPI1_2:
+	.word	0x3f800000                      # float 1
+	.word	0x3f333333                      # float 0.699999988
+	.word	0x3f800000                      # float 1
+	.word	0x3f800000                      # float 1
+.LCPI1_3:
 	.word	0x3f333333                      # float 0.699999988
 	.word	0x00000000                      # float 0
 	.word	0x3f800000                      # float 1
 	.word	0x3f333333                      # float 0.699999988
+.LCPI1_4:
 	.word	0x3f800000                      # float 1
 	.word	0x3f800000                      # float 1
 	.word	0x3f333333                      # float 0.699999988
-	.word	0x3f800000                      # float 1
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI1_1:
-	.word	0x3f800000                      # float 1
-	.word	0x3f333333                      # float 0.699999988
-	.word	0x3f800000                      # float 1
 	.word	0x3f800000                      # float 1
 	.text
 	.globl	_ZN18btSliderConstraintC2Ev
@@ -103,22 +109,28 @@ _ZN18btSliderConstraintC2Ev:            # @_ZN18btSliderConstraintC2Ev
 	pcalau12i	$a0, %pc_hi20(_ZTV18btSliderConstraint+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV18btSliderConstraint+16)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI1_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI1_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_2)
+	vld	$vr2, $a1, %pc_lo12(.LCPI1_2)
+	vst	$vr0, $fp, 232
+	vst	$vr1, $fp, 248
 	st.d	$a0, $fp, 0
-	xvst	$xr0, $fp, 232
-	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI1_1)
+	vst	$vr2, $fp, 296
+	pcalau12i	$a0, %pc_hi20(.LCPI1_3)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_3)
 	st.b	$zero, $fp, 96
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 228
-	vst	$vr0, $fp, 296
-	pcalau12i	$a0, %pc_hi20(.LCPI1_2)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI1_2)
+	vst	$vr0, $fp, 264
+	pcalau12i	$a0, %pc_hi20(.LCPI1_4)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_4)
 	lu12i.w	$a0, 258867
 	ori	$a0, $a0, 819
 	lu52i.d	$a0, $a0, 1016
 	st.d	$a0, $fp, 312
-	xvst	$xr0, $fp, 264
+	vst	$vr0, $fp, 280
 	st.b	$zero, $fp, 1116
 	st.d	$zero, $fp, 1136
 	st.w	$zero, $fp, 1144
@@ -149,32 +161,32 @@ __clang_call_terminate:                 # @__clang_call_terminate
 .Lfunc_end2:
 	.size	__clang_call_terminate, .Lfunc_end2-__clang_call_terminate
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN18btSliderConstraintC2ER11btRigidBodyS1_RK11btTransformS4_b
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN18btSliderConstraintC2ER11btRigidBodyS1_RK11btTransformS4_b
 .LCPI3_0:
 	.word	0x3f800000                      # float 1
 	.word	0xbf800000                      # float -1
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
+.LCPI3_1:
 	.word	0x3f800000                      # float 1
 	.word	0x3f333333                      # float 0.699999988
 	.word	0x00000000                      # float 0
 	.word	0x3f800000                      # float 1
 .LCPI3_2:
+	.word	0x3f800000                      # float 1
+	.word	0x3f333333                      # float 0.699999988
+	.word	0x3f800000                      # float 1
+	.word	0x3f800000                      # float 1
+.LCPI3_3:
 	.word	0x3f333333                      # float 0.699999988
 	.word	0x00000000                      # float 0
 	.word	0x3f800000                      # float 1
 	.word	0x3f333333                      # float 0.699999988
+.LCPI3_4:
 	.word	0x3f800000                      # float 1
 	.word	0x3f800000                      # float 1
 	.word	0x3f333333                      # float 0.699999988
-	.word	0x3f800000                      # float 1
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI3_1:
-	.word	0x3f800000                      # float 1
-	.word	0x3f333333                      # float 0.699999988
-	.word	0x3f800000                      # float 1
 	.word	0x3f800000                      # float 1
 	.text
 	.globl	_ZN18btSliderConstraintC2ER11btRigidBodyS1_RK11btTransformS4_b
@@ -196,54 +208,60 @@ _ZN18btSliderConstraintC2ER11btRigidBodyS1_RK11btTransformS4_b: # @_ZN18btSlider
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	move	$fp, $a5
-	move	$s0, $a4
-	move	$s1, $a3
+	move	$s0, $a5
+	move	$s1, $a4
+	move	$s2, $a3
 	move	$a3, $a2
 	move	$a2, $a1
-	move	$s2, $a0
+	move	$fp, $a0
 	ori	$a1, $zero, 7
 	pcaddu18i	$ra, %call36(_ZN17btTypedConstraintC2E21btTypedConstraintTypeR11btRigidBodyS2_)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(_ZTV18btSliderConstraint+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV18btSliderConstraint+16)
-	st.d	$a0, $s2, 0
-	st.b	$zero, $s2, 96
+	st.d	$a0, $fp, 0
+	st.b	$zero, $fp, 96
+	vld	$vr0, $s2, 0
+	vst	$vr0, $fp, 100
+	vld	$vr0, $s2, 16
+	vst	$vr0, $fp, 116
+	vld	$vr0, $s2, 32
+	vst	$vr0, $fp, 132
+	vld	$vr0, $s2, 48
+	vst	$vr0, $fp, 148
 	vld	$vr0, $s1, 0
-	vst	$vr0, $s2, 100
+	vst	$vr0, $fp, 164
 	vld	$vr0, $s1, 16
-	vst	$vr0, $s2, 116
+	vst	$vr0, $fp, 180
 	vld	$vr0, $s1, 32
-	vst	$vr0, $s2, 132
+	vst	$vr0, $fp, 196
 	vld	$vr0, $s1, 48
-	vst	$vr0, $s2, 148
-	vld	$vr0, $s0, 0
-	vst	$vr0, $s2, 164
-	vld	$vr0, $s0, 16
-	vst	$vr0, $s2, 180
-	vld	$vr0, $s0, 32
-	vst	$vr0, $s2, 196
-	vld	$vr0, $s0, 48
 	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI3_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI3_0)
+	vst	$vr0, $fp, 212
 	pcalau12i	$a0, %pc_hi20(.LCPI3_1)
-	vld	$vr2, $a0, %pc_lo12(.LCPI3_1)
-	vst	$vr0, $s2, 212
-	xvst	$xr1, $s2, 232
-	st.b	$fp, $s2, 228
-	vst	$vr2, $s2, 296
+	vld	$vr0, $a0, %pc_lo12(.LCPI3_1)
+	vst	$vr1, $fp, 232
+	pcalau12i	$a0, %pc_hi20(.LCPI3_2)
+	vld	$vr1, $a0, %pc_lo12(.LCPI3_2)
+	vst	$vr0, $fp, 248
+	pcalau12i	$a0, %pc_hi20(.LCPI3_3)
+	vld	$vr0, $a0, %pc_lo12(.LCPI3_3)
+	vst	$vr1, $fp, 296
+	st.b	$s0, $fp, 228
 	lu12i.w	$a0, 258867
-	pcalau12i	$a1, %pc_hi20(.LCPI3_2)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI3_2)
+	vst	$vr0, $fp, 264
+	pcalau12i	$a1, %pc_hi20(.LCPI3_4)
+	vld	$vr0, $a1, %pc_lo12(.LCPI3_4)
 	ori	$a0, $a0, 819
 	lu52i.d	$a0, $a0, 1016
-	st.d	$a0, $s2, 312
-	xvst	$xr0, $s2, 264
-	st.b	$zero, $s2, 1116
-	st.d	$zero, $s2, 1136
-	st.w	$zero, $s2, 1144
-	st.d	$zero, $s2, 1120
-	st.d	$zero, $s2, 1125
+	st.d	$a0, $fp, 312
+	vst	$vr0, $fp, 280
+	st.b	$zero, $fp, 1116
+	st.d	$zero, $fp, 1136
+	st.w	$zero, $fp, 1144
+	st.d	$zero, $fp, 1120
+	st.d	$zero, $fp, 1125
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -354,32 +372,32 @@ GCC_except_table4:
 .Lttbase0:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN18btSliderConstraintC2ER11btRigidBodyRK11btTransformb
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN18btSliderConstraintC2ER11btRigidBodyRK11btTransformb
 .LCPI5_0:
 	.word	0x3f800000                      # float 1
 	.word	0xbf800000                      # float -1
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
+.LCPI5_1:
 	.word	0x3f800000                      # float 1
 	.word	0x3f333333                      # float 0.699999988
 	.word	0x00000000                      # float 0
 	.word	0x3f800000                      # float 1
 .LCPI5_2:
+	.word	0x3f800000                      # float 1
+	.word	0x3f333333                      # float 0.699999988
+	.word	0x3f800000                      # float 1
+	.word	0x3f800000                      # float 1
+.LCPI5_3:
 	.word	0x3f333333                      # float 0.699999988
 	.word	0x00000000                      # float 0
 	.word	0x3f800000                      # float 1
 	.word	0x3f333333                      # float 0.699999988
+.LCPI5_4:
 	.word	0x3f800000                      # float 1
 	.word	0x3f800000                      # float 1
 	.word	0x3f333333                      # float 0.699999988
-	.word	0x3f800000                      # float 1
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI5_1:
-	.word	0x3f800000                      # float 1
-	.word	0x3f333333                      # float 0.699999988
-	.word	0x3f800000                      # float 1
 	.word	0x3f800000                      # float 1
 	.text
 	.globl	_ZN18btSliderConstraintC2ER11btRigidBodyRK11btTransformb
@@ -399,47 +417,53 @@ _ZN18btSliderConstraintC2ER11btRigidBodyRK11btTransformb: # @_ZN18btSliderConstr
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	move	$fp, $a3
-	move	$s0, $a2
+	move	$s0, $a3
+	move	$s1, $a2
 	move	$a3, $a1
-	move	$s1, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(_ZL7s_fixed)
 	addi.d	$a2, $a0, %pc_lo12(_ZL7s_fixed)
 	ori	$a1, $zero, 7
-	move	$a0, $s1
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN17btTypedConstraintC2E21btTypedConstraintTypeR11btRigidBodyS2_)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(_ZTV18btSliderConstraint+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV18btSliderConstraint+16)
-	st.d	$a0, $s1, 0
-	st.b	$zero, $s1, 96
-	vld	$vr0, $s0, 0
-	vst	$vr0, $s1, 164
-	vld	$vr0, $s0, 16
-	vst	$vr0, $s1, 180
-	vld	$vr0, $s0, 32
-	vst	$vr0, $s1, 196
-	vld	$vr0, $s0, 48
+	st.d	$a0, $fp, 0
+	st.b	$zero, $fp, 96
+	vld	$vr0, $s1, 0
+	vst	$vr0, $fp, 164
+	vld	$vr0, $s1, 16
+	vst	$vr0, $fp, 180
+	vld	$vr0, $s1, 32
+	vst	$vr0, $fp, 196
+	vld	$vr0, $s1, 48
 	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI5_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI5_0)
+	vst	$vr0, $fp, 212
 	pcalau12i	$a0, %pc_hi20(.LCPI5_1)
-	vld	$vr2, $a0, %pc_lo12(.LCPI5_1)
-	vst	$vr0, $s1, 212
-	xvst	$xr1, $s1, 232
-	st.b	$fp, $s1, 228
-	vst	$vr2, $s1, 296
+	vld	$vr0, $a0, %pc_lo12(.LCPI5_1)
+	vst	$vr1, $fp, 232
+	pcalau12i	$a0, %pc_hi20(.LCPI5_2)
+	vld	$vr1, $a0, %pc_lo12(.LCPI5_2)
+	vst	$vr0, $fp, 248
+	pcalau12i	$a0, %pc_hi20(.LCPI5_3)
+	vld	$vr0, $a0, %pc_lo12(.LCPI5_3)
+	vst	$vr1, $fp, 296
+	st.b	$s0, $fp, 228
 	lu12i.w	$a0, 258867
-	pcalau12i	$a1, %pc_hi20(.LCPI5_2)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI5_2)
+	vst	$vr0, $fp, 264
+	pcalau12i	$a1, %pc_hi20(.LCPI5_4)
+	vld	$vr0, $a1, %pc_lo12(.LCPI5_4)
 	ori	$a0, $a0, 819
 	lu52i.d	$a0, $a0, 1016
-	st.d	$a0, $s1, 312
-	xvst	$xr0, $s1, 264
-	st.b	$zero, $s1, 1116
-	st.d	$zero, $s1, 1136
-	st.w	$zero, $s1, 1144
-	st.d	$zero, $s1, 1125
-	st.d	$zero, $s1, 1120
+	st.d	$a0, $fp, 312
+	vst	$vr0, $fp, 280
+	st.b	$zero, $fp, 1116
+	st.d	$zero, $fp, 1136
+	st.w	$zero, $fp, 1144
+	st.d	$zero, $fp, 1125
+	st.d	$zero, $fp, 1120
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -2039,7 +2063,8 @@ _ZN18btSliderConstraint19calculateTransformsERK11btTransformS2_: # @_ZN18btSlide
 	vextrins.w	$vr3, $vr4, 16
 	vshuf4i.w	$vr3, $vr3, 16
 	vslli.d	$vr3, $vr3, 32
-	vext2xv.du.wu	$xr4, $xr8
+	vrepli.b	$vr4, 0
+	vilvl.w	$vr4, $vr4, $vr8
 	vor.v	$vr3, $vr3, $vr4
 	vpickve2gr.d	$a1, $vr3, 0
 	st.d	$a1, $a0, 1036

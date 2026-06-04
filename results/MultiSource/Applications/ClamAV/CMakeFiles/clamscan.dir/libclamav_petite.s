@@ -126,9 +126,9 @@ petite_inflate2x_1to9:                  # @petite_inflate2x_1to9
                                         #       Child Loop BB0_43 Depth 3
                                         #       Child Loop BB0_55 Depth 3
                                         #       Child Loop BB0_73 Depth 3
-                                        #       Child Loop BB0_96 Depth 3
                                         #       Child Loop BB0_101 Depth 3
-                                        #       Child Loop BB0_103 Depth 3
+                                        #       Child Loop BB0_95 Depth 3
+                                        #       Child Loop BB0_98 Depth 3
 	addi.d	$a0, $s3, 4
 	bltu	$ra, $a0, .LBB0_151
 # %bb.9:                                #   in Loop: Header=BB0_8 Depth=1
@@ -272,9 +272,9 @@ petite_inflate2x_1to9:                  # @petite_inflate2x_1to9
                                         #       Child Loop BB0_43 Depth 3
                                         #       Child Loop BB0_55 Depth 3
                                         #       Child Loop BB0_73 Depth 3
-                                        #       Child Loop BB0_96 Depth 3
                                         #       Child Loop BB0_101 Depth 3
-                                        #       Child Loop BB0_103 Depth 3
+                                        #       Child Loop BB0_95 Depth 3
+                                        #       Child Loop BB0_98 Depth 3
 	andi	$a7, $t1, 127
 	beqz	$a7, .LBB0_37
 # %bb.30:                               #   in Loop: Header=BB0_29 Depth=2
@@ -522,58 +522,18 @@ petite_inflate2x_1to9:                  # @petite_inflate2x_1to9
                                         #   in Loop: Header=BB0_29 Depth=2
 	sub.w	$a0, $a0, $t2
 	ori	$t0, $zero, 16
-	bltu	$t2, $t0, .LBB0_94
+	bltu	$t2, $t0, .LBB0_97
 # %bb.91:                               # %iter.check
                                         #   in Loop: Header=BB0_29 Depth=2
-	addi.d	$t0, $t1, 63
-	ori	$t3, $zero, 64
-	bltu	$t0, $t3, .LBB0_94
+	addi.d	$t0, $t1, 31
+	ori	$t3, $zero, 32
+	bltu	$t0, $t3, .LBB0_97
 # %bb.92:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB0_29 Depth=2
-	bgeu	$t2, $t3, .LBB0_95
+	bgeu	$t2, $t3, .LBB0_100
 # %bb.93:                               #   in Loop: Header=BB0_29 Depth=2
 	move	$t4, $zero
-	b	.LBB0_100
-.LBB0_94:                               #   in Loop: Header=BB0_29 Depth=2
-	move	$t3, $t2
-	move	$t0, $a4
-	b	.LBB0_103
-.LBB0_95:                               # %vector.ph
-                                        #   in Loop: Header=BB0_29 Depth=2
-	andi	$t5, $t2, 48
-	bstrpick.d	$t0, $t2, 30, 6
-	slli.d	$t4, $t0, 6
-	sub.d	$t3, $t2, $t4
-	add.d	$t0, $a4, $t4
-	move	$t6, $a4
-	move	$t7, $t4
-	.p2align	4, , 16
-.LBB0_96:                               # %vector.body
-                                        #   Parent Loop BB0_8 Depth=1
-                                        #     Parent Loop BB0_29 Depth=2
-                                        # =>    This Inner Loop Header: Depth=3
-	add.d	$t8, $t6, $t1
-	xvldx	$xr0, $t6, $t1
-	xvld	$xr1, $t8, 32
-	xvst	$xr0, $t6, 0
-	xvst	$xr1, $t6, 32
-	addi.d	$t7, $t7, -64
-	addi.d	$t6, $t6, 64
-	bnez	$t7, .LBB0_96
-# %bb.97:                               # %middle.block
-                                        #   in Loop: Header=BB0_29 Depth=2
-	bne	$t4, $t2, .LBB0_99
-# %bb.98:                               #   in Loop: Header=BB0_29 Depth=2
-	move	$t2, $a6
-	ld.d	$t7, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$t8, $sp, 272                   # 8-byte Folded Reload
-	b	.LBB0_36
-.LBB0_99:                               # %vec.epilog.iter.check
-                                        #   in Loop: Header=BB0_29 Depth=2
-	ld.d	$t7, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$t8, $sp, 272                   # 8-byte Folded Reload
-	beqz	$t5, .LBB0_103
-.LBB0_100:                              # %vec.epilog.ph
+.LBB0_94:                               # %vec.epilog.ph
                                         #   in Loop: Header=BB0_29 Depth=2
 	bstrpick.d	$t0, $t2, 30, 4
 	slli.d	$t5, $t0, 4
@@ -582,7 +542,7 @@ petite_inflate2x_1to9:                  # @petite_inflate2x_1to9
 	sub.d	$t6, $t4, $t5
 	add.d	$a4, $a4, $t4
 	.p2align	4, , 16
-.LBB0_101:                              # %vec.epilog.vector.body
+.LBB0_95:                               # %vec.epilog.vector.body
                                         #   Parent Loop BB0_8 Depth=1
                                         #     Parent Loop BB0_29 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
@@ -590,12 +550,16 @@ petite_inflate2x_1to9:                  # @petite_inflate2x_1to9
 	vst	$vr0, $a4, 0
 	addi.d	$t6, $t6, 16
 	addi.d	$a4, $a4, 16
-	bnez	$t6, .LBB0_101
-# %bb.102:                              # %vec.epilog.middle.block
+	bnez	$t6, .LBB0_95
+# %bb.96:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB0_29 Depth=2
-	beq	$t5, $t2, .LBB0_104
+	bne	$t5, $t2, .LBB0_98
+	b	.LBB0_99
+.LBB0_97:                               #   in Loop: Header=BB0_29 Depth=2
+	move	$t3, $t2
+	move	$t0, $a4
 	.p2align	4, , 16
-.LBB0_103:                              # %.lr.ph1256
+.LBB0_98:                               # %.lr.ph1256
                                         #   Parent Loop BB0_8 Depth=1
                                         #     Parent Loop BB0_29 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
@@ -603,10 +567,46 @@ petite_inflate2x_1to9:                  # @petite_inflate2x_1to9
 	addi.w	$t3, $t3, -1
 	st.b	$a4, $t0, 0
 	addi.d	$t0, $t0, 1
-	bnez	$t3, .LBB0_103
-.LBB0_104:                              #   in Loop: Header=BB0_29 Depth=2
+	bnez	$t3, .LBB0_98
+.LBB0_99:                               #   in Loop: Header=BB0_29 Depth=2
 	move	$t2, $a6
 	b	.LBB0_36
+.LBB0_100:                              # %vector.ph
+                                        #   in Loop: Header=BB0_29 Depth=2
+	andi	$t5, $t2, 16
+	bstrpick.d	$t0, $t2, 30, 5
+	slli.d	$t4, $t0, 5
+	sub.d	$t3, $t2, $t4
+	add.d	$t0, $a4, $t4
+	move	$t6, $a4
+	move	$t7, $t4
+	.p2align	4, , 16
+.LBB0_101:                              # %vector.body
+                                        #   Parent Loop BB0_8 Depth=1
+                                        #     Parent Loop BB0_29 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	add.d	$t8, $t6, $t1
+	vldx	$vr0, $t6, $t1
+	vld	$vr1, $t8, 16
+	vst	$vr0, $t6, 0
+	vst	$vr1, $t6, 16
+	addi.d	$t7, $t7, -32
+	addi.d	$t6, $t6, 32
+	bnez	$t7, .LBB0_101
+# %bb.102:                              # %middle.block
+                                        #   in Loop: Header=BB0_29 Depth=2
+	bne	$t4, $t2, .LBB0_104
+# %bb.103:                              #   in Loop: Header=BB0_29 Depth=2
+	move	$t2, $a6
+	ld.d	$t7, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 272                   # 8-byte Folded Reload
+	b	.LBB0_36
+.LBB0_104:                              # %vec.epilog.iter.check
+                                        #   in Loop: Header=BB0_29 Depth=2
+	ld.d	$t7, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 272                   # 8-byte Folded Reload
+	beqz	$t5, .LBB0_98
+	b	.LBB0_94
 	.p2align	4, , 16
 .LBB0_105:                              #   in Loop: Header=BB0_8 Depth=1
 	ld.d	$a5, $sp, 240                   # 8-byte Folded Reload

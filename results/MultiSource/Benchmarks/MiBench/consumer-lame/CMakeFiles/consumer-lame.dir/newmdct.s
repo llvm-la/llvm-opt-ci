@@ -3,43 +3,6 @@
 	.p2align	3, 0x0                          # -- Begin function mdct_sub48
 .LCPI0_0:
 	.dword	0x3ff921fb54442d18              # double 1.5707963267948966
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
-.LCPI0_1:
-	.dword	1                               # 0x1
-	.dword	1                               # 0x1
-	.dword	3                               # 0x3
-	.dword	3                               # 0x3
-.LCPI0_2:
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.dword	2                               # 0x2
-	.dword	2                               # 0x2
-.LCPI0_3:
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.dword	3                               # 0x3
-	.dword	3                               # 0x3
-.LCPI0_4:
-	.dword	0                               # 0x0
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
-	.dword	0                               # 0x0
-.LCPI0_5:
-	.dword	1                               # 0x1
-	.dword	3                               # 0x3
-	.dword	2                               # 0x2
-	.dword	0                               # 0x0
-.LCPI0_6:
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	3                               # 0x3
-	.dword	0                               # 0x0
-.LCPI0_7:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	3                               # 0x3
-	.dword	0                               # 0x0
 	.text
 	.globl	mdct_sub48
 	.p2align	2
@@ -47,26 +10,26 @@
 	.type	mdct_sub48,@function
 mdct_sub48:                             # @mdct_sub48
 # %bb.0:
-	addi.d	$sp, $sp, -1232
-	st.d	$ra, $sp, 1224                  # 8-byte Folded Spill
-	st.d	$fp, $sp, 1216                  # 8-byte Folded Spill
-	st.d	$s0, $sp, 1208                  # 8-byte Folded Spill
-	st.d	$s1, $sp, 1200                  # 8-byte Folded Spill
-	st.d	$s2, $sp, 1192                  # 8-byte Folded Spill
-	st.d	$s3, $sp, 1184                  # 8-byte Folded Spill
-	st.d	$s4, $sp, 1176                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1168                  # 8-byte Folded Spill
-	st.d	$s6, $sp, 1160                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1152                  # 8-byte Folded Spill
-	st.d	$s8, $sp, 1144                  # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 1136                 # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 1128                 # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 1120                 # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 1112                 # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 1104                 # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 1096                 # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 1088                 # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 1080                 # 8-byte Folded Spill
+	addi.d	$sp, $sp, -624
+	st.d	$ra, $sp, 616                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 608                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 600                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 592                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 584                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 576                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 568                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 560                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 552                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 544                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 536                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 528                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 520                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 512                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 504                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 496                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 488                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 480                  # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 472                  # 8-byte Folded Spill
 	pcalau12i	$fp, %pc_hi20(mdct_sub48.init)
 	ld.bu	$a5, $fp, %pc_lo12(mdct_sub48.init)
 	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
@@ -91,7 +54,6 @@ mdct_sub48:                             # @mdct_sub48
 	ori	$a0, $a0, 520
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	add.d	$s0, $a1, $a0
-	ori	$s4, $zero, 32
 	lu12i.w	$a0, -2
 	ori	$a0, $a0, 3584
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
@@ -119,7 +81,7 @@ mdct_sub48:                             # @mdct_sub48
 	blez	$a0, .LBB0_4
 # %bb.6:                                # %.lr.ph259
                                         #   in Loop: Header=BB0_5 Depth=1
-	move	$s7, $zero
+	move	$s6, $zero
 	alsl.d	$a0, $fp, $fp, 3
 	slli.d	$a1, $a0, 9
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
@@ -133,22 +95,21 @@ mdct_sub48:                             # @mdct_sub48
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 10
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	add.d	$s6, $a1, $a0
+	add.d	$s4, $a1, $a0
 	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 96                    # 8-byte Folded Spill
+	move	$s7, $s0
+	st.d	$s4, $sp, 96                    # 8-byte Folded Spill
 	b	.LBB0_8
 	.p2align	4, , 16
 .LBB0_7:                                #   in Loop: Header=BB0_8 Depth=2
 	ld.w	$a0, $s2, 200
-	ld.d	$s7, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$s7, $s7, 1
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	addi.d	$s6, $s6, 1
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
-	add.d	$a2, $a2, $a1
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
-	bge	$s7, $a0, .LBB0_33
+	ld.d	$s7, $sp, 104                   # 8-byte Folded Reload
+	add.d	$s7, $s7, $a1
+	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
+	bge	$s6, $a0, .LBB0_33
 .LBB0_8:                                #   Parent Loop BB0_5 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_9 Depth 3
@@ -156,10 +117,10 @@ mdct_sub48:                             # @mdct_sub48
                                         #       Child Loop BB0_24 Depth 3
                                         #         Child Loop BB0_28 Depth 4
 	ori	$a0, $zero, 1
-	sub.d	$a0, $a0, $s7
+	sub.d	$a0, $a0, $s6
 	alsl.d	$a0, $a0, $a0, 3
 	slli.d	$a0, $a0, 9
-	add.d	$s8, $s6, $a0
+	add.d	$s8, $s4, $a0
 	ori	$fp, $zero, 9
 	move	$s5, $s8
 	.p2align	4, , 16
@@ -230,7 +191,7 @@ mdct_sub48:                             # @mdct_sub48
 	ld.w	$a0, $s2, 256
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 256
-	st.d	$a1, $sp, 752                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 336                   # 8-byte Folded Spill
 	bnez	$a0, .LBB0_20
 # %bb.11:                               #   in Loop: Header=BB0_8 Depth=2
 	ld.w	$a0, $s2, 252
@@ -245,8 +206,7 @@ mdct_sub48:                             # @mdct_sub48
 	fcvt.d.s	$fs2, $fs0
 	fcvt.d.s	$fs3, $fs1
 	addi.w	$s0, $a0, 1
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
-	alsl.d	$s1, $a0, $a1, 3
+	alsl.d	$s1, $a0, $s7, 3
 	b	.LBB0_14
 	.p2align	4, , 16
 .LBB0_13:                               # %.loopexit212
@@ -338,7 +298,7 @@ mdct_sub48:                             # @mdct_sub48
 	lu12i.w	$a0, 1
 	fldx.d	$fa1, $s1, $a0
 	fmul.d	$fa2, $fa0, $fa2
-	ld.d	$a2, $sp, 752                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
 	fldx.d	$fa3, $s1, $a2
 	fstx.d	$fa2, $s1, $a1
 	fmul.d	$fa1, $fa0, $fa1
@@ -422,7 +382,7 @@ mdct_sub48:                             # @mdct_sub48
 	lu12i.w	$a0, 1
 	fldx.d	$fa1, $s1, $a0
 	fmul.d	$fa2, $fa0, $fa2
-	ld.d	$a2, $sp, 752                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
 	fldx.d	$fa3, $s1, $a2
 	fstx.d	$fa2, $s1, $a1
 	fmul.d	$fa1, $fa0, $fa1
@@ -433,240 +393,133 @@ mdct_sub48:                             # @mdct_sub48
 	.p2align	4, , 16
 .LBB0_20:                               # %.loopexit214
                                         #   in Loop: Header=BB0_8 Depth=2
-	alsl.d	$a0, $s7, $s7, 3
+	st.d	$s7, $sp, 104                   # 8-byte Folded Spill
+	alsl.d	$a0, $s6, $s6, 3
 	slli.d	$a1, $a0, 10
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	add.d	$s5, $a2, $a1
 	ori	$a1, $zero, 240
-	st.d	$s7, $sp, 104                   # 8-byte Folded Spill
-	mul.d	$a1, $s7, $a1
+	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
+	mul.d	$a1, $s6, $a1
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	add.d	$s1, $a2, $a1
 	slli.d	$a0, $a0, 9
-	add.d	$fp, $s6, $a0
+	add.d	$fp, $s4, $a0
 	pcalau12i	$a0, %pc_hi20(cos_s)
-	addi.d	$a0, $a0, %pc_lo12(cos_s)
-	xvld	$xr0, $a0, 160
-	xvld	$xr1, $a0, 96
-	xvld	$xr17, $a0, 128
-	xvld	$xr2, $a0, 208
-	xvld	$xr4, $a0, 144
-	xvld	$xr3, $a0, 176
-	xvld	$xr5, $a0, 256
-	pcalau12i	$a1, %pc_hi20(ca.7)
-	fld.d	$ft10, $a1, %pc_lo12(ca.7)
-	xvld	$xr6, $a0, 192
-	pcalau12i	$a1, %pc_hi20(cs.7)
-	fld.d	$ft11, $a1, %pc_lo12(cs.7)
-	fneg.d	$fa7, $ft10
-	fst.d	$fa7, $sp, 1016                 # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(ca.6)
-	fld.d	$fa7, $a1, %pc_lo12(ca.6)
-	pcalau12i	$a1, %pc_hi20(ca.5)
-	fld.d	$ft3, $a1, %pc_lo12(ca.5)
-	pcalau12i	$a1, %pc_hi20(cs.6)
-	fld.d	$ft12, $a1, %pc_lo12(cs.6)
-	pcalau12i	$a1, %pc_hi20(cs.5)
-	fld.d	$ft13, $a1, %pc_lo12(cs.5)
-	fneg.d	$ft0, $ft3
-	fst.d	$ft0, $sp, 968                  # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(ca.4)
-	fld.d	$ft4, $a1, %pc_lo12(ca.4)
-	pcalau12i	$a1, %pc_hi20(cs.4)
-	fld.d	$ft1, $a1, %pc_lo12(cs.4)
-	pcalau12i	$a1, %pc_hi20(ca.3)
-	fld.d	$ft14, $a1, %pc_lo12(ca.3)
-	pcalau12i	$a1, %pc_hi20(cs.3)
-	fld.d	$ft0, $a1, %pc_lo12(cs.3)
-	pcalau12i	$a1, %pc_hi20(ca.2)
-	fld.d	$ft5, $a1, %pc_lo12(ca.2)
-	pcalau12i	$a1, %pc_hi20(ca.1)
-	fld.d	$ft6, $a1, %pc_lo12(ca.1)
-	pcalau12i	$a1, %pc_hi20(cs.2)
-	fld.d	$ft2, $a1, %pc_lo12(cs.2)
-	pcalau12i	$a1, %pc_hi20(cs.1)
-	fld.d	$ft15, $a1, %pc_lo12(cs.1)
-	vori.b	$vr15, $vr22, 0
-	vextrins.d	$vr15, $vr12, 16
-	vori.b	$vr16, $vr14, 0
-	vextrins.d	$vr16, $vr13, 16
-	xvpermi.q	$xr16, $xr15, 2
-	pcalau12i	$a1, %pc_hi20(ca.0)
-	fld.d	$ft7, $a1, %pc_lo12(ca.0)
-	pcalau12i	$a1, %pc_hi20(cs.0)
-	vextrins.d	$vr11, $vr12, 16
-	vextrins.d	$vr18, $vr7, 16
-	xvpermi.q	$xr18, $xr11, 2
-	xvst	$xr18, $sp, 1040                # 32-byte Folded Spill
-	vst	$vr21, $sp, 976                 # 16-byte Folded Spill
-	vori.b	$vr11, $vr21, 0
-	vextrins.d	$vr11, $vr9, 16
-	vst	$vr19, $sp, 1024                # 16-byte Folded Spill
-	vori.b	$vr12, $vr19, 0
-	vst	$vr20, $sp, 992                 # 16-byte Folded Spill
-	vextrins.d	$vr12, $vr20, 16
-	xvpermi.q	$xr12, $xr11, 2
-	xvst	$xr12, $sp, 864                 # 32-byte Folded Spill
-	fld.d	$ft4, $a1, %pc_lo12(cs.0)
-	vextrins.d	$vr14, $vr15, 16
-	vextrins.d	$vr22, $vr13, 16
-	xvpermi.q	$xr22, $xr14, 2
-	xvst	$xr22, $sp, 928                 # 32-byte Folded Spill
-	vori.b	$vr11, $vr23, 0
-	vst	$vr12, $sp, 848                 # 16-byte Folded Spill
-	vextrins.d	$vr11, $vr12, 16
-	vori.b	$vr12, $vr8, 0
-	vextrins.d	$vr12, $vr10, 16
-	xvpermi.q	$xr12, $xr11, 2
-	xvst	$xr12, $sp, 816                 # 32-byte Folded Spill
-	xvld	$xr11, $a0, 224
-	fneg.d	$fa7, $fa7
-	fst.d	$fa7, $sp, 808                  # 8-byte Folded Spill
-	xvbitrevi.d	$xr7, $xr16, 63
-	xvst	$xr7, $sp, 768                  # 32-byte Folded Spill
-	fneg.d	$fa7, $ft7
-	fst.d	$fa7, $sp, 760                  # 8-byte Folded Spill
-	vextrins.d	$vr8, $vr9, 16
-	xvrepl128vei.d	$xr12, $xr17, 1
-	vextrins.d	$vr23, $vr10, 16
-	xvrepl128vei.d	$xr7, $xr3, 1
-	xvpermi.q	$xr23, $xr8, 2
-	xvst	$xr23, $sp, 896                 # 32-byte Folded Spill
-	xvrepl128vei.d	$xr13, $xr11, 1
-	pcalau12i	$a1, %pc_hi20(win)
-	addi.d	$s7, $a1, %pc_lo12(win)
-	move	$s6, $zero
-	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
-	xvld	$xr14, $a1, %pc_lo12(.LCPI0_1)
-	pcalau12i	$a1, %pc_hi20(.LCPI0_2)
-	xvld	$xr15, $a1, %pc_lo12(.LCPI0_2)
-	pcalau12i	$a1, %pc_hi20(.LCPI0_3)
-	xvld	$xr16, $a1, %pc_lo12(.LCPI0_3)
-	fld.d	$fs4, $s7, 592
-	fld.d	$fs5, $s7, 584
-	fld.d	$fs6, $s7, 576
-	xvpermi.d	$xr8, $xr11, 3
-	xvpickve.d	$xr9, $xr11, 3
-	vextrins.d	$vr8, $vr9, 16
-	vreplvei.d	$vr10, $vr6, 1
-	vextrins.d	$vr10, $vr9, 16
-	xvpermi.q	$xr10, $xr8, 2
-	xvst	$xr10, $sp, 496                 # 32-byte Folded Spill
-	xvpermi.d	$xr8, $xr11, 2
-	xvpickve.d	$xr9, $xr11, 2
-	vextrins.d	$vr8, $vr9, 16
-	vori.b	$vr10, $vr6, 0
-	vextrins.d	$vr10, $vr9, 16
-	xvpermi.q	$xr10, $xr8, 2
-	xvst	$xr10, $sp, 464                 # 32-byte Folded Spill
-	xvpickve.d	$xr8, $xr5, 0
-	vreplvei.d	$vr9, $vr5, 1
-	vori.b	$vr10, $vr5, 0
-	vextrins.d	$vr10, $vr8, 16
-	xvpermi.d	$xr18, $xr6, 2
-	vextrins.d	$vr18, $vr8, 16
-	xvpermi.q	$xr18, $xr10, 2
-	xvst	$xr18, $sp, 432                 # 32-byte Folded Spill
-	xvpickve.d	$xr8, $xr5, 1
-	vextrins.d	$vr9, $vr8, 16
-	xvpermi.d	$xr6, $xr6, 3
-	vextrins.d	$vr6, $vr8, 16
-	xvpermi.q	$xr6, $xr9, 2
-	xvst	$xr6, $sp, 400                  # 32-byte Folded Spill
-	xvpermi.d	$xr6, $xr5, 2
-	xvpickve.d	$xr8, $xr5, 2
-	vextrins.d	$vr6, $vr8, 16
-	vextrins.d	$vr11, $vr8, 16
-	xvpermi.q	$xr11, $xr6, 2
-	xvst	$xr11, $sp, 688                 # 32-byte Folded Spill
-	xvpermi.d	$xr6, $xr5, 3
-	xvpickve.d	$xr5, $xr5, 3
-	vextrins.d	$vr6, $vr5, 16
-	vextrins.d	$vr13, $vr5, 16
-	xvpermi.q	$xr13, $xr6, 2
-	xvst	$xr13, $sp, 624                 # 32-byte Folded Spill
-	xvori.b	$xr5, $xr14, 0
-	xvshuf.d	$xr5, $xr3, $xr4
-	xvst	$xr5, $sp, 368                  # 32-byte Folded Spill
-	xvori.b	$xr5, $xr15, 0
-	xvshuf.d	$xr5, $xr3, $xr4
-	xvst	$xr5, $sp, 336                  # 32-byte Folded Spill
-	xvpermi.d	$xr4, $xr4, 78
-	xvpermi.d	$xr5, $xr2, 78
-	xvori.b	$xr6, $xr15, 0
-	xvshuf.d	$xr6, $xr5, $xr4
-	xvst	$xr6, $sp, 304                  # 32-byte Folded Spill
-	xvshuf.d	$xr14, $xr5, $xr4
-	xvst	$xr14, $sp, 592                 # 32-byte Folded Spill
-	xvshuf.d	$xr15, $xr2, $xr3
-	xvst	$xr15, $sp, 560                 # 32-byte Folded Spill
-	xvshuf.d	$xr16, $xr2, $xr7
-	xvst	$xr16, $sp, 528                 # 32-byte Folded Spill
-	vreplvei.d	$vr4, $vr1, 1
-	xvpickve.d	$xr2, $xr17, 3
-	vori.b	$vr3, $vr4, 0
-	vextrins.d	$vr3, $vr2, 16
-	xvpickve.d	$xr2, $xr1, 1
-	vextrins.d	$vr4, $vr2, 16
-	xvpermi.q	$xr4, $xr3, 2
-	xvst	$xr4, $sp, 272                  # 32-byte Folded Spill
-	xvpickve.d	$xr2, $xr17, 2
-	vori.b	$vr3, $vr1, 0
-	vextrins.d	$vr3, $vr2, 16
-	xvpickve.d	$xr2, $xr1, 0
-	vori.b	$vr4, $vr1, 0
-	vextrins.d	$vr4, $vr2, 16
-	xvpermi.q	$xr4, $xr3, 2
-	xvst	$xr4, $sp, 240                  # 32-byte Folded Spill
-	xvpermi.d	$xr4, $xr1, 2
-	xvpickve.d	$xr2, $xr0, 0
-	vori.b	$vr3, $vr4, 0
-	vextrins.d	$vr3, $vr2, 16
-	xvpickve.d	$xr2, $xr1, 2
-	vextrins.d	$vr4, $vr2, 16
-	xvpermi.q	$xr4, $xr3, 2
-	xvst	$xr4, $sp, 208                  # 32-byte Folded Spill
-	xvpermi.d	$xr4, $xr1, 3
-	xvpickve.d	$xr2, $xr0, 1
-	vori.b	$vr3, $vr4, 0
-	vextrins.d	$vr3, $vr2, 16
-	xvpickve.d	$xr1, $xr1, 3
-	vextrins.d	$vr4, $vr1, 16
-	xvpermi.q	$xr4, $xr3, 2
-	xvst	$xr4, $sp, 176                  # 32-byte Folded Spill
-	xvpickve.d	$xr1, $xr0, 2
-	vori.b	$vr2, $vr17, 0
-	vextrins.d	$vr2, $vr1, 16
-	xvpickve.d	$xr1, $xr17, 0
-	vextrins.d	$vr17, $vr1, 16
-	xvpermi.q	$xr17, $xr2, 2
-	xvst	$xr17, $sp, 720                 # 32-byte Folded Spill
-	xvpickve.d	$xr0, $xr0, 3
-	vori.b	$vr1, $vr12, 0
-	vextrins.d	$vr1, $vr0, 16
-	fld.d	$fa0, $a0, 48
-	fst.d	$fa0, $sp, 168                  # 8-byte Folded Spill
-	fld.d	$fa0, $a0, 56
-	fst.d	$fa0, $sp, 160                  # 8-byte Folded Spill
-	fld.d	$fa0, $a0, 64
-	fst.d	$fa0, $sp, 152                  # 8-byte Folded Spill
-	fld.d	$fa0, $a0, 72
-	fst.d	$fa0, $sp, 144                  # 8-byte Folded Spill
-	fld.d	$fa0, $a0, 80
+	addi.d	$s7, $a0, %pc_lo12(cos_s)
+	fld.d	$fa0, $s7, 240
+	fst.d	$fa0, $sp, 328                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 248
+	fst.d	$fa0, $sp, 320                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 256
+	fst.d	$fa0, $sp, 312                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 264
+	fst.d	$fa0, $sp, 304                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 272
+	fst.d	$fa0, $sp, 296                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 280
+	fst.d	$fa0, $sp, 288                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 192
+	fst.d	$fa0, $sp, 280                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 200
+	fst.d	$fa0, $sp, 272                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 208
+	fst.d	$fa0, $sp, 264                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 216
+	fst.d	$fa0, $sp, 256                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 224
+	fst.d	$fa0, $sp, 248                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 232
+	fst.d	$fa0, $sp, 240                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 144
+	fst.d	$fa0, $sp, 232                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 152
+	fst.d	$fa0, $sp, 224                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 160
+	fst.d	$fa0, $sp, 216                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 168
+	fst.d	$fa0, $sp, 208                  # 8-byte Folded Spill
+	fld.d	$fa0, $s7, 176
+	fst.d	$fa0, $sp, 200                  # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(ca.7)
+	fld.d	$fa0, $a0, %pc_lo12(ca.7)
+	pcalau12i	$a0, %pc_hi20(cs.7)
+	fld.d	$fs2, $a0, %pc_lo12(cs.7)
+	pcalau12i	$a0, %pc_hi20(ca.6)
+	fld.d	$fa1, $a0, %pc_lo12(ca.6)
+	pcalau12i	$a0, %pc_hi20(cs.6)
+	fld.d	$fs4, $a0, %pc_lo12(cs.6)
+	pcalau12i	$a0, %pc_hi20(ca.5)
+	fld.d	$fa2, $a0, %pc_lo12(ca.5)
+	pcalau12i	$a0, %pc_hi20(cs.5)
+	fld.d	$fs6, $a0, %pc_lo12(cs.5)
+	pcalau12i	$a0, %pc_hi20(ca.4)
+	fld.d	$fa3, $a0, %pc_lo12(ca.4)
+	pcalau12i	$a0, %pc_hi20(cs.4)
+	fld.d	$fs0, $a0, %pc_lo12(cs.4)
+	pcalau12i	$a0, %pc_hi20(ca.3)
+	fld.d	$fa4, $a0, %pc_lo12(ca.3)
+	pcalau12i	$a0, %pc_hi20(cs.3)
+	fld.d	$fs3, $a0, %pc_lo12(cs.3)
+	pcalau12i	$a0, %pc_hi20(ca.2)
+	fld.d	$fa5, $a0, %pc_lo12(ca.2)
+	pcalau12i	$a0, %pc_hi20(cs.2)
+	fld.d	$fs7, $a0, %pc_lo12(cs.2)
+	pcalau12i	$a0, %pc_hi20(ca.1)
+	fld.d	$fa6, $a0, %pc_lo12(ca.1)
+	pcalau12i	$a0, %pc_hi20(cs.1)
+	fld.d	$fs5, $a0, %pc_lo12(cs.1)
+	pcalau12i	$a0, %pc_hi20(ca.0)
+	fld.d	$fa7, $a0, %pc_lo12(ca.0)
+	pcalau12i	$a0, %pc_hi20(cs.0)
+	fld.d	$ft0, $s7, 184
+	fst.d	$ft0, $sp, 192                  # 8-byte Folded Spill
+	fld.d	$ft0, $s7, 96
+	fst.d	$ft0, $sp, 184                  # 8-byte Folded Spill
+	fld.d	$ft0, $s7, 104
+	fst.d	$ft0, $sp, 176                  # 8-byte Folded Spill
+	fld.d	$ft0, $s7, 112
+	fst.d	$ft0, $sp, 168                  # 8-byte Folded Spill
+	fld.d	$ft0, $s7, 120
+	fst.d	$ft0, $sp, 160                  # 8-byte Folded Spill
+	fld.d	$ft0, $s7, 128
+	fst.d	$ft0, $sp, 152                  # 8-byte Folded Spill
+	fld.d	$ft0, $s7, 136
+	fst.d	$ft0, $sp, 144                  # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 464                  # 8-byte Folded Spill
+	fneg.d	$fa0, $fa0
+	fst.d	$fa0, $sp, 400                  # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 456                  # 8-byte Folded Spill
+	fneg.d	$fa0, $fa1
+	fst.d	$fa0, $sp, 392                  # 8-byte Folded Spill
+	fst.d	$fa2, $sp, 448                  # 8-byte Folded Spill
+	fneg.d	$fa0, $fa2
+	fst.d	$fa0, $sp, 384                  # 8-byte Folded Spill
+	fst.d	$fa3, $sp, 440                  # 8-byte Folded Spill
+	fneg.d	$fa0, $fa3
+	fst.d	$fa0, $sp, 376                  # 8-byte Folded Spill
+	fst.d	$fa4, $sp, 432                  # 8-byte Folded Spill
+	fneg.d	$fa0, $fa4
+	fst.d	$fa0, $sp, 368                  # 8-byte Folded Spill
+	fld.d	$fs1, $a0, %pc_lo12(cs.0)
+	fst.d	$fa5, $sp, 424                  # 8-byte Folded Spill
+	fneg.d	$fa0, $fa5
+	fst.d	$fa0, $sp, 360                  # 8-byte Folded Spill
+	fst.d	$fa6, $sp, 416                  # 8-byte Folded Spill
+	fneg.d	$fa0, $fa6
+	fst.d	$fa0, $sp, 352                  # 8-byte Folded Spill
+	fst.d	$fa7, $sp, 408                  # 8-byte Folded Spill
+	fneg.d	$fa0, $fa7
+	fst.d	$fa0, $sp, 344                  # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(win)
+	addi.d	$s6, $a0, %pc_lo12(win)
+	fld.d	$fa0, $s6, 592
 	fst.d	$fa0, $sp, 136                  # 8-byte Folded Spill
-	fld.d	$fa0, $a0, 88
+	fld.d	$fa0, $s6, 584
 	fst.d	$fa0, $sp, 128                  # 8-byte Folded Spill
-	fld.d	$fa0, $a0, 0
+	fld.d	$fa0, $s6, 576
 	fst.d	$fa0, $sp, 120                  # 8-byte Folded Spill
-	fld.d	$fs1, $a0, 8
-	fld.d	$fs2, $a0, 16
-	fld.d	$fs3, $a0, 24
-	fld.d	$fs7, $a0, 32
-	fld.d	$fs0, $a0, 40
-	xvpickve.d	$xr0, $xr12, 0
-	vextrins.d	$vr12, $vr0, 16
-	xvpermi.q	$xr12, $xr1, 2
-	xvst	$xr12, $sp, 656                 # 32-byte Folded Spill
+	move	$s0, $zero
 	b	.LBB0_24
 .LBB0_21:                               # %.thread
                                         #   in Loop: Header=BB0_24 Depth=3
@@ -678,350 +531,364 @@ mdct_sub48:                             # @mdct_sub48
 	fldx.d	$fa2, $a2, $a5
 	ori	$a5, $zero, 3840
 	fldx.d	$fa3, $a2, $a5
-	fmsub.d	$fa0, $fa0, $fs4, $fa1
-	fst.d	$fa0, $s7, 624
-	fmadd.d	$fa0, $fa3, $fs4, $fa2
+	fld.d	$fa5, $sp, 136                  # 8-byte Folded Reload
+	fmsub.d	$fa0, $fa0, $fa5, $fa1
+	fst.d	$fa0, $s6, 624
+	fmadd.d	$fa0, $fa3, $fa5, $fa2
 	fld.d	$fa1, $a0, 512
 	fld.d	$fa4, $a0, 768
-	fst.d	$fa0, $s7, 648
-	fmsub.d	$fa0, $fa2, $fs4, $fa3
-	fst.d	$fa0, $s7, 672
-	fmadd.d	$fa0, $fa4, $fs4, $fa1
-	fst.d	$fa0, $s7, 696
-	fmsub.d	$fa2, $fa1, $fs4, $fa4
-	fst.d	$fa2, $s7, 720
-	fldx.d	$fa0, $a0, $a3
-	fldx.d	$fa1, $a0, $a4
-	fld.d	$fa3, $a2, 1792
-	ori	$a4, $zero, 2560
-	fldx.d	$fa4, $a2, $a4
-	ori	$a3, $zero, 3328
-	fldx.d	$fa5, $a2, $a3
-	lu12i.w	$a3, 1
-	fldx.d	$fa6, $a2, $a3
-	fmadd.d	$fa0, $fa1, $fs4, $fa0
-	fmsub.d	$fa1, $fa3, $fs5, $fa4
-	fst.d	$fa1, $s7, 616
-	fmadd.d	$fa1, $fa6, $fs5, $fa5
-	fld.d	$fa3, $a0, 256
-	fld.d	$fa4, $a0, 1024
-	fst.d	$fa1, $s7, 640
-	fmsub.d	$fa1, $fa5, $fs5, $fa6
-	fst.d	$fa1, $s7, 664
-	fmadd.d	$fa1, $fa4, $fs5, $fa3
-	fst.d	$fa1, $s7, 688
-	fmsub.d	$fa7, $fa3, $fs5, $fa4
-	fst.d	$fa7, $s7, 712
-	fld.d	$fa1, $a0, 1792
+	fst.d	$fa0, $s6, 648
+	fmsub.d	$fa0, $fa2, $fa5, $fa3
+	fst.d	$fa0, $s6, 672
+	fmadd.d	$fa0, $fa4, $fa5, $fa1
+	fldx.d	$fa2, $a0, $a3
 	fldx.d	$fa3, $a0, $a4
+	fst.d	$fa0, $s6, 696
+	fmsub.d	$fa1, $fa1, $fa5, $fa4
+	fst.d	$fa1, $s6, 720
+	fmadd.d	$fa0, $fa3, $fa5, $fa2
+	fld.d	$fa2, $a2, 1792
+	ori	$a4, $zero, 2560
+	fldx.d	$fa3, $a2, $a4
+	ori	$a3, $zero, 3328
+	fldx.d	$fa4, $a2, $a3
+	lu12i.w	$a3, 1
+	fldx.d	$fa5, $a2, $a3
+	fst.d	$fa0, $s6, 744
+	fld.d	$fa7, $sp, 128                  # 8-byte Folded Reload
+	fmsub.d	$fa2, $fa2, $fa7, $fa3
+	fst.d	$fa2, $s6, 616
+	fmadd.d	$fa2, $fa5, $fa7, $fa4
+	fld.d	$fa3, $a0, 256
+	fld.d	$fa6, $a0, 1024
+	fst.d	$fa2, $s6, 640
+	fmsub.d	$fa2, $fa4, $fa7, $fa5
+	fst.d	$fa2, $s6, 664
+	fmadd.d	$fa2, $fa6, $fa7, $fa3
+	fld.d	$fa4, $a0, 1792
+	fldx.d	$fa5, $a0, $a4
+	fst.d	$fa2, $s6, 688
+	fmsub.d	$fa2, $fa3, $fa7, $fa6
+	fst.d	$fa2, $s6, 712
+	fmadd.d	$fa3, $fa5, $fa7, $fa4
 	fld.d	$fa4, $a2, 1536
 	ori	$a3, $zero, 2816
 	fldx.d	$fa5, $a2, $a3
 	ori	$a4, $zero, 3072
 	fldx.d	$fa6, $a2, $a4
-	ld.d	$a4, $sp, 752                   # 8-byte Folded Reload
-	fldx.d	$ft0, $a2, $a4
-	fmadd.d	$fa1, $fa3, $fs5, $fa1
-	fmsub.d	$fa3, $fa4, $fs6, $fa5
-	fst.d	$fa3, $s7, 608
-	fmadd.d	$fa3, $ft0, $fs6, $fa6
-	fldx.d	$fa4, $s8, $a1
-	fld.d	$fa5, $a0, 1280
-	fst.d	$fa3, $s7, 632
-	fmsub.d	$fa3, $fa6, $fs6, $ft0
-	fst.d	$fa3, $s7, 656
-	fmadd.d	$fa3, $fa5, $fs6, $fa4
+	ld.d	$a4, $sp, 336                   # 8-byte Folded Reload
+	fldx.d	$fa7, $a2, $a4
+	fst.d	$fa3, $s6, 736
+	fld.d	$ft1, $sp, 120                  # 8-byte Folded Reload
+	fmsub.d	$fa4, $fa4, $ft1, $fa5
+	fst.d	$fa4, $s6, 608
+	fmadd.d	$fa4, $fa7, $ft1, $fa6
+	fldx.d	$fa5, $s8, $a1
+	fld.d	$ft0, $a0, 1280
+	fst.d	$fa4, $s6, 632
+	fmsub.d	$fa4, $fa6, $ft1, $fa7
+	fst.d	$fa4, $s6, 656
+	fmadd.d	$fa4, $ft0, $ft1, $fa5
 	fld.d	$fa6, $a0, 1536
-	fldx.d	$ft0, $a0, $a3
-	fst.d	$fa3, $s7, 680
-	fmsub.d	$ft1, $fa4, $fs6, $fa5
-	fst.d	$ft1, $s7, 704
-	fmadd.d	$fa3, $ft0, $fs6, $fa6
-	xvld	$xr4, $s7, 608
-	xvld	$xr6, $s7, 640
-	fst.d	$fa3, $s7, 728
-	xvld	$xr5, $s7, 704
-	xvpickve.d	$xr8, $xr4, 1
-	xvpermi.d	$xr10, $xr6, 3
-	vextrins.d	$vr10, $vr7, 16
-	vreplvei.d	$vr7, $vr5, 1
-	vextrins.d	$vr7, $vr8, 16
-	xvpermi.q	$xr7, $xr10, 2
-	xvpickve.d	$xr8, $xr4, 0
-	xvpermi.d	$xr10, $xr6, 2
-	vextrins.d	$vr10, $vr9, 16
-	vori.b	$vr9, $vr5, 0
-	vextrins.d	$vr9, $vr8, 16
-	xvld	$xr8, $s7, 672
-	xvpermi.q	$xr9, $xr10, 2
-	xvpermi.d	$xr10, $xr5, 2
-	xvld	$xr11, $sp, 496                 # 32-byte Folded Reload
-	xvfmul.d	$xr7, $xr11, $xr7
-	xvld	$xr11, $sp, 464                 # 32-byte Folded Reload
-	xvfmadd.d	$xr7, $xr11, $xr9, $xr7
-	vori.b	$vr9, $vr8, 0
-	vextrins.d	$vr9, $vr2, 16
-	xvpickve.d	$xr2, $xr4, 2
-	vextrins.d	$vr10, $vr2, 16
-	xvpermi.q	$xr10, $xr9, 2
-	xvld	$xr2, $sp, 432                  # 32-byte Folded Reload
-	xvfmadd.d	$xr2, $xr2, $xr10, $xr7
-	xvpackev.d	$xr7, $xr6, $xr8
-	xvpackod.d	$xr6, $xr6, $xr8
-	vreplvei.d	$vr8, $vr8, 1
-	vextrins.d	$vr8, $vr3, 16
-	xvpermi.d	$xr3, $xr5, 3
-	fst.d	$fa0, $s7, 744
-	fst.d	$fa1, $s7, 736
-	xvpickve.d	$xr4, $xr4, 3
-	vextrins.d	$vr3, $vr4, 16
-	xvpermi.q	$xr3, $xr8, 2
-	xvld	$xr4, $s7, 736
-	xvld	$xr5, $sp, 400                  # 32-byte Folded Reload
-	xvfmadd.d	$xr2, $xr5, $xr3, $xr2
-	pcalau12i	$a0, %pc_hi20(.LCPI0_5)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI0_5)
-	xvinsve0.d	$xr7, $xr4, 0
-	xvinsve0.d	$xr7, $xr1, 3
-	xvld	$xr1, $sp, 688                  # 32-byte Folded Reload
-	xvfmadd.d	$xr1, $xr1, $xr7, $xr2
-	xvshuf.d	$xr3, $xr6, $xr4
-	xvinsve0.d	$xr3, $xr0, 3
-	xvld	$xr0, $sp, 624                  # 32-byte Folded Reload
-	xvfmadd.d	$xr0, $xr0, $xr3, $xr1
-	xvst	$xr0, $s5, 112
-	fld.d	$fa3, $s7, 656
-	xvld	$xr1, $s7, 704
-	xvld	$xr2, $s7, 608
-	fld.d	$fa4, $s7, 664
-	xvld	$xr0, $s7, 640
-	xvpickve.d	$xr5, $xr1, 1
-	vreplvei.d	$vr6, $vr2, 1
-	vextrins.d	$vr6, $vr4, 16
-	xvpermi.d	$xr4, $xr0, 3
-	vextrins.d	$vr4, $vr5, 16
-	xvpermi.q	$xr4, $xr6, 2
-	xvpickve.d	$xr5, $xr1, 0
-	xvpermi.d	$xr6, $xr2, 2
-	vori.b	$vr7, $vr2, 0
-	vextrins.d	$vr7, $vr3, 16
-	xvpermi.d	$xr3, $xr0, 2
-	vextrins.d	$vr3, $vr5, 16
-	fld.d	$fa5, $s7, 672
-	xvpermi.q	$xr3, $xr7, 2
-	xvld	$xr7, $s7, 672
-	xvld	$xr8, $sp, 368                  # 32-byte Folded Reload
-	xvfmul.d	$xr4, $xr8, $xr4
-	xvld	$xr8, $sp, 336                  # 32-byte Folded Reload
-	xvfmadd.d	$xr3, $xr8, $xr3, $xr4
-	xvpickve.d	$xr4, $xr1, 2
-	vextrins.d	$vr6, $vr5, 16
-	vori.b	$vr5, $vr7, 0
-	vextrins.d	$vr5, $vr4, 16
-	vreplvei.d	$vr4, $vr7, 1
-	xvpermi.d	$xr2, $xr2, 3
-	xvpermi.q	$xr5, $xr6, 2
-	fld.d	$fa6, $s7, 680
-	xvpermi.d	$xr7, $xr7, 78
-	xvld	$xr8, $sp, 304                  # 32-byte Folded Reload
-	xvfmadd.d	$xr3, $xr8, $xr5, $xr3
-	fld.d	$fa5, $s7, 688
-	vextrins.d	$vr2, $vr6, 16
-	fld.d	$fa6, $s7, 696
-	xvpickve.d	$xr1, $xr1, 3
-	vextrins.d	$vr4, $vr1, 16
-	xvpermi.q	$xr4, $xr2, 2
-	pcalau12i	$a0, %pc_hi20(.LCPI0_6)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_6)
-	xvld	$xr2, $s7, 736
-	xvld	$xr8, $sp, 592                  # 32-byte Folded Reload
-	xvfmadd.d	$xr3, $xr8, $xr4, $xr3
-	xvpermi.d	$xr0, $xr0, 78
-	xvshuf.d	$xr1, $xr0, $xr7
-	xvinsve0.d	$xr0, $xr7, 0
-	xvpackev.d	$xr0, $xr2, $xr0
-	xvinsve0.d	$xr0, $xr5, 3
-	xvld	$xr4, $sp, 560                  # 32-byte Folded Reload
-	xvfmadd.d	$xr0, $xr4, $xr0, $xr3
-	xvshuf4i.d	$xr1, $xr2, 12
-	xvinsve0.d	$xr1, $xr6, 3
-	xvld	$xr2, $sp, 528                  # 32-byte Folded Reload
-	xvfmadd.d	$xr0, $xr2, $xr1, $xr0
-	xvst	$xr0, $s5, 80
-	fld.d	$fa2, $s7, 608
-	xvld	$xr0, $s7, 640
-	xvld	$xr3, $s7, 704
-	fld.d	$fa4, $s7, 616
-	xvld	$xr1, $s7, 608
-	xvpickve.d	$xr5, $xr0, 3
-	vreplvei.d	$vr6, $vr3, 1
-	vextrins.d	$vr6, $vr4, 16
-	vreplvei.d	$vr4, $vr1, 1
-	vextrins.d	$vr4, $vr5, 16
-	xvpermi.q	$xr4, $xr6, 2
-	xvpickve.d	$xr5, $xr0, 2
-	xvpermi.d	$xr6, $xr3, 2
-	vori.b	$vr7, $vr3, 0
-	vextrins.d	$vr7, $vr2, 16
-	vori.b	$vr2, $vr1, 0
-	vextrins.d	$vr2, $vr5, 16
-	fld.d	$fa5, $s7, 624
-	xvpermi.q	$xr2, $xr7, 2
-	xvld	$xr7, $s7, 672
-	xvld	$xr8, $sp, 272                  # 32-byte Folded Reload
-	xvfmul.d	$xr4, $xr8, $xr4
-	xvld	$xr8, $sp, 240                  # 32-byte Folded Reload
-	xvfmadd.d	$xr2, $xr8, $xr2, $xr4
-	xvpermi.d	$xr4, $xr1, 2
-	vextrins.d	$vr6, $vr5, 16
-	xvpickve.d	$xr5, $xr7, 0
-	vextrins.d	$vr4, $vr5, 16
-	xvpermi.d	$xr3, $xr3, 3
-	xvpermi.q	$xr4, $xr6, 2
-	fld.d	$fa5, $s7, 632
-	xvpermi.d	$xr1, $xr1, 3
-	xvld	$xr6, $sp, 208                  # 32-byte Folded Reload
-	xvfmadd.d	$xr2, $xr6, $xr4, $xr2
-	fld.d	$fa4, $s7, 640
-	vextrins.d	$vr3, $vr5, 16
-	xvpickve.d	$xr5, $xr7, 1
-	vextrins.d	$vr1, $vr5, 16
-	xvld	$xr5, $s7, 736
-	xvpermi.q	$xr1, $xr3, 2
-	xvld	$xr3, $sp, 176                  # 32-byte Folded Reload
-	xvfmadd.d	$xr1, $xr3, $xr1, $xr2
-	xvpickve.d	$xr2, $xr7, 2
-	vreplvei.d	$vr3, $vr0, 1
-	vextrins.d	$vr0, $vr2, 16
-	xvinsve0.d	$xr0, $xr5, 2
-	xvinsve0.d	$xr0, $xr4, 3
-	xvld	$xr2, $sp, 720                  # 32-byte Folded Reload
-	xvfmadd.d	$xr0, $xr2, $xr0, $xr1
-	xvpickve.d	$xr1, $xr7, 3
-	vextrins.d	$vr3, $vr1, 16
-	pcalau12i	$a0, %pc_hi20(.LCPI0_7)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_7)
-	fld.d	$fa2, $s7, 648
-	xvpermi.d	$xr3, $xr3, 68
-	xvpermi.d	$xr4, $xr5, 68
-	xvshuf.d	$xr1, $xr4, $xr3
-	xvinsve0.d	$xr1, $xr2, 3
-	xvld	$xr2, $sp, 656                  # 32-byte Folded Reload
-	xvfmadd.d	$xr0, $xr2, $xr1, $xr0
-	xvst	$xr0, $s5, 48
-	fld.d	$fa0, $s7, 712
-	fld.d	$fa1, $s7, 704
-	fld.d	$fa6, $sp, 160                  # 8-byte Folded Reload
-	fmul.d	$fa0, $fa6, $fa0
-	fld.d	$fa5, $sp, 168                  # 8-byte Folded Reload
-	fmadd.d	$fa0, $fa5, $fa1, $fa0
-	fld.d	$fa1, $s7, 720
-	fld.d	$fa2, $s7, 728
-	fld.d	$fa3, $s7, 736
-	fld.d	$fa4, $s7, 744
-	fld.d	$fa7, $sp, 152                  # 8-byte Folded Reload
-	fmadd.d	$fa0, $fa7, $fa1, $fa0
-	fld.d	$ft0, $sp, 144                  # 8-byte Folded Reload
-	fmadd.d	$fa0, $ft0, $fa2, $fa0
-	fld.d	$ft1, $sp, 136                  # 8-byte Folded Reload
-	fmadd.d	$fa0, $ft1, $fa3, $fa0
-	fld.d	$ft2, $sp, 128                  # 8-byte Folded Reload
+	fldx.d	$fa7, $a0, $a3
+	fst.d	$fa4, $s6, 680
+	fmsub.d	$fa4, $fa5, $ft1, $ft0
+	fst.d	$fa4, $s6, 704
+	fmadd.d	$fa5, $fa7, $ft1, $fa6
+	fst.d	$fa5, $s6, 728
+	fld.d	$fa7, $sp, 320                  # 8-byte Folded Reload
+	fmul.d	$fa2, $fa7, $fa2
+	fld.d	$fa6, $sp, 328                  # 8-byte Folded Reload
+	fmadd.d	$fa2, $fa6, $fa4, $fa2
+	fld.d	$ft0, $sp, 312                  # 8-byte Folded Reload
+	fmadd.d	$fa1, $ft0, $fa1, $fa2
+	fld.d	$ft1, $sp, 304                  # 8-byte Folded Reload
+	fmadd.d	$fa1, $ft1, $fa5, $fa1
+	fld.d	$fa5, $sp, 296                  # 8-byte Folded Reload
+	fmadd.d	$fa1, $fa5, $fa3, $fa1
+	fld.d	$ft2, $sp, 288                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $ft2, $fa0, $fa1
+	fst.d	$fa0, $s5, 136
+	fld.d	$fa0, $s6, 664
+	fld.d	$fa1, $s6, 656
+	fmul.d	$fa0, $fa7, $fa0
+	fmadd.d	$fa0, $fa6, $fa1, $fa0
+	fld.d	$fa1, $s6, 672
+	fld.d	$fa2, $s6, 680
+	fld.d	$fa3, $s6, 688
+	fld.d	$fa4, $s6, 696
+	fmadd.d	$fa0, $ft0, $fa1, $fa0
+	fmadd.d	$fa0, $ft1, $fa2, $fa0
+	fmadd.d	$fa0, $fa5, $fa3, $fa0
 	fmadd.d	$fa0, $ft2, $fa4, $fa0
-	fst.d	$fa0, $s5, 40
-	fld.d	$fa0, $s7, 664
-	fld.d	$fa1, $s7, 656
+	fst.d	$fa0, $s5, 128
+	fld.d	$fa0, $s6, 616
+	fld.d	$fa1, $s6, 608
+	fmul.d	$fa0, $fa7, $fa0
+	fmadd.d	$fa0, $fa6, $fa1, $fa0
+	fld.d	$fa1, $s6, 624
+	fld.d	$fa2, $s6, 632
+	fld.d	$fa3, $s6, 640
+	fld.d	$fa4, $s6, 648
+	fmadd.d	$fa0, $ft0, $fa1, $fa0
+	fmadd.d	$fa0, $ft1, $fa2, $fa0
+	fmadd.d	$fa0, $fa5, $fa3, $fa0
+	fmadd.d	$fa0, $ft2, $fa4, $fa0
+	fst.d	$fa0, $s5, 120
+	fld.d	$fa0, $s6, 712
+	fld.d	$fa1, $s6, 704
+	fld.d	$fa6, $sp, 272                  # 8-byte Folded Reload
+	fmul.d	$fa0, $fa6, $fa0
+	fld.d	$fa5, $sp, 280                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $fa5, $fa1, $fa0
+	fld.d	$fa1, $s6, 720
+	fld.d	$fa2, $s6, 728
+	fld.d	$fa3, $s6, 736
+	fld.d	$fa4, $s6, 744
+	fld.d	$fa7, $sp, 264                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $fa7, $fa1, $fa0
+	fld.d	$ft0, $sp, 256                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $ft0, $fa2, $fa0
+	fld.d	$ft1, $sp, 248                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $ft1, $fa3, $fa0
+	fld.d	$ft2, $sp, 240                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $ft2, $fa4, $fa0
+	fst.d	$fa0, $s5, 112
+	fld.d	$fa0, $s6, 664
+	fld.d	$fa1, $s6, 656
 	fmul.d	$fa0, $fa6, $fa0
 	fmadd.d	$fa0, $fa5, $fa1, $fa0
-	fld.d	$fa1, $s7, 672
-	fld.d	$fa2, $s7, 680
-	fld.d	$fa3, $s7, 688
-	fld.d	$fa4, $s7, 696
+	fld.d	$fa1, $s6, 672
+	fld.d	$fa2, $s6, 680
+	fld.d	$fa3, $s6, 688
+	fld.d	$fa4, $s6, 696
 	fmadd.d	$fa0, $fa7, $fa1, $fa0
 	fmadd.d	$fa0, $ft0, $fa2, $fa0
 	fmadd.d	$fa0, $ft1, $fa3, $fa0
 	fmadd.d	$fa0, $ft2, $fa4, $fa0
-	fst.d	$fa0, $s5, 32
-	fld.d	$fa0, $s7, 616
-	fld.d	$fa1, $s7, 608
+	fst.d	$fa0, $s5, 104
+	fld.d	$fa0, $s6, 616
+	fld.d	$fa1, $s6, 608
 	fmul.d	$fa0, $fa6, $fa0
 	fmadd.d	$fa0, $fa5, $fa1, $fa0
-	fld.d	$fa1, $s7, 624
-	fld.d	$fa2, $s7, 632
-	fld.d	$fa3, $s7, 640
-	fld.d	$fa4, $s7, 648
+	fld.d	$fa1, $s6, 624
+	fld.d	$fa2, $s6, 632
+	fld.d	$fa3, $s6, 640
+	fld.d	$fa4, $s6, 648
 	fmadd.d	$fa0, $fa7, $fa1, $fa0
 	fmadd.d	$fa0, $ft0, $fa2, $fa0
 	fmadd.d	$fa0, $ft1, $fa3, $fa0
 	fmadd.d	$fa0, $ft2, $fa4, $fa0
+	fst.d	$fa0, $s5, 96
+	fld.d	$fa0, $s6, 712
+	fld.d	$fa1, $s6, 704
+	fld.d	$fa6, $sp, 224                  # 8-byte Folded Reload
+	fmul.d	$fa0, $fa6, $fa0
+	fld.d	$fa5, $sp, 232                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $fa5, $fa1, $fa0
+	fld.d	$fa1, $s6, 720
+	fld.d	$fa2, $s6, 728
+	fld.d	$fa3, $s6, 736
+	fld.d	$fa4, $s6, 744
+	fld.d	$fa7, $sp, 216                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $fa7, $fa1, $fa0
+	fld.d	$ft0, $sp, 208                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $ft0, $fa2, $fa0
+	fld.d	$ft1, $sp, 200                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $ft1, $fa3, $fa0
+	fld.d	$ft2, $sp, 192                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $ft2, $fa4, $fa0
+	fst.d	$fa0, $s5, 88
+	fld.d	$fa0, $s6, 664
+	fld.d	$fa1, $s6, 656
+	fmul.d	$fa0, $fa6, $fa0
+	fmadd.d	$fa0, $fa5, $fa1, $fa0
+	fld.d	$fa1, $s6, 672
+	fld.d	$fa2, $s6, 680
+	fld.d	$fa3, $s6, 688
+	fld.d	$fa4, $s6, 696
+	fmadd.d	$fa0, $fa7, $fa1, $fa0
+	fmadd.d	$fa0, $ft0, $fa2, $fa0
+	fmadd.d	$fa0, $ft1, $fa3, $fa0
+	fmadd.d	$fa0, $ft2, $fa4, $fa0
+	fst.d	$fa0, $s5, 80
+	fld.d	$fa0, $s6, 616
+	fld.d	$fa1, $s6, 608
+	fmul.d	$fa0, $fa6, $fa0
+	fmadd.d	$fa0, $fa5, $fa1, $fa0
+	fld.d	$fa1, $s6, 624
+	fld.d	$fa2, $s6, 632
+	fld.d	$fa3, $s6, 640
+	fld.d	$fa4, $s6, 648
+	fmadd.d	$fa0, $fa7, $fa1, $fa0
+	fmadd.d	$fa0, $ft0, $fa2, $fa0
+	fmadd.d	$fa0, $ft1, $fa3, $fa0
+	fmadd.d	$fa0, $ft2, $fa4, $fa0
+	fst.d	$fa0, $s5, 72
+	fld.d	$fa0, $s6, 712
+	fld.d	$fa1, $s6, 704
+	fld.d	$fa6, $sp, 176                  # 8-byte Folded Reload
+	fmul.d	$fa0, $fa6, $fa0
+	fld.d	$fa5, $sp, 184                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $fa5, $fa1, $fa0
+	fld.d	$fa1, $s6, 720
+	fld.d	$fa2, $s6, 728
+	fld.d	$fa3, $s6, 736
+	fld.d	$fa4, $s6, 744
+	fld.d	$fa7, $sp, 168                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $fa7, $fa1, $fa0
+	fld.d	$ft0, $sp, 160                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $ft0, $fa2, $fa0
+	fld.d	$ft1, $sp, 152                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $ft1, $fa3, $fa0
+	fld.d	$ft2, $sp, 144                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $ft2, $fa4, $fa0
+	fst.d	$fa0, $s5, 64
+	fld.d	$fa0, $s6, 664
+	fld.d	$fa1, $s6, 656
+	fmul.d	$fa0, $fa6, $fa0
+	fmadd.d	$fa0, $fa5, $fa1, $fa0
+	fld.d	$fa1, $s6, 672
+	fld.d	$fa2, $s6, 680
+	fld.d	$fa3, $s6, 688
+	fld.d	$fa4, $s6, 696
+	fmadd.d	$fa0, $fa7, $fa1, $fa0
+	fmadd.d	$fa0, $ft0, $fa2, $fa0
+	fmadd.d	$fa0, $ft1, $fa3, $fa0
+	fmadd.d	$fa0, $ft2, $fa4, $fa0
+	fst.d	$fa0, $s5, 56
+	fld.d	$fa0, $s6, 616
+	fld.d	$fa1, $s6, 608
+	fmul.d	$fa0, $fa6, $fa0
+	fmadd.d	$fa0, $fa5, $fa1, $fa0
+	fld.d	$fa1, $s6, 624
+	fld.d	$fa2, $s6, 632
+	fld.d	$fa3, $s6, 640
+	fld.d	$fa4, $s6, 648
+	fmadd.d	$fa0, $fa7, $fa1, $fa0
+	fmadd.d	$fa0, $ft0, $fa2, $fa0
+	fmadd.d	$fa0, $ft1, $fa3, $fa0
+	fmadd.d	$fa0, $ft2, $fa4, $fa0
+	fst.d	$fa0, $s5, 48
+	fld.d	$fa0, $s7, 48
+	fld.d	$fa1, $s7, 56
+	fld.d	$fa2, $s7, 64
+	fld.d	$fa3, $s7, 72
+	fld.d	$fa4, $s6, 712
+	fld.d	$fa5, $s6, 704
+	fld.d	$fa6, $s7, 80
+	fld.d	$fa7, $s7, 88
+	fmul.d	$fa4, $fa1, $fa4
+	fmadd.d	$fa4, $fa0, $fa5, $fa4
+	fld.d	$fa5, $s6, 720
+	fld.d	$ft0, $s6, 728
+	fld.d	$ft1, $s6, 736
+	fld.d	$ft2, $s6, 744
+	fmadd.d	$fa4, $fa2, $fa5, $fa4
+	fmadd.d	$fa4, $fa3, $ft0, $fa4
+	fmadd.d	$fa4, $fa6, $ft1, $fa4
+	fmadd.d	$fa4, $fa7, $ft2, $fa4
+	fst.d	$fa4, $s5, 40
+	fld.d	$fa4, $s6, 664
+	fld.d	$fa5, $s6, 656
+	fmul.d	$fa4, $fa1, $fa4
+	fmadd.d	$fa4, $fa0, $fa5, $fa4
+	fld.d	$fa5, $s6, 672
+	fld.d	$ft0, $s6, 680
+	fld.d	$ft1, $s6, 688
+	fld.d	$ft2, $s6, 696
+	fmadd.d	$fa4, $fa2, $fa5, $fa4
+	fmadd.d	$fa4, $fa3, $ft0, $fa4
+	fmadd.d	$fa4, $fa6, $ft1, $fa4
+	fmadd.d	$fa4, $fa7, $ft2, $fa4
+	fst.d	$fa4, $s5, 32
+	fld.d	$fa4, $s6, 616
+	fld.d	$fa5, $s6, 608
+	fmul.d	$fa1, $fa1, $fa4
+	fmadd.d	$fa0, $fa0, $fa5, $fa1
+	fld.d	$fa1, $s6, 624
+	fld.d	$fa4, $s6, 632
+	fld.d	$fa5, $s6, 640
+	fld.d	$ft0, $s6, 648
+	fmadd.d	$fa0, $fa2, $fa1, $fa0
+	fmadd.d	$fa0, $fa3, $fa4, $fa0
+	fmadd.d	$fa0, $fa6, $fa5, $fa0
+	fmadd.d	$fa0, $fa7, $ft0, $fa0
 	fst.d	$fa0, $s5, 24
-	fld.d	$fa0, $s7, 712
-	fld.d	$fa1, $s7, 704
-	fmul.d	$fa0, $fs1, $fa0
-	fld.d	$fa5, $sp, 120                  # 8-byte Folded Reload
-	fmadd.d	$fa0, $fa5, $fa1, $fa0
-	fld.d	$fa1, $s7, 720
-	fld.d	$fa2, $s7, 728
-	fld.d	$fa3, $s7, 736
-	fld.d	$fa4, $s7, 744
-	fmadd.d	$fa0, $fs2, $fa1, $fa0
-	fmadd.d	$fa0, $fs3, $fa2, $fa0
-	fmadd.d	$fa0, $fs7, $fa3, $fa0
-	fmadd.d	$fa0, $fs0, $fa4, $fa0
-	fst.d	$fa0, $s5, 16
-	fld.d	$fa0, $s7, 664
-	fld.d	$fa1, $s7, 656
-	fmul.d	$fa0, $fs1, $fa0
-	fmadd.d	$fa0, $fa5, $fa1, $fa0
-	fld.d	$fa1, $s7, 672
-	fld.d	$fa2, $s7, 680
-	fld.d	$fa3, $s7, 688
-	fld.d	$fa4, $s7, 696
-	fmadd.d	$fa0, $fs2, $fa1, $fa0
-	fmadd.d	$fa0, $fs3, $fa2, $fa0
-	fmadd.d	$fa0, $fs7, $fa3, $fa0
-	fmadd.d	$fa0, $fs0, $fa4, $fa0
-	fst.d	$fa0, $s5, 8
-	fld.d	$fa0, $s7, 616
-	fld.d	$fa1, $s7, 608
-	fmul.d	$fa0, $fs1, $fa0
-	fmadd.d	$fa0, $fa5, $fa1, $fa0
-	fld.d	$fa1, $s7, 624
-	fld.d	$fa2, $s7, 632
-	fld.d	$fa3, $s7, 640
-	fld.d	$fa4, $s7, 648
-	fmadd.d	$fa0, $fs2, $fa1, $fa0
-	fmadd.d	$fa0, $fs3, $fa2, $fa0
-	fmadd.d	$fa0, $fs7, $fa3, $fa0
-	fmadd.d	$fa0, $fs0, $fa4, $fa0
+	fld.d	$fa0, $s7, 0
+	fld.d	$fa1, $s7, 8
+	fld.d	$fa2, $s7, 16
+	fld.d	$fa3, $s7, 24
+	fld.d	$fa4, $s6, 712
+	fld.d	$fa5, $s6, 704
+	fld.d	$fa6, $s7, 32
+	fld.d	$fa7, $s7, 40
+	fmul.d	$fa4, $fa1, $fa4
+	fmadd.d	$fa4, $fa0, $fa5, $fa4
+	fld.d	$fa5, $s6, 720
+	fld.d	$ft0, $s6, 728
+	fld.d	$ft1, $s6, 736
+	fld.d	$ft2, $s6, 744
+	fmadd.d	$fa4, $fa2, $fa5, $fa4
+	fmadd.d	$fa4, $fa3, $ft0, $fa4
+	fmadd.d	$fa4, $fa6, $ft1, $fa4
+	fmadd.d	$fa4, $fa7, $ft2, $fa4
+	fst.d	$fa4, $s5, 16
+	fld.d	$fa4, $s6, 664
+	fld.d	$fa5, $s6, 656
+	fmul.d	$fa4, $fa1, $fa4
+	fmadd.d	$fa4, $fa0, $fa5, $fa4
+	fld.d	$fa5, $s6, 672
+	fld.d	$ft0, $s6, 680
+	fld.d	$ft1, $s6, 688
+	fld.d	$ft2, $s6, 696
+	fmadd.d	$fa4, $fa2, $fa5, $fa4
+	fmadd.d	$fa4, $fa3, $ft0, $fa4
+	fmadd.d	$fa4, $fa6, $ft1, $fa4
+	fmadd.d	$fa4, $fa7, $ft2, $fa4
+	fst.d	$fa4, $s5, 8
+	fld.d	$fa4, $s6, 616
+	fld.d	$fa5, $s6, 608
+	fmul.d	$fa1, $fa1, $fa4
+	fmadd.d	$fa0, $fa0, $fa5, $fa1
+	fld.d	$fa1, $s6, 624
+	fld.d	$fa4, $s6, 632
+	fld.d	$fa5, $s6, 640
+	fld.d	$ft0, $s6, 648
+	fmadd.d	$fa0, $fa2, $fa1, $fa0
+	fmadd.d	$fa0, $fa3, $fa4, $fa0
+	fmadd.d	$fa0, $fa6, $fa5, $fa0
+	fmadd.d	$fa0, $fa7, $ft0, $fa0
 .LBB0_22:                               # %.loopexit.sink.split
                                         #   in Loop: Header=BB0_24 Depth=3
 	fst.d	$fa0, $s5, 0
 .LBB0_23:                               # %.loopexit
                                         #   in Loop: Header=BB0_24 Depth=3
-	addi.d	$s6, $s6, 1
+	addi.d	$s0, $s0, 1
 	addi.d	$s5, $s5, 144
-	beq	$s6, $s4, .LBB0_7
+	ori	$a0, $zero, 32
+	beq	$s0, $a0, .LBB0_7
 .LBB0_24:                               #   Parent Loop BB0_5 Depth=1
                                         #     Parent Loop BB0_8 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB0_28 Depth 4
 	ld.w	$a0, $s2, 248
-	ld.w	$s0, $s1, 72
-	bge	$s6, $a0, .LBB0_30
+	ld.w	$s4, $s1, 72
+	bge	$s0, $a0, .LBB0_30
 # %bb.25:                               #   in Loop: Header=BB0_24 Depth=3
 	ld.w	$a0, $s2, 252
-	bge	$a0, $s6, .LBB0_30
+	bge	$a0, $s0, .LBB0_30
 # %bb.26:                               #   in Loop: Header=BB0_24 Depth=3
-	alsl.d	$a2, $s6, $fp, 3
-	slli.d	$a1, $s6, 3
-	alsl.d	$a0, $s6, $s8, 3
+	alsl.d	$a2, $s0, $fp, 3
+	slli.d	$a1, $s0, 3
+	alsl.d	$a0, $s0, $s8, 3
 	ori	$a3, $zero, 2
-	beq	$s0, $a3, .LBB0_21
+	beq	$s4, $a3, .LBB0_21
 # %bb.27:                               # %.preheader211
                                         #   in Loop: Header=BB0_24 Depth=3
-	alsl.d	$a3, $s0, $s0, 3
+	alsl.d	$a3, $s4, $s4, 3
 	slli.d	$a4, $a3, 5
-	add.d	$a3, $s7, $a4
+	add.d	$a3, $s6, $a4
 	ori	$a6, $zero, 2304
 	fldx.d	$fa0, $a2, $a6
 	fld.d	$fa1, $a3, 136
@@ -1035,116 +902,130 @@ mdct_sub48:                             # @mdct_sub48
 	fldx.d	$fa5, $a0, $a6
 	fldx.d	$fa6, $a0, $a5
 	fmadd.d	$fa0, $fa2, $fa3, $fa0
-	fst.d	$fa0, $s7, 672
+	fst.d	$fa0, $s6, 672
 	fmul.d	$fa0, $fa4, $fa5
 	fmadd.d	$fa0, $fa1, $fa6, $fa0
-	fst.d	$fa0, $s7, 744
-	fld.d	$fa1, $a2, 1792
+	fst.d	$fa0, $s6, 744
+	fld.d	$fa0, $a2, 1792
 	ori	$a5, $zero, 2560
-	fldx.d	$fa2, $a2, $a5
-	fld.d	$fa3, $a0, 1792
-	fldx.d	$fa4, $a0, $a5
-	fld.d	$fa5, $a2, 1536
+	fldx.d	$fa1, $a2, $a5
+	fld.d	$fa2, $a0, 1792
+	fldx.d	$fa3, $a0, $a5
 	ori	$a5, $zero, 2816
-	fldx.d	$fa6, $a2, $a5
-	fld.d	$fa0, $a0, 1536
-	fldx.d	$fa7, $a0, $a5
-	fld.d	$ft0, $a2, 1280
+	fldx.d	$fa4, $a2, $a5
+	fld.d	$fa5, $a2, 1536
+	vld	$vr6, $a3, 120
+	vld	$vr7, $a3, 48
+	vextrins.d	$vr4, $vr1, 16
+	vbitrevi.d	$vr1, $vr4, 63
+	vfmul.d	$vr1, $vr6, $vr1
+	vextrins.d	$vr5, $vr0, 16
+	vfmadd.d	$vr0, $vr7, $vr5, $vr1
+	vst	$vr0, $s6, 656
+	fldx.d	$fa0, $a0, $a5
+	vld	$vr1, $a3, 264
+	fld.d	$fa4, $a0, 1536
+	vld	$vr5, $a3, 192
+	vextrins.d	$vr0, $vr3, 16
+	vfmul.d	$vr0, $vr1, $vr0
+	vextrins.d	$vr4, $vr2, 16
+	vfmadd.d	$vr0, $vr5, $vr4, $vr0
+	vst	$vr0, $s6, 728
+	fld.d	$fa0, $a2, 1280
 	ori	$a5, $zero, 3072
-	fldx.d	$ft1, $a2, $a5
-	fld.d	$ft2, $a0, 1280
-	fldx.d	$ft3, $a0, $a5
-	fld.d	$ft4, $a2, 1024
+	fldx.d	$fa1, $a2, $a5
+	fld.d	$fa2, $a0, 1280
+	fldx.d	$fa3, $a0, $a5
 	ori	$a5, $zero, 3328
-	fldx.d	$ft5, $a2, $a5
-	xvld	$xr14, $a3, 32
-	xvld	$xr15, $a3, 104
-	vextrins.d	$vr6, $vr2, 16
-	vextrins.d	$vr13, $vr9, 16
-	xvpermi.q	$xr13, $xr6, 2
-	xvbitrevi.d	$xr2, $xr13, 63
-	xvfmul.d	$xr2, $xr15, $xr2
-	vextrins.d	$vr5, $vr1, 16
-	vextrins.d	$vr12, $vr8, 16
-	xvpermi.q	$xr12, $xr5, 2
-	xvfmadd.d	$xr1, $xr14, $xr12, $xr2
-	xvst	$xr1, $s7, 640
-	fld.d	$fa1, $a0, 1024
-	fldx.d	$fa2, $a0, $a5
-	xvld	$xr5, $a3, 176
-	xvld	$xr6, $a3, 248
-	vextrins.d	$vr7, $vr4, 16
-	vextrins.d	$vr2, $vr11, 16
-	xvpermi.q	$xr2, $xr7, 2
-	xvfmul.d	$xr2, $xr6, $xr2
+	fldx.d	$fa4, $a2, $a5
+	fld.d	$fa5, $a2, 1024
+	vld	$vr6, $a3, 104
+	vld	$vr7, $a3, 32
+	vextrins.d	$vr4, $vr1, 16
+	vbitrevi.d	$vr1, $vr4, 63
+	vfmul.d	$vr1, $vr6, $vr1
+	vextrins.d	$vr5, $vr0, 16
+	vfmadd.d	$vr0, $vr7, $vr5, $vr1
+	vst	$vr0, $s6, 640
+	fldx.d	$fa0, $a0, $a5
+	vld	$vr1, $a3, 248
+	fld.d	$fa4, $a0, 1024
+	vld	$vr5, $a3, 176
 	vextrins.d	$vr0, $vr3, 16
-	vextrins.d	$vr1, $vr10, 16
-	xvpermi.q	$xr1, $xr0, 2
-	xvfmadd.d	$xr0, $xr5, $xr1, $xr2
-	xvst	$xr0, $s7, 712
-	fld.d	$fa1, $a2, 768
+	vfmul.d	$vr0, $vr1, $vr0
+	vextrins.d	$vr4, $vr2, 16
+	vfmadd.d	$vr0, $vr5, $vr4, $vr0
+	vst	$vr0, $s6, 712
+	fld.d	$fa0, $a2, 768
 	ori	$a5, $zero, 3584
-	fldx.d	$fa2, $a2, $a5
-	fld.d	$fa3, $a0, 768
-	fldx.d	$fa4, $a0, $a5
-	fld.d	$fa5, $a2, 512
+	fldx.d	$fa1, $a2, $a5
+	fld.d	$fa2, $a0, 768
+	fldx.d	$fa3, $a0, $a5
 	ori	$a5, $zero, 3840
-	fldx.d	$fa6, $a2, $a5
-	fld.d	$fa0, $a0, 512
-	fldx.d	$fa7, $a0, $a5
-	fld.d	$ft0, $a2, 256
-	lu12i.w	$a5, 1
-	fldx.d	$ft1, $a2, $a5
-	fld.d	$ft2, $a0, 256
-	fldx.d	$ft3, $a0, $a5
-	fldx.d	$ft4, $fp, $a1
-	ld.d	$a5, $sp, 752                   # 8-byte Folded Reload
-	fldx.d	$ft5, $a2, $a5
-	xvldx	$xr14, $s7, $a4
-	xvld	$xr15, $a3, 72
-	vextrins.d	$vr6, $vr2, 16
-	vextrins.d	$vr13, $vr9, 16
-	xvpermi.q	$xr13, $xr6, 2
-	xvbitrevi.d	$xr2, $xr13, 63
-	xvfmul.d	$xr2, $xr15, $xr2
-	vextrins.d	$vr5, $vr1, 16
-	vextrins.d	$vr12, $vr8, 16
-	xvpermi.q	$xr12, $xr5, 2
-	xvfmadd.d	$xr1, $xr14, $xr12, $xr2
-	xvst	$xr1, $s7, 608
-	fldx.d	$fa1, $s8, $a1
-	fldx.d	$fa2, $a0, $a5
-	xvld	$xr5, $a3, 144
-	xvld	$xr6, $a3, 216
-	vextrins.d	$vr7, $vr4, 16
-	vextrins.d	$vr2, $vr11, 16
-	xvpermi.q	$xr2, $xr7, 2
-	xvfmul.d	$xr2, $xr6, $xr2
+	fldx.d	$fa4, $a2, $a5
+	fld.d	$fa5, $a2, 512
+	vld	$vr6, $a3, 88
+	vld	$vr7, $a3, 16
+	vextrins.d	$vr4, $vr1, 16
+	vbitrevi.d	$vr1, $vr4, 63
+	vfmul.d	$vr1, $vr6, $vr1
+	vextrins.d	$vr5, $vr0, 16
+	vfmadd.d	$vr0, $vr7, $vr5, $vr1
+	vst	$vr0, $s6, 624
+	fldx.d	$fa0, $a0, $a5
+	vld	$vr1, $a3, 232
+	fld.d	$fa4, $a0, 512
+	vld	$vr5, $a3, 160
 	vextrins.d	$vr0, $vr3, 16
-	vextrins.d	$vr1, $vr10, 16
-	xvpermi.q	$xr1, $xr0, 2
-	xvfmadd.d	$xr0, $xr5, $xr1, $xr2
-	xvst	$xr0, $s7, 680
-	fld.d	$fa0, $s7, 608
-	fld.d	$fa1, $s7, 616
-	fld.d	$fa2, $s7, 624
-	fld.d	$fa3, $s7, 632
-	fld.d	$fa4, $s7, 640
-	fld.d	$fa5, $s7, 648
-	fld.d	$fa6, $s7, 656
-	fld.d	$fa7, $s7, 664
-	fld.d	$ft0, $s7, 672
-	fld.d	$ft1, $s7, 680
-	fld.d	$ft2, $s7, 688
-	fld.d	$ft3, $s7, 696
-	fld.d	$ft4, $s7, 704
-	fld.d	$ft5, $s7, 712
-	fld.d	$ft6, $s7, 720
-	fld.d	$ft7, $s7, 728
-	fld.d	$ft8, $s7, 736
+	vfmul.d	$vr0, $vr1, $vr0
+	vextrins.d	$vr4, $vr2, 16
+	vfmadd.d	$vr0, $vr5, $vr4, $vr0
+	vst	$vr0, $s6, 696
+	fld.d	$fa0, $a2, 256
+	lu12i.w	$a5, 1
+	fldx.d	$fa1, $a2, $a5
+	fld.d	$fa2, $a0, 256
+	fldx.d	$fa3, $a0, $a5
+	ld.d	$a5, $sp, 336                   # 8-byte Folded Reload
+	fldx.d	$fa4, $a2, $a5
+	fldx.d	$fa5, $fp, $a1
+	vld	$vr6, $a3, 72
+	vldx	$vr7, $s6, $a4
+	vextrins.d	$vr4, $vr1, 16
+	vbitrevi.d	$vr1, $vr4, 63
+	vfmul.d	$vr1, $vr6, $vr1
+	vextrins.d	$vr5, $vr0, 16
+	vfmadd.d	$vr0, $vr7, $vr5, $vr1
+	vst	$vr0, $s6, 608
+	fldx.d	$fa0, $a0, $a5
+	vld	$vr1, $a3, 216
+	fldx.d	$fa4, $s8, $a1
+	vld	$vr5, $a3, 144
+	vextrins.d	$vr0, $vr3, 16
+	vfmul.d	$vr0, $vr1, $vr0
+	vextrins.d	$vr4, $vr2, 16
+	vfmadd.d	$vr0, $vr5, $vr4, $vr0
+	vst	$vr0, $s6, 680
+	fld.d	$fa0, $s6, 608
+	fld.d	$fa1, $s6, 616
+	fld.d	$fa2, $s6, 624
+	fld.d	$fa3, $s6, 632
+	fld.d	$fa4, $s6, 640
+	fld.d	$fa5, $s6, 648
+	fld.d	$fa6, $s6, 656
+	fld.d	$fa7, $s6, 664
+	fld.d	$ft0, $s6, 672
+	fld.d	$ft1, $s6, 680
+	fld.d	$ft2, $s6, 688
+	fld.d	$ft3, $s6, 696
+	fld.d	$ft4, $s6, 704
+	fld.d	$ft5, $s6, 712
+	fld.d	$ft6, $s6, 720
+	fld.d	$ft7, $s6, 728
+	fld.d	$ft8, $s6, 736
 	pcalau12i	$a0, %pc_hi20(cos_l+112)
 	addi.d	$a0, $a0, %pc_lo12(cos_l+112)
-	fld.d	$ft9, $s7, 744
+	fld.d	$ft9, $s6, 744
 	ori	$a1, $zero, 44
 	.p2align	4, , 16
 .LBB0_28:                               # %.preheader210
@@ -1199,26 +1080,26 @@ mdct_sub48:                             # @mdct_sub48
 	bne	$a1, $a2, .LBB0_28
 # %bb.29:                               # %mdct_long.exit
                                         #   in Loop: Header=BB0_24 Depth=3
-	fld.d	$fa0, $s7, 640
-	vld	$vr1, $s7, 648
-	vld	$vr2, $s7, 608
+	fld.d	$fa0, $s6, 640
+	vld	$vr1, $s6, 648
+	vld	$vr2, $s6, 608
 	vextrins.d	$vr1, $vr0, 16
 	vfadd.d	$vr0, $vr2, $vr1
-	vld	$vr1, $s7, 728
-	fld.d	$fa2, $s7, 624
-	fld.d	$fa3, $s7, 632
-	fld.d	$fa4, $s7, 744
-	vld	$vr5, $s7, 656
-	vld	$vr6, $s7, 680
+	vld	$vr1, $s6, 728
+	fld.d	$fa2, $s6, 624
+	fld.d	$fa3, $s6, 632
+	fld.d	$fa4, $s6, 744
+	vld	$vr5, $s6, 656
+	vld	$vr6, $s6, 680
 	vfadd.d	$vr0, $vr0, $vr1
 	fadd.d	$fa1, $fa2, $fa3
 	fadd.d	$fa1, $fa1, $fa4
 	vfsub.d	$vr2, $vr5, $vr6
-	fld.d	$fa3, $s7, 712
-	vld	$vr4, $s7, 720
-	fld.d	$fa5, $s7, 672
-	fld.d	$fa6, $s7, 696
-	fld.d	$fa7, $s7, 704
+	fld.d	$fa3, $s6, 712
+	vld	$vr4, $s6, 720
+	fld.d	$fa5, $s6, 672
+	fld.d	$fa6, $s6, 696
+	fld.d	$fa7, $s6, 704
 	vextrins.d	$vr4, $vr3, 16
 	vfadd.d	$vr8, $vr2, $vr4
 	fsub.d	$fa2, $fa5, $fa6
@@ -1293,7 +1174,7 @@ mdct_sub48:                             # @mdct_sub48
 	fmul.d	$fa1, $fa1, $fa3
 	fmadd.d	$fa1, $fa2, $fa4, $fa1
 	fst.d	$fa1, $s5, 32
-	bnez	$s6, .LBB0_31
+	bnez	$s0, .LBB0_31
 	b	.LBB0_23
 	.p2align	4, , 16
 .LBB0_30:                               #   in Loop: Header=BB0_24 Depth=3
@@ -1304,78 +1185,89 @@ mdct_sub48:                             # @mdct_sub48
 	jirl	$ra, $ra, 0
 	movgr2fr.d	$fa0, $zero
 	fmov.d	$fa1, $fa0
-	beqz	$s6, .LBB0_23
+	beqz	$s0, .LBB0_23
 .LBB0_31:                               #   in Loop: Header=BB0_24 Depth=3
 	ori	$a0, $zero, 2
-	beq	$s0, $a0, .LBB0_23
+	beq	$s4, $a0, .LBB0_23
 # %bb.32:                               # %.preheader.preheader
                                         #   in Loop: Header=BB0_24 Depth=3
-	xvld	$xr2, $s5, -64
+	fld.d	$fa2, $s5, -64
 	fld.d	$fa3, $s5, 56
-	xvpickve.d	$xr4, $xr2, 0
-	fld.d	$fa5, $sp, 1016                 # 8-byte Folded Reload
-	fmul.d	$fa4, $fa4, $fa5
-	vld	$vr5, $sp, 1024                 # 16-byte Folded Reload
+	fmul.d	$fa4, $fa2, $fs2
+	fld.d	$fa5, $sp, 464                  # 8-byte Folded Reload
 	fmadd.d	$fa4, $fa3, $fa5, $fa4
-	fst.d	$fa4, $s5, 56
-	xvpickve.d	$xr4, $xr2, 1
+	fld.d	$fa5, $sp, 400                  # 8-byte Folded Reload
+	fmul.d	$fa2, $fa2, $fa5
+	fmadd.d	$fa2, $fa3, $fs2, $fa2
+	fld.d	$fa3, $s5, -56
 	fld.d	$fa5, $s5, 48
-	fld.d	$fa6, $sp, 808                  # 8-byte Folded Reload
-	fmul.d	$fa4, $fa4, $fa6
-	vld	$vr6, $s5, 40
-	fld.d	$fa7, $s5, 40
-	vld	$vr8, $sp, 992                  # 16-byte Folded Reload
-	fmadd.d	$fa4, $fa5, $ft0, $fa4
-	fst.d	$fa4, $s5, 48
-	xvpickve.d	$xr4, $xr2, 2
-	fld.d	$fa5, $sp, 968                  # 8-byte Folded Reload
-	fmul.d	$fa4, $fa4, $fa5
-	vld	$vr5, $sp, 976                  # 16-byte Folded Reload
-	fmadd.d	$fa4, $fa7, $fa5, $fa4
-	fst.d	$fa4, $s5, 40
-	xvld	$xr4, $sp, 864                  # 32-byte Folded Reload
-	xvfmul.d	$xr4, $xr2, $xr4
-	xvpermi.d	$xr5, $xr6, 68
-	xvpermi.d	$xr3, $xr3, 68
-	xvinsve0.d	$xr5, $xr3, 0
-	xvinsve0.d	$xr5, $xr1, 3
-	xvld	$xr3, $sp, 1040                 # 32-byte Folded Reload
-	xvfmadd.d	$xr3, $xr5, $xr3, $xr4
-	xvld	$xr4, $s5, -32
-	xvst	$xr3, $s5, -64
-	vld	$vr3, $s5, 16
-	xvpickve.d	$xr2, $xr2, 3
-	xvpermi.d	$xr5, $xr4, 2
-	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI0_4)
-	xvpickve.d	$xr7, $xr4, 1
-	xvpermi.d	$xr8, $xr0, 68
-	xvpermi.d	$xr9, $xr3, 68
-	xvshuf.d	$xr6, $xr9, $xr8
-	xvld	$xr8, $sp, 816                  # 32-byte Folded Reload
-	xvfmul.d	$xr8, $xr4, $xr8
-	xvpickve.d	$xr9, $xr4, 3
-                                        # kill: def $vr4 killed $vr4 killed $xr4 def $xr4
-	vextrins.d	$vr4, $vr2, 16
-	vextrins.d	$vr5, $vr7, 16
-	fld.d	$fa2, $s5, 0
-	xvpermi.q	$xr5, $xr4, 2
-	xvld	$xr4, $sp, 768                  # 32-byte Folded Reload
-	xvfmul.d	$xr4, $xr5, $xr4
-	xvinsve0.d	$xr6, $xr1, 3
-	xvld	$xr1, $sp, 896                  # 32-byte Folded Reload
-	xvfmadd.d	$xr1, $xr6, $xr1, $xr4
-	xvst	$xr1, $s5, 8
-	vshuf4i.d	$vr3, $vr0, 1
-	xvinsve0.d	$xr3, $xr0, 2
-	xvinsve0.d	$xr3, $xr2, 3
-	xvld	$xr0, $sp, 928                  # 32-byte Folded Reload
-	xvfmadd.d	$xr1, $xr3, $xr0, $xr8
-	fld.d	$fa0, $sp, 760                  # 8-byte Folded Reload
-	fmul.d	$fa0, $ft1, $fa0
-	vld	$vr3, $sp, 848                  # 16-byte Folded Reload
-	fmadd.d	$fa0, $fa2, $fa3, $fa0
-	xvst	$xr1, $s5, -32
+	fst.d	$fa4, $s5, -64
+	fst.d	$fa2, $s5, 56
+	fmul.d	$fa2, $fa3, $fs4
+	fld.d	$fa4, $sp, 456                  # 8-byte Folded Reload
+	fmadd.d	$fa2, $fa5, $fa4, $fa2
+	fld.d	$fa4, $sp, 392                  # 8-byte Folded Reload
+	fmul.d	$fa3, $fa3, $fa4
+	fmadd.d	$fa3, $fa5, $fs4, $fa3
+	fld.d	$fa4, $s5, -48
+	fld.d	$fa5, $s5, 40
+	fst.d	$fa2, $s5, -56
+	fst.d	$fa3, $s5, 48
+	fmul.d	$fa2, $fa4, $fs6
+	fld.d	$fa3, $sp, 448                  # 8-byte Folded Reload
+	fmadd.d	$fa2, $fa5, $fa3, $fa2
+	fld.d	$fa3, $sp, 384                  # 8-byte Folded Reload
+	fmul.d	$fa3, $fa4, $fa3
+	fld.d	$fa4, $s5, -40
+	fmadd.d	$fa3, $fa5, $fs6, $fa3
+	fst.d	$fa2, $s5, -48
+	fst.d	$fa3, $s5, 40
+	fmul.d	$fa2, $fa4, $fs0
+	fld.d	$fa3, $sp, 440                  # 8-byte Folded Reload
+	fmadd.d	$fa2, $fa1, $fa3, $fa2
+	fld.d	$fa3, $sp, 376                  # 8-byte Folded Reload
+	fmul.d	$fa3, $fa4, $fa3
+	fmadd.d	$fa1, $fa1, $fs0, $fa3
+	fld.d	$fa3, $s5, -32
+	fld.d	$fa4, $s5, 24
+	fst.d	$fa2, $s5, -40
+	fst.d	$fa1, $s5, 32
+	fmul.d	$fa1, $fa3, $fs3
+	fld.d	$fa2, $sp, 432                  # 8-byte Folded Reload
+	fmadd.d	$fa1, $fa4, $fa2, $fa1
+	fld.d	$fa2, $sp, 368                  # 8-byte Folded Reload
+	fmul.d	$fa2, $fa3, $fa2
+	fmadd.d	$fa2, $fa4, $fs3, $fa2
+	fld.d	$fa3, $s5, -24
+	fld.d	$fa4, $s5, 16
+	fst.d	$fa1, $s5, -32
+	fst.d	$fa2, $s5, 24
+	fmul.d	$fa1, $fa3, $fs7
+	fld.d	$fa2, $sp, 424                  # 8-byte Folded Reload
+	fmadd.d	$fa1, $fa4, $fa2, $fa1
+	fld.d	$fa2, $sp, 360                  # 8-byte Folded Reload
+	fmul.d	$fa2, $fa3, $fa2
+	fld.d	$fa3, $s5, -16
+	fmadd.d	$fa2, $fa4, $fs7, $fa2
+	fst.d	$fa1, $s5, -24
+	fst.d	$fa2, $s5, 16
+	fmul.d	$fa1, $fa3, $fs5
+	fld.d	$fa2, $sp, 416                  # 8-byte Folded Reload
+	fmadd.d	$fa1, $fa0, $fa2, $fa1
+	fld.d	$fa2, $sp, 352                  # 8-byte Folded Reload
+	fmul.d	$fa2, $fa3, $fa2
+	fmadd.d	$fa0, $fa0, $fs5, $fa2
+	fld.d	$fa2, $s5, -8
+	fld.d	$fa3, $s5, 0
+	fst.d	$fa1, $s5, -16
+	fst.d	$fa0, $s5, 8
+	fmul.d	$fa0, $fa2, $fs1
+	fld.d	$fa1, $sp, 408                  # 8-byte Folded Reload
+	fmadd.d	$fa1, $fa3, $fa1, $fa0
+	fld.d	$fa0, $sp, 344                  # 8-byte Folded Reload
+	fmul.d	$fa0, $fa2, $fa0
+	fmadd.d	$fa0, $fa3, $fs1, $fa0
+	fst.d	$fa1, $s5, -8
 	b	.LBB0_22
 	.p2align	4, , 16
 .LBB0_33:                               # %._crit_edge
@@ -1387,321 +1279,340 @@ mdct_sub48:                             # @mdct_sub48
 # %bb.34:                               #   in Loop: Header=BB0_5 Depth=1
 	lu12i.w	$a0, 1
 	ori	$a2, $a0, 512
-	add.d	$a1, $s6, $a2
-	move	$a0, $s6
+	add.d	$a1, $s4, $a2
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	b	.LBB0_4
 .LBB0_35:                               # %._crit_edge266
-	fld.d	$fs7, $sp, 1080                 # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 1088                 # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 1096                 # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 1104                 # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 1112                 # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 1120                 # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 1128                 # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 1136                 # 8-byte Folded Reload
-	ld.d	$s8, $sp, 1144                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 1152                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 1160                  # 8-byte Folded Reload
-	ld.d	$s5, $sp, 1168                  # 8-byte Folded Reload
-	ld.d	$s4, $sp, 1176                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 1184                  # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1192                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 1200                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 1208                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 1216                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 1224                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 1232
+	fld.d	$fs7, $sp, 472                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 480                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 488                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 496                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 504                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 512                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 520                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 528                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 536                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 544                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 552                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 560                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 568                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 576                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 584                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 592                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 600                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 608                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 616                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 624
 	ret
 .Lfunc_end0:
 	.size	mdct_sub48, .Lfunc_end0-mdct_sub48
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function mdct_init48
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function mdct_init48
 .LCPI1_0:
 	.dword	0x3fa65547c4694e11              # double 0.043619387365336
 	.dword	0x3fc0b5150f6da2d0              # double 0.13052619222005157
+.LCPI1_1:
 	.dword	0x3fcbb44b13b62571              # double 0.21643961393810288
 	.dword	0x3fd33ec389a5a81e              # double 0.30070579950427312
-.LCPI1_1:
+.LCPI1_2:
 	.dword	0x3fd87de2a6aea963              # double 0.38268343236508978
 	.dword	0x3fdd8d4a0e345738              # double 0.46174861323503391
+.LCPI1_3:
 	.dword	0x3fe1318ef2c01a5b              # double 0.53729960834682389
 	.dword	0x3fe37af93f9513ea              # double 0.60876142900872066
-.LCPI1_2:
+.LCPI1_4:
 	.dword	0x3fe59e6f5ae6a0a6              # double 0.67559020761566013
 	.dword	0x3fe797c6a435ce84              # double 0.73727733681012397
+.LCPI1_5:
 	.dword	0x3fe963268b572492              # double 0.79335334029123517
 	.dword	0x3feafd100eafc290              # double 0.84339144581288572
-.LCPI1_3:
+.LCPI1_6:
 	.dword	0x3fec62648af65770              # double 0.8870108331782216
 	.dword	0x3fed906bcf328d46              # double 0.92387953251128674
+.LCPI1_7:
 	.dword	0x3fee84d9692357e0              # double 0.95371695074822682
 	.dword	0x3fef3dd11fb974b6              # double 0.97629600711993336
-.LCPI1_4:
+.LCPI1_8:
 	.dword	0x3fefb9ea92ec689b              # double 0.99144486137381038
 	.dword	0x3feff833f9da45f7              # double 0.99904822158185779
+.LCPI1_9:
 	.dword	0x3feff833f9da45f7              # double 0.99904822158185779
 	.dword	0x3fefb9ea92ec689b              # double 0.99144486137381038
-.LCPI1_5:
+.LCPI1_10:
 	.dword	0x3fef3dd11fb974b6              # double 0.97629600711993336
 	.dword	0x3fee84d9692357e1              # double 0.95371695074822693
+.LCPI1_11:
 	.dword	0x3fed906bcf328d46              # double 0.92387953251128674
 	.dword	0x3fec62648af65772              # double 0.88701083317822182
-.LCPI1_6:
+.LCPI1_12:
 	.dword	0x3feafd100eafc291              # double 0.84339144581288583
 	.dword	0x3fe963268b572492              # double 0.79335334029123517
+.LCPI1_13:
 	.dword	0x3fe797c6a435ce85              # double 0.73727733681012408
 	.dword	0x3fe59e6f5ae6a0a8              # double 0.67559020761566035
-.LCPI1_7:
+.LCPI1_14:
 	.dword	0x3fe37af93f9513ec              # double 0.60876142900872088
 	.dword	0x3fe1318ef2c01a5d              # double 0.53729960834682411
+.LCPI1_15:
 	.dword	0x3fdd8d4a0e345738              # double 0.46174861323503391
 	.dword	0x3fd87de2a6aea965              # double 0.38268343236508989
-.LCPI1_8:
+.LCPI1_16:
 	.dword	0x3fd33ec389a5a822              # double 0.30070579950427334
 	.dword	0x3fcbb44b13b6257c              # double 0.21643961393810318
-	.dword	0x3fc0b5150f6da2d0              # double 0.13052619222005157
-	.dword	0x3fa65547c4694e1b              # double 0.043619387365336069
-.LCPI1_9:
-	.dword	0x3fefb9ea92ec689b              # double 0.99144486137381038
-	.dword	0x3feff833f9da45f7              # double 0.99904822158185779
-	.dword	0x3ff0000000000000              # double 1
-	.dword	0x3ff0000000000000              # double 1
-.LCPI1_10:
-	.dword	0x3fefb9ea92ec689c              # double 0.99144486137381049
-	.dword	0x3fed906bcf328d49              # double 0.92387953251128707
-	.dword	0x3fe963268b572498              # double 0.79335334029123583
-	.dword	0x3fe37af93f9513ed              # double 0.60876142900872099
-.LCPI1_13:
-	.dword	0x3feff833f9da45f7              # double 0.99904822158185779
-	.dword	0x3fefb9ea92ec689b              # double 0.99144486137381038
-	.dword	0x3fef3dd11fb974b6              # double 0.97629600711993336
-	.dword	0x3fee84d9692357e0              # double 0.95371695074822682
-.LCPI1_14:
-	.dword	0x3fed906bcf328d46              # double 0.92387953251128674
-	.dword	0x3fec62648af65770              # double 0.8870108331782216
-	.dword	0x3feafd100eafc290              # double 0.84339144581288572
-	.dword	0x3fe963268b572492              # double 0.79335334029123517
-.LCPI1_15:
-	.dword	0x3fe797c6a435ce84              # double 0.73727733681012397
-	.dword	0x3fe59e6f5ae6a0a6              # double 0.67559020761566013
-	.dword	0x3fe37af93f9513ea              # double 0.60876142900872066
-	.dword	0x3fe1318ef2c01a5b              # double 0.53729960834682389
-.LCPI1_16:
-	.dword	0x3fdd8d4a0e345738              # double 0.46174861323503391
-	.dword	0x3fd87de2a6aea963              # double 0.38268343236508978
-	.dword	0x3fd33ec389a5a81e              # double 0.30070579950427312
-	.dword	0x3fcbb44b13b62571              # double 0.21643961393810288
-.LCPI1_37:
-	.dword	0xbfb150dd8dd9d8bf              # double -0.067640158778746504
-	.dword	0x3fa5c53b3ed42489              # double 0.042520381373898415
-	.dword	0xbf8db3b3a9a67635              # double -0.014502910246672144
-	.dword	0x3fb69105d1310418              # double 0.088150371143470685
-.LCPI1_38:
-	.dword	0xbfba477c4665d2fd              # double -0.10265328139014325
-	.dword	0x3fbc337b2d43eb39              # double 0.11016054015264566
-	.dword	0x3f8db3b3a9a6765a              # double 0.014502910246672208
-	.dword	0x3fba477c4665d2ef              # double 0.10265328139014306
-.LCPI1_39:
-	.dword	0xbfb150dd8dd9d8c0              # double -0.067640158778746517
-	.dword	0xbfbc337b2d43eb38              # double -0.11016054015264565
-	.dword	0x3fa5c53b3ed424bf              # double 0.04252038137389879
-	.dword	0x3fb69105d1310415              # double 0.088150371143470643
-.LCPI1_40:
-	.dword	0x3fbc337b2d43eb35              # double 0.11016054015264561
-	.dword	0x3fa5c53b3ed424be              # double 0.042520381373898783
-	.dword	0xbfb69105d1310415              # double -0.088150371143470643
-	.dword	0x3f8db3b3a9a676b8              # double 0.014502910246672371
-.LCPI1_41:
-	.dword	0xbfba477c4665d2ea              # double -0.10265328139014299
-	.dword	0xbfb150dd8dd9d8cb              # double -0.06764015877874667
-	.dword	0xbfb69105d131040f              # double -0.08815037114347056
-	.dword	0xbfba477c4665d2e8              # double -0.10265328139014296
-.LCPI1_42:
-	.dword	0xbfbc337b2d43eb34              # double -0.11016054015264559
-	.dword	0xbfb150dd8dd9d8d2              # double -0.067640158778746767
-	.dword	0xbfa5c53b3ed424d2              # double -0.042520381373898922
-	.dword	0xbf8db3b3a9a67701              # double -0.014502910246672497
-.LCPI1_43:
-	.dword	0xbfba477c4665d2f0              # double -0.10265328139014307
-	.dword	0xbfa5c53b3ed424c1              # double -0.042520381373898804
-	.dword	0x3fa5c53b3ed424d4              # double 0.042520381373898936
-	.dword	0xbfba477c4665d2e6              # double -0.10265328139014293
-.LCPI1_76:
-	.dword	0x3fefb9ea92ec689b              # double 0.99144486137381038
-	.dword	0x3fed906bcf328d46              # double 0.92387953251128674
-	.dword	0x3fe963268b572493              # double 0.79335334029123528
-	.dword	0x3fefb9ea92ec689b              # double 0.99144486137381038
-.LCPI1_84:
-	.dword	0x3fe37af93f9513ea              # double 0.60876142900872066
-	.dword	0x3fd87de2a6aea964              # double 0.38268343236508984
-	.dword	0x3fc0b5150f6da2d5              # double 0.13052619222005171
-	.dword	0xbfe963268b572491              # double -0.79335334029123505
-.LCPI1_86:
-	.dword	0xbfed906bcf328d46              # double -0.92387953251128674
-	.dword	0xbfed906bcf328d47              # double -0.92387953251128685
-	.dword	0xbfd87de2a6aea96d              # double -0.38268343236509034
-	.dword	0x3fd87de2a6aea96f              # double 0.38268343236509045
-.LCPI1_88:
-	.dword	0xbfc0b5150f6da2f1              # double -0.13052619222005249
-	.dword	0x3fed906bcf328d44              # double 0.92387953251128651
-	.dword	0x3fe37af93f9513f3              # double 0.60876142900872166
-	.dword	0x3fefb9ea92ec689a              # double 0.99144486137381027
-.LCPI1_91:
-	.dword	0x3fc0b5150f6da293              # double 0.13052619222004988
-	.dword	0x3fed906bcf328d4d              # double 0.92387953251128752
-	.dword	0xbfe37af93f9513d8              # double -0.60876142900871866
-	.dword	0xbfd87de2a6aea965              # double -0.38268343236508989
-.LCPI1_92:
-	.dword	0xbfed906bcf328d4e              # double -0.92387953251128763
-	.dword	0x3fed906bcf328d47              # double 0.92387953251128685
-	.dword	0xbfd87de2a6aea959              # double -0.38268343236508923
-	.dword	0xbfe963268b572493              # double -0.79335334029123528
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI1_11:
-	.dword	0x3fd87de2a6aea96f              # double 0.38268343236509045
-	.dword	0x3fc0b5150f6da2f6              # double 0.13052619222005263
-.LCPI1_12:
-	.dword	0x3fc0b5150f6da2f6              # double 0.13052619222005263
-	.dword	0x3fd87de2a6aea96f              # double 0.38268343236509045
 .LCPI1_17:
 	.dword	0x3fc0b5150f6da2d0              # double 0.13052619222005157
+	.dword	0x3fa65547c4694e1b              # double 0.043619387365336069
+.LCPI1_18:
+	.dword	0x3fefb9ea92ec689c              # double 0.99144486137381049
+	.dword	0x3fed906bcf328d49              # double 0.92387953251128707
+.LCPI1_19:
+	.dword	0x3fe963268b572498              # double 0.79335334029123583
+	.dword	0x3fe37af93f9513ed              # double 0.60876142900872099
+.LCPI1_20:
+	.dword	0x3fd87de2a6aea96f              # double 0.38268343236509045
+	.dword	0x3fc0b5150f6da2f6              # double 0.13052619222005263
+.LCPI1_21:
+	.dword	0x3fc0b5150f6da2f6              # double 0.13052619222005263
+	.dword	0x3fd87de2a6aea96f              # double 0.38268343236509045
+.LCPI1_22:
+	.dword	0x3fef3dd11fb974b6              # double 0.97629600711993336
+	.dword	0x3fee84d9692357e0              # double 0.95371695074822682
+.LCPI1_23:
+	.dword	0x3fed906bcf328d46              # double 0.92387953251128674
+	.dword	0x3fec62648af65770              # double 0.8870108331782216
+.LCPI1_24:
+	.dword	0x3feafd100eafc290              # double 0.84339144581288572
+	.dword	0x3fe963268b572492              # double 0.79335334029123517
+.LCPI1_25:
+	.dword	0x3fe797c6a435ce84              # double 0.73727733681012397
+	.dword	0x3fe59e6f5ae6a0a6              # double 0.67559020761566013
+.LCPI1_26:
+	.dword	0x3fe37af93f9513ea              # double 0.60876142900872066
+	.dword	0x3fe1318ef2c01a5b              # double 0.53729960834682389
+.LCPI1_27:
+	.dword	0x3fdd8d4a0e345738              # double 0.46174861323503391
+	.dword	0x3fd87de2a6aea963              # double 0.38268343236508978
+.LCPI1_28:
+	.dword	0x3fd33ec389a5a81e              # double 0.30070579950427312
+	.dword	0x3fcbb44b13b62571              # double 0.21643961393810288
+.LCPI1_29:
+	.dword	0x3fc0b5150f6da2d0              # double 0.13052619222005157
 	.dword	0x3fa65547c4694e11              # double 0.043619387365336
-.LCPI1_77:
+.LCPI1_49:
+	.dword	0xbfb150dd8dd9d8bf              # double -0.067640158778746504
+	.dword	0x3fa5c53b3ed42489              # double 0.042520381373898415
+.LCPI1_50:
+	.dword	0xbf8db3b3a9a67635              # double -0.014502910246672144
+	.dword	0x3fb69105d1310418              # double 0.088150371143470685
+.LCPI1_51:
+	.dword	0xbfba477c4665d2fd              # double -0.10265328139014325
+	.dword	0x3fbc337b2d43eb39              # double 0.11016054015264566
+.LCPI1_52:
+	.dword	0x3f8db3b3a9a6765a              # double 0.014502910246672208
+	.dword	0x3fba477c4665d2ef              # double 0.10265328139014306
+.LCPI1_53:
+	.dword	0xbfb150dd8dd9d8c0              # double -0.067640158778746517
+	.dword	0xbfbc337b2d43eb38              # double -0.11016054015264565
+.LCPI1_54:
+	.dword	0x3fa5c53b3ed424bf              # double 0.04252038137389879
+	.dword	0x3fb69105d1310415              # double 0.088150371143470643
+.LCPI1_55:
+	.dword	0x3fbc337b2d43eb35              # double 0.11016054015264561
+	.dword	0x3fa5c53b3ed424be              # double 0.042520381373898783
+.LCPI1_56:
+	.dword	0xbfb69105d1310415              # double -0.088150371143470643
+	.dword	0x3f8db3b3a9a676b8              # double 0.014502910246672371
+.LCPI1_57:
+	.dword	0xbfba477c4665d2ea              # double -0.10265328139014299
+	.dword	0xbfb150dd8dd9d8cb              # double -0.06764015877874667
+.LCPI1_58:
+	.dword	0xbfb69105d131040f              # double -0.08815037114347056
+	.dword	0xbfba477c4665d2e8              # double -0.10265328139014296
+.LCPI1_59:
+	.dword	0xbfbc337b2d43eb34              # double -0.11016054015264559
+	.dword	0xbfb150dd8dd9d8d2              # double -0.067640158778746767
+.LCPI1_60:
+	.dword	0xbfa5c53b3ed424d2              # double -0.042520381373898922
+	.dword	0xbf8db3b3a9a67701              # double -0.014502910246672497
+.LCPI1_61:
+	.dword	0xbfba477c4665d2f0              # double -0.10265328139014307
+	.dword	0xbfa5c53b3ed424c1              # double -0.042520381373898804
+.LCPI1_62:
+	.dword	0x3fa5c53b3ed424d4              # double 0.042520381373898936
+	.dword	0xbfba477c4665d2e6              # double -0.10265328139014293
+.LCPI1_95:
+	.dword	0x3fefb9ea92ec689b              # double 0.99144486137381038
+	.dword	0x3fed906bcf328d46              # double 0.92387953251128674
+.LCPI1_96:
 	.dword	0x3fc0d9fd31c98bf8              # double 0.13165249758739583
 	.dword	0x3fda827999fcef32              # double 0.41421356237309503
-.LCPI1_80:
-	.dword	0x3fefb9ea92ec689c              # double 0.99144486137381049
+.LCPI1_98:
+	.dword	0x3fe37af93f9513ea              # double 0.60876142900872066
+	.dword	0x3fd87de2a6aea964              # double 0.38268343236508984
+.LCPI1_99:
+	.dword	0xbfe963268b572491              # double -0.79335334029123505
+	.dword	0xbfed906bcf328d46              # double -0.92387953251128674
+.LCPI1_100:
+	.dword	0xbfed906bcf328d46              # double -0.92387953251128674
+	.dword	0xbfed906bcf328d47              # double -0.92387953251128685
+.LCPI1_101:
+	.dword	0x3fd87de2a6aea96f              # double 0.38268343236509045
 	.dword	0xbfd87de2a6aea965              # double -0.38268343236508989
-.LCPI1_83:
+.LCPI1_102:
+	.dword	0xbfc0b5150f6da2f1              # double -0.13052619222005249
+	.dword	0x3fed906bcf328d44              # double 0.92387953251128651
+.LCPI1_103:
+	.dword	0x3fefb9ea92ec689a              # double 0.99144486137381027
+	.dword	0x3fd87de2a6aea991              # double 0.38268343236509234
+.LCPI1_104:
+	.dword	0x3fc0b5150f6da293              # double 0.13052619222004988
+	.dword	0x3fed906bcf328d4d              # double 0.92387953251128752
+.LCPI1_105:
+	.dword	0xbfd87de2a6aea965              # double -0.38268343236508989
+	.dword	0xbfd87de2a6aea971              # double -0.38268343236509056
+.LCPI1_106:
+	.dword	0xbfed906bcf328d4e              # double -0.92387953251128763
+	.dword	0x3fed906bcf328d47              # double 0.92387953251128685
+.LCPI1_107:
+	.dword	0xbfe963268b572493              # double -0.79335334029123528
+	.dword	0x3fed906bcf328d4c              # double 0.9238795325112874
+.LCPI1_108:
 	.dword	0xbfe37af93f9513d7              # double -0.60876142900871855
 	.dword	0x3fd87de2a6aea91b              # double 0.38268343236508578
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI1_18:
-	.dword	0x3f9657184ae74487              # double 0.021816615649929118
-.LCPI1_19:
-	.dword	0x4043000000000000              # double 38
-.LCPI1_20:
-	.dword	0x4045000000000000              # double 42
-.LCPI1_21:
-	.dword	0x4047000000000000              # double 46
-.LCPI1_22:
-	.dword	0x4049000000000000              # double 50
-.LCPI1_23:
-	.dword	0x404b000000000000              # double 54
-.LCPI1_24:
-	.dword	0x404d000000000000              # double 58
-.LCPI1_25:
-	.dword	0x404f000000000000              # double 62
-.LCPI1_26:
-	.dword	0x4050800000000000              # double 66
-.LCPI1_27:
-	.dword	0x4051800000000000              # double 70
-.LCPI1_28:
-	.dword	0x405b800000000000              # double 110
-.LCPI1_29:
-	.dword	0x405c800000000000              # double 114
 .LCPI1_30:
-	.dword	0x405d800000000000              # double 118
+	.dword	0x3f9657184ae74487              # double 0.021816615649929118
 .LCPI1_31:
-	.dword	0x405e800000000000              # double 122
+	.dword	0x4043000000000000              # double 38
 .LCPI1_32:
-	.dword	0x405f800000000000              # double 126
+	.dword	0x4045000000000000              # double 42
 .LCPI1_33:
-	.dword	0x4060400000000000              # double 130
+	.dword	0x4047000000000000              # double 46
 .LCPI1_34:
-	.dword	0x4060c00000000000              # double 134
+	.dword	0x4049000000000000              # double 50
 .LCPI1_35:
-	.dword	0x4061400000000000              # double 138
+	.dword	0x404b000000000000              # double 54
 .LCPI1_36:
-	.dword	0x4061c00000000000              # double 142
+	.dword	0x404d000000000000              # double 58
+.LCPI1_37:
+	.dword	0x404f000000000000              # double 62
+.LCPI1_38:
+	.dword	0x4050800000000000              # double 66
+.LCPI1_39:
+	.dword	0x4051800000000000              # double 70
+.LCPI1_40:
+	.dword	0x405b800000000000              # double 110
+.LCPI1_41:
+	.dword	0x405c800000000000              # double 114
+.LCPI1_42:
+	.dword	0x405d800000000000              # double 118
+.LCPI1_43:
+	.dword	0x405e800000000000              # double 122
 .LCPI1_44:
-	.dword	0x400921fb54442d18              # double 3.1415926535897931
+	.dword	0x405f800000000000              # double 126
 .LCPI1_45:
-	.dword	0x3feff621e3796d7e              # double 0.99879545620517241
+	.dword	0x4060400000000000              # double 130
 .LCPI1_46:
-	.dword	0x3fefd88da3d12526              # double 0.99518472667219693
+	.dword	0x4060c00000000000              # double 134
 .LCPI1_47:
-	.dword	0x3fefa7557f08a517              # double 0.98917650996478101
+	.dword	0x4061400000000000              # double 138
 .LCPI1_48:
-	.dword	0x3fef6297cff75cb0              # double 0.98078528040323043
-.LCPI1_49:
-	.dword	0x3fef0a7efb9230d7              # double 0.97003125319454397
-.LCPI1_50:
-	.dword	0x3fee9f4156c62dda              # double 0.95694033573220882
-.LCPI1_51:
-	.dword	0x3fee212104f686e5              # double 0.94154406518302081
-.LCPI1_52:
-	.dword	0x3fed906bcf328d46              # double 0.92387953251128674
-.LCPI1_53:
-	.dword	0x3feced7af43cc773              # double 0.90398929312344334
-.LCPI1_54:
-	.dword	0x3fec38b2f180bdb1              # double 0.88192126434835505
-.LCPI1_55:
-	.dword	0x3feb728345196e3e              # double 0.85772861000027212
-.LCPI1_56:
-	.dword	0x3fea9b66290ea1a3              # double 0.83146961230254524
-.LCPI1_57:
-	.dword	0x3fe9b3e047f38741              # double 0.80320753148064494
-.LCPI1_58:
-	.dword	0x3fe8bc806b151741              # double 0.77301045336273699
-.LCPI1_59:
-	.dword	0x3fe7b5df226aafaf              # double 0.74095112535495911
-.LCPI1_60:
-	.dword	0x3fe6a09e667f3bcd              # double 0.70710678118654757
-.LCPI1_61:
-	.dword	0x3fe57d69348cec9f              # double 0.67155895484701833
-.LCPI1_62:
-	.dword	0x3fe44cf325091dd6              # double 0.63439328416364549
+	.dword	0x4061c00000000000              # double 142
 .LCPI1_63:
-	.dword	0x3fe30ff7fce17036              # double 0.59569930449243347
+	.dword	0x400921fb54442d18              # double 3.1415926535897931
 .LCPI1_64:
-	.dword	0x3fe1c73b39ae68c9              # double 0.55557023301960229
+	.dword	0x3feff621e3796d7e              # double 0.99879545620517241
 .LCPI1_65:
-	.dword	0x3fe073879922ffed              # double 0.51410274419322166
+	.dword	0x3fefd88da3d12526              # double 0.99518472667219693
 .LCPI1_66:
-	.dword	0x3fde2b5d3806f63e              # double 0.47139673682599781
+	.dword	0x3fefa7557f08a517              # double 0.98917650996478101
 .LCPI1_67:
-	.dword	0x3fdb5d1009e15cc2              # double 0.4275550934302822
+	.dword	0x3fef6297cff75cb0              # double 0.98078528040323043
 .LCPI1_68:
-	.dword	0x3fd87de2a6aea964              # double 0.38268343236508984
+	.dword	0x3fef0a7efb9230d7              # double 0.97003125319454397
 .LCPI1_69:
-	.dword	0x3fd58f9a75ab1fdd              # double 0.33688985339222005
+	.dword	0x3fee9f4156c62dda              # double 0.95694033573220882
 .LCPI1_70:
-	.dword	0x3fd294062ed59f05              # double 0.29028467725446233
+	.dword	0x3fee212104f686e5              # double 0.94154406518302081
 .LCPI1_71:
-	.dword	0x3fcf19f97b215f1e              # double 0.24298017990326398
+	.dword	0x3fed906bcf328d46              # double 0.92387953251128674
 .LCPI1_72:
-	.dword	0x3fc8f8b83c69a60d              # double 0.19509032201612833
+	.dword	0x3feced7af43cc773              # double 0.90398929312344334
 .LCPI1_73:
-	.dword	0x3fc2c8106e8e613a              # double 0.14673047445536175
+	.dword	0x3fec38b2f180bdb1              # double 0.88192126434835505
 .LCPI1_74:
-	.dword	0x3fb917a6bc29b438              # double 0.09801714032956077
+	.dword	0x3feb728345196e3e              # double 0.85772861000027212
 .LCPI1_75:
-	.dword	0x3fa91f65f10dd824              # double 0.049067674327418126
+	.dword	0x3fea9b66290ea1a3              # double 0.83146961230254524
+.LCPI1_76:
+	.dword	0x3fe9b3e047f38741              # double 0.80320753148064494
+.LCPI1_77:
+	.dword	0x3fe8bc806b151741              # double 0.77301045336273699
 .LCPI1_78:
-	.dword	0xbfed906bcf328d46              # double -0.92387953251128674
+	.dword	0x3fe7b5df226aafaf              # double 0.74095112535495911
 .LCPI1_79:
-	.dword	0x3fd87de2a6aea991              # double 0.38268343236509234
+	.dword	0x3fe6a09e667f3bcd              # double 0.70710678118654757
+.LCPI1_80:
+	.dword	0x3fe57d69348cec9f              # double 0.67155895484701833
 .LCPI1_81:
-	.dword	0xbfd87de2a6aea971              # double -0.38268343236509056
+	.dword	0x3fe44cf325091dd6              # double 0.63439328416364549
 .LCPI1_82:
-	.dword	0x3fed906bcf328d4c              # double 0.9238795325112874
+	.dword	0x3fe30ff7fce17036              # double 0.59569930449243347
+.LCPI1_83:
+	.dword	0x3fe1c73b39ae68c9              # double 0.55557023301960229
+.LCPI1_84:
+	.dword	0x3fe073879922ffed              # double 0.51410274419322166
 .LCPI1_85:
-	.dword	0xbfefb9ea92ec689b              # double -0.99144486137381038
+	.dword	0x3fde2b5d3806f63e              # double 0.47139673682599781
+.LCPI1_86:
+	.dword	0x3fdb5d1009e15cc2              # double 0.4275550934302822
 .LCPI1_87:
-	.dword	0xbfed906bcf328d43              # double -0.92387953251128641
+	.dword	0x3fd87de2a6aea964              # double 0.38268343236508984
+.LCPI1_88:
+	.dword	0x3fd58f9a75ab1fdd              # double 0.33688985339222005
 .LCPI1_89:
-	.dword	0xbfe963268b572484              # double -0.79335334029123361
+	.dword	0x3fd294062ed59f05              # double 0.29028467725446233
 .LCPI1_90:
-	.dword	0xbfe963268b572493              # double -0.79335334029123528
+	.dword	0x3fcf19f97b215f1e              # double 0.24298017990326398
+.LCPI1_91:
+	.dword	0x3fc8f8b83c69a60d              # double 0.19509032201612833
+.LCPI1_92:
+	.dword	0x3fc2c8106e8e613a              # double 0.14673047445536175
 .LCPI1_93:
-	.dword	0xbfefb9ea92ec689d              # double -0.9914448613738106
+	.dword	0x3fb917a6bc29b438              # double 0.09801714032956077
 .LCPI1_94:
+	.dword	0x3fa91f65f10dd824              # double 0.049067674327418126
+.LCPI1_97:
+	.dword	0x3fefb9ea92ec689c              # double 0.99144486137381049
+.LCPI1_109:
+	.dword	0x3fe963268b572493              # double 0.79335334029123528
+.LCPI1_110:
+	.dword	0x3fd5555555555555              # double 0.33333333333333331
+.LCPI1_111:
+	.dword	0x3fc0b5150f6da2d5              # double 0.13052619222005171
+.LCPI1_112:
+	.dword	0xbfefb9ea92ec689b              # double -0.99144486137381038
+.LCPI1_113:
+	.dword	0xbfd87de2a6aea96d              # double -0.38268343236509034
+.LCPI1_114:
+	.dword	0xbfed906bcf328d43              # double -0.92387953251128641
+.LCPI1_115:
+	.dword	0x3fe37af93f9513f3              # double 0.60876142900872166
+.LCPI1_116:
+	.dword	0xbfe963268b572484              # double -0.79335334029123361
+.LCPI1_117:
+	.dword	0xbfe963268b572493              # double -0.79335334029123528
+.LCPI1_118:
+	.dword	0xbfe37af93f9513d8              # double -0.60876142900871866
+.LCPI1_119:
+	.dword	0xbfd87de2a6aea959              # double -0.38268343236508923
+.LCPI1_120:
+	.dword	0xbfefb9ea92ec689d              # double -0.9914448613738106
+.LCPI1_121:
 	.dword	0xbfc0b5150f6da27e              # double -0.1305261922200493
 	.text
 	.globl	mdct_init48
@@ -1710,24 +1621,24 @@ mdct_sub48:                             # @mdct_sub48
 	.type	mdct_init48,@function
 mdct_init48:                            # @mdct_init48
 # %bb.0:                                # %.preheader204
-	addi.d	$sp, $sp, -624
-	st.d	$ra, $sp, 616                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 608                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 600                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 592                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 584                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 576                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 568                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 560                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 552                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 544                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 536                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 528                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 520                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 512                  # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 504                  # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 496                  # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 488                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -528
+	st.d	$ra, $sp, 520                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 512                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 504                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 496                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 488                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 480                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 472                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 464                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 456                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 448                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 440                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 432                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 424                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 416                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 408                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 400                  # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 392                  # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(ca.0)
 	lu12i.w	$a1, -207109
 	ori	$a1, $a1, 3789
@@ -1820,7 +1731,7 @@ mdct_init48:                            # @mdct_init48
 	st.d	$a1, $a0, %pc_lo12(ca.7)
 	pcalau12i	$a0, %pc_hi20(cs.7)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI1_0)
 	lu12i.w	$a1, -372096
 	ori	$a1, $a1, 1490
 	lu32i.d	$a1, -15
@@ -1828,338 +1739,404 @@ mdct_init48:                            # @mdct_init48
 	st.d	$a1, $a0, %pc_lo12(cs.7)
 	pcalau12i	$a0, %pc_hi20(win)
 	addi.d	$fp, $a0, %pc_lo12(win)
-	xvst	$xr0, $fp, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI1_1)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_4)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI1_4)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_5)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI1_5)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_2)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI1_2)
-	xvst	$xr2, $fp, 128
-	xvst	$xr3, $fp, 160
-	pcalau12i	$a0, %pc_hi20(.LCPI1_6)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI1_6)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_7)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI1_7)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_2)
+	vst	$vr0, $fp, 0
+	vst	$vr2, $fp, 16
+	vst	$vr3, $fp, 32
 	pcalau12i	$a0, %pc_hi20(.LCPI1_3)
-	xvst	$xr2, $fp, 192
-	xvld	$xr2, $a0, %pc_lo12(.LCPI1_3)
-	xvst	$xr3, $fp, 224
-	pcalau12i	$a0, %pc_hi20(.LCPI1_8)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI1_8)
-	xvst	$xr1, $fp, 32
-	xvst	$xr4, $fp, 64
-	xvst	$xr2, $fp, 96
-	xvst	$xr3, $fp, 256
-	xvst	$xr0, $fp, 288
-	pcalau12i	$a0, %pc_hi20(.LCPI1_9)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI1_9)
-	xvst	$xr1, $fp, 320
-	xvst	$xr4, $fp, 352
-	xvst	$xr2, $fp, 384
-	xvst	$xr0, $fp, 416
+	vld	$vr4, $a0, %pc_lo12(.LCPI1_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_4)
+	vld	$vr5, $a0, %pc_lo12(.LCPI1_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_5)
+	vld	$vr6, $a0, %pc_lo12(.LCPI1_5)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_6)
+	vld	$vr7, $a0, %pc_lo12(.LCPI1_6)
+	vst	$vr4, $fp, 48
+	vst	$vr5, $fp, 64
+	vst	$vr6, $fp, 80
+	vst	$vr7, $fp, 96
 	pcalau12i	$a0, %pc_hi20(.LCPI1_10)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI1_10)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_10)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_11)
-	vld	$vr1, $a0, %pc_lo12(.LCPI1_11)
-	xvldi	$xr2, -912
-	xvst	$xr2, $fp, 448
-	xvst	$xr0, $fp, 480
-	vst	$vr1, $fp, 512
+	vld	$vr8, $a0, %pc_lo12(.LCPI1_11)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_7)
+	vld	$vr9, $a0, %pc_lo12(.LCPI1_7)
+	vst	$vr1, $fp, 160
+	vst	$vr8, $fp, 176
+	pcalau12i	$a0, %pc_hi20(.LCPI1_12)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_12)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_13)
+	vld	$vr8, $a0, %pc_lo12(.LCPI1_13)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_14)
+	vld	$vr10, $a0, %pc_lo12(.LCPI1_14)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_8)
+	vst	$vr1, $fp, 192
+	vld	$vr11, $a0, %pc_lo12(.LCPI1_8)
+	vst	$vr8, $fp, 208
+	vst	$vr10, $fp, 224
+	pcalau12i	$a0, %pc_hi20(.LCPI1_15)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_15)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_16)
+	vld	$vr8, $a0, %pc_lo12(.LCPI1_16)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_9)
+	vst	$vr1, $fp, 240
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_9)
+	vst	$vr8, $fp, 256
+	pcalau12i	$a0, %pc_hi20(.LCPI1_17)
+	vld	$vr8, $a0, %pc_lo12(.LCPI1_17)
+	vst	$vr9, $fp, 112
+	vst	$vr11, $fp, 128
+	vst	$vr1, $fp, 144
+	vst	$vr8, $fp, 272
+	vst	$vr0, $fp, 288
+	vst	$vr2, $fp, 304
+	vst	$vr3, $fp, 320
+	vst	$vr4, $fp, 336
+	vst	$vr5, $fp, 352
+	vst	$vr6, $fp, 368
+	vst	$vr7, $fp, 384
+	vst	$vr9, $fp, 400
+	vst	$vr11, $fp, 416
+	vldi	$vr0, -912
+	vst	$vr0, $fp, 432
+	vst	$vr0, $fp, 448
+	pcalau12i	$a0, %pc_hi20(.LCPI1_18)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_18)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_19)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_19)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_20)
+	vld	$vr4, $a0, %pc_lo12(.LCPI1_20)
+	vst	$vr0, $fp, 464
+	vst	$vr2, $fp, 480
+	vst	$vr3, $fp, 496
+	vst	$vr4, $fp, 512
 	vrepli.b	$vr0, 0
 	vst	$vr0, $fp, 560
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $fp, 528
-	xvst	$xr1, $fp, 864
+	vst	$vr0, $fp, 544
+	vst	$vr0, $fp, 528
+	vst	$vr0, $fp, 864
+	vst	$vr0, $fp, 880
+	pcalau12i	$a0, %pc_hi20(.LCPI1_21)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_21)
+	fld.d	$fa3, $fp, 504
+	fld.d	$fa4, $fp, 496
 	vst	$vr0, $fp, 896
-	pcalau12i	$a0, %pc_hi20(.LCPI1_12)
-	vld	$vr0, $a0, %pc_lo12(.LCPI1_12)
-	fld.d	$fa1, $fp, 504
-	fld.d	$fa2, $fp, 496
-	fld.d	$fa3, $fp, 488
-	vst	$vr0, $fp, 912
-	fst.d	$fa1, $fp, 928
-	fst.d	$fa2, $fp, 936
-	fst.d	$fa3, $fp, 944
-	fld.d	$fa0, $fp, 480
-	fld.d	$fa1, $fp, 472
-	fld.d	$fa2, $fp, 464
-	fld.d	$fa3, $fp, 456
-	fst.d	$fa0, $fp, 952
-	fst.d	$fa1, $fp, 960
-	fst.d	$fa2, $fp, 968
-	fst.d	$fa3, $fp, 976
-	fld.d	$fa0, $fp, 448
-	fld.d	$fa1, $fp, 440
-	fld.d	$fa2, $fp, 432
-	pcalau12i	$a0, %pc_hi20(.LCPI1_13)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI1_13)
-	fst.d	$fa0, $fp, 984
-	fst.d	$fa1, $fp, 992
-	fst.d	$fa2, $fp, 1000
-	xvst	$xr3, $fp, 1008
-	pcalau12i	$a0, %pc_hi20(.LCPI1_14)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI1_14)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_15)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI1_15)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_16)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI1_16)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_17)
-	vld	$vr3, $a0, %pc_lo12(.LCPI1_17)
-	xvst	$xr0, $fp, 1040
-	xvst	$xr1, $fp, 1072
-	xvst	$xr2, $fp, 1104
+	vst	$vr2, $fp, 912
+	fst.d	$fa3, $fp, 928
+	fst.d	$fa4, $fp, 936
+	fld.d	$fa0, $fp, 488
+	fld.d	$fa2, $fp, 480
+	fld.d	$fa3, $fp, 472
+	fld.d	$fa4, $fp, 464
+	fst.d	$fa0, $fp, 944
+	fst.d	$fa2, $fp, 952
+	fst.d	$fa3, $fp, 960
+	fst.d	$fa4, $fp, 968
+	fld.d	$fa0, $fp, 456
+	fld.d	$fa2, $fp, 448
+	fld.d	$fa3, $fp, 440
+	fld.d	$fa4, $fp, 432
+	fst.d	$fa0, $fp, 976
+	fst.d	$fa2, $fp, 984
+	fst.d	$fa3, $fp, 992
+	fst.d	$fa4, $fp, 1000
+	vst	$vr1, $fp, 1008
+	pcalau12i	$a0, %pc_hi20(.LCPI1_22)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_22)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_23)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_23)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_24)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_24)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_25)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_25)
+	vst	$vr0, $fp, 1024
+	vst	$vr1, $fp, 1040
+	vst	$vr2, $fp, 1056
+	vst	$vr3, $fp, 1072
+	pcalau12i	$a0, %pc_hi20(.LCPI1_26)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_26)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_27)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_27)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_28)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_28)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_29)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_29)
+	vst	$vr0, $fp, 1088
+	vst	$vr1, $fp, 1104
+	vst	$vr2, $fp, 1120
 	vst	$vr3, $fp, 1136
-	pcalau12i	$a0, %pc_hi20(cos_l)
-	addi.d	$a0, $a0, %pc_lo12(cos_l)
-	ori	$s0, $zero, 44
-	pcalau12i	$a1, %pc_hi20(all)
-	addi.d	$s1, $a1, %pc_lo12(all)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_18)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI1_18)
-	fst.d	$fa0, $sp, 120                  # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.LCPI1_19)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI1_19)
-	fst.d	$fa0, $sp, 112                  # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.LCPI1_20)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI1_20)
+	pcalau12i	$a0, %pc_hi20(cos_l+112)
+	addi.d	$s0, $a0, %pc_lo12(cos_l+112)
+	ori	$s1, $zero, 44
+	pcalau12i	$a0, %pc_hi20(all)
+	addi.d	$s2, $a0, %pc_lo12(all)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_30)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_30)
 	fst.d	$fa0, $sp, 104                  # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.LCPI1_21)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI1_21)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_31)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_31)
 	fst.d	$fa0, $sp, 96                   # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.LCPI1_22)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI1_22)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_32)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_32)
 	fst.d	$fa0, $sp, 88                   # 8-byte Folded Spill
-	lu12i.w	$a1, 116508
-	ori	$a1, $a1, 1820
-	lu32i.d	$a1, -233017
-	lu52i.d	$a1, $a1, 1019
-	pcalau12i	$a2, %pc_hi20(.LCPI1_23)
-	fld.d	$fa0, $a2, %pc_lo12(.LCPI1_23)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_33)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_33)
 	fst.d	$fa0, $sp, 80                   # 8-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(.LCPI1_24)
-	fld.d	$fa0, $a2, %pc_lo12(.LCPI1_24)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_34)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_34)
 	fst.d	$fa0, $sp, 72                   # 8-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(.LCPI1_25)
-	fld.d	$fa0, $a2, %pc_lo12(.LCPI1_25)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_35)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_35)
 	fst.d	$fa0, $sp, 64                   # 8-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(.LCPI1_26)
-	fld.d	$fa0, $a2, %pc_lo12(.LCPI1_26)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_36)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_36)
 	fst.d	$fa0, $sp, 56                   # 8-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(.LCPI1_27)
-	fld.d	$fa0, $a2, %pc_lo12(.LCPI1_27)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_37)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_37)
 	fst.d	$fa0, $sp, 48                   # 8-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(.LCPI1_28)
-	fld.d	$fa0, $a2, %pc_lo12(.LCPI1_28)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_38)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_38)
 	fst.d	$fa0, $sp, 40                   # 8-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(.LCPI1_29)
-	fld.d	$fa0, $a2, %pc_lo12(.LCPI1_29)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_39)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_39)
 	fst.d	$fa0, $sp, 32                   # 8-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(.LCPI1_30)
-	fld.d	$fs4, $a2, %pc_lo12(.LCPI1_30)
-	pcalau12i	$a2, %pc_hi20(.LCPI1_31)
-	fld.d	$fs5, $a2, %pc_lo12(.LCPI1_31)
-	pcalau12i	$a2, %pc_hi20(.LCPI1_32)
-	fld.d	$fs6, $a2, %pc_lo12(.LCPI1_32)
-	pcalau12i	$a2, %pc_hi20(.LCPI1_33)
-	fld.d	$fs7, $a2, %pc_lo12(.LCPI1_33)
-	pcalau12i	$a2, %pc_hi20(.LCPI1_34)
-	fld.d	$fs0, $a2, %pc_lo12(.LCPI1_34)
-	pcalau12i	$a2, %pc_hi20(.LCPI1_35)
-	fld.d	$fs1, $a2, %pc_lo12(.LCPI1_35)
-	pcalau12i	$a2, %pc_hi20(.LCPI1_36)
-	fld.d	$fs2, $a2, %pc_lo12(.LCPI1_36)
-	xvreplgr2vr.d	$xr0, $a1
-	xvst	$xr0, $sp, 208                  # 32-byte Folded Spill
-	vreplgr2vr.d	$vr0, $a1
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(.LCPI1_40)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_40)
+	fst.d	$fa0, $sp, 24                   # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(.LCPI1_41)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_41)
+	fst.d	$fa0, $sp, 16                   # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(.LCPI1_42)
+	fld.d	$fs4, $a0, %pc_lo12(.LCPI1_42)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_43)
+	fld.d	$fs5, $a0, %pc_lo12(.LCPI1_43)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_44)
+	fld.d	$fs6, $a0, %pc_lo12(.LCPI1_44)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_45)
+	fld.d	$fs7, $a0, %pc_lo12(.LCPI1_45)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_46)
+	fld.d	$fs0, $a0, %pc_lo12(.LCPI1_46)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_47)
+	fld.d	$fs1, $a0, %pc_lo12(.LCPI1_47)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_48)
+	fld.d	$fs2, $a0, %pc_lo12(.LCPI1_48)
+	lu12i.w	$a0, 116508
+	ori	$a0, $a0, 1820
+	lu32i.d	$a0, -233017
+	lu52i.d	$a0, $a0, 1019
+	vreplgr2vr.d	$vr0, $a0
+	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
 	addi.w	$s3, $zero, -4
 	.p2align	4, , 16
 .LBB1_1:                                # %.preheader203
                                         # =>This Inner Loop Header: Depth=1
-	ldx.w	$a1, $s1, $s0
-	move	$s2, $a0
-	slli.d	$a0, $a1, 1
+	ldx.w	$a0, $s2, $s1
+	slli.d	$a0, $a0, 1
 	addi.d	$a0, $a0, 1
 	movgr2fr.w	$fa0, $a0
 	ffint.d.w	$fa0, $fa0
-	fld.d	$fa1, $sp, 120                  # 8-byte Folded Reload
+	fld.d	$fa1, $sp, 104                  # 8-byte Folded Reload
 	fmul.d	$fs3, $fa0, $fa1
-	fld.d	$fa0, $sp, 112                  # 8-byte Folded Reload
-	fmul.d	$fa0, $fs3, $fa0
-	pcaddu18i	$ra, %call36(cos)
-	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 176                  # 32-byte Folded Spill
-	fld.d	$fa0, $sp, 104                  # 8-byte Folded Reload
-	fmul.d	$fa0, $fs3, $fa0
-	pcaddu18i	$ra, %call36(cos)
-	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
 	fld.d	$fa0, $sp, 96                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 128                  # 32-byte Folded Spill
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	fld.d	$fa0, $sp, 88                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	xvld	$xr1, $sp, 176                  # 32-byte Folded Reload
-	vld	$vr2, $sp, 160                  # 16-byte Folded Reload
-	vextrins.d	$vr1, $vr2, 16
-	xvld	$xr2, $sp, 128                  # 32-byte Folded Reload
-	vextrins.d	$vr2, $vr0, 16
-	xvpermi.q	$xr1, $xr2, 2
-	xvld	$xr0, $sp, 208                  # 32-byte Folded Reload
-	xvfmul.d	$xr0, $xr1, $xr0
-	xvst	$xr0, $s2, 0
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr0, 16
+	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
+	vfmul.d	$vr0, $vr1, $vr0
+	vst	$vr0, $s0, -112
 	fld.d	$fa0, $sp, 80                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 176                  # 32-byte Folded Spill
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	fld.d	$fa0, $sp, 72                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr0, 16
+	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
+	vfmul.d	$vr0, $vr1, $vr0
+	vst	$vr0, $s0, -96
 	fld.d	$fa0, $sp, 64                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 128                  # 32-byte Folded Spill
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	fld.d	$fa0, $sp, 56                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	xvld	$xr1, $sp, 176                  # 32-byte Folded Reload
-	vld	$vr2, $sp, 160                  # 16-byte Folded Reload
-	vextrins.d	$vr1, $vr2, 16
-	xvld	$xr2, $sp, 128                  # 32-byte Folded Reload
-	vextrins.d	$vr2, $vr0, 16
-	xvpermi.q	$xr1, $xr2, 2
-	xvld	$xr0, $sp, 208                  # 32-byte Folded Reload
-	xvfmul.d	$xr0, $xr1, $xr0
-	xvst	$xr0, $s2, 32
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr0, 16
+	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
+	vfmul.d	$vr0, $vr1, $vr0
+	vst	$vr0, $s0, -80
 	fld.d	$fa0, $sp, 48                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 176                  # 32-byte Folded Spill
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	fld.d	$fa0, $sp, 40                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr0, 16
+	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
+	vfmul.d	$vr0, $vr1, $vr0
+	vst	$vr0, $s0, -64
 	fld.d	$fa0, $sp, 32                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fs3, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 128                  # 32-byte Folded Spill
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
+	fld.d	$fa0, $sp, 24                   # 8-byte Folded Reload
+	fmul.d	$fa0, $fs3, $fa0
+	pcaddu18i	$ra, %call36(cos)
+	jirl	$ra, $ra, 0
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr0, 16
+	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
+	vfmul.d	$vr0, $vr1, $vr0
+	vst	$vr0, $s0, -48
+	fld.d	$fa0, $sp, 16                   # 8-byte Folded Reload
+	fmul.d	$fa0, $fs3, $fa0
+	pcaddu18i	$ra, %call36(cos)
+	jirl	$ra, $ra, 0
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	fmul.d	$fa0, $fs3, $fs4
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	xvld	$xr1, $sp, 176                  # 32-byte Folded Reload
-	vld	$vr2, $sp, 160                  # 16-byte Folded Reload
-	vextrins.d	$vr1, $vr2, 16
-	xvld	$xr2, $sp, 128                  # 32-byte Folded Reload
-	vextrins.d	$vr2, $vr0, 16
-	xvpermi.q	$xr1, $xr2, 2
-	xvld	$xr0, $sp, 208                  # 32-byte Folded Reload
-	xvfmul.d	$xr0, $xr1, $xr0
-	xvst	$xr0, $s2, 64
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr0, 16
+	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
+	vfmul.d	$vr0, $vr1, $vr0
+	vst	$vr0, $s0, -32
 	fmul.d	$fa0, $fs3, $fs5
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 176                  # 32-byte Folded Spill
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	fmul.d	$fa0, $fs3, $fs6
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr0, 16
+	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
+	vfmul.d	$vr0, $vr1, $vr0
+	vst	$vr0, $s0, -16
 	fmul.d	$fa0, $fs3, $fs7
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
-	xvst	$xr0, $sp, 128                  # 32-byte Folded Spill
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	fmul.d	$fa0, $fs3, $fs0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	xvld	$xr1, $sp, 176                  # 32-byte Folded Reload
-	vld	$vr2, $sp, 160                  # 16-byte Folded Reload
-	vextrins.d	$vr1, $vr2, 16
-	xvld	$xr2, $sp, 128                  # 32-byte Folded Reload
-	vextrins.d	$vr2, $vr0, 16
-	xvpermi.q	$xr1, $xr2, 2
-	xvld	$xr0, $sp, 208                  # 32-byte Folded Reload
-	xvfmul.d	$xr0, $xr1, $xr0
-	xvst	$xr0, $s2, 96
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr0, 16
+	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
+	vfmul.d	$vr0, $vr1, $vr0
+	vst	$vr0, $s0, 0
 	fmul.d	$fa0, $fs3, $fs1
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 176                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	fmul.d	$fa0, $fs3, $fs2
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	vld	$vr1, $sp, 176                  # 16-byte Folded Reload
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
 	vextrins.d	$vr1, $vr0, 16
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
 	vfmul.d	$vr0, $vr1, $vr0
-	vst	$vr0, $s2, 128
-	addi.d	$s0, $s0, -4
-	addi.d	$a0, $s2, 144
-	bne	$s0, $s3, .LBB1_1
+	vst	$vr0, $s0, 16
+	addi.d	$s1, $s1, -4
+	addi.d	$s0, $s0, 144
+	bne	$s1, $s3, .LBB1_1
 # %bb.2:                                # %.preheader201.preheader
-	pcalau12i	$a0, %pc_hi20(.LCPI1_37)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI1_37)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_38)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI1_38)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_39)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI1_39)
-	xvst	$xr0, $s2, 144
-	xvst	$xr1, $s2, 176
-	xvst	$xr2, $s2, 208
-	pcalau12i	$a0, %pc_hi20(.LCPI1_40)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI1_40)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_41)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI1_41)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_42)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI1_42)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_43)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI1_43)
-	xvst	$xr0, $s2, 240
-	xvst	$xr1, $s2, 272
-	xvst	$xr2, $s2, 304
-	xvst	$xr3, $s2, 336
+	pcalau12i	$a0, %pc_hi20(.LCPI1_49)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_49)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_50)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_50)
+	vst	$vr0, $s0, -112
+	vst	$vr1, $s0, -96
+	pcalau12i	$a0, %pc_hi20(.LCPI1_51)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_51)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_52)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_52)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_53)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_53)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_54)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_54)
+	vst	$vr0, $s0, -80
+	vst	$vr1, $s0, -64
+	vst	$vr2, $s0, -48
+	vst	$vr3, $s0, -32
+	pcalau12i	$a0, %pc_hi20(.LCPI1_55)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_55)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_56)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_56)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_57)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_57)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_58)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_58)
+	vst	$vr0, $s0, -16
+	vst	$vr1, $s0, 0
+	vst	$vr2, $s0, 16
+	vst	$vr3, $s0, 32
+	pcalau12i	$a0, %pc_hi20(.LCPI1_59)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_59)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_60)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_60)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_61)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_61)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_62)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_62)
+	vst	$vr0, $s0, 48
+	vst	$vr1, $s0, 64
+	vst	$vr2, $s0, 80
+	vst	$vr3, $s0, 96
 	pcalau12i	$a0, %pc_hi20(enwindow)
 	addi.d	$a0, $a0, %pc_lo12(enwindow)
 	fld.d	$fa4, $a0, 1984
 	fld.d	$fa0, $a0, 0
 	fdiv.d	$fa1, $fa0, $fa4
-	xvld	$xr2, $a0, 8
-	fst.d	$fa1, $sp, 360
-	xvreplve0.d	$xr1, $xr0
+	vld	$vr2, $a0, 8
+	vld	$vr3, $a0, 24
+	fst.d	$fa1, $sp, 264
+	vreplvei.d	$vr1, $vr0, 0
+	vfdiv.d	$vr2, $vr2, $vr1
+	vfdiv.d	$vr1, $vr3, $vr1
 	fld.d	$fa3, $a0, 40
-	xvfdiv.d	$xr1, $xr2, $xr1
-	xvst	$xr1, $a0, 0
+	vst	$vr1, $a0, 16
+	vst	$vr2, $a0, 0
 	fld.d	$fa1, $a0, 48
 	fdiv.d	$fa2, $fa3, $fa0
 	fst.d	$fa2, $a0, 32
@@ -2172,7 +2149,7 @@ mdct_init48:                            # @mdct_init48
 	addi.d	$a0, $a0, 120
 	ori	$a2, $zero, 128
 	ori	$a3, $zero, 112
-	addi.d	$a4, $sp, 240
+	addi.d	$a4, $sp, 144
 	ori	$a5, $zero, 248
 	.p2align	4, , 16
 .LBB1_3:                                # %.preheader198
@@ -2252,18 +2229,18 @@ mdct_init48:                            # @mdct_init48
 	fdiv.d	$fa0, $fa0, $fa4
 	fst.d	$fa0, $a1, 160
 	fld.d	$fa0, $a0, 0
-	xvst	$xr4, $sp, 208                  # 32-byte Folded Spill
+	vst	$vr4, $sp, 128                  # 16-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa4
 	fst.d	$fa0, $a1, 168
 	ori	$s2, $zero, 31
 	pcalau12i	$a0, %pc_hi20(mm)
 	addi.d	$s0, $a0, %pc_lo12(mm)
 	move	$s1, $zero
-	pcalau12i	$a0, %pc_hi20(.LCPI1_44)
-	fld.d	$fs0, $a0, %pc_lo12(.LCPI1_44)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_63)
+	fld.d	$fs0, $a0, %pc_lo12(.LCPI1_63)
 	lu52i.d	$a0, $zero, 1017
 	movgr2fr.d	$fs1, $a0
-	addi.d	$s3, $sp, 240
+	addi.d	$s3, $sp, 144
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_5:                                # =>This Inner Loop Header: Depth=1
@@ -2283,7 +2260,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.6:                                # %.preheader195.1.preheader
 	move	$s2, $zero
 	ori	$s3, $zero, 29
-	addi.d	$s4, $sp, 240
+	addi.d	$s4, $sp, 144
 	ori	$s5, $zero, 248
 	.p2align	4, , 16
 .LBB1_7:                                # %.preheader195.1
@@ -2308,7 +2285,7 @@ mdct_init48:                            # @mdct_init48
 	add.d	$a0, $a0, $s2
 	addi.d	$s0, $a0, 120
 	ori	$s1, $zero, 27
-	addi.d	$s2, $sp, 240
+	addi.d	$s2, $sp, 144
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_9:                                # %.preheader195.2
@@ -2330,7 +2307,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.10:                               # %.preheader195.3.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 25
-	addi.d	$s3, $sp, 240
+	addi.d	$s3, $sp, 144
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_11:                               # %.preheader195.3
@@ -2352,7 +2329,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.12:                               # %.preheader195.4.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 23
-	addi.d	$s3, $sp, 240
+	addi.d	$s3, $sp, 144
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_13:                               # %.preheader195.4
@@ -2374,7 +2351,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.14:                               # %.preheader195.5.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 21
-	addi.d	$s3, $sp, 240
+	addi.d	$s3, $sp, 144
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_15:                               # %.preheader195.5
@@ -2396,7 +2373,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.16:                               # %.preheader195.6.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 19
-	addi.d	$s3, $sp, 240
+	addi.d	$s3, $sp, 144
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_17:                               # %.preheader195.6
@@ -2418,7 +2395,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.18:                               # %.preheader195.7.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 17
-	addi.d	$s3, $sp, 240
+	addi.d	$s3, $sp, 144
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_19:                               # %.preheader195.7
@@ -2440,7 +2417,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.20:                               # %.preheader195.8.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 15
-	addi.d	$s3, $sp, 240
+	addi.d	$s3, $sp, 144
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_21:                               # %.preheader195.8
@@ -2462,7 +2439,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.22:                               # %.preheader195.9.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 13
-	addi.d	$s3, $sp, 240
+	addi.d	$s3, $sp, 144
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_23:                               # %.preheader195.9
@@ -2484,7 +2461,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.24:                               # %.preheader195.10.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 11
-	addi.d	$s3, $sp, 240
+	addi.d	$s3, $sp, 144
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_25:                               # %.preheader195.10
@@ -2506,7 +2483,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.26:                               # %.preheader195.11.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 9
-	addi.d	$s3, $sp, 240
+	addi.d	$s3, $sp, 144
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_27:                               # %.preheader195.11
@@ -2528,7 +2505,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.28:                               # %.preheader195.12.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 7
-	addi.d	$s3, $sp, 240
+	addi.d	$s3, $sp, 144
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_29:                               # %.preheader195.12
@@ -2550,7 +2527,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.30:                               # %.preheader195.13.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 5
-	addi.d	$s3, $sp, 240
+	addi.d	$s3, $sp, 144
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_31:                               # %.preheader195.13
@@ -2572,7 +2549,7 @@ mdct_init48:                            # @mdct_init48
 # %bb.32:                               # %.preheader195.14.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 3
-	addi.d	$s3, $sp, 240
+	addi.d	$s3, $sp, 144
 	ori	$s4, $zero, 248
 	.p2align	4, , 16
 .LBB1_33:                               # %.preheader195.14
@@ -2592,156 +2569,156 @@ mdct_init48:                            # @mdct_init48
 	addi.d	$s0, $s0, 8
 	bne	$s1, $s4, .LBB1_33
 # %bb.34:                               # %.preheader195.15
-	fld.d	$fa0, $sp, 240
-	pcalau12i	$a0, %pc_hi20(.LCPI1_45)
-	fld.d	$fa1, $a0, %pc_lo12(.LCPI1_45)
+	fld.d	$fa0, $sp, 144
+	pcalau12i	$a0, %pc_hi20(.LCPI1_64)
+	fld.d	$fa1, $a0, %pc_lo12(.LCPI1_64)
 	fmul.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 248
-	pcalau12i	$a0, %pc_hi20(.LCPI1_46)
-	fld.d	$fa2, $a0, %pc_lo12(.LCPI1_46)
-	fld.d	$fa3, $sp, 256
-	pcalau12i	$a0, %pc_hi20(.LCPI1_47)
-	fld.d	$fa4, $a0, %pc_lo12(.LCPI1_47)
+	fld.d	$fa1, $sp, 152
+	pcalau12i	$a0, %pc_hi20(.LCPI1_65)
+	fld.d	$fa2, $a0, %pc_lo12(.LCPI1_65)
+	fld.d	$fa3, $sp, 160
+	pcalau12i	$a0, %pc_hi20(.LCPI1_66)
+	fld.d	$fa4, $a0, %pc_lo12(.LCPI1_66)
 	fst.d	$fa0, $s0, -120
 	fmul.d	$fa0, $fa1, $fa2
 	fst.d	$fa0, $s0, -112
 	fmul.d	$fa0, $fa3, $fa4
-	fld.d	$fa1, $sp, 264
-	pcalau12i	$a0, %pc_hi20(.LCPI1_48)
-	fld.d	$fa2, $a0, %pc_lo12(.LCPI1_48)
-	fld.d	$fa3, $sp, 272
-	pcalau12i	$a0, %pc_hi20(.LCPI1_49)
-	fld.d	$fa4, $a0, %pc_lo12(.LCPI1_49)
+	fld.d	$fa1, $sp, 168
+	pcalau12i	$a0, %pc_hi20(.LCPI1_67)
+	fld.d	$fa2, $a0, %pc_lo12(.LCPI1_67)
+	fld.d	$fa3, $sp, 176
+	pcalau12i	$a0, %pc_hi20(.LCPI1_68)
+	fld.d	$fa4, $a0, %pc_lo12(.LCPI1_68)
 	fst.d	$fa0, $s0, -104
 	fmul.d	$fa0, $fa1, $fa2
 	fst.d	$fa0, $s0, -96
 	fmul.d	$fa0, $fa3, $fa4
-	fld.d	$fa1, $sp, 280
-	pcalau12i	$a0, %pc_hi20(.LCPI1_50)
-	fld.d	$fa2, $a0, %pc_lo12(.LCPI1_50)
-	fld.d	$fa3, $sp, 288
-	pcalau12i	$a0, %pc_hi20(.LCPI1_51)
-	fld.d	$fa4, $a0, %pc_lo12(.LCPI1_51)
+	fld.d	$fa1, $sp, 184
+	pcalau12i	$a0, %pc_hi20(.LCPI1_69)
+	fld.d	$fa2, $a0, %pc_lo12(.LCPI1_69)
+	fld.d	$fa3, $sp, 192
+	pcalau12i	$a0, %pc_hi20(.LCPI1_70)
+	fld.d	$fa4, $a0, %pc_lo12(.LCPI1_70)
 	fst.d	$fa0, $s0, -88
 	fmul.d	$fa0, $fa1, $fa2
 	fst.d	$fa0, $s0, -80
 	fmul.d	$fa1, $fa3, $fa4
-	fld.d	$fa2, $sp, 296
-	pcalau12i	$a0, %pc_hi20(.LCPI1_52)
-	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_52)
-	fld.d	$fa3, $sp, 304
-	pcalau12i	$a0, %pc_hi20(.LCPI1_53)
-	fld.d	$fa4, $a0, %pc_lo12(.LCPI1_53)
+	fld.d	$fa2, $sp, 200
+	pcalau12i	$a0, %pc_hi20(.LCPI1_71)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_71)
+	fld.d	$fa3, $sp, 208
+	pcalau12i	$a0, %pc_hi20(.LCPI1_72)
+	fld.d	$fa4, $a0, %pc_lo12(.LCPI1_72)
 	fst.d	$fa1, $s0, -72
 	fmul.d	$fa1, $fa2, $fa0
 	fst.d	$fa1, $s0, -64
 	fmul.d	$fa1, $fa3, $fa4
-	fld.d	$fa2, $sp, 312
-	pcalau12i	$a0, %pc_hi20(.LCPI1_54)
-	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_54)
-	fld.d	$fa4, $sp, 320
-	pcalau12i	$a0, %pc_hi20(.LCPI1_55)
-	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_55)
+	fld.d	$fa2, $sp, 216
+	pcalau12i	$a0, %pc_hi20(.LCPI1_73)
+	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_73)
+	fld.d	$fa4, $sp, 224
+	pcalau12i	$a0, %pc_hi20(.LCPI1_74)
+	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_74)
 	fst.d	$fa1, $s0, -56
 	fmul.d	$fa1, $fa2, $fa3
 	fst.d	$fa1, $s0, -48
 	fmul.d	$fa1, $fa4, $fa5
-	fld.d	$fa2, $sp, 328
-	pcalau12i	$a0, %pc_hi20(.LCPI1_56)
-	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_56)
-	fld.d	$fa4, $sp, 336
-	pcalau12i	$a0, %pc_hi20(.LCPI1_57)
-	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_57)
+	fld.d	$fa2, $sp, 232
+	pcalau12i	$a0, %pc_hi20(.LCPI1_75)
+	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_75)
+	fld.d	$fa4, $sp, 240
+	pcalau12i	$a0, %pc_hi20(.LCPI1_76)
+	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_76)
 	fst.d	$fa1, $s0, -40
 	fmul.d	$fa1, $fa2, $fa3
 	fst.d	$fa1, $s0, -32
 	fmul.d	$fa1, $fa4, $fa5
-	fld.d	$fa2, $sp, 344
-	pcalau12i	$a0, %pc_hi20(.LCPI1_58)
-	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_58)
-	fld.d	$fa4, $sp, 352
-	pcalau12i	$a0, %pc_hi20(.LCPI1_59)
-	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_59)
+	fld.d	$fa2, $sp, 248
+	pcalau12i	$a0, %pc_hi20(.LCPI1_77)
+	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_77)
+	fld.d	$fa4, $sp, 256
+	pcalau12i	$a0, %pc_hi20(.LCPI1_78)
+	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_78)
 	fst.d	$fa1, $s0, -24
 	fmul.d	$fa1, $fa2, $fa3
 	fst.d	$fa1, $s0, -16
 	fmul.d	$fa1, $fa4, $fa5
-	fld.d	$fa2, $sp, 360
-	pcalau12i	$a0, %pc_hi20(.LCPI1_60)
-	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_60)
-	fld.d	$fa4, $sp, 368
-	pcalau12i	$a0, %pc_hi20(.LCPI1_61)
-	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_61)
+	fld.d	$fa2, $sp, 264
+	pcalau12i	$a0, %pc_hi20(.LCPI1_79)
+	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_79)
+	fld.d	$fa4, $sp, 272
+	pcalau12i	$a0, %pc_hi20(.LCPI1_80)
+	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_80)
 	fst.d	$fa1, $s0, -8
 	fmul.d	$fa1, $fa2, $fa3
 	fst.d	$fa1, $s0, 0
 	fmul.d	$fa1, $fa4, $fa5
-	fld.d	$fa2, $sp, 376
-	pcalau12i	$a0, %pc_hi20(.LCPI1_62)
-	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_62)
-	fld.d	$fa4, $sp, 384
-	pcalau12i	$a0, %pc_hi20(.LCPI1_63)
-	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_63)
+	fld.d	$fa2, $sp, 280
+	pcalau12i	$a0, %pc_hi20(.LCPI1_81)
+	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_81)
+	fld.d	$fa4, $sp, 288
+	pcalau12i	$a0, %pc_hi20(.LCPI1_82)
+	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_82)
 	fst.d	$fa1, $s0, 8
 	fmul.d	$fa1, $fa2, $fa3
 	fst.d	$fa1, $s0, 16
 	fmul.d	$fa1, $fa4, $fa5
-	fld.d	$fa2, $sp, 392
-	pcalau12i	$a0, %pc_hi20(.LCPI1_64)
-	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_64)
-	fld.d	$fa4, $sp, 400
-	pcalau12i	$a0, %pc_hi20(.LCPI1_65)
-	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_65)
+	fld.d	$fa2, $sp, 296
+	pcalau12i	$a0, %pc_hi20(.LCPI1_83)
+	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_83)
+	fld.d	$fa4, $sp, 304
+	pcalau12i	$a0, %pc_hi20(.LCPI1_84)
+	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_84)
 	fst.d	$fa1, $s0, 24
 	fmul.d	$fa1, $fa2, $fa3
 	fst.d	$fa1, $s0, 32
 	fmul.d	$fa1, $fa4, $fa5
-	fld.d	$fa2, $sp, 408
-	pcalau12i	$a0, %pc_hi20(.LCPI1_66)
-	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_66)
-	fld.d	$fa4, $sp, 416
-	pcalau12i	$a0, %pc_hi20(.LCPI1_67)
-	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_67)
+	fld.d	$fa2, $sp, 312
+	pcalau12i	$a0, %pc_hi20(.LCPI1_85)
+	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_85)
+	fld.d	$fa4, $sp, 320
+	pcalau12i	$a0, %pc_hi20(.LCPI1_86)
+	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_86)
 	fst.d	$fa1, $s0, 40
 	fmul.d	$fa1, $fa2, $fa3
 	fst.d	$fa1, $s0, 48
 	fmul.d	$fa1, $fa4, $fa5
-	fld.d	$fa2, $sp, 424
-	pcalau12i	$a0, %pc_hi20(.LCPI1_68)
-	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_68)
-	fld.d	$fa4, $sp, 432
-	pcalau12i	$a0, %pc_hi20(.LCPI1_69)
-	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_69)
+	fld.d	$fa2, $sp, 328
+	pcalau12i	$a0, %pc_hi20(.LCPI1_87)
+	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_87)
+	fld.d	$fa4, $sp, 336
+	pcalau12i	$a0, %pc_hi20(.LCPI1_88)
+	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_88)
 	fst.d	$fa1, $s0, 56
 	fmul.d	$fa1, $fa2, $fa3
 	fst.d	$fa1, $s0, 64
 	fmul.d	$fa1, $fa4, $fa5
-	fld.d	$fa2, $sp, 440
-	pcalau12i	$a0, %pc_hi20(.LCPI1_70)
-	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_70)
-	fld.d	$fa4, $sp, 448
-	pcalau12i	$a0, %pc_hi20(.LCPI1_71)
-	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_71)
+	fld.d	$fa2, $sp, 344
+	pcalau12i	$a0, %pc_hi20(.LCPI1_89)
+	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_89)
+	fld.d	$fa4, $sp, 352
+	pcalau12i	$a0, %pc_hi20(.LCPI1_90)
+	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_90)
 	fst.d	$fa1, $s0, 72
 	fmul.d	$fa1, $fa2, $fa3
 	fst.d	$fa1, $s0, 80
 	fmul.d	$fa1, $fa4, $fa5
-	fld.d	$fa2, $sp, 456
-	pcalau12i	$a0, %pc_hi20(.LCPI1_72)
-	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_72)
-	fld.d	$fa4, $sp, 464
-	pcalau12i	$a0, %pc_hi20(.LCPI1_73)
-	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_73)
+	fld.d	$fa2, $sp, 360
+	pcalau12i	$a0, %pc_hi20(.LCPI1_91)
+	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_91)
+	fld.d	$fa4, $sp, 368
+	pcalau12i	$a0, %pc_hi20(.LCPI1_92)
+	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_92)
 	fst.d	$fa1, $s0, 88
 	fmul.d	$fa1, $fa2, $fa3
 	fst.d	$fa1, $s0, 96
 	fmul.d	$fa1, $fa4, $fa5
-	fld.d	$fa2, $sp, 472
-	pcalau12i	$a0, %pc_hi20(.LCPI1_74)
-	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_74)
-	fld.d	$fa4, $sp, 480
-	pcalau12i	$a0, %pc_hi20(.LCPI1_75)
-	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_75)
+	fld.d	$fa2, $sp, 376
+	pcalau12i	$a0, %pc_hi20(.LCPI1_93)
+	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_93)
+	fld.d	$fa4, $sp, 384
+	pcalau12i	$a0, %pc_hi20(.LCPI1_94)
+	fld.d	$fa5, $a0, %pc_lo12(.LCPI1_94)
 	fst.d	$fa1, $s0, 104
 	fmul.d	$fa1, $fa2, $fa3
 	fst.d	$fa1, $s0, 112
@@ -2845,204 +2822,314 @@ mdct_init48:                            # @mdct_init48
 	fst.d	$fa4, $fp, 1104
 	lu52i.d	$a0, $zero, 1008
 	movgr2fr.d	$fa1, $a0
-	xvld	$xr2, $fp, 0
-	xvld	$xr5, $sp, 208                  # 32-byte Folded Reload
-	fmul.d	$fa1, $fa5, $fa1
-	xvreplve0.d	$xr1, $xr1
-	xvld	$xr3, $fp, 288
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvst	$xr2, $fp, 0
-	xvld	$xr2, $fp, 864
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr3, $fp, 288
-	xvld	$xr3, $fp, 32
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvst	$xr2, $fp, 864
-	xvld	$xr2, $fp, 320
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr3, $fp, 32
-	xvld	$xr3, $fp, 896
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvst	$xr2, $fp, 320
-	xvld	$xr2, $fp, 64
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr3, $fp, 896
-	xvld	$xr3, $fp, 352
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvst	$xr2, $fp, 64
-	xvld	$xr2, $fp, 928
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr3, $fp, 352
-	xvld	$xr3, $fp, 96
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvst	$xr2, $fp, 928
-	xvld	$xr2, $fp, 384
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr3, $fp, 96
-	xvld	$xr3, $fp, 960
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvst	$xr2, $fp, 384
-	xvld	$xr2, $fp, 128
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr3, $fp, 960
-	xvld	$xr3, $fp, 416
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvst	$xr2, $fp, 128
-	xvld	$xr2, $fp, 992
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr3, $fp, 416
-	xvld	$xr3, $fp, 160
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvst	$xr2, $fp, 992
-	xvld	$xr2, $fp, 448
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr3, $fp, 160
-	xvld	$xr3, $fp, 1024
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvst	$xr2, $fp, 448
-	xvld	$xr2, $fp, 192
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr3, $fp, 1024
-	xvld	$xr3, $fp, 480
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvst	$xr2, $fp, 192
-	xvld	$xr2, $fp, 1056
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr3, $fp, 480
-	xvld	$xr3, $fp, 224
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvst	$xr2, $fp, 1056
-	xvld	$xr2, $fp, 512
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr3, $fp, 224
-	xvld	$xr3, $fp, 1088
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvst	$xr2, $fp, 512
-	xvld	$xr2, $fp, 256
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr3, $fp, 1088
-	xvld	$xr3, $fp, 544
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvld	$xr4, $fp, 1120
-	xvst	$xr2, $fp, 256
-	xvfmul.d	$xr2, $xr1, $xr3
-	xvst	$xr2, $fp, 544
-	xvfmul.d	$xr1, $xr1, $xr4
-	pcalau12i	$a1, %pc_hi20(.LCPI1_76)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI1_76)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_77)
-	vld	$vr3, $a1, %pc_lo12(.LCPI1_77)
-	xvst	$xr1, $fp, 1120
-	xvreplve0.d	$xr1, $xr5
-	xvfmul.d	$xr1, $xr1, $xr2
-	vst	$vr3, $fp, 576
+	vld	$vr3, $fp, 0
+	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
+	fmul.d	$fa2, $fa6, $fa1
+	vreplvei.d	$vr2, $vr2, 0
+	vld	$vr4, $fp, 288
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 0
+	vld	$vr3, $fp, 864
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 288
+	vld	$vr4, $fp, 16
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 864
+	vld	$vr3, $fp, 304
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 16
+	vld	$vr4, $fp, 880
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 304
+	vld	$vr3, $fp, 32
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 880
+	vld	$vr4, $fp, 320
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 32
+	vld	$vr3, $fp, 896
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 320
+	vld	$vr4, $fp, 48
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 896
+	vld	$vr3, $fp, 336
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 48
+	vld	$vr4, $fp, 912
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 336
+	vld	$vr3, $fp, 64
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 912
+	vld	$vr4, $fp, 352
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 64
+	vld	$vr3, $fp, 928
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 352
+	vld	$vr4, $fp, 80
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 928
+	vld	$vr3, $fp, 368
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 80
+	vld	$vr4, $fp, 944
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 368
+	vld	$vr3, $fp, 96
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 944
+	vld	$vr4, $fp, 384
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 96
+	vld	$vr3, $fp, 960
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 384
+	vld	$vr4, $fp, 112
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 960
+	vld	$vr3, $fp, 400
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 112
+	vld	$vr4, $fp, 976
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 400
+	vld	$vr3, $fp, 128
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 976
+	vld	$vr4, $fp, 416
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 128
+	vld	$vr3, $fp, 992
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 416
+	vld	$vr4, $fp, 144
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 992
+	vld	$vr3, $fp, 432
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 144
+	vld	$vr4, $fp, 1008
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 432
+	vld	$vr3, $fp, 160
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 1008
+	vld	$vr4, $fp, 448
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 160
+	vld	$vr3, $fp, 1024
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 448
+	vld	$vr4, $fp, 176
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 1024
+	vld	$vr3, $fp, 464
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 176
+	vld	$vr4, $fp, 1040
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 464
+	vld	$vr3, $fp, 192
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 1040
+	vld	$vr4, $fp, 480
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 192
+	vld	$vr3, $fp, 1056
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 480
+	vld	$vr4, $fp, 208
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 1056
+	vld	$vr3, $fp, 496
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 208
+	vld	$vr4, $fp, 1072
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 496
+	vld	$vr3, $fp, 224
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 1072
+	vld	$vr4, $fp, 512
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 224
+	vld	$vr3, $fp, 1088
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 512
+	vld	$vr4, $fp, 240
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 1088
+	vld	$vr3, $fp, 528
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 240
+	vld	$vr4, $fp, 1104
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 528
+	vld	$vr3, $fp, 256
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 1104
+	vld	$vr4, $fp, 544
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 256
+	vld	$vr3, $fp, 1120
+	vfmul.d	$vr4, $vr2, $vr4
+	vst	$vr4, $fp, 544
+	vld	$vr4, $fp, 272
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 1120
+	vld	$vr3, $fp, 560
+	vfmul.d	$vr4, $vr2, $vr4
+	vld	$vr5, $fp, 1136
+	vst	$vr4, $fp, 272
+	vfmul.d	$vr3, $vr2, $vr3
+	vst	$vr3, $fp, 560
+	vfmul.d	$vr2, $vr2, $vr5
+	pcalau12i	$a1, %pc_hi20(.LCPI1_95)
+	vld	$vr3, $a1, %pc_lo12(.LCPI1_95)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_96)
+	vld	$vr4, $a1, %pc_lo12(.LCPI1_96)
+	vst	$vr2, $fp, 1136
+	vreplvei.d	$vr2, $vr6, 0
+	vfmul.d	$vr2, $vr2, $vr3
+	vst	$vr4, $fp, 576
+	vreplgr2vr.d	$vr3, $a0
+	vfmul.d	$vr2, $vr2, $vr3
+	lu12i.w	$a0, 349525
+	ori	$a0, $a0, 1365
+	lu32i.d	$a0, 349525
+	lu52i.d	$a0, $a0, 1021
+	pcalau12i	$a1, %pc_hi20(.LCPI1_97)
+	fld.d	$fa3, $a1, %pc_lo12(.LCPI1_97)
+	vreplgr2vr.d	$vr4, $a0
+	vfmul.d	$vr2, $vr2, $vr4
+	vreplvei.d	$vr4, $vr2, 0
+	fmul.d	$fa3, $fa4, $fa3
+	pcalau12i	$a0, %pc_hi20(cos_s)
+	addi.d	$a0, $a0, %pc_lo12(cos_s)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_98)
+	vld	$vr4, $a1, %pc_lo12(.LCPI1_98)
+	fst.d	$fa3, $a0, 144
+	vfmul.d	$vr3, $vr2, $vr4
+	pcalau12i	$a1, %pc_hi20(.LCPI1_99)
+	vld	$vr4, $a1, %pc_lo12(.LCPI1_99)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_100)
+	vld	$vr5, $a1, %pc_lo12(.LCPI1_100)
+	vst	$vr3, $a0, 0
+	vfmul.d	$vr3, $vr2, $vr4
+	vst	$vr3, $a0, 24
+	vfmul.d	$vr3, $vr2, $vr5
+	pcalau12i	$a1, %pc_hi20(.LCPI1_101)
+	vld	$vr4, $a1, %pc_lo12(.LCPI1_101)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_102)
+	vld	$vr5, $a1, %pc_lo12(.LCPI1_102)
+	vst	$vr3, $a0, 48
+	vfmul.d	$vr3, $vr2, $vr4
+	vst	$vr3, $a0, 72
+	vfmul.d	$vr4, $vr2, $vr5
+	pcalau12i	$a1, %pc_hi20(.LCPI1_103)
+	vld	$vr5, $a1, %pc_lo12(.LCPI1_103)
+	vst	$vr4, $a0, 96
+	pcalau12i	$a1, %pc_hi20(.LCPI1_104)
+	vld	$vr4, $a1, %pc_lo12(.LCPI1_104)
+	vfmul.d	$vr5, $vr2, $vr5
+	vst	$vr5, $a0, 120
+	vstelm.d	$vr3, $a0, 152, 1
+	vfmul.d	$vr3, $vr2, $vr4
+	pcalau12i	$a1, %pc_hi20(.LCPI1_105)
+	vld	$vr4, $a1, %pc_lo12(.LCPI1_105)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_106)
+	vld	$vr5, $a1, %pc_lo12(.LCPI1_106)
+	vst	$vr3, $a0, 168
+	vfmul.d	$vr3, $vr2, $vr4
+	vst	$vr3, $a0, 192
+	vfmul.d	$vr3, $vr2, $vr5
+	pcalau12i	$a1, %pc_hi20(.LCPI1_107)
+	vld	$vr4, $a1, %pc_lo12(.LCPI1_107)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_108)
+	vld	$vr5, $a1, %pc_lo12(.LCPI1_108)
+	vst	$vr3, $a0, 216
+	vfmul.d	$vr3, $vr2, $vr4
+	vst	$vr3, $a0, 240
+	vfmul.d	$vr2, $vr2, $vr5
+	pcalau12i	$a1, %pc_hi20(.LCPI1_109)
+	fld.d	$fa3, $a1, %pc_lo12(.LCPI1_109)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_110)
+	fld.d	$fa4, $a1, %pc_lo12(.LCPI1_110)
+	vst	$vr2, $a0, 264
+	fmul.d	$fa2, $fa6, $fa3
+	fmul.d	$fa1, $fa2, $fa1
+	fmul.d	$fa1, $fa1, $fa4
+	pcalau12i	$a1, %pc_hi20(.LCPI1_111)
+	fld.d	$fa2, $a1, %pc_lo12(.LCPI1_111)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_112)
+	fld.d	$fa3, $a1, %pc_lo12(.LCPI1_112)
 	lu12i.w	$a1, 343402
 	ori	$a1, $a1, 1652
 	lu32i.d	$a1, -487951
 	lu52i.d	$a1, $a1, 1022
 	st.d	$a1, $fp, 592
-	xvreplgr2vr.d	$xr2, $a0
-	xvfmul.d	$xr1, $xr1, $xr2
-	lu12i.w	$a0, 349525
-	ori	$a0, $a0, 1365
-	lu32i.d	$a0, 349525
-	lu52i.d	$a0, $a0, 1021
-	pcalau12i	$a1, %pc_hi20(.LCPI1_78)
-	fld.d	$fa2, $a1, %pc_lo12(.LCPI1_78)
-	xvreplgr2vr.d	$xr3, $a0
-	xvfmul.d	$xr1, $xr1, $xr3
-	xvpickve.d	$xr3, $xr1, 1
-	fmul.d	$fa2, $fa3, $fa2
-	pcalau12i	$a0, %pc_hi20(cos_s)
-	addi.d	$a0, $a0, %pc_lo12(cos_s)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_79)
-	fld.d	$fa4, $a1, %pc_lo12(.LCPI1_79)
-	fst.d	$fa2, $a0, 32
-	fmul.d	$fa2, $fa3, $fa4
-	pcalau12i	$a1, %pc_hi20(.LCPI1_80)
-	vld	$vr4, $a1, %pc_lo12(.LCPI1_80)
-	fst.d	$fa2, $a0, 128
-	pcalau12i	$a1, %pc_hi20(.LCPI1_81)
-	fld.d	$fa2, $a1, %pc_lo12(.LCPI1_81)
-	vfmul.d	$vr4, $vr1, $vr4
-	vstelm.d	$vr4, $a0, 80, 1
-	vst	$vr4, $a0, 144
-	fmul.d	$fa2, $fa3, $fa2
-	pcalau12i	$a1, %pc_hi20(.LCPI1_82)
-	fld.d	$fa4, $a1, %pc_lo12(.LCPI1_82)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_83)
-	vld	$vr5, $a1, %pc_lo12(.LCPI1_83)
-	fst.d	$fa2, $a0, 200
-	fmul.d	$fa2, $fa3, $fa4
-	fst.d	$fa2, $a0, 248
-	vfmul.d	$vr2, $vr1, $vr5
-	pcalau12i	$a1, %pc_hi20(.LCPI1_84)
-	xvld	$xr3, $a1, %pc_lo12(.LCPI1_84)
-	vst	$vr2, $a0, 264
-	pcalau12i	$a1, %pc_hi20(.LCPI1_85)
-	fld.d	$fa2, $a1, %pc_lo12(.LCPI1_85)
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr3, $a0, 0
-	xvpickve.d	$xr3, $xr1, 2
-	fmul.d	$fa2, $fa3, $fa2
+	fmul.d	$fa2, $fa1, $fa2
+	fst.d	$fa2, $a0, 16
+	fmul.d	$fa2, $fa1, $fa3
+	pcalau12i	$a1, %pc_hi20(.LCPI1_113)
+	fld.d	$fa3, $a1, %pc_lo12(.LCPI1_113)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_114)
+	fld.d	$fa4, $a1, %pc_lo12(.LCPI1_114)
 	fst.d	$fa2, $a0, 40
-	pcalau12i	$a1, %pc_hi20(.LCPI1_86)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI1_86)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_87)
-	fld.d	$fa4, $a1, %pc_lo12(.LCPI1_87)
-	xvpermi.d	$xr1, $xr1, 36
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvst	$xr2, $a0, 48
-	fmul.d	$fa2, $fa3, $fa4
-	pcalau12i	$a1, %pc_hi20(.LCPI1_88)
-	xvld	$xr4, $a1, %pc_lo12(.LCPI1_88)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_89)
-	fld.d	$fa5, $a1, %pc_lo12(.LCPI1_89)
+	fmul.d	$fa2, $fa1, $fa3
+	fst.d	$fa2, $a0, 64
+	fmul.d	$fa2, $fa1, $fa4
+	pcalau12i	$a1, %pc_hi20(.LCPI1_115)
+	fld.d	$fa3, $a1, %pc_lo12(.LCPI1_115)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_116)
+	fld.d	$fa4, $a1, %pc_lo12(.LCPI1_116)
 	fst.d	$fa2, $a0, 88
-	xvfmul.d	$xr2, $xr1, $xr4
-	xvst	$xr2, $a0, 96
-	fmul.d	$fa2, $fa3, $fa5
-	pcalau12i	$a1, %pc_hi20(.LCPI1_90)
-	fld.d	$fa4, $a1, %pc_lo12(.LCPI1_90)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_91)
-	xvld	$xr5, $a1, %pc_lo12(.LCPI1_91)
+	fmul.d	$fa2, $fa1, $fa3
+	fst.d	$fa2, $a0, 112
+	fmul.d	$fa2, $fa1, $fa4
+	pcalau12i	$a1, %pc_hi20(.LCPI1_117)
+	fld.d	$fa3, $a1, %pc_lo12(.LCPI1_117)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_118)
+	fld.d	$fa4, $a1, %pc_lo12(.LCPI1_118)
 	fst.d	$fa2, $a0, 136
-	fmul.d	$fa2, $fa3, $fa4
+	fmul.d	$fa2, $fa1, $fa3
 	fst.d	$fa2, $a0, 160
-	xvfmul.d	$xr2, $xr1, $xr5
-	pcalau12i	$a1, %pc_hi20(.LCPI1_92)
-	xvld	$xr4, $a1, %pc_lo12(.LCPI1_92)
-	xvst	$xr2, $a0, 168
-	fmul.d	$fa0, $fa3, $fa0
+	fmul.d	$fa2, $fa1, $fa4
+	pcalau12i	$a1, %pc_hi20(.LCPI1_119)
+	fld.d	$fa3, $a1, %pc_lo12(.LCPI1_119)
+	fst.d	$fa2, $a0, 184
+	fmul.d	$fa0, $fa1, $fa0
 	fst.d	$fa0, $a0, 208
-	xvfmul.d	$xr0, $xr1, $xr4
-	pcalau12i	$a1, %pc_hi20(.LCPI1_93)
-	fld.d	$fa1, $a1, %pc_lo12(.LCPI1_93)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_94)
-	fld.d	$fa2, $a1, %pc_lo12(.LCPI1_94)
-	xvst	$xr0, $a0, 216
-	fmul.d	$fa0, $fa3, $fa1
+	fmul.d	$fa0, $fa1, $fa3
+	pcalau12i	$a1, %pc_hi20(.LCPI1_120)
+	fld.d	$fa2, $a1, %pc_lo12(.LCPI1_120)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_121)
+	fld.d	$fa3, $a1, %pc_lo12(.LCPI1_121)
+	fst.d	$fa0, $a0, 232
+	fmul.d	$fa0, $fa1, $fa2
 	fst.d	$fa0, $a0, 256
-	fmul.d	$fa0, $fa3, $fa2
+	fmul.d	$fa0, $fa1, $fa3
 	fst.d	$fa0, $a0, 280
-	fld.d	$fs7, $sp, 488                  # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 496                  # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 504                  # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 512                  # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 520                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 528                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 536                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 544                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 552                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 560                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 568                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 576                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 584                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 592                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 600                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 608                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 616                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 624
+	fld.d	$fs7, $sp, 392                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 400                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 408                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 416                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 424                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 432                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 440                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 448                  # 8-byte Folded Reload
+	ld.d	$s6, $sp, 456                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 464                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 472                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 488                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 496                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 504                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 512                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 520                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 528
 	ret
 .Lfunc_end1:
 	.size	mdct_init48, .Lfunc_end1-mdct_init48
@@ -3472,7 +3559,7 @@ window_subband:                         # @window_subband
 	.comm	sb_sample,18432,8
 	.type	win,@object                     # @win
 	.local	win
-	.comm	win,1152,32
+	.comm	win,1152,16
 	.type	ca.0,@object                    # @ca.0
 	.local	ca.0
 	.comm	ca.0,8,8
@@ -3809,7 +3896,7 @@ enwindow:
 	.comm	mm,3968,8
 	.type	cos_s,@object                   # @cos_s
 	.local	cos_s
-	.comm	cos_s,288,32
+	.comm	cos_s,288,16
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym sb_sample

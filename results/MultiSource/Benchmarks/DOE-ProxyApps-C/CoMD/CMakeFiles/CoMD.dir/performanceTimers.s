@@ -567,7 +567,7 @@ printPerformanceResults:                # @printPerformanceResults
 	fst.d	$fa1, $s4, 768
 	st.w	$a1, $s4, 756
 	ld.d	$a0, $s4, 8
-	xvld	$xr0, $s4, 56
+	vld	$vr0, $s4, 56
 	ld.d	$a1, $s4, 80
 	fld.d	$fa1, $s4, 128
 	ld.d	$a2, $s4, 224
@@ -604,15 +604,16 @@ printPerformanceResults:                # @printPerformanceResults
 	fadd.d	$fa7, $ft0, $fa7
 	vextrins.d	$vr5, $vr4, 16
 	vextrins.d	$vr7, $vr6, 16
-	xvpermi.q	$xr7, $xr5, 2
-	xvinsve0.d	$xr0, $xr1, 1
-	xvinsve0.d	$xr0, $xr2, 2
-	xvinsve0.d	$xr0, $xr3, 3
-	xvfsub.d	$xr0, $xr7, $xr0
-	xvfmul.d	$xr0, $xr0, $xr0
-	xvst	$xr0, $sp, 456
+	vextrins.d	$vr0, $vr1, 16
+	vextrins.d	$vr2, $vr3, 16
+	vfsub.d	$vr0, $vr7, $vr0
+	vfsub.d	$vr1, $vr5, $vr2
+	vfmul.d	$vr1, $vr1, $vr1
+	vfmul.d	$vr0, $vr0, $vr0
+	vst	$vr0, $sp, 456
+	vst	$vr1, $sp, 472
 	ld.d	$a0, $s4, 296
-	xvld	$xr0, $s4, 344
+	vld	$vr0, $s4, 344
 	ld.d	$a1, $s4, 368
 	fld.d	$fa1, $s4, 416
 	ld.d	$a2, $s4, 512
@@ -647,16 +648,17 @@ printPerformanceResults:                # @printPerformanceResults
 	bstrins.d	$a0, $s3, 63, 32
 	movgr2fr.d	$ft0, $a0
 	fadd.d	$fa7, $ft0, $fa7
-	vextrins.d	$vr5, $vr4, 16
 	vextrins.d	$vr7, $vr6, 16
-	xvpermi.q	$xr7, $xr5, 2
-	xvinsve0.d	$xr0, $xr1, 1
-	xvinsve0.d	$xr0, $xr2, 2
-	xvinsve0.d	$xr0, $xr3, 3
+	vextrins.d	$vr5, $vr4, 16
+	vextrins.d	$vr0, $vr1, 16
+	vextrins.d	$vr2, $vr3, 16
+	vfsub.d	$vr1, $vr5, $vr2
+	vfsub.d	$vr0, $vr7, $vr0
+	vfmul.d	$vr0, $vr0, $vr0
 	ld.d	$a0, $s4, 584
-	xvfsub.d	$xr0, $xr7, $xr0
-	xvfmul.d	$xr0, $xr0, $xr0
-	xvst	$xr0, $sp, 488
+	vfmul.d	$vr1, $vr1, $vr1
+	vst	$vr1, $sp, 504
+	vst	$vr0, $sp, 488
 	srli.d	$a1, $a0, 32
 	or	$a1, $a1, $s2
 	movgr2fr.d	$fa0, $a1

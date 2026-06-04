@@ -318,7 +318,7 @@ QRiterate:                              # @QRiterate
 	sub.d	$a7, $a4, $s3
 	addi.d	$s6, $a7, 1
 	move	$ra, $s3
-	ori	$a7, $zero, 4
+	ori	$a7, $zero, 2
 	bltu	$s6, $a7, .LBB3_27
 # %bb.22:                               # %vector.memcheck
                                         #   in Loop: Header=BB3_15 Depth=2
@@ -347,29 +347,29 @@ QRiterate:                              # @QRiterate
 	or	$a4, $a7, $a4
 	sub.d	$a4, $a4, $s3
 	addi.d	$a4, $a4, 1
-	bstrins.d	$a4, $zero, 1, 0
+	bstrins.d	$a4, $zero, 0, 0
 	move	$a7, $s6
-	bstrins.d	$a7, $zero, 1, 0
+	bstrins.d	$a7, $zero, 0, 0
 	add.d	$ra, $s3, $a7
-	xvreplve0.d	$xr9, $xr8
-	xvreplve0.d	$xr10, $xr7
+	vreplvei.d	$vr9, $vr8, 0
+	vreplvei.d	$vr10, $vr7, 0
 	.p2align	4, , 16
 .LBB3_25:                               # %vector.body
                                         #   Parent Loop BB3_1 Depth=1
                                         #     Parent Loop BB3_15 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvld	$xr11, $s8, 0
-	xvld	$xr12, $s7, 0
-	xvbitrevi.d	$xr13, $xr11, 63
-	xvfmul.d	$xr13, $xr9, $xr13
-	xvfmadd.d	$xr13, $xr10, $xr12, $xr13
-	xvst	$xr13, $s7, 0
-	xvfmul.d	$xr11, $xr10, $xr11
-	xvfmadd.d	$xr11, $xr9, $xr12, $xr11
-	xvst	$xr11, $s8, 0
-	addi.d	$a4, $a4, -4
-	addi.d	$s8, $s8, 32
-	addi.d	$s7, $s7, 32
+	vld	$vr11, $s8, 0
+	vld	$vr12, $s7, 0
+	vbitrevi.d	$vr13, $vr11, 63
+	vfmul.d	$vr13, $vr9, $vr13
+	vfmadd.d	$vr13, $vr10, $vr12, $vr13
+	vst	$vr13, $s7, 0
+	vfmul.d	$vr11, $vr10, $vr11
+	vfmadd.d	$vr11, $vr9, $vr12, $vr11
+	vst	$vr11, $s8, 0
+	addi.d	$a4, $a4, -2
+	addi.d	$s8, $s8, 16
+	addi.d	$s7, $s7, 16
 	bnez	$a4, .LBB3_25
 # %bb.26:                               # %middle.block
                                         #   in Loop: Header=BB3_15 Depth=2

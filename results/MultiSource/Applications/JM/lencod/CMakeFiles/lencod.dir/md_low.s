@@ -1103,66 +1103,114 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	st.d	$a3, $a1, 0
 	stptr.d	$a4, $a2, 14160
 .LBB0_96:
-	ld.w	$a1, $a2, 180
-	ld.w	$a3, $a2, 176
-	pcalau12i	$a4, %got_pc_hi20(enc_picture)
-	ld.d	$a4, $a4, %got_pc_lo12(enc_picture)
-	ld.d	$a4, $a4, 0
-	ldptr.d	$a4, $a4, 6440
-	slli.d	$a5, $a1, 3
-	ldx.d	$a5, $a4, $a5
-	slli.d	$a3, $a3, 1
-	xvldx	$xr0, $a5, $a3
-	alsl.d	$a1, $a1, $a4, 3
+	ld.w	$a4, $a2, 180
+	ld.w	$a1, $a2, 176
+	pcalau12i	$a3, %got_pc_hi20(enc_picture)
+	ld.d	$a3, $a3, %got_pc_lo12(enc_picture)
+	ld.d	$a3, $a3, 0
+	ldptr.d	$a5, $a3, 6440
+	slli.d	$a3, $a4, 3
+	ldx.d	$a6, $a5, $a3
+	slli.d	$a3, $a1, 1
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a5, $a4, $a5, 3
+	alsl.d	$a6, $a1, $a6, 1
 	pcalau12i	$a4, %pc_hi20(temp_imgY)
 	addi.d	$a4, $a4, %pc_lo12(temp_imgY)
-	xvst	$xr0, $a4, 0
-	ld.d	$a5, $a1, 8
-	xvldx	$xr0, $a5, $a3
-	xvst	$xr0, $a4, 32
-	ld.d	$a5, $a1, 16
-	xvldx	$xr0, $a5, $a3
-	xvst	$xr0, $a4, 64
-	ld.d	$a5, $a1, 24
-	xvldx	$xr0, $a5, $a3
-	xvst	$xr0, $a4, 96
-	ld.d	$a5, $a1, 32
-	xvldx	$xr0, $a5, $a3
-	xvst	$xr0, $a4, 128
-	ld.d	$a5, $a1, 40
-	xvldx	$xr0, $a5, $a3
-	xvst	$xr0, $a4, 160
-	ld.d	$a5, $a1, 48
-	xvldx	$xr0, $a5, $a3
-	xvst	$xr0, $a4, 192
-	ld.d	$a5, $a1, 56
-	xvldx	$xr0, $a5, $a3
-	xvst	$xr0, $a4, 224
-	ld.d	$a5, $a1, 64
-	xvldx	$xr0, $a5, $a3
-	xvst	$xr0, $a4, 256
-	ld.d	$a5, $a1, 72
-	xvldx	$xr0, $a5, $a3
-	xvst	$xr0, $a4, 288
-	ld.d	$a5, $a1, 80
-	xvldx	$xr0, $a5, $a3
-	xvst	$xr0, $a4, 320
-	ld.d	$a5, $a1, 88
-	xvldx	$xr0, $a5, $a3
-	xvst	$xr0, $a4, 352
-	ld.d	$a5, $a1, 96
-	xvldx	$xr0, $a5, $a3
-	xvst	$xr0, $a4, 384
-	ld.d	$a5, $a1, 104
-	xvldx	$xr0, $a5, $a3
-	xvst	$xr0, $a4, 416
-	ld.d	$a5, $a1, 112
-	xvldx	$xr0, $a5, $a3
-	xvst	$xr0, $a4, 448
-	ld.d	$a1, $a1, 120
-	xvldx	$xr0, $a1, $a3
+	vst	$vr0, $a4, 0
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 16
+	ld.d	$a6, $a5, 8
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a6, $a1, $a6, 1
+	vst	$vr0, $a4, 32
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 48
+	ld.d	$a6, $a5, 16
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a6, $a1, $a6, 1
+	vst	$vr0, $a4, 64
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 80
+	ld.d	$a6, $a5, 24
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a6, $a1, $a6, 1
+	vst	$vr0, $a4, 96
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 112
+	ld.d	$a6, $a5, 32
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a6, $a1, $a6, 1
+	vst	$vr0, $a4, 128
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 144
+	ld.d	$a6, $a5, 40
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a6, $a1, $a6, 1
+	vst	$vr0, $a4, 160
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 176
+	ld.d	$a6, $a5, 48
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a6, $a1, $a6, 1
+	vst	$vr0, $a4, 192
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 208
+	ld.d	$a6, $a5, 56
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a6, $a1, $a6, 1
+	vst	$vr0, $a4, 224
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 240
+	ld.d	$a6, $a5, 64
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a6, $a1, $a6, 1
+	vst	$vr0, $a4, 256
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 272
+	ld.d	$a6, $a5, 72
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a6, $a1, $a6, 1
+	vst	$vr0, $a4, 288
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 304
+	ld.d	$a6, $a5, 80
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a6, $a1, $a6, 1
+	vst	$vr0, $a4, 320
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 336
+	ld.d	$a6, $a5, 88
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a6, $a1, $a6, 1
+	vst	$vr0, $a4, 352
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 368
+	ld.d	$a6, $a5, 96
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a6, $a1, $a6, 1
+	vst	$vr0, $a4, 384
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 400
+	ld.d	$a6, $a5, 104
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a6, $a1, $a6, 1
+	vst	$vr0, $a4, 416
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 432
+	ld.d	$a6, $a5, 112
+	vldx	$vr0, $a6, $a3
+	alsl.d	$a6, $a1, $a6, 1
+	vst	$vr0, $a4, 448
+	vld	$vr0, $a6, 16
+	vst	$vr0, $a4, 464
+	ld.d	$a5, $a5, 120
+	vldx	$vr0, $a5, $a3
+	alsl.d	$a1, $a1, $a5, 1
+	vst	$vr0, $a4, 480
+	vld	$vr0, $a1, 16
 	ldptr.w	$a0, $a0, 5116
-	xvst	$xr0, $a4, 480
+	vst	$vr0, $a4, 496
 	beqz	$a0, .LBB0_98
 # %bb.97:
 	ld.w	$a0, $a2, 192
@@ -1415,11 +1463,14 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	ldptr.d	$a3, $a3, 6440
 	slli.d	$a2, $a2, 3
 	ldx.d	$a2, $a3, $a2
-	slli.d	$a3, $a0, 1
+	alsl.d	$a3, $a0, $a2, 1
+	slli.d	$a4, $a0, 1
 	pcalau12i	$a0, %pc_hi20(temp_imgY)
 	addi.d	$a0, $a0, %pc_lo12(temp_imgY)
-	xvld	$xr0, $a0, 0
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 0
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 16
+	vst	$vr0, $a3, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $s8, 0
 	ldptr.d	$a2, $a2, 6440
@@ -1427,9 +1478,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a2, $a4, $a2, 3
 	ld.d	$a2, $a2, 8
 	ld.w	$a3, $a3, 176
-	xvld	$xr0, $a0, 32
-	slli.d	$a3, $a3, 1
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 32
+	slli.d	$a4, $a3, 1
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 48
+	alsl.d	$a2, $a3, $a2, 1
+	vst	$vr0, $a2, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $s8, 0
 	ldptr.d	$a2, $a2, 6440
@@ -1437,9 +1491,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a2, $a4, $a2, 3
 	ld.d	$a2, $a2, 16
 	ld.w	$a3, $a3, 176
-	xvld	$xr0, $a0, 64
-	slli.d	$a3, $a3, 1
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 64
+	slli.d	$a4, $a3, 1
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 80
+	alsl.d	$a2, $a3, $a2, 1
+	vst	$vr0, $a2, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $s8, 0
 	ldptr.d	$a2, $a2, 6440
@@ -1447,9 +1504,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a2, $a4, $a2, 3
 	ld.d	$a2, $a2, 24
 	ld.w	$a3, $a3, 176
-	xvld	$xr0, $a0, 96
-	slli.d	$a3, $a3, 1
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 96
+	slli.d	$a4, $a3, 1
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 112
+	alsl.d	$a2, $a3, $a2, 1
+	vst	$vr0, $a2, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $s8, 0
 	ldptr.d	$a2, $a2, 6440
@@ -1457,9 +1517,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a2, $a4, $a2, 3
 	ld.d	$a2, $a2, 32
 	ld.w	$a3, $a3, 176
-	xvld	$xr0, $a0, 128
-	slli.d	$a3, $a3, 1
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 128
+	slli.d	$a4, $a3, 1
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 144
+	alsl.d	$a2, $a3, $a2, 1
+	vst	$vr0, $a2, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $s8, 0
 	ldptr.d	$a2, $a2, 6440
@@ -1467,9 +1530,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a2, $a4, $a2, 3
 	ld.d	$a2, $a2, 40
 	ld.w	$a3, $a3, 176
-	xvld	$xr0, $a0, 160
-	slli.d	$a3, $a3, 1
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 160
+	slli.d	$a4, $a3, 1
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 176
+	alsl.d	$a2, $a3, $a2, 1
+	vst	$vr0, $a2, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $s8, 0
 	ldptr.d	$a2, $a2, 6440
@@ -1477,9 +1543,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a2, $a4, $a2, 3
 	ld.d	$a2, $a2, 48
 	ld.w	$a3, $a3, 176
-	xvld	$xr0, $a0, 192
-	slli.d	$a3, $a3, 1
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 192
+	slli.d	$a4, $a3, 1
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 208
+	alsl.d	$a2, $a3, $a2, 1
+	vst	$vr0, $a2, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $s8, 0
 	ldptr.d	$a2, $a2, 6440
@@ -1487,9 +1556,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a2, $a4, $a2, 3
 	ld.d	$a2, $a2, 56
 	ld.w	$a3, $a3, 176
-	xvld	$xr0, $a0, 224
-	slli.d	$a3, $a3, 1
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 224
+	slli.d	$a4, $a3, 1
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 240
+	alsl.d	$a2, $a3, $a2, 1
+	vst	$vr0, $a2, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $s8, 0
 	ldptr.d	$a2, $a2, 6440
@@ -1497,9 +1569,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a2, $a4, $a2, 3
 	ld.d	$a2, $a2, 64
 	ld.w	$a3, $a3, 176
-	xvld	$xr0, $a0, 256
-	slli.d	$a3, $a3, 1
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 256
+	slli.d	$a4, $a3, 1
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 272
+	alsl.d	$a2, $a3, $a2, 1
+	vst	$vr0, $a2, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $s8, 0
 	ldptr.d	$a2, $a2, 6440
@@ -1507,9 +1582,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a2, $a4, $a2, 3
 	ld.d	$a2, $a2, 72
 	ld.w	$a3, $a3, 176
-	xvld	$xr0, $a0, 288
-	slli.d	$a3, $a3, 1
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 288
+	slli.d	$a4, $a3, 1
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 304
+	alsl.d	$a2, $a3, $a2, 1
+	vst	$vr0, $a2, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $s8, 0
 	ldptr.d	$a2, $a2, 6440
@@ -1517,9 +1595,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a2, $a4, $a2, 3
 	ld.d	$a2, $a2, 80
 	ld.w	$a3, $a3, 176
-	xvld	$xr0, $a0, 320
-	slli.d	$a3, $a3, 1
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 320
+	slli.d	$a4, $a3, 1
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 336
+	alsl.d	$a2, $a3, $a2, 1
+	vst	$vr0, $a2, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $s8, 0
 	ldptr.d	$a2, $a2, 6440
@@ -1527,9 +1608,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a2, $a4, $a2, 3
 	ld.d	$a2, $a2, 88
 	ld.w	$a3, $a3, 176
-	xvld	$xr0, $a0, 352
-	slli.d	$a3, $a3, 1
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 352
+	slli.d	$a4, $a3, 1
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 368
+	alsl.d	$a2, $a3, $a2, 1
+	vst	$vr0, $a2, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $s8, 0
 	ldptr.d	$a2, $a2, 6440
@@ -1537,9 +1621,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a2, $a4, $a2, 3
 	ld.d	$a2, $a2, 96
 	ld.w	$a3, $a3, 176
-	xvld	$xr0, $a0, 384
-	slli.d	$a3, $a3, 1
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 384
+	slli.d	$a4, $a3, 1
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 400
+	alsl.d	$a2, $a3, $a2, 1
+	vst	$vr0, $a2, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $s8, 0
 	ldptr.d	$a2, $a2, 6440
@@ -1547,9 +1634,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a2, $a4, $a2, 3
 	ld.d	$a2, $a2, 104
 	ld.w	$a3, $a3, 176
-	xvld	$xr0, $a0, 416
-	slli.d	$a3, $a3, 1
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 416
+	slli.d	$a4, $a3, 1
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 432
+	alsl.d	$a2, $a3, $a2, 1
+	vst	$vr0, $a2, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $s8, 0
 	ldptr.d	$a2, $a2, 6440
@@ -1557,9 +1647,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a2, $a4, $a2, 3
 	ld.d	$a2, $a2, 112
 	ld.w	$a3, $a3, 176
-	xvld	$xr0, $a0, 448
-	slli.d	$a3, $a3, 1
-	xvstx	$xr0, $a2, $a3
+	vld	$vr0, $a0, 448
+	slli.d	$a4, $a3, 1
+	vstx	$vr0, $a2, $a4
+	vld	$vr0, $a0, 464
+	alsl.d	$a2, $a3, $a2, 1
+	vst	$vr0, $a2, 16
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $s8, 0
 	ldptr.d	$a1, $a1, 6440
@@ -1567,9 +1660,12 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	alsl.d	$a1, $a3, $a1, 3
 	ld.d	$a1, $a1, 120
 	ld.w	$a2, $a2, 176
-	xvld	$xr0, $a0, 480
-	slli.d	$a0, $a2, 1
-	xvstx	$xr0, $a1, $a0
+	vld	$vr0, $a0, 480
+	slli.d	$a3, $a2, 1
+	vstx	$vr0, $a1, $a3
+	vld	$vr0, $a0, 496
+	alsl.d	$a0, $a2, $a1, 1
+	vst	$vr0, $a0, 16
 	ld.hu	$a0, $s4, 0
 .LBB0_133:                              # %.loopexit337
 	lu12i.w	$a1, 15

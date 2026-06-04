@@ -1505,9 +1505,11 @@ scanfile:                               # @scanfile
 	pcalau12i	$a0, %pc_hi20(.L__const.scancompressed.args.123)
 	addi.d	$a0, $a0, %pc_lo12(.L__const.scancompressed.args.123)
 	ld.d	$a1, $a0, 40
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
 	st.d	$a1, $sp, 192
-	xvst	$xr0, $sp, 152
+	vst	$vr0, $sp, 168
+	vst	$vr1, $sp, 152
 	st.d	$fp, $sp, 184
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s6, $a0, %pc_lo12(.L.str)
@@ -1609,9 +1611,11 @@ scanfile:                               # @scanfile
 	pcalau12i	$a0, %pc_hi20(.L__const.scancompressed.args.117)
 	addi.d	$a0, $a0, %pc_lo12(.L__const.scancompressed.args.117)
 	ld.d	$a1, $a0, 40
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
 	st.d	$a1, $sp, 192
-	xvst	$xr0, $sp, 152
+	vst	$vr0, $sp, 168
+	vst	$vr1, $sp, 152
 	st.d	$fp, $sp, 184
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s6, $a0, %pc_lo12(.L.str.1)
@@ -1647,9 +1651,11 @@ scanfile:                               # @scanfile
 	pcalau12i	$a0, %pc_hi20(.L__const.scancompressed.args.122)
 	addi.d	$a0, $a0, %pc_lo12(.L__const.scancompressed.args.122)
 	ld.d	$a1, $a0, 40
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
 	st.d	$a1, $sp, 192
-	xvst	$xr0, $sp, 152
+	vst	$vr0, $sp, 168
+	vst	$vr1, $sp, 152
 	st.d	$fp, $sp, 184
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$s6, $a0, %pc_lo12(.L.str.3)
@@ -1779,9 +1785,11 @@ scanfile:                               # @scanfile
 	pcalau12i	$a0, %pc_hi20(.L__const.scancompressed.args.123)
 	addi.d	$a0, $a0, %pc_lo12(.L__const.scancompressed.args.123)
 	ld.d	$a1, $a0, 40
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
 	st.d	$a1, $sp, 192
-	xvst	$xr0, $sp, 152
+	vst	$vr0, $sp, 168
+	vst	$vr1, $sp, 152
 	st.d	$fp, $sp, 184
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.4)

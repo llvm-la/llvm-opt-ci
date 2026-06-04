@@ -205,13 +205,15 @@ cli_scanrtf:                            # @cli_scanrtf
 	ld.w	$a0, $sp, 448
 	bnez	$a0, .LBB0_62
 # %bb.22:                               #   in Loop: Header=BB0_15 Depth=2
-	xvld	$xr0, $sp, 488
-	xvseqi.d	$xr0, $xr0, 0
-	xvxori.b	$xr0, $xr0, 255
-	xvmskltz.d	$xr0, $xr0
-	xvpickve2gr.wu	$a0, $xr0, 0
-	xvpickve2gr.wu	$a1, $xr0, 4
-	bstrins.d	$a0, $a1, 3, 2
+	vld	$vr0, $sp, 488
+	vld	$vr1, $sp, 504
+	vseqi.d	$vr0, $vr0, 0
+	vxori.b	$vr0, $vr0, 255
+	vseqi.d	$vr1, $vr1, 0
+	vxori.b	$vr1, $vr1, 255
+	vpickev.w	$vr0, $vr1, $vr0
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	bnez	$a0, .LBB0_62
 # %bb.23:                               #   in Loop: Header=BB0_15 Depth=2
 	ld.d	$a0, $sp, 452

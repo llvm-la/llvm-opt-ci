@@ -2717,10 +2717,12 @@ cli_html_normalise:                     # @cli_html_normalise
 	add.d	$a0, $s4, $a2
 	pcalau12i	$a1, %pc_hi20(.L.str.51)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.51)
-	xvld	$xr0, $a1, 0
-	ld.h	$a1, $a1, 32
-	xvstx	$xr0, $s4, $a2
-	st.h	$a1, $a0, 32
+	vld	$vr0, $a1, 0
+	ld.h	$a3, $a1, 32
+	vstx	$vr0, $s4, $a2
+	st.h	$a3, $a0, 32
+	vld	$vr0, $a1, 16
+	vst	$vr0, $a0, 16
 	ori	$a0, $a5, 4
 	ldx.w	$a0, $s2, $a0
 	addi.w	$a2, $a0, 34

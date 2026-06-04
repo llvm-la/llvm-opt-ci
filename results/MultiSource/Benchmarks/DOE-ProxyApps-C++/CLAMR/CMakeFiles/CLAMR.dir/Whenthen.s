@@ -333,10 +333,14 @@ _ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev: # 
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	move	$fp, $a0
-	xvld	$xr0, $a0, 16
-	xvld	$xr1, $a0, 48
-	xvst	$xr0, $sp, 48
-	xvst	$xr1, $sp, 16
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 32
+	vld	$vr2, $a0, 48
+	vld	$vr3, $a0, 64
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
+	vst	$vr2, $sp, 16
+	vst	$vr3, $sp, 32
 .Ltmp18:                                # EH_LABEL
 	addi.d	$a1, $sp, 48
 	addi.d	$a2, $sp, 16
@@ -435,10 +439,14 @@ _ZNSt5dequeIN2PP4WordESaIS1_EED2Ev:     # @_ZNSt5dequeIN2PP4WordESaIS1_EED2Ev
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	move	$fp, $a0
-	xvld	$xr0, $a0, 16
-	xvld	$xr1, $a0, 48
-	xvst	$xr0, $sp, 48
-	xvst	$xr1, $sp, 16
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 32
+	vld	$vr2, $a0, 48
+	vld	$vr3, $a0, 64
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
+	vst	$vr2, $sp, 16
+	vst	$vr3, $sp, 32
 .Ltmp21:                                # EH_LABEL
 	addi.d	$a1, $sp, 48
 	addi.d	$a2, $sp, 16
@@ -16344,12 +16352,18 @@ _ZNSt5dequeIN2PP4WordESaIS1_EEC2ERKS3_: # @_ZNSt5dequeIN2PP4WordESaIS1_EEC2ERKS3
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZNSt11_Deque_baseIN2PP4WordESaIS1_EE17_M_initialize_mapEm)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s0, 16
-	xvld	$xr1, $s0, 48
-	xvld	$xr2, $fp, 16
-	xvst	$xr0, $sp, 112
-	xvst	$xr1, $sp, 80
-	xvst	$xr2, $sp, 48
+	vld	$vr0, $s0, 16
+	vld	$vr1, $s0, 32
+	vst	$vr0, $sp, 112
+	vst	$vr1, $sp, 128
+	vld	$vr0, $s0, 48
+	vld	$vr1, $s0, 64
+	vld	$vr2, $fp, 16
+	vld	$vr3, $fp, 32
+	vst	$vr0, $sp, 80
+	vst	$vr1, $sp, 96
+	vst	$vr2, $sp, 48
+	vst	$vr3, $sp, 64
 .Ltmp932:                               # EH_LABEL
 	addi.d	$a0, $sp, 16
 	addi.d	$a1, $sp, 112
@@ -16610,19 +16624,21 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorIN2PP4WordERKS2_PS3_ES0_IS2_RS2_PS2_EE
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	xvld	$xr0, $a3, 0
 	move	$s3, $a1
-	move	$s1, $a0
-	xvst	$xr0, $a0, 0
+	move	$s0, $a0
+	ld.d	$fp, $a3, 0
+	ld.d	$s4, $a3, 8
+	ld.d	$s6, $a3, 16
+	ld.d	$s5, $a3, 24
 	ld.d	$a1, $a1, 0
 	ld.d	$a0, $a2, 0
-	xvpickve2gr.d	$fp, $xr0, 0
-	xvpickve2gr.d	$s4, $xr0, 1
-	xvpickve2gr.d	$s6, $xr0, 2
-	xvpickve2gr.d	$s5, $xr0, 3
+	st.d	$fp, $s0, 0
+	st.d	$s4, $s0, 8
+	st.d	$s6, $s0, 16
+	st.d	$s5, $s0, 24
 	beq	$a1, $a0, .LBB48_8
 # %bb.1:                                # %.lr.ph
-	move	$s0, $a3
+	move	$s1, $a3
 	move	$s2, $a2
 	b	.LBB48_3
 	.p2align	4, , 16
@@ -16667,10 +16683,10 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorIN2PP4WordERKS2_PS3_ES0_IS2_RS2_PS2_EE
 	move	$fp, $s4
 	b	.LBB48_2
 .LBB48_8:                               # %._crit_edge
-	st.d	$fp, $s1, 0
-	st.d	$s6, $s1, 16
-	st.d	$s5, $s1, 24
-	st.d	$s4, $s1, 8
+	st.d	$fp, $s0, 0
+	st.d	$s6, $s0, 16
+	st.d	$s5, $s0, 24
+	st.d	$s4, $s0, 8
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -16684,14 +16700,14 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorIN2PP4WordERKS2_PS3_ES0_IS2_RS2_PS2_EE
 	ret
 .LBB48_9:
 .Ltmp940:                               # EH_LABEL
-	st.d	$fp, $s1, 0
-	st.d	$s6, $s1, 16
-	st.d	$s5, $s1, 24
-	st.d	$s4, $s1, 8
+	st.d	$fp, $s0, 0
+	st.d	$s6, $s0, 16
+	st.d	$s5, $s0, 24
+	st.d	$s4, $s0, 8
 	pcaddu18i	$ra, %call36(__cxa_begin_catch)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $s0, 0
-	bne	$s1, $fp, .LBB48_12
+	ld.d	$s0, $s1, 0
+	bne	$s0, $fp, .LBB48_12
 .LBB48_10:                              # %_ZSt8_DestroyISt15_Deque_iteratorIN2PP4WordERS2_PS2_EEvT_S6_.exit
 .Ltmp941:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__cxa_rethrow)
@@ -16699,24 +16715,24 @@ _ZSt16__do_uninit_copyISt15_Deque_iteratorIN2PP4WordERKS2_PS3_ES0_IS2_RS2_PS2_EE
 .Ltmp942:                               # EH_LABEL
 # %bb.11:
 .LBB48_12:                              # %.lr.ph.i.i.preheader
-	ld.d	$s2, $s0, 24
-	ld.d	$s0, $s0, 16
+	ld.d	$s2, $s1, 24
+	ld.d	$s1, $s1, 16
 	b	.LBB48_14
 	.p2align	4, , 16
 .LBB48_13:                              # %_ZNSt15_Deque_iteratorIN2PP4WordERS1_PS1_EppEv.exit.i.i
                                         #   in Loop: Header=BB48_14 Depth=1
-	beq	$s1, $fp, .LBB48_10
+	beq	$s0, $fp, .LBB48_10
 .LBB48_14:                              # %.lr.ph.i.i
                                         # =>This Inner Loop Header: Depth=1
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN2PP4WordD1Ev)
 	jirl	$ra, $ra, 0
-	addi.d	$s1, $s1, 128
-	bne	$s1, $s0, .LBB48_13
+	addi.d	$s0, $s0, 128
+	bne	$s0, $s1, .LBB48_13
 # %bb.15:                               #   in Loop: Header=BB48_14 Depth=1
-	ld.d	$s1, $s2, 8
+	ld.d	$s0, $s2, 8
 	addi.d	$s2, $s2, 8
-	addi.d	$s0, $s1, 512
+	addi.d	$s1, $s0, 512
 	b	.LBB48_13
 .LBB48_16:
 .Ltmp943:                               # EH_LABEL
@@ -18685,18 +18701,18 @@ _ZNSt5dequeIN2PP4WordESaIS1_EE14_M_emplace_auxIJRKS1_EEESt15_Deque_iteratorIS1_R
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	move	$fp, $a2
+	move	$s0, $a2
 	move	$s1, $a1
-	move	$s0, $a0
+	move	$fp, $a0
 	addi.d	$a0, $sp, 136
 	move	$a1, $a3
 	pcaddu18i	$ra, %call36(_ZN2PP4WordC1ERKS0_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 24
+	ld.d	$a0, $s0, 24
 	ld.d	$a3, $s1, 40
 	sub.d	$a1, $a0, $a3
-	ld.d	$a2, $fp, 0
-	ld.d	$a4, $fp, 8
+	ld.d	$a2, $s0, 0
+	ld.d	$a4, $s0, 8
 	srai.d	$a1, $a1, 3
 	sltu	$a0, $zero, $a0
 	sub.d	$a0, $a1, $a0
@@ -18877,11 +18893,11 @@ _ZNSt5dequeIN2PP4WordESaIS1_EE14_M_emplace_auxIJRKS1_EEESt15_Deque_iteratorIS1_R
 	slli.d	$t3, $t3, 7
 	add.d	$t3, $a5, $t3
 .LBB55_31:                              # %_ZStplRKSt15_Deque_iteratorIN2PP4WordERS1_PS1_El.exit
-	st.d	$t3, $fp, 0
-	st.d	$a5, $fp, 8
-	st.d	$a6, $fp, 16
+	st.d	$t3, $s0, 0
+	st.d	$a5, $s0, 8
+	st.d	$a6, $s0, 16
 	addi.d	$t3, $t3, 128
-	st.d	$a4, $fp, 24
+	st.d	$a4, $s0, 24
 	bne	$t3, $a6, .LBB55_33
 # %bb.32:
 	ld.d	$t3, $a4, 8
@@ -18922,10 +18938,10 @@ _ZNSt5dequeIN2PP4WordESaIS1_EE14_M_emplace_auxIJRKS1_EEESt15_Deque_iteratorIS1_R
 	slli.d	$t3, $t3, 7
 	add.d	$t3, $t1, $t3
 .LBB55_36:                              # %_ZStplRKSt15_Deque_iteratorIN2PP4WordERS1_PS1_El.exit18
-	st.d	$t3, $fp, 0
-	st.d	$t1, $fp, 8
-	st.d	$t2, $fp, 16
-	st.d	$t0, $fp, 24
+	st.d	$t3, $s0, 0
+	st.d	$t1, $s0, 8
+	st.d	$t2, $s0, 16
+	st.d	$t0, $s0, 24
 	st.d	$t3, $sp, 360
 	st.d	$t1, $sp, 368
 	st.d	$t2, $sp, 376
@@ -18947,7 +18963,7 @@ _ZNSt5dequeIN2PP4WordESaIS1_EE14_M_emplace_auxIJRKS1_EEESt15_Deque_iteratorIS1_R
 	jirl	$ra, $ra, 0
 .Ltmp975:                               # EH_LABEL
 .LBB55_37:
-	ld.d	$a1, $fp, 0
+	ld.d	$a1, $s0, 0
 .Ltmp984:                               # EH_LABEL
 	addi.d	$a0, $sp, 8
 	addi.d	$a2, $sp, 136
@@ -18958,8 +18974,10 @@ _ZNSt5dequeIN2PP4WordESaIS1_EE14_M_emplace_auxIJRKS1_EEESt15_Deque_iteratorIS1_R
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(_ZN2PP4WordD1Ev)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $fp, 0
-	xvst	$xr0, $s0, 0
+	vld	$vr0, $s0, 0
+	vld	$vr1, $s0, 16
+	vst	$vr0, $fp, 0
+	vst	$vr1, $fp, 16
 	addi.d	$a0, $sp, 136
 	pcaddu18i	$ra, %call36(_ZN2PP4WordD1Ev)
 	jirl	$ra, $ra, 0

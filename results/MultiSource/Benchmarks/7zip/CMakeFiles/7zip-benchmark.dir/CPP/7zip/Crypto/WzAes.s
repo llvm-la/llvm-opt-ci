@@ -705,7 +705,8 @@ _ZN7NCrypto6NWzAes12AesCtr2_CodeEPNS0_8CAesCtr2EPhm: # @_ZN7NCrypto6NWzAes12AesC
 	masknez	$a4, $a4, $t0
 	maskeqz	$t0, $a7, $t0
 	or	$a4, $t0, $a4
-	bltu	$a4, $a3, .LBB12_7
+	ori	$t0, $zero, 7
+	bltu	$a4, $t0, .LBB12_7
 # %bb.4:                                # %vector.scevcheck
 	addi.w	$t0, $a4, 0
 	nor	$t1, $a5, $zero
@@ -804,20 +805,20 @@ _ZN7NCrypto6NWzAes12AesCtr2_CodeEPNS0_8CAesCtr2EPhm: # @_ZN7NCrypto6NWzAes12AesC
 .LBB12_18:
 	ret
 .LBB12_19:                              # %vector.main.loop.iter.check
-	ori	$a7, $zero, 63
+	ori	$a7, $zero, 31
 	addi.d	$a6, $a4, 1
 	bgeu	$a4, $a7, .LBB12_21
 # %bb.20:
 	move	$a7, $zero
 	b	.LBB12_25
 .LBB12_21:                              # %vector.ph
-	andi	$t0, $a6, 48
-	bstrpick.d	$a4, $a6, 32, 6
-	slli.d	$a7, $a4, 6
+	andi	$t0, $a6, 24
+	bstrpick.d	$a4, $a6, 32, 5
+	slli.d	$a7, $a4, 5
 	add.w	$a4, $a5, $a7
 	sub.d	$s3, $a2, $a7
 	add.d	$s1, $a1, $a7
-	addi.d	$t1, $a1, 32
+	addi.d	$t1, $a1, 16
 	move	$t2, $a5
 	move	$t3, $a7
 	.p2align	4, , 16
@@ -825,28 +826,28 @@ _ZN7NCrypto6NWzAes12AesCtr2_CodeEPNS0_8CAesCtr2EPhm: # @_ZN7NCrypto6NWzAes12AesC
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$t4, $t2, 31, 0
 	add.d	$t5, $s0, $t4
-	xvldx	$xr0, $s0, $t4
-	xvld	$xr1, $t5, 32
-	xvld	$xr2, $t1, -32
-	xvld	$xr3, $t1, 0
-	xvxor.v	$xr0, $xr2, $xr0
-	xvxor.v	$xr1, $xr3, $xr1
-	xvst	$xr0, $t1, -32
-	xvst	$xr1, $t1, 0
-	addi.d	$t3, $t3, -64
-	addi.d	$t1, $t1, 64
-	addi.w	$t2, $t2, 64
+	vldx	$vr0, $s0, $t4
+	vld	$vr1, $t5, 16
+	vld	$vr2, $t1, -16
+	vld	$vr3, $t1, 0
+	vxor.v	$vr0, $vr2, $vr0
+	vxor.v	$vr1, $vr3, $vr1
+	vst	$vr0, $t1, -16
+	vst	$vr1, $t1, 0
+	addi.d	$t3, $t3, -32
+	addi.d	$t1, $t1, 32
+	addi.w	$t2, $t2, 32
 	bnez	$t3, .LBB12_22
 # %bb.23:                               # %middle.block
 	beq	$a6, $a7, .LBB12_11
 # %bb.24:                               # %vec.epilog.iter.check
 	beqz	$t0, .LBB12_8
 .LBB12_25:                              # %vec.epilog.ph
-	bstrpick.d	$t1, $a6, 32, 4
-	slli.d	$t0, $t1, 4
-	alsl.w	$a4, $t1, $a5, 4
+	bstrpick.d	$t1, $a6, 32, 3
+	slli.d	$t0, $t1, 3
+	alsl.w	$a4, $t1, $a5, 3
 	sub.d	$s3, $a2, $t0
-	alsl.d	$s1, $t1, $a1, 4
+	alsl.d	$s1, $t1, $a1, 3
 	sub.d	$a2, $a7, $t0
 	add.d	$a1, $a1, $a7
 	add.w	$a5, $a5, $a7
@@ -854,13 +855,13 @@ _ZN7NCrypto6NWzAes12AesCtr2_CodeEPNS0_8CAesCtr2EPhm: # @_ZN7NCrypto6NWzAes12AesC
 .LBB12_26:                              # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a7, $a5, 31, 0
-	vldx	$vr0, $s0, $a7
-	vld	$vr1, $a1, 0
-	vxor.v	$vr0, $vr1, $vr0
-	vst	$vr0, $a1, 0
-	addi.d	$a2, $a2, 16
-	addi.d	$a1, $a1, 16
-	addi.w	$a5, $a5, 16
+	ldx.d	$a7, $s0, $a7
+	ld.d	$t1, $a1, 0
+	xor	$a7, $t1, $a7
+	st.d	$a7, $a1, 0
+	addi.d	$a2, $a2, 8
+	addi.d	$a1, $a1, 8
+	addi.w	$a5, $a5, 8
 	bnez	$a2, .LBB12_26
 # %bb.27:                               # %vec.epilog.middle.block
 	bne	$a6, $t0, .LBB12_8
@@ -919,7 +920,8 @@ _ZN7NCrypto6NWzAes8CEncoder6FilterEPhj: # @_ZN7NCrypto6NWzAes8CEncoder6FilterEPh
 	masknez	$a3, $a3, $a7
 	maskeqz	$a7, $a6, $a7
 	or	$a3, $a7, $a3
-	bltu	$a3, $a2, .LBB13_6
+	ori	$a7, $zero, 7
+	bltu	$a3, $a7, .LBB13_6
 # %bb.3:                                # %vector.scevcheck
 	addi.w	$a7, $a3, 0
 	nor	$t0, $a4, $zero
@@ -1030,20 +1032,20 @@ _ZN7NCrypto6NWzAes8CEncoder6FilterEPhj: # @_ZN7NCrypto6NWzAes8CEncoder6FilterEPh
 	addi.d	$sp, $sp, 80
 	ret
 .LBB13_18:                              # %vector.main.loop.iter.check
-	ori	$a6, $zero, 63
+	ori	$a6, $zero, 31
 	addi.d	$a5, $a3, 1
 	bgeu	$a3, $a6, .LBB13_20
 # %bb.19:
 	move	$a6, $zero
 	b	.LBB13_24
 .LBB13_20:                              # %vector.ph
-	andi	$a7, $a5, 48
-	bstrpick.d	$a3, $a5, 32, 6
-	slli.d	$a6, $a3, 6
+	andi	$a7, $a5, 24
+	bstrpick.d	$a3, $a5, 32, 5
+	slli.d	$a6, $a3, 5
 	add.w	$a3, $a4, $a6
 	sub.d	$s5, $s0, $a6
 	add.d	$s3, $a1, $a6
-	addi.d	$t0, $a1, 32
+	addi.d	$t0, $a1, 16
 	move	$t1, $a4
 	move	$t2, $a6
 	.p2align	4, , 16
@@ -1051,28 +1053,28 @@ _ZN7NCrypto6NWzAes8CEncoder6FilterEPhj: # @_ZN7NCrypto6NWzAes8CEncoder6FilterEPh
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$t3, $t1, 31, 0
 	add.d	$t4, $s2, $t3
-	xvldx	$xr0, $s2, $t3
-	xvld	$xr1, $t4, 32
-	xvld	$xr2, $t0, -32
-	xvld	$xr3, $t0, 0
-	xvxor.v	$xr0, $xr2, $xr0
-	xvxor.v	$xr1, $xr3, $xr1
-	xvst	$xr0, $t0, -32
-	xvst	$xr1, $t0, 0
-	addi.d	$t2, $t2, -64
-	addi.d	$t0, $t0, 64
-	addi.w	$t1, $t1, 64
+	vldx	$vr0, $s2, $t3
+	vld	$vr1, $t4, 16
+	vld	$vr2, $t0, -16
+	vld	$vr3, $t0, 0
+	vxor.v	$vr0, $vr2, $vr0
+	vxor.v	$vr1, $vr3, $vr1
+	vst	$vr0, $t0, -16
+	vst	$vr1, $t0, 0
+	addi.d	$t2, $t2, -32
+	addi.d	$t0, $t0, 32
+	addi.w	$t1, $t1, 32
 	bnez	$t2, .LBB13_21
 # %bb.22:                               # %middle.block
 	beq	$a5, $a6, .LBB13_10
 # %bb.23:                               # %vec.epilog.iter.check
 	beqz	$a7, .LBB13_7
 .LBB13_24:                              # %vec.epilog.ph
-	bstrpick.d	$t0, $a5, 32, 4
-	slli.d	$a7, $t0, 4
-	alsl.w	$a3, $t0, $a4, 4
+	bstrpick.d	$t0, $a5, 32, 3
+	slli.d	$a7, $t0, 3
+	alsl.w	$a3, $t0, $a4, 3
 	sub.d	$s5, $s0, $a7
-	alsl.d	$s3, $t0, $a1, 4
+	alsl.d	$s3, $t0, $a1, 3
 	sub.d	$t0, $a6, $a7
 	add.d	$t1, $a1, $a6
 	add.w	$a4, $a4, $a6
@@ -1080,13 +1082,13 @@ _ZN7NCrypto6NWzAes8CEncoder6FilterEPhj: # @_ZN7NCrypto6NWzAes8CEncoder6FilterEPh
 .LBB13_25:                              # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a6, $a4, 31, 0
-	vldx	$vr0, $s2, $a6
-	vld	$vr1, $t1, 0
-	vxor.v	$vr0, $vr1, $vr0
-	vst	$vr0, $t1, 0
-	addi.d	$t0, $t0, 16
-	addi.d	$t1, $t1, 16
-	addi.w	$a4, $a4, 16
+	ldx.d	$a6, $s2, $a6
+	ld.d	$t2, $t1, 0
+	xor	$a6, $t2, $a6
+	st.d	$a6, $t1, 0
+	addi.d	$t0, $t0, 8
+	addi.d	$t1, $t1, 8
+	addi.w	$a4, $a4, 8
 	bnez	$t0, .LBB13_25
 # %bb.26:                               # %vec.epilog.middle.block
 	bne	$a5, $a7, .LBB13_7
@@ -1150,7 +1152,8 @@ _ZN7NCrypto6NWzAes8CDecoder6FilterEPhj: # @_ZN7NCrypto6NWzAes8CDecoder6FilterEPh
 	masknez	$a2, $a2, $a6
 	maskeqz	$a6, $a5, $a6
 	or	$a2, $a6, $a2
-	bltu	$a2, $a1, .LBB14_7
+	ori	$a6, $zero, 7
+	bltu	$a2, $a6, .LBB14_7
 # %bb.4:                                # %vector.scevcheck
 	addi.w	$a6, $a2, 0
 	nor	$a7, $a3, $zero
@@ -1252,20 +1255,20 @@ _ZN7NCrypto6NWzAes8CDecoder6FilterEPhj: # @_ZN7NCrypto6NWzAes8CDecoder6FilterEPh
 	addi.d	$sp, $sp, 80
 	ret
 .LBB14_19:                              # %vector.main.loop.iter.check
-	ori	$a5, $zero, 63
+	ori	$a5, $zero, 31
 	addi.d	$a4, $a2, 1
 	bgeu	$a2, $a5, .LBB14_21
 # %bb.20:
 	move	$a5, $zero
 	b	.LBB14_25
 .LBB14_21:                              # %vector.ph
-	andi	$a6, $a4, 48
-	bstrpick.d	$a2, $a4, 32, 6
-	slli.d	$a5, $a2, 6
+	andi	$a6, $a4, 24
+	bstrpick.d	$a2, $a4, 32, 5
+	slli.d	$a5, $a2, 5
 	add.w	$a2, $a3, $a5
 	sub.d	$s5, $s4, $a5
 	add.d	$s2, $s3, $a5
-	addi.d	$a7, $s3, 32
+	addi.d	$a7, $s3, 16
 	move	$t0, $a3
 	move	$t1, $a5
 	.p2align	4, , 16
@@ -1273,28 +1276,28 @@ _ZN7NCrypto6NWzAes8CDecoder6FilterEPhj: # @_ZN7NCrypto6NWzAes8CDecoder6FilterEPh
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$t2, $t0, 31, 0
 	add.d	$t3, $s1, $t2
-	xvldx	$xr0, $s1, $t2
-	xvld	$xr1, $t3, 32
-	xvld	$xr2, $a7, -32
-	xvld	$xr3, $a7, 0
-	xvxor.v	$xr0, $xr2, $xr0
-	xvxor.v	$xr1, $xr3, $xr1
-	xvst	$xr0, $a7, -32
-	xvst	$xr1, $a7, 0
-	addi.d	$t1, $t1, -64
-	addi.d	$a7, $a7, 64
-	addi.w	$t0, $t0, 64
+	vldx	$vr0, $s1, $t2
+	vld	$vr1, $t3, 16
+	vld	$vr2, $a7, -16
+	vld	$vr3, $a7, 0
+	vxor.v	$vr0, $vr2, $vr0
+	vxor.v	$vr1, $vr3, $vr1
+	vst	$vr0, $a7, -16
+	vst	$vr1, $a7, 0
+	addi.d	$t1, $t1, -32
+	addi.d	$a7, $a7, 32
+	addi.w	$t0, $t0, 32
 	bnez	$t1, .LBB14_22
 # %bb.23:                               # %middle.block
 	beq	$a4, $a5, .LBB14_11
 # %bb.24:                               # %vec.epilog.iter.check
 	beqz	$a6, .LBB14_8
 .LBB14_25:                              # %vec.epilog.ph
-	bstrpick.d	$a7, $a4, 32, 4
-	slli.d	$a6, $a7, 4
-	alsl.w	$a2, $a7, $a3, 4
+	bstrpick.d	$a7, $a4, 32, 3
+	slli.d	$a6, $a7, 3
+	alsl.w	$a2, $a7, $a3, 3
 	sub.d	$s5, $s4, $a6
-	alsl.d	$s2, $a7, $s3, 4
+	alsl.d	$s2, $a7, $s3, 3
 	sub.d	$a7, $a5, $a6
 	add.d	$t0, $s3, $a5
 	add.w	$a3, $a3, $a5
@@ -1302,13 +1305,13 @@ _ZN7NCrypto6NWzAes8CDecoder6FilterEPhj: # @_ZN7NCrypto6NWzAes8CDecoder6FilterEPh
 .LBB14_26:                              # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a5, $a3, 31, 0
-	vldx	$vr0, $s1, $a5
-	vld	$vr1, $t0, 0
-	vxor.v	$vr0, $vr1, $vr0
-	vst	$vr0, $t0, 0
-	addi.d	$a7, $a7, 16
-	addi.d	$t0, $t0, 16
-	addi.w	$a3, $a3, 16
+	ldx.d	$a5, $s1, $a5
+	ld.d	$t1, $t0, 0
+	xor	$a5, $t1, $a5
+	st.d	$a5, $t0, 0
+	addi.d	$a7, $a7, 8
+	addi.d	$t0, $t0, 8
+	addi.w	$a3, $a3, 8
 	bnez	$a7, .LBB14_26
 # %bb.27:                               # %vec.epilog.middle.block
 	bne	$a4, $a6, .LBB14_8

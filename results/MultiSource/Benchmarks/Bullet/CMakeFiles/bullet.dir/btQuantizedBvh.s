@@ -1,11 +1,12 @@
 	.file	"btQuantizedBvh.cpp"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN14btQuantizedBvhC2Ev
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN14btQuantizedBvhC2Ev
 .LCPI0_0:
 	.word	0xff7fffff                      # float -3.40282347E+38
 	.word	0xff7fffff                      # float -3.40282347E+38
 	.word	0xff7fffff                      # float -3.40282347E+38
 	.word	0x00000000                      # float 0
+.LCPI0_1:
 	.word	0x7f7fffff                      # float 3.40282347E+38
 	.word	0x7f7fffff                      # float 3.40282347E+38
 	.word	0x7f7fffff                      # float 3.40282347E+38
@@ -24,6 +25,8 @@ _ZN14btQuantizedBvhC2Ev:                # @_ZN14btQuantizedBvhC2Ev
 	ori	$a1, $zero, 275
 	st.w	$a1, $a0, 56
 	st.b	$zero, $a0, 64
+	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_0)
 	ori	$a1, $zero, 1
 	st.b	$a1, $a0, 96
 	st.d	$zero, $a0, 88
@@ -39,12 +42,13 @@ _ZN14btQuantizedBvhC2Ev:                # @_ZN14btQuantizedBvhC2Ev
 	st.d	$zero, $a0, 172
 	st.w	$zero, $a0, 200
 	st.b	$a1, $a0, 232
-	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_0)
+	vst	$vr0, $a0, 8
+	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_1)
 	st.d	$zero, $a0, 224
 	st.d	$zero, $a0, 212
 	st.w	$zero, $a0, 240
-	xvst	$xr0, $a0, 8
+	vst	$vr0, $a0, 24
 	ret
 .Lfunc_end0:
 	.size	_ZN14btQuantizedBvhC2Ev, .Lfunc_end0-_ZN14btQuantizedBvhC2Ev
@@ -185,9 +189,13 @@ _ZN14btQuantizedBvh13buildInternalEv:   # @_ZN14btQuantizedBvh13buildInternalEv
 	.p2align	4, , 16
 .LBB2_19:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $fp, 224
-	xvldx	$xr0, $a2, $a0
-	xvstx	$xr0, $s0, $a0
+	vldx	$vr0, $a2, $a0
+	add.d	$a2, $a2, $a0
+	vstx	$vr0, $s0, $a0
+	vld	$vr0, $a2, 16
+	add.d	$a2, $s0, $a0
 	addi.d	$a0, $a0, 32
+	vst	$vr0, $a2, 16
 	bne	$a1, $a0, .LBB2_19
 .LBB2_20:                               # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i
 	ld.d	$a0, $fp, 224
@@ -376,13 +384,17 @@ _ZN14btQuantizedBvh9buildTreeEii:       # @_ZN14btQuantizedBvh9buildTreeEii
 	ld.d	$a0, $fp, 88
 	slli.d	$a1, $s1, 6
 	ld.d	$a2, $fp, 120
-	xvldx	$xr0, $a0, $a1
+	vldx	$vr0, $a0, $a1
 	add.d	$a0, $a0, $a1
 	slli.d	$a1, $s4, 6
-	xvstx	$xr0, $a2, $a1
-	xvld	$xr0, $a0, 32
-	add.d	$a0, $a2, $a1
-	xvst	$xr0, $a0, 32
+	vstx	$vr0, $a2, $a1
+	vld	$vr0, $a0, 48
+	add.d	$a1, $a2, $a1
+	vst	$vr0, $a1, 48
+	vld	$vr0, $a0, 32
+	vst	$vr0, $a1, 32
+	vld	$vr0, $a0, 16
+	vst	$vr0, $a1, 16
 .LBB3_6:                                # %_ZN14btQuantizedBvh30assignInternalNodeFromLeafNodeEii.exit
 	ld.w	$a0, $fp, 60
 	addi.d	$a0, $a0, 1
@@ -617,7 +629,8 @@ _ZN14btQuantizedBvh21setQuantizationValuesERK9btVector3S2_f: # @_ZN14btQuantized
 	vextrins.w	$vr0, $vr2, 16
 	vshuf4i.w	$vr0, $vr0, 16
 	vslli.d	$vr0, $vr0, 32
-	vext2xv.du.wu	$xr1, $xr5
+	vrepli.b	$vr1, 0
+	vilvl.w	$vr1, $vr1, $vr5
 	vor.v	$vr0, $vr0, $vr1
 	vstelm.d	$vr0, $a0, 24, 0
 	movfr2gr.s	$a1, $fa3
@@ -951,13 +964,17 @@ _ZN14btQuantizedBvh30assignInternalNodeFromLeafNodeEii: # @_ZN14btQuantizedBvh30
 	ld.d	$a3, $a0, 88
 	slli.d	$a2, $a2, 6
 	ld.d	$a0, $a0, 120
-	xvldx	$xr0, $a3, $a2
+	vldx	$vr0, $a3, $a2
 	add.d	$a2, $a3, $a2
 	slli.d	$a1, $a1, 6
-	xvstx	$xr0, $a0, $a1
-	xvld	$xr0, $a2, 32
+	vstx	$vr0, $a0, $a1
+	vld	$vr0, $a2, 48
 	add.d	$a0, $a0, $a1
-	xvst	$xr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vld	$vr0, $a2, 32
+	vst	$vr0, $a0, 32
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	ret
 .Lfunc_end7:
 	.size	_ZN14btQuantizedBvh30assignInternalNodeFromLeafNodeEii, .Lfunc_end7-_ZN14btQuantizedBvh30assignInternalNodeFromLeafNodeEii
@@ -1302,18 +1319,34 @@ _ZN14btQuantizedBvh25sortAndCalcSplittingIndexEiii: # @_ZN14btQuantizedBvh25sort
 .LBB9_9:                                #   in Loop: Header=BB9_12 Depth=1
 	ld.d	$t1, $a0, 88
 	slli.d	$t2, $a3, 6
-	xvldx	$xr2, $t1, $t2
-	xvldx	$xr3, $t1, $a6
+	vldx	$vr2, $t1, $t2
+	vldx	$vr3, $t1, $a6
 	add.d	$t3, $t1, $t2
-	xvstx	$xr2, $t1, $a6
-	xvld	$xr2, $t3, 32
+	vstx	$vr2, $t1, $a6
+	vld	$vr2, $t3, 16
 	add.d	$t1, $t1, $a6
-	xvld	$xr4, $t1, 32
-	xvst	$xr2, $t1, 32
+	vld	$vr4, $t1, 16
+	vst	$vr2, $t1, 16
+	vld	$vr2, $t3, 32
+	vld	$vr5, $t1, 32
+	vst	$vr2, $t1, 32
+	vld	$vr2, $t3, 48
+	vst	$vr3, $sp, 48
+	vld	$vr3, $t1, 48
+	vst	$vr2, $t1, 48
 	ld.d	$t1, $a0, 88
-	add.d	$t3, $t1, $t2
-	xvstx	$xr3, $t1, $t2
-	xvst	$xr4, $t3, 32
+	vld	$vr2, $sp, 48
+	vst	$vr4, $sp, 64
+	vst	$vr5, $sp, 80
+	vst	$vr3, $sp, 96
+	vstx	$vr2, $t1, $t2
+	vld	$vr2, $sp, 64
+	vld	$vr3, $sp, 80
+	vld	$vr4, $sp, 96
+	add.d	$t1, $t1, $t2
+	vst	$vr2, $t1, 16
+	vst	$vr3, $t1, 32
+	vst	$vr4, $t1, 48
 .LBB9_10:                               # %_ZN14btQuantizedBvh13swapLeafNodesEii.exit
                                         #   in Loop: Header=BB9_12 Depth=1
 	addi.w	$a3, $a3, 1
@@ -1729,9 +1762,13 @@ _ZN14btQuantizedBvh20updateSubtreeHeadersEii: # @_ZN14btQuantizedBvh20updateSubt
 	.p2align	4, , 16
 .LBB11_8:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $fp, 224
-	xvldx	$xr0, $a4, $a0
-	xvstx	$xr0, $s0, $a0
+	vldx	$vr0, $a4, $a0
+	add.d	$a4, $a4, $a0
+	vstx	$vr0, $s0, $a0
+	vld	$vr0, $a4, 16
+	add.d	$a4, $s0, $a0
 	addi.d	$a0, $a0, 32
+	vst	$vr0, $a4, 16
 	bne	$a3, $a0, .LBB11_8
 .LBB11_9:                               # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i
 	ld.d	$a0, $fp, 224
@@ -1811,9 +1848,13 @@ _ZN14btQuantizedBvh20updateSubtreeHeadersEii: # @_ZN14btQuantizedBvh20updateSubt
 	.p2align	4, , 16
 .LBB11_21:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $fp, 224
-	xvldx	$xr0, $a2, $a0
-	xvstx	$xr0, $s0, $a0
+	vldx	$vr0, $a2, $a0
+	add.d	$a2, $a2, $a0
+	vstx	$vr0, $s0, $a0
+	vld	$vr0, $a2, 16
+	add.d	$a2, $s0, $a0
 	addi.d	$a0, $a0, 32
+	vst	$vr0, $a2, 16
 	bne	$a1, $a0, .LBB11_21
 .LBB11_22:                              # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i27
 	ld.d	$a0, $fp, 224
@@ -1877,7 +1918,6 @@ _ZN14btQuantizedBvh20updateSubtreeHeadersEii: # @_ZN14btQuantizedBvh20updateSubt
 	.type	_ZN14btQuantizedBvh13swapLeafNodesEii,@function
 _ZN14btQuantizedBvh13swapLeafNodesEii:  # @_ZN14btQuantizedBvh13swapLeafNodesEii
 # %bb.0:
-	addi.d	$sp, $sp, -96
 	ld.bu	$a3, $a0, 64
 	beqz	$a3, .LBB12_2
 # %bb.1:
@@ -1889,24 +1929,40 @@ _ZN14btQuantizedBvh13swapLeafNodesEii:  # @_ZN14btQuantizedBvh13swapLeafNodesEii
 	vstx	$vr0, $a3, $a1
 	ld.d	$a0, $a0, 152
 	vstx	$vr1, $a0, $a2
-	addi.d	$sp, $sp, 96
 	ret
 .LBB12_2:
+	addi.d	$sp, $sp, -96
 	ld.d	$a3, $a0, 88
 	slli.d	$a2, $a2, 6
-	xvldx	$xr0, $a3, $a2
+	vldx	$vr0, $a3, $a2
 	slli.d	$a1, $a1, 6
-	xvldx	$xr1, $a3, $a1
+	vldx	$vr1, $a3, $a1
 	add.d	$a4, $a3, $a2
-	xvstx	$xr0, $a3, $a1
-	xvld	$xr0, $a4, 32
+	vstx	$vr0, $a3, $a1
+	vld	$vr0, $a4, 16
 	add.d	$a1, $a3, $a1
-	xvld	$xr2, $a1, 32
-	xvst	$xr0, $a1, 32
+	vld	$vr2, $a1, 16
+	vst	$vr0, $a1, 16
+	vld	$vr0, $a4, 32
+	vld	$vr3, $a1, 32
+	vst	$vr0, $a1, 32
+	vld	$vr0, $a4, 48
+	vst	$vr1, $sp, 16
+	vld	$vr1, $a1, 48
+	vst	$vr0, $a1, 48
 	ld.d	$a0, $a0, 88
-	add.d	$a1, $a0, $a2
-	xvstx	$xr1, $a0, $a2
-	xvst	$xr2, $a1, 32
+	vld	$vr0, $sp, 16
+	vst	$vr2, $sp, 32
+	vst	$vr3, $sp, 48
+	vst	$vr1, $sp, 64
+	vstx	$vr0, $a0, $a2
+	vld	$vr0, $sp, 32
+	vld	$vr1, $sp, 48
+	vld	$vr2, $sp, 64
+	add.d	$a0, $a0, $a2
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 32
+	vst	$vr2, $a0, 48
 	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end12:
@@ -3348,7 +3404,7 @@ _ZNK14btQuantizedBvh36walkStacklessQuantizedTreeAgainstRayEP21btNodeOverlapCallb
 	vfmul.s	$vr0, $vr15, $vr0
 	vshuf4i.w	$vr2, $vr0, 1
 	vfcmp.clt.s	$vr2, $vr2, $vr1
-	vext2xv.d.w	$xr3, $xr2
+	vilvl.w	$vr3, $vr2, $vr2
 	vpickve2gr.d	$a3, $vr2, 0
 	vpickve2gr.d	$a6, $vr3, 1
 	or	$a3, $a3, $a6
@@ -3544,13 +3600,14 @@ _ZN14btQuantizedBvh28calculateSerializeBufferSizeEv: # @_ZN14btQuantizedBvh28cal
 .Lfunc_end23:
 	.size	_ZN14btQuantizedBvh28calculateSerializeBufferSizeEv, .Lfunc_end23-_ZN14btQuantizedBvh28calculateSerializeBufferSizeEv
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN14btQuantizedBvh9serializeEPvjb
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN14btQuantizedBvh9serializeEPvjb
 .LCPI24_0:
 	.word	0xff7fffff                      # float -3.40282347E+38
 	.word	0xff7fffff                      # float -3.40282347E+38
 	.word	0xff7fffff                      # float -3.40282347E+38
 	.word	0x00000000                      # float 0
+.LCPI24_1:
 	.word	0x7f7fffff                      # float 3.40282347E+38
 	.word	0x7f7fffff                      # float 3.40282347E+38
 	.word	0x7f7fffff                      # float 3.40282347E+38
@@ -3588,6 +3645,8 @@ _ZN14btQuantizedBvh9serializeEPvjb:     # @_ZN14btQuantizedBvh9serializeEPvjb
 	ori	$a0, $zero, 275
 	st.w	$a0, $a1, 56
 	st.b	$zero, $a1, 64
+	pcalau12i	$a0, %pc_hi20(.LCPI24_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI24_0)
 	ori	$a0, $zero, 1
 	st.b	$a0, $a1, 96
 	st.d	$zero, $a1, 88
@@ -3604,12 +3663,13 @@ _ZN14btQuantizedBvh9serializeEPvjb:     # @_ZN14btQuantizedBvh9serializeEPvjb
 	st.w	$zero, $a1, 200
 	st.b	$a0, $a1, 232
 	st.d	$zero, $a1, 212
-	pcalau12i	$a0, %pc_hi20(.LCPI24_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI24_0)
+	vst	$vr0, $a1, 8
+	pcalau12i	$a0, %pc_hi20(.LCPI24_1)
+	vld	$vr0, $a0, %pc_lo12(.LCPI24_1)
 	ld.w	$a0, $s0, 60
 	st.d	$zero, $a1, 224
 	st.w	$zero, $a1, 240
-	xvst	$xr0, $a1, 8
+	vst	$vr0, $a1, 24
 	beqz	$a3, .LBB24_2
 # %bb.1:
 	revb.2w	$a0, $a0
@@ -4073,76 +4133,7 @@ _ZN14btQuantizedBvh9serializeEPvjb:     # @_ZN14btQuantizedBvh9serializeEPvjb
 	.size	_ZN14btQuantizedBvh9serializeEPvjb, .Lfunc_end24-_ZN14btQuantizedBvh9serializeEPvjb
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb
-.LCPI25_0:
-	.byte	0                               # 0x0
-	.byte	17                              # 0x11
-	.byte	16                              # 0x10
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI25_1:
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	2                               # 0x2
-	.byte	19                              # 0x13
-	.byte	18                              # 0x12
-	.byte	17                              # 0x11
-	.byte	16                              # 0x10
-	.byte	23                              # 0x17
-	.byte	22                              # 0x16
-	.byte	21                              # 0x15
-	.byte	20                              # 0x14
-	.byte	27                              # 0x1b
-	.byte	26                              # 0x1a
-	.byte	25                              # 0x19
-	.byte	24                              # 0x18
-	.byte	31                              # 0x1f
-	.byte	30                              # 0x1e
-	.byte	29                              # 0x1d
-	.byte	28                              # 0x1c
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.text
-	.globl	_ZN14btQuantizedBvh18deSerializeInPlaceEPvjb
+	.globl	_ZN14btQuantizedBvh18deSerializeInPlaceEPvjb # -- Begin function _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb
 	.p2align	2
 	.prefalign	5, .Lfunc_end25, nop
 	.type	_ZN14btQuantizedBvh18deSerializeInPlaceEPvjb,@function
@@ -4172,9 +4163,71 @@ _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb: # @_ZN14btQuantizedBvh18deSerializ
 	ld.w	$a3, $a0, 60
 	revb.2w	$a3, $a3
 	st.w	$a3, $a0, 60
-	ld.b	$s1, $a0, 11
-	ld.b	$s2, $a0, 10
-	ld.b	$s0, $a0, 43
+	ld.b	$a3, $a0, 11
+	ld.b	$a4, $a0, 10
+	ld.b	$a5, $a0, 9
+	ld.b	$a6, $a0, 8
+	ld.b	$a7, $a0, 15
+	ld.b	$t0, $a0, 14
+	ld.b	$t1, $a0, 13
+	ld.b	$t2, $a0, 12
+	ld.b	$t3, $a0, 19
+	ld.b	$t4, $a0, 18
+	ld.b	$t5, $a0, 17
+	ld.b	$t6, $a0, 16
+	ld.b	$t7, $a0, 23
+	ld.b	$t8, $a0, 22
+	ld.b	$fp, $a0, 21
+	ld.b	$s0, $a0, 20
+	st.b	$a3, $a0, 8
+	st.b	$a4, $a0, 9
+	st.b	$a5, $a0, 10
+	st.b	$a6, $a0, 11
+	st.b	$a7, $a0, 12
+	st.b	$t0, $a0, 13
+	st.b	$t1, $a0, 14
+	st.b	$t2, $a0, 15
+	st.b	$t3, $a0, 16
+	st.b	$t4, $a0, 17
+	st.b	$t5, $a0, 18
+	st.b	$t6, $a0, 19
+	st.b	$t7, $a0, 20
+	st.b	$t8, $a0, 21
+	st.b	$fp, $a0, 22
+	st.b	$s0, $a0, 23
+	ld.b	$a3, $a0, 27
+	ld.b	$a4, $a0, 26
+	ld.b	$a5, $a0, 25
+	ld.b	$a6, $a0, 24
+	ld.b	$a7, $a0, 31
+	ld.b	$t0, $a0, 30
+	ld.b	$t1, $a0, 29
+	ld.b	$t2, $a0, 28
+	ld.b	$t3, $a0, 35
+	ld.b	$t4, $a0, 34
+	ld.b	$t5, $a0, 33
+	ld.b	$t6, $a0, 32
+	ld.b	$t7, $a0, 39
+	ld.b	$t8, $a0, 38
+	ld.b	$fp, $a0, 37
+	ld.b	$s0, $a0, 36
+	st.b	$a3, $a0, 24
+	st.b	$a4, $a0, 25
+	st.b	$a5, $a0, 26
+	st.b	$a6, $a0, 27
+	st.b	$a7, $a0, 28
+	st.b	$t0, $a0, 29
+	st.b	$t1, $a0, 30
+	st.b	$t2, $a0, 31
+	st.b	$t3, $a0, 32
+	st.b	$t4, $a0, 33
+	st.b	$t5, $a0, 34
+	st.b	$t6, $a0, 35
+	st.b	$t7, $a0, 36
+	st.b	$t8, $a0, 37
+	st.b	$fp, $a0, 38
+	st.b	$s0, $a0, 39
+	ld.b	$a3, $a0, 43
 	ld.b	$a4, $a0, 42
 	ld.b	$a5, $a0, 41
 	ld.b	$a6, $a0, 40
@@ -4187,146 +4240,10 @@ _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb: # @_ZN14btQuantizedBvh18deSerializ
 	ld.b	$t5, $a0, 49
 	ld.b	$t6, $a0, 48
 	ld.b	$t7, $a0, 55
-	ld.w	$s3, $a0, 8
-	ld.b	$fp, $a0, 54
-	ld.b	$t8, $a0, 53
-	ld.b	$a3, $a0, 52
-	vinsgr2vr.w	$vr0, $s3, 0
-	st.b	$s1, $a0, 8
-	vld	$vr2, $a0, 12
-	pcalau12i	$s1, %pc_hi20(.LCPI25_0)
-	xvld	$xr1, $s1, %pc_lo12(.LCPI25_0)
-	ld.d	$s1, $a0, 28
-	ld.w	$s3, $a0, 36
-	vinsgr2vr.b	$vr3, $s2, 0
-	xvshuf.b	$xr0, $xr0, $xr3, $xr1
-	pcalau12i	$s2, %pc_hi20(.LCPI25_1)
-	xvld	$xr3, $s2, %pc_lo12(.LCPI25_1)
-	vinsgr2vr.w	$vr1, $s3, 0
-	xvpermi.d	$xr0, $xr0, 68
-	xvpermi.d	$xr2, $xr2, 68
-	xvshuf.b	$xr2, $xr2, $xr0, $xr3
-	xvinsgr2vr.d	$xr0, $s1, 0
-	xvpermi.d	$xr4, $xr2, 14
-	vpickve2gr.b	$s1, $vr4, 0
-	vinsgr2vr.b	$vr3, $s1, 0
-	vpickve2gr.b	$s1, $vr4, 1
-	vinsgr2vr.b	$vr3, $s1, 1
-	vpickve2gr.b	$s1, $vr4, 2
-	vinsgr2vr.b	$vr3, $s1, 2
-	vpickve2gr.b	$s1, $vr0, 3
-	vinsgr2vr.b	$vr3, $s1, 3
-	vpickve2gr.b	$s1, $vr0, 2
-	vinsgr2vr.b	$vr3, $s1, 4
-	vpickve2gr.b	$s1, $vr0, 1
-	vinsgr2vr.b	$vr3, $s1, 5
-	vpickve2gr.b	$s1, $vr0, 0
-	vinsgr2vr.b	$vr3, $s1, 6
-	vpickve2gr.b	$s1, $vr0, 7
-	vinsgr2vr.b	$vr3, $s1, 7
-	vpickve2gr.b	$s1, $vr0, 6
-	vinsgr2vr.b	$vr3, $s1, 8
-	vpickve2gr.b	$s1, $vr0, 5
-	vinsgr2vr.b	$vr3, $s1, 9
-	vpickve2gr.b	$s1, $vr0, 4
-	vinsgr2vr.b	$vr3, $s1, 10
-	vpickve2gr.b	$s1, $vr2, 0
-	vinsgr2vr.b	$vr0, $s1, 0
-	vpickve2gr.b	$s1, $vr2, 1
-	vinsgr2vr.b	$vr0, $s1, 1
-	vpickve2gr.b	$s1, $vr2, 2
-	vinsgr2vr.b	$vr0, $s1, 2
-	vpickve2gr.b	$s1, $vr2, 3
-	vinsgr2vr.b	$vr0, $s1, 3
-	vpickve2gr.b	$s1, $vr2, 4
-	vinsgr2vr.b	$vr0, $s1, 4
-	vpickve2gr.b	$s1, $vr2, 5
-	vinsgr2vr.b	$vr0, $s1, 5
-	vpickve2gr.b	$s1, $vr2, 6
-	vinsgr2vr.b	$vr0, $s1, 6
-	vpickve2gr.b	$s1, $vr2, 7
-	vinsgr2vr.b	$vr0, $s1, 7
-	vpickve2gr.b	$s1, $vr2, 8
-	vinsgr2vr.b	$vr0, $s1, 8
-	vpickve2gr.b	$s1, $vr2, 9
-	vinsgr2vr.b	$vr0, $s1, 9
-	vpickve2gr.b	$s1, $vr2, 10
-	vinsgr2vr.b	$vr0, $s1, 10
-	vpickve2gr.b	$s1, $vr2, 11
-	vinsgr2vr.b	$vr0, $s1, 11
-	vpickve2gr.b	$s1, $vr2, 12
-	vinsgr2vr.b	$vr0, $s1, 12
-	vpickve2gr.b	$s1, $vr2, 13
-	vinsgr2vr.b	$vr0, $s1, 13
-	vpickve2gr.b	$s1, $vr2, 14
-	vinsgr2vr.b	$vr0, $s1, 14
-	vpickve2gr.b	$s1, $vr2, 15
-	vinsgr2vr.b	$vr0, $s1, 15
-	xvpermi.q	$xr0, $xr3, 2
-	xvpermi.d	$xr3, $xr0, 14
-	vpickve2gr.b	$s1, $vr3, 0
-	vinsgr2vr.b	$vr2, $s1, 0
-	vpickve2gr.b	$s1, $vr3, 1
-	vinsgr2vr.b	$vr2, $s1, 1
-	vpickve2gr.b	$s1, $vr3, 2
-	vinsgr2vr.b	$vr2, $s1, 2
-	vpickve2gr.b	$s1, $vr3, 3
-	vinsgr2vr.b	$vr2, $s1, 3
-	vpickve2gr.b	$s1, $vr3, 4
-	vinsgr2vr.b	$vr2, $s1, 4
-	vpickve2gr.b	$s1, $vr3, 5
-	vinsgr2vr.b	$vr2, $s1, 5
-	vpickve2gr.b	$s1, $vr3, 6
-	vinsgr2vr.b	$vr2, $s1, 6
-	vpickve2gr.b	$s1, $vr3, 7
-	vinsgr2vr.b	$vr2, $s1, 7
-	vpickve2gr.b	$s1, $vr3, 8
-	vinsgr2vr.b	$vr2, $s1, 8
-	vpickve2gr.b	$s1, $vr3, 9
-	vinsgr2vr.b	$vr2, $s1, 9
-	vpickve2gr.b	$s1, $vr3, 10
-	vinsgr2vr.b	$vr2, $s1, 10
-	vextrins.b	$vr2, $vr1, 179
-	vextrins.b	$vr2, $vr1, 194
-	vextrins.b	$vr2, $vr1, 209
-	vextrins.b	$vr2, $vr1, 224
-	vpickve2gr.b	$s1, $vr0, 0
-	vinsgr2vr.b	$vr1, $s1, 0
-	vpickve2gr.b	$s1, $vr0, 1
-	vinsgr2vr.b	$vr1, $s1, 1
-	vpickve2gr.b	$s1, $vr0, 2
-	vinsgr2vr.b	$vr1, $s1, 2
-	vpickve2gr.b	$s1, $vr0, 3
-	vinsgr2vr.b	$vr1, $s1, 3
-	vpickve2gr.b	$s1, $vr0, 4
-	vinsgr2vr.b	$vr1, $s1, 4
-	vpickve2gr.b	$s1, $vr0, 5
-	vinsgr2vr.b	$vr1, $s1, 5
-	vpickve2gr.b	$s1, $vr0, 6
-	vinsgr2vr.b	$vr1, $s1, 6
-	vpickve2gr.b	$s1, $vr0, 7
-	vinsgr2vr.b	$vr1, $s1, 7
-	vpickve2gr.b	$s1, $vr0, 8
-	vinsgr2vr.b	$vr1, $s1, 8
-	vpickve2gr.b	$s1, $vr0, 9
-	vinsgr2vr.b	$vr1, $s1, 9
-	vpickve2gr.b	$s1, $vr0, 10
-	vinsgr2vr.b	$vr1, $s1, 10
-	vpickve2gr.b	$s1, $vr0, 11
-	vinsgr2vr.b	$vr1, $s1, 11
-	vpickve2gr.b	$s1, $vr0, 12
-	vinsgr2vr.b	$vr1, $s1, 12
-	vpickve2gr.b	$s1, $vr0, 13
-	vinsgr2vr.b	$vr1, $s1, 13
-	vpickve2gr.b	$s1, $vr0, 14
-	vinsgr2vr.b	$vr1, $s1, 14
-	vpickve2gr.b	$s1, $vr0, 15
-	vinsgr2vr.b	$vr1, $s1, 15
-	xvpermi.q	$xr1, $xr2, 2
-	xvreplgr2vr.b	$xr0, $s0
-	xvpermi.q	$xr0, $xr1, 48
-	xvextrins.b	$xr1, $xr0, 255
-	xvst	$xr1, $a0, 9
+	ld.b	$t8, $a0, 54
+	ld.b	$fp, $a0, 53
+	ld.b	$s0, $a0, 52
+	st.b	$a3, $a0, 40
 	st.b	$a4, $a0, 41
 	st.b	$a5, $a0, 42
 	st.b	$a6, $a0, 43
@@ -4339,14 +4256,14 @@ _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb: # @_ZN14btQuantizedBvh18deSerializ
 	st.b	$t5, $a0, 50
 	st.b	$t6, $a0, 51
 	st.b	$t7, $a0, 52
-	st.b	$fp, $a0, 53
-	ld.w	$a4, $a0, 200
-	st.b	$t8, $a0, 54
-	ld.w	$a5, $a0, 240
-	st.b	$a3, $a0, 55
-	revb.2w	$a3, $a4
+	st.b	$t8, $a0, 53
+	ld.w	$a3, $a0, 200
+	st.b	$fp, $a0, 54
+	ld.w	$a4, $a0, 240
+	st.b	$s0, $a0, 55
+	revb.2w	$a3, $a3
 	st.w	$a3, $a0, 200
-	revb.2w	$fp, $a5
+	revb.2w	$fp, $a4
 	st.w	$fp, $a0, 240
 	b	.LBB25_5
 .LBB25_3:

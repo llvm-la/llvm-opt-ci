@@ -343,29 +343,29 @@ _ZN13btGhostObject28addOverlappingObjectInternalEP17btBroadphaseProxyS1_: # @_ZN
 	ld.d	$a1, $a0, 296
 	blez	$a2, .LBB4_18
 .LBB4_9:                                # %.lr.ph.i.i.i
-	ori	$a4, $zero, 8
+	ori	$a4, $zero, 4
 	move	$a3, $zero
 	bltu	$a2, $a4, .LBB4_14
 # %bb.10:                               # %.lr.ph.i.i.i
 	sub.d	$a4, $fp, $a1
-	ori	$a5, $zero, 64
+	ori	$a5, $zero, 32
 	bltu	$a4, $a5, .LBB4_14
 # %bb.11:                               # %vector.ph
-	bstrpick.d	$a3, $a2, 30, 3
-	slli.d	$a3, $a3, 3
-	addi.d	$a4, $a1, 32
-	addi.d	$a5, $fp, 32
+	bstrpick.d	$a3, $a2, 30, 2
+	slli.d	$a3, $a3, 2
+	addi.d	$a4, $a1, 16
+	addi.d	$a5, $fp, 16
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB4_12:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB4_12
 # %bb.13:                               # %middle.block
 	beq	$a3, $a2, .LBB4_16
@@ -881,30 +881,30 @@ _ZN24btPairCachingGhostObject28addOverlappingObjectInternalEP17btBroadphaseProxy
 	ld.d	$a2, $a0, 296
 	blez	$a3, .LBB9_19
 .LBB9_10:                               # %.lr.ph.i.i.i
-	ori	$a5, $zero, 8
+	ori	$a5, $zero, 4
 	move	$a4, $zero
 	move	$a1, $s3
 	bltu	$a3, $a5, .LBB9_15
 # %bb.11:                               # %.lr.ph.i.i.i
 	sub.d	$a5, $s0, $a2
-	ori	$a6, $zero, 64
+	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB9_15
 # %bb.12:                               # %vector.ph
-	bstrpick.d	$a4, $a3, 30, 3
-	slli.d	$a4, $a4, 3
-	addi.d	$a5, $a2, 32
-	addi.d	$a6, $s0, 32
+	bstrpick.d	$a4, $a3, 30, 2
+	slli.d	$a4, $a4, 2
+	addi.d	$a5, $a2, 16
+	addi.d	$a6, $s0, 16
 	move	$a7, $a4
 	.p2align	4, , 16
 .LBB9_13:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a6, -32
-	xvst	$xr1, $a6, 0
-	addi.d	$a7, $a7, -8
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a6, -16
+	vst	$vr1, $a6, 0
+	addi.d	$a7, $a7, -4
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB9_13
 # %bb.14:                               # %middle.block
 	beq	$a4, $a3, .LBB9_17
@@ -1059,26 +1059,34 @@ _ZNK13btGhostObject15convexSweepTestEPK13btConvexShapeRK11btTransformS5_RN16btCo
 	.cfi_offset 31, -88
 	.cfi_offset 56, -96
 	move	$s2, $a2
-	xvld	$xr1, $a2, 0
-	xvld	$xr2, $a2, 32
+	vld	$vr1, $a2, 0
+	vld	$vr2, $a2, 16
 	fmov.s	$fs0, $fa0
 	move	$fp, $a4
 	move	$s3, $a3
 	move	$s0, $a1
 	move	$s1, $a0
-	xvld	$xr0, $a3, 32
-	xvst	$xr1, $sp, 240
-	xvst	$xr2, $sp, 272
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $sp, 208
-	fld.s	$fa0, $sp, 224
+	vld	$vr0, $a2, 32
+	vst	$vr1, $sp, 240
+	vst	$vr2, $sp, 256
+	vld	$vr1, $a2, 48
+	vst	$vr0, $sp, 272
+	vld	$vr0, $a3, 0
+	vld	$vr2, $a3, 16
+	vst	$vr1, $sp, 288
+	vld	$vr1, $a3, 48
+	vst	$vr0, $sp, 176
+	vst	$vr2, $sp, 192
+	vld	$vr0, $a3, 32
+	vst	$vr1, $sp, 224
+	fld.s	$fa1, $sp, 224
 	fld.s	$fa2, $sp, 288
 	fld.s	$fa3, $sp, 228
 	fld.s	$fa4, $sp, 292
 	fld.s	$fa5, $sp, 232
 	fld.s	$fa6, $sp, 296
-	xvst	$xr1, $sp, 176
-	fsub.s	$fa0, $fa0, $fa2
+	vst	$vr0, $sp, 208
+	fsub.s	$fa0, $fa1, $fa2
 	fsub.s	$fa1, $fa3, $fa4
 	fsub.s	$fa2, $fa5, $fa6
 	movfr2gr.s	$a0, $fa0

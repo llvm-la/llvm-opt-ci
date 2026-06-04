@@ -412,29 +412,29 @@ _ZN33btConvexConcaveCollisionAlgorithm22getAllContactManifoldsER20btAlignedObjec
 	ld.d	$a2, $a1, 16
 	blez	$a3, .LBB4_14
 .LBB4_5:                                # %.lr.ph.i.i.i
-	ori	$a5, $zero, 8
+	ori	$a5, $zero, 4
 	move	$a4, $zero
 	bltu	$a3, $a5, .LBB4_10
 # %bb.6:                                # %.lr.ph.i.i.i
 	sub.d	$a5, $fp, $a2
-	ori	$a6, $zero, 64
+	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB4_10
 # %bb.7:                                # %vector.ph
-	bstrpick.d	$a4, $a3, 30, 3
-	slli.d	$a4, $a4, 3
-	addi.d	$a5, $a2, 32
-	addi.d	$a6, $fp, 32
+	bstrpick.d	$a4, $a3, 30, 2
+	slli.d	$a4, $a4, 2
+	addi.d	$a5, $a2, 16
+	addi.d	$a6, $fp, 16
 	move	$a7, $a4
 	.p2align	4, , 16
 .LBB4_8:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a6, -32
-	xvst	$xr1, $a6, 0
-	addi.d	$a7, $a7, -8
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a6, -16
+	vst	$vr1, $a6, 0
+	addi.d	$a7, $a7, -4
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB4_8
 # %bb.9:                                # %middle.block
 	beq	$a4, $a3, .LBB4_12
@@ -1035,63 +1035,63 @@ _ZN24btConvexTriangleCallback15processTriangleEP9btVector3ii: # @_ZN24btConvexTr
 	addi.d	$a3, $sp, 16
 	jirl	$ra, $a4, 0
 	ld.d	$a0, $s0, 72
-	ld.d	$a0, $a0, 24
 	fld.s	$fa0, $s4, 8
 	fld.s	$fa1, $s4, 12
-	fld.s	$fa2, $s4, 16
-	fld.s	$fa3, $s3, 40
-	fld.s	$fa4, $s4, 56
-	fld.s	$fa5, $s4, 24
-	fld.s	$fa6, $s4, 28
-	fld.s	$fa7, $s4, 32
-	fld.s	$ft0, $s4, 60
-	fld.s	$ft1, $s4, 40
-	fld.s	$ft2, $s4, 44
-	fld.s	$ft3, $s4, 48
-	fld.s	$ft4, $s3, 36
-	fld.s	$ft5, $s3, 32
-	fld.s	$ft6, $s4, 64
-	fld.s	$ft7, $s3, 8
-	fmul.s	$ft8, $ft4, $ft2
-	fmadd.s	$ft8, $ft1, $ft5, $ft8
-	fmadd.s	$ft8, $ft3, $fa3, $ft8
-	fadd.s	$ft8, $ft6, $ft8
-	fld.s	$ft9, $s3, 4
-	movfr2gr.s	$a1, $ft8
-	fld.s	$ft8, $s3, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	fmul.s	$ft10, $fa1, $ft9
-	fmul.s	$fa1, $fa1, $ft4
-	fmadd.s	$ft10, $fa0, $ft8, $ft10
-	fmadd.s	$fa0, $fa0, $ft5, $fa1
-	fmadd.s	$fa1, $fa2, $ft7, $ft10
-	fmadd.s	$fa0, $fa2, $fa3, $fa0
-	fadd.s	$fa1, $fa4, $fa1
-	fadd.s	$fa0, $fa0, $fa4
-	fmul.s	$fa2, $fa6, $ft9
-	fmul.s	$fa4, $ft4, $fa6
-	fmadd.s	$fa2, $fa5, $ft8, $fa2
-	fmadd.s	$fa4, $fa5, $ft5, $fa4
-	fmadd.s	$fa2, $fa7, $ft7, $fa2
-	fmadd.s	$fa3, $fa7, $fa3, $fa4
-	fadd.s	$fa2, $ft0, $fa2
-	fadd.s	$fa3, $ft0, $fa3
-	vextrins.w	$vr0, $vr1, 16
-	vextrins.w	$vr3, $vr2, 16
-	vshuf4i.w	$vr1, $vr3, 16
-	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr0, $xr0
-	vor.v	$vr0, $vr1, $vr0
-	vstelm.d	$vr0, $sp, 152, 0
-	st.d	$a1, $sp, 160
-	fmul.s	$fa1, $ft2, $ft9
-	fmadd.s	$fa1, $ft1, $ft8, $fa1
-	fmadd.s	$fa1, $ft3, $ft7, $fa1
-	fadd.s	$fa1, $ft6, $fa1
-	movfr2gr.s	$a1, $fa1
-	bstrpick.d	$a1, $a1, 31, 0
-	vstelm.d	$vr0, $sp, 136, 1
-	st.d	$a1, $sp, 144
+	fld.s	$fa2, $s3, 36
+	fld.s	$fa3, $s3, 32
+	fld.s	$fa4, $s4, 16
+	fld.s	$fa5, $s3, 40
+	fmul.s	$fa6, $fa1, $fa2
+	fmadd.s	$fa6, $fa0, $fa3, $fa6
+	fld.s	$fa7, $s4, 28
+	fmadd.s	$fa6, $fa4, $fa5, $fa6
+	fld.s	$ft0, $s4, 24
+	fld.s	$ft1, $s4, 56
+	fmul.s	$ft2, $fa2, $fa7
+	fld.s	$ft3, $s4, 32
+	fmadd.s	$ft2, $ft0, $fa3, $ft2
+	fld.s	$ft4, $s4, 44
+	fld.s	$ft5, $s4, 40
+	fmadd.s	$ft2, $ft3, $fa5, $ft2
+	fld.s	$ft6, $s4, 48
+	fmul.s	$fa2, $fa2, $ft4
+	fmadd.s	$fa2, $ft5, $fa3, $fa2
+	fld.s	$fa3, $s4, 60
+	fmadd.s	$fa2, $ft6, $fa5, $fa2
+	fld.s	$fa5, $s4, 64
+	ld.d	$a0, $a0, 24
+	fadd.s	$fa6, $fa6, $ft1
+	fadd.s	$ft2, $fa3, $ft2
+	fadd.s	$fa2, $fa5, $fa2
+	movfr2gr.s	$a1, $fa6
+	movfr2gr.s	$a2, $ft2
+	bstrins.d	$a1, $a2, 63, 32
+	movfr2gr.s	$a2, $fa2
+	bstrpick.d	$a2, $a2, 31, 0
+	st.d	$a1, $sp, 152
+	fld.s	$fa2, $s3, 4
+	fld.s	$fa6, $s3, 0
+	fld.s	$ft2, $s3, 8
+	st.d	$a2, $sp, 160
+	fmul.s	$fa1, $fa1, $fa2
+	fmadd.s	$fa0, $fa0, $fa6, $fa1
+	fmadd.s	$fa0, $fa4, $ft2, $fa0
+	fadd.s	$fa0, $ft1, $fa0
+	fmul.s	$fa1, $fa7, $fa2
+	fmadd.s	$fa1, $ft0, $fa6, $fa1
+	fmadd.s	$fa1, $ft3, $ft2, $fa1
+	fadd.s	$fa1, $fa3, $fa1
+	fmul.s	$fa2, $ft4, $fa2
+	fmadd.s	$fa2, $ft5, $fa6, $fa2
+	fmadd.s	$fa2, $ft6, $ft2, $fa2
+	fadd.s	$fa2, $fa5, $fa2
+	movfr2gr.s	$a1, $fa0
+	movfr2gr.s	$a2, $fa1
+	bstrins.d	$a1, $a2, 63, 32
+	movfr2gr.s	$a2, $fa2
+	bstrpick.d	$a2, $a2, 31, 0
+	st.d	$a1, $sp, 136
+	st.d	$a2, $sp, 144
 	ld.d	$a1, $a0, 0
 	ld.d	$a4, $a1, 40
 	addi.d	$a1, $sp, 152
@@ -1112,9 +1112,11 @@ _ZN24btConvexTriangleCallback15processTriangleEP9btVector3ii: # @_ZN24btConvexTr
 	pcalau12i	$a0, %pc_hi20(_ZTV15btTriangleShape+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV15btTriangleShape+16)
 	vld	$vr0, $s3, 0
-	xvld	$xr1, $s3, 16
+	vld	$vr1, $s3, 16
+	vld	$vr2, $s3, 32
 	vst	$vr0, $sp, 80
-	xvst	$xr1, $sp, 96
+	vst	$vr1, $sp, 96
+	vst	$vr2, $sp, 112
 	fld.s	$fa0, $s0, 80
 	st.d	$a0, $sp, 16
 	ori	$a0, $zero, 1
@@ -2779,12 +2781,14 @@ _ZZN33btConvexConcaveCollisionAlgorithm21calculateTimeOfImpactEP17btCollisionObj
 	pcalau12i	$a0, %pc_hi20(_ZTV15btTriangleShape+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV15btTriangleShape+16)
 	st.d	$a0, $sp, 400
-	vld	$vr0, $s0, 0
-	xvld	$xr1, $s0, 16
 	ori	$a0, $zero, 1
+	vld	$vr0, $s0, 0
+	vld	$vr1, $s0, 16
+	vld	$vr2, $s0, 32
 	st.w	$a0, $sp, 408
 	vst	$vr0, $sp, 464
-	xvst	$xr1, $sp, 480
+	vst	$vr1, $sp, 480
+	vst	$vr2, $sp, 496
 	st.b	$zero, $sp, 372
 .Ltmp86:                                # EH_LABEL
 	addi.d	$a0, $sp, 8

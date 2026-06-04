@@ -59,8 +59,8 @@ test:                                   # @test
 .Lfunc_end0:
 	.size	test, .Lfunc_end0-test
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI1_0:
 	.half	0                               # 0x0
 	.half	1                               # 0x1
@@ -70,6 +70,7 @@ test:                                   # @test
 	.half	5                               # 0x5
 	.half	6                               # 0x6
 	.half	7                               # 0x7
+.LCPI1_1:
 	.half	8                               # 0x8
 	.half	9                               # 0x9
 	.half	10                              # 0xa
@@ -78,7 +79,7 @@ test:                                   # @test
 	.half	13                              # 0xd
 	.half	14                              # 0xe
 	.half	15                              # 0xf
-.LCPI1_1:
+.LCPI1_2:
 	.half	16                              # 0x10
 	.half	17                              # 0x11
 	.half	18                              # 0x12
@@ -87,6 +88,7 @@ test:                                   # @test
 	.half	21                              # 0x15
 	.half	22                              # 0x16
 	.half	23                              # 0x17
+.LCPI1_3:
 	.half	24                              # 0x18
 	.half	25                              # 0x19
 	.half	26                              # 0x1a
@@ -95,7 +97,7 @@ test:                                   # @test
 	.half	29                              # 0x1d
 	.half	30                              # 0x1e
 	.half	31                              # 0x1f
-.LCPI1_2:
+.LCPI1_4:
 	.half	32                              # 0x20
 	.half	33                              # 0x21
 	.half	34                              # 0x22
@@ -104,6 +106,7 @@ test:                                   # @test
 	.half	37                              # 0x25
 	.half	38                              # 0x26
 	.half	39                              # 0x27
+.LCPI1_5:
 	.half	40                              # 0x28
 	.half	41                              # 0x29
 	.half	42                              # 0x2a
@@ -112,7 +115,7 @@ test:                                   # @test
 	.half	45                              # 0x2d
 	.half	46                              # 0x2e
 	.half	47                              # 0x2f
-.LCPI1_3:
+.LCPI1_6:
 	.half	48                              # 0x30
 	.half	49                              # 0x31
 	.half	50                              # 0x32
@@ -121,6 +124,7 @@ test:                                   # @test
 	.half	53                              # 0x35
 	.half	54                              # 0x36
 	.half	55                              # 0x37
+.LCPI1_7:
 	.half	56                              # 0x38
 	.half	57                              # 0x39
 	.half	58                              # 0x3a
@@ -129,7 +133,7 @@ test:                                   # @test
 	.half	61                              # 0x3d
 	.half	62                              # 0x3e
 	.half	63                              # 0x3f
-.LCPI1_4:
+.LCPI1_8:
 	.half	64                              # 0x40
 	.half	65                              # 0x41
 	.half	66                              # 0x42
@@ -138,6 +142,7 @@ test:                                   # @test
 	.half	69                              # 0x45
 	.half	70                              # 0x46
 	.half	71                              # 0x47
+.LCPI1_9:
 	.half	72                              # 0x48
 	.half	73                              # 0x49
 	.half	74                              # 0x4a
@@ -146,7 +151,7 @@ test:                                   # @test
 	.half	77                              # 0x4d
 	.half	78                              # 0x4e
 	.half	79                              # 0x4f
-.LCPI1_5:
+.LCPI1_10:
 	.half	80                              # 0x50
 	.half	81                              # 0x51
 	.half	82                              # 0x52
@@ -155,6 +160,7 @@ test:                                   # @test
 	.half	85                              # 0x55
 	.half	86                              # 0x56
 	.half	87                              # 0x57
+.LCPI1_11:
 	.half	88                              # 0x58
 	.half	89                              # 0x59
 	.half	90                              # 0x5a
@@ -163,7 +169,7 @@ test:                                   # @test
 	.half	93                              # 0x5d
 	.half	94                              # 0x5e
 	.half	95                              # 0x5f
-.LCPI1_6:
+.LCPI1_12:
 	.half	96                              # 0x60
 	.half	97                              # 0x61
 	.half	98                              # 0x62
@@ -172,6 +178,7 @@ test:                                   # @test
 	.half	101                             # 0x65
 	.half	102                             # 0x66
 	.half	103                             # 0x67
+.LCPI1_13:
 	.half	104                             # 0x68
 	.half	105                             # 0x69
 	.half	106                             # 0x6a
@@ -180,7 +187,7 @@ test:                                   # @test
 	.half	109                             # 0x6d
 	.half	110                             # 0x6e
 	.half	111                             # 0x6f
-.LCPI1_7:
+.LCPI1_14:
 	.half	112                             # 0x70
 	.half	113                             # 0x71
 	.half	114                             # 0x72
@@ -189,6 +196,7 @@ test:                                   # @test
 	.half	117                             # 0x75
 	.half	118                             # 0x76
 	.half	119                             # 0x77
+.LCPI1_15:
 	.half	120                             # 0x78
 	.half	121                             # 0x79
 	.half	122                             # 0x7a
@@ -207,31 +215,55 @@ main:                                   # @main
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI1_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_0)
 	pcalau12i	$a0, %pc_hi20(in)
 	addi.d	$a1, $a0, %pc_lo12(in)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI1_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI1_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI1_3)
-	xvst	$xr0, $a1, 0
-	xvst	$xr1, $a1, 32
-	xvst	$xr2, $a1, 64
-	xvst	$xr3, $a1, 96
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_3)
+	vst	$vr0, $a1, 0
+	vst	$vr1, $a1, 16
+	vst	$vr2, $a1, 32
+	vst	$vr3, $a1, 48
 	pcalau12i	$a0, %pc_hi20(.LCPI1_4)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI1_4)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_5)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI1_5)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_6)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI1_6)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_7)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI1_7)
-	xvst	$xr0, $a1, 128
-	xvst	$xr1, $a1, 160
-	xvst	$xr2, $a1, 192
-	xvst	$xr3, $a1, 224
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_7)
+	vst	$vr0, $a1, 64
+	vst	$vr1, $a1, 80
+	vst	$vr2, $a1, 96
+	vst	$vr3, $a1, 112
+	pcalau12i	$a0, %pc_hi20(.LCPI1_8)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_8)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_9)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_9)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_10)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_10)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_11)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_11)
+	vst	$vr0, $a1, 128
+	vst	$vr1, $a1, 144
+	vst	$vr2, $a1, 160
+	vst	$vr3, $a1, 176
+	pcalau12i	$a0, %pc_hi20(.LCPI1_12)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_12)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_13)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_13)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_14)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_14)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_15)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_15)
+	vst	$vr0, $a1, 192
+	vst	$vr1, $a1, 208
+	vst	$vr2, $a1, 224
+	vst	$vr3, $a1, 240
 	ori	$a2, $zero, 1
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(test)
@@ -252,7 +284,7 @@ main:                                   # @main
 	.type	in,@object                      # @in
 	.bss
 	.globl	in
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 in:
 	.space	256
 	.size	in, 256

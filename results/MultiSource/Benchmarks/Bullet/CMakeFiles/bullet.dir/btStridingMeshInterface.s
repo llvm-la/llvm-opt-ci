@@ -29,18 +29,21 @@ _ZN23btStridingMeshInterfaceD0Ev:       # @_ZN23btStridingMeshInterfaceD0Ev
 _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangleIndexCallbackRK9btVector3S4_: # @_ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangleIndexCallbackRK9btVector3S4_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -336
-	.cfi_def_cfa_offset 336
-	st.d	$ra, $sp, 328                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 312                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 296                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 280                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 256                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -224
+	.cfi_def_cfa_offset 224
+	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 136                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 128                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 120                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -51,6 +54,9 @@ _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangle
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
+	.cfi_offset 56, -88
+	.cfi_offset 57, -96
+	.cfi_offset 58, -104
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a2, $a0, 56
@@ -60,27 +66,13 @@ _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangle
 	blez	$a0, .LBB2_21
 # %bb.1:                                # %.lr.ph165
 	move	$s1, $a0
-	vld	$vr1, $fp, 8
-	fld.s	$fa2, $fp, 16
 	move	$s2, $zero
-	fld.d	$fa3, $fp, 8
-	vldi	$vr0, -1168
-	vst	$vr2, $sp, 144                  # 16-byte Folded Spill
-	vextrins.w	$vr1, $vr2, 32
-	vextrins.w	$vr1, $vr0, 48
-	vst	$vr1, $sp, 48                   # 16-byte Folded Spill
-	vreplvei.w	$vr0, $vr3, 0
-	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
-	vst	$vr3, $sp, 128                  # 16-byte Folded Spill
-	vreplvei.w	$vr0, $vr3, 1
-	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
-	addi.d	$s4, $sp, 228
+	fld.s	$fs0, $fp, 8
+	fld.s	$fs1, $fp, 12
+	fld.s	$fs2, $fp, 16
+	addi.d	$s4, $sp, 92
 	ori	$s5, $zero, 1
 	ori	$s6, $zero, 2
-	movgr2fr.w	$fa0, $zero
-	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
-	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	ori	$s7, $zero, 3
 	b	.LBB2_3
 	.p2align	4, , 16
@@ -101,29 +93,28 @@ _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangle
 	ld.d	$a0, $fp, 0
 	ld.d	$t0, $a0, 32
 	st.d	$s2, $sp, 8
-	addi.d	$a1, $sp, 248
-	addi.d	$a2, $sp, 220
-	addi.d	$a3, $sp, 232
-	addi.d	$a4, $sp, 224
-	addi.d	$a5, $sp, 240
-	addi.d	$a6, $sp, 236
-	addi.d	$a7, $sp, 216
+	addi.d	$a1, $sp, 112
+	addi.d	$a2, $sp, 84
+	addi.d	$a3, $sp, 96
+	addi.d	$a4, $sp, 88
+	addi.d	$a5, $sp, 104
+	addi.d	$a6, $sp, 100
+	addi.d	$a7, $sp, 80
 	st.d	$s4, $sp, 0
 	move	$a0, $fp
 	jirl	$ra, $t0, 0
-	ld.w	$a0, $sp, 232
+	ld.w	$a0, $sp, 96
 	beq	$a0, $s5, .LBB2_10
 # %bb.4:                                #   in Loop: Header=BB2_3 Depth=1
 	bnez	$a0, .LBB2_2
 # %bb.5:                                #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$a0, $sp, 228
+	ld.w	$a0, $sp, 92
 	beq	$a0, $s6, .LBB2_15
 # %bb.6:                                #   in Loop: Header=BB2_3 Depth=1
-	vld	$vr5, $sp, 144                  # 16-byte Folded Reload
 	bne	$a0, $s7, .LBB2_2
 # %bb.7:                                # %.preheader151
                                         #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$a0, $sp, 216
+	ld.w	$a0, $sp, 80
 	blez	$a0, .LBB2_2
 # %bb.8:                                # %.lr.ph161.preheader
                                         #   in Loop: Header=BB2_3 Depth=1
@@ -132,75 +123,71 @@ _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangle
 .LBB2_9:                                # %.lr.ph161
                                         #   Parent Loop BB2_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a0, $sp, 236
-	ld.d	$a1, $sp, 240
+	ld.w	$a0, $sp, 100
+	ld.d	$a1, $sp, 104
 	mul.w	$a0, $a0, $s3
 	ldx.hu	$a2, $a1, $a0
-	ld.w	$a3, $sp, 224
-	ld.d	$a4, $sp, 248
+	ld.w	$a3, $sp, 88
+	ld.d	$a4, $sp, 112
 	mul.w	$a2, $a3, $a2
 	fldx.s	$fa0, $a4, $a2
 	add.d	$a2, $a4, $a2
 	fld.s	$fa1, $a2, 4
 	fld.s	$fa2, $a2, 8
 	add.d	$a0, $a1, $a0
-	vld	$vr3, $sp, 112                  # 16-byte Folded Reload
-	fmul.s	$fa0, $fa3, $fa0
-	vld	$vr4, $sp, 96                   # 16-byte Folded Reload
-	fmul.s	$fa1, $fa4, $fa1
-	fmul.s	$fa2, $fa5, $fa2
-	fst.s	$fa0, $sp, 168
+	fmul.s	$fa0, $fs0, $fa0
+	fmul.s	$fa1, $fs1, $fa1
+	fmul.s	$fa2, $fs2, $fa2
+	fst.s	$fa0, $sp, 32
 	ld.hu	$a1, $a0, 2
-	fst.s	$fa1, $sp, 172
-	fst.s	$fa2, $sp, 176
-	st.w	$zero, $sp, 180
+	fst.s	$fa1, $sp, 36
+	fst.s	$fa2, $sp, 40
+	st.w	$zero, $sp, 44
 	mul.w	$a1, $a3, $a1
 	add.d	$a2, $a4, $a1
 	fldx.s	$fa0, $a4, $a1
 	fld.s	$fa1, $a2, 4
 	fld.s	$fa2, $a2, 8
-	fmul.s	$fa0, $fa3, $fa0
-	fmul.s	$fa1, $fa4, $fa1
-	fmul.s	$fa2, $fa5, $fa2
-	fst.s	$fa0, $sp, 184
+	fmul.s	$fa0, $fs0, $fa0
+	fmul.s	$fa1, $fs1, $fa1
+	fmul.s	$fa2, $fs2, $fa2
+	fst.s	$fa0, $sp, 48
 	ld.hu	$a0, $a0, 4
-	fst.s	$fa1, $sp, 188
-	fst.s	$fa2, $sp, 192
-	st.w	$zero, $sp, 196
+	fst.s	$fa1, $sp, 52
+	fst.s	$fa2, $sp, 56
+	st.w	$zero, $sp, 60
 	mul.w	$a0, $a3, $a0
 	add.d	$a1, $a4, $a0
 	fldx.s	$fa0, $a4, $a0
 	fld.s	$fa1, $a1, 4
 	fld.s	$fa2, $a1, 8
-	fmul.s	$fa0, $fa3, $fa0
-	fmul.s	$fa1, $fa4, $fa1
-	fmul.s	$fa2, $fa5, $fa2
-	fst.s	$fa0, $sp, 200
+	fmul.s	$fa0, $fs0, $fa0
+	fmul.s	$fa1, $fs1, $fa1
+	fmul.s	$fa2, $fs2, $fa2
+	fst.s	$fa0, $sp, 64
 	ld.d	$a0, $s0, 0
-	fst.s	$fa1, $sp, 204
-	fst.s	$fa2, $sp, 208
-	st.w	$zero, $sp, 212
+	fst.s	$fa1, $sp, 68
+	fst.s	$fa2, $sp, 72
+	st.w	$zero, $sp, 76
 	ld.d	$a4, $a0, 16
-	addi.d	$a1, $sp, 168
+	addi.d	$a1, $sp, 32
 	move	$a0, $s0
 	move	$a2, $s2
 	move	$a3, $s3
 	jirl	$ra, $a4, 0
-	vld	$vr5, $sp, 144                  # 16-byte Folded Reload
-	ld.w	$a0, $sp, 216
+	ld.w	$a0, $sp, 80
 	addi.w	$s3, $s3, 1
 	blt	$s3, $a0, .LBB2_9
 	b	.LBB2_2
 	.p2align	4, , 16
 .LBB2_10:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$a0, $sp, 228
+	ld.w	$a0, $sp, 92
 	beq	$a0, $s6, .LBB2_18
 # %bb.11:                               #   in Loop: Header=BB2_3 Depth=1
-	vld	$vr5, $sp, 144                  # 16-byte Folded Reload
 	bne	$a0, $s7, .LBB2_2
 # %bb.12:                               # %.preheader155
                                         #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$a0, $sp, 216
+	ld.w	$a0, $sp, 80
 	blez	$a0, .LBB2_2
 # %bb.13:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB2_3 Depth=1
@@ -209,67 +196,74 @@ _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangle
 .LBB2_14:                               # %.lr.ph
                                         #   Parent Loop BB2_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a0, $sp, 236
-	ld.d	$a1, $sp, 240
+	ld.w	$a0, $sp, 100
+	ld.d	$a1, $sp, 104
 	mul.w	$a0, $a0, $s3
 	ldx.hu	$a2, $a1, $a0
-	ld.w	$a3, $sp, 224
-	ld.d	$a4, $sp, 248
-	add.d	$a0, $a1, $a0
-	ld.hu	$a1, $a0, 2
-	mul.w	$a2, $a3, $a2
-	add.d	$a5, $a4, $a2
-	fld.d	$fa0, $a5, 16
-	mul.w	$a1, $a3, $a1
-	add.d	$a5, $a4, $a1
-	fld.d	$fa1, $a5, 16
-	fcvt.s.d	$fa0, $fa0
-	vldx	$vr2, $a4, $a1
-	fcvt.s.d	$fa1, $fa1
-	fmul.s	$fa1, $fa5, $fa1
-	vldx	$vr3, $a4, $a2
-	vfcvt.s.d	$vr2, $vr0, $vr2
-	vld	$vr4, $sp, 128                  # 16-byte Folded Reload
-	vfmul.s	$vr2, $vr4, $vr2
-	fmul.s	$fa0, $fa5, $fa0
-	vfcvt.s.d	$vr3, $vr0, $vr3
-	vfmul.s	$vr3, $vr4, $vr3
-	xvinsve0.w	$xr3, $xr0, 2
-	xvld	$xr0, $sp, 64                   # 32-byte Folded Reload
-	xvinsve0.w	$xr3, $xr0, 3
-	ld.hu	$a0, $a0, 4
-	xvinsve0.w	$xr3, $xr0, 7
-	xvinsve0.d	$xr3, $xr2, 2
-	xvinsve0.w	$xr3, $xr1, 6
-	mul.w	$a0, $a3, $a0
-	vldx	$vr0, $a4, $a0
+	ld.w	$a3, $sp, 88
+	ld.d	$a4, $sp, 112
+	add.d	$a1, $a1, $a0
+	mul.w	$a0, $a3, $a2
+	fldx.d	$fa0, $a4, $a0
 	add.d	$a0, $a4, $a0
-	fld.d	$fa1, $a0, 16
-	xvst	$xr3, $sp, 168
-	vfcvt.s.d	$vr0, $vr0, $vr0
-	vfmul.s	$vr0, $vr4, $vr0
+	fld.d	$fa1, $a0, 8
+	ld.hu	$a2, $a1, 2
+	fcvt.s.d	$fa0, $fa0
+	fmul.s	$fa0, $fs0, $fa0
 	fcvt.s.d	$fa1, $fa1
-	fmul.s	$fa1, $fa5, $fa1
-	vstelm.w	$vr0, $sp, 200, 0
+	mul.w	$a2, $a3, $a2
+	fldx.d	$fa2, $a4, $a2
+	fmul.s	$fa1, $fs1, $fa1
+	fst.s	$fa0, $sp, 32
+	add.d	$a2, $a4, $a2
+	fcvt.s.d	$fa0, $fa2
+	fld.d	$fa2, $a2, 8
+	fmul.s	$fa0, $fs0, $fa0
+	fst.s	$fa0, $sp, 48
+	fld.d	$fa0, $a2, 16
+	fcvt.s.d	$fa2, $fa2
+	ld.hu	$a1, $a1, 4
+	fmul.s	$fa2, $fs1, $fa2
+	fcvt.s.d	$fa0, $fa0
+	fst.s	$fa2, $sp, 52
+	mul.w	$a1, $a3, $a1
+	fldx.d	$fa2, $a4, $a1
+	fmul.s	$fa0, $fs2, $fa0
+	fst.s	$fa0, $sp, 56
+	add.d	$a1, $a4, $a1
+	fcvt.s.d	$fa0, $fa2
+	fld.d	$fa2, $a1, 8
+	fmul.s	$fa0, $fs0, $fa0
+	fst.s	$fa0, $sp, 64
+	fld.d	$fa0, $a0, 16
+	fcvt.s.d	$fa2, $fa2
+	fmul.s	$fa2, $fs1, $fa2
+	fst.s	$fa2, $sp, 68
+	fld.d	$fa2, $a1, 16
+	fcvt.s.d	$fa0, $fa0
+	fmul.s	$fa0, $fs2, $fa0
+	st.w	$zero, $sp, 60
+	fcvt.s.d	$fa2, $fa2
 	ld.d	$a0, $s0, 0
-	vstelm.w	$vr0, $sp, 204, 1
-	fst.s	$fa1, $sp, 208
-	st.w	$zero, $sp, 212
+	fmul.s	$fa2, $fs2, $fa2
+	fst.s	$fa2, $sp, 72
+	st.w	$zero, $sp, 76
 	ld.d	$a4, $a0, 16
-	addi.d	$a1, $sp, 168
+	fst.s	$fa1, $sp, 36
+	fst.s	$fa0, $sp, 40
+	st.w	$zero, $sp, 44
+	addi.d	$a1, $sp, 32
 	move	$a0, $s0
 	move	$a2, $s2
 	move	$a3, $s3
 	jirl	$ra, $a4, 0
-	vld	$vr5, $sp, 144                  # 16-byte Folded Reload
-	ld.w	$a0, $sp, 216
+	ld.w	$a0, $sp, 80
 	addi.w	$s3, $s3, 1
 	blt	$s3, $a0, .LBB2_14
 	b	.LBB2_2
 .LBB2_15:                               # %.preheader
                                         #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$a0, $sp, 216
-	vld	$vr5, $sp, 144                  # 16-byte Folded Reload
+	ld.w	$a0, $sp, 80
 	blez	$a0, .LBB2_2
 # %bb.16:                               # %.lr.ph163.preheader
                                         #   in Loop: Header=BB2_3 Depth=1
@@ -278,12 +272,12 @@ _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangle
 .LBB2_17:                               # %.lr.ph163
                                         #   Parent Loop BB2_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a0, $sp, 236
-	ld.d	$a1, $sp, 240
+	ld.w	$a0, $sp, 100
+	ld.d	$a1, $sp, 104
 	mul.w	$a0, $a0, $s3
 	ldx.w	$a2, $a1, $a0
-	ld.w	$a3, $sp, 224
-	ld.d	$a4, $sp, 248
+	ld.w	$a3, $sp, 88
+	ld.d	$a4, $sp, 112
 	mul.d	$a2, $a3, $a2
 	bstrpick.d	$a2, $a2, 31, 0
 	fldx.s	$fa0, $a4, $a2
@@ -291,59 +285,55 @@ _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangle
 	fld.s	$fa1, $a2, 4
 	fld.s	$fa2, $a2, 8
 	add.d	$a0, $a1, $a0
-	vld	$vr3, $sp, 112                  # 16-byte Folded Reload
-	fmul.s	$fa0, $fa3, $fa0
-	vld	$vr4, $sp, 96                   # 16-byte Folded Reload
-	fmul.s	$fa1, $fa4, $fa1
-	fmul.s	$fa2, $fa5, $fa2
-	fst.s	$fa0, $sp, 168
+	fmul.s	$fa0, $fs0, $fa0
+	fmul.s	$fa1, $fs1, $fa1
+	fmul.s	$fa2, $fs2, $fa2
+	fst.s	$fa0, $sp, 32
 	ld.w	$a1, $a0, 4
-	fst.s	$fa1, $sp, 172
-	fst.s	$fa2, $sp, 176
-	st.w	$zero, $sp, 180
+	fst.s	$fa1, $sp, 36
+	fst.s	$fa2, $sp, 40
+	st.w	$zero, $sp, 44
 	mul.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 31, 0
 	add.d	$a2, $a4, $a1
 	fldx.s	$fa0, $a4, $a1
 	fld.s	$fa1, $a2, 4
 	fld.s	$fa2, $a2, 8
-	fmul.s	$fa0, $fa3, $fa0
-	fmul.s	$fa1, $fa4, $fa1
-	fmul.s	$fa2, $fa5, $fa2
-	fst.s	$fa0, $sp, 184
+	fmul.s	$fa0, $fs0, $fa0
+	fmul.s	$fa1, $fs1, $fa1
+	fmul.s	$fa2, $fs2, $fa2
+	fst.s	$fa0, $sp, 48
 	ld.w	$a0, $a0, 8
-	fst.s	$fa1, $sp, 188
-	fst.s	$fa2, $sp, 192
-	st.w	$zero, $sp, 196
+	fst.s	$fa1, $sp, 52
+	fst.s	$fa2, $sp, 56
+	st.w	$zero, $sp, 60
 	mul.d	$a0, $a0, $a3
 	bstrpick.d	$a0, $a0, 31, 0
 	add.d	$a1, $a4, $a0
 	fldx.s	$fa0, $a4, $a0
 	fld.s	$fa1, $a1, 4
 	fld.s	$fa2, $a1, 8
-	fmul.s	$fa0, $fa3, $fa0
-	fmul.s	$fa1, $fa4, $fa1
-	fmul.s	$fa2, $fa5, $fa2
-	fst.s	$fa0, $sp, 200
+	fmul.s	$fa0, $fs0, $fa0
+	fmul.s	$fa1, $fs1, $fa1
+	fmul.s	$fa2, $fs2, $fa2
+	fst.s	$fa0, $sp, 64
 	ld.d	$a0, $s0, 0
-	fst.s	$fa1, $sp, 204
-	fst.s	$fa2, $sp, 208
-	st.w	$zero, $sp, 212
+	fst.s	$fa1, $sp, 68
+	fst.s	$fa2, $sp, 72
+	st.w	$zero, $sp, 76
 	ld.d	$a4, $a0, 16
-	addi.d	$a1, $sp, 168
+	addi.d	$a1, $sp, 32
 	move	$a0, $s0
 	move	$a2, $s2
 	move	$a3, $s3
 	jirl	$ra, $a4, 0
-	vld	$vr5, $sp, 144                  # 16-byte Folded Reload
-	ld.w	$a0, $sp, 216
+	ld.w	$a0, $sp, 80
 	addi.w	$s3, $s3, 1
 	blt	$s3, $a0, .LBB2_17
 	b	.LBB2_2
 .LBB2_18:                               # %.preheader153
                                         #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$a0, $sp, 216
-	vld	$vr5, $sp, 144                  # 16-byte Folded Reload
+	ld.w	$a0, $sp, 80
 	blez	$a0, .LBB2_2
 # %bb.19:                               # %.lr.ph159.preheader
                                         #   in Loop: Header=BB2_3 Depth=1
@@ -352,105 +342,105 @@ _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangle
 .LBB2_20:                               # %.lr.ph159
                                         #   Parent Loop BB2_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a0, $sp, 236
-	ld.d	$a1, $sp, 240
+	ld.w	$a0, $sp, 100
+	ld.d	$a1, $sp, 104
 	mul.w	$a0, $a0, $s3
 	ldx.w	$a2, $a1, $a0
-	ld.w	$a3, $sp, 224
-	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 248
-	mul.d	$a2, $a3, $a2
-	ld.w	$a4, $a0, 4
-	bstrpick.d	$a2, $a2, 31, 0
-	add.d	$a5, $a1, $a2
-	fld.d	$fa0, $a5, 16
-	mul.d	$a4, $a4, $a3
-	bstrpick.d	$a4, $a4, 31, 0
-	add.d	$a5, $a1, $a4
-	fld.d	$fa1, $a5, 16
-	fcvt.s.d	$fa0, $fa0
-	vldx	$vr2, $a1, $a4
-	fcvt.s.d	$fa1, $fa1
-	fmul.s	$fa1, $fa5, $fa1
-	vldx	$vr3, $a1, $a2
-	vfcvt.s.d	$vr2, $vr0, $vr2
-	vld	$vr4, $sp, 128                  # 16-byte Folded Reload
-	vfmul.s	$vr2, $vr4, $vr2
-	fmul.s	$fa0, $fa5, $fa0
-	vfcvt.s.d	$vr3, $vr0, $vr3
-	vfmul.s	$vr3, $vr4, $vr3
-	xvinsve0.w	$xr3, $xr0, 2
-	ld.w	$a0, $a0, 8
-	xvld	$xr0, $sp, 64                   # 32-byte Folded Reload
-	xvinsve0.w	$xr3, $xr0, 3
-	xvinsve0.w	$xr3, $xr0, 7
-	xvinsve0.d	$xr3, $xr2, 2
-	mul.d	$a0, $a0, $a3
+	ld.w	$a3, $sp, 88
+	ld.d	$a4, $sp, 112
+	add.d	$a1, $a1, $a0
+	mul.d	$a0, $a3, $a2
 	bstrpick.d	$a0, $a0, 31, 0
-	add.d	$a2, $a1, $a0
-	fld.d	$fa0, $a2, 16
-	vldx	$vr2, $a1, $a0
-	xvinsve0.w	$xr3, $xr1, 6
-	xvst	$xr3, $sp, 168
+	fldx.d	$fa0, $a4, $a0
+	add.d	$a0, $a4, $a0
+	fld.d	$fa1, $a0, 8
+	ld.w	$a2, $a1, 4
 	fcvt.s.d	$fa0, $fa0
-	vfcvt.s.d	$vr1, $vr0, $vr2
-	vld	$vr2, $sp, 32                   # 16-byte Folded Reload
-	vextrins.w	$vr2, $vr0, 32
+	fmul.s	$fa0, $fs0, $fa0
+	fcvt.s.d	$fa1, $fa1
+	mul.d	$a2, $a2, $a3
+	bstrpick.d	$a2, $a2, 31, 0
+	fldx.d	$fa2, $a4, $a2
+	fmul.s	$fa1, $fs1, $fa1
+	fst.s	$fa0, $sp, 32
+	add.d	$a2, $a4, $a2
+	fcvt.s.d	$fa0, $fa2
+	fld.d	$fa2, $a2, 8
+	fmul.s	$fa0, $fs0, $fa0
+	fst.s	$fa0, $sp, 48
+	fld.d	$fa0, $a2, 16
+	fcvt.s.d	$fa2, $fa2
+	ld.w	$a1, $a1, 8
+	fmul.s	$fa2, $fs1, $fa2
+	fcvt.s.d	$fa0, $fa0
+	fst.s	$fa2, $sp, 52
+	mul.d	$a1, $a1, $a3
+	bstrpick.d	$a1, $a1, 31, 0
+	fldx.d	$fa2, $a4, $a1
+	fmul.s	$fa0, $fs2, $fa0
+	fst.s	$fa0, $sp, 56
+	add.d	$a1, $a4, $a1
+	fcvt.s.d	$fa0, $fa2
+	fld.d	$fa2, $a1, 8
+	fmul.s	$fa0, $fs0, $fa0
+	fst.s	$fa0, $sp, 64
+	fld.d	$fa0, $a0, 16
+	fcvt.s.d	$fa2, $fa2
+	fmul.s	$fa2, $fs1, $fa2
+	fst.s	$fa2, $sp, 68
+	fld.d	$fa2, $a1, 16
+	fcvt.s.d	$fa0, $fa0
+	fmul.s	$fa0, $fs2, $fa0
+	st.w	$zero, $sp, 60
+	fcvt.s.d	$fa2, $fa2
 	ld.d	$a0, $s0, 0
-	vpermi.w	$vr2, $vr1, 228
-	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
-	vfmul.s	$vr0, $vr2, $vr0
-	vst	$vr0, $sp, 200
+	fmul.s	$fa2, $fs2, $fa2
+	fst.s	$fa2, $sp, 72
+	st.w	$zero, $sp, 76
 	ld.d	$a4, $a0, 16
-	addi.d	$a1, $sp, 168
+	fst.s	$fa1, $sp, 36
+	fst.s	$fa0, $sp, 40
+	st.w	$zero, $sp, 44
+	addi.d	$a1, $sp, 32
 	move	$a0, $s0
 	move	$a2, $s2
 	move	$a3, $s3
 	jirl	$ra, $a4, 0
-	vld	$vr5, $sp, 144                  # 16-byte Folded Reload
-	ld.w	$a0, $sp, 216
+	ld.w	$a0, $sp, 80
 	addi.w	$s3, $s3, 1
 	blt	$s3, $a0, .LBB2_20
 	b	.LBB2_2
 .LBB2_21:                               # %._crit_edge
-	ld.d	$s7, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 328                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 336
+	fld.d	$fs2, $sp, 120                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 128                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 136                  # 8-byte Folded Reload
+	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 224
 	ret
 .Lfunc_end2:
 	.size	_ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangleIndexCallbackRK9btVector3S4_, .Lfunc_end2-_ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangleIndexCallbackRK9btVector3S4_
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN23btStridingMeshInterface23calculateAabbBruteForceER9btVector3S1_
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN23btStridingMeshInterface23calculateAabbBruteForceER9btVector3S1_
 .LCPI3_0:
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x00000000                      # float 0
-	.word	0xdd5e0b6b                      # float -9.99999984E+17
-	.word	0xdd5e0b6b                      # float -9.99999984E+17
-	.word	0xdd5e0b6b                      # float -9.99999984E+17
-	.word	0x00000000                      # float 0
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
 .LCPI3_1:
 	.word	0xdd5e0b6b                      # float -9.99999984E+17
 	.word	0xdd5e0b6b                      # float -9.99999984E+17
 	.word	0xdd5e0b6b                      # float -9.99999984E+17
-	.word	0x00000000                      # float 0
-.LCPI3_2:
-	.word	0x5d5e0b6b                      # float 9.99999984E+17
-	.word	0x5d5e0b6b                      # float 9.99999984E+17
-	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x00000000                      # float 0
 	.text
 	.globl	_ZN23btStridingMeshInterface23calculateAabbBruteForceER9btVector3S1_
@@ -476,15 +466,14 @@ _ZN23btStridingMeshInterface23calculateAabbBruteForceER9btVector3S1_: # @_ZN23bt
 	pcalau12i	$a1, %pc_hi20(_ZTVZN23btStridingMeshInterface23calculateAabbBruteForceER9btVector3S1_E23AabbCalculationCallback+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTVZN23btStridingMeshInterface23calculateAabbBruteForceER9btVector3S1_E23AabbCalculationCallback+16)
 	pcalau12i	$a2, %pc_hi20(.LCPI3_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI3_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI3_0)
 	pcalau12i	$a2, %pc_hi20(.LCPI3_1)
 	vld	$vr1, $a2, %pc_lo12(.LCPI3_1)
-	pcalau12i	$a2, %pc_hi20(.LCPI3_2)
-	vld	$vr2, $a2, %pc_lo12(.LCPI3_2)
+	vst	$vr0, $sp, 24
 	ld.d	$a2, $a0, 0
-	xvst	$xr0, $sp, 24
+	vst	$vr1, $sp, 40
 	vst	$vr1, $s0, 0
-	vst	$vr2, $fp, 0
+	vst	$vr0, $fp, 0
 	ld.d	$a4, $a2, 16
 	st.d	$a1, $sp, 16
 .Ltmp0:                                 # EH_LABEL
@@ -495,8 +484,9 @@ _ZN23btStridingMeshInterface23calculateAabbBruteForceER9btVector3S1_: # @_ZN23bt
 .Ltmp1:                                 # EH_LABEL
 # %bb.1:
 	addi.d	$a0, $sp, 24
+	addi.d	$a1, $sp, 40
 	vld	$vr0, $a0, 0
-	vld	$vr1, $sp, 40
+	vld	$vr1, $a1, 0
 	vst	$vr0, $s0, 0
 	vst	$vr1, $fp, 0
 	addi.d	$a0, $sp, 16

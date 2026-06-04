@@ -1,6 +1,6 @@
 	.file	"sgrep.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function char_tr
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function char_tr
 .LCPI0_0:
 	.byte	0                               # 0x0
 	.byte	1                               # 0x1
@@ -18,6 +18,7 @@
 	.byte	13                              # 0xd
 	.byte	14                              # 0xe
 	.byte	15                              # 0xf
+.LCPI0_1:
 	.byte	16                              # 0x10
 	.byte	17                              # 0x11
 	.byte	18                              # 0x12
@@ -34,7 +35,7 @@
 	.byte	29                              # 0x1d
 	.byte	30                              # 0x1e
 	.byte	31                              # 0x1f
-.LCPI0_1:
+.LCPI0_2:
 	.byte	32                              # 0x20
 	.byte	33                              # 0x21
 	.byte	34                              # 0x22
@@ -51,6 +52,7 @@
 	.byte	45                              # 0x2d
 	.byte	46                              # 0x2e
 	.byte	47                              # 0x2f
+.LCPI0_3:
 	.byte	48                              # 0x30
 	.byte	49                              # 0x31
 	.byte	50                              # 0x32
@@ -67,7 +69,7 @@
 	.byte	61                              # 0x3d
 	.byte	62                              # 0x3e
 	.byte	63                              # 0x3f
-.LCPI0_2:
+.LCPI0_4:
 	.byte	64                              # 0x40
 	.byte	65                              # 0x41
 	.byte	66                              # 0x42
@@ -84,6 +86,7 @@
 	.byte	77                              # 0x4d
 	.byte	78                              # 0x4e
 	.byte	79                              # 0x4f
+.LCPI0_5:
 	.byte	80                              # 0x50
 	.byte	81                              # 0x51
 	.byte	82                              # 0x52
@@ -100,7 +103,7 @@
 	.byte	93                              # 0x5d
 	.byte	94                              # 0x5e
 	.byte	95                              # 0x5f
-.LCPI0_3:
+.LCPI0_6:
 	.byte	96                              # 0x60
 	.byte	97                              # 0x61
 	.byte	98                              # 0x62
@@ -117,6 +120,7 @@
 	.byte	109                             # 0x6d
 	.byte	110                             # 0x6e
 	.byte	111                             # 0x6f
+.LCPI0_7:
 	.byte	112                             # 0x70
 	.byte	113                             # 0x71
 	.byte	114                             # 0x72
@@ -133,7 +137,7 @@
 	.byte	125                             # 0x7d
 	.byte	126                             # 0x7e
 	.byte	127                             # 0x7f
-.LCPI0_4:
+.LCPI0_8:
 	.byte	128                             # 0x80
 	.byte	129                             # 0x81
 	.byte	130                             # 0x82
@@ -150,6 +154,7 @@
 	.byte	141                             # 0x8d
 	.byte	142                             # 0x8e
 	.byte	143                             # 0x8f
+.LCPI0_9:
 	.byte	144                             # 0x90
 	.byte	145                             # 0x91
 	.byte	146                             # 0x92
@@ -166,7 +171,7 @@
 	.byte	157                             # 0x9d
 	.byte	158                             # 0x9e
 	.byte	159                             # 0x9f
-.LCPI0_5:
+.LCPI0_10:
 	.byte	160                             # 0xa0
 	.byte	161                             # 0xa1
 	.byte	162                             # 0xa2
@@ -183,6 +188,7 @@
 	.byte	173                             # 0xad
 	.byte	174                             # 0xae
 	.byte	175                             # 0xaf
+.LCPI0_11:
 	.byte	176                             # 0xb0
 	.byte	177                             # 0xb1
 	.byte	178                             # 0xb2
@@ -199,7 +205,7 @@
 	.byte	189                             # 0xbd
 	.byte	190                             # 0xbe
 	.byte	191                             # 0xbf
-.LCPI0_6:
+.LCPI0_12:
 	.byte	192                             # 0xc0
 	.byte	193                             # 0xc1
 	.byte	194                             # 0xc2
@@ -216,6 +222,7 @@
 	.byte	205                             # 0xcd
 	.byte	206                             # 0xce
 	.byte	207                             # 0xcf
+.LCPI0_13:
 	.byte	208                             # 0xd0
 	.byte	209                             # 0xd1
 	.byte	210                             # 0xd2
@@ -232,7 +239,7 @@
 	.byte	221                             # 0xdd
 	.byte	222                             # 0xde
 	.byte	223                             # 0xdf
-.LCPI0_7:
+.LCPI0_14:
 	.byte	224                             # 0xe0
 	.byte	225                             # 0xe1
 	.byte	226                             # 0xe2
@@ -249,6 +256,7 @@
 	.byte	237                             # 0xed
 	.byte	238                             # 0xee
 	.byte	239                             # 0xef
+.LCPI0_15:
 	.byte	240                             # 0xf0
 	.byte	241                             # 0xf1
 	.byte	242                             # 0xf2
@@ -265,9 +273,7 @@
 	.byte	253                             # 0xfd
 	.byte	254                             # 0xfe
 	.byte	255                             # 0xff
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI0_8:
+.LCPI0_16:
 	.byte	97                              # 0x61
 	.byte	98                              # 0x62
 	.byte	99                              # 0x63
@@ -297,40 +303,64 @@ char_tr:                                # @char_tr
 	st.d	$s0, $sp, 280                   # 8-byte Folded Spill
 	st.d	$s1, $sp, 272                   # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI0_0)
 	move	$fp, $a1
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(TR)
 	addi.d	$s1, $a0, %pc_lo12(TR)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI0_3)
-	xvst	$xr0, $s1, 0
-	xvst	$xr1, $s1, 32
-	xvst	$xr2, $s1, 64
-	xvst	$xr3, $s1, 96
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_3)
+	vst	$vr0, $s1, 0
+	vst	$vr1, $s1, 16
+	vst	$vr2, $s1, 32
+	vst	$vr3, $s1, 48
 	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_4)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_5)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_5)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_6)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_6)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_7)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI0_7)
-	xvst	$xr0, $s1, 128
-	xvst	$xr1, $s1, 160
-	xvst	$xr2, $s1, 192
-	xvst	$xr3, $s1, 224
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_7)
+	vst	$vr0, $s1, 64
+	vst	$vr1, $s1, 80
+	vst	$vr2, $s1, 96
+	vst	$vr3, $s1, 112
+	pcalau12i	$a0, %pc_hi20(.LCPI0_8)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_8)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_9)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_9)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_10)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_10)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_11)
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_11)
+	vst	$vr0, $s1, 128
+	vst	$vr1, $s1, 144
+	vst	$vr2, $s1, 160
+	vst	$vr3, $s1, 176
+	pcalau12i	$a0, %pc_hi20(.LCPI0_12)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_12)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_13)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_13)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_14)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_14)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_15)
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_15)
+	vst	$vr0, $s1, 192
+	vst	$vr1, $s1, 208
+	vst	$vr2, $s1, 224
+	vst	$vr3, $s1, 240
 	pcalau12i	$a0, %got_pc_hi20(NOUPPER)
 	ld.d	$a0, $a0, %got_pc_lo12(NOUPPER)
 	ld.w	$a0, $a0, 0
 	beqz	$a0, .LBB0_2
 # %bb.1:                                # %.preheader25.preheader
-	pcalau12i	$a0, %pc_hi20(.LCPI0_8)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_8)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_16)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_16)
 	vst	$vr0, $s1, 65
 	lu12i.w	$a0, 476983
 	ori	$a0, $a0, 625
@@ -517,20 +547,9 @@ s_output:                               # @s_output
 .Lfunc_end1:
 	.size	s_output, .Lfunc_end1-s_output
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function verify
-.LCPI2_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI2_1:
+	.p2align	4, 0x0                          # -- Begin function verify
+.LCPI2_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
@@ -554,490 +573,367 @@ verify:                                 # @verify
 	st.d	$s6, $sp, 1960                  # 8-byte Folded Spill
 	st.d	$s7, $sp, 1952                  # 8-byte Folded Spill
 	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
-	addi.d	$sp, $sp, -144
-	move	$t7, $a3
+	addi.d	$sp, $sp, -112
 	addi.w	$a5, $zero, -1
 	addi.w	$a6, $a0, 2
-	pcalau12i	$a3, %pc_hi20(.LCPI2_1)
-	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
-	blt	$a0, $a5, .LBB2_14
-# %bb.1:                                # %iter.check
-	ori	$a3, $zero, 4
-	bstrpick.d	$t0, $a6, 31, 0
-	bgeu	$a6, $a3, .LBB2_3
+	pcalau12i	$a7, %pc_hi20(.LCPI2_0)
+	blt	$a0, $a5, .LBB2_8
+# %bb.1:                                # %.lr.ph.preheader
+	ori	$t0, $zero, 8
+	bstrpick.d	$t1, $a6, 31, 0
+	bgeu	$a6, $t0, .LBB2_3
 # %bb.2:
-	move	$t1, $zero
-	b	.LBB2_12
-.LBB2_3:                                # %vector.main.loop.iter.check
-	ori	$a3, $zero, 16
-	bgeu	$a6, $a3, .LBB2_5
-# %bb.4:
-	move	$t1, $zero
-	b	.LBB2_9
-.LBB2_5:                                # %vector.ph
-	andi	$a3, $t0, 12
-	bstrpick.d	$t1, $t0, 31, 4
-	pcalau12i	$t2, %pc_hi20(.LCPI2_0)
-	xvld	$xr0, $t2, %pc_lo12(.LCPI2_0)
-	slli.d	$t1, $t1, 4
-	addi.d	$t2, $sp, 1096
-	addi.d	$t3, $sp, 72
-	move	$t4, $t1
+	move	$t0, $zero
+	b	.LBB2_6
+.LBB2_3:                                # %vector.ph
+	bstrpick.d	$t0, $t1, 31, 3
+	vld	$vr0, $a7, %pc_lo12(.LCPI2_0)
+	slli.d	$t0, $t0, 3
+	addi.d	$t2, $sp, 1048
+	addi.d	$t3, $sp, 24
+	move	$t4, $t0
 	.p2align	4, , 16
-.LBB2_6:                                # %vector.body
+.LBB2_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.wu	$xr1, $xr0, 8
-	xvst	$xr0, $t3, -32
-	xvst	$xr1, $t3, 0
-	xvst	$xr0, $t2, -32
-	xvst	$xr1, $t2, 0
-	xvaddi.wu	$xr0, $xr0, 16
-	addi.d	$t4, $t4, -16
-	addi.d	$t2, $t2, 64
-	addi.d	$t3, $t3, 64
-	bnez	$t4, .LBB2_6
-# %bb.7:                                # %middle.block
-	beq	$t1, $t0, .LBB2_14
-# %bb.8:                                # %vec.epilog.iter.check
-	beqz	$a3, .LBB2_12
-.LBB2_9:                                # %vec.epilog.ph
-	move	$t3, $t1
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	vld	$vr0, $a3, %pc_lo12(.LCPI2_1)
-	bstrpick.d	$a3, $t0, 31, 2
-	slli.d	$t1, $a3, 2
-	vreplgr2vr.w	$vr1, $t3
-	vor.v	$vr0, $vr1, $vr0
-	sub.d	$a3, $t3, $t1
-	addi.d	$t2, $sp, 1064
-	alsl.d	$t2, $t3, $t2, 2
-	addi.d	$t4, $sp, 40
-	alsl.d	$t3, $t3, $t4, 2
+	vaddi.wu	$vr1, $vr0, 4
+	vst	$vr0, $t3, -16
+	vst	$vr1, $t3, 0
+	vst	$vr0, $t2, -16
+	vst	$vr1, $t2, 0
+	vaddi.wu	$vr0, $vr0, 8
+	addi.d	$t4, $t4, -8
+	addi.d	$t2, $t2, 32
+	addi.d	$t3, $t3, 32
+	bnez	$t4, .LBB2_4
+# %bb.5:                                # %middle.block
+	beq	$t0, $t1, .LBB2_8
+.LBB2_6:                                # %.lr.ph.preheader234
+	addi.d	$t2, $sp, 8
+	alsl.d	$t2, $t0, $t2, 2
+	addi.d	$t3, $sp, 1032
+	alsl.d	$t3, $t0, $t3, 2
+	sub.d	$t1, $t1, $t0
 	.p2align	4, , 16
-.LBB2_10:                               # %vec.epilog.vector.body
+.LBB2_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr0, $t3, 0
-	vst	$vr0, $t2, 0
-	vaddi.wu	$vr0, $vr0, 4
-	addi.d	$a3, $a3, 4
-	addi.d	$t2, $t2, 16
-	addi.d	$t3, $t3, 16
-	bnez	$a3, .LBB2_10
-# %bb.11:                               # %vec.epilog.middle.block
-	beq	$t1, $t0, .LBB2_14
-.LBB2_12:                               # %.lr.ph.preheader
-	addi.d	$a3, $sp, 40
-	alsl.d	$a3, $t1, $a3, 2
-	addi.d	$t2, $sp, 1064
-	alsl.d	$t2, $t1, $t2, 2
-	sub.d	$t0, $t0, $t1
-	.p2align	4, , 16
-.LBB2_13:                               # %.lr.ph
-                                        # =>This Inner Loop Header: Depth=1
-	st.w	$t1, $a3, 0
-	st.w	$t1, $t2, 0
-	addi.d	$t1, $t1, 1
-	addi.d	$a3, $a3, 4
-	addi.d	$t0, $t0, -1
+	st.w	$t0, $t2, 0
+	st.w	$t0, $t3, 0
+	addi.d	$t0, $t0, 1
 	addi.d	$t2, $t2, 4
-	bnez	$t0, .LBB2_13
-.LBB2_14:                               # %.preheader130
-	blez	$a1, .LBB2_73
-# %bb.15:                               # %.preheader129.lr.ph
+	addi.d	$t1, $t1, -1
+	addi.d	$t3, $t3, 4
+	bnez	$t1, .LBB2_7
+.LBB2_8:                                # %.preheader130
+	blez	$a1, .LBB2_55
+# %bb.9:                                # %.preheader129.lr.ph
 	add.d	$a1, $a4, $a1
-	ld.bu	$s5, $a4, 0
+	ld.bu	$s1, $a4, 0
 	bstrpick.d	$t0, $a6, 31, 0
-	andi	$a3, $a6, 12
-	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
-	bstrpick.d	$a3, $a6, 31, 4
-	slli.d	$t2, $a3, 4
-	bstrpick.d	$a3, $a6, 31, 2
-	slli.d	$t3, $a3, 2
-	addi.d	$t6, $sp, 44
-	addi.d	$t5, $sp, 1068
-	sub.d	$t8, $zero, $t3
-	addi.d	$fp, $sp, 40
-	addi.d	$s0, $sp, 1064
-	ori	$s1, $zero, 10
-	ori	$s2, $zero, 4
-	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
-	move	$s3, $a4
-	move	$s6, $a2
-	b	.LBB2_17
+	bstrpick.d	$t1, $a6, 31, 3
+	slli.d	$t1, $t1, 3
+	addi.d	$t2, $sp, 12
+	addi.d	$t3, $sp, 1036
+	addi.d	$t6, $sp, 8
+	addi.d	$t7, $sp, 1032
+	ori	$t8, $zero, 10
+	ori	$s0, $zero, 8
+	move	$fp, $a4
+	move	$s2, $a2
+	b	.LBB2_11
 	.p2align	4, , 16
-.LBB2_16:                               # %.loopexit
-                                        #   in Loop: Header=BB2_17 Depth=1
-	bgeu	$s3, $a1, .LBB2_73
-.LBB2_17:                               # %.preheader129
+.LBB2_10:                               # %.loopexit
+                                        #   in Loop: Header=BB2_11 Depth=1
+	bgeu	$fp, $a1, .LBB2_55
+.LBB2_11:                               # %.preheader129
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB2_20 Depth 2
-                                        #     Child Loop BB2_27 Depth 2
+                                        #     Child Loop BB2_14 Depth 2
+                                        #     Child Loop BB2_21 Depth 2
+                                        #     Child Loop BB2_28 Depth 2
+                                        #     Child Loop BB2_31 Depth 2
                                         #     Child Loop BB2_36 Depth 2
-                                        #     Child Loop BB2_40 Depth 2
                                         #     Child Loop BB2_43 Depth 2
-                                        #     Child Loop BB2_48 Depth 2
-                                        #     Child Loop BB2_55 Depth 2
-                                        #     Child Loop BB2_64 Depth 2
-                                        #     Child Loop BB2_68 Depth 2
-                                        #     Child Loop BB2_71 Depth 2
-	addi.d	$s7, $s6, 1
-	blez	$s6, .LBB2_22
-# %bb.18:                               # %.lr.ph138
-                                        #   in Loop: Header=BB2_17 Depth=1
-	bstrpick.d	$a3, $s7, 31, 0
-	addi.d	$s8, $a3, -1
-	move	$ra, $t5
-	move	$t4, $t6
-	move	$a3, $t7
+                                        #     Child Loop BB2_50 Depth 2
+                                        #     Child Loop BB2_53 Depth 2
+	addi.d	$s3, $s2, 1
+	blez	$s2, .LBB2_16
+# %bb.12:                               # %.lr.ph138
+                                        #   in Loop: Header=BB2_11 Depth=1
+	bstrpick.d	$s4, $s3, 31, 0
+	addi.d	$s4, $s4, -1
+	move	$s5, $t3
+	move	$s6, $t2
+	move	$s7, $a3
+	b	.LBB2_14
+	.p2align	4, , 16
+.LBB2_13:                               #   in Loop: Header=BB2_14 Depth=2
+	st.w	$s8, $s5, 0
+	addi.d	$s7, $s7, 1
+	addi.d	$s6, $s6, 4
+	addi.d	$s4, $s4, -1
+	addi.d	$s5, $s5, 4
+	beqz	$s4, .LBB2_16
+.LBB2_14:                               #   Parent Loop BB2_11 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.bu	$ra, $s7, 0
+	ld.w	$s8, $s6, -4
+	beq	$ra, $s1, .LBB2_13
+# %bb.15:                               #   in Loop: Header=BB2_14 Depth=2
+	ld.w	$ra, $s6, 0
+	slt	$t4, $ra, $s8
+	ld.w	$t5, $s5, -4
+	masknez	$s8, $s8, $t4
+	maskeqz	$t4, $ra, $t4
+	or	$t4, $t4, $s8
+	slt	$s8, $t5, $t4
+	masknez	$t4, $t4, $s8
+	maskeqz	$t5, $t5, $s8
+	or	$t4, $t5, $t4
+	addi.d	$s8, $t4, 1
+	b	.LBB2_13
+	.p2align	4, , 16
+.LBB2_16:                               # %._crit_edge
+                                        #   in Loop: Header=BB2_11 Depth=1
+	ldx.bu	$t4, $a3, $s2
+	slli.d	$s4, $s2, 2
+	bne	$t4, $s1, .LBB2_18
+# %bb.17:                               #   in Loop: Header=BB2_11 Depth=1
+	ldx.w	$s1, $s4, $t6
+	addi.w	$s2, $s3, 0
+	slli.d	$t4, $s2, 2
+	stx.w	$s1, $t4, $t7
+	blt	$s1, $a2, .LBB2_19
 	b	.LBB2_20
 	.p2align	4, , 16
-.LBB2_19:                               #   in Loop: Header=BB2_20 Depth=2
-	st.w	$t1, $ra, 0
-	addi.d	$a3, $a3, 1
-	addi.d	$t4, $t4, 4
-	addi.d	$s8, $s8, -1
-	addi.d	$ra, $ra, 4
-	beqz	$s8, .LBB2_22
-.LBB2_20:                               #   Parent Loop BB2_17 Depth=1
+.LBB2_18:                               # %._crit_edge._crit_edge
+                                        #   in Loop: Header=BB2_11 Depth=1
+	ldx.w	$s1, $s4, $t7
+	bge	$s1, $a2, .LBB2_20
+.LBB2_19:                               #   in Loop: Header=BB2_11 Depth=1
+	alsl.d	$t4, $s2, $t7, 2
+	addi.w	$s2, $s2, 1
+	addi.d	$t5, $s1, 1
+	st.w	$t5, $t4, 8
+.LBB2_20:                               #   in Loop: Header=BB2_11 Depth=1
+	addi.d	$s1, $fp, 1
+	addi.d	$s3, $s2, 1
+	alsl.d	$s2, $s2, $t7, 2
+	.p2align	4, , 16
+.LBB2_21:                               #   Parent Loop BB2_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$s4, $a3, 0
-	ld.w	$t1, $t4, -4
-	beq	$s4, $s5, .LBB2_19
-# %bb.21:                               #   in Loop: Header=BB2_20 Depth=2
-	ld.w	$s4, $t4, 0
-	slt	$a7, $s4, $t1
-	ld.w	$a4, $ra, -4
-	masknez	$t1, $t1, $a7
-	maskeqz	$a7, $s4, $a7
-	or	$a7, $a7, $t1
-	slt	$t1, $a4, $a7
-	masknez	$a7, $a7, $t1
-	maskeqz	$a4, $a4, $t1
-	or	$a4, $a4, $a7
-	addi.d	$t1, $a4, 1
-	b	.LBB2_19
+	ld.w	$t4, $s2, 0
+	addi.w	$s3, $s3, -1
+	addi.d	$s2, $s2, -4
+	blt	$a2, $t4, .LBB2_21
+# %bb.22:                               #   in Loop: Header=BB2_11 Depth=1
+	bge	$s3, $a0, .LBB2_56
+# %bb.23:                               #   in Loop: Header=BB2_11 Depth=1
+	ld.bu	$s1, $s1, 0
+	addi.d	$t4, $s1, -10
+	sltu	$t4, $zero, $t4
+	masknez	$t5, $a2, $t4
+	maskeqz	$t4, $s3, $t4
+	or	$s2, $t4, $t5
+	bne	$s1, $t8, .LBB2_33
+# %bb.24:                               #   in Loop: Header=BB2_11 Depth=1
+	blt	$a0, $a5, .LBB2_33
+# %bb.25:                               # %.lr.ph141.preheader
+                                        #   in Loop: Header=BB2_11 Depth=1
+	bgeu	$a6, $s0, .LBB2_27
+# %bb.26:                               #   in Loop: Header=BB2_11 Depth=1
+	move	$s3, $zero
+	b	.LBB2_30
 	.p2align	4, , 16
-.LBB2_22:                               # %._crit_edge
-                                        #   in Loop: Header=BB2_17 Depth=1
-	ldx.bu	$a4, $t7, $s6
-	slli.d	$a3, $s6, 2
-	bne	$a4, $s5, .LBB2_24
-# %bb.23:                               #   in Loop: Header=BB2_17 Depth=1
-	ldx.w	$a3, $a3, $fp
-	addi.w	$s6, $s7, 0
-	slli.d	$a4, $s6, 2
-	stx.w	$a3, $a4, $s0
-	blt	$a3, $a2, .LBB2_25
-	b	.LBB2_26
+.LBB2_27:                               # %vector.body219.preheader
+                                        #   in Loop: Header=BB2_11 Depth=1
+	vld	$vr0, $a7, %pc_lo12(.LCPI2_0)
+	addi.d	$s2, $sp, 24
+	addi.d	$s3, $sp, 1048
+	move	$s4, $t1
 	.p2align	4, , 16
-.LBB2_24:                               # %._crit_edge._crit_edge
-                                        #   in Loop: Header=BB2_17 Depth=1
-	ldx.w	$a3, $a3, $s0
-	bge	$a3, $a2, .LBB2_26
-.LBB2_25:                               #   in Loop: Header=BB2_17 Depth=1
-	alsl.d	$a4, $s6, $s0, 2
-	addi.w	$s6, $s6, 1
-	addi.d	$a3, $a3, 1
-	st.w	$a3, $a4, 8
-.LBB2_26:                               #   in Loop: Header=BB2_17 Depth=1
-	addi.d	$t4, $s3, 1
-	addi.d	$a3, $s6, 1
-	alsl.d	$t1, $s6, $s0, 2
-	.p2align	4, , 16
-.LBB2_27:                               #   Parent Loop BB2_17 Depth=1
+.LBB2_28:                               # %vector.body219
+                                        #   Parent Loop BB2_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a4, $t1, 0
-	addi.w	$a3, $a3, -1
-	addi.d	$t1, $t1, -4
-	blt	$a2, $a4, .LBB2_27
-# %bb.28:                               #   in Loop: Header=BB2_17 Depth=1
-	bge	$a3, $a0, .LBB2_74
-# %bb.29:                               #   in Loop: Header=BB2_17 Depth=1
-	ld.bu	$s5, $t4, 0
-	addi.d	$a4, $s5, -10
-	sltu	$a4, $zero, $a4
-	masknez	$a7, $a2, $a4
-	maskeqz	$a3, $a3, $a4
-	or	$s6, $a3, $a7
-	bne	$s5, $s1, .LBB2_45
-# %bb.30:                               #   in Loop: Header=BB2_17 Depth=1
-	blt	$a0, $a5, .LBB2_45
-# %bb.31:                               # %iter.check256
-                                        #   in Loop: Header=BB2_17 Depth=1
-	bgeu	$a6, $s2, .LBB2_33
-# %bb.32:                               #   in Loop: Header=BB2_17 Depth=1
-	move	$a3, $zero
+	vaddi.wu	$vr1, $vr0, 4
+	vst	$vr0, $s2, -16
+	vst	$vr1, $s2, 0
+	vst	$vr0, $s3, -16
+	vst	$vr1, $s3, 0
+	vaddi.wu	$vr0, $vr0, 8
+	addi.d	$s4, $s4, -8
+	addi.d	$s3, $s3, 32
+	addi.d	$s2, $s2, 32
+	bnez	$s4, .LBB2_28
+# %bb.29:                               # %middle.block225
+                                        #   in Loop: Header=BB2_11 Depth=1
+	move	$s3, $t1
+	move	$s2, $a2
+	beq	$t1, $t0, .LBB2_33
+.LBB2_30:                               # %.lr.ph141.preheader229
+                                        #   in Loop: Header=BB2_11 Depth=1
+	alsl.d	$s2, $s3, $t6, 2
+	alsl.d	$s4, $s3, $t7, 2
+	sub.d	$s5, $t0, $s3
+	.p2align	4, , 16
+.LBB2_31:                               # %.lr.ph141
+                                        #   Parent Loop BB2_11 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	st.w	$s3, $s2, 0
+	st.w	$s3, $s4, 0
+	addi.d	$s3, $s3, 1
+	addi.d	$s2, $s2, 4
+	addi.d	$s5, $s5, -1
+	addi.d	$s4, $s4, 4
+	bnez	$s5, .LBB2_31
+# %bb.32:                               #   in Loop: Header=BB2_11 Depth=1
+	move	$s2, $a2
+.LBB2_33:                               # %.loopexit128
+                                        #   in Loop: Header=BB2_11 Depth=1
+	addi.d	$s3, $s2, 1
+	blez	$s2, .LBB2_38
+# %bb.34:                               # %.lr.ph145.preheader
+                                        #   in Loop: Header=BB2_11 Depth=1
+	bstrpick.d	$t4, $s3, 31, 0
+	addi.d	$s4, $t4, -1
+	move	$s5, $t2
+	move	$s6, $t3
+	move	$s7, $a3
+	b	.LBB2_36
+	.p2align	4, , 16
+.LBB2_35:                               #   in Loop: Header=BB2_36 Depth=2
+	st.w	$s8, $s5, 0
+	addi.d	$s7, $s7, 1
+	addi.d	$s6, $s6, 4
+	addi.d	$s4, $s4, -1
+	addi.d	$s5, $s5, 4
+	beqz	$s4, .LBB2_38
+.LBB2_36:                               # %.lr.ph145
+                                        #   Parent Loop BB2_11 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.bu	$t4, $s7, 0
+	ld.w	$s8, $s6, -4
+	beq	$t4, $s1, .LBB2_35
+# %bb.37:                               #   in Loop: Header=BB2_36 Depth=2
+	ld.w	$t4, $s6, 0
+	slt	$t5, $t4, $s8
+	ld.w	$ra, $s5, -4
+	masknez	$s8, $s8, $t5
+	maskeqz	$t4, $t4, $t5
+	or	$t4, $t4, $s8
+	slt	$t5, $ra, $t4
+	masknez	$t4, $t4, $t5
+	maskeqz	$t5, $ra, $t5
+	or	$t4, $t5, $t4
+	addi.d	$s8, $t4, 1
+	b	.LBB2_35
+	.p2align	4, , 16
+.LBB2_38:                               # %._crit_edge146
+                                        #   in Loop: Header=BB2_11 Depth=1
+	ldx.bu	$t4, $a3, $s2
+	slli.d	$s4, $s2, 2
+	bne	$t4, $s1, .LBB2_40
+# %bb.39:                               #   in Loop: Header=BB2_11 Depth=1
+	ldx.w	$s1, $s4, $t7
+	addi.w	$s2, $s3, 0
+	slli.d	$t4, $s2, 2
+	stx.w	$s1, $t4, $t6
+	blt	$s1, $a2, .LBB2_41
 	b	.LBB2_42
 	.p2align	4, , 16
-.LBB2_33:                               # %vector.main.loop.iter.check242
-                                        #   in Loop: Header=BB2_17 Depth=1
-	ori	$a3, $zero, 16
-	bgeu	$a6, $a3, .LBB2_35
-# %bb.34:                               #   in Loop: Header=BB2_17 Depth=1
-	move	$t1, $zero
-	b	.LBB2_39
-.LBB2_35:                               # %vector.body247.preheader
-                                        #   in Loop: Header=BB2_17 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI2_0)
-	xvld	$xr0, $a3, %pc_lo12(.LCPI2_0)
-	addi.d	$a3, $sp, 72
-	addi.d	$t4, $sp, 1096
-	move	$s6, $t2
+.LBB2_40:                               # %._crit_edge146._crit_edge
+                                        #   in Loop: Header=BB2_11 Depth=1
+	ldx.w	$s1, $s4, $t6
+	bge	$s1, $a2, .LBB2_42
+.LBB2_41:                               #   in Loop: Header=BB2_11 Depth=1
+	alsl.d	$t4, $s2, $t6, 2
+	addi.w	$s2, $s2, 1
+	addi.d	$t5, $s1, 1
+	st.w	$t5, $t4, 8
+.LBB2_42:                               #   in Loop: Header=BB2_11 Depth=1
+	addi.d	$fp, $fp, 2
+	addi.d	$s3, $s2, 1
+	alsl.d	$s1, $s2, $t6, 2
 	.p2align	4, , 16
-.LBB2_36:                               # %vector.body247
-                                        #   Parent Loop BB2_17 Depth=1
+.LBB2_43:                               #   Parent Loop BB2_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvaddi.wu	$xr1, $xr0, 8
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	xvst	$xr0, $t4, -32
-	xvst	$xr1, $t4, 0
-	xvaddi.wu	$xr0, $xr0, 16
-	addi.d	$s6, $s6, -16
-	addi.d	$t4, $t4, 64
-	addi.d	$a3, $a3, 64
-	bnez	$s6, .LBB2_36
-# %bb.37:                               # %middle.block253
-                                        #   in Loop: Header=BB2_17 Depth=1
-	move	$s6, $a2
-	beq	$t2, $t0, .LBB2_45
-# %bb.38:                               # %vec.epilog.iter.check258
-                                        #   in Loop: Header=BB2_17 Depth=1
-	move	$t1, $t2
-	move	$a3, $t2
-	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
-	beqz	$a4, .LBB2_42
-.LBB2_39:                               # %vec.epilog.ph260
-                                        #   in Loop: Header=BB2_17 Depth=1
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	vld	$vr0, $a3, %pc_lo12(.LCPI2_1)
-	vreplgr2vr.w	$vr1, $t1
-	vor.v	$vr0, $vr1, $vr0
-	add.d	$a3, $t8, $t1
-	alsl.d	$t4, $t1, $s0, 2
-	alsl.d	$s6, $t1, $fp, 2
+	ld.w	$t4, $s1, 0
+	addi.w	$s3, $s3, -1
+	addi.d	$s1, $s1, -4
+	blt	$a2, $t4, .LBB2_43
+# %bb.44:                               #   in Loop: Header=BB2_11 Depth=1
+	bge	$s3, $a0, .LBB2_57
+# %bb.45:                               #   in Loop: Header=BB2_11 Depth=1
+	ld.bu	$s1, $fp, 0
+	addi.d	$t4, $s1, -10
+	sltu	$t4, $zero, $t4
+	masknez	$t5, $a2, $t4
+	maskeqz	$t4, $s3, $t4
+	or	$s2, $t4, $t5
+	bne	$s1, $t8, .LBB2_10
+# %bb.46:                               #   in Loop: Header=BB2_11 Depth=1
+	blt	$a0, $a5, .LBB2_10
+# %bb.47:                               # %.lr.ph149.preheader
+                                        #   in Loop: Header=BB2_11 Depth=1
+	bgeu	$a6, $s0, .LBB2_49
+# %bb.48:                               #   in Loop: Header=BB2_11 Depth=1
+	move	$s3, $zero
+	b	.LBB2_52
 	.p2align	4, , 16
-.LBB2_40:                               # %vec.epilog.vector.body266
-                                        #   Parent Loop BB2_17 Depth=1
+.LBB2_49:                               # %vector.body205.preheader
+                                        #   in Loop: Header=BB2_11 Depth=1
+	vld	$vr0, $a7, %pc_lo12(.LCPI2_0)
+	addi.d	$s2, $sp, 24
+	addi.d	$s3, $sp, 1048
+	move	$s4, $t1
+	.p2align	4, , 16
+.LBB2_50:                               # %vector.body205
+                                        #   Parent Loop BB2_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vst	$vr0, $s6, 0
-	vst	$vr0, $t4, 0
-	vaddi.wu	$vr0, $vr0, 4
-	addi.d	$a3, $a3, 4
-	addi.d	$t4, $t4, 16
-	addi.d	$s6, $s6, 16
-	bnez	$a3, .LBB2_40
-# %bb.41:                               # %vec.epilog.middle.block271
-                                        #   in Loop: Header=BB2_17 Depth=1
-	move	$a3, $t3
-	move	$s6, $a2
-	beq	$t3, $t0, .LBB2_45
-.LBB2_42:                               # %.lr.ph141.preheader
-                                        #   in Loop: Header=BB2_17 Depth=1
-	alsl.d	$t4, $a3, $fp, 2
-	alsl.d	$s6, $a3, $s0, 2
-	sub.d	$s7, $t0, $a3
+	vaddi.wu	$vr1, $vr0, 4
+	vst	$vr0, $s2, -16
+	vst	$vr1, $s2, 0
+	vst	$vr0, $s3, -16
+	vst	$vr1, $s3, 0
+	vaddi.wu	$vr0, $vr0, 8
+	addi.d	$s4, $s4, -8
+	addi.d	$s3, $s3, 32
+	addi.d	$s2, $s2, 32
+	bnez	$s4, .LBB2_50
+# %bb.51:                               # %middle.block211
+                                        #   in Loop: Header=BB2_11 Depth=1
+	move	$s3, $t1
+	move	$s2, $a2
+	beq	$t1, $t0, .LBB2_10
+.LBB2_52:                               # %.lr.ph149.preheader228
+                                        #   in Loop: Header=BB2_11 Depth=1
+	alsl.d	$s2, $s3, $t6, 2
+	alsl.d	$s4, $s3, $t7, 2
+	sub.d	$s5, $t0, $s3
 	.p2align	4, , 16
-.LBB2_43:                               # %.lr.ph141
-                                        #   Parent Loop BB2_17 Depth=1
+.LBB2_53:                               # %.lr.ph149
+                                        #   Parent Loop BB2_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.w	$a3, $t4, 0
-	st.w	$a3, $s6, 0
-	addi.d	$a3, $a3, 1
-	addi.d	$t4, $t4, 4
-	addi.d	$s7, $s7, -1
-	addi.d	$s6, $s6, 4
-	bnez	$s7, .LBB2_43
-# %bb.44:                               #   in Loop: Header=BB2_17 Depth=1
-	move	$s6, $a2
-.LBB2_45:                               # %.loopexit128
-                                        #   in Loop: Header=BB2_17 Depth=1
-	addi.d	$s7, $s6, 1
-	blez	$s6, .LBB2_50
-# %bb.46:                               # %.lr.ph145.preheader
-                                        #   in Loop: Header=BB2_17 Depth=1
-	bstrpick.d	$a3, $s7, 31, 0
-	addi.d	$s8, $a3, -1
-	move	$ra, $t6
-	move	$t4, $t5
-	move	$a3, $t7
-	b	.LBB2_48
-	.p2align	4, , 16
-.LBB2_47:                               #   in Loop: Header=BB2_48 Depth=2
-	st.w	$t1, $ra, 0
-	addi.d	$a3, $a3, 1
-	addi.d	$t4, $t4, 4
-	addi.d	$s8, $s8, -1
-	addi.d	$ra, $ra, 4
-	beqz	$s8, .LBB2_50
-.LBB2_48:                               # %.lr.ph145
-                                        #   Parent Loop BB2_17 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.bu	$a4, $a3, 0
-	ld.w	$t1, $t4, -4
-	beq	$a4, $s5, .LBB2_47
-# %bb.49:                               #   in Loop: Header=BB2_48 Depth=2
-	ld.w	$a4, $t4, 0
-	slt	$a7, $a4, $t1
-	ld.w	$s4, $ra, -4
-	masknez	$t1, $t1, $a7
-	maskeqz	$a4, $a4, $a7
-	or	$a4, $a4, $t1
-	slt	$a7, $s4, $a4
-	masknez	$a4, $a4, $a7
-	maskeqz	$a7, $s4, $a7
-	or	$a4, $a7, $a4
-	addi.d	$t1, $a4, 1
-	b	.LBB2_47
-	.p2align	4, , 16
-.LBB2_50:                               # %._crit_edge146
-                                        #   in Loop: Header=BB2_17 Depth=1
-	ldx.bu	$a4, $t7, $s6
-	slli.d	$a3, $s6, 2
-	bne	$a4, $s5, .LBB2_52
-# %bb.51:                               #   in Loop: Header=BB2_17 Depth=1
-	ldx.w	$a3, $a3, $s0
-	addi.w	$s6, $s7, 0
-	slli.d	$a4, $s6, 2
-	stx.w	$a3, $a4, $fp
-	blt	$a3, $a2, .LBB2_53
-	b	.LBB2_54
-	.p2align	4, , 16
-.LBB2_52:                               # %._crit_edge146._crit_edge
-                                        #   in Loop: Header=BB2_17 Depth=1
-	ldx.w	$a3, $a3, $fp
-	bge	$a3, $a2, .LBB2_54
-.LBB2_53:                               #   in Loop: Header=BB2_17 Depth=1
-	alsl.d	$a4, $s6, $fp, 2
-	addi.w	$s6, $s6, 1
-	addi.d	$a3, $a3, 1
-	st.w	$a3, $a4, 8
-.LBB2_54:                               #   in Loop: Header=BB2_17 Depth=1
-	addi.d	$s3, $s3, 2
-	addi.d	$a3, $s6, 1
-	alsl.d	$t1, $s6, $fp, 2
-	.p2align	4, , 16
-.LBB2_55:                               #   Parent Loop BB2_17 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.w	$a4, $t1, 0
-	addi.w	$a3, $a3, -1
-	addi.d	$t1, $t1, -4
-	blt	$a2, $a4, .LBB2_55
-# %bb.56:                               #   in Loop: Header=BB2_17 Depth=1
-	bge	$a3, $a0, .LBB2_75
-# %bb.57:                               #   in Loop: Header=BB2_17 Depth=1
-	ld.bu	$s5, $s3, 0
-	addi.d	$a4, $s5, -10
-	sltu	$a4, $zero, $a4
-	masknez	$a7, $a2, $a4
-	maskeqz	$a3, $a3, $a4
-	or	$s6, $a3, $a7
-	bne	$s5, $s1, .LBB2_16
-# %bb.58:                               #   in Loop: Header=BB2_17 Depth=1
-	blt	$a0, $a5, .LBB2_16
-# %bb.59:                               # %iter.check223
-                                        #   in Loop: Header=BB2_17 Depth=1
-	bgeu	$a6, $s2, .LBB2_61
-# %bb.60:                               #   in Loop: Header=BB2_17 Depth=1
-	move	$a3, $zero
-	b	.LBB2_70
-	.p2align	4, , 16
-.LBB2_61:                               # %vector.main.loop.iter.check209
-                                        #   in Loop: Header=BB2_17 Depth=1
-	ori	$a3, $zero, 16
-	bgeu	$a6, $a3, .LBB2_63
-# %bb.62:                               #   in Loop: Header=BB2_17 Depth=1
-	move	$t1, $zero
-	b	.LBB2_67
-.LBB2_63:                               # %vector.body214.preheader
-                                        #   in Loop: Header=BB2_17 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI2_0)
-	xvld	$xr0, $a3, %pc_lo12(.LCPI2_0)
-	addi.d	$a3, $sp, 72
-	addi.d	$t4, $sp, 1096
-	move	$s6, $t2
-	.p2align	4, , 16
-.LBB2_64:                               # %vector.body214
-                                        #   Parent Loop BB2_17 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	xvaddi.wu	$xr1, $xr0, 8
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	xvst	$xr0, $t4, -32
-	xvst	$xr1, $t4, 0
-	xvaddi.wu	$xr0, $xr0, 16
-	addi.d	$s6, $s6, -16
-	addi.d	$t4, $t4, 64
-	addi.d	$a3, $a3, 64
-	bnez	$s6, .LBB2_64
-# %bb.65:                               # %middle.block220
-                                        #   in Loop: Header=BB2_17 Depth=1
-	move	$s6, $a2
-	beq	$t2, $t0, .LBB2_16
-# %bb.66:                               # %vec.epilog.iter.check225
-                                        #   in Loop: Header=BB2_17 Depth=1
-	move	$t1, $t2
-	move	$a3, $t2
-	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
-	beqz	$a4, .LBB2_70
-.LBB2_67:                               # %vec.epilog.ph227
-                                        #   in Loop: Header=BB2_17 Depth=1
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	vld	$vr0, $a3, %pc_lo12(.LCPI2_1)
-	vreplgr2vr.w	$vr1, $t1
-	vor.v	$vr0, $vr1, $vr0
-	add.d	$a3, $t8, $t1
-	alsl.d	$t4, $t1, $s0, 2
-	alsl.d	$s6, $t1, $fp, 2
-	.p2align	4, , 16
-.LBB2_68:                               # %vec.epilog.vector.body233
-                                        #   Parent Loop BB2_17 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vst	$vr0, $s6, 0
-	vst	$vr0, $t4, 0
-	vaddi.wu	$vr0, $vr0, 4
-	addi.d	$a3, $a3, 4
-	addi.d	$t4, $t4, 16
-	addi.d	$s6, $s6, 16
-	bnez	$a3, .LBB2_68
-# %bb.69:                               # %vec.epilog.middle.block238
-                                        #   in Loop: Header=BB2_17 Depth=1
-	move	$a3, $t3
-	move	$s6, $a2
-	beq	$t3, $t0, .LBB2_16
-.LBB2_70:                               # %.lr.ph149.preheader
-                                        #   in Loop: Header=BB2_17 Depth=1
-	alsl.d	$t4, $a3, $fp, 2
-	alsl.d	$s6, $a3, $s0, 2
-	sub.d	$s7, $t0, $a3
-	.p2align	4, , 16
-.LBB2_71:                               # %.lr.ph149
-                                        #   Parent Loop BB2_17 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	st.w	$a3, $t4, 0
-	st.w	$a3, $s6, 0
-	addi.d	$a3, $a3, 1
-	addi.d	$t4, $t4, 4
-	addi.d	$s7, $s7, -1
-	addi.d	$s6, $s6, 4
-	bnez	$s7, .LBB2_71
-# %bb.72:                               #   in Loop: Header=BB2_17 Depth=1
-	move	$s6, $a2
-	b	.LBB2_16
-.LBB2_73:
+	st.w	$s3, $s2, 0
+	st.w	$s3, $s4, 0
+	addi.d	$s3, $s3, 1
+	addi.d	$s2, $s2, 4
+	addi.d	$s5, $s5, -1
+	addi.d	$s4, $s4, 4
+	bnez	$s5, .LBB2_53
+# %bb.54:                               #   in Loop: Header=BB2_11 Depth=1
+	move	$s2, $a2
+	b	.LBB2_10
+.LBB2_55:
 	move	$a0, $zero
-	b	.LBB2_76
-.LBB2_74:
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	nor	$a0, $a0, $zero
-	add.w	$a0, $t4, $a0
-	b	.LBB2_76
-.LBB2_75:
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	nor	$a0, $a0, $zero
-	add.w	$a0, $s3, $a0
-.LBB2_76:                               # %.loopexit131
-	addi.d	$sp, $sp, 144
+	b	.LBB2_58
+.LBB2_56:
+	nor	$a0, $a4, $zero
+	add.w	$a0, $s1, $a0
+	b	.LBB2_58
+.LBB2_57:
+	nor	$a0, $a4, $zero
+	add.w	$a0, $fp, $a0
+.LBB2_58:                               # %.loopexit131
+	addi.d	$sp, $sp, 112
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
 	ld.d	$s6, $sp, 1960                  # 8-byte Folded Reload
@@ -1265,20 +1161,9 @@ bm:                                     # @bm
 .Lfunc_end3:
 	.size	bm, .Lfunc_end3-bm
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function initmask
-.LCPI4_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI4_1:
+	.p2align	4, 0x0                          # -- Begin function initmask
+.LCPI4_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
@@ -1302,103 +1187,64 @@ initmask:                               # @initmask
 	nor	$a0, $a3, $zero
 	lu12i.w	$s2, -524288
 	bltz	$a3, .LBB4_3
-# %bb.1:                                # %iter.check
-	ori	$a2, $zero, 3
+# %bb.1:                                # %.lr.ph.preheader
+	ori	$a2, $zero, 7
 	addi.w	$a1, $a3, 1
 	bgeu	$a3, $a2, .LBB4_4
 # %bb.2:
 	move	$a3, $zero
 	move	$a2, $zero
-	b	.LBB4_13
+	b	.LBB4_7
 .LBB4_3:
 	move	$a3, $zero
-	b	.LBB4_14
-.LBB4_4:                                # %vector.main.loop.iter.check
-	ori	$a2, $zero, 15
-	bgeu	$a3, $a2, .LBB4_6
-# %bb.5:
-	move	$a2, $zero
-	move	$a3, $zero
-	b	.LBB4_10
-.LBB4_6:                                # %vector.ph
-	andi	$a5, $a1, 12
+	b	.LBB4_8
+.LBB4_4:                                # %vector.ph
 	pcalau12i	$a2, %pc_hi20(.LCPI4_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI4_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI4_0)
 	move	$a2, $a1
-	bstrins.d	$a2, $zero, 3, 0
-	xvrepli.b	$xr1, 0
-	xvldi	$xr2, -3200
-	xvldi	$xr3, -3456
-	move	$a3, $a2
-	xvori.b	$xr4, $xr1, 0
-	.p2align	4, , 16
-.LBB4_7:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvsrl.w	$xr5, $xr2, $xr0
-	xvsrl.w	$xr6, $xr3, $xr0
-	xvor.v	$xr1, $xr1, $xr5
-	xvor.v	$xr4, $xr4, $xr6
-	addi.w	$a3, $a3, -16
-	xvaddi.wu	$xr0, $xr0, 16
-	bnez	$a3, .LBB4_7
-# %bb.8:                                # %middle.block
-	xvor.v	$xr0, $xr4, $xr1
-	xvpermi.q	$xr1, $xr0, 1
-	vor.v	$vr0, $vr0, $vr1
-	vbsrl.v	$vr1, $vr0, 8
-	vor.v	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 4
-	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a3, $vr0, 0
-	beq	$a1, $a2, .LBB4_14
-# %bb.9:                                # %vec.epilog.iter.check
-	beqz	$a5, .LBB4_13
-.LBB4_10:                               # %vec.epilog.ph
-	move	$a5, $a2
-	move	$a2, $a1
-	bstrins.d	$a2, $zero, 1, 0
-	pcalau12i	$a6, %pc_hi20(.LCPI4_1)
-	vld	$vr1, $a6, %pc_lo12(.LCPI4_1)
-	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a3, 0
-	vreplgr2vr.w	$vr2, $a5
-	vor.v	$vr1, $vr2, $vr1
-	sub.d	$a3, $a5, $a2
+	bstrins.d	$a2, $zero, 2, 0
+	vrepli.b	$vr1, 0
 	vldi	$vr2, -3200
+	vldi	$vr3, -3320
+	move	$a3, $a2
+	vori.b	$vr4, $vr1, 0
 	.p2align	4, , 16
-.LBB4_11:                               # %vec.epilog.vector.body
+.LBB4_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vsrl.w	$vr3, $vr2, $vr1
-	vor.v	$vr0, $vr0, $vr3
-	addi.w	$a3, $a3, 4
-	vaddi.wu	$vr1, $vr1, 4
-	bnez	$a3, .LBB4_11
-# %bb.12:                               # %vec.epilog.middle.block
+	vsrl.w	$vr5, $vr2, $vr0
+	vsrl.w	$vr6, $vr3, $vr0
+	vor.v	$vr1, $vr1, $vr5
+	vor.v	$vr4, $vr4, $vr6
+	addi.w	$a3, $a3, -8
+	vaddi.wu	$vr0, $vr0, 8
+	bnez	$a3, .LBB4_5
+# %bb.6:                                # %middle.block
+	vor.v	$vr0, $vr4, $vr1
 	vbsrl.v	$vr1, $vr0, 8
 	vor.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
 	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a3, $vr0, 0
-	beq	$a1, $a2, .LBB4_14
+	beq	$a1, $a2, .LBB4_8
 	.p2align	4, , 16
-.LBB4_13:                               # %.lr.ph
+.LBB4_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	srl.w	$a5, $s2, $a2
 	addi.w	$a2, $a2, 1
 	or	$a3, $a3, $a5
-	bne	$a1, $a2, .LBB4_13
-.LBB4_14:                               # %._crit_edge
+	bne	$a1, $a2, .LBB4_7
+.LBB4_8:                                # %._crit_edge
 	add.d	$a0, $s1, $a0
 	srl.w	$a0, $a3, $a0
 	st.w	$a0, $a4, 0
-	blez	$s1, .LBB4_17
-# %bb.15:                               # %iter.check158
+	blez	$s1, .LBB4_11
+# %bb.9:                                # %iter.check
 	ori	$a0, $zero, 8
-	bgeu	$s1, $a0, .LBB4_18
-# %bb.16:
+	bgeu	$s1, $a0, .LBB4_12
+# %bb.10:
 	move	$a0, $zero
-	b	.LBB4_114
-.LBB4_17:                               # %.preheader47.thread
+	b	.LBB4_108
+.LBB4_11:                               # %.preheader47.thread
 	ori	$a1, $zero, 255
 	ori	$a2, $zero, 1024
 	move	$a0, $fp
@@ -1410,505 +1256,504 @@ initmask:                               # @initmask
 	addi.d	$sp, $sp, 48
 	pcaddu18i	$t8, %call36(memset)
 	jr	$t8
-.LBB4_18:                               # %vector.main.loop.iter.check85
+.LBB4_12:                               # %vector.main.loop.iter.check
 	ori	$a0, $zero, 32
-	bgeu	$s1, $a0, .LBB4_20
-# %bb.19:
+	vrepli.b	$vr0, 94
+	vrepli.b	$vr1, 36
+	bgeu	$s1, $a0, .LBB4_14
+# %bb.13:
 	move	$a0, $zero
-	b	.LBB4_88
-.LBB4_20:                               # %vector.ph87
+	b	.LBB4_82
+.LBB4_14:                               # %vector.ph77
 	andi	$a1, $s1, 24
 	bstrpick.d	$a0, $s1, 30, 5
 	slli.d	$a0, $a0, 5
 	addi.d	$a2, $s0, 15
-	xvrepli.b	$xr0, 94
-	xvrepli.b	$xr1, 36
 	ori	$a3, $zero, 10
 	move	$a4, $a0
-	b	.LBB4_22
+	b	.LBB4_16
 	.p2align	4, , 16
-.LBB4_21:                               # %pred.store.continue153
-                                        #   in Loop: Header=BB4_22 Depth=1
+.LBB4_15:                               # %pred.store.continue144
+                                        #   in Loop: Header=BB4_16 Depth=1
 	addi.d	$a4, $a4, -32
 	addi.d	$a2, $a2, 32
-	beqz	$a4, .LBB4_86
-.LBB4_22:                               # %vector.body90
+	beqz	$a4, .LBB4_80
+.LBB4_16:                               # %vector.body80
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a2, -15
-	xvseq.b	$xr3, $xr2, $xr0
-	xvseq.b	$xr2, $xr2, $xr1
-	xvor.v	$xr2, $xr3, $xr2
+	vld	$vr2, $a2, -15
+	vseq.b	$vr3, $vr2, $vr0
+	vseq.b	$vr2, $vr2, $vr1
+	vor.v	$vr2, $vr3, $vr2
 	vpickve2gr.b	$a5, $vr2, 0
+	andi	$a5, $a5, 1
+	bnez	$a5, .LBB4_49
+# %bb.17:                               # %pred.store.continue
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vpickve2gr.b	$a5, $vr2, 1
+	andi	$a5, $a5, 1
+	bnez	$a5, .LBB4_50
+.LBB4_18:                               # %pred.store.continue84
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vpickve2gr.b	$a5, $vr2, 2
+	andi	$a5, $a5, 1
+	bnez	$a5, .LBB4_51
+.LBB4_19:                               # %pred.store.continue86
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vpickve2gr.b	$a5, $vr2, 3
+	andi	$a5, $a5, 1
+	bnez	$a5, .LBB4_52
+.LBB4_20:                               # %pred.store.continue88
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vpickve2gr.b	$a5, $vr2, 4
+	andi	$a5, $a5, 1
+	bnez	$a5, .LBB4_53
+.LBB4_21:                               # %pred.store.continue90
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vpickve2gr.b	$a5, $vr2, 5
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB4_54
-# %bb.23:                               # %pred.store.continue
-                                        #   in Loop: Header=BB4_22 Depth=1
-	vpickve2gr.b	$a5, $vr2, 1
+.LBB4_22:                               # %pred.store.continue92
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vpickve2gr.b	$a5, $vr2, 6
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB4_55
-.LBB4_24:                               # %pred.store.continue93
-                                        #   in Loop: Header=BB4_22 Depth=1
-	vpickve2gr.b	$a5, $vr2, 2
+.LBB4_23:                               # %pred.store.continue94
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vpickve2gr.b	$a5, $vr2, 7
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB4_56
-.LBB4_25:                               # %pred.store.continue95
-                                        #   in Loop: Header=BB4_22 Depth=1
-	vpickve2gr.b	$a5, $vr2, 3
+.LBB4_24:                               # %pred.store.continue96
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vpickve2gr.b	$a5, $vr2, 8
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB4_57
-.LBB4_26:                               # %pred.store.continue97
-                                        #   in Loop: Header=BB4_22 Depth=1
-	vpickve2gr.b	$a5, $vr2, 4
+.LBB4_25:                               # %pred.store.continue98
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vpickve2gr.b	$a5, $vr2, 9
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB4_58
-.LBB4_27:                               # %pred.store.continue99
-                                        #   in Loop: Header=BB4_22 Depth=1
-	vpickve2gr.b	$a5, $vr2, 5
+.LBB4_26:                               # %pred.store.continue100
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vld	$vr3, $a2, 1
+	vpickve2gr.b	$a5, $vr2, 10
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB4_59
-.LBB4_28:                               # %pred.store.continue101
-                                        #   in Loop: Header=BB4_22 Depth=1
-	vpickve2gr.b	$a5, $vr2, 6
+.LBB4_27:                               # %pred.store.continue102
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vpickve2gr.b	$a5, $vr2, 11
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB4_60
-.LBB4_29:                               # %pred.store.continue103
-                                        #   in Loop: Header=BB4_22 Depth=1
-	vpickve2gr.b	$a5, $vr2, 7
+.LBB4_28:                               # %pred.store.continue104
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vpickve2gr.b	$a5, $vr2, 12
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB4_61
-.LBB4_30:                               # %pred.store.continue105
-                                        #   in Loop: Header=BB4_22 Depth=1
-	vpickve2gr.b	$a5, $vr2, 8
+.LBB4_29:                               # %pred.store.continue106
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vpickve2gr.b	$a5, $vr2, 13
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB4_62
-.LBB4_31:                               # %pred.store.continue107
-                                        #   in Loop: Header=BB4_22 Depth=1
-	vpickve2gr.b	$a5, $vr2, 9
+.LBB4_30:                               # %pred.store.continue108
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vpickve2gr.b	$a5, $vr2, 14
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB4_63
-.LBB4_32:                               # %pred.store.continue109
-                                        #   in Loop: Header=BB4_22 Depth=1
-	vpickve2gr.b	$a5, $vr2, 10
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_64
-.LBB4_33:                               # %pred.store.continue111
-                                        #   in Loop: Header=BB4_22 Depth=1
-	vpickve2gr.b	$a5, $vr2, 11
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_65
-.LBB4_34:                               # %pred.store.continue113
-                                        #   in Loop: Header=BB4_22 Depth=1
-	vpickve2gr.b	$a5, $vr2, 12
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_66
-.LBB4_35:                               # %pred.store.continue115
-                                        #   in Loop: Header=BB4_22 Depth=1
-	vpickve2gr.b	$a5, $vr2, 13
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_67
-.LBB4_36:                               # %pred.store.continue117
-                                        #   in Loop: Header=BB4_22 Depth=1
-	vpickve2gr.b	$a5, $vr2, 14
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_68
-.LBB4_37:                               # %pred.store.continue119
-                                        #   in Loop: Header=BB4_22 Depth=1
+.LBB4_31:                               # %pred.store.continue110
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 15
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_69
-.LBB4_38:                               # %pred.store.continue121
-                                        #   in Loop: Header=BB4_22 Depth=1
-	xvpermi.d	$xr2, $xr2, 14
+	beqz	$a5, .LBB4_33
+.LBB4_32:                               # %pred.store.if111
+                                        #   in Loop: Header=BB4_16 Depth=1
+	st.b	$a3, $a2, 0
+.LBB4_33:                               # %pred.store.continue112
+                                        #   in Loop: Header=BB4_16 Depth=1
+	vseq.b	$vr2, $vr3, $vr0
+	vseq.b	$vr3, $vr3, $vr1
+	vor.v	$vr2, $vr2, $vr3
 	vpickve2gr.b	$a5, $vr2, 0
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_70
-.LBB4_39:                               # %pred.store.continue123
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_64
+# %bb.34:                               # %pred.store.continue114
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 1
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_71
-.LBB4_40:                               # %pred.store.continue125
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_65
+.LBB4_35:                               # %pred.store.continue116
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 2
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_72
-.LBB4_41:                               # %pred.store.continue127
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_66
+.LBB4_36:                               # %pred.store.continue118
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 3
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_73
-.LBB4_42:                               # %pred.store.continue129
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_67
+.LBB4_37:                               # %pred.store.continue120
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 4
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_74
-.LBB4_43:                               # %pred.store.continue131
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_68
+.LBB4_38:                               # %pred.store.continue122
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 5
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_75
-.LBB4_44:                               # %pred.store.continue133
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_69
+.LBB4_39:                               # %pred.store.continue124
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 6
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_76
-.LBB4_45:                               # %pred.store.continue135
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_70
+.LBB4_40:                               # %pred.store.continue126
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 7
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_77
-.LBB4_46:                               # %pred.store.continue137
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_71
+.LBB4_41:                               # %pred.store.continue128
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 8
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_78
-.LBB4_47:                               # %pred.store.continue139
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_72
+.LBB4_42:                               # %pred.store.continue130
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 9
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_79
-.LBB4_48:                               # %pred.store.continue141
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_73
+.LBB4_43:                               # %pred.store.continue132
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 10
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_80
-.LBB4_49:                               # %pred.store.continue143
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_74
+.LBB4_44:                               # %pred.store.continue134
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 11
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_81
-.LBB4_50:                               # %pred.store.continue145
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_75
+.LBB4_45:                               # %pred.store.continue136
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 12
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_82
-.LBB4_51:                               # %pred.store.continue147
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_76
+.LBB4_46:                               # %pred.store.continue138
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 13
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_83
-.LBB4_52:                               # %pred.store.continue149
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_77
+.LBB4_47:                               # %pred.store.continue140
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 14
 	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_84
-.LBB4_53:                               # %pred.store.continue151
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_78
+.LBB4_48:                               # %pred.store.continue142
+                                        #   in Loop: Header=BB4_16 Depth=1
 	vpickve2gr.b	$a5, $vr2, 15
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_21
-	b	.LBB4_85
+	beqz	$a5, .LBB4_15
+	b	.LBB4_79
 	.p2align	4, , 16
-.LBB4_54:                               # %pred.store.if
-                                        #   in Loop: Header=BB4_22 Depth=1
+.LBB4_49:                               # %pred.store.if
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -15
 	vpickve2gr.b	$a5, $vr2, 1
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_24
-.LBB4_55:                               # %pred.store.if92
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_18
+.LBB4_50:                               # %pred.store.if83
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -14
 	vpickve2gr.b	$a5, $vr2, 2
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_25
-.LBB4_56:                               # %pred.store.if94
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_19
+.LBB4_51:                               # %pred.store.if85
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -13
 	vpickve2gr.b	$a5, $vr2, 3
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_26
-.LBB4_57:                               # %pred.store.if96
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_20
+.LBB4_52:                               # %pred.store.if87
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -12
 	vpickve2gr.b	$a5, $vr2, 4
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_27
-.LBB4_58:                               # %pred.store.if98
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_21
+.LBB4_53:                               # %pred.store.if89
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -11
 	vpickve2gr.b	$a5, $vr2, 5
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_28
-.LBB4_59:                               # %pred.store.if100
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_22
+.LBB4_54:                               # %pred.store.if91
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -10
 	vpickve2gr.b	$a5, $vr2, 6
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_29
-.LBB4_60:                               # %pred.store.if102
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_23
+.LBB4_55:                               # %pred.store.if93
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -9
 	vpickve2gr.b	$a5, $vr2, 7
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_30
-.LBB4_61:                               # %pred.store.if104
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_24
+.LBB4_56:                               # %pred.store.if95
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -8
 	vpickve2gr.b	$a5, $vr2, 8
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_31
-.LBB4_62:                               # %pred.store.if106
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_25
+.LBB4_57:                               # %pred.store.if97
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -7
 	vpickve2gr.b	$a5, $vr2, 9
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_32
-.LBB4_63:                               # %pred.store.if108
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_26
+.LBB4_58:                               # %pred.store.if99
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -6
+	vld	$vr3, $a2, 1
 	vpickve2gr.b	$a5, $vr2, 10
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_33
-.LBB4_64:                               # %pred.store.if110
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_27
+.LBB4_59:                               # %pred.store.if101
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -5
 	vpickve2gr.b	$a5, $vr2, 11
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_34
-.LBB4_65:                               # %pred.store.if112
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_28
+.LBB4_60:                               # %pred.store.if103
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -4
 	vpickve2gr.b	$a5, $vr2, 12
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_35
-.LBB4_66:                               # %pred.store.if114
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_29
+.LBB4_61:                               # %pred.store.if105
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -3
 	vpickve2gr.b	$a5, $vr2, 13
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_36
-.LBB4_67:                               # %pred.store.if116
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_30
+.LBB4_62:                               # %pred.store.if107
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -2
 	vpickve2gr.b	$a5, $vr2, 14
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_37
-.LBB4_68:                               # %pred.store.if118
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_31
+.LBB4_63:                               # %pred.store.if109
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, -1
 	vpickve2gr.b	$a5, $vr2, 15
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_38
-.LBB4_69:                               # %pred.store.if120
-                                        #   in Loop: Header=BB4_22 Depth=1
-	st.b	$a3, $a2, 0
-	xvpermi.d	$xr2, $xr2, 14
-	vpickve2gr.b	$a5, $vr2, 0
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_39
-.LBB4_70:                               # %pred.store.if122
-                                        #   in Loop: Header=BB4_22 Depth=1
+	bnez	$a5, .LBB4_32
+	b	.LBB4_33
+	.p2align	4, , 16
+.LBB4_64:                               # %pred.store.if113
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 1
 	vpickve2gr.b	$a5, $vr2, 1
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_40
-.LBB4_71:                               # %pred.store.if124
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_35
+.LBB4_65:                               # %pred.store.if115
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 2
 	vpickve2gr.b	$a5, $vr2, 2
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_41
-.LBB4_72:                               # %pred.store.if126
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_36
+.LBB4_66:                               # %pred.store.if117
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 3
 	vpickve2gr.b	$a5, $vr2, 3
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_42
-.LBB4_73:                               # %pred.store.if128
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_37
+.LBB4_67:                               # %pred.store.if119
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 4
 	vpickve2gr.b	$a5, $vr2, 4
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_43
-.LBB4_74:                               # %pred.store.if130
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_38
+.LBB4_68:                               # %pred.store.if121
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 5
 	vpickve2gr.b	$a5, $vr2, 5
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_44
-.LBB4_75:                               # %pred.store.if132
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_39
+.LBB4_69:                               # %pred.store.if123
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 6
 	vpickve2gr.b	$a5, $vr2, 6
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_45
-.LBB4_76:                               # %pred.store.if134
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_40
+.LBB4_70:                               # %pred.store.if125
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 7
 	vpickve2gr.b	$a5, $vr2, 7
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_46
-.LBB4_77:                               # %pred.store.if136
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_41
+.LBB4_71:                               # %pred.store.if127
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 8
 	vpickve2gr.b	$a5, $vr2, 8
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_47
-.LBB4_78:                               # %pred.store.if138
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_42
+.LBB4_72:                               # %pred.store.if129
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 9
 	vpickve2gr.b	$a5, $vr2, 9
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_48
-.LBB4_79:                               # %pred.store.if140
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_43
+.LBB4_73:                               # %pred.store.if131
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 10
 	vpickve2gr.b	$a5, $vr2, 10
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_49
-.LBB4_80:                               # %pred.store.if142
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_44
+.LBB4_74:                               # %pred.store.if133
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 11
 	vpickve2gr.b	$a5, $vr2, 11
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_50
-.LBB4_81:                               # %pred.store.if144
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_45
+.LBB4_75:                               # %pred.store.if135
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 12
 	vpickve2gr.b	$a5, $vr2, 12
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_51
-.LBB4_82:                               # %pred.store.if146
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_46
+.LBB4_76:                               # %pred.store.if137
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 13
 	vpickve2gr.b	$a5, $vr2, 13
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_52
-.LBB4_83:                               # %pred.store.if148
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_47
+.LBB4_77:                               # %pred.store.if139
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 14
 	vpickve2gr.b	$a5, $vr2, 14
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_53
-.LBB4_84:                               # %pred.store.if150
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_48
+.LBB4_78:                               # %pred.store.if141
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 15
 	vpickve2gr.b	$a5, $vr2, 15
 	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_21
-.LBB4_85:                               # %pred.store.if152
-                                        #   in Loop: Header=BB4_22 Depth=1
+	beqz	$a5, .LBB4_15
+.LBB4_79:                               # %pred.store.if143
+                                        #   in Loop: Header=BB4_16 Depth=1
 	st.b	$a3, $a2, 16
-	b	.LBB4_21
-.LBB4_86:                               # %middle.block155
-	beq	$a0, $s1, .LBB4_107
-# %bb.87:                               # %vec.epilog.iter.check160
-	beqz	$a1, .LBB4_114
-.LBB4_88:                               # %vec.epilog.ph162
+	b	.LBB4_15
+.LBB4_80:                               # %middle.block146
+	beq	$a0, $s1, .LBB4_101
+# %bb.81:                               # %vec.epilog.iter.check
+	beqz	$a1, .LBB4_108
+.LBB4_82:                               # %vec.epilog.ph
 	move	$a2, $a0
 	bstrpick.d	$a0, $s1, 30, 3
 	slli.d	$a0, $a0, 3
 	add.d	$a1, $a2, $s0
 	addi.d	$a1, $a1, 3
 	sub.d	$a2, $a2, $a0
-	vrepli.b	$vr0, 94
-	vrepli.b	$vr1, 36
 	ori	$a3, $zero, 10
-	b	.LBB4_90
+	b	.LBB4_84
 	.p2align	4, , 16
-.LBB4_89:                               # %pred.store.continue183
-                                        #   in Loop: Header=BB4_90 Depth=1
+.LBB4_83:                               # %pred.store.continue167
+                                        #   in Loop: Header=BB4_84 Depth=1
 	addi.d	$a2, $a2, 8
 	addi.d	$a1, $a1, 8
-	beqz	$a2, .LBB4_106
-.LBB4_90:                               # %vec.epilog.vector.body165
+	beqz	$a2, .LBB4_100
+.LBB4_84:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a1, -3
 	vinsgr2vr.d	$vr2, $a4, 0
 	vseq.b	$vr3, $vr2, $vr0
 	vseq.b	$vr2, $vr2, $vr1
 	vor.v	$vr2, $vr3, $vr2
+	vilvl.b	$vr2, $vr2, $vr2
 	vpickve2gr.h	$a4, $vr2, 0
 	andi	$a4, $a4, 1
-	bnez	$a4, .LBB4_98
-# %bb.91:                               # %pred.store.continue169
-                                        #   in Loop: Header=BB4_90 Depth=1
-	vext2xv.h.b	$xr2, $xr2
+	bnez	$a4, .LBB4_92
+# %bb.85:                               # %pred.store.continue153
+                                        #   in Loop: Header=BB4_84 Depth=1
 	vpickve2gr.h	$a4, $vr2, 1
 	andi	$a4, $a4, 1
-	bnez	$a4, .LBB4_99
-.LBB4_92:                               # %pred.store.continue171
-                                        #   in Loop: Header=BB4_90 Depth=1
+	bnez	$a4, .LBB4_93
+.LBB4_86:                               # %pred.store.continue155
+                                        #   in Loop: Header=BB4_84 Depth=1
 	vpickve2gr.h	$a4, $vr2, 2
 	andi	$a4, $a4, 1
-	bnez	$a4, .LBB4_100
-.LBB4_93:                               # %pred.store.continue173
-                                        #   in Loop: Header=BB4_90 Depth=1
+	bnez	$a4, .LBB4_94
+.LBB4_87:                               # %pred.store.continue157
+                                        #   in Loop: Header=BB4_84 Depth=1
 	vpickve2gr.h	$a4, $vr2, 3
 	andi	$a4, $a4, 1
-	bnez	$a4, .LBB4_101
-.LBB4_94:                               # %pred.store.continue175
-                                        #   in Loop: Header=BB4_90 Depth=1
+	bnez	$a4, .LBB4_95
+.LBB4_88:                               # %pred.store.continue159
+                                        #   in Loop: Header=BB4_84 Depth=1
 	vpickve2gr.h	$a4, $vr2, 4
 	andi	$a4, $a4, 1
-	bnez	$a4, .LBB4_102
-.LBB4_95:                               # %pred.store.continue177
-                                        #   in Loop: Header=BB4_90 Depth=1
+	bnez	$a4, .LBB4_96
+.LBB4_89:                               # %pred.store.continue161
+                                        #   in Loop: Header=BB4_84 Depth=1
 	vpickve2gr.h	$a4, $vr2, 5
 	andi	$a4, $a4, 1
-	bnez	$a4, .LBB4_103
-.LBB4_96:                               # %pred.store.continue179
-                                        #   in Loop: Header=BB4_90 Depth=1
+	bnez	$a4, .LBB4_97
+.LBB4_90:                               # %pred.store.continue163
+                                        #   in Loop: Header=BB4_84 Depth=1
 	vpickve2gr.h	$a4, $vr2, 6
 	andi	$a4, $a4, 1
-	bnez	$a4, .LBB4_104
-.LBB4_97:                               # %pred.store.continue181
-                                        #   in Loop: Header=BB4_90 Depth=1
+	bnez	$a4, .LBB4_98
+.LBB4_91:                               # %pred.store.continue165
+                                        #   in Loop: Header=BB4_84 Depth=1
 	vpickve2gr.h	$a4, $vr2, 7
 	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_89
-	b	.LBB4_105
+	beqz	$a4, .LBB4_83
+	b	.LBB4_99
 	.p2align	4, , 16
-.LBB4_98:                               # %pred.store.if168
-                                        #   in Loop: Header=BB4_90 Depth=1
+.LBB4_92:                               # %pred.store.if152
+                                        #   in Loop: Header=BB4_84 Depth=1
 	st.b	$a3, $a1, -3
-	vext2xv.h.b	$xr2, $xr2
 	vpickve2gr.h	$a4, $vr2, 1
 	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_92
-.LBB4_99:                               # %pred.store.if170
-                                        #   in Loop: Header=BB4_90 Depth=1
+	beqz	$a4, .LBB4_86
+.LBB4_93:                               # %pred.store.if154
+                                        #   in Loop: Header=BB4_84 Depth=1
 	st.b	$a3, $a1, -2
 	vpickve2gr.h	$a4, $vr2, 2
 	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_93
-.LBB4_100:                              # %pred.store.if172
-                                        #   in Loop: Header=BB4_90 Depth=1
+	beqz	$a4, .LBB4_87
+.LBB4_94:                               # %pred.store.if156
+                                        #   in Loop: Header=BB4_84 Depth=1
 	st.b	$a3, $a1, -1
 	vpickve2gr.h	$a4, $vr2, 3
 	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_94
-.LBB4_101:                              # %pred.store.if174
-                                        #   in Loop: Header=BB4_90 Depth=1
+	beqz	$a4, .LBB4_88
+.LBB4_95:                               # %pred.store.if158
+                                        #   in Loop: Header=BB4_84 Depth=1
 	st.b	$a3, $a1, 0
 	vpickve2gr.h	$a4, $vr2, 4
 	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_95
-.LBB4_102:                              # %pred.store.if176
-                                        #   in Loop: Header=BB4_90 Depth=1
+	beqz	$a4, .LBB4_89
+.LBB4_96:                               # %pred.store.if160
+                                        #   in Loop: Header=BB4_84 Depth=1
 	st.b	$a3, $a1, 1
 	vpickve2gr.h	$a4, $vr2, 5
 	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_96
-.LBB4_103:                              # %pred.store.if178
-                                        #   in Loop: Header=BB4_90 Depth=1
+	beqz	$a4, .LBB4_90
+.LBB4_97:                               # %pred.store.if162
+                                        #   in Loop: Header=BB4_84 Depth=1
 	st.b	$a3, $a1, 2
 	vpickve2gr.h	$a4, $vr2, 6
 	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_97
-.LBB4_104:                              # %pred.store.if180
-                                        #   in Loop: Header=BB4_90 Depth=1
+	beqz	$a4, .LBB4_91
+.LBB4_98:                               # %pred.store.if164
+                                        #   in Loop: Header=BB4_84 Depth=1
 	st.b	$a3, $a1, 3
 	vpickve2gr.h	$a4, $vr2, 7
 	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_89
-.LBB4_105:                              # %pred.store.if182
-                                        #   in Loop: Header=BB4_90 Depth=1
+	beqz	$a4, .LBB4_83
+.LBB4_99:                               # %pred.store.if166
+                                        #   in Loop: Header=BB4_84 Depth=1
 	st.b	$a3, $a1, 4
-	b	.LBB4_89
-.LBB4_106:                              # %vec.epilog.middle.block185
-	bne	$a0, $s1, .LBB4_114
-.LBB4_107:                              # %.preheader47
+	b	.LBB4_83
+.LBB4_100:                              # %vec.epilog.middle.block
+	bne	$a0, $s1, .LBB4_108
+.LBB4_101:                              # %.preheader47
 	ori	$a1, $zero, 255
 	ori	$a2, $zero, 1024
 	move	$a0, $fp
@@ -1916,38 +1761,38 @@ initmask:                               # @initmask
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
 	bstrpick.d	$a1, $s1, 31, 0
-	b	.LBB4_109
+	b	.LBB4_103
 	.p2align	4, , 16
-.LBB4_108:                              # %._crit_edge57.us
-                                        #   in Loop: Header=BB4_109 Depth=1
+.LBB4_102:                              # %._crit_edge57.us
+                                        #   in Loop: Header=BB4_103 Depth=1
 	addi.d	$a0, $a0, 1
-	beq	$a0, $a1, .LBB4_113
-.LBB4_109:                              # %.lr.ph56.us
+	beq	$a0, $a1, .LBB4_107
+.LBB4_103:                              # %.lr.ph56.us
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_111 Depth 2
+                                        #     Child Loop BB4_105 Depth 2
 	ldx.bu	$a2, $s0, $a0
 	move	$a3, $zero
 	alsl.d	$a4, $a2, $fp, 2
 	move	$a5, $a1
 	move	$a6, $s0
-	b	.LBB4_111
+	b	.LBB4_105
 	.p2align	4, , 16
-.LBB4_110:                              #   in Loop: Header=BB4_111 Depth=2
+.LBB4_104:                              #   in Loop: Header=BB4_105 Depth=2
 	addi.d	$a3, $a3, 1
 	addi.d	$a5, $a5, -1
 	addi.d	$a6, $a6, 1
-	beqz	$a5, .LBB4_108
-.LBB4_111:                              #   Parent Loop BB4_109 Depth=1
+	beqz	$a5, .LBB4_102
+.LBB4_105:                              #   Parent Loop BB4_103 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.bu	$a7, $a6, 0
-	bne	$a2, $a7, .LBB4_110
-# %bb.112:                              #   in Loop: Header=BB4_111 Depth=2
+	bne	$a2, $a7, .LBB4_104
+# %bb.106:                              #   in Loop: Header=BB4_105 Depth=2
 	ld.w	$a7, $a4, 0
 	srl.w	$t0, $s2, $a3
 	andn	$a7, $a7, $t0
 	st.w	$a7, $a4, 0
-	b	.LBB4_110
-.LBB4_113:                              # %._crit_edge60
+	b	.LBB4_104
+.LBB4_107:                              # %._crit_edge60
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -1955,28 +1800,28 @@ initmask:                               # @initmask
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
 	ret
-.LBB4_114:                              # %.lr.ph52.preheader
+.LBB4_108:                              # %.lr.ph52.preheader
 	add.d	$a1, $s0, $a0
 	sub.d	$a0, $s1, $a0
 	ori	$a2, $zero, 94
 	ori	$a3, $zero, 10
 	ori	$a4, $zero, 36
-	b	.LBB4_117
+	b	.LBB4_111
 	.p2align	4, , 16
-.LBB4_115:                              #   in Loop: Header=BB4_117 Depth=1
+.LBB4_109:                              #   in Loop: Header=BB4_111 Depth=1
 	st.b	$a3, $a1, 0
-.LBB4_116:                              #   in Loop: Header=BB4_117 Depth=1
+.LBB4_110:                              #   in Loop: Header=BB4_111 Depth=1
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 1
-	beqz	$a0, .LBB4_107
-.LBB4_117:                              # %.lr.ph52
+	beqz	$a0, .LBB4_101
+.LBB4_111:                              # %.lr.ph52
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a5, $a1, 0
-	beq	$a5, $a2, .LBB4_115
-# %bb.118:                              # %.lr.ph52
-                                        #   in Loop: Header=BB4_117 Depth=1
-	beq	$a5, $a4, .LBB4_115
-	b	.LBB4_116
+	beq	$a5, $a2, .LBB4_109
+# %bb.112:                              # %.lr.ph52
+                                        #   in Loop: Header=BB4_111 Depth=1
+	beq	$a5, $a4, .LBB4_109
+	b	.LBB4_110
 .Lfunc_end4:
 	.size	initmask, .Lfunc_end4-initmask
                                         # -- End function
@@ -3397,9 +3242,10 @@ m_preprocess:                           # @m_preprocess
 	addi.w	$a1, $s1, -1
 	ori	$a3, $zero, 2
 	pcalau12i	$a0, %pc_hi20(shift_1)
-	blt	$a2, $a3, .LBB11_77
+	blt	$a2, $a3, .LBB11_45
 # %bb.1:                                # %.lr.ph
-	xvreplgr2vr.w	$xr0, $s1
+	vreplgr2vr.w	$vr0, $s1
+	vrepli.b	$vr1, 0
 	ori	$a2, $zero, 256
 	ori	$a3, $zero, 1
 	move	$a5, $a1
@@ -3407,7 +3253,7 @@ m_preprocess:                           # @m_preprocess
 	.p2align	4, , 16
 .LBB11_2:                               #   in Loop: Header=BB11_3 Depth=1
 	addi.d	$a5, $a4, -1
-	bge	$a3, $a4, .LBB11_71
+	bge	$a3, $a4, .LBB11_39
 .LBB11_3:                               # %vector.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB11_5 Depth 2
@@ -3419,388 +3265,230 @@ m_preprocess:                           # @m_preprocess
 	alsl.d	$t0, $t0, $fp, 3
 	b	.LBB11_5
 	.p2align	4, , 16
-.LBB11_4:                               # %pred.store.continue112
+.LBB11_4:                               # %pred.store.continue80
                                         #   in Loop: Header=BB11_5 Depth=2
-	addi.d	$a7, $a7, 32
-	beq	$a7, $a2, .LBB11_69
+	addi.d	$a7, $a7, 16
+	beq	$a7, $a2, .LBB11_37
 .LBB11_5:                               # %vector.body
                                         #   Parent Loop BB11_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvldx	$xr1, $t0, $a7
-	vext2xv.hu.bu	$xr2, $xr1
-	vext2xv.wu.hu	$xr3, $xr2
-	xvseq.w	$xr3, $xr0, $xr3
-	xvpickve2gr.w	$t1, $xr3, 0
+	vldx	$vr2, $t0, $a7
+	vilvl.b	$vr3, $vr1, $vr2
+	vilvl.h	$vr4, $vr1, $vr3
+	vseq.w	$vr4, $vr0, $vr4
+	vpickve2gr.b	$t1, $vr4, 0
 	andi	$t1, $t1, 1
-	bnez	$t1, .LBB11_40
-# %bb.6:                                # %pred.store.continue
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t1, $xr3, 1
-	andi	$t2, $t1, 1
-	add.d	$t1, $t0, $a7
-	bnez	$t2, .LBB11_41
-.LBB11_7:                               # %pred.store.continue52
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr3, 2
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_42
-.LBB11_8:                               # %pred.store.continue54
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr3, 3
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_43
-.LBB11_9:                               # %pred.store.continue56
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr3, 4
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_44
-.LBB11_10:                              # %pred.store.continue58
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr3, 5
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_45
-.LBB11_11:                              # %pred.store.continue60
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr3, 6
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_46
-.LBB11_12:                              # %pred.store.continue62
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr3, 7
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_14
-.LBB11_13:                              # %pred.store.if63
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 7
-.LBB11_14:                              # %pred.store.continue64
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpermi.q	$xr2, $xr2, 1
-	vext2xv.wu.hu	$xr2, $xr2
-	xvseq.w	$xr2, $xr0, $xr2
-	xvpickve2gr.w	$t2, $xr2, 0
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_47
-# %bb.15:                               # %pred.store.continue66
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr2, 1
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_48
-.LBB11_16:                              # %pred.store.continue68
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr2, 2
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_49
-.LBB11_17:                              # %pred.store.continue70
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr2, 3
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_50
-.LBB11_18:                              # %pred.store.continue72
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr2, 4
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_51
-.LBB11_19:                              # %pred.store.continue74
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr2, 5
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_52
-.LBB11_20:                              # %pred.store.continue76
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr2, 6
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_53
-.LBB11_21:                              # %pred.store.continue78
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr2, 7
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_23
-.LBB11_22:                              # %pred.store.if79
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 15
-.LBB11_23:                              # %pred.store.continue80
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpermi.q	$xr1, $xr1, 1
-	vext2xv.hu.bu	$xr1, $xr1
-	vext2xv.wu.hu	$xr2, $xr1
-	xvseq.w	$xr2, $xr0, $xr2
-	xvpickve2gr.w	$t2, $xr2, 0
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_54
-# %bb.24:                               # %pred.store.continue82
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr2, 1
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_55
-.LBB11_25:                              # %pred.store.continue84
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr2, 2
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_56
-.LBB11_26:                              # %pred.store.continue86
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr2, 3
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_57
-.LBB11_27:                              # %pred.store.continue88
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr2, 4
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_58
-.LBB11_28:                              # %pred.store.continue90
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr2, 5
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_59
-.LBB11_29:                              # %pred.store.continue92
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr2, 6
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_60
-.LBB11_30:                              # %pred.store.continue94
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr2, 7
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_32
-.LBB11_31:                              # %pred.store.if95
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 23
-.LBB11_32:                              # %pred.store.continue96
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpermi.q	$xr1, $xr1, 1
-	vext2xv.wu.hu	$xr1, $xr1
-	xvseq.w	$xr1, $xr0, $xr1
-	xvpickve2gr.w	$t2, $xr1, 0
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_61
-# %bb.33:                               # %pred.store.continue98
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr1, 1
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_62
-.LBB11_34:                              # %pred.store.continue100
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr1, 2
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_63
-.LBB11_35:                              # %pred.store.continue102
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr1, 3
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_64
-.LBB11_36:                              # %pred.store.continue104
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr1, 4
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_65
-.LBB11_37:                              # %pred.store.continue106
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr1, 5
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_66
-.LBB11_38:                              # %pred.store.continue108
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr1, 6
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_67
-.LBB11_39:                              # %pred.store.continue110
-                                        #   in Loop: Header=BB11_5 Depth=2
-	xvpickve2gr.w	$t2, $xr1, 7
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_4
-	b	.LBB11_68
-	.p2align	4, , 16
-.LBB11_40:                              # %pred.store.if
+	beqz	$t1, .LBB11_7
+# %bb.6:                                # %pred.store.if
                                         #   in Loop: Header=BB11_5 Depth=2
 	stx.b	$a1, $t0, $a7
-	xvpickve2gr.w	$t1, $xr3, 1
+.LBB11_7:                               # %pred.store.continue
+                                        #   in Loop: Header=BB11_5 Depth=2
+	vreplvei.h	$vr5, $vr4, 2
+	vpickve2gr.b	$t1, $vr5, 2
 	andi	$t2, $t1, 1
 	add.d	$t1, $t0, $a7
-	beqz	$t2, .LBB11_7
-.LBB11_41:                              # %pred.store.if51
+	bnez	$t2, .LBB11_25
+# %bb.8:                                # %pred.store.continue52
                                         #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 1
-	xvpickve2gr.w	$t2, $xr3, 2
+	vreplvei.h	$vr5, $vr4, 4
+	vpickve2gr.b	$t2, $vr5, 4
 	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_8
-.LBB11_42:                              # %pred.store.if53
+	bnez	$t2, .LBB11_26
+.LBB11_9:                               # %pred.store.continue54
                                         #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 2
-	xvpickve2gr.w	$t2, $xr3, 3
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_9
-.LBB11_43:                              # %pred.store.if55
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 3
-	xvpickve2gr.w	$t2, $xr3, 4
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_10
-.LBB11_44:                              # %pred.store.if57
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 4
-	xvpickve2gr.w	$t2, $xr3, 5
+	vreplvei.h	$vr4, $vr4, 6
+	vpickve2gr.b	$t2, $vr4, 6
 	andi	$t2, $t2, 1
 	beqz	$t2, .LBB11_11
-.LBB11_45:                              # %pred.store.if59
+.LBB11_10:                              # %pred.store.if55
                                         #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 5
-	xvpickve2gr.w	$t2, $xr3, 6
+	st.b	$a1, $t1, 3
+.LBB11_11:                              # %pred.store.continue56
+                                        #   in Loop: Header=BB11_5 Depth=2
+	vilvh.h	$vr3, $vr1, $vr3
+	vseq.w	$vr3, $vr0, $vr3
+	vreplvei.h	$vr4, $vr3, 0
+	vpickve2gr.b	$t2, $vr4, 8
 	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_12
-.LBB11_46:                              # %pred.store.if61
+	bnez	$t2, .LBB11_27
+# %bb.12:                               # %pred.store.continue58
                                         #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 6
-	xvpickve2gr.w	$t2, $xr3, 7
+	vreplvei.h	$vr4, $vr3, 2
+	vpickve2gr.b	$t2, $vr4, 10
 	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_13
-	b	.LBB11_14
-	.p2align	4, , 16
-.LBB11_47:                              # %pred.store.if65
+	bnez	$t2, .LBB11_28
+.LBB11_13:                              # %pred.store.continue60
                                         #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 8
-	xvpickve2gr.w	$t2, $xr2, 1
+	vreplvei.h	$vr4, $vr3, 4
+	vpickve2gr.b	$t2, $vr4, 12
+	andi	$t2, $t2, 1
+	bnez	$t2, .LBB11_29
+.LBB11_14:                              # %pred.store.continue62
+                                        #   in Loop: Header=BB11_5 Depth=2
+	vreplvei.h	$vr3, $vr3, 6
+	vpickve2gr.b	$t2, $vr3, 14
 	andi	$t2, $t2, 1
 	beqz	$t2, .LBB11_16
-.LBB11_48:                              # %pred.store.if67
+.LBB11_15:                              # %pred.store.if63
                                         #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 9
-	xvpickve2gr.w	$t2, $xr2, 2
+	st.b	$a1, $t1, 7
+.LBB11_16:                              # %pred.store.continue64
+                                        #   in Loop: Header=BB11_5 Depth=2
+	vilvh.b	$vr2, $vr1, $vr2
+	vilvl.h	$vr3, $vr1, $vr2
+	vseq.w	$vr3, $vr0, $vr3
+	vpickve2gr.b	$t2, $vr3, 0
 	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_17
-.LBB11_49:                              # %pred.store.if69
+	bnez	$t2, .LBB11_30
+# %bb.17:                               # %pred.store.continue66
                                         #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 10
-	xvpickve2gr.w	$t2, $xr2, 3
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_18
-.LBB11_50:                              # %pred.store.if71
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 11
-	xvpickve2gr.w	$t2, $xr2, 4
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_19
-.LBB11_51:                              # %pred.store.if73
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 12
-	xvpickve2gr.w	$t2, $xr2, 5
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_20
-.LBB11_52:                              # %pred.store.if75
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 13
-	xvpickve2gr.w	$t2, $xr2, 6
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_21
-.LBB11_53:                              # %pred.store.if77
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 14
-	xvpickve2gr.w	$t2, $xr2, 7
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_22
-	b	.LBB11_23
-	.p2align	4, , 16
-.LBB11_54:                              # %pred.store.if81
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 16
-	xvpickve2gr.w	$t2, $xr2, 1
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_25
-.LBB11_55:                              # %pred.store.if83
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 17
-	xvpickve2gr.w	$t2, $xr2, 2
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_26
-.LBB11_56:                              # %pred.store.if85
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 18
-	xvpickve2gr.w	$t2, $xr2, 3
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_27
-.LBB11_57:                              # %pred.store.if87
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 19
-	xvpickve2gr.w	$t2, $xr2, 4
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_28
-.LBB11_58:                              # %pred.store.if89
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 20
-	xvpickve2gr.w	$t2, $xr2, 5
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_29
-.LBB11_59:                              # %pred.store.if91
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 21
-	xvpickve2gr.w	$t2, $xr2, 6
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_30
-.LBB11_60:                              # %pred.store.if93
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 22
-	xvpickve2gr.w	$t2, $xr2, 7
+	vreplvei.h	$vr4, $vr3, 2
+	vpickve2gr.b	$t2, $vr4, 2
 	andi	$t2, $t2, 1
 	bnez	$t2, .LBB11_31
-	b	.LBB11_32
-	.p2align	4, , 16
-.LBB11_61:                              # %pred.store.if97
+.LBB11_18:                              # %pred.store.continue68
                                         #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 24
-	xvpickve2gr.w	$t2, $xr1, 1
+	vreplvei.h	$vr4, $vr3, 4
+	vpickve2gr.b	$t2, $vr4, 4
 	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_34
-.LBB11_62:                              # %pred.store.if99
+	bnez	$t2, .LBB11_32
+.LBB11_19:                              # %pred.store.continue70
                                         #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 25
-	xvpickve2gr.w	$t2, $xr1, 2
+	vreplvei.h	$vr3, $vr3, 6
+	vpickve2gr.b	$t2, $vr3, 6
 	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_35
-.LBB11_63:                              # %pred.store.if101
+	beqz	$t2, .LBB11_21
+.LBB11_20:                              # %pred.store.if71
                                         #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 26
-	xvpickve2gr.w	$t2, $xr1, 3
+	st.b	$a1, $t1, 11
+.LBB11_21:                              # %pred.store.continue72
+                                        #   in Loop: Header=BB11_5 Depth=2
+	vilvh.h	$vr2, $vr1, $vr2
+	vseq.w	$vr2, $vr0, $vr2
+	vreplvei.h	$vr3, $vr2, 0
+	vpickve2gr.b	$t2, $vr3, 8
 	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_36
-.LBB11_64:                              # %pred.store.if103
+	bnez	$t2, .LBB11_33
+# %bb.22:                               # %pred.store.continue74
                                         #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 27
-	xvpickve2gr.w	$t2, $xr1, 4
+	vreplvei.h	$vr3, $vr2, 2
+	vpickve2gr.b	$t2, $vr3, 10
 	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_37
-.LBB11_65:                              # %pred.store.if105
+	bnez	$t2, .LBB11_34
+.LBB11_23:                              # %pred.store.continue76
                                         #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 28
-	xvpickve2gr.w	$t2, $xr1, 5
+	vreplvei.h	$vr3, $vr2, 4
+	vpickve2gr.b	$t2, $vr3, 12
 	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_38
-.LBB11_66:                              # %pred.store.if107
+	bnez	$t2, .LBB11_35
+.LBB11_24:                              # %pred.store.continue78
                                         #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 29
-	xvpickve2gr.w	$t2, $xr1, 6
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_39
-.LBB11_67:                              # %pred.store.if109
-                                        #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 30
-	xvpickve2gr.w	$t2, $xr1, 7
+	vreplvei.h	$vr2, $vr2, 6
+	vpickve2gr.b	$t2, $vr2, 14
 	andi	$t2, $t2, 1
 	beqz	$t2, .LBB11_4
-.LBB11_68:                              # %pred.store.if111
+	b	.LBB11_36
+	.p2align	4, , 16
+.LBB11_25:                              # %pred.store.if51
                                         #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 31
+	st.b	$a1, $t1, 1
+	vreplvei.h	$vr5, $vr4, 4
+	vpickve2gr.b	$t2, $vr5, 4
+	andi	$t2, $t2, 1
+	beqz	$t2, .LBB11_9
+.LBB11_26:                              # %pred.store.if53
+                                        #   in Loop: Header=BB11_5 Depth=2
+	st.b	$a1, $t1, 2
+	vreplvei.h	$vr4, $vr4, 6
+	vpickve2gr.b	$t2, $vr4, 6
+	andi	$t2, $t2, 1
+	bnez	$t2, .LBB11_10
+	b	.LBB11_11
+	.p2align	4, , 16
+.LBB11_27:                              # %pred.store.if57
+                                        #   in Loop: Header=BB11_5 Depth=2
+	st.b	$a1, $t1, 4
+	vreplvei.h	$vr4, $vr3, 2
+	vpickve2gr.b	$t2, $vr4, 10
+	andi	$t2, $t2, 1
+	beqz	$t2, .LBB11_13
+.LBB11_28:                              # %pred.store.if59
+                                        #   in Loop: Header=BB11_5 Depth=2
+	st.b	$a1, $t1, 5
+	vreplvei.h	$vr4, $vr3, 4
+	vpickve2gr.b	$t2, $vr4, 12
+	andi	$t2, $t2, 1
+	beqz	$t2, .LBB11_14
+.LBB11_29:                              # %pred.store.if61
+                                        #   in Loop: Header=BB11_5 Depth=2
+	st.b	$a1, $t1, 6
+	vreplvei.h	$vr3, $vr3, 6
+	vpickve2gr.b	$t2, $vr3, 14
+	andi	$t2, $t2, 1
+	bnez	$t2, .LBB11_15
+	b	.LBB11_16
+	.p2align	4, , 16
+.LBB11_30:                              # %pred.store.if65
+                                        #   in Loop: Header=BB11_5 Depth=2
+	st.b	$a1, $t1, 8
+	vreplvei.h	$vr4, $vr3, 2
+	vpickve2gr.b	$t2, $vr4, 2
+	andi	$t2, $t2, 1
+	beqz	$t2, .LBB11_18
+.LBB11_31:                              # %pred.store.if67
+                                        #   in Loop: Header=BB11_5 Depth=2
+	st.b	$a1, $t1, 9
+	vreplvei.h	$vr4, $vr3, 4
+	vpickve2gr.b	$t2, $vr4, 4
+	andi	$t2, $t2, 1
+	beqz	$t2, .LBB11_19
+.LBB11_32:                              # %pred.store.if69
+                                        #   in Loop: Header=BB11_5 Depth=2
+	st.b	$a1, $t1, 10
+	vreplvei.h	$vr3, $vr3, 6
+	vpickve2gr.b	$t2, $vr3, 6
+	andi	$t2, $t2, 1
+	bnez	$t2, .LBB11_20
+	b	.LBB11_21
+	.p2align	4, , 16
+.LBB11_33:                              # %pred.store.if73
+                                        #   in Loop: Header=BB11_5 Depth=2
+	st.b	$a1, $t1, 12
+	vreplvei.h	$vr3, $vr2, 2
+	vpickve2gr.b	$t2, $vr3, 10
+	andi	$t2, $t2, 1
+	beqz	$t2, .LBB11_23
+.LBB11_34:                              # %pred.store.if75
+                                        #   in Loop: Header=BB11_5 Depth=2
+	st.b	$a1, $t1, 13
+	vreplvei.h	$vr3, $vr2, 4
+	vpickve2gr.b	$t2, $vr3, 12
+	andi	$t2, $t2, 1
+	beqz	$t2, .LBB11_24
+.LBB11_35:                              # %pred.store.if77
+                                        #   in Loop: Header=BB11_5 Depth=2
+	st.b	$a1, $t1, 14
+	vreplvei.h	$vr2, $vr2, 6
+	vpickve2gr.b	$t2, $vr2, 14
+	andi	$t2, $t2, 1
+	beqz	$t2, .LBB11_4
+.LBB11_36:                              # %pred.store.if79
+                                        #   in Loop: Header=BB11_5 Depth=2
+	st.b	$a1, $t1, 15
 	b	.LBB11_4
 	.p2align	4, , 16
-.LBB11_69:                              # %middle.block
+.LBB11_37:                              # %middle.block
                                         #   in Loop: Header=BB11_3 Depth=1
 	ld.bu	$a5, $a5, -1
 	add.d	$a5, $a6, $a5
 	ldx.bu	$a6, $fp, $a5
 	blt	$a6, $a1, .LBB11_2
-# %bb.70:                               #   in Loop: Header=BB11_3 Depth=1
+# %bb.38:                               #   in Loop: Header=BB11_3 Depth=1
 	sub.d	$a6, $a1, $a4
 	stx.b	$a6, $fp, $a5
 	b	.LBB11_2
-.LBB11_71:                              # %._crit_edge
+.LBB11_39:                              # %._crit_edge
 	move	$a2, $zero
 	st.w	$a1, $a0, %pc_lo12(shift_1)
 	ldx.bu	$a3, $s0, $a1
@@ -3808,16 +3496,16 @@ m_preprocess:                           # @m_preprocess
 	ori	$a5, $zero, 1
 	sub.w	$a5, $a5, $s1
 	.p2align	4, , 16
-.LBB11_72:                              # =>This Inner Loop Header: Depth=1
+.LBB11_40:                              # =>This Inner Loop Header: Depth=1
 	add.w	$a6, $a4, $a2
 	ldx.bu	$a6, $s0, $a6
-	beq	$a6, $a3, .LBB11_76
-# %bb.73:                               #   in Loop: Header=BB11_72 Depth=1
+	beq	$a6, $a3, .LBB11_44
+# %bb.41:                               #   in Loop: Header=BB11_40 Depth=1
 	addi.w	$a2, $a2, -1
-	bne	$a5, $a2, .LBB11_72
-# %bb.74:                               # %._crit_edge44
-	beqz	$a1, .LBB11_78
-.LBB11_75:
+	bne	$a5, $a2, .LBB11_40
+# %bb.42:                               # %._crit_edge44
+	beqz	$a1, .LBB11_46
+.LBB11_43:
 	st.b	$zero, $fp, 0
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -3825,16 +3513,16 @@ m_preprocess:                           # @m_preprocess
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret
-.LBB11_76:                              # %.thread
+.LBB11_44:                              # %.thread
 	ori	$a1, $zero, 1
 	sub.w	$a1, $a1, $a2
-.LBB11_77:                              # %._crit_edge44.sink.split
+.LBB11_45:                              # %._crit_edge44.sink.split
 	st.w	$a1, $a0, %pc_lo12(shift_1)
-	bnez	$a1, .LBB11_75
-.LBB11_78:
+	bnez	$a1, .LBB11_43
+.LBB11_46:
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, %pc_lo12(shift_1)
-	b	.LBB11_75
+	b	.LBB11_43
 .Lfunc_end11:
 	.size	m_preprocess, .Lfunc_end11-m_preprocess
                                         # -- End function
@@ -4253,7 +3941,7 @@ sgrep:                                  # @sgrep
 	lu12i.w	$a4, 2
 	ori	$a4, $a4, 416
 	sub.d	$sp, $sp, $a4
-	move	$s1, $a0
+	move	$fp, $a0
 	ld.bu	$a0, $a0, 0
 	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
@@ -4268,9 +3956,9 @@ sgrep:                                  # @sgrep
 	bne	$a0, $a2, .LBB15_3
 .LBB15_2:
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 0
+	st.b	$a0, $fp, 0
 .LBB15_3:
-	add.d	$a0, $s1, $a1
+	add.d	$a0, $fp, $a1
 	ld.bu	$a1, $a0, -1
 	ori	$a2, $zero, 94
 	beq	$a1, $a2, .LBB15_5
@@ -4284,7 +3972,7 @@ sgrep:                                  # @sgrep
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 2356
 	add.d	$a1, $sp, $a0
-	move	$a0, $s1
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(char_tr)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 10
@@ -4299,9 +3987,9 @@ sgrep:                                  # @sgrep
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 2356
 	add.d	$a0, $sp, $a0
-	ld.w	$fp, $a0, 0
+	ld.w	$s0, $a0, 0
 	ori	$a0, $zero, 256
-	bge	$fp, $a0, .LBB15_195
+	bge	$s0, $a0, .LBB15_163
 # %bb.7:
 	pcalau12i	$a0, %got_pc_hi20(WHOLELINE)
 	ld.d	$a0, $a0, %got_pc_lo12(WHOLELINE)
@@ -4312,18 +4000,18 @@ sgrep:                                  # @sgrep
 	pcalau12i	$a0, %got_pc_hi20(DNA)
 	ld.d	$a0, $a0, %got_pc_lo12(DNA)
 	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB15_82
+	beqz	$a0, .LBB15_50
 # %bb.9:
-	move	$a0, $s1
-	move	$a1, $fp
+	move	$a0, $fp
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(prep4)
 	jirl	$ra, $ra, 0
-	b	.LBB15_118
+	b	.LBB15_86
 .LBB15_10:
 	ori	$a0, $zero, 21
-	blt	$fp, $a0, .LBB15_88
+	blt	$s0, $a0, .LBB15_56
 # %bb.11:
-	move	$a0, $s1
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
@@ -4337,9 +4025,10 @@ sgrep:                                  # @sgrep
 	addi.w	$a1, $s4, 0
 	ori	$a2, $zero, 2
 	addi.w	$a0, $s4, -1
-	blt	$a1, $a2, .LBB15_107
+	blt	$a1, $a2, .LBB15_75
 # %bb.12:                               # %.lr.ph.i
-	xvreplgr2vr.w	$xr0, $s4
+	vreplgr2vr.w	$vr0, $s4
+	vrepli.b	$vr1, 0
 	ori	$a1, $zero, 256
 	ori	$a2, $zero, 1
 	move	$a4, $a0
@@ -4347,404 +4036,246 @@ sgrep:                                  # @sgrep
 	.p2align	4, , 16
 .LBB15_13:                              #   in Loop: Header=BB15_14 Depth=1
 	addi.d	$a4, $a3, -1
-	bge	$a2, $a3, .LBB15_100
+	bge	$a2, $a3, .LBB15_68
 .LBB15_14:                              # %vector.ph173
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB15_16 Depth 2
 	move	$a3, $a4
-	ldx.bu	$a7, $s1, $a4
+	ldx.bu	$a7, $fp, $a4
 	move	$a6, $zero
-	add.d	$a4, $s1, $a4
+	add.d	$a4, $fp, $a4
 	slli.d	$a5, $a7, 3
 	alsl.d	$a7, $a7, $s3, 3
 	b	.LBB15_16
 	.p2align	4, , 16
-.LBB15_15:                              # %pred.store.continue240
+.LBB15_15:                              # %pred.store.continue208
                                         #   in Loop: Header=BB15_16 Depth=2
-	addi.d	$a6, $a6, 32
-	beq	$a6, $a1, .LBB15_80
+	addi.d	$a6, $a6, 16
+	beq	$a6, $a1, .LBB15_48
 .LBB15_16:                              # %vector.body174
                                         #   Parent Loop BB15_14 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvldx	$xr1, $a7, $a6
-	vext2xv.hu.bu	$xr2, $xr1
-	vext2xv.wu.hu	$xr3, $xr2
-	xvseq.w	$xr3, $xr0, $xr3
-	xvpickve2gr.w	$t0, $xr3, 0
+	vldx	$vr2, $a7, $a6
+	vilvl.b	$vr3, $vr1, $vr2
+	vilvl.h	$vr4, $vr1, $vr3
+	vseq.w	$vr4, $vr0, $vr4
+	vpickve2gr.b	$t0, $vr4, 0
 	andi	$t0, $t0, 1
-	bnez	$t0, .LBB15_51
-# %bb.17:                               # %pred.store.continue178
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t0, $xr3, 1
-	andi	$t1, $t0, 1
-	add.d	$t0, $a7, $a6
-	bnez	$t1, .LBB15_52
-.LBB15_18:                              # %pred.store.continue180
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr3, 2
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_53
-.LBB15_19:                              # %pred.store.continue182
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr3, 3
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_54
-.LBB15_20:                              # %pred.store.continue184
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr3, 4
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_55
-.LBB15_21:                              # %pred.store.continue186
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr3, 5
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_56
-.LBB15_22:                              # %pred.store.continue188
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr3, 6
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_57
-.LBB15_23:                              # %pred.store.continue190
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr3, 7
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_25
-.LBB15_24:                              # %pred.store.if191
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 7
-.LBB15_25:                              # %pred.store.continue192
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpermi.q	$xr2, $xr2, 1
-	vext2xv.wu.hu	$xr2, $xr2
-	xvseq.w	$xr2, $xr0, $xr2
-	xvpickve2gr.w	$t1, $xr2, 0
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_58
-# %bb.26:                               # %pred.store.continue194
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr2, 1
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_59
-.LBB15_27:                              # %pred.store.continue196
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr2, 2
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_60
-.LBB15_28:                              # %pred.store.continue198
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr2, 3
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_61
-.LBB15_29:                              # %pred.store.continue200
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr2, 4
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_62
-.LBB15_30:                              # %pred.store.continue202
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr2, 5
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_63
-.LBB15_31:                              # %pred.store.continue204
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr2, 6
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_64
-.LBB15_32:                              # %pred.store.continue206
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr2, 7
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_34
-.LBB15_33:                              # %pred.store.if207
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 15
-.LBB15_34:                              # %pred.store.continue208
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpermi.q	$xr1, $xr1, 1
-	vext2xv.hu.bu	$xr1, $xr1
-	vext2xv.wu.hu	$xr2, $xr1
-	xvseq.w	$xr2, $xr0, $xr2
-	xvpickve2gr.w	$t1, $xr2, 0
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_65
-# %bb.35:                               # %pred.store.continue210
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr2, 1
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_66
-.LBB15_36:                              # %pred.store.continue212
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr2, 2
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_67
-.LBB15_37:                              # %pred.store.continue214
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr2, 3
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_68
-.LBB15_38:                              # %pred.store.continue216
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr2, 4
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_69
-.LBB15_39:                              # %pred.store.continue218
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr2, 5
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_70
-.LBB15_40:                              # %pred.store.continue220
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr2, 6
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_71
-.LBB15_41:                              # %pred.store.continue222
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr2, 7
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_43
-.LBB15_42:                              # %pred.store.if223
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 23
-.LBB15_43:                              # %pred.store.continue224
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpermi.q	$xr1, $xr1, 1
-	vext2xv.wu.hu	$xr1, $xr1
-	xvseq.w	$xr1, $xr0, $xr1
-	xvpickve2gr.w	$t1, $xr1, 0
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_72
-# %bb.44:                               # %pred.store.continue226
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr1, 1
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_73
-.LBB15_45:                              # %pred.store.continue228
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr1, 2
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_74
-.LBB15_46:                              # %pred.store.continue230
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr1, 3
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_75
-.LBB15_47:                              # %pred.store.continue232
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr1, 4
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_76
-.LBB15_48:                              # %pred.store.continue234
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr1, 5
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_77
-.LBB15_49:                              # %pred.store.continue236
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr1, 6
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_78
-.LBB15_50:                              # %pred.store.continue238
-                                        #   in Loop: Header=BB15_16 Depth=2
-	xvpickve2gr.w	$t1, $xr1, 7
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_15
-	b	.LBB15_79
-	.p2align	4, , 16
-.LBB15_51:                              # %pred.store.if177
+	beqz	$t0, .LBB15_18
+# %bb.17:                               # %pred.store.if177
                                         #   in Loop: Header=BB15_16 Depth=2
 	stx.b	$a0, $a7, $a6
-	xvpickve2gr.w	$t0, $xr3, 1
+.LBB15_18:                              # %pred.store.continue178
+                                        #   in Loop: Header=BB15_16 Depth=2
+	vreplvei.h	$vr5, $vr4, 2
+	vpickve2gr.b	$t0, $vr5, 2
 	andi	$t1, $t0, 1
 	add.d	$t0, $a7, $a6
-	beqz	$t1, .LBB15_18
-.LBB15_52:                              # %pred.store.if179
+	bnez	$t1, .LBB15_36
+# %bb.19:                               # %pred.store.continue180
                                         #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 1
-	xvpickve2gr.w	$t1, $xr3, 2
+	vreplvei.h	$vr5, $vr4, 4
+	vpickve2gr.b	$t1, $vr5, 4
 	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_19
-.LBB15_53:                              # %pred.store.if181
+	bnez	$t1, .LBB15_37
+.LBB15_20:                              # %pred.store.continue182
                                         #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 2
-	xvpickve2gr.w	$t1, $xr3, 3
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_20
-.LBB15_54:                              # %pred.store.if183
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 3
-	xvpickve2gr.w	$t1, $xr3, 4
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_21
-.LBB15_55:                              # %pred.store.if185
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 4
-	xvpickve2gr.w	$t1, $xr3, 5
+	vreplvei.h	$vr4, $vr4, 6
+	vpickve2gr.b	$t1, $vr4, 6
 	andi	$t1, $t1, 1
 	beqz	$t1, .LBB15_22
-.LBB15_56:                              # %pred.store.if187
+.LBB15_21:                              # %pred.store.if183
                                         #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 5
-	xvpickve2gr.w	$t1, $xr3, 6
+	st.b	$a0, $t0, 3
+.LBB15_22:                              # %pred.store.continue184
+                                        #   in Loop: Header=BB15_16 Depth=2
+	vilvh.h	$vr3, $vr1, $vr3
+	vseq.w	$vr3, $vr0, $vr3
+	vreplvei.h	$vr4, $vr3, 0
+	vpickve2gr.b	$t1, $vr4, 8
 	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_23
-.LBB15_57:                              # %pred.store.if189
+	bnez	$t1, .LBB15_38
+# %bb.23:                               # %pred.store.continue186
                                         #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 6
-	xvpickve2gr.w	$t1, $xr3, 7
+	vreplvei.h	$vr4, $vr3, 2
+	vpickve2gr.b	$t1, $vr4, 10
 	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_24
-	b	.LBB15_25
-	.p2align	4, , 16
-.LBB15_58:                              # %pred.store.if193
+	bnez	$t1, .LBB15_39
+.LBB15_24:                              # %pred.store.continue188
                                         #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 8
-	xvpickve2gr.w	$t1, $xr2, 1
+	vreplvei.h	$vr4, $vr3, 4
+	vpickve2gr.b	$t1, $vr4, 12
+	andi	$t1, $t1, 1
+	bnez	$t1, .LBB15_40
+.LBB15_25:                              # %pred.store.continue190
+                                        #   in Loop: Header=BB15_16 Depth=2
+	vreplvei.h	$vr3, $vr3, 6
+	vpickve2gr.b	$t1, $vr3, 14
 	andi	$t1, $t1, 1
 	beqz	$t1, .LBB15_27
-.LBB15_59:                              # %pred.store.if195
+.LBB15_26:                              # %pred.store.if191
                                         #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 9
-	xvpickve2gr.w	$t1, $xr2, 2
+	st.b	$a0, $t0, 7
+.LBB15_27:                              # %pred.store.continue192
+                                        #   in Loop: Header=BB15_16 Depth=2
+	vilvh.b	$vr2, $vr1, $vr2
+	vilvl.h	$vr3, $vr1, $vr2
+	vseq.w	$vr3, $vr0, $vr3
+	vpickve2gr.b	$t1, $vr3, 0
 	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_28
-.LBB15_60:                              # %pred.store.if197
+	bnez	$t1, .LBB15_41
+# %bb.28:                               # %pred.store.continue194
                                         #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 10
-	xvpickve2gr.w	$t1, $xr2, 3
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_29
-.LBB15_61:                              # %pred.store.if199
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 11
-	xvpickve2gr.w	$t1, $xr2, 4
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_30
-.LBB15_62:                              # %pred.store.if201
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 12
-	xvpickve2gr.w	$t1, $xr2, 5
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_31
-.LBB15_63:                              # %pred.store.if203
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 13
-	xvpickve2gr.w	$t1, $xr2, 6
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_32
-.LBB15_64:                              # %pred.store.if205
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 14
-	xvpickve2gr.w	$t1, $xr2, 7
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_33
-	b	.LBB15_34
-	.p2align	4, , 16
-.LBB15_65:                              # %pred.store.if209
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 16
-	xvpickve2gr.w	$t1, $xr2, 1
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_36
-.LBB15_66:                              # %pred.store.if211
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 17
-	xvpickve2gr.w	$t1, $xr2, 2
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_37
-.LBB15_67:                              # %pred.store.if213
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 18
-	xvpickve2gr.w	$t1, $xr2, 3
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_38
-.LBB15_68:                              # %pred.store.if215
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 19
-	xvpickve2gr.w	$t1, $xr2, 4
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_39
-.LBB15_69:                              # %pred.store.if217
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 20
-	xvpickve2gr.w	$t1, $xr2, 5
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_40
-.LBB15_70:                              # %pred.store.if219
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 21
-	xvpickve2gr.w	$t1, $xr2, 6
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_41
-.LBB15_71:                              # %pred.store.if221
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 22
-	xvpickve2gr.w	$t1, $xr2, 7
+	vreplvei.h	$vr4, $vr3, 2
+	vpickve2gr.b	$t1, $vr4, 2
 	andi	$t1, $t1, 1
 	bnez	$t1, .LBB15_42
-	b	.LBB15_43
-	.p2align	4, , 16
-.LBB15_72:                              # %pred.store.if225
+.LBB15_29:                              # %pred.store.continue196
                                         #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 24
-	xvpickve2gr.w	$t1, $xr1, 1
+	vreplvei.h	$vr4, $vr3, 4
+	vpickve2gr.b	$t1, $vr4, 4
 	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_45
-.LBB15_73:                              # %pred.store.if227
+	bnez	$t1, .LBB15_43
+.LBB15_30:                              # %pred.store.continue198
                                         #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 25
-	xvpickve2gr.w	$t1, $xr1, 2
+	vreplvei.h	$vr3, $vr3, 6
+	vpickve2gr.b	$t1, $vr3, 6
 	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_46
-.LBB15_74:                              # %pred.store.if229
+	beqz	$t1, .LBB15_32
+.LBB15_31:                              # %pred.store.if199
                                         #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 26
-	xvpickve2gr.w	$t1, $xr1, 3
+	st.b	$a0, $t0, 11
+.LBB15_32:                              # %pred.store.continue200
+                                        #   in Loop: Header=BB15_16 Depth=2
+	vilvh.h	$vr2, $vr1, $vr2
+	vseq.w	$vr2, $vr0, $vr2
+	vreplvei.h	$vr3, $vr2, 0
+	vpickve2gr.b	$t1, $vr3, 8
 	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_47
-.LBB15_75:                              # %pred.store.if231
+	bnez	$t1, .LBB15_44
+# %bb.33:                               # %pred.store.continue202
                                         #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 27
-	xvpickve2gr.w	$t1, $xr1, 4
+	vreplvei.h	$vr3, $vr2, 2
+	vpickve2gr.b	$t1, $vr3, 10
 	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_48
-.LBB15_76:                              # %pred.store.if233
+	bnez	$t1, .LBB15_45
+.LBB15_34:                              # %pred.store.continue204
                                         #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 28
-	xvpickve2gr.w	$t1, $xr1, 5
+	vreplvei.h	$vr3, $vr2, 4
+	vpickve2gr.b	$t1, $vr3, 12
 	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_49
-.LBB15_77:                              # %pred.store.if235
+	bnez	$t1, .LBB15_46
+.LBB15_35:                              # %pred.store.continue206
                                         #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 29
-	xvpickve2gr.w	$t1, $xr1, 6
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_50
-.LBB15_78:                              # %pred.store.if237
-                                        #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 30
-	xvpickve2gr.w	$t1, $xr1, 7
+	vreplvei.h	$vr2, $vr2, 6
+	vpickve2gr.b	$t1, $vr2, 14
 	andi	$t1, $t1, 1
 	beqz	$t1, .LBB15_15
-.LBB15_79:                              # %pred.store.if239
+	b	.LBB15_47
+	.p2align	4, , 16
+.LBB15_36:                              # %pred.store.if179
                                         #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 31
+	st.b	$a0, $t0, 1
+	vreplvei.h	$vr5, $vr4, 4
+	vpickve2gr.b	$t1, $vr5, 4
+	andi	$t1, $t1, 1
+	beqz	$t1, .LBB15_20
+.LBB15_37:                              # %pred.store.if181
+                                        #   in Loop: Header=BB15_16 Depth=2
+	st.b	$a0, $t0, 2
+	vreplvei.h	$vr4, $vr4, 6
+	vpickve2gr.b	$t1, $vr4, 6
+	andi	$t1, $t1, 1
+	bnez	$t1, .LBB15_21
+	b	.LBB15_22
+	.p2align	4, , 16
+.LBB15_38:                              # %pred.store.if185
+                                        #   in Loop: Header=BB15_16 Depth=2
+	st.b	$a0, $t0, 4
+	vreplvei.h	$vr4, $vr3, 2
+	vpickve2gr.b	$t1, $vr4, 10
+	andi	$t1, $t1, 1
+	beqz	$t1, .LBB15_24
+.LBB15_39:                              # %pred.store.if187
+                                        #   in Loop: Header=BB15_16 Depth=2
+	st.b	$a0, $t0, 5
+	vreplvei.h	$vr4, $vr3, 4
+	vpickve2gr.b	$t1, $vr4, 12
+	andi	$t1, $t1, 1
+	beqz	$t1, .LBB15_25
+.LBB15_40:                              # %pred.store.if189
+                                        #   in Loop: Header=BB15_16 Depth=2
+	st.b	$a0, $t0, 6
+	vreplvei.h	$vr3, $vr3, 6
+	vpickve2gr.b	$t1, $vr3, 14
+	andi	$t1, $t1, 1
+	bnez	$t1, .LBB15_26
+	b	.LBB15_27
+	.p2align	4, , 16
+.LBB15_41:                              # %pred.store.if193
+                                        #   in Loop: Header=BB15_16 Depth=2
+	st.b	$a0, $t0, 8
+	vreplvei.h	$vr4, $vr3, 2
+	vpickve2gr.b	$t1, $vr4, 2
+	andi	$t1, $t1, 1
+	beqz	$t1, .LBB15_29
+.LBB15_42:                              # %pred.store.if195
+                                        #   in Loop: Header=BB15_16 Depth=2
+	st.b	$a0, $t0, 9
+	vreplvei.h	$vr4, $vr3, 4
+	vpickve2gr.b	$t1, $vr4, 4
+	andi	$t1, $t1, 1
+	beqz	$t1, .LBB15_30
+.LBB15_43:                              # %pred.store.if197
+                                        #   in Loop: Header=BB15_16 Depth=2
+	st.b	$a0, $t0, 10
+	vreplvei.h	$vr3, $vr3, 6
+	vpickve2gr.b	$t1, $vr3, 6
+	andi	$t1, $t1, 1
+	bnez	$t1, .LBB15_31
+	b	.LBB15_32
+	.p2align	4, , 16
+.LBB15_44:                              # %pred.store.if201
+                                        #   in Loop: Header=BB15_16 Depth=2
+	st.b	$a0, $t0, 12
+	vreplvei.h	$vr3, $vr2, 2
+	vpickve2gr.b	$t1, $vr3, 10
+	andi	$t1, $t1, 1
+	beqz	$t1, .LBB15_34
+.LBB15_45:                              # %pred.store.if203
+                                        #   in Loop: Header=BB15_16 Depth=2
+	st.b	$a0, $t0, 13
+	vreplvei.h	$vr3, $vr2, 4
+	vpickve2gr.b	$t1, $vr3, 12
+	andi	$t1, $t1, 1
+	beqz	$t1, .LBB15_35
+.LBB15_46:                              # %pred.store.if205
+                                        #   in Loop: Header=BB15_16 Depth=2
+	st.b	$a0, $t0, 14
+	vreplvei.h	$vr2, $vr2, 6
+	vpickve2gr.b	$t1, $vr2, 14
+	andi	$t1, $t1, 1
+	beqz	$t1, .LBB15_15
+.LBB15_47:                              # %pred.store.if207
+                                        #   in Loop: Header=BB15_16 Depth=2
+	st.b	$a0, $t0, 15
 	b	.LBB15_15
 	.p2align	4, , 16
-.LBB15_80:                              # %middle.block242
+.LBB15_48:                              # %middle.block210
                                         #   in Loop: Header=BB15_14 Depth=1
 	ld.bu	$a4, $a4, -1
 	add.d	$a4, $a5, $a4
 	ldx.bu	$a5, $s3, $a4
 	blt	$a5, $a0, .LBB15_13
-# %bb.81:                               #   in Loop: Header=BB15_14 Depth=1
+# %bb.49:                               #   in Loop: Header=BB15_14 Depth=1
 	sub.d	$a5, $a0, $a3
 	stx.b	$a5, $s3, $a4
 	b	.LBB15_13
-.LBB15_82:
+.LBB15_50:
 	ori	$a0, $zero, 24
-	blt	$fp, $a0, .LBB15_93
-# %bb.83:
-	move	$a0, $s1
+	blt	$s0, $a0, .LBB15_61
+# %bb.51:
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
@@ -4760,196 +4291,197 @@ sgrep:                                  # @sgrep
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $s4, 0
-	blez	$a1, .LBB15_119
-# %bb.84:                               # %.lr.ph.preheader.i88
+	blez	$a1, .LBB15_87
+# %bb.52:                               # %.lr.ph.preheader.i88
 	addi.d	$a0, $s4, -1
 	bstrpick.d	$a0, $a0, 31, 0
 	ori	$a2, $zero, 1
 	addi.w	$a3, $zero, -1
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB15_85:                              # %.lr.ph.i89
+.LBB15_53:                              # %.lr.ph.i89
                                         # =>This Inner Loop Header: Depth=1
-	ldx.bu	$a5, $s1, $a4
+	ldx.bu	$a5, $fp, $a4
 	addi.d	$a4, $a4, -1
 	stx.b	$a2, $s3, $a5
-	bne	$a4, $a3, .LBB15_85
-# %bb.86:                               # %.preheader.i
+	bne	$a4, $a3, .LBB15_53
+# %bb.54:                               # %.preheader.i
 	ori	$a2, $zero, 1
-	beq	$a1, $a2, .LBB15_119
+	beq	$a1, $a2, .LBB15_87
 	.p2align	4, , 16
-.LBB15_87:                              # %.lr.ph22.i
+.LBB15_55:                              # %.lr.ph22.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a1, $a0
-	ldx.bu	$a0, $s1, $a0
-	add.d	$a3, $s1, $a1
+	ldx.bu	$a0, $fp, $a0
+	add.d	$a3, $fp, $a1
 	ld.bu	$a3, $a3, -1
 	slli.d	$a0, $a0, 8
 	add.d	$a0, $s3, $a0
 	stx.b	$a2, $a0, $a3
 	addi.d	$a0, $a1, -1
-	bltu	$a2, $a1, .LBB15_87
-	b	.LBB15_119
-.LBB15_88:
+	bltu	$a2, $a1, .LBB15_55
+	b	.LBB15_87
+.LBB15_56:
 	pcalau12i	$a0, %pc_hi20(SHIFT)
 	addi.d	$s3, $a0, %pc_lo12(SHIFT)
 	ori	$a2, $zero, 256
 	move	$a0, $s3
-	move	$a1, $fp
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $fp, -1
+	addi.w	$a1, $s0, -1
 	pcalau12i	$a0, %pc_hi20(shift_1)
-	blez	$fp, .LBB15_105
-# %bb.89:                               # %.lr.ph.preheader.i
+	blez	$s0, .LBB15_73
+# %bb.57:                               # %.lr.ph.preheader.i
 	pcalau12i	$a2, %pc_hi20(TR)
 	addi.d	$a2, $a2, %pc_lo12(TR)
 	move	$a3, $zero
 	move	$a5, $a1
-	b	.LBB15_91
+	b	.LBB15_59
 	.p2align	4, , 16
-.LBB15_90:                              #   in Loop: Header=BB15_91 Depth=1
+.LBB15_58:                              #   in Loop: Header=BB15_59 Depth=1
 	addi.d	$a5, $a4, -1
 	addi.d	$a3, $a3, 1
-	blez	$a4, .LBB15_96
-.LBB15_91:                              # %.lr.ph.i82
+	blez	$a4, .LBB15_64
+.LBB15_59:                              # %.lr.ph.i82
                                         # =>This Inner Loop Header: Depth=1
 	move	$a4, $a5
-	ldx.bu	$a5, $s1, $a5
+	ldx.bu	$a5, $fp, $a5
 	ldx.bu	$a5, $a2, $a5
 	ldx.bu	$a6, $s3, $a5
-	blt	$a6, $a1, .LBB15_90
-# %bb.92:                               #   in Loop: Header=BB15_91 Depth=1
+	blt	$a6, $a1, .LBB15_58
+# %bb.60:                               #   in Loop: Header=BB15_59 Depth=1
 	stx.b	$a3, $s3, $a5
-	b	.LBB15_90
-.LBB15_93:                              # %._crit_edge.i95
-	move	$a0, $s1
-	move	$a1, $fp
+	b	.LBB15_58
+.LBB15_61:                              # %._crit_edge.i95
+	move	$a0, $fp
+	move	$a1, $s0
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(prep)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $fp, -1
+	addi.d	$a0, $s0, -1
 	lu12i.w	$s4, -524288
 	srl.w	$a0, $s4, $a0
 	pcalau12i	$a1, %got_pc_hi20(endposition)
 	ld.d	$a1, $a1, %got_pc_lo12(endposition)
 	st.w	$a0, $a1, 0
-	blez	$fp, .LBB15_109
-# %bb.94:                               # %iter.check
+	blez	$s0, .LBB15_77
+# %bb.62:                               # %iter.check
 	ori	$a0, $zero, 4
-	bgeu	$fp, $a0, .LBB15_110
-# %bb.95:
+	bgeu	$s0, $a0, .LBB15_78
+# %bb.63:
 	move	$a0, $zero
-	b	.LBB15_190
-.LBB15_96:                              # %._crit_edge.i85
+	b	.LBB15_158
+.LBB15_64:                              # %._crit_edge.i85
 	ori	$a3, $zero, 1
 	st.w	$a1, $a0, %pc_lo12(shift_1)
-	beq	$fp, $a3, .LBB15_115
-# %bb.97:                               # %.lr.ph34.preheader.i
-	ldx.bu	$a4, $s1, $a1
+	beq	$s0, $a3, .LBB15_83
+# %bb.65:                               # %.lr.ph34.preheader.i
+	ldx.bu	$a4, $fp, $a1
 	move	$a3, $zero
 	ldx.bu	$a4, $a2, $a4
-	addi.d	$a5, $fp, -2
+	addi.d	$a5, $s0, -2
 	ori	$a6, $zero, 1
-	sub.w	$a6, $a6, $fp
+	sub.w	$a6, $a6, $s0
 	.p2align	4, , 16
-.LBB15_98:                              # %.lr.ph34.i
+.LBB15_66:                              # %.lr.ph34.i
                                         # =>This Inner Loop Header: Depth=1
 	add.w	$a7, $a5, $a3
-	ldx.bu	$a7, $s1, $a7
+	ldx.bu	$a7, $fp, $a7
 	ldx.bu	$a7, $a2, $a7
-	beq	$a7, $a4, .LBB15_112
-# %bb.99:                               #   in Loop: Header=BB15_98 Depth=1
+	beq	$a7, $a4, .LBB15_80
+# %bb.67:                               #   in Loop: Header=BB15_66 Depth=1
 	addi.w	$a3, $a3, -1
-	bne	$a6, $a3, .LBB15_98
-	b	.LBB15_113
-.LBB15_100:                             # %._crit_edge.i
+	bne	$a6, $a3, .LBB15_66
+	b	.LBB15_81
+.LBB15_68:                              # %._crit_edge.i
 	move	$a1, $zero
 	pcalau12i	$a2, %pc_hi20(shift_1)
 	st.w	$a0, $a2, %pc_lo12(shift_1)
-	ldx.bu	$a2, $s1, $a0
+	ldx.bu	$a2, $fp, $a0
 	addi.d	$a3, $s4, -2
 	ori	$a4, $zero, 1
 	sub.w	$a4, $a4, $s4
 	.p2align	4, , 16
-.LBB15_101:                             # =>This Inner Loop Header: Depth=1
+.LBB15_69:                              # =>This Inner Loop Header: Depth=1
 	add.w	$a5, $a3, $a1
-	ldx.bu	$a5, $s1, $a5
-	beq	$a5, $a2, .LBB15_106
-# %bb.102:                              #   in Loop: Header=BB15_101 Depth=1
+	ldx.bu	$a5, $fp, $a5
+	beq	$a5, $a2, .LBB15_74
+# %bb.70:                               #   in Loop: Header=BB15_69 Depth=1
 	addi.w	$a1, $a1, -1
-	bne	$a4, $a1, .LBB15_101
-# %bb.103:                              # %._crit_edge44.i
-	beqz	$a0, .LBB15_108
-.LBB15_104:                             # %m_preprocess.exit
+	bne	$a4, $a1, .LBB15_69
+# %bb.71:                               # %._crit_edge44.i
+	beqz	$a0, .LBB15_76
+.LBB15_72:                              # %m_preprocess.exit
 	st.b	$zero, $s3, 0
-	b	.LBB15_118
-.LBB15_105:
+	b	.LBB15_86
+.LBB15_73:
 	move	$a3, $a1
-	b	.LBB15_115
-.LBB15_106:                             # %.thread.i
+	b	.LBB15_83
+.LBB15_74:                              # %.thread.i
 	ori	$a0, $zero, 1
 	sub.w	$a0, $a0, $a1
-.LBB15_107:                             # %._crit_edge44.sink.split.i
+.LBB15_75:                              # %._crit_edge44.sink.split.i
 	pcalau12i	$a1, %pc_hi20(shift_1)
 	st.w	$a0, $a1, %pc_lo12(shift_1)
-	bnez	$a0, .LBB15_104
-.LBB15_108:
+	bnez	$a0, .LBB15_72
+.LBB15_76:
 	pcalau12i	$a0, %pc_hi20(shift_1)
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, %pc_lo12(shift_1)
-	b	.LBB15_104
-.LBB15_109:                             # %prep_bm.exit.thread121
+	b	.LBB15_72
+.LBB15_77:                              # %prep_bm.exit.thread121
 	pcalau12i	$a0, %got_pc_hi20(Mask)
 	ld.d	$a0, $a0, %got_pc_lo12(Mask)
 	ori	$a1, $zero, 255
 	ori	$a2, $zero, 1024
-	b	.LBB15_120
-.LBB15_110:                             # %vector.main.loop.iter.check
+	b	.LBB15_88
+.LBB15_78:                              # %vector.main.loop.iter.check
 	ori	$a0, $zero, 16
 	vrepli.b	$vr0, 94
 	vrepli.b	$vr1, 36
-	bgeu	$fp, $a0, .LBB15_139
-# %bb.111:
+	bgeu	$s0, $a0, .LBB15_107
+# %bb.79:
 	move	$a0, $zero
-	b	.LBB15_173
-.LBB15_112:                             # %.thread.i86
+	b	.LBB15_141
+.LBB15_80:                              # %.thread.i86
 	ori	$a1, $zero, 1
 	sub.w	$a1, $a1, $a3
 	st.w	$a1, $a0, %pc_lo12(shift_1)
-.LBB15_113:                             # %._crit_edge35.i
-	bnez	$a1, .LBB15_116
-# %bb.114:
+.LBB15_81:                              # %._crit_edge35.i
+	bnez	$a1, .LBB15_84
+# %bb.82:
 	ori	$a3, $zero, 1
-.LBB15_115:                             # %.sink.split.i
+.LBB15_83:                              # %.sink.split.i
 	st.w	$a3, $a0, %pc_lo12(shift_1)
-.LBB15_116:
+.LBB15_84:
 	pcalau12i	$a0, %got_pc_hi20(NOUPPER)
 	ld.d	$a0, $a0, %got_pc_lo12(NOUPPER)
 	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB15_118
-# %bb.117:                              # %.preheader.preheader.i
+	beqz	$a0, .LBB15_86
+# %bb.85:                               # %.preheader.preheader.i
 	ld.h	$a0, $s3, 121
 	ld.d	$a1, $s3, 113
 	vld	$vr0, $s3, 97
 	st.h	$a0, $s3, 89
 	st.d	$a1, $s3, 81
 	vst	$vr0, $s3, 65
-.LBB15_118:                             # %prep_bm.exit
-	blez	$fp, .LBB15_121
-.LBB15_119:                             # %.lr.ph
-	add.d	$a0, $s1, $fp
+.LBB15_86:                              # %prep_bm.exit
+	blez	$s0, .LBB15_89
+.LBB15_87:                              # %.lr.ph
+	add.d	$a0, $fp, $s0
 	lu12i.w	$a2, 2
 	ld.b	$a1, $a0, -1
 	ori	$a0, $a2, 2049
 	addi.d	$a2, $sp, 48
 	add.d	$a0, $a2, $a0
-	move	$a2, $fp
-.LBB15_120:                             # %.preheader
+	move	$a2, $s0
+.LBB15_88:                              # %.preheader
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-.LBB15_121:                             # %.preheader
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
+.LBB15_89:                              # %.preheader
+	move	$s4, $s0
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
 	addi.d	$s6, $sp, 48
 	addi.d	$a0, $s6, 2047
 	addi.d	$s3, $a0, 1
@@ -4959,8 +4491,8 @@ sgrep:                                  # @sgrep
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	blez	$a1, .LBB15_138
-# %bb.122:                              # %.lr.ph107
+	blez	$a1, .LBB15_106
+# %bb.90:                               # %.lr.ph107
 	sltui	$a1, $s5, 1
 	addi.w	$s0, $a1, 2047
 	ori	$s7, $zero, 2049
@@ -4974,114 +4506,114 @@ sgrep:                                  # @sgrep
 	pcalau12i	$a1, %got_pc_hi20(DNA)
 	ld.d	$a1, $a1, %got_pc_lo12(DNA)
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	b	.LBB15_124
+	b	.LBB15_92
 	.p2align	4, , 16
-.LBB15_123:                             #   in Loop: Header=BB15_124 Depth=1
-	sub.w	$a2, $zero, $s4
-	addi.d	$a0, $s4, 2047
+.LBB15_91:                              #   in Loop: Header=BB15_92 Depth=1
+	sub.w	$a2, $zero, $fp
+	addi.d	$a0, $fp, 2047
 	addi.w	$a0, $a0, 1
 	slt	$a1, $s2, $a0
 	masknez	$a3, $s2, $a1
 	maskeqz	$a0, $a0, $a1
-	or	$s0, $a0, $a3
-	add.d	$a0, $s6, $s0
+	or	$fp, $a0, $a3
+	add.d	$a0, $s6, $fp
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(strncpy)
 	jirl	$ra, $ra, 0
-	addi.w	$s0, $s0, 1
+	addi.w	$s0, $fp, 1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	move	$a1, $s3
 	lu12i.w	$a2, 2
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 0
-	blez	$a0, .LBB15_138
-.LBB15_124:                             # =>This Loop Header: Depth=1
-                                        #     Child Loop BB15_125 Depth 2
-	move	$s4, $zero
+	blez	$a0, .LBB15_106
+.LBB15_92:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB15_93 Depth 2
+	move	$fp, $zero
 	addi.d	$a0, $a0, 2047
 	.p2align	4, , 16
-.LBB15_125:                             #   Parent Loop BB15_124 Depth=1
+.LBB15_93:                              #   Parent Loop BB15_92 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.w	$a1, $a0, $s4
-	addi.d	$s4, $s4, -1
-	bltu	$a1, $s7, .LBB15_127
-# %bb.126:                              #   in Loop: Header=BB15_125 Depth=2
+	add.w	$a1, $a0, $fp
+	addi.d	$fp, $fp, -1
+	bltu	$a1, $s7, .LBB15_95
+# %bb.94:                               #   in Loop: Header=BB15_93 Depth=2
 	ldx.bu	$a2, $a1, $s6
-	bne	$a2, $s8, .LBB15_125
-.LBB15_127:                             #   in Loop: Header=BB15_124 Depth=1
+	bne	$a2, $s8, .LBB15_93
+.LBB15_95:                              #   in Loop: Header=BB15_92 Depth=1
 	add.d	$s5, $s6, $a1
 	add.d	$a2, $s6, $s0
 	st.b	$s8, $a2, -1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	beqz	$a0, .LBB15_130
-# %bb.128:                              #   in Loop: Header=BB15_124 Depth=1
+	beqz	$a0, .LBB15_98
+# %bb.96:                               #   in Loop: Header=BB15_92 Depth=1
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	move	$a1, $fp
-	beqz	$a0, .LBB15_132
-# %bb.129:                              #   in Loop: Header=BB15_124 Depth=1
+	move	$a1, $s4
+	beqz	$a0, .LBB15_100
+# %bb.97:                               #   in Loop: Header=BB15_92 Depth=1
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	move	$a3, $s5
 	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(monkey4)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 0
-	bnez	$a0, .LBB15_136
-	b	.LBB15_123
+	bnez	$a0, .LBB15_104
+	b	.LBB15_91
 	.p2align	4, , 16
-.LBB15_130:                             #   in Loop: Header=BB15_124 Depth=1
-	move	$a1, $fp
+.LBB15_98:                              #   in Loop: Header=BB15_92 Depth=1
+	move	$a1, $s4
 	ori	$a0, $zero, 21
-	blt	$fp, $a0, .LBB15_134
-# %bb.131:                              #   in Loop: Header=BB15_124 Depth=1
+	blt	$s4, $a0, .LBB15_102
+# %bb.99:                               #   in Loop: Header=BB15_92 Depth=1
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	move	$a3, $s5
 	pcaddu18i	$ra, %call36(monkey)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 0
-	bnez	$a0, .LBB15_136
-	b	.LBB15_123
+	bnez	$a0, .LBB15_104
+	b	.LBB15_91
 	.p2align	4, , 16
-.LBB15_132:                             #   in Loop: Header=BB15_124 Depth=1
+.LBB15_100:                             #   in Loop: Header=BB15_92 Depth=1
 	ori	$a0, $zero, 24
-	blt	$a1, $a0, .LBB15_135
-# %bb.133:                              #   in Loop: Header=BB15_124 Depth=1
+	blt	$a1, $a0, .LBB15_103
+# %bb.101:                              #   in Loop: Header=BB15_92 Depth=1
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	move	$a3, $s5
 	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(a_monkey)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 0
-	bnez	$a0, .LBB15_136
-	b	.LBB15_123
-.LBB15_134:                             #   in Loop: Header=BB15_124 Depth=1
+	bnez	$a0, .LBB15_104
+	b	.LBB15_91
+.LBB15_102:                             #   in Loop: Header=BB15_92 Depth=1
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	move	$a3, $s5
 	pcaddu18i	$ra, %call36(bm)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 0
-	bnez	$a0, .LBB15_136
-	b	.LBB15_123
-.LBB15_135:                             #   in Loop: Header=BB15_124 Depth=1
+	bnez	$a0, .LBB15_104
+	b	.LBB15_91
+.LBB15_103:                             #   in Loop: Header=BB15_92 Depth=1
                                         # implicit-def: $r4
 	move	$a3, $s5
 	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(agrep)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 0
-	beqz	$a0, .LBB15_123
+	beqz	$a0, .LBB15_91
 	.p2align	4, , 16
-.LBB15_136:                             #   in Loop: Header=BB15_124 Depth=1
+.LBB15_104:                             #   in Loop: Header=BB15_92 Depth=1
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB15_123
-# %bb.137:
+	beqz	$a0, .LBB15_91
+# %bb.105:
 	pcalau12i	$a0, %got_pc_hi20(CurrentFileName)
 	ld.d	$a0, $a0, %got_pc_lo12(CurrentFileName)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-.LBB15_138:                             # %.loopexit
+.LBB15_106:                             # %.loopexit
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 416
 	add.d	$sp, $sp, $a0
@@ -5098,247 +4630,249 @@ sgrep:                                  # @sgrep
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB15_139:                             # %vector.ph
-	vld	$vr2, $s1, 0
+.LBB15_107:                             # %vector.ph
+	vld	$vr2, $fp, 0
 	vseq.b	$vr3, $vr2, $vr0
 	vseq.b	$vr2, $vr2, $vr1
 	vor.v	$vr2, $vr3, $vr2
 	vpickve2gr.b	$a0, $vr2, 0
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_156
-# %bb.140:                              # %pred.store.continue
+	bnez	$a0, .LBB15_124
+# %bb.108:                              # %pred.store.continue
 	vpickve2gr.b	$a0, $vr2, 1
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_157
-.LBB15_141:                             # %pred.store.continue130
+	bnez	$a0, .LBB15_125
+.LBB15_109:                             # %pred.store.continue130
 	vpickve2gr.b	$a0, $vr2, 2
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_158
-.LBB15_142:                             # %pred.store.continue132
+	bnez	$a0, .LBB15_126
+.LBB15_110:                             # %pred.store.continue132
 	vpickve2gr.b	$a0, $vr2, 3
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_159
-.LBB15_143:                             # %pred.store.continue134
+	bnez	$a0, .LBB15_127
+.LBB15_111:                             # %pred.store.continue134
 	vpickve2gr.b	$a0, $vr2, 4
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_160
-.LBB15_144:                             # %pred.store.continue136
+	bnez	$a0, .LBB15_128
+.LBB15_112:                             # %pred.store.continue136
 	vpickve2gr.b	$a0, $vr2, 5
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_161
-.LBB15_145:                             # %pred.store.continue138
+	bnez	$a0, .LBB15_129
+.LBB15_113:                             # %pred.store.continue138
 	vpickve2gr.b	$a0, $vr2, 6
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_162
-.LBB15_146:                             # %pred.store.continue140
+	bnez	$a0, .LBB15_130
+.LBB15_114:                             # %pred.store.continue140
 	vpickve2gr.b	$a0, $vr2, 7
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_163
-.LBB15_147:                             # %pred.store.continue142
+	bnez	$a0, .LBB15_131
+.LBB15_115:                             # %pred.store.continue142
 	vpickve2gr.b	$a0, $vr2, 8
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_164
-.LBB15_148:                             # %pred.store.continue144
+	bnez	$a0, .LBB15_132
+.LBB15_116:                             # %pred.store.continue144
 	vpickve2gr.b	$a0, $vr2, 9
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_165
-.LBB15_149:                             # %pred.store.continue146
+	bnez	$a0, .LBB15_133
+.LBB15_117:                             # %pred.store.continue146
 	vpickve2gr.b	$a0, $vr2, 10
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_166
-.LBB15_150:                             # %pred.store.continue148
+	bnez	$a0, .LBB15_134
+.LBB15_118:                             # %pred.store.continue148
 	vpickve2gr.b	$a0, $vr2, 11
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_167
-.LBB15_151:                             # %pred.store.continue150
+	bnez	$a0, .LBB15_135
+.LBB15_119:                             # %pred.store.continue150
 	vpickve2gr.b	$a0, $vr2, 12
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_168
-.LBB15_152:                             # %pred.store.continue152
+	bnez	$a0, .LBB15_136
+.LBB15_120:                             # %pred.store.continue152
 	vpickve2gr.b	$a0, $vr2, 13
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_169
-.LBB15_153:                             # %pred.store.continue154
+	bnez	$a0, .LBB15_137
+.LBB15_121:                             # %pred.store.continue154
 	vpickve2gr.b	$a0, $vr2, 14
 	andi	$a1, $a0, 1
-	bstrpick.d	$a0, $fp, 30, 4
-	bnez	$a1, .LBB15_170
-.LBB15_154:                             # %pred.store.continue156
+	bstrpick.d	$a0, $s0, 30, 4
+	bnez	$a1, .LBB15_138
+.LBB15_122:                             # %pred.store.continue156
 	vpickve2gr.b	$a1, $vr2, 15
 	andi	$a1, $a1, 1
 	slli.d	$a0, $a0, 4
-	bnez	$a1, .LBB15_171
-.LBB15_155:                             # %pred.store.continue158
-	bne	$a0, $fp, .LBB15_172
-	b	.LBB15_184
-.LBB15_156:                             # %pred.store.if
+	bnez	$a1, .LBB15_139
+.LBB15_123:                             # %pred.store.continue158
+	bne	$a0, $s0, .LBB15_140
+	b	.LBB15_152
+.LBB15_124:                             # %pred.store.if
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 0
+	st.b	$a0, $fp, 0
 	vpickve2gr.b	$a0, $vr2, 1
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_141
-.LBB15_157:                             # %pred.store.if129
+	beqz	$a0, .LBB15_109
+.LBB15_125:                             # %pred.store.if129
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 1
+	st.b	$a0, $fp, 1
 	vpickve2gr.b	$a0, $vr2, 2
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_142
-.LBB15_158:                             # %pred.store.if131
+	beqz	$a0, .LBB15_110
+.LBB15_126:                             # %pred.store.if131
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 2
+	st.b	$a0, $fp, 2
 	vpickve2gr.b	$a0, $vr2, 3
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_143
-.LBB15_159:                             # %pred.store.if133
+	beqz	$a0, .LBB15_111
+.LBB15_127:                             # %pred.store.if133
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 3
+	st.b	$a0, $fp, 3
 	vpickve2gr.b	$a0, $vr2, 4
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_144
-.LBB15_160:                             # %pred.store.if135
+	beqz	$a0, .LBB15_112
+.LBB15_128:                             # %pred.store.if135
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 4
+	st.b	$a0, $fp, 4
 	vpickve2gr.b	$a0, $vr2, 5
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_145
-.LBB15_161:                             # %pred.store.if137
+	beqz	$a0, .LBB15_113
+.LBB15_129:                             # %pred.store.if137
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 5
+	st.b	$a0, $fp, 5
 	vpickve2gr.b	$a0, $vr2, 6
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_146
-.LBB15_162:                             # %pred.store.if139
+	beqz	$a0, .LBB15_114
+.LBB15_130:                             # %pred.store.if139
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 6
+	st.b	$a0, $fp, 6
 	vpickve2gr.b	$a0, $vr2, 7
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_147
-.LBB15_163:                             # %pred.store.if141
+	beqz	$a0, .LBB15_115
+.LBB15_131:                             # %pred.store.if141
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 7
+	st.b	$a0, $fp, 7
 	vpickve2gr.b	$a0, $vr2, 8
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_148
-.LBB15_164:                             # %pred.store.if143
+	beqz	$a0, .LBB15_116
+.LBB15_132:                             # %pred.store.if143
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 8
+	st.b	$a0, $fp, 8
 	vpickve2gr.b	$a0, $vr2, 9
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_149
-.LBB15_165:                             # %pred.store.if145
+	beqz	$a0, .LBB15_117
+.LBB15_133:                             # %pred.store.if145
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 9
+	st.b	$a0, $fp, 9
 	vpickve2gr.b	$a0, $vr2, 10
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_150
-.LBB15_166:                             # %pred.store.if147
+	beqz	$a0, .LBB15_118
+.LBB15_134:                             # %pred.store.if147
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 10
+	st.b	$a0, $fp, 10
 	vpickve2gr.b	$a0, $vr2, 11
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_151
-.LBB15_167:                             # %pred.store.if149
+	beqz	$a0, .LBB15_119
+.LBB15_135:                             # %pred.store.if149
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 11
+	st.b	$a0, $fp, 11
 	vpickve2gr.b	$a0, $vr2, 12
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_152
-.LBB15_168:                             # %pred.store.if151
+	beqz	$a0, .LBB15_120
+.LBB15_136:                             # %pred.store.if151
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 12
+	st.b	$a0, $fp, 12
 	vpickve2gr.b	$a0, $vr2, 13
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_153
-.LBB15_169:                             # %pred.store.if153
+	beqz	$a0, .LBB15_121
+.LBB15_137:                             # %pred.store.if153
 	ori	$a0, $zero, 10
-	st.b	$a0, $s1, 13
+	st.b	$a0, $fp, 13
 	vpickve2gr.b	$a0, $vr2, 14
 	andi	$a1, $a0, 1
-	bstrpick.d	$a0, $fp, 30, 4
-	beqz	$a1, .LBB15_154
-.LBB15_170:                             # %pred.store.if155
+	bstrpick.d	$a0, $s0, 30, 4
+	beqz	$a1, .LBB15_122
+.LBB15_138:                             # %pred.store.if155
 	ori	$a1, $zero, 10
-	st.b	$a1, $s1, 14
+	st.b	$a1, $fp, 14
 	vpickve2gr.b	$a1, $vr2, 15
 	andi	$a1, $a1, 1
 	slli.d	$a0, $a0, 4
-	beqz	$a1, .LBB15_155
-.LBB15_171:                             # %pred.store.if157
+	beqz	$a1, .LBB15_123
+.LBB15_139:                             # %pred.store.if157
 	ori	$a1, $zero, 10
-	st.b	$a1, $s1, 15
-	beq	$a0, $fp, .LBB15_184
-.LBB15_172:                             # %vec.epilog.iter.check
-	andi	$a1, $fp, 12
-	beqz	$a1, .LBB15_190
-.LBB15_173:                             # %vec.epilog.ph
+	st.b	$a1, $fp, 15
+	beq	$a0, $s0, .LBB15_152
+.LBB15_140:                             # %vec.epilog.iter.check
+	andi	$a1, $s0, 12
+	beqz	$a1, .LBB15_158
+.LBB15_141:                             # %vec.epilog.ph
 	move	$a2, $a0
-	bstrpick.d	$a0, $fp, 30, 2
+	bstrpick.d	$a0, $s0, 30, 2
 	slli.d	$a0, $a0, 2
-	add.d	$a1, $a2, $s1
+	add.d	$a1, $a2, $fp
 	addi.d	$a1, $a1, 1
 	sub.d	$a2, $a2, $a0
 	ori	$a3, $zero, 10
-	b	.LBB15_175
+	b	.LBB15_143
 	.p2align	4, , 16
-.LBB15_174:                             # %pred.store.continue170
-                                        #   in Loop: Header=BB15_175 Depth=1
+.LBB15_142:                             # %pred.store.continue170
+                                        #   in Loop: Header=BB15_143 Depth=1
 	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, 4
-	beqz	$a2, .LBB15_183
-.LBB15_175:                             # %vec.epilog.vector.body
+	beqz	$a2, .LBB15_151
+.LBB15_143:                             # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a1, -1
 	vinsgr2vr.w	$vr2, $a4, 0
 	vseq.b	$vr3, $vr2, $vr0
 	vseq.b	$vr2, $vr2, $vr1
 	vor.v	$vr2, $vr3, $vr2
+	vilvl.b	$vr2, $vr2, $vr2
+	vilvl.h	$vr2, $vr2, $vr2
+	vslli.w	$vr2, $vr2, 24
+	vsrai.w	$vr2, $vr2, 24
 	vpickve2gr.w	$a4, $vr2, 0
 	andi	$a4, $a4, 1
-	bnez	$a4, .LBB15_179
-# %bb.176:                              # %pred.store.continue164
-                                        #   in Loop: Header=BB15_175 Depth=1
-	vext2xv.w.b	$xr2, $xr2
+	bnez	$a4, .LBB15_147
+# %bb.144:                              # %pred.store.continue164
+                                        #   in Loop: Header=BB15_143 Depth=1
 	vpickve2gr.w	$a4, $vr2, 1
 	andi	$a4, $a4, 1
-	bnez	$a4, .LBB15_180
-.LBB15_177:                             # %pred.store.continue166
-                                        #   in Loop: Header=BB15_175 Depth=1
+	bnez	$a4, .LBB15_148
+.LBB15_145:                             # %pred.store.continue166
+                                        #   in Loop: Header=BB15_143 Depth=1
 	vpickve2gr.w	$a4, $vr2, 2
 	andi	$a4, $a4, 1
-	bnez	$a4, .LBB15_181
-.LBB15_178:                             # %pred.store.continue168
-                                        #   in Loop: Header=BB15_175 Depth=1
+	bnez	$a4, .LBB15_149
+.LBB15_146:                             # %pred.store.continue168
+                                        #   in Loop: Header=BB15_143 Depth=1
 	vpickve2gr.w	$a4, $vr2, 3
 	andi	$a4, $a4, 1
-	beqz	$a4, .LBB15_174
-	b	.LBB15_182
+	beqz	$a4, .LBB15_142
+	b	.LBB15_150
 	.p2align	4, , 16
-.LBB15_179:                             # %pred.store.if163
-                                        #   in Loop: Header=BB15_175 Depth=1
+.LBB15_147:                             # %pred.store.if163
+                                        #   in Loop: Header=BB15_143 Depth=1
 	st.b	$a3, $a1, -1
-	vext2xv.w.b	$xr2, $xr2
 	vpickve2gr.w	$a4, $vr2, 1
 	andi	$a4, $a4, 1
-	beqz	$a4, .LBB15_177
-.LBB15_180:                             # %pred.store.if165
-                                        #   in Loop: Header=BB15_175 Depth=1
+	beqz	$a4, .LBB15_145
+.LBB15_148:                             # %pred.store.if165
+                                        #   in Loop: Header=BB15_143 Depth=1
 	st.b	$a3, $a1, 0
 	vpickve2gr.w	$a4, $vr2, 2
 	andi	$a4, $a4, 1
-	beqz	$a4, .LBB15_178
-.LBB15_181:                             # %pred.store.if167
-                                        #   in Loop: Header=BB15_175 Depth=1
+	beqz	$a4, .LBB15_146
+.LBB15_149:                             # %pred.store.if167
+                                        #   in Loop: Header=BB15_143 Depth=1
 	st.b	$a3, $a1, 1
 	vpickve2gr.w	$a4, $vr2, 3
 	andi	$a4, $a4, 1
-	beqz	$a4, .LBB15_174
-.LBB15_182:                             # %pred.store.if169
-                                        #   in Loop: Header=BB15_175 Depth=1
+	beqz	$a4, .LBB15_142
+.LBB15_150:                             # %pred.store.if169
+                                        #   in Loop: Header=BB15_143 Depth=1
 	st.b	$a3, $a1, 2
-	b	.LBB15_174
-.LBB15_183:                             # %vec.epilog.middle.block
-	bne	$a0, $fp, .LBB15_190
-.LBB15_184:                             # %.preheader47.i
+	b	.LBB15_142
+.LBB15_151:                             # %vec.epilog.middle.block
+	bne	$a0, $s0, .LBB15_158
+.LBB15_152:                             # %.preheader47.i
 	pcalau12i	$a0, %got_pc_hi20(Mask)
 	ld.d	$s3, $a0, %got_pc_lo12(Mask)
 	ori	$a1, $zero, 255
@@ -5347,60 +4881,60 @@ sgrep:                                  # @sgrep
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	b	.LBB15_186
+	b	.LBB15_154
 	.p2align	4, , 16
-.LBB15_185:                             # %._crit_edge57.us.i
-                                        #   in Loop: Header=BB15_186 Depth=1
+.LBB15_153:                             # %._crit_edge57.us.i
+                                        #   in Loop: Header=BB15_154 Depth=1
 	addi.d	$a0, $a0, 1
-	beq	$a0, $fp, .LBB15_118
-.LBB15_186:                             # %.lr.ph56.us.i
+	beq	$a0, $s0, .LBB15_86
+.LBB15_154:                             # %.lr.ph56.us.i
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB15_188 Depth 2
-	ldx.bu	$a1, $s1, $a0
+                                        #     Child Loop BB15_156 Depth 2
+	ldx.bu	$a1, $fp, $a0
 	move	$a2, $zero
 	alsl.d	$a3, $a1, $s3, 2
-	move	$a4, $s1
-	move	$a5, $fp
-	b	.LBB15_188
+	move	$a4, $fp
+	move	$a5, $s0
+	b	.LBB15_156
 	.p2align	4, , 16
-.LBB15_187:                             #   in Loop: Header=BB15_188 Depth=2
+.LBB15_155:                             #   in Loop: Header=BB15_156 Depth=2
 	addi.d	$a2, $a2, 1
 	addi.d	$a5, $a5, -1
 	addi.d	$a4, $a4, 1
-	beqz	$a5, .LBB15_185
-.LBB15_188:                             #   Parent Loop BB15_186 Depth=1
+	beqz	$a5, .LBB15_153
+.LBB15_156:                             #   Parent Loop BB15_154 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.bu	$a6, $a4, 0
-	bne	$a1, $a6, .LBB15_187
-# %bb.189:                              #   in Loop: Header=BB15_188 Depth=2
+	bne	$a1, $a6, .LBB15_155
+# %bb.157:                              #   in Loop: Header=BB15_156 Depth=2
 	ld.w	$a6, $a3, 0
 	srl.w	$a7, $s4, $a2
 	andn	$a6, $a6, $a7
 	st.w	$a6, $a3, 0
-	b	.LBB15_187
-.LBB15_190:                             # %.lr.ph52.i.preheader
-	sub.d	$a1, $fp, $a0
-	add.d	$a0, $s1, $a0
+	b	.LBB15_155
+.LBB15_158:                             # %.lr.ph52.i.preheader
+	sub.d	$a1, $s0, $a0
+	add.d	$a0, $fp, $a0
 	ori	$a2, $zero, 94
 	ori	$a3, $zero, 10
 	ori	$a4, $zero, 36
-	b	.LBB15_193
+	b	.LBB15_161
 	.p2align	4, , 16
-.LBB15_191:                             #   in Loop: Header=BB15_193 Depth=1
+.LBB15_159:                             #   in Loop: Header=BB15_161 Depth=1
 	st.b	$a3, $a0, 0
-.LBB15_192:                             #   in Loop: Header=BB15_193 Depth=1
+.LBB15_160:                             #   in Loop: Header=BB15_161 Depth=1
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 1
-	beqz	$a1, .LBB15_184
-.LBB15_193:                             # %.lr.ph52.i
+	beqz	$a1, .LBB15_152
+.LBB15_161:                             # %.lr.ph52.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a5, $a0, 0
-	beq	$a5, $a2, .LBB15_191
-# %bb.194:                              # %.lr.ph52.i
-                                        #   in Loop: Header=BB15_193 Depth=1
-	beq	$a5, $a4, .LBB15_191
-	b	.LBB15_192
-.LBB15_195:
+	beq	$a5, $a2, .LBB15_159
+# %bb.162:                              # %.lr.ph52.i
+                                        #   in Loop: Header=BB15_161 Depth=1
+	beq	$a5, $a4, .LBB15_159
+	b	.LBB15_160
+.LBB15_163:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a0, $a0, 0
@@ -5419,7 +4953,7 @@ sgrep:                                  # @sgrep
 	.type	TR,@object                      # @TR
 	.bss
 	.globl	TR
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 TR:
 	.space	256
 	.size	TR, 256

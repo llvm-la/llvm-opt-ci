@@ -234,6 +234,7 @@ _ZN4Crux16store_MallocPlusE10MallocPlus: # @_ZN4Crux16store_MallocPlusE10MallocP
 	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -243,6 +244,7 @@ _ZN4Crux16store_MallocPlusE10MallocPlus: # @_ZN4Crux16store_MallocPlusE10MallocP
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
+	.cfi_offset 30, -80
 	move	$fp, $a1
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus26memory_entry_by_name_beginEv)
@@ -256,8 +258,9 @@ _ZN4Crux16store_MallocPlusE10MallocPlus: # @_ZN4Crux16store_MallocPlusE10MallocP
 	pcalau12i	$s3, %pc_hi20(store_fp)
 	ori	$s4, $zero, 8
 	ori	$s5, $zero, 4
-	addi.w	$s6, $zero, -1
-	lu32i.d	$s6, 0
+	ori	$s6, $zero, 6
+	addi.w	$s7, $zero, -1
+	lu32i.d	$s7, 0
 	vrepli.w	$vr0, 1
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB2_5
@@ -307,7 +310,7 @@ _ZN4Crux16store_MallocPlusE10MallocPlus: # @_ZN4Crux16store_MallocPlusE10MallocP
                                         #   in Loop: Header=BB2_5 Depth=1
 	ld.d	$a1, $s0, 16
 	ori	$s1, $zero, 1
-	bgeu	$a0, $s4, .LBB2_11
+	bgeu	$a0, $s6, .LBB2_11
 # %bb.8:                                #   in Loop: Header=BB2_5 Depth=1
 	move	$a2, $zero
 .LBB2_9:                                # %scalar.ph.preheader
@@ -329,16 +332,16 @@ _ZN4Crux16store_MallocPlusE10MallocPlus: # @_ZN4Crux16store_MallocPlusE10MallocP
 	addi.d	$a3, $a0, -1
 	bstrpick.d	$a4, $a3, 31, 0
 	move	$a2, $zero
-	beq	$a4, $s6, .LBB2_9
+	beq	$a4, $s7, .LBB2_9
 # %bb.12:                               # %vector.scevcheck
                                         #   in Loop: Header=BB2_5 Depth=1
 	srli.d	$a3, $a3, 32
 	bnez	$a3, .LBB2_9
 # %bb.13:                               # %vector.ph
                                         #   in Loop: Header=BB2_5 Depth=1
-	bstrpick.d	$a2, $a0, 32, 3
-	slli.d	$a2, $a2, 3
-	addi.d	$a3, $a1, 32
+	bstrpick.d	$a2, $a0, 32, 2
+	slli.d	$a2, $a2, 2
+	addi.d	$a3, $a1, 16
 	move	$a4, $a2
 	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
@@ -346,40 +349,25 @@ _ZN4Crux16store_MallocPlusE10MallocPlus: # @_ZN4Crux16store_MallocPlusE10MallocP
 .LBB2_14:                               # %vector.body
                                         #   Parent Loop BB2_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr2, $a3, -32
-	xvld	$xr3, $a3, 0
-	xvpickve2gr.d	$a5, $xr2, 0
-	vinsgr2vr.w	$vr4, $a5, 0
-	xvpickve2gr.d	$a5, $xr2, 1
-	vinsgr2vr.w	$vr4, $a5, 1
-	xvpickve2gr.d	$a5, $xr2, 2
-	vinsgr2vr.w	$vr4, $a5, 2
-	xvpickve2gr.d	$a5, $xr2, 3
-	vinsgr2vr.w	$vr4, $a5, 3
-	xvpickve2gr.d	$a5, $xr3, 0
-	vinsgr2vr.w	$vr2, $a5, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	vinsgr2vr.w	$vr2, $a5, 1
-	xvpickve2gr.d	$a5, $xr3, 2
-	vinsgr2vr.w	$vr2, $a5, 2
-	xvpickve2gr.d	$a5, $xr3, 3
-	vinsgr2vr.w	$vr2, $a5, 3
-	vmul.w	$vr0, $vr0, $vr4
-	vmul.w	$vr1, $vr1, $vr2
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vld	$vr2, $a3, -16
+	vld	$vr3, $a3, 0
+	vshuf4i.w	$vr2, $vr2, 8
+	vshuf4i.w	$vr3, $vr3, 8
+	vmul.w	$vr0, $vr0, $vr2
+	vmul.w	$vr1, $vr1, $vr3
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB2_14
 # %bb.15:                               # %middle.block
                                         #   in Loop: Header=BB2_5 Depth=1
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$s1, $vr0, 0
 	beq	$a0, $a2, .LBB2_3
 	b	.LBB2_9
 .LBB2_16:                               # %._crit_edge31
+	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
@@ -1036,7 +1024,7 @@ _ZN4Crux18restore_MallocPlusE10MallocPlus: # @_ZN4Crux18restore_MallocPlusE10Mal
                                         #   in Loop: Header=BB21_4 Depth=1
 	ld.d	$a1, $s2, 16
 	ori	$s3, $zero, 1
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 6
 	bgeu	$a0, $a2, .LBB21_18
 # %bb.7:                                #   in Loop: Header=BB21_4 Depth=1
 	move	$a2, $zero
@@ -1118,9 +1106,9 @@ _ZN4Crux18restore_MallocPlusE10MallocPlus: # @_ZN4Crux18restore_MallocPlusE10Mal
 	bnez	$a3, .LBB21_8
 # %bb.20:                               # %vector.ph
                                         #   in Loop: Header=BB21_4 Depth=1
-	bstrpick.d	$a2, $a0, 32, 3
-	slli.d	$a2, $a2, 3
-	addi.d	$a3, $a1, 32
+	bstrpick.d	$a2, $a0, 32, 2
+	slli.d	$a2, $a2, 2
+	addi.d	$a3, $a1, 16
 	move	$a4, $a2
 	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
@@ -1128,34 +1116,18 @@ _ZN4Crux18restore_MallocPlusE10MallocPlus: # @_ZN4Crux18restore_MallocPlusE10Mal
 .LBB21_21:                              # %vector.body
                                         #   Parent Loop BB21_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr2, $a3, -32
-	xvld	$xr3, $a3, 0
-	xvpickve2gr.d	$a5, $xr2, 0
-	vinsgr2vr.w	$vr4, $a5, 0
-	xvpickve2gr.d	$a5, $xr2, 1
-	vinsgr2vr.w	$vr4, $a5, 1
-	xvpickve2gr.d	$a5, $xr2, 2
-	vinsgr2vr.w	$vr4, $a5, 2
-	xvpickve2gr.d	$a5, $xr2, 3
-	vinsgr2vr.w	$vr4, $a5, 3
-	xvpickve2gr.d	$a5, $xr3, 0
-	vinsgr2vr.w	$vr2, $a5, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	vinsgr2vr.w	$vr2, $a5, 1
-	xvpickve2gr.d	$a5, $xr3, 2
-	vinsgr2vr.w	$vr2, $a5, 2
-	xvpickve2gr.d	$a5, $xr3, 3
-	vinsgr2vr.w	$vr2, $a5, 3
-	vmul.w	$vr0, $vr0, $vr4
-	vmul.w	$vr1, $vr1, $vr2
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vld	$vr2, $a3, -16
+	vld	$vr3, $a3, 0
+	vshuf4i.w	$vr2, $vr2, 8
+	vshuf4i.w	$vr3, $vr3, 8
+	vmul.w	$vr0, $vr0, $vr2
+	vmul.w	$vr1, $vr1, $vr3
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB21_21
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB21_4 Depth=1
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$s3, $vr0, 0

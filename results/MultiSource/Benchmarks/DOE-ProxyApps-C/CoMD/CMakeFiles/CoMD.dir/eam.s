@@ -3,15 +3,8 @@
 	.p2align	3, 0x0                          # -- Begin function initEamPot
 .LCPI0_0:
 	.dword	0x4059e921dd37dc65              # double 103.64269190268676
-.LCPI0_2:
-	.dword	0x402ccc9e3fcf6bae              # double 14.399644846029187
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
 .LCPI0_1:
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
+	.dword	0x402ccc9e3fcf6bae              # double 14.399644846029187
 	.text
 	.globl	initEamPot
 	.p2align	2
@@ -33,7 +26,7 @@ initEamPot:                             # @initEamPot
 	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 1936                 # 8-byte Folded Spill
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -272
+	addi.d	$sp, $sp, -240
 	move	$s7, $a2
 	move	$s5, $a1
 	move	$s6, $a0
@@ -55,9 +48,9 @@ initEamPot:                             # @initEamPot
 	addi.d	$s2, $fp, 80
 	vrepli.b	$vr0, 0
 	vst	$vr0, $fp, 64
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
-	xvst	$xr0, $fp, 80
+	vst	$vr0, $fp, 80
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr0, $fp, 96
 	pcaddu18i	$ra, %call36(getMyRank)
 	jirl	$ra, $ra, 0
 	addi.d	$s3, $fp, 32
@@ -80,80 +73,80 @@ initEamPot:                             # @initEamPot
 # %bb.3:
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.10)
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 128
 	move	$a2, $s6
 	move	$a3, $s5
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.11)
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 128
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_62
 # %bb.4:
 	move	$s5, $a0
 	lu12i.w	$s6, 1
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 128
 	move	$a1, $s6
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.20)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.20)
-	addi.d	$a0, $sp, 160
-	addi.d	$a2, $sp, 92
+	addi.d	$a0, $sp, 128
+	addi.d	$a2, $sp, 60
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $sp, 92
+	addi.d	$a1, $sp, 60
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 128
 	move	$a1, $s6
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.15)
-	addi.d	$a0, $sp, 160
-	addi.d	$a2, $sp, 156
-	addi.d	$a3, $sp, 144
-	addi.d	$a4, $sp, 136
-	addi.d	$a5, $sp, 128
+	addi.d	$a0, $sp, 128
+	addi.d	$a2, $sp, 124
+	addi.d	$a3, $sp, 112
+	addi.d	$a4, $sp, 104
+	addi.d	$a5, $sp, 96
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 156
-	fld.d	$fa0, $sp, 136
-	fld.d	$fa1, $sp, 144
+	ld.w	$a0, $sp, 124
+	fld.d	$fa0, $sp, 104
+	fld.d	$fa1, $sp, 112
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
 	fld.d	$fa2, $a1, %pc_lo12(.LCPI0_0)
 	st.w	$a0, $fp, 36
 	fst.d	$fa0, $fp, 16
 	fmul.d	$fa0, $fa1, $fa2
 	fst.d	$fa0, $fp, 8
-	addi.d	$a1, $sp, 128
+	addi.d	$a1, $sp, 96
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 128
 	move	$a1, $s6
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
-	addi.d	$a0, $sp, 160
-	addi.d	$a2, $sp, 124
-	addi.d	$a3, $sp, 112
-	addi.d	$a4, $sp, 120
-	addi.d	$a5, $sp, 104
-	addi.d	$a6, $sp, 96
+	addi.d	$a0, $sp, 128
+	addi.d	$a2, $sp, 92
+	addi.d	$a3, $sp, 80
+	addi.d	$a4, $sp, 88
+	addi.d	$a5, $sp, 72
+	addi.d	$a6, $sp, 64
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $sp, 96
-	ld.w	$s2, $sp, 124
-	ld.w	$a0, $sp, 120
+	fld.d	$fa0, $sp, 64
+	ld.w	$s2, $sp, 92
+	ld.w	$a0, $sp, 88
 	fst.d	$fa0, $fp, 0
 	slt	$a1, $a0, $s2
 	masknez	$a0, $a0, $a1
@@ -177,12 +170,12 @@ initEamPot:                             # @initEamPot
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$s2, $sp, 124
+	ld.w	$s2, $sp, 92
 	addi.d	$s3, $s3, 1
 	addi.d	$s1, $s1, 8
 	blt	$s3, $s2, .LBB0_6
 .LBB0_7:                                # %._crit_edge.i20
-	fld.d	$fs0, $sp, 112
+	fld.d	$fs0, $sp, 80
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -211,97 +204,97 @@ initEamPot:                             # @initEamPot
 .LBB0_9:
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.10)
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 128
 	move	$a2, $s6
 	move	$a3, $s5
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.11)
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 128
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_63
 # %bb.10:
 	move	$s6, $a0
 	lu12i.w	$s0, 1
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 128
 	move	$a1, $s0
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 128
 	move	$a1, $s0
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 128
 	move	$a1, $s0
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 128
 	move	$a1, $s0
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.13)
-	addi.d	$a0, $sp, 160
-	addi.d	$a2, $sp, 156
+	addi.d	$a0, $sp, 128
+	addi.d	$a2, $sp, 124
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 156
+	ld.w	$a0, $sp, 124
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB0_64
 # %bb.11:
 	lu12i.w	$s0, 1
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 128
 	move	$a1, $s0
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
-	addi.d	$a0, $sp, 160
-	addi.d	$a2, $sp, 124
-	addi.d	$a3, $sp, 144
-	addi.d	$a4, $sp, 120
-	addi.d	$a5, $sp, 136
-	addi.d	$a6, $sp, 128
+	addi.d	$a0, $sp, 128
+	addi.d	$a2, $sp, 92
+	addi.d	$a3, $sp, 112
+	addi.d	$a4, $sp, 88
+	addi.d	$a5, $sp, 104
+	addi.d	$a6, $sp, 96
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $sp, 128
+	fld.d	$fa0, $sp, 96
 	fst.d	$fa0, $fp, 0
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 128
 	move	$a1, $s0
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.15)
-	addi.d	$a0, $sp, 160
-	addi.d	$a2, $sp, 92
-	addi.d	$a3, $sp, 112
-	addi.d	$a4, $sp, 104
-	addi.d	$a5, $sp, 96
+	addi.d	$a0, $sp, 128
+	addi.d	$a2, $sp, 60
+	addi.d	$a3, $sp, 80
+	addi.d	$a4, $sp, 72
+	addi.d	$a5, $sp, 64
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 92
-	fld.d	$fa0, $sp, 104
-	fld.d	$fa1, $sp, 112
+	ld.w	$a0, $sp, 60
+	fld.d	$fa0, $sp, 72
+	fld.d	$fa1, $sp, 80
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
 	fld.d	$fa2, $a1, %pc_lo12(.LCPI0_0)
 	st.w	$a0, $fp, 36
 	fst.d	$fa0, $fp, 16
 	fmul.d	$fa0, $fa1, $fa2
 	fst.d	$fa0, $fp, 8
-	addi.d	$a1, $sp, 96
+	addi.d	$a1, $sp, 64
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	ld.w	$s2, $sp, 124
-	ld.w	$a0, $sp, 120
+	ld.w	$s2, $sp, 92
+	ld.w	$a0, $sp, 88
 	slt	$a1, $a0, $s2
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $s2, $a1
@@ -324,12 +317,12 @@ initEamPot:                             # @initEamPot
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$s2, $sp, 124
+	ld.w	$s2, $sp, 92
 	addi.d	$s3, $s3, 1
 	addi.d	$s1, $s1, 8
 	blt	$s3, $s2, .LBB0_13
 .LBB0_14:                               # %._crit_edge.i
-	fld.d	$fs0, $sp, 144
+	fld.d	$fs0, $sp, 112
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -361,7 +354,7 @@ initEamPot:                             # @initEamPot
 	fst.d	$fa0, $s1, 0
 	alsl.d	$a0, $s2, $s0, 3
 	fld.d	$fa0, $a0, -8
-	ld.w	$s3, $sp, 120
+	ld.w	$s3, $sp, 88
 	fstx.d	$fa0, $s0, $s8
 	fst.d	$fa0, $a0, 8
 	addi.d	$a0, $fp, 80
@@ -380,14 +373,14 @@ initEamPot:                             # @initEamPot
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$s3, $sp, 120
+	ld.w	$s3, $sp, 88
 	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 8
 	blt	$s2, $s3, .LBB0_19
 # %bb.20:                               # %.preheader.i25
-	fld.d	$fa6, $sp, 104
+	fld.d	$ft0, $sp, 72
 	ori	$a0, $zero, 2
-	xvst	$xr6, $sp, 16                   # 32-byte Folded Spill
+	vst	$vr8, $sp, 16                   # 16-byte Folded Spill
 	blt	$s3, $a0, .LBB0_28
 # %bb.21:                               # %.lr.ph70.i
 	ori	$a1, $zero, 5
@@ -397,31 +390,54 @@ initEamPot:                             # @initEamPot
 	addi.d	$a1, $s3, -1
 	move	$a2, $a1
 	bstrins.d	$a2, $zero, 1, 0
-	ori	$a3, $zero, 1
+	ori	$a4, $zero, 1
 	move	$a0, $a1
-	bstrins.d	$a0, $a3, 1, 0
-	xvreplve0.d	$xr0, $xr6
-	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
-	vld	$vr1, $a3, %pc_lo12(.LCPI0_1)
-	addi.d	$a3, $s6, 8
+	bstrins.d	$a0, $a4, 1, 0
+	vreplvei.d	$vr0, $vr8, 0
+	addi.d	$a3, $s6, 24
+	lu32i.d	$a4, 2
+	vreplgr2vr.d	$vr1, $a4
 	lu12i.w	$a4, 261366
 	ori	$a4, $a4, 2990
 	lu32i.d	$a4, -209762
 	lu52i.d	$a4, $a4, 1026
-	xvreplgr2vr.d	$xr2, $a4
+	vreplgr2vr.d	$vr2, $a4
 	move	$a4, $a2
-	xvld	$xr5, $sp, 48                   # 32-byte Folded Reload
+	vld	$vr7, $sp, 32                   # 16-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_23:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr3, $a3, 0
-	vext2xv.du.wu	$xr4, $xr1
-	xvffint.d.lu	$xr4, $xr4
-	xvfmadd.d	$xr4, $xr4, $xr0, $xr5
-	xvfdiv.d	$xr4, $xr3, $xr4
-	xvfmul.d	$xr3, $xr3, $xr4
-	xvfmul.d	$xr3, $xr3, $xr2
-	xvst	$xr3, $a3, 0
+	vaddi.wu	$vr3, $vr1, 2
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa4, $a5
+	ffint.d.l	$fa4, $fa4
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa5, $a5
+	ffint.d.l	$fa5, $fa5
+	vextrins.d	$vr5, $vr4, 16
+	vpickve2gr.w	$a5, $vr3, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa4, $a5
+	ffint.d.l	$fa4, $fa4
+	vpickve2gr.w	$a5, $vr3, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vextrins.d	$vr3, $vr4, 16
+	vld	$vr4, $a3, -16
+	vld	$vr6, $a3, 0
+	vfmadd.d	$vr5, $vr5, $vr0, $vr7
+	vfmadd.d	$vr3, $vr3, $vr0, $vr7
+	vfdiv.d	$vr5, $vr4, $vr5
+	vfdiv.d	$vr3, $vr6, $vr3
+	vfmul.d	$vr4, $vr4, $vr5
+	vfmul.d	$vr3, $vr6, $vr3
+	vfmul.d	$vr4, $vr4, $vr2
+	vfmul.d	$vr3, $vr3, $vr2
+	vst	$vr4, $a3, -16
+	vst	$vr3, $a3, 0
 	vaddi.wu	$vr1, $vr1, 4
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
@@ -429,8 +445,8 @@ initEamPot:                             # @initEamPot
 # %bb.24:                               # %middle.block
 	beq	$a1, $a2, .LBB0_28
 .LBB0_25:                               # %scalar.ph.preheader
-	pcalau12i	$a1, %pc_hi20(.LCPI0_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI0_1)
 	sub.d	$a1, $s3, $a0
 	alsl.d	$a2, $a0, $s6, 3
 	movgr2fr.d	$fa1, $zero
@@ -441,7 +457,7 @@ initEamPot:                             # @initEamPot
 	fld.d	$fa2, $a2, 0
 	movgr2fr.d	$fa3, $a3
 	ffint.d.l	$fa3, $fa3
-	fmadd.d	$fa3, $fa3, $fa6, $fa1
+	fmadd.d	$fa3, $fa3, $ft0, $fa1
 	fdiv.d	$fa3, $fa2, $fa3
 	fmul.d	$fa2, $fa2, $fa3
 	fmul.d	$fa2, $fa2, $fa0
@@ -452,8 +468,8 @@ initEamPot:                             # @initEamPot
 	bnez	$a1, .LBB0_26
 	b	.LBB0_28
 .LBB0_27:                               # %.preheader.thread.i
-	fld.d	$fa0, $sp, 104
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	fld.d	$fa0, $sp, 72
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 .LBB0_28:                               # %._crit_edge71.i
 	fld.d	$fa0, $s6, 8
 	fld.d	$fa1, $s6, 16
@@ -473,7 +489,7 @@ initEamPot:                             # @initEamPot
 	addi.d	$s1, $a0, 8
 	st.d	$s1, $s8, 24
 	st.w	$s3, $s8, 0
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	frecip.d	$fs0, $fa0
 	fst.d	$fs0, $s8, 16
 	st.d	$zero, $s8, 8
@@ -506,12 +522,12 @@ initEamPot:                             # @initEamPot
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$s3, $sp, 120
+	ld.w	$s3, $sp, 88
 	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 8
 	blt	$s2, $s3, .LBB0_30
 # %bb.31:                               # %._crit_edge74.loopexit.i
-	fld.d	$fa0, $sp, 104
+	fld.d	$fa0, $sp, 72
 	slli.d	$a0, $s3, 3
 	addi.d	$s7, $a0, 24
 	frecip.d	$fs0, $fa0
@@ -572,34 +588,34 @@ initEamPot:                             # @initEamPot
 	vld	$vr0, $fp, 0
 	fld.d	$fa1, $fp, 16
 	ld.w	$a0, $fp, 36
-	vst	$vr0, $sp, 160
-	fst.d	$fa1, $sp, 176
-	st.w	$a0, $sp, 196
-	addi.d	$a0, $sp, 184
+	vst	$vr0, $sp, 128
+	fst.d	$fa1, $sp, 144
+	st.w	$a0, $sp, 164
+	addi.d	$a0, $sp, 152
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 192
+	addi.d	$a0, $sp, 160
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
 .LBB0_39:                               # %eamBcastPotential.exit
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 128
 	ori	$a1, $zero, 40
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(bcastParallel)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 160
-	fld.d	$fa1, $sp, 176
-	ld.w	$a0, $sp, 196
+	vld	$vr0, $sp, 128
+	fld.d	$fa1, $sp, 144
+	ld.w	$a0, $sp, 164
 	vst	$vr0, $fp, 0
 	fst.d	$fa1, $fp, 16
 	st.w	$a0, $fp, 36
-	addi.d	$a1, $sp, 184
+	addi.d	$a1, $sp, 152
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $sp, 192
+	addi.d	$a1, $sp, 160
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
@@ -614,7 +630,7 @@ initEamPot:                             # @initEamPot
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 288
+	addi.d	$sp, $sp, 256
 	fld.d	$fs0, $sp, 1936                 # 8-byte Folded Reload
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
@@ -635,7 +651,7 @@ initEamPot:                             # @initEamPot
 	fst.d	$fa0, $s1, 0
 	alsl.d	$a0, $s2, $s0, 3
 	fld.d	$fa0, $a0, -8
-	ld.w	$s2, $sp, 120
+	ld.w	$s2, $sp, 88
 	fstx.d	$fa0, $s0, $s8
 	fst.d	$fa0, $a0, 8
 	addi.d	$a0, $fp, 80
@@ -654,13 +670,13 @@ initEamPot:                             # @initEamPot
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$s2, $sp, 120
+	ld.w	$s2, $sp, 88
 	addi.d	$s3, $s3, 1
 	addi.d	$s1, $s1, 8
 	blt	$s3, $s2, .LBB0_43
 .LBB0_44:                               # %._crit_edge66.i
-	fld.d	$fa0, $sp, 136
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	fld.d	$fa0, $sp, 104
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -670,7 +686,7 @@ initEamPot:                             # @initEamPot
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	addi.d	$s8, $a0, 8
 	st.d	$s8, $s7, 24
 	st.w	$s2, $s7, 0
@@ -705,14 +721,14 @@ initEamPot:                             # @initEamPot
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$s2, $sp, 120
+	ld.w	$s2, $sp, 88
 	addi.d	$s3, $s3, 1
 	addi.d	$s1, $s1, 8
 	blt	$s3, $s2, .LBB0_46
 # %bb.47:                               # %.preheader.i
-	fld.d	$fa5, $sp, 136
+	fld.d	$fa7, $sp, 104
 	ori	$a0, $zero, 2
-	xvst	$xr5, $sp, 16                   # 32-byte Folded Spill
+	vst	$vr7, $sp, 16                   # 16-byte Folded Spill
 	blt	$s2, $a0, .LBB0_55
 # %bb.48:                               # %.lr.ph72.i
 	ori	$a1, $zero, 5
@@ -720,46 +736,67 @@ initEamPot:                             # @initEamPot
 	addi.d	$s1, $fp, 72
 	addi.d	$s3, $fp, 32
 	bltu	$s2, $a1, .LBB0_52
-# %bb.49:                               # %vector.ph69
+# %bb.49:                               # %vector.ph70
 	addi.d	$a1, $s2, -1
 	move	$a2, $a1
 	bstrins.d	$a2, $zero, 1, 0
-	ori	$a3, $zero, 1
+	ori	$a4, $zero, 1
 	move	$a0, $a1
-	pcalau12i	$a4, %pc_hi20(.LCPI0_1)
-	vld	$vr0, $a4, %pc_lo12(.LCPI0_1)
-	bstrins.d	$a0, $a3, 1, 0
-	xvreplve0.d	$xr1, $xr5
-	addi.d	$a3, $s5, 8
+	bstrins.d	$a0, $a4, 1, 0
+	vreplvei.d	$vr0, $vr7, 0
+	addi.d	$a3, $s5, 24
+	lu32i.d	$a4, 2
+	vreplgr2vr.d	$vr1, $a4
 	move	$a4, $a2
-	xvld	$xr4, $sp, 48                   # 32-byte Folded Reload
+	vld	$vr6, $sp, 32                   # 16-byte Folded Reload
 	.p2align	4, , 16
-.LBB0_50:                               # %vector.body74
+.LBB0_50:                               # %vector.body75
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a3, 0
-	vext2xv.du.wu	$xr3, $xr0
-	xvffint.d.lu	$xr3, $xr3
-	xvfmadd.d	$xr3, $xr3, $xr1, $xr4
-	xvfdiv.d	$xr2, $xr2, $xr3
-	xvst	$xr2, $a3, 0
-	vaddi.wu	$vr0, $vr0, 4
+	vaddi.wu	$vr2, $vr1, 2
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa4, $a5
+	ffint.d.l	$fa4, $fa4
+	vextrins.d	$vr4, $vr3, 16
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vld	$vr3, $a3, -16
+	vld	$vr5, $a3, 0
+	vfmadd.d	$vr4, $vr4, $vr0, $vr6
+	vfmadd.d	$vr2, $vr2, $vr0, $vr6
+	vfdiv.d	$vr3, $vr3, $vr4
+	vfdiv.d	$vr2, $vr5, $vr2
+	vst	$vr3, $a3, -16
+	vst	$vr2, $a3, 0
+	vaddi.wu	$vr1, $vr1, 4
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB0_50
-# %bb.51:                               # %middle.block80
+# %bb.51:                               # %middle.block83
 	beq	$a1, $a2, .LBB0_57
-.LBB0_52:                               # %scalar.ph67.preheader
+.LBB0_52:                               # %scalar.ph68.preheader
 	sub.d	$a1, $s2, $a0
 	alsl.d	$a2, $a0, $s5, 3
 	movgr2fr.d	$fa0, $zero
 	.p2align	4, , 16
-.LBB0_53:                               # %scalar.ph67
+.LBB0_53:                               # %scalar.ph68
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a3, $a0, 31, 0
 	fld.d	$fa1, $a2, 0
 	movgr2fr.d	$fa2, $a3
 	ffint.d.l	$fa2, $fa2
-	fmadd.d	$fa2, $fa2, $fa5, $fa0
+	fmadd.d	$fa2, $fa2, $fa7, $fa0
 	fdiv.d	$fa1, $fa1, $fa2
 	fst.d	$fa1, $a2, 0
 	addi.d	$a1, $a1, -1
@@ -798,7 +835,7 @@ initEamPot:                             # @initEamPot
 	addi.d	$s0, $a0, 8
 	st.d	$s0, $s6, 24
 	st.w	$s2, $s6, 0
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	frecip.d	$fa0, $fa0
 	fst.d	$fa0, $s6, 16
 	st.d	$zero, $s6, 8
@@ -836,13 +873,13 @@ initEamPot:                             # @initEamPot
 .LBB0_62:
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
-	addi.d	$a1, $sp, 160
+	addi.d	$a1, $sp, 128
 	pcaddu18i	$ra, %call36(fileNotFound)
 	jirl	$ra, $ra, 0
 .LBB0_63:
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.12)
-	addi.d	$a1, $sp, 160
+	addi.d	$a1, $sp, 128
 	pcaddu18i	$ra, %call36(fileNotFound)
 	jirl	$ra, $ra, 0
 .LBB0_64:

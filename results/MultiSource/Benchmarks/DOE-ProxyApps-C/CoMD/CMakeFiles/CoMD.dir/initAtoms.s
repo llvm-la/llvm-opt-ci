@@ -221,25 +221,21 @@ createFccLattice:                       # @createFccLattice
 	vfdiv.d	$vr0, $vr0, $vr2
 	vfrintrm.d	$vr0, $vr0
 	vfdiv.d	$vr1, $vr1, $vr2
-	vfrintrp.d	$vr1, $vr1
-	xvftintrz.l.d	$xr0, $xr0
-	xvpermi.d	$xr2, $xr0, 238
-	xvpickev.w	$xr0, $xr2, $xr0
-	xvftintrz.l.d	$xr1, $xr1
-	xvpermi.d	$xr2, $xr1, 238
-	xvpickev.w	$xr1, $xr2, $xr1
-	vslt.w	$vr2, $vr0, $vr1
-	vext2xv.d.w	$xr3, $xr2
+	vfrintrp.d	$vr2, $vr1
+	vftintrz.w.d	$vr1, $vr0, $vr0
+	vftintrz.w.d	$vr0, $vr2, $vr2
+	vslt.w	$vr2, $vr1, $vr0
+	vilvl.w	$vr3, $vr2, $vr2
 	vpickve2gr.d	$a0, $vr2, 0
 	vpickve2gr.d	$a3, $vr3, 1
 	and	$a0, $a0, $a3
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB2_36
 # %bb.2:                                # %.lr.ph.us.us.preheader
-	vpickve2gr.w	$a3, $vr0, 0
-	vpickve2gr.w	$s2, $vr0, 1
-	vpickve2gr.w	$s6, $vr1, 0
-	vpickve2gr.w	$s7, $vr1, 1
+	vpickve2gr.w	$a3, $vr1, 0
+	vpickve2gr.w	$s2, $vr1, 1
+	vpickve2gr.w	$s6, $vr0, 0
+	vpickve2gr.w	$s7, $vr0, 1
 	mul.d	$a0, $a4, $a1
 	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
 	add.d	$a0, $a3, $a0
@@ -522,10 +518,12 @@ setVcm:                                 # @setVcm
 	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
 	move	$fp, $a0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 56
 	ld.d	$a2, $a0, 24
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 40
-	xvst	$xr0, $sp, 8
+	vst	$vr0, $sp, 40
+	vst	$vr0, $sp, 24
+	vst	$vr0, $sp, 8
 	ld.w	$a0, $a2, 12
 	move	$s0, $a1
 	blez	$a0, .LBB3_6

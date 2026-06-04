@@ -14,14 +14,18 @@ chooseEntry:                            # @chooseEntry
 	fst.d	$fs0, $sp, 104                  # 8-byte Folded Spill
 	ld.d	$fp, $a0, 8
 	vld	$vr0, $fp, 32
-	move	$s0, $a1
 	vst	$vr0, $sp, 88
-	xvld	$xr0, $fp, 0
+	vld	$vr0, $fp, 16
+	move	$s0, $a1
+	vst	$vr0, $sp, 72
+	vld	$vr0, $fp, 0
 	vld	$vr1, $a1, 32
-	xvld	$xr2, $a1, 0
-	xvst	$xr0, $sp, 56
+	vld	$vr2, $a1, 16
+	vld	$vr3, $a1, 0
+	vst	$vr0, $sp, 56
 	vst	$vr1, $sp, 40
-	xvst	$xr2, $sp, 8
+	vst	$vr2, $sp, 24
+	vst	$vr3, $sp, 8
 	addi.d	$a0, $sp, 56
 	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(penalty)
@@ -35,12 +39,16 @@ chooseEntry:                            # @chooseEntry
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $s1, 32
 	vst	$vr0, $sp, 88
-	xvld	$xr0, $s1, 0
+	vld	$vr0, $s1, 16
+	vst	$vr0, $sp, 72
+	vld	$vr0, $s1, 0
 	vld	$vr1, $s0, 32
-	xvld	$xr2, $s0, 0
-	xvst	$xr0, $sp, 56
+	vld	$vr2, $s0, 16
+	vld	$vr3, $s0, 0
+	vst	$vr0, $sp, 56
 	vst	$vr1, $sp, 40
-	xvst	$xr2, $sp, 8
+	vst	$vr2, $sp, 24
+	vst	$vr3, $sp, 8
 	addi.d	$a0, $sp, 56
 	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(penalty)

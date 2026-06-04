@@ -56,8 +56,9 @@ main:                                   # @main
 	st.b	$a0, $sp, 16
 	st.w	$zero, $sp, 17
 	st.w	$zero, $sp, 20
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 40
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 40
+	vst	$vr0, $sp, 56
 	pcalau12i	$a0, %pc_hi20(.L__const.main.e)
 	addi.d	$a0, $a0, %pc_lo12(.L__const.main.e)
 	ori	$a1, $zero, 65

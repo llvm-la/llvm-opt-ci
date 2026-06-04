@@ -1,11 +1,9 @@
 	.file	"shiftdi-2.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI0_0:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	main
 	.p2align	2
@@ -19,11 +17,11 @@ main:                                   # @main
 	addi.d	$a1, $a1, %pc_lo12(b)
 	pcalau12i	$a2, %pc_hi20(a)
 	addi.d	$a2, $a2, %pc_lo12(a)
-	xvldrepl.d	$xr0, $a2, 0
-	xvldrepl.d	$xr1, $a1, 0
+	vldrepl.d	$vr0, $a2, 0
+	vldrepl.d	$vr1, $a1, 0
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI0_0)
-	xvldrepl.d	$xr3, $a0, 0
+	vld	$vr2, $a1, %pc_lo12(.LCPI0_0)
+	vldrepl.d	$vr3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(expected_a)
 	addi.d	$a0, $a0, %pc_lo12(expected_a)
 	pcalau12i	$a1, %pc_hi20(expected_b)
@@ -35,27 +33,25 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvldx	$xr4, $a0, $a3
-	xvsll.d	$xr5, $xr0, $xr2
-	xvseq.d	$xr4, $xr5, $xr4
-	xvldx	$xr5, $a1, $a3
-	xvxori.b	$xr4, $xr4, 255
-	xvldx	$xr6, $a2, $a3
-	xvsra.d	$xr7, $xr1, $xr2
-	xvseq.d	$xr5, $xr7, $xr5
-	xvsrl.d	$xr7, $xr3, $xr2
-	xvseq.d	$xr6, $xr7, $xr6
-	xvorn.v	$xr4, $xr4, $xr5
-	xvorn.v	$xr4, $xr4, $xr6
-	xvmskltz.d	$xr4, $xr4
-	xvpickve2gr.wu	$a5, $xr4, 0
-	xvpickve2gr.wu	$a6, $xr4, 4
-	bstrins.d	$a5, $a6, 3, 2
+	vldx	$vr4, $a0, $a3
+	vsll.d	$vr5, $vr0, $vr2
+	vseq.d	$vr4, $vr5, $vr4
+	vldx	$vr5, $a1, $a3
+	vxori.b	$vr4, $vr4, 255
+	vldx	$vr6, $a2, $a3
+	vsra.d	$vr7, $vr1, $vr2
+	vseq.d	$vr5, $vr7, $vr5
+	vsrl.d	$vr7, $vr3, $vr2
+	vseq.d	$vr6, $vr7, $vr6
+	vorn.v	$vr4, $vr4, $vr5
+	vorn.v	$vr4, $vr4, $vr6
+	vmskltz.d	$vr4, $vr4
+	vpickve2gr.hu	$a5, $vr4, 0
 	bnez	$a5, .LBB0_4
 # %bb.2:                                # %vector.body.interim
                                         #   in Loop: Header=BB0_1 Depth=1
-	addi.d	$a3, $a3, 32
-	xvaddi.du	$xr2, $xr2, 4
+	addi.d	$a3, $a3, 16
+	vaddi.du	$vr2, $vr2, 2
 	bne	$a3, $a4, .LBB0_1
 # %bb.3:                                # %middle.block
 	move	$a0, $zero

@@ -5433,26 +5433,18 @@ __clang_call_terminate:                 # @__clang_call_terminate
 .Lfunc_end28:
 	.size	__clang_call_terminate, .Lfunc_end28-__clang_call_terminate
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN12_GLOBAL__N_19FactorialEi
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN12_GLOBAL__N_19FactorialEi
 .LCPI29_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
-.LCPI29_1:
 	.word	0                               # 0x0
 	.word	4294967295                      # 0xffffffff
 	.word	4294967294                      # 0xfffffffe
 	.word	4294967293                      # 0xfffffffd
-	.word	4294967292                      # 0xfffffffc
-	.word	4294967291                      # 0xfffffffb
-	.word	4294967290                      # 0xfffffffa
-	.word	4294967289                      # 0xfffffff9
+.LCPI29_1:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end29, nop
@@ -5460,27 +5452,38 @@ __clang_call_terminate:                 # @__clang_call_terminate
 _ZN12_GLOBAL__N_19FactorialEi:          # @_ZN12_GLOBAL__N_19FactorialEi
 # %bb.0:
 	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB29_2
+	beq	$a0, $a1, .LBB29_4
 # %bb.1:                                # %vector.ph
-	pcalau12i	$a1, %pc_hi20(.LCPI29_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI29_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI29_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI29_1)
-	addi.d	$a1, $a0, -2
-	xvreplgr2vr.w	$xr2, $a1
-	xvslt.wu	$xr0, $xr2, $xr0
-	xvreplgr2vr.w	$xr2, $a0
-	xvadd.w	$xr1, $xr2, $xr1
-	xvrepli.w	$xr2, 1
-	xvbitsel.v	$xr0, $xr1, $xr2, $xr0
-	xvpermi.d	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvshuf4i.w	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvrepl128vei.w	$xr1, $xr0, 1
-	xvmul.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a1, $xr0, 0
-.LBB29_2:                               # %tailrecurse._crit_edge
+	addi.d	$a1, $a0, 2
+	andi	$a1, $a1, 28
+	addi.d	$a2, $a0, -2
+	vreplgr2vr.w	$vr0, $a2
+	pcalau12i	$a2, %pc_hi20(.LCPI29_0)
+	vld	$vr1, $a2, %pc_lo12(.LCPI29_0)
+	pcalau12i	$a2, %pc_hi20(.LCPI29_1)
+	vld	$vr5, $a2, %pc_lo12(.LCPI29_1)
+	vreplgr2vr.w	$vr2, $a0
+	vadd.w	$vr1, $vr2, $vr1
+	vrepli.w	$vr2, 1
+	.p2align	4, , 16
+.LBB29_2:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vori.b	$vr4, $vr5, 0
+	vori.b	$vr3, $vr2, 0
+	vmul.w	$vr2, $vr1, $vr2
+	vsubi.wu	$vr1, $vr1, 4
+	addi.w	$a1, $a1, -4
+	vaddi.wu	$vr5, $vr5, 4
+	bnez	$a1, .LBB29_2
+# %bb.3:                                # %tailrecurse._crit_edge.loopexit
+	vslt.wu	$vr0, $vr0, $vr4
+	vbitsel.v	$vr0, $vr2, $vr3, $vr0
+	vshuf4i.w	$vr1, $vr0, 14
+	vmul.w	$vr0, $vr0, $vr1
+	vreplvei.w	$vr1, $vr0, 1
+	vmul.w	$vr0, $vr0, $vr1
+	vpickve2gr.w	$a1, $vr0, 0
+.LBB29_4:                               # %tailrecurse._crit_edge
 	move	$a0, $a1
 	ret
 .Lfunc_end29:
@@ -6999,11 +7002,12 @@ _ZN12_GLOBAL__N_13$_68__invokeERN9benchmark5StateE: # @"_ZN12_GLOBAL__N_13$_68__
 	.size	_ZN12_GLOBAL__N_13$_68__invokeERN9benchmark5StateE, .Lfunc_end44-_ZN12_GLOBAL__N_13$_68__invokeERN9benchmark5StateE
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _GLOBAL__sub_I_benchmark_test.cc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _GLOBAL__sub_I_benchmark_test.cc
 .LCPI45_0:
 	.dword	1024                            # 0x400
 	.dword	8192                            # 0x2000
+.LCPI45_1:
 	.dword	128                             # 0x80
 	.dword	512                             # 0x200
 	.section	.text.startup,"ax",@progbits
@@ -7303,12 +7307,15 @@ _GLOBAL__sub_I_benchmark_test.cc:       # @_GLOBAL__sub_I_benchmark_test.cc
 	jirl	$ra, $ra, 0
 .Ltmp226:                               # EH_LABEL
 # %bb.37:
-	pcalau12i	$a1, %pc_hi20(.LCPI45_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI45_0)
 	st.d	$a0, $sp, 16
+	pcalau12i	$a1, %pc_hi20(.LCPI45_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI45_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI45_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI45_1)
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 24
 .Ltmp228:                               # EH_LABEL
 	addi.d	$a1, $sp, 16
@@ -7816,9 +7823,11 @@ _GLOBAL__sub_I_benchmark_test.cc:       # @_GLOBAL__sub_I_benchmark_test.cc
 	st.d	$a1, $sp, 32
 	pcalau12i	$a2, %pc_hi20(.L.str.32)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.32)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.b	$a2, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.b	$a2, $a0, 32
 	st.d	$a1, $sp, 24
 	stx.b	$zero, $a0, $a1
@@ -7943,9 +7952,11 @@ _GLOBAL__sub_I_benchmark_test.cc:       # @_GLOBAL__sub_I_benchmark_test.cc
 	st.d	$a1, $sp, 32
 	pcalau12i	$a2, %pc_hi20(.L.str.36)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.36)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.w	$a2, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.w	$a2, $a0, 32
 	st.d	$a1, $sp, 24
 	stx.b	$zero, $a0, $a1
@@ -8005,9 +8016,11 @@ _GLOBAL__sub_I_benchmark_test.cc:       # @_GLOBAL__sub_I_benchmark_test.cc
 	st.d	$a1, $sp, 32
 	pcalau12i	$a2, %pc_hi20(.L.str.38)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.38)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a2, $a2, 31
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a2, $a0, 31
 	st.d	$a1, $sp, 24
 	stx.b	$zero, $a0, $a1

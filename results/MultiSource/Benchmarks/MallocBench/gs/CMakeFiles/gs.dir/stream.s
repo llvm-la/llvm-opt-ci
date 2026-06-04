@@ -18,8 +18,10 @@ sread_string:                           # @sread_string
 	addi.d	$a1, $a1, %pc_lo12(sread_string.p)
 	vld	$vr0, $a1, 0
 	vst	$vr0, $a0, 40
-	xvld	$xr0, $a1, 16
-	xvst	$xr0, $a0, 56
+	vld	$vr0, $a1, 16
+	vld	$vr1, $a1, 32
+	vst	$vr0, $a0, 56
+	vst	$vr1, $a0, 72
 	ori	$a1, $zero, 256
 	st.h	$a1, $a0, 28
 	ret
@@ -113,8 +115,10 @@ ssinit:                                 # @ssinit
 	st.d	$zero, $a0, 32
 	vld	$vr0, $a3, 0
 	vst	$vr0, $a0, 40
-	xvld	$xr0, $a3, 16
-	xvst	$xr0, $a0, 56
+	vld	$vr0, $a3, 16
+	vst	$vr0, $a0, 56
+	vld	$vr0, $a3, 32
+	vst	$vr0, $a0, 72
 	ret
 .Lfunc_end5:
 	.size	ssinit, .Lfunc_end5-ssinit
@@ -137,8 +141,10 @@ swrite_string:                          # @swrite_string
 	addi.d	$a1, $a1, %pc_lo12(swrite_string.p)
 	vld	$vr0, $a1, 0
 	vst	$vr0, $a0, 40
-	xvld	$xr0, $a1, 16
-	xvst	$xr0, $a0, 56
+	vld	$vr0, $a1, 16
+	vld	$vr1, $a1, 32
+	vst	$vr0, $a0, 56
+	vst	$vr1, $a0, 72
 	ori	$a1, $zero, 257
 	st.h	$a1, $a0, 28
 	ret
@@ -186,8 +192,10 @@ sread_file:                             # @sread_file
 	addi.d	$a2, $a2, %pc_lo12(sread_file.p)
 	vld	$vr0, $a2, 0
 	vst	$vr0, $a0, 40
-	xvld	$xr0, $a2, 16
-	xvst	$xr0, $a0, 56
+	vld	$vr0, $a2, 16
+	vld	$vr1, $a2, 32
+	vst	$vr0, $a0, 56
+	vst	$vr1, $a0, 72
 	st.h	$zero, $a0, 28
 	pcalau12i	$a2, %got_pc_hi20(stdin)
 	ld.d	$a2, $a2, %got_pc_lo12(stdin)
@@ -442,8 +450,10 @@ sfinit:                                 # @sfinit
 	st.b	$zero, $a0, 29
 	vld	$vr0, $a4, 0
 	vst	$vr0, $a0, 40
-	xvld	$xr0, $a4, 16
-	xvst	$xr0, $a0, 56
+	vld	$vr0, $a4, 16
+	vst	$vr0, $a0, 56
+	vld	$vr0, $a4, 32
+	vst	$vr0, $a0, 72
 	ret
 .Lfunc_end14:
 	.size	sfinit, .Lfunc_end14-sfinit
@@ -464,8 +474,10 @@ swrite_file:                            # @swrite_file
 	addi.d	$a2, $a2, %pc_lo12(swrite_file.p)
 	vld	$vr0, $a2, 0
 	vst	$vr0, $a0, 40
-	xvld	$xr0, $a2, 16
-	xvst	$xr0, $a0, 56
+	vld	$vr0, $a2, 16
+	vld	$vr1, $a2, 32
+	vst	$vr0, $a0, 56
+	vst	$vr1, $a0, 72
 	ori	$a2, $zero, 1
 	st.h	$a2, $a0, 28
 	pcalau12i	$a2, %got_pc_hi20(stdout)
@@ -641,8 +653,10 @@ sread_decrypt:                          # @sread_decrypt
 	addi.d	$a2, $a2, %pc_lo12(sread_decrypt.p)
 	vld	$vr0, $a2, 0
 	vst	$vr0, $a0, 40
-	xvld	$xr0, $a2, 16
-	xvst	$xr0, $a0, 56
+	vld	$vr0, $a2, 16
+	vld	$vr1, $a2, 32
+	vst	$vr0, $a0, 56
+	vst	$vr1, $a0, 72
 	st.h	$zero, $a0, 28
 	addi.w	$a2, $zero, -1
 	st.d	$a2, $a0, 32
@@ -674,11 +688,11 @@ sxread:                                 # @sxread
 	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 16
-	ld.w	$s4, $fp, 24
+	ld.w	$s7, $fp, 24
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	addi.d	$a0, $a0, -1
 	st.d	$a0, $fp, 0
-	beqz	$s4, .LBB21_27
+	beqz	$s7, .LBB21_27
 # %bb.1:                                # %.lr.ph.i.lr.ph
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(sread_string.p)
@@ -687,7 +701,7 @@ sxread:                                 # @sxread
 	pcalau12i	$a0, %got_pc_hi20(scan_char_array)
 	ld.d	$s8, $a0, %got_pc_lo12(scan_char_array)
 	ori	$s5, $zero, 16
-	ori	$s7, $zero, 103
+	ori	$s4, $zero, 103
 	.p2align	4, , 16
 .LBB21_2:                               # %.lr.ph.i
                                         # =>This Loop Header: Depth=1
@@ -696,7 +710,7 @@ sxread:                                 # @sxread
                                         #     Child Loop BB21_18 Depth 2
 	move	$s0, $fp
 	ld.d	$s1, $fp, 104
-	move	$s6, $s4
+	move	$s6, $s7
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	b	.LBB21_4
 	.p2align	4, , 16
@@ -747,28 +761,30 @@ sxread:                                 # @sxread
 	.p2align	4, , 16
 .LBB21_9:                               # %.thread.i
                                         #   in Loop: Header=BB21_2 Depth=1
-	sub.w	$s4, $s4, $s6
+	sub.w	$s7, $s7, $s6
 .LBB21_10:                              # %sgets.exit
                                         #   in Loop: Header=BB21_2 Depth=1
 	move	$fp, $s0
-	beqz	$s4, .LBB21_26
+	beqz	$s7, .LBB21_26
 # %bb.11:                               #   in Loop: Header=BB21_2 Depth=1
+	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
+	vld	$vr0, $a3, 0
 	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
 	st.d	$s1, $sp, 48
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	st.d	$a1, $sp, 32
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
-	vld	$vr0, $a2, 0
-	bstrpick.d	$a0, $s4, 31, 0
+	addi.d	$a2, $sp, 72
+	vst	$vr0, $a2, 0
+	vld	$vr0, $a3, 16
+	bstrpick.d	$a0, $s7, 31, 0
 	add.d	$a1, $a1, $a0
 	st.d	$a1, $sp, 40
-	addi.d	$a1, $sp, 72
-	vst	$vr0, $a1, 0
-	xvld	$xr0, $a2, 16
-	st.w	$s4, $sp, 56
+	vst	$vr0, $a2, 16
+	vld	$vr0, $a3, 32
+	st.w	$s7, $sp, 56
 	ld.wu	$s3, $fp, 116
 	st.d	$zero, $sp, 64
-	xvst	$xr0, $a1, 16
+	vst	$vr0, $a2, 32
 	ori	$a1, $zero, 256
 	st.h	$a1, $sp, 60
 	andi	$a1, $s3, 240
@@ -797,7 +813,7 @@ sxread:                                 # @sxread
 	ld.bu	$a0, $a0, 1
 	bltu	$a0, $s5, .LBB21_17
 .LBB21_15:                              #   in Loop: Header=BB21_12 Depth=2
-	bne	$a0, $s7, .LBB21_12
+	bne	$a0, $s4, .LBB21_12
 # %bb.16:                               #   in Loop: Header=BB21_2 Depth=1
 	andi	$a0, $s3, 255
 	b	.LBB21_23
@@ -832,21 +848,21 @@ sxread:                                 # @sxread
 	ld.bu	$s3, $a0, 1
 	bltu	$s3, $s5, .LBB21_12
 .LBB21_21:                              #   in Loop: Header=BB21_18 Depth=2
-	bne	$s3, $s7, .LBB21_18
+	bne	$s3, $s4, .LBB21_18
 # %bb.22:                               #   in Loop: Header=BB21_2 Depth=1
 	addi.d	$a0, $zero, -1
 .LBB21_23:                              # %.loopexit43.i
                                         #   in Loop: Header=BB21_2 Depth=1
 	st.w	$a0, $fp, 116
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	sub.d	$s4, $s1, $a0
+	sub.d	$s7, $s1, $a0
 .LBB21_24:                              # %sreadhex.exit
                                         #   in Loop: Header=BB21_2 Depth=1
-	addi.w	$a2, $s4, 0
+	addi.w	$a2, $s7, 0
 	bnez	$a2, .LBB21_28
 # %bb.25:                               #   in Loop: Header=BB21_2 Depth=1
-	ld.w	$s4, $fp, 24
-	bnez	$s4, .LBB21_2
+	ld.w	$s7, $fp, 24
+	bnez	$s7, .LBB21_2
 .LBB21_26:                              # %sgets.exit.thread.loopexit
 	ld.d	$a0, $fp, 0
 .LBB21_27:                              # %sgets.exit.thread
@@ -862,7 +878,7 @@ sxread:                                 # @sxread
 	pcaddu18i	$ra, %call36(gs_type1_decrypt)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
-	bstrpick.d	$a1, $s4, 31, 0
+	bstrpick.d	$a1, $s7, 31, 0
 	add.d	$a1, $a0, $a1
 	st.d	$a1, $fp, 8
 	addi.d	$a1, $a0, 1

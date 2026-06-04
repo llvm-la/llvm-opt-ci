@@ -945,26 +945,18 @@ GetVLCSymbol_IntraMode:                 # @GetVLCSymbol_IntraMode
 .Lfunc_end15:
 	.size	GetVLCSymbol_IntraMode, .Lfunc_end15-GetVLCSymbol_IntraMode
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function more_rbsp_data
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function more_rbsp_data
 .LCPI16_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
-.LCPI16_1:
 	.word	0                               # 0x0
 	.word	4294967295                      # 0xffffffff
 	.word	4294967294                      # 0xfffffffe
 	.word	4294967293                      # 0xfffffffd
-	.word	4294967292                      # 0xfffffffc
-	.word	4294967291                      # 0xfffffffb
-	.word	4294967290                      # 0xfffffffa
-	.word	4294967289                      # 0xfffffff9
+.LCPI16_1:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.text
 	.globl	more_rbsp_data
 	.p2align	2
@@ -976,13 +968,13 @@ more_rbsp_data:                         # @more_rbsp_data
 	srai.d	$a4, $a1, 3
 	addi.w	$a2, $a2, -1
 	ori	$a0, $zero, 1
-	blt	$a4, $a2, .LBB16_5
+	blt	$a4, $a2, .LBB16_7
 # %bb.1:
 	ldx.bu	$a2, $a3, $a4
 	andi	$a1, $a1, 7
 	sll.w	$a3, $a2, $a1
 	andi	$a3, $a3, 128
-	beqz	$a3, .LBB16_5
+	beqz	$a3, .LBB16_7
 # %bb.2:
 	ori	$a0, $zero, 7
 	bne	$a1, $a0, .LBB16_4
@@ -991,51 +983,56 @@ more_rbsp_data:                         # @more_rbsp_data
 	ret
 .LBB16_4:                               # %vector.ph
 	ori	$a0, $zero, 6
+	sub.d	$a3, $a0, $a1
+	ori	$a0, $zero, 10
 	sub.d	$a0, $a0, $a1
-	xvreplgr2vr.w	$xr0, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI16_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI16_1)
-	pcalau12i	$a0, %pc_hi20(.LCPI16_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI16_0)
-	xvreplgr2vr.w	$xr3, $a2
-	xvadd.w	$xr1, $xr0, $xr1
-	xvsrl.w	$xr1, $xr3, $xr1
-	xvsle.wu	$xr0, $xr2, $xr0
-	xvand.v	$xr0, $xr1, $xr0
-	xvrepli.w	$xr1, 1
-	xvand.v	$xr0, $xr0, $xr1
-	xvpermi.q	$xr1, $xr0, 1
-	vor.v	$vr0, $vr0, $vr1
-	vbsrl.v	$vr1, $vr0, 8
-	vor.v	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 4
-	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a0, $vr0, 0
-.LBB16_5:                               # %._crit_edge
+	andi	$a0, $a0, 12
+	vreplgr2vr.w	$vr0, $a3
+	pcalau12i	$a1, %pc_hi20(.LCPI16_0)
+	vld	$vr2, $a1, %pc_lo12(.LCPI16_0)
+	vreplgr2vr.w	$vr1, $a2
+	pcalau12i	$a1, %pc_hi20(.LCPI16_1)
+	vld	$vr7, $a1, %pc_lo12(.LCPI16_1)
+	vadd.w	$vr2, $vr0, $vr2
+	vrepli.b	$vr4, 0
+	vrepli.w	$vr3, 1
+	.p2align	4, , 16
+.LBB16_5:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vori.b	$vr5, $vr7, 0
+	vori.b	$vr6, $vr4, 0
+	vsrl.w	$vr4, $vr1, $vr2
+	vand.v	$vr4, $vr4, $vr3
+	vadd.w	$vr4, $vr4, $vr6
+	vsubi.wu	$vr2, $vr2, 4
+	addi.w	$a0, $a0, -4
+	vaddi.wu	$vr7, $vr7, 4
+	bnez	$a0, .LBB16_5
+# %bb.6:                                # %._crit_edge.loopexit
+	vslt.wu	$vr0, $vr0, $vr5
+	vbitsel.v	$vr0, $vr4, $vr6, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
+	sltu	$a0, $zero, $a0
+.LBB16_7:                               # %._crit_edge
 	ret
 .Lfunc_end16:
 	.size	more_rbsp_data, .Lfunc_end16-more_rbsp_data
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function uvlc_startcode_follows
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function uvlc_startcode_follows
 .LCPI17_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
-.LCPI17_1:
 	.word	0                               # 0x0
 	.word	4294967295                      # 0xffffffff
 	.word	4294967294                      # 0xfffffffe
 	.word	4294967293                      # 0xfffffffd
-	.word	4294967292                      # 0xfffffffc
-	.word	4294967291                      # 0xfffffffb
-	.word	4294967290                      # 0xfffffffa
-	.word	4294967289                      # 0xfffffff9
+.LCPI17_1:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.text
 	.globl	uvlc_startcode_follows
 	.p2align	2
@@ -1059,44 +1056,56 @@ uvlc_startcode_follows:                 # @uvlc_startcode_follows
 	ld.w	$a3, $a1, 12
 	srai.d	$a2, $a0, 3
 	addi.w	$a3, $a3, -1
-	blt	$a2, $a3, .LBB17_5
+	blt	$a2, $a3, .LBB17_7
 # %bb.1:
 	ld.d	$a1, $a1, 16
 	ldx.bu	$a1, $a1, $a2
 	andi	$a2, $a0, 7
 	sll.w	$a0, $a1, $a2
 	andi	$a0, $a0, 128
-	beqz	$a0, .LBB17_5
+	beqz	$a0, .LBB17_7
 # %bb.2:
 	ori	$a3, $zero, 7
 	ori	$a0, $zero, 1
-	beq	$a2, $a3, .LBB17_4
+	beq	$a2, $a3, .LBB17_6
 # %bb.3:                                # %vector.ph
 	ori	$a0, $zero, 6
+	sub.d	$a3, $a0, $a2
+	ori	$a0, $zero, 10
 	sub.d	$a0, $a0, $a2
-	xvreplgr2vr.w	$xr0, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI17_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI17_1)
-	pcalau12i	$a0, %pc_hi20(.LCPI17_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI17_0)
-	xvreplgr2vr.w	$xr3, $a1
-	xvadd.w	$xr1, $xr0, $xr1
-	xvsrl.w	$xr1, $xr3, $xr1
-	xvsle.wu	$xr0, $xr2, $xr0
-	xvand.v	$xr0, $xr1, $xr0
-	xvrepli.w	$xr1, 1
-	xvand.v	$xr0, $xr0, $xr1
-	xvpermi.q	$xr1, $xr0, 1
-	vor.v	$vr0, $vr0, $vr1
-	vbsrl.v	$vr1, $vr0, 8
-	vor.v	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 4
-	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a0, $vr0, 0
-	xori	$a0, $a0, 1
-.LBB17_4:                               # %more_rbsp_data.exit
+	andi	$a0, $a0, 12
+	vreplgr2vr.w	$vr0, $a3
+	pcalau12i	$a2, %pc_hi20(.LCPI17_0)
+	vld	$vr2, $a2, %pc_lo12(.LCPI17_0)
+	vreplgr2vr.w	$vr1, $a1
+	pcalau12i	$a1, %pc_hi20(.LCPI17_1)
+	vld	$vr7, $a1, %pc_lo12(.LCPI17_1)
+	vadd.w	$vr2, $vr0, $vr2
+	vrepli.b	$vr4, 0
+	vrepli.w	$vr3, 1
+	.p2align	4, , 16
+.LBB17_4:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vori.b	$vr5, $vr7, 0
+	vori.b	$vr6, $vr4, 0
+	vsrl.w	$vr4, $vr1, $vr2
+	vand.v	$vr4, $vr4, $vr3
+	vadd.w	$vr4, $vr4, $vr6
+	vsubi.wu	$vr2, $vr2, 4
+	addi.w	$a0, $a0, -4
+	vaddi.wu	$vr7, $vr7, 4
+	bnez	$a0, .LBB17_4
+# %bb.5:                                # %._crit_edge.loopexit.i
+	vslt.wu	$vr0, $vr0, $vr5
+	vbitsel.v	$vr0, $vr4, $vr6, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
+	sltui	$a0, $a0, 1
+.LBB17_6:                               # %more_rbsp_data.exit
 	ret
-.LBB17_5:
+.LBB17_7:
 	move	$a0, $zero
 	ret
 .Lfunc_end17:

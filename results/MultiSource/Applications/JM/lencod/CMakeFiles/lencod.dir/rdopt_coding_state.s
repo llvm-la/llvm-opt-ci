@@ -180,21 +180,25 @@ store_coding_state:                     # @store_coding_state
 .LBB2_6:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $s1, 24
 	ld.d	$a4, $fp, 8
-	xvldx	$xr0, $a3, $a2
+	vldx	$vr0, $a3, $a2
 	add.d	$a3, $a3, $a2
-	xvstx	$xr0, $a4, $a1
+	vstx	$vr0, $a4, $a1
 	vld	$vr0, $a3, 32
-	add.d	$a3, $a4, $a1
-	vst	$vr0, $a3, 32
+	add.d	$a4, $a4, $a1
+	vst	$vr0, $a4, 32
+	vld	$vr0, $a3, 16
+	vst	$vr0, $a4, 16
 	ld.d	$a3, $s1, 24
 	add.d	$a3, $a3, $a2
 	ld.d	$a3, $a3, -8
 	ld.d	$a4, $fp, 16
-	xvld	$xr0, $a3, 0
-	xvstx	$xr0, $a4, $a1
+	vld	$vr0, $a3, 0
+	vstx	$vr0, $a4, $a1
 	vld	$vr0, $a3, 32
-	add.d	$a3, $a4, $a1
-	vst	$vr0, $a3, 32
+	add.d	$a4, $a4, $a1
+	vst	$vr0, $a4, 32
+	vld	$vr0, $a3, 16
+	vst	$vr0, $a4, 16
 	addi.d	$a1, $a1, 48
 	addi.d	$a2, $a2, 104
 	bne	$a0, $a1, .LBB2_6
@@ -222,18 +226,22 @@ store_coding_state:                     # @store_coding_state
 	mul.d	$a4, $a1, $a2
 	ldx.d	$a3, $a3, $a4
 	ld.d	$a4, $fp, 16
-	xvld	$xr0, $a3, 0
+	vld	$vr0, $a3, 0
 	slli.d	$a5, $a1, 5
 	alsl.d	$a5, $a1, $a5, 4
-	xvstx	$xr0, $a4, $a5
+	vstx	$vr0, $a4, $a5
 	vld	$vr0, $a3, 32
-	add.d	$a3, $a4, $a5
+	add.d	$a4, $a4, $a5
+	vst	$vr0, $a4, 32
+	vld	$vr0, $a3, 16
 	addi.d	$a1, $a1, 1
-	vst	$vr0, $a3, 32
+	vst	$vr0, $a4, 16
 	bne	$a1, $a0, .LBB2_10
 .LBB2_11:                               # %.loopexit
-	xvld	$xr0, $s0, 24
-	xvst	$xr0, $fp, 48
+	vld	$vr0, $s0, 40
+	vst	$vr0, $fp, 64
+	vld	$vr0, $s0, 24
+	vst	$vr0, $fp, 48
 	addi.d	$a0, $fp, 80
 	addi.d	$a1, $s0, 76
 	ori	$a2, $zero, 256
@@ -299,20 +307,24 @@ reset_coding_state:                     # @reset_coding_state
 .LBB3_6:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $fp, 8
 	ld.d	$a4, $s1, 24
-	xvldx	$xr0, $a3, $a1
+	vldx	$vr0, $a3, $a1
 	add.d	$a3, $a3, $a1
-	xvstx	$xr0, $a4, $a2
+	vstx	$vr0, $a4, $a2
 	vld	$vr0, $a3, 32
-	add.d	$a3, $a4, $a2
-	vst	$vr0, $a3, 32
+	add.d	$a4, $a4, $a2
+	vst	$vr0, $a4, 32
+	vld	$vr0, $a3, 16
+	vst	$vr0, $a4, 16
 	ld.d	$a3, $s1, 24
 	ld.d	$a4, $fp, 16
 	add.d	$a3, $a3, $a2
 	ld.d	$a3, $a3, -8
-	xvldx	$xr0, $a4, $a1
-	add.d	$a4, $a4, $a1
-	xvst	$xr0, $a3, 0
-	vld	$vr0, $a4, 32
+	add.d	$a5, $a4, $a1
+	vld	$vr0, $a5, 16
+	vst	$vr0, $a3, 16
+	vldx	$vr0, $a4, $a1
+	vst	$vr0, $a3, 0
+	vld	$vr0, $a5, 32
 	vst	$vr0, $a3, 32
 	addi.d	$a1, $a1, 48
 	addi.d	$a2, $a2, 104
@@ -343,16 +355,20 @@ reset_coding_state:                     # @reset_coding_state
 	ldx.d	$a3, $a3, $a4
 	slli.d	$a4, $a1, 5
 	alsl.d	$a4, $a1, $a4, 4
-	xvldx	$xr0, $a5, $a4
+	vldx	$vr0, $a5, $a4
 	add.d	$a4, $a5, $a4
-	xvst	$xr0, $a3, 0
+	vst	$vr0, $a3, 0
 	vld	$vr0, $a4, 32
-	addi.d	$a1, $a1, 1
 	vst	$vr0, $a3, 32
+	vld	$vr0, $a4, 16
+	addi.d	$a1, $a1, 1
+	vst	$vr0, $a3, 16
 	bne	$a1, $a0, .LBB3_10
 .LBB3_11:                               # %.loopexit
-	xvld	$xr0, $fp, 48
-	xvst	$xr0, $s0, 24
+	vld	$vr0, $fp, 64
+	vst	$vr0, $s0, 40
+	vld	$vr0, $fp, 48
+	vst	$vr0, $s0, 24
 	addi.d	$a0, $s0, 76
 	addi.d	$a1, $fp, 80
 	ori	$a2, $zero, 256

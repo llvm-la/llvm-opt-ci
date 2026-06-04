@@ -421,8 +421,8 @@ DensityChannel:                         # @DensityChannel
 	addi.d	$a2, $a4, 8
 	alsl.d	$a3, $s4, $a3, 3
 	alsl.d	$a4, $s4, $a4, 3
-	addi.d	$a5, $s0, 32
-	ori	$a6, $zero, 8
+	addi.d	$a5, $s0, 16
+	ori	$a6, $zero, 4
 	b	.LBB3_3
 	.p2align	4, , 16
 .LBB3_2:                                # %._crit_edge
@@ -505,7 +505,7 @@ DensityChannel:                         # @DensityChannel
 .LBB3_17:                               # %vector.ph
                                         #   in Loop: Header=BB3_3 Depth=1
 	move	$t2, $t1
-	bstrins.d	$t2, $zero, 2, 0
+	bstrins.d	$t2, $zero, 1, 0
 	add.d	$t0, $t3, $t2
 	alsl.d	$t3, $t3, $a5, 3
 	move	$t4, $t2
@@ -513,14 +513,14 @@ DensityChannel:                         # @DensityChannel
 .LBB3_18:                               # %vector.body
                                         #   Parent Loop BB3_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $t3, -32
-	xvld	$xr1, $t3, 0
-	xvaddi.du	$xr0, $xr0, 1
-	xvaddi.du	$xr1, $xr1, 1
-	xvst	$xr0, $t3, -32
-	xvst	$xr1, $t3, 0
-	addi.d	$t4, $t4, -8
-	addi.d	$t3, $t3, 64
+	vld	$vr0, $t3, -16
+	vld	$vr1, $t3, 0
+	vaddi.du	$vr0, $vr0, 1
+	vaddi.du	$vr1, $vr1, 1
+	vst	$vr0, $t3, -16
+	vst	$vr1, $t3, 0
+	addi.d	$t4, $t4, -4
+	addi.d	$t3, $t3, 32
 	bnez	$t4, .LBB3_18
 # %bb.19:                               # %middle.block
                                         #   in Loop: Header=BB3_3 Depth=1

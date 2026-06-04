@@ -1137,7 +1137,7 @@ hypre_ExchangeLocalData:                # @hypre_ExchangeLocalData
 	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	ori	$t0, $zero, 8
+	ori	$t0, $zero, 4
 	b	.LBB7_3
 	.p2align	4, , 16
 .LBB7_2:                                # %.loopexit
@@ -1202,11 +1202,11 @@ hypre_ExchangeLocalData:                # @hypre_ExchangeLocalData
 	addi.d	$a5, $a4, -1
 	sltu	$a5, $zero, $a5
 	or	$s8, $a5, $a3
-	bstrpick.d	$a3, $t8, 30, 3
-	slli.d	$s6, $a3, 3
-	addi.d	$a3, $a2, 32
+	bstrpick.d	$a3, $t8, 30, 2
+	slli.d	$s6, $a3, 2
+	addi.d	$a3, $a2, 16
 	alsl.d	$a6, $t2, $a3, 3
-	addi.d	$a3, $a1, 32
+	addi.d	$a3, $a1, 16
 	alsl.d	$a7, $t1, $a3, 3
 	slli.d	$a4, $a4, 3
 	slli.d	$a3, $a0, 3
@@ -1279,7 +1279,7 @@ hypre_ExchangeLocalData:                # @hypre_ExchangeLocalData
 	add.d	$t6, $t1, $s0
 	alsl.d	$t6, $t6, $a1, 3
 	sub.d	$a0, $a0, $t6
-	sltui	$a0, $a0, 64
+	sltui	$a0, $a0, 32
 	or	$a0, $s8, $a0
 	beqz	$a0, .LBB7_19
 .LBB7_16:                               #   in Loop: Header=BB7_14 Depth=4
@@ -1320,13 +1320,13 @@ hypre_ExchangeLocalData:                # @hypre_ExchangeLocalData
                                         #       Parent Loop BB7_12 Depth=3
                                         #         Parent Loop BB7_14 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	xvld	$xr0, $s3, -32
-	xvld	$xr1, $s3, 0
-	xvst	$xr0, $t6, -32
-	xvst	$xr1, $t6, 0
-	addi.d	$ra, $ra, -8
-	addi.d	$t6, $t6, 64
-	addi.d	$s3, $s3, 64
+	vld	$vr0, $s3, -16
+	vld	$vr1, $s3, 0
+	vst	$vr0, $t6, -16
+	vst	$vr1, $t6, 0
+	addi.d	$ra, $ra, -4
+	addi.d	$t6, $t6, 32
+	addi.d	$s3, $s3, 32
 	bnez	$ra, .LBB7_20
 # %bb.21:                               # %middle.block
                                         #   in Loop: Header=BB7_14 Depth=4

@@ -1,28 +1,21 @@
 	.file	"keyUnion.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function keyUnion
-.LCPI0_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
-	.globl	keyUnion
+	.globl	keyUnion                        # -- Begin function keyUnion
 	.p2align	2
 	.prefalign	5, .Lfunc_end0, nop
 	.type	keyUnion,@function
 keyUnion:                               # @keyUnion
 # %bb.0:
-	xvld	$xr0, $a0, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_0)
-	xvld	$xr2, $a1, 0
-	xvori.b	$xr3, $xr1, 0
-	xvshuf.d	$xr3, $xr2, $xr0
-	xvshuf.d	$xr1, $xr0, $xr2
-	xvfcmp.clt.s	$xr1, $xr3, $xr1
-	xvbitsel.v	$xr0, $xr2, $xr0, $xr1
-	xvst	$xr0, $a2, 0
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a1, 0
+	vfcmp.clt.s	$vr2, $vr0, $vr1
+	vbitsel.v	$vr0, $vr1, $vr0, $vr2
+	vst	$vr0, $a2, 0
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a1, 16
+	vfcmp.clt.s	$vr2, $vr1, $vr0
+	vbitsel.v	$vr0, $vr1, $vr0, $vr2
+	vst	$vr0, $a2, 16
 	ret
 .Lfunc_end0:
 	.size	keyUnion, .Lfunc_end0-keyUnion
@@ -33,37 +26,26 @@ keyUnion:                               # @keyUnion
 	.type	keysUnion,@function
 keysUnion:                              # @keysUnion
 # %bb.0:
-	xvld	$xr0, $a0, 8
-	xvst	$xr0, $a1, 0
+	vld	$vr0, $a0, 24
+	vst	$vr0, $a1, 16
+	vld	$vr0, $a0, 8
+	vst	$vr0, $a1, 0
 	ld.d	$a0, $a0, 40
 	beqz	$a0, .LBB1_3
 # %bb.1:                                # %.lr.ph
-	xvld	$xr0, $a1, 0
+	vld	$vr0, $a1, 0
+	vld	$vr1, $a1, 16
 	.p2align	4, , 16
 .LBB1_2:                                # =>This Inner Loop Header: Depth=1
-	xvld	$xr1, $a0, 8
-	xvfcmp.clt.s	$xr2, $xr1, $xr0
-	xvpickve2gr.w	$a2, $xr2, 3
-	xvpickve2gr.w	$a3, $xr2, 2
-	xvpickve2gr.w	$a4, $xr2, 1
-	xvpickve2gr.w	$a5, $xr2, 0
-	xvfcmp.clt.s	$xr2, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr2, 7
-	xvpickve2gr.w	$a7, $xr2, 6
-	xvpickve2gr.w	$t0, $xr2, 5
-	xvpickve2gr.w	$t1, $xr2, 4
-	vinsgr2vr.h	$vr2, $a5, 0
-	vinsgr2vr.h	$vr2, $a4, 1
-	vinsgr2vr.h	$vr2, $a3, 2
-	vinsgr2vr.h	$vr2, $a2, 3
-	vinsgr2vr.h	$vr2, $t1, 4
-	vinsgr2vr.h	$vr2, $t0, 5
-	vinsgr2vr.h	$vr2, $a7, 6
+	vld	$vr2, $a0, 8
+	vfcmp.clt.s	$vr3, $vr2, $vr0
+	vbitsel.v	$vr0, $vr0, $vr2, $vr3
+	vst	$vr0, $a1, 0
+	vld	$vr2, $a0, 24
 	ld.d	$a0, $a0, 40
-	vinsgr2vr.h	$vr2, $a6, 7
-	vext2xv.w.h	$xr2, $xr2
-	xvbitsel.v	$xr0, $xr0, $xr1, $xr2
-	xvst	$xr0, $a1, 0
+	vfcmp.clt.s	$vr3, $vr1, $vr2
+	vbitsel.v	$vr1, $vr1, $vr2, $vr3
+	vst	$vr1, $a1, 16
 	bnez	$a0, .LBB1_2
 .LBB1_3:                                # %._crit_edge
 	ret

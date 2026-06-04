@@ -20,8 +20,8 @@ init_stats:                             # @init_stats
 	st.d	$zero, $a1, 720
 	vst	$vr0, $a0, 8
 	st.d	$zero, $a0, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 92
+	vst	$vr0, $a0, 108
+	vst	$vr0, $a0, 92
 	st.d	$zero, $a0, 84
 	ret
 .Lfunc_end0:
@@ -297,11 +297,11 @@ main:                                   # @main
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a1, 728
 	st.d	$zero, $a1, 720
-	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
 	vst	$vr0, $a0, 8
 	st.d	$zero, $a0, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 92
+	vst	$vr0, $a0, 108
+	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
+	vst	$vr0, $a0, 92
 	st.d	$zero, $a0, 84
 	pcalau12i	$a0, %got_pc_hi20(enc_bottom_picture)
 	ld.d	$a0, $a0, %got_pc_lo12(enc_bottom_picture)
@@ -325,10 +325,12 @@ main:                                   # @main
 	addi.d	$a0, $a0, %pc_lo12(.L__const.information_init.yuv_types)
 	ld.d	$a1, $s0, %pc_lo12(input)
 	ld.d	$a2, $a0, 32
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
 	ldptr.w	$a0, $a1, 5112
 	st.d	$a2, $sp, 176
-	xvst	$xr0, $sp, 144
+	vst	$vr0, $sp, 160
+	vst	$vr1, $sp, 144
 	sltui	$a0, $a0, 2
 	pcalau12i	$a1, %pc_hi20(.L.str.214)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.214)
@@ -6670,8 +6672,9 @@ report:                                 # @report
 	fst.d	$fa5, $sp, 56
 	fst.d	$fa4, $sp, 48
 	fst.d	$fa3, $sp, 40
-	xvrepli.b	$xr3, 0
-	xvst	$xr3, $sp, 8
+	vrepli.b	$vr3, 0
+	vst	$vr3, $sp, 24
+	vst	$vr3, $sp, 8
 	st.d	$a7, $sp, 0
 	movfr2gr.d	$a5, $fa0
 	movfr2gr.d	$a6, $fa1
@@ -6715,8 +6718,9 @@ report:                                 # @report
 	fst.d	$fa5, $sp, 56
 	fst.d	$fa4, $sp, 48
 	fst.d	$fa3, $sp, 40
-	xvrepli.b	$xr3, 0
-	xvst	$xr3, $sp, 8
+	vrepli.b	$vr3, 0
+	vst	$vr3, $sp, 24
+	vst	$vr3, $sp, 8
 	st.d	$a5, $sp, 0
 	movfr2gr.d	$a5, $fa0
 	movfr2gr.d	$a6, $fa1

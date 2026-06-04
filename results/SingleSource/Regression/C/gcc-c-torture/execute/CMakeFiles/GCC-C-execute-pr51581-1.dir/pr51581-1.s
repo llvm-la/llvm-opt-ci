@@ -10,28 +10,28 @@ f1:                                     # @f1
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$a1, $a1, %pc_lo12(a)
 	lu12i.w	$a2, 4
-	ori	$a3, $a2, 32
+	ori	$a3, $a2, 16
 	lu12i.w	$a4, 349525
 	ori	$a4, $a4, 1366
-	xvreplgr2vr.w	$xr0, $a4
+	vreplgr2vr.w	$vr0, $a4
 	pcalau12i	$a4, %pc_hi20(c)
 	addi.d	$a4, $a4, %pc_lo12(c)
 	.p2align	4, , 16
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a5, $a1, $a0
-	xvldx	$xr1, $a5, $a2
-	xvldx	$xr2, $a5, $a3
-	xvmuh.w	$xr1, $xr1, $xr0
-	xvsrli.w	$xr3, $xr1, 31
-	xvadd.w	$xr1, $xr1, $xr3
-	xvmuh.w	$xr2, $xr2, $xr0
-	xvsrli.w	$xr3, $xr2, 31
-	xvadd.w	$xr2, $xr2, $xr3
+	vldx	$vr1, $a5, $a2
+	vldx	$vr2, $a5, $a3
+	vmuh.w	$vr1, $vr1, $vr0
+	vsrli.w	$vr3, $vr1, 31
+	vadd.w	$vr1, $vr1, $vr3
+	vmuh.w	$vr2, $vr2, $vr0
+	vsrli.w	$vr3, $vr2, 31
+	vadd.w	$vr2, $vr2, $vr3
 	add.d	$a5, $a4, $a0
-	xvstx	$xr1, $a5, $a2
-	addi.d	$a0, $a0, 64
-	xvstx	$xr2, $a5, $a3
+	vstx	$vr1, $a5, $a2
+	addi.d	$a0, $a0, 32
+	vstx	$vr2, $a5, $a3
 	bnez	$a0, .LBB0_1
 # %bb.2:                                # %middle.block
 	ret
@@ -48,26 +48,26 @@ f2:                                     # @f2
 	pcalau12i	$a1, %pc_hi20(b)
 	addi.d	$a1, $a1, %pc_lo12(b)
 	lu12i.w	$a2, 4
-	ori	$a3, $a2, 32
+	ori	$a3, $a2, 16
 	lu12i.w	$a4, -349526
 	ori	$a4, $a4, 2731
-	xvreplgr2vr.w	$xr0, $a4
+	vreplgr2vr.w	$vr0, $a4
 	pcalau12i	$a4, %pc_hi20(d)
 	addi.d	$a4, $a4, %pc_lo12(d)
 	.p2align	4, , 16
 .LBB1_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a5, $a1, $a0
-	xvldx	$xr1, $a5, $a2
-	xvldx	$xr2, $a5, $a3
-	xvmuh.wu	$xr1, $xr1, $xr0
-	xvsrli.w	$xr1, $xr1, 1
-	xvmuh.wu	$xr2, $xr2, $xr0
-	xvsrli.w	$xr2, $xr2, 1
+	vldx	$vr1, $a5, $a2
+	vldx	$vr2, $a5, $a3
+	vmuh.wu	$vr1, $vr1, $vr0
+	vsrli.w	$vr1, $vr1, 1
+	vmuh.wu	$vr2, $vr2, $vr0
+	vsrli.w	$vr2, $vr2, 1
 	add.d	$a5, $a4, $a0
-	xvstx	$xr1, $a5, $a2
-	addi.d	$a0, $a0, 64
-	xvstx	$xr2, $a5, $a3
+	vstx	$vr1, $a5, $a2
+	addi.d	$a0, $a0, 32
+	vstx	$vr2, $a5, $a3
 	bnez	$a0, .LBB1_1
 # %bb.2:                                # %middle.block
 	ret
@@ -84,30 +84,30 @@ f3:                                     # @f3
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$a1, $a1, %pc_lo12(a)
 	lu12i.w	$a2, 4
-	ori	$a3, $a2, 32
+	ori	$a3, $a2, 16
 	lu12i.w	$a4, 233016
 	ori	$a4, $a4, 3641
-	xvreplgr2vr.w	$xr0, $a4
+	vreplgr2vr.w	$vr0, $a4
 	pcalau12i	$a4, %pc_hi20(c)
 	addi.d	$a4, $a4, %pc_lo12(c)
 	.p2align	4, , 16
 .LBB2_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a5, $a1, $a0
-	xvldx	$xr1, $a5, $a2
-	xvldx	$xr2, $a5, $a3
-	xvmuh.w	$xr1, $xr1, $xr0
-	xvsrai.w	$xr1, $xr1, 2
-	xvsrli.w	$xr3, $xr1, 31
-	xvadd.w	$xr1, $xr1, $xr3
-	xvmuh.w	$xr2, $xr2, $xr0
-	xvsrai.w	$xr2, $xr2, 2
-	xvsrli.w	$xr3, $xr2, 31
-	xvadd.w	$xr2, $xr2, $xr3
+	vldx	$vr1, $a5, $a2
+	vldx	$vr2, $a5, $a3
+	vmuh.w	$vr1, $vr1, $vr0
+	vsrai.w	$vr1, $vr1, 2
+	vsrli.w	$vr3, $vr1, 31
+	vadd.w	$vr1, $vr1, $vr3
+	vmuh.w	$vr2, $vr2, $vr0
+	vsrai.w	$vr2, $vr2, 2
+	vsrli.w	$vr3, $vr2, 31
+	vadd.w	$vr2, $vr2, $vr3
 	add.d	$a5, $a4, $a0
-	xvstx	$xr1, $a5, $a2
-	addi.d	$a0, $a0, 64
-	xvstx	$xr2, $a5, $a3
+	vstx	$vr1, $a5, $a2
+	addi.d	$a0, $a0, 32
+	vstx	$vr2, $a5, $a3
 	bnez	$a0, .LBB2_1
 # %bb.2:                                # %middle.block
 	ret
@@ -124,26 +124,26 @@ f4:                                     # @f4
 	pcalau12i	$a1, %pc_hi20(b)
 	addi.d	$a1, $a1, %pc_lo12(b)
 	lu12i.w	$a2, 4
-	ori	$a3, $a2, 32
+	ori	$a3, $a2, 16
 	lu12i.w	$a4, 233016
 	ori	$a4, $a4, 3641
-	xvreplgr2vr.w	$xr0, $a4
+	vreplgr2vr.w	$vr0, $a4
 	pcalau12i	$a4, %pc_hi20(d)
 	addi.d	$a4, $a4, %pc_lo12(d)
 	.p2align	4, , 16
 .LBB3_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a5, $a1, $a0
-	xvldx	$xr1, $a5, $a2
-	xvldx	$xr2, $a5, $a3
-	xvmuh.wu	$xr1, $xr1, $xr0
-	xvsrli.w	$xr1, $xr1, 2
-	xvmuh.wu	$xr2, $xr2, $xr0
-	xvsrli.w	$xr2, $xr2, 2
+	vldx	$vr1, $a5, $a2
+	vldx	$vr2, $a5, $a3
+	vmuh.wu	$vr1, $vr1, $vr0
+	vsrli.w	$vr1, $vr1, 2
+	vmuh.wu	$vr2, $vr2, $vr0
+	vsrli.w	$vr2, $vr2, 2
 	add.d	$a5, $a4, $a0
-	xvstx	$xr1, $a5, $a2
-	addi.d	$a0, $a0, 64
-	xvstx	$xr2, $a5, $a3
+	vstx	$vr1, $a5, $a2
+	addi.d	$a0, $a0, 32
+	vstx	$vr2, $a5, $a3
 	bnez	$a0, .LBB3_1
 # %bb.2:                                # %middle.block
 	ret
@@ -160,30 +160,30 @@ f5:                                     # @f5
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$a1, $a1, %pc_lo12(a)
 	lu12i.w	$a2, 4
-	ori	$a3, $a2, 32
+	ori	$a3, $a2, 16
 	lu12i.w	$a4, 441505
 	ori	$a4, $a4, 2803
-	xvreplgr2vr.w	$xr0, $a4
+	vreplgr2vr.w	$vr0, $a4
 	pcalau12i	$a4, %pc_hi20(c)
 	addi.d	$a4, $a4, %pc_lo12(c)
 	.p2align	4, , 16
 .LBB4_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a5, $a1, $a0
-	xvldx	$xr1, $a5, $a2
-	xvldx	$xr2, $a5, $a3
-	xvmuh.w	$xr1, $xr1, $xr0
-	xvsrai.w	$xr1, $xr1, 3
-	xvsrli.w	$xr3, $xr1, 31
-	xvadd.w	$xr1, $xr1, $xr3
-	xvmuh.w	$xr2, $xr2, $xr0
-	xvsrai.w	$xr2, $xr2, 3
-	xvsrli.w	$xr3, $xr2, 31
-	xvadd.w	$xr2, $xr2, $xr3
+	vldx	$vr1, $a5, $a2
+	vldx	$vr2, $a5, $a3
+	vmuh.w	$vr1, $vr1, $vr0
+	vsrai.w	$vr1, $vr1, 3
+	vsrli.w	$vr3, $vr1, 31
+	vadd.w	$vr1, $vr1, $vr3
+	vmuh.w	$vr2, $vr2, $vr0
+	vsrai.w	$vr2, $vr2, 3
+	vsrli.w	$vr3, $vr2, 31
+	vadd.w	$vr2, $vr2, $vr3
 	add.d	$a5, $a4, $a0
-	xvstx	$xr1, $a5, $a2
-	addi.d	$a0, $a0, 64
-	xvstx	$xr2, $a5, $a3
+	vstx	$vr1, $a5, $a2
+	addi.d	$a0, $a0, 32
+	vstx	$vr2, $a5, $a3
 	bnez	$a0, .LBB4_1
 # %bb.2:                                # %middle.block
 	ret
@@ -200,32 +200,32 @@ f6:                                     # @f6
 	pcalau12i	$a1, %pc_hi20(b)
 	addi.d	$a1, $a1, %pc_lo12(b)
 	lu12i.w	$a2, 4
-	ori	$a3, $a2, 32
+	ori	$a3, $a2, 16
 	lu12i.w	$a4, -331130
 	ori	$a4, $a4, 3019
-	xvreplgr2vr.w	$xr0, $a4
+	vreplgr2vr.w	$vr0, $a4
 	pcalau12i	$a4, %pc_hi20(d)
 	addi.d	$a4, $a4, %pc_lo12(d)
 	.p2align	4, , 16
 .LBB5_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a5, $a1, $a0
-	xvldx	$xr1, $a5, $a2
-	xvldx	$xr2, $a5, $a3
-	xvmuh.wu	$xr3, $xr1, $xr0
-	xvsub.w	$xr1, $xr1, $xr3
-	xvsrli.w	$xr1, $xr1, 1
-	xvadd.w	$xr1, $xr1, $xr3
-	xvsrli.w	$xr1, $xr1, 4
-	xvmuh.wu	$xr3, $xr2, $xr0
-	xvsub.w	$xr2, $xr2, $xr3
-	xvsrli.w	$xr2, $xr2, 1
-	xvadd.w	$xr2, $xr2, $xr3
-	xvsrli.w	$xr2, $xr2, 4
+	vldx	$vr1, $a5, $a2
+	vldx	$vr2, $a5, $a3
+	vmuh.wu	$vr3, $vr1, $vr0
+	vsub.w	$vr1, $vr1, $vr3
+	vsrli.w	$vr1, $vr1, 1
+	vadd.w	$vr1, $vr1, $vr3
+	vsrli.w	$vr1, $vr1, 4
+	vmuh.wu	$vr3, $vr2, $vr0
+	vsub.w	$vr2, $vr2, $vr3
+	vsrli.w	$vr2, $vr2, 1
+	vadd.w	$vr2, $vr2, $vr3
+	vsrli.w	$vr2, $vr2, 4
 	add.d	$a5, $a4, $a0
-	xvstx	$xr1, $a5, $a2
-	addi.d	$a0, $a0, 64
-	xvstx	$xr2, $a5, $a3
+	vstx	$vr1, $a5, $a2
+	addi.d	$a0, $a0, 32
+	vstx	$vr2, $a5, $a3
 	bnez	$a0, .LBB5_1
 # %bb.2:                                # %middle.block
 	ret
@@ -242,22 +242,28 @@ f7:                                     # @f7
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$a1, $a1, %pc_lo12(a)
 	lu12i.w	$a2, 4
-	lu12i.w	$a3, 349525
-	ori	$a3, $a3, 1366
-	xvreplgr2vr.w	$xr0, $a3
-	pcalau12i	$a3, %pc_hi20(c)
-	addi.d	$a3, $a3, %pc_lo12(c)
+	ori	$a3, $a2, 16
+	lu12i.w	$a4, 349525
+	ori	$a4, $a4, 1366
+	vreplgr2vr.w	$vr0, $a4
+	pcalau12i	$a4, %pc_hi20(c)
+	addi.d	$a4, $a4, %pc_lo12(c)
 	.p2align	4, , 16
 .LBB6_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $a1, $a0
-	xvldx	$xr1, $a4, $a2
-	xvmuh.w	$xr2, $xr1, $xr0
-	xvsrli.w	$xr1, $xr1, 31
-	xvadd.w	$xr1, $xr1, $xr2
-	add.d	$a4, $a3, $a0
+	add.d	$a5, $a1, $a0
+	vldx	$vr1, $a5, $a2
+	vldx	$vr2, $a5, $a3
+	vmuh.w	$vr3, $vr1, $vr0
+	vmuh.w	$vr4, $vr2, $vr0
+	vsrli.w	$vr1, $vr1, 31
+	vsrli.w	$vr2, $vr2, 31
+	vadd.w	$vr1, $vr1, $vr3
+	vadd.w	$vr2, $vr2, $vr4
+	add.d	$a5, $a4, $a0
+	vstx	$vr1, $a5, $a2
 	addi.d	$a0, $a0, 32
-	xvstx	$xr1, $a4, $a2
+	vstx	$vr2, $a5, $a3
 	bnez	$a0, .LBB6_1
 # %bb.2:                                # %middle.block
 	ret
@@ -274,44 +280,38 @@ f8:                                     # @f8
 	pcalau12i	$a1, %pc_hi20(b)
 	addi.d	$a1, $a1, %pc_lo12(b)
 	lu12i.w	$a2, 4
-	lu12i.w	$a3, -349526
-	ori	$a3, $a3, 2731
-	lu32i.d	$a3, 0
-	xvreplgr2vr.d	$xr0, $a3
-	pcalau12i	$a3, %pc_hi20(d)
-	addi.d	$a3, $a3, %pc_lo12(d)
+	ori	$a3, $a2, 16
+	vrepli.b	$vr0, 0
+	lu12i.w	$a4, -349526
+	ori	$a4, $a4, 2731
+	lu32i.d	$a4, 0
+	vreplgr2vr.d	$vr1, $a4
+	pcalau12i	$a4, %pc_hi20(d)
+	addi.d	$a4, $a4, %pc_lo12(d)
 	.p2align	4, , 16
 .LBB7_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $a1, $a0
-	xvldx	$xr1, $a4, $a2
-	xvpermi.q	$xr2, $xr1, 1
-	vext2xv.du.wu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvmul.d	$xr1, $xr1, $xr0
-	xvmul.d	$xr2, $xr2, $xr0
-	xvsrli.d	$xr2, $xr2, 33
-	xvsrli.d	$xr1, $xr1, 33
-	xvpickve2gr.d	$a4, $xr1, 0
-	vinsgr2vr.w	$vr3, $a4, 0
-	xvpickve2gr.d	$a4, $xr1, 1
-	vinsgr2vr.w	$vr3, $a4, 1
-	xvpickve2gr.d	$a4, $xr1, 2
-	vinsgr2vr.w	$vr3, $a4, 2
-	xvpickve2gr.d	$a4, $xr1, 3
-	vinsgr2vr.w	$vr3, $a4, 3
-	xvpickve2gr.d	$a4, $xr2, 0
-	vinsgr2vr.w	$vr1, $a4, 0
-	xvpickve2gr.d	$a4, $xr2, 1
-	vinsgr2vr.w	$vr1, $a4, 1
-	xvpickve2gr.d	$a4, $xr2, 2
-	vinsgr2vr.w	$vr1, $a4, 2
-	xvpickve2gr.d	$a4, $xr2, 3
-	vinsgr2vr.w	$vr1, $a4, 3
-	xvpermi.q	$xr3, $xr1, 2
-	add.d	$a4, $a3, $a0
+	add.d	$a5, $a1, $a0
+	vldx	$vr2, $a5, $a2
+	vldx	$vr3, $a5, $a3
+	vilvl.w	$vr4, $vr0, $vr2
+	vilvh.w	$vr2, $vr0, $vr2
+	vilvl.w	$vr5, $vr0, $vr3
+	vilvh.w	$vr3, $vr0, $vr3
+	vmul.d	$vr2, $vr2, $vr1
+	vmul.d	$vr4, $vr4, $vr1
+	vmul.d	$vr3, $vr3, $vr1
+	vmul.d	$vr5, $vr5, $vr1
+	vsrli.d	$vr4, $vr4, 33
+	vsrli.d	$vr2, $vr2, 33
+	vsrli.d	$vr5, $vr5, 33
+	vsrli.d	$vr3, $vr3, 33
+	vpickev.w	$vr2, $vr2, $vr4
+	vpickev.w	$vr3, $vr3, $vr5
+	add.d	$a5, $a4, $a0
+	vstx	$vr2, $a5, $a2
 	addi.d	$a0, $a0, 32
-	xvstx	$xr3, $a4, $a2
+	vstx	$vr3, $a5, $a3
 	bnez	$a0, .LBB7_1
 # %bb.2:                                # %middle.block
 	ret
@@ -328,45 +328,30 @@ f9:                                     # @f9
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$a1, $a1, %pc_lo12(a)
 	lu12i.w	$a2, 4
-	lu12i.w	$a3, 233016
-	ori	$a3, $a3, 3641
-	xvreplgr2vr.d	$xr0, $a3
-	pcalau12i	$a3, %pc_hi20(c)
-	addi.d	$a3, $a3, %pc_lo12(c)
+	ori	$a3, $a2, 16
+	lu12i.w	$a4, 233016
+	ori	$a4, $a4, 3641
+	vreplgr2vr.w	$vr0, $a4
+	pcalau12i	$a4, %pc_hi20(c)
+	addi.d	$a4, $a4, %pc_lo12(c)
 	.p2align	4, , 16
 .LBB8_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $a1, $a0
-	xvldx	$xr1, $a4, $a2
-	vext2xv.d.w	$xr2, $xr1
-	xvpermi.q	$xr3, $xr1, 1
-	vext2xv.d.w	$xr3, $xr3
-	xvmul.d	$xr3, $xr3, $xr0
-	xvmul.d	$xr2, $xr2, $xr0
-	xvsrai.d	$xr2, $xr2, 34
-	xvpickve2gr.d	$a4, $xr2, 0
-	vinsgr2vr.w	$vr4, $a4, 0
-	xvpickve2gr.d	$a4, $xr2, 1
-	vinsgr2vr.w	$vr4, $a4, 1
-	xvpickve2gr.d	$a4, $xr2, 2
-	vinsgr2vr.w	$vr4, $a4, 2
-	xvpickve2gr.d	$a4, $xr2, 3
-	vinsgr2vr.w	$vr4, $a4, 3
-	xvsrai.d	$xr2, $xr3, 34
-	xvpickve2gr.d	$a4, $xr2, 0
-	vinsgr2vr.w	$vr3, $a4, 0
-	xvpickve2gr.d	$a4, $xr2, 1
-	vinsgr2vr.w	$vr3, $a4, 1
-	xvpickve2gr.d	$a4, $xr2, 2
-	vinsgr2vr.w	$vr3, $a4, 2
-	xvpickve2gr.d	$a4, $xr2, 3
-	vinsgr2vr.w	$vr3, $a4, 3
-	xvpermi.q	$xr4, $xr3, 2
-	xvsrli.w	$xr1, $xr1, 31
-	xvadd.w	$xr1, $xr4, $xr1
-	add.d	$a4, $a3, $a0
+	add.d	$a5, $a1, $a0
+	vldx	$vr1, $a5, $a2
+	vldx	$vr2, $a5, $a3
+	vmuh.w	$vr3, $vr1, $vr0
+	vmuh.w	$vr4, $vr2, $vr0
+	vsrai.w	$vr3, $vr3, 2
+	vsrai.w	$vr4, $vr4, 2
+	vsrli.w	$vr1, $vr1, 31
+	vsrli.w	$vr2, $vr2, 31
+	vadd.w	$vr1, $vr3, $vr1
+	vadd.w	$vr2, $vr4, $vr2
+	add.d	$a5, $a4, $a0
+	vstx	$vr1, $a5, $a2
 	addi.d	$a0, $a0, 32
-	xvstx	$xr1, $a4, $a2
+	vstx	$vr2, $a5, $a3
 	bnez	$a0, .LBB8_1
 # %bb.2:                                # %middle.block
 	ret
@@ -383,43 +368,37 @@ f10:                                    # @f10
 	pcalau12i	$a1, %pc_hi20(b)
 	addi.d	$a1, $a1, %pc_lo12(b)
 	lu12i.w	$a2, 4
-	lu12i.w	$a3, 233016
-	ori	$a3, $a3, 3641
-	xvreplgr2vr.d	$xr0, $a3
-	pcalau12i	$a3, %pc_hi20(d)
-	addi.d	$a3, $a3, %pc_lo12(d)
+	ori	$a3, $a2, 16
+	vrepli.b	$vr0, 0
+	lu12i.w	$a4, 233016
+	ori	$a4, $a4, 3641
+	vreplgr2vr.d	$vr1, $a4
+	pcalau12i	$a4, %pc_hi20(d)
+	addi.d	$a4, $a4, %pc_lo12(d)
 	.p2align	4, , 16
 .LBB9_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $a1, $a0
-	xvldx	$xr1, $a4, $a2
-	xvpermi.q	$xr2, $xr1, 1
-	vext2xv.du.wu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvmul.d	$xr1, $xr1, $xr0
-	xvmul.d	$xr2, $xr2, $xr0
-	xvsrli.d	$xr2, $xr2, 34
-	xvsrli.d	$xr1, $xr1, 34
-	xvpickve2gr.d	$a4, $xr1, 0
-	vinsgr2vr.w	$vr3, $a4, 0
-	xvpickve2gr.d	$a4, $xr1, 1
-	vinsgr2vr.w	$vr3, $a4, 1
-	xvpickve2gr.d	$a4, $xr1, 2
-	vinsgr2vr.w	$vr3, $a4, 2
-	xvpickve2gr.d	$a4, $xr1, 3
-	vinsgr2vr.w	$vr3, $a4, 3
-	xvpickve2gr.d	$a4, $xr2, 0
-	vinsgr2vr.w	$vr1, $a4, 0
-	xvpickve2gr.d	$a4, $xr2, 1
-	vinsgr2vr.w	$vr1, $a4, 1
-	xvpickve2gr.d	$a4, $xr2, 2
-	vinsgr2vr.w	$vr1, $a4, 2
-	xvpickve2gr.d	$a4, $xr2, 3
-	vinsgr2vr.w	$vr1, $a4, 3
-	xvpermi.q	$xr3, $xr1, 2
-	add.d	$a4, $a3, $a0
+	add.d	$a5, $a1, $a0
+	vldx	$vr2, $a5, $a2
+	vldx	$vr3, $a5, $a3
+	vilvl.w	$vr4, $vr0, $vr2
+	vilvh.w	$vr2, $vr0, $vr2
+	vilvl.w	$vr5, $vr0, $vr3
+	vilvh.w	$vr3, $vr0, $vr3
+	vmul.d	$vr2, $vr2, $vr1
+	vmul.d	$vr4, $vr4, $vr1
+	vmul.d	$vr3, $vr3, $vr1
+	vmul.d	$vr5, $vr5, $vr1
+	vsrli.d	$vr4, $vr4, 34
+	vsrli.d	$vr2, $vr2, 34
+	vsrli.d	$vr5, $vr5, 34
+	vsrli.d	$vr3, $vr3, 34
+	vpickev.w	$vr2, $vr2, $vr4
+	vpickev.w	$vr3, $vr3, $vr5
+	add.d	$a5, $a4, $a0
+	vstx	$vr2, $a5, $a2
 	addi.d	$a0, $a0, 32
-	xvstx	$xr3, $a4, $a2
+	vstx	$vr3, $a5, $a3
 	bnez	$a0, .LBB9_1
 # %bb.2:                                # %middle.block
 	ret
@@ -436,45 +415,30 @@ f11:                                    # @f11
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$a1, $a1, %pc_lo12(a)
 	lu12i.w	$a2, 4
-	lu12i.w	$a3, 441505
-	ori	$a3, $a3, 2803
-	xvreplgr2vr.d	$xr0, $a3
-	pcalau12i	$a3, %pc_hi20(c)
-	addi.d	$a3, $a3, %pc_lo12(c)
+	ori	$a3, $a2, 16
+	lu12i.w	$a4, 441505
+	ori	$a4, $a4, 2803
+	vreplgr2vr.w	$vr0, $a4
+	pcalau12i	$a4, %pc_hi20(c)
+	addi.d	$a4, $a4, %pc_lo12(c)
 	.p2align	4, , 16
 .LBB10_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $a1, $a0
-	xvldx	$xr1, $a4, $a2
-	vext2xv.d.w	$xr2, $xr1
-	xvpermi.q	$xr3, $xr1, 1
-	vext2xv.d.w	$xr3, $xr3
-	xvmul.d	$xr3, $xr3, $xr0
-	xvmul.d	$xr2, $xr2, $xr0
-	xvsrai.d	$xr2, $xr2, 35
-	xvpickve2gr.d	$a4, $xr2, 0
-	vinsgr2vr.w	$vr4, $a4, 0
-	xvpickve2gr.d	$a4, $xr2, 1
-	vinsgr2vr.w	$vr4, $a4, 1
-	xvpickve2gr.d	$a4, $xr2, 2
-	vinsgr2vr.w	$vr4, $a4, 2
-	xvpickve2gr.d	$a4, $xr2, 3
-	vinsgr2vr.w	$vr4, $a4, 3
-	xvsrai.d	$xr2, $xr3, 35
-	xvpickve2gr.d	$a4, $xr2, 0
-	vinsgr2vr.w	$vr3, $a4, 0
-	xvpickve2gr.d	$a4, $xr2, 1
-	vinsgr2vr.w	$vr3, $a4, 1
-	xvpickve2gr.d	$a4, $xr2, 2
-	vinsgr2vr.w	$vr3, $a4, 2
-	xvpickve2gr.d	$a4, $xr2, 3
-	vinsgr2vr.w	$vr3, $a4, 3
-	xvpermi.q	$xr4, $xr3, 2
-	xvsrli.w	$xr1, $xr1, 31
-	xvadd.w	$xr1, $xr4, $xr1
-	add.d	$a4, $a3, $a0
+	add.d	$a5, $a1, $a0
+	vldx	$vr1, $a5, $a2
+	vldx	$vr2, $a5, $a3
+	vmuh.w	$vr3, $vr1, $vr0
+	vmuh.w	$vr4, $vr2, $vr0
+	vsrai.w	$vr3, $vr3, 3
+	vsrai.w	$vr4, $vr4, 3
+	vsrli.w	$vr1, $vr1, 31
+	vsrli.w	$vr2, $vr2, 31
+	vadd.w	$vr1, $vr3, $vr1
+	vadd.w	$vr2, $vr4, $vr2
+	add.d	$a5, $a4, $a0
+	vstx	$vr1, $a5, $a2
 	addi.d	$a0, $a0, 32
-	xvstx	$xr1, $a4, $a2
+	vstx	$vr2, $a5, $a3
 	bnez	$a0, .LBB10_1
 # %bb.2:                                # %middle.block
 	ret
@@ -491,24 +455,32 @@ f12:                                    # @f12
 	pcalau12i	$a1, %pc_hi20(b)
 	addi.d	$a1, $a1, %pc_lo12(b)
 	lu12i.w	$a2, 4
-	lu12i.w	$a3, -331130
-	ori	$a3, $a3, 3019
-	xvreplgr2vr.w	$xr0, $a3
-	pcalau12i	$a3, %pc_hi20(d)
-	addi.d	$a3, $a3, %pc_lo12(d)
+	ori	$a3, $a2, 16
+	lu12i.w	$a4, -331130
+	ori	$a4, $a4, 3019
+	vreplgr2vr.w	$vr0, $a4
+	pcalau12i	$a4, %pc_hi20(d)
+	addi.d	$a4, $a4, %pc_lo12(d)
 	.p2align	4, , 16
 .LBB11_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $a1, $a0
-	xvldx	$xr1, $a4, $a2
-	xvmuh.wu	$xr2, $xr1, $xr0
-	xvsub.w	$xr1, $xr1, $xr2
-	xvsrli.w	$xr1, $xr1, 1
-	xvadd.w	$xr1, $xr1, $xr2
-	xvsrli.w	$xr1, $xr1, 4
-	add.d	$a4, $a3, $a0
+	add.d	$a5, $a1, $a0
+	vldx	$vr1, $a5, $a2
+	vldx	$vr2, $a5, $a3
+	vmuh.wu	$vr3, $vr1, $vr0
+	vmuh.wu	$vr4, $vr2, $vr0
+	vsub.w	$vr1, $vr1, $vr3
+	vsub.w	$vr2, $vr2, $vr4
+	vsrli.w	$vr1, $vr1, 1
+	vsrli.w	$vr2, $vr2, 1
+	vadd.w	$vr1, $vr1, $vr3
+	vadd.w	$vr2, $vr2, $vr4
+	vsrli.w	$vr1, $vr1, 4
+	vsrli.w	$vr2, $vr2, 4
+	add.d	$a5, $a4, $a0
+	vstx	$vr1, $a5, $a2
 	addi.d	$a0, $a0, 32
-	xvstx	$xr1, $a4, $a2
+	vstx	$vr2, $a5, $a3
 	bnez	$a0, .LBB11_1
 # %bb.2:                                # %middle.block
 	ret
@@ -521,13 +493,13 @@ f12:                                    # @f12
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
 	lu12i.w	$a0, -4
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$fp, $a1, %pc_lo12(a)
@@ -566,44 +538,42 @@ main:                                   # @main
 	lu12i.w	$s2, 4
 	lu12i.w	$a1, 349525
 	ori	$a1, $a1, 1366
-	xvreplgr2vr.w	$xr3, $a1
+	vreplgr2vr.w	$vr3, $a1
 	pcalau12i	$a1, %pc_hi20(d)
 	addi.d	$s3, $a1, %pc_lo12(d)
 	lu12i.w	$a1, -349526
 	ori	$a1, $a1, 2731
-	xvreplgr2vr.w	$xr4, $a1
+	vreplgr2vr.w	$vr4, $a1
 	.p2align	4, , 16
 .LBB12_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a1, $fp, $a0
-	xvldx	$xr0, $a1, $s2
+	vldx	$vr0, $a1, $s2
 	add.d	$a1, $s1, $a0
-	xvldx	$xr1, $a1, $s2
-	xvmuh.w	$xr0, $xr0, $xr3
-	xvsrli.w	$xr2, $xr0, 31
-	xvadd.w	$xr0, $xr0, $xr2
-	xvseq.w	$xr0, $xr1, $xr0
+	vldx	$vr1, $a1, $s2
+	vmuh.w	$vr0, $vr0, $vr3
+	vsrli.w	$vr2, $vr0, 31
+	vadd.w	$vr0, $vr0, $vr2
+	vseq.w	$vr0, $vr1, $vr0
 	add.d	$a1, $s0, $a0
-	xvldx	$xr1, $a1, $s2
+	vldx	$vr1, $a1, $s2
 	add.d	$a1, $s3, $a0
-	xvldx	$xr2, $a1, $s2
-	xvxori.b	$xr0, $xr0, 255
-	xvmuh.wu	$xr1, $xr1, $xr4
-	xvsrli.w	$xr1, $xr1, 1
-	xvseq.w	$xr1, $xr2, $xr1
-	xvorn.v	$xr0, $xr0, $xr1
-	xvmskltz.w	$xr0, $xr0
-	xvpickve2gr.wu	$a1, $xr0, 0
-	xvpickve2gr.wu	$a2, $xr0, 4
-	bstrins.d	$a1, $a2, 7, 4
+	vldx	$vr2, $a1, $s2
+	vxori.b	$vr0, $vr0, 255
+	vmuh.wu	$vr1, $vr1, $vr4
+	vsrli.w	$vr1, $vr1, 1
+	vseq.w	$vr1, $vr2, $vr1
+	vorn.v	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	bnez	$a1, .LBB12_21
 # %bb.4:                                # %vector.body.interim
                                         #   in Loop: Header=BB12_3 Depth=1
-	addi.d	$a0, $a0, 32
+	addi.d	$a0, $a0, 16
 	bnez	$a0, .LBB12_3
 # %bb.5:                                # %middle.block
-	xvst	$xr4, $sp, 112                  # 32-byte Folded Spill
-	xvst	$xr3, $sp, 144                  # 32-byte Folded Spill
+	vst	$vr4, $sp, 64                   # 16-byte Folded Spill
+	vst	$vr3, $sp, 80                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(f3)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(f4)
@@ -611,39 +581,37 @@ main:                                   # @main
 	lu12i.w	$a0, -4
 	lu12i.w	$a1, 233016
 	ori	$a1, $a1, 3641
-	xvreplgr2vr.w	$xr3, $a1
+	vreplgr2vr.w	$vr3, $a1
 	.p2align	4, , 16
 .LBB12_6:                               # %vector.body82
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a1, $fp, $a0
-	xvldx	$xr0, $a1, $s2
+	vldx	$vr0, $a1, $s2
 	add.d	$a1, $s1, $a0
-	xvldx	$xr1, $a1, $s2
-	xvmuh.w	$xr0, $xr0, $xr3
-	xvsrai.w	$xr0, $xr0, 2
-	xvsrli.w	$xr2, $xr0, 31
-	xvadd.w	$xr0, $xr0, $xr2
-	xvseq.w	$xr0, $xr1, $xr0
+	vldx	$vr1, $a1, $s2
+	vmuh.w	$vr0, $vr0, $vr3
+	vsrai.w	$vr0, $vr0, 2
+	vsrli.w	$vr2, $vr0, 31
+	vadd.w	$vr0, $vr0, $vr2
+	vseq.w	$vr0, $vr1, $vr0
 	add.d	$a1, $s0, $a0
-	xvldx	$xr1, $a1, $s2
+	vldx	$vr1, $a1, $s2
 	add.d	$a1, $s3, $a0
-	xvldx	$xr2, $a1, $s2
-	xvxori.b	$xr0, $xr0, 255
-	xvmuh.wu	$xr1, $xr1, $xr3
-	xvsrli.w	$xr1, $xr1, 2
-	xvseq.w	$xr1, $xr2, $xr1
-	xvorn.v	$xr0, $xr0, $xr1
-	xvmskltz.w	$xr0, $xr0
-	xvpickve2gr.wu	$a1, $xr0, 0
-	xvpickve2gr.wu	$a2, $xr0, 4
-	bstrins.d	$a1, $a2, 7, 4
+	vldx	$vr2, $a1, $s2
+	vxori.b	$vr0, $vr0, 255
+	vmuh.wu	$vr1, $vr1, $vr3
+	vsrli.w	$vr1, $vr1, 2
+	vseq.w	$vr1, $vr2, $vr1
+	vorn.v	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	bnez	$a1, .LBB12_21
 # %bb.7:                                # %vector.body.interim89
                                         #   in Loop: Header=BB12_6 Depth=1
-	addi.d	$a0, $a0, 32
+	addi.d	$a0, $a0, 16
 	bnez	$a0, .LBB12_6
 # %bb.8:                                # %middle.block90
-	xvst	$xr3, $sp, 80                   # 32-byte Folded Spill
+	vst	$vr3, $sp, 48                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(f5)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(f6)
@@ -651,81 +619,77 @@ main:                                   # @main
 	lu12i.w	$a0, -4
 	lu12i.w	$a1, 441505
 	ori	$a1, $a1, 2803
-	xvreplgr2vr.w	$xr4, $a1
+	vreplgr2vr.w	$vr4, $a1
 	lu12i.w	$a1, -331130
 	ori	$a1, $a1, 3019
-	xvreplgr2vr.w	$xr5, $a1
+	vreplgr2vr.w	$vr5, $a1
 	.p2align	4, , 16
 .LBB12_9:                               # %vector.body96
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a1, $fp, $a0
-	xvldx	$xr0, $a1, $s2
+	vldx	$vr0, $a1, $s2
 	add.d	$a1, $s1, $a0
-	xvldx	$xr1, $a1, $s2
-	xvmuh.w	$xr0, $xr0, $xr4
-	xvsrai.w	$xr0, $xr0, 3
-	xvsrli.w	$xr2, $xr0, 31
-	xvadd.w	$xr0, $xr0, $xr2
-	xvseq.w	$xr0, $xr1, $xr0
+	vldx	$vr1, $a1, $s2
+	vmuh.w	$vr0, $vr0, $vr4
+	vsrai.w	$vr0, $vr0, 3
+	vsrli.w	$vr2, $vr0, 31
+	vadd.w	$vr0, $vr0, $vr2
+	vseq.w	$vr0, $vr1, $vr0
 	add.d	$a1, $s0, $a0
-	xvldx	$xr1, $a1, $s2
-	xvxori.b	$xr0, $xr0, 255
+	vldx	$vr1, $a1, $s2
+	vxori.b	$vr0, $vr0, 255
 	add.d	$a1, $s3, $a0
-	xvldx	$xr2, $a1, $s2
-	xvmuh.wu	$xr3, $xr1, $xr5
-	xvsub.w	$xr1, $xr1, $xr3
-	xvsrli.w	$xr1, $xr1, 1
-	xvadd.w	$xr1, $xr1, $xr3
-	xvsrli.w	$xr1, $xr1, 4
-	xvseq.w	$xr1, $xr2, $xr1
-	xvorn.v	$xr0, $xr0, $xr1
-	xvmskltz.w	$xr0, $xr0
-	xvpickve2gr.wu	$a1, $xr0, 0
-	xvpickve2gr.wu	$a2, $xr0, 4
-	bstrins.d	$a1, $a2, 7, 4
+	vldx	$vr2, $a1, $s2
+	vmuh.wu	$vr3, $vr1, $vr5
+	vsub.w	$vr1, $vr1, $vr3
+	vsrli.w	$vr1, $vr1, 1
+	vadd.w	$vr1, $vr1, $vr3
+	vsrli.w	$vr1, $vr1, 4
+	vseq.w	$vr1, $vr2, $vr1
+	vorn.v	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	bnez	$a1, .LBB12_21
 # %bb.10:                               # %vector.body.interim103
                                         #   in Loop: Header=BB12_9 Depth=1
-	addi.d	$a0, $a0, 32
+	addi.d	$a0, $a0, 16
 	bnez	$a0, .LBB12_9
 # %bb.11:                               # %middle.block104
-	xvst	$xr5, $sp, 16                   # 32-byte Folded Spill
-	xvst	$xr4, $sp, 48                   # 32-byte Folded Spill
+	vst	$vr5, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr4, $sp, 32                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(f7)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(f8)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, -4
-	xvld	$xr3, $sp, 144                  # 32-byte Folded Reload
-	xvld	$xr4, $sp, 112                  # 32-byte Folded Reload
+	vld	$vr3, $sp, 80                   # 16-byte Folded Reload
+	vld	$vr4, $sp, 64                   # 16-byte Folded Reload
 	.p2align	4, , 16
 .LBB12_12:                              # %vector.body110
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a1, $fp, $a0
-	xvldx	$xr0, $a1, $s2
+	vldx	$vr0, $a1, $s2
 	add.d	$a1, $s1, $a0
-	xvldx	$xr1, $a1, $s2
-	xvmuh.w	$xr0, $xr0, $xr3
-	xvsrli.w	$xr2, $xr0, 31
-	xvadd.w	$xr0, $xr0, $xr2
-	xvseq.w	$xr0, $xr1, $xr0
+	vldx	$vr1, $a1, $s2
+	vmuh.w	$vr0, $vr0, $vr3
+	vsrli.w	$vr2, $vr0, 31
+	vadd.w	$vr0, $vr0, $vr2
+	vseq.w	$vr0, $vr1, $vr0
 	add.d	$a1, $s0, $a0
-	xvldx	$xr1, $a1, $s2
+	vldx	$vr1, $a1, $s2
 	add.d	$a1, $s3, $a0
-	xvldx	$xr2, $a1, $s2
-	xvxori.b	$xr0, $xr0, 255
-	xvmuh.wu	$xr1, $xr1, $xr4
-	xvsrli.w	$xr1, $xr1, 1
-	xvseq.w	$xr1, $xr2, $xr1
-	xvorn.v	$xr0, $xr0, $xr1
-	xvmskltz.w	$xr0, $xr0
-	xvpickve2gr.wu	$a1, $xr0, 0
-	xvpickve2gr.wu	$a2, $xr0, 4
-	bstrins.d	$a1, $a2, 7, 4
+	vldx	$vr2, $a1, $s2
+	vxori.b	$vr0, $vr0, 255
+	vmuh.wu	$vr1, $vr1, $vr4
+	vsrli.w	$vr1, $vr1, 1
+	vseq.w	$vr1, $vr2, $vr1
+	vorn.v	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	bnez	$a1, .LBB12_21
 # %bb.13:                               # %vector.body.interim117
                                         #   in Loop: Header=BB12_12 Depth=1
-	addi.d	$a0, $a0, 32
+	addi.d	$a0, $a0, 16
 	bnez	$a0, .LBB12_12
 # %bb.14:                               # %middle.block118
 	pcaddu18i	$ra, %call36(f9)
@@ -733,36 +697,34 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(f10)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, -4
-	xvld	$xr3, $sp, 80                   # 32-byte Folded Reload
+	vld	$vr3, $sp, 48                   # 16-byte Folded Reload
 	.p2align	4, , 16
 .LBB12_15:                              # %vector.body124
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a1, $fp, $a0
-	xvldx	$xr0, $a1, $s2
+	vldx	$vr0, $a1, $s2
 	add.d	$a1, $s1, $a0
-	xvldx	$xr1, $a1, $s2
-	xvmuh.w	$xr0, $xr0, $xr3
-	xvsrai.w	$xr0, $xr0, 2
-	xvsrli.w	$xr2, $xr0, 31
-	xvadd.w	$xr0, $xr0, $xr2
-	xvseq.w	$xr0, $xr1, $xr0
+	vldx	$vr1, $a1, $s2
+	vmuh.w	$vr0, $vr0, $vr3
+	vsrai.w	$vr0, $vr0, 2
+	vsrli.w	$vr2, $vr0, 31
+	vadd.w	$vr0, $vr0, $vr2
+	vseq.w	$vr0, $vr1, $vr0
 	add.d	$a1, $s0, $a0
-	xvldx	$xr1, $a1, $s2
+	vldx	$vr1, $a1, $s2
 	add.d	$a1, $s3, $a0
-	xvldx	$xr2, $a1, $s2
-	xvxori.b	$xr0, $xr0, 255
-	xvmuh.wu	$xr1, $xr1, $xr3
-	xvsrli.w	$xr1, $xr1, 2
-	xvseq.w	$xr1, $xr2, $xr1
-	xvorn.v	$xr0, $xr0, $xr1
-	xvmskltz.w	$xr0, $xr0
-	xvpickve2gr.wu	$a1, $xr0, 0
-	xvpickve2gr.wu	$a2, $xr0, 4
-	bstrins.d	$a1, $a2, 7, 4
+	vldx	$vr2, $a1, $s2
+	vxori.b	$vr0, $vr0, 255
+	vmuh.wu	$vr1, $vr1, $vr3
+	vsrli.w	$vr1, $vr1, 2
+	vseq.w	$vr1, $vr2, $vr1
+	vorn.v	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	bnez	$a1, .LBB12_21
 # %bb.16:                               # %vector.body.interim131
                                         #   in Loop: Header=BB12_15 Depth=1
-	addi.d	$a0, $a0, 32
+	addi.d	$a0, $a0, 16
 	bnez	$a0, .LBB12_15
 # %bb.17:                               # %middle.block132
 	pcaddu18i	$ra, %call36(f11)
@@ -770,50 +732,48 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(f12)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, -4
-	xvld	$xr4, $sp, 48                   # 32-byte Folded Reload
-	xvld	$xr5, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr4, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr5, $sp, 16                   # 16-byte Folded Reload
 	.p2align	4, , 16
 .LBB12_18:                              # %vector.body138
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a1, $fp, $a0
-	xvldx	$xr0, $a1, $s2
+	vldx	$vr0, $a1, $s2
 	add.d	$a1, $s1, $a0
-	xvldx	$xr1, $a1, $s2
-	xvmuh.w	$xr0, $xr0, $xr4
-	xvsrai.w	$xr0, $xr0, 3
-	xvsrli.w	$xr2, $xr0, 31
-	xvadd.w	$xr0, $xr0, $xr2
-	xvseq.w	$xr0, $xr1, $xr0
+	vldx	$vr1, $a1, $s2
+	vmuh.w	$vr0, $vr0, $vr4
+	vsrai.w	$vr0, $vr0, 3
+	vsrli.w	$vr2, $vr0, 31
+	vadd.w	$vr0, $vr0, $vr2
+	vseq.w	$vr0, $vr1, $vr0
 	add.d	$a1, $s0, $a0
-	xvldx	$xr1, $a1, $s2
-	xvxori.b	$xr0, $xr0, 255
+	vldx	$vr1, $a1, $s2
+	vxori.b	$vr0, $vr0, 255
 	add.d	$a1, $s3, $a0
-	xvldx	$xr2, $a1, $s2
-	xvmuh.wu	$xr3, $xr1, $xr5
-	xvsub.w	$xr1, $xr1, $xr3
-	xvsrli.w	$xr1, $xr1, 1
-	xvadd.w	$xr1, $xr1, $xr3
-	xvsrli.w	$xr1, $xr1, 4
-	xvseq.w	$xr1, $xr2, $xr1
-	xvorn.v	$xr0, $xr0, $xr1
-	xvmskltz.w	$xr0, $xr0
-	xvpickve2gr.wu	$a1, $xr0, 0
-	xvpickve2gr.wu	$a2, $xr0, 4
-	bstrins.d	$a1, $a2, 7, 4
+	vldx	$vr2, $a1, $s2
+	vmuh.wu	$vr3, $vr1, $vr5
+	vsub.w	$vr1, $vr1, $vr3
+	vsrli.w	$vr1, $vr1, 1
+	vadd.w	$vr1, $vr1, $vr3
+	vsrli.w	$vr1, $vr1, 4
+	vseq.w	$vr1, $vr2, $vr1
+	vorn.v	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	bnez	$a1, .LBB12_21
 # %bb.19:                               # %vector.body.interim145
                                         #   in Loop: Header=BB12_18 Depth=1
-	addi.d	$a0, $a0, 32
+	addi.d	$a0, $a0, 16
 	bnez	$a0, .LBB12_18
 # %bb.20:                               # %middle.block146
 	move	$a0, $zero
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 	ret
 .LBB12_21:                              # %vector.early.exit.check
 	pcaddu18i	$ra, %call36(abort)

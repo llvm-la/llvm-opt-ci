@@ -3343,170 +3343,99 @@ getptree:                               # @getptree
 	move	$fp, $a2
 	move	$s0, $a0
 	addi.d	$s1, $a0, 1
-	blez	$a1, .LBB21_4
-# %bb.1:                                # %iter.check
-	ori	$a3, $zero, 1
-	ori	$a0, $zero, 4
-	ori	$a4, $zero, 1
-	bltu	$a1, $a0, .LBB21_12
-# %bb.2:                                # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
+	blez	$a1, .LBB21_9
+# %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 1
-	bgeu	$a1, $a2, .LBB21_5
-# %bb.3:
-	move	$a2, $zero
-	ori	$a4, $zero, 1
-	b	.LBB21_9
-.LBB21_4:
-	move	$s2, $zero
-	move	$a0, $zero
-	b	.LBB21_29
-.LBB21_5:                               # %vector.ph
-	andi	$a5, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.w	$a2, $a2, 4
-	srli.d	$a4, $a1, 4
+	ori	$a2, $zero, 8
 	ori	$a3, $zero, 1
-	bstrins.d	$a3, $a4, 30, 4
-	xvrepli.w	$xr0, 1
-	xvreplgr2vr.w	$xr1, $s1
-	move	$a4, $a2
-	xvori.b	$xr2, $xr0, 0
-	.p2align	4, , 16
-.LBB21_6:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvmul.w	$xr0, $xr0, $xr1
-	addi.w	$a4, $a4, -16
-	xvmul.w	$xr2, $xr2, $xr1
-	bnez	$a4, .LBB21_6
-# %bb.7:                                # %middle.block
-	xvmul.w	$xr0, $xr2, $xr0
-	xvpermi.d	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvshuf4i.w	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvrepl128vei.w	$xr1, $xr0, 1
-	xvmul.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a4, $xr0, 0
-	beq	$a1, $a2, .LBB21_14
-# %bb.8:                                # %vec.epilog.iter.check
-	beqz	$a5, .LBB21_12
-.LBB21_9:                               # %vec.epilog.ph
-	bstrpick.d	$a3, $a1, 30, 2
-	slli.w	$a5, $a3, 2
-	srli.d	$a3, $a1, 2
-	bstrins.d	$a0, $a3, 30, 2
+	bltu	$a1, $a2, .LBB21_5
+# %bb.2:                                # %vector.ph
+	bstrpick.d	$a0, $a1, 30, 3
+	slli.w	$a2, $a0, 3
+	srli.d	$a3, $a1, 3
+	ori	$a0, $zero, 1
+	bstrins.d	$a0, $a3, 30, 3
 	vrepli.w	$vr0, 1
-	vinsgr2vr.w	$vr0, $a4, 0
 	vreplgr2vr.w	$vr1, $s1
-	sub.d	$a2, $a2, $a5
+	move	$a3, $a2
+	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
-.LBB21_10:                              # %vec.epilog.vector.body
+.LBB21_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	addi.w	$a2, $a2, 4
 	vmul.w	$vr0, $vr0, $vr1
-	bnez	$a2, .LBB21_10
-# %bb.11:                               # %vec.epilog.middle.block
+	addi.w	$a3, $a3, -8
+	vmul.w	$vr2, $vr2, $vr1
+	bnez	$a3, .LBB21_3
+# %bb.4:                                # %middle.block
+	vmul.w	$vr0, $vr2, $vr0
 	vshuf4i.w	$vr1, $vr0, 14
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a4, $vr0, 0
-	move	$a3, $a0
-	beq	$a1, $a5, .LBB21_14
-.LBB21_12:                              # %vec.epilog.scalar.ph.preheader
-	sub.d	$a0, $a1, $a3
+	vpickve2gr.w	$a3, $vr0, 0
+	beq	$a1, $a2, .LBB21_7
+.LBB21_5:                               # %scalar.ph.preheader
+	sub.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, 1
 	.p2align	4, , 16
-.LBB21_13:                              # %vec.epilog.scalar.ph
+.LBB21_6:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	addi.w	$a0, $a0, -1
-	mul.d	$a4, $a4, $s1
-	bnez	$a0, .LBB21_13
-.LBB21_14:                              # %._crit_edge
-	addi.w	$a0, $a4, -1
+	mul.d	$a3, $a3, $s1
+	bnez	$a0, .LBB21_6
+.LBB21_7:                               # %._crit_edge
+	addi.w	$a0, $a3, -1
 	ori	$a4, $zero, 1
 	div.w	$s2, $a0, $s0
-	bne	$a1, $a4, .LBB21_16
-# %bb.15:
+	bne	$a1, $a4, .LBB21_10
+# %bb.8:
 	move	$a0, $zero
-	b	.LBB21_29
-.LBB21_16:                              # %iter.check205
-	ori	$a0, $zero, 5
-	ori	$a2, $zero, 1
-	bltu	$a1, $a0, .LBB21_26
-# %bb.17:                               # %vector.main.loop.iter.check188
-	addi.w	$a0, $a1, -1
-	ori	$a2, $zero, 17
-	ori	$a3, $zero, 1
-	bgeu	$a1, $a2, .LBB21_19
-# %bb.18:
-	move	$a5, $zero
+	b	.LBB21_17
+.LBB21_9:
+	move	$s2, $zero
+	move	$a0, $zero
+	b	.LBB21_17
+.LBB21_10:                              # %.lr.ph91
+	ori	$a2, $zero, 9
+	ori	$a0, $zero, 1
+	bltu	$a1, $a2, .LBB21_14
+# %bb.11:                               # %vector.ph178
+	addi.w	$a2, $a1, -1
+	move	$a3, $a2
+	bstrins.d	$a3, $zero, 2, 0
 	ori	$a4, $zero, 1
-	b	.LBB21_23
-.LBB21_19:                              # %vector.ph190
-	andi	$a6, $a0, 12
-	move	$a5, $a0
-	bstrins.d	$a5, $zero, 3, 0
-	ori	$a4, $zero, 1
-	move	$a2, $a0
-	bstrins.d	$a2, $a4, 3, 0
-	xvrepli.w	$xr0, 1
-	xvreplgr2vr.w	$xr1, $s1
-	move	$a4, $a5
-	xvori.b	$xr2, $xr0, 0
-	.p2align	4, , 16
-.LBB21_20:                              # %vector.body195
-                                        # =>This Inner Loop Header: Depth=1
-	xvmul.w	$xr0, $xr0, $xr1
-	addi.w	$a4, $a4, -16
-	xvmul.w	$xr2, $xr2, $xr1
-	bnez	$a4, .LBB21_20
-# %bb.21:                               # %middle.block200
-	xvmul.w	$xr0, $xr2, $xr0
-	xvpermi.d	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvshuf4i.w	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvrepl128vei.w	$xr1, $xr0, 1
-	xvmul.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a4, $xr0, 0
-	beq	$a0, $a5, .LBB21_28
-# %bb.22:                               # %vec.epilog.iter.check207
-	beqz	$a6, .LBB21_26
-.LBB21_23:                              # %vec.epilog.ph209
-	move	$a6, $a0
-	bstrins.d	$a6, $zero, 1, 0
-	move	$a2, $a0
-	bstrins.d	$a2, $a3, 1, 0
+	move	$a0, $a2
+	bstrins.d	$a0, $a4, 2, 0
 	vrepli.w	$vr0, 1
-	vinsgr2vr.w	$vr0, $a4, 0
 	vreplgr2vr.w	$vr1, $s1
-	sub.d	$a3, $a5, $a6
+	move	$a4, $a3
+	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
-.LBB21_24:                              # %vec.epilog.vector.body214
+.LBB21_12:                              # %vector.body183
                                         # =>This Inner Loop Header: Depth=1
-	addi.w	$a3, $a3, 4
 	vmul.w	$vr0, $vr0, $vr1
-	bnez	$a3, .LBB21_24
-# %bb.25:                               # %vec.epilog.middle.block218
+	addi.w	$a4, $a4, -8
+	vmul.w	$vr2, $vr2, $vr1
+	bnez	$a4, .LBB21_12
+# %bb.13:                               # %middle.block188
+	vmul.w	$vr0, $vr2, $vr0
 	vshuf4i.w	$vr1, $vr0, 14
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a4, $vr0, 0
-	beq	$a0, $a6, .LBB21_28
-.LBB21_26:                              # %vec.epilog.scalar.ph206.preheader
-	sub.d	$a0, $a1, $a2
+	beq	$a2, $a3, .LBB21_16
+.LBB21_14:                              # %scalar.ph176.preheader
+	sub.d	$a0, $a1, $a0
 	.p2align	4, , 16
-.LBB21_27:                              # %vec.epilog.scalar.ph206
+.LBB21_15:                              # %scalar.ph176
                                         # =>This Inner Loop Header: Depth=1
 	addi.w	$a0, $a0, -1
 	mul.d	$a4, $a4, $s1
-	bnez	$a0, .LBB21_27
-.LBB21_28:                              # %._crit_edge92.loopexit
+	bnez	$a0, .LBB21_15
+.LBB21_16:                              # %._crit_edge92.loopexit
 	addi.w	$a0, $a4, -1
-.LBB21_29:                              # %._crit_edge92
+.LBB21_17:                              # %._crit_edge92
 	div.w	$s3, $a0, $s0
 	addi.w	$a0, $s2, 1
 	slli.d	$a0, $a0, 4
@@ -3515,32 +3444,32 @@ getptree:                               # @getptree
 	st.w	$s0, $a0, 16
 	lu52i.d	$a1, $zero, 1023
 	st.d	$a1, $a0, 24
-	blez	$s3, .LBB21_63
-# %bb.30:                               # %.lr.ph105
-	bltz	$s0, .LBB21_63
-# %bb.31:                               # %.lr.ph100.preheader
+	blez	$s3, .LBB21_51
+# %bb.18:                               # %.lr.ph105
+	bltz	$s0, .LBB21_51
+# %bb.19:                               # %.lr.ph100.preheader
 	addi.d	$a1, $s3, 1
 	bstrpick.d	$a1, $a1, 31, 0
 	ori	$a2, $zero, 1
 	movgr2fr.d	$fa0, $zero
 	ori	$a3, $zero, 1
-	b	.LBB21_33
+	b	.LBB21_21
 	.p2align	4, , 16
-.LBB21_32:                              # %._crit_edge101
-                                        #   in Loop: Header=BB21_33 Depth=1
+.LBB21_20:                              # %._crit_edge101
+                                        #   in Loop: Header=BB21_21 Depth=1
 	addi.d	$a3, $a3, 1
-	beq	$a3, $a1, .LBB21_63
-.LBB21_33:                              # %.lr.ph100
+	beq	$a3, $a1, .LBB21_51
+.LBB21_21:                              # %.lr.ph100
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB21_38 Depth 2
-                                        #       Child Loop BB21_47 Depth 3
+                                        #     Child Loop BB21_26 Depth 2
+                                        #       Child Loop BB21_35 Depth 3
+                                        #       Child Loop BB21_37 Depth 3
+                                        #       Child Loop BB21_30 Depth 3
+                                        #       Child Loop BB21_32 Depth 3
+                                        #       Child Loop BB21_46 Depth 3
                                         #       Child Loop BB21_49 Depth 3
                                         #       Child Loop BB21_42 Depth 3
                                         #       Child Loop BB21_44 Depth 3
-                                        #       Child Loop BB21_58 Depth 3
-                                        #       Child Loop BB21_61 Depth 3
-                                        #       Child Loop BB21_54 Depth 3
-                                        #       Child Loop BB21_56 Depth 3
 	move	$t3, $zero
 	mul.d	$a4, $s1, $a3
 	slli.d	$a5, $a3, 4
@@ -3550,17 +3479,17 @@ getptree:                               # @getptree
 	ori	$a6, $zero, 1
 	move	$a7, $fp
 	move	$t1, $s0
-	b	.LBB21_38
-.LBB21_34:                              #   in Loop: Header=BB21_38 Depth=2
+	b	.LBB21_26
+.LBB21_22:                              #   in Loop: Header=BB21_26 Depth=2
 	vldi	$vr4, -912
-.LBB21_35:                              # %factorial.exit31.i14.i
-                                        #   in Loop: Header=BB21_38 Depth=2
+.LBB21_23:                              # %factorial.exit31.i14.i
+                                        #   in Loop: Header=BB21_26 Depth=2
 	fdiv.d	$fa3, $fa3, $fa4
-.LBB21_36:                              # %combination.exit37.i
-                                        #   in Loop: Header=BB21_38 Depth=2
+.LBB21_24:                              # %combination.exit37.i
+                                        #   in Loop: Header=BB21_26 Depth=2
 	fmul.d	$fa2, $fa2, $fa3
-.LBB21_37:                              # %probability.exit
-                                        #   in Loop: Header=BB21_38 Depth=2
+.LBB21_25:                              # %probability.exit
+                                        #   in Loop: Header=BB21_26 Depth=2
 	alsl.d	$t3, $a4, $a0, 4
 	fmul.d	$fa1, $fa1, $fa2
 	fst.d	$fa1, $t3, 8
@@ -3568,17 +3497,17 @@ getptree:                               # @getptree
 	addi.d	$t1, $t1, -1
 	addi.w	$a7, $a7, -1
 	addi.d	$a6, $a6, 1
-	beq	$s0, $t2, .LBB21_32
-.LBB21_38:                              #   Parent Loop BB21_33 Depth=1
+	beq	$s0, $t2, .LBB21_20
+.LBB21_26:                              #   Parent Loop BB21_21 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB21_47 Depth 3
+                                        #       Child Loop BB21_35 Depth 3
+                                        #       Child Loop BB21_37 Depth 3
+                                        #       Child Loop BB21_30 Depth 3
+                                        #       Child Loop BB21_32 Depth 3
+                                        #       Child Loop BB21_46 Depth 3
                                         #       Child Loop BB21_49 Depth 3
                                         #       Child Loop BB21_42 Depth 3
                                         #       Child Loop BB21_44 Depth 3
-                                        #       Child Loop BB21_58 Depth 3
-                                        #       Child Loop BB21_61 Depth 3
-                                        #       Child Loop BB21_54 Depth 3
-                                        #       Child Loop BB21_56 Depth 3
 	move	$t2, $t3
 	addi.w	$a4, $a4, 1
 	add.d	$t0, $t0, $t3
@@ -3588,37 +3517,37 @@ getptree:                               # @getptree
 	fld.d	$fa1, $a5, 8
 	add.w	$t3, $t0, $t2
 	fmov.d	$fa2, $fa0
-	blt	$fp, $t3, .LBB21_37
-# %bb.39:                               #   in Loop: Header=BB21_38 Depth=2
+	blt	$fp, $t3, .LBB21_25
+# %bb.27:                               #   in Loop: Header=BB21_26 Depth=2
 	sub.w	$t3, $s0, $t2
 	vldi	$vr2, -912
 	sub.w	$t4, $t0, $t3
-	bge	$t3, $t4, .LBB21_45
-# %bb.40:                               # %.preheader.i.i
-                                        #   in Loop: Header=BB21_38 Depth=2
-	blez	$t3, .LBB21_51
-# %bb.41:                               # %.lr.ph40.i.i.preheader
-                                        #   in Loop: Header=BB21_38 Depth=2
+	bge	$t3, $t4, .LBB21_33
+# %bb.28:                               # %.preheader.i.i
+                                        #   in Loop: Header=BB21_26 Depth=2
+	blez	$t3, .LBB21_39
+# %bb.29:                               # %.lr.ph40.i.i.preheader
+                                        #   in Loop: Header=BB21_26 Depth=2
 	move	$t4, $t0
 	move	$t5, $t1
 	.p2align	4, , 16
-.LBB21_42:                              # %.lr.ph40.i.i
-                                        #   Parent Loop BB21_33 Depth=1
-                                        #     Parent Loop BB21_38 Depth=2
+.LBB21_30:                              # %.lr.ph40.i.i
+                                        #   Parent Loop BB21_21 Depth=1
+                                        #     Parent Loop BB21_26 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	movgr2fr.w	$fa3, $t4
 	ffint.d.w	$fa3, $fa3
 	fmul.d	$fa2, $fa2, $fa3
 	addi.w	$t5, $t5, -1
 	addi.w	$t4, $t4, -1
-	bnez	$t5, .LBB21_42
-# %bb.43:                               # %.lr.ph.i.i.i.preheader
-                                        #   in Loop: Header=BB21_38 Depth=2
+	bnez	$t5, .LBB21_30
+# %bb.31:                               # %.lr.ph.i.i.i.preheader
+                                        #   in Loop: Header=BB21_26 Depth=2
 	vldi	$vr3, -912
 	.p2align	4, , 16
-.LBB21_44:                              # %.lr.ph.i.i.i
-                                        #   Parent Loop BB21_33 Depth=1
-                                        #     Parent Loop BB21_38 Depth=2
+.LBB21_32:                              # %.lr.ph.i.i.i
+                                        #   Parent Loop BB21_21 Depth=1
+                                        #     Parent Loop BB21_26 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	move	$t4, $t3
 	bstrpick.d	$t3, $t3, 31, 0
@@ -3626,33 +3555,33 @@ getptree:                               # @getptree
 	ffint.d.l	$fa4, $fa4
 	fmul.d	$fa3, $fa3, $fa4
 	addi.w	$t3, $t4, -1
-	bltu	$a2, $t4, .LBB21_44
-	b	.LBB21_50
+	bltu	$a2, $t4, .LBB21_32
+	b	.LBB21_38
 	.p2align	4, , 16
-.LBB21_45:                              # %.preheader32.i.i
-                                        #   in Loop: Header=BB21_38 Depth=2
-	bge	$t3, $t0, .LBB21_48
-# %bb.46:                               # %.lr.ph.i.i.preheader
-                                        #   in Loop: Header=BB21_38 Depth=2
+.LBB21_33:                              # %.preheader32.i.i
+                                        #   in Loop: Header=BB21_26 Depth=2
+	bge	$t3, $t0, .LBB21_36
+# %bb.34:                               # %.lr.ph.i.i.preheader
+                                        #   in Loop: Header=BB21_26 Depth=2
 	move	$t5, $t0
 	.p2align	4, , 16
-.LBB21_47:                              # %.lr.ph.i.i
-                                        #   Parent Loop BB21_33 Depth=1
-                                        #     Parent Loop BB21_38 Depth=2
+.LBB21_35:                              # %.lr.ph.i.i
+                                        #   Parent Loop BB21_21 Depth=1
+                                        #     Parent Loop BB21_26 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	movgr2fr.w	$fa3, $t5
 	ffint.d.w	$fa3, $fa3
 	addi.w	$t5, $t5, -1
 	fmul.d	$fa2, $fa2, $fa3
-	blt	$t3, $t5, .LBB21_47
-.LBB21_48:                              # %._crit_edge.i.i
-                                        #   in Loop: Header=BB21_38 Depth=2
+	blt	$t3, $t5, .LBB21_35
+.LBB21_36:                              # %._crit_edge.i.i
+                                        #   in Loop: Header=BB21_26 Depth=2
 	vldi	$vr3, -912
-	blez	$t4, .LBB21_50
+	blez	$t4, .LBB21_38
 	.p2align	4, , 16
-.LBB21_49:                              # %.lr.ph.i28.i.i
-                                        #   Parent Loop BB21_33 Depth=1
-                                        #     Parent Loop BB21_38 Depth=2
+.LBB21_37:                              # %.lr.ph.i28.i.i
+                                        #   Parent Loop BB21_21 Depth=1
+                                        #     Parent Loop BB21_26 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	move	$t3, $t4
 	bstrpick.d	$t4, $t4, 31, 0
@@ -3660,26 +3589,26 @@ getptree:                               # @getptree
 	ffint.d.l	$fa4, $fa4
 	fmul.d	$fa3, $fa3, $fa4
 	addi.w	$t4, $t3, -1
-	bltu	$a2, $t3, .LBB21_49
-.LBB21_50:                              # %factorial.exit31.i.i
-                                        #   in Loop: Header=BB21_38 Depth=2
+	bltu	$a2, $t3, .LBB21_37
+.LBB21_38:                              # %factorial.exit31.i.i
+                                        #   in Loop: Header=BB21_26 Depth=2
 	fdiv.d	$fa2, $fa2, $fa3
-.LBB21_51:                              # %combination.exit.i
-                                        #   in Loop: Header=BB21_38 Depth=2
+.LBB21_39:                              # %combination.exit.i
+                                        #   in Loop: Header=BB21_26 Depth=2
 	sub.w	$t3, $fp, $t0
 	sub.w	$t4, $t3, $t2
-	bge	$t2, $t4, .LBB21_57
-# %bb.52:                               # %.preheader.i24.i
-                                        #   in Loop: Header=BB21_38 Depth=2
-	beqz	$t2, .LBB21_62
-# %bb.53:                               # %.lr.ph40.i29.i.preheader
-                                        #   in Loop: Header=BB21_38 Depth=2
+	bge	$t2, $t4, .LBB21_45
+# %bb.40:                               # %.preheader.i24.i
+                                        #   in Loop: Header=BB21_26 Depth=2
+	beqz	$t2, .LBB21_50
+# %bb.41:                               # %.lr.ph40.i29.i.preheader
+                                        #   in Loop: Header=BB21_26 Depth=2
 	move	$t4, $zero
 	vldi	$vr3, -912
 	.p2align	4, , 16
-.LBB21_54:                              # %.lr.ph40.i29.i
-                                        #   Parent Loop BB21_33 Depth=1
-                                        #     Parent Loop BB21_38 Depth=2
+.LBB21_42:                              # %.lr.ph40.i29.i
+                                        #   Parent Loop BB21_21 Depth=1
+                                        #     Parent Loop BB21_26 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$t5, $t3, $t4
 	movgr2fr.w	$fa4, $t5
@@ -3687,49 +3616,49 @@ getptree:                               # @getptree
 	addi.w	$t4, $t4, -1
 	add.w	$t5, $t2, $t4
 	fmul.d	$fa3, $fa3, $fa4
-	bnez	$t5, .LBB21_54
-# %bb.55:                               # %.lr.ph.i.i34.i.preheader
-                                        #   in Loop: Header=BB21_38 Depth=2
+	bnez	$t5, .LBB21_42
+# %bb.43:                               # %.lr.ph.i.i34.i.preheader
+                                        #   in Loop: Header=BB21_26 Depth=2
 	vldi	$vr4, -912
 	move	$t3, $a6
 	.p2align	4, , 16
-.LBB21_56:                              # %.lr.ph.i.i34.i
-                                        #   Parent Loop BB21_33 Depth=1
-                                        #     Parent Loop BB21_38 Depth=2
+.LBB21_44:                              # %.lr.ph.i.i34.i
+                                        #   Parent Loop BB21_21 Depth=1
+                                        #     Parent Loop BB21_26 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	addi.w	$t3, $t3, -1
 	bstrpick.d	$t4, $t3, 31, 0
 	movgr2fr.d	$fa5, $t4
 	ffint.d.l	$fa5, $fa5
 	fmul.d	$fa4, $fa4, $fa5
-	bltu	$a2, $t3, .LBB21_56
-	b	.LBB21_35
+	bltu	$a2, $t3, .LBB21_44
+	b	.LBB21_23
 	.p2align	4, , 16
-.LBB21_57:                              # %.preheader32.i10.i
-                                        #   in Loop: Header=BB21_38 Depth=2
+.LBB21_45:                              # %.preheader32.i10.i
+                                        #   in Loop: Header=BB21_26 Depth=2
 	vldi	$vr3, -912
-	bge	$t2, $t3, .LBB21_59
+	bge	$t2, $t3, .LBB21_47
 	.p2align	4, , 16
-.LBB21_58:                              # %.lr.ph.i20.i
-                                        #   Parent Loop BB21_33 Depth=1
-                                        #     Parent Loop BB21_38 Depth=2
+.LBB21_46:                              # %.lr.ph.i20.i
+                                        #   Parent Loop BB21_21 Depth=1
+                                        #     Parent Loop BB21_26 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	movgr2fr.w	$fa4, $t3
 	ffint.d.w	$fa4, $fa4
 	addi.w	$t3, $t3, -1
 	fmul.d	$fa3, $fa3, $fa4
-	blt	$t2, $t3, .LBB21_58
-.LBB21_59:                              # %._crit_edge.i12.i
-                                        #   in Loop: Header=BB21_38 Depth=2
-	blez	$t4, .LBB21_34
-# %bb.60:                               # %.lr.ph.i28.i17.i.preheader
-                                        #   in Loop: Header=BB21_38 Depth=2
+	blt	$t2, $t3, .LBB21_46
+.LBB21_47:                              # %._crit_edge.i12.i
+                                        #   in Loop: Header=BB21_26 Depth=2
+	blez	$t4, .LBB21_22
+# %bb.48:                               # %.lr.ph.i28.i17.i.preheader
+                                        #   in Loop: Header=BB21_26 Depth=2
 	sub.w	$t3, $zero, $t0
 	vldi	$vr4, -912
 	.p2align	4, , 16
-.LBB21_61:                              # %.lr.ph.i28.i17.i
-                                        #   Parent Loop BB21_33 Depth=1
-                                        #     Parent Loop BB21_38 Depth=2
+.LBB21_49:                              # %.lr.ph.i28.i17.i
+                                        #   Parent Loop BB21_21 Depth=1
+                                        #     Parent Loop BB21_26 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$t4, $a7, $t3
 	bstrpick.d	$t4, $t4, 31, 0
@@ -3739,24 +3668,24 @@ getptree:                               # @getptree
 	add.d	$t4, $a7, $t3
 	addi.w	$t4, $t4, 1
 	fmul.d	$fa4, $fa4, $fa5
-	bltu	$a2, $t4, .LBB21_61
-	b	.LBB21_35
-.LBB21_62:                              #   in Loop: Header=BB21_38 Depth=2
+	bltu	$a2, $t4, .LBB21_49
+	b	.LBB21_23
+.LBB21_50:                              #   in Loop: Header=BB21_26 Depth=2
 	vldi	$vr3, -912
-	b	.LBB21_36
-.LBB21_63:                              # %.preheader77
+	b	.LBB21_24
+.LBB21_51:                              # %.preheader77
 	movgr2fr.d	$fs0, $zero
 	fmov.d	$fs1, $fs0
 	fmov.d	$fs2, $fs0
-	bge	$s3, $s2, .LBB21_68
-# %bb.64:                               # %.lr.ph109.preheader
+	bge	$s3, $s2, .LBB21_56
+# %bb.52:                               # %.lr.ph109.preheader
 	alsl.d	$a2, $s3, $a0, 4
 	addi.d	$a3, $a2, 24
 	sub.d	$a1, $s2, $s3
 	movgr2fr.d	$fs1, $zero
 	move	$a4, $a1
 	.p2align	4, , 16
-.LBB21_65:                              # %.lr.ph109
+.LBB21_53:                              # %.lr.ph109
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a3, -8
 	fld.d	$fa0, $a3, 0
@@ -3765,19 +3694,19 @@ getptree:                               # @getptree
 	fmadd.d	$fs1, $fa1, $fa0, $fs1
 	addi.w	$a4, $a4, -1
 	addi.d	$a3, $a3, 16
-	bnez	$a4, .LBB21_65
-# %bb.66:                               # %.lr.ph114.preheader
+	bnez	$a4, .LBB21_53
+# %bb.54:                               # %.lr.ph114.preheader
 	addi.d	$a2, $a2, 24
 	movgr2fr.d	$fs2, $zero
 	.p2align	4, , 16
-.LBB21_67:                              # %.lr.ph114
+.LBB21_55:                              # %.lr.ph114
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a2, 0
 	fadd.d	$fs2, $fs2, $fa0
 	addi.w	$a1, $a1, -1
 	addi.d	$a2, $a2, 16
-	bnez	$a1, .LBB21_67
-.LBB21_68:                              # %._crit_edge115
+	bnez	$a1, .LBB21_55
+.LBB21_56:                              # %._crit_edge115
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI21_0)

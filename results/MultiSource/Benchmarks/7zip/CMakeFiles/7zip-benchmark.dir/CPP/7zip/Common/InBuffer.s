@@ -7,8 +7,9 @@
 _ZN9CInBufferC2Ev:                      # @_ZN9CInBufferC2Ev
 # %bb.0:
 	st.w	$zero, $a0, 40
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
 	ret
 .Lfunc_end0:
 	.size	_ZN9CInBufferC2Ev, .Lfunc_end0-_ZN9CInBufferC2Ev

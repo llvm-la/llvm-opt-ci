@@ -483,16 +483,20 @@ gs_gsave:                               # @gs_gsave
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s1, 280
 	ld.d	$a1, $fp, 280
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $a1, 0
+	vld	$vr0, $a0, 0
+	vst	$vr0, $a1, 0
 	vld	$vr0, $a0, 32
 	vst	$vr0, $a1, 32
+	vld	$vr0, $a0, 16
+	vst	$vr0, $a1, 16
 	ld.d	$a0, $a0, 48
 	st.d	$a0, $a1, 48
 	ld.d	$a0, $s1, 288
 	ld.d	$a1, $fp, 288
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $a1, 0
+	vld	$vr0, $a0, 16
+	vst	$vr0, $a1, 16
+	vld	$vr0, $a0, 0
+	vst	$vr0, $a1, 0
 	ld.d	$a0, $s1, 304
 	ld.d	$a1, $fp, 304
 	ld.d	$a2, $a0, 0
@@ -501,12 +505,16 @@ gs_gsave:                               # @gs_gsave
 	st.h	$a0, $a1, 8
 	ld.d	$a0, $s1, 312
 	ld.d	$a1, $fp, 312
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $a1, 0
+	vld	$vr0, $a0, 0
+	vst	$vr0, $a1, 0
+	vld	$vr0, $a0, 16
+	vst	$vr0, $a1, 16
 	ld.d	$a0, $s1, 448
 	ld.d	$a1, $fp, 448
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $a1, 0
+	vld	$vr0, $a0, 0
+	vst	$vr0, $a1, 0
+	vld	$vr0, $a0, 16
+	vst	$vr0, $a1, 16
 	ld.d	$a0, $fp, 256
 	pcaddu18i	$ra, %call36(gx_path_share)
 	jirl	$ra, $ra, 0

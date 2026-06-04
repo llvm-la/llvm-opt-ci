@@ -537,7 +537,7 @@ _ZN9NCompress5NBcj28CEncoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer4InitEv)
 	jirl	$ra, $ra, 0
 .Ltmp42:                                # EH_LABEL
-# %bb.22:                               # %iter.check
+# %bb.22:                               # %_ZN9NCompress11NRangeCoder8CEncoder4InitEv.exit
 	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
 	st.d	$zero, $fp, 200
@@ -547,39 +547,71 @@ _ZN9NCompress5NBcj28CEncoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 	ori	$a0, $zero, 1
 	st.w	$a0, $fp, 192
 	st.b	$zero, $fp, 196
-	xvldi	$xr0, -3836
-	xvst	$xr0, $fp, 272
-	xvst	$xr0, $fp, 304
-	xvst	$xr0, $fp, 336
-	xvst	$xr0, $fp, 368
-	xvst	$xr0, $fp, 400
-	xvst	$xr0, $fp, 432
-	xvst	$xr0, $fp, 464
-	xvst	$xr0, $fp, 496
-	xvst	$xr0, $fp, 528
-	xvst	$xr0, $fp, 560
-	xvst	$xr0, $fp, 592
-	xvst	$xr0, $fp, 624
-	xvst	$xr0, $fp, 656
-	xvst	$xr0, $fp, 688
-	xvst	$xr0, $fp, 720
-	xvst	$xr0, $fp, 752
-	xvst	$xr0, $fp, 784
-	xvst	$xr0, $fp, 816
-	xvst	$xr0, $fp, 848
-	xvst	$xr0, $fp, 880
-	xvst	$xr0, $fp, 912
-	xvst	$xr0, $fp, 944
-	xvst	$xr0, $fp, 976
-	xvst	$xr0, $fp, 1008
-	xvst	$xr0, $fp, 1040
-	xvst	$xr0, $fp, 1072
-	xvst	$xr0, $fp, 1104
-	xvst	$xr0, $fp, 1136
-	xvst	$xr0, $fp, 1168
-	xvst	$xr0, $fp, 1200
-	xvst	$xr0, $fp, 1232
-	xvst	$xr0, $fp, 1264
+	vldi	$vr0, -3836
+	vst	$vr0, $fp, 272
+	vst	$vr0, $fp, 288
+	vst	$vr0, $fp, 304
+	vst	$vr0, $fp, 320
+	vst	$vr0, $fp, 336
+	vst	$vr0, $fp, 352
+	vst	$vr0, $fp, 368
+	vst	$vr0, $fp, 384
+	vst	$vr0, $fp, 400
+	vst	$vr0, $fp, 416
+	vst	$vr0, $fp, 432
+	vst	$vr0, $fp, 448
+	vst	$vr0, $fp, 464
+	vst	$vr0, $fp, 480
+	vst	$vr0, $fp, 496
+	vst	$vr0, $fp, 512
+	vst	$vr0, $fp, 528
+	vst	$vr0, $fp, 544
+	vst	$vr0, $fp, 560
+	vst	$vr0, $fp, 576
+	vst	$vr0, $fp, 592
+	vst	$vr0, $fp, 608
+	vst	$vr0, $fp, 624
+	vst	$vr0, $fp, 640
+	vst	$vr0, $fp, 656
+	vst	$vr0, $fp, 672
+	vst	$vr0, $fp, 688
+	vst	$vr0, $fp, 704
+	vst	$vr0, $fp, 720
+	vst	$vr0, $fp, 736
+	vst	$vr0, $fp, 752
+	vst	$vr0, $fp, 768
+	vst	$vr0, $fp, 784
+	vst	$vr0, $fp, 800
+	vst	$vr0, $fp, 816
+	vst	$vr0, $fp, 832
+	vst	$vr0, $fp, 848
+	vst	$vr0, $fp, 864
+	vst	$vr0, $fp, 880
+	vst	$vr0, $fp, 896
+	vst	$vr0, $fp, 912
+	vst	$vr0, $fp, 928
+	vst	$vr0, $fp, 944
+	vst	$vr0, $fp, 960
+	vst	$vr0, $fp, 976
+	vst	$vr0, $fp, 992
+	vst	$vr0, $fp, 1008
+	vst	$vr0, $fp, 1024
+	vst	$vr0, $fp, 1040
+	vst	$vr0, $fp, 1056
+	vst	$vr0, $fp, 1072
+	vst	$vr0, $fp, 1088
+	vst	$vr0, $fp, 1104
+	vst	$vr0, $fp, 1120
+	vst	$vr0, $fp, 1136
+	vst	$vr0, $fp, 1152
+	vst	$vr0, $fp, 1168
+	vst	$vr0, $fp, 1184
+	vst	$vr0, $fp, 1200
+	vst	$vr0, $fp, 1216
+	vst	$vr0, $fp, 1232
+	vst	$vr0, $fp, 1248
+	vst	$vr0, $fp, 1264
+	vst	$vr0, $fp, 1280
 	ori	$a0, $zero, 1024
 	lu32i.d	$a0, 1024
 	st.d	$a0, $fp, 1296
@@ -1951,42 +1983,74 @@ _ZN9NCompress5NBcj28CDecoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer4InitEv)
 	jirl	$ra, $ra, 0
 .Ltmp147:                               # EH_LABEL
-# %bb.17:                               # %iter.check
+# %bb.17:                               # %.preheader173
 	move	$s4, $zero
 	move	$s3, $zero
-	xvldi	$xr0, -3836
-	xvst	$xr0, $s0, 224
-	xvst	$xr0, $s0, 256
-	xvst	$xr0, $s0, 288
-	xvst	$xr0, $s0, 320
-	xvst	$xr0, $s0, 352
-	xvst	$xr0, $s0, 384
-	xvst	$xr0, $s0, 416
-	xvst	$xr0, $s0, 448
-	xvst	$xr0, $s0, 480
-	xvst	$xr0, $s0, 512
-	xvst	$xr0, $s0, 544
-	xvst	$xr0, $s0, 576
-	xvst	$xr0, $s0, 608
-	xvst	$xr0, $s0, 640
-	xvst	$xr0, $s0, 672
-	xvst	$xr0, $s0, 704
-	xvst	$xr0, $s0, 736
-	xvst	$xr0, $s0, 768
-	xvst	$xr0, $s0, 800
-	xvst	$xr0, $s0, 832
-	xvst	$xr0, $s0, 864
-	xvst	$xr0, $s0, 896
-	xvst	$xr0, $s0, 928
-	xvst	$xr0, $s0, 960
-	xvst	$xr0, $s0, 992
-	xvst	$xr0, $s0, 1024
-	xvst	$xr0, $s0, 1056
-	xvst	$xr0, $s0, 1088
-	xvst	$xr0, $s0, 1120
-	xvst	$xr0, $s0, 1152
-	xvst	$xr0, $s0, 1184
-	xvst	$xr0, $s0, 1216
+	vldi	$vr0, -3836
+	vst	$vr0, $s0, 224
+	vst	$vr0, $s0, 240
+	vst	$vr0, $s0, 256
+	vst	$vr0, $s0, 272
+	vst	$vr0, $s0, 288
+	vst	$vr0, $s0, 304
+	vst	$vr0, $s0, 320
+	vst	$vr0, $s0, 336
+	vst	$vr0, $s0, 352
+	vst	$vr0, $s0, 368
+	vst	$vr0, $s0, 384
+	vst	$vr0, $s0, 400
+	vst	$vr0, $s0, 416
+	vst	$vr0, $s0, 432
+	vst	$vr0, $s0, 448
+	vst	$vr0, $s0, 464
+	vst	$vr0, $s0, 480
+	vst	$vr0, $s0, 496
+	vst	$vr0, $s0, 512
+	vst	$vr0, $s0, 528
+	vst	$vr0, $s0, 544
+	vst	$vr0, $s0, 560
+	vst	$vr0, $s0, 576
+	vst	$vr0, $s0, 592
+	vst	$vr0, $s0, 608
+	vst	$vr0, $s0, 624
+	vst	$vr0, $s0, 640
+	vst	$vr0, $s0, 656
+	vst	$vr0, $s0, 672
+	vst	$vr0, $s0, 688
+	vst	$vr0, $s0, 704
+	vst	$vr0, $s0, 720
+	vst	$vr0, $s0, 736
+	vst	$vr0, $s0, 752
+	vst	$vr0, $s0, 768
+	vst	$vr0, $s0, 784
+	vst	$vr0, $s0, 800
+	vst	$vr0, $s0, 816
+	vst	$vr0, $s0, 832
+	vst	$vr0, $s0, 848
+	vst	$vr0, $s0, 864
+	vst	$vr0, $s0, 880
+	vst	$vr0, $s0, 896
+	vst	$vr0, $s0, 912
+	vst	$vr0, $s0, 928
+	vst	$vr0, $s0, 944
+	vst	$vr0, $s0, 960
+	vst	$vr0, $s0, 976
+	vst	$vr0, $s0, 992
+	vst	$vr0, $s0, 1008
+	vst	$vr0, $s0, 1024
+	vst	$vr0, $s0, 1040
+	vst	$vr0, $s0, 1056
+	vst	$vr0, $s0, 1072
+	vst	$vr0, $s0, 1088
+	vst	$vr0, $s0, 1104
+	vst	$vr0, $s0, 1120
+	vst	$vr0, $s0, 1136
+	vst	$vr0, $s0, 1152
+	vst	$vr0, $s0, 1168
+	vst	$vr0, $s0, 1184
+	vst	$vr0, $s0, 1200
+	vst	$vr0, $s0, 1216
+	vst	$vr0, $s0, 1232
 	ori	$a0, $zero, 1024
 	lu32i.d	$a0, 1024
 	st.d	$a0, $s0, 1248
@@ -2041,13 +2105,13 @@ _ZN9NCompress5NBcj28CDecoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 	move	$s4, $zero
 .LBB14_27:                              #   in Loop: Header=BB14_21 Depth=1
 	lu12i.w	$s2, 64
-	move	$s7, $s4
-	ori	$s8, $zero, 232
+	move	$s8, $s4
+	ori	$s7, $zero, 232
 	b	.LBB14_29
 	.p2align	4, , 16
 .LBB14_28:                              #   in Loop: Header=BB14_29 Depth=2
 	addi.w	$s2, $s2, -1
-	addi.w	$s7, $s7, 1
+	addi.w	$s8, $s8, 1
 	move	$s3, $s6
 	beqz	$s2, .LBB14_20
 .LBB14_29:                              #   Parent Loop BB14_21 Depth=1
@@ -2088,7 +2152,7 @@ _ZN9NCompress5NBcj28CDecoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 .LBB14_35:                              # %_ZN10COutBuffer9WriteByteEh.exit
                                         #   in Loop: Header=BB14_29 Depth=2
 	andi	$a0, $s6, 254
-	beq	$a0, $s8, .LBB14_38
+	beq	$a0, $s7, .LBB14_38
 # %bb.36:                               # %_ZN9NCompress5NBcj23IsJEhh.exit
                                         #   in Loop: Header=BB14_29 Depth=2
 	ori	$a0, $zero, 15
@@ -2114,12 +2178,12 @@ _ZN9NCompress5NBcj28CDecoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 	ld.wu	$a2, $s0, 216
 	addi.d	$a5, $s0, 224
 	ldx.w	$a0, $a5, $a0
-	ld.w	$s8, $s0, 220
+	ld.w	$s7, $s0, 220
 	srli.d	$a1, $a2, 11
 	mul.d	$a1, $a1, $a0
 	addi.w	$a4, $a1, 0
 	alsl.d	$a3, $a3, $a5, 2
-	bgeu	$s8, $a4, .LBB14_43
+	bgeu	$s7, $a4, .LBB14_43
 # %bb.40:                               #   in Loop: Header=BB14_21 Depth=1
 	st.w	$a1, $s0, 216
 	ori	$a2, $zero, 2048
@@ -2128,7 +2192,7 @@ _ZN9NCompress5NBcj28CDecoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 	add.d	$a0, $a2, $a0
 	bstrpick.d	$a2, $a1, 31, 24
 	st.w	$a0, $a3, 0
-	move	$s4, $s7
+	move	$s4, $s8
 	move	$s3, $s6
 	bnez	$a2, .LBB14_21
 # %bb.41:                               #   in Loop: Header=BB14_21 Depth=1
@@ -2144,22 +2208,22 @@ _ZN9NCompress5NBcj28CDecoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 .LBB14_43:                              #   in Loop: Header=BB14_21 Depth=1
 	sub.w	$a2, $a2, $a1
 	st.w	$a2, $s0, 216
-	sub.d	$s3, $s8, $a1
+	sub.d	$s3, $s7, $a1
 	st.w	$s3, $s0, 220
 	bstrpick.d	$a1, $a0, 31, 5
 	sub.d	$a0, $a0, $a1
 	bstrpick.d	$a1, $a2, 31, 24
 	st.w	$a0, $a3, 0
-	addi.d	$a0, $s0, 168
 	bnez	$a1, .LBB14_52
 # %bb.44:                               #   in Loop: Header=BB14_21 Depth=1
-	ld.d	$a3, $s0, 168
+	ld.d	$a0, $s0, 168
 	ld.d	$a1, $s0, 176
-	bgeu	$a3, $a1, .LBB14_49
+	bgeu	$a0, $a1, .LBB14_49
 # %bb.45:                               #   in Loop: Header=BB14_21 Depth=1
-	addi.d	$a1, $a3, 1
-	st.d	$a1, $a0, 0
-	ld.bu	$a0, $a3, 0
+	addi.d	$a1, $a0, 1
+	addi.d	$a3, $s0, 168
+	st.d	$a1, $a3, 0
+	ld.bu	$a0, $a0, 0
 	b	.LBB14_51
 .LBB14_46:                              #   in Loop: Header=BB14_21 Depth=1
 .Ltmp185:                               # EH_LABEL
@@ -2172,16 +2236,17 @@ _ZN9NCompress5NBcj28CDecoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 	ld.w	$a1, $s0, 216
 .LBB14_48:                              # %_ZN9NCompress11NRangeCoder11CBitDecoderILi5EE6DecodeEPNS0_8CDecoderE.exit.thread226
                                         #   in Loop: Header=BB14_21 Depth=1
-	slli.d	$a2, $s8, 8
+	slli.d	$a2, $s7, 8
 	or	$a0, $a2, $a0
 	st.w	$a0, $s0, 220
 	slli.d	$a0, $a1, 8
 	st.w	$a0, $s0, 216
-	move	$s4, $s7
+	move	$s4, $s8
 	move	$s3, $s6
 	b	.LBB14_21
 .LBB14_49:                              #   in Loop: Header=BB14_21 Depth=1
 .Ltmp163:                               # EH_LABEL
+	addi.d	$a0, $s0, 168
 	pcaddu18i	$ra, %call36(_ZN9CInBuffer10ReadBlock2Ev)
 	jirl	$ra, $ra, 0
 .Ltmp164:                               # EH_LABEL
@@ -2365,7 +2430,7 @@ _ZN9NCompress5NBcj28CDecoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 .Ltmp183:                               # EH_LABEL
 .LBB14_80:                              # %_ZN10COutBuffer9WriteByteEh.exit117
                                         #   in Loop: Header=BB14_21 Depth=1
-	addi.w	$s4, $s7, 4
+	addi.w	$s4, $s8, 4
 	b	.LBB14_21
 .LBB14_81:                              # %_ZN9CInBuffer8ReadByteERh.exit
 .Ltmp157:                               # EH_LABEL

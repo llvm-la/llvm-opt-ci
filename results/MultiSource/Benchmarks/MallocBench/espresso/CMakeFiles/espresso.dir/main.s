@@ -2417,7 +2417,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
 	addi.w	$s6, $s3, -1
 	bstrpick.d	$a0, $s6, 31, 0
-	addi.d	$s5, $fp, 48
+	addi.d	$s5, $fp, 32
 	ori	$s4, $zero, 1
 	sub.d	$s1, $s4, $a0
 	addi.w	$s7, $zero, -1
@@ -2428,7 +2428,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	.p2align	4, , 16
 .LBB6_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s5, -40
+	ld.d	$a0, $s5, -24
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
@@ -2452,7 +2452,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 # %bb.6:                                # %.lr.ph168
 	move	$s1, $zero
 	addi.d	$s3, $s5, 8
-	ld.d	$s2, $s5, -32
+	ld.d	$s2, $s5, -16
 	addi.w	$a0, $s4, 1
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ori	$a0, $zero, 2
@@ -2473,7 +2473,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $s5, -32
+	ld.d	$a2, $s5, -16
 	pcalau12i	$a1, %pc_hi20(.L.str.133)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.133)
 	pcaddu18i	$ra, %call36(fprintf)
@@ -2492,10 +2492,10 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 # %bb.11:                               # %.lr.ph.preheader.i
 	add.d	$a1, $a0, $s8
 	addi.d	$a1, $a1, -3
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bltu	$a1, $a2, .LBB6_15
 # %bb.12:                               # %vector.ph
-	addi.w	$a3, $zero, -8
+	addi.w	$a3, $zero, -4
 	and	$a2, $a1, $a3
 	add.d	$a4, $a0, $s0
 	and	$a3, $a4, $a3
@@ -2506,12 +2506,12 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	.p2align	4, , 16
 .LBB6_13:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $s3, -32
-	xvld	$xr1, $s3, 0
-	xvst	$xr0, $s3, -40
-	xvst	$xr1, $s3, -8
-	addi.d	$a3, $a3, -8
-	addi.d	$s3, $s3, 64
+	vld	$vr0, $s3, -16
+	vld	$vr1, $s3, 0
+	vst	$vr0, $s3, -24
+	vst	$vr1, $s3, -8
+	addi.d	$a3, $a3, -4
+	addi.d	$s3, $s3, 32
 	bnez	$a3, .LBB6_13
 # %bb.14:                               # %middle.block
 	beq	$a1, $a2, .LBB6_17
@@ -2537,14 +2537,14 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 # %bb.18:                               # %.lr.ph.preheader.i75
 	add.d	$a1, $s3, $s8
 	addi.d	$a1, $a1, -1
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bgeu	$a1, $a2, .LBB6_20
 # %bb.19:
 	ori	$a1, $zero, 1
 	sub.d	$a2, $a1, $s8
 	b	.LBB6_23
 .LBB6_20:                               # %vector.ph283
-	addi.w	$a2, $zero, -8
+	addi.w	$a2, $zero, -4
 	and	$a3, $a1, $a2
 	add.d	$a4, $s3, $s7
 	and	$a2, $a4, $a2
@@ -2555,12 +2555,12 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	.p2align	4, , 16
 .LBB6_21:                               # %vector.body286
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a4, -40
-	xvst	$xr1, $a4, -8
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 64
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a4, -24
+	vst	$vr1, $a4, -8
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB6_21
 # %bb.22:                               # %middle.block291
 	beq	$a1, $a3, .LBB6_25
@@ -2648,29 +2648,29 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 # %bb.36:                               # %.lr.ph.preheader.i82
 	nor	$a1, $s6, $zero
 	add.d	$a2, $a1, $a0
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB6_38
 # %bb.37:
 	move	$a1, $s6
 	b	.LBB6_41
 .LBB6_38:                               # %vector.ph296
-	addi.w	$a4, $zero, -8
+	addi.w	$a4, $zero, -4
 	and	$a3, $a2, $a4
 	add.d	$a1, $a3, $s6
 	bstrpick.d	$a5, $s6, 31, 0
 	sub.d	$a6, $a5, $a0
 	andn	$a4, $a4, $a6
 	alsl.d	$a5, $a5, $fp, 3
-	addi.d	$a5, $a5, 40
+	addi.d	$a5, $a5, 16
 	.p2align	4, , 16
 .LBB6_39:                               # %vector.body299
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a5, -40
-	xvst	$xr1, $a5, -8
-	addi.d	$a4, $a4, -8
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a5, -8
+	vld	$vr1, $a5, 8
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a5, $a5, 32
 	bnez	$a4, .LBB6_39
 # %bb.40:                               # %middle.block304
 	beq	$a2, $a3, .LBB6_43
@@ -2695,26 +2695,26 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 # %bb.44:                               # %.lr.ph.preheader.i89
 	bstrpick.d	$a0, $s4, 31, 0
 	sub.d	$a1, $s3, $a0
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bltu	$a1, $a2, .LBB6_48
 # %bb.45:                               # %vector.ph309
-	addi.w	$a3, $zero, -8
+	addi.w	$a3, $zero, -4
 	and	$a2, $a1, $a3
 	add.d	$a0, $a0, $a2
 	bstrpick.d	$a4, $s0, 31, 0
 	sub.d	$a5, $s3, $a4
 	and	$a3, $a5, $a3
 	alsl.d	$a4, $a4, $fp, 3
-	addi.d	$a4, $a4, 40
+	addi.d	$a4, $a4, 16
 	.p2align	4, , 16
 .LBB6_46:                               # %vector.body312
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a4, -40
-	xvst	$xr1, $a4, -8
-	addi.d	$a3, $a3, -8
-	addi.d	$a4, $a4, 64
+	vld	$vr0, $a4, -8
+	vld	$vr1, $a4, 8
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a4, $a4, 32
 	bnez	$a3, .LBB6_46
 # %bb.47:                               # %middle.block317
 	beq	$a1, $a2, .LBB6_50
@@ -2737,7 +2737,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	ori	$a0, $zero, 2
 	blt	$s3, $a0, .LBB6_106
 # %bb.52:                               # %.lr.ph179.preheader
-	addi.d	$s4, $fp, 40
+	addi.d	$s4, $fp, 16
 	addi.d	$a0, $fp, 8
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ori	$s6, $zero, 1
@@ -2746,7 +2746,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	pcalau12i	$a0, %pc_hi20(esp_opt_table)
 	addi.d	$s5, $a0, %pc_lo12(esp_opt_table)
 	move	$s2, $zero
-	addi.w	$a0, $zero, -8
+	addi.w	$a0, $zero, -4
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	b	.LBB6_56
 .LBB6_53:                               # %delete_arg.exit102
@@ -2807,7 +2807,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
                                         #   in Loop: Header=BB6_56 Depth=1
 	add.d	$a2, $fp, $a0
 	move	$a1, $s6
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	bltu	$a2, $a3, .LBB6_66
 # %bb.63:                               # %vector.ph324
                                         #   in Loop: Header=BB6_56 Depth=1
@@ -2821,12 +2821,12 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 .LBB6_64:                               # %vector.body327
                                         #   Parent Loop BB6_56 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a5, -24
-	xvld	$xr1, $a5, 8
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a5, 0
+	vld	$vr1, $a5, 16
+	vst	$vr0, $a5, -8
+	vst	$vr1, $a5, 8
+	addi.d	$a4, $a4, -4
+	addi.d	$a5, $a5, 32
 	bnez	$a4, .LBB6_64
 # %bb.65:                               # %middle.block332
                                         #   in Loop: Header=BB6_56 Depth=1
@@ -2853,7 +2853,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	addi.d	$s6, $s3, -1
 	bstrpick.d	$s5, $s6, 31, 0
 	addi.d	$s4, $s5, -1
-	addi.d	$s2, $fp, 48
+	addi.d	$s2, $fp, 32
 	ori	$s0, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.136)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.136)
@@ -2861,7 +2861,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	.p2align	4, , 16
 .LBB6_70:                               # %.lr.ph.i105
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s2, -40
+	ld.d	$a0, $s2, -24
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
@@ -2883,7 +2883,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	bge	$s7, $s3, .LBB6_80
 # %bb.74:                               # %.lr.ph.preheader.i.i
 	sub.d	$a0, $s3, $s0
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 4
 	bltu	$a0, $a1, .LBB6_78
 # %bb.75:                               # %vector.ph339
 	sub.d	$a2, $s5, $s0
@@ -2895,12 +2895,12 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	.p2align	4, , 16
 .LBB6_76:                               # %vector.body342
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $s2, -32
-	xvld	$xr1, $s2, 0
-	xvst	$xr0, $s2, -40
-	xvst	$xr1, $s2, -8
-	addi.d	$a2, $a2, -8
-	addi.d	$s2, $s2, 64
+	vld	$vr0, $s2, -16
+	vld	$vr1, $s2, 0
+	vst	$vr0, $s2, -24
+	vst	$vr1, $s2, -8
+	addi.d	$a2, $a2, -4
+	addi.d	$s2, $s2, 32
 	bnez	$a2, .LBB6_76
 # %bb.77:                               # %middle.block347
 	beq	$a0, $a1, .LBB6_80
@@ -2926,7 +2926,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	addi.d	$s6, $s3, -1
 	bstrpick.d	$s5, $s6, 31, 0
 	addi.d	$s4, $s5, -1
-	addi.d	$s2, $fp, 48
+	addi.d	$s2, $fp, 32
 	ori	$s0, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.137)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.137)
@@ -2934,7 +2934,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	.p2align	4, , 16
 .LBB6_82:                               # %.lr.ph.i112
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s2, -40
+	ld.d	$a0, $s2, -24
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
@@ -2956,7 +2956,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	bge	$s7, $s3, .LBB6_92
 # %bb.86:                               # %.lr.ph.preheader.i.i116
 	sub.d	$a0, $s3, $s0
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 4
 	bltu	$a0, $a1, .LBB6_90
 # %bb.87:                               # %vector.ph354
 	sub.d	$a2, $s5, $s0
@@ -2968,12 +2968,12 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	.p2align	4, , 16
 .LBB6_88:                               # %vector.body357
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $s2, -32
-	xvld	$xr1, $s2, 0
-	xvst	$xr0, $s2, -40
-	xvst	$xr1, $s2, -8
-	addi.d	$a2, $a2, -8
-	addi.d	$s2, $s2, 64
+	vld	$vr0, $s2, -16
+	vld	$vr1, $s2, 0
+	vst	$vr0, $s2, -24
+	vst	$vr1, $s2, -8
+	addi.d	$a2, $a2, -4
+	addi.d	$s2, $s2, 32
 	bnez	$a2, .LBB6_88
 # %bb.89:                               # %middle.block362
 	beq	$a0, $a1, .LBB6_92
@@ -2999,7 +2999,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	addi.d	$a4, $s3, -1
 	bstrpick.d	$a3, $a4, 31, 0
 	addi.d	$a2, $a3, -1
-	addi.d	$a1, $fp, 48
+	addi.d	$a1, $fp, 32
 	ori	$a0, $zero, 1
 	ori	$a5, $zero, 45
 	ori	$a7, $zero, 102
@@ -3015,7 +3015,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	beq	$s3, $a0, .LBB6_106
 .LBB6_95:                               # %.lr.ph.i126
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$t0, $a1, -40
+	ld.d	$t0, $a1, -24
 	ld.bu	$t1, $t0, 0
 	bne	$t1, $a5, .LBB6_94
 # %bb.96:                               # %sub_1
@@ -3033,7 +3033,7 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	bge	$a6, $a5, .LBB6_105
 # %bb.99:                               # %.lr.ph.preheader.i.i130
 	sub.d	$a4, $a5, $a0
-	ori	$a6, $zero, 8
+	ori	$a6, $zero, 4
 	bltu	$a4, $a6, .LBB6_103
 # %bb.100:                              # %vector.ph369
 	sub.d	$a6, $a3, $a0
@@ -3044,12 +3044,12 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	and	$a2, $a6, $a7
 .LBB6_101:                              # %vector.body372
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a1, -32
-	xvld	$xr1, $a1, 0
-	xvst	$xr0, $a1, -40
-	xvst	$xr1, $a1, -8
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vld	$vr0, $a1, -16
+	vld	$vr1, $a1, 0
+	vst	$vr0, $a1, -24
+	vst	$vr1, $a1, -8
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB6_101
 # %bb.102:                              # %middle.block377
 	beq	$a4, $a3, .LBB6_105
@@ -3099,25 +3099,25 @@ delete_arg:                             # @delete_arg
 # %bb.1:                                # %.lr.ph.preheader
 	nor	$a0, $a2, $zero
 	add.d	$a4, $a0, $a3
-	ori	$a5, $zero, 8
+	ori	$a5, $zero, 4
 	move	$a0, $a2
 	bltu	$a4, $a5, .LBB7_5
 # %bb.2:                                # %vector.ph
 	move	$a5, $a4
-	bstrins.d	$a5, $zero, 2, 0
+	bstrins.d	$a5, $zero, 1, 0
 	add.d	$a0, $a5, $a2
 	alsl.d	$a2, $a2, $a1, 3
-	addi.d	$a2, $a2, 40
+	addi.d	$a2, $a2, 16
 	move	$a6, $a5
 	.p2align	4, , 16
 .LBB7_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a2, -32
-	xvld	$xr1, $a2, 0
-	xvst	$xr0, $a2, -40
-	xvst	$xr1, $a2, -8
-	addi.d	$a6, $a6, -8
-	addi.d	$a2, $a2, 64
+	vld	$vr0, $a2, -8
+	vld	$vr1, $a2, 8
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a6, .LBB7_3
 # %bb.4:                                # %middle.block
 	beq	$a4, $a5, .LBB7_7
@@ -3168,13 +3168,13 @@ check_arg:                              # @check_arg
 	bstrpick.d	$s5, $s7, 31, 0
 	addi.d	$s4, $s5, -1
 	move	$s3, $a1
-	addi.d	$s2, $a1, 48
+	addi.d	$s2, $a1, 32
 	ori	$s1, $zero, 1
 	ori	$s8, $zero, 1
 	.p2align	4, , 16
 .LBB8_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s2, -40
+	ld.d	$a0, $s2, -24
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
@@ -3208,11 +3208,11 @@ check_arg:                              # @check_arg
 	bge	$s8, $a1, .LBB8_5
 # %bb.7:                                # %.lr.ph.preheader.i
 	sub.d	$a2, $a1, $s1
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	bltu	$a2, $a3, .LBB8_11
 # %bb.8:                                # %vector.ph
 	sub.d	$a4, $s5, $s1
-	addi.w	$a5, $zero, -8
+	addi.w	$a5, $zero, -4
 	and	$a3, $a2, $a5
 	and	$a6, $s4, $a5
 	add.d	$s1, $a6, $s1
@@ -3220,12 +3220,12 @@ check_arg:                              # @check_arg
 	.p2align	4, , 16
 .LBB8_9:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $s2, -32
-	xvld	$xr1, $s2, 0
-	xvst	$xr0, $s2, -40
-	xvst	$xr1, $s2, -8
-	addi.d	$a4, $a4, -8
-	addi.d	$s2, $s2, 64
+	vld	$vr0, $s2, -16
+	vld	$vr1, $s2, 0
+	vst	$vr0, $s2, -24
+	vst	$vr1, $s2, -8
+	addi.d	$a4, $a4, -4
+	addi.d	$s2, $s2, 32
 	bnez	$a4, .LBB8_9
 # %bb.10:                               # %middle.block
 	beq	$a2, $a3, .LBB8_5

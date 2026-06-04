@@ -8,33 +8,63 @@ test:                                   # @test
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(x)
 	addi.d	$a0, $a0, %pc_lo12(x)
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(tmp)
 	addi.d	$a1, $a1, %pc_lo12(tmp)
-	vld	$vr1, $a0, 32
-	xvst	$xr0, $a1, 0
-	vst	$vr1, $a1, 32
-	xvld	$xr0, $a0, 80
-	vld	$vr1, $a0, 112
-	xvld	$xr2, $a0, 160
-	vld	$vr3, $a0, 192
-	xvst	$xr0, $a1, 48
-	vst	$vr1, $a1, 80
-	xvst	$xr2, $a1, 96
-	vst	$vr3, $a1, 128
-	xvld	$xr0, $a0, 240
-	vld	$vr1, $a0, 272
-	xvld	$xr2, $a0, 320
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 32
+	vst	$vr0, $a1, 0
+	vst	$vr1, $a1, 16
+	vst	$vr2, $a1, 32
+	vld	$vr0, $a0, 80
+	vld	$vr1, $a0, 96
+	vld	$vr2, $a0, 112
+	vld	$vr3, $a0, 160
+	vst	$vr0, $a1, 48
+	vst	$vr1, $a1, 64
+	vst	$vr2, $a1, 80
+	vst	$vr3, $a1, 96
+	vld	$vr0, $a0, 176
+	vld	$vr1, $a0, 192
+	vld	$vr2, $a0, 240
+	vld	$vr3, $a0, 256
+	vst	$vr0, $a1, 112
+	vst	$vr1, $a1, 128
+	vst	$vr2, $a1, 144
+	vst	$vr3, $a1, 160
+	vld	$vr0, $a0, 272
+	vld	$vr1, $a0, 320
+	vld	$vr2, $a0, 336
 	vld	$vr3, $a0, 352
-	xvst	$xr0, $a1, 144
-	vst	$vr1, $a1, 176
-	xvst	$xr2, $a1, 192
+	vst	$vr0, $a1, 176
+	vst	$vr1, $a1, 192
+	vst	$vr2, $a1, 208
 	vst	$vr3, $a1, 224
 	ret
 .Lfunc_end0:
 	.size	test, .Lfunc_end0-test
                                         # -- End function
-	.globl	main                            # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
+.LCPI1_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	4                               # 0x4
+	.byte	5                               # 0x5
+	.byte	6                               # 0x6
+	.byte	7                               # 0x7
+	.byte	16                              # 0x10
+	.byte	18                              # 0x12
+	.byte	20                              # 0x14
+	.byte	22                              # 0x16
+	.byte	24                              # 0x18
+	.byte	26                              # 0x1a
+	.byte	28                              # 0x1c
+	.byte	30                              # 0x1e
+	.text
+	.globl	main
 	.p2align	2
 	.prefalign	5, .Lfunc_end1, nop
 	.type	main,@function
@@ -46,121 +76,94 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(tmp)
 	addi.d	$a0, $a0, %pc_lo12(tmp)
-	xvld	$xr0, $a0, 0
-	xvld	$xr2, $a0, 32
-	xvld	$xr3, $a0, 64
-	xvld	$xr4, $a0, 96
-	xvldi	$xr1, -784
-	xvfcmp.ceq.d	$xr5, $xr0, $xr1
-	xvpickve2gr.d	$a1, $xr5, 0
-	vinsgr2vr.b	$vr0, $a1, 0
-	xvpickve2gr.d	$a1, $xr5, 1
-	vinsgr2vr.b	$vr0, $a1, 1
-	xvpickve2gr.d	$a1, $xr5, 2
-	vinsgr2vr.b	$vr0, $a1, 2
-	xvpickve2gr.d	$a1, $xr5, 3
-	vinsgr2vr.b	$vr0, $a1, 3
-	xvfcmp.ceq.d	$xr2, $xr2, $xr1
-	xvpickve2gr.d	$a1, $xr2, 0
-	vinsgr2vr.b	$vr0, $a1, 4
-	xvpickve2gr.d	$a1, $xr2, 1
-	vinsgr2vr.b	$vr0, $a1, 5
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.b	$vr0, $a2, 6
-	xvpickve2gr.d	$a3, $xr2, 3
-	vinsgr2vr.b	$vr0, $a3, 7
-	xvfcmp.ceq.d	$xr2, $xr3, $xr1
-	xvpickve2gr.d	$a4, $xr2, 0
-	vinsgr2vr.b	$vr0, $a4, 8
-	xvpickve2gr.d	$a4, $xr2, 1
-	vinsgr2vr.b	$vr0, $a4, 9
-	xvpickve2gr.d	$a4, $xr2, 2
-	vinsgr2vr.b	$vr0, $a4, 10
-	xvpickve2gr.d	$a4, $xr2, 3
-	vinsgr2vr.b	$vr0, $a4, 11
-	xvfcmp.ceq.d	$xr2, $xr4, $xr1
-	xvpickve2gr.d	$a4, $xr2, 0
-	vinsgr2vr.b	$vr0, $a4, 12
-	xvpickve2gr.d	$a4, $xr2, 1
-	vinsgr2vr.b	$vr0, $a4, 13
-	xvpickve2gr.d	$a4, $xr2, 2
-	vinsgr2vr.b	$vr0, $a4, 14
-	xvld	$xr3, $a0, 128
-	xvpickve2gr.d	$a4, $xr2, 3
-	vinsgr2vr.b	$vr0, $a4, 15
-	xvld	$xr4, $a0, 160
-	xvfcmp.ceq.d	$xr3, $xr3, $xr1
-	xvpickve2gr.d	$a4, $xr3, 0
-	vinsgr2vr.h	$vr2, $a4, 0
-	xvpickve2gr.d	$a4, $xr3, 1
-	vinsgr2vr.h	$vr2, $a4, 1
-	xvpickve2gr.d	$a4, $xr3, 2
-	vinsgr2vr.h	$vr2, $a4, 2
-	xvpickve2gr.d	$a4, $xr3, 3
-	vinsgr2vr.h	$vr2, $a4, 3
-	xvfcmp.ceq.d	$xr3, $xr4, $xr1
-	xvpickve2gr.d	$a4, $xr3, 0
-	vinsgr2vr.h	$vr2, $a4, 4
-	xvpickve2gr.d	$a4, $xr3, 1
-	vinsgr2vr.h	$vr2, $a4, 5
-	xvpickve2gr.d	$a4, $xr3, 2
-	xvld	$xr4, $a0, 192
-	vinsgr2vr.h	$vr2, $a4, 6
-	xvpickve2gr.d	$a4, $xr3, 3
-	vinsgr2vr.h	$vr2, $a4, 7
-	xvfcmp.ceq.d	$xr1, $xr4, $xr1
-	xvpickve2gr.d	$a4, $xr1, 0
-	vinsgr2vr.w	$vr3, $a4, 0
-	xvpickve2gr.d	$a4, $xr1, 1
-	vinsgr2vr.w	$vr3, $a4, 1
-	xvpickve2gr.d	$a4, $xr1, 2
-	vinsgr2vr.w	$vr3, $a4, 2
+	vld	$vr0, $a0, 64
+	vld	$vr1, $a0, 80
+	vld	$vr2, $a0, 96
+	vld	$vr3, $a0, 112
+	vld	$vr4, $a0, 0
+	vld	$vr5, $a0, 16
+	vld	$vr6, $a0, 32
+	vld	$vr7, $a0, 48
+	vldi	$vr8, -784
+	vfcmp.ceq.d	$vr0, $vr0, $vr8
+	vfcmp.ceq.d	$vr1, $vr1, $vr8
+	vpickev.w	$vr0, $vr1, $vr0
+	vfcmp.ceq.d	$vr1, $vr2, $vr8
+	vfcmp.ceq.d	$vr2, $vr3, $vr8
+	vpickev.w	$vr1, $vr2, $vr1
+	vpickev.h	$vr0, $vr1, $vr0
+	vfcmp.ceq.d	$vr1, $vr4, $vr8
+	vfcmp.ceq.d	$vr2, $vr5, $vr8
+	vpickev.w	$vr1, $vr2, $vr1
+	vfcmp.ceq.d	$vr2, $vr6, $vr8
+	vfcmp.ceq.d	$vr3, $vr7, $vr8
+	vpickev.w	$vr2, $vr3, $vr2
+	vpickev.h	$vr1, $vr2, $vr1
+	vpickve2gr.b	$a1, $vr1, 14
+	vpickve2gr.b	$a2, $vr1, 12
+	vpickve2gr.b	$a3, $vr1, 10
+	vpickve2gr.b	$a4, $vr1, 8
+	vpickve2gr.b	$a5, $vr1, 6
+	vpickve2gr.b	$a6, $vr1, 4
+	vpickve2gr.b	$a7, $vr1, 2
+	vpickve2gr.b	$t0, $vr1, 0
+	vld	$vr1, $a0, 128
+	vld	$vr2, $a0, 144
+	vld	$vr3, $a0, 160
+	vld	$vr4, $a0, 176
+	vfcmp.ceq.d	$vr1, $vr1, $vr8
+	vfcmp.ceq.d	$vr2, $vr2, $vr8
+	vpickev.w	$vr1, $vr2, $vr1
+	vfcmp.ceq.d	$vr2, $vr3, $vr8
+	vfcmp.ceq.d	$vr3, $vr4, $vr8
+	vld	$vr4, $a0, 192
+	vpickev.w	$vr2, $vr3, $vr2
+	vld	$vr3, $a0, 208
+	vpickev.h	$vr1, $vr2, $vr1
+	vfcmp.ceq.d	$vr2, $vr4, $vr8
 	fld.d	$fa4, $a0, 224
-	xvpickve2gr.d	$a4, $xr1, 3
-	vinsgr2vr.w	$vr3, $a4, 3
-	vldi	$vr1, -784
-	fcmp.ceq.d	$fcc0, $fa4, $fa1
-	vpickve2gr.b	$a4, $vr0, 0
-	vinsgr2vr.h	$vr1, $a4, 0
-	vpickve2gr.b	$a4, $vr0, 1
-	vinsgr2vr.h	$vr1, $a4, 1
-	vpickve2gr.b	$a4, $vr0, 2
-	vinsgr2vr.h	$vr1, $a4, 2
-	vpickve2gr.b	$a4, $vr0, 3
-	vinsgr2vr.h	$vr1, $a4, 3
-	vpickve2gr.b	$a4, $vr0, 4
-	vinsgr2vr.h	$vr1, $a4, 4
-	vinsgr2vr.h	$vr1, $a1, 5
-	vinsgr2vr.h	$vr1, $a2, 6
-	vinsgr2vr.h	$vr1, $a3, 7
-	vor.v	$vr1, $vr1, $vr2
+	vfcmp.ceq.d	$vr3, $vr3, $vr8
+	vpickev.w	$vr2, $vr3, $vr2
+	vldi	$vr3, -784
+	fcmp.ceq.d	$fcc0, $fa4, $fa3
+	vinsgr2vr.h	$vr3, $t0, 0
+	vinsgr2vr.h	$vr3, $a7, 1
+	vinsgr2vr.h	$vr3, $a6, 2
+	vinsgr2vr.h	$vr3, $a5, 3
+	vinsgr2vr.h	$vr3, $a4, 4
+	vinsgr2vr.h	$vr3, $a3, 5
+	vinsgr2vr.h	$vr3, $a2, 6
+	vinsgr2vr.h	$vr3, $a1, 7
+	vor.v	$vr1, $vr3, $vr1
 	vpickve2gr.h	$a1, $vr1, 4
-	vinsgr2vr.b	$vr2, $a1, 4
+	vinsgr2vr.b	$vr3, $a1, 4
 	vpickve2gr.h	$a1, $vr1, 5
-	vinsgr2vr.b	$vr2, $a1, 5
+	vinsgr2vr.b	$vr3, $a1, 5
 	vpickve2gr.h	$a1, $vr1, 6
-	vinsgr2vr.b	$vr2, $a1, 6
+	vinsgr2vr.b	$vr3, $a1, 6
 	vpickve2gr.h	$a1, $vr1, 7
-	vinsgr2vr.b	$vr2, $a1, 7
+	vinsgr2vr.b	$vr3, $a1, 7
 	vpickve2gr.h	$a1, $vr1, 3
+	pcalau12i	$a2, %pc_hi20(.LCPI1_0)
+	vld	$vr4, $a2, %pc_lo12(.LCPI1_0)
 	vpickve2gr.h	$a2, $vr1, 2
 	vpickve2gr.h	$a3, $vr1, 1
 	vpickve2gr.h	$a4, $vr1, 0
+	vshuf.b	$vr0, $vr0, $vr3, $vr4
 	vinsgr2vr.w	$vr1, $a4, 0
 	vinsgr2vr.w	$vr1, $a3, 1
 	vinsgr2vr.w	$vr1, $a2, 2
 	vinsgr2vr.w	$vr1, $a1, 3
-	vor.v	$vr1, $vr1, $vr3
+	vor.v	$vr1, $vr1, $vr2
 	vpickve2gr.w	$a1, $vr1, 0
-	vinsgr2vr.b	$vr3, $a1, 0
+	vinsgr2vr.b	$vr2, $a1, 0
 	vpickve2gr.w	$a1, $vr1, 1
-	vinsgr2vr.b	$vr3, $a1, 1
+	vinsgr2vr.b	$vr2, $a1, 1
 	vpickve2gr.w	$a1, $vr1, 2
-	vinsgr2vr.b	$vr3, $a1, 2
+	vinsgr2vr.b	$vr2, $a1, 2
 	vpickve2gr.w	$a1, $vr1, 3
-	vinsgr2vr.b	$vr3, $a1, 3
-	vextrins.w	$vr0, $vr3, 0
-	vextrins.w	$vr0, $vr2, 17
+	vinsgr2vr.b	$vr2, $a1, 3
+	vextrins.w	$vr0, $vr2, 0
 	vslli.b	$vr0, $vr0, 7
 	vmskltz.b	$vr0, $vr0
 	vpickve2gr.hu	$a1, $vr0, 0
@@ -187,7 +190,7 @@ main:                                   # @main
 	.type	x,@object                       # @x
 	.data
 	.globl	x
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 x:
 	.dword	0x4024000000000000              # double 10
 	.dword	0x4026000000000000              # double 11

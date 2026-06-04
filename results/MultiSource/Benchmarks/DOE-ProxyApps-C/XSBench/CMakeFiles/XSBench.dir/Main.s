@@ -30,9 +30,11 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(read_CLI)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 352
-	xvld	$xr0, $sp, 320
+	vld	$vr0, $sp, 336
+	vld	$vr1, $sp, 320
 	st.d	$a0, $sp, 56
-	xvst	$xr0, $sp, 24
+	vst	$vr0, $sp, 40
+	vst	$vr1, $sp, 24
 	addi.d	$a0, $sp, 24
 	ori	$a2, $zero, 13
 	move	$a1, $zero
@@ -165,9 +167,11 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 352
-	xvld	$xr0, $sp, 320
+	vld	$vr0, $sp, 336
+	vld	$vr1, $sp, 320
 	st.d	$a0, $sp, 56
-	xvst	$xr0, $sp, 24
+	vst	$vr0, $sp, 40
+	vst	$vr1, $sp, 24
 	movgr2fr.d	$fa0, $zero
 	addi.d	$a0, $sp, 24
 	move	$a1, $zero

@@ -222,9 +222,10 @@ logg:                                   # @logg
 	ld.hu	$a0, $a0, %pc_lo12(logg_lock)
 	beqz	$a0, .LBB2_2
 # %bb.16:
-	xvrepli.b	$xr0, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 1176
 	ld.d	$a0, $s2, %pc_lo12(logg_fd)
-	xvst	$xr0, $sp, 1176
+	vst	$vr0, $sp, 1192
 	ori	$a1, $zero, 1
 	st.h	$a1, $sp, 1176
 	pcaddu18i	$ra, %call36(fileno)

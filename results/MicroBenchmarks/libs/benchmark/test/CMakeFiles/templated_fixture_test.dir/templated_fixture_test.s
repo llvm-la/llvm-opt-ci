@@ -40,34 +40,32 @@ _ZN23MyFixture_Foo_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_ZN23MyFixtu
 	masknez	$a2, $a2, $a3
 	or	$a1, $a1, $a2
 	addi.d	$a1, $a1, 1
-	ori	$a2, $zero, 17
+	ori	$a2, $zero, 9
 	bltu	$a1, $a2, .LBB0_6
 # %bb.3:                                # %vector.ph
-	andi	$a2, $a1, 15
+	andi	$a2, $a1, 7
 	sltui	$a3, $a2, 1
 	masknez	$a2, $a2, $a3
-	ori	$a4, $zero, 16
+	ori	$a4, $zero, 8
 	maskeqz	$a3, $a4, $a3
 	or	$a2, $a3, $a2
 	sub.d	$a1, $a1, $a2
-	xvrepli.b	$xr0, 0
+	vrepli.b	$vr0, 0
 	sub.d	$s1, $s1, $a1
-	xvori.b	$xr1, $xr0, 0
-	xvinsgr2vr.w	$xr1, $a0, 0
+	vori.b	$vr1, $vr0, 0
+	vinsgr2vr.w	$vr1, $a0, 0
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.wu	$xr1, $xr1, 1
-	addi.d	$a1, $a1, -16
-	xvaddi.wu	$xr0, $xr0, 1
+	vaddi.wu	$vr1, $vr1, 1
+	addi.d	$a1, $a1, -8
+	vaddi.wu	$vr0, $vr0, 1
 	bnez	$a1, .LBB0_4
 # %bb.5:                                # %middle.block
-	xvadd.w	$xr0, $xr0, $xr1
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a0, $xr0, 0
+	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 .LBB0_6:                                # %_ZN9benchmark5State13StateIteratorppEv.exit
                                         # =>This Inner Loop Header: Depth=1
 	blez	$s1, .LBB0_10

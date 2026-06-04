@@ -5,65 +5,120 @@
 	.prefalign	5, .Lfunc_end0, nop
 	.type	foo,@function
 foo:                                    # @foo
-# %bb.0:                                # %iter.check
-	ld.w	$a1, $a0, 0
-	bstrins.d	$a1, $zero, 7, 0
-	xvld	$xr0, $a0, 4
-	xvld	$xr1, $a0, 36
-	xvreplgr2vr.w	$xr2, $a1
-	xvrepli.w	$xr3, 255
-	xvand.v	$xr0, $xr0, $xr3
-	xvand.v	$xr1, $xr1, $xr3
-	xvor.v	$xr0, $xr0, $xr2
-	xvst	$xr0, $a0, 4
-	xvld	$xr0, $a0, 68
-	xvld	$xr4, $a0, 100
-	xvor.v	$xr1, $xr1, $xr2
-	xvst	$xr1, $a0, 36
-	xvand.v	$xr0, $xr0, $xr3
-	xvand.v	$xr1, $xr4, $xr3
-	xvor.v	$xr0, $xr0, $xr2
-	xvst	$xr0, $a0, 68
-	xvld	$xr0, $a0, 132
-	xvld	$xr4, $a0, 164
-	xvor.v	$xr1, $xr1, $xr2
-	xvst	$xr1, $a0, 100
-	xvand.v	$xr0, $xr0, $xr3
-	xvand.v	$xr1, $xr4, $xr3
-	xvor.v	$xr0, $xr0, $xr2
-	xvst	$xr0, $a0, 132
-	xvld	$xr0, $a0, 196
-	xvld	$xr4, $a0, 228
-	xvor.v	$xr1, $xr1, $xr2
-	xvst	$xr1, $a0, 164
-	xvand.v	$xr0, $xr0, $xr3
-	xvand.v	$xr1, $xr4, $xr3
-	xvor.v	$xr0, $xr0, $xr2
-	xvst	$xr0, $a0, 196
-	xvld	$xr0, $a0, 260
-	xvld	$xr4, $a0, 292
-	xvor.v	$xr1, $xr1, $xr2
-	xvst	$xr1, $a0, 228
-	xvand.v	$xr0, $xr0, $xr3
-	xvand.v	$xr1, $xr4, $xr3
-	xvor.v	$xr0, $xr0, $xr2
-	xvst	$xr0, $a0, 260
-	xvld	$xr0, $a0, 324
-	xvld	$xr4, $a0, 356
-	xvor.v	$xr1, $xr1, $xr2
-	xvst	$xr1, $a0, 292
-	xvand.v	$xr0, $xr0, $xr3
-	xvand.v	$xr1, $xr4, $xr3
-	xvor.v	$xr0, $xr0, $xr2
-	xvor.v	$xr1, $xr1, $xr2
-	xvst	$xr0, $a0, 324
-	vld	$vr0, $a0, 388
-	xvst	$xr1, $a0, 356
-	vreplgr2vr.w	$vr1, $a1
-	vrepli.w	$vr2, 255
-	vand.v	$vr0, $vr0, $vr2
-	vor.v	$vr0, $vr0, $vr1
-	vst	$vr0, $a0, 388
+# %bb.0:                                # %vector.ph
+	ld.w	$a2, $a0, 0
+	srli.d	$a1, $a2, 8
+	bstrins.d	$a2, $zero, 7, 0
+	vld	$vr2, $a0, 4
+	vld	$vr3, $a0, 20
+	vreplgr2vr.w	$vr0, $a2
+	vrepli.w	$vr1, 255
+	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr3, $vr3, $vr1
+	vor.v	$vr2, $vr2, $vr0
+	vst	$vr2, $a0, 4
+	vld	$vr2, $a0, 36
+	vld	$vr4, $a0, 52
+	vor.v	$vr3, $vr3, $vr0
+	vst	$vr3, $a0, 20
+	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr3, $vr4, $vr1
+	vor.v	$vr2, $vr2, $vr0
+	vst	$vr2, $a0, 36
+	vld	$vr2, $a0, 68
+	vld	$vr4, $a0, 84
+	vor.v	$vr3, $vr3, $vr0
+	vst	$vr3, $a0, 52
+	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr3, $vr4, $vr1
+	vor.v	$vr2, $vr2, $vr0
+	vst	$vr2, $a0, 68
+	vld	$vr2, $a0, 100
+	vld	$vr4, $a0, 116
+	vor.v	$vr3, $vr3, $vr0
+	vst	$vr3, $a0, 84
+	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr3, $vr4, $vr1
+	vor.v	$vr2, $vr2, $vr0
+	vst	$vr2, $a0, 100
+	vld	$vr2, $a0, 132
+	vld	$vr4, $a0, 148
+	vor.v	$vr3, $vr3, $vr0
+	vst	$vr3, $a0, 116
+	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr3, $vr4, $vr1
+	vor.v	$vr2, $vr2, $vr0
+	vst	$vr2, $a0, 132
+	vld	$vr2, $a0, 164
+	vld	$vr4, $a0, 180
+	vor.v	$vr3, $vr3, $vr0
+	vst	$vr3, $a0, 148
+	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr3, $vr4, $vr1
+	vor.v	$vr2, $vr2, $vr0
+	vst	$vr2, $a0, 164
+	vld	$vr2, $a0, 196
+	vld	$vr4, $a0, 212
+	vor.v	$vr3, $vr3, $vr0
+	vst	$vr3, $a0, 180
+	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr3, $vr4, $vr1
+	vor.v	$vr2, $vr2, $vr0
+	vst	$vr2, $a0, 196
+	vld	$vr2, $a0, 228
+	vld	$vr4, $a0, 244
+	vor.v	$vr3, $vr3, $vr0
+	vst	$vr3, $a0, 212
+	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr3, $vr4, $vr1
+	vor.v	$vr2, $vr2, $vr0
+	vst	$vr2, $a0, 228
+	vld	$vr2, $a0, 260
+	vld	$vr4, $a0, 276
+	vor.v	$vr3, $vr3, $vr0
+	vst	$vr3, $a0, 244
+	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr3, $vr4, $vr1
+	vor.v	$vr2, $vr2, $vr0
+	vst	$vr2, $a0, 260
+	vld	$vr2, $a0, 292
+	vld	$vr4, $a0, 308
+	vor.v	$vr3, $vr3, $vr0
+	vst	$vr3, $a0, 276
+	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr3, $vr4, $vr1
+	vor.v	$vr2, $vr2, $vr0
+	vst	$vr2, $a0, 292
+	vld	$vr2, $a0, 324
+	vld	$vr4, $a0, 340
+	vor.v	$vr3, $vr3, $vr0
+	vst	$vr3, $a0, 308
+	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr3, $vr4, $vr1
+	ld.bu	$a2, $a0, 388
+	vor.v	$vr2, $vr2, $vr0
+	vor.v	$vr3, $vr3, $vr0
+	vst	$vr2, $a0, 324
+	bstrins.d	$a2, $a1, 63, 8
+	st.w	$a2, $a0, 388
+	ld.bu	$a2, $a0, 392
+	vst	$vr3, $a0, 340
+	vld	$vr2, $a0, 356
+	vld	$vr3, $a0, 372
+	bstrins.d	$a2, $a1, 63, 8
+	st.w	$a2, $a0, 392
+	ld.bu	$a2, $a0, 396
+	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr1, $vr3, $vr1
+	vor.v	$vr2, $vr2, $vr0
+	bstrins.d	$a2, $a1, 63, 8
+	st.w	$a2, $a0, 396
+	ld.bu	$a2, $a0, 400
+	vor.v	$vr0, $vr1, $vr0
+	vst	$vr2, $a0, 356
+	vst	$vr0, $a0, 372
+	bstrins.d	$a2, $a1, 63, 8
+	st.w	$a2, $a0, 400
 	ret
 .Lfunc_end0:
 	.size	foo, .Lfunc_end0-foo

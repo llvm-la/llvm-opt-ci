@@ -557,7 +557,7 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	ret
 .LBB0_68:                               # %vector.memcheck
 	sub.d	$a2, $a0, $s1
-	ori	$a1, $zero, 64
+	ori	$a1, $zero, 32
 	move	$a5, $zero
 	bltu	$a2, $a1, .LBB0_3
 # %bb.69:                               # %vector.memcheck
@@ -565,30 +565,30 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	bltu	$a2, $a1, .LBB0_3
 # %bb.70:                               # %vector.memcheck
 	sub.d	$a1, $fp, $a0
-	ori	$a2, $zero, 64
+	ori	$a2, $zero, 32
 	bltu	$a1, $a2, .LBB0_3
 # %bb.71:                               # %vector.ph
-	bstrpick.d	$a1, $s2, 30, 3
-	slli.d	$a5, $a1, 3
-	addi.d	$a1, $fp, 32
-	addi.d	$a2, $a0, 32
-	addi.d	$a3, $s1, 32
-	xvrepli.b	$xr0, 0
-	xvldi	$xr1, -912
+	bstrpick.d	$a1, $s2, 30, 2
+	slli.d	$a5, $a1, 2
+	addi.d	$a1, $fp, 16
+	addi.d	$a2, $a0, 16
+	addi.d	$a3, $s1, 16
+	vrepli.b	$vr0, 0
+	vldi	$vr1, -912
 	move	$a4, $a5
 	.p2align	4, , 16
 .LBB0_72:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a3, -32
-	xvst	$xr0, $a3, 0
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	xvst	$xr1, $a1, -32
-	xvst	$xr1, $a1, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$a2, $a2, 64
-	addi.d	$a3, $a3, 64
+	vst	$vr0, $a3, -16
+	vst	$vr0, $a3, 0
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	vst	$vr1, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$a2, $a2, 32
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB0_72
 # %bb.73:                               # %middle.block
 	bne	$a5, $s2, .LBB0_3

@@ -451,16 +451,18 @@ print_inputs:                           # @print_inputs
 	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	move	$s0, $a0
+	move	$fp, $a0
 	ld.d	$a0, $a0, 32
-	xvld	$xr0, $s0, 0
+	vld	$vr0, $fp, 16
+	vld	$vr1, $fp, 0
 	move	$s1, $a2
 	st.d	$a0, $sp, 48
-	xvst	$xr0, $sp, 16
+	vst	$vr0, $sp, 32
+	vst	$vr1, $sp, 16
 	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(estimate_mem_usage)
 	jirl	$ra, $ra, 0
-	move	$fp, $a0
+	move	$s0, $a0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(logo)
 	jirl	$ra, $ra, 0
@@ -627,12 +629,12 @@ print_inputs:                           # @print_inputs
 	ori	$a1, $zero, 12
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, 32
+	ld.d	$a1, $fp, 32
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.11)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, 8
+	ld.d	$a1, $fp, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.12)
 	pcaddu18i	$ra, %call36(printf)
@@ -641,15 +643,15 @@ print_inputs:                           # @print_inputs
 	addi.d	$a0, $a0, %pc_lo12(.L.str.13)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 16
+	ld.d	$a0, $fp, 16
 	pcaddu18i	$ra, %call36(fancy_int)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 8
-	ld.d	$a1, $s0, 16
+	ld.d	$a0, $fp, 8
+	ld.d	$a1, $fp, 16
 	mul.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(fancy_int)
 	jirl	$ra, $ra, 0
@@ -657,10 +659,10 @@ print_inputs:                           # @print_inputs
 	addi.d	$a0, $a0, %pc_lo12(.L.str.15)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s0, 24
+	ld.w	$a0, $fp, 24
 	pcaddu18i	$ra, %call36(fancy_int)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s0, 0
+	ld.w	$a1, $fp, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
 	pcaddu18i	$ra, %call36(printf)
@@ -669,7 +671,7 @@ print_inputs:                           # @print_inputs
 	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	addi.w	$a0, $fp, 0
+	addi.w	$a0, $s0, 0
 	pcaddu18i	$ra, %call36(fancy_int)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1

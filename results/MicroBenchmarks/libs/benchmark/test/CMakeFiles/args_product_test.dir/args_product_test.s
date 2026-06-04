@@ -1690,12 +1690,15 @@ _ZN18ArgsProductFixtureC2Ev:            # @_ZN18ArgsProductFixtureC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp58:                                # EH_LABEL
 # %bb.4:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.15)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.15)
 	st.d	$a0, $sp, 32
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 48
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.15)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.15)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 40
 	addi.d	$s0, $sp, 56
 	st.d	$zero, $sp, 56
@@ -1708,12 +1711,15 @@ _ZN18ArgsProductFixtureC2Ev:            # @_ZN18ArgsProductFixtureC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp61:                                # EH_LABEL
 # %bb.5:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.16)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.16)
 	st.d	$a0, $sp, 56
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 72
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.16)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.16)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 64
 	addi.d	$s8, $sp, 80
 	st.d	$zero, $sp, 80
@@ -1725,12 +1731,15 @@ _ZN18ArgsProductFixtureC2Ev:            # @_ZN18ArgsProductFixtureC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp64:                                # EH_LABEL
 # %bb.6:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.17)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.17)
 	st.d	$a0, $sp, 80
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 96
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.17)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.17)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 88
 	addi.d	$s7, $sp, 104
 	st.d	$zero, $sp, 104
@@ -1742,12 +1751,15 @@ _ZN18ArgsProductFixtureC2Ev:            # @_ZN18ArgsProductFixtureC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp67:                                # EH_LABEL
 # %bb.7:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.18)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.18)
 	st.d	$a0, $sp, 104
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 120
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.18)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.18)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 112
 	addi.d	$s1, $sp, 128
 	st.d	$zero, $sp, 128
@@ -1759,12 +1771,15 @@ _ZN18ArgsProductFixtureC2Ev:            # @_ZN18ArgsProductFixtureC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp70:                                # EH_LABEL
 # %bb.8:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.19)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.19)
 	st.d	$a0, $sp, 128
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 144
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.19)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.19)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 136
 	addi.d	$s2, $sp, 152
 	st.d	$zero, $sp, 152
@@ -1776,12 +1791,15 @@ _ZN18ArgsProductFixtureC2Ev:            # @_ZN18ArgsProductFixtureC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp73:                                # EH_LABEL
 # %bb.9:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.20)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.20)
 	st.d	$a0, $sp, 152
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 168
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.20)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.20)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 160
 	addi.d	$s3, $sp, 176
 	st.d	$zero, $sp, 176
@@ -1793,12 +1811,15 @@ _ZN18ArgsProductFixtureC2Ev:            # @_ZN18ArgsProductFixtureC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp76:                                # EH_LABEL
 # %bb.10:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.21)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.21)
 	st.d	$a0, $sp, 176
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 192
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.21)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.21)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 184
 	addi.d	$s4, $sp, 200
 	st.d	$zero, $sp, 200
@@ -1810,12 +1831,15 @@ _ZN18ArgsProductFixtureC2Ev:            # @_ZN18ArgsProductFixtureC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp79:                                # EH_LABEL
 # %bb.11:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.22)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.22)
 	st.d	$a0, $sp, 200
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 216
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.22)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.22)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 208
 	addi.d	$s5, $sp, 224
 	st.d	$zero, $sp, 224
@@ -1827,12 +1851,15 @@ _ZN18ArgsProductFixtureC2Ev:            # @_ZN18ArgsProductFixtureC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp82:                                # EH_LABEL
 # %bb.12:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.23)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.23)
 	st.d	$a0, $sp, 224
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 240
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.23)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.23)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 232
 	addi.d	$s5, $sp, 248
 	st.d	$zero, $sp, 248
@@ -1844,12 +1871,15 @@ _ZN18ArgsProductFixtureC2Ev:            # @_ZN18ArgsProductFixtureC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp85:                                # EH_LABEL
 # %bb.13:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.24)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.24)
 	st.d	$a0, $sp, 248
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 264
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.24)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.24)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 256
 	addi.d	$s5, $sp, 272
 	st.d	$zero, $sp, 272
@@ -1861,12 +1891,15 @@ _ZN18ArgsProductFixtureC2Ev:            # @_ZN18ArgsProductFixtureC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp88:                                # EH_LABEL
 # %bb.14:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.25)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.25)
 	st.d	$a0, $sp, 272
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 288
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.25)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.25)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 280
 	addi.d	$s5, $sp, 296
 	st.d	$zero, $sp, 296
@@ -1878,12 +1911,15 @@ _ZN18ArgsProductFixtureC2Ev:            # @_ZN18ArgsProductFixtureC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp91:                                # EH_LABEL
 # %bb.15:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.26)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.26)
 	st.d	$a0, $sp, 296
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 312
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.26)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.26)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 304
 	addi.d	$s5, $sp, 320
 	st.d	$zero, $sp, 320
@@ -1895,12 +1931,15 @@ _ZN18ArgsProductFixtureC2Ev:            # @_ZN18ArgsProductFixtureC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp94:                                # EH_LABEL
 # %bb.16:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.27)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.27)
 	st.d	$a0, $sp, 320
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 336
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.27)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.27)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 328
 	st.d	$zero, $sp, 344
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
@@ -1912,12 +1951,15 @@ _ZN18ArgsProductFixtureC2Ev:            # @_ZN18ArgsProductFixtureC2Ev
 .Ltmp97:                                # EH_LABEL
 # %bb.17:
 	addi.d	$s5, $fp, 304
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.28)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.28)
 	st.d	$a0, $sp, 344
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 360
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.28)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.28)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 352
 	addi.d	$s6, $fp, 312
 	st.w	$zero, $fp, 312
@@ -3178,12 +3220,15 @@ _GLOBAL__sub_I_args_product_test.cc:    # @_GLOBAL__sub_I_args_product_test.cc
 	jirl	$ra, $ra, 0
 .Ltmp149:                               # EH_LABEL
 # %bb.3:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.15)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.15)
 	st.d	$a0, $sp, 176
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 192
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.15)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.15)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 184
 .Ltmp151:                               # EH_LABEL
 	addi.d	$a1, $sp, 176
@@ -3295,12 +3340,15 @@ _GLOBAL__sub_I_args_product_test.cc:    # @_GLOBAL__sub_I_args_product_test.cc
 	jirl	$ra, $ra, 0
 .Ltmp175:                               # EH_LABEL
 # %bb.12:
-	pcalau12i	$a1, %pc_hi20(.Lconstinit.28)
-	xvld	$xr0, $a1, %pc_lo12(.Lconstinit.28)
 	st.d	$a0, $sp, 32
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 48
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.Lconstinit.28)
+	addi.d	$a2, $a2, %pc_lo12(.Lconstinit.28)
+	vld	$vr0, $a2, 0
+	vld	$vr1, $a2, 16
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 40
 .Ltmp177:                               # EH_LABEL
 	addi.d	$a1, $sp, 32

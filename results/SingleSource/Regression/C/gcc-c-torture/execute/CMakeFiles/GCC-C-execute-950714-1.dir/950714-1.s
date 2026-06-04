@@ -45,12 +45,11 @@ main:                                   # @main
 	vinsgr2vr.w	$vr1, $a1, 1
 	vinsgr2vr.w	$vr1, $a2, 2
 	vinsgr2vr.w	$vr1, $a3, 3
-	xvpermi.q	$xr1, $xr0, 2
-	xvseqi.w	$xr0, $xr1, 1
-	xvmskltz.w	$xr0, $xr0
-	xvpickve2gr.wu	$a0, $xr0, 0
-	xvpickve2gr.wu	$a1, $xr0, 4
-	bstrins.d	$a0, $a1, 7, 4
+	vseqi.w	$vr1, $vr1, 1
+	vseqi.w	$vr0, $vr0, 1
+	vpickev.h	$vr0, $vr0, $vr1
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	bnez	$a0, .LBB0_12
 # %bb.10:                               # %.preheader.1
 	ori	$a0, $zero, 1

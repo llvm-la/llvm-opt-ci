@@ -1,16 +1,12 @@
 	.file	"badidx.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI0_0:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
-	.dword	6                               # 0x6
-	.dword	7                               # 0x7
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI0_1:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	main
 	.p2align	2
@@ -56,37 +52,24 @@ main:                                   # @main
 	bltu	$a1, $a2, .LBB0_3
 .LBB0_5:                                # %vector.ph
 	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI0_1)
+	vld	$vr1, $a2, %pc_lo12(.LCPI0_1)
 	bstrpick.d	$a2, $s0, 31, 3
 	slli.d	$a2, $a2, 3
-	move	$a3, $a0
+	addi.d	$a3, $a0, 16
 	move	$a4, $a2
 	.p2align	4, , 16
 .LBB0_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a5, $xr1, 0
-	vinsgr2vr.w	$vr2, $a5, 0
-	xvpickve2gr.d	$a5, $xr1, 1
-	vinsgr2vr.w	$vr2, $a5, 1
-	xvpickve2gr.d	$a5, $xr1, 2
-	vinsgr2vr.w	$vr2, $a5, 2
-	xvpickve2gr.d	$a5, $xr1, 3
-	vinsgr2vr.w	$vr2, $a5, 3
-	xvpickve2gr.d	$a5, $xr0, 0
-	vinsgr2vr.w	$vr3, $a5, 0
-	xvpickve2gr.d	$a5, $xr0, 1
-	vinsgr2vr.w	$vr3, $a5, 1
-	xvpickve2gr.d	$a5, $xr0, 2
-	vinsgr2vr.w	$vr3, $a5, 2
-	xvpickve2gr.d	$a5, $xr0, 3
-	vinsgr2vr.w	$vr3, $a5, 3
-	xvpermi.q	$xr2, $xr3, 2
-	xvmul.w	$xr2, $xr2, $xr2
-	xvst	$xr2, $a3, 0
-	xvaddi.du	$xr1, $xr1, 8
-	xvaddi.du	$xr0, $xr0, 8
+	vpickev.w	$vr2, $vr0, $vr1
+	vmul.w	$vr3, $vr2, $vr2
+	vaddi.wu	$vr2, $vr2, 4
+	vmul.w	$vr2, $vr2, $vr2
+	vst	$vr3, $a3, -16
+	vst	$vr2, $a3, 0
+	vaddi.du	$vr1, $vr1, 8
+	vaddi.du	$vr0, $vr0, 8
 	addi.d	$a4, $a4, -8
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB0_6

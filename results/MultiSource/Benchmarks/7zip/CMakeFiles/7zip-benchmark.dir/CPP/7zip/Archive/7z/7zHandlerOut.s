@@ -2097,10 +2097,12 @@ _ZN8NArchive3N7z8CHandler11UpdateItemsEP20ISequentialOutStreamjP22IArchiveUpdate
                                         #   in Loop: Header=BB9_3 Depth=1
 	move	$s6, $a0
 	ld.d	$a0, $sp, 128
-	xvld	$xr0, $sp, 96
+	vld	$vr0, $sp, 112
+	vld	$vr1, $sp, 96
 	ld.w	$s0, $sp, 144
 	st.d	$a0, $s6, 32
-	xvst	$xr0, $s6, 0
+	vst	$vr0, $s6, 16
+	vst	$vr1, $s6, 0
 	bstrpick.d	$a0, $s0, 31, 0
 	addi.d	$s2, $a0, 1
 	slli.d	$a0, $s2, 31
@@ -2625,8 +2627,9 @@ _ZN8NArchive3N7z8CHandler11UpdateItemsEP20ISequentialOutStreamjP22IArchiveUpdate
 	st.w	$zero, $sp, 616
 	st.d	$zero, $sp, 632
 	st.d	$zero, $sp, 648
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 672
+	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 672
+	vst	$vr0, $sp, 688
 .Ltmp257:                               # EH_LABEL
 	lu12i.w	$a1, 16
 	move	$a0, $s2

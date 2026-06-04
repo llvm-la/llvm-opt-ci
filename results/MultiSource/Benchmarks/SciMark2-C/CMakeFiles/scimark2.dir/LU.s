@@ -28,10 +28,10 @@ LU_copy_matrix:                         # @LU_copy_matrix
 	blez	$a1, .LBB1_11
 # %bb.2:                                # %.preheader.us.preheader
 	move	$a4, $zero
-	bstrpick.d	$a5, $a1, 30, 3
-	slli.d	$a5, $a5, 3
-	ori	$a6, $zero, 8
-	ori	$a7, $zero, 64
+	bstrpick.d	$a5, $a1, 30, 2
+	slli.d	$a5, $a5, 2
+	ori	$a6, $zero, 4
+	ori	$a7, $zero, 32
 	b	.LBB1_4
 	.p2align	4, , 16
 .LBB1_3:                                # %._crit_edge.us
@@ -53,20 +53,20 @@ LU_copy_matrix:                         # @LU_copy_matrix
 	bltu	$t3, $a7, .LBB1_9
 # %bb.6:                                # %vector.body.preheader
                                         #   in Loop: Header=BB1_4 Depth=1
-	addi.d	$t2, $t1, 32
-	addi.d	$t3, $t0, 32
+	addi.d	$t2, $t1, 16
+	addi.d	$t3, $t0, 16
 	move	$t4, $a5
 	.p2align	4, , 16
 .LBB1_7:                                # %vector.body
                                         #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $t3, -32
-	xvld	$xr1, $t3, 0
-	xvst	$xr0, $t2, -32
-	xvst	$xr1, $t2, 0
-	addi.d	$t4, $t4, -8
-	addi.d	$t2, $t2, 64
-	addi.d	$t3, $t3, 64
+	vld	$vr0, $t3, -16
+	vld	$vr1, $t3, 0
+	vst	$vr0, $t2, -16
+	vst	$vr1, $t2, 0
+	addi.d	$t4, $t4, -4
+	addi.d	$t2, $t2, 32
+	addi.d	$t3, $t3, 32
 	bnez	$t4, .LBB1_7
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB1_4 Depth=1
@@ -130,9 +130,9 @@ LU_factor:                              # @LU_factor
 	addi.d	$t2, $a2, 8
 	addi.d	$t3, $t0, -1
 	ori	$t5, $zero, 1
-	ori	$t6, $zero, 40
+	ori	$t6, $zero, 24
 	movgr2fr.d	$fa0, $zero
-	ori	$t7, $zero, 8
+	ori	$t7, $zero, 4
 	ori	$t8, $zero, 1
 	b	.LBB2_3
 	.p2align	4, , 16
@@ -237,7 +237,7 @@ LU_factor:                              # @LU_factor
 # %bb.16:                               # %.lr.ph96.us.preheader
                                         #   in Loop: Header=BB2_3 Depth=1
 	move	$a3, $t3
-	bstrins.d	$a3, $zero, 2, 0
+	bstrins.d	$a3, $zero, 1, 0
 	ld.d	$s2, $s2, 0
 	nor	$a1, $s0, $zero
 	add.d	$s0, $a1, $t0
@@ -245,7 +245,7 @@ LU_factor:                              # @LU_factor
 	add.d	$s4, $s2, $s3
 	add.d	$s5, $s2, $t1
 	move	$s6, $s0
-	bstrins.d	$s6, $zero, 2, 0
+	bstrins.d	$s6, $zero, 1, 0
 	add.d	$s7, $t8, $s6
 	add.d	$a5, $s2, $t6
 	move	$ra, $t8
@@ -277,7 +277,7 @@ LU_factor:                              # @LU_factor
 	bltu	$s4, $a1, .LBB2_24
 .LBB2_21:                               # %vector.ph
                                         #   in Loop: Header=BB2_18 Depth=2
-	xvreplve0.d	$xr2, $xr1
+	vreplvei.d	$vr2, $vr1, 0
 	add.d	$a1, $a6, $t6
 	move	$s8, $a5
 	move	$s1, $a3
@@ -286,17 +286,17 @@ LU_factor:                              # @LU_factor
                                         #   Parent Loop BB2_3 Depth=1
                                         #     Parent Loop BB2_18 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvld	$xr3, $s8, -32
-	xvld	$xr4, $s8, 0
-	xvld	$xr5, $a1, -32
-	xvld	$xr6, $a1, 0
-	xvfmadd.d	$xr3, $xr2, $xr3, $xr5
-	xvfmadd.d	$xr4, $xr2, $xr4, $xr6
-	xvst	$xr3, $a1, -32
-	xvst	$xr4, $a1, 0
-	addi.d	$s1, $s1, -8
-	addi.d	$a1, $a1, 64
-	addi.d	$s8, $s8, 64
+	vld	$vr3, $s8, -16
+	vld	$vr4, $s8, 0
+	vld	$vr5, $a1, -16
+	vld	$vr6, $a1, 0
+	vfmadd.d	$vr3, $vr2, $vr3, $vr5
+	vfmadd.d	$vr4, $vr2, $vr4, $vr6
+	vst	$vr3, $a1, -16
+	vst	$vr4, $a1, 0
+	addi.d	$s1, $s1, -4
+	addi.d	$a1, $a1, 32
+	addi.d	$s8, $s8, 32
 	bnez	$s1, .LBB2_22
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB2_18 Depth=2

@@ -5862,7 +5862,7 @@ display_main_menu:                      # @display_main_menu
 	move	$a3, $fp
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-.LBB27_3:                               # %.preheader615
+.LBB27_3:                               # %.preheader600
 	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.122)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.122)
@@ -5882,7 +5882,7 @@ display_main_menu:                      # @display_main_menu
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.142)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.142)
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$s1, %pc_hi20(white_space.commentP)
 	ori	$s4, $zero, 37
 	ori	$s7, $zero, 10
@@ -5899,10 +5899,10 @@ display_main_menu:                      # @display_main_menu
 	lu32i.d	$a0, 1
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	b	.LBB27_8
 .LBB27_4:                               #   in Loop: Header=BB27_8 Depth=1
-	bnez	$s0, .LBB27_270
+	bnez	$s0, .LBB27_264
 # %bb.5:                                #   in Loop: Header=BB27_8 Depth=1
 	ori	$a1, $zero, 23
 	ori	$a2, $zero, 1
@@ -5915,7 +5915,7 @@ display_main_menu:                      # @display_main_menu
 	move	$s0, $zero
 .LBB27_7:                               # %prompt.exit.thread
                                         #   in Loop: Header=BB27_8 Depth=1
-	bnez	$s0, .LBB27_270
+	bnez	$s0, .LBB27_264
 .LBB27_8:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB27_23 Depth 2
                                         #     Child Loop BB27_28 Depth 2
@@ -5929,18 +5929,17 @@ display_main_menu:                      # @display_main_menu
                                         #     Child Loop BB27_169 Depth 2
                                         #       Child Loop BB27_172 Depth 3
                                         #       Child Loop BB27_181 Depth 3
-                                        #       Child Loop BB27_192 Depth 3
-                                        #       Child Loop BB27_196 Depth 3
-                                        #       Child Loop BB27_199 Depth 3
+                                        #       Child Loop BB27_190 Depth 3
+                                        #       Child Loop BB27_193 Depth 3
+                                        #       Child Loop BB27_202 Depth 3
                                         #       Child Loop BB27_208 Depth 3
-                                        #       Child Loop BB27_214 Depth 3
-                                        #       Child Loop BB27_224 Depth 3
+                                        #       Child Loop BB27_218 Depth 3
                                         #     Child Loop BB27_88 Depth 2
                                         #     Child Loop BB27_93 Depth 2
                                         #     Child Loop BB27_117 Depth 2
                                         #     Child Loop BB27_122 Depth 2
-                                        #     Child Loop BB27_237 Depth 2
-                                        #     Child Loop BB27_242 Depth 2
+                                        #     Child Loop BB27_231 Depth 2
+                                        #     Child Loop BB27_236 Depth 2
 	ld.w	$a0, $s8, %pc_lo12(got_unused_responce)
 	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
 	bnez	$a0, .LBB27_10
@@ -6087,7 +6086,7 @@ display_main_menu:                      # @display_main_menu
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB27_267
+	bnez	$a0, .LBB27_261
 # %bb.36:                               #   in Loop: Header=BB27_8 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.125)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.125)
@@ -6096,7 +6095,7 @@ display_main_menu:                      # @display_main_menu
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB27_7
-	b	.LBB27_268
+	b	.LBB27_262
 .LBB27_37:                              #   in Loop: Header=BB27_8 Depth=1
 	move	$s0, $zero
 	b	.LBB27_13
@@ -6135,7 +6134,7 @@ display_main_menu:                      # @display_main_menu
 	addi.d	$a3, $s6, 1
 	ori	$a2, $zero, 37
 	move	$s6, $a3
-	beq	$a1, $a2, .LBB27_252
+	beq	$a1, $a2, .LBB27_246
 .LBB27_45:                              # %.lr.ph.split.i179
                                         #   Parent Loop BB27_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -6193,7 +6192,7 @@ display_main_menu:                      # @display_main_menu
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB27_270
+	bnez	$a0, .LBB27_264
 # %bb.58:                               #   in Loop: Header=BB27_8 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.128)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.128)
@@ -6201,7 +6200,7 @@ display_main_menu:                      # @display_main_menu
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB27_271
+	bnez	$a0, .LBB27_265
 # %bb.59:                               #   in Loop: Header=BB27_8 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.129)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.129)
@@ -6258,7 +6257,7 @@ display_main_menu:                      # @display_main_menu
 	addi.d	$a3, $s6, 1
 	ori	$a2, $zero, 37
 	move	$s6, $a3
-	beq	$a1, $a2, .LBB27_261
+	beq	$a1, $a2, .LBB27_255
 .LBB27_70:                              # %.lr.ph.split.i196
                                         #   Parent Loop BB27_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -6314,15 +6313,15 @@ display_main_menu:                      # @display_main_menu
 	pcaddu18i	$ra, %call36(find_name)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB27_165
-	b	.LBB27_272
+	b	.LBB27_266
 .LBB27_83:                              #   in Loop: Header=BB27_8 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s6
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB27_7
-	b	.LBB27_275
+	b	.LBB27_269
 .LBB27_84:                              # %.lr.ph.i268
                                         #   in Loop: Header=BB27_8 Depth=1
 	ld.bu	$a2, $s1, %pc_lo12(white_space.commentP)
@@ -6341,7 +6340,7 @@ display_main_menu:                      # @display_main_menu
 	addi.d	$a3, $s6, 1
 	ori	$a2, $zero, 37
 	move	$s6, $a3
-	beq	$a1, $a2, .LBB27_262
+	beq	$a1, $a2, .LBB27_256
 .LBB27_88:                              # %.lr.ph.split.i270
                                         #   Parent Loop BB27_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -6415,7 +6414,7 @@ display_main_menu:                      # @display_main_menu
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB27_276
+	bnez	$a0, .LBB27_270
 # %bb.104:                              #   in Loop: Header=BB27_8 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.132)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.132)
@@ -6423,7 +6422,7 @@ display_main_menu:                      # @display_main_menu
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB27_277
+	bnez	$a0, .LBB27_271
 # %bb.105:                              #   in Loop: Header=BB27_8 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.133)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.133)
@@ -6431,7 +6430,7 @@ display_main_menu:                      # @display_main_menu
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB27_278
+	bnez	$a0, .LBB27_272
 # %bb.106:                              #   in Loop: Header=BB27_8 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.134)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.134)
@@ -6439,7 +6438,7 @@ display_main_menu:                      # @display_main_menu
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB27_279
+	bnez	$a0, .LBB27_273
 # %bb.107:                              #   in Loop: Header=BB27_8 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.135)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.135)
@@ -6447,7 +6446,7 @@ display_main_menu:                      # @display_main_menu
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB27_280
+	bnez	$a0, .LBB27_274
 # %bb.108:                              #   in Loop: Header=BB27_8 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.136)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.136)
@@ -6455,7 +6454,7 @@ display_main_menu:                      # @display_main_menu
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB27_256
+	beqz	$a0, .LBB27_250
 # %bb.109:                              #   in Loop: Header=BB27_8 Depth=1
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(skip_first)
@@ -6504,7 +6503,7 @@ display_main_menu:                      # @display_main_menu
 	addi.d	$a3, $s6, 1
 	ori	$a2, $zero, 37
 	move	$s6, $a3
-	beq	$a1, $a2, .LBB27_264
+	beq	$a1, $a2, .LBB27_258
 .LBB27_117:                             # %.lr.ph.split.i287
                                         #   Parent Loop BB27_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -6573,12 +6572,12 @@ display_main_menu:                      # @display_main_menu
 	ld.bu	$a1, $s6, 0
 	ori	$a3, $zero, 37
 	ori	$a0, $zero, 1
-	bne	$a1, $a3, .LBB27_233
+	bne	$a1, $a3, .LBB27_227
 .LBB27_132:                             # %.critedge.sink.split.i313
                                         #   in Loop: Header=BB27_8 Depth=1
 	st.b	$a0, $s1, %pc_lo12(white_space.commentP)
 	move	$a1, $a3
-	b	.LBB27_242
+	b	.LBB27_236
 .LBB27_133:                             # %.lr.ph.i213
                                         #   in Loop: Header=BB27_8 Depth=1
 	ld.bu	$a2, $s1, %pc_lo12(white_space.commentP)
@@ -6598,7 +6597,7 @@ display_main_menu:                      # @display_main_menu
 	addi.d	$a3, $s6, 1
 	ori	$a2, $zero, 37
 	move	$s6, $a3
-	beq	$a1, $a2, .LBB27_265
+	beq	$a1, $a2, .LBB27_259
 .LBB27_137:                             # %.lr.ph.split.i215
                                         #   Parent Loop BB27_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -6615,7 +6614,7 @@ display_main_menu:                      # @display_main_menu
 .LBB27_140:                             # %.critedge.i217.preheader
                                         #   in Loop: Header=BB27_8 Depth=1
 	move	$a2, $a0
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB27_143
 	.p2align	4, , 16
 .LBB27_141:                             # %.thread.sink.split.i223
@@ -6718,16 +6717,16 @@ display_main_menu:                      # @display_main_menu
 	beqz	$a1, .LBB27_164
 # %bb.163:                              # %prompt.exit261.sink.split
                                         #   in Loop: Header=BB27_8 Depth=1
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	st.w	$s5, $a0, %pc_lo12(got_unused_responce)
 	move	$a0, $s0
 .LBB27_164:                             # %prompt.exit261
                                         #   in Loop: Header=BB27_8 Depth=1
 	move	$s0, $a0
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
 .LBB27_165:                             # %prompt.exit
                                         #   in Loop: Header=BB27_8 Depth=1
-	bnez	$s0, .LBB27_270
+	bnez	$s0, .LBB27_264
 # %bb.166:                              #   in Loop: Header=BB27_8 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.138)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.138)
@@ -6741,18 +6740,17 @@ display_main_menu:                      # @display_main_menu
 	.p2align	4, , 16
 .LBB27_168:                             # %skip_white_space.exit259.thread
                                         #   in Loop: Header=BB27_169 Depth=2
-	beqz	$fp, .LBB27_258
+	beqz	$fp, .LBB27_252
 .LBB27_169:                             # %.lr.ph369
                                         #   Parent Loop BB27_8 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB27_172 Depth 3
                                         #       Child Loop BB27_181 Depth 3
-                                        #       Child Loop BB27_192 Depth 3
-                                        #       Child Loop BB27_196 Depth 3
-                                        #       Child Loop BB27_199 Depth 3
+                                        #       Child Loop BB27_190 Depth 3
+                                        #       Child Loop BB27_193 Depth 3
+                                        #       Child Loop BB27_202 Depth 3
                                         #       Child Loop BB27_208 Depth 3
-                                        #       Child Loop BB27_214 Depth 3
-                                        #       Child Loop BB27_224 Depth 3
+                                        #       Child Loop BB27_218 Depth 3
 	move	$a2, $a0
 	move	$a1, $s6
 	b	.LBB27_172
@@ -6833,353 +6831,280 @@ display_main_menu:                      # @display_main_menu
 	pcaddu18i	$ra, %call36(find_name)
 	jirl	$ra, $ra, 0
 	st.b	$fp, $s0, 0
-	beqz	$a0, .LBB27_257
+	beqz	$a0, .LBB27_251
 # %bb.186:                              # %.preheader
                                         #   in Loop: Header=BB27_169 Depth=2
-	blez	$s8, .LBB27_201
-# %bb.187:                              # %iter.check
+	blez	$s8, .LBB27_195
+# %bb.187:                              # %.lr.ph.preheader
                                         #   in Loop: Header=BB27_169 Depth=2
-	ori	$a1, $zero, 4
+	ori	$a1, $zero, 8
 	bgeu	$s8, $a1, .LBB27_189
 # %bb.188:                              #   in Loop: Header=BB27_169 Depth=2
 	move	$a1, $zero
-	ori	$a3, $zero, 1
-	b	.LBB27_198
+	ori	$a2, $zero, 1
+	b	.LBB27_192
 	.p2align	4, , 16
-.LBB27_189:                             # %vector.main.loop.iter.check
+.LBB27_189:                             # %vector.ph
                                         #   in Loop: Header=BB27_169 Depth=2
-	ori	$a1, $zero, 16
-	bgeu	$s8, $a1, .LBB27_191
-# %bb.190:                              #   in Loop: Header=BB27_169 Depth=2
-	move	$a1, $zero
-	ori	$a3, $zero, 1
-	b	.LBB27_195
-.LBB27_191:                             # %vector.ph
-                                        #   in Loop: Header=BB27_169 Depth=2
-	andi	$a2, $s8, 12
-	bstrpick.d	$a1, $s8, 30, 4
-	slli.d	$a1, $a1, 4
-	xvreplgr2vr.w	$xr0, $a0
-	addi.d	$a3, $sp, 168
-	move	$a4, $a1
-	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	bstrpick.d	$a1, $s8, 30, 3
+	slli.d	$a1, $a1, 3
+	vreplgr2vr.w	$vr0, $a0
+	addi.d	$a2, $sp, 152
+	move	$a3, $a1
+	vld	$vr2, $sp, 32                   # 16-byte Folded Reload
 	vori.b	$vr1, $vr2, 0
 	.p2align	4, , 16
-.LBB27_192:                             # %vector.body
+.LBB27_190:                             # %vector.body
                                         #   Parent Loop BB27_8 Depth=1
                                         #     Parent Loop BB27_169 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvld	$xr3, $a3, -32
-	xvld	$xr4, $a3, 0
-	xvseq.w	$xr3, $xr3, $xr0
-	xvpickve2gr.w	$a5, $xr3, 0
-	vinsgr2vr.h	$vr5, $a5, 0
-	xvpickve2gr.w	$a5, $xr3, 1
-	vinsgr2vr.h	$vr5, $a5, 1
-	xvpickve2gr.w	$a5, $xr3, 2
-	vinsgr2vr.h	$vr5, $a5, 2
-	xvpickve2gr.w	$a5, $xr3, 3
-	vinsgr2vr.h	$vr5, $a5, 3
-	xvpickve2gr.w	$a5, $xr3, 4
-	vinsgr2vr.h	$vr5, $a5, 4
-	xvpickve2gr.w	$a5, $xr3, 5
-	vinsgr2vr.h	$vr5, $a5, 5
-	xvpickve2gr.w	$a5, $xr3, 6
-	vinsgr2vr.h	$vr5, $a5, 6
-	xvpickve2gr.w	$a5, $xr3, 7
-	vinsgr2vr.h	$vr5, $a5, 7
-	xvseq.w	$xr3, $xr4, $xr0
-	xvpickve2gr.w	$a5, $xr3, 0
-	vinsgr2vr.h	$vr4, $a5, 0
-	xvpickve2gr.w	$a5, $xr3, 1
-	vinsgr2vr.h	$vr4, $a5, 1
-	xvpickve2gr.w	$a5, $xr3, 2
-	vinsgr2vr.h	$vr4, $a5, 2
-	xvpickve2gr.w	$a5, $xr3, 3
-	vinsgr2vr.h	$vr4, $a5, 3
-	xvpickve2gr.w	$a5, $xr3, 4
-	vinsgr2vr.h	$vr4, $a5, 4
-	xvpickve2gr.w	$a5, $xr3, 5
-	vinsgr2vr.h	$vr4, $a5, 5
-	xvpickve2gr.w	$a5, $xr3, 6
-	vinsgr2vr.h	$vr4, $a5, 6
-	xvpickve2gr.w	$a5, $xr3, 7
-	vinsgr2vr.h	$vr4, $a5, 7
-	vor.v	$vr1, $vr1, $vr5
+	vld	$vr3, $a2, -16
+	vld	$vr4, $a2, 0
+	vseq.w	$vr3, $vr3, $vr0
+	vseq.w	$vr4, $vr4, $vr0
+	vor.v	$vr1, $vr1, $vr3
 	vor.v	$vr2, $vr2, $vr4
-	addi.d	$a4, $a4, -16
-	addi.d	$a3, $a3, 64
-	bnez	$a4, .LBB27_192
-# %bb.193:                              # %middle.block
+	addi.d	$a3, $a3, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB27_190
+# %bb.191:                              # %middle.block
                                         #   in Loop: Header=BB27_169 Depth=2
 	vor.v	$vr0, $vr2, $vr1
-	vslli.h	$vr0, $vr0, 15
-	vmskltz.h	$vr0, $vr0
-	vpickve2gr.hu	$a3, $vr0, 0
-	sltui	$a3, $a3, 1
-	beq	$a1, $s8, .LBB27_200
-# %bb.194:                              # %vec.epilog.iter.check
-                                        #   in Loop: Header=BB27_169 Depth=2
-	beqz	$a2, .LBB27_198
-.LBB27_195:                             # %vec.epilog.ph
-                                        #   in Loop: Header=BB27_169 Depth=2
-	move	$a4, $a1
-	sltui	$a2, $a3, 1
-	bstrpick.d	$a1, $s8, 30, 2
-	slli.d	$a1, $a1, 2
-	vreplgr2vr.w	$vr1, $a0
-	vreplgr2vr.w	$vr0, $a2
-	sub.d	$a2, $a4, $a1
-	addi.d	$a3, $sp, 136
-	alsl.d	$a3, $a4, $a3, 2
-	.p2align	4, , 16
-.LBB27_196:                             # %vec.epilog.vector.body
-                                        #   Parent Loop BB27_8 Depth=1
-                                        #     Parent Loop BB27_169 Depth=2
-                                        # =>    This Inner Loop Header: Depth=3
-	vld	$vr2, $a3, 0
-	vseq.w	$vr2, $vr2, $vr1
-	vor.v	$vr0, $vr0, $vr2
-	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 16
-	bnez	$a2, .LBB27_196
-# %bb.197:                              # %vec.epilog.middle.block
-                                        #   in Loop: Header=BB27_169 Depth=2
 	vslli.w	$vr0, $vr0, 31
 	vmskltz.w	$vr0, $vr0
 	vpickve2gr.hu	$a2, $vr0, 0
-	sltui	$a3, $a2, 1
-	beq	$a1, $s8, .LBB27_200
-.LBB27_198:                             # %.lr.ph.preheader
+	sltui	$a2, $a2, 1
+	beq	$a1, $s8, .LBB27_194
+.LBB27_192:                             # %.lr.ph.preheader585
                                         #   in Loop: Header=BB27_169 Depth=2
-	addi.d	$a2, $sp, 136
-	alsl.d	$a2, $a1, $a2, 2
+	addi.d	$a3, $sp, 136
+	alsl.d	$a3, $a1, $a3, 2
 	sub.d	$a1, $s8, $a1
 	.p2align	4, , 16
-.LBB27_199:                             # %.lr.ph
+.LBB27_193:                             # %.lr.ph
                                         #   Parent Loop BB27_8 Depth=1
                                         #     Parent Loop BB27_169 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$a4, $a2, 0
+	ld.w	$a4, $a3, 0
 	xor	$a4, $a4, $a0
 	sltui	$a4, $a4, 1
-	masknez	$a3, $a3, $a4
+	masknez	$a2, $a2, $a4
 	addi.d	$a1, $a1, -1
-	addi.d	$a2, $a2, 4
-	bnez	$a1, .LBB27_199
-.LBB27_200:                             # %._crit_edge
+	addi.d	$a3, $a3, 4
+	bnez	$a1, .LBB27_193
+.LBB27_194:                             # %._crit_edge
                                         #   in Loop: Header=BB27_169 Depth=2
-	beqz	$a3, .LBB27_202
-.LBB27_201:                             # %._crit_edge.thread
+	beqz	$a2, .LBB27_196
+.LBB27_195:                             # %._crit_edge.thread
                                         #   in Loop: Header=BB27_169 Depth=2
 	slli.d	$a1, $s8, 2
 	addi.d	$a2, $sp, 136
 	stx.w	$a0, $a1, $a2
 	addi.w	$s8, $s8, 1
-.LBB27_202:                             #   in Loop: Header=BB27_169 Depth=2
+.LBB27_196:                             #   in Loop: Header=BB27_169 Depth=2
 	ori	$a4, $zero, 2
 	ld.bu	$a1, $s6, 0
 	ori	$a2, $zero, 37
 	ori	$a0, $zero, 1
-	bne	$a1, $a2, .LBB27_204
-.LBB27_203:                             # %.critedge.sink.split.i248
+	bne	$a1, $a2, .LBB27_198
+.LBB27_197:                             # %.critedge.sink.split.i248
                                         #   in Loop: Header=BB27_169 Depth=2
 	st.b	$a0, $s1, %pc_lo12(white_space.commentP)
 	move	$a1, $a2
-	b	.LBB27_211
+	b	.LBB27_205
 	.p2align	4, , 16
-.LBB27_204:                             # %.lr.ph.i237
+.LBB27_198:                             # %.lr.ph.i237
                                         #   in Loop: Header=BB27_169 Depth=2
 	ld.bu	$a2, $s1, %pc_lo12(white_space.commentP)
-	beqz	$a2, .LBB27_208
-# %bb.205:                              # %.split.us.i252
+	beqz	$a2, .LBB27_202
+# %bb.199:                              # %.split.us.i252
                                         #   in Loop: Header=BB27_169 Depth=2
 	ori	$a2, $zero, 10
 	ori	$a0, $zero, 1
-	bne	$a1, $a2, .LBB27_211
-# %bb.206:                              #   in Loop: Header=BB27_169 Depth=2
+	bne	$a1, $a2, .LBB27_205
+# %bb.200:                              #   in Loop: Header=BB27_169 Depth=2
 	move	$a0, $zero
-	b	.LBB27_203
+	b	.LBB27_197
 	.p2align	4, , 16
-.LBB27_207:                             #   in Loop: Header=BB27_208 Depth=3
+.LBB27_201:                             #   in Loop: Header=BB27_202 Depth=3
 	ld.bu	$a1, $s6, 1
 	addi.d	$a3, $s6, 1
 	ori	$a2, $zero, 37
 	move	$s6, $a3
-	beq	$a1, $a2, .LBB27_232
-.LBB27_208:                             # %.lr.ph.split.i239
+	beq	$a1, $a2, .LBB27_226
+.LBB27_202:                             # %.lr.ph.split.i239
                                         #   Parent Loop BB27_8 Depth=1
                                         #     Parent Loop BB27_169 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	bltu	$s2, $a1, .LBB27_207
-# %bb.209:                              # %.lr.ph.split.i239
-                                        #   in Loop: Header=BB27_208 Depth=3
+	bltu	$s2, $a1, .LBB27_201
+# %bb.203:                              # %.lr.ph.split.i239
+                                        #   in Loop: Header=BB27_202 Depth=3
 	sll.d	$a2, $s5, $a1
 	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	and	$a2, $a2, $a3
-	beqz	$a2, .LBB27_207
-# %bb.210:                              # %.critedge.i241.preheader.loopexit
+	beqz	$a2, .LBB27_201
+# %bb.204:                              # %.critedge.i241.preheader.loopexit
                                         #   in Loop: Header=BB27_169 Depth=2
 	move	$a0, $zero
-.LBB27_211:                             # %.critedge.i241.preheader
+.LBB27_205:                             # %.critedge.i241.preheader
                                         #   in Loop: Header=BB27_169 Depth=2
 	move	$a2, $a0
-	b	.LBB27_214
+	b	.LBB27_208
 	.p2align	4, , 16
-.LBB27_212:                             # %.thread.sink.split.i247
-                                        #   in Loop: Header=BB27_214 Depth=3
+.LBB27_206:                             # %.thread.sink.split.i247
+                                        #   in Loop: Header=BB27_208 Depth=3
 	addi.d	$a1, $a1, -37
 	sltui	$a0, $a1, 1
 	sltui	$a1, $a1, 1
 	st.b	$a1, $s1, %pc_lo12(white_space.commentP)
 	move	$a2, $a0
-.LBB27_213:                             # %.thread.i245
-                                        #   in Loop: Header=BB27_214 Depth=3
+.LBB27_207:                             # %.thread.i245
+                                        #   in Loop: Header=BB27_208 Depth=3
 	ld.bu	$a1, $s6, 1
 	addi.d	$s6, $s6, 1
-.LBB27_214:                             # %.critedge.i241
+.LBB27_208:                             # %.critedge.i241
                                         #   Parent Loop BB27_8 Depth=1
                                         #     Parent Loop BB27_169 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	beq	$a1, $s4, .LBB27_212
-# %bb.215:                              #   in Loop: Header=BB27_214 Depth=3
+	beq	$a1, $s4, .LBB27_206
+# %bb.209:                              #   in Loop: Header=BB27_208 Depth=3
 	andi	$a2, $a2, 1
-	beqz	$a2, .LBB27_218
-# %bb.216:                              #   in Loop: Header=BB27_214 Depth=3
-	beq	$a1, $s7, .LBB27_212
-# %bb.217:                              #   in Loop: Header=BB27_214 Depth=3
+	beqz	$a2, .LBB27_212
+# %bb.210:                              #   in Loop: Header=BB27_208 Depth=3
+	beq	$a1, $s7, .LBB27_206
+# %bb.211:                              #   in Loop: Header=BB27_208 Depth=3
 	ori	$a2, $zero, 1
-	bnez	$a1, .LBB27_213
-	b	.LBB27_221
+	bnez	$a1, .LBB27_207
+	b	.LBB27_215
 	.p2align	4, , 16
-.LBB27_218:                             #   in Loop: Header=BB27_214 Depth=3
-	bltu	$s2, $a1, .LBB27_221
-# %bb.219:                              #   in Loop: Header=BB27_214 Depth=3
+.LBB27_212:                             #   in Loop: Header=BB27_208 Depth=3
+	bltu	$s2, $a1, .LBB27_215
+# %bb.213:                              #   in Loop: Header=BB27_208 Depth=3
 	sll.d	$a1, $s5, $a1
 	and	$a1, $a1, $s3
-	beqz	$a1, .LBB27_221
-# %bb.220:                              #   in Loop: Header=BB27_214 Depth=3
+	beqz	$a1, .LBB27_215
+# %bb.214:                              #   in Loop: Header=BB27_208 Depth=3
 	move	$a2, $zero
-	b	.LBB27_213
+	b	.LBB27_207
 	.p2align	4, , 16
-.LBB27_221:                             #   in Loop: Header=BB27_169 Depth=2
+.LBB27_215:                             #   in Loop: Header=BB27_169 Depth=2
 	move	$s0, $a0
-	b	.LBB27_224
+	b	.LBB27_218
 	.p2align	4, , 16
-.LBB27_222:                             # %.thread.sink.split.i258
-                                        #   in Loop: Header=BB27_224 Depth=3
+.LBB27_216:                             # %.thread.sink.split.i258
+                                        #   in Loop: Header=BB27_218 Depth=3
 	addi.d	$a1, $fp, -37
 	sltui	$a0, $a1, 1
 	sltui	$a1, $a1, 1
 	st.b	$a1, $s1, %pc_lo12(white_space.commentP)
 	move	$s0, $a0
-.LBB27_223:                             # %.thread.i256
-                                        #   in Loop: Header=BB27_224 Depth=3
+.LBB27_217:                             # %.thread.i256
+                                        #   in Loop: Header=BB27_218 Depth=3
 	addi.d	$s6, $s6, 1
-.LBB27_224:                             # %skip_first.exit253
+.LBB27_218:                             # %skip_first.exit253
                                         #   Parent Loop BB27_8 Depth=1
                                         #     Parent Loop BB27_169 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.bu	$fp, $s6, 0
-	beq	$fp, $s4, .LBB27_222
-# %bb.225:                              #   in Loop: Header=BB27_224 Depth=3
+	beq	$fp, $s4, .LBB27_216
+# %bb.219:                              #   in Loop: Header=BB27_218 Depth=3
 	andi	$a1, $s0, 1
-	beqz	$a1, .LBB27_228
-# %bb.226:                              #   in Loop: Header=BB27_224 Depth=3
-	beq	$fp, $s7, .LBB27_222
-# %bb.227:                              #   in Loop: Header=BB27_224 Depth=3
+	beqz	$a1, .LBB27_222
+# %bb.220:                              #   in Loop: Header=BB27_218 Depth=3
+	beq	$fp, $s7, .LBB27_216
+# %bb.221:                              #   in Loop: Header=BB27_218 Depth=3
 	ori	$s0, $zero, 1
-	bnez	$fp, .LBB27_223
+	bnez	$fp, .LBB27_217
 	b	.LBB27_168
 	.p2align	4, , 16
-.LBB27_228:                             #   in Loop: Header=BB27_224 Depth=3
+.LBB27_222:                             #   in Loop: Header=BB27_218 Depth=3
 	addi.d	$a1, $fp, -9
 	move	$s0, $zero
-	bltu	$a1, $a4, .LBB27_223
-# %bb.229:                              #   in Loop: Header=BB27_224 Depth=3
-	beq	$fp, $s2, .LBB27_223
-# %bb.230:                              #   in Loop: Header=BB27_169 Depth=2
+	bltu	$a1, $a4, .LBB27_217
+# %bb.223:                              #   in Loop: Header=BB27_218 Depth=3
+	beq	$fp, $s2, .LBB27_217
+# %bb.224:                              #   in Loop: Header=BB27_169 Depth=2
 	ori	$s0, $zero, 1
 	beqz	$fp, .LBB27_168
-# %bb.231:                              # %skip_white_space.exit259.thread.loopexit720
+# %bb.225:                              # %skip_white_space.exit259.thread.loopexit705
                                         #   in Loop: Header=BB27_169 Depth=2
 	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
 	b	.LBB27_168
-.LBB27_232:                             #   in Loop: Header=BB27_169 Depth=2
+.LBB27_226:                             #   in Loop: Header=BB27_169 Depth=2
 	move	$s6, $a3
-	b	.LBB27_203
-.LBB27_233:                             # %.lr.ph.i302
+	b	.LBB27_197
+.LBB27_227:                             # %.lr.ph.i302
                                         #   in Loop: Header=BB27_8 Depth=1
 	ld.bu	$a3, $s1, %pc_lo12(white_space.commentP)
-	beqz	$a3, .LBB27_237
-# %bb.234:                              # %.split.us.i317
+	beqz	$a3, .LBB27_231
+# %bb.228:                              # %.split.us.i317
                                         #   in Loop: Header=BB27_8 Depth=1
 	ori	$a3, $zero, 10
 	ori	$a0, $zero, 1
-	bne	$a1, $a3, .LBB27_242
-# %bb.235:                              #   in Loop: Header=BB27_8 Depth=1
+	bne	$a1, $a3, .LBB27_236
+# %bb.229:                              #   in Loop: Header=BB27_8 Depth=1
 	move	$a0, $zero
 	b	.LBB27_132
 	.p2align	4, , 16
-.LBB27_236:                             #   in Loop: Header=BB27_237 Depth=2
+.LBB27_230:                             #   in Loop: Header=BB27_231 Depth=2
 	ld.bu	$a1, $s6, 1
 	addi.d	$a4, $s6, 1
 	ori	$a3, $zero, 37
 	move	$s6, $a4
-	beq	$a1, $a3, .LBB27_266
-.LBB27_237:                             # %.lr.ph.split.i304
+	beq	$a1, $a3, .LBB27_260
+.LBB27_231:                             # %.lr.ph.split.i304
                                         #   Parent Loop BB27_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bltu	$s2, $a1, .LBB27_236
-# %bb.238:                              # %.lr.ph.split.i304
-                                        #   in Loop: Header=BB27_237 Depth=2
+	bltu	$s2, $a1, .LBB27_230
+# %bb.232:                              # %.lr.ph.split.i304
+                                        #   in Loop: Header=BB27_231 Depth=2
 	sll.d	$a3, $s5, $a1
 	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
 	and	$a3, $a3, $a4
-	beqz	$a3, .LBB27_236
-# %bb.239:                              # %.critedge.i306.preheader.loopexit
+	beqz	$a3, .LBB27_230
+# %bb.233:                              # %.critedge.i306.preheader.loopexit
                                         #   in Loop: Header=BB27_8 Depth=1
 	move	$a0, $zero
-	b	.LBB27_242
+	b	.LBB27_236
 	.p2align	4, , 16
-.LBB27_240:                             # %.thread.sink.split.i312
-                                        #   in Loop: Header=BB27_242 Depth=2
+.LBB27_234:                             # %.thread.sink.split.i312
+                                        #   in Loop: Header=BB27_236 Depth=2
 	addi.d	$a1, $a1, -37
 	sltui	$a0, $a1, 1
 	sltui	$a1, $a1, 1
 	st.b	$a1, $s1, %pc_lo12(white_space.commentP)
-.LBB27_241:                             # %.thread.i310
-                                        #   in Loop: Header=BB27_242 Depth=2
+.LBB27_235:                             # %.thread.i310
+                                        #   in Loop: Header=BB27_236 Depth=2
 	ld.bu	$a1, $s6, 1
 	addi.d	$s6, $s6, 1
-.LBB27_242:                             # %.critedge.i306
+.LBB27_236:                             # %.critedge.i306
                                         #   Parent Loop BB27_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	beq	$a1, $s4, .LBB27_240
-# %bb.243:                              #   in Loop: Header=BB27_242 Depth=2
+	beq	$a1, $s4, .LBB27_234
+# %bb.237:                              #   in Loop: Header=BB27_236 Depth=2
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB27_246
-# %bb.244:                              #   in Loop: Header=BB27_242 Depth=2
-	beq	$a1, $s7, .LBB27_240
-# %bb.245:                              #   in Loop: Header=BB27_242 Depth=2
+	beqz	$a0, .LBB27_240
+# %bb.238:                              #   in Loop: Header=BB27_236 Depth=2
+	beq	$a1, $s7, .LBB27_234
+# %bb.239:                              #   in Loop: Header=BB27_236 Depth=2
 	ori	$a0, $zero, 1
-	bnez	$a1, .LBB27_241
-	b	.LBB27_249
+	bnez	$a1, .LBB27_235
+	b	.LBB27_243
 	.p2align	4, , 16
-.LBB27_246:                             #   in Loop: Header=BB27_242 Depth=2
-	bltu	$s2, $a1, .LBB27_249
-# %bb.247:                              #   in Loop: Header=BB27_242 Depth=2
+.LBB27_240:                             #   in Loop: Header=BB27_236 Depth=2
+	bltu	$s2, $a1, .LBB27_243
+# %bb.241:                              #   in Loop: Header=BB27_236 Depth=2
 	sll.d	$a0, $s5, $a1
 	and	$a0, $a0, $s3
-	beqz	$a0, .LBB27_249
-# %bb.248:                              #   in Loop: Header=BB27_242 Depth=2
+	beqz	$a0, .LBB27_243
+# %bb.242:                              #   in Loop: Header=BB27_236 Depth=2
 	move	$a0, $zero
-	b	.LBB27_241
-.LBB27_249:                             # %skip_first.exit318
+	b	.LBB27_235
+.LBB27_243:                             # %skip_first.exit318
                                         #   in Loop: Header=BB27_8 Depth=1
 	ld.bu	$a0, $s6, 0
-	beqz	$a0, .LBB27_253
-# %bb.250:                              #   in Loop: Header=BB27_8 Depth=1
+	beqz	$a0, .LBB27_247
+# %bb.244:                              #   in Loop: Header=BB27_8 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.140)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.140)
 	ori	$a2, $zero, 1
@@ -7187,7 +7112,7 @@ display_main_menu:                      # @display_main_menu
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB27_4
-# %bb.251:                              #   in Loop: Header=BB27_8 Depth=1
+# %bb.245:                              #   in Loop: Header=BB27_8 Depth=1
 	ld.w	$a2, $sp, 136
 	ld.d	$s6, $sp, 128                   # 8-byte Folded Reload
 	move	$a0, $s6
@@ -7195,18 +7120,18 @@ display_main_menu:                      # @display_main_menu
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(enter_prompt_week)
 	jirl	$ra, $ra, 0
-	b	.LBB27_254
-.LBB27_252:                             #   in Loop: Header=BB27_8 Depth=1
+	b	.LBB27_248
+.LBB27_246:                             #   in Loop: Header=BB27_8 Depth=1
 	move	$s6, $a3
 	b	.LBB27_18
-.LBB27_253:                             #   in Loop: Header=BB27_8 Depth=1
+.LBB27_247:                             #   in Loop: Header=BB27_8 Depth=1
 	ld.d	$s6, $sp, 128                   # 8-byte Folded Reload
 	move	$a0, $s6
 	ld.d	$fp, $sp, 120                   # 8-byte Folded Reload
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(enter_week)
 	jirl	$ra, $ra, 0
-.LBB27_254:                             #   in Loop: Header=BB27_8 Depth=1
+.LBB27_248:                             #   in Loop: Header=BB27_8 Depth=1
 	pcaddu18i	$ra, %call36(compute_team_info)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(sort_all)
@@ -7224,12 +7149,12 @@ display_main_menu:                      # @display_main_menu
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $a0, 0
 	beqz	$a0, .LBB27_4
-# %bb.255:                              # %prompt.exit320.sink.split
+# %bb.249:                              # %prompt.exit320.sink.split
                                         #   in Loop: Header=BB27_8 Depth=1
 	ori	$s0, $zero, 1
 	st.w	$s0, $s8, %pc_lo12(got_unused_responce)
 	b	.LBB27_4
-.LBB27_256:                             #   in Loop: Header=BB27_8 Depth=1
+.LBB27_250:                             #   in Loop: Header=BB27_8 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.137)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.137)
 	ori	$a2, $zero, 2
@@ -7237,8 +7162,8 @@ display_main_menu:                      # @display_main_menu
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB27_165
-	b	.LBB27_281
-.LBB27_257:                             # %.thread
+	b	.LBB27_275
+.LBB27_251:                             # %.thread
                                         #   in Loop: Header=BB27_8 Depth=1
 	st.b	$zero, $s6, 0
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
@@ -7247,39 +7172,39 @@ display_main_menu:                      # @display_main_menu
 	move	$s0, $a1
 	bnez	$a1, .LBB27_161
 	b	.LBB27_164
-.LBB27_258:                             # %._crit_edge370
+.LBB27_252:                             # %._crit_edge370
                                         #   in Loop: Header=BB27_8 Depth=1
-	bne	$s8, $s5, .LBB27_263
-# %bb.259:                              # %._crit_edge370
+	bne	$s8, $s5, .LBB27_257
+# %bb.253:                              # %._crit_edge370
                                         #   in Loop: Header=BB27_8 Depth=1
-	beqz	$s0, .LBB27_263
-# %bb.260:                              #   in Loop: Header=BB27_8 Depth=1
+	beqz	$s0, .LBB27_257
+# %bb.254:                              #   in Loop: Header=BB27_8 Depth=1
 	ld.w	$a1, $sp, 136
 	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(display_tiebreaker)
 	jirl	$ra, $ra, 0
 	b	.LBB27_162
-.LBB27_261:                             #   in Loop: Header=BB27_8 Depth=1
+.LBB27_255:                             #   in Loop: Header=BB27_8 Depth=1
 	move	$s6, $a3
 	b	.LBB27_61
-.LBB27_262:                             #   in Loop: Header=BB27_8 Depth=1
+.LBB27_256:                             #   in Loop: Header=BB27_8 Depth=1
 	move	$s6, $a3
 	b	.LBB27_40
-.LBB27_263:                             #   in Loop: Header=BB27_8 Depth=1
+.LBB27_257:                             #   in Loop: Header=BB27_8 Depth=1
 	move	$a0, $s0
 	bnez	$s0, .LBB27_161
 	b	.LBB27_164
-.LBB27_264:                             #   in Loop: Header=BB27_8 Depth=1
+.LBB27_258:                             #   in Loop: Header=BB27_8 Depth=1
 	move	$s6, $a3
 	b	.LBB27_102
-.LBB27_265:                             #   in Loop: Header=BB27_8 Depth=1
+.LBB27_259:                             #   in Loop: Header=BB27_8 Depth=1
 	move	$s6, $a3
 	b	.LBB27_65
-.LBB27_266:                             #   in Loop: Header=BB27_8 Depth=1
+.LBB27_260:                             #   in Loop: Header=BB27_8 Depth=1
 	move	$s6, $a4
 	b	.LBB27_132
-.LBB27_267:
+.LBB27_261:
 	ori	$a0, $zero, 10
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fputc)
@@ -7290,8 +7215,8 @@ display_main_menu:                      # @display_main_menu
 	ld.d	$a1, $a1, %got_pc_lo12(standings)
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 1
-	b	.LBB27_269
-.LBB27_268:
+	b	.LBB27_263
+.LBB27_262:
 	ori	$a0, $zero, 10
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fputc)
@@ -7302,10 +7227,10 @@ display_main_menu:                      # @display_main_menu
 	ld.d	$a1, $a1, %got_pc_lo12(conf_standings)
 	ori	$a3, $zero, 1
 	move	$a2, $zero
-.LBB27_269:                             # %prompt.exit.thread.thread
+.LBB27_263:                             # %prompt.exit.thread.thread
 	pcaddu18i	$ra, %call36(break_ties)
 	jirl	$ra, $ra, 0
-.LBB27_270:                             # %prompt.exit.thread.thread
+.LBB27_264:                             # %prompt.exit.thread.thread
 	ld.d	$s8, $sp, 248                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 264                   # 8-byte Folded Reload
@@ -7319,19 +7244,19 @@ display_main_menu:                      # @display_main_menu
 	ld.d	$ra, $sp, 328                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 336
 	ret
-.LBB27_271:
+.LBB27_265:
 	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(display_standings)
 	jirl	$ra, $ra, 0
-	b	.LBB27_273
-.LBB27_272:
+	b	.LBB27_267
+.LBB27_266:
 	move	$a1, $a0
 	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(display_info)
 	jirl	$ra, $ra, 0
-.LBB27_273:
+.LBB27_267:
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	ori	$a1, $zero, 24
@@ -7344,58 +7269,58 @@ display_main_menu:                      # @display_main_menu
 	pcaddu18i	$ra, %call36(get_responce)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $a0, 0
-	beqz	$a0, .LBB27_270
-# %bb.274:
+	beqz	$a0, .LBB27_264
+# %bb.268:
 	st.w	$fp, $s8, %pc_lo12(got_unused_responce)
-	b	.LBB27_270
-.LBB27_275:
+	b	.LBB27_264
+.LBB27_269:
 	pcalau12i	$a0, %got_pc_hi20(input_score)
 	ld.d	$a1, $a0, %got_pc_lo12(input_score)
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(save_scores)
 	jirl	$ra, $ra, 0
-	b	.LBB27_270
-.LBB27_276:
+	b	.LBB27_264
+.LBB27_270:
 	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(display_records)
 	jirl	$ra, $ra, 0
-	b	.LBB27_273
-.LBB27_277:
+	b	.LBB27_267
+.LBB27_271:
 	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(display_rankings)
 	jirl	$ra, $ra, 0
-	b	.LBB27_273
-.LBB27_278:
+	b	.LBB27_267
+.LBB27_272:
 	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(display_defence)
 	jirl	$ra, $ra, 0
-	b	.LBB27_282
-.LBB27_279:
+	b	.LBB27_276
+.LBB27_273:
 	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(display_offence)
 	jirl	$ra, $ra, 0
-	b	.LBB27_282
-.LBB27_280:
+	b	.LBB27_276
+.LBB27_274:
 	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(display_net)
 	jirl	$ra, $ra, 0
-	b	.LBB27_282
-.LBB27_281:
+	b	.LBB27_276
+.LBB27_275:
 	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(display_team)
 	jirl	$ra, $ra, 0
-.LBB27_282:                             # %prompt.exit.thread.thread
+.LBB27_276:                             # %prompt.exit.thread.thread
 	move	$a0, $fp
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(prompt)
 	jirl	$ra, $ra, 0
-	b	.LBB27_270
+	b	.LBB27_264
 .Lfunc_end27:
 	.size	display_main_menu, .Lfunc_end27-display_main_menu
                                         # -- End function

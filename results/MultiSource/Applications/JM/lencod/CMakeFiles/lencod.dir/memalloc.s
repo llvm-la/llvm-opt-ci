@@ -1,13 +1,6 @@
 	.file	"memalloc.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function init_top_bot_planes
-.LCPI0_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
-	.globl	init_top_bot_planes
+	.globl	init_top_bot_planes             # -- Begin function init_top_bot_planes
 	.p2align	2
 	.prefalign	5, .Lfunc_end0, nop
 	.type	init_top_bot_planes,@function
@@ -22,17 +15,17 @@ init_top_bot_planes:                    # @init_top_bot_planes
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	move	$s1, $a4
-	move	$s2, $a3
+	move	$s3, $a3
 	move	$fp, $a1
-	move	$s0, $a0
+	move	$s2, $a0
 	bstrpick.d	$a0, $a1, 31, 31
 	add.w	$a0, $a1, $a0
-	srai.d	$s3, $a0, 1
+	srai.d	$s0, $a0, 1
 	ori	$a1, $zero, 8
-	move	$a0, $s3
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s2, 0
+	st.d	$a0, $s3, 0
 	bnez	$a0, .LBB0_2
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(errortext)
@@ -51,7 +44,7 @@ init_top_bot_planes:                    # @init_top_bot_planes
 	jirl	$ra, $ra, 0
 .LBB0_2:
 	ori	$a1, $zero, 8
-	move	$a0, $s3
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s1, 0
@@ -59,7 +52,7 @@ init_top_bot_planes:                    # @init_top_bot_planes
 # %bb.3:
 	ori	$a0, $zero, 2
 	bge	$fp, $a0, .LBB0_5
-	b	.LBB0_9
+	b	.LBB0_7
 .LBB0_4:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s4, $a0, %pc_lo12(errortext)
@@ -76,34 +69,23 @@ init_top_bot_planes:                    # @init_top_bot_planes
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 2
-	blt	$fp, $a0, .LBB0_9
+	blt	$fp, $a0, .LBB0_7
 .LBB0_5:                                # %.lr.ph
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s3, 0
 	ld.d	$a1, $s1, 0
-	ori	$a3, $zero, 32
-	bstrpick.d	$a2, $s3, 31, 0
-	bgeu	$fp, $a3, .LBB0_10
-# %bb.6:
-	move	$a3, $zero
-.LBB0_7:                                # %scalar.ph.preheader
-	alsl.d	$a4, $a3, $s0, 4
-	addi.d	$a4, $a4, 8
-	alsl.d	$a1, $a3, $a1, 3
-	alsl.d	$a0, $a3, $a0, 3
-	sub.d	$a2, $a2, $a3
+	addi.d	$a2, $s2, 8
 	.p2align	4, , 16
-.LBB0_8:                                # %scalar.ph
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a3, $a4, -8
+.LBB0_6:                                # =>This Inner Loop Header: Depth=1
+	ld.d	$a3, $a2, -8
 	st.d	$a3, $a0, 0
-	ld.d	$a3, $a4, 0
+	ld.d	$a3, $a2, 0
 	st.d	$a3, $a1, 0
-	addi.d	$a4, $a4, 16
+	addi.d	$a2, $a2, 16
 	addi.d	$a1, $a1, 8
-	addi.d	$a2, $a2, -1
+	addi.d	$s0, $s0, -1
 	addi.d	$a0, $a0, 8
-	bnez	$a2, .LBB0_8
-.LBB0_9:                                # %._crit_edge
+	bnez	$s0, .LBB0_6
+.LBB0_7:                                # %._crit_edge
 	slli.w	$a0, $fp, 3
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
@@ -114,73 +96,6 @@ init_top_bot_planes:                    # @init_top_bot_planes
 	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 64
 	ret
-.LBB0_10:                               # %vector.memcheck
-	alsl.d	$a5, $a2, $a0, 3
-	alsl.d	$a4, $a2, $a1, 3
-	sltu	$a3, $a0, $a4
-	sltu	$a6, $a1, $a5
-	and	$a6, $a3, $a6
-	move	$a3, $zero
-	bnez	$a6, .LBB0_7
-# %bb.11:                               # %vector.memcheck
-	alsl.d	$a6, $a2, $s0, 4
-	sltu	$a7, $a0, $a6
-	sltu	$a5, $s0, $a5
-	and	$a5, $a7, $a5
-	bnez	$a5, .LBB0_7
-# %bb.12:                               # %vector.memcheck
-	sltu	$a5, $a1, $a6
-	sltu	$a4, $s0, $a4
-	and	$a4, $a5, $a4
-	bnez	$a4, .LBB0_7
-# %bb.13:                               # %vector.ph
-	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a3, %pc_lo12(.LCPI0_0)
-	bstrpick.d	$a3, $a2, 29, 2
-	slli.d	$a3, $a3, 2
-	move	$a4, $a0
-	move	$a5, $a1
-	move	$a6, $a3
-	.p2align	4, , 16
-.LBB0_14:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr1, $xr0, 4
-	xvpickve2gr.d	$a7, $xr1, 0
-	xvpickve2gr.d	$t0, $xr1, 1
-	xvpickve2gr.d	$t1, $xr1, 2
-	xvpickve2gr.d	$t2, $xr1, 3
-	add.d	$t3, $s0, $a7
-	add.d	$t4, $s0, $t0
-	add.d	$t5, $s0, $t1
-	add.d	$t6, $s0, $t2
-	ldx.d	$t1, $s0, $t1
-	ldx.d	$t2, $s0, $t2
-	ldx.d	$a7, $s0, $a7
-	ldx.d	$t0, $s0, $t0
-	vinsgr2vr.d	$vr1, $t1, 0
-	vinsgr2vr.d	$vr1, $t2, 1
-	vinsgr2vr.d	$vr2, $a7, 0
-	vinsgr2vr.d	$vr2, $t0, 1
-	xvpermi.q	$xr2, $xr1, 2
-	xvst	$xr2, $a4, 0
-	ld.d	$a7, $t5, 8
-	ld.d	$t0, $t6, 8
-	ld.d	$t1, $t3, 8
-	ld.d	$t2, $t4, 8
-	vinsgr2vr.d	$vr1, $a7, 0
-	vinsgr2vr.d	$vr1, $t0, 1
-	vinsgr2vr.d	$vr2, $t1, 0
-	vinsgr2vr.d	$vr2, $t2, 1
-	xvpermi.q	$xr2, $xr1, 2
-	xvst	$xr2, $a5, 0
-	xvaddi.du	$xr0, $xr0, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	addi.d	$a4, $a4, 32
-	bnez	$a6, .LBB0_14
-# %bb.15:                               # %middle.block
-	bne	$a3, $a2, .LBB0_7
-	b	.LBB0_9
 .Lfunc_end0:
 	.size	init_top_bot_planes, .Lfunc_end0-init_top_bot_planes
                                         # -- End function

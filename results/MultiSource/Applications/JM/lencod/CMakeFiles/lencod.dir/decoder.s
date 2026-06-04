@@ -282,30 +282,38 @@ decode_one_b8block:                     # @decode_one_b8block
 	blez	$t7, .LBB0_6
 .LBB0_18:                               # %.preheader181
 	addi.d	$a1, $sp, 88
-	alsl.d	$a1, $a4, $a1, 2
-	slli.d	$t7, $a6, 6
+	alsl.d	$t7, $a4, $a1, 2
+	slli.d	$a1, $a6, 6
 	addi.d	$t8, $a6, 1
-	stx.w	$zero, $a1, $t7
+	stx.w	$zero, $t7, $a1
 	bge	$t8, $a2, .LBB0_20
 # %bb.19:
 	slli.d	$t8, $t8, 6
-	add.d	$t7, $a1, $t7
+	add.d	$fp, $t7, $a1
 	vrepli.b	$vr0, 0
-	vst	$vr0, $t7, 4
-	st.w	$zero, $t7, 20
-	st.d	$zero, $t7, 24
-	xvrepli.b	$xr0, 0
-	xvstx	$xr0, $a1, $t8
-	xvst	$xr0, $t7, 128
-	xvst	$xr0, $t7, 192
-	xvst	$xr0, $t7, 256
-	xvst	$xr0, $t7, 320
-	xvst	$xr0, $t7, 384
-	xvst	$xr0, $t7, 448
+	vstx	$vr0, $t7, $t8
+	vst	$vr0, $fp, 128
+	vst	$vr0, $fp, 192
+	vst	$vr0, $fp, 256
+	vst	$vr0, $fp, 320
+	vst	$vr0, $fp, 384
+	vst	$vr0, $fp, 448
+	addi.d	$t7, $t7, 16
+	vst	$vr0, $fp, 4
+	add.d	$a1, $t7, $a1
+	st.w	$zero, $fp, 20
+	st.d	$zero, $fp, 24
+	vstx	$vr0, $t7, $t8
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 448
 	b	.LBB0_21
 .LBB0_20:                               # %.preheader181.7
 	vrepli.b	$vr0, 0
-	add.d	$a1, $a1, $t7
+	add.d	$a1, $t7, $a1
 	vst	$vr0, $a1, 4
 	st.w	$zero, $a1, 20
 	st.w	$zero, $a1, 24
@@ -3264,42 +3272,74 @@ Conceal_Error:                          # @Conceal_Error
 	bne	$a2, $t0, .LBB10_27
 .LBB10_25:                              # %.preheader285
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	alsl.d	$a1, $a4, $a3, 3
-	slli.d	$a2, $a4, 3
-	ldx.d	$a2, $a3, $a2
-	slli.d	$a0, $a0, 1
-	xvrepli.h	$xr0, 127
-	ld.d	$a3, $a1, 8
-	ld.d	$a4, $a1, 16
-	ld.d	$a5, $a1, 24
-	xvstx	$xr0, $a2, $a0
-	xvstx	$xr0, $a3, $a0
-	xvstx	$xr0, $a4, $a0
-	xvstx	$xr0, $a5, $a0
-	ld.d	$a2, $a1, 32
-	ld.d	$a3, $a1, 40
-	ld.d	$a4, $a1, 48
-	ld.d	$a5, $a1, 56
-	xvstx	$xr0, $a2, $a0
-	xvstx	$xr0, $a3, $a0
-	xvstx	$xr0, $a4, $a0
-	xvstx	$xr0, $a5, $a0
-	ld.d	$a2, $a1, 64
-	ld.d	$a3, $a1, 72
-	ld.d	$a4, $a1, 80
-	ld.d	$a5, $a1, 88
-	xvstx	$xr0, $a2, $a0
-	xvstx	$xr0, $a3, $a0
-	xvstx	$xr0, $a4, $a0
-	xvstx	$xr0, $a5, $a0
-	ld.d	$a2, $a1, 96
-	ld.d	$a3, $a1, 104
-	ld.d	$a4, $a1, 112
-	ld.d	$a1, $a1, 120
-	xvstx	$xr0, $a2, $a0
-	xvstx	$xr0, $a3, $a0
-	xvstx	$xr0, $a4, $a0
-	xvstx	$xr0, $a1, $a0
+	alsl.d	$a2, $a4, $a3, 3
+	slli.d	$a1, $a4, 3
+	ldx.d	$a3, $a3, $a1
+	slli.d	$a1, $a0, 1
+	vrepli.h	$vr0, 127
+	ld.d	$a4, $a2, 8
+	vstx	$vr0, $a3, $a1
+	alsl.d	$a3, $a0, $a3, 1
+	vst	$vr0, $a3, 16
+	vstx	$vr0, $a4, $a1
+	ld.d	$a3, $a2, 16
+	alsl.d	$a4, $a0, $a4, 1
+	vst	$vr0, $a4, 16
+	ld.d	$a4, $a2, 24
+	vstx	$vr0, $a3, $a1
+	alsl.d	$a3, $a0, $a3, 1
+	vst	$vr0, $a3, 16
+	vstx	$vr0, $a4, $a1
+	ld.d	$a3, $a2, 32
+	alsl.d	$a4, $a0, $a4, 1
+	vst	$vr0, $a4, 16
+	ld.d	$a4, $a2, 40
+	vstx	$vr0, $a3, $a1
+	alsl.d	$a3, $a0, $a3, 1
+	vst	$vr0, $a3, 16
+	vstx	$vr0, $a4, $a1
+	ld.d	$a3, $a2, 48
+	alsl.d	$a4, $a0, $a4, 1
+	vst	$vr0, $a4, 16
+	ld.d	$a4, $a2, 56
+	vstx	$vr0, $a3, $a1
+	alsl.d	$a3, $a0, $a3, 1
+	vst	$vr0, $a3, 16
+	vstx	$vr0, $a4, $a1
+	ld.d	$a3, $a2, 64
+	alsl.d	$a4, $a0, $a4, 1
+	vst	$vr0, $a4, 16
+	ld.d	$a4, $a2, 72
+	vstx	$vr0, $a3, $a1
+	alsl.d	$a3, $a0, $a3, 1
+	vst	$vr0, $a3, 16
+	vstx	$vr0, $a4, $a1
+	ld.d	$a3, $a2, 80
+	alsl.d	$a4, $a0, $a4, 1
+	vst	$vr0, $a4, 16
+	ld.d	$a4, $a2, 88
+	vstx	$vr0, $a3, $a1
+	alsl.d	$a3, $a0, $a3, 1
+	vst	$vr0, $a3, 16
+	vstx	$vr0, $a4, $a1
+	ld.d	$a3, $a2, 96
+	alsl.d	$a4, $a0, $a4, 1
+	vst	$vr0, $a4, 16
+	ld.d	$a4, $a2, 104
+	vstx	$vr0, $a3, $a1
+	alsl.d	$a3, $a0, $a3, 1
+	vst	$vr0, $a3, 16
+	vstx	$vr0, $a4, $a1
+	ld.d	$a3, $a2, 112
+	alsl.d	$a4, $a0, $a4, 1
+	vst	$vr0, $a4, 16
+	ld.d	$a2, $a2, 120
+	alsl.d	$a4, $a0, $a3, 1
+	vstx	$vr0, $a3, $a1
+	vst	$vr0, $a4, 16
+	alsl.d	$a0, $a0, $a2, 1
+	vstx	$vr0, $a2, $a1
+	vst	$vr0, $a0, 16
 .LBB10_26:                              # %.loopexit
 	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload

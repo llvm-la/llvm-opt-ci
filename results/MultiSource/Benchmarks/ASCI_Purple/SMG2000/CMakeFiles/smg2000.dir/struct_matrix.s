@@ -530,32 +530,30 @@ hypre_StructMatrixInitializeShell:      # @hypre_StructMatrixInitializeShell
 	.type	hypre_StructMatrixInitializeData,@function
 hypre_StructMatrixInitializeData:       # @hypre_StructMatrixInitializeData
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$s1, $a0, 40
-	st.w	$zero, $sp, 64
+	st.w	$zero, $sp, 16
 	ld.w	$a0, $s1, 8
 	st.d	$a1, $fp, 48
 	st.w	$zero, $fp, 56
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 8
 	blez	$a0, .LBB5_20
 # %bb.1:                                # %.lr.ph
 	move	$s2, $zero
 	addi.w	$s3, $zero, -1
-	ori	$s4, $zero, 8
+	ori	$s4, $zero, 4
 	lu52i.d	$s5, $zero, 1023
-	xvldi	$xr0, -912
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
 	b	.LBB5_3
 	.p2align	4, , 16
 .LBB5_2:                                # %hypre_StructMatrixExtractPointerByIndex.exit.thread
@@ -569,7 +567,7 @@ hypre_StructMatrixInitializeData:       # @hypre_StructMatrixInitializeData
                                         #         Child Loop BB5_16 Depth 4
                                         #         Child Loop BB5_19 Depth 4
 	ld.d	$a0, $fp, 24
-	addi.d	$a1, $sp, 56
+	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(hypre_StructStencilElementRank)
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB5_2
@@ -587,14 +585,14 @@ hypre_StructMatrixInitializeData:       # @hypre_StructMatrixInitializeData
 	slli.d	$a0, $s2, 4
 	alsl.d	$a0, $s2, $a0, 3
 	add.d	$s0, $a2, $a0
-	addi.d	$a1, $sp, 68
+	addi.d	$a1, $sp, 20
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(hypre_BoxGetSize)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	ld.w	$a0, $sp, 68
-	ld.w	$a1, $sp, 72
-	ld.w	$a2, $sp, 76
+	vldi	$vr0, -912
+	ld.w	$a0, $sp, 20
+	ld.w	$a1, $sp, 24
+	ld.w	$a2, $sp, 28
 	slt	$a3, $a0, $a1
 	masknez	$a4, $a0, $a3
 	maskeqz	$a3, $a1, $a3
@@ -636,10 +634,10 @@ hypre_StructMatrixInitializeData:       # @hypre_StructMatrixInitializeData
 	mul.d	$a7, $a1, $a4
 	sub.d	$a4, $a5, $a0
 	add.d	$a5, $a6, $a7
-	bstrpick.d	$a6, $a0, 30, 3
-	slli.d	$a6, $a6, 3
+	bstrpick.d	$a6, $a0, 30, 2
+	slli.d	$a6, $a6, 2
 	alsl.d	$a7, $s7, $s6, 3
-	addi.d	$t0, $a7, 32
+	addi.d	$t0, $a7, 16
 	b	.LBB5_11
 	.p2align	4, , 16
 .LBB5_10:                               # %._crit_edge165.split.us.us.us.us.us.us
@@ -684,10 +682,10 @@ hypre_StructMatrixInitializeData:       # @hypre_StructMatrixInitializeData
                                         #     Parent Loop BB5_11 Depth=2
                                         #       Parent Loop BB5_13 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	xvst	$xr0, $t2, -32
-	xvst	$xr0, $t2, 0
-	addi.d	$t4, $t4, -8
-	addi.d	$t2, $t2, 64
+	vst	$vr0, $t2, -16
+	vst	$vr0, $t2, 0
+	addi.d	$t4, $t4, -4
+	addi.d	$t2, $t2, 32
 	bnez	$t4, .LBB5_16
 # %bb.17:                               # %middle.block
                                         #   in Loop: Header=BB5_13 Depth=3
@@ -711,17 +709,17 @@ hypre_StructMatrixInitializeData:       # @hypre_StructMatrixInitializeData
 	b	.LBB5_12
 .LBB5_20:                               # %._crit_edge
 	move	$a0, $zero
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end5:
 	.size	hypre_StructMatrixInitializeData, .Lfunc_end5-hypre_StructMatrixInitializeData
@@ -1098,9 +1096,9 @@ hypre_StructMatrixSetBoxValues:         # @hypre_StructMatrixSetBoxValues
 # %bb.7:                                # %.lr.ph599.split.preheader
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
-	addi.d	$s7, $s1, 32
+	addi.d	$s7, $s1, 16
 	slli.d	$s0, $s4, 3
-	ori	$s2, $zero, 64
+	ori	$s2, $zero, 32
 	st.d	$s8, $sp, 112                   # 8-byte Folded Spill
 	beqz	$a0, .LBB8_57
 	.p2align	4, , 16
@@ -1270,12 +1268,12 @@ hypre_StructMatrixSetBoxValues:         # @hypre_StructMatrixSetBoxValues
 	addi.d	$t1, $t1, 8
 	addi.d	$t3, $s1, 8
 	alsl.d	$t2, $t2, $t3, 3
-	ori	$t3, $zero, 7
+	ori	$t3, $zero, 3
 	sltu	$t3, $t3, $a0
 	and	$t3, $t3, $t5
-	bstrpick.d	$t4, $a0, 30, 3
-	slli.d	$s8, $t4, 3
-	addi.d	$t5, $t0, 32
+	bstrpick.d	$t4, $a0, 30, 2
+	slli.d	$s8, $t4, 2
+	addi.d	$t5, $t0, 16
 	b	.LBB8_23
 	.p2align	4, , 16
 .LBB8_22:                               # %._crit_edge505.split.us.us.us.us.us.us
@@ -1356,17 +1354,17 @@ hypre_StructMatrixSetBoxValues:         # @hypre_StructMatrixSetBoxValues
                                         #     Parent Loop BB8_23 Depth=2
                                         #       Parent Loop BB8_25 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	xvld	$xr0, $s6, -32
-	xvld	$xr1, $s6, 0
-	xvld	$xr2, $t7, -32
-	xvld	$xr3, $t7, 0
-	xvfadd.d	$xr0, $xr0, $xr2
-	xvfadd.d	$xr1, $xr1, $xr3
-	xvst	$xr0, $t7, -32
-	xvst	$xr1, $t7, 0
-	addi.d	$ra, $ra, -8
-	addi.d	$t7, $t7, 64
-	addi.d	$s6, $s6, 64
+	vld	$vr0, $s6, -16
+	vld	$vr1, $s6, 0
+	vld	$vr2, $t7, -16
+	vld	$vr3, $t7, 0
+	vfadd.d	$vr0, $vr0, $vr2
+	vfadd.d	$vr1, $vr1, $vr3
+	vst	$vr0, $t7, -16
+	vst	$vr1, $t7, 0
+	addi.d	$ra, $ra, -4
+	addi.d	$t7, $t7, 32
+	addi.d	$s6, $s6, 32
 	bnez	$ra, .LBB8_32
 # %bb.33:                               # %middle.block702
                                         #   in Loop: Header=BB8_25 Depth=3
@@ -1510,13 +1508,13 @@ hypre_StructMatrixSetBoxValues:         # @hypre_StructMatrixSetBoxValues
 	srli.d	$t2, $t2, 31
 	and	$t0, $t2, $t0
 	add.w	$t0, $t8, $t0
-	ori	$t2, $zero, 7
+	ori	$t2, $zero, 3
 	sltu	$t2, $t2, $a0
 	and	$t1, $t2, $t1
-	bstrpick.d	$t2, $a0, 30, 3
-	slli.d	$t2, $t2, 3
+	bstrpick.d	$t2, $a0, 30, 2
+	slli.d	$t2, $t2, 2
 	alsl.d	$t3, $s6, $s5, 3
-	addi.d	$t4, $t3, 32
+	addi.d	$t4, $t3, 16
 	b	.LBB8_47
 	.p2align	4, , 16
 .LBB8_46:                               # %._crit_edge547.split.us.us.us.us.us.us.us
@@ -1592,13 +1590,13 @@ hypre_StructMatrixSetBoxValues:         # @hypre_StructMatrixSetBoxValues
                                         #     Parent Loop BB8_47 Depth=2
                                         #       Parent Loop BB8_49 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	xvld	$xr0, $t8, -32
-	xvld	$xr1, $t8, 0
-	xvst	$xr0, $t6, -32
-	xvst	$xr1, $t6, 0
-	addi.d	$s8, $s8, -8
-	addi.d	$t6, $t6, 64
-	addi.d	$t8, $t8, 64
+	vld	$vr0, $t8, -16
+	vld	$vr1, $t8, 0
+	vst	$vr0, $t6, -16
+	vst	$vr1, $t6, 0
+	addi.d	$s8, $s8, -4
+	addi.d	$t6, $t6, 32
+	addi.d	$t8, $t8, 32
 	bnez	$s8, .LBB8_55
 # %bb.56:                               # %middle.block
                                         #   in Loop: Header=BB8_49 Depth=3

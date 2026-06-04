@@ -171,25 +171,27 @@ build_tracks:                           # @build_tracks
 	st.d	$s4, $sp, 312                   # 8-byte Folded Spill
 	st.d	$s5, $sp, 304                   # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 296                  # 8-byte Folded Spill
-	move	$s2, $a1
+	move	$s1, $a1
 	move	$fp, $a0
 	addi.d	$a0, $sp, 224
 	ori	$a2, $zero, 68
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $s2, 80
-	xvld	$xr1, $s2, 96
-	fld.s	$fs0, $s2, 68
-	ld.d	$s3, $s2, 72
+	vld	$vr0, $s1, 80
+	vld	$vr1, $s1, 96
 	vst	$vr0, $sp, 176
-	xvst	$xr1, $sp, 192
-	ld.bu	$s4, $s2, 128
-	ld.w	$a0, $s2, 129
-	ld.w	$a1, $s2, 132
-	ld.d	$s0, $s2, 136
-	ld.d	$s5, $s2, 144
+	fld.s	$fs0, $s1, 68
+	ld.d	$s3, $s1, 72
+	vst	$vr1, $sp, 192
+	ld.w	$a0, $s1, 129
+	vld	$vr0, $s1, 112
+	ld.bu	$s4, $s1, 128
+	ld.w	$a1, $s1, 132
 	st.w	$a0, $sp, 168
+	ld.d	$s0, $s1, 136
+	ld.d	$s5, $s1, 144
 	st.w	$a1, $sp, 171
+	vst	$vr0, $sp, 208
 	st.d	$zero, $sp, 160
 	beqz	$s3, .LBB3_3
 # %bb.1:
@@ -199,29 +201,31 @@ build_tracks:                           # @build_tracks
 	addi.d	$a3, $sp, 160
 	move	$a0, $s0
 	move	$a1, $zero
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(load_OpenMOC_tracks)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
+	move	$s2, $a0
 	addi.d	$a0, $sp, 224
 	ori	$a2, $zero, 68
-	move	$a1, $s2
+	move	$a1, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $s2, 80
-	fld.s	$fs0, $s2, 68
-	ld.d	$s3, $s2, 72
+	vld	$vr0, $s1, 80
+	vld	$vr1, $s1, 96
 	vst	$vr0, $sp, 176
-	xvld	$xr0, $s2, 96
-	ld.bu	$s4, $s2, 128
-	ld.w	$a0, $s2, 129
-	ld.w	$a1, $s2, 132
-	ld.d	$s0, $s2, 136
-	ld.d	$s5, $s2, 144
-	xvst	$xr0, $sp, 192
+	fld.s	$fs0, $s1, 68
+	ld.d	$s3, $s1, 72
+	vst	$vr1, $sp, 192
+	vld	$vr0, $s1, 112
+	ld.bu	$s4, $s1, 128
+	ld.w	$a0, $s1, 129
+	ld.w	$a1, $s1, 132
+	ld.d	$s0, $s1, 136
+	ld.d	$s5, $s1, 144
 	st.w	$a0, $sp, 168
 	st.w	$a1, $sp, 171
-	st.d	$s1, $fp, 0
+	vst	$vr0, $sp, 208
+	st.d	$s2, $fp, 0
 	bnez	$s3, .LBB3_6
 	b	.LBB3_5
 .LBB3_3:
@@ -245,24 +249,26 @@ build_tracks:                           # @build_tracks
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 176
-	fst.s	$fs0, $sp, 76
-	st.d	$s3, $sp, 80
-	xvld	$xr1, $sp, 192
+	vld	$vr1, $sp, 192
 	vst	$vr0, $sp, 88
 	ld.w	$a0, $sp, 168
-	ld.w	$a1, $sp, 171
-	xvst	$xr1, $sp, 104
-	st.b	$s4, $sp, 136
+	fst.s	$fs0, $sp, 76
+	vst	$vr1, $sp, 104
+	vld	$vr0, $sp, 208
 	st.w	$a0, $sp, 137
-	st.w	$a1, $sp, 140
+	ld.w	$a0, $sp, 171
+	st.d	$s3, $sp, 80
+	vst	$vr0, $sp, 120
+	st.b	$s4, $sp, 136
+	st.w	$a0, $sp, 140
 	st.d	$s0, $sp, 144
 	st.d	$s5, $sp, 152
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 160
 	pcaddu18i	$ra, %call36(generate_2D_tracks)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s1, $fp, 0
+	move	$s2, $a0
+	st.d	$s2, $fp, 0
 	bnez	$s3, .LBB3_6
 .LBB3_5:
 	pcalau12i	$a0, %pc_hi20(.Lstr.1)
@@ -276,21 +282,23 @@ build_tracks:                           # @build_tracks
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 176
-	fst.s	$fs0, $sp, 76
-	st.d	$s3, $sp, 80
-	xvld	$xr1, $sp, 192
+	vld	$vr1, $sp, 192
 	vst	$vr0, $sp, 88
 	ld.w	$a0, $sp, 168
-	ld.w	$a1, $sp, 171
-	xvst	$xr1, $sp, 104
-	st.b	$s4, $sp, 136
+	fst.s	$fs0, $sp, 76
+	vst	$vr1, $sp, 104
+	vld	$vr0, $sp, 208
 	st.w	$a0, $sp, 137
-	st.w	$a1, $sp, 140
+	ld.w	$a0, $sp, 171
+	st.d	$s3, $sp, 80
+	vst	$vr0, $sp, 120
+	st.b	$s4, $sp, 136
+	st.w	$a0, $sp, 140
 	st.d	$s0, $sp, 144
 	st.d	$s5, $sp, 152
 	addi.d	$a0, $sp, 8
 	addi.d	$a2, $sp, 160
-	move	$a1, $s1
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(generate_tracks)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 8
@@ -300,16 +308,18 @@ build_tracks:                           # @build_tracks
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 176
-	fst.s	$fs0, $sp, 76
-	st.d	$s3, $sp, 80
-	xvld	$xr1, $sp, 192
+	vld	$vr1, $sp, 192
 	vst	$vr0, $sp, 88
 	ld.w	$a0, $sp, 168
-	ld.w	$a1, $sp, 171
-	xvst	$xr1, $sp, 104
-	st.b	$s4, $sp, 136
+	fst.s	$fs0, $sp, 76
+	vst	$vr1, $sp, 104
+	vld	$vr0, $sp, 208
 	st.w	$a0, $sp, 137
-	st.w	$a1, $sp, 140
+	ld.w	$a0, $sp, 171
+	st.d	$s3, $sp, 80
+	vst	$vr0, $sp, 120
+	st.b	$s4, $sp, 136
+	st.w	$a0, $sp, 140
 	st.d	$s0, $sp, 144
 	st.d	$s5, $sp, 152
 	addi.d	$a0, $sp, 8
@@ -329,16 +339,18 @@ build_tracks:                           # @build_tracks
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 176
-	fst.s	$fs0, $sp, 76
-	st.d	$s3, $sp, 80
-	xvld	$xr1, $sp, 192
+	vld	$vr1, $sp, 192
 	vst	$vr0, $sp, 88
 	ld.w	$a0, $sp, 168
-	ld.w	$a1, $sp, 171
-	xvst	$xr1, $sp, 104
 	st.b	$s4, $sp, 136
+	vst	$vr1, $sp, 104
+	vld	$vr0, $sp, 208
 	st.w	$a0, $sp, 137
-	st.w	$a1, $sp, 140
+	ld.w	$a0, $sp, 171
+	fst.s	$fs0, $sp, 76
+	st.d	$s3, $sp, 80
+	vst	$vr0, $sp, 120
+	st.w	$a0, $sp, 140
 	st.d	$s0, $sp, 144
 	st.d	$s5, $sp, 152
 	addi.d	$a0, $sp, 8

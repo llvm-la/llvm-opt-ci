@@ -193,8 +193,8 @@ _ZN22btVoronoiSimplexSolver28updateClosestVectorAndPointsEv: # @_ZN22btVoronoiSi
 # %bb.1:
 	st.b	$zero, $a0, 348
 	ld.b	$a1, $a0, 328
-	vrepli.b	$vr0, 0
-	vst	$vr0, $a0, 332
+	vrepli.b	$vr10, 0
+	vst	$vr10, $a0, 332
 	ld.w	$a2, $a0, 0
 	bstrins.d	$a1, $zero, 3, 0
 	st.b	$a1, $a0, 328
@@ -228,9 +228,9 @@ _ZN22btVoronoiSimplexSolver28updateClosestVectorAndPointsEv: # @_ZN22btVoronoiSi
 	addi.d	$a4, $a0, 36
 	move	$s0, $a0
 	addi.d	$a5, $a0, 52
-	vst	$vr0, $sp, 40
+	vst	$vr10, $sp, 40
 	addi.d	$a1, $sp, 40
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr10, $sp, 16                  # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZN22btVoronoiSimplexSolver25closestPtPointTetrahedronERK9btVector3S2_S2_S2_S2_R25btSubSimplexClosestResult)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB4_14
@@ -314,7 +314,6 @@ _ZN22btVoronoiSimplexSolver28updateClosestVectorAndPointsEv: # @_ZN22btVoronoiSi
 	fadd.s	$fa1, $fa1, $fa7
 	b	.LBB4_11
 .LBB4_7:
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	fld.s	$fa1, $a0, 4
 	movgr2fr.w	$fa0, $zero
 	fsub.s	$fa2, $fa0, $fa1
@@ -348,11 +347,11 @@ _ZN22btVoronoiSimplexSolver28updateClosestVectorAndPointsEv: # @_ZN22btVoronoiSi
 	addi.d	$a2, $a0, 4
 	addi.d	$a3, $a0, 20
 	addi.d	$a4, $a0, 36
-	vst	$vr0, $sp, 40
+	vst	$vr10, $sp, 40
 	addi.d	$a1, $sp, 40
 	move	$a5, $a6
 	move	$s0, $a0
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr10, $sp, 16                  # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZN22btVoronoiSimplexSolver22closestPtPointTriangleERK9btVector3S2_S2_S2_R25btSubSimplexClosestResult)
 	jirl	$ra, $ra, 0
 	fld.s	$fa0, $s0, 84
@@ -432,6 +431,7 @@ _ZN22btVoronoiSimplexSolver28updateClosestVectorAndPointsEv: # @_ZN22btVoronoiSi
 	st.d	$a0, $s0, 276
 	st.d	$a1, $s0, 284
 	move	$a0, $s0
+	move	$a1, $fp
 	b	.LBB4_19
 .LBB4_12:
 	vld	$vr0, $a0, 84
@@ -536,7 +536,7 @@ _ZN22btVoronoiSimplexSolver28updateClosestVectorAndPointsEv: # @_ZN22btVoronoiSi
 	vextrins.w	$vr4, $vr2, 16
 	vshuf4i.w	$vr1, $vr4, 16
 	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr2, $xr3
+	vilvl.w	$vr2, $vr10, $vr3
 	vor.v	$vr1, $vr1, $vr2
 	vpickve2gr.d	$a1, $vr1, 0
 	st.d	$a1, $a0, 260
@@ -546,8 +546,9 @@ _ZN22btVoronoiSimplexSolver28updateClosestVectorAndPointsEv: # @_ZN22btVoronoiSi
 	st.d	$a2, $a0, 276
 	st.d	$a1, $a0, 284
 	move	$s0, $a0
-.LBB4_19:
 	move	$a1, $fp
+	vst	$vr10, $sp, 16                  # 16-byte Folded Spill
+.LBB4_19:
 	pcaddu18i	$ra, %call36(_ZN22btVoronoiSimplexSolver14reduceVerticesERK15btUsageBitfield)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $s0, 332

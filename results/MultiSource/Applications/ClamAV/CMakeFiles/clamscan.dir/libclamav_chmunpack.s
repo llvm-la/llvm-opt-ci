@@ -828,12 +828,14 @@ chm_unpack:                             # @chm_unpack
 	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
 	bltu	$s1, $a0, .LBB0_103
 # %bb.95:                               #   in Loop: Header=BB0_68 Depth=1
-	xvldx	$xr0, $s2, $s5
+	vldx	$vr0, $s2, $s5
 	add.d	$a0, $s2, $s5
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
-	xvst	$xr0, $a1, 0
-	ld.w	$a0, $a0, 32
-	st.w	$a0, $a1, 32
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	vst	$vr0, $a2, 0
+	ld.w	$a1, $a0, 32
+	st.w	$a1, $a2, 32
+	vld	$vr0, $a0, 16
+	vst	$vr0, $a2, 16
 .LBB0_96:                               # %chm_read_data.exit.i109.i
                                         #   in Loop: Header=BB0_68 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload

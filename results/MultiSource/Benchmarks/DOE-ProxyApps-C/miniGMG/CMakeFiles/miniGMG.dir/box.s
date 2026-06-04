@@ -1,11 +1,9 @@
 	.file	"box.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function create_box
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function create_box
 .LCPI0_0:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	create_box
 	.p2align	2
@@ -106,7 +104,7 @@ create_box:                             # @create_box
 	blez	$s3, .LBB0_12
 # %bb.6:                                # %.lr.ph127
 	ld.d	$a0, $s0, 0
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 6
 	bltu	$s3, $a1, .LBB0_9
 # %bb.7:                                # %vector.memcheck
 	addi.d	$a1, $sp, 16
@@ -237,30 +235,30 @@ create_box:                             # @create_box
 	addi.d	$sp, $sp, 80
 	ret
 .LBB0_19:                               # %vector.ph
-	bstrpick.d	$a1, $s3, 30, 3
-	slli.d	$a1, $a1, 3
+	bstrpick.d	$a1, $s3, 30, 2
+	slli.d	$a1, $a1, 2
 	ld.d	$a3, $sp, 8
 	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI0_0)
-	xvreplgr2vr.d	$xr1, $s4
-	addi.d	$a2, $a0, 32
-	xvreplgr2vr.d	$xr2, $a3
+	vld	$vr0, $a2, %pc_lo12(.LCPI0_0)
+	vreplgr2vr.d	$vr1, $s4
+	addi.d	$a2, $a0, 16
+	vreplgr2vr.d	$vr2, $a3
 	move	$a3, $a1
 	.p2align	4, , 16
 .LBB0_20:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr3, $xr0, 4
-	xvmul.d	$xr4, $xr0, $xr1
-	xvmul.d	$xr3, $xr3, $xr1
-	xvslli.d	$xr4, $xr4, 3
-	xvadd.d	$xr4, $xr2, $xr4
-	xvslli.d	$xr3, $xr3, 3
-	xvadd.d	$xr3, $xr2, $xr3
-	xvst	$xr4, $a2, -32
-	xvst	$xr3, $a2, 0
-	xvaddi.du	$xr0, $xr0, 8
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vaddi.du	$vr3, $vr0, 2
+	vmul.d	$vr4, $vr0, $vr1
+	vmul.d	$vr3, $vr3, $vr1
+	vslli.d	$vr4, $vr4, 3
+	vadd.d	$vr4, $vr2, $vr4
+	vslli.d	$vr3, $vr3, 3
+	vadd.d	$vr3, $vr2, $vr3
+	vst	$vr4, $a2, -16
+	vst	$vr3, $a2, 0
+	vaddi.du	$vr0, $vr0, 4
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB0_20
 # %bb.21:                               # %middle.block
 	beq	$a1, $s3, .LBB0_12

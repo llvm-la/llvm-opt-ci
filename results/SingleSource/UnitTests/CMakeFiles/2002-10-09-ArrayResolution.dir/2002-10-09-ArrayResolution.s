@@ -10,13 +10,17 @@ main:                                   # @main
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(Array)
 	addi.d	$a0, $a0, %pc_lo12(Array)
-	xvrepli.w	$xr0, 5
-	xvst	$xr0, $a0, 0
+	vrepli.w	$vr0, 5
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
 	pcalau12i	$a1, %pc_hi20(Foo)
 	ld.w	$a1, $a1, %pc_lo12(Foo)
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(printf)
@@ -31,7 +35,7 @@ main:                                   # @main
 	.type	Array,@object                   # @Array
 	.bss
 	.globl	Array
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 Array:
 	.space	128
 	.size	Array, 128

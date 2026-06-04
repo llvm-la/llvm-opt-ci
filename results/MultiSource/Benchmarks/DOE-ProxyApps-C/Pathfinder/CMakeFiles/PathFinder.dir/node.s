@@ -23,8 +23,9 @@ Node_new:                               # @Node_new
 	addi.w	$a1, $zero, -1
 	lu32i.d	$a1, 0
 	st.w	$a1, $a0, 16
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 20
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 20
+	vst	$vr0, $a0, 36
 	st.w	$zero, $a0, 52
 .LBB0_2:
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -184,8 +185,9 @@ Node_duplicate:                         # @Node_duplicate
 	st.w	$a1, $a0, 0
 	st.w	$fp, $a0, 4
 	vst	$vr0, $a0, 8
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 24
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 24
+	vst	$vr0, $a0, 40
 	move	$a1, $a0
 .LBB4_3:
 	move	$a0, $a1

@@ -745,8 +745,9 @@ htstat:                                 # @htstat
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 8
+	vst	$vr0, $sp, 24
 	pcalau12i	$a0, %pc_hi20(he)
 	ld.d	$a0, $a0, %pc_lo12(he)
 	lu12i.w	$a1, 256

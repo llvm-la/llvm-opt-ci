@@ -1,15 +1,16 @@
 	.file	"common.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function decode_header
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function decode_header
 .LCPI0_0:
-	.word	4294967295                      # 0xffffffff
-	.word	15                              # 0xf
-	.word	4294967295                      # 0xffffffff
+	.word	9                               # 0x9
+	.word	8                               # 0x8
+	.word	6                               # 0x6
+	.word	4                               # 0x4
+.LCPI0_1:
 	.word	1                               # 0x1
 	.word	1                               # 0x1
 	.word	3                               # 0x3
 	.word	3                               # 0x3
-	.word	1                               # 0x1
 	.text
 	.globl	decode_header
 	.p2align	2
@@ -39,37 +40,31 @@ decode_header:                          # @decode_header
 	maskeqz	$a6, $a6, $a2
 	add.w	$a6, $a6, $a5
 	addi.w	$a5, $a5, 6
-	nor	$a7, $a1, $zero
 	maskeqz	$a5, $a5, $a4
 	masknez	$a4, $a6, $a4
+	pcalau12i	$a6, %pc_hi20(.LCPI0_0)
+	vld	$vr0, $a6, %pc_lo12(.LCPI0_0)
 	or	$a4, $a5, $a4
-	bstrpick.d	$a5, $a7, 16, 16
-	bstrpick.d	$a6, $a1, 31, 3
-	bstrpick.d	$a7, $a1, 31, 4
-	bstrpick.d	$t0, $a1, 31, 6
-	bstrpick.d	$t1, $a1, 31, 8
-	bstrpick.d	$t2, $a1, 31, 9
-	bstrpick.d	$t3, $a1, 31, 12
-	vinsgr2vr.w	$vr0, $a5, 0
-	vinsgr2vr.w	$vr0, $t3, 1
-	vinsgr2vr.w	$vr0, $a4, 2
-	vinsgr2vr.w	$vr0, $t2, 3
-	vinsgr2vr.w	$vr1, $t1, 0
-	vinsgr2vr.w	$vr1, $t0, 1
-	vinsgr2vr.w	$vr1, $a7, 2
-	pcalau12i	$a5, %pc_hi20(.LCPI0_0)
-	xvld	$xr2, $a5, %pc_lo12(.LCPI0_0)
-	vinsgr2vr.w	$vr1, $a6, 3
-	xvpermi.q	$xr0, $xr1, 2
-	bstrpick.d	$a6, $a1, 31, 0
-	xvand.v	$xr0, $xr0, $xr2
-	bstrpick.d	$a5, $a6, 15, 12
-	xvst	$xr0, $a0, 28
-	bstrpick.d	$a7, $a1, 2, 2
-	st.w	$a7, $a0, 60
+	bstrpick.d	$a5, $a1, 15, 12
+	vreplgr2vr.w	$vr1, $a1
+	vsrl.w	$vr1, $vr1, $vr0
+	pcalau12i	$a6, %pc_hi20(.LCPI0_1)
+	vld	$vr0, $a6, %pc_lo12(.LCPI0_1)
+	nor	$a6, $a1, $zero
+	bstrpick.d	$a6, $a6, 16, 16
+	st.w	$a4, $a0, 36
+	st.w	$a6, $a0, 28
+	st.w	$a5, $a0, 32
+	vand.v	$vr0, $vr1, $vr0
+	vst	$vr0, $a0, 40
+	bstrpick.d	$a6, $a1, 3, 3
+	st.w	$a6, $a0, 56
+	bstrpick.d	$a6, $a1, 2, 2
+	st.w	$a6, $a0, 60
 	andi	$a1, $a1, 3
 	st.w	$a1, $a0, 64
-	bstrpick.d	$a1, $a6, 7, 6
+	vpickve2gr.w	$a1, $vr1, 2
+	andi	$a1, $a1, 3
 	addi.d	$a1, $a1, -3
 	sltui	$a1, $a1, 1
 	ori	$a6, $zero, 2
@@ -96,7 +91,7 @@ decode_header:                          # @decode_header
 	ldx.d	$a3, $a4, $a3
 	sll.d	$a2, $a3, $a2
 	div.d	$a1, $a1, $a2
-	xvpickve2gr.w	$a2, $xr0, 3
+	vpickve2gr.w	$a2, $vr0, 0
 	add.d	$a1, $a1, $a2
 	addi.d	$a1, $a1, -4
 	st.w	$a1, $a0, 68

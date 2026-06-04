@@ -1,17 +1,6 @@
 	.file	"getDeleteCommand.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function getDeleteCommand
-.LCPI0_0:
-	.word	0xff7fffff                      # float -3.40282347E+38
-	.word	0xff7fffff                      # float -3.40282347E+38
-	.word	0xff7fffff                      # float -3.40282347E+38
-	.word	0xff7fffff                      # float -3.40282347E+38
-	.word	0x7f7fffff                      # float 3.40282347E+38
-	.word	0x7f7fffff                      # float 3.40282347E+38
-	.word	0x7f7fffff                      # float 3.40282347E+38
-	.word	0x7f7fffff                      # float 3.40282347E+38
 	.text
-	.globl	getDeleteCommand
+	.globl	getDeleteCommand                # -- Begin function getDeleteCommand
 	.p2align	2
 	.prefalign	5, .Lfunc_end0, nop
 	.type	getDeleteCommand,@function
@@ -27,12 +16,17 @@ getDeleteCommand:                       # @getDeleteCommand
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a3, %pc_lo12(.LCPI0_0)
 	move	$fp, $a2
 	move	$s0, $a1
 	move	$s1, $a0
-	xvst	$xr0, $a1, 0
+	lu12i.w	$a0, -2049
+	ori	$a0, $a0, 4095
+	vreplgr2vr.w	$vr0, $a0
+	vst	$vr0, $a1, 0
+	lu12i.w	$a0, 522239
+	ori	$a0, $a0, 4095
+	vreplgr2vr.w	$vr0, $a0
+	vst	$vr0, $a1, 16
 	st.d	$zero, $a2, 0
 	ori	$s2, $zero, 51
 	ori	$s3, $zero, 7

@@ -6,31 +6,31 @@
 	.type	hypre_StructAxpy,@function
 hypre_StructAxpy:                       # @hypre_StructAxpy
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
 	ld.d	$s7, $a1, 8
 	ld.w	$a1, $s7, 8
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
 	blez	$a1, .LBB0_26
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
-	xvreplve0.d	$xr5, $xr0
-	ori	$s4, $zero, 8
-	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
-	xvst	$xr5, $sp, 16                   # 32-byte Folded Spill
+	vreplvei.d	$vr5, $vr0, 0
+	ori	$s4, $zero, 4
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr5, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_2:                                # %._crit_edge
@@ -43,7 +43,7 @@ hypre_StructAxpy:                       # @hypre_StructAxpy
                                         #       Child Loop BB0_17 Depth 3
                                         #         Child Loop BB0_24 Depth 4
                                         #         Child Loop BB0_22 Depth 4
-	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a3, 16
 	ld.d	$a1, $fp, 16
 	move	$s0, $s7
@@ -53,19 +53,19 @@ hypre_StructAxpy:                       # @hypre_StructAxpy
 	ld.d	$s6, $a1, 0
 	ld.d	$a0, $a3, 40
 	ld.d	$a1, $a3, 24
-	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	ld.d	$a1, $fp, 40
 	slli.d	$a3, $s3, 2
 	ldx.w	$a0, $a0, $a3
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ld.d	$a0, $fp, 24
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	ldx.w	$a0, $a1, $a3
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	slli.d	$s8, $a2, 3
 	add.d	$s1, $s2, $s8
 	add.d	$s7, $s5, $s8
-	addi.d	$a1, $sp, 124
+	addi.d	$a1, $sp, 92
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(hypre_BoxGetSize)
 	jirl	$ra, $ra, 0
@@ -94,8 +94,8 @@ hypre_StructAxpy:                       # @hypre_StructAxpy
 	ld.w	$t8, $t3, 0
 	sub.w	$a7, $a0, $t7
 	addi.d	$t2, $a7, 1
-	xvld	$xr0, $sp, 48                   # 32-byte Folded Reload
-	xvld	$xr5, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr5, $sp, 16                   # 16-byte Folded Reload
 	bltz	$a7, .LBB0_8
 # %bb.7:                                #   in Loop: Header=BB0_3 Depth=1
 	ld.w	$a0, $s1, 8
@@ -108,9 +108,9 @@ hypre_StructAxpy:                       # @hypre_StructAxpy
 	move	$t0, $zero
 .LBB0_9:                                #   in Loop: Header=BB0_3 Depth=1
 	move	$s7, $s0
-	ld.w	$a0, $sp, 124
-	ld.w	$a1, $sp, 128
-	ld.w	$a2, $sp, 132
+	ld.w	$a0, $sp, 92
+	ld.w	$a1, $sp, 96
+	ld.w	$a2, $sp, 100
 	slt	$a3, $a0, $a1
 	masknez	$s1, $a0, $a3
 	maskeqz	$a3, $a1, $a3
@@ -171,22 +171,22 @@ hypre_StructAxpy:                       # @hypre_StructAxpy
 	srli.d	$t2, $t2, 31
 	and	$t0, $t2, $t0
 	add.w	$ra, $t1, $t0
-	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$t1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 56                    # 8-byte Folded Reload
 	alsl.d	$t0, $t1, $t0, 3
 	addi.d	$t1, $a0, -1
 	bstrpick.d	$t3, $t1, 31, 0
 	alsl.d	$t1, $t3, $t0, 3
 	addi.d	$t1, $t1, 8
-	ld.d	$t2, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$t4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$t4, $sp, 72                    # 8-byte Folded Reload
 	alsl.d	$t2, $t4, $t2, 3
 	alsl.d	$t3, $t3, $t2, 3
 	addi.d	$t3, $t3, 8
-	bstrpick.d	$t4, $a0, 30, 3
-	slli.d	$t4, $t4, 3
-	addi.d	$t5, $t0, 32
-	addi.d	$t6, $t2, 32
+	bstrpick.d	$t4, $a0, 30, 2
+	slli.d	$t4, $t4, 2
+	addi.d	$t5, $t0, 16
+	addi.d	$t6, $t2, 16
 	b	.LBB0_15
 	.p2align	4, , 16
 .LBB0_14:                               # %._crit_edge227.split.us.us.us.us.us.us
@@ -267,17 +267,17 @@ hypre_StructAxpy:                       # @hypre_StructAxpy
                                         #     Parent Loop BB0_15 Depth=2
                                         #       Parent Loop BB0_17 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	xvld	$xr4, $s1, -32
-	xvld	$xr1, $s1, 0
-	xvld	$xr2, $s2, -32
-	xvld	$xr3, $s2, 0
-	xvfmadd.d	$xr2, $xr5, $xr4, $xr2
-	xvfmadd.d	$xr1, $xr5, $xr1, $xr3
-	xvst	$xr2, $s2, -32
-	xvst	$xr1, $s2, 0
-	addi.d	$s6, $s6, -8
-	addi.d	$s2, $s2, 64
-	addi.d	$s1, $s1, 64
+	vld	$vr4, $s1, -16
+	vld	$vr1, $s1, 0
+	vld	$vr2, $s2, -16
+	vld	$vr3, $s2, 0
+	vfmadd.d	$vr2, $vr5, $vr4, $vr2
+	vfmadd.d	$vr1, $vr5, $vr1, $vr3
+	vst	$vr2, $s2, -16
+	vst	$vr1, $s2, 0
+	addi.d	$s6, $s6, -4
+	addi.d	$s2, $s2, 32
+	addi.d	$s1, $s1, 32
 	bnez	$s6, .LBB0_24
 # %bb.25:                               # %middle.block
                                         #   in Loop: Header=BB0_17 Depth=3
@@ -286,18 +286,18 @@ hypre_StructAxpy:                       # @hypre_StructAxpy
 	b	.LBB0_21
 .LBB0_26:                               # %._crit_edge259
 	move	$a0, $zero
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .Lfunc_end0:
 	.size	hypre_StructAxpy, .Lfunc_end0-hypre_StructAxpy

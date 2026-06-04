@@ -3,18 +3,14 @@
 	.globl	_ZSt21ios_base_library_initv
 
                                         # End of file scope inline assembly
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI0_0:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
-	.dword	6                               # 0x6
-	.dword	7                               # 0x7
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI0_1:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	main
 	.p2align	2
@@ -90,49 +86,33 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_1)
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr2, $xr0, 12
-	xvslli.d	$xr3, $xr1, 12
-	xvpickve2gr.d	$a0, $xr3, 0
-	xvpickve2gr.d	$a1, $xr3, 1
-	xvpickve2gr.d	$a2, $xr3, 2
-	xvpickve2gr.d	$a3, $xr3, 3
-	xvpickve2gr.d	$a4, $xr2, 0
-	xvpickve2gr.d	$a5, $xr2, 1
-	xvpickve2gr.d	$a6, $xr2, 2
-	xvpickve2gr.d	$a7, $xr2, 3
-	add.d	$t0, $fp, $a0
-	add.d	$t1, $fp, $a1
-	add.d	$t2, $fp, $a2
-	add.d	$t3, $fp, $a3
-	add.d	$t4, $fp, $a4
-	add.d	$t5, $fp, $a5
-	add.d	$t6, $fp, $a6
-	add.d	$t7, $fp, $a7
+	vslli.d	$vr2, $vr0, 12
+	vslli.d	$vr3, $vr1, 12
+	vpickve2gr.d	$a0, $vr3, 0
+	vpickve2gr.d	$a1, $vr3, 1
+	vpickve2gr.d	$a2, $vr2, 0
+	vpickve2gr.d	$a3, $vr2, 1
+	add.d	$a4, $fp, $a0
+	add.d	$a5, $fp, $a1
+	add.d	$a6, $fp, $a2
+	add.d	$a7, $fp, $a3
 	stx.w	$zero, $fp, $a0
 	stx.w	$zero, $fp, $a1
 	stx.w	$zero, $fp, $a2
 	stx.w	$zero, $fp, $a3
-	stx.w	$zero, $fp, $a4
-	stx.w	$zero, $fp, $a5
-	stx.w	$zero, $fp, $a6
-	stx.w	$zero, $fp, $a7
-	stptr.w	$zero, $t0, 4092
-	stptr.w	$zero, $t1, 4092
-	stptr.w	$zero, $t2, 4092
-	stptr.w	$zero, $t3, 4092
-	stptr.w	$zero, $t4, 4092
-	stptr.w	$zero, $t5, 4092
-	stptr.w	$zero, $t6, 4092
-	stptr.w	$zero, $t7, 4092
-	xvaddi.du	$xr1, $xr1, 8
-	addi.d	$s3, $s3, -8
-	xvaddi.du	$xr0, $xr0, 8
+	stptr.w	$zero, $a4, 4092
+	stptr.w	$zero, $a5, 4092
+	stptr.w	$zero, $a6, 4092
+	stptr.w	$zero, $a7, 4092
+	vaddi.du	$vr1, $vr1, 4
+	addi.d	$s3, $s3, -4
+	vaddi.du	$vr0, $vr0, 4
 	bnez	$s3, .LBB0_4
 # %bb.5:                                # %middle.block
 	pcalau12i	$a0, %pc_hi20(.L.str)

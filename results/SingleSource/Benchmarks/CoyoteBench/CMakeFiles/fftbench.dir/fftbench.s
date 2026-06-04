@@ -178,29 +178,29 @@ main:                                   # @main
 	ld.d	$a0, $sp, 24
 	beqz	$s1, .LBB0_32
 .LBB0_12:                               # %.lr.ph.i.i
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	move	$a1, $zero
 	bltu	$s1, $a2, .LBB0_17
 # %bb.13:                               # %.lr.ph.i.i
 	sub.d	$a2, $s0, $a0
-	ori	$a3, $zero, 64
+	ori	$a3, $zero, 32
 	bltu	$a2, $a3, .LBB0_17
 # %bb.14:                               # %vector.ph
 	move	$a1, $s1
-	bstrins.d	$a1, $zero, 2, 0
-	addi.d	$a2, $s0, 32
-	addi.d	$a3, $a0, 32
+	bstrins.d	$a1, $zero, 1, 0
+	addi.d	$a2, $s0, 16
+	addi.d	$a3, $a0, 16
 	move	$a4, $a1
 	.p2align	4, , 16
 .LBB0_15:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a2, -32
-	xvst	$xr1, $a2, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a2, $a2, 64
-	addi.d	$a3, $a3, 64
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a2, $a2, 32
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB0_15
 # %bb.16:                               # %middle.block
 	beq	$s1, $a1, .LBB0_19
@@ -461,29 +461,29 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	beqz	$s4, .LBB1_8
 # %bb.1:                                # %.lr.ph.i.i.preheader
 	ld.d	$a1, $s1, 8
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	move	$a2, $zero
 	bltu	$s4, $a3, .LBB1_6
 # %bb.2:                                # %.lr.ph.i.i.preheader
 	sub.d	$a3, $a0, $a1
-	ori	$a4, $zero, 64
+	ori	$a4, $zero, 32
 	bltu	$a3, $a4, .LBB1_6
 # %bb.3:                                # %vector.ph
 	move	$a2, $s4
-	bstrins.d	$a2, $zero, 2, 0
-	addi.d	$a3, $a0, 32
-	addi.d	$a4, $a1, 32
+	bstrins.d	$a2, $zero, 1, 0
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $a1, 16
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB1_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a3, -16
+	vst	$vr1, $a3, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB1_4
 # %bb.5:                                # %middle.block
 	beq	$s4, $a2, .LBB1_8
@@ -519,29 +519,29 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	beqz	$s1, .LBB1_17
 # %bb.10:                               # %.lr.ph.i.i33.preheader
 	ld.d	$a1, $s0, 8
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	move	$a2, $zero
 	bltu	$s1, $a3, .LBB1_15
 # %bb.11:                               # %.lr.ph.i.i33.preheader
 	sub.d	$a3, $a0, $a1
-	ori	$a4, $zero, 64
+	ori	$a4, $zero, 32
 	bltu	$a3, $a4, .LBB1_15
 # %bb.12:                               # %vector.ph107
 	move	$a2, $s1
-	bstrins.d	$a2, $zero, 2, 0
-	addi.d	$a3, $a0, 32
-	addi.d	$a4, $a1, 32
+	bstrins.d	$a2, $zero, 1, 0
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $a1, 16
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB1_13:                               # %vector.body110
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a3, -16
+	vst	$vr1, $a3, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB1_13
 # %bb.14:                               # %middle.block115
 	beq	$s1, $a2, .LBB1_17
@@ -588,29 +588,29 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	st.d	$a0, $sp, 96
 	beqz	$s1, .LBB1_40
 # %bb.22:                               # %.lr.ph.i.preheader
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	move	$a1, $zero
 	bltu	$s1, $a2, .LBB1_27
 # %bb.23:                               # %.lr.ph.i.preheader
 	sub.d	$a2, $a0, $s5
-	ori	$a3, $zero, 64
+	ori	$a3, $zero, 32
 	bltu	$a2, $a3, .LBB1_27
 # %bb.24:                               # %vector.ph137
 	move	$a1, $s1
-	bstrins.d	$a1, $zero, 2, 0
-	addi.d	$a2, $a0, 32
-	addi.d	$a3, $s5, 32
+	bstrins.d	$a1, $zero, 1, 0
+	addi.d	$a2, $a0, 16
+	addi.d	$a3, $s5, 16
 	move	$a4, $a1
 	.p2align	4, , 16
 .LBB1_25:                               # %vector.body140
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a2, -32
-	xvst	$xr1, $a2, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a2, $a2, 64
-	addi.d	$a3, $a3, 64
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a2, $a2, 32
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB1_25
 # %bb.26:                               # %middle.block145
 	beq	$s1, $a1, .LBB1_40
@@ -656,29 +656,29 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	st.d	$a0, $sp, 120
 	beqz	$s1, .LBB1_40
 # %bb.33:                               # %.lr.ph.i40.preheader
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	move	$a1, $zero
 	bltu	$s1, $a2, .LBB1_38
 # %bb.34:                               # %.lr.ph.i40.preheader
 	sub.d	$a2, $a0, $s5
-	ori	$a3, $zero, 64
+	ori	$a3, $zero, 32
 	bltu	$a2, $a3, .LBB1_38
 # %bb.35:                               # %vector.ph122
 	move	$a1, $s1
-	bstrins.d	$a1, $zero, 2, 0
-	addi.d	$a2, $a0, 32
-	addi.d	$a3, $s5, 32
+	bstrins.d	$a1, $zero, 1, 0
+	addi.d	$a2, $a0, 16
+	addi.d	$a3, $s5, 16
 	move	$a4, $a1
 	.p2align	4, , 16
 .LBB1_36:                               # %vector.body125
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a2, -32
-	xvst	$xr1, $a2, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a2, $a2, 64
-	addi.d	$a3, $a3, 64
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a2, $a2, 32
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB1_36
 # %bb.37:                               # %middle.block130
 	beq	$s1, $a1, .LBB1_40
@@ -846,7 +846,7 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	st.d	$a1, $fp, 8
 	beqz	$s1, .LBB1_73
 # %bb.66:                               # %.lr.ph70.preheader
-	ori	$a2, $zero, 12
+	ori	$a2, $zero, 16
 	bltu	$s1, $a2, .LBB1_69
 # %bb.67:                               # %vector.memcheck148
 	alsl.d	$a2, $s4, $a0, 4
@@ -920,32 +920,24 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	ret
 .LBB1_82:                               # %vector.ph152
 	move	$a2, $s1
-	bstrins.d	$a2, $zero, 2, 0
-	addi.d	$a3, $a1, 32
-	addi.d	$a4, $a0, 64
+	bstrins.d	$a2, $zero, 1, 0
+	addi.d	$a3, $a0, 32
+	addi.d	$a4, $a1, 16
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB1_83:                               # %vector.body155
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $a4, -32
-	fld.d	$fa1, $a4, -16
-	fld.d	$fa2, $a4, -64
-	fld.d	$fa3, $a4, -48
+	fld.d	$fa0, $a3, -32
+	fld.d	$fa1, $a3, -16
+	fld.d	$fa2, $a3, 0
+	fld.d	$fa3, $a3, 16
 	vextrins.d	$vr0, $vr1, 16
-	fld.d	$fa1, $a4, 0
-	fld.d	$fa4, $a4, 32
-	fld.d	$fa5, $a4, 48
-	fld.d	$fa6, $a4, 16
 	vextrins.d	$vr2, $vr3, 16
-	xvpermi.q	$xr2, $xr0, 2
-	vextrins.d	$vr4, $vr5, 16
-	vextrins.d	$vr1, $vr6, 16
-	xvpermi.q	$xr1, $xr4, 2
-	xvst	$xr2, $a3, -32
-	xvst	$xr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr2, $a4, 0
 	addi.d	$a3, $a3, 64
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 128
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB1_83
 # %bb.84:                               # %middle.block158
 	beq	$s1, $a2, .LBB1_72
@@ -1571,29 +1563,29 @@ _ZN10polynomialIdE11stretch_fftEv:      # @_ZN10polynomialIdE11stretch_fftEv
 	st.d	$a0, $s3, 8
 	beqz	$s0, .LBB4_106
 # %bb.99:                               # %.lr.ph.i.preheader
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	move	$a1, $zero
 	bltu	$s0, $a2, .LBB4_104
 # %bb.100:                              # %.lr.ph.i.preheader
 	sub.d	$a2, $a0, $s2
-	ori	$a3, $zero, 64
+	ori	$a3, $zero, 32
 	bltu	$a2, $a3, .LBB4_104
 # %bb.101:                              # %vector.ph
 	move	$a1, $s0
-	bstrins.d	$a1, $zero, 2, 0
-	addi.d	$a2, $a0, 32
-	addi.d	$a3, $s2, 32
+	bstrins.d	$a1, $zero, 1, 0
+	addi.d	$a2, $a0, 16
+	addi.d	$a3, $s2, 16
 	move	$a4, $a1
 	.p2align	4, , 16
 .LBB4_102:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a2, -32
-	xvst	$xr1, $a2, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a2, $a2, 64
-	addi.d	$a3, $a3, 64
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a2, $a2, 32
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB4_102
 # %bb.103:                              # %middle.block
 	beq	$s0, $a1, .LBB4_106

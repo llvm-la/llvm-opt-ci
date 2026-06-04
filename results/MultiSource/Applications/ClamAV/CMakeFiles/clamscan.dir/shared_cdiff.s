@@ -27,11 +27,15 @@ cdiff_apply:                            # @cdiff_apply
 	ori	$a1, $a1, 1168
 	add.d	$a1, $sp, $a1
 	st.d	$zero, $a1, 0
-	xvrepli.b	$xr0, 0
+	vrepli.b	$vr0, 0
 	lu12i.w	$a1, 2
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
-	xvst	$xr0, $a1, 0
+	vst	$vr0, $a1, 0
+	lu12i.w	$a1, 2
+	ori	$a1, $a1, 1192
+	add.d	$a1, $sp, $a1
+	vst	$vr0, $a1, 0
 	pcaddu18i	$ra, %call36(dup)
 	jirl	$ra, $ra, 0
 	addi.w	$fp, $zero, -1

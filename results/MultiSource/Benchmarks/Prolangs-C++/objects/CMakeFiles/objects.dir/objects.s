@@ -469,25 +469,25 @@ _ZN5Array6InsertEP6Objecti:             # @_ZN5Array6InsertEP6Objecti
 	maskeqz	$a5, $a5, $a7
 	or	$a5, $a5, $t0
 	sub.d	$a7, $a6, $a5
-	ori	$a5, $zero, 4
+	ori	$a5, $zero, 2
 	bgeu	$a7, $a5, .LBB7_6
 # %bb.5:
 	move	$a5, $a6
 	b	.LBB7_9
 .LBB7_6:                                # %vector.ph
 	move	$t0, $a7
-	bstrins.d	$t0, $zero, 1, 0
+	bstrins.d	$t0, $zero, 0, 0
 	sub.d	$a5, $a6, $t0
 	alsl.d	$a6, $a6, $a3, 3
-	addi.d	$a6, $a6, -32
+	addi.d	$a6, $a6, -8
 	move	$t1, $t0
 	.p2align	4, , 16
 .LBB7_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, 0
-	xvst	$xr0, $a6, 8
-	addi.d	$t1, $t1, -4
-	addi.d	$a6, $a6, -32
+	vld	$vr0, $a6, -8
+	vst	$vr0, $a6, 0
+	addi.d	$t1, $t1, -2
+	addi.d	$a6, $a6, -16
 	bnez	$t1, .LBB7_7
 # %bb.8:                                # %middle.block
 	beq	$a7, $t0, .LBB7_11
@@ -603,7 +603,7 @@ _ZN5Array5FetchEi:                      # @_ZN5Array5FetchEi
 # %bb.3:                                # %.lr.ph
 	sub.d	$a3, $a3, $s0
 	addi.w	$a3, $a3, -2
-	ori	$a4, $zero, 7
+	ori	$a4, $zero, 3
 	bstrpick.d	$a6, $s0, 31, 0
 	bgeu	$a3, $a4, .LBB10_5
 # %bb.4:
@@ -612,21 +612,21 @@ _ZN5Array5FetchEi:                      # @_ZN5Array5FetchEi
 .LBB10_5:                               # %vector.ph
 	bstrpick.d	$a3, $a3, 31, 0
 	addi.d	$a4, $a3, 1
-	bstrpick.d	$a3, $a4, 32, 3
-	slli.d	$a5, $a3, 3
-	alsl.d	$a3, $a3, $a6, 3
+	bstrpick.d	$a3, $a4, 32, 2
+	slli.d	$a5, $a3, 2
+	alsl.d	$a3, $a3, $a6, 2
 	alsl.d	$a6, $a6, $a2, 3
-	addi.d	$a6, $a6, 40
+	addi.d	$a6, $a6, 16
 	move	$a7, $a5
 	.p2align	4, , 16
 .LBB10_6:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvst	$xr0, $a6, -40
-	xvst	$xr1, $a6, -8
-	addi.d	$a7, $a7, -8
-	addi.d	$a6, $a6, 64
+	vld	$vr0, $a6, -8
+	vld	$vr1, $a6, 8
+	vst	$vr0, $a6, -16
+	vst	$vr1, $a6, 0
+	addi.d	$a7, $a7, -4
+	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB10_6
 # %bb.7:                                # %middle.block
 	beq	$a4, $a5, .LBB10_10

@@ -18,11 +18,11 @@ L_canny:                                # @L_canny
 	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 56                   # 8-byte Folded Spill
-	move	$s3, $a4
+	move	$s2, $a4
 	move	$fp, $a3
 	move	$s0, $a2
 	move	$s1, $a1
-	move	$s2, $a0
+	move	$s3, $a0
 	fcvt.d.s	$fs0, $fa0
 	addi.d	$a0, $sp, 20
 	addi.d	$a1, $sp, 32
@@ -37,7 +37,7 @@ L_canny:                                # @L_canny
 	addi.d	$a0, $sp, 16
 	addi.d	$a1, $sp, 24
 	fmov.d	$fa0, $fs0
-	move	$a2, $s3
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(DGaussianMask)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB0_4
@@ -47,8 +47,8 @@ L_canny:                                # @L_canny
 	ld.w	$s5, $sp, 20
 	ld.w	$s7, $sp, 16
 	addi.d	$a7, $sp, 48
-	st.d	$s3, $sp, 0
-	move	$a0, $s2
+	st.d	$s2, $sp, 0
+	move	$a0, $s3
 	move	$a1, $s4
 	move	$a2, $s6
 	move	$a3, $s5
@@ -60,8 +60,8 @@ L_canny:                                # @L_canny
 	bnez	$a0, .LBB0_4
 # %bb.3:
 	addi.d	$a7, $sp, 40
-	st.d	$s3, $sp, 0
-	move	$a0, $s2
+	st.d	$s2, $sp, 0
+	move	$a0, $s3
 	move	$a1, $s6
 	move	$a2, $s4
 	move	$a3, $s7
@@ -88,97 +88,65 @@ L_canny:                                # @L_canny
 	addi.d	$sp, $sp, 144
 	ret
 .LBB0_6:
-	mul.w	$s2, $s0, $s1
+	mul.w	$s3, $s0, $s1
 	ori	$a1, $zero, 4
-	move	$a0, $s2
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_10
 # %bb.7:                                # %.preheader
 	ld.d	$a1, $sp, 48
 	ld.d	$a2, $sp, 40
-	blez	$s2, .LBB0_22
-# %bb.8:                                # %iter.check
-	ori	$a3, $zero, 4
-	bgeu	$s2, $a3, .LBB0_11
+	blez	$s3, .LBB0_16
+# %bb.8:                                # %.lr.ph
+	ori	$a3, $zero, 8
+	bgeu	$s3, $a3, .LBB0_11
 # %bb.9:
 	move	$a3, $zero
-	b	.LBB0_20
+	b	.LBB0_14
 .LBB0_10:
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	ld.d	$a1, $a0, 6
 	ld.d	$a0, $a0, 0
-	st.d	$a1, $s3, 6
-	st.d	$a0, $s3, 0
+	st.d	$a1, $s2, 6
+	st.d	$a0, $s2, 0
 	ori	$a0, $zero, 1
 	b	.LBB0_5
-.LBB0_11:                               # %vector.main.loop.iter.check
-	ori	$a3, $zero, 16
-	bgeu	$s2, $a3, .LBB0_13
-# %bb.12:
-	move	$a3, $zero
-	b	.LBB0_17
-.LBB0_13:                               # %vector.ph
-	andi	$a4, $s2, 12
-	bstrpick.d	$a3, $s2, 30, 4
-	slli.d	$a3, $a3, 4
-	addi.d	$a5, $a0, 32
-	addi.d	$a6, $a1, 32
-	addi.d	$a7, $a2, 32
-	move	$t0, $a3
-.LBB0_14:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvld	$xr2, $a7, -32
-	xvld	$xr3, $a7, 0
-	xvfmul.s	$xr0, $xr0, $xr0
-	xvfmul.s	$xr1, $xr1, $xr1
-	xvfmadd.s	$xr0, $xr2, $xr2, $xr0
-	xvfmadd.s	$xr1, $xr3, $xr3, $xr1
-	xvfsqrt.s	$xr0, $xr0
-	xvfsqrt.s	$xr1, $xr1
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$t0, $t0, -16
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	addi.d	$a7, $a7, 64
-	bnez	$t0, .LBB0_14
-# %bb.15:                               # %middle.block
-	beq	$a3, $s2, .LBB0_22
-# %bb.16:                               # %vec.epilog.iter.check
-	beqz	$a4, .LBB0_20
-.LBB0_17:                               # %vec.epilog.ph
+.LBB0_11:                               # %vector.ph
+	bstrpick.d	$a3, $s3, 30, 3
+	slli.d	$a3, $a3, 3
+	addi.d	$a4, $a0, 16
+	addi.d	$a5, $a1, 16
+	addi.d	$a6, $a2, 16
 	move	$a7, $a3
-	bstrpick.d	$a3, $s2, 30, 2
-	slli.d	$a3, $a3, 2
-	sub.d	$a4, $a7, $a3
-	alsl.d	$a5, $a7, $a0, 2
-	alsl.d	$a6, $a7, $a1, 2
-	alsl.d	$a7, $a7, $a2, 2
-.LBB0_18:                               # %vec.epilog.vector.body
+.LBB0_12:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a6, 0
-	vld	$vr1, $a7, 0
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vld	$vr2, $a6, -16
+	vld	$vr3, $a6, 0
 	vfmul.s	$vr0, $vr0, $vr0
-	vfmadd.s	$vr0, $vr1, $vr1, $vr0
+	vfmul.s	$vr1, $vr1, $vr1
+	vfmadd.s	$vr0, $vr2, $vr2, $vr0
+	vfmadd.s	$vr1, $vr3, $vr3, $vr1
 	vfsqrt.s	$vr0, $vr0
-	vst	$vr0, $a5, 0
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 16
-	addi.d	$a6, $a6, 16
-	addi.d	$a7, $a7, 16
-	bnez	$a4, .LBB0_18
-# %bb.19:                               # %vec.epilog.middle.block
-	beq	$a3, $s2, .LBB0_22
-.LBB0_20:                               # %vec.epilog.scalar.ph.preheader
+	vfsqrt.s	$vr1, $vr1
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a7, $a7, -8
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	bnez	$a7, .LBB0_12
+# %bb.13:                               # %middle.block
+	beq	$a3, $s3, .LBB0_16
+.LBB0_14:                               # %scalar.ph.preheader
 	alsl.d	$a4, $a3, $a0, 2
 	alsl.d	$a5, $a3, $a1, 2
 	alsl.d	$a6, $a3, $a2, 2
-	sub.d	$a3, $s2, $a3
-.LBB0_21:                               # %vec.epilog.scalar.ph
+	sub.d	$a3, $s3, $a3
+.LBB0_15:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa0, $a5, 0
 	fld.s	$fa1, $a6, 0
@@ -190,8 +158,8 @@ L_canny:                                # @L_canny
 	addi.d	$a5, $a5, 4
 	addi.d	$a3, $a3, -1
 	addi.d	$a6, $a6, 4
-	bnez	$a3, .LBB0_21
-.LBB0_22:                               # %._crit_edge
+	bnez	$a3, .LBB0_15
+.LBB0_16:                               # %._crit_edge
 	move	$a3, $s1
 	move	$a4, $s0
 	pcaddu18i	$ra, %call36(dnon_max)

@@ -508,22 +508,22 @@ _ZN30btKinematicCharacterController6stepUpEP16btCollisionWorld: # @_ZN30btKinema
 	st.d	$a2, $sp, 152
 	lu12i.w	$a0, 253132
 	ori	$a0, $a0, 3277
-	movgr2fr.w	$fa5, $a0
-	fmul.s	$fa1, $fa1, $fa5
+	movgr2fr.w	$ft0, $a0
+	fmul.s	$fa1, $fa1, $ft0
 	fadd.s	$fa1, $fa1, $fa4
-	fmul.s	$fa4, $fa2, $fa5
+	fmul.s	$fa4, $fa2, $ft0
 	fmul.s	$fa2, $fa2, $fa0
-	fmul.s	$fa5, $fa3, $fa5
+	fmul.s	$ft0, $fa3, $ft0
 	fmul.s	$fa0, $fa0, $fa3
 	fadd.s	$fa3, $fa4, $fa6
 	fadd.s	$fa2, $fa2, $fa6
-	fadd.s	$fa4, $fa5, $fa7
+	fadd.s	$fa4, $ft0, $fa7
 	fadd.s	$fa0, $fa0, $fa7
 	vextrins.w	$vr2, $vr3, 16
 	vextrins.w	$vr0, $vr4, 16
 	vshuf4i.w	$vr0, $vr0, 16
 	vslli.d	$vr0, $vr0, 32
-	vext2xv.du.wu	$xr2, $xr2
+	vilvl.w	$vr2, $vr5, $vr2
 	vor.v	$vr0, $vr0, $vr2
 	vpickve2gr.d	$a0, $vr0, 0
 	st.d	$a0, $fp, 108
@@ -536,8 +536,8 @@ _ZN30btKinematicCharacterController6stepUpEP16btCollisionWorld: # @_ZN30btKinema
 	ld.d	$a0, $fp, 16
 	st.w	$a2, $sp, 24
 	st.d	$zero, $sp, 96
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 32
+	vst	$vr5, $sp, 32
+	vst	$vr5, $sp, 48
 	pcalau12i	$a2, %pc_hi20(_ZTV43btKinematicClosestNotMeConvexResultCallback+16)
 	addi.d	$a2, $a2, %pc_lo12(_ZTV43btKinematicClosestNotMeConvexResultCallback+16)
 	ld.d	$a3, $a0, 192
@@ -705,20 +705,20 @@ _ZN30btKinematicCharacterController36updateTargetPositionBasedOnCollisionERK9btV
 _ZN30btKinematicCharacterController20stepForwardAndStrafeEP16btCollisionWorldRK9btVector3: # @_ZN30btKinematicCharacterController20stepForwardAndStrafeEP16btCollisionWorldRK9btVector3
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -384
-	.cfi_def_cfa_offset 384
-	st.d	$ra, $sp, 376                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 312                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 304                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 296                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 288                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -368
+	.cfi_def_cfa_offset 368
+	st.d	$ra, $sp, 360                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 352                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 344                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 336                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 328                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 320                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 312                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 296                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 288                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 280                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 272                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -750,18 +750,19 @@ _ZN30btKinematicCharacterController20stepForwardAndStrafeEP16btCollisionWorldRK9
 	st.d	$a0, $fp, 108
 	st.d	$a1, $fp, 116
 	lu12i.w	$s1, 260096
-	st.w	$s1, $sp, 224
+	st.w	$s1, $sp, 208
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 228
-	st.w	$s1, $sp, 244
-	vst	$vr0, $sp, 248
-	st.d	$s1, $sp, 264
-	st.w	$s1, $sp, 160
+	vst	$vr0, $sp, 212
+	st.w	$s1, $sp, 228
+	vst	$vr0, $sp, 232
+	st.d	$s1, $sp, 248
+	st.w	$s1, $sp, 144
 	ld.bu	$a0, $fp, 160
-	vst	$vr0, $sp, 164
-	st.w	$s1, $sp, 180
-	vst	$vr0, $sp, 184
-	st.d	$s1, $sp, 200
+	vst	$vr0, $sp, 148
+	st.w	$s1, $sp, 164
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 168
+	st.d	$s1, $sp, 184
 	beqz	$a0, .LBB11_3
 # %bb.1:
 	fld.s	$fa0, $fp, 72
@@ -784,12 +785,10 @@ _ZN30btKinematicCharacterController20stepForwardAndStrafeEP16btCollisionWorldRK9
 	pcaddu18i	$ra, %call36(_ZN30btKinematicCharacterController36updateTargetPositionBasedOnCollisionERK9btVector3ff)
 	jirl	$ra, $ra, 0
 .LBB11_3:
-	addi.d	$s2, $sp, 272
-	addi.d	$s3, $sp, 208
+	addi.d	$s2, $sp, 256
+	addi.d	$s3, $sp, 192
 	addi.w	$a1, $zero, -9
-	addi.d	$s4, $sp, 80
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	addi.d	$s4, $sp, 64
 	pcalau12i	$a0, %pc_hi20(_ZTV43btKinematicClosestNotMeConvexResultCallback+16)
 	addi.d	$s5, $a0, %pc_lo12(_ZTV43btKinematicClosestNotMeConvexResultCallback+16)
 	lu12i.w	$a0, 212992
@@ -799,22 +798,23 @@ _ZN30btKinematicCharacterController20stepForwardAndStrafeEP16btCollisionWorldRK9
 	vldi	$vr1, -1168
 	.p2align	4, , 16
 .LBB11_4:                               # =>This Inner Loop Header: Depth=1
-	vst	$vr1, $sp, 48                   # 16-byte Folded Spill
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vld	$vr0, $fp, 88
 	vld	$vr1, $fp, 108
-	ld.d	$a0, $fp, 16
 	vst	$vr0, $s2, 0
+	ld.d	$a0, $fp, 16
 	vst	$vr1, $s3, 0
-	st.w	$s1, $sp, 72
+	st.w	$s1, $sp, 56
+	st.d	$zero, $sp, 128
 	ld.d	$a2, $a0, 192
-	st.d	$zero, $sp, 144
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $s4, 0
-	st.d	$a0, $sp, 152
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $s4, 0
+	vst	$vr0, $s4, 16
+	st.d	$a0, $sp, 136
 	ld.w	$a2, $a2, 8
 	ld.d	$a0, $fp, 24
-	st.d	$s5, $sp, 64
-	st.w	$a2, $sp, 76
+	st.d	$s5, $sp, 48
+	st.w	$a2, $sp, 60
 	ld.d	$a2, $a0, 0
 	ld.d	$a2, $a2, 88
 	move	$s7, $a1
@@ -832,9 +832,9 @@ _ZN30btKinematicCharacterController20stepForwardAndStrafeEP16btCollisionWorldRK9
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 24
 	fld.s	$fa0, $s0, 84
-	addi.d	$a2, $sp, 224
-	addi.d	$a3, $sp, 160
-	addi.d	$a4, $sp, 64
+	addi.d	$a2, $sp, 208
+	addi.d	$a3, $sp, 144
+	addi.d	$a4, $sp, 48
 	pcaddu18i	$ra, %call36(_ZNK13btGhostObject15convexSweepTestEPK13btConvexShapeRK11btTransformS5_RN16btCollisionWorld20ConvexResultCallbackEf)
 	jirl	$ra, $ra, 0
 	b	.LBB11_7
@@ -842,9 +842,9 @@ _ZN30btKinematicCharacterController20stepForwardAndStrafeEP16btCollisionWorldRK9
 .LBB11_6:                               #   in Loop: Header=BB11_4 Depth=1
 	ld.d	$a1, $fp, 24
 	fld.s	$fa0, $s0, 84
-	addi.d	$a2, $sp, 224
-	addi.d	$a3, $sp, 160
-	addi.d	$a4, $sp, 64
+	addi.d	$a2, $sp, 208
+	addi.d	$a3, $sp, 144
+	addi.d	$a4, $sp, 48
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNK16btCollisionWorld15convexSweepTestEPK13btConvexShapeRK11btTransformS5_RNS_20ConvexResultCallbackEf)
 	jirl	$ra, $ra, 0
@@ -854,16 +854,16 @@ _ZN30btKinematicCharacterController20stepForwardAndStrafeEP16btCollisionWorldRK9
 	ld.d	$a1, $a1, 80
 	fmov.s	$fa0, $fs0
 	jirl	$ra, $a1, 0
-	fld.s	$fa0, $sp, 72
+	fld.s	$fa0, $sp, 56
 	vldi	$vr1, -1168
 	fcmp.cule.s	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB11_14
 # %bb.8:                                #   in Loop: Header=BB11_4 Depth=1
-	fld.s	$fa4, $sp, 128
+	fld.s	$fa4, $sp, 112
 	fld.s	$fa1, $fp, 88
-	fld.s	$fa5, $sp, 132
+	fld.s	$fa5, $sp, 116
 	fld.s	$fa2, $fp, 92
-	fld.s	$fa6, $sp, 136
+	fld.s	$fa6, $sp, 120
 	fld.s	$fa3, $fp, 96
 	fsub.s	$fa4, $fa4, $fa1
 	fsub.s	$fa5, $fa5, $fa2
@@ -902,9 +902,9 @@ _ZN30btKinematicCharacterController20stepForwardAndStrafeEP16btCollisionWorldRK9
 	bcnez	$fcc0, .LBB11_12
 # %bb.11:                               #   in Loop: Header=BB11_4 Depth=1
 	vld	$vr8, $fp, 88
-	fld.s	$ft1, $sp, 112
-	fld.s	$ft2, $sp, 116
-	fld.s	$ft3, $sp, 120
+	fld.s	$ft1, $sp, 96
+	fld.s	$ft2, $sp, 100
+	fld.s	$ft3, $sp, 104
 	vst	$vr8, $fp, 108
 	frecip.s	$ft0, $fa5
 	fmul.s	$fa7, $fa7, $ft0
@@ -978,7 +978,7 @@ _ZN30btKinematicCharacterController20stepForwardAndStrafeEP16btCollisionWorldRK9
 	vst	$vr1, $fp, 88
 .LBB11_15:                              # %.critedge75
                                         #   in Loop: Header=BB11_4 Depth=1
-	vld	$vr1, $sp, 48                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	fsub.s	$fa1, $fa1, $fa0
 	movgr2fr.w	$fa0, $s6
 	fcmp.cule.s	$fcc0, $fa1, $fa0
@@ -988,19 +988,19 @@ _ZN30btKinematicCharacterController20stepForwardAndStrafeEP16btCollisionWorldRK9
 	addi.w	$a1, $s7, 1
 	bnez	$s7, .LBB11_4
 .LBB11_17:                              # %.critedge
-	fld.d	$fs1, $sp, 288                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 296                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 384
+	fld.d	$fs1, $sp, 272                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 280                  # 8-byte Folded Reload
+	ld.d	$s7, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 360                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 368
 	ret
 .Lfunc_end11:
 	.size	_ZN30btKinematicCharacterController20stepForwardAndStrafeEP16btCollisionWorldRK9btVector3, .Lfunc_end11-_ZN30btKinematicCharacterController20stepForwardAndStrafeEP16btCollisionWorldRK9btVector3
@@ -1067,8 +1067,8 @@ _ZN30btKinematicCharacterController8stepDownEP16btCollisionWorldf: # @_ZN30btKin
 	ld.d	$a0, $fp, 16
 	st.w	$a2, $sp, 24
 	st.d	$zero, $sp, 96
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 32
+	vst	$vr0, $sp, 32
+	vst	$vr0, $sp, 48
 	pcalau12i	$a2, %pc_hi20(_ZTV43btKinematicClosestNotMeConvexResultCallback+16)
 	addi.d	$a2, $a2, %pc_lo12(_ZTV43btKinematicClosestNotMeConvexResultCallback+16)
 	ld.d	$a3, $a0, 192
@@ -1356,11 +1356,13 @@ _ZN30btKinematicCharacterController10playerStepEP16btCollisionWorldf: # @_ZN30bt
 .LBB18_2:
 	ld.d	$a0, $fp, 16
 	vld	$vr0, $a0, 8
-	xvld	$xr1, $a0, 24
+	vld	$vr1, $a0, 24
 	vst	$vr0, $sp, 24
+	vld	$vr0, $a0, 40
 	addi.d	$s1, $sp, 40
-	xvst	$xr1, $sp, 40
+	vst	$vr1, $sp, 40
 	addi.d	$s2, $sp, 56
+	vst	$vr0, $sp, 56
 	addi.d	$s3, $sp, 72
 	move	$a0, $fp
 	move	$a1, $s0

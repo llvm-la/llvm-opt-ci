@@ -75,13 +75,13 @@ scan_buffer:                            # @scan_buffer
 .LBB0_9:
 	ld.bu	$a6, $a7, 0
 	ld.d	$a4, $a1, 80
-	srli.d	$t2, $a6, 6
-	alsl.d	$a5, $t2, $a4, 3
+	srli.d	$t3, $a6, 6
+	alsl.d	$a5, $t3, $a4, 3
 	ld.d	$a5, $a5, 8
 	andi	$t5, $a6, 63
-	ldx.bu	$t3, $a5, $t5
+	ldx.bu	$t2, $a5, $t5
 	addi.d	$t1, $a7, 1
-	beqz	$t3, .LBB0_18
+	beqz	$t2, .LBB0_18
 # %bb.10:                               # %.lr.ph301
 	ld.d	$a7, $a1, 96
 	move	$a5, $zero
@@ -96,55 +96,57 @@ scan_buffer:                            # @scan_buffer
                                         #   in Loop: Header=BB0_13 Depth=1
 	addi.d	$t5, $a6, -10
 	ld.bu	$a6, $t1, 0
-	add.d	$t3, $a4, $t3
-	srli.d	$t2, $a6, 6
-	alsl.d	$t3, $t2, $t3, 3
-	ld.d	$t3, $t3, 8
+	add.d	$t2, $a4, $t2
+	srli.d	$t3, $a6, 6
+	alsl.d	$t2, $t3, $t2, 3
+	ld.d	$t2, $t2, 8
 	sltui	$t6, $t5, 1
 	add.d	$a3, $a3, $t6
 	andi	$t5, $a6, 63
-	ldx.bu	$t3, $t3, $t5
+	ldx.bu	$t2, $t2, $t5
 	masknez	$a5, $a5, $t6
 	maskeqz	$t6, $t1, $t6
 	or	$a5, $t6, $a5
 	addi.d	$t1, $t1, 1
-	beqz	$t3, .LBB0_17
+	beqz	$t2, .LBB0_17
 .LBB0_13:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_16 Depth 2
-	addi.d	$t6, $t3, -1
-	andi	$t3, $t6, 255
-	slli.d	$t7, $t3, 5
-	alsl.d	$t3, $t3, $t7, 3
-	ldx.d	$t8, $a4, $t3
+	addi.d	$t6, $t2, -1
+	andi	$t2, $t6, 255
+	slli.d	$t7, $t2, 5
+	alsl.d	$t2, $t2, $t7, 3
+	ldx.d	$t8, $a4, $t2
 	beqz	$t8, .LBB0_12
 # %bb.14:                               #   in Loop: Header=BB0_13 Depth=1
 	st.d	$t1, $a0, 0
 	add.d	$t4, $a7, $t7
-	slli.d	$t2, $t2, 3
-	ldx.d	$t2, $t4, $t2
+	slli.d	$t3, $t3, 3
+	ldx.d	$t3, $t4, $t3
 	st.w	$a3, $a0, 24
-	ldx.bu	$t2, $t2, $t5
+	ldx.bu	$t3, $t3, $t5
 	ld.d	$t4, $a1, 104
-	slli.d	$t2, $t2, 3
-	ldx.d	$t4, $t4, $t2
-	ld.d	$t2, $t4, 0
-	beqz	$t2, .LBB0_11
+	slli.d	$t3, $t3, 3
+	ldx.d	$t4, $t4, $t3
+	ld.d	$t3, $t4, 0
+	beqz	$t3, .LBB0_11
 # %bb.15:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB0_13 Depth=1
-	slli.d	$t2, $fp, 5
-	alsl.d	$t2, $fp, $t2, 3
-	add.d	$t2, $t0, $t2
+	slli.d	$t3, $fp, 5
+	alsl.d	$t3, $fp, $t3, 3
+	add.d	$t3, $t0, $t3
 	addi.d	$t4, $t4, 8
 	.p2align	4, , 16
 .LBB0_16:                               # %.lr.ph
                                         #   Parent Loop BB0_13 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $t2, 0
+	vld	$vr0, $a0, 16
+	vst	$vr0, $t3, 16
+	vld	$vr0, $a0, 0
+	vst	$vr0, $t3, 0
 	ld.d	$t5, $t4, -8
-	st.d	$t5, $t2, -8
+	st.d	$t5, $t3, -8
 	ld.d	$t5, $t4, 0
-	addi.d	$t2, $t2, 40
+	addi.d	$t3, $t3, 40
 	addi.w	$fp, $fp, 1
 	addi.d	$t4, $t4, 8
 	bnez	$t5, .LBB0_16
@@ -181,8 +183,10 @@ scan_buffer:                            # @scan_buffer
 	.p2align	4, , 16
 .LBB0_22:                               # %.lr.ph311
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $a3, 0
+	vld	$vr0, $a0, 16
+	vst	$vr0, $a3, 16
+	vld	$vr0, $a0, 0
+	vst	$vr0, $a3, 0
 	ld.d	$a6, $a5, -8
 	st.d	$a6, $a3, -8
 	ld.d	$a6, $a5, 0
@@ -250,13 +254,15 @@ scan_buffer:                            # @scan_buffer
 	bstrpick.d	$a5, $fp, 31, 0
 	beq	$a0, $a5, .LBB0_32
 # %bb.36:                               #   in Loop: Header=BB0_34 Depth=1
-	xvld	$xr0, $a4, -8
+	vld	$vr0, $a4, -8
 	slli.d	$a5, $fp, 5
 	alsl.d	$a5, $fp, $a5, 3
-	xvstx	$xr0, $a2, $a5
+	vstx	$vr0, $a2, $a5
 	ld.d	$a6, $a4, 24
 	add.d	$a5, $a2, $a5
 	st.d	$a6, $a5, 32
+	vld	$vr0, $a4, 8
+	vst	$vr0, $a5, 16
 	b	.LBB0_32
 .LBB0_37:
 	ld.bu	$a6, $a7, 0
@@ -390,13 +396,15 @@ scan_buffer:                            # @scan_buffer
 	bstrpick.d	$a6, $a0, 31, 0
 	beq	$a5, $a6, .LBB0_51
 # %bb.55:                               #   in Loop: Header=BB0_53 Depth=1
-	xvld	$xr0, $a1, 0
+	vld	$vr0, $a1, 0
 	slli.d	$a6, $a0, 5
 	alsl.d	$a6, $a0, $a6, 3
-	xvstx	$xr0, $a2, $a6
+	vstx	$vr0, $a2, $a6
 	ld.d	$a7, $a1, 32
 	add.d	$a6, $a2, $a6
 	st.d	$a7, $a6, 32
+	vld	$vr0, $a1, 16
+	vst	$vr0, $a6, 16
 	b	.LBB0_51
 .LBB0_56:                               # %._crit_edge330
 	nor	$a1, $a0, $zero
@@ -447,8 +455,10 @@ scan_buffer:                            # @scan_buffer
 	.p2align	4, , 16
 .LBB0_65:                               # %.lr.ph384
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $a1, 0
+	vld	$vr0, $a0, 16
+	vst	$vr0, $a1, 16
+	vld	$vr0, $a0, 0
+	vst	$vr0, $a1, 0
 	ld.d	$a3, $a2, -8
 	st.d	$a3, $a1, -8
 	ld.d	$a3, $a2, 0

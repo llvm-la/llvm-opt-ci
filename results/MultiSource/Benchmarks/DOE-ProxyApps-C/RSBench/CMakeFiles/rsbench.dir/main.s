@@ -40,8 +40,10 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(border_print)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 208
-	xvst	$xr0, $sp, 8
+	vld	$vr0, $sp, 224
+	vld	$vr1, $sp, 208
+	vst	$vr0, $sp, 24
+	vst	$vr1, $sp, 8
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(print_input_summary)
 	jirl	$ra, $ra, 0
@@ -58,8 +60,10 @@ main:                                   # @main
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 208
-	xvst	$xr0, $sp, 8
+	vld	$vr0, $sp, 224
+	vld	$vr1, $sp, 208
+	vst	$vr0, $sp, 24
+	vst	$vr1, $sp, 8
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(generate_n_poles)
 	jirl	$ra, $ra, 0
@@ -68,8 +72,10 @@ main:                                   # @main
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.1)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 208
-	xvst	$xr0, $sp, 8
+	vld	$vr0, $sp, 224
+	vld	$vr1, $sp, 208
+	vst	$vr0, $sp, 24
+	vst	$vr1, $sp, 8
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(generate_n_windows)
 	jirl	$ra, $ra, 0
@@ -78,8 +84,10 @@ main:                                   # @main
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.2)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 208
-	xvst	$xr0, $sp, 8
+	vld	$vr0, $sp, 224
+	vld	$vr1, $sp, 208
+	vst	$vr0, $sp, 24
+	vst	$vr1, $sp, 8
 	addi.d	$a0, $sp, 184
 	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(get_materials)
@@ -88,8 +96,10 @@ main:                                   # @main
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.3)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 208
-	xvst	$xr0, $sp, 8
+	vld	$vr0, $sp, 224
+	vld	$vr1, $sp, 208
+	vst	$vr0, $sp, 24
+	vst	$vr1, $sp, 8
 	addi.d	$a0, $sp, 8
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(generate_poles)
@@ -99,8 +109,10 @@ main:                                   # @main
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.4)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 208
-	xvst	$xr0, $sp, 8
+	vld	$vr0, $sp, 224
+	vld	$vr1, $sp, 208
+	vst	$vr0, $sp, 24
+	vst	$vr1, $sp, 8
 	addi.d	$a0, $sp, 8
 	move	$a1, $s0
 	move	$a2, $fp
@@ -111,8 +123,10 @@ main:                                   # @main
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.5)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 208
-	xvst	$xr0, $sp, 8
+	vld	$vr0, $sp, 224
+	vld	$vr1, $sp, 208
+	vst	$vr0, $sp, 24
+	vst	$vr1, $sp, 8
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(generate_pseudo_K0RS)
 	jirl	$ra, $ra, 0
@@ -169,8 +183,10 @@ main:                                   # @main
 	addi.d	$a0, $sp, 152
 	pcaddu18i	$ra, %call36(rn)
 	jirl	$ra, $ra, 0
-	xvld	$xr1, $sp, 208
-	xvst	$xr1, $sp, 72
+	vld	$vr1, $sp, 224
+	vld	$vr2, $sp, 208
+	vst	$vr1, $sp, 88
+	vst	$vr2, $sp, 72
 	ld.d	$a0, $sp, 160
 	vld	$vr1, $sp, 168
 	st.d	$fp, $sp, 8

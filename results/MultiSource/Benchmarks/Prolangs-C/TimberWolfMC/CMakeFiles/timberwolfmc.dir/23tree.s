@@ -1196,13 +1196,13 @@ tpatch:                                 # @tpatch
 	.type	tinsert,@function
 tinsert:                                # @tinsert
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	move	$s0, $a0
 	ld.d	$fp, $a0, 0
 	move	$s2, $a2
@@ -1263,8 +1263,9 @@ tinsert:                                # @tinsert
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 8
+	vst	$vr0, $a0, 24
 	st.w	$s1, $a0, 0
 	st.w	$zero, $a0, 4
 	ori	$a0, $zero, 16
@@ -1293,8 +1294,10 @@ tinsert:                                # @tinsert
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 8
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $a0, 24
 	st.w	$s1, $a0, 0
 	st.w	$zero, $a0, 4
 	ori	$a0, $zero, 16
@@ -1326,8 +1329,9 @@ tinsert:                                # @tinsert
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 8
+	vst	$vr0, $a0, 24
 	st.w	$s1, $a0, 0
 	st.w	$zero, $a0, 4
 	ori	$a0, $zero, 16
@@ -1365,7 +1369,7 @@ tinsert:                                # @tinsert
 	st.d	$a3, $a0, 8
 	st.d	$a4, $a0, 16
 	st.d	$zero, $a0, 24
-	vrepli.b	$vr0, 0
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 32
 	ori	$a1, $zero, 2
 	st.w	$a1, $a0, 4
@@ -1409,13 +1413,13 @@ tinsert:                                # @tinsert
 	st.w	$a0, $fp, 4
 	st.d	$fp, $s3, 40
 .LBB11_34:
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .LBB11_35:
 	st.d	$a0, $fp, 32
@@ -1429,13 +1433,13 @@ tinsert:                                # @tinsert
 	st.d	$fp, $s3, 40
 	move	$a0, $s0
 	move	$a1, $fp
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	pcaddu18i	$t8, %call36(taddson)
 	jr	$t8
 .Lfunc_end11:
@@ -1461,8 +1465,9 @@ makenode:                               # @makenode
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	st.d	$a0, $s1, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 8
+	vst	$vr0, $a0, 24
 	st.w	$s0, $a0, 0
 	st.w	$zero, $a0, 4
 	ori	$a0, $zero, 16

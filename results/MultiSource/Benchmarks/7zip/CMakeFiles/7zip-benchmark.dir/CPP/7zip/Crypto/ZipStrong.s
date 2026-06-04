@@ -136,8 +136,10 @@ _ZN7NCrypto10NZipStrongL9DeriveKeyERNS_5NSha18CContextEPh: # @_ZN7NCrypto10NZipS
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZN7NCrypto5NSha18CContext5FinalEPh)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 8
-	xvst	$xr0, $fp, 0
+	vld	$vr0, $sp, 24
+	vld	$vr1, $sp, 8
+	vst	$vr0, $fp, 16
+	vst	$vr1, $fp, 0
 	ld.d	$s0, $sp, 248                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$ra, $sp, 264                   # 8-byte Folded Reload

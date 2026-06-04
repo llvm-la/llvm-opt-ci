@@ -267,7 +267,7 @@ main:                                   # @main
 	move	$sp, $s1
 	blez	$s2, .LBB4_11
 # %bb.2:                                # %.lr.ph.preheader
-	ori	$a0, $zero, 8
+	ori	$a0, $zero, 4
 	bgeu	$s3, $a0, .LBB4_5
 .LBB4_3:
 	move	$a0, $zero
@@ -281,22 +281,22 @@ main:                                   # @main
 	move	$sp, $s1
 	ori	$s3, $zero, 2000
 	ori	$s2, $zero, 2000
-	ori	$a0, $zero, 8
+	ori	$a0, $zero, 4
 	bltu	$s3, $a0, .LBB4_3
 .LBB4_5:                                # %vector.ph
 	move	$a1, $zero
-	bstrpick.d	$a0, $s3, 31, 3
-	slli.d	$a0, $a0, 3
+	bstrpick.d	$a0, $s3, 31, 2
+	slli.d	$a0, $a0, 2
 	slli.d	$a2, $s3, 3
-	bstrins.d	$a2, $zero, 5, 0
-	xvldi	$xr0, -912
+	bstrins.d	$a2, $zero, 4, 0
+	vldi	$vr0, -912
 	.p2align	4, , 16
 .LBB4_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $s0, $a1
-	xvstx	$xr0, $s0, $a1
-	addi.d	$a1, $a1, 64
-	xvst	$xr0, $a3, 32
+	vstx	$vr0, $s0, $a1
+	addi.d	$a1, $a1, 32
+	vst	$vr0, $a3, 16
 	bne	$a2, $a1, .LBB4_6
 # %bb.7:                                # %middle.block
 	ori	$s4, $zero, 1

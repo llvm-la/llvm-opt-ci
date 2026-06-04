@@ -23,13 +23,9 @@ JMHelpExit:                             # @JMHelpExit
 .Lfunc_end0:
 	.size	JMHelpExit, .Lfunc_end0-JMHelpExit
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function Configure
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function Configure
 .LCPI1_0:
-	.word	4                               # 0x4
-	.word	4                               # 0x4
-	.word	4                               # 0x4
-	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	2                               # 0x2
 	.word	2                               # 0x2
@@ -39,24 +35,22 @@ JMHelpExit:                             # @JMHelpExit
 	.word	2                               # 0x2
 	.word	2                               # 0x2
 	.word	1                               # 0x1
+.LCPI1_2:
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	1                               # 0x1
 	.word	1                               # 0x1
-.LCPI1_2:
-	.word	16                              # 0x10
-	.word	16                              # 0x10
-	.word	16                              # 0x10
-	.word	16                              # 0x10
-	.word	16                              # 0x10
-	.word	8                               # 0x8
-	.word	8                               # 0x8
-	.word	16                              # 0x10
 .LCPI1_3:
+	.word	16                              # 0x10
+	.word	8                               # 0x8
+	.word	8                               # 0x8
+	.word	16                              # 0x10
+.LCPI1_4:
 	.word	8                               # 0x8
 	.word	8                               # 0x8
 	.word	8                               # 0x8
 	.word	4                               # 0x4
+.LCPI1_5:
 	.word	4                               # 0x4
 	.word	8                               # 0x8
 	.word	4                               # 0x4
@@ -566,31 +560,41 @@ Configure:                              # @Configure
 	lu52i.d	$a1, $a1, 1027
 	stptr.d	$a1, $a0, 4080
 .LBB1_72:                               # %.preheader.i
+	vrepli.w	$vr0, 4
 	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_0)
+	vld	$vr1, $a1, %pc_lo12(.LCPI1_0)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI1_1)
-	xvst	$xr0, $a0, 136
-	xvst	$xr1, $a0, 168
+	vld	$vr2, $a1, %pc_lo12(.LCPI1_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_2)
+	vld	$vr3, $a1, %pc_lo12(.LCPI1_2)
+	vst	$vr0, $a0, 136
+	vst	$vr1, $a0, 152
+	vst	$vr2, $a0, 168
+	vst	$vr3, $a0, 184
 	ori	$a1, $zero, 7
 	lu32i.d	$a1, 6
 	st.d	$a1, $a0, 200
+	vrepli.w	$vr0, 16
+	vst	$vr0, $a0, 72
+	pcalau12i	$a1, %pc_hi20(.LCPI1_3)
+	vld	$vr0, $a1, %pc_lo12(.LCPI1_3)
 	ori	$a1, $zero, 5
 	lu32i.d	$a1, 4
 	st.d	$a1, $a0, 216
-	pcalau12i	$a1, %pc_hi20(.LCPI1_2)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_2)
+	vst	$vr0, $a0, 88
+	pcalau12i	$a1, %pc_hi20(.LCPI1_4)
+	vld	$vr0, $a1, %pc_lo12(.LCPI1_4)
 	ori	$a1, $zero, 3
 	st.w	$a1, $a0, 228
 	ori	$a1, $zero, 2
-	xvst	$xr0, $a0, 72
-	pcalau12i	$a2, %pc_hi20(.LCPI1_3)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI1_3)
+	vst	$vr0, $a0, 104
+	pcalau12i	$a2, %pc_hi20(.LCPI1_5)
+	vld	$vr0, $a2, %pc_lo12(.LCPI1_5)
 	ldptr.w	$a2, $a0, 2964
 	st.w	$a1, $a0, 252
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 260
-	xvst	$xr0, $a0, 104
+	vst	$vr0, $a0, 120
 	beqz	$a2, .LBB1_74
 # %bb.73:
 	ori	$a1, $zero, 2096
@@ -1217,10 +1221,14 @@ Configure:                              # @Configure
 .LBB1_154:
 	pcalau12i	$a0, %pc_hi20(.L.str.274)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.274)
-	xvld	$xr0, $a0, 32
-	xvld	$xr1, $a0, 0
-	xvst	$xr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vld	$vr0, $a0, 48
+	vld	$vr1, $a0, 32
+	vld	$vr2, $a0, 16
+	vld	$vr3, $a0, 0
+	vst	$vr0, $fp, 48
+	vst	$vr1, $fp, 32
+	vst	$vr2, $fp, 16
+	vst	$vr3, $fp, 0
 	ori	$a1, $zero, 400
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1305,10 +1313,12 @@ Configure:                              # @Configure
 	addi.d	$a0, $a0, %pc_lo12(.L.str.278)
 	ld.d	$a1, $a0, 47
 	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
 	st.d	$a1, $fp, 47
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1326,13 +1336,15 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.279)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.279)
 	ld.h	$a1, $a0, 56
-	ld.d	$a2, $a0, 48
-	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
 	st.h	$a1, $fp, 56
-	st.d	$a2, $fp, 48
+	ld.d	$a1, $a0, 48
+	vld	$vr0, $a0, 32
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
+	st.d	$a1, $fp, 48
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1429,10 +1441,12 @@ Configure:                              # @Configure
 	addi.d	$a0, $a0, %pc_lo12(.L.str.283)
 	ld.h	$a1, $a0, 40
 	ld.d	$a2, $a0, 32
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
 	st.h	$a1, $fp, 40
 	st.d	$a2, $fp, 32
-	xvst	$xr0, $fp, 0
+	vst	$vr0, $fp, 16
+	vst	$vr1, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1448,10 +1462,14 @@ Configure:                              # @Configure
 # %bb.186:
 	pcalau12i	$a0, %pc_hi20(.L.str.284)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.284)
-	xvld	$xr0, $a0, 32
-	xvld	$xr1, $a0, 0
-	xvst	$xr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vld	$vr0, $a0, 48
+	vld	$vr1, $a0, 32
+	vld	$vr2, $a0, 16
+	vld	$vr3, $a0, 0
+	vst	$vr0, $fp, 48
+	vst	$vr1, $fp, 32
+	vst	$vr2, $fp, 16
+	vst	$vr3, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1538,13 +1556,15 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.287)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.287)
 	ld.w	$a1, $a0, 55
-	ld.d	$a2, $a0, 48
-	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
 	st.w	$a1, $fp, 55
-	st.d	$a2, $fp, 48
+	ld.d	$a1, $a0, 48
+	vld	$vr0, $a0, 32
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
+	st.d	$a1, $fp, 48
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1565,10 +1585,12 @@ Configure:                              # @Configure
 	addi.d	$a0, $a0, %pc_lo12(.L.str.288)
 	ld.b	$a1, $a0, 40
 	ld.d	$a2, $a0, 32
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
 	st.b	$a1, $fp, 40
 	st.d	$a2, $fp, 32
-	xvst	$xr0, $fp, 0
+	vst	$vr0, $fp, 16
+	vst	$vr1, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1624,10 +1646,12 @@ Configure:                              # @Configure
 	addi.d	$a0, $a0, %pc_lo12(.L.str.291)
 	ld.w	$a1, $a0, 48
 	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
 	st.w	$a1, $fp, 48
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1741,13 +1765,15 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.296)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.296)
 	ld.w	$a1, $a0, 55
-	ld.d	$a2, $a0, 48
-	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
 	st.w	$a1, $fp, 55
-	st.d	$a2, $fp, 48
+	ld.d	$a1, $a0, 48
+	vld	$vr0, $a0, 32
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
+	st.d	$a1, $fp, 48
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1763,13 +1789,15 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.297)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.297)
 	ld.w	$a1, $a0, 55
-	ld.d	$a2, $a0, 48
-	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
 	st.w	$a1, $fp, 55
-	st.d	$a2, $fp, 48
+	ld.d	$a1, $a0, 48
+	vld	$vr0, $a0, 32
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
+	st.d	$a1, $fp, 48
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1784,13 +1812,15 @@ Configure:                              # @Configure
 	pcalau12i	$a1, %pc_hi20(.L.str.298)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.298)
 	ld.b	$a2, $a1, 56
-	ld.d	$a3, $a1, 48
-	vld	$vr0, $a1, 32
-	xvld	$xr1, $a1, 0
 	st.b	$a2, $fp, 56
-	st.d	$a3, $fp, 48
+	ld.d	$a2, $a1, 48
+	vld	$vr0, $a1, 32
+	vld	$vr1, $a1, 16
+	vld	$vr2, $a1, 0
+	st.d	$a2, $fp, 48
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	stptr.w	$zero, $a0, 5776
 .LBB1_237:                              # %.thread287.i
 	ld.w	$a1, $a0, 1564
@@ -1802,13 +1832,15 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.299)
 	ld.w	$a1, $a0, 55
-	ld.d	$a2, $a0, 48
-	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
 	st.w	$a1, $fp, 55
-	st.d	$a2, $fp, 48
+	ld.d	$a1, $a0, 48
+	vld	$vr0, $a0, 32
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
+	st.d	$a1, $fp, 48
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1832,13 +1864,15 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.300)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.300)
 	ld.b	$a1, $a0, 56
-	ld.d	$a2, $a0, 48
-	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
 	st.b	$a1, $fp, 56
-	st.d	$a2, $fp, 48
+	ld.d	$a1, $a0, 48
+	vld	$vr0, $a0, 32
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
+	st.d	$a1, $fp, 48
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1851,13 +1885,15 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.301)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.301)
 	ld.h	$a1, $a0, 56
-	ld.d	$a2, $a0, 48
-	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
 	st.h	$a1, $fp, 56
-	st.d	$a2, $fp, 48
+	ld.d	$a1, $a0, 48
+	vld	$vr0, $a0, 32
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
+	st.d	$a1, $fp, 48
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1871,10 +1907,12 @@ Configure:                              # @Configure
 	addi.d	$a0, $a0, %pc_lo12(.L.str.302)
 	ld.b	$a1, $a0, 48
 	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
 	st.b	$a1, $fp, 48
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1961,13 +1999,15 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.316)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.316)
 	ld.d	$a1, $a0, 53
-	ld.d	$a2, $a0, 48
-	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
 	st.d	$a1, $fp, 53
-	st.d	$a2, $fp, 48
+	ld.d	$a1, $a0, 48
+	vld	$vr0, $a0, 32
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
+	st.d	$a1, $fp, 48
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -1984,13 +2024,15 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.317)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.317)
 	ld.b	$a1, $a0, 56
-	ld.d	$a2, $a0, 48
-	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
 	st.b	$a1, $fp, 56
-	st.d	$a2, $fp, 48
+	ld.d	$a1, $a0, 48
+	vld	$vr0, $a0, 32
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
+	st.d	$a1, $fp, 48
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -2008,10 +2050,12 @@ Configure:                              # @Configure
 	addi.d	$a0, $a0, %pc_lo12(.L.str.318)
 	ld.d	$a1, $a0, 47
 	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
 	st.d	$a1, $fp, 47
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -2041,9 +2085,11 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.321)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.321)
 	ld.d	$a1, $a0, 30
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
 	st.d	$a1, $fp, 30
-	xvst	$xr0, $fp, 0
+	vst	$vr0, $fp, 16
+	vst	$vr1, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -2057,10 +2103,12 @@ Configure:                              # @Configure
 	addi.d	$a0, $a0, %pc_lo12(.L.str.322)
 	ld.b	$a1, $a0, 40
 	ld.d	$a2, $a0, 32
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
 	st.b	$a1, $fp, 40
 	st.d	$a2, $fp, 32
-	xvst	$xr0, $fp, 0
+	vst	$vr0, $fp, 16
+	vst	$vr1, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -2073,9 +2121,11 @@ Configure:                              # @Configure
 	beqz	$a1, .LBB1_280
 # %bb.279:
 	vld	$vr0, $s0, 32
-	xvld	$xr1, $s0, 0
+	vld	$vr1, $s0, 16
+	vld	$vr2, $s0, 0
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -2086,9 +2136,11 @@ Configure:                              # @Configure
 	beqz	$a1, .LBB1_282
 # %bb.281:
 	vld	$vr0, $s0, 32
-	xvld	$xr1, $s0, 0
+	vld	$vr1, $s0, 16
+	vld	$vr2, $s0, 0
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -2102,9 +2154,11 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.324)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.324)
 	ld.h	$a1, $a0, 32
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
 	st.h	$a1, $fp, 32
-	xvst	$xr0, $fp, 0
+	vst	$vr0, $fp, 16
+	vst	$vr1, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -2122,9 +2176,11 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.325)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.325)
 	ld.d	$a1, $a0, 29
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
 	st.d	$a1, $fp, 29
-	xvst	$xr0, $fp, 0
+	vst	$vr0, $fp, 16
+	vst	$vr1, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -2138,10 +2194,12 @@ Configure:                              # @Configure
 	addi.d	$a0, $a0, %pc_lo12(.L.str.326)
 	ld.d	$a1, $a0, 48
 	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
 	st.d	$a1, $fp, 48
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -2162,9 +2220,11 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.328)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.328)
 	ld.h	$a1, $a0, 32
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
 	st.h	$a1, $fp, 32
-	xvst	$xr0, $fp, 0
+	vst	$vr0, $fp, 16
+	vst	$vr1, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
@@ -2285,13 +2345,15 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.327)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.327)
 	ld.h	$a1, $a0, 56
-	ld.d	$a2, $a0, 48
-	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
 	st.h	$a1, $fp, 56
-	st.d	$a2, $fp, 48
+	ld.d	$a1, $a0, 48
+	vld	$vr0, $a0, 32
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
+	st.d	$a1, $fp, 48
 	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr2, $fp, 0
 	ori	$a1, $zero, 500
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)

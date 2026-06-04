@@ -568,18 +568,25 @@ main:                                   # @main
 	st.w	$a1, $a0, %pc_lo12(b)
 	lu12i.w	$a0, 506736
 	ori	$a0, $a0, 2432
-	xvreplgr2vr.w	$xr0, $a0
+	vreplgr2vr.w	$vr0, $a0
 	pcalau12i	$a1, %pc_hi20(c)
 	addi.d	$a1, $a1, %pc_lo12(c)
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	vreplgr2vr.w	$vr0, $a0
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
 	vst	$vr0, $a1, 256
 	bstrins.d	$a0, $a0, 62, 32
 	st.d	$a0, $a1, 272
@@ -616,7 +623,7 @@ b:
 
 	.type	c,@object                       # @c
 	.globl	c
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 c:
 	.space	280
 	.size	c, 280

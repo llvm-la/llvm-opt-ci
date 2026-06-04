@@ -1,33 +1,16 @@
 	.file	"atop.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function atop
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function atop
 .LCPI0_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 .LCPI0_1:
 	.word	10                              # 0xa
 	.word	1                               # 0x1
 	.word	1                               # 0x1
 	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-.LCPI0_2:
-	.word	100                             # 0x64
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
 	.text
 	.globl	atop
 	.p2align	2
@@ -44,7 +27,7 @@ atop:                                   # @atop
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	st.d	$zero, $sp, 24
 	st.d	$zero, $sp, 16
-	beqz	$a0, .LBB0_29
+	beqz	$a0, .LBB0_31
 # %bb.1:                                # %.preheader37
 	move	$s0, $a0
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
@@ -71,7 +54,7 @@ atop:                                   # @atop
 	slli.d	$a1, $s0, 1
 	ldx.hu	$a0, $a0, $a1
 	slli.d	$a0, $a0, 52
-	bgez	$a0, .LBB0_26
+	bgez	$a0, .LBB0_28
 # %bb.4:
 	pcalau12i	$a0, %got_pc_hi20(pzero)
 	ld.d	$a0, $a0, %got_pc_lo12(pzero)
@@ -195,48 +178,58 @@ atop:                                   # @atop
 	slli.d	$a1, $a1, 52
 	addi.d	$s3, $s3, 9
 	bltz	$a1, .LBB0_5
-	b	.LBB0_24
+	b	.LBB0_26
 .LBB0_14:
 	ori	$a0, $zero, 10
-	b	.LBB0_23
+	b	.LBB0_25
 .LBB0_15:
-	move	$a0, $zero
-	b	.LBB0_22
-.LBB0_16:
 	ori	$a0, $zero, 1
 	b	.LBB0_22
-.LBB0_17:
+.LBB0_16:
 	ori	$a0, $zero, 2
 	b	.LBB0_22
-.LBB0_18:
+.LBB0_17:
 	ori	$a0, $zero, 3
 	b	.LBB0_22
-.LBB0_19:
+.LBB0_18:
 	ori	$a0, $zero, 4
 	b	.LBB0_22
-.LBB0_20:
+.LBB0_19:
 	ori	$a0, $zero, 5
 	b	.LBB0_22
-.LBB0_21:
+.LBB0_20:
 	ori	$a0, $zero, 6
+	b	.LBB0_22
+.LBB0_21:
+	ori	$a0, $zero, 7
 .LBB0_22:                               # %vector.ph
-	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI0_1)
-	pcalau12i	$a1, %pc_hi20(.LCPI0_2)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI0_2)
-	xvreplgr2vr.w	$xr3, $a0
-	xvslt.wu	$xr0, $xr3, $xr0
-	xvbitsel.v	$xr0, $xr2, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvshuf4i.w	$xr1, $xr0, 14
-	xvmul.w	$xr0, $xr0, $xr1
-	xvrepl128vei.w	$xr1, $xr0, 1
-	xvmul.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
-.LBB0_23:                               # %._crit_edge
+	addi.d	$a1, $a0, 3
+	andi	$a1, $a1, 12
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	vld	$vr3, $a2, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
+	vld	$vr0, $a2, %pc_lo12(.LCPI0_1)
+	addi.d	$a0, $a0, -1
+	vreplgr2vr.w	$vr1, $a0
+	vrepli.w	$vr2, 10
+	.p2align	4, , 16
+.LBB0_23:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vori.b	$vr5, $vr3, 0
+	vori.b	$vr4, $vr0, 0
+	vmul.w	$vr0, $vr0, $vr2
+	addi.w	$a1, $a1, -4
+	vaddi.wu	$vr3, $vr3, 4
+	bnez	$a1, .LBB0_23
+# %bb.24:                               # %._crit_edge.loopexit
+	vslt.wu	$vr1, $vr1, $vr5
+	vbitsel.v	$vr0, $vr0, $vr4, $vr1
+	vshuf4i.w	$vr1, $vr0, 14
+	vmul.w	$vr0, $vr0, $vr1
+	vreplvei.w	$vr1, $vr0, 1
+	vmul.w	$vr0, $vr0, $vr1
+	vpickve2gr.w	$a0, $vr0, 0
+.LBB0_25:                               # %._crit_edge
 	ld.d	$fp, $sp, 24
 	pcaddu18i	$ra, %call36(utop)
 	jirl	$ra, $ra, 0
@@ -256,10 +249,10 @@ atop:                                   # @atop
 	addi.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(psetq)
 	jirl	$ra, $ra, 0
-.LBB0_24:                               # %.loopexit
+.LBB0_26:                               # %.loopexit
 	ori	$a0, $zero, 45
-	bne	$s2, $a0, .LBB0_26
-# %bb.25:
+	bne	$s2, $a0, .LBB0_28
+# %bb.27:
 	ld.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(pneg)
 	jirl	$ra, $ra, 0
@@ -267,19 +260,19 @@ atop:                                   # @atop
 	addi.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(psetq)
 	jirl	$ra, $ra, 0
-.LBB0_26:
+.LBB0_28:
 	ld.d	$a0, $sp, 16
-	beqz	$a0, .LBB0_29
-# %bb.27:
+	beqz	$a0, .LBB0_31
+# %bb.29:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
 	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
-	bnez	$a2, .LBB0_29
-# %bb.28:
+	bnez	$a2, .LBB0_31
+# %bb.30:
 	pcaddu18i	$ra, %call36(pfree)
 	jirl	$ra, $ra, 0
-.LBB0_29:                               # %.thread
+.LBB0_31:                               # %.thread
 	ld.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(presult)
 	jirl	$ra, $ra, 0

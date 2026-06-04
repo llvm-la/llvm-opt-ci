@@ -309,10 +309,13 @@ jpeg_gen_optimal_table:                 # @jpeg_gen_optimal_table
 	move	$s1, $a2
 	move	$fp, $a1
 	move	$s0, $a0
-	xvrepli.b	$xr0, 0
+	vrepli.b	$vr0, 0
 	ori	$a0, $zero, 2072
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	ori	$a0, $zero, 2088
+	add.d	$a0, $sp, $a0
+	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 2104
 	add.d	$a0, $sp, $a0
 	st.b	$zero, $a0, 0
@@ -1165,16 +1168,18 @@ encode_mcu_huff:                        # @encode_mcu_huff
 	st.d	$s7, $sp, 192                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 184                   # 8-byte Folded Spill
 	move	$s2, $a0
-	ld.d	$a2, $a0, 32
 	ld.d	$s5, $a0, 488
+	ld.d	$a2, $a0, 32
+	vld	$vr0, $s5, 40
 	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
 	ld.d	$a0, $a2, 0
 	ld.d	$s6, $a2, 8
-	xvld	$xr0, $s5, 24
+	vst	$vr0, $sp, 160
+	vld	$vr0, $s5, 24
 	ld.w	$a1, $s2, 272
 	st.d	$a0, $sp, 128
 	st.d	$s6, $sp, 136
-	xvst	$xr0, $sp, 144
+	vst	$vr0, $sp, 144
 	st.d	$s2, $sp, 176
 	beqz	$a1, .LBB6_2
 # %bb.1:
@@ -1861,9 +1866,11 @@ encode_mcu_huff:                        # @encode_mcu_huff
 	addi.d	$a2, $sp, 144
 	st.d	$a0, $a1, 0
 	st.d	$s6, $a1, 8
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
-	xvst	$xr0, $a3, 24
+	vst	$vr0, $a3, 40
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a3, 24
 	ld.w	$a1, $s2, 272
 	ori	$a0, $zero, 1
 	beqz	$a1, .LBB6_109

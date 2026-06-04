@@ -10,19 +10,19 @@
 	.type	hypre_CSRMatrixMatvec,@function
 hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
-                                        # kill: def $f1_64 killed $f1_64 def $xr1
+	addi.d	$sp, $sp, -176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
+                                        # kill: def $f1_64 killed $f1_64 def $vr1
 	ld.w	$s0, $a0, 24
 	ld.w	$t4, $a0, 28
 	ld.d	$fp, $a2, 0
@@ -36,7 +36,7 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 # %bb.1:                                # %.preheader
 	blez	$t7, .LBB0_61
 # %bb.2:                                # %.lr.ph237.preheader
-	ori	$a0, $zero, 8
+	ori	$a0, $zero, 4
 	bgeu	$t7, $a0, .LBB0_8
 # %bb.3:
 	move	$a0, $zero
@@ -50,7 +50,7 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 	ld.w	$s7, $a0, 48
 	ld.d	$s8, $a1, 0
 	ld.w	$a0, $a2, 28
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	ld.w	$s3, $a2, 24
 	ld.w	$s2, $a1, 28
 	ld.w	$s4, $a1, 24
@@ -67,40 +67,40 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 	slli.d	$a2, $t7, 3
 	move	$a0, $fp
 	move	$a1, $zero
-	st.d	$t4, $sp, 88                    # 8-byte Folded Spill
-	st.d	$t5, $sp, 80                    # 8-byte Folded Spill
-	st.d	$t6, $sp, 72                    # 8-byte Folded Spill
-	st.d	$t7, $sp, 64                    # 8-byte Folded Spill
-	xvst	$xr4, $sp, 32                   # 32-byte Folded Spill
+	st.d	$t4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$t5, $sp, 64                    # 8-byte Folded Spill
+	st.d	$t6, $sp, 56                    # 8-byte Folded Spill
+	st.d	$t7, $sp, 48                    # 8-byte Folded Spill
+	vst	$vr4, $sp, 32                   # 16-byte Folded Spill
 	st.d	$t8, $sp, 24                    # 8-byte Folded Spill
 	st.d	$ra, $sp, 16                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ld.d	$ra, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$t8, $sp, 24                    # 8-byte Folded Reload
-	xvld	$xr4, $sp, 32                   # 32-byte Folded Reload
-	ld.d	$t7, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$t6, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$t5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$t4, $sp, 88                    # 8-byte Folded Reload
+	vld	$vr4, $sp, 32                   # 16-byte Folded Reload
+	ld.d	$t7, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t4, $sp, 72                    # 8-byte Folded Reload
 	b	.LBB0_21
 .LBB0_8:                                # %vector.ph351
-	bstrpick.d	$a0, $t7, 30, 3
-	slli.d	$a0, $a0, 3
-	xvreplve0.d	$xr0, $xr1
-	addi.d	$a1, $fp, 32
+	bstrpick.d	$a0, $t7, 30, 2
+	slli.d	$a0, $a0, 2
+	vreplvei.d	$vr0, $vr1, 0
+	addi.d	$a1, $fp, 16
 	move	$a2, $a0
 	.p2align	4, , 16
 .LBB0_9:                                # %vector.body356
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a1, -32
-	xvld	$xr3, $a1, 0
-	xvfmul.d	$xr2, $xr0, $xr2
-	xvfmul.d	$xr3, $xr0, $xr3
-	xvst	$xr2, $a1, -32
-	xvst	$xr3, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vld	$vr2, $a1, -16
+	vld	$vr3, $a1, 0
+	vfmul.d	$vr2, $vr0, $vr2
+	vfmul.d	$vr3, $vr0, $vr3
+	vst	$vr2, $a1, -16
+	vst	$vr3, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB0_9
 # %bb.10:                               # %middle.block361
 	beq	$a0, $t7, .LBB0_61
@@ -120,28 +120,28 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 .LBB0_13:                               # %.preheader194
 	blez	$t7, .LBB0_21
 # %bb.14:                               # %.lr.ph.preheader
-	ori	$a0, $zero, 8
+	ori	$a0, $zero, 4
 	bgeu	$t7, $a0, .LBB0_16
 # %bb.15:
 	move	$a0, $zero
 	b	.LBB0_19
 .LBB0_16:                               # %vector.ph
-	bstrpick.d	$a0, $t7, 30, 3
-	slli.d	$a0, $a0, 3
-	xvreplve0.d	$xr1, $xr0
-	addi.d	$a1, $fp, 32
+	bstrpick.d	$a0, $t7, 30, 2
+	slli.d	$a0, $a0, 2
+	vreplvei.d	$vr1, $vr0, 0
+	addi.d	$a1, $fp, 16
 	move	$a2, $a0
 	.p2align	4, , 16
 .LBB0_17:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a1, -32
-	xvld	$xr3, $a1, 0
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr2, $a1, -32
-	xvst	$xr3, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vld	$vr2, $a1, -16
+	vld	$vr3, $a1, 0
+	vfmul.d	$vr2, $vr1, $vr2
+	vfmul.d	$vr3, $vr1, $vr3
+	vst	$vr2, $a1, -16
+	vst	$vr3, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB0_17
 # %bb.18:                               # %middle.block
 	beq	$a0, $t7, .LBB0_21
@@ -281,7 +281,7 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 # %bb.40:                               # %.lr.ph218.us.us.preheader
                                         #   in Loop: Header=BB0_39 Depth=1
 	move	$a1, $zero
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	mul.w	$a2, $a2, $a3
 	alsl.d	$a2, $a2, $fp, 3
 	alsl.d	$a3, $a5, $t8, 3
@@ -343,7 +343,7 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 # %bb.48:                               # %.lr.ph201.us.us.preheader
                                         #   in Loop: Header=BB0_47 Depth=1
 	move	$a1, $zero
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	mul.d	$a2, $a0, $a2
 	alsl.d	$a2, $a2, $fp, 3
 	alsl.d	$a3, $a5, $t8, 3
@@ -390,28 +390,28 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 # %bb.53:                               # %.preheader182
 	blez	$t7, .LBB0_61
 # %bb.54:                               # %.lr.ph235.preheader
-	ori	$a0, $zero, 8
+	ori	$a0, $zero, 4
 	bgeu	$t7, $a0, .LBB0_56
 # %bb.55:
 	move	$a0, $zero
 	b	.LBB0_59
 .LBB0_56:                               # %vector.ph336
-	bstrpick.d	$a0, $t7, 30, 3
-	slli.d	$a0, $a0, 3
-	xvreplve0.d	$xr0, $xr4
-	addi.d	$a1, $fp, 32
+	bstrpick.d	$a0, $t7, 30, 2
+	slli.d	$a0, $a0, 2
+	vreplvei.d	$vr0, $vr4, 0
+	addi.d	$a1, $fp, 16
 	move	$a2, $a0
 	.p2align	4, , 16
 .LBB0_57:                               # %vector.body341
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr1, $a1, -32
-	xvld	$xr2, $a1, 0
-	xvfmul.d	$xr1, $xr0, $xr1
-	xvfmul.d	$xr2, $xr0, $xr2
-	xvst	$xr1, $a1, -32
-	xvst	$xr2, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vld	$vr1, $a1, -16
+	vld	$vr2, $a1, 0
+	vfmul.d	$vr1, $vr0, $vr1
+	vfmul.d	$vr2, $vr0, $vr2
+	vst	$vr1, $a1, -16
+	vst	$vr2, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB0_57
 # %bb.58:                               # %middle.block346
 	beq	$a0, $t7, .LBB0_61
@@ -442,18 +442,18 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $a3, $a0
 	or	$a0, $a0, $a1
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .Lfunc_end0:
 	.size	hypre_CSRMatrixMatvec, .Lfunc_end0-hypre_CSRMatrixMatvec
@@ -464,20 +464,20 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 	.type	hypre_CSRMatrixMatvecT,@function
 hypre_CSRMatrixMatvecT:                 # @hypre_CSRMatrixMatvecT
 # %bb.0:
-	addi.d	$sp, $sp, -176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
-                                        # kill: def $f1_64 killed $f1_64 def $xr1
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
+	addi.d	$sp, $sp, -160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+                                        # kill: def $f1_64 killed $f1_64 def $vr1
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
 	ld.w	$s1, $a0, 24
 	ld.w	$t4, $a0, 28
 	ld.d	$fp, $a2, 0
@@ -491,7 +491,7 @@ hypre_CSRMatrixMatvecT:                 # @hypre_CSRMatrixMatvecT
 # %bb.1:                                # %.preheader
 	blez	$t7, .LBB1_45
 # %bb.2:                                # %.lr.ph220.preheader
-	ori	$a0, $zero, 8
+	ori	$a0, $zero, 4
 	bgeu	$t7, $a0, .LBB1_8
 # %bb.3:
 	move	$a0, $zero
@@ -518,38 +518,38 @@ hypre_CSRMatrixMatvecT:                 # @hypre_CSRMatrixMatvecT
 	slli.d	$a2, $t7, 3
 	move	$a0, $fp
 	move	$a1, $zero
-	st.d	$t4, $sp, 80                    # 8-byte Folded Spill
-	st.d	$t5, $sp, 72                    # 8-byte Folded Spill
-	st.d	$t6, $sp, 64                    # 8-byte Folded Spill
-	st.d	$t7, $sp, 56                    # 8-byte Folded Spill
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	st.d	$t4, $sp, 64                    # 8-byte Folded Spill
+	st.d	$t5, $sp, 56                    # 8-byte Folded Spill
+	st.d	$t6, $sp, 48                    # 8-byte Folded Spill
+	st.d	$t7, $sp, 40                    # 8-byte Folded Spill
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	st.d	$t8, $sp, 8                     # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ld.d	$t8, $sp, 8                     # 8-byte Folded Reload
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	ld.d	$t7, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$t6, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$t5, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$t4, $sp, 80                    # 8-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	ld.d	$t7, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$t6, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$t4, $sp, 64                    # 8-byte Folded Reload
 	b	.LBB1_21
 .LBB1_8:                                # %vector.ph290
-	bstrpick.d	$a0, $t7, 30, 3
-	slli.d	$a0, $a0, 3
-	xvreplve0.d	$xr0, $xr1
-	addi.d	$a1, $fp, 32
+	bstrpick.d	$a0, $t7, 30, 2
+	slli.d	$a0, $a0, 2
+	vreplvei.d	$vr0, $vr1, 0
+	addi.d	$a1, $fp, 16
 	move	$a2, $a0
 	.p2align	4, , 16
 .LBB1_9:                                # %vector.body295
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a1, -32
-	xvld	$xr3, $a1, 0
-	xvfmul.d	$xr2, $xr0, $xr2
-	xvfmul.d	$xr3, $xr0, $xr3
-	xvst	$xr2, $a1, -32
-	xvst	$xr3, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vld	$vr2, $a1, -16
+	vld	$vr3, $a1, 0
+	vfmul.d	$vr2, $vr0, $vr2
+	vfmul.d	$vr3, $vr0, $vr3
+	vst	$vr2, $a1, -16
+	vst	$vr3, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB1_9
 # %bb.10:                               # %middle.block300
 	beq	$a0, $t7, .LBB1_45
@@ -569,28 +569,28 @@ hypre_CSRMatrixMatvecT:                 # @hypre_CSRMatrixMatvecT
 .LBB1_13:                               # %.preheader199
 	blez	$t7, .LBB1_21
 # %bb.14:                               # %.lr.ph.preheader
-	ori	$a0, $zero, 8
+	ori	$a0, $zero, 4
 	bgeu	$t7, $a0, .LBB1_16
 # %bb.15:
 	move	$a0, $zero
 	b	.LBB1_19
 .LBB1_16:                               # %vector.ph
-	bstrpick.d	$a0, $t7, 30, 3
-	slli.d	$a0, $a0, 3
-	xvreplve0.d	$xr1, $xr4
-	addi.d	$a1, $fp, 32
+	bstrpick.d	$a0, $t7, 30, 2
+	slli.d	$a0, $a0, 2
+	vreplvei.d	$vr1, $vr4, 0
+	addi.d	$a1, $fp, 16
 	move	$a2, $a0
 	.p2align	4, , 16
 .LBB1_17:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a1, -32
-	xvld	$xr3, $a1, 0
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr2, $a1, -32
-	xvst	$xr3, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vld	$vr2, $a1, -16
+	vld	$vr3, $a1, 0
+	vfmul.d	$vr2, $vr1, $vr2
+	vfmul.d	$vr3, $vr1, $vr3
+	vst	$vr2, $a1, -16
+	vst	$vr3, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB1_17
 # %bb.18:                               # %middle.block
 	beq	$a0, $t7, .LBB1_21
@@ -715,28 +715,28 @@ hypre_CSRMatrixMatvecT:                 # @hypre_CSRMatrixMatvecT
 # %bb.37:                               # %.preheader192
 	blez	$t7, .LBB1_45
 # %bb.38:                               # %.lr.ph218.preheader
-	ori	$a0, $zero, 8
+	ori	$a0, $zero, 4
 	bgeu	$t7, $a0, .LBB1_40
 # %bb.39:
 	move	$a0, $zero
 	b	.LBB1_43
 .LBB1_40:                               # %vector.ph275
-	bstrpick.d	$a0, $t7, 30, 3
-	slli.d	$a0, $a0, 3
-	xvreplve0.d	$xr3, $xr0
-	addi.d	$a1, $fp, 32
+	bstrpick.d	$a0, $t7, 30, 2
+	slli.d	$a0, $a0, 2
+	vreplvei.d	$vr3, $vr0, 0
+	addi.d	$a1, $fp, 16
 	move	$a2, $a0
 	.p2align	4, , 16
 .LBB1_41:                               # %vector.body280
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr1, $a1, -32
-	xvld	$xr2, $a1, 0
-	xvfmul.d	$xr1, $xr3, $xr1
-	xvfmul.d	$xr2, $xr3, $xr2
-	xvst	$xr1, $a1, -32
-	xvst	$xr2, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vld	$vr1, $a1, -16
+	vld	$vr2, $a1, 0
+	vfmul.d	$vr1, $vr3, $vr1
+	vfmul.d	$vr2, $vr3, $vr2
+	vst	$vr1, $a1, -16
+	vst	$vr2, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB1_41
 # %bb.42:                               # %middle.block285
 	beq	$a0, $t7, .LBB1_45
@@ -767,18 +767,18 @@ hypre_CSRMatrixMatvecT:                 # @hypre_CSRMatrixMatvecT
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $a3, $a0
 	or	$a0, $a0, $a1
-	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .Lfunc_end1:
 	.size	hypre_CSRMatrixMatvecT, .Lfunc_end1-hypre_CSRMatrixMatvecT
@@ -802,7 +802,7 @@ hypre_CSRMatrixMatvec_FF:               # @hypre_CSRMatrixMatvec_FF
 	addi.w	$t1, $t2, 0
 	bcnez	$fcc0, .LBB2_6
 # %bb.1:                                # %.preheader
-	blez	$t1, .LBB2_54
+	blez	$t1, .LBB2_46
 # %bb.2:                                # %.lr.ph117.preheader
 	move	$a0, $t1
 	b	.LBB2_4
@@ -811,7 +811,7 @@ hypre_CSRMatrixMatvec_FF:               # @hypre_CSRMatrixMatvec_FF
 	addi.d	$t0, $t0, 8
 	addi.d	$a0, $a0, -1
 	addi.d	$a3, $a3, 4
-	beqz	$a0, .LBB2_54
+	beqz	$a0, .LBB2_46
 .LBB2_4:                                # %.lr.ph117
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $a3, 0
@@ -829,7 +829,7 @@ hypre_CSRMatrixMatvec_FF:               # @hypre_CSRMatrixMatvec_FF
 	fdiv.d	$fa1, $fa1, $fa0
 	vldi	$vr3, -912
 	fcmp.ceq.d	$fcc0, $fa1, $fa3
-	bcnez	$fcc0, .LBB2_42
+	bcnez	$fcc0, .LBB2_34
 # %bb.7:
 	fcmp.ceq.d	$fcc0, $fa1, $fa2
 	bceqz	$fcc0, .LBB2_17
@@ -846,7 +846,7 @@ hypre_CSRMatrixMatvec_FF:               # @hypre_CSRMatrixMatvec_FF
 	bgeu	$a3, $t5, .LBB2_23
 .LBB2_12:
 	move	$t5, $zero
-.LBB2_13:                               # %.lr.ph106.preheader168
+.LBB2_13:                               # %.lr.ph106.preheader160
 	alsl.d	$t6, $t5, $t0, 3
 	alsl.d	$t7, $t5, $a3, 2
 	sub.d	$t5, $t1, $t5
@@ -856,7 +856,7 @@ hypre_CSRMatrixMatvec_FF:               # @hypre_CSRMatrixMatvec_FF
 	addi.d	$t6, $t6, 8
 	addi.d	$t5, $t5, -1
 	addi.d	$t7, $t7, 4
-	beqz	$t5, .LBB2_42
+	beqz	$t5, .LBB2_34
 .LBB2_15:                               # %.lr.ph106
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$t8, $t7, 0
@@ -876,7 +876,7 @@ hypre_CSRMatrixMatvec_FF:               # @hypre_CSRMatrixMatvec_FF
 	addi.d	$t7, $t7, 8
 	addi.d	$t5, $t5, -1
 	addi.d	$t6, $t6, 4
-	beqz	$t5, .LBB2_42
+	beqz	$t5, .LBB2_34
 .LBB2_20:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$t8, $t6, 0
@@ -890,177 +890,132 @@ hypre_CSRMatrixMatvec_FF:               # @hypre_CSRMatrixMatvec_FF
 	move	$a0, $zero
 	vldi	$vr1, -912
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	bceqz	$fcc0, .LBB2_53
-	b	.LBB2_54
+	bceqz	$fcc0, .LBB2_45
+	b	.LBB2_46
 .LBB2_23:                               # %vector.ph
-	bstrpick.d	$t5, $t1, 30, 3
-	slli.d	$t5, $t5, 3
-	vreplgr2vr.w	$vr1, $a5
-	addi.d	$t6, $a3, 16
-	addi.d	$t7, $t0, 32
+	bstrpick.d	$t5, $t1, 30, 2
+	slli.d	$t5, $t5, 2
+	vinsgr2vr.w	$vr1, $a5, 0
+	vinsgr2vr.w	$vr1, $a5, 1
+	addi.d	$t6, $t0, 16
+	addi.d	$t7, $a3, 8
 	move	$t8, $t5
 	b	.LBB2_25
 	.p2align	4, , 16
-.LBB2_24:                               # %pred.store.continue166
+.LBB2_24:                               # %pred.store.continue158
                                         #   in Loop: Header=BB2_25 Depth=1
 	addi.d	$t6, $t6, 32
-	addi.d	$t8, $t8, -8
-	addi.d	$t7, $t7, 64
-	beqz	$t8, .LBB2_41
+	addi.d	$t8, $t8, -4
+	addi.d	$t7, $t7, 16
+	beqz	$t8, .LBB2_33
 .LBB2_25:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr3, $t6, -16
-	vld	$vr2, $t6, 0
-	vseq.w	$vr3, $vr3, $vr1
-	vpickve2gr.w	$fp, $vr3, 0
-	andi	$fp, $fp, 1
-	beqz	$fp, .LBB2_33
+	ld.d	$fp, $t7, -8
+	vinsgr2vr.d	$vr2, $fp, 0
+	ld.d	$fp, $t7, 0
+	vseq.w	$vr2, $vr2, $vr1
+	vpickve2gr.d	$s0, $vr2, 0
+	andi	$s0, $s0, 1
+	beqz	$s0, .LBB2_27
 # %bb.26:                               # %pred.store.if
                                         #   in Loop: Header=BB2_25 Depth=1
-	st.d	$zero, $t7, -32
-	vpickve2gr.w	$fp, $vr3, 1
-	andi	$fp, $fp, 1
-	bnez	$fp, .LBB2_34
-.LBB2_27:                               # %pred.store.continue154
+	st.d	$zero, $t6, -16
+.LBB2_27:                               # %pred.store.continue
                                         #   in Loop: Header=BB2_25 Depth=1
-	vpickve2gr.w	$fp, $vr3, 2
-	andi	$fp, $fp, 1
-	beqz	$fp, .LBB2_35
-.LBB2_28:                               # %pred.store.if155
+	vilvl.w	$vr2, $vr2, $vr2
+	vpickve2gr.d	$s0, $vr2, 1
+	andi	$s0, $s0, 1
+	beqz	$s0, .LBB2_29
+# %bb.28:                               # %pred.store.if153
                                         #   in Loop: Header=BB2_25 Depth=1
-	st.d	$zero, $t7, -16
-	vpickve2gr.w	$fp, $vr3, 3
-	andi	$fp, $fp, 1
-	bnez	$fp, .LBB2_36
-.LBB2_29:                               # %pred.store.continue158
+	st.d	$zero, $t6, -8
+.LBB2_29:                               # %pred.store.continue154
                                         #   in Loop: Header=BB2_25 Depth=1
+	vinsgr2vr.d	$vr2, $fp, 0
 	vseq.w	$vr2, $vr2, $vr1
-	vpickve2gr.w	$fp, $vr2, 0
-	andi	$fp, $fp, 1
-	beqz	$fp, .LBB2_37
-.LBB2_30:                               # %pred.store.if159
-                                        #   in Loop: Header=BB2_25 Depth=1
-	st.d	$zero, $t7, 0
-	vpickve2gr.w	$fp, $vr2, 1
-	andi	$fp, $fp, 1
-	bnez	$fp, .LBB2_38
-.LBB2_31:                               # %pred.store.continue162
-                                        #   in Loop: Header=BB2_25 Depth=1
-	vpickve2gr.w	$fp, $vr2, 2
-	andi	$fp, $fp, 1
-	beqz	$fp, .LBB2_39
-.LBB2_32:                               # %pred.store.if163
-                                        #   in Loop: Header=BB2_25 Depth=1
-	st.d	$zero, $t7, 16
-	vpickve2gr.w	$fp, $vr2, 3
-	andi	$fp, $fp, 1
-	beqz	$fp, .LBB2_24
-	b	.LBB2_40
-	.p2align	4, , 16
-.LBB2_33:                               # %pred.store.continue
-                                        #   in Loop: Header=BB2_25 Depth=1
-	vpickve2gr.w	$fp, $vr3, 1
-	andi	$fp, $fp, 1
-	beqz	$fp, .LBB2_27
-.LBB2_34:                               # %pred.store.if153
-                                        #   in Loop: Header=BB2_25 Depth=1
-	st.d	$zero, $t7, -24
-	vpickve2gr.w	$fp, $vr3, 2
-	andi	$fp, $fp, 1
-	bnez	$fp, .LBB2_28
-.LBB2_35:                               # %pred.store.continue156
-                                        #   in Loop: Header=BB2_25 Depth=1
-	vpickve2gr.w	$fp, $vr3, 3
-	andi	$fp, $fp, 1
-	beqz	$fp, .LBB2_29
-.LBB2_36:                               # %pred.store.if157
-                                        #   in Loop: Header=BB2_25 Depth=1
-	st.d	$zero, $t7, -8
-	vseq.w	$vr2, $vr2, $vr1
-	vpickve2gr.w	$fp, $vr2, 0
-	andi	$fp, $fp, 1
-	bnez	$fp, .LBB2_30
-.LBB2_37:                               # %pred.store.continue160
-                                        #   in Loop: Header=BB2_25 Depth=1
-	vpickve2gr.w	$fp, $vr2, 1
+	vpickve2gr.d	$fp, $vr2, 0
 	andi	$fp, $fp, 1
 	beqz	$fp, .LBB2_31
-.LBB2_38:                               # %pred.store.if161
+# %bb.30:                               # %pred.store.if155
                                         #   in Loop: Header=BB2_25 Depth=1
-	st.d	$zero, $t7, 8
-	vpickve2gr.w	$fp, $vr2, 2
-	andi	$fp, $fp, 1
-	bnez	$fp, .LBB2_32
-.LBB2_39:                               # %pred.store.continue164
-                                        #   in Loop: Header=BB2_25 Depth=1
-	vpickve2gr.w	$fp, $vr2, 3
+	st.d	$zero, $t6, 0
+	vilvl.w	$vr2, $vr2, $vr2
+	vpickve2gr.d	$fp, $vr2, 1
 	andi	$fp, $fp, 1
 	beqz	$fp, .LBB2_24
-.LBB2_40:                               # %pred.store.if165
-                                        #   in Loop: Header=BB2_25 Depth=1
-	st.d	$zero, $t7, 24
-	b	.LBB2_24
-.LBB2_41:                               # %middle.block
-	bne	$t5, $t1, .LBB2_13
-.LBB2_42:                               # %.loopexit101
-	blez	$t1, .LBB2_54
-# %bb.43:                               # %.lr.ph112.preheader
-	move	$t5, $zero
-	b	.LBB2_46
+	b	.LBB2_32
 	.p2align	4, , 16
-.LBB2_44:                               # %._crit_edge
-                                        #   in Loop: Header=BB2_46 Depth=1
+.LBB2_31:                               # %pred.store.continue156
+                                        #   in Loop: Header=BB2_25 Depth=1
+	vilvl.w	$vr2, $vr2, $vr2
+	vpickve2gr.d	$fp, $vr2, 1
+	andi	$fp, $fp, 1
+	beqz	$fp, .LBB2_24
+.LBB2_32:                               # %pred.store.if157
+                                        #   in Loop: Header=BB2_25 Depth=1
+	st.d	$zero, $t6, 8
+	b	.LBB2_24
+.LBB2_33:                               # %middle.block
+	bne	$t5, $t1, .LBB2_13
+.LBB2_34:                               # %.loopexit101
+	blez	$t1, .LBB2_46
+# %bb.35:                               # %.lr.ph112.preheader
+	move	$t5, $zero
+	b	.LBB2_38
+	.p2align	4, , 16
+.LBB2_36:                               # %._crit_edge
+                                        #   in Loop: Header=BB2_38 Depth=1
 	alsl.d	$t6, $t5, $t0, 3
 	fst.d	$fa1, $t6, 0
-.LBB2_45:                               #   in Loop: Header=BB2_46 Depth=1
+.LBB2_37:                               #   in Loop: Header=BB2_38 Depth=1
 	addi.d	$t5, $t5, 1
-	beq	$t5, $t1, .LBB2_52
-.LBB2_46:                               # %.lr.ph112
+	beq	$t5, $t1, .LBB2_44
+.LBB2_38:                               # %.lr.ph112
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB2_50 Depth 2
+                                        #     Child Loop BB2_42 Depth 2
 	slli.d	$t6, $t5, 2
 	ldx.w	$t7, $a3, $t6
-	bne	$t7, $a5, .LBB2_45
-# %bb.47:                               #   in Loop: Header=BB2_46 Depth=1
+	bne	$t7, $a5, .LBB2_37
+# %bb.39:                               #   in Loop: Header=BB2_38 Depth=1
 	slli.d	$t7, $t5, 3
 	alsl.d	$fp, $t5, $t4, 2
 	ldx.w	$t8, $t4, $t6
 	ld.w	$fp, $fp, 4
 	fldx.d	$fa1, $t0, $t7
-	bge	$t8, $fp, .LBB2_44
-# %bb.48:                               # %.lr.ph109.preheader
-                                        #   in Loop: Header=BB2_46 Depth=1
+	bge	$t8, $fp, .LBB2_36
+# %bb.40:                               # %.lr.ph109.preheader
+                                        #   in Loop: Header=BB2_38 Depth=1
 	alsl.d	$t6, $t8, $a0, 2
 	alsl.d	$t7, $t8, $t3, 3
 	sub.d	$t8, $fp, $t8
-	b	.LBB2_50
+	b	.LBB2_42
 	.p2align	4, , 16
-.LBB2_49:                               #   in Loop: Header=BB2_50 Depth=2
+.LBB2_41:                               #   in Loop: Header=BB2_42 Depth=2
 	addi.d	$t6, $t6, 4
 	addi.d	$t8, $t8, -1
 	addi.d	$t7, $t7, 8
-	beqz	$t8, .LBB2_44
-.LBB2_50:                               # %.lr.ph109
-                                        #   Parent Loop BB2_46 Depth=1
+	beqz	$t8, .LBB2_36
+.LBB2_42:                               # %.lr.ph109
+                                        #   Parent Loop BB2_38 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$fp, $t6, 0
 	slli.d	$s0, $fp, 2
 	ldx.w	$s0, $a4, $s0
-	bne	$s0, $a5, .LBB2_49
-# %bb.51:                               #   in Loop: Header=BB2_50 Depth=2
+	bne	$s0, $a5, .LBB2_41
+# %bb.43:                               #   in Loop: Header=BB2_42 Depth=2
 	fld.d	$fa2, $t7, 0
 	slli.d	$fp, $fp, 3
 	fldx.d	$fa3, $a1, $fp
 	fmadd.d	$fa1, $fa2, $fa3, $fa1
-	b	.LBB2_49
-.LBB2_52:
+	b	.LBB2_41
+.LBB2_44:
 	ori	$a0, $zero, 1
 	vldi	$vr1, -912
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	bcnez	$fcc0, .LBB2_54
-.LBB2_53:                               # %._crit_edge113
-	bnez	$a0, .LBB2_56
-.LBB2_54:                               # %.loopexit
+	bcnez	$fcc0, .LBB2_46
+.LBB2_45:                               # %._crit_edge113
+	bnez	$a0, .LBB2_48
+.LBB2_46:                               # %.loopexit
 	xor	$a0, $a6, $a7
 	sltu	$a0, $zero, $a0
 	xor	$a1, $t1, $a2
@@ -1080,20 +1035,20 @@ hypre_CSRMatrixMatvec_FF:               # @hypre_CSRMatrixMatvec_FF
 	addi.d	$sp, $sp, 16
 	ret
 	.p2align	4, , 16
-.LBB2_55:                               #   in Loop: Header=BB2_56 Depth=1
+.LBB2_47:                               #   in Loop: Header=BB2_48 Depth=1
 	addi.d	$t0, $t0, 8
 	addi.d	$t2, $t2, -1
 	addi.d	$a3, $a3, 4
-	beqz	$t2, .LBB2_54
-.LBB2_56:                               # %.lr.ph115
+	beqz	$t2, .LBB2_46
+.LBB2_48:                               # %.lr.ph115
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a0, $a3, 0
-	bne	$a0, $a5, .LBB2_55
-# %bb.57:                               #   in Loop: Header=BB2_56 Depth=1
+	bne	$a0, $a5, .LBB2_47
+# %bb.49:                               #   in Loop: Header=BB2_48 Depth=1
 	fld.d	$fa1, $t0, 0
 	fmul.d	$fa1, $fa0, $fa1
 	fst.d	$fa1, $t0, 0
-	b	.LBB2_55
+	b	.LBB2_47
 .Lfunc_end2:
 	.size	hypre_CSRMatrixMatvec_FF, .Lfunc_end2-hypre_CSRMatrixMatvec_FF
                                         # -- End function

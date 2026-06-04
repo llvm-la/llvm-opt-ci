@@ -736,7 +736,8 @@ _ZNK13btConvexShape17getAabbNonVirtualERK11btTransformR9btVector3S4_: # @_ZNK13b
 	vextrins.w	$vr2, $vr3, 16
 	vshuf4i.w	$vr2, $vr2, 16
 	vslli.d	$vr2, $vr2, 32
-	vext2xv.du.wu	$xr1, $xr1
+	vrepli.b	$vr3, 0
+	vilvl.w	$vr1, $vr3, $vr1
 	vor.v	$vr1, $vr2, $vr1
 	b	.LBB6_8
 .LBB6_4:
@@ -865,7 +866,8 @@ _ZNK13btConvexShape17getAabbNonVirtualERK11btTransformR9btVector3S4_: # @_ZNK13b
 	vextrins.w	$vr4, $vr3, 16
 	vshuf4i.w	$vr1, $vr4, 16
 	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr2, $xr2
+	vrepli.b	$vr3, 0
+	vilvl.w	$vr2, $vr3, $vr2
 	vor.v	$vr1, $vr1, $vr2
 .LBB6_8:                                # %.loopexit
 	vstelm.d	$vr1, $s0, 0, 0

@@ -246,468 +246,908 @@ LzmaEnc_FastPosInit:                    # @LzmaEnc_FastPosInit
 	st.d	$a1, $a0, 160
 	st.d	$a1, $a0, 168
 	st.d	$a1, $a0, 176
+	vrepli.b	$vr0, 16
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vrepli.b	$vr0, 17
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vrepli.b	$vr0, 18
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vrepli.b	$vr0, 19
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
+	vrepli.b	$vr0, 20
+	vst	$vr0, $a0, 1024
+	vst	$vr0, $a0, 1040
+	vst	$vr0, $a0, 1056
+	vst	$vr0, $a0, 1072
+	vst	$vr0, $a0, 1088
+	vst	$vr0, $a0, 1104
+	vst	$vr0, $a0, 1120
+	vst	$vr0, $a0, 1136
+	vst	$vr0, $a0, 1152
+	vst	$vr0, $a0, 1168
+	vst	$vr0, $a0, 1184
+	vst	$vr0, $a0, 1200
+	vst	$vr0, $a0, 1216
+	vst	$vr0, $a0, 1232
+	vst	$vr0, $a0, 1248
+	vst	$vr0, $a0, 1264
+	vst	$vr0, $a0, 1280
+	vst	$vr0, $a0, 1296
+	vst	$vr0, $a0, 1312
+	vst	$vr0, $a0, 1328
+	vst	$vr0, $a0, 1344
+	vst	$vr0, $a0, 1360
+	vst	$vr0, $a0, 1376
+	vst	$vr0, $a0, 1392
+	vst	$vr0, $a0, 1408
+	vst	$vr0, $a0, 1424
+	vst	$vr0, $a0, 1440
+	vst	$vr0, $a0, 1456
+	vst	$vr0, $a0, 1472
+	vst	$vr0, $a0, 1488
+	vst	$vr0, $a0, 1504
+	vst	$vr0, $a0, 1520
+	vrepli.b	$vr0, 21
+	vst	$vr0, $a0, 1536
+	vst	$vr0, $a0, 1552
+	vst	$vr0, $a0, 1568
+	vst	$vr0, $a0, 1584
+	vst	$vr0, $a0, 1600
+	vst	$vr0, $a0, 1616
+	vst	$vr0, $a0, 1632
+	vst	$vr0, $a0, 1648
+	vst	$vr0, $a0, 1664
+	vst	$vr0, $a0, 1680
+	vst	$vr0, $a0, 1696
+	vst	$vr0, $a0, 1712
+	vst	$vr0, $a0, 1728
+	vst	$vr0, $a0, 1744
+	vst	$vr0, $a0, 1760
+	vst	$vr0, $a0, 1776
+	vst	$vr0, $a0, 1792
+	vst	$vr0, $a0, 1808
+	vst	$vr0, $a0, 1824
+	vst	$vr0, $a0, 1840
+	vst	$vr0, $a0, 1856
+	vst	$vr0, $a0, 1872
+	vst	$vr0, $a0, 1888
+	vst	$vr0, $a0, 1904
+	vst	$vr0, $a0, 1920
+	vst	$vr0, $a0, 1936
+	vst	$vr0, $a0, 1952
+	vst	$vr0, $a0, 1968
+	vst	$vr0, $a0, 1984
+	vst	$vr0, $a0, 2000
+	vst	$vr0, $a0, 2016
+	vst	$vr0, $a0, 2032
+	vrepli.b	$vr0, 22
+	ori	$a2, $zero, 2048
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2064
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2080
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2096
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2112
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2128
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2144
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2160
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2176
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2192
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2208
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2224
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2240
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2256
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2272
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2288
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2304
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2320
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2336
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2352
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2368
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2384
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2400
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2416
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2432
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2448
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2464
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2480
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2496
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2512
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2528
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2544
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2560
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2576
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2592
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2608
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2624
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2640
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2656
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2672
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2688
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2704
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2720
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2736
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2752
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2768
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2784
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2800
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2816
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2832
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2848
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2864
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2880
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2896
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2912
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2928
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2944
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2960
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2976
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 2992
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3008
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3024
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3040
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3056
+	vstx	$vr0, $a0, $a2
+	vrepli.b	$vr0, 23
+	ori	$a2, $zero, 3072
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3088
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3104
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3120
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3136
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3152
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3168
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3184
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3200
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3216
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3232
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3248
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3264
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3280
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3296
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3312
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3328
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3344
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3360
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3376
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3392
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3408
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3424
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3440
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3456
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3472
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3488
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3504
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3520
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3536
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3552
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3568
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3584
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3600
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3616
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3632
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3648
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3664
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3680
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3696
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3712
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3728
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3744
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3760
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3776
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3792
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3808
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3824
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3840
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3856
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3872
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3888
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3904
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3920
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3936
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3952
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3968
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 4064
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 4048
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 4032
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 4016
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 4000
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 3984
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $zero, 4080
+	vstx	$vr0, $a0, $a2
+	vrepli.b	$vr0, 24
 	st.d	$a1, $a0, 184
-	lu12i.w	$a1, 61680
-	ori	$a1, $a1, 3855
-	bstrins.d	$a1, $a1, 59, 32
-	st.d	$a1, $a0, 248
-	st.d	$a1, $a0, 240
-	st.d	$a1, $a0, 232
-	st.d	$a1, $a0, 224
-	st.d	$a1, $a0, 216
-	st.d	$a1, $a0, 208
-	st.d	$a1, $a0, 200
-	st.d	$a1, $a0, 192
-	xvrepli.b	$xr0, 16
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvrepli.b	$xr0, 17
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvrepli.b	$xr0, 18
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvrepli.b	$xr0, 19
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
-	xvrepli.b	$xr0, 20
-	xvst	$xr0, $a0, 1024
-	xvst	$xr0, $a0, 1056
-	xvst	$xr0, $a0, 1088
-	xvst	$xr0, $a0, 1120
-	xvst	$xr0, $a0, 1152
-	xvst	$xr0, $a0, 1184
-	xvst	$xr0, $a0, 1216
-	xvst	$xr0, $a0, 1248
-	xvst	$xr0, $a0, 1280
-	xvst	$xr0, $a0, 1312
-	xvst	$xr0, $a0, 1344
-	xvst	$xr0, $a0, 1376
-	xvst	$xr0, $a0, 1408
-	xvst	$xr0, $a0, 1440
-	xvst	$xr0, $a0, 1472
-	xvst	$xr0, $a0, 1504
-	xvrepli.b	$xr0, 21
-	xvst	$xr0, $a0, 1536
-	xvst	$xr0, $a0, 1568
-	xvst	$xr0, $a0, 1600
-	xvst	$xr0, $a0, 1632
-	xvst	$xr0, $a0, 1664
-	xvst	$xr0, $a0, 1696
-	xvst	$xr0, $a0, 1728
-	xvst	$xr0, $a0, 1760
-	xvst	$xr0, $a0, 1792
-	xvst	$xr0, $a0, 1824
-	xvst	$xr0, $a0, 1856
-	xvst	$xr0, $a0, 1888
-	xvst	$xr0, $a0, 1920
-	xvst	$xr0, $a0, 1952
-	xvst	$xr0, $a0, 1984
-	xvst	$xr0, $a0, 2016
-	xvrepli.b	$xr0, 22
-	ori	$a1, $zero, 2048
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2080
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2112
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2144
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2176
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2208
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2240
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2272
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2304
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2336
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2368
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2400
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2432
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2464
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2496
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2528
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2560
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2592
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2624
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2656
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2688
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2720
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2752
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2784
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2816
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2848
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2880
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2912
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2944
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 2976
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3008
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3040
-	xvstx	$xr0, $a0, $a1
-	xvrepli.b	$xr0, 23
-	ori	$a1, $zero, 3072
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3104
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3136
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3168
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3200
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3232
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3264
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3296
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3328
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3360
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3392
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3424
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3456
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3488
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3520
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3552
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3584
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3616
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3648
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3680
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3712
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3744
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3776
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3808
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3840
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3872
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3904
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3936
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 3968
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 4000
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 4032
-	xvstx	$xr0, $a0, $a1
-	ori	$a1, $zero, 4064
-	xvstx	$xr0, $a0, $a1
-	xvrepli.b	$xr0, 24
 	lu12i.w	$a1, 1
-	xvstx	$xr0, $a0, $a1
+	ori	$a2, $a1, 16
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 32
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 48
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 64
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 80
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 96
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 112
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 128
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 144
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 160
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 176
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 192
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 208
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 224
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 240
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 256
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 272
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 288
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 304
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 320
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 336
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 352
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 368
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 384
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 400
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 416
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 432
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 448
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 464
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 480
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 496
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 512
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 528
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 544
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 560
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 576
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 592
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 608
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 624
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 640
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 656
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 672
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 688
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 704
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 720
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 736
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 752
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 768
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 784
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 800
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 816
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 832
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 848
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 864
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 880
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 896
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 912
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 928
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 944
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 960
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 976
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 992
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1008
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1024
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1040
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1056
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1072
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1088
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1104
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1120
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1136
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1152
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1168
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1184
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1200
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1216
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1232
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1248
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1264
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1280
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1296
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1312
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1328
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1344
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1360
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1376
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1392
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1408
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1424
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1440
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1456
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1472
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1488
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1504
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1520
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1536
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1552
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1568
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1584
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1600
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1616
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1632
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1648
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1664
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1680
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1696
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1712
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1728
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1744
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1760
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1776
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1792
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1808
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1824
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1840
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1856
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1872
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1888
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1904
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1920
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1936
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1952
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 1968
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 1984
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2000
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2016
-	xvstx	$xr0, $a0, $a2
-	xvrepli.b	$xr0, 25
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2032
+	vstx	$vr0, $a0, $a2
+	lu12i.w	$a2, 61680
+	ori	$a2, $a2, 3855
+	bstrins.d	$a2, $a2, 59, 32
+	st.d	$a2, $a0, 248
+	st.d	$a2, $a0, 240
+	st.d	$a2, $a0, 232
+	st.d	$a2, $a0, 224
+	st.d	$a2, $a0, 216
+	st.d	$a2, $a0, 208
+	st.d	$a2, $a0, 200
+	vstx	$vr0, $a0, $a1
+	vrepli.b	$vr0, 25
+	st.d	$a2, $a0, 192
 	ori	$a2, $a1, 2048
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2064
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2080
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2096
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2112
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2128
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2144
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2160
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2176
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2192
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2208
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2224
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2240
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2256
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2272
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2288
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2304
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2320
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2336
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2352
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2368
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2384
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2400
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2416
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2432
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2448
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2464
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2480
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2496
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2512
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2528
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2544
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2560
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2576
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2592
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2608
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2624
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2640
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2656
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2672
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2688
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2704
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2720
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2736
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2752
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2768
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2784
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2800
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2816
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2832
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2848
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2864
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2880
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2896
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2912
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2928
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2944
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2960
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 2976
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 2992
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3008
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3024
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3040
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3056
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3072
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3088
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3104
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3120
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3136
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3152
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3168
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3184
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3200
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3216
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3232
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3248
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3264
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3280
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3296
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3312
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3328
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3344
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3360
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3376
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3392
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3408
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3424
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3440
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3456
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3472
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3488
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3504
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3520
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3536
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3552
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3568
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3584
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3600
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3616
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3632
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3648
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3664
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3680
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3696
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3712
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3728
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3744
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3760
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3776
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3792
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3808
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3824
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3840
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3856
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3872
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3888
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3904
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3920
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3936
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3952
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 3968
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 3984
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 4000
-	xvstx	$xr0, $a0, $a2
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 4016
+	vstx	$vr0, $a0, $a2
 	ori	$a2, $a1, 4032
-	xvstx	$xr0, $a0, $a2
-	ori	$a1, $a1, 4064
-	xvstx	$xr0, $a0, $a1
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 4048
+	vstx	$vr0, $a0, $a2
+	ori	$a2, $a1, 4064
+	vstx	$vr0, $a0, $a2
+	ori	$a1, $a1, 4080
+	vstx	$vr0, $a0, $a1
 	ret
 .Lfunc_end3:
 	.size	LzmaEnc_FastPosInit, .Lfunc_end3-LzmaEnc_FastPosInit
@@ -757,106 +1197,202 @@ LzmaEnc_SaveState:                      # @LzmaEnc_SaveState
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s6, 592
-	xvldx	$xr0, $fp, $a0
-	ori	$a0, $s6, 1072
-	xvldx	$xr1, $fp, $a0
 	ori	$a0, $s7, 2512
-	xvstx	$xr0, $fp, $a0
+	add.d	$a1, $fp, $a0
+	ori	$a2, $s6, 592
+	add.d	$a3, $fp, $a2
+	vldx	$vr0, $fp, $a2
+	vld	$vr1, $a3, 16
+	ori	$a2, $s6, 1072
+	add.d	$a3, $fp, $a2
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
+	vldx	$vr0, $fp, $a2
+	vld	$vr1, $a3, 16
 	ori	$a0, $s7, 2992
-	xvstx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
 	ori	$a0, $s6, 624
-	xvldx	$xr0, $fp, $a0
-	ori	$a0, $s6, 1104
-	xvldx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 2544
-	xvstx	$xr0, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
+	ori	$a0, $s6, 1104
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 3024
-	xvstx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
 	ori	$a0, $s6, 656
-	xvldx	$xr0, $fp, $a0
-	ori	$a0, $s6, 1136
-	xvldx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 2576
-	xvstx	$xr0, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
+	ori	$a0, $s6, 1136
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 3056
-	xvstx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
 	ori	$a0, $s6, 688
-	xvldx	$xr0, $fp, $a0
-	ori	$a0, $s6, 1168
-	xvldx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 2608
-	xvstx	$xr0, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
+	ori	$a0, $s6, 1168
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 3088
-	xvstx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
 	ori	$a0, $s6, 720
-	xvldx	$xr0, $fp, $a0
-	ori	$a0, $s6, 1200
-	xvldx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 2640
-	xvstx	$xr0, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
+	ori	$a0, $s6, 1200
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 3120
-	xvstx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
 	ori	$a0, $s6, 752
-	xvldx	$xr0, $fp, $a0
-	ori	$a0, $s6, 1232
-	xvldx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 2672
-	xvstx	$xr0, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
+	ori	$a0, $s6, 1232
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 3152
-	xvstx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
 	ori	$a0, $s6, 784
-	xvldx	$xr0, $fp, $a0
-	ori	$a0, $s6, 1264
-	xvldx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 2704
-	xvstx	$xr0, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
+	ori	$a0, $s6, 1264
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 3184
-	xvstx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
 	ori	$a0, $s6, 816
-	xvldx	$xr0, $fp, $a0
-	ori	$a0, $s6, 1296
-	xvldx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 2736
-	xvstx	$xr0, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
+	ori	$a0, $s6, 1296
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 3216
-	xvstx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
 	ori	$a0, $s6, 848
-	xvldx	$xr0, $fp, $a0
-	ori	$a0, $s6, 1328
-	xvldx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 2768
-	xvstx	$xr0, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
+	ori	$a0, $s6, 1328
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 3248
-	xvstx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
 	ori	$a0, $s6, 880
-	xvldx	$xr0, $fp, $a0
-	ori	$a0, $s6, 1360
-	xvldx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 2800
-	xvstx	$xr0, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
+	ori	$a0, $s6, 1360
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 3280
-	xvstx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
 	ori	$a0, $s6, 912
-	xvldx	$xr0, $fp, $a0
-	ori	$a0, $s6, 1392
-	xvldx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 2832
-	xvstx	$xr0, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
+	ori	$a0, $s6, 1392
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	vld	$vr1, $a1, 16
 	ori	$a0, $s7, 3312
-	xvstx	$xr1, $fp, $a0
+	add.d	$a1, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	vst	$vr1, $a1, 16
 	ori	$a0, $s6, 944
-	xvldx	$xr0, $fp, $a0
-	ldx.w	$a0, $fp, $s8
-	lu12i.w	$s0, 71
+	vldx	$vr0, $fp, $a0
 	ori	$a1, $s7, 2864
-	xvstx	$xr0, $fp, $a1
+	add.d	$a0, $fp, $a0
+	vld	$vr1, $a0, 16
+	vstx	$vr0, $fp, $a1
+	ldx.w	$a0, $fp, $s8
+	add.d	$a1, $fp, $a1
+	vst	$vr1, $a1, 16
 	ori	$a1, $s6, 1424
-	xvldx	$xr0, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	lu12i.w	$s0, 71
+	ori	$a2, $s7, 3344
+	add.d	$a1, $fp, $a1
+	vstx	$vr0, $fp, $a2
+	vld	$vr0, $a1, 16
 	ori	$a1, $s0, 212
 	stx.w	$a0, $fp, $a1
-	ori	$a0, $s7, 3344
-	xvstx	$xr0, $fp, $a0
+	add.d	$a0, $fp, $a2
+	vst	$vr0, $a0, 16
 	ori	$a0, $s7, 3376
 	add.d	$a0, $fp, $a0
 	ori	$a1, $s6, 1456
@@ -885,26 +1421,34 @@ LzmaEnc_SaveState:                      # @LzmaEnc_SaveState
 	ori	$a2, $zero, 128
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s7, 2896
+	ori	$a0, $s6, 976
 	add.d	$a1, $fp, $a0
-	ori	$a2, $s6, 976
-	add.d	$a3, $fp, $a2
-	vld	$vr0, $a3, 8
-	ldx.d	$a2, $fp, $a2
-	ori	$a3, $s6, 1000
-	xvldx	$xr1, $fp, $a3
-	vst	$vr0, $a1, 8
-	stx.d	$a2, $fp, $a0
-	ori	$a0, $s7, 2920
-	xvstx	$xr1, $fp, $a0
-	ori	$a0, $s6, 1032
-	xvldx	$xr0, $fp, $a0
-	ori	$a0, $s6, 1064
+	vld	$vr0, $a1, 8
+	ori	$a1, $s7, 2896
+	add.d	$a2, $fp, $a1
 	ldx.d	$a0, $fp, $a0
-	ori	$a1, $s7, 2952
-	xvstx	$xr0, $fp, $a1
-	ori	$a1, $s7, 2984
+	vst	$vr0, $a2, 8
+	ori	$a2, $s7, 2920
+	ori	$a3, $s6, 1000
+	vldx	$vr0, $fp, $a3
+	add.d	$a3, $fp, $a3
+	vld	$vr1, $a3, 16
+	add.d	$a3, $fp, $a2
+	vstx	$vr0, $fp, $a2
+	ori	$a2, $s6, 1032
+	vldx	$vr0, $fp, $a2
+	vst	$vr1, $a3, 16
 	stx.d	$a0, $fp, $a1
+	ori	$a0, $s7, 2952
+	vstx	$vr0, $fp, $a0
+	ori	$a0, $s6, 1048
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	ld.d	$a0, $a1, 16
+	ori	$a1, $s7, 2968
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	st.d	$a0, $a2, 16
 	ori	$a0, $s7, 3888
 	add.d	$a0, $fp, $a0
 	ori	$a1, $s6, 1968
@@ -913,9 +1457,13 @@ LzmaEnc_SaveState:                      # @LzmaEnc_SaveState
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s6, 2196
-	xvldx	$xr0, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	add.d	$a0, $fp, $a0
+	vld	$vr1, $a0, 16
 	ori	$a0, $s5, 20
-	xvstx	$xr0, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	add.d	$a0, $fp, $a0
+	vst	$vr1, $a0, 16
 	ori	$a0, $s4, 1496
 	vldx	$vr0, $fp, $a0
 	ori	$a3, $s0, 196
@@ -991,103 +1539,199 @@ LzmaEnc_RestoreState:                   # @LzmaEnc_RestoreState
 	lu12i.w	$s0, 71
 	ori	$a0, $s0, 212
 	ldx.w	$a0, $fp, $a0
-	ori	$a1, $s7, 2512
-	xvldx	$xr0, $fp, $a1
-	ori	$a1, $s7, 2992
-	xvldx	$xr1, $fp, $a1
 	ori	$a1, $s5, 592
-	xvstx	$xr0, $fp, $a1
+	add.d	$a2, $fp, $a1
+	ori	$a3, $s7, 2512
+	add.d	$a4, $fp, $a3
+	vldx	$vr0, $fp, $a3
+	vld	$vr1, $a4, 16
+	ori	$a3, $s7, 2992
+	add.d	$a4, $fp, $a3
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
+	vldx	$vr0, $fp, $a3
+	vld	$vr1, $a4, 16
 	ori	$a1, $s5, 1072
-	xvstx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
 	ori	$a1, $s7, 2544
-	xvldx	$xr0, $fp, $a1
-	ori	$a1, $s7, 3024
-	xvldx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 624
-	xvstx	$xr0, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
+	ori	$a1, $s7, 3024
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 1104
-	xvstx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
 	ori	$a1, $s7, 2576
-	xvldx	$xr0, $fp, $a1
-	ori	$a1, $s7, 3056
-	xvldx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 656
-	xvstx	$xr0, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
+	ori	$a1, $s7, 3056
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 1136
-	xvstx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
 	ori	$a1, $s7, 2608
-	xvldx	$xr0, $fp, $a1
-	ori	$a1, $s7, 3088
-	xvldx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 688
-	xvstx	$xr0, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
+	ori	$a1, $s7, 3088
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 1168
-	xvstx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
 	ori	$a1, $s7, 2640
-	xvldx	$xr0, $fp, $a1
-	ori	$a1, $s7, 3120
-	xvldx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 720
-	xvstx	$xr0, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
+	ori	$a1, $s7, 3120
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 1200
-	xvstx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
 	ori	$a1, $s7, 2672
-	xvldx	$xr0, $fp, $a1
-	ori	$a1, $s7, 3152
-	xvldx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 752
-	xvstx	$xr0, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
+	ori	$a1, $s7, 3152
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 1232
-	xvstx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
 	ori	$a1, $s7, 2704
-	xvldx	$xr0, $fp, $a1
-	ori	$a1, $s7, 3184
-	xvldx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 784
-	xvstx	$xr0, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
+	ori	$a1, $s7, 3184
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 1264
-	xvstx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
 	ori	$a1, $s7, 2736
-	xvldx	$xr0, $fp, $a1
-	ori	$a1, $s7, 3216
-	xvldx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 816
-	xvstx	$xr0, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
+	ori	$a1, $s7, 3216
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 1296
-	xvstx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
 	ori	$a1, $s7, 2768
-	xvldx	$xr0, $fp, $a1
-	ori	$a1, $s7, 3248
-	xvldx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 848
-	xvstx	$xr0, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
+	ori	$a1, $s7, 3248
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 1328
-	xvstx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
 	ori	$a1, $s7, 2800
-	xvldx	$xr0, $fp, $a1
-	ori	$a1, $s7, 3280
-	xvldx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 880
-	xvstx	$xr0, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
+	ori	$a1, $s7, 3280
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 1360
-	xvstx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
 	ori	$a1, $s7, 2832
-	xvldx	$xr0, $fp, $a1
-	ori	$a1, $s7, 3312
-	xvldx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 912
-	xvstx	$xr0, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
+	ori	$a1, $s7, 3312
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 1392
-	xvstx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
 	ori	$a1, $s7, 2864
-	xvldx	$xr0, $fp, $a1
-	ori	$a1, $s7, 3344
-	xvldx	$xr1, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vldx	$vr0, $fp, $a1
+	vld	$vr1, $a2, 16
 	ori	$a1, $s5, 944
-	xvstx	$xr0, $fp, $a1
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	vst	$vr1, $a2, 16
+	ori	$a1, $s7, 3344
+	vldx	$vr0, $fp, $a1
+	ori	$a2, $s5, 1424
+	add.d	$a1, $fp, $a1
+	vld	$vr1, $a1, 16
+	vstx	$vr0, $fp, $a2
 	stx.w	$a0, $fp, $s8
-	ori	$a0, $s5, 1424
-	xvstx	$xr1, $fp, $a0
+	add.d	$a0, $fp, $a2
+	vst	$vr1, $a0, 16
 	ori	$a0, $s5, 1456
 	add.d	$a0, $fp, $a0
 	ori	$a1, $s7, 3376
@@ -1095,26 +1739,34 @@ LzmaEnc_RestoreState:                   # @LzmaEnc_RestoreState
 	ori	$a2, $zero, 512
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s5, 976
+	ori	$a0, $s7, 2896
 	add.d	$a1, $fp, $a0
-	ori	$a2, $s7, 2896
-	add.d	$a3, $fp, $a2
-	vld	$vr0, $a3, 8
-	ldx.d	$a2, $fp, $a2
-	ori	$a3, $s7, 2920
-	xvldx	$xr1, $fp, $a3
-	vst	$vr0, $a1, 8
-	stx.d	$a2, $fp, $a0
-	ori	$a0, $s5, 1000
-	xvstx	$xr1, $fp, $a0
-	ori	$a0, $s7, 2952
-	xvldx	$xr0, $fp, $a0
-	ori	$a0, $s7, 2984
+	vld	$vr0, $a1, 8
+	ori	$a1, $s5, 976
+	add.d	$a2, $fp, $a1
 	ldx.d	$a0, $fp, $a0
-	ori	$a1, $s5, 1032
-	xvstx	$xr0, $fp, $a1
-	ori	$a1, $s5, 1064
+	vst	$vr0, $a2, 8
+	ori	$a2, $s5, 1000
+	ori	$a3, $s7, 2920
+	vldx	$vr0, $fp, $a3
+	add.d	$a3, $fp, $a3
+	vld	$vr1, $a3, 16
+	add.d	$a3, $fp, $a2
+	vstx	$vr0, $fp, $a2
+	ori	$a2, $s7, 2952
+	vldx	$vr0, $fp, $a2
+	vst	$vr1, $a3, 16
 	stx.d	$a0, $fp, $a1
+	ori	$a0, $s5, 1032
+	vstx	$vr0, $fp, $a0
+	ori	$a0, $s7, 2968
+	add.d	$a1, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	ld.d	$a0, $a1, 16
+	ori	$a1, $s5, 1048
+	add.d	$a2, $fp, $a1
+	vstx	$vr0, $fp, $a1
+	st.d	$a0, $a2, 16
 	ori	$a0, $s5, 1968
 	add.d	$a0, $fp, $a0
 	ori	$a1, $s7, 3888
@@ -1123,9 +1775,13 @@ LzmaEnc_RestoreState:                   # @LzmaEnc_RestoreState
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s6, 20
-	xvldx	$xr0, $fp, $a0
+	vldx	$vr0, $fp, $a0
+	add.d	$a0, $fp, $a0
+	vld	$vr1, $a0, 16
 	ori	$a0, $s5, 2196
-	xvstx	$xr0, $fp, $a0
+	vstx	$vr0, $fp, $a0
+	add.d	$a0, $fp, $a0
+	vst	$vr1, $a0, 16
 	ori	$a0, $s0, 196
 	vldx	$vr0, $fp, $a0
 	ori	$a3, $s4, 1496
@@ -1783,10 +2439,13 @@ LzmaEnc_Init:                           # @LzmaEnc_Init
 	st.d	$t2, $a7, 24
 	st.d	$zero, $a7, 56
 	st.w	$zero, $a7, 64
-	xvldi	$xr0, -2812
+	vldi	$vr0, -2812
 	ori	$a6, $zero, 3196
-	xvstx	$xr0, $a1, $a6
-	xvst	$xr0, $a2, 94
+	vstx	$vr0, $a1, $a6
+	vst	$vr0, $a2, 94
+	ori	$a6, $zero, 3212
+	vstx	$vr0, $a1, $a6
+	vst	$vr0, $a2, 110
 	ori	$a7, $zero, 3580
 	ori	$a6, $zero, 1024
 	stx.h	$a6, $a1, $a7
@@ -1794,58 +2453,105 @@ LzmaEnc_Init:                           # @LzmaEnc_Init
 	st.h	$a6, $a2, 46
 	st.h	$a6, $a2, 70
 	ori	$a7, $zero, 3228
-	xvstx	$xr0, $a1, $a7
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 126
+	ori	$a7, $zero, 3244
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 142
 	lu12i.w	$a7, 16384
 	ori	$t0, $a7, 1024
-	xvst	$xr0, $a2, 126
-	move	$a7, $t0
-	bstrins.d	$a7, $t0, 58, 32
-	stx.d	$a7, $a0, $t1
-	st.d	$a7, $a2, 24
-	st.d	$a7, $a2, 48
-	st.d	$a7, $a2, 72
-	ori	$t1, $zero, 3260
-	xvstx	$xr0, $a1, $t1
-	xvst	$xr0, $a2, 158
-	ori	$t1, $zero, 3292
-	xvstx	$xr0, $a1, $t1
-	xvst	$xr0, $a2, 190
-	ori	$t1, $zero, 3324
-	xvstx	$xr0, $a1, $t1
-	xvst	$xr0, $a2, 222
-	ori	$t1, $zero, 3356
-	xvstx	$xr0, $a1, $t1
-	xvst	$xr0, $a2, 254
-	st.h	$a6, $a2, 8
-	st.h	$a6, $a2, 32
-	st.h	$a6, $a2, 56
-	st.h	$a6, $a2, 80
-	ori	$t1, $zero, 3388
-	xvstx	$xr0, $a1, $t1
-	xvst	$xr0, $a2, 286
-	st.d	$a7, $a2, 10
-	st.d	$a7, $a2, 34
-	st.d	$a7, $a2, 58
-	st.d	$a7, $a2, 82
+	stx.w	$t0, $a0, $t1
+	st.w	$t0, $a2, 24
+	st.w	$t0, $a2, 48
+	st.w	$t0, $a2, 72
+	ori	$a7, $zero, 3260
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 158
+	ori	$a7, $zero, 3276
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 174
+	ori	$a7, $zero, 3292
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 190
+	ori	$a7, $zero, 3308
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 206
+	st.h	$a6, $a2, 4
+	st.h	$a6, $a2, 28
+	st.h	$a6, $a2, 52
+	st.h	$a6, $a2, 76
+	ori	$a7, $zero, 3324
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 222
+	ori	$a7, $zero, 3340
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 238
+	st.w	$t0, $a2, 6
+	st.w	$t0, $a2, 30
+	st.w	$t0, $a2, 54
+	st.w	$t0, $a2, 78
+	ori	$a7, $zero, 3356
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 254
+	ori	$a7, $zero, 3372
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 270
+	ori	$a7, $zero, 3388
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 286
+	ori	$a7, $zero, 3404
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 302
+	st.h	$a6, $a2, 10
+	st.h	$a6, $a2, 34
+	st.h	$a6, $a2, 58
+	st.h	$a6, $a2, 82
 	ori	$a7, $zero, 3420
-	xvstx	$xr0, $a1, $a7
-	xvst	$xr0, $a2, 318
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 318
+	ori	$a7, $zero, 3436
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 334
+	st.h	$a6, $a2, 12
+	st.h	$a6, $a2, 36
+	st.h	$a6, $a2, 60
+	st.h	$a6, $a2, 84
 	ori	$a7, $zero, 3452
-	xvstx	$xr0, $a1, $a7
-	xvst	$xr0, $a2, 350
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 350
+	ori	$a7, $zero, 3468
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 366
+	st.h	$a6, $a2, 14
+	st.h	$a6, $a2, 38
+	st.h	$a6, $a2, 62
+	st.h	$a6, $a2, 86
 	ori	$a7, $zero, 3484
-	xvstx	$xr0, $a1, $a7
-	xvst	$xr0, $a2, 382
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 382
+	ori	$a7, $zero, 3500
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 398
+	st.h	$a6, $a2, 16
+	st.h	$a6, $a2, 40
+	st.h	$a6, $a2, 64
+	st.h	$a6, $a2, 88
 	ori	$a7, $zero, 3516
-	xvstx	$xr0, $a1, $a7
-	xvst	$xr0, $a2, 414
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 414
+	ori	$a7, $zero, 3532
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 430
 	st.h	$a6, $a2, 18
 	st.h	$a6, $a2, 42
 	st.h	$a6, $a2, 66
 	st.h	$a6, $a2, 90
 	ori	$a7, $zero, 3548
-	xvstx	$xr0, $a1, $a7
-	xvst	$xr0, $a2, 446
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 446
+	ori	$a7, $zero, 3564
+	vstx	$vr0, $a1, $a7
+	vst	$vr0, $a2, 462
 	ori	$a7, $zero, 3172
 	ldx.w	$a7, $a1, $a7
 	ori	$t1, $zero, 3168
@@ -1869,15 +2575,15 @@ LzmaEnc_Init:                           # @LzmaEnc_Init
 	bstrpick.d	$t2, $t3, 31, 0
 	bstrpick.d	$t3, $t3, 31, 8
 	slli.d	$t3, $t3, 8
-	addi.d	$t4, $t1, 32
+	addi.d	$t4, $t1, 16
 	move	$t5, $t3
 	.p2align	4, , 16
 .LBB13_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $t4, -32
-	xvst	$xr0, $t4, 0
-	addi.d	$t5, $t5, -32
-	addi.d	$t4, $t4, 64
+	vst	$vr0, $t4, -16
+	vst	$vr0, $t4, 0
+	addi.d	$t5, $t5, -16
+	addi.d	$t4, $t4, 32
 	bnez	$t5, .LBB13_2
 # %bb.3:                                # %middle.block
 	beq	$t2, $t3, .LBB13_6
@@ -1895,103 +2601,191 @@ LzmaEnc_Init:                           # @LzmaEnc_Init
 	addi.d	$t1, $t1, 2
 	bnez	$t2, .LBB13_5
 .LBB13_6:                               # %iter.check108
-	xvst	$xr0, $a2, 478
-	xvst	$xr0, $a2, 510
-	xvst	$xr0, $a2, 542
-	xvst	$xr0, $a2, 574
-	xvst	$xr0, $a2, 606
-	xvst	$xr0, $a2, 638
-	xvst	$xr0, $a2, 670
-	xvst	$xr0, $a2, 702
-	xvst	$xr0, $a2, 734
-	xvst	$xr0, $a2, 766
-	xvst	$xr0, $a2, 798
-	xvst	$xr0, $a2, 830
-	xvst	$xr0, $a2, 862
-	xvst	$xr0, $a2, 894
-	xvst	$xr0, $a2, 926
-	xvst	$xr0, $a2, 958
-	xvst	$xr0, $a2, 990
-	xvst	$xr0, $a2, 1022
-	xvst	$xr0, $a2, 1054
-	xvst	$xr0, $a2, 1086
-	xvst	$xr0, $a2, 1118
-	xvst	$xr0, $a2, 1150
-	xvst	$xr0, $a2, 1182
+	vst	$vr0, $a2, 478
+	vst	$vr0, $a2, 494
+	vst	$vr0, $a2, 510
+	vst	$vr0, $a2, 526
+	vst	$vr0, $a2, 542
+	vst	$vr0, $a2, 558
+	vst	$vr0, $a2, 574
+	vst	$vr0, $a2, 590
+	vst	$vr0, $a2, 606
+	vst	$vr0, $a2, 622
+	vst	$vr0, $a2, 638
+	vst	$vr0, $a2, 654
+	vst	$vr0, $a2, 670
+	vst	$vr0, $a2, 686
+	vst	$vr0, $a2, 702
+	vst	$vr0, $a2, 718
+	vst	$vr0, $a2, 734
+	vst	$vr0, $a2, 750
+	vst	$vr0, $a2, 766
+	vst	$vr0, $a2, 782
+	vst	$vr0, $a2, 798
+	vst	$vr0, $a2, 814
+	vst	$vr0, $a2, 830
+	vst	$vr0, $a2, 846
+	vst	$vr0, $a2, 862
+	vst	$vr0, $a2, 878
+	vst	$vr0, $a2, 894
+	vst	$vr0, $a2, 910
+	vst	$vr0, $a2, 926
+	vst	$vr0, $a2, 942
+	vst	$vr0, $a2, 958
+	vst	$vr0, $a2, 974
+	vst	$vr0, $a2, 990
+	vst	$vr0, $a2, 1006
+	vst	$vr0, $a2, 1022
+	vst	$vr0, $a2, 1038
+	vst	$vr0, $a2, 1054
+	vst	$vr0, $a2, 1070
+	vst	$vr0, $a2, 1086
+	vst	$vr0, $a2, 1102
+	vst	$vr0, $a2, 1118
+	vst	$vr0, $a2, 1134
+	vst	$vr0, $a2, 1150
+	vst	$vr0, $a2, 1166
+	vst	$vr0, $a2, 1182
+	vst	$vr0, $a2, 1198
 	st.w	$t0, $a2, 1214
 	st.h	$a6, $a2, 1252
 	st.h	$a6, $a2, 1250
-	xvst	$xr0, $a2, 1254
-	xvst	$xr0, $a2, 1286
-	xvst	$xr0, $a2, 1318
-	xvst	$xr0, $a2, 1350
-	xvst	$xr0, $a2, 1382
-	xvst	$xr0, $a2, 1414
-	xvst	$xr0, $a2, 1446
-	xvst	$xr0, $a2, 1478
-	xvst	$xr0, $a2, 1510
-	xvst	$xr0, $a2, 1542
-	xvst	$xr0, $a2, 1574
-	xvst	$xr0, $a2, 1606
-	xvst	$xr0, $a2, 1638
-	xvst	$xr0, $a2, 1670
-	xvst	$xr0, $a2, 1702
-	xvst	$xr0, $a2, 1734
-	xvst	$xr0, $a2, 1766
-	xvst	$xr0, $a2, 1798
-	xvst	$xr0, $a2, 1830
-	xvst	$xr0, $a2, 1862
-	xvst	$xr0, $a2, 1894
-	xvst	$xr0, $a2, 1926
-	xvst	$xr0, $a2, 1958
-	xvst	$xr0, $a2, 1990
-	xvst	$xr0, $a2, 2022
-	xvst	$xr0, $a5, 0
-	xvst	$xr0, $a5, 32
-	xvst	$xr0, $a5, 64
-	xvst	$xr0, $a5, 96
-	xvst	$xr0, $a5, 128
-	xvst	$xr0, $a5, 160
-	xvst	$xr0, $a5, 192
+	vst	$vr0, $a2, 1254
+	vst	$vr0, $a2, 1270
+	vst	$vr0, $a2, 1286
+	vst	$vr0, $a2, 1302
+	vst	$vr0, $a2, 1318
+	vst	$vr0, $a2, 1334
+	vst	$vr0, $a2, 1350
+	vst	$vr0, $a2, 1366
+	vst	$vr0, $a2, 1382
+	vst	$vr0, $a2, 1398
+	vst	$vr0, $a2, 1414
+	vst	$vr0, $a2, 1430
+	vst	$vr0, $a2, 1446
+	vst	$vr0, $a2, 1462
+	vst	$vr0, $a2, 1478
+	vst	$vr0, $a2, 1494
+	vst	$vr0, $a2, 1510
+	vst	$vr0, $a2, 1526
+	vst	$vr0, $a2, 1542
+	vst	$vr0, $a2, 1558
+	vst	$vr0, $a2, 1574
+	vst	$vr0, $a2, 1590
+	vst	$vr0, $a2, 1606
+	vst	$vr0, $a2, 1622
+	vst	$vr0, $a2, 1638
+	vst	$vr0, $a2, 1654
+	vst	$vr0, $a2, 1670
+	vst	$vr0, $a2, 1686
+	vst	$vr0, $a2, 1702
+	vst	$vr0, $a2, 1718
+	vst	$vr0, $a2, 1734
+	vst	$vr0, $a2, 1750
+	vst	$vr0, $a2, 1766
+	vst	$vr0, $a2, 1782
+	vst	$vr0, $a2, 1798
+	vst	$vr0, $a2, 1814
+	vst	$vr0, $a2, 1830
+	vst	$vr0, $a2, 1846
+	vst	$vr0, $a2, 1862
+	vst	$vr0, $a2, 1878
+	vst	$vr0, $a2, 1894
+	vst	$vr0, $a2, 1910
+	vst	$vr0, $a2, 1926
+	vst	$vr0, $a2, 1942
+	vst	$vr0, $a2, 1958
+	vst	$vr0, $a2, 1974
+	vst	$vr0, $a2, 1990
+	vst	$vr0, $a2, 2006
+	vst	$vr0, $a2, 2022
+	vst	$vr0, $a2, 2038
+	vst	$vr0, $a5, 0
+	vst	$vr0, $a5, 16
+	vst	$vr0, $a5, 32
+	vst	$vr0, $a5, 48
+	vst	$vr0, $a5, 64
+	vst	$vr0, $a5, 80
+	vst	$vr0, $a5, 96
+	vst	$vr0, $a5, 112
+	vst	$vr0, $a5, 128
+	vst	$vr0, $a5, 144
+	vst	$vr0, $a5, 160
+	vst	$vr0, $a5, 176
+	vst	$vr0, $a5, 192
+	vst	$vr0, $a5, 208
 	st.h	$a6, $a3, 0
 	lu12i.w	$t0, 4
 	ori	$t0, $t0, 1316
 	stx.h	$a6, $a5, $t0
-	xvst	$xr0, $a3, 2
-	xvst	$xr0, $a3, 34
-	xvst	$xr0, $a3, 66
-	xvst	$xr0, $a3, 98
-	xvst	$xr0, $a3, 130
-	xvst	$xr0, $a3, 162
-	xvst	$xr0, $a3, 194
-	xvst	$xr0, $a3, 226
-	xvst	$xr0, $a3, 258
-	xvst	$xr0, $a3, 290
-	xvst	$xr0, $a3, 322
-	xvst	$xr0, $a3, 354
-	xvst	$xr0, $a3, 386
-	xvst	$xr0, $a3, 418
-	xvst	$xr0, $a3, 450
-	xvst	$xr0, $a3, 482
-	xvst	$xr0, $a3, 514
-	xvst	$xr0, $a3, 546
-	xvst	$xr0, $a3, 578
-	xvst	$xr0, $a3, 610
-	xvst	$xr0, $a3, 642
-	xvst	$xr0, $a3, 674
-	xvst	$xr0, $a3, 706
-	xvst	$xr0, $a3, 738
-	xvst	$xr0, $a3, 770
-	xvst	$xr0, $a3, 802
-	xvst	$xr0, $a3, 834
-	xvst	$xr0, $a3, 866
-	xvst	$xr0, $a3, 898
-	xvst	$xr0, $a3, 930
-	xvst	$xr0, $a3, 962
-	xvst	$xr0, $a3, 994
+	vst	$vr0, $a3, 2
+	vst	$vr0, $a3, 18
+	vst	$vr0, $a3, 34
+	vst	$vr0, $a3, 50
+	vst	$vr0, $a3, 66
+	vst	$vr0, $a3, 82
+	vst	$vr0, $a3, 98
+	vst	$vr0, $a3, 114
+	vst	$vr0, $a3, 130
+	vst	$vr0, $a3, 146
+	vst	$vr0, $a3, 162
+	vst	$vr0, $a3, 178
+	vst	$vr0, $a3, 194
+	vst	$vr0, $a3, 210
+	vst	$vr0, $a3, 226
+	vst	$vr0, $a3, 242
+	vst	$vr0, $a3, 258
+	vst	$vr0, $a3, 274
+	vst	$vr0, $a3, 290
+	vst	$vr0, $a3, 306
+	vst	$vr0, $a3, 322
+	vst	$vr0, $a3, 338
+	vst	$vr0, $a3, 354
+	vst	$vr0, $a3, 370
+	vst	$vr0, $a3, 386
+	vst	$vr0, $a3, 402
+	vst	$vr0, $a3, 418
+	vst	$vr0, $a3, 434
+	vst	$vr0, $a3, 450
+	vst	$vr0, $a3, 466
+	vst	$vr0, $a3, 482
+	vst	$vr0, $a3, 498
+	vst	$vr0, $a3, 514
+	vst	$vr0, $a3, 530
+	vst	$vr0, $a3, 546
+	vst	$vr0, $a3, 562
+	vst	$vr0, $a3, 578
+	vst	$vr0, $a3, 594
+	vst	$vr0, $a3, 610
+	vst	$vr0, $a3, 626
+	vst	$vr0, $a3, 642
+	vst	$vr0, $a3, 658
+	vst	$vr0, $a3, 674
+	vst	$vr0, $a3, 690
+	vst	$vr0, $a3, 706
+	vst	$vr0, $a3, 722
+	vst	$vr0, $a3, 738
+	vst	$vr0, $a3, 754
+	vst	$vr0, $a3, 770
+	vst	$vr0, $a3, 786
+	vst	$vr0, $a3, 802
+	vst	$vr0, $a3, 818
+	vst	$vr0, $a3, 834
+	vst	$vr0, $a3, 850
+	vst	$vr0, $a3, 866
+	vst	$vr0, $a3, 882
+	vst	$vr0, $a3, 898
+	vst	$vr0, $a3, 914
+	vst	$vr0, $a3, 930
+	vst	$vr0, $a3, 946
+	vst	$vr0, $a3, 962
+	vst	$vr0, $a3, 978
+	vst	$vr0, $a3, 994
+	vst	$vr0, $a3, 1010
+	vst	$vr0, $a2, 1218
 	ori	$a3, $zero, 3176
 	ldx.wu	$a3, $a1, $a3
-	xvst	$xr0, $a2, 1218
+	vst	$vr0, $a2, 1234
 	stptr.d	$zero, $a0, 2856
 	st.w	$zero, $a1, 0
 	sll.w	$a0, $a4, $a3

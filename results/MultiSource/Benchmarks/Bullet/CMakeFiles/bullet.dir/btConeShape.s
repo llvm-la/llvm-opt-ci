@@ -418,17 +418,17 @@ _ZNK11btConeShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector
 _ZNK11btConeShape24localGetSupportingVertexERK9btVector3: # @_ZNK11btConeShape24localGetSupportingVertexERK9btVector3
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -176
-	.cfi_def_cfa_offset 176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 136                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 128                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 120                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 112                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 104                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 120                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 112                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 104                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 96                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 88                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -460,7 +460,7 @@ _ZNK11btConeShape24localGetSupportingVertexERK9btVector3: # @_ZNK11btConeShape24
 	bcnez	$fcc0, .LBB8_2
 # %bb.1:
 	slli.d	$a2, $a2, 2
-	addi.d	$a3, $sp, 80
+	addi.d	$a3, $sp, 64
 	ld.w	$a1, $fp, 84
 	stx.w	$zero, $a2, $a3
 	b	.LBB8_5
@@ -481,14 +481,14 @@ _ZNK11btConeShape24localGetSupportingVertexERK9btVector3: # @_ZNK11btConeShape24
 	fld.s	$fa4, $fp, 68
 	fdiv.s	$fa3, $fa4, $fa3
 	fmul.s	$fa2, $fa2, $fa3
-	addi.d	$a3, $sp, 80
+	addi.d	$a3, $sp, 64
 	fstx.s	$fa2, $a2, $a3
 	fneg.s	$fa0, $fa0
 	fstx.s	$fa0, $a0, $a3
 	fmul.s	$fa0, $fa1, $fa3
 	b	.LBB8_6
 .LBB8_4:
-	addi.d	$a3, $sp, 80
+	addi.d	$a3, $sp, 64
 	stx.w	$zero, $a2, $a3
 	fneg.s	$fa0, $fa0
 .LBB8_5:                                # %_ZNK11btConeShape16coneLocalSupportERK9btVector3.exit
@@ -496,15 +496,15 @@ _ZNK11btConeShape24localGetSupportingVertexERK9btVector3: # @_ZNK11btConeShape24
 	movgr2fr.w	$fa0, $zero
 .LBB8_6:                                # %_ZNK11btConeShape16coneLocalSupportERK9btVector3.exit
 	slli.d	$a0, $a1, 2
-	addi.d	$a1, $sp, 80
+	addi.d	$a1, $sp, 64
 	ld.d	$a2, $fp, 0
 	fstx.s	$fa0, $a0, $a1
-	vld	$vr0, $sp, 80
+	vld	$vr0, $sp, 64
 	ld.d	$a1, $a2, 88
 	vpickve2gr.w	$s1, $vr0, 1
-	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
 	vshuf4i.w	$vr0, $vr0, 8
-	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	movgr2fr.w	$fa1, $zero
@@ -546,16 +546,16 @@ _ZNK11btConeShape24localGetSupportingVertexERK9btVector3: # @_ZNK11btConeShape24
 	fmul.s	$fa0, $fa0, $fa2
 	fadd.s	$fa2, $fa3, $fs2
 	vextrins.w	$vr0, $vr1, 16
-	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
+	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	vfadd.s	$vr1, $vr0, $vr1
 	movfr2gr.s	$s1, $fa2
-	xvori.b	$xr0, $xr1, 0
 	b	.LBB8_9
 .LBB8_8:
-	xvld	$xr0, $sp, 32                   # 32-byte Folded Reload
+	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 .LBB8_9:
-	vext2xv.du.wu	$xr0, $xr0
-	vld	$vr1, $sp, 64                   # 16-byte Folded Reload
+	vrepli.b	$vr0, 0
+	vilvl.w	$vr0, $vr0, $vr1
+	vld	$vr1, $sp, 48                   # 16-byte Folded Reload
 	vpickve2gr.d	$a0, $vr1, 1
 	bstrins.d	$a0, $zero, 31, 0
 	slli.d	$a1, $s1, 32
@@ -564,16 +564,16 @@ _ZNK11btConeShape24localGetSupportingVertexERK9btVector3: # @_ZNK11btConeShape24
 	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	vpickve2gr.d	$a1, $vr0, 1
-	fld.d	$fs4, $sp, 104                  # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 112                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 120                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 128                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 136                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+	fld.d	$fs4, $sp, 88                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 96                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 104                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 112                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 120                  # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .Lfunc_end8:
 	.size	_ZNK11btConeShape24localGetSupportingVertexERK9btVector3, .Lfunc_end8-_ZNK11btConeShape24localGetSupportingVertexERK9btVector3

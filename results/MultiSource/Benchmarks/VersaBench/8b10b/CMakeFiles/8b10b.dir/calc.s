@@ -116,17 +116,13 @@ resetDisparity:                         # @resetDisparity
 .Lfunc_end3:
 	.size	resetDisparity, .Lfunc_end3-resetDisparity
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function bigTableSetup
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function bigTableSetup
 .LCPI4_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 	.text
 	.globl	bigTableSetup
 	.p2align	2
@@ -135,18 +131,19 @@ resetDisparity:                         # @resetDisparity
 bigTableSetup:                          # @bigTableSetup
 # %bb.0:                                # %vector.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI4_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI4_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI4_0)
 	lu12i.w	$a0, -1
-	xvrepli.w	$xr1, 1
-	xvrepli.w	$xr2, 7
+	vrepli.w	$vr1, 1
+	vrepli.w	$vr2, 7
 	pcalau12i	$a1, %pc_hi20(lookupTable5B)
 	addi.d	$a1, $a1, %pc_lo12(lookupTable5B)
+	vrepli.b	$vr3, 0
 	pcalau12i	$a2, %pc_hi20(lookupTable3B)
 	addi.d	$a2, $a2, %pc_lo12(lookupTable3B)
 	lu12i.w	$a3, 16
 	addi.d	$a4, $zero, -1
-	xvldi	$xr3, -3583
-	xvrepli.w	$xr4, 29
+	vldi	$vr4, -3583
+	vrepli.w	$vr5, 29
 	pcalau12i	$a5, %pc_hi20(bigTable)
 	addi.d	$a5, $a5, %pc_lo12(bigTable)
 	move	$a6, $zero
@@ -154,97 +151,79 @@ bigTableSetup:                          # @bigTableSetup
 	.p2align	4, , 16
 .LBB4_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvsrli.w	$xr5, $xr0, 9
-	xvsrli.w	$xr6, $xr0, 8
-	xvand.v	$xr7, $xr6, $xr1
-	xvpickve2gr.w	$t0, $xr6, 0
-	move	$t1, $a6
+	vsrli.w	$vr6, $vr0, 9
+	vsrli.w	$vr7, $vr0, 8
+	vand.v	$vr8, $vr7, $vr1
+	vpickve2gr.w	$t0, $vr7, 0
+	srli.d	$t1, $a6, 3
 	bstrins.d	$t1, $t0, 63, 5
-	xvand.v	$xr6, $xr0, $xr2
-	xvslli.w	$xr7, $xr7, 3
-	xvor.v	$xr6, $xr7, $xr6
+	vand.v	$vr7, $vr0, $vr2
+	vslli.w	$vr8, $vr8, 3
+	vor.v	$vr7, $vr8, $vr7
 	andi	$t0, $t1, 63
 	slli.d	$t0, $t0, 2
 	ldx.wu	$t0, $a1, $t0
-	xvpermi.q	$xr7, $xr6, 1
-	vext2xv.du.wu	$xr7, $xr7
-	vext2xv.du.wu	$xr6, $xr6
-	xvpickve2gr.d	$t1, $xr6, 0
-	xvpickve2gr.d	$t2, $xr6, 1
-	xvpickve2gr.d	$t3, $xr6, 2
-	xvpickve2gr.d	$t4, $xr6, 3
-	xvpickve2gr.d	$t5, $xr7, 0
-	xvpickve2gr.d	$t6, $xr7, 1
-	xvpickve2gr.d	$t7, $xr7, 2
-	xvpickve2gr.d	$t8, $xr7, 3
+	vilvh.w	$vr8, $vr3, $vr7
+	vilvl.w	$vr7, $vr3, $vr7
+	vpickve2gr.d	$t1, $vr7, 0
+	vpickve2gr.d	$t2, $vr7, 1
+	vpickve2gr.d	$t3, $vr8, 0
+	vpickve2gr.d	$t4, $vr8, 1
 	slli.d	$t1, $t1, 2
 	slli.d	$t2, $t2, 2
 	slli.d	$t3, $t3, 2
 	slli.d	$t4, $t4, 2
-	slli.d	$t5, $t5, 2
-	slli.d	$t6, $t6, 2
-	slli.d	$t7, $t7, 2
-	slli.d	$t8, $t8, 2
 	ldx.w	$t1, $a2, $t1
 	ldx.w	$t2, $a2, $t2
 	ldx.w	$t3, $a2, $t3
 	ldx.w	$t4, $a2, $t4
-	ldx.w	$t5, $a2, $t5
-	ldx.w	$t6, $a2, $t6
-	ldx.w	$t7, $a2, $t7
-	ldx.w	$t8, $a2, $t8
-	vinsgr2vr.w	$vr6, $t1, 0
-	vinsgr2vr.w	$vr6, $t2, 1
-	vinsgr2vr.w	$vr6, $t3, 2
-	vinsgr2vr.w	$vr6, $t4, 3
-	vinsgr2vr.w	$vr7, $t5, 0
-	vinsgr2vr.w	$vr7, $t6, 1
-	vinsgr2vr.w	$vr7, $t7, 2
-	vinsgr2vr.w	$vr7, $t8, 3
-	xvpermi.q	$xr6, $xr7, 2
+	vinsgr2vr.w	$vr7, $t1, 0
+	vinsgr2vr.w	$vr7, $t2, 1
+	vinsgr2vr.w	$vr7, $t3, 2
+	vinsgr2vr.w	$vr7, $t4, 3
 	and	$t1, $t0, $a3
 	sltui	$t1, $t1, 1
 	andi	$t2, $t0, 994
-	xvreplgr2vr.w	$xr7, $t2
+	vreplgr2vr.w	$vr8, $t2
 	bstrpick.d	$t3, $t0, 18, 18
-	xvreplgr2vr.w	$xr8, $t3
-	xvseq.w	$xr8, $xr5, $xr8
+	vreplgr2vr.w	$vr9, $t3
+	vseq.w	$vr9, $vr6, $vr9
 	xori	$t2, $t2, 994
-	xvreplgr2vr.w	$xr9, $t2
-	xvbitsel.v	$xr8, $xr9, $xr7, $xr8
+	vreplgr2vr.w	$vr10, $t2
+	vbitsel.v	$vr9, $vr10, $vr8, $vr9
 	bstrpick.d	$t0, $t0, 19, 19
-	xvreplgr2vr.w	$xr9, $t0
+	vreplgr2vr.w	$vr10, $t0
 	maskeqz	$t0, $a4, $t1
-	xvreplgr2vr.w	$xr10, $t0
-	xvand.v	$xr9, $xr9, $xr10
-	xvxor.v	$xr5, $xr5, $xr9
-	xvbitsel.v	$xr7, $xr7, $xr8, $xr10
-	xvand.v	$xr8, $xr6, $xr3
-	xvseqi.w	$xr8, $xr8, 0
-	xvand.v	$xr9, $xr6, $xr4
-	xvsrli.w	$xr10, $xr6, 18
-	xvand.v	$xr10, $xr10, $xr1
-	xvseq.w	$xr10, $xr5, $xr10
-	xvxor.v	$xr11, $xr9, $xr4
-	xvsrli.w	$xr6, $xr6, 19
-	xvand.v	$xr6, $xr6, $xr8
-	xvand.v	$xr6, $xr6, $xr1
-	xvxor.v	$xr6, $xr5, $xr6
-	xvandn.v	$xr8, $xr10, $xr8
-	xvbitsel.v	$xr8, $xr9, $xr11, $xr8
-	xvor.v	$xr7, $xr7, $xr8
-	xvslli.w	$xr6, $xr6, 16
-	xvor.v	$xr6, $xr7, $xr6
+	vreplgr2vr.w	$vr11, $t0
+	vand.v	$vr10, $vr10, $vr11
+	vxor.v	$vr6, $vr6, $vr10
+	vbitsel.v	$vr8, $vr8, $vr9, $vr11
+	vand.v	$vr9, $vr7, $vr4
+	vseqi.w	$vr9, $vr9, 0
+	vand.v	$vr10, $vr7, $vr5
+	vsrli.w	$vr11, $vr7, 18
+	vand.v	$vr11, $vr11, $vr1
+	vseq.w	$vr11, $vr6, $vr11
+	vxor.v	$vr12, $vr10, $vr5
+	vsrli.w	$vr7, $vr7, 19
+	vand.v	$vr7, $vr7, $vr9
+	vand.v	$vr7, $vr7, $vr1
+	vxor.v	$vr7, $vr6, $vr7
+	vandn.v	$vr9, $vr11, $vr9
+	vbitsel.v	$vr9, $vr10, $vr12, $vr9
+	vor.v	$vr8, $vr8, $vr9
+	vslli.w	$vr7, $vr7, 16
+	vor.v	$vr7, $vr8, $vr7
 	add.d	$t0, $a5, $a0
-	xvstx	$xr6, $t0, $a7
-	xvaddi.wu	$xr0, $xr0, 8
-	addi.d	$a0, $a0, 32
-	addi.w	$a6, $a6, 1
+	vstx	$vr7, $t0, $a7
+	vaddi.wu	$vr0, $vr0, 4
+	addi.d	$a0, $a0, 16
+	addi.w	$a6, $a6, 4
 	bnez	$a0, .LBB4_1
 # %bb.2:                                # %middle.block
 	pcalau12i	$a0, %pc_hi20(disparity1)
 	addi.d	$a0, $a0, %pc_lo12(disparity1)
-	xvstelm.w	$xr5, $a0, 0, 7
+	vstelm.w	$vr6, $a0, 0, 3
 	pcalau12i	$a0, %pc_hi20(disparity0)
 	st.w	$zero, $a0, %pc_lo12(disparity0)
 	ret

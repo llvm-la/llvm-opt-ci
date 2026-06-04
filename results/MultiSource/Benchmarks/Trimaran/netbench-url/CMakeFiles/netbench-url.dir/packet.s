@@ -35,10 +35,12 @@ get_next_packet:                        # @get_next_packet
 	pcalau12i	$a2, %pc_hi20(headers)
 	addi.d	$a2, $a2, %pc_lo12(headers)
 	add.d	$a3, $a2, $a1
-	xvldx	$xr0, $a2, $a1
+	vldx	$vr0, $a2, $a1
 	ld.w	$a1, $a3, 32
-	xvst	$xr0, $a0, 0
+	vld	$vr1, $a3, 16
+	vst	$vr0, $a0, 0
 	st.w	$a1, $a0, 32
+	vst	$vr1, $a0, 16
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16

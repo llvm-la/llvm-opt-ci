@@ -124,28 +124,49 @@ AND_P:                                  # @AND_P
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(BYTES_TO_BITS)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 112
-	xvld	$xr1, $sp, 16
-	xvseqi.w	$xr0, $xr0, 0
-	xvseqi.w	$xr1, $xr1, 0
-	xvor.v	$xr0, $xr1, $xr0
-	xvrepli.w	$xr1, 1
-	xvld	$xr2, $sp, 144
-	xvld	$xr3, $sp, 48
-	xvandn.v	$xr0, $xr0, $xr1
-	xvst	$xr0, $sp, 112
-	xvseqi.w	$xr0, $xr2, 0
-	xvseqi.w	$xr2, $xr3, 0
-	xvor.v	$xr0, $xr2, $xr0
-	xvld	$xr2, $sp, 176
-	xvld	$xr3, $sp, 80
-	xvandn.v	$xr0, $xr0, $xr1
-	xvst	$xr0, $sp, 144
-	xvseqi.w	$xr0, $xr2, 0
-	xvseqi.w	$xr2, $xr3, 0
-	xvor.v	$xr0, $xr2, $xr0
-	xvandn.v	$xr0, $xr0, $xr1
-	xvst	$xr0, $sp, 176
+	vld	$vr0, $sp, 112
+	vld	$vr1, $sp, 16
+	vseqi.w	$vr0, $vr0, 0
+	vseqi.w	$vr1, $vr1, 0
+	vor.v	$vr0, $vr1, $vr0
+	vrepli.w	$vr1, 1
+	vld	$vr2, $sp, 128
+	vld	$vr3, $sp, 32
+	vandn.v	$vr0, $vr0, $vr1
+	vst	$vr0, $sp, 112
+	vseqi.w	$vr0, $vr2, 0
+	vseqi.w	$vr2, $vr3, 0
+	vor.v	$vr0, $vr2, $vr0
+	vld	$vr2, $sp, 144
+	vld	$vr3, $sp, 48
+	vandn.v	$vr0, $vr0, $vr1
+	vst	$vr0, $sp, 128
+	vseqi.w	$vr0, $vr2, 0
+	vseqi.w	$vr2, $vr3, 0
+	vor.v	$vr0, $vr2, $vr0
+	vld	$vr2, $sp, 160
+	vld	$vr3, $sp, 64
+	vandn.v	$vr0, $vr0, $vr1
+	vst	$vr0, $sp, 144
+	vseqi.w	$vr0, $vr2, 0
+	vseqi.w	$vr2, $vr3, 0
+	vor.v	$vr0, $vr2, $vr0
+	vld	$vr2, $sp, 176
+	vld	$vr3, $sp, 80
+	vandn.v	$vr0, $vr0, $vr1
+	vst	$vr0, $sp, 160
+	vseqi.w	$vr0, $vr2, 0
+	vseqi.w	$vr2, $vr3, 0
+	vor.v	$vr0, $vr2, $vr0
+	vld	$vr2, $sp, 192
+	vld	$vr3, $sp, 96
+	vandn.v	$vr0, $vr0, $vr1
+	vst	$vr0, $sp, 176
+	vseqi.w	$vr0, $vr2, 0
+	vseqi.w	$vr2, $vr3, 0
+	vor.v	$vr0, $vr2, $vr0
+	vandn.v	$vr0, $vr0, $vr1
+	vst	$vr0, $sp, 192
 	addi.d	$a0, $sp, 112
 	ori	$a1, $zero, 24
 	pcaddu18i	$ra, %call36(BITS_TO_BYTE)
@@ -1182,28 +1203,49 @@ OR_P:                                   # @OR_P
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(BYTES_TO_BITS)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 112
-	xvld	$xr1, $sp, 16
-	xvseqi.w	$xr0, $xr0, 0
-	xvseqi.w	$xr1, $xr1, 0
-	xvrepli.w	$xr2, 1
-	xvandn.v	$xr1, $xr1, $xr2
-	xvld	$xr3, $sp, 144
-	xvld	$xr4, $sp, 48
-	xvbitsel.v	$xr0, $xr2, $xr1, $xr0
-	xvst	$xr0, $sp, 112
-	xvseqi.w	$xr0, $xr3, 0
-	xvseqi.w	$xr1, $xr4, 0
-	xvandn.v	$xr1, $xr1, $xr2
-	xvld	$xr3, $sp, 176
-	xvld	$xr4, $sp, 80
-	xvbitsel.v	$xr0, $xr2, $xr1, $xr0
-	xvst	$xr0, $sp, 144
-	xvseqi.w	$xr0, $xr3, 0
-	xvseqi.w	$xr1, $xr4, 0
-	xvandn.v	$xr1, $xr1, $xr2
-	xvbitsel.v	$xr0, $xr2, $xr1, $xr0
-	xvst	$xr0, $sp, 176
+	vld	$vr0, $sp, 112
+	vld	$vr1, $sp, 16
+	vseqi.w	$vr0, $vr0, 0
+	vseqi.w	$vr1, $vr1, 0
+	vrepli.w	$vr2, 1
+	vandn.v	$vr1, $vr1, $vr2
+	vld	$vr3, $sp, 128
+	vld	$vr4, $sp, 32
+	vbitsel.v	$vr0, $vr2, $vr1, $vr0
+	vst	$vr0, $sp, 112
+	vseqi.w	$vr0, $vr3, 0
+	vseqi.w	$vr1, $vr4, 0
+	vandn.v	$vr1, $vr1, $vr2
+	vld	$vr3, $sp, 144
+	vld	$vr4, $sp, 48
+	vbitsel.v	$vr0, $vr2, $vr1, $vr0
+	vst	$vr0, $sp, 128
+	vseqi.w	$vr0, $vr3, 0
+	vseqi.w	$vr1, $vr4, 0
+	vandn.v	$vr1, $vr1, $vr2
+	vld	$vr3, $sp, 160
+	vld	$vr4, $sp, 64
+	vbitsel.v	$vr0, $vr2, $vr1, $vr0
+	vst	$vr0, $sp, 144
+	vseqi.w	$vr0, $vr3, 0
+	vseqi.w	$vr1, $vr4, 0
+	vandn.v	$vr1, $vr1, $vr2
+	vld	$vr3, $sp, 176
+	vld	$vr4, $sp, 80
+	vbitsel.v	$vr0, $vr2, $vr1, $vr0
+	vst	$vr0, $sp, 160
+	vseqi.w	$vr0, $vr3, 0
+	vseqi.w	$vr1, $vr4, 0
+	vandn.v	$vr1, $vr1, $vr2
+	vld	$vr3, $sp, 192
+	vld	$vr4, $sp, 96
+	vbitsel.v	$vr0, $vr2, $vr1, $vr0
+	vst	$vr0, $sp, 176
+	vseqi.w	$vr0, $vr3, 0
+	vseqi.w	$vr1, $vr4, 0
+	vandn.v	$vr1, $vr1, $vr2
+	vbitsel.v	$vr0, $vr2, $vr1, $vr0
+	vst	$vr0, $sp, 192
 	addi.d	$a0, $sp, 112
 	ori	$a1, $zero, 24
 	pcaddu18i	$ra, %call36(BITS_TO_BYTE)

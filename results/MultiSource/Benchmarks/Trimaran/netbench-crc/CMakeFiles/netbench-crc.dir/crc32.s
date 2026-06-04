@@ -1,11 +1,9 @@
 	.file	"crc32.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function gen_crc_table
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function gen_crc_table
 .LCPI0_0:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	gen_crc_table
 	.p2align	2
@@ -14,14 +12,14 @@
 gen_crc_table:                          # @gen_crc_table
 # %bb.0:                                # %vector.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
-	xvrepli.d	$xr1, 128
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
+	vrepli.d	$vr1, 128
 	lu12i.w	$a0, 19473
 	ori	$a0, $a0, 3511
-	xvreplgr2vr.d	$xr2, $a0
+	vreplgr2vr.d	$vr2, $a0
 	lu12i.w	$a0, -524288
 	lu32i.d	$a0, 0
-	xvreplgr2vr.d	$xr3, $a0
+	vreplgr2vr.d	$vr3, $a0
 	pcalau12i	$a0, %pc_hi20(crc_table)
 	addi.d	$a0, $a0, %pc_lo12(crc_table)
 	move	$a1, $zero
@@ -29,49 +27,49 @@ gen_crc_table:                          # @gen_crc_table
 	.p2align	4, , 16
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr4, $xr0, 25
-	xvand.v	$xr5, $xr0, $xr1
-	xvseqi.d	$xr5, $xr5, 0
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvand.v	$xr5, $xr4, $xr3
-	xvseqi.d	$xr5, $xr5, 0
-	xvslli.d	$xr4, $xr4, 1
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvand.v	$xr5, $xr4, $xr3
-	xvseqi.d	$xr5, $xr5, 0
-	xvslli.d	$xr4, $xr4, 1
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvand.v	$xr5, $xr4, $xr3
-	xvseqi.d	$xr5, $xr5, 0
-	xvslli.d	$xr4, $xr4, 1
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvand.v	$xr5, $xr4, $xr3
-	xvseqi.d	$xr5, $xr5, 0
-	xvslli.d	$xr4, $xr4, 1
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvand.v	$xr5, $xr4, $xr3
-	xvseqi.d	$xr5, $xr5, 0
-	xvslli.d	$xr4, $xr4, 1
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvand.v	$xr5, $xr4, $xr3
-	xvseqi.d	$xr5, $xr5, 0
-	xvslli.d	$xr4, $xr4, 1
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvand.v	$xr5, $xr4, $xr3
-	xvseqi.d	$xr5, $xr5, 0
-	xvslli.d	$xr4, $xr4, 1
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvstx	$xr4, $a0, $a1
-	addi.d	$a1, $a1, 32
-	xvaddi.du	$xr0, $xr0, 4
+	vslli.d	$vr4, $vr0, 25
+	vand.v	$vr5, $vr0, $vr1
+	vseqi.d	$vr5, $vr5, 0
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vand.v	$vr5, $vr4, $vr3
+	vseqi.d	$vr5, $vr5, 0
+	vslli.d	$vr4, $vr4, 1
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vand.v	$vr5, $vr4, $vr3
+	vseqi.d	$vr5, $vr5, 0
+	vslli.d	$vr4, $vr4, 1
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vand.v	$vr5, $vr4, $vr3
+	vseqi.d	$vr5, $vr5, 0
+	vslli.d	$vr4, $vr4, 1
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vand.v	$vr5, $vr4, $vr3
+	vseqi.d	$vr5, $vr5, 0
+	vslli.d	$vr4, $vr4, 1
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vand.v	$vr5, $vr4, $vr3
+	vseqi.d	$vr5, $vr5, 0
+	vslli.d	$vr4, $vr4, 1
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vand.v	$vr5, $vr4, $vr3
+	vseqi.d	$vr5, $vr5, 0
+	vslli.d	$vr4, $vr4, 1
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vand.v	$vr5, $vr4, $vr3
+	vseqi.d	$vr5, $vr5, 0
+	vslli.d	$vr4, $vr4, 1
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vstx	$vr4, $a0, $a1
+	addi.d	$a1, $a1, 16
+	vaddi.du	$vr0, $vr0, 2
 	bne	$a1, $a2, .LBB0_1
 # %bb.2:                                # %middle.block
 	ret
@@ -106,13 +104,11 @@ update_crc:                             # @update_crc
 .Lfunc_end1:
 	.size	update_crc, .Lfunc_end1-update_crc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI2_0:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	main
 	.p2align	2
@@ -136,14 +132,14 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(strtol)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(.LCPI2_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI2_0)
-	xvrepli.d	$xr1, 128
+	vld	$vr0, $a1, %pc_lo12(.LCPI2_0)
+	vrepli.d	$vr1, 128
 	lu12i.w	$a1, 19473
 	ori	$a1, $a1, 3511
-	xvreplgr2vr.d	$xr2, $a1
+	vreplgr2vr.d	$vr2, $a1
 	lu12i.w	$a1, -524288
 	lu32i.d	$a1, 0
-	xvreplgr2vr.d	$xr3, $a1
+	vreplgr2vr.d	$vr3, $a1
 	pcalau12i	$a1, %pc_hi20(crc_table)
 	addi.d	$s2, $a1, %pc_lo12(crc_table)
 	move	$a1, $zero
@@ -151,49 +147,49 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB2_2:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr4, $xr0, 25
-	xvand.v	$xr5, $xr0, $xr1
-	xvseqi.d	$xr5, $xr5, 0
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvand.v	$xr5, $xr4, $xr3
-	xvseqi.d	$xr5, $xr5, 0
-	xvslli.d	$xr4, $xr4, 1
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvand.v	$xr5, $xr4, $xr3
-	xvseqi.d	$xr5, $xr5, 0
-	xvslli.d	$xr4, $xr4, 1
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvand.v	$xr5, $xr4, $xr3
-	xvseqi.d	$xr5, $xr5, 0
-	xvslli.d	$xr4, $xr4, 1
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvand.v	$xr5, $xr4, $xr3
-	xvseqi.d	$xr5, $xr5, 0
-	xvslli.d	$xr4, $xr4, 1
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvand.v	$xr5, $xr4, $xr3
-	xvseqi.d	$xr5, $xr5, 0
-	xvslli.d	$xr4, $xr4, 1
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvand.v	$xr5, $xr4, $xr3
-	xvseqi.d	$xr5, $xr5, 0
-	xvslli.d	$xr4, $xr4, 1
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvand.v	$xr5, $xr4, $xr3
-	xvseqi.d	$xr5, $xr5, 0
-	xvslli.d	$xr4, $xr4, 1
-	xvxor.v	$xr6, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr6, $xr4, $xr5
-	xvstx	$xr4, $s2, $a1
-	addi.d	$a1, $a1, 32
-	xvaddi.du	$xr0, $xr0, 4
+	vslli.d	$vr4, $vr0, 25
+	vand.v	$vr5, $vr0, $vr1
+	vseqi.d	$vr5, $vr5, 0
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vand.v	$vr5, $vr4, $vr3
+	vseqi.d	$vr5, $vr5, 0
+	vslli.d	$vr4, $vr4, 1
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vand.v	$vr5, $vr4, $vr3
+	vseqi.d	$vr5, $vr5, 0
+	vslli.d	$vr4, $vr4, 1
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vand.v	$vr5, $vr4, $vr3
+	vseqi.d	$vr5, $vr5, 0
+	vslli.d	$vr4, $vr4, 1
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vand.v	$vr5, $vr4, $vr3
+	vseqi.d	$vr5, $vr5, 0
+	vslli.d	$vr4, $vr4, 1
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vand.v	$vr5, $vr4, $vr3
+	vseqi.d	$vr5, $vr5, 0
+	vslli.d	$vr4, $vr4, 1
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vand.v	$vr5, $vr4, $vr3
+	vseqi.d	$vr5, $vr5, 0
+	vslli.d	$vr4, $vr4, 1
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vand.v	$vr5, $vr4, $vr3
+	vseqi.d	$vr5, $vr5, 0
+	vslli.d	$vr4, $vr4, 1
+	vxor.v	$vr6, $vr4, $vr2
+	vbitsel.v	$vr4, $vr6, $vr4, $vr5
+	vstx	$vr4, $s2, $a1
+	addi.d	$a1, $a1, 16
+	vaddi.du	$vr0, $vr0, 2
 	bne	$a1, $a2, .LBB2_2
 # %bb.3:                                # %gen_crc_table.exit.preheader
 	addi.w	$fp, $a0, 0

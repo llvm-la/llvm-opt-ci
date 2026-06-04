@@ -284,29 +284,29 @@ _ZN13BenchmarkDemo11initPhysicsEv:      # @_ZN13BenchmarkDemo11initPhysicsEv
 	ld.d	$a0, $fp, 32
 	blez	$a1, .LBB3_21
 .LBB3_12:                               # %.lr.ph.i.i.i
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	move	$a2, $zero
 	bltu	$a1, $a3, .LBB3_17
 # %bb.13:                               # %.lr.ph.i.i.i
 	sub.d	$a3, $s1, $a0
-	ori	$a4, $zero, 64
+	ori	$a4, $zero, 32
 	bltu	$a3, $a4, .LBB3_17
 # %bb.14:                               # %vector.ph
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	addi.d	$a3, $a0, 32
-	addi.d	$a4, $s1, 32
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s1, 16
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB3_15:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB3_15
 # %bb.16:                               # %middle.block
 	beq	$a2, $a1, .LBB3_19
@@ -365,28 +365,32 @@ _ZN13BenchmarkDemo11initPhysicsEv:      # @_ZN13BenchmarkDemo11initPhysicsEv
 .LBB3_26:
 	pcalau12i	$a0, %pc_hi20(_ZTV20btDefaultMotionState+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV20btDefaultMotionState+16)
+	vld	$vr0, $s2, 0
+	vst	$vr0, $s1, 72
+	vld	$vr0, $s2, 16
 	st.d	$a0, $s1, 0
 	lu12i.w	$a0, 260096
 	st.w	$a0, $s1, 8
-	xvld	$xr0, $s2, 0
+	vst	$vr0, $s1, 88
+	vld	$vr0, $s2, 32
 	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr1, $s1, 12
 	st.w	$a0, $s1, 28
 	vst	$vr1, $s1, 32
-	xvst	$xr0, $s1, 72
-	xvld	$xr0, $s2, 32
+	vst	$vr0, $s1, 104
+	vld	$vr0, $s2, 48
 	st.w	$a0, $s1, 48
 	vst	$vr1, $s1, 52
 	st.w	$zero, $s1, 68
-	xvst	$xr0, $s1, 104
+	vst	$vr0, $s1, 120
 	st.w	$a0, $s1, 136
 	vst	$vr1, $s1, 140
 	st.w	$a0, $s1, 156
 	vst	$vr1, $s1, 160
 	st.w	$a0, $s1, 176
-	st.w	$zero, $s1, 204
 	st.d	$zero, $s1, 196
 	vst	$vr1, $s1, 180
+	st.w	$zero, $s1, 204
 	pcalau12i	$a1, %pc_hi20(.LCPI3_5)
 	vld	$vr0, $a1, %pc_lo12(.LCPI3_5)
 	st.w	$zero, $sp, 64
@@ -507,10 +511,12 @@ _ZN13BenchmarkDemo11initPhysicsEv:      # @_ZN13BenchmarkDemo11initPhysicsEv
 	jirl	$ra, $ra, 0
 .Ltmp24:                                # EH_LABEL
 # %bb.40:
-	xvld	$xr0, $a0, 0
-	vld	$vr1, $a0, 32
-	xvst	$xr0, $s2, 0
-	vst	$vr1, $s2, 32
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 32
+	vst	$vr0, $s2, 0
+	vst	$vr1, $s2, 16
+	vst	$vr2, $s2, 32
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $s2, 48
 	pcalau12i	$a0, %pc_hi20(_ZGVZN11btTransform11getIdentityEvE17identityTransform)
@@ -1539,8 +1545,8 @@ _ZN13BenchmarkDemo11createTest3Ev:      # @_ZN13BenchmarkDemo11createTest3Ev
 	st.w	$zero, $sp, 20
 	ori	$s2, $zero, 16
 	ori	$s3, $zero, 1
-	ori	$s4, $zero, 8
-	ori	$s5, $zero, 64
+	ori	$s4, $zero, 4
+	ori	$s5, $zero, 32
 	b	.LBB7_2
 	.p2align	4, , 16
 .LBB7_1:                                # %._crit_edge
@@ -1641,23 +1647,23 @@ _ZN13BenchmarkDemo11createTest3Ev:      # @_ZN13BenchmarkDemo11createTest3Ev
 	bltu	$a3, $s5, .LBB7_16
 # %bb.13:                               # %vector.ph
                                         #   in Loop: Header=BB7_6 Depth=2
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	addi.d	$a3, $a0, 32
-	addi.d	$a4, $s1, 32
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s1, 16
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB7_14:                               # %vector.body
                                         #   Parent Loop BB7_2 Depth=1
                                         #     Parent Loop BB7_6 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB7_14
 # %bb.15:                               # %middle.block
                                         #   in Loop: Header=BB7_6 Depth=2
@@ -4818,92 +4824,91 @@ GCC_except_table16:
 	.word	0xbf800000                      # float -1
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
-.LCPI17_2:
-	.word	0x80000000                      # float -0
-	.word	0x00000000                      # float 0
-	.word	0x3f800000                      # float 1
-	.word	0x00000000                      # float 0
-.LCPI17_4:
-	.word	0xbf800000                      # float -1
-	.word	0x80000000                      # float -0
-	.word	0xb33bbd2e                      # float -4.37113883E-8
-	.word	0x00000000                      # float 0
-.LCPI17_5:
-	.word	0x3f666666                      # float 0.899999976
-	.word	0x3e99999a                      # float 0.300000012
-	.word	0x3f800000                      # float 1
-	.word	0xbf490fdb                      # float -0.785398185
-.LCPI17_8:
-	.word	0x3f666666                      # float 0.899999976
-	.word	0x3e99999a                      # float 0.300000012
-	.word	0x3f800000                      # float 1
-	.word	0x00000000                      # float 0
-.LCPI17_11:
-	.word	0x3f666666                      # float 0.899999976
-	.word	0x3e99999a                      # float 0.300000012
-	.word	0x3f800000                      # float 1
-	.word	0xbfc90fdb                      # float -1.57079637
-.LCPI17_12:
-	.word	0x3f800000                      # float 1
-	.word	0x00000000                      # float 0
-	.word	0x00000000                      # float 0
-	.word	0x80000000                      # float -0
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI17_1:
 	.word	0xb33bbd2e                      # float -4.37113883E-8
 	.word	0x3f800000                      # float 1
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
+.LCPI17_2:
 	.word	0xbf800000                      # float -1
 	.word	0xb33bbd2e                      # float -4.37113883E-8
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
 .LCPI17_3:
+	.word	0x80000000                      # float -0
+	.word	0x00000000                      # float 0
+	.word	0x3f800000                      # float 1
+	.word	0x00000000                      # float 0
+.LCPI17_4:
 	.word	0xb33bbd2e                      # float -4.37113883E-8
 	.word	0x00000000                      # float 0
 	.word	0x3f800000                      # float 1
 	.word	0x00000000                      # float 0
+.LCPI17_5:
 	.word	0x80000000                      # float -0
 	.word	0x3f800000                      # float 1
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
 .LCPI17_6:
-	.word	0xb33bbd2e                      # float -4.37113883E-8
 	.word	0xbf800000                      # float -1
+	.word	0x80000000                      # float -0
+	.word	0xb33bbd2e                      # float -4.37113883E-8
 	.word	0x00000000                      # float 0
-	.word	0x00000000                      # float 0
+.LCPI17_7:
+	.word	0x3f666666                      # float 0.899999976
+	.word	0x3e99999a                      # float 0.300000012
+	.word	0x3f800000                      # float 1
+	.word	0xbf490fdb                      # float -0.785398185
+.LCPI17_8:
 	.word	0x3f800000                      # float 1
 	.word	0xb33bbd2e                      # float -4.37113883E-8
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
-.LCPI17_7:
+.LCPI17_9:
 	.word	0xbf3504f4                      # float -0.707106829
 	.word	0xbf3504f2                      # float -0.707106709
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
+.LCPI17_10:
 	.word	0x3f3504f2                      # float 0.707106709
 	.word	0xbf3504f4                      # float -0.707106829
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
-.LCPI17_9:
+.LCPI17_11:
+	.word	0x3f666666                      # float 0.899999976
+	.word	0x3e99999a                      # float 0.300000012
+	.word	0x3f800000                      # float 1
+	.word	0x00000000                      # float 0
+.LCPI17_12:
 	.word	0x3f3504f3                      # float 0.707106769
 	.word	0xbf3504f3                      # float -0.707106769
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
+.LCPI17_13:
 	.word	0x3f3504f3                      # float 0.707106769
 	.word	0x3f3504f3                      # float 0.707106769
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
-.LCPI17_10:
+.LCPI17_14:
 	.word	0xbf800000                      # float -1
 	.word	0x33bbbd2e                      # float 8.74227765E-8
 	.word	0x80000000                      # float -0
 	.word	0x00000000                      # float 0
+.LCPI17_15:
 	.word	0xb3bbbd2e                      # float -8.74227765E-8
 	.word	0xbf800000                      # float -1
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
+.LCPI17_16:
+	.word	0x3f666666                      # float 0.899999976
+	.word	0x3e99999a                      # float 0.300000012
+	.word	0x3f800000                      # float 1
+	.word	0xbfc90fdb                      # float -1.57079637
+.LCPI17_17:
+	.word	0x3f800000                      # float 1
+	.word	0x00000000                      # float 0
+	.word	0x00000000                      # float 0
+	.word	0x80000000                      # float -0
 	.section	.text._ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f,"axG",@progbits,_ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f,comdat
 	.weak	_ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f
 	.p2align	2
@@ -5138,7 +5143,7 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	jirl	$ra, $ra, 0
 .Ltmp281:                               # EH_LABEL
 # %bb.10:
-	fst.s	$fs3, $sp, 120                  # 4-byte Folded Spill
+	fst.s	$fs3, $sp, 112                  # 4-byte Folded Spill
 	fst.s	$fs2, $sp, 128                  # 4-byte Folded Spill
 	fst.s	$fs0, $sp, 68                   # 4-byte Folded Spill
 	st.d	$s1, $fp, 88
@@ -5174,16 +5179,16 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa2
 	bstrpick.d	$a1, $a1, 31, 0
-	lu12i.w	$s5, 260096
-	st.w	$s5, $sp, 288
+	lu12i.w	$s1, 260096
+	st.w	$s1, $sp, 288
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 208                  # 16-byte Folded Spill
 	vst	$vr0, $sp, 292
-	st.w	$s5, $sp, 308
+	st.w	$s1, $sp, 308
 	st.d	$a0, $sp, 336
 	ld.d	$a2, $fp, 16
 	vst	$vr0, $sp, 312
-	st.d	$s5, $sp, 328
+	st.d	$s1, $sp, 328
 	st.d	$a1, $sp, 344
 	vldi	$vr0, -1168
 	addi.d	$a1, $sp, 288
@@ -5212,14 +5217,14 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa1
 	bstrpick.d	$a1, $a1, 31, 0
-	st.w	$s5, $sp, 288
+	st.w	$s1, $sp, 288
 	vld	$vr0, $sp, 208                  # 16-byte Folded Reload
 	vst	$vr0, $sp, 292
-	st.w	$s5, $sp, 308
+	st.w	$s1, $sp, 308
 	st.d	$a0, $sp, 336
 	ld.d	$a2, $fp, 24
 	vst	$vr0, $sp, 312
-	st.d	$s5, $sp, 328
+	st.d	$s1, $sp, 328
 	st.d	$a1, $sp, 344
 	vldi	$vr0, -1168
 	addi.d	$a1, $sp, 288
@@ -5247,14 +5252,14 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa1
 	bstrpick.d	$a1, $a1, 31, 0
-	st.w	$s5, $sp, 288
+	st.w	$s1, $sp, 288
 	vld	$vr0, $sp, 208                  # 16-byte Folded Reload
 	vst	$vr0, $sp, 292
-	st.w	$s5, $sp, 308
+	st.w	$s1, $sp, 308
 	st.d	$a0, $sp, 336
 	ld.d	$a2, $fp, 32
 	vst	$vr0, $sp, 312
-	st.d	$s5, $sp, 328
+	st.d	$s1, $sp, 328
 	st.d	$a1, $sp, 344
 	vldi	$vr0, -1168
 	addi.d	$a1, $sp, 288
@@ -5289,14 +5294,14 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa2
 	bstrpick.d	$a1, $a1, 31, 0
-	st.w	$s5, $sp, 288
+	st.w	$s1, $sp, 288
 	vld	$vr0, $sp, 208                  # 16-byte Folded Reload
 	vst	$vr0, $sp, 292
-	st.w	$s5, $sp, 308
+	st.w	$s1, $sp, 308
 	st.d	$a0, $sp, 336
 	ld.d	$a2, $fp, 40
 	vst	$vr0, $sp, 312
-	st.d	$s5, $sp, 328
+	st.d	$s1, $sp, 328
 	st.d	$a1, $sp, 344
 	vldi	$vr0, -1168
 	addi.d	$a1, $sp, 288
@@ -5306,7 +5311,7 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	st.d	$a0, $fp, 128
 	fld.s	$fs1, $sp, 68                   # 4-byte Folded Reload
 	fmul.s	$fa2, $fs1, $fs2
-	fst.s	$fa2, $sp, 80                   # 4-byte Folded Spill
+	fst.s	$fa2, $sp, 160                  # 4-byte Folded Spill
 	fadd.s	$fa0, $fs0, $fa2
 	fmadd.s	$fa0, $fs7, $fs2, $fa0
 	fadd.s	$fa0, $fa0, $fs6
@@ -5322,14 +5327,14 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa2
 	bstrpick.d	$a1, $a1, 31, 0
-	st.w	$s5, $sp, 288
+	st.w	$s1, $sp, 288
 	vld	$vr0, $sp, 208                  # 16-byte Folded Reload
 	vst	$vr0, $sp, 292
-	st.w	$s5, $sp, 308
+	st.w	$s1, $sp, 308
 	st.d	$a0, $sp, 336
 	ld.d	$a2, $fp, 48
 	vst	$vr0, $sp, 312
-	st.d	$s5, $sp, 328
+	st.d	$s1, $sp, 328
 	st.d	$a1, $sp, 344
 	vldi	$vr0, -1168
 	addi.d	$a1, $sp, 288
@@ -5358,14 +5363,14 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa2
 	bstrpick.d	$a1, $a1, 31, 0
-	st.w	$s5, $sp, 288
+	st.w	$s1, $sp, 288
 	vld	$vr0, $sp, 208                  # 16-byte Folded Reload
 	vst	$vr0, $sp, 292
-	st.w	$s5, $sp, 308
+	st.w	$s1, $sp, 308
 	st.d	$a0, $sp, 336
 	ld.d	$a2, $fp, 56
 	vst	$vr0, $sp, 312
-	st.d	$s5, $sp, 328
+	st.d	$s1, $sp, 328
 	st.d	$a1, $sp, 344
 	vldi	$vr0, -1168
 	addi.d	$a1, $sp, 288
@@ -5373,7 +5378,7 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	pcaddu18i	$ra, %call36(_ZN7RagDoll20localCreateRigidBodyEfRK11btTransformP16btCollisionShape)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 144
-	fld.s	$fa2, $sp, 80                   # 4-byte Folded Reload
+	fld.s	$fa2, $sp, 160                  # 4-byte Folded Reload
 	fadd.s	$fa0, $fs0, $fa2
 	fmadd.s	$fa0, $fs7, $fs2, $fa0
 	fmov.s	$fs5, $fs6
@@ -5381,7 +5386,7 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	fmadd.s	$fa1, $fs0, $fs2, $fs1
 	fmadd.s	$fa1, $fs7, $fs2, $fa1
 	fadd.s	$fa1, $fa1, $fs4
-	fst.s	$fs0, $sp, 52                   # 4-byte Folded Spill
+	fst.s	$fs0, $sp, 48                   # 4-byte Folded Spill
 	fmadd.s	$fa2, $fs0, $fs2, $fa2
 	fadd.s	$fa2, $fs7, $fa2
 	fadd.s	$fa2, $fa2, $fs3
@@ -5391,14 +5396,14 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa2
 	bstrpick.d	$a1, $a1, 31, 0
-	st.w	$s5, $sp, 288
+	st.w	$s1, $sp, 288
 	vld	$vr0, $sp, 208                  # 16-byte Folded Reload
 	vst	$vr0, $sp, 292
-	st.w	$s5, $sp, 308
+	st.w	$s1, $sp, 308
 	st.d	$a0, $sp, 336
 	ld.d	$a2, $fp, 64
 	vst	$vr0, $sp, 312
-	st.d	$s5, $sp, 328
+	st.d	$s1, $sp, 328
 	st.d	$a1, $sp, 344
 	vldi	$vr0, -1168
 	addi.d	$a1, $sp, 288
@@ -5430,20 +5435,20 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	movfr2gr.s	$a1, $fa2
 	pcalau12i	$a2, %pc_hi20(.LCPI17_0)
 	vld	$vr1, $a2, %pc_lo12(.LCPI17_0)
-	vst	$vr1, $sp, 176                  # 16-byte Folded Spill
+	vst	$vr1, $sp, 160                  # 16-byte Folded Spill
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa0
 	bstrpick.d	$a1, $a1, 31, 0
 	vst	$vr1, $sp, 288
-	move	$a2, $s5
+	move	$a2, $s1
 	lu32i.d	$a2, -279250
-	lu52i.d	$s1, $a2, -1229
-	st.d	$s1, $sp, 304
+	lu52i.d	$s2, $a2, -1229
+	st.d	$s2, $sp, 304
 	st.d	$a0, $sp, 336
 	ld.d	$a2, $fp, 72
 	vld	$vr0, $sp, 208                  # 16-byte Folded Reload
 	vst	$vr0, $sp, 312
-	st.d	$s5, $sp, 328
+	st.d	$s1, $sp, 328
 	st.d	$a1, $sp, 344
 	vldi	$vr0, -1168
 	addi.d	$a1, $sp, 288
@@ -5470,13 +5475,13 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa0
 	bstrpick.d	$a1, $a1, 31, 0
-	vld	$vr0, $sp, 176                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
 	vst	$vr0, $sp, 288
-	st.d	$s1, $sp, 304
+	st.d	$s2, $sp, 304
 	vld	$vr0, $sp, 208                  # 16-byte Folded Reload
 	vst	$vr0, $sp, 312
 	ld.d	$a2, $fp, 80
-	st.d	$s5, $sp, 328
+	st.d	$s1, $sp, 328
 	st.d	$a0, $sp, 336
 	st.d	$a1, $sp, 344
 	vldi	$vr0, -1168
@@ -5503,14 +5508,18 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	movfr2gr.s	$a1, $fa2
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa0
-	pcalau12i	$a2, %pc_hi20(.LCPI17_1)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI17_1)
-	xvst	$xr0, $sp, 80                   # 32-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(.LCPI17_2)
-	vld	$vr1, $a2, %pc_lo12(.LCPI17_2)
-	vst	$vr1, $sp, 176                  # 16-byte Folded Spill
 	bstrpick.d	$a1, $a1, 31, 0
-	xvst	$xr0, $sp, 288
+	pcalau12i	$a2, %pc_hi20(.LCPI17_1)
+	vld	$vr2, $a2, %pc_lo12(.LCPI17_1)
+	vst	$vr2, $sp, 80                   # 16-byte Folded Spill
+	pcalau12i	$a2, %pc_hi20(.LCPI17_2)
+	vld	$vr0, $a2, %pc_lo12(.LCPI17_2)
+	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
+	pcalau12i	$a2, %pc_hi20(.LCPI17_3)
+	vld	$vr1, $a2, %pc_lo12(.LCPI17_3)
+	vst	$vr1, $sp, 176                  # 16-byte Folded Spill
+	vst	$vr2, $sp, 288
+	vst	$vr0, $sp, 304
 	ld.d	$a2, $fp, 88
 	vst	$vr1, $sp, 320
 	st.d	$a0, $sp, 336
@@ -5541,10 +5550,12 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa0
 	bstrpick.d	$a1, $a1, 31, 0
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 288
 	st.d	$a0, $sp, 336
 	ld.d	$a2, $fp, 96
-	xvld	$xr0, $sp, 80                   # 32-byte Folded Reload
-	xvst	$xr0, $sp, 288
+	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 304
 	vld	$vr0, $sp, 176                  # 16-byte Folded Reload
 	vst	$vr0, $sp, 320
 	st.d	$a1, $sp, 344
@@ -5559,15 +5570,15 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	ori	$a0, $a0, 2458
 	movgr2fr.w	$fs4, $a0
 	move	$a0, $a1
-	fld.s	$fs0, $sp, 120                  # 4-byte Folded Reload
+	fld.s	$fs0, $sp, 112                  # 4-byte Folded Reload
 	fmov.s	$fa0, $fs0
 	fmov.s	$fa1, $fs4
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody10setDampingEff)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 104
 	lu12i.w	$a1, 259276
-	ori	$s1, $a1, 3277
-	st.w	$s1, $a0, 232
+	ori	$s2, $a1, 3277
+	st.w	$s2, $a0, 232
 	lu52i.d	$s0, $s0, 1026
 	st.d	$s0, $a0, 504
 	ld.d	$a0, $fp, 112
@@ -5576,7 +5587,7 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody10setDampingEff)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 112
-	st.w	$s1, $a0, 232
+	st.w	$s2, $a0, 232
 	st.d	$s0, $a0, 504
 	ld.d	$a0, $fp, 120
 	fmov.s	$fa0, $fs0
@@ -5584,7 +5595,7 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody10setDampingEff)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 120
-	st.w	$s1, $a0, 232
+	st.w	$s2, $a0, 232
 	st.d	$s0, $a0, 504
 	ld.d	$a0, $fp, 128
 	fmov.s	$fa0, $fs0
@@ -5592,7 +5603,7 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody10setDampingEff)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 128
-	st.w	$s1, $a0, 232
+	st.w	$s2, $a0, 232
 	st.d	$s0, $a0, 504
 	ld.d	$a0, $fp, 136
 	fmov.s	$fa0, $fs0
@@ -5600,7 +5611,7 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody10setDampingEff)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 136
-	st.w	$s1, $a0, 232
+	st.w	$s2, $a0, 232
 	st.d	$s0, $a0, 504
 	ld.d	$a0, $fp, 144
 	fmov.s	$fa0, $fs0
@@ -5608,7 +5619,7 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody10setDampingEff)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 144
-	st.w	$s1, $a0, 232
+	st.w	$s2, $a0, 232
 	st.d	$s0, $a0, 504
 	ld.d	$a0, $fp, 152
 	fmov.s	$fa0, $fs0
@@ -5616,7 +5627,7 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody10setDampingEff)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 152
-	st.w	$s1, $a0, 232
+	st.w	$s2, $a0, 232
 	st.d	$s0, $a0, 504
 	ld.d	$a0, $fp, 160
 	fmov.s	$fa0, $fs0
@@ -5624,7 +5635,7 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody10setDampingEff)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 160
-	st.w	$s1, $a0, 232
+	st.w	$s2, $a0, 232
 	st.d	$s0, $a0, 504
 	ld.d	$a0, $fp, 168
 	fmov.s	$fa0, $fs0
@@ -5632,7 +5643,7 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody10setDampingEff)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 168
-	st.w	$s1, $a0, 232
+	st.w	$s2, $a0, 232
 	st.d	$s0, $a0, 504
 	ld.d	$a0, $fp, 176
 	fmov.s	$fa0, $fs0
@@ -5640,7 +5651,7 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody10setDampingEff)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 176
-	st.w	$s1, $a0, 232
+	st.w	$s2, $a0, 232
 	st.d	$s0, $a0, 504
 	ld.d	$a0, $fp, 184
 	fmov.s	$fa0, $fs0
@@ -5648,33 +5659,38 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody10setDampingEff)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 184
-	st.w	$s1, $a0, 232
-	movfr2gr.s	$a1, $fs7
-	pcalau12i	$a2, %pc_hi20(.LCPI17_3)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI17_3)
-	pcalau12i	$a2, %pc_hi20(.LCPI17_4)
-	vld	$vr2, $a2, %pc_lo12(.LCPI17_4)
+	st.w	$s2, $a0, 232
 	st.d	$s0, $a0, 504
-	bstrpick.d	$s2, $a1, 31, 0
-	xvst	$xr1, $sp, 288
-	vst	$vr2, $sp, 320
+	movfr2gr.s	$a0, $fs7
+	pcalau12i	$a1, %pc_hi20(.LCPI17_4)
+	vld	$vr1, $a1, %pc_lo12(.LCPI17_4)
+	pcalau12i	$a1, %pc_hi20(.LCPI17_5)
+	vld	$vr2, $a1, %pc_lo12(.LCPI17_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI17_6)
+	vld	$vr3, $a1, %pc_lo12(.LCPI17_6)
+	bstrpick.d	$s2, $a0, 31, 0
+	vst	$vr1, $sp, 288
+	vst	$vr2, $sp, 304
+	vst	$vr3, $sp, 320
 	fld.s	$fa0, $sp, 128                  # 4-byte Folded Reload
-	movfr2gr.s	$s6, $fa0
-	move	$a0, $a1
-	bstrins.d	$a0, $s6, 63, 32
-	st.d	$a0, $sp, 336
+	movfr2gr.s	$s4, $fa0
+	move	$a1, $a0
+	bstrins.d	$a1, $s4, 63, 32
+	st.d	$a1, $sp, 336
 	st.d	$s2, $sp, 344
-	xvst	$xr1, $sp, 144                  # 32-byte Folded Spill
-	xvst	$xr1, $sp, 224
+	vst	$vr1, $sp, 144                  # 16-byte Folded Spill
+	vst	$vr1, $sp, 224
 	vst	$vr2, $sp, 128                  # 16-byte Folded Spill
-	vst	$vr2, $sp, 256
-	lu12i.w	$a0, -269927
-	ori	$a0, $a0, 2458
-	movgr2fr.w	$fa0, $a0
+	vst	$vr2, $sp, 240
+	vst	$vr3, $sp, 112                  # 16-byte Folded Spill
+	vst	$vr3, $sp, 256
+	lu12i.w	$a1, -269927
+	ori	$a1, $a1, 2458
+	movgr2fr.w	$fa0, $a1
 	fmul.s	$fa0, $fs3, $fa0
-	movfr2gr.s	$a0, $fa0
-	bstrins.d	$a1, $a0, 63, 32
-	st.d	$a1, $sp, 272
+	movfr2gr.s	$a1, $fa0
+	bstrins.d	$a0, $a1, 63, 32
+	st.d	$a0, $sp, 272
 	st.d	$s2, $sp, 280
 	ori	$a0, $zero, 792
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -5691,8 +5707,8 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 .Ltmp292:                               # EH_LABEL
 # %bb.12:                               # %_ZN17btHingeConstraint8setLimitEfffff.exit
 	lu12i.w	$a0, 261264
-	pcalau12i	$a1, %pc_hi20(.LCPI17_5)
-	vld	$vr0, $a1, %pc_lo12(.LCPI17_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI17_7)
+	vld	$vr0, $a1, %pc_lo12(.LCPI17_7)
 	ori	$s3, $a0, 4059
 	ld.d	$a0, $fp, 8
 	st.w	$s3, $s0, 752
@@ -5703,11 +5719,13 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	ori	$a2, $zero, 1
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI17_6)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI17_6)
-	xvst	$xr1, $sp, 288
-	vld	$vr2, $sp, 176                  # 16-byte Folded Reload
-	vst	$vr2, $sp, 320
+	pcalau12i	$a0, %pc_hi20(.LCPI17_8)
+	vld	$vr1, $a0, %pc_lo12(.LCPI17_8)
+	vld	$vr2, $sp, 160                  # 16-byte Folded Reload
+	vst	$vr2, $sp, 288
+	vst	$vr1, $sp, 304
+	vld	$vr3, $sp, 176                  # 16-byte Folded Reload
+	vst	$vr3, $sp, 320
 	lu12i.w	$a0, 256409
 	ori	$a0, $a0, 2458
 	movgr2fr.w	$fa0, $a0
@@ -5717,9 +5735,10 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	or	$a0, $a0, $s2
 	st.d	$a0, $sp, 336
 	st.d	$s2, $sp, 344
-	xvst	$xr1, $sp, 80                   # 32-byte Folded Spill
-	xvst	$xr1, $sp, 224
-	vst	$vr2, $sp, 256
+	vst	$vr2, $sp, 224
+	vst	$vr1, $sp, 80                   # 16-byte Folded Spill
+	vst	$vr1, $sp, 240
+	vst	$vr3, $sp, 256
 	lu12i.w	$a0, -270091
 	ori	$a0, $a0, 3113
 	movgr2fr.w	$fa0, $a0
@@ -5743,43 +5762,48 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	jirl	$ra, $ra, 0
 .Ltmp295:                               # EH_LABEL
 # %bb.13:
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	lu12i.w	$a0, 259216
 	ori	$s8, $a0, 4059
 	bstrins.d	$s8, $s8, 61, 32
 	st.d	$s8, $s0, 492
 	st.w	$s3, $s0, 500
-	move	$a0, $s5
+	move	$a0, $s1
 	lu32i.d	$a0, -419430
-	lu52i.d	$s1, $a0, 1001
+	lu52i.d	$s5, $a0, 1001
 	ld.d	$a0, $fp, 8
-	st.d	$s1, $s0, 476
-	st.w	$s5, $s0, 484
+	st.d	$s5, $s0, 476
+	st.w	$s1, $s0, 484
 	st.d	$s0, $fp, 200
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 80
 	fld.s	$fa0, $sp, 56                   # 4-byte Folded Reload
 	movfr2gr.s	$a1, $fa0
-	bstrpick.d	$s7, $a1, 31, 0
+	bstrpick.d	$s6, $a1, 31, 0
 	ori	$a2, $zero, 1
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI17_7)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI17_7)
-	xvst	$xr0, $sp, 288
-	vld	$vr2, $sp, 176                  # 16-byte Folded Reload
-	vst	$vr2, $sp, 320
+	pcalau12i	$a0, %pc_hi20(.LCPI17_9)
+	vld	$vr0, $a0, %pc_lo12(.LCPI17_9)
+	pcalau12i	$a0, %pc_hi20(.LCPI17_10)
+	vld	$vr1, $a0, %pc_lo12(.LCPI17_10)
+	vst	$vr0, $sp, 288
+	vst	$vr1, $sp, 304
+	vld	$vr3, $sp, 176                  # 16-byte Folded Reload
+	vst	$vr3, $sp, 320
 	lu12i.w	$a0, -271156
 	ori	$a0, $a0, 3277
-	movgr2fr.w	$fa1, $a0
-	fmul.s	$fa1, $fs3, $fa1
-	movfr2gr.s	$a0, $fa1
+	movgr2fr.w	$fa2, $a0
+	fmul.s	$fa2, $fs3, $fa2
+	movfr2gr.s	$a0, $fa2
 	slli.d	$s4, $a0, 32
-	st.d	$s7, $sp, 56                    # 8-byte Folded Spill
-	or	$a0, $s4, $s7
+	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
+	or	$a0, $s4, $s6
 	st.d	$a0, $sp, 336
 	st.d	$s2, $sp, 344
-	xvst	$xr0, $sp, 224
-	vst	$vr2, $sp, 256
+	vst	$vr0, $sp, 224
+	vst	$vr1, $sp, 240
+	vst	$vr3, $sp, 256
 	lu12i.w	$a0, 255590
 	ori	$a0, $a0, 1638
 	movgr2fr.w	$fa0, $a0
@@ -5802,23 +5826,24 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	jirl	$ra, $ra, 0
 .Ltmp298:                               # EH_LABEL
 # %bb.14:
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s8, $s0, 492
 	st.w	$zero, $s0, 500
 	ld.d	$a0, $fp, 8
-	st.d	$s1, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $s0, 476
-	st.w	$s5, $s0, 484
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s5, $s0, 476
+	st.w	$s1, $s0, 484
 	st.d	$s0, $fp, 208
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 80
 	ori	$a2, $zero, 1
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
-	xvld	$xr1, $sp, 144                  # 32-byte Folded Reload
-	xvst	$xr1, $sp, 288
+	vld	$vr1, $sp, 144                  # 16-byte Folded Reload
+	vst	$vr1, $sp, 288
 	vld	$vr2, $sp, 128                  # 16-byte Folded Reload
-	vst	$vr2, $sp, 320
+	vst	$vr2, $sp, 304
+	vld	$vr3, $sp, 112                  # 16-byte Folded Reload
+	vst	$vr3, $sp, 320
 	lu12i.w	$a0, -268698
 	ori	$a0, $a0, 1638
 	movgr2fr.w	$fa0, $a0
@@ -5828,16 +5853,17 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	or	$s5, $a0, $s2
 	st.d	$s5, $sp, 336
 	st.d	$s2, $sp, 344
-	xvst	$xr1, $sp, 224
-	vst	$vr2, $sp, 256
+	vst	$vr1, $sp, 224
+	vst	$vr2, $sp, 240
+	vst	$vr3, $sp, 256
 	lu12i.w	$a0, 254935
 	ori	$a0, $a0, 164
 	movgr2fr.w	$fa0, $a0
 	fmul.s	$fa0, $fs3, $fa0
 	movfr2gr.s	$a0, $fa0
 	slli.d	$a0, $a0, 32
-	or	$s1, $a0, $s2
-	st.d	$s1, $sp, 272
+	or	$s6, $a0, $s2
+	st.d	$s6, $sp, 272
 	st.d	$s2, $sp, 280
 	ori	$a0, $zero, 792
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -5853,8 +5879,8 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	jirl	$ra, $ra, 0
 .Ltmp301:                               # EH_LABEL
 # %bb.15:                               # %_ZN17btHingeConstraint8setLimitEfffff.exit448
-	pcalau12i	$a0, %pc_hi20(.LCPI17_8)
-	vld	$vr0, $a0, %pc_lo12(.LCPI17_8)
+	pcalau12i	$a0, %pc_hi20(.LCPI17_11)
+	vld	$vr0, $a0, %pc_lo12(.LCPI17_11)
 	ld.d	$a0, $fp, 8
 	st.w	$s3, $s0, 752
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
@@ -5862,22 +5888,27 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	st.d	$s0, $fp, 216
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 80
-	fld.s	$fa0, $sp, 52                   # 4-byte Folded Reload
+	fld.s	$fa0, $sp, 48                   # 4-byte Folded Reload
 	movfr2gr.s	$a1, $fa0
-	bstrpick.d	$s6, $a1, 31, 0
+	bstrpick.d	$s1, $a1, 31, 0
 	ori	$a2, $zero, 1
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI17_9)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI17_9)
-	xvst	$xr0, $sp, 288
-	vld	$vr1, $sp, 176                  # 16-byte Folded Reload
-	vst	$vr1, $sp, 320
-	or	$a0, $s4, $s6
+	pcalau12i	$a0, %pc_hi20(.LCPI17_12)
+	vld	$vr0, $a0, %pc_lo12(.LCPI17_12)
+	pcalau12i	$a0, %pc_hi20(.LCPI17_13)
+	vld	$vr1, $a0, %pc_lo12(.LCPI17_13)
+	vst	$vr0, $sp, 288
+	vst	$vr1, $sp, 304
+	vld	$vr2, $sp, 176                  # 16-byte Folded Reload
+	vst	$vr2, $sp, 320
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	or	$a0, $s4, $s1
 	st.d	$a0, $sp, 336
 	st.d	$s2, $sp, 344
-	xvst	$xr0, $sp, 224
-	vst	$vr1, $sp, 256
+	vst	$vr0, $sp, 224
+	vst	$vr1, $sp, 240
+	vst	$vr2, $sp, 256
 	st.d	$s7, $sp, 272
 	st.d	$s2, $sp, 280
 	ori	$a0, $zero, 640
@@ -5896,25 +5927,28 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	st.d	$s8, $s0, 492
 	st.w	$zero, $s0, 500
 	ld.d	$a0, $fp, 8
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	st.d	$a1, $s0, 476
-	lu12i.w	$s7, 260096
-	st.w	$s7, $s0, 484
+	lu12i.w	$s1, 260096
+	st.w	$s1, $s0, 484
 	st.d	$s0, $fp, 224
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 80
 	ori	$a2, $zero, 1
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
-	xvld	$xr0, $sp, 144                  # 32-byte Folded Reload
-	xvst	$xr0, $sp, 288
+	vld	$vr0, $sp, 144                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 288
 	vld	$vr1, $sp, 128                  # 16-byte Folded Reload
-	vst	$vr1, $sp, 320
+	vst	$vr1, $sp, 304
+	vld	$vr2, $sp, 112                  # 16-byte Folded Reload
+	vst	$vr2, $sp, 320
 	st.d	$s5, $sp, 336
 	st.d	$s2, $sp, 344
-	xvst	$xr0, $sp, 224
-	vst	$vr1, $sp, 256
-	st.d	$s1, $sp, 272
+	vst	$vr0, $sp, 224
+	vst	$vr1, $sp, 240
+	vst	$vr2, $sp, 256
+	st.d	$s6, $sp, 272
 	st.d	$s2, $sp, 280
 	ori	$a0, $zero, 792
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -5942,9 +5976,12 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	ori	$a2, $zero, 1
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI17_10)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI17_10)
-	xvst	$xr0, $sp, 288
+	pcalau12i	$a0, %pc_hi20(.LCPI17_14)
+	vld	$vr0, $a0, %pc_lo12(.LCPI17_14)
+	pcalau12i	$a0, %pc_hi20(.LCPI17_15)
+	vld	$vr1, $a0, %pc_lo12(.LCPI17_15)
+	vst	$vr0, $sp, 288
+	vst	$vr1, $sp, 304
 	vld	$vr1, $sp, 176                  # 16-byte Folded Reload
 	vst	$vr1, $sp, 320
 	lu12i.w	$a0, -269108
@@ -5956,8 +5993,10 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	or	$a0, $s8, $a0
 	st.d	$a0, $sp, 336
 	st.d	$s2, $sp, 344
-	xvld	$xr0, $sp, 80                   # 32-byte Folded Reload
-	xvst	$xr0, $sp, 224
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 224
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 240
 	vst	$vr1, $sp, 256
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	slli.d	$a0, $a0, 32
@@ -5981,25 +6020,29 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	st.d	$s3, $s0, 492
 	st.w	$zero, $s0, 500
 	ld.d	$a0, $fp, 8
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	st.d	$a1, $s0, 476
-	st.w	$s7, $s0, 484
+	st.w	$s1, $s0, 484
 	st.d	$s0, $fp, 240
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 80
 	ori	$a2, $zero, 1
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
-	xvld	$xr0, $sp, 144                  # 32-byte Folded Reload
-	xvst	$xr0, $sp, 288
+	vld	$vr0, $sp, 144                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 288
 	vld	$vr1, $sp, 128                  # 16-byte Folded Reload
-	vst	$vr1, $sp, 320
-	slli.d	$a0, $s6, 32
-	or	$s6, $a0, $s2
-	st.d	$s6, $sp, 336
+	vst	$vr1, $sp, 304
+	vld	$vr2, $sp, 112                  # 16-byte Folded Reload
+	vst	$vr2, $sp, 320
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	slli.d	$a0, $a0, 32
+	or	$s5, $a0, $s2
+	st.d	$s5, $sp, 336
 	st.d	$s2, $sp, 344
-	xvst	$xr0, $sp, 224
-	vst	$vr1, $sp, 256
+	vst	$vr0, $sp, 224
+	vst	$vr1, $sp, 240
+	vst	$vr2, $sp, 256
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	st.d	$a0, $sp, 272
 	st.d	$s2, $sp, 280
@@ -6017,8 +6060,8 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	jirl	$ra, $ra, 0
 .Ltmp313:                               # EH_LABEL
 # %bb.19:                               # %_ZN17btHingeConstraint8setLimitEfffff.exit512
-	pcalau12i	$a0, %pc_hi20(.LCPI17_11)
-	vld	$vr0, $a0, %pc_lo12(.LCPI17_11)
+	pcalau12i	$a0, %pc_hi20(.LCPI17_16)
+	vld	$vr0, $a0, %pc_lo12(.LCPI17_16)
 	ld.d	$a0, $fp, 8
 	st.w	$zero, $s0, 752
 	vst	$vr0, $sp, 192                  # 16-byte Folded Spill
@@ -6027,25 +6070,27 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 80
 	movfr2gr.s	$a1, $fs1
-	bstrpick.d	$s1, $a1, 31, 0
-	addi.d	$s5, $sp, 292
+	bstrpick.d	$s6, $a1, 31, 0
+	addi.d	$s7, $sp, 292
 	ori	$a2, $zero, 1
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI17_12)
-	vld	$vr0, $a0, %pc_lo12(.LCPI17_12)
+	pcalau12i	$a0, %pc_hi20(.LCPI17_17)
+	vld	$vr0, $a0, %pc_lo12(.LCPI17_17)
 	vld	$vr1, $sp, 208                  # 16-byte Folded Reload
-	vst	$vr1, $s5, 0
-	st.w	$s7, $sp, 288
+	vst	$vr1, $s7, 0
+	st.w	$s1, $sp, 288
 	vst	$vr0, $sp, 308
 	lu52i.d	$a0, $zero, 1016
 	st.d	$a0, $sp, 324
 	st.w	$zero, $sp, 332
-	or	$a0, $s8, $s1
+	or	$a0, $s8, $s6
 	st.d	$a0, $sp, 336
 	st.d	$s2, $sp, 344
-	xvld	$xr0, $sp, 80                   # 32-byte Folded Reload
-	xvst	$xr0, $sp, 224
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 224
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 240
 	vld	$vr0, $sp, 176                  # 16-byte Folded Reload
 	vst	$vr0, $sp, 256
 	st.d	$s4, $sp, 272
@@ -6066,23 +6111,26 @@ _ZN7RagDollC2EP15btDynamicsWorldRK9btVector3f: # @_ZN7RagDollC2EP15btDynamicsWor
 	st.d	$s3, $s0, 492
 	st.w	$zero, $s0, 500
 	ld.d	$a0, $fp, 8
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	st.d	$a1, $s0, 476
-	st.w	$s7, $s0, 484
+	st.w	$s1, $s0, 484
 	st.d	$s0, $fp, 256
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 80
 	ori	$a2, $zero, 1
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
-	xvld	$xr0, $sp, 144                  # 32-byte Folded Reload
-	xvst	$xr0, $sp, 288
+	vld	$vr0, $sp, 144                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 288
 	vld	$vr1, $sp, 128                  # 16-byte Folded Reload
-	vst	$vr1, $sp, 320
-	st.d	$s6, $sp, 336
+	vst	$vr1, $sp, 304
+	vld	$vr2, $sp, 112                  # 16-byte Folded Reload
+	vst	$vr2, $sp, 320
+	st.d	$s5, $sp, 336
 	st.d	$s2, $sp, 344
-	xvst	$xr0, $sp, 224
-	vst	$vr1, $sp, 256
+	vst	$vr0, $sp, 224
+	vst	$vr1, $sp, 240
+	vst	$vr2, $sp, 256
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	st.d	$a0, $sp, 272
 	st.d	$s2, $sp, 280
@@ -6602,13 +6650,15 @@ _ZN13BenchmarkDemo19createLargeMeshBodyEv: # @_ZN13BenchmarkDemo19createLargeMes
 .LBB18_3:                               #   Parent Loop BB18_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $s0, 40
-	xvldx	$xr0, $a2, $a0
+	vldx	$vr0, $a2, $a0
 	add.d	$a2, $a2, $a0
-	xvstx	$xr0, $s1, $a0
+	vstx	$vr0, $s1, $a0
 	vld	$vr0, $a2, 32
-	add.d	$a2, $s1, $a0
+	add.d	$a3, $s1, $a0
+	vst	$vr0, $a3, 32
+	vld	$vr0, $a2, 16
 	addi.d	$a0, $a0, 48
-	vst	$vr0, $a2, 32
+	vst	$vr0, $a3, 16
 	bne	$a1, $a0, .LBB18_3
 .LBB18_4:                               # %_ZNK20btAlignedObjectArrayI13btIndexedMeshE4copyEiiPS0_.exit.i.i.i
                                         #   in Loop: Header=BB18_1 Depth=1
@@ -6860,23 +6910,23 @@ _ZN13BenchmarkDemo8initRaysEv:          # @_ZN13BenchmarkDemo8initRaysEv
 _ZN13btRaycastBar2C2Efff:               # @_ZN13btRaycastBar2C2Efff
 	.cfi_startproc
 # %bb.0:                                # %.preheader92.preheader
-	addi.d	$sp, $sp, -160
-	.cfi_def_cfa_offset 160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 88                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 72                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 56                   # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 40                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 128                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 120                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 112                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 104                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 96                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 88                   # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 80                   # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 72                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -6909,6 +6959,7 @@ _ZN13btRaycastBar2C2Efff:               # @_ZN13btRaycastBar2C2Efff
 	ori	$a0, $a0, 1807
 	st.d	$a0, $s0, 16
 	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
 	vstx	$vr0, $fp, $s2
 	lu12i.w	$a0, 266752
 	st.d	$a0, $s0, 40
@@ -6920,7 +6971,7 @@ _ZN13btRaycastBar2C2Efff:               # @_ZN13btRaycastBar2C2Efff
 	lu12i.w	$a0, 249054
 	ori	$a0, $a0, 814
 	movgr2fr.w	$fa0, $a0
-	fst.s	$fa0, $sp, 36                   # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 44                   # 4-byte Folded Spill
 	movgr2fr.w	$fs6, $zero
 	fneg.s	$fs7, $fs6
 	lu12i.w	$s3, -243808
@@ -6935,7 +6986,7 @@ _ZN13btRaycastBar2C2Efff:               # @_ZN13btRaycastBar2C2Efff
 	bstrpick.d	$a0, $s1, 31, 0
 	movgr2fr.d	$fa0, $a0
 	ffint.s.l	$fa0, $fa0
-	fld.s	$fa1, $sp, 36                   # 4-byte Folded Reload
+	fld.s	$fa1, $sp, 44                   # 4-byte Folded Reload
 	fmul.s	$fa0, $fa0, $fa1
 	vldi	$vr1, -1184
 	fmul.s	$fs3, $fa0, $fa1
@@ -6989,7 +7040,8 @@ _ZN13btRaycastBar2C2Efff:               # @_ZN13btRaycastBar2C2Efff
 	vextrins.w	$vr1, $vr4, 16
 	vshuf4i.w	$vr1, $vr1, 16
 	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr2, $xr2
+	vld	$vr3, $sp, 48                   # 16-byte Folded Reload
+	vilvl.w	$vr2, $vr3, $vr2
 	vor.v	$vr1, $vr1, $vr2
 	vpickve2gr.d	$a0, $vr1, 0
 	stptr.d	$a0, $fp, 16000
@@ -7006,22 +7058,22 @@ _ZN13btRaycastBar2C2Efff:               # @_ZN13btRaycastBar2C2Efff
 	addi.d	$fp, $fp, 16
 	bnez	$s2, .LBB20_1
 # %bb.2:
-	fld.d	$fs7, $sp, 40                   # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 48                   # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 56                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 64                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 80                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 96                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	fld.d	$fs7, $sp, 72                   # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 80                   # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 88                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 96                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 104                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 112                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 120                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 128                  # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .Lfunc_end20:
 	.size	_ZN13btRaycastBar2C2Efff, .Lfunc_end20-_ZN13btRaycastBar2C2Efff
@@ -7978,20 +8030,31 @@ _ZN7RagDoll20localCreateRigidBodyEfRK11btTransformP16btCollisionShape: # @_ZN7Ra
 .LBB32_3:
 	pcalau12i	$a0, %pc_hi20(_ZTV20btDefaultMotionState+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV20btDefaultMotionState+16)
+	vld	$vr0, $s1, 0
+	vld	$vr1, $s1, 16
+	vld	$vr2, $s1, 32
+	vst	$vr0, $s2, 8
+	vld	$vr0, $s1, 48
+	vst	$vr1, $s2, 24
+	vst	$vr2, $s2, 40
+	vld	$vr1, $s3, 0
+	vst	$vr0, $s2, 56
+	vld	$vr0, $s3, 16
+	vld	$vr2, $s3, 32
+	vst	$vr1, $s2, 72
+	vld	$vr1, $s3, 48
+	vst	$vr0, $s2, 88
+	vst	$vr2, $s2, 104
+	vld	$vr0, $s1, 0
+	vst	$vr1, $s2, 120
+	vld	$vr1, $s1, 16
+	vld	$vr2, $s1, 32
+	vst	$vr0, $s2, 136
+	vld	$vr0, $s1, 48
+	vst	$vr1, $s2, 152
+	vst	$vr2, $s2, 168
 	st.d	$a0, $s2, 0
-	xvld	$xr0, $s3, 0
-	vld	$vr1, $s1, 0
-	vld	$vr2, $s1, 16
-	xvld	$xr3, $s1, 32
-	xvst	$xr0, $s2, 72
-	xvld	$xr0, $s3, 32
-	vst	$vr1, $s2, 8
-	vst	$vr2, $s2, 24
-	xvst	$xr3, $s2, 40
-	xvst	$xr0, $s2, 104
-	vst	$vr1, $s2, 136
-	vst	$vr2, $s2, 152
-	xvst	$xr3, $s2, 168
+	vst	$vr0, $s2, 184
 	st.d	$zero, $s2, 200
 	fst.s	$fs0, $sp, 32
 	vld	$vr0, $sp, 184
@@ -8057,10 +8120,12 @@ _ZN7RagDoll20localCreateRigidBodyEfRK11btTransformP16btCollisionShape: # @_ZN7Ra
 	jirl	$ra, $ra, 0
 .Ltmp348:                               # EH_LABEL
 # %bb.7:
-	xvld	$xr0, $a0, 0
-	vld	$vr1, $a0, 32
-	xvst	$xr0, $s3, 0
-	vst	$vr1, $s3, 32
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 32
+	vst	$vr0, $s3, 0
+	vst	$vr1, $s3, 16
+	vst	$vr2, $s3, 32
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $s3, 48
 	pcalau12i	$a0, %pc_hi20(_ZGVZN11btTransform11getIdentityEvE17identityTransform)

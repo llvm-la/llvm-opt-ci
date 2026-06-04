@@ -16170,8 +16170,10 @@ _ZN2kc15copy_attributesENS_10enum_phylaEPKNS_20impl_abstract_phylumEPS1_: # @_ZN
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(__dynamic_cast)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s3, 8
-	xvst	$xr0, $a0, 8
+	vld	$vr0, $s3, 8
+	vst	$vr0, $a0, 8
+	vld	$vr0, $s3, 24
+	vst	$vr0, $a0, 24
 	b	.LBB448_45
 .LBB448_30:
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
@@ -72623,26 +72625,26 @@ _ZNSt6vectorIPN9__gnu_cxx15_Hashtable_nodeIN2kc8hashitemEEESaIS5_EE14_M_fill_ins
 	jirl	$ra, $ra, 0
 .LBB2088_10:
 	addi.d	$a1, $s3, -8
-	ori	$a2, $zero, 56
+	ori	$a2, $zero, 24
 	move	$a0, $fp
 	bltu	$a1, $a2, .LBB2088_14
 # %bb.11:                               # %vector.ph128
 	srli.d	$a0, $a1, 3
 	addi.d	$a1, $a0, 1
-	bstrpick.d	$a0, $a1, 61, 3
-	slli.d	$a2, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a1, 61, 2
+	slli.d	$a2, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a0, $fp, $a0
-	xvreplgr2vr.d	$xr0, $s5
-	addi.d	$a3, $fp, 32
+	vreplgr2vr.d	$vr0, $s5
+	addi.d	$a3, $fp, 16
 	move	$a4, $a2
 	.p2align	4, , 16
 .LBB2088_12:                            # %vector.body133
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a3, -32
-	xvst	$xr0, $a3, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vst	$vr0, $a3, -16
+	vst	$vr0, $a3, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB2088_12
 # %bb.13:                               # %middle.block137
 	beq	$a1, $a2, .LBB2088_43
@@ -72663,27 +72665,27 @@ _ZNSt6vectorIPN9__gnu_cxx15_Hashtable_nodeIN2kc8hashitemEEESaIS5_EE14_M_fill_ins
 	slli.d	$a1, $s2, 3
 	sub.d	$a1, $a1, $s3
 	addi.d	$a2, $a1, -8
-	ori	$a3, $zero, 56
+	ori	$a3, $zero, 24
 	alsl.d	$a0, $a0, $s0, 3
 	move	$a1, $s0
 	bltu	$a2, $a3, .LBB2088_21
 # %bb.18:                               # %vector.ph
 	srli.d	$a1, $a2, 3
 	addi.d	$a2, $a1, 1
-	bstrpick.d	$a1, $a2, 61, 3
-	slli.d	$a3, $a1, 3
-	slli.d	$a1, $a1, 6
+	bstrpick.d	$a1, $a2, 61, 2
+	slli.d	$a3, $a1, 2
+	slli.d	$a1, $a1, 5
 	add.d	$a1, $s0, $a1
-	xvreplgr2vr.d	$xr0, $s5
-	addi.d	$a4, $s0, 32
+	vreplgr2vr.d	$vr0, $s5
+	addi.d	$a4, $s0, 16
 	move	$a5, $a3
 	.p2align	4, , 16
 .LBB2088_19:                            # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a4, -32
-	xvst	$xr0, $a4, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 64
+	vst	$vr0, $a4, -16
+	vst	$vr0, $a4, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB2088_19
 # %bb.20:                               # %middle.block
 	beq	$a2, $a3, .LBB2088_22
@@ -72709,26 +72711,26 @@ _ZNSt6vectorIPN9__gnu_cxx15_Hashtable_nodeIN2kc8hashitemEEESaIS5_EE14_M_fill_ins
 	beq	$s0, $fp, .LBB2088_43
 # %bb.25:                               # %.lr.ph.i.i.i71.preheader
 	addi.d	$a1, $s3, -8
-	ori	$a2, $zero, 56
+	ori	$a2, $zero, 24
 	move	$a0, $fp
 	bltu	$a1, $a2, .LBB2088_29
 # %bb.26:                               # %vector.ph114
 	srli.d	$a0, $a1, 3
 	addi.d	$a1, $a0, 1
-	bstrpick.d	$a0, $a1, 61, 3
-	slli.d	$a2, $a0, 3
-	slli.d	$a0, $a0, 6
+	bstrpick.d	$a0, $a1, 61, 2
+	slli.d	$a2, $a0, 2
+	slli.d	$a0, $a0, 5
 	add.d	$a0, $fp, $a0
-	xvreplgr2vr.d	$xr0, $s5
-	addi.d	$a3, $fp, 32
+	vreplgr2vr.d	$vr0, $s5
+	addi.d	$a3, $fp, 16
 	move	$a4, $a2
 	.p2align	4, , 16
 .LBB2088_27:                            # %vector.body119
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a3, -32
-	xvst	$xr0, $a3, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vst	$vr0, $a3, -16
+	vst	$vr0, $a3, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB2088_27
 # %bb.28:                               # %middle.block123
 	beq	$a1, $a2, .LBB2088_43
@@ -72746,27 +72748,27 @@ _ZNSt6vectorIPN9__gnu_cxx15_Hashtable_nodeIN2kc8hashitemEEESaIS5_EE14_M_fill_ins
 	slli.d	$a2, $s2, 3
 	ld.d	$a1, $a3, 0
 	addi.d	$a2, $a2, -8
-	ori	$a3, $zero, 56
+	ori	$a3, $zero, 24
 	alsl.d	$s2, $s2, $a0, 3
 	bltu	$a2, $a3, .LBB2088_35
 # %bb.32:                               # %vector.ph142
 	srli.d	$a2, $a2, 3
 	addi.d	$a2, $a2, 1
-	bstrpick.d	$a4, $a2, 61, 3
-	slli.d	$a3, $a4, 3
-	slli.d	$a4, $a4, 6
+	bstrpick.d	$a4, $a2, 61, 2
+	slli.d	$a3, $a4, 2
+	slli.d	$a4, $a4, 5
 	add.d	$a0, $a0, $a4
-	xvreplgr2vr.d	$xr0, $a1
+	vreplgr2vr.d	$vr0, $a1
 	add.d	$a4, $s5, $s4
-	addi.d	$a4, $a4, 32
+	addi.d	$a4, $a4, 16
 	move	$a5, $a3
 	.p2align	4, , 16
 .LBB2088_33:                            # %vector.body147
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a4, -32
-	xvst	$xr0, $a4, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 64
+	vst	$vr0, $a4, -16
+	vst	$vr0, $a4, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB2088_33
 # %bb.34:                               # %middle.block151
 	beq	$a2, $a3, .LBB2088_36
@@ -74138,20 +74140,21 @@ _GLOBAL__sub_I_k.cc:                    # @_GLOBAL__sub_I_k.cc
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception3
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	pcalau12i	$a0, %pc_hi20(_ZN2kcL28kc_not_uniq_static_hashtableE)
 	addi.d	$fp, $a0, %pc_lo12(_ZN2kcL28kc_not_uniq_static_hashtableE)
 	st.b	$zero, $fp, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
-	xvst	$xr0, $fp, 16
+	vrepli.b	$vr0, 0
+	vst	$vr0, $fp, 16
+	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
+	vst	$vr0, $fp, 32
 .Ltmp36:                                # EH_LABEL
 	addi.d	$a0, $fp, 8
 	ori	$a1, $zero, 100
@@ -74205,8 +74208,9 @@ _GLOBAL__sub_I_k.cc:                    # @_GLOBAL__sub_I_k.cc
 	pcalau12i	$a0, %pc_hi20(_ZN2kcL21uniq_static_hashtableE)
 	addi.d	$fp, $a0, %pc_lo12(_ZN2kcL21uniq_static_hashtableE)
 	st.b	$zero, $fp, 0
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $fp, 16
+	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
+	vst	$vr0, $fp, 16
+	vst	$vr0, $fp, 32
 .Ltmp39:                                # EH_LABEL
 	addi.d	$a0, $fp, 8
 	ori	$a1, $zero, 100
@@ -74267,10 +74271,10 @@ _GLOBAL__sub_I_k.cc:                    # @_GLOBAL__sub_I_k.cc
 	pcalau12i	$a0, %got_pc_hi20(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev)
 	move	$a2, $s0
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	pcaddu18i	$t8, %call36(__cxa_atexit)
 	jr	$t8
 .LBB2101_3:

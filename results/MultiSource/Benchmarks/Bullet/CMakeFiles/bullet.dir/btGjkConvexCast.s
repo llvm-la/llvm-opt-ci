@@ -96,16 +96,24 @@ _ZN15btGjkConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConvexCast1
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN17btGjkPairDetectorC1EPK13btConvexShapeS2_P22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolver)
 	jirl	$ra, $ra, 0
+	vld	$vr0, $s3, 0
+	vld	$vr1, $s3, 16
+	vld	$vr2, $s3, 32
+	vst	$vr0, $sp, 32
+	vst	$vr1, $sp, 48
+	vld	$vr0, $s3, 48
+	vst	$vr2, $sp, 64
+	vld	$vr1, $s1, 0
+	vld	$vr2, $s1, 16
+	vst	$vr0, $sp, 80
+	vld	$vr0, $s1, 32
+	vst	$vr1, $sp, 96
+	vst	$vr2, $sp, 112
+	vld	$vr1, $s1, 48
+	vst	$vr0, $sp, 128
 	st.w	$s4, $sp, 160
 	st.d	$zero, $sp, 168
-	xvld	$xr0, $s3, 0
-	xvld	$xr1, $s3, 32
-	xvld	$xr2, $s1, 0
-	xvld	$xr3, $s1, 32
-	xvst	$xr0, $sp, 32
-	xvst	$xr1, $sp, 64
-	xvst	$xr2, $sp, 96
-	xvst	$xr3, $sp, 128
+	vst	$vr1, $sp, 144
 	addi.d	$a0, $sp, 176
 	addi.d	$a1, $sp, 32
 	addi.d	$a2, $sp, 272

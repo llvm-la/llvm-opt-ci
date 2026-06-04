@@ -1065,14 +1065,14 @@ vba_decompress:                         # @vba_decompress
 # %bb.2:                                # %.preheader.preheader
 	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
-	move	$s7, $zero
+	move	$s0, $zero
 	addi.d	$s4, $sp, 36
 	ori	$s5, $zero, 2
 	ori	$s6, $zero, 128
 	addi.d	$s8, $zero, -1
-	ori	$s2, $zero, 13
+	ori	$s2, $zero, 5
 	ori	$s3, $zero, 4095
-	ori	$fp, $zero, 1
+	ori	$s7, $zero, 1
 	b	.LBB2_4
 	.p2align	4, , 16
 .LBB2_3:                                # %.loopexit89
@@ -1092,8 +1092,8 @@ vba_decompress:                         # @vba_decompress
                                         #       Child Loop BB2_32 Depth 3
                                         #       Child Loop BB2_37 Depth 3
                                         #       Child Loop BB2_24 Depth 3
-	sltu	$fp, $zero, $fp
-	ori	$s0, $zero, 1
+	sltu	$s7, $zero, $s7
+	ori	$fp, $zero, 1
 	b	.LBB2_8
 .LBB2_5:                                #   in Loop: Header=BB2_8 Depth=2
 	move	$a0, $zero
@@ -1106,12 +1106,12 @@ vba_decompress:                         # @vba_decompress
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $a0, -1
 	sltui	$a0, $a0, 1
-	add.w	$s7, $s7, $a0
+	add.w	$s0, $s0, $a0
 .LBB2_7:                                # %.loopexit
                                         #   in Loop: Header=BB2_8 Depth=2
-	addi.w	$a0, $s0, 0
-	slli.d	$s0, $s0, 1
-	ori	$fp, $zero, 1
+	addi.w	$a0, $fp, 0
+	slli.d	$fp, $fp, 1
+	ori	$s7, $zero, 1
 	bgeu	$a0, $s6, .LBB2_3
 .LBB2_8:                                #   Parent Loop BB2_4 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -1122,7 +1122,7 @@ vba_decompress:                         # @vba_decompress
 	ori	$a0, $a0, 39
 	add.d	$a0, $sp, $a0
 	ld.bu	$a0, $a0, 0
-	and	$a0, $s0, $a0
+	and	$a0, $fp, $a0
 	beqz	$a0, .LBB2_13
 # %bb.9:                                #   in Loop: Header=BB2_8 Depth=2
 	lu12i.w	$a0, 1
@@ -1134,7 +1134,7 @@ vba_decompress:                         # @vba_decompress
 	jirl	$ra, $ra, 0
 	bne	$a0, $s5, .LBB2_41
 # %bb.10:                               #   in Loop: Header=BB2_8 Depth=2
-	andi	$a3, $s7, 4095
+	andi	$a3, $s0, 4095
 	bltu	$s6, $a3, .LBB2_15
 # %bb.11:                               #   in Loop: Header=BB2_8 Depth=2
 	ori	$a0, $zero, 32
@@ -1145,11 +1145,11 @@ vba_decompress:                         # @vba_decompress
 	b	.LBB2_20
 	.p2align	4, , 16
 .LBB2_13:                               #   in Loop: Header=BB2_8 Depth=2
-	beqz	$s7, .LBB2_5
+	beqz	$s0, .LBB2_5
 # %bb.14:                               #   in Loop: Header=BB2_8 Depth=2
-	andi	$a0, $s7, 4095
+	andi	$a0, $s0, 4095
 	sltu	$a1, $zero, $a0
-	orn	$a1, $a1, $fp
+	orn	$a1, $a1, $s7
 	andi	$a1, $a1, 1
 	bnez	$a1, .LBB2_6
 	b	.LBB2_39
@@ -1188,22 +1188,22 @@ vba_decompress:                         # @vba_decompress
 	move	$a2, $zero
 .LBB2_22:                               # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB2_8 Depth=2
-	move	$a3, $s7
+	move	$a3, $s0
 .LBB2_23:                               # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB2_8 Depth=2
 	sub.d	$a1, $a1, $a2
 	addi.d	$a1, $a1, 3
-	move	$s7, $a3
+	move	$s0, $a3
 	.p2align	4, , 16
 .LBB2_24:                               # %vec.epilog.scalar.ph
                                         #   Parent Loop BB2_4 Depth=1
                                         #     Parent Loop BB2_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a2, $a0, $s7
+	add.d	$a2, $a0, $s0
 	andi	$a2, $a2, 4095
 	ldx.b	$a2, $a2, $s4
-	andi	$a3, $s7, 4095
-	addi.w	$s7, $s7, 1
+	andi	$a3, $s0, 4095
+	addi.w	$s0, $s0, 1
 	addi.w	$a1, $a1, -1
 	stx.b	$a2, $a3, $s4
 	bnez	$a1, .LBB2_24
@@ -1213,12 +1213,12 @@ vba_decompress:                         # @vba_decompress
                                         #   in Loop: Header=BB2_8 Depth=2
 	addi.d	$a2, $a1, 2
 	andi	$a5, $a2, 4095
-	andn	$a6, $s3, $s7
+	andn	$a6, $s3, $s0
 	move	$a2, $zero
 	bltu	$a6, $a5, .LBB2_22
 # %bb.26:                               # %vector.scevcheck
                                         #   in Loop: Header=BB2_8 Depth=2
-	sub.d	$a4, $a4, $s7
+	sub.d	$a4, $a4, $s0
 	andi	$a6, $a4, 4095
 	bltu	$a6, $a5, .LBB2_22
 # %bb.27:                               # %vector.scevcheck
@@ -1230,24 +1230,24 @@ vba_decompress:                         # @vba_decompress
                                         #   in Loop: Header=BB2_8 Depth=2
 	andn	$a2, $s3, $a4
 	sub.d	$a2, $a3, $a2
-	ori	$a3, $zero, 64
+	ori	$a3, $zero, 32
 	bltu	$a2, $a3, .LBB2_21
 # %bb.29:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB2_8 Depth=2
 	addi.d	$a2, $a1, 3
 	bstrpick.d	$a4, $a2, 15, 0
-	ori	$a2, $zero, 61
+	ori	$a2, $zero, 29
 	bgeu	$a1, $a2, .LBB2_31
 # %bb.30:                               #   in Loop: Header=BB2_8 Depth=2
 	move	$a2, $zero
 	b	.LBB2_36
 .LBB2_31:                               # %vector.ph
                                         #   in Loop: Header=BB2_8 Depth=2
-	andi	$a5, $a4, 48
-	bstrpick.d	$a2, $a4, 12, 6
-	slli.w	$a2, $a2, 6
-	add.w	$a3, $s7, $a2
-	move	$a6, $s7
+	andi	$a5, $a4, 24
+	bstrpick.d	$a2, $a4, 12, 5
+	slli.w	$a2, $a2, 5
+	add.w	$a3, $s0, $a2
+	move	$a6, $s0
 	move	$a7, $a2
 	.p2align	4, , 16
 .LBB2_32:                               # %vector.body
@@ -1257,20 +1257,20 @@ vba_decompress:                         # @vba_decompress
 	add.d	$t0, $a0, $a6
 	andi	$t0, $t0, 4095
 	add.d	$t1, $s4, $t0
-	xvldx	$xr0, $t0, $s4
-	xvld	$xr1, $t1, 32
+	vldx	$vr0, $t0, $s4
+	vld	$vr1, $t1, 16
 	andi	$t0, $a6, 4095
 	add.d	$t1, $s4, $t0
-	xvstx	$xr0, $t0, $s4
-	xvst	$xr1, $t1, 32
-	addi.w	$a7, $a7, -64
-	addi.d	$a6, $a6, 64
+	vstx	$vr0, $t0, $s4
+	vst	$vr1, $t1, 16
+	addi.w	$a7, $a7, -32
+	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB2_32
 # %bb.33:                               # %middle.block
                                         #   in Loop: Header=BB2_8 Depth=2
 	bne	$a2, $a4, .LBB2_35
 # %bb.34:                               #   in Loop: Header=BB2_8 Depth=2
-	move	$s7, $a3
+	move	$s0, $a3
 	b	.LBB2_7
 .LBB2_35:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB2_8 Depth=2
@@ -1278,11 +1278,11 @@ vba_decompress:                         # @vba_decompress
 .LBB2_36:                               # %vec.epilog.ph
                                         #   in Loop: Header=BB2_8 Depth=2
 	move	$a6, $a2
-	bstrpick.d	$a3, $a4, 12, 4
-	slli.w	$a2, $a3, 4
-	alsl.w	$a3, $a3, $s7, 4
+	bstrpick.d	$a3, $a4, 12, 3
+	slli.w	$a2, $a3, 3
+	alsl.w	$a3, $a3, $s0, 3
 	sub.d	$a5, $a6, $a2
-	add.d	$a6, $s7, $a6
+	add.d	$a6, $s0, $a6
 	.p2align	4, , 16
 .LBB2_37:                               # %vec.epilog.vector.body
                                         #   Parent Loop BB2_4 Depth=1
@@ -1290,15 +1290,15 @@ vba_decompress:                         # @vba_decompress
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$a7, $a0, $a6
 	andi	$a7, $a7, 4095
-	vldx	$vr0, $a7, $s4
-	andi	$a7, $a6, 4095
-	vstx	$vr0, $a7, $s4
-	addi.w	$a5, $a5, 16
-	addi.d	$a6, $a6, 16
+	ldx.d	$a7, $a7, $s4
+	andi	$t0, $a6, 4095
+	stx.d	$a7, $t0, $s4
+	addi.w	$a5, $a5, 8
+	addi.d	$a6, $a6, 8
 	bnez	$a5, .LBB2_37
 # %bb.38:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB2_8 Depth=2
-	move	$s7, $a3
+	move	$s0, $a3
 	beq	$a2, $a4, .LBB2_7
 	b	.LBB2_23
 .LBB2_39:                               #   in Loop: Header=BB2_4 Depth=1
@@ -1316,7 +1316,7 @@ vba_decompress:                         # @vba_decompress
 	lu12i.w	$a2, 1
 	pcaddu18i	$ra, %call36(blobAddData)
 	jirl	$ra, $ra, 0
-	move	$fp, $zero
+	move	$s7, $zero
 	b	.LBB2_3
 .LBB2_41:
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
@@ -1329,7 +1329,7 @@ vba_decompress:                         # @vba_decompress
 	st.w	$zero, $a1, 0
 	b	.LBB2_55
 .LBB2_43:                               # %._crit_edge
-	andi	$a2, $s7, 4095
+	andi	$a2, $s0, 4095
 	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
 	beqz	$a2, .LBB2_45
@@ -2905,48 +2905,47 @@ wm_decrypt_macro:                       # @wm_decrypt_macro
 	move	$fp, $zero
 	b	.LBB6_8
 .LBB6_10:                               # %vector.main.loop.iter.check
-	ori	$a0, $zero, 64
-	bgeu	$s2, $a0, .LBB6_12
+	ori	$a0, $zero, 32
+	vreplgr2vr.b	$vr0, $s0
+	bgeu	$s2, $a0, .LBB6_15
 # %bb.11:
 	move	$a0, $zero
-	b	.LBB6_16
-.LBB6_12:                               # %vector.ph
-	move	$a2, $zero
-	andi	$a1, $s1, 48
-	bstrpick.d	$a0, $s1, 31, 6
-	slli.d	$a0, $a0, 6
-	xvreplgr2vr.b	$xr0, $s0
-	.p2align	4, , 16
-.LBB6_13:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	add.d	$a3, $fp, $a2
-	xvldx	$xr1, $fp, $a2
-	xvld	$xr2, $a3, 32
-	xvxor.v	$xr1, $xr1, $xr0
-	xvxor.v	$xr2, $xr2, $xr0
-	xvstx	$xr1, $fp, $a2
-	addi.d	$a2, $a2, 64
-	xvst	$xr2, $a3, 32
-	bne	$a0, $a2, .LBB6_13
-# %bb.14:                               # %middle.block
-	beq	$a0, $s1, .LBB6_8
-# %bb.15:                               # %vec.epilog.iter.check
-	beqz	$a1, .LBB6_19
-.LBB6_16:                               # %vec.epilog.ph
+.LBB6_12:                               # %vec.epilog.ph
 	move	$a1, $a0
 	bstrpick.d	$a0, $s1, 31, 4
 	slli.d	$a0, $a0, 4
-	vreplgr2vr.b	$vr0, $s0
 	.p2align	4, , 16
-.LBB6_17:                               # %vec.epilog.vector.body
+.LBB6_13:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vldx	$vr1, $fp, $a1
 	vxor.v	$vr1, $vr1, $vr0
 	vstx	$vr1, $fp, $a1
 	addi.d	$a1, $a1, 16
-	bne	$a0, $a1, .LBB6_17
-# %bb.18:                               # %vec.epilog.middle.block
+	bne	$a0, $a1, .LBB6_13
+# %bb.14:                               # %vec.epilog.middle.block
+	bne	$a0, $s1, .LBB6_19
+	b	.LBB6_8
+.LBB6_15:                               # %vector.ph
+	move	$a2, $zero
+	andi	$a1, $s1, 16
+	bstrpick.d	$a0, $s1, 31, 5
+	slli.d	$a0, $a0, 5
+	.p2align	4, , 16
+.LBB6_16:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a3, $fp, $a2
+	vldx	$vr1, $fp, $a2
+	vld	$vr2, $a3, 16
+	vxor.v	$vr1, $vr1, $vr0
+	vxor.v	$vr2, $vr2, $vr0
+	vstx	$vr1, $fp, $a2
+	addi.d	$a2, $a2, 32
+	vst	$vr2, $a3, 16
+	bne	$a0, $a2, .LBB6_16
+# %bb.17:                               # %middle.block
 	beq	$a0, $s1, .LBB6_8
+# %bb.18:                               # %vec.epilog.iter.check
+	bnez	$a1, .LBB6_12
 	.p2align	4, , 16
 .LBB6_19:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1

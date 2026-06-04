@@ -436,12 +436,10 @@ fhsfc3d:                                # @fhsfc3d
 	lu52i.d	$a3, $a3, 1054
 	vreplgr2vr.d	$vr1, $a3
 	vfmul.d	$vr0, $vr0, $vr1
-	xvftintrz.lu.d	$xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 238
-	xvpickev.w	$xr0, $xr1, $xr0
+	vftintrz.l.d	$vr0, $vr0
 	fld.d	$fa1, $a0, 16
 	vstelm.w	$vr0, $sp, 12, 0
-	vstelm.w	$vr0, $sp, 16, 1
+	vstelm.w	$vr0, $sp, 16, 2
 	movgr2fr.d	$fa0, $a3
 	fmul.d	$fa0, $fa1, $fa0
 	ftintrz.l.d	$fa0, $fa0

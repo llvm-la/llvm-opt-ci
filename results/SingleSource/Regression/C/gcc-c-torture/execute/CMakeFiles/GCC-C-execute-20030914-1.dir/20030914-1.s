@@ -212,22 +212,24 @@ f:                                      # @f
 .Lfunc_end0:
 	.size	f, .Lfunc_end0-f
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI1_0:
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
 	.word	4                               # 0x4
+.LCPI1_1:
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
 	.word	8                               # 0x8
-.LCPI1_1:
+.LCPI1_2:
 	.word	9                               # 0x9
 	.word	10                              # 0xa
 	.word	11                              # 0xb
 	.word	12                              # 0xc
+.LCPI1_3:
 	.word	13                              # 0xd
 	.word	14                              # 0xe
 	.word	15                              # 0xf
@@ -243,11 +245,17 @@ main:                                   # @main
 	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI1_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI1_1)
-	xvst	$xr0, $sp, 16
-	xvst	$xr1, $sp, 48
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_3)
+	vst	$vr0, $sp, 16
+	vst	$vr1, $sp, 32
+	vst	$vr2, $sp, 48
+	vst	$vr3, $sp, 64
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, -247680
 	lu52i.d	$a3, $a0, 1024

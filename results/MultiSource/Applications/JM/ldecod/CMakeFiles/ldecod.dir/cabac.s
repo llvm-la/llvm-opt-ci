@@ -369,37 +369,47 @@ check_next_mb_and_get_field_mode_CABAC: # @check_next_mb_and_get_field_mode_CABA
 	ld.d	$a1, $s6, 40
 	ld.d	$a2, $s8, 32
 	ld.w	$s6, $a1, 0
-	xvld	$xr0, $s8, 0
+	vld	$vr0, $s8, 0
+	vld	$vr1, $s8, 16
 	st.w	$s6, $a2, 0
 	ldptr.d	$a1, $fp, 5592
 	ld.d	$a1, $a1, 48
-	xvst	$xr0, $s0, 0
-	ld.d	$a3, $a1, 32
-	xvld	$xr0, $a1, 0
+	vst	$vr0, $s0, 0
+	vld	$vr0, $a1, 0
+	vld	$vr2, $a1, 16
+	vst	$vr1, $s0, 16
+	vld	$vr1, $a1, 60
+	vst	$vr0, $s1, 0
+	vst	$vr2, $s1, 16
+	vld	$vr0, $a1, 44
+	vst	$vr1, $s2, 16
+	ld.d	$a4, $a1, 32
+	ld.w	$a3, $a1, 40
+	vst	$vr0, $s2, 0
+	vld	$vr0, $a1, 104
 	st.d	$a2, $s0, 32
-	ld.w	$a2, $a1, 40
-	st.d	$a3, $s1, 32
-	xvst	$xr0, $s1, 0
-	xvld	$xr0, $a1, 44
-	st.w	$a2, $s1, 40
-	ld.d	$a4, $a1, 76
-	ld.w	$a2, $a1, 84
-	xvst	$xr0, $s2, 0
+	st.d	$a4, $s1, 32
+	st.w	$a3, $s1, 40
+	vst	$vr0, $s3, 16
+	vld	$vr0, $a1, 88
+	ld.w	$a4, $a1, 84
+	ld.d	$a2, $a1, 76
 	ld.w	$a3, $a1, 128
-	xvld	$xr0, $a1, 88
-	st.d	$a4, $s2, 32
-	st.w	$a2, $s2, 40
+	vst	$vr0, $s3, 0
+	vld	$vr0, $a1, 148
+	st.w	$a4, $s2, 40
+	st.d	$a2, $s2, 32
 	st.w	$a3, $s3, 40
-	xvst	$xr0, $s3, 0
-	xvld	$xr0, $a1, 132
+	vst	$vr0, $s4, 16
+	vld	$vr0, $a1, 132
 	ld.d	$a4, $a1, 120
-	ld.d	$a2, $a1, 164
-	ld.w	$a3, $a1, 172
-	xvst	$xr0, $s4, 0
+	ld.w	$a2, $a1, 172
+	ld.d	$a3, $a1, 164
+	vst	$vr0, $s4, 0
 	vld	$vr0, $a1, 392
 	st.d	$a4, $s3, 32
-	st.d	$a2, $s4, 32
-	st.w	$a3, $s4, 40
+	st.w	$a2, $s4, 40
+	st.d	$a3, $s4, 32
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	vst	$vr0, $a0, 0
 	pcalau12i	$a0, %pc_hi20(last_dquant)
@@ -479,43 +489,53 @@ check_next_mb_and_get_field_mode_CABAC: # @check_next_mb_and_get_field_mode_CABA
 	ld.d	$a0, $s0, 32
 	st.w	$a1, $fp, 4
 	st.d	$a0, $s8, 32
-	xvld	$xr0, $s0, 0
+	vld	$vr0, $s0, 16
+	vld	$vr1, $s0, 0
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 40
-	xvst	$xr0, $s8, 0
+	vst	$vr0, $s8, 16
+	vst	$vr1, $s8, 0
 	st.w	$s6, $a0, 0
 	ldptr.d	$a0, $fp, 5592
 	ld.d	$a0, $a0, 48
-	xvld	$xr0, $s1, 0
+	vld	$vr0, $s1, 16
+	vld	$vr1, $s1, 0
 	ld.w	$a1, $s1, 40
 	ld.d	$a2, $s1, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 0
 	st.w	$a1, $a0, 40
 	st.d	$a2, $a0, 32
 	ldptr.d	$a0, $fp, 5592
 	ld.d	$a0, $a0, 48
 	ld.d	$a1, $s2, 32
 	ld.w	$a2, $s2, 40
-	xvld	$xr0, $s2, 0
+	vld	$vr0, $s2, 0
+	vld	$vr1, $s2, 16
 	st.d	$a1, $a0, 76
 	st.w	$a2, $a0, 84
-	xvst	$xr0, $a0, 44
+	vst	$vr0, $a0, 44
+	vst	$vr1, $a0, 60
 	ldptr.d	$a0, $fp, 5592
 	ld.d	$a0, $a0, 48
-	xvld	$xr0, $s3, 0
+	vld	$vr0, $s3, 16
+	vld	$vr1, $s3, 0
 	ld.w	$a1, $s3, 40
 	ld.d	$a2, $s3, 32
-	xvst	$xr0, $a0, 88
+	vst	$vr0, $a0, 104
+	vst	$vr1, $a0, 88
 	st.w	$a1, $a0, 128
 	st.d	$a2, $a0, 120
 	ldptr.d	$a0, $fp, 5592
 	ld.d	$a0, $a0, 48
+	vld	$vr0, $s4, 16
 	ld.w	$a1, $s4, 40
 	ld.d	$a2, $s4, 32
-	xvld	$xr0, $s4, 0
+	vld	$vr1, $s4, 0
+	vst	$vr0, $a0, 148
 	st.w	$a1, $a0, 172
 	st.d	$a2, $a0, 164
-	xvst	$xr0, $a0, 132
+	vst	$vr1, $a0, 132
 	ldptr.d	$a0, $fp, 5592
 	ld.d	$a0, $a0, 48
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload

@@ -2408,20 +2408,9 @@ kiss_print_cube:                        # @kiss_print_cube
 .Lfunc_end16:
 	.size	kiss_print_cube, .Lfunc_end16-kiss_print_cube
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function output_symbolic_constraints
-.LCPI17_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI17_1:
+	.p2align	4, 0x0                          # -- Begin function output_symbolic_constraints
+.LCPI17_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
@@ -2433,19 +2422,19 @@ kiss_print_cube:                        # @kiss_print_cube
 	.type	output_symbolic_constraints,@function
 output_symbolic_constraints:            # @output_symbolic_constraints
 # %bb.0:
-	addi.d	$sp, $sp, -208
-	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$s1, $a0
 	pcalau12i	$a0, %got_pc_hi20(cube)
@@ -2454,7 +2443,7 @@ output_symbolic_constraints:            # @output_symbolic_constraints
 	ld.w	$a1, $s6, 8
 	sub.w	$a0, $a0, $a1
 	ori	$a1, $zero, 2
-	blt	$a0, $a1, .LBB17_66
+	blt	$a0, $a1, .LBB17_60
 # %bb.1:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(makeup_labels)
@@ -2462,37 +2451,33 @@ output_symbolic_constraints:            # @output_symbolic_constraints
 	ld.w	$a0, $s6, 4
 	ld.w	$a1, $s6, 8
 	addi.w	$a0, $a0, -1
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	bge	$a1, $a0, .LBB17_66
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	bge	$a1, $a0, .LBB17_60
 # %bb.2:                                # %.lr.ph170
-	st.d	$zero, $sp, 96                  # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI17_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI17_1)
-	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
+	st.d	$zero, $sp, 64                  # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI17_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI17_0)
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	vld	$vr0, $a0, %pc_lo12(.LCPI17_0)
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	ori	$s7, $zero, 1
 	lu12i.w	$a0, -1
 	ori	$s4, $a0, 2047
 	lu32i.d	$s4, 0
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB17_4
 	.p2align	4, , 16
 .LBB17_3:                               # %.loopexit131
                                         #   in Loop: Header=BB17_4 Depth=1
 	ld.w	$a0, $s6, 4
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	addi.d	$a2, $a2, 1
 	addi.w	$a0, $a0, -1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a1, $a1, 1
-	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
-	bge	$a2, $a0, .LBB17_66
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	bge	$a2, $a0, .LBB17_60
 .LBB17_4:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB17_60 Depth 2
-                                        #     Child Loop BB17_64 Depth 2
+                                        #     Child Loop BB17_58 Depth 2
                                         #     Child Loop BB17_10 Depth 2
                                         #     Child Loop BB17_17 Depth 2
                                         #     Child Loop BB17_22 Depth 2
@@ -2503,7 +2488,7 @@ output_symbolic_constraints:            # @output_symbolic_constraints
                                         #     Child Loop BB17_51 Depth 2
                                         #       Child Loop BB17_55 Depth 3
 	ld.d	$a0, $s6, 32
-	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	slli.d	$s8, $a2, 2
 	ldx.w	$s3, $a0, $s8
 	slli.d	$a0, $s3, 2
@@ -2511,17 +2496,17 @@ output_symbolic_constraints:            # @output_symbolic_constraints
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	blez	$s3, .LBB17_11
-# %bb.5:                                # %iter.check
+# %bb.5:                                # %.lr.ph
                                         #   in Loop: Header=BB17_4 Depth=1
 	ld.d	$a1, $s6, 16
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 2
-	ori	$a2, $zero, 4
+	ori	$a2, $zero, 8
 	bltu	$s3, $a2, .LBB17_8
 # %bb.6:                                # %vector.memcheck
                                         #   in Loop: Header=BB17_4 Depth=1
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	add.d	$a2, $a3, $a2
 	slli.d	$a2, $a2, 2
 	add.d	$a1, $a1, $a2
@@ -2533,12 +2518,12 @@ output_symbolic_constraints:            # @output_symbolic_constraints
 	bgeu	$a0, $a1, .LBB17_57
 .LBB17_8:                               #   in Loop: Header=BB17_4 Depth=1
 	move	$a1, $zero
-.LBB17_9:                               # %vec.epilog.scalar.ph.preheader
+.LBB17_9:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB17_4 Depth=1
 	alsl.d	$a2, $a1, $s4, 2
 	sub.d	$a3, $s3, $a1
 	.p2align	4, , 16
-.LBB17_10:                              # %vec.epilog.scalar.ph
+.LBB17_10:                              # %scalar.ph
                                         #   Parent Loop BB17_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a0, 0
@@ -2602,14 +2587,14 @@ output_symbolic_constraints:            # @output_symbolic_constraints
 	move	$s2, $zero
 .LBB17_20:                              # %._crit_edge139
                                         #   in Loop: Header=BB17_4 Depth=1
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s3, 12
 	move	$fp, $a0
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	blez	$a1, .LBB17_34
 # %bb.21:                               # %.lr.ph143
                                         #   in Loop: Header=BB17_4 Depth=1
@@ -2696,19 +2681,19 @@ output_symbolic_constraints:            # @output_symbolic_constraints
 	ori	$s7, $zero, 1
 .LBB17_33:                              # %.loopexit
                                         #   in Loop: Header=BB17_26 Depth=2
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
 	move	$s2, $s5
 	blt	$s5, $a0, .LBB17_26
 	.p2align	4, , 16
 .LBB17_34:                              # %._crit_edge150
                                         #   in Loop: Header=BB17_4 Depth=1
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	beqz	$a0, .LBB17_47
 # %bb.35:                               #   in Loop: Header=BB17_4 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.48)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.48)
 	move	$a0, $s1
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s3, 12
@@ -2728,7 +2713,7 @@ output_symbolic_constraints:            # @output_symbolic_constraints
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s3, 12
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
 .LBB17_38:                              #   in Loop: Header=BB17_39 Depth=2
 	addi.d	$s5, $s5, 1
 	bge	$s5, $a0, .LBB17_45
@@ -2800,13 +2785,13 @@ output_symbolic_constraints:            # @output_symbolic_constraints
 	pcalau12i	$a0, %pc_hi20(.L.str.44)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.44)
 	move	$a0, $s1
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.45)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.45)
 	move	$a0, $s1
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s6, 32
@@ -2880,80 +2865,45 @@ output_symbolic_constraints:            # @output_symbolic_constraints
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s3, 4
 	b	.LBB17_54
-.LBB17_57:                              # %vector.main.loop.iter.check
+.LBB17_57:                              # %vector.ph
                                         #   in Loop: Header=BB17_4 Depth=1
-	ori	$a1, $zero, 16
-	bgeu	$s3, $a1, .LBB17_59
-# %bb.58:                               #   in Loop: Header=BB17_4 Depth=1
-	move	$a1, $zero
-	b	.LBB17_63
-.LBB17_59:                              # %vector.ph
-                                        #   in Loop: Header=BB17_4 Depth=1
-	xvldrepl.w	$xr0, $a0, 0
-	andi	$a2, $s3, 12
-	bstrpick.d	$a1, $s3, 30, 4
-	slli.d	$a1, $a1, 4
-	xvaddi.wu	$xr1, $xr0, 8
-	addi.d	$a3, $s4, 32
-	move	$a4, $a1
-	xvld	$xr2, $sp, 16                   # 32-byte Folded Reload
-	.p2align	4, , 16
-.LBB17_60:                              # %vector.body
-                                        #   Parent Loop BB17_4 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	xvadd.w	$xr3, $xr0, $xr2
-	xvadd.w	$xr4, $xr2, $xr1
-	xvst	$xr3, $a3, -32
-	xvst	$xr4, $a3, 0
-	xvaddi.wu	$xr2, $xr2, 16
-	addi.d	$a4, $a4, -16
-	addi.d	$a3, $a3, 64
-	bnez	$a4, .LBB17_60
-# %bb.61:                               # %middle.block
-                                        #   in Loop: Header=BB17_4 Depth=1
-	beq	$a1, $s3, .LBB17_11
-# %bb.62:                               # %vec.epilog.iter.check
-                                        #   in Loop: Header=BB17_4 Depth=1
-	beqz	$a2, .LBB17_9
-.LBB17_63:                              # %vec.epilog.ph
-                                        #   in Loop: Header=BB17_4 Depth=1
-	move	$a3, $a1
-	bstrpick.d	$a1, $s3, 30, 2
-	slli.d	$a1, $a1, 2
 	vldrepl.w	$vr0, $a0, 0
-	vreplgr2vr.w	$vr1, $a3
-	vld	$vr2, $sp, 48                   # 16-byte Folded Reload
-	vor.v	$vr1, $vr1, $vr2
-	sub.d	$a2, $a3, $a1
-	alsl.d	$a3, $a3, $s4, 2
+	bstrpick.d	$a1, $s3, 30, 3
+	slli.d	$a1, $a1, 3
+	vaddi.wu	$vr1, $vr0, 4
+	addi.d	$a2, $s4, 16
+	move	$a3, $a1
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
 	.p2align	4, , 16
-.LBB17_64:                              # %vec.epilog.vector.body
+.LBB17_58:                              # %vector.body
                                         #   Parent Loop BB17_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vadd.w	$vr2, $vr0, $vr1
-	vst	$vr2, $a3, 0
-	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 16
-	bnez	$a2, .LBB17_64
-# %bb.65:                               # %vec.epilog.middle.block
+	vadd.w	$vr3, $vr0, $vr2
+	vadd.w	$vr4, $vr2, $vr1
+	vst	$vr3, $a2, -16
+	vst	$vr4, $a2, 0
+	vaddi.wu	$vr2, $vr2, 8
+	addi.d	$a3, $a3, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB17_58
+# %bb.59:                               # %middle.block
                                         #   in Loop: Header=BB17_4 Depth=1
 	beq	$a1, $s3, .LBB17_11
 	b	.LBB17_9
-.LBB17_66:                              # %.loopexit132
+.LBB17_60:                              # %.loopexit132
 	move	$a0, $zero
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 208
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .Lfunc_end17:
 	.size	output_symbolic_constraints, .Lfunc_end17-output_symbolic_constraints

@@ -37,8 +37,9 @@ ercInit:                                # @ercInit
 .LBB0_2:                                # %ercSetErrorConcealment.exit
 	st.w	$zero, $s0, 0
 	st.d	$zero, $s0, 48
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $s0, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $s0, 8
+	vst	$vr0, $s0, 24
 	st.w	$zero, $s0, 40
 	st.d	$s0, $s2, %pc_lo12(erc_errorVar)
 	st.w	$fp, $s0, 64
@@ -143,8 +144,9 @@ ercOpen:                                # @ercOpen
 .LBB2_2:
 	st.w	$zero, $a0, 0
 	st.d	$zero, $a0, 48
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 8
+	vst	$vr0, $a0, 24
 	st.w	$zero, $a0, 40
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 64

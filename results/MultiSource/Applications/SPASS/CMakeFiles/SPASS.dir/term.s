@@ -4721,10 +4721,11 @@ term_StampOverflow:                     # @term_StampOverflow
 	st.w	$zero, $a1, %pc_lo12(term_STAMP)
 	pcalau12i	$a1, %pc_hi20(term_STAMPOVERFLOW)
 	addi.d	$a1, $a1, %pc_lo12(term_STAMPOVERFLOW)
-	xvrepli.w	$xr0, 1
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
 	vrepli.w	$vr0, 1
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
 	vst	$vr0, $a1, 64
 	bstrpick.d	$a0, $a0, 31, 0
 	slli.d	$a0, $a0, 2
@@ -5051,7 +5052,7 @@ term_STAMPBLOCKED:
 
 	.type	term_STAMPOVERFLOW,@object      # @term_STAMPOVERFLOW
 	.local	term_STAMPOVERFLOW
-	.comm	term_STAMPOVERFLOW,80,32
+	.comm	term_STAMPOVERFLOW,80,16
 	.type	term_STAMPUSERS,@object         # @term_STAMPUSERS
 	.local	term_STAMPUSERS
 	.comm	term_STAMPUSERS,4,4

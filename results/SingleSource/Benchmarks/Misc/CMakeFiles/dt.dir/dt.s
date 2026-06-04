@@ -78,7 +78,7 @@ main:                                   # @main
 # %bb.2:
 	move	$a0, $zero
 	lu12i.w	$a1, -4
-	ori	$a2, $fp, 32
+	ori	$a2, $fp, 16
 	.p2align	4, , 16
 .LBB0_3:                                # %vector.ph
                                         # =>This Loop Header: Depth=1
@@ -89,16 +89,16 @@ main:                                   # @main
                                         #   Parent Loop BB0_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a4, $s2, $a3
-	xvldx	$xr0, $a4, $fp
-	xvldx	$xr1, $a4, $a2
+	vldx	$vr0, $a4, $fp
+	vldx	$vr1, $a4, $a2
 	add.d	$a4, $s1, $a3
-	xvldx	$xr2, $a4, $fp
-	xvldx	$xr3, $a4, $a2
-	xvfdiv.d	$xr0, $xr2, $xr0
-	xvfdiv.d	$xr1, $xr3, $xr1
-	xvstx	$xr0, $a4, $fp
-	addi.d	$a3, $a3, 64
-	xvstx	$xr1, $a4, $a2
+	vldx	$vr2, $a4, $fp
+	vldx	$vr3, $a4, $a2
+	vfdiv.d	$vr0, $vr2, $vr0
+	vfdiv.d	$vr1, $vr3, $vr1
+	vstx	$vr0, $a4, $fp
+	addi.d	$a3, $a3, 32
+	vstx	$vr1, $a4, $a2
 	bnez	$a3, .LBB0_4
 # %bb.5:                                # %middle.block
                                         #   in Loop: Header=BB0_3 Depth=1

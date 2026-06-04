@@ -781,13 +781,11 @@ jinit_c_master_control:                 # @jinit_c_master_control
 .Lfunc_end0:
 	.size	jinit_c_master_control, .Lfunc_end0-jinit_c_master_control
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function prepare_for_pass
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function prepare_for_pass
 .LCPI1_0:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end1, nop
@@ -822,7 +820,7 @@ prepare_for_pass:                       # @prepare_for_pass
 	blez	$a4, .LBB1_33
 # %bb.5:                                # %.lr.ph.i
 	ld.d	$a1, $fp, 80
-	ori	$a5, $zero, 8
+	ori	$a5, $zero, 4
 	bgeu	$a4, $a5, .LBB1_28
 # %bb.6:
 	move	$a5, $zero
@@ -840,7 +838,7 @@ prepare_for_pass:                       # @prepare_for_pass
 	blez	$a4, .LBB1_27
 # %bb.9:                                # %.lr.ph.i68
 	ld.d	$a1, $fp, 80
-	ori	$a5, $zero, 8
+	ori	$a5, $zero, 4
 	bgeu	$a4, $a5, .LBB1_22
 # %bb.10:
 	move	$a5, $zero
@@ -875,7 +873,7 @@ prepare_for_pass:                       # @prepare_for_pass
 	blez	$a0, .LBB1_39
 # %bb.15:                               # %.lr.ph45.i74
 	ld.d	$a1, $fp, 80
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bgeu	$a0, $a2, .LBB1_34
 # %bb.16:
 	move	$a2, $zero
@@ -902,36 +900,40 @@ prepare_for_pass:                       # @prepare_for_pass
 	blez	$a0, .LBB1_60
 # %bb.20:                               # %.lr.ph45.i
 	ld.d	$a1, $fp, 80
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bgeu	$a0, $a2, .LBB1_55
 # %bb.21:
 	move	$a2, $zero
 	b	.LBB1_58
 .LBB1_22:                               # %vector.ph
-	bstrpick.d	$a5, $a4, 30, 3
-	slli.d	$a5, $a5, 3
-	addi.d	$a6, $fp, 352
+	bstrpick.d	$a5, $a4, 30, 2
+	slli.d	$a5, $a5, 2
+	addi.d	$a6, $fp, 336
 	add.d	$a7, $a3, $a2
-	addi.d	$a7, $a7, 20
-	xvreplgr2vr.d	$xr0, $a1
-	xvrepli.d	$xr1, 96
+	addi.d	$a7, $a7, 12
+	vreplgr2vr.d	$vr0, $a1
+	vrepli.d	$vr1, 96
 	move	$t0, $a5
 	.p2align	4, , 16
 .LBB1_23:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $a7, -16
-	vld	$vr3, $a7, 0
-	vext2xv.d.w	$xr2, $xr2
-	vext2xv.d.w	$xr3, $xr3
-	xvori.b	$xr4, $xr0, 0
-	xvmadd.d	$xr4, $xr2, $xr1
-	xvori.b	$xr2, $xr0, 0
-	xvmadd.d	$xr2, $xr3, $xr1
-	xvst	$xr4, $a6, -32
-	xvst	$xr2, $a6, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a6, $a6, 64
-	addi.d	$a7, $a7, 32
+	ld.d	$t1, $a7, -8
+	ld.d	$t2, $a7, 0
+	vinsgr2vr.d	$vr2, $t1, 0
+	vinsgr2vr.d	$vr3, $t2, 0
+	vslti.w	$vr4, $vr2, 0
+	vilvl.w	$vr2, $vr4, $vr2
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr3, $vr4, $vr3
+	vori.b	$vr4, $vr0, 0
+	vmadd.d	$vr4, $vr2, $vr1
+	vori.b	$vr2, $vr0, 0
+	vmadd.d	$vr2, $vr3, $vr1
+	vst	$vr4, $a6, -16
+	vst	$vr2, $a6, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a6, $a6, 32
+	addi.d	$a7, $a7, 16
 	bnez	$t0, .LBB1_23
 # %bb.24:                               # %middle.block
 	beq	$a5, $a4, .LBB1_27
@@ -962,30 +964,34 @@ prepare_for_pass:                       # @prepare_for_pass
 	ld.w	$a0, $a0, 32
 	b	.LBB1_40
 .LBB1_28:                               # %vector.ph152
-	bstrpick.d	$a5, $a4, 30, 3
-	slli.d	$a5, $a5, 3
-	addi.d	$a6, $fp, 352
+	bstrpick.d	$a5, $a4, 30, 2
+	slli.d	$a5, $a5, 2
+	addi.d	$a6, $fp, 336
 	add.d	$a7, $a3, $a2
-	addi.d	$a7, $a7, 20
-	xvreplgr2vr.d	$xr0, $a1
-	xvrepli.d	$xr1, 96
+	addi.d	$a7, $a7, 12
+	vreplgr2vr.d	$vr0, $a1
+	vrepli.d	$vr1, 96
 	move	$t0, $a5
 	.p2align	4, , 16
 .LBB1_29:                               # %vector.body155
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $a7, -16
-	vld	$vr3, $a7, 0
-	vext2xv.d.w	$xr2, $xr2
-	vext2xv.d.w	$xr3, $xr3
-	xvori.b	$xr4, $xr0, 0
-	xvmadd.d	$xr4, $xr2, $xr1
-	xvori.b	$xr2, $xr0, 0
-	xvmadd.d	$xr2, $xr3, $xr1
-	xvst	$xr4, $a6, -32
-	xvst	$xr2, $a6, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a6, $a6, 64
-	addi.d	$a7, $a7, 32
+	ld.d	$t1, $a7, -8
+	ld.d	$t2, $a7, 0
+	vinsgr2vr.d	$vr2, $t1, 0
+	vinsgr2vr.d	$vr3, $t2, 0
+	vslti.w	$vr4, $vr2, 0
+	vilvl.w	$vr2, $vr4, $vr2
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr3, $vr4, $vr3
+	vori.b	$vr4, $vr0, 0
+	vmadd.d	$vr4, $vr2, $vr1
+	vori.b	$vr2, $vr0, 0
+	vmadd.d	$vr2, $vr3, $vr1
+	vst	$vr4, $a6, -16
+	vst	$vr2, $a6, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a6, $a6, 32
+	addi.d	$a7, $a7, 16
 	bnez	$t0, .LBB1_29
 # %bb.30:                               # %middle.block160
 	beq	$a5, $a4, .LBB1_33
@@ -1016,26 +1022,26 @@ prepare_for_pass:                       # @prepare_for_pass
 	ld.w	$a0, $a0, 32
 	b	.LBB1_61
 .LBB1_34:                               # %vector.ph114
-	bstrpick.d	$a2, $a0, 30, 3
-	slli.d	$a2, $a2, 3
+	bstrpick.d	$a2, $a0, 30, 2
+	slli.d	$a2, $a2, 2
 	pcalau12i	$a3, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a3, %pc_lo12(.LCPI1_0)
-	addi.d	$a3, $fp, 352
-	xvreplgr2vr.d	$xr1, $a1
-	xvrepli.d	$xr2, 96
-	xvrepli.d	$xr3, 384
+	vld	$vr0, $a3, %pc_lo12(.LCPI1_0)
+	addi.d	$a3, $fp, 336
+	vreplgr2vr.d	$vr1, $a1
+	vrepli.d	$vr2, 96
+	vrepli.d	$vr3, 192
 	move	$a4, $a2
 	.p2align	4, , 16
 .LBB1_35:                               # %vector.body117
                                         # =>This Inner Loop Header: Depth=1
-	xvori.b	$xr4, $xr1, 0
-	xvmadd.d	$xr4, $xr0, $xr2
-	xvadd.d	$xr5, $xr4, $xr3
-	xvst	$xr4, $a3, -32
-	xvst	$xr5, $a3, 0
-	xvaddi.du	$xr0, $xr0, 8
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vori.b	$vr4, $vr1, 0
+	vmadd.d	$vr4, $vr0, $vr2
+	vadd.d	$vr5, $vr4, $vr3
+	vst	$vr4, $a3, -16
+	vst	$vr5, $a3, 0
+	vaddi.du	$vr0, $vr0, 4
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB1_35
 # %bb.36:                               # %middle.block120
 	beq	$a2, $a0, .LBB1_39
@@ -1108,7 +1114,7 @@ prepare_for_pass:                       # @prepare_for_pass
 	blez	$a4, .LBB1_70
 # %bb.48:                               # %.lr.ph.i84
 	ld.d	$a1, $fp, 80
-	ori	$a5, $zero, 8
+	ori	$a5, $zero, 4
 	bgeu	$a4, $a5, .LBB1_65
 # %bb.49:
 	move	$a5, $zero
@@ -1135,32 +1141,32 @@ prepare_for_pass:                       # @prepare_for_pass
 	blez	$a0, .LBB1_76
 # %bb.53:                               # %.lr.ph45.i90
 	ld.d	$a1, $fp, 80
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bgeu	$a0, $a2, .LBB1_71
 # %bb.54:
 	move	$a2, $zero
 	b	.LBB1_74
 .LBB1_55:                               # %vector.ph165
-	bstrpick.d	$a2, $a0, 30, 3
-	slli.d	$a2, $a2, 3
+	bstrpick.d	$a2, $a0, 30, 2
+	slli.d	$a2, $a2, 2
 	pcalau12i	$a3, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a3, %pc_lo12(.LCPI1_0)
-	addi.d	$a3, $fp, 352
-	xvreplgr2vr.d	$xr1, $a1
-	xvrepli.d	$xr2, 96
-	xvrepli.d	$xr3, 384
+	vld	$vr0, $a3, %pc_lo12(.LCPI1_0)
+	addi.d	$a3, $fp, 336
+	vreplgr2vr.d	$vr1, $a1
+	vrepli.d	$vr2, 96
+	vrepli.d	$vr3, 192
 	move	$a4, $a2
 	.p2align	4, , 16
 .LBB1_56:                               # %vector.body168
                                         # =>This Inner Loop Header: Depth=1
-	xvori.b	$xr4, $xr1, 0
-	xvmadd.d	$xr4, $xr0, $xr2
-	xvadd.d	$xr5, $xr4, $xr3
-	xvst	$xr4, $a3, -32
-	xvst	$xr5, $a3, 0
-	xvaddi.du	$xr0, $xr0, 8
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vori.b	$vr4, $vr1, 0
+	vmadd.d	$vr4, $vr0, $vr2
+	vadd.d	$vr5, $vr4, $vr3
+	vst	$vr4, $a3, -16
+	vst	$vr5, $a3, 0
+	vaddi.du	$vr0, $vr0, 4
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB1_56
 # %bb.57:                               # %middle.block174
 	beq	$a2, $a0, .LBB1_60
@@ -1236,30 +1242,34 @@ prepare_for_pass:                       # @prepare_for_pass
 	st.w	$s1, $s0, 24
 	b	.LBB1_82
 .LBB1_65:                               # %vector.ph125
-	bstrpick.d	$a5, $a4, 30, 3
-	slli.d	$a5, $a5, 3
-	addi.d	$a6, $fp, 352
+	bstrpick.d	$a5, $a4, 30, 2
+	slli.d	$a5, $a5, 2
+	addi.d	$a6, $fp, 336
 	add.d	$a7, $a3, $a2
-	addi.d	$a7, $a7, 20
-	xvreplgr2vr.d	$xr0, $a1
-	xvrepli.d	$xr1, 96
+	addi.d	$a7, $a7, 12
+	vreplgr2vr.d	$vr0, $a1
+	vrepli.d	$vr1, 96
 	move	$t0, $a5
 	.p2align	4, , 16
 .LBB1_66:                               # %vector.body128
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $a7, -16
-	vld	$vr3, $a7, 0
-	vext2xv.d.w	$xr2, $xr2
-	vext2xv.d.w	$xr3, $xr3
-	xvori.b	$xr4, $xr0, 0
-	xvmadd.d	$xr4, $xr2, $xr1
-	xvori.b	$xr2, $xr0, 0
-	xvmadd.d	$xr2, $xr3, $xr1
-	xvst	$xr4, $a6, -32
-	xvst	$xr2, $a6, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a6, $a6, 64
-	addi.d	$a7, $a7, 32
+	ld.d	$t1, $a7, -8
+	ld.d	$t2, $a7, 0
+	vinsgr2vr.d	$vr2, $t1, 0
+	vinsgr2vr.d	$vr3, $t2, 0
+	vslti.w	$vr4, $vr2, 0
+	vilvl.w	$vr2, $vr4, $vr2
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr3, $vr4, $vr3
+	vori.b	$vr4, $vr0, 0
+	vmadd.d	$vr4, $vr2, $vr1
+	vori.b	$vr2, $vr0, 0
+	vmadd.d	$vr2, $vr3, $vr1
+	vst	$vr4, $a6, -16
+	vst	$vr2, $a6, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a6, $a6, 32
+	addi.d	$a7, $a7, 16
 	bnez	$t0, .LBB1_66
 # %bb.67:                               # %middle.block133
 	beq	$a5, $a4, .LBB1_70
@@ -1290,26 +1300,26 @@ prepare_for_pass:                       # @prepare_for_pass
 	ld.w	$a0, $a0, 32
 	b	.LBB1_77
 .LBB1_71:                               # %vector.ph138
-	bstrpick.d	$a2, $a0, 30, 3
-	slli.d	$a2, $a2, 3
+	bstrpick.d	$a2, $a0, 30, 2
+	slli.d	$a2, $a2, 2
 	pcalau12i	$a3, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a3, %pc_lo12(.LCPI1_0)
-	addi.d	$a3, $fp, 352
-	xvreplgr2vr.d	$xr1, $a1
-	xvrepli.d	$xr2, 96
-	xvrepli.d	$xr3, 384
+	vld	$vr0, $a3, %pc_lo12(.LCPI1_0)
+	addi.d	$a3, $fp, 336
+	vreplgr2vr.d	$vr1, $a1
+	vrepli.d	$vr2, 96
+	vrepli.d	$vr3, 192
 	move	$a4, $a2
 	.p2align	4, , 16
 .LBB1_72:                               # %vector.body141
                                         # =>This Inner Loop Header: Depth=1
-	xvori.b	$xr4, $xr1, 0
-	xvmadd.d	$xr4, $xr0, $xr2
-	xvadd.d	$xr5, $xr4, $xr3
-	xvst	$xr4, $a3, -32
-	xvst	$xr5, $a3, 0
-	xvaddi.du	$xr0, $xr0, 8
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vori.b	$vr4, $vr1, 0
+	vmadd.d	$vr4, $vr0, $vr2
+	vadd.d	$vr5, $vr4, $vr3
+	vst	$vr4, $a3, -16
+	vst	$vr5, $a3, 0
+	vaddi.du	$vr0, $vr0, 4
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB1_72
 # %bb.73:                               # %middle.block147
 	beq	$a2, $a0, .LBB1_76

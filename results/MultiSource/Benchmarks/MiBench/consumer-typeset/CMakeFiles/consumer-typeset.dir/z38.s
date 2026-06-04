@@ -1,6 +1,6 @@
 	.file	"z38.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function MapLoad
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function MapLoad
 .LCPI0_0:
 	.byte	0                               # 0x0
 	.byte	1                               # 0x1
@@ -18,6 +18,7 @@
 	.byte	13                              # 0xd
 	.byte	14                              # 0xe
 	.byte	15                              # 0xf
+.LCPI0_1:
 	.byte	16                              # 0x10
 	.byte	17                              # 0x11
 	.byte	18                              # 0x12
@@ -34,7 +35,7 @@
 	.byte	29                              # 0x1d
 	.byte	30                              # 0x1e
 	.byte	31                              # 0x1f
-.LCPI0_1:
+.LCPI0_2:
 	.byte	32                              # 0x20
 	.byte	33                              # 0x21
 	.byte	34                              # 0x22
@@ -51,6 +52,7 @@
 	.byte	45                              # 0x2d
 	.byte	46                              # 0x2e
 	.byte	47                              # 0x2f
+.LCPI0_3:
 	.byte	48                              # 0x30
 	.byte	49                              # 0x31
 	.byte	50                              # 0x32
@@ -67,7 +69,7 @@
 	.byte	61                              # 0x3d
 	.byte	62                              # 0x3e
 	.byte	63                              # 0x3f
-.LCPI0_2:
+.LCPI0_4:
 	.byte	64                              # 0x40
 	.byte	65                              # 0x41
 	.byte	66                              # 0x42
@@ -84,6 +86,7 @@
 	.byte	77                              # 0x4d
 	.byte	78                              # 0x4e
 	.byte	79                              # 0x4f
+.LCPI0_5:
 	.byte	80                              # 0x50
 	.byte	81                              # 0x51
 	.byte	82                              # 0x52
@@ -100,7 +103,7 @@
 	.byte	93                              # 0x5d
 	.byte	94                              # 0x5e
 	.byte	95                              # 0x5f
-.LCPI0_3:
+.LCPI0_6:
 	.byte	96                              # 0x60
 	.byte	97                              # 0x61
 	.byte	98                              # 0x62
@@ -117,6 +120,7 @@
 	.byte	109                             # 0x6d
 	.byte	110                             # 0x6e
 	.byte	111                             # 0x6f
+.LCPI0_7:
 	.byte	112                             # 0x70
 	.byte	113                             # 0x71
 	.byte	114                             # 0x72
@@ -133,7 +137,7 @@
 	.byte	125                             # 0x7d
 	.byte	126                             # 0x7e
 	.byte	127                             # 0x7f
-.LCPI0_4:
+.LCPI0_8:
 	.byte	128                             # 0x80
 	.byte	129                             # 0x81
 	.byte	130                             # 0x82
@@ -150,6 +154,7 @@
 	.byte	141                             # 0x8d
 	.byte	142                             # 0x8e
 	.byte	143                             # 0x8f
+.LCPI0_9:
 	.byte	144                             # 0x90
 	.byte	145                             # 0x91
 	.byte	146                             # 0x92
@@ -166,7 +171,7 @@
 	.byte	157                             # 0x9d
 	.byte	158                             # 0x9e
 	.byte	159                             # 0x9f
-.LCPI0_5:
+.LCPI0_10:
 	.byte	160                             # 0xa0
 	.byte	161                             # 0xa1
 	.byte	162                             # 0xa2
@@ -183,6 +188,7 @@
 	.byte	173                             # 0xad
 	.byte	174                             # 0xae
 	.byte	175                             # 0xaf
+.LCPI0_11:
 	.byte	176                             # 0xb0
 	.byte	177                             # 0xb1
 	.byte	178                             # 0xb2
@@ -199,7 +205,7 @@
 	.byte	189                             # 0xbd
 	.byte	190                             # 0xbe
 	.byte	191                             # 0xbf
-.LCPI0_6:
+.LCPI0_12:
 	.byte	192                             # 0xc0
 	.byte	193                             # 0xc1
 	.byte	194                             # 0xc2
@@ -216,6 +222,7 @@
 	.byte	205                             # 0xcd
 	.byte	206                             # 0xce
 	.byte	207                             # 0xcf
+.LCPI0_13:
 	.byte	208                             # 0xd0
 	.byte	209                             # 0xd1
 	.byte	210                             # 0xd2
@@ -232,7 +239,7 @@
 	.byte	221                             # 0xdd
 	.byte	222                             # 0xde
 	.byte	223                             # 0xdf
-.LCPI0_7:
+.LCPI0_14:
 	.byte	224                             # 0xe0
 	.byte	225                             # 0xe1
 	.byte	226                             # 0xe2
@@ -249,6 +256,7 @@
 	.byte	237                             # 0xed
 	.byte	238                             # 0xee
 	.byte	239                             # 0xef
+.LCPI0_15:
 	.byte	240                             # 0xf0
 	.byte	241                             # 0xf1
 	.byte	242                             # 0xf2
@@ -328,7 +336,7 @@ MapLoad:                                # @MapLoad
 # %bb.7:
 	ori	$a0, $zero, 20
 	addi.d	$a1, $s1, 32
-	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	bne	$s6, $a0, .LBB0_9
 .LBB0_8:
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
@@ -343,13 +351,13 @@ MapLoad:                                # @MapLoad
 	ori	$a0, $zero, 3464
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ld.wu	$s0, $s5, %pc_lo12(maptop)
-	move	$s6, $a0
-	addi.d	$a0, $s0, 1
+	ld.wu	$s6, $s5, %pc_lo12(maptop)
+	move	$s0, $a0
+	addi.d	$a0, $s6, 1
 	st.w	$a0, $s5, %pc_lo12(maptop)
-	slli.d	$a0, $s0, 3
-	stx.d	$s6, $fp, $a0
-	bnez	$s6, .LBB0_11
+	slli.d	$a0, $s6, 3
+	stx.d	$s0, $fp, $a0
+	bnez	$s0, .LBB0_11
 # %bb.10:
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.3)
@@ -360,17 +368,17 @@ MapLoad:                                # @MapLoad
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB0_11:
-	addi.d	$fp, $s6, 2047
-	st.d	$s1, $s6, 0
+	addi.d	$fp, $s0, 2047
+	st.d	$s1, $s0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.4)
 	ori	$a3, $zero, 9
 	ori	$a4, $zero, 7
 	move	$a0, $s3
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(DefineFile)
 	jirl	$ra, $ra, 0
-	st.h	$a0, $s6, 8
+	st.h	$a0, $s0, 8
 	move	$a1, $zero
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(OpenFile)
@@ -378,10 +386,10 @@ MapLoad:                                # @MapLoad
 	move	$s7, $a0
 	bnez	$a0, .LBB0_13
 # %bb.12:
-	ld.hu	$a0, $s6, 8
+	ld.hu	$a0, $s0, 8
 	pcaddu18i	$ra, %call36(PosOfFile)
 	jirl	$ra, $ra, 0
-	ld.hu	$a1, $s6, 8
+	ld.hu	$a1, $s0, 8
 	move	$s3, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(FileName)
@@ -396,9 +404,9 @@ MapLoad:                                # @MapLoad
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB0_13:                               # %.preheader128
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.w	$s2, $s6, 12
-	st.w	$zero, $s6, 16
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.w	$s2, $s0, 12
+	st.w	$zero, $s0, 16
 	ld.w	$a0, $s5, %pc_lo12(maptop)
 	lu12i.w	$a1, 1590
 	ori	$a1, $a1, 1398
@@ -407,7 +415,6 @@ MapLoad:                                # @MapLoad
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	addi.d	$a0, $sp, 1640
-	addi.d	$s0, $sp, 1640
 	pcaddu18i	$ra, %call36(strcat)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
@@ -418,134 +425,223 @@ MapLoad:                                # @MapLoad
 	addi.d	$a1, $sp, 1640
 	pcaddu18i	$ra, %call36(MakeWord)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s6, 24
+	st.d	$a0, $s0, 24
 	addi.d	$a0, $fp, 386
 	ori	$a2, $zero, 1024
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
-	xvst	$xr0, $fp, 898
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
+	vst	$vr0, $fp, 898
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_1)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_2)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_3)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI0_4)
-	xvst	$xr0, $fp, 930
-	xvst	$xr1, $fp, 962
-	xvst	$xr2, $fp, 994
-	xvst	$xr3, $fp, 1026
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_4)
+	vst	$vr0, $fp, 914
+	vst	$vr1, $fp, 930
+	vst	$vr2, $fp, 946
+	vst	$vr3, $fp, 962
 	pcalau12i	$a0, %pc_hi20(.LCPI0_5)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_5)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_6)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_6)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_7)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_7)
-	xvst	$xr0, $fp, 1058
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_7)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_8)
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_8)
+	vst	$vr0, $fp, 978
+	vst	$vr1, $fp, 994
+	vst	$vr2, $fp, 1010
+	vst	$vr3, $fp, 1026
+	pcalau12i	$a0, %pc_hi20(.LCPI0_9)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_9)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_10)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_10)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_11)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_11)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_12)
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_12)
+	vst	$vr0, $fp, 1042
+	vst	$vr1, $fp, 1058
+	vst	$vr2, $fp, 1074
+	vst	$vr3, $fp, 1090
+	pcalau12i	$a0, %pc_hi20(.LCPI0_13)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_13)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_14)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_14)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_15)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_15)
+	vst	$vr0, $fp, 1106
 	ld.d	$a0, $s4, %pc_lo12(notdef_word)
-	xvst	$xr1, $fp, 1090
-	xvst	$xr2, $fp, 1122
-	addi.d	$s1, $s6, 32
-	xvreplgr2vr.d	$xr0, $a0
-	xvst	$xr0, $s6, 32
-	xvst	$xr0, $s6, 64
-	xvst	$xr0, $s6, 96
-	xvst	$xr0, $s6, 128
-	xvst	$xr0, $s6, 160
-	xvst	$xr0, $s6, 192
-	xvst	$xr0, $s6, 224
-	xvst	$xr0, $s6, 256
-	xvst	$xr0, $s6, 288
-	xvst	$xr0, $s6, 320
-	xvst	$xr0, $s6, 352
-	xvst	$xr0, $s6, 384
-	xvst	$xr0, $s6, 416
-	xvst	$xr0, $s6, 448
-	xvst	$xr0, $s6, 480
-	xvst	$xr0, $s6, 512
-	xvst	$xr0, $s6, 544
-	xvst	$xr0, $s6, 576
-	xvst	$xr0, $s6, 608
-	xvst	$xr0, $s6, 640
-	xvst	$xr0, $s6, 672
-	xvst	$xr0, $s6, 704
-	xvst	$xr0, $s6, 736
-	xvst	$xr0, $s6, 768
-	xvst	$xr0, $s6, 800
-	xvst	$xr0, $s6, 832
-	xvst	$xr0, $s6, 864
-	xvst	$xr0, $s6, 896
-	xvst	$xr0, $s6, 928
-	xvst	$xr0, $s6, 960
-	xvst	$xr0, $s6, 992
-	xvst	$xr0, $s6, 1024
-	xvst	$xr0, $s6, 1056
-	xvst	$xr0, $s6, 1088
-	xvst	$xr0, $s6, 1120
-	xvst	$xr0, $s6, 1152
-	xvst	$xr0, $s6, 1184
-	xvst	$xr0, $s6, 1216
-	xvst	$xr0, $s6, 1248
-	xvst	$xr0, $s6, 1280
-	xvst	$xr0, $s6, 1312
-	xvst	$xr0, $s6, 1344
-	xvst	$xr0, $s6, 1376
-	xvst	$xr0, $s6, 1408
-	xvst	$xr0, $s6, 1440
-	xvst	$xr0, $s6, 1472
-	xvst	$xr0, $s6, 1504
-	xvst	$xr0, $s6, 1536
-	xvst	$xr0, $s6, 1568
-	xvst	$xr0, $s6, 1600
-	xvst	$xr0, $s6, 1632
-	xvst	$xr0, $s6, 1664
-	xvst	$xr0, $s6, 1696
-	xvst	$xr0, $s6, 1728
-	xvst	$xr0, $s6, 1760
-	xvst	$xr0, $s6, 1792
-	xvst	$xr0, $s6, 1824
-	xvst	$xr0, $s6, 1856
-	xvst	$xr0, $s6, 1888
-	xvst	$xr0, $s6, 1920
-	xvst	$xr0, $s6, 1952
-	xvst	$xr0, $s6, 1984
-	xvst	$xr0, $s6, 2016
+	addi.d	$s4, $sp, 1640
+	vst	$vr1, $fp, 1122
+	vst	$vr2, $fp, 1138
+	addi.d	$s1, $s0, 32
+	vreplgr2vr.d	$vr0, $a0
+	vst	$vr0, $s0, 32
+	vst	$vr0, $s0, 48
+	vst	$vr0, $s0, 64
+	vst	$vr0, $s0, 80
+	vst	$vr0, $s0, 96
+	vst	$vr0, $s0, 112
+	vst	$vr0, $s0, 128
+	vst	$vr0, $s0, 144
+	vst	$vr0, $s0, 160
+	vst	$vr0, $s0, 176
+	vst	$vr0, $s0, 192
+	vst	$vr0, $s0, 208
+	vst	$vr0, $s0, 224
+	vst	$vr0, $s0, 240
+	vst	$vr0, $s0, 256
+	vst	$vr0, $s0, 272
+	vst	$vr0, $s0, 288
+	vst	$vr0, $s0, 304
+	vst	$vr0, $s0, 320
+	vst	$vr0, $s0, 336
+	vst	$vr0, $s0, 352
+	vst	$vr0, $s0, 368
+	vst	$vr0, $s0, 384
+	vst	$vr0, $s0, 400
+	vst	$vr0, $s0, 416
+	vst	$vr0, $s0, 432
+	vst	$vr0, $s0, 448
+	vst	$vr0, $s0, 464
+	vst	$vr0, $s0, 480
+	vst	$vr0, $s0, 496
+	vst	$vr0, $s0, 512
+	vst	$vr0, $s0, 528
+	vst	$vr0, $s0, 544
+	vst	$vr0, $s0, 560
+	vst	$vr0, $s0, 576
+	vst	$vr0, $s0, 592
+	vst	$vr0, $s0, 608
+	vst	$vr0, $s0, 624
+	vst	$vr0, $s0, 640
+	vst	$vr0, $s0, 656
+	vst	$vr0, $s0, 672
+	vst	$vr0, $s0, 688
+	vst	$vr0, $s0, 704
+	vst	$vr0, $s0, 720
+	vst	$vr0, $s0, 736
+	vst	$vr0, $s0, 752
+	vst	$vr0, $s0, 768
+	vst	$vr0, $s0, 784
+	vst	$vr0, $s0, 800
+	vst	$vr0, $s0, 816
+	vst	$vr0, $s0, 832
+	vst	$vr0, $s0, 848
+	vst	$vr0, $s0, 864
+	vst	$vr0, $s0, 880
+	vst	$vr0, $s0, 896
+	vst	$vr0, $s0, 912
+	vst	$vr0, $s0, 928
+	vst	$vr0, $s0, 944
+	vst	$vr0, $s0, 960
+	vst	$vr0, $s0, 976
+	vst	$vr0, $s0, 992
+	vst	$vr0, $s0, 1008
+	vst	$vr0, $s0, 1024
+	vst	$vr0, $s0, 1040
+	vst	$vr0, $s0, 1056
+	vst	$vr0, $s0, 1072
+	vst	$vr0, $s0, 1088
+	vst	$vr0, $s0, 1104
+	vst	$vr0, $s0, 1120
+	vst	$vr0, $s0, 1136
+	vst	$vr0, $s0, 1152
+	vst	$vr0, $s0, 1168
+	vst	$vr0, $s0, 1184
+	vst	$vr0, $s0, 1200
+	vst	$vr0, $s0, 1216
+	vst	$vr0, $s0, 1232
+	vst	$vr0, $s0, 1248
+	vst	$vr0, $s0, 1264
+	vst	$vr0, $s0, 1280
+	vst	$vr0, $s0, 1296
+	vst	$vr0, $s0, 1312
+	vst	$vr0, $s0, 1328
+	vst	$vr0, $s0, 1344
+	vst	$vr0, $s0, 1360
+	vst	$vr0, $s0, 1376
+	vst	$vr0, $s0, 1392
+	vst	$vr0, $s0, 1408
+	vst	$vr0, $s0, 1424
+	vst	$vr0, $s0, 1440
+	vst	$vr0, $s0, 1456
+	vst	$vr0, $s0, 1472
+	vst	$vr0, $s0, 1488
+	vst	$vr0, $s0, 1504
+	vst	$vr0, $s0, 1520
+	vst	$vr0, $s0, 1536
+	vst	$vr0, $s0, 1552
+	vst	$vr0, $s0, 1568
+	vst	$vr0, $s0, 1584
+	vst	$vr0, $s0, 1600
+	vst	$vr0, $s0, 1616
+	vst	$vr0, $s0, 1632
+	vst	$vr0, $s0, 1648
+	vst	$vr0, $s0, 1664
+	vst	$vr0, $s0, 1680
+	vst	$vr0, $s0, 1696
+	vst	$vr0, $s0, 1712
+	vst	$vr0, $s0, 1728
+	vst	$vr0, $s0, 1744
+	vst	$vr0, $s0, 1760
+	vst	$vr0, $s0, 1776
+	vst	$vr0, $s0, 1792
+	vst	$vr0, $s0, 1808
+	vst	$vr0, $s0, 1824
+	vst	$vr0, $s0, 1840
+	vst	$vr0, $s0, 1856
+	vst	$vr0, $s0, 1872
+	vst	$vr0, $s0, 1888
+	vst	$vr0, $s0, 1904
+	vst	$vr0, $s0, 1920
+	vst	$vr0, $s0, 1936
+	vst	$vr0, $s0, 1952
+	vst	$vr0, $s0, 1968
+	vst	$vr0, $s0, 1984
+	vst	$vr0, $s0, 2000
+	vst	$vr0, $s0, 2016
+	vst	$vr0, $s0, 2032
 	ori	$a0, $zero, 2048
-	st.d	$s6, $sp, 64                    # 8-byte Folded Spill
-	xvstx	$xr0, $s6, $a0
+	vstx	$vr0, $s0, $a0
+	ori	$a0, $zero, 2064
+	vstx	$vr0, $s0, $a0
 	addi.d	$s3, $fp, 33
 	ori	$a2, $zero, 353
-	ori	$s4, $zero, 353
+	ori	$fp, $zero, 353
 	move	$a0, $s3
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 2164
 	add.d	$a0, $sp, $a0
-	st.w	$s4, $a0, 0
+	st.w	$fp, $a0, 0
 	addi.d	$a0, $sp, 1640
 	ori	$a1, $zero, 512
 	move	$a2, $s7
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
 	move	$s2, $s7
-	beq	$a0, $s0, .LBB0_17
+	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	beq	$a0, $s4, .LBB0_17
 .LBB0_14:                               # %.outer125._crit_edge
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(rewind)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $sp, 1640
 	ori	$a1, $zero, 512
-	st.d	$s2, $sp, 48                    # 8-byte Folded Spill
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s0, .LBB0_18
+	beq	$a0, $s4, .LBB0_18
 .LBB0_15:                               # %.outer._crit_edge
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fclose)
@@ -565,12 +661,12 @@ MapLoad:                                # @MapLoad
 	st.d	$a0, $s4, %pc_lo12(notdef_word)
 	ori	$a0, $zero, 20
 	addi.d	$a1, $s1, 32
-	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	beq	$s6, $a0, .LBB0_8
 	b	.LBB0_9
 .LBB0_17:                               # %.lr.ph150.preheader
 	addi.w	$a0, $zero, -1
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	ori	$s5, $zero, 35
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
@@ -583,7 +679,7 @@ MapLoad:                                # @MapLoad
 	move	$s6, $zero
 	lu12i.w	$a0, 452342
 	ori	$a0, $a0, 3629
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	lu12i.w	$a0, 726
 	ori	$a0, $a0, 1390
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
@@ -593,7 +689,7 @@ MapLoad:                                # @MapLoad
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ori	$s8, $zero, 1025
 	lu32i.d	$s8, 8
-	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 64                    # 8-byte Folded Spill
 	b	.LBB0_48
 .LBB0_18:                               # %.lr.ph156.preheader
 	ori	$s2, $zero, 4
@@ -602,15 +698,16 @@ MapLoad:                                # @MapLoad
 	addi.d	$a0, $a0, %pc_lo12(.L.str.15)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
-	addi.d	$s5, $a0, %pc_lo12(.L.str.16)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	addi.d	$s4, $sp, 104
 	lu12i.w	$a0, 4
 	ori	$a0, $a0, 853
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	lu12i.w	$a0, 174080
 	lu32i.d	$a0, -415866
 	lu52i.d	$a0, $a0, 11
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.22)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.22)
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
@@ -686,8 +783,7 @@ MapLoad:                                # @MapLoad
 	.p2align	4, , 16
 .LBB0_26:                               # %.loopexit
                                         #   in Loop: Header=BB0_28 Depth=2
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	ld.hu	$a0, $a0, 8
+	ld.hu	$a0, $s0, 8
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
 	move	$a6, $a0
@@ -696,11 +792,11 @@ MapLoad:                                # @MapLoad
 	ori	$a3, $zero, 1
 	addi.d	$a5, $sp, 104
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	move	$a7, $s7
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	move	$s0, $zero
+	move	$s8, $zero
 .LBB0_27:                               # %NameRetrieve.exit115
                                         #   in Loop: Header=BB0_28 Depth=2
 	ori	$a0, $zero, 2156
@@ -710,9 +806,9 @@ MapLoad:                                # @MapLoad
 	add.d	$a1, $sp, $a1
 	ld.w	$a1, $a1, 0
 	slli.d	$a2, $s2, 8
-	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	add.d	$a2, $a3, $a2
-	stx.b	$s0, $a2, $a0
+	stx.b	$s8, $a2, $a0
 	addi.d	$a0, $sp, 1640
 	add.d	$a0, $a0, $a1
 .LBB0_28:                               # %NameRetrieve.exit115
@@ -724,7 +820,7 @@ MapLoad:                                # @MapLoad
 	addi.d	$a3, $sp, 104
 	ori	$a1, $zero, 2164
 	add.d	$a4, $sp, $a1
-	move	$a1, $s5
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 2
@@ -739,7 +835,7 @@ MapLoad:                                # @MapLoad
 	ld.hu	$a2, $sp, 616
 	ld.bu	$a3, $sp, 618
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	xor	$a1, $a2, $a1
 	or	$a1, $a1, $a3
 	ori	$a2, $zero, 2160
@@ -769,8 +865,7 @@ MapLoad:                                # @MapLoad
 	or	$a0, $a0, $a1
 	beqz	$a0, .LBB0_37
 # %bb.33:                               #   in Loop: Header=BB0_28 Depth=2
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	ld.hu	$a0, $a0, 8
+	ld.hu	$a0, $s0, 8
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
 	move	$a6, $a0
@@ -780,7 +875,7 @@ MapLoad:                                # @MapLoad
 	ori	$a1, $zero, 10
 	ori	$a3, $zero, 1
 	addi.d	$a5, $sp, 616
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	move	$a7, $s7
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
@@ -814,19 +909,19 @@ MapLoad:                                # @MapLoad
 	bnez	$a3, .LBB0_39
 # %bb.40:                               #   in Loop: Header=BB0_28 Depth=2
 	bstrpick.d	$a0, $a2, 31, 0
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	mulh.du	$a0, $a0, $a1
 	ori	$a1, $zero, 353
 	mul.d	$a0, $a0, $a1
-	sub.w	$s8, $a2, $a0
-	ldx.bu	$s0, $s3, $s8
-	beqz	$s0, .LBB0_26
+	sub.w	$s5, $a2, $a0
+	ldx.bu	$s8, $s3, $s5
+	beqz	$s8, .LBB0_26
 	.p2align	4, , 16
 .LBB0_41:                               # %.lr.ph.i111
                                         #   Parent Loop BB0_22 Depth=1
                                         #     Parent Loop BB0_28 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	slli.d	$a0, $s0, 3
+	slli.d	$a0, $s8, 3
 	ldx.d	$a0, $s1, $a0
 	addi.d	$a0, $a0, 64
 	addi.d	$a1, $sp, 104
@@ -834,12 +929,12 @@ MapLoad:                                # @MapLoad
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_27
 # %bb.42:                               #   in Loop: Header=BB0_41 Depth=3
-	addi.w	$a0, $s8, 1
+	addi.w	$a0, $s5, 1
 	addi.d	$a1, $a0, -353
 	sltui	$a1, $a1, 1
-	masknez	$s8, $a0, $a1
-	ldx.bu	$s0, $s3, $s8
-	bnez	$s0, .LBB0_41
+	masknez	$s5, $a0, $a1
+	ldx.bu	$s8, $s3, $s5
+	bnez	$s8, .LBB0_41
 	b	.LBB0_26
 .LBB0_43:
 	pcalau12i	$a0, %got_pc_hi20(zz_hold)
@@ -894,12 +989,11 @@ MapLoad:                                # @MapLoad
 	ret
 .LBB0_46:                               # %NameRetrieve.exit
                                         #   in Loop: Header=BB0_48 Depth=1
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	slli.d	$a0, $a0, 3
-	stx.d	$s4, $s1, $a0
-	move	$s2, $s8
-	addi.d	$s0, $sp, 1640
-	ori	$s4, $zero, 353
+	stx.d	$s8, $s1, $a0
+	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
+	addi.d	$s4, $sp, 1640
 	.p2align	4, , 16
 .LBB0_47:                               # %.outer125
                                         #   in Loop: Header=BB0_48 Depth=1
@@ -908,14 +1002,14 @@ MapLoad:                                # @MapLoad
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
-	bne	$a0, $s0, .LBB0_14
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	bne	$a0, $s4, .LBB0_14
 .LBB0_48:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_49 Depth 2
                                         #     Child Loop BB0_69 Depth 2
                                         #     Child Loop BB0_71 Depth 2
                                         #     Child Loop BB0_74 Depth 2
-                                        #     Child Loop BB0_77 Depth 2
+                                        #     Child Loop BB0_76 Depth 2
 	move	$a0, $zero
 	addi.w	$s6, $s6, 1
 	addi.d	$a1, $sp, 1640
@@ -949,7 +1043,7 @@ MapLoad:                                # @MapLoad
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s0, .LBB0_48
+	beq	$a0, $s4, .LBB0_48
 	b	.LBB0_14
 	.p2align	4, , 16
 .LBB0_53:                               #   in Loop: Header=BB0_48 Depth=1
@@ -972,7 +1066,7 @@ MapLoad:                                # @MapLoad
 	ori	$a1, $zero, 4
 	ori	$a3, $zero, 1
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB0_55:                               #   in Loop: Header=BB0_48 Depth=1
@@ -989,7 +1083,7 @@ MapLoad:                                # @MapLoad
 	ori	$a0, $zero, 38
 	ori	$a1, $zero, 5
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 2156
@@ -1000,7 +1094,7 @@ MapLoad:                                # @MapLoad
 # %bb.58:                               #   in Loop: Header=BB0_48 Depth=1
 	ld.w	$a0, $sp, 1128
 	ld.w	$a1, $sp, 1131
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	xor	$a0, $a0, $a2
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	xor	$a1, $a1, $a2
@@ -1012,7 +1106,7 @@ MapLoad:                                # @MapLoad
 	ori	$a0, $zero, 38
 	ori	$a1, $zero, 6
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	move	$a6, $s6
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
@@ -1020,7 +1114,7 @@ MapLoad:                                # @MapLoad
 	add.d	$a0, $sp, $a0
 	ld.w	$a5, $a0, 0
 .LBB0_60:                               #   in Loop: Header=BB0_48 Depth=1
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	blt	$a5, $a1, .LBB0_64
 # %bb.61:                               #   in Loop: Header=BB0_48 Depth=1
 	beq	$a5, $a1, .LBB0_65
@@ -1034,14 +1128,14 @@ MapLoad:                                # @MapLoad
 	ori	$a1, $zero, 9
 	ori	$a3, $zero, 1
 	ori	$a6, $zero, 256
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	move	$a7, $s6
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 2156
 	add.d	$a0, $sp, $a0
 	ld.w	$a0, $a0, 0
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	ori	$a0, $zero, 3
 	blt	$s8, $a0, .LBB0_47
 	b	.LBB0_67
@@ -1051,11 +1145,11 @@ MapLoad:                                # @MapLoad
 	ori	$a0, $zero, 38
 	ori	$a1, $zero, 7
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	move	$a6, $s6
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	ori	$a0, $zero, 2156
 	add.d	$a0, $sp, $a0
 	ld.w	$a5, $a0, 0
@@ -1067,7 +1161,7 @@ MapLoad:                                # @MapLoad
 	ori	$a0, $zero, 38
 	ori	$a1, $zero, 8
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	move	$a6, $s6
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
@@ -1077,20 +1171,19 @@ MapLoad:                                # @MapLoad
 	ori	$a0, $zero, 257
 	bge	$a5, $a0, .LBB0_63
 .LBB0_66:                               #   in Loop: Header=BB0_48 Depth=1
-	st.d	$a5, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a5, $sp, 96                    # 8-byte Folded Spill
 	ori	$a0, $zero, 3
 	blt	$s8, $a0, .LBB0_47
 .LBB0_67:                               #   in Loop: Header=BB0_48 Depth=1
 	ld.w	$a0, $sp, 1128
 	ld.w	$a1, $sp, 1131
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	xor	$a0, $a0, $a2
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	xor	$a1, $a1, $a2
 	or	$a0, $a0, $a1
 	beqz	$a0, .LBB0_47
 # %bb.68:                               #   in Loop: Header=BB0_48 Depth=1
-	move	$s8, $s2
 	ld.bu	$a0, $sp, 1128
 	slli.d	$s2, $a0, 1
 	ori	$a0, $zero, 1
@@ -1107,27 +1200,28 @@ MapLoad:                                # @MapLoad
 	bstrpick.d	$a0, $a1, 31, 0
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	mulh.du	$a0, $a0, $a2
-	mul.d	$a0, $a0, $s4
-	sub.w	$s0, $a1, $a0
-	ldx.bu	$a0, $s3, $s0
+	ori	$a2, $zero, 353
+	mul.d	$a0, $a0, $a2
+	sub.w	$s4, $a1, $a0
+	ldx.bu	$a0, $s3, $s4
 	beqz	$a0, .LBB0_73
 	.p2align	4, , 16
 .LBB0_71:                               # %.lr.ph.i
                                         #   Parent Loop BB0_48 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	slli.d	$a0, $a0, 3
-	ldx.d	$s4, $s1, $a0
-	addi.d	$a0, $s4, 64
+	ldx.d	$s8, $s1, $a0
+	addi.d	$a0, $s8, 64
 	addi.d	$a1, $sp, 1128
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_46
 # %bb.72:                               #   in Loop: Header=BB0_71 Depth=2
-	addi.w	$a0, $s0, 1
+	addi.w	$a0, $s4, 1
 	addi.d	$a1, $a0, -353
 	sltui	$a1, $a1, 1
-	masknez	$s0, $a0, $a1
-	ldx.bu	$a0, $s3, $s0
+	masknez	$s4, $a0, $a1
+	ldx.bu	$a0, $s3, $s4
 	bnez	$a0, .LBB0_71
 .LBB0_73:                               # %.loopexit124.preheader
                                         #   in Loop: Header=BB0_48 Depth=1
@@ -1145,28 +1239,23 @@ MapLoad:                                # @MapLoad
 	bstrpick.d	$a0, $a1, 31, 0
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	mulh.du	$a0, $a0, $a2
-	ori	$s4, $zero, 353
-	mul.d	$a0, $a0, $s4
-	sub.w	$s0, $a1, $a0
-	ldx.bu	$a0, $s3, $s0
-	beqz	$a0, .LBB0_78
-# %bb.76:                               # %.lr.ph.i104.preheader
-                                        #   in Loop: Header=BB0_48 Depth=1
-	move	$s2, $s8
+	ori	$a2, $zero, 353
+	mul.d	$a0, $a0, $a2
+	sub.w	$s2, $a1, $a0
+	ldx.bu	$a0, $s3, $s2
+	addi.d	$s4, $sp, 1640
+	beqz	$a0, .LBB0_77
 	.p2align	4, , 16
-.LBB0_77:                               # %.lr.ph.i104
+.LBB0_76:                               # %.lr.ph.i104
                                         #   Parent Loop BB0_48 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.w	$a0, $s0, 1
+	addi.w	$a0, $s2, 1
 	addi.d	$a1, $a0, -353
 	sltui	$a1, $a1, 1
-	masknez	$s0, $a0, $a1
-	ldx.bu	$a0, $s3, $s0
-	bnez	$a0, .LBB0_77
-	b	.LBB0_79
-.LBB0_78:                               #   in Loop: Header=BB0_48 Depth=1
-	move	$s2, $s8
-.LBB0_79:                               # %NameInsert.exit
+	masknez	$s2, $a0, $a1
+	ldx.bu	$a0, $s3, $s2
+	bnez	$a0, .LBB0_76
+.LBB0_77:                               # %NameInsert.exit
                                         #   in Loop: Header=BB0_48 Depth=1
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a2, $a0, 0
@@ -1174,11 +1263,11 @@ MapLoad:                                # @MapLoad
 	addi.d	$a1, $sp, 1128
 	pcaddu18i	$ra, %call36(MakeWord)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	slli.d	$a1, $a2, 3
 	stx.d	$a0, $s1, $a1
-	stx.b	$a2, $s3, $s0
-	addi.d	$s0, $sp, 1640
+	stx.b	$a2, $s3, $s2
+	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB0_47
 .Lfunc_end0:
 	.size	MapLoad, .Lfunc_end0-MapLoad

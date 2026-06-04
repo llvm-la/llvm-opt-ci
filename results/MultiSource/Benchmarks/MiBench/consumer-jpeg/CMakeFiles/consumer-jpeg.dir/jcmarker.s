@@ -2000,27 +2000,45 @@ emit_dqt:                               # @emit_dqt
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 .LBB7_2:                                # %vector.body
-	vld	$vr0, $s1, 0
-	vld	$vr1, $s1, 16
-	vld	$vr2, $s1, 32
-	vld	$vr3, $s1, 48
-	vor.v	$vr0, $vr0, $vr2
-	vor.v	$vr1, $vr1, $vr3
-	vld	$vr2, $s1, 64
-	vld	$vr3, $s1, 80
-	vld	$vr4, $s1, 96
-	vld	$vr5, $s1, 112
-	vor.v	$vr0, $vr0, $vr2
-	vor.v	$vr1, $vr1, $vr3
-	vor.v	$vr0, $vr0, $vr4
-	vor.v	$vr1, $vr1, $vr5
-	vor.v	$vr0, $vr1, $vr0
+	ld.d	$a0, $s1, 0
+	ld.d	$a1, $s1, 8
+	ld.d	$a2, $s1, 16
+	ld.d	$a3, $s1, 24
+	or	$a0, $a0, $a2
+	or	$a1, $a1, $a3
+	ld.d	$a2, $s1, 32
+	ld.d	$a3, $s1, 40
+	ld.d	$a4, $s1, 48
+	ld.d	$a5, $s1, 56
+	or	$a0, $a0, $a2
+	or	$a1, $a1, $a3
+	or	$a0, $a0, $a4
+	or	$a1, $a1, $a5
+	ld.d	$a2, $s1, 64
+	ld.d	$a3, $s1, 72
+	ld.d	$a4, $s1, 80
+	ld.d	$a5, $s1, 88
+	or	$a0, $a0, $a2
+	or	$a1, $a1, $a3
+	or	$a0, $a0, $a4
+	or	$a1, $a1, $a5
+	ld.d	$a2, $s1, 96
+	ld.d	$a3, $s1, 104
+	ld.d	$a4, $s1, 112
+	ld.d	$a5, $s1, 120
+	or	$a0, $a0, $a2
+	or	$a1, $a1, $a3
+	or	$a0, $a0, $a4
+	or	$a1, $a1, $a5
+	or	$a0, $a1, $a0
+	vinsgr2vr.d	$vr0, $a0, 0
 	vrepli.h	$vr1, 255
-	ld.w	$a0, $s1, 128
 	vslt.hu	$vr0, $vr1, $vr0
-	vmskltz.h	$vr0, $vr0
+	ld.w	$a0, $s1, 128
+	vilvl.h	$vr0, $vr0, $vr0
+	vmskltz.w	$vr0, $vr0
 	vpickve2gr.hu	$a1, $vr0, 0
-	andi	$s2, $a1, 255
+	andi	$s2, $a1, 15
 	bnez	$a0, .LBB7_33
 # %bb.3:
 	ld.d	$a0, $fp, 32

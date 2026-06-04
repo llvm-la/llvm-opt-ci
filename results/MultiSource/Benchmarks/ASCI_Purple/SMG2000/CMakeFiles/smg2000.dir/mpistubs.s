@@ -196,164 +196,28 @@ hypre_MPI_Alltoall:                     # @hypre_MPI_Alltoall
 	.type	hypre_MPI_Allgather,@function
 hypre_MPI_Allgather:                    # @hypre_MPI_Allgather
 # %bb.0:
-	beqz	$a2, .LBB17_13
+	beqz	$a2, .LBB17_19
 # %bb.1:
 	ori	$a4, $zero, 1
-	beq	$a2, $a4, .LBB17_8
+	beq	$a2, $a4, .LBB17_11
 # %bb.2:
 	ori	$a4, $zero, 2
-	bne	$a2, $a4, .LBB17_39
+	bne	$a2, $a4, .LBB17_33
 # %bb.3:                                # %.preheader29
-	blez	$a1, .LBB17_39
+	blez	$a1, .LBB17_33
 # %bb.4:                                # %iter.check
 	ori	$a4, $zero, 16
 	move	$a2, $zero
-	bltu	$a1, $a4, .LBB17_37
+	bltu	$a1, $a4, .LBB17_31
 # %bb.5:                                # %iter.check
 	sub.d	$a5, $a3, $a0
-	ori	$a4, $zero, 64
-	bltu	$a5, $a4, .LBB17_37
+	ori	$a4, $zero, 32
+	bltu	$a5, $a4, .LBB17_31
 # %bb.6:                                # %vector.main.loop.iter.check
-	bgeu	$a1, $a4, .LBB17_30
+	bgeu	$a1, $a4, .LBB17_27
 # %bb.7:
 	move	$a2, $zero
-	b	.LBB17_34
-.LBB17_8:                               # %.preheader
-	blez	$a1, .LBB17_39
-# %bb.9:                                # %iter.check89
-	ori	$a4, $zero, 4
-	move	$a2, $zero
-	bltu	$a1, $a4, .LBB17_28
-# %bb.10:                               # %iter.check89
-	sub.d	$a4, $a3, $a0
-	ori	$a5, $zero, 64
-	bltu	$a4, $a5, .LBB17_28
-# %bb.11:                               # %vector.main.loop.iter.check76
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB17_21
-# %bb.12:
-	move	$a2, $zero
-	b	.LBB17_25
-.LBB17_13:                              # %.preheader27
-	blez	$a1, .LBB17_39
-# %bb.14:                               # %.lr.ph33.preheader
-	ori	$a4, $zero, 8
-	move	$a2, $zero
-	bltu	$a1, $a4, .LBB17_19
-# %bb.15:                               # %.lr.ph33.preheader
-	sub.d	$a4, $a3, $a0
-	ori	$a5, $zero, 64
-	bltu	$a4, $a5, .LBB17_19
-# %bb.16:                               # %vector.ph61
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	addi.d	$a4, $a3, 32
-	addi.d	$a5, $a0, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB17_17:                              # %vector.body64
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB17_17
-# %bb.18:                               # %middle.block69
-	beq	$a2, $a1, .LBB17_39
-.LBB17_19:                              # %.lr.ph33.preheader105
-	alsl.d	$a3, $a2, $a3, 3
-	alsl.d	$a0, $a2, $a0, 3
-	sub.d	$a1, $a1, $a2
-	.p2align	4, , 16
-.LBB17_20:                              # %.lr.ph33
-                                        # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $a0, 0
-	fst.d	$fa0, $a3, 0
-	addi.d	$a3, $a3, 8
-	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, 8
-	bnez	$a1, .LBB17_20
-	b	.LBB17_39
-.LBB17_21:                              # %vector.ph78
-	andi	$a4, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a5, $a3, 32
-	addi.d	$a6, $a0, 32
-	move	$a7, $a2
-	.p2align	4, , 16
-.LBB17_22:                              # %vector.body81
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a7, $a7, -16
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB17_22
-# %bb.23:                               # %middle.block86
-	beq	$a2, $a1, .LBB17_39
-# %bb.24:                               # %vec.epilog.iter.check91
-	beqz	$a4, .LBB17_28
-.LBB17_25:                              # %vec.epilog.ph93
-	move	$a6, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a4, $a6, $a2
-	alsl.d	$a5, $a6, $a3, 2
-	alsl.d	$a6, $a6, $a0, 2
-	.p2align	4, , 16
-.LBB17_26:                              # %vec.epilog.vector.body96
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a6, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 16
-	addi.d	$a6, $a6, 16
-	bnez	$a4, .LBB17_26
-# %bb.27:                               # %vec.epilog.middle.block100
-	beq	$a2, $a1, .LBB17_39
-.LBB17_28:                              # %.lr.ph35.preheader
-	alsl.d	$a3, $a2, $a3, 2
-	alsl.d	$a0, $a2, $a0, 2
-	sub.d	$a1, $a1, $a2
-	.p2align	4, , 16
-.LBB17_29:                              # %.lr.ph35
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$a2, $a0, 0
-	st.w	$a2, $a3, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, 4
-	bnez	$a1, .LBB17_29
-	b	.LBB17_39
-.LBB17_30:                              # %vector.ph
-	andi	$a4, $a1, 48
-	bstrpick.d	$a2, $a1, 30, 6
-	slli.d	$a2, $a2, 6
-	addi.d	$a5, $a3, 32
-	addi.d	$a6, $a0, 32
-	move	$a7, $a2
-	.p2align	4, , 16
-.LBB17_31:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a7, $a7, -64
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB17_31
-# %bb.32:                               # %middle.block
-	beq	$a2, $a1, .LBB17_39
-# %bb.33:                               # %vec.epilog.iter.check
-	beqz	$a4, .LBB17_37
-.LBB17_34:                              # %vec.epilog.ph
+.LBB17_8:                               # %vec.epilog.ph
 	move	$a6, $a2
 	bstrpick.d	$a2, $a1, 30, 4
 	slli.d	$a2, $a2, 4
@@ -361,30 +225,139 @@ hypre_MPI_Allgather:                    # @hypre_MPI_Allgather
 	add.d	$a5, $a3, $a6
 	add.d	$a6, $a0, $a6
 	.p2align	4, , 16
-.LBB17_35:                              # %vec.epilog.vector.body
+.LBB17_9:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a6, 0
 	vst	$vr0, $a5, 0
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a5, 16
 	addi.d	$a6, $a6, 16
-	bnez	$a4, .LBB17_35
-# %bb.36:                               # %vec.epilog.middle.block
-	beq	$a2, $a1, .LBB17_39
-.LBB17_37:                              # %.lr.ph.preheader
+	bnez	$a4, .LBB17_9
+# %bb.10:                               # %vec.epilog.middle.block
+	bne	$a2, $a1, .LBB17_31
+	b	.LBB17_33
+.LBB17_11:                              # %.preheader
+	blez	$a1, .LBB17_33
+# %bb.12:                               # %.lr.ph35.preheader
+	ori	$a4, $zero, 8
+	move	$a2, $zero
+	bltu	$a1, $a4, .LBB17_17
+# %bb.13:                               # %.lr.ph35.preheader
+	sub.d	$a4, $a3, $a0
+	ori	$a5, $zero, 32
+	bltu	$a4, $a5, .LBB17_17
+# %bb.14:                               # %vector.ph76
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a4, $a3, 16
+	addi.d	$a5, $a0, 16
+	move	$a6, $a2
+	.p2align	4, , 16
+.LBB17_15:                              # %vector.body79
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a6, $a6, -8
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB17_15
+# %bb.16:                               # %middle.block84
+	beq	$a2, $a1, .LBB17_33
+.LBB17_17:                              # %.lr.ph35.preheader89
+	alsl.d	$a3, $a2, $a3, 2
+	alsl.d	$a0, $a2, $a0, 2
+	sub.d	$a1, $a1, $a2
+	.p2align	4, , 16
+.LBB17_18:                              # %.lr.ph35
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a2, $a0, 0
+	st.w	$a2, $a3, 0
+	addi.d	$a3, $a3, 4
+	addi.d	$a1, $a1, -1
+	addi.d	$a0, $a0, 4
+	bnez	$a1, .LBB17_18
+	b	.LBB17_33
+.LBB17_19:                              # %.preheader27
+	blez	$a1, .LBB17_33
+# %bb.20:                               # %.lr.ph33.preheader
+	ori	$a4, $zero, 4
+	move	$a2, $zero
+	bltu	$a1, $a4, .LBB17_25
+# %bb.21:                               # %.lr.ph33.preheader
+	sub.d	$a4, $a3, $a0
+	ori	$a5, $zero, 32
+	bltu	$a4, $a5, .LBB17_25
+# %bb.22:                               # %vector.ph61
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	addi.d	$a4, $a3, 16
+	addi.d	$a5, $a0, 16
+	move	$a6, $a2
+	.p2align	4, , 16
+.LBB17_23:                              # %vector.body64
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB17_23
+# %bb.24:                               # %middle.block69
+	beq	$a2, $a1, .LBB17_33
+.LBB17_25:                              # %.lr.ph33.preheader90
+	alsl.d	$a3, $a2, $a3, 3
+	alsl.d	$a0, $a2, $a0, 3
+	sub.d	$a1, $a1, $a2
+	.p2align	4, , 16
+.LBB17_26:                              # %.lr.ph33
+                                        # =>This Inner Loop Header: Depth=1
+	fld.d	$fa0, $a0, 0
+	fst.d	$fa0, $a3, 0
+	addi.d	$a3, $a3, 8
+	addi.d	$a1, $a1, -1
+	addi.d	$a0, $a0, 8
+	bnez	$a1, .LBB17_26
+	b	.LBB17_33
+.LBB17_27:                              # %vector.ph
+	andi	$a4, $a1, 16
+	bstrpick.d	$a2, $a1, 30, 5
+	slli.d	$a2, $a2, 5
+	addi.d	$a5, $a3, 16
+	addi.d	$a6, $a0, 16
+	move	$a7, $a2
+	.p2align	4, , 16
+.LBB17_28:                              # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a6, -16
+	vld	$vr1, $a6, 0
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a7, $a7, -32
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	bnez	$a7, .LBB17_28
+# %bb.29:                               # %middle.block
+	beq	$a2, $a1, .LBB17_33
+# %bb.30:                               # %vec.epilog.iter.check
+	bnez	$a4, .LBB17_8
+.LBB17_31:                              # %.lr.ph.preheader
 	add.d	$a3, $a3, $a2
 	add.d	$a0, $a0, $a2
 	sub.d	$a1, $a1, $a2
 	.p2align	4, , 16
-.LBB17_38:                              # %.lr.ph
+.LBB17_32:                              # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$a2, $a0, 0
 	st.b	$a2, $a3, 0
 	addi.d	$a3, $a3, 1
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 1
-	bnez	$a1, .LBB17_38
-.LBB17_39:                              # %.loopexit
+	bnez	$a1, .LBB17_32
+.LBB17_33:                              # %.loopexit
 	move	$a0, $zero
 	ret
 .Lfunc_end17:
@@ -396,164 +369,28 @@ hypre_MPI_Allgather:                    # @hypre_MPI_Allgather
 	.type	hypre_MPI_Allgatherv,@function
 hypre_MPI_Allgatherv:                   # @hypre_MPI_Allgatherv
 # %bb.0:
-	beqz	$a2, .LBB18_13
+	beqz	$a2, .LBB18_19
 # %bb.1:
 	ori	$a4, $zero, 1
-	beq	$a2, $a4, .LBB18_8
+	beq	$a2, $a4, .LBB18_11
 # %bb.2:
 	ori	$a4, $zero, 2
-	bne	$a2, $a4, .LBB18_39
+	bne	$a2, $a4, .LBB18_33
 # %bb.3:                                # %.preheader29.i
-	blez	$a1, .LBB18_39
+	blez	$a1, .LBB18_33
 # %bb.4:                                # %iter.check
 	ori	$a4, $zero, 16
 	move	$a2, $zero
-	bltu	$a1, $a4, .LBB18_37
+	bltu	$a1, $a4, .LBB18_31
 # %bb.5:                                # %iter.check
 	sub.d	$a5, $a3, $a0
-	ori	$a4, $zero, 64
-	bltu	$a5, $a4, .LBB18_37
+	ori	$a4, $zero, 32
+	bltu	$a5, $a4, .LBB18_31
 # %bb.6:                                # %vector.main.loop.iter.check
-	bgeu	$a1, $a4, .LBB18_30
+	bgeu	$a1, $a4, .LBB18_27
 # %bb.7:
 	move	$a2, $zero
-	b	.LBB18_34
-.LBB18_8:                               # %.preheader.i
-	blez	$a1, .LBB18_39
-# %bb.9:                                # %iter.check53
-	ori	$a4, $zero, 4
-	move	$a2, $zero
-	bltu	$a1, $a4, .LBB18_28
-# %bb.10:                               # %iter.check53
-	sub.d	$a4, $a3, $a0
-	ori	$a5, $zero, 64
-	bltu	$a4, $a5, .LBB18_28
-# %bb.11:                               # %vector.main.loop.iter.check40
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB18_21
-# %bb.12:
-	move	$a2, $zero
-	b	.LBB18_25
-.LBB18_13:                              # %.preheader27.i
-	blez	$a1, .LBB18_39
-# %bb.14:                               # %.lr.ph33.preheader.i
-	ori	$a4, $zero, 8
-	move	$a2, $zero
-	bltu	$a1, $a4, .LBB18_19
-# %bb.15:                               # %.lr.ph33.preheader.i
-	sub.d	$a4, $a3, $a0
-	ori	$a5, $zero, 64
-	bltu	$a4, $a5, .LBB18_19
-# %bb.16:                               # %vector.ph25
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	addi.d	$a4, $a3, 32
-	addi.d	$a5, $a0, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB18_17:                              # %vector.body28
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB18_17
-# %bb.18:                               # %middle.block33
-	beq	$a2, $a1, .LBB18_39
-.LBB18_19:                              # %.lr.ph33.i.preheader
-	sub.d	$a1, $a1, $a2
-	alsl.d	$a3, $a2, $a3, 3
-	alsl.d	$a0, $a2, $a0, 3
-	.p2align	4, , 16
-.LBB18_20:                              # %.lr.ph33.i
-                                        # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $a0, 0
-	fst.d	$fa0, $a3, 0
-	addi.d	$a1, $a1, -1
-	addi.d	$a3, $a3, 8
-	addi.d	$a0, $a0, 8
-	bnez	$a1, .LBB18_20
-	b	.LBB18_39
-.LBB18_21:                              # %vector.ph42
-	andi	$a4, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a5, $a3, 32
-	addi.d	$a6, $a0, 32
-	move	$a7, $a2
-	.p2align	4, , 16
-.LBB18_22:                              # %vector.body45
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a7, $a7, -16
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB18_22
-# %bb.23:                               # %middle.block50
-	beq	$a2, $a1, .LBB18_39
-# %bb.24:                               # %vec.epilog.iter.check55
-	beqz	$a4, .LBB18_28
-.LBB18_25:                              # %vec.epilog.ph57
-	move	$a6, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a4, $a6, $a2
-	alsl.d	$a5, $a6, $a3, 2
-	alsl.d	$a6, $a6, $a0, 2
-	.p2align	4, , 16
-.LBB18_26:                              # %vec.epilog.vector.body60
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a6, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 16
-	addi.d	$a6, $a6, 16
-	bnez	$a4, .LBB18_26
-# %bb.27:                               # %vec.epilog.middle.block64
-	beq	$a2, $a1, .LBB18_39
-.LBB18_28:                              # %.lr.ph35.i.preheader
-	sub.d	$a1, $a1, $a2
-	alsl.d	$a3, $a2, $a3, 2
-	alsl.d	$a0, $a2, $a0, 2
-	.p2align	4, , 16
-.LBB18_29:                              # %.lr.ph35.i
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$a2, $a0, 0
-	st.w	$a2, $a3, 0
-	addi.d	$a1, $a1, -1
-	addi.d	$a3, $a3, 4
-	addi.d	$a0, $a0, 4
-	bnez	$a1, .LBB18_29
-	b	.LBB18_39
-.LBB18_30:                              # %vector.ph
-	andi	$a4, $a1, 48
-	bstrpick.d	$a2, $a1, 30, 6
-	slli.d	$a2, $a2, 6
-	addi.d	$a5, $a3, 32
-	addi.d	$a6, $a0, 32
-	move	$a7, $a2
-	.p2align	4, , 16
-.LBB18_31:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a7, $a7, -64
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB18_31
-# %bb.32:                               # %middle.block
-	beq	$a2, $a1, .LBB18_39
-# %bb.33:                               # %vec.epilog.iter.check
-	beqz	$a4, .LBB18_37
-.LBB18_34:                              # %vec.epilog.ph
+.LBB18_8:                               # %vec.epilog.ph
 	move	$a6, $a2
 	bstrpick.d	$a2, $a1, 30, 4
 	slli.d	$a2, $a2, 4
@@ -561,30 +398,139 @@ hypre_MPI_Allgatherv:                   # @hypre_MPI_Allgatherv
 	add.d	$a5, $a3, $a6
 	add.d	$a6, $a0, $a6
 	.p2align	4, , 16
-.LBB18_35:                              # %vec.epilog.vector.body
+.LBB18_9:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a6, 0
 	vst	$vr0, $a5, 0
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a5, 16
 	addi.d	$a6, $a6, 16
-	bnez	$a4, .LBB18_35
-# %bb.36:                               # %vec.epilog.middle.block
-	beq	$a2, $a1, .LBB18_39
-.LBB18_37:                              # %.lr.ph.i.preheader
+	bnez	$a4, .LBB18_9
+# %bb.10:                               # %vec.epilog.middle.block
+	bne	$a2, $a1, .LBB18_31
+	b	.LBB18_33
+.LBB18_11:                              # %.preheader.i
+	blez	$a1, .LBB18_33
+# %bb.12:                               # %.lr.ph35.preheader.i
+	ori	$a4, $zero, 8
+	move	$a2, $zero
+	bltu	$a1, $a4, .LBB18_17
+# %bb.13:                               # %.lr.ph35.preheader.i
+	sub.d	$a4, $a3, $a0
+	ori	$a5, $zero, 32
+	bltu	$a4, $a5, .LBB18_17
+# %bb.14:                               # %vector.ph40
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a4, $a3, 16
+	addi.d	$a5, $a0, 16
+	move	$a6, $a2
+	.p2align	4, , 16
+.LBB18_15:                              # %vector.body43
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a6, $a6, -8
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB18_15
+# %bb.16:                               # %middle.block48
+	beq	$a2, $a1, .LBB18_33
+.LBB18_17:                              # %.lr.ph35.i.preheader
+	sub.d	$a1, $a1, $a2
+	alsl.d	$a3, $a2, $a3, 2
+	alsl.d	$a0, $a2, $a0, 2
+	.p2align	4, , 16
+.LBB18_18:                              # %.lr.ph35.i
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a2, $a0, 0
+	st.w	$a2, $a3, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a3, $a3, 4
+	addi.d	$a0, $a0, 4
+	bnez	$a1, .LBB18_18
+	b	.LBB18_33
+.LBB18_19:                              # %.preheader27.i
+	blez	$a1, .LBB18_33
+# %bb.20:                               # %.lr.ph33.preheader.i
+	ori	$a4, $zero, 4
+	move	$a2, $zero
+	bltu	$a1, $a4, .LBB18_25
+# %bb.21:                               # %.lr.ph33.preheader.i
+	sub.d	$a4, $a3, $a0
+	ori	$a5, $zero, 32
+	bltu	$a4, $a5, .LBB18_25
+# %bb.22:                               # %vector.ph25
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	addi.d	$a4, $a3, 16
+	addi.d	$a5, $a0, 16
+	move	$a6, $a2
+	.p2align	4, , 16
+.LBB18_23:                              # %vector.body28
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB18_23
+# %bb.24:                               # %middle.block33
+	beq	$a2, $a1, .LBB18_33
+.LBB18_25:                              # %.lr.ph33.i.preheader
+	sub.d	$a1, $a1, $a2
+	alsl.d	$a3, $a2, $a3, 3
+	alsl.d	$a0, $a2, $a0, 3
+	.p2align	4, , 16
+.LBB18_26:                              # %.lr.ph33.i
+                                        # =>This Inner Loop Header: Depth=1
+	fld.d	$fa0, $a0, 0
+	fst.d	$fa0, $a3, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a3, $a3, 8
+	addi.d	$a0, $a0, 8
+	bnez	$a1, .LBB18_26
+	b	.LBB18_33
+.LBB18_27:                              # %vector.ph
+	andi	$a4, $a1, 16
+	bstrpick.d	$a2, $a1, 30, 5
+	slli.d	$a2, $a2, 5
+	addi.d	$a5, $a3, 16
+	addi.d	$a6, $a0, 16
+	move	$a7, $a2
+	.p2align	4, , 16
+.LBB18_28:                              # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a6, -16
+	vld	$vr1, $a6, 0
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a7, $a7, -32
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	bnez	$a7, .LBB18_28
+# %bb.29:                               # %middle.block
+	beq	$a2, $a1, .LBB18_33
+# %bb.30:                               # %vec.epilog.iter.check
+	bnez	$a4, .LBB18_8
+.LBB18_31:                              # %.lr.ph.i.preheader
 	sub.d	$a1, $a1, $a2
 	add.d	$a3, $a3, $a2
 	add.d	$a0, $a0, $a2
 	.p2align	4, , 16
-.LBB18_38:                              # %.lr.ph.i
+.LBB18_32:                              # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$a2, $a0, 0
 	st.b	$a2, $a3, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 1
 	addi.d	$a0, $a0, 1
-	bnez	$a1, .LBB18_38
-.LBB18_39:                              # %hypre_MPI_Allgather.exit
+	bnez	$a1, .LBB18_32
+.LBB18_33:                              # %hypre_MPI_Allgather.exit
 	move	$a0, $zero
 	ret
 .Lfunc_end18:
@@ -596,164 +542,28 @@ hypre_MPI_Allgatherv:                   # @hypre_MPI_Allgatherv
 	.type	hypre_MPI_Gather,@function
 hypre_MPI_Gather:                       # @hypre_MPI_Gather
 # %bb.0:
-	beqz	$a2, .LBB19_13
+	beqz	$a2, .LBB19_19
 # %bb.1:
 	ori	$a4, $zero, 1
-	beq	$a2, $a4, .LBB19_8
+	beq	$a2, $a4, .LBB19_11
 # %bb.2:
 	ori	$a4, $zero, 2
-	bne	$a2, $a4, .LBB19_39
+	bne	$a2, $a4, .LBB19_33
 # %bb.3:                                # %.preheader29.i
-	blez	$a1, .LBB19_39
+	blez	$a1, .LBB19_33
 # %bb.4:                                # %iter.check
 	ori	$a4, $zero, 16
 	move	$a2, $zero
-	bltu	$a1, $a4, .LBB19_37
+	bltu	$a1, $a4, .LBB19_31
 # %bb.5:                                # %iter.check
 	sub.d	$a5, $a3, $a0
-	ori	$a4, $zero, 64
-	bltu	$a5, $a4, .LBB19_37
+	ori	$a4, $zero, 32
+	bltu	$a5, $a4, .LBB19_31
 # %bb.6:                                # %vector.main.loop.iter.check
-	bgeu	$a1, $a4, .LBB19_30
+	bgeu	$a1, $a4, .LBB19_27
 # %bb.7:
 	move	$a2, $zero
-	b	.LBB19_34
-.LBB19_8:                               # %.preheader.i
-	blez	$a1, .LBB19_39
-# %bb.9:                                # %iter.check53
-	ori	$a4, $zero, 4
-	move	$a2, $zero
-	bltu	$a1, $a4, .LBB19_28
-# %bb.10:                               # %iter.check53
-	sub.d	$a4, $a3, $a0
-	ori	$a5, $zero, 64
-	bltu	$a4, $a5, .LBB19_28
-# %bb.11:                               # %vector.main.loop.iter.check40
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB19_21
-# %bb.12:
-	move	$a2, $zero
-	b	.LBB19_25
-.LBB19_13:                              # %.preheader27.i
-	blez	$a1, .LBB19_39
-# %bb.14:                               # %.lr.ph33.preheader.i
-	ori	$a4, $zero, 8
-	move	$a2, $zero
-	bltu	$a1, $a4, .LBB19_19
-# %bb.15:                               # %.lr.ph33.preheader.i
-	sub.d	$a4, $a3, $a0
-	ori	$a5, $zero, 64
-	bltu	$a4, $a5, .LBB19_19
-# %bb.16:                               # %vector.ph25
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	addi.d	$a4, $a3, 32
-	addi.d	$a5, $a0, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB19_17:                              # %vector.body28
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB19_17
-# %bb.18:                               # %middle.block33
-	beq	$a2, $a1, .LBB19_39
-.LBB19_19:                              # %.lr.ph33.i.preheader
-	sub.d	$a1, $a1, $a2
-	alsl.d	$a3, $a2, $a3, 3
-	alsl.d	$a0, $a2, $a0, 3
-	.p2align	4, , 16
-.LBB19_20:                              # %.lr.ph33.i
-                                        # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $a0, 0
-	fst.d	$fa0, $a3, 0
-	addi.d	$a1, $a1, -1
-	addi.d	$a3, $a3, 8
-	addi.d	$a0, $a0, 8
-	bnez	$a1, .LBB19_20
-	b	.LBB19_39
-.LBB19_21:                              # %vector.ph42
-	andi	$a4, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a5, $a3, 32
-	addi.d	$a6, $a0, 32
-	move	$a7, $a2
-	.p2align	4, , 16
-.LBB19_22:                              # %vector.body45
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a7, $a7, -16
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB19_22
-# %bb.23:                               # %middle.block50
-	beq	$a2, $a1, .LBB19_39
-# %bb.24:                               # %vec.epilog.iter.check55
-	beqz	$a4, .LBB19_28
-.LBB19_25:                              # %vec.epilog.ph57
-	move	$a6, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a4, $a6, $a2
-	alsl.d	$a5, $a6, $a3, 2
-	alsl.d	$a6, $a6, $a0, 2
-	.p2align	4, , 16
-.LBB19_26:                              # %vec.epilog.vector.body60
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a6, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 16
-	addi.d	$a6, $a6, 16
-	bnez	$a4, .LBB19_26
-# %bb.27:                               # %vec.epilog.middle.block64
-	beq	$a2, $a1, .LBB19_39
-.LBB19_28:                              # %.lr.ph35.i.preheader
-	sub.d	$a1, $a1, $a2
-	alsl.d	$a3, $a2, $a3, 2
-	alsl.d	$a0, $a2, $a0, 2
-	.p2align	4, , 16
-.LBB19_29:                              # %.lr.ph35.i
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$a2, $a0, 0
-	st.w	$a2, $a3, 0
-	addi.d	$a1, $a1, -1
-	addi.d	$a3, $a3, 4
-	addi.d	$a0, $a0, 4
-	bnez	$a1, .LBB19_29
-	b	.LBB19_39
-.LBB19_30:                              # %vector.ph
-	andi	$a4, $a1, 48
-	bstrpick.d	$a2, $a1, 30, 6
-	slli.d	$a2, $a2, 6
-	addi.d	$a5, $a3, 32
-	addi.d	$a6, $a0, 32
-	move	$a7, $a2
-	.p2align	4, , 16
-.LBB19_31:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a7, $a7, -64
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB19_31
-# %bb.32:                               # %middle.block
-	beq	$a2, $a1, .LBB19_39
-# %bb.33:                               # %vec.epilog.iter.check
-	beqz	$a4, .LBB19_37
-.LBB19_34:                              # %vec.epilog.ph
+.LBB19_8:                               # %vec.epilog.ph
 	move	$a6, $a2
 	bstrpick.d	$a2, $a1, 30, 4
 	slli.d	$a2, $a2, 4
@@ -761,30 +571,139 @@ hypre_MPI_Gather:                       # @hypre_MPI_Gather
 	add.d	$a5, $a3, $a6
 	add.d	$a6, $a0, $a6
 	.p2align	4, , 16
-.LBB19_35:                              # %vec.epilog.vector.body
+.LBB19_9:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a6, 0
 	vst	$vr0, $a5, 0
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a5, 16
 	addi.d	$a6, $a6, 16
-	bnez	$a4, .LBB19_35
-# %bb.36:                               # %vec.epilog.middle.block
-	beq	$a2, $a1, .LBB19_39
-.LBB19_37:                              # %.lr.ph.i.preheader
+	bnez	$a4, .LBB19_9
+# %bb.10:                               # %vec.epilog.middle.block
+	bne	$a2, $a1, .LBB19_31
+	b	.LBB19_33
+.LBB19_11:                              # %.preheader.i
+	blez	$a1, .LBB19_33
+# %bb.12:                               # %.lr.ph35.preheader.i
+	ori	$a4, $zero, 8
+	move	$a2, $zero
+	bltu	$a1, $a4, .LBB19_17
+# %bb.13:                               # %.lr.ph35.preheader.i
+	sub.d	$a4, $a3, $a0
+	ori	$a5, $zero, 32
+	bltu	$a4, $a5, .LBB19_17
+# %bb.14:                               # %vector.ph40
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a4, $a3, 16
+	addi.d	$a5, $a0, 16
+	move	$a6, $a2
+	.p2align	4, , 16
+.LBB19_15:                              # %vector.body43
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a6, $a6, -8
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB19_15
+# %bb.16:                               # %middle.block48
+	beq	$a2, $a1, .LBB19_33
+.LBB19_17:                              # %.lr.ph35.i.preheader
+	sub.d	$a1, $a1, $a2
+	alsl.d	$a3, $a2, $a3, 2
+	alsl.d	$a0, $a2, $a0, 2
+	.p2align	4, , 16
+.LBB19_18:                              # %.lr.ph35.i
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a2, $a0, 0
+	st.w	$a2, $a3, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a3, $a3, 4
+	addi.d	$a0, $a0, 4
+	bnez	$a1, .LBB19_18
+	b	.LBB19_33
+.LBB19_19:                              # %.preheader27.i
+	blez	$a1, .LBB19_33
+# %bb.20:                               # %.lr.ph33.preheader.i
+	ori	$a4, $zero, 4
+	move	$a2, $zero
+	bltu	$a1, $a4, .LBB19_25
+# %bb.21:                               # %.lr.ph33.preheader.i
+	sub.d	$a4, $a3, $a0
+	ori	$a5, $zero, 32
+	bltu	$a4, $a5, .LBB19_25
+# %bb.22:                               # %vector.ph25
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	addi.d	$a4, $a3, 16
+	addi.d	$a5, $a0, 16
+	move	$a6, $a2
+	.p2align	4, , 16
+.LBB19_23:                              # %vector.body28
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB19_23
+# %bb.24:                               # %middle.block33
+	beq	$a2, $a1, .LBB19_33
+.LBB19_25:                              # %.lr.ph33.i.preheader
+	sub.d	$a1, $a1, $a2
+	alsl.d	$a3, $a2, $a3, 3
+	alsl.d	$a0, $a2, $a0, 3
+	.p2align	4, , 16
+.LBB19_26:                              # %.lr.ph33.i
+                                        # =>This Inner Loop Header: Depth=1
+	fld.d	$fa0, $a0, 0
+	fst.d	$fa0, $a3, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a3, $a3, 8
+	addi.d	$a0, $a0, 8
+	bnez	$a1, .LBB19_26
+	b	.LBB19_33
+.LBB19_27:                              # %vector.ph
+	andi	$a4, $a1, 16
+	bstrpick.d	$a2, $a1, 30, 5
+	slli.d	$a2, $a2, 5
+	addi.d	$a5, $a3, 16
+	addi.d	$a6, $a0, 16
+	move	$a7, $a2
+	.p2align	4, , 16
+.LBB19_28:                              # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a6, -16
+	vld	$vr1, $a6, 0
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a7, $a7, -32
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	bnez	$a7, .LBB19_28
+# %bb.29:                               # %middle.block
+	beq	$a2, $a1, .LBB19_33
+# %bb.30:                               # %vec.epilog.iter.check
+	bnez	$a4, .LBB19_8
+.LBB19_31:                              # %.lr.ph.i.preheader
 	sub.d	$a1, $a1, $a2
 	add.d	$a3, $a3, $a2
 	add.d	$a0, $a0, $a2
 	.p2align	4, , 16
-.LBB19_38:                              # %.lr.ph.i
+.LBB19_32:                              # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$a2, $a0, 0
 	st.b	$a2, $a3, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 1
 	addi.d	$a0, $a0, 1
-	bnez	$a1, .LBB19_38
-.LBB19_39:                              # %hypre_MPI_Allgather.exit
+	bnez	$a1, .LBB19_32
+.LBB19_33:                              # %hypre_MPI_Allgather.exit
 	move	$a0, $zero
 	ret
 .Lfunc_end19:
@@ -796,164 +715,28 @@ hypre_MPI_Gather:                       # @hypre_MPI_Gather
 	.type	hypre_MPI_Scatter,@function
 hypre_MPI_Scatter:                      # @hypre_MPI_Scatter
 # %bb.0:
-	beqz	$a2, .LBB20_13
+	beqz	$a2, .LBB20_19
 # %bb.1:
 	ori	$a4, $zero, 1
-	beq	$a2, $a4, .LBB20_8
+	beq	$a2, $a4, .LBB20_11
 # %bb.2:
 	ori	$a4, $zero, 2
-	bne	$a2, $a4, .LBB20_39
+	bne	$a2, $a4, .LBB20_33
 # %bb.3:                                # %.preheader29.i
-	blez	$a1, .LBB20_39
+	blez	$a1, .LBB20_33
 # %bb.4:                                # %iter.check
 	ori	$a4, $zero, 16
 	move	$a2, $zero
-	bltu	$a1, $a4, .LBB20_37
+	bltu	$a1, $a4, .LBB20_31
 # %bb.5:                                # %iter.check
 	sub.d	$a5, $a3, $a0
-	ori	$a4, $zero, 64
-	bltu	$a5, $a4, .LBB20_37
+	ori	$a4, $zero, 32
+	bltu	$a5, $a4, .LBB20_31
 # %bb.6:                                # %vector.main.loop.iter.check
-	bgeu	$a1, $a4, .LBB20_30
+	bgeu	$a1, $a4, .LBB20_27
 # %bb.7:
 	move	$a2, $zero
-	b	.LBB20_34
-.LBB20_8:                               # %.preheader.i
-	blez	$a1, .LBB20_39
-# %bb.9:                                # %iter.check53
-	ori	$a4, $zero, 4
-	move	$a2, $zero
-	bltu	$a1, $a4, .LBB20_28
-# %bb.10:                               # %iter.check53
-	sub.d	$a4, $a3, $a0
-	ori	$a5, $zero, 64
-	bltu	$a4, $a5, .LBB20_28
-# %bb.11:                               # %vector.main.loop.iter.check40
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB20_21
-# %bb.12:
-	move	$a2, $zero
-	b	.LBB20_25
-.LBB20_13:                              # %.preheader27.i
-	blez	$a1, .LBB20_39
-# %bb.14:                               # %.lr.ph33.preheader.i
-	ori	$a4, $zero, 8
-	move	$a2, $zero
-	bltu	$a1, $a4, .LBB20_19
-# %bb.15:                               # %.lr.ph33.preheader.i
-	sub.d	$a4, $a3, $a0
-	ori	$a5, $zero, 64
-	bltu	$a4, $a5, .LBB20_19
-# %bb.16:                               # %vector.ph25
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	addi.d	$a4, $a3, 32
-	addi.d	$a5, $a0, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB20_17:                              # %vector.body28
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB20_17
-# %bb.18:                               # %middle.block33
-	beq	$a2, $a1, .LBB20_39
-.LBB20_19:                              # %.lr.ph33.i.preheader
-	sub.d	$a1, $a1, $a2
-	alsl.d	$a3, $a2, $a3, 3
-	alsl.d	$a0, $a2, $a0, 3
-	.p2align	4, , 16
-.LBB20_20:                              # %.lr.ph33.i
-                                        # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $a0, 0
-	fst.d	$fa0, $a3, 0
-	addi.d	$a1, $a1, -1
-	addi.d	$a3, $a3, 8
-	addi.d	$a0, $a0, 8
-	bnez	$a1, .LBB20_20
-	b	.LBB20_39
-.LBB20_21:                              # %vector.ph42
-	andi	$a4, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a5, $a3, 32
-	addi.d	$a6, $a0, 32
-	move	$a7, $a2
-	.p2align	4, , 16
-.LBB20_22:                              # %vector.body45
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a7, $a7, -16
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB20_22
-# %bb.23:                               # %middle.block50
-	beq	$a2, $a1, .LBB20_39
-# %bb.24:                               # %vec.epilog.iter.check55
-	beqz	$a4, .LBB20_28
-.LBB20_25:                              # %vec.epilog.ph57
-	move	$a6, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a4, $a6, $a2
-	alsl.d	$a5, $a6, $a3, 2
-	alsl.d	$a6, $a6, $a0, 2
-	.p2align	4, , 16
-.LBB20_26:                              # %vec.epilog.vector.body60
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a6, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 16
-	addi.d	$a6, $a6, 16
-	bnez	$a4, .LBB20_26
-# %bb.27:                               # %vec.epilog.middle.block64
-	beq	$a2, $a1, .LBB20_39
-.LBB20_28:                              # %.lr.ph35.i.preheader
-	sub.d	$a1, $a1, $a2
-	alsl.d	$a3, $a2, $a3, 2
-	alsl.d	$a0, $a2, $a0, 2
-	.p2align	4, , 16
-.LBB20_29:                              # %.lr.ph35.i
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$a2, $a0, 0
-	st.w	$a2, $a3, 0
-	addi.d	$a1, $a1, -1
-	addi.d	$a3, $a3, 4
-	addi.d	$a0, $a0, 4
-	bnez	$a1, .LBB20_29
-	b	.LBB20_39
-.LBB20_30:                              # %vector.ph
-	andi	$a4, $a1, 48
-	bstrpick.d	$a2, $a1, 30, 6
-	slli.d	$a2, $a2, 6
-	addi.d	$a5, $a3, 32
-	addi.d	$a6, $a0, 32
-	move	$a7, $a2
-	.p2align	4, , 16
-.LBB20_31:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a7, $a7, -64
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB20_31
-# %bb.32:                               # %middle.block
-	beq	$a2, $a1, .LBB20_39
-# %bb.33:                               # %vec.epilog.iter.check
-	beqz	$a4, .LBB20_37
-.LBB20_34:                              # %vec.epilog.ph
+.LBB20_8:                               # %vec.epilog.ph
 	move	$a6, $a2
 	bstrpick.d	$a2, $a1, 30, 4
 	slli.d	$a2, $a2, 4
@@ -961,30 +744,139 @@ hypre_MPI_Scatter:                      # @hypre_MPI_Scatter
 	add.d	$a5, $a3, $a6
 	add.d	$a6, $a0, $a6
 	.p2align	4, , 16
-.LBB20_35:                              # %vec.epilog.vector.body
+.LBB20_9:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a6, 0
 	vst	$vr0, $a5, 0
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a5, 16
 	addi.d	$a6, $a6, 16
-	bnez	$a4, .LBB20_35
-# %bb.36:                               # %vec.epilog.middle.block
-	beq	$a2, $a1, .LBB20_39
-.LBB20_37:                              # %.lr.ph.i.preheader
+	bnez	$a4, .LBB20_9
+# %bb.10:                               # %vec.epilog.middle.block
+	bne	$a2, $a1, .LBB20_31
+	b	.LBB20_33
+.LBB20_11:                              # %.preheader.i
+	blez	$a1, .LBB20_33
+# %bb.12:                               # %.lr.ph35.preheader.i
+	ori	$a4, $zero, 8
+	move	$a2, $zero
+	bltu	$a1, $a4, .LBB20_17
+# %bb.13:                               # %.lr.ph35.preheader.i
+	sub.d	$a4, $a3, $a0
+	ori	$a5, $zero, 32
+	bltu	$a4, $a5, .LBB20_17
+# %bb.14:                               # %vector.ph40
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a4, $a3, 16
+	addi.d	$a5, $a0, 16
+	move	$a6, $a2
+	.p2align	4, , 16
+.LBB20_15:                              # %vector.body43
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a6, $a6, -8
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB20_15
+# %bb.16:                               # %middle.block48
+	beq	$a2, $a1, .LBB20_33
+.LBB20_17:                              # %.lr.ph35.i.preheader
+	sub.d	$a1, $a1, $a2
+	alsl.d	$a3, $a2, $a3, 2
+	alsl.d	$a0, $a2, $a0, 2
+	.p2align	4, , 16
+.LBB20_18:                              # %.lr.ph35.i
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a2, $a0, 0
+	st.w	$a2, $a3, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a3, $a3, 4
+	addi.d	$a0, $a0, 4
+	bnez	$a1, .LBB20_18
+	b	.LBB20_33
+.LBB20_19:                              # %.preheader27.i
+	blez	$a1, .LBB20_33
+# %bb.20:                               # %.lr.ph33.preheader.i
+	ori	$a4, $zero, 4
+	move	$a2, $zero
+	bltu	$a1, $a4, .LBB20_25
+# %bb.21:                               # %.lr.ph33.preheader.i
+	sub.d	$a4, $a3, $a0
+	ori	$a5, $zero, 32
+	bltu	$a4, $a5, .LBB20_25
+# %bb.22:                               # %vector.ph25
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	addi.d	$a4, $a3, 16
+	addi.d	$a5, $a0, 16
+	move	$a6, $a2
+	.p2align	4, , 16
+.LBB20_23:                              # %vector.body28
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB20_23
+# %bb.24:                               # %middle.block33
+	beq	$a2, $a1, .LBB20_33
+.LBB20_25:                              # %.lr.ph33.i.preheader
+	sub.d	$a1, $a1, $a2
+	alsl.d	$a3, $a2, $a3, 3
+	alsl.d	$a0, $a2, $a0, 3
+	.p2align	4, , 16
+.LBB20_26:                              # %.lr.ph33.i
+                                        # =>This Inner Loop Header: Depth=1
+	fld.d	$fa0, $a0, 0
+	fst.d	$fa0, $a3, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a3, $a3, 8
+	addi.d	$a0, $a0, 8
+	bnez	$a1, .LBB20_26
+	b	.LBB20_33
+.LBB20_27:                              # %vector.ph
+	andi	$a4, $a1, 16
+	bstrpick.d	$a2, $a1, 30, 5
+	slli.d	$a2, $a2, 5
+	addi.d	$a5, $a3, 16
+	addi.d	$a6, $a0, 16
+	move	$a7, $a2
+	.p2align	4, , 16
+.LBB20_28:                              # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a6, -16
+	vld	$vr1, $a6, 0
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a7, $a7, -32
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	bnez	$a7, .LBB20_28
+# %bb.29:                               # %middle.block
+	beq	$a2, $a1, .LBB20_33
+# %bb.30:                               # %vec.epilog.iter.check
+	bnez	$a4, .LBB20_8
+.LBB20_31:                              # %.lr.ph.i.preheader
 	sub.d	$a1, $a1, $a2
 	add.d	$a3, $a3, $a2
 	add.d	$a0, $a0, $a2
 	.p2align	4, , 16
-.LBB20_38:                              # %.lr.ph.i
+.LBB20_32:                              # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$a2, $a0, 0
 	st.b	$a2, $a3, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 1
 	addi.d	$a0, $a0, 1
-	bnez	$a1, .LBB20_38
-.LBB20_39:                              # %hypre_MPI_Allgather.exit
+	bnez	$a1, .LBB20_32
+.LBB20_33:                              # %hypre_MPI_Allgather.exit
 	move	$a0, $zero
 	ret
 .Lfunc_end20:

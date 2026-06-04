@@ -55,8 +55,9 @@ main:                                   # @main
 	st.w	$zero, $a1, %pc_lo12(mem_array_ents)
 	pcalau12i	$a1, %pc_hi20(tests_to_do)
 	addi.d	$s7, $a1, %pc_lo12(tests_to_do)
-	xvrepli.w	$xr0, 1
-	xvst	$xr0, $s7, 0
+	vrepli.w	$vr0, 1
+	vst	$vr0, $s7, 0
+	vst	$vr0, $s7, 16
 	ori	$a1, $zero, 1
 	lu32i.d	$a1, 1
 	st.d	$a1, $s7, 32
@@ -2203,7 +2204,7 @@ mem_array_ents:
 
 	.type	tests_to_do,@object             # @tests_to_do
 	.globl	tests_to_do
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 tests_to_do:
 	.space	40
 	.size	tests_to_do, 40

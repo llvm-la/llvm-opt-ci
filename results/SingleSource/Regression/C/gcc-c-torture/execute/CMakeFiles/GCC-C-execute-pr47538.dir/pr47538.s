@@ -94,27 +94,23 @@ foo:                                    # @foo
 .LCPI1_0:
 	.dword	0x4024000000000000              # double 10
 	.dword	0x4018000000000000              # double 6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI1_1:
-	.dword	0x0000000000000000              # double 0
-	.dword	0x4034000000000000              # double 20
 	.dword	0x4024000000000000              # double 10
 	.dword	0xc024000000000000              # double -10
 .LCPI1_2:
-	.dword	0x404e000000000000              # double 60
+	.dword	0x0000000000000000              # double 0
 	.dword	0x4034000000000000              # double 20
-	.dword	0xc024000000000000              # double -10
-	.dword	0x405d800000000000              # double 118
 .LCPI1_3:
-	.dword	0xc034000000000000              # double -20
 	.dword	0xc024000000000000              # double -10
-	.dword	0x405d800000000000              # double 118
 	.dword	0x405d800000000000              # double 118
 .LCPI1_4:
+	.dword	0x404e000000000000              # double 60
+	.dword	0x4034000000000000              # double 20
+.LCPI1_5:
+	.dword	0xc034000000000000              # double -20
+	.dword	0xc024000000000000              # double -10
+.LCPI1_6:
 	.dword	0x0000000000000000              # double 0
-	.dword	0x405d800000000000              # double 118
-	.dword	0x405d800000000000              # double 118
 	.dword	0x405d800000000000              # double 118
 	.text
 	.globl	main
@@ -123,95 +119,121 @@ foo:                                    # @foo
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L__const.main.c)
-	xvld	$xr0, $a0, %pc_lo12(.L__const.main.c)
+	addi.d	$a0, $a0, %pc_lo12(.L__const.main.c)
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
-	vld	$vr1, $a0, %pc_lo12(.LCPI1_0)
-	xvst	$xr0, $sp, 48
-	vst	$vr1, $sp, 80
-	addi.d	$a0, $sp, 48
-	st.d	$a0, $sp, 96
-	addi.d	$a0, $sp, 16
-	pcalau12i	$fp, %pc_hi20(.L__const.main.e)
-	xvld	$xr0, $fp, %pc_lo12(.L__const.main.e)
-	st.d	$a0, $sp, 128
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_0)
+	vst	$vr0, $sp, 80
+	vst	$vr1, $sp, 64
+	vst	$vr2, $sp, 96
+	addi.d	$a0, $sp, 64
+	st.d	$a0, $sp, 112
+	addi.d	$a0, $sp, 32
+	st.d	$a0, $sp, 144
 	ori	$a0, $zero, 3
-	st.d	$a0, $sp, 104
-	xvst	$xr0, $sp, 16
-	addi.d	$a0, $sp, 112
-	addi.d	$a1, $sp, 80
+	st.d	$a0, $sp, 120
+	pcalau12i	$a0, %pc_hi20(.L__const.main.e)
+	addi.d	$fp, $a0, %pc_lo12(.L__const.main.e)
+	vld	$vr0, $fp, 0
+	vld	$vr1, $fp, 16
+	vst	$vr0, $sp, 32
+	vst	$vr1, $sp, 48
+	addi.d	$a0, $sp, 128
+	addi.d	$a1, $sp, 96
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 16
+	vld	$vr0, $sp, 32
+	vld	$vr1, $sp, 48
 	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI1_1)
-	xvfcmp.cune.d	$xr0, $xr0, $xr1
-	xvmskltz.d	$xr0, $xr0
-	xvpickve2gr.wu	$a0, $xr0, 0
-	xvpickve2gr.wu	$a1, $xr0, 4
-	bstrins.d	$a0, $a1, 3, 2
+	pcalau12i	$a1, %pc_hi20(.LCPI1_2)
+	vld	$vr2, $a1, %pc_lo12(.LCPI1_2)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_1)
+	vfcmp.cune.d	$vr0, $vr0, $vr2
+	vfcmp.cune.d	$vr1, $vr1, $vr3
+	vpickev.w	$vr0, $vr1, $vr0
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	bnez	$a0, .LBB1_5
 # %bb.1:
-	xvld	$xr0, $fp, %pc_lo12(.L__const.main.e)
+	vld	$vr0, $fp, 0
+	vld	$vr1, $fp, 16
 	ori	$a0, $zero, 2
-	st.d	$a0, $sp, 104
-	xvst	$xr0, $sp, 16
-	addi.d	$a0, $sp, 112
-	addi.d	$a1, $sp, 80
+	st.d	$a0, $sp, 120
+	vst	$vr0, $sp, 32
+	vst	$vr1, $sp, 48
+	addi.d	$a0, $sp, 128
+	addi.d	$a1, $sp, 96
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 16
-	pcalau12i	$a0, %pc_hi20(.LCPI1_2)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI1_2)
-	xvfcmp.cune.d	$xr0, $xr0, $xr1
-	xvmskltz.d	$xr0, $xr0
-	xvpickve2gr.wu	$a0, $xr0, 0
-	xvpickve2gr.wu	$a1, $xr0, 4
-	bstrins.d	$a0, $a1, 3, 2
+	vld	$vr0, $sp, 32
+	vld	$vr1, $sp, 48
+	pcalau12i	$a0, %pc_hi20(.LCPI1_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_4)
+	vld	$vr2, $a1, %pc_lo12(.LCPI1_4)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_3)
+	vfcmp.cune.d	$vr0, $vr0, $vr2
+	vfcmp.cune.d	$vr1, $vr1, $vr3
+	vpickev.w	$vr0, $vr1, $vr0
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	bnez	$a0, .LBB1_5
 # %bb.2:
-	xvld	$xr0, $fp, %pc_lo12(.L__const.main.e)
+	vld	$vr0, $fp, 0
+	vld	$vr1, $fp, 16
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 104
-	xvst	$xr0, $sp, 16
-	addi.d	$a0, $sp, 112
-	addi.d	$a1, $sp, 80
+	st.d	$a0, $sp, 120
+	vst	$vr0, $sp, 32
+	vst	$vr1, $sp, 48
+	addi.d	$a0, $sp, 128
+	addi.d	$a1, $sp, 96
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 16
-	pcalau12i	$a0, %pc_hi20(.LCPI1_3)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI1_3)
-	xvfcmp.cune.d	$xr0, $xr0, $xr1
-	xvmskltz.d	$xr0, $xr0
-	xvpickve2gr.wu	$a0, $xr0, 0
-	xvpickve2gr.wu	$a1, $xr0, 4
-	bstrins.d	$a0, $a1, 3, 2
+	vld	$vr0, $sp, 32
+	vld	$vr1, $sp, 48
+	ori	$a0, $zero, 0
+	pcalau12i	$a1, %pc_hi20(.LCPI1_5)
+	vld	$vr2, $a1, %pc_lo12(.LCPI1_5)
+	lu32i.d	$a0, -163840
+	lu52i.d	$a0, $a0, 1029
+	vreplgr2vr.d	$vr3, $a0
+	vfcmp.cune.d	$vr0, $vr0, $vr2
+	vst	$vr3, $sp, 16                   # 16-byte Folded Spill
+	vfcmp.cune.d	$vr1, $vr1, $vr3
+	vpickev.w	$vr0, $vr1, $vr0
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	bnez	$a0, .LBB1_5
 # %bb.3:
-	xvld	$xr0, $fp, %pc_lo12(.L__const.main.e)
-	st.d	$zero, $sp, 104
-	xvst	$xr0, $sp, 16
-	addi.d	$a0, $sp, 112
-	addi.d	$a1, $sp, 80
+	vld	$vr0, $fp, 0
+	vld	$vr1, $fp, 16
+	st.d	$zero, $sp, 120
+	vst	$vr0, $sp, 32
+	vst	$vr1, $sp, 48
+	addi.d	$a0, $sp, 128
+	addi.d	$a1, $sp, 96
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 16
-	pcalau12i	$a0, %pc_hi20(.LCPI1_4)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI1_4)
-	xvfcmp.cune.d	$xr0, $xr0, $xr1
-	xvmskltz.d	$xr0, $xr0
-	xvpickve2gr.wu	$a0, $xr0, 0
-	xvpickve2gr.wu	$a1, $xr0, 4
-	bstrins.d	$a0, $a1, 3, 2
+	vld	$vr0, $sp, 32
+	pcalau12i	$a0, %pc_hi20(.LCPI1_6)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_6)
+	vld	$vr2, $sp, 48
+	vfcmp.cune.d	$vr0, $vr0, $vr1
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vfcmp.cune.d	$vr1, $vr2, $vr1
+	vpickev.w	$vr0, $vr1, $vr0
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	bnez	$a0, .LBB1_5
 # %bb.4:
 	move	$a0, $zero
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .LBB1_5:
 	pcaddu18i	$ra, %call36(abort)

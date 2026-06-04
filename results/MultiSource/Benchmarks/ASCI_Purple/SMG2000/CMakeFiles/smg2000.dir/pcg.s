@@ -20,8 +20,10 @@ hypre_PCGFunctionsCreate:               # @hypre_PCGFunctionsCreate
 	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$s7, $sp, 184
 	ld.d	$s8, $sp, 176
-	xvld	$xr0, $sp, 144
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	vld	$vr0, $sp, 160
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vld	$vr0, $sp, 144
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	move	$fp, $a7
 	move	$s0, $a6
 	move	$s1, $a5
@@ -41,8 +43,10 @@ hypre_PCGFunctionsCreate:               # @hypre_PCGFunctionsCreate
 	st.d	$s1, $a0, 40
 	st.d	$s0, $a0, 48
 	st.d	$fp, $a0, 56
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $a0, 64
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $a0, 64
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vst	$vr0, $a0, 80
 	st.d	$s8, $a0, 104
 	st.d	$s7, $a0, 96
 	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload

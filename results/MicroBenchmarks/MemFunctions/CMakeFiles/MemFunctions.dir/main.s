@@ -712,222 +712,40 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	.cfi_offset 27, -56
 	.cfi_offset 56, -64
 	move	$s1, $a0
-	lu12i.w	$s0, 1
-	move	$a0, $s0
+	lu12i.w	$s2, 1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$a1, $zero
-	move	$a2, $s0
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp41:                                # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp42:                                # EH_LABEL
 # %bb.1:                                # %vector.ph
 	move	$s0, $a0
-	lu12i.w	$s2, 1
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
 	st.d	$s0, $sp, 8
-	xvrepli.b	$xr0, -1
-	xvst	$xr0, $fp, 0
-	xvst	$xr0, $fp, 32
-	xvst	$xr0, $fp, 64
-	xvst	$xr0, $fp, 96
-	xvst	$xr0, $fp, 128
-	xvst	$xr0, $fp, 160
-	xvst	$xr0, $fp, 192
-	xvst	$xr0, $fp, 224
-	xvst	$xr0, $fp, 256
-	xvst	$xr0, $fp, 288
-	xvst	$xr0, $fp, 320
-	xvst	$xr0, $fp, 352
-	xvst	$xr0, $fp, 384
-	xvst	$xr0, $fp, 416
-	xvst	$xr0, $fp, 448
-	xvst	$xr0, $fp, 480
-	xvst	$xr0, $fp, 512
-	xvst	$xr0, $fp, 544
-	xvst	$xr0, $fp, 576
-	xvst	$xr0, $fp, 608
-	xvst	$xr0, $fp, 640
-	xvst	$xr0, $fp, 672
-	xvst	$xr0, $fp, 704
-	xvst	$xr0, $fp, 736
-	xvst	$xr0, $fp, 768
-	xvst	$xr0, $fp, 800
-	xvst	$xr0, $fp, 832
-	xvst	$xr0, $fp, 864
-	xvst	$xr0, $fp, 896
-	xvst	$xr0, $fp, 928
-	xvst	$xr0, $fp, 960
-	xvst	$xr0, $fp, 992
-	xvst	$xr0, $fp, 1024
-	xvst	$xr0, $fp, 1056
-	xvst	$xr0, $fp, 1088
-	xvst	$xr0, $fp, 1120
-	xvst	$xr0, $fp, 1152
-	xvst	$xr0, $fp, 1184
-	xvst	$xr0, $fp, 1216
-	xvst	$xr0, $fp, 1248
-	xvst	$xr0, $fp, 1280
-	xvst	$xr0, $fp, 1312
-	xvst	$xr0, $fp, 1344
-	xvst	$xr0, $fp, 1376
-	xvst	$xr0, $fp, 1408
-	xvst	$xr0, $fp, 1440
-	xvst	$xr0, $fp, 1472
-	xvst	$xr0, $fp, 1504
-	xvst	$xr0, $fp, 1536
-	xvst	$xr0, $fp, 1568
-	xvst	$xr0, $fp, 1600
-	xvst	$xr0, $fp, 1632
-	xvst	$xr0, $fp, 1664
-	xvst	$xr0, $fp, 1696
-	xvst	$xr0, $fp, 1728
-	xvst	$xr0, $fp, 1760
-	xvst	$xr0, $fp, 1792
-	xvst	$xr0, $fp, 1824
-	xvst	$xr0, $fp, 1856
-	xvst	$xr0, $fp, 1888
-	xvst	$xr0, $fp, 1920
-	xvst	$xr0, $fp, 1952
-	xvst	$xr0, $fp, 1984
-	xvst	$xr0, $fp, 2016
-	ori	$a0, $zero, 2048
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2080
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2112
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2144
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2176
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2208
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2240
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2272
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2304
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2336
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2368
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2400
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2432
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2464
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2496
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2528
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2560
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2592
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2624
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2656
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2688
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2720
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2752
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2784
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2816
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2848
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2880
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2912
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2944
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2976
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3008
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3040
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3072
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3104
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3136
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3168
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3200
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3232
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3264
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3296
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3328
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3360
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3392
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3424
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3456
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3488
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3520
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3552
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3584
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3616
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3648
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3680
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3712
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3744
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3776
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3808
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3840
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3872
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3904
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3936
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3968
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4000
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4032
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4064
-	xvstx	$xr0, $fp, $a0
+	lu12i.w	$a0, -1
+	vrepli.b	$vr0, -1
+	ori	$a1, $s2, 16
+	.p2align	4, , 16
+.LBB4_2:                                # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a2, $fp, $a0
+	vstx	$vr0, $a2, $s2
+	addi.d	$a0, $a0, 32
+	vstx	$vr0, $a2, $a1
+	bnez	$a0, .LBB4_2
+# %bb.3:                                # %middle.block
 	ori	$a2, $zero, 1
 	move	$a0, $fp
 	move	$a1, $s0
@@ -937,8 +755,8 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	sltui	$a0, $a0, 1
 	sltui	$a1, $a1, 1
 	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB4_18
-# %bb.2:
+	bnez	$a0, .LBB4_20
+# %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
 	#NO_APP
@@ -952,20 +770,20 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp45:                                # EH_LABEL
-# %bb.3:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	bnez	$s4, .LBB4_9
-# %bb.4:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$s3, .LBB4_9
-# %bb.5:
+# %bb.5:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	bnez	$s4, .LBB4_11
+# %bb.6:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	beqz	$s3, .LBB4_11
+# %bb.7:
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB4_6:                                # %.lr.ph
+.LBB4_8:                                # %.lr.ph
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_7 Depth 2
+                                        #     Child Loop BB4_9 Depth 2
 	#MEMBARRIER
 	move	$a1, $a0
 	.p2align	4, , 16
-.LBB4_7:                                #   Parent Loop BB4_6 Depth=1
+.LBB4_9:                                #   Parent Loop BB4_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $sp, 16
 	ld.d	$a3, $sp, 8
@@ -979,21 +797,21 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	#APP
 	#NO_APP
 	addi.d	$a1, $a1, 1
-	bnez	$a1, .LBB4_7
-# %bb.8:                                # %_ZN9benchmark5State3endEv.exit
-                                        #   in Loop: Header=BB4_6 Depth=1
+	bnez	$a1, .LBB4_9
+# %bb.10:                               # %_ZN9benchmark5State3endEv.exit
+                                        #   in Loop: Header=BB4_8 Depth=1
 	addi.d	$s3, $s3, -1
-	bnez	$s3, .LBB4_6
-.LBB4_9:                                # %_ZN9benchmark5State3endEv.exit._crit_edge
+	bnez	$s3, .LBB4_8
+.LBB4_11:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp46:                                # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp47:                                # EH_LABEL
-# %bb.10:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
+# %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	beqz	$a0, .LBB4_17
-# %bb.11:
+	beqz	$a0, .LBB4_19
+# %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
 	ld.d	$a2, $s1, 8
@@ -1002,7 +820,7 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	slli.d	$a0, $a0, 12
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fs0, $fa0
-.LBB4_12:                               # %_ZNK9benchmark5State10iterationsEv.exit
+.LBB4_14:                               # %_ZNK9benchmark5State10iterationsEv.exit
 	addi.d	$s2, $sp, 40
 	st.d	$s2, $sp, 24
 	ori	$a0, $zero, 16
@@ -1014,7 +832,7 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp50:                                # EH_LABEL
-# %bb.13:                               # %.noexc53
+# %bb.15:                               # %.noexc53
 	ld.d	$a1, $sp, 56
 	pcalau12i	$a2, %pc_hi20(.L.str.340)
 	vld	$vr0, $a2, %pc_lo12(.L.str.340)
@@ -1030,18 +848,18 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	pcaddu18i	$ra, %call36(_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEEixEOS5_)
 	jirl	$ra, $ra, 0
 .Ltmp53:                                # EH_LABEL
-# %bb.14:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
+# %bb.16:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
 	fst.d	$fs0, $a0, 0
 	ld.d	$a1, $sp, 24
 	ori	$a2, $zero, 1
 	lu32i.d	$a2, 1024
 	st.d	$a2, $a0, 8
-	beq	$a1, $s2, .LBB4_16
-# %bb.15:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
+	beq	$a1, $s2, .LBB4_18
+# %bb.17:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-.LBB4_16:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit58
+.LBB4_18:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit58
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -1058,10 +876,10 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 128
 	ret
-.LBB4_17:
+.LBB4_19:
 	movgr2fr.d	$fs0, $zero
-	b	.LBB4_12
-.LBB4_18:
+	b	.LBB4_14
+.LBB4_20:
 .Ltmp55:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -1071,7 +889,7 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp56:                                # EH_LABEL
-# %bb.19:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
+# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
 .Ltmp57:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -1081,7 +899,7 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp58:                                # EH_LABEL
-# %bb.20:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
+# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
 .Ltmp59:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -1091,7 +909,7 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp60:                                # EH_LABEL
-# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
+# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
 .Ltmp61:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -1101,7 +919,7 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp62:                                # EH_LABEL
-# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
+# %bb.24:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
 .Ltmp63:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -1111,7 +929,7 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp64:                                # EH_LABEL
-# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
+# %bb.25:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
 .Ltmp65:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -1119,32 +937,32 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp66:                                # EH_LABEL
-# %bb.24:
+# %bb.26:
 .Ltmp67:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp68:                                # EH_LABEL
-# %bb.25:                               # %_ZNSolsEPFRSoS_E.exit
+# %bb.27:                               # %_ZNSolsEPFRSoS_E.exit
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB4_26:
+.LBB4_28:
 .Ltmp69:                                # EH_LABEL
-	b	.LBB4_32
-.LBB4_27:
+	b	.LBB4_34
+.LBB4_29:
 .Ltmp54:                                # EH_LABEL
 	ld.d	$a1, $sp, 24
 	move	$s1, $a0
-	beq	$a1, $s2, .LBB4_33
-# %bb.28:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+	beq	$a1, $s2, .LBB4_35
+# %bb.30:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_33
-.LBB4_29:
+	b	.LBB4_35
+.LBB4_31:
 .Ltmp51:                                # EH_LABEL
-	b	.LBB4_32
-.LBB4_30:
+	b	.LBB4_34
+.LBB4_32:
 .Ltmp43:                                # EH_LABEL
 	move	$s1, $a0
 	move	$a0, $fp
@@ -1153,11 +971,11 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB4_31:
+.LBB4_33:
 .Ltmp48:                                # EH_LABEL
-.LBB4_32:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB4_34:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$s1, $a0
-.LBB4_33:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB4_35:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -1412,222 +1230,40 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	.cfi_offset 27, -56
 	.cfi_offset 56, -64
 	move	$s1, $a0
-	lu12i.w	$s0, 1
-	move	$a0, $s0
+	lu12i.w	$s2, 1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$a1, $zero
-	move	$a2, $s0
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp76:                                # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp77:                                # EH_LABEL
 # %bb.1:                                # %vector.ph
 	move	$s0, $a0
-	lu12i.w	$s2, 1
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
 	st.d	$s0, $sp, 8
-	xvrepli.b	$xr0, -1
-	xvst	$xr0, $fp, 0
-	xvst	$xr0, $fp, 32
-	xvst	$xr0, $fp, 64
-	xvst	$xr0, $fp, 96
-	xvst	$xr0, $fp, 128
-	xvst	$xr0, $fp, 160
-	xvst	$xr0, $fp, 192
-	xvst	$xr0, $fp, 224
-	xvst	$xr0, $fp, 256
-	xvst	$xr0, $fp, 288
-	xvst	$xr0, $fp, 320
-	xvst	$xr0, $fp, 352
-	xvst	$xr0, $fp, 384
-	xvst	$xr0, $fp, 416
-	xvst	$xr0, $fp, 448
-	xvst	$xr0, $fp, 480
-	xvst	$xr0, $fp, 512
-	xvst	$xr0, $fp, 544
-	xvst	$xr0, $fp, 576
-	xvst	$xr0, $fp, 608
-	xvst	$xr0, $fp, 640
-	xvst	$xr0, $fp, 672
-	xvst	$xr0, $fp, 704
-	xvst	$xr0, $fp, 736
-	xvst	$xr0, $fp, 768
-	xvst	$xr0, $fp, 800
-	xvst	$xr0, $fp, 832
-	xvst	$xr0, $fp, 864
-	xvst	$xr0, $fp, 896
-	xvst	$xr0, $fp, 928
-	xvst	$xr0, $fp, 960
-	xvst	$xr0, $fp, 992
-	xvst	$xr0, $fp, 1024
-	xvst	$xr0, $fp, 1056
-	xvst	$xr0, $fp, 1088
-	xvst	$xr0, $fp, 1120
-	xvst	$xr0, $fp, 1152
-	xvst	$xr0, $fp, 1184
-	xvst	$xr0, $fp, 1216
-	xvst	$xr0, $fp, 1248
-	xvst	$xr0, $fp, 1280
-	xvst	$xr0, $fp, 1312
-	xvst	$xr0, $fp, 1344
-	xvst	$xr0, $fp, 1376
-	xvst	$xr0, $fp, 1408
-	xvst	$xr0, $fp, 1440
-	xvst	$xr0, $fp, 1472
-	xvst	$xr0, $fp, 1504
-	xvst	$xr0, $fp, 1536
-	xvst	$xr0, $fp, 1568
-	xvst	$xr0, $fp, 1600
-	xvst	$xr0, $fp, 1632
-	xvst	$xr0, $fp, 1664
-	xvst	$xr0, $fp, 1696
-	xvst	$xr0, $fp, 1728
-	xvst	$xr0, $fp, 1760
-	xvst	$xr0, $fp, 1792
-	xvst	$xr0, $fp, 1824
-	xvst	$xr0, $fp, 1856
-	xvst	$xr0, $fp, 1888
-	xvst	$xr0, $fp, 1920
-	xvst	$xr0, $fp, 1952
-	xvst	$xr0, $fp, 1984
-	xvst	$xr0, $fp, 2016
-	ori	$a0, $zero, 2048
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2080
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2112
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2144
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2176
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2208
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2240
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2272
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2304
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2336
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2368
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2400
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2432
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2464
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2496
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2528
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2560
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2592
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2624
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2656
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2688
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2720
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2752
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2784
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2816
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2848
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2880
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2912
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2944
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2976
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3008
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3040
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3072
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3104
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3136
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3168
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3200
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3232
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3264
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3296
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3328
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3360
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3392
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3424
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3456
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3488
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3520
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3552
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3584
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3616
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3648
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3680
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3712
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3744
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3776
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3808
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3840
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3872
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3904
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3936
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3968
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4000
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4032
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4064
-	xvstx	$xr0, $fp, $a0
+	lu12i.w	$a0, -1
+	vrepli.b	$vr0, -1
+	ori	$a1, $s2, 16
+	.p2align	4, , 16
+.LBB6_2:                                # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a2, $fp, $a0
+	vstx	$vr0, $a2, $s2
+	addi.d	$a0, $a0, 32
+	vstx	$vr0, $a2, $a1
+	bnez	$a0, .LBB6_2
+# %bb.3:                                # %middle.block
 	ori	$a2, $zero, 1
 	move	$a0, $fp
 	move	$a1, $s0
@@ -1637,8 +1273,8 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	sltui	$a0, $a0, 1
 	sltui	$a1, $a1, 1
 	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB6_18
-# %bb.2:
+	bnez	$a0, .LBB6_20
+# %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
 	#NO_APP
@@ -1652,20 +1288,20 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp80:                                # EH_LABEL
-# %bb.3:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	bnez	$s4, .LBB6_9
-# %bb.4:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$s3, .LBB6_9
-# %bb.5:
+# %bb.5:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	bnez	$s4, .LBB6_11
+# %bb.6:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	beqz	$s3, .LBB6_11
+# %bb.7:
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB6_6:                                # %.lr.ph
+.LBB6_8:                                # %.lr.ph
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB6_7 Depth 2
+                                        #     Child Loop BB6_9 Depth 2
 	#MEMBARRIER
 	move	$a1, $a0
 	.p2align	4, , 16
-.LBB6_7:                                #   Parent Loop BB6_6 Depth=1
+.LBB6_9:                                #   Parent Loop BB6_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $sp, 16
 	ld.d	$a3, $sp, 8
@@ -1679,21 +1315,21 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	#APP
 	#NO_APP
 	addi.d	$a1, $a1, 1
-	bnez	$a1, .LBB6_7
-# %bb.8:                                # %_ZN9benchmark5State3endEv.exit
-                                        #   in Loop: Header=BB6_6 Depth=1
+	bnez	$a1, .LBB6_9
+# %bb.10:                               # %_ZN9benchmark5State3endEv.exit
+                                        #   in Loop: Header=BB6_8 Depth=1
 	addi.d	$s3, $s3, -1
-	bnez	$s3, .LBB6_6
-.LBB6_9:                                # %_ZN9benchmark5State3endEv.exit._crit_edge
+	bnez	$s3, .LBB6_8
+.LBB6_11:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp81:                                # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp82:                                # EH_LABEL
-# %bb.10:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
+# %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	beqz	$a0, .LBB6_17
-# %bb.11:
+	beqz	$a0, .LBB6_19
+# %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
 	ld.d	$a2, $s1, 8
@@ -1702,7 +1338,7 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	slli.d	$a0, $a0, 12
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fs0, $fa0
-.LBB6_12:                               # %_ZNK9benchmark5State10iterationsEv.exit
+.LBB6_14:                               # %_ZNK9benchmark5State10iterationsEv.exit
 	addi.d	$s2, $sp, 40
 	st.d	$s2, $sp, 24
 	ori	$a0, $zero, 16
@@ -1714,7 +1350,7 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp85:                                # EH_LABEL
-# %bb.13:                               # %.noexc53
+# %bb.15:                               # %.noexc53
 	ld.d	$a1, $sp, 56
 	pcalau12i	$a2, %pc_hi20(.L.str.340)
 	vld	$vr0, $a2, %pc_lo12(.L.str.340)
@@ -1730,18 +1366,18 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	pcaddu18i	$ra, %call36(_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEEixEOS5_)
 	jirl	$ra, $ra, 0
 .Ltmp88:                                # EH_LABEL
-# %bb.14:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
+# %bb.16:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
 	fst.d	$fs0, $a0, 0
 	ld.d	$a1, $sp, 24
 	ori	$a2, $zero, 1
 	lu32i.d	$a2, 1024
 	st.d	$a2, $a0, 8
-	beq	$a1, $s2, .LBB6_16
-# %bb.15:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
+	beq	$a1, $s2, .LBB6_18
+# %bb.17:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-.LBB6_16:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit58
+.LBB6_18:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit58
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -1758,10 +1394,10 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 128
 	ret
-.LBB6_17:
+.LBB6_19:
 	movgr2fr.d	$fs0, $zero
-	b	.LBB6_12
-.LBB6_18:
+	b	.LBB6_14
+.LBB6_20:
 .Ltmp90:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -1771,7 +1407,7 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp91:                                # EH_LABEL
-# %bb.19:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
+# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
 .Ltmp92:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -1781,7 +1417,7 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp93:                                # EH_LABEL
-# %bb.20:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
+# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
 .Ltmp94:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -1791,7 +1427,7 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp95:                                # EH_LABEL
-# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
+# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
 .Ltmp96:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -1801,7 +1437,7 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp97:                                # EH_LABEL
-# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
+# %bb.24:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
 .Ltmp98:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -1811,7 +1447,7 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp99:                                # EH_LABEL
-# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
+# %bb.25:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
 .Ltmp100:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -1819,32 +1455,32 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp101:                               # EH_LABEL
-# %bb.24:
+# %bb.26:
 .Ltmp102:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp103:                               # EH_LABEL
-# %bb.25:                               # %_ZNSolsEPFRSoS_E.exit
+# %bb.27:                               # %_ZNSolsEPFRSoS_E.exit
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB6_26:
+.LBB6_28:
 .Ltmp104:                               # EH_LABEL
-	b	.LBB6_32
-.LBB6_27:
+	b	.LBB6_34
+.LBB6_29:
 .Ltmp89:                                # EH_LABEL
 	ld.d	$a1, $sp, 24
 	move	$s1, $a0
-	beq	$a1, $s2, .LBB6_33
-# %bb.28:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+	beq	$a1, $s2, .LBB6_35
+# %bb.30:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	b	.LBB6_33
-.LBB6_29:
+	b	.LBB6_35
+.LBB6_31:
 .Ltmp86:                                # EH_LABEL
-	b	.LBB6_32
-.LBB6_30:
+	b	.LBB6_34
+.LBB6_32:
 .Ltmp78:                                # EH_LABEL
 	move	$s1, $a0
 	move	$a0, $fp
@@ -1853,11 +1489,11 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB6_31:
+.LBB6_33:
 .Ltmp83:                                # EH_LABEL
-.LBB6_32:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB6_34:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$s1, $a0
-.LBB6_33:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB6_35:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -1948,222 +1584,40 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	.cfi_offset 27, -56
 	.cfi_offset 56, -64
 	move	$s1, $a0
-	lu12i.w	$s0, 1
-	move	$a0, $s0
+	lu12i.w	$s2, 1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$a1, $zero
-	move	$a2, $s0
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp105:                               # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp106:                               # EH_LABEL
 # %bb.1:                                # %vector.ph
 	move	$s0, $a0
-	lu12i.w	$s2, 1
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
 	st.d	$s0, $sp, 8
-	xvrepli.b	$xr0, -1
-	xvst	$xr0, $fp, 0
-	xvst	$xr0, $fp, 32
-	xvst	$xr0, $fp, 64
-	xvst	$xr0, $fp, 96
-	xvst	$xr0, $fp, 128
-	xvst	$xr0, $fp, 160
-	xvst	$xr0, $fp, 192
-	xvst	$xr0, $fp, 224
-	xvst	$xr0, $fp, 256
-	xvst	$xr0, $fp, 288
-	xvst	$xr0, $fp, 320
-	xvst	$xr0, $fp, 352
-	xvst	$xr0, $fp, 384
-	xvst	$xr0, $fp, 416
-	xvst	$xr0, $fp, 448
-	xvst	$xr0, $fp, 480
-	xvst	$xr0, $fp, 512
-	xvst	$xr0, $fp, 544
-	xvst	$xr0, $fp, 576
-	xvst	$xr0, $fp, 608
-	xvst	$xr0, $fp, 640
-	xvst	$xr0, $fp, 672
-	xvst	$xr0, $fp, 704
-	xvst	$xr0, $fp, 736
-	xvst	$xr0, $fp, 768
-	xvst	$xr0, $fp, 800
-	xvst	$xr0, $fp, 832
-	xvst	$xr0, $fp, 864
-	xvst	$xr0, $fp, 896
-	xvst	$xr0, $fp, 928
-	xvst	$xr0, $fp, 960
-	xvst	$xr0, $fp, 992
-	xvst	$xr0, $fp, 1024
-	xvst	$xr0, $fp, 1056
-	xvst	$xr0, $fp, 1088
-	xvst	$xr0, $fp, 1120
-	xvst	$xr0, $fp, 1152
-	xvst	$xr0, $fp, 1184
-	xvst	$xr0, $fp, 1216
-	xvst	$xr0, $fp, 1248
-	xvst	$xr0, $fp, 1280
-	xvst	$xr0, $fp, 1312
-	xvst	$xr0, $fp, 1344
-	xvst	$xr0, $fp, 1376
-	xvst	$xr0, $fp, 1408
-	xvst	$xr0, $fp, 1440
-	xvst	$xr0, $fp, 1472
-	xvst	$xr0, $fp, 1504
-	xvst	$xr0, $fp, 1536
-	xvst	$xr0, $fp, 1568
-	xvst	$xr0, $fp, 1600
-	xvst	$xr0, $fp, 1632
-	xvst	$xr0, $fp, 1664
-	xvst	$xr0, $fp, 1696
-	xvst	$xr0, $fp, 1728
-	xvst	$xr0, $fp, 1760
-	xvst	$xr0, $fp, 1792
-	xvst	$xr0, $fp, 1824
-	xvst	$xr0, $fp, 1856
-	xvst	$xr0, $fp, 1888
-	xvst	$xr0, $fp, 1920
-	xvst	$xr0, $fp, 1952
-	xvst	$xr0, $fp, 1984
-	xvst	$xr0, $fp, 2016
-	ori	$a0, $zero, 2048
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2080
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2112
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2144
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2176
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2208
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2240
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2272
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2304
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2336
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2368
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2400
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2432
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2464
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2496
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2528
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2560
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2592
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2624
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2656
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2688
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2720
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2752
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2784
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2816
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2848
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2880
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2912
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2944
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2976
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3008
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3040
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3072
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3104
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3136
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3168
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3200
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3232
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3264
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3296
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3328
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3360
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3392
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3424
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3456
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3488
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3520
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3552
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3584
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3616
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3648
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3680
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3712
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3744
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3776
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3808
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3840
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3872
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3904
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3936
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3968
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4000
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4032
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4064
-	xvstx	$xr0, $fp, $a0
+	lu12i.w	$a0, -1
+	vrepli.b	$vr0, -1
+	ori	$a1, $s2, 16
+	.p2align	4, , 16
+.LBB7_2:                                # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a2, $fp, $a0
+	vstx	$vr0, $a2, $s2
+	addi.d	$a0, $a0, 32
+	vstx	$vr0, $a2, $a1
+	bnez	$a0, .LBB7_2
+# %bb.3:                                # %middle.block
 	ori	$a2, $zero, 1
 	move	$a0, $fp
 	move	$a1, $s0
@@ -2173,8 +1627,8 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	sltui	$a0, $a0, 1
 	sltui	$a1, $a1, 1
 	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB7_18
-# %bb.2:
+	bnez	$a0, .LBB7_20
+# %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
 	#NO_APP
@@ -2188,20 +1642,20 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp109:                               # EH_LABEL
-# %bb.3:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	bnez	$s4, .LBB7_9
-# %bb.4:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$s3, .LBB7_9
-# %bb.5:
+# %bb.5:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	bnez	$s4, .LBB7_11
+# %bb.6:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	beqz	$s3, .LBB7_11
+# %bb.7:
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB7_6:                                # %.lr.ph
+.LBB7_8:                                # %.lr.ph
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB7_7 Depth 2
+                                        #     Child Loop BB7_9 Depth 2
 	#MEMBARRIER
 	move	$a1, $a0
 	.p2align	4, , 16
-.LBB7_7:                                #   Parent Loop BB7_6 Depth=1
+.LBB7_9:                                #   Parent Loop BB7_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $sp, 16
 	ld.d	$a3, $sp, 8
@@ -2215,21 +1669,21 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	#APP
 	#NO_APP
 	addi.d	$a1, $a1, 1
-	bnez	$a1, .LBB7_7
-# %bb.8:                                # %_ZN9benchmark5State3endEv.exit
-                                        #   in Loop: Header=BB7_6 Depth=1
+	bnez	$a1, .LBB7_9
+# %bb.10:                               # %_ZN9benchmark5State3endEv.exit
+                                        #   in Loop: Header=BB7_8 Depth=1
 	addi.d	$s3, $s3, -1
-	bnez	$s3, .LBB7_6
-.LBB7_9:                                # %_ZN9benchmark5State3endEv.exit._crit_edge
+	bnez	$s3, .LBB7_8
+.LBB7_11:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp110:                               # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp111:                               # EH_LABEL
-# %bb.10:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
+# %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	beqz	$a0, .LBB7_17
-# %bb.11:
+	beqz	$a0, .LBB7_19
+# %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
 	ld.d	$a2, $s1, 8
@@ -2238,7 +1692,7 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	slli.d	$a0, $a0, 12
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fs0, $fa0
-.LBB7_12:                               # %_ZNK9benchmark5State10iterationsEv.exit
+.LBB7_14:                               # %_ZNK9benchmark5State10iterationsEv.exit
 	addi.d	$s2, $sp, 40
 	st.d	$s2, $sp, 24
 	ori	$a0, $zero, 16
@@ -2250,7 +1704,7 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp114:                               # EH_LABEL
-# %bb.13:                               # %.noexc53
+# %bb.15:                               # %.noexc53
 	ld.d	$a1, $sp, 56
 	pcalau12i	$a2, %pc_hi20(.L.str.340)
 	vld	$vr0, $a2, %pc_lo12(.L.str.340)
@@ -2266,18 +1720,18 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	pcaddu18i	$ra, %call36(_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEEixEOS5_)
 	jirl	$ra, $ra, 0
 .Ltmp117:                               # EH_LABEL
-# %bb.14:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
+# %bb.16:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
 	fst.d	$fs0, $a0, 0
 	ld.d	$a1, $sp, 24
 	ori	$a2, $zero, 1
 	lu32i.d	$a2, 1024
 	st.d	$a2, $a0, 8
-	beq	$a1, $s2, .LBB7_16
-# %bb.15:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
+	beq	$a1, $s2, .LBB7_18
+# %bb.17:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-.LBB7_16:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit58
+.LBB7_18:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit58
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -2294,10 +1748,10 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 128
 	ret
-.LBB7_17:
+.LBB7_19:
 	movgr2fr.d	$fs0, $zero
-	b	.LBB7_12
-.LBB7_18:
+	b	.LBB7_14
+.LBB7_20:
 .Ltmp119:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -2307,7 +1761,7 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp120:                               # EH_LABEL
-# %bb.19:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
+# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
 .Ltmp121:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -2317,7 +1771,7 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp122:                               # EH_LABEL
-# %bb.20:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
+# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
 .Ltmp123:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -2327,7 +1781,7 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp124:                               # EH_LABEL
-# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
+# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
 .Ltmp125:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -2337,7 +1791,7 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp126:                               # EH_LABEL
-# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
+# %bb.24:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
 .Ltmp127:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -2347,7 +1801,7 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp128:                               # EH_LABEL
-# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
+# %bb.25:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
 .Ltmp129:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -2355,32 +1809,32 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp130:                               # EH_LABEL
-# %bb.24:
+# %bb.26:
 .Ltmp131:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp132:                               # EH_LABEL
-# %bb.25:                               # %_ZNSolsEPFRSoS_E.exit
+# %bb.27:                               # %_ZNSolsEPFRSoS_E.exit
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB7_26:
+.LBB7_28:
 .Ltmp133:                               # EH_LABEL
-	b	.LBB7_32
-.LBB7_27:
+	b	.LBB7_34
+.LBB7_29:
 .Ltmp118:                               # EH_LABEL
 	ld.d	$a1, $sp, 24
 	move	$s1, $a0
-	beq	$a1, $s2, .LBB7_33
-# %bb.28:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+	beq	$a1, $s2, .LBB7_35
+# %bb.30:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	b	.LBB7_33
-.LBB7_29:
+	b	.LBB7_35
+.LBB7_31:
 .Ltmp115:                               # EH_LABEL
-	b	.LBB7_32
-.LBB7_30:
+	b	.LBB7_34
+.LBB7_32:
 .Ltmp107:                               # EH_LABEL
 	move	$s1, $a0
 	move	$a0, $fp
@@ -2389,11 +1843,11 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB7_31:
+.LBB7_33:
 .Ltmp112:                               # EH_LABEL
-.LBB7_32:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB7_34:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$s1, $a0
-.LBB7_33:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB7_35:                               # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -3150,229 +2604,47 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 	.cfi_offset 27, -56
 	.cfi_offset 56, -64
 	move	$s1, $a0
-	lu12i.w	$s0, 1
-	move	$a0, $s0
+	lu12i.w	$s2, 1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$a1, $zero
-	move	$a2, $s0
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp175:                               # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp176:                               # EH_LABEL
 # %bb.1:                                # %vector.ph
 	move	$s0, $a0
-	lu12i.w	$s2, 1
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
 	st.d	$s0, $sp, 8
-	xvrepli.b	$xr0, -1
-	xvst	$xr0, $fp, 0
-	xvst	$xr0, $fp, 32
-	xvst	$xr0, $fp, 64
-	xvst	$xr0, $fp, 96
-	xvst	$xr0, $fp, 128
-	xvst	$xr0, $fp, 160
-	xvst	$xr0, $fp, 192
-	xvst	$xr0, $fp, 224
-	xvst	$xr0, $fp, 256
-	xvst	$xr0, $fp, 288
-	xvst	$xr0, $fp, 320
-	xvst	$xr0, $fp, 352
-	xvst	$xr0, $fp, 384
-	xvst	$xr0, $fp, 416
-	xvst	$xr0, $fp, 448
-	xvst	$xr0, $fp, 480
-	xvst	$xr0, $fp, 512
-	xvst	$xr0, $fp, 544
-	xvst	$xr0, $fp, 576
-	xvst	$xr0, $fp, 608
-	xvst	$xr0, $fp, 640
-	xvst	$xr0, $fp, 672
-	xvst	$xr0, $fp, 704
-	xvst	$xr0, $fp, 736
-	xvst	$xr0, $fp, 768
-	xvst	$xr0, $fp, 800
-	xvst	$xr0, $fp, 832
-	xvst	$xr0, $fp, 864
-	xvst	$xr0, $fp, 896
-	xvst	$xr0, $fp, 928
-	xvst	$xr0, $fp, 960
-	xvst	$xr0, $fp, 992
-	xvst	$xr0, $fp, 1024
-	xvst	$xr0, $fp, 1056
-	xvst	$xr0, $fp, 1088
-	xvst	$xr0, $fp, 1120
-	xvst	$xr0, $fp, 1152
-	xvst	$xr0, $fp, 1184
-	xvst	$xr0, $fp, 1216
-	xvst	$xr0, $fp, 1248
-	xvst	$xr0, $fp, 1280
-	xvst	$xr0, $fp, 1312
-	xvst	$xr0, $fp, 1344
-	xvst	$xr0, $fp, 1376
-	xvst	$xr0, $fp, 1408
-	xvst	$xr0, $fp, 1440
-	xvst	$xr0, $fp, 1472
-	xvst	$xr0, $fp, 1504
-	xvst	$xr0, $fp, 1536
-	xvst	$xr0, $fp, 1568
-	xvst	$xr0, $fp, 1600
-	xvst	$xr0, $fp, 1632
-	xvst	$xr0, $fp, 1664
-	xvst	$xr0, $fp, 1696
-	xvst	$xr0, $fp, 1728
-	xvst	$xr0, $fp, 1760
-	xvst	$xr0, $fp, 1792
-	xvst	$xr0, $fp, 1824
-	xvst	$xr0, $fp, 1856
-	xvst	$xr0, $fp, 1888
-	xvst	$xr0, $fp, 1920
-	xvst	$xr0, $fp, 1952
-	xvst	$xr0, $fp, 1984
-	xvst	$xr0, $fp, 2016
-	ori	$a0, $zero, 2048
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2080
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2112
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2144
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2176
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2208
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2240
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2272
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2304
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2336
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2368
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2400
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2432
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2464
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2496
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2528
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2560
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2592
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2624
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2656
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2688
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2720
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2752
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2784
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2816
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2848
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2880
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2912
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2944
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2976
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3008
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3040
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3072
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3104
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3136
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3168
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3200
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3232
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3264
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3296
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3328
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3360
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3392
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3424
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3456
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3488
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3520
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3552
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3584
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3616
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3648
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3680
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3712
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3744
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3776
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3808
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3840
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3872
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3904
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3936
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3968
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4000
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4032
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4064
-	xvstx	$xr0, $fp, $a0
+	lu12i.w	$a0, -1
+	vrepli.b	$vr0, -1
+	ori	$a1, $s2, 16
+	.p2align	4, , 16
+.LBB11_2:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a2, $fp, $a0
+	vstx	$vr0, $a2, $s2
+	addi.d	$a0, $a0, 32
+	vstx	$vr0, $a2, $a1
+	bnez	$a0, .LBB11_2
+# %bb.3:                                # %middle.block
 	ori	$a2, $zero, 1
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_Z10RealMemCmpPKcS0_m)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB11_18
-# %bb.2:
+	bltz	$a0, .LBB11_20
+# %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
 	#NO_APP
@@ -3386,20 +2658,20 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp179:                               # EH_LABEL
-# %bb.3:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	bnez	$s4, .LBB11_9
-# %bb.4:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$s3, .LBB11_9
-# %bb.5:
+# %bb.5:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	bnez	$s4, .LBB11_11
+# %bb.6:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	beqz	$s3, .LBB11_11
+# %bb.7:
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB11_6:                               # %.lr.ph
+.LBB11_8:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB11_7 Depth 2
+                                        #     Child Loop BB11_9 Depth 2
 	#MEMBARRIER
 	move	$a1, $a0
 	.p2align	4, , 16
-.LBB11_7:                               #   Parent Loop BB11_6 Depth=1
+.LBB11_9:                               #   Parent Loop BB11_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $sp, 16
 	ld.d	$a3, $sp, 8
@@ -3412,21 +2684,21 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 	#APP
 	#NO_APP
 	addi.d	$a1, $a1, 1
-	bnez	$a1, .LBB11_7
-# %bb.8:                                # %_ZN9benchmark5State3endEv.exit
-                                        #   in Loop: Header=BB11_6 Depth=1
+	bnez	$a1, .LBB11_9
+# %bb.10:                               # %_ZN9benchmark5State3endEv.exit
+                                        #   in Loop: Header=BB11_8 Depth=1
 	addi.d	$s3, $s3, -1
-	bnez	$s3, .LBB11_6
-.LBB11_9:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
+	bnez	$s3, .LBB11_8
+.LBB11_11:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp180:                               # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp181:                               # EH_LABEL
-# %bb.10:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
+# %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	beqz	$a0, .LBB11_17
-# %bb.11:
+	beqz	$a0, .LBB11_19
+# %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
 	ld.d	$a2, $s1, 8
@@ -3435,7 +2707,7 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 	slli.d	$a0, $a0, 12
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fs0, $fa0
-.LBB11_12:                              # %_ZNK9benchmark5State10iterationsEv.exit
+.LBB11_14:                              # %_ZNK9benchmark5State10iterationsEv.exit
 	addi.d	$s2, $sp, 40
 	st.d	$s2, $sp, 24
 	ori	$a0, $zero, 16
@@ -3447,7 +2719,7 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp184:                               # EH_LABEL
-# %bb.13:                               # %.noexc53
+# %bb.15:                               # %.noexc53
 	ld.d	$a1, $sp, 56
 	pcalau12i	$a2, %pc_hi20(.L.str.340)
 	vld	$vr0, $a2, %pc_lo12(.L.str.340)
@@ -3463,18 +2735,18 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 	pcaddu18i	$ra, %call36(_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEEixEOS5_)
 	jirl	$ra, $ra, 0
 .Ltmp187:                               # EH_LABEL
-# %bb.14:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
+# %bb.16:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
 	fst.d	$fs0, $a0, 0
 	ld.d	$a1, $sp, 24
 	ori	$a2, $zero, 1
 	lu32i.d	$a2, 1024
 	st.d	$a2, $a0, 8
-	beq	$a1, $s2, .LBB11_16
-# %bb.15:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
+	beq	$a1, $s2, .LBB11_18
+# %bb.17:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-.LBB11_16:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit58
+.LBB11_18:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit58
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -3491,10 +2763,10 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 128
 	ret
-.LBB11_17:
+.LBB11_19:
 	movgr2fr.d	$fs0, $zero
-	b	.LBB11_12
-.LBB11_18:
+	b	.LBB11_14
+.LBB11_20:
 .Ltmp189:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -3504,7 +2776,7 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp190:                               # EH_LABEL
-# %bb.19:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
+# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
 .Ltmp191:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -3514,7 +2786,7 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp192:                               # EH_LABEL
-# %bb.20:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
+# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
 .Ltmp193:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -3524,7 +2796,7 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp194:                               # EH_LABEL
-# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
+# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
 .Ltmp195:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -3534,7 +2806,7 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp196:                               # EH_LABEL
-# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
+# %bb.24:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
 .Ltmp197:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -3544,7 +2816,7 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp198:                               # EH_LABEL
-# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
+# %bb.25:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
 .Ltmp199:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -3552,32 +2824,32 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp200:                               # EH_LABEL
-# %bb.24:
+# %bb.26:
 .Ltmp201:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp202:                               # EH_LABEL
-# %bb.25:                               # %_ZNSolsEPFRSoS_E.exit
+# %bb.27:                               # %_ZNSolsEPFRSoS_E.exit
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB11_26:
+.LBB11_28:
 .Ltmp203:                               # EH_LABEL
-	b	.LBB11_32
-.LBB11_27:
+	b	.LBB11_34
+.LBB11_29:
 .Ltmp188:                               # EH_LABEL
 	ld.d	$a1, $sp, 24
 	move	$s1, $a0
-	beq	$a1, $s2, .LBB11_33
-# %bb.28:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+	beq	$a1, $s2, .LBB11_35
+# %bb.30:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	b	.LBB11_33
-.LBB11_29:
+	b	.LBB11_35
+.LBB11_31:
 .Ltmp185:                               # EH_LABEL
-	b	.LBB11_32
-.LBB11_30:
+	b	.LBB11_34
+.LBB11_32:
 .Ltmp177:                               # EH_LABEL
 	move	$s1, $a0
 	move	$a0, $fp
@@ -3586,11 +2858,11 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB11_31:
+.LBB11_33:
 .Ltmp182:                               # EH_LABEL
-.LBB11_32:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB11_34:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$s1, $a0
-.LBB11_33:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB11_35:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -3845,229 +3117,47 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 	.cfi_offset 27, -56
 	.cfi_offset 56, -64
 	move	$s1, $a0
-	lu12i.w	$s0, 1
-	move	$a0, $s0
+	lu12i.w	$s2, 1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$a1, $zero
-	move	$a2, $s0
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp210:                               # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp211:                               # EH_LABEL
 # %bb.1:                                # %vector.ph
 	move	$s0, $a0
-	lu12i.w	$s2, 1
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
 	st.d	$s0, $sp, 8
-	xvrepli.b	$xr0, -1
-	xvst	$xr0, $fp, 0
-	xvst	$xr0, $fp, 32
-	xvst	$xr0, $fp, 64
-	xvst	$xr0, $fp, 96
-	xvst	$xr0, $fp, 128
-	xvst	$xr0, $fp, 160
-	xvst	$xr0, $fp, 192
-	xvst	$xr0, $fp, 224
-	xvst	$xr0, $fp, 256
-	xvst	$xr0, $fp, 288
-	xvst	$xr0, $fp, 320
-	xvst	$xr0, $fp, 352
-	xvst	$xr0, $fp, 384
-	xvst	$xr0, $fp, 416
-	xvst	$xr0, $fp, 448
-	xvst	$xr0, $fp, 480
-	xvst	$xr0, $fp, 512
-	xvst	$xr0, $fp, 544
-	xvst	$xr0, $fp, 576
-	xvst	$xr0, $fp, 608
-	xvst	$xr0, $fp, 640
-	xvst	$xr0, $fp, 672
-	xvst	$xr0, $fp, 704
-	xvst	$xr0, $fp, 736
-	xvst	$xr0, $fp, 768
-	xvst	$xr0, $fp, 800
-	xvst	$xr0, $fp, 832
-	xvst	$xr0, $fp, 864
-	xvst	$xr0, $fp, 896
-	xvst	$xr0, $fp, 928
-	xvst	$xr0, $fp, 960
-	xvst	$xr0, $fp, 992
-	xvst	$xr0, $fp, 1024
-	xvst	$xr0, $fp, 1056
-	xvst	$xr0, $fp, 1088
-	xvst	$xr0, $fp, 1120
-	xvst	$xr0, $fp, 1152
-	xvst	$xr0, $fp, 1184
-	xvst	$xr0, $fp, 1216
-	xvst	$xr0, $fp, 1248
-	xvst	$xr0, $fp, 1280
-	xvst	$xr0, $fp, 1312
-	xvst	$xr0, $fp, 1344
-	xvst	$xr0, $fp, 1376
-	xvst	$xr0, $fp, 1408
-	xvst	$xr0, $fp, 1440
-	xvst	$xr0, $fp, 1472
-	xvst	$xr0, $fp, 1504
-	xvst	$xr0, $fp, 1536
-	xvst	$xr0, $fp, 1568
-	xvst	$xr0, $fp, 1600
-	xvst	$xr0, $fp, 1632
-	xvst	$xr0, $fp, 1664
-	xvst	$xr0, $fp, 1696
-	xvst	$xr0, $fp, 1728
-	xvst	$xr0, $fp, 1760
-	xvst	$xr0, $fp, 1792
-	xvst	$xr0, $fp, 1824
-	xvst	$xr0, $fp, 1856
-	xvst	$xr0, $fp, 1888
-	xvst	$xr0, $fp, 1920
-	xvst	$xr0, $fp, 1952
-	xvst	$xr0, $fp, 1984
-	xvst	$xr0, $fp, 2016
-	ori	$a0, $zero, 2048
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2080
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2112
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2144
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2176
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2208
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2240
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2272
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2304
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2336
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2368
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2400
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2432
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2464
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2496
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2528
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2560
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2592
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2624
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2656
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2688
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2720
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2752
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2784
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2816
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2848
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2880
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2912
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2944
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2976
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3008
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3040
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3072
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3104
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3136
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3168
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3200
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3232
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3264
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3296
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3328
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3360
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3392
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3424
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3456
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3488
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3520
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3552
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3584
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3616
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3648
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3680
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3712
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3744
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3776
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3808
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3840
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3872
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3904
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3936
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3968
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4000
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4032
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4064
-	xvstx	$xr0, $fp, $a0
+	lu12i.w	$a0, -1
+	vrepli.b	$vr0, -1
+	ori	$a1, $s2, 16
+	.p2align	4, , 16
+.LBB13_2:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a2, $fp, $a0
+	vstx	$vr0, $a2, $s2
+	addi.d	$a0, $a0, 32
+	vstx	$vr0, $a2, $a1
+	bnez	$a0, .LBB13_2
+# %bb.3:                                # %middle.block
 	ori	$a2, $zero, 1
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_Z10RealMemCmpPKcS0_m)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB13_18
-# %bb.2:
+	bltz	$a0, .LBB13_20
+# %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
 	#NO_APP
@@ -4081,20 +3171,20 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp214:                               # EH_LABEL
-# %bb.3:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	bnez	$s4, .LBB13_9
-# %bb.4:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$s3, .LBB13_9
-# %bb.5:
+# %bb.5:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	bnez	$s4, .LBB13_11
+# %bb.6:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	beqz	$s3, .LBB13_11
+# %bb.7:
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB13_6:                               # %.lr.ph
+.LBB13_8:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB13_7 Depth 2
+                                        #     Child Loop BB13_9 Depth 2
 	#MEMBARRIER
 	move	$a1, $a0
 	.p2align	4, , 16
-.LBB13_7:                               #   Parent Loop BB13_6 Depth=1
+.LBB13_9:                               #   Parent Loop BB13_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $sp, 16
 	ld.d	$a3, $sp, 8
@@ -4107,21 +3197,21 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 	#APP
 	#NO_APP
 	addi.d	$a1, $a1, 1
-	bnez	$a1, .LBB13_7
-# %bb.8:                                # %_ZN9benchmark5State3endEv.exit
-                                        #   in Loop: Header=BB13_6 Depth=1
+	bnez	$a1, .LBB13_9
+# %bb.10:                               # %_ZN9benchmark5State3endEv.exit
+                                        #   in Loop: Header=BB13_8 Depth=1
 	addi.d	$s3, $s3, -1
-	bnez	$s3, .LBB13_6
-.LBB13_9:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
+	bnez	$s3, .LBB13_8
+.LBB13_11:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp215:                               # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp216:                               # EH_LABEL
-# %bb.10:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
+# %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	beqz	$a0, .LBB13_17
-# %bb.11:
+	beqz	$a0, .LBB13_19
+# %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
 	ld.d	$a2, $s1, 8
@@ -4130,7 +3220,7 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 	slli.d	$a0, $a0, 12
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fs0, $fa0
-.LBB13_12:                              # %_ZNK9benchmark5State10iterationsEv.exit
+.LBB13_14:                              # %_ZNK9benchmark5State10iterationsEv.exit
 	addi.d	$s2, $sp, 40
 	st.d	$s2, $sp, 24
 	ori	$a0, $zero, 16
@@ -4142,7 +3232,7 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp219:                               # EH_LABEL
-# %bb.13:                               # %.noexc53
+# %bb.15:                               # %.noexc53
 	ld.d	$a1, $sp, 56
 	pcalau12i	$a2, %pc_hi20(.L.str.340)
 	vld	$vr0, $a2, %pc_lo12(.L.str.340)
@@ -4158,18 +3248,18 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 	pcaddu18i	$ra, %call36(_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEEixEOS5_)
 	jirl	$ra, $ra, 0
 .Ltmp222:                               # EH_LABEL
-# %bb.14:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
+# %bb.16:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
 	fst.d	$fs0, $a0, 0
 	ld.d	$a1, $sp, 24
 	ori	$a2, $zero, 1
 	lu32i.d	$a2, 1024
 	st.d	$a2, $a0, 8
-	beq	$a1, $s2, .LBB13_16
-# %bb.15:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
+	beq	$a1, $s2, .LBB13_18
+# %bb.17:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-.LBB13_16:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit58
+.LBB13_18:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit58
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -4186,10 +3276,10 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 128
 	ret
-.LBB13_17:
+.LBB13_19:
 	movgr2fr.d	$fs0, $zero
-	b	.LBB13_12
-.LBB13_18:
+	b	.LBB13_14
+.LBB13_20:
 .Ltmp224:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -4199,7 +3289,7 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp225:                               # EH_LABEL
-# %bb.19:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
+# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
 .Ltmp226:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -4209,7 +3299,7 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp227:                               # EH_LABEL
-# %bb.20:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
+# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
 .Ltmp228:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -4219,7 +3309,7 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp229:                               # EH_LABEL
-# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
+# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
 .Ltmp230:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -4229,7 +3319,7 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp231:                               # EH_LABEL
-# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
+# %bb.24:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
 .Ltmp232:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -4239,7 +3329,7 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp233:                               # EH_LABEL
-# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
+# %bb.25:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
 .Ltmp234:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -4247,32 +3337,32 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp235:                               # EH_LABEL
-# %bb.24:
+# %bb.26:
 .Ltmp236:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp237:                               # EH_LABEL
-# %bb.25:                               # %_ZNSolsEPFRSoS_E.exit
+# %bb.27:                               # %_ZNSolsEPFRSoS_E.exit
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB13_26:
+.LBB13_28:
 .Ltmp238:                               # EH_LABEL
-	b	.LBB13_32
-.LBB13_27:
+	b	.LBB13_34
+.LBB13_29:
 .Ltmp223:                               # EH_LABEL
 	ld.d	$a1, $sp, 24
 	move	$s1, $a0
-	beq	$a1, $s2, .LBB13_33
-# %bb.28:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+	beq	$a1, $s2, .LBB13_35
+# %bb.30:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	b	.LBB13_33
-.LBB13_29:
+	b	.LBB13_35
+.LBB13_31:
 .Ltmp220:                               # EH_LABEL
-	b	.LBB13_32
-.LBB13_30:
+	b	.LBB13_34
+.LBB13_32:
 .Ltmp212:                               # EH_LABEL
 	move	$s1, $a0
 	move	$a0, $fp
@@ -4281,11 +3371,11 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB13_31:
+.LBB13_33:
 .Ltmp217:                               # EH_LABEL
-.LBB13_32:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB13_34:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$s1, $a0
-.LBB13_33:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB13_35:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -4376,229 +3466,47 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 	.cfi_offset 27, -56
 	.cfi_offset 56, -64
 	move	$s1, $a0
-	lu12i.w	$s0, 1
-	move	$a0, $s0
+	lu12i.w	$s2, 1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$a1, $zero
-	move	$a2, $s0
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp239:                               # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp240:                               # EH_LABEL
 # %bb.1:                                # %vector.ph
 	move	$s0, $a0
-	lu12i.w	$s2, 1
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
 	st.d	$s0, $sp, 8
-	xvrepli.b	$xr0, -1
-	xvst	$xr0, $fp, 0
-	xvst	$xr0, $fp, 32
-	xvst	$xr0, $fp, 64
-	xvst	$xr0, $fp, 96
-	xvst	$xr0, $fp, 128
-	xvst	$xr0, $fp, 160
-	xvst	$xr0, $fp, 192
-	xvst	$xr0, $fp, 224
-	xvst	$xr0, $fp, 256
-	xvst	$xr0, $fp, 288
-	xvst	$xr0, $fp, 320
-	xvst	$xr0, $fp, 352
-	xvst	$xr0, $fp, 384
-	xvst	$xr0, $fp, 416
-	xvst	$xr0, $fp, 448
-	xvst	$xr0, $fp, 480
-	xvst	$xr0, $fp, 512
-	xvst	$xr0, $fp, 544
-	xvst	$xr0, $fp, 576
-	xvst	$xr0, $fp, 608
-	xvst	$xr0, $fp, 640
-	xvst	$xr0, $fp, 672
-	xvst	$xr0, $fp, 704
-	xvst	$xr0, $fp, 736
-	xvst	$xr0, $fp, 768
-	xvst	$xr0, $fp, 800
-	xvst	$xr0, $fp, 832
-	xvst	$xr0, $fp, 864
-	xvst	$xr0, $fp, 896
-	xvst	$xr0, $fp, 928
-	xvst	$xr0, $fp, 960
-	xvst	$xr0, $fp, 992
-	xvst	$xr0, $fp, 1024
-	xvst	$xr0, $fp, 1056
-	xvst	$xr0, $fp, 1088
-	xvst	$xr0, $fp, 1120
-	xvst	$xr0, $fp, 1152
-	xvst	$xr0, $fp, 1184
-	xvst	$xr0, $fp, 1216
-	xvst	$xr0, $fp, 1248
-	xvst	$xr0, $fp, 1280
-	xvst	$xr0, $fp, 1312
-	xvst	$xr0, $fp, 1344
-	xvst	$xr0, $fp, 1376
-	xvst	$xr0, $fp, 1408
-	xvst	$xr0, $fp, 1440
-	xvst	$xr0, $fp, 1472
-	xvst	$xr0, $fp, 1504
-	xvst	$xr0, $fp, 1536
-	xvst	$xr0, $fp, 1568
-	xvst	$xr0, $fp, 1600
-	xvst	$xr0, $fp, 1632
-	xvst	$xr0, $fp, 1664
-	xvst	$xr0, $fp, 1696
-	xvst	$xr0, $fp, 1728
-	xvst	$xr0, $fp, 1760
-	xvst	$xr0, $fp, 1792
-	xvst	$xr0, $fp, 1824
-	xvst	$xr0, $fp, 1856
-	xvst	$xr0, $fp, 1888
-	xvst	$xr0, $fp, 1920
-	xvst	$xr0, $fp, 1952
-	xvst	$xr0, $fp, 1984
-	xvst	$xr0, $fp, 2016
-	ori	$a0, $zero, 2048
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2080
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2112
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2144
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2176
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2208
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2240
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2272
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2304
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2336
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2368
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2400
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2432
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2464
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2496
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2528
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2560
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2592
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2624
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2656
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2688
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2720
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2752
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2784
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2816
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2848
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2880
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2912
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2944
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2976
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3008
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3040
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3072
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3104
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3136
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3168
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3200
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3232
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3264
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3296
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3328
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3360
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3392
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3424
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3456
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3488
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3520
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3552
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3584
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3616
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3648
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3680
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3712
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3744
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3776
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3808
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3840
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3872
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3904
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3936
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3968
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4000
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4032
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4064
-	xvstx	$xr0, $fp, $a0
+	lu12i.w	$a0, -1
+	vrepli.b	$vr0, -1
+	ori	$a1, $s2, 16
+	.p2align	4, , 16
+.LBB14_2:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a2, $fp, $a0
+	vstx	$vr0, $a2, $s2
+	addi.d	$a0, $a0, 32
+	vstx	$vr0, $a2, $a1
+	bnez	$a0, .LBB14_2
+# %bb.3:                                # %middle.block
 	ori	$a2, $zero, 1
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_Z10RealMemCmpPKcS0_m)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB14_18
-# %bb.2:
+	bltz	$a0, .LBB14_20
+# %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
 	#NO_APP
@@ -4612,20 +3520,20 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp243:                               # EH_LABEL
-# %bb.3:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	bnez	$s4, .LBB14_9
-# %bb.4:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$s3, .LBB14_9
-# %bb.5:
+# %bb.5:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	bnez	$s4, .LBB14_11
+# %bb.6:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	beqz	$s3, .LBB14_11
+# %bb.7:
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB14_6:                               # %.lr.ph
+.LBB14_8:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB14_7 Depth 2
+                                        #     Child Loop BB14_9 Depth 2
 	#MEMBARRIER
 	move	$a1, $a0
 	.p2align	4, , 16
-.LBB14_7:                               #   Parent Loop BB14_6 Depth=1
+.LBB14_9:                               #   Parent Loop BB14_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $sp, 16
 	ld.d	$a3, $sp, 8
@@ -4638,21 +3546,21 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 	#APP
 	#NO_APP
 	addi.d	$a1, $a1, 1
-	bnez	$a1, .LBB14_7
-# %bb.8:                                # %_ZN9benchmark5State3endEv.exit
-                                        #   in Loop: Header=BB14_6 Depth=1
+	bnez	$a1, .LBB14_9
+# %bb.10:                               # %_ZN9benchmark5State3endEv.exit
+                                        #   in Loop: Header=BB14_8 Depth=1
 	addi.d	$s3, $s3, -1
-	bnez	$s3, .LBB14_6
-.LBB14_9:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
+	bnez	$s3, .LBB14_8
+.LBB14_11:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp244:                               # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp245:                               # EH_LABEL
-# %bb.10:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
+# %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	beqz	$a0, .LBB14_17
-# %bb.11:
+	beqz	$a0, .LBB14_19
+# %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
 	ld.d	$a2, $s1, 8
@@ -4661,7 +3569,7 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 	slli.d	$a0, $a0, 12
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fs0, $fa0
-.LBB14_12:                              # %_ZNK9benchmark5State10iterationsEv.exit
+.LBB14_14:                              # %_ZNK9benchmark5State10iterationsEv.exit
 	addi.d	$s2, $sp, 40
 	st.d	$s2, $sp, 24
 	ori	$a0, $zero, 16
@@ -4673,7 +3581,7 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp248:                               # EH_LABEL
-# %bb.13:                               # %.noexc53
+# %bb.15:                               # %.noexc53
 	ld.d	$a1, $sp, 56
 	pcalau12i	$a2, %pc_hi20(.L.str.340)
 	vld	$vr0, $a2, %pc_lo12(.L.str.340)
@@ -4689,18 +3597,18 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 	pcaddu18i	$ra, %call36(_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEEixEOS5_)
 	jirl	$ra, $ra, 0
 .Ltmp251:                               # EH_LABEL
-# %bb.14:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
+# %bb.16:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
 	fst.d	$fs0, $a0, 0
 	ld.d	$a1, $sp, 24
 	ori	$a2, $zero, 1
 	lu32i.d	$a2, 1024
 	st.d	$a2, $a0, 8
-	beq	$a1, $s2, .LBB14_16
-# %bb.15:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
+	beq	$a1, $s2, .LBB14_18
+# %bb.17:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-.LBB14_16:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit58
+.LBB14_18:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit58
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -4717,10 +3625,10 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 128
 	ret
-.LBB14_17:
+.LBB14_19:
 	movgr2fr.d	$fs0, $zero
-	b	.LBB14_12
-.LBB14_18:
+	b	.LBB14_14
+.LBB14_20:
 .Ltmp253:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -4730,7 +3638,7 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp254:                               # EH_LABEL
-# %bb.19:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
+# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
 .Ltmp255:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -4740,7 +3648,7 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp256:                               # EH_LABEL
-# %bb.20:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
+# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
 .Ltmp257:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -4750,7 +3658,7 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp258:                               # EH_LABEL
-# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
+# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
 .Ltmp259:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -4760,7 +3668,7 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp260:                               # EH_LABEL
-# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
+# %bb.24:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
 .Ltmp261:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -4770,7 +3678,7 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp262:                               # EH_LABEL
-# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
+# %bb.25:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
 .Ltmp263:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -4778,32 +3686,32 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp264:                               # EH_LABEL
-# %bb.24:
+# %bb.26:
 .Ltmp265:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp266:                               # EH_LABEL
-# %bb.25:                               # %_ZNSolsEPFRSoS_E.exit
+# %bb.27:                               # %_ZNSolsEPFRSoS_E.exit
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB14_26:
+.LBB14_28:
 .Ltmp267:                               # EH_LABEL
-	b	.LBB14_32
-.LBB14_27:
+	b	.LBB14_34
+.LBB14_29:
 .Ltmp252:                               # EH_LABEL
 	ld.d	$a1, $sp, 24
 	move	$s1, $a0
-	beq	$a1, $s2, .LBB14_33
-# %bb.28:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+	beq	$a1, $s2, .LBB14_35
+# %bb.30:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	b	.LBB14_33
-.LBB14_29:
+	b	.LBB14_35
+.LBB14_31:
 .Ltmp249:                               # EH_LABEL
-	b	.LBB14_32
-.LBB14_30:
+	b	.LBB14_34
+.LBB14_32:
 .Ltmp241:                               # EH_LABEL
 	move	$s1, $a0
 	move	$a0, $fp
@@ -4812,11 +3720,11 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB14_31:
+.LBB14_33:
 .Ltmp246:                               # EH_LABEL
-.LBB14_32:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB14_34:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$s1, $a0
-.LBB14_33:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB14_35:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -5573,222 +4481,40 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	.cfi_offset 27, -56
 	.cfi_offset 56, -64
 	move	$s1, $a0
-	lu12i.w	$s0, 1
-	move	$a0, $s0
+	lu12i.w	$s2, 1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$a1, $zero
-	move	$a2, $s0
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp309:                               # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp310:                               # EH_LABEL
 # %bb.1:                                # %vector.ph
 	move	$s0, $a0
-	lu12i.w	$s2, 1
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
 	st.d	$s0, $sp, 8
-	xvrepli.b	$xr0, -1
-	xvst	$xr0, $fp, 0
-	xvst	$xr0, $fp, 32
-	xvst	$xr0, $fp, 64
-	xvst	$xr0, $fp, 96
-	xvst	$xr0, $fp, 128
-	xvst	$xr0, $fp, 160
-	xvst	$xr0, $fp, 192
-	xvst	$xr0, $fp, 224
-	xvst	$xr0, $fp, 256
-	xvst	$xr0, $fp, 288
-	xvst	$xr0, $fp, 320
-	xvst	$xr0, $fp, 352
-	xvst	$xr0, $fp, 384
-	xvst	$xr0, $fp, 416
-	xvst	$xr0, $fp, 448
-	xvst	$xr0, $fp, 480
-	xvst	$xr0, $fp, 512
-	xvst	$xr0, $fp, 544
-	xvst	$xr0, $fp, 576
-	xvst	$xr0, $fp, 608
-	xvst	$xr0, $fp, 640
-	xvst	$xr0, $fp, 672
-	xvst	$xr0, $fp, 704
-	xvst	$xr0, $fp, 736
-	xvst	$xr0, $fp, 768
-	xvst	$xr0, $fp, 800
-	xvst	$xr0, $fp, 832
-	xvst	$xr0, $fp, 864
-	xvst	$xr0, $fp, 896
-	xvst	$xr0, $fp, 928
-	xvst	$xr0, $fp, 960
-	xvst	$xr0, $fp, 992
-	xvst	$xr0, $fp, 1024
-	xvst	$xr0, $fp, 1056
-	xvst	$xr0, $fp, 1088
-	xvst	$xr0, $fp, 1120
-	xvst	$xr0, $fp, 1152
-	xvst	$xr0, $fp, 1184
-	xvst	$xr0, $fp, 1216
-	xvst	$xr0, $fp, 1248
-	xvst	$xr0, $fp, 1280
-	xvst	$xr0, $fp, 1312
-	xvst	$xr0, $fp, 1344
-	xvst	$xr0, $fp, 1376
-	xvst	$xr0, $fp, 1408
-	xvst	$xr0, $fp, 1440
-	xvst	$xr0, $fp, 1472
-	xvst	$xr0, $fp, 1504
-	xvst	$xr0, $fp, 1536
-	xvst	$xr0, $fp, 1568
-	xvst	$xr0, $fp, 1600
-	xvst	$xr0, $fp, 1632
-	xvst	$xr0, $fp, 1664
-	xvst	$xr0, $fp, 1696
-	xvst	$xr0, $fp, 1728
-	xvst	$xr0, $fp, 1760
-	xvst	$xr0, $fp, 1792
-	xvst	$xr0, $fp, 1824
-	xvst	$xr0, $fp, 1856
-	xvst	$xr0, $fp, 1888
-	xvst	$xr0, $fp, 1920
-	xvst	$xr0, $fp, 1952
-	xvst	$xr0, $fp, 1984
-	xvst	$xr0, $fp, 2016
-	ori	$a0, $zero, 2048
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2080
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2112
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2144
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2176
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2208
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2240
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2272
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2304
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2336
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2368
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2400
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2432
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2464
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2496
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2528
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2560
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2592
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2624
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2656
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2688
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2720
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2752
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2784
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2816
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2848
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2880
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2912
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2944
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2976
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3008
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3040
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3072
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3104
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3136
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3168
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3200
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3232
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3264
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3296
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3328
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3360
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3392
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3424
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3456
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3488
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3520
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3552
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3584
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3616
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3648
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3680
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3712
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3744
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3776
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3808
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3840
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3872
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3904
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3936
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3968
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4000
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4032
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4064
-	xvstx	$xr0, $fp, $a0
+	lu12i.w	$a0, -1
+	vrepli.b	$vr0, -1
+	ori	$a1, $s2, 16
+	.p2align	4, , 16
+.LBB18_2:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a2, $fp, $a0
+	vstx	$vr0, $a2, $s2
+	addi.d	$a0, $a0, 32
+	vstx	$vr0, $a2, $a1
+	bnez	$a0, .LBB18_2
+# %bb.3:                                # %middle.block
 	ori	$a2, $zero, 1
 	move	$a0, $fp
 	move	$a1, $s0
@@ -5798,8 +4524,8 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	slt	$a0, $zero, $a0
 	sltu	$a1, $zero, $a1
 	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB18_18
-# %bb.2:
+	bnez	$a0, .LBB18_20
+# %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
 	#NO_APP
@@ -5813,20 +4539,20 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp313:                               # EH_LABEL
-# %bb.3:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	bnez	$s4, .LBB18_9
-# %bb.4:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$s3, .LBB18_9
-# %bb.5:
+# %bb.5:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	bnez	$s4, .LBB18_11
+# %bb.6:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	beqz	$s3, .LBB18_11
+# %bb.7:
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB18_6:                               # %.lr.ph
+.LBB18_8:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB18_7 Depth 2
+                                        #     Child Loop BB18_9 Depth 2
 	#MEMBARRIER
 	move	$a1, $a0
 	.p2align	4, , 16
-.LBB18_7:                               #   Parent Loop BB18_6 Depth=1
+.LBB18_9:                               #   Parent Loop BB18_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $sp, 16
 	ld.d	$a3, $sp, 8
@@ -5839,21 +4565,21 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	#APP
 	#NO_APP
 	addi.d	$a1, $a1, 1
-	bnez	$a1, .LBB18_7
-# %bb.8:                                # %_ZN9benchmark5State3endEv.exit
-                                        #   in Loop: Header=BB18_6 Depth=1
+	bnez	$a1, .LBB18_9
+# %bb.10:                               # %_ZN9benchmark5State3endEv.exit
+                                        #   in Loop: Header=BB18_8 Depth=1
 	addi.d	$s3, $s3, -1
-	bnez	$s3, .LBB18_6
-.LBB18_9:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
+	bnez	$s3, .LBB18_8
+.LBB18_11:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp314:                               # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp315:                               # EH_LABEL
-# %bb.10:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
+# %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	beqz	$a0, .LBB18_17
-# %bb.11:
+	beqz	$a0, .LBB18_19
+# %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
 	ld.d	$a2, $s1, 8
@@ -5862,7 +4588,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	slli.d	$a0, $a0, 12
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fs0, $fa0
-.LBB18_12:                              # %_ZNK9benchmark5State10iterationsEv.exit
+.LBB18_14:                              # %_ZNK9benchmark5State10iterationsEv.exit
 	addi.d	$s2, $sp, 40
 	st.d	$s2, $sp, 24
 	ori	$a0, $zero, 16
@@ -5874,7 +4600,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp318:                               # EH_LABEL
-# %bb.13:                               # %.noexc53
+# %bb.15:                               # %.noexc53
 	ld.d	$a1, $sp, 56
 	pcalau12i	$a2, %pc_hi20(.L.str.340)
 	vld	$vr0, $a2, %pc_lo12(.L.str.340)
@@ -5890,18 +4616,18 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEEixEOS5_)
 	jirl	$ra, $ra, 0
 .Ltmp321:                               # EH_LABEL
-# %bb.14:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
+# %bb.16:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
 	fst.d	$fs0, $a0, 0
 	ld.d	$a1, $sp, 24
 	ori	$a2, $zero, 1
 	lu32i.d	$a2, 1024
 	st.d	$a2, $a0, 8
-	beq	$a1, $s2, .LBB18_16
-# %bb.15:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
+	beq	$a1, $s2, .LBB18_18
+# %bb.17:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-.LBB18_16:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit58
+.LBB18_18:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit58
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -5918,10 +4644,10 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 128
 	ret
-.LBB18_17:
+.LBB18_19:
 	movgr2fr.d	$fs0, $zero
-	b	.LBB18_12
-.LBB18_18:
+	b	.LBB18_14
+.LBB18_20:
 .Ltmp323:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -5931,7 +4657,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp324:                               # EH_LABEL
-# %bb.19:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
+# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
 .Ltmp325:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -5941,7 +4667,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp326:                               # EH_LABEL
-# %bb.20:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
+# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
 .Ltmp327:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -5951,7 +4677,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp328:                               # EH_LABEL
-# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
+# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
 .Ltmp329:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -5961,7 +4687,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp330:                               # EH_LABEL
-# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
+# %bb.24:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
 .Ltmp331:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -5971,7 +4697,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp332:                               # EH_LABEL
-# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
+# %bb.25:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
 .Ltmp333:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -5979,32 +4705,32 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp334:                               # EH_LABEL
-# %bb.24:
+# %bb.26:
 .Ltmp335:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp336:                               # EH_LABEL
-# %bb.25:                               # %_ZNSolsEPFRSoS_E.exit
+# %bb.27:                               # %_ZNSolsEPFRSoS_E.exit
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB18_26:
+.LBB18_28:
 .Ltmp337:                               # EH_LABEL
-	b	.LBB18_32
-.LBB18_27:
+	b	.LBB18_34
+.LBB18_29:
 .Ltmp322:                               # EH_LABEL
 	ld.d	$a1, $sp, 24
 	move	$s1, $a0
-	beq	$a1, $s2, .LBB18_33
-# %bb.28:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+	beq	$a1, $s2, .LBB18_35
+# %bb.30:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	b	.LBB18_33
-.LBB18_29:
+	b	.LBB18_35
+.LBB18_31:
 .Ltmp319:                               # EH_LABEL
-	b	.LBB18_32
-.LBB18_30:
+	b	.LBB18_34
+.LBB18_32:
 .Ltmp311:                               # EH_LABEL
 	move	$s1, $a0
 	move	$a0, $fp
@@ -6013,11 +4739,11 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB18_31:
+.LBB18_33:
 .Ltmp316:                               # EH_LABEL
-.LBB18_32:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB18_34:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$s1, $a0
-.LBB18_33:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB18_35:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -6272,222 +4998,40 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	.cfi_offset 27, -56
 	.cfi_offset 56, -64
 	move	$s1, $a0
-	lu12i.w	$s0, 1
-	move	$a0, $s0
+	lu12i.w	$s2, 1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$a1, $zero
-	move	$a2, $s0
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp344:                               # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp345:                               # EH_LABEL
 # %bb.1:                                # %vector.ph
 	move	$s0, $a0
-	lu12i.w	$s2, 1
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
 	st.d	$s0, $sp, 8
-	xvrepli.b	$xr0, -1
-	xvst	$xr0, $fp, 0
-	xvst	$xr0, $fp, 32
-	xvst	$xr0, $fp, 64
-	xvst	$xr0, $fp, 96
-	xvst	$xr0, $fp, 128
-	xvst	$xr0, $fp, 160
-	xvst	$xr0, $fp, 192
-	xvst	$xr0, $fp, 224
-	xvst	$xr0, $fp, 256
-	xvst	$xr0, $fp, 288
-	xvst	$xr0, $fp, 320
-	xvst	$xr0, $fp, 352
-	xvst	$xr0, $fp, 384
-	xvst	$xr0, $fp, 416
-	xvst	$xr0, $fp, 448
-	xvst	$xr0, $fp, 480
-	xvst	$xr0, $fp, 512
-	xvst	$xr0, $fp, 544
-	xvst	$xr0, $fp, 576
-	xvst	$xr0, $fp, 608
-	xvst	$xr0, $fp, 640
-	xvst	$xr0, $fp, 672
-	xvst	$xr0, $fp, 704
-	xvst	$xr0, $fp, 736
-	xvst	$xr0, $fp, 768
-	xvst	$xr0, $fp, 800
-	xvst	$xr0, $fp, 832
-	xvst	$xr0, $fp, 864
-	xvst	$xr0, $fp, 896
-	xvst	$xr0, $fp, 928
-	xvst	$xr0, $fp, 960
-	xvst	$xr0, $fp, 992
-	xvst	$xr0, $fp, 1024
-	xvst	$xr0, $fp, 1056
-	xvst	$xr0, $fp, 1088
-	xvst	$xr0, $fp, 1120
-	xvst	$xr0, $fp, 1152
-	xvst	$xr0, $fp, 1184
-	xvst	$xr0, $fp, 1216
-	xvst	$xr0, $fp, 1248
-	xvst	$xr0, $fp, 1280
-	xvst	$xr0, $fp, 1312
-	xvst	$xr0, $fp, 1344
-	xvst	$xr0, $fp, 1376
-	xvst	$xr0, $fp, 1408
-	xvst	$xr0, $fp, 1440
-	xvst	$xr0, $fp, 1472
-	xvst	$xr0, $fp, 1504
-	xvst	$xr0, $fp, 1536
-	xvst	$xr0, $fp, 1568
-	xvst	$xr0, $fp, 1600
-	xvst	$xr0, $fp, 1632
-	xvst	$xr0, $fp, 1664
-	xvst	$xr0, $fp, 1696
-	xvst	$xr0, $fp, 1728
-	xvst	$xr0, $fp, 1760
-	xvst	$xr0, $fp, 1792
-	xvst	$xr0, $fp, 1824
-	xvst	$xr0, $fp, 1856
-	xvst	$xr0, $fp, 1888
-	xvst	$xr0, $fp, 1920
-	xvst	$xr0, $fp, 1952
-	xvst	$xr0, $fp, 1984
-	xvst	$xr0, $fp, 2016
-	ori	$a0, $zero, 2048
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2080
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2112
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2144
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2176
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2208
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2240
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2272
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2304
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2336
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2368
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2400
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2432
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2464
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2496
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2528
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2560
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2592
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2624
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2656
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2688
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2720
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2752
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2784
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2816
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2848
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2880
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2912
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2944
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2976
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3008
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3040
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3072
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3104
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3136
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3168
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3200
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3232
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3264
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3296
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3328
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3360
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3392
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3424
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3456
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3488
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3520
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3552
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3584
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3616
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3648
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3680
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3712
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3744
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3776
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3808
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3840
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3872
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3904
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3936
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3968
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4000
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4032
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4064
-	xvstx	$xr0, $fp, $a0
+	lu12i.w	$a0, -1
+	vrepli.b	$vr0, -1
+	ori	$a1, $s2, 16
+	.p2align	4, , 16
+.LBB20_2:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a2, $fp, $a0
+	vstx	$vr0, $a2, $s2
+	addi.d	$a0, $a0, 32
+	vstx	$vr0, $a2, $a1
+	bnez	$a0, .LBB20_2
+# %bb.3:                                # %middle.block
 	ori	$a2, $zero, 1
 	move	$a0, $fp
 	move	$a1, $s0
@@ -6497,8 +5041,8 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	slt	$a0, $zero, $a0
 	sltu	$a1, $zero, $a1
 	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB20_18
-# %bb.2:
+	bnez	$a0, .LBB20_20
+# %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
 	#NO_APP
@@ -6512,20 +5056,20 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp348:                               # EH_LABEL
-# %bb.3:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	bnez	$s4, .LBB20_9
-# %bb.4:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$s3, .LBB20_9
-# %bb.5:
+# %bb.5:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	bnez	$s4, .LBB20_11
+# %bb.6:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	beqz	$s3, .LBB20_11
+# %bb.7:
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB20_6:                               # %.lr.ph
+.LBB20_8:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB20_7 Depth 2
+                                        #     Child Loop BB20_9 Depth 2
 	#MEMBARRIER
 	move	$a1, $a0
 	.p2align	4, , 16
-.LBB20_7:                               #   Parent Loop BB20_6 Depth=1
+.LBB20_9:                               #   Parent Loop BB20_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $sp, 16
 	ld.d	$a3, $sp, 8
@@ -6538,21 +5082,21 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	#APP
 	#NO_APP
 	addi.d	$a1, $a1, 1
-	bnez	$a1, .LBB20_7
-# %bb.8:                                # %_ZN9benchmark5State3endEv.exit
-                                        #   in Loop: Header=BB20_6 Depth=1
+	bnez	$a1, .LBB20_9
+# %bb.10:                               # %_ZN9benchmark5State3endEv.exit
+                                        #   in Loop: Header=BB20_8 Depth=1
 	addi.d	$s3, $s3, -1
-	bnez	$s3, .LBB20_6
-.LBB20_9:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
+	bnez	$s3, .LBB20_8
+.LBB20_11:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp349:                               # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp350:                               # EH_LABEL
-# %bb.10:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
+# %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	beqz	$a0, .LBB20_17
-# %bb.11:
+	beqz	$a0, .LBB20_19
+# %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
 	ld.d	$a2, $s1, 8
@@ -6561,7 +5105,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	slli.d	$a0, $a0, 12
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fs0, $fa0
-.LBB20_12:                              # %_ZNK9benchmark5State10iterationsEv.exit
+.LBB20_14:                              # %_ZNK9benchmark5State10iterationsEv.exit
 	addi.d	$s2, $sp, 40
 	st.d	$s2, $sp, 24
 	ori	$a0, $zero, 16
@@ -6573,7 +5117,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp353:                               # EH_LABEL
-# %bb.13:                               # %.noexc53
+# %bb.15:                               # %.noexc53
 	ld.d	$a1, $sp, 56
 	pcalau12i	$a2, %pc_hi20(.L.str.340)
 	vld	$vr0, $a2, %pc_lo12(.L.str.340)
@@ -6589,18 +5133,18 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	pcaddu18i	$ra, %call36(_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEEixEOS5_)
 	jirl	$ra, $ra, 0
 .Ltmp356:                               # EH_LABEL
-# %bb.14:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
+# %bb.16:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
 	fst.d	$fs0, $a0, 0
 	ld.d	$a1, $sp, 24
 	ori	$a2, $zero, 1
 	lu32i.d	$a2, 1024
 	st.d	$a2, $a0, 8
-	beq	$a1, $s2, .LBB20_16
-# %bb.15:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
+	beq	$a1, $s2, .LBB20_18
+# %bb.17:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-.LBB20_16:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit58
+.LBB20_18:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit58
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -6617,10 +5161,10 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 128
 	ret
-.LBB20_17:
+.LBB20_19:
 	movgr2fr.d	$fs0, $zero
-	b	.LBB20_12
-.LBB20_18:
+	b	.LBB20_14
+.LBB20_20:
 .Ltmp358:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -6630,7 +5174,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp359:                               # EH_LABEL
-# %bb.19:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
+# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
 .Ltmp360:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -6640,7 +5184,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp361:                               # EH_LABEL
-# %bb.20:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
+# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
 .Ltmp362:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -6650,7 +5194,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp363:                               # EH_LABEL
-# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
+# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
 .Ltmp364:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -6660,7 +5204,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp365:                               # EH_LABEL
-# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
+# %bb.24:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
 .Ltmp366:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -6670,7 +5214,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp367:                               # EH_LABEL
-# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
+# %bb.25:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
 .Ltmp368:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -6678,32 +5222,32 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp369:                               # EH_LABEL
-# %bb.24:
+# %bb.26:
 .Ltmp370:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp371:                               # EH_LABEL
-# %bb.25:                               # %_ZNSolsEPFRSoS_E.exit
+# %bb.27:                               # %_ZNSolsEPFRSoS_E.exit
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB20_26:
+.LBB20_28:
 .Ltmp372:                               # EH_LABEL
-	b	.LBB20_32
-.LBB20_27:
+	b	.LBB20_34
+.LBB20_29:
 .Ltmp357:                               # EH_LABEL
 	ld.d	$a1, $sp, 24
 	move	$s1, $a0
-	beq	$a1, $s2, .LBB20_33
-# %bb.28:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+	beq	$a1, $s2, .LBB20_35
+# %bb.30:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	b	.LBB20_33
-.LBB20_29:
+	b	.LBB20_35
+.LBB20_31:
 .Ltmp354:                               # EH_LABEL
-	b	.LBB20_32
-.LBB20_30:
+	b	.LBB20_34
+.LBB20_32:
 .Ltmp346:                               # EH_LABEL
 	move	$s1, $a0
 	move	$a0, $fp
@@ -6712,11 +5256,11 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB20_31:
+.LBB20_33:
 .Ltmp351:                               # EH_LABEL
-.LBB20_32:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB20_34:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$s1, $a0
-.LBB20_33:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB20_35:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -6807,222 +5351,40 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	.cfi_offset 27, -56
 	.cfi_offset 56, -64
 	move	$s1, $a0
-	lu12i.w	$s0, 1
-	move	$a0, $s0
+	lu12i.w	$s2, 1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$a1, $zero
-	move	$a2, $s0
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .Ltmp373:                               # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp374:                               # EH_LABEL
 # %bb.1:                                # %vector.ph
 	move	$s0, $a0
-	lu12i.w	$s2, 1
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
 	st.d	$s0, $sp, 8
-	xvrepli.b	$xr0, -1
-	xvst	$xr0, $fp, 0
-	xvst	$xr0, $fp, 32
-	xvst	$xr0, $fp, 64
-	xvst	$xr0, $fp, 96
-	xvst	$xr0, $fp, 128
-	xvst	$xr0, $fp, 160
-	xvst	$xr0, $fp, 192
-	xvst	$xr0, $fp, 224
-	xvst	$xr0, $fp, 256
-	xvst	$xr0, $fp, 288
-	xvst	$xr0, $fp, 320
-	xvst	$xr0, $fp, 352
-	xvst	$xr0, $fp, 384
-	xvst	$xr0, $fp, 416
-	xvst	$xr0, $fp, 448
-	xvst	$xr0, $fp, 480
-	xvst	$xr0, $fp, 512
-	xvst	$xr0, $fp, 544
-	xvst	$xr0, $fp, 576
-	xvst	$xr0, $fp, 608
-	xvst	$xr0, $fp, 640
-	xvst	$xr0, $fp, 672
-	xvst	$xr0, $fp, 704
-	xvst	$xr0, $fp, 736
-	xvst	$xr0, $fp, 768
-	xvst	$xr0, $fp, 800
-	xvst	$xr0, $fp, 832
-	xvst	$xr0, $fp, 864
-	xvst	$xr0, $fp, 896
-	xvst	$xr0, $fp, 928
-	xvst	$xr0, $fp, 960
-	xvst	$xr0, $fp, 992
-	xvst	$xr0, $fp, 1024
-	xvst	$xr0, $fp, 1056
-	xvst	$xr0, $fp, 1088
-	xvst	$xr0, $fp, 1120
-	xvst	$xr0, $fp, 1152
-	xvst	$xr0, $fp, 1184
-	xvst	$xr0, $fp, 1216
-	xvst	$xr0, $fp, 1248
-	xvst	$xr0, $fp, 1280
-	xvst	$xr0, $fp, 1312
-	xvst	$xr0, $fp, 1344
-	xvst	$xr0, $fp, 1376
-	xvst	$xr0, $fp, 1408
-	xvst	$xr0, $fp, 1440
-	xvst	$xr0, $fp, 1472
-	xvst	$xr0, $fp, 1504
-	xvst	$xr0, $fp, 1536
-	xvst	$xr0, $fp, 1568
-	xvst	$xr0, $fp, 1600
-	xvst	$xr0, $fp, 1632
-	xvst	$xr0, $fp, 1664
-	xvst	$xr0, $fp, 1696
-	xvst	$xr0, $fp, 1728
-	xvst	$xr0, $fp, 1760
-	xvst	$xr0, $fp, 1792
-	xvst	$xr0, $fp, 1824
-	xvst	$xr0, $fp, 1856
-	xvst	$xr0, $fp, 1888
-	xvst	$xr0, $fp, 1920
-	xvst	$xr0, $fp, 1952
-	xvst	$xr0, $fp, 1984
-	xvst	$xr0, $fp, 2016
-	ori	$a0, $zero, 2048
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2080
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2112
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2144
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2176
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2208
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2240
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2272
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2304
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2336
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2368
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2400
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2432
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2464
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2496
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2528
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2560
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2592
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2624
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2656
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2688
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2720
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2752
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2784
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2816
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2848
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2880
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2912
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2944
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 2976
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3008
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3040
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3072
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3104
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3136
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3168
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3200
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3232
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3264
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3296
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3328
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3360
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3392
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3424
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3456
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3488
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3520
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3552
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3584
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3616
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3648
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3680
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3712
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3744
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3776
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3808
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3840
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3872
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3904
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3936
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 3968
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4000
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4032
-	xvstx	$xr0, $fp, $a0
-	ori	$a0, $zero, 4064
-	xvstx	$xr0, $fp, $a0
+	lu12i.w	$a0, -1
+	vrepli.b	$vr0, -1
+	ori	$a1, $s2, 16
+	.p2align	4, , 16
+.LBB21_2:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a2, $fp, $a0
+	vstx	$vr0, $a2, $s2
+	addi.d	$a0, $a0, 32
+	vstx	$vr0, $a2, $a1
+	bnez	$a0, .LBB21_2
+# %bb.3:                                # %middle.block
 	ori	$a2, $zero, 1
 	move	$a0, $fp
 	move	$a1, $s0
@@ -7032,8 +5394,8 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	slt	$a0, $zero, $a0
 	sltu	$a1, $zero, $a1
 	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB21_18
-# %bb.2:
+	bnez	$a0, .LBB21_20
+# %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
 	#NO_APP
@@ -7047,20 +5409,20 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp377:                               # EH_LABEL
-# %bb.3:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	bnez	$s4, .LBB21_9
-# %bb.4:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$s3, .LBB21_9
-# %bb.5:
+# %bb.5:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	bnez	$s4, .LBB21_11
+# %bb.6:                                # %_ZN9benchmark5State3endEv.exit.preheader
+	beqz	$s3, .LBB21_11
+# %bb.7:
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB21_6:                               # %.lr.ph
+.LBB21_8:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB21_7 Depth 2
+                                        #     Child Loop BB21_9 Depth 2
 	#MEMBARRIER
 	move	$a1, $a0
 	.p2align	4, , 16
-.LBB21_7:                               #   Parent Loop BB21_6 Depth=1
+.LBB21_9:                               #   Parent Loop BB21_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $sp, 16
 	ld.d	$a3, $sp, 8
@@ -7073,21 +5435,21 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	#APP
 	#NO_APP
 	addi.d	$a1, $a1, 1
-	bnez	$a1, .LBB21_7
-# %bb.8:                                # %_ZN9benchmark5State3endEv.exit
-                                        #   in Loop: Header=BB21_6 Depth=1
+	bnez	$a1, .LBB21_9
+# %bb.10:                               # %_ZN9benchmark5State3endEv.exit
+                                        #   in Loop: Header=BB21_8 Depth=1
 	addi.d	$s3, $s3, -1
-	bnez	$s3, .LBB21_6
-.LBB21_9:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
+	bnez	$s3, .LBB21_8
+.LBB21_11:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp378:                               # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp379:                               # EH_LABEL
-# %bb.10:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
+# %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	beqz	$a0, .LBB21_17
-# %bb.11:
+	beqz	$a0, .LBB21_19
+# %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
 	ld.d	$a2, $s1, 8
@@ -7096,7 +5458,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	slli.d	$a0, $a0, 12
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fs0, $fa0
-.LBB21_12:                              # %_ZNK9benchmark5State10iterationsEv.exit
+.LBB21_14:                              # %_ZNK9benchmark5State10iterationsEv.exit
 	addi.d	$s2, $sp, 40
 	st.d	$s2, $sp, 24
 	ori	$a0, $zero, 16
@@ -7108,7 +5470,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp382:                               # EH_LABEL
-# %bb.13:                               # %.noexc53
+# %bb.15:                               # %.noexc53
 	ld.d	$a1, $sp, 56
 	pcalau12i	$a2, %pc_hi20(.L.str.340)
 	vld	$vr0, $a2, %pc_lo12(.L.str.340)
@@ -7124,18 +5486,18 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEEixEOS5_)
 	jirl	$ra, $ra, 0
 .Ltmp385:                               # EH_LABEL
-# %bb.14:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
+# %bb.16:                               # %_ZN9benchmark5State17SetBytesProcessedEl.exit
 	fst.d	$fs0, $a0, 0
 	ld.d	$a1, $sp, 24
 	ori	$a2, $zero, 1
 	lu32i.d	$a2, 1024
 	st.d	$a2, $a0, 8
-	beq	$a1, $s2, .LBB21_16
-# %bb.15:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
+	beq	$a1, $s2, .LBB21_18
+# %bb.17:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i54
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-.LBB21_16:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit58
+.LBB21_18:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit58
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -7152,10 +5514,10 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 128
 	ret
-.LBB21_17:
+.LBB21_19:
 	movgr2fr.d	$fs0, $zero
-	b	.LBB21_12
-.LBB21_18:
+	b	.LBB21_14
+.LBB21_20:
 .Ltmp387:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -7165,7 +5527,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp388:                               # EH_LABEL
-# %bb.19:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
+# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
 .Ltmp389:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -7175,7 +5537,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp390:                               # EH_LABEL
-# %bb.20:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
+# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit45
 .Ltmp391:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -7185,7 +5547,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp392:                               # EH_LABEL
-# %bb.21:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
+# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit47
 .Ltmp393:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -7195,7 +5557,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp394:                               # EH_LABEL
-# %bb.22:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
+# %bb.24:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit49
 .Ltmp395:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -7205,7 +5567,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp396:                               # EH_LABEL
-# %bb.23:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
+# %bb.25:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit51
 .Ltmp397:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -7213,32 +5575,32 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp398:                               # EH_LABEL
-# %bb.24:
+# %bb.26:
 .Ltmp399:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp400:                               # EH_LABEL
-# %bb.25:                               # %_ZNSolsEPFRSoS_E.exit
+# %bb.27:                               # %_ZNSolsEPFRSoS_E.exit
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB21_26:
+.LBB21_28:
 .Ltmp401:                               # EH_LABEL
-	b	.LBB21_32
-.LBB21_27:
+	b	.LBB21_34
+.LBB21_29:
 .Ltmp386:                               # EH_LABEL
 	ld.d	$a1, $sp, 24
 	move	$s1, $a0
-	beq	$a1, $s2, .LBB21_33
-# %bb.28:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+	beq	$a1, $s2, .LBB21_35
+# %bb.30:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	b	.LBB21_33
-.LBB21_29:
+	b	.LBB21_35
+.LBB21_31:
 .Ltmp383:                               # EH_LABEL
-	b	.LBB21_32
-.LBB21_30:
+	b	.LBB21_34
+.LBB21_32:
 .Ltmp375:                               # EH_LABEL
 	move	$s1, $a0
 	move	$a0, $fp
@@ -7247,11 +5609,11 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB21_31:
+.LBB21_33:
 .Ltmp380:                               # EH_LABEL
-.LBB21_32:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB21_34:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$s1, $a0
-.LBB21_33:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
+.LBB21_35:                              # %_ZNSt6vectorIcSaIcEED2Ev.exit60
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -7657,48 +6019,32 @@ GCC_except_table22:
 .Lcst_end21:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E6EqZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E6EqZero5FirstEvRN9benchmark5StateE
 .LCPI23_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI23_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI23_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI23_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI23_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI23_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI23_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI23_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI23_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI23_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI23_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI23_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI23_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI23_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi2E6EqZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi2E6EqZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi2E6EqZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -7751,110 +6097,77 @@ _Z9BM_MemCmpILi2E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E6EqZero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI23_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI23_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI23_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI23_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI23_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI23_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI23_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI23_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI23_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI23_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI23_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI23_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI23_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI23_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI23_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI23_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI23_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI23_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI23_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI23_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI23_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI23_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI23_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI23_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 2048
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB23_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 1
-	xvslli.d	$xr10, $xr1, 1
-	xvslli.d	$xr11, $xr2, 1
-	xvslli.d	$xr12, $xr3, 1
-	xvslli.d	$xr13, $xr4, 1
-	xvslli.d	$xr14, $xr5, 1
-	xvslli.d	$xr15, $xr6, 1
-	xvslli.d	$xr16, $xr7, 1
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 1
+	vslli.d	$vr9, $vr1, 1
+	vslli.d	$vr10, $vr2, 1
+	vslli.d	$vr11, $vr3, 1
+	vslli.d	$vr12, $vr4, 1
+	vslli.d	$vr13, $vr5, 1
+	vslli.d	$vr14, $vr6, 1
+	vslli.d	$vr15, $vr7, 1
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB23_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 2
@@ -8149,48 +6462,32 @@ GCC_except_table23:
 .Lcst_end22:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E6EqZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E6EqZero3MidEvRN9benchmark5StateE
 .LCPI24_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI24_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI24_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI24_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI24_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI24_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI24_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI24_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI24_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI24_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI24_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI24_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI24_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI24_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi2E6EqZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi2E6EqZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi2E6EqZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -8243,142 +6540,93 @@ _Z9BM_MemCmpILi2E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E6EqZero3M
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI24_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI24_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI24_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI24_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI24_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI24_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI24_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI24_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI24_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI24_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI24_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI24_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI24_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI24_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI24_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI24_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI24_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI24_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI24_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI24_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI24_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI24_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI24_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI24_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 2048
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB24_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 1
-	xvslli.d	$xr10, $xr1, 1
-	xvslli.d	$xr11, $xr2, 1
-	xvslli.d	$xr12, $xr3, 1
-	xvslli.d	$xr13, $xr4, 1
-	xvslli.d	$xr14, $xr5, 1
-	xvslli.d	$xr15, $xr6, 1
-	xvslli.d	$xr16, $xr7, 1
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 1
+	vslli.d	$vr9, $vr1, 1
+	vslli.d	$vr10, $vr2, 1
+	vslli.d	$vr11, $vr3, 1
+	vslli.d	$vr12, $vr4, 1
+	vslli.d	$vr13, $vr5, 1
+	vslli.d	$vr14, $vr6, 1
+	vslli.d	$vr15, $vr7, 1
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 1
+	st.b	$a1, $a4, 1
+	st.b	$a1, $a5, 1
+	st.b	$a1, $a6, 1
+	st.b	$a1, $a7, 1
+	st.b	$a1, $t0, 1
+	st.b	$a1, $t1, 1
+	st.b	$a1, $t2, 1
+	st.b	$a1, $t3, 1
+	st.b	$a1, $t4, 1
+	st.b	$a1, $t5, 1
+	st.b	$a1, $t6, 1
+	st.b	$a1, $t7, 1
+	st.b	$a1, $t8, 1
+	st.b	$a1, $s3, 1
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB24_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 2
@@ -8673,48 +6921,32 @@ GCC_except_table24:
 .Lcst_end23:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E6EqZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E6EqZero4LastEvRN9benchmark5StateE
 .LCPI25_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI25_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI25_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI25_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI25_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI25_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI25_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI25_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI25_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI25_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI25_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI25_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI25_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI25_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi2E6EqZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi2E6EqZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi2E6EqZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -8767,142 +6999,93 @@ _Z9BM_MemCmpILi2E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E6EqZero4
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI25_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI25_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI25_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI25_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI25_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI25_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI25_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI25_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI25_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI25_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI25_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI25_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI25_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI25_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI25_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI25_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI25_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI25_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI25_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI25_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI25_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI25_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI25_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI25_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 2048
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB25_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 1
-	xvslli.d	$xr10, $xr1, 1
-	xvslli.d	$xr11, $xr2, 1
-	xvslli.d	$xr12, $xr3, 1
-	xvslli.d	$xr13, $xr4, 1
-	xvslli.d	$xr14, $xr5, 1
-	xvslli.d	$xr15, $xr6, 1
-	xvslli.d	$xr16, $xr7, 1
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 1
+	vslli.d	$vr9, $vr1, 1
+	vslli.d	$vr10, $vr2, 1
+	vslli.d	$vr11, $vr3, 1
+	vslli.d	$vr12, $vr4, 1
+	vslli.d	$vr13, $vr5, 1
+	vslli.d	$vr14, $vr6, 1
+	vslli.d	$vr15, $vr7, 1
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 1
+	st.b	$a1, $a4, 1
+	st.b	$a1, $a5, 1
+	st.b	$a1, $a6, 1
+	st.b	$a1, $a7, 1
+	st.b	$a1, $t0, 1
+	st.b	$a1, $t1, 1
+	st.b	$a1, $t2, 1
+	st.b	$a1, $t3, 1
+	st.b	$a1, $t4, 1
+	st.b	$a1, $t5, 1
+	st.b	$a1, $t6, 1
+	st.b	$a1, $t7, 1
+	st.b	$a1, $t8, 1
+	st.b	$a1, $s3, 1
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB25_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 2
@@ -9549,48 +7732,32 @@ GCC_except_table26:
 .Lcst_end25:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E12LessThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E12LessThanZero5FirstEvRN9benchmark5StateE
 .LCPI27_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI27_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI27_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI27_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI27_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI27_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI27_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI27_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI27_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI27_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI27_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI27_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI27_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI27_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi2E12LessThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi2E12LessThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi2E12LessThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -9643,110 +7810,77 @@ _Z9BM_MemCmpILi2E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI27_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI27_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI27_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI27_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI27_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI27_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI27_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI27_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI27_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI27_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI27_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI27_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI27_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI27_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI27_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI27_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI27_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI27_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI27_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI27_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI27_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI27_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI27_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI27_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 2048
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB27_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 1
-	xvslli.d	$xr10, $xr1, 1
-	xvslli.d	$xr11, $xr2, 1
-	xvslli.d	$xr12, $xr3, 1
-	xvslli.d	$xr13, $xr4, 1
-	xvslli.d	$xr14, $xr5, 1
-	xvslli.d	$xr15, $xr6, 1
-	xvslli.d	$xr16, $xr7, 1
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 1
+	vslli.d	$vr9, $vr1, 1
+	vslli.d	$vr10, $vr2, 1
+	vslli.d	$vr11, $vr3, 1
+	vslli.d	$vr12, $vr4, 1
+	vslli.d	$vr13, $vr5, 1
+	vslli.d	$vr14, $vr6, 1
+	vslli.d	$vr15, $vr7, 1
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB27_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 2
@@ -10048,48 +8182,32 @@ GCC_except_table27:
 .Lcst_end26:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E12LessThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E12LessThanZero3MidEvRN9benchmark5StateE
 .LCPI28_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI28_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI28_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI28_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI28_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI28_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI28_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI28_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI28_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI28_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI28_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI28_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI28_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI28_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi2E12LessThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi2E12LessThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi2E12LessThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -10142,142 +8260,93 @@ _Z9BM_MemCmpILi2E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E12
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI28_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI28_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI28_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI28_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI28_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI28_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI28_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI28_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI28_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI28_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI28_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI28_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI28_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI28_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI28_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI28_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI28_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI28_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI28_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI28_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI28_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI28_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI28_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI28_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 2048
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB28_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 1
-	xvslli.d	$xr10, $xr1, 1
-	xvslli.d	$xr11, $xr2, 1
-	xvslli.d	$xr12, $xr3, 1
-	xvslli.d	$xr13, $xr4, 1
-	xvslli.d	$xr14, $xr5, 1
-	xvslli.d	$xr15, $xr6, 1
-	xvslli.d	$xr16, $xr7, 1
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 1
+	vslli.d	$vr9, $vr1, 1
+	vslli.d	$vr10, $vr2, 1
+	vslli.d	$vr11, $vr3, 1
+	vslli.d	$vr12, $vr4, 1
+	vslli.d	$vr13, $vr5, 1
+	vslli.d	$vr14, $vr6, 1
+	vslli.d	$vr15, $vr7, 1
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 1
+	st.b	$a1, $a4, 1
+	st.b	$a1, $a5, 1
+	st.b	$a1, $a6, 1
+	st.b	$a1, $a7, 1
+	st.b	$a1, $t0, 1
+	st.b	$a1, $t1, 1
+	st.b	$a1, $t2, 1
+	st.b	$a1, $t3, 1
+	st.b	$a1, $t4, 1
+	st.b	$a1, $t5, 1
+	st.b	$a1, $t6, 1
+	st.b	$a1, $t7, 1
+	st.b	$a1, $t8, 1
+	st.b	$a1, $s3, 1
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB28_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 2
@@ -10579,48 +8648,32 @@ GCC_except_table28:
 .Lcst_end27:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E12LessThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E12LessThanZero4LastEvRN9benchmark5StateE
 .LCPI29_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI29_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI29_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI29_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI29_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI29_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI29_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI29_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI29_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI29_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI29_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI29_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI29_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI29_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi2E12LessThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi2E12LessThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi2E12LessThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -10673,142 +8726,93 @@ _Z9BM_MemCmpILi2E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI29_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI29_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI29_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI29_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI29_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI29_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI29_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI29_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI29_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI29_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI29_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI29_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI29_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI29_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI29_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI29_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI29_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI29_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI29_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI29_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI29_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI29_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI29_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI29_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 2048
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB29_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 1
-	xvslli.d	$xr10, $xr1, 1
-	xvslli.d	$xr11, $xr2, 1
-	xvslli.d	$xr12, $xr3, 1
-	xvslli.d	$xr13, $xr4, 1
-	xvslli.d	$xr14, $xr5, 1
-	xvslli.d	$xr15, $xr6, 1
-	xvslli.d	$xr16, $xr7, 1
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 1
+	vslli.d	$vr9, $vr1, 1
+	vslli.d	$vr10, $vr2, 1
+	vslli.d	$vr11, $vr3, 1
+	vslli.d	$vr12, $vr4, 1
+	vslli.d	$vr13, $vr5, 1
+	vslli.d	$vr14, $vr6, 1
+	vslli.d	$vr15, $vr7, 1
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 1
+	st.b	$a1, $a4, 1
+	st.b	$a1, $a5, 1
+	st.b	$a1, $a6, 1
+	st.b	$a1, $a7, 1
+	st.b	$a1, $t0, 1
+	st.b	$a1, $t1, 1
+	st.b	$a1, $t2, 1
+	st.b	$a1, $t3, 1
+	st.b	$a1, $t4, 1
+	st.b	$a1, $t5, 1
+	st.b	$a1, $t6, 1
+	st.b	$a1, $t7, 1
+	st.b	$a1, $t8, 1
+	st.b	$a1, $s3, 1
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB29_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 2
@@ -11463,48 +9467,32 @@ GCC_except_table30:
 .Lcst_end29:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E15GreaterThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E15GreaterThanZero5FirstEvRN9benchmark5StateE
 .LCPI31_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI31_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI31_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI31_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI31_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI31_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI31_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI31_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI31_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI31_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI31_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI31_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI31_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI31_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi2E15GreaterThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi2E15GreaterThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi2E15GreaterThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -11557,110 +9545,77 @@ _Z9BM_MemCmpILi2E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI31_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI31_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI31_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI31_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI31_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI31_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI31_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI31_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI31_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI31_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI31_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI31_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI31_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI31_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI31_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI31_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI31_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI31_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI31_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI31_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI31_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI31_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI31_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI31_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 2048
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB31_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 1
-	xvslli.d	$xr10, $xr1, 1
-	xvslli.d	$xr11, $xr2, 1
-	xvslli.d	$xr12, $xr3, 1
-	xvslli.d	$xr13, $xr4, 1
-	xvslli.d	$xr14, $xr5, 1
-	xvslli.d	$xr15, $xr6, 1
-	xvslli.d	$xr16, $xr7, 1
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 1
+	vslli.d	$vr9, $vr1, 1
+	vslli.d	$vr10, $vr2, 1
+	vslli.d	$vr11, $vr3, 1
+	vslli.d	$vr12, $vr4, 1
+	vslli.d	$vr13, $vr5, 1
+	vslli.d	$vr14, $vr6, 1
+	vslli.d	$vr15, $vr7, 1
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB31_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 2
@@ -11963,48 +9918,32 @@ GCC_except_table31:
 .Lcst_end30:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E15GreaterThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E15GreaterThanZero3MidEvRN9benchmark5StateE
 .LCPI32_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI32_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI32_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI32_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI32_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI32_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI32_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI32_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI32_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI32_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI32_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI32_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI32_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI32_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi2E15GreaterThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi2E15GreaterThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi2E15GreaterThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -12057,142 +9996,93 @@ _Z9BM_MemCmpILi2E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI32_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI32_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI32_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI32_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI32_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI32_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI32_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI32_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI32_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI32_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI32_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI32_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI32_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI32_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI32_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI32_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI32_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI32_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI32_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI32_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI32_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI32_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI32_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI32_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 2048
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB32_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 1
-	xvslli.d	$xr10, $xr1, 1
-	xvslli.d	$xr11, $xr2, 1
-	xvslli.d	$xr12, $xr3, 1
-	xvslli.d	$xr13, $xr4, 1
-	xvslli.d	$xr14, $xr5, 1
-	xvslli.d	$xr15, $xr6, 1
-	xvslli.d	$xr16, $xr7, 1
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 1
+	vslli.d	$vr9, $vr1, 1
+	vslli.d	$vr10, $vr2, 1
+	vslli.d	$vr11, $vr3, 1
+	vslli.d	$vr12, $vr4, 1
+	vslli.d	$vr13, $vr5, 1
+	vslli.d	$vr14, $vr6, 1
+	vslli.d	$vr15, $vr7, 1
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 1
+	st.b	$a1, $a4, 1
+	st.b	$a1, $a5, 1
+	st.b	$a1, $a6, 1
+	st.b	$a1, $a7, 1
+	st.b	$a1, $t0, 1
+	st.b	$a1, $t1, 1
+	st.b	$a1, $t2, 1
+	st.b	$a1, $t3, 1
+	st.b	$a1, $t4, 1
+	st.b	$a1, $t5, 1
+	st.b	$a1, $t6, 1
+	st.b	$a1, $t7, 1
+	st.b	$a1, $t8, 1
+	st.b	$a1, $s3, 1
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB32_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 2
@@ -12495,48 +10385,32 @@ GCC_except_table32:
 .Lcst_end31:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E15GreaterThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi2E15GreaterThanZero4LastEvRN9benchmark5StateE
 .LCPI33_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI33_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI33_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI33_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI33_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI33_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI33_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI33_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI33_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI33_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI33_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI33_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI33_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI33_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi2E15GreaterThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi2E15GreaterThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi2E15GreaterThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -12589,142 +10463,93 @@ _Z9BM_MemCmpILi2E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI33_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI33_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI33_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI33_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI33_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI33_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI33_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI33_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI33_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI33_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI33_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI33_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI33_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI33_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI33_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI33_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI33_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI33_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI33_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI33_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI33_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI33_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI33_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI33_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 2048
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB33_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 1
-	xvslli.d	$xr10, $xr1, 1
-	xvslli.d	$xr11, $xr2, 1
-	xvslli.d	$xr12, $xr3, 1
-	xvslli.d	$xr13, $xr4, 1
-	xvslli.d	$xr14, $xr5, 1
-	xvslli.d	$xr15, $xr6, 1
-	xvslli.d	$xr16, $xr7, 1
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 1
+	vslli.d	$vr9, $vr1, 1
+	vslli.d	$vr10, $vr2, 1
+	vslli.d	$vr11, $vr3, 1
+	vslli.d	$vr12, $vr4, 1
+	vslli.d	$vr13, $vr5, 1
+	vslli.d	$vr14, $vr6, 1
+	vslli.d	$vr15, $vr7, 1
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 1
+	st.b	$a1, $a4, 1
+	st.b	$a1, $a5, 1
+	st.b	$a1, $a6, 1
+	st.b	$a1, $a7, 1
+	st.b	$a1, $t0, 1
+	st.b	$a1, $t1, 1
+	st.b	$a1, $t2, 1
+	st.b	$a1, $t3, 1
+	st.b	$a1, $t4, 1
+	st.b	$a1, $t5, 1
+	st.b	$a1, $t6, 1
+	st.b	$a1, $t7, 1
+	st.b	$a1, $t8, 1
+	st.b	$a1, $s3, 1
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB33_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 2
@@ -13376,48 +11201,32 @@ GCC_except_table34:
 .Lcst_end33:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E6EqZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E6EqZero5FirstEvRN9benchmark5StateE
 .LCPI35_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI35_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI35_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI35_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI35_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI35_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI35_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI35_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI35_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI35_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI35_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI35_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI35_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI35_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi3E6EqZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi3E6EqZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi3E6EqZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -13469,133 +11278,80 @@ _Z9BM_MemCmpILi3E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E6EqZero
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI35_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI35_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI35_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI35_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI35_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI35_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI35_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI35_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI35_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI35_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI35_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI35_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI35_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI35_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI35_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI35_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI35_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI35_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI35_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI35_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI35_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI35_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI35_7)
-	ori	$a0, $zero, 1344
-	xvrepli.d	$xr8, 3
+	vld	$vr7, $a0, %pc_lo12(.LCPI35_7)
+	ori	$a0, $zero, 1360
+	vrepli.d	$vr8, 3
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB35_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB35_2
 # %bb.3:                                # %vec.epilog.vector.body
-	ori	$a0, $zero, 4032
-	ori	$a1, $zero, 255
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1988
-	st.b	$a1, $s2, 1991
-	st.b	$a1, $s2, 1994
-	ori	$a0, $zero, 4044
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2000
-	st.b	$a1, $s2, 2003
-	st.b	$a1, $s2, 2006
-	ori	$a0, $zero, 4056
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2012
-	st.b	$a1, $s2, 2015
-	st.b	$a1, $s2, 2018
-	ori	$a0, $zero, 4068
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2024
-	st.b	$a1, $s2, 2027
-	st.b	$a1, $s2, 2030
 	ori	$a0, $zero, 4080
+	ori	$a1, $zero, 255
 	stx.b	$a1, $fp, $a0
 	st.b	$a1, $s2, 2036
 	st.b	$a1, $s2, 2039
@@ -13902,48 +11658,32 @@ GCC_except_table35:
 .Lcst_end34:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E6EqZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E6EqZero3MidEvRN9benchmark5StateE
 .LCPI36_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI36_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI36_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI36_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI36_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI36_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI36_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI36_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI36_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI36_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI36_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI36_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI36_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI36_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi3E6EqZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi3E6EqZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi3E6EqZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -13995,164 +11735,95 @@ _Z9BM_MemCmpILi3E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E6EqZero3M
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI36_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI36_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI36_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI36_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI36_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI36_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI36_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI36_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI36_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI36_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI36_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI36_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI36_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI36_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI36_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI36_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI36_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI36_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI36_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI36_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI36_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI36_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI36_7)
-	ori	$a0, $zero, 1344
-	xvrepli.d	$xr8, 3
+	vld	$vr7, $a0, %pc_lo12(.LCPI36_7)
+	ori	$a0, $zero, 1360
+	vrepli.d	$vr8, 3
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB36_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 1
+	st.b	$a1, $a4, 1
+	st.b	$a1, $a5, 1
+	st.b	$a1, $a6, 1
+	st.b	$a1, $a7, 1
+	st.b	$a1, $t0, 1
+	st.b	$a1, $t1, 1
+	st.b	$a1, $t2, 1
+	st.b	$a1, $t3, 1
+	st.b	$a1, $t4, 1
+	st.b	$a1, $t5, 1
+	st.b	$a1, $t6, 1
+	st.b	$a1, $t7, 1
+	st.b	$a1, $t8, 1
+	st.b	$a1, $s3, 1
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB36_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
-	st.b	$a0, $s2, 1986
-	ori	$a1, $zero, 4036
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 1992
-	st.b	$a0, $s2, 1995
-	st.b	$a0, $s2, 1998
-	ori	$a1, $zero, 4048
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2004
-	st.b	$a0, $s2, 2007
-	st.b	$a0, $s2, 2010
-	ori	$a1, $zero, 4060
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2016
-	st.b	$a0, $s2, 2019
-	st.b	$a0, $s2, 2022
-	ori	$a1, $zero, 4072
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2028
-	st.b	$a0, $s2, 2031
 	st.b	$a0, $s2, 2034
 	ori	$a1, $zero, 4084
 	stx.b	$a0, $fp, $a1
@@ -14459,48 +12130,32 @@ GCC_except_table36:
 .Lcst_end35:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E6EqZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E6EqZero4LastEvRN9benchmark5StateE
 .LCPI37_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI37_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI37_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI37_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI37_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI37_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI37_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI37_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI37_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI37_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI37_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI37_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI37_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI37_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi3E6EqZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi3E6EqZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi3E6EqZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -14552,164 +12207,95 @@ _Z9BM_MemCmpILi3E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E6EqZero4
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI37_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI37_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI37_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI37_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI37_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI37_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI37_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI37_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI37_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI37_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI37_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI37_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI37_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI37_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI37_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI37_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI37_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI37_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI37_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI37_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI37_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI37_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI37_7)
-	ori	$a0, $zero, 1344
-	xvrepli.d	$xr8, 3
+	vld	$vr7, $a0, %pc_lo12(.LCPI37_7)
+	ori	$a0, $zero, 1360
+	vrepli.d	$vr8, 3
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB37_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 2
+	st.b	$a1, $a4, 2
+	st.b	$a1, $a5, 2
+	st.b	$a1, $a6, 2
+	st.b	$a1, $a7, 2
+	st.b	$a1, $t0, 2
+	st.b	$a1, $t1, 2
+	st.b	$a1, $t2, 2
+	st.b	$a1, $t3, 2
+	st.b	$a1, $t4, 2
+	st.b	$a1, $t5, 2
+	st.b	$a1, $t6, 2
+	st.b	$a1, $t7, 2
+	st.b	$a1, $t8, 2
+	st.b	$a1, $s3, 2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB37_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
-	st.b	$a0, $s2, 1987
-	st.b	$a0, $s2, 1990
-	ori	$a1, $zero, 4040
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 1996
-	st.b	$a0, $s2, 1999
-	st.b	$a0, $s2, 2002
-	ori	$a1, $zero, 4052
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2008
-	st.b	$a0, $s2, 2011
-	st.b	$a0, $s2, 2014
-	ori	$a1, $zero, 4064
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2020
-	st.b	$a0, $s2, 2023
-	st.b	$a0, $s2, 2026
-	ori	$a1, $zero, 4076
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2032
 	st.b	$a0, $s2, 2035
 	st.b	$a0, $s2, 2038
 	ori	$a1, $zero, 4088
@@ -15380,48 +12966,32 @@ GCC_except_table38:
 .Lcst_end37:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E12LessThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E12LessThanZero5FirstEvRN9benchmark5StateE
 .LCPI39_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI39_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI39_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI39_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI39_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI39_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI39_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI39_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI39_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI39_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI39_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI39_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI39_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI39_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi3E12LessThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi3E12LessThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi3E12LessThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -15473,133 +13043,80 @@ _Z9BM_MemCmpILi3E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI39_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI39_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI39_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI39_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI39_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI39_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI39_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI39_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI39_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI39_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI39_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI39_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI39_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI39_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI39_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI39_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI39_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI39_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI39_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI39_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI39_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI39_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI39_7)
-	ori	$a0, $zero, 1344
-	xvrepli.d	$xr8, 3
+	vld	$vr7, $a0, %pc_lo12(.LCPI39_7)
+	ori	$a0, $zero, 1360
+	vrepli.d	$vr8, 3
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB39_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB39_2
 # %bb.3:                                # %vec.epilog.vector.body
-	ori	$a0, $zero, 4032
-	ori	$a1, $zero, 255
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1988
-	st.b	$a1, $s2, 1991
-	st.b	$a1, $s2, 1994
-	ori	$a0, $zero, 4044
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2000
-	st.b	$a1, $s2, 2003
-	st.b	$a1, $s2, 2006
-	ori	$a0, $zero, 4056
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2012
-	st.b	$a1, $s2, 2015
-	st.b	$a1, $s2, 2018
-	ori	$a0, $zero, 4068
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2024
-	st.b	$a1, $s2, 2027
-	st.b	$a1, $s2, 2030
 	ori	$a0, $zero, 4080
+	ori	$a1, $zero, 255
 	stx.b	$a1, $fp, $a0
 	st.b	$a1, $s2, 2036
 	st.b	$a1, $s2, 2039
@@ -15921,48 +13438,32 @@ GCC_except_table39:
 .Lcst_end38:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E12LessThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E12LessThanZero3MidEvRN9benchmark5StateE
 .LCPI40_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI40_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI40_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI40_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI40_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI40_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI40_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI40_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI40_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI40_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI40_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI40_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI40_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI40_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi3E12LessThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi3E12LessThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi3E12LessThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -16014,164 +13515,95 @@ _Z9BM_MemCmpILi3E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E12
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI40_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI40_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI40_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI40_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI40_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI40_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI40_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI40_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI40_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI40_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI40_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI40_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI40_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI40_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI40_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI40_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI40_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI40_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI40_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI40_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI40_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI40_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI40_7)
-	ori	$a0, $zero, 1344
-	xvrepli.d	$xr8, 3
+	vld	$vr7, $a0, %pc_lo12(.LCPI40_7)
+	ori	$a0, $zero, 1360
+	vrepli.d	$vr8, 3
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB40_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 1
+	st.b	$a1, $a4, 1
+	st.b	$a1, $a5, 1
+	st.b	$a1, $a6, 1
+	st.b	$a1, $a7, 1
+	st.b	$a1, $t0, 1
+	st.b	$a1, $t1, 1
+	st.b	$a1, $t2, 1
+	st.b	$a1, $t3, 1
+	st.b	$a1, $t4, 1
+	st.b	$a1, $t5, 1
+	st.b	$a1, $t6, 1
+	st.b	$a1, $t7, 1
+	st.b	$a1, $t8, 1
+	st.b	$a1, $s3, 1
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB40_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
-	st.b	$a0, $s2, 1986
-	ori	$a1, $zero, 4036
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 1992
-	st.b	$a0, $s2, 1995
-	st.b	$a0, $s2, 1998
-	ori	$a1, $zero, 4048
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2004
-	st.b	$a0, $s2, 2007
-	st.b	$a0, $s2, 2010
-	ori	$a1, $zero, 4060
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2016
-	st.b	$a0, $s2, 2019
-	st.b	$a0, $s2, 2022
-	ori	$a1, $zero, 4072
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2028
-	st.b	$a0, $s2, 2031
 	st.b	$a0, $s2, 2034
 	ori	$a1, $zero, 4084
 	stx.b	$a0, $fp, $a1
@@ -16493,48 +13925,32 @@ GCC_except_table40:
 .Lcst_end39:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E12LessThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E12LessThanZero4LastEvRN9benchmark5StateE
 .LCPI41_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI41_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI41_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI41_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI41_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI41_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI41_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI41_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI41_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI41_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI41_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI41_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI41_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI41_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi3E12LessThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi3E12LessThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi3E12LessThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -16586,164 +14002,95 @@ _Z9BM_MemCmpILi3E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E1
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI41_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI41_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI41_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI41_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI41_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI41_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI41_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI41_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI41_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI41_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI41_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI41_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI41_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI41_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI41_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI41_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI41_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI41_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI41_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI41_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI41_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI41_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI41_7)
-	ori	$a0, $zero, 1344
-	xvrepli.d	$xr8, 3
+	vld	$vr7, $a0, %pc_lo12(.LCPI41_7)
+	ori	$a0, $zero, 1360
+	vrepli.d	$vr8, 3
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB41_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 2
+	st.b	$a1, $a4, 2
+	st.b	$a1, $a5, 2
+	st.b	$a1, $a6, 2
+	st.b	$a1, $a7, 2
+	st.b	$a1, $t0, 2
+	st.b	$a1, $t1, 2
+	st.b	$a1, $t2, 2
+	st.b	$a1, $t3, 2
+	st.b	$a1, $t4, 2
+	st.b	$a1, $t5, 2
+	st.b	$a1, $t6, 2
+	st.b	$a1, $t7, 2
+	st.b	$a1, $t8, 2
+	st.b	$a1, $s3, 2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB41_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
-	st.b	$a0, $s2, 1987
-	st.b	$a0, $s2, 1990
-	ori	$a1, $zero, 4040
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 1996
-	st.b	$a0, $s2, 1999
-	st.b	$a0, $s2, 2002
-	ori	$a1, $zero, 4052
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2008
-	st.b	$a0, $s2, 2011
-	st.b	$a0, $s2, 2014
-	ori	$a1, $zero, 4064
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2020
-	st.b	$a0, $s2, 2023
-	st.b	$a0, $s2, 2026
-	ori	$a1, $zero, 4076
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2032
 	st.b	$a0, $s2, 2035
 	st.b	$a0, $s2, 2038
 	ori	$a1, $zero, 4088
@@ -17424,48 +14771,32 @@ GCC_except_table42:
 .Lcst_end41:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E15GreaterThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E15GreaterThanZero5FirstEvRN9benchmark5StateE
 .LCPI43_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI43_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI43_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI43_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI43_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI43_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI43_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI43_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI43_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI43_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI43_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI43_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI43_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI43_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi3E15GreaterThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi3E15GreaterThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi3E15GreaterThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -17517,133 +14848,80 @@ _Z9BM_MemCmpILi3E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI43_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI43_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI43_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI43_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI43_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI43_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI43_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI43_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI43_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI43_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI43_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI43_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI43_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI43_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI43_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI43_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI43_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI43_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI43_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI43_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI43_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI43_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI43_7)
-	ori	$a0, $zero, 1344
-	xvrepli.d	$xr8, 3
+	vld	$vr7, $a0, %pc_lo12(.LCPI43_7)
+	ori	$a0, $zero, 1360
+	vrepli.d	$vr8, 3
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB43_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB43_2
 # %bb.3:                                # %vec.epilog.vector.body
-	ori	$a0, $zero, 4032
-	ori	$a1, $zero, 255
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1988
-	st.b	$a1, $s2, 1991
-	st.b	$a1, $s2, 1994
-	ori	$a0, $zero, 4044
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2000
-	st.b	$a1, $s2, 2003
-	st.b	$a1, $s2, 2006
-	ori	$a0, $zero, 4056
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2012
-	st.b	$a1, $s2, 2015
-	st.b	$a1, $s2, 2018
-	ori	$a0, $zero, 4068
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2024
-	st.b	$a1, $s2, 2027
-	st.b	$a1, $s2, 2030
 	ori	$a0, $zero, 4080
+	ori	$a1, $zero, 255
 	stx.b	$a1, $fp, $a0
 	st.b	$a1, $s2, 2036
 	st.b	$a1, $s2, 2039
@@ -17960,48 +15238,32 @@ GCC_except_table43:
 .Lcst_end42:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E15GreaterThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E15GreaterThanZero3MidEvRN9benchmark5StateE
 .LCPI44_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI44_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI44_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI44_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI44_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI44_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI44_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI44_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI44_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI44_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI44_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI44_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI44_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI44_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi3E15GreaterThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi3E15GreaterThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi3E15GreaterThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -18053,164 +15315,95 @@ _Z9BM_MemCmpILi3E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI44_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI44_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI44_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI44_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI44_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI44_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI44_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI44_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI44_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI44_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI44_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI44_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI44_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI44_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI44_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI44_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI44_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI44_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI44_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI44_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI44_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI44_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI44_7)
-	ori	$a0, $zero, 1344
-	xvrepli.d	$xr8, 3
+	vld	$vr7, $a0, %pc_lo12(.LCPI44_7)
+	ori	$a0, $zero, 1360
+	vrepli.d	$vr8, 3
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB44_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 1
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 1
+	st.b	$a1, $a4, 1
+	st.b	$a1, $a5, 1
+	st.b	$a1, $a6, 1
+	st.b	$a1, $a7, 1
+	st.b	$a1, $t0, 1
+	st.b	$a1, $t1, 1
+	st.b	$a1, $t2, 1
+	st.b	$a1, $t3, 1
+	st.b	$a1, $t4, 1
+	st.b	$a1, $t5, 1
+	st.b	$a1, $t6, 1
+	st.b	$a1, $t7, 1
+	st.b	$a1, $t8, 1
+	st.b	$a1, $s3, 1
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB44_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
-	st.b	$a0, $s2, 1986
-	ori	$a1, $zero, 4036
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 1992
-	st.b	$a0, $s2, 1995
-	st.b	$a0, $s2, 1998
-	ori	$a1, $zero, 4048
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2004
-	st.b	$a0, $s2, 2007
-	st.b	$a0, $s2, 2010
-	ori	$a1, $zero, 4060
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2016
-	st.b	$a0, $s2, 2019
-	st.b	$a0, $s2, 2022
-	ori	$a1, $zero, 4072
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2028
-	st.b	$a0, $s2, 2031
 	st.b	$a0, $s2, 2034
 	ori	$a1, $zero, 4084
 	stx.b	$a0, $fp, $a1
@@ -18527,48 +15720,32 @@ GCC_except_table44:
 .Lcst_end43:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E15GreaterThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi3E15GreaterThanZero4LastEvRN9benchmark5StateE
 .LCPI45_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI45_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI45_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI45_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI45_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI45_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI45_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI45_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI45_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI45_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI45_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI45_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI45_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI45_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi3E15GreaterThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi3E15GreaterThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi3E15GreaterThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -18620,164 +15797,95 @@ _Z9BM_MemCmpILi3E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI45_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI45_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI45_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI45_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI45_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI45_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI45_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI45_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI45_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI45_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI45_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI45_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI45_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI45_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI45_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI45_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI45_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI45_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI45_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI45_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI45_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI45_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI45_7)
-	ori	$a0, $zero, 1344
-	xvrepli.d	$xr8, 3
+	vld	$vr7, $a0, %pc_lo12(.LCPI45_7)
+	ori	$a0, $zero, 1360
+	vrepli.d	$vr8, 3
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB45_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 2
+	st.b	$a1, $a4, 2
+	st.b	$a1, $a5, 2
+	st.b	$a1, $a6, 2
+	st.b	$a1, $a7, 2
+	st.b	$a1, $t0, 2
+	st.b	$a1, $t1, 2
+	st.b	$a1, $t2, 2
+	st.b	$a1, $t3, 2
+	st.b	$a1, $t4, 2
+	st.b	$a1, $t5, 2
+	st.b	$a1, $t6, 2
+	st.b	$a1, $t7, 2
+	st.b	$a1, $t8, 2
+	st.b	$a1, $s3, 2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB45_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
-	st.b	$a0, $s2, 1987
-	st.b	$a0, $s2, 1990
-	ori	$a1, $zero, 4040
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 1996
-	st.b	$a0, $s2, 1999
-	st.b	$a0, $s2, 2002
-	ori	$a1, $zero, 4052
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2008
-	st.b	$a0, $s2, 2011
-	st.b	$a0, $s2, 2014
-	ori	$a1, $zero, 4064
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2020
-	st.b	$a0, $s2, 2023
-	st.b	$a0, $s2, 2026
-	ori	$a1, $zero, 4076
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2032
 	st.b	$a0, $s2, 2035
 	st.b	$a0, $s2, 2038
 	ori	$a1, $zero, 4088
@@ -19435,48 +16543,32 @@ GCC_except_table46:
 .Lcst_end45:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E6EqZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E6EqZero5FirstEvRN9benchmark5StateE
 .LCPI47_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI47_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI47_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI47_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI47_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI47_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI47_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI47_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI47_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI47_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI47_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI47_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI47_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI47_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi4E6EqZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi4E6EqZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi4E6EqZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -19526,110 +16618,77 @@ _Z9BM_MemCmpILi4E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E6EqZero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI47_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI47_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI47_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI47_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI47_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI47_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI47_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI47_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI47_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI47_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI47_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI47_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI47_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI47_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI47_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI47_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI47_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI47_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI47_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI47_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI47_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI47_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI47_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI47_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 1024
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB47_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 2
-	xvslli.d	$xr10, $xr1, 2
-	xvslli.d	$xr11, $xr2, 2
-	xvslli.d	$xr12, $xr3, 2
-	xvslli.d	$xr13, $xr4, 2
-	xvslli.d	$xr14, $xr5, 2
-	xvslli.d	$xr15, $xr6, 2
-	xvslli.d	$xr16, $xr7, 2
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 2
+	vslli.d	$vr9, $vr1, 2
+	vslli.d	$vr10, $vr2, 2
+	vslli.d	$vr11, $vr3, 2
+	vslli.d	$vr12, $vr4, 2
+	vslli.d	$vr13, $vr5, 2
+	vslli.d	$vr14, $vr6, 2
+	vslli.d	$vr15, $vr7, 2
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB47_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 4
@@ -19923,48 +16982,32 @@ GCC_except_table47:
 .Lcst_end46:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E6EqZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E6EqZero3MidEvRN9benchmark5StateE
 .LCPI48_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI48_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI48_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI48_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI48_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI48_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI48_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI48_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI48_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI48_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI48_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI48_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI48_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI48_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi4E6EqZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi4E6EqZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi4E6EqZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -20014,142 +17057,93 @@ _Z9BM_MemCmpILi4E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E6EqZero3M
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI48_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI48_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI48_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI48_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI48_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI48_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI48_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI48_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI48_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI48_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI48_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI48_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI48_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI48_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI48_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI48_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI48_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI48_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI48_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI48_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI48_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI48_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI48_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI48_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 1024
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB48_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 2
-	xvslli.d	$xr10, $xr1, 2
-	xvslli.d	$xr11, $xr2, 2
-	xvslli.d	$xr12, $xr3, 2
-	xvslli.d	$xr13, $xr4, 2
-	xvslli.d	$xr14, $xr5, 2
-	xvslli.d	$xr15, $xr6, 2
-	xvslli.d	$xr16, $xr7, 2
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 2
+	vslli.d	$vr9, $vr1, 2
+	vslli.d	$vr10, $vr2, 2
+	vslli.d	$vr11, $vr3, 2
+	vslli.d	$vr12, $vr4, 2
+	vslli.d	$vr13, $vr5, 2
+	vslli.d	$vr14, $vr6, 2
+	vslli.d	$vr15, $vr7, 2
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s2, $fp, $s2
 	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 2
+	st.b	$a1, $a4, 2
+	st.b	$a1, $a5, 2
+	st.b	$a1, $a6, 2
+	st.b	$a1, $a7, 2
+	st.b	$a1, $t0, 2
+	st.b	$a1, $t1, 2
+	st.b	$a1, $t2, 2
+	st.b	$a1, $t3, 2
+	st.b	$a1, $t4, 2
+	st.b	$a1, $t5, 2
+	st.b	$a1, $t6, 2
+	st.b	$a1, $t7, 2
+	st.b	$a1, $t8, 2
+	st.b	$a1, $s2, 2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB48_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 4
@@ -20443,48 +17437,32 @@ GCC_except_table48:
 .Lcst_end47:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E6EqZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E6EqZero4LastEvRN9benchmark5StateE
 .LCPI49_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI49_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI49_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI49_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI49_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI49_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI49_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI49_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI49_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI49_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI49_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI49_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI49_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI49_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi4E6EqZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi4E6EqZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi4E6EqZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -20534,142 +17512,93 @@ _Z9BM_MemCmpILi4E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E6EqZero4
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI49_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI49_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI49_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI49_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI49_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI49_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI49_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI49_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI49_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI49_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI49_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI49_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI49_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI49_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI49_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI49_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI49_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI49_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI49_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI49_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI49_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI49_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI49_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI49_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 1024
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB49_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 2
-	xvslli.d	$xr10, $xr1, 2
-	xvslli.d	$xr11, $xr2, 2
-	xvslli.d	$xr12, $xr3, 2
-	xvslli.d	$xr13, $xr4, 2
-	xvslli.d	$xr14, $xr5, 2
-	xvslli.d	$xr15, $xr6, 2
-	xvslli.d	$xr16, $xr7, 2
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 2
+	vslli.d	$vr9, $vr1, 2
+	vslli.d	$vr10, $vr2, 2
+	vslli.d	$vr11, $vr3, 2
+	vslli.d	$vr12, $vr4, 2
+	vslli.d	$vr13, $vr5, 2
+	vslli.d	$vr14, $vr6, 2
+	vslli.d	$vr15, $vr7, 2
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s2, $fp, $s2
 	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 3
+	st.b	$a1, $a4, 3
+	st.b	$a1, $a5, 3
+	st.b	$a1, $a6, 3
+	st.b	$a1, $a7, 3
+	st.b	$a1, $t0, 3
+	st.b	$a1, $t1, 3
+	st.b	$a1, $t2, 3
+	st.b	$a1, $t3, 3
+	st.b	$a1, $t4, 3
+	st.b	$a1, $t5, 3
+	st.b	$a1, $t6, 3
+	st.b	$a1, $t7, 3
+	st.b	$a1, $t8, 3
+	st.b	$a1, $s2, 3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB49_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 4
@@ -21319,48 +18248,32 @@ GCC_except_table50:
 .Lcst_end49:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E12LessThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E12LessThanZero5FirstEvRN9benchmark5StateE
 .LCPI51_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI51_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI51_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI51_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI51_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI51_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI51_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI51_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI51_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI51_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI51_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI51_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI51_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI51_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi4E12LessThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi4E12LessThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi4E12LessThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -21413,110 +18326,77 @@ _Z9BM_MemCmpILi4E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI51_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI51_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI51_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI51_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI51_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI51_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI51_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI51_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI51_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI51_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI51_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI51_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI51_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI51_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI51_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI51_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI51_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI51_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI51_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI51_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI51_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI51_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI51_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI51_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 1024
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB51_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 2
-	xvslli.d	$xr10, $xr1, 2
-	xvslli.d	$xr11, $xr2, 2
-	xvslli.d	$xr12, $xr3, 2
-	xvslli.d	$xr13, $xr4, 2
-	xvslli.d	$xr14, $xr5, 2
-	xvslli.d	$xr15, $xr6, 2
-	xvslli.d	$xr16, $xr7, 2
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 2
+	vslli.d	$vr9, $vr1, 2
+	vslli.d	$vr10, $vr2, 2
+	vslli.d	$vr11, $vr3, 2
+	vslli.d	$vr12, $vr4, 2
+	vslli.d	$vr13, $vr5, 2
+	vslli.d	$vr14, $vr6, 2
+	vslli.d	$vr15, $vr7, 2
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB51_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 4
@@ -21822,48 +18702,32 @@ GCC_except_table51:
 .Lcst_end50:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E12LessThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E12LessThanZero3MidEvRN9benchmark5StateE
 .LCPI52_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI52_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI52_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI52_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI52_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI52_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI52_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI52_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI52_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI52_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI52_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI52_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI52_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI52_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi4E12LessThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi4E12LessThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi4E12LessThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -21916,142 +18780,93 @@ _Z9BM_MemCmpILi4E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E12
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI52_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI52_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI52_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI52_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI52_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI52_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI52_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI52_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI52_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI52_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI52_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI52_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI52_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI52_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI52_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI52_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI52_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI52_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI52_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI52_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI52_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI52_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI52_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI52_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 1024
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB52_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 2
-	xvslli.d	$xr10, $xr1, 2
-	xvslli.d	$xr11, $xr2, 2
-	xvslli.d	$xr12, $xr3, 2
-	xvslli.d	$xr13, $xr4, 2
-	xvslli.d	$xr14, $xr5, 2
-	xvslli.d	$xr15, $xr6, 2
-	xvslli.d	$xr16, $xr7, 2
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 2
+	vslli.d	$vr9, $vr1, 2
+	vslli.d	$vr10, $vr2, 2
+	vslli.d	$vr11, $vr3, 2
+	vslli.d	$vr12, $vr4, 2
+	vslli.d	$vr13, $vr5, 2
+	vslli.d	$vr14, $vr6, 2
+	vslli.d	$vr15, $vr7, 2
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 2
+	st.b	$a1, $a4, 2
+	st.b	$a1, $a5, 2
+	st.b	$a1, $a6, 2
+	st.b	$a1, $a7, 2
+	st.b	$a1, $t0, 2
+	st.b	$a1, $t1, 2
+	st.b	$a1, $t2, 2
+	st.b	$a1, $t3, 2
+	st.b	$a1, $t4, 2
+	st.b	$a1, $t5, 2
+	st.b	$a1, $t6, 2
+	st.b	$a1, $t7, 2
+	st.b	$a1, $t8, 2
+	st.b	$a1, $s3, 2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB52_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 4
@@ -22357,48 +19172,32 @@ GCC_except_table52:
 .Lcst_end51:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E12LessThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E12LessThanZero4LastEvRN9benchmark5StateE
 .LCPI53_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI53_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI53_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI53_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI53_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI53_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI53_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI53_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI53_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI53_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI53_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI53_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI53_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI53_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi4E12LessThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi4E12LessThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi4E12LessThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -22451,142 +19250,93 @@ _Z9BM_MemCmpILi4E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI53_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI53_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI53_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI53_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI53_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI53_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI53_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI53_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI53_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI53_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI53_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI53_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI53_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI53_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI53_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI53_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI53_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI53_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI53_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI53_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI53_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI53_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI53_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI53_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 1024
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB53_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 2
-	xvslli.d	$xr10, $xr1, 2
-	xvslli.d	$xr11, $xr2, 2
-	xvslli.d	$xr12, $xr3, 2
-	xvslli.d	$xr13, $xr4, 2
-	xvslli.d	$xr14, $xr5, 2
-	xvslli.d	$xr15, $xr6, 2
-	xvslli.d	$xr16, $xr7, 2
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 2
+	vslli.d	$vr9, $vr1, 2
+	vslli.d	$vr10, $vr2, 2
+	vslli.d	$vr11, $vr3, 2
+	vslli.d	$vr12, $vr4, 2
+	vslli.d	$vr13, $vr5, 2
+	vslli.d	$vr14, $vr6, 2
+	vslli.d	$vr15, $vr7, 2
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 3
+	st.b	$a1, $a4, 3
+	st.b	$a1, $a5, 3
+	st.b	$a1, $a6, 3
+	st.b	$a1, $a7, 3
+	st.b	$a1, $t0, 3
+	st.b	$a1, $t1, 3
+	st.b	$a1, $t2, 3
+	st.b	$a1, $t3, 3
+	st.b	$a1, $t4, 3
+	st.b	$a1, $t5, 3
+	st.b	$a1, $t6, 3
+	st.b	$a1, $t7, 3
+	st.b	$a1, $t8, 3
+	st.b	$a1, $s3, 3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB53_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 4
@@ -23243,48 +19993,32 @@ GCC_except_table54:
 .Lcst_end53:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E15GreaterThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E15GreaterThanZero5FirstEvRN9benchmark5StateE
 .LCPI55_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI55_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI55_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI55_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI55_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI55_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI55_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI55_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI55_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI55_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI55_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI55_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI55_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI55_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi4E15GreaterThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi4E15GreaterThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi4E15GreaterThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -23337,110 +20071,77 @@ _Z9BM_MemCmpILi4E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI55_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI55_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI55_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI55_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI55_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI55_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI55_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI55_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI55_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI55_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI55_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI55_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI55_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI55_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI55_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI55_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI55_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI55_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI55_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI55_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI55_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI55_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI55_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI55_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 1024
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB55_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 2
-	xvslli.d	$xr10, $xr1, 2
-	xvslli.d	$xr11, $xr2, 2
-	xvslli.d	$xr12, $xr3, 2
-	xvslli.d	$xr13, $xr4, 2
-	xvslli.d	$xr14, $xr5, 2
-	xvslli.d	$xr15, $xr6, 2
-	xvslli.d	$xr16, $xr7, 2
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 2
+	vslli.d	$vr9, $vr1, 2
+	vslli.d	$vr10, $vr2, 2
+	vslli.d	$vr11, $vr3, 2
+	vslli.d	$vr12, $vr4, 2
+	vslli.d	$vr13, $vr5, 2
+	vslli.d	$vr14, $vr6, 2
+	vslli.d	$vr15, $vr7, 2
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB55_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 4
@@ -23741,48 +20442,32 @@ GCC_except_table55:
 .Lcst_end54:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E15GreaterThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E15GreaterThanZero3MidEvRN9benchmark5StateE
 .LCPI56_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI56_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI56_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI56_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI56_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI56_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI56_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI56_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI56_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI56_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI56_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI56_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI56_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI56_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi4E15GreaterThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi4E15GreaterThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi4E15GreaterThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -23835,142 +20520,93 @@ _Z9BM_MemCmpILi4E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI56_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI56_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI56_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI56_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI56_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI56_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI56_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI56_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI56_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI56_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI56_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI56_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI56_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI56_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI56_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI56_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI56_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI56_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI56_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI56_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI56_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI56_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI56_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI56_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 1024
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB56_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 2
-	xvslli.d	$xr10, $xr1, 2
-	xvslli.d	$xr11, $xr2, 2
-	xvslli.d	$xr12, $xr3, 2
-	xvslli.d	$xr13, $xr4, 2
-	xvslli.d	$xr14, $xr5, 2
-	xvslli.d	$xr15, $xr6, 2
-	xvslli.d	$xr16, $xr7, 2
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 2
+	vslli.d	$vr9, $vr1, 2
+	vslli.d	$vr10, $vr2, 2
+	vslli.d	$vr11, $vr3, 2
+	vslli.d	$vr12, $vr4, 2
+	vslli.d	$vr13, $vr5, 2
+	vslli.d	$vr14, $vr6, 2
+	vslli.d	$vr15, $vr7, 2
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 2
+	st.b	$a1, $a4, 2
+	st.b	$a1, $a5, 2
+	st.b	$a1, $a6, 2
+	st.b	$a1, $a7, 2
+	st.b	$a1, $t0, 2
+	st.b	$a1, $t1, 2
+	st.b	$a1, $t2, 2
+	st.b	$a1, $t3, 2
+	st.b	$a1, $t4, 2
+	st.b	$a1, $t5, 2
+	st.b	$a1, $t6, 2
+	st.b	$a1, $t7, 2
+	st.b	$a1, $t8, 2
+	st.b	$a1, $s3, 2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB56_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 4
@@ -24271,48 +20907,32 @@ GCC_except_table56:
 .Lcst_end55:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E15GreaterThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi4E15GreaterThanZero4LastEvRN9benchmark5StateE
 .LCPI57_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI57_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI57_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI57_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI57_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI57_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI57_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI57_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI57_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI57_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI57_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI57_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI57_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI57_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi4E15GreaterThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi4E15GreaterThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi4E15GreaterThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -24365,142 +20985,93 @@ _Z9BM_MemCmpILi4E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 16
-	st.d	$s0, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI57_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI57_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI57_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI57_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI57_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI57_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI57_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI57_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI57_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI57_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI57_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI57_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI57_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI57_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI57_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI57_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI57_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI57_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI57_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI57_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI57_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI57_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI57_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI57_7)
+	st.d	$s0, $sp, 8
 	ori	$a0, $zero, 1024
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB57_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 2
-	xvslli.d	$xr10, $xr1, 2
-	xvslli.d	$xr11, $xr2, 2
-	xvslli.d	$xr12, $xr3, 2
-	xvslli.d	$xr13, $xr4, 2
-	xvslli.d	$xr14, $xr5, 2
-	xvslli.d	$xr15, $xr6, 2
-	xvslli.d	$xr16, $xr7, 2
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 2
+	vslli.d	$vr9, $vr1, 2
+	vslli.d	$vr10, $vr2, 2
+	vslli.d	$vr11, $vr3, 2
+	vslli.d	$vr12, $vr4, 2
+	vslli.d	$vr13, $vr5, 2
+	vslli.d	$vr14, $vr6, 2
+	vslli.d	$vr15, $vr7, 2
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s3, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 3
+	st.b	$a1, $a4, 3
+	st.b	$a1, $a5, 3
+	st.b	$a1, $a6, 3
+	st.b	$a1, $a7, 3
+	st.b	$a1, $t0, 3
+	st.b	$a1, $t1, 3
+	st.b	$a1, $t2, 3
+	st.b	$a1, $t3, 3
+	st.b	$a1, $t4, 3
+	st.b	$a1, $t5, 3
+	st.b	$a1, $t6, 3
+	st.b	$a1, $t7, 3
+	st.b	$a1, $t8, 3
+	st.b	$a1, $s3, 3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB57_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 4
@@ -25150,48 +21721,32 @@ GCC_except_table58:
 .Lcst_end57:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E6EqZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E6EqZero5FirstEvRN9benchmark5StateE
 .LCPI59_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI59_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI59_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI59_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI59_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI59_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI59_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI59_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI59_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI59_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI59_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI59_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI59_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI59_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi5E6EqZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi5E6EqZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi5E6EqZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -25243,133 +21798,80 @@ _Z9BM_MemCmpILi5E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E6EqZero
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI59_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI59_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI59_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI59_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI59_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI59_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI59_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI59_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI59_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI59_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI59_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI59_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI59_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI59_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI59_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI59_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI59_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI59_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI59_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI59_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI59_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI59_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI59_7)
-	ori	$a0, $zero, 800
-	xvrepli.d	$xr8, 5
+	vld	$vr7, $a0, %pc_lo12(.LCPI59_7)
+	ori	$a0, $zero, 816
+	vrepli.d	$vr8, 5
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB59_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB59_2
 # %bb.3:                                # %vec.epilog.vector.body
-	ori	$a0, $zero, 4000
-	ori	$a1, $zero, 255
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1958
-	st.b	$a1, $s2, 1963
-	st.b	$a1, $s2, 1968
-	ori	$a0, $zero, 4020
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1978
-	st.b	$a1, $s2, 1983
-	st.b	$a1, $s2, 1988
-	ori	$a0, $zero, 4040
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1998
-	st.b	$a1, $s2, 2003
-	st.b	$a1, $s2, 2008
-	ori	$a0, $zero, 4060
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2018
-	st.b	$a1, $s2, 2023
-	st.b	$a1, $s2, 2028
 	ori	$a0, $zero, 4080
+	ori	$a1, $zero, 255
 	stx.b	$a1, $fp, $a0
 	st.b	$a1, $s2, 2038
 	st.b	$a1, $s2, 2043
@@ -25673,48 +22175,32 @@ GCC_except_table59:
 .Lcst_end58:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E6EqZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E6EqZero3MidEvRN9benchmark5StateE
 .LCPI60_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI60_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI60_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI60_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI60_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI60_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI60_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI60_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI60_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI60_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI60_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI60_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI60_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI60_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi5E6EqZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi5E6EqZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi5E6EqZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -25766,164 +22252,95 @@ _Z9BM_MemCmpILi5E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E6EqZero3M
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI60_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI60_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI60_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI60_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI60_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI60_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI60_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI60_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI60_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI60_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI60_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI60_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI60_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI60_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI60_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI60_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI60_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI60_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI60_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI60_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI60_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI60_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI60_7)
-	ori	$a0, $zero, 800
-	xvrepli.d	$xr8, 5
+	vld	$vr7, $a0, %pc_lo12(.LCPI60_7)
+	ori	$a0, $zero, 816
+	vrepli.d	$vr8, 5
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB60_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 2
+	st.b	$a1, $a4, 2
+	st.b	$a1, $a5, 2
+	st.b	$a1, $a6, 2
+	st.b	$a1, $a7, 2
+	st.b	$a1, $t0, 2
+	st.b	$a1, $t1, 2
+	st.b	$a1, $t2, 2
+	st.b	$a1, $t3, 2
+	st.b	$a1, $t4, 2
+	st.b	$a1, $t5, 2
+	st.b	$a1, $t6, 2
+	st.b	$a1, $t7, 2
+	st.b	$a1, $t8, 2
+	st.b	$a1, $s3, 2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB60_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
-	st.b	$a0, $s2, 1955
-	st.b	$a0, $s2, 1960
-	ori	$a1, $zero, 4012
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 1970
-	st.b	$a0, $s2, 1975
-	st.b	$a0, $s2, 1980
-	ori	$a1, $zero, 4032
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 1990
-	st.b	$a0, $s2, 1995
-	st.b	$a0, $s2, 2000
-	ori	$a1, $zero, 4052
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2010
-	st.b	$a0, $s2, 2015
-	st.b	$a0, $s2, 2020
-	ori	$a1, $zero, 4072
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2030
 	st.b	$a0, $s2, 2035
 	st.b	$a0, $s2, 2040
 	ori	$a1, $zero, 4092
@@ -26228,48 +22645,32 @@ GCC_except_table60:
 .Lcst_end59:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E6EqZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E6EqZero4LastEvRN9benchmark5StateE
 .LCPI61_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI61_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI61_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI61_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI61_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI61_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI61_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI61_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI61_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI61_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI61_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI61_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI61_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI61_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi5E6EqZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi5E6EqZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi5E6EqZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -26321,165 +22722,96 @@ _Z9BM_MemCmpILi5E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E6EqZero4
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI61_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI61_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI61_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI61_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI61_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI61_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI61_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI61_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI61_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI61_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI61_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI61_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI61_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI61_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI61_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI61_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI61_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI61_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI61_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI61_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI61_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI61_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI61_7)
-	ori	$a0, $zero, 800
-	xvrepli.d	$xr8, 5
+	vld	$vr7, $a0, %pc_lo12(.LCPI61_7)
+	ori	$a0, $zero, 816
+	vrepli.d	$vr8, 5
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB61_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 4
+	st.b	$a1, $a4, 4
+	st.b	$a1, $a5, 4
+	st.b	$a1, $a6, 4
+	st.b	$a1, $a7, 4
+	st.b	$a1, $t0, 4
+	st.b	$a1, $t1, 4
+	st.b	$a1, $t2, 4
+	st.b	$a1, $t3, 4
+	st.b	$a1, $t4, 4
+	st.b	$a1, $t5, 4
+	st.b	$a1, $t6, 4
+	st.b	$a1, $t7, 4
+	st.b	$a1, $t8, 4
+	st.b	$a1, $s3, 4
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB61_2
 # %bb.3:                                # %vec.epilog.vector.body
-	ori	$a0, $zero, 4004
-	ori	$a1, $zero, 255
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1962
-	st.b	$a1, $s2, 1967
-	st.b	$a1, $s2, 1972
-	ori	$a0, $zero, 4024
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1982
-	st.b	$a1, $s2, 1987
-	st.b	$a1, $s2, 1992
-	ori	$a0, $zero, 4044
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2002
-	st.b	$a1, $s2, 2007
-	st.b	$a1, $s2, 2012
-	ori	$a0, $zero, 4064
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2022
-	st.b	$a1, $s2, 2027
-	st.b	$a1, $s2, 2032
 	ori	$a0, $zero, 4084
+	ori	$a1, $zero, 255
 	stx.b	$a1, $fp, $a0
 	st.b	$a1, $s2, 2042
 	st.b	$a1, $s2, 2047
@@ -27143,48 +23475,32 @@ GCC_except_table62:
 .Lcst_end61:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E12LessThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E12LessThanZero5FirstEvRN9benchmark5StateE
 .LCPI63_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI63_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI63_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI63_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI63_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI63_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI63_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI63_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI63_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI63_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI63_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI63_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI63_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI63_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi5E12LessThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi5E12LessThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi5E12LessThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -27236,133 +23552,80 @@ _Z9BM_MemCmpILi5E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI63_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI63_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI63_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI63_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI63_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI63_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI63_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI63_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI63_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI63_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI63_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI63_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI63_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI63_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI63_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI63_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI63_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI63_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI63_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI63_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI63_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI63_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI63_7)
-	ori	$a0, $zero, 800
-	xvrepli.d	$xr8, 5
+	vld	$vr7, $a0, %pc_lo12(.LCPI63_7)
+	ori	$a0, $zero, 816
+	vrepli.d	$vr8, 5
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB63_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB63_2
 # %bb.3:                                # %vec.epilog.vector.body
-	ori	$a0, $zero, 4000
-	ori	$a1, $zero, 255
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1958
-	st.b	$a1, $s2, 1963
-	st.b	$a1, $s2, 1968
-	ori	$a0, $zero, 4020
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1978
-	st.b	$a1, $s2, 1983
-	st.b	$a1, $s2, 1988
-	ori	$a0, $zero, 4040
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1998
-	st.b	$a1, $s2, 2003
-	st.b	$a1, $s2, 2008
-	ori	$a0, $zero, 4060
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2018
-	st.b	$a1, $s2, 2023
-	st.b	$a1, $s2, 2028
 	ori	$a0, $zero, 4080
+	ori	$a1, $zero, 255
 	stx.b	$a1, $fp, $a0
 	st.b	$a1, $s2, 2038
 	st.b	$a1, $s2, 2043
@@ -27677,48 +23940,32 @@ GCC_except_table63:
 .Lcst_end62:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E12LessThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E12LessThanZero3MidEvRN9benchmark5StateE
 .LCPI64_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI64_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI64_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI64_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI64_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI64_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI64_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI64_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI64_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI64_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI64_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI64_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI64_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI64_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi5E12LessThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi5E12LessThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi5E12LessThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -27770,164 +24017,95 @@ _Z9BM_MemCmpILi5E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E12
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI64_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI64_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI64_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI64_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI64_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI64_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI64_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI64_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI64_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI64_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI64_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI64_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI64_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI64_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI64_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI64_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI64_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI64_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI64_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI64_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI64_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI64_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI64_7)
-	ori	$a0, $zero, 800
-	xvrepli.d	$xr8, 5
+	vld	$vr7, $a0, %pc_lo12(.LCPI64_7)
+	ori	$a0, $zero, 816
+	vrepli.d	$vr8, 5
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB64_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 2
+	st.b	$a1, $a4, 2
+	st.b	$a1, $a5, 2
+	st.b	$a1, $a6, 2
+	st.b	$a1, $a7, 2
+	st.b	$a1, $t0, 2
+	st.b	$a1, $t1, 2
+	st.b	$a1, $t2, 2
+	st.b	$a1, $t3, 2
+	st.b	$a1, $t4, 2
+	st.b	$a1, $t5, 2
+	st.b	$a1, $t6, 2
+	st.b	$a1, $t7, 2
+	st.b	$a1, $t8, 2
+	st.b	$a1, $s3, 2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB64_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
-	st.b	$a0, $s2, 1955
-	st.b	$a0, $s2, 1960
-	ori	$a1, $zero, 4012
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 1970
-	st.b	$a0, $s2, 1975
-	st.b	$a0, $s2, 1980
-	ori	$a1, $zero, 4032
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 1990
-	st.b	$a0, $s2, 1995
-	st.b	$a0, $s2, 2000
-	ori	$a1, $zero, 4052
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2010
-	st.b	$a0, $s2, 2015
-	st.b	$a0, $s2, 2020
-	ori	$a1, $zero, 4072
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2030
 	st.b	$a0, $s2, 2035
 	st.b	$a0, $s2, 2040
 	ori	$a1, $zero, 4092
@@ -28243,48 +24421,32 @@ GCC_except_table64:
 .Lcst_end63:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E12LessThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E12LessThanZero4LastEvRN9benchmark5StateE
 .LCPI65_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI65_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI65_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI65_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI65_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI65_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI65_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI65_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI65_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI65_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI65_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI65_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI65_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI65_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi5E12LessThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi5E12LessThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi5E12LessThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -28336,165 +24498,96 @@ _Z9BM_MemCmpILi5E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E1
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI65_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI65_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI65_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI65_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI65_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI65_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI65_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI65_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI65_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI65_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI65_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI65_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI65_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI65_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI65_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI65_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI65_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI65_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI65_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI65_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI65_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI65_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI65_7)
-	ori	$a0, $zero, 800
-	xvrepli.d	$xr8, 5
+	vld	$vr7, $a0, %pc_lo12(.LCPI65_7)
+	ori	$a0, $zero, 816
+	vrepli.d	$vr8, 5
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB65_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 4
+	st.b	$a1, $a4, 4
+	st.b	$a1, $a5, 4
+	st.b	$a1, $a6, 4
+	st.b	$a1, $a7, 4
+	st.b	$a1, $t0, 4
+	st.b	$a1, $t1, 4
+	st.b	$a1, $t2, 4
+	st.b	$a1, $t3, 4
+	st.b	$a1, $t4, 4
+	st.b	$a1, $t5, 4
+	st.b	$a1, $t6, 4
+	st.b	$a1, $t7, 4
+	st.b	$a1, $t8, 4
+	st.b	$a1, $s3, 4
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB65_2
 # %bb.3:                                # %vec.epilog.vector.body
-	ori	$a0, $zero, 4004
-	ori	$a1, $zero, 255
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1962
-	st.b	$a1, $s2, 1967
-	st.b	$a1, $s2, 1972
-	ori	$a0, $zero, 4024
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1982
-	st.b	$a1, $s2, 1987
-	st.b	$a1, $s2, 1992
-	ori	$a0, $zero, 4044
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2002
-	st.b	$a1, $s2, 2007
-	st.b	$a1, $s2, 2012
-	ori	$a0, $zero, 4064
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2022
-	st.b	$a1, $s2, 2027
-	st.b	$a1, $s2, 2032
 	ori	$a0, $zero, 4084
+	ori	$a1, $zero, 255
 	stx.b	$a1, $fp, $a0
 	st.b	$a1, $s2, 2042
 	st.b	$a1, $s2, 2047
@@ -29164,48 +25257,32 @@ GCC_except_table66:
 .Lcst_end65:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E15GreaterThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E15GreaterThanZero5FirstEvRN9benchmark5StateE
 .LCPI67_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI67_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI67_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI67_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI67_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI67_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI67_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI67_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI67_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI67_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI67_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI67_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI67_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI67_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi5E15GreaterThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi5E15GreaterThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi5E15GreaterThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -29257,133 +25334,80 @@ _Z9BM_MemCmpILi5E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI67_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI67_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI67_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI67_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI67_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI67_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI67_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI67_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI67_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI67_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI67_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI67_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI67_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI67_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI67_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI67_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI67_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI67_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI67_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI67_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI67_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI67_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI67_7)
-	ori	$a0, $zero, 800
-	xvrepli.d	$xr8, 5
+	vld	$vr7, $a0, %pc_lo12(.LCPI67_7)
+	ori	$a0, $zero, 816
+	vrepli.d	$vr8, 5
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB67_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB67_2
 # %bb.3:                                # %vec.epilog.vector.body
-	ori	$a0, $zero, 4000
-	ori	$a1, $zero, 255
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1958
-	st.b	$a1, $s2, 1963
-	st.b	$a1, $s2, 1968
-	ori	$a0, $zero, 4020
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1978
-	st.b	$a1, $s2, 1983
-	st.b	$a1, $s2, 1988
-	ori	$a0, $zero, 4040
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1998
-	st.b	$a1, $s2, 2003
-	st.b	$a1, $s2, 2008
-	ori	$a0, $zero, 4060
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2018
-	st.b	$a1, $s2, 2023
-	st.b	$a1, $s2, 2028
 	ori	$a0, $zero, 4080
+	ori	$a1, $zero, 255
 	stx.b	$a1, $fp, $a0
 	st.b	$a1, $s2, 2038
 	st.b	$a1, $s2, 2043
@@ -29693,48 +25717,32 @@ GCC_except_table67:
 .Lcst_end66:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E15GreaterThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E15GreaterThanZero3MidEvRN9benchmark5StateE
 .LCPI68_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI68_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI68_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI68_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI68_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI68_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI68_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI68_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI68_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI68_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI68_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI68_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI68_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI68_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi5E15GreaterThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi5E15GreaterThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi5E15GreaterThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -29786,164 +25794,95 @@ _Z9BM_MemCmpILi5E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI68_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI68_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI68_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI68_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI68_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI68_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI68_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI68_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI68_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI68_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI68_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI68_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI68_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI68_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI68_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI68_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI68_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI68_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI68_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI68_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI68_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI68_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI68_7)
-	ori	$a0, $zero, 800
-	xvrepli.d	$xr8, 5
+	vld	$vr7, $a0, %pc_lo12(.LCPI68_7)
+	ori	$a0, $zero, 816
+	vrepli.d	$vr8, 5
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB68_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 2
+	st.b	$a1, $a4, 2
+	st.b	$a1, $a5, 2
+	st.b	$a1, $a6, 2
+	st.b	$a1, $a7, 2
+	st.b	$a1, $t0, 2
+	st.b	$a1, $t1, 2
+	st.b	$a1, $t2, 2
+	st.b	$a1, $t3, 2
+	st.b	$a1, $t4, 2
+	st.b	$a1, $t5, 2
+	st.b	$a1, $t6, 2
+	st.b	$a1, $t7, 2
+	st.b	$a1, $t8, 2
+	st.b	$a1, $s3, 2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB68_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
-	st.b	$a0, $s2, 1955
-	st.b	$a0, $s2, 1960
-	ori	$a1, $zero, 4012
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 1970
-	st.b	$a0, $s2, 1975
-	st.b	$a0, $s2, 1980
-	ori	$a1, $zero, 4032
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 1990
-	st.b	$a0, $s2, 1995
-	st.b	$a0, $s2, 2000
-	ori	$a1, $zero, 4052
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2010
-	st.b	$a0, $s2, 2015
-	st.b	$a0, $s2, 2020
-	ori	$a1, $zero, 4072
-	stx.b	$a0, $fp, $a1
-	st.b	$a0, $s2, 2030
 	st.b	$a0, $s2, 2035
 	st.b	$a0, $s2, 2040
 	ori	$a1, $zero, 4092
@@ -30254,48 +26193,32 @@ GCC_except_table68:
 .Lcst_end67:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E15GreaterThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi5E15GreaterThanZero4LastEvRN9benchmark5StateE
 .LCPI69_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI69_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI69_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI69_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI69_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI69_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI69_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI69_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI69_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI69_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI69_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI69_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI69_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI69_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi5E15GreaterThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi5E15GreaterThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi5E15GreaterThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -30347,165 +26270,96 @@ _Z9BM_MemCmpILi5E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI69_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI69_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI69_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI69_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI69_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI69_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI69_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI69_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI69_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI69_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI69_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI69_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI69_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI69_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI69_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI69_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI69_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI69_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI69_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI69_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI69_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI69_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI69_7)
-	ori	$a0, $zero, 800
-	xvrepli.d	$xr8, 5
+	vld	$vr7, $a0, %pc_lo12(.LCPI69_7)
+	ori	$a0, $zero, 816
+	vrepli.d	$vr8, 5
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB69_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 4
+	st.b	$a1, $a4, 4
+	st.b	$a1, $a5, 4
+	st.b	$a1, $a6, 4
+	st.b	$a1, $a7, 4
+	st.b	$a1, $t0, 4
+	st.b	$a1, $t1, 4
+	st.b	$a1, $t2, 4
+	st.b	$a1, $t3, 4
+	st.b	$a1, $t4, 4
+	st.b	$a1, $t5, 4
+	st.b	$a1, $t6, 4
+	st.b	$a1, $t7, 4
+	st.b	$a1, $t8, 4
+	st.b	$a1, $s3, 4
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB69_2
 # %bb.3:                                # %vec.epilog.vector.body
-	ori	$a0, $zero, 4004
-	ori	$a1, $zero, 255
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1962
-	st.b	$a1, $s2, 1967
-	st.b	$a1, $s2, 1972
-	ori	$a0, $zero, 4024
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 1982
-	st.b	$a1, $s2, 1987
-	st.b	$a1, $s2, 1992
-	ori	$a0, $zero, 4044
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2002
-	st.b	$a1, $s2, 2007
-	st.b	$a1, $s2, 2012
-	ori	$a0, $zero, 4064
-	stx.b	$a1, $fp, $a0
-	st.b	$a1, $s2, 2022
-	st.b	$a1, $s2, 2027
-	st.b	$a1, $s2, 2032
 	ori	$a0, $zero, 4084
+	ori	$a1, $zero, 255
 	stx.b	$a1, $fp, $a0
 	st.b	$a1, $s2, 2042
 	st.b	$a1, $s2, 2047
@@ -31167,48 +27021,32 @@ GCC_except_table70:
 .Lcst_end69:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E6EqZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E6EqZero5FirstEvRN9benchmark5StateE
 .LCPI71_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI71_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI71_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI71_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI71_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI71_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI71_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI71_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI71_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI71_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI71_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI71_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI71_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI71_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi6E6EqZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi6E6EqZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi6E6EqZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -31260,109 +27098,76 @@ _Z9BM_MemCmpILi6E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E6EqZero
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI71_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI71_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI71_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI71_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI71_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI71_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI71_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI71_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI71_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI71_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI71_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI71_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI71_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI71_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI71_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI71_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI71_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI71_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI71_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI71_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI71_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI71_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI71_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI71_7)
 	ori	$a0, $zero, 672
-	xvrepli.d	$xr8, 6
+	vrepli.d	$vr8, 6
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB71_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB71_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 4032
@@ -31684,48 +27489,32 @@ GCC_except_table71:
 .Lcst_end70:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E6EqZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E6EqZero3MidEvRN9benchmark5StateE
 .LCPI72_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI72_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI72_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI72_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI72_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI72_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI72_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI72_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI72_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI72_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI72_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI72_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI72_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI72_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi6E6EqZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi6E6EqZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi6E6EqZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -31777,141 +27566,92 @@ _Z9BM_MemCmpILi6E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E6EqZero3M
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI72_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI72_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI72_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI72_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI72_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI72_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI72_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI72_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI72_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI72_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI72_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI72_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI72_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI72_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI72_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI72_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI72_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI72_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI72_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI72_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI72_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI72_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI72_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI72_7)
 	ori	$a0, $zero, 672
-	xvrepli.d	$xr8, 6
+	vrepli.d	$vr8, 6
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB72_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 3
+	st.b	$a1, $a4, 3
+	st.b	$a1, $a5, 3
+	st.b	$a1, $a6, 3
+	st.b	$a1, $a7, 3
+	st.b	$a1, $t0, 3
+	st.b	$a1, $t1, 3
+	st.b	$a1, $t2, 3
+	st.b	$a1, $t3, 3
+	st.b	$a1, $t4, 3
+	st.b	$a1, $t5, 3
+	st.b	$a1, $t6, 3
+	st.b	$a1, $t7, 3
+	st.b	$a1, $t8, 3
+	st.b	$a1, $s3, 3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB72_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
@@ -32228,48 +27968,32 @@ GCC_except_table72:
 .Lcst_end71:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E6EqZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E6EqZero4LastEvRN9benchmark5StateE
 .LCPI73_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI73_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI73_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI73_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI73_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI73_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI73_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI73_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI73_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI73_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI73_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI73_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI73_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI73_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi6E6EqZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi6E6EqZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi6E6EqZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -32321,141 +28045,92 @@ _Z9BM_MemCmpILi6E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E6EqZero4
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI73_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI73_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI73_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI73_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI73_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI73_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI73_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI73_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI73_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI73_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI73_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI73_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI73_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI73_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI73_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI73_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI73_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI73_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI73_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI73_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI73_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI73_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI73_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI73_7)
 	ori	$a0, $zero, 672
-	xvrepli.d	$xr8, 6
+	vrepli.d	$vr8, 6
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB73_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 5
+	st.b	$a1, $a4, 5
+	st.b	$a1, $a5, 5
+	st.b	$a1, $a6, 5
+	st.b	$a1, $a7, 5
+	st.b	$a1, $t0, 5
+	st.b	$a1, $t1, 5
+	st.b	$a1, $t2, 5
+	st.b	$a1, $t3, 5
+	st.b	$a1, $t4, 5
+	st.b	$a1, $t5, 5
+	st.b	$a1, $t6, 5
+	st.b	$a1, $t7, 5
+	st.b	$a1, $t8, 5
+	st.b	$a1, $s3, 5
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB73_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
@@ -33135,48 +28810,32 @@ GCC_except_table74:
 .Lcst_end73:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E12LessThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E12LessThanZero5FirstEvRN9benchmark5StateE
 .LCPI75_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI75_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI75_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI75_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI75_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI75_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI75_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI75_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI75_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI75_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI75_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI75_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI75_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI75_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi6E12LessThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi6E12LessThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi6E12LessThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -33228,109 +28887,76 @@ _Z9BM_MemCmpILi6E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI75_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI75_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI75_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI75_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI75_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI75_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI75_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI75_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI75_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI75_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI75_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI75_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI75_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI75_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI75_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI75_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI75_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI75_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI75_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI75_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI75_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI75_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI75_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI75_7)
 	ori	$a0, $zero, 672
-	xvrepli.d	$xr8, 6
+	vrepli.d	$vr8, 6
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB75_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB75_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 4032
@@ -33663,48 +29289,32 @@ GCC_except_table75:
 .Lcst_end74:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E12LessThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E12LessThanZero3MidEvRN9benchmark5StateE
 .LCPI76_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI76_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI76_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI76_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI76_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI76_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI76_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI76_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI76_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI76_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI76_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI76_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI76_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI76_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi6E12LessThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi6E12LessThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi6E12LessThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -33756,141 +29366,92 @@ _Z9BM_MemCmpILi6E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E12
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI76_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI76_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI76_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI76_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI76_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI76_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI76_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI76_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI76_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI76_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI76_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI76_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI76_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI76_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI76_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI76_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI76_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI76_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI76_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI76_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI76_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI76_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI76_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI76_7)
 	ori	$a0, $zero, 672
-	xvrepli.d	$xr8, 6
+	vrepli.d	$vr8, 6
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB76_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 3
+	st.b	$a1, $a4, 3
+	st.b	$a1, $a5, 3
+	st.b	$a1, $a6, 3
+	st.b	$a1, $a7, 3
+	st.b	$a1, $t0, 3
+	st.b	$a1, $t1, 3
+	st.b	$a1, $t2, 3
+	st.b	$a1, $t3, 3
+	st.b	$a1, $t4, 3
+	st.b	$a1, $t5, 3
+	st.b	$a1, $t6, 3
+	st.b	$a1, $t7, 3
+	st.b	$a1, $t8, 3
+	st.b	$a1, $s3, 3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB76_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
@@ -34218,48 +29779,32 @@ GCC_except_table76:
 .Lcst_end75:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E12LessThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E12LessThanZero4LastEvRN9benchmark5StateE
 .LCPI77_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI77_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI77_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI77_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI77_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI77_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI77_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI77_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI77_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI77_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI77_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI77_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI77_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI77_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi6E12LessThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi6E12LessThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi6E12LessThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -34311,141 +29856,92 @@ _Z9BM_MemCmpILi6E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E1
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI77_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI77_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI77_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI77_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI77_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI77_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI77_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI77_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI77_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI77_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI77_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI77_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI77_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI77_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI77_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI77_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI77_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI77_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI77_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI77_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI77_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI77_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI77_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI77_7)
 	ori	$a0, $zero, 672
-	xvrepli.d	$xr8, 6
+	vrepli.d	$vr8, 6
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB77_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 5
+	st.b	$a1, $a4, 5
+	st.b	$a1, $a5, 5
+	st.b	$a1, $a6, 5
+	st.b	$a1, $a7, 5
+	st.b	$a1, $t0, 5
+	st.b	$a1, $t1, 5
+	st.b	$a1, $t2, 5
+	st.b	$a1, $t3, 5
+	st.b	$a1, $t4, 5
+	st.b	$a1, $t5, 5
+	st.b	$a1, $t6, 5
+	st.b	$a1, $t7, 5
+	st.b	$a1, $t8, 5
+	st.b	$a1, $s3, 5
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB77_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
@@ -35131,48 +30627,32 @@ GCC_except_table78:
 .Lcst_end77:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E15GreaterThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E15GreaterThanZero5FirstEvRN9benchmark5StateE
 .LCPI79_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI79_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI79_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI79_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI79_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI79_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI79_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI79_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI79_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI79_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI79_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI79_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI79_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI79_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi6E15GreaterThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi6E15GreaterThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi6E15GreaterThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -35224,109 +30704,76 @@ _Z9BM_MemCmpILi6E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI79_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI79_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI79_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI79_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI79_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI79_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI79_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI79_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI79_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI79_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI79_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI79_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI79_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI79_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI79_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI79_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI79_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI79_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI79_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI79_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI79_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI79_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI79_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI79_7)
 	ori	$a0, $zero, 672
-	xvrepli.d	$xr8, 6
+	vrepli.d	$vr8, 6
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB79_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB79_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 4032
@@ -35654,48 +31101,32 @@ GCC_except_table79:
 .Lcst_end78:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E15GreaterThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E15GreaterThanZero3MidEvRN9benchmark5StateE
 .LCPI80_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI80_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI80_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI80_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI80_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI80_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI80_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI80_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI80_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI80_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI80_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI80_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI80_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI80_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi6E15GreaterThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi6E15GreaterThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi6E15GreaterThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -35747,141 +31178,92 @@ _Z9BM_MemCmpILi6E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI80_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI80_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI80_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI80_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI80_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI80_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI80_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI80_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI80_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI80_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI80_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI80_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI80_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI80_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI80_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI80_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI80_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI80_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI80_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI80_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI80_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI80_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI80_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI80_7)
 	ori	$a0, $zero, 672
-	xvrepli.d	$xr8, 6
+	vrepli.d	$vr8, 6
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB80_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 3
+	st.b	$a1, $a4, 3
+	st.b	$a1, $a5, 3
+	st.b	$a1, $a6, 3
+	st.b	$a1, $a7, 3
+	st.b	$a1, $t0, 3
+	st.b	$a1, $t1, 3
+	st.b	$a1, $t2, 3
+	st.b	$a1, $t3, 3
+	st.b	$a1, $t4, 3
+	st.b	$a1, $t5, 3
+	st.b	$a1, $t6, 3
+	st.b	$a1, $t7, 3
+	st.b	$a1, $t8, 3
+	st.b	$a1, $s3, 3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB80_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
@@ -36204,48 +31586,32 @@ GCC_except_table80:
 .Lcst_end79:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E15GreaterThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi6E15GreaterThanZero4LastEvRN9benchmark5StateE
 .LCPI81_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI81_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI81_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI81_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI81_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI81_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI81_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI81_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI81_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI81_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI81_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI81_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI81_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI81_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi6E15GreaterThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi6E15GreaterThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi6E15GreaterThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -36297,141 +31663,92 @@ _Z9BM_MemCmpILi6E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI81_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI81_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI81_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI81_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI81_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI81_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI81_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI81_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI81_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI81_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI81_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI81_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI81_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI81_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI81_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI81_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI81_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI81_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI81_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI81_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI81_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI81_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI81_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI81_7)
 	ori	$a0, $zero, 672
-	xvrepli.d	$xr8, 6
+	vrepli.d	$vr8, 6
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB81_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 5
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 5
+	st.b	$a1, $a4, 5
+	st.b	$a1, $a5, 5
+	st.b	$a1, $a6, 5
+	st.b	$a1, $a7, 5
+	st.b	$a1, $t0, 5
+	st.b	$a1, $t1, 5
+	st.b	$a1, $t2, 5
+	st.b	$a1, $t3, 5
+	st.b	$a1, $t4, 5
+	st.b	$a1, $t5, 5
+	st.b	$a1, $t6, 5
+	st.b	$a1, $t7, 5
+	st.b	$a1, $t8, 5
+	st.b	$a1, $s3, 5
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB81_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
@@ -37103,48 +32420,32 @@ GCC_except_table82:
 .Lcst_end81:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E6EqZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E6EqZero5FirstEvRN9benchmark5StateE
 .LCPI83_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI83_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI83_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI83_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI83_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI83_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI83_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI83_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI83_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI83_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI83_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI83_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI83_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI83_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi7E6EqZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi7E6EqZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi7E6EqZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -37196,109 +32497,76 @@ _Z9BM_MemCmpILi7E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E6EqZero
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI83_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI83_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI83_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI83_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI83_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI83_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI83_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI83_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI83_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI83_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI83_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI83_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI83_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI83_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI83_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI83_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI83_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI83_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI83_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI83_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI83_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI83_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI83_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI83_7)
 	ori	$a0, $zero, 576
-	xvrepli.d	$xr8, 7
+	vrepli.d	$vr8, 7
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB83_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB83_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 4032
@@ -37614,48 +32882,32 @@ GCC_except_table83:
 .Lcst_end82:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E6EqZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E6EqZero3MidEvRN9benchmark5StateE
 .LCPI84_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI84_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI84_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI84_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI84_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI84_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI84_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI84_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI84_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI84_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI84_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI84_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI84_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI84_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi7E6EqZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi7E6EqZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi7E6EqZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -37707,141 +32959,92 @@ _Z9BM_MemCmpILi7E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E6EqZero3M
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI84_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI84_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI84_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI84_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI84_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI84_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI84_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI84_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI84_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI84_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI84_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI84_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI84_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI84_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI84_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI84_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI84_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI84_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI84_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI84_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI84_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI84_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI84_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI84_7)
 	ori	$a0, $zero, 576
-	xvrepli.d	$xr8, 7
+	vrepli.d	$vr8, 7
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB84_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 3
+	st.b	$a1, $a4, 3
+	st.b	$a1, $a5, 3
+	st.b	$a1, $a6, 3
+	st.b	$a1, $a7, 3
+	st.b	$a1, $t0, 3
+	st.b	$a1, $t1, 3
+	st.b	$a1, $t2, 3
+	st.b	$a1, $t3, 3
+	st.b	$a1, $t4, 3
+	st.b	$a1, $t5, 3
+	st.b	$a1, $t6, 3
+	st.b	$a1, $t7, 3
+	st.b	$a1, $t8, 3
+	st.b	$a1, $s3, 3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB84_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
@@ -38156,48 +33359,32 @@ GCC_except_table84:
 .Lcst_end83:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E6EqZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E6EqZero4LastEvRN9benchmark5StateE
 .LCPI85_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI85_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI85_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI85_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI85_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI85_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI85_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI85_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI85_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI85_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI85_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI85_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI85_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI85_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi7E6EqZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi7E6EqZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi7E6EqZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -38249,141 +33436,92 @@ _Z9BM_MemCmpILi7E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E6EqZero4
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI85_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI85_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI85_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI85_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI85_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI85_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI85_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI85_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI85_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI85_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI85_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI85_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI85_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI85_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI85_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI85_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI85_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI85_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI85_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI85_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI85_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI85_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI85_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI85_7)
 	ori	$a0, $zero, 576
-	xvrepli.d	$xr8, 7
+	vrepli.d	$vr8, 7
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB85_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 6
+	st.b	$a1, $a4, 6
+	st.b	$a1, $a5, 6
+	st.b	$a1, $a6, 6
+	st.b	$a1, $a7, 6
+	st.b	$a1, $t0, 6
+	st.b	$a1, $t1, 6
+	st.b	$a1, $t2, 6
+	st.b	$a1, $t3, 6
+	st.b	$a1, $t4, 6
+	st.b	$a1, $t5, 6
+	st.b	$a1, $t6, 6
+	st.b	$a1, $t7, 6
+	st.b	$a1, $t8, 6
+	st.b	$a1, $s3, 6
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB85_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
@@ -39087,48 +34225,32 @@ GCC_except_table86:
 .Lcst_end85:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E12LessThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E12LessThanZero5FirstEvRN9benchmark5StateE
 .LCPI87_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI87_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI87_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI87_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI87_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI87_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI87_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI87_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI87_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI87_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI87_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI87_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI87_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI87_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi7E12LessThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi7E12LessThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi7E12LessThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -39180,109 +34302,76 @@ _Z9BM_MemCmpILi7E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI87_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI87_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI87_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI87_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI87_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI87_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI87_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI87_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI87_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI87_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI87_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI87_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI87_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI87_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI87_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI87_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI87_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI87_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI87_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI87_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI87_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI87_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI87_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI87_7)
 	ori	$a0, $zero, 576
-	xvrepli.d	$xr8, 7
+	vrepli.d	$vr8, 7
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB87_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB87_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 4032
@@ -39638,48 +34727,32 @@ GCC_except_table87:
 .Lcst_end86:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E12LessThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E12LessThanZero3MidEvRN9benchmark5StateE
 .LCPI88_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI88_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI88_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI88_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI88_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI88_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI88_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI88_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI88_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI88_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI88_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI88_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI88_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI88_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi7E12LessThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi7E12LessThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi7E12LessThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -39731,141 +34804,92 @@ _Z9BM_MemCmpILi7E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E12
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI88_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI88_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI88_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI88_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI88_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI88_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI88_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI88_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI88_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI88_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI88_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI88_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI88_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI88_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI88_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI88_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI88_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI88_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI88_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI88_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI88_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI88_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI88_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI88_7)
 	ori	$a0, $zero, 576
-	xvrepli.d	$xr8, 7
+	vrepli.d	$vr8, 7
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB88_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 3
+	st.b	$a1, $a4, 3
+	st.b	$a1, $a5, 3
+	st.b	$a1, $a6, 3
+	st.b	$a1, $a7, 3
+	st.b	$a1, $t0, 3
+	st.b	$a1, $t1, 3
+	st.b	$a1, $t2, 3
+	st.b	$a1, $t3, 3
+	st.b	$a1, $t4, 3
+	st.b	$a1, $t5, 3
+	st.b	$a1, $t6, 3
+	st.b	$a1, $t7, 3
+	st.b	$a1, $t8, 3
+	st.b	$a1, $s3, 3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB88_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
@@ -40220,48 +35244,32 @@ GCC_except_table88:
 .Lcst_end87:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E12LessThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E12LessThanZero4LastEvRN9benchmark5StateE
 .LCPI89_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI89_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI89_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI89_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI89_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI89_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI89_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI89_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI89_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI89_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI89_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI89_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI89_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI89_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi7E12LessThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi7E12LessThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi7E12LessThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -40313,141 +35321,92 @@ _Z9BM_MemCmpILi7E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E1
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI89_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI89_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI89_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI89_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI89_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI89_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI89_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI89_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI89_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI89_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI89_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI89_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI89_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI89_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI89_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI89_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI89_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI89_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI89_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI89_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI89_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI89_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI89_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI89_7)
 	ori	$a0, $zero, 576
-	xvrepli.d	$xr8, 7
+	vrepli.d	$vr8, 7
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB89_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 6
+	st.b	$a1, $a4, 6
+	st.b	$a1, $a5, 6
+	st.b	$a1, $a6, 6
+	st.b	$a1, $a7, 6
+	st.b	$a1, $t0, 6
+	st.b	$a1, $t1, 6
+	st.b	$a1, $t2, 6
+	st.b	$a1, $t3, 6
+	st.b	$a1, $t4, 6
+	st.b	$a1, $t5, 6
+	st.b	$a1, $t6, 6
+	st.b	$a1, $t7, 6
+	st.b	$a1, $t8, 6
+	st.b	$a1, $s3, 6
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB89_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
@@ -41192,48 +36151,32 @@ GCC_except_table90:
 .Lcst_end89:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E15GreaterThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E15GreaterThanZero5FirstEvRN9benchmark5StateE
 .LCPI91_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI91_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI91_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI91_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI91_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI91_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI91_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI91_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI91_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI91_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI91_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI91_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI91_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI91_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi7E15GreaterThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi7E15GreaterThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi7E15GreaterThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -41285,109 +36228,76 @@ _Z9BM_MemCmpILi7E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI91_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI91_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI91_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI91_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI91_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI91_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI91_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI91_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI91_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI91_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI91_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI91_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI91_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI91_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI91_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI91_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI91_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI91_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI91_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI91_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI91_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI91_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI91_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI91_7)
 	ori	$a0, $zero, 576
-	xvrepli.d	$xr8, 7
+	vrepli.d	$vr8, 7
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB91_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr17, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB91_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 4032
@@ -41743,48 +36653,32 @@ GCC_except_table91:
 .Lcst_end90:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E15GreaterThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E15GreaterThanZero3MidEvRN9benchmark5StateE
 .LCPI92_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI92_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI92_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI92_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI92_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI92_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI92_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI92_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI92_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI92_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI92_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI92_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI92_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI92_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi7E15GreaterThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi7E15GreaterThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi7E15GreaterThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -41836,141 +36730,92 @@ _Z9BM_MemCmpILi7E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI92_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI92_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI92_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI92_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI92_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI92_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI92_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI92_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI92_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI92_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI92_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI92_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI92_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI92_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI92_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI92_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI92_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI92_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI92_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI92_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI92_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI92_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI92_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI92_7)
 	ori	$a0, $zero, 576
-	xvrepli.d	$xr8, 7
+	vrepli.d	$vr8, 7
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB92_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 3
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 3
+	st.b	$a1, $a4, 3
+	st.b	$a1, $a5, 3
+	st.b	$a1, $a6, 3
+	st.b	$a1, $a7, 3
+	st.b	$a1, $t0, 3
+	st.b	$a1, $t1, 3
+	st.b	$a1, $t2, 3
+	st.b	$a1, $t3, 3
+	st.b	$a1, $t4, 3
+	st.b	$a1, $t5, 3
+	st.b	$a1, $t6, 3
+	st.b	$a1, $t7, 3
+	st.b	$a1, $t8, 3
+	st.b	$a1, $s3, 3
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB92_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
@@ -42325,48 +37170,32 @@ GCC_except_table92:
 .Lcst_end91:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E15GreaterThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi7E15GreaterThanZero4LastEvRN9benchmark5StateE
 .LCPI93_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI93_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI93_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI93_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI93_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI93_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI93_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI93_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI93_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI93_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI93_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI93_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI93_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI93_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi7E15GreaterThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi7E15GreaterThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi7E15GreaterThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -42418,141 +37247,92 @@ _Z9BM_MemCmpILi7E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI93_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI93_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI93_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI93_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI93_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI93_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI93_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI93_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI93_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI93_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI93_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI93_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI93_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI93_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI93_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI93_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI93_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI93_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI93_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI93_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI93_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI93_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI93_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI93_7)
 	ori	$a0, $zero, 576
-	xvrepli.d	$xr8, 7
+	vrepli.d	$vr8, 7
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr9, 32
 	.p2align	4, , 16
 .LBB93_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr8
-	xvmul.d	$xr11, $xr1, $xr8
-	xvmul.d	$xr12, $xr2, $xr8
-	xvmul.d	$xr13, $xr3, $xr8
-	xvmul.d	$xr14, $xr4, $xr8
-	xvmul.d	$xr15, $xr5, $xr8
-	xvmul.d	$xr16, $xr6, $xr8
-	xvmul.d	$xr17, $xr7, $xr8
-	xvpickve2gr.d	$a2, $xr17, 0
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s3, $vr9, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s3, $fp, $s3
 	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr17, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr17, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr17, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr16, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 6
-	xvadd.d	$xr7, $xr7, $xr9
-	xvadd.d	$xr6, $xr6, $xr9
-	xvadd.d	$xr5, $xr5, $xr9
-	xvadd.d	$xr4, $xr4, $xr9
-	xvadd.d	$xr3, $xr3, $xr9
-	xvadd.d	$xr2, $xr2, $xr9
-	xvadd.d	$xr1, $xr1, $xr9
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr9
+	st.b	$a1, $a3, 6
+	st.b	$a1, $a4, 6
+	st.b	$a1, $a5, 6
+	st.b	$a1, $a6, 6
+	st.b	$a1, $a7, 6
+	st.b	$a1, $t0, 6
+	st.b	$a1, $t1, 6
+	st.b	$a1, $t2, 6
+	st.b	$a1, $t3, 6
+	st.b	$a1, $t4, 6
+	st.b	$a1, $t5, 6
+	st.b	$a1, $t6, 6
+	st.b	$a1, $t7, 6
+	st.b	$a1, $t8, 6
+	st.b	$a1, $s3, 6
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB93_2
 # %bb.3:                                # %vec.epilog.vector.body
 	ori	$a0, $zero, 255
@@ -43248,48 +38028,32 @@ GCC_except_table94:
 .Lcst_end93:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E6EqZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E6EqZero5FirstEvRN9benchmark5StateE
 .LCPI95_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI95_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI95_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI95_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI95_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI95_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI95_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI95_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI95_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI95_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI95_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI95_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI95_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI95_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi8E6EqZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi8E6EqZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi8E6EqZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -43339,110 +38103,77 @@ _Z9BM_MemCmpILi8E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E6EqZero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI95_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI95_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI95_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI95_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI95_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI95_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI95_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI95_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI95_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI95_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI95_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI95_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI95_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI95_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI95_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI95_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI95_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI95_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI95_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI95_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI95_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI95_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI95_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI95_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 512
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB95_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 3
-	xvslli.d	$xr10, $xr1, 3
-	xvslli.d	$xr11, $xr2, 3
-	xvslli.d	$xr12, $xr3, 3
-	xvslli.d	$xr13, $xr4, 3
-	xvslli.d	$xr14, $xr5, 3
-	xvslli.d	$xr15, $xr6, 3
-	xvslli.d	$xr16, $xr7, 3
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 3
+	vslli.d	$vr9, $vr1, 3
+	vslli.d	$vr10, $vr2, 3
+	vslli.d	$vr11, $vr3, 3
+	vslli.d	$vr12, $vr4, 3
+	vslli.d	$vr13, $vr5, 3
+	vslli.d	$vr14, $vr6, 3
+	vslli.d	$vr15, $vr7, 3
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB95_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 8
@@ -43736,48 +38467,32 @@ GCC_except_table95:
 .Lcst_end94:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E6EqZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E6EqZero3MidEvRN9benchmark5StateE
 .LCPI96_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI96_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI96_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI96_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI96_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI96_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI96_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI96_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI96_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI96_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI96_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI96_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI96_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI96_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi8E6EqZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi8E6EqZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi8E6EqZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -43827,142 +38542,93 @@ _Z9BM_MemCmpILi8E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E6EqZero3M
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI96_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI96_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI96_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI96_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI96_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI96_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI96_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI96_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI96_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI96_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI96_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI96_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI96_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI96_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI96_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI96_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI96_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI96_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI96_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI96_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI96_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI96_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI96_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI96_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 512
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB96_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 3
-	xvslli.d	$xr10, $xr1, 3
-	xvslli.d	$xr11, $xr2, 3
-	xvslli.d	$xr12, $xr3, 3
-	xvslli.d	$xr13, $xr4, 3
-	xvslli.d	$xr14, $xr5, 3
-	xvslli.d	$xr15, $xr6, 3
-	xvslli.d	$xr16, $xr7, 3
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 3
+	vslli.d	$vr9, $vr1, 3
+	vslli.d	$vr10, $vr2, 3
+	vslli.d	$vr11, $vr3, 3
+	vslli.d	$vr12, $vr4, 3
+	vslli.d	$vr13, $vr5, 3
+	vslli.d	$vr14, $vr6, 3
+	vslli.d	$vr15, $vr7, 3
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s2, $fp, $s2
 	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 4
+	st.b	$a1, $a4, 4
+	st.b	$a1, $a5, 4
+	st.b	$a1, $a6, 4
+	st.b	$a1, $a7, 4
+	st.b	$a1, $t0, 4
+	st.b	$a1, $t1, 4
+	st.b	$a1, $t2, 4
+	st.b	$a1, $t3, 4
+	st.b	$a1, $t4, 4
+	st.b	$a1, $t5, 4
+	st.b	$a1, $t6, 4
+	st.b	$a1, $t7, 4
+	st.b	$a1, $t8, 4
+	st.b	$a1, $s2, 4
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB96_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 8
@@ -44256,48 +38922,32 @@ GCC_except_table96:
 .Lcst_end95:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E6EqZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E6EqZero4LastEvRN9benchmark5StateE
 .LCPI97_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI97_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI97_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI97_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI97_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI97_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI97_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI97_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI97_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI97_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI97_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI97_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI97_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI97_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi8E6EqZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi8E6EqZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi8E6EqZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -44347,142 +38997,93 @@ _Z9BM_MemCmpILi8E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E6EqZero4
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI97_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI97_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI97_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI97_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI97_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI97_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI97_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI97_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI97_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI97_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI97_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI97_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI97_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI97_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI97_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI97_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI97_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI97_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI97_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI97_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI97_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI97_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI97_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI97_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 512
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB97_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 3
-	xvslli.d	$xr10, $xr1, 3
-	xvslli.d	$xr11, $xr2, 3
-	xvslli.d	$xr12, $xr3, 3
-	xvslli.d	$xr13, $xr4, 3
-	xvslli.d	$xr14, $xr5, 3
-	xvslli.d	$xr15, $xr6, 3
-	xvslli.d	$xr16, $xr7, 3
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 3
+	vslli.d	$vr9, $vr1, 3
+	vslli.d	$vr10, $vr2, 3
+	vslli.d	$vr11, $vr3, 3
+	vslli.d	$vr12, $vr4, 3
+	vslli.d	$vr13, $vr5, 3
+	vslli.d	$vr14, $vr6, 3
+	vslli.d	$vr15, $vr7, 3
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s2, $fp, $s2
 	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 7
+	st.b	$a1, $a4, 7
+	st.b	$a1, $a5, 7
+	st.b	$a1, $a6, 7
+	st.b	$a1, $a7, 7
+	st.b	$a1, $t0, 7
+	st.b	$a1, $t1, 7
+	st.b	$a1, $t2, 7
+	st.b	$a1, $t3, 7
+	st.b	$a1, $t4, 7
+	st.b	$a1, $t5, 7
+	st.b	$a1, $t6, 7
+	st.b	$a1, $t7, 7
+	st.b	$a1, $t8, 7
+	st.b	$a1, $s2, 7
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB97_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 8
@@ -45124,48 +39725,32 @@ GCC_except_table98:
 .Lcst_end97:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E12LessThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E12LessThanZero5FirstEvRN9benchmark5StateE
 .LCPI99_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI99_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI99_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI99_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI99_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI99_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI99_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI99_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI99_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI99_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI99_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI99_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI99_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI99_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi8E12LessThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi8E12LessThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi8E12LessThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -45215,110 +39800,77 @@ _Z9BM_MemCmpILi8E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI99_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI99_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI99_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI99_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI99_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI99_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI99_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI99_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI99_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI99_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI99_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI99_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI99_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI99_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI99_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI99_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI99_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI99_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI99_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI99_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI99_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI99_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI99_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI99_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 512
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB99_2:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 3
-	xvslli.d	$xr10, $xr1, 3
-	xvslli.d	$xr11, $xr2, 3
-	xvslli.d	$xr12, $xr3, 3
-	xvslli.d	$xr13, $xr4, 3
-	xvslli.d	$xr14, $xr5, 3
-	xvslli.d	$xr15, $xr6, 3
-	xvslli.d	$xr16, $xr7, 3
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 3
+	vslli.d	$vr9, $vr1, 3
+	vslli.d	$vr10, $vr2, 3
+	vslli.d	$vr11, $vr3, 3
+	vslli.d	$vr12, $vr4, 3
+	vslli.d	$vr13, $vr5, 3
+	vslli.d	$vr14, $vr6, 3
+	vslli.d	$vr15, $vr7, 3
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB99_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 8
@@ -45619,48 +40171,32 @@ GCC_except_table99:
 .Lcst_end98:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E12LessThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E12LessThanZero3MidEvRN9benchmark5StateE
 .LCPI100_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI100_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI100_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI100_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI100_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI100_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI100_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI100_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI100_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI100_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI100_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI100_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI100_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI100_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi8E12LessThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi8E12LessThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi8E12LessThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -45710,142 +40246,93 @@ _Z9BM_MemCmpILi8E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E12
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI100_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI100_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI100_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI100_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI100_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI100_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI100_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI100_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI100_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI100_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI100_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI100_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI100_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI100_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI100_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI100_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI100_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI100_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI100_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI100_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI100_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI100_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI100_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI100_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 512
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB100_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 3
-	xvslli.d	$xr10, $xr1, 3
-	xvslli.d	$xr11, $xr2, 3
-	xvslli.d	$xr12, $xr3, 3
-	xvslli.d	$xr13, $xr4, 3
-	xvslli.d	$xr14, $xr5, 3
-	xvslli.d	$xr15, $xr6, 3
-	xvslli.d	$xr16, $xr7, 3
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 3
+	vslli.d	$vr9, $vr1, 3
+	vslli.d	$vr10, $vr2, 3
+	vslli.d	$vr11, $vr3, 3
+	vslli.d	$vr12, $vr4, 3
+	vslli.d	$vr13, $vr5, 3
+	vslli.d	$vr14, $vr6, 3
+	vslli.d	$vr15, $vr7, 3
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s2, $fp, $s2
 	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 4
+	st.b	$a1, $a4, 4
+	st.b	$a1, $a5, 4
+	st.b	$a1, $a6, 4
+	st.b	$a1, $a7, 4
+	st.b	$a1, $t0, 4
+	st.b	$a1, $t1, 4
+	st.b	$a1, $t2, 4
+	st.b	$a1, $t3, 4
+	st.b	$a1, $t4, 4
+	st.b	$a1, $t5, 4
+	st.b	$a1, $t6, 4
+	st.b	$a1, $t7, 4
+	st.b	$a1, $t8, 4
+	st.b	$a1, $s2, 4
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB100_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 8
@@ -46146,48 +40633,32 @@ GCC_except_table100:
 .Lcst_end99:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E12LessThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E12LessThanZero4LastEvRN9benchmark5StateE
 .LCPI101_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI101_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI101_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI101_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI101_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI101_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI101_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI101_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI101_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI101_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI101_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI101_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI101_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI101_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi8E12LessThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi8E12LessThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi8E12LessThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -46237,142 +40708,93 @@ _Z9BM_MemCmpILi8E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI101_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI101_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI101_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI101_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI101_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI101_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI101_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI101_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI101_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI101_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI101_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI101_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI101_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI101_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI101_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI101_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI101_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI101_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI101_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI101_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI101_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI101_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI101_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI101_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 512
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB101_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 3
-	xvslli.d	$xr10, $xr1, 3
-	xvslli.d	$xr11, $xr2, 3
-	xvslli.d	$xr12, $xr3, 3
-	xvslli.d	$xr13, $xr4, 3
-	xvslli.d	$xr14, $xr5, 3
-	xvslli.d	$xr15, $xr6, 3
-	xvslli.d	$xr16, $xr7, 3
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 3
+	vslli.d	$vr9, $vr1, 3
+	vslli.d	$vr10, $vr2, 3
+	vslli.d	$vr11, $vr3, 3
+	vslli.d	$vr12, $vr4, 3
+	vslli.d	$vr13, $vr5, 3
+	vslli.d	$vr14, $vr6, 3
+	vslli.d	$vr15, $vr7, 3
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s2, $fp, $s2
 	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 7
+	st.b	$a1, $a4, 7
+	st.b	$a1, $a5, 7
+	st.b	$a1, $a6, 7
+	st.b	$a1, $a7, 7
+	st.b	$a1, $t0, 7
+	st.b	$a1, $t1, 7
+	st.b	$a1, $t2, 7
+	st.b	$a1, $t3, 7
+	st.b	$a1, $t4, 7
+	st.b	$a1, $t5, 7
+	st.b	$a1, $t6, 7
+	st.b	$a1, $t7, 7
+	st.b	$a1, $t8, 7
+	st.b	$a1, $s2, 7
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB101_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 8
@@ -47016,48 +41438,32 @@ GCC_except_table102:
 .Lcst_end101:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E15GreaterThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E15GreaterThanZero5FirstEvRN9benchmark5StateE
 .LCPI103_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI103_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI103_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI103_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI103_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI103_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI103_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI103_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI103_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI103_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI103_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI103_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI103_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI103_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi8E15GreaterThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi8E15GreaterThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi8E15GreaterThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -47107,110 +41513,77 @@ _Z9BM_MemCmpILi8E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI103_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI103_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI103_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI103_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI103_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI103_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI103_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI103_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI103_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI103_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI103_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI103_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI103_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI103_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI103_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI103_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI103_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI103_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI103_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI103_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI103_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI103_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI103_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI103_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 512
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB103_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 3
-	xvslli.d	$xr10, $xr1, 3
-	xvslli.d	$xr11, $xr2, 3
-	xvslli.d	$xr12, $xr3, 3
-	xvslli.d	$xr13, $xr4, 3
-	xvslli.d	$xr14, $xr5, 3
-	xvslli.d	$xr15, $xr6, 3
-	xvslli.d	$xr16, $xr7, 3
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 3
+	vslli.d	$vr9, $vr1, 3
+	vslli.d	$vr10, $vr2, 3
+	vslli.d	$vr11, $vr3, 3
+	vslli.d	$vr12, $vr4, 3
+	vslli.d	$vr13, $vr5, 3
+	vslli.d	$vr14, $vr6, 3
+	vslli.d	$vr15, $vr7, 3
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB103_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 8
@@ -47506,48 +41879,32 @@ GCC_except_table103:
 .Lcst_end102:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E15GreaterThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E15GreaterThanZero3MidEvRN9benchmark5StateE
 .LCPI104_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI104_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI104_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI104_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI104_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI104_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI104_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI104_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI104_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI104_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI104_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI104_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI104_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI104_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi8E15GreaterThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi8E15GreaterThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi8E15GreaterThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -47597,142 +41954,93 @@ _Z9BM_MemCmpILi8E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI104_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI104_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI104_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI104_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI104_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI104_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI104_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI104_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI104_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI104_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI104_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI104_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI104_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI104_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI104_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI104_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI104_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI104_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI104_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI104_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI104_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI104_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI104_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI104_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 512
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB104_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 3
-	xvslli.d	$xr10, $xr1, 3
-	xvslli.d	$xr11, $xr2, 3
-	xvslli.d	$xr12, $xr3, 3
-	xvslli.d	$xr13, $xr4, 3
-	xvslli.d	$xr14, $xr5, 3
-	xvslli.d	$xr15, $xr6, 3
-	xvslli.d	$xr16, $xr7, 3
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 3
+	vslli.d	$vr9, $vr1, 3
+	vslli.d	$vr10, $vr2, 3
+	vslli.d	$vr11, $vr3, 3
+	vslli.d	$vr12, $vr4, 3
+	vslli.d	$vr13, $vr5, 3
+	vslli.d	$vr14, $vr6, 3
+	vslli.d	$vr15, $vr7, 3
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s2, $fp, $s2
 	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 4
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 4
+	st.b	$a1, $a4, 4
+	st.b	$a1, $a5, 4
+	st.b	$a1, $a6, 4
+	st.b	$a1, $a7, 4
+	st.b	$a1, $t0, 4
+	st.b	$a1, $t1, 4
+	st.b	$a1, $t2, 4
+	st.b	$a1, $t3, 4
+	st.b	$a1, $t4, 4
+	st.b	$a1, $t5, 4
+	st.b	$a1, $t6, 4
+	st.b	$a1, $t7, 4
+	st.b	$a1, $t8, 4
+	st.b	$a1, $s2, 4
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB104_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 8
@@ -48028,48 +42336,32 @@ GCC_except_table104:
 .Lcst_end103:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E15GreaterThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi8E15GreaterThanZero4LastEvRN9benchmark5StateE
 .LCPI105_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI105_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI105_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI105_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI105_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI105_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI105_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI105_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI105_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI105_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI105_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI105_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI105_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI105_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi8E15GreaterThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi8E15GreaterThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi8E15GreaterThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -48119,142 +42411,93 @@ _Z9BM_MemCmpILi8E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI105_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI105_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI105_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI105_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI105_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI105_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI105_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI105_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI105_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI105_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI105_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI105_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI105_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI105_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI105_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI105_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI105_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI105_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI105_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI105_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI105_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI105_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI105_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI105_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 512
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB105_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 3
-	xvslli.d	$xr10, $xr1, 3
-	xvslli.d	$xr11, $xr2, 3
-	xvslli.d	$xr12, $xr3, 3
-	xvslli.d	$xr13, $xr4, 3
-	xvslli.d	$xr14, $xr5, 3
-	xvslli.d	$xr15, $xr6, 3
-	xvslli.d	$xr16, $xr7, 3
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 3
+	vslli.d	$vr9, $vr1, 3
+	vslli.d	$vr10, $vr2, 3
+	vslli.d	$vr11, $vr3, 3
+	vslli.d	$vr12, $vr4, 3
+	vslli.d	$vr13, $vr5, 3
+	vslli.d	$vr14, $vr6, 3
+	vslli.d	$vr15, $vr7, 3
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s2, $fp, $s2
 	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 7
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 7
+	st.b	$a1, $a4, 7
+	st.b	$a1, $a5, 7
+	st.b	$a1, $a6, 7
+	st.b	$a1, $a7, 7
+	st.b	$a1, $t0, 7
+	st.b	$a1, $t1, 7
+	st.b	$a1, $t2, 7
+	st.b	$a1, $t3, 7
+	st.b	$a1, $t4, 7
+	st.b	$a1, $t5, 7
+	st.b	$a1, $t6, 7
+	st.b	$a1, $t7, 7
+	st.b	$a1, $t8, 7
+	st.b	$a1, $s2, 7
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB105_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 8
@@ -49063,28 +43306,32 @@ GCC_except_table107:
 .Lcst_end106:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E6EqZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E6EqZero5FirstEvRN9benchmark5StateE
 .LCPI108_0:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
 .LCPI108_1:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI108_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI108_2:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI108_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI108_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
-.LCPI108_3:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
+.LCPI108_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI108_6:
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI108_7:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
 	.section	.text._Z9BM_MemCmpILi15E6EqZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi15E6EqZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi15E6EqZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -49135,39 +43382,51 @@ _Z9BM_MemCmpILi15E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E6EqZe
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI108_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI108_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI108_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI108_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI108_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI108_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI108_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI108_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI108_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI108_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI108_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI108_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI108_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI108_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI108_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI108_5)
+	pcalau12i	$a0, %pc_hi20(.LCPI108_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI108_6)
+	pcalau12i	$a0, %pc_hi20(.LCPI108_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI108_7)
 	ori	$a0, $zero, 272
-	xvrepli.d	$xr4, 15
+	vrepli.d	$vr8, 15
 	ori	$a1, $zero, 255
 	.p2align	4, , 16
 .LBB108_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr5, $xr0, $xr4
-	xvmul.d	$xr6, $xr1, $xr4
-	xvmul.d	$xr7, $xr2, $xr4
-	xvmul.d	$xr8, $xr3, $xr4
-	xvpickve2gr.d	$a2, $xr8, 0
-	xvpickve2gr.d	$a3, $xr8, 1
-	xvpickve2gr.d	$a4, $xr8, 2
-	xvpickve2gr.d	$a5, $xr8, 3
-	xvpickve2gr.d	$a6, $xr7, 0
-	xvpickve2gr.d	$a7, $xr7, 1
-	xvpickve2gr.d	$t0, $xr7, 2
-	xvpickve2gr.d	$t1, $xr7, 3
-	xvpickve2gr.d	$t2, $xr6, 0
-	xvpickve2gr.d	$t3, $xr6, 1
-	xvpickve2gr.d	$t4, $xr6, 2
-	xvpickve2gr.d	$t5, $xr6, 3
-	xvpickve2gr.d	$t6, $xr5, 0
-	xvpickve2gr.d	$t7, $xr5, 1
-	xvpickve2gr.d	$t8, $xr5, 2
-	xvpickve2gr.d	$s2, $xr5, 3
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s2, $vr9, 1
 	stx.b	$a1, $fp, $a2
 	stx.b	$a1, $fp, $a3
 	stx.b	$a1, $fp, $a4
@@ -49184,11 +43443,15 @@ _Z9BM_MemCmpILi15E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E6EqZe
 	stx.b	$a1, $fp, $t7
 	stx.b	$a1, $fp, $t8
 	stx.b	$a1, $fp, $s2
-	xvaddi.du	$xr3, $xr3, 16
-	xvaddi.du	$xr2, $xr2, 16
-	xvaddi.du	$xr1, $xr1, 16
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
 	addi.d	$a0, $a0, -16
-	xvaddi.du	$xr0, $xr0, 16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB108_2
 # %bb.3:                                # %scalar.ph
 	ori	$a0, $zero, 4080
@@ -49493,28 +43756,32 @@ GCC_except_table108:
 .Lcst_end107:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E6EqZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E6EqZero3MidEvRN9benchmark5StateE
 .LCPI109_0:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
 .LCPI109_1:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI109_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI109_2:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI109_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI109_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
-.LCPI109_3:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
+.LCPI109_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI109_6:
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI109_7:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
 	.section	.text._Z9BM_MemCmpILi15E6EqZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi15E6EqZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi15E6EqZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -49565,39 +43832,51 @@ _Z9BM_MemCmpILi15E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E6EqZero
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI109_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI109_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI109_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI109_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI109_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI109_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI109_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI109_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI109_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI109_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI109_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI109_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI109_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI109_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI109_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI109_5)
+	pcalau12i	$a0, %pc_hi20(.LCPI109_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI109_6)
+	pcalau12i	$a0, %pc_hi20(.LCPI109_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI109_7)
 	ori	$a0, $zero, 272
-	xvrepli.d	$xr4, 15
+	vrepli.d	$vr8, 15
 	ori	$a1, $zero, 255
 	.p2align	4, , 16
 .LBB109_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr5, $xr0, $xr4
-	xvmul.d	$xr6, $xr1, $xr4
-	xvmul.d	$xr7, $xr2, $xr4
-	xvmul.d	$xr8, $xr3, $xr4
-	xvpickve2gr.d	$a2, $xr8, 0
-	xvpickve2gr.d	$a3, $xr8, 1
-	xvpickve2gr.d	$a4, $xr8, 2
-	xvpickve2gr.d	$a5, $xr8, 3
-	xvpickve2gr.d	$a6, $xr7, 0
-	xvpickve2gr.d	$a7, $xr7, 1
-	xvpickve2gr.d	$t0, $xr7, 2
-	xvpickve2gr.d	$t1, $xr7, 3
-	xvpickve2gr.d	$t2, $xr6, 0
-	xvpickve2gr.d	$t3, $xr6, 1
-	xvpickve2gr.d	$t4, $xr6, 2
-	xvpickve2gr.d	$t5, $xr6, 3
-	xvpickve2gr.d	$t6, $xr5, 0
-	xvpickve2gr.d	$t7, $xr5, 1
-	xvpickve2gr.d	$t8, $xr5, 2
-	xvpickve2gr.d	$s2, $xr5, 3
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s2, $vr9, 1
 	add.d	$a2, $fp, $a2
 	add.d	$a3, $fp, $a3
 	add.d	$a4, $fp, $a4
@@ -49630,11 +43909,15 @@ _Z9BM_MemCmpILi15E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E6EqZero
 	st.b	$a1, $t7, 7
 	st.b	$a1, $t8, 7
 	st.b	$a1, $s2, 7
-	xvaddi.du	$xr3, $xr3, 16
-	xvaddi.du	$xr2, $xr2, 16
-	xvaddi.du	$xr1, $xr1, 16
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
 	addi.d	$a0, $a0, -16
-	xvaddi.du	$xr0, $xr0, 16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB109_2
 # %bb.3:                                # %scalar.ph
 	ori	$a0, $zero, 4087
@@ -49939,28 +44222,32 @@ GCC_except_table109:
 .Lcst_end108:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E6EqZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E6EqZero4LastEvRN9benchmark5StateE
 .LCPI110_0:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
 .LCPI110_1:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI110_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI110_2:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI110_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI110_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
-.LCPI110_3:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
+.LCPI110_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI110_6:
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI110_7:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
 	.section	.text._Z9BM_MemCmpILi15E6EqZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi15E6EqZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi15E6EqZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -50011,39 +44298,51 @@ _Z9BM_MemCmpILi15E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E6EqZer
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI110_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI110_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI110_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI110_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI110_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI110_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI110_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI110_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI110_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI110_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI110_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI110_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI110_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI110_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI110_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI110_5)
+	pcalau12i	$a0, %pc_hi20(.LCPI110_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI110_6)
+	pcalau12i	$a0, %pc_hi20(.LCPI110_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI110_7)
 	ori	$a0, $zero, 272
-	xvrepli.d	$xr4, 15
+	vrepli.d	$vr8, 15
 	ori	$a1, $zero, 255
 	.p2align	4, , 16
 .LBB110_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr5, $xr0, $xr4
-	xvmul.d	$xr6, $xr1, $xr4
-	xvmul.d	$xr7, $xr2, $xr4
-	xvmul.d	$xr8, $xr3, $xr4
-	xvpickve2gr.d	$a2, $xr8, 0
-	xvpickve2gr.d	$a3, $xr8, 1
-	xvpickve2gr.d	$a4, $xr8, 2
-	xvpickve2gr.d	$a5, $xr8, 3
-	xvpickve2gr.d	$a6, $xr7, 0
-	xvpickve2gr.d	$a7, $xr7, 1
-	xvpickve2gr.d	$t0, $xr7, 2
-	xvpickve2gr.d	$t1, $xr7, 3
-	xvpickve2gr.d	$t2, $xr6, 0
-	xvpickve2gr.d	$t3, $xr6, 1
-	xvpickve2gr.d	$t4, $xr6, 2
-	xvpickve2gr.d	$t5, $xr6, 3
-	xvpickve2gr.d	$t6, $xr5, 0
-	xvpickve2gr.d	$t7, $xr5, 1
-	xvpickve2gr.d	$t8, $xr5, 2
-	xvpickve2gr.d	$s2, $xr5, 3
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s2, $vr9, 1
 	add.d	$a2, $fp, $a2
 	add.d	$a3, $fp, $a3
 	add.d	$a4, $fp, $a4
@@ -50076,11 +44375,15 @@ _Z9BM_MemCmpILi15E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E6EqZer
 	st.b	$a1, $t7, 14
 	st.b	$a1, $t8, 14
 	st.b	$a1, $s2, 14
-	xvaddi.du	$xr3, $xr3, 16
-	xvaddi.du	$xr2, $xr2, 16
-	xvaddi.du	$xr1, $xr1, 16
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
 	addi.d	$a0, $a0, -16
-	xvaddi.du	$xr0, $xr0, 16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB110_2
 # %bb.3:                                # %scalar.ph
 	ori	$a0, $zero, 4094
@@ -50762,28 +45065,32 @@ GCC_except_table111:
 .Lcst_end110:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E12LessThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E12LessThanZero5FirstEvRN9benchmark5StateE
 .LCPI112_0:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
 .LCPI112_1:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI112_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI112_2:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI112_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI112_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
-.LCPI112_3:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
+.LCPI112_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI112_6:
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI112_7:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
 	.section	.text._Z9BM_MemCmpILi15E12LessThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi15E12LessThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi15E12LessThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -50834,39 +45141,51 @@ _Z9BM_MemCmpILi15E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI112_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI112_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI112_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI112_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI112_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI112_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI112_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI112_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI112_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI112_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI112_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI112_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI112_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI112_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI112_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI112_5)
+	pcalau12i	$a0, %pc_hi20(.LCPI112_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI112_6)
+	pcalau12i	$a0, %pc_hi20(.LCPI112_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI112_7)
 	ori	$a0, $zero, 272
-	xvrepli.d	$xr4, 15
+	vrepli.d	$vr8, 15
 	ori	$a1, $zero, 255
 	.p2align	4, , 16
 .LBB112_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr5, $xr0, $xr4
-	xvmul.d	$xr6, $xr1, $xr4
-	xvmul.d	$xr7, $xr2, $xr4
-	xvmul.d	$xr8, $xr3, $xr4
-	xvpickve2gr.d	$a2, $xr8, 0
-	xvpickve2gr.d	$a3, $xr8, 1
-	xvpickve2gr.d	$a4, $xr8, 2
-	xvpickve2gr.d	$a5, $xr8, 3
-	xvpickve2gr.d	$a6, $xr7, 0
-	xvpickve2gr.d	$a7, $xr7, 1
-	xvpickve2gr.d	$t0, $xr7, 2
-	xvpickve2gr.d	$t1, $xr7, 3
-	xvpickve2gr.d	$t2, $xr6, 0
-	xvpickve2gr.d	$t3, $xr6, 1
-	xvpickve2gr.d	$t4, $xr6, 2
-	xvpickve2gr.d	$t5, $xr6, 3
-	xvpickve2gr.d	$t6, $xr5, 0
-	xvpickve2gr.d	$t7, $xr5, 1
-	xvpickve2gr.d	$t8, $xr5, 2
-	xvpickve2gr.d	$s2, $xr5, 3
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s2, $vr9, 1
 	stx.b	$a1, $fp, $a2
 	stx.b	$a1, $fp, $a3
 	stx.b	$a1, $fp, $a4
@@ -50883,11 +45202,15 @@ _Z9BM_MemCmpILi15E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	stx.b	$a1, $fp, $t7
 	stx.b	$a1, $fp, $t8
 	stx.b	$a1, $fp, $s2
-	xvaddi.du	$xr3, $xr3, 16
-	xvaddi.du	$xr2, $xr2, 16
-	xvaddi.du	$xr1, $xr1, 16
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
 	addi.d	$a0, $a0, -16
-	xvaddi.du	$xr0, $xr0, 16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB112_2
 # %bb.3:                                # %scalar.ph
 	ori	$a0, $zero, 4080
@@ -51221,28 +45544,32 @@ GCC_except_table112:
 .Lcst_end111:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E12LessThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E12LessThanZero3MidEvRN9benchmark5StateE
 .LCPI113_0:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
 .LCPI113_1:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI113_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI113_2:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI113_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI113_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
-.LCPI113_3:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
+.LCPI113_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI113_6:
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI113_7:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
 	.section	.text._Z9BM_MemCmpILi15E12LessThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi15E12LessThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi15E12LessThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -51293,39 +45620,51 @@ _Z9BM_MemCmpILi15E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI113_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI113_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI113_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI113_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI113_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI113_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI113_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI113_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI113_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI113_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI113_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI113_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI113_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI113_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI113_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI113_5)
+	pcalau12i	$a0, %pc_hi20(.LCPI113_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI113_6)
+	pcalau12i	$a0, %pc_hi20(.LCPI113_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI113_7)
 	ori	$a0, $zero, 272
-	xvrepli.d	$xr4, 15
+	vrepli.d	$vr8, 15
 	ori	$a1, $zero, 255
 	.p2align	4, , 16
 .LBB113_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr5, $xr0, $xr4
-	xvmul.d	$xr6, $xr1, $xr4
-	xvmul.d	$xr7, $xr2, $xr4
-	xvmul.d	$xr8, $xr3, $xr4
-	xvpickve2gr.d	$a2, $xr8, 0
-	xvpickve2gr.d	$a3, $xr8, 1
-	xvpickve2gr.d	$a4, $xr8, 2
-	xvpickve2gr.d	$a5, $xr8, 3
-	xvpickve2gr.d	$a6, $xr7, 0
-	xvpickve2gr.d	$a7, $xr7, 1
-	xvpickve2gr.d	$t0, $xr7, 2
-	xvpickve2gr.d	$t1, $xr7, 3
-	xvpickve2gr.d	$t2, $xr6, 0
-	xvpickve2gr.d	$t3, $xr6, 1
-	xvpickve2gr.d	$t4, $xr6, 2
-	xvpickve2gr.d	$t5, $xr6, 3
-	xvpickve2gr.d	$t6, $xr5, 0
-	xvpickve2gr.d	$t7, $xr5, 1
-	xvpickve2gr.d	$t8, $xr5, 2
-	xvpickve2gr.d	$s2, $xr5, 3
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s2, $vr9, 1
 	add.d	$a2, $fp, $a2
 	add.d	$a3, $fp, $a3
 	add.d	$a4, $fp, $a4
@@ -51358,11 +45697,15 @@ _Z9BM_MemCmpILi15E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E
 	st.b	$a1, $t7, 7
 	st.b	$a1, $t8, 7
 	st.b	$a1, $s2, 7
-	xvaddi.du	$xr3, $xr3, 16
-	xvaddi.du	$xr2, $xr2, 16
-	xvaddi.du	$xr1, $xr1, 16
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
 	addi.d	$a0, $a0, -16
-	xvaddi.du	$xr0, $xr0, 16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB113_2
 # %bb.3:                                # %scalar.ph
 	ori	$a0, $zero, 4087
@@ -51696,28 +46039,32 @@ GCC_except_table113:
 .Lcst_end112:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E12LessThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E12LessThanZero4LastEvRN9benchmark5StateE
 .LCPI114_0:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
 .LCPI114_1:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI114_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI114_2:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI114_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI114_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
-.LCPI114_3:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
+.LCPI114_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI114_6:
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI114_7:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
 	.section	.text._Z9BM_MemCmpILi15E12LessThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi15E12LessThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi15E12LessThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -51768,39 +46115,51 @@ _Z9BM_MemCmpILi15E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI114_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI114_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI114_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI114_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI114_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI114_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI114_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI114_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI114_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI114_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI114_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI114_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI114_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI114_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI114_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI114_5)
+	pcalau12i	$a0, %pc_hi20(.LCPI114_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI114_6)
+	pcalau12i	$a0, %pc_hi20(.LCPI114_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI114_7)
 	ori	$a0, $zero, 272
-	xvrepli.d	$xr4, 15
+	vrepli.d	$vr8, 15
 	ori	$a1, $zero, 255
 	.p2align	4, , 16
 .LBB114_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr5, $xr0, $xr4
-	xvmul.d	$xr6, $xr1, $xr4
-	xvmul.d	$xr7, $xr2, $xr4
-	xvmul.d	$xr8, $xr3, $xr4
-	xvpickve2gr.d	$a2, $xr8, 0
-	xvpickve2gr.d	$a3, $xr8, 1
-	xvpickve2gr.d	$a4, $xr8, 2
-	xvpickve2gr.d	$a5, $xr8, 3
-	xvpickve2gr.d	$a6, $xr7, 0
-	xvpickve2gr.d	$a7, $xr7, 1
-	xvpickve2gr.d	$t0, $xr7, 2
-	xvpickve2gr.d	$t1, $xr7, 3
-	xvpickve2gr.d	$t2, $xr6, 0
-	xvpickve2gr.d	$t3, $xr6, 1
-	xvpickve2gr.d	$t4, $xr6, 2
-	xvpickve2gr.d	$t5, $xr6, 3
-	xvpickve2gr.d	$t6, $xr5, 0
-	xvpickve2gr.d	$t7, $xr5, 1
-	xvpickve2gr.d	$t8, $xr5, 2
-	xvpickve2gr.d	$s2, $xr5, 3
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s2, $vr9, 1
 	add.d	$a2, $fp, $a2
 	add.d	$a3, $fp, $a3
 	add.d	$a4, $fp, $a4
@@ -51833,11 +46192,15 @@ _Z9BM_MemCmpILi15E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15
 	st.b	$a1, $t7, 14
 	st.b	$a1, $t8, 14
 	st.b	$a1, $s2, 14
-	xvaddi.du	$xr3, $xr3, 16
-	xvaddi.du	$xr2, $xr2, 16
-	xvaddi.du	$xr1, $xr1, 16
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
 	addi.d	$a0, $a0, -16
-	xvaddi.du	$xr0, $xr0, 16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB114_2
 # %bb.3:                                # %scalar.ph
 	ori	$a0, $zero, 4094
@@ -52713,28 +47076,32 @@ GCC_except_table116:
 .Lcst_end115:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E15GreaterThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E15GreaterThanZero5FirstEvRN9benchmark5StateE
 .LCPI117_0:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
 .LCPI117_1:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI117_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI117_2:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI117_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI117_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
-.LCPI117_3:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
+.LCPI117_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI117_6:
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI117_7:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
 	.section	.text._Z9BM_MemCmpILi15E15GreaterThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi15E15GreaterThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi15E15GreaterThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -52785,39 +47152,51 @@ _Z9BM_MemCmpILi15E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpI
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI117_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI117_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI117_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI117_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI117_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI117_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI117_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI117_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI117_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI117_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI117_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI117_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI117_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI117_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI117_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI117_5)
+	pcalau12i	$a0, %pc_hi20(.LCPI117_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI117_6)
+	pcalau12i	$a0, %pc_hi20(.LCPI117_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI117_7)
 	ori	$a0, $zero, 272
-	xvrepli.d	$xr4, 15
+	vrepli.d	$vr8, 15
 	ori	$a1, $zero, 255
 	.p2align	4, , 16
 .LBB117_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr5, $xr0, $xr4
-	xvmul.d	$xr6, $xr1, $xr4
-	xvmul.d	$xr7, $xr2, $xr4
-	xvmul.d	$xr8, $xr3, $xr4
-	xvpickve2gr.d	$a2, $xr8, 0
-	xvpickve2gr.d	$a3, $xr8, 1
-	xvpickve2gr.d	$a4, $xr8, 2
-	xvpickve2gr.d	$a5, $xr8, 3
-	xvpickve2gr.d	$a6, $xr7, 0
-	xvpickve2gr.d	$a7, $xr7, 1
-	xvpickve2gr.d	$t0, $xr7, 2
-	xvpickve2gr.d	$t1, $xr7, 3
-	xvpickve2gr.d	$t2, $xr6, 0
-	xvpickve2gr.d	$t3, $xr6, 1
-	xvpickve2gr.d	$t4, $xr6, 2
-	xvpickve2gr.d	$t5, $xr6, 3
-	xvpickve2gr.d	$t6, $xr5, 0
-	xvpickve2gr.d	$t7, $xr5, 1
-	xvpickve2gr.d	$t8, $xr5, 2
-	xvpickve2gr.d	$s2, $xr5, 3
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s2, $vr9, 1
 	stx.b	$a1, $fp, $a2
 	stx.b	$a1, $fp, $a3
 	stx.b	$a1, $fp, $a4
@@ -52834,11 +47213,15 @@ _Z9BM_MemCmpILi15E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpI
 	stx.b	$a1, $fp, $t7
 	stx.b	$a1, $fp, $t8
 	stx.b	$a1, $fp, $s2
-	xvaddi.du	$xr3, $xr3, 16
-	xvaddi.du	$xr2, $xr2, 16
-	xvaddi.du	$xr1, $xr1, 16
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
 	addi.d	$a0, $a0, -16
-	xvaddi.du	$xr0, $xr0, 16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB117_2
 # %bb.3:                                # %scalar.ph
 	ori	$a0, $zero, 4080
@@ -53172,28 +47555,32 @@ GCC_except_table117:
 .Lcst_end116:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E15GreaterThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E15GreaterThanZero3MidEvRN9benchmark5StateE
 .LCPI118_0:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
 .LCPI118_1:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI118_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI118_2:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI118_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI118_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
-.LCPI118_3:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
+.LCPI118_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI118_6:
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI118_7:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
 	.section	.text._Z9BM_MemCmpILi15E15GreaterThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi15E15GreaterThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi15E15GreaterThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -53244,39 +47631,51 @@ _Z9BM_MemCmpILi15E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI118_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI118_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI118_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI118_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI118_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI118_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI118_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI118_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI118_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI118_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI118_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI118_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI118_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI118_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI118_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI118_5)
+	pcalau12i	$a0, %pc_hi20(.LCPI118_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI118_6)
+	pcalau12i	$a0, %pc_hi20(.LCPI118_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI118_7)
 	ori	$a0, $zero, 272
-	xvrepli.d	$xr4, 15
+	vrepli.d	$vr8, 15
 	ori	$a1, $zero, 255
 	.p2align	4, , 16
 .LBB118_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr5, $xr0, $xr4
-	xvmul.d	$xr6, $xr1, $xr4
-	xvmul.d	$xr7, $xr2, $xr4
-	xvmul.d	$xr8, $xr3, $xr4
-	xvpickve2gr.d	$a2, $xr8, 0
-	xvpickve2gr.d	$a3, $xr8, 1
-	xvpickve2gr.d	$a4, $xr8, 2
-	xvpickve2gr.d	$a5, $xr8, 3
-	xvpickve2gr.d	$a6, $xr7, 0
-	xvpickve2gr.d	$a7, $xr7, 1
-	xvpickve2gr.d	$t0, $xr7, 2
-	xvpickve2gr.d	$t1, $xr7, 3
-	xvpickve2gr.d	$t2, $xr6, 0
-	xvpickve2gr.d	$t3, $xr6, 1
-	xvpickve2gr.d	$t4, $xr6, 2
-	xvpickve2gr.d	$t5, $xr6, 3
-	xvpickve2gr.d	$t6, $xr5, 0
-	xvpickve2gr.d	$t7, $xr5, 1
-	xvpickve2gr.d	$t8, $xr5, 2
-	xvpickve2gr.d	$s2, $xr5, 3
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s2, $vr9, 1
 	add.d	$a2, $fp, $a2
 	add.d	$a3, $fp, $a3
 	add.d	$a4, $fp, $a4
@@ -53309,11 +47708,15 @@ _Z9BM_MemCmpILi15E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	st.b	$a1, $t7, 7
 	st.b	$a1, $t8, 7
 	st.b	$a1, $s2, 7
-	xvaddi.du	$xr3, $xr3, 16
-	xvaddi.du	$xr2, $xr2, 16
-	xvaddi.du	$xr1, $xr1, 16
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
 	addi.d	$a0, $a0, -16
-	xvaddi.du	$xr0, $xr0, 16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB118_2
 # %bb.3:                                # %scalar.ph
 	ori	$a0, $zero, 4087
@@ -53647,28 +48050,32 @@ GCC_except_table118:
 .Lcst_end117:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E15GreaterThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi15E15GreaterThanZero4LastEvRN9benchmark5StateE
 .LCPI119_0:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
 .LCPI119_1:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI119_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI119_2:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI119_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI119_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
-.LCPI119_3:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
+.LCPI119_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI119_6:
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI119_7:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
 	.section	.text._Z9BM_MemCmpILi15E15GreaterThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi15E15GreaterThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi15E15GreaterThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -53719,39 +48126,51 @@ _Z9BM_MemCmpILi15E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	st.d	$fp, $sp, 24
 	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI119_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI119_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI119_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI119_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI119_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI119_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI119_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI119_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI119_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI119_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI119_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI119_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI119_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI119_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI119_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI119_5)
+	pcalau12i	$a0, %pc_hi20(.LCPI119_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI119_6)
+	pcalau12i	$a0, %pc_hi20(.LCPI119_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI119_7)
 	ori	$a0, $zero, 272
-	xvrepli.d	$xr4, 15
+	vrepli.d	$vr8, 15
 	ori	$a1, $zero, 255
 	.p2align	4, , 16
 .LBB119_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr5, $xr0, $xr4
-	xvmul.d	$xr6, $xr1, $xr4
-	xvmul.d	$xr7, $xr2, $xr4
-	xvmul.d	$xr8, $xr3, $xr4
-	xvpickve2gr.d	$a2, $xr8, 0
-	xvpickve2gr.d	$a3, $xr8, 1
-	xvpickve2gr.d	$a4, $xr8, 2
-	xvpickve2gr.d	$a5, $xr8, 3
-	xvpickve2gr.d	$a6, $xr7, 0
-	xvpickve2gr.d	$a7, $xr7, 1
-	xvpickve2gr.d	$t0, $xr7, 2
-	xvpickve2gr.d	$t1, $xr7, 3
-	xvpickve2gr.d	$t2, $xr6, 0
-	xvpickve2gr.d	$t3, $xr6, 1
-	xvpickve2gr.d	$t4, $xr6, 2
-	xvpickve2gr.d	$t5, $xr6, 3
-	xvpickve2gr.d	$t6, $xr5, 0
-	xvpickve2gr.d	$t7, $xr5, 1
-	xvpickve2gr.d	$t8, $xr5, 2
-	xvpickve2gr.d	$s2, $xr5, 3
+	vmul.d	$vr9, $vr0, $vr8
+	vmul.d	$vr10, $vr1, $vr8
+	vmul.d	$vr11, $vr2, $vr8
+	vmul.d	$vr12, $vr3, $vr8
+	vmul.d	$vr13, $vr4, $vr8
+	vmul.d	$vr14, $vr5, $vr8
+	vmul.d	$vr15, $vr6, $vr8
+	vmul.d	$vr16, $vr7, $vr8
+	vpickve2gr.d	$a2, $vr16, 0
+	vpickve2gr.d	$a3, $vr16, 1
+	vpickve2gr.d	$a4, $vr15, 0
+	vpickve2gr.d	$a5, $vr15, 1
+	vpickve2gr.d	$a6, $vr14, 0
+	vpickve2gr.d	$a7, $vr14, 1
+	vpickve2gr.d	$t0, $vr13, 0
+	vpickve2gr.d	$t1, $vr13, 1
+	vpickve2gr.d	$t2, $vr12, 0
+	vpickve2gr.d	$t3, $vr12, 1
+	vpickve2gr.d	$t4, $vr11, 0
+	vpickve2gr.d	$t5, $vr11, 1
+	vpickve2gr.d	$t6, $vr10, 0
+	vpickve2gr.d	$t7, $vr10, 1
+	vpickve2gr.d	$t8, $vr9, 0
+	vpickve2gr.d	$s2, $vr9, 1
 	add.d	$a2, $fp, $a2
 	add.d	$a3, $fp, $a3
 	add.d	$a4, $fp, $a4
@@ -53784,11 +48203,15 @@ _Z9BM_MemCmpILi15E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	st.b	$a1, $t7, 14
 	st.b	$a1, $t8, 14
 	st.b	$a1, $s2, 14
-	xvaddi.du	$xr3, $xr3, 16
-	xvaddi.du	$xr2, $xr2, 16
-	xvaddi.du	$xr1, $xr1, 16
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
 	addi.d	$a0, $a0, -16
-	xvaddi.du	$xr0, $xr0, 16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB119_2
 # %bb.3:                                # %scalar.ph
 	ori	$a0, $zero, 4094
@@ -54471,48 +48894,32 @@ GCC_except_table120:
 .Lcst_end119:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E6EqZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E6EqZero5FirstEvRN9benchmark5StateE
 .LCPI121_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI121_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI121_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI121_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI121_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI121_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI121_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI121_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI121_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI121_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI121_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI121_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI121_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI121_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi16E6EqZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi16E6EqZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi16E6EqZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -54562,110 +48969,77 @@ _Z9BM_MemCmpILi16E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16E6EqZe
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI121_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI121_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI121_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI121_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI121_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI121_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI121_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI121_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI121_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI121_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI121_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI121_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI121_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI121_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI121_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI121_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI121_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI121_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI121_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI121_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI121_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI121_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI121_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI121_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 256
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB121_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 4
-	xvslli.d	$xr10, $xr1, 4
-	xvslli.d	$xr11, $xr2, 4
-	xvslli.d	$xr12, $xr3, 4
-	xvslli.d	$xr13, $xr4, 4
-	xvslli.d	$xr14, $xr5, 4
-	xvslli.d	$xr15, $xr6, 4
-	xvslli.d	$xr16, $xr7, 4
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 4
+	vslli.d	$vr9, $vr1, 4
+	vslli.d	$vr10, $vr2, 4
+	vslli.d	$vr11, $vr3, 4
+	vslli.d	$vr12, $vr4, 4
+	vslli.d	$vr13, $vr5, 4
+	vslli.d	$vr14, $vr6, 4
+	vslli.d	$vr15, $vr7, 4
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB121_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 16
@@ -54967,48 +49341,32 @@ GCC_except_table121:
 .Lcst_end120:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E6EqZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E6EqZero3MidEvRN9benchmark5StateE
 .LCPI122_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI122_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI122_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI122_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI122_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI122_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI122_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI122_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI122_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI122_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI122_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI122_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI122_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI122_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi16E6EqZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi16E6EqZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi16E6EqZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -55058,142 +49416,93 @@ _Z9BM_MemCmpILi16E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16E6EqZero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI122_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI122_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI122_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI122_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI122_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI122_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI122_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI122_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI122_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI122_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI122_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI122_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI122_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI122_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI122_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI122_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI122_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI122_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI122_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI122_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI122_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI122_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI122_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI122_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 256
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB122_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 4
-	xvslli.d	$xr10, $xr1, 4
-	xvslli.d	$xr11, $xr2, 4
-	xvslli.d	$xr12, $xr3, 4
-	xvslli.d	$xr13, $xr4, 4
-	xvslli.d	$xr14, $xr5, 4
-	xvslli.d	$xr15, $xr6, 4
-	xvslli.d	$xr16, $xr7, 4
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 4
+	vslli.d	$vr9, $vr1, 4
+	vslli.d	$vr10, $vr2, 4
+	vslli.d	$vr11, $vr3, 4
+	vslli.d	$vr12, $vr4, 4
+	vslli.d	$vr13, $vr5, 4
+	vslli.d	$vr14, $vr6, 4
+	vslli.d	$vr15, $vr7, 4
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s2, $fp, $s2
 	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 8
+	st.b	$a1, $a4, 8
+	st.b	$a1, $a5, 8
+	st.b	$a1, $a6, 8
+	st.b	$a1, $a7, 8
+	st.b	$a1, $t0, 8
+	st.b	$a1, $t1, 8
+	st.b	$a1, $t2, 8
+	st.b	$a1, $t3, 8
+	st.b	$a1, $t4, 8
+	st.b	$a1, $t5, 8
+	st.b	$a1, $t6, 8
+	st.b	$a1, $t7, 8
+	st.b	$a1, $t8, 8
+	st.b	$a1, $s2, 8
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB122_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 16
@@ -55495,48 +49804,32 @@ GCC_except_table122:
 .Lcst_end121:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E6EqZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E6EqZero4LastEvRN9benchmark5StateE
 .LCPI123_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI123_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI123_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI123_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI123_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI123_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI123_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI123_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI123_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI123_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI123_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI123_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI123_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI123_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi16E6EqZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi16E6EqZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi16E6EqZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -55586,142 +49879,93 @@ _Z9BM_MemCmpILi16E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16E6EqZer
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI123_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI123_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI123_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI123_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI123_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI123_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI123_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI123_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI123_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI123_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI123_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI123_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI123_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI123_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI123_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI123_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI123_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI123_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI123_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI123_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI123_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI123_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI123_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI123_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 256
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB123_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 4
-	xvslli.d	$xr10, $xr1, 4
-	xvslli.d	$xr11, $xr2, 4
-	xvslli.d	$xr12, $xr3, 4
-	xvslli.d	$xr13, $xr4, 4
-	xvslli.d	$xr14, $xr5, 4
-	xvslli.d	$xr15, $xr6, 4
-	xvslli.d	$xr16, $xr7, 4
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 4
+	vslli.d	$vr9, $vr1, 4
+	vslli.d	$vr10, $vr2, 4
+	vslli.d	$vr11, $vr3, 4
+	vslli.d	$vr12, $vr4, 4
+	vslli.d	$vr13, $vr5, 4
+	vslli.d	$vr14, $vr6, 4
+	vslli.d	$vr15, $vr7, 4
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s2, $fp, $s2
 	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 15
+	st.b	$a1, $a4, 15
+	st.b	$a1, $a5, 15
+	st.b	$a1, $a6, 15
+	st.b	$a1, $a7, 15
+	st.b	$a1, $t0, 15
+	st.b	$a1, $t1, 15
+	st.b	$a1, $t2, 15
+	st.b	$a1, $t3, 15
+	st.b	$a1, $t4, 15
+	st.b	$a1, $t5, 15
+	st.b	$a1, $t6, 15
+	st.b	$a1, $t7, 15
+	st.b	$a1, $t8, 15
+	st.b	$a1, $s2, 15
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB123_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 16
@@ -56401,48 +50645,32 @@ GCC_except_table124:
 .Lcst_end123:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E12LessThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E12LessThanZero5FirstEvRN9benchmark5StateE
 .LCPI125_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI125_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI125_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI125_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI125_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI125_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI125_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI125_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI125_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI125_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI125_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI125_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI125_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI125_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi16E12LessThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi16E12LessThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi16E12LessThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -56492,110 +50720,77 @@ _Z9BM_MemCmpILi16E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI125_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI125_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI125_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI125_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI125_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI125_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI125_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI125_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI125_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI125_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI125_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI125_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI125_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI125_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI125_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI125_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI125_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI125_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI125_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI125_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI125_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI125_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI125_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI125_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 256
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB125_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 4
-	xvslli.d	$xr10, $xr1, 4
-	xvslli.d	$xr11, $xr2, 4
-	xvslli.d	$xr12, $xr3, 4
-	xvslli.d	$xr13, $xr4, 4
-	xvslli.d	$xr14, $xr5, 4
-	xvslli.d	$xr15, $xr6, 4
-	xvslli.d	$xr16, $xr7, 4
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 4
+	vslli.d	$vr9, $vr1, 4
+	vslli.d	$vr10, $vr2, 4
+	vslli.d	$vr11, $vr3, 4
+	vslli.d	$vr12, $vr4, 4
+	vslli.d	$vr13, $vr5, 4
+	vslli.d	$vr14, $vr6, 4
+	vslli.d	$vr15, $vr7, 4
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB125_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 16
@@ -56926,48 +51121,32 @@ GCC_except_table125:
 .Lcst_end124:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E12LessThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E12LessThanZero3MidEvRN9benchmark5StateE
 .LCPI126_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI126_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI126_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI126_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI126_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI126_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI126_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI126_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI126_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI126_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI126_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI126_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI126_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI126_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi16E12LessThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi16E12LessThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi16E12LessThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -57017,142 +51196,93 @@ _Z9BM_MemCmpILi16E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16E
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI126_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI126_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI126_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI126_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI126_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI126_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI126_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI126_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI126_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI126_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI126_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI126_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI126_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI126_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI126_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI126_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI126_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI126_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI126_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI126_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI126_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI126_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI126_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI126_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 256
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB126_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 4
-	xvslli.d	$xr10, $xr1, 4
-	xvslli.d	$xr11, $xr2, 4
-	xvslli.d	$xr12, $xr3, 4
-	xvslli.d	$xr13, $xr4, 4
-	xvslli.d	$xr14, $xr5, 4
-	xvslli.d	$xr15, $xr6, 4
-	xvslli.d	$xr16, $xr7, 4
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 4
+	vslli.d	$vr9, $vr1, 4
+	vslli.d	$vr10, $vr2, 4
+	vslli.d	$vr11, $vr3, 4
+	vslli.d	$vr12, $vr4, 4
+	vslli.d	$vr13, $vr5, 4
+	vslli.d	$vr14, $vr6, 4
+	vslli.d	$vr15, $vr7, 4
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s2, $fp, $s2
 	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 8
+	st.b	$a1, $a4, 8
+	st.b	$a1, $a5, 8
+	st.b	$a1, $a6, 8
+	st.b	$a1, $a7, 8
+	st.b	$a1, $t0, 8
+	st.b	$a1, $t1, 8
+	st.b	$a1, $t2, 8
+	st.b	$a1, $t3, 8
+	st.b	$a1, $t4, 8
+	st.b	$a1, $t5, 8
+	st.b	$a1, $t6, 8
+	st.b	$a1, $t7, 8
+	st.b	$a1, $t8, 8
+	st.b	$a1, $s2, 8
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB126_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 16
@@ -57483,48 +51613,32 @@ GCC_except_table126:
 .Lcst_end125:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E12LessThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E12LessThanZero4LastEvRN9benchmark5StateE
 .LCPI127_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI127_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI127_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI127_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI127_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI127_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI127_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI127_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI127_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI127_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI127_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI127_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI127_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI127_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi16E12LessThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi16E12LessThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi16E12LessThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -57574,142 +51688,93 @@ _Z9BM_MemCmpILi16E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI127_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI127_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI127_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI127_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI127_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI127_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI127_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI127_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI127_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI127_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI127_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI127_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI127_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI127_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI127_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI127_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI127_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI127_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI127_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI127_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI127_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI127_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI127_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI127_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 256
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB127_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 4
-	xvslli.d	$xr10, $xr1, 4
-	xvslli.d	$xr11, $xr2, 4
-	xvslli.d	$xr12, $xr3, 4
-	xvslli.d	$xr13, $xr4, 4
-	xvslli.d	$xr14, $xr5, 4
-	xvslli.d	$xr15, $xr6, 4
-	xvslli.d	$xr16, $xr7, 4
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 4
+	vslli.d	$vr9, $vr1, 4
+	vslli.d	$vr10, $vr2, 4
+	vslli.d	$vr11, $vr3, 4
+	vslli.d	$vr12, $vr4, 4
+	vslli.d	$vr13, $vr5, 4
+	vslli.d	$vr14, $vr6, 4
+	vslli.d	$vr15, $vr7, 4
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s2, $fp, $s2
 	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 15
+	st.b	$a1, $a4, 15
+	st.b	$a1, $a5, 15
+	st.b	$a1, $a6, 15
+	st.b	$a1, $a7, 15
+	st.b	$a1, $t0, 15
+	st.b	$a1, $t1, 15
+	st.b	$a1, $t2, 15
+	st.b	$a1, $t3, 15
+	st.b	$a1, $t4, 15
+	st.b	$a1, $t5, 15
+	st.b	$a1, $t6, 15
+	st.b	$a1, $t7, 15
+	st.b	$a1, $t8, 15
+	st.b	$a1, $s2, 15
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB127_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 16
@@ -58419,48 +52484,32 @@ GCC_except_table128:
 .Lcst_end127:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E15GreaterThanZero5FirstEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E15GreaterThanZero5FirstEvRN9benchmark5StateE
 .LCPI129_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI129_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI129_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI129_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI129_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI129_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI129_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI129_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI129_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI129_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI129_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI129_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI129_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI129_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi16E15GreaterThanZero5FirstEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi16E15GreaterThanZero5FirstEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi16E15GreaterThanZero5FirstEvRN9benchmark5StateE
 	.p2align	2
@@ -58510,110 +52559,77 @@ _Z9BM_MemCmpILi16E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpI
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI129_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI129_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI129_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI129_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI129_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI129_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI129_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI129_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI129_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI129_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI129_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI129_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI129_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI129_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI129_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI129_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI129_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI129_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI129_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI129_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI129_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI129_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI129_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI129_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 256
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB129_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 4
-	xvslli.d	$xr10, $xr1, 4
-	xvslli.d	$xr11, $xr2, 4
-	xvslli.d	$xr12, $xr3, 4
-	xvslli.d	$xr13, $xr4, 4
-	xvslli.d	$xr14, $xr5, 4
-	xvslli.d	$xr15, $xr6, 4
-	xvslli.d	$xr16, $xr7, 4
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 4
+	vslli.d	$vr9, $vr1, 4
+	vslli.d	$vr10, $vr2, 4
+	vslli.d	$vr11, $vr3, 4
+	vslli.d	$vr12, $vr4, 4
+	vslli.d	$vr13, $vr5, 4
+	vslli.d	$vr14, $vr6, 4
+	vslli.d	$vr15, $vr7, 4
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr16, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr15, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr14, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr13, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr12, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr11, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr10, 3
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 0
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 1
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 2
-	stx.b	$a1, $fp, $a2
-	xvpickve2gr.d	$a2, $xr9, 3
-	stx.b	$a1, $fp, $a2
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	stx.b	$a1, $fp, $a3
+	stx.b	$a1, $fp, $a4
+	stx.b	$a1, $fp, $a5
+	stx.b	$a1, $fp, $a6
+	stx.b	$a1, $fp, $a7
+	stx.b	$a1, $fp, $t0
+	stx.b	$a1, $fp, $t1
+	stx.b	$a1, $fp, $t2
+	stx.b	$a1, $fp, $t3
+	stx.b	$a1, $fp, $t4
+	stx.b	$a1, $fp, $t5
+	stx.b	$a1, $fp, $t6
+	stx.b	$a1, $fp, $t7
+	stx.b	$a1, $fp, $t8
+	stx.b	$a1, $fp, $s2
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB129_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 16
@@ -58945,48 +52961,32 @@ GCC_except_table129:
 .Lcst_end128:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E15GreaterThanZero3MidEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E15GreaterThanZero3MidEvRN9benchmark5StateE
 .LCPI130_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI130_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI130_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI130_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI130_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI130_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI130_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI130_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI130_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI130_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI130_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI130_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI130_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI130_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi16E15GreaterThanZero3MidEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi16E15GreaterThanZero3MidEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi16E15GreaterThanZero3MidEvRN9benchmark5StateE
 	.p2align	2
@@ -59036,142 +53036,93 @@ _Z9BM_MemCmpILi16E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI130_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI130_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI130_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI130_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI130_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI130_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI130_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI130_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI130_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI130_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI130_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI130_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI130_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI130_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI130_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI130_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI130_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI130_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI130_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI130_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI130_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI130_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI130_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI130_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 256
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB130_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 4
-	xvslli.d	$xr10, $xr1, 4
-	xvslli.d	$xr11, $xr2, 4
-	xvslli.d	$xr12, $xr3, 4
-	xvslli.d	$xr13, $xr4, 4
-	xvslli.d	$xr14, $xr5, 4
-	xvslli.d	$xr15, $xr6, 4
-	xvslli.d	$xr16, $xr7, 4
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 4
+	vslli.d	$vr9, $vr1, 4
+	vslli.d	$vr10, $vr2, 4
+	vslli.d	$vr11, $vr3, 4
+	vslli.d	$vr12, $vr4, 4
+	vslli.d	$vr13, $vr5, 4
+	vslli.d	$vr14, $vr6, 4
+	vslli.d	$vr15, $vr7, 4
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s2, $fp, $s2
 	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 8
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 8
+	st.b	$a1, $a4, 8
+	st.b	$a1, $a5, 8
+	st.b	$a1, $a6, 8
+	st.b	$a1, $a7, 8
+	st.b	$a1, $t0, 8
+	st.b	$a1, $t1, 8
+	st.b	$a1, $t2, 8
+	st.b	$a1, $t3, 8
+	st.b	$a1, $t4, 8
+	st.b	$a1, $t5, 8
+	st.b	$a1, $t6, 8
+	st.b	$a1, $t7, 8
+	st.b	$a1, $t8, 8
+	st.b	$a1, $s2, 8
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB130_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 16
@@ -59503,48 +53454,32 @@ GCC_except_table130:
 .Lcst_end129:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E15GreaterThanZero4LastEvRN9benchmark5StateE
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9BM_MemCmpILi16E15GreaterThanZero4LastEvRN9benchmark5StateE
 .LCPI131_0:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI131_1:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI131_2:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI131_3:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI131_4:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI131_5:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
+.LCPI131_1:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+.LCPI131_2:
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI131_6:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
+.LCPI131_3:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+.LCPI131_4:
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
+.LCPI131_5:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+.LCPI131_6:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI131_7:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.section	.text._Z9BM_MemCmpILi16E15GreaterThanZero4LastEvRN9benchmark5StateE,"axG",@progbits,_Z9BM_MemCmpILi16E15GreaterThanZero4LastEvRN9benchmark5StateE,comdat
 	.weak	_Z9BM_MemCmpILi16E15GreaterThanZero4LastEvRN9benchmark5StateE
 	.p2align	2
@@ -59594,142 +53529,93 @@ _Z9BM_MemCmpILi16E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 24
-	st.d	$s0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI131_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI131_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI131_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI131_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI131_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI131_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI131_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI131_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI131_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI131_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI131_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI131_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI131_4)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI131_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI131_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI131_5)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI131_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI131_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI131_6)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI131_6)
+	vld	$vr6, $a0, %pc_lo12(.LCPI131_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI131_7)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI131_7)
+	vld	$vr7, $a0, %pc_lo12(.LCPI131_7)
+	st.d	$s0, $sp, 16
 	ori	$a0, $zero, 256
 	ori	$a1, $zero, 255
-	xvrepli.d	$xr8, 32
 	.p2align	4, , 16
 .LBB131_2:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr9, $xr0, 4
-	xvslli.d	$xr10, $xr1, 4
-	xvslli.d	$xr11, $xr2, 4
-	xvslli.d	$xr12, $xr3, 4
-	xvslli.d	$xr13, $xr4, 4
-	xvslli.d	$xr14, $xr5, 4
-	xvslli.d	$xr15, $xr6, 4
-	xvslli.d	$xr16, $xr7, 4
-	xvpickve2gr.d	$a2, $xr16, 0
+	vslli.d	$vr8, $vr0, 4
+	vslli.d	$vr9, $vr1, 4
+	vslli.d	$vr10, $vr2, 4
+	vslli.d	$vr11, $vr3, 4
+	vslli.d	$vr12, $vr4, 4
+	vslli.d	$vr13, $vr5, 4
+	vslli.d	$vr14, $vr6, 4
+	vslli.d	$vr15, $vr7, 4
+	vpickve2gr.d	$a2, $vr15, 0
+	vpickve2gr.d	$a3, $vr15, 1
+	vpickve2gr.d	$a4, $vr14, 0
+	vpickve2gr.d	$a5, $vr14, 1
+	vpickve2gr.d	$a6, $vr13, 0
+	vpickve2gr.d	$a7, $vr13, 1
+	vpickve2gr.d	$t0, $vr12, 0
+	vpickve2gr.d	$t1, $vr12, 1
+	vpickve2gr.d	$t2, $vr11, 0
+	vpickve2gr.d	$t3, $vr11, 1
+	vpickve2gr.d	$t4, $vr10, 0
+	vpickve2gr.d	$t5, $vr10, 1
+	vpickve2gr.d	$t6, $vr9, 0
+	vpickve2gr.d	$t7, $vr9, 1
+	vpickve2gr.d	$t8, $vr8, 0
+	vpickve2gr.d	$s2, $vr8, 1
 	add.d	$a2, $fp, $a2
+	add.d	$a3, $fp, $a3
+	add.d	$a4, $fp, $a4
+	add.d	$a5, $fp, $a5
+	add.d	$a6, $fp, $a6
+	add.d	$a7, $fp, $a7
+	add.d	$t0, $fp, $t0
+	add.d	$t1, $fp, $t1
+	add.d	$t2, $fp, $t2
+	add.d	$t3, $fp, $t3
+	add.d	$t4, $fp, $t4
+	add.d	$t5, $fp, $t5
+	add.d	$t6, $fp, $t6
+	add.d	$t7, $fp, $t7
+	add.d	$t8, $fp, $t8
+	add.d	$s2, $fp, $s2
 	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr16, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr16, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr16, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr15, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr15, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr15, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr15, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr14, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr14, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr14, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr14, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr13, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr13, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr13, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr13, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr12, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr12, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr12, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr12, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr11, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr11, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr11, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr11, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr10, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr10, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr10, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr10, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr9, 0
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr9, 1
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr9, 2
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvpickve2gr.d	$a2, $xr9, 3
-	add.d	$a2, $fp, $a2
-	st.b	$a1, $a2, 15
-	xvadd.d	$xr7, $xr7, $xr8
-	xvadd.d	$xr6, $xr6, $xr8
-	xvadd.d	$xr5, $xr5, $xr8
-	xvadd.d	$xr4, $xr4, $xr8
-	xvadd.d	$xr3, $xr3, $xr8
-	xvadd.d	$xr2, $xr2, $xr8
-	xvadd.d	$xr1, $xr1, $xr8
-	addi.d	$a0, $a0, -32
-	xvadd.d	$xr0, $xr0, $xr8
+	st.b	$a1, $a3, 15
+	st.b	$a1, $a4, 15
+	st.b	$a1, $a5, 15
+	st.b	$a1, $a6, 15
+	st.b	$a1, $a7, 15
+	st.b	$a1, $t0, 15
+	st.b	$a1, $t1, 15
+	st.b	$a1, $t2, 15
+	st.b	$a1, $t3, 15
+	st.b	$a1, $t4, 15
+	st.b	$a1, $t5, 15
+	st.b	$a1, $t6, 15
+	st.b	$a1, $t7, 15
+	st.b	$a1, $t8, 15
+	st.b	$a1, $s2, 15
+	vaddi.du	$vr7, $vr7, 16
+	vaddi.du	$vr6, $vr6, 16
+	vaddi.du	$vr5, $vr5, 16
+	vaddi.du	$vr4, $vr4, 16
+	vaddi.du	$vr3, $vr3, 16
+	vaddi.du	$vr2, $vr2, 16
+	vaddi.du	$vr1, $vr1, 16
+	addi.d	$a0, $a0, -16
+	vaddi.du	$vr0, $vr0, 16
 	bnez	$a0, .LBB131_2
 # %bb.3:                                # %middle.block
 	ori	$a2, $zero, 16

@@ -229,29 +229,29 @@ _ZN11btSparseSdfILi3EE10InitializeEi:   # @_ZN11btSparseSdfILi3EE10InitializeEi
 	ld.d	$a0, $fp, 16
 	blez	$a1, .LBB1_14
 .LBB1_4:                                # %.lr.ph.i.i.i
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	move	$a2, $zero
 	bltu	$a1, $a3, .LBB1_9
 # %bb.5:                                # %.lr.ph.i.i.i
 	sub.d	$a3, $s1, $a0
-	ori	$a4, $zero, 64
+	ori	$a4, $zero, 32
 	bltu	$a3, $a4, .LBB1_9
 # %bb.6:                                # %vector.ph
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	addi.d	$a3, $a0, 32
-	addi.d	$a4, $s1, 32
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s1, 16
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB1_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB1_7
 # %bb.8:                                # %middle.block
 	beq	$a2, $a1, .LBB1_11
@@ -1034,7 +1034,7 @@ _ZN24btSoftRigidDynamicsWorld11addSoftBodyEP10btSoftBodyss: # @_ZN24btSoftRigidD
 	ld.d	$a4, $a0, 392
 	blez	$a5, .LBB9_13
 .LBB9_4:                                # %.lr.ph.i.i.i
-	ori	$a7, $zero, 8
+	ori	$a7, $zero, 4
 	move	$a6, $zero
 	move	$a3, $s3
 	move	$a2, $s2
@@ -1042,24 +1042,24 @@ _ZN24btSoftRigidDynamicsWorld11addSoftBodyEP10btSoftBodyss: # @_ZN24btSoftRigidD
 	bltu	$a5, $a7, .LBB9_9
 # %bb.5:                                # %.lr.ph.i.i.i
 	sub.d	$a7, $fp, $a4
-	ori	$t0, $zero, 64
+	ori	$t0, $zero, 32
 	bltu	$a7, $t0, .LBB9_9
 # %bb.6:                                # %vector.ph
-	bstrpick.d	$a6, $a5, 30, 3
-	slli.d	$a6, $a6, 3
-	addi.d	$a7, $a4, 32
-	addi.d	$t0, $fp, 32
+	bstrpick.d	$a6, $a5, 30, 2
+	slli.d	$a6, $a6, 2
+	addi.d	$a7, $a4, 16
+	addi.d	$t0, $fp, 16
 	move	$t1, $a6
 	.p2align	4, , 16
 .LBB9_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a7, -32
-	xvld	$xr1, $a7, 0
-	xvst	$xr0, $t0, -32
-	xvst	$xr1, $t0, 0
-	addi.d	$t1, $t1, -8
-	addi.d	$a7, $a7, 64
-	addi.d	$t0, $t0, 64
+	vld	$vr0, $a7, -16
+	vld	$vr1, $a7, 0
+	vst	$vr0, $t0, -16
+	vst	$vr1, $t0, 0
+	addi.d	$t1, $t1, -4
+	addi.d	$a7, $a7, 32
+	addi.d	$t0, $t0, 32
 	bnez	$t1, .LBB9_7
 # %bb.8:                                # %middle.block
 	beq	$a6, $a5, .LBB9_11

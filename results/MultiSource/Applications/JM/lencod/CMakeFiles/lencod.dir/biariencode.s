@@ -74,10 +74,12 @@ arienco_delete_encoding_environment:    # @arienco_delete_encoding_environment
 	ld.b	$a2, $a1, 32
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$a0, $a0, %pc_lo12(errortext)
-	xvld	$xr0, $a1, 0
+	vld	$vr0, $a1, 16
+	vld	$vr1, $a1, 0
 	st.b	$a2, $a0, 32
+	vst	$vr0, $a0, 16
 	ori	$a1, $zero, 200
-	xvst	$xr0, $a0, 0
+	vst	$vr1, $a0, 0
 	pcaddu18i	$t8, %call36(error)
 	jr	$t8
 .Lfunc_end3:

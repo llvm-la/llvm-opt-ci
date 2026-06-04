@@ -39,7 +39,7 @@ complex_transpose:                      # @complex_transpose
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_10 Depth 2
                                         #     Child Loop BB0_8 Depth 2
-	sltui	$t6, $t1, 8
+	sltui	$t6, $t1, 4
 	or	$t6, $t6, $a6
 	bnez	$t6, .LBB0_6
 # %bb.4:                                # %vector.memcheck
@@ -87,26 +87,26 @@ complex_transpose:                      # @complex_transpose
 .LBB0_9:                                # %vector.ph
                                         #   in Loop: Header=BB0_3 Depth=1
 	move	$t7, $t1
-	bstrins.d	$t7, $zero, 2, 0
-	bstrpick.d	$t6, $t1, 62, 3
-	slli.d	$t6, $t6, 3
+	bstrins.d	$t7, $zero, 1, 0
+	bstrpick.d	$t6, $t1, 62, 2
+	slli.d	$t6, $t6, 2
 	move	$t8, $a0
 	move	$fp, $a1
 	.p2align	4, , 16
 .LBB0_10:                               # %vector.body
                                         #   Parent Loop BB0_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvldx	$xr0, $t8, $t4
-	xvldx	$xr1, $fp, $t4
-	xvldx	$xr2, $t8, $t5
-	xvldx	$xr3, $fp, $t5
-	xvstx	$xr0, $t8, $t5
-	xvstx	$xr1, $fp, $t5
-	xvstx	$xr2, $t8, $t4
-	xvstx	$xr3, $fp, $t4
-	addi.d	$t7, $t7, -8
-	addi.d	$fp, $fp, 32
-	addi.d	$t8, $t8, 32
+	vldx	$vr0, $t8, $t4
+	vldx	$vr1, $fp, $t4
+	vldx	$vr2, $t8, $t5
+	vldx	$vr3, $fp, $t5
+	vstx	$vr0, $t8, $t5
+	vstx	$vr1, $fp, $t5
+	vstx	$vr2, $t8, $t4
+	vstx	$vr3, $fp, $t4
+	addi.d	$t7, $t7, -4
+	addi.d	$fp, $fp, 16
+	addi.d	$t8, $t8, 16
 	bnez	$t7, .LBB0_10
 # %bb.11:                               # %middle.block
                                         #   in Loop: Header=BB0_3 Depth=1

@@ -1,15 +1,11 @@
 	.file	"material.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function get_materials
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function get_materials
 .LCPI0_0:
 	.word	5                               # 0x5
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	27                              # 0x1b
-	.word	21                              # 0x15
-	.word	21                              # 0x15
-	.word	21                              # 0x15
-	.word	21                              # 0x15
 	.text
 	.globl	get_materials
 	.p2align	2
@@ -35,20 +31,24 @@ get_materials:                          # @get_materials
 	ori	$a1, $zero, 321
 	masknez	$a1, $a1, $a0
 	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI0_0)
 	ori	$a2, $zero, 34
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	st.w	$a0, $s1, 0
-	xvst	$xr0, $s1, 4
+	vst	$vr0, $s1, 4
+	vrepli.w	$vr0, 21
+	vst	$vr0, $s1, 20
+	vld	$vr0, $fp, 16
 	ori	$a0, $zero, 21
 	lu32i.d	$a0, 9
 	st.d	$a0, $s1, 36
-	xvld	$xr0, $fp, 0
+	vst	$vr0, $sp, 24
+	vld	$vr0, $fp, 0
 	ori	$a0, $zero, 9
 	st.w	$a0, $s1, 44
 	st.d	$s1, $s0, 0
-	xvst	$xr0, $sp, 8
+	vst	$vr0, $sp, 8
 	addi.d	$a0, $sp, 8
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(load_mats)
@@ -68,17 +68,13 @@ get_materials:                          # @get_materials
 .Lfunc_end0:
 	.size	get_materials, .Lfunc_end0-get_materials
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function load_num_nucs
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function load_num_nucs
 .LCPI1_0:
 	.word	5                               # 0x5
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	27                              # 0x1b
-	.word	21                              # 0x15
-	.word	21                              # 0x15
-	.word	21                              # 0x15
-	.word	21                              # 0x15
 	.text
 	.globl	load_num_nucs
 	.p2align	2
@@ -99,12 +95,14 @@ load_num_nucs:                          # @load_num_nucs
 	ori	$a2, $zero, 321
 	masknez	$a2, $a2, $a1
 	pcalau12i	$a3, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a3, %pc_lo12(.LCPI1_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI1_0)
 	ori	$a3, $zero, 34
 	maskeqz	$a1, $a3, $a1
 	or	$a1, $a1, $a2
 	st.w	$a1, $a0, 0
-	xvst	$xr0, $a0, 4
+	vst	$vr0, $a0, 4
+	vrepli.w	$vr0, 21
+	vst	$vr0, $a0, 20
 	ori	$a1, $zero, 21
 	lu32i.d	$a1, 9
 	st.d	$a1, $a0, 36
@@ -117,338 +115,365 @@ load_num_nucs:                          # @load_num_nucs
 .Lfunc_end1:
 	.size	load_num_nucs, .Lfunc_end1-load_num_nucs
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function load_mats
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function load_mats
 .LCPI2_0:
 	.word	68                              # 0x44
 	.word	69                              # 0x45
 	.word	70                              # 0x46
 	.word	71                              # 0x47
+.LCPI2_1:
 	.word	72                              # 0x48
 	.word	73                              # 0x49
 	.word	74                              # 0x4a
 	.word	75                              # 0x4b
-.LCPI2_1:
+.LCPI2_2:
 	.word	76                              # 0x4c
 	.word	77                              # 0x4d
 	.word	78                              # 0x4e
 	.word	79                              # 0x4f
+.LCPI2_3:
 	.word	80                              # 0x50
 	.word	81                              # 0x51
 	.word	82                              # 0x52
 	.word	83                              # 0x53
-.LCPI2_2:
+.LCPI2_4:
 	.word	84                              # 0x54
 	.word	85                              # 0x55
 	.word	86                              # 0x56
 	.word	87                              # 0x57
+.LCPI2_5:
 	.word	88                              # 0x58
 	.word	89                              # 0x59
 	.word	90                              # 0x5a
 	.word	91                              # 0x5b
-.LCPI2_3:
+.LCPI2_6:
 	.word	92                              # 0x5c
 	.word	93                              # 0x5d
 	.word	94                              # 0x5e
 	.word	95                              # 0x5f
+.LCPI2_7:
 	.word	96                              # 0x60
 	.word	97                              # 0x61
 	.word	98                              # 0x62
 	.word	99                              # 0x63
-.LCPI2_4:
+.LCPI2_8:
 	.word	100                             # 0x64
 	.word	101                             # 0x65
 	.word	102                             # 0x66
 	.word	103                             # 0x67
+.LCPI2_9:
 	.word	104                             # 0x68
 	.word	105                             # 0x69
 	.word	106                             # 0x6a
 	.word	107                             # 0x6b
-.LCPI2_5:
+.LCPI2_10:
 	.word	108                             # 0x6c
 	.word	109                             # 0x6d
 	.word	110                             # 0x6e
 	.word	111                             # 0x6f
+.LCPI2_11:
 	.word	112                             # 0x70
 	.word	113                             # 0x71
 	.word	114                             # 0x72
 	.word	115                             # 0x73
-.LCPI2_6:
+.LCPI2_12:
 	.word	116                             # 0x74
 	.word	117                             # 0x75
 	.word	118                             # 0x76
 	.word	119                             # 0x77
+.LCPI2_13:
 	.word	120                             # 0x78
 	.word	121                             # 0x79
 	.word	122                             # 0x7a
 	.word	123                             # 0x7b
-.LCPI2_7:
+.LCPI2_14:
 	.word	124                             # 0x7c
 	.word	125                             # 0x7d
 	.word	126                             # 0x7e
 	.word	127                             # 0x7f
+.LCPI2_15:
 	.word	128                             # 0x80
 	.word	129                             # 0x81
 	.word	130                             # 0x82
 	.word	131                             # 0x83
-.LCPI2_8:
+.LCPI2_16:
 	.word	132                             # 0x84
 	.word	133                             # 0x85
 	.word	134                             # 0x86
 	.word	135                             # 0x87
+.LCPI2_17:
 	.word	136                             # 0x88
 	.word	137                             # 0x89
 	.word	138                             # 0x8a
 	.word	139                             # 0x8b
-.LCPI2_9:
+.LCPI2_18:
 	.word	140                             # 0x8c
 	.word	141                             # 0x8d
 	.word	142                             # 0x8e
 	.word	143                             # 0x8f
+.LCPI2_19:
 	.word	144                             # 0x90
 	.word	145                             # 0x91
 	.word	146                             # 0x92
 	.word	147                             # 0x93
-.LCPI2_10:
+.LCPI2_20:
 	.word	148                             # 0x94
 	.word	149                             # 0x95
 	.word	150                             # 0x96
 	.word	151                             # 0x97
+.LCPI2_21:
 	.word	152                             # 0x98
 	.word	153                             # 0x99
 	.word	154                             # 0x9a
 	.word	155                             # 0x9b
-.LCPI2_11:
+.LCPI2_22:
 	.word	156                             # 0x9c
 	.word	157                             # 0x9d
 	.word	158                             # 0x9e
 	.word	159                             # 0x9f
+.LCPI2_23:
 	.word	160                             # 0xa0
 	.word	161                             # 0xa1
 	.word	162                             # 0xa2
 	.word	163                             # 0xa3
-.LCPI2_12:
+.LCPI2_24:
 	.word	164                             # 0xa4
 	.word	165                             # 0xa5
 	.word	166                             # 0xa6
 	.word	167                             # 0xa7
+.LCPI2_25:
 	.word	168                             # 0xa8
 	.word	169                             # 0xa9
 	.word	170                             # 0xaa
 	.word	171                             # 0xab
-.LCPI2_13:
+.LCPI2_26:
 	.word	172                             # 0xac
 	.word	173                             # 0xad
 	.word	174                             # 0xae
 	.word	175                             # 0xaf
+.LCPI2_27:
 	.word	176                             # 0xb0
 	.word	177                             # 0xb1
 	.word	178                             # 0xb2
 	.word	179                             # 0xb3
-.LCPI2_14:
+.LCPI2_28:
 	.word	180                             # 0xb4
 	.word	181                             # 0xb5
 	.word	182                             # 0xb6
 	.word	183                             # 0xb7
+.LCPI2_29:
 	.word	184                             # 0xb8
 	.word	185                             # 0xb9
 	.word	186                             # 0xba
 	.word	187                             # 0xbb
-.LCPI2_15:
+.LCPI2_30:
 	.word	188                             # 0xbc
 	.word	189                             # 0xbd
 	.word	190                             # 0xbe
 	.word	191                             # 0xbf
+.LCPI2_31:
 	.word	192                             # 0xc0
 	.word	193                             # 0xc1
 	.word	194                             # 0xc2
 	.word	195                             # 0xc3
-.LCPI2_16:
+.LCPI2_32:
 	.word	196                             # 0xc4
 	.word	197                             # 0xc5
 	.word	198                             # 0xc6
 	.word	199                             # 0xc7
+.LCPI2_33:
 	.word	200                             # 0xc8
 	.word	201                             # 0xc9
 	.word	202                             # 0xca
 	.word	203                             # 0xcb
-.LCPI2_17:
+.LCPI2_34:
 	.word	204                             # 0xcc
 	.word	205                             # 0xcd
 	.word	206                             # 0xce
 	.word	207                             # 0xcf
+.LCPI2_35:
 	.word	208                             # 0xd0
 	.word	209                             # 0xd1
 	.word	210                             # 0xd2
 	.word	211                             # 0xd3
-.LCPI2_18:
+.LCPI2_36:
 	.word	212                             # 0xd4
 	.word	213                             # 0xd5
 	.word	214                             # 0xd6
 	.word	215                             # 0xd7
+.LCPI2_37:
 	.word	216                             # 0xd8
 	.word	217                             # 0xd9
 	.word	218                             # 0xda
 	.word	219                             # 0xdb
-.LCPI2_19:
+.LCPI2_38:
 	.word	220                             # 0xdc
 	.word	221                             # 0xdd
 	.word	222                             # 0xde
 	.word	223                             # 0xdf
+.LCPI2_39:
 	.word	224                             # 0xe0
 	.word	225                             # 0xe1
 	.word	226                             # 0xe2
 	.word	227                             # 0xe3
-.LCPI2_20:
+.LCPI2_40:
 	.word	228                             # 0xe4
 	.word	229                             # 0xe5
 	.word	230                             # 0xe6
 	.word	231                             # 0xe7
+.LCPI2_41:
 	.word	232                             # 0xe8
 	.word	233                             # 0xe9
 	.word	234                             # 0xea
 	.word	235                             # 0xeb
-.LCPI2_21:
+.LCPI2_42:
 	.word	236                             # 0xec
 	.word	237                             # 0xed
 	.word	238                             # 0xee
 	.word	239                             # 0xef
+.LCPI2_43:
 	.word	240                             # 0xf0
 	.word	241                             # 0xf1
 	.word	242                             # 0xf2
 	.word	243                             # 0xf3
-.LCPI2_22:
+.LCPI2_44:
 	.word	244                             # 0xf4
 	.word	245                             # 0xf5
 	.word	246                             # 0xf6
 	.word	247                             # 0xf7
+.LCPI2_45:
 	.word	248                             # 0xf8
 	.word	249                             # 0xf9
 	.word	250                             # 0xfa
 	.word	251                             # 0xfb
-.LCPI2_23:
+.LCPI2_46:
 	.word	252                             # 0xfc
 	.word	253                             # 0xfd
 	.word	254                             # 0xfe
 	.word	255                             # 0xff
+.LCPI2_47:
 	.word	256                             # 0x100
 	.word	257                             # 0x101
 	.word	258                             # 0x102
 	.word	259                             # 0x103
-.LCPI2_24:
+.LCPI2_48:
 	.word	260                             # 0x104
 	.word	261                             # 0x105
 	.word	262                             # 0x106
 	.word	263                             # 0x107
+.LCPI2_49:
 	.word	264                             # 0x108
 	.word	265                             # 0x109
 	.word	266                             # 0x10a
 	.word	267                             # 0x10b
-.LCPI2_25:
+.LCPI2_50:
 	.word	268                             # 0x10c
 	.word	269                             # 0x10d
 	.word	270                             # 0x10e
 	.word	271                             # 0x10f
+.LCPI2_51:
 	.word	272                             # 0x110
 	.word	273                             # 0x111
 	.word	274                             # 0x112
 	.word	275                             # 0x113
-.LCPI2_26:
+.LCPI2_52:
 	.word	276                             # 0x114
 	.word	277                             # 0x115
 	.word	278                             # 0x116
 	.word	279                             # 0x117
+.LCPI2_53:
 	.word	280                             # 0x118
 	.word	281                             # 0x119
 	.word	282                             # 0x11a
 	.word	283                             # 0x11b
-.LCPI2_27:
+.LCPI2_54:
 	.word	284                             # 0x11c
 	.word	285                             # 0x11d
 	.word	286                             # 0x11e
 	.word	287                             # 0x11f
+.LCPI2_55:
 	.word	288                             # 0x120
 	.word	289                             # 0x121
 	.word	290                             # 0x122
 	.word	291                             # 0x123
-.LCPI2_28:
+.LCPI2_56:
 	.word	292                             # 0x124
 	.word	293                             # 0x125
 	.word	294                             # 0x126
 	.word	295                             # 0x127
+.LCPI2_57:
 	.word	296                             # 0x128
 	.word	297                             # 0x129
 	.word	298                             # 0x12a
 	.word	299                             # 0x12b
-.LCPI2_29:
+.LCPI2_58:
 	.word	300                             # 0x12c
 	.word	301                             # 0x12d
 	.word	302                             # 0x12e
 	.word	303                             # 0x12f
+.LCPI2_59:
 	.word	304                             # 0x130
 	.word	305                             # 0x131
 	.word	306                             # 0x132
 	.word	307                             # 0x133
-.LCPI2_30:
+.LCPI2_60:
 	.word	308                             # 0x134
 	.word	309                             # 0x135
 	.word	310                             # 0x136
 	.word	311                             # 0x137
+.LCPI2_61:
 	.word	312                             # 0x138
 	.word	313                             # 0x139
 	.word	314                             # 0x13a
 	.word	315                             # 0x13b
-.LCPI2_31:
+.LCPI2_62:
 	.word	316                             # 0x13c
 	.word	317                             # 0x13d
 	.word	318                             # 0x13e
 	.word	319                             # 0x13f
+.LCPI2_63:
 	.word	320                             # 0x140
 	.word	321                             # 0x141
 	.word	322                             # 0x142
 	.word	323                             # 0x143
-.LCPI2_32:
+.LCPI2_64:
 	.word	324                             # 0x144
 	.word	325                             # 0x145
 	.word	326                             # 0x146
 	.word	327                             # 0x147
+.LCPI2_65:
 	.word	328                             # 0x148
 	.word	329                             # 0x149
 	.word	330                             # 0x14a
 	.word	331                             # 0x14b
-.LCPI2_33:
+.LCPI2_66:
 	.word	332                             # 0x14c
 	.word	333                             # 0x14d
 	.word	334                             # 0x14e
 	.word	335                             # 0x14f
+.LCPI2_67:
 	.word	336                             # 0x150
 	.word	337                             # 0x151
 	.word	338                             # 0x152
 	.word	339                             # 0x153
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI2_34:
+.LCPI2_68:
 	.word	340                             # 0x154
 	.word	341                             # 0x155
 	.word	342                             # 0x156
 	.word	343                             # 0x157
-.LCPI2_35:
+.LCPI2_69:
 	.word	344                             # 0x158
 	.word	345                             # 0x159
 	.word	346                             # 0x15a
 	.word	347                             # 0x15b
-.LCPI2_36:
-	.word	348                             # 0x15c
-	.word	349                             # 0x15d
-	.word	350                             # 0x15e
-	.word	351                             # 0x15f
 	.text
 	.globl	load_mats
 	.p2align	2
 	.prefalign	5, .Lfunc_end2, nop
 	.type	load_mats,@function
 load_mats:                              # @load_mats
-# %bb.0:                                # %iter.check
+# %bb.0:                                # %vector.ph
 	addi.d	$sp, $sp, -1424
 	st.d	$ra, $sp, 1416                  # 8-byte Folded Spill
 	st.d	$fp, $sp, 1408                  # 8-byte Folded Spill
@@ -546,116 +571,221 @@ load_mats:                              # @load_mats
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_0)
-	xvst	$xr0, $sp, 184
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_1)
+	vst	$vr0, $sp, 184
+	vst	$vr1, $sp, 200
 	pcalau12i	$a0, %pc_hi20(.LCPI2_2)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI2_2)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_3)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI2_3)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_4)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI2_4)
-	xvst	$xr0, $sp, 216
-	xvst	$xr1, $sp, 248
-	xvst	$xr2, $sp, 280
-	xvst	$xr3, $sp, 312
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_5)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_5)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_5)
+	vst	$vr0, $sp, 216
+	vst	$vr1, $sp, 232
+	vst	$vr2, $sp, 248
+	vst	$vr3, $sp, 264
 	pcalau12i	$a0, %pc_hi20(.LCPI2_6)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI2_6)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_7)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI2_7)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_7)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_8)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI2_8)
-	xvst	$xr0, $sp, 344
-	xvst	$xr1, $sp, 376
-	xvst	$xr2, $sp, 408
-	xvst	$xr3, $sp, 440
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_8)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_9)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_9)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_9)
+	vst	$vr0, $sp, 280
+	vst	$vr1, $sp, 296
+	vst	$vr2, $sp, 312
+	vst	$vr3, $sp, 328
 	pcalau12i	$a0, %pc_hi20(.LCPI2_10)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI2_10)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_10)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_11)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI2_11)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_11)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_12)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI2_12)
-	xvst	$xr0, $sp, 472
-	xvst	$xr1, $sp, 504
-	xvst	$xr2, $sp, 536
-	xvst	$xr3, $sp, 568
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_12)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_13)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_13)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_13)
+	vst	$vr0, $sp, 344
+	vst	$vr1, $sp, 360
+	vst	$vr2, $sp, 376
+	vst	$vr3, $sp, 392
 	pcalau12i	$a0, %pc_hi20(.LCPI2_14)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI2_14)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_14)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_15)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI2_15)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_15)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_16)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI2_16)
-	xvst	$xr0, $sp, 600
-	xvst	$xr1, $sp, 632
-	xvst	$xr2, $sp, 664
-	xvst	$xr3, $sp, 696
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_16)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_17)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_17)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_17)
+	vst	$vr0, $sp, 408
+	vst	$vr1, $sp, 424
+	vst	$vr2, $sp, 440
+	vst	$vr3, $sp, 456
 	pcalau12i	$a0, %pc_hi20(.LCPI2_18)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI2_18)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_18)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_19)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI2_19)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_19)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_20)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI2_20)
-	xvst	$xr0, $sp, 728
-	xvst	$xr1, $sp, 760
-	xvst	$xr2, $sp, 792
-	xvst	$xr3, $sp, 824
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_20)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_21)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_21)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_21)
+	vst	$vr0, $sp, 472
+	vst	$vr1, $sp, 488
+	vst	$vr2, $sp, 504
+	vst	$vr3, $sp, 520
 	pcalau12i	$a0, %pc_hi20(.LCPI2_22)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI2_22)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_22)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_23)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI2_23)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_23)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_24)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI2_24)
-	xvst	$xr0, $sp, 856
-	xvst	$xr1, $sp, 888
-	xvst	$xr2, $sp, 920
-	xvst	$xr3, $sp, 952
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_24)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_25)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_25)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_25)
+	vst	$vr0, $sp, 536
+	vst	$vr1, $sp, 552
+	vst	$vr2, $sp, 568
+	vst	$vr3, $sp, 584
 	pcalau12i	$a0, %pc_hi20(.LCPI2_26)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI2_26)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_26)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_27)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI2_27)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_27)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_28)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI2_28)
-	xvst	$xr0, $sp, 984
-	xvst	$xr1, $sp, 1016
-	xvst	$xr2, $sp, 1048
-	xvst	$xr3, $sp, 1080
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_28)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_29)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_29)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_29)
+	vst	$vr0, $sp, 600
+	vst	$vr1, $sp, 616
+	vst	$vr2, $sp, 632
+	vst	$vr3, $sp, 648
 	pcalau12i	$a0, %pc_hi20(.LCPI2_30)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI2_30)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_30)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_31)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI2_31)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_31)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_32)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI2_32)
-	xvst	$xr0, $sp, 1112
-	xvst	$xr1, $sp, 1144
-	xvst	$xr2, $sp, 1176
-	xvst	$xr3, $sp, 1208
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_32)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_33)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_33)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_33)
+	vst	$vr0, $sp, 664
+	vst	$vr1, $sp, 680
+	vst	$vr2, $sp, 696
+	vst	$vr3, $sp, 712
 	pcalau12i	$a0, %pc_hi20(.LCPI2_34)
-	vld	$vr1, $a0, %pc_lo12(.LCPI2_34)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_34)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_35)
-	vld	$vr2, $a0, %pc_lo12(.LCPI2_35)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_35)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_36)
-	vld	$vr3, $a0, %pc_lo12(.LCPI2_36)
-	xvst	$xr0, $sp, 1240
-	vst	$vr1, $sp, 1272
-	vst	$vr2, $sp, 1288
-	vst	$vr3, $sp, 1304
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_36)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_37)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_37)
+	vst	$vr0, $sp, 728
+	vst	$vr1, $sp, 744
+	vst	$vr2, $sp, 760
+	vst	$vr3, $sp, 776
+	pcalau12i	$a0, %pc_hi20(.LCPI2_38)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_38)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_39)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_39)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_40)
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_40)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_41)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_41)
+	vst	$vr0, $sp, 792
+	vst	$vr1, $sp, 808
+	vst	$vr2, $sp, 824
+	vst	$vr3, $sp, 840
+	pcalau12i	$a0, %pc_hi20(.LCPI2_42)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_42)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_43)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_43)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_44)
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_44)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_45)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_45)
+	vst	$vr0, $sp, 856
+	vst	$vr1, $sp, 872
+	vst	$vr2, $sp, 888
+	vst	$vr3, $sp, 904
+	pcalau12i	$a0, %pc_hi20(.LCPI2_46)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_46)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_47)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_47)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_48)
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_48)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_49)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_49)
+	vst	$vr0, $sp, 920
+	vst	$vr1, $sp, 936
+	vst	$vr2, $sp, 952
+	vst	$vr3, $sp, 968
+	pcalau12i	$a0, %pc_hi20(.LCPI2_50)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_50)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_51)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_51)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_52)
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_52)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_53)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_53)
+	vst	$vr0, $sp, 984
+	vst	$vr1, $sp, 1000
+	vst	$vr2, $sp, 1016
+	vst	$vr3, $sp, 1032
+	pcalau12i	$a0, %pc_hi20(.LCPI2_54)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_54)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_55)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_55)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_56)
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_56)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_57)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_57)
+	vst	$vr0, $sp, 1048
+	vst	$vr1, $sp, 1064
+	vst	$vr2, $sp, 1080
+	vst	$vr3, $sp, 1096
+	pcalau12i	$a0, %pc_hi20(.LCPI2_58)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_58)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_59)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_59)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_60)
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_60)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_61)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_61)
+	vst	$vr0, $sp, 1112
+	vst	$vr1, $sp, 1128
+	vst	$vr2, $sp, 1144
+	vst	$vr3, $sp, 1160
+	pcalau12i	$a0, %pc_hi20(.LCPI2_62)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_62)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_63)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_63)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_64)
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_64)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_65)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_65)
+	vst	$vr0, $sp, 1176
+	vst	$vr1, $sp, 1192
+	vst	$vr2, $sp, 1208
+	vst	$vr3, $sp, 1224
+	pcalau12i	$a0, %pc_hi20(.LCPI2_66)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_66)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_67)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_67)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_68)
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_68)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_69)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_69)
+	vst	$vr0, $sp, 1240
+	vst	$vr1, $sp, 1256
+	vst	$vr2, $sp, 1272
+	vst	$vr3, $sp, 1288
+	ori	$a0, $zero, 348
+	lu32i.d	$a0, 349
+	st.d	$a0, $sp, 1304
+	ori	$a0, $zero, 350
+	lu32i.d	$a0, 351
+	st.d	$a0, $sp, 1312
 	ori	$a0, $zero, 352
 	lu32i.d	$a0, 353
 	st.d	$a0, $sp, 1320

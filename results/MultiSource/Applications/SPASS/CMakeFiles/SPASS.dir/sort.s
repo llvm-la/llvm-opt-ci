@@ -3501,8 +3501,9 @@ sort_ConditionsUnion:                   # @sort_ConditionsUnion
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 8
+	vst	$vr0, $a0, 24
 	b	.LBB24_53
 .LBB24_51:
 	move	$a0, $s0
@@ -3666,18 +3667,18 @@ sort_TheorySortOfSymbol:                # @sort_TheorySortOfSymbol
 	.type	sort_TheoryIsSubsortOfNoResidues,@function
 sort_TheoryIsSubsortOfNoResidues:       # @sort_TheoryIsSubsortOfNoResidues
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ldptr.w	$a3, $a0, 32024
 	addi.w	$a0, $zero, -1
@@ -3720,8 +3721,8 @@ sort_TheoryIsSubsortOfNoResidues:       # @sort_TheoryIsSubsortOfNoResidues
 	pcalau12i	$a0, %pc_hi20(sort_ConditionDelete)
 	addi.d	$s2, $a0, %pc_lo12(sort_ConditionDelete)
 	ori	$s4, $zero, 1
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, 7
 	ori	$s5, $a0, 3352
 	move	$s6, $s1
@@ -3738,8 +3739,9 @@ sort_TheoryIsSubsortOfNoResidues:       # @sort_TheoryIsSubsortOfNoResidues
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	st.w	$s4, $a0, 0
-	xvld	$xr0, $sp, 32                   # 32-byte Folded Reload
-	xvst	$xr0, $a0, 8
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vst	$vr0, $a0, 8
+	vst	$vr0, $a0, 24
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
@@ -3752,13 +3754,13 @@ sort_TheoryIsSubsortOfNoResidues:       # @sort_TheoryIsSubsortOfNoResidues
 	bnez	$s6, .LBB28_8
 .LBB28_9:                               # %.preheader
 	ldptr.d	$s6, $fp, 32008
-	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	beqz	$s6, .LBB28_22
 # %bb.10:                               # %.lr.ph113.preheader
 	pcalau12i	$a0, %pc_hi20(sort_ConditionDelete)
 	addi.d	$s2, $a0, %pc_lo12(sort_ConditionDelete)
 	move	$s4, $zero
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, 7
 	ori	$s8, $a0, 3352
 	b	.LBB28_12
@@ -3856,10 +3858,12 @@ sort_TheoryIsSubsortOfNoResidues:       # @sort_TheoryIsSubsortOfNoResidues
 	ld.d	$s5, $a0, %got_pc_lo12(memory_FREEDBYTES)
 	pcalau12i	$a0, %pc_hi20(sort_ConditionDelete)
 	addi.d	$a0, $a0, %pc_lo12(sort_ConditionDelete)
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	lu12i.w	$a0, 7
 	ori	$a0, $a0, 3352
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	b	.LBB28_26
 	.p2align	4, , 16
 .LBB28_25:                              # %.loopexit.i
@@ -3890,7 +3894,7 @@ sort_TheoryIsSubsortOfNoResidues:       # @sort_TheoryIsSubsortOfNoResidues
 	ld.d	$a1, $s6, 24
 	move	$s1, $a0
 	move	$a0, $a1
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(list_DeleteWithElement)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 40
@@ -3900,7 +3904,7 @@ sort_TheoryIsSubsortOfNoResidues:       # @sort_TheoryIsSubsortOfNoResidues
 	ori	$a0, $zero, 1
 	st.w	$a0, $s2, 0
 	st.d	$zero, $s2, 8
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $s2, 16
 	st.d	$s1, $s2, 32
 	ori	$a0, $zero, 16
@@ -3909,7 +3913,7 @@ sort_TheoryIsSubsortOfNoResidues:       # @sort_TheoryIsSubsortOfNoResidues
 	st.d	$s2, $a0, 8
 	st.d	$zero, $a0, 0
 	st.d	$a0, $s6, 24
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	ldx.w	$a0, $fp, $a0
 	st.w	$a0, $s6, 8
 	ori	$a0, $zero, 16
@@ -4054,7 +4058,7 @@ sort_TheoryIsSubsortOfNoResidues:       # @sort_TheoryIsSubsortOfNoResidues
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 0
 	st.d	$zero, $a0, 8
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 16
 	st.d	$fp, $a0, 32
 	b	.LBB28_61
@@ -4083,18 +4087,18 @@ sort_TheoryIsSubsortOfNoResidues:       # @sort_TheoryIsSubsortOfNoResidues
 .LBB28_60:
 	move	$a0, $zero
 .LBB28_61:                              # %list_Delete.exit
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 	ret
 .Lfunc_end28:
 	.size	sort_TheoryIsSubsortOfNoResidues, .Lfunc_end28-sort_TheoryIsSubsortOfNoResidues
@@ -4557,18 +4561,18 @@ sort_TheoryIsSubsortOfExtra:            # @sort_TheoryIsSubsortOfExtra
 	.type	sort_TheoryComputeAllSubsortHits,@function
 sort_TheoryComputeAllSubsortHits:       # @sort_TheoryComputeAllSubsortHits
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -224
+	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
 	move	$s6, $a0
 	ldptr.w	$a3, $a0, 32024
 	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
@@ -4614,8 +4618,8 @@ sort_TheoryComputeAllSubsortHits:       # @sort_TheoryComputeAllSubsortHits
 	pcalau12i	$a0, %pc_hi20(sort_ConditionDelete)
 	addi.d	$s2, $a0, %pc_lo12(sort_ConditionDelete)
 	ori	$fp, $zero, 1
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 112                  # 32-byte Folded Spill
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	lu12i.w	$a0, 7
 	ori	$s0, $a0, 3352
 	move	$s4, $s1
@@ -4632,8 +4636,9 @@ sort_TheoryComputeAllSubsortHits:       # @sort_TheoryComputeAllSubsortHits
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	st.w	$fp, $a0, 0
-	xvld	$xr0, $sp, 112                  # 32-byte Folded Reload
-	xvst	$xr0, $a0, 8
+	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
+	vst	$vr0, $a0, 8
+	vst	$vr0, $a0, 24
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
@@ -4657,8 +4662,8 @@ sort_TheoryComputeAllSubsortHits:       # @sort_TheoryComputeAllSubsortHits
 	ld.d	$fp, $a0, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a0, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$s5, $a0, %got_pc_lo12(memory_FREEDBYTES)
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 112                  # 32-byte Folded Spill
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(sort_ConditionDelete)
 	addi.d	$s2, $a0, %pc_lo12(sort_ConditionDelete)
 	lu12i.w	$a0, 7
@@ -4737,8 +4742,9 @@ sort_TheoryComputeAllSubsortHits:       # @sort_TheoryComputeAllSubsortHits
 	move	$s4, $a0
 	ori	$a0, $zero, 1
 	st.w	$a0, $s4, 0
-	xvld	$xr0, $sp, 112                  # 32-byte Folded Reload
-	xvst	$xr0, $s4, 8
+	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
+	vst	$vr0, $s4, 8
+	vst	$vr0, $s4, 24
 	ld.d	$s6, $s3, 0
 	bnez	$s6, .LBB31_19
 	b	.LBB31_13
@@ -4785,8 +4791,9 @@ sort_TheoryComputeAllSubsortHits:       # @sort_TheoryComputeAllSubsortHits
 	move	$s1, $a0
 	ori	$a0, $zero, 1
 	st.w	$a0, $s1, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $s1, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $s1, 8
+	vst	$vr0, $s1, 24
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
@@ -5280,18 +5287,18 @@ sort_TheoryComputeAllSubsortHits:       # @sort_TheoryComputeAllSubsortHits
 .LBB31_78:
 	move	$a0, $zero
 .LBB31_79:                              # %.loopexit152
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 224
 	ret
 .Lfunc_end31:
 	.size	sort_TheoryComputeAllSubsortHits, .Lfunc_end31-sort_TheoryComputeAllSubsortHits

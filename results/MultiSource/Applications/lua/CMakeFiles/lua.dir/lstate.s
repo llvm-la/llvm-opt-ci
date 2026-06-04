@@ -197,8 +197,8 @@ lua_newstate:                           # @lua_newstate
 	st.d	$fp, $fp, 224
 	st.w	$zero, $fp, 220
 	st.d	$a0, $fp, 232
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 240
+	vst	$vr0, $fp, 240
+	vst	$vr0, $fp, 256
 	st.d	$s2, $fp, 304
 	ori	$a0, $zero, 200
 	lu32i.d	$a0, 200

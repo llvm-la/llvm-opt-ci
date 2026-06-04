@@ -25,9 +25,10 @@ main:                                   # @main
 # %bb.0:
 	addi.d	$sp, $sp, -48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 0
 	st.d	$zero, $sp, 32
+	vst	$vr0, $sp, 16
 	ori	$a0, $zero, 100
 	st.w	$a0, $sp, 0
 	st.w	$a0, $sp, 12

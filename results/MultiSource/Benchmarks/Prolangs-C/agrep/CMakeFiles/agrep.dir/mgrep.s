@@ -443,8 +443,8 @@ f_prep:                                 # @f_prep
 .Lfunc_end2:
 	.size	f_prep, .Lfunc_end2-f_prep
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function prepf
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function prepf
 .LCPI3_0:
 	.byte	0                               # 0x0
 	.byte	1                               # 0x1
@@ -462,6 +462,7 @@ f_prep:                                 # @f_prep
 	.byte	13                              # 0xd
 	.byte	14                              # 0xe
 	.byte	15                              # 0xf
+.LCPI3_1:
 	.byte	16                              # 0x10
 	.byte	17                              # 0x11
 	.byte	18                              # 0x12
@@ -478,7 +479,7 @@ f_prep:                                 # @f_prep
 	.byte	29                              # 0x1d
 	.byte	30                              # 0x1e
 	.byte	31                              # 0x1f
-.LCPI3_1:
+.LCPI3_2:
 	.byte	32                              # 0x20
 	.byte	33                              # 0x21
 	.byte	34                              # 0x22
@@ -495,6 +496,7 @@ f_prep:                                 # @f_prep
 	.byte	45                              # 0x2d
 	.byte	46                              # 0x2e
 	.byte	47                              # 0x2f
+.LCPI3_3:
 	.byte	48                              # 0x30
 	.byte	49                              # 0x31
 	.byte	50                              # 0x32
@@ -511,7 +513,7 @@ f_prep:                                 # @f_prep
 	.byte	61                              # 0x3d
 	.byte	62                              # 0x3e
 	.byte	63                              # 0x3f
-.LCPI3_2:
+.LCPI3_4:
 	.byte	64                              # 0x40
 	.byte	65                              # 0x41
 	.byte	66                              # 0x42
@@ -528,6 +530,7 @@ f_prep:                                 # @f_prep
 	.byte	77                              # 0x4d
 	.byte	78                              # 0x4e
 	.byte	79                              # 0x4f
+.LCPI3_5:
 	.byte	80                              # 0x50
 	.byte	81                              # 0x51
 	.byte	82                              # 0x52
@@ -544,7 +547,7 @@ f_prep:                                 # @f_prep
 	.byte	93                              # 0x5d
 	.byte	94                              # 0x5e
 	.byte	95                              # 0x5f
-.LCPI3_3:
+.LCPI3_6:
 	.byte	96                              # 0x60
 	.byte	97                              # 0x61
 	.byte	98                              # 0x62
@@ -561,6 +564,7 @@ f_prep:                                 # @f_prep
 	.byte	109                             # 0x6d
 	.byte	110                             # 0x6e
 	.byte	111                             # 0x6f
+.LCPI3_7:
 	.byte	112                             # 0x70
 	.byte	113                             # 0x71
 	.byte	114                             # 0x72
@@ -577,7 +581,7 @@ f_prep:                                 # @f_prep
 	.byte	125                             # 0x7d
 	.byte	126                             # 0x7e
 	.byte	127                             # 0x7f
-.LCPI3_4:
+.LCPI3_8:
 	.byte	128                             # 0x80
 	.byte	129                             # 0x81
 	.byte	130                             # 0x82
@@ -594,6 +598,7 @@ f_prep:                                 # @f_prep
 	.byte	141                             # 0x8d
 	.byte	142                             # 0x8e
 	.byte	143                             # 0x8f
+.LCPI3_9:
 	.byte	144                             # 0x90
 	.byte	145                             # 0x91
 	.byte	146                             # 0x92
@@ -610,7 +615,7 @@ f_prep:                                 # @f_prep
 	.byte	157                             # 0x9d
 	.byte	158                             # 0x9e
 	.byte	159                             # 0x9f
-.LCPI3_5:
+.LCPI3_10:
 	.byte	160                             # 0xa0
 	.byte	161                             # 0xa1
 	.byte	162                             # 0xa2
@@ -627,6 +632,7 @@ f_prep:                                 # @f_prep
 	.byte	173                             # 0xad
 	.byte	174                             # 0xae
 	.byte	175                             # 0xaf
+.LCPI3_11:
 	.byte	176                             # 0xb0
 	.byte	177                             # 0xb1
 	.byte	178                             # 0xb2
@@ -643,7 +649,7 @@ f_prep:                                 # @f_prep
 	.byte	189                             # 0xbd
 	.byte	190                             # 0xbe
 	.byte	191                             # 0xbf
-.LCPI3_6:
+.LCPI3_12:
 	.byte	192                             # 0xc0
 	.byte	193                             # 0xc1
 	.byte	194                             # 0xc2
@@ -660,6 +666,7 @@ f_prep:                                 # @f_prep
 	.byte	205                             # 0xcd
 	.byte	206                             # 0xce
 	.byte	207                             # 0xcf
+.LCPI3_13:
 	.byte	208                             # 0xd0
 	.byte	209                             # 0xd1
 	.byte	210                             # 0xd2
@@ -676,7 +683,7 @@ f_prep:                                 # @f_prep
 	.byte	221                             # 0xdd
 	.byte	222                             # 0xde
 	.byte	223                             # 0xdf
-.LCPI3_7:
+.LCPI3_14:
 	.byte	224                             # 0xe0
 	.byte	225                             # 0xe1
 	.byte	226                             # 0xe2
@@ -693,6 +700,7 @@ f_prep:                                 # @f_prep
 	.byte	237                             # 0xed
 	.byte	238                             # 0xee
 	.byte	239                             # 0xef
+.LCPI3_15:
 	.byte	240                             # 0xf0
 	.byte	241                             # 0xf1
 	.byte	242                             # 0xf2
@@ -709,9 +717,7 @@ f_prep:                                 # @f_prep
 	.byte	253                             # 0xfd
 	.byte	254                             # 0xfe
 	.byte	255                             # 0xff
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI3_8:
+.LCPI3_16:
 	.byte	97                              # 0x61
 	.byte	98                              # 0x62
 	.byte	99                              # 0x63
@@ -880,40 +886,64 @@ prepf:                                  # @prepf
 	addi.d	$a7, $a0, %pc_lo12(pat_spool)
 .LBB3_20:                               # %.preheader93.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI3_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI3_0)
 	ori	$a0, $zero, 19
 	st.b	$a0, $a7, 0
 	pcalau12i	$a0, %pc_hi20(tr)
 	addi.d	$s1, $a0, %pc_lo12(tr)
 	pcalau12i	$a0, %pc_hi20(.LCPI3_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI3_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI3_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI3_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI3_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI3_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI3_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI3_3)
-	xvst	$xr0, $s1, 0
-	xvst	$xr1, $s1, 32
-	xvst	$xr2, $s1, 64
-	xvst	$xr3, $s1, 96
+	vld	$vr3, $a0, %pc_lo12(.LCPI3_3)
+	vst	$vr0, $s1, 0
+	vst	$vr1, $s1, 16
+	vst	$vr2, $s1, 32
+	vst	$vr3, $s1, 48
 	pcalau12i	$a0, %pc_hi20(.LCPI3_4)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI3_4)
+	vld	$vr0, $a0, %pc_lo12(.LCPI3_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI3_5)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI3_5)
+	vld	$vr1, $a0, %pc_lo12(.LCPI3_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI3_6)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI3_6)
+	vld	$vr2, $a0, %pc_lo12(.LCPI3_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI3_7)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI3_7)
-	xvst	$xr0, $s1, 128
-	xvst	$xr1, $s1, 160
-	xvst	$xr2, $s1, 192
-	xvst	$xr3, $s1, 224
+	vld	$vr3, $a0, %pc_lo12(.LCPI3_7)
+	vst	$vr0, $s1, 64
+	vst	$vr1, $s1, 80
+	vst	$vr2, $s1, 96
+	vst	$vr3, $s1, 112
+	pcalau12i	$a0, %pc_hi20(.LCPI3_8)
+	vld	$vr0, $a0, %pc_lo12(.LCPI3_8)
+	pcalau12i	$a0, %pc_hi20(.LCPI3_9)
+	vld	$vr1, $a0, %pc_lo12(.LCPI3_9)
+	pcalau12i	$a0, %pc_hi20(.LCPI3_10)
+	vld	$vr2, $a0, %pc_lo12(.LCPI3_10)
+	pcalau12i	$a0, %pc_hi20(.LCPI3_11)
+	vld	$vr3, $a0, %pc_lo12(.LCPI3_11)
+	vst	$vr0, $s1, 128
+	vst	$vr1, $s1, 144
+	vst	$vr2, $s1, 160
+	vst	$vr3, $s1, 176
+	pcalau12i	$a0, %pc_hi20(.LCPI3_12)
+	vld	$vr0, $a0, %pc_lo12(.LCPI3_12)
+	pcalau12i	$a0, %pc_hi20(.LCPI3_13)
+	vld	$vr1, $a0, %pc_lo12(.LCPI3_13)
+	pcalau12i	$a0, %pc_hi20(.LCPI3_14)
+	vld	$vr2, $a0, %pc_lo12(.LCPI3_14)
+	pcalau12i	$a0, %pc_hi20(.LCPI3_15)
+	vld	$vr3, $a0, %pc_lo12(.LCPI3_15)
+	vst	$vr0, $s1, 192
+	vst	$vr1, $s1, 208
+	vst	$vr2, $s1, 224
+	vst	$vr3, $s1, 240
 	pcalau12i	$a0, %got_pc_hi20(NOUPPER)
 	ld.d	$a0, $a0, %got_pc_lo12(NOUPPER)
 	ld.w	$a0, $a0, 0
 	beqz	$a0, .LBB3_22
 # %bb.21:                               # %.preheader90.preheader
-	pcalau12i	$a0, %pc_hi20(.LCPI3_8)
-	vld	$vr0, $a0, %pc_lo12(.LCPI3_8)
+	pcalau12i	$a0, %pc_hi20(.LCPI3_16)
+	vld	$vr0, $a0, %pc_lo12(.LCPI3_16)
 	vst	$vr0, $s1, 65
 	lu12i.w	$a0, 476983
 	ori	$a0, $a0, 625
@@ -951,32 +981,56 @@ prepf:                                  # @prepf
 .LBB3_27:                               # %vector.body169
 	pcalau12i	$a0, %pc_hi20(tr)
 	addi.d	$a0, $a0, %pc_lo12(tr)
-	xvld	$xr0, $a0, 0
-	xvld	$xr1, $a0, 32
-	xvandi.b	$xr0, $xr0, 15
-	xvandi.b	$xr1, $xr1, 15
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 16
+	vandi.b	$vr0, $vr0, 15
+	vandi.b	$vr1, $vr1, 15
 	pcalau12i	$a1, %pc_hi20(tr1)
 	addi.d	$a1, $a1, %pc_lo12(tr1)
-	xvld	$xr2, $a0, 64
-	xvld	$xr3, $a0, 96
-	xvst	$xr0, $a1, 0
-	xvst	$xr1, $a1, 32
-	xvandi.b	$xr0, $xr2, 15
-	xvandi.b	$xr1, $xr3, 15
-	xvld	$xr2, $a0, 128
-	xvst	$xr0, $a1, 64
-	xvst	$xr1, $a1, 96
-	xvld	$xr0, $a0, 160
-	xvandi.b	$xr1, $xr2, 15
-	xvst	$xr1, $a1, 128
-	xvld	$xr1, $a0, 192
-	xvld	$xr2, $a0, 224
-	xvandi.b	$xr0, $xr0, 15
-	xvst	$xr0, $a1, 160
-	xvandi.b	$xr0, $xr1, 15
-	xvandi.b	$xr1, $xr2, 15
-	xvst	$xr0, $a1, 192
-	xvst	$xr1, $a1, 224
+	vld	$vr2, $a0, 32
+	vld	$vr3, $a0, 48
+	vst	$vr0, $a1, 0
+	vst	$vr1, $a1, 16
+	vandi.b	$vr0, $vr2, 15
+	vandi.b	$vr1, $vr3, 15
+	vld	$vr2, $a0, 64
+	vst	$vr0, $a1, 32
+	vst	$vr1, $a1, 48
+	vld	$vr0, $a0, 80
+	vandi.b	$vr1, $vr2, 15
+	vst	$vr1, $a1, 64
+	vld	$vr1, $a0, 96
+	vld	$vr2, $a0, 112
+	vandi.b	$vr0, $vr0, 15
+	vst	$vr0, $a1, 80
+	vandi.b	$vr0, $vr1, 15
+	vandi.b	$vr1, $vr2, 15
+	vld	$vr2, $a0, 128
+	vst	$vr0, $a1, 96
+	vst	$vr1, $a1, 112
+	vld	$vr0, $a0, 144
+	vandi.b	$vr1, $vr2, 15
+	vst	$vr1, $a1, 128
+	vld	$vr1, $a0, 160
+	vld	$vr2, $a0, 176
+	vandi.b	$vr0, $vr0, 15
+	vst	$vr0, $a1, 144
+	vandi.b	$vr0, $vr1, 15
+	vandi.b	$vr1, $vr2, 15
+	vld	$vr2, $a0, 192
+	vst	$vr0, $a1, 160
+	vst	$vr1, $a1, 176
+	vld	$vr0, $a0, 208
+	vandi.b	$vr1, $vr2, 15
+	vst	$vr1, $a1, 192
+	vld	$vr1, $a0, 224
+	vld	$vr2, $a0, 240
+	vandi.b	$vr0, $vr0, 15
+	vst	$vr0, $a1, 208
+	vandi.b	$vr0, $vr1, 15
+	vandi.b	$vr1, $vr2, 15
+	vst	$vr0, $a1, 224
+	vst	$vr1, $a1, 240
 	pcalau12i	$s2, %pc_hi20(p_size)
 	ori	$s1, $zero, 256
 	addi.w	$s0, $s0, 0
@@ -1700,7 +1754,7 @@ HASH:
 
 	.type	tr,@object                      # @tr
 	.globl	tr
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 tr:
 	.space	256
 	.size	tr, 256
@@ -1772,7 +1826,7 @@ buf:
 	.type	tr1,@object                     # @tr1
 	.bss
 	.globl	tr1
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 tr1:
 	.space	256
 	.size	tr1, 256

@@ -179,47 +179,55 @@ _ZN17btGjkPairDetector26getClosestPointsNonVirtualERKN36btDiscreteCollisionDetec
 	move	$fp, $a0
 	st.w	$zero, $a0, 76
 	vrepli.b	$vr2, 0
-	xvld	$xr0, $a1, 0
-	xvld	$xr1, $a1, 32
+	vld	$vr0, $a1, 0
+	vld	$vr1, $a1, 16
 	vst	$vr2, $sp, 64                   # 16-byte Folded Spill
 	vst	$vr2, $sp, 352
-	xvld	$xr2, $a1, 96
-	xvst	$xr0, $sp, 256
-	xvst	$xr1, $sp, 288
-	xvld	$xr0, $a1, 64
-	xvst	$xr2, $sp, 224
-	fld.s	$fa1, $sp, 304
+	vld	$vr2, $a1, 32
+	vst	$vr0, $sp, 256
+	vst	$vr1, $sp, 272
+	vld	$vr0, $a1, 48
+	vst	$vr2, $sp, 288
+	vld	$vr1, $a1, 64
+	vld	$vr2, $a1, 80
+	vst	$vr0, $sp, 304
+	vld	$vr0, $a1, 112
+	vst	$vr1, $sp, 192
+	vst	$vr2, $sp, 208
+	vld	$vr1, $a1, 96
+	vst	$vr0, $sp, 240
+	fld.s	$fa0, $sp, 304
 	fld.s	$fa2, $sp, 240
 	fld.s	$fa3, $sp, 308
 	fld.s	$fa4, $sp, 244
 	fld.s	$fa5, $sp, 312
 	fld.s	$fa6, $sp, 248
-	xvst	$xr0, $sp, 192
-	fadd.s	$fa0, $fa1, $fa2
+	vst	$vr1, $sp, 224
+	fadd.s	$fa1, $fa0, $fa2
 	fadd.s	$fa7, $fa3, $fa4
 	fadd.s	$ft0, $fa5, $fa6
 	vldi	$vr9, -1184
-	fmul.s	$fa0, $fa0, $ft1
-	fmul.s	$ft2, $fa7, $ft1
-	fmul.s	$fa7, $ft0, $ft1
-	fsub.s	$fa1, $fa1, $fa0
-	fst.s	$fa1, $sp, 124                  # 4-byte Folded Spill
-	fst.s	$fa1, $sp, 304
-	fsub.s	$fa1, $fa3, $ft2
-	fst.s	$fa1, $sp, 120                  # 4-byte Folded Spill
-	fst.s	$fa1, $sp, 308
-	fsub.s	$fa1, $fa5, $fa7
-	fst.s	$fa1, $sp, 116                  # 4-byte Folded Spill
-	fst.s	$fa1, $sp, 312
-	fst.s	$fa0, $sp, 52                   # 4-byte Folded Spill
-	fsub.s	$fa0, $fa2, $fa0
+	fmul.s	$ft2, $fa1, $ft1
+	fmul.s	$fa7, $fa7, $ft1
+	fmul.s	$fa1, $ft0, $ft1
+	fsub.s	$fa0, $fa0, $ft2
+	fst.s	$fa0, $sp, 124                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 304
+	fsub.s	$fa0, $fa3, $fa7
+	fst.s	$fa0, $sp, 120                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 308
+	fsub.s	$fa0, $fa5, $fa1
+	fst.s	$fa0, $sp, 116                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 312
+	fst.s	$ft2, $sp, 52                   # 4-byte Folded Spill
+	fsub.s	$fa0, $fa2, $ft2
 	fst.s	$fa0, $sp, 240
-	fst.s	$ft2, $sp, 56                   # 4-byte Folded Spill
-	fsub.s	$fa0, $fa4, $ft2
+	fst.s	$fa7, $sp, 56                   # 4-byte Folded Spill
+	fsub.s	$fa0, $fa4, $fa7
 	ld.d	$a0, $a0, 40
 	fst.s	$fa0, $sp, 244
-	fst.s	$fa7, $sp, 60                   # 4-byte Folded Spill
-	fsub.s	$fa0, $fa6, $fa7
+	fst.s	$fa1, $sp, 60                   # 4-byte Folded Spill
+	fsub.s	$fa0, $fa6, $fa1
 	fst.s	$fa0, $sp, 248
 	ld.w	$a0, $a0, 8
 	addi.w	$a0, $a0, -17

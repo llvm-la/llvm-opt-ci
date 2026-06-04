@@ -418,68 +418,57 @@ _ZN25btSimulationIslandManager21updateActivationStateEP16btCollisionWorldP12btDi
 	addi.d	$a0, $a0, 8
 	pcaddu18i	$ra, %call36(_ZN11btUnionFind5resetEi)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $fp, 12
-	blez	$a1, .LBB6_8
+	ld.w	$a2, $fp, 12
+	blez	$a2, .LBB6_8
 # %bb.1:                                # %.lr.ph
 	ld.d	$a3, $fp, 24
-	ori	$a2, $zero, 4
+	ori	$a4, $zero, 1
 	lu12i.w	$a0, 260096
-	bgeu	$a1, $a2, .LBB6_3
+	bne	$a2, $a4, .LBB6_3
 # %bb.2:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB6_6
 .LBB6_3:                                # %vector.ph
-	move	$a4, $zero
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	addi.d	$a5, $a3, 16
+	bstrpick.d	$a1, $a2, 30, 1
+	slli.d	$a1, $a1, 1
+	addi.d	$a5, $a3, 8
 	addi.w	$a6, $zero, -1
 	lu32i.d	$a6, 0
-	move	$a7, $a2
+	move	$a7, $a1
 	.p2align	4, , 16
 .LBB6_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$t0, $a4, 1
-	addi.d	$t1, $a4, 2
-	addi.d	$t2, $a4, 3
-	ld.d	$t3, $a5, -16
-	ld.d	$t4, $a5, -8
-	ld.d	$t5, $a5, 0
-	ld.d	$t6, $a5, 8
-	st.w	$a4, $t3, 220
-	st.w	$t0, $t4, 220
-	st.w	$t1, $t5, 220
-	st.w	$t2, $t6, 220
-	st.w	$a6, $t3, 224
-	st.w	$a6, $t4, 224
-	st.w	$a6, $t5, 224
-	st.w	$a6, $t6, 224
-	st.w	$a0, $t3, 260
-	st.w	$a0, $t4, 260
-	st.w	$a0, $t5, 260
-	st.w	$a0, $t6, 260
-	addi.d	$a7, $a7, -4
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 32
+	ld.d	$t0, $a5, -8
+	ld.d	$t1, $a5, 0
+	addi.d	$t2, $a4, -1
+	st.w	$t2, $t0, 220
+	st.w	$a4, $t1, 220
+	st.w	$a6, $t0, 224
+	st.w	$a6, $t1, 224
+	st.w	$a0, $t0, 260
+	st.w	$a0, $t1, 260
+	addi.d	$a5, $a5, 16
+	addi.d	$a7, $a7, -2
+	addi.d	$a4, $a4, 2
 	bnez	$a7, .LBB6_4
 # %bb.5:                                # %middle.block
-	beq	$a2, $a1, .LBB6_8
+	beq	$a1, $a2, .LBB6_8
 .LBB6_6:                                # %scalar.ph.preheader
-	alsl.d	$a3, $a2, $a3, 3
-	sub.d	$a1, $a1, $a2
+	alsl.d	$a3, $a1, $a3, 3
+	sub.d	$a2, $a2, $a1
 	addi.w	$a4, $zero, -1
 	lu32i.d	$a4, 0
 	.p2align	4, , 16
 .LBB6_7:                                # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a5, $a3, 0
-	st.w	$a2, $a5, 220
+	st.w	$a1, $a5, 220
 	st.w	$a4, $a5, 224
 	st.w	$a0, $a5, 260
-	addi.d	$a2, $a2, 1
-	addi.d	$a1, $a1, -1
+	addi.d	$a1, $a1, 1
+	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 8
-	bnez	$a1, .LBB6_7
+	bnez	$a2, .LBB6_7
 .LBB6_8:                                # %._crit_edge
 	move	$a0, $s0
 	move	$a2, $fp
@@ -789,7 +778,7 @@ _ZN25btSimulationIslandManager12buildIslandsEP12btDispatcherP16btCollisionWorld:
 	move	$s2, $zero
 	ori	$s6, $zero, 2
 	ori	$s7, $zero, 1
-	ori	$s8, $zero, 8
+	ori	$s8, $zero, 4
 	b	.LBB8_38
 .LBB8_35:                               # %_ZN20btAlignedObjectArrayIP20btPersistentManifoldE10deallocateEv.exit.i.i117
                                         #   in Loop: Header=BB8_38 Depth=1
@@ -905,26 +894,26 @@ _ZN25btSimulationIslandManager12buildIslandsEP12btDispatcherP16btCollisionWorld:
 # %bb.58:                               # %.lr.ph.i.i.i118
                                         #   in Loop: Header=BB8_38 Depth=1
 	sub.d	$a3, $s4, $a0
-	ori	$a4, $zero, 64
+	ori	$a4, $zero, 32
 	bltu	$a3, $a4, .LBB8_62
 # %bb.59:                               # %vector.ph
                                         #   in Loop: Header=BB8_38 Depth=1
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	addi.d	$a3, $a0, 32
-	addi.d	$a4, $s4, 32
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s4, 16
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB8_60:                               # %vector.body
                                         #   Parent Loop BB8_38 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB8_60
 # %bb.61:                               # %middle.block
                                         #   in Loop: Header=BB8_38 Depth=1
@@ -1275,32 +1264,32 @@ _ZN25btSimulationIslandManager22buildAndProcessIslandsEP12btDispatcherP16btColli
 .LBB9_19:                               # %.lr.ph.i.i.i
                                         #   in Loop: Header=BB9_13 Depth=2
 	move	$a2, $zero
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	bltu	$a1, $a3, .LBB9_24
 # %bb.20:                               # %.lr.ph.i.i.i
                                         #   in Loop: Header=BB9_13 Depth=2
 	sub.d	$a3, $s3, $a0
-	ori	$a4, $zero, 64
+	ori	$a4, $zero, 32
 	bltu	$a3, $a4, .LBB9_24
 # %bb.21:                               # %vector.ph
                                         #   in Loop: Header=BB9_13 Depth=2
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	addi.d	$a3, $a0, 32
-	addi.d	$a4, $s3, 32
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s3, 16
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB9_22:                               # %vector.body
                                         #   Parent Loop BB9_8 Depth=1
                                         #     Parent Loop BB9_13 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB9_22
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB9_13 Depth=2

@@ -37,17 +37,21 @@ main:                                   # @main
 	.type	bar,@function
 bar:                                    # @bar
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	xvld	$xr0, $a0, 0
-	xvld	$xr1, $a0, 32
-	xvst	$xr0, $sp, 8
-	xvst	$xr1, $sp, 40
-	addi.d	$a0, $sp, 8
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 32
+	vld	$vr3, $a0, 48
+	vst	$vr0, $sp, 16
+	vst	$vr1, $sp, 32
+	vst	$vr2, $sp, 48
+	vst	$vr3, $sp, 64
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end1:
 	.size	bar, .Lfunc_end1-bar

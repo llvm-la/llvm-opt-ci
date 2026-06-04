@@ -26,25 +26,35 @@ test:                                   # @test
 	st.d	$zero, $sp, 76
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 84
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 100
+	vst	$vr0, $sp, 100
+	vst	$vr0, $sp, 116
 	st.w	$zero, $sp, 132
-	xvst	$xr0, $sp, 8
-	xvst	$xr0, $sp, 40
+	vst	$vr0, $sp, 8
+	vst	$vr0, $sp, 24
+	vst	$vr0, $sp, 40
+	vst	$vr0, $sp, 56
 	addi.d	$a0, $sp, 72
 	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(p)
 	ld.d	$a0, $a0, %pc_lo12(p)
-	xvld	$xr0, $sp, 104
-	xvld	$xr1, $sp, 72
-	xvst	$xr0, $a0, 32
-	xvst	$xr1, $a0, 0
-	xvld	$xr0, $sp, 40
-	xvst	$xr0, $a0, 32
-	xvld	$xr0, $sp, 8
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $sp, 120
+	vld	$vr1, $sp, 104
+	vld	$vr2, $sp, 88
+	vld	$vr3, $sp, 72
+	vst	$vr0, $a0, 48
+	vst	$vr1, $a0, 32
+	vst	$vr2, $a0, 16
+	vst	$vr3, $a0, 0
+	vld	$vr0, $sp, 24
+	vst	$vr0, $a0, 16
+	vld	$vr0, $sp, 40
+	vst	$vr0, $a0, 32
+	vld	$vr0, $sp, 56
+	vst	$vr0, $a0, 48
+	vld	$vr0, $sp, 8
+	vst	$vr0, $a0, 0
 	ld.w	$a0, $sp, 8
 	addi.w	$a1, $zero, -1
 	bne	$a0, $a1, .LBB1_2
@@ -69,25 +79,35 @@ main:                                   # @main
 	st.d	$zero, $sp, 76
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 84
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 100
+	vst	$vr0, $sp, 100
+	vst	$vr0, $sp, 116
 	st.w	$zero, $sp, 132
-	xvst	$xr0, $sp, 8
-	xvst	$xr0, $sp, 40
+	vst	$vr0, $sp, 8
+	vst	$vr0, $sp, 24
+	vst	$vr0, $sp, 40
+	vst	$vr0, $sp, 56
 	addi.d	$a0, $sp, 72
 	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(p)
 	ld.d	$a0, $a0, %pc_lo12(p)
-	xvld	$xr0, $sp, 104
-	xvld	$xr1, $sp, 72
-	xvst	$xr0, $a0, 32
-	xvst	$xr1, $a0, 0
-	xvld	$xr0, $sp, 40
-	xvst	$xr0, $a0, 32
-	xvld	$xr0, $sp, 8
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $sp, 120
+	vld	$vr1, $sp, 104
+	vld	$vr2, $sp, 88
+	vld	$vr3, $sp, 72
+	vst	$vr0, $a0, 48
+	vst	$vr1, $a0, 32
+	vst	$vr2, $a0, 16
+	vst	$vr3, $a0, 0
+	vld	$vr0, $sp, 24
+	vst	$vr0, $a0, 16
+	vld	$vr0, $sp, 40
+	vst	$vr0, $a0, 32
+	vld	$vr0, $sp, 56
+	vst	$vr0, $a0, 48
+	vld	$vr0, $sp, 8
+	vst	$vr0, $a0, 0
 	ld.w	$a0, $sp, 8
 	addi.w	$a1, $zero, -1
 	bne	$a0, $a1, .LBB2_2

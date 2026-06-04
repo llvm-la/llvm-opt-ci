@@ -6,18 +6,18 @@
 	.type	build_scanners,@function
 build_scanners:                         # @build_scanners
 # %bb.0:
-	addi.d	$sp, $sp, -304
-	st.d	$ra, $sp, 296                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 280                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 256                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 216                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -288
+	st.d	$ra, $sp, 280                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 264                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 200                   # 8-byte Folded Spill
 	move	$fp, $a0
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 64
@@ -94,23 +94,23 @@ build_scanners:                         # @build_scanners
 	move	$s3, $zero
 	move	$a2, $zero
 	addi.d	$a0, $s4, 8
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	addi.d	$a0, $s4, 24
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	lu12i.w	$s2, 2
 	ori	$a0, $s2, 2176
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	ori	$s5, $zero, 1
 	ori	$a0, $s2, 2072
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	ori	$s0, $zero, 2
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 88
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 96                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 80                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB0_18
 	.p2align	4, , 16
 .LBB0_15:                               #   in Loop: Header=BB0_18 Depth=1
@@ -120,7 +120,7 @@ build_scanners:                         # @build_scanners
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB0_16:                               #   in Loop: Header=BB0_18 Depth=1
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 .LBB0_17:                               #   in Loop: Header=BB0_18 Depth=1
 	ld.wu	$a0, $fp, 88
 	addi.d	$a2, $a2, 1
@@ -175,13 +175,13 @@ build_scanners:                         # @build_scanners
 	ld.w	$a0, $s1, 136
 	beqz	$a0, .LBB0_17
 # %bb.19:                               #   in Loop: Header=BB0_18 Depth=1
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$a1, $s1, 400
 	bnez	$a1, .LBB0_15
 # %bb.20:                               # %new_NFAState.exit.i
                                         #   in Loop: Header=BB0_18 Depth=1
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s4, 0
@@ -189,20 +189,20 @@ build_scanners:                         # @build_scanners
 	st.w	$a2, $s4, 0
 	st.w	$a1, $a0, 0
 	ld.w	$a2, $s1, 136
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a1, $s4, 16
 	st.w	$s5, $s4, 8
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	st.d	$a0, $s4, 24
 	ori	$a1, $s2, 2112
-	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
 	beqz	$a2, .LBB0_474
 # %bb.21:                               # %.lr.ph525.i
                                         #   in Loop: Header=BB0_18 Depth=1
 	move	$s3, $s1
 	move	$s1, $zero
 	move	$a0, $zero
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
 	b	.LBB0_26
 .LBB0_22:                               #   in Loop: Header=BB0_26 Depth=2
 	bstrpick.d	$a3, $a2, 31, 0
@@ -226,12 +226,12 @@ build_scanners:                         # @build_scanners
 	ldx.d	$s6, $a1, $a2
 	ld.w	$a1, $s6, 0
 	ori	$a2, $s2, 2096
-	st.d	$a2, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
 	beq	$a1, $s5, .LBB0_33
 # %bb.27:                               #   in Loop: Header=BB0_26 Depth=2
 	bnez	$a1, .LBB0_25
 # %bb.28:                               #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	ld.w	$a0, $a1, 8
 	ld.d	$fp, $a1, 16
 	beqz	$a0, .LBB0_70
@@ -239,11 +239,11 @@ build_scanners:                         # @build_scanners
 	ld.d	$s7, $fp, 0
 .LBB0_30:                               #   in Loop: Header=BB0_26 Depth=2
 	ldptr.d	$a1, $s7, 10296
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	add.d	$a3, $s7, $a0
 	beqz	$a1, .LBB0_76
 # %bb.31:                               #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	add.d	$a0, $s7, $a0
 	ld.w	$a2, $a0, 0
 	beq	$a1, $a3, .LBB0_77
@@ -259,26 +259,26 @@ build_scanners:                         # @build_scanners
 	ld.w	$a2, $a1, 0
 	bnez	$a2, .LBB0_25
 # %bb.34:                               #   in Loop: Header=BB0_26 Depth=2
-	st.d	$s6, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
 	ld.d	$s6, $a1, 24
 	ld.bu	$a0, $a1, 36
 	ld.bu	$s1, $s6, 0
 	andi	$a0, $a0, 8
 	bnez	$a0, .LBB0_81
 # %bb.35:                               #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 120                   # 8-byte Folded Reload
 	beqz	$s1, .LBB0_157
 # %bb.36:                               # %.lr.ph521.i.preheader
                                         #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 120                   # 8-byte Folded Reload
 	b	.LBB0_40
 	.p2align	4, , 16
 .LBB0_37:                               #   in Loop: Header=BB0_40 Depth=3
 	ld.d	$s7, $s0, 0
 	ori	$s0, $zero, 2
 .LBB0_38:                               #   in Loop: Header=BB0_40 Depth=3
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 .LBB0_39:                               #   in Loop: Header=BB0_40 Depth=3
 	ld.bu	$s1, $s6, 1
 	addi.d	$s6, $s6, 1
@@ -299,7 +299,7 @@ build_scanners:                         # @build_scanners
 # %bb.42:                               #   in Loop: Header=BB0_40 Depth=3
 	addi.d	$s1, $s3, 16
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s4, 0
@@ -312,9 +312,9 @@ build_scanners:                         # @build_scanners
 # %bb.43:                               #   in Loop: Header=BB0_40 Depth=3
 	beqz	$a0, .LBB0_55
 # %bb.44:                               #   in Loop: Header=BB0_40 Depth=3
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	ori	$s0, $zero, 2
 	beq	$a0, $a2, .LBB0_57
 # %bb.45:                               #   in Loop: Header=BB0_40 Depth=3
@@ -323,14 +323,14 @@ build_scanners:                         # @build_scanners
 # %bb.46:                               #   in Loop: Header=BB0_40 Depth=3
 	bstrpick.d	$a2, $a1, 31, 0
 	addi.d	$a1, $a1, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a1, $a3, 0
 	slli.d	$a1, $a2, 3
 	stx.d	$s7, $a0, $a1
 	b	.LBB0_60
 .LBB0_47:                               #   in Loop: Header=BB0_40 Depth=3
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s4, 0
@@ -341,11 +341,11 @@ build_scanners:                         # @build_scanners
 	st.w	$a2, $s7, 0
 	beqz	$a1, .LBB0_56
 # %bb.48:                               #   in Loop: Header=BB0_40 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	ori	$s0, $zero, 2
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	beq	$a1, $a2, .LBB0_61
 # %bb.49:                               #   in Loop: Header=BB0_40 Depth=3
 	andi	$a2, $a0, 7
@@ -353,7 +353,7 @@ build_scanners:                         # @build_scanners
 # %bb.50:                               #   in Loop: Header=BB0_40 Depth=3
 	bstrpick.d	$a2, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $a3, 0
 	slli.d	$a0, $a2, 3
 	stx.d	$s7, $a1, $a0
@@ -361,11 +361,11 @@ build_scanners:                         # @build_scanners
 .LBB0_51:                               #   in Loop: Header=BB0_40 Depth=3
 	beqz	$a0, .LBB0_65
 # %bb.52:                               #   in Loop: Header=BB0_40 Depth=3
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	ori	$s0, $zero, 2
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	beq	$a0, $a2, .LBB0_66
 # %bb.53:                               #   in Loop: Header=BB0_40 Depth=3
 	andi	$a2, $a1, 7
@@ -373,14 +373,14 @@ build_scanners:                         # @build_scanners
 # %bb.54:                               #   in Loop: Header=BB0_40 Depth=3
 	bstrpick.d	$a2, $a1, 31, 0
 	addi.d	$a1, $a1, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a1, $a3, 0
 	slli.d	$a1, $a2, 3
 	stx.d	$s7, $a0, $a1
 	b	.LBB0_69
 .LBB0_55:                               #   in Loop: Header=BB0_40 Depth=3
 	ld.wu	$a0, $s4, 8
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a2, $s4, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $s4, 8
@@ -390,26 +390,26 @@ build_scanners:                         # @build_scanners
 	b	.LBB0_60
 .LBB0_56:                               #   in Loop: Header=BB0_40 Depth=3
 	ld.wu	$a0, $s4, 8
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a2, $s4, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $s4, 8
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $a2, $a0
 	ori	$s0, $zero, 2
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	b	.LBB0_64
 .LBB0_57:                               #   in Loop: Header=BB0_40 Depth=3
 	bltu	$s0, $a1, .LBB0_59
 # %bb.58:                               #   in Loop: Header=BB0_40 Depth=3
 	addi.d	$a2, $a1, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a2, $a3, 0
 	slli.d	$a1, $a1, 3
 	stx.d	$s7, $a0, $a1
 	b	.LBB0_60
 .LBB0_59:                               #   in Loop: Header=BB0_40 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
@@ -424,13 +424,13 @@ build_scanners:                         # @build_scanners
 	bltu	$s0, $a0, .LBB0_63
 # %bb.62:                               #   in Loop: Header=BB0_40 Depth=3
 	addi.d	$a2, $a0, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a2, $a3, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $a1, $a0
 	b	.LBB0_64
 .LBB0_63:                               #   in Loop: Header=BB0_40 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
@@ -452,26 +452,26 @@ build_scanners:                         # @build_scanners
 	b	.LBB0_39
 .LBB0_65:                               #   in Loop: Header=BB0_40 Depth=3
 	ld.wu	$a0, $s4, 8
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a2, $s4, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $s4, 8
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $a2, $a0
 	ori	$s0, $zero, 2
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	b	.LBB0_69
 .LBB0_66:                               #   in Loop: Header=BB0_40 Depth=3
 	bltu	$s0, $a1, .LBB0_68
 # %bb.67:                               #   in Loop: Header=BB0_40 Depth=3
 	addi.d	$a2, $a1, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a2, $a3, 0
 	slli.d	$a1, $a1, 3
 	stx.d	$s7, $a0, $a1
 	b	.LBB0_69
 .LBB0_68:                               #   in Loop: Header=BB0_40 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
@@ -492,7 +492,7 @@ build_scanners:                         # @build_scanners
 	ori	$a0, $zero, 1
 	beqz	$fp, .LBB0_161
 # %bb.71:                               #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s4, 0
@@ -501,15 +501,15 @@ build_scanners:                         # @build_scanners
 	addi.d	$a2, $a1, 1
 	st.w	$a2, $s4, 0
 	st.w	$a1, $s7, 0
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$a1, $a1, 24
 	beq	$fp, $a1, .LBB0_166
 # %bb.72:                               #   in Loop: Header=BB0_26 Depth=2
 	beqz	$a0, .LBB0_172
 # %bb.73:                               #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	beq	$a0, $a2, .LBB0_174
 # %bb.74:                               #   in Loop: Header=BB0_26 Depth=2
 	andi	$a2, $a1, 7
@@ -517,13 +517,13 @@ build_scanners:                         # @build_scanners
 # %bb.75:                               #   in Loop: Header=BB0_26 Depth=2
 	bstrpick.d	$a2, $a1, 31, 0
 	addi.d	$a1, $a1, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a1, $a3, 0
 	slli.d	$a1, $a2, 3
 	stx.d	$s7, $a0, $a1
 	b	.LBB0_177
 .LBB0_76:                               #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ldx.wu	$a0, $s7, $a0
 	stptr.d	$a3, $s7, 10296
 	addi.d	$a1, $a0, 1
@@ -550,14 +550,14 @@ build_scanners:                         # @build_scanners
 	jirl	$ra, $ra, 0
 	b	.LBB0_24
 .LBB0_81:                               #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 120                   # 8-byte Folded Reload
 	beqz	$s1, .LBB0_157
 # %bb.82:                               # %.lr.ph.i
                                         #   in Loop: Header=BB0_26 Depth=2
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	move	$s8, $a0
-	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 120                   # 8-byte Folded Reload
 	b	.LBB0_86
 .LBB0_83:                               #   in Loop: Header=BB0_86 Depth=3
 	st.d	$a2, $a0, 8
@@ -602,7 +602,7 @@ build_scanners:                         # @build_scanners
 	beqz	$a0, .LBB0_110
 .LBB0_90:                               #   in Loop: Header=BB0_86 Depth=3
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
@@ -611,10 +611,10 @@ build_scanners:                         # @build_scanners
 	st.w	$s1, $s7, 0
 	beqz	$fp, .LBB0_121
 # %bb.91:                               #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	beq	$fp, $a1, .LBB0_137
 # %bb.92:                               #   in Loop: Header=BB0_86 Depth=3
 	andi	$a1, $a0, 7
@@ -622,7 +622,7 @@ build_scanners:                         # @build_scanners
 # %bb.93:                               #   in Loop: Header=BB0_86 Depth=3
 	bstrpick.d	$a1, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $a2, 0
 	slli.d	$a0, $a1, 3
 	stx.d	$s7, $fp, $a0
@@ -653,7 +653,7 @@ build_scanners:                         # @build_scanners
 	beqz	$a0, .LBB0_115
 .LBB0_97:                               #   in Loop: Header=BB0_86 Depth=3
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
@@ -662,27 +662,27 @@ build_scanners:                         # @build_scanners
 	st.w	$s4, $s7, 0
 	beqz	$s1, .LBB0_122
 # %bb.98:                               #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	beq	$s1, $a1, .LBB0_133
 # %bb.99:                               #   in Loop: Header=BB0_86 Depth=3
 	andi	$a1, $a0, 7
-	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
 	ori	$s0, $zero, 2
 	beqz	$a1, .LBB0_135
 # %bb.100:                              #   in Loop: Header=BB0_86 Depth=3
 	bstrpick.d	$a1, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $a2, 0
 	slli.d	$a0, $a1, 3
 	stx.d	$s7, $s1, $a0
 	b	.LBB0_136
 .LBB0_101:                              #   in Loop: Header=BB0_86 Depth=3
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s4, 0
@@ -693,25 +693,25 @@ build_scanners:                         # @build_scanners
 	st.w	$a2, $s7, 0
 	beqz	$a1, .LBB0_119
 # %bb.102:                              #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	beq	$a1, $a2, .LBB0_125
 # %bb.103:                              #   in Loop: Header=BB0_86 Depth=3
 	andi	$a2, $a0, 7
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	beqz	$a2, .LBB0_127
 # %bb.104:                              #   in Loop: Header=BB0_86 Depth=3
 	bstrpick.d	$a2, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $a3, 0
 	slli.d	$a0, $a2, 3
 	stx.d	$s7, $a1, $a0
 	b	.LBB0_128
 .LBB0_105:                              #   in Loop: Header=BB0_86 Depth=3
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s4, 0
@@ -722,18 +722,18 @@ build_scanners:                         # @build_scanners
 	st.w	$a2, $s7, 0
 	beqz	$a1, .LBB0_120
 # %bb.106:                              #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	beq	$a1, $a2, .LBB0_129
 # %bb.107:                              #   in Loop: Header=BB0_86 Depth=3
 	andi	$a2, $a0, 7
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	beqz	$a2, .LBB0_131
 # %bb.108:                              #   in Loop: Header=BB0_86 Depth=3
 	bstrpick.d	$a2, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $a3, 0
 	slli.d	$a0, $a2, 3
 	stx.d	$s7, $a1, $a0
@@ -744,7 +744,7 @@ build_scanners:                         # @build_scanners
 	bgeu	$s0, $a0, .LBB0_90
 .LBB0_110:                              #   in Loop: Header=BB0_86 Depth=3
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
@@ -753,9 +753,9 @@ build_scanners:                         # @build_scanners
 	st.w	$s1, $s7, 0
 	beqz	$fp, .LBB0_123
 # %bb.111:                              #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	beq	$fp, $a1, .LBB0_141
 # %bb.112:                              #   in Loop: Header=BB0_86 Depth=3
 	andi	$a1, $a0, 7
@@ -763,7 +763,7 @@ build_scanners:                         # @build_scanners
 # %bb.113:                              #   in Loop: Header=BB0_86 Depth=3
 	bstrpick.d	$a1, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $a2, 0
 	slli.d	$a0, $a1, 3
 	stx.d	$s7, $fp, $a0
@@ -775,66 +775,66 @@ build_scanners:                         # @build_scanners
 	bgeu	$a3, $a0, .LBB0_97
 .LBB0_115:                              #   in Loop: Header=BB0_86 Depth=3
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
 	addi.d	$a0, $s4, 1
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	st.w	$a0, $a2, 0
 	st.w	$s4, $s7, 0
 	ori	$s0, $zero, 2
 	beqz	$s1, .LBB0_124
 # %bb.116:                              #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	beq	$s1, $a1, .LBB0_145
 # %bb.117:                              #   in Loop: Header=BB0_86 Depth=3
 	andi	$a1, $a0, 7
-	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
 	beqz	$a1, .LBB0_147
 # %bb.118:                              #   in Loop: Header=BB0_86 Depth=3
 	bstrpick.d	$a1, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $a2, 0
 	slli.d	$a0, $a1, 3
 	stx.d	$s7, $s1, $a0
 	b	.LBB0_148
 .LBB0_119:                              #   in Loop: Header=BB0_86 Depth=3
 	ld.wu	$a0, $s4, 8
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a2, $s4, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $s4, 8
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $a2, $a0
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	b	.LBB0_128
 .LBB0_120:                              #   in Loop: Header=BB0_86 Depth=3
 	ld.wu	$a0, $s4, 8
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a2, $s4, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $s4, 8
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $a2, $a0
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	b	.LBB0_132
 .LBB0_121:                              #   in Loop: Header=BB0_86 Depth=3
 	ld.wu	$a0, $s4, 8
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a2, $s4, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $s4, 8
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $a2, $a0
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	b	.LBB0_140
 .LBB0_122:                              #   in Loop: Header=BB0_86 Depth=3
 	ld.wu	$a0, $s0, 8
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a2, $s0, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $s0, 8
@@ -842,11 +842,11 @@ build_scanners:                         # @build_scanners
 	stx.d	$s7, $a2, $a0
 	move	$s4, $s0
 	ori	$s0, $zero, 2
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	b	.LBB0_136
 .LBB0_123:                              #   in Loop: Header=BB0_86 Depth=3
 	ld.wu	$a0, $s4, 8
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a2, $s4, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $s4, 8
@@ -855,7 +855,7 @@ build_scanners:                         # @build_scanners
 	b	.LBB0_144
 .LBB0_124:                              #   in Loop: Header=BB0_86 Depth=3
 	ld.wu	$a0, $a2, 8
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a3, $a2, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $a2, 8
@@ -864,17 +864,17 @@ build_scanners:                         # @build_scanners
 	move	$s4, $a2
 	b	.LBB0_148
 .LBB0_125:                              #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	bltu	$s0, $a0, .LBB0_127
 # %bb.126:                              #   in Loop: Header=BB0_86 Depth=3
 	addi.d	$a2, $a0, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a2, $a3, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $a1, $a0
 	b	.LBB0_128
 .LBB0_127:                              #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
@@ -893,17 +893,17 @@ build_scanners:                         # @build_scanners
 	stx.w	$a3, $s2, $a0
 	b	.LBB0_153
 .LBB0_129:                              #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	bltu	$s0, $a0, .LBB0_131
 # %bb.130:                              #   in Loop: Header=BB0_86 Depth=3
 	addi.d	$a2, $a0, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a2, $a3, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $a1, $a0
 	b	.LBB0_132
 .LBB0_131:                              #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
@@ -929,18 +929,18 @@ build_scanners:                         # @build_scanners
 	stx.d	$s7, $a1, $a0
 	b	.LBB0_149
 .LBB0_133:                              #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
 	ori	$s0, $zero, 2
 	bltu	$s0, $a0, .LBB0_135
 # %bb.134:                              #   in Loop: Header=BB0_86 Depth=3
 	addi.d	$a1, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a1, $a2, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $s1, $a0
 	b	.LBB0_136
 .LBB0_135:                              #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
@@ -964,13 +964,13 @@ build_scanners:                         # @build_scanners
 	bltu	$s0, $a0, .LBB0_139
 # %bb.138:                              #   in Loop: Header=BB0_86 Depth=3
 	addi.d	$a1, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a1, $a2, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $fp, $a0
 	b	.LBB0_140
 .LBB0_139:                              #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
@@ -987,13 +987,13 @@ build_scanners:                         # @build_scanners
 	bltu	$s0, $a0, .LBB0_143
 # %bb.142:                              #   in Loop: Header=BB0_86 Depth=3
 	addi.d	$a1, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a1, $a2, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $fp, $a0
 	b	.LBB0_144
 .LBB0_143:                              #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
@@ -1003,20 +1003,20 @@ build_scanners:                         # @build_scanners
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	b	.LBB0_85
 .LBB0_145:                              #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
 	bltu	$s0, $a0, .LBB0_147
 # %bb.146:                              #   in Loop: Header=BB0_86 Depth=3
 	addi.d	$a1, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a1, $a2, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $s1, $a0
 	b	.LBB0_148
 .LBB0_147:                              #   in Loop: Header=BB0_86 Depth=3
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
@@ -1026,7 +1026,7 @@ build_scanners:                         # @build_scanners
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 .LBB0_149:                              #   in Loop: Header=BB0_86 Depth=3
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
@@ -1070,15 +1070,15 @@ build_scanners:                         # @build_scanners
 .LBB0_157:                              # %.loopexit.i
                                         #   in Loop: Header=BB0_26 Depth=2
 	ldptr.d	$a4, $s7, 10296
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	add.d	$a3, $s7, $a0
 	beqz	$a4, .LBB0_165
 # %bb.158:                              #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	add.d	$a0, $s7, $a0
 	ld.w	$a2, $a0, 0
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	beq	$a4, $a3, .LBB0_170
 # %bb.159:                              #   in Loop: Header=BB0_26 Depth=2
 	andi	$a3, $a2, 7
@@ -1093,7 +1093,7 @@ build_scanners:                         # @build_scanners
 	stx.d	$a1, $a4, $a0
 	b	.LBB0_24
 .LBB0_161:                              #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s4, 0
@@ -1104,9 +1104,9 @@ build_scanners:                         # @build_scanners
 	st.w	$a2, $s7, 0
 	beqz	$a1, .LBB0_173
 # %bb.162:                              #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	beq	$a1, $a2, .LBB0_178
 # %bb.163:                              #   in Loop: Header=BB0_26 Depth=2
 	andi	$a2, $a0, 7
@@ -1115,31 +1115,31 @@ build_scanners:                         # @build_scanners
 	move	$a2, $zero
 	bstrpick.d	$a3, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $a4, 0
 	slli.d	$a0, $a3, 3
 	stx.d	$s7, $a1, $a0
 	b	.LBB0_181
 .LBB0_165:                              #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ldx.wu	$a0, $s7, $a0
 	stptr.d	$a3, $s7, 10296
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s7, 10288
 	slli.d	$a0, $a0, 3
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	stx.d	$a1, $a3, $a0
 	ori	$a0, $zero, 1
 	lu12i.w	$s2, 2
 	ori	$s5, $zero, 1
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
 	b	.LBB0_25
 .LBB0_166:                              #   in Loop: Header=BB0_26 Depth=2
 	beqz	$a0, .LBB0_182
 # %bb.167:                              #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a2, $a1, 0
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB0_183
 # %bb.168:                              #   in Loop: Header=BB0_26 Depth=2
 	andi	$a1, $a2, 7
@@ -1148,7 +1148,7 @@ build_scanners:                         # @build_scanners
 	move	$a1, $zero
 	bstrpick.d	$a3, $a2, 31, 0
 	addi.d	$a2, $a2, 1
-	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a2, $a4, 0
 	slli.d	$a2, $a3, 3
 	stx.d	$s7, $a0, $a2
@@ -1165,7 +1165,7 @@ build_scanners:                         # @build_scanners
 	b	.LBB0_24
 .LBB0_172:                              #   in Loop: Header=BB0_26 Depth=2
 	ld.wu	$a0, $s4, 8
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a2, $s4, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $s4, 8
@@ -1175,7 +1175,7 @@ build_scanners:                         # @build_scanners
 .LBB0_173:                              #   in Loop: Header=BB0_26 Depth=2
 	ld.wu	$a0, $s4, 8
 	move	$a2, $zero
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a3, $s4, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $s4, 8
@@ -1186,19 +1186,19 @@ build_scanners:                         # @build_scanners
 	bltu	$s0, $a1, .LBB0_176
 # %bb.175:                              #   in Loop: Header=BB0_26 Depth=2
 	addi.d	$a2, $a1, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a2, $a3, 0
 	slli.d	$a1, $a1, 3
 	stx.d	$s7, $a0, $a1
 	b	.LBB0_177
 .LBB0_176:                              #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
 .LBB0_177:                              # %new_NFAState.exit365.i
                                         #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 8
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
@@ -1209,22 +1209,22 @@ build_scanners:                         # @build_scanners
 # %bb.179:                              #   in Loop: Header=BB0_26 Depth=2
 	move	$a2, $zero
 	addi.d	$a3, $a0, 1
-	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a3, $a4, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $a1, $a0
 	b	.LBB0_181
 .LBB0_180:                              #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 8
 	ld.w	$a2, $a0, 0
 .LBB0_181:                              # %new_NFAState.exit357.i
                                         #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$a1, $a3, 24
 	st.d	$a1, $a3, 16
 	addi.d	$a0, $a2, 1
@@ -1236,7 +1236,7 @@ build_scanners:                         # @build_scanners
 .LBB0_182:                              #   in Loop: Header=BB0_26 Depth=2
 	ld.wu	$a0, $s4, 8
 	move	$a1, $zero
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a3, $s4, 16
 	addi.d	$a2, $a0, 1
 	st.w	$a2, $s4, 8
@@ -1248,23 +1248,23 @@ build_scanners:                         # @build_scanners
 # %bb.184:                              #   in Loop: Header=BB0_26 Depth=2
 	move	$a1, $zero
 	addi.d	$a3, $a2, 1
-	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a3, $a4, 0
 	slli.d	$a2, $a2, 3
 	stx.d	$s7, $a0, $a2
 	b	.LBB0_186
 .LBB0_185:                              #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$fp, $a0, 16
 	ld.w	$a1, $a0, 8
 .LBB0_186:                              # %new_NFAState.exit361.i
                                         #   in Loop: Header=BB0_26 Depth=2
 	addi.d	$a0, $a1, 1
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$a2, $a2, 8
 	st.w	$a0, $a2, 0
 	bstrpick.d	$a0, $a1, 31, 0
@@ -1279,15 +1279,15 @@ build_scanners:                         # @build_scanners
                                         #   in Loop: Header=BB0_18 Depth=1
 	move	$s2, $zero
 	move	$s5, $zero
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	add.d	$s1, $a2, $s7
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a1, $a2, $a1
-	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	b	.LBB0_191
 .LBB0_189:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ldx.wu	$a0, $s3, $a0
 	stptr.d	$a3, $s3, 10296
 	addi.d	$a1, $a0, 1
@@ -1295,8 +1295,8 @@ build_scanners:                         # @build_scanners
 	slli.d	$a0, $a0, 3
 	stx.d	$s6, $a3, $a0
 	ori	$a0, $zero, 1
-	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_190:                              #   in Loop: Header=BB0_191 Depth=2
 	ld.wu	$a1, $s3, 136
@@ -1316,13 +1316,13 @@ build_scanners:                         # @build_scanners
 	bne	$a2, $a3, .LBB0_190
 # %bb.193:                              #   in Loop: Header=BB0_191 Depth=2
 	ld.d	$a0, $a1, 24
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	ldptr.d	$fp, $a1, 10256
-	st.d	$a0, $sp, 168
+	st.d	$a0, $sp, 152
 	beqz	$fp, .LBB0_200
 # %bb.194:                              #   in Loop: Header=BB0_191 Depth=2
 	ld.w	$s8, $s1, 0
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	beq	$fp, $a0, .LBB0_204
 # %bb.195:                              #   in Loop: Header=BB0_191 Depth=2
 	ld.d	$s3, $s4, 16
@@ -1331,7 +1331,7 @@ build_scanners:                         # @build_scanners
 	beqz	$a0, .LBB0_209
 # %bb.196:                              #   in Loop: Header=BB0_191 Depth=2
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	move	$a2, $s4
@@ -1341,25 +1341,25 @@ build_scanners:                         # @build_scanners
 	st.w	$s1, $s4, 0
 	beqz	$s3, .LBB0_215
 # %bb.197:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	beq	$s3, $a1, .LBB0_224
 # %bb.198:                              #   in Loop: Header=BB0_191 Depth=2
 	andi	$a1, $a0, 7
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	beqz	$a1, .LBB0_226
 # %bb.199:                              #   in Loop: Header=BB0_191 Depth=2
 	bstrpick.d	$a1, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $a2, 0
 	slli.d	$a0, $a1, 3
 	stx.d	$s4, $s3, $a0
 	b	.LBB0_227
 .LBB0_200:                              #   in Loop: Header=BB0_191 Depth=2
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s4, 0
@@ -1371,9 +1371,9 @@ build_scanners:                         # @build_scanners
 	st.w	$a2, $s4, 0
 	beqz	$a1, .LBB0_213
 # %bb.201:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	beq	$a1, $a2, .LBB0_216
 # %bb.202:                              #   in Loop: Header=BB0_191 Depth=2
 	andi	$a2, $a0, 7
@@ -1381,7 +1381,7 @@ build_scanners:                         # @build_scanners
 # %bb.203:                              #   in Loop: Header=BB0_191 Depth=2
 	bstrpick.d	$a2, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $a3, 0
 	slli.d	$a0, $a2, 3
 	stx.d	$s4, $a1, $a0
@@ -1391,9 +1391,9 @@ build_scanners:                         # @build_scanners
 	ld.w	$s1, $s4, 0
 	bltu	$s0, $s8, .LBB0_209
 # %bb.205:                              #   in Loop: Header=BB0_191 Depth=2
-	st.d	$s8, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 32                    # 8-byte Folded Spill
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	move	$a2, $s4
@@ -1403,52 +1403,52 @@ build_scanners:                         # @build_scanners
 	st.w	$s1, $s4, 0
 	beqz	$s3, .LBB0_228
 # %bb.206:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	beq	$s3, $a1, .LBB0_229
 # %bb.207:                              #   in Loop: Header=BB0_191 Depth=2
 	andi	$a1, $a0, 7
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	beqz	$a1, .LBB0_232
 # %bb.208:                              #   in Loop: Header=BB0_191 Depth=2
 	bstrpick.d	$a1, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $a2, 0
 	slli.d	$a0, $a1, 3
 	b	.LBB0_231
 .LBB0_209:                              #   in Loop: Header=BB0_191 Depth=2
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	addi.d	$a0, $s1, 1
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	st.w	$a0, $a2, 0
 	st.w	$s1, $s4, 0
 	beqz	$s3, .LBB0_214
 # %bb.210:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	beq	$s3, $a1, .LBB0_220
 # %bb.211:                              #   in Loop: Header=BB0_191 Depth=2
 	andi	$a1, $a0, 7
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	beqz	$a1, .LBB0_222
 # %bb.212:                              #   in Loop: Header=BB0_191 Depth=2
 	bstrpick.d	$a1, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $a2, 0
 	slli.d	$a0, $a1, 3
 	stx.d	$s4, $s3, $a0
 	b	.LBB0_223
 .LBB0_213:                              #   in Loop: Header=BB0_191 Depth=2
 	ld.wu	$a0, $a3, 8
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a2, $a3, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $a3, 8
@@ -1457,43 +1457,43 @@ build_scanners:                         # @build_scanners
 	b	.LBB0_219
 .LBB0_214:                              #   in Loop: Header=BB0_191 Depth=2
 	ld.wu	$a0, $a2, 8
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a3, $a2, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $a2, 8
 	slli.d	$a0, $a0, 3
 	stx.d	$s4, $a3, $a0
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB0_223
 .LBB0_215:                              #   in Loop: Header=BB0_191 Depth=2
 	ld.wu	$a0, $a2, 8
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a3, $a2, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $a2, 8
 	slli.d	$a0, $a0, 3
 	stx.d	$s4, $a3, $a0
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB0_227
 .LBB0_216:                              #   in Loop: Header=BB0_191 Depth=2
 	bltu	$s0, $a0, .LBB0_218
 # %bb.217:                              #   in Loop: Header=BB0_191 Depth=2
 	addi.d	$a2, $a0, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a2, $a3, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$s4, $a1, $a0
 	b	.LBB0_219
 .LBB0_218:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
 .LBB0_219:                              # %new_NFAState.exit413.i
                                         #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	ldx.wu	$a0, $a2, $s7
-	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	stptr.d	$a3, $a2, 10256
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $a2, 10248
@@ -1501,17 +1501,17 @@ build_scanners:                         # @build_scanners
 	stx.d	$s4, $a3, $a0
 	b	.LBB0_235
 .LBB0_220:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	bltu	$s0, $a0, .LBB0_222
 # %bb.221:                              #   in Loop: Header=BB0_191 Depth=2
 	addi.d	$a1, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a1, $a2, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$s4, $s3, $a0
 	b	.LBB0_223
 .LBB0_222:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
@@ -1523,21 +1523,21 @@ build_scanners:                         # @build_scanners
 	jirl	$ra, $ra, 0
 	b	.LBB0_235
 .LBB0_224:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	bltu	$s0, $a0, .LBB0_226
 # %bb.225:                              #   in Loop: Header=BB0_191 Depth=2
 	addi.d	$a1, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a1, $a2, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$s4, $s3, $a0
 	b	.LBB0_227
 .LBB0_226:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ldptr.d	$fp, $a0, 10256
 	ldx.w	$s8, $a0, $s7
 .LBB0_227:                              # %new_NFAState.exit421.i
@@ -1548,34 +1548,34 @@ build_scanners:                         # @build_scanners
 	b	.LBB0_234
 .LBB0_228:                              #   in Loop: Header=BB0_191 Depth=2
 	ld.wu	$a0, $a2, 8
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a3, $a2, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $a2, 8
 	slli.d	$a0, $a0, 3
 	stx.d	$s4, $a3, $a0
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB0_233
 .LBB0_229:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	bltu	$s0, $a0, .LBB0_232
 # %bb.230:                              #   in Loop: Header=BB0_191 Depth=2
 	addi.d	$a1, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a1, $a2, 0
 	slli.d	$a0, $a0, 3
 .LBB0_231:                              # %new_NFAState.exit417.i
                                         #   in Loop: Header=BB0_191 Depth=2
 	stx.d	$s4, $s3, $a0
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	b	.LBB0_233
 .LBB0_232:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ldptr.d	$fp, $a0, 10256
 	ldx.w	$a1, $a0, $s7
 .LBB0_233:                              # %new_NFAState.exit417.i
@@ -1588,10 +1588,10 @@ build_scanners:                         # @build_scanners
 	stx.d	$s4, $fp, $a0
 .LBB0_235:                              #   in Loop: Header=BB0_191 Depth=2
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	ld.w	$a2, $a3, 0
 	ld.d	$a1, $a3, 16
 	move	$s3, $a0
@@ -1600,9 +1600,9 @@ build_scanners:                         # @build_scanners
 	st.w	$a2, $s3, 0
 	beqz	$a1, .LBB0_239
 # %bb.236:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	beq	$a1, $a2, .LBB0_240
 # %bb.237:                              #   in Loop: Header=BB0_191 Depth=2
 	andi	$a2, $a0, 7
@@ -1610,14 +1610,14 @@ build_scanners:                         # @build_scanners
 # %bb.238:                              #   in Loop: Header=BB0_191 Depth=2
 	bstrpick.d	$a2, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $a3, 0
 	slli.d	$a0, $a2, 3
 	stx.d	$s3, $a1, $a0
 	b	.LBB0_243
 .LBB0_239:                              #   in Loop: Header=BB0_191 Depth=2
 	ld.wu	$a0, $a3, 8
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a2, $a3, 16
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $a3, 8
@@ -1628,44 +1628,44 @@ build_scanners:                         # @build_scanners
 	bltu	$s0, $a0, .LBB0_242
 # %bb.241:                              #   in Loop: Header=BB0_191 Depth=2
 	addi.d	$a2, $a0, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a2, $a3, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$s3, $a1, $a0
 	b	.LBB0_243
 .LBB0_242:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
 .LBB0_243:                              # %new_NFAState.exit429.i
                                         #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 .LBB0_244:                              # %new_NFAState.exit429.i
                                         #   in Loop: Header=BB0_191 Depth=2
 	ld.d	$a0, $s6, 8
 	ld.bu	$a0, $a0, 36
 	bstrpick.d	$a0, $a0, 3, 3
 	st.w	$a0, $a3, 56
-	addi.d	$a1, $sp, 168
+	addi.d	$a1, $sp, 152
 	move	$a0, $a3
 	move	$a2, $s4
 	move	$a3, $s3
 	pcaddu18i	$ra, %call36(build_regex_nfa)
 	jirl	$ra, $ra, 0
 	ldptr.d	$a1, $s3, 10296
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	add.d	$a3, $s3, $a0
 	beqz	$a1, .LBB0_189
 # %bb.245:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	add.d	$a0, $s3, $a0
 	ld.w	$a2, $a0, 0
 	beq	$a1, $a3, .LBB0_248
 # %bb.246:                              #   in Loop: Header=BB0_191 Depth=2
 	andi	$a3, $a2, 7
-	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	beqz	$a3, .LBB0_250
 # %bb.247:                              #   in Loop: Header=BB0_191 Depth=2
 	bstrpick.d	$a3, $a2, 31, 0
@@ -1675,8 +1675,8 @@ build_scanners:                         # @build_scanners
 	stx.d	$s6, $a1, $a0
 	b	.LBB0_251
 .LBB0_248:                              #   in Loop: Header=BB0_191 Depth=2
-	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	bltu	$s0, $a2, .LBB0_250
 # %bb.249:                              #   in Loop: Header=BB0_191 Depth=2
 	addi.d	$a3, $a2, 1
@@ -1703,13 +1703,14 @@ build_scanners:                         # @build_scanners
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
 	move	$fp, $zero
-	st.d	$zero, $sp, 208
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $sp, 176
+	st.d	$zero, $sp, 192
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 176
+	vst	$vr0, $sp, 160
 	addi.d	$s1, $a0, 16
 	st.d	$s1, $a0, 8
 	st.w	$s3, $a0, 0
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	st.d	$a0, $s5, 16
 	move	$a0, $s1
 	b	.LBB0_256
@@ -1809,11 +1810,11 @@ build_scanners:                         # @build_scanners
 	pcaddu18i	$ra, %call36(qsort)
 	jirl	$ra, $ra, 0
 	move	$a2, $zero
-	addi.d	$a0, $sp, 192
-	st.d	$a0, $sp, 184
+	addi.d	$a0, $sp, 176
+	st.d	$a0, $sp, 168
 	ori	$s4, $zero, 1
-	st.w	$s4, $sp, 176
-	st.d	$s5, $sp, 192
+	st.w	$s4, $sp, 160
+	st.d	$s5, $sp, 176
 	ori	$s5, $zero, 2048
 	b	.LBB0_273
 	.p2align	4, , 16
@@ -1832,14 +1833,14 @@ build_scanners:                         # @build_scanners
                                         #       Child Loop BB0_309 Depth 3
                                         #         Child Loop BB0_311 Depth 4
                                         #       Child Loop BB0_317 Depth 3
-	ld.d	$a0, $sp, 184
+	ld.d	$a0, $sp, 168
 	slli.d	$a1, $a2, 3
 	ldx.d	$s3, $a0, $a1
 	ld.wu	$a0, $s3, 0
 	beqz	$a0, .LBB0_272
 # %bb.274:                              # %.preheader106.i.i.preheader
                                         #   in Loop: Header=BB0_273 Depth=2
-	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
 	move	$s5, $zero
 	bnez	$a0, .LBB0_276
 	b	.LBB0_330
@@ -2026,8 +2027,8 @@ build_scanners:                         # @build_scanners
 	ori	$a2, $zero, 8
 	pcaddu18i	$ra, %call36(qsort)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 176
-	ld.d	$a2, $sp, 184
+	ld.w	$a1, $sp, 160
+	ld.d	$a2, $sp, 168
 	bstrpick.d	$a3, $a1, 31, 0
 	beqz	$a1, .LBB0_314
 # %bb.306:                              # %.lr.ph125.i.i
@@ -2080,8 +2081,8 @@ build_scanners:                         # @build_scanners
                                         #   in Loop: Header=BB0_273 Depth=2
 	bnez	$a2, .LBB0_319
 # %bb.315:                              #   in Loop: Header=BB0_273 Depth=2
-	addi.d	$a2, $sp, 192
-	st.d	$a2, $sp, 184
+	addi.d	$a2, $sp, 176
+	st.d	$a2, $sp, 168
 	b	.LBB0_321
 .LBB0_316:                              # %.lr.ph125.split.us.i.i.preheader
                                         #   in Loop: Header=BB0_273 Depth=2
@@ -2100,14 +2101,14 @@ build_scanners:                         # @build_scanners
 	bne	$a3, $s1, .LBB0_317
 .LBB0_319:                              # %._crit_edge126.thread.i.i
                                         #   in Loop: Header=BB0_273 Depth=2
-	addi.d	$a0, $sp, 192
+	addi.d	$a0, $sp, 176
 	beq	$a2, $a0, .LBB0_322
 # %bb.320:                              #   in Loop: Header=BB0_273 Depth=2
 	andi	$a0, $a1, 7
 	beqz	$a0, .LBB0_324
 .LBB0_321:                              #   in Loop: Header=BB0_273 Depth=2
 	addi.d	$a0, $a1, 1
-	st.w	$a0, $sp, 176
+	st.w	$a0, $sp, 160
 	slli.d	$a0, $a3, 3
 	stx.d	$s4, $a2, $a0
 	b	.LBB0_329
@@ -2115,12 +2116,12 @@ build_scanners:                         # @build_scanners
 	bltu	$s0, $a1, .LBB0_324
 # %bb.323:                              #   in Loop: Header=BB0_273 Depth=2
 	addi.d	$a0, $a1, 1
-	st.w	$a0, $sp, 176
+	st.w	$a0, $sp, 160
 	slli.d	$a0, $a1, 3
 	stx.d	$s4, $a2, $a0
 	b	.LBB0_329
 .LBB0_324:                              #   in Loop: Header=BB0_273 Depth=2
-	addi.d	$a0, $sp, 176
+	addi.d	$a0, $sp, 160
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
@@ -2140,7 +2141,7 @@ build_scanners:                         # @build_scanners
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 184
+	ld.d	$a0, $sp, 168
 	slli.d	$a1, $s1, 3
 	ldx.d	$s4, $a0, $a1
 .LBB0_329:                              #   in Loop: Header=BB0_273 Depth=2
@@ -2156,25 +2157,25 @@ build_scanners:                         # @build_scanners
 	bne	$s5, $a0, .LBB0_275
 # %bb.331:                              # %.split532.us.loopexit540.i
                                         #   in Loop: Header=BB0_273 Depth=2
-	ld.wu	$s4, $sp, 176
+	ld.wu	$s4, $sp, 160
 	ori	$s5, $zero, 2048
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	b	.LBB0_272
 .LBB0_332:                              # %._crit_edge135.i.i
                                         #   in Loop: Header=BB0_18 Depth=1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	addi.d	$s6, $a0, 296
 	st.w	$zero, $a0, 296
 	st.d	$zero, $a0, 304
 	ori	$s7, $zero, 1
-	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 64                    # 8-byte Folded Spill
 	beqz	$s4, .LBB0_382
 # %bb.333:                              # %.lr.ph.i87.i.i
                                         #   in Loop: Header=BB0_18 Depth=1
 	move	$fp, $zero
 	move	$s1, $zero
 	move	$s2, $zero
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	addi.d	$s3, $a0, 312
 	ori	$s0, $zero, 2
 	b	.LBB0_336
@@ -2194,12 +2195,12 @@ build_scanners:                         # @build_scanners
 .LBB0_336:                              #   Parent Loop BB0_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 184
+	ld.d	$a1, $sp, 168
 	ldx.d	$a3, $a1, $fp
-	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$a2, $a4, 304
 	move	$a1, $a0
 	stptr.d	$a0, $a3, 2088
@@ -2232,22 +2233,22 @@ build_scanners:                         # @build_scanners
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
-	ld.wu	$s4, $sp, 176
+	ld.wu	$s4, $sp, 160
 	b	.LBB0_335
 .LBB0_343:                              # %.preheader138.i.i.i
                                         #   in Loop: Header=BB0_18 Depth=1
 	beqz	$s4, .LBB0_382
 # %bb.344:                              # %.preheader137.lr.ph.i.i.i
                                         #   in Loop: Header=BB0_18 Depth=1
-	ld.d	$a2, $sp, 184
+	ld.d	$a2, $sp, 168
 	move	$fp, $zero
 	b	.LBB0_347
 	.p2align	4, , 16
 .LBB0_345:                              # %._crit_edge153.loopexit.i.i.i
                                         #   in Loop: Header=BB0_347 Depth=2
-	ld.wu	$s4, $sp, 176
+	ld.wu	$s4, $sp, 160
 	ori	$s5, $zero, 2048
-	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 64                    # 8-byte Folded Reload
 .LBB0_346:                              # %._crit_edge153.i.i.i
                                         #   in Loop: Header=BB0_347 Depth=2
 	addi.d	$fp, $fp, 1
@@ -2292,7 +2293,7 @@ build_scanners:                         # @build_scanners
 	move	$a4, $zero
 	lu12i.w	$s2, -524288
 	ori	$s0, $zero, 2
-	ori	$s3, $zero, 8
+	ori	$t6, $zero, 4
 	b	.LBB0_354
 	.p2align	4, , 16
 .LBB0_353:                              # %._crit_edge.i93.i.i
@@ -2313,17 +2314,18 @@ build_scanners:                         # @build_scanners
                                         #   in Loop: Header=BB0_354 Depth=3
 	ldptr.d	$a5, $a5, 10296
 	bstrpick.d	$a6, $a7, 31, 0
-	bgeu	$a7, $s3, .LBB0_357
+	bgeu	$a7, $t6, .LBB0_357
 # %bb.356:                              #   in Loop: Header=BB0_354 Depth=3
 	move	$a7, $zero
 	b	.LBB0_360
 	.p2align	4, , 16
 .LBB0_357:                              # %vector.ph404
                                         #   in Loop: Header=BB0_354 Depth=3
-	bstrpick.d	$a7, $a6, 31, 3
-	slli.d	$a7, $a7, 3
-	vreplgr2vr.w	$vr0, $s2
-	addi.d	$t0, $a5, 32
+	bstrpick.d	$a7, $a6, 31, 2
+	slli.d	$a7, $a7, 2
+	vinsgr2vr.w	$vr0, $s2, 0
+	vinsgr2vr.w	$vr0, $s2, 1
+	addi.d	$t0, $a5, 16
 	move	$t1, $a7
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
@@ -2332,52 +2334,33 @@ build_scanners:                         # @build_scanners
                                         #     Parent Loop BB0_347 Depth=2
                                         #       Parent Loop BB0_354 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ld.d	$t2, $t0, -32
-	ld.d	$t3, $t0, -24
-	ld.d	$t4, $t0, -16
-	ld.d	$t5, $t0, -8
-	ld.d	$t6, $t0, 0
-	ld.d	$t7, $t0, 8
-	ld.d	$t8, $t0, 16
-	ld.d	$s0, $t0, 24
+	ld.d	$t2, $t0, -16
+	ld.d	$t3, $t0, -8
+	ld.d	$t4, $t0, 0
+	ld.d	$t5, $t0, 8
 	ld.d	$t2, $t2, 8
 	ld.d	$t3, $t3, 8
 	ld.d	$t4, $t4, 8
 	ld.d	$t5, $t5, 8
-	ld.d	$t6, $t6, 8
-	ld.d	$t7, $t7, 8
-	ld.d	$t8, $t8, 8
-	ld.d	$s0, $s0, 8
 	ld.w	$t2, $t2, 8
 	ld.w	$t3, $t3, 8
 	ld.w	$t4, $t4, 8
 	ld.w	$t5, $t5, 8
 	vinsgr2vr.w	$vr2, $t2, 0
 	vinsgr2vr.w	$vr2, $t3, 1
-	vinsgr2vr.w	$vr2, $t4, 2
-	vinsgr2vr.w	$vr2, $t5, 3
-	ld.w	$t2, $t6, 8
-	ld.w	$t3, $t7, 8
-	ld.w	$t4, $t8, 8
-	ld.w	$t5, $s0, 8
-	vinsgr2vr.w	$vr3, $t2, 0
-	vinsgr2vr.w	$vr3, $t3, 1
-	vinsgr2vr.w	$vr3, $t4, 2
-	vinsgr2vr.w	$vr3, $t5, 3
+	vinsgr2vr.w	$vr3, $t4, 0
+	vinsgr2vr.w	$vr3, $t5, 1
 	vmax.w	$vr0, $vr0, $vr2
 	vmax.w	$vr1, $vr1, $vr3
-	addi.d	$t1, $t1, -8
-	addi.d	$t0, $t0, 64
+	addi.d	$t1, $t1, -4
+	addi.d	$t0, $t0, 32
 	bnez	$t1, .LBB0_358
 # %bb.359:                              # %middle.block413
                                         #   in Loop: Header=BB0_354 Depth=3
 	vmax.w	$vr0, $vr0, $vr1
-	vbsrl.v	$vr1, $vr0, 8
-	vmax.w	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s2, $vr0, 0
-	ori	$s0, $zero, 2
 	beq	$a7, $a6, .LBB0_353
 .LBB0_360:                              # %scalar.ph402.preheader
                                         #   in Loop: Header=BB0_354 Depth=3
@@ -2440,7 +2423,7 @@ build_scanners:                         # @build_scanners
 	ldx.d	$a0, $a2, $s1
 	ld.d	$a1, $a0, 8
 	ldx.d	$a1, $a1, $s4
-	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
 	ldx.wu	$a3, $a1, $a3
 	addi.d	$s6, $s6, 1
 	addi.d	$s5, $s5, 8
@@ -2486,7 +2469,7 @@ build_scanners:                         # @build_scanners
 .LBB0_375:                              #   in Loop: Header=BB0_368 Depth=4
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 184
+	ld.d	$a2, $sp, 168
 	b	.LBB0_367
 .LBB0_376:                              # %dfa_to_scanner.exit.i.i
                                         #   in Loop: Header=BB0_18 Depth=1
@@ -2502,14 +2485,14 @@ build_scanners:                         # @build_scanners
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.wu	$a0, $sp, 176
+	ld.wu	$a0, $sp, 160
 	addi.d	$s0, $s0, 1
 	addi.d	$fp, $fp, 8
 	bgeu	$s0, $a0, .LBB0_382
 .LBB0_379:                              # %.lr.ph.i96.i.i
                                         #   Parent Loop BB0_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $sp, 184
+	ld.d	$a0, $sp, 168
 	ldx.d	$s3, $a0, $fp
 	ld.d	$a0, $s3, 8
 	beqz	$a0, .LBB0_378
@@ -2523,11 +2506,11 @@ build_scanners:                         # @build_scanners
 	b	.LBB0_378
 .LBB0_382:                              # %._crit_edge.i99.i.i
                                         #   in Loop: Header=BB0_18 Depth=1
-	ld.d	$a0, $sp, 184
+	ld.d	$a0, $sp, 168
 	beqz	$a0, .LBB0_385
 # %bb.383:                              # %._crit_edge.i99.i.i
                                         #   in Loop: Header=BB0_18 Depth=1
-	addi.d	$a1, $sp, 192
+	addi.d	$a1, $sp, 176
 	beq	$a0, $a1, .LBB0_385
 # %bb.384:                              #   in Loop: Header=BB0_18 Depth=1
 	pcaddu18i	$ra, %call36(free)
@@ -2535,9 +2518,9 @@ build_scanners:                         # @build_scanners
 .LBB0_385:                              # %nfa_to_scanner.exit.i
                                         #   in Loop: Header=BB0_18 Depth=1
 	ld.w	$a0, $s6, 0
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	addi.d	$a1, $s3, 336
-	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
 	pcalau12i	$fp, %pc_hi20(trans_hash_fns+16)
 	beqz	$a0, .LBB0_463
 # %bb.386:                              # %.lr.ph.i.i430.i.preheader
@@ -2605,7 +2588,7 @@ build_scanners:                         # @build_scanners
 .LBB0_395:                              #   in Loop: Header=BB0_390 Depth=2
 	ld.wu	$a0, $s6, 0
 	addi.d	$s1, $s1, 1
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	bltu	$s1, $a0, .LBB0_390
 # %bb.396:                              # %.loopexit.i.i436.i
                                         #   in Loop: Header=BB0_390 Depth=2
@@ -2634,7 +2617,7 @@ build_scanners:                         # @build_scanners
 	pcaddu18i	$ra, %call36(set_to_vec)
 	jirl	$ra, $ra, 0
 	move	$a0, $s3
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(sort_VecAction)
 	jirl	$ra, $ra, 0
 	ld.wu	$a0, $s3, 296
@@ -2652,11 +2635,11 @@ build_scanners:                         # @build_scanners
 	b	.LBB0_404
 	.p2align	4, , 16
 .LBB0_403:                              #   in Loop: Header=BB0_404 Depth=2
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.wu	$a0, $a0, 0
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	addi.d	$a1, $a1, 1
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	bgeu	$a1, $a0, .LBB0_464
 .LBB0_404:                              #   Parent Loop BB0_18 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -2669,20 +2652,20 @@ build_scanners:                         # @build_scanners
                                         #           Child Loop BB0_442 Depth 5
                                         #             Child Loop BB0_443 Depth 6
 	ld.d	$a0, $s3, 304
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	slli.d	$a1, $a1, 3
 	ldx.d	$s4, $a0, $a1
 	move	$s2, $zero
 	addi.d	$a0, $s4, 2047
 	addi.d	$a0, $a0, 89
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	b	.LBB0_407
 	.p2align	4, , 16
 .LBB0_405:                              #   in Loop: Header=BB0_407 Depth=3
 	move	$s6, $zero
 .LBB0_406:                              #   in Loop: Header=BB0_407 Depth=3
 	addi.d	$s2, $s2, 1
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	stx.d	$s3, $a0, $s0
 	ori	$a0, $zero, 256
 	beq	$s2, $a0, .LBB0_403
@@ -2989,7 +2972,7 @@ build_scanners:                         # @build_scanners
                                         #   in Loop: Header=BB0_407 Depth=3
 	pcalau12i	$a0, %pc_hi20(trans_hash_fns)
 	addi.d	$a2, $a0, %pc_lo12(trans_hash_fns)
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(set_add_fn)
 	jirl	$ra, $ra, 0
@@ -3022,63 +3005,50 @@ build_scanners:                         # @build_scanners
 	st.d	$s7, $fp, %pc_lo12(trans_hash_fns+16)
 .LBB0_464:                              # %._crit_edge.i.i441.i
                                         #   in Loop: Header=BB0_18 Depth=1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(set_to_vec)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s3, 336
-	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
 	ori	$s0, $zero, 2
 	beqz	$a0, .LBB0_472
 # %bb.465:                              # %.lr.ph98.i.i.i
                                         #   in Loop: Header=BB0_18 Depth=1
 	ld.d	$a2, $s3, 344
 	bstrpick.d	$a3, $a0, 31, 0
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 4
 	bgeu	$a0, $a1, .LBB0_467
 # %bb.466:                              #   in Loop: Header=BB0_18 Depth=1
 	move	$a1, $zero
 	b	.LBB0_470
 .LBB0_467:                              # %vector.ph
                                         #   in Loop: Header=BB0_18 Depth=1
-	bstrpick.d	$a1, $a3, 31, 3
-	slli.d	$a1, $a1, 3
-	addi.d	$a4, $a2, 32
-	ori	$a5, $zero, 7
+	move	$a4, $zero
+	bstrpick.d	$a1, $a3, 31, 2
+	slli.d	$a1, $a1, 2
+	addi.d	$a5, $a2, 16
 	move	$a6, $a1
 	.p2align	4, , 16
 .LBB0_468:                              # %vector.body
                                         #   Parent Loop BB0_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a7, $a5, -7
-	addi.d	$t0, $a5, -6
-	addi.d	$t1, $a5, -5
-	addi.d	$t2, $a5, -4
-	addi.d	$t3, $a5, -3
-	addi.d	$t4, $a5, -2
-	addi.d	$t5, $a5, -1
-	ld.d	$t6, $a4, -32
-	ld.d	$t7, $a4, -24
-	ld.d	$t8, $a4, -16
-	ld.d	$fp, $a4, -8
-	ld.d	$s0, $a4, 0
-	ld.d	$s1, $a4, 8
-	ld.d	$s2, $a4, 16
-	ld.d	$s3, $a4, 24
-	st.w	$a7, $t6, 0
-	st.w	$t0, $t7, 0
-	st.w	$t1, $t8, 0
-	st.w	$t2, $fp, 0
-	st.w	$t3, $s0, 0
-	st.w	$t4, $s1, 0
-	st.w	$t5, $s2, 0
-	st.w	$a5, $s3, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a5, $a5, 8
-	addi.d	$a4, $a4, 64
+	addi.d	$a7, $a4, 1
+	addi.d	$t0, $a4, 2
+	addi.d	$t1, $a4, 3
+	ld.d	$t2, $a5, -16
+	ld.d	$t3, $a5, -8
+	ld.d	$t4, $a5, 0
+	ld.d	$t5, $a5, 8
+	st.w	$a4, $t2, 0
+	st.w	$a7, $t3, 0
+	st.w	$t0, $t4, 0
+	st.w	$t1, $t5, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a4, $a4, 4
+	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB0_468
 # %bb.469:                              # %middle.block
                                         #   in Loop: Header=BB0_18 Depth=1
-	ori	$s0, $zero, 2
 	beq	$a1, $a3, .LBB0_472
 .LBB0_470:                              # %scalar.ph.preheader
                                         #   in Loop: Header=BB0_18 Depth=1
@@ -3101,7 +3071,7 @@ build_scanners:                         # @build_scanners
 	st.w	$a0, $s4, 48
 .LBB0_473:                              # %._crit_edge.thread.i
                                         #   in Loop: Header=BB0_18 Depth=1
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	lu12i.w	$s2, 2
 	ori	$s5, $zero, 1
@@ -3116,7 +3086,7 @@ build_scanners:                         # @build_scanners
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.wu	$a0, $a0, 0
 	addi.d	$fp, $fp, 1
 	bgeu	$fp, $a0, .LBB0_487
@@ -3153,7 +3123,7 @@ build_scanners:                         # @build_scanners
 	ldptr.d	$a0, $s3, 10256
 	beqz	$a0, .LBB0_484
 # %bb.482:                              #   in Loop: Header=BB0_476 Depth=2
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a1, $s3, $a1
 	beq	$a0, $a1, .LBB0_484
 # %bb.483:                              #   in Loop: Header=BB0_476 Depth=2
@@ -3166,7 +3136,7 @@ build_scanners:                         # @build_scanners
 	ori	$s0, $zero, 2
 	beqz	$a0, .LBB0_475
 # %bb.485:                              #   in Loop: Header=BB0_476 Depth=2
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	add.d	$a1, $s3, $a1
 	beq	$a0, $a1, .LBB0_475
 # %bb.486:                              #   in Loop: Header=BB0_476 Depth=2
@@ -3180,7 +3150,7 @@ build_scanners:                         # @build_scanners
 	beqz	$a0, .LBB0_490
 # %bb.488:                              # %._crit_edge.i453.i
                                         #   in Loop: Header=BB0_18 Depth=1
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB0_490
 # %bb.489:                              #   in Loop: Header=BB0_18 Depth=1
 	pcaddu18i	$ra, %call36(free)
@@ -3192,7 +3162,7 @@ build_scanners:                         # @build_scanners
 	st.d	$zero, $s4, 16
 	addi.w	$s3, $a0, 1
 	st.w	$s3, $s4, 52
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	b	.LBB0_16
 .LBB0_491:
 	move	$s3, $zero
@@ -3212,18 +3182,18 @@ build_scanners:                         # @build_scanners
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 296                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 304
+	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 280                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 288
 	ret
 .Lfunc_end0:
 	.size	build_scanners, .Lfunc_end0-build_scanners
@@ -3233,45 +3203,45 @@ build_scanners:                         # @build_scanners
 	.type	build_regex_nfa,@function
 build_regex_nfa:                        # @build_regex_nfa
 # %bb.0:
-	addi.d	$sp, $sp, -480
-	st.d	$ra, $sp, 472                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 464                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 456                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 448                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 440                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 432                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 424                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 416                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 408                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 400                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 392                   # 8-byte Folded Spill
-	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -448
+	st.d	$ra, $sp, 440                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 432                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 424                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 416                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 408                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 400                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 392                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 384                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 376                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 360                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
 	move	$s8, $a2
 	move	$s2, $a0
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	ld.d	$s0, $a1, 0
+	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
+	ld.d	$fp, $a1, 0
 	lu12i.w	$a0, 2
 	ori	$a1, $a0, 2056
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	add.d	$a1, $a2, $a1
 	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
 	ori	$a1, $a0, 2072
-	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	add.d	$a1, $a2, $a1
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	ori	$a0, $a0, 2176
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ori	$s1, $zero, 1
-	addi.d	$s4, $sp, 128
+	addi.d	$s4, $sp, 96
+	lu12i.w	$a0, 4112
+	ori	$s5, $a0, 257
 	vrepli.b	$vr0, 1
-	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
-	xvrepli.b	$xr0, 1
-	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
+	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
 	move	$s7, $a2
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	b	.LBB1_3
 .LBB1_1:                                #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ldx.wu	$a0, $s6, $a0
 	stptr.d	$a3, $s6, 10256
 	addi.d	$a1, $a0, 1
@@ -3279,7 +3249,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	slli.d	$a0, $a0, 3
 	stx.d	$s8, $a3, $a0
 .LBB1_2:                                #   in Loop: Header=BB1_3 Depth=1
-	move	$s0, $s5
+	move	$fp, $s3
 	move	$s7, $s6
 .LBB1_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_27 Depth 2
@@ -3287,10 +3257,10 @@ build_regex_nfa:                        # @build_regex_nfa
                                         #       Child Loop BB1_47 Depth 3
                                         #       Child Loop BB1_49 Depth 3
                                         #     Child Loop BB1_142 Depth 2
-	addi.d	$s5, $s0, 1
-	st.d	$s5, $sp, 384
-	ld.bu	$s3, $s0, 0
-	addi.d	$a0, $s3, -40
+	addi.d	$s3, $fp, 1
+	st.d	$s3, $sp, 352
+	ld.bu	$s0, $fp, 0
+	addi.d	$a0, $s0, -40
 	move	$s6, $s7
 	ori	$a1, $zero, 52
 	bltu	$a1, $a0, .LBB1_9
@@ -3304,7 +3274,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	jr	$a0
 .LBB1_5:                                #   in Loop: Header=BB1_3 Depth=1
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s2, 0
@@ -3332,15 +3302,15 @@ build_regex_nfa:                        # @build_regex_nfa
 	b	.LBB1_93
 .LBB1_9:                                #   in Loop: Header=BB1_3 Depth=1
 	ori	$a0, $zero, 124
-	beq	$s3, $a0, .LBB1_58
+	beq	$s0, $a0, .LBB1_58
 # %bb.10:                               #   in Loop: Header=BB1_3 Depth=1
-	bnez	$s3, .LBB1_12
+	bnez	$s0, .LBB1_12
 	b	.LBB1_204
 .LBB1_11:                               #   in Loop: Header=BB1_3 Depth=1
-	addi.d	$s5, $s0, 2
-	st.d	$s5, $sp, 384
-	ld.bu	$s3, $s0, 1
-	beqz	$s3, .LBB1_203
+	addi.d	$s3, $fp, 2
+	st.d	$s3, $sp, 352
+	ld.bu	$s0, $fp, 1
+	beqz	$s0, .LBB1_203
 .LBB1_12:                               #   in Loop: Header=BB1_3 Depth=1
 	ld.w	$a0, $s2, 56
 	beqz	$a0, .LBB1_14
@@ -3348,13 +3318,13 @@ build_regex_nfa:                        # @build_regex_nfa
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
-	slli.d	$a1, $s3, 1
+	slli.d	$a1, $s0, 1
 	ldx.hu	$a0, $a0, $a1
 	andi	$a0, $a0, 1024
 	bnez	$a0, .LBB1_62
 .LBB1_14:                               #   in Loop: Header=BB1_3 Depth=1
-	slli.d	$a0, $s3, 5
-	alsl.d	$a0, $s3, $a0, 3
+	slli.d	$a0, $s0, 5
+	alsl.d	$a0, $s0, $a0, 3
 	add.d	$a0, $s6, $a0
 	ld.d	$a1, $a0, 16
 	addi.d	$s8, $a0, 8
@@ -3369,7 +3339,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	beqz	$a0, .LBB1_81
 .LBB1_17:                               #   in Loop: Header=BB1_3 Depth=1
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 0
@@ -3395,51 +3365,50 @@ build_regex_nfa:                        # @build_regex_nfa
 	stx.d	$s7, $fp, $a0
 	b	.LBB1_158
 .LBB1_21:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.bu	$fp, $s5, 0
+	ld.bu	$s0, $s3, 0
 	ori	$a0, $zero, 94
-	bne	$fp, $a0, .LBB1_23
+	bne	$s0, $a0, .LBB1_23
 # %bb.22:                               #   in Loop: Header=BB1_3 Depth=1
-	addi.d	$s5, $s0, 2
-	st.d	$s5, $sp, 384
+	addi.d	$s3, $fp, 2
+	st.d	$s3, $sp, 352
 .LBB1_23:                               #   in Loop: Header=BB1_3 Depth=1
-	addi.d	$a0, $sp, 128
+	addi.d	$a0, $sp, 96
 	ori	$a2, $zero, 256
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ori	$a2, $zero, 255
 	ori	$t1, $zero, 92
-	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
-	xvld	$xr1, $sp, 48                   # 32-byte Folded Reload
+	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
 	b	.LBB1_27
 	.p2align	4, , 16
 .LBB1_24:                               #   in Loop: Header=BB1_27 Depth=2
 	bne	$a2, $t1, .LBB1_32
 # %bb.25:                               #   in Loop: Header=BB1_27 Depth=2
-	ld.bu	$a2, $s5, 1
-	addi.d	$s0, $s5, 2
+	ld.bu	$a2, $s3, 1
+	addi.d	$fp, $s3, 2
 .LBB1_26:                               #   in Loop: Header=BB1_27 Depth=2
 	stx.b	$s1, $a2, $s4
-	move	$s5, $s0
+	move	$s3, $fp
 .LBB1_27:                               #   Parent Loop BB1_3 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB1_43 Depth 3
                                         #       Child Loop BB1_47 Depth 3
                                         #       Child Loop BB1_49 Depth 3
 	move	$a1, $a2
-	ld.bu	$a2, $s5, 0
-	addi.d	$s0, $s5, 1
+	ld.bu	$a2, $s3, 0
+	addi.d	$fp, $s3, 1
 	blt	$s7, $a2, .LBB1_24
 # %bb.28:                               #   in Loop: Header=BB1_27 Depth=2
 	ori	$a0, $zero, 45
 	bne	$a2, $a0, .LBB1_33
 # %bb.29:                               #   in Loop: Header=BB1_27 Depth=2
-	ld.bu	$a0, $s5, 1
+	ld.bu	$a0, $s3, 1
 	beq	$a0, $t1, .LBB1_34
 # %bb.30:                               #   in Loop: Header=BB1_27 Depth=2
 	beqz	$a0, .LBB1_203
 # %bb.31:                               #   in Loop: Header=BB1_27 Depth=2
-	addi.d	$s5, $s5, 2
+	addi.d	$s3, $s3, 2
 	bnez	$a0, .LBB1_35
 	b	.LBB1_203
 .LBB1_32:                               #   in Loop: Header=BB1_27 Depth=2
@@ -3450,8 +3419,8 @@ build_regex_nfa:                        # @build_regex_nfa
 	bnez	$a2, .LBB1_26
 	b	.LBB1_69
 .LBB1_34:                               #   in Loop: Header=BB1_27 Depth=2
-	ld.bu	$a0, $s5, 2
-	addi.d	$s5, $s5, 3
+	ld.bu	$a0, $s3, 2
+	addi.d	$s3, $s3, 3
 	beqz	$a0, .LBB1_203
 .LBB1_35:                               # %.preheader
                                         #   in Loop: Header=BB1_27 Depth=2
@@ -3472,7 +3441,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	sub.d	$a2, $a1, $a4
 	ori	$a5, $zero, 255
 	andn	$a2, $a5, $a2
-	ori	$a5, $zero, 15
+	ori	$a5, $zero, 7
 	bgeu	$a2, $a5, .LBB1_38
 # %bb.37:                               #   in Loop: Header=BB1_27 Depth=2
 	move	$a2, $a1
@@ -3491,7 +3460,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	add.d	$a3, $a4, $a3
 	andi	$a4, $a3, 255
 	addi.d	$a3, $a2, 1
-	ori	$a2, $zero, 63
+	ori	$a2, $zero, 31
 	bgeu	$a4, $a2, .LBB1_42
 # %bb.41:                               #   in Loop: Header=BB1_27 Depth=2
 	move	$a4, $zero
@@ -3499,8 +3468,8 @@ build_regex_nfa:                        # @build_regex_nfa
 .LBB1_42:                               # %vector.ph
                                         #   in Loop: Header=BB1_27 Depth=2
 	move	$a6, $zero
-	andi	$a5, $a3, 48
-	andi	$a4, $a3, 448
+	andi	$a5, $a3, 24
+	andi	$a4, $a3, 480
 	add.d	$a2, $a1, $a4
 	.p2align	4, , 16
 .LBB1_43:                               # %vector.body
@@ -3510,9 +3479,9 @@ build_regex_nfa:                        # @build_regex_nfa
 	add.d	$a7, $a1, $a6
 	andi	$a7, $a7, 255
 	add.d	$t0, $s4, $a7
-	xvstx	$xr1, $a7, $s4
-	addi.w	$a6, $a6, 64
-	xvst	$xr1, $t0, 32
+	vstx	$vr0, $a7, $s4
+	addi.w	$a6, $a6, 32
+	vst	$vr0, $t0, 16
 	bne	$a4, $a6, .LBB1_43
 # %bb.44:                               # %middle.block
                                         #   in Loop: Header=BB1_27 Depth=2
@@ -3522,7 +3491,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	beqz	$a5, .LBB1_49
 .LBB1_46:                               # %vec.epilog.ph
                                         #   in Loop: Header=BB1_27 Depth=2
-	andi	$a5, $a3, 496
+	andi	$a5, $a3, 504
 	add.d	$a2, $a1, $a5
 	.p2align	4, , 16
 .LBB1_47:                               # %vec.epilog.vector.body
@@ -3531,8 +3500,10 @@ build_regex_nfa:                        # @build_regex_nfa
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$a6, $a1, $a4
 	andi	$a6, $a6, 255
-	addi.w	$a4, $a4, 16
-	vstx	$vr0, $a6, $s4
+	move	$a7, $s5
+	bstrins.d	$a7, $s5, 56, 32
+	addi.w	$a4, $a4, 8
+	stx.d	$a7, $a6, $s4
 	bne	$a5, $a4, .LBB1_47
 # %bb.48:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB1_27 Depth=2
@@ -3550,11 +3521,11 @@ build_regex_nfa:                        # @build_regex_nfa
 	b	.LBB1_27
 .LBB1_50:                               #   in Loop: Header=BB1_3 Depth=1
 	ldptr.d	$a1, $s8, 10256
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	add.d	$a3, $s8, $a0
 	beqz	$a1, .LBB1_78
 # %bb.51:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a0, $s8, $a0
 	ld.w	$a2, $a0, 0
 	beq	$a1, $a3, .LBB1_94
@@ -3569,11 +3540,11 @@ build_regex_nfa:                        # @build_regex_nfa
 	b	.LBB1_96
 .LBB1_54:                               #   in Loop: Header=BB1_3 Depth=1
 	ldptr.d	$a1, $s8, 10256
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	add.d	$a3, $s8, $a0
 	beqz	$a1, .LBB1_79
 # %bb.55:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a0, $s8, $a0
 	ld.w	$a2, $a0, 0
 	beq	$a1, $a3, .LBB1_98
@@ -3589,11 +3560,11 @@ build_regex_nfa:                        # @build_regex_nfa
 	b	.LBB1_101
 .LBB1_58:                               #   in Loop: Header=BB1_3 Depth=1
 	ldptr.d	$a1, $s6, 10256
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	add.d	$a3, $s6, $a0
 	beqz	$a1, .LBB1_85
 # %bb.59:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a0, $s6, $a0
 	ld.w	$a2, $a0, 0
 	beq	$a1, $a3, .LBB1_111
@@ -3607,30 +3578,31 @@ build_regex_nfa:                        # @build_regex_nfa
 	slli.d	$a0, $a3, 3
 	b	.LBB1_113
 .LBB1_62:                               #   in Loop: Header=BB1_3 Depth=1
-	addi.d	$s0, $s6, 8
+	addi.d	$s7, $s6, 8
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
 	move	$s8, $a0
 	ld.d	$fp, $a0, 0
-	slli.d	$s3, $s3, 2
-	ldx.w	$a0, $fp, $s3
+	slli.d	$a0, $s0, 2
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	ldx.w	$a0, $fp, $a0
 	slli.d	$a1, $a0, 5
 	alsl.d	$a0, $a0, $a1, 3
-	add.d	$s0, $s0, $a0
+	add.d	$s0, $s7, $a0
 	ld.d	$a1, $s0, 8
 	beqz	$a1, .LBB1_86
 # %bb.63:                               #   in Loop: Header=BB1_3 Depth=1
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	ld.w	$a0, $s0, 0
 	addi.d	$a2, $s0, 16
 	beq	$a1, $a2, .LBB1_130
 # %bb.64:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$s3, $s2, 16
+	ld.d	$a2, $s2, 16
 	andi	$a0, $a0, 7
 	beqz	$a0, .LBB1_131
 .LBB1_65:                               #   in Loop: Header=BB1_3 Depth=1
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	move	$s0, $a2
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 0
@@ -3638,13 +3610,14 @@ build_regex_nfa:                        # @build_regex_nfa
 	addi.d	$a0, $a1, 1
 	st.w	$a0, $s2, 0
 	st.w	$a1, $s7, 0
-	beqz	$s3, .LBB1_166
+	beqz	$s0, .LBB1_166
 # %bb.66:                               #   in Loop: Header=BB1_3 Depth=1
+	move	$a3, $s0
 	addi.d	$a0, $s2, 8
 	ld.w	$a0, $a0, 0
 	addi.d	$a1, $s2, 24
 	addi.d	$s0, $s6, 8
-	beq	$s3, $a1, .LBB1_181
+	beq	$a3, $a1, .LBB1_181
 # %bb.67:                               #   in Loop: Header=BB1_3 Depth=1
 	andi	$a1, $a0, 7
 	beqz	$a1, .LBB1_183
@@ -3654,12 +3627,12 @@ build_regex_nfa:                        # @build_regex_nfa
 	addi.d	$a2, $s2, 8
 	st.w	$a0, $a2, 0
 	slli.d	$a0, $a1, 3
-	stx.d	$s7, $s3, $a0
+	stx.d	$s7, $a3, $a0
 	b	.LBB1_184
 .LBB1_69:                               #   in Loop: Header=BB1_3 Depth=1
-	st.d	$s0, $sp, 384
+	st.d	$fp, $sp, 352
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s2, 0
@@ -3687,7 +3660,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	b	.LBB1_139
 .LBB1_73:                               #   in Loop: Header=BB1_3 Depth=1
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s2, 0
@@ -3723,7 +3696,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	stx.d	$s7, $a2, $a0
 	b	.LBB1_93
 .LBB1_78:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ldx.wu	$a0, $s8, $a0
 	stptr.d	$a3, $s8, 10256
 	addi.d	$a1, $a0, 1
@@ -3732,7 +3705,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	stx.d	$s6, $a3, $a0
 	b	.LBB1_2
 .LBB1_79:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ldx.wu	$a0, $s8, $a0
 	stptr.d	$a3, $s8, 10256
 	addi.d	$a1, $a0, 1
@@ -3746,7 +3719,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	bgeu	$a1, $a0, .LBB1_17
 .LBB1_81:                               #   in Loop: Header=BB1_3 Depth=1
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 0
@@ -3772,21 +3745,21 @@ build_regex_nfa:                        # @build_regex_nfa
 	stx.d	$s7, $fp, $a0
 	b	.LBB1_165
 .LBB1_85:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ldx.wu	$a0, $s6, $a0
 	stptr.d	$a3, $s6, 10256
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s6, 10248
 	slli.d	$a0, $a0, 3
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	stx.d	$a1, $a3, $a0
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ldptr.d	$fp, $a0, 10256
 	bnez	$fp, .LBB1_114
 	b	.LBB1_121
 .LBB1_86:                               #   in Loop: Header=BB1_3 Depth=1
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s2, 0
@@ -3830,13 +3803,13 @@ build_regex_nfa:                        # @build_regex_nfa
 	jirl	$ra, $ra, 0
 .LBB1_93:                               # %new_NFAState.exit
                                         #   in Loop: Header=BB1_3 Depth=1
-	addi.d	$a1, $sp, 384
+	addi.d	$a1, $sp, 352
 	move	$a0, $s2
 	move	$a2, $s6
 	move	$a3, $s7
 	pcaddu18i	$ra, %call36(build_regex_nfa)
 	jirl	$ra, $ra, 0
-	ld.d	$s0, $sp, 384
+	ld.d	$fp, $sp, 352
 	move	$s8, $s6
 	b	.LBB1_3
 .LBB1_94:                               #   in Loop: Header=BB1_3 Depth=1
@@ -3870,11 +3843,11 @@ build_regex_nfa:                        # @build_regex_nfa
 	.p2align	4, , 16
 .LBB1_101:                              #   in Loop: Header=BB1_3 Depth=1
 	ldptr.d	$a1, $s6, 10256
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	add.d	$a3, $s6, $a0
 	beqz	$a1, .LBB1_1
 # %bb.102:                              #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a0, $s6, $a0
 	ld.w	$a2, $a0, 0
 	beq	$a1, $a3, .LBB1_105
@@ -3937,15 +3910,15 @@ build_regex_nfa:                        # @build_regex_nfa
 	st.w	$a3, $a0, 0
 	slli.d	$a0, $a2, 3
 .LBB1_113:                              #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	stx.d	$a2, $a1, $a0
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ldptr.d	$fp, $a0, 10256
 	beqz	$fp, .LBB1_121
 .LBB1_114:                              #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	beq	$fp, $a1, .LBB1_125
 # %bb.115:                              #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$s0, $s2, 16
@@ -3953,7 +3926,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	beqz	$a0, .LBB1_126
 .LBB1_116:                              #   in Loop: Header=BB1_3 Depth=1
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 0
@@ -3979,15 +3952,15 @@ build_regex_nfa:                        # @build_regex_nfa
 	stx.d	$s7, $s0, $a0
 	b	.LBB1_176
 .LBB1_120:                              #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ldptr.d	$fp, $a0, 10256
 	bnez	$fp, .LBB1_114
 .LBB1_121:                              #   in Loop: Header=BB1_3 Depth=1
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s2, 0
@@ -4019,7 +3992,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	bgeu	$a1, $a0, .LBB1_116
 .LBB1_126:                              #   in Loop: Header=BB1_3 Depth=1
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 0
@@ -4045,12 +4018,13 @@ build_regex_nfa:                        # @build_regex_nfa
 	stx.d	$s7, $s0, $a0
 	b	.LBB1_188
 .LBB1_130:                              #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$s3, $s2, 16
+	ld.d	$a2, $s2, 16
 	ori	$a1, $zero, 2
 	bgeu	$a1, $a0, .LBB1_65
 .LBB1_131:                              #   in Loop: Header=BB1_3 Depth=1
+	move	$s8, $a2
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 0
@@ -4058,12 +4032,14 @@ build_regex_nfa:                        # @build_regex_nfa
 	addi.d	$a0, $a1, 1
 	st.w	$a0, $s2, 0
 	st.w	$a1, $s7, 0
-	beqz	$s3, .LBB1_168
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	beqz	$s8, .LBB1_168
 # %bb.132:                              #   in Loop: Header=BB1_3 Depth=1
+	move	$a3, $s8
 	addi.d	$a0, $s2, 8
 	ld.w	$a0, $a0, 0
 	addi.d	$a1, $s2, 24
-	beq	$s3, $a1, .LBB1_189
+	beq	$s8, $a1, .LBB1_189
 # %bb.133:                              #   in Loop: Header=BB1_3 Depth=1
 	andi	$a1, $a0, 7
 	beqz	$a1, .LBB1_191
@@ -4073,7 +4049,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	addi.d	$a2, $s2, 8
 	st.w	$a0, $a2, 0
 	slli.d	$a0, $a1, 3
-	stx.d	$s7, $s3, $a0
+	stx.d	$s7, $a3, $a0
 	b	.LBB1_192
 .LBB1_135:                              #   in Loop: Header=BB1_3 Depth=1
 	ld.wu	$a0, $s2, 8
@@ -4102,7 +4078,7 @@ build_regex_nfa:                        # @build_regex_nfa
 .LBB1_139:                              # %new_NFAState.exit412
                                         #   in Loop: Header=BB1_3 Depth=1
 	move	$s3, $zero
-	ori	$s5, $zero, 1
+	ori	$s8, $zero, 1
 	b	.LBB1_142
 .LBB1_140:                              #   in Loop: Header=BB1_142 Depth=2
 	ld.wu	$a1, $a0, 0
@@ -4114,14 +4090,14 @@ build_regex_nfa:                        # @build_regex_nfa
 	st.d	$s7, $a0, 64
 	.p2align	4, , 16
 .LBB1_141:                              #   in Loop: Header=BB1_142 Depth=2
-	addi.d	$s5, $s5, 1
+	addi.d	$s8, $s8, 1
 	addi.d	$s3, $s3, 40
 	ori	$a0, $zero, 256
-	beq	$s5, $a0, .LBB1_150
+	beq	$s8, $a0, .LBB1_150
 .LBB1_142:                              #   Parent Loop BB1_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.bu	$a0, $s5, $s4
-	addi.d	$a1, $fp, -94
+	ldx.bu	$a0, $s8, $s4
+	addi.d	$a1, $s0, -94
 	sltui	$a1, $a1, 1
 	sltui	$a0, $a0, 1
 	xor	$a0, $a1, $a0
@@ -4301,16 +4277,16 @@ build_regex_nfa:                        # @build_regex_nfa
 	jirl	$ra, $ra, 0
 .LBB1_172:                              # %new_NFAState.exit396
                                         #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.wu	$a0, $a2, $a0
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
 	stptr.d	$a3, $a2, 10256
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $a2, 10248
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $a3, $a0
-	move	$s0, $s5
+	move	$fp, $s3
 	b	.LBB1_3
 .LBB1_173:                              #   in Loop: Header=BB1_3 Depth=1
 	ori	$a1, $zero, 2
@@ -4327,7 +4303,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ldptr.d	$fp, $a0, 10256
 .LBB1_176:                              # %new_NFAState.exit400
                                         #   in Loop: Header=BB1_3 Depth=1
@@ -4337,7 +4313,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	st.w	$a1, $a2, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$s7, $fp, $a0
-	move	$s0, $s5
+	move	$fp, $s3
 	b	.LBB1_3
 .LBB1_177:                              #   in Loop: Header=BB1_3 Depth=1
 	ori	$a2, $zero, 2
@@ -4358,7 +4334,9 @@ build_regex_nfa:                        # @build_regex_nfa
 	ld.d	$fp, $s8, 0
 .LBB1_180:                              # %new_NFAState.exit432
                                         #   in Loop: Header=BB1_3 Depth=1
-	ldx.w	$a0, $fp, $s3
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ldx.w	$a0, $fp, $a1
+	move	$fp, $a1
 	slli.d	$a1, $a0, 5
 	alsl.d	$a0, $a0, $a1, 3
 	ldx.wu	$a1, $s0, $a0
@@ -4378,7 +4356,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	addi.d	$a2, $s2, 8
 	st.w	$a1, $a2, 0
 	slli.d	$a0, $a0, 3
-	stx.d	$s7, $s3, $a0
+	stx.d	$s7, $a3, $a0
 	b	.LBB1_184
 .LBB1_183:                              #   in Loop: Header=BB1_3 Depth=1
 	addi.d	$a0, $s2, 8
@@ -4388,8 +4366,9 @@ build_regex_nfa:                        # @build_regex_nfa
 	ld.d	$fp, $s8, 0
 .LBB1_184:                              # %new_NFAState.exit436
                                         #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	ldx.w	$a0, $fp, $s3
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ldx.w	$a0, $fp, $a1
+	move	$fp, $a1
 	slli.d	$a1, $a0, 5
 	alsl.d	$a0, $a0, $a1, 3
 	ldx.wu	$a1, $s0, $a0
@@ -4421,7 +4400,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
-	move	$s0, $s5
+	move	$fp, $s3
 	b	.LBB1_3
 .LBB1_189:                              #   in Loop: Header=BB1_3 Depth=1
 	ori	$a1, $zero, 2
@@ -4431,7 +4410,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	addi.d	$a2, $s2, 8
 	st.w	$a1, $a2, 0
 	slli.d	$a0, $a0, 3
-	stx.d	$s7, $s3, $a0
+	stx.d	$s7, $a3, $a0
 	b	.LBB1_192
 .LBB1_191:                              #   in Loop: Header=BB1_3 Depth=1
 	addi.d	$a0, $s2, 8
@@ -4445,12 +4424,11 @@ build_regex_nfa:                        # @build_regex_nfa
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
 	addi.d	$s0, $s6, 8
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 .LBB1_193:                              #   in Loop: Header=BB1_3 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_toupper_loc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
-	ldx.w	$a0, $a0, $s3
+	ldx.w	$a0, $a0, $fp
 	slli.d	$a1, $a0, 5
 	alsl.d	$a0, $a0, $a1, 3
 	add.d	$a0, $s0, $a0
@@ -4492,41 +4470,41 @@ build_regex_nfa:                        # @build_regex_nfa
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
 .LBB1_202:                              #   in Loop: Header=BB1_3 Depth=1
-	move	$s0, $s5
+	move	$fp, $s3
 	move	$s8, $s6
 	b	.LBB1_3
 .LBB1_203:                              # %.loopexit447
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
-	ld.d	$s8, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 400                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 408                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 416                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 424                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 432                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 440                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 448                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 456                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 464                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 472                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 480
+	ld.d	$s8, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 416                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 432                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 440                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 448
 	pcaddu18i	$t8, %call36(d_fail)
 	jr	$t8
 .LBB1_204:
 	ldptr.d	$a1, $s6, 10256
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	add.d	$a3, $s6, $a0
 	beqz	$a1, .LBB1_208
 # %bb.205:
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a0, $s6, $a0
 	ld.w	$a2, $a0, 0
 	beq	$a1, $a3, .LBB1_209
 # %bb.206:
 	andi	$a3, $a2, 7
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	beqz	$a3, .LBB1_212
 # %bb.207:
 	bstrpick.d	$a3, $a2, 31, 0
@@ -4535,46 +4513,46 @@ build_regex_nfa:                        # @build_regex_nfa
 	slli.d	$a0, $a3, 3
 	b	.LBB1_211
 .LBB1_208:
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ldx.wu	$a0, $s6, $a0
 	stptr.d	$a3, $s6, 10256
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s6, 10248
 	slli.d	$a0, $a0, 3
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	stx.d	$a1, $a3, $a0
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB1_213
 .LBB1_209:
 	ori	$a3, $zero, 2
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	bltu	$a3, $a2, .LBB1_212
 # %bb.210:
 	addi.d	$a3, $a2, 1
 	st.w	$a3, $a0, 0
 	slli.d	$a0, $a2, 3
 .LBB1_211:
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	stx.d	$a2, $a1, $a0
 	b	.LBB1_213
 .LBB1_212:
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(vec_add_internal)
 	jirl	$ra, $ra, 0
 .LBB1_213:
-	st.d	$s5, $fp, 0
-	ld.d	$s8, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 400                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 408                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 416                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 424                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 432                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 440                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 448                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 456                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 464                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 472                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 480
+	st.d	$s3, $fp, 0
+	ld.d	$s8, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 416                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 432                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 440                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 448
 	ret
 .Lfunc_end1:
 	.size	build_regex_nfa, .Lfunc_end1-build_regex_nfa
@@ -4666,7 +4644,7 @@ trans_hash_fn:                          # @trans_hash_fn
 	beqz	$a3, .LBB3_13
 # %bb.3:                                # %.lr.ph19
 	ld.d	$a0, $a0, 56
-	ori	$a4, $zero, 8
+	ori	$a4, $zero, 4
 	bstrpick.d	$a2, $a3, 31, 0
 	bgeu	$a3, $a4, .LBB3_8
 # %bb.4:
@@ -4677,7 +4655,7 @@ trans_hash_fn:                          # @trans_hash_fn
 	beqz	$a1, .LBB3_1
 # %bb.6:                                # %.lr.ph
 	ld.d	$a2, $a0, 16
-	ori	$a4, $zero, 8
+	ori	$a4, $zero, 4
 	bstrpick.d	$a3, $a1, 31, 0
 	bgeu	$a1, $a4, .LBB3_14
 # %bb.7:
@@ -4685,50 +4663,37 @@ trans_hash_fn:                          # @trans_hash_fn
 	move	$a1, $zero
 	b	.LBB3_17
 .LBB3_8:                                # %vector.ph35
-	bstrpick.d	$a3, $a2, 31, 3
+	bstrpick.d	$a3, $a2, 31, 2
 	vrepli.b	$vr0, 0
-	slli.d	$a3, $a3, 3
+	slli.d	$a3, $a3, 2
 	vori.b	$vr1, $vr0, 0
 	vinsgr2vr.w	$vr1, $a1, 0
-	addi.d	$a1, $a0, 32
+	addi.d	$a1, $a0, 16
 	vrepli.w	$vr2, 3
 	move	$a4, $a3
 	.p2align	4, , 16
 .LBB3_9:                                # %vector.body38
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a1, -32
-	ld.d	$a6, $a1, -24
-	ld.d	$a7, $a1, -16
-	ld.d	$t0, $a1, -8
-	ld.d	$t1, $a1, 0
-	ld.d	$t2, $a1, 8
-	ld.d	$t3, $a1, 16
-	ld.d	$t4, $a1, 24
+	ld.d	$a5, $a1, -16
+	ld.d	$a6, $a1, -8
+	ld.d	$a7, $a1, 0
+	ld.d	$t0, $a1, 8
 	ld.w	$a5, $a5, 32
 	ld.w	$a6, $a6, 32
 	ld.w	$a7, $a7, 32
 	ld.w	$t0, $t0, 32
 	vinsgr2vr.w	$vr3, $a5, 0
 	vinsgr2vr.w	$vr3, $a6, 1
-	vinsgr2vr.w	$vr3, $a7, 2
-	vinsgr2vr.w	$vr3, $t0, 3
-	ld.w	$a5, $t1, 32
-	ld.w	$a6, $t2, 32
-	ld.w	$a7, $t3, 32
-	ld.w	$t0, $t4, 32
-	vinsgr2vr.w	$vr4, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
+	vinsgr2vr.w	$vr4, $a7, 0
+	vinsgr2vr.w	$vr4, $t0, 1
 	vmadd.w	$vr1, $vr3, $vr2
 	vmadd.w	$vr0, $vr4, $vr2
-	addi.d	$a4, $a4, -8
-	addi.d	$a1, $a1, 64
+	addi.d	$a4, $a4, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a4, .LBB3_9
 # %bb.10:                               # %middle.block45
 	vadd.w	$vr0, $vr0, $vr1
 	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a3, $a2, .LBB3_13
 .LBB3_11:                               # %scalar.ph33.preheader
@@ -4748,9 +4713,9 @@ trans_hash_fn:                          # @trans_hash_fn
 	addi.w	$a0, $a1, 0
 	ret
 .LBB3_14:                               # %vector.ph
-	bstrpick.d	$a1, $a3, 31, 3
-	slli.d	$a4, $a1, 3
-	addi.d	$a1, $a2, 32
+	bstrpick.d	$a1, $a3, 31, 2
+	slli.d	$a4, $a1, 2
+	addi.d	$a1, $a2, 16
 	vrepli.b	$vr0, 0
 	vrepli.w	$vr1, 3
 	move	$a5, $a4
@@ -4758,39 +4723,26 @@ trans_hash_fn:                          # @trans_hash_fn
 	.p2align	4, , 16
 .LBB3_15:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a1, -32
-	ld.d	$a7, $a1, -24
-	ld.d	$t0, $a1, -16
-	ld.d	$t1, $a1, -8
-	ld.d	$t2, $a1, 0
-	ld.d	$t3, $a1, 8
-	ld.d	$t4, $a1, 16
-	ld.d	$t5, $a1, 24
+	ld.d	$a6, $a1, -16
+	ld.d	$a7, $a1, -8
+	ld.d	$t0, $a1, 0
+	ld.d	$t1, $a1, 8
 	ld.w	$a6, $a6, 32
 	ld.w	$a7, $a7, 32
 	ld.w	$t0, $t0, 32
 	ld.w	$t1, $t1, 32
 	vinsgr2vr.w	$vr3, $a6, 0
 	vinsgr2vr.w	$vr3, $a7, 1
-	vinsgr2vr.w	$vr3, $t0, 2
-	vinsgr2vr.w	$vr3, $t1, 3
-	ld.w	$a6, $t2, 32
-	ld.w	$a7, $t3, 32
-	ld.w	$t0, $t4, 32
-	ld.w	$t1, $t5, 32
-	vinsgr2vr.w	$vr4, $a6, 0
-	vinsgr2vr.w	$vr4, $a7, 1
-	vinsgr2vr.w	$vr4, $t0, 2
-	vinsgr2vr.w	$vr4, $t1, 3
+	vinsgr2vr.w	$vr4, $t0, 0
+	vinsgr2vr.w	$vr4, $t1, 1
 	vmadd.w	$vr0, $vr3, $vr1
 	vmadd.w	$vr2, $vr4, $vr1
-	addi.d	$a5, $a5, -8
-	addi.d	$a1, $a1, 64
+	addi.d	$a5, $a5, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a5, .LBB3_15
 # %bb.16:                               # %middle.block
 	vadd.w	$vr0, $vr2, $vr0
 	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a4, $a3, .LBB3_2
 .LBB3_17:                               # %scalar.ph.preheader

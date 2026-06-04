@@ -44,7 +44,7 @@ _ZN18btMultiSphereShapeC2EPK9btVector3PKfi: # @_ZN18btMultiSphereShapeC2EPK9btVe
 	st.d	$zero, $fp, 140
 	ori	$a0, $zero, 9
 	st.w	$a0, $fp, 8
-	blez	$s0, .LBB0_16
+	blez	$s0, .LBB0_20
 # %bb.1:
 	slli.d	$a0, $s0, 4
 .Ltmp0:                                 # EH_LABEL
@@ -85,10 +85,10 @@ _ZN18btMultiSphereShapeC2EPK9btVector3PKfi: # @_ZN18btMultiSphereShapeC2EPK9btVe
 	st.d	$s3, $fp, 120
 	st.w	$s0, $fp, 112
 	st.w	$s0, $fp, 108
-	bge	$s4, $s0, .LBB0_33
+	bge	$s4, $s0, .LBB0_27
 # %bb.9:
 	ld.w	$a0, $fp, 144
-	bge	$a0, $s0, .LBB0_17
+	bge	$a0, $s0, .LBB0_21
 # %bb.10:
 	slli.d	$a0, $s0, 2
 .Ltmp5:                                 # EH_LABEL
@@ -100,114 +100,87 @@ _ZN18btMultiSphereShapeC2EPK9btVector3PKfi: # @_ZN18btMultiSphereShapeC2EPK9btVe
 	move	$s3, $a0
 	ld.w	$a1, $fp, 140
 	ld.d	$a0, $fp, 152
-	blez	$a1, .LBB0_18
-# %bb.12:                               # %iter.check
-	ori	$a3, $zero, 4
+	blez	$a1, .LBB0_22
+# %bb.12:                               # %.lr.ph.i.i.i30
+	ori	$a3, $zero, 8
 	move	$a2, $zero
-	bltu	$a1, $a3, .LBB0_27
-# %bb.13:                               # %iter.check
+	bltu	$a1, $a3, .LBB0_17
+# %bb.13:                               # %.lr.ph.i.i.i30
 	sub.d	$a3, $s3, $a0
-	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB0_27
-# %bb.14:                               # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB0_20
-# %bb.15:
-	move	$a2, $zero
-	b	.LBB0_24
-.LBB0_16:                               # %.loopexit
-	st.w	$s0, $fp, 108
-	st.w	$s0, $fp, 140
-	b	.LBB0_35
-.LBB0_17:                               # %..lr.ph.i21_crit_edge
-	ld.d	$s3, $fp, 152
-	b	.LBB0_32
-.LBB0_18:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i
-	beqz	$a0, .LBB0_31
-# %bb.19:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i
-	ld.b	$a1, $fp, 160
-	andi	$a1, $a1, 1
-	bnez	$a1, .LBB0_30
-	b	.LBB0_31
-.LBB0_20:                               # %vector.ph
-	andi	$a3, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a4, $a0, 32
-	addi.d	$a5, $s3, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB0_21:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -16
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB0_21
-# %bb.22:                               # %middle.block
-	beq	$a2, $a1, .LBB0_29
-# %bb.23:                               # %vec.epilog.iter.check
-	beqz	$a3, .LBB0_27
-.LBB0_24:                               # %vec.epilog.ph
+	ori	$a4, $zero, 32
+	bltu	$a3, $a4, .LBB0_17
+# %bb.14:                               # %vector.ph
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s3, 16
 	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a5, $a2
-	alsl.d	$a4, $a5, $a0, 2
-	alsl.d	$a5, $a5, $s3, 2
 	.p2align	4, , 16
-.LBB0_25:                               # %vec.epilog.vector.body
+.LBB0_15:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB0_25
-# %bb.26:                               # %vec.epilog.middle.block
-	beq	$a2, $a1, .LBB0_29
-.LBB0_27:                               # %vec.epilog.scalar.ph.preheader
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB0_15
+# %bb.16:                               # %middle.block
+	beq	$a2, $a1, .LBB0_19
+.LBB0_17:                               # %scalar.ph.preheader
 	sub.d	$a1, $a1, $a2
 	alsl.d	$a3, $a2, $a0, 2
 	alsl.d	$a2, $a2, $s3, 2
 	.p2align	4, , 16
-.LBB0_28:                               # %vec.epilog.scalar.ph
+.LBB0_18:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa0, $a3, 0
 	fst.s	$fa0, $a2, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
-	bnez	$a1, .LBB0_28
-.LBB0_29:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.thread.i.i
+	bnez	$a1, .LBB0_18
+.LBB0_19:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.thread.i.i
 	ld.bu	$a1, $fp, 160
-	beqz	$a1, .LBB0_31
-.LBB0_30:
+	bnez	$a1, .LBB0_24
+	b	.LBB0_25
+.LBB0_20:                               # %.loopexit
+	st.w	$s0, $fp, 108
+	st.w	$s0, $fp, 140
+	b	.LBB0_29
+.LBB0_21:                               # %..lr.ph.i21_crit_edge
+	ld.d	$s3, $fp, 152
+	b	.LBB0_26
+.LBB0_22:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i
+	beqz	$a0, .LBB0_25
+# %bb.23:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i
+	ld.b	$a1, $fp, 160
+	andi	$a1, $a1, 1
+	beqz	$a1, .LBB0_25
+.LBB0_24:
 .Ltmp7:                                 # EH_LABEL
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp8:                                 # EH_LABEL
-.LBB0_31:                               # %_ZN20btAlignedObjectArrayIfE10deallocateEv.exit.i.i
+.LBB0_25:                               # %_ZN20btAlignedObjectArrayIfE10deallocateEv.exit.i.i
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 160
 	st.d	$s3, $fp, 152
 	st.w	$s0, $fp, 144
-.LBB0_32:                               # %.lr.ph.i21
+.LBB0_26:                               # %.lr.ph.i21
 	alsl.d	$a0, $s4, $s3, 2
 	sub.d	$a1, $s0, $s4
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-.LBB0_33:                               # %.lr.ph.preheader
+.LBB0_27:                               # %.lr.ph.preheader
 	move	$a0, $zero
 	move	$a1, $zero
 	st.w	$s0, $fp, 140
 	.p2align	4, , 16
-.LBB0_34:                               # %.lr.ph
+.LBB0_28:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $fp, 120
 	vldx	$vr0, $s2, $a0
@@ -218,14 +191,14 @@ _ZN18btMultiSphereShapeC2EPK9btVector3PKfi: # @_ZN18btMultiSphereShapeC2EPK9btVe
 	addi.d	$a1, $a1, 4
 	addi.d	$s0, $s0, -1
 	addi.d	$a0, $a0, 16
-	bnez	$s0, .LBB0_34
-.LBB0_35:                               # %._crit_edge
+	bnez	$s0, .LBB0_28
+.LBB0_29:                               # %._crit_edge
 .Ltmp10:                                # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN32btConvexInternalAabbCachingShape15recalcLocalAabbEv)
 	jirl	$ra, $ra, 0
 .Ltmp11:                                # EH_LABEL
-# %bb.36:
+# %bb.30:
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -235,50 +208,50 @@ _ZN18btMultiSphereShapeC2EPK9btVector3PKfi: # @_ZN18btMultiSphereShapeC2EPK9btVe
 	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 64
 	ret
-.LBB0_37:
+.LBB0_31:
 .Ltmp9:                                 # EH_LABEL
-	b	.LBB0_40
-.LBB0_38:
+	b	.LBB0_34
+.LBB0_32:
 .Ltmp4:                                 # EH_LABEL
-	b	.LBB0_40
-.LBB0_39:
+	b	.LBB0_34
+.LBB0_33:
 .Ltmp12:                                # EH_LABEL
-.LBB0_40:
+.LBB0_34:
 	move	$s0, $a0
 	ld.d	$a0, $fp, 152
-	beqz	$a0, .LBB0_43
-# %bb.41:
+	beqz	$a0, .LBB0_37
+# %bb.35:
 	ld.b	$a1, $fp, 160
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB0_43
-# %bb.42:
+	beqz	$a1, .LBB0_37
+# %bb.36:
 .Ltmp13:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp14:                                # EH_LABEL
-.LBB0_43:                               # %_ZN20btAlignedObjectArrayIfED2Ev.exit
+.LBB0_37:                               # %_ZN20btAlignedObjectArrayIfED2Ev.exit
 	ld.d	$a0, $fp, 120
-	beqz	$a0, .LBB0_46
-# %bb.44:                               # %_ZN20btAlignedObjectArrayIfED2Ev.exit
+	beqz	$a0, .LBB0_40
+# %bb.38:                               # %_ZN20btAlignedObjectArrayIfED2Ev.exit
 	ld.b	$a1, $fp, 128
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB0_46
-# %bb.45:
+	beqz	$a1, .LBB0_40
+# %bb.39:
 .Ltmp15:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp16:                                # EH_LABEL
-.LBB0_46:                               # %_ZN20btAlignedObjectArrayI9btVector3ED2Ev.exit
+.LBB0_40:                               # %_ZN20btAlignedObjectArrayI9btVector3ED2Ev.exit
 .Ltmp17:                                # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN13btConvexShapeD2Ev)
 	jirl	$ra, $ra, 0
 .Ltmp18:                                # EH_LABEL
-# %bb.47:
+# %bb.41:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB0_48:
+.LBB0_42:
 .Ltmp19:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0

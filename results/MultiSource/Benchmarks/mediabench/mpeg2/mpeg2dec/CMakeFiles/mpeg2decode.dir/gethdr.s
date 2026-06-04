@@ -44,8 +44,10 @@ Get_Hdr:                                # @Get_Hdr
 	pcalau12i	$a0, %got_pc_hi20(default_intra_quantizer_matrix)
 	ld.d	$s5, $a0, %got_pc_lo12(default_intra_quantizer_matrix)
 	ori	$s6, $zero, 64
-	xvrepli.w	$xr0, 16
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vrepli.w	$vr0, 16
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	b	.LBB0_2
 	.p2align	4, , 16
 .LBB0_1:                                # %group_of_pictures_header.exit
@@ -260,46 +262,103 @@ Get_Hdr:                                # @Get_Hdr
 	b	.LBB0_21
 .LBB0_20:                               # %vector.body13
                                         #   in Loop: Header=BB0_2 Depth=1
-	ld.d	$a0, $s5, 0
-	ld.d	$a2, $s5, 8
-	vinsgr2vr.d	$vr0, $a0, 0
-	vinsgr2vr.d	$vr1, $a2, 0
-	vext2xv.wu.bu	$xr0, $xr0
-	vext2xv.wu.bu	$xr1, $xr1
-	ld.d	$a0, $s5, 16
-	ld.d	$a2, $s5, 24
-	ori	$a3, $zero, 2104
-	xvstx	$xr0, $a1, $a3
-	ori	$a3, $zero, 2136
-	xvstx	$xr1, $a1, $a3
-	vinsgr2vr.d	$vr0, $a0, 0
-	vinsgr2vr.d	$vr1, $a2, 0
-	vext2xv.wu.bu	$xr0, $xr0
-	vext2xv.wu.bu	$xr1, $xr1
-	ld.d	$a0, $s5, 32
-	ld.d	$a2, $s5, 40
-	ori	$a3, $zero, 2168
-	xvstx	$xr0, $a1, $a3
-	ori	$a3, $zero, 2200
-	xvstx	$xr1, $a1, $a3
-	vinsgr2vr.d	$vr0, $a0, 0
-	vinsgr2vr.d	$vr1, $a2, 0
-	ld.d	$a0, $s5, 48
-	vext2xv.wu.bu	$xr0, $xr0
+	ld.w	$a0, $s5, 0
+	ld.w	$a2, $s5, 4
+	vinsgr2vr.w	$vr0, $a0, 0
+	vinsgr2vr.w	$vr1, $a2, 0
+	ld.w	$a0, $s5, 8
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	vilvl.b	$vr0, $vr2, $vr0
+	vilvl.h	$vr0, $vr2, $vr0
+	ori	$a2, $zero, 2104
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.w	$a0, $s5, 12
+	vilvl.b	$vr1, $vr2, $vr1
+	vilvl.h	$vr1, $vr2, $vr1
+	ori	$a2, $zero, 2120
+	vstx	$vr1, $a1, $a2
+	vinsgr2vr.w	$vr1, $a0, 0
+	ld.w	$a0, $s5, 16
+	vilvl.b	$vr0, $vr2, $vr0
+	vilvl.h	$vr0, $vr2, $vr0
+	ori	$a2, $zero, 2136
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.w	$a0, $s5, 20
+	vilvl.b	$vr1, $vr2, $vr1
+	vilvl.h	$vr1, $vr2, $vr1
+	ori	$a2, $zero, 2152
+	vstx	$vr1, $a1, $a2
+	vinsgr2vr.w	$vr1, $a0, 0
+	ld.w	$a0, $s5, 24
+	vilvl.b	$vr0, $vr2, $vr0
+	vilvl.h	$vr0, $vr2, $vr0
+	ori	$a2, $zero, 2168
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.w	$a0, $s5, 28
+	vilvl.b	$vr1, $vr2, $vr1
+	vilvl.h	$vr1, $vr2, $vr1
+	ori	$a2, $zero, 2184
+	vstx	$vr1, $a1, $a2
+	vinsgr2vr.w	$vr1, $a0, 0
+	ld.w	$a0, $s5, 32
+	vilvl.b	$vr0, $vr2, $vr0
+	vilvl.h	$vr0, $vr2, $vr0
+	ori	$a2, $zero, 2200
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.w	$a0, $s5, 36
+	vilvl.b	$vr1, $vr2, $vr1
+	vilvl.h	$vr1, $vr2, $vr1
+	ori	$a2, $zero, 2216
+	vstx	$vr1, $a1, $a2
+	vinsgr2vr.w	$vr1, $a0, 0
+	ld.w	$a0, $s5, 40
+	vilvl.b	$vr0, $vr2, $vr0
+	vilvl.h	$vr0, $vr2, $vr0
 	ori	$a2, $zero, 2232
-	xvstx	$xr0, $a1, $a2
-	ld.d	$a2, $s5, 56
-	vinsgr2vr.d	$vr0, $a0, 0
-	vext2xv.wu.bu	$xr1, $xr1
-	ori	$a0, $zero, 2264
-	xvstx	$xr1, $a1, $a0
-	vinsgr2vr.d	$vr1, $a2, 0
-	vext2xv.wu.bu	$xr0, $xr0
-	vext2xv.wu.bu	$xr1, $xr1
-	ori	$a0, $zero, 2296
-	xvstx	$xr0, $a1, $a0
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.w	$a0, $s5, 44
+	vilvl.b	$vr1, $vr2, $vr1
+	vilvl.h	$vr1, $vr2, $vr1
+	ori	$a2, $zero, 2248
+	vstx	$vr1, $a1, $a2
+	vinsgr2vr.w	$vr1, $a0, 0
+	ld.w	$a0, $s5, 48
+	vilvl.b	$vr0, $vr2, $vr0
+	vilvl.h	$vr0, $vr2, $vr0
+	ori	$a2, $zero, 2264
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.w	$a0, $s5, 52
+	vilvl.b	$vr1, $vr2, $vr1
+	vilvl.h	$vr1, $vr2, $vr1
+	ori	$a2, $zero, 2280
+	vstx	$vr1, $a1, $a2
+	vinsgr2vr.w	$vr1, $a0, 0
+	ld.w	$a0, $s5, 56
+	vilvl.b	$vr0, $vr2, $vr0
+	vilvl.h	$vr0, $vr2, $vr0
+	ori	$a2, $zero, 2296
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.w	$a0, $s5, 60
+	vilvl.b	$vr1, $vr2, $vr1
+	vilvl.h	$vr1, $vr2, $vr1
+	ori	$a2, $zero, 2312
+	vstx	$vr1, $a1, $a2
+	vinsgr2vr.w	$vr1, $a0, 0
+	vilvl.b	$vr0, $vr2, $vr0
+	vilvl.h	$vr0, $vr2, $vr0
+	vilvl.b	$vr1, $vr2, $vr1
+	vilvl.h	$vr1, $vr2, $vr1
 	ori	$a0, $zero, 2328
-	xvstx	$xr1, $a1, $a0
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2344
+	vstx	$vr1, $a1, $a0
 	.p2align	4, , 16
 .LBB0_21:                               # %.loopexit23.i
                                         #   in Loop: Header=BB0_2 Depth=1
@@ -330,89 +389,169 @@ Get_Hdr:                                # @Get_Hdr
 	b	.LBB0_25
 .LBB0_24:                               # %.preheader.i
                                         #   in Loop: Header=BB0_2 Depth=1
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	ori	$a0, $zero, 2360
-	xvstx	$xr0, $a1, $a0
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2376
+	vstx	$vr0, $a1, $a0
 	ori	$a0, $zero, 2392
-	xvstx	$xr0, $a1, $a0
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2408
+	vstx	$vr0, $a1, $a0
 	ori	$a0, $zero, 2424
-	xvstx	$xr0, $a1, $a0
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2440
+	vstx	$vr0, $a1, $a0
 	ori	$a0, $zero, 2456
-	xvstx	$xr0, $a1, $a0
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2472
+	vstx	$vr0, $a1, $a0
 	ori	$a0, $zero, 2488
-	xvstx	$xr0, $a1, $a0
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2504
+	vstx	$vr0, $a1, $a0
 	ori	$a0, $zero, 2520
-	xvstx	$xr0, $a1, $a0
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2536
+	vstx	$vr0, $a1, $a0
 	ori	$a0, $zero, 2552
-	xvstx	$xr0, $a1, $a0
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2568
+	vstx	$vr0, $a1, $a0
 	ori	$a0, $zero, 2584
-	xvstx	$xr0, $a1, $a0
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2600
+	vstx	$vr0, $a1, $a0
 .LBB0_25:                               # %vector.body
                                         #   in Loop: Header=BB0_2 Depth=1
 	ori	$a0, $zero, 2104
-	xvldx	$xr0, $a1, $a0
-	ori	$a0, $zero, 2136
-	xvldx	$xr1, $a1, $a0
+	vldx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2120
+	vldx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2360
-	xvldx	$xr2, $a1, $a0
-	ori	$a0, $zero, 2392
-	xvldx	$xr3, $a1, $a0
+	vldx	$vr2, $a1, $a0
+	ori	$a0, $zero, 2376
+	vldx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2616
-	xvstx	$xr0, $a1, $a0
-	ori	$a0, $zero, 2648
-	xvstx	$xr1, $a1, $a0
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2632
+	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2872
-	xvstx	$xr2, $a1, $a0
+	vstx	$vr2, $a1, $a0
+	ori	$a0, $zero, 2888
+	vstx	$vr3, $a1, $a0
+	ori	$a0, $zero, 2136
+	vldx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2152
+	vldx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2392
+	vldx	$vr2, $a1, $a0
+	ori	$a0, $zero, 2408
+	vldx	$vr3, $a1, $a0
+	ori	$a0, $zero, 2648
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2664
+	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2904
-	xvstx	$xr3, $a1, $a0
+	vstx	$vr2, $a1, $a0
+	ori	$a0, $zero, 2920
+	vstx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2168
-	xvldx	$xr0, $a1, $a0
-	ori	$a0, $zero, 2200
-	xvldx	$xr1, $a1, $a0
+	vldx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2184
+	vldx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2424
-	xvldx	$xr2, $a1, $a0
-	ori	$a0, $zero, 2456
-	xvldx	$xr3, $a1, $a0
+	vldx	$vr2, $a1, $a0
+	ori	$a0, $zero, 2440
+	vldx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2680
-	xvstx	$xr0, $a1, $a0
-	ori	$a0, $zero, 2712
-	xvstx	$xr1, $a1, $a0
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2696
+	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2936
-	xvstx	$xr2, $a1, $a0
+	vstx	$vr2, $a1, $a0
+	ori	$a0, $zero, 2952
+	vstx	$vr3, $a1, $a0
+	ori	$a0, $zero, 2200
+	vldx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2216
+	vldx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2456
+	vldx	$vr2, $a1, $a0
+	ori	$a0, $zero, 2472
+	vldx	$vr3, $a1, $a0
+	ori	$a0, $zero, 2712
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2728
+	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2968
-	xvstx	$xr3, $a1, $a0
+	vstx	$vr2, $a1, $a0
+	ori	$a0, $zero, 2984
+	vstx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2232
-	xvldx	$xr0, $a1, $a0
-	ori	$a0, $zero, 2264
-	xvldx	$xr1, $a1, $a0
+	vldx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2248
+	vldx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2488
-	xvldx	$xr2, $a1, $a0
-	ori	$a0, $zero, 2520
-	xvldx	$xr3, $a1, $a0
+	vldx	$vr2, $a1, $a0
+	ori	$a0, $zero, 2504
+	vldx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2744
-	xvstx	$xr0, $a1, $a0
-	ori	$a0, $zero, 2776
-	xvstx	$xr1, $a1, $a0
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2760
+	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 3000
-	xvstx	$xr2, $a1, $a0
+	vstx	$vr2, $a1, $a0
+	ori	$a0, $zero, 3016
+	vstx	$vr3, $a1, $a0
+	ori	$a0, $zero, 2264
+	vldx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2280
+	vldx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2520
+	vldx	$vr2, $a1, $a0
+	ori	$a0, $zero, 2536
+	vldx	$vr3, $a1, $a0
+	ori	$a0, $zero, 2776
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2792
+	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 3032
-	xvstx	$xr3, $a1, $a0
+	vstx	$vr2, $a1, $a0
+	ori	$a0, $zero, 3048
+	vstx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2296
-	xvldx	$xr0, $a1, $a0
-	ori	$a0, $zero, 2328
-	xvldx	$xr1, $a1, $a0
+	vldx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2312
+	vldx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2552
-	xvldx	$xr2, $a1, $a0
-	ori	$a0, $zero, 2584
-	xvldx	$xr3, $a1, $a0
+	vldx	$vr2, $a1, $a0
+	ori	$a0, $zero, 2568
+	vldx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2808
-	xvstx	$xr0, $a1, $a0
-	ori	$a0, $zero, 2840
-	xvstx	$xr1, $a1, $a0
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2824
+	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 3064
-	xvstx	$xr2, $a1, $a0
+	vstx	$vr2, $a1, $a0
+	ori	$a0, $zero, 3080
+	vstx	$vr3, $a1, $a0
+	ori	$a0, $zero, 2328
+	vldx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2344
+	vldx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2584
+	vldx	$vr2, $a1, $a0
+	ori	$a0, $zero, 2600
+	vldx	$vr3, $a1, $a0
+	ori	$a0, $zero, 2840
+	vstx	$vr0, $a1, $a0
+	ori	$a0, $zero, 2856
+	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 3096
-	xvstx	$xr3, $a1, $a0
+	vstx	$vr2, $a1, $a0
+	ori	$a0, $zero, 3112
+	vstx	$vr3, $a1, $a0
 	pcaddu18i	$ra, %call36(extension_and_user_data)
 	jirl	$ra, $ra, 0
 	b	.LBB0_2

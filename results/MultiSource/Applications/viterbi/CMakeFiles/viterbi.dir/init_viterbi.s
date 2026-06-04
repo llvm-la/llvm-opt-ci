@@ -4,140 +4,6 @@
 .LCPI0_0:
 	.dword	7                               # 0x7
 	.dword	128                             # 0x80
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
-.LCPI0_1:
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI0_2:
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-.LCPI0_3:
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-.LCPI0_4:
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.text
 	.globl	init_viterbi
 	.p2align	2
@@ -157,119 +23,158 @@ init_viterbi:                           # @init_viterbi
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $s0, -1
-	ori	$a1, $zero, 4
-	bltu	$a1, $a0, .LBB0_9
+	addi.d	$a1, $s0, -1
+	ori	$a2, $zero, 4
+	lu12i.w	$a0, 4112
+	bltu	$a2, $a1, .LBB0_9
 # %bb.1:
-	slli.d	$a0, $a0, 2
-	pcalau12i	$a1, %pc_hi20(.LJTI0_0)
-	addi.d	$a1, $a1, %pc_lo12(.LJTI0_0)
-	ldx.w	$a0, $a1, $a0
-	add.d	$a0, $a1, $a0
-	jr	$a0
+	slli.d	$a1, $a1, 2
+	pcalau12i	$a2, %pc_hi20(.LJTI0_0)
+	addi.d	$a2, $a2, %pc_lo12(.LJTI0_0)
+	ldx.w	$a1, $a2, $a1
+	add.d	$a1, $a2, $a1
+	jr	$a1
 .LBB0_2:
-	ori	$a0, $zero, 1
-	st.b	$a0, $fp, 24
-	ori	$a1, $zero, 31
+	ori	$a1, $zero, 1
+	st.b	$a1, $fp, 24
+	ori	$a2, $zero, 31
 	b	.LBB0_8
 .LBB0_3:
-	ori	$a0, $zero, 1
-	st.b	$a0, $fp, 24
+	ori	$a1, $zero, 1
+	st.b	$a1, $fp, 24
 	st.b	$zero, $fp, 26
-	st.b	$a0, $fp, 28
-	st.b	$a0, $fp, 34
-	lu12i.w	$a0, 4112
-	ori	$a0, $a0, 257
-	st.w	$a0, $fp, 30
-	ori	$a0, $zero, 7
-	ori	$a1, $zero, 36
+	st.b	$a1, $fp, 28
+	st.b	$a1, $fp, 34
+	ori	$a1, $a0, 257
+	st.w	$a1, $fp, 30
+	ori	$a1, $zero, 7
+	ori	$a2, $zero, 36
 	b	.LBB0_8
 .LBB0_4:
-	ori	$a0, $zero, 1
-	st.b	$a0, $fp, 24
-	st.b	$a0, $fp, 26
-	st.b	$a0, $fp, 31
-	ori	$a0, $zero, 3
+	ori	$a1, $zero, 1
+	st.b	$a1, $fp, 24
+	st.b	$a1, $fp, 26
+	st.b	$a1, $fp, 31
+	ori	$a1, $zero, 3
 	b	.LBB0_7
 .LBB0_5:
-	ori	$a0, $zero, 1
-	st.b	$a0, $fp, 24
-	st.b	$a0, $fp, 26
-	st.b	$a0, $fp, 28
-	ori	$a0, $zero, 257
-	st.h	$a0, $fp, 31
-	ori	$a0, $zero, 5
-	ori	$a1, $zero, 34
+	ori	$a1, $zero, 1
+	st.b	$a1, $fp, 24
+	st.b	$a1, $fp, 26
+	st.b	$a1, $fp, 28
+	ori	$a1, $zero, 257
+	st.h	$a1, $fp, 31
+	ori	$a1, $zero, 5
+	ori	$a2, $zero, 34
 	b	.LBB0_8
 .LBB0_6:
-	ori	$a0, $zero, 1
-	st.b	$a0, $fp, 24
-	st.b	$a0, $fp, 31
-	ori	$a0, $zero, 2
+	ori	$a1, $zero, 1
+	st.b	$a1, $fp, 24
+	st.b	$a1, $fp, 31
+	ori	$a1, $zero, 2
 .LBB0_7:                                # %.sink.split
-	ori	$a1, $zero, 32
+	ori	$a2, $zero, 32
 .LBB0_8:                                # %.sink.split
-	ori	$a2, $zero, 1
-	stx.b	$a2, $fp, $a1
-	st.d	$a0, $fp, 40
+	ori	$a3, $zero, 1
+	stx.b	$a3, $fp, $a2
+	st.d	$a1, $fp, 40
 .LBB0_9:                                # %vector.ph
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_0)
 	vst	$vr0, $fp, 0
-	ori	$a0, $zero, 150
-	st.d	$a0, $fp, 16
-	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_1)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_2)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI0_4)
-	xvst	$xr0, $fp, 48
-	xvst	$xr1, $fp, 176
-	xvst	$xr2, $fp, 80
-	xvst	$xr3, $fp, 208
-	xvst	$xr2, $fp, 112
-	xvst	$xr1, $fp, 240
-	xvst	$xr0, $fp, 144
-	xvst	$xr3, $fp, 272
+	ori	$a1, $zero, 150
+	st.d	$a1, $fp, 16
+	vreplgr2vr.w	$vr0, $a0
+	vst	$vr0, $fp, 48
+	lu32i.d	$a0, 257
+	vreplgr2vr.d	$vr1, $a0
+	vst	$vr1, $fp, 176
+	vrepli.w	$vr2, 257
+	vst	$vr2, $fp, 64
+	ori	$a0, $zero, 257
+	bstrins.d	$a0, $a0, 56, 48
+	vreplgr2vr.d	$vr3, $a0
+	vst	$vr3, $fp, 192
+	vst	$vr2, $fp, 80
+	vst	$vr3, $fp, 208
+	vst	$vr0, $fp, 96
+	vst	$vr1, $fp, 224
+	vst	$vr2, $fp, 112
+	vst	$vr1, $fp, 240
+	vst	$vr0, $fp, 128
+	vst	$vr3, $fp, 256
+	vst	$vr0, $fp, 144
+	vst	$vr3, $fp, 272
+	vst	$vr2, $fp, 160
+	vst	$vr1, $fp, 288
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, -97152
 	lu52i.d	$a0, $a0, 1042
-	xvreplgr2vr.d	$xr0, $a0
-	xvst	$xr0, $fp, 304
-	xvst	$xr0, $fp, 336
-	xvst	$xr0, $fp, 368
-	xvst	$xr0, $fp, 400
-	xvst	$xr0, $fp, 432
-	xvst	$xr0, $fp, 464
-	xvst	$xr0, $fp, 496
-	xvst	$xr0, $fp, 528
-	xvst	$xr0, $fp, 560
-	xvst	$xr0, $fp, 592
-	xvst	$xr0, $fp, 624
-	xvst	$xr0, $fp, 656
-	xvst	$xr0, $fp, 688
-	xvst	$xr0, $fp, 720
-	xvst	$xr0, $fp, 752
-	xvst	$xr0, $fp, 784
-	xvst	$xr0, $fp, 816
-	xvst	$xr0, $fp, 848
-	xvst	$xr0, $fp, 880
-	xvst	$xr0, $fp, 912
-	xvst	$xr0, $fp, 944
-	xvst	$xr0, $fp, 976
-	xvst	$xr0, $fp, 1008
-	xvst	$xr0, $fp, 1040
-	xvst	$xr0, $fp, 1072
-	xvst	$xr0, $fp, 1104
-	xvst	$xr0, $fp, 1136
-	xvst	$xr0, $fp, 1168
-	xvst	$xr0, $fp, 1200
-	xvst	$xr0, $fp, 1232
-	xvst	$xr0, $fp, 1264
-	xvst	$xr0, $fp, 1296
+	vreplgr2vr.d	$vr0, $a0
+	vst	$vr0, $fp, 304
+	vst	$vr0, $fp, 320
+	vst	$vr0, $fp, 336
+	vst	$vr0, $fp, 352
+	vst	$vr0, $fp, 368
+	vst	$vr0, $fp, 384
+	vst	$vr0, $fp, 400
+	vst	$vr0, $fp, 416
+	vst	$vr0, $fp, 432
+	vst	$vr0, $fp, 448
+	vst	$vr0, $fp, 464
+	vst	$vr0, $fp, 480
+	vst	$vr0, $fp, 496
+	vst	$vr0, $fp, 512
+	vst	$vr0, $fp, 528
+	vst	$vr0, $fp, 544
+	vst	$vr0, $fp, 560
+	vst	$vr0, $fp, 576
+	vst	$vr0, $fp, 592
+	vst	$vr0, $fp, 608
+	vst	$vr0, $fp, 624
+	vst	$vr0, $fp, 640
+	vst	$vr0, $fp, 656
+	vst	$vr0, $fp, 672
+	vst	$vr0, $fp, 688
+	vst	$vr0, $fp, 704
+	vst	$vr0, $fp, 720
+	vst	$vr0, $fp, 736
+	vst	$vr0, $fp, 752
+	vst	$vr0, $fp, 768
+	vst	$vr0, $fp, 784
+	vst	$vr0, $fp, 800
+	vst	$vr0, $fp, 816
+	vst	$vr0, $fp, 832
+	vst	$vr0, $fp, 848
+	vst	$vr0, $fp, 864
+	vst	$vr0, $fp, 880
+	vst	$vr0, $fp, 896
+	vst	$vr0, $fp, 912
+	vst	$vr0, $fp, 928
+	vst	$vr0, $fp, 944
+	vst	$vr0, $fp, 960
+	vst	$vr0, $fp, 976
+	vst	$vr0, $fp, 992
+	vst	$vr0, $fp, 1008
+	vst	$vr0, $fp, 1024
+	vst	$vr0, $fp, 1040
+	vst	$vr0, $fp, 1056
+	vst	$vr0, $fp, 1072
+	vst	$vr0, $fp, 1088
+	vst	$vr0, $fp, 1104
+	vst	$vr0, $fp, 1120
+	vst	$vr0, $fp, 1136
+	vst	$vr0, $fp, 1152
+	vst	$vr0, $fp, 1168
+	vst	$vr0, $fp, 1184
+	vst	$vr0, $fp, 1200
+	vst	$vr0, $fp, 1216
+	vst	$vr0, $fp, 1232
+	vst	$vr0, $fp, 1248
+	vst	$vr0, $fp, 1264
+	vst	$vr0, $fp, 1280
+	vst	$vr0, $fp, 1296
+	vst	$vr0, $fp, 1312
 	st.d	$zero, $fp, 304
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload

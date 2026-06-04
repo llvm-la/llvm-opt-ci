@@ -291,25 +291,23 @@ _ZNK18btStaticPlaneShape19processAllTrianglesEP18btTriangleCallbackRK9btVector3S
 	vextrins.w	$vr9, $vr6, 16
 	vextrins.w	$vr9, $vr8, 32
 	vextrins.w	$vr9, $vr2, 48
-	vpickve2gr.w	$a1, $vr9, 2
-	vinsgr2vr.d	$vr1, $a1, 0
-	vpickve2gr.w	$a1, $vr9, 3
-	vinsgr2vr.d	$vr1, $a1, 1
-	vpickve2gr.w	$a1, $vr9, 0
-	vinsgr2vr.d	$vr2, $a1, 0
-	vpickve2gr.w	$a1, $vr9, 1
-	vinsgr2vr.d	$vr2, $a1, 1
-	xvpermi.q	$xr2, $xr1, 2
-	xvslli.d	$xr1, $xr2, 32
-	vext2xv.du.wu	$xr2, $xr7
-	xvor.v	$xr1, $xr1, $xr2
-	xvst	$xr1, $sp, 16                   # 32-byte Folded Spill
-	xvstelm.d	$xr1, $sp, 72, 0
-	xvstelm.d	$xr1, $sp, 88, 3
+	vshuf4i.w	$vr1, $vr9, 50
+	vshuf4i.w	$vr2, $vr9, 16
+	vslli.d	$vr2, $vr2, 32
+	vslli.d	$vr1, $vr1, 32
+	vrepli.b	$vr4, 0
+	vilvl.w	$vr5, $vr4, $vr7
+	vilvh.w	$vr4, $vr4, $vr7
+	vor.v	$vr1, $vr1, $vr4
+	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vor.v	$vr2, $vr2, $vr5
+	vst	$vr2, $sp, 32                   # 16-byte Folded Spill
+	vstelm.d	$vr2, $sp, 72, 0
+	vstelm.d	$vr1, $sp, 88, 1
 	ld.d	$a4, $a0, 16
 	st.d	$s0, $sp, 64
 	fadd.s	$fs0, $fa0, $fa3
-	xvstelm.d	$xr1, $sp, 56, 1
+	vstelm.d	$vr2, $sp, 56, 1
 	addi.d	$a1, $sp, 56
 	move	$a0, $fp
 	move	$a2, $zero
@@ -317,14 +315,15 @@ _ZNK18btStaticPlaneShape19processAllTrianglesEP18btTriangleCallbackRK9btVector3S
 	jirl	$ra, $a4, 0
 	movfr2gr.s	$a0, $fs0
 	bstrpick.d	$a0, $a0, 31, 0
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvstelm.d	$xr0, $sp, 72, 2
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vstelm.d	$vr0, $sp, 72, 0
 	ld.d	$a1, $fp, 0
 	st.d	$a0, $sp, 80
-	xvstelm.d	$xr0, $sp, 88, 1
+	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
+	vstelm.d	$vr1, $sp, 88, 1
 	st.d	$s0, $sp, 96
 	ld.d	$a4, $a1, 16
-	xvstelm.d	$xr0, $sp, 56, 3
+	vstelm.d	$vr0, $sp, 56, 1
 	st.d	$s1, $sp, 64
 	addi.d	$a1, $sp, 56
 	ori	$a3, $zero, 1

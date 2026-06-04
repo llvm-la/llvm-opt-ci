@@ -184,7 +184,7 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	addi.d	$a1, $a4, 16
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	ori	$a2, $zero, 1
-	ori	$s0, $zero, 32
+	ori	$s0, $zero, 16
 	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 48                    # 8-byte Folded Spill
@@ -632,11 +632,11 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	addi.d	$a4, $a0, -1
 	sltui	$a4, $a4, 1
 	and	$t6, $a3, $a4
-	bstrpick.d	$a3, $a1, 30, 2
-	slli.d	$t3, $a3, 2
+	bstrpick.d	$a3, $a1, 30, 1
+	slli.d	$t3, $a3, 1
 	slli.d	$a3, $a1, 3
-	bstrpick.d	$a3, $a3, 33, 5
-	slli.d	$t8, $a3, 5
+	bstrpick.d	$a3, $a3, 33, 4
+	slli.d	$t8, $a3, 4
 	slli.d	$ra, $a0, 3
 	b	.LBB2_42
 	.p2align	4, , 16
@@ -734,22 +734,22 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
                                         #         Parent Loop BB2_42 Depth=4
                                         #           Parent Loop BB2_44 Depth=5
                                         # =>          This Inner Loop Header: Depth=6
-	xvldx	$xr0, $t7, $a4
-	xvldx	$xr1, $t5, $a4
-	xvldx	$xr2, $s6, $a4
-	xvldx	$xr3, $s7, $a4
-	xvldx	$xr4, $s3, $a4
-	xvfmul.d	$xr1, $xr1, $xr2
-	xvfmadd.d	$xr0, $xr0, $xr3, $xr1
-	xvfadd.d	$xr0, $xr4, $xr0
-	xvstx	$xr0, $t4, $a4
-	addi.d	$a4, $a4, 32
+	vldx	$vr0, $t7, $a4
+	vldx	$vr1, $t5, $a4
+	vldx	$vr2, $s6, $a4
+	vldx	$vr3, $s7, $a4
+	vldx	$vr4, $s3, $a4
+	vfmul.d	$vr1, $vr1, $vr2
+	vfmadd.d	$vr0, $vr0, $vr3, $vr1
+	vfadd.d	$vr0, $vr4, $vr0
+	vstx	$vr0, $t4, $a4
+	addi.d	$a4, $a4, 16
 	bne	$t8, $a4, .LBB2_51
 # %bb.52:                               # %middle.block
                                         #   in Loop: Header=BB2_44 Depth=5
 	move	$t7, $t3
 	move	$s7, $s0
-	ori	$s0, $zero, 32
+	ori	$s0, $zero, 16
 	beq	$t3, $a1, .LBB2_43
 	b	.LBB2_54
 	.p2align	4, , 16

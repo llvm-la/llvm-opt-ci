@@ -325,8 +325,8 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 .Lfunc_end1:
 	.size	jpeg_new_colormap, .Lfunc_end1-jpeg_new_colormap
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function jinit_master_decompress
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function jinit_master_decompress
 .LCPI2_0:
 	.byte	0                               # 0x0
 	.byte	1                               # 0x1
@@ -344,6 +344,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	13                              # 0xd
 	.byte	14                              # 0xe
 	.byte	15                              # 0xf
+.LCPI2_1:
 	.byte	16                              # 0x10
 	.byte	17                              # 0x11
 	.byte	18                              # 0x12
@@ -360,7 +361,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	29                              # 0x1d
 	.byte	30                              # 0x1e
 	.byte	31                              # 0x1f
-.LCPI2_1:
+.LCPI2_2:
 	.byte	32                              # 0x20
 	.byte	33                              # 0x21
 	.byte	34                              # 0x22
@@ -377,6 +378,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	45                              # 0x2d
 	.byte	46                              # 0x2e
 	.byte	47                              # 0x2f
+.LCPI2_3:
 	.byte	48                              # 0x30
 	.byte	49                              # 0x31
 	.byte	50                              # 0x32
@@ -393,7 +395,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	61                              # 0x3d
 	.byte	62                              # 0x3e
 	.byte	63                              # 0x3f
-.LCPI2_2:
+.LCPI2_4:
 	.byte	64                              # 0x40
 	.byte	65                              # 0x41
 	.byte	66                              # 0x42
@@ -410,6 +412,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	77                              # 0x4d
 	.byte	78                              # 0x4e
 	.byte	79                              # 0x4f
+.LCPI2_5:
 	.byte	80                              # 0x50
 	.byte	81                              # 0x51
 	.byte	82                              # 0x52
@@ -426,7 +429,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	93                              # 0x5d
 	.byte	94                              # 0x5e
 	.byte	95                              # 0x5f
-.LCPI2_3:
+.LCPI2_6:
 	.byte	96                              # 0x60
 	.byte	97                              # 0x61
 	.byte	98                              # 0x62
@@ -443,6 +446,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	109                             # 0x6d
 	.byte	110                             # 0x6e
 	.byte	111                             # 0x6f
+.LCPI2_7:
 	.byte	112                             # 0x70
 	.byte	113                             # 0x71
 	.byte	114                             # 0x72
@@ -459,7 +463,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	125                             # 0x7d
 	.byte	126                             # 0x7e
 	.byte	127                             # 0x7f
-.LCPI2_4:
+.LCPI2_8:
 	.byte	128                             # 0x80
 	.byte	129                             # 0x81
 	.byte	130                             # 0x82
@@ -476,6 +480,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	141                             # 0x8d
 	.byte	142                             # 0x8e
 	.byte	143                             # 0x8f
+.LCPI2_9:
 	.byte	144                             # 0x90
 	.byte	145                             # 0x91
 	.byte	146                             # 0x92
@@ -492,7 +497,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	157                             # 0x9d
 	.byte	158                             # 0x9e
 	.byte	159                             # 0x9f
-.LCPI2_5:
+.LCPI2_10:
 	.byte	160                             # 0xa0
 	.byte	161                             # 0xa1
 	.byte	162                             # 0xa2
@@ -509,6 +514,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	173                             # 0xad
 	.byte	174                             # 0xae
 	.byte	175                             # 0xaf
+.LCPI2_11:
 	.byte	176                             # 0xb0
 	.byte	177                             # 0xb1
 	.byte	178                             # 0xb2
@@ -525,7 +531,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	189                             # 0xbd
 	.byte	190                             # 0xbe
 	.byte	191                             # 0xbf
-.LCPI2_6:
+.LCPI2_12:
 	.byte	192                             # 0xc0
 	.byte	193                             # 0xc1
 	.byte	194                             # 0xc2
@@ -542,6 +548,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	205                             # 0xcd
 	.byte	206                             # 0xce
 	.byte	207                             # 0xcf
+.LCPI2_13:
 	.byte	208                             # 0xd0
 	.byte	209                             # 0xd1
 	.byte	210                             # 0xd2
@@ -558,7 +565,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	221                             # 0xdd
 	.byte	222                             # 0xde
 	.byte	223                             # 0xdf
-.LCPI2_7:
+.LCPI2_14:
 	.byte	224                             # 0xe0
 	.byte	225                             # 0xe1
 	.byte	226                             # 0xe2
@@ -575,6 +582,7 @@ jpeg_new_colormap:                      # @jpeg_new_colormap
 	.byte	237                             # 0xed
 	.byte	238                             # 0xee
 	.byte	239                             # 0xef
+.LCPI2_15:
 	.byte	240                             # 0xf0
 	.byte	241                             # 0xf1
 	.byte	242                             # 0xf2
@@ -637,29 +645,53 @@ jinit_master_decompress:                # @jinit_master_decompress
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI2_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_2)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI2_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI2_3)
-	xvst	$xr0, $s1, 256
-	xvst	$xr1, $s1, 288
-	xvst	$xr2, $s1, 320
-	xvst	$xr3, $s1, 352
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_3)
+	vst	$vr0, $s1, 256
+	vst	$vr1, $s1, 272
+	vst	$vr2, $s1, 288
+	vst	$vr3, $s1, 304
 	pcalau12i	$a0, %pc_hi20(.LCPI2_4)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_4)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_5)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI2_5)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_6)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI2_6)
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_7)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI2_7)
-	xvst	$xr0, $s1, 384
-	xvst	$xr1, $s1, 416
-	xvst	$xr2, $s1, 448
-	xvst	$xr3, $s1, 480
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_7)
+	vst	$vr0, $s1, 320
+	vst	$vr1, $s1, 336
+	vst	$vr2, $s1, 352
+	vst	$vr3, $s1, 368
+	pcalau12i	$a0, %pc_hi20(.LCPI2_8)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_8)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_9)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_9)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_10)
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_10)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_11)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_11)
+	vst	$vr0, $s1, 384
+	vst	$vr1, $s1, 400
+	vst	$vr2, $s1, 416
+	vst	$vr3, $s1, 432
+	pcalau12i	$a0, %pc_hi20(.LCPI2_12)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_12)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_13)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_13)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_14)
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_14)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_15)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_15)
+	vst	$vr0, $s1, 448
+	vst	$vr1, $s1, 464
+	vst	$vr2, $s1, 480
+	vst	$vr3, $s1, 496
 	addi.d	$a0, $s1, 512
 	ori	$a1, $zero, 255
 	ori	$a2, $zero, 384

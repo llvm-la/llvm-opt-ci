@@ -33,9 +33,11 @@ Lzma2EncProps_Normalize:                # @Lzma2EncProps_Normalize
 	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
 	move	$fp, $a0
 	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
 	vst	$vr0, $sp, 48
-	xvst	$xr1, $sp, 16
+	vst	$vr1, $sp, 32
+	vst	$vr2, $sp, 16
 	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(LzmaEncProps_Normalize)
 	jirl	$ra, $ra, 0
@@ -153,11 +155,13 @@ Lzma2Enc_Create:                        # @Lzma2Enc_Create
 	jirl	$ra, $ra, 0
 	vld	$vr0, $fp, 40
 	vst	$vr0, $sp, 40
-	xvld	$xr0, $fp, 8
+	vld	$vr0, $fp, 24
+	vst	$vr0, $sp, 24
+	vld	$vr0, $fp, 8
 	addi.w	$a0, $zero, -1
 	st.d	$a0, $fp, 64
 	st.d	$zero, $fp, 56
-	xvst	$xr0, $sp, 8
+	vst	$vr0, $sp, 8
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(LzmaEncProps_Normalize)
 	jirl	$ra, $ra, 0
@@ -347,10 +351,12 @@ Lzma2Enc_SetProps:                      # @Lzma2Enc_SetProps
 	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
 	move	$s0, $a1
 	vld	$vr0, $a1, 32
-	xvld	$xr1, $a1, 0
+	vld	$vr1, $a1, 16
+	vld	$vr2, $a1, 0
 	move	$fp, $a0
 	vst	$vr0, $sp, 40
-	xvst	$xr1, $sp, 8
+	vst	$vr1, $sp, 24
+	vst	$vr2, $sp, 8
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(LzmaEncProps_Normalize)
 	jirl	$ra, $ra, 0
@@ -361,15 +367,21 @@ Lzma2Enc_SetProps:                      # @Lzma2Enc_SetProps
 	ori	$a0, $zero, 5
 	blt	$a2, $a1, .LBB4_11
 # %bb.1:
-	xvld	$xr0, $s0, 32
-	xvst	$xr0, $fp, 40
-	xvld	$xr0, $s0, 0
-	xvst	$xr0, $fp, 8
+	vld	$vr0, $s0, 48
+	vst	$vr0, $fp, 56
 	vld	$vr0, $s0, 32
-	xvld	$xr1, $s0, 0
-	addi.d	$s0, $fp, 8
+	vst	$vr0, $fp, 40
+	vld	$vr0, $s0, 16
+	vst	$vr0, $fp, 24
+	vld	$vr0, $s0, 0
+	vst	$vr0, $fp, 8
+	vld	$vr0, $s0, 32
+	vld	$vr1, $s0, 16
+	vld	$vr2, $s0, 0
 	vst	$vr0, $sp, 88
-	xvst	$xr1, $sp, 56
+	vst	$vr1, $sp, 72
+	addi.d	$s0, $fp, 8
+	vst	$vr2, $sp, 56
 	addi.d	$a0, $sp, 56
 	pcaddu18i	$ra, %call36(LzmaEncProps_Normalize)
 	jirl	$ra, $ra, 0
@@ -460,56 +472,59 @@ Lzma2Enc_SetProps:                      # @Lzma2Enc_SetProps
 .Lfunc_end4:
 	.size	Lzma2Enc_SetProps, .Lfunc_end4-Lzma2Enc_SetProps
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function Lzma2Enc_WriteProperties
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function Lzma2Enc_WriteProperties
 .LCPI5_0:
-	.word	4097                            # 0x1001
-	.word	6145                            # 0x1801
-	.word	8193                            # 0x2001
-	.word	12289                           # 0x3001
 	.word	16385                           # 0x4001
 	.word	24577                           # 0x6001
 	.word	32769                           # 0x8001
 	.word	49153                           # 0xc001
 .LCPI5_1:
-	.word	65537                           # 0x10001
-	.word	98305                           # 0x18001
-	.word	131073                          # 0x20001
-	.word	196609                          # 0x30001
+	.word	4097                            # 0x1001
+	.word	6145                            # 0x1801
+	.word	8193                            # 0x2001
+	.word	12289                           # 0x3001
+.LCPI5_2:
 	.word	262145                          # 0x40001
 	.word	393217                          # 0x60001
 	.word	524289                          # 0x80001
 	.word	786433                          # 0xc0001
-.LCPI5_2:
-	.word	1048577                         # 0x100001
-	.word	1572865                         # 0x180001
-	.word	2097153                         # 0x200001
-	.word	3145729                         # 0x300001
+.LCPI5_3:
+	.word	65537                           # 0x10001
+	.word	98305                           # 0x18001
+	.word	131073                          # 0x20001
+	.word	196609                          # 0x30001
+.LCPI5_4:
 	.word	4194305                         # 0x400001
 	.word	6291457                         # 0x600001
 	.word	8388609                         # 0x800001
 	.word	12582913                        # 0xc00001
-.LCPI5_3:
-	.word	16777217                        # 0x1000001
-	.word	25165825                        # 0x1800001
-	.word	33554433                        # 0x2000001
-	.word	50331649                        # 0x3000001
+.LCPI5_5:
+	.word	1048577                         # 0x100001
+	.word	1572865                         # 0x180001
+	.word	2097153                         # 0x200001
+	.word	3145729                         # 0x300001
+.LCPI5_6:
 	.word	67108865                        # 0x4000001
 	.word	100663297                       # 0x6000001
 	.word	134217729                       # 0x8000001
 	.word	201326593                       # 0xc000001
-.LCPI5_4:
-	.word	268435457                       # 0x10000001
-	.word	402653185                       # 0x18000001
-	.word	536870913                       # 0x20000001
-	.word	805306369                       # 0x30000001
+.LCPI5_7:
+	.word	16777217                        # 0x1000001
+	.word	25165825                        # 0x1800001
+	.word	33554433                        # 0x2000001
+	.word	50331649                        # 0x3000001
+.LCPI5_8:
 	.word	1073741825                      # 0x40000001
 	.word	1610612737                      # 0x60000001
 	.word	2147483649                      # 0x80000001
 	.word	3221225473                      # 0xc0000001
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI5_5:
+.LCPI5_9:
+	.word	268435457                       # 0x10000001
+	.word	402653185                       # 0x18000001
+	.word	536870913                       # 0x20000001
+	.word	805306369                       # 0x30000001
+.LCPI5_10:
 	.half	8                               # 0x8
 	.half	7                               # 0x7
 	.half	6                               # 0x6
@@ -531,150 +546,73 @@ Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
 	pcaddu18i	$ra, %call36(LzmaEncProps_GetDictSize)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(.LCPI5_0)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI5_0)
-	xvreplgr2vr.w	$xr0, $a0
-	xvslt.wu	$xr1, $xr0, $xr1
-	xvmskltz.w	$xr2, $xr1
-	xvpickve2gr.wu	$a0, $xr2, 0
-	xvpickve2gr.wu	$a1, $xr2, 4
-	bstrins.d	$a0, $a1, 7, 4
+	pcalau12i	$a2, %pc_hi20(.LCPI5_1)
+	vld	$vr1, $a2, %pc_lo12(.LCPI5_1)
+	vld	$vr2, $a1, %pc_lo12(.LCPI5_0)
+	vreplgr2vr.w	$vr0, $a0
+	vslt.wu	$vr1, $vr0, $vr1
+	vslt.wu	$vr2, $vr0, $vr2
+	vpickev.h	$vr1, $vr2, $vr1
+	vmskltz.h	$vr2, $vr1
+	vpickve2gr.hu	$a0, $vr2, 0
 	beqz	$a0, .LBB5_2
 # %bb.1:
 	move	$a0, $zero
-	xvpickve2gr.w	$a1, $xr1, 0
-	vinsgr2vr.h	$vr0, $a1, 0
-	xvpickve2gr.w	$a1, $xr1, 1
-	vinsgr2vr.h	$vr0, $a1, 1
-	xvpickve2gr.w	$a1, $xr1, 2
-	vinsgr2vr.h	$vr0, $a1, 2
-	xvpickve2gr.w	$a1, $xr1, 3
-	vinsgr2vr.h	$vr0, $a1, 3
-	xvpickve2gr.w	$a1, $xr1, 4
-	vinsgr2vr.h	$vr0, $a1, 4
-	xvpickve2gr.w	$a1, $xr1, 5
-	vinsgr2vr.h	$vr0, $a1, 5
-	xvpickve2gr.w	$a1, $xr1, 6
-	vinsgr2vr.h	$vr0, $a1, 6
-	xvpickve2gr.w	$a1, $xr1, 7
-	vinsgr2vr.h	$vr0, $a1, 7
-	b	.LBB5_10
+	b	.LBB5_6
 .LBB5_2:                                # %vector.body.interim
-	pcalau12i	$a0, %pc_hi20(.LCPI5_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI5_1)
-	xvslt.wu	$xr1, $xr0, $xr1
-	xvmskltz.w	$xr2, $xr1
-	xvpickve2gr.wu	$a0, $xr2, 0
-	xvpickve2gr.wu	$a1, $xr2, 4
-	bstrins.d	$a0, $a1, 7, 4
-	beqz	$a0, .LBB5_4
-# %bb.3:
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.h	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.h	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.h	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.h	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.h	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.h	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.h	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.h	$vr0, $a0, 7
-	ori	$a0, $zero, 8
-	b	.LBB5_10
-.LBB5_4:                                # %vector.body.interim.1
 	pcalau12i	$a0, %pc_hi20(.LCPI5_2)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI5_2)
-	xvslt.wu	$xr1, $xr0, $xr1
-	xvmskltz.w	$xr2, $xr1
-	xvpickve2gr.wu	$a0, $xr2, 0
-	xvpickve2gr.wu	$a1, $xr2, 4
-	bstrins.d	$a0, $a1, 7, 4
-	beqz	$a0, .LBB5_6
-# %bb.5:
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.h	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.h	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.h	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.h	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.h	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.h	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.h	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.h	$vr0, $a0, 7
-	ori	$a0, $zero, 16
-	b	.LBB5_10
-.LBB5_6:                                # %vector.body.interim.2
-	pcalau12i	$a0, %pc_hi20(.LCPI5_3)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI5_3)
-	xvslt.wu	$xr1, $xr0, $xr1
-	xvmskltz.w	$xr2, $xr1
-	xvpickve2gr.wu	$a0, $xr2, 0
-	xvpickve2gr.wu	$a1, $xr2, 4
-	bstrins.d	$a0, $a1, 7, 4
-	beqz	$a0, .LBB5_8
-# %bb.7:
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.h	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.h	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.h	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.h	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.h	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.h	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.h	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.h	$vr0, $a0, 7
-	ori	$a0, $zero, 24
-	b	.LBB5_10
-.LBB5_8:                                # %vector.body.interim.3
+	pcalau12i	$a1, %pc_hi20(.LCPI5_3)
+	vld	$vr1, $a1, %pc_lo12(.LCPI5_3)
+	vld	$vr2, $a0, %pc_lo12(.LCPI5_2)
+	vslt.wu	$vr1, $vr0, $vr1
+	vslt.wu	$vr2, $vr0, $vr2
+	vpickev.h	$vr1, $vr2, $vr1
+	vmskltz.h	$vr2, $vr1
+	vpickve2gr.hu	$a1, $vr2, 0
+	ori	$a0, $zero, 8
+	bnez	$a1, .LBB5_6
+# %bb.3:                                # %vector.body.interim.1
 	pcalau12i	$a0, %pc_hi20(.LCPI5_4)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI5_4)
-	xvslt.wu	$xr1, $xr0, $xr1
-	xvmskltz.w	$xr0, $xr1
-	xvpickve2gr.wu	$a0, $xr0, 0
-	xvpickve2gr.wu	$a1, $xr0, 4
-	bstrins.d	$a0, $a1, 7, 4
-	beqz	$a0, .LBB5_11
-# %bb.9:
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.h	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.h	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.h	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.h	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.h	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.h	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.h	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.h	$vr0, $a0, 7
-	ori	$a0, $zero, 32
-.LBB5_10:                               # %vector.early.exit
 	pcalau12i	$a1, %pc_hi20(.LCPI5_5)
 	vld	$vr1, $a1, %pc_lo12(.LCPI5_5)
-	vslli.h	$vr0, $vr0, 15
-	vsrai.h	$vr0, $vr0, 15
-	vand.v	$vr0, $vr0, $vr1
+	vld	$vr2, $a0, %pc_lo12(.LCPI5_4)
+	vslt.wu	$vr1, $vr0, $vr1
+	vslt.wu	$vr2, $vr0, $vr2
+	vpickev.h	$vr1, $vr2, $vr1
+	vmskltz.h	$vr2, $vr1
+	vpickve2gr.hu	$a1, $vr2, 0
+	ori	$a0, $zero, 16
+	bnez	$a1, .LBB5_6
+# %bb.4:                                # %vector.body.interim.2
+	pcalau12i	$a0, %pc_hi20(.LCPI5_6)
+	pcalau12i	$a1, %pc_hi20(.LCPI5_7)
+	vld	$vr1, $a1, %pc_lo12(.LCPI5_7)
+	vld	$vr2, $a0, %pc_lo12(.LCPI5_6)
+	vslt.wu	$vr1, $vr0, $vr1
+	vslt.wu	$vr2, $vr0, $vr2
+	vpickev.h	$vr1, $vr2, $vr1
+	vmskltz.h	$vr2, $vr1
+	vpickve2gr.hu	$a1, $vr2, 0
+	ori	$a0, $zero, 24
+	bnez	$a1, .LBB5_6
+# %bb.5:                                # %vector.body.interim.3
+	pcalau12i	$a0, %pc_hi20(.LCPI5_8)
+	pcalau12i	$a1, %pc_hi20(.LCPI5_9)
+	vld	$vr1, $a1, %pc_lo12(.LCPI5_9)
+	vld	$vr2, $a0, %pc_lo12(.LCPI5_8)
+	vslt.wu	$vr1, $vr0, $vr1
+	vslt.wu	$vr0, $vr0, $vr2
+	vpickev.h	$vr1, $vr0, $vr1
+	vmskltz.h	$vr0, $vr1
+	vpickve2gr.hu	$a1, $vr0, 0
+	ori	$a0, $zero, 32
+	beqz	$a1, .LBB5_7
+.LBB5_6:                                # %vector.early.exit
+	pcalau12i	$a1, %pc_hi20(.LCPI5_10)
+	vld	$vr0, $a1, %pc_lo12(.LCPI5_10)
+	vslli.h	$vr1, $vr1, 15
+	vsrai.h	$vr1, $vr1, 15
+	vand.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.hu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
@@ -689,7 +627,7 @@ Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
-.LBB5_11:
+.LBB5_7:
 	ori	$a0, $zero, 40
 	andi	$a0, $a0, 255
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload

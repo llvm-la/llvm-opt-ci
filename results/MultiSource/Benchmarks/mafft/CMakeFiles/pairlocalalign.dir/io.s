@@ -11905,120 +11905,88 @@ readlocalhomtable:                      # @readlocalhomtable
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	st.w	$zero, $sp, 52
-	blez	$s2, .LBB68_18
+	blez	$s2, .LBB68_12
 # %bb.1:                                # %.preheader33.us.preheader
 	move	$a0, $zero
 	addi.d	$a1, $s2, -1
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 2
 	addi.d	$a2, $sp, 52
-	andi	$a3, $s2, 12
-	bstrpick.d	$a4, $s2, 30, 4
-	slli.w	$a4, $a4, 4
-	bstrpick.d	$a5, $s2, 30, 2
-	slli.w	$a5, $a5, 2
-	sub.w	$a6, $zero, $a4
-	ori	$a7, $zero, 4
-	addi.d	$t0, $sp, 48
-	ori	$t1, $zero, 16
+	bstrpick.d	$a3, $s2, 30, 3
+	slli.w	$a3, $a3, 3
+	sub.w	$a4, $zero, $a3
+	ori	$a5, $zero, 8
+	addi.d	$a6, $sp, 48
 	vrepli.b	$vr0, 0
-	xvrepli.b	$xr1, 0
 	b	.LBB68_3
 	.p2align	4, , 16
 .LBB68_2:                               # %._crit_edge.us
                                         #   in Loop: Header=BB68_3 Depth=1
 	addi.d	$a0, $a0, 1
-	addi.w	$t2, $a0, 0
+	addi.w	$a7, $a0, 0
 	st.w	$a0, $sp, 52
-	bge	$t2, $s2, .LBB68_18
-.LBB68_3:                               # %iter.check
+	bge	$a7, $s2, .LBB68_12
+.LBB68_3:                               # %.preheader33.us
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB68_12 Depth 2
-                                        #     Child Loop BB68_16 Depth 2
+                                        #     Child Loop BB68_10 Depth 2
                                         #     Child Loop BB68_8 Depth 2
-	slli.d	$t2, $a0, 3
-	ldx.d	$t2, $s1, $t2
-	bltu	$s2, $a7, .LBB68_6
+	slli.d	$a7, $a0, 3
+	ldx.d	$a7, $s1, $a7
+	bltu	$s2, $a5, .LBB68_6
 # %bb.4:                                # %vector.memcheck
                                         #   in Loop: Header=BB68_3 Depth=1
-	bgeu	$t2, $a2, .LBB68_9
+	bgeu	$a7, $a2, .LBB68_9
 # %bb.5:                                # %vector.memcheck
                                         #   in Loop: Header=BB68_3 Depth=1
-	add.d	$t3, $t2, $a1
-	addi.d	$t3, $t3, 4
-	sltu	$t3, $t0, $t3
-	beqz	$t3, .LBB68_9
+	add.d	$t0, $a7, $a1
+	addi.d	$t0, $t0, 4
+	sltu	$t0, $a6, $t0
+	beqz	$t0, .LBB68_9
 .LBB68_6:                               #   in Loop: Header=BB68_3 Depth=1
-	move	$t3, $zero
-.LBB68_7:                               # %vec.epilog.scalar.ph.preheader
+	move	$t0, $zero
+.LBB68_7:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB68_3 Depth=1
-	alsl.d	$t2, $t3, $t2, 2
+	alsl.d	$a7, $t0, $a7, 2
 	.p2align	4, , 16
-.LBB68_8:                               # %vec.epilog.scalar.ph
+.LBB68_8:                               # %scalar.ph
                                         #   Parent Loop BB68_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.w	$zero, $t2, 0
-	addi.w	$t3, $t3, 1
-	st.w	$t3, $sp, 48
-	addi.d	$t2, $t2, 4
-	blt	$t3, $s2, .LBB68_8
+	st.w	$zero, $a7, 0
+	addi.w	$t0, $t0, 1
+	st.w	$t0, $sp, 48
+	addi.d	$a7, $a7, 4
+	blt	$t0, $s2, .LBB68_8
 	b	.LBB68_2
 	.p2align	4, , 16
-.LBB68_9:                               # %vector.main.loop.iter.check
+.LBB68_9:                               # %vector.body.preheader
                                         #   in Loop: Header=BB68_3 Depth=1
-	bgeu	$s2, $t1, .LBB68_11
-# %bb.10:                               #   in Loop: Header=BB68_3 Depth=1
-	move	$t4, $zero
-	b	.LBB68_15
-.LBB68_11:                              # %vector.body.preheader
-                                        #   in Loop: Header=BB68_3 Depth=1
-	move	$t3, $zero
-	addi.d	$t4, $t2, 32
+	move	$t0, $zero
+	addi.d	$t1, $a7, 16
 	.p2align	4, , 16
-.LBB68_12:                              # %vector.body
+.LBB68_10:                              # %vector.body
                                         #   Parent Loop BB68_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvst	$xr1, $t4, -32
-	xvst	$xr1, $t4, 0
-	addi.w	$t3, $t3, -16
-	addi.d	$t4, $t4, 64
-	bne	$a6, $t3, .LBB68_12
-# %bb.13:                               # %middle.block
+	vst	$vr0, $t1, -16
+	vst	$vr0, $t1, 0
+	addi.w	$t0, $t0, -8
+	addi.d	$t1, $t1, 32
+	bne	$a4, $t0, .LBB68_10
+# %bb.11:                               # %middle.block
                                         #   in Loop: Header=BB68_3 Depth=1
-	sub.d	$t3, $zero, $t3
-	st.w	$t3, $sp, 48
-	beq	$s2, $a4, .LBB68_2
-# %bb.14:                               # %vec.epilog.iter.check
-                                        #   in Loop: Header=BB68_3 Depth=1
-	move	$t4, $a4
-	move	$t3, $a4
-	beqz	$a3, .LBB68_7
-.LBB68_15:                              # %vec.epilog.ph
-                                        #   in Loop: Header=BB68_3 Depth=1
-	alsl.d	$t3, $t4, $t2, 2
-	.p2align	4, , 16
-.LBB68_16:                              # %vec.epilog.vector.body
-                                        #   Parent Loop BB68_3 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vst	$vr0, $t3, 0
-	addi.w	$t4, $t4, 4
-	addi.d	$t3, $t3, 16
-	bne	$a5, $t4, .LBB68_16
-# %bb.17:                               # %vec.epilog.middle.block
-                                        #   in Loop: Header=BB68_3 Depth=1
-	st.w	$t4, $sp, 48
-	move	$t3, $a5
-	beq	$s2, $a5, .LBB68_2
+	sub.d	$t0, $zero, $t0
+	st.w	$t0, $sp, 48
+	move	$t0, $a3
+	beq	$s2, $a3, .LBB68_2
 	b	.LBB68_7
-.LBB68_18:                              # %.preheader
+.LBB68_12:                              # %.preheader
 	pcalau12i	$a0, %pc_hi20(readlocalhomtable.buff)
 	addi.d	$a0, $a0, %pc_lo12(readlocalhomtable.buff)
 	ori	$a1, $zero, 255
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB68_27
-# %bb.19:                               # %.lr.ph.preheader
+	beqz	$a0, .LBB68_21
+# %bb.13:                               # %.lr.ph.preheader
 	addi.d	$s4, $sp, 28
 	addi.d	$s5, $sp, 32
 	pcalau12i	$a0, %pc_hi20(readlocalhomtable.buff)
@@ -12032,9 +12000,9 @@ readlocalhomtable:                      # @readlocalhomtable
 	move	$s6, $zero
 	move	$s7, $zero
 	movgr2fr.d	$fs2, $zero
-	b	.LBB68_22
+	b	.LBB68_16
 	.p2align	4, , 16
-.LBB68_20:                              #   in Loop: Header=BB68_22 Depth=1
+.LBB68_14:                              #   in Loop: Header=BB68_16 Depth=1
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 80
 	pcaddu18i	$ra, %call36(calloc)
@@ -12042,7 +12010,7 @@ readlocalhomtable:                      # @readlocalhomtable
 	st.d	$a0, $s6, 8
 	st.d	$zero, $a0, 8
 	move	$s6, $a0
-.LBB68_21:                              #   in Loop: Header=BB68_22 Depth=1
+.LBB68_15:                              #   in Loop: Header=BB68_16 Depth=1
 	ld.w	$a0, $sp, 40
 	ld.w	$a1, $sp, 32
 	st.w	$a0, $s6, 32
@@ -12059,8 +12027,8 @@ readlocalhomtable:                      # @readlocalhomtable
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB68_27
-.LBB68_22:                              # %.lr.ph
+	beqz	$a0, .LBB68_21
+.LBB68_16:                              # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.d	$s4, $sp, 8
 	addi.d	$a2, $sp, 52
@@ -12082,8 +12050,8 @@ readlocalhomtable:                      # @readlocalhomtable
 	ldx.w	$a2, $a0, $a1
 	addi.d	$a3, $a2, 1
 	stx.w	$a3, $a0, $a1
-	blez	$a2, .LBB68_24
-# %bb.23:                               #   in Loop: Header=BB68_22 Depth=1
+	blez	$a2, .LBB68_18
+# %bb.17:                               #   in Loop: Header=BB68_16 Depth=1
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 80
 	pcaddu18i	$ra, %call36(calloc)
@@ -12093,9 +12061,9 @@ readlocalhomtable:                      # @readlocalhomtable
 	st.d	$a0, $s7, 8
 	st.d	$zero, $a0, 8
 	move	$s7, $a0
-	b	.LBB68_25
+	b	.LBB68_19
 	.p2align	4, , 16
-.LBB68_24:                              #   in Loop: Header=BB68_22 Depth=1
+.LBB68_18:                              #   in Loop: Header=BB68_16 Depth=1
 	ld.w	$a1, $sp, 52
 	ld.w	$a2, $sp, 48
 	slli.d	$a0, $a1, 3
@@ -12103,7 +12071,7 @@ readlocalhomtable:                      # @readlocalhomtable
 	slli.d	$a3, $a2, 6
 	alsl.d	$a3, $a2, $a3, 4
 	add.d	$s7, $a0, $a3
-.LBB68_25:                              #   in Loop: Header=BB68_22 Depth=1
+.LBB68_19:                              #   in Loop: Header=BB68_16 Depth=1
 	ld.w	$a0, $sp, 40
 	ld.w	$a3, $sp, 32
 	ld.w	$a4, $sp, 36
@@ -12125,8 +12093,8 @@ readlocalhomtable:                      # @readlocalhomtable
 	fst.d	$fs3, $s7, 40
 	addi.d	$a3, $a1, 1
 	stx.w	$a3, $a2, $a0
-	bgtz	$a1, .LBB68_20
-# %bb.26:                               #   in Loop: Header=BB68_22 Depth=1
+	bgtz	$a1, .LBB68_14
+# %bb.20:                               #   in Loop: Header=BB68_16 Depth=1
 	ld.w	$a0, $sp, 48
 	ld.w	$a1, $sp, 52
 	slli.d	$a0, $a0, 3
@@ -12134,8 +12102,8 @@ readlocalhomtable:                      # @readlocalhomtable
 	slli.d	$a2, $a1, 6
 	alsl.d	$a1, $a1, $a2, 4
 	add.d	$s6, $a0, $a1
-	b	.LBB68_21
-.LBB68_27:                              # %._crit_edge
+	b	.LBB68_15
+.LBB68_21:                              # %._crit_edge
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(FreeIntMtx)
 	jirl	$ra, $ra, 0
@@ -13307,12 +13275,17 @@ loadaamtx:                              # @loadaamtx
 	jirl	$ra, $ra, 0
 .LBB76_39:                              # %.loopexit175
 	ld.d	$a0, $s0, 160
-	xvldi	$xr0, -784
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
+	vldi	$vr0, -784
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
 	ori	$fp, $zero, 102
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload

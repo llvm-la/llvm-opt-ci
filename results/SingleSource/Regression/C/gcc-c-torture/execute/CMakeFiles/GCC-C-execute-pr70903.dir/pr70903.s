@@ -30,15 +30,11 @@ main:                                   # @main
 .Lfunc_end0:
 	.size	main, .Lfunc_end0-main
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function foo
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function foo
 .LCPI1_0:
 	.word	255                             # 0xff
 	.word	255                             # 0xff
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	0                               # 0x0
 	.word	0                               # 0x0
 	.word	0                               # 0x0
 	.text
@@ -48,8 +44,10 @@ main:                                   # @main
 foo:                                    # @foo
 # %bb.0:
 	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_0)
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a1, %pc_lo12(.LCPI1_0)
+	vrepli.b	$vr1, 0
+	vst	$vr1, $a0, 16
+	vst	$vr0, $a0, 0
 	ret
 .Lfunc_end1:
 	.size	foo, .Lfunc_end1-foo

@@ -95,13 +95,11 @@ skipoverword:                           # @skipoverword
 .Lfunc_end0:
 	.size	skipoverword, .Lfunc_end0-skipoverword
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function checkline
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function checkline
 .LCPI1_0:
 	.dword	0                               # 0x0
-	.space	8
-	.space	8
-	.dword	3                               # 0x3
+	.dword	1                               # 0x1
 	.text
 	.globl	checkline
 	.p2align	2
@@ -1662,29 +1660,29 @@ checkline:                              # @checkline
 # %bb.268:                              # %vector.ph
                                         #   in Loop: Header=BB1_6 Depth=1
 	addi.d	$a4, $a3, 1
-	andi	$a1, $a4, 248
+	andi	$a1, $a4, 252
 	add.d	$a3, $a2, $a1
-	addi.d	$a5, $s1, 4
+	addi.d	$a5, $s1, 2
 	move	$a6, $a1
 	.p2align	4, , 16
 .LBB1_269:                              # %vector.body
                                         #   Parent Loop BB1_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	pcalau12i	$a7, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a7, %pc_lo12(.LCPI1_0)
-	xvreplgr2vr.d	$xr1, $a2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a7, $xr0, 0
-	ld.d	$a7, $a7, 0
-	st.d	$a7, $a5, -4
-	addi.d	$a2, $a2, 8
-	addi.d	$a6, $a6, -8
-	addi.d	$a5, $a5, 8
+	vld	$vr0, $a7, %pc_lo12(.LCPI1_0)
+	vreplgr2vr.d	$vr1, $a2
+	vadd.d	$vr0, $vr1, $vr0
+	vpickve2gr.d	$a7, $vr0, 0
+	ld.w	$a7, $a7, 0
+	st.w	$a7, $a5, -2
+	addi.d	$a2, $a2, 4
+	addi.d	$a6, $a6, -4
+	addi.d	$a5, $a5, 4
 	bnez	$a6, .LBB1_269
 # %bb.270:                              # %middle.block
                                         #   in Loop: Header=BB1_6 Depth=1
-	xvpickve2gr.d	$a2, $xr0, 3
-	addi.d	$a2, $a2, 5
+	vpickve2gr.d	$a2, $vr0, 1
+	addi.d	$a2, $a2, 3
 	st.d	$a2, $s0, 0
 	bne	$a4, $a1, .LBB1_262
 	.p2align	4, , 16

@@ -250,57 +250,55 @@ main:                                   # @main
 	addi.d	$a1, $sp, 24
 	pcaddu18i	$ra, %call36(inet_check_attr)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_15
+	bnez	$a0, .LBB1_24
 # %bb.1:                                # %.preheader30.preheader
 	ld.d	$a0, $sp, 24
 	addi.d	$fp, $sp, 140
-	ld.d	$a1, $sp, 32
-	xor	$a0, $a0, $fp
-	sltui	$a0, $a0, 1
-	ld.d	$a2, $sp, 40
-	xor	$a1, $a1, $fp
-	sltui	$a1, $a1, 1
-	xvld	$xr0, $sp, 96
-	xor	$a2, $a2, $fp
-	sltui	$a2, $a2, 1
-	xvreplgr2vr.d	$xr1, $fp
-	xvseq.d	$xr0, $xr0, $xr1
-	xvxori.b	$xr0, $xr0, 255
-	xvmskltz.d	$xr0, $xr0
-	xvpickve2gr.wu	$a3, $xr0, 0
-	xvpickve2gr.wu	$a4, $xr0, 4
-	bstrins.d	$a3, $a4, 3, 2
-	sltui	$a3, $a3, 1
-	and	$a0, $a3, $a0
-	and	$a0, $a0, $a1
-	and	$a0, $a0, $a2
-	beqz	$a0, .LBB1_15
+	bne	$a0, $fp, .LBB1_24
 # %bb.2:                                # %.preheader30.preheader
-	ld.d	$a0, $sp, 48
-	bne	$a0, $fp, .LBB1_15
+	ld.d	$a0, $sp, 32
+	bne	$a0, $fp, .LBB1_24
 # %bb.3:                                # %.preheader30.preheader
-	ld.d	$a0, $sp, 56
-	bne	$a0, $fp, .LBB1_15
+	ld.d	$a0, $sp, 40
+	bne	$a0, $fp, .LBB1_24
 # %bb.4:                                # %.preheader30.preheader
-	ld.d	$a0, $sp, 64
-	bne	$a0, $fp, .LBB1_15
+	ld.d	$a0, $sp, 48
+	bne	$a0, $fp, .LBB1_24
 # %bb.5:                                # %.preheader30.preheader
-	ld.d	$a0, $sp, 72
-	bne	$a0, $fp, .LBB1_15
+	ld.d	$a0, $sp, 56
+	bne	$a0, $fp, .LBB1_24
 # %bb.6:                                # %.preheader30.preheader
+	ld.d	$a0, $sp, 64
+	bne	$a0, $fp, .LBB1_24
+# %bb.7:                                # %.preheader30.preheader
+	ld.d	$a0, $sp, 72
+	bne	$a0, $fp, .LBB1_24
+# %bb.8:                                # %.preheader30.preheader
 	ld.d	$a0, $sp, 80
 	xor	$a0, $a0, $s1
 	sltui	$a0, $a0, 1
-	beqz	$a0, .LBB1_15
-# %bb.7:                                # %.preheader30.preheader
+	beqz	$a0, .LBB1_24
+# %bb.9:                                # %.preheader30.preheader
 	ld.d	$a0, $sp, 88
 	xor	$a0, $a0, $s1
 	sltui	$a0, $a0, 1
-	beqz	$a0, .LBB1_15
-# %bb.8:                                # %.preheader30.preheader
+	beqz	$a0, .LBB1_24
+# %bb.10:                               # %.preheader30.preheader
+	ld.d	$a0, $sp, 96
+	bne	$a0, $fp, .LBB1_24
+# %bb.11:                               # %.preheader30.preheader
+	ld.d	$a0, $sp, 104
+	bne	$a0, $fp, .LBB1_24
+# %bb.12:                               # %.preheader30.preheader
+	ld.d	$a0, $sp, 112
+	bne	$a0, $fp, .LBB1_24
+# %bb.13:                               # %.preheader30.preheader
+	ld.d	$a0, $sp, 120
+	bne	$a0, $fp, .LBB1_24
+# %bb.14:                               # %.preheader30.preheader
 	ld.d	$a0, $sp, 128
-	bne	$a0, $fp, .LBB1_15
-# %bb.9:                                # %.preheader29.preheader
+	bne	$a0, $fp, .LBB1_24
+# %bb.15:                               # %.preheader29.preheader
 	addi.d	$a0, $sp, 136
 	st.d	$a0, $sp, 24
 	st.d	$a0, $sp, 40
@@ -322,55 +320,64 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(inet_check_attr)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $zero, -22
-	bne	$a0, $a1, .LBB1_15
-# %bb.10:                               # %.preheader
+	bne	$a0, $a1, .LBB1_24
+# %bb.16:                               # %.preheader
 	ld.d	$a1, $sp, 32
 	ld.d	$a0, $sp, 24
-	bnez	$a1, .LBB1_15
-# %bb.11:                               # %.preheader.split.us.preheader
-	xvld	$xr0, $sp, 40
-	xvreplgr2vr.d	$xr1, $fp
-	xvseq.d	$xr0, $xr0, $xr1
-	xvxori.b	$xr0, $xr0, 255
-	xvmskltz.d	$xr0, $xr0
-	xvpickve2gr.wu	$a1, $xr0, 0
-	xvpickve2gr.wu	$a2, $xr0, 4
-	bstrins.d	$a1, $a2, 3, 2
-	bnez	$a1, .LBB1_15
-# %bb.12:                               # %.preheader.split.us.preheader
-	bne	$a0, $fp, .LBB1_15
-# %bb.13:                               # %.thread.us.5
-	xvld	$xr0, $sp, 72
-	xvld	$xr1, $sp, 104
+	bnez	$a1, .LBB1_24
+# %bb.17:                               # %.preheader.split.us.preheader
+	bne	$a0, $fp, .LBB1_24
+# %bb.18:                               # %.preheader.split.us.preheader
+	ld.d	$a0, $sp, 40
+	bne	$a0, $fp, .LBB1_24
+# %bb.19:                               # %.preheader.split.us.preheader
+	ld.d	$a0, $sp, 48
+	bne	$a0, $fp, .LBB1_24
+# %bb.20:                               # %.preheader.split.us.preheader
+	ld.d	$a0, $sp, 56
+	bne	$a0, $fp, .LBB1_24
+# %bb.21:                               # %.preheader.split.us.preheader
+	ld.d	$a0, $sp, 64
+	bne	$a0, $fp, .LBB1_24
+# %bb.22:                               # %.thread.us.5
+	vld	$vr0, $sp, 72
+	vld	$vr1, $sp, 88
+	vld	$vr2, $sp, 104
+	vld	$vr3, $sp, 120
 	addi.d	$a0, $sp, 136
-	xvreplgr2vr.d	$xr2, $a0
-	xvseq.d	$xr0, $xr0, $xr2
-	xvxori.b	$xr0, $xr0, 255
-	xvpickve2gr.d	$a0, $xr0, 0
-	xvpickve2gr.d	$a1, $xr0, 1
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 1
-	sub.d	$a0, $a1, $a0
-	xvpickve2gr.d	$a1, $xr0, 2
-	bstrins.d	$a0, $a1, 2, 2
-	xvpickve2gr.d	$a1, $xr0, 3
-	bstrins.d	$a0, $a1, 3, 3
-	xvseq.d	$xr0, $xr1, $xr2
-	xvxori.b	$xr0, $xr0, 255
-	xvpickve2gr.d	$a1, $xr0, 0
-	bstrins.d	$a0, $a1, 4, 4
-	xvpickve2gr.d	$a1, $xr0, 1
-	bstrins.d	$a0, $a1, 5, 5
-	xvpickve2gr.d	$a1, $xr0, 2
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 6
-	or	$a0, $a0, $a1
-	xvpickve2gr.d	$a1, $xr0, 3
+	vreplgr2vr.d	$vr4, $a0
+	vseq.d	$vr0, $vr0, $vr4
+	vxori.b	$vr0, $vr0, 255
+	vseq.d	$vr1, $vr1, $vr4
+	vxori.b	$vr1, $vr1, 255
+	vpickev.w	$vr1, $vr1, $vr0
+	vpickve2gr.h	$a0, $vr1, 2
+	andi	$a0, $a0, 1
+	vpickve2gr.h	$a1, $vr0, 0
+	bstrins.d	$a1, $a0, 63, 1
+	vpickve2gr.h	$a0, $vr1, 4
+	bstrins.d	$a1, $a0, 2, 2
+	vpickve2gr.h	$a0, $vr1, 6
+	bstrins.d	$a1, $a0, 3, 3
+	vseq.d	$vr0, $vr2, $vr4
+	vxori.b	$vr0, $vr0, 255
+	vseq.d	$vr1, $vr3, $vr4
+	vxori.b	$vr1, $vr1, 255
+	vpickev.w	$vr0, $vr1, $vr0
+	vpickve2gr.h	$a0, $vr0, 0
+	bstrins.d	$a1, $a0, 4, 4
+	vpickve2gr.h	$a0, $vr0, 2
+	bstrins.d	$a1, $a0, 5, 5
+	vpickve2gr.h	$a0, $vr0, 4
+	andi	$a0, $a0, 1
+	slli.d	$a0, $a0, 6
+	or	$a0, $a1, $a0
+	vpickve2gr.h	$a1, $vr0, 6
 	slli.d	$a1, $a1, 7
 	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255
-	bnez	$a0, .LBB1_15
-# %bb.14:                               # %.split38.us
+	bnez	$a0, .LBB1_24
+# %bb.23:                               # %.split38.us
 	move	$a0, $zero
 	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
@@ -378,7 +385,7 @@ main:                                   # @main
 	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 176
 	ret
-.LBB1_15:
+.LBB1_24:
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end1:

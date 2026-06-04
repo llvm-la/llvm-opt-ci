@@ -18,8 +18,9 @@ inflate_table:                          # @inflate_table
 	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 72
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 72
+	vst	$vr0, $sp, 88
 	beqz	$a2, .LBB0_6
 # %bb.1:                                # %.lr.ph.preheader
 	bstrpick.d	$a6, $a2, 31, 0

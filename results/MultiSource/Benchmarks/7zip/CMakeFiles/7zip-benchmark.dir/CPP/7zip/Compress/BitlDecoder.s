@@ -1,6 +1,6 @@
 	.file	"BitlDecoder.cpp"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _GLOBAL__sub_I_BitlDecoder.cpp
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _GLOBAL__sub_I_BitlDecoder.cpp
 .LCPI0_0:
 	.byte	0                               # 0x0
 	.byte	128                             # 0x80
@@ -18,6 +18,7 @@
 	.byte	176                             # 0xb0
 	.byte	112                             # 0x70
 	.byte	240                             # 0xf0
+.LCPI0_1:
 	.byte	8                               # 0x8
 	.byte	136                             # 0x88
 	.byte	72                              # 0x48
@@ -34,7 +35,7 @@
 	.byte	184                             # 0xb8
 	.byte	120                             # 0x78
 	.byte	248                             # 0xf8
-.LCPI0_1:
+.LCPI0_2:
 	.byte	4                               # 0x4
 	.byte	132                             # 0x84
 	.byte	68                              # 0x44
@@ -51,6 +52,7 @@
 	.byte	180                             # 0xb4
 	.byte	116                             # 0x74
 	.byte	244                             # 0xf4
+.LCPI0_3:
 	.byte	12                              # 0xc
 	.byte	140                             # 0x8c
 	.byte	76                              # 0x4c
@@ -67,7 +69,7 @@
 	.byte	188                             # 0xbc
 	.byte	124                             # 0x7c
 	.byte	252                             # 0xfc
-.LCPI0_2:
+.LCPI0_4:
 	.byte	2                               # 0x2
 	.byte	130                             # 0x82
 	.byte	66                              # 0x42
@@ -84,6 +86,7 @@
 	.byte	178                             # 0xb2
 	.byte	114                             # 0x72
 	.byte	242                             # 0xf2
+.LCPI0_5:
 	.byte	10                              # 0xa
 	.byte	138                             # 0x8a
 	.byte	74                              # 0x4a
@@ -100,7 +103,7 @@
 	.byte	186                             # 0xba
 	.byte	122                             # 0x7a
 	.byte	250                             # 0xfa
-.LCPI0_3:
+.LCPI0_6:
 	.byte	6                               # 0x6
 	.byte	134                             # 0x86
 	.byte	70                              # 0x46
@@ -117,6 +120,7 @@
 	.byte	182                             # 0xb6
 	.byte	118                             # 0x76
 	.byte	246                             # 0xf6
+.LCPI0_7:
 	.byte	14                              # 0xe
 	.byte	142                             # 0x8e
 	.byte	78                              # 0x4e
@@ -133,7 +137,7 @@
 	.byte	190                             # 0xbe
 	.byte	126                             # 0x7e
 	.byte	254                             # 0xfe
-.LCPI0_4:
+.LCPI0_8:
 	.byte	1                               # 0x1
 	.byte	129                             # 0x81
 	.byte	65                              # 0x41
@@ -150,6 +154,7 @@
 	.byte	177                             # 0xb1
 	.byte	113                             # 0x71
 	.byte	241                             # 0xf1
+.LCPI0_9:
 	.byte	9                               # 0x9
 	.byte	137                             # 0x89
 	.byte	73                              # 0x49
@@ -166,7 +171,7 @@
 	.byte	185                             # 0xb9
 	.byte	121                             # 0x79
 	.byte	249                             # 0xf9
-.LCPI0_5:
+.LCPI0_10:
 	.byte	5                               # 0x5
 	.byte	133                             # 0x85
 	.byte	69                              # 0x45
@@ -183,6 +188,7 @@
 	.byte	181                             # 0xb5
 	.byte	117                             # 0x75
 	.byte	245                             # 0xf5
+.LCPI0_11:
 	.byte	13                              # 0xd
 	.byte	141                             # 0x8d
 	.byte	77                              # 0x4d
@@ -199,7 +205,7 @@
 	.byte	189                             # 0xbd
 	.byte	125                             # 0x7d
 	.byte	253                             # 0xfd
-.LCPI0_6:
+.LCPI0_12:
 	.byte	3                               # 0x3
 	.byte	131                             # 0x83
 	.byte	67                              # 0x43
@@ -216,6 +222,7 @@
 	.byte	179                             # 0xb3
 	.byte	115                             # 0x73
 	.byte	243                             # 0xf3
+.LCPI0_13:
 	.byte	11                              # 0xb
 	.byte	139                             # 0x8b
 	.byte	75                              # 0x4b
@@ -232,7 +239,7 @@
 	.byte	187                             # 0xbb
 	.byte	123                             # 0x7b
 	.byte	251                             # 0xfb
-.LCPI0_7:
+.LCPI0_14:
 	.byte	7                               # 0x7
 	.byte	135                             # 0x87
 	.byte	71                              # 0x47
@@ -249,6 +256,7 @@
 	.byte	183                             # 0xb7
 	.byte	119                             # 0x77
 	.byte	247                             # 0xf7
+.LCPI0_15:
 	.byte	15                              # 0xf
 	.byte	143                             # 0x8f
 	.byte	79                              # 0x4f
@@ -272,31 +280,55 @@
 _GLOBAL__sub_I_BitlDecoder.cpp:         # @_GLOBAL__sub_I_BitlDecoder.cpp
 # %bb.0:                                # %vector.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a0, %pc_hi20(_ZN5NBitl12kInvertTableE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN5NBitl12kInvertTableE)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI0_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI0_1)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_2)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI0_2)
+	vld	$vr2, $a1, %pc_lo12(.LCPI0_2)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_3)
-	xvld	$xr3, $a1, %pc_lo12(.LCPI0_3)
-	xvst	$xr0, $a0, 0
-	xvst	$xr1, $a0, 32
-	xvst	$xr2, $a0, 64
-	xvst	$xr3, $a0, 96
+	vld	$vr3, $a1, %pc_lo12(.LCPI0_3)
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
+	vst	$vr2, $a0, 32
+	vst	$vr3, $a0, 48
 	pcalau12i	$a1, %pc_hi20(.LCPI0_4)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_4)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_4)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_5)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI0_5)
+	vld	$vr1, $a1, %pc_lo12(.LCPI0_5)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_6)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI0_6)
+	vld	$vr2, $a1, %pc_lo12(.LCPI0_6)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_7)
-	xvld	$xr3, $a1, %pc_lo12(.LCPI0_7)
-	xvst	$xr0, $a0, 128
-	xvst	$xr1, $a0, 160
-	xvst	$xr2, $a0, 192
-	xvst	$xr3, $a0, 224
+	vld	$vr3, $a1, %pc_lo12(.LCPI0_7)
+	vst	$vr0, $a0, 64
+	vst	$vr1, $a0, 80
+	vst	$vr2, $a0, 96
+	vst	$vr3, $a0, 112
+	pcalau12i	$a1, %pc_hi20(.LCPI0_8)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_8)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_9)
+	vld	$vr1, $a1, %pc_lo12(.LCPI0_9)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_10)
+	vld	$vr2, $a1, %pc_lo12(.LCPI0_10)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_11)
+	vld	$vr3, $a1, %pc_lo12(.LCPI0_11)
+	vst	$vr0, $a0, 128
+	vst	$vr1, $a0, 144
+	vst	$vr2, $a0, 160
+	vst	$vr3, $a0, 176
+	pcalau12i	$a1, %pc_hi20(.LCPI0_12)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_12)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_13)
+	vld	$vr1, $a1, %pc_lo12(.LCPI0_13)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_14)
+	vld	$vr2, $a1, %pc_lo12(.LCPI0_14)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_15)
+	vld	$vr3, $a1, %pc_lo12(.LCPI0_15)
+	vst	$vr0, $a0, 192
+	vst	$vr1, $a0, 208
+	vst	$vr2, $a0, 224
+	vst	$vr3, $a0, 240
 	ret
 .Lfunc_end0:
 	.size	_GLOBAL__sub_I_BitlDecoder.cpp, .Lfunc_end0-_GLOBAL__sub_I_BitlDecoder.cpp
@@ -304,7 +336,7 @@ _GLOBAL__sub_I_BitlDecoder.cpp:         # @_GLOBAL__sub_I_BitlDecoder.cpp
 	.type	_ZN5NBitl12kInvertTableE,@object # @_ZN5NBitl12kInvertTableE
 	.bss
 	.globl	_ZN5NBitl12kInvertTableE
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 _ZN5NBitl12kInvertTableE:
 	.space	256
 	.size	_ZN5NBitl12kInvertTableE, 256

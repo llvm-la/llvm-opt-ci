@@ -189,20 +189,19 @@ jpeg_read_header:                       # @jpeg_read_header
 .Lfunc_end4:
 	.size	jpeg_read_header, .Lfunc_end4-jpeg_read_header
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function jpeg_consume_input
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function jpeg_consume_input
 .LCPI5_0:
 	.word	0                               # 0x0
 	.word	0                               # 0x0
 	.word	0                               # 0x0
 	.word	1                               # 0x1
+.LCPI5_1:
 	.word	1                               # 0x1
 	.word	0                               # 0x0
 	.word	2                               # 0x2
 	.word	1                               # 0x1
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI5_1:
+.LCPI5_2:
 	.word	256                             # 0x100
 	.word	0                               # 0x0
 	.word	0                               # 0x0
@@ -219,23 +218,21 @@ jpeg_consume_input:                     # @jpeg_consume_input
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
-	move	$fp, $a0
-	ld.w	$a1, $a0, 28
-	addi.d	$a2, $a1, -200
-	ori	$a0, $zero, 10
-	bltu	$a0, $a2, .LBB5_13
+	ld.w	$a2, $a0, 28
+	addi.d	$a3, $a2, -200
+	ori	$a1, $zero, 10
+	bltu	$a1, $a3, .LBB5_13
 # %bb.1:
-	ori	$a0, $zero, 1
-	slli.d	$a2, $a2, 2
-	pcalau12i	$a3, %pc_hi20(.LJTI5_0)
-	addi.d	$a3, $a3, %pc_lo12(.LJTI5_0)
-	ldx.w	$a2, $a3, $a2
-	add.d	$a2, $a3, $a2
-	jr	$a2
+	ori	$a1, $zero, 1
+	slli.d	$a3, $a3, 2
+	pcalau12i	$a4, %pc_hi20(.LJTI5_0)
+	addi.d	$a4, $a4, %pc_lo12(.LJTI5_0)
+	ldx.w	$a3, $a4, $a3
+	add.d	$a3, $a4, $a3
+	jr	$a3
 .LBB5_2:
-	ld.d	$a0, $fp, 560
-	ld.d	$a1, $a0, 0
-	move	$a0, $fp
+	ld.d	$a1, $a0, 560
+	ld.d	$a1, $a1, 0
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -243,51 +240,53 @@ jpeg_consume_input:                     # @jpeg_consume_input
 	addi.d	$sp, $sp, 32
 	jr	$a1
 .LBB5_3:
-	ld.d	$a0, $fp, 560
-	ld.d	$a1, $a0, 8
-	move	$a0, $fp
+	ld.d	$a1, $a0, 560
+	ld.d	$a1, $a1, 8
+	move	$fp, $a0
 	jirl	$ra, $a1, 0
 	ld.d	$a0, $fp, 32
 	ld.d	$a1, $a0, 16
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	ori	$a0, $zero, 201
-	st.w	$a0, $fp, 28
-.LBB5_4:
-	ld.d	$a0, $fp, 560
-	ld.d	$a1, $a0, 0
 	move	$a0, $fp
+	ori	$a1, $zero, 201
+	st.w	$a1, $fp, 28
+.LBB5_4:
+	ld.d	$a1, $a0, 560
+	ld.d	$a1, $a1, 0
+	move	$fp, $a0
 	jirl	$ra, $a1, 0
 	ori	$a2, $zero, 1
+	move	$a1, $a0
 	bne	$a0, $a2, .LBB5_32
 # %bb.5:
-	move	$a1, $fp
-	ld.w	$a0, $fp, 48
-	beq	$a0, $a2, .LBB5_18
+	move	$a0, $fp
+	ld.w	$a1, $fp, 48
+	beq	$a1, $a2, .LBB5_18
 # %bb.6:
 	ori	$s0, $zero, 4
-	beq	$a0, $s0, .LBB5_14
+	beq	$a1, $s0, .LBB5_14
 # %bb.7:
 	ori	$s1, $zero, 3
-	bne	$a0, $s1, .LBB5_19
+	bne	$a1, $s1, .LBB5_19
 # %bb.8:
-	ld.w	$a0, $a1, 364
+	ld.w	$a1, $a0, 364
 	ori	$s0, $zero, 2
-	bnez	$a0, .LBB5_31
+	bnez	$a1, .LBB5_31
 # %bb.9:
-	ld.w	$a0, $a1, 376
-	beqz	$a0, .LBB5_22
+	ld.w	$a1, $a0, 376
+	beqz	$a1, .LBB5_22
 # %bb.10:
-	ld.bu	$a0, $a1, 380
+	ld.bu	$a1, $a0, 380
 	ori	$s0, $zero, 2
-	beqz	$a0, .LBB5_28
+	beqz	$a1, .LBB5_28
 # %bb.11:
 	ori	$a2, $zero, 1
-	beq	$a0, $a2, .LBB5_31
+	beq	$a1, $a2, .LBB5_31
 # %bb.12:
-	ld.d	$a2, $a1, 0
-	st.w	$a0, $a2, 44
-	ld.d	$a0, $a1, 0
+	ld.d	$a2, $a0, 0
+	st.w	$a1, $a2, 44
+	ld.d	$a0, $a0, 0
 	ld.d	$a3, $a0, 8
 	ori	$a0, $zero, 110
 	st.w	$a0, $a2, 40
@@ -296,31 +295,30 @@ jpeg_consume_input:                     # @jpeg_consume_input
 	jirl	$ra, $a3, 0
 	b	.LBB5_30
 .LBB5_13:
-	ld.d	$a0, $fp, 0
-	st.w	$a1, $a0, 44
-	ld.d	$a1, $fp, 0
-	ld.d	$a1, $a1, 0
-	ori	$a2, $zero, 18
-	st.w	$a2, $a0, 40
-	move	$a0, $fp
-	jirl	$ra, $a1, 0
-	move	$a0, $zero
+	ld.d	$a1, $a0, 0
+	st.w	$a2, $a1, 44
+	ld.d	$a2, $a0, 0
+	ld.d	$a2, $a2, 0
+	ori	$a3, $zero, 18
+	st.w	$a3, $a1, 40
+	jirl	$ra, $a2, 0
+	move	$a1, $zero
 	b	.LBB5_32
 .LBB5_14:
-	ld.w	$a0, $a1, 376
-	beqz	$a0, .LBB5_20
+	ld.w	$a1, $a0, 376
+	beqz	$a1, .LBB5_20
 # %bb.15:
-	ld.bu	$a0, $a1, 380
-	beqz	$a0, .LBB5_20
+	ld.bu	$a1, $a0, 380
+	beqz	$a1, .LBB5_20
 # %bb.16:
 	ori	$a2, $zero, 2
-	bne	$a0, $a2, .LBB5_21
+	bne	$a1, $a2, .LBB5_21
 # %bb.17:
 	ori	$s1, $zero, 5
 	b	.LBB5_31
 .LBB5_18:
-	move	$s1, $a0
-	move	$s0, $a0
+	move	$s1, $a1
+	move	$s0, $a1
 	b	.LBB5_31
 .LBB5_19:
 	move	$s1, $zero
@@ -330,23 +328,23 @@ jpeg_consume_input:                     # @jpeg_consume_input
 	ori	$s1, $zero, 4
 	b	.LBB5_31
 .LBB5_21:
-	ld.d	$a2, $a1, 0
-	st.w	$a0, $a2, 44
-	ld.d	$a0, $a1, 0
+	ld.d	$a2, $a0, 0
+	st.w	$a1, $a2, 44
+	ld.d	$a0, $a0, 0
 	ld.d	$a3, $a0, 8
 	ori	$a0, $zero, 110
 	st.w	$a0, $a2, 40
 	addi.w	$a1, $zero, -1
 	move	$a0, $fp
 	jirl	$ra, $a3, 0
-	move	$a1, $fp
+	move	$a0, $fp
 	ori	$s1, $zero, 5
 	b	.LBB5_31
 .LBB5_22:
-	ld.d	$a0, $a1, 296
-	ld.w	$a2, $a0, 0
-	ld.w	$a3, $a0, 96
-	ld.w	$a0, $a0, 192
+	ld.d	$a1, $a0, 296
+	ld.w	$a2, $a1, 0
+	ld.w	$a3, $a1, 96
+	ld.w	$a1, $a1, 192
 	ori	$a4, $zero, 1
 	bne	$a2, $a4, .LBB5_25
 # %bb.23:
@@ -354,7 +352,7 @@ jpeg_consume_input:                     # @jpeg_consume_input
 	bne	$a3, $a4, .LBB5_25
 # %bb.24:
 	ori	$a4, $zero, 3
-	beq	$a0, $a4, .LBB5_31
+	beq	$a1, $a4, .LBB5_31
 .LBB5_25:
 	ori	$a4, $zero, 82
 	ori	$s0, $zero, 2
@@ -364,42 +362,46 @@ jpeg_consume_input:                     # @jpeg_consume_input
 	bne	$a3, $a4, .LBB5_29
 # %bb.27:
 	ori	$a4, $zero, 66
-	bne	$a0, $a4, .LBB5_29
+	bne	$a1, $a4, .LBB5_29
 .LBB5_28:
 	ori	$s1, $zero, 2
 	b	.LBB5_31
 .LBB5_29:
-	ld.d	$a1, $a1, 0
-	st.w	$a2, $a1, 44
-	st.w	$a3, $a1, 48
-	ld.d	$a2, $a1, 8
-	st.w	$a0, $a1, 52
-	ori	$a0, $zero, 107
-	st.w	$a0, $a1, 40
+	ld.d	$a0, $a0, 0
+	st.w	$a2, $a0, 44
+	st.w	$a3, $a0, 48
+	ld.d	$a2, $a0, 8
+	st.w	$a1, $a0, 52
+	ori	$a1, $zero, 107
+	st.w	$a1, $a0, 40
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 .LBB5_30:                               # %default_decompress_parms.exit
-	move	$a1, $fp
+	move	$a0, $fp
 .LBB5_31:                               # %default_decompress_parms.exit
-	st.w	$s1, $a1, 52
-	st.w	$s0, $a1, 56
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(.LCPI5_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI5_0)
-	ori	$a2, $zero, 1
-	lu32i.d	$a2, 1
-	st.d	$a2, $a1, 60
-	xvst	$xr0, $a1, 80
+	pcalau12i	$a1, %pc_hi20(.LCPI5_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI5_0)
+	st.w	$s1, $a0, 52
+	st.w	$s0, $a0, 56
+	ori	$a1, $zero, 1
+	vst	$vr0, $a0, 80
 	pcalau12i	$a2, %pc_hi20(.LCPI5_1)
 	vld	$vr0, $a2, %pc_lo12(.LCPI5_1)
+	ori	$a2, $zero, 1
+	lu32i.d	$a2, 1
+	st.d	$a2, $a0, 60
+	vst	$vr0, $a0, 96
+	pcalau12i	$a2, %pc_hi20(.LCPI5_2)
+	vld	$vr0, $a2, %pc_lo12(.LCPI5_2)
 	lu52i.d	$a2, $zero, 1023
-	st.d	$a2, $a1, 72
-	st.d	$zero, $a1, 152
-	vst	$vr0, $a1, 112
+	st.d	$a2, $a0, 72
+	st.d	$zero, $a0, 152
+	vst	$vr0, $a0, 112
 	ori	$a2, $zero, 202
-	st.w	$a2, $a1, 28
+	st.w	$a2, $a0, 28
 .LBB5_32:
+	move	$a0, $a1
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload

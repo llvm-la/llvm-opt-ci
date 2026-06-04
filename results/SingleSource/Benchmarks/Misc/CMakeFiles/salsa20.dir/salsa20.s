@@ -226,22 +226,19 @@ salsa:                                  # @salsa
 .Lfunc_end1:
 	.size	salsa, .Lfunc_end1-salsa
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI2_0:
 	.word	856036637                       # 0x3306151d
 	.word	856036637                       # 0x3306151d
 	.word	856036633                       # 0x33061519
 	.word	856036633                       # 0x33061519
-	.word	856036637                       # 0x3306151d
-	.word	856036637                       # 0x3306151d
-	.word	856036625                       # 0x33061511
-	.word	856036625                       # 0x33061511
 .LCPI2_1:
 	.word	856036637                       # 0x3306151d
 	.word	856036637                       # 0x3306151d
-	.word	856036633                       # 0x33061519
-	.word	856036633                       # 0x33061519
+	.word	856036625                       # 0x33061511
+	.word	856036625                       # 0x33061511
+.LCPI2_2:
 	.word	856036637                       # 0x3306151d
 	.word	856036637                       # 0x3306151d
 	.word	856036065                       # 0x330612e1
@@ -262,13 +259,17 @@ main:                                   # @main
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_0)
 	pcalau12i	$a0, %pc_hi20(STATE)
 	addi.d	$fp, $a0, %pc_lo12(STATE)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI2_1)
-	xvst	$xr0, $fp, 0
-	xvst	$xr1, $fp, 32
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_2)
+	vst	$vr0, $fp, 0
+	vst	$vr1, $fp, 16
+	vst	$vr0, $fp, 32
+	vst	$vr2, $fp, 48
 	pcalau12i	$s1, %pc_hi20(ptr)
 	ld.w	$a0, $s1, %pc_lo12(ptr)
 	lu12i.w	$s4, 131328
@@ -354,7 +355,7 @@ outbuf:
 
 	.type	STATE,@object                   # @STATE
 	.globl	STATE
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 STATE:
 	.space	64
 	.size	STATE, 64

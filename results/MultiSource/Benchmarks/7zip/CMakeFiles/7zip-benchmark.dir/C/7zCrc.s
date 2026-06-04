@@ -35,17 +35,13 @@ CrcCalc:                                # @CrcCalc
 .Lfunc_end1:
 	.size	CrcCalc, .Lfunc_end1-CrcCalc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function CrcGenerateTable
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function CrcGenerateTable
 .LCPI2_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 	.text
 	.globl	CrcGenerateTable
 	.p2align	2
@@ -54,19 +50,19 @@ CrcCalc:                                # @CrcCalc
 CrcGenerateTable:                       # @CrcGenerateTable
 # %bb.0:                                # %vector.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_0)
-	xvrepli.w	$xr1, 1
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_0)
+	vrepli.w	$vr1, 1
 	lu12i.w	$a0, -74872
 	ori	$a0, $a0, 800
-	xvreplgr2vr.w	$xr2, $a0
-	xvrepli.w	$xr3, 2
-	xvrepli.w	$xr4, 4
+	vreplgr2vr.w	$vr2, $a0
+	vrepli.w	$vr3, 2
+	vrepli.w	$vr4, 4
 	lu12i.w	$a0, 486852
 	ori	$a0, $a0, 400
-	xvreplgr2vr.w	$xr5, $a0
-	xvrepli.w	$xr6, 8
-	xvrepli.w	$xr7, 16
-	xvrepli.w	$xr8, 32
+	vreplgr2vr.w	$vr5, $a0
+	vrepli.w	$vr6, 8
+	vrepli.w	$vr7, 16
+	vrepli.w	$vr8, 32
 	pcalau12i	$a0, %pc_hi20(g_CrcTable)
 	addi.d	$a0, $a0, %pc_lo12(g_CrcTable)
 	move	$a1, $zero
@@ -74,46 +70,46 @@ CrcGenerateTable:                       # @CrcGenerateTable
 	.p2align	4, , 16
 .LBB2_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvsrli.w	$xr9, $xr0, 1
-	xvand.v	$xr10, $xr0, $xr1
-	xvseqi.w	$xr10, $xr10, 0
-	xvandn.v	$xr10, $xr10, $xr2
-	xvxor.v	$xr9, $xr10, $xr9
-	xvsrli.w	$xr10, $xr9, 1
-	xvand.v	$xr11, $xr0, $xr3
-	xvseqi.w	$xr11, $xr11, 0
-	xvandn.v	$xr11, $xr11, $xr2
-	xvxor.v	$xr10, $xr11, $xr10
-	xvand.v	$xr11, $xr0, $xr4
-	xvseqi.w	$xr11, $xr11, 0
-	xvandn.v	$xr11, $xr11, $xr5
-	xvsrli.w	$xr12, $xr10, 2
-	xvxor.v	$xr11, $xr12, $xr11
-	xvand.v	$xr12, $xr0, $xr6
-	xvseqi.w	$xr12, $xr12, 0
-	xvandn.v	$xr12, $xr12, $xr2
-	xvxor.v	$xr11, $xr12, $xr11
-	xvand.v	$xr12, $xr0, $xr7
-	xvseqi.w	$xr12, $xr12, 0
-	xvandn.v	$xr12, $xr12, $xr5
-	xvsrli.w	$xr11, $xr11, 2
-	xvxor.v	$xr11, $xr11, $xr12
-	xvand.v	$xr12, $xr0, $xr8
-	xvseqi.w	$xr12, $xr12, 0
-	xvandn.v	$xr12, $xr12, $xr2
-	xvxor.v	$xr11, $xr12, $xr11
-	xvand.v	$xr9, $xr9, $xr8
-	xvseqi.w	$xr9, $xr9, 0
-	xvandn.v	$xr9, $xr9, $xr5
-	xvsrli.w	$xr11, $xr11, 2
-	xvxor.v	$xr9, $xr11, $xr9
-	xvand.v	$xr10, $xr10, $xr8
-	xvseqi.w	$xr10, $xr10, 0
-	xvandn.v	$xr10, $xr10, $xr2
-	xvxor.v	$xr9, $xr10, $xr9
-	xvstx	$xr9, $a0, $a1
-	addi.d	$a1, $a1, 32
-	xvaddi.wu	$xr0, $xr0, 8
+	vsrli.w	$vr9, $vr0, 1
+	vand.v	$vr10, $vr0, $vr1
+	vseqi.w	$vr10, $vr10, 0
+	vandn.v	$vr10, $vr10, $vr2
+	vxor.v	$vr9, $vr10, $vr9
+	vsrli.w	$vr10, $vr9, 1
+	vand.v	$vr11, $vr0, $vr3
+	vseqi.w	$vr11, $vr11, 0
+	vandn.v	$vr11, $vr11, $vr2
+	vxor.v	$vr10, $vr11, $vr10
+	vand.v	$vr11, $vr0, $vr4
+	vseqi.w	$vr11, $vr11, 0
+	vandn.v	$vr11, $vr11, $vr5
+	vsrli.w	$vr12, $vr10, 2
+	vxor.v	$vr11, $vr12, $vr11
+	vand.v	$vr12, $vr0, $vr6
+	vseqi.w	$vr12, $vr12, 0
+	vandn.v	$vr12, $vr12, $vr2
+	vxor.v	$vr11, $vr12, $vr11
+	vand.v	$vr12, $vr0, $vr7
+	vseqi.w	$vr12, $vr12, 0
+	vandn.v	$vr12, $vr12, $vr5
+	vsrli.w	$vr11, $vr11, 2
+	vxor.v	$vr11, $vr11, $vr12
+	vand.v	$vr12, $vr0, $vr8
+	vseqi.w	$vr12, $vr12, 0
+	vandn.v	$vr12, $vr12, $vr2
+	vxor.v	$vr11, $vr12, $vr11
+	vand.v	$vr9, $vr9, $vr8
+	vseqi.w	$vr9, $vr9, 0
+	vandn.v	$vr9, $vr9, $vr5
+	vsrli.w	$vr11, $vr11, 2
+	vxor.v	$vr9, $vr11, $vr9
+	vand.v	$vr10, $vr10, $vr8
+	vseqi.w	$vr10, $vr10, 0
+	vandn.v	$vr10, $vr10, $vr2
+	vxor.v	$vr9, $vr10, $vr9
+	vstx	$vr9, $a0, $a1
+	addi.d	$a1, $a1, 16
+	vaddi.wu	$vr0, $vr0, 4
 	bne	$a1, $a2, .LBB2_1
 # %bb.2:                                # %.lr.ph.preheader
 	lu12i.w	$a1, -2

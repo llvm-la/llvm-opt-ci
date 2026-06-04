@@ -246,10 +246,14 @@ _ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev: # 
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	move	$fp, $a0
-	xvld	$xr0, $a0, 16
-	xvld	$xr1, $a0, 48
-	xvst	$xr0, $sp, 48
-	xvst	$xr1, $sp, 16
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 32
+	vld	$vr2, $a0, 48
+	vld	$vr3, $a0, 64
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
+	vst	$vr2, $sp, 16
+	vst	$vr3, $sp, 32
 .Ltmp15:                                # EH_LABEL
 	addi.d	$a1, $sp, 48
 	addi.d	$a2, $sp, 16
@@ -348,10 +352,14 @@ _ZNSt5dequeIN2PP4WordESaIS1_EED2Ev:     # @_ZNSt5dequeIN2PP4WordESaIS1_EED2Ev
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	move	$fp, $a0
-	xvld	$xr0, $a0, 16
-	xvld	$xr1, $a0, 48
-	xvst	$xr0, $sp, 48
-	xvst	$xr1, $sp, 16
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 32
+	vld	$vr2, $a0, 48
+	vld	$vr3, $a0, 64
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
+	vst	$vr2, $sp, 16
+	vst	$vr3, $sp, 32
 .Ltmp18:                                # EH_LABEL
 	addi.d	$a1, $sp, 48
 	addi.d	$a2, $sp, 16
@@ -15170,18 +15178,18 @@ _ZNSt5dequeIN2PP4WordESaIS1_EE14_M_emplace_auxIJRKS1_EEESt15_Deque_iteratorIS1_R
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	move	$fp, $a2
+	move	$s0, $a2
 	move	$s1, $a1
-	move	$s0, $a0
+	move	$fp, $a0
 	addi.d	$a0, $sp, 136
 	move	$a1, $a3
 	pcaddu18i	$ra, %call36(_ZN2PP4WordC1ERKS0_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 24
+	ld.d	$a0, $s0, 24
 	ld.d	$a3, $s1, 40
 	sub.d	$a1, $a0, $a3
-	ld.d	$a2, $fp, 0
-	ld.d	$a4, $fp, 8
+	ld.d	$a2, $s0, 0
+	ld.d	$a4, $s0, 8
 	srai.d	$a1, $a1, 3
 	sltu	$a0, $zero, $a0
 	sub.d	$a0, $a1, $a0
@@ -15362,11 +15370,11 @@ _ZNSt5dequeIN2PP4WordESaIS1_EE14_M_emplace_auxIJRKS1_EEESt15_Deque_iteratorIS1_R
 	slli.d	$t3, $t3, 7
 	add.d	$t3, $a5, $t3
 .LBB30_31:                              # %_ZStplRKSt15_Deque_iteratorIN2PP4WordERS1_PS1_El.exit
-	st.d	$t3, $fp, 0
-	st.d	$a5, $fp, 8
-	st.d	$a6, $fp, 16
+	st.d	$t3, $s0, 0
+	st.d	$a5, $s0, 8
+	st.d	$a6, $s0, 16
 	addi.d	$t3, $t3, 128
-	st.d	$a4, $fp, 24
+	st.d	$a4, $s0, 24
 	bne	$t3, $a6, .LBB30_33
 # %bb.32:
 	ld.d	$t3, $a4, 8
@@ -15407,10 +15415,10 @@ _ZNSt5dequeIN2PP4WordESaIS1_EE14_M_emplace_auxIJRKS1_EEESt15_Deque_iteratorIS1_R
 	slli.d	$t3, $t3, 7
 	add.d	$t3, $t1, $t3
 .LBB30_36:                              # %_ZStplRKSt15_Deque_iteratorIN2PP4WordERS1_PS1_El.exit18
-	st.d	$t3, $fp, 0
-	st.d	$t1, $fp, 8
-	st.d	$t2, $fp, 16
-	st.d	$t0, $fp, 24
+	st.d	$t3, $s0, 0
+	st.d	$t1, $s0, 8
+	st.d	$t2, $s0, 16
+	st.d	$t0, $s0, 24
 	st.d	$t3, $sp, 360
 	st.d	$t1, $sp, 368
 	st.d	$t2, $sp, 376
@@ -15432,7 +15440,7 @@ _ZNSt5dequeIN2PP4WordESaIS1_EE14_M_emplace_auxIJRKS1_EEESt15_Deque_iteratorIS1_R
 	jirl	$ra, $ra, 0
 .Ltmp855:                               # EH_LABEL
 .LBB30_37:
-	ld.d	$a1, $fp, 0
+	ld.d	$a1, $s0, 0
 .Ltmp864:                               # EH_LABEL
 	addi.d	$a0, $sp, 8
 	addi.d	$a2, $sp, 136
@@ -15443,8 +15451,10 @@ _ZNSt5dequeIN2PP4WordESaIS1_EE14_M_emplace_auxIJRKS1_EEESt15_Deque_iteratorIS1_R
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(_ZN2PP4WordD1Ev)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $fp, 0
-	xvst	$xr0, $s0, 0
+	vld	$vr0, $s0, 0
+	vld	$vr1, $s0, 16
+	vst	$vr0, $fp, 0
+	vst	$vr1, $fp, 16
 	addi.d	$a0, $sp, 136
 	pcaddu18i	$ra, %call36(_ZN2PP4WordD1Ev)
 	jirl	$ra, $ra, 0

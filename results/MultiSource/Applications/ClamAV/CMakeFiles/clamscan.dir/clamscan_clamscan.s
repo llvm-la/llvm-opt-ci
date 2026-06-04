@@ -321,8 +321,9 @@ main:                                   # @main
 .LBB0_44:
 	pcalau12i	$a0, %pc_hi20(info)
 	addi.d	$s1, $a0, %pc_lo12(info)
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $s1, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $s1, 16
+	vst	$vr0, $s1, 0
 	addi.d	$a0, $sp, 32
 	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(gettimeofday)

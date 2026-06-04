@@ -6,18 +6,18 @@
 	.type	loadbins,@function
 loadbins:                               # @loadbins
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	pcalau12i	$a1, %got_pc_hi20(numBinsX)
 	ld.d	$t4, $a1, %got_pc_lo12(numBinsX)
 	ld.w	$a7, $t4, 0
@@ -116,7 +116,7 @@ loadbins:                               # @loadbins
 	masknez	$a2, $s6, $a1
 	maskeqz	$a1, $t3, $a1
 	or	$s0, $a1, $a2
-	st.d	$t4, $sp, 128                   # 8-byte Folded Spill
+	st.d	$t4, $sp, 96                    # 8-byte Folded Spill
 	beqz	$a0, .LBB0_15
 # %bb.14:
 	ori	$a0, $zero, 224
@@ -169,11 +169,10 @@ loadbins:                               # @loadbins
 	st.d	$zero, $a0, 88
 	st.d	$zero, $fp, 160
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	vst	$vr0, $fp, 168
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 80                   # 32-byte Folded Spill
-	xvst	$xr0, $fp, 184
+	vst	$vr0, $fp, 184
+	vst	$vr0, $fp, 200
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	sub.d	$s7, $zero, $s2
 	st.w	$s7, $s0, 56
@@ -220,10 +219,10 @@ loadbins:                               # @loadbins
 	st.d	$zero, $a0, 0
 	st.d	$zero, $a0, 88
 	st.d	$zero, $fp, 160
-	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
 	vst	$vr0, $fp, 168
-	xvld	$xr0, $sp, 80                   # 32-byte Folded Reload
-	xvst	$xr0, $fp, 184
+	vst	$vr0, $fp, 184
+	vst	$vr0, $fp, 200
 	st.w	$s7, $s0, 56
 	st.w	$s7, $a0, 56
 	st.w	$s2, $s0, 60
@@ -267,10 +266,10 @@ loadbins:                               # @loadbins
 	st.d	$zero, $a0, 0
 	st.d	$zero, $a0, 88
 	st.d	$zero, $fp, 160
-	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
 	vst	$vr0, $fp, 168
-	xvld	$xr0, $sp, 80                   # 32-byte Folded Reload
-	xvst	$xr0, $fp, 184
+	vst	$vr0, $fp, 184
+	vst	$vr0, $fp, 200
 	st.w	$s7, $s0, 64
 	st.w	$s7, $a0, 64
 	st.w	$s2, $s0, 68
@@ -309,15 +308,15 @@ loadbins:                               # @loadbins
 	ori	$a0, $zero, 104
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ld.d	$t4, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$t4, $sp, 96                    # 8-byte Folded Reload
 	st.d	$a0, $fp, 0
 	st.d	$zero, $a0, 0
 	st.d	$zero, $a0, 88
 	st.d	$zero, $s0, 160
-	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
 	vst	$vr0, $s0, 168
-	xvld	$xr0, $sp, 80                   # 32-byte Folded Reload
-	xvst	$xr0, $s0, 184
+	vst	$vr0, $s0, 184
+	vst	$vr0, $s0, 200
 	b	.LBB0_16
 .LBB0_15:
 	pcalau12i	$a0, %got_pc_hi20(cellarray)
@@ -415,18 +414,18 @@ loadbins:                               # @loadbins
 	addi.w	$a3, $zero, -3
 	bge	$a2, $a3, .LBB0_18
 .LBB0_17:                               # %._crit_edge398
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB0_18:                               # %.lr.ph397.preheader
 	ori	$s7, $zero, 1
@@ -441,12 +440,12 @@ loadbins:                               # @loadbins
 	ld.d	$t5, $a3, %got_pc_lo12(bucket)
 	move	$s5, $zero
 	ori	$s6, $zero, 1
-	st.d	$a7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$t0, $sp, 80                    # 8-byte Folded Spill
-	st.d	$t1, $sp, 72                    # 8-byte Folded Spill
-	st.d	$t2, $sp, 64                    # 8-byte Folded Spill
-	st.d	$t3, $sp, 56                    # 8-byte Folded Spill
-	st.d	$t5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$t0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$t1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$t2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$t3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$t5, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB0_21
 	.p2align	4, , 16
 .LBB0_19:                               #   in Loop: Header=BB0_21 Depth=1
@@ -531,13 +530,13 @@ loadbins:                               # @loadbins
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(wireesty)
 	jirl	$ra, $ra, 0
-	ld.d	$t5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$t3, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$t2, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$t1, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$t0, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$t4, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$t3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$t4, $sp, 96                    # 8-byte Folded Reload
 	add.d	$fp, $a0, $fp
 	.p2align	4, , 16
 .LBB0_27:                               #   in Loop: Header=BB0_21 Depth=1

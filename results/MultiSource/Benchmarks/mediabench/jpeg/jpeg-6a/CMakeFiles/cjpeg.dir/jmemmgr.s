@@ -73,8 +73,8 @@ jinit_memory_mgr:                       # @jinit_memory_mgr
 	st.d	$s1, $fp, 88
 	vrepli.b	$vr0, 0
 	vst	$vr0, $fp, 96
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 112
+	vst	$vr0, $fp, 112
+	vst	$vr0, $fp, 128
 	st.d	$s2, $fp, 144
 	st.d	$fp, $s0, 8
 	pcalau12i	$a0, %pc_hi20(.L.str)

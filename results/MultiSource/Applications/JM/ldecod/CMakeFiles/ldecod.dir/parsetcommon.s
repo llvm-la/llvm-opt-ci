@@ -174,13 +174,13 @@ sps_is_equal:                           # @sps_is_equal
 .LBB4_12:                               # %.preheader
 	ld.wu	$a2, $a0, 1032
 	beqz	$a2, .LBB4_15
-# %bb.13:                               # %iter.check
-	ori	$a3, $zero, 4
+# %bb.13:                               # %.lr.ph
+	ori	$a3, $zero, 8
 	bgeu	$a2, $a3, .LBB4_29
 # %bb.14:
 	move	$a3, $zero
-	ori	$a5, $zero, 1
-	b	.LBB4_38
+	ori	$a4, $zero, 1
+	b	.LBB4_32
 .LBB4_15:
 	move	$a3, $zero
 .LBB4_16:                               # %.loopexit
@@ -250,126 +250,56 @@ sps_is_equal:                           # @sps_is_equal
 .LBB4_28:
 	move	$a0, $a2
 	ret
-.LBB4_29:                               # %vector.main.loop.iter.check
-	ori	$a3, $zero, 16
-	bgeu	$a2, $a3, .LBB4_31
-# %bb.30:
-	move	$a3, $zero
-	ori	$a5, $zero, 1
-	b	.LBB4_35
-.LBB4_31:                               # %vector.ph
-	andi	$a4, $a2, 12
-	bstrpick.d	$a3, $a2, 31, 4
-	slli.d	$a3, $a3, 4
-	addi.d	$a5, $a1, 1068
+.LBB4_29:                               # %vector.ph
+	bstrpick.d	$a3, $a2, 31, 3
+	slli.d	$a3, $a3, 3
+	addi.d	$a4, $a1, 1052
 	vrepli.b	$vr0, 0
-	addi.d	$a6, $a0, 1068
-	move	$a7, $a3
-	vori.b	$vr1, $vr0, 0
-.LBB4_32:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a6, -32
-	xvld	$xr3, $a5, -32
-	xvld	$xr4, $a6, 0
-	xvld	$xr5, $a5, 0
-	xvseq.w	$xr2, $xr2, $xr3
-	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.w	$t0, $xr2, 0
-	vinsgr2vr.h	$vr3, $t0, 0
-	xvpickve2gr.w	$t0, $xr2, 1
-	vinsgr2vr.h	$vr3, $t0, 1
-	xvpickve2gr.w	$t0, $xr2, 2
-	vinsgr2vr.h	$vr3, $t0, 2
-	xvpickve2gr.w	$t0, $xr2, 3
-	vinsgr2vr.h	$vr3, $t0, 3
-	xvpickve2gr.w	$t0, $xr2, 4
-	vinsgr2vr.h	$vr3, $t0, 4
-	xvpickve2gr.w	$t0, $xr2, 5
-	vinsgr2vr.h	$vr3, $t0, 5
-	xvpickve2gr.w	$t0, $xr2, 6
-	vinsgr2vr.h	$vr3, $t0, 6
-	xvpickve2gr.w	$t0, $xr2, 7
-	vinsgr2vr.h	$vr3, $t0, 7
-	xvseq.w	$xr2, $xr4, $xr5
-	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.w	$t0, $xr2, 0
-	vinsgr2vr.h	$vr4, $t0, 0
-	xvpickve2gr.w	$t0, $xr2, 1
-	vinsgr2vr.h	$vr4, $t0, 1
-	xvpickve2gr.w	$t0, $xr2, 2
-	vinsgr2vr.h	$vr4, $t0, 2
-	xvpickve2gr.w	$t0, $xr2, 3
-	vinsgr2vr.h	$vr4, $t0, 3
-	xvpickve2gr.w	$t0, $xr2, 4
-	vinsgr2vr.h	$vr4, $t0, 4
-	xvpickve2gr.w	$t0, $xr2, 5
-	vinsgr2vr.h	$vr4, $t0, 5
-	xvpickve2gr.w	$t0, $xr2, 6
-	vinsgr2vr.h	$vr4, $t0, 6
-	xvpickve2gr.w	$t0, $xr2, 7
-	vinsgr2vr.h	$vr4, $t0, 7
-	vor.v	$vr0, $vr0, $vr3
-	vor.v	$vr1, $vr1, $vr4
-	addi.d	$a7, $a7, -16
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB4_32
-# %bb.33:                               # %middle.block
-	vor.v	$vr0, $vr1, $vr0
-	vslli.h	$vr0, $vr0, 15
-	vmskltz.h	$vr0, $vr0
-	vpickve2gr.hu	$a5, $vr0, 0
-	sltui	$a5, $a5, 1
-	beq	$a3, $a2, .LBB4_40
-# %bb.34:                               # %vec.epilog.iter.check
-	beqz	$a4, .LBB4_38
-.LBB4_35:                               # %vec.epilog.ph
+	addi.d	$a5, $a0, 1052
 	move	$a6, $a3
-	sltui	$a4, $a5, 1
-	bstrpick.d	$a3, $a2, 31, 2
-	slli.d	$a3, $a3, 2
-	vreplgr2vr.w	$vr0, $a4
-	sub.d	$a4, $a6, $a3
-	slli.d	$a5, $a6, 2
-	addi.d	$a6, $a5, 1036
-	add.d	$a5, $a1, $a6
-	add.d	$a6, $a0, $a6
-.LBB4_36:                               # %vec.epilog.vector.body
+	vori.b	$vr1, $vr0, 0
+	.p2align	4, , 16
+.LBB4_30:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a6, 0
-	vld	$vr2, $a5, 0
-	vseq.w	$vr1, $vr1, $vr2
-	vorn.v	$vr0, $vr0, $vr1
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 16
-	addi.d	$a6, $a6, 16
-	bnez	$a4, .LBB4_36
-# %bb.37:                               # %vec.epilog.middle.block
+	vld	$vr2, $a5, -16
+	vld	$vr3, $a5, 0
+	vld	$vr4, $a4, -16
+	vld	$vr5, $a4, 0
+	vseq.w	$vr2, $vr2, $vr4
+	vseq.w	$vr3, $vr3, $vr5
+	vorn.v	$vr0, $vr0, $vr2
+	vorn.v	$vr1, $vr1, $vr3
+	addi.d	$a6, $a6, -8
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB4_30
+# %bb.31:                               # %middle.block
+	vor.v	$vr0, $vr1, $vr0
 	vslli.w	$vr0, $vr0, 31
 	vmskltz.w	$vr0, $vr0
 	vpickve2gr.hu	$a4, $vr0, 0
-	sltui	$a5, $a4, 1
-	beq	$a3, $a2, .LBB4_40
-.LBB4_38:                               # %vec.epilog.scalar.ph.preheader
-	slli.d	$a4, $a3, 2
-	addi.d	$a6, $a4, 1036
-	add.d	$a4, $a0, $a6
+	sltui	$a4, $a4, 1
+	beq	$a3, $a2, .LBB4_34
+.LBB4_32:                               # %scalar.ph.preheader
+	slli.d	$a5, $a3, 2
+	addi.d	$a6, $a5, 1036
+	add.d	$a5, $a0, $a6
 	add.d	$a6, $a1, $a6
 	sub.d	$a2, $a2, $a3
 	.p2align	4, , 16
-.LBB4_39:                               # %vec.epilog.scalar.ph
+.LBB4_33:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a3, $a4, 0
+	ld.w	$a3, $a5, 0
 	ld.w	$a7, $a6, 0
 	xor	$a3, $a3, $a7
 	sltui	$a3, $a3, 1
-	maskeqz	$a5, $a5, $a3
-	addi.d	$a4, $a4, 4
+	maskeqz	$a4, $a4, $a3
+	addi.d	$a5, $a5, 4
 	addi.d	$a2, $a2, -1
 	addi.d	$a6, $a6, 4
-	bnez	$a2, .LBB4_39
-.LBB4_40:                               # %.loopexit.loopexit
-	sltui	$a3, $a5, 1
+	bnez	$a2, .LBB4_33
+.LBB4_34:                               # %.loopexit.loopexit
+	sltui	$a3, $a4, 1
 	b	.LBB4_16
 .Lfunc_end4:
 	.size	sps_is_equal, .Lfunc_end4-sps_is_equal
@@ -389,34 +319,34 @@ pps_is_equal:                           # @pps_is_equal
 	ld.w	$a3, $a0, 4
 	ld.w	$a4, $a1, 4
 	move	$a2, $zero
-	bne	$a3, $a4, .LBB5_43
+	bne	$a3, $a4, .LBB5_31
 # %bb.3:
 	ld.w	$a3, $a1, 8
 	ld.w	$a4, $a0, 8
-	bne	$a4, $a3, .LBB5_43
+	bne	$a4, $a3, .LBB5_31
 # %bb.4:
 	ld.w	$a3, $a1, 12
 	ld.w	$a4, $a0, 12
-	bne	$a4, $a3, .LBB5_43
+	bne	$a4, $a3, .LBB5_31
 # %bb.5:
 	ld.w	$a3, $a1, 984
 	ld.w	$a4, $a0, 984
-	bne	$a4, $a3, .LBB5_43
+	bne	$a4, $a3, .LBB5_31
 # %bb.6:
 	ld.wu	$a3, $a0, 988
 	ld.w	$a4, $a1, 988
 	addi.w	$a5, $a3, 0
-	bne	$a5, $a4, .LBB5_43
+	bne	$a5, $a4, .LBB5_31
 # %bb.7:
 	ori	$a2, $zero, 1
-	beqz	$a3, .LBB5_42
+	beqz	$a3, .LBB5_30
 # %bb.8:
 	ld.w	$a4, $a0, 992
 	ld.w	$a5, $a1, 992
 	bne	$a4, $a5, .LBB5_15
 # %bb.9:
 	ori	$a5, $zero, 6
-	bltu	$a5, $a4, .LBB5_42
+	bltu	$a5, $a4, .LBB5_30
 # %bb.10:
 	slli.d	$a4, $a4, 2
 	pcalau12i	$a5, %pc_hi20(.LJTI5_0)
@@ -434,12 +364,12 @@ pps_is_equal:                           # @pps_is_equal
 	xor	$a3, $a4, $a5
 	sltui	$a3, $a3, 1
 	and	$a2, $a2, $a3
-	b	.LBB5_42
+	b	.LBB5_30
 .LBB5_12:
 	ld.w	$a2, $a0, 1100
 	ld.w	$a3, $a1, 1100
 	bne	$a2, $a3, .LBB5_15
-# %bb.13:                               # %iter.check
+# %bb.13:                               # %.preheader119
 	ld.d	$a3, $a0, 1104
 	ld.d	$a4, $a1, 1104
 	addi.w	$a6, $a2, 1
@@ -448,28 +378,28 @@ pps_is_equal:                           # @pps_is_equal
 	masknez	$a7, $a2, $a5
 	maskeqz	$a5, $a6, $a5
 	or	$a5, $a5, $a7
-	ori	$a7, $zero, 4
+	ori	$a7, $zero, 8
 	bstrpick.d	$a5, $a5, 31, 0
-	bgeu	$a6, $a7, .LBB5_22
+	bgeu	$a6, $a7, .LBB5_25
 # %bb.14:
 	move	$a6, $zero
-	b	.LBB5_40
+	b	.LBB5_28
 .LBB5_15:
 	move	$a0, $zero
 	ret
-.LBB5_16:                               # %iter.check186
+.LBB5_16:                               # %.preheader
 	addi.w	$a4, $a3, 1
 	ori	$a2, $zero, 1
 	sltu	$a3, $a2, $a4
 	masknez	$a5, $a2, $a3
 	maskeqz	$a3, $a4, $a3
 	or	$a3, $a3, $a5
-	ori	$a5, $zero, 4
+	ori	$a5, $zero, 8
 	bstrpick.d	$a3, $a3, 31, 0
 	bgeu	$a4, $a5, .LBB5_20
 # %bb.17:
 	move	$a4, $zero
-	b	.LBB5_31
+	b	.LBB5_23
 .LBB5_18:                               # %.preheader117
 	addi.d	$a4, $a0, 1060
 	addi.d	$a5, $a1, 1060
@@ -490,121 +420,44 @@ pps_is_equal:                           # @pps_is_equal
 	addi.d	$a3, $a3, -1
 	addi.d	$a5, $a5, 4
 	bnez	$a3, .LBB5_19
-	b	.LBB5_42
-.LBB5_20:                               # %vector.main.loop.iter.check166
-	ori	$a2, $zero, 16
-	bgeu	$a4, $a2, .LBB5_24
-# %bb.21:
-	move	$a4, $zero
-	ori	$a2, $zero, 1
-	b	.LBB5_28
-.LBB5_22:                               # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$a6, $a2, .LBB5_33
-# %bb.23:
-	move	$a6, $zero
-	ori	$a2, $zero, 1
-	b	.LBB5_37
-.LBB5_24:                               # %vector.ph168
-	andi	$a5, $a3, 12
-	bstrpick.d	$a2, $a3, 31, 4
-	slli.d	$a4, $a2, 4
-	addi.d	$a2, $a1, 1028
+	b	.LBB5_30
+.LBB5_20:                               # %vector.ph156
+	bstrpick.d	$a2, $a3, 31, 3
+	slli.d	$a4, $a2, 3
+	addi.d	$a2, $a1, 1012
 	vrepli.b	$vr0, 0
-	addi.d	$a6, $a0, 1028
-	move	$a7, $a4
+	addi.d	$a5, $a0, 1012
+	move	$a6, $a4
 	vori.b	$vr1, $vr0, 0
-.LBB5_25:                               # %vector.body171
+.LBB5_21:                               # %vector.body159
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a6, -32
-	xvld	$xr3, $a2, -32
-	xvld	$xr4, $a6, 0
-	xvld	$xr5, $a2, 0
-	xvseq.w	$xr2, $xr2, $xr3
-	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.w	$t0, $xr2, 0
-	vinsgr2vr.h	$vr3, $t0, 0
-	xvpickve2gr.w	$t0, $xr2, 1
-	vinsgr2vr.h	$vr3, $t0, 1
-	xvpickve2gr.w	$t0, $xr2, 2
-	vinsgr2vr.h	$vr3, $t0, 2
-	xvpickve2gr.w	$t0, $xr2, 3
-	vinsgr2vr.h	$vr3, $t0, 3
-	xvpickve2gr.w	$t0, $xr2, 4
-	vinsgr2vr.h	$vr3, $t0, 4
-	xvpickve2gr.w	$t0, $xr2, 5
-	vinsgr2vr.h	$vr3, $t0, 5
-	xvpickve2gr.w	$t0, $xr2, 6
-	vinsgr2vr.h	$vr3, $t0, 6
-	xvpickve2gr.w	$t0, $xr2, 7
-	vinsgr2vr.h	$vr3, $t0, 7
-	xvseq.w	$xr2, $xr4, $xr5
-	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.w	$t0, $xr2, 0
-	vinsgr2vr.h	$vr4, $t0, 0
-	xvpickve2gr.w	$t0, $xr2, 1
-	vinsgr2vr.h	$vr4, $t0, 1
-	xvpickve2gr.w	$t0, $xr2, 2
-	vinsgr2vr.h	$vr4, $t0, 2
-	xvpickve2gr.w	$t0, $xr2, 3
-	vinsgr2vr.h	$vr4, $t0, 3
-	xvpickve2gr.w	$t0, $xr2, 4
-	vinsgr2vr.h	$vr4, $t0, 4
-	xvpickve2gr.w	$t0, $xr2, 5
-	vinsgr2vr.h	$vr4, $t0, 5
-	xvpickve2gr.w	$t0, $xr2, 6
-	vinsgr2vr.h	$vr4, $t0, 6
-	xvpickve2gr.w	$t0, $xr2, 7
-	vinsgr2vr.h	$vr4, $t0, 7
-	vor.v	$vr0, $vr0, $vr3
-	vor.v	$vr1, $vr1, $vr4
-	addi.d	$a7, $a7, -16
-	addi.d	$a2, $a2, 64
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB5_25
-# %bb.26:                               # %middle.block180
+	vld	$vr2, $a5, -16
+	vld	$vr3, $a5, 0
+	vld	$vr4, $a2, -16
+	vld	$vr5, $a2, 0
+	vseq.w	$vr2, $vr2, $vr4
+	vseq.w	$vr3, $vr3, $vr5
+	vorn.v	$vr0, $vr0, $vr2
+	vorn.v	$vr1, $vr1, $vr3
+	addi.d	$a6, $a6, -8
+	addi.d	$a2, $a2, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB5_21
+# %bb.22:                               # %middle.block168
 	vor.v	$vr0, $vr1, $vr0
-	vslli.h	$vr0, $vr0, 15
-	vmskltz.h	$vr0, $vr0
-	vpickve2gr.hu	$a2, $vr0, 0
-	sltui	$a2, $a2, 1
-	beq	$a4, $a3, .LBB5_42
-# %bb.27:                               # %vec.epilog.iter.check188
-	beqz	$a5, .LBB5_31
-.LBB5_28:                               # %vec.epilog.ph190
-	move	$a5, $a4
-	sltui	$a2, $a2, 1
-	bstrpick.d	$a4, $a3, 31, 2
-	slli.d	$a4, $a4, 2
-	vreplgr2vr.w	$vr0, $a2
-	sub.d	$a2, $a5, $a4
-	slli.d	$a5, $a5, 2
-	addi.d	$a6, $a5, 996
-	add.d	$a5, $a1, $a6
-	add.d	$a6, $a0, $a6
-.LBB5_29:                               # %vec.epilog.vector.body195
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a6, 0
-	vld	$vr2, $a5, 0
-	vseq.w	$vr1, $vr1, $vr2
-	vorn.v	$vr0, $vr0, $vr1
-	addi.d	$a2, $a2, 4
-	addi.d	$a5, $a5, 16
-	addi.d	$a6, $a6, 16
-	bnez	$a2, .LBB5_29
-# %bb.30:                               # %vec.epilog.middle.block201
 	vslli.w	$vr0, $vr0, 31
 	vmskltz.w	$vr0, $vr0
 	vpickve2gr.hu	$a2, $vr0, 0
 	sltui	$a2, $a2, 1
-	beq	$a4, $a3, .LBB5_42
-.LBB5_31:                               # %vec.epilog.scalar.ph187.preheader
+	beq	$a4, $a3, .LBB5_30
+.LBB5_23:                               # %scalar.ph154.preheader
 	slli.d	$a5, $a4, 2
 	addi.d	$a6, $a5, 996
 	add.d	$a5, $a0, $a6
 	add.d	$a6, $a1, $a6
 	sub.d	$a3, $a3, $a4
-.LBB5_32:                               # %vec.epilog.scalar.ph187
+	.p2align	4, , 16
+.LBB5_24:                               # %scalar.ph154
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a5, 0
 	ld.w	$a7, $a6, 0
@@ -614,104 +467,42 @@ pps_is_equal:                           # @pps_is_equal
 	addi.d	$a5, $a5, 4
 	addi.d	$a3, $a3, -1
 	addi.d	$a6, $a6, 4
-	bnez	$a3, .LBB5_32
-	b	.LBB5_42
-.LBB5_33:                               # %vector.ph
-	andi	$a7, $a5, 12
-	bstrpick.d	$a2, $a5, 31, 4
-	slli.d	$a6, $a2, 4
-	addi.d	$a2, $a4, 32
+	bnez	$a3, .LBB5_24
+	b	.LBB5_30
+.LBB5_25:                               # %vector.ph
+	bstrpick.d	$a2, $a5, 31, 3
+	slli.d	$a6, $a2, 3
+	addi.d	$a2, $a4, 16
 	vrepli.b	$vr0, 0
-	addi.d	$t0, $a3, 32
-	move	$t1, $a6
-	vori.b	$vr1, $vr0, 0
-.LBB5_34:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $t0, -32
-	xvld	$xr3, $a2, -32
-	xvld	$xr4, $t0, 0
-	xvld	$xr5, $a2, 0
-	xvseq.w	$xr2, $xr2, $xr3
-	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.w	$t2, $xr2, 0
-	vinsgr2vr.h	$vr3, $t2, 0
-	xvpickve2gr.w	$t2, $xr2, 1
-	vinsgr2vr.h	$vr3, $t2, 1
-	xvpickve2gr.w	$t2, $xr2, 2
-	vinsgr2vr.h	$vr3, $t2, 2
-	xvpickve2gr.w	$t2, $xr2, 3
-	vinsgr2vr.h	$vr3, $t2, 3
-	xvpickve2gr.w	$t2, $xr2, 4
-	vinsgr2vr.h	$vr3, $t2, 4
-	xvpickve2gr.w	$t2, $xr2, 5
-	vinsgr2vr.h	$vr3, $t2, 5
-	xvpickve2gr.w	$t2, $xr2, 6
-	vinsgr2vr.h	$vr3, $t2, 6
-	xvpickve2gr.w	$t2, $xr2, 7
-	vinsgr2vr.h	$vr3, $t2, 7
-	xvseq.w	$xr2, $xr4, $xr5
-	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.w	$t2, $xr2, 0
-	vinsgr2vr.h	$vr4, $t2, 0
-	xvpickve2gr.w	$t2, $xr2, 1
-	vinsgr2vr.h	$vr4, $t2, 1
-	xvpickve2gr.w	$t2, $xr2, 2
-	vinsgr2vr.h	$vr4, $t2, 2
-	xvpickve2gr.w	$t2, $xr2, 3
-	vinsgr2vr.h	$vr4, $t2, 3
-	xvpickve2gr.w	$t2, $xr2, 4
-	vinsgr2vr.h	$vr4, $t2, 4
-	xvpickve2gr.w	$t2, $xr2, 5
-	vinsgr2vr.h	$vr4, $t2, 5
-	xvpickve2gr.w	$t2, $xr2, 6
-	vinsgr2vr.h	$vr4, $t2, 6
-	xvpickve2gr.w	$t2, $xr2, 7
-	vinsgr2vr.h	$vr4, $t2, 7
-	vor.v	$vr0, $vr0, $vr3
-	vor.v	$vr1, $vr1, $vr4
-	addi.d	$t1, $t1, -16
-	addi.d	$a2, $a2, 64
-	addi.d	$t0, $t0, 64
-	bnez	$t1, .LBB5_34
-# %bb.35:                               # %middle.block
-	vor.v	$vr0, $vr1, $vr0
-	vslli.h	$vr0, $vr0, 15
-	vmskltz.h	$vr0, $vr0
-	vpickve2gr.hu	$a2, $vr0, 0
-	sltui	$a2, $a2, 1
-	beq	$a6, $a5, .LBB5_42
-# %bb.36:                               # %vec.epilog.iter.check
-	beqz	$a7, .LBB5_40
-.LBB5_37:                               # %vec.epilog.ph
+	addi.d	$a7, $a3, 16
 	move	$t0, $a6
-	sltui	$a2, $a2, 1
-	bstrpick.d	$a6, $a5, 31, 2
-	slli.d	$a6, $a6, 2
-	vreplgr2vr.w	$vr0, $a2
-	sub.d	$a2, $t0, $a6
-	alsl.d	$a7, $t0, $a4, 2
-	alsl.d	$t0, $t0, $a3, 2
-.LBB5_38:                               # %vec.epilog.vector.body
+	vori.b	$vr1, $vr0, 0
+.LBB5_26:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $t0, 0
-	vld	$vr2, $a7, 0
-	vseq.w	$vr1, $vr1, $vr2
-	vorn.v	$vr0, $vr0, $vr1
-	addi.d	$a2, $a2, 4
-	addi.d	$a7, $a7, 16
-	addi.d	$t0, $t0, 16
-	bnez	$a2, .LBB5_38
-# %bb.39:                               # %vec.epilog.middle.block
+	vld	$vr2, $a7, -16
+	vld	$vr3, $a7, 0
+	vld	$vr4, $a2, -16
+	vld	$vr5, $a2, 0
+	vseq.w	$vr2, $vr2, $vr4
+	vseq.w	$vr3, $vr3, $vr5
+	vorn.v	$vr0, $vr0, $vr2
+	vorn.v	$vr1, $vr1, $vr3
+	addi.d	$t0, $t0, -8
+	addi.d	$a2, $a2, 32
+	addi.d	$a7, $a7, 32
+	bnez	$t0, .LBB5_26
+# %bb.27:                               # %middle.block
+	vor.v	$vr0, $vr1, $vr0
 	vslli.w	$vr0, $vr0, 31
 	vmskltz.w	$vr0, $vr0
 	vpickve2gr.hu	$a2, $vr0, 0
 	sltui	$a2, $a2, 1
-	beq	$a6, $a5, .LBB5_42
-.LBB5_40:                               # %vec.epilog.scalar.ph.preheader
+	beq	$a6, $a5, .LBB5_30
+.LBB5_28:                               # %scalar.ph.preheader
 	alsl.d	$a3, $a6, $a3, 2
 	alsl.d	$a4, $a6, $a4, 2
 	sub.d	$a5, $a5, $a6
-.LBB5_41:                               # %vec.epilog.scalar.ph
+.LBB5_29:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a3, 0
 	ld.w	$a7, $a4, 0
@@ -721,8 +512,8 @@ pps_is_equal:                           # @pps_is_equal
 	addi.d	$a3, $a3, 4
 	addi.d	$a5, $a5, -1
 	addi.d	$a4, $a4, 4
-	bnez	$a5, .LBB5_41
-.LBB5_42:                               # %.loopexit
+	bnez	$a5, .LBB5_29
+.LBB5_30:                               # %.loopexit
 	ld.w	$a3, $a0, 1112
 	ld.w	$a4, $a1, 1112
 	xor	$a3, $a3, $a4
@@ -761,7 +552,7 @@ pps_is_equal:                           # @pps_is_equal
 	maskeqz	$a2, $a2, $a7
 	maskeqz	$a0, $a2, $a0
 	maskeqz	$a2, $a0, $a1
-.LBB5_43:
+.LBB5_31:
 	move	$a0, $a2
 	ret
 .Lfunc_end5:
@@ -770,7 +561,7 @@ pps_is_equal:                           # @pps_is_equal
 	.p2align	2, 0x0
 .LJTI5_0:
 	.word	.LBB5_16-.LJTI5_0
-	.word	.LBB5_42-.LJTI5_0
+	.word	.LBB5_30-.LJTI5_0
 	.word	.LBB5_18-.LJTI5_0
 	.word	.LBB5_11-.LJTI5_0
 	.word	.LBB5_11-.LJTI5_0

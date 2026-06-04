@@ -2214,19 +2214,19 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception5
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	.cfi_def_cfa_offset 208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2239,14 +2239,14 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
 	move	$fp, $a3
-	move	$s4, $a2
+	move	$s8, $a2
 	move	$s1, $a1
 	move	$s0, $a0
 	ori	$a0, $zero, 5
 	lu32i.d	$a0, -1
 	addi.w	$a1, $zero, -1
 	st.d	$a0, $s0, 76
-	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	move	$a0, $a1
 	lu32i.d	$a0, 0
 	st.w	$a0, $s0, 84
@@ -2255,44 +2255,39 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 	st.w	$a0, $s0, 88
 	pcaddu18i	$ra, %call36(_ZN8NWindows7NSystem21GetNumberOfProcessorsEv)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	st.w	$a0, $s0, 88
-	blez	$fp, .LBB16_124
-# %bb.1:                                # %.lr.ph
-	move	$s8, $zero
-	st.d	$s0, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$a0, $s0, 88
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.w	$a0, $s0, 88
+	blez	$fp, .LBB16_99
+# %bb.1:                                # %.lr.ph
+	move	$s4, $zero
+	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$a0, $s0, 88
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
 	lu12i.w	$a0, -524176
 	ori	$a0, $a0, 87
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	lu12i.w	$a0, 219
 	ori	$a0, $a0, 2976
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
                                         # implicit-def: $r26
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB16_2:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB16_6 Depth 2
-                                        #     Child Loop BB16_114 Depth 2
-                                        #     Child Loop BB16_118 Depth 2
+                                        #     Child Loop BB16_90 Depth 2
                                         #     Child Loop BB16_61 Depth 2
-                                        #     Child Loop BB16_97 Depth 2
-                                        #     Child Loop BB16_101 Depth 2
+                                        #     Child Loop BB16_80 Depth 2
                                         #     Child Loop BB16_50 Depth 2
-                                        #     Child Loop BB16_67 Depth 2
-                                        #     Child Loop BB16_71 Depth 2
+                                        #     Child Loop BB16_63 Depth 2
                                         #     Child Loop BB16_34 Depth 2
-                                        #     Child Loop BB16_79 Depth 2
-                                        #     Child Loop BB16_83 Depth 2
+                                        #     Child Loop BB16_71 Depth 2
                                         #     Child Loop BB16_41 Depth 2
-	slli.d	$a0, $s8, 3
+	slli.d	$a0, $s4, 3
 	ldx.d	$s5, $s1, $a0
-	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 120
+	vld	$vr0, $sp, 64                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 104
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(wcslen)
 	jirl	$ra, $ra, 0
@@ -2311,14 +2306,14 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 	slti	$a0, $a0, -1
 	slli.d	$a1, $a1, 2
 	masknez	$a1, $a1, $a0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 120
+	st.d	$a0, $sp, 104
 	st.w	$zero, $a0, 0
-	st.w	$s0, $sp, 132
+	st.w	$s0, $sp, 116
 .LBB16_5:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i
                                         #   in Loop: Header=BB16_2 Depth=1
 	move	$a1, $zero
@@ -2331,19 +2326,19 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 	bnez	$a2, .LBB16_6
 # %bb.7:                                # %_ZN11CStringBaseIwEC2EPKw.exit
                                         #   in Loop: Header=BB16_2 Depth=1
-	st.w	$s6, $sp, 128
+	st.w	$s6, $sp, 112
 .Ltmp236:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_Z13MyStringUpperPw)
 	jirl	$ra, $ra, 0
 .Ltmp237:                               # EH_LABEL
 # %bb.8:                                # %_ZN11CStringBaseIwE9MakeUpperEv.exit
                                         #   in Loop: Header=BB16_2 Depth=1
-	ld.w	$s2, $sp, 128
-	beqz	$s2, .LBB16_27
+	ld.w	$s0, $sp, 112
+	beqz	$s0, .LBB16_27
 # %bb.9:                                #   in Loop: Header=BB16_2 Depth=1
-	ld.d	$s7, $sp, 120
+	ld.d	$s7, $sp, 104
 	ld.w	$a0, $s7, 0
-	alsl.d	$s5, $s8, $s4, 4
+	alsl.d	$s5, $s4, $s8, 4
 	ori	$a1, $zero, 68
 	beq	$a0, $a1, .LBB16_14
 # %bb.10:                               #   in Loop: Header=BB16_2 Depth=1
@@ -2351,7 +2346,7 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 	bne	$a0, $a1, .LBB16_17
 # %bb.11:                               #   in Loop: Header=BB16_2 Depth=1
 	ori	$a0, $zero, 9
-	st.w	$a0, $sp, 116
+	st.w	$a0, $sp, 100
 .Ltmp248:                               # EH_LABEL
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
@@ -2359,23 +2354,22 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 .Ltmp249:                               # EH_LABEL
 # %bb.12:                               # %.noexc
                                         #   in Loop: Header=BB16_2 Depth=1
-	addi.w	$s0, $s2, -1
-	st.d	$a0, $sp, 96
+	addi.w	$s2, $s0, -1
+	st.d	$a0, $sp, 80
 	st.w	$zero, $a0, 0
 	ori	$a1, $zero, 4
-	st.w	$a1, $sp, 108
-	bne	$s2, $a1, .LBB16_28
+	st.w	$a1, $sp, 92
+	bne	$s0, $a1, .LBB16_28
 # %bb.13:                               #   in Loop: Header=BB16_2 Depth=1
 	move	$s6, $a0
-	bstrpick.d	$a0, $s0, 31, 0
-	addi.d	$a1, $s7, 4
-	ori	$a2, $zero, 5
-	bgeu	$s2, $a2, .LBB16_31
+	bstrpick.d	$a0, $s2, 31, 0
+	ori	$a1, $zero, 9
+	bgeu	$s0, $a1, .LBB16_31
 	b	.LBB16_32
 	.p2align	4, , 16
 .LBB16_14:                              #   in Loop: Header=BB16_2 Depth=1
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	st.w	$a0, $sp, 116
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	st.w	$a0, $sp, 100
 .Ltmp239:                               # EH_LABEL
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
@@ -2383,24 +2377,23 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 .Ltmp240:                               # EH_LABEL
 # %bb.15:                               # %.noexc127
                                         #   in Loop: Header=BB16_2 Depth=1
-	addi.w	$s0, $s2, -1
-	st.d	$a0, $sp, 96
+	addi.w	$s2, $s0, -1
+	st.d	$a0, $sp, 80
 	st.w	$zero, $a0, 0
 	ori	$a1, $zero, 4
-	st.w	$a1, $sp, 108
-	bne	$s2, $a1, .LBB16_35
+	st.w	$a1, $sp, 92
+	bne	$s0, $a1, .LBB16_35
 # %bb.16:                               #   in Loop: Header=BB16_2 Depth=1
 	move	$s6, $a0
-	bstrpick.d	$a0, $s0, 31, 0
-	addi.d	$a1, $s7, 4
-	ori	$a2, $zero, 5
-	bgeu	$s2, $a2, .LBB16_38
+	bstrpick.d	$a0, $s2, 31, 0
+	ori	$a1, $zero, 9
+	bgeu	$s0, $a1, .LBB16_38
 	b	.LBB16_39
 	.p2align	4, , 16
 .LBB16_17:                              #   in Loop: Header=BB16_2 Depth=1
 .Ltmp257:                               # EH_LABEL
-	addi.d	$a0, $sp, 96
-	addi.d	$a1, $sp, 120
+	addi.d	$a0, $sp, 80
+	addi.d	$a1, $sp, 104
 	ori	$a3, $zero, 4
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNK11CStringBaseIwE3MidEii)
@@ -2408,7 +2401,7 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 .Ltmp258:                               # EH_LABEL
 # %bb.18:                               # %_ZNK11CStringBaseIwE4LeftEi.exit
                                         #   in Loop: Header=BB16_2 Depth=1
-	ld.d	$a0, $sp, 96
+	ld.d	$a0, $sp, 80
 .Ltmp260:                               # EH_LABEL
 	pcalau12i	$a1, %pc_hi20(.L.str)
 	addi.d	$a1, $a1, %pc_lo12(.L.str)
@@ -2417,7 +2410,7 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 .Ltmp261:                               # EH_LABEL
 # %bb.19:                               #   in Loop: Header=BB16_2 Depth=1
 	move	$s6, $a0
-	ld.d	$a0, $sp, 96
+	ld.d	$a0, $sp, 80
 	beqz	$a0, .LBB16_21
 # %bb.20:                               #   in Loop: Header=BB16_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -2427,8 +2420,8 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 	beqz	$s6, .LBB16_42
 # %bb.22:                               #   in Loop: Header=BB16_2 Depth=1
 .Ltmp263:                               # EH_LABEL
-	addi.d	$a0, $sp, 96
-	addi.d	$a1, $sp, 120
+	addi.d	$a0, $sp, 80
+	addi.d	$a1, $sp, 104
 	ori	$a3, $zero, 2
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNK11CStringBaseIwE3MidEii)
@@ -2436,7 +2429,7 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 .Ltmp264:                               # EH_LABEL
 # %bb.23:                               # %_ZNK11CStringBaseIwE4LeftEi.exit106
                                         #   in Loop: Header=BB16_2 Depth=1
-	ld.d	$a0, $sp, 96
+	ld.d	$a0, $sp, 80
 .Ltmp266:                               # EH_LABEL
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
@@ -2445,7 +2438,7 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 .Ltmp267:                               # EH_LABEL
 # %bb.24:                               #   in Loop: Header=BB16_2 Depth=1
 	move	$s6, $a0
-	ld.d	$a0, $sp, 96
+	ld.d	$a0, $sp, 80
 	beqz	$a0, .LBB16_26
 # %bb.25:                               #   in Loop: Header=BB16_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -2456,14 +2449,16 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 	.p2align	4, , 16
 .LBB16_27:                              #   in Loop: Header=BB16_2 Depth=1
 	move	$s0, $zero
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	b	.LBB16_108
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104
+	bnez	$a0, .LBB16_96
+	b	.LBB16_97
 .LBB16_28:                              #   in Loop: Header=BB16_2 Depth=1
 	move	$s7, $a0
-	slti	$a0, $s2, 0
-	slli.d	$a1, $s2, 2
+	slti	$a0, $s0, 0
+	slli.d	$a1, $s0, 2
 	masknez	$a1, $a1, $a0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 .Ltmp251:                               # EH_LABEL
@@ -2476,46 +2471,46 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	st.d	$s6, $sp, 96
+	st.d	$s6, $sp, 80
 	st.w	$zero, $s6, 0
-	st.w	$s2, $sp, 108
+	st.w	$s0, $sp, 92
 	ori	$a0, $zero, 2
-	blt	$s2, $a0, .LBB16_51
+	blt	$s0, $a0, .LBB16_51
 # %bb.30:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i115..lr.ph.i_crit_edge
                                         #   in Loop: Header=BB16_2 Depth=1
-	ld.d	$s7, $sp, 120
-	bstrpick.d	$a0, $s0, 31, 0
-	addi.d	$a1, $s7, 4
-	ori	$a2, $zero, 5
-	bltu	$s2, $a2, .LBB16_32
-.LBB16_31:                              # %vector.memcheck263
+	ld.d	$s7, $sp, 104
+	bstrpick.d	$a0, $s2, 31, 0
+	ori	$a1, $zero, 9
+	bltu	$s0, $a1, .LBB16_32
+.LBB16_31:                              # %vector.memcheck241
                                         #   in Loop: Header=BB16_2 Depth=1
-	sub.d	$a2, $s6, $s7
-	addi.d	$a2, $a2, -4
-	ori	$a3, $zero, 64
-	bgeu	$a2, $a3, .LBB16_62
+	sub.d	$a1, $s6, $s7
+	addi.d	$a1, $a1, -4
+	ori	$a2, $zero, 32
+	bgeu	$a1, $a2, .LBB16_62
 .LBB16_32:                              #   in Loop: Header=BB16_2 Depth=1
-	move	$a2, $zero
-.LBB16_33:                              # %vec.epilog.scalar.ph280.preheader
+	move	$a1, $zero
+.LBB16_33:                              # %scalar.ph243.preheader
                                         #   in Loop: Header=BB16_2 Depth=1
-	sub.d	$a3, $a0, $a2
-	slli.d	$a2, $a2, 2
+	addi.d	$a2, $s7, 4
+	sub.d	$a3, $a0, $a1
+	slli.d	$a1, $a1, 2
 	.p2align	4, , 16
-.LBB16_34:                              # %vec.epilog.scalar.ph280
+.LBB16_34:                              # %scalar.ph243
                                         #   Parent Loop BB16_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.w	$a4, $a1, $a2
-	stx.w	$a4, $s6, $a2
+	ldx.w	$a4, $a2, $a1
+	stx.w	$a4, $s6, $a1
 	addi.d	$a3, $a3, -1
-	addi.d	$a2, $a2, 4
+	addi.d	$a1, $a1, 4
 	bnez	$a3, .LBB16_34
-	b	.LBB16_73
+	b	.LBB16_65
 .LBB16_35:                              #   in Loop: Header=BB16_2 Depth=1
 	move	$s7, $a0
-	slti	$a0, $s2, 0
-	slli.d	$a1, $s2, 2
+	slti	$a0, $s0, 0
+	slli.d	$a1, $s0, 2
 	masknez	$a1, $a1, $a0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 .Ltmp242:                               # EH_LABEL
@@ -2528,44 +2523,44 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	st.d	$s6, $sp, 96
+	st.d	$s6, $sp, 80
 	st.w	$zero, $s6, 0
-	st.w	$s2, $sp, 108
+	st.w	$s0, $sp, 92
 	ori	$a0, $zero, 2
-	blt	$s2, $a0, .LBB16_52
+	blt	$s0, $a0, .LBB16_52
 # %bb.37:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i118..lr.ph.i122_crit_edge
                                         #   in Loop: Header=BB16_2 Depth=1
-	ld.d	$s7, $sp, 120
-	bstrpick.d	$a0, $s0, 31, 0
-	addi.d	$a1, $s7, 4
-	ori	$a2, $zero, 5
-	bltu	$s2, $a2, .LBB16_39
-.LBB16_38:                              # %vector.memcheck293
+	ld.d	$s7, $sp, 104
+	bstrpick.d	$a0, $s2, 31, 0
+	ori	$a1, $zero, 9
+	bltu	$s0, $a1, .LBB16_39
+.LBB16_38:                              # %vector.memcheck256
                                         #   in Loop: Header=BB16_2 Depth=1
-	sub.d	$a2, $s6, $s7
-	addi.d	$a2, $a2, -4
-	ori	$a3, $zero, 64
-	bgeu	$a2, $a3, .LBB16_64
+	sub.d	$a1, $s6, $s7
+	addi.d	$a1, $a1, -4
+	ori	$a2, $zero, 32
+	bgeu	$a1, $a2, .LBB16_70
 .LBB16_39:                              #   in Loop: Header=BB16_2 Depth=1
-	move	$a2, $zero
-.LBB16_40:                              # %vec.epilog.scalar.ph310.preheader
+	move	$a1, $zero
+.LBB16_40:                              # %scalar.ph258.preheader
                                         #   in Loop: Header=BB16_2 Depth=1
-	sub.d	$a3, $a0, $a2
-	slli.d	$a2, $a2, 2
+	addi.d	$a2, $s7, 4
+	sub.d	$a3, $a0, $a1
+	slli.d	$a1, $a1, 2
 	.p2align	4, , 16
-.LBB16_41:                              # %vec.epilog.scalar.ph310
+.LBB16_41:                              # %scalar.ph258
                                         #   Parent Loop BB16_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.w	$a4, $a1, $a2
-	stx.w	$a4, $s6, $a2
+	ldx.w	$a4, $a2, $a1
+	stx.w	$a4, $s6, $a1
 	addi.d	$a3, $a3, -1
-	addi.d	$a2, $a2, 4
+	addi.d	$a1, $a1, 4
 	bnez	$a3, .LBB16_41
-	b	.LBB16_85
+	b	.LBB16_73
 .LBB16_42:                              #   in Loop: Header=BB16_2 Depth=1
-	ld.w	$s2, $sp, 128
+	ld.w	$s2, $sp, 112
 	ori	$a0, $zero, 7
-	st.w	$a0, $sp, 116
+	st.w	$a0, $sp, 100
 .Ltmp278:                               # EH_LABEL
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
@@ -2574,19 +2569,18 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 # %bb.43:                               # %.noexc142
                                         #   in Loop: Header=BB16_2 Depth=1
 	addi.w	$s0, $s2, -4
-	st.d	$a0, $sp, 96
+	st.d	$a0, $sp, 80
 	st.w	$zero, $a0, 0
-	addi.w	$s4, $s2, -3
+	addi.w	$s8, $s2, -3
 	ori	$a1, $zero, 4
-	st.w	$a1, $sp, 108
-	ori	$s1, $zero, 4
-	beq	$s4, $a1, .LBB16_46
+	st.w	$a1, $sp, 92
+	beq	$s8, $a1, .LBB16_46
 # %bb.44:                               #   in Loop: Header=BB16_2 Depth=1
 	move	$s6, $a0
 	slti	$a0, $s2, 3
-	slli.d	$a1, $s4, 2
+	slli.d	$a1, $s8, 2
 	masknez	$a1, $a1, $a0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 .Ltmp281:                               # EH_LABEL
@@ -2600,31 +2594,32 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $s7
-	st.d	$s7, $sp, 96
+	st.d	$s7, $sp, 80
 	st.w	$zero, $s7, 0
-	st.w	$s4, $sp, 108
-	bge	$s1, $s2, .LBB16_90
+	st.w	$s8, $sp, 92
+	ori	$a1, $zero, 4
+	bge	$a1, $s2, .LBB16_78
 .LBB16_46:                              #   in Loop: Header=BB16_2 Depth=1
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a4, $sp, 120
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104
 	bstrpick.d	$a1, $s0, 31, 0
-	addi.d	$a2, $a4, 16
-	bltu	$s0, $s1, .LBB16_48
+	ori	$a3, $zero, 8
+	bltu	$s0, $a3, .LBB16_48
 # %bb.47:                               # %vector.memcheck
                                         #   in Loop: Header=BB16_2 Depth=1
-	sub.d	$a3, $a0, $a4
+	sub.d	$a3, $a0, $a2
 	addi.d	$a3, $a3, -16
-	ori	$a5, $zero, 64
-	bgeu	$a3, $a5, .LBB16_91
+	ori	$a4, $zero, 32
+	bgeu	$a3, $a4, .LBB16_79
 .LBB16_48:                              #   in Loop: Header=BB16_2 Depth=1
 	move	$a3, $zero
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-.LBB16_49:                              # %vec.epilog.scalar.ph.preheader
+.LBB16_49:                              # %scalar.ph.preheader
                                         #   in Loop: Header=BB16_2 Depth=1
+	addi.d	$a2, $a2, 16
 	sub.d	$a4, $a1, $a3
 	slli.d	$a3, $a3, 2
 	.p2align	4, , 16
-.LBB16_50:                              # %vec.epilog.scalar.ph
+.LBB16_50:                              # %scalar.ph
                                         #   Parent Loop BB16_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.w	$a5, $a2, $a3
@@ -2632,17 +2627,17 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 	addi.d	$a4, $a4, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a4, .LBB16_50
-	b	.LBB16_103
+	b	.LBB16_82
 .LBB16_51:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.._crit_edge_crit_edge.i
                                         #   in Loop: Header=BB16_2 Depth=1
-	move	$a0, $s0
-	b	.LBB16_73
+	move	$a0, $s2
+	b	.LBB16_65
 .LBB16_52:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.._crit_edge_crit_edge.i119
                                         #   in Loop: Header=BB16_2 Depth=1
-	move	$a0, $s0
-	b	.LBB16_85
+	move	$a0, $s2
+	b	.LBB16_73
 .LBB16_53:                              #   in Loop: Header=BB16_2 Depth=1
-	ld.w	$s2, $sp, 128
+	ld.w	$s2, $sp, 112
 .Ltmp269:                               # EH_LABEL
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
@@ -2651,19 +2646,18 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 # %bb.54:                               # %.noexc157
                                         #   in Loop: Header=BB16_2 Depth=1
 	addi.w	$s0, $s2, -2
-	st.d	$a0, $sp, 96
+	st.d	$a0, $sp, 80
 	st.w	$zero, $a0, 0
-	addi.w	$s4, $s2, -1
+	addi.w	$s8, $s2, -1
 	ori	$a1, $zero, 4
-	st.w	$a1, $sp, 108
-	ori	$s1, $zero, 4
-	beq	$s4, $a1, .LBB16_57
+	st.w	$a1, $sp, 92
+	beq	$s8, $a1, .LBB16_57
 # %bb.55:                               #   in Loop: Header=BB16_2 Depth=1
 	move	$s6, $a0
 	slti	$a0, $s2, 1
-	slli.d	$a1, $s4, 2
+	slli.d	$a1, $s8, 2
 	masknez	$a1, $a1, $a0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 .Ltmp272:                               # EH_LABEL
@@ -2677,32 +2671,32 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $s7
-	st.d	$s7, $sp, 96
+	st.d	$s7, $sp, 80
 	st.w	$zero, $s7, 0
-	st.w	$s4, $sp, 108
+	st.w	$s8, $sp, 92
 	ori	$a1, $zero, 2
-	bge	$a1, $s2, .LBB16_93
+	bge	$a1, $s2, .LBB16_88
 .LBB16_57:                              #   in Loop: Header=BB16_2 Depth=1
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a4, $sp, 120
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104
 	bstrpick.d	$a1, $s0, 31, 0
-	addi.d	$a2, $a4, 8
-	bltu	$s0, $s1, .LBB16_59
-# %bb.58:                               # %vector.memcheck233
+	ori	$a3, $zero, 8
+	bltu	$s0, $a3, .LBB16_59
+# %bb.58:                               # %vector.memcheck226
                                         #   in Loop: Header=BB16_2 Depth=1
-	sub.d	$a3, $a0, $a4
+	sub.d	$a3, $a0, $a2
 	addi.d	$a3, $a3, -8
-	ori	$a5, $zero, 64
-	bgeu	$a3, $a5, .LBB16_94
+	ori	$a4, $zero, 32
+	bgeu	$a3, $a4, .LBB16_89
 .LBB16_59:                              #   in Loop: Header=BB16_2 Depth=1
 	move	$a3, $zero
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-.LBB16_60:                              # %vec.epilog.scalar.ph250.preheader
+.LBB16_60:                              # %scalar.ph228.preheader
                                         #   in Loop: Header=BB16_2 Depth=1
+	addi.d	$a2, $a2, 8
 	sub.d	$a4, $a1, $a3
 	slli.d	$a3, $a3, 2
 	.p2align	4, , 16
-.LBB16_61:                              # %vec.epilog.scalar.ph250
+.LBB16_61:                              # %scalar.ph228
                                         #   Parent Loop BB16_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.w	$a5, $a2, $a3
@@ -2710,472 +2704,355 @@ _ZN8NArchive4NBz28CHandler13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArchi
 	addi.d	$a4, $a4, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a4, .LBB16_61
-	b	.LBB16_120
-.LBB16_62:                              # %vector.main.loop.iter.check266
+	b	.LBB16_92
+.LBB16_62:                              # %vector.ph245
                                         #   in Loop: Header=BB16_2 Depth=1
-	ori	$a2, $zero, 17
-	bgeu	$s2, $a2, .LBB16_66
-# %bb.63:                               #   in Loop: Header=BB16_2 Depth=1
+	bstrpick.d	$a1, $a0, 30, 3
+	slli.d	$a1, $a1, 3
 	move	$a2, $zero
-	b	.LBB16_70
-.LBB16_64:                              # %vector.main.loop.iter.check296
-                                        #   in Loop: Header=BB16_2 Depth=1
-	ori	$a2, $zero, 17
-	bgeu	$s2, $a2, .LBB16_78
-# %bb.65:                               #   in Loop: Header=BB16_2 Depth=1
-	move	$a2, $zero
-	b	.LBB16_82
-.LBB16_66:                              # %vector.ph268
-                                        #   in Loop: Header=BB16_2 Depth=1
-	move	$a4, $zero
-	bstrpick.d	$a2, $a0, 30, 4
-	slli.d	$a2, $a2, 4
-	andi	$a3, $a0, 12
-	move	$a5, $a2
+	move	$a3, $a1
 	.p2align	4, , 16
-.LBB16_67:                              # %vector.body271
+.LBB16_63:                              # %vector.body248
                                         #   Parent Loop BB16_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$a6, $s7, $a4
-	xvld	$xr0, $a6, 4
-	xvld	$xr1, $a6, 36
-	add.d	$a6, $s6, $a4
-	xvstx	$xr0, $s6, $a4
-	xvst	$xr1, $a6, 32
-	addi.d	$a5, $a5, -16
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB16_67
-# %bb.68:                               # %middle.block276
+	add.d	$a4, $s7, $a2
+	vld	$vr0, $a4, 4
+	vld	$vr1, $a4, 20
+	add.d	$a4, $s6, $a2
+	vstx	$vr0, $s6, $a2
+	vst	$vr1, $a4, 16
+	addi.d	$a3, $a3, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB16_63
+# %bb.64:                               # %middle.block253
                                         #   in Loop: Header=BB16_2 Depth=1
-	beq	$a2, $a0, .LBB16_73
-# %bb.69:                               # %vec.epilog.iter.check281
-                                        #   in Loop: Header=BB16_2 Depth=1
-	beqz	$a3, .LBB16_33
-.LBB16_70:                              # %vec.epilog.ph283
-                                        #   in Loop: Header=BB16_2 Depth=1
-	move	$a4, $a2
-	bstrpick.d	$a2, $a0, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a4, $a2
-	slli.d	$a4, $a4, 2
+	bne	$a1, $a0, .LBB16_33
 	.p2align	4, , 16
-.LBB16_71:                              # %vec.epilog.vector.body286
-                                        #   Parent Loop BB16_2 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vldx	$vr0, $a1, $a4
-	vstx	$vr0, $s6, $a4
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a3, .LBB16_71
-# %bb.72:                               # %vec.epilog.middle.block290
-                                        #   in Loop: Header=BB16_2 Depth=1
-	bne	$a2, $a0, .LBB16_33
-	.p2align	4, , 16
-.LBB16_73:                              # %.loopexit162
+.LBB16_65:                              # %.loopexit162
                                         #   in Loop: Header=BB16_2 Depth=1
 	slli.d	$a0, $a0, 2
 	stx.w	$zero, $s6, $a0
-	st.w	$s0, $sp, 104
+	st.w	$s2, $sp, 88
 .Ltmp254:                               # EH_LABEL
-	addi.d	$a0, $sp, 96
-	addi.d	$a2, $sp, 116
+	addi.d	$a0, $sp, 80
+	addi.d	$a2, $sp, 100
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_Z14ParsePropValueRK11CStringBaseIwERK14tagPROPVARIANTRj)
 	jirl	$ra, $ra, 0
 .Ltmp255:                               # EH_LABEL
-# %bb.74:                               #   in Loop: Header=BB16_2 Depth=1
+# %bb.66:                               #   in Loop: Header=BB16_2 Depth=1
 	move	$s5, $a0
-	ld.d	$a0, $sp, 96
-	beqz	$a0, .LBB16_76
-# %bb.75:                               #   in Loop: Header=BB16_2 Depth=1
+	ld.d	$a0, $sp, 80
+	beqz	$a0, .LBB16_68
+# %bb.67:                               #   in Loop: Header=BB16_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB16_76:                              # %_ZN11CStringBaseIwED2Ev.exit
+.LBB16_68:                              # %_ZN11CStringBaseIwED2Ev.exit
                                         #   in Loop: Header=BB16_2 Depth=1
-	bnez	$s5, .LBB16_107
-# %bb.77:                               #   in Loop: Header=BB16_2 Depth=1
-	ld.w	$a0, $sp, 116
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	bnez	$s5, .LBB16_86
+# %bb.69:                               #   in Loop: Header=BB16_2 Depth=1
+	ld.w	$a0, $sp, 100
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.w	$a0, $a1, 76
 	ori	$s0, $zero, 1
-	b	.LBB16_108
-.LBB16_78:                              # %vector.ph298
+	ld.d	$a0, $sp, 104
+	bnez	$a0, .LBB16_96
+	b	.LBB16_97
+.LBB16_70:                              # %vector.ph260
                                         #   in Loop: Header=BB16_2 Depth=1
-	move	$a4, $zero
-	bstrpick.d	$a2, $a0, 30, 4
-	slli.d	$a2, $a2, 4
-	andi	$a3, $a0, 12
-	move	$a5, $a2
+	bstrpick.d	$a1, $a0, 30, 3
+	slli.d	$a1, $a1, 3
+	move	$a2, $zero
+	move	$a3, $a1
 	.p2align	4, , 16
-.LBB16_79:                              # %vector.body301
+.LBB16_71:                              # %vector.body263
                                         #   Parent Loop BB16_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$a6, $s7, $a4
-	xvld	$xr0, $a6, 4
-	xvld	$xr1, $a6, 36
-	add.d	$a6, $s6, $a4
-	xvstx	$xr0, $s6, $a4
-	xvst	$xr1, $a6, 32
-	addi.d	$a5, $a5, -16
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB16_79
-# %bb.80:                               # %middle.block306
+	add.d	$a4, $s7, $a2
+	vld	$vr0, $a4, 4
+	vld	$vr1, $a4, 20
+	add.d	$a4, $s6, $a2
+	vstx	$vr0, $s6, $a2
+	vst	$vr1, $a4, 16
+	addi.d	$a3, $a3, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB16_71
+# %bb.72:                               # %middle.block268
                                         #   in Loop: Header=BB16_2 Depth=1
-	beq	$a2, $a0, .LBB16_85
-# %bb.81:                               # %vec.epilog.iter.check311
-                                        #   in Loop: Header=BB16_2 Depth=1
-	beqz	$a3, .LBB16_40
-.LBB16_82:                              # %vec.epilog.ph313
-                                        #   in Loop: Header=BB16_2 Depth=1
-	move	$a4, $a2
-	bstrpick.d	$a2, $a0, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a4, $a2
-	slli.d	$a4, $a4, 2
+	bne	$a1, $a0, .LBB16_40
 	.p2align	4, , 16
-.LBB16_83:                              # %vec.epilog.vector.body316
-                                        #   Parent Loop BB16_2 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vldx	$vr0, $a1, $a4
-	vstx	$vr0, $s6, $a4
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a3, .LBB16_83
-# %bb.84:                               # %vec.epilog.middle.block320
-                                        #   in Loop: Header=BB16_2 Depth=1
-	bne	$a2, $a0, .LBB16_40
-	.p2align	4, , 16
-.LBB16_85:                              # %.loopexit163
+.LBB16_73:                              # %.loopexit163
                                         #   in Loop: Header=BB16_2 Depth=1
 	slli.d	$a0, $a0, 2
 	stx.w	$zero, $s6, $a0
-	st.w	$s0, $sp, 104
+	st.w	$s2, $sp, 88
 .Ltmp245:                               # EH_LABEL
-	addi.d	$a0, $sp, 96
-	addi.d	$a2, $sp, 116
+	addi.d	$a0, $sp, 80
+	addi.d	$a2, $sp, 100
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_Z24ParsePropDictionaryValueRK11CStringBaseIwERK14tagPROPVARIANTRj)
 	jirl	$ra, $ra, 0
 .Ltmp246:                               # EH_LABEL
-# %bb.86:                               #   in Loop: Header=BB16_2 Depth=1
+# %bb.74:                               #   in Loop: Header=BB16_2 Depth=1
 	move	$s5, $a0
-	ld.d	$a0, $sp, 96
-	beqz	$a0, .LBB16_88
-# %bb.87:                               #   in Loop: Header=BB16_2 Depth=1
+	ld.d	$a0, $sp, 80
+	beqz	$a0, .LBB16_76
+# %bb.75:                               #   in Loop: Header=BB16_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB16_88:                              # %_ZN11CStringBaseIwED2Ev.exit99
+.LBB16_76:                              # %_ZN11CStringBaseIwED2Ev.exit99
                                         #   in Loop: Header=BB16_2 Depth=1
-	bnez	$s5, .LBB16_107
-# %bb.89:                               #   in Loop: Header=BB16_2 Depth=1
-	ld.w	$a0, $sp, 116
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	bnez	$s5, .LBB16_86
+# %bb.77:                               #   in Loop: Header=BB16_2 Depth=1
+	ld.w	$a0, $sp, 100
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.w	$a0, $a1, 80
 	ori	$s0, $zero, 1
-	b	.LBB16_108
-.LBB16_90:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.._crit_edge_crit_edge.i134
+	ld.d	$a0, $sp, 104
+	bnez	$a0, .LBB16_96
+	b	.LBB16_97
+.LBB16_78:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.._crit_edge_crit_edge.i134
                                         #   in Loop: Header=BB16_2 Depth=1
 	move	$a1, $s0
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	b	.LBB16_103
-.LBB16_91:                              # %vector.main.loop.iter.check
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	b	.LBB16_82
+.LBB16_79:                              # %vector.ph
                                         #   in Loop: Header=BB16_2 Depth=1
-	ori	$a3, $zero, 16
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	bgeu	$s0, $a3, .LBB16_96
-# %bb.92:                               #   in Loop: Header=BB16_2 Depth=1
-	move	$a3, $zero
-	b	.LBB16_100
-.LBB16_93:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.._crit_edge_crit_edge.i149
-                                        #   in Loop: Header=BB16_2 Depth=1
-	move	$a1, $s0
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	b	.LBB16_120
-.LBB16_94:                              # %vector.main.loop.iter.check236
-                                        #   in Loop: Header=BB16_2 Depth=1
-	ori	$a3, $zero, 16
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	bgeu	$s0, $a3, .LBB16_113
-# %bb.95:                               #   in Loop: Header=BB16_2 Depth=1
-	move	$a3, $zero
-	b	.LBB16_117
-.LBB16_96:                              # %vector.ph
-                                        #   in Loop: Header=BB16_2 Depth=1
-	move	$a6, $zero
-	bstrpick.d	$a3, $a1, 30, 4
-	slli.d	$a3, $a3, 4
-	andi	$a5, $a1, 12
-	move	$a7, $a3
-	.p2align	4, , 16
-.LBB16_97:                              # %vector.body
-                                        #   Parent Loop BB16_2 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	add.d	$t0, $a4, $a6
-	xvld	$xr0, $t0, 16
-	xvld	$xr1, $t0, 48
-	add.d	$t0, $a0, $a6
-	xvstx	$xr0, $a0, $a6
-	xvst	$xr1, $t0, 32
-	addi.d	$a7, $a7, -16
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB16_97
-# %bb.98:                               # %middle.block
-                                        #   in Loop: Header=BB16_2 Depth=1
-	beq	$a3, $a1, .LBB16_103
-# %bb.99:                               # %vec.epilog.iter.check
-                                        #   in Loop: Header=BB16_2 Depth=1
-	beqz	$a5, .LBB16_49
-.LBB16_100:                             # %vec.epilog.ph
-                                        #   in Loop: Header=BB16_2 Depth=1
+	bstrpick.d	$a3, $a1, 30, 3
+	slli.d	$a3, $a3, 3
+	move	$a4, $zero
 	move	$a5, $a3
-	bstrpick.d	$a3, $a1, 30, 2
-	slli.d	$a3, $a3, 2
-	sub.d	$a4, $a5, $a3
-	slli.d	$a5, $a5, 2
 	.p2align	4, , 16
-.LBB16_101:                             # %vec.epilog.vector.body
+.LBB16_80:                              # %vector.body
                                         #   Parent Loop BB16_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vldx	$vr0, $a2, $a5
-	vstx	$vr0, $a0, $a5
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 16
-	bnez	$a4, .LBB16_101
-# %bb.102:                              # %vec.epilog.middle.block
+	add.d	$a6, $a2, $a4
+	vld	$vr0, $a6, 16
+	vld	$vr1, $a6, 32
+	add.d	$a6, $a0, $a4
+	vstx	$vr0, $a0, $a4
+	vst	$vr1, $a6, 16
+	addi.d	$a5, $a5, -8
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB16_80
+# %bb.81:                               # %middle.block
                                         #   in Loop: Header=BB16_2 Depth=1
 	bne	$a3, $a1, .LBB16_49
-.LBB16_103:                             # %.loopexit
+.LBB16_82:                              # %.loopexit
                                         #   in Loop: Header=BB16_2 Depth=1
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $a0, $a1
-	st.w	$s0, $sp, 104
+	st.w	$s0, $sp, 88
 .Ltmp284:                               # EH_LABEL
-	addi.d	$a0, $sp, 96
-	addi.d	$a2, $sp, 116
+	addi.d	$a0, $sp, 80
+	addi.d	$a2, $sp, 100
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_Z14ParsePropValueRK11CStringBaseIwERK14tagPROPVARIANTRj)
 	jirl	$ra, $ra, 0
 .Ltmp285:                               # EH_LABEL
-# %bb.104:                              #   in Loop: Header=BB16_2 Depth=1
+# %bb.83:                               #   in Loop: Header=BB16_2 Depth=1
 	move	$s5, $a0
-	ld.d	$a0, $sp, 96
-	beqz	$a0, .LBB16_106
-# %bb.105:                              #   in Loop: Header=BB16_2 Depth=1
+	ld.d	$a0, $sp, 80
+	beqz	$a0, .LBB16_85
+# %bb.84:                               #   in Loop: Header=BB16_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB16_106:                             # %_ZN11CStringBaseIwED2Ev.exit103
+.LBB16_85:                              # %_ZN11CStringBaseIwED2Ev.exit103
                                         #   in Loop: Header=BB16_2 Depth=1
-	beqz	$s5, .LBB16_112
+	beqz	$s5, .LBB16_87
 	.p2align	4, , 16
-.LBB16_107:                             # %.critedge94
+.LBB16_86:                              # %.critedge94
                                         #   in Loop: Header=BB16_2 Depth=1
 	move	$s0, $zero
 	move	$s3, $s5
-.LBB16_108:                             #   in Loop: Header=BB16_2 Depth=1
-	ld.d	$a0, $sp, 120
-	beqz	$a0, .LBB16_110
-# %bb.109:                              #   in Loop: Header=BB16_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZdaPv)
-	jirl	$ra, $ra, 0
-.LBB16_110:                             # %_ZN11CStringBaseIwED2Ev.exit113
-                                        #   in Loop: Header=BB16_2 Depth=1
-	beqz	$s0, .LBB16_125
-# %bb.111:                              #   in Loop: Header=BB16_2 Depth=1
-	addi.d	$s8, $s8, 1
-	bne	$s8, $fp, .LBB16_2
-	b	.LBB16_124
-.LBB16_112:                             #   in Loop: Header=BB16_2 Depth=1
-	ld.w	$a0, $sp, 116
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104
+	bnez	$a0, .LBB16_96
+	b	.LBB16_97
+.LBB16_87:                              #   in Loop: Header=BB16_2 Depth=1
+	ld.w	$a0, $sp, 100
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.w	$a0, $a1, 84
 	ori	$s0, $zero, 1
-	b	.LBB16_108
-.LBB16_113:                             # %vector.ph238
+	ld.d	$a0, $sp, 104
+	bnez	$a0, .LBB16_96
+	b	.LBB16_97
+.LBB16_88:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.._crit_edge_crit_edge.i149
                                         #   in Loop: Header=BB16_2 Depth=1
-	move	$a6, $zero
-	bstrpick.d	$a3, $a1, 30, 4
-	slli.d	$a3, $a3, 4
-	andi	$a5, $a1, 12
-	move	$a7, $a3
-	.p2align	4, , 16
-.LBB16_114:                             # %vector.body241
-                                        #   Parent Loop BB16_2 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	add.d	$t0, $a4, $a6
-	xvld	$xr0, $t0, 8
-	xvld	$xr1, $t0, 40
-	add.d	$t0, $a0, $a6
-	xvstx	$xr0, $a0, $a6
-	xvst	$xr1, $t0, 32
-	addi.d	$a7, $a7, -16
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB16_114
-# %bb.115:                              # %middle.block246
+	move	$a1, $s0
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	b	.LBB16_92
+.LBB16_89:                              # %vector.ph230
                                         #   in Loop: Header=BB16_2 Depth=1
-	beq	$a3, $a1, .LBB16_120
-# %bb.116:                              # %vec.epilog.iter.check251
-                                        #   in Loop: Header=BB16_2 Depth=1
-	beqz	$a5, .LBB16_60
-.LBB16_117:                             # %vec.epilog.ph253
-                                        #   in Loop: Header=BB16_2 Depth=1
+	bstrpick.d	$a3, $a1, 30, 3
+	slli.d	$a3, $a3, 3
+	move	$a4, $zero
 	move	$a5, $a3
-	bstrpick.d	$a3, $a1, 30, 2
-	slli.d	$a3, $a3, 2
-	sub.d	$a4, $a5, $a3
-	slli.d	$a5, $a5, 2
 	.p2align	4, , 16
-.LBB16_118:                             # %vec.epilog.vector.body256
+.LBB16_90:                              # %vector.body233
                                         #   Parent Loop BB16_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vldx	$vr0, $a2, $a5
-	vstx	$vr0, $a0, $a5
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 16
-	bnez	$a4, .LBB16_118
-# %bb.119:                              # %vec.epilog.middle.block260
+	add.d	$a6, $a2, $a4
+	vld	$vr0, $a6, 8
+	vld	$vr1, $a6, 24
+	add.d	$a6, $a0, $a4
+	vstx	$vr0, $a0, $a4
+	vst	$vr1, $a6, 16
+	addi.d	$a5, $a5, -8
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB16_90
+# %bb.91:                               # %middle.block238
                                         #   in Loop: Header=BB16_2 Depth=1
 	bne	$a3, $a1, .LBB16_60
-.LBB16_120:                             # %.loopexit161
+.LBB16_92:                              # %.loopexit161
                                         #   in Loop: Header=BB16_2 Depth=1
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $a0, $a1
-	st.w	$s0, $sp, 104
+	st.w	$s0, $sp, 88
 .Ltmp275:                               # EH_LABEL
-	addi.d	$a0, $sp, 96
+	addi.d	$a0, $sp, 80
 	move	$a1, $s5
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_Z11ParseMtPropRK11CStringBaseIwERK14tagPROPVARIANTjRj)
 	jirl	$ra, $ra, 0
 .Ltmp276:                               # EH_LABEL
-# %bb.121:                              #   in Loop: Header=BB16_2 Depth=1
+# %bb.93:                               #   in Loop: Header=BB16_2 Depth=1
 	move	$s5, $a0
-	ld.d	$a0, $sp, 96
-	beqz	$a0, .LBB16_123
-# %bb.122:                              #   in Loop: Header=BB16_2 Depth=1
+	ld.d	$a0, $sp, 80
+	beqz	$a0, .LBB16_95
+# %bb.94:                               #   in Loop: Header=BB16_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB16_123:                             # %_ZN11CStringBaseIwED2Ev.exit110
+.LBB16_95:                              # %_ZN11CStringBaseIwED2Ev.exit110
                                         #   in Loop: Header=BB16_2 Depth=1
 	sltui	$s0, $s5, 1
 	masknez	$a0, $s5, $s0
 	maskeqz	$a1, $s3, $s0
 	or	$s3, $a1, $a0
-	b	.LBB16_108
-.LBB16_124:
+	ld.d	$a0, $sp, 104
+	beqz	$a0, .LBB16_97
+	.p2align	4, , 16
+.LBB16_96:                              #   in Loop: Header=BB16_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZdaPv)
+	jirl	$ra, $ra, 0
+.LBB16_97:                              # %_ZN11CStringBaseIwED2Ev.exit113
+                                        #   in Loop: Header=BB16_2 Depth=1
+	beqz	$s0, .LBB16_100
+# %bb.98:                               #   in Loop: Header=BB16_2 Depth=1
+	addi.d	$s4, $s4, 1
+	bne	$s4, $fp, .LBB16_2
+.LBB16_99:
 	move	$s3, $zero
-.LBB16_125:                             # %._crit_edge
+.LBB16_100:                             # %._crit_edge
 	addi.w	$a0, $s3, 0
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
-.LBB16_126:                             # %_ZN11CStringBaseIwED2Ev.exit.i147
+.LBB16_101:                             # %_ZN11CStringBaseIwED2Ev.exit.i147
 .Ltmp274:                               # EH_LABEL
 	move	$fp, $a0
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	b	.LBB16_146
-.LBB16_127:                             # %_ZN11CStringBaseIwED2Ev.exit.i132
+	b	.LBB16_121
+.LBB16_102:                             # %_ZN11CStringBaseIwED2Ev.exit.i132
 .Ltmp283:                               # EH_LABEL
 	move	$fp, $a0
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	b	.LBB16_146
-.LBB16_128:
+	b	.LBB16_121
+.LBB16_103:
 .Ltmp277:                               # EH_LABEL
-	ld.d	$a1, $sp, 96
+	ld.d	$a1, $sp, 80
 	move	$fp, $a0
-	bnez	$a1, .LBB16_142
-	b	.LBB16_146
-.LBB16_129:
+	bnez	$a1, .LBB16_117
+	b	.LBB16_121
+.LBB16_104:
 .Ltmp271:                               # EH_LABEL
-	b	.LBB16_145
-.LBB16_130:
+	b	.LBB16_120
+.LBB16_105:
 .Ltmp286:                               # EH_LABEL
-	ld.d	$a1, $sp, 96
+	ld.d	$a1, $sp, 80
 	move	$fp, $a0
-	bnez	$a1, .LBB16_142
-	b	.LBB16_146
-.LBB16_131:
+	bnez	$a1, .LBB16_117
+	b	.LBB16_121
+.LBB16_106:
 .Ltmp280:                               # EH_LABEL
-	b	.LBB16_145
-.LBB16_132:                             # %_ZN11CStringBaseIwED2Ev.exit.i117
+	b	.LBB16_120
+.LBB16_107:                             # %_ZN11CStringBaseIwED2Ev.exit.i117
 .Ltmp244:                               # EH_LABEL
 	move	$fp, $a0
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	b	.LBB16_146
-.LBB16_133:                             # %_ZN11CStringBaseIwED2Ev.exit.i
+	b	.LBB16_121
+.LBB16_108:                             # %_ZN11CStringBaseIwED2Ev.exit.i
 .Ltmp253:                               # EH_LABEL
 	move	$fp, $a0
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	b	.LBB16_146
-.LBB16_134:
+	b	.LBB16_121
+.LBB16_109:
 .Ltmp268:                               # EH_LABEL
-	b	.LBB16_141
-.LBB16_135:
+	b	.LBB16_116
+.LBB16_110:
 .Ltmp265:                               # EH_LABEL
-	b	.LBB16_145
-.LBB16_136:
+	b	.LBB16_120
+.LBB16_111:
 .Ltmp247:                               # EH_LABEL
-	ld.d	$a1, $sp, 96
+	ld.d	$a1, $sp, 80
 	move	$fp, $a0
-	bnez	$a1, .LBB16_142
-	b	.LBB16_146
-.LBB16_137:
+	bnez	$a1, .LBB16_117
+	b	.LBB16_121
+.LBB16_112:
 .Ltmp241:                               # EH_LABEL
-	b	.LBB16_145
-.LBB16_138:
+	b	.LBB16_120
+.LBB16_113:
 .Ltmp256:                               # EH_LABEL
-	ld.d	$a1, $sp, 96
+	ld.d	$a1, $sp, 80
 	move	$fp, $a0
-	beqz	$a1, .LBB16_146
-	b	.LBB16_142
-.LBB16_139:
+	beqz	$a1, .LBB16_121
+	b	.LBB16_117
+.LBB16_114:
 .Ltmp250:                               # EH_LABEL
-	b	.LBB16_145
-.LBB16_140:
+	b	.LBB16_120
+.LBB16_115:
 .Ltmp262:                               # EH_LABEL
-.LBB16_141:
-	ld.d	$a1, $sp, 96
+.LBB16_116:
+	ld.d	$a1, $sp, 80
 	move	$fp, $a0
-	beqz	$a1, .LBB16_146
-.LBB16_142:
+	beqz	$a1, .LBB16_121
+.LBB16_117:
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	b	.LBB16_146
-.LBB16_143:
+	b	.LBB16_121
+.LBB16_118:
 .Ltmp259:                               # EH_LABEL
-	b	.LBB16_145
-.LBB16_144:
+	b	.LBB16_120
+.LBB16_119:
 .Ltmp238:                               # EH_LABEL
-.LBB16_145:
+.LBB16_120:
 	move	$fp, $a0
-.LBB16_146:
-	ld.d	$a0, $sp, 120
-	beqz	$a0, .LBB16_148
-# %bb.147:
+.LBB16_121:
+	ld.d	$a0, $sp, 104
+	beqz	$a0, .LBB16_123
+# %bb.122:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB16_148:                             # %_ZN11CStringBaseIwED2Ev.exit114
+.LBB16_123:                             # %_ZN11CStringBaseIwED2Ev.exit114
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
@@ -4936,7 +4813,6 @@ _ZNK11CStringBaseIwE3MidEii:            # @_ZNK11CStringBaseIwE3MidEii
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -4945,7 +4821,6 @@ _ZNK11CStringBaseIwE3MidEii:            # @_ZNK11CStringBaseIwE3MidEii
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
 	move	$s0, $a1
 	ld.w	$s2, $a1, 8
 	move	$s1, $a2
@@ -4976,14 +4851,14 @@ _ZNK11CStringBaseIwE3MidEii:            # @_ZNK11CStringBaseIwE3MidEii
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 0
 	st.w	$zero, $a0, 0
-	ori	$s5, $zero, 4
-	addi.w	$s6, $s4, 1
-	st.w	$s5, $fp, 12
-	beq	$s6, $s5, .LBB42_7
+	ori	$a1, $zero, 4
+	addi.w	$s5, $s4, 1
+	st.w	$a1, $fp, 12
+	beq	$s5, $a1, .LBB42_7
 # %bb.5:
 	move	$s2, $a0
 	slti	$a0, $s4, -1
-	slli.d	$a1, $s6, 2
+	slli.d	$a1, $s5, 2
 	masknez	$a1, $a1, $a0
 	addi.w	$a2, $zero, -1
 	maskeqz	$a0, $a2, $a0
@@ -5000,23 +4875,24 @@ _ZNK11CStringBaseIwE3MidEii:            # @_ZNK11CStringBaseIwE3MidEii
 	move	$a0, $s3
 	st.d	$s3, $fp, 0
 	st.w	$zero, $s3, 0
-	st.w	$s6, $fp, 12
+	st.w	$s5, $fp, 12
 	blez	$s4, .LBB42_12
-.LBB42_7:                               # %iter.check
+.LBB42_7:                               # %.lr.ph
 	ld.d	$a2, $s0, 0
+	ori	$a3, $zero, 8
 	alsl.d	$a1, $s1, $a2, 2
-	bltu	$s4, $s5, .LBB42_9
+	bltu	$s4, $a3, .LBB42_9
 # %bb.8:                                # %vector.memcheck
 	alsl.d	$a2, $s1, $a2, 2
 	sub.d	$a2, $a0, $a2
-	ori	$a3, $zero, 64
+	ori	$a3, $zero, 32
 	bgeu	$a2, $a3, .LBB42_18
 .LBB42_9:
 	move	$a2, $zero
-.LBB42_10:                              # %vec.epilog.scalar.ph.preheader
+.LBB42_10:                              # %scalar.ph.preheader
 	slli.d	$a3, $a2, 2
 	.p2align	4, , 16
-.LBB42_11:                              # %vec.epilog.scalar.ph
+.LBB42_11:                              # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ldx.w	$a4, $a1, $a3
 	stx.w	$a4, $a0, $a3
@@ -5054,7 +4930,6 @@ _ZNK11CStringBaseIwE3MidEii:            # @_ZNK11CStringBaseIwE3MidEii
 	move	$s4, $s2
 .LBB42_17:                              # %_ZN11CStringBaseIwEC2ERKS0_.exit
 	st.w	$s4, $fp, 8
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
@@ -5065,57 +4940,27 @@ _ZNK11CStringBaseIwE3MidEii:            # @_ZNK11CStringBaseIwE3MidEii
 	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 80
 	ret
-.LBB42_18:                              # %vector.main.loop.iter.check
-	ori	$a2, $zero, 1
-	sltu	$a3, $a2, $s4
-	masknez	$a2, $a2, $a3
-	maskeqz	$a3, $s4, $a3
-	ori	$a4, $zero, 16
-	or	$a3, $a3, $a2
-	bgeu	$s4, $a4, .LBB42_20
-# %bb.19:
-	move	$a2, $zero
-	b	.LBB42_24
-.LBB42_20:                              # %vector.ph
-	move	$a5, $zero
-	bstrpick.d	$a2, $a3, 30, 4
-	slli.d	$a2, $a2, 4
-	andi	$a4, $a3, 12
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB42_21:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	add.d	$a7, $a1, $a5
-	xvldx	$xr0, $a1, $a5
-	xvld	$xr1, $a7, 32
-	add.d	$a7, $a0, $a5
-	xvstx	$xr0, $a0, $a5
-	xvst	$xr1, $a7, 32
-	addi.d	$a6, $a6, -16
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB42_21
-# %bb.22:                               # %middle.block
-	beq	$a2, $s4, .LBB42_12
-# %bb.23:                               # %vec.epilog.iter.check
-	beqz	$a4, .LBB42_10
-.LBB42_24:                              # %vec.epilog.ph
+.LBB42_18:                              # %vector.ph
+	bstrpick.d	$a2, $s4, 30, 3
+	slli.d	$a2, $a2, 3
+	move	$a3, $zero
 	move	$a4, $a2
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a4, $a2
-	slli.d	$a4, $a4, 2
 	.p2align	4, , 16
-.LBB42_25:                              # %vec.epilog.vector.body
+.LBB42_19:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vldx	$vr0, $a1, $a4
-	vstx	$vr0, $a0, $a4
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a3, .LBB42_25
-# %bb.26:                               # %vec.epilog.middle.block
+	add.d	$a5, $a1, $a3
+	vldx	$vr0, $a1, $a3
+	vld	$vr1, $a5, 16
+	add.d	$a5, $a0, $a3
+	vstx	$vr0, $a0, $a3
+	vst	$vr1, $a5, 16
+	addi.d	$a4, $a4, -8
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB42_19
+# %bb.20:                               # %middle.block
 	beq	$a2, $s4, .LBB42_12
 	b	.LBB42_10
-.LBB42_27:                              # %_ZN11CStringBaseIwED2Ev.exit
+.LBB42_21:                              # %_ZN11CStringBaseIwED2Ev.exit
 .Ltmp343:                               # EH_LABEL
 	move	$fp, $a0
 	move	$a0, $s2

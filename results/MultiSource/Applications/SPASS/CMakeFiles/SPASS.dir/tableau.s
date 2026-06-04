@@ -274,8 +274,8 @@ tab_AddSplitAtCursor:                   # @tab_AddSplitAtCursor
 	jirl	$ra, $ra, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 16
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
 	sltui	$a1, $s0, 1
 	ori	$a2, $zero, 32
 	masknez	$a2, $a2, $a1

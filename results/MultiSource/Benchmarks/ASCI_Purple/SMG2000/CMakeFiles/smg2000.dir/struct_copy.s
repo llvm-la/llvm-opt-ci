@@ -26,8 +26,8 @@ hypre_StructCopy:                       # @hypre_StructCopy
 	blez	$a1, .LBB0_25
 # %bb.1:                                # %.lr.ph
 	move	$a5, $zero
-	ori	$s4, $zero, 8
-	ori	$s5, $zero, 64
+	ori	$s4, $zero, 4
+	ori	$s5, $zero, 32
 	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	b	.LBB0_3
 	.p2align	4, , 16
@@ -169,12 +169,12 @@ hypre_StructCopy:                       # @hypre_StructCopy
 	srli.d	$t2, $t2, 31
 	and	$t0, $t2, $t0
 	add.w	$s1, $t1, $t0
-	bstrpick.d	$t0, $a0, 30, 3
-	slli.d	$t0, $t0, 3
+	bstrpick.d	$t0, $a0, 30, 2
+	slli.d	$t0, $t0, 2
 	alsl.d	$t1, $s2, $s8, 3
-	addi.d	$t2, $t1, 32
+	addi.d	$t2, $t1, 16
 	alsl.d	$t3, $s7, $s6, 3
-	addi.d	$t4, $t3, 32
+	addi.d	$t4, $t3, 16
 	b	.LBB0_15
 	.p2align	4, , 16
 .LBB0_14:                               # %._crit_edge226.split.us.us.us.us.us.us
@@ -251,13 +251,13 @@ hypre_StructCopy:                       # @hypre_StructCopy
                                         #     Parent Loop BB0_15 Depth=2
                                         #       Parent Loop BB0_17 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	xvld	$xr0, $t6, -32
-	xvld	$xr1, $t6, 0
-	xvst	$xr0, $fp, -32
-	xvst	$xr1, $fp, 0
-	addi.d	$s0, $s0, -8
-	addi.d	$fp, $fp, 64
-	addi.d	$t6, $t6, 64
+	vld	$vr0, $t6, -16
+	vld	$vr1, $t6, 0
+	vst	$vr0, $fp, -16
+	vst	$vr1, $fp, 0
+	addi.d	$s0, $s0, -4
+	addi.d	$fp, $fp, 32
+	addi.d	$t6, $t6, 32
 	bnez	$s0, .LBB0_23
 # %bb.24:                               # %middle.block
                                         #   in Loop: Header=BB0_17 Depth=3

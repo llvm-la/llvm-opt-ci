@@ -649,20 +649,24 @@ _ZN23btConvexConvexAlgorithm16processCollisionEP17btCollisionObjectS1_RK16btDisp
 .LBB8_17:
 	addi.d	$a0, $s1, 8
 	vld	$vr1, $a0, 0
-	vld	$vr2, $s1, 24
 	fst.s	$fa0, $sp, 776
+	vld	$vr0, $s1, 24
+	vld	$vr2, $s1, 40
 	vst	$vr1, $sp, 648
-	xvld	$xr0, $s1, 40
-	vst	$vr2, $sp, 664
+	vld	$vr1, $s1, 56
+	vst	$vr0, $sp, 664
+	vst	$vr2, $sp, 680
 	addi.d	$a0, $s0, 8
-	vld	$vr1, $a0, 0
+	vld	$vr0, $a0, 0
+	vst	$vr1, $sp, 696
+	vld	$vr1, $s0, 24
 	ld.d	$a0, $s3, 48
-	xvst	$xr0, $sp, 680
-	xvld	$xr0, $s0, 24
-	vst	$vr1, $sp, 712
+	vst	$vr0, $sp, 712
+	vld	$vr0, $s0, 40
+	vst	$vr1, $sp, 728
 	vld	$vr1, $s0, 56
 	ld.d	$a3, $s3, 24
-	xvst	$xr0, $sp, 728
+	vst	$vr0, $sp, 744
 	st.d	$a0, $sp, 784
 	vst	$vr1, $sp, 760
 	addi.d	$a0, $sp, 552
@@ -2183,29 +2187,29 @@ _ZN23btConvexConvexAlgorithm22getAllContactManifoldsER20btAlignedObjectArrayIP20
 	ld.d	$a2, $a1, 16
 	blez	$a3, .LBB14_15
 .LBB14_6:                               # %.lr.ph.i.i.i
-	ori	$a5, $zero, 8
+	ori	$a5, $zero, 4
 	move	$a4, $zero
 	bltu	$a3, $a5, .LBB14_11
 # %bb.7:                                # %.lr.ph.i.i.i
 	sub.d	$a5, $fp, $a2
-	ori	$a6, $zero, 64
+	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB14_11
 # %bb.8:                                # %vector.ph
-	bstrpick.d	$a4, $a3, 30, 3
-	slli.d	$a4, $a4, 3
-	addi.d	$a5, $a2, 32
-	addi.d	$a6, $fp, 32
+	bstrpick.d	$a4, $a3, 30, 2
+	slli.d	$a4, $a4, 2
+	addi.d	$a5, $a2, 16
+	addi.d	$a6, $fp, 16
 	move	$a7, $a4
 	.p2align	4, , 16
 .LBB14_9:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a6, -32
-	xvst	$xr1, $a6, 0
-	addi.d	$a7, $a7, -8
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a6, -16
+	vst	$vr1, $a6, 0
+	addi.d	$a7, $a7, -4
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB14_9
 # %bb.10:                               # %middle.block
 	beq	$a4, $a3, .LBB14_13
@@ -2483,7 +2487,8 @@ _ZN15btTransformUtil32calculateDiffAxisAngleQuaternionERK12btQuaternionS2_R9btVe
 	vshuf4i.w	$vr4, $vr4, 13
 	vshuf4i.w	$vr4, $vr4, 16
 	vslli.d	$vr4, $vr4, 32
-	vext2xv.du.wu	$xr5, $xr5
+	vrepli.b	$vr6, 0
+	vilvl.w	$vr5, $vr6, $vr5
 	vor.v	$vr4, $vr4, $vr5
 .LBB16_3:                               # %_ZNK12btQuaternion7nearestERKS_.exit
 	vreplvei.w	$vr5, $vr4, 0

@@ -399,9 +399,8 @@ lzmaDecode:                             # @lzmaDecode
 	b	.LBB1_86
 .LBB1_42:                               # %.loopexit543.loopexit
                                         #   in Loop: Header=BB1_3 Depth=2
-	ld.d	$a5, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$t0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
 	b	.LBB1_92
 .LBB1_43:                               # %.loopexit1952
                                         #   in Loop: Header=BB1_3 Depth=2
@@ -421,17 +420,17 @@ lzmaDecode:                             # @lzmaDecode
 .LBB1_44:                               # %.loopexit542.loopexit
                                         #   in Loop: Header=BB1_3 Depth=2
 	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$t0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 208                   # 8-byte Folded Reload
 	b	.LBB1_89
 .LBB1_45:                               # %.loopexit1831
                                         #   in Loop: Header=BB1_3 Depth=2
 	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
 	beqz	$a3, .LBB1_157
 # %bb.46:                               #   in Loop: Header=BB1_3 Depth=2
-	ld.d	$a2, $sp, 216                   # 8-byte Folded Reload
-	ld.bu	$a2, $a2, 0
+	ld.d	$a6, $sp, 216                   # 8-byte Folded Reload
+	ld.bu	$a2, $a6, 0
 	ori	$a3, $zero, 225
 	ld.d	$t0, $sp, 184                   # 8-byte Folded Reload
 	bltu	$a3, $a2, .LBB1_148
@@ -573,6 +572,7 @@ lzmaDecode:                             # @lzmaDecode
 	ld.d	$t7, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$t8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$t0, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$a5, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
@@ -588,52 +588,47 @@ lzmaDecode:                             # @lzmaDecode
 	nor	$a2, $a2, $zero
 	st.d	$a2, $sp, 152                   # 8-byte Folded Spill
 	ori	$a2, $zero, 768
-	sll.w	$a3, $a2, $a3
-	slli.d	$a2, $a3, 1
-	alsl.d	$a3, $a3, $t2, 1
+	sll.w	$a2, $a2, $a3
+	ori	$a3, $zero, 3680
+	alsl.d	$a2, $a2, $a3, 1
+	add.d	$a3, $t2, $a2
 	.p2align	4, , 16
 .LBB1_65:                               # %vector.body
                                         #   Parent Loop BB1_2 Depth=1
                                         #     Parent Loop BB1_3 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$a4, $a3, $a1
-	xvldi	$xr0, -2812
-	ori	$a5, $zero, 3660
-	xvstx	$xr0, $a4, $a5
-	ori	$a5, $zero, 3628
-	addi.d	$a1, $a1, -64
-	add.d	$a6, $a2, $a1
-	lu12i.w	$a7, -1
-	ori	$a7, $a7, 448
-	xvstx	$xr0, $a4, $a5
-	bne	$a6, $a7, .LBB1_65
+	vldi	$vr0, -2812
+	vst	$vr0, $a4, -4
+	addi.d	$a1, $a1, -32
+	add.d	$a5, $a2, $a1
+	vst	$vr0, $a4, -20
+	bnez	$a5, .LBB1_65
 # %bb.66:                               # %vec.epilog.vector.body
                                         #   in Loop: Header=BB1_3 Depth=2
 	st.d	$zero, $sp, 200                 # 8-byte Folded Spill
 	move	$a2, $zero
-	xvst	$xr0, $t2, 12
 	lu12i.w	$a1, 16384
 	ori	$a1, $a1, 1024
-	st.w	$a1, $t2, 8
+	st.w	$a1, $t2, 0
 	bstrins.d	$a1, $a1, 58, 32
-	st.d	$a1, $t2, 0
+	st.d	$a1, $t2, 4
 	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
-	addi.d	$a5, $a5, 1
+	ld.d	$a5, $sp, 208                   # 8-byte Folded Reload
+	addi.d	$a6, $a6, 1
 	ori	$a1, $zero, 4
-	addi.w	$a6, $a6, -1
+	addi.w	$a5, $a5, -1
 	blt	$a2, $a1, .LBB1_88
 .LBB1_67:                               #   in Loop: Header=BB1_3 Depth=2
+	st.d	$a5, $sp, 208                   # 8-byte Folded Spill
 	addi.w	$a1, $t7, 0
 	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
 	addi.w	$a2, $a2, 0
 	beq	$a2, $a1, .LBB1_71
 # %bb.68:                               #   in Loop: Header=BB1_3 Depth=2
 	st.d	$t1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$a6, $sp, 208                   # 8-byte Folded Spill
-	st.d	$a5, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 216                   # 8-byte Folded Spill
 	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
 	st.d	$ra, $sp, 32                    # 8-byte Folded Spill
 	st.d	$t8, $sp, 40                    # 8-byte Folded Spill
@@ -662,9 +657,8 @@ lzmaDecode:                             # @lzmaDecode
 	ld.d	$t8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a5, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$t0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 80                    # 8-byte Folded Reload
 	beqz	$t3, .LBB1_148
 .LBB1_71:                               #   in Loop: Header=BB1_3 Depth=2
@@ -676,8 +670,7 @@ lzmaDecode:                             # @lzmaDecode
 	addi.d	$a2, $a2, -1
 	bnez	$a1, .LBB1_91
 .LBB1_72:                               #   in Loop: Header=BB1_3 Depth=2
-	st.d	$a6, $sp, 208                   # 8-byte Folded Spill
-	st.d	$a5, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 216                   # 8-byte Folded Spill
 	addi.w	$a2, $zero, -1
 	move	$a1, $t1
 	b	.LBB1_79
@@ -787,13 +780,12 @@ lzmaDecode:                             # @lzmaDecode
 	bnez	$a6, .LBB1_3
 .LBB1_86:                               # %.loopexit550
                                         #   in Loop: Header=BB1_3 Depth=2
-	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
-	beqz	$a6, .LBB1_150
+	ld.d	$t1, $sp, 208                   # 8-byte Folded Reload
+	beqz	$t1, .LBB1_150
 # %bb.87:                               #   in Loop: Header=BB1_3 Depth=2
 	slli.d	$s5, $s5, 8
 	ld.d	$a7, $sp, 216                   # 8-byte Folded Reload
 	ld.bu	$a3, $a7, 0
-	move	$t1, $a6
 	slli.w	$a6, $s8, 8
 	addi.w	$t1, $t1, -1
 	st.d	$t1, $sp, 208                   # 8-byte Folded Spill
@@ -808,9 +800,9 @@ lzmaDecode:                             # @lzmaDecode
 	move	$a1, $t1
 .LBB1_89:                               # %.loopexit542
                                         #   in Loop: Header=BB1_3 Depth=2
-	beqz	$a6, .LBB1_154
+	beqz	$a5, .LBB1_154
 # %bb.90:                               #   in Loop: Header=BB1_3 Depth=2
-	ld.bu	$a3, $a5, 0
+	ld.bu	$a3, $a6, 0
 	slli.d	$a4, $a2, 3
 	bstrpick.d	$a4, $a4, 31, 3
 	slli.d	$a4, $a4, 3
@@ -820,9 +812,9 @@ lzmaDecode:                             # @lzmaDecode
 	st.d	$a4, $sp, 200                   # 8-byte Folded Spill
 	addi.w	$a2, $a2, 1
 	move	$t1, $a1
-	addi.d	$a5, $a5, 1
+	addi.d	$a6, $a6, 1
 	ori	$a1, $zero, 4
-	addi.w	$a6, $a6, -1
+	addi.w	$a5, $a5, -1
 	bge	$a2, $a1, .LBB1_67
 	b	.LBB1_88
 .LBB1_91:                               #   in Loop: Header=BB1_3 Depth=2
@@ -830,12 +822,14 @@ lzmaDecode:                             # @lzmaDecode
 .LBB1_92:                               # %.loopexit543
                                         #   in Loop: Header=BB1_3 Depth=2
 	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
-	beqz	$a6, .LBB1_151
+	ld.d	$a5, $sp, 208                   # 8-byte Folded Reload
+	beqz	$a5, .LBB1_151
 # %bb.93:                               #   in Loop: Header=BB1_3 Depth=2
-	ld.bu	$a3, $a5, 0
+	ld.bu	$a3, $a6, 0
 	slli.w	$a4, $s8, 8
-	addi.w	$a6, $a6, -1
-	addi.d	$a5, $a5, 1
+	addi.w	$a5, $a5, -1
+	st.d	$a5, $sp, 208                   # 8-byte Folded Spill
+	addi.d	$a6, $a6, 1
 	or	$s8, $a4, $a3
 	move	$t1, $a1
 	addi.w	$a1, $a2, 0
@@ -1045,6 +1039,7 @@ lzmaDecode:                             # @lzmaDecode
 .LBB1_119:                              #   in Loop: Header=BB1_2 Depth=1
 	addi.w	$t0, $a5, 1
 .LBB1_120:                              #   in Loop: Header=BB1_2 Depth=1
+	ld.d	$a5, $sp, 208                   # 8-byte Folded Reload
 	beqz	$t0, .LBB1_153
 # %bb.121:                              #   in Loop: Header=BB1_2 Depth=1
 	bltu	$t5, $t0, .LBB1_148
@@ -1201,7 +1196,7 @@ lzmaDecode:                             # @lzmaDecode
 	b	.LBB1_142
 .LBB1_140:
 	move	$a6, $s2
-	move	$t1, $zero
+	move	$a5, $zero
 	ori	$a3, $zero, 14
 	b	.LBB1_145
 .LBB1_141:
@@ -1210,16 +1205,16 @@ lzmaDecode:                             # @lzmaDecode
 	ori	$a3, $zero, 28
 	move	$a7, $a4
 .LBB1_142:                              # %.loopexit501
-	ld.d	$t1, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 208                   # 8-byte Folded Reload
 	b	.LBB1_146
 .LBB1_143:
 	move	$a6, $s2
-	move	$t1, $zero
+	move	$a5, $zero
 	ori	$a3, $zero, 15
 	b	.LBB1_145
 .LBB1_144:
 	move	$a6, $s2
-	move	$t1, $zero
+	move	$a5, $zero
 	ori	$a3, $zero, 13
 .LBB1_145:                              # %.loopexit501
 	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
@@ -1237,7 +1232,7 @@ lzmaDecode:                             # @lzmaDecode
 	st.w	$t7, $a0, 20
 	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
 	st.d	$a1, $a0, 24
-	st.w	$t1, $a0, 32
+	st.w	$a5, $a0, 32
 	st.w	$t4, $a0, 36
 	st.d	$s6, $a0, 40
 	st.w	$s7, $a0, 48
@@ -1299,26 +1294,26 @@ lzmaDecode:                             # @lzmaDecode
 .LBB1_149:
 	st.d	$a6, $sp, 216                   # 8-byte Folded Spill
 	move	$a6, $s2
-	move	$t1, $zero
+	move	$a5, $zero
 	ori	$a3, $zero, 24
 	b	.LBB1_146
 .LBB1_150:
 	move	$a6, $s2
-	move	$t1, $zero
 	ori	$a3, $zero, 5
 	st.d	$a5, $sp, 168                   # 8-byte Folded Spill
+	move	$a5, $zero
 	st.d	$a4, $sp, 160                   # 8-byte Folded Spill
 	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB1_146
 .LBB1_151:
-	st.d	$a5, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 216                   # 8-byte Folded Spill
 	move	$a6, $s2
-	move	$t1, $zero
+	move	$a5, $zero
 	ori	$a3, $zero, 3
 	b	.LBB1_146
 .LBB1_152:
 	move	$a6, $s2
-	move	$t1, $zero
+	move	$a5, $zero
 	ori	$a3, $zero, 16
 	st.d	$a4, $sp, 200                   # 8-byte Folded Spill
 	b	.LBB1_145
@@ -1326,17 +1321,17 @@ lzmaDecode:                             # @lzmaDecode
 	move	$a6, $s2
 	move	$t0, $zero
 	ld.d	$a7, $sp, 96                    # 8-byte Folded Reload
-	b	.LBB1_142
+	b	.LBB1_146
 .LBB1_154:
-	st.d	$a5, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 216                   # 8-byte Folded Spill
 	move	$a6, $s2
-	move	$t1, $zero
+	move	$a5, $zero
 	ori	$a3, $zero, 1
 	b	.LBB1_146
 .LBB1_155:
 	st.d	$a7, $sp, 216                   # 8-byte Folded Spill
 	move	$a6, $s2
-	move	$t1, $zero
+	move	$a5, $zero
 	ori	$a3, $zero, 12
 	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB1_146
@@ -1348,7 +1343,7 @@ lzmaDecode:                             # @lzmaDecode
 	b	.LBB1_142
 .LBB1_157:
 	move	$a6, $s2
-	move	$t1, $zero
+	move	$a5, $zero
 	move	$a3, $zero
 	b	.LBB1_145
 .Lfunc_end1:

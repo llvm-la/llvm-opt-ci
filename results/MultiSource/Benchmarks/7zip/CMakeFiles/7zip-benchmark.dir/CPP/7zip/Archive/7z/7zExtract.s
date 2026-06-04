@@ -15,19 +15,19 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:
-	addi.d	$sp, $sp, -528
-	.cfi_def_cfa_offset 528
-	st.d	$ra, $sp, 520                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 512                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 504                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 496                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 488                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 480                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 472                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 464                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 456                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 448                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 440                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -512
+	.cfi_def_cfa_offset 512
+	st.d	$ra, $sp, 504                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 496                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 488                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 480                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 472                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 464                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 456                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 448                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 440                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 432                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 424                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -39,11 +39,11 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	st.d	$a3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
 	move	$s3, $a2
-	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	move	$fp, $a0
-	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 80                    # 8-byte Folded Spill
 	beqz	$a4, .LBB0_4
 # %bb.1:
 	ld.d	$a0, $a4, 0
@@ -72,47 +72,47 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	or	$a0, $a0, $a1
 	beqz	$a0, .LBB0_92
 .LBB0_5:
-	st.d	$fp, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 136                   # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
-	vst	$vr0, $sp, 416
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 400
 	ori	$a1, $zero, 8
-	st.d	$a1, $sp, 432
+	st.d	$a1, $sp, 416
 	pcalau12i	$a1, %pc_hi20(_ZTV13CObjectVectorIN8NArchive3N7z18CExtractFolderInfoEE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV13CObjectVectorIN8NArchive3N7z18CExtractFolderInfoEE+16)
-	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 408
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 392
 	addi.w	$s8, $zero, -1
 	bstrpick.d	$fp, $a0, 31, 0
-	st.d	$s8, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 128                   # 8-byte Folded Spill
 	lu32i.d	$s8, 0
 	pcalau12i	$a0, %pc_hi20(_ZTV13CRecordVectorIbE+16)
 	addi.d	$s3, $a0, %pc_lo12(_ZTV13CRecordVectorIbE+16)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
-	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	move	$s2, $zero
 	move	$s5, $zero
 	b	.LBB0_10
 	.p2align	4, , 16
 .LBB0_6:                                # %_ZN13CRecordVectorIbE3AddEb.exit.i
                                         #   in Loop: Header=BB0_10 Depth=1
-	ld.d	$a0, $sp, 200
-	ld.w	$a1, $sp, 196
+	ld.d	$a0, $sp, 184
+	ld.w	$a1, $sp, 180
 	ori	$a2, $zero, 1
 	stx.b	$a2, $a0, $a1
 	addi.d	$a0, $a1, 1
-	st.w	$a0, $sp, 196
+	st.w	$a0, $sp, 180
 .LBB0_7:                                # %_ZN8NArchive3N7z18CExtractFolderInfoC2Ejj.exit
                                         #   in Loop: Header=BB0_10 Depth=1
 .Ltmp17:                                # EH_LABEL
-	addi.d	$a0, $sp, 408
-	addi.d	$a1, $sp, 176
+	addi.d	$a0, $sp, 392
+	addi.d	$a1, $sp, 160
 	pcaddu18i	$ra, %call36(_ZN13CObjectVectorIN8NArchive3N7z18CExtractFolderInfoEE3AddERKS2_)
 	jirl	$ra, $ra, 0
 .Ltmp18:                                # EH_LABEL
 # %bb.8:                                #   in Loop: Header=BB0_10 Depth=1
-	addi.d	$a0, $sp, 184
+	addi.d	$a0, $sp, 168
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVectorD2Ev)
 	jirl	$ra, $ra, 0
 .LBB0_9:                                # %.loopexit283
@@ -127,45 +127,45 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	bnez	$s7, .LBB0_12
 # %bb.11:                               #   in Loop: Header=BB0_10 Depth=1
 	slli.d	$a0, $s2, 2
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	ldx.w	$s6, $a1, $a0
 .LBB0_12:                               #   in Loop: Header=BB0_10 Depth=1
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 808
 	addi.w	$a0, $s6, 0
 	slli.d	$a2, $a0, 2
 	ldx.w	$s1, $a1, $a2
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	beq	$s1, $a1, .LBB0_20
 # %bb.13:                               #   in Loop: Header=BB0_10 Depth=1
-	ld.w	$a0, $sp, 420
+	ld.w	$a0, $sp, 404
 	beqz	$a0, .LBB0_15
 # %bb.14:                               #   in Loop: Header=BB0_10 Depth=1
-	ld.d	$a1, $sp, 424
+	ld.d	$a1, $sp, 408
 	alsl.d	$a0, $a0, $a1, 3
 	ld.d	$s4, $a0, -8
 	ld.w	$a0, $s4, 4
 	beq	$s1, $a0, .LBB0_31
 .LBB0_15:                               #   in Loop: Header=BB0_10 Depth=1
-	st.w	$s8, $sp, 176
-	st.w	$s1, $sp, 180
-	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
-	addi.d	$a0, $sp, 192
-	vst	$vr0, $a0, 0
-	st.d	$s3, $sp, 184
+	st.w	$s8, $sp, 160
+	st.w	$s1, $sp, 164
 	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
-	vst	$vr0, $sp, 208
+	addi.d	$a0, $sp, 176
+	vst	$vr0, $a0, 0
+	st.d	$s3, $sp, 168
+	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 192
 .Ltmp3:                                 # EH_LABEL
-	addi.d	$a0, $sp, 408
-	addi.d	$a1, $sp, 176
+	addi.d	$a0, $sp, 392
+	addi.d	$a1, $sp, 160
 	pcaddu18i	$ra, %call36(_ZN13CObjectVectorIN8NArchive3N7z18CExtractFolderInfoEE3AddERKS2_)
 	jirl	$ra, $ra, 0
 .Ltmp4:                                 # EH_LABEL
 # %bb.16:                               #   in Loop: Header=BB0_10 Depth=1
-	addi.d	$a0, $sp, 184
+	addi.d	$a0, $sp, 168
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVectorD2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 256
 	slli.d	$a1, $s1, 3
 	ldx.d	$a0, $a0, $a1
@@ -187,19 +187,19 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	b	.LBB0_24
 	.p2align	4, , 16
 .LBB0_20:                               #   in Loop: Header=BB0_10 Depth=1
-	st.w	$s6, $sp, 176
-	st.w	$s8, $sp, 180
-	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
-	addi.d	$a2, $sp, 192
-	vst	$vr0, $a2, 0
-	st.d	$s3, $sp, 184
+	st.w	$s6, $sp, 160
+	st.w	$s8, $sp, 164
 	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
-	vst	$vr0, $sp, 208
+	addi.d	$a2, $sp, 176
+	vst	$vr0, $a2, 0
+	st.d	$s3, $sp, 168
+	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 192
 	beq	$a0, $a1, .LBB0_7
 # %bb.21:                               #   in Loop: Header=BB0_10 Depth=1
 .Ltmp12:                                # EH_LABEL
 	ori	$a1, $zero, 1
-	addi.d	$s0, $sp, 184
+	addi.d	$s0, $sp, 168
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector7ReserveEi)
 	jirl	$ra, $ra, 0
@@ -244,14 +244,14 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 .LBB0_29:                               #   in Loop: Header=BB0_10 Depth=1
 	move	$a0, $zero
 .LBB0_30:                               #   in Loop: Header=BB0_10 Depth=1
-	ld.w	$a1, $sp, 420
-	ld.d	$a2, $sp, 424
+	ld.w	$a1, $sp, 404
+	ld.d	$a2, $sp, 408
 	alsl.d	$a1, $a1, $a2, 3
 	ld.d	$s4, $a1, -8
 	add.d	$s5, $a0, $s5
 	st.d	$a0, $s4, 40
 .LBB0_31:                               #   in Loop: Header=BB0_10 Depth=1
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 776
 	slli.d	$a1, $s1, 2
 	ldx.w	$a0, $a0, $a1
@@ -280,7 +280,7 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	bgeu	$s0, $s1, .LBB0_33
 	b	.LBB0_9
 .LBB0_35:
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 40
 .Ltmp20:                                # EH_LABEL
@@ -289,12 +289,12 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 .Ltmp21:                                # EH_LABEL
 # %bb.36:
 	move	$fp, $a0
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 128                   # 8-byte Folded Reload
 	bnez	$a0, .LBB0_97
 # %bb.37:
 .Ltmp23:                                # EH_LABEL
-	addi.d	$a0, $sp, 176
+	addi.d	$a0, $sp, 160
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z8CDecoderC1Eb)
 	jirl	$ra, $ra, 0
@@ -321,9 +321,9 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 # %bb.41:                               # %_ZN9CMyComPtrI21ICompressProgressInfoEC2EPS0_.exit
 .Ltmp35:                                # EH_LABEL
 	move	$a0, $s1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	move	$a2, $zero
-	st.d	$s1, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZN14CLocalProgress4InitEP9IProgressb)
 	jirl	$ra, $ra, 0
 .Ltmp36:                                # EH_LABEL
@@ -331,25 +331,23 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	move	$s6, $zero
 	move	$s7, $zero
 	move	$s3, $zero
-	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 72                  # 8-byte Folded Spill
 	addi.d	$a0, $s0, 144
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	sltu	$a0, $zero, $a0
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	lu12i.w	$a0, -524284
 	ori	$a0, $a0, 1
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB0_44
 	.p2align	4, , 16
 .LBB0_43:                               #   in Loop: Header=BB0_44 Depth=1
 	addi.d	$s6, $s6, 1
 	add.d	$s7, $fp, $s7
 	add.d	$s3, $s5, $s3
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 128                   # 8-byte Folded Reload
 .LBB0_44:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_72 Depth 2
                                         #     Child Loop BB0_61 Depth 2
@@ -363,10 +361,10 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 # %bb.45:                               #   in Loop: Header=BB0_44 Depth=1
 	bnez	$a0, .LBB0_95
 # %bb.46:                               #   in Loop: Header=BB0_44 Depth=1
-	ld.w	$a0, $sp, 420
+	ld.w	$a0, $sp, 404
 	bge	$s6, $a0, .LBB0_93
 # %bb.47:                               #   in Loop: Header=BB0_44 Depth=1
-	ld.d	$a0, $sp, 424
+	ld.d	$a0, $sp, 408
 	slli.d	$a1, $s6, 3
 	ldx.d	$s5, $a0, $a1
 	ld.d	$fp, $s5, 40
@@ -403,10 +401,10 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	sltu	$a7, $zero, $a0
 .Ltmp50:                                # EH_LABEL
 	move	$a0, $s2
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	move	$a2, $zero
-	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 88                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z16CFolderOutStream4InitEPKNS0_18CArchiveDatabaseExEjjPK13CRecordVectorIbEP23IArchiveExtractCallbackbb)
 	jirl	$ra, $ra, 0
 .Ltmp51:                                # EH_LABEL
@@ -415,7 +413,7 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 # %bb.54:                               #   in Loop: Header=BB0_44 Depth=1
 	move	$s5, $zero
 	ori	$s8, $zero, 1
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	b	.LBB0_81
 	.p2align	4, , 16
 .LBB0_55:                               #   in Loop: Header=BB0_44 Depth=1
@@ -434,12 +432,12 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	slli.d	$a0, $a0, 2
 	ld.w	$a1, $a5, 76
 	ldx.w	$s1, $a2, $a0
-	st.d	$a5, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a5, $sp, 56                    # 8-byte Folded Spill
 	blez	$a1, .LBB0_62
 # %bb.58:                               # %.lr.ph.i253
                                         #   in Loop: Header=BB0_44 Depth=1
 	ld.d	$a0, $s0, 160
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 6
 	bgeu	$a1, $a2, .LBB0_69
 # %bb.59:                               #   in Loop: Header=BB0_44 Depth=1
 	move	$a2, $zero
@@ -463,26 +461,26 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	move	$s5, $zero
 .LBB0_63:                               # %.loopexit
                                         #   in Loop: Header=BB0_44 Depth=1
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a3, $s8, 712
 	ld.d	$s4, $s8, 648
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	slli.d	$a2, $s1, 3
 	ldx.d	$s0, $a3, $a2
-	st.d	$zero, $sp, 168
+	st.d	$zero, $sp, 152
 	ld.d	$a3, $a1, 0
 .Ltmp53:                                # EH_LABEL
 	pcalau12i	$a1, %got_pc_hi20(IID_ICryptoGetTextPassword)
 	ld.d	$a1, $a1, %got_pc_lo12(IID_ICryptoGetTextPassword)
-	addi.d	$a2, $sp, 168
+	addi.d	$a2, $sp, 152
 	jirl	$ra, $a3, 0
 .Ltmp54:                                # EH_LABEL
 # %bb.64:                               # %_ZNK9CMyComPtrI23IArchiveExtractCallbackE14QueryInterfaceI22ICryptoGetTextPasswordEEiRK4GUIDPPT_.exit
                                         #   in Loop: Header=BB0_44 Depth=1
 	ld.d	$a1, $s8, 136
 	ld.d	$a0, $s8, 160
-	ld.d	$a7, $sp, 168
+	ld.d	$a7, $sp, 152
 	ld.w	$a4, $s8, 8
 	add.d	$a2, $s0, $s4
 	alsl.d	$a3, $s1, $a0, 3
@@ -490,18 +488,18 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	st.d	$a4, $sp, 16
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 8
-	addi.d	$a0, $sp, 176
-	addi.d	$a4, $sp, 167
+	addi.d	$a0, $sp, 160
+	addi.d	$a4, $sp, 151
 	st.d	$a4, $sp, 0
-	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	move	$a5, $s2
-	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	move	$a6, $s1
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z8CDecoder6DecodeEP9IInStreamyPKyRKNS0_7CFolderEP20ISequentialOutStreamP21ICompressProgressInfoP22ICryptoGetTextPasswordRbbj)
 	jirl	$ra, $ra, 0
 .Ltmp56:                                # EH_LABEL
 # %bb.65:                               #   in Loop: Header=BB0_44 Depth=1
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB0_76
 # %bb.66:                               #   in Loop: Header=BB0_44 Depth=1
 	beqz	$a0, .LBB0_74
@@ -530,32 +528,30 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	bnez	$a3, .LBB0_60
 # %bb.71:                               # %vector.ph
                                         #   in Loop: Header=BB0_44 Depth=1
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
 	move	$a3, $s1
 	move	$a4, $a2
-	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
-	xvori.b	$xr0, $xr1, 0
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vori.b	$vr0, $vr1, 0
 	.p2align	4, , 16
 .LBB0_72:                               # %vector.body
                                         #   Parent Loop BB0_44 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	alsl.d	$a5, $a3, $a0, 3
 	slli.d	$a6, $a3, 3
-	xvldx	$xr2, $a0, $a6
-	xvld	$xr3, $a5, 32
-	xvadd.d	$xr0, $xr2, $xr0
-	xvadd.d	$xr1, $xr3, $xr1
-	addi.d	$a4, $a4, -8
-	addi.w	$a3, $a3, 8
+	vldx	$vr2, $a0, $a6
+	vld	$vr3, $a5, 16
+	vadd.d	$vr0, $vr2, $vr0
+	vadd.d	$vr1, $vr3, $vr1
+	addi.d	$a4, $a4, -4
+	addi.w	$a3, $a3, 4
 	bnez	$a4, .LBB0_72
 # %bb.73:                               # %middle.block
                                         #   in Loop: Header=BB0_44 Depth=1
-	xvadd.d	$xr0, $xr1, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$s5, $xr0, 0
+	vadd.d	$vr0, $vr1, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$s5, $vr0, 0
 	bne	$a2, $a1, .LBB0_60
 	b	.LBB0_63
 .LBB0_74:                               #   in Loop: Header=BB0_44 Depth=1
@@ -565,9 +561,9 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	bne	$a1, $a0, .LBB0_77
 # %bb.75:                               #   in Loop: Header=BB0_44 Depth=1
 	move	$s8, $zero
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 168
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 152
 	bnez	$a0, .LBB0_80
 	b	.LBB0_81
 .LBB0_76:                               #   in Loop: Header=BB0_44 Depth=1
@@ -593,12 +589,12 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	maskeqz	$a3, $a3, $a1
 	or	$s8, $a3, $a2
 	masknez	$a0, $a0, $a1
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	maskeqz	$a1, $a2, $a1
 	or	$a0, $a1, $a0
 .LBB0_79:                               #   in Loop: Header=BB0_44 Depth=1
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 168
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 152
 	beqz	$a0, .LBB0_81
 .LBB0_80:                               #   in Loop: Header=BB0_44 Depth=1
 	ld.d	$a1, $a0, 0
@@ -659,12 +655,12 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	maskeqz	$a2, $a2, $a0
 	or	$s8, $a2, $a1
 	masknez	$a1, $s0, $a0
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
-	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 168
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152
 	bnez	$a0, .LBB0_80
 	b	.LBB0_81
 .LBB0_92:
@@ -674,7 +670,7 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	move	$a0, $zero
 	b	.LBB0_95
 .LBB0_94:
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 .LBB0_95:                               # %.thread
 	move	$fp, $a0
 	ld.d	$a0, $s1, 0
@@ -684,23 +680,23 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	jirl	$ra, $a1, 0
 .Ltmp98:                                # EH_LABEL
 # %bb.96:                               # %_ZN9CMyComPtrI21ICompressProgressInfoED2Ev.exit
-	addi.d	$a0, $sp, 176
+	addi.d	$a0, $sp, 160
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z8CDecoderD2Ev)
 	jirl	$ra, $ra, 0
 .LBB0_97:
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	st.d	$a0, $sp, 408
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 392
 .Ltmp100:                               # EH_LABEL
-	addi.d	$a0, $sp, 408
+	addi.d	$a0, $sp, 392
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp101:                               # EH_LABEL
 # %bb.98:                               # %.thread337
-	addi.d	$a0, $sp, 408
+	addi.d	$a0, $sp, 392
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVectorD2Ev)
 	jirl	$ra, $ra, 0
 .LBB0_99:                               # %.thread342
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 16
 .Ltmp103:                               # EH_LABEL
@@ -708,18 +704,18 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 .Ltmp104:                               # EH_LABEL
 .LBB0_100:                              # %_ZN9CMyComPtrI23IArchiveExtractCallbackED2Ev.exit266
 	addi.w	$a0, $fp, 0
-	ld.d	$s8, $sp, 440                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 448                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 456                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 464                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 472                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 480                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 488                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 496                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 504                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 512                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 520                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 528
+	ld.d	$s8, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 432                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 440                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 448                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 456                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 464                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 472                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 488                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 496                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 504                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 512
 	ret
 .LBB0_101:                              # %_ZNK8NArchive3N7z7CFolder24FindBindPairForOutStreamEj.exit._crit_edge.i
 	ori	$a0, $zero, 4
@@ -785,7 +781,7 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	move	$s0, $a1
 	move	$s5, $a0
 .LBB0_114:
-	ld.d	$a0, $sp, 168
+	ld.d	$a0, $sp, 152
 	beqz	$a0, .LBB0_122
 # %bb.115:
 	ld.d	$a1, $a0, 0
@@ -806,10 +802,10 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 .Ltmp22:                                # EH_LABEL
 	move	$s0, $a1
 	move	$s5, $a0
-	addi.d	$a0, $sp, 408
+	addi.d	$a0, $sp, 392
 	pcaddu18i	$ra, %call36(_ZN13CObjectVectorIN8NArchive3N7z18CExtractFolderInfoEED2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	b	.LBB0_141
 .LBB0_119:
 .Ltmp2:                                 # EH_LABEL
@@ -861,14 +857,14 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	move	$s0, $a1
 	move	$s5, $a0
 .LBB0_130:                              # %_ZN9CMyComPtrI20ISequentialOutStreamED2Ev.exit260
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 16
 .Ltmp82:                                # EH_LABEL
 	jirl	$ra, $a1, 0
 .Ltmp83:                                # EH_LABEL
 .LBB0_131:                              # %_ZN9CMyComPtrI21ICompressProgressInfoED2Ev.exit263
-	addi.d	$a0, $sp, 176
+	addi.d	$a0, $sp, 160
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z8CDecoderD2Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB0_140
@@ -890,7 +886,7 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 .LBB0_137:                              # %.body
 	move	$s0, $a1
 	move	$s5, $a0
-	addi.d	$a0, $sp, 184
+	addi.d	$a0, $sp, 168
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVectorD2Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB0_140
@@ -900,10 +896,10 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	move	$s0, $a1
 	move	$s5, $a0
 .LBB0_140:
-	addi.d	$a0, $sp, 408
+	addi.d	$a0, $sp, 392
 	pcaddu18i	$ra, %call36(_ZN13CObjectVectorIN8NArchive3N7z18CExtractFolderInfoEED2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	beqz	$a0, .LBB0_142
 .LBB0_141:
 	ld.d	$a1, $a0, 0

@@ -1,9 +1,10 @@
 	.file	"md5.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function md5_starts
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function md5_starts
 .LCPI0_0:
 	.dword	1732584193                      # 0x67452301
 	.dword	4023233417                      # 0xefcdab89
+.LCPI0_1:
 	.dword	2562383102                      # 0x98badcfe
 	.dword	271733878                       # 0x10325476
 	.text
@@ -14,10 +15,13 @@
 md5_starts:                             # @md5_starts
 # %bb.0:
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_0)
-	vrepli.b	$vr1, 0
-	vst	$vr1, $a0, 0
-	xvst	$xr0, $a0, 16
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI0_1)
+	vrepli.b	$vr2, 0
+	vst	$vr2, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 32
 	ret
 .Lfunc_end0:
 	.size	md5_starts, .Lfunc_end0-md5_starts
@@ -1178,11 +1182,12 @@ my_rand_r:                              # @my_rand_r
 .Lfunc_end4:
 	.size	my_rand_r, .Lfunc_end4-my_rand_r
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI5_0:
 	.dword	1732584193                      # 0x67452301
 	.dword	4023233417                      # 0xefcdab89
+.LCPI5_1:
 	.dword	2562383102                      # 0x98badcfe
 	.dword	271733878                       # 0x10325476
 	.text
@@ -1243,8 +1248,11 @@ main:                                   # @main
 	add.d	$fp, $sp, $a0
 	addi.w	$s4, $a2, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI5_0)
-	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
+	vld	$vr0, $a0, %pc_lo12(.LCPI5_0)
+	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(.LCPI5_1)
+	vld	$vr0, $a0, %pc_lo12(.LCPI5_1)
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	ori	$a0, $s0, 1696
@@ -1340,11 +1348,16 @@ main:                                   # @main
 	ori	$a0, $a0, 1784
 	add.d	$a0, $sp, $a0
 	vst	$vr0, $a0, 0
-	xvld	$xr0, $sp, 32                   # 32-byte Folded Reload
+	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
 	lu12i.w	$a0, 24
 	ori	$a0, $a0, 1800
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	lu12i.w	$a0, 24
+	ori	$a0, $a0, 1816
+	add.d	$a0, $sp, $a0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	beq	$s4, $a0, .LBB5_5
 # %bb.7:                                # %.split.preheader

@@ -152,7 +152,7 @@ _ZN7NCrypto7NSevenZ8CKeyInfo15CalculateDigestEv: # @_ZN7NCrypto7NSevenZ8CKeyInfo
 	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(Sha256_Final)
 	jirl	$ra, $ra, 0
-	b	.LBB1_30
+	b	.LBB1_25
 .LBB1_10:                               # %vector.ph
 	bstrpick.d	$a2, $a1, 31, 3
 	slli.d	$a2, $a2, 3
@@ -182,10 +182,10 @@ _ZN7NCrypto7NSevenZ8CKeyInfo15CalculateDigestEv: # @_ZN7NCrypto7NSevenZ8CKeyInfo
 	bnez	$a2, .LBB1_14
 .LBB1_15:                               # %.preheader22
 	ld.d	$a2, $fp, 32
-	beqz	$a2, .LBB1_28
+	beqz	$a2, .LBB1_23
 # %bb.16:                               # %.preheader22
 	ori	$a3, $zero, 31
-	bltu	$a3, $a1, .LBB1_28
+	bltu	$a3, $a1, .LBB1_23
 # %bb.17:                               # %iter.check
 	ld.d	$a3, $fp, 40
 	addi.d	$a1, $a2, -1
@@ -194,15 +194,15 @@ _ZN7NCrypto7NSevenZ8CKeyInfo15CalculateDigestEv: # @_ZN7NCrypto7NSevenZ8CKeyInfo
 	masknez	$a4, $a4, $a5
 	maskeqz	$a1, $a1, $a5
 	or	$a1, $a1, $a4
-	ori	$a5, $zero, 7
+	ori	$a5, $zero, 3
 	addi.d	$a4, $fp, 48
 	bltu	$a1, $a5, .LBB1_19
 # %bb.18:                               # %vector.memcheck
 	add.d	$a5, $fp, $a0
 	sub.d	$a5, $a5, $a3
 	addi.d	$a5, $a5, 48
-	ori	$a6, $zero, 32
-	bgeu	$a5, $a6, .LBB1_23
+	ori	$a6, $zero, 16
+	bgeu	$a5, $a6, .LBB1_26
 .LBB1_19:
 	move	$a5, $zero
 	move	$a1, $a0
@@ -216,42 +216,15 @@ _ZN7NCrypto7NSevenZ8CKeyInfo15CalculateDigestEv: # @_ZN7NCrypto7NSevenZ8CKeyInfo
 	addi.d	$a1, $a1, 1
 	addi.d	$a5, $a5, 1
 	stx.b	$a7, $a4, $a6
-	bgeu	$a5, $a2, .LBB1_28
+	bgeu	$a5, $a2, .LBB1_23
 # %bb.22:                               # %vec.epilog.scalar.ph
                                         #   in Loop: Header=BB1_21 Depth=1
 	bltu	$a6, $a0, .LBB1_21
-	b	.LBB1_28
-.LBB1_23:                               # %vector.main.loop.iter.check
-	ori	$a5, $zero, 31
-	addi.d	$a6, $a1, 1
-	bne	$a1, $a5, .LBB1_25
-# %bb.24:                               # %vector.body50
-	xvld	$xr0, $a3, 0
-	or	$a1, $a6, $a0
-	xvstx	$xr0, $a4, $a0
-	b	.LBB1_28
-.LBB1_25:                               # %vec.epilog.ph
-	andi	$a5, $a6, 56
-	add.d	$a1, $a5, $a0
-	add.d	$a0, $a4, $a0
-	move	$a7, $a3
-	move	$t0, $a5
-	.p2align	4, , 16
-.LBB1_26:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$t1, $a7, 0
-	st.d	$t1, $a0, 0
-	addi.d	$a0, $a0, 8
-	addi.d	$t0, $t0, -8
-	addi.d	$a7, $a7, 8
-	bnez	$t0, .LBB1_26
-# %bb.27:                               # %vec.epilog.middle.block
-	bne	$a6, $a5, .LBB1_20
-.LBB1_28:                               # %.preheader
+.LBB1_23:                               # %.preheader
 	addi.w	$a0, $a1, 0
 	ori	$a2, $zero, 31
-	bltu	$a2, $a0, .LBB1_30
-# %bb.29:                               # %.lr.ph32
+	bltu	$a2, $a0, .LBB1_25
+# %bb.24:                               # %.lr.ph32
 	add.d	$a0, $fp, $a0
 	addi.d	$a0, $a0, 48
 	ori	$a2, $zero, 32
@@ -267,7 +240,7 @@ _ZN7NCrypto7NSevenZ8CKeyInfo15CalculateDigestEv: # @_ZN7NCrypto7NSevenZ8CKeyInfo
 	addi.d	$sp, $sp, 176
 	pcaddu18i	$t8, %call36(memset)
 	jr	$t8
-.LBB1_30:                               # %.loopexit
+.LBB1_25:                               # %.loopexit
 	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
@@ -277,6 +250,54 @@ _ZN7NCrypto7NSevenZ8CKeyInfo15CalculateDigestEv: # @_ZN7NCrypto7NSevenZ8CKeyInfo
 	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 176
 	ret
+.LBB1_26:                               # %vector.main.loop.iter.check
+	ori	$a5, $zero, 15
+	addi.d	$a6, $a1, 1
+	bgeu	$a1, $a5, .LBB1_28
+# %bb.27:
+	move	$a5, $zero
+	b	.LBB1_32
+.LBB1_28:                               # %vector.ph47
+	andi	$a7, $a6, 12
+	andi	$a5, $a6, 48
+	add.d	$a1, $a5, $a0
+	add.d	$t0, $a4, $a0
+	move	$t1, $a3
+	move	$t2, $a5
+	.p2align	4, , 16
+.LBB1_29:                               # %vector.body50
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $t1, 0
+	vst	$vr0, $t0, 0
+	addi.d	$t0, $t0, 16
+	addi.d	$t2, $t2, -16
+	addi.d	$t1, $t1, 16
+	bnez	$t2, .LBB1_29
+# %bb.30:                               # %middle.block54
+	beq	$a6, $a5, .LBB1_23
+# %bb.31:                               # %vec.epilog.iter.check
+	beqz	$a7, .LBB1_20
+.LBB1_32:                               # %vec.epilog.ph
+	move	$t0, $a5
+	andi	$a5, $a6, 60
+	add.d	$a1, $a5, $a0
+	add.d	$a0, $t0, $a0
+	add.d	$a0, $a0, $fp
+	addi.d	$a0, $a0, 48
+	sub.d	$a7, $t0, $a5
+	add.d	$t0, $a3, $t0
+	.p2align	4, , 16
+.LBB1_33:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$t1, $t0, 0
+	st.w	$t1, $a0, 0
+	addi.d	$a0, $a0, 4
+	addi.d	$a7, $a7, 4
+	addi.d	$t0, $t0, 4
+	bnez	$a7, .LBB1_33
+# %bb.34:                               # %vec.epilog.middle.block
+	bne	$a6, $a5, .LBB1_20
+	b	.LBB1_23
 .Lfunc_end1:
 	.size	_ZN7NCrypto7NSevenZ8CKeyInfo15CalculateDigestEv, .Lfunc_end1-_ZN7NCrypto7NSevenZ8CKeyInfo15CalculateDigestEv
 	.cfi_endproc
@@ -536,9 +557,11 @@ _ZN7NCrypto7NSevenZ13CKeyInfoCache4FindERNS0_8CKeyInfoE: # @_ZN7NCrypto7NSevenZ1
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 .LBB2_30:                               # %_ZN13CObjectVectorIN7NCrypto7NSevenZ8CKeyInfoEE6InsertEiRKS2_.exit
-	xvld	$xr0, $s3, 48
+	vld	$vr0, $s3, 64
+	vst	$vr0, $s0, 64
+	vld	$vr0, $s3, 48
 	addi.d	$s1, $fp, 8
-	xvst	$xr0, $s0, 48
+	vst	$vr0, $s0, 48
 	move	$a0, $s1
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector13InsertOneItemEi)
@@ -798,8 +821,10 @@ _ZN7NCrypto7NSevenZ13CKeyInfoCache3AddERNS0_8CKeyInfoE: # @_ZN7NCrypto7NSevenZ13
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 .LBB4_6:                                # %_ZN13CObjectVectorIN7NCrypto7NSevenZ8CKeyInfoEE6InsertEiRKS2_.exit
-	xvld	$xr0, $s0, 48
-	xvst	$xr0, $s2, 48
+	vld	$vr0, $s0, 64
+	vld	$vr1, $s0, 48
+	vst	$vr0, $s2, 64
+	vst	$vr1, $s2, 48
 	move	$a0, $s1
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector13InsertOneItemEi)

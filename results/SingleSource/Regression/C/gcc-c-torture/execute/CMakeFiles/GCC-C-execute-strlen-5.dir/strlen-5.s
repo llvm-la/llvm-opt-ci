@@ -162,10 +162,12 @@ main:                                   # @main
 	st.w	$a0, $s5, %pc_lo12(nfails)
 .LBB0_12:                               # %test_const_global_arrays.exit
 	ld.w	$a0, $s7, 32
-	xvld	$xr0, $s7, 0
+	vld	$vr0, $s7, 16
+	vld	$vr1, $s7, 0
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	st.w	$a0, $sp, 56
-	xvst	$xr0, $sp, 24
+	vst	$vr0, $sp, 40
+	vst	$vr1, $sp, 24
 	addi.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -1315,10 +1317,12 @@ main:                                   # @main
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s5, %pc_lo12(nfails)
 .LBB0_120:                              # %test_nonconst_global_arrays.exit
-	xvld	$xr0, $s7, 0
+	vld	$vr0, $s7, 16
+	vld	$vr1, $s7, 0
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	st.w	$a0, $sp, 56
-	xvst	$xr0, $sp, 24
+	vst	$vr0, $sp, 40
+	vst	$vr1, $sp, 24
 	addi.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -2166,9 +2170,11 @@ main:                                   # @main
 	st.w	$a0, $s5, %pc_lo12(nfails)
 .LBB0_196:                              # %test_const_global_member_arrays.exit
 	vld	$vr0, $s3, 32
-	xvld	$xr1, $s3, 0
+	vld	$vr1, $s3, 16
+	vld	$vr2, $s3, 0
 	vst	$vr0, $sp, 56
-	xvst	$xr1, $sp, 24
+	vst	$vr1, $sp, 40
+	vst	$vr2, $sp, 24
 	addi.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -4366,9 +4372,11 @@ main:                                   # @main
 	st.w	$a0, $s5, %pc_lo12(nfails)
 .LBB0_400:                              # %test_nonconst_global_member_arrays.exit
 	vld	$vr0, $s3, 32
-	xvld	$xr1, $s3, 0
+	vld	$vr1, $s3, 16
+	vld	$vr2, $s3, 0
 	vst	$vr0, $sp, 56
-	xvst	$xr1, $sp, 24
+	vst	$vr1, $sp, 40
+	vst	$vr2, $sp, 24
 	addi.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0

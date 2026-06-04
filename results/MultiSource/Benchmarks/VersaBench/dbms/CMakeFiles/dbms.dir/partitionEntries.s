@@ -32,8 +32,10 @@ partitionEntries:                       # @partitionEntries
 	addi.d	$a2, $sp, 112
 	pcaddu18i	$ra, %call36(keyUnion)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 112
-	xvst	$xr0, $sp, 64
+	vld	$vr0, $sp, 128
+	vld	$vr1, $sp, 112
+	vst	$vr0, $sp, 80
+	vst	$vr1, $sp, 64
 	addi.d	$a0, $sp, 64
 	pcaddu18i	$ra, %call36(volume)
 	jirl	$ra, $ra, 0
@@ -65,18 +67,22 @@ partitionEntries:                       # @partitionEntries
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(keyUnion)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 64
-	xvst	$xr0, $sp, 16
+	vld	$vr0, $sp, 80
+	vld	$vr1, $sp, 64
+	vst	$vr0, $sp, 32
+	vst	$vr1, $sp, 16
 	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(volume)
 	jirl	$ra, $ra, 0
 	fcmp.cule.s	$fcc0, $fa0, $fs0
 	bcnez	$fcc0, .LBB0_4
 # %bb.6:                                #   in Loop: Header=BB0_5 Depth=2
-	xvld	$xr1, $sp, 64
+	vld	$vr1, $sp, 64
+	vld	$vr2, $sp, 80
 	st.d	$s4, $fp, 0
 	st.d	$s5, $s0, 0
-	xvst	$xr1, $sp, 112
+	vst	$vr1, $sp, 112
+	vst	$vr2, $sp, 128
 	fmov.s	$fs0, $fa0
 	b	.LBB0_4
 .LBB0_7:                                # %.lr.ph120.preheader
@@ -143,12 +149,16 @@ partitionEntries:                       # @partitionEntries
 	ld.d	$a0, $fp, 0
 	vld	$vr0, $a0, 32
 	vst	$vr0, $sp, 96
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 64
+	vld	$vr0, $a0, 16
+	vst	$vr0, $sp, 80
+	vld	$vr0, $a0, 0
+	vst	$vr0, $sp, 64
 	vld	$vr0, $s2, 32
 	vst	$vr0, $sp, 48
-	xvld	$xr0, $s2, 0
-	xvst	$xr0, $sp, 16
+	vld	$vr0, $s2, 16
+	vst	$vr0, $sp, 32
+	vld	$vr0, $s2, 0
+	vst	$vr0, $sp, 16
 	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(penalty)
@@ -156,13 +166,17 @@ partitionEntries:                       # @partitionEntries
 	ld.d	$a0, $s0, 0
 	vld	$vr1, $a0, 32
 	vst	$vr1, $sp, 96
-	xvld	$xr1, $a0, 0
-	xvst	$xr1, $sp, 64
+	vld	$vr1, $a0, 16
+	vst	$vr1, $sp, 80
+	vld	$vr1, $a0, 0
+	vst	$vr1, $sp, 64
 	vld	$vr1, $s2, 32
 	vst	$vr1, $sp, 48
-	xvld	$xr1, $s2, 0
+	vld	$vr1, $s2, 16
+	vst	$vr1, $sp, 32
+	vld	$vr1, $s2, 0
 	fmov.s	$fs0, $fa0
-	xvst	$xr1, $sp, 16
+	vst	$vr1, $sp, 16
 	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(penalty)

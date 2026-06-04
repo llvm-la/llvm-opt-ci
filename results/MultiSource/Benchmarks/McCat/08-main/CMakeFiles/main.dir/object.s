@@ -23,16 +23,17 @@ Oalloc:                                 # @Oalloc
 	vst	$vr0, $s0, 104
 	lu52i.d	$a0, $zero, 1023
 	st.d	$a0, $s0, 120
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $s0, 128
+	vrepli.b	$vr1, 0
+	vst	$vr1, $s0, 128
 	st.d	$zero, $s0, 160
-	vrepli.b	$vr2, 0
-	vst	$vr2, $s0, 168
+	vst	$vr1, $s0, 168
 	st.d	$zero, $s0, 208
-	xvst	$xr1, $s0, 216
+	vst	$vr1, $s0, 216
+	vst	$vr1, $s0, 232
 	st.w	$zero, $s0, 248
 	vst	$vr0, $s0, 184
 	st.d	$a0, $s0, 200
+	vst	$vr1, $s0, 144
 	move	$a0, $s0
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -195,12 +196,13 @@ InsertPoly3:                            # @InsertPoly3
 	ori	$a0, $zero, 56
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
+	move	$s0, $a0
 	fld.d	$fa0, $s1, 0
 	fld.d	$fa1, $s1, 8
 	fld.d	$fa2, $s1, 16
-	move	$s0, $a0
-	xvrepli.b	$xr3, 0
-	xvst	$xr3, $a0, 24
+	vrepli.b	$vr3, 0
+	vst	$vr3, $a0, 24
+	vst	$vr3, $a0, 40
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(InsertPoint)
 	jirl	$ra, $ra, 0
@@ -254,12 +256,13 @@ InsertPoly4:                            # @InsertPoly4
 	ori	$a0, $zero, 64
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
+	move	$s0, $a0
 	fld.d	$fa0, $s1, 0
 	fld.d	$fa1, $s1, 8
 	fld.d	$fa2, $s1, 16
-	move	$s0, $a0
-	xvrepli.b	$xr3, 0
-	xvst	$xr3, $a0, 32
+	vrepli.b	$vr3, 0
+	vst	$vr3, $a0, 32
+	vst	$vr3, $a0, 48
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(InsertPoint)
 	jirl	$ra, $ra, 0
@@ -310,29 +313,29 @@ InsertPoly4:                            # @InsertPoly4
 	.type	ArrayToPoly3,@function
 ArrayToPoly3:                           # @ArrayToPoly3
 # %bb.0:
-	addi.d	$sp, $sp, -176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 120                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 112                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 104                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 96                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 88                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 72                   # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 64                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 104                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 96                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 88                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 80                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 48                   # 8-byte Folded Spill
 	move	$s0, $a0
 	blez	$a2, .LBB4_5
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a2
 	move	$s2, $zero
 	addi.d	$s3, $a1, 32
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB4_3
 	.p2align	4, , 16
 .LBB4_2:                                # %InsertPoly3.exit
@@ -354,13 +357,14 @@ ArrayToPoly3:                           # @ArrayToPoly3
 	fld.d	$fs6, $s3, 16
 	fld.d	$fs7, $s3, 24
 	fld.d	$fa0, $s3, 32
-	fst.d	$fa0, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 40                   # 8-byte Folded Spill
 	ori	$a0, $zero, 56
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $a0, 24
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $a0, 24
+	vst	$vr0, $a0, 40
 	move	$a0, $s0
 	fmov.d	$fa0, $fs0
 	fmov.d	$fa1, $fs1
@@ -378,7 +382,7 @@ ArrayToPoly3:                           # @ArrayToPoly3
 	move	$a0, $s0
 	fmov.d	$fa0, $fs6
 	fmov.d	$fa1, $fs7
-	fld.d	$fa2, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 40                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(InsertPoint)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s0, 72
@@ -390,21 +394,21 @@ ArrayToPoly3:                           # @ArrayToPoly3
 	b	.LBB4_2
 .LBB4_5:                                # %._crit_edge
 	move	$a0, $s0
-	fld.d	$fs7, $sp, 64                   # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 80                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 96                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 104                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 112                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 120                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+	fld.d	$fs7, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 64                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 72                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 80                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 88                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 96                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 104                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .Lfunc_end4:
 	.size	ArrayToPoly3, .Lfunc_end4-ArrayToPoly3
@@ -415,27 +419,33 @@ ArrayToPoly3:                           # @ArrayToPoly3
 	.type	ArrayToPoly4,@function
 ArrayToPoly4:                           # @ArrayToPoly4
 # %bb.0:
-	addi.d	$sp, $sp, -144
-	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
 	move	$s0, $a0
 	blez	$a2, .LBB5_3
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a2
 	move	$s1, $zero
-	addi.d	$s2, $a1, 64
+	addi.d	$s2, $a1, 48
 	.p2align	4, , 16
 .LBB5_2:                                # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $s2, -64
-	xvld	$xr1, $s2, -32
-	xvld	$xr2, $s2, 0
-	xvst	$xr0, $sp, 8
-	xvst	$xr1, $sp, 40
-	xvst	$xr2, $sp, 72
-	addi.d	$a1, $sp, 8
+	vld	$vr0, $s2, -48
+	vld	$vr1, $s2, -32
+	vst	$vr0, $sp, 16
+	vst	$vr1, $sp, 32
+	vld	$vr0, $s2, -16
+	vld	$vr1, $s2, 0
+	vld	$vr2, $s2, 16
+	vld	$vr3, $s2, 32
+	vst	$vr0, $sp, 48
+	vst	$vr1, $sp, 64
+	vst	$vr2, $sp, 80
+	vst	$vr3, $sp, 96
+	addi.d	$a1, $sp, 16
                                         # implicit-def: $r6
                                         # implicit-def: $r7
 	move	$a0, $s0
@@ -446,12 +456,12 @@ ArrayToPoly4:                           # @ArrayToPoly4
 	blt	$s1, $fp, .LBB5_2
 .LBB5_3:                                # %._crit_edge
 	move	$a0, $s0
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .Lfunc_end5:
 	.size	ArrayToPoly4, .Lfunc_end5-ArrayToPoly4
@@ -906,16 +916,20 @@ CalcObjectChildren:                     # @CalcObjectChildren
 	ld.d	$a0, $s2, 0
 	vld	$vr0, $a0, 32
 	vst	$vr0, $sp, 48
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 16
-	addi.d	$a0, $sp, 72
+	vld	$vr0, $a0, 16
+	vst	$vr0, $sp, 32
+	vld	$vr0, $a0, 0
+	vst	$vr0, $sp, 16
+	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(TPointToHPoint)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 72
-	xvst	$xr0, $sp, 72
+	vld	$vr0, $sp, 64
+	vld	$vr1, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 80
 	addi.d	$a0, $sp, 16
-	addi.d	$a2, $sp, 72
+	addi.d	$a2, $sp, 64
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(MultMatrixHPoint)
 	jirl	$ra, $ra, 0
@@ -945,16 +959,20 @@ CalcObjectChildren:                     # @CalcObjectChildren
 	ld.d	$a0, $s2, 0
 	vld	$vr0, $a0, 32
 	vst	$vr0, $sp, 48
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 16
-	addi.d	$a0, $sp, 72
+	vld	$vr0, $a0, 16
+	vst	$vr0, $sp, 32
+	vld	$vr0, $a0, 0
+	vst	$vr0, $sp, 16
+	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(TPointToHPoint)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 72
-	xvst	$xr0, $sp, 72
+	vld	$vr0, $sp, 64
+	vld	$vr1, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 80
 	addi.d	$a0, $sp, 16
-	addi.d	$a2, $sp, 72
+	addi.d	$a2, $sp, 64
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(MultMatrixHPoint)
 	jirl	$ra, $ra, 0
@@ -984,16 +1002,20 @@ CalcObjectChildren:                     # @CalcObjectChildren
 	ld.d	$a0, $s2, 0
 	vld	$vr0, $a0, 32
 	vst	$vr0, $sp, 48
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 16
-	addi.d	$a0, $sp, 72
+	vld	$vr0, $a0, 16
+	vst	$vr0, $sp, 32
+	vld	$vr0, $a0, 0
+	vst	$vr0, $sp, 16
+	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(TPointToHPoint)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 72
-	xvst	$xr0, $sp, 72
+	vld	$vr0, $sp, 64
+	vld	$vr1, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 80
 	addi.d	$a0, $sp, 16
-	addi.d	$a2, $sp, 72
+	addi.d	$a2, $sp, 64
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(MultMatrixHPoint)
 	jirl	$ra, $ra, 0
@@ -1049,16 +1071,20 @@ ScaleObjectAdd:                         # @ScaleObjectAdd
 	ld.d	$a0, $s0, 0
 	vld	$vr0, $a0, 32
 	vst	$vr0, $sp, 48
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 16
-	addi.d	$a0, $sp, 72
+	vld	$vr0, $a0, 16
+	vst	$vr0, $sp, 32
+	vld	$vr0, $a0, 0
+	vst	$vr0, $sp, 16
+	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(TPointToHPoint)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 72
-	xvst	$xr0, $sp, 72
+	vld	$vr0, $sp, 64
+	vld	$vr1, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 80
 	addi.d	$a0, $sp, 16
-	addi.d	$a2, $sp, 72
+	addi.d	$a2, $sp, 64
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(MultMatrixHPoint)
 	jirl	$ra, $ra, 0
@@ -1116,16 +1142,20 @@ RotateObjectAdd:                        # @RotateObjectAdd
 	ld.d	$a0, $s0, 0
 	vld	$vr0, $a0, 32
 	vst	$vr0, $sp, 48
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 16
-	addi.d	$a0, $sp, 72
+	vld	$vr0, $a0, 16
+	vst	$vr0, $sp, 32
+	vld	$vr0, $a0, 0
+	vst	$vr0, $sp, 16
+	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(TPointToHPoint)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 72
-	xvst	$xr0, $sp, 72
+	vld	$vr0, $sp, 64
+	vld	$vr1, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 80
 	addi.d	$a0, $sp, 16
-	addi.d	$a2, $sp, 72
+	addi.d	$a2, $sp, 64
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(MultMatrixHPoint)
 	jirl	$ra, $ra, 0
@@ -1179,16 +1209,20 @@ TranslateObjectAdd:                     # @TranslateObjectAdd
 	ld.d	$a0, $s0, 0
 	vld	$vr0, $a0, 32
 	vst	$vr0, $sp, 48
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 16
-	addi.d	$a0, $sp, 72
+	vld	$vr0, $a0, 16
+	vst	$vr0, $sp, 32
+	vld	$vr0, $a0, 0
+	vst	$vr0, $sp, 16
+	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(TPointToHPoint)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 72
-	xvst	$xr0, $sp, 72
+	vld	$vr0, $sp, 64
+	vld	$vr1, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 80
 	addi.d	$a0, $sp, 16
-	addi.d	$a2, $sp, 72
+	addi.d	$a2, $sp, 64
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(MultMatrixHPoint)
 	jirl	$ra, $ra, 0
@@ -1269,14 +1303,18 @@ CalcObject:                             # @CalcObject
 	ld.d	$a0, $s1, 0
 	vld	$vr0, $a0, 32
 	vst	$vr0, $sp, 48
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 16
+	vld	$vr0, $a0, 16
+	vst	$vr0, $sp, 32
+	vld	$vr0, $a0, 0
+	vst	$vr0, $sp, 16
 	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(PointToHPoint)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 64
-	xvst	$xr0, $sp, 64
+	vld	$vr0, $sp, 64
+	vld	$vr1, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 80
 	addi.d	$a0, $sp, 16
 	addi.d	$a2, $sp, 64
 	move	$a1, $s0
@@ -1304,14 +1342,18 @@ CalcObject:                             # @CalcObject
 	ld.d	$a0, $s1, 0
 	vld	$vr0, $a0, 32
 	vst	$vr0, $sp, 48
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 16
+	vld	$vr0, $a0, 16
+	vst	$vr0, $sp, 32
+	vld	$vr0, $a0, 0
+	vst	$vr0, $sp, 16
 	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(TPointToHPoint)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 64
-	xvst	$xr0, $sp, 64
+	vld	$vr0, $sp, 64
+	vld	$vr1, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 80
 	addi.d	$a0, $sp, 16
 	addi.d	$a2, $sp, 64
 	move	$a1, $s0
@@ -1339,14 +1381,18 @@ CalcObject:                             # @CalcObject
 	ld.d	$a0, $s0, 0
 	vld	$vr0, $a0, 32
 	vst	$vr0, $sp, 48
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 16
+	vld	$vr0, $a0, 16
+	vst	$vr0, $sp, 32
+	vld	$vr0, $a0, 0
+	vst	$vr0, $sp, 16
 	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(TPointToHPoint)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 64
-	xvst	$xr0, $sp, 64
+	vld	$vr0, $sp, 64
+	vld	$vr1, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 80
 	addi.d	$a0, $sp, 16
 	addi.d	$a2, $sp, 64
 	move	$a1, $fp
@@ -1394,16 +1440,20 @@ ScaleObjectOverwrite:                   # @ScaleObjectOverwrite
 	ld.d	$a0, $s0, 0
 	vld	$vr0, $a0, 32
 	vst	$vr0, $sp, 48
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 16
-	addi.d	$a0, $sp, 72
+	vld	$vr0, $a0, 16
+	vst	$vr0, $sp, 32
+	vld	$vr0, $a0, 0
+	vst	$vr0, $sp, 16
+	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(PointToHPoint)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 72
-	xvst	$xr0, $sp, 72
+	vld	$vr0, $sp, 64
+	vld	$vr1, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 80
 	addi.d	$a0, $sp, 16
-	addi.d	$a2, $sp, 72
+	addi.d	$a2, $sp, 64
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(MultMatrixHPoint)
 	jirl	$ra, $ra, 0
@@ -1461,16 +1511,20 @@ TranslateObjectOverwrite:               # @TranslateObjectOverwrite
 	ld.d	$a0, $s0, 0
 	vld	$vr0, $a0, 32
 	vst	$vr0, $sp, 48
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 16
-	addi.d	$a0, $sp, 72
+	vld	$vr0, $a0, 16
+	vst	$vr0, $sp, 32
+	vld	$vr0, $a0, 0
+	vst	$vr0, $sp, 16
+	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(PointToHPoint)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 72
-	xvst	$xr0, $sp, 72
+	vld	$vr0, $sp, 64
+	vld	$vr1, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 80
 	addi.d	$a0, $sp, 16
-	addi.d	$a2, $sp, 72
+	addi.d	$a2, $sp, 64
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(MultMatrixHPoint)
 	jirl	$ra, $ra, 0
@@ -1524,16 +1578,20 @@ RotateObjectOverwrite:                  # @RotateObjectOverwrite
 	ld.d	$a0, $s0, 0
 	vld	$vr0, $a0, 32
 	vst	$vr0, $sp, 48
-	xvld	$xr0, $a0, 0
-	xvst	$xr0, $sp, 16
-	addi.d	$a0, $sp, 72
+	vld	$vr0, $a0, 16
+	vst	$vr0, $sp, 32
+	vld	$vr0, $a0, 0
+	vst	$vr0, $sp, 16
+	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(PointToHPoint)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 72
-	xvst	$xr0, $sp, 72
+	vld	$vr0, $sp, 64
+	vld	$vr1, $sp, 80
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 80
 	addi.d	$a0, $sp, 16
-	addi.d	$a2, $sp, 72
+	addi.d	$a2, $sp, 64
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(MultMatrixHPoint)
 	jirl	$ra, $ra, 0

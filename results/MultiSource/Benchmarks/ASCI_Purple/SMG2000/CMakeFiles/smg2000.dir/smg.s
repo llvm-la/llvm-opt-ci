@@ -2,17 +2,16 @@
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function hypre_SMGCreate
 .LCPI0_0:
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
-.LCPI0_1:
 	.word	200                             # 0xc8
 	.word	0                               # 0x0
 	.word	0                               # 0x0
 	.word	0                               # 0x0
+.LCPI0_1:
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+.LCPI0_2:
 	.word	4294967295                      # 0xffffffff
 	.word	1                               # 0x1
 	.word	1                               # 0x1
@@ -41,22 +40,25 @@ hypre_SMGCreate:                        # @hypre_SMGCreate
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(hypre_InitializeTiming)
 	jirl	$ra, $ra, 0
+	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_0)
 	st.w	$a0, $s0, 204
 	st.w	$zero, $s0, 4
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
+	vst	$vr0, $s0, 16
+	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_1)
 	lu12i.w	$a0, -390306
 	ori	$a0, $a0, 3469
 	lu32i.d	$a0, 50935
 	lu52i.d	$a0, $a0, 1003
 	st.d	$a0, $s0, 8
 	vst	$vr0, $s0, 48
-	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_2)
 	lu32i.d	$s1, 1
 	st.d	$s1, $s0, 64
 	st.w	$zero, $s0, 208
-	xvst	$xr0, $s0, 16
+	vst	$vr0, $s0, 32
 	move	$a0, $s0
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -535,33 +537,33 @@ hypre_SMGGetFinalRelativeResidualNorm:  # @hypre_SMGGetFinalRelativeResidualNorm
 hypre_SMGSetStructVectorConstantValues: # @hypre_SMGSetStructVectorConstantValues
 # %bb.0:
 	ld.w	$a3, $a1, 8
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
 	blez	$a3, .LBB14_25
 # %bb.1:                                # %.lr.ph
-	addi.d	$sp, $sp, -192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	move	$s0, $a2
 	move	$s1, $a0
 	move	$s3, $zero
-	xvreplve0.d	$xr1, $xr0
-	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
-	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
-	xvst	$xr1, $sp, 16                   # 32-byte Folded Spill
+	vreplvei.d	$vr1, $vr0, 0
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB14_3
 	.p2align	4, , 16
 .LBB14_2:                               # %._crit_edge
                                         #   in Loop: Header=BB14_3 Depth=1
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a0, $a1, 8
 	addi.d	$s3, $s3, 1
 	bge	$s3, $a0, .LBB14_24
@@ -581,7 +583,7 @@ hypre_SMGSetStructVectorConstantValues: # @hypre_SMGSetStructVectorConstantValue
 	slli.d	$fp, $a1, 3
 	add.d	$s2, $s7, $fp
 	add.d	$s4, $s8, $fp
-	addi.d	$a2, $sp, 92
+	addi.d	$a2, $sp, 60
 	move	$a0, $s2
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_BoxGetStrideSize)
@@ -608,8 +610,8 @@ hypre_SMGSetStructVectorConstantValues: # @hypre_SMGSetStructVectorConstantValue
 	ld.w	$a0, $s0, 0
 	sub.w	$t4, $a1, $t2
 	addi.d	$t6, $t4, 1
-	xvld	$xr0, $sp, 48                   # 32-byte Folded Reload
-	xvld	$xr1, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	bltz	$t4, .LBB14_8
 # %bb.7:                                #   in Loop: Header=BB14_3 Depth=1
 	ld.w	$a1, $s0, 4
@@ -622,9 +624,9 @@ hypre_SMGSetStructVectorConstantValues: # @hypre_SMGSetStructVectorConstantValue
 	move	$t5, $zero
 	move	$t7, $zero
 .LBB14_9:                               #   in Loop: Header=BB14_3 Depth=1
-	ld.w	$a1, $sp, 92
-	ld.w	$a2, $sp, 96
-	ld.w	$a3, $sp, 100
+	ld.w	$a1, $sp, 60
+	ld.w	$a2, $sp, 64
+	ld.w	$a3, $sp, 68
 	slt	$a6, $a1, $a2
 	masknez	$t8, $a1, $a6
 	maskeqz	$a6, $a2, $a6
@@ -662,15 +664,15 @@ hypre_SMGSetStructVectorConstantValues: # @hypre_SMGSetStructVectorConstantValue
 	mul.d	$a4, $a1, $a0
 	sub.d	$a4, $t5, $a4
 	sub.d	$a5, $a5, $a7
-	ori	$a7, $zero, 7
+	ori	$a7, $zero, 3
 	sltu	$a7, $a7, $a1
 	addi.d	$t0, $a0, -1
 	sltui	$t0, $t0, 1
 	and	$a7, $a7, $t0
-	bstrpick.d	$t0, $a1, 30, 3
-	slli.d	$t0, $t0, 3
+	bstrpick.d	$t0, $a1, 30, 2
+	slli.d	$t0, $t0, 2
 	alsl.d	$t1, $s6, $s5, 3
-	addi.d	$t2, $t1, 32
+	addi.d	$t2, $t1, 16
 	slli.d	$t3, $a0, 3
 	b	.LBB14_15
 	.p2align	4, , 16
@@ -711,10 +713,10 @@ hypre_SMGSetStructVectorConstantValues: # @hypre_SMGSetStructVectorConstantValue
                                         #     Parent Loop BB14_15 Depth=2
                                         #       Parent Loop BB14_17 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	xvst	$xr1, $t6, -32
-	xvst	$xr1, $t6, 0
-	addi.d	$t7, $t7, -8
-	addi.d	$t6, $t6, 64
+	vst	$vr1, $t6, -16
+	vst	$vr1, $t6, 0
+	addi.d	$t7, $t7, -4
+	addi.d	$t6, $t6, 32
 	bnez	$t7, .LBB14_19
 # %bb.20:                               # %middle.block
                                         #   in Loop: Header=BB14_17 Depth=3
@@ -742,18 +744,18 @@ hypre_SMGSetStructVectorConstantValues: # @hypre_SMGSetStructVectorConstantValue
 	bnez	$t7, .LBB14_23
 	b	.LBB14_16
 .LBB14_24:
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 .LBB14_25:                              # %._crit_edge188
 	move	$a0, $zero
 	ret

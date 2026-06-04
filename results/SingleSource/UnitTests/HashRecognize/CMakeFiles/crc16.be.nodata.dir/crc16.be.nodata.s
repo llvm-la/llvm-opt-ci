@@ -1,6 +1,6 @@
 	.file	"crc16.be.nodata.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI0_0:
 	.half	4129                            # 0x1021
 	.half	8258                            # 0x2042
@@ -10,6 +10,7 @@
 	.half	24774                           # 0x60c6
 	.half	28903                           # 0x70e7
 	.half	33032                           # 0x8108
+.LCPI0_1:
 	.half	37161                           # 0x9129
 	.half	41290                           # 0xa14a
 	.half	45419                           # 0xb16b
@@ -18,7 +19,7 @@
 	.half	57806                           # 0xe1ce
 	.half	61935                           # 0xf1ef
 	.half	4657                            # 0x1231
-.LCPI0_1:
+.LCPI0_2:
 	.half	528                             # 0x210
 	.half	12915                           # 0x3273
 	.half	8786                            # 0x2252
@@ -27,6 +28,7 @@
 	.half	29431                           # 0x72f7
 	.half	25302                           # 0x62d6
 	.half	37689                           # 0x9339
+.LCPI0_3:
 	.half	33560                           # 0x8318
 	.half	45947                           # 0xb37b
 	.half	41818                           # 0xa35a
@@ -35,7 +37,7 @@
 	.half	62463                           # 0xf3ff
 	.half	58334                           # 0xe3de
 	.half	9314                            # 0x2462
-.LCPI0_2:
+.LCPI0_4:
 	.half	13379                           # 0x3443
 	.half	1056                            # 0x420
 	.half	5121                            # 0x1401
@@ -44,6 +46,7 @@
 	.half	17572                           # 0x44a4
 	.half	21637                           # 0x5485
 	.half	42346                           # 0xa56a
+.LCPI0_5:
 	.half	46411                           # 0xb54b
 	.half	34088                           # 0x8528
 	.half	38153                           # 0x9509
@@ -52,9 +55,7 @@
 	.half	50604                           # 0xc5ac
 	.half	54669                           # 0xd58d
 	.half	13907                           # 0x3653
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI0_3:
+.LCPI0_6:
 	.half	9842                            # 0x2672
 	.half	5649                            # 0x1611
 	.half	1584                            # 0x630
@@ -150,19 +151,27 @@ main:                                   # @main
 	ret
 .LBB0_9:                                # %.split.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
-	xvreplgr2vr.h	$xr2, $a7
-	xvxor.v	$xr0, $xr2, $xr0
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI0_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_2)
+	vreplgr2vr.h	$vr6, $a7
+	vxor.v	$vr0, $vr6, $vr0
+	vxor.v	$vr1, $vr6, $vr1
+	vxor.v	$vr2, $vr6, $vr2
 	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	vld	$vr4, $a0, %pc_lo12(.LCPI0_3)
-	xvxor.v	$xr1, $xr2, $xr1
-	xvxor.v	$xr2, $xr2, $xr3
-	vreplgr2vr.h	$vr3, $a7
-	vxor.v	$vr3, $vr3, $vr4
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
+	vld	$vr4, $a0, %pc_lo12(.LCPI0_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_5)
+	vld	$vr5, $a0, %pc_lo12(.LCPI0_5)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_6)
+	vld	$vr7, $a0, %pc_lo12(.LCPI0_6)
+	vxor.v	$vr3, $vr6, $vr3
+	vxor.v	$vr4, $vr6, $vr4
+	vxor.v	$vr5, $vr6, $vr5
+	vxor.v	$vr6, $vr6, $vr7
 	lu12i.w	$a0, -6
 	ori	$a0, $a0, 1914
 	xor	$a0, $a7, $a0
@@ -191,13 +200,13 @@ main:                                   # @main
 	move	$t2, $zero
 	lu12i.w	$t3, 4
 	ori	$t3, $t3, 2244
-	xvreplgr2vr.h	$xr4, $t3
+	vreplgr2vr.h	$vr7, $t3
 	lu12i.w	$t3, 9
 	ori	$t3, $t3, 392
-	xvreplgr2vr.h	$xr5, $t3
+	vreplgr2vr.h	$vr8, $t3
 	lu12i.w	$t3, 13
 	ori	$t3, $t3, 2380
-	xvreplgr2vr.h	$xr6, $t3
+	vreplgr2vr.h	$vr9, $t3
 	ori	$t3, $zero, 16
 	.p2align	4, , 16
 .LBB0_10:                               # %.split
@@ -206,47 +215,84 @@ main:                                   # @main
 	bnez	$t4, .LBB0_12
 # %bb.11:                               # %vector.ph20
                                         #   in Loop: Header=BB0_10 Depth=1
-	xvst	$xr0, $a1, 2
-	xvst	$xr1, $a1, 34
-	xvst	$xr2, $a1, 66
-	vst	$vr3, $a1, 98
+	vst	$vr0, $a1, 2
+	vst	$vr1, $a1, 18
+	vst	$vr2, $a1, 34
+	vst	$vr3, $a1, 50
+	vst	$vr4, $a1, 66
+	vst	$vr5, $a1, 82
+	vst	$vr6, $a1, 98
 	st.h	$a0, $a1, 114
 	st.h	$a2, $a1, 116
 	st.h	$a3, $a1, 118
 	st.h	$a4, $a1, 120
 	st.h	$a5, $a1, 122
-	xvld	$xr7, $a1, 0
-	xvld	$xr8, $a1, 32
+	vld	$vr10, $a1, 0
+	vld	$vr11, $a1, 16
 	st.h	$a6, $a1, 124
 	st.h	$a7, $a1, 126
-	xvxor.v	$xr9, $xr7, $xr4
-	xvxor.v	$xr10, $xr8, $xr4
-	xvld	$xr11, $a1, 64
-	xvst	$xr9, $a1, 128
-	xvst	$xr10, $a1, 160
-	xvld	$xr9, $a1, 96
-	xvxor.v	$xr10, $xr11, $xr4
-	xvld	$xr12, $a1, 0
-	xvst	$xr10, $a1, 192
-	xvxor.v	$xr10, $xr9, $xr4
-	xvst	$xr10, $a1, 224
-	xvxor.v	$xr10, $xr12, $xr5
-	xvld	$xr12, $a1, 64
-	xvst	$xr10, $a1, 256
-	xvxor.v	$xr10, $xr8, $xr5
-	xvst	$xr10, $a1, 288
-	xvxor.v	$xr10, $xr12, $xr5
-	xvxor.v	$xr12, $xr9, $xr5
-	xvst	$xr10, $a1, 320
-	xvst	$xr12, $a1, 352
-	xvxor.v	$xr7, $xr7, $xr6
-	xvxor.v	$xr8, $xr8, $xr6
-	xvst	$xr7, $a1, 384
-	xvst	$xr8, $a1, 416
-	xvxor.v	$xr7, $xr11, $xr6
-	xvxor.v	$xr8, $xr9, $xr6
-	xvst	$xr7, $a1, 448
-	xvst	$xr8, $a1, 480
+	vxor.v	$vr12, $vr10, $vr7
+	vxor.v	$vr13, $vr11, $vr7
+	vld	$vr14, $a1, 32
+	vld	$vr15, $a1, 48
+	vst	$vr12, $a1, 128
+	vst	$vr13, $a1, 144
+	vxor.v	$vr12, $vr14, $vr7
+	vxor.v	$vr13, $vr15, $vr7
+	vld	$vr16, $a1, 64
+	vld	$vr17, $a1, 80
+	vst	$vr12, $a1, 160
+	vst	$vr13, $a1, 176
+	vxor.v	$vr12, $vr16, $vr7
+	vxor.v	$vr13, $vr17, $vr7
+	vld	$vr18, $a1, 96
+	vld	$vr19, $a1, 112
+	vst	$vr12, $a1, 192
+	vst	$vr13, $a1, 208
+	vxor.v	$vr12, $vr18, $vr7
+	vxor.v	$vr13, $vr19, $vr7
+	vld	$vr20, $a1, 0
+	vst	$vr12, $a1, 224
+	vst	$vr13, $a1, 240
+	vld	$vr12, $a1, 16
+	vxor.v	$vr13, $vr20, $vr8
+	vst	$vr13, $a1, 256
+	vld	$vr13, $a1, 32
+	vld	$vr20, $a1, 48
+	vxor.v	$vr12, $vr12, $vr8
+	vst	$vr12, $a1, 272
+	vxor.v	$vr12, $vr13, $vr8
+	vxor.v	$vr13, $vr20, $vr8
+	vld	$vr20, $a1, 64
+	vst	$vr12, $a1, 288
+	vst	$vr13, $a1, 304
+	vld	$vr12, $a1, 80
+	vxor.v	$vr13, $vr20, $vr8
+	vst	$vr13, $a1, 320
+	vld	$vr13, $a1, 96
+	vld	$vr20, $a1, 112
+	vxor.v	$vr12, $vr12, $vr8
+	vst	$vr12, $a1, 336
+	vxor.v	$vr12, $vr13, $vr8
+	vxor.v	$vr13, $vr20, $vr8
+	vst	$vr12, $a1, 352
+	vst	$vr13, $a1, 368
+	vxor.v	$vr10, $vr10, $vr9
+	vxor.v	$vr11, $vr11, $vr9
+	vst	$vr10, $a1, 384
+	vst	$vr11, $a1, 400
+	vxor.v	$vr10, $vr14, $vr9
+	vxor.v	$vr11, $vr15, $vr9
+	vst	$vr10, $a1, 416
+	vst	$vr11, $a1, 432
+	vxor.v	$vr10, $vr16, $vr9
+	vxor.v	$vr11, $vr17, $vr9
+	vst	$vr10, $a1, 448
+	vst	$vr11, $a1, 464
+	vxor.v	$vr10, $vr18, $vr9
+	vxor.v	$vr11, $vr19, $vr9
+	vst	$vr10, $a1, 480
+	vst	$vr11, $a1, 496
 .LBB0_12:                               # %crc_table.exit
                                         #   in Loop: Header=BB0_10 Depth=1
 	ldx.hu	$t4, $t0, $t2
@@ -304,7 +350,7 @@ main.crc_initval:
 
 	.type	CRCTable,@object                # @CRCTable
 	.local	CRCTable
-	.comm	CRCTable,512,32
+	.comm	CRCTable,512,16
 	.type	.L.crctable,@object             # @.crctable
 	.section	.rodata,"a",@progbits
 	.p2align	4, 0x0

@@ -199,13 +199,13 @@ _ZN28btHashedOverlappingPairCache10growTablesEv: # @_ZN28btHashedOverlappingPair
 	.cfi_offset 27, -56
 	ld.w	$s3, $a0, 16
 	ld.w	$s2, $a0, 60
-	bge	$s2, $s3, .LBB1_54
+	bge	$s2, $s3, .LBB1_42
 # %bb.1:
 	move	$fp, $a0
 	ld.w	$a0, $a0, 64
-	bge	$a0, $s3, .LBB1_8
+	bge	$a0, $s3, .LBB1_12
 # %bb.2:
-	beqz	$s3, .LBB1_9
+	beqz	$s3, .LBB1_13
 # %bb.3:
 	slli.d	$a0, $s3, 2
 	ori	$a1, $zero, 16
@@ -214,101 +214,74 @@ _ZN28btHashedOverlappingPairCache10growTablesEv: # @_ZN28btHashedOverlappingPair
 	ld.w	$a1, $fp, 60
 	move	$s0, $a0
 	ld.d	$a0, $fp, 72
-	blez	$a1, .LBB1_10
-.LBB1_4:                                # %iter.check
-	ori	$a3, $zero, 4
+	blez	$a1, .LBB1_14
+.LBB1_4:                                # %.lr.ph.i.i.i
+	ori	$a3, $zero, 8
 	move	$a2, $zero
-	bltu	$a1, $a3, .LBB1_19
-# %bb.5:                                # %iter.check
+	bltu	$a1, $a3, .LBB1_9
+# %bb.5:                                # %.lr.ph.i.i.i
 	sub.d	$a3, $s0, $a0
-	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB1_19
-# %bb.6:                                # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB1_12
-# %bb.7:
-	move	$a2, $zero
-	b	.LBB1_16
-.LBB1_8:                                # %..lr.ph.i_crit_edge
-	ld.d	$s0, $fp, 72
-	b	.LBB1_24
-.LBB1_9:
-	move	$s0, $zero
-	move	$a1, $s2
-	ld.d	$a0, $fp, 72
-	bgtz	$a1, .LBB1_4
-.LBB1_10:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
-	beqz	$a0, .LBB1_23
-# %bb.11:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
-	ld.b	$a1, $fp, 80
-	andi	$a1, $a1, 1
-	bnez	$a1, .LBB1_22
-	b	.LBB1_23
-.LBB1_12:                               # %vector.ph
-	andi	$a3, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a4, $a0, 32
-	addi.d	$a5, $s0, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB1_13:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -16
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB1_13
-# %bb.14:                               # %middle.block
-	beq	$a2, $a1, .LBB1_21
-# %bb.15:                               # %vec.epilog.iter.check
-	beqz	$a3, .LBB1_19
-.LBB1_16:                               # %vec.epilog.ph
+	ori	$a4, $zero, 32
+	bltu	$a3, $a4, .LBB1_9
+# %bb.6:                                # %vector.ph
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s0, 16
 	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a5, $a2
-	alsl.d	$a4, $a5, $a0, 2
-	alsl.d	$a5, $a5, $s0, 2
 	.p2align	4, , 16
-.LBB1_17:                               # %vec.epilog.vector.body
+.LBB1_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB1_17
-# %bb.18:                               # %vec.epilog.middle.block
-	beq	$a2, $a1, .LBB1_21
-.LBB1_19:                               # %vec.epilog.scalar.ph.preheader
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB1_7
+# %bb.8:                                # %middle.block
+	beq	$a2, $a1, .LBB1_11
+.LBB1_9:                                # %scalar.ph.preheader
 	sub.d	$a1, $a1, $a2
 	alsl.d	$a3, $a2, $a0, 2
 	alsl.d	$a2, $a2, $s0, 2
 	.p2align	4, , 16
-.LBB1_20:                               # %vec.epilog.scalar.ph
+.LBB1_10:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a3, 0
 	st.w	$a4, $a2, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
-	bnez	$a1, .LBB1_20
-.LBB1_21:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i
+	bnez	$a1, .LBB1_10
+.LBB1_11:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i
 	ld.bu	$a1, $fp, 80
-	beqz	$a1, .LBB1_23
-.LBB1_22:
+	bnez	$a1, .LBB1_16
+	b	.LBB1_17
+.LBB1_12:                               # %..lr.ph.i_crit_edge
+	ld.d	$s0, $fp, 72
+	b	.LBB1_18
+.LBB1_13:
+	move	$s0, $zero
+	move	$a1, $s2
+	ld.d	$a0, $fp, 72
+	bgtz	$a1, .LBB1_4
+.LBB1_14:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
+	beqz	$a0, .LBB1_17
+# %bb.15:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
+	ld.b	$a1, $fp, 80
+	andi	$a1, $a1, 1
+	beqz	$a1, .LBB1_17
+.LBB1_16:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB1_23:                               # %_ZN20btAlignedObjectArrayIiE10deallocateEv.exit.i.i
+.LBB1_17:                               # %_ZN20btAlignedObjectArrayIiE10deallocateEv.exit.i.i
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 80
 	st.d	$s0, $fp, 72
 	st.w	$s3, $fp, 64
-.LBB1_24:                               # %.lr.ph.i
+.LBB1_18:                               # %.lr.ph.i
 	slli.d	$a1, $s2, 2
 	alsl.d	$a0, $s2, $s0, 2
 	slli.d	$s0, $s3, 2
@@ -318,13 +291,13 @@ _ZN28btHashedOverlappingPairCache10growTablesEv: # @_ZN28btHashedOverlappingPair
 	jirl	$ra, $ra, 0
 	ld.w	$s4, $fp, 92
 	st.w	$s3, $fp, 60
-	bge	$s4, $s3, .LBB1_49
-# %bb.25:
+	bge	$s4, $s3, .LBB1_37
+# %bb.19:
 	ld.w	$a0, $fp, 96
-	bge	$a0, $s3, .LBB1_32
-# %bb.26:
-	beqz	$s3, .LBB1_33
-# %bb.27:
+	bge	$a0, $s3, .LBB1_30
+# %bb.20:
+	beqz	$s3, .LBB1_31
+# %bb.21:
 	ori	$a1, $zero, 16
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
@@ -332,111 +305,84 @@ _ZN28btHashedOverlappingPairCache10growTablesEv: # @_ZN28btHashedOverlappingPair
 	ld.w	$a1, $fp, 92
 	move	$s1, $a0
 	ld.d	$a0, $fp, 104
-	blez	$a1, .LBB1_34
-.LBB1_28:                               # %iter.check88
-	ori	$a3, $zero, 4
+	blez	$a1, .LBB1_32
+.LBB1_22:                               # %.lr.ph.i.i.i38
+	ori	$a3, $zero, 8
 	move	$a2, $zero
-	bltu	$a1, $a3, .LBB1_43
-# %bb.29:                               # %iter.check88
+	bltu	$a1, $a3, .LBB1_27
+# %bb.23:                               # %.lr.ph.i.i.i38
 	sub.d	$a3, $s1, $a0
-	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB1_43
-# %bb.30:                               # %vector.main.loop.iter.check75
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB1_36
-# %bb.31:
-	move	$a2, $zero
-	b	.LBB1_40
-.LBB1_32:                               # %..lr.ph.i24_crit_edge
-	ld.d	$s1, $fp, 104
-	b	.LBB1_48
-.LBB1_33:
-	move	$s1, $zero
-	move	$a1, $s4
-	ld.d	$a0, $fp, 104
-	bgtz	$a1, .LBB1_28
-.LBB1_34:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i34
-	beqz	$a0, .LBB1_47
-# %bb.35:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i34
-	ld.b	$a1, $fp, 112
-	andi	$a1, $a1, 1
-	bnez	$a1, .LBB1_46
-	b	.LBB1_47
-.LBB1_36:                               # %vector.ph77
-	andi	$a3, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a4, $a0, 32
-	addi.d	$a5, $s1, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB1_37:                               # %vector.body80
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -16
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB1_37
-# %bb.38:                               # %middle.block85
-	beq	$a2, $a1, .LBB1_45
-# %bb.39:                               # %vec.epilog.iter.check90
-	beqz	$a3, .LBB1_43
-.LBB1_40:                               # %vec.epilog.ph92
+	ori	$a4, $zero, 32
+	bltu	$a3, $a4, .LBB1_27
+# %bb.24:                               # %vector.ph69
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s1, 16
 	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a5, $a2
-	alsl.d	$a4, $a5, $a0, 2
-	alsl.d	$a5, $a5, $s1, 2
 	.p2align	4, , 16
-.LBB1_41:                               # %vec.epilog.vector.body95
+.LBB1_25:                               # %vector.body72
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB1_41
-# %bb.42:                               # %vec.epilog.middle.block99
-	beq	$a2, $a1, .LBB1_45
-.LBB1_43:                               # %vec.epilog.scalar.ph89.preheader
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB1_25
+# %bb.26:                               # %middle.block77
+	beq	$a2, $a1, .LBB1_29
+.LBB1_27:                               # %scalar.ph67.preheader
 	sub.d	$a1, $a1, $a2
 	alsl.d	$a3, $a2, $a0, 2
 	alsl.d	$a2, $a2, $s1, 2
 	.p2align	4, , 16
-.LBB1_44:                               # %vec.epilog.scalar.ph89
+.LBB1_28:                               # %scalar.ph67
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a3, 0
 	st.w	$a4, $a2, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
-	bnez	$a1, .LBB1_44
-.LBB1_45:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i43
+	bnez	$a1, .LBB1_28
+.LBB1_29:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i43
 	ld.bu	$a1, $fp, 112
-	beqz	$a1, .LBB1_47
-.LBB1_46:
+	bnez	$a1, .LBB1_34
+	b	.LBB1_35
+.LBB1_30:                               # %..lr.ph.i24_crit_edge
+	ld.d	$s1, $fp, 104
+	b	.LBB1_36
+.LBB1_31:
+	move	$s1, $zero
+	move	$a1, $s4
+	ld.d	$a0, $fp, 104
+	bgtz	$a1, .LBB1_22
+.LBB1_32:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i34
+	beqz	$a0, .LBB1_35
+# %bb.33:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i34
+	ld.b	$a1, $fp, 112
+	andi	$a1, $a1, 1
+	beqz	$a1, .LBB1_35
+.LBB1_34:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB1_47:                               # %_ZN20btAlignedObjectArrayIiE10deallocateEv.exit.i.i37
+.LBB1_35:                               # %_ZN20btAlignedObjectArrayIiE10deallocateEv.exit.i.i37
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 112
 	st.d	$s1, $fp, 104
 	st.w	$s3, $fp, 96
-.LBB1_48:                               # %.lr.ph.i24
+.LBB1_36:                               # %.lr.ph.i24
 	slli.d	$a1, $s4, 2
 	alsl.d	$a0, $s4, $s1, 2
 	sub.d	$a2, $s0, $a1
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-.LBB1_49:                               # %_ZN20btAlignedObjectArrayIiE6resizeEiRKi.exit47
+.LBB1_37:                               # %_ZN20btAlignedObjectArrayIiE6resizeEiRKi.exit47
 	st.w	$s3, $fp, 92
-	blez	$s3, .LBB1_51
-# %bb.50:                               # %.lr.ph52
+	blez	$s3, .LBB1_39
+# %bb.38:                               # %.lr.ph52
 	ld.d	$a0, $fp, 72
 	ori	$a1, $zero, 255
 	move	$a2, $s0
@@ -447,16 +393,16 @@ _ZN28btHashedOverlappingPairCache10growTablesEv: # @_ZN28btHashedOverlappingPair
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-.LBB1_51:                               # %.preheader
-	blez	$s2, .LBB1_54
-# %bb.52:                               # %.lr.ph54
+.LBB1_39:                               # %.preheader
+	blez	$s2, .LBB1_42
+# %bb.40:                               # %.lr.ph54
 	ld.d	$a3, $fp, 24
 	ld.d	$a0, $fp, 72
 	ld.d	$a1, $fp, 104
 	move	$a2, $zero
 	addi.d	$a3, $a3, 8
 	.p2align	4, , 16
-.LBB1_53:                               # =>This Inner Loop Header: Depth=1
+.LBB1_41:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a3, 0
 	ld.d	$a5, $a3, -8
 	ld.w	$a4, $a4, 24
@@ -487,8 +433,8 @@ _ZN28btHashedOverlappingPairCache10growTablesEv: # @_ZN28btHashedOverlappingPair
 	addi.d	$a1, $a1, 4
 	addi.d	$s2, $s2, -1
 	addi.d	$a3, $a3, 32
-	bnez	$s2, .LBB1_53
-.LBB1_54:                               # %.loopexit
+	bnez	$s2, .LBB1_41
+.LBB1_42:                               # %.loopexit
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -910,18 +856,18 @@ _ZN28btHashedOverlappingPairCache8findPairEP17btBroadphaseProxyS1_: # @_ZN28btHa
 _ZN28btHashedOverlappingPairCache15internalAddPairEP17btBroadphaseProxyS1_: # @_ZN28btHashedOverlappingPairCache15internalAddPairEP17btBroadphaseProxyS1_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	.cfi_def_cfa_offset 96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	.cfi_def_cfa_offset 112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1050,12 +996,15 @@ _ZN28btHashedOverlappingPairCache15internalAddPairEP17btBroadphaseProxyS1_: # @_
 	st.d	$s2, $s0, 24
 	st.w	$s7, $s0, 16
 .LBB9_16:                               # %_ZN20btAlignedObjectArrayI16btBroadphasePairE6expandERKS0_.exit
-	addi.d	$a0, $a0, 1
 	ld.d	$a1, $s0, 24
+	addi.d	$a0, $a0, 1
 	st.w	$a0, $s0, 12
 	slli.d	$s2, $s6, 5
-	xvrepli.b	$xr0, 0
-	xvstx	$xr0, $a1, $s2
+	add.d	$a0, $a1, $s2
+	vrepli.b	$vr0, 0
+	vstx	$vr0, $a1, $s2
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $a0, 16
 	ld.d	$a0, $s0, 120
 	ld.d	$s7, $s0, 24
 	beqz	$a0, .LBB9_18
@@ -1085,7 +1034,7 @@ _ZN28btHashedOverlappingPairCache15internalAddPairEP17btBroadphaseProxyS1_: # @_
 	maskeqz	$a2, $s1, $a0
 	or	$a1, $a2, $a1
 	masknez	$a2, $s1, $a0
-	vrepli.b	$vr0, 0
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $s2, 16
 	ld.d	$a3, $s0, 72
 	maskeqz	$a0, $fp, $a0
@@ -1100,17 +1049,17 @@ _ZN28btHashedOverlappingPairCache15internalAddPairEP17btBroadphaseProxyS1_: # @_
 	stx.w	$s6, $a3, $a2
 .LBB9_21:                               # %_ZN28btHashedOverlappingPairCache16internalFindPairEP17btBroadphaseProxyS1_i.exit
 	move	$a0, $s2
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end9:
 	.size	_ZN28btHashedOverlappingPairCache15internalAddPairEP17btBroadphaseProxyS1_, .Lfunc_end9-_ZN28btHashedOverlappingPairCache15internalAddPairEP17btBroadphaseProxyS1_
@@ -1324,16 +1273,19 @@ _ZN28btHashedOverlappingPairCache21removeOverlappingPairEP17btBroadphaseProxyS1_
 	alsl.d	$a5, $a6, $a5, 2
 	st.w	$a7, $a5, 0
 .LBB10_20:
-	xvld	$xr0, $a3, 0
-	slli.d	$a3, $s4, 27
-	srai.d	$a3, $a3, 32
-	slli.d	$a5, $a3, 5
-	xvstx	$xr0, $a1, $a5
+	vld	$vr0, $a3, 0
+	slli.d	$a5, $s4, 27
+	srai.d	$a5, $a5, 32
+	slli.d	$a6, $a5, 5
+	vstx	$vr0, $a1, $a6
+	vld	$vr0, $a3, 16
+	add.d	$a1, $a1, $a6
+	vst	$vr0, $a1, 16
 	ld.d	$a1, $a2, 72
-	ldx.w	$a5, $a1, $a4
+	ldx.w	$a3, $a1, $a4
 	ld.d	$a6, $a2, 104
-	slli.d	$a3, $a3, 2
-	stx.w	$a5, $a6, $a3
+	slli.d	$a5, $a5, 2
+	stx.w	$a3, $a6, $a5
 	stx.w	$s2, $a1, $a4
 .LBB10_21:                              # %_ZN28btHashedOverlappingPairCache16internalFindPairEP17btBroadphaseProxyS1_i.exit.thread.sink.split
 	ld.w	$a1, $a2, 12
@@ -1836,13 +1788,20 @@ _ZN28btSortedOverlappingPairCache21removeOverlappingPairEP17btBroadphaseProxyS1_
 	ld.d	$a1, $fp, 24
 	slli.d	$a0, $a0, 5
 	addi.d	$a0, $a0, -32
-	xvldx	$xr0, $a1, $a0
-	xvldx	$xr1, $a1, $s3
-	xvstx	$xr0, $a1, $s3
+	vldx	$vr0, $a1, $a0
+	add.d	$a2, $a1, $a0
+	vldx	$vr1, $a1, $s3
+	vstx	$vr0, $a1, $s3
+	vld	$vr0, $a2, 16
+	add.d	$a1, $a1, $s3
+	vld	$vr2, $a1, 16
+	vst	$vr0, $a1, 16
 	ld.d	$a1, $fp, 24
-	xvstx	$xr1, $a1, $a0
-	ld.w	$a0, $fp, 12
-	addi.d	$a0, $a0, -1
+	add.d	$a2, $a1, $a0
+	vst	$vr2, $a2, 16
+	ld.w	$a2, $fp, 12
+	vstx	$vr1, $a1, $a0
+	addi.d	$a0, $a2, -1
 	st.w	$a0, $fp, 12
 	move	$a0, $s4
 	b	.LBB13_11
@@ -1974,12 +1933,14 @@ _ZN28btSortedOverlappingPairCache18addOverlappingPairEP17btBroadphaseProxyS1_: #
 	st.d	$s2, $s1, 24
 	st.w	$s4, $s1, 16
 .LBB14_17:                              # %_ZN20btAlignedObjectArrayI16btBroadphasePairE6expandERKS0_.exit
-	addi.d	$a0, $a0, 1
 	ld.d	$a1, $s1, 24
+	addi.d	$a0, $a0, 1
 	st.w	$a0, $s1, 12
 	slli.d	$a2, $s3, 5
-	xvrepli.b	$xr0, 0
-	xvstx	$xr0, $a1, $a2
+	add.d	$a0, $a1, $a2
+	vrepli.b	$vr0, 0
+	vstx	$vr0, $a1, $a2
+	vst	$vr0, $a0, 16
 	ld.d	$a1, $s1, 24
 	ld.w	$a3, $s0, 24
 	ld.w	$a4, $fp, 24
@@ -1993,7 +1954,6 @@ _ZN28btSortedOverlappingPairCache18addOverlappingPairEP17btBroadphaseProxyS1_: #
 	or	$a3, $a3, $a5
 	stx.d	$a4, $a1, $a2
 	st.d	$a3, $a0, 8
-	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 16
 	pcalau12i	$a2, %pc_hi20(gOverlappingPairs)
 	ld.w	$a3, $a2, %pc_lo12(gOverlappingPairs)
@@ -2162,16 +2122,23 @@ _ZN28btSortedOverlappingPairCache26processAllOverlappingPairsEP17btOverlapCallba
 	ld.d	$a1, $fp, 24
 	slli.d	$a0, $a0, 5
 	addi.d	$a0, $a0, -32
-	xvldx	$xr0, $a1, $a0
-	xvldx	$xr1, $a1, $s5
-	xvstx	$xr0, $a1, $s5
+	vldx	$vr0, $a1, $a0
+	add.d	$a2, $a1, $a0
+	vldx	$vr1, $a1, $s5
+	vstx	$vr0, $a1, $s5
+	vld	$vr0, $a2, 16
+	add.d	$a1, $a1, $s5
+	vld	$vr2, $a1, 16
+	vst	$vr0, $a1, 16
 	ld.d	$a1, $fp, 24
-	xvstx	$xr1, $a1, $a0
-	ld.w	$a0, $fp, 12
-	ld.w	$a1, $s4, %pc_lo12(gOverlappingPairs)
-	addi.w	$a0, $a0, -1
+	add.d	$a2, $a1, $a0
+	vst	$vr2, $a2, 16
+	ld.w	$a2, $fp, 12
+	ld.w	$a3, $s4, %pc_lo12(gOverlappingPairs)
+	vstx	$vr1, $a1, $a0
+	addi.w	$a0, $a2, -1
 	st.w	$a0, $fp, 12
-	addi.d	$a1, $a1, -1
+	addi.d	$a1, $a3, -1
 	st.w	$a1, $s4, %pc_lo12(gOverlappingPairs)
 	bge	$s3, $a0, .LBB16_5
 .LBB16_3:                               # =>This Inner Loop Header: Depth=1
@@ -3091,19 +3058,19 @@ _ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI29btBroadphaseP
 # %bb.24:                               #   in Loop: Header=BB48_23 Depth=3
 	ld.w	$t6, $a0, 24
 .LBB48_25:                              #   in Loop: Header=BB48_23 Depth=3
-	ldx.d	$t4, $a6, $t2
+	ldx.d	$t5, $a6, $t2
 	move	$t8, $s2
-	beqz	$t4, .LBB48_27
+	beqz	$t5, .LBB48_27
 # %bb.26:                               #   in Loop: Header=BB48_23 Depth=3
-	ld.w	$t8, $t4, 24
+	ld.w	$t8, $t5, 24
 .LBB48_27:                              #   in Loop: Header=BB48_23 Depth=3
 	move	$t7, $s2
 	beqz	$a1, .LBB48_29
 # %bb.28:                               #   in Loop: Header=BB48_23 Depth=3
 	ld.w	$t7, $a1, 24
 .LBB48_29:                              #   in Loop: Header=BB48_23 Depth=3
-	add.d	$t5, $a6, $t2
-	ld.d	$s4, $t5, 8
+	add.d	$t4, $a6, $t2
+	ld.d	$s4, $t4, 8
 	move	$s3, $s2
 	beqz	$s4, .LBB48_31
 # %bb.30:                               #   in Loop: Header=BB48_23 Depth=3
@@ -3111,19 +3078,19 @@ _ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI29btBroadphaseP
 .LBB48_31:                              #   in Loop: Header=BB48_23 Depth=3
 	blt	$t8, $t6, .LBB48_22
 # %bb.32:                               #   in Loop: Header=BB48_23 Depth=3
-	bne	$a0, $t4, .LBB48_36
+	bne	$a0, $t5, .LBB48_36
 # %bb.33:                               #   in Loop: Header=BB48_23 Depth=3
 	blt	$s3, $t7, .LBB48_36
 # %bb.34:                               #   in Loop: Header=BB48_23 Depth=3
 	bne	$a1, $s4, .LBB48_38
 # %bb.35:                               #   in Loop: Header=BB48_23 Depth=3
-	ld.d	$t4, $t5, 16
-	bltu	$t4, $a4, .LBB48_22
+	ld.d	$t5, $t4, 16
+	bltu	$t5, $a4, .LBB48_22
 	b	.LBB48_38
 	.p2align	4, , 16
 .LBB48_36:                              # %_ZN29btBroadphasePairSortPredicateclERK16btBroadphasePairS2_.exit38
                                         #   in Loop: Header=BB48_23 Depth=3
-	bne	$a0, $t4, .LBB48_38
+	bne	$a0, $t5, .LBB48_38
 # %bb.37:                               # %_ZN29btBroadphasePairSortPredicateclERK16btBroadphasePairS2_.exit38
                                         #   in Loop: Header=BB48_23 Depth=3
 	blt	$s3, $t7, .LBB48_22
@@ -3132,9 +3099,11 @@ _ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI29btBroadphaseP
                                         #   in Loop: Header=BB48_4 Depth=2
 	blt	$t3, $a7, .LBB48_3
 # %bb.39:                               #   in Loop: Header=BB48_4 Depth=2
-	xvld	$xr0, $t5, 0
+	vld	$vr0, $t4, 16
 	vld	$vr1, $a5, 0
-	xvst	$xr0, $a5, -16
+	vst	$vr0, $a5, 0
+	vld	$vr0, $t4, 0
+	vst	$vr0, $a5, -16
 	ld.d	$a5, $s1, 16
 	add.d	$a6, $a5, $t2
 	stx.d	$t0, $a5, $t2

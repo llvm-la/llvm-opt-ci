@@ -529,8 +529,9 @@ transtore:                              # @transtore
 htstat:                                 # @htstat
 # %bb.0:                                # %.preheader21
 	addi.d	$sp, $sp, -32
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 16
+	vst	$vr0, $sp, 0
 	pcalau12i	$a0, %pc_hi20(ht)
 	ld.d	$a0, $a0, %pc_lo12(ht)
 	lu12i.w	$a1, 2027
@@ -1170,28 +1171,28 @@ ab:                                     # @ab
 # %bb.60:                               # %.lr.ph167.preheader
                                         #   in Loop: Header=BB19_56 Depth=1
 	sub.d	$a5, $a7, $s4
-	ori	$a4, $zero, 8
+	ori	$a4, $zero, 4
 	bgeu	$a5, $a4, .LBB19_62
 # %bb.61:                               #   in Loop: Header=BB19_56 Depth=1
 	move	$a4, $a7
 	b	.LBB19_65
 .LBB19_62:                              # %vector.ph
                                         #   in Loop: Header=BB19_56 Depth=1
-	addi.w	$t0, $zero, -8
+	addi.w	$t0, $zero, -4
 	and	$a6, $a5, $t0
 	sub.d	$a4, $a7, $a6
 	add.d	$t1, $t3, $a7
 	and	$t0, $t1, $t0
-	addi.d	$t1, $sp, 124
+	addi.d	$t1, $sp, 140
 	alsl.d	$a7, $a7, $t1, 2
 	.p2align	4, , 16
 .LBB19_63:                              # %vector.body
                                         #   Parent Loop BB19_56 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a7, 0
-	xvst	$xr0, $a7, 4
-	addi.d	$t0, $t0, -8
-	addi.d	$a7, $a7, -32
+	vld	$vr0, $a7, 0
+	vst	$vr0, $a7, 4
+	addi.d	$t0, $t0, -4
+	addi.d	$a7, $a7, -16
 	bnez	$t0, .LBB19_63
 # %bb.64:                               # %middle.block
                                         #   in Loop: Header=BB19_56 Depth=1

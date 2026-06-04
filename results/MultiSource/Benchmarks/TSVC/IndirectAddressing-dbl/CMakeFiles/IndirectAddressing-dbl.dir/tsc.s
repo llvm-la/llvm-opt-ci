@@ -52,10 +52,24 @@ set1d:                                  # @set1d
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -136,10 +150,24 @@ set1ds:                                 # @set1ds
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -189,71 +217,135 @@ set2d:                                  # @set2d
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.d	$a1, $a1, 1
 	addi.d	$a0, $a0, 2047
 	addi.d	$a0, $a0, 1
@@ -270,71 +362,135 @@ set2d:                                  # @set2d
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.w	$a1, $a1, 1
 	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 2047
@@ -396,8 +552,7 @@ sum1d:                                  # @sum1d
 	.type	check,@function
 check:                                  # @check
 # %bb.0:
-	xvrepli.b	$xr0, 0
-	movgr2fr.d	$fa1, $zero
+	movgr2fr.d	$fa0, $zero
 	pcalau12i	$a1, %pc_hi20(global_data)
 	addi.d	$a1, $a1, %pc_lo12(global_data)
 	lu12i.w	$a2, 7
@@ -410,18 +565,22 @@ check:                                  # @check
 	ori	$a5, $a5, 2144
 	lu12i.w	$a6, 250
 	ori	$a6, $a6, 160
+	fmov.d	$fa4, $fa0
+	fmov.d	$fa3, $fa0
+	fmov.d	$fa1, $fa0
+	fmov.d	$fa2, $fa0
 	.p2align	4, , 16
 .LBB4_1:                                # =>This Inner Loop Header: Depth=1
-	fld.d	$fa2, $a1, 0
-	fldx.d	$fa3, $a1, $a3
-	fldx.d	$fa4, $a1, $a4
-	fldx.d	$fa5, $a1, $a5
-	fldx.d	$fa6, $a1, $a6
-	fadd.d	$fa1, $fa1, $fa2
-	vextrins.d	$vr4, $vr3, 16
-	vextrins.d	$vr6, $vr5, 16
-	xvpermi.q	$xr6, $xr4, 2
-	xvfadd.d	$xr0, $xr0, $xr6
+	fld.d	$fa5, $a1, 0
+	fadd.d	$fa2, $fa2, $fa5
+	fldx.d	$fa5, $a1, $a3
+	fldx.d	$fa6, $a1, $a4
+	fldx.d	$fa7, $a1, $a5
+	fldx.d	$ft0, $a1, $a6
+	fadd.d	$fa1, $fa1, $fa5
+	fadd.d	$fa3, $fa3, $fa6
+	fadd.d	$fa4, $fa4, $fa7
+	fadd.d	$fa0, $fa0, $ft0
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 8
 	bnez	$a2, .LBB4_1
@@ -438,12 +597,12 @@ check:                                  # @check
 	lu12i.w	$a5, 568
 	ori	$a5, $a5, 2464
 	add.d	$a4, $a4, $a5
-	movgr2fr.d	$fa2, $zero
+	movgr2fr.d	$fa5, $zero
 	addi.w	$a5, $zero, -2048
 	ori	$a6, $zero, 2048
 	ori	$a7, $zero, 256
-	fmov.d	$fa4, $fa2
-	fmov.d	$fa3, $fa2
+	fmov.d	$fa7, $fa5
+	fmov.d	$fa6, $fa5
 	.p2align	4, , 16
 .LBB4_3:                                # %.preheader86
                                         # =>This Loop Header: Depth=1
@@ -453,15 +612,15 @@ check:                                  # @check
 .LBB4_4:                                #   Parent Loop BB4_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t1, $a2, $t0
-	fldx.d	$fa5, $t1, $a6
+	fldx.d	$ft0, $t1, $a6
 	add.d	$t1, $a3, $t0
-	fldx.d	$fa6, $t1, $a6
+	fldx.d	$ft1, $t1, $a6
 	add.d	$t1, $a4, $t0
-	fldx.d	$fa7, $t1, $a6
-	fadd.d	$fa3, $fa3, $fa5
-	fadd.d	$fa4, $fa4, $fa6
+	fldx.d	$ft2, $t1, $a6
+	fadd.d	$fa6, $fa6, $ft0
+	fadd.d	$fa7, $fa7, $ft1
 	addi.d	$t0, $t0, 8
-	fadd.d	$fa2, $fa2, $fa7
+	fadd.d	$fa5, $fa5, $ft2
 	bnez	$t0, .LBB4_4
 # %bb.5:                                #   in Loop: Header=BB4_3 Depth=1
 	addi.d	$a1, $a1, 1
@@ -470,22 +629,22 @@ check:                                  # @check
 	add.d	$a4, $a4, $a6
 	bne	$a1, $a7, .LBB4_3
 # %bb.6:                                # %.preheader.preheader
-	movgr2fr.d	$fa5, $zero
+	movgr2fr.d	$ft0, $zero
 	pcalau12i	$a1, %pc_hi20(array)
 	addi.d	$a1, $a1, %pc_lo12(array)
 	lu12i.w	$a2, 16
 	.p2align	4, , 16
 .LBB4_7:                                # %.preheader
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa6, $a1, 0
-	fadd.d	$fa5, $fa5, $fa6
+	fld.d	$ft1, $a1, 0
+	fadd.d	$ft0, $ft0, $ft1
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 8
 	bnez	$a2, .LBB4_7
 # %bb.8:
 	addi.d	$a1, $a0, 12
 	ori	$a2, $zero, 135
-	bltu	$a2, $a1, .LBB4_11
+	bltu	$a2, $a1, .LBB4_12
 # %bb.9:
 	slli.d	$a0, $a1, 2
 	pcalau12i	$a1, %pc_hi20(.LJTI4_0)
@@ -495,72 +654,36 @@ check:                                  # @check
 	jr	$a0
 .LBB4_10:
 	pcalau12i	$a0, %pc_hi20(temp)
-	fld.d	$fa1, $a0, %pc_lo12(temp)
+	fld.d	$fa0, $a0, %pc_lo12(temp)
+.LBB4_11:
 	pcalau12i	$a0, %pc_hi20(digits)
 	ld.w	$a1, $a0, %pc_lo12(digits)
-	xvpickve.d	$xr0, $xr0, 3
-	fadd.d	$fa0, $fa0, $fa1
+	fadd.d	$fa0, $fa1, $fa0
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$t8, %call36(printf)
 	jr	$t8
-.LBB4_11:
+.LBB4_12:
 	ori	$a1, $zero, 1122
-	beq	$a0, $a1, .LBB4_32
-# %bb.12:
+	beq	$a0, $a1, .LBB4_30
+# %bb.13:
 	lu12i.w	$a1, 27
 	ori	$a1, $a1, 1641
-	bne	$a0, $a1, .LBB4_14
-# %bb.13:
+	bne	$a0, $a1, .LBB4_15
+# %bb.14:
 	pcalau12i	$a0, %pc_hi20(digits)
 	ld.w	$a1, $a0, %pc_lo12(digits)
-	fadd.d	$fa0, $fa3, $fa4
-	fadd.d	$fa0, $fa0, $fa2
+	fadd.d	$fa0, $fa6, $fa7
+	fadd.d	$fa0, $fa0, $fa5
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$t8, %call36(printf)
 	jr	$t8
-.LBB4_14:
-	ret
 .LBB4_15:
-	pcalau12i	$a0, %pc_hi20(digits)
-	ld.w	$a1, $a0, %pc_lo12(digits)
-	movfr2gr.d	$a2, $fa2
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcaddu18i	$t8, %call36(printf)
-	jr	$t8
+	ret
 .LBB4_16:
-	pcalau12i	$a0, %pc_hi20(digits)
-	ld.w	$a1, $a0, %pc_lo12(digits)
-	movfr2gr.d	$a2, $fa4
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcaddu18i	$t8, %call36(printf)
-	jr	$t8
-.LBB4_17:
-	pcalau12i	$a0, %pc_hi20(digits)
-	ld.w	$a1, $a0, %pc_lo12(digits)
-	xvpickve.d	$xr2, $xr0, 3
-	fadd.d	$fa1, $fa1, $fa2
-	b	.LBB4_20
-.LBB4_18:
-	pcalau12i	$a0, %pc_hi20(digits)
-	ld.w	$a1, $a0, %pc_lo12(digits)
-	movfr2gr.d	$a2, $fa1
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcaddu18i	$t8, %call36(printf)
-	jr	$t8
-.LBB4_19:
-	pcalau12i	$a0, %pc_hi20(digits)
-	ld.w	$a1, $a0, %pc_lo12(digits)
-.LBB4_20:
-	xvpickve.d	$xr0, $xr0, 2
-	b	.LBB4_28
-.LBB4_21:
 	pcalau12i	$a0, %pc_hi20(digits)
 	ld.w	$a1, $a0, %pc_lo12(digits)
 	movfr2gr.d	$a2, $fa5
@@ -568,31 +691,43 @@ check:                                  # @check
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$t8, %call36(printf)
 	jr	$t8
-.LBB4_22:
+.LBB4_17:
 	pcalau12i	$a0, %pc_hi20(digits)
 	ld.w	$a1, $a0, %pc_lo12(digits)
-	xvpickve2gr.d	$a2, $xr0, 2
+	fadd.d	$fa0, $fa2, $fa3
+	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$t8, %call36(printf)
 	jr	$t8
-.LBB4_23:
+.LBB4_18:
 	pcalau12i	$a0, %pc_hi20(digits)
 	ld.w	$a1, $a0, %pc_lo12(digits)
-	xvpickve2gr.d	$a2, $xr0, 3
+	fadd.d	$fa0, $fa2, $fa1
+	fadd.d	$fa0, $fa0, $fa3
+	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$t8, %call36(printf)
 	jr	$t8
-.LBB4_24:
+.LBB4_19:
 	pcalau12i	$a0, %pc_hi20(digits)
 	ld.w	$a1, $a0, %pc_lo12(digits)
-	xvpickve2gr.d	$a2, $xr0, 1
+	movfr2gr.d	$a2, $ft0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$t8, %call36(printf)
 	jr	$t8
-.LBB4_25:
+.LBB4_20:
+	pcalau12i	$a0, %pc_hi20(digits)
+	ld.w	$a1, $a0, %pc_lo12(digits)
+	fadd.d	$fa0, $fa2, $fa1
+	movfr2gr.d	$a2, $fa0
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	pcaddu18i	$t8, %call36(printf)
+	jr	$t8
+.LBB4_21:
 	pcalau12i	$a0, %pc_hi20(digits)
 	ld.w	$a1, $a0, %pc_lo12(digits)
 	pcalau12i	$a0, %pc_hi20(temp)
@@ -601,7 +736,23 @@ check:                                  # @check
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$t8, %call36(printf)
 	jr	$t8
-.LBB4_26:
+.LBB4_22:
+	pcalau12i	$a0, %pc_hi20(digits)
+	ld.w	$a1, $a0, %pc_lo12(digits)
+	movfr2gr.d	$a2, $fa1
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	pcaddu18i	$t8, %call36(printf)
+	jr	$t8
+.LBB4_23:
+	pcalau12i	$a0, %pc_hi20(digits)
+	ld.w	$a1, $a0, %pc_lo12(digits)
+	movfr2gr.d	$a2, $fa2
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	pcaddu18i	$t8, %call36(printf)
+	jr	$t8
+.LBB4_24:
 	pcalau12i	$a0, %pc_hi20(digits)
 	ld.w	$a1, $a0, %pc_lo12(digits)
 	movfr2gr.d	$a2, $fa3
@@ -609,13 +760,34 @@ check:                                  # @check
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$t8, %call36(printf)
 	jr	$t8
+.LBB4_25:
+	pcalau12i	$a0, %pc_hi20(digits)
+	ld.w	$a1, $a0, %pc_lo12(digits)
+	movfr2gr.d	$a2, $fa0
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	pcaddu18i	$t8, %call36(printf)
+	jr	$t8
+.LBB4_26:
+	pcalau12i	$a0, %pc_hi20(digits)
+	ld.w	$a1, $a0, %pc_lo12(digits)
+	movfr2gr.d	$a2, $fa6
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	pcaddu18i	$t8, %call36(printf)
+	jr	$t8
 .LBB4_27:
 	pcalau12i	$a0, %pc_hi20(digits)
 	ld.w	$a1, $a0, %pc_lo12(digits)
-	xvpickve.d	$xr0, $xr0, 3
+	movfr2gr.d	$a2, $fa4
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	pcaddu18i	$t8, %call36(printf)
+	jr	$t8
 .LBB4_28:
-	fadd.d	$fa0, $fa1, $fa0
-	movfr2gr.d	$a2, $fa0
+	pcalau12i	$a0, %pc_hi20(digits)
+	ld.w	$a1, $a0, %pc_lo12(digits)
+	movfr2gr.d	$a2, $fa7
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$t8, %call36(printf)
@@ -623,7 +795,8 @@ check:                                  # @check
 .LBB4_29:
 	pcalau12i	$a0, %pc_hi20(digits)
 	ld.w	$a1, $a0, %pc_lo12(digits)
-	xvpickve2gr.d	$a2, $xr0, 0
+	fadd.d	$fa0, $fa2, $fa6
+	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$t8, %call36(printf)
@@ -631,27 +804,7 @@ check:                                  # @check
 .LBB4_30:
 	pcalau12i	$a0, %pc_hi20(digits)
 	ld.w	$a1, $a0, %pc_lo12(digits)
-	xvpickve.d	$xr1, $xr0, 0
-	xvpickve.d	$xr0, $xr0, 3
-	fadd.d	$fa0, $fa0, $fa1
-	movfr2gr.d	$a2, $fa0
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcaddu18i	$t8, %call36(printf)
-	jr	$t8
-.LBB4_31:
-	pcalau12i	$a0, %pc_hi20(digits)
-	ld.w	$a1, $a0, %pc_lo12(digits)
-	fadd.d	$fa0, $fa1, $fa3
-	movfr2gr.d	$a2, $fa0
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcaddu18i	$t8, %call36(printf)
-	jr	$t8
-.LBB4_32:
-	pcalau12i	$a0, %pc_hi20(digits)
-	ld.w	$a1, $a0, %pc_lo12(digits)
-	fadd.d	$fa0, $fa3, $fa4
+	fadd.d	$fa0, $fa6, $fa7
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
@@ -663,141 +816,141 @@ check:                                  # @check
 	.p2align	2, 0x0
 .LJTI4_0:
 	.word	.LBB4_10-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_25-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
 	.word	.LBB4_21-.LJTI4_0
-	.word	.LBB4_18-.LJTI4_0
+	.word	.LBB4_19-.LJTI4_0
 	.word	.LBB4_23-.LJTI4_0
 	.word	.LBB4_22-.LJTI4_0
 	.word	.LBB4_24-.LJTI4_0
-	.word	.LBB4_29-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_26-.LJTI4_0
 	.word	.LBB4_27-.LJTI4_0
-	.word	.LBB4_19-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_16-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_30-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
+	.word	.LBB4_25-.LJTI4_0
 	.word	.LBB4_15-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_31-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
-	.word	.LBB4_14-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_26-.LJTI4_0
+	.word	.LBB4_20-.LJTI4_0
 	.word	.LBB4_17-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_28-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_11-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_16-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_29-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_15-.LJTI4_0
+	.word	.LBB4_18-.LJTI4_0
                                         # -- End function
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function init
@@ -811,12 +964,12 @@ check:                                  # @check
 	.type	init,@function
 init:                                   # @init
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
@@ -1782,10 +1935,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -1805,10 +1972,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -1828,10 +2009,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -1851,10 +2046,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -1874,10 +2083,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a3, $vr2, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr2, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa2, $a3
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a3, $vr1, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr1, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa1, $a3
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -1898,71 +2121,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.w	$a1, $a1, 1
 	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 2047
@@ -2031,17 +2318,17 @@ init:                                   # @init
 .LBB5_150:                              # %vector.body5842.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 	.p2align	4, , 16
 .LBB5_151:                              # %vector.body5842
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_151
 # %bb.152:                              # %vector.body5847.preheader
 	lu12i.w	$a3, 62
@@ -2140,17 +2427,17 @@ init:                                   # @init
 .LBB5_160:                              # %vector.body5829.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 	.p2align	4, , 16
 .LBB5_161:                              # %vector.body5829
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_161
 # %bb.162:                              # %vector.body5834.preheader
 	lu12i.w	$a2, 62
@@ -2180,17 +2467,17 @@ init:                                   # @init
 .LBB5_164:                              # %vector.body5816.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 	.p2align	4, , 16
 .LBB5_165:                              # %vector.body5816
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_165
 # %bb.166:                              # %vector.body5821.preheader
 	lu12i.w	$a2, 62
@@ -2232,71 +2519,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a4
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.w	$a2, $a2, 1
 	addi.d	$a3, $a3, -1
 	addi.d	$a1, $a1, 2047
@@ -2315,71 +2666,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.d	$a1, $a1, 1
 	addi.d	$a0, $a0, 2047
 	addi.d	$a0, $a0, 1
@@ -2388,17 +2803,17 @@ init:                                   # @init
 .LBB5_172:                              # %vector.body5782.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a1, $a0, 32
+	addi.d	$a1, $a0, 16
 	lu12i.w	$a2, 7
 	ori	$a2, $a2, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 	.p2align	4, , 16
 .LBB5_173:                              # %vector.body5782
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_173
 # %bb.174:                              # %.preheader.i1113.preheader
 	lu12i.w	$a1, 312
@@ -2409,74 +2824,138 @@ init:                                   # @init
 	ori	$a3, $a3, 3469
 	lu32i.d	$a3, 50935
 	lu52i.d	$a3, $a3, 1003
-	xvreplgr2vr.d	$xr0, $a3
+	vreplgr2vr.d	$vr0, $a3
 	.p2align	4, , 16
 .LBB5_175:                              # %.preheader.i1113
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -2489,70 +2968,134 @@ init:                                   # @init
 	.p2align	4, , 16
 .LBB5_177:                              # %.preheader.i1115
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -2565,104 +3108,168 @@ init:                                   # @init
 	.p2align	4, , 16
 .LBB5_179:                              # %.preheader.i1122
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 2047
 	addi.d	$a0, $a0, 1
 	bnez	$a1, .LBB5_179
 	b	.LBB5_573
 .LBB5_180:                              # %vector.body5777.preheader
-	pcalau12i	$a0, %pc_hi20(global_data+32)
-	addi.d	$a0, $a0, %pc_lo12(global_data+32)
+	pcalau12i	$a0, %pc_hi20(global_data+16)
+	addi.d	$a0, $a0, %pc_lo12(global_data+16)
 	lu12i.w	$a1, 7
 	ori	$a1, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 	.p2align	4, , 16
 .LBB5_181:                              # %vector.body5777
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_181
 	b	.LBB5_573
 .LBB5_182:                              # %vector.body5767.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a1, $a0, 32
+	addi.d	$a1, $a0, 16
 	lu12i.w	$a2, 7
 	ori	$a2, $a2, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 	.p2align	4, , 16
 .LBB5_183:                              # %vector.body5767
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_183
 # %bb.184:                              # %.preheader.i1137.preheader
 	lu12i.w	$a1, 440
@@ -2673,74 +3280,138 @@ init:                                   # @init
 	ori	$a2, $a2, 3469
 	lu32i.d	$a2, 50935
 	lu52i.d	$a2, $a2, 1003
-	xvreplgr2vr.d	$xr0, $a2
+	vreplgr2vr.d	$vr0, $a2
 	.p2align	4, , 16
 .LBB5_185:                              # %.preheader.i1137
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 2047
 	addi.d	$a0, $a0, 1
@@ -2753,74 +3424,138 @@ init:                                   # @init
 	ori	$a1, $a1, 3296
 	add.d	$a1, $a0, $a1
 	ori	$a2, $zero, 256
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 	.p2align	4, , 16
 .LBB5_187:                              # %.preheader.i1144
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -2838,71 +3573,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.d	$a1, $a1, 1
 	addi.d	$a0, $a0, 2047
 	addi.d	$a0, $a0, 1
@@ -2911,16 +3710,16 @@ init:                                   # @init
 .LBB5_190:                              # %vector.body5742.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_191:                              # %vector.body5742
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_191
 # %bb.192:                              # %vector.body5747.preheader
 	lu12i.w	$a2, 62
@@ -2949,16 +3748,16 @@ init:                                   # @init
 .LBB5_194:                              # %vector.body5729.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_195:                              # %vector.body5729
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_195
 # %bb.196:                              # %vector.body5734.preheader
 	lu12i.w	$a2, 62
@@ -2993,29 +3792,30 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_199:                              # %vector.body5703
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_199
 # %bb.200:                              # %vector.body5708.preheader
 	lu12i.w	$a1, 125
-	ori	$a1, $a1, 96
+	ori	$a1, $a1, 80
 	add.d	$a1, $fp, $a1
 	ori	$a2, $a0, 3328
+	vldi	$vr0, -912
 .LBB5_201:                              # %vector.body5708
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_201
 # %bb.202:                              # %vector.body5713.preheader
 	lu12i.w	$a2, 187
@@ -3029,10 +3829,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -3052,10 +3866,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -3074,29 +3902,30 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_207:                              # %vector.body5677
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_207
 # %bb.208:                              # %vector.body5682.preheader
 	lu12i.w	$a1, 125
-	ori	$a1, $a1, 96
+	ori	$a1, $a1, 80
 	add.d	$a1, $fp, $a1
 	ori	$a2, $a0, 3328
+	vldi	$vr0, -912
 .LBB5_209:                              # %vector.body5682
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_209
 # %bb.210:                              # %vector.body5687.preheader
 	lu12i.w	$a2, 187
@@ -3110,10 +3939,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -3133,10 +3976,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -3160,73 +4017,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3296
 	add.d	$a1, $a0, $a1
 	ori	$a2, $zero, 256
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_215:                              # %.preheader.i1220
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -3236,73 +4157,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3392
 	add.d	$a1, $a0, $a1
 	ori	$a2, $zero, 256
-	xvldi	$xr0, -928
+	vldi	$vr0, -928
 .LBB5_217:                              # %.preheader.i1227
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -3312,73 +4297,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3488
 	add.d	$a0, $a0, $a1
 	ori	$a1, $zero, 256
-	xvldi	$xr0, -1024
+	vldi	$vr0, -1024
 .LBB5_219:                              # %.preheader.i1234
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 2047
 	addi.d	$a0, $a0, 1
@@ -3391,73 +4440,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3392
 	add.d	$a1, $a0, $a1
 	ori	$a2, $zero, 256
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_221:                              # %.preheader.i1241
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -3474,10 +4587,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a3, $vr2, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr2, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa2, $a3
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a3, $vr1, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr1, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa1, $a3
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -3498,71 +4625,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.w	$a1, $a1, 1
 	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 2047
@@ -3578,17 +4769,17 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_227:                              # %vector.body5613
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_227
 # %bb.228:                              # %vector.body5618.preheader
 	lu12i.w	$a2, 125
@@ -3602,10 +4793,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -3625,10 +4830,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -3648,10 +4867,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -3670,57 +4903,58 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -1024
+	vldi	$vr0, -1024
 .LBB5_235:                              # %vector.body5598
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_235
 # %bb.236:                              # %vector.body5603.preheader
 	lu12i.w	$a1, 125
-	ori	$a1, $a1, 96
+	ori	$a1, $a1, 80
 	add.d	$a1, $fp, $a1
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_237:                              # %vector.body5603
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_237
 # %bb.238:                              # %vector.body5608.preheader
 	lu12i.w	$a1, 187
-	ori	$a1, $a1, 2176
+	ori	$a1, $a1, 2160
 	add.d	$a1, $fp, $a1
 	ori	$a0, $a0, 3328
+	vldi	$vr0, -912
 .LBB5_239:                              # %vector.body5608
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a0, $a0, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a0, $a0, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB5_239
 	b	.LBB5_573
 .LBB5_240:                              # %vector.body5585.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_241:                              # %vector.body5585
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_241
 # %bb.242:                              # %vector.body5590.preheader
 	lu12i.w	$a2, 62
@@ -3753,73 +4987,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3296
 	add.d	$a1, $a0, $a1
 	ori	$a2, $zero, 256
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_245:                              # %.preheader.i1309
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -3837,10 +5135,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -3860,10 +5172,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -3874,17 +5200,17 @@ init:                                   # @init
 	bnez	$a1, .LBB5_249
 	b	.LBB5_573
 .LBB5_250:                              # %vector.body5552.preheader
-	pcalau12i	$a0, %pc_hi20(array+32)
-	addi.d	$a0, $a0, %pc_lo12(array+32)
+	pcalau12i	$a0, %pc_hi20(array+16)
+	addi.d	$a0, $a0, %pc_lo12(array+16)
 	lu12i.w	$a1, 7
 	ori	$a1, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_251:                              # %vector.body5552
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_251
 # %bb.252:                              # %.preheader37.i1330.preheader
 	pcalau12i	$a0, %pc_hi20(global_data+1805632)
@@ -3897,71 +5223,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.d	$a1, $a1, 1
 	addi.d	$a0, $a0, 2047
 	addi.d	$a0, $a0, 1
@@ -3970,16 +5360,16 @@ init:                                   # @init
 .LBB5_254:                              # %vector.body5539.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_255:                              # %vector.body5539
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_255
 # %bb.256:                              # %vector.body5544.preheader
 	lu12i.w	$a2, 62
@@ -4008,16 +5398,16 @@ init:                                   # @init
 .LBB5_258:                              # %vector.body5510.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$fp, $a0, %pc_lo12(global_data)
-	addi.d	$a0, $fp, 32
+	addi.d	$a0, $fp, 16
 	lu12i.w	$s0, 7
 	ori	$a1, $s0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_259:                              # %vector.body5510
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_259
 # %bb.260:                              # %.preheader.i1351.preheader
 	lu12i.w	$a1, 62
@@ -4038,10 +5428,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a3, $vr2, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr2, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa2, $a3
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a3, $vr1, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr1, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa1, $a3
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -4061,10 +5465,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a3, $vr2, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr2, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa2, $a3
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a3, $vr1, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr1, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa1, $a3
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -4084,10 +5502,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -4100,16 +5532,16 @@ init:                                   # @init
 .LBB5_266:                              # %vector.body5474.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_267:                              # %vector.body5474
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_267
 # %bb.268:                              # %vector.body5479.preheader
 	lu12i.w	$a2, 62
@@ -4139,15 +5571,16 @@ init:                                   # @init
 	bnez	$a3, .LBB5_271
 # %bb.272:                              # %vector.body5489.preheader
 	lu12i.w	$a2, 125
-	ori	$a2, $a2, 96
+	ori	$a2, $a2, 80
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_273:                              # %vector.body5489
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_273
 # %bb.274:                              # %vector.body5494.preheader
 	lu12i.w	$a3, 187
@@ -4161,10 +5594,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -4184,10 +5631,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -4200,16 +5661,16 @@ init:                                   # @init
 .LBB5_278:                              # %vector.body5453.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_279:                              # %vector.body5453
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_279
 # %bb.280:                              # %vector.body5458.preheader
 	lu12i.w	$a3, 62
@@ -4223,10 +5684,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -4246,10 +5721,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -4262,16 +5751,16 @@ init:                                   # @init
 .LBB5_284:                              # %vector.body5440.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_285:                              # %vector.body5440
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_285
 # %bb.286:                              # %vector.body5445.preheader
 	lu12i.w	$a2, 62
@@ -4300,16 +5789,16 @@ init:                                   # @init
 .LBB5_288:                              # %vector.body5427.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_289:                              # %vector.body5427
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_289
 # %bb.290:                              # %vector.body5432.preheader
 	lu12i.w	$a2, 62
@@ -4338,16 +5827,16 @@ init:                                   # @init
 .LBB5_292:                              # %vector.body5414.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_293:                              # %vector.body5414
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_293
 # %bb.294:                              # %vector.body5419.preheader
 	lu12i.w	$a2, 62
@@ -4376,16 +5865,16 @@ init:                                   # @init
 .LBB5_296:                              # %vector.body5401.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_297:                              # %vector.body5401
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_297
 # %bb.298:                              # %vector.body5406.preheader
 	lu12i.w	$a2, 62
@@ -4414,16 +5903,16 @@ init:                                   # @init
 .LBB5_300:                              # %vector.body5388.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_301:                              # %vector.body5388
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_301
 # %bb.302:                              # %vector.body5393.preheader
 	lu12i.w	$a2, 62
@@ -4452,16 +5941,16 @@ init:                                   # @init
 .LBB5_304:                              # %vector.body5367.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_305:                              # %vector.body5367
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_305
 # %bb.306:                              # %vector.body5372.preheader
 	lu12i.w	$a3, 62
@@ -4475,10 +5964,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -4498,10 +6001,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -4520,17 +6037,17 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_311:                              # %vector.body5338
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_311
 # %bb.312:                              # %vector.body5343.preheader
 	lu12i.w	$a2, 125
@@ -4544,10 +6061,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -4567,10 +6098,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -4590,10 +6135,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -4616,10 +6175,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -4630,28 +6203,29 @@ init:                                   # @init
 	bnez	$a4, .LBB5_319
 # %bb.320:                              # %vector.body5320.preheader
 	lu12i.w	$a3, 62
-	ori	$a3, $a3, 2112
+	ori	$a3, $a3, 2096
 	add.d	$a3, $a1, $a3
 	ori	$a4, $a2, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_321:                              # %vector.body5320
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a3, -32
-	xvst	$xr0, $a3, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vst	$vr0, $a3, -16
+	vst	$vr0, $a3, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB5_321
 # %bb.322:                              # %vector.body5325.preheader
 	lu12i.w	$a3, 125
-	ori	$a3, $a3, 96
+	ori	$a3, $a3, 80
 	add.d	$a3, $a1, $a3
 	ori	$a4, $a2, 3328
+	vldi	$vr0, -912
 .LBB5_323:                              # %vector.body5325
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a3, -32
-	xvst	$xr0, $a3, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vst	$vr0, $a3, -16
+	vst	$vr0, $a3, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB5_323
 # %bb.324:                              # %vector.body5330.preheader
 	lu12i.w	$a3, 187
@@ -4664,10 +6238,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -4680,16 +6268,16 @@ init:                                   # @init
 .LBB5_326:                              # %vector.body5283.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_327:                              # %vector.body5283
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_327
 # %bb.328:                              # %vector.body5288.preheader
 	lu12i.w	$a3, 62
@@ -4703,10 +6291,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -4726,10 +6328,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -4749,10 +6365,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -4771,29 +6401,30 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_335:                              # %vector.body5273
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_335
 # %bb.336:                              # %vector.body5278.preheader
 	lu12i.w	$a1, 125
-	ori	$a1, $a1, 96
+	ori	$a1, $a1, 80
 	add.d	$a1, $fp, $a1
 	ori	$a0, $a0, 3328
+	vldi	$vr0, -912
 .LBB5_337:                              # %vector.body5278
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a0, $a0, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a0, $a0, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB5_337
 	b	.LBB5_573
 .LBB5_338:                              # %.preheader.i1541.preheader
@@ -4803,73 +6434,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3296
 	add.d	$a1, $a0, $a1
 	ori	$a2, $zero, 256
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_339:                              # %.preheader.i1541
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -4886,71 +6581,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.d	$a1, $a1, 1
 	addi.d	$a0, $a0, 2047
 	addi.d	$a0, $a0, 1
@@ -4963,73 +6722,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3296
 	add.d	$a1, $a0, $a1
 	ori	$a2, $zero, 256
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_343:                              # %.preheader.i1556
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -5059,71 +6882,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a4
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.w	$a2, $a2, 1
 	addi.d	$a3, $a3, -1
 	addi.d	$a1, $a1, 2047
@@ -5141,71 +7028,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a4
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.w	$a2, $a2, 1
 	addi.d	$a3, $a3, -1
 	addi.d	$a1, $a1, 2047
@@ -5223,71 +7174,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.w	$a1, $a1, 1
 	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 2047
@@ -5301,73 +7316,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3296
 	add.d	$a1, $a0, $a1
 	ori	$a2, $zero, 256
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_354:                              # %.preheader.i1594
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -5384,71 +7463,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a4
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.w	$a2, $a2, 1
 	addi.d	$a3, $a3, -1
 	addi.d	$a1, $a1, 2047
@@ -5466,71 +7609,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.w	$a1, $a1, 1
 	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 2047
@@ -5540,61 +7747,89 @@ init:                                   # @init
 .LBB5_359:                              # %vector.body5183.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_360:                              # %vector.body5183
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_360
 # %bb.361:                              # %vector.body5188.preheader
 	lu12i.w	$a3, 62
 	pcalau12i	$a2, %pc_hi20(.LCPI5_0)
-	vld	$vr1, $a2, %pc_lo12(.LCPI5_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI5_0)
 	ori	$a3, $a3, 2096
 	add.d	$a3, $a0, $a3
 	ori	$a4, $a1, 3328
 .LBB5_362:                              # %vector.body5188
                                         # =>This Inner Loop Header: Depth=1
-	vshuf4i.w	$vr2, $vr1, 8
-	vaddi.wu	$vr3, $vr2, 1
-	vaddi.wu	$vr2, $vr2, 3
-	vext2xv.du.wu	$xr3, $xr3
-	xvffint.d.lu	$xr3, $xr3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vfrecip.d	$vr3, $vr3
+	vshuf4i.w	$vr1, $vr0, 8
+	vaddi.wu	$vr2, $vr1, 1
+	vaddi.wu	$vr1, $vr1, 3
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
-	vst	$vr3, $a3, -16
-	vst	$vr2, $a3, 0
-	vaddi.du	$vr1, $vr1, 4
+	vfrecip.d	$vr1, $vr1
+	vst	$vr2, $a3, -16
+	vst	$vr1, $a3, 0
+	vaddi.du	$vr0, $vr0, 4
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB5_362
 # %bb.363:                              # %vector.body5196.preheader
 	lu12i.w	$a3, 125
-	vld	$vr1, $a2, %pc_lo12(.LCPI5_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI5_0)
 	ori	$a2, $a3, 80
 	add.d	$a2, $a0, $a2
 	ori	$a1, $a1, 3328
 .LBB5_364:                              # %vector.body5196
                                         # =>This Inner Loop Header: Depth=1
-	vshuf4i.w	$vr2, $vr1, 8
-	vaddi.wu	$vr3, $vr2, 1
-	vaddi.wu	$vr2, $vr2, 3
-	vext2xv.du.wu	$xr3, $xr3
-	xvffint.d.lu	$xr3, $xr3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vfrecip.d	$vr3, $vr3
+	vshuf4i.w	$vr1, $vr0, 8
+	vaddi.wu	$vr2, $vr1, 1
+	vaddi.wu	$vr1, $vr1, 3
+	vpickve2gr.w	$a3, $vr2, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr2, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa2, $a3
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a3, $vr1, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr1, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa1, $a3
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
-	vst	$vr3, $a2, -16
-	vst	$vr2, $a2, 0
-	vaddi.du	$vr1, $vr1, 4
+	vfrecip.d	$vr1, $vr1
+	vst	$vr2, $a2, -16
+	vst	$vr1, $a2, 0
+	vaddi.du	$vr0, $vr0, 4
 	addi.d	$a1, $a1, -4
 	addi.d	$a2, $a2, 32
 	bnez	$a1, .LBB5_364
@@ -5603,72 +7838,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3296
 	add.d	$a1, $a0, $a1
 	ori	$a2, $zero, 256
+	vldi	$vr0, -912
 .LBB5_366:                              # %.preheader.i1631
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -5685,71 +7985,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.d	$a1, $a1, 1
 	addi.d	$a0, $a0, 2047
 	addi.d	$a0, $a0, 1
@@ -5758,107 +8122,110 @@ init:                                   # @init
 .LBB5_369:                              # %vector.body5163.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_370:                              # %vector.body5163
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_370
 # %bb.371:                              # %vector.body5168.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_372:                              # %vector.body5168
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_372
 # %bb.373:                              # %vector.body5173.preheader
 	lu12i.w	$a2, 125
-	ori	$a2, $a2, 96
+	ori	$a2, $a2, 80
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_374:                              # %vector.body5173
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_374
 # %bb.375:                              # %vector.body5178.preheader
 	lu12i.w	$a2, 187
-	ori	$a2, $a2, 2176
+	ori	$a2, $a2, 2160
 	add.d	$a0, $a0, $a2
 	ori	$a1, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_376:                              # %vector.body5178
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_376
 	b	.LBB5_573
 .LBB5_377:                              # %vector.body5143.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
 	lu12i.w	$a4, -390306
 	ori	$a4, $a4, 3469
 	lu32i.d	$a4, 50935
 	lu52i.d	$a4, $a4, 1003
-	xvreplgr2vr.d	$xr0, $a4
+	vreplgr2vr.d	$vr0, $a4
 .LBB5_378:                              # %vector.body5143
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_378
 # %bb.379:                              # %vector.body5148.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
 .LBB5_380:                              # %vector.body5148
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_380
 # %bb.381:                              # %vector.body5153.preheader
 	lu12i.w	$a2, 125
-	ori	$a2, $a2, 96
+	ori	$a2, $a2, 80
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
 .LBB5_382:                              # %vector.body5153
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_382
 # %bb.383:                              # %vector.body5158.preheader
 	lu12i.w	$a2, 187
-	ori	$a2, $a2, 2176
+	ori	$a2, $a2, 2160
 	add.d	$a0, $a0, $a2
 	ori	$a1, $a1, 3328
 .LBB5_384:                              # %vector.body5158
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_384
 	b	.LBB5_573
 .LBB5_385:                              # %.preheader.i1678.preheader
@@ -5870,17 +8237,17 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_386:                              # %vector.body5114
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_386
 # %bb.387:                              # %vector.body5119.preheader
 	lu12i.w	$a2, 125
@@ -5894,10 +8261,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -5917,10 +8298,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -5940,10 +8335,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -5962,46 +8371,46 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_394:                              # %vector.body5099
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_394
 # %bb.395:                              # %vector.body5104.preheader
 	lu12i.w	$a1, 125
-	ori	$a1, $a1, 96
+	ori	$a1, $a1, 80
 	add.d	$a1, $fp, $a1
 	ori	$a2, $a0, 3328
 	lu12i.w	$a3, -390306
 	ori	$a3, $a3, 3469
 	lu32i.d	$a3, 50935
 	lu52i.d	$a3, $a3, 1003
-	xvreplgr2vr.d	$xr0, $a3
+	vreplgr2vr.d	$vr0, $a3
 .LBB5_396:                              # %vector.body5104
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_396
 # %bb.397:                              # %vector.body5109.preheader
 	lu12i.w	$a1, 187
-	ori	$a1, $a1, 2176
+	ori	$a1, $a1, 2160
 	add.d	$a1, $fp, $a1
 	ori	$a0, $a0, 3328
 .LBB5_398:                              # %vector.body5109
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a0, $a0, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a0, $a0, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB5_398
 	b	.LBB5_573
 .LBB5_399:                              # %.preheader.i1717.preheader
@@ -6013,17 +8422,17 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_400:                              # %vector.body5070
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_400
 # %bb.401:                              # %vector.body5075.preheader
 	lu12i.w	$a2, 125
@@ -6037,10 +8446,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -6060,10 +8483,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -6083,10 +8520,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -6105,73 +8556,75 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_408:                              # %vector.body5060
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_408
 # %bb.409:                              # %vector.body5065.preheader
 	lu12i.w	$a1, 125
-	ori	$a1, $a1, 96
+	ori	$a1, $a1, 80
 	add.d	$a1, $fp, $a1
 	ori	$a0, $a0, 3328
+	vldi	$vr0, -912
 .LBB5_410:                              # %vector.body5065
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a0, $a0, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a0, $a0, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB5_410
 	b	.LBB5_573
 .LBB5_411:                              # %vector.body5037.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_412:                              # %vector.body5037
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_412
 # %bb.413:                              # %vector.body5042.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
 	lu12i.w	$a4, -390306
 	ori	$a4, $a4, 3469
 	lu32i.d	$a4, 50935
 	lu52i.d	$a4, $a4, 1003
-	xvreplgr2vr.d	$xr1, $a4
+	vreplgr2vr.d	$vr0, $a4
 .LBB5_414:                              # %vector.body5042
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr1, $a2, -32
-	xvst	$xr1, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_414
 # %bb.415:                              # %vector.body5047.preheader
 	lu12i.w	$a2, 125
-	ori	$a2, $a2, 96
+	ori	$a2, $a2, 80
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_416:                              # %vector.body5047
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_416
 # %bb.417:                              # %vector.body5052.preheader
 	lu12i.w	$a2, 187
@@ -6185,10 +8638,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -6207,17 +8674,17 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a0, $fp, $a0
 	lu12i.w	$a1, 7
 	ori	$a1, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_420:                              # %vector.body5032
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_420
 	b	.LBB5_573
 .LBB5_421:                              # %.preheader.i1777.preheader
@@ -6229,105 +8696,169 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a0, $fp, $a0
 	lu12i.w	$a1, 7
 	ori	$a1, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_422:                              # %vector.body5027
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_422
 	b	.LBB5_573
 .LBB5_423:                              # %vector.body5012.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a1, $a0, 32
+	addi.d	$a1, $a0, 16
 	lu12i.w	$a2, 7
 	ori	$a2, $a2, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_424:                              # %vector.body5012
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_424
 # %bb.425:                              # %.preheader.i1789.preheader
 	lu12i.w	$a1, 312
 	ori	$a1, $a1, 3296
 	add.d	$a1, $a0, $a1
 	ori	$a2, $zero, 256
-	xvldi	$xr1, -1024
+	vldi	$vr0, -1024
 .LBB5_426:                              # %.preheader.i1789
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr1, $a1, -1024
-	xvst	$xr1, $a1, -992
-	xvst	$xr1, $a1, -960
-	xvst	$xr1, $a1, -928
-	xvst	$xr1, $a1, -896
-	xvst	$xr1, $a1, -864
-	xvst	$xr1, $a1, -832
-	xvst	$xr1, $a1, -800
-	xvst	$xr1, $a1, -768
-	xvst	$xr1, $a1, -736
-	xvst	$xr1, $a1, -704
-	xvst	$xr1, $a1, -672
-	xvst	$xr1, $a1, -640
-	xvst	$xr1, $a1, -608
-	xvst	$xr1, $a1, -576
-	xvst	$xr1, $a1, -544
-	xvst	$xr1, $a1, -512
-	xvst	$xr1, $a1, -480
-	xvst	$xr1, $a1, -448
-	xvst	$xr1, $a1, -416
-	xvst	$xr1, $a1, -384
-	xvst	$xr1, $a1, -352
-	xvst	$xr1, $a1, -320
-	xvst	$xr1, $a1, -288
-	xvst	$xr1, $a1, -256
-	xvst	$xr1, $a1, -224
-	xvst	$xr1, $a1, -192
-	xvst	$xr1, $a1, -160
-	xvst	$xr1, $a1, -128
-	xvst	$xr1, $a1, -96
-	xvst	$xr1, $a1, -64
-	xvst	$xr1, $a1, -32
-	xvst	$xr1, $a1, 0
-	xvst	$xr1, $a1, 32
-	xvst	$xr1, $a1, 64
-	xvst	$xr1, $a1, 96
-	xvst	$xr1, $a1, 128
-	xvst	$xr1, $a1, 160
-	xvst	$xr1, $a1, 192
-	xvst	$xr1, $a1, 224
-	xvst	$xr1, $a1, 256
-	xvst	$xr1, $a1, 288
-	xvst	$xr1, $a1, 320
-	xvst	$xr1, $a1, 352
-	xvst	$xr1, $a1, 384
-	xvst	$xr1, $a1, 416
-	xvst	$xr1, $a1, 448
-	xvst	$xr1, $a1, 480
-	xvst	$xr1, $a1, 512
-	xvst	$xr1, $a1, 544
-	xvst	$xr1, $a1, 576
-	xvst	$xr1, $a1, 608
-	xvst	$xr1, $a1, 640
-	xvst	$xr1, $a1, 672
-	xvst	$xr1, $a1, 704
-	xvst	$xr1, $a1, 736
-	xvst	$xr1, $a1, 768
-	xvst	$xr1, $a1, 800
-	xvst	$xr1, $a1, 832
-	xvst	$xr1, $a1, 864
-	xvst	$xr1, $a1, 896
-	xvst	$xr1, $a1, 928
-	xvst	$xr1, $a1, 960
-	xvst	$xr1, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -6337,72 +8868,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3392
 	add.d	$a0, $a0, $a1
 	ori	$a1, $zero, 256
+	vldi	$vr0, -912
 .LBB5_428:                              # %.preheader.i1796
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 2047
 	addi.d	$a0, $a0, 1
@@ -6411,89 +9007,153 @@ init:                                   # @init
 .LBB5_429:                              # %vector.body4997.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a1, $a0, 32
+	addi.d	$a1, $a0, 16
 	lu12i.w	$a2, 7
 	ori	$a2, $a2, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_430:                              # %vector.body4997
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_430
 # %bb.431:                              # %.preheader.i1807.preheader
 	lu12i.w	$a1, 312
 	ori	$a1, $a1, 3296
 	add.d	$a1, $a0, $a1
 	ori	$a2, $zero, 256
-	xvldi	$xr1, -1024
+	vldi	$vr0, -1024
 .LBB5_432:                              # %.preheader.i1807
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr1, $a1, -1024
-	xvst	$xr1, $a1, -992
-	xvst	$xr1, $a1, -960
-	xvst	$xr1, $a1, -928
-	xvst	$xr1, $a1, -896
-	xvst	$xr1, $a1, -864
-	xvst	$xr1, $a1, -832
-	xvst	$xr1, $a1, -800
-	xvst	$xr1, $a1, -768
-	xvst	$xr1, $a1, -736
-	xvst	$xr1, $a1, -704
-	xvst	$xr1, $a1, -672
-	xvst	$xr1, $a1, -640
-	xvst	$xr1, $a1, -608
-	xvst	$xr1, $a1, -576
-	xvst	$xr1, $a1, -544
-	xvst	$xr1, $a1, -512
-	xvst	$xr1, $a1, -480
-	xvst	$xr1, $a1, -448
-	xvst	$xr1, $a1, -416
-	xvst	$xr1, $a1, -384
-	xvst	$xr1, $a1, -352
-	xvst	$xr1, $a1, -320
-	xvst	$xr1, $a1, -288
-	xvst	$xr1, $a1, -256
-	xvst	$xr1, $a1, -224
-	xvst	$xr1, $a1, -192
-	xvst	$xr1, $a1, -160
-	xvst	$xr1, $a1, -128
-	xvst	$xr1, $a1, -96
-	xvst	$xr1, $a1, -64
-	xvst	$xr1, $a1, -32
-	xvst	$xr1, $a1, 0
-	xvst	$xr1, $a1, 32
-	xvst	$xr1, $a1, 64
-	xvst	$xr1, $a1, 96
-	xvst	$xr1, $a1, 128
-	xvst	$xr1, $a1, 160
-	xvst	$xr1, $a1, 192
-	xvst	$xr1, $a1, 224
-	xvst	$xr1, $a1, 256
-	xvst	$xr1, $a1, 288
-	xvst	$xr1, $a1, 320
-	xvst	$xr1, $a1, 352
-	xvst	$xr1, $a1, 384
-	xvst	$xr1, $a1, 416
-	xvst	$xr1, $a1, 448
-	xvst	$xr1, $a1, 480
-	xvst	$xr1, $a1, 512
-	xvst	$xr1, $a1, 544
-	xvst	$xr1, $a1, 576
-	xvst	$xr1, $a1, 608
-	xvst	$xr1, $a1, 640
-	xvst	$xr1, $a1, 672
-	xvst	$xr1, $a1, 704
-	xvst	$xr1, $a1, 736
-	xvst	$xr1, $a1, 768
-	xvst	$xr1, $a1, 800
-	xvst	$xr1, $a1, 832
-	xvst	$xr1, $a1, 864
-	xvst	$xr1, $a1, 896
-	xvst	$xr1, $a1, 928
-	xvst	$xr1, $a1, 960
-	xvst	$xr1, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -6503,72 +9163,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3392
 	add.d	$a0, $a0, $a1
 	ori	$a1, $zero, 256
+	vldi	$vr0, -912
 .LBB5_434:                              # %.preheader.i1814
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 2047
 	addi.d	$a0, $a0, 1
@@ -6587,10 +9312,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -6618,10 +9357,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -6641,10 +9394,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -6672,71 +9439,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.w	$a1, $a1, 1
 	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 2047
@@ -6746,88 +9577,89 @@ init:                                   # @init
 .LBB5_443:                              # %vector.body4940.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_444:                              # %vector.body4940
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_444
 # %bb.445:                              # %vector.body4945.preheader
 	lu12i.w	$a3, 62
 	pcalau12i	$a2, %pc_hi20(.LCPI5_0)
-	vld	$vr1, $a2, %pc_lo12(.LCPI5_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI5_0)
 	ori	$a3, $a3, 2096
 	add.d	$a3, $a0, $a3
 	ori	$a4, $a1, 3328
 .LBB5_446:                              # %vector.body4945
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.du	$vr2, $vr1, 1
-	vaddi.du	$vr3, $vr1, 3
+	vaddi.du	$vr1, $vr0, 1
+	vaddi.du	$vr2, $vr0, 3
+	vmul.d	$vr1, $vr1, $vr1
 	vmul.d	$vr2, $vr2, $vr2
-	vmul.d	$vr3, $vr3, $vr3
+	vffint.d.lu	$vr1, $vr1
 	vffint.d.lu	$vr2, $vr2
-	vffint.d.lu	$vr3, $vr3
+	vfrecip.d	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
-	vfrecip.d	$vr3, $vr3
-	vst	$vr2, $a3, -16
-	vst	$vr3, $a3, 0
-	vaddi.du	$vr1, $vr1, 4
+	vst	$vr1, $a3, -16
+	vst	$vr2, $a3, 0
+	vaddi.du	$vr0, $vr0, 4
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB5_446
 # %bb.447:                              # %vector.body4953.preheader
 	lu12i.w	$a3, 125
-	vld	$vr1, $a2, %pc_lo12(.LCPI5_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI5_0)
 	ori	$a2, $a3, 80
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
 .LBB5_448:                              # %vector.body4953
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.du	$vr2, $vr1, 1
-	vaddi.du	$vr3, $vr1, 3
+	vaddi.du	$vr1, $vr0, 1
+	vaddi.du	$vr2, $vr0, 3
+	vmul.d	$vr1, $vr1, $vr1
 	vmul.d	$vr2, $vr2, $vr2
-	vmul.d	$vr3, $vr3, $vr3
+	vffint.d.lu	$vr1, $vr1
 	vffint.d.lu	$vr2, $vr2
-	vffint.d.lu	$vr3, $vr3
+	vfrecip.d	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
-	vfrecip.d	$vr3, $vr3
-	vst	$vr2, $a2, -16
-	vst	$vr3, $a2, 0
-	vaddi.du	$vr1, $vr1, 4
+	vst	$vr1, $a2, -16
+	vst	$vr2, $a2, 0
+	vaddi.du	$vr0, $vr0, 4
 	addi.d	$a3, $a3, -4
 	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_448
 # %bb.449:                              # %vector.body4961.preheader
 	lu12i.w	$a2, 187
-	ori	$a2, $a2, 2176
+	ori	$a2, $a2, 2160
 	add.d	$a0, $a0, $a2
 	ori	$a1, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_450:                              # %vector.body4961
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_450
 	b	.LBB5_573
 .LBB5_451:                              # %vector.body4919.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_452:                              # %vector.body4919
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_452
 # %bb.453:                              # %vector.body4924.preheader
 	lu12i.w	$a3, 62
@@ -6841,10 +9673,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -6864,10 +9710,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -6880,28 +9740,29 @@ init:                                   # @init
 .LBB5_457:                              # %vector.body4888.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_458:                              # %vector.body4888
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_458
 # %bb.459:                              # %vector.body4893.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_460:                              # %vector.body4893
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_460
 # %bb.461:                              # %vector.body4898.preheader
 	lu12i.w	$a3, 125
@@ -6915,10 +9776,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -6938,10 +9813,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -6952,72 +9841,74 @@ init:                                   # @init
 	bnez	$a3, .LBB5_464
 # %bb.465:                              # %vector.body4914.preheader
 	lu12i.w	$a2, 250
-	ori	$a2, $a2, 192
+	ori	$a2, $a2, 176
 	add.d	$a0, $a0, $a2
 	ori	$a1, $a1, 3328
-	xvldi	$xr0, -1024
+	vldi	$vr0, -1024
 .LBB5_466:                              # %vector.body4914
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_466
 	b	.LBB5_573
 .LBB5_467:                              # %vector.body4860.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_468:                              # %vector.body4860
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_468
 # %bb.469:                              # %vector.body4865.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_470:                              # %vector.body4865
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_470
 # %bb.471:                              # %vector.body4870.preheader
 	lu12i.w	$a2, 125
-	ori	$a2, $a2, 96
+	ori	$a2, $a2, 80
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_472:                              # %vector.body4870
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_472
 # %bb.473:                              # %vector.body4875.preheader
 	lu12i.w	$a2, 187
-	ori	$a2, $a2, 2176
+	ori	$a2, $a2, 2160
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
 	lu12i.w	$a4, -390306
 	ori	$a4, $a4, 3469
 	lu32i.d	$a4, 50935
 	lu52i.d	$a4, $a4, 1003
-	xvreplgr2vr.d	$xr0, $a4
+	vreplgr2vr.d	$vr0, $a4
 .LBB5_474:                              # %vector.body4875
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_474
 # %bb.475:                              # %vector.body4880.preheader
 	lu12i.w	$a2, 250
@@ -7031,10 +9922,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -7053,29 +9958,30 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_478:                              # %vector.body4834
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_478
 # %bb.479:                              # %vector.body4839.preheader
 	lu12i.w	$a1, 125
-	ori	$a1, $a1, 96
+	ori	$a1, $a1, 80
 	add.d	$a1, $fp, $a1
 	ori	$a2, $a0, 3328
+	vldi	$vr0, -912
 .LBB5_480:                              # %vector.body4839
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_480
 # %bb.481:                              # %vector.body4844.preheader
 	lu12i.w	$a2, 187
@@ -7089,10 +9995,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -7112,10 +10032,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -7132,73 +10066,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3296
 	add.d	$a1, $a0, $a1
 	ori	$a2, $zero, 256
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_486:                              # %.preheader.i1949
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -7212,73 +10210,137 @@ init:                                   # @init
 	ori	$a3, $a3, 3469
 	lu32i.d	$a3, 50935
 	lu52i.d	$a3, $a3, 1003
-	xvreplgr2vr.d	$xr0, $a3
+	vreplgr2vr.d	$vr0, $a3
 .LBB5_488:                              # %.preheader.i1956
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -7290,70 +10352,134 @@ init:                                   # @init
 	ori	$a1, $zero, 256
 .LBB5_490:                              # %.preheader.i1963
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 2047
 	addi.d	$a0, $a0, 1
@@ -7362,16 +10488,16 @@ init:                                   # @init
 .LBB5_491:                              # %vector.body4790.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_492:                              # %vector.body4790
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_492
 # %bb.493:                              # %vector.body4795.preheader
 	lu12i.w	$a3, 62
@@ -7385,10 +10511,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7408,10 +10548,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7431,10 +10585,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -7447,41 +10615,42 @@ init:                                   # @init
 .LBB5_499:                              # %vector.body4751.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_500:                              # %vector.body4751
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_500
 # %bb.501:                              # %vector.body4756.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_502:                              # %vector.body4756
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_502
 # %bb.503:                              # %vector.body4761.preheader
 	lu12i.w	$a2, 93
-	ori	$a2, $a2, 3136
+	ori	$a2, $a2, 3120
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -784
+	vldi	$vr0, -784
 .LBB5_504:                              # %vector.body4761
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_504
 # %bb.505:                              # %vector.body4766.preheader
 	lu12i.w	$a3, 125
@@ -7495,10 +10664,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7518,10 +10701,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7541,10 +10738,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -7557,41 +10768,42 @@ init:                                   # @init
 .LBB5_511:                              # %vector.body4712.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -784
+	vldi	$vr0, -784
 .LBB5_512:                              # %vector.body4712
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_512
 # %bb.513:                              # %vector.body4717.preheader
 	lu12i.w	$a2, 31
-	ori	$a2, $a2, 1056
+	ori	$a2, $a2, 1040
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_514:                              # %vector.body4717
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_514
 # %bb.515:                              # %vector.body4722.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_516:                              # %vector.body4722
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_516
 # %bb.517:                              # %vector.body4727.preheader
 	lu12i.w	$a3, 125
@@ -7605,10 +10817,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7628,10 +10854,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7651,10 +10891,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -7667,41 +10921,42 @@ init:                                   # @init
 .LBB5_523:                              # %vector.body4673.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -784
+	vldi	$vr0, -784
 .LBB5_524:                              # %vector.body4673
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_524
 # %bb.525:                              # %vector.body4678.preheader
 	lu12i.w	$a2, 31
-	ori	$a2, $a2, 1056
+	ori	$a2, $a2, 1040
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_526:                              # %vector.body4678
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_526
 # %bb.527:                              # %vector.body4683.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_528:                              # %vector.body4683
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_528
 # %bb.529:                              # %vector.body4688.preheader
 	lu12i.w	$a3, 125
@@ -7715,10 +10970,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7738,10 +11007,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7761,10 +11044,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -7777,28 +11074,29 @@ init:                                   # @init
 .LBB5_535:                              # %vector.body4639.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_536:                              # %vector.body4639
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_536
 # %bb.537:                              # %vector.body4644.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_538:                              # %vector.body4644
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_538
 # %bb.539:                              # %vector.body4649.preheader
 	lu12i.w	$a3, 125
@@ -7812,10 +11110,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7835,10 +11147,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7858,10 +11184,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -7874,16 +11214,16 @@ init:                                   # @init
 .LBB5_545:                              # %vector.body4618.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_546:                              # %vector.body4618
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_546
 # %bb.547:                              # %vector.body4623.preheader
 	lu12i.w	$a3, 62
@@ -7897,10 +11237,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7920,10 +11274,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -7936,16 +11304,16 @@ init:                                   # @init
 .LBB5_551:                              # %vector.body4597.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_552:                              # %vector.body4597
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_552
 # %bb.553:                              # %vector.body4602.preheader
 	lu12i.w	$a3, 62
@@ -7959,10 +11327,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7982,10 +11364,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8004,29 +11400,30 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_558:                              # %vector.body4587
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_558
 # %bb.559:                              # %vector.body4592.preheader
 	lu12i.w	$a1, 125
-	ori	$a1, $a1, 96
+	ori	$a1, $a1, 80
 	add.d	$a1, $fp, $a1
 	ori	$a0, $a0, 3328
+	vldi	$vr0, -912
 .LBB5_560:                              # %vector.body4592
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a0, $a0, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a0, $a0, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB5_560
 	b	.LBB5_573
 .LBB5_561:                              # %.preheader.i2133.preheader
@@ -8038,17 +11435,17 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a0, $fp, $a0
 	lu12i.w	$a1, 7
 	ori	$a1, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_562:                              # %vector.body4582
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_562
 	b	.LBB5_573
 .LBB5_563:                              # %.preheader.i2141.preheader
@@ -8060,17 +11457,17 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a0, $fp, $a0
 	lu12i.w	$a1, 7
 	ori	$a1, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_564:                              # %vector.body4577
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_564
 	b	.LBB5_573
 .LBB5_565:                              # %vector.body4569.preheader
@@ -8085,10 +11482,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8105,73 +11516,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3296
 	add.d	$a1, $a0, $a1
 	ori	$a2, $zero, 256
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_568:                              # %.preheader.i2154
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -8188,71 +11663,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a4
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.w	$a2, $a2, 1
 	addi.d	$a3, $a3, -1
 	addi.d	$a1, $a1, 2047
@@ -8270,71 +11809,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.w	$a1, $a1, 1
 	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 2047
@@ -8342,12 +11945,12 @@ init:                                   # @init
 	bnez	$a2, .LBB5_572
 .LBB5_573:                              # %set1d.exit1086
 	move	$a0, $zero
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .LBB5_574:                              # %.preheader.i2177.preheader
 	pcalau12i	$a0, %pc_hi20(global_data+1280224)
@@ -8365,10 +11968,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8379,21 +11996,21 @@ init:                                   # @init
 	bnez	$a1, .LBB5_576
 	b	.LBB5_573
 .LBB5_577:                              # %vector.body4537.preheader
-	pcalau12i	$a0, %pc_hi20(global_data+32)
-	addi.d	$a0, $a0, %pc_lo12(global_data+32)
+	pcalau12i	$a0, %pc_hi20(global_data+16)
+	addi.d	$a0, $a0, %pc_lo12(global_data+16)
 	lu12i.w	$a1, 7
 	ori	$a1, $a1, 3328
 	lu12i.w	$a2, 50935
 	ori	$a2, $a2, 2571
 	lu32i.d	$a2, 1
 	lu52i.d	$a2, $a2, 1023
-	xvreplgr2vr.d	$xr0, $a2
+	vreplgr2vr.d	$vr0, $a2
 .LBB5_578:                              # %vector.body4537
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_578
 	b	.LBB5_573
 .LBB5_579:                              # %vector.body4521.preheader
@@ -8409,10 +12026,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -8432,10 +12063,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8457,10 +12102,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8482,10 +12141,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8507,10 +12180,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8533,10 +12220,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a3, $vr2, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr2, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa2, $a3
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a3, $vr1, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr1, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa1, $a3
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -8574,10 +12275,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -8597,10 +12312,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -8620,10 +12349,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -8647,71 +12390,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a4
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.w	$a2, $a2, 1
 	addi.d	$a3, $a3, -1
 	addi.d	$a1, $a1, 2047
@@ -8733,10 +12540,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8784,10 +12605,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a3, $vr2, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr2, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa2, $a3
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a3, $vr1, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr1, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa1, $a3
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -8805,16 +12640,16 @@ init:                                   # @init
 .LBB5_607:                              # %vector.body4429.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a1, $a0, 32
+	addi.d	$a1, $a0, 16
 	lu12i.w	$a2, 7
 	ori	$a2, $a2, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_608:                              # %vector.body4429
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_608
 .LBB5_609:                              # %.preheader.i2271.preheader
 	lu12i.w	$a1, 62
@@ -8825,16 +12660,16 @@ init:                                   # @init
 .LBB5_610:                              # %vector.body4424.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$s0, $a0, %pc_lo12(global_data)
-	addi.d	$a0, $s0, 32
+	addi.d	$a0, $s0, 16
 	lu12i.w	$a1, 7
 	ori	$a1, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_611:                              # %vector.body4424
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_611
 # %bb.612:                              # %.preheader.i2292.preheader
 	lu12i.w	$a1, 62
@@ -8856,28 +12691,29 @@ init:                                   # @init
 .LBB5_613:                              # %vector.body4390.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_614:                              # %vector.body4390
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_614
 # %bb.615:                              # %vector.body4395.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_616:                              # %vector.body4395
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_616
 # %bb.617:                              # %vector.body4400.preheader
 	lu12i.w	$a3, 125
@@ -8891,10 +12727,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -8914,10 +12764,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -8937,10 +12801,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8963,10 +12841,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a3, $vr2, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr2, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa2, $a3
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a3, $vr1, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr1, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa1, $a3
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -9029,10 +12921,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -9055,10 +12961,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -9078,10 +12998,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -9105,71 +13039,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a4
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.w	$a2, $a2, 1
 	addi.d	$a3, $a3, -1
 	addi.d	$a1, $a1, 2047
@@ -9180,73 +13178,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3392
 	add.d	$a0, $a0, $a1
 	ori	$a1, $zero, 256
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_639:                              # %.preheader.i2360
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 2047
 	addi.d	$a0, $a0, 1
@@ -9255,28 +13317,29 @@ init:                                   # @init
 .LBB5_640:                              # %vector.body4328.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_641:                              # %vector.body4328
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_641
 # %bb.642:                              # %vector.body4333.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a1, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_643:                              # %vector.body4333
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a1, .LBB5_643
 	b	.LBB5_652
 .LBB5_644:                              # %vector.body4312.preheader
@@ -9292,10 +13355,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -9315,10 +13392,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -9331,28 +13422,29 @@ init:                                   # @init
 .LBB5_648:                              # %vector.body4302.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_649:                              # %vector.body4302
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_649
 # %bb.650:                              # %vector.body4307.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a1, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_651:                              # %vector.body4307
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a1, .LBB5_651
 .LBB5_652:                              # %set1d.exit2374
 	lu12i.w	$a1, 125
@@ -9363,16 +13455,16 @@ init:                                   # @init
 .LBB5_653:                              # %vector.body4281.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_654:                              # %vector.body4281
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_654
 # %bb.655:                              # %vector.body4286.preheader
 	lu12i.w	$a3, 62
@@ -9386,10 +13478,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -9409,10 +13515,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -9425,16 +13545,16 @@ init:                                   # @init
 .LBB5_659:                              # %vector.body4260.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_660:                              # %vector.body4260
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_660
 # %bb.661:                              # %vector.body4265.preheader
 	lu12i.w	$a3, 62
@@ -9448,10 +13568,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -9471,10 +13605,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -9493,29 +13641,30 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_666:                              # %vector.body4234
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_666
 # %bb.667:                              # %vector.body4239.preheader
 	lu12i.w	$a1, 125
-	ori	$a1, $a1, 96
+	ori	$a1, $a1, 80
 	add.d	$a1, $fp, $a1
 	ori	$a2, $a0, 3328
+	vldi	$vr0, -912
 .LBB5_668:                              # %vector.body4239
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_668
 # %bb.669:                              # %vector.body4244.preheader
 	lu12i.w	$a2, 187
@@ -9529,10 +13678,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -9552,10 +13715,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -9572,73 +13749,137 @@ init:                                   # @init
 	ori	$a1, $a1, 3296
 	add.d	$a1, $a0, $a1
 	ori	$a2, $zero, 256
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_674:                              # %.preheader.i2443
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2047
 	addi.d	$a1, $a1, 1
@@ -9655,71 +13896,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a4
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.w	$a2, $a2, 1
 	addi.d	$a3, $a3, -1
 	addi.d	$a1, $a1, 2047
@@ -9737,71 +14042,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.w	$a1, $a1, 1
 	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 2047
@@ -9811,16 +14180,16 @@ init:                                   # @init
 .LBB5_679:                              # %vector.body4194.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a1, $a0, 32
+	addi.d	$a1, $a0, 16
 	lu12i.w	$a2, 7
 	ori	$a3, $a2, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_680:                              # %vector.body4194
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a3, .LBB5_680
 # %bb.681:                              # %vector.body4199.preheader
 	lu12i.w	$a1, 62
@@ -9834,10 +14203,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa3, $a6
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a6, $vr1, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa3, $a6
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a6, $vr1, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa1, $a6
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a4, -16
@@ -9857,10 +14240,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -9900,30 +14297,30 @@ init:                                   # @init
 	bnez	$a3, .LBB5_687
 # %bb.688:                              # %vector.body4189.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a0, $a0, $a2
 	ori	$a1, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_689:                              # %vector.body4189
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_689
 	b	.LBB5_573
 .LBB5_690:                              # %vector.body4168.preheader
-	pcalau12i	$a0, %pc_hi20(array+32)
-	addi.d	$a0, $a0, %pc_lo12(array+32)
+	pcalau12i	$a0, %pc_hi20(array+16)
+	addi.d	$a0, $a0, %pc_lo12(array+16)
 	lu12i.w	$a1, 7
 	ori	$a2, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_691:                              # %vector.body4168
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB5_691
 # %bb.692:                              # %vector.body4173.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
@@ -9980,17 +14377,17 @@ init:                                   # @init
 	bnez	$a1, .LBB5_695
 	b	.LBB5_573
 .LBB5_696:                              # %vector.body4147.preheader
-	pcalau12i	$a0, %pc_hi20(array+32)
-	addi.d	$a0, $a0, %pc_lo12(array+32)
+	pcalau12i	$a0, %pc_hi20(array+16)
+	addi.d	$a0, $a0, %pc_lo12(array+16)
 	lu12i.w	$a1, 7
 	ori	$a2, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_697:                              # %vector.body4147
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB5_697
 # %bb.698:                              # %vector.body4152.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
@@ -10018,16 +14415,16 @@ init:                                   # @init
 .LBB5_700:                              # %vector.body4134.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_701:                              # %vector.body4134
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_701
 # %bb.702:                              # %vector.body4139.preheader
 	lu12i.w	$a2, 62
@@ -10056,16 +14453,16 @@ init:                                   # @init
 .LBB5_704:                              # %vector.body4121.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_705:                              # %vector.body4121
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_705
 # %bb.706:                              # %vector.body4126.preheader
 	lu12i.w	$a2, 62
@@ -10094,18 +14491,16 @@ init:                                   # @init
 .LBB5_708:                              # %vector.body4090.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$fp, $a0, %pc_lo12(global_data)
-	addi.d	$a0, $fp, 32
+	addi.d	$a0, $fp, 16
 	lu12i.w	$s0, 7
 	ori	$a1, $s0, 3328
-	xvldi	$xr0, -912
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
+	vldi	$vr0, -912
 .LBB5_709:                              # %vector.body4090
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_709
 # %bb.710:                              # %vector.body4095.preheader
 	lu12i.w	$a1, 62
@@ -10119,10 +14514,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -10142,10 +14551,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a3, $vr2, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr2, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa2, $a3
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a3, $vr1, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr1, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa1, $a3
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10156,16 +14579,16 @@ init:                                   # @init
 	bnez	$a2, .LBB5_713
 # %bb.714:                              # %vector.body4111.preheader
 	lu12i.w	$a0, 187
-	ori	$a0, $a0, 2176
+	ori	$a0, $a0, 2160
 	add.d	$a0, $fp, $a0
 	ori	$a2, $s0, 3328
-	xvldi	$xr0, -784
+	vldi	$vr0, -784
 .LBB5_715:                              # %vector.body4111
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB5_715
 # %bb.716:                              # %.preheader.i2552.preheader
 	addu16i.d	$a0, $fp, 13
@@ -10175,31 +14598,31 @@ init:                                   # @init
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 229
-	ori	$a0, $a0, 808
+	ori	$a0, $a0, 792
 	add.d	$a0, $fp, $a0
 	ori	$a1, $s0, 3328
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
+	vldi	$vr0, -912
 .LBB5_717:                              # %vector.body4116
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_717
 	b	.LBB5_573
 .LBB5_718:                              # %vector.body4053.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_719:                              # %vector.body4053
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_719
 # %bb.720:                              # %vector.body4058.preheader
 	lu12i.w	$a3, 62
@@ -10213,10 +14636,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10236,10 +14673,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10259,10 +14710,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10282,10 +14747,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10298,16 +14777,16 @@ init:                                   # @init
 .LBB5_728:                              # %vector.body4032.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_729:                              # %vector.body4032
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_729
 # %bb.730:                              # %vector.body4037.preheader
 	lu12i.w	$a3, 62
@@ -10321,10 +14800,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10344,10 +14837,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10372,10 +14879,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10395,10 +14916,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10417,34 +14952,34 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a0, $fp, $a0
 	lu12i.w	$a1, 7
 	ori	$a2, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_739:                              # %vector.body4006
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB5_739
 # %bb.740:                              # %vector.body4011.preheader
 	lu12i.w	$a0, 125
-	ori	$a0, $a0, 96
+	ori	$a0, $a0, 80
 	add.d	$a0, $fp, $a0
 	ori	$a1, $a1, 3328
 	lu12i.w	$a2, -390306
 	ori	$a2, $a2, 3469
 	lu32i.d	$a2, 50935
 	lu52i.d	$a2, $a2, 1003
-	xvreplgr2vr.d	$xr0, $a2
+	vreplgr2vr.d	$vr0, $a2
 .LBB5_741:                              # %vector.body4011
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_741
 	b	.LBB5_573
 .LBB5_742:                              # %.preheader.i2620.preheader
@@ -10482,40 +15017,42 @@ init:                                   # @init
 .LBB5_744:                              # %vector.body3967.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_745:                              # %vector.body3967
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_745
 # %bb.746:                              # %vector.body3972.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_747:                              # %vector.body3972
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_747
 # %bb.748:                              # %vector.body3977.preheader
 	lu12i.w	$a2, 125
-	ori	$a2, $a2, 96
+	ori	$a2, $a2, 80
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_749:                              # %vector.body3977
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_749
 # %bb.750:                              # %vector.body3982.preheader
 	lu12i.w	$a3, 187
@@ -10529,10 +15066,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10552,10 +15103,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10568,16 +15133,16 @@ init:                                   # @init
 .LBB5_754:                              # %vector.body3938.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_755:                              # %vector.body3938
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_755
 # %bb.756:                              # %vector.body3943.preheader
 	lu12i.w	$a3, 62
@@ -10591,10 +15156,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10614,10 +15193,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10637,10 +15230,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10653,16 +15260,16 @@ init:                                   # @init
 .LBB5_762:                              # %vector.body3917.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_763:                              # %vector.body3917
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_763
 # %bb.764:                              # %vector.body3922.preheader
 	lu12i.w	$a3, 62
@@ -10676,10 +15283,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10699,10 +15320,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10721,17 +15356,17 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_769:                              # %vector.body3896
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_769
 # %bb.770:                              # %vector.body3901.preheader
 	lu12i.w	$a2, 125
@@ -10745,10 +15380,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -10768,10 +15417,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -10784,16 +15447,16 @@ init:                                   # @init
 .LBB5_774:                              # %vector.body3883.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_775:                              # %vector.body3883
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_775
 # %bb.776:                              # %vector.body3888.preheader
 	lu12i.w	$a2, 62
@@ -10807,10 +15470,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10829,17 +15506,17 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a0, $fp, $a0
 	lu12i.w	$a1, 7
 	ori	$a2, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_779:                              # %vector.body3870
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB5_779
 # %bb.780:                              # %vector.body3875.preheader
 	lu12i.w	$a0, 125
@@ -10874,17 +15551,17 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_783:                              # %vector.body3849
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_783
 # %bb.784:                              # %vector.body3854.preheader
 	lu12i.w	$a2, 125
@@ -10898,10 +15575,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -10921,10 +15612,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -10947,10 +15652,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10970,10 +15689,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10996,10 +15729,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a3, $vr2, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr2, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa2, $a3
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a3, $vr1, 1
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa3, $a3
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a3, $vr1, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa1, $a3
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -11020,71 +15767,135 @@ init:                                   # @init
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a0, -1024
-	xvst	$xr0, $a0, -992
-	xvst	$xr0, $a0, -960
-	xvst	$xr0, $a0, -928
-	xvst	$xr0, $a0, -896
-	xvst	$xr0, $a0, -864
-	xvst	$xr0, $a0, -832
-	xvst	$xr0, $a0, -800
-	xvst	$xr0, $a0, -768
-	xvst	$xr0, $a0, -736
-	xvst	$xr0, $a0, -704
-	xvst	$xr0, $a0, -672
-	xvst	$xr0, $a0, -640
-	xvst	$xr0, $a0, -608
-	xvst	$xr0, $a0, -576
-	xvst	$xr0, $a0, -544
-	xvst	$xr0, $a0, -512
-	xvst	$xr0, $a0, -480
-	xvst	$xr0, $a0, -448
-	xvst	$xr0, $a0, -416
-	xvst	$xr0, $a0, -384
-	xvst	$xr0, $a0, -352
-	xvst	$xr0, $a0, -320
-	xvst	$xr0, $a0, -288
-	xvst	$xr0, $a0, -256
-	xvst	$xr0, $a0, -224
-	xvst	$xr0, $a0, -192
-	xvst	$xr0, $a0, -160
-	xvst	$xr0, $a0, -128
-	xvst	$xr0, $a0, -96
-	xvst	$xr0, $a0, -64
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
-	xvst	$xr0, $a0, 64
-	xvst	$xr0, $a0, 96
-	xvst	$xr0, $a0, 128
-	xvst	$xr0, $a0, 160
-	xvst	$xr0, $a0, 192
-	xvst	$xr0, $a0, 224
-	xvst	$xr0, $a0, 256
-	xvst	$xr0, $a0, 288
-	xvst	$xr0, $a0, 320
-	xvst	$xr0, $a0, 352
-	xvst	$xr0, $a0, 384
-	xvst	$xr0, $a0, 416
-	xvst	$xr0, $a0, 448
-	xvst	$xr0, $a0, 480
-	xvst	$xr0, $a0, 512
-	xvst	$xr0, $a0, 544
-	xvst	$xr0, $a0, 576
-	xvst	$xr0, $a0, 608
-	xvst	$xr0, $a0, 640
-	xvst	$xr0, $a0, 672
-	xvst	$xr0, $a0, 704
-	xvst	$xr0, $a0, 736
-	xvst	$xr0, $a0, 768
-	xvst	$xr0, $a0, 800
-	xvst	$xr0, $a0, 832
-	xvst	$xr0, $a0, 864
-	xvst	$xr0, $a0, 896
-	xvst	$xr0, $a0, 928
-	xvst	$xr0, $a0, 960
-	xvst	$xr0, $a0, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a0, -1024
+	vst	$vr0, $a0, -1008
+	vst	$vr0, $a0, -992
+	vst	$vr0, $a0, -976
+	vst	$vr0, $a0, -960
+	vst	$vr0, $a0, -944
+	vst	$vr0, $a0, -928
+	vst	$vr0, $a0, -912
+	vst	$vr0, $a0, -896
+	vst	$vr0, $a0, -880
+	vst	$vr0, $a0, -864
+	vst	$vr0, $a0, -848
+	vst	$vr0, $a0, -832
+	vst	$vr0, $a0, -816
+	vst	$vr0, $a0, -800
+	vst	$vr0, $a0, -784
+	vst	$vr0, $a0, -768
+	vst	$vr0, $a0, -752
+	vst	$vr0, $a0, -736
+	vst	$vr0, $a0, -720
+	vst	$vr0, $a0, -704
+	vst	$vr0, $a0, -688
+	vst	$vr0, $a0, -672
+	vst	$vr0, $a0, -656
+	vst	$vr0, $a0, -640
+	vst	$vr0, $a0, -624
+	vst	$vr0, $a0, -608
+	vst	$vr0, $a0, -592
+	vst	$vr0, $a0, -576
+	vst	$vr0, $a0, -560
+	vst	$vr0, $a0, -544
+	vst	$vr0, $a0, -528
+	vst	$vr0, $a0, -512
+	vst	$vr0, $a0, -496
+	vst	$vr0, $a0, -480
+	vst	$vr0, $a0, -464
+	vst	$vr0, $a0, -448
+	vst	$vr0, $a0, -432
+	vst	$vr0, $a0, -416
+	vst	$vr0, $a0, -400
+	vst	$vr0, $a0, -384
+	vst	$vr0, $a0, -368
+	vst	$vr0, $a0, -352
+	vst	$vr0, $a0, -336
+	vst	$vr0, $a0, -320
+	vst	$vr0, $a0, -304
+	vst	$vr0, $a0, -288
+	vst	$vr0, $a0, -272
+	vst	$vr0, $a0, -256
+	vst	$vr0, $a0, -240
+	vst	$vr0, $a0, -224
+	vst	$vr0, $a0, -208
+	vst	$vr0, $a0, -192
+	vst	$vr0, $a0, -176
+	vst	$vr0, $a0, -160
+	vst	$vr0, $a0, -144
+	vst	$vr0, $a0, -128
+	vst	$vr0, $a0, -112
+	vst	$vr0, $a0, -96
+	vst	$vr0, $a0, -80
+	vst	$vr0, $a0, -64
+	vst	$vr0, $a0, -48
+	vst	$vr0, $a0, -32
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 80
+	vst	$vr0, $a0, 96
+	vst	$vr0, $a0, 112
+	vst	$vr0, $a0, 128
+	vst	$vr0, $a0, 144
+	vst	$vr0, $a0, 160
+	vst	$vr0, $a0, 176
+	vst	$vr0, $a0, 192
+	vst	$vr0, $a0, 208
+	vst	$vr0, $a0, 224
+	vst	$vr0, $a0, 240
+	vst	$vr0, $a0, 256
+	vst	$vr0, $a0, 272
+	vst	$vr0, $a0, 288
+	vst	$vr0, $a0, 304
+	vst	$vr0, $a0, 320
+	vst	$vr0, $a0, 336
+	vst	$vr0, $a0, 352
+	vst	$vr0, $a0, 368
+	vst	$vr0, $a0, 384
+	vst	$vr0, $a0, 400
+	vst	$vr0, $a0, 416
+	vst	$vr0, $a0, 432
+	vst	$vr0, $a0, 448
+	vst	$vr0, $a0, 464
+	vst	$vr0, $a0, 480
+	vst	$vr0, $a0, 496
+	vst	$vr0, $a0, 512
+	vst	$vr0, $a0, 528
+	vst	$vr0, $a0, 544
+	vst	$vr0, $a0, 560
+	vst	$vr0, $a0, 576
+	vst	$vr0, $a0, 592
+	vst	$vr0, $a0, 608
+	vst	$vr0, $a0, 624
+	vst	$vr0, $a0, 640
+	vst	$vr0, $a0, 656
+	vst	$vr0, $a0, 672
+	vst	$vr0, $a0, 688
+	vst	$vr0, $a0, 704
+	vst	$vr0, $a0, 720
+	vst	$vr0, $a0, 736
+	vst	$vr0, $a0, 752
+	vst	$vr0, $a0, 768
+	vst	$vr0, $a0, 784
+	vst	$vr0, $a0, 800
+	vst	$vr0, $a0, 816
+	vst	$vr0, $a0, 832
+	vst	$vr0, $a0, 848
+	vst	$vr0, $a0, 864
+	vst	$vr0, $a0, 880
+	vst	$vr0, $a0, 896
+	vst	$vr0, $a0, 912
+	vst	$vr0, $a0, 928
+	vst	$vr0, $a0, 944
+	vst	$vr0, $a0, 960
+	vst	$vr0, $a0, 976
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	addi.w	$a1, $a1, 1
 	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 2047
@@ -11100,17 +15911,17 @@ init:                                   # @init
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $s0, 2112
+	ori	$a0, $s0, 2096
 	add.d	$a1, $fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a2, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_797:                              # %vector.body3797
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_797
 # %bb.798:                              # %vector.body3802.preheader
 	lu12i.w	$a2, 125
@@ -11124,10 +15935,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a4, $vr1, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa3, $a4
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a4, $vr1, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -11147,10 +15972,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -11163,16 +16002,16 @@ init:                                   # @init
 .LBB5_802:                              # %vector.body3776.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_803:                              # %vector.body3776
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_803
 # %bb.804:                              # %vector.body3781.preheader
 	lu12i.w	$a3, 62
@@ -11186,10 +16025,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -11209,10 +16062,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -11385,43 +16252,44 @@ init:                                   # @init
 .LBB5_818:                              # %vector.body3726.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_819:                              # %vector.body3726
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_819
 # %bb.820:                              # %vector.body3731.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a0, $a0, $a2
 	ori	$a1, $a1, 3328
+	vldi	$vr0, -912
 .LBB5_821:                              # %vector.body3731
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_821
 	b	.LBB5_573
 .LBB5_822:                              # %vector.body3705.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_823:                              # %vector.body3705
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_823
 # %bb.824:                              # %vector.body3710.preheader
 	lu12i.w	$a3, 62
@@ -11435,10 +16303,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -11458,10 +16340,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -11474,16 +16370,16 @@ init:                                   # @init
 .LBB5_828:                              # %vector.body3692.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_829:                              # %vector.body3692
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_829
 # %bb.830:                              # %vector.body3697.preheader
 	lu12i.w	$a2, 62
@@ -11535,70 +16431,70 @@ init:                                   # @init
 	bnez	$a3, .LBB5_833
 # %bb.834:                              # %vector.body3682.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_835:                              # %vector.body3682
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_835
 # %bb.836:                              # %vector.body3687.preheader
 	lu12i.w	$a2, 125
-	ori	$a2, $a2, 96
+	ori	$a2, $a2, 80
 	add.d	$a0, $a0, $a2
 	ori	$a1, $a1, 3328
-	xvldi	$xr0, -784
+	vldi	$vr0, -784
 .LBB5_837:                              # %vector.body3687
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_837
 	b	.LBB5_573
 .LBB5_838:                              # %vector.body3659.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a0, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a0, 32
+	addi.d	$a2, $a0, 16
 	lu12i.w	$a1, 7
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 .LBB5_839:                              # %vector.body3659
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_839
 # %bb.840:                              # %vector.body3664.preheader
 	lu12i.w	$a2, 62
-	ori	$a2, $a2, 2112
+	ori	$a2, $a2, 2096
 	add.d	$a2, $a0, $a2
 	ori	$a3, $a1, 3328
-	xvldi	$xr0, -1024
+	vldi	$vr0, -1024
 .LBB5_841:                              # %vector.body3664
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB5_841
 # %bb.842:                              # %vector.body3669.preheader
 	lu12i.w	$a2, 125
-	ori	$a2, $a2, 96
+	ori	$a2, $a2, 80
 	add.d	$a0, $a0, $a2
 	ori	$a1, $a1, 3328
-	xvldi	$xr0, -928
+	vldi	$vr0, -928
 .LBB5_843:                              # %vector.body3669
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a0, -32
-	xvst	$xr0, $a0, 0
-	addi.d	$a1, $a1, -8
-	addi.d	$a0, $a0, 64
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$a1, $a1, -4
+	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB5_843
 	b	.LBB5_573
 .LBB5_844:                              # %vector.body3651.preheader
@@ -11613,10 +16509,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -11639,10 +16549,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa2, $a5
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a5, $vr1, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa1, $a5
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -11662,10 +16586,24 @@ init:                                   # @init
 	vshuf4i.w	$vr1, $vr0, 8
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vpickve2gr.w	$a2, $vr2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr2, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa2, $a2
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa3, $a2
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	movgr2fr.d	$fa1, $a2
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -12724,18 +17662,12 @@ s4117:                                  # @s4117
 	.word	0                               # 0x0
 	.word	0                               # 0x0
 	.word	5                               # 0x5
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI14_1:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
-	.dword	6                               # 0x6
-	.dword	7                               # 0x7
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI14_2:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	set
 	.p2align	2
@@ -12799,68 +17731,72 @@ set:                                    # @set
 # %bb.2:                                # %vector.body65.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$a1, $a0, %pc_lo12(global_data)
-	addi.d	$a2, $a1, 32
+	addi.d	$a2, $a1, 16
 	lu12i.w	$a0, 7
 	ori	$a3, $a0, 3328
-	xvldi	$xr0, -912
+	vldi	$vr0, -912
 	.p2align	4, , 16
 .LBB14_3:                               # %vector.body65
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB14_3
 # %bb.4:                                # %vector.body70.preheader
-	ori	$a2, $s2, 2112
+	ori	$a2, $s2, 2096
 	add.d	$a2, $a1, $a2
 	ori	$a3, $a0, 3328
+	vldi	$vr0, -912
 	.p2align	4, , 16
 .LBB14_5:                               # %vector.body70
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB14_5
 # %bb.6:                                # %vector.body75.preheader
 	lu12i.w	$a2, 125
-	ori	$a2, $a2, 96
+	ori	$a2, $a2, 80
 	add.d	$a2, $a1, $a2
 	ori	$a3, $a0, 3328
+	vldi	$vr0, -912
 	.p2align	4, , 16
 .LBB14_7:                               # %vector.body75
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB14_7
 # %bb.8:                                # %vector.body80.preheader
 	lu12i.w	$a2, 187
-	ori	$a2, $a2, 2176
+	ori	$a2, $a2, 2160
 	add.d	$a2, $a1, $a2
 	ori	$a3, $a0, 3328
+	vldi	$vr0, -912
 	.p2align	4, , 16
 .LBB14_9:                               # %vector.body80
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB14_9
 # %bb.10:                               # %vector.body85.preheader
 	lu12i.w	$a2, 250
-	ori	$a2, $a2, 192
+	ori	$a2, $a2, 176
 	add.d	$a2, $a1, $a2
 	ori	$a3, $a0, 3328
+	vldi	$vr0, -912
 	.p2align	4, , 16
 .LBB14_11:                              # %vector.body85
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB14_11
 # %bb.12:                               # %.preheader34.i.preheader
 	lu12i.w	$a2, 312
@@ -12875,71 +17811,135 @@ set:                                    # @set
 	movgr2fr.d	$fa0, $a5
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a2, -1024
-	xvst	$xr0, $a2, -992
-	xvst	$xr0, $a2, -960
-	xvst	$xr0, $a2, -928
-	xvst	$xr0, $a2, -896
-	xvst	$xr0, $a2, -864
-	xvst	$xr0, $a2, -832
-	xvst	$xr0, $a2, -800
-	xvst	$xr0, $a2, -768
-	xvst	$xr0, $a2, -736
-	xvst	$xr0, $a2, -704
-	xvst	$xr0, $a2, -672
-	xvst	$xr0, $a2, -640
-	xvst	$xr0, $a2, -608
-	xvst	$xr0, $a2, -576
-	xvst	$xr0, $a2, -544
-	xvst	$xr0, $a2, -512
-	xvst	$xr0, $a2, -480
-	xvst	$xr0, $a2, -448
-	xvst	$xr0, $a2, -416
-	xvst	$xr0, $a2, -384
-	xvst	$xr0, $a2, -352
-	xvst	$xr0, $a2, -320
-	xvst	$xr0, $a2, -288
-	xvst	$xr0, $a2, -256
-	xvst	$xr0, $a2, -224
-	xvst	$xr0, $a2, -192
-	xvst	$xr0, $a2, -160
-	xvst	$xr0, $a2, -128
-	xvst	$xr0, $a2, -96
-	xvst	$xr0, $a2, -64
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	xvst	$xr0, $a2, 32
-	xvst	$xr0, $a2, 64
-	xvst	$xr0, $a2, 96
-	xvst	$xr0, $a2, 128
-	xvst	$xr0, $a2, 160
-	xvst	$xr0, $a2, 192
-	xvst	$xr0, $a2, 224
-	xvst	$xr0, $a2, 256
-	xvst	$xr0, $a2, 288
-	xvst	$xr0, $a2, 320
-	xvst	$xr0, $a2, 352
-	xvst	$xr0, $a2, 384
-	xvst	$xr0, $a2, 416
-	xvst	$xr0, $a2, 448
-	xvst	$xr0, $a2, 480
-	xvst	$xr0, $a2, 512
-	xvst	$xr0, $a2, 544
-	xvst	$xr0, $a2, 576
-	xvst	$xr0, $a2, 608
-	xvst	$xr0, $a2, 640
-	xvst	$xr0, $a2, 672
-	xvst	$xr0, $a2, 704
-	xvst	$xr0, $a2, 736
-	xvst	$xr0, $a2, 768
-	xvst	$xr0, $a2, 800
-	xvst	$xr0, $a2, 832
-	xvst	$xr0, $a2, 864
-	xvst	$xr0, $a2, 896
-	xvst	$xr0, $a2, 928
-	xvst	$xr0, $a2, 960
-	xvst	$xr0, $a2, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a2, -1024
+	vst	$vr0, $a2, -1008
+	vst	$vr0, $a2, -992
+	vst	$vr0, $a2, -976
+	vst	$vr0, $a2, -960
+	vst	$vr0, $a2, -944
+	vst	$vr0, $a2, -928
+	vst	$vr0, $a2, -912
+	vst	$vr0, $a2, -896
+	vst	$vr0, $a2, -880
+	vst	$vr0, $a2, -864
+	vst	$vr0, $a2, -848
+	vst	$vr0, $a2, -832
+	vst	$vr0, $a2, -816
+	vst	$vr0, $a2, -800
+	vst	$vr0, $a2, -784
+	vst	$vr0, $a2, -768
+	vst	$vr0, $a2, -752
+	vst	$vr0, $a2, -736
+	vst	$vr0, $a2, -720
+	vst	$vr0, $a2, -704
+	vst	$vr0, $a2, -688
+	vst	$vr0, $a2, -672
+	vst	$vr0, $a2, -656
+	vst	$vr0, $a2, -640
+	vst	$vr0, $a2, -624
+	vst	$vr0, $a2, -608
+	vst	$vr0, $a2, -592
+	vst	$vr0, $a2, -576
+	vst	$vr0, $a2, -560
+	vst	$vr0, $a2, -544
+	vst	$vr0, $a2, -528
+	vst	$vr0, $a2, -512
+	vst	$vr0, $a2, -496
+	vst	$vr0, $a2, -480
+	vst	$vr0, $a2, -464
+	vst	$vr0, $a2, -448
+	vst	$vr0, $a2, -432
+	vst	$vr0, $a2, -416
+	vst	$vr0, $a2, -400
+	vst	$vr0, $a2, -384
+	vst	$vr0, $a2, -368
+	vst	$vr0, $a2, -352
+	vst	$vr0, $a2, -336
+	vst	$vr0, $a2, -320
+	vst	$vr0, $a2, -304
+	vst	$vr0, $a2, -288
+	vst	$vr0, $a2, -272
+	vst	$vr0, $a2, -256
+	vst	$vr0, $a2, -240
+	vst	$vr0, $a2, -224
+	vst	$vr0, $a2, -208
+	vst	$vr0, $a2, -192
+	vst	$vr0, $a2, -176
+	vst	$vr0, $a2, -160
+	vst	$vr0, $a2, -144
+	vst	$vr0, $a2, -128
+	vst	$vr0, $a2, -112
+	vst	$vr0, $a2, -96
+	vst	$vr0, $a2, -80
+	vst	$vr0, $a2, -64
+	vst	$vr0, $a2, -48
+	vst	$vr0, $a2, -32
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	vst	$vr0, $a2, 16
+	vst	$vr0, $a2, 32
+	vst	$vr0, $a2, 48
+	vst	$vr0, $a2, 64
+	vst	$vr0, $a2, 80
+	vst	$vr0, $a2, 96
+	vst	$vr0, $a2, 112
+	vst	$vr0, $a2, 128
+	vst	$vr0, $a2, 144
+	vst	$vr0, $a2, 160
+	vst	$vr0, $a2, 176
+	vst	$vr0, $a2, 192
+	vst	$vr0, $a2, 208
+	vst	$vr0, $a2, 224
+	vst	$vr0, $a2, 240
+	vst	$vr0, $a2, 256
+	vst	$vr0, $a2, 272
+	vst	$vr0, $a2, 288
+	vst	$vr0, $a2, 304
+	vst	$vr0, $a2, 320
+	vst	$vr0, $a2, 336
+	vst	$vr0, $a2, 352
+	vst	$vr0, $a2, 368
+	vst	$vr0, $a2, 384
+	vst	$vr0, $a2, 400
+	vst	$vr0, $a2, 416
+	vst	$vr0, $a2, 432
+	vst	$vr0, $a2, 448
+	vst	$vr0, $a2, 464
+	vst	$vr0, $a2, 480
+	vst	$vr0, $a2, 496
+	vst	$vr0, $a2, 512
+	vst	$vr0, $a2, 528
+	vst	$vr0, $a2, 544
+	vst	$vr0, $a2, 560
+	vst	$vr0, $a2, 576
+	vst	$vr0, $a2, 592
+	vst	$vr0, $a2, 608
+	vst	$vr0, $a2, 624
+	vst	$vr0, $a2, 640
+	vst	$vr0, $a2, 656
+	vst	$vr0, $a2, 672
+	vst	$vr0, $a2, 688
+	vst	$vr0, $a2, 704
+	vst	$vr0, $a2, 720
+	vst	$vr0, $a2, 736
+	vst	$vr0, $a2, 752
+	vst	$vr0, $a2, 768
+	vst	$vr0, $a2, 784
+	vst	$vr0, $a2, 800
+	vst	$vr0, $a2, 816
+	vst	$vr0, $a2, 832
+	vst	$vr0, $a2, 848
+	vst	$vr0, $a2, 864
+	vst	$vr0, $a2, 880
+	vst	$vr0, $a2, 896
+	vst	$vr0, $a2, 912
+	vst	$vr0, $a2, 928
+	vst	$vr0, $a2, 944
+	vst	$vr0, $a2, 960
+	vst	$vr0, $a2, 976
+	vst	$vr0, $a2, 992
+	vst	$vr0, $a2, 1008
 	addi.w	$a3, $a3, 1
 	addi.d	$a4, $a4, -1
 	addi.d	$a2, $a2, 2047
@@ -12958,71 +17958,135 @@ set:                                    # @set
 	movgr2fr.d	$fa0, $a5
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a2, -1024
-	xvst	$xr0, $a2, -992
-	xvst	$xr0, $a2, -960
-	xvst	$xr0, $a2, -928
-	xvst	$xr0, $a2, -896
-	xvst	$xr0, $a2, -864
-	xvst	$xr0, $a2, -832
-	xvst	$xr0, $a2, -800
-	xvst	$xr0, $a2, -768
-	xvst	$xr0, $a2, -736
-	xvst	$xr0, $a2, -704
-	xvst	$xr0, $a2, -672
-	xvst	$xr0, $a2, -640
-	xvst	$xr0, $a2, -608
-	xvst	$xr0, $a2, -576
-	xvst	$xr0, $a2, -544
-	xvst	$xr0, $a2, -512
-	xvst	$xr0, $a2, -480
-	xvst	$xr0, $a2, -448
-	xvst	$xr0, $a2, -416
-	xvst	$xr0, $a2, -384
-	xvst	$xr0, $a2, -352
-	xvst	$xr0, $a2, -320
-	xvst	$xr0, $a2, -288
-	xvst	$xr0, $a2, -256
-	xvst	$xr0, $a2, -224
-	xvst	$xr0, $a2, -192
-	xvst	$xr0, $a2, -160
-	xvst	$xr0, $a2, -128
-	xvst	$xr0, $a2, -96
-	xvst	$xr0, $a2, -64
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	xvst	$xr0, $a2, 32
-	xvst	$xr0, $a2, 64
-	xvst	$xr0, $a2, 96
-	xvst	$xr0, $a2, 128
-	xvst	$xr0, $a2, 160
-	xvst	$xr0, $a2, 192
-	xvst	$xr0, $a2, 224
-	xvst	$xr0, $a2, 256
-	xvst	$xr0, $a2, 288
-	xvst	$xr0, $a2, 320
-	xvst	$xr0, $a2, 352
-	xvst	$xr0, $a2, 384
-	xvst	$xr0, $a2, 416
-	xvst	$xr0, $a2, 448
-	xvst	$xr0, $a2, 480
-	xvst	$xr0, $a2, 512
-	xvst	$xr0, $a2, 544
-	xvst	$xr0, $a2, 576
-	xvst	$xr0, $a2, 608
-	xvst	$xr0, $a2, 640
-	xvst	$xr0, $a2, 672
-	xvst	$xr0, $a2, 704
-	xvst	$xr0, $a2, 736
-	xvst	$xr0, $a2, 768
-	xvst	$xr0, $a2, 800
-	xvst	$xr0, $a2, 832
-	xvst	$xr0, $a2, 864
-	xvst	$xr0, $a2, 896
-	xvst	$xr0, $a2, 928
-	xvst	$xr0, $a2, 960
-	xvst	$xr0, $a2, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a2, -1024
+	vst	$vr0, $a2, -1008
+	vst	$vr0, $a2, -992
+	vst	$vr0, $a2, -976
+	vst	$vr0, $a2, -960
+	vst	$vr0, $a2, -944
+	vst	$vr0, $a2, -928
+	vst	$vr0, $a2, -912
+	vst	$vr0, $a2, -896
+	vst	$vr0, $a2, -880
+	vst	$vr0, $a2, -864
+	vst	$vr0, $a2, -848
+	vst	$vr0, $a2, -832
+	vst	$vr0, $a2, -816
+	vst	$vr0, $a2, -800
+	vst	$vr0, $a2, -784
+	vst	$vr0, $a2, -768
+	vst	$vr0, $a2, -752
+	vst	$vr0, $a2, -736
+	vst	$vr0, $a2, -720
+	vst	$vr0, $a2, -704
+	vst	$vr0, $a2, -688
+	vst	$vr0, $a2, -672
+	vst	$vr0, $a2, -656
+	vst	$vr0, $a2, -640
+	vst	$vr0, $a2, -624
+	vst	$vr0, $a2, -608
+	vst	$vr0, $a2, -592
+	vst	$vr0, $a2, -576
+	vst	$vr0, $a2, -560
+	vst	$vr0, $a2, -544
+	vst	$vr0, $a2, -528
+	vst	$vr0, $a2, -512
+	vst	$vr0, $a2, -496
+	vst	$vr0, $a2, -480
+	vst	$vr0, $a2, -464
+	vst	$vr0, $a2, -448
+	vst	$vr0, $a2, -432
+	vst	$vr0, $a2, -416
+	vst	$vr0, $a2, -400
+	vst	$vr0, $a2, -384
+	vst	$vr0, $a2, -368
+	vst	$vr0, $a2, -352
+	vst	$vr0, $a2, -336
+	vst	$vr0, $a2, -320
+	vst	$vr0, $a2, -304
+	vst	$vr0, $a2, -288
+	vst	$vr0, $a2, -272
+	vst	$vr0, $a2, -256
+	vst	$vr0, $a2, -240
+	vst	$vr0, $a2, -224
+	vst	$vr0, $a2, -208
+	vst	$vr0, $a2, -192
+	vst	$vr0, $a2, -176
+	vst	$vr0, $a2, -160
+	vst	$vr0, $a2, -144
+	vst	$vr0, $a2, -128
+	vst	$vr0, $a2, -112
+	vst	$vr0, $a2, -96
+	vst	$vr0, $a2, -80
+	vst	$vr0, $a2, -64
+	vst	$vr0, $a2, -48
+	vst	$vr0, $a2, -32
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	vst	$vr0, $a2, 16
+	vst	$vr0, $a2, 32
+	vst	$vr0, $a2, 48
+	vst	$vr0, $a2, 64
+	vst	$vr0, $a2, 80
+	vst	$vr0, $a2, 96
+	vst	$vr0, $a2, 112
+	vst	$vr0, $a2, 128
+	vst	$vr0, $a2, 144
+	vst	$vr0, $a2, 160
+	vst	$vr0, $a2, 176
+	vst	$vr0, $a2, 192
+	vst	$vr0, $a2, 208
+	vst	$vr0, $a2, 224
+	vst	$vr0, $a2, 240
+	vst	$vr0, $a2, 256
+	vst	$vr0, $a2, 272
+	vst	$vr0, $a2, 288
+	vst	$vr0, $a2, 304
+	vst	$vr0, $a2, 320
+	vst	$vr0, $a2, 336
+	vst	$vr0, $a2, 352
+	vst	$vr0, $a2, 368
+	vst	$vr0, $a2, 384
+	vst	$vr0, $a2, 400
+	vst	$vr0, $a2, 416
+	vst	$vr0, $a2, 432
+	vst	$vr0, $a2, 448
+	vst	$vr0, $a2, 464
+	vst	$vr0, $a2, 480
+	vst	$vr0, $a2, 496
+	vst	$vr0, $a2, 512
+	vst	$vr0, $a2, 528
+	vst	$vr0, $a2, 544
+	vst	$vr0, $a2, 560
+	vst	$vr0, $a2, 576
+	vst	$vr0, $a2, 592
+	vst	$vr0, $a2, 608
+	vst	$vr0, $a2, 624
+	vst	$vr0, $a2, 640
+	vst	$vr0, $a2, 656
+	vst	$vr0, $a2, 672
+	vst	$vr0, $a2, 688
+	vst	$vr0, $a2, 704
+	vst	$vr0, $a2, 720
+	vst	$vr0, $a2, 736
+	vst	$vr0, $a2, 752
+	vst	$vr0, $a2, 768
+	vst	$vr0, $a2, 784
+	vst	$vr0, $a2, 800
+	vst	$vr0, $a2, 816
+	vst	$vr0, $a2, 832
+	vst	$vr0, $a2, 848
+	vst	$vr0, $a2, 864
+	vst	$vr0, $a2, 880
+	vst	$vr0, $a2, 896
+	vst	$vr0, $a2, 912
+	vst	$vr0, $a2, 928
+	vst	$vr0, $a2, 944
+	vst	$vr0, $a2, 960
+	vst	$vr0, $a2, 976
+	vst	$vr0, $a2, 992
+	vst	$vr0, $a2, 1008
 	addi.w	$a3, $a3, 1
 	addi.d	$a4, $a4, -1
 	addi.d	$a2, $a2, 2047
@@ -13041,71 +18105,135 @@ set:                                    # @set
 	movgr2fr.d	$fa0, $a4
 	ffint.d.l	$fa0, $fa0
 	frecip.d	$fa0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvst	$xr0, $a1, -1024
-	xvst	$xr0, $a1, -992
-	xvst	$xr0, $a1, -960
-	xvst	$xr0, $a1, -928
-	xvst	$xr0, $a1, -896
-	xvst	$xr0, $a1, -864
-	xvst	$xr0, $a1, -832
-	xvst	$xr0, $a1, -800
-	xvst	$xr0, $a1, -768
-	xvst	$xr0, $a1, -736
-	xvst	$xr0, $a1, -704
-	xvst	$xr0, $a1, -672
-	xvst	$xr0, $a1, -640
-	xvst	$xr0, $a1, -608
-	xvst	$xr0, $a1, -576
-	xvst	$xr0, $a1, -544
-	xvst	$xr0, $a1, -512
-	xvst	$xr0, $a1, -480
-	xvst	$xr0, $a1, -448
-	xvst	$xr0, $a1, -416
-	xvst	$xr0, $a1, -384
-	xvst	$xr0, $a1, -352
-	xvst	$xr0, $a1, -320
-	xvst	$xr0, $a1, -288
-	xvst	$xr0, $a1, -256
-	xvst	$xr0, $a1, -224
-	xvst	$xr0, $a1, -192
-	xvst	$xr0, $a1, -160
-	xvst	$xr0, $a1, -128
-	xvst	$xr0, $a1, -96
-	xvst	$xr0, $a1, -64
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	xvst	$xr0, $a1, 32
-	xvst	$xr0, $a1, 64
-	xvst	$xr0, $a1, 96
-	xvst	$xr0, $a1, 128
-	xvst	$xr0, $a1, 160
-	xvst	$xr0, $a1, 192
-	xvst	$xr0, $a1, 224
-	xvst	$xr0, $a1, 256
-	xvst	$xr0, $a1, 288
-	xvst	$xr0, $a1, 320
-	xvst	$xr0, $a1, 352
-	xvst	$xr0, $a1, 384
-	xvst	$xr0, $a1, 416
-	xvst	$xr0, $a1, 448
-	xvst	$xr0, $a1, 480
-	xvst	$xr0, $a1, 512
-	xvst	$xr0, $a1, 544
-	xvst	$xr0, $a1, 576
-	xvst	$xr0, $a1, 608
-	xvst	$xr0, $a1, 640
-	xvst	$xr0, $a1, 672
-	xvst	$xr0, $a1, 704
-	xvst	$xr0, $a1, 736
-	xvst	$xr0, $a1, 768
-	xvst	$xr0, $a1, 800
-	xvst	$xr0, $a1, 832
-	xvst	$xr0, $a1, 864
-	xvst	$xr0, $a1, 896
-	xvst	$xr0, $a1, 928
-	xvst	$xr0, $a1, 960
-	xvst	$xr0, $a1, 992
+	vreplvei.d	$vr0, $vr0, 0
+	vst	$vr0, $a1, -1024
+	vst	$vr0, $a1, -1008
+	vst	$vr0, $a1, -992
+	vst	$vr0, $a1, -976
+	vst	$vr0, $a1, -960
+	vst	$vr0, $a1, -944
+	vst	$vr0, $a1, -928
+	vst	$vr0, $a1, -912
+	vst	$vr0, $a1, -896
+	vst	$vr0, $a1, -880
+	vst	$vr0, $a1, -864
+	vst	$vr0, $a1, -848
+	vst	$vr0, $a1, -832
+	vst	$vr0, $a1, -816
+	vst	$vr0, $a1, -800
+	vst	$vr0, $a1, -784
+	vst	$vr0, $a1, -768
+	vst	$vr0, $a1, -752
+	vst	$vr0, $a1, -736
+	vst	$vr0, $a1, -720
+	vst	$vr0, $a1, -704
+	vst	$vr0, $a1, -688
+	vst	$vr0, $a1, -672
+	vst	$vr0, $a1, -656
+	vst	$vr0, $a1, -640
+	vst	$vr0, $a1, -624
+	vst	$vr0, $a1, -608
+	vst	$vr0, $a1, -592
+	vst	$vr0, $a1, -576
+	vst	$vr0, $a1, -560
+	vst	$vr0, $a1, -544
+	vst	$vr0, $a1, -528
+	vst	$vr0, $a1, -512
+	vst	$vr0, $a1, -496
+	vst	$vr0, $a1, -480
+	vst	$vr0, $a1, -464
+	vst	$vr0, $a1, -448
+	vst	$vr0, $a1, -432
+	vst	$vr0, $a1, -416
+	vst	$vr0, $a1, -400
+	vst	$vr0, $a1, -384
+	vst	$vr0, $a1, -368
+	vst	$vr0, $a1, -352
+	vst	$vr0, $a1, -336
+	vst	$vr0, $a1, -320
+	vst	$vr0, $a1, -304
+	vst	$vr0, $a1, -288
+	vst	$vr0, $a1, -272
+	vst	$vr0, $a1, -256
+	vst	$vr0, $a1, -240
+	vst	$vr0, $a1, -224
+	vst	$vr0, $a1, -208
+	vst	$vr0, $a1, -192
+	vst	$vr0, $a1, -176
+	vst	$vr0, $a1, -160
+	vst	$vr0, $a1, -144
+	vst	$vr0, $a1, -128
+	vst	$vr0, $a1, -112
+	vst	$vr0, $a1, -96
+	vst	$vr0, $a1, -80
+	vst	$vr0, $a1, -64
+	vst	$vr0, $a1, -48
+	vst	$vr0, $a1, -32
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
+	vst	$vr0, $a1, 32
+	vst	$vr0, $a1, 48
+	vst	$vr0, $a1, 64
+	vst	$vr0, $a1, 80
+	vst	$vr0, $a1, 96
+	vst	$vr0, $a1, 112
+	vst	$vr0, $a1, 128
+	vst	$vr0, $a1, 144
+	vst	$vr0, $a1, 160
+	vst	$vr0, $a1, 176
+	vst	$vr0, $a1, 192
+	vst	$vr0, $a1, 208
+	vst	$vr0, $a1, 224
+	vst	$vr0, $a1, 240
+	vst	$vr0, $a1, 256
+	vst	$vr0, $a1, 272
+	vst	$vr0, $a1, 288
+	vst	$vr0, $a1, 304
+	vst	$vr0, $a1, 320
+	vst	$vr0, $a1, 336
+	vst	$vr0, $a1, 352
+	vst	$vr0, $a1, 368
+	vst	$vr0, $a1, 384
+	vst	$vr0, $a1, 400
+	vst	$vr0, $a1, 416
+	vst	$vr0, $a1, 432
+	vst	$vr0, $a1, 448
+	vst	$vr0, $a1, 464
+	vst	$vr0, $a1, 480
+	vst	$vr0, $a1, 496
+	vst	$vr0, $a1, 512
+	vst	$vr0, $a1, 528
+	vst	$vr0, $a1, 544
+	vst	$vr0, $a1, 560
+	vst	$vr0, $a1, 576
+	vst	$vr0, $a1, 592
+	vst	$vr0, $a1, 608
+	vst	$vr0, $a1, 624
+	vst	$vr0, $a1, 640
+	vst	$vr0, $a1, 656
+	vst	$vr0, $a1, 672
+	vst	$vr0, $a1, 688
+	vst	$vr0, $a1, 704
+	vst	$vr0, $a1, 720
+	vst	$vr0, $a1, 736
+	vst	$vr0, $a1, 752
+	vst	$vr0, $a1, 768
+	vst	$vr0, $a1, 784
+	vst	$vr0, $a1, 800
+	vst	$vr0, $a1, 816
+	vst	$vr0, $a1, 832
+	vst	$vr0, $a1, 848
+	vst	$vr0, $a1, 864
+	vst	$vr0, $a1, 880
+	vst	$vr0, $a1, 896
+	vst	$vr0, $a1, 912
+	vst	$vr0, $a1, 928
+	vst	$vr0, $a1, 944
+	vst	$vr0, $a1, 960
+	vst	$vr0, $a1, 976
+	vst	$vr0, $a1, 992
+	vst	$vr0, $a1, 1008
 	addi.w	$a2, $a2, 1
 	addi.d	$a3, $a3, -1
 	addi.d	$a1, $a1, 2047
@@ -13113,39 +18241,24 @@ set:                                    # @set
 	bnez	$a3, .LBB14_17
 # %bb.18:                               # %vector.body109.preheader
 	pcalau12i	$a1, %pc_hi20(.LCPI14_1)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI14_1)
+	vld	$vr0, $a1, %pc_lo12(.LCPI14_1)
 	pcalau12i	$a1, %pc_hi20(.LCPI14_2)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI14_2)
-	pcalau12i	$a1, %pc_hi20(indx)
-	addi.d	$a1, $a1, %pc_lo12(indx)
+	vld	$vr1, $a1, %pc_lo12(.LCPI14_2)
+	pcalau12i	$a1, %pc_hi20(indx+16)
+	addi.d	$a1, $a1, %pc_lo12(indx+16)
 	ori	$a0, $a0, 3328
-	xvrepli.w	$xr2, 3
+	vrepli.w	$vr2, 3
 	.p2align	4, , 16
 .LBB14_19:                              # %vector.body109
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a2, $xr1, 0
-	vinsgr2vr.w	$vr3, $a2, 0
-	xvpickve2gr.d	$a2, $xr1, 1
-	vinsgr2vr.w	$vr3, $a2, 1
-	xvpickve2gr.d	$a2, $xr1, 2
-	vinsgr2vr.w	$vr3, $a2, 2
-	xvpickve2gr.d	$a2, $xr1, 3
-	vinsgr2vr.w	$vr3, $a2, 3
-	xvpickve2gr.d	$a2, $xr0, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr0, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr0, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr0, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpermi.q	$xr3, $xr4, 2
-	xvaddi.wu	$xr3, $xr3, 1
-	xvand.v	$xr3, $xr3, $xr2
-	xvaddi.wu	$xr3, $xr3, 1
-	xvst	$xr3, $a1, 0
-	xvaddi.du	$xr1, $xr1, 8
-	xvaddi.du	$xr0, $xr0, 8
+	vpickev.w	$vr3, $vr0, $vr1
+	vaddi.wu	$vr3, $vr3, 1
+	vand.v	$vr3, $vr3, $vr2
+	vaddi.wu	$vr3, $vr3, 1
+	vst	$vr3, $a1, -16
+	vst	$vr3, $a1, 0
+	vaddi.du	$vr1, $vr1, 8
+	vaddi.du	$vr0, $vr0, 8
 	addi.d	$a0, $a0, -8
 	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB14_19

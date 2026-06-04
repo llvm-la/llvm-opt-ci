@@ -374,12 +374,15 @@ IdentMatrix:                            # @IdentMatrix
 	jirl	$ra, $ra, 0
 	lu52i.d	$a1, $zero, 1023
 	st.d	$a1, $a0, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 8
+	vst	$vr0, $a0, 24
 	st.d	$a1, $a0, 40
-	xvst	$xr0, $a0, 48
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
 	st.d	$a1, $a0, 80
-	xvst	$xr0, $a0, 88
+	vst	$vr0, $a0, 88
+	vst	$vr0, $a0, 104
 	st.d	$a1, $a0, 120
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -406,11 +409,11 @@ TranslateMatrix:                        # @TranslateMatrix
 	jirl	$ra, $ra, 0
 	lu52i.d	$a1, $zero, 1023
 	st.d	$a1, $a0, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 24
+	vst	$vr0, $a0, 8
 	st.d	$a1, $a0, 40
 	st.d	$zero, $a0, 48
-	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 64
 	st.d	$a1, $a0, 80
 	st.d	$zero, $a0, 96
@@ -439,19 +442,19 @@ TranslateMatrix:                        # @TranslateMatrix
 	.type	RotateMatrix,@function
 RotateMatrix:                           # @RotateMatrix
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 104                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 96                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 88                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 72                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 64                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 32                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
 	fld.d	$fs5, $a0, %pc_lo12(.LCPI5_0)
 	fmov.d	$fs3, $fa2
@@ -474,38 +477,41 @@ RotateMatrix:                           # @RotateMatrix
 	pcaddu18i	$ra, %call36(sin)
 	jirl	$ra, $ra, 0
 	fmov.d	$fs4, $fa0
-	fmul.d	$fs3, $fs3, $fs5
-	fmov.d	$fa0, $fs3
+	fmul.d	$fs5, $fs3, $fs5
+	fmov.d	$fa0, $fs5
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-	fmov.d	$fs5, $fa0
-	fmov.d	$fa0, $fs3
+	fmov.d	$fs3, $fa0
+	fmov.d	$fa0, $fs5
 	pcaddu18i	$ra, %call36(sin)
 	jirl	$ra, $ra, 0
-	fmov.d	$fs3, $fa0
+	fmov.d	$fs5, $fa0
 	ori	$a0, $zero, 128
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	lu52i.d	$s2, $zero, 1023
 	st.d	$s2, $a0, 0
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $sp, 32                   # 32-byte Folded Spill
-	xvst	$xr1, $a0, 8
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $a0, 8
+	vst	$vr0, $a0, 24
 	vst	$vr0, $a0, 56
-	xvst	$xr1, $a0, 88
+	vst	$vr0, $a0, 88
+	vst	$vr0, $a0, 104
 	st.d	$s2, $a0, 120
 	ori	$a0, $zero, 128
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	xvld	$xr0, $sp, 32                   # 32-byte Folded Reload
-	xvst	$xr0, $a0, 8
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $a0, 8
+	vst	$vr0, $a0, 24
 	st.d	$s2, $a0, 40
-	xvst	$xr0, $a0, 48
-	xvst	$xr0, $a0, 88
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 88
+	vst	$vr0, $a0, 104
 	st.d	$s2, $a0, 120
 	ori	$a0, $zero, 128
 	pcaddu18i	$ra, %call36(malloc)
@@ -513,10 +519,11 @@ RotateMatrix:                           # @RotateMatrix
 	move	$s1, $a0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 16
-	xvld	$xr0, $sp, 32                   # 32-byte Folded Reload
-	xvst	$xr0, $a0, 48
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
 	st.d	$s2, $a0, 80
-	xvst	$xr0, $a0, 88
+	vst	$vr0, $a0, 88
+	vst	$vr0, $a0, 104
 	st.d	$s2, $a0, 120
 	ori	$a0, $zero, 128
 	pcaddu18i	$ra, %call36(malloc)
@@ -536,11 +543,11 @@ RotateMatrix:                           # @RotateMatrix
 	fneg.d	$fa0, $fs4
 	fst.d	$fa0, $s0, 64
 	fst.d	$fs2, $s0, 80
-	fst.d	$fs5, $s1, 0
-	fneg.d	$fa0, $fs3
+	fst.d	$fs3, $s1, 0
+	fneg.d	$fa0, $fs5
 	fst.d	$fa0, $s1, 8
-	fst.d	$fs3, $s1, 32
-	fst.d	$fs5, $s1, 40
+	fst.d	$fs5, $s1, 32
+	fst.d	$fs3, $s1, 40
 	move	$a0, $fp
 	move	$a1, $s0
 	move	$a2, $s2
@@ -552,19 +559,19 @@ RotateMatrix:                           # @RotateMatrix
 	pcaddu18i	$ra, %call36(MultMatrixMatrix)
 	jirl	$ra, $ra, 0
 	move	$a0, $s3
-	fld.d	$fs5, $sp, 64                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 80                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 96                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 104                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	fld.d	$fs5, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 64                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 72                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .Lfunc_end5:
 	.size	RotateMatrix, .Lfunc_end5-RotateMatrix
@@ -586,10 +593,13 @@ ScaleMatrix:                            # @ScaleMatrix
 	ori	$a0, $zero, 128
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 8
-	xvst	$xr0, $a0, 48
-	xvst	$xr0, $a0, 88
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 8
+	vst	$vr0, $a0, 24
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
+	vst	$vr0, $a0, 88
+	vst	$vr0, $a0, 104
 	lu52i.d	$a1, $zero, 1023
 	st.d	$a1, $a0, 120
 	fst.d	$fs2, $a0, 0
@@ -619,13 +629,15 @@ RotatePoint:                            # @RotatePoint
 	fst.d	$fs2, $sp, 96                   # 8-byte Folded Spill
 	move	$fp, $a1
 	vld	$vr3, $a1, 32
-	xvld	$xr4, $a1, 0
+	vld	$vr4, $a1, 16
+	vld	$vr5, $a1, 0
 	fmov.d	$fs0, $fa2
 	fmov.d	$fs1, $fa1
 	fmov.d	$fs2, $fa0
 	move	$s0, $a0
 	vst	$vr3, $sp, 48
-	xvst	$xr4, $sp, 16
+	vst	$vr4, $sp, 32
+	vst	$vr5, $sp, 16
 	addi.d	$a0, $sp, 64
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(PointToHPoint)
@@ -636,9 +648,11 @@ RotatePoint:                            # @RotatePoint
 	pcaddu18i	$ra, %call36(RotateMatrix)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $fp, 0
-	xvld	$xr1, $fp, 16
+	vld	$vr1, $fp, 16
+	vld	$vr2, $fp, 32
 	vst	$vr0, $s0, 0
-	xvst	$xr1, $s0, 16
+	vst	$vr1, $s0, 16
+	vst	$vr2, $s0, 32
 	fld.d	$fs2, $sp, 96                   # 8-byte Folded Reload
 	fld.d	$fs1, $sp, 104                  # 8-byte Folded Reload
 	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload

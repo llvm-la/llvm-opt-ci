@@ -455,10 +455,10 @@ FontChange:                             # @FontChange
 .LBB1_11:                               # %.lr.ph503.preheader
 	move	$a6, $zero
 	move	$a7, $zero
-	addi.d	$a0, $sp, 408
+	addi.d	$a0, $sp, 392
 	addi.d	$a1, $sp, 376
 	ori	$a2, $zero, 43
-	ori	$a3, $zero, 7
+	ori	$a3, $zero, 5
 	ori	$a4, $zero, 45
 	ori	$a5, $zero, 9
 	b	.LBB1_13
@@ -499,32 +499,32 @@ FontChange:                             # @FontChange
 # %bb.19:                               # %vector.memcheck
                                         #   in Loop: Header=BB1_13 Depth=1
 	sub.d	$t0, $a6, $t1
-	bstrpick.d	$t0, $t0, 60, 3
-	slli.d	$t0, $t0, 3
+	bstrpick.d	$t0, $t0, 60, 2
+	slli.d	$t0, $t0, 2
 	beqz	$t0, .LBB1_23
 # %bb.20:                               # %vector.ph
                                         #   in Loop: Header=BB1_13 Depth=1
 	bstrpick.d	$a7, $a7, 31, 0
 	addi.d	$t2, $a7, 1
-	bstrpick.d	$t0, $t2, 32, 3
-	slli.d	$t3, $t0, 3
-	alsl.d	$a7, $t0, $t1, 3
-	alsl.w	$t0, $t0, $a6, 3
+	bstrpick.d	$t0, $t2, 32, 2
+	slli.d	$t3, $t0, 2
+	alsl.d	$a7, $t0, $t1, 2
+	alsl.w	$t0, $t0, $a6, 2
 	alsl.d	$t1, $t1, $a0, 3
 	move	$t4, $t3
 	.p2align	4, , 16
 .LBB1_21:                               # %vector.body
                                         #   Parent Loop BB1_13 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $t1, -32
-	xvld	$xr1, $t1, 0
+	vld	$vr0, $t1, -16
+	vld	$vr1, $t1, 0
 	alsl.d	$t5, $a6, $a1, 3
 	slli.d	$t6, $a6, 3
-	xvstx	$xr0, $t6, $a1
-	xvst	$xr1, $t5, 32
-	addi.d	$t1, $t1, 64
-	addi.d	$t4, $t4, -8
-	addi.w	$a6, $a6, 8
+	vstx	$vr0, $t6, $a1
+	vst	$vr1, $t5, 16
+	addi.d	$t1, $t1, 32
+	addi.d	$t4, $t4, -4
+	addi.w	$a6, $a6, 4
 	bnez	$t4, .LBB1_21
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB1_13 Depth=1
@@ -535,7 +535,7 @@ FontChange:                             # @FontChange
 .LBB1_23:                               #   in Loop: Header=BB1_13 Depth=1
 	move	$a7, $t1
 	move	$t0, $a6
-.LBB1_24:                               # %.lr.ph.preheader787
+.LBB1_24:                               # %.lr.ph.preheader788
                                         #   in Loop: Header=BB1_13 Depth=1
 	alsl.d	$a6, $a7, $a1, 3
 	.p2align	4, , 16
@@ -1048,8 +1048,8 @@ FontChange:                             # @FontChange
 	beq	$s3, $s7, .LBB1_158
 # %bb.108:                              # %.preheader519.lr.ph.i
 	ori	$s5, $zero, 10
-	pcalau12i	$s0, %pc_hi20(fd_tag)
-	pcalau12i	$s6, %pc_hi20(fd_family)
+	pcalau12i	$s6, %pc_hi20(fd_tag)
+	pcalau12i	$s0, %pc_hi20(fd_family)
 	pcalau12i	$a0, %pc_hi20(.L.str.77)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.77)
 	st.d	$a0, $sp, 336                   # 8-byte Folded Spill
@@ -1117,10 +1117,10 @@ FontChange:                             # @FontChange
 .LBB1_117:                              # %.loopexit520.i
                                         #   in Loop: Header=BB1_113 Depth=1
 	ld.d	$a0, $fp, 80
-	ld.d	$a1, $s0, %pc_lo12(fd_tag)
+	ld.d	$a1, $s6, %pc_lo12(fd_tag)
 	beq	$a0, $a1, .LBB1_112
 # %bb.118:                              #   in Loop: Header=BB1_113 Depth=1
-	ld.d	$a1, $s6, %pc_lo12(fd_family)
+	ld.d	$a1, $s0, %pc_lo12(fd_family)
 	beq	$a0, $a1, .LBB1_126
 # %bb.119:                              #   in Loop: Header=BB1_113 Depth=1
 	pcalau12i	$a1, %pc_hi20(fd_face)
@@ -3163,7 +3163,7 @@ FontChange:                             # @FontChange
 	move	$a6, $s4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-.LBB1_342:                              # %.preheader751
+.LBB1_342:                              # %.preheader752
                                         #   in Loop: Header=BB1_338 Depth=2
 	move	$s6, $zero
 	addi.d	$a0, $sp, 1880
@@ -3671,13 +3671,13 @@ FontChange:                             # @FontChange
 .LBB1_400:
 	ld.wu	$a0, $s7, 12
 	andi	$a0, $a0, 4095
-	beqz	$a0, .LBB1_432
+	beqz	$a0, .LBB1_435
 # %bb.401:
 	ori	$a1, $zero, 160
-	beq	$a5, $a1, .LBB1_433
+	beq	$a5, $a1, .LBB1_436
 # %bb.402:
 	ori	$a1, $zero, 159
-	bne	$a5, $a1, .LBB1_434
+	bne	$a5, $a1, .LBB1_437
 # %bb.403:
 	pcalau12i	$a1, %pc_hi20(finfo)
 	ld.d	$a1, $a1, %pc_lo12(finfo)
@@ -3982,7 +3982,7 @@ FontChange:                             # @FontChange
 	mul.d	$a1, $a2, $a1
 	add.d	$a1, $s4, $a1
 	ld.d	$fp, $a1, 88
-	beqz	$fp, .LBB1_431
+	beqz	$fp, .LBB1_434
 # %bb.424:
 	ld.h	$s3, $fp, 0
 	bstrpick.d	$s5, $s3, 15, 0
@@ -4014,7 +4014,7 @@ FontChange:                             # @FontChange
 	ld.w	$a0, $s1, 48
 	ld.w	$a1, $s0, 48
 	bstrpick.d	$a4, $s5, 15, 0
-	ori	$a2, $zero, 5
+	ori	$a2, $zero, 9
 	ori	$a3, $zero, 1
 	bltu	$a4, $a2, .LBB1_443
 # %bb.428:                              # %iter.check
@@ -4022,16 +4022,47 @@ FontChange:                             # @FontChange
 	ori	$a5, $zero, 32
 	bltu	$a2, $a5, .LBB1_443
 # %bb.429:                              # %vector.main.loop.iter.check
-	ori	$a3, $zero, 17
 	addi.d	$a2, $s3, -1
-	bgeu	$a4, $a3, .LBB1_436
+	ori	$a3, $zero, 17
+	vreplgr2vr.w	$vr0, $a0
+	vreplgr2vr.w	$vr1, $a1
+	bgeu	$a4, $a3, .LBB1_439
 # %bb.430:
 	move	$a4, $zero
-	b	.LBB1_440
-.LBB1_431:
+.LBB1_431:                              # %vec.epilog.ph
+	move	$a5, $a2
+	bstrins.d	$a5, $zero, 2, 0
+	ori	$a6, $zero, 1
+	move	$a3, $a2
+	bstrins.d	$a3, $a6, 2, 0
+	slli.d	$a6, $a4, 1
+	addi.d	$a7, $a6, 2
+	add.d	$a6, $fp, $a7
+	add.d	$a7, $s2, $a7
+	sub.d	$a4, $a4, $a5
+.LBB1_432:                              # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr2, $a6, 0
+	vslti.h	$vr3, $vr2, 0
+	vilvl.h	$vr4, $vr3, $vr2
+	vilvh.h	$vr2, $vr3, $vr2
+	vmul.w	$vr2, $vr0, $vr2
+	vmul.w	$vr3, $vr0, $vr4
+	vdiv.w	$vr3, $vr3, $vr1
+	vdiv.w	$vr2, $vr2, $vr1
+	vpickev.h	$vr2, $vr2, $vr3
+	vst	$vr2, $a7, 0
+	addi.d	$a6, $a6, 16
+	addi.d	$a4, $a4, 8
+	addi.d	$a7, $a7, 16
+	bnez	$a4, .LBB1_432
+# %bb.433:                              # %vec.epilog.middle.block
+	bne	$a2, $a5, .LBB1_443
+	b	.LBB1_445
+.LBB1_434:
 	st.d	$zero, $a0, 88
 	b	.LBB1_445
-.LBB1_432:
+.LBB1_435:
 	addi.d	$a4, $fp, 32
 	addi.d	$a5, $fp, 64
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
@@ -4039,8 +4070,8 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 48
 	ori	$a3, $zero, 1
-	b	.LBB1_435
-.LBB1_433:
+	b	.LBB1_438
+.LBB1_436:
 	pcalau12i	$a1, %pc_hi20(finfo)
 	ld.d	$a1, $a1, %pc_lo12(finfo)
 	alsl.d	$a0, $a0, $a0, 1
@@ -4051,110 +4082,58 @@ FontChange:                             # @FontChange
 	ld.h	$a1, $sp, 1882
 	sub.d	$a0, $a0, $a1
 	b	.LBB1_381
-.LBB1_434:
+.LBB1_437:
 	pcalau12i	$a0, %pc_hi20(.L.str.34)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.34)
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 49
 	move	$a3, $zero
 	move	$a4, $s6
-.LBB1_435:                              # %.thread426
+.LBB1_438:                              # %.thread426
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
                                         # implicit-def: $r4
 	b	.LBB1_382
-.LBB1_436:                              # %vector.ph721
-	andi	$a5, $a2, 12
+.LBB1_439:                              # %vector.ph721
+	andi	$a5, $a2, 8
 	move	$a4, $a2
 	bstrins.d	$a4, $zero, 3, 0
 	ori	$a6, $zero, 1
 	move	$a3, $a2
 	bstrins.d	$a3, $a6, 3, 0
-	xvreplgr2vr.w	$xr0, $a0
-	xvreplgr2vr.w	$xr1, $a1
-	addi.d	$a6, $fp, 2
-	addi.d	$a7, $s2, 2
+	addi.d	$a6, $fp, 18
+	addi.d	$a7, $s2, 18
 	move	$t0, $a4
-.LBB1_437:                              # %vector.body726
+.LBB1_440:                              # %vector.body726
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a6, 0
-	xvpermi.q	$xr3, $xr2, 1
-	vext2xv.w.h	$xr3, $xr3
-	vext2xv.w.h	$xr2, $xr2
-	xvmul.w	$xr2, $xr0, $xr2
-	xvmul.w	$xr3, $xr0, $xr3
-	xvdiv.w	$xr3, $xr3, $xr1
-	xvdiv.w	$xr2, $xr2, $xr1
-	xvpickve2gr.w	$t1, $xr2, 0
-	vinsgr2vr.h	$vr4, $t1, 0
-	xvpickve2gr.w	$t1, $xr2, 1
-	vinsgr2vr.h	$vr4, $t1, 1
-	xvpickve2gr.w	$t1, $xr2, 2
-	vinsgr2vr.h	$vr4, $t1, 2
-	xvpickve2gr.w	$t1, $xr2, 3
-	vinsgr2vr.h	$vr4, $t1, 3
-	xvpickve2gr.w	$t1, $xr2, 4
-	vinsgr2vr.h	$vr4, $t1, 4
-	xvpickve2gr.w	$t1, $xr2, 5
-	vinsgr2vr.h	$vr4, $t1, 5
-	xvpickve2gr.w	$t1, $xr2, 6
-	vinsgr2vr.h	$vr4, $t1, 6
-	xvpickve2gr.w	$t1, $xr2, 7
-	vinsgr2vr.h	$vr4, $t1, 7
-	xvpickve2gr.w	$t1, $xr3, 0
-	vinsgr2vr.h	$vr2, $t1, 0
-	xvpickve2gr.w	$t1, $xr3, 1
-	vinsgr2vr.h	$vr2, $t1, 1
-	xvpickve2gr.w	$t1, $xr3, 2
-	vinsgr2vr.h	$vr2, $t1, 2
-	xvpickve2gr.w	$t1, $xr3, 3
-	vinsgr2vr.h	$vr2, $t1, 3
-	xvpickve2gr.w	$t1, $xr3, 4
-	vinsgr2vr.h	$vr2, $t1, 4
-	xvpickve2gr.w	$t1, $xr3, 5
-	vinsgr2vr.h	$vr2, $t1, 5
-	xvpickve2gr.w	$t1, $xr3, 6
-	vinsgr2vr.h	$vr2, $t1, 6
-	xvpickve2gr.w	$t1, $xr3, 7
-	vinsgr2vr.h	$vr2, $t1, 7
-	xvpermi.q	$xr4, $xr2, 2
-	xvst	$xr4, $a7, 0
+	vld	$vr2, $a6, -16
+	vld	$vr3, $a6, 0
+	vslti.h	$vr4, $vr2, 0
+	vilvl.h	$vr5, $vr4, $vr2
+	vilvh.h	$vr2, $vr4, $vr2
+	vslti.h	$vr4, $vr3, 0
+	vilvl.h	$vr6, $vr4, $vr3
+	vilvh.h	$vr3, $vr4, $vr3
+	vmul.w	$vr2, $vr0, $vr2
+	vmul.w	$vr4, $vr0, $vr5
+	vmul.w	$vr3, $vr0, $vr3
+	vmul.w	$vr5, $vr0, $vr6
+	vdiv.w	$vr4, $vr4, $vr1
+	vdiv.w	$vr2, $vr2, $vr1
+	vdiv.w	$vr5, $vr5, $vr1
+	vdiv.w	$vr3, $vr3, $vr1
+	vpickev.h	$vr2, $vr2, $vr4
+	vpickev.h	$vr3, $vr3, $vr5
+	vst	$vr2, $a7, -16
+	vst	$vr3, $a7, 0
 	addi.d	$a6, $a6, 32
 	addi.d	$t0, $t0, -16
 	addi.d	$a7, $a7, 32
-	bnez	$t0, .LBB1_437
-# %bb.438:                              # %middle.block730
+	bnez	$t0, .LBB1_440
+# %bb.441:                              # %middle.block731
 	beq	$a2, $a4, .LBB1_445
-# %bb.439:                              # %vec.epilog.iter.check
-	beqz	$a5, .LBB1_443
-.LBB1_440:                              # %vec.epilog.ph
-	move	$a5, $a2
-	bstrins.d	$a5, $zero, 1, 0
-	ori	$a6, $zero, 1
-	move	$a3, $a2
-	bstrins.d	$a3, $a6, 1, 0
-	vreplgr2vr.w	$vr0, $a0
-	vreplgr2vr.w	$vr1, $a1
-	slli.d	$a6, $a4, 1
-	addi.d	$a7, $a6, 2
-	add.d	$a6, $fp, $a7
-	add.d	$a7, $s2, $a7
-	sub.d	$a4, $a4, $a5
-.LBB1_441:                              # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$t0, $a6, 0
-	vinsgr2vr.d	$vr2, $t0, 0
-	vext2xv.w.h	$xr2, $xr2
-	vmul.w	$vr2, $vr0, $vr2
-	vdiv.w	$vr2, $vr2, $vr1
-	vpickev.h	$vr2, $vr2, $vr2
-	vstelm.d	$vr2, $a7, 0, 0
-	addi.d	$a6, $a6, 8
-	addi.d	$a4, $a4, 4
-	addi.d	$a7, $a7, 8
-	bnez	$a4, .LBB1_441
-# %bb.442:                              # %vec.epilog.middle.block
-	beq	$a2, $a5, .LBB1_445
+# %bb.442:                              # %vec.epilog.iter.check
+	bnez	$a5, .LBB1_431
 .LBB1_443:                              # %.lr.ph515.preheader
 	alsl.d	$a2, $a3, $s2, 1
 	alsl.d	$a4, $a3, $fp, 1

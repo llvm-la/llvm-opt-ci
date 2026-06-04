@@ -310,8 +310,9 @@ cli_bm_scanbuff:                        # @cli_bm_scanbuff
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	move	$s6, $zero
 	st.d	$zero, $sp, 96
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 64
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 80
+	vst	$vr0, $sp, 64
 	addi.w	$t4, $s4, -2
 	addi.d	$a0, $a6, 1
 	sltu	$a0, $zero, $a0

@@ -2,17 +2,8 @@
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function test_matrix
 .LCPI0_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
-.LCPI0_1:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	test_matrix
 	.p2align	2
@@ -27,43 +18,51 @@ test_matrix:                            # @test_matrix
 	bltu	$a0, $a4, .LBB0_6
 # %bb.2:                                # %.lr.ph.preheader
 	sub.d	$a4, $a1, $a2
-	ori	$a5, $zero, 32
+	ori	$a5, $zero, 16
 	bltu	$a4, $a5, .LBB0_6
 # %bb.3:                                # %vector.ph
 	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
 	vld	$vr0, $a3, %pc_lo12(.LCPI0_0)
-	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a3, %pc_lo12(.LCPI0_1)
-	bstrpick.d	$a3, $a0, 30, 2
-	slli.d	$a3, $a3, 2
+	ori	$a4, $zero, 0
+	lu32i.d	$a4, 1
+	bstrpick.d	$a3, $a0, 30, 1
+	slli.d	$a3, $a3, 1
+	vreplgr2vr.d	$vr1, $a4
 	move	$a4, $a2
 	move	$a5, $a1
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vext2xv.du.wu	$xr2, $xr0
-	xvffint.d.lu	$xr2, $xr2
-	xvst	$xr2, $a4, 0
-	xvpickve2gr.d	$a7, $xr1, 0
-	vinsgr2vr.w	$vr2, $a7, 0
-	xvpickve2gr.d	$a7, $xr1, 1
-	vinsgr2vr.w	$vr2, $a7, 1
-	xvpickve2gr.d	$a7, $xr1, 2
-	vinsgr2vr.w	$vr2, $a7, 2
-	xvpickve2gr.d	$a7, $xr1, 3
-	vinsgr2vr.w	$vr2, $a7, 3
+	vpickve2gr.w	$a7, $vr1, 1
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$fa2, $a7
+	ffint.d.l	$fa2, $fa2
+	vpickve2gr.w	$a7, $vr1, 0
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$fa3, $a7
+	ffint.d.l	$fa3, $fa3
+	vextrins.d	$vr3, $vr2, 16
+	vst	$vr3, $a4, 0
+	vshuf4i.w	$vr2, $vr0, 8
 	vaddi.wu	$vr2, $vr2, 1
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	xvfmul.d	$xr2, $xr2, $xr2
-	xvfmul.d	$xr2, $xr2, $xr2
-	xvst	$xr2, $a5, 0
-	xvaddi.du	$xr1, $xr1, 4
-	vaddi.wu	$vr0, $vr0, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	addi.d	$a4, $a4, 32
+	vpickve2gr.w	$a7, $vr2, 1
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$fa3, $a7
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a7, $vr2, 0
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$fa2, $a7
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vfmul.d	$vr2, $vr2, $vr2
+	vfmul.d	$vr2, $vr2, $vr2
+	vst	$vr2, $a5, 0
+	vaddi.du	$vr0, $vr0, 2
+	vaddi.wu	$vr1, $vr1, 2
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 16
+	addi.d	$a4, $a4, 16
 	bnez	$a6, .LBB0_4
 # %bb.5:                                # %middle.block
 	beq	$a3, $a0, .LBB0_8
@@ -97,17 +96,8 @@ test_matrix:                            # @test_matrix
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function main
 .LCPI1_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
-.LCPI1_1:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	main
 	.p2align	2
@@ -157,12 +147,16 @@ main:                                   # @main
 	blez	$a0, .LBB1_22
 # %bb.1:                                # %.lr.ph16.preheader
 	move	$fp, $zero
-	ori	$s0, $zero, 4
-	ori	$s1, $zero, 8
-	ori	$s2, $zero, 64
-	xvrepli.b	$xr3, 0
-	ori	$s3, $zero, 32
-	xvst	$xr3, $sp, 16                   # 32-byte Folded Spill
+	ori	$s0, $zero, 1
+	ori	$s1, $zero, 6
+	ori	$s2, $zero, 32
+	vrepli.b	$vr4, 0
+	ori	$s3, $zero, 16
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, 1
+	vreplgr2vr.d	$vr0, $a0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr4, $sp, 32                   # 16-byte Folded Spill
 	b	.LBB1_4
 	.p2align	4, , 16
 .LBB1_2:                                # %test_matrix.exit
@@ -184,7 +178,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 108
 	addi.w	$fp, $fp, 1
-	xvld	$xr3, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr4, $sp, 32                   # 16-byte Folded Reload
 	bge	$fp, $a0, .LBB1_22
 .LBB1_4:                                # %.lr.ph16
                                         # =>This Loop Header: Depth=1
@@ -199,7 +193,7 @@ main:                                   # @main
 # %bb.5:                                # %.lr.ph.preheader.i
                                         #   in Loop: Header=BB1_4 Depth=1
 	move	$a2, $zero
-	bltu	$a3, $s0, .LBB1_10
+	beq	$a3, $s0, .LBB1_10
 # %bb.6:                                # %.lr.ph.preheader.i
                                         #   in Loop: Header=BB1_4 Depth=1
 	sub.d	$a4, $a0, $a1
@@ -208,39 +202,45 @@ main:                                   # @main
                                         #   in Loop: Header=BB1_4 Depth=1
 	pcalau12i	$a2, %pc_hi20(.LCPI1_0)
 	vld	$vr0, $a2, %pc_lo12(.LCPI1_0)
-	pcalau12i	$a2, %pc_hi20(.LCPI1_1)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI1_1)
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a2, $a3, 30, 1
+	slli.d	$a2, $a2, 1
 	move	$a4, $a1
 	move	$a5, $a0
 	move	$a6, $a2
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	.p2align	4, , 16
 .LBB1_8:                                # %vector.body43
                                         #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vext2xv.du.wu	$xr2, $xr0
-	xvffint.d.lu	$xr2, $xr2
-	xvst	$xr2, $a4, 0
-	xvpickve2gr.d	$a7, $xr1, 0
-	vinsgr2vr.w	$vr2, $a7, 0
-	xvpickve2gr.d	$a7, $xr1, 1
-	vinsgr2vr.w	$vr2, $a7, 1
-	xvpickve2gr.d	$a7, $xr1, 2
-	vinsgr2vr.w	$vr2, $a7, 2
-	xvpickve2gr.d	$a7, $xr1, 3
-	vinsgr2vr.w	$vr2, $a7, 3
+	vpickve2gr.w	$a7, $vr1, 1
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$fa2, $a7
+	ffint.d.l	$fa2, $fa2
+	vpickve2gr.w	$a7, $vr1, 0
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$fa3, $a7
+	ffint.d.l	$fa3, $fa3
+	vextrins.d	$vr3, $vr2, 16
+	vst	$vr3, $a4, 0
+	vshuf4i.w	$vr2, $vr0, 8
 	vaddi.wu	$vr2, $vr2, 1
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	xvfmul.d	$xr2, $xr2, $xr2
-	xvfmul.d	$xr2, $xr2, $xr2
-	xvst	$xr2, $a5, 0
-	xvaddi.du	$xr1, $xr1, 4
-	vaddi.wu	$vr0, $vr0, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	addi.d	$a4, $a4, 32
+	vpickve2gr.w	$a7, $vr2, 1
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$fa3, $a7
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a7, $vr2, 0
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$fa2, $a7
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vfmul.d	$vr2, $vr2, $vr2
+	vfmul.d	$vr2, $vr2, $vr2
+	vst	$vr2, $a5, 0
+	vaddi.du	$vr0, $vr0, 2
+	vaddi.wu	$vr1, $vr1, 2
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 16
+	addi.d	$a4, $a4, 16
 	bnez	$a6, .LBB1_8
 # %bb.9:                                # %middle.block48
                                         #   in Loop: Header=BB1_4 Depth=1
@@ -308,8 +308,8 @@ main:                                   # @main
 	bltu	$a6, $s2, .LBB1_14
 # %bb.19:                               # %vector.ph
                                         #   in Loop: Header=BB1_4 Depth=1
-	bstrpick.d	$a5, $a3, 30, 3
-	slli.d	$a5, $a5, 3
+	bstrpick.d	$a5, $a3, 30, 2
+	slli.d	$a5, $a5, 2
 	move	$a6, $zero
 	move	$a7, $a5
 	.p2align	4, , 16
@@ -317,18 +317,18 @@ main:                                   # @main
                                         #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t0, $a1, $a6
-	xvldx	$xr0, $a1, $a6
-	xvld	$xr1, $t0, 32
-	xvfmul.d	$xr0, $xr0, $xr0
-	xvfmul.d	$xr1, $xr1, $xr1
+	vldx	$vr0, $a1, $a6
+	vld	$vr1, $t0, 16
+	vfmul.d	$vr0, $vr0, $vr0
+	vfmul.d	$vr1, $vr1, $vr1
 	add.d	$t0, $a2, $a6
-	xvstx	$xr0, $a2, $a6
-	xvst	$xr1, $t0, 32
+	vstx	$vr0, $a2, $a6
+	vst	$vr1, $t0, 16
 	add.d	$t0, $a4, $a6
-	xvstx	$xr3, $a4, $a6
-	xvst	$xr3, $t0, 32
-	addi.d	$a7, $a7, -8
-	addi.d	$a6, $a6, 64
+	vstx	$vr4, $a4, $a6
+	vst	$vr4, $t0, 16
+	addi.d	$a7, $a7, -4
+	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB1_20
 # %bb.21:                               # %middle.block
                                         #   in Loop: Header=BB1_4 Depth=1

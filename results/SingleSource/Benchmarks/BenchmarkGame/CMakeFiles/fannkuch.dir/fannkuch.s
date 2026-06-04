@@ -1,24 +1,21 @@
 	.file	"fannkuch.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI0_0:
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
 	.word	4                               # 0x4
+.LCPI0_1:
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
 	.word	8                               # 0x8
-.LCPI0_1:
+.LCPI0_2:
 	.word	0                               # 0x0
 	.word	4294967295                      # 0xffffffff
 	.word	4294967294                      # 0xfffffffe
 	.word	4294967293                      # 0xfffffffd
-	.word	4294967292                      # 0xfffffffc
-	.word	4294967291                      # 0xfffffffb
-	.word	4294967290                      # 0xfffffffa
-	.word	4294967289                      # 0xfffffff9
 	.text
 	.globl	main
 	.p2align	2
@@ -54,9 +51,12 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI0_1)
 	move	$s1, $a0
-	xvst	$xr0, $s0, 4
+	vst	$vr0, $s0, 4
+	vst	$vr1, $s0, 20
 	ori	$a0, $zero, 9
 	lu32i.d	$a0, 10
 	st.d	$a0, $s0, 36
@@ -159,23 +159,25 @@ main:                                   # @main
                                         #   in Loop: Header=BB0_1 Depth=1
 	addi.d	$a1, $a3, -1
 	move	$a2, $a1
-	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_2)
 	bstrins.d	$a2, $zero, 2, 0
 	sub.d	$a0, $a3, $a2
-	xvreplgr2vr.w	$xr1, $s5
-	xvadd.w	$xr0, $xr1, $xr0
-	addi.d	$a4, $s1, -32
+	vreplgr2vr.w	$vr1, $s5
+	vadd.w	$vr0, $vr1, $vr0
+	addi.d	$a4, $s1, -16
 	alsl.d	$a3, $a3, $a4, 2
 	move	$a4, $a2
 	.p2align	4, , 16
 .LBB0_7:                                # %vector.body
                                         #   Parent Loop BB0_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 27
-	xvst	$xr1, $a3, 0
-	xvsubi.wu	$xr0, $xr0, 8
+	vsubi.wu	$vr1, $vr0, 4
+	vshuf4i.w	$vr2, $vr0, 27
+	vshuf4i.w	$vr1, $vr1, 27
+	vst	$vr2, $a3, 0
+	vst	$vr1, $a3, -16
+	vsubi.wu	$vr0, $vr0, 8
 	addi.d	$a4, $a4, -8
 	addi.d	$a3, $a3, -32
 	bnez	$a4, .LBB0_7
@@ -209,10 +211,12 @@ main:                                   # @main
 # %bb.13:                               # %.preheader95.preheader.i
                                         #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a2, $s0, 36
-	xvld	$xr0, $s0, 4
+	vld	$vr0, $s0, 20
+	vld	$vr1, $s0, 4
 	move	$a1, $zero
 	st.d	$a2, $s4, 32
-	xvst	$xr0, $s4, 0
+	vst	$vr0, $s4, 16
+	vst	$vr1, $s4, 0
 	move	$a2, $a0
 	addi.d	$t2, $fp, -4
 	b	.LBB0_15
@@ -348,10 +352,12 @@ main:                                   # @main
 	ori	$s5, $zero, 7
 	blt	$s7, $a3, .LBB0_1
 # %bb.26:                               #   in Loop: Header=BB0_1 Depth=1
-	xvld	$xr0, $s0, 4
+	vld	$vr0, $s0, 20
+	vld	$vr1, $s0, 4
 	ld.w	$a0, $s0, 0
 	ld.w	$a1, $s1, 32
-	xvst	$xr0, $s0, 0
+	vst	$vr0, $s0, 16
+	vst	$vr1, $s0, 0
 	st.w	$a0, $s0, 32
 	addi.d	$a0, $a1, -1
 	st.w	$a0, $s1, 32
@@ -360,13 +366,15 @@ main:                                   # @main
 	blt	$s7, $a1, .LBB0_1
 # %bb.27:                               #   in Loop: Header=BB0_1 Depth=1
 	move	$s7, $zero
-	ld.w	$a0, $s0, 36
-	xvld	$xr0, $s0, 4
-	ld.w	$a1, $s0, 0
+	vld	$vr0, $s0, 20
+	ld.w	$a0, $s0, 0
+	vld	$vr1, $s0, 4
+	ld.w	$a1, $s0, 36
+	vst	$vr0, $s0, 16
 	ld.w	$a2, $s1, 36
-	st.w	$a0, $s0, 32
-	xvst	$xr0, $s0, 0
-	st.w	$a1, $s0, 36
+	vst	$vr1, $s0, 0
+	st.w	$a1, $s0, 32
+	st.w	$a0, $s0, 36
 	addi.d	$a0, $a2, -1
 	st.w	$a0, $s1, 36
 	ori	$s5, $zero, 9
@@ -375,19 +383,21 @@ main:                                   # @main
 # %bb.28:                               #   in Loop: Header=BB0_1 Depth=1
 	move	$s7, $zero
 	ld.d	$a0, $s0, 36
-	xvld	$xr0, $s0, 4
 	ld.w	$a2, $s0, 0
-	ld.w	$a1, $s1, 40
+	vld	$vr0, $s0, 20
+	vld	$vr1, $s0, 4
 	st.d	$a0, $s0, 32
-	xvst	$xr0, $s0, 0
+	ld.w	$a0, $s1, 40
+	vst	$vr0, $s0, 16
+	vst	$vr1, $s0, 0
 	st.w	$a2, $s0, 40
-	addi.d	$a0, $a1, -1
-	st.w	$a0, $s1, 40
+	addi.d	$a1, $a0, -1
+	st.w	$a1, $s1, 40
 	ori	$s5, $zero, 10
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	ori	$a0, $zero, 1
-	blt	$a0, $a1, .LBB0_1
+	ori	$a1, $zero, 1
+	blt	$a1, $a0, .LBB0_1
 # %bb.29:                               # %fannkuch.exit
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)

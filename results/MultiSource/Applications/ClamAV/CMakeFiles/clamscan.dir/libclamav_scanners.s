@@ -3974,14 +3974,14 @@ cli_scancryptff:                        # @cli_scancryptff
 	pcaddu18i	$ra, %call36(fstat)
 	jirl	$ra, $ra, 0
 	addi.w	$s4, $zero, -1
-	beq	$a0, $s4, .LBB19_10
+	beq	$a0, $s4, .LBB19_13
 # %bb.1:
 	ori	$a1, $zero, 16
 	move	$a0, $s3
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB19_11
+	bltz	$a0, .LBB19_14
 # %bb.2:
 	ld.w	$a0, $sp, 64
 	addi.w	$s5, $a0, -16
@@ -3989,13 +3989,13 @@ cli_scancryptff:                        # @cli_scancryptff
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB19_12
+	beqz	$a0, .LBB19_15
 # %bb.3:
 	move	$s0, $a0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB19_13
+	beqz	$a0, .LBB19_16
 # %bb.4:
 	move	$s2, $a0
 	move	$a0, $s3
@@ -4004,7 +4004,7 @@ cli_scancryptff:                        # @cli_scancryptff
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 0
-	bne	$s5, $a0, .LBB19_14
+	bne	$s5, $a0, .LBB19_17
 # %bb.5:                                # %.preheader
 	beqz	$s5, .LBB19_24
 # %bb.6:                                # %iter.check
@@ -4013,21 +4013,40 @@ cli_scancryptff:                        # @cli_scancryptff
 	bltu	$s5, $a1, .LBB19_22
 # %bb.7:                                # %iter.check
 	sub.d	$a2, $s0, $s2
-	ori	$a1, $zero, 64
+	ori	$a1, $zero, 32
 	bltu	$a2, $a1, .LBB19_22
 # %bb.8:                                # %vector.main.loop.iter.check
-	bgeu	$s5, $a1, .LBB19_15
+	bgeu	$s5, $a1, .LBB19_18
 # %bb.9:
 	move	$a0, $zero
-	b	.LBB19_19
-.LBB19_10:
+.LBB19_10:                              # %vec.epilog.ph
+	move	$a3, $a0
+	bstrpick.d	$a0, $s1, 31, 4
+	slli.d	$a0, $a0, 4
+	sub.d	$a1, $a3, $a0
+	add.d	$a2, $s0, $a3
+	add.d	$a3, $s2, $a3
+	.p2align	4, , 16
+.LBB19_11:                              # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a3, 0
+	vxori.b	$vr0, $vr0, 255
+	vst	$vr0, $a2, 0
+	addi.d	$a1, $a1, 16
+	addi.d	$a2, $a2, 16
+	addi.d	$a3, $a3, 16
+	bnez	$a1, .LBB19_11
+# %bb.12:                               # %vec.epilog.middle.block
+	bne	$a0, $s1, .LBB19_22
+	b	.LBB19_24
+.LBB19_13:
 	pcalau12i	$a0, %pc_hi20(.L.str.126)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.126)
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
 	b	.LBB19_37
-.LBB19_11:
+.LBB19_14:
 	pcalau12i	$a0, %pc_hi20(.L.str.127)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.127)
 	move	$a1, $s3
@@ -4035,14 +4054,14 @@ cli_scancryptff:                        # @cli_scancryptff
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
 	b	.LBB19_38
-.LBB19_12:
+.LBB19_15:
 	pcalau12i	$a0, %pc_hi20(.L.str.128)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.128)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -114
 	b	.LBB19_38
-.LBB19_13:
+.LBB19_16:
 	pcalau12i	$a0, %pc_hi20(.L.str.128)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.128)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -4052,56 +4071,37 @@ cli_scancryptff:                        # @cli_scancryptff
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -114
 	b	.LBB19_38
-.LBB19_14:
+.LBB19_17:
 	pcalau12i	$a0, %pc_hi20(.L.str.129)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.129)
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	b	.LBB19_32
-.LBB19_15:                              # %vector.ph
-	andi	$a1, $s1, 48
-	bstrpick.d	$a0, $s1, 31, 6
-	slli.d	$a0, $a0, 6
-	addi.d	$a2, $s0, 32
-	addi.d	$a3, $s2, 32
+.LBB19_18:                              # %vector.ph
+	andi	$a1, $s1, 16
+	bstrpick.d	$a0, $s1, 31, 5
+	slli.d	$a0, $a0, 5
+	addi.d	$a2, $s0, 16
+	addi.d	$a3, $s2, 16
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB19_16:                              # %vector.body
+.LBB19_19:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvxori.b	$xr0, $xr0, 255
-	xvxori.b	$xr1, $xr1, 255
-	xvst	$xr0, $a2, -32
-	xvst	$xr1, $a2, 0
-	addi.d	$a4, $a4, -64
-	addi.d	$a2, $a2, 64
-	addi.d	$a3, $a3, 64
-	bnez	$a4, .LBB19_16
-# %bb.17:                               # %middle.block
-	beq	$a0, $s1, .LBB19_24
-# %bb.18:                               # %vec.epilog.iter.check
-	beqz	$a1, .LBB19_22
-.LBB19_19:                              # %vec.epilog.ph
-	move	$a3, $a0
-	bstrpick.d	$a0, $s1, 31, 4
-	slli.d	$a0, $a0, 4
-	sub.d	$a1, $a3, $a0
-	add.d	$a2, $s0, $a3
-	add.d	$a3, $s2, $a3
-	.p2align	4, , 16
-.LBB19_20:                              # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a3, 0
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
 	vxori.b	$vr0, $vr0, 255
-	vst	$vr0, $a2, 0
-	addi.d	$a1, $a1, 16
-	addi.d	$a2, $a2, 16
-	addi.d	$a3, $a3, 16
-	bnez	$a1, .LBB19_20
-# %bb.21:                               # %vec.epilog.middle.block
+	vxori.b	$vr1, $vr1, 255
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$a4, $a4, -32
+	addi.d	$a2, $a2, 32
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB19_19
+# %bb.20:                               # %middle.block
 	beq	$a0, $s1, .LBB19_24
+# %bb.21:                               # %vec.epilog.iter.check
+	bnez	$a1, .LBB19_10
 .LBB19_22:                              # %.lr.ph.preheader
 	add.d	$a1, $s2, $a0
 	add.d	$a2, $s0, $a0

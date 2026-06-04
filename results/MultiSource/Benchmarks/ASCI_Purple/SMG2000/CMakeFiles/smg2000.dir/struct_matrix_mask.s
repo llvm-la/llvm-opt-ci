@@ -155,76 +155,49 @@ hypre_StructMatrixCreateMask:           # @hypre_StructMatrixCreateMask
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s1, 80
-	blez	$s5, .LBB0_25
-# %bb.12:                               # %iter.check
+	blez	$s5, .LBB0_19
+# %bb.12:                               # %.lr.ph98
 	ld.d	$a1, $fp, 80
-	ori	$a3, $zero, 4
+	ori	$a3, $zero, 8
 	move	$a2, $zero
-	bltu	$s5, $a3, .LBB0_23
-# %bb.13:                               # %iter.check
+	bltu	$s5, $a3, .LBB0_17
+# %bb.13:                               # %.lr.ph98
 	sub.d	$a3, $a0, $a1
-	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB0_23
-# %bb.14:                               # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$s5, $a2, .LBB0_16
-# %bb.15:
-	move	$a2, $zero
-	b	.LBB0_20
-.LBB0_16:                               # %vector.ph
-	andi	$a3, $s5, 12
-	bstrpick.d	$a2, $s5, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a4, $a0, 32
-	addi.d	$a5, $a1, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB0_17:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a6, $a6, -16
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB0_17
-# %bb.18:                               # %middle.block
-	beq	$a2, $s5, .LBB0_25
-# %bb.19:                               # %vec.epilog.iter.check
-	beqz	$a3, .LBB0_23
-.LBB0_20:                               # %vec.epilog.ph
+	ori	$a4, $zero, 32
+	bltu	$a3, $a4, .LBB0_17
+# %bb.14:                               # %vector.ph
+	bstrpick.d	$a2, $s5, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $a1, 16
 	move	$a5, $a2
-	bstrpick.d	$a2, $s5, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a5, $a2
-	alsl.d	$a4, $a5, $a0, 2
-	alsl.d	$a5, $a5, $a1, 2
 	.p2align	4, , 16
-.LBB0_21:                               # %vec.epilog.vector.body
+.LBB0_15:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a5, 0
-	vst	$vr0, $a4, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB0_21
-# %bb.22:                               # %vec.epilog.middle.block
-	beq	$a2, $s5, .LBB0_25
-.LBB0_23:                               # %vec.epilog.scalar.ph.preheader
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a3, -16
+	vst	$vr1, $a3, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB0_15
+# %bb.16:                               # %middle.block
+	beq	$a2, $s5, .LBB0_19
+.LBB0_17:                               # %scalar.ph.preheader
 	alsl.d	$a0, $a2, $a0, 2
 	alsl.d	$a1, $a2, $a1, 2
 	sub.d	$a2, $s5, $a2
 	.p2align	4, , 16
-.LBB0_24:                               # %vec.epilog.scalar.ph
+.LBB0_18:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a1, 0
 	st.w	$a3, $a0, 0
 	addi.d	$a0, $a0, 4
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 4
-	bnez	$a2, .LBB0_24
-.LBB0_25:                               # %.preheader
+	bnez	$a2, .LBB0_18
+.LBB0_19:                               # %.preheader
 	ld.w	$a0, $fp, 88
 	st.w	$a0, $s1, 88
 	ld.w	$a0, $fp, 92

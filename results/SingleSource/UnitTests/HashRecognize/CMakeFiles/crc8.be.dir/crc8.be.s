@@ -1,6 +1,6 @@
 	.file	"crc8.be.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI0_0:
 	.byte	29                              # 0x1d
 	.byte	58                              # 0x3a
@@ -18,6 +18,7 @@
 	.byte	166                             # 0xa6
 	.byte	187                             # 0xbb
 	.byte	205                             # 0xcd
+.LCPI0_1:
 	.byte	208                             # 0xd0
 	.byte	247                             # 0xf7
 	.byte	234                             # 0xea
@@ -34,9 +35,7 @@
 	.byte	107                             # 0x6b
 	.byte	118                             # 0x76
 	.byte	135                             # 0x87
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI0_1:
+.LCPI0_2:
 	.byte	154                             # 0x9a
 	.byte	189                             # 0xbd
 	.byte	160                             # 0xa0
@@ -92,13 +91,15 @@ main:                                   # @main
 	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
 	ld.b	$a0, $a1, 0
 	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
 	vld	$vr1, $a2, %pc_lo12(.LCPI0_1)
-	xvreplgr2vr.b	$xr2, $a0
-	xvxor.v	$xr0, $xr2, $xr0
-	vreplgr2vr.b	$vr2, $a0
-	vxor.v	$vr1, $vr2, $vr1
+	pcalau12i	$a2, %pc_hi20(.LCPI0_2)
+	vld	$vr2, $a2, %pc_lo12(.LCPI0_2)
+	vreplgr2vr.b	$vr3, $a0
+	vxor.v	$vr0, $vr3, $vr0
+	vxor.v	$vr1, $vr3, $vr1
+	vxor.v	$vr2, $vr3, $vr2
 	xori	$a2, $a0, 87
 	xori	$a3, $a0, 112
 	xori	$a4, $a0, 109
@@ -155,8 +156,9 @@ main:                                   # @main
 	bnez	$s5, .LBB0_3
 # %bb.5:                                # %vector.ph20
                                         #   in Loop: Header=BB0_4 Depth=1
-	xvst	$xr0, $a1, 1
-	vst	$vr1, $a1, 33
+	vst	$vr0, $a1, 1
+	vst	$vr1, $a1, 17
+	vst	$vr2, $a1, 33
 	st.b	$a2, $a1, 49
 	st.b	$a3, $a1, 50
 	st.b	$a4, $a1, 51
@@ -170,23 +172,38 @@ main:                                   # @main
 	st.b	$t4, $a1, 59
 	st.b	$t5, $a1, 60
 	st.b	$t6, $a1, 61
-	xvld	$xr2, $a1, 0
+	vld	$vr3, $a1, 0
 	st.b	$t7, $a1, 62
+	vld	$vr4, $a1, 16
 	st.b	$t8, $a1, 63
-	xvld	$xr3, $a1, 32
-	xvxori.b	$xr4, $xr2, 19
-	xvld	$xr5, $a1, 0
-	xvst	$xr4, $a1, 64
-	xvxori.b	$xr4, $xr3, 19
-	xvst	$xr4, $a1, 96
-	xvxori.b	$xr4, $xr5, 38
-	xvxori.b	$xr5, $xr3, 38
-	xvst	$xr4, $a1, 128
-	xvst	$xr5, $a1, 160
-	xvxori.b	$xr2, $xr2, 53
-	xvxori.b	$xr3, $xr3, 53
-	xvst	$xr2, $a1, 192
-	xvst	$xr3, $a1, 224
+	vxori.b	$vr5, $vr3, 19
+	vld	$vr6, $a1, 32
+	vxori.b	$vr7, $vr4, 19
+	vst	$vr5, $a1, 64
+	vst	$vr7, $a1, 80
+	vxori.b	$vr5, $vr6, 19
+	vld	$vr7, $a1, 48
+	vst	$vr5, $a1, 96
+	vld	$vr5, $a1, 0
+	vld	$vr8, $a1, 16
+	vxori.b	$vr9, $vr7, 19
+	vst	$vr9, $a1, 112
+	vxori.b	$vr5, $vr5, 38
+	vxori.b	$vr8, $vr8, 38
+	vst	$vr5, $a1, 128
+	vst	$vr8, $a1, 144
+	vxori.b	$vr5, $vr6, 38
+	vxori.b	$vr8, $vr7, 38
+	vst	$vr5, $a1, 160
+	vst	$vr8, $a1, 176
+	vxori.b	$vr3, $vr3, 53
+	vxori.b	$vr4, $vr4, 53
+	vst	$vr3, $a1, 192
+	vst	$vr4, $a1, 208
+	vxori.b	$vr3, $vr6, 53
+	vxori.b	$vr4, $vr7, 53
+	vst	$vr3, $a1, 224
+	vst	$vr4, $a1, 240
 	b	.LBB0_3
 .LBB0_6:
 	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
@@ -218,7 +235,7 @@ main.sample:
 
 	.type	CRCTable,@object                # @CRCTable
 	.local	CRCTable
-	.comm	CRCTable,256,32
+	.comm	CRCTable,256,16
 	.type	.L.crctable,@object             # @.crctable
 	.section	.rodata,"a",@progbits
 	.p2align	4, 0x0

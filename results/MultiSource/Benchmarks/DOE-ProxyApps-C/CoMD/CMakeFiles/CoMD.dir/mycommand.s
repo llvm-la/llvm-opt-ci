@@ -1,18 +1,20 @@
 	.file	"mycommand.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function parseCommandLine
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function parseCommandLine
 .LCPI0_0:
 	.word	0                               # 0x0
 	.word	20                              # 0x14
 	.word	20                              # 0x14
 	.word	20                              # 0x14
+.LCPI0_1:
 	.word	1                               # 0x1
 	.word	1                               # 0x1
 	.word	1                               # 0x1
 	.word	100                             # 0x64
-.LCPI0_1:
+.LCPI0_2:
 	.dword	0x3ff0000000000000              # double 1
 	.dword	0xbff0000000000000              # double -1
+.LCPI0_3:
 	.dword	0x4082c00000000000              # double 600
 	.dword	0x0000000000000000              # double 0
 	.text
@@ -59,34 +61,42 @@ parseCommandLine:                       # @parseCommandLine
 	st.w	$a0, $s0, 3
 	ori	$a0, $zero, 3072
 	add.d	$s8, $s1, $a0
+	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_0)
 	addi.d	$s7, $s2, 1029
 	addi.d	$s6, $s2, 1033
 	addi.d	$s5, $s2, 1037
-	addi.d	$s4, $s2, 1041
-	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_0)
+	vstx	$vr0, $s1, $a0
+	ori	$a0, $zero, 3088
+	add.d	$s4, $s1, $a0
+	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_1)
 	addi.d	$fp, $s2, 1045
 	addi.d	$a1, $s2, 1049
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	addi.d	$a1, $s2, 1053
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	xvstx	$xr0, $s1, $a0
+	vstx	$vr0, $s1, $a0
 	addi.d	$a0, $s2, 1057
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ori	$a0, $zero, 10
 	stptr.w	$a0, $s1, 3104
+	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_2)
 	ori	$a0, $zero, 3112
 	add.d	$a1, $s1, $a0
 	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_1)
 	addi.d	$a1, $s2, 1073
 	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$a1, $s2, 1081
+	vstx	$vr0, $s1, $a0
+	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_3)
+	ori	$a0, $zero, 3128
+	add.d	$a1, $s1, $a0
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	addi.d	$a1, $s2, 1089
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	xvstx	$xr0, $s1, $a0
+	vstx	$vr0, $s1, $a0
 	st.w	$zero, $sp, 84
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.3)

@@ -42,9 +42,9 @@ _ZN7HydroBCC2EP4Mesh7double2RKSt6vectorIiSaIiEE: # @_ZN7HydroBCC2EP4Mesh7double2
 	slli.d	$a0, $a0, 30
 	srai.d	$a0, $a0, 30
 	bstrins.d	$a0, $zero, 1, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 56
 	vrepli.b	$vr0, 0
+	vst	$vr0, $fp, 72
+	vst	$vr0, $fp, 56
 	vst	$vr0, $fp, 40
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0

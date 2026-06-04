@@ -416,19 +416,27 @@ _ZN27btConvex2dConvex2dAlgorithm16processCollisionEP17btCollisionObjectS1_RK16bt
 	jirl	$ra, $ra, 0
 	fadd.s	$fa1, $fs0, $fs1
 	fadd.s	$fa0, $fa1, $fa0
-	ld.d	$a0, $s1, 48
-	xvld	$xr1, $s3, 8
 	fmul.s	$fa0, $fa0, $fa0
+	vld	$vr1, $s3, 8
+	vld	$vr2, $s3, 24
 	fst.s	$fa0, $sp, 240
+	ld.d	$a0, $s1, 48
+	vst	$vr1, $sp, 112
+	vst	$vr2, $sp, 128
+	vld	$vr0, $s3, 40
+	vld	$vr1, $s3, 56
+	vld	$vr2, $s2, 8
 	st.d	$a0, $sp, 248
-	xvst	$xr1, $sp, 112
-	xvld	$xr0, $s3, 40
-	xvld	$xr1, $s2, 8
-	xvld	$xr2, $s2, 40
+	vst	$vr0, $sp, 144
+	vst	$vr1, $sp, 160
+	vst	$vr2, $sp, 176
+	vld	$vr0, $s2, 24
+	vld	$vr1, $s2, 40
+	vld	$vr2, $s2, 56
 	ld.d	$a3, $s1, 24
-	xvst	$xr0, $sp, 144
-	xvst	$xr1, $sp, 176
-	xvst	$xr2, $sp, 208
+	vst	$vr0, $sp, 192
+	vst	$vr1, $sp, 208
+	vst	$vr2, $sp, 224
 	addi.d	$a0, $sp, 16
 	addi.d	$a1, $sp, 112
 	move	$a2, $fp
@@ -975,29 +983,29 @@ _ZN27btConvex2dConvex2dAlgorithm22getAllContactManifoldsER20btAlignedObjectArray
 	ld.d	$a2, $a1, 16
 	blez	$a3, .LBB12_15
 .LBB12_6:                               # %.lr.ph.i.i.i
-	ori	$a5, $zero, 8
+	ori	$a5, $zero, 4
 	move	$a4, $zero
 	bltu	$a3, $a5, .LBB12_11
 # %bb.7:                                # %.lr.ph.i.i.i
 	sub.d	$a5, $fp, $a2
-	ori	$a6, $zero, 64
+	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB12_11
 # %bb.8:                                # %vector.ph
-	bstrpick.d	$a4, $a3, 30, 3
-	slli.d	$a4, $a4, 3
-	addi.d	$a5, $a2, 32
-	addi.d	$a6, $fp, 32
+	bstrpick.d	$a4, $a3, 30, 2
+	slli.d	$a4, $a4, 2
+	addi.d	$a5, $a2, 16
+	addi.d	$a6, $fp, 16
 	move	$a7, $a4
 	.p2align	4, , 16
 .LBB12_9:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a6, -32
-	xvst	$xr1, $a6, 0
-	addi.d	$a7, $a7, -8
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a6, -16
+	vst	$vr1, $a6, 0
+	addi.d	$a7, $a7, -4
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB12_9
 # %bb.10:                               # %middle.block
 	beq	$a4, $a3, .LBB12_13

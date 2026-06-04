@@ -11,8 +11,10 @@ f:                                      # @f
 	move	$a6, $a2
 	pcalau12i	$a2, %pc_hi20(f.xr)
 	addi.d	$a2, $a2, %pc_lo12(f.xr)
+	vld	$vr1, $a2, 16
 	ld.b	$a7, $a2, 32
-	xvld	$xr1, $a2, 0
+	vst	$vr1, $a0, 16
+	vld	$vr1, $a2, 0
 	ld.w	$t0, $a1, 8
 	ld.w	$a4, $a1, 12
 	ld.w	$a5, $a1, 16
@@ -21,8 +23,8 @@ f:                                      # @f
 	ld.w	$t2, $a3, 12
 	ld.w	$a3, $a3, 16
 	ld.d	$a2, $a1, 0
+	vst	$vr1, $a0, 0
 	st.b	$a7, $a0, 32
-	xvst	$xr1, $a0, 0
 	st.b	$a6, $a0, 33
 	st.d	$a3, $sp, 24
 	st.d	$t2, $sp, 16

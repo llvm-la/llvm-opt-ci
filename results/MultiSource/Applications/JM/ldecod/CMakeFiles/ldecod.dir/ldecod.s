@@ -156,10 +156,12 @@ Configure:                              # @Configure
                                         #   in Loop: Header=BB1_17 Depth=1
 	ld.d	$a0, $s2, 39
 	ld.d	$a1, $s2, 32
-	xvld	$xr0, $s2, 0
+	vld	$vr0, $s2, 16
+	vld	$vr1, $s2, 0
 	st.d	$a0, $s3, 39
 	st.d	$a1, $s3, 32
-	xvst	$xr0, $s3, 0
+	vst	$vr0, $s3, 16
+	vst	$vr1, $s3, 0
 	ori	$a1, $zero, 300
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(error)
@@ -876,9 +878,11 @@ main:                                   # @main
 	st.d	$zero, $a0, %pc_lo12(tot_time)
 	pcalau12i	$a0, %pc_hi20(ref_flag)
 	addi.d	$a0, $a0, %pc_lo12(ref_flag)
-	xvrepli.w	$xr0, 1
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 32
+	vrepli.w	$vr0, 1
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 32
+	vst	$vr0, $a0, 48
 	st.w	$s4, $a0, 64
 	.p2align	4, , 16
 .LBB3_14:                               # %.preheader
@@ -1373,8 +1377,9 @@ report:                                 # @report
 	fst.d	$fa4, $sp, 48
 	fst.d	$fa3, $sp, 40
 	st.d	$zero, $sp, 32
-	xvrepli.b	$xr3, 0
-	xvst	$xr3, $sp, 0
+	vrepli.b	$vr3, 0
+	vst	$vr3, $sp, 16
+	vst	$vr3, $sp, 0
 	movfr2gr.d	$a5, $fa0
 	movfr2gr.d	$a6, $fa1
 	movfr2gr.d	$a7, $fa2
@@ -1582,13 +1587,15 @@ AllocPartition:                         # @AllocPartition
 	pcalau12i	$a0, %pc_hi20(.L.str.68)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.68)
 	ld.w	$a1, $a0, 56
-	ld.d	$a2, $a0, 48
-	vld	$vr0, $a0, 32
-	xvld	$xr1, $a0, 0
 	st.w	$a1, $s1, 56
-	st.d	$a2, $s1, 48
+	ld.d	$a1, $a0, 48
+	vld	$vr0, $a0, 32
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 0
+	st.d	$a1, $s1, 48
 	vst	$vr0, $s1, 32
-	xvst	$xr1, $s1, 0
+	vst	$vr1, $s1, 16
+	vst	$vr2, $s1, 0
 	ori	$a1, $zero, 100
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(error)
@@ -1621,10 +1628,12 @@ AllocPartition:                         # @AllocPartition
 # %bb.6:                                #   in Loop: Header=BB9_5 Depth=1
 	ld.d	$a0, $s4, 47
 	vld	$vr0, $s4, 32
-	xvld	$xr1, $s4, 0
+	vld	$vr1, $s4, 16
+	vld	$vr2, $s4, 0
 	st.d	$a0, $s1, 47
 	vst	$vr0, $s1, 32
-	xvst	$xr1, $s1, 0
+	vst	$vr1, $s1, 16
+	vst	$vr2, $s1, 0
 	ori	$a1, $zero, 100
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(error)
@@ -1638,13 +1647,15 @@ AllocPartition:                         # @AllocPartition
 	bnez	$a0, .LBB9_4
 # %bb.8:                                #   in Loop: Header=BB9_5 Depth=1
 	ld.h	$a0, $s5, 56
-	ld.d	$a1, $s5, 48
-	vld	$vr0, $s5, 32
-	xvld	$xr1, $s5, 0
 	st.h	$a0, $s1, 56
-	st.d	$a1, $s1, 48
+	ld.d	$a0, $s5, 48
+	vld	$vr0, $s5, 32
+	vld	$vr1, $s5, 16
+	vld	$vr2, $s5, 0
+	st.d	$a0, $s1, 48
 	vst	$vr0, $s1, 32
-	xvst	$xr1, $s1, 0
+	vst	$vr1, $s1, 16
+	vst	$vr2, $s1, 0
 	ori	$a1, $zero, 100
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(error)

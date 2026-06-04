@@ -251,8 +251,11 @@ _ZN12GIM_BOX_TREE15_build_sub_treeER9gim_arrayI13GIM_AABB_DATAEjj: # @_ZN12GIM_B
 	bstrpick.d	$a2, $a2, 31, 0
 	slli.d	$a3, $a2, 5
 	alsl.d	$a2, $a2, $a3, 2
-	xvldx	$xr0, $a1, $a2
-	xvst	$xr0, $a0, 0
+	vldx	$vr0, $a1, $a2
+	add.d	$a1, $a1, $a2
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a1, 16
+	vst	$vr0, $a0, 16
 	ld.d	$a0, $s0, 0
 	add.d	$a0, $a0, $a2
 	ld.w	$a0, $a0, 32

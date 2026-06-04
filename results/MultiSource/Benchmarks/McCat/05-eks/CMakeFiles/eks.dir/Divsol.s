@@ -47,12 +47,12 @@ HouseMatrix:                            # @HouseMatrix
 	alsl.d	$a4, $fp, $s0, 3
 	add.d	$a5, $s0, $a3
 	addi.d	$a6, $a6, 1
-	bstrpick.d	$t0, $a6, 32, 3
-	slli.d	$a7, $t0, 3
-	alsl.d	$t0, $t0, $fp, 3
-	addi.d	$t1, $a1, 32
+	bstrpick.d	$t0, $a6, 32, 2
+	slli.d	$a7, $t0, 2
+	alsl.d	$t0, $t0, $fp, 2
+	addi.d	$t1, $a1, 16
 	add.d	$t2, $s0, $t1
-	ori	$t3, $zero, 7
+	ori	$t3, $zero, 3
 	move	$t4, $fp
 	b	.LBB0_4
 	.p2align	4, , 16
@@ -84,7 +84,7 @@ HouseMatrix:                            # @HouseMatrix
 	fld.d	$fa1, $t5, 0
 	fneg.d	$fa1, $fa1
 	fmul.d	$fa1, $fa0, $fa1
-	xvreplve0.d	$xr1, $xr1
+	vreplvei.d	$vr1, $vr1, 0
 	add.d	$t7, $t6, $t1
 	move	$t8, $t2
 	move	$s2, $a7
@@ -92,17 +92,17 @@ HouseMatrix:                            # @HouseMatrix
 .LBB0_8:                                # %vector.body
                                         #   Parent Loop BB0_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr2, $t8, -32
-	xvld	$xr3, $t8, 0
-	xvld	$xr4, $t7, -32
-	xvld	$xr5, $t7, 0
-	xvfmadd.d	$xr2, $xr1, $xr2, $xr4
-	xvfmadd.d	$xr3, $xr1, $xr3, $xr5
-	xvst	$xr2, $t7, -32
-	xvst	$xr3, $t7, 0
-	addi.d	$s2, $s2, -8
-	addi.d	$t7, $t7, 64
-	addi.d	$t8, $t8, 64
+	vld	$vr2, $t8, -16
+	vld	$vr3, $t8, 0
+	vld	$vr4, $t7, -16
+	vld	$vr5, $t7, 0
+	vfmadd.d	$vr2, $vr1, $vr2, $vr4
+	vfmadd.d	$vr3, $vr1, $vr3, $vr5
+	vst	$vr2, $t7, -16
+	vst	$vr3, $t7, 0
+	addi.d	$s2, $s2, -4
+	addi.d	$t7, $t7, 32
+	addi.d	$t8, $t8, 32
 	bnez	$s2, .LBB0_8
 # %bb.9:                                # %middle.block
                                         #   in Loop: Header=BB0_4 Depth=1
@@ -189,56 +189,104 @@ ApplyHouse:                             # @ApplyHouse
                                         #   in Loop: Header=BB1_1 Depth=1
 	fld.d	$fa0, $a5, 0
 	fneg.d	$fa0, $fa0
-	xvld	$xr1, $s2, 0
-	xvld	$xr2, $s2, 32
-	xvld	$xr3, $a4, 0
-	xvld	$xr4, $a4, 32
+	vld	$vr1, $s2, 0
+	vld	$vr2, $s2, 16
+	vld	$vr3, $a4, 0
+	vld	$vr4, $a4, 16
 	fmul.d	$fa0, $fs0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvfmadd.d	$xr1, $xr0, $xr1, $xr3
-	xvfmadd.d	$xr2, $xr0, $xr2, $xr4
-	xvld	$xr3, $s2, 64
-	xvld	$xr4, $s2, 96
-	xvld	$xr5, $a4, 64
-	xvld	$xr6, $a4, 96
-	xvst	$xr1, $a4, 0
-	xvst	$xr2, $a4, 32
-	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
-	xvfmadd.d	$xr2, $xr0, $xr4, $xr6
-	xvld	$xr3, $s2, 128
-	xvld	$xr4, $s2, 160
-	xvld	$xr5, $a4, 128
-	xvld	$xr6, $a4, 160
-	xvst	$xr1, $a4, 64
-	xvst	$xr2, $a4, 96
-	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
-	xvfmadd.d	$xr2, $xr0, $xr4, $xr6
-	xvld	$xr3, $s2, 192
-	xvld	$xr4, $s2, 224
-	xvld	$xr5, $a4, 192
-	xvld	$xr6, $a4, 224
-	xvst	$xr1, $a4, 128
-	xvst	$xr2, $a4, 160
-	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
-	xvfmadd.d	$xr2, $xr0, $xr4, $xr6
-	xvld	$xr3, $s2, 256
-	xvld	$xr4, $s2, 288
-	xvld	$xr5, $a4, 256
-	xvld	$xr6, $a4, 288
-	xvst	$xr1, $a4, 192
-	xvst	$xr2, $a4, 224
-	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
-	xvfmadd.d	$xr2, $xr0, $xr4, $xr6
-	xvld	$xr3, $s2, 320
-	xvld	$xr4, $s2, 352
-	xvld	$xr5, $a4, 320
-	xvld	$xr6, $a4, 352
-	xvst	$xr1, $a4, 256
-	xvst	$xr2, $a4, 288
-	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
-	xvfmadd.d	$xr0, $xr0, $xr4, $xr6
-	xvst	$xr1, $a4, 320
-	xvst	$xr0, $a4, 352
+	vreplvei.d	$vr0, $vr0, 0
+	vfmadd.d	$vr1, $vr0, $vr1, $vr3
+	vfmadd.d	$vr2, $vr0, $vr2, $vr4
+	vld	$vr3, $s2, 32
+	vld	$vr4, $s2, 48
+	vld	$vr5, $a4, 32
+	vld	$vr6, $a4, 48
+	vst	$vr1, $a4, 0
+	vst	$vr2, $a4, 16
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s2, 64
+	vld	$vr4, $s2, 80
+	vld	$vr5, $a4, 64
+	vld	$vr6, $a4, 80
+	vst	$vr1, $a4, 32
+	vst	$vr2, $a4, 48
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s2, 96
+	vld	$vr4, $s2, 112
+	vld	$vr5, $a4, 96
+	vld	$vr6, $a4, 112
+	vst	$vr1, $a4, 64
+	vst	$vr2, $a4, 80
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s2, 128
+	vld	$vr4, $s2, 144
+	vld	$vr5, $a4, 128
+	vld	$vr6, $a4, 144
+	vst	$vr1, $a4, 96
+	vst	$vr2, $a4, 112
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s2, 160
+	vld	$vr4, $s2, 176
+	vld	$vr5, $a4, 160
+	vld	$vr6, $a4, 176
+	vst	$vr1, $a4, 128
+	vst	$vr2, $a4, 144
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s2, 192
+	vld	$vr4, $s2, 208
+	vld	$vr5, $a4, 192
+	vld	$vr6, $a4, 208
+	vst	$vr1, $a4, 160
+	vst	$vr2, $a4, 176
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s2, 224
+	vld	$vr4, $s2, 240
+	vld	$vr5, $a4, 224
+	vld	$vr6, $a4, 240
+	vst	$vr1, $a4, 192
+	vst	$vr2, $a4, 208
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s2, 256
+	vld	$vr4, $s2, 272
+	vld	$vr5, $a4, 256
+	vld	$vr6, $a4, 272
+	vst	$vr1, $a4, 224
+	vst	$vr2, $a4, 240
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s2, 288
+	vld	$vr4, $s2, 304
+	vld	$vr5, $a4, 288
+	vld	$vr6, $a4, 304
+	vst	$vr1, $a4, 256
+	vst	$vr2, $a4, 272
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s2, 320
+	vld	$vr4, $s2, 336
+	vld	$vr5, $a4, 320
+	vld	$vr6, $a4, 336
+	vst	$vr1, $a4, 288
+	vst	$vr2, $a4, 304
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s2, 352
+	vld	$vr4, $s2, 368
+	vld	$vr5, $a4, 352
+	vld	$vr6, $a4, 368
+	vst	$vr1, $a4, 320
+	vst	$vr2, $a4, 336
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr0, $vr0, $vr4, $vr6
+	vst	$vr1, $a4, 352
+	vst	$vr0, $a4, 368
 	ori	$a6, $zero, 48
 .LBB1_5:                                # %scalar.ph.preheader
                                         #   in Loop: Header=BB1_1 Depth=1
@@ -342,35 +390,35 @@ WeirdHouse:                             # @WeirdHouse
 	fmadd.d	$fa0, $fa1, $fa0, $fs1
 	ldx.d	$a0, $s2, $s3
 	sub.d	$a1, $s0, $s1
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	frecip.d	$fa0, $fa0
 	bltu	$a1, $a2, .LBB2_11
 # %bb.7:                                # %.lr.ph36
 	sub.d	$a2, $fp, $a0
-	ori	$a3, $zero, 64
+	ori	$a3, $zero, 32
 	bltu	$a2, $a3, .LBB2_11
 # %bb.8:                                # %vector.ph
 	move	$a2, $a1
-	bstrins.d	$a2, $zero, 2, 0
+	bstrins.d	$a2, $zero, 1, 0
 	add.d	$a3, $a2, $s1
-	xvreplve0.d	$xr1, $xr0
+	vreplvei.d	$vr1, $vr0, 0
 	slli.d	$a4, $s1, 3
-	addi.d	$a5, $a4, 32
+	addi.d	$a5, $a4, 16
 	add.d	$a4, $fp, $a5
 	add.d	$a5, $a0, $a5
 	move	$a6, $a2
 	.p2align	4, , 16
 .LBB2_9:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a5, -32
-	xvld	$xr3, $a5, 0
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr2, $a4, -32
-	xvst	$xr3, $a4, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr2, $a5, -16
+	vld	$vr3, $a5, 0
+	vfmul.d	$vr2, $vr1, $vr2
+	vfmul.d	$vr3, $vr1, $vr3
+	vst	$vr2, $a4, -16
+	vst	$vr3, $a4, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB2_9
 # %bb.10:                               # %middle.block
 	move	$s1, $a3
@@ -633,56 +681,104 @@ DivideAndSolve:                         # @DivideAndSolve
                                         #   in Loop: Header=BB3_13 Depth=3
 	fld.d	$fa0, $a2, 0
 	fneg.d	$fa0, $fa0
-	xvld	$xr1, $s0, 0
-	xvld	$xr2, $s0, 32
-	xvld	$xr3, $a1, 0
-	xvld	$xr4, $a1, 32
+	vld	$vr1, $s0, 0
+	vld	$vr2, $s0, 16
+	vld	$vr3, $a1, 0
+	vld	$vr4, $a1, 16
 	fmul.d	$fa0, $fs0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvfmadd.d	$xr1, $xr0, $xr1, $xr3
-	xvfmadd.d	$xr2, $xr0, $xr2, $xr4
-	xvld	$xr3, $s0, 64
-	xvld	$xr4, $s0, 96
-	xvld	$xr5, $a1, 64
-	xvld	$xr6, $a1, 96
-	xvst	$xr1, $a1, 0
-	xvst	$xr2, $a1, 32
-	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
-	xvfmadd.d	$xr2, $xr0, $xr4, $xr6
-	xvld	$xr3, $s0, 128
-	xvld	$xr4, $s0, 160
-	xvld	$xr5, $a1, 128
-	xvld	$xr6, $a1, 160
-	xvst	$xr1, $a1, 64
-	xvst	$xr2, $a1, 96
-	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
-	xvfmadd.d	$xr2, $xr0, $xr4, $xr6
-	xvld	$xr3, $s0, 192
-	xvld	$xr4, $s0, 224
-	xvld	$xr5, $a1, 192
-	xvld	$xr6, $a1, 224
-	xvst	$xr1, $a1, 128
-	xvst	$xr2, $a1, 160
-	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
-	xvfmadd.d	$xr2, $xr0, $xr4, $xr6
-	xvld	$xr3, $s0, 256
-	xvld	$xr4, $s0, 288
-	xvld	$xr5, $a1, 256
-	xvld	$xr6, $a1, 288
-	xvst	$xr1, $a1, 192
-	xvst	$xr2, $a1, 224
-	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
-	xvfmadd.d	$xr2, $xr0, $xr4, $xr6
-	xvld	$xr3, $s0, 320
-	xvld	$xr4, $s0, 352
-	xvld	$xr5, $a1, 320
-	xvld	$xr6, $a1, 352
-	xvst	$xr1, $a1, 256
-	xvst	$xr2, $a1, 288
-	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
-	xvfmadd.d	$xr0, $xr0, $xr4, $xr6
-	xvst	$xr1, $a1, 320
-	xvst	$xr0, $a1, 352
+	vreplvei.d	$vr0, $vr0, 0
+	vfmadd.d	$vr1, $vr0, $vr1, $vr3
+	vfmadd.d	$vr2, $vr0, $vr2, $vr4
+	vld	$vr3, $s0, 32
+	vld	$vr4, $s0, 48
+	vld	$vr5, $a1, 32
+	vld	$vr6, $a1, 48
+	vst	$vr1, $a1, 0
+	vst	$vr2, $a1, 16
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s0, 64
+	vld	$vr4, $s0, 80
+	vld	$vr5, $a1, 64
+	vld	$vr6, $a1, 80
+	vst	$vr1, $a1, 32
+	vst	$vr2, $a1, 48
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s0, 96
+	vld	$vr4, $s0, 112
+	vld	$vr5, $a1, 96
+	vld	$vr6, $a1, 112
+	vst	$vr1, $a1, 64
+	vst	$vr2, $a1, 80
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s0, 128
+	vld	$vr4, $s0, 144
+	vld	$vr5, $a1, 128
+	vld	$vr6, $a1, 144
+	vst	$vr1, $a1, 96
+	vst	$vr2, $a1, 112
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s0, 160
+	vld	$vr4, $s0, 176
+	vld	$vr5, $a1, 160
+	vld	$vr6, $a1, 176
+	vst	$vr1, $a1, 128
+	vst	$vr2, $a1, 144
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s0, 192
+	vld	$vr4, $s0, 208
+	vld	$vr5, $a1, 192
+	vld	$vr6, $a1, 208
+	vst	$vr1, $a1, 160
+	vst	$vr2, $a1, 176
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s0, 224
+	vld	$vr4, $s0, 240
+	vld	$vr5, $a1, 224
+	vld	$vr6, $a1, 240
+	vst	$vr1, $a1, 192
+	vst	$vr2, $a1, 208
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s0, 256
+	vld	$vr4, $s0, 272
+	vld	$vr5, $a1, 256
+	vld	$vr6, $a1, 272
+	vst	$vr1, $a1, 224
+	vst	$vr2, $a1, 240
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s0, 288
+	vld	$vr4, $s0, 304
+	vld	$vr5, $a1, 288
+	vld	$vr6, $a1, 304
+	vst	$vr1, $a1, 256
+	vst	$vr2, $a1, 272
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s0, 320
+	vld	$vr4, $s0, 336
+	vld	$vr5, $a1, 320
+	vld	$vr6, $a1, 336
+	vst	$vr1, $a1, 288
+	vst	$vr2, $a1, 304
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr2, $vr0, $vr4, $vr6
+	vld	$vr3, $s0, 352
+	vld	$vr4, $s0, 368
+	vld	$vr5, $a1, 352
+	vld	$vr6, $a1, 368
+	vst	$vr1, $a1, 320
+	vst	$vr2, $a1, 336
+	vfmadd.d	$vr1, $vr0, $vr3, $vr5
+	vfmadd.d	$vr0, $vr0, $vr4, $vr6
+	vst	$vr1, $a1, 352
+	vst	$vr0, $a1, 368
 	ori	$a3, $zero, 48
 .LBB3_17:                               # %scalar.ph132.preheader
                                         #   in Loop: Header=BB3_13 Depth=3
@@ -767,38 +863,38 @@ DivideAndSolve:                         # @DivideAndSolve
 	fmadd.d	$fa0, $fa1, $fa0, $fs1
 	sub.d	$a1, $s1, $s2
 	frecip.d	$fa0, $fa0
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bltu	$a1, $a2, .LBB3_30
 # %bb.26:                               # %.lr.ph36.i
                                         #   in Loop: Header=BB3_3 Depth=1
 	sub.d	$a3, $s0, $a0
 	move	$a2, $s2
-	ori	$a4, $zero, 64
+	ori	$a4, $zero, 32
 	bltu	$a3, $a4, .LBB3_31
 # %bb.27:                               # %vector.ph
                                         #   in Loop: Header=BB3_3 Depth=1
 	move	$a3, $a1
-	bstrins.d	$a3, $zero, 2, 0
+	bstrins.d	$a3, $zero, 1, 0
 	add.d	$a2, $a3, $s2
-	xvreplve0.d	$xr1, $xr0
-	addi.d	$a4, $s0, 32
+	vreplvei.d	$vr1, $vr0, 0
+	addi.d	$a4, $s0, 16
 	alsl.d	$a4, $s2, $a4, 3
 	alsl.d	$a5, $s2, $a0, 3
-	addi.d	$a5, $a5, 32
+	addi.d	$a5, $a5, 16
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB3_28:                               # %vector.body
                                         #   Parent Loop BB3_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr2, $a5, -32
-	xvld	$xr3, $a5, 0
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr2, $a4, -32
-	xvst	$xr3, $a4, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr2, $a5, -16
+	vld	$vr3, $a5, 0
+	vfmul.d	$vr2, $vr1, $vr2
+	vfmul.d	$vr3, $vr1, $vr3
+	vst	$vr2, $a4, -16
+	vst	$vr3, $a4, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB3_28
 # %bb.29:                               # %middle.block
                                         #   in Loop: Header=BB3_3 Depth=1

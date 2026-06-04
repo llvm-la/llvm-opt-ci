@@ -187,10 +187,12 @@ _ZNK22btGImpactCompoundShape21calculateLocalInertiaEfR9btVector3: # @_ZNK22btGIm
 	jirl	$ra, $ra, 0
 .Ltmp1:                                 # EH_LABEL
 # %bb.9:                                #   in Loop: Header=BB0_4 Depth=1
-	xvld	$xr0, $a0, 0
-	vld	$vr1, $a0, 32
-	xvst	$xr0, $s5, 0
-	vst	$vr1, $s5, 32
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 32
+	vst	$vr0, $s5, 0
+	vst	$vr1, $s5, 16
+	vst	$vr2, $s5, 32
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $s5, 48
 	move	$a0, $s2
@@ -292,7 +294,7 @@ _ZNK22btGImpactMeshShapePart21calculateLocalInertiaEfR9btVector3: # @_ZNK22btGIm
 	addi.d	$a4, $a1, -1
 	mul.d	$a4, $a4, $a3
 	add.d	$a2, $a4, $a2
-	addi.d	$a2, $a2, 8
+	addi.d	$a2, $a2, 16
 	movgr2fr.w	$fa1, $zero
 	sub.d	$a3, $zero, $a3
 	fmov.s	$fa2, $fa1
@@ -300,33 +302,34 @@ _ZNK22btGImpactMeshShapePart21calculateLocalInertiaEfR9btVector3: # @_ZNK22btGIm
 	.p2align	4, , 16
 .LBB1_3:                                # %_ZNK22btGImpactMeshShapePart9getVertexEiR9btVector3.exit.us
                                         # =>This Inner Loop Header: Depth=1
-	fld.s	$fa4, $s0, 200
-	fld.d	$fa5, $a2, -8
 	addi.d	$a1, $a1, -1
+	fld.s	$fa4, $s0, 200
+	fld.d	$fa5, $a2, -16
+	fld.s	$fa6, $s0, 204
+	fld.d	$fa7, $a2, -8
 	fcvt.d.s	$fa4, $fa4
 	fmul.d	$fa4, $fa5, $fa4
+	fcvt.d.s	$fa5, $fa6
+	fmul.d	$fa5, $fa7, $fa5
+	fld.s	$fa6, $s0, 208
+	fld.d	$fa7, $a2, 0
 	fcvt.s.d	$fa4, $fa4
-	fld.s	$fa5, $s0, 208
-	fld.s	$fa6, $s0, 204
-	fmul.s	$fa4, $fa4, $fa4
-	vld	$vr7, $a2, 0
-	fcvt.d.s	$fa5, $fa5
+	fcvt.s.d	$fa5, $fa5
 	fcvt.d.s	$fa6, $fa6
-	vextrins.d	$vr6, $vr5, 16
-	vfmul.d	$vr5, $vr7, $vr6
-	vfcvt.s.d	$vr5, $vr0, $vr5
-	vfmul.s	$vr5, $vr5, $vr5
-	vreplvei.w	$vr6, $vr5, 0
-	vreplvei.w	$vr5, $vr5, 1
-	fadd.s	$fa7, $fa6, $fa5
+	fmul.d	$fa6, $fa7, $fa6
+	fcvt.s.d	$fa6, $fa6
+	fmul.s	$fa4, $fa4, $fa4
+	fmul.s	$fa5, $fa5, $fa5
+	fmul.s	$fa6, $fa6, $fa6
+	fadd.s	$fa7, $fa5, $fa6
 	fmul.s	$fa7, $fa0, $fa7
-	fadd.s	$fa5, $fa4, $fa5
-	fmul.s	$fa5, $fa0, $fa5
-	fadd.s	$fa4, $fa4, $fa6
+	fadd.s	$fa6, $fa4, $fa6
+	fmul.s	$fa6, $fa0, $fa6
+	fadd.s	$fa4, $fa4, $fa5
 	fmul.s	$fa4, $fa0, $fa4
 	fadd.s	$fa1, $fa1, $fa7
 	fst.s	$fa1, $fp, 0
-	fadd.s	$fa2, $fa5, $fa2
+	fadd.s	$fa2, $fa6, $fa2
 	fst.s	$fa2, $fp, 4
 	fadd.s	$fa3, $fa4, $fa3
 	fst.s	$fa3, $fp, 8
@@ -1278,7 +1281,8 @@ _ZN23btGImpactShapeInterface13calcLocalAABBEv: # @_ZN23btGImpactShapeInterface13
 	vextrins.w	$vr2, $vr4, 16
 	vshuf4i.w	$vr2, $vr2, 16
 	vslli.d	$vr2, $vr2, 32
-	vext2xv.du.wu	$xr0, $xr0
+	vrepli.b	$vr3, 0
+	vilvl.w	$vr0, $vr3, $vr0
 	vor.v	$vr0, $vr2, $vr0
 	movfr2gr.s	$a0, $fa1
 	bstrpick.d	$a0, $a0, 31, 0
@@ -1636,10 +1640,14 @@ _ZNK22btGImpactCompoundShape17getChildTransformEi: # @_ZNK22btGImpactCompoundSha
 	ld.d	$a1, $a1, 208
 	slli.d	$a2, $a2, 6
 	add.d	$a3, $a1, $a2
-	xvldx	$xr0, $a1, $a2
-	xvld	$xr1, $a3, 32
-	xvst	$xr0, $a0, 0
-	xvst	$xr1, $a0, 32
+	vldx	$vr0, $a1, $a2
+	vld	$vr1, $a3, 16
+	vld	$vr2, $a3, 32
+	vld	$vr3, $a3, 48
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
+	vst	$vr2, $a0, 32
+	vst	$vr3, $a0, 48
 	ret
 .Lfunc_end32:
 	.size	_ZNK22btGImpactCompoundShape17getChildTransformEi, .Lfunc_end32-_ZNK22btGImpactCompoundShape17getChildTransformEi
@@ -2256,7 +2264,8 @@ _ZNK23btGImpactShapeInterface12getChildAabbEiRK11btTransformR9btVector3S4_: # @_
 	vextrins.w	$vr4, $vr3, 16
 	vshuf4i.w	$vr1, $vr4, 16
 	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr2, $xr2
+	vrepli.b	$vr3, 0
+	vilvl.w	$vr2, $vr3, $vr2
 	vor.v	$vr1, $vr1, $vr2
 	movfr2gr.s	$a1, $fa0
 	bstrpick.d	$a1, $a1, 31, 0

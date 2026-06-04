@@ -1,11 +1,12 @@
 	.file	"btHinge2Constraint.cpp"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN18btHinge2ConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN18btHinge2ConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_
 .LCPI0_0:
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
 	.word	0xbf800000                      # float -1
 	.word	0x00000000                      # float 0
+.LCPI0_1:
 	.word	0x00000000                      # float 0
 	.word	0x00000000                      # float 0
 	.word	0x3f800000                      # float 1
@@ -274,12 +275,15 @@ _ZN18btHinge2ConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_: # @_ZN18btHinge2Co
 	fst.s	$ft9, $fp, 176
 	fst.s	$ft1, $fp, 180
 	fst.s	$ft3, $fp, 184
-	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
-	xvld	$xr2, $a3, %pc_lo12(.LCPI0_0)
 	fst.s	$fa1, $fp, 192
+	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
+	vld	$vr1, $a3, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
+	vld	$vr2, $a3, %pc_lo12(.LCPI0_1)
 	fst.s	$fa5, $fp, 196
 	fst.s	$fa0, $fp, 200
-	xvst	$xr2, $fp, 728
+	vst	$vr1, $fp, 728
+	vst	$vr2, $fp, 744
 	bstrins.d	$a0, $a1, 63, 32
 	bstrpick.d	$a1, $a2, 31, 0
 	st.w	$zero, $fp, 172
@@ -349,10 +353,12 @@ _ZN18btHinge2ConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_: # @_ZN18btHinge2Co
 	jirl	$ra, $ra, 0
 .Ltmp1:                                 # EH_LABEL
 # %bb.5:
-	xvld	$xr0, $a0, 0
-	vld	$vr1, $a0, 32
-	xvst	$xr0, $s5, 0
-	vst	$vr1, $s5, 32
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 32
+	vst	$vr0, $s5, 0
+	vst	$vr1, $s5, 16
+	vst	$vr2, $s5, 32
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s5, 48
 	pcalau12i	$a0, %pc_hi20(_ZGVZN11btTransform11getIdentityEvE17identityTransform)
@@ -373,10 +379,12 @@ _ZN18btHinge2ConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_: # @_ZN18btHinge2Co
 	jirl	$ra, $ra, 0
 .Ltmp4:                                 # EH_LABEL
 # %bb.8:
-	xvld	$xr0, $a0, 0
-	vld	$vr1, $a0, 32
-	xvst	$xr0, $s5, 0
-	vst	$vr1, $s5, 32
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 32
+	vst	$vr0, $s5, 0
+	vst	$vr1, $s5, 16
+	vst	$vr2, $s5, 32
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s5, 48
 	pcalau12i	$a0, %pc_hi20(_ZGVZN11btTransform11getIdentityEvE17identityTransform)

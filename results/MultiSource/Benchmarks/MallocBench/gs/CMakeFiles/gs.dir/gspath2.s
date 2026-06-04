@@ -303,8 +303,9 @@ gs_initclip:                            # @gs_initclip
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB6_3
 # %bb.2:
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $s0, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $s0, 16
+	vst	$vr0, $s0, 0
 .LBB6_3:                                # %set_clip_path.exit.i
 	addi.d	$a1, $sp, 32
 	addi.d	$a0, $sp, 16
@@ -364,8 +365,9 @@ gs_clip:                                # @gs_clip
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB7_3
 # %bb.2:
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $s0, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $s0, 16
+	vst	$vr0, $s0, 0
 .LBB7_3:                                # %set_clip_path.exit.i
 	addi.d	$a1, $sp, 32
 	addi.d	$a0, $sp, 16
@@ -420,8 +422,9 @@ common_clip:                            # @common_clip
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB8_3
 # %bb.2:
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $s1, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $s1, 16
+	vst	$vr0, $s1, 0
 .LBB8_3:                                # %set_clip_path.exit
 	addi.d	$a1, $sp, 24
 	addi.d	$a0, $sp, 8
@@ -473,8 +476,9 @@ gs_eoclip:                              # @gs_eoclip
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB9_3
 # %bb.2:
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $s0, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $s0, 16
+	vst	$vr0, $s0, 0
 .LBB9_3:                                # %set_clip_path.exit.i
 	addi.d	$a1, $sp, 32
 	addi.d	$a0, $sp, 16
@@ -539,8 +543,9 @@ gx_clip_to_rectangle:                   # @gx_clip_to_rectangle
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB10_3
 # %bb.2:
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $s0, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $s0, 16
+	vst	$vr0, $s0, 0
 .LBB10_3:                               # %set_clip_path.exit
 	addi.d	$a1, $sp, 32
 	addi.d	$a0, $sp, 16
@@ -596,8 +601,9 @@ set_clip_path:                          # @set_clip_path
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB11_2
 # %bb.1:
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $s2, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $s2, 16
+	vst	$vr0, $s2, 0
 .LBB11_2:
 	addi.d	$a1, $s1, 16
 	move	$a0, $s1

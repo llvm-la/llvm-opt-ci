@@ -194,21 +194,23 @@ _ZN9btBvhTree30_sort_and_calc_splitting_indexER18GIM_BVH_DATA_ARRAYiii: # @_ZN9b
 # %bb.8:                                #   in Loop: Header=BB1_7 Depth=1
 	slli.d	$t3, $a4, 5
 	alsl.d	$t3, $a4, $t3, 2
-	xvldx	$xr2, $t2, $t3
+	vldx	$vr2, $t2, $t3
 	vld	$vr3, $t1, 0
-	vld	$vr4, $t1, 16
-	xvst	$xr2, $t1, 0
 	add.d	$t2, $t2, $t3
-	ld.w	$t2, $t2, 32
-	vst	$vr3, $sp, 48
-	vst	$vr4, $a7, 0
-	ld.w	$t4, $t1, 32
-	st.w	$t2, $t1, 32
+	vst	$vr2, $t1, 0
+	ld.w	$t4, $t2, 32
+	vld	$vr2, $t1, 16
+	ld.w	$t5, $t1, 32
+	st.w	$t4, $t1, 32
+	vld	$vr4, $t2, 16
+	vst	$vr4, $t1, 16
 	ld.d	$t1, $a1, 16
-	xvld	$xr2, $sp, 48
+	vst	$vr2, $a7, 0
+	vld	$vr2, $sp, 64
 	add.d	$t2, $t1, $t3
-	xvstx	$xr2, $t1, $t3
-	st.w	$t4, $t2, 32
+	vstx	$vr3, $t1, $t3
+	vst	$vr2, $t2, 16
+	st.w	$t5, $t2, 32
 	addi.w	$a4, $a4, 1
 	b	.LBB1_6
 .LBB1_9:
@@ -269,14 +271,18 @@ _ZN9btBvhTree15_build_sub_treeER18GIM_BVH_DATA_ARRAYii: # @_ZN9btBvhTree15_build
 	ori	$a1, $zero, 36
 	mul.d	$a2, $a2, $a1
 	ld.d	$a3, $fp, 24
-	xvldx	$xr0, $a0, $a2
-	mul.d	$a0, $s3, $a1
-	xvstx	$xr0, $a3, $a0
-	ld.d	$a1, $s0, 16
+	vldx	$vr0, $a0, $a2
+	add.d	$a0, $a0, $a2
+	mul.d	$a4, $s3, $a1
+	vstx	$vr0, $a3, $a4
+	vld	$vr0, $a0, 16
+	add.d	$a0, $a3, $a4
+	vst	$vr0, $a0, 16
+	ld.d	$a0, $s0, 16
 	ld.d	$a3, $fp, 24
-	add.d	$a1, $a1, $a2
-	ld.w	$a1, $a1, 32
-	add.d	$a0, $a3, $a0
+	add.d	$a0, $a0, $a2
+	ld.w	$a1, $a0, 32
+	add.d	$a0, $a3, $a4
 	b	.LBB2_7
 .LBB2_2:
 	move	$a1, $s0
@@ -576,9 +582,11 @@ _ZN12btGImpactBvh5refitEv:              # @_ZN12btGImpactBvh5refitEv
 	addi.d	$a2, $sp, 16
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $fp, 24
-	xvld	$xr0, $sp, 16
+	vld	$vr0, $sp, 32
 	add.d	$a0, $a0, $s1
-	xvst	$xr0, $a0, -68
+	vst	$vr0, $a0, -52
+	vld	$vr0, $sp, 16
+	vst	$vr0, $a0, -68
 	addi.d	$s3, $s3, -1
 	addi.d	$s1, $s1, -36
 	addi.d	$s0, $s0, -1
@@ -714,13 +722,14 @@ _ZN12btGImpactBvh8buildSetEv:           # @_ZN12btGImpactBvh8buildSetEv
 	st.b	$a2, $sp, 32
 	st.d	$a0, $sp, 24
 	st.w	$s0, $sp, 16
-	xvrepli.b	$xr0, 0
+	vrepli.b	$vr0, 0
 	.p2align	4, , 16
 .LBB5_4:                                # =>This Inner Loop Header: Depth=1
 	add.d	$a2, $a0, $a1
-	xvstx	$xr0, $a0, $a1
-	addi.d	$a1, $a1, 36
+	vstx	$vr0, $a0, $a1
 	st.w	$zero, $a2, 32
+	addi.d	$a1, $a1, 36
+	vst	$vr0, $a2, 16
 	bne	$s1, $a1, .LBB5_4
 # %bb.5:                                # %.lr.ph.preheader
 	move	$s1, $zero
@@ -908,13 +917,13 @@ _ZNK12btGImpactBvh8boxQueryERK6btAABBR20btAlignedObjectArrayIiE: # @_ZNK12btGImp
 	.cfi_offset 31, -88
 	ld.w	$s3, $a0, 0
 	move	$s0, $a2
-	blez	$s3, .LBB7_36
+	blez	$s3, .LBB7_30
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a0
 	move	$s1, $a1
 	move	$s4, $zero
 	ori	$s5, $zero, 1
-	ori	$s6, $zero, 4
+	ori	$s6, $zero, 8
 	b	.LBB7_6
 .LBB7_2:                                #   in Loop: Header=BB7_6 Depth=1
 	ld.w	$a1, $s0, 4
@@ -934,11 +943,10 @@ _ZNK12btGImpactBvh8boxQueryERK6btAABBR20btAlignedObjectArrayIiE: # @_ZNK12btGImp
 .LBB7_5:                                # %.thread
                                         #   in Loop: Header=BB7_6 Depth=1
 	addi.w	$s4, $s4, 1
-	bge	$s4, $s3, .LBB7_36
+	bge	$s4, $s3, .LBB7_30
 .LBB7_6:                                # =>This Loop Header: Depth=1
-                                        #     Child Loop BB7_26 Depth 2
-                                        #     Child Loop BB7_30 Depth 2
-                                        #     Child Loop BB7_33 Depth 2
+                                        #     Child Loop BB7_20 Depth 2
+                                        #     Child Loop BB7_23 Depth 2
 	ld.d	$a0, $fp, 24
 	slli.d	$a1, $s4, 5
 	alsl.d	$a1, $s4, $a1, 2
@@ -947,32 +955,32 @@ _ZNK12btGImpactBvh8boxQueryERK6btAABBR20btAlignedObjectArrayIiE: # @_ZNK12btGImp
 	add.d	$a0, $a0, $a1
 	ld.w	$s8, $a0, 32
 	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bcnez	$fcc0, .LBB7_21
+	bcnez	$fcc0, .LBB7_24
 # %bb.7:                                #   in Loop: Header=BB7_6 Depth=1
 	fld.s	$fa0, $a0, 16
 	fld.s	$fa1, $s1, 0
 	fcmp.clt.s	$fcc0, $fa0, $fa1
-	bcnez	$fcc0, .LBB7_21
+	bcnez	$fcc0, .LBB7_24
 # %bb.8:                                #   in Loop: Header=BB7_6 Depth=1
 	fld.s	$fa0, $a0, 4
 	fld.s	$fa1, $s1, 20
 	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bcnez	$fcc0, .LBB7_21
+	bcnez	$fcc0, .LBB7_24
 # %bb.9:                                #   in Loop: Header=BB7_6 Depth=1
 	fld.s	$fa0, $a0, 20
 	fld.s	$fa1, $s1, 4
 	fcmp.clt.s	$fcc0, $fa0, $fa1
-	bcnez	$fcc0, .LBB7_21
+	bcnez	$fcc0, .LBB7_24
 # %bb.10:                               #   in Loop: Header=BB7_6 Depth=1
 	fld.s	$fa0, $a0, 8
 	fld.s	$fa1, $s1, 24
 	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bcnez	$fcc0, .LBB7_21
+	bcnez	$fcc0, .LBB7_24
 # %bb.11:                               #   in Loop: Header=BB7_6 Depth=1
 	fld.s	$fa0, $a0, 24
 	fld.s	$fa1, $s1, 8
 	fcmp.clt.s	$fcc0, $fa0, $fa1
-	bcnez	$fcc0, .LBB7_21
+	bcnez	$fcc0, .LBB7_24
 # %bb.12:                               # %_ZNK6btAABB13has_collisionERKS_.exit
                                         #   in Loop: Header=BB7_6 Depth=1
 	bltz	$s8, .LBB7_5
@@ -988,7 +996,7 @@ _ZNK12btGImpactBvh8boxQueryERK6btAABBR20btAlignedObjectArrayIiE: # @_ZNK12btGImp
 	or	$s7, $a0, $a2
 	bge	$a1, $s7, .LBB7_4
 # %bb.15:                               #   in Loop: Header=BB7_6 Depth=1
-	beqz	$s7, .LBB7_23
+	beqz	$s7, .LBB7_26
 # %bb.16:                               #   in Loop: Header=BB7_6 Depth=1
 	slli.d	$a0, $s7, 2
 	ori	$a1, $zero, 16
@@ -997,92 +1005,45 @@ _ZNK12btGImpactBvh8boxQueryERK6btAABBR20btAlignedObjectArrayIiE: # @_ZNK12btGImp
 	ld.w	$a1, $s0, 4
 	move	$s2, $a0
 	ld.d	$a0, $s0, 16
-	blez	$a1, .LBB7_24
-.LBB7_17:                               # %iter.check
+	blez	$a1, .LBB7_27
+.LBB7_17:                               # %.lr.ph.i.i.i
                                         #   in Loop: Header=BB7_6 Depth=1
 	move	$a2, $zero
-	bltu	$a1, $s6, .LBB7_32
-# %bb.18:                               # %iter.check
+	bltu	$a1, $s6, .LBB7_22
+# %bb.18:                               # %.lr.ph.i.i.i
                                         #   in Loop: Header=BB7_6 Depth=1
 	sub.d	$a3, $s2, $a0
-	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB7_32
-# %bb.19:                               # %vector.main.loop.iter.check
+	ori	$a4, $zero, 32
+	bltu	$a3, $a4, .LBB7_22
+# %bb.19:                               # %vector.ph
                                         #   in Loop: Header=BB7_6 Depth=1
-	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB7_25
-# %bb.20:                               #   in Loop: Header=BB7_6 Depth=1
-	move	$a2, $zero
-	b	.LBB7_29
-	.p2align	4, , 16
-.LBB7_21:                               #   in Loop: Header=BB7_6 Depth=1
-	bgez	$s8, .LBB7_5
-# %bb.22:                               #   in Loop: Header=BB7_6 Depth=1
-	sub.w	$s4, $s4, $s8
-	blt	$s4, $s3, .LBB7_6
-	b	.LBB7_36
-.LBB7_23:                               #   in Loop: Header=BB7_6 Depth=1
-	move	$s2, $zero
-	ld.d	$a0, $s0, 16
-	bgtz	$a1, .LBB7_17
-.LBB7_24:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
-                                        #   in Loop: Header=BB7_6 Depth=1
-	bnez	$a0, .LBB7_34
-	b	.LBB7_3
-.LBB7_25:                               # %vector.ph
-                                        #   in Loop: Header=BB7_6 Depth=1
-	andi	$a3, $a1, 12
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a4, $a0, 32
-	addi.d	$a5, $s2, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB7_26:                               # %vector.body
-                                        #   Parent Loop BB7_6 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -16
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB7_26
-# %bb.27:                               # %middle.block
-                                        #   in Loop: Header=BB7_6 Depth=1
-	beq	$a2, $a1, .LBB7_34
-# %bb.28:                               # %vec.epilog.iter.check
-                                        #   in Loop: Header=BB7_6 Depth=1
-	beqz	$a3, .LBB7_32
-.LBB7_29:                               # %vec.epilog.ph
-                                        #   in Loop: Header=BB7_6 Depth=1
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s2, 16
 	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a5, $a2
-	alsl.d	$a4, $a5, $a0, 2
-	alsl.d	$a5, $a5, $s2, 2
 	.p2align	4, , 16
-.LBB7_30:                               # %vec.epilog.vector.body
+.LBB7_20:                               # %vector.body
                                         #   Parent Loop BB7_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB7_30
-# %bb.31:                               # %vec.epilog.middle.block
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB7_20
+# %bb.21:                               # %middle.block
                                         #   in Loop: Header=BB7_6 Depth=1
-	beq	$a2, $a1, .LBB7_34
-.LBB7_32:                               # %vec.epilog.scalar.ph.preheader
+	beq	$a2, $a1, .LBB7_28
+.LBB7_22:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB7_6 Depth=1
 	sub.d	$a1, $a1, $a2
 	alsl.d	$a3, $a2, $a0, 2
 	alsl.d	$a2, $a2, $s2, 2
 	.p2align	4, , 16
-.LBB7_33:                               # %vec.epilog.scalar.ph
+.LBB7_23:                               # %scalar.ph
                                         #   Parent Loop BB7_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
@@ -1090,16 +1051,31 @@ _ZNK12btGImpactBvh8boxQueryERK6btAABBR20btAlignedObjectArrayIiE: # @_ZNK12btGImp
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
-	bnez	$a1, .LBB7_33
-.LBB7_34:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i
+	bnez	$a1, .LBB7_23
+	b	.LBB7_28
+	.p2align	4, , 16
+.LBB7_24:                               #   in Loop: Header=BB7_6 Depth=1
+	bgez	$s8, .LBB7_5
+# %bb.25:                               #   in Loop: Header=BB7_6 Depth=1
+	sub.w	$s4, $s4, $s8
+	blt	$s4, $s3, .LBB7_6
+	b	.LBB7_30
+.LBB7_26:                               #   in Loop: Header=BB7_6 Depth=1
+	move	$s2, $zero
+	ld.d	$a0, $s0, 16
+	bgtz	$a1, .LBB7_17
+.LBB7_27:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
+                                        #   in Loop: Header=BB7_6 Depth=1
+	beqz	$a0, .LBB7_3
+.LBB7_28:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i
                                         #   in Loop: Header=BB7_6 Depth=1
 	ld.bu	$a1, $s0, 24
 	beqz	$a1, .LBB7_2
-# %bb.35:                               #   in Loop: Header=BB7_6 Depth=1
+# %bb.29:                               #   in Loop: Header=BB7_6 Depth=1
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 	b	.LBB7_2
-.LBB7_36:                               # %._crit_edge
+.LBB7_30:                               # %._crit_edge
 	ld.w	$a0, $s0, 4
 	slt	$a0, $zero, $a0
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
@@ -1153,16 +1129,15 @@ _ZNK12btGImpactBvh8rayQueryERK9btVector3S2_R20btAlignedObjectArrayIiE: # @_ZNK12
 	.cfi_offset 31, -88
 	.cfi_offset 56, -96
 	ld.w	$s0, $a0, 0
-	blez	$s0, .LBB8_41
+	blez	$s0, .LBB8_35
 # %bb.1:                                # %.lr.ph
 	move	$s1, $zero
 	vldi	$vr12, -1184
 	movgr2fr.w	$fs0, $zero
 	addi.w	$s2, $zero, -1
 	ori	$s3, $zero, 1
-	ori	$t3, $zero, 4
-	ori	$t4, $zero, 64
-	ori	$t5, $zero, 16
+	ori	$t2, $zero, 8
+	ori	$t3, $zero, 32
 	b	.LBB8_6
 .LBB8_2:                                #   in Loop: Header=BB8_6 Depth=1
 	ld.w	$a5, $a3, 4
@@ -1170,23 +1145,22 @@ _ZNK12btGImpactBvh8rayQueryERK9btVector3S2_R20btAlignedObjectArrayIiE: # @_ZNK12
                                         #   in Loop: Header=BB8_6 Depth=1
 	st.b	$s3, $a3, 24
 	st.d	$fp, $a3, 16
-	st.w	$s8, $a3, 8
+	st.w	$s7, $a3, 8
 .LBB8_4:                                # %.thread
                                         #   in Loop: Header=BB8_6 Depth=1
 	ld.d	$a4, $a3, 16
 	slli.d	$a5, $a5, 2
-	stx.w	$s7, $a4, $a5
+	stx.w	$s6, $a4, $a5
 	ld.w	$a4, $a3, 4
 	addi.d	$a4, $a4, 1
 	st.w	$a4, $a3, 4
 	.p2align	4, , 16
 .LBB8_5:                                #   in Loop: Header=BB8_6 Depth=1
 	addi.w	$s1, $s1, 1
-	bge	$s1, $s0, .LBB8_41
+	bge	$s1, $s0, .LBB8_35
 .LBB8_6:                                # =>This Loop Header: Depth=1
-                                        #     Child Loop BB8_31 Depth 2
-                                        #     Child Loop BB8_35 Depth 2
-                                        #     Child Loop BB8_38 Depth 2
+                                        #     Child Loop BB8_27 Depth 2
+                                        #     Child Loop BB8_30 Depth 2
 	ld.d	$a6, $a0, 24
 	slli.d	$a4, $s1, 5
 	alsl.d	$a4, $s1, $a4, 2
@@ -1278,7 +1252,7 @@ _ZNK12btGImpactBvh8rayQueryERK9btVector3S2_R20btAlignedObjectArrayIiE: # @_ZNK12
 	ld.w	$a4, $a4, 32
 	sub.w	$s1, $s1, $a4
 	blt	$s1, $s0, .LBB8_6
-	b	.LBB8_41
+	b	.LBB8_35
 .LBB8_18:                               # %_ZNK6btAABB11collide_rayERK9btVector3S2_.exit
                                         #   in Loop: Header=BB8_6 Depth=1
 	fneg.s	$fa1, $fa1
@@ -1287,15 +1261,15 @@ _ZNK12btGImpactBvh8rayQueryERK9btVector3S2_R20btAlignedObjectArrayIiE: # @_ZNK12
 	fabs.s	$fa1, $fa1
 	fmul.s	$fa2, $fa2, $fa5
 	fmadd.s	$fa0, $fa0, $ft0, $fa2
-	ld.w	$s7, $a5, 32
+	ld.w	$s6, $a5, 32
 	fcmp.cule.s	$fcc0, $fa1, $fa0
 	movcf2gr	$a5, $fcc0
 	fcmp.clt.s	$fcc0, $fa0, $fa1
-	slt	$a6, $s2, $s7
+	slt	$a6, $s2, $s6
 	bcnez	$fcc0, .LBB8_15
 # %bb.19:                               # %_ZNK6btAABB11collide_rayERK9btVector3S2_.exit
                                         #   in Loop: Header=BB8_6 Depth=1
-	bltz	$s7, .LBB8_15
+	bltz	$s6, .LBB8_15
 # %bb.20:                               #   in Loop: Header=BB8_6 Depth=1
 	ld.w	$a5, $a3, 4
 	ld.w	$a4, $a3, 8
@@ -1305,111 +1279,68 @@ _ZNK12btGImpactBvh8rayQueryERK9btVector3S2_R20btAlignedObjectArrayIiE: # @_ZNK12
 	slli.w	$a6, $a5, 1
 	masknez	$a6, $a6, $a4
 	maskeqz	$a4, $s3, $a4
-	or	$s8, $a4, $a6
-	bge	$a5, $s8, .LBB8_4
+	or	$s7, $a4, $a6
+	bge	$a5, $s7, .LBB8_4
 # %bb.22:                               #   in Loop: Header=BB8_6 Depth=1
-	move	$s6, $a1
+	move	$s8, $a1
 	move	$s5, $a2
-	beqz	$s8, .LBB8_28
+	beqz	$s7, .LBB8_31
 # %bb.23:                               #   in Loop: Header=BB8_6 Depth=1
-	slli.d	$a2, $s8, 2
+	slli.d	$a2, $s7, 2
 	ori	$a1, $zero, 16
 	move	$s4, $a0
 	move	$a0, $a2
 	move	$fp, $a3
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
-	ori	$t5, $zero, 16
-	ori	$t4, $zero, 64
-	ori	$t3, $zero, 4
+	ori	$t3, $zero, 32
+	ori	$t2, $zero, 8
 	move	$a3, $fp
 	ld.w	$a5, $fp, 4
 	move	$fp, $a0
 	move	$a0, $s4
 	ld.d	$a4, $a3, 16
-	blez	$a5, .LBB8_29
-.LBB8_24:                               # %iter.check
+	blez	$a5, .LBB8_32
+.LBB8_24:                               # %.lr.ph.i.i.i
                                         #   in Loop: Header=BB8_6 Depth=1
 	move	$a6, $zero
 	move	$a2, $s5
-	move	$a1, $s6
+	move	$a1, $s8
 	vldi	$vr12, -1184
-	bltu	$a5, $t3, .LBB8_37
-# %bb.25:                               # %iter.check
+	bltu	$a5, $t2, .LBB8_29
+# %bb.25:                               # %.lr.ph.i.i.i
                                         #   in Loop: Header=BB8_6 Depth=1
 	sub.d	$a7, $fp, $a4
-	bltu	$a7, $t4, .LBB8_37
-# %bb.26:                               # %vector.main.loop.iter.check
+	bltu	$a7, $t3, .LBB8_29
+# %bb.26:                               # %vector.ph
                                         #   in Loop: Header=BB8_6 Depth=1
-	bgeu	$a5, $t5, .LBB8_30
-# %bb.27:                               #   in Loop: Header=BB8_6 Depth=1
-	move	$a6, $zero
-	b	.LBB8_34
-.LBB8_28:                               #   in Loop: Header=BB8_6 Depth=1
-	move	$fp, $zero
-	ld.d	$a4, $a3, 16
-	bgtz	$a5, .LBB8_24
-.LBB8_29:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
-                                        #   in Loop: Header=BB8_6 Depth=1
-	move	$a2, $s5
-	move	$a1, $s6
-	vldi	$vr12, -1184
-	bnez	$a4, .LBB8_39
-	b	.LBB8_3
-.LBB8_30:                               # %vector.ph
-                                        #   in Loop: Header=BB8_6 Depth=1
-	andi	$a7, $a5, 12
-	bstrpick.d	$a6, $a5, 30, 4
-	slli.d	$a6, $a6, 4
-	addi.d	$t0, $a4, 32
-	addi.d	$t1, $fp, 32
-	move	$t2, $a6
-	.p2align	4, , 16
-.LBB8_31:                               # %vector.body
-                                        #   Parent Loop BB8_6 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $t0, -32
-	xvld	$xr1, $t0, 0
-	xvst	$xr0, $t1, -32
-	xvst	$xr1, $t1, 0
-	addi.d	$t2, $t2, -16
-	addi.d	$t0, $t0, 64
-	addi.d	$t1, $t1, 64
-	bnez	$t2, .LBB8_31
-# %bb.32:                               # %middle.block
-                                        #   in Loop: Header=BB8_6 Depth=1
-	beq	$a6, $a5, .LBB8_39
-# %bb.33:                               # %vec.epilog.iter.check
-                                        #   in Loop: Header=BB8_6 Depth=1
-	beqz	$a7, .LBB8_37
-.LBB8_34:                               # %vec.epilog.ph
-                                        #   in Loop: Header=BB8_6 Depth=1
+	bstrpick.d	$a6, $a5, 30, 3
+	slli.d	$a6, $a6, 3
+	addi.d	$a7, $a4, 16
+	addi.d	$t0, $fp, 16
 	move	$t1, $a6
-	bstrpick.d	$a6, $a5, 30, 2
-	slli.d	$a6, $a6, 2
-	sub.d	$a7, $t1, $a6
-	alsl.d	$t0, $t1, $a4, 2
-	alsl.d	$t1, $t1, $fp, 2
 	.p2align	4, , 16
-.LBB8_35:                               # %vec.epilog.vector.body
+.LBB8_27:                               # %vector.body
                                         #   Parent Loop BB8_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $t0, 0
-	vst	$vr0, $t1, 0
-	addi.d	$a7, $a7, 4
-	addi.d	$t0, $t0, 16
-	addi.d	$t1, $t1, 16
-	bnez	$a7, .LBB8_35
-# %bb.36:                               # %vec.epilog.middle.block
+	vld	$vr0, $a7, -16
+	vld	$vr1, $a7, 0
+	vst	$vr0, $t0, -16
+	vst	$vr1, $t0, 0
+	addi.d	$t1, $t1, -8
+	addi.d	$a7, $a7, 32
+	addi.d	$t0, $t0, 32
+	bnez	$t1, .LBB8_27
+# %bb.28:                               # %middle.block
                                         #   in Loop: Header=BB8_6 Depth=1
-	beq	$a6, $a5, .LBB8_39
-.LBB8_37:                               # %vec.epilog.scalar.ph.preheader
+	beq	$a6, $a5, .LBB8_33
+.LBB8_29:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB8_6 Depth=1
 	sub.d	$a5, $a5, $a6
 	alsl.d	$a7, $a6, $a4, 2
 	alsl.d	$a6, $a6, $fp, 2
 	.p2align	4, , 16
-.LBB8_38:                               # %vec.epilog.scalar.ph
+.LBB8_30:                               # %scalar.ph
                                         #   Parent Loop BB8_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t0, $a7, 0
@@ -1417,28 +1348,38 @@ _ZNK12btGImpactBvh8rayQueryERK9btVector3S2_R20btAlignedObjectArrayIiE: # @_ZNK12
 	addi.d	$a5, $a5, -1
 	addi.d	$a7, $a7, 4
 	addi.d	$a6, $a6, 4
-	bnez	$a5, .LBB8_38
-.LBB8_39:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i
+	bnez	$a5, .LBB8_30
+	b	.LBB8_33
+.LBB8_31:                               #   in Loop: Header=BB8_6 Depth=1
+	move	$fp, $zero
+	ld.d	$a4, $a3, 16
+	bgtz	$a5, .LBB8_24
+.LBB8_32:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
+                                        #   in Loop: Header=BB8_6 Depth=1
+	move	$a2, $s5
+	move	$a1, $s8
+	vldi	$vr12, -1184
+	beqz	$a4, .LBB8_3
+.LBB8_33:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i
                                         #   in Loop: Header=BB8_6 Depth=1
 	ld.bu	$a5, $a3, 24
 	beqz	$a5, .LBB8_2
-# %bb.40:                               #   in Loop: Header=BB8_6 Depth=1
+# %bb.34:                               #   in Loop: Header=BB8_6 Depth=1
 	move	$s4, $a0
 	move	$a0, $a4
 	move	$s3, $a3
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-	ori	$t5, $zero, 16
-	ori	$t4, $zero, 64
-	ori	$t3, $zero, 4
+	ori	$t3, $zero, 32
+	ori	$t2, $zero, 8
 	vldi	$vr12, -1184
-	move	$a1, $s6
+	move	$a1, $s8
 	move	$a2, $s5
 	move	$a3, $s3
 	ori	$s3, $zero, 1
 	move	$a0, $s4
 	b	.LBB8_2
-.LBB8_41:                               # %._crit_edge
+.LBB8_35:                               # %._crit_edge
 	ld.w	$a0, $a3, 4
 	slt	$a0, $zero, $a0
 	fld.d	$fs0, $sp, 16                   # 8-byte Folded Reload
@@ -1666,16 +1607,22 @@ _ZL31_find_collision_pairs_recursiveP12btGImpactBvhS0_P9btPairSetRK26BT_BOX_BOX_
 	move	$s3, $a4
 	ori	$a4, $zero, 36
 	mul.d	$s5, $s3, $a4
-	xvldx	$xr0, $a0, $s5
+	vldx	$vr0, $a0, $s5
+	add.d	$a0, $a0, $s5
+	vst	$vr0, $sp, 40
+	vld	$vr0, $a0, 16
 	move	$s1, $a1
 	ld.d	$a0, $a1, 24
 	move	$s4, $a5
-	xvst	$xr0, $sp, 40
+	vst	$vr0, $sp, 56
 	mul.d	$s6, $a5, $a4
-	xvldx	$xr0, $a0, $s6
+	vldx	$vr0, $a0, $s6
+	add.d	$a0, $a0, $s6
+	vst	$vr0, $sp, 8
+	vld	$vr0, $a0, 16
 	move	$s2, $a3
 	move	$fp, $a2
-	xvst	$xr0, $sp, 8
+	vst	$vr0, $sp, 24
 	addi.d	$a0, $sp, 40
 	addi.d	$a1, $sp, 8
 	move	$a2, $a3

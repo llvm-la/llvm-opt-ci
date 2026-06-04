@@ -125,30 +125,33 @@ GCC_except_table0:
 _ZN11btRigidBody14setupRigidBodyERKNS_27btRigidBodyConstructionInfoE: # @_ZN11btRigidBody14setupRigidBodyERKNS_27btRigidBodyConstructionInfoE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	move	$s0, $a1
 	move	$fp, $a0
 	ori	$a0, $zero, 2
-	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	vld	$vr0, $a1, %pc_lo12(.LCPI1_0)
 	st.w	$a0, $fp, 256
-	xvrepli.b	$xr2, 0
-	xvst	$xr2, $fp, 328
+	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_0)
+	vrepli.b	$vr4, 0
+	vst	$vr4, $fp, 344
+	vst	$vr4, $fp, 328
 	vst	$vr0, $fp, 364
 	lu12i.w	$a0, 260096
 	lu52i.d	$a1, $a0, 1016
 	st.d	$a1, $fp, 380
 	st.w	$a0, $fp, 388
-	xvst	$xr2, $fp, 392
+	vst	$vr4, $fp, 392
+	vst	$vr4, $fp, 408
 	st.w	$zero, $fp, 424
-	xvst	$xr2, $fp, 444
+	vst	$vr4, $fp, 444
+	vst	$vr4, $fp, 460
 	lu52i.d	$a0, $zero, 1008
 	st.d	$a0, $fp, 476
 	ld.d	$a0, $s0, 120
@@ -165,9 +168,9 @@ _ZN11btRigidBody14setupRigidBodyERKNS_27btRigidBodyConstructionInfoE: # @_ZN11bt
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
 	addi.d	$a1, $fp, 8
-	xvst	$xr2, $sp, 16                   # 32-byte Folded Spill
+	vst	$vr4, $sp, 0                    # 16-byte Folded Spill
 	jirl	$ra, $a2, 0
-	xvld	$xr2, $sp, 16                   # 32-byte Folded Reload
+	vld	$vr4, $sp, 0                    # 16-byte Folded Reload
 	b	.LBB1_3
 .LBB1_2:
 	vld	$vr0, $s0, 16
@@ -179,11 +182,16 @@ _ZN11btRigidBody14setupRigidBodyERKNS_27btRigidBodyConstructionInfoE: # @_ZN11bt
 	vld	$vr0, $s0, 64
 	vst	$vr0, $fp, 56
 .LBB1_3:
-	xvld	$xr0, $fp, 8
-	xvld	$xr1, $fp, 40
-	xvst	$xr0, $fp, 72
-	xvst	$xr1, $fp, 104
-	xvst	$xr2, $fp, 136
+	vld	$vr0, $fp, 8
+	vld	$vr1, $fp, 24
+	vld	$vr2, $fp, 40
+	vld	$vr3, $fp, 56
+	vst	$vr0, $fp, 72
+	vst	$vr1, $fp, 88
+	vst	$vr2, $fp, 104
+	vst	$vr3, $fp, 120
+	vst	$vr4, $fp, 152
+	vst	$vr4, $fp, 136
 	ld.d	$a0, $s0, 112
 	ld.d	$a2, $fp, 0
 	st.d	$a0, $fp, 236
@@ -297,10 +305,10 @@ _ZN11btRigidBody14setupRigidBodyERKNS_27btRigidBodyConstructionInfoE: # @_ZN11bt
 	fst.s	$fa5, $fp, 316
 	fst.s	$fa1, $fp, 320
 	st.w	$zero, $fp, 324
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end1:
 	.size	_ZN11btRigidBody14setupRigidBodyERKNS_27btRigidBodyConstructionInfoE, .Lfunc_end1-_ZN11btRigidBody14setupRigidBodyERKNS_27btRigidBodyConstructionInfoE
@@ -907,18 +915,20 @@ _ZN11btRigidBody18saveKinematicStateEf: # @_ZN11btRigidBody18saveKinematicStateE
 	movfr2gr.s	$a1, $fa2
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa1
-	vld	$vr0, $fp, 328
 	bstrpick.d	$a1, $a1, 31, 0
 	st.d	$a0, $fp, 344
 	st.d	$a1, $fp, 352
+	vld	$vr0, $fp, 328
+	vld	$vr1, $fp, 344
 	vst	$vr0, $fp, 136
-	vld	$vr0, $fp, 344
-	vld	$vr1, $fp, 8
-	xvld	$xr2, $fp, 24
+	vst	$vr1, $fp, 152
+	vld	$vr0, $fp, 8
+	vld	$vr1, $fp, 24
+	vld	$vr2, $fp, 40
 	vld	$vr3, $fp, 56
-	vst	$vr0, $fp, 152
-	vst	$vr1, $fp, 72
-	xvst	$xr2, $fp, 88
+	vst	$vr0, $fp, 72
+	vst	$vr1, $fp, 88
+	vst	$vr2, $fp, 104
 	vst	$vr3, $fp, 120
 .LBB9_4:
 	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
@@ -1191,10 +1201,12 @@ _ZN11btRigidBody24setCenterOfMassTransformERK11btTransform: # @_ZN11btRigidBody2
 	andi	$a2, $a2, 3
 	beqz	$a2, .LBB15_2
 # %bb.1:
-	xvld	$xr0, $a0, 8
-	vld	$vr1, $a0, 40
-	xvst	$xr0, $a0, 72
-	vst	$vr1, $a0, 104
+	vld	$vr0, $a0, 8
+	vld	$vr1, $a0, 24
+	vld	$vr2, $a0, 40
+	vst	$vr0, $a0, 72
+	vst	$vr1, $a0, 88
+	vst	$vr2, $a0, 104
 	addi.d	$a2, $a0, 56
 	b	.LBB15_3
 .LBB15_2:
@@ -1207,9 +1219,11 @@ _ZN11btRigidBody24setCenterOfMassTransformERK11btTransform: # @_ZN11btRigidBody2
 	addi.d	$a2, $a1, 48
 .LBB15_3:
 	vld	$vr0, $a2, 0
-	xvld	$xr1, $a0, 328
+	vld	$vr1, $a0, 328
+	vld	$vr2, $a0, 344
 	vst	$vr0, $a0, 120
-	xvst	$xr1, $a0, 136
+	vst	$vr1, $a0, 136
+	vst	$vr2, $a0, 152
 	vld	$vr0, $a1, 0
 	vst	$vr0, $a0, 8
 	vld	$vr0, $a1, 16
@@ -1649,30 +1663,30 @@ _ZN11btRigidBody16addConstraintRefEP17btTypedConstraint: # @_ZN11btRigidBody16ad
 	ld.d	$a2, $a0, 536
 	blez	$a3, .LBB20_18
 .LBB20_9:                               # %.lr.ph.i.i.i
-	ori	$a5, $zero, 8
+	ori	$a5, $zero, 4
 	move	$a4, $zero
 	move	$a1, $s1
 	bltu	$a3, $a5, .LBB20_14
 # %bb.10:                               # %.lr.ph.i.i.i
 	sub.d	$a5, $fp, $a2
-	ori	$a6, $zero, 64
+	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB20_14
 # %bb.11:                               # %vector.ph
-	bstrpick.d	$a4, $a3, 30, 3
-	slli.d	$a4, $a4, 3
-	addi.d	$a5, $a2, 32
-	addi.d	$a6, $fp, 32
+	bstrpick.d	$a4, $a3, 30, 2
+	slli.d	$a4, $a4, 2
+	addi.d	$a5, $a2, 16
+	addi.d	$a6, $fp, 16
 	move	$a7, $a4
 	.p2align	4, , 16
 .LBB20_12:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a6, -32
-	xvst	$xr1, $a6, 0
-	addi.d	$a7, $a7, -8
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a6, -16
+	vst	$vr1, $a6, 0
+	addi.d	$a7, $a7, -4
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB20_12
 # %bb.13:                               # %middle.block
 	beq	$a4, $a3, .LBB20_16

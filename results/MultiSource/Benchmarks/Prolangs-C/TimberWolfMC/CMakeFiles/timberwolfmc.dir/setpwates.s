@@ -17,10 +17,10 @@ setpwates:                              # @setpwates
 	pcalau12i	$a2, %got_pc_hi20(pinsPerLen)
 	ld.d	$a2, $a2, %got_pc_lo12(pinsPerLen)
 	addi.d	$a1, $a1, 1
-	xvldrepl.d	$xr0, $a2, 0
+	vldrepl.d	$vr0, $a2, 0
 	bstrpick.d	$a1, $a1, 31, 0
 	ori	$a2, $zero, 1
-	xvldi	$xr1, -912
+	vldi	$vr1, -912
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_2:                                # %._crit_edge
@@ -37,11 +37,16 @@ setpwates:                              # @setpwates
 .LBB0_4:                                # %.lr.ph
                                         #   Parent Loop BB0_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr2, $a3, 8
-	xvfcmp.clt.d	$xr3, $xr0, $xr2
-	xvfdiv.d	$xr2, $xr2, $xr0
-	xvbitsel.v	$xr2, $xr1, $xr2, $xr3
-	xvst	$xr2, $a3, 8
+	vld	$vr2, $a3, 8
+	vfcmp.clt.d	$vr3, $vr0, $vr2
+	vld	$vr4, $a3, 24
+	vfdiv.d	$vr2, $vr2, $vr0
+	vbitsel.v	$vr2, $vr1, $vr2, $vr3
+	vst	$vr2, $a3, 8
+	vfcmp.clt.d	$vr2, $vr0, $vr4
+	vfdiv.d	$vr3, $vr4, $vr0
+	vbitsel.v	$vr2, $vr1, $vr3, $vr2
+	vst	$vr2, $a3, 24
 	ld.d	$a3, $a3, 0
 	bnez	$a3, .LBB0_4
 	b	.LBB0_2

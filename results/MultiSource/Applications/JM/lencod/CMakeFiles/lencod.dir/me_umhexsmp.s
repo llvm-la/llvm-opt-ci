@@ -3164,8 +3164,8 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	st.b	$zero, $a3, 48
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a3, 32
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a3, 0
+	vst	$vr0, $a3, 16
+	vst	$vr0, $a3, 0
 	ld.d	$a3, $t1, %pc_lo12(smpUMHEX_SearchState)
 	slli.d	$a2, $a2, 2
 	sub.w	$s2, $a1, $a2

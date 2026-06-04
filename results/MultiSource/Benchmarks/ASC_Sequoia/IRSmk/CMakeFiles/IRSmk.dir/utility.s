@@ -296,15 +296,7 @@ allocMem:                               # @allocMem
 .Lfunc_end1:
 	.size	allocMem, .Lfunc_end1-allocMem
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function init
-.LCPI2_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.text
-	.globl	init
+	.globl	init                            # -- Begin function init
 	.p2align	2
 	.prefalign	5, .Lfunc_end2, nop
 	.type	init,@function
@@ -535,44 +527,61 @@ init:                                   # @init
 	bne	$a6, $a7, .LBB2_2
 .LBB2_3:                                # %.preheader
 	pcalau12i	$a0, %pc_hi20(x_size)
-	ld.w	$a0, $a0, %pc_lo12(x_size)
-	blez	$a0, .LBB2_11
+	ld.w	$a1, $a0, %pc_lo12(x_size)
+	blez	$a1, .LBB2_11
 # %bb.4:                                # %.lr.ph155.preheader
-	ori	$a1, $zero, 8
-	bgeu	$a0, $a1, .LBB2_6
+	ori	$a0, $zero, 4
+	bgeu	$a1, $a0, .LBB2_6
 # %bb.5:
 	move	$a2, $zero
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB2_9
 .LBB2_6:                                # %vector.ph
-	bstrpick.d	$a1, $a0, 30, 3
-	slli.d	$a2, $a1, 3
-	pcalau12i	$a3, %pc_hi20(.LCPI2_0)
-	vld	$vr0, $a3, %pc_lo12(.LCPI2_0)
-	slli.d	$a1, $a1, 6
+	bstrpick.d	$a0, $a1, 30, 2
+	slli.d	$a2, $a0, 2
+	slli.d	$a0, $a0, 5
 	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
-	add.d	$a1, $a3, $a1
-	addi.d	$a3, $a3, 32
-	move	$a4, $a2
+	add.d	$a0, $a3, $a0
+	addi.d	$a3, $a3, 16
+	ori	$a4, $zero, 0
+	lu32i.d	$a4, 1
+	vreplgr2vr.d	$vr0, $a4
+	addi.w	$a4, $zero, -2
+	lu32i.d	$a4, 0
+	move	$a5, $a2
 	.p2align	4, , 16
 .LBB2_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vslli.w	$vr1, $vr0, 1
-	vaddi.wu	$vr2, $vr1, 8
-	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
-	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
-	xvst	$xr1, $a3, -32
-	xvst	$xr2, $a3, 0
-	vaddi.wu	$vr0, $vr0, 8
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
-	bnez	$a4, .LBB2_7
+	vaddi.wu	$vr2, $vr1, 4
+	vpickve2gr.w	$a6, $vr1, 1
+	and	$a6, $a6, $a4
+	movgr2fr.d	$fa3, $a6
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a6, $vr1, 0
+	and	$a6, $a6, $a4
+	movgr2fr.d	$fa1, $a6
+	ffint.d.l	$fa1, $fa1
+	vextrins.d	$vr1, $vr3, 16
+	vpickve2gr.w	$a6, $vr2, 1
+	and	$a6, $a6, $a4
+	movgr2fr.d	$fa3, $a6
+	ffint.d.l	$fa3, $fa3
+	vpickve2gr.w	$a6, $vr2, 0
+	and	$a6, $a6, $a4
+	movgr2fr.d	$fa2, $a6
+	ffint.d.l	$fa2, $fa2
+	vextrins.d	$vr2, $vr3, 16
+	vst	$vr1, $a3, -16
+	vst	$vr2, $a3, 0
+	vaddi.wu	$vr0, $vr0, 4
+	addi.d	$a5, $a5, -4
+	addi.d	$a3, $a3, 32
+	bnez	$a5, .LBB2_7
 # %bb.8:                                # %middle.block
-	beq	$a2, $a0, .LBB2_11
+	beq	$a2, $a1, .LBB2_11
 .LBB2_9:                                # %.lr.ph155.preheader159
-	sub.d	$a0, $a0, $a2
+	sub.d	$a1, $a1, $a2
 	slli.d	$a2, $a2, 1
 	.p2align	4, , 16
 .LBB2_10:                               # %.lr.ph155
@@ -580,11 +589,11 @@ init:                                   # @init
 	bstrpick.d	$a3, $a2, 31, 0
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
-	fst.d	$fa0, $a1, 0
-	addi.d	$a1, $a1, 8
-	addi.w	$a0, $a0, -1
+	fst.d	$fa0, $a0, 0
+	addi.d	$a0, $a0, 8
+	addi.w	$a1, $a1, -1
 	addi.w	$a2, $a2, 2
-	bnez	$a0, .LBB2_10
+	bnez	$a1, .LBB2_10
 .LBB2_11:                               # %._crit_edge
 	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload

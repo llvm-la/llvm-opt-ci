@@ -129,12 +129,10 @@ main:                                   # @main
 .Lfunc_end0:
 	.size	main, .Lfunc_end0-main
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function test_Matvec
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function test_Matvec
 .LCPI1_0:
 	.dword	0x4018000000000000              # double 6
-	.dword	0xbff0000000000000              # double -1
-	.dword	0xbff0000000000000              # double -1
 	.dword	0xbff0000000000000              # double -1
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
@@ -159,9 +157,11 @@ test_Matvec:                            # @test_Matvec
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI1_0)
 	move	$fp, $a0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vldi	$vr0, -784
+	vst	$vr0, $a0, 16
 	ori	$a0, $zero, 50
 	ori	$a1, $zero, 50
 	ori	$a2, $zero, 50
@@ -289,12 +289,10 @@ test_Matvec:                            # @test_Matvec
 .Lfunc_end1:
 	.size	test_Matvec, .Lfunc_end1-test_Matvec
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function test_Relax
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function test_Relax
 .LCPI2_0:
 	.dword	0x4018000000000000              # double 6
-	.dword	0xbff0000000000000              # double -1
-	.dword	0xbff0000000000000              # double -1
 	.dword	0xbff0000000000000              # double -1
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
@@ -318,9 +316,11 @@ test_Relax:                             # @test_Relax
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(.LCPI2_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI2_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI2_0)
 	move	$fp, $a0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vldi	$vr0, -784
+	vst	$vr0, $a0, 16
 	ori	$a0, $zero, 50
 	ori	$a1, $zero, 50
 	ori	$a2, $zero, 50

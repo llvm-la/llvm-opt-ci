@@ -312,8 +312,8 @@ _ZN7momentsIdEC2IN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEEEET_S9_: # 
 	st.d	$zero, $a0, 48
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 32
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 0
 	lu12i.w	$a1, 256
 	lu12i.w	$a0, 275200
 	bne	$a2, $s0, .LBB1_2

@@ -794,11 +794,14 @@ _GLOBAL__sub_I_memory_manager_test.cc:  # @_GLOBAL__sub_I_memory_manager_test.cc
 .Ltmp32:                                # EH_LABEL
 # %bb.22:                               # %.noexc133.i
 	ld.d	$a1, $sp, 368
-	pcalau12i	$a2, %pc_hi20(.L.str.7)
-	xvld	$xr0, $a2, %pc_lo12(.L.str.7)
 	st.d	$a0, $sp, 400
 	st.d	$a1, $sp, 416
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.L.str.7)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.7)
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 400
 	st.d	$a1, $sp, 408
 	stx.b	$zero, $a0, $a1

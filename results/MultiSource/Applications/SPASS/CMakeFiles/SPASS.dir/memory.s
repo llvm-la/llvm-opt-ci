@@ -53,13 +53,14 @@ memory_Init:                            # @memory_Init
 	addi.d	$a6, $a6, %pc_lo12(memory_ARRAY)
 	pcalau12i	$a7, %pc_hi20(memory__EOF)
 	addi.d	$a7, $a7, %pc_lo12(memory__EOF)
-	xvreplgr2vr.d	$xr0, $a7
+	vreplgr2vr.d	$vr0, $a7
 	.p2align	4, , 16
 .LBB0_3:                                # =>This Inner Loop Header: Depth=1
 	addi.d	$a2, $a2, 8
 	add.d	$a7, $a2, $a6
 	stptr.d	$a5, $a7, 8184
-	xvst	$xr0, $a5, 0
+	vst	$vr0, $a5, 0
+	vst	$vr0, $a5, 16
 	andi	$a7, $a4, 2040
 	st.w	$a7, $a5, 36
 	add.w	$a7, $a7, $a1
@@ -392,14 +393,14 @@ memory_Calloc:                          # @memory_Calloc
 	.type	memory_FreeAllMem,@function
 memory_FreeAllMem:                      # @memory_FreeAllMem
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	ori	$fp, $zero, 1
 	pcalau12i	$a0, %pc_hi20(memory_ARRAY)
 	addi.d	$s0, $a0, %pc_lo12(memory_ARRAY)
@@ -407,8 +408,8 @@ memory_FreeAllMem:                      # @memory_FreeAllMem
 	ori	$s2, $zero, 1024
 	pcalau12i	$a0, %pc_hi20(memory__EOF)
 	addi.d	$a0, $a0, %pc_lo12(memory__EOF)
-	xvreplgr2vr.d	$xr0, $a0
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	vreplgr2vr.d	$vr0, $a0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB5_2
 	.p2align	4, , 16
 .LBB5_1:                                #   in Loop: Header=BB5_2 Depth=1
@@ -432,8 +433,9 @@ memory_FreeAllMem:                      # @memory_FreeAllMem
 	move	$a0, $s4
 	bne	$a1, $s1, .LBB5_3
 # %bb.4:                                #   in Loop: Header=BB5_2 Depth=1
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $s3, 0
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $s3, 0
+	vst	$vr0, $s3, 16
 	b	.LBB5_1
 .LBB5_5:
 	pcalau12i	$fp, %pc_hi20(memory_BIGBLOCKS)
@@ -450,14 +452,14 @@ memory_FreeAllMem:                      # @memory_FreeAllMem
 # %bb.7:
 	st.d	$zero, $fp, %pc_lo12(memory_BIGBLOCKS)
 .LBB5_8:
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end5:
 	.size	memory_FreeAllMem, .Lfunc_end5-memory_FreeAllMem

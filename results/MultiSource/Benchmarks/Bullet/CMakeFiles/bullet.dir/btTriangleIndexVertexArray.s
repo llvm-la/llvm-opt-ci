@@ -72,13 +72,15 @@ _ZN26btTriangleIndexVertexArrayC2EiPiiiPfi: # @_ZN26btTriangleIndexVertexArrayC2
 	.p2align	4, , 16
 .LBB0_3:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $fp, 40
-	xvldx	$xr0, $a2, $a0
+	vldx	$vr0, $a2, $a0
 	add.d	$a2, $a2, $a0
-	xvstx	$xr0, $s6, $a0
+	vstx	$vr0, $s6, $a0
 	vld	$vr0, $a2, 32
-	add.d	$a2, $s6, $a0
+	add.d	$a3, $s6, $a0
+	vst	$vr0, $a3, 32
+	vld	$vr0, $a2, 16
 	addi.d	$a0, $a0, 48
-	vst	$vr0, $a2, 32
+	vst	$vr0, $a3, 16
 	bne	$a1, $a0, .LBB0_3
 .LBB0_4:                                # %_ZNK20btAlignedObjectArrayI13btIndexedMeshE4copyEiiPS0_.exit.i.i.i
 	ld.d	$a0, $fp, 40

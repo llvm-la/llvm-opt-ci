@@ -11,10 +11,12 @@ f0:                                     # @f0
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
-	xvld	$xr0, $a1, 0
-	pcalau12i	$a1, %pc_hi20(g0)
-	addi.d	$s1, $a1, %pc_lo12(g0)
-	xvst	$xr0, $s1, 0
+	vld	$vr0, $a1, 0
+	pcalau12i	$a2, %pc_hi20(g0)
+	addi.d	$s1, $a2, %pc_lo12(g0)
+	vst	$vr0, $s1, 0
+	vld	$vr0, $a1, 16
+	vst	$vr0, $s1, 16
 	pcaddu18i	$ra, %call36(__floatsitf)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $s1, 0

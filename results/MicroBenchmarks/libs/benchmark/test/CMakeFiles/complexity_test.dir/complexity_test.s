@@ -694,9 +694,11 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.40)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.40)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.w	$a2, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.w	$a2, $a0, 32
 	ori	$a2, $zero, 3320
 	add.d	$a2, $sp, $a2
@@ -1044,8 +1046,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .Ltmp52:                                # EH_LABEL
 # %bb.82:                               # %.noexc.i335
 	ld.d	$a0, $sp, 952
-	ori	$s7, $s0, 48
-	st.b	$s7, $a0, 0
+	ori	$s3, $s0, 48
+	st.b	$s3, $a0, 0
 	ld.d	$a0, $sp, 952
 	addi.d	$s1, $sp, 1136
 	st.d	$fp, $sp, 960
@@ -1097,9 +1099,9 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	ld.d	$a1, $a1, 0
 	srli.d	$a1, $a1, 1
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	lu52i.d	$s0, $a2, 511
+	lu52i.d	$s7, $a2, 511
 	st.b	$zero, $a0, 16
-	beq	$a1, $s0, .LBB2_268
+	beq	$a1, $s7, .LBB2_268
 # %bb.87:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6appendEPKc.exit.i
 .Ltmp57:                                # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.45)
@@ -1125,14 +1127,12 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_90:
 	ld.d	$fp, $a0, 8
 	addi.d	$a2, $fp, 1
-	move	$s3, $s0
 	move	$s0, $a0
 	move	$a0, $a3
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-	move	$s0, $s3
 .LBB2_91:
 	st.d	$fp, $sp, 992
 	st.d	$s2, $a0, 0
@@ -1160,11 +1160,14 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .Ltmp63:                                # EH_LABEL
 # %bb.93:                               # %.noexc345
 	ld.d	$a1, $sp, 472
-	pcalau12i	$s5, %pc_hi20(.L.str.46)
-	xvld	$xr0, $s5, %pc_lo12(.L.str.46)
 	st.d	$a0, $sp, 920
 	st.d	$a1, $sp, 936
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.L.str.46)
+	addi.d	$s6, $a2, %pc_lo12(.L.str.46)
+	vld	$vr0, $s6, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s6, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 920
 	st.d	$a1, $sp, 928
 	stx.b	$zero, $a0, $a1
@@ -1195,9 +1198,9 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	pcalau12i	$a2, %pc_hi20(.L.str.47)
 	addi.d	$s8, $a2, %pc_lo12(.L.str.47)
 	vld	$vr0, $s8, 0
-	ld.d	$s6, $s8, 13
+	ld.d	$s2, $s8, 13
 	vst	$vr0, $a0, 0
-	st.d	$s6, $a0, 13
+	st.d	$s2, $a0, 13
 	ld.d	$a0, $sp, 888
 	st.d	$a1, $sp, 896
 	stx.b	$zero, $a0, $a1
@@ -1228,11 +1231,11 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	pcalau12i	$a2, %pc_hi20(.L.str.48)
 	addi.d	$s4, $a2, %pc_lo12(.L.str.48)
 	vld	$vr0, $s4, 0
-	ld.b	$fp, $s4, 24
-	ld.d	$s3, $s4, 16
+	ld.b	$s5, $s4, 24
+	ld.d	$s0, $s4, 16
 	vst	$vr0, $a0, 0
-	st.b	$fp, $a0, 24
-	st.d	$s3, $a0, 16
+	st.b	$s5, $a0, 24
+	st.d	$s0, $a0, 16
 	ld.d	$a0, $sp, 856
 	st.d	$a1, $sp, 864
 	stx.b	$zero, $a0, $a1
@@ -1244,6 +1247,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .Ltmp78:                                # EH_LABEL
 # %bb.98:                               # %.noexc.i356
+	move	$fp, $s3
 	addi.d	$s1, $sp, 1488
 	addi.d	$a0, $sp, 840
 	st.d	$a0, $sp, 824
@@ -1264,9 +1268,9 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	addi.d	$a2, $a2, %pc_lo12(.L.str.49)
 	vld	$vr0, $a2, 0
 	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
-	ld.d	$s2, $a2, 13
+	ld.d	$s3, $a2, 13
 	vst	$vr0, $a0, 0
-	st.d	$s2, $a0, 13
+	st.d	$s3, $a0, 13
 	ld.d	$a0, $sp, 824
 	st.d	$a1, $sp, 832
 	stx.b	$zero, $a0, $a1
@@ -1453,7 +1457,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .Ltmp114:                               # EH_LABEL
 # %bb.110:                              # %.noexc381
-	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$a1, $sp, 472
 	st.d	$a0, $sp, 632
 	st.d	$a1, $sp, 648
@@ -1474,7 +1478,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .Ltmp117:                               # EH_LABEL
 # %bb.111:                              # %.noexc.i384
-	move	$s4, $s2
+	move	$s6, $s0
 	ori	$a0, $zero, 2104
 	add.d	$s1, $sp, $a0
 	addi.d	$a0, $sp, 616
@@ -1504,7 +1508,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .Ltmp122:                               # EH_LABEL
 	addi.d	$a1, $sp, 600
 	ori	$a2, $zero, 1
-	ori	$s2, $zero, 1
+	ori	$s0, $zero, 1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
@@ -1516,7 +1520,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	st.d	$a0, $sp, 568
 	ori	$a0, $zero, 125
 	st.h	$a0, $sp, 584
-	st.d	$s2, $sp, 576
+	st.d	$s0, $sp, 576
 .Ltmp125:                               # EH_LABEL
 	addi.d	$a1, $sp, 568
 	ori	$a2, $zero, 1
@@ -1560,7 +1564,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .Ltmp132:                               # EH_LABEL
 # %bb.116:                              # %_ZNSt8__detail14__to_chars_lenIjEEjT_i.exit.i400
-	move	$s3, $fp
+	move	$s3, $s5
 	addi.d	$a0, $sp, 456
 	st.d	$a0, $sp, 440
 	st.d	$zero, $sp, 448
@@ -1568,18 +1572,18 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .Ltmp134:                               # EH_LABEL
 	addi.d	$a0, $sp, 440
 	ori	$a1, $zero, 1
-	ori	$s2, $zero, 1
+	ori	$s0, $zero, 1
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7reserveEm)
 	jirl	$ra, $ra, 0
 .Ltmp135:                               # EH_LABEL
 # %bb.117:                              # %.noexc.i402
-	move	$fp, $s6
+	move	$s5, $s2
 	ld.d	$a0, $sp, 440
-	st.b	$s7, $a0, 0
+	st.b	$fp, $a0, 0
 	ld.d	$a0, $sp, 440
 	ori	$a1, $zero, 2368
 	add.d	$s1, $sp, $a1
-	st.d	$s2, $sp, 448
+	st.d	$s0, $sp, 448
 	st.b	$zero, $a0, 1
 .Ltmp137:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.44)
@@ -1592,7 +1596,6 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .Ltmp138:                               # EH_LABEL
 # %bb.118:                              # %.noexc414
-	move	$s6, $s5
 	addi.d	$a3, $sp, 488
 	st.d	$a3, $sp, 472
 	ld.d	$a1, $a0, 0
@@ -1601,26 +1604,28 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 # %bb.119:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i411
 	ld.d	$a2, $a0, 16
 	st.d	$a2, $sp, 488
-	ld.d	$s5, $a0, 8
+	ld.d	$s0, $a0, 8
 	st.d	$a1, $sp, 472
 	b	.LBB2_121
 .LBB2_120:
-	ld.d	$s5, $a0, 8
-	addi.d	$a2, $s5, 1
+	ld.d	$s0, $a0, 8
+	addi.d	$a2, $s0, 1
+	move	$fp, $s7
 	move	$s7, $a0
 	move	$a0, $a3
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	move	$a0, $s7
+	move	$s7, $fp
 .LBB2_121:
-	st.d	$s5, $sp, 480
+	st.d	$s0, $sp, 480
 	st.d	$s2, $a0, 0
 	st.d	$zero, $a0, 8
 	ld.d	$a1, $sp, 480
 	srli.d	$a1, $a1, 1
 	st.b	$zero, $a0, 16
-	beq	$a1, $s0, .LBB2_270
+	beq	$a1, $s7, .LBB2_270
 # %bb.122:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6appendEPKc.exit.i416
 .Ltmp140:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.45)
@@ -1631,28 +1636,28 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .Ltmp141:                               # EH_LABEL
 # %bb.123:                              # %.noexc421
-	addi.d	$a3, $sp, 520
-	st.d	$a3, $sp, 504
+	addi.d	$a1, $sp, 520
+	st.d	$a1, $sp, 504
 	ld.d	$a1, $a0, 0
 	addi.d	$s2, $a0, 16
 	beq	$a1, $s2, .LBB2_125
 # %bb.124:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i417
 	ld.d	$a2, $a0, 16
 	st.d	$a2, $sp, 520
-	ld.d	$s5, $a0, 8
+	ld.d	$s0, $a0, 8
 	st.d	$a1, $sp, 504
 	b	.LBB2_126
 .LBB2_125:
-	ld.d	$s5, $a0, 8
-	addi.d	$a2, $s5, 1
-	move	$s0, $a0
-	move	$a0, $a3
+	ld.d	$s0, $a0, 8
+	addi.d	$a2, $s0, 1
+	move	$s7, $a0
+	addi.d	$a0, $sp, 520
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $s7
 .LBB2_126:
-	st.d	$s5, $sp, 512
+	st.d	$s0, $sp, 512
 	st.d	$s2, $a0, 0
 	st.d	$zero, $a0, 8
 	st.b	$zero, $a0, 16
@@ -1684,10 +1689,13 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	ori	$a1, $zero, 3376
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	xvld	$xr0, $s6, %pc_lo12(.L.str.46)
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	vld	$vr0, $a2, 16
 	st.d	$a0, $sp, 408
 	st.d	$a1, $sp, 424
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 408
 	st.d	$a1, $sp, 416
 	stx.b	$zero, $a0, $a1
@@ -1723,7 +1731,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	st.d	$a0, $sp, 376
 	st.d	$a1, $sp, 392
 	vst	$vr0, $a0, 0
-	st.d	$fp, $a0, 13
+	st.d	$s5, $a0, 13
 	ld.d	$a0, $sp, 376
 	st.d	$a1, $sp, 384
 	stx.b	$zero, $a0, $a1
@@ -1755,14 +1763,12 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	ori	$a1, $zero, 3376
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
-	vld	$vr0, $a2, 0
+	vld	$vr0, $s4, 0
 	st.d	$a0, $sp, 344
 	st.d	$a1, $sp, 360
 	vst	$vr0, $a0, 0
 	st.b	$s3, $a0, 24
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
-	st.d	$a2, $a0, 16
+	st.d	$s6, $a0, 16
 	ld.d	$a0, $sp, 344
 	st.d	$a1, $sp, 352
 	stx.b	$zero, $a0, $a1
@@ -1773,6 +1779,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp161:                               # EH_LABEL
+	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 # %bb.133:                              # %.noexc.i436
 	ori	$a0, $zero, 2720
 	add.d	$s1, $sp, $a0
@@ -1799,7 +1806,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	st.d	$a0, $sp, 312
 	st.d	$a1, $sp, 328
 	vst	$vr0, $a0, 0
-	st.d	$s4, $a0, 13
+	st.d	$fp, $a0, 13
 	ld.d	$a0, $sp, 312
 	st.d	$a1, $sp, 320
 	stx.b	$zero, $a0, $a1
@@ -1832,8 +1839,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 # %bb.136:                              # %.noexc.i444
 	ori	$a0, $zero, 2896
 	add.d	$s1, $sp, $a0
-	addi.d	$s4, $sp, 264
-	st.d	$s4, $sp, 248
+	addi.d	$fp, $sp, 264
+	st.d	$fp, $sp, 248
 	ori	$a0, $zero, 25
 	ori	$a1, $zero, 3376
 	add.d	$a1, $sp, $a1
@@ -1891,11 +1898,14 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	ori	$a1, $zero, 3376
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	pcalau12i	$a2, %pc_hi20(.L.str.60)
-	xvld	$xr0, $a2, %pc_lo12(.L.str.60)
 	st.d	$a0, $sp, 216
 	st.d	$a1, $sp, 232
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.L.str.60)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.60)
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 216
 	st.d	$a1, $sp, 224
 	stx.b	$zero, $a0, $a1
@@ -1909,8 +1919,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 # %bb.140:                              # %._crit_edge.i.i451
 	ori	$a0, $zero, 3072
 	add.d	$s1, $sp, $a0
-	addi.d	$s6, $sp, 200
-	st.d	$s6, $sp, 184
+	addi.d	$s7, $sp, 200
+	st.d	$s7, $sp, 184
 	pcalau12i	$a0, %pc_hi20(.L.str.61)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.61)
 	ld.d	$a1, $a0, 0
@@ -1923,7 +1933,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .Ltmp184:                               # EH_LABEL
 	addi.d	$a1, $sp, 184
 	ori	$a2, $zero, 1
-	ori	$fp, $zero, 1
+	ori	$s2, $zero, 1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
@@ -1932,11 +1942,11 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	addi.d	$a0, $sp, 1048
 	addi.d	$a0, $a0, 2047
 	addi.d	$s1, $a0, 65
-	addi.d	$s7, $sp, 168
-	st.d	$s7, $sp, 152
+	addi.d	$s0, $sp, 168
+	st.d	$s0, $sp, 152
 	ori	$a0, $zero, 125
 	st.h	$a0, $sp, 168
-	st.d	$fp, $sp, 160
+	st.d	$s2, $sp, 160
 .Ltmp187:                               # EH_LABEL
 	addi.d	$a1, $sp, 152
 	ori	$a2, $zero, 1
@@ -1949,29 +1959,29 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	ori	$a0, $zero, 2
 	addi.d	$a1, $sp, 1048
 	ori	$a2, $zero, 25
-	addi.d	$fp, $sp, 1048
+	addi.d	$s2, $sp, 1048
 	pcaddu18i	$ra, %call36(_Z8AddCases10TestCaseIDSt16initializer_listI8TestCaseE)
 	jirl	$ra, $ra, 0
 .Ltmp191:                               # EH_LABEL
 # %bb.143:
-	ori	$s2, $zero, 2200
+	ori	$s6, $zero, 2200
 	ori	$s8, $zero, 1
-	ori	$s0, $zero, 1
-	lu32i.d	$s0, 1
+	ori	$s4, $zero, 1
+	lu32i.d	$s4, 1
 	b	.LBB2_145
 	.p2align	4, , 16
 .LBB2_144:                              # %_ZN8TestCaseD2Ev.exit469
                                         #   in Loop: Header=BB2_145 Depth=1
-	addi.d	$s2, $s2, -88
-	beqz	$s2, .LBB2_156
+	addi.d	$s6, $s6, -88
+	beqz	$s6, .LBB2_156
 .LBB2_145:                              # =>This Inner Loop Header: Depth=1
-	add.d	$s3, $fp, $s2
+	add.d	$s3, $s2, $s6
 	ld.d	$s1, $s3, -8
 	beqz	$s1, .LBB2_150
 # %bb.146:                              #   in Loop: Header=BB2_145 Depth=1
 	ld.d	$a0, $s1, 8
 	dbar	20
-	bne	$a0, $s0, .LBB2_148
+	bne	$a0, $s4, .LBB2_148
 # %bb.147:                              #   in Loop: Header=BB2_145 Depth=1
 	ld.d	$a0, $s1, 0
 	st.d	$zero, $s1, 8
@@ -2037,7 +2047,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	b	.LBB2_152
 .LBB2_156:
 	ld.d	$a0, $sp, 152
-	beq	$a0, $s7, .LBB2_158
+	beq	$a0, $s0, .LBB2_158
 # %bb.157:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i470
 	ld.d	$a1, $sp, 168
 	addi.d	$a1, $a1, 1
@@ -2045,8 +2055,13 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_158:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit472
 	ld.d	$a0, $sp, 184
-	addi.d	$s8, $sp, 520
-	beq	$a0, $s6, .LBB2_160
+	addi.d	$s0, $sp, 1032
+	addi.d	$s1, $sp, 968
+	addi.d	$s3, $sp, 1064
+	addi.d	$s4, $sp, 1192
+	addi.d	$s6, $sp, 1280
+	addi.d	$s8, $sp, 1240
+	beq	$a0, $s7, .LBB2_160
 # %bb.159:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i473
 	ld.d	$a1, $sp, 200
 	addi.d	$a1, $a1, 1
@@ -2054,7 +2069,6 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_160:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit475
 	ld.d	$a0, $sp, 216
-	addi.d	$s7, $sp, 1280
 	beq	$a0, $s5, .LBB2_162
 # %bb.161:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i476
 	ld.d	$a1, $sp, 232
@@ -2063,11 +2077,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_162:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit478
 	ld.d	$a0, $sp, 248
-	addi.d	$s0, $sp, 1032
-	addi.d	$s1, $sp, 968
-	addi.d	$s5, $sp, 1064
-	addi.d	$s6, $sp, 1192
-	beq	$a0, $s4, .LBB2_164
+	addi.d	$s7, $sp, 520
+	beq	$a0, $fp, .LBB2_164
 # %bb.163:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i479
 	ld.d	$a1, $sp, 264
 	addi.d	$a1, $a1, 1
@@ -2078,7 +2089,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	ori	$a1, $zero, 3360
 	add.d	$fp, $sp, $a1
 	addi.d	$s2, $sp, 1000
-	addi.d	$s3, $sp, 936
+	addi.d	$s5, $sp, 488
 	addi.d	$a1, $sp, 296
 	beq	$a0, $a1, .LBB2_166
 # %bb.165:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i482
@@ -2088,7 +2099,6 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_166:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit484
 	ld.d	$a0, $sp, 312
-	addi.d	$s4, $sp, 488
 	addi.d	$a1, $sp, 328
 	beq	$a0, $a1, .LBB2_168
 # %bb.167:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i485
@@ -2125,7 +2135,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_174:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit496
 	ld.d	$a0, $sp, 504
-	beq	$a0, $s8, .LBB2_176
+	beq	$a0, $s7, .LBB2_176
 # %bb.175:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i497
 	ld.d	$a1, $sp, 520
 	addi.d	$a1, $a1, 1
@@ -2133,7 +2143,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_176:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit499
 	ld.d	$a0, $sp, 472
-	beq	$a0, $s4, .LBB2_178
+	beq	$a0, $s5, .LBB2_178
 # %bb.177:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i500
 	ld.d	$a1, $sp, 488
 	addi.d	$a1, $a1, 1
@@ -2258,7 +2268,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_204:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit541
 	ld.d	$a0, $sp, 920
-	beq	$a0, $s3, .LBB2_206
+	addi.d	$a1, $sp, 936
+	beq	$a0, $a1, .LBB2_206
 # %bb.205:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i542
 	ld.d	$a1, $sp, 936
 	addi.d	$a1, $a1, 1
@@ -2323,9 +2334,11 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	st.d	$a1, $sp, 136
 	pcalau12i	$a2, %pc_hi20(.L.str.62)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.62)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a2, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a2, $a0, 32
 	st.d	$a1, $sp, 128
 	stx.b	$zero, $a0, $a1
@@ -2381,9 +2394,11 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	st.d	$a1, $sp, 72
 	pcalau12i	$a2, %pc_hi20(.L.str.64)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.64)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.h	$a2, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.h	$a2, $a0, 32
 	st.d	$a1, $sp, 64
 	stx.b	$zero, $a0, $a1
@@ -2422,7 +2437,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	ld.d	$a0, $sp, 1264
-	bne	$a0, $s7, .LBB2_226
+	bne	$a0, $s6, .LBB2_226
 	b	.LBB2_227
 .LBB2_223:
 	pcalau12i	$a1, %got_pc_hi20(__libc_single_threaded)
@@ -2437,7 +2452,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	beq	$a0, $a1, .LBB2_261
 .LBB2_225:                              # %_ZNSt12__shared_ptrIN9benchmark5RegexELN9__gnu_cxx12_Lock_policyE2EED2Ev.exit.i573
 	ld.d	$a0, $sp, 1264
-	beq	$a0, $s7, .LBB2_227
+	beq	$a0, $s6, .LBB2_227
 .LBB2_226:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i574
 	ld.d	$a1, $sp, 1280
 	addi.d	$a1, $a1, 1
@@ -2445,8 +2460,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_227:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit.i575
 	ld.d	$a0, $sp, 1224
-	addi.d	$a1, $sp, 1240
-	beq	$a0, $a1, .LBB2_229
+	beq	$a0, $s8, .LBB2_229
 # %bb.228:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1.i576
 	ld.d	$a1, $sp, 1240
 	addi.d	$a1, $a1, 1
@@ -2454,6 +2468,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_229:                              # %_ZN8TestCaseD2Ev.exit579
 	ld.d	$fp, $sp, 1216
+	addi.d	$s5, $sp, 1152
+	addi.d	$s6, $sp, 1104
 	beqz	$fp, .LBB2_234
 # %bb.230:
 	ld.d	$a0, $fp, 8
@@ -2472,7 +2488,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	ld.d	$a0, $sp, 1176
-	bne	$a0, $s6, .LBB2_235
+	bne	$a0, $s4, .LBB2_235
 	b	.LBB2_236
 .LBB2_232:
 	pcalau12i	$a1, %got_pc_hi20(__libc_single_threaded)
@@ -2487,7 +2503,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	beq	$a0, $a1, .LBB2_263
 .LBB2_234:                              # %_ZNSt12__shared_ptrIN9benchmark5RegexELN9__gnu_cxx12_Lock_policyE2EED2Ev.exit.i573.1
 	ld.d	$a0, $sp, 1176
-	beq	$a0, $s6, .LBB2_236
+	beq	$a0, $s4, .LBB2_236
 .LBB2_235:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i574.1
 	ld.d	$a1, $sp, 1192
 	addi.d	$a1, $a1, 1
@@ -2495,8 +2511,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_236:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit.i575.1
 	ld.d	$a0, $sp, 1136
-	addi.d	$a1, $sp, 1152
-	beq	$a0, $a1, .LBB2_238
+	beq	$a0, $s5, .LBB2_238
 # %bb.237:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1.i576.1
 	ld.d	$a1, $sp, 1152
 	addi.d	$a1, $a1, 1
@@ -2504,7 +2519,6 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_238:                              # %_ZN8TestCaseD2Ev.exit579.1
 	ld.d	$fp, $sp, 1128
-	addi.d	$s3, $sp, 1104
 	beqz	$fp, .LBB2_243
 # %bb.239:
 	ld.d	$a0, $fp, 8
@@ -2523,7 +2537,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	ld.d	$a0, $sp, 1088
-	bne	$a0, $s3, .LBB2_244
+	bne	$a0, $s6, .LBB2_244
 	b	.LBB2_245
 .LBB2_241:
 	pcalau12i	$a1, %got_pc_hi20(__libc_single_threaded)
@@ -2538,7 +2552,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	beq	$a0, $a1, .LBB2_265
 .LBB2_243:                              # %_ZNSt12__shared_ptrIN9benchmark5RegexELN9__gnu_cxx12_Lock_policyE2EED2Ev.exit.i573.2
 	ld.d	$a0, $sp, 1088
-	beq	$a0, $s3, .LBB2_245
+	beq	$a0, $s6, .LBB2_245
 .LBB2_244:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i574.2
 	ld.d	$a1, $sp, 1104
 	addi.d	$a1, $a1, 1
@@ -2546,7 +2560,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_245:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit.i575.2
 	ld.d	$a0, $sp, 1048
-	beq	$a0, $s5, .LBB2_247
+	beq	$a0, $s3, .LBB2_247
 # %bb.246:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1.i576.2
 	ld.d	$a1, $sp, 1064
 	addi.d	$a1, $a1, 1
@@ -2647,7 +2661,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	pcaddu18i	$ra, %call36(_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 1264
-	bne	$a0, $s7, .LBB2_226
+	bne	$a0, $s6, .LBB2_226
 	b	.LBB2_227
 .LBB2_262:
 	addi.d	$a1, $fp, 8
@@ -2661,7 +2675,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	pcaddu18i	$ra, %call36(_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 1176
-	bne	$a0, $s6, .LBB2_235
+	bne	$a0, $s4, .LBB2_235
 	b	.LBB2_236
 .LBB2_264:
 	addi.d	$a1, $fp, 8
@@ -2675,7 +2689,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	pcaddu18i	$ra, %call36(_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 1088
-	bne	$a0, $s3, .LBB2_244
+	bne	$a0, $s6, .LBB2_244
 	b	.LBB2_245
 .LBB2_266:                              # %.invoke.i.i
 .Ltmp217:                               # EH_LABEL
@@ -2703,7 +2717,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 # %bb.271:                              # %.noexc420
 .LBB2_272:                              # %.loopexit748.loopexit
 .Ltmp210:                               # EH_LABEL
-	move	$s8, $a0
+	move	$s4, $a0
 	addi.d	$a0, $sp, 1224
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
@@ -2717,7 +2731,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	b	.LBB2_274
 .LBB2_273:
 .Ltmp207:                               # EH_LABEL
-	move	$s8, $a0
+	move	$s4, $a0
 	move	$s3, $zero
 .LBB2_274:                              # %.loopexit748
 	ld.d	$a0, $sp, 56
@@ -2762,7 +2776,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_282:
 .Ltmp201:                               # EH_LABEL
 .LBB2_283:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit690
-	move	$s8, $a0
+	move	$s4, $a0
 	move	$s3, $zero
 	ld.d	$a0, $sp, 88
 	beq	$a0, $s1, .LBB2_276
@@ -2776,7 +2790,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	b	.LBB2_278
 .LBB2_285:
 .Ltmp198:                               # EH_LABEL
-	move	$s8, $a0
+	move	$s4, $a0
 	move	$s3, $zero
 	ld.d	$a0, $sp, 120
 	bne	$a0, $s0, .LBB2_277
@@ -2787,8 +2801,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_287:                              # %.loopexit749.loopexit
 .Ltmp192:                               # EH_LABEL
-	move	$s8, $a0
-	addi.d	$a0, $fp, 2047
+	move	$s4, $a0
+	addi.d	$a0, $s2, 2047
 	addi.d	$a0, $a0, 65
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
@@ -2876,24 +2890,24 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	addi.d	$a0, $sp, 1048
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	ori	$fp, $zero, 1
+	ori	$s2, $zero, 1
 	b	.LBB2_289
 .LBB2_288:
 .Ltmp189:                               # EH_LABEL
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 .LBB2_289:                              # %.loopexit749
 	ld.d	$a0, $sp, 152
-	bne	$a0, $s7, .LBB2_315
+	bne	$a0, $s0, .LBB2_315
 # %bb.290:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit603
 	ld.d	$a0, $sp, 184
-	bne	$a0, $s6, .LBB2_317
+	bne	$a0, $s7, .LBB2_317
 .LBB2_291:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit606
 	ld.d	$a0, $sp, 216
 	bne	$a0, $s5, .LBB2_319
 .LBB2_292:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit609
 	ld.d	$a0, $sp, 248
-	bne	$a0, $s4, .LBB2_323
+	bne	$a0, $fp, .LBB2_323
 .LBB2_293:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit612
 	ld.d	$a0, $sp, 280
 	addi.d	$a1, $sp, 296
@@ -2989,14 +3003,14 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 184
-	beq	$a0, $s6, .LBB2_291
+	beq	$a0, $s7, .LBB2_291
 	b	.LBB2_317
 .LBB2_316:
 .Ltmp186:                               # EH_LABEL
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 184
-	beq	$a0, $s6, .LBB2_291
+	beq	$a0, $s7, .LBB2_291
 .LBB2_317:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i604
 	ld.d	$a1, $sp, 200
 	addi.d	$a1, $a1, 1
@@ -3007,8 +3021,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	b	.LBB2_319
 .LBB2_318:
 .Ltmp183:                               # EH_LABEL
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 216
 	beq	$a0, $s5, .LBB2_292
 .LBB2_319:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i607
@@ -3017,7 +3031,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 248
-	beq	$a0, $s4, .LBB2_293
+	beq	$a0, $fp, .LBB2_293
 	b	.LBB2_323
 .LBB2_320:
 .Ltmp180:                               # EH_LABEL
@@ -3025,10 +3039,10 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_321:
 .Ltmp177:                               # EH_LABEL
 .LBB2_322:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit609
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 248
-	beq	$a0, $s4, .LBB2_293
+	beq	$a0, $fp, .LBB2_293
 .LBB2_323:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i610
 	ld.d	$a1, $sp, 264
 	addi.d	$a1, $a1, 1
@@ -3044,8 +3058,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_325:
 .Ltmp171:                               # EH_LABEL
 .LBB2_326:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit612
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 280
 	addi.d	$a1, $sp, 296
 	beq	$a0, $a1, .LBB2_294
@@ -3060,8 +3074,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	b	.LBB2_329
 .LBB2_328:
 .Ltmp168:                               # EH_LABEL
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 312
 	addi.d	$a1, $sp, 328
 	beq	$a0, $a1, .LBB2_295
@@ -3080,8 +3094,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_331:
 .Ltmp162:                               # EH_LABEL
 .LBB2_332:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit618
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 344
 	addi.d	$a1, $sp, 360
 	beq	$a0, $a1, .LBB2_296
@@ -3100,8 +3114,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_335:
 .Ltmp156:                               # EH_LABEL
 .LBB2_336:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit621
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 376
 	addi.d	$a1, $sp, 392
 	beq	$a0, $a1, .LBB2_297
@@ -3120,8 +3134,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_339:
 .Ltmp150:                               # EH_LABEL
 .LBB2_340:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit624
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 408
 	addi.d	$a1, $sp, 424
 	beq	$a0, $a1, .LBB2_298
@@ -3140,8 +3154,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_343:
 .Ltmp144:                               # EH_LABEL
 .LBB2_344:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit627
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 504
 	addi.d	$a1, $sp, 520
 	beq	$a0, $a1, .LBB2_299
@@ -3299,10 +3313,10 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB2_366:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit687
-	addi.d	$s0, $sp, 1048
-	xor	$a0, $s0, $s1
+	addi.d	$fp, $sp, 1048
+	xor	$a0, $fp, $s1
 	sltui	$a0, $a0, 1
-	or	$a0, $fp, $a0
+	or	$a0, $s2, $a0
 	bnez	$a0, .LBB2_368
 	.p2align	4, , 16
 .LBB2_367:                              # %.preheader744
@@ -3311,9 +3325,9 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	bne	$s1, $s0, .LBB2_367
+	bne	$s1, $fp, .LBB2_367
 .LBB2_368:
-	move	$a0, $s8
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB2_369:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i679
@@ -3337,8 +3351,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	b	.LBB2_366
 .LBB2_371:
 .Ltmp139:                               # EH_LABEL
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 440
 	addi.d	$a1, $sp, 456
 	beq	$a0, $a1, .LBB2_301
@@ -3349,8 +3363,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_373:
 .Ltmp133:                               # EH_LABEL
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 536
 	addi.d	$a1, $sp, 552
 	beq	$a0, $a1, .LBB2_302
@@ -3361,16 +3375,16 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_375:
 .Ltmp127:                               # EH_LABEL
 .LBB2_376:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit639
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 568
 	addi.d	$a1, $sp, 584
 	beq	$a0, $a1, .LBB2_303
 	b	.LBB2_349
 .LBB2_377:
 .Ltmp124:                               # EH_LABEL
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 600
 	addi.d	$a1, $sp, 616
 	beq	$a0, $a1, .LBB2_304
@@ -3381,8 +3395,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_379:
 .Ltmp118:                               # EH_LABEL
 .LBB2_380:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit645
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 632
 	addi.d	$a1, $sp, 648
 	beq	$a0, $a1, .LBB2_305
@@ -3393,8 +3407,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_382:
 .Ltmp112:                               # EH_LABEL
 .LBB2_383:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit648
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 664
 	addi.d	$a1, $sp, 680
 	beq	$a0, $a1, .LBB2_306
@@ -3405,8 +3419,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_385:
 .Ltmp106:                               # EH_LABEL
 .LBB2_386:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit651
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 696
 	addi.d	$a1, $sp, 712
 	beq	$a0, $a1, .LBB2_307
@@ -3417,8 +3431,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_388:
 .Ltmp100:                               # EH_LABEL
 .LBB2_389:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit654
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 728
 	addi.d	$a1, $sp, 744
 	beq	$a0, $a1, .LBB2_308
@@ -3429,8 +3443,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_391:
 .Ltmp94:                                # EH_LABEL
 .LBB2_392:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit657
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 760
 	addi.d	$a1, $sp, 776
 	beq	$a0, $a1, .LBB2_309
@@ -3441,16 +3455,16 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_394:
 .Ltmp88:                                # EH_LABEL
 .LBB2_395:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit660
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 792
 	addi.d	$a1, $sp, 808
 	beq	$a0, $a1, .LBB2_310
 	b	.LBB2_356
 .LBB2_396:
 .Ltmp85:                                # EH_LABEL
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
 	beq	$a0, $a1, .LBB2_311
@@ -3461,8 +3475,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_398:
 .Ltmp79:                                # EH_LABEL
 .LBB2_399:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit666
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 856
 	addi.d	$a1, $sp, 872
 	beq	$a0, $a1, .LBB2_312
@@ -3473,8 +3487,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_401:
 .Ltmp73:                                # EH_LABEL
 .LBB2_402:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit669
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 888
 	addi.d	$a1, $sp, 904
 	beq	$a0, $a1, .LBB2_313
@@ -3485,8 +3499,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_404:
 .Ltmp67:                                # EH_LABEL
 .LBB2_405:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit672
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 920
 	addi.d	$a1, $sp, 936
 	beq	$a0, $a1, .LBB2_314
@@ -3497,16 +3511,16 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 .LBB2_407:
 .Ltmp61:                                # EH_LABEL
 .LBB2_408:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit675
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 984
 	addi.d	$a1, $sp, 1000
 	bne	$a0, $a1, .LBB2_361
 	b	.LBB2_362
 .LBB2_409:
 .Ltmp56:                                # EH_LABEL
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 952
 	addi.d	$a1, $sp, 968
 	beq	$a0, $a1, .LBB2_364
@@ -3517,8 +3531,8 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_411:
 .Ltmp50:                                # EH_LABEL
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1016
 	addi.d	$a1, $sp, 1032
 	bne	$a0, $a1, .LBB2_365
@@ -3529,7 +3543,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_413:                              # %.loopexit752.loopexit
 .Ltmp44:                                # EH_LABEL
-	move	$s8, $a0
+	move	$s4, $a0
 	addi.d	$a0, $sp, 1224
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
@@ -3543,7 +3557,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	b	.LBB2_415
 .LBB2_414:
 .Ltmp41:                                # EH_LABEL
-	move	$s8, $a0
+	move	$s4, $a0
 	move	$s0, $zero
 .LBB2_415:                              # %.loopexit752
 	ori	$a0, $zero, 3248
@@ -3560,14 +3574,14 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	b	.LBB2_418
 .LBB2_417:
 .Ltmp38:                                # EH_LABEL
-	move	$s8, $a0
+	move	$s4, $a0
 	move	$s0, $zero
 .LBB2_418:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit594
 	move	$s3, $s1
 	b	.LBB2_420
 .LBB2_419:
 .Ltmp35:                                # EH_LABEL
-	move	$s8, $a0
+	move	$s4, $a0
 	move	$s0, $zero
 .LBB2_420:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit594
 	ori	$a0, $zero, 3280
@@ -3584,7 +3598,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	b	.LBB2_423
 .LBB2_422:
 .Ltmp32:                                # EH_LABEL
-	move	$s8, $a0
+	move	$s4, $a0
 	move	$s0, $zero
 .LBB2_423:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit597
 	ori	$a0, $zero, 3312
@@ -3619,7 +3633,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	jirl	$ra, $ra, 0
 .LBB2_428:                              # %.loopexit753.loopexit
 .Ltmp26:                                # EH_LABEL
-	move	$s8, $a0
+	move	$s4, $a0
 	addi.d	$a0, $sp, 1368
 	pcaddu18i	$ra, %call36(_ZNSt4pairINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_ED2Ev)
 	jirl	$ra, $ra, 0
@@ -3642,20 +3656,20 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	b	.LBB2_432
 .LBB2_429:
 .Ltmp213:                               # EH_LABEL
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 472
 	addi.d	$a1, $sp, 488
 	beq	$a0, $a1, .LBB2_300
 	b	.LBB2_346
 .LBB2_430:
 .Ltmp216:                               # EH_LABEL
-	move	$s8, $a0
-	move	$fp, $zero
+	move	$s4, $a0
+	move	$s2, $zero
 	b	.LBB2_362
 .LBB2_431:
 .Ltmp23:                                # EH_LABEL
-	move	$s8, $a0
+	move	$s4, $a0
 	move	$fp, $zero
 .LBB2_432:                              # %.loopexit753
 	ori	$a0, $zero, 3344
@@ -3666,7 +3680,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	b	.LBB2_436
 .LBB2_433:
 .Ltmp12:                                # EH_LABEL
-	move	$s8, $a0
+	move	$s4, $a0
 	move	$a0, $zero
 	b	.LBB2_436
 .LBB2_434:
@@ -3674,7 +3688,7 @@ _ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_trait
 	ori	$a1, $zero, 3344
 	add.d	$a1, $sp, $a1
 	ld.d	$a2, $a1, 0
-	move	$s8, $a0
+	move	$s4, $a0
 	move	$fp, $zero
 	move	$a0, $zero
 	beq	$a2, $s5, .LBB2_436
@@ -5901,11 +5915,12 @@ _ZN12_GLOBAL__N_13$_38__invokeERN9benchmark5StateE: # @"_ZN12_GLOBAL__N_13$_38__
 	.size	_ZN12_GLOBAL__N_13$_38__invokeERN9benchmark5StateE, .Lfunc_end19-_ZN12_GLOBAL__N_13$_38__invokeERN9benchmark5StateE
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _GLOBAL__sub_I_complexity_test.cc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _GLOBAL__sub_I_complexity_test.cc
 .LCPI20_0:
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
+.LCPI20_1:
 	.dword	3                               # 0x3
 	.dword	4                               # 0x4
 	.section	.text.startup,"ax",@progbits
@@ -6139,11 +6154,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	st.d	$a0, $sp, 88
 	st.d	$a1, $sp, 104
 	pcalau12i	$a2, %pc_hi20(_ZN12_GLOBAL__N_117big_o_1_test_nameE)
-	addi.d	$s7, $a2, %pc_lo12(_ZN12_GLOBAL__N_117big_o_1_test_nameE)
-	xvld	$xr0, $s7, 0
-	ld.b	$s6, $s7, 32
-	xvst	$xr0, $a0, 0
-	st.b	$s6, $a0, 32
+	addi.d	$s6, $a2, %pc_lo12(_ZN12_GLOBAL__N_117big_o_1_test_nameE)
+	vld	$vr0, $s6, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s6, 0
+	ld.b	$s7, $s6, 32
+	vst	$vr0, $a0, 0
+	st.b	$s7, $a0, 32
 	st.d	$a1, $sp, 96
 	stx.b	$zero, $a0, $a1
 	addi.d	$s4, $sp, 72
@@ -6159,11 +6176,14 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp276:                               # EH_LABEL
 # %bb.26:                               # %.noexc15.i
 	ld.d	$a1, $sp, 24
-	pcalau12i	$s8, %pc_hi20(_ZN12_GLOBAL__N_117rms_o_1_test_nameE)
-	xvld	$xr0, $s8, %pc_lo12(_ZN12_GLOBAL__N_117rms_o_1_test_nameE)
 	st.d	$a0, $sp, 56
 	st.d	$a1, $sp, 72
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(_ZN12_GLOBAL__N_117rms_o_1_test_nameE)
+	addi.d	$s8, $a2, %pc_lo12(_ZN12_GLOBAL__N_117rms_o_1_test_nameE)
+	vld	$vr0, $s8, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s8, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 56
 	st.d	$a1, $sp, 64
 	stx.b	$zero, $a0, $a1
@@ -6256,11 +6276,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp282:                               # EH_LABEL
 # %bb.36:                               # %.noexc11.i21
 	ld.d	$a1, $sp, 56
-	xvld	$xr0, $s7, 0
+	vld	$vr0, $s6, 16
 	st.d	$a0, $sp, 88
 	st.d	$a1, $sp, 104
-	xvst	$xr0, $a0, 0
-	st.b	$s6, $a0, 32
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s6, 0
+	vst	$vr0, $a0, 0
+	st.b	$s7, $a0, 32
 	st.d	$a1, $sp, 96
 	stx.b	$zero, $a0, $a1
 	st.d	$s4, $sp, 56
@@ -6275,10 +6297,12 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp285:                               # EH_LABEL
 # %bb.37:                               # %.noexc15.i26
 	ld.d	$a1, $sp, 24
-	xvld	$xr0, $s8, %pc_lo12(_ZN12_GLOBAL__N_117rms_o_1_test_nameE)
+	vld	$vr0, $s8, 16
 	st.d	$a0, $sp, 56
 	st.d	$a1, $sp, 72
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s8, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 56
 	st.d	$a1, $sp, 64
 	stx.b	$zero, $a0, $a1
@@ -6365,11 +6389,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp291:                               # EH_LABEL
 # %bb.47:                               # %.noexc11.i48
 	ld.d	$a1, $sp, 56
-	xvld	$xr0, $s7, 0
+	vld	$vr0, $s6, 16
 	st.d	$a0, $sp, 88
 	st.d	$a1, $sp, 104
-	xvst	$xr0, $a0, 0
-	st.b	$s6, $a0, 32
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s6, 0
+	vst	$vr0, $a0, 0
+	st.b	$s7, $a0, 32
 	st.d	$a1, $sp, 96
 	stx.b	$zero, $a0, $a1
 	st.d	$s4, $sp, 56
@@ -6384,10 +6410,12 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp294:                               # EH_LABEL
 # %bb.48:                               # %.noexc15.i53
 	ld.d	$a1, $sp, 24
-	xvld	$xr0, $s8, %pc_lo12(_ZN12_GLOBAL__N_117rms_o_1_test_nameE)
+	vld	$vr0, $s8, 16
 	st.d	$a0, $sp, 56
 	st.d	$a1, $sp, 72
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s8, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $sp, 56
 	st.d	$a1, $sp, 64
 	stx.b	$zero, $a0, $a1
@@ -6414,7 +6442,6 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp297:                               # EH_LABEL
 # %bb.49:
 	ld.d	$a0, $sp, 24
-	addi.d	$s2, $sp, 136
 	beq	$a0, $s0, .LBB20_51
 # %bb.50:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i59
 	ld.d	$a1, $sp, 40
@@ -6439,7 +6466,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	jirl	$ra, $ra, 0
 .LBB20_55:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit26.i64
 	ld.d	$a0, $sp, 120
-	beq	$a0, $s2, .LBB20_57
+	addi.d	$a1, $sp, 136
+	beq	$a0, $a1, .LBB20_57
 # %bb.56:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i27.i65
 	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
@@ -6622,7 +6650,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .LBB20_84:                              # %__cxx_global_var_init.10.exit
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_127benchmark_uniq_7_benchmark_E)
 	st.d	$fp, $a0, %pc_lo12(_ZN12_GLOBAL__N_127benchmark_uniq_7_benchmark_E)
-	st.d	$s2, $sp, 120
+	addi.d	$a0, $sp, 136
+	st.d	$a0, $sp, 120
 	ori	$a0, $zero, 29
 	st.d	$a0, $sp, 88
 	addi.d	$a0, $sp, 120
@@ -6659,11 +6688,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	st.d	$a0, $sp, 88
 	st.d	$a1, $sp, 104
 	pcalau12i	$a2, %pc_hi20(_ZN12_GLOBAL__N_117big_o_n_test_nameE)
-	addi.d	$s1, $a2, %pc_lo12(_ZN12_GLOBAL__N_117big_o_n_test_nameE)
-	xvld	$xr0, $s1, 0
-	ld.h	$s8, $s1, 32
-	xvst	$xr0, $a0, 0
-	st.h	$s8, $a0, 32
+	addi.d	$s8, $a2, %pc_lo12(_ZN12_GLOBAL__N_117big_o_n_test_nameE)
+	vld	$vr0, $s8, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s8, 0
+	ld.h	$s1, $s8, 32
+	vst	$vr0, $a0, 0
+	st.h	$s1, $a0, 32
 	st.d	$a1, $sp, 96
 	stx.b	$zero, $a0, $a1
 	st.d	$s4, $sp, 56
@@ -6681,11 +6712,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	st.d	$a0, $sp, 56
 	st.d	$a1, $sp, 72
 	pcalau12i	$a2, %pc_hi20(_ZN12_GLOBAL__N_117rms_o_n_test_nameE)
-	addi.d	$s2, $a2, %pc_lo12(_ZN12_GLOBAL__N_117rms_o_n_test_nameE)
-	xvld	$xr0, $s2, 0
-	ld.b	$s5, $s2, 32
-	xvst	$xr0, $a0, 0
-	st.b	$s5, $a0, 32
+	addi.d	$s5, $a2, %pc_lo12(_ZN12_GLOBAL__N_117rms_o_n_test_nameE)
+	vld	$vr0, $s5, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s5, 0
+	ld.b	$s2, $s5, 32
+	vst	$vr0, $a0, 0
+	st.b	$s2, $a0, 32
 	st.d	$a1, $sp, 64
 	stx.b	$zero, $a0, $a1
 	st.d	$s0, $sp, 24
@@ -6769,11 +6802,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp343:                               # EH_LABEL
 # %bb.96:                               # %.noexc11.i136
 	ld.d	$a1, $sp, 56
-	xvld	$xr0, $s1, 0
+	vld	$vr0, $s8, 16
 	st.d	$a0, $sp, 88
 	st.d	$a1, $sp, 104
-	xvst	$xr0, $a0, 0
-	st.h	$s8, $a0, 32
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s8, 0
+	vst	$vr0, $a0, 0
+	st.h	$s1, $a0, 32
 	st.d	$a1, $sp, 96
 	stx.b	$zero, $a0, $a1
 	st.d	$s4, $sp, 56
@@ -6788,11 +6823,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp346:                               # EH_LABEL
 # %bb.97:                               # %.noexc15.i141
 	ld.d	$a1, $sp, 24
-	xvld	$xr0, $s2, 0
+	vld	$vr0, $s5, 16
 	st.d	$a0, $sp, 56
 	st.d	$a1, $sp, 72
-	xvst	$xr0, $a0, 0
-	st.b	$s5, $a0, 32
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s5, 0
+	vst	$vr0, $a0, 0
+	st.b	$s2, $a0, 32
 	st.d	$a1, $sp, 64
 	stx.b	$zero, $a0, $a1
 	st.d	$s0, $sp, 24
@@ -6876,11 +6913,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp352:                               # EH_LABEL
 # %bb.107:                              # %.noexc11.i163
 	ld.d	$a1, $sp, 56
-	xvld	$xr0, $s1, 0
+	vld	$vr0, $s8, 16
 	st.d	$a0, $sp, 88
 	st.d	$a1, $sp, 104
-	xvst	$xr0, $a0, 0
-	st.h	$s8, $a0, 32
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s8, 0
+	vst	$vr0, $a0, 0
+	st.h	$s1, $a0, 32
 	st.d	$a1, $sp, 96
 	stx.b	$zero, $a0, $a1
 	st.d	$s4, $sp, 56
@@ -6895,11 +6934,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp355:                               # EH_LABEL
 # %bb.108:                              # %.noexc15.i168
 	ld.d	$a1, $sp, 24
-	xvld	$xr0, $s2, 0
+	vld	$vr0, $s5, 16
 	st.d	$a0, $sp, 56
 	st.d	$a1, $sp, 72
-	xvst	$xr0, $a0, 0
-	st.b	$s5, $a0, 32
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s5, 0
+	vst	$vr0, $a0, 0
+	st.b	$s2, $a0, 32
 	st.d	$a1, $sp, 64
 	stx.b	$zero, $a0, $a1
 	st.d	$s0, $sp, 24
@@ -6916,7 +6957,6 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	addi.d	$a2, $sp, 56
 	addi.d	$a3, $sp, 24
 	ori	$a4, $zero, 5
-	addi.d	$s8, $sp, 136
 	pcaddu18i	$ra, %call36(_ZN12_GLOBAL__N_117AddComplexityTestERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_S7_S7_i)
 	jirl	$ra, $ra, 0
 .Ltmp358:                               # EH_LABEL
@@ -6946,7 +6986,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	jirl	$ra, $ra, 0
 .LBB20_115:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit26.i179
 	ld.d	$a0, $sp, 120
-	beq	$a0, $s8, .LBB20_117
+	addi.d	$a1, $sp, 136
+	beq	$a0, $a1, .LBB20_117
 # %bb.116:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i27.i180
 	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
@@ -7129,7 +7170,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .LBB20_144:                             # %__cxx_global_var_init.17.exit
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_128benchmark_uniq_10_benchmark_E)
 	st.d	$fp, $a0, %pc_lo12(_ZN12_GLOBAL__N_128benchmark_uniq_10_benchmark_E)
-	st.d	$s8, $sp, 120
+	addi.d	$a0, $sp, 136
+	st.d	$a0, $sp, 120
 	ori	$a0, $zero, 35
 	st.d	$a0, $sp, 88
 	addi.d	$a0, $sp, 120
@@ -7141,11 +7183,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	st.d	$a0, $sp, 120
 	st.d	$a1, $sp, 136
 	pcalau12i	$a2, %pc_hi20(_ZN12_GLOBAL__N_116n_lg_n_test_nameE)
-	addi.d	$s1, $a2, %pc_lo12(_ZN12_GLOBAL__N_116n_lg_n_test_nameE)
-	xvld	$xr0, $s1, 0
-	ld.w	$fp, $s1, 31
-	xvst	$xr0, $a0, 0
-	st.w	$fp, $a0, 31
+	addi.d	$fp, $a2, %pc_lo12(_ZN12_GLOBAL__N_116n_lg_n_test_nameE)
+	vld	$vr0, $fp, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $fp, 16
+	ld.w	$s6, $fp, 31
+	vst	$vr0, $a0, 16
+	st.w	$s6, $a0, 31
 	st.d	$a1, $sp, 128
 	stx.b	$zero, $a0, $a1
 	st.d	$s3, $sp, 88
@@ -7163,11 +7207,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	st.d	$a0, $sp, 88
 	st.d	$a1, $sp, 104
 	pcalau12i	$a2, %pc_hi20(_ZN12_GLOBAL__N_122big_o_n_lg_n_test_nameE)
-	addi.d	$s5, $a2, %pc_lo12(_ZN12_GLOBAL__N_122big_o_n_lg_n_test_nameE)
-	xvld	$xr0, $s5, 0
-	ld.d	$s6, $s5, 32
-	xvst	$xr0, $a0, 0
-	st.d	$s6, $a0, 32
+	addi.d	$s7, $a2, %pc_lo12(_ZN12_GLOBAL__N_122big_o_n_lg_n_test_nameE)
+	vld	$vr0, $s7, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s7, 0
+	ld.d	$s8, $s7, 32
+	vst	$vr0, $a0, 0
+	st.d	$s8, $a0, 32
 	st.d	$a1, $sp, 96
 	stx.b	$zero, $a0, $a1
 	st.d	$s4, $sp, 56
@@ -7185,17 +7231,19 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	st.d	$a0, $sp, 56
 	st.d	$a1, $sp, 72
 	pcalau12i	$a2, %pc_hi20(_ZN12_GLOBAL__N_122rms_o_n_lg_n_test_nameE)
-	addi.d	$s7, $a2, %pc_lo12(_ZN12_GLOBAL__N_122rms_o_n_lg_n_test_nameE)
-	xvld	$xr0, $s7, 0
-	ld.d	$s2, $s7, 31
-	xvst	$xr0, $a0, 0
-	st.d	$s2, $a0, 31
+	addi.d	$s1, $a2, %pc_lo12(_ZN12_GLOBAL__N_122rms_o_n_lg_n_test_nameE)
+	vld	$vr0, $s1, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s1, 0
+	ld.d	$s5, $s1, 31
+	vst	$vr0, $a0, 0
+	st.d	$s5, $a0, 31
 	st.d	$a1, $sp, 64
 	stx.b	$zero, $a0, $a1
 	st.d	$s0, $sp, 24
 	lu12i.w	$a0, 321142
-	ori	$s3, $a0, 3150
-	st.w	$s3, $sp, 40
+	ori	$s2, $a0, 3150
+	st.w	$s2, $sp, 40
 	ori	$a0, $zero, 4
 	st.d	$a0, $sp, 32
 	st.b	$zero, $sp, 44
@@ -7226,8 +7274,7 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	jirl	$ra, $ra, 0
 .LBB20_151:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit23.i238
 	ld.d	$a0, $sp, 88
-	addi.d	$a1, $sp, 104
-	beq	$a0, $a1, .LBB20_153
+	beq	$a0, $s3, .LBB20_153
 # %bb.152:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i24.i239
 	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
@@ -7235,7 +7282,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	jirl	$ra, $ra, 0
 .LBB20_153:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit26.i240
 	ld.d	$a0, $sp, 120
-	beq	$a0, $s8, .LBB20_155
+	addi.d	$a1, $sp, 136
+	beq	$a0, $a1, .LBB20_155
 # %bb.154:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i27.i241
 	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
@@ -7244,7 +7292,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .LBB20_155:                             # %__cxx_global_var_init.18.exit
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_18dummy220E)
 	st.w	$zero, $a0, %pc_lo12(_ZN12_GLOBAL__N_18dummy220E)
-	st.d	$s8, $sp, 120
+	addi.d	$a0, $sp, 136
+	st.d	$a0, $sp, 120
 	ori	$a0, $zero, 35
 	st.d	$a0, $sp, 88
 	addi.d	$a0, $sp, 120
@@ -7253,15 +7302,16 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 88
-	xvld	$xr0, $s1, 0
+	vld	$vr0, $fp, 0
 	st.d	$a0, $sp, 120
 	st.d	$a1, $sp, 136
-	xvst	$xr0, $a0, 0
-	st.w	$fp, $a0, 31
+	vst	$vr0, $a0, 0
+	vld	$vr0, $fp, 16
+	vst	$vr0, $a0, 16
+	st.w	$s6, $a0, 31
 	st.d	$a1, $sp, 128
 	stx.b	$zero, $a0, $a1
-	addi.d	$a0, $sp, 104
-	st.d	$a0, $sp, 88
+	st.d	$s3, $sp, 88
 	ori	$a0, $zero, 40
 	st.d	$a0, $sp, 56
 .Ltmp403:                               # EH_LABEL
@@ -7273,11 +7323,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp404:                               # EH_LABEL
 # %bb.156:                              # %.noexc11.i251
 	ld.d	$a1, $sp, 56
-	xvld	$xr0, $s5, 0
+	vld	$vr0, $s7, 16
 	st.d	$a0, $sp, 88
 	st.d	$a1, $sp, 104
-	xvst	$xr0, $a0, 0
-	st.d	$s6, $a0, 32
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s7, 0
+	vst	$vr0, $a0, 0
+	st.d	$s8, $a0, 32
 	st.d	$a1, $sp, 96
 	stx.b	$zero, $a0, $a1
 	st.d	$s4, $sp, 56
@@ -7292,15 +7344,17 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp407:                               # EH_LABEL
 # %bb.157:                              # %.noexc15.i256
 	ld.d	$a1, $sp, 24
-	xvld	$xr0, $s7, 0
+	vld	$vr0, $s1, 16
 	st.d	$a0, $sp, 56
 	st.d	$a1, $sp, 72
-	xvst	$xr0, $a0, 0
-	st.d	$s2, $a0, 31
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s1, 0
+	vst	$vr0, $a0, 0
+	st.d	$s5, $a0, 31
 	st.d	$a1, $sp, 64
 	stx.b	$zero, $a0, $a1
 	st.d	$s0, $sp, 24
-	st.w	$s3, $sp, 40
+	st.w	$s2, $sp, 40
 	ori	$a0, $zero, 4
 	st.d	$a0, $sp, 32
 	st.b	$zero, $sp, 44
@@ -7315,7 +7369,6 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp410:                               # EH_LABEL
 # %bb.158:
 	ld.d	$a0, $sp, 24
-	addi.d	$s3, $sp, 104
 	beq	$a0, $s0, .LBB20_160
 # %bb.159:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i262
 	ld.d	$a1, $sp, 40
@@ -7340,7 +7393,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	jirl	$ra, $ra, 0
 .LBB20_164:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit26.i267
 	ld.d	$a0, $sp, 120
-	beq	$a0, $s8, .LBB20_166
+	addi.d	$a1, $sp, 136
+	beq	$a0, $a1, .LBB20_166
 # %bb.165:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i27.i268
 	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
@@ -7349,7 +7403,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .LBB20_166:                             # %__cxx_global_var_init.19.exit
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_18dummy225E)
 	st.w	$zero, $a0, %pc_lo12(_ZN12_GLOBAL__N_18dummy225E)
-	st.d	$s8, $sp, 120
+	addi.d	$a0, $sp, 136
+	st.d	$a0, $sp, 120
 	ori	$a0, $zero, 35
 	st.d	$a0, $sp, 88
 	addi.d	$a0, $sp, 120
@@ -7358,11 +7413,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 88
-	xvld	$xr0, $s1, 0
+	vld	$vr0, $fp, 0
 	st.d	$a0, $sp, 120
 	st.d	$a1, $sp, 136
-	xvst	$xr0, $a0, 0
-	st.w	$fp, $a0, 31
+	vst	$vr0, $a0, 0
+	vld	$vr0, $fp, 16
+	vst	$vr0, $a0, 16
+	st.w	$s6, $a0, 31
 	st.d	$a1, $sp, 128
 	stx.b	$zero, $a0, $a1
 	st.d	$s3, $sp, 88
@@ -7377,11 +7434,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp413:                               # EH_LABEL
 # %bb.167:                              # %.noexc11.i278
 	ld.d	$a1, $sp, 56
-	xvld	$xr0, $s5, 0
+	vld	$vr0, $s7, 16
 	st.d	$a0, $sp, 88
 	st.d	$a1, $sp, 104
-	xvst	$xr0, $a0, 0
-	st.d	$s6, $a0, 32
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s7, 0
+	vst	$vr0, $a0, 0
+	st.d	$s8, $a0, 32
 	st.d	$a1, $sp, 96
 	stx.b	$zero, $a0, $a1
 	st.d	$s4, $sp, 56
@@ -7396,11 +7455,13 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp416:                               # EH_LABEL
 # %bb.168:                              # %.noexc15.i283
 	ld.d	$a1, $sp, 24
-	xvld	$xr0, $s7, 0
+	vld	$vr0, $s1, 16
 	st.d	$a0, $sp, 56
 	st.d	$a1, $sp, 72
-	xvst	$xr0, $a0, 0
-	st.d	$s2, $a0, 31
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s1, 0
+	vst	$vr0, $a0, 0
+	st.d	$s5, $a0, 31
 	st.d	$a1, $sp, 64
 	stx.b	$zero, $a0, $a1
 	st.d	$s0, $sp, 24
@@ -7446,7 +7507,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	jirl	$ra, $ra, 0
 .LBB20_175:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit26.i294
 	ld.d	$a0, $sp, 120
-	beq	$a0, $s8, .LBB20_177
+	addi.d	$a1, $sp, 136
+	beq	$a0, $a1, .LBB20_177
 # %bb.176:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i27.i295
 	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
@@ -7459,7 +7521,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	st.d	$s8, $sp, 120
+	addi.d	$a0, $sp, 136
+	st.d	$a0, $sp, 120
 	ori	$a0, $zero, 37
 	st.d	$a0, $sp, 88
 .Ltmp421:                               # EH_LABEL
@@ -7475,9 +7538,11 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	st.d	$a1, $sp, 136
 	pcalau12i	$a2, %pc_hi20(.L.str.22)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.22)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a2, $a2, 29
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a2, $a0, 29
 	st.d	$a1, $sp, 128
 	stx.b	$zero, $a0, $a1
@@ -7496,7 +7561,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	addi.d	$a1, $a0, %pc_lo12(_ZN12_GLOBAL__N_13$_38__invokeERN9benchmark5StateE)
 	ld.d	$a0, $sp, 120
 	st.d	$a1, $s0, 304
-	beq	$a0, $s8, .LBB20_181
+	addi.d	$a1, $sp, 136
+	beq	$a0, $a1, .LBB20_181
 # %bb.180:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i
 	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
@@ -7528,12 +7594,15 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	jirl	$ra, $ra, 0
 .Ltmp435:                               # EH_LABEL
 # %bb.185:
-	pcalau12i	$a1, %pc_hi20(.LCPI20_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI20_0)
 	st.d	$a0, $sp, 120
+	pcalau12i	$a1, %pc_hi20(.LCPI20_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI20_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI20_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI20_1)
 	addi.d	$a1, $a0, 32
 	st.d	$a1, $sp, 136
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a1, $sp, 128
 .Ltmp437:                               # EH_LABEL
 	addi.d	$a1, $sp, 120
@@ -7576,8 +7645,10 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	st.d	$a1, $fp, 16
 	pcalau12i	$a2, %pc_hi20(.L.str.24)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.24)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.b	$a2, $a2, 48
 	vst	$vr0, $a0, 32
@@ -7593,7 +7664,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	jirl	$ra, $ra, 0
 	ld.d	$s0, $fp, 0
 	ld.d	$s1, $fp, 8
-	st.d	$s8, $sp, 120
+	addi.d	$a0, $sp, 136
+	st.d	$a0, $sp, 120
 	st.d	$zero, $sp, 128
 	st.b	$zero, $sp, 136
 	addi.d	$a1, $s1, 5
@@ -7706,7 +7778,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	jirl	$ra, $ra, 0
 .LBB20_205:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit16.i
 	ld.d	$a0, $sp, 120
-	beq	$a0, $s8, .LBB20_207
+	addi.d	$a1, $sp, 136
+	beq	$a0, $a1, .LBB20_207
 # %bb.206:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i17.i
 	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
@@ -7778,7 +7851,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp426:                               # EH_LABEL
 	ld.d	$a2, $sp, 120
 	move	$fp, $a0
-	beq	$a2, $s8, .LBB20_221
+	addi.d	$a0, $sp, 136
+	beq	$a2, $a0, .LBB20_221
 # %bb.219:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i7.i.i
 	ld.d	$a0, $sp, 136
 	addi.d	$a1, $a0, 1
@@ -8020,7 +8094,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp460:                               # EH_LABEL
 	ld.d	$a2, $sp, 120
 	move	$fp, $a0
-	beq	$a2, $s8, .LBB20_282
+	addi.d	$a0, $sp, 136
+	beq	$a2, $a0, .LBB20_282
 # %bb.273:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i.i
 	ld.d	$a0, $sp, 136
 	addi.d	$a1, $a0, 1

@@ -21,9 +21,11 @@ r_gethostbyname:                        # @r_gethostbyname
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_5
 # %bb.3:
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 16
+	vst	$vr0, $fp, 16
+	vld	$vr0, $a0, 0
 	move	$a0, $zero
-	xvst	$xr0, $fp, 0
+	vst	$vr0, $fp, 0
 .LBB0_4:
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload

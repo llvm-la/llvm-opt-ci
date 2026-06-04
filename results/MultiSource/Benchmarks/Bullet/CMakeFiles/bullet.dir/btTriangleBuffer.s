@@ -22,12 +22,14 @@ _ZN16btTriangleBuffer15processTriangleEP9btVector3ii: # @_ZN16btTriangleBuffer15
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	move	$fp, $a0
-	xvld	$xr0, $a1, 0
-	vld	$vr1, $a1, 32
+	vld	$vr0, $a1, 0
+	vld	$vr1, $a1, 16
+	vld	$vr2, $a1, 32
 	ld.w	$a1, $a0, 12
 	ld.w	$a0, $a0, 16
-	xvst	$xr0, $sp, 16
-	vst	$vr1, $sp, 48
+	vst	$vr0, $sp, 16
+	vst	$vr1, $sp, 32
+	vst	$vr2, $sp, 48
 	bne	$a1, $a0, .LBB0_11
 # %bb.1:
 	sltui	$a0, $a1, 1
@@ -63,15 +65,17 @@ _ZN16btTriangleBuffer15processTriangleEP9btVector3ii: # @_ZN16btTriangleBuffer15
 	.p2align	4, , 16
 .LBB0_6:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $fp, 24
-	xvldx	$xr0, $a4, $a0
+	vldx	$vr0, $a4, $a0
 	add.d	$a4, $a4, $a0
-	xvstx	$xr0, $s0, $a0
+	vstx	$vr0, $s0, $a0
 	ld.d	$a5, $a4, 48
 	add.d	$a6, $s0, $a0
 	st.d	$a5, $a6, 48
 	vld	$vr0, $a4, 32
-	addi.d	$a0, $a0, 56
 	vst	$vr0, $a6, 32
+	vld	$vr0, $a4, 16
+	addi.d	$a0, $a0, 56
+	vst	$vr0, $a6, 16
 	bne	$a1, $a0, .LBB0_6
 .LBB0_7:                                # %_ZNK20btAlignedObjectArrayI10btTriangleE4copyEiiPS0_.exit.i.i
 	ld.d	$a0, $fp, 24
@@ -96,14 +100,16 @@ _ZN16btTriangleBuffer15processTriangleEP9btVector3ii: # @_ZN16btTriangleBuffer15
 .LBB0_11:                               # %_ZN20btAlignedObjectArrayI10btTriangleE9push_backERKS0_.exit
 	ld.d	$a0, $fp, 24
 	ori	$a4, $zero, 56
-	xvld	$xr0, $sp, 16
-	vld	$vr1, $sp, 48
+	vld	$vr0, $sp, 16
 	mul.d	$a1, $a1, $a4
-	add.d	$a4, $a0, $a1
-	xvstx	$xr0, $a0, $a1
-	vst	$vr1, $a4, 32
-	st.w	$a2, $a4, 48
-	st.w	$a3, $a4, 52
+	vld	$vr1, $sp, 48
+	vld	$vr2, $sp, 32
+	vstx	$vr0, $a0, $a1
+	add.d	$a0, $a0, $a1
+	vst	$vr1, $a0, 32
+	vst	$vr2, $a0, 16
+	st.w	$a2, $a0, 48
+	st.w	$a3, $a0, 52
 	ld.w	$a0, $fp, 12
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 12

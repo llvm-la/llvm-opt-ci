@@ -397,7 +397,8 @@ _ZNK21btUniformScalingShape7getAabbERK11btTransformR9btVector3S4_: # @_ZNK21btUn
 	vextrins.w	$vr1, $vr4, 16
 	vshuf4i.w	$vr1, $vr1, 16
 	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr0, $xr0
+	vrepli.b	$vr3, 0
+	vilvl.w	$vr0, $vr3, $vr0
 	vor.v	$vr0, $vr1, $vr0
 	vstelm.d	$vr0, $s0, 0, 0
 	movfr2gr.s	$a0, $fa2
@@ -474,7 +475,8 @@ _ZNK21btUniformScalingShape11getAabbSlowERK11btTransformR9btVector3S4_: # @_ZNK2
 	vextrins.w	$vr1, $vr4, 16
 	vshuf4i.w	$vr1, $vr1, 16
 	vslli.d	$vr1, $vr1, 32
-	vext2xv.du.wu	$xr0, $xr0
+	vrepli.b	$vr3, 0
+	vilvl.w	$vr0, $vr3, $vr0
 	vor.v	$vr0, $vr1, $vr0
 	vstelm.d	$vr0, $s0, 0, 0
 	movfr2gr.s	$a0, $fa2

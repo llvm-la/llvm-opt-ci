@@ -12,92 +12,88 @@ ba_compute_psd:                         # @ba_compute_psd
 	ldx.h	$a1, $a1, $a3
 	pcalau12i	$a2, %pc_hi20(psd)
 	addi.d	$a2, $a2, %pc_lo12(psd)
-	ldx.hu	$a4, $a2, $a3
-	pcalau12i	$a3, %pc_hi20(bndpsd)
-	addi.d	$a3, $a3, %pc_lo12(bndpsd)
+	ldx.hu	$a3, $a2, $a3
+	pcalau12i	$a4, %pc_hi20(bndpsd)
+	addi.d	$a4, $a4, %pc_lo12(bndpsd)
 	slli.d	$a6, $a1, 1
 	ori	$a5, $zero, 2
-	stx.h	$a4, $a3, $a6
+	stx.h	$a3, $a4, $a6
 	blt	$a5, $a0, .LBB0_15
 # %bb.1:                                # %iter.check
-	alsl.d	$a1, $a1, $a3, 1
+	alsl.d	$a1, $a1, $a4, 1
 	sub.d	$a5, $a5, $a0
-	ori	$a3, $zero, 7
+	ori	$a4, $zero, 3
 	addi.d	$a7, $a0, 1
-	bgeu	$a5, $a3, .LBB0_3
+	bgeu	$a5, $a4, .LBB0_3
 # %bb.2:
 	move	$a5, $a0
 	move	$a6, $a7
 	b	.LBB0_12
 .LBB0_3:                                # %vector.main.loop.iter.check
-	bstrpick.d	$a3, $a5, 31, 0
-	ori	$a6, $zero, 31
-	addi.d	$a3, $a3, 1
+	bstrpick.d	$a4, $a5, 31, 0
+	ori	$a6, $zero, 15
+	addi.d	$a4, $a4, 1
 	bgeu	$a5, $a6, .LBB0_5
 # %bb.4:
 	move	$t0, $zero
 	b	.LBB0_9
 .LBB0_5:                                # %vector.ph
-	andi	$t1, $a3, 24
-	bstrpick.d	$a5, $a3, 32, 5
-	slli.d	$t0, $a5, 5
-	add.d	$a5, $t0, $a0
-	add.d	$a6, $a7, $t0
-	xvrepli.b	$xr0, 0
-	xvreplgr2vr.h	$xr2, $a4
-	xvpermi.q	$xr2, $xr0, 18
-	xvori.b	$xr1, $xr0, 0
-	xvextrins.h	$xr1, $xr2, 0
-	alsl.d	$a4, $a0, $a2, 1
-	addi.d	$a4, $a4, 34
+	vrepli.b	$vr0, 0
+	andi	$t1, $a4, 12
+	bstrpick.d	$a6, $a4, 32, 4
+	slli.d	$t0, $a6, 4
+	alsl.d	$a5, $a6, $a0, 4
+	alsl.w	$a6, $a6, $a7, 4
+	vori.b	$vr1, $vr0, 0
+	vinsgr2vr.h	$vr1, $a3, 0
+	alsl.d	$a3, $a0, $a2, 1
+	addi.d	$a3, $a3, 18
 	move	$t2, $t0
 	.p2align	4, , 16
 .LBB0_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a4, -32
-	xvld	$xr3, $a4, 0
-	xvadd.h	$xr1, $xr2, $xr1
-	xvadd.h	$xr0, $xr3, $xr0
-	addi.d	$t2, $t2, -32
-	addi.d	$a4, $a4, 64
+	vld	$vr2, $a3, -16
+	vld	$vr3, $a3, 0
+	vadd.h	$vr1, $vr2, $vr1
+	vadd.h	$vr0, $vr3, $vr0
+	addi.d	$t2, $t2, -16
+	addi.d	$a3, $a3, 32
 	bnez	$t2, .LBB0_6
 # %bb.7:                                # %middle.block
-	xvadd.h	$xr0, $xr0, $xr1
-	xvhaddw.w.h	$xr0, $xr0, $xr0
-	xvhaddw.d.w	$xr0, $xr0, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a4, $xr0, 0
-	beq	$a3, $t0, .LBB0_14
-# %bb.8:                                # %vec.epilog.iter.check
-	beqz	$t1, .LBB0_12
-.LBB0_9:                                # %vec.epilog.ph
-	bstrpick.d	$a6, $a3, 32, 3
-	slli.d	$t1, $a6, 3
-	alsl.d	$a5, $a6, $a0, 3
-	alsl.w	$a6, $a6, $a7, 3
-	vrepli.b	$vr0, 0
-	vinsgr2vr.h	$vr0, $a4, 0
-	slli.d	$a4, $t0, 1
-	alsl.d	$a0, $a0, $a4, 1
-	add.d	$a0, $a0, $a2
-	addi.d	$a0, $a0, 2
-	sub.d	$a4, $t0, $t1
-	.p2align	4, , 16
-.LBB0_10:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a0, 0
-	vadd.h	$vr0, $vr1, $vr0
-	addi.d	$a4, $a4, 8
-	addi.d	$a0, $a0, 16
-	bnez	$a4, .LBB0_10
-# %bb.11:                               # %vec.epilog.middle.block
+	vadd.h	$vr0, $vr0, $vr1
 	vhaddw.w.h	$vr0, $vr0, $vr0
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a4, $vr0, 0
-	beq	$a3, $t1, .LBB0_14
+	vpickve2gr.d	$a3, $vr0, 0
+	beq	$a4, $t0, .LBB0_14
+# %bb.8:                                # %vec.epilog.iter.check
+	beqz	$t1, .LBB0_12
+.LBB0_9:                                # %vec.epilog.ph
+	bstrpick.d	$a6, $a4, 32, 2
+	slli.d	$t1, $a6, 2
+	alsl.d	$a5, $a6, $a0, 2
+	alsl.w	$a6, $a6, $a7, 2
+	vrepli.b	$vr0, 0
+	vinsgr2vr.h	$vr0, $a3, 0
+	slli.d	$a3, $t0, 1
+	alsl.d	$a0, $a0, $a3, 1
+	add.d	$a0, $a0, $a2
+	addi.d	$a0, $a0, 2
+	sub.d	$a3, $t0, $t1
+	.p2align	4, , 16
+.LBB0_10:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a7, $a0, 0
+	vinsgr2vr.d	$vr1, $a7, 0
+	vadd.h	$vr0, $vr1, $vr0
+	addi.d	$a3, $a3, 4
+	addi.d	$a0, $a0, 8
+	bnez	$a3, .LBB0_10
+# %bb.11:                               # %vec.epilog.middle.block
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
+	beq	$a4, $t1, .LBB0_14
 .LBB0_12:                               # %vec.epilog.scalar.ph.preheader
 	alsl.d	$a0, $a5, $a2, 1
 	addi.d	$a0, $a0, 2
@@ -105,15 +101,15 @@ ba_compute_psd:                         # @ba_compute_psd
 	.p2align	4, , 16
 .LBB0_13:                               # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.h	$a3, $a0, 0
-	add.d	$a4, $a3, $a4
+	ld.h	$a4, $a0, 0
+	add.d	$a3, $a4, $a3
 	bstrpick.d	$a2, $a2, 31, 0
 	addi.d	$a2, $a2, 1
-	slli.d	$a3, $a2, 31
+	slli.d	$a4, $a2, 31
 	addi.d	$a0, $a0, 2
-	bgez	$a3, .LBB0_13
+	bgez	$a4, .LBB0_13
 .LBB0_14:                               # %._crit_edge
-	st.h	$a4, $a1, 0
+	st.h	$a3, $a1, 0
 .LBB0_15:
 	ret
 .Lfunc_end0:

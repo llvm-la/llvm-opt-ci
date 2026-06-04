@@ -35,67 +35,41 @@ generate_n_poles:                       # @generate_n_poles
 	bnez	$s1, .LBB0_1
 # %bb.2:                                # %.preheader
 	bgtz	$a1, .LBB0_4
-	b	.LBB0_17
+	b	.LBB0_11
 .LBB0_3:                                # %..preheader_crit_edge
 	ld.w	$a1, $s0, 4
-	blez	$a1, .LBB0_17
-.LBB0_4:                                # %iter.check
-	ori	$a0, $zero, 4
+	blez	$a1, .LBB0_11
+.LBB0_4:                                # %.lr.ph13.preheader
+	ori	$a0, $zero, 8
 	bgeu	$a1, $a0, .LBB0_6
 # %bb.5:
 	move	$a0, $zero
-	b	.LBB0_15
-.LBB0_6:                                # %vector.main.loop.iter.check
-	ori	$a0, $zero, 16
-	bgeu	$a1, $a0, .LBB0_8
-# %bb.7:
-	move	$a0, $zero
-	b	.LBB0_12
-.LBB0_8:                                # %vector.ph
-	andi	$a2, $a1, 12
-	bstrpick.d	$a0, $a1, 30, 4
-	slli.d	$a0, $a0, 4
-	addi.d	$a3, $fp, 32
-	move	$a4, $a0
-	.p2align	4, , 16
-.LBB0_9:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvmaxi.wu	$xr0, $xr0, 1
-	xvmaxi.wu	$xr1, $xr1, 1
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a4, $a4, -16
-	addi.d	$a3, $a3, 64
-	bnez	$a4, .LBB0_9
-# %bb.10:                               # %middle.block
-	beq	$a0, $a1, .LBB0_17
-# %bb.11:                               # %vec.epilog.iter.check
-	beqz	$a2, .LBB0_15
-.LBB0_12:                               # %vec.epilog.ph
+	b	.LBB0_9
+.LBB0_6:                                # %vector.ph
+	bstrpick.d	$a0, $a1, 30, 3
+	slli.d	$a0, $a0, 3
+	addi.d	$a2, $fp, 16
 	move	$a3, $a0
-	bstrpick.d	$a0, $a1, 30, 2
-	slli.d	$a0, $a0, 2
-	sub.d	$a2, $a3, $a0
-	alsl.d	$a3, $a3, $fp, 2
 	.p2align	4, , 16
-.LBB0_13:                               # %vec.epilog.vector.body
+.LBB0_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a3, 0
+	vld	$vr0, $a2, -16
+	vld	$vr1, $a2, 0
 	vmaxi.wu	$vr0, $vr0, 1
-	vst	$vr0, $a3, 0
-	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 16
-	bnez	$a2, .LBB0_13
-# %bb.14:                               # %vec.epilog.middle.block
-	beq	$a0, $a1, .LBB0_17
-.LBB0_15:                               # %.lr.ph13.preheader
+	vmaxi.wu	$vr1, $vr1, 1
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$a3, $a3, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB0_7
+# %bb.8:                                # %middle.block
+	beq	$a0, $a1, .LBB0_11
+.LBB0_9:                                # %.lr.ph13.preheader17
 	alsl.d	$a2, $a0, $fp, 2
 	sub.d	$a0, $a1, $a0
 	ori	$a1, $zero, 1
 	.p2align	4, , 16
-.LBB0_16:                               # %.lr.ph13
+.LBB0_10:                               # %.lr.ph13
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a2, 0
 	sltu	$a4, $a1, $a3
@@ -105,8 +79,8 @@ generate_n_poles:                       # @generate_n_poles
 	st.w	$a3, $a2, 0
 	addi.d	$a0, $a0, -1
 	addi.d	$a2, $a2, 4
-	bnez	$a0, .LBB0_16
-.LBB0_17:                               # %._crit_edge
+	bnez	$a0, .LBB0_10
+.LBB0_11:                               # %._crit_edge
 	move	$a0, $fp
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -152,67 +126,41 @@ generate_n_windows:                     # @generate_n_windows
 	bnez	$s1, .LBB1_1
 # %bb.2:                                # %.preheader
 	bgtz	$a1, .LBB1_4
-	b	.LBB1_17
+	b	.LBB1_11
 .LBB1_3:                                # %..preheader_crit_edge
 	ld.w	$a1, $s0, 4
-	blez	$a1, .LBB1_17
-.LBB1_4:                                # %iter.check
-	ori	$a0, $zero, 4
+	blez	$a1, .LBB1_11
+.LBB1_4:                                # %.lr.ph13.preheader
+	ori	$a0, $zero, 8
 	bgeu	$a1, $a0, .LBB1_6
 # %bb.5:
 	move	$a0, $zero
-	b	.LBB1_15
-.LBB1_6:                                # %vector.main.loop.iter.check
-	ori	$a0, $zero, 16
-	bgeu	$a1, $a0, .LBB1_8
-# %bb.7:
-	move	$a0, $zero
-	b	.LBB1_12
-.LBB1_8:                                # %vector.ph
-	andi	$a2, $a1, 12
-	bstrpick.d	$a0, $a1, 30, 4
-	slli.d	$a0, $a0, 4
-	addi.d	$a3, $fp, 32
-	move	$a4, $a0
-	.p2align	4, , 16
-.LBB1_9:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvmaxi.wu	$xr0, $xr0, 1
-	xvmaxi.wu	$xr1, $xr1, 1
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a4, $a4, -16
-	addi.d	$a3, $a3, 64
-	bnez	$a4, .LBB1_9
-# %bb.10:                               # %middle.block
-	beq	$a0, $a1, .LBB1_17
-# %bb.11:                               # %vec.epilog.iter.check
-	beqz	$a2, .LBB1_15
-.LBB1_12:                               # %vec.epilog.ph
+	b	.LBB1_9
+.LBB1_6:                                # %vector.ph
+	bstrpick.d	$a0, $a1, 30, 3
+	slli.d	$a0, $a0, 3
+	addi.d	$a2, $fp, 16
 	move	$a3, $a0
-	bstrpick.d	$a0, $a1, 30, 2
-	slli.d	$a0, $a0, 2
-	sub.d	$a2, $a3, $a0
-	alsl.d	$a3, $a3, $fp, 2
 	.p2align	4, , 16
-.LBB1_13:                               # %vec.epilog.vector.body
+.LBB1_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a3, 0
+	vld	$vr0, $a2, -16
+	vld	$vr1, $a2, 0
 	vmaxi.wu	$vr0, $vr0, 1
-	vst	$vr0, $a3, 0
-	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 16
-	bnez	$a2, .LBB1_13
-# %bb.14:                               # %vec.epilog.middle.block
-	beq	$a0, $a1, .LBB1_17
-.LBB1_15:                               # %.lr.ph13.preheader
+	vmaxi.wu	$vr1, $vr1, 1
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$a3, $a3, -8
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB1_7
+# %bb.8:                                # %middle.block
+	beq	$a0, $a1, .LBB1_11
+.LBB1_9:                                # %.lr.ph13.preheader17
 	alsl.d	$a2, $a0, $fp, 2
 	sub.d	$a0, $a1, $a0
 	ori	$a1, $zero, 1
 	.p2align	4, , 16
-.LBB1_16:                               # %.lr.ph13
+.LBB1_10:                               # %.lr.ph13
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a2, 0
 	sltu	$a4, $a1, $a3
@@ -222,8 +170,8 @@ generate_n_windows:                     # @generate_n_windows
 	st.w	$a3, $a2, 0
 	addi.d	$a0, $a0, -1
 	addi.d	$a2, $a2, 4
-	bnez	$a0, .LBB1_16
-.LBB1_17:                               # %._crit_edge
+	bnez	$a0, .LBB1_10
+.LBB1_11:                               # %._crit_edge
 	move	$a0, $fp
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -566,13 +514,11 @@ generate_window_params:                 # @generate_window_params
 .Lfunc_end3:
 	.size	generate_window_params, .Lfunc_end3-generate_window_params
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function generate_pseudo_K0RS
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function generate_pseudo_K0RS
 .LCPI4_0:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	generate_pseudo_K0RS
 	.p2align	2
@@ -605,35 +551,35 @@ generate_pseudo_K0RS:                   # @generate_pseudo_K0RS
 	blez	$a1, .LBB4_15
 # %bb.1:                                # %.lr.ph
 	ld.w	$a2, $fp, 24
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	bgeu	$a1, $a3, .LBB4_3
 # %bb.2:
 	move	$a3, $zero
 	b	.LBB4_6
 .LBB4_3:                                # %vector.ph
-	bstrpick.d	$a3, $a1, 30, 3
-	slli.d	$a3, $a3, 3
+	bstrpick.d	$a3, $a1, 30, 2
+	slli.d	$a3, $a3, 2
 	pcalau12i	$a4, %pc_hi20(.LCPI4_0)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI4_0)
-	xvreplgr2vr.d	$xr1, $a2
-	addi.d	$a4, $s0, 32
-	xvreplgr2vr.d	$xr2, $a0
+	vld	$vr0, $a4, %pc_lo12(.LCPI4_0)
+	vreplgr2vr.d	$vr1, $a2
+	addi.d	$a4, $s0, 16
+	vreplgr2vr.d	$vr2, $a0
 	move	$a5, $a3
 	.p2align	4, , 16
 .LBB4_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr3, $xr0, 4
-	xvmul.d	$xr4, $xr0, $xr1
-	xvmul.d	$xr3, $xr3, $xr1
-	xvslli.d	$xr4, $xr4, 3
-	xvadd.d	$xr4, $xr2, $xr4
-	xvslli.d	$xr3, $xr3, 3
-	xvadd.d	$xr3, $xr2, $xr3
-	xvst	$xr4, $a4, -32
-	xvst	$xr3, $a4, 0
-	xvaddi.du	$xr0, $xr0, 8
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 64
+	vaddi.du	$vr3, $vr0, 2
+	vmul.d	$vr4, $vr0, $vr1
+	vmul.d	$vr3, $vr3, $vr1
+	vslli.d	$vr4, $vr4, 3
+	vadd.d	$vr4, $vr2, $vr4
+	vslli.d	$vr3, $vr3, 3
+	vadd.d	$vr3, $vr2, $vr3
+	vst	$vr4, $a4, -16
+	vst	$vr3, $a4, 0
+	vaddi.du	$vr0, $vr0, 4
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB4_4
 # %bb.5:                                # %middle.block
 	beq	$a3, $a1, .LBB4_8

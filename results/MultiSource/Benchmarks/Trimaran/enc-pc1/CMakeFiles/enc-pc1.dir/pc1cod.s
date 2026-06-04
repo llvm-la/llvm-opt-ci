@@ -446,12 +446,16 @@ main:                                   # @main
 	st.h	$zero, $a0, %pc_lo12(si)
 	pcalau12i	$a0, %pc_hi20(x1a2)
 	st.h	$zero, $a0, %pc_lo12(x1a2)
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	xvld	$xr0, $a0, %pc_lo12(.L.str)
 	pcalau12i	$a0, %pc_hi20(i)
 	st.h	$zero, $a0, %pc_lo12(i)
-	pcalau12i	$s1, %pc_hi20(cle)
-	xvst	$xr0, $s1, %pc_lo12(cle)
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	vld	$vr0, $a0, 0
+	pcalau12i	$a1, %pc_hi20(cle)
+	addi.d	$s1, $a1, %pc_lo12(cle)
+	vld	$vr1, $a0, 16
+	vst	$vr0, $s1, 0
+	vst	$vr1, $s1, 16
 	pcalau12i	$a0, %pc_hi20(.Lstr)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
 	pcaddu18i	$ra, %call36(puts)
@@ -527,19 +531,22 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(assemble)
 	jirl	$ra, $ra, 0
 	ld.hu	$a0, $s5, %pc_lo12(inter)
-	srli.d	$a1, $a0, 8
-	st.h	$a1, $s6, %pc_lo12(cfc)
-	ld.h	$a2, $s4, %pc_lo12(c)
-	xvld	$xr0, $s1, %pc_lo12(cle)
+	ld.h	$a1, $s4, %pc_lo12(c)
+	vld	$vr0, $s1, 0
+	srli.d	$a2, $a0, 8
+	vreplgr2vr.b	$vr1, $a1
+	vxor.v	$vr0, $vr0, $vr1
+	vst	$vr0, $s1, 0
+	vld	$vr0, $s1, 16
+	st.h	$a2, $s6, %pc_lo12(cfc)
 	andi	$a0, $a0, 255
 	st.h	$a0, $s7, %pc_lo12(cfd)
-	xvreplgr2vr.b	$xr1, $a2
-	xvxor.v	$xr0, $xr0, $xr1
-	xvst	$xr0, $s1, %pc_lo12(cle)
+	vxor.v	$vr0, $vr0, $vr1
+	vst	$vr0, $s1, 16
 	ori	$a3, $zero, 32
 	st.h	$a3, $s8, %pc_lo12(compte)
-	xor	$a0, $a0, $a2
 	xor	$a0, $a0, $a1
+	xor	$a0, $a0, $a2
 	ext.w.h	$a1, $a0
 	st.h	$a0, $s4, %pc_lo12(c)
 	srai.d	$a1, $a1, 4
@@ -578,7 +585,7 @@ main:                                   # @main
 	.type	cle,@object                     # @cle
 	.bss
 	.globl	cle
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 cle:
 	.space	32
 	.size	cle, 32

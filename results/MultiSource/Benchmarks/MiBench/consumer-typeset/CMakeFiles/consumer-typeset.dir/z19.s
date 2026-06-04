@@ -528,19 +528,19 @@ SearchGalley:                           # @SearchGalley
 	.type	AttachGalley,@function
 AttachGalley:                           # @AttachGalley
 # %bb.0:
-	addi.d	$sp, $sp, -512
-	st.d	$ra, $sp, 504                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 496                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 488                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 480                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 472                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 464                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 456                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 448                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 440                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 432                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 424                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 416                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -480
+	st.d	$ra, $sp, 472                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 464                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 456                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 448                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 440                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 432                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 424                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 416                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 408                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 400                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 392                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 384                  # 8-byte Folded Spill
 	move	$s4, $a0
 	ld.d	$s0, $a0, 24
 	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
@@ -583,8 +583,8 @@ AttachGalley:                           # @AttachGalley
 	jirl	$ra, $ra, 0
 .LBB2_5:                                # %.loopexit1074
 	ld.hu	$a0, $s4, 42
-	st.d	$zero, $sp, 392
-	st.d	$zero, $sp, 408
+	st.d	$zero, $sp, 360
+	st.d	$zero, $sp, 376
 	bstrpick.d	$a1, $a0, 8, 8
 	sltui	$a2, $a1, 1
 	addi.d	$a3, $s4, 48
@@ -595,10 +595,10 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a3, $sp, 104                   # 8-byte Folded Spill
 	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	slli.d	$a2, $a2, 3
-	st.d	$a2, $sp, 232                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 200                   # 8-byte Folded Spill
 	andi	$a2, $a0, 2
 	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
-	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
 	xori	$a1, $a1, 1
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	pcalau12i	$a1, %got_pc_hi20(zz_lengths)
@@ -610,9 +610,7 @@ AttachGalley:                           # @AttachGalley
 	pcalau12i	$a1, %got_pc_hi20(no_fpos)
 	ld.d	$s1, $a1, %got_pc_lo12(no_fpos)
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 176                  # 16-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 144                  # 32-byte Folded Spill
+	vst	$vr0, $sp, 144                  # 16-byte Folded Spill
 	lu12i.w	$a1, 2047
 	ori	$s5, $a1, 4095
 	lu12i.w	$a1, 15
@@ -621,15 +619,15 @@ AttachGalley:                           # @AttachGalley
 	lu12i.w	$a1, -393217
 	ori	$a1, $a1, 4095
 	lu32i.d	$a1, 0
-	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
 	lu12i.w	$a1, 278748
 	movgr2fr.w	$fs0, $a1
                                         # implicit-def: $r5
                                         # kill: killed $r5
-	st.d	$fp, $sp, 280                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
 	b	.LBB2_7
 	.p2align	4, , 16
 .LBB2_6:                                #   in Loop: Header=BB2_7 Depth=1
@@ -735,7 +733,7 @@ AttachGalley:                           # @AttachGalley
 .LBB2_17:                               #   in Loop: Header=BB2_7 Depth=1
 	ld.d	$s4, $s3, 80
 	ld.bu	$a0, $s4, 32
-	ld.d	$fp, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
 	ori	$a1, $zero, 2
 	beq	$a0, $a1, .LBB2_19
 # %bb.18:                               #   in Loop: Header=BB2_7 Depth=1
@@ -775,7 +773,7 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a0, $a0, %got_pc_lo12(zz_hold)
 	st.d	$a4, $a0, 0
 .LBB2_22:                               #   in Loop: Header=BB2_7 Depth=1
-	st.d	$a4, $sp, 272                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 240                   # 8-byte Folded Spill
 	ori	$a0, $zero, 8
 	st.b	$a0, $a4, 32
 	st.d	$a4, $a4, 24
@@ -787,10 +785,10 @@ AttachGalley:                           # @AttachGalley
 	ori	$a1, $a5, 4095
 	and	$a1, $a0, $a1
 	st.h	$a1, $a4, 42
-	vld	$vr0, $sp, 176                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 144                  # 16-byte Folded Reload
 	vst	$vr0, $a4, 104
-	xvld	$xr1, $sp, 144                  # 32-byte Folded Reload
-	xvst	$xr1, $a4, 128
+	vst	$vr0, $a4, 128
+	vst	$vr0, $a4, 144
 	ld.h	$a1, $s4, 42
 	ori	$a2, $a5, 3839
 	and	$a0, $a0, $a2
@@ -818,27 +816,27 @@ AttachGalley:                           # @AttachGalley
 	ori	$a1, $a5, 3965
 	and	$a0, $a0, $a1
 	st.h	$a0, $a4, 42
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
-	st.d	$s4, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 256                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	st.d	$s4, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 224                   # 8-byte Folded Spill
 	bnez	$a0, .LBB2_24
 # %bb.23:                               #   in Loop: Header=BB2_7 Depth=1
 	move	$a0, $s5
 	bstrins.d	$a0, $s5, 54, 32
-	st.d	$a0, $sp, 368
-	st.w	$s5, $sp, 376
+	st.d	$a0, $sp, 336
+	st.w	$s5, $sp, 344
 	b	.LBB2_31
 	.p2align	4, , 16
 .LBB2_24:                               #   in Loop: Header=BB2_7 Depth=1
-	addi.d	$a1, $sp, 368
-	addi.d	$a3, $sp, 344
+	addi.d	$a1, $sp, 336
+	addi.d	$a3, $sp, 312
 	move	$a0, $s4
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(Constrained)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $sp, 368
-	ld.w	$a1, $sp, 372
-	ld.w	$a0, $sp, 376
+	ld.w	$a2, $sp, 336
+	ld.w	$a1, $sp, 340
+	ld.w	$a0, $sp, 344
 	bne	$a2, $s5, .LBB2_28
 # %bb.25:                               #   in Loop: Header=BB2_7 Depth=1
 	bne	$a1, $s5, .LBB2_28
@@ -858,9 +856,9 @@ AttachGalley:                           # @AttachGalley
 	move	$a4, $fp
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $sp, 368
-	ld.w	$a1, $sp, 372
-	ld.w	$a0, $sp, 376
+	ld.w	$a2, $sp, 336
+	ld.w	$a1, $sp, 340
+	ld.w	$a0, $sp, 344
 .LBB2_28:                               #   in Loop: Header=BB2_7 Depth=1
 	bltz	$a2, .LBB2_266
 # %bb.29:                               #   in Loop: Header=BB2_7 Depth=1
@@ -868,13 +866,13 @@ AttachGalley:                           # @AttachGalley
 # %bb.30:                               #   in Loop: Header=BB2_7 Depth=1
 	bltz	$a0, .LBB2_266
 .LBB2_31:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$s7, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a1, $s7, 0
-	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(CopyObject)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
 	ld.bu	$a2, $a1, 0
 	slli.d	$a3, $a2, 3
 	ldx.d	$a1, $s2, $a3
@@ -897,7 +895,7 @@ AttachGalley:                           # @AttachGalley
 	move	$a1, $a0
 	move	$a0, $fp
 .LBB2_34:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a4, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 240                   # 8-byte Folded Reload
 	st.b	$zero, $a1, 32
 	st.d	$a1, $a1, 24
 	st.d	$a1, $a1, 16
@@ -925,7 +923,7 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a2, $a3, 8
 	st.d	$a4, $a1, 0
 	ld.d	$a2, $s1, 0
-	st.d	$a5, $sp, 296                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 264                   # 8-byte Folded Spill
 	ld.d	$a1, $a5, 0
 	st.d	$a2, $a4, 8
 	st.d	$a1, $s1, 0
@@ -942,13 +940,13 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a2, $a1, 16
 	st.d	$a1, $a2, 24
 .LBB2_37:                               #   in Loop: Header=BB2_7 Depth=1
-	st.d	$a6, $sp, 200                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 168                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(DetachEnv)
 	jirl	$ra, $ra, 0
 	ld.hu	$s6, $s3, 42
-	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
 	ld.hu	$s4, $a1, 42
-	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$a2, $a1, 136
 	ld.d	$s3, $a1, 88
 	move	$fp, $a0
@@ -968,36 +966,36 @@ AttachGalley:                           # @AttachGalley
 	bstrpick.d	$a3, $s6, 2, 2
 	andi	$a4, $s4, 1
 	bstrpick.d	$a5, $s4, 6, 6
-	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
 	addi.d	$a6, $a1, 64
 	st.d	$a0, $sp, 32
-	addi.d	$a0, $sp, 392
+	addi.d	$a0, $sp, 360
 	st.d	$a0, $sp, 24
-	addi.d	$a0, $sp, 384
+	addi.d	$a0, $sp, 352
 	st.d	$a0, $sp, 16
-	addi.d	$a0, $sp, 400
+	addi.d	$a0, $sp, 368
 	st.d	$a0, $sp, 8
-	addi.d	$a7, $sp, 368
+	addi.d	$a7, $sp, 336
 	st.d	$s3, $sp, 0
-	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(SizeGalley)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 352
 	beqz	$a0, .LBB2_42
 # %bb.41:                               #   in Loop: Header=BB2_7 Depth=1
 	pcaddu18i	$ra, %call36(ExpandRecursives)
 	jirl	$ra, $ra, 0
 .LBB2_42:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 400
+	ld.d	$a0, $sp, 368
 	ld.d	$a3, $a0, 80
 	ld.wu	$a0, $a3, 40
 	lu12i.w	$a1, 393216
 	and	$a1, $a0, $a1
 	beqz	$a1, .LBB2_44
 # %bb.43:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
-	st.d	$a3, $sp, 240                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	st.d	$a3, $sp, 208                   # 8-byte Folded Spill
 	bnez	$a0, .LBB2_45
 	b	.LBB2_52
 	.p2align	4, , 16
@@ -1005,27 +1003,27 @@ AttachGalley:                           # @AttachGalley
 	lu12i.w	$a1, 131072
 	or	$a0, $a0, $a1
 	st.w	$a0, $a3, 40
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
-	st.d	$a3, $sp, 240                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	st.d	$a3, $sp, 208                   # 8-byte Folded Spill
 	beqz	$a0, .LBB2_52
 .LBB2_45:                               #   in Loop: Header=BB2_7 Depth=1
-	addi.d	$a1, $sp, 368
+	addi.d	$a1, $sp, 336
 	move	$a0, $a3
-	addi.d	$a3, $sp, 344
+	addi.d	$a3, $sp, 312
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(Constrained)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $sp, 368
-	ld.w	$a1, $sp, 372
-	ld.w	$a0, $sp, 376
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.w	$a2, $sp, 336
+	ld.w	$a1, $sp, 340
+	ld.w	$a0, $sp, 344
+	ld.d	$a3, $sp, 176                   # 8-byte Folded Reload
 	bne	$a2, $a3, .LBB2_49
 # %bb.46:                               #   in Loop: Header=BB2_7 Depth=1
 	bne	$a1, $a3, .LBB2_49
 # %bb.47:                               #   in Loop: Header=BB2_7 Depth=1
 	bne	$a0, $a3, .LBB2_49
 # %bb.48:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a4, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a2, $a0, %pc_lo12(.L.str)
@@ -1036,18 +1034,18 @@ AttachGalley:                           # @AttachGalley
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $sp, 368
-	ld.w	$a1, $sp, 372
-	ld.w	$a0, $sp, 376
+	ld.w	$a2, $sp, 336
+	ld.w	$a1, $sp, 340
+	ld.w	$a0, $sp, 344
 .LBB2_49:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
 	bltz	$a2, .LBB2_266
 # %bb.50:                               #   in Loop: Header=BB2_7 Depth=1
 	bltz	$a1, .LBB2_266
 # %bb.51:                               #   in Loop: Header=BB2_7 Depth=1
 	bltz	$a0, .LBB2_266
 .LBB2_52:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
 	ld.hu	$a0, $s4, 42
 	andi	$a0, $a0, 2
 	bnez	$a0, .LBB2_95
@@ -1056,7 +1054,7 @@ AttachGalley:                           # @AttachGalley
 	pcaddu18i	$ra, %call36(EnterErrorBlock)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 8
-	st.d	$zero, $sp, 360
+	st.d	$zero, $sp, 328
 	.p2align	4, , 16
 .LBB2_54:                               #   Parent Loop BB2_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -1067,38 +1065,38 @@ AttachGalley:                           # @AttachGalley
 	pcaddu18i	$ra, %call36(DetachEnv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	bnez	$a0, .LBB2_57
 # %bb.56:                               #   in Loop: Header=BB2_7 Depth=1
 	move	$a3, $zero
-	ld.d	$fp, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 208                   # 8-byte Folded Reload
 	b	.LBB2_58
 .LBB2_57:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a4, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 208                   # 8-byte Folded Reload
 	ld.hu	$a0, $a4, 42
 	bstrpick.d	$a3, $a0, 2, 2
-	ld.d	$fp, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
 .LBB2_58:                               #   in Loop: Header=BB2_7 Depth=1
 	ld.hu	$a0, $a2, 42
 	addi.d	$a6, $a4, 64
 	st.d	$zero, $sp, 32
-	addi.d	$a2, $sp, 408
+	addi.d	$a2, $sp, 376
 	st.d	$a2, $sp, 24
-	addi.d	$a2, $sp, 384
+	addi.d	$a2, $sp, 352
 	st.d	$a2, $sp, 16
-	addi.d	$a2, $sp, 360
+	addi.d	$a2, $sp, 328
 	st.d	$a2, $sp, 8
 	andi	$a4, $a0, 1
 	ori	$a2, $zero, 1
 	ori	$a5, $zero, 1
-	addi.d	$a7, $sp, 368
+	addi.d	$a7, $sp, 336
 	st.d	$zero, $sp, 0
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(SizeGalley)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 384
+	ld.d	$a0, $sp, 352
 	beqz	$a0, .LBB2_60
 # %bb.59:                               #   in Loop: Header=BB2_7 Depth=1
 	pcaddu18i	$ra, %call36(ExpandRecursives)
@@ -1120,7 +1118,7 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a1, $a0, 0
 	b	.LBB2_64
 .LBB2_63:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	pcaddu18i	$ra, %call36(GetMemory)
 	jirl	$ra, $ra, 0
@@ -1143,10 +1141,10 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a1, $s6, 0
 	alsl.d	$a0, $a0, $s2, 3
 	st.d	$a1, $a0, 0
-	ld.d	$s3, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 216                   # 8-byte Folded Reload
 	b	.LBB2_67
 .LBB2_66:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$s3, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a1, $s3, 0
 	pcaddu18i	$ra, %call36(GetMemory)
 	jirl	$ra, $ra, 0
@@ -1193,12 +1191,12 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a1, $a1, 16
 	st.d	$a1, $a1, 8
 	st.d	$a1, $a1, 0
-	ld.d	$a4, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 264                   # 8-byte Folded Reload
 	st.d	$a1, $a4, 0
 	st.d	$a1, $s1, 0
 	st.d	$s7, $s5, 0
 	ld.d	$a0, $s7, 0
-	ld.d	$s3, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 168                   # 8-byte Folded Reload
 	st.d	$a0, $s3, 0
 	ld.d	$a0, $a1, 0
 	st.d	$a0, $s7, 0
@@ -1237,12 +1235,12 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a1, $a2, 0
 	b	.LBB2_76
 .LBB2_75:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(GetMemory)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 264                   # 8-byte Folded Reload
 .LBB2_76:                               #   in Loop: Header=BB2_7 Depth=1
 	st.b	$zero, $a0, 32
 	st.d	$a0, $a0, 24
@@ -1291,14 +1289,14 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a1, $a2, 0
 	b	.LBB2_82
 .LBB2_81:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(GetMemory)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 264                   # 8-byte Folded Reload
 .LBB2_82:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
 	st.b	$zero, $a0, 32
 	st.d	$a0, $a0, 24
 	st.d	$a0, $a0, 16
@@ -1351,12 +1349,12 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a1, $a2, 0
 	b	.LBB2_89
 .LBB2_88:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(GetMemory)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 264                   # 8-byte Folded Reload
 .LBB2_89:                               #   in Loop: Header=BB2_7 Depth=1
 	st.b	$zero, $a0, 32
 	st.d	$a0, $a0, 24
@@ -1405,22 +1403,22 @@ AttachGalley:                           # @AttachGalley
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(LeaveErrorBlock)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
 .LBB2_95:                               #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	bnez	$a0, .LBB2_152
 .LBB2_96:                               #   in Loop: Header=BB2_7 Depth=1
 	ld.d	$s3, $s4, 8
-	ld.d	$fp, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 	bne	$s3, $s4, .LBB2_99
 	b	.LBB2_278
 	.p2align	4, , 16
 .LBB2_97:                               #   in Loop: Header=BB2_99 Depth=2
 	ld.wu	$a0, $s6, 40
 	ld.wu	$a1, $a3, 40
-	ld.d	$a2, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
 	and	$a0, $a0, $a2
 	srli.d	$a1, $a1, 29
 	bstrins.d	$a0, $a1, 30, 29
@@ -1449,7 +1447,7 @@ AttachGalley:                           # @AttachGalley
 	ori	$a1, $zero, 9
 	bne	$a0, $a1, .LBB2_104
 # %bb.102:                              #   in Loop: Header=BB2_99 Depth=2
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
 	ldx.d	$s6, $s6, $a0
 	.p2align	4, , 16
 .LBB2_103:                              #   Parent Loop BB2_7 Depth=1
@@ -1475,7 +1473,7 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	beqz	$a0, .LBB2_98
 # %bb.107:                              #   in Loop: Header=BB2_99 Depth=2
-	ld.d	$a0, $sp, 408
+	ld.d	$a0, $sp, 376
 	bnez	$a0, .LBB2_145
 # %bb.108:                              #   in Loop: Header=BB2_99 Depth=2
 	ld.bu	$a2, $fp, 17
@@ -1493,7 +1491,7 @@ AttachGalley:                           # @AttachGalley
 	ld.wu	$a0, $s6, 40
 	ld.wu	$a1, $a3, 40
 	ld.hu	$a2, $s6, 44
-	ld.d	$a3, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 184                   # 8-byte Folded Reload
 	and	$a0, $a0, $a3
 	srli.d	$a1, $a1, 29
 	bstrins.d	$a0, $a1, 30, 29
@@ -1504,7 +1502,7 @@ AttachGalley:                           # @AttachGalley
 	ld.h	$a0, $s4, 42
 	ori	$a0, $a0, 32
 	st.h	$a0, $s4, 42
-	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
 	b	.LBB2_98
 .LBB2_112:                              #   in Loop: Header=BB2_99 Depth=2
 	ld.d	$a0, $s6, 8
@@ -1545,7 +1543,7 @@ AttachGalley:                           # @AttachGalley
 .LBB2_118:                              # %.loopexit1066
                                         #   in Loop: Header=BB2_99 Depth=2
 	move	$a0, $s4
-	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(CheckComponentOrder)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 157
@@ -1553,14 +1551,14 @@ AttachGalley:                           # @AttachGalley
 # %bb.119:                              # %.loopexit1066
                                         #   in Loop: Header=BB2_99 Depth=2
 	ori	$a1, $zero, 155
-	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB2_266
 # %bb.120:                              # %.loopexit1066
                                         #   in Loop: Header=BB2_99 Depth=2
-	ld.d	$fp, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 	ori	$a1, $zero, 156
 	bne	$a0, $a1, .LBB2_98
 	b	.LBB2_320
@@ -1577,19 +1575,19 @@ AttachGalley:                           # @AttachGalley
 	ori	$a1, $zero, 3
 	move	$a3, $zero
 	move	$a4, $fp
-	ld.d	$fp, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 	b	.LBB2_98
 .LBB2_122:                              #   in Loop: Header=BB2_99 Depth=2
 	pcalau12i	$a0, %got_pc_hi20(xx_hold)
 	ld.d	$a0, $a0, %got_pc_lo12(xx_hold)
 	ld.d	$a1, $s4, 24
 	st.d	$s4, $a0, 0
-	ld.d	$fp, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 	bne	$a1, $s4, .LBB2_124
 	b	.LBB2_129
 	.p2align	4, , 16
@@ -1737,7 +1735,7 @@ AttachGalley:                           # @AttachGalley
 .LBB2_137:                              #   in Loop: Header=BB2_99 Depth=2
 	move	$a2, $zero
 .LBB2_138:                              #   in Loop: Header=BB2_99 Depth=2
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
 	pcalau12i	$a1, %got_pc_hi20(xx_tmp)
 	ld.d	$a1, $a1, %got_pc_lo12(xx_tmp)
 	ld.d	$a3, $a0, 8
@@ -1778,21 +1776,21 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a1, $a0, 24
 	beq	$a1, $a0, .LBB2_142
 .LBB2_141:                              #   in Loop: Header=BB2_99 Depth=2
-	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
 	b	.LBB2_98
 .LBB2_142:                              #   in Loop: Header=BB2_99 Depth=2
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
 	b	.LBB2_98
 .LBB2_143:                              #   in Loop: Header=BB2_99 Depth=2
 	ld.d	$a1, $s7, 0
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(GetMemory)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 	st.d	$a0, $s5, 0
 .LBB2_144:                              #   in Loop: Header=BB2_99 Depth=2
 	ori	$a1, $zero, 17
@@ -1801,7 +1799,7 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a0, $a0, 16
 	st.d	$a0, $a0, 8
 	st.d	$a0, $a0, 0
-	st.d	$a0, $sp, 408
+	st.d	$a0, $sp, 376
 .LBB2_145:                              #   in Loop: Header=BB2_99 Depth=2
 	ld.bu	$a2, $fp, 0
 	slli.d	$a0, $a2, 3
@@ -1819,14 +1817,14 @@ AttachGalley:                           # @AttachGalley
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(GetMemory)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 .LBB2_148:                              #   in Loop: Header=BB2_99 Depth=2
 	st.b	$zero, $a0, 32
 	st.d	$a0, $a0, 24
 	st.d	$a0, $a0, 16
 	st.d	$a0, $a0, 0
-	ld.d	$a1, $sp, 408
+	ld.d	$a1, $sp, 376
 	st.d	$a0, $a0, 8
 	st.d	$a0, $a5, 0
 	st.d	$a0, $s1, 0
@@ -1834,7 +1832,7 @@ AttachGalley:                           # @AttachGalley
 	beqz	$a1, .LBB2_150
 # %bb.149:                              #   in Loop: Header=BB2_99 Depth=2
 	ld.d	$a2, $a1, 0
-	ld.d	$a4, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
 	st.d	$a2, $a4, 0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $a1, 0
@@ -1847,7 +1845,7 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a1, $s1, 0
 	ld.d	$a0, $a5, 0
 	st.d	$a1, $a3, 8
-	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
 	st.d	$a0, $s1, 0
 	st.d	$s6, $s5, 0
 	bnez	$a0, .LBB2_151
@@ -1855,7 +1853,7 @@ AttachGalley:                           # @AttachGalley
 .LBB2_150:                              # %.thread1639
                                         #   in Loop: Header=BB2_99 Depth=2
 	st.d	$s6, $s5, 0
-	ld.d	$a4, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
 .LBB2_151:                              #   in Loop: Header=BB2_99 Depth=2
 	ld.d	$a1, $s6, 16
 	ld.d	$a2, $a0, 16
@@ -1869,7 +1867,7 @@ AttachGalley:                           # @AttachGalley
 .LBB2_152:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.w	$a1, $sp, 368
+	ld.w	$a1, $sp, 336
 	bge	$a1, $a0, .LBB2_208
 .LBB2_153:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.d	$a0, $s4, 80
@@ -1896,12 +1894,12 @@ AttachGalley:                           # @AttachGalley
 	ld.wu	$a1, $s6, 40
 	ld.wu	$a2, $a3, 40
 	addi.d	$s7, $s6, 32
-	ld.d	$a3, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 184                   # 8-byte Folded Reload
 	and	$a1, $a1, $a3
 	srli.d	$a2, $a2, 29
 	bstrins.d	$a1, $a2, 30, 29
 	st.w	$a1, $s6, 40
-	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
 	beqz	$a1, .LBB2_158
 # %bb.155:                              # %.preheader1070
                                         #   in Loop: Header=BB2_7 Depth=1
@@ -1917,20 +1915,20 @@ AttachGalley:                           # @AttachGalley
 	pcaddu18i	$ra, %call36(VerticalHyphenate)
 	jirl	$ra, $ra, 0
 .LBB2_158:                              #   in Loop: Header=BB2_7 Depth=1
-	st.d	$zero, $sp, 352
-	addi.d	$a1, $sp, 368
-	addi.d	$a3, $sp, 352
-	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 264                   # 8-byte Folded Reload
+	st.d	$zero, $sp, 320
+	addi.d	$a1, $sp, 336
+	addi.d	$a3, $sp, 320
+	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(Constrained)
 	jirl	$ra, $ra, 0
 	alsl.d	$s4, $fp, $s6, 2
 	ld.w	$a3, $s4, 48
-	ld.w	$a0, $sp, 368
+	ld.w	$a0, $sp, 336
 	bge	$a0, $a3, .LBB2_210
 .LBB2_159:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	ld.hu	$a0, $a0, 42
 	slli.d	$a0, $a0, 51
 	bgez	$a0, .LBB2_162
@@ -1939,7 +1937,7 @@ AttachGalley:                           # @AttachGalley
 	add.w	$a0, $a1, $a3
 	blez	$a0, .LBB2_162
 # %bb.161:                              #   in Loop: Header=BB2_7 Depth=1
-	addi.d	$a2, $sp, 368
+	addi.d	$a2, $sp, 336
 	move	$a0, $a3
 	pcaddu18i	$ra, %call36(ScaleToConstraint)
 	jirl	$ra, $ra, 0
@@ -1960,20 +1958,20 @@ AttachGalley:                           # @AttachGalley
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.15)
-	addi.d	$a0, $sp, 324
+	addi.d	$a0, $sp, 292
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	fld.s	$fa0, $sp, 372
+	fld.s	$fa0, $sp, 340
 	ffint.s.w	$fa0, $fa0
 	fdiv.s	$fa0, $fa0, $fs0
 	fcvt.d.s	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
-	addi.d	$a0, $sp, 304
+	addi.d	$a0, $sp, 272
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	bnez	$a0, .LBB2_213
 # %bb.164:                              #   in Loop: Header=BB2_7 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.20)
@@ -2004,7 +2002,7 @@ AttachGalley:                           # @AttachGalley
 	stx.d	$a1, $s2, $a0
 .LBB2_166:                              # %.loopexit1063.loopexit
                                         #   in Loop: Header=BB2_168 Depth=2
-	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
 .LBB2_167:                              # %.loopexit1063
                                         #   in Loop: Header=BB2_168 Depth=2
 	ld.d	$s7, $s7, 8
@@ -2160,7 +2158,7 @@ AttachGalley:                           # @AttachGalley
 .LBB2_186:                              #   in Loop: Header=BB2_168 Depth=2
 	ld.hu	$a0, $s4, 44
 	andi	$a0, $a0, 512
-	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
 	bnez	$a0, .LBB2_167
 # %bb.187:                              #   in Loop: Header=BB2_168 Depth=2
 	ld.d	$s7, $a1, 0
@@ -2180,7 +2178,7 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a0, $a0, %got_pc_lo12(xx_hold)
 	ld.d	$a2, $s4, 24
 	st.d	$s4, $a0, 0
-	ld.d	$fp, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
 	bne	$a2, $s4, .LBB2_198
 # %bb.191:                              # %.preheader1061
                                         #   in Loop: Header=BB2_168 Depth=2
@@ -2196,7 +2194,7 @@ AttachGalley:                           # @AttachGalley
 	pcaddu18i	$ra, %call36(KillGalley)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s4, 8
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 	beq	$a1, $s4, .LBB2_190
 .LBB2_193:                              # %.lr.ph1184
                                         #   Parent Loop BB2_7 Depth=1
@@ -2334,20 +2332,20 @@ AttachGalley:                           # @AttachGalley
 .LBB2_208:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
-	ld.w	$a2, $sp, 372
+	ld.w	$a2, $sp, 340
 	add.w	$a0, $a1, $a0
 	blt	$a2, $a0, .LBB2_153
 # %bb.209:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.w	$a0, $sp, 376
+	ld.w	$a0, $sp, 344
 	bge	$a0, $a1, .LBB2_96
 	b	.LBB2_153
 .LBB2_210:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.w	$a0, $s4, 56
-	ld.w	$a1, $sp, 372
+	ld.w	$a1, $sp, 340
 	add.w	$a2, $a0, $a3
 	blt	$a1, $a2, .LBB2_159
 # %bb.211:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.w	$a1, $sp, 376
+	ld.w	$a1, $sp, 344
 	bge	$a1, $a0, .LBB2_219
 	b	.LBB2_159
 .LBB2_212:                              # %._crit_edge1204.loopexit
@@ -2365,8 +2363,8 @@ AttachGalley:                           # @AttachGalley
 	ori	$a1, $zero, 12
 .LBB2_214:                              #   in Loop: Header=BB2_7 Depth=1
 	ori	$a3, $zero, 2
-	addi.d	$a5, $sp, 324
-	addi.d	$a6, $sp, 304
+	addi.d	$a5, $sp, 292
+	addi.d	$a6, $sp, 272
 	move	$a4, $s7
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
@@ -2381,20 +2379,20 @@ AttachGalley:                           # @AttachGalley
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.15)
-	addi.d	$a0, $sp, 324
+	addi.d	$a0, $sp, 292
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	fld.s	$fa0, $sp, 372
+	fld.s	$fa0, $sp, 340
 	ffint.s.w	$fa0, $fa0
 	fdiv.s	$fa0, $fa0, $fs0
 	fcvt.d.s	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
-	addi.d	$a0, $sp, 304
+	addi.d	$a0, $sp, 272
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	bnez	$a0, .LBB2_217
 # %bb.216:                              # %.split591
                                         #   in Loop: Header=BB2_7 Depth=1
@@ -2405,8 +2403,8 @@ AttachGalley:                           # @AttachGalley
 	ori	$a0, $zero, 19
 	ori	$a1, $zero, 5
 	ori	$a3, $zero, 2
-	addi.d	$a5, $sp, 324
-	addi.d	$a6, $sp, 304
+	addi.d	$a5, $sp, 292
+	addi.d	$a6, $sp, 272
 	move	$a4, $s7
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
@@ -2421,8 +2419,8 @@ AttachGalley:                           # @AttachGalley
 	ori	$a0, $zero, 19
 	ori	$a1, $zero, 4
 	ori	$a3, $zero, 2
-	addi.d	$a5, $sp, 324
-	addi.d	$a6, $sp, 304
+	addi.d	$a5, $sp, 292
+	addi.d	$a6, $sp, 272
 	move	$a4, $s7
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
@@ -2448,16 +2446,16 @@ AttachGalley:                           # @AttachGalley
 	or	$a0, $a0, $a2
 	ld.w	$s7, $a0, 0
 	ld.w	$s4, $a1, 0
-	addi.d	$a1, $sp, 368
-	addi.d	$a3, $sp, 344
-	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	addi.d	$a1, $sp, 336
+	addi.d	$a3, $sp, 312
+	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Constrained)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 368
+	ld.w	$a0, $sp, 336
 	bge	$a0, $s7, .LBB2_225
 .LBB2_220:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	ld.hu	$a0, $a0, 42
 	slli.d	$a0, $a0, 51
 	bgez	$a0, .LBB2_266
@@ -2465,7 +2463,7 @@ AttachGalley:                           # @AttachGalley
 	add.w	$fp, $s4, $s7
 	blez	$fp, .LBB2_266
 # %bb.222:                              #   in Loop: Header=BB2_7 Depth=1
-	addi.d	$a2, $sp, 368
+	addi.d	$a2, $sp, 336
 	move	$a0, $s7
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(ScaleToConstraint)
@@ -2483,21 +2481,21 @@ AttachGalley:                           # @AttachGalley
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.15)
-	addi.d	$a0, $sp, 324
+	addi.d	$a0, $sp, 292
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	fld.s	$fa0, $sp, 372
+	fld.s	$fa0, $sp, 340
 	ffint.s.w	$fa0, $fa0
 	fdiv.s	$fa0, $fa0, $fs0
 	fcvt.d.s	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
-	addi.d	$a0, $sp, 304
+	addi.d	$a0, $sp, 272
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	addi.d	$a4, $s6, 32
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	bnez	$a0, .LBB2_228
 # %bb.224:                              # %.split593
                                         #   in Loop: Header=BB2_7 Depth=1
@@ -2508,18 +2506,18 @@ AttachGalley:                           # @AttachGalley
 	ori	$a0, $zero, 19
 	ori	$a1, $zero, 6
 	ori	$a3, $zero, 2
-	addi.d	$a5, $sp, 324
-	addi.d	$a6, $sp, 304
+	addi.d	$a5, $sp, 292
+	addi.d	$a6, $sp, 272
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ori	$a2, $zero, 1
 	b	.LBB2_229
 .LBB2_225:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.w	$a0, $sp, 372
+	ld.w	$a0, $sp, 340
 	add.w	$a1, $s4, $s7
 	blt	$a0, $a1, .LBB2_220
 # %bb.226:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.w	$a0, $sp, 376
+	ld.w	$a0, $sp, 344
 	blt	$a0, $s4, .LBB2_220
 # %bb.227:                              #   in Loop: Header=BB2_7 Depth=1
 	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
@@ -2533,8 +2531,8 @@ AttachGalley:                           # @AttachGalley
 	ori	$a0, $zero, 19
 	ori	$a1, $zero, 7
 	ori	$a3, $zero, 2
-	addi.d	$a5, $sp, 324
-	addi.d	$a6, $sp, 304
+	addi.d	$a5, $sp, 292
+	addi.d	$a6, $sp, 272
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	move	$a2, $zero
@@ -2546,11 +2544,11 @@ AttachGalley:                           # @AttachGalley
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
 .LBB2_230:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$fp, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
 	alsl.d	$a0, $fp, $s6, 2
 	ld.w	$a1, $a0, 48
 	ld.w	$a2, $a0, 56
-	ld.d	$s4, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 208                   # 8-byte Folded Reload
 	move	$a0, $s4
 	move	$a3, $fp
 	pcaddu18i	$ra, %call36(AdjustSize)
@@ -2561,13 +2559,13 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(AdjustSize)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $sp, 368
-	addi.d	$a3, $sp, 352
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	addi.d	$a1, $sp, 336
+	addi.d	$a3, $sp, 320
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(Constrained)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	ld.d	$s7, $a0, 0
 	.p2align	4, , 16
 .LBB2_231:                              #   Parent Loop BB2_7 Depth=1
@@ -2577,11 +2575,11 @@ AttachGalley:                           # @AttachGalley
 	beqz	$a0, .LBB2_231
 # %bb.232:                              #   in Loop: Header=BB2_7 Depth=1
 	addi.d	$a0, $a0, -119
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
 	ori	$a1, $zero, 19
 	bltu	$a1, $a0, .LBB2_234
 # %bb.233:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a4, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a2, $a0, %pc_lo12(.L.str)
@@ -2593,7 +2591,7 @@ AttachGalley:                           # @AttachGalley
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB2_234:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	alsl.d	$fp, $a0, $s7, 2
 	ld.w	$a0, $fp, 48
 	bltz	$a0, .LBB2_236
@@ -2601,7 +2599,7 @@ AttachGalley:                           # @AttachGalley
 	ld.w	$a1, $fp, 56
 	bgez	$a1, .LBB2_237
 .LBB2_236:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a4, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a2, $a0, %pc_lo12(.L.str)
@@ -2614,7 +2612,7 @@ AttachGalley:                           # @AttachGalley
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 48
 .LBB2_237:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.w	$a1, $sp, 368
+	ld.w	$a1, $sp, 336
 	bge	$a1, $a0, .LBB2_245
 .LBB2_238:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.hu	$a1, $s4, 42
@@ -2625,20 +2623,20 @@ AttachGalley:                           # @AttachGalley
 	add.w	$a2, $a1, $a0
 	blez	$a2, .LBB2_242
 # %bb.240:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a2, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, 128
-	ld.d	$a3, $sp, 352
+	ld.d	$a3, $sp, 320
 	beq	$a2, $a3, .LBB2_242
 # %bb.241:                              #   in Loop: Header=BB2_7 Depth=1
-	addi.d	$a2, $sp, 368
+	addi.d	$a2, $sp, 336
 	pcaddu18i	$ra, %call36(ScaleToConstraint)
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	ori	$a0, $zero, 65
 	bge	$s4, $a0, .LBB2_249
 .LBB2_242:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 352
-	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 320
+	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
 	st.d	$a0, $a1, 128
 	ld.w	$a0, $fp, 48
 	ld.w	$a1, $fp, 56
@@ -2653,21 +2651,21 @@ AttachGalley:                           # @AttachGalley
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.15)
-	addi.d	$a0, $sp, 324
+	addi.d	$a0, $sp, 292
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	fld.s	$fa0, $sp, 372
+	fld.s	$fa0, $sp, 340
 	ffint.s.w	$fa0, $fa0
 	fdiv.s	$fa0, $fa0, $fs0
 	fcvt.d.s	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
-	addi.d	$a0, $sp, 304
+	addi.d	$a0, $sp, 272
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	addi.d	$a4, $s6, 32
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	bnez	$a0, .LBB2_247
 # %bb.244:                              #   in Loop: Header=BB2_7 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.20)
@@ -2677,11 +2675,11 @@ AttachGalley:                           # @AttachGalley
 	b	.LBB2_248
 .LBB2_245:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.w	$a1, $fp, 56
-	ld.w	$a2, $sp, 372
+	ld.w	$a2, $sp, 340
 	add.w	$a3, $a1, $a0
 	blt	$a2, $a3, .LBB2_238
 # %bb.246:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.w	$a2, $sp, 376
+	ld.w	$a2, $sp, 344
 	bge	$a2, $a1, .LBB2_253
 	b	.LBB2_238
 .LBB2_247:                              #   in Loop: Header=BB2_7 Depth=1
@@ -2691,8 +2689,8 @@ AttachGalley:                           # @AttachGalley
 	ori	$a1, $zero, 14
 .LBB2_248:                              #   in Loop: Header=BB2_7 Depth=1
 	ori	$a3, $zero, 2
-	addi.d	$a5, $sp, 324
-	addi.d	$a6, $sp, 304
+	addi.d	$a5, $sp, 292
+	addi.d	$a6, $sp, 272
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	b	.LBB2_266
@@ -2707,21 +2705,21 @@ AttachGalley:                           # @AttachGalley
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.15)
-	addi.d	$a0, $sp, 324
+	addi.d	$a0, $sp, 292
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	fld.s	$fa0, $sp, 372
+	fld.s	$fa0, $sp, 340
 	ffint.s.w	$fa0, $fa0
 	fdiv.s	$fa0, $fa0, $fs0
 	fcvt.d.s	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
-	addi.d	$a0, $sp, 304
+	addi.d	$a0, $sp, 272
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	addi.d	$a4, $s6, 32
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	bnez	$a0, .LBB2_251
 # %bb.250:                              # %.split600
                                         #   in Loop: Header=BB2_7 Depth=1
@@ -2732,8 +2730,8 @@ AttachGalley:                           # @AttachGalley
 	ori	$a0, $zero, 19
 	ori	$a1, $zero, 9
 	ori	$a3, $zero, 2
-	addi.d	$a5, $sp, 324
-	addi.d	$a6, $sp, 304
+	addi.d	$a5, $sp, 292
+	addi.d	$a6, $sp, 272
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	move	$fp, $zero
@@ -2747,8 +2745,8 @@ AttachGalley:                           # @AttachGalley
 	ori	$a0, $zero, 19
 	ori	$a1, $zero, 8
 	ori	$a3, $zero, 2
-	addi.d	$a5, $sp, 324
-	addi.d	$a6, $sp, 304
+	addi.d	$a5, $sp, 292
+	addi.d	$a6, $sp, 272
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ori	$fp, $zero, 1
@@ -2762,17 +2760,17 @@ AttachGalley:                           # @AttachGalley
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(InterposeScale)
 	jirl	$ra, $ra, 0
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
 .LBB2_253:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 352
+	ld.d	$a0, $sp, 320
 	st.d	$a0, $s4, 128
-	addi.d	$a1, $sp, 368
-	addi.d	$a3, $sp, 344
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	addi.d	$a1, $sp, 336
+	addi.d	$a3, $sp, 312
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Constrained)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	ld.d	$s7, $a0, 0
 	.p2align	4, , 16
 .LBB2_254:                              #   Parent Loop BB2_7 Depth=1
@@ -2785,7 +2783,7 @@ AttachGalley:                           # @AttachGalley
 	ori	$a1, $zero, 19
 	bltu	$a1, $a0, .LBB2_257
 # %bb.256:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a4, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a2, $a0, %pc_lo12(.L.str)
@@ -2805,7 +2803,7 @@ AttachGalley:                           # @AttachGalley
 	ld.w	$a1, $fp, 56
 	bgez	$a1, .LBB2_260
 .LBB2_259:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a4, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a2, $a0, %pc_lo12(.L.str)
@@ -2818,15 +2816,15 @@ AttachGalley:                           # @AttachGalley
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 48
 .LBB2_260:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.w	$a1, $sp, 368
+	ld.w	$a1, $sp, 336
 	blt	$a1, $a0, .LBB2_263
 # %bb.261:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.w	$a1, $fp, 56
-	ld.w	$a2, $sp, 372
+	ld.w	$a2, $sp, 340
 	add.w	$a3, $a1, $a0
 	blt	$a2, $a3, .LBB2_263
 # %bb.262:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.w	$a2, $sp, 376
+	ld.w	$a2, $sp, 344
 	bge	$a2, $a1, .LBB2_372
 .LBB2_263:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.hu	$a1, $s4, 42
@@ -2837,7 +2835,7 @@ AttachGalley:                           # @AttachGalley
 	add.w	$a2, $a1, $a0
 	blez	$a2, .LBB2_266
 # %bb.265:                              #   in Loop: Header=BB2_7 Depth=1
-	addi.d	$a2, $sp, 368
+	addi.d	$a2, $sp, 336
 	pcaddu18i	$ra, %call36(ScaleToConstraint)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 65
@@ -2848,19 +2846,19 @@ AttachGalley:                           # @AttachGalley
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(LeaveErrorBlock)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 392
+	ld.d	$a0, $sp, 360
 	beqz	$a0, .LBB2_268
 # %bb.267:                              #   in Loop: Header=BB2_7 Depth=1
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $sp, 392
+	st.d	$zero, $sp, 360
 .LBB2_268:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
 	ld.bu	$a0, $s4, 40
-	ld.d	$a5, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 224                   # 8-byte Folded Reload
 	ori	$a1, $zero, 133
 	bne	$a0, $a1, .LBB2_273
 # %bb.269:                              #   in Loop: Header=BB2_7 Depth=1
@@ -2891,9 +2889,9 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a0, $a2, 0
 	st.d	$a3, $a3, 8
 .LBB2_272:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$fp, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
 	pcalau12i	$a2, %got_pc_hi20(zz_res)
 	ld.d	$a3, $a2, %got_pc_lo12(zz_res)
 	ld.d	$a2, $a5, 24
@@ -2926,9 +2924,9 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a0, $a2, 0
 	st.d	$a3, $a3, 8
 .LBB2_275:                              #   in Loop: Header=BB2_7 Depth=1
-	ld.d	$fp, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
 	pcalau12i	$a2, %got_pc_hi20(zz_res)
 	ld.d	$a3, $a2, %got_pc_lo12(zz_res)
 	ld.d	$a2, $a5, 24
@@ -2960,14 +2958,14 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a0, $a3, 8
 	b	.LBB2_6
 .LBB2_278:                              # %._crit_edge1174
-	ld.d	$a0, $sp, 392
+	ld.d	$a0, $sp, 360
 	beqz	$a0, .LBB2_280
 # %bb.279:
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $sp, 392
+	st.d	$zero, $sp, 360
 .LBB2_280:
-	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
@@ -2980,13 +2978,13 @@ AttachGalley:                           # @AttachGalley
 	ori	$s4, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(xx_tmp)
 	ld.d	$s6, $a0, %got_pc_lo12(xx_tmp)
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 	b	.LBB2_283
 	.p2align	4, , 16
 .LBB2_282:                              # %.loopexit
                                         #   in Loop: Header=BB2_283 Depth=1
 	ld.d	$fp, $fp, 8
-	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	beq	$fp, $a0, .LBB2_293
 .LBB2_283:                              # %.preheader1049
                                         # =>This Loop Header: Depth=1
@@ -3037,7 +3035,7 @@ AttachGalley:                           # @AttachGalley
 	addi.d	$a2, $a1, -11
 	sltui	$a2, $a2, 2
 	addi.d	$a3, $a0, 33
-	ld.d	$a4, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
 	add.d	$a1, $a4, $a1
 	masknez	$a1, $a1, $a2
 	maskeqz	$a2, $a3, $a2
@@ -3058,7 +3056,7 @@ AttachGalley:                           # @AttachGalley
 # %bb.291:                              #   in Loop: Header=BB2_283 Depth=1
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 	b	.LBB2_282
 	.p2align	4, , 16
 .LBB2_292:                              #   in Loop: Header=BB2_283 Depth=1
@@ -3069,15 +3067,15 @@ AttachGalley:                           # @AttachGalley
 	bne	$a2, $a0, .LBB2_289
 	b	.LBB2_290
 .LBB2_293:                              # %._crit_edge1243.loopexit
-	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$fp, $a0, 8
-	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 224                   # 8-byte Folded Reload
 	bne	$fp, $a0, .LBB2_295
 	b	.LBB2_299
 .LBB2_294:
 	move	$a0, $s4
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 224                   # 8-byte Folded Reload
 	beq	$fp, $a0, .LBB2_299
 .LBB2_295:
 	ld.bu	$a0, $fp, 32
@@ -3094,13 +3092,13 @@ AttachGalley:                           # @AttachGalley
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 .LBB2_297:
 	st.d	$fp, $s1, 0
-	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
 	st.d	$a1, $s5, 0
 	ld.d	$a0, $a1, 0
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
 	st.d	$a0, $a3, 0
 	ld.d	$a0, $fp, 0
 	st.d	$a0, $a1, 0
@@ -3117,7 +3115,7 @@ AttachGalley:                           # @AttachGalley
 	beqz	$s3, .LBB2_299
 # %bb.298:
 	ld.d	$a0, $s3, 0
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
 	st.d	$a0, $a3, 0
 	ld.d	$a0, $fp, 0
 	st.d	$a0, $s3, 0
@@ -3130,7 +3128,7 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a0, $s1, 0
 	st.d	$a0, $a3, 8
 .LBB2_299:
-	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 24
 	ld.d	$a1, $a0, 8
 	st.d	$a0, $a5, 0
@@ -3149,8 +3147,8 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a1, $a1, 8
 	st.d	$a0, $s1, 0
 	st.d	$s4, $s5, 0
-	ld.d	$fp, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
 	bnez	$a0, .LBB2_318
 # %bb.301:
 	ld.bu	$a0, $s0, 32
@@ -3167,7 +3165,7 @@ AttachGalley:                           # @AttachGalley
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 .LBB2_303:
 	pcalau12i	$a0, %got_pc_hi20(xx_hold)
 	ld.d	$a0, $a0, %got_pc_lo12(xx_hold)
@@ -3296,32 +3294,32 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a1, $s0, 0
 	ld.w	$a0, $s8, 0
 	ld.d	$a1, $s5, 0
-	ld.d	$a2, $sp, 408
+	ld.d	$a2, $sp, 376
 	slli.d	$a0, $a0, 3
 	stx.d	$a1, $s2, $a0
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a2, $a0, 0
 	ori	$a0, $zero, 4
 .LBB2_316:
-	fld.d	$fs0, $sp, 416                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 424                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 432                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 440                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 448                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 456                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 464                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 472                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 480                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 488                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 496                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 504                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 512
+	fld.d	$fs0, $sp, 384                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 416                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 432                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 440                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 448                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 456                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 464                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 472                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 480
 	ret
 .LBB2_317:                              # %.thread1047
 	st.d	$a0, $s1, 0
 	st.d	$s4, $s5, 0
-	ld.d	$fp, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
 .LBB2_318:
 	ld.d	$a1, $s4, 0
 	st.d	$a1, $a3, 0
@@ -3348,22 +3346,22 @@ AttachGalley:                           # @AttachGalley
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(LeaveErrorBlock)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 392
+	ld.d	$a0, $sp, 360
 	beqz	$a0, .LBB2_322
 # %bb.321:
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $sp, 392
+	st.d	$zero, $sp, 360
 .LBB2_322:
-	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 24
 	ld.d	$a1, $a0, 8
-	ld.d	$a3, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 264                   # 8-byte Folded Reload
 	st.d	$a0, $a3, 0
 	st.d	$a0, $s5, 0
-	ld.d	$a4, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
 	beq	$a1, $a0, .LBB2_324
 # %bb.323:
 	st.d	$a1, $s1, 0
@@ -3379,7 +3377,7 @@ AttachGalley:                           # @AttachGalley
 .LBB2_324:
 	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 24
 	st.d	$a0, $s1, 0
 	st.d	$a1, $s5, 0
@@ -3400,7 +3398,7 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a0, $s1, 0
 	st.d	$a0, $a3, 8
 .LBB2_327:
-	ld.d	$a0, $sp, 408
+	ld.d	$a0, $sp, 376
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	beqz	$a1, .LBB2_331
 # %bb.328:
@@ -3446,7 +3444,7 @@ AttachGalley:                           # @AttachGalley
                                         #   in Loop: Header=BB2_334 Depth=1
 	bne	$a4, $a0, .LBB2_333
 # %bb.338:                              #   in Loop: Header=BB2_334 Depth=1
-	ld.d	$a4, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 200                   # 8-byte Folded Reload
 	ldx.d	$a3, $a3, $a4
 	.p2align	4, , 16
 .LBB2_339:                              #   Parent Loop BB2_334 Depth=1
@@ -3634,19 +3632,19 @@ AttachGalley:                           # @AttachGalley
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB2_358:                              # %.critedge
-	ld.d	$a0, $sp, 408
+	ld.d	$a0, $sp, 376
 	beqz	$a0, .LBB2_360
 # %bb.359:
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $sp, 408
+	st.d	$zero, $sp, 376
 .LBB2_360:
-	ld.d	$a0, $sp, 392
+	ld.d	$a0, $sp, 360
 	beqz	$a0, .LBB2_362
 # %bb.361:
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $sp, 392
+	st.d	$zero, $sp, 360
 .LBB2_362:
 	move	$a0, $s4
 	move	$a1, $zero
@@ -3718,21 +3716,21 @@ AttachGalley:                           # @AttachGalley
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.15)
-	addi.d	$a0, $sp, 324
+	addi.d	$a0, $sp, 292
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	fld.s	$fa0, $sp, 372
+	fld.s	$fa0, $sp, 340
 	ffint.s.w	$fa0, $fa0
 	fdiv.s	$fa0, $fa0, $fs0
 	fcvt.d.s	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
-	addi.d	$a0, $sp, 304
+	addi.d	$a0, $sp, 272
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	addi.d	$a4, $s6, 32
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	bnez	$a0, .LBB2_370
 # %bb.369:                              # %.split604
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
@@ -3742,8 +3740,8 @@ AttachGalley:                           # @AttachGalley
 	ori	$a0, $zero, 19
 	ori	$a1, $zero, 10
 	ori	$a3, $zero, 2
-	addi.d	$a5, $sp, 324
-	addi.d	$a6, $sp, 304
+	addi.d	$a5, $sp, 292
+	addi.d	$a6, $sp, 272
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ori	$fp, $zero, 1
@@ -3756,8 +3754,8 @@ AttachGalley:                           # @AttachGalley
 	ori	$a0, $zero, 19
 	ori	$a1, $zero, 11
 	ori	$a3, $zero, 2
-	addi.d	$a5, $sp, 324
-	addi.d	$a6, $sp, 304
+	addi.d	$a5, $sp, 292
+	addi.d	$a6, $sp, 272
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	move	$fp, $zero
@@ -3770,30 +3768,30 @@ AttachGalley:                           # @AttachGalley
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(InterposeScale)
 	jirl	$ra, $ra, 0
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
 .LBB2_372:                              # %.loopexit1073
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	ld.hu	$a0, $a0, 42
 	andi	$a1, $a0, 8
-	ld.d	$s7, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 216                   # 8-byte Folded Reload
 	bnez	$a1, .LBB2_378
 # %bb.373:
 	andi	$a0, $a0, 16
-	ld.d	$fp, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
 	bnez	$a0, .LBB2_377
 # %bb.374:
-	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	ld.d	$fp, $a0, 0
 .LBB2_375:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$fp, $fp, 16
 	ld.bu	$a0, $fp, 32
 	beqz	$a0, .LBB2_375
 # %bb.376:
-	ld.d	$a3, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	alsl.d	$a0, $a3, $fp, 2
 	ld.w	$a1, $a0, 48
 	ld.w	$a2, $a0, 56
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(AdjustSize)
 	jirl	$ra, $ra, 0
 .LBB2_377:                              # %.sink.split1780
@@ -3801,7 +3799,7 @@ AttachGalley:                           # @AttachGalley
 	alsl.d	$a0, $a3, $fp, 2
 	ld.w	$a1, $a0, 48
 	ld.w	$a2, $a0, 56
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(AdjustSize)
 	jirl	$ra, $ra, 0
 .LBB2_378:
@@ -3810,7 +3808,7 @@ AttachGalley:                           # @AttachGalley
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 24
 	ld.d	$a1, $a0, 8
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 	st.d	$a0, $a5, 0
 	st.d	$a0, $s5, 0
 	beq	$a1, $a0, .LBB2_380
@@ -3826,7 +3824,7 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a0, $a5, 0
 	st.d	$a1, $a1, 8
 .LBB2_380:
-	ld.d	$a1, $sp, 400
+	ld.d	$a1, $sp, 368
 	st.d	$a0, $s1, 0
 	st.d	$a1, $s5, 0
 	beqz	$a1, .LBB2_383
@@ -3834,7 +3832,7 @@ AttachGalley:                           # @AttachGalley
 	beqz	$a0, .LBB2_383
 # %bb.382:
 	ld.d	$a2, $a1, 0
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
 	st.d	$a2, $a3, 0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $a1, 0
@@ -3861,7 +3859,7 @@ AttachGalley:                           # @AttachGalley
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 .LBB2_385:
 	pcalau12i	$a0, %got_pc_hi20(xx_hold)
 	ld.d	$fp, $a0, %got_pc_lo12(xx_hold)
@@ -3869,7 +3867,7 @@ AttachGalley:                           # @AttachGalley
 	st.d	$s0, $fp, 0
 	beq	$a0, $s0, .LBB2_392
 # %bb.386:
-	ld.d	$a4, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
 	b	.LBB2_388
 .LBB2_387:                              #   in Loop: Header=BB2_388 Depth=1
 	ld.bu	$a1, $a0, 32
@@ -3925,7 +3923,7 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a0, $s0, 8
 	beq	$a0, $s0, .LBB2_399
 # %bb.393:
-	ld.d	$a4, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
 	b	.LBB2_395
 .LBB2_394:                              #   in Loop: Header=BB2_395 Depth=1
 	ld.bu	$a1, $a0, 32
@@ -3982,7 +3980,7 @@ AttachGalley:                           # @AttachGalley
 	addi.d	$a1, $a0, -11
 	sltui	$a1, $a1, 2
 	addi.d	$a2, $s0, 33
-	ld.d	$a3, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
 	add.d	$a0, $a3, $a0
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $a2, $a1
@@ -3997,9 +3995,9 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a1, $s5, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$a1, $s2, $a0
-	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
 	ld.hu	$a2, $a0, 42
-	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
 	bnez	$a1, .LBB2_406
 # %bb.400:
 	andi	$a1, $a2, 8
@@ -4010,12 +4008,12 @@ AttachGalley:                           # @AttachGalley
 	move	$a3, $s6
 	pcaddu18i	$ra, %call36(Interpose)
 	jirl	$ra, $ra, 0
-	ld.d	$a5, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$a0, $a5, 24
 .LBB2_402:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $a0, 0
 	ld.bu	$a1, $a0, 32
-	st.d	$a0, $sp, 344
+	st.d	$a0, $sp, 312
 	beqz	$a1, .LBB2_402
 # %bb.403:
 	ori	$a2, $zero, 17
@@ -4031,8 +4029,8 @@ AttachGalley:                           # @AttachGalley
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a5, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 344
+	ld.d	$a5, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 312
 .LBB2_405:                              # %.loopexit1053
 	ld.hu	$a2, $a5, 64
 	ld.h	$a1, $a0, 64
@@ -4168,16 +4166,16 @@ AttachGalley:                           # @AttachGalley
 	jirl	$ra, $ra, 0
 .LBB2_408:
 	ld.d	$a1, $s3, 8
-	ld.d	$a2, $sp, 400
+	ld.d	$a2, $sp, 368
 	ori	$a3, $zero, 1
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(Promote)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	ld.hu	$a1, $a0, 42
 	andi	$a1, $a1, 24
-	ld.d	$s0, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 240                   # 8-byte Folded Reload
 	bnez	$a1, .LBB2_412
 # %bb.409:
 	ld.d	$a2, $s3, 0
@@ -4199,10 +4197,10 @@ AttachGalley:                           # @AttachGalley
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s3, 24
 	st.d	$s3, $fp, 0
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 	beq	$a0, $s3, .LBB2_419
 # %bb.413:
-	ld.d	$a4, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
 	b	.LBB2_415
 .LBB2_414:                              #   in Loop: Header=BB2_415 Depth=1
 	ld.bu	$a1, $a0, 32
@@ -4258,7 +4256,7 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a0, $s3, 8
 	beq	$a0, $s3, .LBB2_426
 # %bb.420:
-	ld.d	$a4, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
 	b	.LBB2_422
 .LBB2_421:                              #   in Loop: Header=BB2_422 Depth=1
 	ld.bu	$a1, $a0, 32
@@ -4315,7 +4313,7 @@ AttachGalley:                           # @AttachGalley
 	addi.d	$a1, $a0, -11
 	sltui	$a1, $a1, 2
 	addi.d	$a2, $s3, 33
-	ld.d	$a3, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
 	add.d	$a0, $a3, $a0
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $a2, $a1
@@ -4343,13 +4341,13 @@ AttachGalley:                           # @AttachGalley
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 .LBB2_428:
 	ld.hu	$a0, $s0, 42
 	andi	$a0, $a0, 32
 	beqz	$a0, .LBB2_430
 # %bb.429:
-	ld.d	$a0, $sp, 400
+	ld.d	$a0, $sp, 368
 	ld.h	$a1, $a0, 42
 	ori	$a1, $a1, 32
 	st.h	$a1, $a0, 42
@@ -4358,7 +4356,7 @@ AttachGalley:                           # @AttachGalley
 	st.d	$s0, $fp, 0
 	beq	$a0, $s0, .LBB2_437
 # %bb.431:
-	ld.d	$a4, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
 	b	.LBB2_433
 .LBB2_432:                              #   in Loop: Header=BB2_433 Depth=1
 	ld.bu	$a1, $a0, 32
@@ -4414,7 +4412,7 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a0, $s0, 8
 	beq	$a0, $s0, .LBB2_444
 # %bb.438:
-	ld.d	$a4, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
 	b	.LBB2_440
 .LBB2_439:                              #   in Loop: Header=BB2_440 Depth=1
 	ld.bu	$a1, $a0, 32
@@ -4471,7 +4469,7 @@ AttachGalley:                           # @AttachGalley
 	addi.d	$a1, $a0, -11
 	sltui	$a1, $a1, 2
 	addi.d	$a2, $s0, 33
-	ld.d	$a3, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
 	add.d	$a0, $a3, $a0
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $a2, $a1
@@ -4484,8 +4482,8 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a1, $s0, 0
 	ld.d	$a0, $s5, 0
 	ld.w	$a1, $s8, 0
-	ld.d	$s3, $sp, 392
-	ld.d	$s0, $sp, 408
+	ld.d	$s3, $sp, 360
+	ld.d	$s0, $sp, 376
 	slli.d	$a1, $a1, 3
 	stx.d	$a0, $s2, $a1
 	beqz	$s3, .LBB2_465
@@ -4508,12 +4506,12 @@ AttachGalley:                           # @AttachGalley
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a5, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 .LBB2_449:
 	st.d	$s4, $s1, 0
 	st.d	$s0, $s5, 0
 	ld.d	$a0, $s0, 0
-	ld.d	$a4, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
 	st.d	$a0, $a4, 0
 	ld.d	$a0, $s4, 0
 	st.d	$a0, $s0, 0
@@ -4538,14 +4536,14 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a1, $a2, 8
 	st.d	$a3, $a0, 0
 	ld.d	$a0, $s1, 0
-	ld.d	$s0, $sp, 408
+	ld.d	$s0, $sp, 376
 	st.d	$a0, $a3, 8
 .LBB2_450:
 	ld.d	$a0, $s0, 24
 	st.d	$s0, $fp, 0
 	beq	$a0, $s0, .LBB2_457
 # %bb.451:
-	ld.d	$a4, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
 	b	.LBB2_453
 .LBB2_452:                              #   in Loop: Header=BB2_453 Depth=1
 	ld.bu	$a1, $a0, 32
@@ -4601,7 +4599,7 @@ AttachGalley:                           # @AttachGalley
 	ld.d	$a0, $s0, 8
 	beq	$a0, $s0, .LBB2_464
 # %bb.458:
-	ld.d	$a4, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
 	b	.LBB2_460
 .LBB2_459:                              #   in Loop: Header=BB2_460 Depth=1
 	ld.bu	$a1, $a0, 32
@@ -4658,7 +4656,7 @@ AttachGalley:                           # @AttachGalley
 	addi.d	$a1, $a0, -11
 	sltui	$a1, $a1, 2
 	addi.d	$a2, $s0, 33
-	ld.d	$a3, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
 	add.d	$a0, $a3, $a0
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $a2, $a1
@@ -4671,7 +4669,7 @@ AttachGalley:                           # @AttachGalley
 	st.d	$a1, $s0, 0
 	ld.w	$a0, $s8, 0
 	ld.d	$a1, $s5, 0
-	ld.d	$a2, $sp, 392
+	ld.d	$a2, $sp, 360
 	slli.d	$a0, $a0, 3
 	stx.d	$a1, $s2, $a0
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload

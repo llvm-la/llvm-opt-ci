@@ -292,10 +292,10 @@ _ZN9benchmark8internal15BenchmarkRunnerC2ERKNS0_17BenchmarkInstanceEPNS0_23PerfC
 	move	$fp, $a0
 	st.h	$zero, $a0, 48
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	vst	$vr0, $a0, 32
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $a0, 0
 	st.d	$a1, $a0, 56
 	st.d	$a3, $a0, 64
 .Ltmp0:                                 # EH_LABEL
@@ -756,15 +756,15 @@ _ZN9benchmark8internal15BenchmarkRunner13DoNIterationsEv: # @_ZN9benchmark8inter
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception2
 # %bb.0:
-	addi.d	$sp, $sp, -144
-	.cfi_def_cfa_offset 144
-	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -128
+	.cfi_def_cfa_offset 128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -838,14 +838,14 @@ _ZN9benchmark8internal15BenchmarkRunner13DoNIterationsEv: # @_ZN9benchmark8inter
 	jirl	$ra, $ra, 0
 .LBB3_10:                               # %_ZN9benchmark8internallsIA9_cEERNS0_7LogTypeES4_RKT_.exit
 	ld.d	$a1, $s0, 56
-	addi.d	$a0, $sp, 56
+	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_ZNK9benchmark13BenchmarkName3strB5cxx11Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 0
 	beqz	$a0, .LBB3_18
 # %bb.11:
-	ld.d	$a1, $sp, 56
-	ld.d	$a2, $sp, 64
+	ld.d	$a1, $sp, 40
+	ld.d	$a2, $sp, 48
 .Ltmp25:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
@@ -882,16 +882,16 @@ _ZN9benchmark8internal15BenchmarkRunner13DoNIterationsEv: # @_ZN9benchmark8inter
 	jirl	$ra, $ra, 0
 .Ltmp32:                                # EH_LABEL
 .LBB3_18:                               # %_ZN9benchmark8internallsIA2_cEERNS0_7LogTypeES4_RKT_.exit
-	ld.d	$a0, $sp, 56
-	addi.d	$a1, $sp, 72
+	ld.d	$a0, $sp, 40
+	addi.d	$a1, $sp, 56
 	beq	$a0, $a1, .LBB3_20
 # %bb.19:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-	ld.d	$a1, $sp, 72
+	ld.d	$a1, $sp, 56
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB3_20:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
-	st.d	$zero, $sp, 48
+	st.d	$zero, $sp, 32
 .Ltmp34:                                # EH_LABEL
 	ori	$a0, $zero, 304
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -903,9 +903,10 @@ _ZN9benchmark8internal15BenchmarkRunner13DoNIterationsEv: # @_ZN9benchmark8inter
 	ld.w	$s4, $a0, 400
 	addi.d	$a0, $s1, 56
 	st.d	$zero, $s1, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
-	xvst	$xr0, $s1, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $s1, 8
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $s1, 24
 	st.d	$a0, $s1, 40
 	st.d	$zero, $s1, 48
 	st.b	$zero, $s1, 56
@@ -928,47 +929,48 @@ _ZN9benchmark8internal15BenchmarkRunner13DoNIterationsEv: # @_ZN9benchmark8inter
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNSt18condition_variableC1Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 48
+	ld.d	$a1, $sp, 32
 	st.w	$s4, $s1, 288
 	st.d	$zero, $s1, 292
-	st.d	$s1, $sp, 48
+	st.d	$s1, $sp, 32
 	beqz	$a1, .LBB3_23
 # %bb.22:
-	addi.d	$a0, $sp, 48
+	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZNKSt14default_deleteIN9benchmark8internal13ThreadManagerEEclEPS2_)
 	jirl	$ra, $ra, 0
 .LBB3_23:                               # %_ZNSt10unique_ptrIN9benchmark8internal13ThreadManagerESt14default_deleteIS2_EE5resetEPS2_.exit
 	ld.d	$a0, $s0, 120
-	st.d	$s0, $sp, 56
-	addi.d	$a1, $sp, 48
-	st.d	$a1, $sp, 64
+	st.d	$s0, $sp, 40
+	addi.d	$a1, $sp, 32
+	st.d	$a1, $sp, 48
 	pcalau12i	$a1, %pc_hi20(_ZNSt17_Function_handlerIFviEZN9benchmark8internal15BenchmarkRunner13DoNIterationsEvE3$_0E9_M_invokeERKSt9_Any_dataOi)
 	addi.d	$a1, $a1, %pc_lo12(_ZNSt17_Function_handlerIFviEZN9benchmark8internal15BenchmarkRunner13DoNIterationsEvE3$_0E9_M_invokeERKSt9_Any_dataOi)
-	st.d	$a1, $sp, 80
+	st.d	$a1, $sp, 64
 	pcalau12i	$a1, %pc_hi20(_ZNSt17_Function_handlerIFviEZN9benchmark8internal15BenchmarkRunner13DoNIterationsEvE3$_0E10_M_managerERSt9_Any_dataRKS6_St18_Manager_operation)
 	addi.d	$a1, $a1, %pc_lo12(_ZNSt17_Function_handlerIFviEZN9benchmark8internal15BenchmarkRunner13DoNIterationsEvE3$_0E10_M_managerERSt9_Any_dataRKS6_St18_Manager_operation)
-	st.d	$a1, $sp, 72
+	st.d	$a1, $sp, 56
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
 .Ltmp37:                                # EH_LABEL
-	addi.d	$a1, $sp, 56
+	addi.d	$a1, $sp, 40
 	jirl	$ra, $a2, 0
 .Ltmp38:                                # EH_LABEL
 # %bb.24:
-	ld.d	$a3, $sp, 72
+	ld.d	$a3, $sp, 56
 	beqz	$a3, .LBB3_26
 # %bb.25:
 .Ltmp43:                                # EH_LABEL
-	addi.d	$a0, $sp, 56
-	addi.d	$a1, $sp, 56
+	addi.d	$a0, $sp, 40
+	addi.d	$a1, $sp, 40
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp44:                                # EH_LABEL
 .LBB3_26:                               # %_ZNSt14_Function_baseD2Ev.exit
 	addi.d	$a0, $fp, 56
 	st.d	$zero, $fp, 32
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $fp, 0
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $fp, 16
+	vst	$vr0, $fp, 0
 	st.d	$a0, $fp, 40
 	st.d	$zero, $fp, 48
 	st.b	$zero, $fp, 56
@@ -980,7 +982,7 @@ _ZN9benchmark8internal15BenchmarkRunner13DoNIterationsEv: # @_ZN9benchmark8inter
 	addi.d	$a0, $fp, 120
 	st.d	$a0, $fp, 136
 	st.d	$a0, $fp, 144
-	ld.d	$a0, $sp, 48
+	ld.d	$a0, $sp, 32
 	st.w	$zero, $fp, 120
 	st.d	$zero, $fp, 128
 	st.d	$zero, $fp, 152
@@ -990,12 +992,14 @@ _ZN9benchmark8internal15BenchmarkRunner13DoNIterationsEv: # @_ZN9benchmark8inter
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB3_61
 # %bb.27:                               # %_ZN9benchmark9MutexLockC2ERNS_5MutexE.exit
-	ld.d	$s2, $sp, 48
+	ld.d	$s2, $sp, 32
 	ld.d	$a0, $s2, 0
 	st.d	$a0, $fp, 0
-	xvld	$xr0, $s2, 8
+	vld	$vr0, $s2, 8
+	vst	$vr0, $fp, 8
+	vld	$vr0, $s2, 24
 	addi.d	$a0, $fp, 40
-	xvst	$xr0, $fp, 8
+	vst	$vr0, $fp, 24
 	addi.d	$a1, $s2, 40
 .Ltmp49:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_assignERKS4_)
@@ -1021,11 +1025,11 @@ _ZN9benchmark8internal15BenchmarkRunner13DoNIterationsEv: # @_ZN9benchmark8inter
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(pthread_mutex_unlock)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 48
-	st.d	$zero, $sp, 48
+	ld.d	$a1, $sp, 32
+	st.d	$zero, $sp, 32
 	beqz	$a1, .LBB3_32
 # %bb.31:
-	addi.d	$a0, $sp, 48
+	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZNKSt14default_deleteIN9benchmark8internal13ThreadManagerEEclEPS2_)
 	jirl	$ra, $ra, 0
 .LBB3_32:                               # %_ZNSt10unique_ptrIN9benchmark8internal13ThreadManagerESt14default_deleteIS2_EE5resetEPS2_.exit30
@@ -1165,21 +1169,21 @@ _ZN9benchmark8internal15BenchmarkRunner13DoNIterationsEv: # @_ZN9benchmark8inter
 	fld.d	$fa0, $s1, 0
 	fst.d	$fa0, $fp, 168
 .LBB3_58:
-	ld.d	$a1, $sp, 48
+	ld.d	$a1, $sp, 32
 	beqz	$a1, .LBB3_60
 # %bb.59:
-	addi.d	$a0, $sp, 48
+	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZNKSt14default_deleteIN9benchmark8internal13ThreadManagerEEclEPS2_)
 	jirl	$ra, $ra, 0
 .LBB3_60:                               # %_ZNSt10unique_ptrIN9benchmark8internal13ThreadManagerESt14default_deleteIS2_EED2Ev.exit
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .LBB3_61:
 .Ltmp46:                                # EH_LABEL
@@ -1237,13 +1241,13 @@ _ZN9benchmark8internal15BenchmarkRunner13DoNIterationsEv: # @_ZN9benchmark8inter
 	b	.LBB3_77
 .LBB3_72:
 .Ltmp39:                                # EH_LABEL
-	ld.d	$a3, $sp, 72
+	ld.d	$a3, $sp, 56
 	move	$s0, $a0
 	beqz	$a3, .LBB3_82
 # %bb.73:
 .Ltmp40:                                # EH_LABEL
-	addi.d	$a0, $sp, 56
-	addi.d	$a1, $sp, 56
+	addi.d	$a0, $sp, 40
+	addi.d	$a1, $sp, 40
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp41:                                # EH_LABEL
@@ -1263,12 +1267,12 @@ _ZN9benchmark8internal15BenchmarkRunner13DoNIterationsEv: # @_ZN9benchmark8inter
 	b	.LBB3_81
 .LBB3_78:
 .Ltmp33:                                # EH_LABEL
-	ld.d	$a2, $sp, 56
-	addi.d	$a1, $sp, 72
+	ld.d	$a2, $sp, 40
+	addi.d	$a1, $sp, 56
 	move	$s0, $a0
 	beq	$a2, $a1, .LBB3_84
 # %bb.79:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i62
-	ld.d	$a0, $sp, 72
+	ld.d	$a0, $sp, 56
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -1287,10 +1291,10 @@ _ZN9benchmark8internal15BenchmarkRunner13DoNIterationsEv: # @_ZN9benchmark8inter
 	pcaddu18i	$ra, %call36(_ZN9benchmark8internal15BenchmarkRunner16IterationResultsD2Ev)
 	jirl	$ra, $ra, 0
 .LBB3_82:
-	ld.d	$a1, $sp, 48
+	ld.d	$a1, $sp, 32
 	beqz	$a1, .LBB3_84
 # %bb.83:
-	addi.d	$a0, $sp, 48
+	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZNKSt14default_deleteIN9benchmark8internal13ThreadManagerEEclEPS2_)
 	jirl	$ra, $ra, 0
 .LBB3_84:
@@ -1790,8 +1794,9 @@ _ZN9benchmark8internal15BenchmarkRunner9RunWarmUpEv: # @_ZN9benchmark8internal15
 	move	$fp, $a0
 	addi.d	$a0, $sp, 256
 	st.d	$zero, $sp, 232
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 200
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 216
+	vst	$vr0, $sp, 200
 	st.d	$a0, $sp, 240
 	st.d	$zero, $sp, 248
 	st.b	$zero, $sp, 256
@@ -2054,15 +2059,15 @@ _ZN9benchmark8internal15BenchmarkRunner16RunMemoryManagerEl: # @_ZN9benchmark8in
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception5
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2079,7 +2084,7 @@ _ZN9benchmark8internal15BenchmarkRunner16RunMemoryManagerEl: # @_ZN9benchmark8in
 	move	$s0, $a0
 	move	$a0, $a3
 	jirl	$ra, $a4, 0
-	st.d	$zero, $sp, 16
+	st.d	$zero, $sp, 32
 .Ltmp94:                                # EH_LABEL
 	ori	$a0, $zero, 304
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -2089,8 +2094,10 @@ _ZN9benchmark8internal15BenchmarkRunner16RunMemoryManagerEl: # @_ZN9benchmark8in
 	move	$s2, $a0
 	addi.d	$a0, $a0, 56
 	st.d	$zero, $s2, 32
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $s2, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $s2, 16
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $s2, 0
 	st.d	$a0, $s2, 40
 	st.d	$zero, $s2, 48
 	st.b	$zero, $s2, 56
@@ -2117,14 +2124,14 @@ _ZN9benchmark8internal15BenchmarkRunner16RunMemoryManagerEl: # @_ZN9benchmark8in
 	ld.d	$a0, $s1, 56
 	st.d	$a1, $s2, 288
 	st.w	$zero, $s2, 296
-	st.d	$s2, $sp, 16
+	st.d	$s2, $sp, 32
 .Ltmp96:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNK9benchmark8internal17BenchmarkInstance5SetupEv)
 	jirl	$ra, $ra, 0
 .Ltmp97:                                # EH_LABEL
 # %bb.2:
 	ld.d	$a0, $s1, 56
-	ld.d	$a3, $sp, 16
+	ld.d	$a3, $sp, 32
 	ld.d	$a4, $s1, 136
 .Ltmp98:                                # EH_LABEL
 	move	$a1, $fp
@@ -2134,11 +2141,11 @@ _ZN9benchmark8internal15BenchmarkRunner16RunMemoryManagerEl: # @_ZN9benchmark8in
 	jirl	$ra, $ra, 0
 .Ltmp99:                                # EH_LABEL
 # %bb.3:
-	ld.d	$a1, $sp, 16
-	st.d	$zero, $sp, 16
+	ld.d	$a1, $sp, 32
+	st.d	$zero, $sp, 32
 	beqz	$a1, .LBB10_5
 # %bb.4:
-	addi.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZNKSt14default_deleteIN9benchmark8internal13ThreadManagerEEclEPS2_)
 	jirl	$ra, $ra, 0
 .LBB10_5:                               # %_ZNSt10unique_ptrIN9benchmark8internal13ThreadManagerESt14default_deleteIS2_EE5resetEPS2_.exit7
@@ -2148,8 +2155,8 @@ _ZN9benchmark8internal15BenchmarkRunner16RunMemoryManagerEl: # @_ZN9benchmark8in
 	jirl	$ra, $ra, 0
 .Ltmp101:                               # EH_LABEL
 # %bb.6:
-	vrepli.b	$vr0, 0
 	ld.d	$a0, $s4, %pc_lo12(_ZN9benchmark8internal14memory_managerE)
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $s0, 0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 2047
@@ -2163,30 +2170,30 @@ _ZN9benchmark8internal15BenchmarkRunner16RunMemoryManagerEl: # @_ZN9benchmark8in
 	jirl	$ra, $a2, 0
 .Ltmp103:                               # EH_LABEL
 # %bb.7:
-	ld.d	$a1, $sp, 16
+	ld.d	$a1, $sp, 32
 	st.d	$fp, $s0, 32
 	beqz	$a1, .LBB10_9
 # %bb.8:
-	addi.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZNKSt14default_deleteIN9benchmark8internal13ThreadManagerEEclEPS2_)
 	jirl	$ra, $ra, 0
 .LBB10_9:                               # %_ZNSt10unique_ptrIN9benchmark8internal13ThreadManagerESt14default_deleteIS2_EED2Ev.exit
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB10_10:
 .Ltmp104:                               # EH_LABEL
-	ld.d	$a1, $sp, 16
+	ld.d	$a1, $sp, 32
 	move	$fp, $a0
 	beqz	$a1, .LBB10_12
 # %bb.11:
-	addi.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZNKSt14default_deleteIN9benchmark8internal13ThreadManagerEEclEPS2_)
 	jirl	$ra, $ra, 0
 .LBB10_12:                              # %_ZNSt10unique_ptrIN9benchmark8internal13ThreadManagerESt14default_deleteIS2_EED2Ev.exit9
@@ -2271,8 +2278,9 @@ _ZN9benchmark8internal12_GLOBAL__N_111RunInThreadEPKNS0_17BenchmarkInstanceEliPN
 	move	$a1, $a0
 	ld.b	$a0, $a0, 292
 	st.d	$zero, $sp, 288
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 296
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 296
+	vst	$vr0, $sp, 312
 	st.b	$a0, $sp, 280
 	st.b	$zero, $sp, 281
 	addi.d	$a0, $sp, 64
@@ -2669,8 +2677,9 @@ _ZN9benchmark8internal15BenchmarkRunner18RunProfilerManagerEl: # @_ZN9benchmark8
 	move	$s1, $a0
 	addi.d	$a0, $a0, 56
 	st.d	$zero, $s1, 32
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $s1, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $s1, 16
+	vst	$vr0, $s1, 0
 	st.d	$a0, $s1, 40
 	st.d	$zero, $s1, 48
 	st.b	$zero, $s1, 56
@@ -2795,15 +2804,8 @@ GCC_except_table12:
 .Lcst_end7:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN9benchmark8internal15BenchmarkRunner15DoOneRepetitionEv
-.LCPI13_0:
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.dword	9223372036854775807             # 0x7fffffffffffffff
-	.dword	9223372036854775807             # 0x7fffffffffffffff
 	.text
-	.hidden	_ZN9benchmark8internal15BenchmarkRunner15DoOneRepetitionEv
+	.hidden	_ZN9benchmark8internal15BenchmarkRunner15DoOneRepetitionEv # -- Begin function _ZN9benchmark8internal15BenchmarkRunner15DoOneRepetitionEv
 	.globl	_ZN9benchmark8internal15BenchmarkRunner15DoOneRepetitionEv
 	.p2align	2
 	.prefalign	5, .Lfunc_end13, nop
@@ -2851,8 +2853,10 @@ _ZN9benchmark8internal15BenchmarkRunner15DoOneRepetitionEv: # @_ZN9benchmark8int
 .LBB13_2:
 	addi.d	$a0, $sp, 696
 	st.d	$zero, $sp, 672
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 640
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 656
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 640
 	st.d	$a0, $sp, 680
 	st.d	$zero, $sp, 688
 	st.b	$zero, $sp, 696
@@ -2940,8 +2944,10 @@ _ZN9benchmark8internal15BenchmarkRunner15DoOneRepetitionEv: # @_ZN9benchmark8int
 	jirl	$ra, $ra, 0
 .Ltmp158:                               # EH_LABEL
 # %bb.13:
-	xvld	$xr0, $sp, 48
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
+	vld	$vr0, $sp, 48
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vld	$vr0, $sp, 64
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	ld.d	$s5, $sp, 80
 	pcalau12i	$a0, %pc_hi20(_ZN9benchmark8internal16profiler_managerE)
 	ld.d	$a0, $a0, %pc_lo12(_ZN9benchmark8internal16profiler_managerE)
@@ -3056,11 +3062,12 @@ _ZN9benchmark8internal15BenchmarkRunner15DoOneRepetitionEv: # @_ZN9benchmark8int
 	st.d	$a0, $fp, 128
 	b	.LBB13_15
 .LBB13_32:
-	pcalau12i	$a0, %pc_hi20(.LCPI13_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI13_0)
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
 	move	$s5, $zero
 	move	$s0, $zero
+	addi.w	$a0, $zero, -1
+	lu52i.d	$a0, $a0, 2047
+	vreplgr2vr.d	$vr0, $a0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(_ZN9benchmark8internal16profiler_managerE)
 	ld.d	$a0, $a0, %pc_lo12(_ZN9benchmark8internal16profiler_managerE)
 	beqz	$a0, .LBB13_34
@@ -3199,10 +3206,12 @@ _ZN9benchmark8internal15BenchmarkRunner15DoOneRepetitionEv: # @_ZN9benchmark8int
 # %bb.47:                               # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEEaSERKSE_.exit.i
 	blez	$s0, .LBB13_49
 # %bb.48:
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $sp, 592
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 592
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr1, $sp, 608
 	st.d	$s5, $sp, 624
-	xvpickve2gr.d	$a0, $xr0, 0
+	vpickve2gr.d	$a0, $vr0, 0
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fa0, $fa0
 	movgr2fr.d	$fa1, $s0
@@ -4001,11 +4010,12 @@ _ZNSt6threadC2IRKSt8functionIFviEEJiEvEEOT_DpOT0_: # @_ZNSt6threadC2IRKSt8functi
 	pcalau12i	$a0, %pc_hi20(_ZTVNSt6thread11_State_implINS_8_InvokerISt5tupleIJSt8functionIFviEEiEEEEEE+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTVNSt6thread11_State_implINS_8_InvokerISt5tupleIJSt8functionIFviEEiEEEEEE+16)
 	ld.w	$a1, $s2, 0
-	ld.d	$a3, $s1, 16
 	st.d	$a0, $fp, 0
+	ld.d	$a3, $s1, 16
 	st.w	$a1, $fp, 8
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 16
+	vrepli.b	$vr0, 0
+	vst	$vr0, $fp, 16
+	vst	$vr0, $fp, 32
 	beqz	$a3, .LBB20_3
 # %bb.1:
 .Ltmp216:                               # EH_LABEL
@@ -5053,8 +5063,10 @@ _ZN9benchmark8internal13ThreadManager6ResultaSEOS2_: # @_ZN9benchmark8internal13
 	ld.d	$a1, $a1, 32
 	move	$s0, $a0
 	st.d	$a1, $a0, 32
-	xvld	$xr0, $fp, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $fp, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $fp, 0
+	vst	$vr0, $a0, 0
 	ld.d	$a0, $a0, 40
 	ld.d	$a1, $fp, 40
 	addi.d	$a3, $s0, 56
@@ -6252,8 +6264,10 @@ _ZN9benchmark17BenchmarkReporter3RunC2ERKS1_: # @_ZN9benchmark17BenchmarkReporte
 .LBB40_28:                              # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEEC2ERKSE_.exit
 	vld	$vr0, $s1, 576
 	vst	$vr0, $fp, 576
-	xvld	$xr0, $s1, 544
-	xvst	$xr0, $fp, 544
+	vld	$vr0, $s1, 560
+	vst	$vr0, $fp, 560
+	vld	$vr0, $s1, 544
+	vst	$vr0, $fp, 544
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
@@ -7449,8 +7463,10 @@ _ZN9benchmark17BenchmarkReporter3RunC2EOS1_: # @_ZN9benchmark17BenchmarkReporter
 	st.w	$a1, $fp, 504
 	vld	$vr0, $s0, 544
 	vst	$vr0, $fp, 544
-	xvld	$xr0, $s0, 560
-	xvst	$xr0, $fp, 560
+	vld	$vr0, $s0, 560
+	vst	$vr0, $fp, 560
+	vld	$vr0, $s0, 576
+	vst	$vr0, $fp, 576
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload

@@ -677,8 +677,10 @@ dict_resize:                            # @dict_resize
 	ori	$a2, $zero, 32
 	pcaddu18i	$ra, %call36(alloc_free)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $fp, 0
-	xvst	$xr0, $s3, 0
+	vld	$vr0, $fp, 16
+	vst	$vr0, $s3, 16
+	vld	$vr0, $fp, 0
+	vst	$vr0, $s3, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.3)
 	ori	$a1, $zero, 1

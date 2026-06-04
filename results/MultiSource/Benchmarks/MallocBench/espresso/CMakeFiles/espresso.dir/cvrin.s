@@ -2311,10 +2311,12 @@ read_pla:                               # @read_pla
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$zero, $a0, 40
-	xvst	$xr0, $a0, 48
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
 	st.d	$a0, $s2, 0
 	st.w	$s3, $a0, 32
 	pcaddu18i	$ra, %call36(util_cpu_time)
@@ -2911,11 +2913,13 @@ new_PLA:                                # @new_PLA
 	ori	$a0, $zero, 80
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 0
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.w	$zero, $a0, 32
 	st.d	$zero, $a0, 40
-	xvst	$xr0, $a0, 48
+	vst	$vr0, $a0, 48
+	vst	$vr0, $a0, 64
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret

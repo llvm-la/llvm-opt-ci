@@ -1,17 +1,6 @@
 	.file	"createIndexEntry.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function createIndexEntry
-.LCPI0_0:
-	.word	0xff7fffff                      # float -3.40282347E+38
-	.word	0xff7fffff                      # float -3.40282347E+38
-	.word	0xff7fffff                      # float -3.40282347E+38
-	.word	0xff7fffff                      # float -3.40282347E+38
-	.word	0x7f7fffff                      # float 3.40282347E+38
-	.word	0x7f7fffff                      # float 3.40282347E+38
-	.word	0x7f7fffff                      # float 3.40282347E+38
-	.word	0x7f7fffff                      # float 3.40282347E+38
 	.text
-	.globl	createIndexEntry
+	.globl	createIndexEntry                # -- Begin function createIndexEntry
 	.p2align	2
 	.prefalign	5, .Lfunc_end0, nop
 	.type	createIndexEntry,@function
@@ -25,10 +14,15 @@ createIndexEntry:                       # @createIndexEntry
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_2
 # %bb.1:
-	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_0)
 	st.d	$zero, $a0, 0
-	xvst	$xr0, $a0, 8
+	lu12i.w	$a1, -2049
+	ori	$a1, $a1, 4095
+	vreplgr2vr.w	$vr0, $a1
+	vst	$vr0, $a0, 8
+	lu12i.w	$a1, 522239
+	ori	$a1, $a1, 4095
+	vreplgr2vr.w	$vr0, $a1
+	vst	$vr0, $a0, 24
 	st.d	$zero, $a0, 40
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload

@@ -1,11 +1,9 @@
 	.file	"jdcolor.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function jinit_color_deconverter
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function jinit_color_deconverter
 .LCPI0_0:
 	.dword	-128                            # 0xffffffffffffff80
 	.dword	-127                            # 0xffffffffffffff81
-	.dword	-126                            # 0xffffffffffffff82
-	.dword	-125                            # 0xffffffffffffff83
 	.text
 	.globl	jinit_color_deconverter
 	.p2align	2
@@ -160,68 +158,56 @@ jinit_color_deconverter:                # @jinit_color_deconverter
 	ld.d	$a2, $s1, 24
 	ld.d	$a3, $s1, 32
 	sub.d	$a4, $a2, $a1
-	ori	$a5, $zero, 16
+	ori	$a5, $zero, 8
 	st.d	$a0, $s1, 40
 	bltu	$a4, $a5, .LBB0_38
 # %bb.21:                               # %vector.memcheck89
 	sub.d	$a4, $a0, $a3
-	ori	$a5, $zero, 32
+	ori	$a5, $zero, 16
 	bltu	$a4, $a5, .LBB0_38
 # %bb.22:                               # %vector.body95.preheader
 	move	$a4, $zero
 	pcalau12i	$a5, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a5, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a5, %pc_lo12(.LCPI0_0)
 	lu12i.w	$a5, 22
 	ori	$a5, $a5, 1769
-	xvreplgr2vr.d	$xr1, $a5
+	vreplgr2vr.d	$vr1, $a5
 	lu12i.w	$a5, 8
-	xvreplgr2vr.d	$xr2, $a5
+	vreplgr2vr.d	$vr2, $a5
 	lu12i.w	$a5, 28
 	ori	$a5, $a5, 1442
-	xvreplgr2vr.d	$xr3, $a5
+	vreplgr2vr.d	$vr3, $a5
 	lu12i.w	$a5, -12
 	ori	$a5, $a5, 2350
-	xvreplgr2vr.d	$xr4, $a5
+	vreplgr2vr.d	$vr4, $a5
 	lu12i.w	$a5, -6
 	ori	$a5, $a5, 2022
-	xvreplgr2vr.d	$xr5, $a5
+	vreplgr2vr.d	$vr5, $a5
 	ori	$a5, $zero, 1024
 	.p2align	4, , 16
 .LBB0_23:                               # %vector.body95
                                         # =>This Inner Loop Header: Depth=1
-	xvori.b	$xr6, $xr2, 0
-	xvmadd.d	$xr6, $xr0, $xr1
-	xvsrli.d	$xr6, $xr6, 16
-	xvpickve2gr.d	$a6, $xr6, 0
-	vinsgr2vr.w	$vr7, $a6, 0
-	xvpickve2gr.d	$a6, $xr6, 1
-	vinsgr2vr.w	$vr7, $a6, 1
-	xvpickve2gr.d	$a6, $xr6, 2
-	vinsgr2vr.w	$vr7, $a6, 2
-	xvpickve2gr.d	$a6, $xr6, 3
-	vinsgr2vr.w	$vr7, $a6, 3
-	vstx	$vr7, $a1, $a4
-	xvori.b	$xr6, $xr2, 0
-	xvmadd.d	$xr6, $xr0, $xr3
-	xvsrli.d	$xr6, $xr6, 16
-	xvpickve2gr.d	$a6, $xr6, 0
-	vinsgr2vr.w	$vr7, $a6, 0
-	xvpickve2gr.d	$a6, $xr6, 1
-	vinsgr2vr.w	$vr7, $a6, 1
-	xvpickve2gr.d	$a6, $xr6, 2
-	vinsgr2vr.w	$vr7, $a6, 2
-	xvpickve2gr.d	$a6, $xr6, 3
-	vinsgr2vr.w	$vr7, $a6, 3
-	vstx	$vr7, $a2, $a4
-	xvmul.d	$xr6, $xr0, $xr4
-	xvst	$xr6, $a3, 0
-	xvori.b	$xr6, $xr2, 0
-	xvmadd.d	$xr6, $xr0, $xr5
-	xvst	$xr6, $a0, 0
-	xvaddi.du	$xr0, $xr0, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a0, $a0, 32
-	addi.d	$a3, $a3, 32
+	vori.b	$vr6, $vr2, 0
+	vmadd.d	$vr6, $vr0, $vr1
+	vsrli.d	$vr6, $vr6, 16
+	vshuf4i.w	$vr6, $vr6, 8
+	add.d	$a6, $a1, $a4
+	vstelm.d	$vr6, $a6, 0, 0
+	vori.b	$vr6, $vr2, 0
+	vmadd.d	$vr6, $vr0, $vr3
+	vsrli.d	$vr6, $vr6, 16
+	vshuf4i.w	$vr6, $vr6, 8
+	add.d	$a6, $a2, $a4
+	vstelm.d	$vr6, $a6, 0, 0
+	vmul.d	$vr6, $vr0, $vr4
+	vst	$vr6, $a3, 0
+	vori.b	$vr6, $vr2, 0
+	vmadd.d	$vr6, $vr0, $vr5
+	vst	$vr6, $a0, 0
+	vaddi.du	$vr0, $vr0, 2
+	addi.d	$a4, $a4, 8
+	addi.d	$a0, $a0, 16
+	addi.d	$a3, $a3, 16
 	bne	$a4, $a5, .LBB0_23
 	b	.LBB0_34
 .LBB0_24:
@@ -268,68 +254,56 @@ jinit_color_deconverter:                # @jinit_color_deconverter
 	ld.d	$a2, $s1, 24
 	ld.d	$a3, $s1, 32
 	sub.d	$a4, $a2, $a1
-	ori	$a5, $zero, 16
+	ori	$a5, $zero, 8
 	st.d	$a0, $s1, 40
 	bltu	$a4, $a5, .LBB0_40
 # %bb.27:                               # %vector.memcheck
 	sub.d	$a4, $a0, $a3
-	ori	$a5, $zero, 32
+	ori	$a5, $zero, 16
 	bltu	$a4, $a5, .LBB0_40
 # %bb.28:                               # %vector.body.preheader
 	move	$a4, $zero
 	pcalau12i	$a5, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a5, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a5, %pc_lo12(.LCPI0_0)
 	lu12i.w	$a5, 22
 	ori	$a5, $a5, 1769
-	xvreplgr2vr.d	$xr1, $a5
+	vreplgr2vr.d	$vr1, $a5
 	lu12i.w	$a5, 8
-	xvreplgr2vr.d	$xr2, $a5
+	vreplgr2vr.d	$vr2, $a5
 	lu12i.w	$a5, 28
 	ori	$a5, $a5, 1442
-	xvreplgr2vr.d	$xr3, $a5
+	vreplgr2vr.d	$vr3, $a5
 	lu12i.w	$a5, -12
 	ori	$a5, $a5, 2350
-	xvreplgr2vr.d	$xr4, $a5
+	vreplgr2vr.d	$vr4, $a5
 	lu12i.w	$a5, -6
 	ori	$a5, $a5, 2022
-	xvreplgr2vr.d	$xr5, $a5
+	vreplgr2vr.d	$vr5, $a5
 	ori	$a5, $zero, 1024
 	.p2align	4, , 16
 .LBB0_29:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvori.b	$xr6, $xr2, 0
-	xvmadd.d	$xr6, $xr0, $xr1
-	xvsrli.d	$xr6, $xr6, 16
-	xvpickve2gr.d	$a6, $xr6, 0
-	vinsgr2vr.w	$vr7, $a6, 0
-	xvpickve2gr.d	$a6, $xr6, 1
-	vinsgr2vr.w	$vr7, $a6, 1
-	xvpickve2gr.d	$a6, $xr6, 2
-	vinsgr2vr.w	$vr7, $a6, 2
-	xvpickve2gr.d	$a6, $xr6, 3
-	vinsgr2vr.w	$vr7, $a6, 3
-	vstx	$vr7, $a1, $a4
-	xvori.b	$xr6, $xr2, 0
-	xvmadd.d	$xr6, $xr0, $xr3
-	xvsrli.d	$xr6, $xr6, 16
-	xvpickve2gr.d	$a6, $xr6, 0
-	vinsgr2vr.w	$vr7, $a6, 0
-	xvpickve2gr.d	$a6, $xr6, 1
-	vinsgr2vr.w	$vr7, $a6, 1
-	xvpickve2gr.d	$a6, $xr6, 2
-	vinsgr2vr.w	$vr7, $a6, 2
-	xvpickve2gr.d	$a6, $xr6, 3
-	vinsgr2vr.w	$vr7, $a6, 3
-	vstx	$vr7, $a2, $a4
-	xvmul.d	$xr6, $xr0, $xr4
-	xvst	$xr6, $a3, 0
-	xvori.b	$xr6, $xr2, 0
-	xvmadd.d	$xr6, $xr0, $xr5
-	xvst	$xr6, $a0, 0
-	xvaddi.du	$xr0, $xr0, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a0, $a0, 32
-	addi.d	$a3, $a3, 32
+	vori.b	$vr6, $vr2, 0
+	vmadd.d	$vr6, $vr0, $vr1
+	vsrli.d	$vr6, $vr6, 16
+	vshuf4i.w	$vr6, $vr6, 8
+	add.d	$a6, $a1, $a4
+	vstelm.d	$vr6, $a6, 0, 0
+	vori.b	$vr6, $vr2, 0
+	vmadd.d	$vr6, $vr0, $vr3
+	vsrli.d	$vr6, $vr6, 16
+	vshuf4i.w	$vr6, $vr6, 8
+	add.d	$a6, $a2, $a4
+	vstelm.d	$vr6, $a6, 0, 0
+	vmul.d	$vr6, $vr0, $vr4
+	vst	$vr6, $a3, 0
+	vori.b	$vr6, $vr2, 0
+	vmadd.d	$vr6, $vr0, $vr5
+	vst	$vr6, $a0, 0
+	vaddi.du	$vr0, $vr0, 2
+	addi.d	$a4, $a4, 8
+	addi.d	$a0, $a0, 16
+	addi.d	$a3, $a3, 16
 	bne	$a4, $a5, .LBB0_29
 	b	.LBB0_34
 .LBB0_30:

@@ -274,9 +274,11 @@ main:                                   # @main
 	st.d	$a1, $sp, 160
 	pcalau12i	$a2, %pc_hi20(.L.str.2)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.2)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.w	$a2, $a2, 31
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.w	$a2, $a0, 31
 	st.d	$a1, $sp, 152
 	stx.b	$zero, $a0, $a1
@@ -308,10 +310,12 @@ main:                                   # @main
 	st.d	$a1, $sp, 128
 	pcalau12i	$a2, %pc_hi20(.L.str.3)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.3)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
 	ld.b	$a2, $a2, 40
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	st.b	$a2, $a0, 40
 	st.d	$a1, $sp, 120
@@ -343,10 +347,12 @@ main:                                   # @main
 	st.d	$a1, $sp, 96
 	pcalau12i	$a2, %pc_hi20(.L.str.4)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.4)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
 	ld.w	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	st.w	$a2, $a0, 39
 	st.d	$a1, $sp, 88
@@ -378,10 +384,12 @@ main:                                   # @main
 	st.d	$a1, $sp, 64
 	pcalau12i	$a2, %pc_hi20(.L.str.5)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.5)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
 	ld.w	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	st.w	$a2, $a0, 39
 	st.d	$a1, $sp, 56
@@ -413,9 +421,11 @@ main:                                   # @main
 	st.d	$a1, $sp, 32
 	pcalau12i	$a2, %pc_hi20(.L.str.6)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.6)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a2, $a2, 31
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a2, $a0, 31
 	st.d	$a1, $sp, 24
 	stx.b	$zero, $a0, $a1

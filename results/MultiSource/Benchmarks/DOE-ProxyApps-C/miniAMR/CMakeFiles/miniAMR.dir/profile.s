@@ -2415,8 +2415,8 @@ calculate_results:                      # @calculate_results
 	vst	$vr19, $a0, 24
 	vst	$vr19, $a0, 64
 	vst	$vr19, $a0, 576
-	xvrepli.b	$xr19, 0
-	xvst	$xr19, $a0, 544
+	vst	$vr19, $a0, 560
+	vst	$vr19, $a0, 544
 	fst.d	$ft10, $a0, 592
 	fst.d	$ft9, $a0, 600
 	fst.d	$ft6, $a0, 608

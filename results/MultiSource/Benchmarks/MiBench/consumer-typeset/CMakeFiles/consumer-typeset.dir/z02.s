@@ -1408,7 +1408,7 @@ LexGetToken:                            # @LexGetToken
 	ldx.bu	$a1, $s1, $a0
 	andi	$a1, $a1, 254
 	ori	$a2, $zero, 8
-	beq	$a1, $a2, .LBB5_126
+	beq	$a1, $a2, .LBB5_129
 # %bb.90:                               #   in Loop: Header=BB5_87 Depth=1
 	andi	$a1, $a0, 248
 	bne	$a1, $s3, .LBB5_97
@@ -1507,7 +1507,7 @@ LexGetToken:                            # @LexGetToken
 	pcalau12i	$a0, %got_pc_hi20(zz_hold)
 	ld.d	$a0, $a0, %got_pc_lo12(zz_hold)
 	ld.d	$a0, $a0, 0
-	b	.LBB5_129
+	b	.LBB5_132
 .LBB5_103:
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
 	ld.d	$a2, $a1, %got_pc_lo12(zz_hold)
@@ -1547,7 +1547,7 @@ LexGetToken:                            # @LexGetToken
 	ld.d	$fp, $a0, %got_pc_lo12(zz_size)
 	ori	$a0, $zero, 265
 	st.w	$a2, $fp, 0
-	bltu	$a2, $a0, .LBB5_124
+	bltu	$a2, $a0, .LBB5_127
 # %bb.106:
 	pcalau12i	$a0, %pc_hi20(.L.str.30)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.30)
@@ -1563,13 +1563,13 @@ LexGetToken:                            # @LexGetToken
 	ld.d	$a0, $a0, 0
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	b	.LBB5_151
+	b	.LBB5_154
 .LBB5_107:
 	pcalau12i	$a0, %got_pc_hi20(zz_free)
 	ld.d	$a1, $a0, %got_pc_lo12(zz_free)
 	slli.d	$a0, $a2, 3
 	ldx.d	$a0, $a1, $a0
-	beqz	$a0, .LBB5_128
+	beqz	$a0, .LBB5_131
 # %bb.108:
 	alsl.d	$a1, $a2, $a1, 3
 	pcalau12i	$a2, %got_pc_hi20(zz_hold)
@@ -1577,7 +1577,7 @@ LexGetToken:                            # @LexGetToken
 	st.d	$a0, $a2, 0
 	ld.d	$a2, $a0, 0
 	st.d	$a2, $a1, 0
-	b	.LBB5_129
+	b	.LBB5_132
 .LBB5_109:
 	pcalau12i	$a0, %pc_hi20(file_pos)
 	addi.d	$a1, $a0, %pc_lo12(file_pos)
@@ -1612,7 +1612,7 @@ LexGetToken:                            # @LexGetToken
 # %bb.112:                              # %vector.memcheck637
 	sub.d	$a1, $a0, $s0
 	addi.d	$a2, $a1, 64
-	ori	$a1, $zero, 64
+	ori	$a1, $zero, 32
 	bgeu	$a2, $a1, .LBB5_120
 .LBB5_113:
 	move	$a1, $zero
@@ -1646,11 +1646,29 @@ LexGetToken:                            # @LexGetToken
 	st.d	$a1, $a2, %pc_lo12(next_token)
 	b	.LBB5_215
 .LBB5_120:                              # %vector.main.loop.iter.check640
-	bgeu	$s1, $a1, .LBB5_137
+	bgeu	$s1, $a1, .LBB5_140
 # %bb.121:
 	move	$a1, $zero
-	b	.LBB5_141
-.LBB5_122:
+.LBB5_122:                              # %vec.epilog.ph657
+	move	$a4, $a1
+	bstrpick.d	$a1, $s1, 62, 4
+	slli.d	$a1, $a1, 4
+	sub.d	$a2, $a4, $a1
+	add.d	$a3, $a4, $a0
+	addi.d	$a3, $a3, 64
+	add.d	$a4, $s0, $a4
+.LBB5_123:                              # %vec.epilog.vector.body660
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a4, 0
+	vst	$vr0, $a3, 0
+	addi.d	$a2, $a2, 16
+	addi.d	$a3, $a3, 16
+	addi.d	$a4, $a4, 16
+	bnez	$a2, .LBB5_123
+# %bb.124:                              # %vec.epilog.middle.block664
+	bne	$s1, $a1, .LBB5_114
+	b	.LBB5_117
+.LBB5_125:
 	sub.d	$s1, $s2, $s5
 	slli.d	$a0, $s1, 32
 	ori	$a1, $zero, 0
@@ -1662,8 +1680,8 @@ LexGetToken:                            # @LexGetToken
 	ld.d	$fp, $a0, %got_pc_lo12(zz_size)
 	ori	$a0, $zero, 265
 	st.w	$a2, $fp, 0
-	bltu	$a2, $a0, .LBB5_146
-# %bb.123:
+	bltu	$a2, $a0, .LBB5_149
+# %bb.126:
 	pcalau12i	$a0, %pc_hi20(.L.str.30)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.30)
 	pcalau12i	$a0, %pc_hi20(file_pos)
@@ -1679,24 +1697,24 @@ LexGetToken:                            # @LexGetToken
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	b	.LBB5_167
-.LBB5_124:
+	b	.LBB5_170
+.LBB5_127:
 	pcalau12i	$a0, %got_pc_hi20(zz_free)
 	ld.d	$a1, $a0, %got_pc_lo12(zz_free)
 	slli.d	$a0, $a2, 3
 	ldx.d	$a0, $a1, $a0
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	beqz	$a0, .LBB5_150
-# %bb.125:
+	beqz	$a0, .LBB5_153
+# %bb.128:
 	alsl.d	$a1, $a2, $a1, 3
 	pcalau12i	$a2, %got_pc_hi20(zz_hold)
 	ld.d	$a2, $a2, %got_pc_lo12(zz_hold)
 	st.d	$a0, $a2, 0
 	ld.d	$a2, $a0, 0
 	st.d	$a2, $a1, 0
-	b	.LBB5_151
-.LBB5_126:
+	b	.LBB5_154
+.LBB5_129:
 	pcalau12i	$a0, %pc_hi20(.L.str.37)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.37)
 	pcalau12i	$a0, %pc_hi20(file_pos)
@@ -1718,8 +1736,8 @@ LexGetToken:                            # @LexGetToken
 	ld.d	$fp, $a0, %got_pc_lo12(zz_size)
 	ori	$a0, $zero, 265
 	st.w	$a2, $fp, 0
-	bltu	$a2, $a0, .LBB5_148
-# %bb.127:
+	bltu	$a2, $a0, .LBB5_151
+# %bb.130:
 	pcalau12i	$a0, %pc_hi20(.L.str.30)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.30)
 	pcalau12i	$a0, %pc_hi20(file_pos)
@@ -1734,8 +1752,8 @@ LexGetToken:                            # @LexGetToken
 	ld.d	$a0, $a0, 0
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	b	.LBB5_174
-.LBB5_128:
+	b	.LBB5_177
+.LBB5_131:
 	pcalau12i	$a0, %pc_hi20(file_pos)
 	addi.d	$a1, $a0, %pc_lo12(file_pos)
 	move	$a0, $a2
@@ -1744,7 +1762,7 @@ LexGetToken:                            # @LexGetToken
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_hold)
 	st.d	$a0, $a1, 0
-.LBB5_129:
+.LBB5_132:
 	ld.b	$a1, $s6, 0
 	st.b	$a1, $a0, 33
 	ori	$a1, $zero, 11
@@ -1757,93 +1775,93 @@ LexGetToken:                            # @LexGetToken
 	st.d	$a0, $a0, 8
 	st.h	$a1, $a0, 34
 	st.w	$a2, $a0, 36
-	blez	$s2, .LBB5_135
-# %bb.130:                              # %iter.check623
+	blez	$s2, .LBB5_138
+# %bb.133:                              # %iter.check623
 	ori	$a1, $zero, 16
-	bltu	$s2, $a1, .LBB5_132
-# %bb.131:                              # %vector.memcheck607
+	bltu	$s2, $a1, .LBB5_135
+# %bb.134:                              # %vector.memcheck607
 	sub.d	$a1, $a0, $s0
 	addi.d	$a2, $a1, 64
-	ori	$a1, $zero, 64
+	ori	$a1, $zero, 32
 	bgeu	$a2, $a1, .LBB5_144
-.LBB5_132:
+.LBB5_135:
 	move	$a1, $zero
 	move	$s3, $s4
 	move	$s4, $s8
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-.LBB5_133:                              # %vec.epilog.scalar.ph624.preheader
+.LBB5_136:                              # %vec.epilog.scalar.ph624.preheader
 	add.d	$a2, $a1, $a0
 	addi.d	$a2, $a2, 64
 	add.d	$a1, $s0, $a1
 	sub.d	$a3, $a1, $s5
 	.p2align	4, , 16
-.LBB5_134:                              # %vec.epilog.scalar.ph624
+.LBB5_137:                              # %vec.epilog.scalar.ph624
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$a4, $a1, 0
 	st.b	$a4, $a2, 0
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 1
 	addi.d	$a1, $a1, 1
-	bnez	$a3, .LBB5_134
-	b	.LBB5_136
-.LBB5_135:
+	bnez	$a3, .LBB5_137
+	b	.LBB5_139
+.LBB5_138:
 	move	$s2, $zero
 	move	$s3, $s4
 	move	$s4, $s8
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-.LBB5_136:                              # %._crit_edge355
+.LBB5_139:                              # %._crit_edge355
 	add.d	$a1, $a0, $s2
 	st.b	$zero, $a1, 64
 	b	.LBB5_215
-.LBB5_137:                              # %vector.ph642
-	andi	$a2, $s1, 48
-	bstrpick.d	$a1, $s1, 62, 6
-	slli.d	$a1, $a1, 6
-	addi.d	$a3, $a0, 96
-	addi.d	$a4, $s0, 32
+.LBB5_140:                              # %vector.ph642
+	andi	$a2, $s1, 16
+	bstrpick.d	$a1, $s1, 62, 5
+	slli.d	$a1, $a1, 5
+	addi.d	$a3, $a0, 80
+	addi.d	$a4, $s0, 16
 	move	$a5, $a1
-.LBB5_138:                              # %vector.body645
+.LBB5_141:                              # %vector.body645
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a5, $a5, -64
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB5_138
-# %bb.139:                              # %middle.block650
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a3, -16
+	vst	$vr1, $a3, 0
+	addi.d	$a5, $a5, -32
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB5_141
+# %bb.142:                              # %middle.block650
 	beq	$s1, $a1, .LBB5_117
-# %bb.140:                              # %vec.epilog.iter.check655
-	beqz	$a2, .LBB5_114
-.LBB5_141:                              # %vec.epilog.ph657
+# %bb.143:                              # %vec.epilog.iter.check655
+	bnez	$a2, .LBB5_122
+	b	.LBB5_114
+.LBB5_144:                              # %vector.main.loop.iter.check610
+	move	$s3, $s4
+	bgeu	$s2, $a1, .LBB5_165
+# %bb.145:
+	move	$a1, $zero
+	move	$s4, $s8
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+.LBB5_146:                              # %vec.epilog.ph627
 	move	$a4, $a1
-	bstrpick.d	$a1, $s1, 62, 4
+	bstrpick.d	$a1, $s2, 62, 4
 	slli.d	$a1, $a1, 4
 	sub.d	$a2, $a4, $a1
 	add.d	$a3, $a4, $a0
 	addi.d	$a3, $a3, 64
 	add.d	$a4, $s0, $a4
-.LBB5_142:                              # %vec.epilog.vector.body660
+.LBB5_147:                              # %vec.epilog.vector.body630
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a4, 0
 	vst	$vr0, $a3, 0
 	addi.d	$a2, $a2, 16
 	addi.d	$a3, $a3, 16
 	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB5_142
-# %bb.143:                              # %vec.epilog.middle.block664
-	beq	$s1, $a1, .LBB5_117
-	b	.LBB5_114
-.LBB5_144:                              # %vector.main.loop.iter.check610
-	move	$s3, $s4
-	bgeu	$s2, $a1, .LBB5_159
-# %bb.145:
-	move	$a1, $zero
-	move	$s4, $s8
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	b	.LBB5_163
-.LBB5_146:
+	bnez	$a2, .LBB5_147
+# %bb.148:                              # %vec.epilog.middle.block634
+	bne	$s2, $a1, .LBB5_136
+	b	.LBB5_139
+.LBB5_149:
 	pcalau12i	$a0, %got_pc_hi20(zz_free)
 	ld.d	$a1, $a0, %got_pc_lo12(zz_free)
 	slli.d	$a0, $a2, 3
@@ -1851,32 +1869,32 @@ LexGetToken:                            # @LexGetToken
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	beqz	$a0, .LBB5_166
-# %bb.147:
+	beqz	$a0, .LBB5_169
+# %bb.150:
 	alsl.d	$a1, $a2, $a1, 3
 	pcalau12i	$a2, %got_pc_hi20(zz_hold)
 	ld.d	$a2, $a2, %got_pc_lo12(zz_hold)
 	st.d	$a0, $a2, 0
 	ld.d	$a2, $a0, 0
 	st.d	$a2, $a1, 0
-	b	.LBB5_167
-.LBB5_148:
+	b	.LBB5_170
+.LBB5_151:
 	pcalau12i	$a0, %got_pc_hi20(zz_free)
 	ld.d	$a1, $a0, %got_pc_lo12(zz_free)
 	slli.d	$a0, $a2, 3
 	ldx.d	$a0, $a1, $a0
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	beqz	$a0, .LBB5_173
-# %bb.149:
+	beqz	$a0, .LBB5_176
+# %bb.152:
 	alsl.d	$a1, $a2, $a1, 3
 	pcalau12i	$a2, %got_pc_hi20(zz_hold)
 	ld.d	$a2, $a2, %got_pc_lo12(zz_hold)
 	st.d	$a0, $a2, 0
 	ld.d	$a2, $a0, 0
 	st.d	$a2, $a1, 0
-	b	.LBB5_174
-.LBB5_150:
+	b	.LBB5_177
+.LBB5_153:
 	pcalau12i	$a0, %pc_hi20(file_pos)
 	addi.d	$a1, $a0, %pc_lo12(file_pos)
 	move	$a0, $a2
@@ -1885,7 +1903,7 @@ LexGetToken:                            # @LexGetToken
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_hold)
 	st.d	$a0, $a1, 0
-.LBB5_151:
+.LBB5_154:
 	ld.b	$a1, $fp, 0
 	st.b	$a1, $a0, 33
 	ori	$a1, $zero, 12
@@ -1898,75 +1916,76 @@ LexGetToken:                            # @LexGetToken
 	st.d	$a0, $a0, 8
 	st.h	$a1, $a0, 34
 	st.w	$a2, $a0, 36
-	blez	$s3, .LBB5_154
-# %bb.152:                              # %iter.check593
+	blez	$s3, .LBB5_157
+# %bb.155:                              # %iter.check593
 	ori	$a1, $zero, 16
-	bgeu	$s3, $a1, .LBB5_155
-# %bb.153:
-	move	$a1, $zero
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
-	b	.LBB5_189
-.LBB5_154:
-	move	$s3, $zero
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
-	b	.LBB5_191
-.LBB5_155:                              # %vector.memcheck577
-	sub.d	$a1, $a0, $s0
-	addi.d	$a2, $a1, 63
-	ori	$a1, $zero, 64
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
-	bgeu	$a2, $a1, .LBB5_157
+	bgeu	$s3, $a1, .LBB5_158
 # %bb.156:
 	move	$a1, $zero
-	b	.LBB5_189
-.LBB5_157:                              # %vector.main.loop.iter.check580
-	bgeu	$s3, $a1, .LBB5_182
-# %bb.158:
+	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
+	b	.LBB5_192
+.LBB5_157:
+	move	$s3, $zero
+	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
+	b	.LBB5_194
+.LBB5_158:                              # %vector.memcheck577
+	sub.d	$a1, $a0, $s0
+	addi.d	$a2, $a1, 63
+	ori	$a1, $zero, 32
+	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
+	bgeu	$a2, $a1, .LBB5_160
+# %bb.159:
 	move	$a1, $zero
-	b	.LBB5_186
-.LBB5_159:                              # %vector.ph612
-	andi	$a2, $s2, 48
-	bstrpick.d	$a1, $s2, 62, 6
-	slli.d	$a1, $a1, 6
-	addi.d	$a3, $a0, 96
-	addi.d	$a4, $s0, 32
-	move	$a5, $a1
-	move	$s4, $s8
-.LBB5_160:                              # %vector.body615
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a5, $a5, -64
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB5_160
-# %bb.161:                              # %middle.block620
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	beq	$s2, $a1, .LBB5_136
-# %bb.162:                              # %vec.epilog.iter.check625
-	beqz	$a2, .LBB5_133
-.LBB5_163:                              # %vec.epilog.ph627
+	b	.LBB5_192
+.LBB5_160:                              # %vector.main.loop.iter.check580
+	bgeu	$s3, $a1, .LBB5_188
+# %bb.161:
+	move	$a1, $zero
+.LBB5_162:                              # %vec.epilog.ph597
 	move	$a4, $a1
-	bstrpick.d	$a1, $s2, 62, 4
+	bstrpick.d	$a1, $s3, 62, 4
 	slli.d	$a1, $a1, 4
 	sub.d	$a2, $a4, $a1
 	add.d	$a3, $a4, $a0
 	addi.d	$a3, $a3, 64
-	add.d	$a4, $s0, $a4
-.LBB5_164:                              # %vec.epilog.vector.body630
+	add.d	$a4, $a4, $s0
+	addi.d	$a4, $a4, 1
+.LBB5_163:                              # %vec.epilog.vector.body600
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a4, 0
 	vst	$vr0, $a3, 0
 	addi.d	$a2, $a2, 16
 	addi.d	$a3, $a3, 16
 	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB5_164
-# %bb.165:                              # %vec.epilog.middle.block634
-	bne	$s2, $a1, .LBB5_133
-	b	.LBB5_136
-.LBB5_166:
+	bnez	$a2, .LBB5_163
+# %bb.164:                              # %vec.epilog.middle.block604
+	bne	$s3, $a1, .LBB5_192
+	b	.LBB5_194
+.LBB5_165:                              # %vector.ph612
+	andi	$a2, $s2, 16
+	bstrpick.d	$a1, $s2, 62, 5
+	slli.d	$a1, $a1, 5
+	addi.d	$a3, $a0, 80
+	addi.d	$a4, $s0, 16
+	move	$a5, $a1
+	move	$s4, $s8
+.LBB5_166:                              # %vector.body615
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a3, -16
+	vst	$vr1, $a3, 0
+	addi.d	$a5, $a5, -32
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB5_166
+# %bb.167:                              # %middle.block620
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	beq	$s2, $a1, .LBB5_139
+# %bb.168:                              # %vec.epilog.iter.check625
+	beqz	$a2, .LBB5_136
+	b	.LBB5_146
+.LBB5_169:
 	pcalau12i	$a0, %pc_hi20(file_pos)
 	addi.d	$a1, $a0, %pc_lo12(file_pos)
 	move	$a0, $a2
@@ -1975,7 +1994,7 @@ LexGetToken:                            # @LexGetToken
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_hold)
 	st.d	$a0, $a1, 0
-.LBB5_167:
+.LBB5_170:
 	ld.b	$a1, $fp, 0
 	st.b	$a1, $a0, 33
 	ori	$a1, $zero, 12
@@ -1988,28 +2007,28 @@ LexGetToken:                            # @LexGetToken
 	st.d	$a0, $a0, 8
 	st.h	$a1, $a0, 34
 	st.w	$a2, $a0, 36
-	blez	$s1, .LBB5_170
-# %bb.168:                              # %iter.check563
+	blez	$s1, .LBB5_173
+# %bb.171:                              # %iter.check563
 	ori	$a1, $zero, 16
-	bgeu	$s1, $a1, .LBB5_171
-# %bb.169:
-	move	$a1, $zero
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
-	b	.LBB5_201
-.LBB5_170:
-	move	$s1, $zero
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
-	b	.LBB5_203
-.LBB5_171:                              # %vector.memcheck547
-	sub.d	$a1, $a0, $s0
-	addi.d	$a2, $a1, 63
-	ori	$a1, $zero, 64
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
-	bgeu	$a2, $a1, .LBB5_180
+	bgeu	$s1, $a1, .LBB5_174
 # %bb.172:
 	move	$a1, $zero
-	b	.LBB5_201
+	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
+	b	.LBB5_204
 .LBB5_173:
+	move	$s1, $zero
+	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
+	b	.LBB5_206
+.LBB5_174:                              # %vector.memcheck547
+	sub.d	$a1, $a0, $s0
+	addi.d	$a2, $a1, 63
+	ori	$a1, $zero, 32
+	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
+	bgeu	$a2, $a1, .LBB5_183
+# %bb.175:
+	move	$a1, $zero
+	b	.LBB5_204
+.LBB5_176:
 	pcalau12i	$a0, %pc_hi20(file_pos)
 	addi.d	$a1, $a0, %pc_lo12(file_pos)
 	move	$a0, $a2
@@ -2018,7 +2037,7 @@ LexGetToken:                            # @LexGetToken
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_hold)
 	st.d	$a0, $a1, 0
-.LBB5_174:
+.LBB5_177:
 	ld.b	$a1, $fp, 0
 	st.b	$a1, $a0, 33
 	ori	$a1, $zero, 12
@@ -2031,119 +2050,32 @@ LexGetToken:                            # @LexGetToken
 	st.d	$a0, $a0, 8
 	st.h	$a1, $a0, 34
 	st.w	$a2, $a0, 36
-	blez	$s3, .LBB5_177
-# %bb.175:                              # %iter.check
+	blez	$s3, .LBB5_180
+# %bb.178:                              # %iter.check
 	ori	$a1, $zero, 16
-	bgeu	$s3, $a1, .LBB5_178
-# %bb.176:
+	bgeu	$s3, $a1, .LBB5_181
+# %bb.179:
 	move	$a1, $zero
 	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
 	b	.LBB5_211
-.LBB5_177:
+.LBB5_180:
 	move	$s3, $zero
 	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
 	b	.LBB5_213
-.LBB5_178:                              # %vector.memcheck
+.LBB5_181:                              # %vector.memcheck
 	sub.d	$a1, $a0, $s0
 	addi.d	$a2, $a1, 63
-	ori	$a1, $zero, 64
+	ori	$a1, $zero, 32
 	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
-	bgeu	$a2, $a1, .LBB5_192
-# %bb.179:
+	bgeu	$a2, $a1, .LBB5_195
+# %bb.182:
 	move	$a1, $zero
 	b	.LBB5_211
-.LBB5_180:                              # %vector.main.loop.iter.check550
-	bgeu	$s1, $a1, .LBB5_194
-# %bb.181:
+.LBB5_183:                              # %vector.main.loop.iter.check550
+	bgeu	$s1, $a1, .LBB5_200
+# %bb.184:
 	move	$a1, $zero
-	b	.LBB5_198
-.LBB5_182:                              # %vector.ph582
-	andi	$a2, $s3, 48
-	bstrpick.d	$a1, $s3, 62, 6
-	slli.d	$a1, $a1, 6
-	addi.d	$a3, $a0, 96
-	addi.d	$a4, $s0, 33
-	move	$a5, $a1
-.LBB5_183:                              # %vector.body585
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a5, $a5, -64
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB5_183
-# %bb.184:                              # %middle.block590
-	beq	$s3, $a1, .LBB5_191
-# %bb.185:                              # %vec.epilog.iter.check595
-	beqz	$a2, .LBB5_189
-.LBB5_186:                              # %vec.epilog.ph597
-	move	$a4, $a1
-	bstrpick.d	$a1, $s3, 62, 4
-	slli.d	$a1, $a1, 4
-	sub.d	$a2, $a4, $a1
-	add.d	$a3, $a4, $a0
-	addi.d	$a3, $a3, 64
-	add.d	$a4, $a4, $s0
-	addi.d	$a4, $a4, 1
-.LBB5_187:                              # %vec.epilog.vector.body600
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a3, 0
-	addi.d	$a2, $a2, 16
-	addi.d	$a3, $a3, 16
-	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB5_187
-# %bb.188:                              # %vec.epilog.middle.block604
-	beq	$s3, $a1, .LBB5_191
-.LBB5_189:                              # %vec.epilog.scalar.ph594.preheader
-	add.d	$a2, $a1, $a0
-	addi.d	$a2, $a2, 64
-	add.d	$a1, $a1, $s0
-	addi.d	$a1, $a1, 1
-	sub.d	$a3, $a1, $s2
-	.p2align	4, , 16
-.LBB5_190:                              # %vec.epilog.scalar.ph594
-                                        # =>This Inner Loop Header: Depth=1
-	ld.b	$a4, $a1, 0
-	st.b	$a4, $a2, 0
-	addi.d	$a2, $a2, 1
-	addi.d	$a3, $a3, 1
-	addi.d	$a1, $a1, 1
-	bnez	$a3, .LBB5_190
-.LBB5_191:                              # %._crit_edge350
-	add.d	$a1, $a0, $s3
-	st.b	$zero, $a1, 64
-	move	$s5, $s7
-	b	.LBB5_214
-.LBB5_192:                              # %vector.main.loop.iter.check
-	bgeu	$s3, $a1, .LBB5_204
-# %bb.193:
-	move	$a1, $zero
-	b	.LBB5_208
-.LBB5_194:                              # %vector.ph552
-	andi	$a2, $s1, 48
-	bstrpick.d	$a1, $s1, 62, 6
-	slli.d	$a1, $a1, 6
-	addi.d	$a3, $a0, 96
-	addi.d	$a4, $s0, 33
-	move	$a5, $a1
-.LBB5_195:                              # %vector.body555
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a5, $a5, -64
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB5_195
-# %bb.196:                              # %middle.block560
-	beq	$s1, $a1, .LBB5_203
-# %bb.197:                              # %vec.epilog.iter.check565
-	beqz	$a2, .LBB5_201
-.LBB5_198:                              # %vec.epilog.ph567
+.LBB5_185:                              # %vec.epilog.ph567
 	move	$a4, $a1
 	bstrpick.d	$a1, $s1, 62, 4
 	slli.d	$a1, $a1, 4
@@ -2152,57 +2084,63 @@ LexGetToken:                            # @LexGetToken
 	addi.d	$a3, $a3, 64
 	add.d	$a4, $a4, $s0
 	addi.d	$a4, $a4, 1
-.LBB5_199:                              # %vec.epilog.vector.body570
+.LBB5_186:                              # %vec.epilog.vector.body570
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a4, 0
 	vst	$vr0, $a3, 0
 	addi.d	$a2, $a2, 16
 	addi.d	$a3, $a3, 16
 	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB5_199
-# %bb.200:                              # %vec.epilog.middle.block574
-	beq	$s1, $a1, .LBB5_203
-.LBB5_201:                              # %vec.epilog.scalar.ph564.preheader
+	bnez	$a2, .LBB5_186
+# %bb.187:                              # %vec.epilog.middle.block574
+	bne	$s1, $a1, .LBB5_204
+	b	.LBB5_206
+.LBB5_188:                              # %vector.ph582
+	andi	$a2, $s3, 16
+	bstrpick.d	$a1, $s3, 62, 5
+	slli.d	$a1, $a1, 5
+	addi.d	$a3, $a0, 80
+	addi.d	$a4, $s0, 17
+	move	$a5, $a1
+.LBB5_189:                              # %vector.body585
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a3, -16
+	vst	$vr1, $a3, 0
+	addi.d	$a5, $a5, -32
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB5_189
+# %bb.190:                              # %middle.block590
+	beq	$s3, $a1, .LBB5_194
+# %bb.191:                              # %vec.epilog.iter.check595
+	bnez	$a2, .LBB5_162
+.LBB5_192:                              # %vec.epilog.scalar.ph594.preheader
 	add.d	$a2, $a1, $a0
 	addi.d	$a2, $a2, 64
 	add.d	$a1, $a1, $s0
 	addi.d	$a1, $a1, 1
 	sub.d	$a3, $a1, $s2
-.LBB5_202:                              # %vec.epilog.scalar.ph564
+	.p2align	4, , 16
+.LBB5_193:                              # %vec.epilog.scalar.ph594
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$a4, $a1, 0
 	st.b	$a4, $a2, 0
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 1
 	addi.d	$a1, $a1, 1
-	bnez	$a3, .LBB5_202
-.LBB5_203:                              # %._crit_edge345
-	add.d	$a1, $a0, $s1
+	bnez	$a3, .LBB5_193
+.LBB5_194:                              # %._crit_edge350
+	add.d	$a1, $a0, $s3
 	st.b	$zero, $a1, 64
-	move	$s5, $s6
-	b	.LBB5_215
-.LBB5_204:                              # %vector.ph
-	andi	$a2, $s3, 48
-	bstrpick.d	$a1, $s3, 62, 6
-	slli.d	$a1, $a1, 6
-	addi.d	$a3, $a0, 96
-	addi.d	$a4, $s0, 33
-	move	$a5, $a1
-.LBB5_205:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a5, $a5, -64
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB5_205
-# %bb.206:                              # %middle.block
-	beq	$s3, $a1, .LBB5_213
-# %bb.207:                              # %vec.epilog.iter.check
-	beqz	$a2, .LBB5_211
-.LBB5_208:                              # %vec.epilog.ph
+	move	$s5, $s7
+	b	.LBB5_214
+.LBB5_195:                              # %vector.main.loop.iter.check
+	bgeu	$s3, $a1, .LBB5_207
+# %bb.196:
+	move	$a1, $zero
+.LBB5_197:                              # %vec.epilog.ph
 	move	$a4, $a1
 	bstrpick.d	$a1, $s3, 62, 4
 	slli.d	$a1, $a1, 4
@@ -2211,16 +2149,78 @@ LexGetToken:                            # @LexGetToken
 	addi.d	$a3, $a3, 64
 	add.d	$a4, $a4, $s0
 	addi.d	$a4, $a4, 1
-.LBB5_209:                              # %vec.epilog.vector.body
+.LBB5_198:                              # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a4, 0
 	vst	$vr0, $a3, 0
 	addi.d	$a2, $a2, 16
 	addi.d	$a3, $a3, 16
 	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB5_209
-# %bb.210:                              # %vec.epilog.middle.block
+	bnez	$a2, .LBB5_198
+# %bb.199:                              # %vec.epilog.middle.block
+	bne	$s3, $a1, .LBB5_211
+	b	.LBB5_213
+.LBB5_200:                              # %vector.ph552
+	andi	$a2, $s1, 16
+	bstrpick.d	$a1, $s1, 62, 5
+	slli.d	$a1, $a1, 5
+	addi.d	$a3, $a0, 80
+	addi.d	$a4, $s0, 17
+	move	$a5, $a1
+.LBB5_201:                              # %vector.body555
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a3, -16
+	vst	$vr1, $a3, 0
+	addi.d	$a5, $a5, -32
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB5_201
+# %bb.202:                              # %middle.block560
+	beq	$s1, $a1, .LBB5_206
+# %bb.203:                              # %vec.epilog.iter.check565
+	bnez	$a2, .LBB5_185
+.LBB5_204:                              # %vec.epilog.scalar.ph564.preheader
+	add.d	$a2, $a1, $a0
+	addi.d	$a2, $a2, 64
+	add.d	$a1, $a1, $s0
+	addi.d	$a1, $a1, 1
+	sub.d	$a3, $a1, $s2
+.LBB5_205:                              # %vec.epilog.scalar.ph564
+                                        # =>This Inner Loop Header: Depth=1
+	ld.b	$a4, $a1, 0
+	st.b	$a4, $a2, 0
+	addi.d	$a2, $a2, 1
+	addi.d	$a3, $a3, 1
+	addi.d	$a1, $a1, 1
+	bnez	$a3, .LBB5_205
+.LBB5_206:                              # %._crit_edge345
+	add.d	$a1, $a0, $s1
+	st.b	$zero, $a1, 64
+	move	$s5, $s6
+	b	.LBB5_215
+.LBB5_207:                              # %vector.ph
+	andi	$a2, $s3, 16
+	bstrpick.d	$a1, $s3, 62, 5
+	slli.d	$a1, $a1, 5
+	addi.d	$a3, $a0, 80
+	addi.d	$a4, $s0, 17
+	move	$a5, $a1
+.LBB5_208:                              # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a3, -16
+	vst	$vr1, $a3, 0
+	addi.d	$a5, $a5, -32
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB5_208
+# %bb.209:                              # %middle.block
 	beq	$s3, $a1, .LBB5_213
+# %bb.210:                              # %vec.epilog.iter.check
+	bnez	$a2, .LBB5_197
 .LBB5_211:                              # %vec.epilog.scalar.ph.preheader
 	add.d	$a2, $a1, $a0
 	addi.d	$a2, $a2, 64
@@ -2300,7 +2300,7 @@ LexGetToken:                            # @LexGetToken
 .LJTI5_1:
 	.word	.LBB5_87-.LJTI5_1
 	.word	.LBB5_87-.LJTI5_1
-	.word	.LBB5_122-.LJTI5_1
+	.word	.LBB5_125-.LJTI5_1
 	.word	.LBB5_89-.LJTI5_1
 	.word	.LBB5_87-.LJTI5_1
 	.word	.LBB5_87-.LJTI5_1

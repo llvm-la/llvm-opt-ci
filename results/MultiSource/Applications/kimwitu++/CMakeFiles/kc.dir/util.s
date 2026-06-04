@@ -3931,9 +3931,9 @@ _ZN2kc15collect_stringsEv:              # @_ZN2kc15collect_stringsEv
 	blez	$s1, .LBB42_11
 # %bb.2:                                # %.lr.ph.us.preheader
 	move	$a0, $zero
-	bstrpick.d	$a1, $s4, 30, 3
-	slli.d	$s5, $a1, 3
-	ori	$s6, $zero, 8
+	bstrpick.d	$a1, $s4, 30, 2
+	slli.d	$s5, $a1, 2
+	ori	$s6, $zero, 4
 	b	.LBB42_4
 	.p2align	4, , 16
 .LBB42_3:                               # %._crit_edge.us
@@ -3957,17 +3957,17 @@ _ZN2kc15collect_stringsEv:              # @_ZN2kc15collect_stringsEv
 	.p2align	4, , 16
 .LBB42_6:                               # %vector.body.preheader
                                         #   in Loop: Header=BB42_4 Depth=1
-	addi.d	$a1, $a0, 32
+	addi.d	$a1, $a0, 16
 	move	$a2, $s5
-	xvreplgr2vr.d	$xr0, $s2
+	vreplgr2vr.d	$vr0, $s2
 	.p2align	4, , 16
 .LBB42_7:                               # %vector.body
                                         #   Parent Loop BB42_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvst	$xr0, $a1, -32
-	xvst	$xr0, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vst	$vr0, $a1, -16
+	vst	$vr0, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB42_7
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB42_4 Depth=1

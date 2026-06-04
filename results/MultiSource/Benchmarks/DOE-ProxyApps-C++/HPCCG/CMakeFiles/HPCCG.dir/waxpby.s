@@ -6,15 +6,15 @@
 	.type	_Z6waxpbyidPKddS0_Pd,@function
 _Z6waxpbyidPKddS0_Pd:                   # @_Z6waxpbyidPKddS0_Pd
 # %bb.0:
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
 	vldi	$vr2, -912
 	fcmp.cune.d	$fcc0, $fa0, $fa2
-                                        # kill: def $f1_64 killed $f1_64 def $xr1
+                                        # kill: def $f1_64 killed $f1_64 def $vr1
 	bcnez	$fcc0, .LBB0_6
 # %bb.1:                                # %.preheader
 	blez	$a0, .LBB0_22
 # %bb.2:                                # %.lr.ph44.preheader
-	ori	$a4, $zero, 8
+	ori	$a4, $zero, 6
 	bgeu	$a0, $a4, .LBB0_12
 # %bb.3:
 	move	$a4, $zero
@@ -43,7 +43,7 @@ _Z6waxpbyidPKddS0_Pd:                   # @_Z6waxpbyidPKddS0_Pd
 # %bb.7:                                # %.preheader36
 	blez	$a0, .LBB0_22
 # %bb.8:                                # %.lr.ph42.preheader
-	ori	$a4, $zero, 8
+	ori	$a4, $zero, 6
 	bgeu	$a0, $a4, .LBB0_23
 # %bb.9:
 	move	$a4, $zero
@@ -68,37 +68,37 @@ _Z6waxpbyidPKddS0_Pd:                   # @_Z6waxpbyidPKddS0_Pd
 	b	.LBB0_22
 .LBB0_12:                               # %vector.memcheck88
 	sub.d	$a6, $a3, $a1
-	ori	$a5, $zero, 64
+	ori	$a5, $zero, 32
 	move	$a4, $zero
 	bltu	$a6, $a5, .LBB0_4
 # %bb.13:                               # %vector.memcheck88
 	sub.d	$a6, $a3, $a2
 	bltu	$a6, $a5, .LBB0_4
 # %bb.14:                               # %vector.ph94
-	bstrpick.d	$a4, $a0, 30, 3
-	slli.d	$a4, $a4, 3
-	xvreplve0.d	$xr0, $xr1
-	addi.d	$a5, $a3, 32
-	addi.d	$a6, $a2, 32
-	addi.d	$a7, $a1, 32
+	bstrpick.d	$a4, $a0, 30, 2
+	slli.d	$a4, $a4, 2
+	vreplvei.d	$vr0, $vr1, 0
+	addi.d	$a5, $a3, 16
+	addi.d	$a6, $a2, 16
+	addi.d	$a7, $a1, 16
 	move	$t0, $a4
 	.p2align	4, , 16
 .LBB0_15:                               # %vector.body99
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a6, -32
-	xvld	$xr3, $a6, 0
-	xvld	$xr4, $a7, -32
-	xvld	$xr5, $a7, 0
-	xvfmul.d	$xr2, $xr0, $xr2
-	xvfmul.d	$xr3, $xr0, $xr3
-	xvfadd.d	$xr2, $xr4, $xr2
-	xvfadd.d	$xr3, $xr5, $xr3
-	xvst	$xr2, $a5, -32
-	xvst	$xr3, $a5, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	addi.d	$a7, $a7, 64
+	vld	$vr2, $a6, -16
+	vld	$vr3, $a6, 0
+	vld	$vr4, $a7, -16
+	vld	$vr5, $a7, 0
+	vfmul.d	$vr2, $vr0, $vr2
+	vfmul.d	$vr3, $vr0, $vr3
+	vfadd.d	$vr2, $vr4, $vr2
+	vfadd.d	$vr3, $vr5, $vr3
+	vst	$vr2, $a5, -16
+	vst	$vr3, $a5, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	addi.d	$a7, $a7, 32
 	bnez	$t0, .LBB0_15
 # %bb.16:                               # %middle.block106
 	bne	$a4, $a0, .LBB0_4
@@ -106,7 +106,7 @@ _Z6waxpbyidPKddS0_Pd:                   # @_Z6waxpbyidPKddS0_Pd
 .LBB0_17:                               # %.preheader38
 	blez	$a0, .LBB0_22
 # %bb.18:                               # %.lr.ph.preheader
-	ori	$a4, $zero, 8
+	ori	$a4, $zero, 4
 	bgeu	$a0, $a4, .LBB0_28
 # %bb.19:
 	move	$a4, $zero
@@ -134,77 +134,77 @@ _Z6waxpbyidPKddS0_Pd:                   # @_Z6waxpbyidPKddS0_Pd
 	ret
 .LBB0_23:                               # %vector.memcheck67
 	sub.d	$a6, $a3, $a1
-	ori	$a5, $zero, 64
+	ori	$a5, $zero, 32
 	move	$a4, $zero
 	bltu	$a6, $a5, .LBB0_10
 # %bb.24:                               # %vector.memcheck67
 	sub.d	$a6, $a3, $a2
 	bltu	$a6, $a5, .LBB0_10
 # %bb.25:                               # %vector.ph73
-	bstrpick.d	$a4, $a0, 30, 3
-	slli.d	$a4, $a4, 3
-	xvreplve0.d	$xr1, $xr0
-	addi.d	$a5, $a3, 32
-	addi.d	$a6, $a2, 32
-	addi.d	$a7, $a1, 32
+	bstrpick.d	$a4, $a0, 30, 2
+	slli.d	$a4, $a4, 2
+	vreplvei.d	$vr1, $vr0, 0
+	addi.d	$a5, $a3, 16
+	addi.d	$a6, $a2, 16
+	addi.d	$a7, $a1, 16
 	move	$t0, $a4
 	.p2align	4, , 16
 .LBB0_26:                               # %vector.body78
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a7, -32
-	xvld	$xr3, $a7, 0
-	xvld	$xr4, $a6, -32
-	xvld	$xr5, $a6, 0
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvfadd.d	$xr2, $xr2, $xr4
-	xvfadd.d	$xr3, $xr3, $xr5
-	xvst	$xr2, $a5, -32
-	xvst	$xr3, $a5, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	addi.d	$a7, $a7, 64
+	vld	$vr2, $a7, -16
+	vld	$vr3, $a7, 0
+	vld	$vr4, $a6, -16
+	vld	$vr5, $a6, 0
+	vfmul.d	$vr2, $vr1, $vr2
+	vfmul.d	$vr3, $vr1, $vr3
+	vfadd.d	$vr2, $vr2, $vr4
+	vfadd.d	$vr3, $vr3, $vr5
+	vst	$vr2, $a5, -16
+	vst	$vr3, $a5, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	addi.d	$a7, $a7, 32
 	bnez	$t0, .LBB0_26
 # %bb.27:                               # %middle.block85
 	bne	$a4, $a0, .LBB0_10
 	b	.LBB0_22
 .LBB0_28:                               # %vector.memcheck
 	sub.d	$a6, $a3, $a1
-	ori	$a5, $zero, 64
+	ori	$a5, $zero, 32
 	move	$a4, $zero
 	bltu	$a6, $a5, .LBB0_20
 # %bb.29:                               # %vector.memcheck
 	sub.d	$a6, $a3, $a2
 	bltu	$a6, $a5, .LBB0_20
 # %bb.30:                               # %vector.ph
-	bstrpick.d	$a4, $a0, 30, 3
-	slli.d	$a4, $a4, 3
-	xvreplve0.d	$xr2, $xr0
-	xvreplve0.d	$xr3, $xr1
-	addi.d	$a5, $a3, 32
-	addi.d	$a6, $a2, 32
-	addi.d	$a7, $a1, 32
+	bstrpick.d	$a4, $a0, 30, 2
+	slli.d	$a4, $a4, 2
+	vreplvei.d	$vr2, $vr0, 0
+	vreplvei.d	$vr3, $vr1, 0
+	addi.d	$a5, $a3, 16
+	addi.d	$a6, $a2, 16
+	addi.d	$a7, $a1, 16
 	move	$t0, $a4
 	.p2align	4, , 16
 .LBB0_31:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr4, $a7, -32
-	xvld	$xr5, $a7, 0
-	xvld	$xr6, $a6, -32
-	xvld	$xr7, $a6, 0
-	xvfmul.d	$xr4, $xr2, $xr4
-	xvfmul.d	$xr5, $xr2, $xr5
-	xvfmul.d	$xr6, $xr3, $xr6
-	xvfmul.d	$xr7, $xr3, $xr7
-	xvfadd.d	$xr4, $xr4, $xr6
-	xvfadd.d	$xr5, $xr5, $xr7
-	xvst	$xr4, $a5, -32
-	xvst	$xr5, $a5, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	addi.d	$a7, $a7, 64
+	vld	$vr4, $a7, -16
+	vld	$vr5, $a7, 0
+	vld	$vr6, $a6, -16
+	vld	$vr7, $a6, 0
+	vfmul.d	$vr4, $vr2, $vr4
+	vfmul.d	$vr5, $vr2, $vr5
+	vfmul.d	$vr6, $vr3, $vr6
+	vfmul.d	$vr7, $vr3, $vr7
+	vfadd.d	$vr4, $vr4, $vr6
+	vfadd.d	$vr5, $vr5, $vr7
+	vst	$vr4, $a5, -16
+	vst	$vr5, $a5, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	addi.d	$a7, $a7, 32
 	bnez	$t0, .LBB0_31
 # %bb.32:                               # %middle.block
 	bne	$a4, $a0, .LBB0_20

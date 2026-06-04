@@ -162,13 +162,13 @@ hypre_SeqVectorSetDataOwner:            # @hypre_SeqVectorSetDataOwner
 	.type	hypre_SeqVectorRead,@function
 hypre_SeqVectorRead:                    # @hypre_SeqVectorRead
 # %bb.0:                                # %hypre_SeqVectorInitialize.exit
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L.str)
 	addi.d	$a1, $a1, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(fopen)
@@ -176,11 +176,11 @@ hypre_SeqVectorRead:                    # @hypre_SeqVectorRead
 	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
-	addi.d	$a2, $sp, 44
+	addi.d	$a2, $sp, 12
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$s2, $sp, 44
+	ld.w	$s2, $sp, 12
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 32
 	ori	$s3, $zero, 1
@@ -188,18 +188,16 @@ hypre_SeqVectorRead:                    # @hypre_SeqVectorRead
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	st.d	$zero, $a0, 0
-	st.w	$zero, $sp, 28
+	st.w	$s2, $a0, 8
+	st.w	$zero, $a0, 20
 	ori	$a0, $zero, 1
 	lu32i.d	$a0, 1
-	st.d	$a0, $sp, 20
-	st.w	$s2, $sp, 16
-	vld	$vr0, $sp, 16
-	vst	$vr0, $s0, 8
+	st.d	$a0, $s0, 12
 	ori	$a1, $zero, 8
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 44
+	ld.w	$a1, $sp, 12
 	st.d	$a0, $s0, 0
 	st.w	$s2, $s0, 24
 	st.w	$s3, $s0, 28
@@ -217,7 +215,7 @@ hypre_SeqVectorRead:                    # @hypre_SeqVectorRead
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 44
+	ld.w	$a0, $sp, 12
 	addi.d	$s3, $s3, 1
 	addi.d	$s1, $s1, 8
 	blt	$s3, $a0, .LBB5_2
@@ -226,13 +224,13 @@ hypre_SeqVectorRead:                    # @hypre_SeqVectorRead
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end5:
 	.size	hypre_SeqVectorRead, .Lfunc_end5-hypre_SeqVectorRead
@@ -390,28 +388,28 @@ hypre_SeqVectorSetConstantValues:       # @hypre_SeqVectorSetConstantValues
 	ld.w	$a1, $a0, 8
 	ld.w	$a2, $a0, 16
 	mul.w	$a1, $a2, $a1
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
 	blez	$a1, .LBB7_8
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a0, $a0, 0
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bgeu	$a1, $a2, .LBB7_3
 # %bb.2:
 	move	$a2, $zero
 	b	.LBB7_6
 .LBB7_3:                                # %vector.ph
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	xvreplve0.d	$xr1, $xr0
-	addi.d	$a3, $a0, 32
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	vreplvei.d	$vr1, $vr0, 0
+	addi.d	$a3, $a0, 16
 	move	$a4, $a2
 	.p2align	4, , 16
 .LBB7_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr1, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vst	$vr1, $a3, -16
+	vst	$vr1, $a3, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB7_4
 # %bb.5:                                # %middle.block
 	beq	$a2, $a1, .LBB7_8
@@ -444,29 +442,29 @@ hypre_SeqVectorCopy:                    # @hypre_SeqVectorCopy
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a1, 0
-	ori	$a4, $zero, 8
+	ori	$a4, $zero, 4
 	move	$a3, $zero
 	bltu	$a2, $a4, .LBB8_6
 # %bb.2:                                # %.lr.ph.preheader
 	sub.d	$a4, $a1, $a0
-	ori	$a5, $zero, 64
+	ori	$a5, $zero, 32
 	bltu	$a4, $a5, .LBB8_6
 # %bb.3:                                # %vector.ph
-	bstrpick.d	$a3, $a2, 30, 3
-	slli.d	$a3, $a3, 3
-	addi.d	$a4, $a1, 32
-	addi.d	$a5, $a0, 32
+	bstrpick.d	$a3, $a2, 30, 2
+	slli.d	$a3, $a3, 2
+	addi.d	$a4, $a1, 16
+	addi.d	$a5, $a0, 16
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB8_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_4
 # %bb.5:                                # %middle.block
 	beq	$a3, $a2, .LBB8_8
@@ -495,14 +493,14 @@ hypre_SeqVectorCopy:                    # @hypre_SeqVectorCopy
 	.type	hypre_SeqVectorCloneDeep,@function
 hypre_SeqVectorCloneDeep:               # @hypre_SeqVectorCloneDeep
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$s1, $a0, 8
 	ld.w	$s2, $a0, 16
@@ -513,18 +511,14 @@ hypre_SeqVectorCloneDeep:               # @hypre_SeqVectorCloneDeep
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	st.d	$zero, $a0, 0
-	st.w	$zero, $sp, 28
-	st.w	$s3, $sp, 20
-	st.w	$s2, $sp, 24
-	st.w	$s1, $sp, 16
-	vld	$vr0, $sp, 16
-	vst	$vr0, $a0, 8
-	ld.w	$a0, $fp, 24
+	st.w	$zero, $a0, 20
 	ld.w	$s4, $fp, 20
-	ld.w	$a1, $fp, 28
-	st.w	$a0, $s0, 24
-	st.w	$s4, $s0, 20
-	st.w	$a1, $s0, 28
+	st.w	$s1, $a0, 8
+	st.w	$s3, $a0, 12
+	st.w	$s2, $a0, 16
+	st.w	$s4, $a0, 20
+	ld.d	$a0, $fp, 24
+	st.d	$a0, $s0, 24
 	mul.w	$a0, $s2, $s1
 	ori	$a1, $zero, 8
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
@@ -547,29 +541,29 @@ hypre_SeqVectorCloneDeep:               # @hypre_SeqVectorCloneDeep
 	blez	$a2, .LBB9_12
 # %bb.5:                                # %.lr.ph.preheader.i
 	ld.d	$a3, $fp, 0
-	ori	$a5, $zero, 8
+	ori	$a5, $zero, 4
 	move	$a4, $zero
 	bltu	$a2, $a5, .LBB9_10
 # %bb.6:                                # %.lr.ph.preheader.i
 	sub.d	$a5, $a1, $a3
-	ori	$a6, $zero, 64
+	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB9_10
 # %bb.7:                                # %vector.ph
-	bstrpick.d	$a4, $a2, 30, 3
-	slli.d	$a4, $a4, 3
-	addi.d	$a5, $a1, 32
-	addi.d	$a6, $a3, 32
+	bstrpick.d	$a4, $a2, 30, 2
+	slli.d	$a4, $a4, 2
+	addi.d	$a5, $a1, 16
+	addi.d	$a6, $a3, 16
 	move	$a7, $a4
 	.p2align	4, , 16
 .LBB9_8:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, -32
-	xvld	$xr1, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a7, $a7, -8
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
+	vld	$vr0, $a6, -16
+	vld	$vr1, $a6, 0
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a7, $a7, -4
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB9_8
 # %bb.9:                                # %middle.block
 	beq	$a4, $a2, .LBB9_12
@@ -588,14 +582,14 @@ hypre_SeqVectorCloneDeep:               # @hypre_SeqVectorCloneDeep
 	bnez	$a2, .LBB9_11
 .LBB9_12:                               # %hypre_SeqVectorCopy.exit
 	move	$a0, $s0
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end9:
 	.size	hypre_SeqVectorCloneDeep, .Lfunc_end9-hypre_SeqVectorCloneDeep
@@ -621,35 +615,35 @@ hypre_SeqVectorCloneShallow:            # @hypre_SeqVectorCloneShallow
 	ori	$s2, $zero, 1
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
+	st.w	$zero, $a0, 20
+	ld.w	$s3, $fp, 20
 	st.d	$zero, $a0, 0
+	st.w	$s0, $a0, 8
+	st.w	$s1, $a0, 16
+	st.w	$s3, $a0, 20
 	ld.d	$a1, $fp, 24
 	st.d	$a1, $a0, 24
 	ld.d	$a1, $fp, 0
-	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $s0, 0
-	vinsgr2vr.w	$vr0, $s1, 2
-	vst	$vr0, $a0, 8
-	ld.w	$fp, $fp, 20
 	st.d	$a1, $a0, 0
-	st.w	$fp, $a0, 20
+	st.w	$zero, $a0, 12
 	beqz	$a1, .LBB10_2
 # %bb.1:
-	bnez	$fp, .LBB10_3
+	bnez	$s3, .LBB10_3
 	b	.LBB10_5
 .LBB10_2:
 	mul.w	$a2, $s1, $s0
 	ori	$a1, $zero, 8
-	move	$s3, $a0
+	move	$fp, $a0
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	move	$a0, $s3
-	st.d	$a1, $s3, 0
-	beqz	$fp, .LBB10_5
+	move	$a0, $fp
+	st.d	$a1, $fp, 0
+	beqz	$s3, .LBB10_5
 .LBB10_3:
 	ori	$s0, $zero, 1
-	bne	$fp, $s0, .LBB10_6
+	bne	$s3, $s0, .LBB10_6
 # %bb.4:
 	move	$s2, $s1
 .LBB10_5:                               # %.sink.split.i
@@ -676,32 +670,32 @@ hypre_SeqVectorScale:                   # @hypre_SeqVectorScale
 	ld.w	$a1, $a0, 8
 	ld.w	$a2, $a0, 16
 	mul.w	$a1, $a2, $a1
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
 	blez	$a1, .LBB11_8
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a0, $a0, 0
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bgeu	$a1, $a2, .LBB11_3
 # %bb.2:
 	move	$a2, $zero
 	b	.LBB11_6
 .LBB11_3:                               # %vector.ph
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	xvreplve0.d	$xr1, $xr0
-	addi.d	$a3, $a0, 32
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	vreplvei.d	$vr1, $vr0, 0
+	addi.d	$a3, $a0, 16
 	move	$a4, $a2
 	.p2align	4, , 16
 .LBB11_4:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a3, -32
-	xvld	$xr3, $a3, 0
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr2, $a3, -32
-	xvst	$xr3, $a3, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	vld	$vr2, $a3, -16
+	vld	$vr3, $a3, 0
+	vfmul.d	$vr2, $vr1, $vr2
+	vfmul.d	$vr3, $vr1, $vr3
+	vst	$vr2, $a3, -16
+	vst	$vr3, $a3, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB11_4
 # %bb.5:                                # %middle.block
 	beq	$a2, $a1, .LBB11_8
@@ -732,12 +726,12 @@ hypre_SeqVectorAxpy:                    # @hypre_SeqVectorAxpy
 	ld.w	$a2, $a0, 8
 	ld.w	$a3, $a0, 16
 	mul.w	$a2, $a3, $a2
-                                        # kill: def $f0_64 killed $f0_64 def $xr0
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
 	blez	$a2, .LBB12_7
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a1, 0
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 6
 	bltu	$a2, $a3, .LBB12_4
 # %bb.2:                                # %vector.memcheck
 	alsl.d	$a3, $a2, $a0, 3
@@ -766,26 +760,26 @@ hypre_SeqVectorAxpy:                    # @hypre_SeqVectorAxpy
 	move	$a0, $zero
 	ret
 .LBB12_8:                               # %vector.ph
-	bstrpick.d	$a3, $a2, 30, 3
-	slli.d	$a3, $a3, 3
-	xvreplve0.d	$xr1, $xr0
-	addi.d	$a4, $a1, 32
-	addi.d	$a5, $a0, 32
+	bstrpick.d	$a3, $a2, 30, 2
+	slli.d	$a3, $a3, 2
+	vreplvei.d	$vr1, $vr0, 0
+	addi.d	$a4, $a1, 16
+	addi.d	$a5, $a0, 16
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB12_9:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a5, -32
-	xvld	$xr3, $a5, 0
-	xvld	$xr4, $a4, -32
-	xvld	$xr5, $a4, 0
-	xvfmadd.d	$xr2, $xr1, $xr2, $xr4
-	xvfmadd.d	$xr3, $xr1, $xr3, $xr5
-	xvst	$xr2, $a4, -32
-	xvst	$xr3, $a4, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr2, $a5, -16
+	vld	$vr3, $a5, 0
+	vld	$vr4, $a4, -16
+	vld	$vr5, $a4, 0
+	vfmadd.d	$vr2, $vr1, $vr2, $vr4
+	vfmadd.d	$vr3, $vr1, $vr3, $vr5
+	vst	$vr2, $a4, -16
+	vst	$vr3, $a4, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB12_9
 # %bb.10:                               # %middle.block
 	beq	$a3, $a2, .LBB12_7

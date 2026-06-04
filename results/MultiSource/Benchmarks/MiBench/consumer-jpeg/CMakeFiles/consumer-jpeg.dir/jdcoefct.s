@@ -290,18 +290,14 @@ start_output_pass:                      # @start_output_pass
 .Lfunc_end2:
 	.size	start_output_pass, .Lfunc_end2-start_output_pass
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function consume_data
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function consume_data
 .LCPI3_0:
 	.dword	0                               # 0x0
 	.dword	128                             # 0x80
+.LCPI3_1:
 	.dword	256                             # 0x100
 	.dword	384                             # 0x180
-.LCPI3_1:
-	.dword	512                             # 0x200
-	.dword	640                             # 0x280
-	.dword	768                             # 0x300
-	.dword	896                             # 0x380
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end3, nop
@@ -357,9 +353,9 @@ consume_data:                           # @consume_data
 	addi.d	$s0, $s1, 56
 	ld.w	$s7, $s1, 40
 	ld.w	$a1, $fp, 456
-	addi.d	$s4, $s1, 88
+	addi.d	$s4, $s1, 72
 	addi.d	$s5, $sp, 16
-	ori	$s6, $zero, 8
+	ori	$s6, $zero, 4
 	b	.LBB3_7
 	.p2align	4, , 16
 .LBB3_5:                                # %._crit_edge84.loopexit
@@ -420,9 +416,9 @@ consume_data:                           # @consume_data
 	mul.d	$a7, $a4, $s7
 	bstrpick.d	$t2, $a7, 31, 0
 	alsl.d	$a6, $s2, $a6, 3
-	bstrpick.d	$t0, $a4, 30, 3
-	slli.d	$a7, $t0, 3
-	slli.d	$t0, $t0, 10
+	bstrpick.d	$t0, $a4, 30, 2
+	slli.d	$a7, $t0, 2
+	slli.d	$t0, $t0, 9
 	sub.d	$t1, $zero, $a4
 	slli.d	$t2, $t2, 7
 	b	.LBB3_15
@@ -462,17 +458,17 @@ consume_data:                           # @consume_data
                                         #         Parent Loop BB3_15 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	pcalau12i	$t8, %pc_hi20(.LCPI3_0)
-	xvld	$xr0, $t8, %pc_lo12(.LCPI3_0)
+	vld	$vr0, $t8, %pc_lo12(.LCPI3_0)
 	pcalau12i	$t8, %pc_hi20(.LCPI3_1)
-	xvld	$xr1, $t8, %pc_lo12(.LCPI3_1)
-	xvreplgr2vr.d	$xr2, $t5
-	xvadd.d	$xr0, $xr2, $xr0
-	xvadd.d	$xr1, $xr2, $xr1
-	xvst	$xr0, $t6, -32
-	xvst	$xr1, $t6, 0
-	addi.d	$t5, $t5, 1024
-	addi.d	$t7, $t7, -8
-	addi.d	$t6, $t6, 64
+	vld	$vr1, $t8, %pc_lo12(.LCPI3_1)
+	vreplgr2vr.d	$vr2, $t5
+	vadd.d	$vr0, $vr2, $vr0
+	vadd.d	$vr1, $vr2, $vr1
+	vst	$vr0, $t6, -16
+	vst	$vr1, $t6, 0
+	addi.d	$t5, $t5, 512
+	addi.d	$t7, $t7, -4
+	addi.d	$t6, $t6, 32
 	bnez	$t7, .LBB3_18
 # %bb.19:                               # %middle.block
                                         #   in Loop: Header=BB3_15 Depth=4

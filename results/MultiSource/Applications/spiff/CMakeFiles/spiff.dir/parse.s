@@ -1030,9 +1030,11 @@ P_file_parse:                           # @P_file_parse
 	ld.w	$a2, $a1, 32
 	pcalau12i	$a0, %got_pc_hi20(Z_err_buf)
 	ld.d	$a0, $a0, %got_pc_lo12(Z_err_buf)
-	xvld	$xr0, $a1, 0
+	vld	$vr0, $a1, 16
+	vld	$vr1, $a1, 0
 	st.w	$a2, $a0, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 0
 	pcaddu18i	$ra, %call36(Z_complain)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s5, %pc_lo12(_P_fnumb)

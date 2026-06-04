@@ -388,29 +388,29 @@ FFT_inverse:                            # @FFT_inverse
 	srai.d	$a0, $a0, 1
 	movgr2fr.w	$fa0, $a0
 	ffint.d.w	$fa0, $fa0
-	ori	$a0, $zero, 8
+	ori	$a0, $zero, 4
 	frecip.d	$fa0, $fa0
 	bgeu	$fp, $a0, .LBB4_3
 # %bb.2:
 	move	$a0, $zero
 	b	.LBB4_6
 .LBB4_3:                                # %vector.ph
-	bstrpick.d	$a0, $fp, 30, 3
-	slli.d	$a0, $a0, 3
-	xvreplve0.d	$xr1, $xr0
-	addi.d	$a1, $s0, 32
+	bstrpick.d	$a0, $fp, 30, 2
+	slli.d	$a0, $a0, 2
+	vreplvei.d	$vr1, $vr0, 0
+	addi.d	$a1, $s0, 16
 	move	$a2, $a0
 	.p2align	4, , 16
 .LBB4_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a1, -32
-	xvld	$xr3, $a1, 0
-	xvfmul.d	$xr2, $xr1, $xr2
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvst	$xr2, $a1, -32
-	xvst	$xr3, $a1, 0
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	vld	$vr2, $a1, -16
+	vld	$vr3, $a1, 0
+	vfmul.d	$vr2, $vr1, $vr2
+	vfmul.d	$vr3, $vr1, $vr3
+	vst	$vr2, $a1, -16
+	vst	$vr3, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB4_4
 # %bb.5:                                # %middle.block
 	beq	$a0, $fp, .LBB4_8

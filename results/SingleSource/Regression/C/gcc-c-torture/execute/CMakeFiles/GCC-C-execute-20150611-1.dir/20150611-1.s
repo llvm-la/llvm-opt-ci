@@ -30,7 +30,7 @@ main:                                   # @main
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a3, $a2, $a3
-	ori	$a2, $zero, 32
+	ori	$a2, $zero, 16
 	bgeu	$a3, $a2, .LBB0_6
 # %bb.4:
 	move	$a2, $a1
@@ -43,23 +43,23 @@ main:                                   # @main
 .LBB0_6:                                # %vector.ph
 	bstrpick.d	$a3, $a3, 15, 0
 	addi.d	$a3, $a3, 1
-	andi	$a4, $a3, 31
+	andi	$a4, $a3, 15
 	sltui	$a5, $a4, 1
 	masknez	$a4, $a4, $a5
 	maskeqz	$a2, $a2, $a5
 	or	$a2, $a2, $a4
 	sub.d	$a3, $a3, $a2
 	add.d	$a2, $a1, $a3
-	addi.d	$a4, $a1, 15
+	addi.d	$a4, $a1, 7
 	.p2align	4, , 16
 .LBB0_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	move	$a1, $a4
-	addi.w	$a3, $a3, -32
-	addi.d	$a4, $a4, 32
+	addi.w	$a3, $a3, -16
+	addi.d	$a4, $a4, 16
 	bnez	$a3, .LBB0_7
 # %bb.8:                                # %.lr.ph.split.split.preheader9.loopexit
-	addi.d	$a1, $a1, 17
+	addi.d	$a1, $a1, 9
 	st.h	$a1, $a0, %pc_lo12(b)
 	.p2align	4, , 16
 .LBB0_9:                                # %.lr.ph.split.split

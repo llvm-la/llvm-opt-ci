@@ -3,20 +3,8 @@
 	.globl	_ZSt21ios_base_library_initv
 
                                         # End of file scope inline assembly
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
-.LCPI0_0:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
-	.dword	6                               # 0x6
-	.dword	7                               # 0x7
-.LCPI0_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
-	.globl	main
+	.globl	main                            # -- Begin function main
 	.p2align	2
 	.prefalign	5, .Lfunc_end0, nop
 	.type	main,@function
@@ -44,13 +32,13 @@ main:                                   # @main
 	lu12i.w	$a0, 256
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	pcalau12i	$s0, %pc_hi20(inputImage)
-	st.d	$a0, $s0, %pc_lo12(inputImage)
-	beqz	$a0, .LBB0_5
+	pcalau12i	$s1, %pc_hi20(inputImage)
+	st.d	$a0, $s1, %pc_lo12(inputImage)
+	beqz	$a0, .LBB0_7
 # %bb.1:
 	ori	$a1, $zero, 512
 	ori	$a2, $zero, 512
-	ori	$s1, $zero, 512
+	ori	$s2, $zero, 512
 	pcaddu18i	$ra, %call36(_Z21initializeRandomImagePiii)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN9benchmark22RunSpecifiedBenchmarksEv)
@@ -58,11 +46,10 @@ main:                                   # @main
 	lu12i.w	$a0, 256
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_5
+	beqz	$a0, .LBB0_7
 # %bb.2:                                # %vector.ph
 	move	$fp, $a0
-	ld.d	$a2, $s0, %pc_lo12(inputImage)
-	addu16i.d	$s2, $a0, 16
+	ld.d	$a2, $s1, %pc_lo12(inputImage)
 	ori	$a0, $zero, 512
 	ori	$a1, $zero, 512
 	ori	$a4, $zero, 10
@@ -75,122 +62,36 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	lu12i.w	$a2, 1
+	lu12i.w	$s0, 1
 	move	$a0, $fp
 	move	$a1, $zero
+	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_1)
-	xvrepli.b	$xr2, 0
-	xvst	$xr2, $s2, -2048
-	xvst	$xr2, $s2, -2016
-	xvst	$xr2, $s2, -1984
-	xvst	$xr2, $s2, -1952
-	xvst	$xr2, $s2, -1920
-	xvst	$xr2, $s2, -1888
-	xvst	$xr2, $s2, -1856
-	xvst	$xr2, $s2, -1824
-	xvst	$xr2, $s2, -1792
-	xvst	$xr2, $s2, -1760
-	xvst	$xr2, $s2, -1728
-	xvst	$xr2, $s2, -1696
-	xvst	$xr2, $s2, -1664
-	xvst	$xr2, $s2, -1632
-	xvst	$xr2, $s2, -1600
-	xvst	$xr2, $s2, -1568
-	xvst	$xr2, $s2, -1536
-	xvst	$xr2, $s2, -1504
-	xvst	$xr2, $s2, -1472
-	xvst	$xr2, $s2, -1440
-	xvst	$xr2, $s2, -1408
-	xvst	$xr2, $s2, -1376
-	xvst	$xr2, $s2, -1344
-	xvst	$xr2, $s2, -1312
-	xvst	$xr2, $s2, -1280
-	xvst	$xr2, $s2, -1248
-	xvst	$xr2, $s2, -1216
-	xvst	$xr2, $s2, -1184
-	xvst	$xr2, $s2, -1152
-	xvst	$xr2, $s2, -1120
-	xvst	$xr2, $s2, -1088
-	xvst	$xr2, $s2, -1056
-	xvst	$xr2, $s2, -1024
-	xvst	$xr2, $s2, -992
-	xvst	$xr2, $s2, -960
-	xvst	$xr2, $s2, -928
-	xvst	$xr2, $s2, -896
-	xvst	$xr2, $s2, -864
-	xvst	$xr2, $s2, -832
-	xvst	$xr2, $s2, -800
-	xvst	$xr2, $s2, -768
-	xvst	$xr2, $s2, -736
-	xvst	$xr2, $s2, -704
-	xvst	$xr2, $s2, -672
-	xvst	$xr2, $s2, -640
-	xvst	$xr2, $s2, -608
-	xvst	$xr2, $s2, -576
-	xvst	$xr2, $s2, -544
-	xvst	$xr2, $s2, -512
-	xvst	$xr2, $s2, -480
-	xvst	$xr2, $s2, -448
-	xvst	$xr2, $s2, -416
-	xvst	$xr2, $s2, -384
-	xvst	$xr2, $s2, -352
-	xvst	$xr2, $s2, -320
-	xvst	$xr2, $s2, -288
-	xvst	$xr2, $s2, -256
-	xvst	$xr2, $s2, -224
-	xvst	$xr2, $s2, -192
-	xvst	$xr2, $s2, -160
-	xvst	$xr2, $s2, -128
-	xvst	$xr2, $s2, -96
-	xvst	$xr2, $s2, -64
-	xvst	$xr2, $s2, -32
+	addu16i.d	$a0, $fp, 16
+	addi.d	$a0, $a0, -2032
+	vrepli.b	$vr0, 0
 	.p2align	4, , 16
-.LBB0_3:                                # %vector.body37
+.LBB0_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr2, $xr0, 11
-	xvslli.d	$xr3, $xr1, 11
-	xvpickve2gr.d	$a0, $xr3, 0
-	xvpickve2gr.d	$a1, $xr3, 1
-	xvpickve2gr.d	$a2, $xr3, 2
-	xvpickve2gr.d	$a3, $xr3, 3
-	xvpickve2gr.d	$a4, $xr2, 0
-	xvpickve2gr.d	$a5, $xr2, 1
-	xvpickve2gr.d	$a6, $xr2, 2
-	xvpickve2gr.d	$a7, $xr2, 3
-	add.d	$t0, $fp, $a0
-	add.d	$t1, $fp, $a1
-	add.d	$t2, $fp, $a2
-	add.d	$t3, $fp, $a3
-	add.d	$t4, $fp, $a4
-	add.d	$t5, $fp, $a5
-	add.d	$t6, $fp, $a6
-	add.d	$t7, $fp, $a7
-	stx.d	$zero, $fp, $a0
-	stx.d	$zero, $fp, $a1
-	stx.d	$zero, $fp, $a2
-	stx.d	$zero, $fp, $a3
-	stx.d	$zero, $fp, $a4
-	stx.d	$zero, $fp, $a5
-	stx.d	$zero, $fp, $a6
-	stx.d	$zero, $fp, $a7
-	st.d	$zero, $t0, 2040
-	st.d	$zero, $t1, 2040
-	st.d	$zero, $t2, 2040
-	st.d	$zero, $t3, 2040
-	st.d	$zero, $t4, 2040
-	st.d	$zero, $t5, 2040
-	st.d	$zero, $t6, 2040
-	st.d	$zero, $t7, 2040
-	xvaddi.du	$xr1, $xr1, 8
-	addi.d	$s1, $s1, -8
-	xvaddi.du	$xr0, $xr0, 8
-	bnez	$s1, .LBB0_3
-# %bb.4:                                # %middle.block40
+	vst	$vr0, $a0, -16
+	vst	$vr0, $a0, 0
+	addi.d	$s2, $s2, -8
+	addi.d	$a0, $a0, 32
+	bnez	$s2, .LBB0_3
+# %bb.4:                                # %vector.body37.preheader
+	ori	$a0, $zero, 512
+	move	$a1, $fp
+	.p2align	4, , 16
+.LBB0_5:                                # %vector.body37
+                                        # =>This Inner Loop Header: Depth=1
+	st.d	$zero, $a1, 0
+	vst	$vr0, $a1, 2040
+	stptr.d	$zero, $a1, 4088
+	addi.d	$a0, $a0, -2
+	add.d	$a1, $a1, $s0
+	bnez	$a0, .LBB0_5
+# %bb.6:                                # %middle.block40
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
 	ori	$a2, $zero, 512
@@ -201,7 +102,7 @@ main:                                   # @main
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, %pc_lo12(inputImage)
+	ld.d	$a0, $s1, %pc_lo12(inputImage)
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
@@ -212,7 +113,7 @@ main:                                   # @main
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
 	ret
-.LBB0_5:
+.LBB0_7:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
 	pcalau12i	$a1, %pc_hi20(.L.str.1)

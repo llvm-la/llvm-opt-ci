@@ -32,15 +32,7 @@ gs_show_init:                           # @gs_show_init
 .Lfunc_end0:
 	.size	gs_show_init, .Lfunc_end0-gs_show_init
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function show_setup
-.LCPI1_0:
-	.dword	4095                            # 0xfff
-	.dword	4095                            # 0xfff
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.text
-	.globl	show_setup
+	.globl	show_setup                      # -- Begin function show_setup
 	.p2align	2
 	.prefalign	5, .Lfunc_end1, nop
 	.type	show_setup,@function
@@ -106,21 +98,16 @@ show_setup:                             # @show_setup
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(gx_cpath_box_for_check)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 16
-	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI1_0)
 	move	$a0, $zero
-	xvadd.d	$xr0, $xr0, $xr1
-	xvsrli.d	$xr0, $xr0, 12
-	xvpickve2gr.d	$a1, $xr0, 0
-	vinsgr2vr.w	$vr1, $a1, 0
-	xvpickve2gr.d	$a1, $xr0, 1
-	vinsgr2vr.w	$vr1, $a1, 1
-	xvpickve2gr.d	$a1, $xr0, 2
-	vinsgr2vr.w	$vr1, $a1, 2
-	xvpickve2gr.d	$a1, $xr0, 3
-	vinsgr2vr.w	$vr1, $a1, 3
-	vst	$vr1, $fp, 60
+	vld	$vr0, $sp, 16
+	vld	$vr1, $sp, 32
+	ori	$a1, $zero, 4095
+	vreplgr2vr.d	$vr2, $a1
+	vadd.d	$vr0, $vr0, $vr2
+	vsrli.d	$vr0, $vr0, 12
+	vsrli.d	$vr1, $vr1, 12
+	vpickev.w	$vr0, $vr1, $vr0
+	vst	$vr0, $fp, 60
 .LBB1_8:
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload

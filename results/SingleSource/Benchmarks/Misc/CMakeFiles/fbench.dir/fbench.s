@@ -1,21 +1,23 @@
 	.file	"fbench.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI0_0:
 	.dword	0x40bdc50000000000              # double 7621
 	.dword	0x40bad5f47ae147ae              # double 6869.9549999999999
+.LCPI0_1:
 	.dword	0x40b9a2d0e5604189              # double 6562.8159999999998
 	.dword	0x40b707f1a9fbe76d              # double 5895.9440000000004
-.LCPI0_1:
+.LCPI0_2:
 	.dword	0x40b4958e978d4fdf              # double 5269.5569999999998
 	.dword	0x40b2fd5810624dd3              # double 4861.3440000000001
+.LCPI0_3:
 	.dword	0x40b0f47a1cac0831              # double 4340.4769999999999
 	.dword	0x40af00fced916873              # double 3968.4940000000001
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI0_2:
+.LCPI0_4:
 	.dword	0x408f400000000000              # double 1000
-.LCPI0_3:
+.LCPI0_5:
 	.dword	0x3f184647e2eda082              # double 9.2600000000000001E-5
 	.text
 	.globl	main
@@ -44,13 +46,19 @@ main:                                   # @main
 	fst.d	$fs5, $sp, 72                   # 8-byte Folded Spill
 	fst.d	$fs6, $sp, 64                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a0, %pc_hi20(spectral_line)
 	addi.d	$a0, $a0, %pc_lo12(spectral_line)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI0_1)
-	xvst	$xr0, $a0, 8
-	xvst	$xr1, $a0, 40
+	vld	$vr1, $a1, %pc_lo12(.LCPI0_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_2)
+	vld	$vr2, $a1, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_3)
+	vld	$vr3, $a1, %pc_lo12(.LCPI0_3)
+	vst	$vr0, $a0, 8
+	vst	$vr1, $a0, 24
+	vst	$vr2, $a0, 40
+	vst	$vr3, $a0, 56
 	pcalau12i	$fp, %pc_hi20(niter)
 	lu12i.w	$a0, 244
 	ori	$a0, $a0, 576
@@ -60,16 +68,24 @@ main:                                   # @main
 	st.b	$a1, $a0, %pc_lo12(current_surfaces)
 	pcalau12i	$a0, %pc_hi20(testcase)
 	addi.d	$a0, $a0, %pc_lo12(testcase)
-	xvld	$xr0, $a0, 0
+	vld	$vr0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(s)
 	addi.d	$a1, $a1, %pc_lo12(s)
-	xvld	$xr1, $a0, 32
-	xvld	$xr2, $a0, 64
-	xvld	$xr3, $a0, 96
-	xvst	$xr0, $a1, 48
-	xvst	$xr1, $a1, 88
-	xvst	$xr2, $a1, 128
-	xvst	$xr3, $a1, 168
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 32
+	vld	$vr3, $a0, 48
+	vst	$vr0, $a1, 48
+	vst	$vr1, $a1, 64
+	vst	$vr2, $a1, 88
+	vst	$vr3, $a1, 104
+	vld	$vr0, $a0, 80
+	vld	$vr1, $a0, 64
+	vld	$vr2, $a0, 112
+	vld	$vr3, $a0, 96
+	vst	$vr0, $a1, 144
+	vst	$vr1, $a1, 128
+	vst	$vr2, $a1, 184
+	vst	$vr3, $a1, 168
 	pcalau12i	$a0, %pc_hi20(.Lstr)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
 	pcaddu18i	$ra, %call36(puts)
@@ -80,8 +96,8 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, %pc_lo12(niter)
-	pcalau12i	$a1, %pc_hi20(.LCPI0_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_4)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI0_4)
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	fdiv.d	$fa0, $fa1, $fa0
@@ -119,8 +135,8 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(aberr_osc)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$s4, %pc_hi20(aberr_lchrom)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	fld.d	$fs1, $a0, %pc_lo12(.LCPI0_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_5)
+	fld.d	$fs1, $a0, %pc_lo12(.LCPI0_5)
 	pcalau12i	$s6, %pc_hi20(max_lspher)
 	pcalau12i	$s7, %pc_hi20(max_osc)
 	lu12i.w	$a0, 293601

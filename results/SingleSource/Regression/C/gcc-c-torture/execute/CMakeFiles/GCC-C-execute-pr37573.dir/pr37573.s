@@ -246,54 +246,40 @@ foo:                                    # @foo
 	ld.w	$a2, $a0, 12
 	move	$a3, $zero
 	addi.d	$a1, $a0, 12
-	xvinsgr2vr.w	$xr0, $a2, 7
+	vinsgr2vr.w	$vr0, $a2, 3
 	lu12i.w	$a2, 524287
 	ori	$a2, $a2, 4094
-	xvreplgr2vr.w	$xr1, $a2
-	xvldi	$xr2, -3200
-	xvrepli.w	$xr3, 1
+	vreplgr2vr.w	$vr1, $a2
+	vldi	$vr2, -3200
+	vrepli.w	$vr3, 1
 	lu12i.w	$a2, -421749
 	ori	$a2, $a2, 223
-	xvreplgr2vr.w	$xr4, $a2
+	vreplgr2vr.w	$vr4, $a2
 	ori	$a4, $zero, 896
 	.p2align	4, , 16
 .LBB2_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvori.b	$xr5, $xr0, 0
+	vori.b	$vr5, $vr0, 0
 	add.d	$a5, $a0, $a3
-	xvld	$xr0, $a5, 16
-	xvpickve2gr.w	$a6, $xr5, 7
-	vinsgr2vr.w	$vr5, $a6, 0
-	xvpickve2gr.w	$a6, $xr0, 0
-	vinsgr2vr.w	$vr5, $a6, 1
-	xvpickve2gr.w	$a6, $xr0, 1
-	vinsgr2vr.w	$vr5, $a6, 2
-	xvpickve2gr.w	$a6, $xr0, 2
-	vinsgr2vr.w	$vr5, $a6, 3
-	xvpickve2gr.w	$a6, $xr0, 3
-	vinsgr2vr.w	$vr6, $a6, 0
-	xvpickve2gr.w	$a6, $xr0, 4
-	vinsgr2vr.w	$vr6, $a6, 1
-	xvpickve2gr.w	$a6, $xr0, 5
-	vinsgr2vr.w	$vr6, $a6, 2
-	xvpickve2gr.w	$a6, $xr0, 6
-	vinsgr2vr.w	$vr6, $a6, 3
-	xvpermi.q	$xr5, $xr6, 2
-	xvand.v	$xr6, $xr0, $xr1
-	xvand.v	$xr5, $xr5, $xr2
-	xvor.v	$xr5, $xr6, $xr5
-	xvsrli.w	$xr5, $xr5, 1
-	xvld	$xr6, $a5, 1600
-	xvand.v	$xr7, $xr0, $xr3
-	xvseqi.w	$xr7, $xr7, 0
-	xvandn.v	$xr7, $xr7, $xr4
-	xvxor.v	$xr6, $xr7, $xr6
-	xvxor.v	$xr5, $xr6, $xr5
-	addi.d	$a3, $a3, 32
-	xvst	$xr5, $a5, 12
+	vld	$vr0, $a5, 16
+	vbsrl.v	$vr5, $vr5, 12
+	vbsll.v	$vr6, $vr0, 4
+	vor.v	$vr5, $vr6, $vr5
+	vand.v	$vr6, $vr0, $vr1
+	vand.v	$vr5, $vr5, $vr2
+	vor.v	$vr5, $vr6, $vr5
+	vsrli.w	$vr5, $vr5, 1
+	vld	$vr6, $a5, 1600
+	vand.v	$vr7, $vr0, $vr3
+	vseqi.w	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr4
+	vxor.v	$vr6, $vr7, $vr6
+	vxor.v	$vr5, $vr6, $vr5
+	addi.d	$a3, $a3, 16
+	vst	$vr5, $a5, 12
 	bne	$a3, $a4, .LBB2_3
 # %bb.4:                                # %.loopexit.loopexit
-	xvpickve2gr.w	$a3, $xr0, 7
+	vpickve2gr.w	$a3, $vr0, 3
 	ld.wu	$a4, $a0, 912
 	lu12i.w	$a5, -524288
 	lu32i.d	$a5, 0

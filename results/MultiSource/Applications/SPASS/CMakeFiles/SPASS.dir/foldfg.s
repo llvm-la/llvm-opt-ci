@@ -6924,23 +6924,21 @@ fol_SignatureMatch:                     # @fol_SignatureMatch
 	beq	$s7, $a3, .LBB62_5
 # %bb.14:                               # %vector.ph
 	alsl.d	$a0, $a0, $fp, 2
-	xvreplgr2vr.w	$xr0, $s7
+	vreplgr2vr.w	$vr0, $s7
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB62_15:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a2, $fp, $a1
 	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
-	xvldx	$xr1, $a2, $a3
-	xvseq.w	$xr1, $xr1, $xr0
-	xvmskltz.w	$xr1, $xr1
-	xvpickve2gr.wu	$a2, $xr1, 0
-	xvpickve2gr.wu	$a3, $xr1, 4
-	bstrins.d	$a2, $a3, 7, 4
+	vldx	$vr1, $a2, $a3
+	vseq.w	$vr1, $vr1, $vr0
+	vmskltz.w	$vr1, $vr1
+	vpickve2gr.hu	$a2, $vr1, 0
 	bnez	$a2, .LBB62_5
 # %bb.16:                               # %vector.body.interim
                                         #   in Loop: Header=BB62_15 Depth=1
-	addi.d	$a1, $a1, 32
+	addi.d	$a1, $a1, 16
 	bnez	$a1, .LBB62_15
 # %bb.17:                               # %middle.block
 	st.w	$s7, $a0, 0

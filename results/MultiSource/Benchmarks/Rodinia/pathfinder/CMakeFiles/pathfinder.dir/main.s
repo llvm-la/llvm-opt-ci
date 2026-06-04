@@ -126,8 +126,8 @@ initialize:                             # @initialize
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
-	move	$s0, $a3
-	move	$fp, $a2
+	move	$fp, $a3
+	move	$s0, $a2
 	move	$s1, $a1
 	move	$s2, $a0
 	ori	$a0, $zero, 9
@@ -141,7 +141,7 @@ initialize:                             # @initialize
 	slli.d	$s4, $s1, 2
 	lu12i.w	$a0, 419430
 	ori	$s5, $a0, 1639
-	move	$s6, $s0
+	move	$s6, $fp
 	.p2align	4, , 16
 .LBB1_3:                                # %.preheader18.us
                                         # =>This Loop Header: Depth=1
@@ -170,148 +170,39 @@ initialize:                             # @initialize
 	add.d	$s6, $s6, $s4
 	bne	$s3, $s2, .LBB1_3
 .LBB1_6:                                # %vector.memcheck
-	sub.d	$a0, $fp, $s0
-	ori	$a1, $zero, 63
-	bltu	$a1, $a0, .LBB1_9
-# %bb.7:                                # %vec.epilog.scalar.ph.preheader
+	sub.d	$a0, $s0, $fp
+	ori	$a1, $zero, 32
+	bgeu	$a0, $a1, .LBB1_8
+# %bb.7:
 	move	$a0, $zero
+	b	.LBB1_11
+.LBB1_8:                                # %vector.body.preheader
+	move	$a0, $zero
+	ori	$a1, $zero, 1984
+	.p2align	4, , 16
+.LBB1_9:                                # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vldx	$vr0, $fp, $a0
+	add.d	$a2, $fp, $a0
+	vld	$vr1, $a2, 16
+	add.d	$a2, $s0, $a0
+	vstx	$vr0, $s0, $a0
+	addi.d	$a0, $a0, 32
+	vst	$vr1, $a2, 16
+	bne	$a0, $a1, .LBB1_9
+# %bb.10:
+	ori	$a0, $zero, 496
+.LBB1_11:                               # %scalar.ph.preheader
+	slli.d	$a0, $a0, 2
 	ori	$a1, $zero, 2000
 	.p2align	4, , 16
-.LBB1_8:                                # %vec.epilog.scalar.ph
+.LBB1_12:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ldx.w	$a2, $s0, $a0
-	stx.w	$a2, $fp, $a0
+	ldx.w	$a2, $fp, $a0
+	stx.w	$a2, $s0, $a0
 	addi.d	$a0, $a0, 4
-	bne	$a0, $a1, .LBB1_8
-	b	.LBB1_10
-.LBB1_9:                                # %vector.body
-	xvld	$xr0, $s0, 0
-	xvld	$xr1, $s0, 32
-	xvst	$xr0, $fp, 0
-	xvst	$xr1, $fp, 32
-	xvld	$xr0, $s0, 64
-	xvld	$xr1, $s0, 96
-	xvst	$xr0, $fp, 64
-	xvst	$xr1, $fp, 96
-	xvld	$xr0, $s0, 128
-	xvld	$xr1, $s0, 160
-	xvst	$xr0, $fp, 128
-	xvst	$xr1, $fp, 160
-	xvld	$xr0, $s0, 192
-	xvld	$xr1, $s0, 224
-	xvst	$xr0, $fp, 192
-	xvst	$xr1, $fp, 224
-	xvld	$xr0, $s0, 256
-	xvld	$xr1, $s0, 288
-	xvst	$xr0, $fp, 256
-	xvst	$xr1, $fp, 288
-	xvld	$xr0, $s0, 320
-	xvld	$xr1, $s0, 352
-	xvst	$xr0, $fp, 320
-	xvst	$xr1, $fp, 352
-	xvld	$xr0, $s0, 384
-	xvld	$xr1, $s0, 416
-	xvst	$xr0, $fp, 384
-	xvst	$xr1, $fp, 416
-	xvld	$xr0, $s0, 448
-	xvld	$xr1, $s0, 480
-	xvst	$xr0, $fp, 448
-	xvst	$xr1, $fp, 480
-	xvld	$xr0, $s0, 512
-	xvld	$xr1, $s0, 544
-	xvst	$xr0, $fp, 512
-	xvst	$xr1, $fp, 544
-	xvld	$xr0, $s0, 576
-	xvld	$xr1, $s0, 608
-	xvst	$xr0, $fp, 576
-	xvst	$xr1, $fp, 608
-	xvld	$xr0, $s0, 640
-	xvld	$xr1, $s0, 672
-	xvst	$xr0, $fp, 640
-	xvst	$xr1, $fp, 672
-	xvld	$xr0, $s0, 704
-	xvld	$xr1, $s0, 736
-	xvst	$xr0, $fp, 704
-	xvst	$xr1, $fp, 736
-	xvld	$xr0, $s0, 768
-	xvld	$xr1, $s0, 800
-	xvst	$xr0, $fp, 768
-	xvst	$xr1, $fp, 800
-	xvld	$xr0, $s0, 832
-	xvld	$xr1, $s0, 864
-	xvst	$xr0, $fp, 832
-	xvst	$xr1, $fp, 864
-	xvld	$xr0, $s0, 896
-	xvld	$xr1, $s0, 928
-	xvst	$xr0, $fp, 896
-	xvst	$xr1, $fp, 928
-	xvld	$xr0, $s0, 960
-	xvld	$xr1, $s0, 992
-	xvst	$xr0, $fp, 960
-	xvst	$xr1, $fp, 992
-	xvld	$xr0, $s0, 1024
-	xvld	$xr1, $s0, 1056
-	xvst	$xr0, $fp, 1024
-	xvst	$xr1, $fp, 1056
-	xvld	$xr0, $s0, 1088
-	xvld	$xr1, $s0, 1120
-	xvst	$xr0, $fp, 1088
-	xvst	$xr1, $fp, 1120
-	xvld	$xr0, $s0, 1152
-	xvld	$xr1, $s0, 1184
-	xvst	$xr0, $fp, 1152
-	xvst	$xr1, $fp, 1184
-	xvld	$xr0, $s0, 1216
-	xvld	$xr1, $s0, 1248
-	xvst	$xr0, $fp, 1216
-	xvst	$xr1, $fp, 1248
-	xvld	$xr0, $s0, 1280
-	xvld	$xr1, $s0, 1312
-	xvst	$xr0, $fp, 1280
-	xvst	$xr1, $fp, 1312
-	xvld	$xr0, $s0, 1344
-	xvld	$xr1, $s0, 1376
-	xvst	$xr0, $fp, 1344
-	xvst	$xr1, $fp, 1376
-	xvld	$xr0, $s0, 1408
-	xvld	$xr1, $s0, 1440
-	xvst	$xr0, $fp, 1408
-	xvst	$xr1, $fp, 1440
-	xvld	$xr0, $s0, 1472
-	xvld	$xr1, $s0, 1504
-	xvst	$xr0, $fp, 1472
-	xvst	$xr1, $fp, 1504
-	xvld	$xr0, $s0, 1536
-	xvld	$xr1, $s0, 1568
-	xvst	$xr0, $fp, 1536
-	xvst	$xr1, $fp, 1568
-	xvld	$xr0, $s0, 1600
-	xvld	$xr1, $s0, 1632
-	xvst	$xr0, $fp, 1600
-	xvst	$xr1, $fp, 1632
-	xvld	$xr0, $s0, 1664
-	xvld	$xr1, $s0, 1696
-	xvst	$xr0, $fp, 1664
-	xvst	$xr1, $fp, 1696
-	xvld	$xr0, $s0, 1728
-	xvld	$xr1, $s0, 1760
-	xvst	$xr0, $fp, 1728
-	xvst	$xr1, $fp, 1760
-	xvld	$xr0, $s0, 1792
-	xvld	$xr1, $s0, 1824
-	xvst	$xr0, $fp, 1792
-	xvst	$xr1, $fp, 1824
-	xvld	$xr0, $s0, 1856
-	xvld	$xr1, $s0, 1888
-	xvst	$xr0, $fp, 1856
-	xvst	$xr1, $fp, 1888
-	xvld	$xr0, $s0, 1920
-	xvld	$xr1, $s0, 1952
-	xvst	$xr0, $fp, 1920
-	xvst	$xr1, $fp, 1952
-	vld	$vr0, $s0, 1984
-	vst	$vr0, $fp, 1984
-.LBB1_10:                               # %vec.epilog.middle.block
+	bne	$a0, $a1, .LBB1_12
+# %bb.13:
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload

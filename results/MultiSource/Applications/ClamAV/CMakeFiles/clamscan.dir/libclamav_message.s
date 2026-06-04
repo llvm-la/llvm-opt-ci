@@ -1215,7 +1215,7 @@ messageAddArgument:                     # @messageAddArgument
 	bltu	$a1, $a0, .LBB10_31
 # %bb.30:                               # %vector.memcheck
 	sub.d	$a2, $s1, $s7
-	ori	$a0, $zero, 64
+	ori	$a0, $zero, 32
 	bgeu	$a2, $a0, .LBB10_73
 .LBB10_31:
 	move	$a0, $s1
@@ -1427,47 +1427,47 @@ messageAddArgument:                     # @messageAddArgument
 	b	.LBB10_17
 .LBB10_73:                              # %vector.main.loop.iter.check
 	add.d	$a2, $s4, $s2
-	bgeu	$a1, $a0, .LBB10_75
+	bgeu	$a1, $a0, .LBB10_78
 # %bb.74:
 	move	$a3, $zero
-	b	.LBB10_79
-.LBB10_75:                              # %vector.ph
-	move	$a5, $zero
-	andi	$a4, $a1, 48
-	addi.w	$a6, $zero, -64
-	and	$a3, $a1, $a6
-	add.d	$a0, $s1, $a3
-	and	$a6, $a2, $a6
-	add.d	$s2, $s3, $a6
-.LBB10_76:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvldx	$xr0, $s3, $a5
-	add.d	$a6, $s3, $a5
-	xvld	$xr1, $a6, 32
-	add.d	$a6, $s1, $a5
-	xvstx	$xr0, $s1, $a5
-	addi.d	$a5, $a5, 64
-	xvst	$xr1, $a6, 32
-	bne	$a3, $a5, .LBB10_76
-# %bb.77:                               # %middle.block
-	beq	$a1, $a3, .LBB10_36
-# %bb.78:                               # %vec.epilog.iter.check
-	beqz	$a4, .LBB10_32
-.LBB10_79:                              # %vec.epilog.ph
+.LBB10_75:                              # %vec.epilog.ph
 	addi.w	$a5, $zero, -16
 	and	$a4, $a1, $a5
 	add.d	$a0, $s1, $a4
 	and	$a2, $a2, $a5
 	add.d	$s2, $s3, $a2
-.LBB10_80:                              # %vec.epilog.vector.body
+.LBB10_76:                              # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vldx	$vr0, $s3, $a3
 	vstx	$vr0, $s1, $a3
 	addi.d	$a3, $a3, 16
-	bne	$a4, $a3, .LBB10_80
-# %bb.81:                               # %vec.epilog.middle.block
+	bne	$a4, $a3, .LBB10_76
+# %bb.77:                               # %vec.epilog.middle.block
 	bne	$a1, $a4, .LBB10_32
 	b	.LBB10_36
+.LBB10_78:                              # %vector.ph
+	move	$a5, $zero
+	andi	$a4, $a1, 16
+	addi.w	$a6, $zero, -32
+	and	$a3, $a1, $a6
+	add.d	$a0, $s1, $a3
+	and	$a6, $a2, $a6
+	add.d	$s2, $s3, $a6
+.LBB10_79:                              # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vldx	$vr0, $s3, $a5
+	add.d	$a6, $s3, $a5
+	vld	$vr1, $a6, 16
+	add.d	$a6, $s1, $a5
+	vstx	$vr0, $s1, $a5
+	addi.d	$a5, $a5, 32
+	vst	$vr1, $a6, 16
+	bne	$a3, $a5, .LBB10_79
+# %bb.80:                               # %middle.block
+	beq	$a1, $a3, .LBB10_36
+# %bb.81:                               # %vec.epilog.iter.check
+	beqz	$a4, .LBB10_32
+	b	.LBB10_75
 .Lfunc_end10:
 	.size	messageAddArgument, .Lfunc_end10-messageAddArgument
                                         # -- End function

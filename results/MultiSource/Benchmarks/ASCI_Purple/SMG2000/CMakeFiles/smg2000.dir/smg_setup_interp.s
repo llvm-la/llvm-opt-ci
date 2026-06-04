@@ -150,7 +150,7 @@ hypre_SMGSetupInterpOp:                 # @hypre_SMGSetupInterpOp
 	alsl.d	$a0, $s2, $a0, 2
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	movgr2fr.d	$fs0, $zero
-	ori	$s0, $zero, 64
+	ori	$s0, $zero, 32
 	b	.LBB1_3
 	.p2align	4, , 16
 .LBB1_2:                                #   in Loop: Header=BB1_3 Depth=1
@@ -413,9 +413,9 @@ hypre_SMGSetupInterpOp:                 # @hypre_SMGSetupInterpOp
 	add.d	$a0, $a1, $a2
 	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
 	alsl.d	$s8, $s4, $s3, 3
-	addi.d	$s5, $s8, 32
+	addi.d	$s5, $s8, 16
 	alsl.d	$s2, $fp, $s7, 3
-	addi.d	$s6, $s2, 32
+	addi.d	$s6, $s2, 16
 	st.d	$t0, $sp, 256                   # 8-byte Folded Spill
 	b	.LBB1_20
 	.p2align	4, , 16
@@ -594,13 +594,13 @@ hypre_SMGSetupInterpOp:                 # @hypre_SMGSetupInterpOp
 	sub.d	$a6, $a7, $a1
 	sub.d	$a7, $t1, $t3
 	sub.d	$t0, $t0, $t2
-	ori	$t1, $zero, 7
+	ori	$t1, $zero, 3
 	sltu	$t1, $t1, $a1
 	addi.d	$t2, $a0, -1
 	sltui	$t2, $t2, 1
 	and	$t1, $t1, $t2
-	bstrpick.d	$t2, $a1, 30, 3
-	slli.d	$t2, $t2, 3
+	bstrpick.d	$t2, $a1, 30, 2
+	slli.d	$t2, $t2, 2
 	slli.d	$t3, $a0, 3
 	b	.LBB1_35
 	.p2align	4, , 16
@@ -690,13 +690,13 @@ hypre_SMGSetupInterpOp:                 # @hypre_SMGSetupInterpOp
                                         #           Parent Loop BB1_35 Depth=5
                                         #             Parent Loop BB1_37 Depth=6
                                         # =>            This Inner Loop Header: Depth=7
-	xvld	$xr0, $t6, -32
-	xvld	$xr1, $t6, 0
-	xvst	$xr0, $t5, -32
-	xvst	$xr1, $t5, 0
-	addi.d	$s1, $s1, -8
-	addi.d	$t5, $t5, 64
-	addi.d	$t6, $t6, 64
+	vld	$vr0, $t6, -16
+	vld	$vr1, $t6, 0
+	vst	$vr0, $t5, -16
+	vst	$vr1, $t5, 0
+	addi.d	$s1, $s1, -4
+	addi.d	$t5, $t5, 32
+	addi.d	$t6, $t6, 32
 	bnez	$s1, .LBB1_43
 # %bb.44:                               # %middle.block
                                         #   in Loop: Header=BB1_37 Depth=6

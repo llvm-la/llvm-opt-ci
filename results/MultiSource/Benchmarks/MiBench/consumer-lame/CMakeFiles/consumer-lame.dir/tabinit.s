@@ -1,44 +1,49 @@
 	.file	"tabinit.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function make_decode_tables
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function make_decode_tables
 .LCPI0_0:
 	.dword	0x3fe004f09436640e              # double 0.50060299823519627
 	.dword	0x3fe02cd16f3ace41              # double 0.50547095989754365
+.LCPI0_1:
 	.dword	0x3fe07e8b5b5db921              # double 0.51544730992262455
 	.dword	0x3fe0fe4d0830706d              # double 0.53104259108978413
-.LCPI0_1:
+.LCPI0_2:
 	.dword	0x3fe1b306f118428c              # double 0.55310389603444454
 	.dword	0x3fe2a7673c047c11              # double 0.58293496820613389
+.LCPI0_3:
 	.dword	0x3fe3eb8dc44206e3              # double 0.62250412303566482
 	.dword	0x3fe59807a9b3c084              # double 0.67480834145500568
-.LCPI0_2:
+.LCPI0_4:
 	.dword	0x3fe7d33dbad48055              # double 0.74453627100229858
 	.dword	0x3feadbf3c99f0119              # double 0.83934964541552681
+.LCPI0_5:
 	.dword	0x3fef1f476cd7dae5              # double 0.97256823786196078
 	.dword	0x3ff2b606a5cbb0c5              # double 1.1694399334328847
-.LCPI0_3:
+.LCPI0_6:
 	.dword	0x3ff7bf23658f321a              # double 1.4841646163141662
 	.dword	0x40007655e3e0a354              # double 2.0577810099534108
+.LCPI0_7:
 	.dword	0x400b42c833d72df0              # double 3.407608418468719
 	.dword	0x40246148bea939ec              # double 10.190008123548033
-.LCPI0_4:
+.LCPI0_8:
 	.dword	0x3fe013d19c61d971              # double 0.50241928618815568
 	.dword	0x3fe0b84f03ebe15e              # double 0.52249861493968885
+.LCPI0_9:
 	.dword	0x3fe22467d1065a74              # double 0.56694403481635769
 	.dword	0x3fe4b2c398bbe3c6              # double 0.64682178335999008
-.LCPI0_5:
+.LCPI0_10:
 	.dword	0x3fe938900b7d4210              # double 0.7881546234512502
 	.dword	0x3ff0f8892a4eced7              # double 1.0606776859903471
+.LCPI0_11:
 	.dword	0x3ffb8f24b0406142              # double 1.7224470982383342
 	.dword	0x4014679380e538d4              # double 5.1011486186891553
-.LCPI0_6:
+.LCPI0_12:
 	.dword	0x3fe0503ed17cba53              # double 0.50979557910415918
 	.dword	0x3fe33e37a1e0173e              # double 0.60134488693504529
+.LCPI0_13:
 	.dword	0x3feccc9aefb18d57              # double 0.89997622313641557
 	.dword	0x400480d9d073b426              # double 2.5629154477415055
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI0_7:
+.LCPI0_14:
 	.dword	0x3fe1517a7bdb3895              # double 0.54119610014619701
 	.dword	0x3ff4e7ae9144f0fb              # double 1.3065629648763764
 	.text
@@ -52,31 +57,52 @@ make_decode_tables:                     # @make_decode_tables
 	addi.d	$a1, $a1, %pc_lo12(pnts)
 	ld.d	$a2, $a1, 0
 	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a3, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a3, %pc_lo12(.LCPI0_1)
+	vld	$vr1, $a3, %pc_lo12(.LCPI0_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI0_2)
-	xvld	$xr2, $a3, %pc_lo12(.LCPI0_2)
+	vld	$vr2, $a3, %pc_lo12(.LCPI0_2)
+	vst	$vr0, $a2, 0
+	vst	$vr1, $a2, 16
+	vst	$vr2, $a2, 32
 	pcalau12i	$a3, %pc_hi20(.LCPI0_3)
-	xvld	$xr3, $a3, %pc_lo12(.LCPI0_3)
-	xvst	$xr0, $a2, 0
-	xvst	$xr1, $a2, 32
-	xvst	$xr2, $a2, 64
-	xvst	$xr3, $a2, 96
-	ld.d	$a2, $a1, 8
+	vld	$vr0, $a3, %pc_lo12(.LCPI0_3)
 	pcalau12i	$a3, %pc_hi20(.LCPI0_4)
-	xvld	$xr0, $a3, %pc_lo12(.LCPI0_4)
+	vld	$vr1, $a3, %pc_lo12(.LCPI0_4)
 	pcalau12i	$a3, %pc_hi20(.LCPI0_5)
-	xvld	$xr1, $a3, %pc_lo12(.LCPI0_5)
-	ld.d	$a3, $a1, 16
-	pcalau12i	$a4, %pc_hi20(.LCPI0_6)
-	xvld	$xr2, $a4, %pc_lo12(.LCPI0_6)
-	pcalau12i	$a4, %pc_hi20(.LCPI0_7)
-	vld	$vr3, $a4, %pc_lo12(.LCPI0_7)
+	vld	$vr2, $a3, %pc_lo12(.LCPI0_5)
+	pcalau12i	$a3, %pc_hi20(.LCPI0_6)
+	vld	$vr3, $a3, %pc_lo12(.LCPI0_6)
+	vst	$vr0, $a2, 48
+	vst	$vr1, $a2, 64
+	vst	$vr2, $a2, 80
+	vst	$vr3, $a2, 96
+	pcalau12i	$a3, %pc_hi20(.LCPI0_7)
+	vld	$vr0, $a3, %pc_lo12(.LCPI0_7)
+	ld.d	$a3, $a1, 8
+	pcalau12i	$a4, %pc_hi20(.LCPI0_8)
+	vld	$vr1, $a4, %pc_lo12(.LCPI0_8)
+	pcalau12i	$a4, %pc_hi20(.LCPI0_9)
+	vld	$vr2, $a4, %pc_lo12(.LCPI0_9)
+	pcalau12i	$a4, %pc_hi20(.LCPI0_10)
+	vld	$vr3, $a4, %pc_lo12(.LCPI0_10)
+	vst	$vr0, $a2, 112
+	vst	$vr1, $a3, 0
+	vst	$vr2, $a3, 16
+	vst	$vr3, $a3, 32
+	pcalau12i	$a2, %pc_hi20(.LCPI0_11)
+	vld	$vr0, $a2, %pc_lo12(.LCPI0_11)
+	ld.d	$a2, $a1, 16
+	pcalau12i	$a4, %pc_hi20(.LCPI0_12)
+	vld	$vr1, $a4, %pc_lo12(.LCPI0_12)
+	pcalau12i	$a4, %pc_hi20(.LCPI0_13)
+	vld	$vr2, $a4, %pc_lo12(.LCPI0_13)
+	pcalau12i	$a4, %pc_hi20(.LCPI0_14)
+	vld	$vr3, $a4, %pc_lo12(.LCPI0_14)
 	ld.d	$a4, $a1, 24
-	xvst	$xr0, $a2, 0
-	xvst	$xr1, $a2, 32
-	xvst	$xr2, $a3, 0
+	vst	$vr0, $a3, 48
+	vst	$vr1, $a2, 0
+	vst	$vr2, $a2, 16
 	vst	$vr3, $a4, 0
 	ld.d	$a1, $a1, 32
 	lu12i.w	$a2, 419827

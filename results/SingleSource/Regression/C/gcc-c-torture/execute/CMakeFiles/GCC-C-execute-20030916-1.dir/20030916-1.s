@@ -6,24 +6,22 @@
 	.type	f,@function
 f:                                      # @f
 # %bb.0:
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 0
-	xvst	$xr0, $a0, 992
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr0, $a0, 0
+	vst	$vr0, $a0, 992
+	vst	$vr0, $a0, 1008
 	ret
 .Lfunc_end0:
 	.size	f, .Lfunc_end0-f
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI1_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 	.text
 	.globl	main
 	.p2align	2
@@ -31,68 +29,99 @@ f:                                      # @f
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %vector.ph
-	addi.d	$sp, $sp, -1040
-	st.d	$ra, $sp, 1032                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -1056
+	st.d	$ra, $sp, 1048                  # 8-byte Folded Spill
 	move	$a0, $zero
-	xvrepli.w	$xr0, 1
-	xvst	$xr0, $sp, 8
-	xvst	$xr0, $sp, 40
-	xvst	$xr0, $sp, 72
-	xvst	$xr0, $sp, 104
-	xvst	$xr0, $sp, 136
-	xvst	$xr0, $sp, 168
-	xvst	$xr0, $sp, 200
-	xvst	$xr0, $sp, 232
-	xvst	$xr0, $sp, 264
-	xvst	$xr0, $sp, 296
-	xvst	$xr0, $sp, 328
-	xvst	$xr0, $sp, 360
-	xvst	$xr0, $sp, 392
-	xvst	$xr0, $sp, 424
-	xvst	$xr0, $sp, 456
-	xvst	$xr0, $sp, 488
-	xvst	$xr0, $sp, 520
-	xvst	$xr0, $sp, 552
-	xvst	$xr0, $sp, 584
-	xvst	$xr0, $sp, 616
-	xvst	$xr0, $sp, 648
-	xvst	$xr0, $sp, 680
-	xvst	$xr0, $sp, 712
-	xvst	$xr0, $sp, 744
-	xvst	$xr0, $sp, 776
-	xvst	$xr0, $sp, 808
-	xvst	$xr0, $sp, 840
-	xvst	$xr0, $sp, 872
-	xvst	$xr0, $sp, 904
-	xvst	$xr0, $sp, 936
-	xvst	$xr0, $sp, 968
-	xvst	$xr0, $sp, 1000
-	xvrepli.b	$xr1, 0
-	xvst	$xr1, $sp, 8
-	xvst	$xr1, $sp, 1000
+	vrepli.w	$vr0, 1
+	vst	$vr0, $sp, 16
+	vst	$vr0, $sp, 32
+	vst	$vr0, $sp, 48
+	vst	$vr0, $sp, 64
+	vst	$vr0, $sp, 80
+	vst	$vr0, $sp, 96
+	vst	$vr0, $sp, 112
+	vst	$vr0, $sp, 128
+	vst	$vr0, $sp, 144
+	vst	$vr0, $sp, 160
+	vst	$vr0, $sp, 176
+	vst	$vr0, $sp, 192
+	vst	$vr0, $sp, 208
+	vst	$vr0, $sp, 224
+	vst	$vr0, $sp, 240
+	vst	$vr0, $sp, 256
+	vst	$vr0, $sp, 272
+	vst	$vr0, $sp, 288
+	vst	$vr0, $sp, 304
+	vst	$vr0, $sp, 320
+	vst	$vr0, $sp, 336
+	vst	$vr0, $sp, 352
+	vst	$vr0, $sp, 368
+	vst	$vr0, $sp, 384
+	vst	$vr0, $sp, 400
+	vst	$vr0, $sp, 416
+	vst	$vr0, $sp, 432
+	vst	$vr0, $sp, 448
+	vst	$vr0, $sp, 464
+	vst	$vr0, $sp, 480
+	vst	$vr0, $sp, 496
+	vst	$vr0, $sp, 512
+	vst	$vr0, $sp, 528
+	vst	$vr0, $sp, 544
+	vst	$vr0, $sp, 560
+	vst	$vr0, $sp, 576
+	vst	$vr0, $sp, 592
+	vst	$vr0, $sp, 608
+	vst	$vr0, $sp, 624
+	vst	$vr0, $sp, 640
+	vst	$vr0, $sp, 656
+	vst	$vr0, $sp, 672
+	vst	$vr0, $sp, 688
+	vst	$vr0, $sp, 704
+	vst	$vr0, $sp, 720
+	vst	$vr0, $sp, 736
+	vst	$vr0, $sp, 752
+	vst	$vr0, $sp, 768
+	vst	$vr0, $sp, 784
+	vst	$vr0, $sp, 800
+	vst	$vr0, $sp, 816
+	vst	$vr0, $sp, 832
+	vst	$vr0, $sp, 848
+	vst	$vr0, $sp, 864
+	vst	$vr0, $sp, 880
+	vst	$vr0, $sp, 896
+	vst	$vr0, $sp, 912
+	vst	$vr0, $sp, 928
+	vst	$vr0, $sp, 944
+	vst	$vr0, $sp, 960
+	vst	$vr0, $sp, 976
+	vst	$vr0, $sp, 992
+	vst	$vr0, $sp, 1008
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 16
+	vst	$vr1, $sp, 32
+	vst	$vr1, $sp, 1008
+	vst	$vr1, $sp, 1024
 	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI1_0)
-	addi.d	$a1, $sp, 8
-	xvrepli.w	$xr2, 240
+	vld	$vr1, $a1, %pc_lo12(.LCPI1_0)
+	addi.d	$a1, $sp, 16
+	vrepli.w	$vr2, 240
 	ori	$a2, $zero, 1024
 	.p2align	4, , 16
 .LBB1_1:                                # %vector.body14
                                         # =>This Inner Loop Header: Depth=1
-	xvldx	$xr3, $a0, $a1
-	xvsubi.wu	$xr4, $xr1, 8
-	xvslt.wu	$xr4, $xr4, $xr2
-	xvand.v	$xr4, $xr4, $xr0
-	xvseq.w	$xr3, $xr3, $xr4
-	xvxori.b	$xr3, $xr3, 255
-	xvmskltz.w	$xr3, $xr3
-	xvpickve2gr.wu	$a3, $xr3, 0
-	xvpickve2gr.wu	$a4, $xr3, 4
-	bstrins.d	$a3, $a4, 7, 4
+	vldx	$vr3, $a0, $a1
+	vsubi.wu	$vr4, $vr1, 8
+	vslt.wu	$vr4, $vr4, $vr2
+	vand.v	$vr4, $vr4, $vr0
+	vseq.w	$vr3, $vr3, $vr4
+	vxori.b	$vr3, $vr3, 255
+	vmskltz.w	$vr3, $vr3
+	vpickve2gr.hu	$a3, $vr3, 0
 	bnez	$a3, .LBB1_4
 # %bb.2:                                # %vector.body.interim
                                         #   in Loop: Header=BB1_1 Depth=1
-	addi.d	$a0, $a0, 32
-	xvaddi.wu	$xr1, $xr1, 8
+	addi.d	$a0, $a0, 16
+	vaddi.wu	$vr1, $vr1, 4
 	bne	$a0, $a2, .LBB1_1
 # %bb.3:                                # %middle.block17
 	move	$a0, $zero

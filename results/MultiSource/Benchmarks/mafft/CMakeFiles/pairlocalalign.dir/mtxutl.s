@@ -32,7 +32,7 @@ MtxuntDouble:                           # @MtxuntDouble
 	addi.d	$s3, $s3, 8
 	bnez	$s2, .LBB0_2
 # %bb.3:                                # %.lr.ph.preheader
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 4
 	bstrpick.d	$a0, $s0, 31, 0
 	bgeu	$s0, $a1, .LBB0_5
 # %bb.4:
@@ -40,40 +40,28 @@ MtxuntDouble:                           # @MtxuntDouble
 	b	.LBB0_8
 .LBB0_5:                                # %vector.ph
 	move	$a2, $zero
-	bstrpick.d	$a1, $a0, 30, 3
-	slli.d	$a1, $a1, 3
+	bstrpick.d	$a1, $a0, 30, 2
+	slli.d	$a1, $a1, 2
 	slli.d	$a3, $a0, 3
-	bstrpick.d	$a3, $a3, 33, 6
-	slli.d	$a3, $a3, 6
+	bstrpick.d	$a3, $a3, 33, 5
+	slli.d	$a3, $a3, 5
 	lu52i.d	$a4, $zero, 1023
 	.p2align	4, , 16
 .LBB0_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a5, $fp, $a2
-	ldx.d	$a6, $fp, $a2
-	ld.d	$a7, $a5, 8
-	ld.d	$t0, $a5, 16
-	ld.d	$t1, $a5, 24
-	ld.d	$t2, $a5, 32
-	ld.d	$t3, $a5, 40
-	ld.d	$t4, $a5, 48
-	ld.d	$a5, $a5, 56
+	ld.d	$a6, $a5, 8
+	ld.d	$a7, $a5, 16
+	ld.d	$a5, $a5, 24
+	ldx.d	$t0, $fp, $a2
+	add.d	$a6, $a6, $a2
 	add.d	$a7, $a7, $a2
-	add.d	$t0, $t0, $a2
-	add.d	$t1, $t1, $a2
-	add.d	$t2, $t2, $a2
-	add.d	$t3, $t3, $a2
-	add.d	$t4, $t4, $a2
 	add.d	$a5, $a5, $a2
-	stx.d	$a4, $a6, $a2
-	st.d	$a4, $a7, 8
-	st.d	$a4, $t0, 16
-	st.d	$a4, $t1, 24
-	st.d	$a4, $t2, 32
-	st.d	$a4, $t3, 40
-	st.d	$a4, $t4, 48
-	addi.d	$a2, $a2, 64
-	st.d	$a4, $a5, 56
+	stx.d	$a4, $t0, $a2
+	st.d	$a4, $a6, 8
+	st.d	$a4, $a7, 16
+	addi.d	$a2, $a2, 32
+	st.d	$a4, $a5, 24
 	bne	$a3, $a2, .LBB0_6
 # %bb.7:                                # %middle.block
 	beq	$a1, $a0, .LBB0_10

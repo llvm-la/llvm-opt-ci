@@ -2522,14 +2522,14 @@ CompressTrie:                           # @CompressTrie
 # %bb.6:                                # %iter.check
 	ld.d	$t0, $a0, 280
 	add.d	$a3, $t0, $a4
-	ori	$t1, $zero, 16
+	ori	$t1, $zero, 8
 	alsl.d	$a2, $a6, $a7, 1
 	bltu	$a1, $t1, .LBB4_8
 # %bb.7:                                # %vector.memcheck
 	alsl.d	$t1, $a6, $a7, 1
 	add.d	$t2, $t0, $a4
 	sub.d	$t2, $t1, $t2
-	ori	$t1, $zero, 64
+	ori	$t1, $zero, 32
 	bgeu	$t2, $t1, .LBB4_13
 .LBB4_8:
 	move	$t1, $zero
@@ -2564,36 +2564,36 @@ CompressTrie:                           # @CompressTrie
 	b	.LBB4_19
 .LBB4_15:                               # %vector.ph
 	slli.d	$t5, $a6, 1
-	andi	$t1, $a1, 48
-	bstrpick.d	$t2, $a1, 30, 6
-	slli.d	$t2, $t2, 6
+	andi	$t1, $a1, 24
+	bstrpick.d	$t2, $a1, 30, 5
+	slli.d	$t2, $t2, 5
 	add.d	$t3, $a3, $t2
 	add.d	$t4, $a2, $t2
 	add.d	$t5, $t5, $a7
-	addi.d	$t5, $t5, 32
+	addi.d	$t5, $t5, 16
 	add.d	$t6, $a4, $t0
-	addi.d	$t6, $t6, 32
+	addi.d	$t6, $t6, 16
 	move	$t7, $t2
 	.p2align	4, , 16
 .LBB4_16:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $t6, -32
-	xvld	$xr1, $t6, 0
-	xvst	$xr0, $t5, -32
-	xvst	$xr1, $t5, 0
-	addi.d	$t7, $t7, -64
-	addi.d	$t5, $t5, 64
-	addi.d	$t6, $t6, 64
+	vld	$vr0, $t6, -16
+	vld	$vr1, $t6, 0
+	vst	$vr0, $t5, -16
+	vst	$vr1, $t5, 0
+	addi.d	$t7, $t7, -32
+	addi.d	$t5, $t5, 32
+	addi.d	$t6, $t6, 32
 	bnez	$t7, .LBB4_16
 # %bb.17:                               # %middle.block
 	beq	$t2, $a1, .LBB4_11
 # %bb.18:                               # %vec.epilog.iter.check
 	beqz	$t1, .LBB4_22
 .LBB4_19:                               # %vec.epilog.ph
-	bstrpick.d	$t3, $a1, 30, 4
-	slli.d	$t1, $t3, 4
-	alsl.d	$a3, $t3, $a3, 4
-	alsl.d	$a2, $t3, $a2, 4
+	bstrpick.d	$t3, $a1, 30, 3
+	slli.d	$t1, $t3, 3
+	alsl.d	$a3, $t3, $a3, 3
+	alsl.d	$a2, $t3, $a2, 3
 	sub.d	$t3, $t2, $t1
 	alsl.d	$a6, $a6, $t2, 1
 	add.d	$a6, $a7, $a6
@@ -2602,11 +2602,11 @@ CompressTrie:                           # @CompressTrie
 	.p2align	4, , 16
 .LBB4_20:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a7, 0
-	vst	$vr0, $a6, 0
-	addi.d	$t3, $t3, 16
-	addi.d	$a6, $a6, 16
-	addi.d	$a7, $a7, 16
+	ld.d	$t0, $a7, 0
+	st.d	$t0, $a6, 0
+	addi.d	$t3, $t3, 8
+	addi.d	$a6, $a6, 8
+	addi.d	$a7, $a7, 8
 	bnez	$t3, .LBB4_20
 # %bb.21:                               # %vec.epilog.middle.block
 	beq	$t1, $a1, .LBB4_11

@@ -891,11 +891,13 @@ _ZN9NCompress8NHuffman8CDecoderILi16ELj20EE14SetCodeLengthsEPKh: # @_ZN9NCompres
 	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 88
 	ld.bu	$a2, $a1, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 88
+	vst	$vr0, $sp, 104
+	vst	$vr0, $sp, 120
 	ori	$a4, $zero, 16
-	xvst	$xr0, $sp, 120
+	vst	$vr0, $sp, 136
 	bltu	$a4, $a2, .LBB7_27
 # %bb.1:
 	addi.d	$s0, $a0, 136
@@ -2338,11 +2340,13 @@ _ZN9NCompress8NHuffman8CDecoderILi16ELj8EE14SetCodeLengthsEPKh: # @_ZN9NCompress
 	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 88
 	ld.bu	$a2, $a1, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 88
+	vst	$vr0, $sp, 104
+	vst	$vr0, $sp, 120
 	ori	$a4, $zero, 16
-	xvst	$xr0, $sp, 120
+	vst	$vr0, $sp, 136
 	bltu	$a4, $a2, .LBB11_15
 # %bb.1:
 	addi.d	$s0, $a0, 136
@@ -2613,9 +2617,11 @@ _ZN9NCompress8NHuffman8CDecoderILi16ELj656EE14SetCodeLengthsEPKh: # @_ZN9NCompre
 	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
 	move	$fp, $a1
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 104
-	xvst	$xr0, $sp, 136
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 104
+	vst	$vr0, $sp, 120
+	vst	$vr0, $sp, 136
+	vst	$vr0, $sp, 152
 	addi.d	$t0, $a0, 136
 	lu12i.w	$a1, -1
 	ori	$a1, $a1, 1472
@@ -2770,9 +2776,11 @@ _ZN9NCompress8NHuffman8CDecoderILi16ELj249EE14SetCodeLengthsEPKh: # @_ZN9NCompre
 	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
 	move	$fp, $a1
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 104
-	xvst	$xr0, $sp, 136
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 104
+	vst	$vr0, $sp, 120
+	vst	$vr0, $sp, 136
+	vst	$vr0, $sp, 152
 	addi.d	$t1, $a0, 136
 	ori	$a1, $zero, 136
 	ori	$a2, $zero, 16
@@ -3674,17 +3682,18 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	add.d	$a1, $a1, $s6
 	addi.w	$a0, $s6, -1
 	st.w	$a1, $fp, 80
-	bltu	$a0, $s7, .LBB15_119
+	ori	$a1, $zero, 7
+	bltu	$a0, $a1, .LBB15_119
 # %bb.106:                              # %iter.check
                                         #   in Loop: Header=BB15_61 Depth=2
 	sub.d	$a1, $a7, $a6
-	ori	$a2, $zero, 64
+	ori	$a2, $zero, 32
 	bltu	$a1, $a2, .LBB15_119
 # %bb.107:                              # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB15_61 Depth=2
 	bstrpick.d	$a1, $a0, 31, 0
 	addi.d	$a3, $a1, 1
-	ori	$a1, $zero, 63
+	ori	$a1, $zero, 31
 	bgeu	$a0, $a1, .LBB15_120
 # %bb.108:                              #   in Loop: Header=BB15_61 Depth=2
 	move	$t1, $zero
@@ -3771,13 +3780,13 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	b	.LBB15_127
 .LBB15_120:                             # %vector.ph
                                         #   in Loop: Header=BB15_61 Depth=2
-	andi	$t2, $a3, 48
-	bstrpick.d	$a0, $a3, 32, 6
-	slli.d	$t1, $a0, 6
+	andi	$t2, $a3, 24
+	bstrpick.d	$a0, $a3, 32, 5
+	slli.d	$t1, $a0, 5
 	sub.d	$a0, $s6, $t1
 	add.d	$a1, $t0, $t1
 	add.d	$a2, $a5, $t1
-	addi.d	$t4, $a4, 32
+	addi.d	$t4, $a4, 16
 	add.d	$t3, $t4, $a7
 	add.d	$t4, $t4, $a6
 	move	$t5, $t1
@@ -3786,13 +3795,13 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
                                         #   Parent Loop BB15_47 Depth=1
                                         #     Parent Loop BB15_61 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvld	$xr0, $t4, -32
-	xvld	$xr1, $t4, 0
-	xvst	$xr0, $t3, -32
-	xvst	$xr1, $t3, 0
-	addi.d	$t5, $t5, -64
-	addi.d	$t3, $t3, 64
-	addi.d	$t4, $t4, 64
+	vld	$vr0, $t4, -16
+	vld	$vr1, $t4, 0
+	vst	$vr0, $t3, -16
+	vst	$vr1, $t3, 0
+	addi.d	$t5, $t5, -32
+	addi.d	$t3, $t3, 32
+	addi.d	$t4, $t4, 32
 	bnez	$t5, .LBB15_121
 # %bb.122:                              # %middle.block
                                         #   in Loop: Header=BB15_61 Depth=2
@@ -3802,11 +3811,11 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	beqz	$t2, .LBB15_127
 .LBB15_124:                             # %vec.epilog.ph
                                         #   in Loop: Header=BB15_61 Depth=2
-	bstrpick.d	$a2, $a3, 32, 4
-	slli.d	$t2, $a2, 4
+	bstrpick.d	$a2, $a3, 32, 3
+	slli.d	$t2, $a2, 3
 	sub.d	$a0, $s6, $t2
-	alsl.d	$a1, $a2, $t0, 4
-	alsl.d	$a2, $a2, $a5, 4
+	alsl.d	$a1, $a2, $t0, 3
+	alsl.d	$a2, $a2, $a5, 3
 	sub.d	$a5, $t1, $t2
 	add.d	$a7, $t1, $a7
 	add.d	$a7, $a4, $a7
@@ -3817,11 +3826,11 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
                                         #   Parent Loop BB15_47 Depth=1
                                         #     Parent Loop BB15_61 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a7, 0
-	addi.d	$a5, $a5, 16
-	addi.d	$a7, $a7, 16
-	addi.d	$a4, $a4, 16
+	ld.d	$a6, $a4, 0
+	st.d	$a6, $a7, 0
+	addi.d	$a5, $a5, 8
+	addi.d	$a7, $a7, 8
+	addi.d	$a4, $a4, 8
 	bnez	$a5, .LBB15_125
 # %bb.126:                              # %vec.epilog.middle.block
                                         #   in Loop: Header=BB15_61 Depth=2

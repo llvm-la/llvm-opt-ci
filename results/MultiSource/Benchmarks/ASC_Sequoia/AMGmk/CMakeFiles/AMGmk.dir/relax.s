@@ -6,15 +6,14 @@
 	.type	hypre_BoomerAMGSeqRelax,@function
 hypre_BoomerAMGSeqRelax:                # @hypre_BoomerAMGSeqRelax
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	ld.d	$s0, $a0, 0
 	ld.d	$s1, $a0, 8
 	ld.d	$s2, $a0, 16
@@ -22,34 +21,34 @@ hypre_BoomerAMGSeqRelax:                # @hypre_BoomerAMGSeqRelax
 	ld.d	$s3, $a2, 0
 	ld.d	$s4, $a1, 0
 	ori	$a1, $zero, 8
-	ori	$s5, $zero, 8
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	blez	$fp, .LBB0_15
 # %bb.1:                                # %.lr.ph.preheader
+	ori	$a2, $zero, 4
 	move	$a1, $zero
-	bltu	$fp, $s5, .LBB0_6
+	bltu	$fp, $a2, .LBB0_6
 # %bb.2:                                # %.lr.ph.preheader
 	sub.d	$a2, $a0, $s3
-	ori	$a3, $zero, 64
+	ori	$a3, $zero, 32
 	bltu	$a2, $a3, .LBB0_6
 # %bb.3:                                # %vector.ph
-	bstrpick.d	$a1, $fp, 30, 3
-	slli.d	$a1, $a1, 3
-	addi.d	$a2, $a0, 32
-	addi.d	$a3, $s3, 32
+	bstrpick.d	$a1, $fp, 30, 2
+	slli.d	$a1, $a1, 2
+	addi.d	$a2, $a0, 16
+	addi.d	$a3, $s3, 16
 	move	$a4, $a1
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a2, -32
-	xvst	$xr1, $a2, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a2, $a2, 64
-	addi.d	$a3, $a3, 64
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a2, $a2, 32
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB0_4
 # %bb.5:                                # %middle.block
 	beq	$a1, $fp, .LBB0_8
@@ -123,15 +122,14 @@ hypre_BoomerAMGSeqRelax:                # @hypre_BoomerAMGSeqRelax
 	pcaddu18i	$ra, %call36(hypre_Free)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end0:
 	.size	hypre_BoomerAMGSeqRelax, .Lfunc_end0-hypre_BoomerAMGSeqRelax

@@ -214,37 +214,34 @@ more_variables:                         # @more_variables
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s5, 0
-	ori	$a0, $zero, 4
+	ori	$a2, $zero, 4
 	ori	$a3, $zero, 3
-	blt	$s2, $a0, .LBB2_9
+	blt	$s2, $a2, .LBB2_9
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a1, $s2, -3
-	ori	$a2, $zero, 8
 	ori	$a0, $zero, 3
 	bltu	$a1, $a2, .LBB2_6
 # %bb.2:                                # %.lr.ph.preheader
 	sub.d	$a2, $s1, $fp
-	ori	$a3, $zero, 64
+	ori	$a3, $zero, 32
 	bltu	$a2, $a3, .LBB2_6
 # %bb.3:                                # %vector.ph
 	move	$a2, $a1
-	bstrins.d	$a2, $zero, 2, 0
-	ori	$a3, $zero, 3
-	move	$a0, $a1
-	bstrins.d	$a0, $a3, 2, 0
-	addi.d	$a3, $fp, 56
-	addi.d	$a4, $s1, 56
+	bstrins.d	$a2, $zero, 1, 0
+	ori	$a0, $a1, 3
+	addi.d	$a3, $fp, 40
+	addi.d	$a4, $s1, 40
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB2_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a3, $a3, 64
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 64
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a3, $a3, 32
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB2_4
 # %bb.5:                                # %middle.block
 	move	$a3, $s2
@@ -348,33 +345,33 @@ more_arrays:                            # @more_arrays
 	ori	$a3, $zero, 1
 	blt	$s2, $a0, .LBB3_9
 # %bb.1:                                # %.lr.ph.preheader
-	ori	$a1, $zero, 9
+	ori	$a1, $zero, 5
 	ori	$a0, $zero, 1
 	bltu	$s2, $a1, .LBB3_6
 # %bb.2:                                # %.lr.ph.preheader
 	sub.d	$a1, $s1, $fp
-	ori	$a2, $zero, 64
+	ori	$a2, $zero, 32
 	bltu	$a1, $a2, .LBB3_6
 # %bb.3:                                # %vector.ph
 	addi.d	$a1, $s2, -1
 	move	$a2, $a1
-	bstrins.d	$a2, $zero, 2, 0
+	bstrins.d	$a2, $zero, 1, 0
 	ori	$a3, $zero, 1
 	move	$a0, $a1
-	bstrins.d	$a0, $a3, 2, 0
-	addi.d	$a3, $fp, 40
-	addi.d	$a4, $s1, 40
+	bstrins.d	$a0, $a3, 1, 0
+	addi.d	$a3, $fp, 24
+	addi.d	$a4, $s1, 24
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB3_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a3, $a3, 64
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 64
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a3, $a3, 32
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB3_4
 # %bb.5:                                # %middle.block
 	move	$a3, $s2

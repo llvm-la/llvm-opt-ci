@@ -1,16 +1,12 @@
 	.file	"smg_setup.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function hypre_SMGSetup
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function hypre_SMGSetup
 .LCPI0_0:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
-	.dword	6                               # 0x6
-	.dword	7                               # 0x7
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI0_1:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	hypre_SMGSetup
 	.p2align	2
@@ -300,21 +296,21 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 0
 	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$t4, $sp, 128                   # 8-byte Folded Reload
-	blez	$t4, .LBB0_15
+	ld.d	$t0, $sp, 128                   # 8-byte Folded Reload
+	blez	$t0, .LBB0_15
 # %bb.8:                                # %.lr.ph.preheader
-	ori	$a0, $zero, 8
-	bgeu	$t4, $a0, .LBB0_10
+	ori	$a0, $zero, 4
+	bgeu	$t0, $a0, .LBB0_10
 # %bb.9:
 	move	$a0, $zero
 	b	.LBB0_13
 .LBB0_10:                               # %vector.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_1)
-	bstrpick.d	$a0, $t4, 30, 3
-	slli.d	$a0, $a0, 3
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_1)
+	bstrpick.d	$a0, $t0, 30, 2
+	slli.d	$a0, $a0, 2
 	ori	$a1, $zero, 1
 	lu32i.d	$a1, 1
 	addi.d	$a2, $sp, 240
@@ -322,35 +318,27 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	.p2align	4, , 16
 .LBB0_11:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr2, $xr0, 3
-	xvslli.d	$xr3, $xr1, 3
-	xvpickve2gr.d	$a4, $xr3, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	xvpickve2gr.d	$a6, $xr3, 2
-	xvpickve2gr.d	$a7, $xr3, 3
-	xvpickve2gr.d	$t0, $xr2, 0
-	xvpickve2gr.d	$t1, $xr2, 1
-	xvpickve2gr.d	$t2, $xr2, 2
-	xvpickve2gr.d	$t3, $xr2, 3
+	vslli.d	$vr2, $vr0, 3
+	vslli.d	$vr3, $vr1, 3
+	vpickve2gr.d	$a4, $vr3, 0
+	vpickve2gr.d	$a5, $vr3, 1
+	vpickve2gr.d	$a6, $vr2, 0
+	vpickve2gr.d	$a7, $vr2, 1
 	stx.d	$a1, $a4, $a2
 	stx.d	$a1, $a5, $a2
 	stx.d	$a1, $a6, $a2
 	stx.d	$a1, $a7, $a2
-	stx.d	$a1, $t0, $a2
-	stx.d	$a1, $t1, $a2
-	stx.d	$a1, $t2, $a2
-	stx.d	$a1, $t3, $a2
-	xvaddi.du	$xr1, $xr1, 8
-	addi.d	$a3, $a3, -8
-	xvaddi.du	$xr0, $xr0, 8
+	vaddi.du	$vr1, $vr1, 4
+	addi.d	$a3, $a3, -4
+	vaddi.du	$vr0, $vr0, 4
 	bnez	$a3, .LBB0_11
 # %bb.12:                               # %middle.block
-	beq	$a0, $t4, .LBB0_15
+	beq	$a0, $t0, .LBB0_15
 .LBB0_13:                               # %.lr.ph.preheader561
 	addi.d	$a1, $sp, 240
 	alsl.d	$a1, $a0, $a1, 3
 	addi.d	$a1, $a1, 4
-	sub.d	$a0, $t4, $a0
+	sub.d	$a0, $t0, $a0
 	ori	$a2, $zero, 1
 	lu32i.d	$a2, 1
 	.p2align	4, , 16

@@ -702,29 +702,29 @@ NodePtrVec_copy:                        # @NodePtrVec_copy
 	blez	$a1, .LBB10_12
 # %bb.5:                                # %.lr.ph
 	ld.d	$a2, $s0, 8
-	ori	$a4, $zero, 8
+	ori	$a4, $zero, 4
 	move	$a3, $zero
 	bltu	$a1, $a4, .LBB10_10
 # %bb.6:                                # %.lr.ph
 	sub.d	$a4, $fp, $a2
-	ori	$a5, $zero, 64
+	ori	$a5, $zero, 32
 	bltu	$a4, $a5, .LBB10_10
 # %bb.7:                                # %vector.ph
-	bstrpick.d	$a3, $a1, 30, 3
-	slli.d	$a3, $a3, 3
-	addi.d	$a4, $fp, 32
-	addi.d	$a5, $a2, 32
+	bstrpick.d	$a3, $a1, 30, 2
+	slli.d	$a3, $a3, 2
+	addi.d	$a4, $fp, 16
+	addi.d	$a5, $a2, 16
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB10_8:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB10_8
 # %bb.9:                                # %middle.block
 	beq	$a3, $a1, .LBB10_12

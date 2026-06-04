@@ -746,9 +746,9 @@ _ZL11RemoveQuoteR11CStringBaseIwE:      # @_ZL11RemoveQuoteR11CStringBaseIwE
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	addi.w	$s3, $fp, -1
-	ori	$s5, $zero, 4
-	st.w	$zero, $a0, 0
-	bne	$s3, $s5, .LBB1_6
+	ori	$a0, $zero, 4
+	st.w	$zero, $s1, 0
+	bne	$s3, $a0, .LBB1_6
 # %bb.4:
 	move	$fp, $s1
 	b	.LBB1_8
@@ -776,128 +776,103 @@ _ZL11RemoveQuoteR11CStringBaseIwE:      # @_ZL11RemoveQuoteR11CStringBaseIwE
 	jirl	$ra, $ra, 0
 	ld.d	$s0, $s4, 0
 	st.w	$zero, $fp, 0
-	beqz	$s2, .LBB1_14
-.LBB1_8:                                # %iter.check
+	beqz	$s2, .LBB1_17
+.LBB1_8:                                # %.lr.ph.i
+	ori	$a0, $zero, 8
 	bstrpick.d	$a1, $s2, 31, 0
-	bgeu	$s2, $s5, .LBB1_10
+	bgeu	$s2, $a0, .LBB1_10
 # %bb.9:
 	move	$a2, $zero
 	move	$a0, $s4
-	b	.LBB1_22
+	b	.LBB1_15
 .LBB1_10:                               # %vector.memcheck
 	sub.d	$a0, $fp, $s0
 	addi.d	$a2, $a0, -4
-	ori	$a3, $zero, 64
+	ori	$a3, $zero, 32
 	move	$a0, $s4
 	bgeu	$a2, $a3, .LBB1_12
 # %bb.11:
 	move	$a2, $zero
-	b	.LBB1_22
-.LBB1_12:                               # %vector.main.loop.iter.check
-	ori	$a2, $zero, 16
-	bgeu	$s2, $a2, .LBB1_15
-# %bb.13:
-	move	$a2, $zero
-	b	.LBB1_19
-.LBB1_14:
-	move	$a0, $s4
-	move	$a1, $zero
-	b	.LBB1_24
-.LBB1_15:                               # %vector.ph
-	move	$a4, $zero
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	andi	$a3, $a1, 12
-	move	$a5, $a2
-	.p2align	4, , 16
-.LBB1_16:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	add.d	$a6, $s0, $a4
-	xvld	$xr0, $a6, 4
-	xvld	$xr1, $a6, 36
-	add.d	$a6, $fp, $a4
-	xvstx	$xr0, $fp, $a4
-	xvst	$xr1, $a6, 32
-	addi.d	$a5, $a5, -16
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB1_16
-# %bb.17:                               # %middle.block
-	beq	$a2, $a1, .LBB1_24
-# %bb.18:                               # %vec.epilog.iter.check
-	beqz	$a3, .LBB1_22
-.LBB1_19:                               # %vec.epilog.ph
+	b	.LBB1_15
+.LBB1_12:                               # %vector.ph
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	move	$a3, $zero
 	move	$a4, $a2
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a4, $a2
-	slli.d	$a4, $a4, 2
 	.p2align	4, , 16
-.LBB1_20:                               # %vec.epilog.vector.body
+.LBB1_13:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a5, $s0, $a4
+	add.d	$a5, $s0, $a3
 	vld	$vr0, $a5, 4
-	vstx	$vr0, $fp, $a4
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a3, .LBB1_20
-# %bb.21:                               # %vec.epilog.middle.block
-	beq	$a2, $a1, .LBB1_24
-.LBB1_22:                               # %vec.epilog.scalar.ph.preheader
+	vld	$vr1, $a5, 20
+	add.d	$a5, $fp, $a3
+	vstx	$vr0, $fp, $a3
+	vst	$vr1, $a5, 16
+	addi.d	$a4, $a4, -8
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB1_13
+# %bb.14:                               # %middle.block
+	beq	$a2, $a1, .LBB1_18
+.LBB1_15:                               # %scalar.ph.preheader
 	sub.d	$a3, $a1, $a2
 	slli.d	$a2, $a2, 2
 	.p2align	4, , 16
-.LBB1_23:                               # %vec.epilog.scalar.ph
+.LBB1_16:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $s0, $a2
 	ld.w	$a4, $a4, 4
 	stx.w	$a4, $fp, $a2
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
-	bnez	$a3, .LBB1_23
-.LBB1_24:                               # %_ZNK11CStringBaseIwE3MidEii.exit
+	bnez	$a3, .LBB1_16
+	b	.LBB1_18
+.LBB1_17:
+	move	$a0, $s4
+	move	$a1, $zero
+.LBB1_18:                               # %_ZNK11CStringBaseIwE3MidEii.exit
 	ld.w	$s5, $a0, 12
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $fp, $a1
 	st.w	$zero, $a0, 8
 	st.w	$zero, $s0, 0
-	bne	$s3, $s5, .LBB1_26
-# %bb.25:
+	bne	$s3, $s5, .LBB1_20
+# %bb.19:
 	move	$s1, $s0
-	b	.LBB1_31
-.LBB1_26:
+	b	.LBB1_25
+.LBB1_20:
 	slli.d	$a0, $s3, 2
 .Ltmp65:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp66:                                # EH_LABEL
-# %bb.27:                               # %.noexc
+# %bb.21:                               # %.noexc
 	move	$s1, $a0
-	blez	$s5, .LBB1_29
-# %bb.28:                               # %._crit_edge.thread.i.i
+	blez	$s5, .LBB1_23
+# %bb.22:                               # %._crit_edge.thread.i.i
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $s4
 	ld.w	$a1, $s4, 8
-	b	.LBB1_30
-.LBB1_29:
+	b	.LBB1_24
+.LBB1_23:
 	move	$a1, $zero
 	move	$a0, $s4
-.LBB1_30:
+.LBB1_24:
 	st.d	$s1, $a0, 0
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $s1, $a1
 	st.w	$s3, $a0, 12
-.LBB1_31:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i8.preheader
+.LBB1_25:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i8.preheader
 	move	$a1, $zero
 	.p2align	4, , 16
-.LBB1_32:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i8
+.LBB1_26:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i8
                                         # =>This Inner Loop Header: Depth=1
 	ldx.w	$a2, $fp, $a1
 	stx.w	$a2, $s1, $a1
 	addi.d	$a1, $a1, 4
-	bnez	$a2, .LBB1_32
-# %bb.33:                               # %_ZN11CStringBaseIwED2Ev.exit
+	bnez	$a2, .LBB1_26
+# %bb.27:                               # %_ZN11CStringBaseIwED2Ev.exit
 	st.w	$s2, $a0, 8
 	move	$a0, $fp
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
@@ -911,7 +886,7 @@ _ZL11RemoveQuoteR11CStringBaseIwE:      # @_ZL11RemoveQuoteR11CStringBaseIwE
 	addi.d	$sp, $sp, 80
 	pcaddu18i	$t8, %call36(_ZdaPv)
 	jr	$t8
-.LBB1_34:                               # %_ZN11CStringBaseIwED2Ev.exit10
+.LBB1_28:                               # %_ZN11CStringBaseIwED2Ev.exit10
 .Ltmp67:                                # EH_LABEL
 	move	$s0, $a0
 	move	$s1, $fp
@@ -921,7 +896,7 @@ _ZL11RemoveQuoteR11CStringBaseIwE:      # @_ZL11RemoveQuoteR11CStringBaseIwE
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB1_35:                               # %_ZN11CStringBaseIwED2Ev.exit.i
+.LBB1_29:                               # %_ZN11CStringBaseIwED2Ev.exit.i
 .Ltmp64:                                # EH_LABEL
 	move	$s0, $a0
 	move	$a0, $s1
@@ -993,7 +968,7 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s0, $zero
 	add.w	$a2, $s4, $a2
-	bgtz	$a2, .LBB2_21
+	bgtz	$a2, .LBB2_15
 # %bb.1:
 	ori	$a3, $zero, 64
 	slt	$a3, $a3, $s4
@@ -1017,7 +992,7 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	or	$a2, $a2, $a3
 	add.w	$a2, $a2, $s4
 	addi.w	$s1, $a2, 1
-	beq	$s1, $s4, .LBB2_21
+	beq	$s1, $s4, .LBB2_15
 # %bb.2:
 	move	$s2, $a1
 	move	$s3, $a0
@@ -1030,99 +1005,72 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	blez	$s4, .LBB2_8
+	blez	$s4, .LBB2_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	blez	$s0, .LBB2_9
-# %bb.4:                                # %iter.check
-	ori	$a2, $zero, 4
+	blez	$s0, .LBB2_12
+# %bb.4:                                # %.lr.ph.i.i
+	ori	$a2, $zero, 8
 	move	$a1, $zero
-	bltu	$s0, $a2, .LBB2_17
-# %bb.5:                                # %iter.check
+	bltu	$s0, $a2, .LBB2_9
+# %bb.5:                                # %.lr.ph.i.i
 	sub.d	$a2, $fp, $a0
-	ori	$a3, $zero, 64
-	bltu	$a2, $a3, .LBB2_17
-# %bb.6:                                # %vector.main.loop.iter.check
-	ori	$a1, $zero, 16
-	bgeu	$s0, $a1, .LBB2_10
-# %bb.7:
-	move	$a1, $zero
-	b	.LBB2_14
-.LBB2_8:
-	move	$a2, $s3
-	move	$a1, $s2
-	b	.LBB2_20
-.LBB2_9:                                # %._crit_edge.i.i
-	move	$a2, $s3
-	move	$a1, $s2
-	bnez	$a0, .LBB2_19
-	b	.LBB2_20
-.LBB2_10:                               # %vector.ph
-	andi	$a2, $s0, 12
-	bstrpick.d	$a1, $s0, 30, 4
-	slli.d	$a1, $a1, 4
-	addi.d	$a3, $fp, 32
-	addi.d	$a4, $a0, 32
-	move	$a5, $a1
-	.p2align	4, , 16
-.LBB2_11:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a5, $a5, -16
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB2_11
-# %bb.12:                               # %middle.block
-	beq	$a1, $s0, .LBB2_19
-# %bb.13:                               # %vec.epilog.iter.check
-	beqz	$a2, .LBB2_17
-.LBB2_14:                               # %vec.epilog.ph
+	ori	$a3, $zero, 32
+	bltu	$a2, $a3, .LBB2_9
+# %bb.6:                                # %vector.ph
+	bstrpick.d	$a1, $s0, 30, 3
+	slli.d	$a1, $a1, 3
+	addi.d	$a2, $fp, 16
+	addi.d	$a3, $a0, 16
 	move	$a4, $a1
-	bstrpick.d	$a1, $s0, 30, 2
-	slli.d	$a1, $a1, 2
-	sub.d	$a2, $a4, $a1
-	alsl.d	$a3, $a4, $fp, 2
-	alsl.d	$a4, $a4, $a0, 2
 	.p2align	4, , 16
-.LBB2_15:                               # %vec.epilog.vector.body
+.LBB2_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a3, 0
-	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 16
-	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB2_15
-# %bb.16:                               # %vec.epilog.middle.block
-	beq	$a1, $s0, .LBB2_19
-.LBB2_17:                               # %vec.epilog.scalar.ph.preheader
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$a4, $a4, -8
+	addi.d	$a2, $a2, 32
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB2_7
+# %bb.8:                                # %middle.block
+	beq	$a1, $s0, .LBB2_13
+.LBB2_9:                                # %scalar.ph.preheader
 	sub.d	$a2, $s0, $a1
 	alsl.d	$a3, $a1, $fp, 2
 	alsl.d	$a1, $a1, $a0, 2
 	.p2align	4, , 16
-.LBB2_18:                               # %vec.epilog.scalar.ph
+.LBB2_10:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a1, 0
 	st.w	$a4, $a3, 0
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a1, $a1, 4
-	bnez	$a2, .LBB2_18
-.LBB2_19:                               # %._crit_edge.thread.i.i
+	bnez	$a2, .LBB2_10
+	b	.LBB2_13
+.LBB2_11:
+	move	$a2, $s3
+	move	$a1, $s2
+	b	.LBB2_14
+.LBB2_12:                               # %._crit_edge.i.i
+	move	$a2, $s3
+	move	$a1, $s2
+	beqz	$a0, .LBB2_14
+.LBB2_13:                               # %._crit_edge.thread.i.i
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a1, $s2
 	move	$a2, $s3
 	ld.w	$s0, $s3, 8
-.LBB2_20:
+.LBB2_14:
 	move	$a0, $a2
 	st.d	$fp, $a2, 0
 	slli.d	$a2, $s0, 2
 	stx.w	$zero, $fp, $a2
 	st.w	$s1, $a0, 12
-.LBB2_21:                               # %_ZN11CStringBaseIwE10GrowLengthEi.exit
+.LBB2_15:                               # %_ZN11CStringBaseIwE10GrowLengthEi.exit
 	ld.d	$a2, $a0, 0
 	slli.d	$a3, $s0, 2
 	stx.w	$a1, $a2, $a3

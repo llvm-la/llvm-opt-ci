@@ -700,7 +700,8 @@ _ZN29btSphereBoxCollisionAlgorithm17getSphereDistanceEP17btCollisionObjectR9btVe
 	vextrins.w	$vr0, $vr4, 16
 	vshuf4i.w	$vr0, $vr0, 16
 	vslli.d	$vr0, $vr0, 32
-	vext2xv.du.wu	$xr1, $xr1
+	vrepli.b	$vr2, 0
+	vilvl.w	$vr1, $vr2, $vr1
 	vor.v	$vr0, $vr0, $vr1
 	vstelm.d	$vr0, $fp, 0, 0
 	movfr2gr.s	$a0, $fa3
@@ -1175,29 +1176,29 @@ _ZN29btSphereBoxCollisionAlgorithm22getAllContactManifoldsER20btAlignedObjectArr
 	ld.d	$a2, $a1, 16
 	blez	$a3, .LBB8_15
 .LBB8_6:                                # %.lr.ph.i.i.i
-	ori	$a5, $zero, 8
+	ori	$a5, $zero, 4
 	move	$a4, $zero
 	bltu	$a3, $a5, .LBB8_11
 # %bb.7:                                # %.lr.ph.i.i.i
 	sub.d	$a5, $fp, $a2
-	ori	$a6, $zero, 64
+	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB8_11
 # %bb.8:                                # %vector.ph
-	bstrpick.d	$a4, $a3, 30, 3
-	slli.d	$a4, $a4, 3
-	addi.d	$a5, $a2, 32
-	addi.d	$a6, $fp, 32
+	bstrpick.d	$a4, $a3, 30, 2
+	slli.d	$a4, $a4, 2
+	addi.d	$a5, $a2, 16
+	addi.d	$a6, $fp, 16
 	move	$a7, $a4
 	.p2align	4, , 16
 .LBB8_9:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvst	$xr0, $a6, -32
-	xvst	$xr1, $a6, 0
-	addi.d	$a7, $a7, -8
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a6, -16
+	vst	$vr1, $a6, 0
+	addi.d	$a7, $a7, -4
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB8_9
 # %bb.10:                               # %middle.block
 	beq	$a4, $a3, .LBB8_13

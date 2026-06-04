@@ -330,16 +330,16 @@ _ZN15CPercentPrinter12RePrintRatioEv:   # @_ZN15CPercentPrinter12RePrintRatioEv
 	maskeqz	$a1, $a1, $a2
 	masknez	$a2, $a0, $a2
 	or	$s2, $a1, $a2
-	addi.d	$a2, $sp, 8
+	addi.d	$a3, $sp, 8
 	beqz	$a0, .LBB4_7
 # %bb.4:
 	blez	$a0, .LBB4_8
 .LBB4_5:                                # %iter.check
-	ori	$a1, $zero, 16
-	bgeu	$a0, $a1, .LBB4_9
+	ori	$a2, $zero, 8
+	bgeu	$a0, $a2, .LBB4_9
 # %bb.6:
-	move	$a3, $zero
-	move	$a1, $a2
+	move	$a4, $zero
+	move	$a1, $a3
 	b	.LBB4_18
 .LBB4_7:                                # %.preheader24.preheader
 	ori	$a0, $zero, 1
@@ -353,88 +353,88 @@ _ZN15CPercentPrinter12RePrintRatioEv:   # @_ZN15CPercentPrinter12RePrintRatioEv
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	add.d	$a2, $s3, $s0
+	add.d	$a3, $s3, $s0
 	move	$a0, $s2
 	bgtz	$a0, .LBB4_5
 .LBB4_8:
-	move	$a1, $a2
-	b	.LBB4_20
+	move	$a1, $a3
+	b	.LBB4_19
 .LBB4_9:                                # %vector.main.loop.iter.check
-	ori	$a1, $zero, 64
+	ori	$a1, $zero, 32
 	bgeu	$a0, $a1, .LBB4_11
 # %bb.10:
-	move	$a4, $zero
+	move	$a5, $zero
 	b	.LBB4_15
 .LBB4_11:                               # %vector.ph
-	andi	$a3, $a0, 48
-	bstrpick.d	$a1, $a0, 30, 6
-	slli.d	$a4, $a1, 6
-	add.d	$a1, $a2, $a4
-	addi.d	$a5, $a2, 32
-	xvrepli.b	$xr0, 8
-	move	$a6, $a4
+	andi	$a4, $a0, 24
+	bstrpick.d	$a1, $a0, 30, 5
+	slli.d	$a5, $a1, 5
+	add.d	$a1, $a3, $a5
+	addi.d	$a6, $a3, 16
+	vrepli.b	$vr0, 8
+	move	$a7, $a5
 	.p2align	4, , 16
 .LBB4_12:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a5, -32
-	xvst	$xr0, $a5, 0
-	addi.d	$a6, $a6, -64
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB4_12
+	vst	$vr0, $a6, -16
+	vst	$vr0, $a6, 0
+	addi.d	$a7, $a7, -32
+	addi.d	$a6, $a6, 32
+	bnez	$a7, .LBB4_12
 # %bb.13:                               # %middle.block
-	beq	$a4, $a0, .LBB4_20
+	beq	$a5, $a0, .LBB4_19
 # %bb.14:                               # %vec.epilog.iter.check
-	beqz	$a3, .LBB4_26
+	beqz	$a4, .LBB4_25
 .LBB4_15:                               # %vec.epilog.ph
-	bstrpick.d	$a1, $a0, 30, 4
-	slli.d	$a3, $a1, 4
-	alsl.d	$a1, $a1, $a2, 4
-	sub.d	$a5, $a4, $a3
-	add.d	$a2, $a2, $a4
-	vrepli.b	$vr0, 8
+	bstrpick.d	$a1, $a0, 30, 3
+	slli.d	$a4, $a1, 3
+	alsl.d	$a1, $a1, $a3, 3
+	sub.d	$a6, $a5, $a4
+	add.d	$a3, $a3, $a5
+	lu12i.w	$a5, 32896
+	ori	$a5, $a5, 2056
+	bstrins.d	$a5, $a5, 59, 32
 	.p2align	4, , 16
 .LBB4_16:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr0, $a2, 0
-	addi.d	$a5, $a5, 16
-	addi.d	$a2, $a2, 16
-	bnez	$a5, .LBB4_16
+	st.d	$a5, $a3, 0
+	addi.d	$a6, $a6, 8
+	addi.d	$a3, $a3, 8
+	bnez	$a6, .LBB4_16
 # %bb.17:                               # %vec.epilog.middle.block
-	beq	$a3, $a0, .LBB4_20
-.LBB4_18:                               # %.lr.ph.preheader
-	ori	$a2, $zero, 8
+	beq	$a4, $a0, .LBB4_19
 	.p2align	4, , 16
-.LBB4_19:                               # %.lr.ph
+.LBB4_18:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.b	$a2, $a1, 0
-	addi.w	$a3, $a3, 1
+	addi.w	$a4, $a4, 1
 	addi.d	$a1, $a1, 1
-	blt	$a3, $a0, .LBB4_19
-.LBB4_20:                               # %._crit_edge
+	blt	$a4, $a0, .LBB4_18
+.LBB4_19:                               # %._crit_edge
 	st.w	$s2, $fp, 32
-	bge	$s1, $s2, .LBB4_23
-# %bb.21:                               # %.lr.ph32.preheader
+	bge	$s1, $s2, .LBB4_22
+# %bb.20:                               # %.lr.ph32.preheader
 	ori	$a0, $zero, 32
 	.p2align	4, , 16
-.LBB4_22:                               # %.lr.ph32
+.LBB4_21:                               # %.lr.ph32
                                         # =>This Inner Loop Header: Depth=1
 	st.b	$a0, $a1, 0
 	ld.w	$a2, $fp, 32
 	addi.w	$s1, $s1, 1
 	addi.d	$a1, $a1, 1
-	blt	$s1, $a2, .LBB4_22
-.LBB4_23:                               # %.preheader.preheader
+	blt	$s1, $a2, .LBB4_21
+.LBB4_22:                               # %.preheader.preheader
 	addi.d	$a0, $sp, 128
 	.p2align	4, , 16
-.LBB4_24:                               # %.preheader
+.LBB4_23:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a2, $a0, 0
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a1, 1
 	st.b	$a2, $a1, 0
 	move	$a1, $a3
-	bnez	$a2, .LBB4_24
-# %bb.25:                               # %_Z12MyStringCopyIcEPT_S1_PKS0_.exit
+	bnez	$a2, .LBB4_23
+# %bb.24:                               # %_Z12MyStringCopyIcEPT_S1_PKS0_.exit
 	ld.d	$a0, $fp, 40
 	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(_ZN13CStdOutStreamlsEPKc)
@@ -452,8 +452,8 @@ _ZN15CPercentPrinter12RePrintRatioEv:   # @_ZN15CPercentPrinter12RePrintRatioEv
 	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 208
 	ret
-.LBB4_26:
-	move	$a3, $a4
+.LBB4_25:
+	move	$a4, $a5
 	b	.LBB4_18
 .Lfunc_end4:
 	.size	_ZN15CPercentPrinter12RePrintRatioEv, .Lfunc_end4-_ZN15CPercentPrinter12RePrintRatioEv

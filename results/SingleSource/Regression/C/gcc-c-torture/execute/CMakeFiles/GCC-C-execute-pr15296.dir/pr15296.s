@@ -57,11 +57,10 @@ g:                                      # @g
 .LCPI2_0:
 	.dword	999                             # 0x3e7
 	.dword	777                             # 0x309
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI2_1:
 	.dword	111                             # 0x6f
 	.dword	222                             # 0xde
+.LCPI2_2:
 	.dword	0                               # 0x0
 	.dword	444                             # 0x1bc
 	.text
@@ -71,52 +70,58 @@ g:                                      # @g
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 160
-	bstrins.d	$sp, $zero, 4, 0
+	addi.d	$sp, $sp, -128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L__const.main.uv)
-	xvld	$xr0, $a0, %pc_lo12(.L__const.main.uv)
-	xvst	$xr0, $sp, 104
-	st.d	$zero, $sp, 80
+	addi.d	$a0, $a0, %pc_lo12(.L__const.main.uv)
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $sp, 96
+	vst	$vr1, $sp, 80
+	st.d	$zero, $sp, 56
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI2_0)
-	st.d	$zero, $sp, 64
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	st.d	$zero, $sp, 40
 	ori	$a0, $zero, 555
-	st.d	$a0, $sp, 72
-	vst	$vr0, $sp, 88
+	st.d	$a0, $sp, 48
+	vst	$vr0, $sp, 64
 	lu12i.w	$a0, 4
 	ori	$a3, $a0, 3616
 	lu12i.w	$a0, 2
 	ori	$a4, $a0, 1808
-	addi.d	$a1, $sp, 64
-	addi.d	$a5, $sp, 104
-	addi.d	$s0, $sp, 104
+	addi.d	$a1, $sp, 40
+	addi.d	$a5, $sp, 80
+	addi.d	$fp, $sp, 80
                                         # implicit-def: $r6
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(f)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 72
-	ori	$a0, $zero, 777
-	st.d	$a0, $sp, 56
-	ori	$a0, $zero, 999
-	st.d	$a0, $sp, 48
-	st.d	$zero, $sp, 40
-	st.d	$s0, $sp, 32
-	xvld	$xr1, $sp, 104
+	vld	$vr0, $sp, 48
+	vld	$vr1, $sp, 64
+	vrepli.b	$vr2, 0
+	vinsgr2vr.d	$vr2, $fp, 0
+	vseq.d	$vr0, $vr0, $vr2
+	vxori.b	$vr0, $vr0, 255
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	vseq.d	$vr1, $vr1, $vr2
+	vxori.b	$vr1, $vr1, 255
+	vld	$vr2, $sp, 80
+	vld	$vr3, $sp, 96
 	pcalau12i	$a0, %pc_hi20(.LCPI2_1)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI2_1)
-	xvld	$xr3, $sp, 32
-	xvseq.d	$xr1, $xr1, $xr2
-	xvseq.d	$xr0, $xr0, $xr3
-	xvxori.b	$xr0, $xr0, 255
-	xvorn.v	$xr0, $xr0, $xr1
-	xvmskltz.d	$xr0, $xr0
-	xvpickve2gr.wu	$a0, $xr0, 0
-	xvpickve2gr.wu	$a1, $xr0, 4
-	bstrins.d	$a0, $a1, 3, 2
+	vld	$vr4, $a0, %pc_lo12(.LCPI2_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI2_2)
+	vld	$vr5, $a0, %pc_lo12(.LCPI2_2)
+	vpickev.w	$vr0, $vr1, $vr0
+	vseq.d	$vr1, $vr2, $vr4
+	vxori.b	$vr1, $vr1, 255
+	vseq.d	$vr2, $vr3, $vr5
+	vxori.b	$vr2, $vr2, 255
+	vpickev.w	$vr1, $vr2, $vr1
+	vor.v	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	bnez	$a0, .LBB2_2
 # %bb.1:
 	move	$a0, $zero

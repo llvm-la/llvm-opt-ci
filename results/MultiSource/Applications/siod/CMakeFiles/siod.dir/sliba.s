@@ -9509,8 +9509,11 @@ fast_save:                              # @fast_save
 	jirl	$ra, $ra, 0
 .LBB100_9:
 	pcalau12i	$a0, %pc_hi20(.L.str.90)
-	xvld	$xr0, $a0, %pc_lo12(.L.str.90)
-	xvst	$xr0, $sp, 80
+	addi.d	$a0, $a0, %pc_lo12(.L.str.90)
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $sp, 96
+	vst	$vr1, $sp, 80
 	addi.d	$a1, $sp, 80
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fput_st)

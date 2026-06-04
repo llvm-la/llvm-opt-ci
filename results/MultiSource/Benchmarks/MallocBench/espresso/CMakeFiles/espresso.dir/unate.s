@@ -561,8 +561,8 @@ unate_complement:                       # @unate_complement
 	ld.d	$s2, $fp, 24
 	ld.d	$s3, $s1, 24
 	alsl.d	$s4, $a1, $s2, 2
-	ori	$s5, $zero, 7
-	ori	$s6, $zero, 32
+	ori	$s5, $zero, 3
+	ori	$s6, $zero, 16
 	b	.LBB3_25
 	.p2align	4, , 16
 .LBB3_23:                               # %.loopexit181
@@ -594,22 +594,22 @@ unate_complement:                       # @unate_complement
 # %bb.28:                               # %vector.ph
                                         #   in Loop: Header=BB3_25 Depth=1
 	addi.d	$a1, $a4, 1
-	andi	$a2, $a1, 2040
+	andi	$a2, $a1, 2044
 	sub.d	$a0, $a4, $a2
 	alsl.d	$a3, $a4, $s3, 2
-	addi.d	$a3, $a3, -28
+	addi.d	$a3, $a3, -12
 	alsl.d	$a4, $a4, $s2, 2
-	addi.d	$a4, $a4, -28
+	addi.d	$a4, $a4, -12
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB3_29:                               # %vector.body
                                         #   Parent Loop BB3_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a4, 0
-	xvst	$xr0, $a3, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a3, $a3, -32
-	addi.d	$a4, $a4, -32
+	vld	$vr0, $a4, 0
+	vst	$vr0, $a3, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a3, $a3, -16
+	addi.d	$a4, $a4, -16
 	bnez	$a5, .LBB3_29
 # %bb.30:                               # %middle.block
                                         #   in Loop: Header=BB3_25 Depth=1
@@ -742,8 +742,8 @@ unate_complement:                       # @unate_complement
 	srai.d	$a4, $s2, 5
 	ori	$a5, $zero, 1
 	sll.w	$a5, $a5, $s2
-	ori	$a6, $zero, 7
-	ori	$a7, $zero, 32
+	ori	$a6, $zero, 3
+	ori	$a7, $zero, 16
 	b	.LBB3_52
 	.p2align	4, , 16
 .LBB3_50:                               # %.loopexit180
@@ -774,22 +774,22 @@ unate_complement:                       # @unate_complement
 # %bb.55:                               # %vector.ph168
                                         #   in Loop: Header=BB3_52 Depth=1
 	addi.d	$t1, $t4, 1
-	andi	$t2, $t1, 2040
+	andi	$t2, $t1, 2044
 	sub.d	$t0, $t4, $t2
 	alsl.d	$t3, $t4, $a3, 2
-	addi.d	$t3, $t3, -28
+	addi.d	$t3, $t3, -12
 	alsl.d	$t4, $t4, $a1, 2
-	addi.d	$t4, $t4, -28
+	addi.d	$t4, $t4, -12
 	move	$t5, $t2
 	.p2align	4, , 16
 .LBB3_56:                               # %vector.body171
                                         #   Parent Loop BB3_52 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $t4, 0
-	xvst	$xr0, $t3, 0
-	addi.d	$t5, $t5, -8
-	addi.d	$t3, $t3, -32
-	addi.d	$t4, $t4, -32
+	vld	$vr0, $t4, 0
+	vst	$vr0, $t3, 0
+	addi.d	$t5, $t5, -4
+	addi.d	$t3, $t3, -16
+	addi.d	$t4, $t4, -16
 	bnez	$t5, .LBB3_56
 # %bb.57:                               # %middle.block177
                                         #   in Loop: Header=BB3_52 Depth=1
@@ -1249,7 +1249,7 @@ exact_minimum_cover:                    # @exact_minimum_cover
 	ld.d	$a1, $s1, 24
 	alsl.d	$a2, $a2, $a1, 2
 	addi.d	$a3, $a0, 4
-	addi.d	$a4, $a0, -28
+	addi.d	$a4, $a0, -12
 	ori	$a5, $zero, 8
 	ori	$a6, $zero, 1
 	b	.LBB4_43
@@ -1287,22 +1287,22 @@ exact_minimum_cover:                    # @exact_minimum_cover
 .LBB4_46:                               # %vector.ph
                                         #   in Loop: Header=BB4_43 Depth=1
 	move	$t1, $a7
-	bstrins.d	$t1, $zero, 2, 0
+	bstrins.d	$t1, $zero, 1, 0
 	sub.d	$t2, $t0, $t1
-	addi.d	$t3, $t3, -28
+	addi.d	$t3, $t3, -12
 	alsl.d	$t0, $t0, $a4, 2
 	move	$t4, $t1
 	.p2align	4, , 16
 .LBB4_47:                               # %vector.body
                                         #   Parent Loop BB4_43 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $t0, 0
-	xvld	$xr1, $t3, 0
-	xvandn.v	$xr0, $xr1, $xr0
-	xvst	$xr0, $t3, 0
-	addi.d	$t4, $t4, -8
-	addi.d	$t3, $t3, -32
-	addi.d	$t0, $t0, -32
+	vld	$vr0, $t0, 0
+	vld	$vr1, $t3, 0
+	vandn.v	$vr0, $vr1, $vr0
+	vst	$vr0, $t3, 0
+	addi.d	$t4, $t4, -4
+	addi.d	$t3, $t3, -16
+	addi.d	$t0, $t0, -16
 	bnez	$t4, .LBB4_47
 # %bb.48:                               # %middle.block
                                         #   in Loop: Header=BB4_43 Depth=1

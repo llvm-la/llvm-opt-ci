@@ -21,15 +21,7 @@ Initialize_Buffer:                      # @Initialize_Buffer
 .Lfunc_end0:
 	.size	Initialize_Buffer, .Lfunc_end0-Initialize_Buffer
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function Flush_Buffer
-.LCPI1_0:
-	.word	0                               # 0x0
-	.word	8                               # 0x8
-	.word	16                              # 0x10
-	.word	24                              # 0x18
-	.text
-	.globl	Flush_Buffer
+	.globl	Flush_Buffer                    # -- Begin function Flush_Buffer
 	.p2align	2
 	.prefalign	5, .Lfunc_end1, nop
 	.type	Flush_Buffer,@function
@@ -84,7 +76,7 @@ Flush_Buffer:                           # @Flush_Buffer
 	sub.d	$a0, $a0, $a6
 	addi.d	$a6, $a0, 7
 	addi.w	$a0, $a6, 0
-	ori	$t0, $zero, 88
+	ori	$t0, $zero, 72
 	bltu	$a0, $t0, .LBB1_7
 # %bb.5:                                # %vector.memcheck
 	addi.d	$t0, $a7, 9
@@ -96,10 +88,10 @@ Flush_Buffer:                           # @Flush_Buffer
 	addi.d	$a6, $a7, 37
 	bgeu	$a2, $a6, .LBB1_29
 .LBB1_7:
-	move	$a7, $a2
+	move	$a6, $a2
 	move	$a0, $a3
 .LBB1_8:                                # %.preheader.preheader77
-	addi.d	$a2, $a7, 1
+	addi.d	$a2, $a6, 1
 	ori	$a3, $zero, 24
 	sub.d	$a6, $a3, $a0
 	move	$a3, $a0
@@ -282,53 +274,56 @@ Flush_Buffer:                           # @Flush_Buffer
 	b	.LBB1_24
 .LBB1_29:                               # %vector.ph
 	bstrpick.d	$a0, $a0, 31, 3
-	addi.d	$a6, $a0, 1
-	bstrpick.d	$a0, $a6, 29, 3
-	slli.d	$t0, $a0, 3
-	pcalau12i	$a7, %pc_hi20(.LCPI1_0)
-	vld	$vr2, $a7, %pc_lo12(.LCPI1_0)
-	alsl.d	$a7, $a0, $a2, 3
-	slli.d	$a0, $a0, 6
-	vrepli.b	$vr0, 0
+	addi.d	$a7, $a0, 1
+	bstrpick.d	$a0, $a7, 29, 2
+	slli.d	$t0, $a0, 2
+	alsl.d	$a6, $a0, $a2, 2
+	slli.d	$a0, $a0, 5
+	vrepli.b	$vr1, 0
 	add.w	$a0, $a3, $a0
-	vori.b	$vr1, $vr0, 0
-	vinsgr2vr.w	$vr1, $a5, 0
-	vreplgr2vr.w	$vr3, $a3
-	vadd.w	$vr2, $vr3, $vr2
+	vori.b	$vr0, $vr1, 0
+	vinsgr2vr.w	$vr0, $a5, 0
+	vinsgr2vr.w	$vr2, $a3, 0
+	vinsgr2vr.w	$vr2, $a3, 1
+	ori	$a3, $zero, 0
+	lu32i.d	$a3, 8
+	vreplgr2vr.d	$vr3, $a3
+	vadd.w	$vr2, $vr2, $vr3
 	vrepli.w	$vr3, 24
-	vrepli.w	$vr4, -8
-	vrepli.w	$vr5, 64
+	vrepli.w	$vr4, 8
+	vrepli.w	$vr5, 32
 	move	$a3, $t0
+	vori.b	$vr6, $vr1, 0
 	.p2align	4, , 16
 .LBB1_30:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t1, $a2, 0
-	ld.w	$t2, $a2, 4
-	addi.d	$a5, $a2, 8
-	vinsgr2vr.w	$vr6, $t1, 0
-	vinsgr2vr.w	$vr7, $t2, 0
-	vext2xv.wu.bu	$xr6, $xr6
-	vext2xv.wu.bu	$xr7, $xr7
-	vsub.w	$vr8, $vr3, $vr2
-	vsub.w	$vr9, $vr4, $vr2
-	vsll.w	$vr6, $vr6, $vr8
+	ld.h	$t1, $a2, 0
+	ld.h	$t2, $a2, 2
+	addi.d	$a5, $a2, 4
+	vinsgr2vr.h	$vr7, $t1, 0
+	vinsgr2vr.h	$vr8, $t2, 0
+	vilvl.b	$vr7, $vr1, $vr7
+	vilvl.h	$vr7, $vr1, $vr7
+	vilvl.b	$vr8, $vr1, $vr8
+	vilvl.h	$vr8, $vr1, $vr8
+	vsub.w	$vr9, $vr3, $vr2
+	vsub.w	$vr10, $vr4, $vr2
 	vsll.w	$vr7, $vr7, $vr9
-	vor.v	$vr1, $vr6, $vr1
+	vsll.w	$vr8, $vr8, $vr10
 	vor.v	$vr0, $vr7, $vr0
-	addi.d	$a3, $a3, -8
+	vor.v	$vr6, $vr8, $vr6
+	addi.d	$a3, $a3, -4
 	vadd.w	$vr2, $vr2, $vr5
 	move	$a2, $a5
 	bnez	$a3, .LBB1_30
 # %bb.31:                               # %middle.block
 	stptr.d	$a5, $a1, 2056
-	vor.v	$vr0, $vr0, $vr1
-	vbsrl.v	$vr1, $vr0, 8
-	vor.v	$vr0, $vr1, $vr0
+	vor.v	$vr0, $vr6, $vr0
 	vbsrl.v	$vr1, $vr0, 4
 	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	stptr.w	$a5, $a1, 2080
-	bne	$t0, $a6, .LBB1_8
+	bne	$t0, $a7, .LBB1_8
 # %bb.32:
 	move	$a3, $a0
 	b	.LBB1_10

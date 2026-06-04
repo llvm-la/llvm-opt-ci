@@ -190,8 +190,9 @@ MakeTree:                               # @MakeTree
 .LBB0_9:
 	st.w	$zero, $a0, 0
 .LBB0_10:                               # %common.ret82
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 8
+	vst	$vr0, $a0, 24
 .LBB0_11:                               # %common.ret82
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload

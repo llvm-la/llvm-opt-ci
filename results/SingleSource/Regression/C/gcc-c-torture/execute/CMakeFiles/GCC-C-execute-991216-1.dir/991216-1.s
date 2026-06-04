@@ -195,17 +195,18 @@ test6:                                  # @test6
 .Lfunc_end5:
 	.size	test6, .Lfunc_end5-test6
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function test7
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function test7
 .LCPI6_0:
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
 	.word	85                              # 0x55
+.LCPI6_1:
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.word	4                               # 0x4
 	.text
 	.globl	test7
 	.p2align	2
@@ -220,17 +221,19 @@ test7:                                  # @test7
 	vinsgr2vr.w	$vr0, $t0, 3
 	vinsgr2vr.w	$vr1, $a0, 0
 	vinsgr2vr.w	$vr1, $a1, 1
-	pcalau12i	$a0, %pc_hi20(.LCPI6_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI6_0)
 	vinsgr2vr.w	$vr1, $a2, 2
+	pcalau12i	$a0, %pc_hi20(.LCPI6_1)
+	vld	$vr2, $a0, %pc_lo12(.LCPI6_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI6_0)
+	vld	$vr3, $a0, %pc_lo12(.LCPI6_0)
 	vinsgr2vr.w	$vr1, $a3, 3
-	xvpermi.q	$xr1, $xr0, 2
-	xvseq.w	$xr0, $xr1, $xr2
-	xvxori.b	$xr0, $xr0, 255
-	xvmskltz.w	$xr0, $xr0
-	xvpickve2gr.wu	$a0, $xr0, 0
-	xvpickve2gr.wu	$a1, $xr0, 4
-	bstrins.d	$a0, $a1, 7, 4
+	vseq.w	$vr1, $vr1, $vr2
+	vxori.b	$vr1, $vr1, 255
+	vseq.w	$vr0, $vr0, $vr3
+	vxori.b	$vr0, $vr0, 255
+	vpickev.h	$vr0, $vr0, $vr1
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	bnez	$a0, .LBB6_3
 # %bb.1:
 	lu12i.w	$a0, -484676
@@ -246,17 +249,18 @@ test7:                                  # @test7
 .Lfunc_end6:
 	.size	test7, .Lfunc_end6-test7
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function test8
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function test8
 .LCPI7_0:
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
 	.word	8                               # 0x8
+.LCPI7_1:
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.word	4                               # 0x4
 	.text
 	.globl	test8
 	.p2align	2
@@ -270,17 +274,19 @@ test8:                                  # @test8
 	vinsgr2vr.w	$vr0, $a7, 3
 	vinsgr2vr.w	$vr1, $a0, 0
 	vinsgr2vr.w	$vr1, $a1, 1
-	pcalau12i	$a0, %pc_hi20(.LCPI7_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI7_0)
 	vinsgr2vr.w	$vr1, $a2, 2
+	pcalau12i	$a0, %pc_hi20(.LCPI7_1)
+	vld	$vr2, $a0, %pc_lo12(.LCPI7_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI7_0)
+	vld	$vr3, $a0, %pc_lo12(.LCPI7_0)
 	vinsgr2vr.w	$vr1, $a3, 3
-	xvpermi.q	$xr1, $xr0, 2
-	xvseq.w	$xr0, $xr1, $xr2
-	xvxori.b	$xr0, $xr0, 255
-	xvmskltz.w	$xr0, $xr0
-	xvpickve2gr.wu	$a0, $xr0, 0
-	xvpickve2gr.wu	$a1, $xr0, 4
-	bstrins.d	$a0, $a1, 7, 4
+	vseq.w	$vr1, $vr1, $vr2
+	vxori.b	$vr1, $vr1, 255
+	vseq.w	$vr0, $vr0, $vr3
+	vxori.b	$vr0, $vr0, 255
+	vpickev.h	$vr0, $vr0, $vr1
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	bnez	$a0, .LBB7_4
 # %bb.1:
 	ld.d	$a0, $sp, 8

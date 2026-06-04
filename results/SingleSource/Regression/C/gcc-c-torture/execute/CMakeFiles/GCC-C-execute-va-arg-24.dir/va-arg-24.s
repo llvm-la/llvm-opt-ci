@@ -450,13 +450,14 @@ varargs6:                               # @varargs6
 .Lfunc_end7:
 	.size	varargs6, .Lfunc_end7-varargs6
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function varargs7
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function varargs7
 .LCPI8_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
+.LCPI8_1:
 	.word	4                               # 0x4
 	.word	5                               # 0x5
 	.word	6                               # 0x6
@@ -470,19 +471,22 @@ varargs7:                               # @varargs7
 	addi.d	$sp, $sp, -80
 	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI8_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI8_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI8_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI8_1)
 	ld.w	$a0, $sp, 80
+	vst	$vr0, $sp, 16
 	ld.w	$a1, $sp, 88
-	xvst	$xr0, $sp, 20
-	st.w	$a0, $sp, 52
+	vst	$vr1, $sp, 32
+	st.w	$a0, $sp, 48
 	ld.w	$a0, $sp, 96
-	st.w	$a1, $sp, 56
+	st.w	$a1, $sp, 52
 	addi.d	$a1, $sp, 104
 	st.d	$a1, $sp, 64
-	st.w	$a0, $sp, 60
+	st.w	$a0, $sp, 56
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.8)
-	addi.d	$a1, $sp, 20
+	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(verify)
 	jirl	$ra, $ra, 0
 	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
@@ -491,13 +495,14 @@ varargs7:                               # @varargs7
 .Lfunc_end8:
 	.size	varargs7, .Lfunc_end8-varargs7
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function varargs8
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function varargs8
 .LCPI9_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
+.LCPI9_1:
 	.word	4                               # 0x4
 	.word	5                               # 0x5
 	.word	6                               # 0x6
@@ -511,19 +516,22 @@ varargs8:                               # @varargs8
 	addi.d	$sp, $sp, -80
 	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI9_0)
-	xvst	$xr0, $sp, 20
+	vld	$vr0, $a0, %pc_lo12(.LCPI9_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI9_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI9_1)
+	vst	$vr0, $sp, 16
+	vst	$vr1, $sp, 32
 	ld.w	$a0, $sp, 88
 	ori	$a1, $zero, 8
-	st.w	$a1, $sp, 52
+	st.w	$a1, $sp, 48
 	ld.w	$a1, $sp, 96
-	st.w	$a0, $sp, 56
+	st.w	$a0, $sp, 52
 	addi.d	$a0, $sp, 104
 	st.d	$a0, $sp, 64
-	st.w	$a1, $sp, 60
+	st.w	$a1, $sp, 56
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
-	addi.d	$a1, $sp, 20
+	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(verify)
 	jirl	$ra, $ra, 0
 	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
@@ -532,13 +540,14 @@ varargs8:                               # @varargs8
 .Lfunc_end9:
 	.size	varargs8, .Lfunc_end9-varargs8
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function varargs9
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function varargs9
 .LCPI10_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
+.LCPI10_1:
 	.word	4                               # 0x4
 	.word	5                               # 0x5
 	.word	6                               # 0x6
@@ -552,18 +561,21 @@ varargs9:                               # @varargs9
 	addi.d	$sp, $sp, -80
 	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI10_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI10_0)
-	xvst	$xr0, $sp, 20
+	vld	$vr0, $a0, %pc_lo12(.LCPI10_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI10_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI10_1)
+	vst	$vr0, $sp, 16
+	vst	$vr1, $sp, 32
 	addi.d	$a0, $sp, 104
 	st.d	$a0, $sp, 64
 	ld.w	$a0, $sp, 96
 	ori	$a1, $zero, 8
 	lu32i.d	$a1, 9
-	st.d	$a1, $sp, 52
-	st.w	$a0, $sp, 60
+	st.d	$a1, $sp, 48
+	st.w	$a0, $sp, 56
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
-	addi.d	$a1, $sp, 20
+	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(verify)
 	jirl	$ra, $ra, 0
 	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload

@@ -702,13 +702,13 @@ _ZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception3
 # %bb.0:
-	addi.d	$sp, $sp, -256
-	.cfi_def_cfa_offset 256
-	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -240
+	.cfi_def_cfa_offset 240
+	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -720,37 +720,38 @@ _ZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR
 	move	$s2, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR9btVector3RfE14CenterCallback+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTVZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR9btVector3RfE14CenterCallback+16)
-	st.d	$a0, $sp, 168
-	pcalau12i	$a0, %pc_hi20(.LCPI14_0)
-	vld	$vr0, $a0, %pc_lo12(.LCPI14_0)
+	st.d	$a0, $sp, 152
 	ori	$a0, $zero, 1
-	st.b	$a0, $sp, 176
-	xvrepli.b	$xr1, 0
-	vst	$vr0, $sp, 144
+	pcalau12i	$a1, %pc_hi20(.LCPI14_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI14_0)
+	st.b	$a0, $sp, 160
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 164
+	vst	$vr0, $sp, 128
 	pcalau12i	$a0, %pc_hi20(.LCPI14_1)
 	vld	$vr0, $a0, %pc_lo12(.LCPI14_1)
 	ld.d	$a0, $s2, 104
-	xvst	$xr1, $sp, 16                   # 32-byte Folded Spill
-	xvst	$xr1, $sp, 180
-	st.w	$zero, $sp, 212
-	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr1, $sp, 180
+	st.w	$zero, $sp, 196
+	vst	$vr0, $sp, 48
 	ld.d	$a1, $a0, 0
 	ld.d	$a4, $a1, 16
 .Ltmp18:                                # EH_LABEL
-	addi.d	$a1, $sp, 168
-	addi.d	$a2, $sp, 64
-	addi.d	$a3, $sp, 144
+	addi.d	$a1, $sp, 152
+	addi.d	$a2, $sp, 48
+	addi.d	$a3, $sp, 128
 	jirl	$ra, $a4, 0
 .Ltmp19:                                # EH_LABEL
 # %bb.1:
-	fld.s	$fa0, $sp, 212
+	fld.s	$fa0, $sp, 196
 	movgr2fr.w	$fa1, $zero
 	fcmp.cule.s	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB14_3
 # %bb.2:
-	fld.s	$fa1, $sp, 196
-	fld.s	$fa2, $sp, 200
-	fld.s	$fa3, $sp, 204
+	fld.s	$fa1, $sp, 180
+	fld.s	$fa2, $sp, 184
+	fld.s	$fa3, $sp, 188
 	frecip.s	$fa4, $fa0
 	fmul.s	$fa1, $fa4, $fa1
 	fmul.s	$fa2, $fa4, $fa2
@@ -762,8 +763,8 @@ _ZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR
 	bstrpick.d	$a1, $a1, 31, 0
 	b	.LBB14_4
 .LBB14_3:
-	ld.d	$a0, $sp, 180
-	ld.d	$a1, $sp, 188
+	ld.d	$a0, $sp, 164
+	ld.d	$a1, $sp, 172
 .LBB14_4:
 	st.d	$a0, $s1, 48
 	st.d	$a1, $s1, 56
@@ -774,17 +775,17 @@ _ZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR
 	fst.s	$fa0, $s0, 0
 	pcalau12i	$a2, %pc_hi20(_ZTVZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR9btVector3RfE15InertiaCallback+16)
 	addi.d	$a2, $a2, %pc_lo12(_ZTVZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR9btVector3RfE15InertiaCallback+16)
-	st.d	$a2, $sp, 64
-	vrepli.b	$vr0, 0
+	st.d	$a2, $sp, 48
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 56
 	vst	$vr0, $sp, 72
-	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
-	xvst	$xr0, $sp, 88
-	st.d	$a0, $sp, 120
-	st.d	$a1, $sp, 128
+	vst	$vr0, $sp, 88
+	st.d	$a0, $sp, 104
+	st.d	$a1, $sp, 112
 	ld.d	$a0, $s2, 104
-	ld.wu	$a1, $sp, 144
-	ld.w	$a2, $sp, 148
-	ld.wu	$a3, $sp, 152
+	ld.wu	$a1, $sp, 128
+	ld.w	$a2, $sp, 132
+	ld.wu	$a3, $sp, 136
 	lu12i.w	$a4, -524288
 	lu32i.d	$a4, 0
 	xor	$a1, $a1, $a4
@@ -792,19 +793,19 @@ _ZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR
 	slli.d	$a2, $a2, 32
 	or	$a1, $a2, $a1
 	xor	$a2, $a3, $a4
-	st.d	$a1, $sp, 48
-	st.d	$a2, $sp, 56
+	st.d	$a1, $sp, 32
+	st.d	$a2, $sp, 40
 	ld.d	$a1, $a0, 0
 	ld.d	$a4, $a1, 16
 .Ltmp21:                                # EH_LABEL
-	addi.d	$a1, $sp, 64
-	addi.d	$a2, $sp, 48
-	addi.d	$a3, $sp, 144
+	addi.d	$a1, $sp, 48
+	addi.d	$a2, $sp, 32
+	addi.d	$a3, $sp, 128
 	jirl	$ra, $a4, 0
 .Ltmp22:                                # EH_LABEL
 # %bb.5:
 .Ltmp24:                                # EH_LABEL
-	addi.d	$a0, $sp, 72
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 225916
 	ori	$a1, $a1, 1452
 	movgr2fr.w	$fa0, $a1
@@ -814,9 +815,9 @@ _ZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR
 	jirl	$ra, $ra, 0
 .Ltmp25:                                # EH_LABEL
 # %bb.6:
-	fld.s	$fa0, $sp, 72
-	fld.s	$fa1, $sp, 92
-	fld.s	$fa2, $sp, 112
+	fld.s	$fa0, $sp, 56
+	fld.s	$fa1, $sp, 76
+	fld.s	$fa2, $sp, 96
 	fst.s	$fa0, $fp, 0
 	fst.s	$fa1, $fp, 4
 	fst.s	$fa2, $fp, 8
@@ -830,20 +831,20 @@ _ZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR
 	fmul.s	$fa0, $fa2, $fa3
 	fst.s	$fa0, $fp, 8
 .Ltmp29:                                # EH_LABEL
-	addi.d	$a0, $sp, 64
+	addi.d	$a0, $sp, 48
 	pcaddu18i	$ra, %call36(_ZN31btInternalTriangleIndexCallbackD2Ev)
 	jirl	$ra, $ra, 0
 .Ltmp30:                                # EH_LABEL
 # %bb.7:
-	addi.d	$a0, $sp, 168
+	addi.d	$a0, $sp, 152
 	pcaddu18i	$ra, %call36(_ZN31btInternalTriangleIndexCallbackD2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 256
+	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 240
 	ret
 .LBB14_8:
 .Ltmp31:                                # EH_LABEL
@@ -856,7 +857,7 @@ _ZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR
 .LBB14_11:
 	move	$fp, $a0
 .Ltmp27:                                # EH_LABEL
-	addi.d	$a0, $sp, 64
+	addi.d	$a0, $sp, 48
 	pcaddu18i	$ra, %call36(_ZN31btInternalTriangleIndexCallbackD2Ev)
 	jirl	$ra, $ra, 0
 .Ltmp28:                                # EH_LABEL
@@ -867,7 +868,7 @@ _ZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR
 	move	$fp, $a0
 .LBB14_14:
 .Ltmp32:                                # EH_LABEL
-	addi.d	$a0, $sp, 168
+	addi.d	$a0, $sp, 152
 	pcaddu18i	$ra, %call36(_ZN31btInternalTriangleIndexCallbackD2Ev)
 	jirl	$ra, $ra, 0
 .Ltmp33:                                # EH_LABEL

@@ -1,22 +1,15 @@
 	.file	"Crystal_pow.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function Crystal_pow
-.LCPI0_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI0_1:
+	.p2align	3, 0x0                          # -- Begin function Crystal_pow
+.LCPI0_0:
 	.dword	0x3fc999999999999a              # double 0.20000000000000001
-.LCPI0_2:
+.LCPI0_1:
 	.dword	0x3feccccccccccccd              # double 0.90000000000000002
-.LCPI0_3:
+.LCPI0_2:
 	.dword	0x3eb0c6f7a0b5ed8d              # double 9.9999999999999995E-7
-.LCPI0_4:
+.LCPI0_3:
 	.dword	0x3f847ae147ae147b              # double 0.01
-.LCPI0_5:
+.LCPI0_4:
 	.dword	0x3ff3333333333333              # double 1.2
 	.text
 	.globl	Crystal_pow
@@ -44,35 +37,58 @@ Crystal_pow:                            # @Crystal_pow
 	move	$a0, $zero
 	b	.LBB0_6
 .LBB0_3:                                # %vector.ph
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
 	bstrpick.d	$a0, $s0, 30, 2
 	slli.d	$a0, $a0, 2
-	addi.d	$a1, $sp, 112
-	addi.d	$a2, $sp, 16
-	xvldi	$xr1, -912
+	addi.d	$a1, $sp, 128
+	ori	$a2, $zero, 0
+	lu32i.d	$a2, 1
+	vreplgr2vr.d	$vr0, $a2
+	addi.d	$a2, $sp, 32
+	vldi	$vr1, -912
 	lu12i.w	$a3, -419431
 	ori	$a3, $a3, 2458
 	lu32i.d	$a3, -419431
 	lu52i.d	$a3, $a3, 1020
-	xvreplgr2vr.d	$xr2, $a3
+	vreplgr2vr.d	$vr2, $a3
 	lu12i.w	$a3, -209716
 	ori	$a3, $a3, 3277
 	lu32i.d	$a3, -209716
 	lu52i.d	$a3, $a3, 1022
-	xvreplgr2vr.d	$xr3, $a3
-	xvldi	$xr4, -984
+	vreplgr2vr.d	$vr3, $a3
+	vldi	$vr4, -984
 	move	$a3, $a0
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr1, $a2, 0
-	vext2xv.du.wu	$xr5, $xr0
-	xvffint.d.lu	$xr5, $xr5
-	xvfmul.d	$xr5, $xr5, $xr2
-	xvfmul.d	$xr5, $xr5, $xr3
-	xvfdiv.d	$xr5, $xr5, $xr4
-	xvst	$xr5, $a1, 0
+	vaddi.wu	$vr5, $vr0, 2
+	vst	$vr1, $a2, -16
+	vst	$vr1, $a2, 0
+	vpickve2gr.w	$a4, $vr0, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa6, $a4
+	ffint.d.l	$fa6, $fa6
+	vpickve2gr.w	$a4, $vr0, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa7, $a4
+	ffint.d.l	$fa7, $fa7
+	vextrins.d	$vr7, $vr6, 16
+	vpickve2gr.w	$a4, $vr5, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa6, $a4
+	ffint.d.l	$fa6, $fa6
+	vpickve2gr.w	$a4, $vr5, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa5, $a4
+	ffint.d.l	$fa5, $fa5
+	vextrins.d	$vr5, $vr6, 16
+	vfmul.d	$vr6, $vr7, $vr2
+	vfmul.d	$vr5, $vr5, $vr2
+	vfmul.d	$vr6, $vr6, $vr3
+	vfmul.d	$vr5, $vr5, $vr3
+	vfdiv.d	$vr6, $vr6, $vr4
+	vfdiv.d	$vr5, $vr5, $vr4
+	vst	$vr6, $a1, -16
+	vst	$vr5, $a1, 0
 	vaddi.wu	$vr0, $vr0, 4
 	addi.d	$a3, $a3, -4
 	addi.d	$a1, $a1, 32
@@ -85,10 +101,10 @@ Crystal_pow:                            # @Crystal_pow
 	alsl.d	$a1, $a0, $a1, 3
 	addi.d	$a2, $sp, 16
 	alsl.d	$a2, $a0, $a2, 3
+	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
+	fld.d	$fa0, $a3, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
-	fld.d	$fa0, $a3, %pc_lo12(.LCPI0_1)
-	pcalau12i	$a3, %pc_hi20(.LCPI0_2)
-	fld.d	$fa1, $a3, %pc_lo12(.LCPI0_2)
+	fld.d	$fa1, $a3, %pc_lo12(.LCPI0_1)
 	sub.d	$a3, $s0, $a0
 	lu52i.d	$a4, $zero, 1023
 	vldi	$vr2, -984
@@ -109,12 +125,12 @@ Crystal_pow:                            # @Crystal_pow
 	addi.w	$a0, $a0, 1
 	bnez	$a3, .LBB0_7
 .LBB0_8:                                # %.lr.ph21.preheader
+	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
+	fld.d	$fs1, $a0, %pc_lo12(.LCPI0_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	fld.d	$fs1, $a0, %pc_lo12(.LCPI0_3)
+	fld.d	$fs0, $a0, %pc_lo12(.LCPI0_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
-	fld.d	$fs0, $a0, %pc_lo12(.LCPI0_4)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_5)
-	fld.d	$fs2, $a0, %pc_lo12(.LCPI0_5)
+	fld.d	$fs2, $a0, %pc_lo12(.LCPI0_4)
 	addi.d	$s1, $sp, 112
 	addi.d	$s2, $sp, 16
 	.p2align	4, , 16

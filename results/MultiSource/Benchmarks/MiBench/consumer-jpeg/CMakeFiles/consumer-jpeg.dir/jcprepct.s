@@ -84,14 +84,14 @@ jinit_c_prep_controller:                # @jinit_c_prep_controller
 	slli.d	$a2, $a0, 4
 	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
 	add.d	$s2, $a1, $s1
-	bstrpick.d	$a0, $a4, 30, 3
-	slli.d	$a0, $a0, 3
+	bstrpick.d	$a0, $a4, 30, 2
+	slli.d	$a0, $a0, 2
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	slli.d	$a0, $a4, 3
-	bstrpick.d	$a0, $a0, 33, 6
-	slli.d	$s0, $a0, 6
+	bstrpick.d	$a0, $a0, 33, 5
+	slli.d	$s0, $a0, 5
 	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	addi.d	$a0, $a2, 32
+	addi.d	$a0, $a2, 16
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 32                    # 8-byte Folded Spill
 	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
@@ -138,11 +138,11 @@ jinit_c_prep_controller:                # @jinit_c_prep_controller
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 8
 	move	$a4, $s5
-	move	$a0, $zero
-	bgeu	$s5, $a2, .LBB0_11
+	ori	$a0, $zero, 8
+	bgeu	$s5, $a0, .LBB0_11
 # %bb.8:                                #   in Loop: Header=BB0_7 Depth=1
+	move	$a0, $zero
 	move	$s5, $s3
 .LBB0_9:                                # %scalar.ph.preheader
                                         #   in Loop: Header=BB0_7 Depth=1
@@ -165,10 +165,11 @@ jinit_c_prep_controller:                # @jinit_c_prep_controller
 	.p2align	4, , 16
 .LBB0_11:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_7 Depth=1
+	move	$a0, $zero
 	move	$s5, $s3
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	ori	$a5, $zero, 64
-	bltu	$a1, $a2, .LBB0_9
+	ori	$a5, $zero, 32
+	beqz	$a1, .LBB0_9
 # %bb.12:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_7 Depth=1
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
@@ -206,18 +207,18 @@ jinit_c_prep_controller:                # @jinit_c_prep_controller
                                         #   Parent Loop BB0_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a2, $a1, $a0
-	xvld	$xr0, $a2, -32
-	xvldx	$xr1, $a1, $a0
+	vld	$vr0, $a2, -16
+	vldx	$vr1, $a1, $a0
 	add.d	$a2, $s1, $a0
-	xvstx	$xr0, $s1, $a0
-	xvst	$xr1, $a2, 32
-	xvldx	$xr0, $s4, $a0
+	vstx	$vr0, $s1, $a0
+	vst	$vr1, $a2, 16
+	vldx	$vr0, $s4, $a0
 	add.d	$a2, $s4, $a0
-	xvld	$xr1, $a2, 32
+	vld	$vr1, $a2, 16
 	add.d	$a2, $s2, $a0
-	xvstx	$xr0, $s2, $a0
-	addi.d	$a0, $a0, 64
-	xvst	$xr1, $a2, 32
+	vstx	$vr0, $s2, $a0
+	addi.d	$a0, $a0, 32
+	vst	$vr1, $a2, 16
 	bne	$s0, $a0, .LBB0_17
 # %bb.18:                               # %middle.block
                                         #   in Loop: Header=BB0_7 Depth=1

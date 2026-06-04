@@ -199,17 +199,13 @@ MatchFinder_ReadIfRequired:             # @MatchFinder_ReadIfRequired
 .Lfunc_end6:
 	.size	MatchFinder_ReadIfRequired, .Lfunc_end6-MatchFinder_ReadIfRequired
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function MatchFinder_Construct
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function MatchFinder_Construct
 .LCPI7_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 	.text
 	.globl	MatchFinder_Construct
 	.p2align	2
@@ -227,64 +223,64 @@ MatchFinder_Construct:                  # @MatchFinder_Construct
 	ori	$a2, $zero, 4
 	st.d	$a2, $a0, 96
 	pcalau12i	$a2, %pc_hi20(.LCPI7_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI7_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI7_0)
 	addi.d	$a0, $a0, 140
-	xvrepli.w	$xr1, 1
+	vrepli.w	$vr1, 1
 	lu12i.w	$a2, -74872
 	ori	$a2, $a2, 800
-	xvreplgr2vr.w	$xr2, $a2
-	xvrepli.w	$xr3, 2
-	xvrepli.w	$xr4, 4
+	vreplgr2vr.w	$vr2, $a2
+	vrepli.w	$vr3, 2
+	vrepli.w	$vr4, 4
 	lu12i.w	$a2, 486852
 	ori	$a2, $a2, 400
-	xvreplgr2vr.w	$xr5, $a2
-	xvrepli.w	$xr6, 8
-	xvrepli.w	$xr7, 16
-	xvrepli.w	$xr8, 32
+	vreplgr2vr.w	$vr5, $a2
+	vrepli.w	$vr6, 8
+	vrepli.w	$vr7, 16
+	vrepli.w	$vr8, 32
 	ori	$a2, $zero, 1024
 	.p2align	4, , 16
 .LBB7_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvsrli.w	$xr9, $xr0, 1
-	xvand.v	$xr10, $xr0, $xr1
-	xvseqi.w	$xr10, $xr10, 0
-	xvandn.v	$xr10, $xr10, $xr2
-	xvxor.v	$xr9, $xr10, $xr9
-	xvsrli.w	$xr10, $xr9, 1
-	xvand.v	$xr11, $xr0, $xr3
-	xvseqi.w	$xr11, $xr11, 0
-	xvandn.v	$xr11, $xr11, $xr2
-	xvxor.v	$xr10, $xr11, $xr10
-	xvand.v	$xr11, $xr0, $xr4
-	xvseqi.w	$xr11, $xr11, 0
-	xvandn.v	$xr11, $xr11, $xr5
-	xvsrli.w	$xr12, $xr10, 2
-	xvxor.v	$xr11, $xr12, $xr11
-	xvand.v	$xr12, $xr0, $xr6
-	xvseqi.w	$xr12, $xr12, 0
-	xvandn.v	$xr12, $xr12, $xr2
-	xvxor.v	$xr11, $xr12, $xr11
-	xvand.v	$xr12, $xr0, $xr7
-	xvseqi.w	$xr12, $xr12, 0
-	xvandn.v	$xr12, $xr12, $xr5
-	xvsrli.w	$xr11, $xr11, 2
-	xvxor.v	$xr11, $xr11, $xr12
-	xvand.v	$xr12, $xr0, $xr8
-	xvseqi.w	$xr12, $xr12, 0
-	xvandn.v	$xr12, $xr12, $xr2
-	xvxor.v	$xr11, $xr12, $xr11
-	xvand.v	$xr9, $xr9, $xr8
-	xvseqi.w	$xr9, $xr9, 0
-	xvandn.v	$xr9, $xr9, $xr5
-	xvsrli.w	$xr11, $xr11, 2
-	xvxor.v	$xr9, $xr11, $xr9
-	xvand.v	$xr10, $xr10, $xr8
-	xvseqi.w	$xr10, $xr10, 0
-	xvandn.v	$xr10, $xr10, $xr2
-	xvxor.v	$xr9, $xr10, $xr9
-	xvstx	$xr9, $a0, $a1
-	addi.d	$a1, $a1, 32
-	xvaddi.wu	$xr0, $xr0, 8
+	vsrli.w	$vr9, $vr0, 1
+	vand.v	$vr10, $vr0, $vr1
+	vseqi.w	$vr10, $vr10, 0
+	vandn.v	$vr10, $vr10, $vr2
+	vxor.v	$vr9, $vr10, $vr9
+	vsrli.w	$vr10, $vr9, 1
+	vand.v	$vr11, $vr0, $vr3
+	vseqi.w	$vr11, $vr11, 0
+	vandn.v	$vr11, $vr11, $vr2
+	vxor.v	$vr10, $vr11, $vr10
+	vand.v	$vr11, $vr0, $vr4
+	vseqi.w	$vr11, $vr11, 0
+	vandn.v	$vr11, $vr11, $vr5
+	vsrli.w	$vr12, $vr10, 2
+	vxor.v	$vr11, $vr12, $vr11
+	vand.v	$vr12, $vr0, $vr6
+	vseqi.w	$vr12, $vr12, 0
+	vandn.v	$vr12, $vr12, $vr2
+	vxor.v	$vr11, $vr12, $vr11
+	vand.v	$vr12, $vr0, $vr7
+	vseqi.w	$vr12, $vr12, 0
+	vandn.v	$vr12, $vr12, $vr5
+	vsrli.w	$vr11, $vr11, 2
+	vxor.v	$vr11, $vr11, $vr12
+	vand.v	$vr12, $vr0, $vr8
+	vseqi.w	$vr12, $vr12, 0
+	vandn.v	$vr12, $vr12, $vr2
+	vxor.v	$vr11, $vr12, $vr11
+	vand.v	$vr9, $vr9, $vr8
+	vseqi.w	$vr9, $vr9, 0
+	vandn.v	$vr9, $vr9, $vr5
+	vsrli.w	$vr11, $vr11, 2
+	vxor.v	$vr9, $vr11, $vr9
+	vand.v	$vr10, $vr10, $vr8
+	vseqi.w	$vr10, $vr10, 0
+	vandn.v	$vr10, $vr10, $vr2
+	vxor.v	$vr9, $vr10, $vr9
+	vstx	$vr9, $a0, $a1
+	addi.d	$a1, $a1, 16
+	vaddi.wu	$vr0, $vr0, 4
 	bne	$a1, $a2, .LBB7_1
 # %bb.2:                                # %middle.block
 	ret
@@ -661,66 +657,39 @@ MatchFinder_Init:                       # @MatchFinder_Init
 	.type	MatchFinder_Normalize3,@function
 MatchFinder_Normalize3:                 # @MatchFinder_Normalize3
 # %bb.0:
-	beqz	$a2, .LBB11_14
-# %bb.1:                                # %iter.check
-	ori	$a4, $zero, 4
+	beqz	$a2, .LBB11_8
+# %bb.1:                                # %.lr.ph.preheader
+	ori	$a4, $zero, 8
 	bstrpick.d	$a3, $a2, 31, 0
 	bgeu	$a2, $a4, .LBB11_3
 # %bb.2:
 	move	$a2, $zero
-	b	.LBB11_12
-.LBB11_3:                               # %vector.main.loop.iter.check
-	ori	$a4, $zero, 16
-	bgeu	$a2, $a4, .LBB11_5
-# %bb.4:
-	move	$a2, $zero
-	b	.LBB11_9
-.LBB11_5:                               # %vector.ph
-	andi	$a4, $a3, 12
-	bstrpick.d	$a2, $a3, 31, 4
-	slli.d	$a2, $a2, 4
-	xvreplgr2vr.w	$xr0, $a0
-	addi.d	$a5, $a1, 32
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB11_6:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr1, $a5, -32
-	xvld	$xr2, $a5, 0
-	xvssub.wu	$xr1, $xr1, $xr0
-	xvssub.wu	$xr2, $xr2, $xr0
-	xvst	$xr1, $a5, -32
-	xvst	$xr2, $a5, 0
-	addi.d	$a6, $a6, -16
-	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB11_6
-# %bb.7:                                # %middle.block
-	beq	$a2, $a3, .LBB11_14
-# %bb.8:                                # %vec.epilog.iter.check
-	beqz	$a4, .LBB11_12
-.LBB11_9:                               # %vec.epilog.ph
-	move	$a5, $a2
-	bstrpick.d	$a2, $a3, 31, 2
-	slli.d	$a2, $a2, 2
+	b	.LBB11_6
+.LBB11_3:                               # %vector.ph
+	bstrpick.d	$a2, $a3, 31, 3
+	slli.d	$a2, $a2, 3
 	vreplgr2vr.w	$vr0, $a0
-	sub.d	$a4, $a5, $a2
-	alsl.d	$a5, $a5, $a1, 2
+	addi.d	$a4, $a1, 16
+	move	$a5, $a2
 	.p2align	4, , 16
-.LBB11_10:                              # %vec.epilog.vector.body
+.LBB11_4:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a5, 0
+	vld	$vr1, $a4, -16
+	vld	$vr2, $a4, 0
 	vssub.wu	$vr1, $vr1, $vr0
-	vst	$vr1, $a5, 0
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 16
-	bnez	$a4, .LBB11_10
-# %bb.11:                               # %vec.epilog.middle.block
-	beq	$a2, $a3, .LBB11_14
-.LBB11_12:                              # %.lr.ph.preheader
+	vssub.wu	$vr2, $vr2, $vr0
+	vst	$vr1, $a4, -16
+	vst	$vr2, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB11_4
+# %bb.5:                                # %middle.block
+	beq	$a2, $a3, .LBB11_8
+.LBB11_6:                               # %.lr.ph.preheader17
 	alsl.d	$a1, $a2, $a1, 2
 	sub.d	$a2, $a3, $a2
 	.p2align	4, , 16
-.LBB11_13:                              # %.lr.ph
+.LBB11_7:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a1, 0
 	sub.d	$a4, $a3, $a0
@@ -729,8 +698,8 @@ MatchFinder_Normalize3:                 # @MatchFinder_Normalize3
 	st.w	$a3, $a1, 0
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 4
-	bnez	$a2, .LBB11_13
-.LBB11_14:                              # %._crit_edge
+	bnez	$a2, .LBB11_7
+.LBB11_8:                               # %._crit_edge
 	ret
 .Lfunc_end11:
 	.size	MatchFinder_Normalize3, .Lfunc_end11-MatchFinder_Normalize3
@@ -1092,8 +1061,8 @@ MatchFinder_CheckLimits:                # @MatchFinder_CheckLimits
 	beq	$a3, $a2, .LBB14_2
 # %bb.1:
 	ld.w	$a1, $a0, 80
-	bnez	$a1, .LBB14_23
-	b	.LBB14_18
+	bnez	$a1, .LBB14_17
+	b	.LBB14_12
 .LBB14_2:
 	ld.w	$a1, $a0, 120
 	ld.w	$a3, $a0, 128
@@ -1102,67 +1071,40 @@ MatchFinder_CheckLimits:                # @MatchFinder_CheckLimits
 	sub.w	$a1, $a5, $a1
 	add.w	$a4, $a4, $a3
 	bstrins.d	$a1, $zero, 9, 0
-	beqz	$a4, .LBB14_17
-# %bb.3:                                # %iter.check
+	beqz	$a4, .LBB14_11
+# %bb.3:                                # %.lr.ph.preheader.i.i
 	ld.d	$a2, $a0, 40
-	ori	$a5, $zero, 4
+	ori	$a5, $zero, 8
 	bstrpick.d	$a3, $a4, 31, 0
 	bgeu	$a4, $a5, .LBB14_5
 # %bb.4:
 	move	$a4, $zero
-	b	.LBB14_14
-.LBB14_5:                               # %vector.main.loop.iter.check
-	ori	$a5, $zero, 16
-	bgeu	$a4, $a5, .LBB14_7
-# %bb.6:
-	move	$a4, $zero
-	b	.LBB14_11
-.LBB14_7:                               # %vector.ph
-	andi	$a5, $a3, 12
-	bstrpick.d	$a4, $a3, 31, 4
-	slli.d	$a4, $a4, 4
-	xvreplgr2vr.w	$xr0, $a1
-	addi.d	$a6, $a2, 32
-	move	$a7, $a4
-	.p2align	4, , 16
-.LBB14_8:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr1, $a6, -32
-	xvld	$xr2, $a6, 0
-	xvssub.wu	$xr1, $xr1, $xr0
-	xvssub.wu	$xr2, $xr2, $xr0
-	xvst	$xr1, $a6, -32
-	xvst	$xr2, $a6, 0
-	addi.d	$a7, $a7, -16
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB14_8
-# %bb.9:                                # %middle.block
-	beq	$a4, $a3, .LBB14_16
-# %bb.10:                               # %vec.epilog.iter.check
-	beqz	$a5, .LBB14_14
-.LBB14_11:                              # %vec.epilog.ph
-	move	$a6, $a4
-	bstrpick.d	$a4, $a3, 31, 2
-	slli.d	$a4, $a4, 2
+	b	.LBB14_8
+.LBB14_5:                               # %vector.ph
+	bstrpick.d	$a4, $a3, 31, 3
+	slli.d	$a4, $a4, 3
 	vreplgr2vr.w	$vr0, $a1
-	sub.d	$a5, $a6, $a4
-	alsl.d	$a6, $a6, $a2, 2
+	addi.d	$a5, $a2, 16
+	move	$a6, $a4
 	.p2align	4, , 16
-.LBB14_12:                              # %vec.epilog.vector.body
+.LBB14_6:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a6, 0
+	vld	$vr1, $a5, -16
+	vld	$vr2, $a5, 0
 	vssub.wu	$vr1, $vr1, $vr0
-	vst	$vr1, $a6, 0
-	addi.d	$a5, $a5, 4
-	addi.d	$a6, $a6, 16
-	bnez	$a5, .LBB14_12
-# %bb.13:                               # %vec.epilog.middle.block
-	beq	$a4, $a3, .LBB14_16
-.LBB14_14:                              # %.lr.ph.i.i.preheader
+	vssub.wu	$vr2, $vr2, $vr0
+	vst	$vr1, $a5, -16
+	vst	$vr2, $a5, 0
+	addi.d	$a6, $a6, -8
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB14_6
+# %bb.7:                                # %middle.block
+	beq	$a4, $a3, .LBB14_10
+.LBB14_8:                               # %.lr.ph.i.i.preheader
 	sub.d	$a3, $a3, $a4
 	alsl.d	$a2, $a4, $a2, 2
 	.p2align	4, , 16
-.LBB14_15:                              # %.lr.ph.i.i
+.LBB14_9:                               # %.lr.ph.i.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a2, 0
 	sub.d	$a5, $a4, $a1
@@ -1171,10 +1113,10 @@ MatchFinder_CheckLimits:                # @MatchFinder_CheckLimits
 	st.w	$a4, $a2, 0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
-	bnez	$a3, .LBB14_15
-.LBB14_16:                              # %MatchFinder_Normalize3.exit.loopexit.i
+	bnez	$a3, .LBB14_9
+.LBB14_10:                              # %MatchFinder_Normalize3.exit.loopexit.i
 	ld.w	$a2, $a0, 8
-.LBB14_17:                              # %MatchFinder_Normalize.exit
+.LBB14_11:                              # %MatchFinder_Normalize.exit
 	ld.w	$a3, $a0, 12
 	sub.d	$a3, $a3, $a1
 	ld.w	$a4, $a0, 16
@@ -1184,25 +1126,25 @@ MatchFinder_CheckLimits:                # @MatchFinder_CheckLimits
 	sub.d	$a1, $a4, $a1
 	st.w	$a1, $a0, 16
 	ld.w	$a1, $a0, 80
-	bnez	$a1, .LBB14_23
-.LBB14_18:
+	bnez	$a1, .LBB14_17
+.LBB14_12:
 	ld.w	$a1, $a0, 16
 	ld.w	$a2, $a0, 92
 	sub.w	$a1, $a1, $a3
-	bne	$a2, $a1, .LBB14_23
-# %bb.19:
+	bne	$a2, $a1, .LBB14_17
+# %bb.13:
 	ld.w	$a1, $a0, 100
 	move	$fp, $a0
-	bnez	$a1, .LBB14_22
-# %bb.20:                               # %MatchFinder_NeedMove.exit.i
+	bnez	$a1, .LBB14_16
+# %bb.14:                               # %MatchFinder_NeedMove.exit.i
 	ld.d	$a3, $a0, 64
 	ld.wu	$a4, $a0, 84
 	ld.d	$a1, $a0, 0
 	bstrpick.d	$a5, $a2, 31, 0
 	add.d	$a4, $a3, $a4
 	sub.d	$a4, $a4, $a1
-	bltu	$a5, $a4, .LBB14_22
-# %bb.21:                               # %MatchFinder_NeedMove.exit.thread.i
+	bltu	$a5, $a4, .LBB14_16
+# %bb.15:                               # %MatchFinder_NeedMove.exit.thread.i
 	ld.wu	$a0, $a0, 88
 	sub.d	$a1, $a1, $a0
 	add.d	$a0, $a2, $a0
@@ -1216,18 +1158,18 @@ MatchFinder_CheckLimits:                # @MatchFinder_CheckLimits
 	ld.w	$a3, $fp, 80
 	add.d	$a1, $a1, $a2
 	st.d	$a1, $fp, 0
-	bnez	$a3, .LBB14_23
-.LBB14_22:                              # %MatchFinder_NeedMove.exit.thread.i.thread
+	bnez	$a3, .LBB14_17
+.LBB14_16:                              # %MatchFinder_NeedMove.exit.thread.i.thread
 	ld.w	$a1, $a0, 136
-	beqz	$a1, .LBB14_26
-.LBB14_23:                              # %MatchFinder_CheckAndMoveAndRead.exit
+	beqz	$a1, .LBB14_20
+.LBB14_17:                              # %MatchFinder_CheckAndMoveAndRead.exit
 	ld.w	$a2, $a0, 24
 	ld.w	$a1, $a0, 28
-	bne	$a2, $a1, .LBB14_25
-# %bb.24:
+	bne	$a2, $a1, .LBB14_19
+# %bb.18:
 	move	$a2, $zero
 	st.w	$zero, $a0, 24
-.LBB14_25:
+.LBB14_19:
 	ld.w	$a3, $a0, 8
 	nor	$a4, $a3, $zero
 	sub.w	$a1, $a1, $a2
@@ -1261,10 +1203,10 @@ MatchFinder_CheckLimits:                # @MatchFinder_CheckLimits
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret
-.LBB14_26:
+.LBB14_20:
 	ld.w	$a1, $a0, 100
-	beqz	$a1, .LBB14_29
-# %bb.27:
+	beqz	$a1, .LBB14_23
+# %bb.21:
 	ld.w	$a1, $a0, 16
 	ld.d	$a2, $a0, 104
 	nor	$a3, $a1, $zero
@@ -1277,15 +1219,15 @@ MatchFinder_CheckLimits:                # @MatchFinder_CheckLimits
 	st.d	$a5, $a0, 104
 	add.d	$a1, $a1, $a4
 	st.w	$a1, $a0, 16
-	bltu	$a3, $a2, .LBB14_23
-.LBB14_28:
+	bltu	$a3, $a2, .LBB14_17
+.LBB14_22:
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 80
-	b	.LBB14_23
-.LBB14_29:                              # %.preheader.i.i
+	b	.LBB14_17
+.LBB14_23:                              # %.preheader.i.i
 	ld.w	$a2, $a0, 16
 	ld.w	$a1, $a0, 8
-.LBB14_30:                              # =>This Inner Loop Header: Depth=1
+.LBB14_24:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $a0, 0
 	ld.d	$a4, $a0, 64
 	ld.wu	$a5, $a0, 84
@@ -1295,8 +1237,8 @@ MatchFinder_CheckLimits:                # @MatchFinder_CheckLimits
 	add.d	$a2, $a4, $a5
 	sub.d	$a3, $a2, $a1
 	st.d	$a3, $sp, 8
-	beq	$a2, $a1, .LBB14_23
-# %bb.31:                               #   in Loop: Header=BB14_30 Depth=1
+	beq	$a2, $a1, .LBB14_17
+# %bb.25:                               #   in Loop: Header=BB14_24 Depth=1
 	ld.d	$a0, $a0, 72
 	ld.d	$a3, $a0, 0
 	addi.d	$a2, $sp, 8
@@ -1304,19 +1246,19 @@ MatchFinder_CheckLimits:                # @MatchFinder_CheckLimits
 	move	$a1, $a0
 	move	$a0, $fp
 	st.w	$a1, $fp, 136
-	bnez	$a1, .LBB14_23
-# %bb.32:                               #   in Loop: Header=BB14_30 Depth=1
+	bnez	$a1, .LBB14_17
+# %bb.26:                               #   in Loop: Header=BB14_24 Depth=1
 	ld.d	$a2, $sp, 8
-	beqz	$a2, .LBB14_28
-# %bb.33:                               #   in Loop: Header=BB14_30 Depth=1
+	beqz	$a2, .LBB14_22
+# %bb.27:                               #   in Loop: Header=BB14_24 Depth=1
 	ld.w	$a3, $a0, 16
 	ld.w	$a1, $a0, 8
 	ld.w	$a4, $a0, 92
 	add.w	$a2, $a3, $a2
 	sub.w	$a3, $a2, $a1
 	st.w	$a2, $a0, 16
-	bgeu	$a4, $a3, .LBB14_30
-	b	.LBB14_23
+	bgeu	$a4, $a3, .LBB14_24
+	b	.LBB14_17
 .Lfunc_end14:
 	.size	MatchFinder_CheckLimits, .Lfunc_end14-MatchFinder_CheckLimits
                                         # -- End function

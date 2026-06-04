@@ -49,9 +49,11 @@ get_next_packet:                        # @get_next_packet
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	xvldx	$xr0, $s2, $s0
+	vldx	$vr0, $s2, $s0
+	vld	$vr1, $s3, 16
 	ld.w	$a0, $s3, 32
-	xvst	$xr0, $fp, 0
+	vst	$vr0, $fp, 0
+	vst	$vr1, $fp, 16
 	st.w	$a0, $fp, 32
 	move	$a0, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload

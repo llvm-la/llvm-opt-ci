@@ -16,14 +16,18 @@ penalty:                                # @penalty
 	addi.d	$a2, $sp, 40
 	pcaddu18i	$ra, %call36(keyUnion)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 40
-	xvst	$xr0, $sp, 8
+	vld	$vr0, $sp, 56
+	vld	$vr1, $sp, 40
+	vst	$vr0, $sp, 24
+	vst	$vr1, $sp, 8
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(volume)
 	jirl	$ra, $ra, 0
-	xvld	$xr1, $fp, 8
+	vld	$vr1, $fp, 24
+	vld	$vr2, $fp, 8
 	fmov.s	$fs0, $fa0
-	xvst	$xr1, $sp, 8
+	vst	$vr1, $sp, 24
+	vst	$vr2, $sp, 8
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(volume)
 	jirl	$ra, $ra, 0

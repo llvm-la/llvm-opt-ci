@@ -991,18 +991,16 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	add.d	$a1, $a1, $s6
 	addi.w	$a0, $s6, -1
 	st.w	$a1, $fp, 32
-	ori	$a1, $zero, 15
-	bltu	$a0, $a1, .LBB6_88
+	bltu	$a0, $s5, .LBB6_88
 # %bb.43:                               # %iter.check
                                         #   in Loop: Header=BB6_15 Depth=1
 	sub.d	$a1, $a7, $a6
-	ori	$a2, $zero, 64
-	bltu	$a1, $a2, .LBB6_88
+	bltu	$a1, $s3, .LBB6_88
 # %bb.44:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB6_15 Depth=1
 	bstrpick.d	$a1, $a0, 31, 0
 	addi.d	$a3, $a1, 1
-	ori	$a1, $zero, 63
+	ori	$a1, $zero, 31
 	bgeu	$a0, $a1, .LBB6_89
 # %bb.45:                               #   in Loop: Header=BB6_15 Depth=1
 	move	$t1, $zero
@@ -1280,26 +1278,26 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	b	.LBB6_96
 .LBB6_89:                               # %vector.ph
                                         #   in Loop: Header=BB6_15 Depth=1
-	andi	$t2, $a3, 48
-	bstrpick.d	$a0, $a3, 32, 6
-	slli.d	$t1, $a0, 6
+	andi	$t2, $a3, 24
+	bstrpick.d	$a0, $a3, 32, 5
+	slli.d	$t1, $a0, 5
 	sub.d	$a0, $s6, $t1
 	add.d	$a1, $t0, $t1
 	add.d	$a2, $a5, $t1
-	addi.d	$t4, $a4, 32
+	addi.d	$t4, $a4, 16
 	add.d	$t3, $t4, $a7
 	add.d	$t4, $t4, $a6
 	move	$t5, $t1
 .LBB6_90:                               # %vector.body
                                         #   Parent Loop BB6_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $t4, -32
-	xvld	$xr1, $t4, 0
-	xvst	$xr0, $t3, -32
-	xvst	$xr1, $t3, 0
-	addi.d	$t5, $t5, -64
-	addi.d	$t3, $t3, 64
-	addi.d	$t4, $t4, 64
+	vld	$vr0, $t4, -16
+	vld	$vr1, $t4, 0
+	vst	$vr0, $t3, -16
+	vst	$vr1, $t3, 0
+	addi.d	$t5, $t5, -32
+	addi.d	$t3, $t3, 32
+	addi.d	$t4, $t4, 32
 	bnez	$t5, .LBB6_90
 # %bb.91:                               # %middle.block
                                         #   in Loop: Header=BB6_15 Depth=1
@@ -1309,11 +1307,11 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	beqz	$t2, .LBB6_96
 .LBB6_93:                               # %vec.epilog.ph
                                         #   in Loop: Header=BB6_15 Depth=1
-	bstrpick.d	$a2, $a3, 32, 4
-	slli.d	$t2, $a2, 4
+	bstrpick.d	$a2, $a3, 32, 3
+	slli.d	$t2, $a2, 3
 	sub.d	$a0, $s6, $t2
-	alsl.d	$a1, $a2, $t0, 4
-	alsl.d	$a2, $a2, $a5, 4
+	alsl.d	$a1, $a2, $t0, 3
+	alsl.d	$a2, $a2, $a5, 3
 	sub.d	$a5, $t1, $t2
 	add.d	$a7, $t1, $a7
 	add.d	$a7, $a4, $a7
@@ -1322,11 +1320,11 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 .LBB6_94:                               # %vec.epilog.vector.body
                                         #   Parent Loop BB6_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a7, 0
-	addi.d	$a5, $a5, 16
-	addi.d	$a7, $a7, 16
-	addi.d	$a4, $a4, 16
+	ld.d	$a6, $a4, 0
+	st.d	$a6, $a7, 0
+	addi.d	$a5, $a5, 8
+	addi.d	$a7, $a7, 8
+	addi.d	$a4, $a4, 8
 	bnez	$a5, .LBB6_94
 # %bb.95:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB6_15 Depth=1

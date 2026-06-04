@@ -628,30 +628,30 @@ _ZN21btCollisionDispatcher14getNewManifoldEPvS0_: # @_ZN21btCollisionDispatcher1
 	ld.d	$a1, $fp, 32
 	blez	$a2, .LBB6_16
 .LBB6_7:                                # %.lr.ph.i.i.i
-	ori	$a4, $zero, 8
+	ori	$a4, $zero, 4
 	move	$a3, $zero
 	move	$a0, $s2
 	bltu	$a2, $a4, .LBB6_12
 # %bb.8:                                # %.lr.ph.i.i.i
 	sub.d	$a4, $s0, $a1
-	ori	$a5, $zero, 64
+	ori	$a5, $zero, 32
 	bltu	$a4, $a5, .LBB6_12
 # %bb.9:                                # %vector.ph
-	bstrpick.d	$a3, $a2, 30, 3
-	slli.d	$a3, $a3, 3
-	addi.d	$a4, $a1, 32
-	addi.d	$a5, $s0, 32
+	bstrpick.d	$a3, $a2, 30, 2
+	slli.d	$a3, $a3, 2
+	addi.d	$a4, $a1, 16
+	addi.d	$a5, $s0, 16
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB6_10:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB6_10
 # %bb.11:                               # %middle.block
 	beq	$a3, $a2, .LBB6_14

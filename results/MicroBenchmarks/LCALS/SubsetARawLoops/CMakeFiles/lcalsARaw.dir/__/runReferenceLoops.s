@@ -86,8 +86,10 @@ _ZN8LoopStatC2Ej:                       # @_ZN8LoopStatC2Ej
 	move	$fp, $a0
 	st.b	$zero, $a0, 0
 	addi.d	$s0, $a0, 16
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a0, 8
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a0, 8
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $a0, 24
 	beqz	$a1, .LBB1_12
 # %bb.1:                                # %.lr.ph.preheader.i.i.i.i.i
 	bstrpick.d	$s5, $a1, 31, 0
@@ -105,8 +107,7 @@ _ZN8LoopStatC2Ej:                       # @_ZN8LoopStatC2Ej
 	st.d	$s2, $fp, 32
 	st.d	$s2, $fp, 24
 	st.d	$zero, $fp, 40
-	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $fp, 48
 	slli.d	$s1, $s5, 3
 .Ltmp0:                                 # EH_LABEL
@@ -1059,15 +1060,15 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 # %bb.15:                               # %.preheader.us.preheader.i
 	sub.d	$a0, $s2, $s5
 	sub.d	$a1, $s2, $s6
-	sltui	$a0, $a0, 64
-	sltui	$a1, $a1, 64
+	sltui	$a0, $a0, 32
+	sltui	$a1, $a1, 32
 	or	$a4, $a0, $a1
-	bstrpick.d	$a0, $s4, 30, 3
-	slli.d	$a0, $a0, 3
-	addi.d	$a1, $s2, 32
-	addi.d	$a2, $s6, 32
-	addi.d	$a3, $s5, 32
-	sltui	$a5, $s4, 8
+	bstrpick.d	$a0, $s4, 30, 2
+	slli.d	$a0, $a0, 2
+	addi.d	$a1, $s2, 16
+	addi.d	$a2, $s6, 16
+	addi.d	$a3, $s5, 16
+	sltui	$a5, $s4, 4
 	or	$a4, $a5, $a4
 	andi	$a4, $a4, 1
 	b	.LBB4_17
@@ -1098,18 +1099,18 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 .LBB4_20:                               # %vector.body
                                         #   Parent Loop BB4_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvld	$xr2, $a6, -32
-	xvld	$xr3, $a6, 0
-	xvfmul.d	$xr0, $xr0, $xr2
-	xvfmul.d	$xr1, $xr1, $xr3
-	xvst	$xr0, $a7, -32
-	xvst	$xr1, $a7, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a7, $a7, 64
-	addi.d	$a6, $a6, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vld	$vr2, $a6, -16
+	vld	$vr3, $a6, 0
+	vfmul.d	$vr0, $vr0, $vr2
+	vfmul.d	$vr1, $vr1, $vr3
+	vst	$vr0, $a7, -16
+	vst	$vr1, $a7, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a7, $a7, 32
+	addi.d	$a6, $a6, 32
+	addi.d	$a5, $a5, 32
 	bnez	$t0, .LBB4_20
 # %bb.21:                               # %middle.block
                                         #   in Loop: Header=BB4_17 Depth=1
@@ -1188,15 +1189,15 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 # %bb.30:                               # %.preheader.us.preheader.i.1
 	sub.d	$a0, $s2, $s5
 	sub.d	$a1, $s2, $s6
-	sltui	$a0, $a0, 64
-	sltui	$a1, $a1, 64
+	sltui	$a0, $a0, 32
+	sltui	$a1, $a1, 32
 	or	$a4, $a0, $a1
-	bstrpick.d	$a0, $s4, 30, 3
-	slli.d	$a0, $a0, 3
-	addi.d	$a1, $s2, 32
-	addi.d	$a2, $s6, 32
-	addi.d	$a3, $s5, 32
-	sltui	$a5, $s4, 8
+	bstrpick.d	$a0, $s4, 30, 2
+	slli.d	$a0, $a0, 2
+	addi.d	$a1, $s2, 16
+	addi.d	$a2, $s6, 16
+	addi.d	$a3, $s5, 16
+	sltui	$a5, $s4, 4
 	or	$a4, $a5, $a4
 	andi	$a4, $a4, 1
 	b	.LBB4_32
@@ -1227,18 +1228,18 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 .LBB4_35:                               # %vector.body134
                                         #   Parent Loop BB4_32 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvld	$xr2, $a6, -32
-	xvld	$xr3, $a6, 0
-	xvfmul.d	$xr0, $xr0, $xr2
-	xvfmul.d	$xr1, $xr1, $xr3
-	xvst	$xr0, $a7, -32
-	xvst	$xr1, $a7, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a7, $a7, 64
-	addi.d	$a6, $a6, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vld	$vr2, $a6, -16
+	vld	$vr3, $a6, 0
+	vfmul.d	$vr0, $vr0, $vr2
+	vfmul.d	$vr1, $vr1, $vr3
+	vst	$vr0, $a7, -16
+	vst	$vr1, $a7, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a7, $a7, 32
+	addi.d	$a6, $a6, 32
+	addi.d	$a5, $a5, 32
 	bnez	$t0, .LBB4_35
 # %bb.36:                               # %middle.block141
                                         #   in Loop: Header=BB4_32 Depth=1
@@ -1317,15 +1318,15 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 # %bb.45:                               # %.preheader.us.preheader.i.2
 	sub.d	$a0, $s2, $s5
 	sub.d	$a1, $s2, $s6
-	sltui	$a0, $a0, 64
-	sltui	$a1, $a1, 64
+	sltui	$a0, $a0, 32
+	sltui	$a1, $a1, 32
 	or	$a4, $a0, $a1
-	bstrpick.d	$a0, $s4, 30, 3
-	slli.d	$a0, $a0, 3
-	addi.d	$a1, $s2, 32
-	addi.d	$a2, $s6, 32
-	addi.d	$a3, $s5, 32
-	sltui	$a5, $s4, 8
+	bstrpick.d	$a0, $s4, 30, 2
+	slli.d	$a0, $a0, 2
+	addi.d	$a1, $s2, 16
+	addi.d	$a2, $s6, 16
+	addi.d	$a3, $s5, 16
+	sltui	$a5, $s4, 4
 	or	$a4, $a5, $a4
 	andi	$a4, $a4, 1
 	b	.LBB4_47
@@ -1356,18 +1357,18 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 .LBB4_50:                               # %vector.body153
                                         #   Parent Loop BB4_47 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvld	$xr2, $a6, -32
-	xvld	$xr3, $a6, 0
-	xvfmul.d	$xr0, $xr0, $xr2
-	xvfmul.d	$xr1, $xr1, $xr3
-	xvst	$xr0, $a7, -32
-	xvst	$xr1, $a7, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a7, $a7, 64
-	addi.d	$a6, $a6, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vld	$vr2, $a6, -16
+	vld	$vr3, $a6, 0
+	vfmul.d	$vr0, $vr0, $vr2
+	vfmul.d	$vr1, $vr1, $vr3
+	vst	$vr0, $a7, -16
+	vst	$vr1, $a7, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a7, $a7, 32
+	addi.d	$a6, $a6, 32
+	addi.d	$a5, $a5, 32
 	bnez	$t0, .LBB4_50
 # %bb.51:                               # %middle.block160
                                         #   in Loop: Header=BB4_47 Depth=1
@@ -1532,15 +1533,15 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 # %bb.72:                               # %.preheader.us.preheader.i56
 	sub.d	$a0, $s4, $s2
 	sub.d	$a1, $s4, $s3
-	sltui	$a0, $a0, 64
-	sltui	$a1, $a1, 64
+	sltui	$a0, $a0, 32
+	sltui	$a1, $a1, 32
 	or	$a4, $a0, $a1
-	bstrpick.d	$a0, $s1, 30, 3
-	slli.d	$a0, $a0, 3
-	addi.d	$a1, $s4, 32
-	addi.d	$a2, $s3, 32
-	addi.d	$a3, $s2, 32
-	sltui	$a5, $s1, 8
+	bstrpick.d	$a0, $s1, 30, 2
+	slli.d	$a0, $a0, 2
+	addi.d	$a1, $s4, 16
+	addi.d	$a2, $s3, 16
+	addi.d	$a3, $s2, 16
+	sltui	$a5, $s1, 4
 	or	$a4, $a5, $a4
 	andi	$a4, $a4, 1
 	b	.LBB4_74
@@ -1572,18 +1573,18 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 .LBB4_77:                               # %vector.body172
                                         #   Parent Loop BB4_74 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvld	$xr2, $a6, -32
-	xvld	$xr3, $a6, 0
-	xvfmul.d	$xr0, $xr0, $xr2
-	xvfmul.d	$xr1, $xr1, $xr3
-	xvst	$xr0, $a7, -32
-	xvst	$xr1, $a7, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a7, $a7, 64
-	addi.d	$a6, $a6, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vld	$vr2, $a6, -16
+	vld	$vr3, $a6, 0
+	vfmul.d	$vr0, $vr0, $vr2
+	vfmul.d	$vr1, $vr1, $vr3
+	vst	$vr0, $a7, -16
+	vst	$vr1, $a7, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a7, $a7, 32
+	addi.d	$a6, $a6, 32
+	addi.d	$a5, $a5, 32
 	bnez	$t0, .LBB4_77
 # %bb.78:                               # %middle.block179
                                         #   in Loop: Header=BB4_74 Depth=1
@@ -1679,15 +1680,15 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 # %bb.89:                               # %.preheader.us.preheader.i56.1
 	sub.d	$a0, $s4, $s2
 	sub.d	$a1, $s4, $s3
-	sltui	$a0, $a0, 64
-	sltui	$a1, $a1, 64
+	sltui	$a0, $a0, 32
+	sltui	$a1, $a1, 32
 	or	$a4, $a0, $a1
-	bstrpick.d	$a0, $s1, 30, 3
-	slli.d	$a0, $a0, 3
-	addi.d	$a1, $s4, 32
-	addi.d	$a2, $s3, 32
-	addi.d	$a3, $s2, 32
-	sltui	$a5, $s1, 8
+	bstrpick.d	$a0, $s1, 30, 2
+	slli.d	$a0, $a0, 2
+	addi.d	$a1, $s4, 16
+	addi.d	$a2, $s3, 16
+	addi.d	$a3, $s2, 16
+	sltui	$a5, $s1, 4
 	or	$a4, $a5, $a4
 	andi	$a4, $a4, 1
 	b	.LBB4_91
@@ -1719,18 +1720,18 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 .LBB4_94:                               # %vector.body191
                                         #   Parent Loop BB4_91 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvld	$xr2, $a6, -32
-	xvld	$xr3, $a6, 0
-	xvfmul.d	$xr0, $xr0, $xr2
-	xvfmul.d	$xr1, $xr1, $xr3
-	xvst	$xr0, $a7, -32
-	xvst	$xr1, $a7, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a7, $a7, 64
-	addi.d	$a6, $a6, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vld	$vr2, $a6, -16
+	vld	$vr3, $a6, 0
+	vfmul.d	$vr0, $vr0, $vr2
+	vfmul.d	$vr1, $vr1, $vr3
+	vst	$vr0, $a7, -16
+	vst	$vr1, $a7, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a7, $a7, 32
+	addi.d	$a6, $a6, 32
+	addi.d	$a5, $a5, 32
 	bnez	$t0, .LBB4_94
 # %bb.95:                               # %middle.block198
                                         #   in Loop: Header=BB4_91 Depth=1
@@ -1822,15 +1823,15 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 # %bb.106:                              # %.preheader.us.preheader.i56.2
 	sub.d	$a0, $s4, $s2
 	sub.d	$a1, $s4, $s3
-	sltui	$a0, $a0, 64
-	sltui	$a1, $a1, 64
+	sltui	$a0, $a0, 32
+	sltui	$a1, $a1, 32
 	or	$a4, $a0, $a1
-	bstrpick.d	$a0, $s1, 30, 3
-	slli.d	$a0, $a0, 3
-	addi.d	$a1, $s4, 32
-	addi.d	$a2, $s3, 32
-	addi.d	$a3, $s2, 32
-	sltui	$a5, $s1, 8
+	bstrpick.d	$a0, $s1, 30, 2
+	slli.d	$a0, $a0, 2
+	addi.d	$a1, $s4, 16
+	addi.d	$a2, $s3, 16
+	addi.d	$a3, $s2, 16
+	sltui	$a5, $s1, 4
 	or	$a4, $a5, $a4
 	andi	$a4, $a4, 1
 	b	.LBB4_108
@@ -1862,18 +1863,18 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 .LBB4_111:                              # %vector.body210
                                         #   Parent Loop BB4_108 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a5, -32
-	xvld	$xr1, $a5, 0
-	xvld	$xr2, $a6, -32
-	xvld	$xr3, $a6, 0
-	xvfmul.d	$xr0, $xr0, $xr2
-	xvfmul.d	$xr1, $xr1, $xr3
-	xvst	$xr0, $a7, -32
-	xvst	$xr1, $a7, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a7, $a7, 64
-	addi.d	$a6, $a6, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vld	$vr2, $a6, -16
+	vld	$vr3, $a6, 0
+	vfmul.d	$vr0, $vr0, $vr2
+	vfmul.d	$vr1, $vr1, $vr3
+	vst	$vr0, $a7, -16
+	vst	$vr1, $a7, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a7, $a7, 32
+	addi.d	$a6, $a6, 32
+	addi.d	$a5, $a5, 32
 	bnez	$t0, .LBB4_111
 # %bb.112:                              # %middle.block217
                                         #   in Loop: Header=BB4_108 Depth=1

@@ -6,40 +6,37 @@
 	.word	0                               # 0x0
 	.word	0                               # 0x0
 	.word	0                               # 0x0
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI0_1:
 	.word	0                               # 0x0
 	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	0                               # 0x0
+.LCPI0_2:
 	.word	0                               # 0x0
 	.word	4294967295                      # 0xffffffff
 	.word	0                               # 0x0
 	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-.LCPI0_2:
-	.word	1                               # 0x1
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	0                               # 0x0
-	.word	0                               # 0x0
 .LCPI0_3:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+.LCPI0_4:
 	.word	0                               # 0x0
 	.word	5                               # 0x5
 	.word	1                               # 0x1
 	.word	1                               # 0x1
+.LCPI0_5:
 	.word	1                               # 0x1
 	.word	1                               # 0x1
 	.word	0                               # 0x0
 	.word	0                               # 0x0
-.LCPI0_4:
+.LCPI0_6:
 	.word	4294967295                      # 0xffffffff
 	.word	1                               # 0x1
 	.word	0                               # 0x0
 	.word	0                               # 0x0
+.LCPI0_7:
 	.word	1                               # 0x1
 	.word	1                               # 0x1
 	.word	100                             # 0x64
@@ -100,9 +97,7 @@ flag_Init:                              # @flag_Init
 	addi.d	$a5, $a5, %pc_lo12(.L.str.6)
 	st.d	$a5, $a0, 136
 	st.d	$a6, $a0, 120
-	ori	$t0, $zero, 0
-	lu32i.d	$t0, -1
-	st.d	$t0, $a4, 20
+	st.w	$zero, $a4, 20
 	st.w	$a2, $a0, 968
 	pcalau12i	$a5, %pc_hi20(.L.str.7)
 	addi.d	$a5, $a5, %pc_lo12(.L.str.7)
@@ -113,120 +108,129 @@ flag_Init:                              # @flag_Init
 	st.w	$zero, $a4, 160
 	ori	$a5, $zero, 1
 	st.w	$a5, $a0, 296
-	pcalau12i	$t1, %pc_hi20(.L.str.8)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.8)
-	st.d	$t1, $a0, 304
+	pcalau12i	$t0, %pc_hi20(.L.str.8)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.8)
+	st.d	$t0, $a0, 304
 	st.d	$a3, $a0, 288
 	st.w	$a2, $a0, 152
-	pcalau12i	$t1, %pc_hi20(.L.str.9)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.9)
-	st.d	$t1, $a0, 160
+	pcalau12i	$t0, %pc_hi20(.L.str.9)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.9)
+	st.d	$t0, $a0, 160
 	st.d	$a6, $a0, 144
 	st.w	$a5, $a0, 200
-	pcalau12i	$t1, %pc_hi20(.L.str.10)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.10)
-	st.d	$t1, $a0, 208
+	pcalau12i	$t0, %pc_hi20(.L.str.10)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.10)
+	st.d	$t0, $a0, 208
 	st.d	$a3, $a0, 192
 	st.w	$a5, $a0, 320
-	pcalau12i	$t1, %pc_hi20(.L.str.11)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.11)
-	st.d	$t1, $a0, 328
+	pcalau12i	$t0, %pc_hi20(.L.str.11)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.11)
+	st.d	$t0, $a0, 328
 	st.d	$a3, $a0, 312
 	st.w	$a5, $a0, 344
-	pcalau12i	$t1, %pc_hi20(.L.str.12)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.12)
-	st.d	$t1, $a0, 352
+	pcalau12i	$t0, %pc_hi20(.L.str.12)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.12)
+	st.d	$t0, $a0, 352
 	st.d	$a3, $a0, 336
 	st.w	$a5, $a0, 368
-	pcalau12i	$t1, %pc_hi20(.L.str.13)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.13)
-	st.d	$t1, $a0, 376
+	pcalau12i	$t0, %pc_hi20(.L.str.13)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.13)
+	st.d	$t0, $a0, 376
 	st.d	$a3, $a0, 360
 	st.w	$a5, $a0, 536
-	pcalau12i	$t1, %pc_hi20(.L.str.14)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.14)
-	st.d	$t1, $a0, 544
+	pcalau12i	$t0, %pc_hi20(.L.str.14)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.14)
+	st.d	$t0, $a0, 544
 	st.d	$a3, $a0, 528
 	st.w	$a5, $a0, 392
-	pcalau12i	$t1, %pc_hi20(.L.str.15)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.15)
-	st.d	$t1, $a0, 400
+	pcalau12i	$t0, %pc_hi20(.L.str.15)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.15)
+	st.d	$t0, $a0, 400
 	st.d	$a3, $a0, 384
 	st.w	$a5, $a0, 416
-	pcalau12i	$t1, %pc_hi20(.L.str.16)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.16)
-	st.d	$t1, $a0, 424
+	pcalau12i	$t0, %pc_hi20(.L.str.16)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.16)
+	st.d	$t0, $a0, 424
 	st.d	$a3, $a0, 408
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a4, 56
 	st.w	$a5, $a0, 440
-	pcalau12i	$t1, %pc_hi20(.L.str.17)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.17)
-	st.d	$t1, $a0, 448
+	pcalau12i	$t0, %pc_hi20(.L.str.17)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.17)
+	st.d	$t0, $a0, 448
 	st.d	$a3, $a0, 432
 	st.w	$a5, $a0, 464
-	pcalau12i	$t1, %pc_hi20(.L.str.18)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.18)
-	st.d	$t1, $a0, 472
+	pcalau12i	$t0, %pc_hi20(.L.str.18)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.18)
+	st.d	$t0, $a0, 472
 	st.d	$a3, $a0, 456
 	st.w	$a2, $a0, 224
-	pcalau12i	$t1, %pc_hi20(.L.str.19)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.19)
-	st.d	$t1, $a0, 232
+	pcalau12i	$t0, %pc_hi20(.L.str.19)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.19)
+	st.d	$t0, $a0, 232
 	st.d	$a3, $a0, 216
 	st.w	$a5, $a0, 488
-	pcalau12i	$t1, %pc_hi20(.L.str.20)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.20)
-	st.d	$t1, $a0, 496
+	pcalau12i	$t0, %pc_hi20(.L.str.20)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.20)
+	st.d	$t0, $a0, 496
 	st.d	$a3, $a0, 480
 	st.w	$a5, $a0, 512
-	pcalau12i	$t1, %pc_hi20(.L.str.21)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.21)
-	st.d	$t1, $a0, 520
+	pcalau12i	$t0, %pc_hi20(.L.str.21)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.21)
+	st.d	$t0, $a0, 520
 	st.d	$a3, $a0, 504
+	vst	$vr0, $a4, 72
 	st.w	$a5, $a0, 560
-	pcalau12i	$t1, %pc_hi20(.L.str.22)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.22)
-	st.d	$t1, $a0, 568
+	pcalau12i	$t0, %pc_hi20(.L.str.22)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.22)
+	st.d	$t0, $a0, 568
 	st.d	$a3, $a0, 552
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $a4, 64
 	st.w	$a5, $a0, 584
-	pcalau12i	$t1, %pc_hi20(.L.str.23)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.23)
-	st.d	$t1, $a0, 592
+	pcalau12i	$t0, %pc_hi20(.L.str.23)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.23)
+	st.d	$t0, $a0, 592
 	st.d	$a3, $a0, 576
 	st.w	$a5, $a0, 608
-	pcalau12i	$t1, %pc_hi20(.L.str.24)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.24)
-	st.d	$t1, $a0, 616
+	pcalau12i	$t0, %pc_hi20(.L.str.24)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.24)
+	pcalau12i	$t1, %pc_hi20(.LCPI0_1)
+	vld	$vr1, $t1, %pc_lo12(.LCPI0_1)
+	st.d	$t0, $a0, 616
 	st.d	$a3, $a0, 600
+	vst	$vr1, $a4, 88
 	st.w	$a5, $a0, 632
-	pcalau12i	$t1, %pc_hi20(.L.str.25)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.25)
-	st.d	$t1, $a0, 640
+	pcalau12i	$t0, %pc_hi20(.L.str.25)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.25)
+	st.d	$t0, $a0, 640
 	st.d	$a3, $a0, 624
 	st.w	$a5, $a0, 248
-	pcalau12i	$t1, %pc_hi20(.L.str.26)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.26)
-	pcalau12i	$t2, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $t2, %pc_lo12(.LCPI0_1)
-	st.d	$t1, $a0, 256
+	pcalau12i	$t0, %pc_hi20(.L.str.26)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.26)
+	pcalau12i	$t1, %pc_hi20(.LCPI0_2)
+	vld	$vr1, $t1, %pc_lo12(.LCPI0_2)
+	st.d	$t0, $a0, 256
 	st.d	$a3, $a0, 240
-	xvst	$xr1, $a4, 32
+	vst	$vr1, $a4, 40
 	st.w	$a5, $a0, 656
-	pcalau12i	$t1, %pc_hi20(.L.str.27)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.27)
-	st.d	$t1, $a0, 664
+	pcalau12i	$t0, %pc_hi20(.L.str.27)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.27)
+	st.d	$t0, $a0, 664
 	st.d	$a3, $a0, 648
 	st.w	$a5, $a0, 680
-	pcalau12i	$t1, %pc_hi20(.L.str.28)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.28)
-	st.d	$t1, $a0, 688
+	pcalau12i	$t0, %pc_hi20(.L.str.28)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.28)
+	st.d	$t0, $a0, 688
 	st.d	$a3, $a0, 672
 	st.w	$a5, $a0, 704
-	pcalau12i	$t1, %pc_hi20(.L.str.29)
-	addi.d	$t1, $t1, %pc_lo12(.L.str.29)
-	st.d	$t1, $a0, 712
+	pcalau12i	$t0, %pc_hi20(.L.str.29)
+	addi.d	$t0, $t0, %pc_lo12(.L.str.29)
+	st.d	$t0, $a0, 712
 	st.d	$a3, $a0, 696
+	ori	$t0, $zero, 0
+	ori	$t1, $zero, 0
+	lu32i.d	$t1, 1
+	vreplgr2vr.d	$vr1, $t1
+	vst	$vr1, $a4, 104
 	st.w	$a5, $a0, 728
 	pcalau12i	$t1, %pc_hi20(.L.str.30)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.30)
@@ -235,11 +239,8 @@ flag_Init:                              # @flag_Init
 	st.w	$a5, $a0, 752
 	pcalau12i	$t1, %pc_hi20(.L.str.31)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.31)
-	pcalau12i	$t2, %pc_hi20(.LCPI0_2)
-	xvld	$xr1, $t2, %pc_lo12(.LCPI0_2)
 	st.d	$t1, $a0, 760
 	st.d	$a3, $a0, 744
-	xvst	$xr1, $a4, 96
 	st.w	$a5, $a0, 776
 	pcalau12i	$t1, %pc_hi20(.L.str.32)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.32)
@@ -250,6 +251,7 @@ flag_Init:                              # @flag_Init
 	addi.d	$t1, $t1, %pc_lo12(.L.str.33)
 	st.d	$t1, $a0, 808
 	st.d	$a3, $a0, 792
+	vst	$vr0, $a4, 120
 	st.w	$a5, $a0, 824
 	pcalau12i	$t1, %pc_hi20(.L.str.34)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.34)
@@ -260,28 +262,25 @@ flag_Init:                              # @flag_Init
 	addi.d	$t1, $t1, %pc_lo12(.L.str.35)
 	st.d	$t1, $a0, 856
 	st.d	$a3, $a0, 840
-	vrepli.b	$vr1, 0
-	vst	$vr1, $a4, 128
 	st.w	$a5, $a0, 872
 	pcalau12i	$t1, %pc_hi20(.L.str.36)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.36)
 	st.d	$t1, $a0, 880
 	st.d	$a3, $a0, 864
-	st.w	$zero, $a4, 144
 	st.w	$a5, $a0, 896
 	pcalau12i	$t1, %pc_hi20(.L.str.37)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.37)
 	st.d	$t1, $a0, 904
 	st.d	$a3, $a0, 888
-	st.w	$zero, $a4, 148
+	vst	$vr0, $a4, 136
 	st.w	$a2, $a0, 176
 	pcalau12i	$t1, %pc_hi20(.L.str.38)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.38)
+	pcalau12i	$t2, %pc_hi20(.LCPI0_3)
+	vld	$vr1, $t2, %pc_lo12(.LCPI0_3)
 	st.d	$t1, $a0, 184
 	st.d	$a6, $a0, 168
-	move	$t1, $a1
-	lu32i.d	$t1, 0
-	st.w	$t1, $a4, 28
+	vst	$vr1, $a4, 24
 	st.w	$a2, $a0, 920
 	pcalau12i	$t1, %pc_hi20(.L.str.39)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.39)
@@ -308,6 +307,7 @@ flag_Init:                              # @flag_Init
 	addi.d	$t1, $t1, %pc_lo12(.L.str.43)
 	st.d	$t1, $a0, 1504
 	st.d	$a3, $a0, 1488
+	vst	$vr0, $a4, 236
 	st.w	$zero, $a0, 1520
 	pcalau12i	$t1, %pc_hi20(.L.str.44)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.44)
@@ -328,7 +328,7 @@ flag_Init:                              # @flag_Init
 	addi.d	$t1, $t1, %pc_lo12(.L.str.47)
 	st.d	$t1, $a0, 1600
 	st.d	$a3, $a0, 1584
-	xvst	$xr0, $a4, 236
+	vst	$vr0, $a4, 252
 	st.w	$zero, $a0, 1616
 	pcalau12i	$t1, %pc_hi20(.L.str.48)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.48)
@@ -349,6 +349,7 @@ flag_Init:                              # @flag_Init
 	addi.d	$t1, $t1, %pc_lo12(.L.str.51)
 	st.d	$t1, $a0, 1696
 	st.d	$a7, $a0, 1680
+	vst	$vr0, $a4, 268
 	st.w	$zero, $a0, 1712
 	pcalau12i	$t1, %pc_hi20(.L.str.52)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.52)
@@ -369,7 +370,7 @@ flag_Init:                              # @flag_Init
 	addi.d	$t1, $t1, %pc_lo12(.L.str.55)
 	st.d	$t1, $a0, 1792
 	st.d	$a7, $a0, 1776
-	xvst	$xr0, $a4, 268
+	vst	$vr0, $a4, 284
 	st.w	$zero, $a0, 1808
 	pcalau12i	$t1, %pc_hi20(.L.str.56)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.56)
@@ -390,6 +391,7 @@ flag_Init:                              # @flag_Init
 	addi.d	$t1, $t1, %pc_lo12(.L.str.59)
 	st.d	$t1, $a0, 1840
 	st.d	$a3, $a0, 1824
+	vst	$vr0, $a4, 300
 	ori	$t1, $zero, 2
 	st.w	$t1, $a0, 1904
 	pcalau12i	$t2, %pc_hi20(.L.str.60)
@@ -411,7 +413,7 @@ flag_Init:                              # @flag_Init
 	addi.d	$t2, $t2, %pc_lo12(.L.str.63)
 	st.d	$t2, $a0, 1984
 	st.d	$a3, $a0, 1968
-	xvst	$xr0, $a4, 300
+	vst	$vr0, $a4, 316
 	stptr.w	$t1, $a0, 2072
 	pcalau12i	$t2, %pc_hi20(.L.str.64)
 	addi.d	$t2, $t2, %pc_lo12(.L.str.64)
@@ -448,6 +450,7 @@ flag_Init:                              # @flag_Init
 	addi.d	$t3, $t3, %pc_lo12(.L.str.70)
 	stptr.d	$t3, $a0, 2056
 	st.d	$a3, $a0, 2040
+	vst	$vr0, $a4, 332
 	stptr.w	$t1, $a0, 2120
 	pcalau12i	$t3, %pc_hi20(.L.str.71)
 	addi.d	$t3, $t3, %pc_lo12(.L.str.71)
@@ -463,7 +466,7 @@ flag_Init:                              # @flag_Init
 	addi.d	$t3, $t3, %pc_lo12(.L.str.73)
 	stptr.d	$t3, $a0, 2152
 	stptr.d	$a3, $a0, 2136
-	xvst	$xr0, $a4, 332
+	vst	$vr0, $a4, 348
 	stptr.w	$t1, $a0, 2240
 	pcalau12i	$t3, %pc_hi20(.L.str.74)
 	addi.d	$t3, $t3, %pc_lo12(.L.str.74)
@@ -474,7 +477,7 @@ flag_Init:                              # @flag_Init
 	addi.d	$t1, $t1, %pc_lo12(.L.str.75)
 	stptr.d	$t1, $a0, 2272
 	stptr.d	$a3, $a0, 2256
-	vst	$vr1, $a4, 364
+	vst	$vr0, $a4, 364
 	st.w	$a2, $a0, 944
 	pcalau12i	$t1, %pc_hi20(.L.str.76)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.76)
@@ -500,13 +503,17 @@ flag_Init:                              # @flag_Init
 	pcalau12i	$t1, %pc_hi20(.L.str.80)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.80)
 	st.d	$t1, $a0, 1024
+	lu32i.d	$t0, -1
 	lu52i.d	$t0, $t0, 2047
 	st.d	$t0, $a0, 1008
 	st.w	$a2, $a0, 1040
 	pcalau12i	$t1, %pc_hi20(.L.str.81)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.81)
+	pcalau12i	$t2, %pc_hi20(.LCPI0_4)
+	vld	$vr0, $t2, %pc_lo12(.LCPI0_4)
 	st.d	$t1, $a0, 1048
 	st.d	$t0, $a0, 1032
+	vst	$vr0, $a4, 164
 	st.w	$a2, $a0, 1088
 	pcalau12i	$t1, %pc_hi20(.L.str.82)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.82)
@@ -525,11 +532,11 @@ flag_Init:                              # @flag_Init
 	st.w	$a2, $a0, 1160
 	pcalau12i	$t1, %pc_hi20(.L.str.85)
 	addi.d	$t1, $t1, %pc_lo12(.L.str.85)
-	pcalau12i	$t2, %pc_hi20(.LCPI0_3)
-	xvld	$xr0, $t2, %pc_lo12(.LCPI0_3)
+	pcalau12i	$t2, %pc_hi20(.LCPI0_5)
+	vld	$vr0, $t2, %pc_lo12(.LCPI0_5)
 	st.d	$t1, $a0, 1168
 	st.d	$a7, $a0, 1152
-	xvst	$xr0, $a4, 164
+	vst	$vr0, $a4, 180
 	st.w	$a2, $a0, 1184
 	pcalau12i	$a7, %pc_hi20(.L.str.86)
 	addi.d	$a7, $a7, %pc_lo12(.L.str.86)
@@ -543,8 +550,11 @@ flag_Init:                              # @flag_Init
 	st.w	$a2, $a0, 1256
 	pcalau12i	$a6, %pc_hi20(.L.str.88)
 	addi.d	$a6, $a6, %pc_lo12(.L.str.88)
+	pcalau12i	$a7, %pc_hi20(.LCPI0_6)
+	vld	$vr0, $a7, %pc_lo12(.LCPI0_6)
 	st.d	$a6, $a0, 1264
 	st.d	$a3, $a0, 1248
+	vst	$vr0, $a4, 196
 	st.w	$a2, $a0, 1280
 	pcalau12i	$a6, %pc_hi20(.L.str.89)
 	addi.d	$a6, $a6, %pc_lo12(.L.str.89)
@@ -569,11 +579,11 @@ flag_Init:                              # @flag_Init
 	st.w	$a2, $a0, 1304
 	pcalau12i	$a6, %pc_hi20(.L.str.93)
 	addi.d	$a6, $a6, %pc_lo12(.L.str.93)
-	pcalau12i	$a7, %pc_hi20(.LCPI0_4)
-	xvld	$xr0, $a7, %pc_lo12(.LCPI0_4)
+	pcalau12i	$a7, %pc_hi20(.LCPI0_7)
+	vld	$vr0, $a7, %pc_lo12(.LCPI0_7)
 	st.d	$a6, $a0, 1312
 	st.d	$a3, $a0, 1296
-	xvst	$xr0, $a4, 196
+	vst	$vr0, $a4, 212
 	st.w	$a2, $a0, 1400
 	pcalau12i	$a6, %pc_hi20(.L.str.94)
 	addi.d	$a6, $a6, %pc_lo12(.L.str.94)

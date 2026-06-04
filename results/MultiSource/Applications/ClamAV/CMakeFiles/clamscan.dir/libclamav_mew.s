@@ -6,18 +6,18 @@
 	.type	mew_lzma,@function
 mew_lzma:                               # @mew_lzma
 # %bb.0:
-	addi.d	$sp, $sp, -416
-	st.d	$ra, $sp, 408                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 400                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 392                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 384                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 376                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 328                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -384
+	st.d	$ra, $sp, 376                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 344                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 336                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 328                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 320                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 312                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 296                   # 8-byte Folded Spill
 	move	$s2, $a0
 	beqz	$a4, .LBB0_5
 # %bb.1:
@@ -58,47 +58,46 @@ mew_lzma:                               # @mew_lzma
 	st.d	$a6, $sp, 24                    # 8-byte Folded Spill
 	add.d	$s6, $s2, $a1
 	add.d	$a0, $s2, $a7
-	st.d	$a0, $sp, 280                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
 	addi.d	$a0, $a1, 4
-	st.d	$a0, $sp, 288                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
 	addi.d	$a0, $a1, 388
-	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	addi.d	$a0, $a1, 412
-	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	addi.d	$a0, $a1, 436
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	addi.d	$a0, $a1, 460
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	addi.d	$a0, $s6, 2047
 	addi.d	$a0, $a0, 617
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	addi.d	$a0, $a1, 518
-	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	sltui	$a0, $a4, 1
 	maskeqz	$t4, $s1, $a0
 	addi.d	$a1, $a1, 6
-	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	lu12i.w	$a6, -7
-	ori	$t0, $a6, 448
-	xvldi	$xr0, -2812
-	ori	$s4, $a5, 3648
+	ori	$t0, $a6, 416
+	vldi	$vr1, -2812
+	ori	$s4, $a5, 3680
 	lu12i.w	$a1, 16384
 	ori	$t1, $a1, 1024
-	ori	$fp, $a5, 3680
+	ori	$fp, $a5, 3696
 	move	$t2, $t1
 	addi.w	$t3, $zero, -1
 	bstrins.d	$t2, $t1, 58, 32
-	st.d	$t3, $sp, 224                   # 8-byte Folded Spill
+	st.d	$t3, $sp, 192                   # 8-byte Folded Spill
 	lu32i.d	$t3, 0
 	pcalau12i	$a1, %pc_hi20(.L.str)
 	addi.d	$a0, $a1, %pc_lo12(.L.str)
 	move	$t5, $zero
-	st.d	$a2, $sp, 240                   # 8-byte Folded Spill
-	st.d	$a7, $sp, 256                   # 8-byte Folded Spill
-	st.d	$a3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$a4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$t0, $sp, 96                    # 8-byte Folded Spill
-	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
+	st.d	$a2, $sp, 208                   # 8-byte Folded Spill
+	st.d	$a7, $sp, 224                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$t0, $sp, 64                    # 8-byte Folded Spill
 	st.d	$t1, $sp, 56                    # 8-byte Folded Spill
 	st.d	$t2, $sp, 48                    # 8-byte Folded Spill
 	st.d	$t3, $sp, 40                    # 8-byte Folded Spill
@@ -121,7 +120,7 @@ mew_lzma:                               # @mew_lzma
 	move	$a7, $s1
 	move	$s7, $t5
 	.p2align	4, , 16
-.LBB0_12:                               # %iter.check1265
+.LBB0_12:                               # %thread-pre-split.us.us868
                                         #   Parent Loop BB0_10 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_13 Depth 3
@@ -129,20 +128,19 @@ mew_lzma:                               # @mew_lzma
 	ld.w	$a2, $a7, 4
 	ld.wu	$a1, $a7, 8
 	move	$t5, $s7
-	ori	$a4, $a6, 448
+	ori	$a4, $a6, 416
 	.p2align	4, , 16
-.LBB0_13:                               # %vector.body1257
+.LBB0_13:                               # %vector.body1249
                                         #   Parent Loop BB0_10 Depth=1
                                         #     Parent Loop BB0_12 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$a5, $s6, $a4
-	xvstx	$xr0, $a5, $s4
-	addi.d	$a4, $a4, 64
-	xvstx	$xr0, $a5, $fp
+	vstx	$vr1, $a5, $s4
+	addi.d	$a4, $a4, 32
+	vstx	$vr1, $a5, $fp
 	bnez	$a4, .LBB0_13
-# %bb.14:                               # %vec.epilog.vector.body1269
+# %bb.14:                               # %scalar.ph1247
                                         #   in Loop: Header=BB0_12 Depth=2
-	xvstx	$xr0, $s6, $s4
 	stptr.d	$t2, $s6, 28256
 	stptr.w	$t1, $s6, 28264
 	sub.d	$a2, $a2, $a3
@@ -152,11 +150,11 @@ mew_lzma:                               # @mew_lzma
 	add.d	$a1, $a7, $a1
 	addi.d	$s1, $a1, 13
 	revb.2w	$a1, $a2
-	st.w	$a1, $sp, 324
-	st.w	$t3, $sp, 320
+	st.w	$a1, $sp, 292
+	st.w	$t3, $sp, 288
 	addi.d	$a1, $a7, 18
-	st.d	$a1, $sp, 312
-	st.w	$zero, $sp, 304
+	st.d	$a1, $sp, 280
+	st.w	$zero, $sp, 272
 	move	$a7, $s1
 	move	$s8, $s7
 	beqz	$s5, .LBB0_12
@@ -165,7 +163,7 @@ mew_lzma:                               # @mew_lzma
                                         #   in Loop: Header=BB0_10 Depth=1
 	ld.w	$s5, $t4, 0
 	beqz	$s5, .LBB0_250
-# %bb.16:                               # %iter.check
+# %bb.16:                               # %.preheader620.us.us.us
                                         #   in Loop: Header=BB0_10 Depth=1
 	ld.w	$a1, $t4, 4
 	ld.wu	$a2, $t4, 8
@@ -175,55 +173,55 @@ mew_lzma:                               # @mew_lzma
                                         #   Parent Loop BB0_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a5, $s6, $a6
-	xvstx	$xr0, $a5, $s4
-	addi.d	$a6, $a6, 64
-	xvstx	$xr0, $a5, $fp
+	vstx	$vr1, $a5, $s4
+	addi.d	$a6, $a6, 32
+	vstx	$vr1, $a5, $fp
 	bnez	$a6, .LBB0_17
-# %bb.18:                               # %vec.epilog.vector.body
+# %bb.18:                               # %scalar.ph1241
                                         #   in Loop: Header=BB0_10 Depth=1
-	xvstx	$xr0, $s6, $s4
 	stptr.d	$t2, $s6, 28256
 	stptr.w	$t1, $s6, 28264
 	ld.w	$a4, $t4, 14
 	add.d	$a2, $t4, $a2
 	addi.d	$s1, $a2, 13
 	revb.2w	$a2, $a4
-	st.w	$a2, $sp, 324
-	st.w	$t3, $sp, 320
+	st.w	$a2, $sp, 292
+	st.w	$t3, $sp, 288
 	addi.d	$a2, $t4, 18
-	st.d	$a2, $sp, 312
-	st.w	$zero, $sp, 304
+	st.d	$a2, $sp, 280
+	st.w	$zero, $sp, 272
 	sub.d	$a1, $a1, $a3
 	bstrpick.d	$s0, $a1, 31, 0
 	add.d	$s7, $s2, $s0
 	move	$s8, $t5
 .LBB0_19:                               # %.split681.us.us
                                         #   in Loop: Header=BB0_10 Depth=1
-	st.d	$t5, $sp, 120                   # 8-byte Folded Spill
+	st.d	$t5, $sp, 88                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
+	vldi	$vr1, -2812
 	move	$a0, $zero
 	move	$a5, $zero
 	move	$t5, $zero
 	move	$s3, $zero
-	ld.d	$ra, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 224                   # 8-byte Folded Reload
 	sub.d	$a1, $ra, $s0
-	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
-	sub.d	$a1, $zero, $s0
 	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
+	sub.d	$a1, $zero, $s0
+	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
 	bstrpick.d	$a1, $s5, 31, 0
-	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
 	add.d	$a1, $s0, $a1
-	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	ori	$a1, $zero, 1
+	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
+	ori	$a1, $zero, 1
+	st.d	$a1, $sp, 240                   # 8-byte Folded Spill
 	ori	$a1, $zero, 1
 	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
 	ori	$a1, $zero, 1
-	st.d	$a1, $sp, 272                   # 8-byte Folded Spill
-	ori	$a1, $zero, 1
-	st.d	$a1, $sp, 248                   # 8-byte Folded Spill
-	ori	$a1, $zero, 1
-	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
-	ld.d	$t6, $sp, 280                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
+	ld.d	$t6, $sp, 248                   # 8-byte Folded Reload
 	ori	$t8, $zero, 2048
 	ori	$t7, $zero, 256
 .LBB0_20:                               #   Parent Loop BB0_10 Depth=1
@@ -240,20 +238,20 @@ mew_lzma:                               # @mew_lzma
 	addi.w	$a4, $zero, -26
 	lu32i.d	$a4, 0
 	and	$t1, $a1, $a4
-	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
 	add.d	$a1, $a1, $t1
 	bltu	$ra, $a1, .LBB0_249
 # %bb.21:                               #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$a7, $sp, 312
+	ld.d	$a7, $sp, 280
 	bltu	$a7, $s2, .LBB0_249
 # %bb.22:                               #   in Loop: Header=BB0_20 Depth=2
 	addi.d	$a3, $a7, 1
 	bltu	$t6, $a3, .LBB0_249
 # %bb.23:                               #   in Loop: Header=BB0_20 Depth=2
-	ld.wu	$t3, $sp, 320
+	ld.wu	$t3, $sp, 288
 	ldx.wu	$t2, $s6, $t1
 	srli.d	$a1, $t3, 11
-	ld.w	$a2, $sp, 324
+	ld.w	$a2, $sp, 292
 	bstrpick.d	$t4, $t2, 15, 0
 	mul.d	$a6, $t4, $a1
 	addi.w	$t0, $a6, 0
@@ -268,13 +266,13 @@ mew_lzma:                               # @mew_lzma
 .LBB0_25:                               #   in Loop: Header=BB0_20 Depth=2
 	sub.w	$a1, $a2, $a6
 	sub.w	$a6, $t3, $a6
-	st.w	$a1, $sp, 324
+	st.w	$a1, $sp, 292
 	bstrpick.d	$t3, $t4, 31, 5
 	sub.w	$t3, $t2, $t3
 .LBB0_26:                               #   in Loop: Header=BB0_20 Depth=2
 	srli.d	$t2, $t2, 16
 	bstrins.d	$t3, $t2, 63, 16
-	st.w	$a6, $sp, 320
+	st.w	$a6, $sp, 288
 	bstrpick.d	$t2, $a6, 31, 24
 	stx.w	$t3, $s6, $t1
 	bnez	$t2, .LBB0_33
@@ -283,13 +281,13 @@ mew_lzma:                               # @mew_lzma
 	slli.w	$a1, $a1, 8
 	or	$a1, $a1, $a7
 	slli.d	$a6, $a6, 8
-	st.w	$a1, $sp, 324
-	st.d	$a3, $sp, 312
+	st.w	$a1, $sp, 292
+	st.d	$a3, $sp, 280
 	bltu	$a2, $t0, .LBB0_34
 .LBB0_28:                               #   in Loop: Header=BB0_20 Depth=2
 	slli.d	$a0, $t5, 1
 	bstrpick.d	$a5, $a0, 31, 1
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
 	alsl.d	$a0, $a5, $a0, 1
 	bltu	$ra, $a0, .LBB0_249
 # %bb.29:                               #   in Loop: Header=BB0_20 Depth=2
@@ -323,7 +321,7 @@ mew_lzma:                               # @mew_lzma
 	addi.d	$a0, $a0, 2047
 	addi.d	$a0, $a0, 1645
 	add.d	$a2, $s6, $a0
-	st.d	$a2, $sp, 296
+	st.d	$a2, $sp, 264
 	ori	$a4, $zero, 4
 	bltu	$t5, $a4, .LBB0_37
 # %bb.35:                               #   in Loop: Header=BB0_20 Depth=2
@@ -337,7 +335,7 @@ mew_lzma:                               # @mew_lzma
 	move	$t5, $zero
 	beqz	$a5, .LBB0_80
 .LBB0_38:                               #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$a4, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 232                   # 8-byte Folded Reload
 	sub.w	$a4, $s3, $a4
 	bstrpick.d	$a5, $a4, 31, 0
 	add.d	$a7, $s0, $a5
@@ -347,15 +345,15 @@ mew_lzma:                               # @mew_lzma
 	srli.d	$a4, $a4, 8
 	move	$a5, $a7
 	bstrins.d	$a5, $a4, 31, 8
-	st.w	$a5, $sp, 308
+	st.w	$a5, $sp, 276
 	srli.d	$a5, $a7, 7
 	slli.d	$a4, $a5, 9
 	add.d	$t0, $a2, $a4
 	addi.d	$t1, $t0, 514
-	ld.d	$t0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 168                   # 8-byte Folded Reload
 	add.d	$t0, $t0, $a0
 	add.d	$a4, $t0, $a4
-	st.d	$t1, $sp, 296
+	st.d	$t1, $sp, 264
 	bltu	$ra, $a4, .LBB0_249
 # %bb.40:                               #   in Loop: Header=BB0_20 Depth=2
 	bltu	$a3, $s2, .LBB0_249
@@ -378,14 +376,14 @@ mew_lzma:                               # @mew_lzma
 .LBB0_44:                               #   in Loop: Header=BB0_20 Depth=2
 	sub.w	$t0, $a1, $t1
 	sub.w	$t1, $a6, $t1
-	st.w	$t0, $sp, 324
+	st.w	$t0, $sp, 292
 	bstrpick.d	$a6, $t3, 31, 5
 	sub.w	$t3, $a0, $a6
 	ori	$a6, $zero, 1
 .LBB0_45:                               #   in Loop: Header=BB0_20 Depth=2
 	srli.d	$a0, $a0, 16
 	bstrins.d	$t3, $a0, 63, 16
-	st.w	$t1, $sp, 320
+	st.w	$t1, $sp, 288
 	bstrpick.d	$a0, $t1, 31, 24
 	st.w	$t3, $a2, 384
 	bnez	$a0, .LBB0_52
@@ -394,15 +392,15 @@ mew_lzma:                               # @mew_lzma
 	slli.w	$a3, $t0, 8
 	or	$t0, $a3, $a0
 	slli.d	$t1, $t1, 8
-	st.w	$t0, $sp, 324
-	st.w	$t1, $sp, 320
-	st.d	$a7, $sp, 312
+	st.w	$t0, $sp, 292
+	st.w	$t1, $sp, 288
+	st.d	$a7, $sp, 280
 	andi	$a0, $s3, 3
-	st.w	$a6, $sp, 308
+	st.w	$a6, $sp, 276
 	bltu	$a1, $t2, .LBB0_53
 .LBB0_47:                               #   in Loop: Header=BB0_20 Depth=2
 	slli.d	$a5, $a5, 1
-	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	add.d	$a1, $a1, $a5
 	bltu	$ra, $a1, .LBB0_249
 # %bb.48:                               #   in Loop: Header=BB0_20 Depth=2
@@ -427,7 +425,7 @@ mew_lzma:                               # @mew_lzma
 .LBB0_52:                               #   in Loop: Header=BB0_20 Depth=2
 	move	$a7, $a3
 	andi	$a0, $s3, 3
-	st.w	$a6, $sp, 308
+	st.w	$a6, $sp, 276
 	bgeu	$a1, $t2, .LBB0_47
 .LBB0_53:                               #   in Loop: Header=BB0_20 Depth=2
 	sltui	$a1, $t5, 7
@@ -436,16 +434,16 @@ mew_lzma:                               # @mew_lzma
 	ori	$a3, $zero, 7
 	maskeqz	$a1, $a3, $a1
 	or	$a1, $a1, $a2
-	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
-	st.w	$a1, $sp, 308
+	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	st.w	$a1, $sp, 276
 	addi.d	$a1, $s6, 1636
-	st.d	$a1, $sp, 296
-	addi.d	$a1, $sp, 312
-	addi.d	$a2, $sp, 296
-	addi.d	$a3, $sp, 304
-	addi.d	$a4, $sp, 308
+	st.d	$a1, $sp, 264
+	addi.d	$a1, $sp, 280
+	addi.d	$a2, $sp, 264
+	addi.d	$a3, $sp, 272
+	addi.d	$a4, $sp, 276
 	move	$a5, $s2
-	ld.d	$a6, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(lzma_4863da)
 	jirl	$ra, $ra, 0
 	addi.w	$a2, $zero, -1
@@ -454,36 +452,36 @@ mew_lzma:                               # @mew_lzma
 	beq	$a1, $a2, .LBB0_251
 # %bb.54:                               # %.preheader.i.us
                                         #   in Loop: Header=BB0_20 Depth=2
-	ld.w	$a1, $sp, 308
+	ld.w	$a1, $sp, 276
 	sltui	$a2, $a1, 3
 	ori	$a3, $zero, 3
 	masknez	$a3, $a3, $a2
 	maskeqz	$a2, $a1, $a2
 	or	$a2, $a2, $a3
 	ori	$a3, $zero, 6
-	st.w	$a3, $sp, 304
+	st.w	$a3, $sp, 272
 	slli.d	$a2, $a2, 7
-	st.w	$a2, $sp, 308
+	st.w	$a2, $sp, 276
 	addi.d	$a2, $a2, 864
 	add.d	$a3, $s6, $a2
-	ld.d	$a4, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 256                   # 8-byte Folded Reload
 	add.d	$a4, $a4, $a2
 	addi.d	$a2, $a4, 2
-	st.d	$a3, $sp, 296
-	ld.d	$ra, $sp, 256                   # 8-byte Folded Reload
+	st.d	$a3, $sp, 264
+	ld.d	$ra, $sp, 224                   # 8-byte Folded Reload
 	ori	$t8, $zero, 2048
 	bltu	$ra, $a2, .LBB0_251
 # %bb.55:                               #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$a6, $sp, 312
+	ld.d	$a6, $sp, 280
 	bltu	$a6, $s2, .LBB0_251
 # %bb.56:                               #   in Loop: Header=BB0_20 Depth=2
 	addi.d	$a5, $a6, 1
-	ld.d	$t6, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 248                   # 8-byte Folded Reload
 	bltu	$t6, $a5, .LBB0_251
 # %bb.57:                               #   in Loop: Header=BB0_20 Depth=2
-	ld.w	$a7, $sp, 320
+	ld.w	$a7, $sp, 288
 	ld.wu	$t1, $a3, 2
-	ld.w	$a2, $sp, 324
+	ld.w	$a2, $sp, 292
 	bstrpick.d	$t0, $a7, 31, 11
 	bstrpick.d	$t2, $t1, 15, 0
 	mul.d	$t0, $t2, $t0
@@ -498,14 +496,14 @@ mew_lzma:                               # @mew_lzma
 .LBB0_59:                               #   in Loop: Header=BB0_20 Depth=2
 	sub.w	$a1, $a1, $t0
 	sub.w	$t0, $a6, $t0
-	st.w	$a1, $sp, 324
+	st.w	$a1, $sp, 292
 	bstrpick.d	$a6, $t3, 31, 5
 	sub.w	$t3, $t2, $a6
 	ori	$a6, $zero, 1
 .LBB0_60:                               #   in Loop: Header=BB0_20 Depth=2
 	srli.d	$t2, $t2, 16
 	bstrins.d	$t3, $t2, 63, 16
-	st.w	$t0, $sp, 320
+	st.w	$t0, $sp, 288
 	bstrpick.d	$t2, $t0, 31, 24
 	st.w	$t3, $t1, 0
 	bnez	$t2, .LBB0_63
@@ -513,10 +511,10 @@ mew_lzma:                               # @mew_lzma
 	ld.bu	$a3, $a3, 0
 	slli.w	$a1, $a1, 8
 	or	$a1, $a1, $a3
-	st.d	$a4, $sp, 296
+	st.d	$a4, $sp, 264
 	slli.d	$t0, $t0, 8
-	st.w	$a1, $sp, 324
-	st.d	$a4, $sp, 312
+	st.w	$a1, $sp, 292
+	st.d	$a4, $sp, 280
 	addi.d	$a3, $a6, 2
 	beq	$a6, $a5, .LBB0_64
 .LBB0_62:                               #   in Loop: Header=BB0_20 Depth=2
@@ -528,7 +526,7 @@ mew_lzma:                               # @mew_lzma
 	bne	$a6, $a5, .LBB0_62
 .LBB0_64:                               # %.lr.ph839.us
                                         #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$a5, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 256                   # 8-byte Folded Reload
 	add.d	$a6, $a5, $a0
 	.p2align	4, , 16
 .LBB0_65:                               #   Parent Loop BB0_10 Depth=1
@@ -566,14 +564,14 @@ mew_lzma:                               # @mew_lzma
 .LBB0_70:                               #   in Loop: Header=BB0_65 Depth=3
 	sub.w	$a1, $a1, $t3
 	sub.w	$t3, $t0, $t3
-	st.w	$a1, $sp, 324
+	st.w	$a1, $sp, 292
 	bstrpick.d	$t0, $t5, 31, 5
 	sub.w	$t0, $t4, $t0
 	ori	$t2, $zero, 1
 .LBB0_71:                               #   in Loop: Header=BB0_65 Depth=3
 	srli.d	$t4, $t4, 16
 	bstrins.d	$t0, $t4, 63, 16
-	st.w	$t3, $sp, 320
+	st.w	$t3, $sp, 288
 	bstrpick.d	$t4, $t3, 31, 24
 	st.w	$t0, $a0, 0
 	move	$t5, $t8
@@ -584,9 +582,9 @@ mew_lzma:                               # @mew_lzma
 	slli.w	$a1, $a1, 8
 	or	$a1, $a1, $a0
 	slli.d	$t0, $t3, 8
-	st.w	$a1, $sp, 324
-	st.w	$t0, $sp, 320
-	st.d	$a5, $sp, 312
+	st.w	$a1, $sp, 292
+	st.w	$t0, $sp, 288
+	st.d	$a5, $sp, 280
 	move	$a4, $a5
 	b	.LBB0_74
 	.p2align	4, , 16
@@ -608,11 +606,11 @@ mew_lzma:                               # @mew_lzma
 	bgeu	$t1, $t3, .LBB0_65
 .LBB0_76:                               # %.sink.split
                                         #   in Loop: Header=BB0_20 Depth=2
-	st.d	$a5, $sp, 296
+	st.d	$a5, $sp, 264
 .LBB0_77:                               #   in Loop: Header=BB0_20 Depth=2
 	bstrpick.d	$a2, $s3, 31, 0
 	add.d	$a1, $s0, $a2
-	st.w	$s3, $sp, 304
+	st.w	$s3, $sp, 272
 	bgeu	$a1, $ra, .LBB0_249
 # %bb.78:                               #   in Loop: Header=BB0_20 Depth=2
 	move	$a5, $zero
@@ -623,15 +621,15 @@ mew_lzma:                               # @mew_lzma
 	addi.w	$t5, $t5, -3
 	bnez	$a5, .LBB0_38
 .LBB0_80:                               #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
 	add.d	$a4, $a0, $a4
 	ori	$a5, $zero, 1
-	st.w	$a5, $sp, 308
+	st.w	$a5, $sp, 276
 	bltu	$ra, $a4, .LBB0_249
 # %bb.81:                               # %.lr.ph856.us.preheader
                                         #   in Loop: Header=BB0_20 Depth=2
 	addi.d	$a7, $a2, 2
-	ld.d	$a4, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 256                   # 8-byte Folded Reload
 	add.d	$a4, $a0, $a4
 	ori	$a0, $zero, 2
 	.p2align	4, , 16
@@ -660,14 +658,14 @@ mew_lzma:                               # @mew_lzma
 .LBB0_86:                               #   in Loop: Header=BB0_82 Depth=3
 	sub.w	$a1, $a1, $t0
 	sub.w	$t0, $a6, $t0
-	st.w	$a1, $sp, 324
+	st.w	$a1, $sp, 292
 	bstrpick.d	$a6, $t2, 31, 5
 	sub.w	$a6, $t1, $a6
 	ori	$a0, $a0, 1
 .LBB0_87:                               #   in Loop: Header=BB0_82 Depth=3
 	srli.d	$t1, $t1, 16
 	bstrins.d	$a6, $t1, 63, 16
-	st.w	$t0, $sp, 320
+	st.w	$t0, $sp, 288
 	bstrpick.d	$t1, $t0, 31, 24
 	st.w	$a6, $a7, 0
 	bnez	$t1, .LBB0_89
@@ -676,9 +674,9 @@ mew_lzma:                               # @mew_lzma
 	slli.w	$a1, $a1, 8
 	or	$a1, $a1, $a3
 	slli.d	$a6, $t0, 8
-	st.w	$a1, $sp, 324
-	st.w	$a6, $sp, 320
-	st.d	$a5, $sp, 312
+	st.w	$a1, $sp, 292
+	st.w	$a6, $sp, 288
+	st.d	$a5, $sp, 280
 	move	$a3, $a5
 	b	.LBB0_90
 	.p2align	4, , 16
@@ -698,29 +696,29 @@ mew_lzma:                               # @mew_lzma
 .LBB0_92:                               #   in Loop: Header=BB0_20 Depth=2
 	sub.w	$a1, $t0, $a6
 	sub.w	$a6, $t1, $a6
-	st.w	$a1, $sp, 324
+	st.w	$a1, $sp, 292
 	bstrpick.d	$t1, $t4, 31, 5
 	sub.w	$t4, $t3, $t1
 	ori	$t1, $zero, 1
 .LBB0_93:                               #   in Loop: Header=BB0_20 Depth=2
 	srli.d	$t3, $t3, 16
 	bstrins.d	$t4, $t3, 63, 16
-	st.w	$a6, $sp, 320
+	st.w	$a6, $sp, 288
 	bstrpick.d	$t3, $a6, 31, 24
 	st.w	$t4, $a2, 408
 	bnez	$t3, .LBB0_100
 # %bb.94:                               #   in Loop: Header=BB0_20 Depth=2
-	st.d	$a7, $sp, 296
+	st.d	$a7, $sp, 264
 	ld.bu	$a7, $a7, 0
 	slli.w	$a1, $a1, 8
 	or	$a1, $a1, $a7
 	slli.d	$a6, $a6, 8
-	st.w	$a1, $sp, 324
-	st.d	$a3, $sp, 312
-	st.w	$t1, $sp, 308
+	st.w	$a1, $sp, 292
+	st.d	$a3, $sp, 280
+	st.w	$t1, $sp, 276
 	bltu	$t0, $t2, .LBB0_101
 .LBB0_95:                               #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
 	add.d	$a4, $a4, $a5
 	bltu	$ra, $a4, .LBB0_249
 # %bb.96:                               #   in Loop: Header=BB0_20 Depth=2
@@ -744,19 +742,19 @@ mew_lzma:                               # @mew_lzma
 	b	.LBB0_165
 .LBB0_100:                              #   in Loop: Header=BB0_20 Depth=2
 	move	$a3, $a7
-	st.w	$t1, $sp, 308
+	st.w	$t1, $sp, 276
 	bgeu	$t0, $t2, .LBB0_95
 .LBB0_101:                              #   in Loop: Header=BB0_20 Depth=2
 	slli.d	$a2, $t5, 4
 	or	$a2, $a2, $a0
 	addi.d	$a2, $a2, 240
-	st.w	$a2, $sp, 308
+	st.w	$a2, $sp, 276
 	slli.d	$a2, $a2, 1
 	and	$a2, $a2, $a4
 	add.d	$a4, $s6, $a2
-	ld.d	$a5, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 256                   # 8-byte Folded Reload
 	add.d	$a2, $a5, $a2
-	st.d	$a4, $sp, 296
+	st.d	$a4, $sp, 264
 	bltu	$ra, $a2, .LBB0_249
 # %bb.102:                              #   in Loop: Header=BB0_20 Depth=2
 	bltu	$a3, $s2, .LBB0_249
@@ -780,16 +778,17 @@ mew_lzma:                               # @mew_lzma
 .LBB0_106:                              #   in Loop: Header=BB0_20 Depth=2
 	sub.w	$a2, $a2, $t0
 	sub.w	$t0, $a7, $t0
-	st.w	$a2, $sp, 324
+	st.w	$a2, $sp, 292
 	bstrpick.d	$a7, $t2, 31, 5
 	sub.w	$t2, $t1, $a7
 	ori	$a7, $zero, 6
 .LBB0_107:                              #   in Loop: Header=BB0_20 Depth=2
+	vldi	$vr1, -2812
 	ori	$t7, $zero, 256
-	ld.d	$t5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 112                   # 8-byte Folded Reload
 	srli.d	$t1, $t1, 16
 	bstrins.d	$t2, $t1, 63, 16
-	st.w	$t0, $sp, 320
+	st.w	$t0, $sp, 288
 	bstrpick.d	$t1, $t0, 31, 24
 	st.w	$t2, $a3, 2
 	bnez	$t1, .LBB0_109
@@ -798,8 +797,8 @@ mew_lzma:                               # @mew_lzma
 	slli.w	$a2, $a2, 8
 	or	$a2, $a2, $a6
 	slli.d	$t0, $t0, 8
-	st.w	$a2, $sp, 324
-	st.d	$a5, $sp, 312
+	st.w	$a2, $sp, 292
+	st.d	$a5, $sp, 280
 	b	.LBB0_110
 .LBB0_109:                              #   in Loop: Header=BB0_20 Depth=2
 	move	$a5, $a6
@@ -828,14 +827,14 @@ mew_lzma:                               # @mew_lzma
 .LBB0_115:                              #   in Loop: Header=BB0_20 Depth=2
 	sub.w	$a2, $a2, $t1
 	sub.w	$t1, $t0, $t1
-	st.w	$a2, $sp, 324
+	st.w	$a2, $sp, 292
 	bstrpick.d	$t0, $t3, 31, 5
 	sub.w	$t3, $t2, $t0
 	ori	$t0, $a7, 1
 .LBB0_116:                              #   in Loop: Header=BB0_20 Depth=2
 	srli.d	$t2, $t2, 16
 	bstrins.d	$t3, $t2, 63, 16
-	st.w	$t1, $sp, 320
+	st.w	$t1, $sp, 288
 	bstrpick.d	$t2, $t1, 31, 24
 	stx.w	$t3, $a3, $a7
 	bnez	$t2, .LBB0_118
@@ -844,8 +843,8 @@ mew_lzma:                               # @mew_lzma
 	slli.w	$a2, $a2, 8
 	or	$a2, $a2, $a5
 	slli.d	$t1, $t1, 8
-	st.w	$a2, $sp, 324
-	st.d	$a6, $sp, 312
+	st.w	$a2, $sp, 292
+	st.d	$a6, $sp, 280
 	b	.LBB0_119
 .LBB0_118:                              #   in Loop: Header=BB0_20 Depth=2
 	move	$a6, $a5
@@ -875,14 +874,14 @@ mew_lzma:                               # @mew_lzma
 .LBB0_124:                              #   in Loop: Header=BB0_20 Depth=2
 	sub.w	$a2, $a2, $a7
 	sub.w	$a7, $t1, $a7
-	st.w	$a2, $sp, 324
+	st.w	$a2, $sp, 292
 	bstrpick.d	$t0, $t0, 31, 5
 	sub.w	$t1, $t3, $t0
 	ori	$t0, $t2, 1
 .LBB0_125:                              #   in Loop: Header=BB0_20 Depth=2
 	srli.d	$t3, $t3, 16
 	bstrins.d	$t1, $t3, 63, 16
-	st.w	$a7, $sp, 320
+	st.w	$a7, $sp, 288
 	bstrpick.d	$t3, $a7, 31, 24
 	stx.w	$t1, $a3, $t2
 	bnez	$t3, .LBB0_127
@@ -891,8 +890,8 @@ mew_lzma:                               # @mew_lzma
 	slli.w	$a2, $a2, 8
 	or	$a2, $a2, $a6
 	slli.d	$a7, $a7, 8
-	st.w	$a2, $sp, 324
-	st.d	$a5, $sp, 312
+	st.w	$a2, $sp, 292
+	st.d	$a5, $sp, 280
 	b	.LBB0_128
 .LBB0_127:                              #   in Loop: Header=BB0_20 Depth=2
 	move	$a5, $a6
@@ -922,14 +921,14 @@ mew_lzma:                               # @mew_lzma
 .LBB0_133:                              #   in Loop: Header=BB0_20 Depth=2
 	sub.w	$a2, $a2, $t0
 	sub.w	$t0, $a7, $t0
-	st.w	$a2, $sp, 324
+	st.w	$a2, $sp, 292
 	bstrpick.d	$a7, $t3, 31, 5
 	sub.w	$t3, $t2, $a7
 	ori	$a7, $t1, 1
 .LBB0_134:                              #   in Loop: Header=BB0_20 Depth=2
 	srli.d	$t2, $t2, 16
 	bstrins.d	$t3, $t2, 63, 16
-	st.w	$t0, $sp, 320
+	st.w	$t0, $sp, 288
 	bstrpick.d	$t2, $t0, 31, 24
 	stx.w	$t3, $a3, $t1
 	bnez	$t2, .LBB0_136
@@ -938,8 +937,8 @@ mew_lzma:                               # @mew_lzma
 	slli.w	$a2, $a2, 8
 	or	$a2, $a2, $a5
 	slli.d	$t0, $t0, 8
-	st.w	$a2, $sp, 324
-	st.d	$a6, $sp, 312
+	st.w	$a2, $sp, 292
+	st.d	$a6, $sp, 280
 	b	.LBB0_137
 .LBB0_136:                              #   in Loop: Header=BB0_20 Depth=2
 	move	$a6, $a5
@@ -969,14 +968,14 @@ mew_lzma:                               # @mew_lzma
 .LBB0_142:                              #   in Loop: Header=BB0_20 Depth=2
 	sub.w	$a2, $a2, $a7
 	sub.w	$a7, $t0, $a7
-	st.w	$a2, $sp, 324
+	st.w	$a2, $sp, 292
 	bstrpick.d	$t0, $t1, 31, 5
 	sub.w	$t0, $t3, $t0
 	ori	$t1, $t2, 1
 .LBB0_143:                              #   in Loop: Header=BB0_20 Depth=2
 	srli.d	$t3, $t3, 16
 	bstrins.d	$t0, $t3, 63, 16
-	st.w	$a7, $sp, 320
+	st.w	$a7, $sp, 288
 	bstrpick.d	$t3, $a7, 31, 24
 	stx.w	$t0, $a3, $t2
 	bnez	$t3, .LBB0_145
@@ -985,8 +984,8 @@ mew_lzma:                               # @mew_lzma
 	slli.w	$a2, $a2, 8
 	or	$a2, $a2, $a6
 	slli.d	$a7, $a7, 8
-	st.w	$a2, $sp, 324
-	st.d	$a5, $sp, 312
+	st.w	$a2, $sp, 292
+	st.d	$a5, $sp, 280
 	b	.LBB0_146
 .LBB0_145:                              #   in Loop: Header=BB0_20 Depth=2
 	move	$a5, $a6
@@ -1016,14 +1015,14 @@ mew_lzma:                               # @mew_lzma
 .LBB0_151:                              #   in Loop: Header=BB0_20 Depth=2
 	sub.w	$a2, $a2, $a3
 	sub.w	$a3, $a7, $a3
-	st.w	$a2, $sp, 324
+	st.w	$a2, $sp, 292
 	bstrpick.d	$a7, $t3, 31, 5
 	sub.w	$a7, $t2, $a7
 	ori	$a6, $a6, 1
 .LBB0_152:                              #   in Loop: Header=BB0_20 Depth=2
 	srli.d	$t1, $t2, 16
 	bstrins.d	$a7, $t1, 63, 16
-	st.w	$a3, $sp, 320
+	st.w	$a3, $sp, 288
 	bstrpick.d	$t1, $a3, 31, 24
 	st.w	$a7, $t0, 0
 	bnez	$t1, .LBB0_154
@@ -1032,20 +1031,20 @@ mew_lzma:                               # @mew_lzma
 	slli.w	$a2, $a2, 8
 	or	$a2, $a2, $a5
 	slli.d	$a3, $a3, 8
-	st.w	$a2, $sp, 324
-	st.w	$a3, $sp, 320
-	st.d	$a4, $sp, 312
+	st.w	$a2, $sp, 292
+	st.w	$a3, $sp, 288
+	st.d	$a4, $sp, 280
 	move	$t0, $a4
 	b	.LBB0_155
 .LBB0_154:                              #   in Loop: Header=BB0_20 Depth=2
 	move	$a4, $a5
 .LBB0_155:                              # %lzma_486248.exit.i.us.5
                                         #   in Loop: Header=BB0_20 Depth=2
-	st.d	$t0, $sp, 296
+	st.d	$t0, $sp, 264
 	ori	$a5, $zero, 64
-	st.w	$a5, $sp, 304
+	st.w	$a5, $sp, 272
 	addi.d	$a7, $a6, -64
-	st.w	$a7, $sp, 308
+	st.w	$a7, $sp, 276
 	ori	$a5, $zero, 68
 	bge	$a6, $a5, .LBB0_157
 .LBB0_156:                              #   in Loop: Header=BB0_20 Depth=2
@@ -1064,14 +1063,14 @@ mew_lzma:                               # @mew_lzma
                                         #   in Loop: Header=BB0_20 Depth=2
 	move	$a6, $zero
 	addi.d	$a7, $t0, -5
-	st.w	$a7, $sp, 304
+	st.w	$a7, $sp, 272
 	b	.LBB0_161
 .LBB0_159:                              #   in Loop: Header=BB0_161 Depth=3
 	ld.bu	$a4, $a4, 0
 	slli.w	$a2, $a2, 8
 	slli.d	$a3, $a3, 8
 	or	$a2, $a2, $a4
-	st.d	$t1, $sp, 312
+	st.d	$t1, $sp, 280
 	move	$a4, $t1
 .LBB0_160:                              #   in Loop: Header=BB0_161 Depth=3
 	slli.d	$a6, $a6, 1
@@ -1098,30 +1097,30 @@ mew_lzma:                               # @mew_lzma
 .LBB0_164:                              #   in Loop: Header=BB0_20 Depth=2
 	sub.w	$a7, $a1, $t0
 	sub.w	$t0, $a6, $t0
-	st.w	$a7, $sp, 324
+	st.w	$a7, $sp, 292
 	bstrpick.d	$a6, $t3, 31, 5
 	sub.w	$t3, $t2, $a6
 	ori	$a6, $zero, 1
 .LBB0_165:                              #   in Loop: Header=BB0_20 Depth=2
 	srli.d	$t2, $t2, 16
 	bstrins.d	$t3, $t2, 63, 16
-	st.w	$t0, $sp, 320
+	st.w	$t0, $sp, 288
 	bstrpick.d	$t2, $t0, 31, 24
 	st.w	$t3, $a2, 432
 	bnez	$t2, .LBB0_180
 # %bb.166:                              #   in Loop: Header=BB0_20 Depth=2
-	st.d	$a3, $sp, 296
+	st.d	$a3, $sp, 264
 	ld.bu	$a3, $a3, 0
 	slli.w	$a7, $a7, 8
 	or	$a7, $a7, $a3
 	slli.d	$t0, $t0, 8
-	st.w	$a7, $sp, 324
-	st.w	$t0, $sp, 320
-	st.d	$a4, $sp, 312
-	st.w	$a6, $sp, 308
+	st.w	$a7, $sp, 292
+	st.w	$t0, $sp, 288
+	st.d	$a4, $sp, 280
+	st.w	$a6, $sp, 276
 	bltu	$a1, $t1, .LBB0_181
 .LBB0_167:                              #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	add.d	$a1, $a1, $a5
 	bltu	$ra, $a1, .LBB0_249
 # %bb.168:                              #   in Loop: Header=BB0_20 Depth=2
@@ -1145,33 +1144,33 @@ mew_lzma:                               # @mew_lzma
 .LBB0_172:                              #   in Loop: Header=BB0_20 Depth=2
 	sub.d	$t1, $a1, $a7
 	sub.w	$a7, $a6, $a7
-	st.w	$t1, $sp, 324
+	st.w	$t1, $sp, 292
 	bstrpick.d	$a6, $t2, 31, 5
 	sub.w	$t2, $t0, $a6
 	ori	$a6, $zero, 1
 .LBB0_173:                              #   in Loop: Header=BB0_20 Depth=2
 	srli.d	$t0, $t0, 16
 	bstrins.d	$t2, $t0, 63, 16
-	st.w	$a7, $sp, 320
+	st.w	$a7, $sp, 288
 	bstrpick.d	$t0, $a7, 31, 24
 	st.w	$t2, $a4, 0
 	bnez	$t0, .LBB0_175
 # %bb.174:                              #   in Loop: Header=BB0_20 Depth=2
-	st.d	$a3, $sp, 296
+	st.d	$a3, $sp, 264
 	ld.bu	$a3, $a3, 0
 	slli.d	$a4, $t1, 8
 	or	$a3, $a4, $a3
-	st.d	$a2, $sp, 296
+	st.d	$a2, $sp, 264
 	slli.d	$a4, $a7, 8
-	st.w	$a3, $sp, 324
-	st.w	$a4, $sp, 320
-	st.d	$a2, $sp, 312
+	st.w	$a3, $sp, 292
+	st.w	$a4, $sp, 288
+	st.d	$a2, $sp, 280
 .LBB0_175:                              # %lzma_486248.exit532.us
                                         #   in Loop: Header=BB0_20 Depth=2
-	st.w	$a6, $sp, 308
+	st.w	$a6, $sp, 276
 	bgeu	$a1, $a5, .LBB0_182
 # %bb.176:                              #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	sub.d	$a0, $s3, $a0
 	bstrpick.d	$a0, $a0, 31, 0
 	add.d	$a1, $s0, $a0
@@ -1180,7 +1179,7 @@ mew_lzma:                               # @mew_lzma
 	ldx.bu	$a0, $s7, $a0
 	bstrpick.d	$a2, $s3, 31, 0
 	add.d	$a1, $s0, $a2
-	st.w	$s3, $sp, 304
+	st.w	$s3, $sp, 272
 	bgeu	$a1, $ra, .LBB0_249
 # %bb.178:                              #   in Loop: Header=BB0_20 Depth=2
 	ori	$a1, $zero, 6
@@ -1195,28 +1194,28 @@ mew_lzma:                               # @mew_lzma
 	ori	$a5, $zero, 1
 .LBB0_179:                              # %.loopexit615.us
                                         #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$a2, $sp, 272                   # 8-byte Folded Reload
-	st.w	$a1, $sp, 308
-	st.d	$a2, $sp, 272                   # 8-byte Folded Spill
+	ld.d	$a2, $sp, 240                   # 8-byte Folded Reload
+	st.w	$a1, $sp, 276
+	st.d	$a2, $sp, 240                   # 8-byte Folded Spill
 	move	$s3, $a1
 	bltu	$a1, $s5, .LBB0_20
 	b	.LBB0_245
 .LBB0_180:                              #   in Loop: Header=BB0_20 Depth=2
 	move	$a4, $a3
-	st.w	$a6, $sp, 308
+	st.w	$a6, $sp, 276
 	bgeu	$a1, $t1, .LBB0_167
 .LBB0_181:                              #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$a3, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
-	st.d	$a1, $sp, 272                   # 8-byte Folded Spill
+	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 240                   # 8-byte Folded Spill
 	b	.LBB0_197
 .LBB0_182:                              #   in Loop: Header=BB0_20 Depth=2
-	st.d	$t5, $sp, 144                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 272                   # 8-byte Folded Reload
+	st.d	$t5, $sp, 112                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
-	st.d	$a1, $sp, 272                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 240                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB0_198
 .LBB0_183:                              #   in Loop: Header=BB0_20 Depth=2
@@ -1228,7 +1227,7 @@ mew_lzma:                               # @mew_lzma
 	b	.LBB0_227
 .LBB0_184:                              # %.preheader.i557.us
                                         #   in Loop: Header=BB0_20 Depth=2
-	st.d	$a5, $sp, 296
+	st.d	$a5, $sp, 264
 	ori	$a3, $zero, 127
 	bgeu	$a3, $t3, .LBB0_186
 	b	.LBB0_77
@@ -1266,14 +1265,14 @@ mew_lzma:                               # @mew_lzma
 .LBB0_190:                              #   in Loop: Header=BB0_186 Depth=3
 	sub.w	$a1, $a1, $a6
 	sub.w	$a6, $t0, $a6
-	st.w	$a1, $sp, 324
+	st.w	$a1, $sp, 292
 	bstrpick.d	$t0, $t1, 31, 5
 	sub.w	$t0, $a7, $t0
 	ori	$a0, $a0, 1
 .LBB0_191:                              #   in Loop: Header=BB0_186 Depth=3
 	srli.d	$a7, $a7, 16
 	bstrins.d	$t0, $a7, 63, 16
-	st.w	$a6, $sp, 320
+	st.w	$a6, $sp, 288
 	bstrpick.d	$a7, $a6, 31, 24
 	st.w	$t0, $a5, 0
 	bnez	$a7, .LBB0_185
@@ -1282,37 +1281,37 @@ mew_lzma:                               # @mew_lzma
 	slli.w	$a1, $a1, 8
 	or	$a1, $a1, $a4
 	slli.d	$a6, $a6, 8
-	st.w	$a1, $sp, 324
-	st.w	$a6, $sp, 320
-	st.d	$a3, $sp, 312
+	st.w	$a1, $sp, 292
+	st.w	$a6, $sp, 288
+	st.d	$a3, $sp, 280
 	move	$a5, $a3
 	move	$a4, $a3
 	b	.LBB0_185
 .LBB0_193:                              #   in Loop: Header=BB0_20 Depth=2
 	sub.d	$t1, $a7, $a5
 	sub.w	$a5, $t0, $a5
-	st.w	$t1, $sp, 324
+	st.w	$t1, $sp, 292
 	bstrpick.d	$t0, $t2, 31, 5
 	sub.w	$t0, $a6, $t0
 .LBB0_194:                              #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$t2, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$t3, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 184                   # 8-byte Folded Reload
 	srli.d	$a6, $a6, 16
 	bstrins.d	$t0, $a6, 63, 16
-	st.w	$a5, $sp, 320
+	st.w	$a5, $sp, 288
 	bstrpick.d	$a6, $a5, 31, 24
 	st.w	$t0, $a2, 456
 	bnez	$a6, .LBB0_196
 # %bb.195:                              #   in Loop: Header=BB0_20 Depth=2
-	st.d	$a4, $sp, 296
+	st.d	$a4, $sp, 264
 	ld.bu	$a2, $a4, 0
 	slli.d	$a4, $t1, 8
 	or	$a2, $a4, $a2
-	st.d	$a1, $sp, 296
+	st.d	$a1, $sp, 264
 	slli.d	$a4, $a5, 8
-	st.w	$a2, $sp, 324
-	st.w	$a4, $sp, 320
-	st.d	$a1, $sp, 312
+	st.w	$a2, $sp, 292
+	st.w	$a4, $sp, 288
+	st.d	$a1, $sp, 280
 .LBB0_196:                              # %lzma_486248.exit521.us
                                         #   in Loop: Header=BB0_20 Depth=2
 	sltu	$a1, $a7, $a3
@@ -1322,21 +1321,21 @@ mew_lzma:                               # @mew_lzma
 	masknez	$a2, $t2, $a1
 	maskeqz	$a1, $t3, $a1
 	or	$a1, $a1, $a2
-	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
 .LBB0_197:                              #   in Loop: Header=BB0_20 Depth=2
-	st.d	$t5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$t5, $sp, 112                   # 8-byte Folded Spill
 	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
-	st.w	$a3, $sp, 308
-	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
+	st.w	$a3, $sp, 276
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 .LBB0_198:                              #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$a6, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	st.d	$a1, $sp, 296
-	addi.d	$a1, $sp, 312
-	addi.d	$a2, $sp, 296
-	addi.d	$a3, $sp, 304
-	addi.d	$a4, $sp, 308
+	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 264
+	addi.d	$a1, $sp, 280
+	addi.d	$a2, $sp, 264
+	addi.d	$a3, $sp, 272
+	addi.d	$a4, $sp, 276
 	move	$a5, $s2
 	pcaddu18i	$ra, %call36(lzma_4863da)
 	jirl	$ra, $ra, 0
@@ -1345,22 +1344,23 @@ mew_lzma:                               # @mew_lzma
 	move	$a0, $a2
 	beq	$a1, $a2, .LBB0_251
 # %bb.199:                              #   in Loop: Header=BB0_20 Depth=2
-	ld.w	$a1, $sp, 308
+	ld.w	$a1, $sp, 276
 	ori	$a0, $zero, 6
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	sltu	$a0, $a0, $a2
 	ori	$a2, $zero, 8
 	masknez	$a2, $a2, $a0
 	ori	$a3, $zero, 11
 	maskeqz	$a0, $a3, $a0
 	or	$t5, $a0, $a2
-	st.w	$t5, $sp, 308
-	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
+	st.w	$t5, $sp, 276
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	st.d	$a0, $sp, 264                   # 8-byte Folded Spill
-	ld.d	$ra, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 280                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
+	ld.d	$ra, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 248                   # 8-byte Folded Reload
+	vldi	$vr1, -2812
 	ori	$t8, $zero, 2048
 	ori	$t7, $zero, 256
 	ld.d	$t1, $sp, 16                    # 8-byte Folded Reload
@@ -1368,13 +1368,13 @@ mew_lzma:                               # @mew_lzma
 	beqz	$t1, .LBB0_245
 # %bb.201:                              #   in Loop: Header=BB0_20 Depth=2
 	addi.w	$a0, $a1, 2
-	st.d	$s7, $sp, 296
-	st.w	$s3, $sp, 308
+	st.d	$s7, $sp, 264
+	st.w	$s3, $sp, 276
 	sub.w	$a2, $s3, $t1
 	sub.w	$a4, $s5, $s3
 	addi.w	$a3, $a1, 1
 	bstrpick.d	$a1, $a2, 31, 0
-	ld.d	$t0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 208                   # 8-byte Folded Reload
 	bgeu	$a0, $a4, .LBB0_207
 # %bb.202:                              #   in Loop: Header=BB0_20 Depth=2
 	bgeu	$a3, $t0, .LBB0_249
@@ -1389,7 +1389,7 @@ mew_lzma:                               # @mew_lzma
 # %bb.205:                              #   in Loop: Header=BB0_20 Depth=2
 	bstrpick.d	$a6, $s3, 31, 0
 	add.d	$a5, $a5, $a6
-	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 176                   # 8-byte Folded Reload
 	bltu	$a6, $a5, .LBB0_249
 # %bb.206:                              #   in Loop: Header=BB0_20 Depth=2
 	or	$a5, $a5, $s0
@@ -1400,16 +1400,16 @@ mew_lzma:                               # @mew_lzma
 	bltu	$t0, $a4, .LBB0_249
 # %bb.209:                              #   in Loop: Header=BB0_20 Depth=2
 	bstrpick.d	$a4, $s3, 31, 0
-	ld.d	$a5, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
 	sub.d	$a5, $a5, $a4
 	add.d	$a5, $a5, $a1
-	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 176                   # 8-byte Folded Reload
 	blt	$a6, $a5, .LBB0_249
 # %bb.210:                              #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$a6, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 144                   # 8-byte Folded Reload
 	bge	$a6, $a5, .LBB0_249
 # %bb.211:                              #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$a5, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
 	bltu	$ra, $a5, .LBB0_249
 # %bb.212:                              # %.preheader614.us.preheader
                                         #   in Loop: Header=BB0_20 Depth=2
@@ -1427,7 +1427,7 @@ mew_lzma:                               # @mew_lzma
 	addi.w	$a3, $a5, 1
 	ori	$a7, $zero, 16
 	bgeu	$a3, $a7, .LBB0_217
-.LBB0_213:                              # %.preheader614.us.preheader1284
+.LBB0_213:                              # %.preheader614.us.preheader1262
                                         #   in Loop: Header=BB0_20 Depth=2
 	addi.w	$a3, $a0, -1
 	move	$a1, $s3
@@ -1441,7 +1441,7 @@ mew_lzma:                               # @mew_lzma
 	bstrpick.d	$a4, $a1, 31, 0
 	stx.b	$a0, $s7, $a4
 	addi.w	$a1, $a1, 1
-	st.w	$a1, $sp, 304
+	st.w	$a1, $sp, 272
 	bstrpick.d	$a3, $a3, 31, 0
 	addi.w	$a4, $zero, -1
 	lu32i.d	$a4, 0
@@ -1454,14 +1454,14 @@ mew_lzma:                               # @mew_lzma
 	addi.w	$a2, $a2, 1
 	bltu	$a1, $s5, .LBB0_214
 .LBB0_216:                              #   in Loop: Header=BB0_20 Depth=2
-	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
-	st.d	$a2, $sp, 216                   # 8-byte Folded Spill
-	ld.d	$a2, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 272                   # 8-byte Folded Reload
-	st.d	$a3, $sp, 248                   # 8-byte Folded Spill
-	st.d	$t1, $sp, 264                   # 8-byte Folded Spill
-	st.w	$a1, $sp, 308
-	st.d	$a2, $sp, 272                   # 8-byte Folded Spill
+	ld.d	$a2, $sp, 216                   # 8-byte Folded Reload
+	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
+	ld.d	$a2, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
+	st.d	$a3, $sp, 216                   # 8-byte Folded Spill
+	st.d	$t1, $sp, 232                   # 8-byte Folded Spill
+	st.w	$a1, $sp, 276
+	st.d	$a2, $sp, 240                   # 8-byte Folded Spill
 	move	$s3, $a1
 	bltu	$a1, $s5, .LBB0_20
 	b	.LBB0_245
@@ -1480,9 +1480,9 @@ mew_lzma:                               # @mew_lzma
 	addi.d	$a7, $s7, 1
 	add.d	$a5, $a7, $a5
 	add.d	$a4, $a5, $a4
-	addi.d	$a7, $sp, 308
+	addi.d	$a7, $sp, 276
 	sltu	$a7, $a6, $a7
-	addi.d	$t0, $sp, 304
+	addi.d	$t0, $sp, 272
 	sltu	$t0, $t0, $a4
 	and	$a7, $a7, $t0
 	bnez	$a7, .LBB0_213
@@ -1496,16 +1496,16 @@ mew_lzma:                               # @mew_lzma
 	bnez	$a4, .LBB0_213
 # %bb.221:                              # %vector.memcheck
                                         #   in Loop: Header=BB0_20 Depth=2
-	addi.d	$a4, $sp, 304
+	addi.d	$a4, $sp, 272
 	sltu	$a1, $a4, $a1
-	addi.d	$a4, $sp, 308
+	addi.d	$a4, $sp, 276
 	sltu	$a4, $a7, $a4
 	and	$a1, $a1, $a4
 	bnez	$a1, .LBB0_213
 # %bb.222:                              # %vector.ph
                                         #   in Loop: Header=BB0_20 Depth=2
 	move	$a4, $a3
-	bstrins.d	$a4, $zero, 2, 0
+	bstrins.d	$a4, $zero, 1, 0
 	add.w	$a1, $s3, $a4
 	add.w	$a2, $a2, $a4
 	sub.d	$a0, $a0, $a4
@@ -1518,34 +1518,34 @@ mew_lzma:                               # @mew_lzma
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$a7, $a5, $s3
 	bstrpick.d	$a7, $a7, 31, 0
-	ldx.d	$a7, $s7, $a7
+	ldx.w	$a7, $s7, $a7
 	bstrpick.d	$t0, $s3, 31, 0
-	stx.d	$a7, $s7, $t0
-	addi.w	$a6, $a6, -8
-	addi.w	$s3, $s3, 8
+	stx.w	$a7, $s7, $t0
+	addi.w	$a6, $a6, -4
+	addi.w	$s3, $s3, 4
 	bnez	$a6, .LBB0_223
 # %bb.224:                              # %middle.block
                                         #   in Loop: Header=BB0_20 Depth=2
-	st.w	$s3, $sp, 304
+	st.w	$s3, $sp, 272
 	bne	$a3, $a4, .LBB0_244
 # %bb.225:                              #   in Loop: Header=BB0_20 Depth=2
-	vinsgr2vr.d	$vr0, $a7, 0
-	vpickve2gr.b	$a0, $vr0, 7
+	vinsgr2vr.w	$vr0, $a7, 0
+	vpickve2gr.b	$a0, $vr0, 3
 	ori	$a5, $zero, 1
 	b	.LBB0_216
 .LBB0_226:                              # %.thread.us
                                         #   in Loop: Header=BB0_20 Depth=2
-	st.w	$a2, $sp, 324
-	st.w	$a6, $sp, 308
+	st.w	$a2, $sp, 292
+	st.w	$a6, $sp, 276
 	alsl.w	$a5, $a6, $a5, 4
 	ori	$t1, $zero, 4
 	addi.d	$a6, $s6, 1604
 .LBB0_227:                              # %.preheader.i476.us
                                         #   in Loop: Header=BB0_20 Depth=2
-	st.d	$a6, $sp, 296
+	st.d	$a6, $sp, 264
 	addi.d	$t3, $a6, 2
 	ori	$a7, $zero, 1
-	st.w	$a7, $sp, 304
+	st.w	$a7, $sp, 272
 	bltu	$t3, $s2, .LBB0_251
 # %bb.228:                              # %.preheader.i476.us
                                         #   in Loop: Header=BB0_20 Depth=2
@@ -1586,7 +1586,7 @@ mew_lzma:                               # @mew_lzma
 .LBB0_234:                              #   in Loop: Header=BB0_232 Depth=3
 	sub.w	$a2, $a2, $t6
 	sub.w	$t6, $a3, $t6
-	st.w	$a2, $sp, 324
+	st.w	$a2, $sp, 292
 	bstrpick.d	$a3, $t8, 31, 5
 	sub.w	$a3, $t7, $a3
 	ori	$t5, $zero, 1
@@ -1594,7 +1594,7 @@ mew_lzma:                               # @mew_lzma
 .LBB0_235:                              #   in Loop: Header=BB0_232 Depth=3
 	srli.d	$t7, $t7, 16
 	bstrins.d	$a3, $t7, 63, 16
-	st.w	$t6, $sp, 320
+	st.w	$t6, $sp, 288
 	bstrpick.d	$t7, $t6, 31, 24
 	st.w	$a3, $t3, 0
 	bnez	$t7, .LBB0_237
@@ -1603,9 +1603,9 @@ mew_lzma:                               # @mew_lzma
 	slli.w	$a2, $a2, 8
 	or	$a2, $a2, $a3
 	slli.d	$a3, $t6, 8
-	st.w	$a2, $sp, 324
-	st.w	$a3, $sp, 320
-	st.d	$t2, $sp, 312
+	st.w	$a2, $sp, 292
+	st.w	$a3, $sp, 288
+	st.d	$t2, $sp, 280
 	move	$a4, $t2
 	b	.LBB0_238
 .LBB0_237:                              #   in Loop: Header=BB0_232 Depth=3
@@ -1616,7 +1616,7 @@ mew_lzma:                               # @mew_lzma
 	or	$t3, $t5, $t4
 	sll.w	$t4, $t5, $t0
 	or	$a7, $t4, $a7
-	ld.d	$t6, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 248                   # 8-byte Folded Reload
 	ori	$t7, $zero, 256
 	beq	$t1, $t0, .LBB0_243
 # %bb.239:                              #   in Loop: Header=BB0_232 Depth=3
@@ -1635,31 +1635,30 @@ mew_lzma:                               # @mew_lzma
 	bgeu	$t6, $t2, .LBB0_232
 	b	.LBB0_251
 .LBB0_243:                              #   in Loop: Header=BB0_20 Depth=2
-	st.d	$t2, $sp, 296
-	st.w	$t3, $sp, 304
-	st.w	$a7, $sp, 308
+	st.d	$t2, $sp, 264
+	st.w	$t3, $sp, 272
+	st.w	$a7, $sp, 276
 	add.d	$a7, $a7, $a5
-	ld.d	$t5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 112                   # 8-byte Folded Reload
 	b	.LBB0_156
 .LBB0_244:                              #   in Loop: Header=BB0_20 Depth=2
 	move	$s3, $a1
 	b	.LBB0_213
 .LBB0_245:                              #   in Loop: Header=BB0_10 Depth=1
 	move	$t4, $s1
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
 	lu12i.w	$a6, -7
-	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
-	xvld	$xr0, $sp, 64                   # 32-byte Folded Reload
+	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$t1, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$t2, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$t3, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$t5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 88                    # 8-byte Folded Reload
 	beqz	$a4, .LBB0_10
 # %bb.246:                              # %.split899.us
-	ld.w	$a1, $sp, 304
+	ld.w	$a1, $sp, 272
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
@@ -1672,31 +1671,31 @@ mew_lzma:                               # @mew_lzma
 # %bb.247:
 	bstrpick.d	$a0, $fp, 31, 0
 	add.d	$a1, $s0, $a0
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 224                   # 8-byte Folded Reload
 	bltu	$a2, $a1, .LBB0_251
 # %bb.248:                              # %.preheader.preheader
 	move	$a1, $zero
 	ori	$a2, $zero, 232
 	b	.LBB0_253
 .LBB0_249:
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	b	.LBB0_251
 .LBB0_250:
 	move	$a0, $zero
 .LBB0_251:                              # %lzma_4862e0.exit.thread
-	ld.d	$s8, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 376                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 400                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 408                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 416
+	ld.d	$s8, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 384
 	ret
 .LBB0_252:                              #   in Loop: Header=BB0_253 Depth=1
 	add.w	$a1, $a1, $a3

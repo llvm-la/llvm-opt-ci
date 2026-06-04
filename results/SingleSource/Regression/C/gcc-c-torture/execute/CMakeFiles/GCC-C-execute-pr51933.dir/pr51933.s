@@ -70,8 +70,8 @@ bar:                                    # @bar
 .Lfunc_end1:
 	.size	bar, .Lfunc_end1-bar
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI2_0:
 	.byte	0                               # 0x0
 	.byte	1                               # 0x1
@@ -89,22 +89,6 @@ bar:                                    # @bar
 	.byte	13                              # 0xd
 	.byte	14                              # 0xe
 	.byte	15                              # 0xf
-	.byte	16                              # 0x10
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	20                              # 0x14
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	24                              # 0x18
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	28                              # 0x1c
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
 .LCPI2_1:
 	.byte	1                               # 0x1
 	.byte	2                               # 0x2
@@ -122,6 +106,24 @@ bar:                                    # @bar
 	.byte	14                              # 0xe
 	.byte	15                              # 0xf
 	.byte	16                              # 0x10
+.LCPI2_2:
+	.byte	16                              # 0x10
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	20                              # 0x14
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	24                              # 0x18
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	28                              # 0x1c
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
+.LCPI2_3:
 	.byte	17                              # 0x11
 	.byte	18                              # 0x12
 	.byte	19                              # 0x13
@@ -138,7 +140,7 @@ bar:                                    # @bar
 	.byte	30                              # 0x1e
 	.byte	31                              # 0x1f
 	.byte	32                              # 0x20
-.LCPI2_2:
+.LCPI2_4:
 	.byte	32                              # 0x20
 	.byte	33                              # 0x21
 	.byte	34                              # 0x22
@@ -155,23 +157,7 @@ bar:                                    # @bar
 	.byte	45                              # 0x2d
 	.byte	46                              # 0x2e
 	.byte	47                              # 0x2f
-	.byte	48                              # 0x30
-	.byte	49                              # 0x31
-	.byte	50                              # 0x32
-	.byte	51                              # 0x33
-	.byte	52                              # 0x34
-	.byte	53                              # 0x35
-	.byte	54                              # 0x36
-	.byte	55                              # 0x37
-	.byte	56                              # 0x38
-	.byte	57                              # 0x39
-	.byte	58                              # 0x3a
-	.byte	59                              # 0x3b
-	.byte	60                              # 0x3c
-	.byte	61                              # 0x3d
-	.byte	62                              # 0x3e
-	.byte	63                              # 0x3f
-.LCPI2_3:
+.LCPI2_5:
 	.byte	33                              # 0x21
 	.byte	34                              # 0x22
 	.byte	35                              # 0x23
@@ -188,6 +174,24 @@ bar:                                    # @bar
 	.byte	46                              # 0x2e
 	.byte	47                              # 0x2f
 	.byte	48                              # 0x30
+.LCPI2_6:
+	.byte	48                              # 0x30
+	.byte	49                              # 0x31
+	.byte	50                              # 0x32
+	.byte	51                              # 0x33
+	.byte	52                              # 0x34
+	.byte	53                              # 0x35
+	.byte	54                              # 0x36
+	.byte	55                              # 0x37
+	.byte	56                              # 0x38
+	.byte	57                              # 0x39
+	.byte	58                              # 0x3a
+	.byte	59                              # 0x3b
+	.byte	60                              # 0x3c
+	.byte	61                              # 0x3d
+	.byte	62                              # 0x3e
+	.byte	63                              # 0x3f
+.LCPI2_7:
 	.byte	49                              # 0x31
 	.byte	50                              # 0x32
 	.byte	51                              # 0x33
@@ -204,7 +208,7 @@ bar:                                    # @bar
 	.byte	62                              # 0x3e
 	.byte	63                              # 0x3f
 	.byte	64                              # 0x40
-.LCPI2_4:
+.LCPI2_8:
 	.byte	64                              # 0x40
 	.byte	65                              # 0x41
 	.byte	66                              # 0x42
@@ -221,23 +225,7 @@ bar:                                    # @bar
 	.byte	77                              # 0x4d
 	.byte	78                              # 0x4e
 	.byte	79                              # 0x4f
-	.byte	80                              # 0x50
-	.byte	81                              # 0x51
-	.byte	82                              # 0x52
-	.byte	83                              # 0x53
-	.byte	84                              # 0x54
-	.byte	85                              # 0x55
-	.byte	86                              # 0x56
-	.byte	87                              # 0x57
-	.byte	88                              # 0x58
-	.byte	89                              # 0x59
-	.byte	90                              # 0x5a
-	.byte	91                              # 0x5b
-	.byte	92                              # 0x5c
-	.byte	93                              # 0x5d
-	.byte	94                              # 0x5e
-	.byte	95                              # 0x5f
-.LCPI2_5:
+.LCPI2_9:
 	.byte	65                              # 0x41
 	.byte	66                              # 0x42
 	.byte	67                              # 0x43
@@ -254,6 +242,24 @@ bar:                                    # @bar
 	.byte	78                              # 0x4e
 	.byte	79                              # 0x4f
 	.byte	80                              # 0x50
+.LCPI2_10:
+	.byte	80                              # 0x50
+	.byte	81                              # 0x51
+	.byte	82                              # 0x52
+	.byte	83                              # 0x53
+	.byte	84                              # 0x54
+	.byte	85                              # 0x55
+	.byte	86                              # 0x56
+	.byte	87                              # 0x57
+	.byte	88                              # 0x58
+	.byte	89                              # 0x59
+	.byte	90                              # 0x5a
+	.byte	91                              # 0x5b
+	.byte	92                              # 0x5c
+	.byte	93                              # 0x5d
+	.byte	94                              # 0x5e
+	.byte	95                              # 0x5f
+.LCPI2_11:
 	.byte	81                              # 0x51
 	.byte	82                              # 0x52
 	.byte	83                              # 0x53
@@ -270,7 +276,7 @@ bar:                                    # @bar
 	.byte	94                              # 0x5e
 	.byte	95                              # 0x5f
 	.byte	96                              # 0x60
-.LCPI2_6:
+.LCPI2_12:
 	.byte	96                              # 0x60
 	.byte	97                              # 0x61
 	.byte	98                              # 0x62
@@ -287,23 +293,7 @@ bar:                                    # @bar
 	.byte	109                             # 0x6d
 	.byte	110                             # 0x6e
 	.byte	111                             # 0x6f
-	.byte	112                             # 0x70
-	.byte	113                             # 0x71
-	.byte	114                             # 0x72
-	.byte	115                             # 0x73
-	.byte	116                             # 0x74
-	.byte	117                             # 0x75
-	.byte	118                             # 0x76
-	.byte	119                             # 0x77
-	.byte	120                             # 0x78
-	.byte	121                             # 0x79
-	.byte	122                             # 0x7a
-	.byte	123                             # 0x7b
-	.byte	124                             # 0x7c
-	.byte	125                             # 0x7d
-	.byte	126                             # 0x7e
-	.byte	127                             # 0x7f
-.LCPI2_7:
+.LCPI2_13:
 	.byte	97                              # 0x61
 	.byte	98                              # 0x62
 	.byte	99                              # 0x63
@@ -320,6 +310,24 @@ bar:                                    # @bar
 	.byte	110                             # 0x6e
 	.byte	111                             # 0x6f
 	.byte	112                             # 0x70
+.LCPI2_14:
+	.byte	112                             # 0x70
+	.byte	113                             # 0x71
+	.byte	114                             # 0x72
+	.byte	115                             # 0x73
+	.byte	116                             # 0x74
+	.byte	117                             # 0x75
+	.byte	118                             # 0x76
+	.byte	119                             # 0x77
+	.byte	120                             # 0x78
+	.byte	121                             # 0x79
+	.byte	122                             # 0x7a
+	.byte	123                             # 0x7b
+	.byte	124                             # 0x7c
+	.byte	125                             # 0x7d
+	.byte	126                             # 0x7e
+	.byte	127                             # 0x7f
+.LCPI2_15:
 	.byte	113                             # 0x71
 	.byte	114                             # 0x72
 	.byte	115                             # 0x73
@@ -336,7 +344,7 @@ bar:                                    # @bar
 	.byte	126                             # 0x7e
 	.byte	127                             # 0x7f
 	.byte	128                             # 0x80
-.LCPI2_8:
+.LCPI2_16:
 	.byte	128                             # 0x80
 	.byte	129                             # 0x81
 	.byte	130                             # 0x82
@@ -353,23 +361,7 @@ bar:                                    # @bar
 	.byte	141                             # 0x8d
 	.byte	142                             # 0x8e
 	.byte	143                             # 0x8f
-	.byte	144                             # 0x90
-	.byte	145                             # 0x91
-	.byte	146                             # 0x92
-	.byte	147                             # 0x93
-	.byte	148                             # 0x94
-	.byte	149                             # 0x95
-	.byte	150                             # 0x96
-	.byte	151                             # 0x97
-	.byte	152                             # 0x98
-	.byte	153                             # 0x99
-	.byte	154                             # 0x9a
-	.byte	155                             # 0x9b
-	.byte	156                             # 0x9c
-	.byte	157                             # 0x9d
-	.byte	158                             # 0x9e
-	.byte	159                             # 0x9f
-.LCPI2_9:
+.LCPI2_17:
 	.byte	129                             # 0x81
 	.byte	130                             # 0x82
 	.byte	131                             # 0x83
@@ -386,6 +378,24 @@ bar:                                    # @bar
 	.byte	142                             # 0x8e
 	.byte	143                             # 0x8f
 	.byte	144                             # 0x90
+.LCPI2_18:
+	.byte	144                             # 0x90
+	.byte	145                             # 0x91
+	.byte	146                             # 0x92
+	.byte	147                             # 0x93
+	.byte	148                             # 0x94
+	.byte	149                             # 0x95
+	.byte	150                             # 0x96
+	.byte	151                             # 0x97
+	.byte	152                             # 0x98
+	.byte	153                             # 0x99
+	.byte	154                             # 0x9a
+	.byte	155                             # 0x9b
+	.byte	156                             # 0x9c
+	.byte	157                             # 0x9d
+	.byte	158                             # 0x9e
+	.byte	159                             # 0x9f
+.LCPI2_19:
 	.byte	145                             # 0x91
 	.byte	146                             # 0x92
 	.byte	147                             # 0x93
@@ -402,7 +412,7 @@ bar:                                    # @bar
 	.byte	158                             # 0x9e
 	.byte	159                             # 0x9f
 	.byte	160                             # 0xa0
-.LCPI2_10:
+.LCPI2_20:
 	.byte	160                             # 0xa0
 	.byte	161                             # 0xa1
 	.byte	162                             # 0xa2
@@ -419,23 +429,7 @@ bar:                                    # @bar
 	.byte	173                             # 0xad
 	.byte	174                             # 0xae
 	.byte	175                             # 0xaf
-	.byte	176                             # 0xb0
-	.byte	177                             # 0xb1
-	.byte	178                             # 0xb2
-	.byte	179                             # 0xb3
-	.byte	180                             # 0xb4
-	.byte	181                             # 0xb5
-	.byte	182                             # 0xb6
-	.byte	183                             # 0xb7
-	.byte	184                             # 0xb8
-	.byte	185                             # 0xb9
-	.byte	186                             # 0xba
-	.byte	187                             # 0xbb
-	.byte	188                             # 0xbc
-	.byte	189                             # 0xbd
-	.byte	190                             # 0xbe
-	.byte	191                             # 0xbf
-.LCPI2_11:
+.LCPI2_21:
 	.byte	161                             # 0xa1
 	.byte	162                             # 0xa2
 	.byte	163                             # 0xa3
@@ -452,6 +446,24 @@ bar:                                    # @bar
 	.byte	174                             # 0xae
 	.byte	175                             # 0xaf
 	.byte	176                             # 0xb0
+.LCPI2_22:
+	.byte	176                             # 0xb0
+	.byte	177                             # 0xb1
+	.byte	178                             # 0xb2
+	.byte	179                             # 0xb3
+	.byte	180                             # 0xb4
+	.byte	181                             # 0xb5
+	.byte	182                             # 0xb6
+	.byte	183                             # 0xb7
+	.byte	184                             # 0xb8
+	.byte	185                             # 0xb9
+	.byte	186                             # 0xba
+	.byte	187                             # 0xbb
+	.byte	188                             # 0xbc
+	.byte	189                             # 0xbd
+	.byte	190                             # 0xbe
+	.byte	191                             # 0xbf
+.LCPI2_23:
 	.byte	177                             # 0xb1
 	.byte	178                             # 0xb2
 	.byte	179                             # 0xb3
@@ -468,7 +480,7 @@ bar:                                    # @bar
 	.byte	190                             # 0xbe
 	.byte	191                             # 0xbf
 	.byte	192                             # 0xc0
-.LCPI2_12:
+.LCPI2_24:
 	.byte	192                             # 0xc0
 	.byte	193                             # 0xc1
 	.byte	194                             # 0xc2
@@ -485,23 +497,7 @@ bar:                                    # @bar
 	.byte	205                             # 0xcd
 	.byte	206                             # 0xce
 	.byte	207                             # 0xcf
-	.byte	208                             # 0xd0
-	.byte	209                             # 0xd1
-	.byte	210                             # 0xd2
-	.byte	211                             # 0xd3
-	.byte	212                             # 0xd4
-	.byte	213                             # 0xd5
-	.byte	214                             # 0xd6
-	.byte	215                             # 0xd7
-	.byte	216                             # 0xd8
-	.byte	217                             # 0xd9
-	.byte	218                             # 0xda
-	.byte	219                             # 0xdb
-	.byte	220                             # 0xdc
-	.byte	221                             # 0xdd
-	.byte	222                             # 0xde
-	.byte	223                             # 0xdf
-.LCPI2_13:
+.LCPI2_25:
 	.byte	193                             # 0xc1
 	.byte	194                             # 0xc2
 	.byte	195                             # 0xc3
@@ -518,6 +514,24 @@ bar:                                    # @bar
 	.byte	206                             # 0xce
 	.byte	207                             # 0xcf
 	.byte	208                             # 0xd0
+.LCPI2_26:
+	.byte	208                             # 0xd0
+	.byte	209                             # 0xd1
+	.byte	210                             # 0xd2
+	.byte	211                             # 0xd3
+	.byte	212                             # 0xd4
+	.byte	213                             # 0xd5
+	.byte	214                             # 0xd6
+	.byte	215                             # 0xd7
+	.byte	216                             # 0xd8
+	.byte	217                             # 0xd9
+	.byte	218                             # 0xda
+	.byte	219                             # 0xdb
+	.byte	220                             # 0xdc
+	.byte	221                             # 0xdd
+	.byte	222                             # 0xde
+	.byte	223                             # 0xdf
+.LCPI2_27:
 	.byte	209                             # 0xd1
 	.byte	210                             # 0xd2
 	.byte	211                             # 0xd3
@@ -534,7 +548,7 @@ bar:                                    # @bar
 	.byte	222                             # 0xde
 	.byte	223                             # 0xdf
 	.byte	224                             # 0xe0
-.LCPI2_14:
+.LCPI2_28:
 	.byte	224                             # 0xe0
 	.byte	225                             # 0xe1
 	.byte	226                             # 0xe2
@@ -551,23 +565,7 @@ bar:                                    # @bar
 	.byte	237                             # 0xed
 	.byte	238                             # 0xee
 	.byte	239                             # 0xef
-	.byte	240                             # 0xf0
-	.byte	241                             # 0xf1
-	.byte	242                             # 0xf2
-	.byte	243                             # 0xf3
-	.byte	244                             # 0xf4
-	.byte	245                             # 0xf5
-	.byte	246                             # 0xf6
-	.byte	247                             # 0xf7
-	.byte	248                             # 0xf8
-	.byte	249                             # 0xf9
-	.byte	250                             # 0xfa
-	.byte	251                             # 0xfb
-	.byte	252                             # 0xfc
-	.byte	253                             # 0xfd
-	.byte	254                             # 0xfe
-	.byte	255                             # 0xff
-.LCPI2_15:
+.LCPI2_29:
 	.byte	225                             # 0xe1
 	.byte	226                             # 0xe2
 	.byte	227                             # 0xe3
@@ -584,6 +582,24 @@ bar:                                    # @bar
 	.byte	238                             # 0xee
 	.byte	239                             # 0xef
 	.byte	240                             # 0xf0
+.LCPI2_30:
+	.byte	240                             # 0xf0
+	.byte	241                             # 0xf1
+	.byte	242                             # 0xf2
+	.byte	243                             # 0xf3
+	.byte	244                             # 0xf4
+	.byte	245                             # 0xf5
+	.byte	246                             # 0xf6
+	.byte	247                             # 0xf7
+	.byte	248                             # 0xf8
+	.byte	249                             # 0xf9
+	.byte	250                             # 0xfa
+	.byte	251                             # 0xfb
+	.byte	252                             # 0xfc
+	.byte	253                             # 0xfd
+	.byte	254                             # 0xfe
+	.byte	255                             # 0xff
+.LCPI2_31:
 	.byte	241                             # 0xf1
 	.byte	242                             # 0xf2
 	.byte	243                             # 0xf3
@@ -600,7 +616,7 @@ bar:                                    # @bar
 	.byte	254                             # 0xfe
 	.byte	255                             # 0xff
 	.byte	0                               # 0x0
-.LCPI2_16:
+.LCPI2_32:
 	.half	97                              # 0x61
 	.half	98                              # 0x62
 	.half	99                              # 0x63
@@ -609,6 +625,7 @@ bar:                                    # @bar
 	.half	1638                            # 0x666
 	.half	1383                            # 0x567
 	.half	104                             # 0x68
+.LCPI2_33:
 	.half	105                             # 0x69
 	.half	106                             # 0x6a
 	.half	107                             # 0x6b
@@ -627,66 +644,117 @@ main:                                   # @main
 	addi.d	$sp, $sp, -80
 	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_0)
 	pcalau12i	$a0, %pc_hi20(v2)
 	addi.d	$a0, $a0, %pc_lo12(v2)
 	pcalau12i	$a1, %pc_hi20(.LCPI2_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI2_1)
-	xvst	$xr0, $a0, 0
+	vld	$vr1, $a1, %pc_lo12(.LCPI2_1)
+	vst	$vr0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(v3)
 	addi.d	$a1, $a1, %pc_lo12(v3)
 	pcalau12i	$a2, %pc_hi20(.LCPI2_2)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI2_2)
-	xvst	$xr1, $a1, 0
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_2)
+	vst	$vr1, $a1, 0
 	pcalau12i	$a2, %pc_hi20(.LCPI2_3)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI2_3)
-	xvst	$xr0, $a0, 32
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_3)
+	vst	$vr0, $a0, 16
 	pcalau12i	$a2, %pc_hi20(.LCPI2_4)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI2_4)
-	xvst	$xr1, $a1, 32
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_4)
+	vst	$vr1, $a1, 16
 	pcalau12i	$a2, %pc_hi20(.LCPI2_5)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI2_5)
-	xvst	$xr0, $a0, 64
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_5)
+	vst	$vr0, $a0, 32
 	pcalau12i	$a2, %pc_hi20(.LCPI2_6)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI2_6)
-	xvst	$xr1, $a1, 64
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_6)
+	vst	$vr1, $a1, 32
 	pcalau12i	$a2, %pc_hi20(.LCPI2_7)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI2_7)
-	xvst	$xr0, $a0, 96
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_7)
+	vst	$vr0, $a0, 48
 	pcalau12i	$a2, %pc_hi20(.LCPI2_8)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI2_8)
-	xvst	$xr1, $a1, 96
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_8)
+	vst	$vr1, $a1, 48
 	pcalau12i	$a2, %pc_hi20(.LCPI2_9)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI2_9)
-	xvst	$xr0, $a0, 128
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_9)
+	vst	$vr0, $a0, 64
 	pcalau12i	$a2, %pc_hi20(.LCPI2_10)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI2_10)
-	xvst	$xr1, $a1, 128
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_10)
+	vst	$vr1, $a1, 64
 	pcalau12i	$a2, %pc_hi20(.LCPI2_11)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI2_11)
-	xvst	$xr0, $a0, 160
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_11)
+	vst	$vr0, $a0, 80
 	pcalau12i	$a2, %pc_hi20(.LCPI2_12)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI2_12)
-	xvst	$xr1, $a1, 160
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_12)
+	vst	$vr1, $a1, 80
 	pcalau12i	$a2, %pc_hi20(.LCPI2_13)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI2_13)
-	xvst	$xr0, $a0, 192
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_13)
+	vst	$vr0, $a0, 96
 	pcalau12i	$a2, %pc_hi20(.LCPI2_14)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI2_14)
-	xvst	$xr1, $a1, 192
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_14)
+	vst	$vr1, $a1, 96
 	pcalau12i	$a2, %pc_hi20(.LCPI2_15)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI2_15)
-	xvst	$xr0, $a0, 224
-	pcalau12i	$a0, %pc_hi20(.LCPI2_16)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI2_16)
-	xvst	$xr1, $a1, 224
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_15)
+	vst	$vr0, $a0, 112
+	pcalau12i	$a2, %pc_hi20(.LCPI2_16)
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_16)
+	vst	$vr1, $a1, 112
+	pcalau12i	$a2, %pc_hi20(.LCPI2_17)
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_17)
+	vst	$vr0, $a0, 128
+	pcalau12i	$a2, %pc_hi20(.LCPI2_18)
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_18)
+	vst	$vr1, $a1, 128
+	pcalau12i	$a2, %pc_hi20(.LCPI2_19)
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_19)
+	vst	$vr0, $a0, 144
+	pcalau12i	$a2, %pc_hi20(.LCPI2_20)
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_20)
+	vst	$vr1, $a1, 144
+	pcalau12i	$a2, %pc_hi20(.LCPI2_21)
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_21)
+	vst	$vr0, $a0, 160
+	pcalau12i	$a2, %pc_hi20(.LCPI2_22)
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_22)
+	vst	$vr1, $a1, 160
+	pcalau12i	$a2, %pc_hi20(.LCPI2_23)
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_23)
+	vst	$vr0, $a0, 176
+	pcalau12i	$a2, %pc_hi20(.LCPI2_24)
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_24)
+	vst	$vr1, $a1, 176
+	pcalau12i	$a2, %pc_hi20(.LCPI2_25)
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_25)
+	vst	$vr0, $a0, 192
+	pcalau12i	$a2, %pc_hi20(.LCPI2_26)
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_26)
+	vst	$vr1, $a1, 192
+	pcalau12i	$a2, %pc_hi20(.LCPI2_27)
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_27)
+	vst	$vr0, $a0, 208
+	pcalau12i	$a2, %pc_hi20(.LCPI2_28)
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_28)
+	vst	$vr1, $a1, 208
+	pcalau12i	$a2, %pc_hi20(.LCPI2_29)
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_29)
+	vst	$vr0, $a0, 224
+	pcalau12i	$a2, %pc_hi20(.LCPI2_30)
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_30)
+	vst	$vr1, $a1, 224
+	pcalau12i	$a2, %pc_hi20(.LCPI2_31)
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_31)
+	vst	$vr0, $a0, 240
+	pcalau12i	$a0, %pc_hi20(.LCPI2_32)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_32)
+	vst	$vr1, $a1, 240
+	pcalau12i	$a0, %pc_hi20(.LCPI2_33)
+	vld	$vr1, $a0, %pc_lo12(.LCPI2_33)
+	vst	$vr0, $sp, 16
 	ori	$a0, $zero, 113
-	st.w	$a0, $sp, 50
-	xvst	$xr0, $sp, 18
+	st.w	$a0, $sp, 48
+	vst	$vr1, $sp, 32
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 17
-	addi.d	$a1, $sp, 18
+	addi.d	$a1, $sp, 16
 	addi.d	$a2, $sp, 54
 	pcaddu18i	$ra, %call36(bar)
 	jirl	$ra, $ra, 0
@@ -723,10 +791,10 @@ main:                                   # @main
 	.comm	v1,1,1
 	.type	v2,@object                      # @v2
 	.local	v2
-	.comm	v2,256,32
+	.comm	v2,256,16
 	.type	v3,@object                      # @v3
 	.local	v3
-	.comm	v3,256,32
+	.comm	v3,256,16
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym v1

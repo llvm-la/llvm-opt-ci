@@ -208,8 +208,9 @@ _ZN7vehicle4moveEv:                     # @_ZN7vehicle4moveEv
 	b	.LBB2_11
 .LBB2_3:
 	ld.d	$s6, $fp, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 16
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 32
+	vst	$vr0, $sp, 16
 	pcalau12i	$a0, %got_pc_hi20(N)
 	ld.d	$a0, $a0, %got_pc_lo12(N)
 	ld.w	$s1, $a0, 0
@@ -368,8 +369,9 @@ _ZN7vehicle11select_moveEv:             # @_ZN7vehicle11select_moveEv
 	.cfi_offset 30, -80
 	move	$fp, $a0
 	ld.d	$s5, $a0, 0
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 16
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 32
+	vst	$vr0, $sp, 16
 	pcalau12i	$a0, %got_pc_hi20(N)
 	ld.d	$a0, $a0, %got_pc_lo12(N)
 	ld.w	$s1, $a0, 0
@@ -468,8 +470,10 @@ _ZlsRSo3car:                            # @_ZlsRSo3car
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $fp, 0
-	xvst	$xr0, $sp, 8
+	vld	$vr0, $fp, 0
+	vld	$vr1, $fp, 16
+	vst	$vr0, $sp, 8
+	vst	$vr1, $sp, 24
 	addi.d	$a1, $sp, 8
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZlsRSo7vehicle)
@@ -507,8 +511,10 @@ _ZlsRSo5truck:                          # @_ZlsRSo5truck
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $fp, 0
-	xvst	$xr0, $sp, 8
+	vld	$vr0, $fp, 0
+	vld	$vr1, $fp, 16
+	vst	$vr0, $sp, 8
+	vst	$vr1, $sp, 24
 	addi.d	$a1, $sp, 8
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZlsRSo7vehicle)

@@ -278,13 +278,11 @@ grayscale_convert:                      # @grayscale_convert
 .Lfunc_end2:
 	.size	grayscale_convert, .Lfunc_end2-grayscale_convert
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function rgb_ycc_start
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function rgb_ycc_start
 .LCPI3_0:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end3, nop
@@ -306,61 +304,61 @@ rgb_ycc_start:                          # @rgb_ycc_start
 	lu12i.w	$a1, 2
 	add.d	$a0, $a0, $a1
 	pcalau12i	$a2, %pc_hi20(.LCPI3_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI3_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI3_0)
 	addi.w	$a2, $zero, -2048
 	ori	$a3, $fp, 3211
-	xvreplgr2vr.d	$xr1, $a3
+	vreplgr2vr.d	$vr1, $a3
 	lu12i.w	$t0, -2
 	ori	$a3, $t0, 2048
 	lu12i.w	$a4, 9
 	ori	$a4, $a4, 1606
-	xvreplgr2vr.d	$xr2, $a4
+	vreplgr2vr.d	$vr2, $a4
 	lu12i.w	$a4, -1
 	lu12i.w	$a5, 1
 	ori	$a6, $a5, 3375
-	xvreplgr2vr.d	$xr3, $a6
+	vreplgr2vr.d	$vr3, $a6
 	lu12i.w	$a6, 8
-	xvreplgr2vr.d	$xr4, $a6
+	vreplgr2vr.d	$vr4, $a6
 	lu12i.w	$a6, -3
 	ori	$a6, $a6, 1229
-	xvreplgr2vr.d	$xr5, $a6
+	vreplgr2vr.d	$vr5, $a6
 	lu12i.w	$a6, -6
 	ori	$a6, $a6, 2867
-	xvreplgr2vr.d	$xr6, $a6
+	vreplgr2vr.d	$vr6, $a6
 	ori	$a6, $zero, 2048
 	lu12i.w	$a7, 2055
 	ori	$a7, $a7, 4095
-	xvreplgr2vr.d	$xr7, $a7
+	vreplgr2vr.d	$vr7, $a7
 	lu12i.w	$a7, -7
 	ori	$a7, $a7, 1233
-	xvreplgr2vr.d	$xr8, $a7
+	vreplgr2vr.d	$vr8, $a7
 	ori	$a7, $a5, 2048
 	ori	$t0, $t0, 2863
-	xvreplgr2vr.d	$xr9, $t0
+	vreplgr2vr.d	$vr9, $t0
 	.p2align	4, , 16
 .LBB3_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr10, $xr0, $xr1
+	vmul.d	$vr10, $vr0, $vr1
 	add.d	$t0, $a0, $a2
-	xvstx	$xr10, $t0, $a3
-	xvmul.d	$xr10, $xr0, $xr2
-	xvstx	$xr10, $t0, $a4
-	xvori.b	$xr10, $xr4, 0
-	xvmadd.d	$xr10, $xr0, $xr3
-	xvst	$xr10, $t0, -2048
-	xvmul.d	$xr10, $xr0, $xr5
-	xvstx	$xr10, $a0, $a2
-	xvmul.d	$xr10, $xr0, $xr6
-	xvstx	$xr10, $t0, $a6
-	xvslli.d	$xr10, $xr0, 15
-	xvadd.d	$xr10, $xr10, $xr7
-	xvstx	$xr10, $t0, $a5
-	xvmul.d	$xr10, $xr0, $xr8
-	xvstx	$xr10, $t0, $a7
-	xvmul.d	$xr10, $xr0, $xr9
-	xvstx	$xr10, $t0, $a1
-	addi.d	$a2, $a2, 32
-	xvaddi.du	$xr0, $xr0, 4
+	vstx	$vr10, $t0, $a3
+	vmul.d	$vr10, $vr0, $vr2
+	vstx	$vr10, $t0, $a4
+	vori.b	$vr10, $vr4, 0
+	vmadd.d	$vr10, $vr0, $vr3
+	vst	$vr10, $t0, -2048
+	vmul.d	$vr10, $vr0, $vr5
+	vstx	$vr10, $a0, $a2
+	vmul.d	$vr10, $vr0, $vr6
+	vstx	$vr10, $t0, $a6
+	vslli.d	$vr10, $vr0, 15
+	vadd.d	$vr10, $vr10, $vr7
+	vstx	$vr10, $t0, $a5
+	vmul.d	$vr10, $vr0, $vr8
+	vstx	$vr10, $t0, $a7
+	vmul.d	$vr10, $vr0, $vr9
+	vstx	$vr10, $t0, $a1
+	addi.d	$a2, $a2, 16
+	vaddi.du	$vr0, $vr0, 2
 	bnez	$a2, .LBB3_1
 # %bb.2:                                # %middle.block
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload

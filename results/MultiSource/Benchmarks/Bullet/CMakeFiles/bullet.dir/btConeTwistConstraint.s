@@ -29,13 +29,14 @@ _ZN21btConeTwistConstraintC2Ev:         # @_ZN21btConeTwistConstraintC2Ev
 	.size	_ZN21btConeTwistConstraintC2Ev, .Lfunc_end0-_ZN21btConeTwistConstraintC2Ev
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN21btConeTwistConstraintC2ER11btRigidBodyS1_RK11btTransformS4_
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN21btConeTwistConstraintC2ER11btRigidBodyS1_RK11btTransformS4_
 .LCPI1_0:
 	.word	0x3f800000                      # float 1
 	.word	0x3e99999a                      # float 0.300000012
 	.word	0x3f800000                      # float 1
 	.word	0x3c23d70a                      # float 0.00999999977
+.LCPI1_1:
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
@@ -84,15 +85,18 @@ _ZN21btConeTwistConstraintC2ER11btRigidBodyS1_RK11btTransformS4_: # @_ZN21btCone
 	vld	$vr0, $fp, 32
 	vst	$vr0, $s1, 444
 	vld	$vr0, $fp, 48
+	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_0)
 	vst	$vr0, $s1, 460
 	st.b	$zero, $s1, 600
 	st.w	$zero, $s1, 572
-	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI1_0)
+	vst	$vr1, $s1, 476
+	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_1)
 	lu12i.w	$a0, -264192
 	lu32i.d	$a0, 0
 	st.w	$a0, $s1, 620
-	xvst	$xr0, $s1, 476
+	vst	$vr0, $s1, 492
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -103,13 +107,14 @@ _ZN21btConeTwistConstraintC2ER11btRigidBodyS1_RK11btTransformS4_: # @_ZN21btCone
 	.size	_ZN21btConeTwistConstraintC2ER11btRigidBodyS1_RK11btTransformS4_, .Lfunc_end1-_ZN21btConeTwistConstraintC2ER11btRigidBodyS1_RK11btTransformS4_
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN21btConeTwistConstraint4initEv
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN21btConeTwistConstraint4initEv
 .LCPI2_0:
 	.word	0x3f800000                      # float 1
 	.word	0x3e99999a                      # float 0.300000012
 	.word	0x3f800000                      # float 1
 	.word	0x3c23d70a                      # float 0.00999999977
+.LCPI2_1:
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
@@ -124,23 +129,27 @@ _ZN21btConeTwistConstraint4initEv:      # @_ZN21btConeTwistConstraint4initEv
 	st.h	$zero, $a0, 572
 	st.b	$zero, $a0, 574
 	st.b	$zero, $a0, 600
-	pcalau12i	$a1, %pc_hi20(.LCPI2_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI2_0)
 	lu12i.w	$a1, -264192
+	pcalau12i	$a2, %pc_hi20(.LCPI2_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI2_0)
+	pcalau12i	$a2, %pc_hi20(.LCPI2_1)
+	vld	$vr1, $a2, %pc_lo12(.LCPI2_1)
 	lu32i.d	$a1, 0
 	st.w	$a1, $a0, 620
-	xvst	$xr0, $a0, 476
+	vst	$vr0, $a0, 476
+	vst	$vr1, $a0, 492
 	ret
 .Lfunc_end2:
 	.size	_ZN21btConeTwistConstraint4initEv, .Lfunc_end2-_ZN21btConeTwistConstraint4initEv
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN21btConeTwistConstraintC2ER11btRigidBodyRK11btTransform
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN21btConeTwistConstraintC2ER11btRigidBodyRK11btTransform
 .LCPI3_0:
 	.word	0x3f800000                      # float 1
 	.word	0x3e99999a                      # float 0.300000012
 	.word	0x3f800000                      # float 1
 	.word	0x3c23d70a                      # float 0.00999999977
+.LCPI3_1:
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
 	.word	0x5d5e0b6b                      # float 9.99999984E+17
@@ -183,17 +192,19 @@ _ZN21btConeTwistConstraintC2ER11btRigidBodyRK11btTransform: # @_ZN21btConeTwistC
 	vld	$vr0, $s0, 380
 	vld	$vr2, $s0, 396
 	vst	$vr1, $s0, 428
-	st.h	$zero, $s0, 574
+	st.w	$zero, $s0, 572
 	vst	$vr0, $s0, 444
 	vst	$vr2, $s0, 460
-	st.h	$zero, $s0, 572
 	st.b	$zero, $s0, 600
-	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI3_0)
 	lu12i.w	$a0, -264192
+	pcalau12i	$a1, %pc_hi20(.LCPI3_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI3_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI3_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI3_1)
 	lu32i.d	$a0, 0
 	st.w	$a0, $s0, 620
-	xvst	$xr0, $s0, 476
+	vst	$vr0, $s0, 476
+	vst	$vr1, $s0, 492
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -5429,9 +5440,9 @@ _ZN21btConeTwistConstraint14setMotorTargetERK12btQuaternion: # @_ZN21btConeTwist
 	fst.s	$ft4, $sp, 120
 	fst.s	$ft7, $sp, 124
 	fst.s	$ft8, $sp, 128
-	addi.d	$s1, $fp, 412
+	addi.d	$s2, $fp, 412
 	bstrins.d	$a0, $a1, 63, 32
-	addi.d	$s2, $fp, 348
+	addi.d	$s1, $fp, 348
 	bstrpick.d	$a1, $a2, 31, 0
 	st.w	$zero, $sp, 100
 	st.w	$zero, $sp, 116
@@ -5443,90 +5454,91 @@ _ZN21btConeTwistConstraint14setMotorTargetERK12btQuaternion: # @_ZN21btConeTwist
 	pcaddu18i	$ra, %call36(_ZNK11btMatrix3x311getRotationER12btQuaternion)
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $sp, 216
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(_ZNK11btMatrix3x311getRotationER12btQuaternion)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 216
+	ld.d	$a1, $sp, 224
+	movgr2fr.w	$fs0, $a0
+	srli.d	$a0, $a0, 32
+	movgr2fr.w	$fs1, $a0
+	movgr2fr.w	$fs2, $a1
+	srli.d	$a0, $a1, 32
+	fneg.s	$fa0, $fs0
+	fneg.s	$fa1, $fs1
+	fneg.s	$fa2, $fs2
+	movgr2fr.w	$fa3, $a0
+	fld.s	$fa4, $s0, 12
+	fld.s	$fs3, $s0, 0
+	fld.s	$fs4, $s0, 8
+	fld.s	$fs5, $s0, 4
+	fmul.s	$fa5, $fa4, $fa0
+	fmadd.s	$fa5, $fa3, $fs3, $fa5
+	fmadd.s	$fa5, $fa1, $fs4, $fa5
+	fst.s	$fa5, $sp, 80                   # 4-byte Folded Spill
+	fmadd.s	$fa5, $fs2, $fs5, $fa5
+	fst.s	$fa5, $sp, 76                   # 4-byte Folded Spill
+	fmul.s	$fa1, $fa4, $fa1
+	fmadd.s	$fa1, $fa3, $fs5, $fa1
+	fmadd.s	$fa1, $fa2, $fs3, $fa1
+	fst.s	$fa1, $sp, 84                   # 4-byte Folded Spill
+	fmadd.s	$fa1, $fs0, $fs4, $fa1
+	fst.s	$fa1, $sp, 68                   # 4-byte Folded Spill
+	fmul.s	$fa1, $fa4, $fa2
+	fmadd.s	$fa1, $fa3, $fs4, $fa1
+	fmadd.s	$fs6, $fa0, $fs5, $fa1
+	fmadd.s	$fa0, $fs1, $fs3, $fs6
+	fst.s	$fa0, $sp, 72                   # 4-byte Folded Spill
+	fmul.s	$fa0, $fs3, $fs0
+	fmadd.s	$fa0, $fa3, $fa4, $fa0
+	fmadd.s	$fa0, $fs1, $fs5, $fa0
+	fmadd.s	$fs7, $fs2, $fs4, $fa0
+	addi.d	$a1, $sp, 216
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNK11btMatrix3x311getRotationER12btQuaternion)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 216
 	ld.d	$a1, $sp, 224
-	srli.d	$a2, $a0, 32
-	movgr2fr.w	$fs0, $a2
-	movgr2fr.w	$fs1, $a1
-	movgr2fr.w	$fs2, $a0
-	srli.d	$a0, $a1, 32
-	fneg.s	$fa0, $fs2
-	fneg.s	$fa1, $fs0
-	fneg.s	$fa2, $fs1
-	movgr2fr.w	$fa3, $a0
-	fld.s	$fa4, $s0, 12
-	fld.s	$fs3, $s0, 0
-	fld.s	$fs4, $s0, 4
-	fld.s	$fs5, $s0, 8
-	fmul.s	$fa5, $fa4, $fa0
-	fmul.s	$fa6, $fa4, $fa1
-	fmul.s	$fa7, $fa4, $fa2
-	fmadd.s	$fa5, $fa3, $fs3, $fa5
-	fmadd.s	$fa6, $fa3, $fs4, $fa6
-	fmadd.s	$fa7, $fa3, $fs5, $fa7
-	fmadd.s	$fa5, $fa1, $fs5, $fa5
-	fst.s	$fa5, $sp, 72                   # 4-byte Folded Spill
-	fmadd.s	$fa1, $fa2, $fs3, $fa6
-	fst.s	$fa1, $sp, 84                   # 4-byte Folded Spill
-	fmadd.s	$fa0, $fa0, $fs4, $fa7
-	fst.s	$fa0, $sp, 80                   # 4-byte Folded Spill
-	fmadd.s	$fs7, $fs1, $fs4, $fa5
-	fmadd.s	$fa1, $fs2, $fs5, $fa1
-	fst.s	$fa1, $sp, 76                   # 4-byte Folded Spill
-	fmadd.s	$fa0, $fs0, $fs3, $fa0
-	fst.s	$fa0, $sp, 68                   # 4-byte Folded Spill
-	fmul.s	$fa0, $fs3, $fs2
-	fmadd.s	$fa0, $fa3, $fa4, $fa0
-	fmadd.s	$fa0, $fs0, $fs4, $fa0
-	fmadd.s	$fs6, $fs1, $fs5, $fa0
-	addi.d	$a1, $sp, 216
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZNK11btMatrix3x311getRotationER12btQuaternion)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 224
-	ld.d	$a1, $sp, 216
-	srli.d	$a2, $a0, 32
-	srli.d	$a3, $a1, 32
 	movgr2fr.w	$fa0, $a0
-	movgr2fr.w	$fa1, $a1
-	movgr2fr.w	$fa2, $a2
-	movgr2fr.w	$fa3, $a3
-	fld.s	$fa4, $sp, 72                   # 4-byte Folded Reload
-	fnmadd.s	$fa4, $fs1, $fs4, $fa4
-	fld.s	$ft3, $sp, 68                   # 4-byte Folded Reload
-	fmul.s	$fa5, $ft3, $fa2
-	fmul.s	$fa6, $fs7, $fa2
-	fmadd.s	$fa5, $fs6, $fa0, $fa5
-	fmadd.s	$fa6, $fs6, $fa1, $fa6
-	fmadd.s	$fa5, $fs7, $fa3, $fa5
-	fld.s	$ft2, $sp, 76                   # 4-byte Folded Reload
-	fmadd.s	$fa6, $ft2, $fa0, $fa6
-	fld.s	$fa7, $sp, 84                   # 4-byte Folded Reload
+	srli.d	$a0, $a0, 32
+	movgr2fr.w	$fa1, $a0
+	movgr2fr.w	$fa2, $a1
+	srli.d	$a0, $a1, 32
+	movgr2fr.w	$fa3, $a0
+	fld.s	$ft0, $sp, 76                   # 4-byte Folded Reload
+	fmul.s	$fa4, $ft0, $fa3
+	fmadd.s	$fa4, $fs7, $fa0, $fa4
+	fld.s	$fa6, $sp, 68                   # 4-byte Folded Reload
+	fmadd.s	$fa4, $fa6, $fa2, $fa4
+	fnmadd.s	$fa5, $fs1, $fs3, $fs6
+	fmadd.s	$fa4, $fa5, $fa1, $fa4
+	fmul.s	$fa6, $fa6, $fa3
+	fmadd.s	$fa6, $fs7, $fa1, $fa6
+	fld.s	$ft1, $sp, 72                   # 4-byte Folded Reload
+	fmadd.s	$fa6, $ft1, $fa0, $fa6
+	fld.s	$fa7, $sp, 80                   # 4-byte Folded Reload
 	fnmadd.s	$fa7, $fs2, $fs5, $fa7
-	fld.s	$ft0, $sp, 80                   # 4-byte Folded Reload
-	fnmadd.s	$ft0, $fs0, $fs3, $ft0
-	fmadd.s	$fa5, $fa7, $fa1, $fa5
-	fmadd.s	$fa6, $ft0, $fa3, $fa6
-	fneg.s	$ft1, $fa1
-	fmul.s	$ft1, $fs7, $ft1
-	fmul.s	$ft2, $ft2, $fa2
-	fmadd.s	$fa2, $fs6, $fa2, $ft1
-	fmadd.s	$ft1, $fs6, $fa3, $ft2
-	fmadd.s	$fa2, $fa7, $fa3, $fa2
-	fmadd.s	$fa1, $ft3, $fa1, $ft1
-	fmadd.s	$fa2, $ft0, $fa0, $fa2
-	fmadd.s	$fa0, $fa4, $fa0, $fa1
-	vextrins.w	$vr5, $vr6, 16
-	vextrins.w	$vr2, $vr0, 16
-	vshuf4i.w	$vr0, $vr2, 16
-	vslli.d	$vr0, $vr0, 32
-	vext2xv.du.wu	$xr1, $xr5
-	vor.v	$vr0, $vr0, $vr1
-	vshuf4i.d	$vr0, $vr0, 1
-	vst	$vr0, $sp, 216
+	fmadd.s	$fa6, $fa7, $fa2, $fa6
+	fmul.s	$fa7, $ft1, $fa3
+	fmadd.s	$fa7, $fs7, $fa2, $fa7
+	fmadd.s	$fa7, $ft0, $fa1, $fa7
+	fmov.s	$ft1, $ft0
+	fld.s	$ft0, $sp, 84                   # 4-byte Folded Reload
+	fnmadd.s	$ft0, $fs0, $fs4, $ft0
+	fmadd.s	$fa7, $ft0, $fa0, $fa7
+	fneg.s	$fa0, $fa0
+	fmul.s	$fa0, $ft1, $fa0
+	fmadd.s	$fa0, $fs7, $fa3, $fa0
+	fmadd.s	$fa0, $ft0, $fa1, $fa0
+	fmadd.s	$fa0, $fa5, $fa2, $fa0
+	movfr2gr.s	$a0, $fa4
+	movfr2gr.s	$a1, $fa6
+	bstrins.d	$a0, $a1, 63, 32
+	movfr2gr.s	$a1, $fa7
+	movfr2gr.s	$a2, $fa0
+	bstrins.d	$a1, $a2, 63, 32
+	st.d	$a0, $sp, 216
+	st.d	$a1, $sp, 224
 	addi.d	$a1, $sp, 216
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN21btConeTwistConstraint31setMotorTargetInConstraintSpaceERK12btQuaternion)
@@ -5883,7 +5895,8 @@ _ZN21btConeTwistConstraint31setMotorTargetInConstraintSpaceERK12btQuaternion: # 
 	vextrins.w	$vr1, $vr2, 16
 	vshuf4i.w	$vr0, $vr1, 16
 	vslli.d	$vr0, $vr0, 32
-	vext2xv.du.wu	$xr1, $xr3
+	vrepli.b	$vr1, 0
+	vilvl.w	$vr1, $vr1, $vr3
 	vor.v	$vr0, $vr0, $vr1
 	vshuf4i.d	$vr0, $vr0, 1
 	vst	$vr0, $fp, 604

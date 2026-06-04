@@ -184,30 +184,34 @@ gaussianBlurKernel:                     # @gaussianBlurKernel
                                         #   Parent Loop BB0_5 Depth=1
                                         #     Parent Loop BB0_6 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvld	$xr2, $t5, -32
-	xvldx	$xr3, $t4, $a6
 	add.d	$t6, $a6, $t4
-	xvffint.s.w	$xr2, $xr2
-	xvfmul.s	$xr2, $xr3, $xr2
-	xvpickve.w	$xr3, $xr2, 0
-	fadd.s	$fa1, $fa1, $fa3
-	xvpickve.w	$xr3, $xr2, 1
-	fadd.s	$fa1, $fa1, $fa3
-	xvpickve.w	$xr3, $xr2, 2
-	fadd.s	$fa1, $fa1, $fa3
-	xvpickve.w	$xr3, $xr2, 3
-	fadd.s	$fa1, $fa1, $fa3
-	xvpickve.w	$xr3, $xr2, 4
-	fadd.s	$fa1, $fa1, $fa3
-	xvpickve.w	$xr3, $xr2, 5
-	fadd.s	$fa1, $fa1, $fa3
-	xvpickve.w	$xr3, $xr2, 6
-	fadd.s	$fa1, $fa1, $fa3
-	fld.s	$fa3, $t5, 0
-	fld.s	$fa4, $t6, 32
-	xvpickve.w	$xr2, $xr2, 7
+	vld	$vr2, $t5, -32
+	vld	$vr3, $t5, -16
+	vld	$vr4, $t6, 16
+	vldx	$vr5, $t4, $a6
+	vffint.s.w	$vr2, $vr2
+	vffint.s.w	$vr3, $vr3
+	vfmul.s	$vr3, $vr4, $vr3
+	vfmul.s	$vr2, $vr5, $vr2
+	vreplvei.w	$vr4, $vr2, 0
+	fadd.s	$fa1, $fa1, $fa4
+	vreplvei.w	$vr4, $vr2, 1
+	fadd.s	$fa1, $fa1, $fa4
+	vreplvei.w	$vr4, $vr2, 2
+	fadd.s	$fa1, $fa1, $fa4
+	vreplvei.w	$vr2, $vr2, 3
 	fadd.s	$fa1, $fa1, $fa2
-	ffint.s.w	$fa2, $fa3
+	vreplvei.w	$vr2, $vr3, 0
+	fadd.s	$fa1, $fa1, $fa2
+	vreplvei.w	$vr2, $vr3, 1
+	fadd.s	$fa1, $fa1, $fa2
+	vreplvei.w	$vr2, $vr3, 2
+	fadd.s	$fa1, $fa1, $fa2
+	fld.s	$fa2, $t5, 0
+	fld.s	$fa4, $t6, 32
+	vreplvei.w	$vr3, $vr3, 3
+	fadd.s	$fa1, $fa1, $fa3
+	ffint.s.w	$fa2, $fa2
 	fmul.s	$fa2, $fa4, $fa2
 	fadd.s	$fa1, $fa1, $fa2
 	addi.d	$t4, $t4, 36

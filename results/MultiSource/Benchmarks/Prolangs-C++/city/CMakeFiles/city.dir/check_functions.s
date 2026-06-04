@@ -58,8 +58,10 @@ _Z14lane_switch_okP7roadletP7vehicle9direction: # @_Z14lane_switch_okP7roadletP7
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s0, 0
-	xvst	$xr0, $sp, 160
+	vld	$vr0, $s0, 0
+	vld	$vr1, $s0, 16
+	vst	$vr0, $sp, 160
+	vst	$vr1, $sp, 176
 	addi.d	$a1, $sp, 160
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZlsRSo7vehicle)
@@ -436,8 +438,10 @@ _Z24green_OR_plan_rightONredP20intersection_roadletP7vehicle9direction: # @_Z24g
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s0, 0
-	xvst	$xr0, $sp, 8
+	vld	$vr0, $s0, 0
+	vld	$vr1, $s0, 16
+	vst	$vr0, $sp, 8
+	vst	$vr1, $sp, 24
 	addi.d	$a1, $sp, 8
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZlsRSo7vehicle)

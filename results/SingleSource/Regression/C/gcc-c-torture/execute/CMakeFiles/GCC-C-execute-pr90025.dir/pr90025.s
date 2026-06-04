@@ -123,8 +123,11 @@ foo:                                    # @foo
 	addi.d	$sp, $sp, -48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L__const.foo.s)
-	xvld	$xr0, $a1, %pc_lo12(.L__const.foo.s)
-	xvst	$xr0, $sp, 8
+	addi.d	$a1, $a1, %pc_lo12(.L__const.foo.s)
+	vld	$vr0, $a1, 0
+	vld	$vr1, $a1, 16
+	vst	$vr0, $sp, 8
+	vst	$vr1, $sp, 24
 	revb.2w	$a0, $a0
 	st.w	$a0, $sp, 16
 	addi.d	$a0, $sp, 8
@@ -145,8 +148,11 @@ main:                                   # @main
 	addi.d	$sp, $sp, -48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L__const.foo.s)
-	xvld	$xr0, $a0, %pc_lo12(.L__const.foo.s)
-	xvst	$xr0, $sp, 8
+	addi.d	$a0, $a0, %pc_lo12(.L__const.foo.s)
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 16
+	vst	$vr0, $sp, 8
+	vst	$vr1, $sp, 24
 	st.w	$zero, $sp, 16
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(bar)

@@ -768,29 +768,29 @@ _ZN20btMultiSapBroadphase11createProxyERK9btVector3S2_iPvssP12btDispatcherS3_: #
 	ld.d	$a0, $s3, 104
 	blez	$a1, .LBB5_13
 .LBB5_4:                                # %.lr.ph.i.i.i
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	move	$a2, $zero
 	bltu	$a1, $a3, .LBB5_9
 # %bb.5:                                # %.lr.ph.i.i.i
 	sub.d	$a3, $s4, $a0
-	ori	$a4, $zero, 64
+	ori	$a4, $zero, 32
 	bltu	$a3, $a4, .LBB5_9
 # %bb.6:                                # %vector.ph
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	addi.d	$a3, $a0, 32
-	addi.d	$a4, $s4, 32
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $s4, 16
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB5_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a5, $a5, -4
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB5_7
 # %bb.8:                                # %middle.block
 	beq	$a2, $a1, .LBB5_11
@@ -923,30 +923,30 @@ _ZN20btMultiSapBroadphase20addToChildBroadphaseEPNS_15btMultiSapProxyEP17btBroad
 	ld.d	$a1, $fp, 80
 	blez	$a2, .LBB7_13
 .LBB7_4:                                # %.lr.ph.i.i.i
-	ori	$a4, $zero, 8
+	ori	$a4, $zero, 4
 	move	$a3, $zero
 	move	$a0, $s2
 	bltu	$a2, $a4, .LBB7_9
 # %bb.5:                                # %.lr.ph.i.i.i
 	sub.d	$a4, $s0, $a1
-	ori	$a5, $zero, 64
+	ori	$a5, $zero, 32
 	bltu	$a4, $a5, .LBB7_9
 # %bb.6:                                # %vector.ph
-	bstrpick.d	$a3, $a2, 30, 3
-	slli.d	$a3, $a3, 3
-	addi.d	$a4, $a1, 32
-	addi.d	$a5, $s0, 32
+	bstrpick.d	$a3, $a2, 30, 2
+	slli.d	$a3, $a3, 2
+	addi.d	$a4, $a1, 16
+	addi.d	$a5, $s0, 16
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB7_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr1, $a5, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 64
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB7_7
 # %bb.8:                                # %middle.block
 	beq	$a3, $a2, .LBB7_11
@@ -1334,7 +1334,7 @@ _ZN20btMultiSapBroadphase25calculateOverlappingPairsEP12btDispatcher: # @_ZN20bt
 	pcalau12i	$a2, %pc_hi20(stopUpdating)
 	ld.bu	$a2, $a2, %pc_lo12(stopUpdating)
 	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	bnez	$a2, .LBB13_57
+	bnez	$a2, .LBB13_58
 # %bb.1:
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
@@ -1344,7 +1344,7 @@ _ZN20btMultiSapBroadphase25calculateOverlappingPairsEP12btDispatcher: # @_ZN20bt
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 112
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB13_57
+	beqz	$a0, .LBB13_58
 # %bb.2:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 64
@@ -1368,11 +1368,13 @@ _ZN20btMultiSapBroadphase25calculateOverlappingPairsEP12btDispatcher: # @_ZN20bt
 .LBB13_4:                               # %_ZN20btAlignedObjectArrayI16btBroadphasePairE9quickSortI37btMultiSapBroadphasePairSortPredicateEEvT_.exit
 	ld.w	$s1, $fp, 80
 	sub.w	$s3, $s4, $s1
+	vrepli.b	$vr2, 0
 	bgez	$s1, .LBB13_18
 # %bb.5:
 	ld.w	$a0, $s0, 8
 	bge	$a0, $s3, .LBB13_16
 # %bb.6:
+	vst	$vr2, $sp, 16                   # 16-byte Folded Spill
 	beqz	$s3, .LBB13_8
 # %bb.7:
 	slli.d	$a0, $s3, 5
@@ -1418,23 +1420,23 @@ _ZN20btMultiSapBroadphase25calculateOverlappingPairsEP12btDispatcher: # @_ZN20bt
 	st.b	$a0, $s0, 24
 	st.d	$s2, $s0, 16
 	st.w	$s3, $s0, 8
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
 .LBB13_16:                              # %.lr.ph.i
 	slli.d	$a0, $s4, 5
-	xvrepli.b	$xr0, 0
 	.p2align	4, , 16
 .LBB13_17:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 16
-	xvstx	$xr0, $a1, $a0
+	add.d	$a2, $a1, $a0
+	vstx	$vr2, $a1, $a0
+	vst	$vr2, $a2, 16
 	addi.d	$s1, $s1, 1
 	addi.d	$a0, $a0, 32
 	bnez	$s1, .LBB13_17
 .LBB13_18:                              # %_ZN20btAlignedObjectArrayI16btBroadphasePairE6resizeEiRKS0_.exit
 	st.w	$s3, $s0, 4
 	st.w	$zero, $fp, 80
-	blez	$s3, .LBB13_56
+	blez	$s3, .LBB13_57
 # %bb.19:                               # %.lr.ph
-	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(gOverlappingPairs)
 	ld.d	$s5, $a0, %got_pc_lo12(gOverlappingPairs)
 	move	$s6, $zero
@@ -1442,6 +1444,7 @@ _ZN20btMultiSapBroadphase25calculateOverlappingPairsEP12btDispatcher: # @_ZN20bt
 	move	$s7, $zero
 	move	$a1, $zero
 	move	$a0, $zero
+	vst	$vr2, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB13_22
 	.p2align	4, , 16
 .LBB13_20:                              # %.critedge
@@ -1455,8 +1458,8 @@ _ZN20btMultiSapBroadphase25calculateOverlappingPairsEP12btDispatcher: # @_ZN20bt
 	move	$a1, $s2
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	jirl	$ra, $a3, 0
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $s2, 0
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr2, $s2, 0
 	ld.w	$a0, $fp, 80
 	ld.w	$a1, $s5, 0
 	addi.w	$s4, $a0, 1
@@ -1558,19 +1561,20 @@ _ZN20btMultiSapBroadphase25calculateOverlappingPairsEP12btDispatcher: # @_ZN20bt
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI37btMultiSapBroadphasePairSortPredicateEEvT_ii)
 	jirl	$ra, $ra, 0
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
 	ld.w	$s3, $s0, 4
 	ld.w	$s4, $fp, 80
 .LBB13_42:                              # %_ZN20btAlignedObjectArrayI16btBroadphasePairE9quickSortI37btMultiSapBroadphasePairSortPredicateEEvT_.exit38
 	sub.w	$s2, $s3, $s4
-	bgez	$s4, .LBB13_55
+	bgez	$s4, .LBB13_56
 # %bb.43:
 	ld.w	$a0, $s0, 8
-	bge	$a0, $s2, .LBB13_53
+	bge	$a0, $s2, .LBB13_54
 # %bb.44:
 	bne	$s3, $s4, .LBB13_46
 # %bb.45:
 	move	$s1, $zero
-	b	.LBB13_49
+	b	.LBB13_50
 .LBB13_46:                              # %_ZN20btAlignedObjectArrayI16btBroadphasePairE8allocateEi.exit.i.i46
 	slli.d	$a0, $s2, 5
 	ori	$a1, $zero, 16
@@ -1595,37 +1599,41 @@ _ZN20btMultiSapBroadphase25calculateOverlappingPairsEP12btDispatcher: # @_ZN20bt
 	addi.d	$a0, $a0, 32
 	st.d	$a2, $a4, 24
 	bne	$a1, $a0, .LBB13_48
-.LBB13_49:                              # %_ZNK20btAlignedObjectArrayI16btBroadphasePairE4copyEiiPS0_.exit.i.i48
+.LBB13_49:
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+.LBB13_50:                              # %_ZNK20btAlignedObjectArrayI16btBroadphasePairE4copyEiiPS0_.exit.i.i48
 	ld.d	$a0, $s0, 16
-	beqz	$a0, .LBB13_52
-# %bb.50:                               # %_ZNK20btAlignedObjectArrayI16btBroadphasePairE4copyEiiPS0_.exit.i.i48
+	beqz	$a0, .LBB13_53
+# %bb.51:                               # %_ZNK20btAlignedObjectArrayI16btBroadphasePairE4copyEiiPS0_.exit.i.i48
 	ld.b	$a1, $s0, 24
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB13_52
-# %bb.51:
+	beqz	$a1, .LBB13_53
+# %bb.52:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB13_52:                              # %_ZN20btAlignedObjectArrayI16btBroadphasePairE10deallocateEv.exit.i.i51
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+.LBB13_53:                              # %_ZN20btAlignedObjectArrayI16btBroadphasePairE10deallocateEv.exit.i.i51
 	ori	$a0, $zero, 1
 	st.b	$a0, $s0, 24
 	st.d	$s1, $s0, 16
 	st.w	$s2, $s0, 8
-.LBB13_53:                              # %.lr.ph.i39
+.LBB13_54:                              # %.lr.ph.i39
 	slli.d	$a0, $s3, 5
-	xvrepli.b	$xr0, 0
 	.p2align	4, , 16
-.LBB13_54:                              # =>This Inner Loop Header: Depth=1
+.LBB13_55:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 16
-	xvstx	$xr0, $a1, $a0
+	add.d	$a2, $a1, $a0
+	vstx	$vr2, $a1, $a0
+	vst	$vr2, $a2, 16
 	addi.d	$s4, $s4, 1
 	addi.d	$a0, $a0, 32
-	bnez	$s4, .LBB13_54
-.LBB13_55:
+	bnez	$s4, .LBB13_55
+.LBB13_56:
 	move	$s3, $s2
-.LBB13_56:                              # %_ZN20btAlignedObjectArrayI16btBroadphasePairE6resizeEiRKS0_.exit57
+.LBB13_57:                              # %_ZN20btAlignedObjectArrayI16btBroadphasePairE6resizeEiRKS0_.exit57
 	st.w	$s3, $s0, 4
 	st.w	$zero, $fp, 80
-.LBB13_57:
+.LBB13_58:
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
@@ -2079,9 +2087,11 @@ _ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI37btMultiSapBro
                                         #   in Loop: Header=BB25_4 Depth=2
 	blt	$t3, $a7, .LBB25_3
 # %bb.39:                               #   in Loop: Header=BB25_4 Depth=2
-	xvld	$xr0, $t6, 0
+	vld	$vr0, $t6, 16
 	vld	$vr1, $a5, 0
-	xvst	$xr0, $a5, -16
+	vst	$vr0, $a5, 0
+	vld	$vr0, $t6, 0
+	vst	$vr0, $a5, -16
 	ld.d	$a5, $s1, 16
 	add.d	$a6, $a5, $t2
 	stx.d	$t0, $a5, $t2

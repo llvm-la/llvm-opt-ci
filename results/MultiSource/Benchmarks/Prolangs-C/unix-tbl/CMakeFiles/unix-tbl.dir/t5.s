@@ -6,18 +6,18 @@
 	.type	gettbl,@function
 gettbl:                                 # @gettbl
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(chspace)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(cspace)
@@ -69,9 +69,7 @@ gettbl:                                 # @gettbl
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ori	$s7, $zero, 115
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
+	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB0_5
@@ -278,8 +276,7 @@ gettbl:                                 # @gettbl
 	jirl	$ra, $ra, 0
 	move	$s2, $zero
 	st.w	$a0, $s8, 0
-	vld	$vr1, $sp, 128                  # 16-byte Folded Reload
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
+	vld	$vr1, $sp, 96                   # 16-byte Folded Reload
 	b	.LBB0_33
 	.p2align	4, , 16
 .LBB0_31:                               # %._crit_edge51.loopexit
@@ -289,8 +286,7 @@ gettbl:                                 # @gettbl
                                         #   in Loop: Header=BB0_33 Depth=2
 	move	$a2, $s2
 	move	$s2, $s3
-	vld	$vr1, $sp, 128                  # 16-byte Folded Reload
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
+	vld	$vr1, $sp, 96                   # 16-byte Folded Reload
 	beqz	$s8, .LBB0_53
 .LBB0_33:                               #   Parent Loop BB0_5 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -473,16 +469,16 @@ gettbl:                                 # @gettbl
 	slli.d	$a5, $a3, 1
 	alsl.d	$a3, $a3, $a2, 1
 	alsl.d	$a2, $a2, $a1, 4
-	addi.d	$a2, $a2, 16
+	addi.d	$a2, $a2, 32
 	move	$a6, $a5
 	.p2align	4, , 16
 .LBB0_57:                               # %vector.body
                                         #   Parent Loop BB0_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvori.b	$xr0, $xr2, 0
-	xvinsgr2vr.d	$xr0, $s4, 0
-	xvinsgr2vr.d	$xr0, $s4, 2
-	xvst	$xr0, $a2, 0
+	vori.b	$vr0, $vr1, 0
+	vinsgr2vr.d	$vr0, $s4, 0
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
 	addi.d	$a6, $a6, -2
 	addi.d	$a2, $a2, 32
 	bnez	$a6, .LBB0_57
@@ -565,33 +561,33 @@ gettbl:                                 # @gettbl
 	ld.w	$a0, $a0, 0
 	beqz	$a0, .LBB0_73
 # %bb.72:
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	pcaddu18i	$t8, %call36(untext)
 	jr	$t8
 .LBB0_73:
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
 .Lfunc_end0:
 	.size	gettbl, .Lfunc_end0-gettbl

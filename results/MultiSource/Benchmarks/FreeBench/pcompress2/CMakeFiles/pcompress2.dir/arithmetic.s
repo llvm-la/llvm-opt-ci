@@ -1,304 +1,17 @@
 	.file	"arithmetic.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function do_ari
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function do_ari
 .LCPI0_0:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
-	.dword	6                               # 0x6
-	.dword	7                               # 0x7
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI0_1:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 .LCPI0_2:
-	.word	257                             # 0x101
-	.word	256                             # 0x100
-	.word	255                             # 0xff
-	.word	254                             # 0xfe
-	.word	253                             # 0xfd
-	.word	252                             # 0xfc
-	.word	251                             # 0xfb
-	.word	250                             # 0xfa
-.LCPI0_3:
-	.word	249                             # 0xf9
-	.word	248                             # 0xf8
-	.word	247                             # 0xf7
-	.word	246                             # 0xf6
-	.word	245                             # 0xf5
-	.word	244                             # 0xf4
-	.word	243                             # 0xf3
-	.word	242                             # 0xf2
-.LCPI0_4:
-	.word	241                             # 0xf1
-	.word	240                             # 0xf0
-	.word	239                             # 0xef
-	.word	238                             # 0xee
-	.word	237                             # 0xed
-	.word	236                             # 0xec
-	.word	235                             # 0xeb
-	.word	234                             # 0xea
-.LCPI0_5:
-	.word	233                             # 0xe9
-	.word	232                             # 0xe8
-	.word	231                             # 0xe7
-	.word	230                             # 0xe6
-	.word	229                             # 0xe5
-	.word	228                             # 0xe4
-	.word	227                             # 0xe3
-	.word	226                             # 0xe2
-.LCPI0_6:
-	.word	225                             # 0xe1
-	.word	224                             # 0xe0
-	.word	223                             # 0xdf
-	.word	222                             # 0xde
-	.word	221                             # 0xdd
-	.word	220                             # 0xdc
-	.word	219                             # 0xdb
-	.word	218                             # 0xda
-.LCPI0_7:
-	.word	217                             # 0xd9
-	.word	216                             # 0xd8
-	.word	215                             # 0xd7
-	.word	214                             # 0xd6
-	.word	213                             # 0xd5
-	.word	212                             # 0xd4
-	.word	211                             # 0xd3
-	.word	210                             # 0xd2
-.LCPI0_8:
-	.word	209                             # 0xd1
-	.word	208                             # 0xd0
-	.word	207                             # 0xcf
-	.word	206                             # 0xce
-	.word	205                             # 0xcd
-	.word	204                             # 0xcc
-	.word	203                             # 0xcb
-	.word	202                             # 0xca
-.LCPI0_9:
-	.word	201                             # 0xc9
-	.word	200                             # 0xc8
-	.word	199                             # 0xc7
-	.word	198                             # 0xc6
-	.word	197                             # 0xc5
-	.word	196                             # 0xc4
-	.word	195                             # 0xc3
-	.word	194                             # 0xc2
-.LCPI0_10:
-	.word	193                             # 0xc1
-	.word	192                             # 0xc0
-	.word	191                             # 0xbf
-	.word	190                             # 0xbe
-	.word	189                             # 0xbd
-	.word	188                             # 0xbc
-	.word	187                             # 0xbb
-	.word	186                             # 0xba
-.LCPI0_11:
-	.word	185                             # 0xb9
-	.word	184                             # 0xb8
-	.word	183                             # 0xb7
-	.word	182                             # 0xb6
-	.word	181                             # 0xb5
-	.word	180                             # 0xb4
-	.word	179                             # 0xb3
-	.word	178                             # 0xb2
-.LCPI0_12:
-	.word	177                             # 0xb1
-	.word	176                             # 0xb0
-	.word	175                             # 0xaf
-	.word	174                             # 0xae
-	.word	173                             # 0xad
-	.word	172                             # 0xac
-	.word	171                             # 0xab
-	.word	170                             # 0xaa
-.LCPI0_13:
-	.word	169                             # 0xa9
-	.word	168                             # 0xa8
-	.word	167                             # 0xa7
-	.word	166                             # 0xa6
-	.word	165                             # 0xa5
-	.word	164                             # 0xa4
-	.word	163                             # 0xa3
-	.word	162                             # 0xa2
-.LCPI0_14:
-	.word	161                             # 0xa1
-	.word	160                             # 0xa0
-	.word	159                             # 0x9f
-	.word	158                             # 0x9e
-	.word	157                             # 0x9d
-	.word	156                             # 0x9c
-	.word	155                             # 0x9b
-	.word	154                             # 0x9a
-.LCPI0_15:
-	.word	153                             # 0x99
-	.word	152                             # 0x98
-	.word	151                             # 0x97
-	.word	150                             # 0x96
-	.word	149                             # 0x95
-	.word	148                             # 0x94
-	.word	147                             # 0x93
-	.word	146                             # 0x92
-.LCPI0_16:
-	.word	145                             # 0x91
-	.word	144                             # 0x90
-	.word	143                             # 0x8f
-	.word	142                             # 0x8e
-	.word	141                             # 0x8d
-	.word	140                             # 0x8c
-	.word	139                             # 0x8b
-	.word	138                             # 0x8a
-.LCPI0_17:
-	.word	137                             # 0x89
-	.word	136                             # 0x88
-	.word	135                             # 0x87
-	.word	134                             # 0x86
-	.word	133                             # 0x85
-	.word	132                             # 0x84
-	.word	131                             # 0x83
-	.word	130                             # 0x82
-.LCPI0_18:
-	.word	129                             # 0x81
-	.word	128                             # 0x80
-	.word	127                             # 0x7f
-	.word	126                             # 0x7e
-	.word	125                             # 0x7d
-	.word	124                             # 0x7c
-	.word	123                             # 0x7b
-	.word	122                             # 0x7a
-.LCPI0_19:
-	.word	121                             # 0x79
-	.word	120                             # 0x78
-	.word	119                             # 0x77
-	.word	118                             # 0x76
-	.word	117                             # 0x75
-	.word	116                             # 0x74
-	.word	115                             # 0x73
-	.word	114                             # 0x72
-.LCPI0_20:
-	.word	113                             # 0x71
-	.word	112                             # 0x70
-	.word	111                             # 0x6f
-	.word	110                             # 0x6e
-	.word	109                             # 0x6d
-	.word	108                             # 0x6c
-	.word	107                             # 0x6b
-	.word	106                             # 0x6a
-.LCPI0_21:
-	.word	105                             # 0x69
-	.word	104                             # 0x68
-	.word	103                             # 0x67
-	.word	102                             # 0x66
-	.word	101                             # 0x65
-	.word	100                             # 0x64
-	.word	99                              # 0x63
-	.word	98                              # 0x62
-.LCPI0_22:
-	.word	97                              # 0x61
-	.word	96                              # 0x60
-	.word	95                              # 0x5f
-	.word	94                              # 0x5e
-	.word	93                              # 0x5d
-	.word	92                              # 0x5c
-	.word	91                              # 0x5b
-	.word	90                              # 0x5a
-.LCPI0_23:
-	.word	89                              # 0x59
-	.word	88                              # 0x58
-	.word	87                              # 0x57
-	.word	86                              # 0x56
-	.word	85                              # 0x55
-	.word	84                              # 0x54
-	.word	83                              # 0x53
-	.word	82                              # 0x52
-.LCPI0_24:
-	.word	81                              # 0x51
-	.word	80                              # 0x50
-	.word	79                              # 0x4f
-	.word	78                              # 0x4e
-	.word	77                              # 0x4d
-	.word	76                              # 0x4c
-	.word	75                              # 0x4b
-	.word	74                              # 0x4a
-.LCPI0_25:
-	.word	73                              # 0x49
-	.word	72                              # 0x48
-	.word	71                              # 0x47
-	.word	70                              # 0x46
-	.word	69                              # 0x45
-	.word	68                              # 0x44
-	.word	67                              # 0x43
-	.word	66                              # 0x42
-.LCPI0_26:
-	.word	65                              # 0x41
-	.word	64                              # 0x40
-	.word	63                              # 0x3f
-	.word	62                              # 0x3e
-	.word	61                              # 0x3d
-	.word	60                              # 0x3c
-	.word	59                              # 0x3b
-	.word	58                              # 0x3a
-.LCPI0_27:
-	.word	57                              # 0x39
-	.word	56                              # 0x38
-	.word	55                              # 0x37
-	.word	54                              # 0x36
-	.word	53                              # 0x35
-	.word	52                              # 0x34
-	.word	51                              # 0x33
-	.word	50                              # 0x32
-.LCPI0_28:
-	.word	49                              # 0x31
-	.word	48                              # 0x30
-	.word	47                              # 0x2f
-	.word	46                              # 0x2e
-	.word	45                              # 0x2d
-	.word	44                              # 0x2c
-	.word	43                              # 0x2b
-	.word	42                              # 0x2a
-.LCPI0_29:
-	.word	41                              # 0x29
-	.word	40                              # 0x28
-	.word	39                              # 0x27
-	.word	38                              # 0x26
-	.word	37                              # 0x25
-	.word	36                              # 0x24
-	.word	35                              # 0x23
-	.word	34                              # 0x22
-.LCPI0_30:
-	.word	33                              # 0x21
-	.word	32                              # 0x20
-	.word	31                              # 0x1f
-	.word	30                              # 0x1e
-	.word	29                              # 0x1d
-	.word	28                              # 0x1c
-	.word	27                              # 0x1b
-	.word	26                              # 0x1a
-.LCPI0_31:
-	.word	25                              # 0x19
-	.word	24                              # 0x18
-	.word	23                              # 0x17
-	.word	22                              # 0x16
-	.word	21                              # 0x15
-	.word	20                              # 0x14
-	.word	19                              # 0x13
-	.word	18                              # 0x12
-.LCPI0_32:
-	.word	17                              # 0x11
-	.word	16                              # 0x10
-	.word	15                              # 0xf
-	.word	14                              # 0xe
-	.word	13                              # 0xd
-	.word	12                              # 0xc
-	.word	11                              # 0xb
-	.word	10                              # 0xa
-.LCPI0_33:
-	.word	9                               # 0x9
-	.word	8                               # 0x8
-	.word	7                               # 0x7
-	.word	6                               # 0x6
-	.word	5                               # 0x5
-	.word	4                               # 0x4
-	.word	3                               # 0x3
+	.word	0                               # 0x0
+	.word	1                               # 0x1
 	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.text
 	.globl	do_ari
 	.p2align	2
@@ -322,198 +35,80 @@ do_ari:                                 # @do_ari
 	pcalau12i	$a4, %pc_hi20(ari_pos)
 	st.w	$zero, $a4, %pc_lo12(ari_pos)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_1)
 	lu12i.w	$a0, 12320
 	ori	$a0, $a0, 256
-	lu32i.d	$a0, 394500
-	lu52i.d	$a0, $a0, 112
-	vreplgr2vr.d	$vr2, $a0
+	vreplgr2vr.w	$vr2, $a0
 	pcalau12i	$a0, %pc_hi20(char_to_index)
-	addi.d	$s2, $a0, %pc_lo12(char_to_index)
+	addi.d	$s5, $a0, %pc_lo12(char_to_index)
 	pcalau12i	$a0, %pc_hi20(index_to_char)
-	addi.d	$s3, $a0, %pc_lo12(index_to_char)
+	addi.d	$s6, $a0, %pc_lo12(index_to_char)
 	move	$a0, $zero
 	ori	$a1, $zero, 1024
 	.p2align	4, , 16
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr3, $xr1, 1
-	xvpickve2gr.d	$a2, $xr3, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a3, $xr3, 1
-	vinsgr2vr.w	$vr4, $a3, 1
-	xvpickve2gr.d	$a3, $xr3, 2
-	vinsgr2vr.w	$vr4, $a3, 2
-	xvpickve2gr.d	$a3, $xr3, 3
-	vinsgr2vr.w	$vr4, $a3, 3
-	xvpickve2gr.d	$a3, $xr0, 0
-	vinsgr2vr.w	$vr3, $a3, 0
-	xvpickve2gr.d	$a3, $xr0, 1
-	vinsgr2vr.w	$vr3, $a3, 1
-	xvpickve2gr.d	$a3, $xr0, 2
-	vinsgr2vr.w	$vr3, $a3, 2
-	xvpickve2gr.d	$a3, $xr0, 3
-	vinsgr2vr.w	$vr3, $a3, 3
-	vaddi.wu	$vr3, $vr3, 1
-	xvpermi.q	$xr4, $xr3, 2
-	xvstx	$xr4, $s2, $a0
-	add.d	$a2, $s3, $a2
-	vstelm.d	$vr2, $a2, 0, 0
-	xvaddi.du	$xr1, $xr1, 8
-	xvaddi.du	$xr0, $xr0, 8
+	vaddi.bu	$vr3, $vr2, 4
+	vaddi.du	$vr4, $vr0, 1
+	vaddi.du	$vr5, $vr1, 1
+	vpickve2gr.d	$a2, $vr5, 0
+	add.d	$a3, $s5, $a0
+	vpickev.w	$vr4, $vr4, $vr5
+	vpickev.w	$vr5, $vr0, $vr1
+	vaddi.wu	$vr5, $vr5, 5
+	vstx	$vr4, $s5, $a0
+	vst	$vr5, $a3, 16
+	add.d	$a2, $s6, $a2
+	vstelm.w	$vr2, $a2, 0, 0
+	vstelm.w	$vr3, $a2, 4, 0
+	vaddi.du	$vr1, $vr1, 8
+	vaddi.du	$vr0, $vr0, 8
 	addi.d	$a0, $a0, 32
 	vaddi.bu	$vr2, $vr2, 8
 	bne	$a0, $a1, .LBB0_1
-# %bb.2:                                # %vector.body43
-	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(freq)
-	addi.d	$s4, $a0, %pc_lo12(freq)
+# %bb.2:                                # %vector.body44.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_2)
-	xvrepli.w	$xr0, 1
-	xvst	$xr0, $s4, 0
-	xvst	$xr0, $s4, 32
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a0, %pc_hi20(freq)
+	addi.d	$s7, $a0, %pc_lo12(freq)
+	vrepli.w	$vr1, 1
 	pcalau12i	$a0, %pc_hi20(cum_freq)
-	addi.d	$s5, $a0, %pc_lo12(cum_freq)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_3)
-	xvst	$xr1, $s5, 0
-	xvst	$xr2, $s5, 32
-	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_4)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_5)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_5)
-	xvst	$xr0, $s4, 64
-	xvst	$xr0, $s4, 96
-	xvst	$xr1, $s5, 64
-	xvst	$xr2, $s5, 96
-	pcalau12i	$a0, %pc_hi20(.LCPI0_6)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_6)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_7)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_7)
-	xvst	$xr0, $s4, 128
-	xvst	$xr0, $s4, 160
-	xvst	$xr1, $s5, 128
-	xvst	$xr2, $s5, 160
-	pcalau12i	$a0, %pc_hi20(.LCPI0_8)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_8)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_9)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_9)
-	xvst	$xr0, $s4, 192
-	xvst	$xr0, $s4, 224
-	xvst	$xr1, $s5, 192
-	xvst	$xr2, $s5, 224
-	pcalau12i	$a0, %pc_hi20(.LCPI0_10)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_10)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_11)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_11)
-	xvst	$xr0, $s4, 256
-	xvst	$xr0, $s4, 288
-	xvst	$xr1, $s5, 256
-	xvst	$xr2, $s5, 288
-	pcalau12i	$a0, %pc_hi20(.LCPI0_12)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_12)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_13)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_13)
-	xvst	$xr0, $s4, 320
-	xvst	$xr0, $s4, 352
-	xvst	$xr1, $s5, 320
-	xvst	$xr2, $s5, 352
-	pcalau12i	$a0, %pc_hi20(.LCPI0_14)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_14)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_15)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_15)
-	xvst	$xr0, $s4, 384
-	xvst	$xr0, $s4, 416
-	xvst	$xr1, $s5, 384
-	xvst	$xr2, $s5, 416
-	pcalau12i	$a0, %pc_hi20(.LCPI0_16)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_16)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_17)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_17)
-	xvst	$xr0, $s4, 448
-	xvst	$xr0, $s4, 480
-	xvst	$xr1, $s5, 448
-	xvst	$xr2, $s5, 480
-	pcalau12i	$a0, %pc_hi20(.LCPI0_18)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_18)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_19)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_19)
-	xvst	$xr0, $s4, 512
-	xvst	$xr0, $s4, 544
-	xvst	$xr1, $s5, 512
-	xvst	$xr2, $s5, 544
-	pcalau12i	$a0, %pc_hi20(.LCPI0_20)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_20)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_21)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_21)
-	xvst	$xr0, $s4, 576
-	xvst	$xr0, $s4, 608
-	xvst	$xr1, $s5, 576
-	xvst	$xr2, $s5, 608
-	pcalau12i	$a0, %pc_hi20(.LCPI0_22)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_22)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_23)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_23)
-	xvst	$xr0, $s4, 640
-	xvst	$xr0, $s4, 672
-	xvst	$xr1, $s5, 640
-	xvst	$xr2, $s5, 672
-	pcalau12i	$a0, %pc_hi20(.LCPI0_24)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_24)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_25)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_25)
-	xvst	$xr0, $s4, 704
-	xvst	$xr0, $s4, 736
-	xvst	$xr1, $s5, 704
-	xvst	$xr2, $s5, 736
-	pcalau12i	$a0, %pc_hi20(.LCPI0_26)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_26)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_27)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_27)
-	xvst	$xr0, $s4, 768
-	xvst	$xr0, $s4, 800
-	xvst	$xr1, $s5, 768
-	xvst	$xr2, $s5, 800
-	pcalau12i	$a0, %pc_hi20(.LCPI0_28)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_28)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_29)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_29)
-	xvst	$xr0, $s4, 832
-	xvst	$xr0, $s4, 864
-	xvst	$xr1, $s5, 832
-	xvst	$xr2, $s5, 864
-	pcalau12i	$a0, %pc_hi20(.LCPI0_30)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_30)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_31)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_31)
-	xvst	$xr0, $s4, 896
-	xvst	$xr0, $s4, 928
-	xvst	$xr1, $s5, 896
-	xvst	$xr2, $s5, 928
-	pcalau12i	$a0, %pc_hi20(.LCPI0_32)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_32)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_33)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_33)
-	xvst	$xr0, $s4, 960
-	xvst	$xr0, $s4, 992
-	xvst	$xr1, $s5, 960
-	xvst	$xr2, $s5, 992
-	ori	$s6, $zero, 1
+	addi.d	$s8, $a0, %pc_lo12(cum_freq)
+	move	$a0, $zero
+	vrepli.w	$vr2, 257
+	vrepli.w	$vr3, 253
+	ori	$a1, $zero, 1024
+	.p2align	4, , 16
+.LBB0_3:                                # %vector.body44
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a2, $s7, $a0
+	vstx	$vr1, $s7, $a0
+	vst	$vr1, $a2, 16
+	add.d	$a2, $s8, $a0
+	vsub.w	$vr4, $vr2, $vr0
+	vsub.w	$vr5, $vr3, $vr0
+	vstx	$vr4, $s8, $a0
+	vst	$vr5, $a2, 16
+	addi.d	$a0, $a0, 32
+	vaddi.wu	$vr0, $vr0, 8
+	bne	$a0, $a1, .LBB0_3
+# %bb.4:                                # %.preheader.i
+	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
+	ori	$s2, $zero, 1
 	ori	$a0, $zero, 1
 	lu32i.d	$a0, 1
-	st.d	$a0, $s4, 1024
-	st.d	$s6, $s5, 1024
-	st.w	$zero, $s4, 0
+	st.d	$a0, $s7, 1024
+	st.d	$s2, $s8, 1024
+	st.w	$zero, $s7, 0
 	pcalau12i	$a0, %pc_hi20(buffer)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	st.w	$zero, $a0, %pc_lo12(buffer)
-	pcalau12i	$a0, %pc_hi20(bits_to_go)
-	ori	$a1, $zero, 8
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	st.w	$a1, $a0, %pc_lo12(bits_to_go)
+	pcalau12i	$a1, %pc_hi20(bits_to_go)
+	ori	$a0, $zero, 8
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.w	$a0, $a1, %pc_lo12(bits_to_go)
 	pcalau12i	$a0, %pc_hi20(low)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$zero, $a0, %pc_lo12(low)
@@ -521,73 +116,73 @@ do_ari:                                 # @do_ari
 	lu12i.w	$a1, 15
 	ori	$a1, $a1, 4095
 	st.d	$a1, $a0, %pc_lo12(high)
-	pcalau12i	$s8, %pc_hi20(bits_to_follow)
-	st.d	$zero, $s8, %pc_lo12(bits_to_follow)
+	pcalau12i	$s4, %pc_hi20(bits_to_follow)
+	st.d	$zero, $s4, %pc_lo12(bits_to_follow)
 	pcalau12i	$a0, %got_pc_hi20(rle)
-	ld.d	$s1, $a0, %got_pc_lo12(rle)
-	ld.d	$a0, $s1, 0
-	pcalau12i	$s7, %pc_hi20(rle_pos)
-	st.w	$s6, $s7, %pc_lo12(rle_pos)
+	ld.d	$s3, $a0, %got_pc_lo12(rle)
+	ld.d	$a0, $s3, 0
+	pcalau12i	$s1, %pc_hi20(rle_pos)
+	st.w	$s2, $s1, %pc_lo12(rle_pos)
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	beqz	$a1, .LBB0_19
-# %bb.3:                                # %.lr.ph.preheader
+	beqz	$a1, .LBB0_21
+# %bb.5:                                # %.lr.ph.preheader
 	move	$a1, $zero
 	lu12i.w	$a2, 3
 	ori	$a2, $a2, 4095
 	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
 	addi.w	$fp, $zero, -4
-	b	.LBB0_5
+	b	.LBB0_7
 	.p2align	4, , 16
-.LBB0_4:                                # %update_model.exit
-                                        #   in Loop: Header=BB0_5 Depth=1
-	ld.w	$a1, $s7, %pc_lo12(rle_pos)
-	ld.d	$a0, $s1, 0
+.LBB0_6:                                # %update_model.exit
+                                        #   in Loop: Header=BB0_7 Depth=1
+	ld.w	$a1, $s1, %pc_lo12(rle_pos)
+	ld.d	$a0, $s3, 0
 	addi.w	$a2, $a1, 1
-	st.w	$a2, $s7, %pc_lo12(rle_pos)
+	st.w	$a2, $s1, %pc_lo12(rle_pos)
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
-	bltu	$a3, $a2, .LBB0_19
-.LBB0_5:                                # %.lr.ph
+	bltu	$a3, $a2, .LBB0_21
+.LBB0_7:                                # %.lr.ph
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_7 Depth 2
                                         #     Child Loop BB0_9 Depth 2
-                                        #     Child Loop BB0_15 Depth 2
-                                        #     Child Loop BB0_18 Depth 2
+                                        #     Child Loop BB0_11 Depth 2
+                                        #     Child Loop BB0_17 Depth 2
+                                        #     Child Loop BB0_20 Depth 2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a0, $a0, $a1
 	slli.d	$a0, $a0, 2
-	ldx.w	$s0, $s2, $a0
+	ldx.w	$s0, $s5, $a0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(encode_symbol)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s5, 0
+	ld.w	$a0, $s8, 0
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	bne	$a0, $a1, .LBB0_8
-# %bb.6:                                # %.preheader.i5.preheader
-                                        #   in Loop: Header=BB0_5 Depth=1
+	bne	$a0, $a1, .LBB0_10
+# %bb.8:                                # %.preheader.i5.preheader
+                                        #   in Loop: Header=BB0_7 Depth=1
 	move	$a0, $zero
 	ori	$a1, $zero, 1028
 	.p2align	4, , 16
-.LBB0_7:                                # %.preheader.i5
-                                        #   Parent Loop BB0_5 Depth=1
+.LBB0_9:                                # %.preheader.i5
+                                        #   Parent Loop BB0_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.w	$a2, $s4, $a1
+	ldx.w	$a2, $s7, $a1
 	addi.d	$a2, $a2, 1
 	bstrpick.d	$a3, $a2, 31, 31
 	add.w	$a2, $a2, $a3
 	srai.d	$a2, $a2, 1
-	stx.w	$a2, $s4, $a1
-	stx.w	$a0, $s5, $a1
+	stx.w	$a2, $s7, $a1
+	stx.w	$a0, $s8, $a1
 	addi.d	$a1, $a1, -4
 	add.d	$a0, $a2, $a0
-	bne	$a1, $fp, .LBB0_7
-.LBB0_8:                                # %.loopexit.i
-                                        #   in Loop: Header=BB0_5 Depth=1
+	bne	$a1, $fp, .LBB0_9
+.LBB0_10:                               # %.loopexit.i
+                                        #   in Loop: Header=BB0_7 Depth=1
 	addi.d	$a1, $s0, 1
-	alsl.d	$a3, $s0, $s4, 2
+	alsl.d	$a3, $s0, $s7, 2
 	move	$a5, $s0
 	addi.d	$a2, $zero, -1
 	.p2align	4, , 16
-.LBB0_9:                                #   Parent Loop BB0_5 Depth=1
+.LBB0_11:                               #   Parent Loop BB0_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a0, $a5
 	ld.w	$a4, $a3, 0
@@ -596,97 +191,96 @@ do_ari:                                 # @do_ari
 	addi.w	$a2, $a2, 1
 	addi.d	$a1, $a1, -1
 	addi.w	$a5, $a5, -1
-	beq	$a4, $a6, .LBB0_9
-# %bb.10:                               #   in Loop: Header=BB0_5 Depth=1
+	beq	$a4, $a6, .LBB0_11
+# %bb.12:                               #   in Loop: Header=BB0_7 Depth=1
 	sub.w	$a5, $s0, $a2
-	bge	$a5, $s0, .LBB0_12
-# %bb.11:                               #   in Loop: Header=BB0_5 Depth=1
-	ldx.bu	$a6, $s3, $s0
-	ldx.bu	$a7, $s3, $a1
-	stx.b	$a6, $s3, $a1
-	stx.b	$a7, $s3, $s0
+	bge	$a5, $s0, .LBB0_14
+# %bb.13:                               #   in Loop: Header=BB0_7 Depth=1
+	ldx.bu	$a6, $s6, $s0
+	ldx.bu	$a7, $s6, $a1
+	stx.b	$a6, $s6, $a1
+	stx.b	$a7, $s6, $s0
 	slli.d	$a7, $a7, 2
-	stx.w	$s0, $s2, $a7
+	stx.w	$s0, $s5, $a7
 	slli.d	$a6, $a6, 2
-	stx.w	$a5, $s2, $a6
-.LBB0_12:                               #   in Loop: Header=BB0_5 Depth=1
+	stx.w	$a5, $s5, $a6
+.LBB0_14:                               #   in Loop: Header=BB0_7 Depth=1
 	addi.d	$a4, $a4, 1
 	st.w	$a4, $a3, 4
-	blez	$a1, .LBB0_4
-# %bb.13:                               # %.lr.ph.preheader.i
-                                        #   in Loop: Header=BB0_5 Depth=1
+	blez	$a1, .LBB0_6
+# %bb.15:                               # %.lr.ph.preheader.i
+                                        #   in Loop: Header=BB0_7 Depth=1
 	bstrpick.d	$a1, $a5, 31, 0
 	xor	$a2, $s0, $a2
 	sltu	$a3, $zero, $a2
 	sub.d	$a2, $a1, $a3
 	addi.d	$a2, $a2, 1
-	ori	$a4, $zero, 8
-	bltu	$a2, $a4, .LBB0_17
-# %bb.14:                               # %vector.ph53
-                                        #   in Loop: Header=BB0_5 Depth=1
+	ori	$a4, $zero, 4
+	bltu	$a2, $a4, .LBB0_19
+# %bb.16:                               # %vector.ph52
+                                        #   in Loop: Header=BB0_7 Depth=1
 	sub.d	$a4, $zero, $a3
-	addi.w	$a5, $zero, -8
-	and	$a3, $a2, $a5
+	and	$a3, $a2, $fp
 	sub.d	$a1, $a1, $a3
-	bstrpick.d	$a6, $a0, 31, 0
-	alsl.d	$a0, $a6, $s5, 2
-	addi.d	$a0, $a0, -32
-	add.d	$a4, $a4, $a6
+	bstrpick.d	$a5, $a0, 31, 0
+	alsl.d	$a0, $a5, $s8, 2
+	addi.d	$a0, $a0, -16
+	add.d	$a4, $a4, $a5
 	addi.d	$a4, $a4, 1
-	and	$a4, $a4, $a5
+	and	$a4, $a4, $fp
 	.p2align	4, , 16
-.LBB0_15:                               # %vector.body54
-                                        #   Parent Loop BB0_5 Depth=1
+.LBB0_17:                               # %vector.body53
+                                        #   Parent Loop BB0_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a0, 0
-	xvaddi.wu	$xr0, $xr0, 1
-	xvst	$xr0, $a0, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a0, $a0, -32
-	bnez	$a4, .LBB0_15
-# %bb.16:                               # %middle.block58
-                                        #   in Loop: Header=BB0_5 Depth=1
-	beq	$a2, $a3, .LBB0_4
-.LBB0_17:                               # %.lr.ph.i.preheader
-                                        #   in Loop: Header=BB0_5 Depth=1
+	vld	$vr0, $a0, 0
+	vaddi.wu	$vr0, $vr0, 1
+	vst	$vr0, $a0, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a0, $a0, -16
+	bnez	$a4, .LBB0_17
+# %bb.18:                               # %middle.block57
+                                        #   in Loop: Header=BB0_7 Depth=1
+	beq	$a2, $a3, .LBB0_6
+.LBB0_19:                               # %.lr.ph.i.preheader
+                                        #   in Loop: Header=BB0_7 Depth=1
 	addi.d	$a0, $a1, 1
-	alsl.d	$a1, $a1, $s5, 2
+	alsl.d	$a1, $a1, $s8, 2
 	addi.d	$a1, $a1, -4
 	.p2align	4, , 16
-.LBB0_18:                               # %.lr.ph.i
-                                        #   Parent Loop BB0_5 Depth=1
+.LBB0_20:                               # %.lr.ph.i
+                                        #   Parent Loop BB0_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a2, $a1, 0
 	addi.d	$a2, $a2, 1
 	st.w	$a2, $a1, 0
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, -4
-	bltu	$s6, $a0, .LBB0_18
-	b	.LBB0_4
-.LBB0_19:                               # %._crit_edge
+	bltu	$s2, $a0, .LBB0_20
+	b	.LBB0_6
+.LBB0_21:                               # %._crit_edge
 	ori	$a0, $zero, 257
 	pcaddu18i	$ra, %call36(encode_symbol)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s8, %pc_lo12(bits_to_follow)
+	ld.d	$a0, $s4, %pc_lo12(bits_to_follow)
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a2, $a1, %pc_lo12(low)
 	ld.d	$t0, $sp, 24                    # 8-byte Folded Reload
 	ld.wu	$a3, $t0, %pc_lo12(buffer)
 	addi.d	$a1, $a0, 1
-	st.d	$a1, $s8, %pc_lo12(bits_to_follow)
+	st.d	$a1, $s4, %pc_lo12(bits_to_follow)
 	lu12i.w	$a0, 3
 	ori	$a4, $a0, 4095
 	srli.d	$a0, $a3, 1
-	blt	$a4, $a2, .LBB0_27
-# %bb.20:
+	blt	$a4, $a2, .LBB0_29
+# %bb.22:
 	ld.d	$t1, $sp, 16                    # 8-byte Folded Reload
 	ld.w	$a2, $t1, %pc_lo12(bits_to_go)
 	st.w	$a0, $t0, %pc_lo12(buffer)
 	addi.w	$a2, $a2, -1
 	st.w	$a2, $t1, %pc_lo12(bits_to_go)
 	ld.d	$a7, $sp, 32                    # 8-byte Folded Reload
-	bnez	$a2, .LBB0_22
-# %bb.21:
+	bnez	$a2, .LBB0_24
+# %bb.23:
 	pcalau12i	$a1, %got_pc_hi20(ari)
 	ld.d	$a1, $a1, %got_pc_lo12(ari)
 	ld.wu	$a2, $a7, %pc_lo12(ari_pos)
@@ -694,42 +288,42 @@ do_ari:                                 # @do_ari
 	addi.d	$a3, $a2, 1
 	st.w	$a3, $a7, %pc_lo12(ari_pos)
 	stx.b	$a0, $a1, $a2
-	ld.d	$a1, $s8, %pc_lo12(bits_to_follow)
+	ld.d	$a1, $s4, %pc_lo12(bits_to_follow)
 	ori	$a2, $zero, 8
 	st.w	$a2, $t1, %pc_lo12(bits_to_go)
-.LBB0_22:                               # %output_bit.exit.i.i
-	blez	$a1, .LBB0_35
-# %bb.23:                               # %.lr.ph.split.us.i.i.preheader
+.LBB0_24:                               # %output_bit.exit.i.i
+	blez	$a1, .LBB0_37
+# %bb.25:                               # %.lr.ph.split.us.i.i.preheader
 	addi.w	$a3, $zero, -258
 	lu32i.d	$a3, 0
 	pcalau12i	$a4, %got_pc_hi20(ari)
 	ld.d	$a4, $a4, %got_pc_lo12(ari)
 	ori	$a5, $zero, 1
-	b	.LBB0_25
+	b	.LBB0_27
 	.p2align	4, , 16
-.LBB0_24:                               # %output_bit.exit4.us.i.i
-                                        #   in Loop: Header=BB0_25 Depth=1
+.LBB0_26:                               # %output_bit.exit4.us.i.i
+                                        #   in Loop: Header=BB0_27 Depth=1
 	move	$a6, $a1
 	addi.d	$a1, $a1, -1
-	st.d	$a1, $s8, %pc_lo12(bits_to_follow)
-	bge	$a5, $a6, .LBB0_34
-.LBB0_25:                               # %.lr.ph.split.us.i.i
+	st.d	$a1, $s4, %pc_lo12(bits_to_follow)
+	bge	$a5, $a6, .LBB0_36
+.LBB0_27:                               # %.lr.ph.split.us.i.i
                                         # =>This Inner Loop Header: Depth=1
 	and	$a0, $a0, $a3
 	srli.d	$a0, $a0, 1
 	addi.w	$a2, $a2, -1
 	addi.d	$a0, $a0, 128
-	bnez	$a2, .LBB0_24
-# %bb.26:                               #   in Loop: Header=BB0_25 Depth=1
+	bnez	$a2, .LBB0_26
+# %bb.28:                               #   in Loop: Header=BB0_27 Depth=1
 	ld.wu	$a1, $a7, %pc_lo12(ari_pos)
 	ld.d	$a2, $a4, 0
 	addi.d	$a6, $a1, 1
 	st.w	$a6, $a7, %pc_lo12(ari_pos)
 	stx.b	$a0, $a2, $a1
-	ld.d	$a1, $s8, %pc_lo12(bits_to_follow)
+	ld.d	$a1, $s4, %pc_lo12(bits_to_follow)
 	ori	$a2, $zero, 8
-	b	.LBB0_24
-.LBB0_27:
+	b	.LBB0_26
+.LBB0_29:
 	ld.d	$t1, $sp, 16                    # 8-byte Folded Reload
 	ld.w	$a2, $t1, %pc_lo12(bits_to_go)
 	ori	$a0, $a0, 128
@@ -737,8 +331,8 @@ do_ari:                                 # @do_ari
 	addi.w	$a2, $a2, -1
 	st.w	$a2, $t1, %pc_lo12(bits_to_go)
 	ld.d	$a7, $sp, 32                    # 8-byte Folded Reload
-	bnez	$a2, .LBB0_29
-# %bb.28:
+	bnez	$a2, .LBB0_31
+# %bb.30:
 	pcalau12i	$a1, %got_pc_hi20(ari)
 	ld.d	$a1, $a1, %got_pc_lo12(ari)
 	ld.wu	$a2, $a7, %pc_lo12(ari_pos)
@@ -746,41 +340,41 @@ do_ari:                                 # @do_ari
 	addi.d	$a3, $a2, 1
 	st.w	$a3, $a7, %pc_lo12(ari_pos)
 	stx.b	$a0, $a1, $a2
-	ld.d	$a1, $s8, %pc_lo12(bits_to_follow)
+	ld.d	$a1, $s4, %pc_lo12(bits_to_follow)
 	ori	$a2, $zero, 8
 	st.w	$a2, $t1, %pc_lo12(bits_to_go)
-.LBB0_29:                               # %output_bit.exit.i1.i
-	blez	$a1, .LBB0_35
-# %bb.30:                               # %.lr.ph.split.i.i.preheader
+.LBB0_31:                               # %output_bit.exit.i1.i
+	blez	$a1, .LBB0_37
+# %bb.32:                               # %.lr.ph.split.i.i.preheader
 	pcalau12i	$a3, %got_pc_hi20(ari)
 	ld.d	$a3, $a3, %got_pc_lo12(ari)
 	ori	$a4, $zero, 1
-	b	.LBB0_32
+	b	.LBB0_34
 	.p2align	4, , 16
-.LBB0_31:                               # %output_bit.exit4.i.i
-                                        #   in Loop: Header=BB0_32 Depth=1
+.LBB0_33:                               # %output_bit.exit4.i.i
+                                        #   in Loop: Header=BB0_34 Depth=1
 	move	$a5, $a1
 	addi.d	$a1, $a1, -1
-	st.d	$a1, $s8, %pc_lo12(bits_to_follow)
-	bge	$a4, $a5, .LBB0_34
-.LBB0_32:                               # %.lr.ph.split.i.i
+	st.d	$a1, $s4, %pc_lo12(bits_to_follow)
+	bge	$a4, $a5, .LBB0_36
+.LBB0_34:                               # %.lr.ph.split.i.i
                                         # =>This Inner Loop Header: Depth=1
 	addi.w	$a2, $a2, -1
 	bstrpick.d	$a0, $a0, 31, 1
-	bnez	$a2, .LBB0_31
-# %bb.33:                               #   in Loop: Header=BB0_32 Depth=1
+	bnez	$a2, .LBB0_33
+# %bb.35:                               #   in Loop: Header=BB0_34 Depth=1
 	ld.wu	$a1, $a7, %pc_lo12(ari_pos)
 	ld.d	$a2, $a3, 0
 	addi.d	$a5, $a1, 1
 	st.w	$a5, $a7, %pc_lo12(ari_pos)
 	stx.b	$a0, $a2, $a1
-	ld.d	$a1, $s8, %pc_lo12(bits_to_follow)
+	ld.d	$a1, $s4, %pc_lo12(bits_to_follow)
 	ori	$a2, $zero, 8
-	b	.LBB0_31
-.LBB0_34:                               # %bit_plus_follow.exit.sink.split.i
+	b	.LBB0_33
+.LBB0_36:                               # %bit_plus_follow.exit.sink.split.i
 	st.w	$a0, $t0, %pc_lo12(buffer)
 	st.w	$a2, $t1, %pc_lo12(bits_to_go)
-.LBB0_35:                               # %done_encoding.exit
+.LBB0_37:                               # %done_encoding.exit
 	srl.w	$a0, $a0, $a2
 	pcalau12i	$a1, %got_pc_hi20(ari)
 	ld.d	$a1, $a1, %got_pc_lo12(ari)
@@ -1027,7 +621,7 @@ ari_pos:
 	.comm	char_to_index,1024,4
 	.type	cum_freq,@object                # @cum_freq
 	.local	cum_freq
-	.comm	cum_freq,1032,32
+	.comm	cum_freq,1032,4
 	.type	low,@object                     # @low
 	.globl	low
 	.p2align	3, 0x0
@@ -1060,6 +654,6 @@ bits_to_follow:
 	.comm	index_to_char,258,1
 	.type	freq,@object                    # @freq
 	.local	freq
-	.comm	freq,1032,32
+	.comm	freq,1032,4
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

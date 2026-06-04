@@ -6,18 +6,18 @@
 	.type	readgraph,@function
 readgraph:                              # @readgraph
 # %bb.0:
-	addi.d	$sp, $sp, -176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(numnodes)
 	ld.d	$s5, $a0, %got_pc_lo12(numnodes)
@@ -27,7 +27,7 @@ readgraph:                              # @readgraph
 	ori	$s6, $zero, 1
 	lu12i.w	$a0, 415350
 	ori	$a0, $a0, 1125
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.2)
 	lu12i.w	$a0, 423654
@@ -43,22 +43,22 @@ readgraph:                              # @readgraph
 	lu52i.d	$s4, $a0, 1943
 	.p2align	4, , 16
 .LBB0_1:                                # =>This Inner Loop Header: Depth=1
-	addi.d	$a2, $sp, 56
+	addi.d	$a2, $sp, 40
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s6, .LBB0_13
 # %bb.2:                                #   in Loop: Header=BB0_1 Depth=1
-	ld.w	$a0, $sp, 56
-	ld.bu	$a1, $sp, 60
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	ld.w	$a0, $sp, 40
+	ld.bu	$a1, $sp, 44
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	xor	$a0, $a0, $a2
 	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_27
 # %bb.3:                                #   in Loop: Header=BB0_1 Depth=1
-	addi.d	$a2, $sp, 52
-	addi.d	$a3, $sp, 48
+	addi.d	$a2, $sp, 36
+	addi.d	$a3, $sp, 32
 	move	$a0, $fp
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
@@ -66,49 +66,49 @@ readgraph:                              # @readgraph
 	ori	$a1, $zero, 2
 	bne	$a0, $a1, .LBB0_21
 # %bb.4:                                #   in Loop: Header=BB0_1 Depth=1
-	ld.w	$a1, $sp, 52
+	ld.w	$a1, $sp, 36
 	ld.w	$a0, $s5, 0
 	bge	$a0, $a1, .LBB0_6
 # %bb.5:                                #   in Loop: Header=BB0_1 Depth=1
 	st.w	$a1, $s5, 0
 	move	$a0, $a1
 .LBB0_6:                                #   in Loop: Header=BB0_1 Depth=1
-	ld.w	$a1, $sp, 48
+	ld.w	$a1, $sp, 32
 	bge	$a0, $a1, .LBB0_8
 # %bb.7:                                #   in Loop: Header=BB0_1 Depth=1
 	st.w	$a1, $s5, 0
 .LBB0_8:                                #   in Loop: Header=BB0_1 Depth=1
-	addi.d	$a2, $sp, 56
+	addi.d	$a2, $sp, 40
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 56
-	ld.w	$a1, $sp, 59
+	ld.w	$a0, $sp, 40
+	ld.w	$a1, $sp, 43
 	xor	$a0, $a0, $s8
 	xor	$a1, $a1, $s7
 	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_23
 # %bb.9:                                #   in Loop: Header=BB0_1 Depth=1
-	addi.d	$a2, $sp, 44
+	addi.d	$a2, $sp, 28
 	move	$a0, $fp
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s6, .LBB0_22
 # %bb.10:                               #   in Loop: Header=BB0_1 Depth=1
-	addi.d	$a2, $sp, 56
+	addi.d	$a2, $sp, 40
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 56
-	ld.bu	$a1, $sp, 64
+	ld.d	$a0, $sp, 40
+	ld.bu	$a1, $sp, 48
 	xor	$a0, $a0, $s4
 	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_24
 # %bb.11:                               #   in Loop: Header=BB0_1 Depth=1
-	addi.d	$a2, $sp, 40
+	addi.d	$a2, $sp, 24
 	move	$a0, $fp
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
@@ -156,7 +156,7 @@ readgraph:                              # @readgraph
 .LBB0_15:                               # %.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
-	addi.d	$a2, $sp, 56
+	addi.d	$a2, $sp, 40
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
@@ -169,12 +169,10 @@ readgraph:                              # @readgraph
 	addi.d	$s1, $a0, %pc_lo12(.L.str)
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.7)
-	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB0_18
 	.p2align	4, , 16
 .LBB0_17:                               #   in Loop: Header=BB0_18 Depth=1
-	addi.d	$a2, $sp, 56
+	addi.d	$a2, $sp, 40
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
@@ -182,40 +180,40 @@ readgraph:                              # @readgraph
 	bne	$a0, $s5, .LBB0_20
 .LBB0_18:                               # %.lr.ph48
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a0, $sp, 56
-	ld.bu	$a1, $sp, 60
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	ld.w	$a0, $sp, 40
+	ld.bu	$a1, $sp, 44
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	xor	$a0, $a0, $a2
 	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_17
 # %bb.19:                               #   in Loop: Header=BB0_18 Depth=1
-	addi.d	$a2, $sp, 52
-	addi.d	$a3, $sp, 48
+	addi.d	$a2, $sp, 36
+	addi.d	$a3, $sp, 32
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	addi.d	$a2, $sp, 56
+	addi.d	$a2, $sp, 40
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	addi.d	$a2, $sp, 44
+	addi.d	$a2, $sp, 28
 	move	$a0, $fp
 	move	$a1, $s2
-	pcaddu18i	$ra, %call36(__isoc99_fscanf)
-	jirl	$ra, $ra, 0
-	addi.d	$a2, $sp, 56
-	move	$a0, $fp
-	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	addi.d	$a2, $sp, 40
 	move	$a0, $fp
+	move	$a1, $s1
+	pcaddu18i	$ra, %call36(__isoc99_fscanf)
+	jirl	$ra, $ra, 0
+	addi.d	$a2, $sp, 24
+	move	$a0, $fp
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 52
+	ld.w	$a0, $sp, 36
 	ld.d	$s4, $s3, 0
 	slli.d	$s6, $a0, 3
 	ldx.d	$s7, $s4, $s6
@@ -225,21 +223,20 @@ readgraph:                              # @readgraph
 	stx.d	$a0, $s4, $s6
 	st.d	$s7, $a0, 32
 	ldx.d	$a0, $s4, $s6
-	ld.w	$a1, $sp, 48
+	ld.w	$a1, $sp, 32
 	st.w	$a1, $a0, 0
-	ld.w	$s6, $sp, 52
-	ld.w	$a0, $sp, 44
+	ld.w	$s6, $sp, 36
+	ld.w	$a0, $sp, 28
 	slli.d	$a2, $s6, 3
 	ldx.d	$a2, $s4, $a2
 	st.w	$a0, $a2, 8
-	st.w	$a0, $a2, 4
-	ld.w	$a3, $sp, 40
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	ld.w	$a3, $sp, 24
+	st.d	$zero, $a2, 20
 	slli.d	$s7, $a1, 3
 	ldx.d	$s8, $s4, $s7
-	vinsgr2vr.w	$vr0, $a0, 0
-	vinsgr2vr.w	$vr0, $a3, 1
-	vst	$vr0, $a2, 12
+	st.w	$a0, $a2, 4
+	st.w	$a0, $a2, 12
+	st.w	$a3, $a2, 16
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -247,31 +244,30 @@ readgraph:                              # @readgraph
 	st.d	$s8, $a0, 32
 	ldx.d	$a0, $s4, $s7
 	st.w	$s6, $a0, 0
-	ld.w	$a0, $sp, 48
-	ld.w	$a1, $sp, 44
+	ld.w	$a0, $sp, 32
+	ld.w	$a1, $sp, 28
 	slli.d	$a0, $a0, 3
 	ldx.d	$a0, $s4, $a0
-	ld.w	$a2, $sp, 40
+	ld.w	$a2, $sp, 24
 	st.w	$a1, $a0, 8
 	st.w	$a1, $a0, 4
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vinsgr2vr.w	$vr0, $a1, 0
-	vinsgr2vr.w	$vr0, $a2, 1
-	vst	$vr0, $a0, 12
+	st.w	$a1, $a0, 12
+	st.w	$a2, $a0, 16
+	st.d	$zero, $a0, 20
 	b	.LBB0_17
 .LBB0_20:                               # %._crit_edge
-	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB0_21:
 	pcalau12i	$a0, %got_pc_hi20(fpo)
@@ -359,7 +355,7 @@ readgraph:                              # @readgraph
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.17)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.17)
-	addi.d	$a2, $sp, 56
+	addi.d	$a2, $sp, 40
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 .LBB0_28:

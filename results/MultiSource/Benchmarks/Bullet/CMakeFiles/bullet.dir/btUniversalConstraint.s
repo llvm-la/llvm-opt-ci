@@ -10,20 +10,20 @@ _ZN21btUniversalConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_: # @_ZN21btUnive
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	.cfi_def_cfa_offset 112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 16                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -128
+	.cfi_def_cfa_offset 128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 32                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -47,6 +47,8 @@ _ZN21btUniversalConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_: # @_ZN21btUnive
 	dbar	20
 	pcalau12i	$a0, %pc_hi20(_ZZN11btTransform11getIdentityEvE17identityTransform)
 	addi.d	$s5, $a0, %pc_lo12(_ZZN11btTransform11getIdentityEvE17identityTransform)
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	beqz	$a6, .LBB0_3
 .LBB0_1:                                # %_ZN11btTransform11getIdentityEv.exit
 	ld.b	$a0, $s6, %pc_lo12(_ZGVZN11btTransform11getIdentityEvE17identityTransform)
@@ -266,8 +268,9 @@ _ZN21btUniversalConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_: # @_ZN21btUnive
 	fst.s	$fa5, $fp, 192
 	fst.s	$fa1, $fp, 196
 	fst.s	$fa0, $fp, 200
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 728
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $fp, 728
+	vst	$vr0, $fp, 744
 	bstrins.d	$a0, $a1, 63, 32
 	bstrpick.d	$a1, $a2, 31, 0
 	st.w	$zero, $fp, 172
@@ -291,19 +294,19 @@ _ZN21btUniversalConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_: # @_ZN21btUnive
 	lu12i.w	$a0, 263302
 	ori	$a0, $a0, 3076
 	st.w	$a0, $fp, 984
-	fld.d	$fs2, $sp, 16                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	fld.d	$fs2, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 48                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .LBB0_3:
 	pcalau12i	$a0, %pc_hi20(_ZGVZN11btTransform11getIdentityEvE17identityTransform)
@@ -318,11 +321,13 @@ _ZN21btUniversalConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_: # @_ZN21btUnive
 	jirl	$ra, $ra, 0
 .Ltmp1:                                 # EH_LABEL
 # %bb.5:
-	xvld	$xr0, $a0, 0
-	vld	$vr1, $a0, 32
-	xvst	$xr0, $s5, 0
-	vst	$vr1, $s5, 32
-	vrepli.b	$vr0, 0
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 32
+	vst	$vr0, $s5, 0
+	vst	$vr1, $s5, 16
+	vst	$vr2, $s5, 32
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $s5, 48
 	pcalau12i	$a0, %pc_hi20(_ZGVZN11btTransform11getIdentityEvE17identityTransform)
 	addi.d	$a0, $a0, %pc_lo12(_ZGVZN11btTransform11getIdentityEvE17identityTransform)
@@ -342,11 +347,13 @@ _ZN21btUniversalConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_: # @_ZN21btUnive
 	jirl	$ra, $ra, 0
 .Ltmp4:                                 # EH_LABEL
 # %bb.8:
-	xvld	$xr0, $a0, 0
-	vld	$vr1, $a0, 32
-	xvst	$xr0, $s5, 0
-	vst	$vr1, $s5, 32
-	vrepli.b	$vr0, 0
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 32
+	vst	$vr0, $s5, 0
+	vst	$vr1, $s5, 16
+	vst	$vr2, $s5, 32
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $s5, 48
 	pcalau12i	$a0, %pc_hi20(_ZGVZN11btTransform11getIdentityEvE17identityTransform)
 	addi.d	$a0, $a0, %pc_lo12(_ZGVZN11btTransform11getIdentityEvE17identityTransform)

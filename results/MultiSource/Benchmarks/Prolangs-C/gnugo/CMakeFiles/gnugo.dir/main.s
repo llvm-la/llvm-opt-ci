@@ -1,11 +1,7 @@
 	.file	"main.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
 .LCPI0_0:
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	1                               # 0x1
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	1                               # 0x1
@@ -227,11 +223,13 @@ main:                                   # @main
 .LBB0_4:                                # %.preheader20.preheader
 	pcalau12i	$a0, %pc_hi20(opn)
 	addi.d	$a0, $a0, %pc_lo12(opn)
+	vrepli.w	$vr0, 1
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_0)
+	vld	$vr1, $a1, %pc_lo12(.LCPI0_0)
+	vst	$vr0, $a0, 0
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr1, $a0, 16
 	pcalau12i	$a0, %pc_hi20(p)
 	addi.d	$a0, $a0, %pc_lo12(p)
 	ori	$a2, $zero, 361
@@ -498,7 +496,7 @@ uk:
 	.type	opn,@object                     # @opn
 	.bss
 	.globl	opn
-	.p2align	5, 0x0
+	.p2align	4, 0x0
 opn:
 	.space	36
 	.size	opn, 36

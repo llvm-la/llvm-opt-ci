@@ -951,8 +951,9 @@ cli_ac_scanbuff:                        # @cli_ac_scanbuff
 # %bb.2:
 	move	$a3, $a1
 	st.d	$zero, $sp, 176
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 144
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 160
+	vst	$vr0, $sp, 144
 	beqz	$a1, .LBB7_184
 # %bb.3:                                # %.preheader345.lr.ph
 	move	$s7, $a0
@@ -1849,18 +1850,18 @@ cli_ac_scanbuff:                        # @cli_ac_scanbuff
 	beqz	$a0, .LBB7_173
 # %bb.168:                              # %.lr.ph414.preheader
                                         #   in Loop: Header=BB7_60 Depth=3
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 4
 	bgeu	$a0, $a1, .LBB7_170
 # %bb.169:                              #   in Loop: Header=BB7_60 Depth=3
 	move	$a1, $zero
-	ld.d	$t4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB7_174
 .LBB7_170:                              # %vector.ph
                                         #   in Loop: Header=BB7_60 Depth=3
-	bstrpick.d	$a1, $a0, 15, 3
-	slli.d	$a1, $a1, 3
-	ld.d	$t4, $sp, 48                    # 8-byte Folded Reload
-	addi.d	$a2, $t4, 32
+	bstrpick.d	$a1, $a0, 15, 2
+	slli.d	$a1, $a1, 2
+	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
+	addi.d	$a2, $t0, 16
 	move	$a3, $a1
 	.p2align	4, , 16
 .LBB7_171:                              # %vector.body
@@ -1868,24 +1869,16 @@ cli_ac_scanbuff:                        # @cli_ac_scanbuff
                                         #     Parent Loop BB7_14 Depth=2
                                         #       Parent Loop BB7_60 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ld.d	$a4, $a2, -32
-	ld.d	$a5, $a2, -24
-	ld.d	$a6, $a2, -16
-	ld.d	$a7, $a2, -8
-	ld.d	$t0, $a2, 0
-	ld.d	$t1, $a2, 8
-	ld.d	$t2, $a2, 16
-	ld.d	$t3, $a2, 24
+	ld.d	$a4, $a2, -16
+	ld.d	$a5, $a2, -8
+	ld.d	$a6, $a2, 0
+	ld.d	$a7, $a2, 8
 	st.w	$zero, $a4, 0
 	st.w	$zero, $a5, 0
 	st.w	$zero, $a6, 0
 	st.w	$zero, $a7, 0
-	st.w	$zero, $t0, 0
-	st.w	$zero, $t1, 0
-	st.w	$zero, $t2, 0
-	st.w	$zero, $t3, 0
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 64
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB7_171
 # %bb.172:                              # %middle.block
                                         #   in Loop: Header=BB7_60 Depth=3
@@ -1895,7 +1888,7 @@ cli_ac_scanbuff:                        # @cli_ac_scanbuff
 	b	.LBB7_144
 .LBB7_174:                              # %.lr.ph414.preheader696
                                         #   in Loop: Header=BB7_60 Depth=3
-	alsl.d	$a2, $a1, $t4, 3
+	alsl.d	$a2, $a1, $t0, 3
 	sub.d	$a0, $a0, $a1
 	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	.p2align	4, , 16

@@ -15543,9 +15543,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $sp, 1080
 	pcalau12i	$a2, %pc_hi20(.L.str.14)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.14)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.d	$a2, $a2, 53
@@ -15970,9 +15972,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $sp, 664
 	pcalau12i	$a2, %pc_hi20(.L.str.17)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.17)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.d	$a2, $a2, 53
@@ -16845,8 +16849,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.20)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.20)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	lu12i.w	$a2, 1
@@ -17036,13 +17042,15 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.24)
-	addi.d	$s1, $a2, %pc_lo12(.L.str.24)
-	xvld	$xr0, $s1, 0
-	xvst	$xr0, $a0, 0
-	vld	$vr0, $s1, 32
-	ld.w	$s5, $s1, 47
+	addi.d	$s0, $a2, %pc_lo12(.L.str.24)
+	vld	$vr0, $s0, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s0, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s0, 32
+	ld.w	$s2, $s0, 47
 	vst	$vr0, $a0, 32
-	st.w	$s5, $a0, 47
+	st.w	$s2, $a0, 47
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1264
 	add.d	$a2, $sp, $a2
@@ -17123,7 +17131,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	jirl	$ra, $ra, 0
 .Ltmp1728:                              # EH_LABEL
 # %bb.195:                              # %.noexc.i164.i
-	addi.d	$s2, $sp, 1304
+	addi.d	$s1, $sp, 1304
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1208
 	add.d	$a0, $sp, $a0
@@ -17152,9 +17160,6 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a1, $a1, 1160
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	pcalau12i	$a2, %pc_hi20(.L.str.26)
-	st.d	$a2, $sp, 256                   # 8-byte Folded Spill
-	xvld	$xr0, $a2, %pc_lo12(.L.str.26)
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1192
 	add.d	$a2, $sp, $a2
@@ -17163,7 +17168,13 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a2, $a2, 1208
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.L.str.26)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.26)
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	st.d	$a2, $sp, 256                   # 8-byte Folded Spill
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -17178,12 +17189,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 1192
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp1734:                              # EH_LABEL
 # %bb.197:                              # %.noexc.i168.i
-	addi.d	$s2, $sp, 1392
+	addi.d	$s1, $sp, 1392
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1176
 	add.d	$a0, $sp, $a0
@@ -17222,8 +17233,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.27)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.27)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
 	ld.d	$a2, $a2, 47
@@ -17240,12 +17253,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 1160
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp1740:                              # EH_LABEL
 # %bb.199:                              # %.noexc.i172.i
-	addi.d	$s2, $sp, 1480
+	addi.d	$s1, $sp, 1480
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1144
 	add.d	$a0, $sp, $a0
@@ -17307,12 +17320,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 1128
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp1746:                              # EH_LABEL
 # %bb.201:                              # %.noexc.i176.i
-	addi.d	$s2, $sp, 1568
+	addi.d	$s1, $sp, 1568
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1112
 	add.d	$a0, $sp, $a0
@@ -17371,12 +17384,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 1096
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp1752:                              # EH_LABEL
 # %bb.203:                              # %.noexc.i180.i
-	addi.d	$s2, $sp, 1656
+	addi.d	$s1, $sp, 1656
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1080
 	add.d	$a0, $sp, $a0
@@ -17435,12 +17448,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 1064
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp1758:                              # EH_LABEL
 # %bb.205:                              # %._crit_edge.i.i183.i
-	addi.d	$s0, $sp, 1744
+	addi.d	$s1, $sp, 1744
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1048
 	add.d	$a0, $sp, $a0
@@ -17476,12 +17489,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 1032
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp1761:                              # EH_LABEL
 # %bb.206:                              # %.noexc.i188.i
-	addi.d	$s2, $sp, 1832
+	addi.d	$s1, $sp, 1832
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1016
 	add.d	$a0, $sp, $a0
@@ -17540,12 +17553,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 1000
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp1767:                              # EH_LABEL
 # %bb.208:                              # %.noexc.i192.i
-	addi.d	$s2, $sp, 1920
+	addi.d	$s1, $sp, 1920
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 984
 	add.d	$a0, $sp, $a0
@@ -17604,12 +17617,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 968
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp1773:                              # EH_LABEL
 # %bb.210:                              # %.noexc.i196.i
-	addi.d	$s2, $sp, 2008
+	addi.d	$s1, $sp, 2008
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 952
 	add.d	$a0, $sp, $a0
@@ -17668,13 +17681,13 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 936
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp1779:                              # EH_LABEL
 # %bb.212:                              # %.noexc.i200.i
 	ori	$a0, $zero, 2096
-	add.d	$s2, $sp, $a0
+	add.d	$s1, $sp, $a0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 920
 	add.d	$a0, $sp, $a0
@@ -17733,13 +17746,13 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 904
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp1785:                              # EH_LABEL
 # %bb.214:                              # %._crit_edge.i.i203.i
 	ori	$a0, $zero, 2184
-	add.d	$s2, $sp, $a0
+	add.d	$s3, $sp, $a0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 888
 	add.d	$a0, $sp, $a0
@@ -17761,11 +17774,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a1, $a1, 895
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
-	ori	$s0, $zero, 15
+	ori	$s1, $zero, 15
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 880
 	add.d	$a0, $sp, $a0
-	st.d	$s0, $a0, 0
+	st.d	$s1, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 903
 	add.d	$a0, $sp, $a0
@@ -17775,13 +17788,13 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 872
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s2
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp1788:                              # EH_LABEL
 # %bb.215:                              # %._crit_edge.i.i207.i
 	ori	$a0, $zero, 2272
-	add.d	$s3, $sp, $a0
+	add.d	$s4, $sp, $a0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 856
 	add.d	$a0, $sp, $a0
@@ -17806,7 +17819,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 848
 	add.d	$a0, $sp, $a0
-	st.d	$s0, $a0, 0
+	st.d	$s1, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 871
 	add.d	$a0, $sp, $a0
@@ -17816,13 +17829,13 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 840
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s3
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp1791:                              # EH_LABEL
 # %bb.216:                              # %._crit_edge.i.i211.i
 	ori	$a0, $zero, 2360
-	add.d	$s4, $sp, $a0
+	add.d	$s5, $sp, $a0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 824
 	add.d	$a0, $sp, $a0
@@ -17844,11 +17857,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a1, $a1, 831
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
-	ori	$s0, $zero, 15
+	ori	$s1, $zero, 15
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 816
 	add.d	$a0, $sp, $a0
-	st.d	$s0, $a0, 0
+	st.d	$s1, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 839
 	add.d	$a0, $sp, $a0
@@ -17858,7 +17871,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 808
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s4
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp1794:                              # EH_LABEL
@@ -17889,7 +17902,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 784
 	add.d	$a0, $sp, $a0
-	st.d	$s0, $a0, 0
+	st.d	$s1, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 807
 	add.d	$a0, $sp, $a0
@@ -17904,6 +17917,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	jirl	$ra, $ra, 0
 .Ltmp1797:                              # EH_LABEL
 # %bb.218:                              # %.noexc.i220.i
+	st.d	$s0, $sp, 208                   # 8-byte Folded Spill
 	ori	$a0, $zero, 2536
 	add.d	$s7, $sp, $a0
 	lu12i.w	$a0, 1
@@ -17930,7 +17944,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	jirl	$ra, $ra, 0
 .Ltmp1800:                              # EH_LABEL
 # %bb.219:                              # %.noexc221.i
-	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
+	move	$s0, $s2
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 712
 	add.d	$a1, $sp, $a1
@@ -17966,7 +17980,6 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	jirl	$ra, $ra, 0
 .Ltmp1803:                              # EH_LABEL
 # %bb.220:                              # %._crit_edge.i.i223.i
-	move	$s5, $s1
 	ori	$a0, $zero, 2624
 	add.d	$s8, $sp, $a0
 	lu12i.w	$a0, 1
@@ -18004,7 +18017,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 712
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	ori	$s0, $zero, 1
+	ori	$s2, $zero, 1
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
@@ -18027,7 +18040,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 688
 	add.d	$a0, $sp, $a0
-	st.d	$s0, $a0, 0
+	st.d	$s2, $a0, 0
 .Ltmp1808:                              # EH_LABEL
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 680
@@ -18042,16 +18055,16 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $zero, 2
 	addi.d	$a1, $sp, 1128
 	ori	$a2, $zero, 19
-	addi.d	$s0, $sp, 1128
+	addi.d	$s2, $sp, 1128
 	pcaddu18i	$ra, %call36(_Z8AddCases10TestCaseIDSt16initializer_listI8TestCaseE)
 	jirl	$ra, $ra, 0
 .Ltmp1812:                              # EH_LABEL
 # %bb.223:
 	move	$s6, $a0
 	move	$s1, $zero
-	ori	$s2, $zero, 1
 	ori	$s3, $zero, 1
-	lu32i.d	$s3, 1
+	ori	$s4, $zero, 1
+	lu32i.d	$s4, 1
 	b	.LBB28_225
 	.p2align	4, , 16
 .LBB28_224:                             # %_ZN8TestCaseD2Ev.exit.i69
@@ -18060,13 +18073,13 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.w	$a0, $zero, -1672
 	beq	$s1, $a0, .LBB28_236
 .LBB28_225:                             # =>This Inner Loop Header: Depth=1
-	add.d	$s4, $s0, $s1
-	ld.d	$fp, $s4, 1664
+	add.d	$s5, $s2, $s1
+	ld.d	$fp, $s5, 1664
 	beqz	$fp, .LBB28_230
 # %bb.226:                              #   in Loop: Header=BB28_225 Depth=1
 	ld.d	$a0, $fp, 8
 	dbar	20
-	bne	$a0, $s3, .LBB28_228
+	bne	$a0, $s4, .LBB28_228
 # %bb.227:                              #   in Loop: Header=BB28_225 Depth=1
 	ld.d	$a0, $fp, 0
 	st.d	$zero, $fp, 8
@@ -18077,8 +18090,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ld.d	$a1, $a0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	ld.d	$a0, $s4, 1624
-	addi.d	$a1, $s4, 1640
+	ld.d	$a0, $s5, 1624
+	addi.d	$a1, $s5, 1640
 	bne	$a1, $a0, .LBB28_231
 	b	.LBB28_232
 	.p2align	4, , 16
@@ -18091,12 +18104,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a0, -1
 	st.w	$a1, $fp, 8
 	addi.w	$a0, $a0, 0
-	beq	$a0, $s2, .LBB28_235
+	beq	$a0, $s3, .LBB28_235
 	.p2align	4, , 16
 .LBB28_230:                             # %_ZNSt12__shared_ptrIN9benchmark5RegexELN9__gnu_cxx12_Lock_policyE2EED2Ev.exit.i.i65
                                         #   in Loop: Header=BB28_225 Depth=1
-	ld.d	$a0, $s4, 1624
-	addi.d	$a1, $s4, 1640
+	ld.d	$a0, $s5, 1624
+	addi.d	$a1, $s5, 1640
 	beq	$a1, $a0, .LBB28_232
 .LBB28_231:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i66
                                         #   in Loop: Header=BB28_225 Depth=1
@@ -18106,8 +18119,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	jirl	$ra, $ra, 0
 .LBB28_232:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit.i.i67
                                         #   in Loop: Header=BB28_225 Depth=1
-	ld.d	$a0, $s4, 1584
-	addi.d	$a1, $s4, 1600
+	ld.d	$a0, $s5, 1584
+	addi.d	$a1, $s5, 1600
 	beq	$a1, $a0, .LBB28_224
 # %bb.233:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1.i.i68
                                         #   in Loop: Header=BB28_225 Depth=1
@@ -18121,13 +18134,13 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.w	$a2, $zero, -1
 	amadd_db.w	$a0, $a2, $a1
 	addi.w	$a0, $a0, 0
-	bne	$a0, $s2, .LBB28_230
+	bne	$a0, $s3, .LBB28_230
 .LBB28_235:                             #   in Loop: Header=BB28_225 Depth=1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s4, 1624
-	addi.d	$a1, $s4, 1640
+	ld.d	$a0, $s5, 1624
+	addi.d	$a1, $s5, 1640
 	bne	$a1, $a0, .LBB28_231
 	b	.LBB28_232
 .LBB28_236:
@@ -18159,6 +18172,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 728
 	add.d	$a1, $sp, $a1
+	move	$s1, $s0
 	beq	$a0, $a1, .LBB28_240
 # %bb.239:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i231.i
 	lu12i.w	$a1, 1
@@ -18176,7 +18190,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 208                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB28_242
 # %bb.241:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i234.i
 	lu12i.w	$a1, 1
@@ -18480,7 +18494,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a1, $a1, 1224
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	xvld	$xr0, $s5, 0
+	vld	$vr0, $s0, 0
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1256
 	add.d	$a2, $sp, $a2
@@ -18489,8 +18503,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a2, $a2, 1272
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
-	vld	$vr0, $s5, 32
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s0, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s0, 32
 	vst	$vr0, $a0, 32
 	st.w	$s1, $a0, 47
 	lu12i.w	$a2, 1
@@ -18600,16 +18616,18 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.26)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1192
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1208
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1192
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1208
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -18659,7 +18677,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
 	lu12i.w	$a3, 1
 	ori	$a3, $a3, 1160
 	add.d	$a3, $sp, $a3
@@ -18668,7 +18686,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a3, $a3, 1176
 	add.d	$a3, $sp, $a3
 	st.d	$a1, $a3, 0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
@@ -19885,9 +19905,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.46)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.46)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	vst	$vr0, $a0, 40
@@ -19998,16 +20020,18 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.26)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1192
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1208
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1192
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1208
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -20057,7 +20081,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
 	lu12i.w	$a3, 1
 	ori	$a3, $a3, 1160
 	add.d	$a3, $sp, $a3
@@ -20066,7 +20090,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a3, $a3, 1176
 	add.d	$a3, $sp, $a3
 	st.d	$a1, $a3, 0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
@@ -21372,9 +21398,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.51)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.51)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.h	$a2, $a2, 56
@@ -21487,16 +21515,18 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.26)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1192
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1208
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1192
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1208
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -21546,7 +21576,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
 	lu12i.w	$a3, 1
 	ori	$a3, $a3, 1160
 	add.d	$a3, $sp, $a3
@@ -21555,7 +21585,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a3, $a3, 1176
 	add.d	$a3, $sp, $a3
 	st.d	$a1, $a3, 0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
@@ -22855,9 +22887,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.54)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.54)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.h	$a2, $a2, 56
@@ -22970,16 +23004,18 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.26)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1192
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1208
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1192
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1208
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -23029,7 +23065,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
 	lu12i.w	$a3, 1
 	ori	$a3, $a3, 1160
 	add.d	$a3, $sp, $a3
@@ -23038,7 +23074,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a3, $a3, 1176
 	add.d	$a3, $sp, $a3
 	st.d	$a1, $a3, 0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
@@ -23260,12 +23298,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a3, $a2, %pc_lo12(.L.str.55)
 	vld	$vr0, $a3, 0
 	ld.w	$a2, $a3, 24
-	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$a3, $a3, 16
 	vst	$vr0, $a0, 0
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
 	st.w	$a2, $a0, 24
-	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a3, $a0, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1032
@@ -24338,8 +24376,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.57)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.57)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 46
 	vst	$vr0, $a0, 32
@@ -24451,16 +24491,18 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.26)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1192
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1208
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1192
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1208
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -24510,7 +24552,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
 	lu12i.w	$a3, 1
 	ori	$a3, $a3, 1160
 	add.d	$a3, $sp, $a3
@@ -24519,7 +24561,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a3, $a3, 1176
 	add.d	$a3, $sp, $a3
 	st.d	$a1, $a3, 0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
@@ -24740,10 +24784,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcalau12i	$a2, %pc_hi20(.L.str.58)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.58)
 	vld	$vr0, $a2, 0
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a2, $a2, 16
 	vst	$vr0, $a0, 0
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a2, $a0, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1032
@@ -24793,9 +24837,6 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a1, $a1, 968
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	pcalau12i	$a2, %pc_hi20(.L.str.59)
-	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
-	xvld	$xr0, $a2, %pc_lo12(.L.str.59)
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1000
 	add.d	$a2, $sp, $a2
@@ -24804,7 +24845,13 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a2, $a2, 1016
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.L.str.59)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.59)
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1000
 	add.d	$a0, $sp, $a0
@@ -25813,12 +25860,14 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.61)
 	addi.d	$s1, $a2, %pc_lo12(.L.str.61)
-	xvld	$xr0, $s1, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $s1, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s1, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $s1, 32
-	ld.w	$s3, $s1, 47
+	ld.w	$s4, $s1, 47
 	vst	$vr0, $a0, 32
-	st.w	$s3, $a0, 47
+	st.w	$s4, $a0, 47
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1264
 	add.d	$a2, $sp, $a2
@@ -25925,9 +25974,6 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a1, $a1, 1160
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	pcalau12i	$a2, %pc_hi20(.L.str.62)
-	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
-	xvld	$xr0, $a2, %pc_lo12(.L.str.62)
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1192
 	add.d	$a2, $sp, $a2
@@ -25936,7 +25982,13 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a2, $a2, 1208
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(.L.str.62)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.62)
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -25995,8 +26047,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.63)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.63)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	st.d	$a2, $sp, 176                   # 8-byte Folded Spill
 	ld.d	$a2, $a2, 47
@@ -26489,8 +26543,6 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	jirl	$ra, $ra, 0
 .Ltmp2367:                              # EH_LABEL
 # %bb.722:                              # %._crit_edge.i.i203.i1241
-	st.d	$s3, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
 	ori	$a0, $zero, 2184
 	add.d	$s3, $sp, $a0
 	lu12i.w	$a0, 1
@@ -26510,11 +26562,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a1, $a1, 895
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
-	ori	$s1, $zero, 15
+	ori	$s2, $zero, 15
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 880
 	add.d	$a0, $sp, $a0
-	st.d	$s1, $a0, 0
+	st.d	$s2, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 903
 	add.d	$a0, $sp, $a0
@@ -26529,6 +26581,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	jirl	$ra, $ra, 0
 .Ltmp2370:                              # EH_LABEL
 # %bb.723:                              # %._crit_edge.i.i207.i1248
+	st.d	$s4, $sp, 64                    # 8-byte Folded Spill
 	ori	$a0, $zero, 2272
 	add.d	$s4, $sp, $a0
 	lu12i.w	$a0, 1
@@ -26551,7 +26604,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 848
 	add.d	$a0, $sp, $a0
-	st.d	$s1, $a0, 0
+	st.d	$s2, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 871
 	add.d	$a0, $sp, $a0
@@ -26585,11 +26638,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a1, $a1, 831
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
-	ori	$s1, $zero, 15
+	ori	$s2, $zero, 15
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 816
 	add.d	$a0, $sp, $a0
-	st.d	$s1, $a0, 0
+	st.d	$s2, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 839
 	add.d	$a0, $sp, $a0
@@ -26626,7 +26679,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 784
 	add.d	$a0, $sp, $a0
-	st.d	$s1, $a0, 0
+	st.d	$s2, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 807
 	add.d	$a0, $sp, $a0
@@ -26734,7 +26787,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $a0, 712
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	ori	$s1, $zero, 1
+	ori	$s2, $zero, 1
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
@@ -26757,7 +26810,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 688
 	add.d	$a0, $sp, $a0
-	st.d	$s1, $a0, 0
+	st.d	$s2, $a0, 0
 .Ltmp2390:                              # EH_LABEL
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 680
@@ -26772,31 +26825,31 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a0, $zero, 2
 	addi.d	$a1, $sp, 1128
 	ori	$a2, $zero, 19
-	addi.d	$s1, $sp, 1128
+	addi.d	$s2, $sp, 1128
 	pcaddu18i	$ra, %call36(_Z8AddCases10TestCaseIDSt16initializer_listI8TestCaseE)
 	jirl	$ra, $ra, 0
 .Ltmp2394:                              # EH_LABEL
 # %bb.731:
-	move	$s6, $a0
-	move	$s2, $zero
-	ori	$s3, $zero, 1
+	move	$s7, $a0
+	move	$s3, $zero
 	ori	$s4, $zero, 1
-	lu32i.d	$s4, 1
+	ori	$s5, $zero, 1
+	lu32i.d	$s5, 1
 	b	.LBB28_733
 	.p2align	4, , 16
 .LBB28_732:                             # %_ZN8TestCaseD2Ev.exit.i1300
                                         #   in Loop: Header=BB28_733 Depth=1
-	addi.d	$s2, $s2, -88
+	addi.d	$s3, $s3, -88
 	ld.d	$a0, $sp, 448                   # 8-byte Folded Reload
-	beq	$s2, $a0, .LBB28_744
+	beq	$s3, $a0, .LBB28_744
 .LBB28_733:                             # =>This Inner Loop Header: Depth=1
-	add.d	$s5, $s1, $s2
-	ld.d	$fp, $s5, 1664
+	add.d	$s6, $s2, $s3
+	ld.d	$fp, $s6, 1664
 	beqz	$fp, .LBB28_738
 # %bb.734:                              #   in Loop: Header=BB28_733 Depth=1
 	ld.d	$a0, $fp, 8
 	dbar	20
-	bne	$a0, $s4, .LBB28_736
+	bne	$a0, $s5, .LBB28_736
 # %bb.735:                              #   in Loop: Header=BB28_733 Depth=1
 	ld.d	$a0, $fp, 0
 	st.d	$zero, $fp, 8
@@ -26807,8 +26860,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ld.d	$a1, $a0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	ld.d	$a0, $s5, 1624
-	addi.d	$a1, $s5, 1640
+	ld.d	$a0, $s6, 1624
+	addi.d	$a1, $s6, 1640
 	bne	$a1, $a0, .LBB28_739
 	b	.LBB28_740
 	.p2align	4, , 16
@@ -26821,12 +26874,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a0, -1
 	st.w	$a1, $fp, 8
 	addi.w	$a0, $a0, 0
-	beq	$a0, $s3, .LBB28_743
+	beq	$a0, $s4, .LBB28_743
 	.p2align	4, , 16
 .LBB28_738:                             # %_ZNSt12__shared_ptrIN9benchmark5RegexELN9__gnu_cxx12_Lock_policyE2EED2Ev.exit.i.i1296
                                         #   in Loop: Header=BB28_733 Depth=1
-	ld.d	$a0, $s5, 1624
-	addi.d	$a1, $s5, 1640
+	ld.d	$a0, $s6, 1624
+	addi.d	$a1, $s6, 1640
 	beq	$a1, $a0, .LBB28_740
 .LBB28_739:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i1297
                                         #   in Loop: Header=BB28_733 Depth=1
@@ -26836,8 +26889,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	jirl	$ra, $ra, 0
 .LBB28_740:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit.i.i1298
                                         #   in Loop: Header=BB28_733 Depth=1
-	ld.d	$a0, $s5, 1584
-	addi.d	$a1, $s5, 1600
+	ld.d	$a0, $s6, 1584
+	addi.d	$a1, $s6, 1600
 	beq	$a1, $a0, .LBB28_732
 # %bb.741:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1.i.i1299
                                         #   in Loop: Header=BB28_733 Depth=1
@@ -26851,13 +26904,13 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.w	$a2, $zero, -1
 	amadd_db.w	$a0, $a2, $a1
 	addi.w	$a0, $a0, 0
-	bne	$a0, $s3, .LBB28_738
+	bne	$a0, $s4, .LBB28_738
 .LBB28_743:                             #   in Loop: Header=BB28_733 Depth=1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, 1624
-	addi.d	$a1, $s5, 1640
+	ld.d	$a0, $s6, 1624
+	addi.d	$a1, $s6, 1640
 	bne	$a1, $a0, .LBB28_739
 	b	.LBB28_740
 .LBB28_744:
@@ -26888,9 +26941,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 728
 	add.d	$a1, $sp, $a1
-	ld.d	$s1, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB28_748
 # %bb.747:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i231.i1303
 	lu12i.w	$a1, 1
@@ -27188,7 +27239,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	jirl	$ra, $ra, 0
 .LBB28_782:                             # %__cxx_global_var_init.60.exit
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_18dummy234E)
-	st.w	$s6, $a0, %pc_lo12(_ZN12_GLOBAL__N_18dummy234E)
+	st.w	$s7, $a0, %pc_lo12(_ZN12_GLOBAL__N_18dummy234E)
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1256
 	add.d	$a0, $sp, $a0
@@ -27211,7 +27262,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a1, $a1, 1224
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	xvld	$xr0, $s2, 0
+	vld	$vr0, $s1, 0
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1256
 	add.d	$a2, $sp, $a2
@@ -27220,10 +27271,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a2, $a2, 1272
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
-	vld	$vr0, $s2, 32
+	vst	$vr0, $a0, 0
+	vld	$vr0, $s1, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $s1, 32
 	vst	$vr0, $a0, 32
-	st.w	$s3, $a0, 47
+	st.w	$s2, $a0, 47
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1264
 	add.d	$a2, $sp, $a2
@@ -27264,6 +27317,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp2400:                              # EH_LABEL
+	ld.d	$s1, $sp, 104                   # 8-byte Folded Reload
 # %bb.784:                              # %.noexc161.i1371
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1192
@@ -27331,16 +27385,18 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.62)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1192
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1208
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1192
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1208
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -27390,7 +27446,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
 	lu12i.w	$a3, 1
 	ori	$a3, $a3, 1160
 	add.d	$a3, $sp, $a3
@@ -27399,7 +27455,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a3, $a3, 1176
 	add.d	$a3, $sp, $a3
 	st.d	$a1, $a3, 0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
@@ -28612,9 +28670,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.67)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.67)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.h	$a2, $a2, 56
@@ -28727,16 +28787,18 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.62)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1192
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1208
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1192
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1208
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -28786,7 +28848,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
 	lu12i.w	$a3, 1
 	ori	$a3, $a3, 1160
 	add.d	$a3, $sp, $a3
@@ -28795,7 +28857,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a3, $a3, 1176
 	add.d	$a3, $sp, $a3
 	st.d	$a1, $a3, 0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
@@ -30091,9 +30155,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.69)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.69)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	vld	$vr0, $a2, 40
 	ld.h	$a2, $a2, 56
@@ -30206,16 +30272,18 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.62)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1192
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1208
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1192
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1208
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -30265,7 +30333,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
 	lu12i.w	$a3, 1
 	ori	$a3, $a3, 1160
 	add.d	$a3, $sp, $a3
@@ -30274,7 +30342,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a3, $a3, 1176
 	add.d	$a3, $sp, $a3
 	st.d	$a1, $a3, 0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
@@ -30484,7 +30554,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a1, $a1, 1000
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	vld	$vr0, $a2, 0
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1032
@@ -30495,9 +30565,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	vst	$vr0, $a0, 0
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	st.w	$a2, $a0, 24
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	st.d	$a2, $a0, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1032
@@ -31570,8 +31640,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.71)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.71)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	ld.d	$a2, $a2, 46
 	vst	$vr0, $a0, 32
@@ -31683,16 +31755,18 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.62)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1192
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1208
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1192
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1208
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -31742,7 +31816,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 16
 	lu12i.w	$a3, 1
 	ori	$a3, $a3, 1160
 	add.d	$a3, $sp, $a3
@@ -31751,7 +31825,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a3, $a3, 1176
 	add.d	$a3, $sp, $a3
 	st.d	$a1, $a3, 0
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
@@ -31961,7 +32037,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a1, $a1, 1000
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	vld	$vr0, $a2, 0
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1032
@@ -31972,7 +32048,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	vst	$vr0, $a0, 0
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	st.d	$a2, $a0, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1032
@@ -32022,17 +32098,19 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	ori	$a1, $a1, 968
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.59)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1000
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1016
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	vld	$vr0, $a2, 16
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1000
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1016
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1000
 	add.d	$a0, $sp, $a0
@@ -34567,9 +34645,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $sp, 1144
 	pcalau12i	$a2, %pc_hi20(.L.str.95)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.95)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a2, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a2, $a0, 32
 	st.d	$a1, $sp, 1136
 	stx.b	$zero, $a0, $a1
@@ -34655,9 +34735,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $sp, 1144
 	pcalau12i	$a2, %pc_hi20(.L.str.97)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.97)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a2, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a2, $a0, 32
 	st.d	$a1, $sp, 1136
 	stx.b	$zero, $a0, $a1
@@ -34806,8 +34888,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.101)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.101)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
 	vld	$vr0, $a2, 32
 	vst	$vr0, $a0, 32
 	lu12i.w	$a2, 1
@@ -34918,16 +35002,18 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.26)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1192
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1208
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1192
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1208
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -34986,8 +35072,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.103)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.103)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	ld.w	$a2, $a2, 48
 	vst	$vr0, $a0, 32
@@ -36322,9 +36410,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $sp, 1144
 	pcalau12i	$a2, %pc_hi20(.L.str.108)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.108)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.w	$a2, $a2, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.w	$a2, $a0, 32
 	st.d	$a1, $sp, 1136
 	stx.b	$zero, $a0, $a1
@@ -36476,10 +36566,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.112)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.112)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 39
 	lu12i.w	$a2, 1
@@ -36590,16 +36682,18 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.26)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1192
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1208
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1192
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1208
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -36658,8 +36752,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.114)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.114)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	ld.w	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -37974,10 +38070,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.122)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.122)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 39
 	lu12i.w	$a2, 1
@@ -38088,16 +38186,18 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.26)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1192
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1208
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1192
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1208
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -38156,8 +38256,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.124)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.124)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	ld.w	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -39309,9 +39411,11 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $sp, 1144
 	pcalau12i	$a2, %pc_hi20(.L.str.128)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.128)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.w	$a2, $a2, 31
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.w	$a2, $a0, 31
 	st.d	$a1, $sp, 1136
 	stx.b	$zero, $a0, $a1
@@ -39467,10 +39571,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.132)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.132)
-	xvld	$xr0, $a2, 0
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a2, 16
 	ld.d	$a3, $a2, 32
 	ld.d	$a2, $a2, 39
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
 	st.d	$a3, $a0, 32
 	st.d	$a2, $a0, 39
 	lu12i.w	$a2, 1
@@ -39581,16 +39687,18 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
-	xvld	$xr0, $a2, %pc_lo12(.L.str.26)
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1192
-	add.d	$a2, $sp, $a2
-	st.d	$a0, $a2, 0
-	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1208
-	add.d	$a2, $sp, $a2
-	st.d	$a1, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1192
+	add.d	$a3, $sp, $a3
+	st.d	$a0, $a3, 0
+	lu12i.w	$a3, 1
+	ori	$a3, $a3, 1208
+	add.d	$a3, $sp, $a3
+	st.d	$a1, $a3, 0
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -39649,8 +39757,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.134)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.134)
-	xvld	$xr0, $a2, 0
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a2, 16
+	vst	$vr0, $a0, 16
+	vld	$vr0, $a2, 0
+	vst	$vr0, $a0, 0
 	vld	$vr0, $a2, 32
 	ld.w	$a2, $a2, 47
 	vst	$vr0, $a0, 32
@@ -41184,10 +41294,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_1727:
 .Ltmp3279:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_1728:                            # %.loopexit308.loopexit.i3317
 .Ltmp3276:                              # EH_LABEL
 	move	$s1, $a0
@@ -41569,7 +41679,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $s2, $a0
-	bnez	$a0, .LBB28_2783
+	bnez	$a0, .LBB28_2782
 	.p2align	4, , 16
 .LBB28_1776:                            # %.preheader.i3199
                                         # =>This Inner Loop Header: Depth=1
@@ -41578,7 +41688,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $fp, .LBB28_1776
-	b	.LBB28_2783
+	b	.LBB28_2782
 .LBB28_1777:
 .Ltmp3249:                              # EH_LABEL
 	move	$s0, $fp
@@ -41713,10 +41823,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_1800:
 .Ltmp3178:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_1801:                            # %.loopexit308.loopexit.i3089
 .Ltmp3175:                              # EH_LABEL
 	move	$s8, $a0
@@ -42245,10 +42355,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_1874:
 .Ltmp3077:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_1875:                            # %.loopexit308.loopexit.i
 .Ltmp3074:                              # EH_LABEL
 	move	$s3, $a0
@@ -42777,10 +42887,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_1949:
 .Ltmp2976:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_1950:                            # %.loopexit365.loopexit.i2692
 .Ltmp2973:                              # EH_LABEL
 	move	$s0, $a0
@@ -43208,7 +43318,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	sltui	$a0, $a0, 1
 	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	or	$a0, $a1, $a0
-	bnez	$a0, .LBB28_2614
+	bnez	$a0, .LBB28_2613
 	.p2align	4, , 16
 .LBB28_2002:                            # %.preheader.i2552
                                         # =>This Inner Loop Header: Depth=1
@@ -43217,7 +43327,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s1, .LBB28_2002
-	b	.LBB28_2614
+	b	.LBB28_2613
 .LBB28_2003:
 .Ltmp2958:                              # EH_LABEL
 	move	$s0, $a0
@@ -43410,10 +43520,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 .LBB28_2035:                            # %_ZNSt14_Function_baseD2Ev.exit5.i3400
 	ld.d	$a0, $sp, 1128
 	addi.d	$a1, $sp, 1144
-	beq	$a0, $a1, .LBB28_3155
+	beq	$a0, $a1, .LBB28_3154
 # %bb.2036:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i3401
 	ld.d	$a1, $sp, 1144
-	b	.LBB28_2978
+	b	.LBB28_2977
 .LBB28_2037:
 .Ltmp2863:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
@@ -43424,120 +43534,120 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_2039:
 .Ltmp2854:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_2040:                            # %.loopexit.loopexit.i2484
 .Ltmp2851:                              # EH_LABEL
 	move	$fp, $a0
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_2041:
 .Ltmp2848:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_2042:                            # %.loopexit.loopexit.i2462
 .Ltmp2845:                              # EH_LABEL
 	move	$fp, $a0
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_2043:
 .Ltmp2842:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_2044:                            # %.loopexit.loopexit.i2440
 .Ltmp2839:                              # EH_LABEL
 	move	$fp, $a0
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_2045:
 .Ltmp2836:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_2046:                            # %.loopexit.loopexit.i2418
 .Ltmp2833:                              # EH_LABEL
 	move	$fp, $a0
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_2047:
 .Ltmp2830:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_2048:                            # %.loopexit.loopexit.i2396
 .Ltmp2827:                              # EH_LABEL
 	move	$fp, $a0
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_2049:
 .Ltmp2824:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_2050:                            # %.loopexit.loopexit.i2374
 .Ltmp2821:                              # EH_LABEL
 	move	$fp, $a0
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_2051:
 .Ltmp2818:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_2052:                            # %.loopexit.loopexit.i2352
 .Ltmp2815:                              # EH_LABEL
 	move	$fp, $a0
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_2053:
 .Ltmp2812:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_2054:                            # %.loopexit.loopexit.i2330
 .Ltmp2809:                              # EH_LABEL
 	move	$fp, $a0
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_2055:
 .Ltmp2806:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_2056:                            # %.loopexit.loopexit.i2308
 .Ltmp2803:                              # EH_LABEL
 	move	$fp, $a0
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_2057:
 .Ltmp2800:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_2058:                            # %.loopexit.loopexit.i2286
 .Ltmp2797:                              # EH_LABEL
 	move	$fp, $a0
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_2059:
 .Ltmp2794:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_2060:                            # %.loopexit.loopexit.i2264
 .Ltmp2791:                              # EH_LABEL
 	move	$fp, $a0
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
+	b	.LBB28_2975
 .LBB28_2061:
 .Ltmp2788:                              # EH_LABEL
-	b	.LBB28_2975
+	b	.LBB28_2974
 .LBB28_2062:                            # %.loopexit384.loopexit.i2185
 .Ltmp2785:                              # EH_LABEL
 	move	$s0, $a0
@@ -43988,7 +44098,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	sltui	$a0, $a0, 1
 	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	or	$a0, $a1, $a0
-	bnez	$a0, .LBB28_2614
+	bnez	$a0, .LBB28_2613
 	.p2align	4, , 16
 .LBB28_2116:                            # %.preheader.i2037
                                         # =>This Inner Loop Header: Depth=1
@@ -43997,7 +44107,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s1, .LBB28_2116
-	b	.LBB28_2614
+	b	.LBB28_2613
 .LBB28_2117:
 .Ltmp2770:                              # EH_LABEL
 	move	$s0, $a0
@@ -44606,7 +44716,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	sltui	$a0, $a0, 1
 	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	or	$a0, $a1, $a0
-	bnez	$a0, .LBB28_2614
+	bnez	$a0, .LBB28_2613
 	.p2align	4, , 16
 .LBB28_2200:                            # %.preheader.i1810
                                         # =>This Inner Loop Header: Depth=1
@@ -44615,7 +44725,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s1, .LBB28_2200
-	b	.LBB28_2614
+	b	.LBB28_2613
 .LBB28_2201:
 .Ltmp2671:                              # EH_LABEL
 	move	$s0, $a0
@@ -45224,7 +45334,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	sltui	$a0, $a0, 1
 	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	or	$a0, $a1, $a0
-	bnez	$a0, .LBB28_2614
+	bnez	$a0, .LBB28_2613
 	.p2align	4, , 16
 .LBB28_2284:                            # %.preheader.i1583
                                         # =>This Inner Loop Header: Depth=1
@@ -45233,7 +45343,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s1, .LBB28_2284
-	b	.LBB28_2614
+	b	.LBB28_2613
 .LBB28_2285:
 .Ltmp2572:                              # EH_LABEL
 	move	$s0, $a0
@@ -45821,7 +45931,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	sltui	$a0, $a0, 1
 	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	or	$a0, $a1, $a0
-	bnez	$a0, .LBB28_2614
+	bnez	$a0, .LBB28_2613
 	.p2align	4, , 16
 .LBB28_2366:                            # %.preheader.i1367
                                         # =>This Inner Loop Header: Depth=1
@@ -45830,7 +45940,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s1, .LBB28_2366
-	b	.LBB28_2614
+	b	.LBB28_2613
 .LBB28_2367:
 .Ltmp2473:                              # EH_LABEL
 	move	$s0, $a0
@@ -46002,7 +46112,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	move	$a0, $s2
+	ori	$a0, $zero, 2096
+	add.d	$a0, $sp, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $sp, 2008
@@ -46038,13 +46149,13 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	ori	$s1, $zero, 1
+	move	$s2, $s0
 	b	.LBB28_2396
 .LBB28_2395:
 .Ltmp2392:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
+	move	$s1, $zero
+	move	$s2, $a0
 .LBB28_2396:                            # %.loopexit365.i1285
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 680
@@ -46068,8 +46179,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	b	.LBB28_2400
 .LBB28_2399:
 .Ltmp2389:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
+	move	$s1, $zero
+	move	$s2, $a0
 .LBB28_2400:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit287.i1278
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 712
@@ -46092,8 +46203,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	b	.LBB28_2404
 .LBB28_2403:
 .Ltmp2386:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
+	move	$s1, $zero
+	move	$s2, $a0
 .LBB28_2404:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit290.i1271
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 744
@@ -46102,7 +46213,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2407
+	beq	$a0, $a1, .LBB28_2406
 # %bb.2405:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i291.i1275
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
@@ -46111,14 +46222,20 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2407
-.LBB28_2406:
-.Ltmp2383:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-.LBB28_2407:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit293.i1263
+.LBB28_2406:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit293.i1263
 	move	$s6, $s7
-.LBB28_2408:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit293.i1263
+	b	.LBB28_2410
+.LBB28_2407:
+.Ltmp2383:                              # EH_LABEL
+	move	$s1, $zero
+	move	$s6, $s7
+	b	.LBB28_2409
+.LBB28_2408:
+.Ltmp2380:                              # EH_LABEL
+	move	$s1, $zero
+.LBB28_2409:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit293.i1263
+	move	$s2, $a0
+.LBB28_2410:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit293.i1263
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 776
 	add.d	$a0, $sp, $a0
@@ -46126,8 +46243,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2410
-# %bb.2409:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i294.i1267
+	beq	$a0, $a1, .LBB28_2412
+# %bb.2411:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i294.i1267
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
@@ -46135,9 +46252,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2410:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit296.i1256
+.LBB28_2412:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit296.i1256
 	move	$s5, $s6
-.LBB28_2411:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit296.i1256
+.LBB28_2413:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit296.i1256
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 808
 	add.d	$a0, $sp, $a0
@@ -46145,8 +46262,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2413
-# %bb.2412:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i297.i1260
+	beq	$a0, $a1, .LBB28_2415
+# %bb.2414:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i297.i1260
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
@@ -46154,9 +46271,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2413:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit299.i1249
+.LBB28_2415:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit299.i1249
 	move	$s4, $s5
-.LBB28_2414:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit299.i1249
+.LBB28_2416:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit299.i1249
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 840
 	add.d	$a0, $sp, $a0
@@ -46164,8 +46281,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2416
-# %bb.2415:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i300.i1253
+	beq	$a0, $a1, .LBB28_2418
+# %bb.2417:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i300.i1253
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
@@ -46173,9 +46290,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2416:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i1242
+.LBB28_2418:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i1242
 	move	$s3, $s4
-.LBB28_2417:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i1242
+.LBB28_2419:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i1242
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 872
 	add.d	$a0, $sp, $a0
@@ -46183,8 +46300,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2419
-# %bb.2418:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i303.i1246
+	beq	$a0, $a1, .LBB28_2421
+# %bb.2420:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i303.i1246
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
@@ -46192,9 +46309,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2419:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i1235
-	move	$s2, $s3
-.LBB28_2420:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i1235
+.LBB28_2421:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i1235
+	move	$fp, $s3
+.LBB28_2422:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i1235
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 904
 	add.d	$a0, $sp, $a0
@@ -46202,8 +46319,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2430
-# %bb.2421:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i306.i1239
+	beq	$a0, $a1, .LBB28_2424
+# %bb.2423:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i306.i1239
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
@@ -46211,41 +46328,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2430
-.LBB28_2422:
-.Ltmp2380:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2408
-.LBB28_2423:
-.Ltmp2377:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2411
-.LBB28_2424:
-.Ltmp2374:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2414
-.LBB28_2425:
-.Ltmp2371:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2417
-.LBB28_2426:
-.Ltmp2368:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2420
-.LBB28_2427:
-.Ltmp2365:                              # EH_LABEL
-	b	.LBB28_2429
-.LBB28_2428:
-.Ltmp2362:                              # EH_LABEL
-.LBB28_2429:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i1227
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-.LBB28_2430:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i1227
+.LBB28_2424:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i1227
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 936
 	add.d	$a0, $sp, $a0
@@ -46253,8 +46336,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2432
-# %bb.2431:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i309.i1231
+	beq	$a0, $a1, .LBB28_2426
+# %bb.2425:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i309.i1231
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
@@ -46262,9 +46345,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2432:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i1219
-	move	$fp, $s2
-.LBB28_2433:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i1219
+.LBB28_2426:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i1219
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 968
 	add.d	$a0, $sp, $a0
@@ -46272,8 +46353,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2435
-# %bb.2434:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i312.i1223
+	beq	$a0, $a1, .LBB28_2428
+# %bb.2427:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i312.i1223
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
@@ -46281,7 +46362,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2435:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i1211
+.LBB28_2428:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i1211
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1000
 	add.d	$a0, $sp, $a0
@@ -46289,8 +46370,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2437
-# %bb.2436:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i315.i1215
+	beq	$a0, $a1, .LBB28_2430
+# %bb.2429:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i315.i1215
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
@@ -46298,7 +46379,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2437:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i1203
+.LBB28_2430:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i1203
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1032
 	add.d	$a0, $sp, $a0
@@ -46306,8 +46387,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2439
-# %bb.2438:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i318.i1207
+	beq	$a0, $a1, .LBB28_2432
+# %bb.2431:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i318.i1207
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
@@ -46315,7 +46396,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2439:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i1196
+.LBB28_2432:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i1196
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1064
 	add.d	$a0, $sp, $a0
@@ -46323,8 +46404,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2441
-# %bb.2440:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i321.i1200
+	beq	$a0, $a1, .LBB28_2434
+# %bb.2433:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i321.i1200
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
@@ -46332,7 +46413,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2441:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i1188
+.LBB28_2434:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i1188
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1096
 	add.d	$a0, $sp, $a0
@@ -46340,8 +46421,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2443
-# %bb.2442:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i324.i1192
+	beq	$a0, $a1, .LBB28_2436
+# %bb.2435:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i324.i1192
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
@@ -46349,7 +46430,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2443:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit326.i1180
+.LBB28_2436:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit326.i1180
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1128
 	add.d	$a0, $sp, $a0
@@ -46357,8 +46438,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2445
-# %bb.2444:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i327.i1184
+	beq	$a0, $a1, .LBB28_2438
+# %bb.2437:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i327.i1184
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
@@ -46366,7 +46447,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2445:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit329.i1172
+.LBB28_2438:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit329.i1172
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1160
 	add.d	$a0, $sp, $a0
@@ -46374,8 +46455,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2447
-# %bb.2446:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i330.i1176
+	beq	$a0, $a1, .LBB28_2440
+# %bb.2439:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i330.i1176
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
@@ -46383,7 +46464,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2447:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit332.i1164
+.LBB28_2440:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit332.i1164
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -46391,8 +46472,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2449
-# %bb.2448:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i333.i1168
+	beq	$a0, $a1, .LBB28_2442
+# %bb.2441:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i333.i1168
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
@@ -46400,7 +46481,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2449:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit335.i1156
+.LBB28_2442:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit335.i1156
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1224
 	add.d	$a0, $sp, $a0
@@ -46408,8 +46489,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2451
-# %bb.2450:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i336.i1160
+	beq	$a0, $a1, .LBB28_2444
+# %bb.2443:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i336.i1160
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
@@ -46417,7 +46498,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2451:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i1144
+.LBB28_2444:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i1144
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1256
 	add.d	$a0, $sp, $a0
@@ -46425,8 +46506,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2453
-# %bb.2452:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i339.i1148
+	beq	$a0, $a1, .LBB28_2446
+# %bb.2445:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i339.i1148
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
@@ -46434,132 +46515,165 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2453:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit341.i1149
-	addi.d	$s1, $sp, 1128
-	xor	$a0, $s1, $fp
+.LBB28_2446:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit341.i1149
+	addi.d	$s0, $sp, 1128
+	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
-	or	$a0, $a1, $a0
-	bnez	$a0, .LBB28_2614
+	or	$a0, $s1, $a0
+	bnez	$a0, .LBB28_3071
 	.p2align	4, , 16
-.LBB28_2454:                            # %.preheader.i1151
+.LBB28_2447:                            # %.preheader.i1151
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$fp, $fp, -88
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	bne	$fp, $s1, .LBB28_2454
-	b	.LBB28_2614
-.LBB28_2455:
+	bne	$fp, $s0, .LBB28_2447
+	b	.LBB28_3071
+.LBB28_2448:
+.Ltmp2377:                              # EH_LABEL
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2413
+.LBB28_2449:
+.Ltmp2374:                              # EH_LABEL
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2416
+.LBB28_2450:
+.Ltmp2371:                              # EH_LABEL
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2419
+.LBB28_2451:
+.Ltmp2368:                              # EH_LABEL
+	move	$fp, $s2
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2422
+.LBB28_2452:
+.Ltmp2365:                              # EH_LABEL
+	move	$s1, $zero
+	move	$fp, $s2
+	move	$s2, $a0
+	b	.LBB28_2424
+.LBB28_2453:
+.Ltmp2362:                              # EH_LABEL
+	move	$fp, $s2
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2424
+.LBB28_2454:
 .Ltmp2359:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2432
-.LBB28_2456:
+	move	$s1, $zero
+	move	$fp, $s2
+	move	$s2, $a0
+	b	.LBB28_2426
+.LBB28_2455:
 .Ltmp2356:                              # EH_LABEL
 	move	$fp, $s2
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2433
-.LBB28_2457:
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2426
+.LBB28_2456:
 .Ltmp2353:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
+	move	$s1, $zero
 	move	$fp, $s2
-	b	.LBB28_2435
-.LBB28_2458:
+	move	$s2, $a0
+	b	.LBB28_2428
+.LBB28_2457:
 .Ltmp2350:                              # EH_LABEL
 	move	$fp, $s2
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2435
-.LBB28_2459:
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2428
+.LBB28_2458:
 .Ltmp2347:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
+	move	$s1, $zero
 	move	$fp, $s2
-	b	.LBB28_2437
-.LBB28_2460:
+	move	$s2, $a0
+	b	.LBB28_2430
+.LBB28_2459:
 .Ltmp2344:                              # EH_LABEL
 	move	$fp, $s2
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2437
-.LBB28_2461:
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2430
+.LBB28_2460:
 .Ltmp2341:                              # EH_LABEL
 	move	$fp, $s2
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2439
-.LBB28_2462:
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2432
+.LBB28_2461:
 .Ltmp2338:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
+	move	$s1, $zero
 	move	$fp, $s2
-	b	.LBB28_2441
-.LBB28_2463:
+	move	$s2, $a0
+	b	.LBB28_2434
+.LBB28_2462:
 .Ltmp2335:                              # EH_LABEL
 	move	$fp, $s2
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2441
-.LBB28_2464:
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2434
+.LBB28_2463:
 .Ltmp2332:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
+	move	$s1, $zero
 	move	$fp, $s2
-	b	.LBB28_2443
-.LBB28_2465:
+	move	$s2, $a0
+	b	.LBB28_2436
+.LBB28_2464:
 .Ltmp2329:                              # EH_LABEL
 	move	$fp, $s2
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2443
-.LBB28_2466:
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2436
+.LBB28_2465:
 .Ltmp2326:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
+	move	$s1, $zero
 	move	$fp, $s2
-	b	.LBB28_2445
-.LBB28_2467:
+	move	$s2, $a0
+	b	.LBB28_2438
+.LBB28_2466:
 .Ltmp2323:                              # EH_LABEL
 	move	$fp, $s2
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2445
-.LBB28_2468:
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2438
+.LBB28_2467:
 .Ltmp2320:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
+	move	$s1, $zero
 	move	$fp, $s2
-	b	.LBB28_2447
-.LBB28_2469:
+	move	$s2, $a0
+	b	.LBB28_2440
+.LBB28_2468:
 .Ltmp2317:                              # EH_LABEL
 	move	$fp, $s2
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2447
-.LBB28_2470:
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2440
+.LBB28_2469:
 .Ltmp2314:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
+	move	$s1, $zero
 	move	$fp, $s2
-	b	.LBB28_2449
-.LBB28_2471:
+	move	$s2, $a0
+	b	.LBB28_2442
+.LBB28_2470:
 .Ltmp2311:                              # EH_LABEL
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2449
-.LBB28_2472:
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2442
+.LBB28_2471:
 .Ltmp2308:                              # EH_LABEL
-	b	.LBB28_2474
-.LBB28_2473:
+	b	.LBB28_2473
+.LBB28_2472:
 .Ltmp2305:                              # EH_LABEL
-.LBB28_2474:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i1144
-	move	$s0, $a0
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2451
-.LBB28_2475:                            # %.loopexit384.loopexit.i1072
+.LBB28_2473:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i1144
+	move	$s1, $zero
+	move	$s2, $a0
+	b	.LBB28_2444
+.LBB28_2474:                            # %.loopexit384.loopexit.i1072
 .Ltmp2302:                              # EH_LABEL
 	move	$s0, $a0
 	ori	$a0, $zero, 2800
@@ -46626,12 +46740,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	b	.LBB28_2477
-.LBB28_2476:
+	b	.LBB28_2476
+.LBB28_2475:
 .Ltmp2299:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-.LBB28_2477:                            # %.loopexit384.i1066
+.LBB28_2476:                            # %.loopexit384.i1066
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 648
 	add.d	$a0, $sp, $a0
@@ -46639,8 +46753,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 664
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2479
-# %bb.2478:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i300.i1068
+	beq	$a0, $a1, .LBB28_2478
+# %bb.2477:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i300.i1068
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 664
 	add.d	$a1, $sp, $a1
@@ -46648,15 +46762,15 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2479:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i1059
+.LBB28_2478:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i1059
 	ori	$a0, $zero, 2800
 	add.d	$s8, $sp, $a0
-	b	.LBB28_2481
-.LBB28_2480:
+	b	.LBB28_2480
+.LBB28_2479:
 .Ltmp2296:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-.LBB28_2481:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i1059
+.LBB28_2480:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i1059
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 680
 	add.d	$a0, $sp, $a0
@@ -46664,8 +46778,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 696
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2483
-# %bb.2482:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i303.i1063
+	beq	$a0, $a1, .LBB28_2482
+# %bb.2481:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i303.i1063
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 696
 	add.d	$a1, $sp, $a1
@@ -46673,14 +46787,14 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2483:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i1052
+.LBB28_2482:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i1052
 	move	$s7, $s8
-	b	.LBB28_2485
-.LBB28_2484:
+	b	.LBB28_2484
+.LBB28_2483:
 .Ltmp2293:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-.LBB28_2485:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i1052
+.LBB28_2484:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i1052
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 712
 	add.d	$a0, $sp, $a0
@@ -46688,8 +46802,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 728
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2488
-# %bb.2486:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i306.i1056
+	beq	$a0, $a1, .LBB28_2487
+# %bb.2485:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i306.i1056
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 728
 	add.d	$a1, $sp, $a1
@@ -46697,14 +46811,14 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2488
-.LBB28_2487:
+	b	.LBB28_2487
+.LBB28_2486:
 .Ltmp2290:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-.LBB28_2488:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i1044
+.LBB28_2487:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i1044
 	move	$s6, $s7
-.LBB28_2489:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i1044
+.LBB28_2488:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i1044
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 744
 	add.d	$a0, $sp, $a0
@@ -46712,8 +46826,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2491
-# %bb.2490:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i309.i1048
+	beq	$a0, $a1, .LBB28_2490
+# %bb.2489:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i309.i1048
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
@@ -46721,9 +46835,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2491:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i1037
+.LBB28_2490:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i1037
 	move	$s5, $s6
-.LBB28_2492:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i1037
+.LBB28_2491:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i1037
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 776
 	add.d	$a0, $sp, $a0
@@ -46731,8 +46845,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2494
-# %bb.2493:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i312.i1041
+	beq	$a0, $a1, .LBB28_2493
+# %bb.2492:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i312.i1041
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
@@ -46740,9 +46854,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2494:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i1030
+.LBB28_2493:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i1030
 	move	$s4, $s5
-.LBB28_2495:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i1030
+.LBB28_2494:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i1030
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 808
 	add.d	$a0, $sp, $a0
@@ -46750,8 +46864,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2497
-# %bb.2496:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i315.i1034
+	beq	$a0, $a1, .LBB28_2496
+# %bb.2495:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i315.i1034
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
@@ -46759,9 +46873,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2497:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i1023
+.LBB28_2496:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i1023
 	move	$s3, $s4
-.LBB28_2498:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i1023
+.LBB28_2497:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i1023
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 840
 	add.d	$a0, $sp, $a0
@@ -46769,8 +46883,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2500
-# %bb.2499:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i318.i1027
+	beq	$a0, $a1, .LBB28_2499
+# %bb.2498:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i318.i1027
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
@@ -46778,9 +46892,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2500:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i1016
+.LBB28_2499:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i1016
 	move	$s2, $s3
-.LBB28_2501:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i1016
+.LBB28_2500:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i1016
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 872
 	add.d	$a0, $sp, $a0
@@ -46788,8 +46902,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2503
-# %bb.2502:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i321.i1020
+	beq	$a0, $a1, .LBB28_2502
+# %bb.2501:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i321.i1020
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
@@ -46797,9 +46911,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2503:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i1008
+.LBB28_2502:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i1008
 	move	$fp, $s2
-.LBB28_2504:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i1008
+.LBB28_2503:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i1008
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 904
 	add.d	$a0, $sp, $a0
@@ -46807,8 +46921,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2506
-# %bb.2505:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i324.i1012
+	beq	$a0, $a1, .LBB28_2505
+# %bb.2504:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i324.i1012
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
@@ -46816,7 +46930,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2506:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit326.i1000
+.LBB28_2505:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit326.i1000
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 936
 	add.d	$a0, $sp, $a0
@@ -46824,8 +46938,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2508
-# %bb.2507:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i327.i1004
+	beq	$a0, $a1, .LBB28_2507
+# %bb.2506:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i327.i1004
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
@@ -46833,7 +46947,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2508:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit329.i992
+.LBB28_2507:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit329.i992
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 968
 	add.d	$a0, $sp, $a0
@@ -46841,8 +46955,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2510
-# %bb.2509:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i330.i996
+	beq	$a0, $a1, .LBB28_2509
+# %bb.2508:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i330.i996
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
@@ -46850,7 +46964,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2510:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit332.i984
+.LBB28_2509:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit332.i984
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1000
 	add.d	$a0, $sp, $a0
@@ -46858,8 +46972,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2512
-# %bb.2511:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i333.i988
+	beq	$a0, $a1, .LBB28_2511
+# %bb.2510:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i333.i988
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
@@ -46867,7 +46981,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2512:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit335.i976
+.LBB28_2511:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit335.i976
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1032
 	add.d	$a0, $sp, $a0
@@ -46875,8 +46989,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2514
-# %bb.2513:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i336.i980
+	beq	$a0, $a1, .LBB28_2513
+# %bb.2512:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i336.i980
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
@@ -46884,7 +46998,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2514:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i968
+.LBB28_2513:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i968
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1064
 	add.d	$a0, $sp, $a0
@@ -46892,8 +47006,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2516
-# %bb.2515:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i339.i972
+	beq	$a0, $a1, .LBB28_2515
+# %bb.2514:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i339.i972
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
@@ -46901,7 +47015,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2516:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit341.i961
+.LBB28_2515:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit341.i961
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1096
 	add.d	$a0, $sp, $a0
@@ -46909,8 +47023,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2518
-# %bb.2517:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i342.i965
+	beq	$a0, $a1, .LBB28_2517
+# %bb.2516:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i342.i965
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
@@ -46918,7 +47032,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2518:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit344.i953
+.LBB28_2517:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit344.i953
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1128
 	add.d	$a0, $sp, $a0
@@ -46926,8 +47040,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2520
-# %bb.2519:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i345.i957
+	beq	$a0, $a1, .LBB28_2519
+# %bb.2518:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i345.i957
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
@@ -46935,7 +47049,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2520:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit347.i945
+.LBB28_2519:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit347.i945
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1160
 	add.d	$a0, $sp, $a0
@@ -46943,8 +47057,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2522
-# %bb.2521:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i348.i949
+	beq	$a0, $a1, .LBB28_2521
+# %bb.2520:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i348.i949
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
@@ -46952,7 +47066,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2522:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit350.i937
+.LBB28_2521:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit350.i937
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -46960,8 +47074,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2524
-# %bb.2523:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i351.i941
+	beq	$a0, $a1, .LBB28_2523
+# %bb.2522:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i351.i941
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
@@ -46969,7 +47083,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2524:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit353.i929
+.LBB28_2523:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit353.i929
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1224
 	add.d	$a0, $sp, $a0
@@ -46977,8 +47091,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2526
-# %bb.2525:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i354.i933
+	beq	$a0, $a1, .LBB28_2525
+# %bb.2524:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i354.i933
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
@@ -46986,7 +47100,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2526:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i917
+.LBB28_2525:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i917
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1256
 	add.d	$a0, $sp, $a0
@@ -46994,8 +47108,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2528
-# %bb.2527:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i357.i921
+	beq	$a0, $a1, .LBB28_2527
+# %bb.2526:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i357.i921
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
@@ -47003,181 +47117,181 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2528:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit359.i922
+.LBB28_2527:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit359.i922
 	addi.d	$s1, $sp, 1128
 	xor	$a0, $s1, $fp
 	sltui	$a0, $a0, 1
 	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	or	$a0, $a1, $a0
-	bnez	$a0, .LBB28_2614
+	bnez	$a0, .LBB28_2613
 	.p2align	4, , 16
-.LBB28_2529:                            # %.preheader.i924
+.LBB28_2528:                            # %.preheader.i924
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$fp, $fp, -88
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	bne	$fp, $s1, .LBB28_2529
-	b	.LBB28_2614
-.LBB28_2530:
+	bne	$fp, $s1, .LBB28_2528
+	b	.LBB28_2613
+.LBB28_2529:
 .Ltmp2287:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2489
-.LBB28_2531:
+	b	.LBB28_2488
+.LBB28_2530:
 .Ltmp2284:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2492
-.LBB28_2532:
+	b	.LBB28_2491
+.LBB28_2531:
 .Ltmp2281:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2495
-.LBB28_2533:
+	b	.LBB28_2494
+.LBB28_2532:
 .Ltmp2278:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2498
-.LBB28_2534:
+	b	.LBB28_2497
+.LBB28_2533:
 .Ltmp2275:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2501
-.LBB28_2535:
+	b	.LBB28_2500
+.LBB28_2534:
 .Ltmp2272:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2503
-.LBB28_2536:
+	b	.LBB28_2502
+.LBB28_2535:
 .Ltmp2269:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2504
-.LBB28_2537:
+	b	.LBB28_2503
+.LBB28_2536:
 .Ltmp2266:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2506
-.LBB28_2538:
+	b	.LBB28_2505
+.LBB28_2537:
 .Ltmp2263:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2506
-.LBB28_2539:
+	b	.LBB28_2505
+.LBB28_2538:
 .Ltmp2260:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2508
-.LBB28_2540:
+	b	.LBB28_2507
+.LBB28_2539:
 .Ltmp2257:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2508
-.LBB28_2541:
+	b	.LBB28_2507
+.LBB28_2540:
 .Ltmp2254:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2510
-.LBB28_2542:
+	b	.LBB28_2509
+.LBB28_2541:
 .Ltmp2251:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2510
-.LBB28_2543:
+	b	.LBB28_2509
+.LBB28_2542:
 .Ltmp2248:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2512
-.LBB28_2544:
+	b	.LBB28_2511
+.LBB28_2543:
 .Ltmp2245:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2512
-.LBB28_2545:
+	b	.LBB28_2511
+.LBB28_2544:
 .Ltmp2242:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2514
-.LBB28_2546:
+	b	.LBB28_2513
+.LBB28_2545:
 .Ltmp2239:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2514
-.LBB28_2547:
+	b	.LBB28_2513
+.LBB28_2546:
 .Ltmp2236:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2516
-.LBB28_2548:
+	b	.LBB28_2515
+.LBB28_2547:
 .Ltmp2233:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2518
-.LBB28_2549:
+	b	.LBB28_2517
+.LBB28_2548:
 .Ltmp2230:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2518
-.LBB28_2550:
+	b	.LBB28_2517
+.LBB28_2549:
 .Ltmp2227:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2520
-.LBB28_2551:
+	b	.LBB28_2519
+.LBB28_2550:
 .Ltmp2224:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2520
-.LBB28_2552:
+	b	.LBB28_2519
+.LBB28_2551:
 .Ltmp2221:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2522
-.LBB28_2553:
+	b	.LBB28_2521
+.LBB28_2552:
 .Ltmp2218:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2522
-.LBB28_2554:
+	b	.LBB28_2521
+.LBB28_2553:
 .Ltmp2215:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2524
-.LBB28_2555:
+	b	.LBB28_2523
+.LBB28_2554:
 .Ltmp2212:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2524
-.LBB28_2556:
+	b	.LBB28_2523
+.LBB28_2555:
 .Ltmp2209:                              # EH_LABEL
-	b	.LBB28_2558
-.LBB28_2557:
+	b	.LBB28_2557
+.LBB28_2556:
 .Ltmp2206:                              # EH_LABEL
-.LBB28_2558:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i917
+.LBB28_2557:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i917
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2526
-.LBB28_2559:                            # %.loopexit384.loopexit.i845
+	b	.LBB28_2525
+.LBB28_2558:                            # %.loopexit384.loopexit.i845
 .Ltmp2203:                              # EH_LABEL
 	move	$s0, $a0
 	ori	$a0, $zero, 2800
@@ -47244,12 +47358,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	b	.LBB28_2561
-.LBB28_2560:
+	b	.LBB28_2560
+.LBB28_2559:
 .Ltmp2200:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-.LBB28_2561:                            # %.loopexit384.i839
+.LBB28_2560:                            # %.loopexit384.i839
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 648
 	add.d	$a0, $sp, $a0
@@ -47257,8 +47371,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 664
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2563
-# %bb.2562:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i300.i841
+	beq	$a0, $a1, .LBB28_2562
+# %bb.2561:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i300.i841
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 664
 	add.d	$a1, $sp, $a1
@@ -47266,15 +47380,15 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2563:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i832
+.LBB28_2562:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i832
 	ori	$a0, $zero, 2800
 	add.d	$s8, $sp, $a0
-	b	.LBB28_2565
-.LBB28_2564:
+	b	.LBB28_2564
+.LBB28_2563:
 .Ltmp2197:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-.LBB28_2565:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i832
+.LBB28_2564:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i832
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 680
 	add.d	$a0, $sp, $a0
@@ -47282,8 +47396,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 696
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2567
-# %bb.2566:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i303.i836
+	beq	$a0, $a1, .LBB28_2566
+# %bb.2565:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i303.i836
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 696
 	add.d	$a1, $sp, $a1
@@ -47291,14 +47405,14 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2567:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i825
+.LBB28_2566:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i825
 	move	$s7, $s8
-	b	.LBB28_2569
-.LBB28_2568:
+	b	.LBB28_2568
+.LBB28_2567:
 .Ltmp2194:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-.LBB28_2569:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i825
+.LBB28_2568:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i825
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 712
 	add.d	$a0, $sp, $a0
@@ -47306,8 +47420,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 728
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2572
-# %bb.2570:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i306.i829
+	beq	$a0, $a1, .LBB28_2571
+# %bb.2569:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i306.i829
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 728
 	add.d	$a1, $sp, $a1
@@ -47315,14 +47429,14 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2572
-.LBB28_2571:
+	b	.LBB28_2571
+.LBB28_2570:
 .Ltmp2191:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-.LBB28_2572:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i817
+.LBB28_2571:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i817
 	move	$s6, $s7
-.LBB28_2573:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i817
+.LBB28_2572:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i817
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 744
 	add.d	$a0, $sp, $a0
@@ -47330,8 +47444,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2575
-# %bb.2574:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i309.i821
+	beq	$a0, $a1, .LBB28_2574
+# %bb.2573:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i309.i821
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
@@ -47339,9 +47453,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2575:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i810
+.LBB28_2574:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i810
 	move	$s5, $s6
-.LBB28_2576:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i810
+.LBB28_2575:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i810
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 776
 	add.d	$a0, $sp, $a0
@@ -47349,8 +47463,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2578
-# %bb.2577:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i312.i814
+	beq	$a0, $a1, .LBB28_2577
+# %bb.2576:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i312.i814
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
@@ -47358,9 +47472,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2578:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i803
+.LBB28_2577:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i803
 	move	$s4, $s5
-.LBB28_2579:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i803
+.LBB28_2578:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i803
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 808
 	add.d	$a0, $sp, $a0
@@ -47368,8 +47482,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2581
-# %bb.2580:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i315.i807
+	beq	$a0, $a1, .LBB28_2580
+# %bb.2579:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i315.i807
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
@@ -47377,9 +47491,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2581:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i796
+.LBB28_2580:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i796
 	move	$s3, $s4
-.LBB28_2582:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i796
+.LBB28_2581:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i796
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 840
 	add.d	$a0, $sp, $a0
@@ -47387,8 +47501,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2584
-# %bb.2583:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i318.i800
+	beq	$a0, $a1, .LBB28_2583
+# %bb.2582:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i318.i800
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
@@ -47396,9 +47510,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2584:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i789
+.LBB28_2583:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i789
 	move	$s2, $s3
-.LBB28_2585:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i789
+.LBB28_2584:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i789
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 872
 	add.d	$a0, $sp, $a0
@@ -47406,8 +47520,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2587
-# %bb.2586:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i321.i793
+	beq	$a0, $a1, .LBB28_2586
+# %bb.2585:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i321.i793
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
@@ -47415,9 +47529,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2587:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i781
+.LBB28_2586:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i781
 	move	$fp, $s2
-.LBB28_2588:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i781
+.LBB28_2587:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i781
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 904
 	add.d	$a0, $sp, $a0
@@ -47425,8 +47539,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2590
-# %bb.2589:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i324.i785
+	beq	$a0, $a1, .LBB28_2589
+# %bb.2588:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i324.i785
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
@@ -47434,7 +47548,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2590:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit326.i773
+.LBB28_2589:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit326.i773
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 936
 	add.d	$a0, $sp, $a0
@@ -47442,8 +47556,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2592
-# %bb.2591:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i327.i777
+	beq	$a0, $a1, .LBB28_2591
+# %bb.2590:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i327.i777
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
@@ -47451,7 +47565,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2592:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit329.i765
+.LBB28_2591:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit329.i765
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 968
 	add.d	$a0, $sp, $a0
@@ -47459,8 +47573,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2594
-# %bb.2593:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i330.i769
+	beq	$a0, $a1, .LBB28_2593
+# %bb.2592:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i330.i769
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
@@ -47468,7 +47582,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2594:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit332.i757
+.LBB28_2593:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit332.i757
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1000
 	add.d	$a0, $sp, $a0
@@ -47476,8 +47590,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2596
-# %bb.2595:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i333.i761
+	beq	$a0, $a1, .LBB28_2595
+# %bb.2594:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i333.i761
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
@@ -47485,7 +47599,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2596:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit335.i749
+.LBB28_2595:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit335.i749
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1032
 	add.d	$a0, $sp, $a0
@@ -47493,8 +47607,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2598
-# %bb.2597:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i336.i753
+	beq	$a0, $a1, .LBB28_2597
+# %bb.2596:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i336.i753
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
@@ -47502,7 +47616,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2598:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i741
+.LBB28_2597:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i741
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1064
 	add.d	$a0, $sp, $a0
@@ -47510,8 +47624,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2600
-# %bb.2599:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i339.i745
+	beq	$a0, $a1, .LBB28_2599
+# %bb.2598:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i339.i745
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
@@ -47519,7 +47633,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2600:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit341.i734
+.LBB28_2599:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit341.i734
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1096
 	add.d	$a0, $sp, $a0
@@ -47527,8 +47641,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2602
-# %bb.2601:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i342.i738
+	beq	$a0, $a1, .LBB28_2601
+# %bb.2600:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i342.i738
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
@@ -47536,7 +47650,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2602:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit344.i726
+.LBB28_2601:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit344.i726
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1128
 	add.d	$a0, $sp, $a0
@@ -47544,8 +47658,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2604
-# %bb.2603:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i345.i730
+	beq	$a0, $a1, .LBB28_2603
+# %bb.2602:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i345.i730
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
@@ -47553,7 +47667,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2604:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit347.i718
+.LBB28_2603:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit347.i718
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1160
 	add.d	$a0, $sp, $a0
@@ -47561,8 +47675,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2606
-# %bb.2605:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i348.i722
+	beq	$a0, $a1, .LBB28_2605
+# %bb.2604:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i348.i722
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
@@ -47570,7 +47684,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2606:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit350.i710
+.LBB28_2605:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit350.i710
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -47578,8 +47692,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2608
-# %bb.2607:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i351.i714
+	beq	$a0, $a1, .LBB28_2607
+# %bb.2606:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i351.i714
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
@@ -47587,7 +47701,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2608:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit353.i702
+.LBB28_2607:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit353.i702
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1224
 	add.d	$a0, $sp, $a0
@@ -47595,8 +47709,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2610
-# %bb.2609:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i354.i706
+	beq	$a0, $a1, .LBB28_2609
+# %bb.2608:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i354.i706
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
@@ -47604,7 +47718,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2610:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i690
+.LBB28_2609:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i690
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1256
 	add.d	$a0, $sp, $a0
@@ -47612,8 +47726,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2612
-# %bb.2611:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i357.i694
+	beq	$a0, $a1, .LBB28_2611
+# %bb.2610:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i357.i694
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
@@ -47621,184 +47735,184 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2612:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit359.i695
+.LBB28_2611:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit359.i695
 	addi.d	$s1, $sp, 1128
 	xor	$a0, $s1, $fp
 	sltui	$a0, $a0, 1
 	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	or	$a0, $a1, $a0
-	bnez	$a0, .LBB28_2614
+	bnez	$a0, .LBB28_2613
 	.p2align	4, , 16
-.LBB28_2613:                            # %.preheader.i697
+.LBB28_2612:                            # %.preheader.i697
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$fp, $fp, -88
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	bne	$fp, $s1, .LBB28_2613
-.LBB28_2614:                            # %.loopexit.i698
+	bne	$fp, $s1, .LBB28_2612
+.LBB28_2613:                            # %.loopexit.i698
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB28_2615:
+.LBB28_2614:
 .Ltmp2188:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2573
-.LBB28_2616:
+	b	.LBB28_2572
+.LBB28_2615:
 .Ltmp2185:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2576
-.LBB28_2617:
+	b	.LBB28_2575
+.LBB28_2616:
 .Ltmp2182:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2579
-.LBB28_2618:
+	b	.LBB28_2578
+.LBB28_2617:
 .Ltmp2179:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2582
-.LBB28_2619:
+	b	.LBB28_2581
+.LBB28_2618:
 .Ltmp2176:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2585
-.LBB28_2620:
+	b	.LBB28_2584
+.LBB28_2619:
 .Ltmp2173:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2587
-.LBB28_2621:
+	b	.LBB28_2586
+.LBB28_2620:
 .Ltmp2170:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2588
-.LBB28_2622:
+	b	.LBB28_2587
+.LBB28_2621:
 .Ltmp2167:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2590
-.LBB28_2623:
+	b	.LBB28_2589
+.LBB28_2622:
 .Ltmp2164:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2590
-.LBB28_2624:
+	b	.LBB28_2589
+.LBB28_2623:
 .Ltmp2161:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2592
-.LBB28_2625:
+	b	.LBB28_2591
+.LBB28_2624:
 .Ltmp2158:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2592
-.LBB28_2626:
+	b	.LBB28_2591
+.LBB28_2625:
 .Ltmp2155:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2594
-.LBB28_2627:
+	b	.LBB28_2593
+.LBB28_2626:
 .Ltmp2152:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2594
-.LBB28_2628:
+	b	.LBB28_2593
+.LBB28_2627:
 .Ltmp2149:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2596
-.LBB28_2629:
+	b	.LBB28_2595
+.LBB28_2628:
 .Ltmp2146:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2596
-.LBB28_2630:
+	b	.LBB28_2595
+.LBB28_2629:
 .Ltmp2143:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2598
-.LBB28_2631:
+	b	.LBB28_2597
+.LBB28_2630:
 .Ltmp2140:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2598
-.LBB28_2632:
+	b	.LBB28_2597
+.LBB28_2631:
 .Ltmp2137:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2600
-.LBB28_2633:
+	b	.LBB28_2599
+.LBB28_2632:
 .Ltmp2134:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2602
-.LBB28_2634:
+	b	.LBB28_2601
+.LBB28_2633:
 .Ltmp2131:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2602
-.LBB28_2635:
+	b	.LBB28_2601
+.LBB28_2634:
 .Ltmp2128:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2604
-.LBB28_2636:
+	b	.LBB28_2603
+.LBB28_2635:
 .Ltmp2125:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2604
-.LBB28_2637:
+	b	.LBB28_2603
+.LBB28_2636:
 .Ltmp2122:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2606
-.LBB28_2638:
+	b	.LBB28_2605
+.LBB28_2637:
 .Ltmp2119:                              # EH_LABEL
 	move	$fp, $s1
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2606
-.LBB28_2639:
+	b	.LBB28_2605
+.LBB28_2638:
 .Ltmp2116:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s1
-	b	.LBB28_2608
-.LBB28_2640:
+	b	.LBB28_2607
+.LBB28_2639:
 .Ltmp2113:                              # EH_LABEL
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2608
-.LBB28_2641:
+	b	.LBB28_2607
+.LBB28_2640:
 .Ltmp2110:                              # EH_LABEL
-	b	.LBB28_2643
-.LBB28_2642:
+	b	.LBB28_2642
+.LBB28_2641:
 .Ltmp2107:                              # EH_LABEL
-.LBB28_2643:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i690
+.LBB28_2642:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i690
 	move	$s0, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2610
-.LBB28_2644:                            # %.loopexit384.loopexit.i618
+	b	.LBB28_2609
+.LBB28_2643:                            # %.loopexit384.loopexit.i618
 .Ltmp2104:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	ori	$a0, $zero, 2800
@@ -47864,12 +47978,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ori	$s0, $zero, 1
-	b	.LBB28_2646
-.LBB28_2645:
+	b	.LBB28_2645
+.LBB28_2644:
 .Ltmp2101:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-.LBB28_2646:                            # %.loopexit384.i612
+.LBB28_2645:                            # %.loopexit384.i612
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 648
 	add.d	$a0, $sp, $a0
@@ -47877,8 +47991,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 664
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2648
-# %bb.2647:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i300.i614
+	beq	$a0, $a1, .LBB28_2647
+# %bb.2646:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i300.i614
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 664
 	add.d	$a1, $sp, $a1
@@ -47886,15 +48000,15 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2648:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i605
+.LBB28_2647:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i605
 	ori	$a0, $zero, 2800
 	add.d	$s8, $sp, $a0
-	b	.LBB28_2650
-.LBB28_2649:
+	b	.LBB28_2649
+.LBB28_2648:
 .Ltmp2098:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-.LBB28_2650:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i605
+.LBB28_2649:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i605
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 680
 	add.d	$a0, $sp, $a0
@@ -47902,8 +48016,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 696
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2652
-# %bb.2651:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i303.i609
+	beq	$a0, $a1, .LBB28_2651
+# %bb.2650:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i303.i609
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 696
 	add.d	$a1, $sp, $a1
@@ -47911,14 +48025,14 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2652:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i598
+.LBB28_2651:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i598
 	move	$s7, $s8
-	b	.LBB28_2654
-.LBB28_2653:
+	b	.LBB28_2653
+.LBB28_2652:
 .Ltmp2095:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-.LBB28_2654:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i598
+.LBB28_2653:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i598
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 712
 	add.d	$a0, $sp, $a0
@@ -47926,8 +48040,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 728
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2657
-# %bb.2655:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i306.i602
+	beq	$a0, $a1, .LBB28_2656
+# %bb.2654:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i306.i602
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 728
 	add.d	$a1, $sp, $a1
@@ -47935,14 +48049,14 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2657
-.LBB28_2656:
+	b	.LBB28_2656
+.LBB28_2655:
 .Ltmp2092:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-.LBB28_2657:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i590
+.LBB28_2656:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i590
 	move	$s6, $s7
-.LBB28_2658:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i590
+.LBB28_2657:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i590
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 744
 	add.d	$a0, $sp, $a0
@@ -47950,8 +48064,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2660
-# %bb.2659:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i309.i594
+	beq	$a0, $a1, .LBB28_2659
+# %bb.2658:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i309.i594
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
@@ -47959,9 +48073,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2660:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i583
+.LBB28_2659:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i583
 	move	$s5, $s6
-.LBB28_2661:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i583
+.LBB28_2660:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i583
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 776
 	add.d	$a0, $sp, $a0
@@ -47969,8 +48083,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2663
-# %bb.2662:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i312.i587
+	beq	$a0, $a1, .LBB28_2662
+# %bb.2661:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i312.i587
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
@@ -47978,9 +48092,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2663:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i576
+.LBB28_2662:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i576
 	move	$s4, $s5
-.LBB28_2664:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i576
+.LBB28_2663:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i576
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 808
 	add.d	$a0, $sp, $a0
@@ -47988,8 +48102,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2666
-# %bb.2665:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i315.i580
+	beq	$a0, $a1, .LBB28_2665
+# %bb.2664:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i315.i580
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
@@ -47997,9 +48111,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2666:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i569
+.LBB28_2665:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i569
 	move	$s3, $s4
-.LBB28_2667:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i569
+.LBB28_2666:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i569
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 840
 	add.d	$a0, $sp, $a0
@@ -48007,8 +48121,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2669
-# %bb.2668:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i318.i573
+	beq	$a0, $a1, .LBB28_2668
+# %bb.2667:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i318.i573
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
@@ -48016,9 +48130,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2669:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i562
+.LBB28_2668:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i562
 	move	$s2, $s3
-.LBB28_2670:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i562
+.LBB28_2669:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i562
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 872
 	add.d	$a0, $sp, $a0
@@ -48026,8 +48140,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2672
-# %bb.2671:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i321.i566
+	beq	$a0, $a1, .LBB28_2671
+# %bb.2670:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i321.i566
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
@@ -48035,9 +48149,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2672:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i554
+.LBB28_2671:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i554
 	move	$fp, $s2
-.LBB28_2673:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i554
+.LBB28_2672:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i554
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 904
 	add.d	$a0, $sp, $a0
@@ -48045,8 +48159,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2675
-# %bb.2674:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i324.i558
+	beq	$a0, $a1, .LBB28_2674
+# %bb.2673:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i324.i558
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
@@ -48054,7 +48168,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2675:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit326.i546
+.LBB28_2674:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit326.i546
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 936
 	add.d	$a0, $sp, $a0
@@ -48062,8 +48176,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2677
-# %bb.2676:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i327.i550
+	beq	$a0, $a1, .LBB28_2676
+# %bb.2675:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i327.i550
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
@@ -48071,7 +48185,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2677:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit329.i538
+.LBB28_2676:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit329.i538
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 968
 	add.d	$a0, $sp, $a0
@@ -48079,8 +48193,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2679
-# %bb.2678:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i330.i542
+	beq	$a0, $a1, .LBB28_2678
+# %bb.2677:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i330.i542
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
@@ -48088,7 +48202,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2679:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit332.i530
+.LBB28_2678:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit332.i530
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1000
 	add.d	$a0, $sp, $a0
@@ -48096,8 +48210,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2681
-# %bb.2680:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i333.i534
+	beq	$a0, $a1, .LBB28_2680
+# %bb.2679:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i333.i534
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
@@ -48105,7 +48219,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2681:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit335.i522
+.LBB28_2680:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit335.i522
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1032
 	add.d	$a0, $sp, $a0
@@ -48113,8 +48227,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2683
-# %bb.2682:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i336.i526
+	beq	$a0, $a1, .LBB28_2682
+# %bb.2681:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i336.i526
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
@@ -48122,7 +48236,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2683:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i514
+.LBB28_2682:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i514
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1064
 	add.d	$a0, $sp, $a0
@@ -48130,8 +48244,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2685
-# %bb.2684:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i339.i518
+	beq	$a0, $a1, .LBB28_2684
+# %bb.2683:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i339.i518
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
@@ -48139,7 +48253,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2685:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit341.i507
+.LBB28_2684:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit341.i507
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1096
 	add.d	$a0, $sp, $a0
@@ -48147,8 +48261,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2687
-# %bb.2686:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i342.i511
+	beq	$a0, $a1, .LBB28_2686
+# %bb.2685:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i342.i511
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
@@ -48156,7 +48270,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2687:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit344.i499
+.LBB28_2686:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit344.i499
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1128
 	add.d	$a0, $sp, $a0
@@ -48164,8 +48278,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2689
-# %bb.2688:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i345.i503
+	beq	$a0, $a1, .LBB28_2688
+# %bb.2687:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i345.i503
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
@@ -48173,7 +48287,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2689:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit347.i491
+.LBB28_2688:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit347.i491
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1160
 	add.d	$a0, $sp, $a0
@@ -48181,8 +48295,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2691
-# %bb.2690:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i348.i495
+	beq	$a0, $a1, .LBB28_2690
+# %bb.2689:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i348.i495
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
@@ -48190,7 +48304,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2691:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit350.i483
+.LBB28_2690:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit350.i483
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -48198,8 +48312,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2693
-# %bb.2692:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i351.i487
+	beq	$a0, $a1, .LBB28_2692
+# %bb.2691:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i351.i487
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
@@ -48207,7 +48321,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2693:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit353.i475
+.LBB28_2692:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit353.i475
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1224
 	add.d	$a0, $sp, $a0
@@ -48215,8 +48329,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2695
-# %bb.2694:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i354.i479
+	beq	$a0, $a1, .LBB28_2694
+# %bb.2693:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i354.i479
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
@@ -48224,7 +48338,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2695:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i463
+.LBB28_2694:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i463
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1256
 	add.d	$a0, $sp, $a0
@@ -48232,8 +48346,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2697
-# %bb.2696:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i357.i467
+	beq	$a0, $a1, .LBB28_2696
+# %bb.2695:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i357.i467
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
@@ -48241,180 +48355,180 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2697:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit359.i468
+.LBB28_2696:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit359.i468
 	addi.d	$s1, $sp, 1128
 	xor	$a0, $s1, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s0, $a0
-	bnez	$a0, .LBB28_2945
+	bnez	$a0, .LBB28_2865
 	.p2align	4, , 16
-.LBB28_2698:                            # %.preheader.i470
+.LBB28_2697:                            # %.preheader.i470
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$fp, $fp, -88
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	bne	$fp, $s1, .LBB28_2698
-	b	.LBB28_2945
-.LBB28_2699:
+	bne	$fp, $s1, .LBB28_2697
+	b	.LBB28_2865
+.LBB28_2698:
 .Ltmp2089:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2658
-.LBB28_2700:
+	b	.LBB28_2657
+.LBB28_2699:
 .Ltmp2086:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2661
-.LBB28_2701:
+	b	.LBB28_2660
+.LBB28_2700:
 .Ltmp2083:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2664
-.LBB28_2702:
+	b	.LBB28_2663
+.LBB28_2701:
 .Ltmp2080:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2667
-.LBB28_2703:
+	b	.LBB28_2666
+.LBB28_2702:
 .Ltmp2077:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2670
-.LBB28_2704:
+	b	.LBB28_2669
+.LBB28_2703:
 .Ltmp2074:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2672
-.LBB28_2705:
+	b	.LBB28_2671
+.LBB28_2704:
 .Ltmp2071:                              # EH_LABEL
 	move	$fp, $s1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2673
-.LBB28_2706:
+	b	.LBB28_2672
+.LBB28_2705:
 .Ltmp2068:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s1
-	b	.LBB28_2675
-.LBB28_2707:
+	b	.LBB28_2674
+.LBB28_2706:
 .Ltmp2065:                              # EH_LABEL
 	move	$fp, $s1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2675
-.LBB28_2708:
+	b	.LBB28_2674
+.LBB28_2707:
 .Ltmp2062:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s1
-	b	.LBB28_2677
-.LBB28_2709:
+	b	.LBB28_2676
+.LBB28_2708:
 .Ltmp2059:                              # EH_LABEL
 	move	$fp, $s1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2677
-.LBB28_2710:
+	b	.LBB28_2676
+.LBB28_2709:
 .Ltmp2056:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s1
-	b	.LBB28_2679
-.LBB28_2711:
+	b	.LBB28_2678
+.LBB28_2710:
 .Ltmp2053:                              # EH_LABEL
 	move	$fp, $s1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2679
-.LBB28_2712:
+	b	.LBB28_2678
+.LBB28_2711:
 .Ltmp2050:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s1
-	b	.LBB28_2681
-.LBB28_2713:
+	b	.LBB28_2680
+.LBB28_2712:
 .Ltmp2047:                              # EH_LABEL
 	move	$fp, $s1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2681
-.LBB28_2714:
+	b	.LBB28_2680
+.LBB28_2713:
 .Ltmp2044:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s1
-	b	.LBB28_2683
-.LBB28_2715:
+	b	.LBB28_2682
+.LBB28_2714:
 .Ltmp2041:                              # EH_LABEL
 	move	$fp, $s1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2683
-.LBB28_2716:
+	b	.LBB28_2682
+.LBB28_2715:
 .Ltmp2038:                              # EH_LABEL
 	move	$fp, $s1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2685
-.LBB28_2717:
+	b	.LBB28_2684
+.LBB28_2716:
 .Ltmp2035:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s1
-	b	.LBB28_2687
-.LBB28_2718:
+	b	.LBB28_2686
+.LBB28_2717:
 .Ltmp2032:                              # EH_LABEL
 	move	$fp, $s1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2687
-.LBB28_2719:
+	b	.LBB28_2686
+.LBB28_2718:
 .Ltmp2029:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s1
-	b	.LBB28_2689
-.LBB28_2720:
+	b	.LBB28_2688
+.LBB28_2719:
 .Ltmp2026:                              # EH_LABEL
 	move	$fp, $s1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2689
-.LBB28_2721:
+	b	.LBB28_2688
+.LBB28_2720:
 .Ltmp2023:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s1
-	b	.LBB28_2691
-.LBB28_2722:
+	b	.LBB28_2690
+.LBB28_2721:
 .Ltmp2020:                              # EH_LABEL
 	move	$fp, $s1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2691
-.LBB28_2723:
+	b	.LBB28_2690
+.LBB28_2722:
 .Ltmp2017:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s1
-	b	.LBB28_2693
-.LBB28_2724:
+	b	.LBB28_2692
+.LBB28_2723:
 .Ltmp2014:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2693
-.LBB28_2725:
+	b	.LBB28_2692
+.LBB28_2724:
 .Ltmp2011:                              # EH_LABEL
-	b	.LBB28_2727
-.LBB28_2726:
+	b	.LBB28_2726
+.LBB28_2725:
 .Ltmp2008:                              # EH_LABEL
-.LBB28_2727:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i463
+.LBB28_2726:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i463
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2695
-.LBB28_2728:                            # %.loopexit384.loopexit.i
+	b	.LBB28_2694
+.LBB28_2727:                            # %.loopexit384.loopexit.i
 .Ltmp2005:                              # EH_LABEL
 	move	$s1, $a0
 	move	$a0, $s0
@@ -48480,12 +48594,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	b	.LBB28_2730
-.LBB28_2729:
+	b	.LBB28_2729
+.LBB28_2728:
 .Ltmp2002:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-.LBB28_2730:                            # %.loopexit384.i
+.LBB28_2729:                            # %.loopexit384.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 648
 	add.d	$a0, $sp, $a0
@@ -48493,8 +48607,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 664
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2732
-# %bb.2731:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i300.i389
+	beq	$a0, $a1, .LBB28_2731
+# %bb.2730:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i300.i389
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 664
 	add.d	$a1, $sp, $a1
@@ -48502,14 +48616,14 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2732:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i383
+.LBB28_2731:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i383
 	move	$s8, $s0
-	b	.LBB28_2734
-.LBB28_2733:
+	b	.LBB28_2733
+.LBB28_2732:
 .Ltmp1999:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-.LBB28_2734:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i383
+.LBB28_2733:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i383
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 680
 	add.d	$a0, $sp, $a0
@@ -48517,8 +48631,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 696
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2736
-# %bb.2735:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i303.i386
+	beq	$a0, $a1, .LBB28_2735
+# %bb.2734:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i303.i386
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 696
 	add.d	$a1, $sp, $a1
@@ -48526,14 +48640,14 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2736:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i378
+.LBB28_2735:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i378
 	move	$s7, $s8
-	b	.LBB28_2738
-.LBB28_2737:
+	b	.LBB28_2737
+.LBB28_2736:
 .Ltmp1996:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-.LBB28_2738:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i378
+.LBB28_2737:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i378
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 712
 	add.d	$a0, $sp, $a0
@@ -48541,8 +48655,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 728
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2741
-# %bb.2739:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i306.i381
+	beq	$a0, $a1, .LBB28_2740
+# %bb.2738:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i306.i381
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 728
 	add.d	$a1, $sp, $a1
@@ -48550,14 +48664,14 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2741
-.LBB28_2740:
+	b	.LBB28_2740
+.LBB28_2739:
 .Ltmp1993:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-.LBB28_2741:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i373
+.LBB28_2740:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i373
 	move	$s6, $s7
-.LBB28_2742:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i373
+.LBB28_2741:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i373
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 744
 	add.d	$a0, $sp, $a0
@@ -48565,8 +48679,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2744
-# %bb.2743:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i309.i376
+	beq	$a0, $a1, .LBB28_2743
+# %bb.2742:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i309.i376
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
@@ -48574,9 +48688,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2744:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i367
+.LBB28_2743:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i367
 	move	$s5, $s6
-.LBB28_2745:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i367
+.LBB28_2744:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i367
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 776
 	add.d	$a0, $sp, $a0
@@ -48584,8 +48698,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2747
-# %bb.2746:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i312.i370
+	beq	$a0, $a1, .LBB28_2746
+# %bb.2745:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i312.i370
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
@@ -48593,9 +48707,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2747:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i361
+.LBB28_2746:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i361
 	move	$s4, $s5
-.LBB28_2748:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i361
+.LBB28_2747:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i361
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 808
 	add.d	$a0, $sp, $a0
@@ -48603,8 +48717,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2750
-# %bb.2749:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i315.i364
+	beq	$a0, $a1, .LBB28_2749
+# %bb.2748:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i315.i364
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
@@ -48612,9 +48726,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2750:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i356
+.LBB28_2749:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i356
 	move	$s3, $s4
-.LBB28_2751:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i356
+.LBB28_2750:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i356
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 840
 	add.d	$a0, $sp, $a0
@@ -48622,8 +48736,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2753
-# %bb.2752:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i318.i359
+	beq	$a0, $a1, .LBB28_2752
+# %bb.2751:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i318.i359
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
@@ -48631,9 +48745,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2753:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i350
+.LBB28_2752:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i350
 	move	$s2, $s3
-.LBB28_2754:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i350
+.LBB28_2753:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i350
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 872
 	add.d	$a0, $sp, $a0
@@ -48641,8 +48755,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2756
-# %bb.2755:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i321.i353
+	beq	$a0, $a1, .LBB28_2755
+# %bb.2754:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i321.i353
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
@@ -48650,9 +48764,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2756:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i345
+.LBB28_2755:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i345
 	move	$fp, $s2
-.LBB28_2757:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i345
+.LBB28_2756:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i345
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 904
 	add.d	$a0, $sp, $a0
@@ -48660,8 +48774,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2759
-# %bb.2758:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i324.i348
+	beq	$a0, $a1, .LBB28_2758
+# %bb.2757:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i324.i348
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
@@ -48669,7 +48783,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2759:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit326.i340
+.LBB28_2758:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit326.i340
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 936
 	add.d	$a0, $sp, $a0
@@ -48677,8 +48791,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2761
-# %bb.2760:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i327.i343
+	beq	$a0, $a1, .LBB28_2760
+# %bb.2759:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i327.i343
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
@@ -48686,7 +48800,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2761:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit329.i335
+.LBB28_2760:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit329.i335
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 968
 	add.d	$a0, $sp, $a0
@@ -48694,8 +48808,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2763
-# %bb.2762:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i330.i338
+	beq	$a0, $a1, .LBB28_2762
+# %bb.2761:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i330.i338
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
@@ -48703,7 +48817,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2763:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit332.i328
+.LBB28_2762:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit332.i328
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1000
 	add.d	$a0, $sp, $a0
@@ -48711,8 +48825,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2765
-# %bb.2764:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i333.i331
+	beq	$a0, $a1, .LBB28_2764
+# %bb.2763:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i333.i331
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
@@ -48720,7 +48834,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2765:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit335.i321
+.LBB28_2764:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit335.i321
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1032
 	add.d	$a0, $sp, $a0
@@ -48728,8 +48842,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2767
-# %bb.2766:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i336.i324
+	beq	$a0, $a1, .LBB28_2766
+# %bb.2765:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i336.i324
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
@@ -48737,7 +48851,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2767:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i314
+.LBB28_2766:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i314
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1064
 	add.d	$a0, $sp, $a0
@@ -48745,8 +48859,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2769
-# %bb.2768:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i339.i317
+	beq	$a0, $a1, .LBB28_2768
+# %bb.2767:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i339.i317
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
@@ -48754,7 +48868,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2769:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit341.i311
+.LBB28_2768:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit341.i311
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1096
 	add.d	$a0, $sp, $a0
@@ -48762,8 +48876,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2771
-# %bb.2770:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i342.i
+	beq	$a0, $a1, .LBB28_2770
+# %bb.2769:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i342.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
@@ -48771,7 +48885,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2771:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit344.i
+.LBB28_2770:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit344.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1128
 	add.d	$a0, $sp, $a0
@@ -48779,8 +48893,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2773
-# %bb.2772:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i345.i
+	beq	$a0, $a1, .LBB28_2772
+# %bb.2771:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i345.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
@@ -48788,7 +48902,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2773:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit347.i
+.LBB28_2772:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit347.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1160
 	add.d	$a0, $sp, $a0
@@ -48796,8 +48910,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2775
-# %bb.2774:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i348.i
+	beq	$a0, $a1, .LBB28_2774
+# %bb.2773:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i348.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
@@ -48805,7 +48919,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2775:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit350.i
+.LBB28_2774:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit350.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -48813,8 +48927,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2777
-# %bb.2776:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i351.i
+	beq	$a0, $a1, .LBB28_2776
+# %bb.2775:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i351.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
@@ -48822,7 +48936,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2777:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit353.i
+.LBB28_2776:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit353.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1224
 	add.d	$a0, $sp, $a0
@@ -48830,8 +48944,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2779
-# %bb.2778:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i354.i
+	beq	$a0, $a1, .LBB28_2778
+# %bb.2777:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i354.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
@@ -48839,7 +48953,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2779:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i
+.LBB28_2778:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1256
 	add.d	$a0, $sp, $a0
@@ -48847,8 +48961,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2781
-# %bb.2780:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i357.i
+	beq	$a0, $a1, .LBB28_2780
+# %bb.2779:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i357.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
@@ -48856,184 +48970,184 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2781:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit359.i
+.LBB28_2780:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit359.i
 	addi.d	$s0, $sp, 1128
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	or	$a0, $a1, $a0
-	bnez	$a0, .LBB28_2783
+	bnez	$a0, .LBB28_2782
 	.p2align	4, , 16
-.LBB28_2782:                            # %.preheader.i293
+.LBB28_2781:                            # %.preheader.i293
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$fp, $fp, -88
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	bne	$fp, $s0, .LBB28_2782
-.LBB28_2783:                            # %.loopexit.i294
+	bne	$fp, $s0, .LBB28_2781
+.LBB28_2782:                            # %.loopexit.i294
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB28_2784:
+.LBB28_2783:
 .Ltmp1990:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2742
-.LBB28_2785:
+	b	.LBB28_2741
+.LBB28_2784:
 .Ltmp1987:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2745
-.LBB28_2786:
+	b	.LBB28_2744
+.LBB28_2785:
 .Ltmp1984:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2748
-.LBB28_2787:
+	b	.LBB28_2747
+.LBB28_2786:
 .Ltmp1981:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2751
-.LBB28_2788:
+	b	.LBB28_2750
+.LBB28_2787:
 .Ltmp1978:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2754
-.LBB28_2789:
+	b	.LBB28_2753
+.LBB28_2788:
 .Ltmp1975:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2756
-.LBB28_2790:
+	b	.LBB28_2755
+.LBB28_2789:
 .Ltmp1972:                              # EH_LABEL
 	move	$fp, $s0
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2757
-.LBB28_2791:
+	b	.LBB28_2756
+.LBB28_2790:
 .Ltmp1969:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s0
-	b	.LBB28_2759
-.LBB28_2792:
+	b	.LBB28_2758
+.LBB28_2791:
 .Ltmp1966:                              # EH_LABEL
 	move	$fp, $s0
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2759
-.LBB28_2793:
+	b	.LBB28_2758
+.LBB28_2792:
 .Ltmp1963:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s0
-	b	.LBB28_2761
-.LBB28_2794:
+	b	.LBB28_2760
+.LBB28_2793:
 .Ltmp1960:                              # EH_LABEL
 	move	$fp, $s0
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2761
-.LBB28_2795:
+	b	.LBB28_2760
+.LBB28_2794:
 .Ltmp1957:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s0
-	b	.LBB28_2763
-.LBB28_2796:
+	b	.LBB28_2762
+.LBB28_2795:
 .Ltmp1954:                              # EH_LABEL
 	move	$fp, $s0
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2763
-.LBB28_2797:
+	b	.LBB28_2762
+.LBB28_2796:
 .Ltmp1951:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s0
-	b	.LBB28_2765
-.LBB28_2798:
+	b	.LBB28_2764
+.LBB28_2797:
 .Ltmp1948:                              # EH_LABEL
 	move	$fp, $s0
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2765
-.LBB28_2799:
+	b	.LBB28_2764
+.LBB28_2798:
 .Ltmp1945:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s0
-	b	.LBB28_2767
-.LBB28_2800:
+	b	.LBB28_2766
+.LBB28_2799:
 .Ltmp1942:                              # EH_LABEL
 	move	$fp, $s0
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2767
-.LBB28_2801:
+	b	.LBB28_2766
+.LBB28_2800:
 .Ltmp1939:                              # EH_LABEL
 	move	$fp, $s0
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2769
-.LBB28_2802:
+	b	.LBB28_2768
+.LBB28_2801:
 .Ltmp1936:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s0
-	b	.LBB28_2771
-.LBB28_2803:
+	b	.LBB28_2770
+.LBB28_2802:
 .Ltmp1933:                              # EH_LABEL
 	move	$fp, $s0
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2771
-.LBB28_2804:
+	b	.LBB28_2770
+.LBB28_2803:
 .Ltmp1930:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s0
-	b	.LBB28_2773
-.LBB28_2805:
+	b	.LBB28_2772
+.LBB28_2804:
 .Ltmp1927:                              # EH_LABEL
 	move	$fp, $s0
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2773
-.LBB28_2806:
+	b	.LBB28_2772
+.LBB28_2805:
 .Ltmp1924:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s0
-	b	.LBB28_2775
-.LBB28_2807:
+	b	.LBB28_2774
+.LBB28_2806:
 .Ltmp1921:                              # EH_LABEL
 	move	$fp, $s0
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2775
-.LBB28_2808:
+	b	.LBB28_2774
+.LBB28_2807:
 .Ltmp1918:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $s0
-	b	.LBB28_2777
-.LBB28_2809:
+	b	.LBB28_2776
+.LBB28_2808:
 .Ltmp1915:                              # EH_LABEL
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2777
-.LBB28_2810:
+	b	.LBB28_2776
+.LBB28_2809:
 .Ltmp1912:                              # EH_LABEL
-	b	.LBB28_2812
-.LBB28_2811:
+	b	.LBB28_2811
+.LBB28_2810:
 .Ltmp1909:                              # EH_LABEL
-.LBB28_2812:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i
+.LBB28_2811:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit356.i
 	move	$s1, $a0
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	b	.LBB28_2779
-.LBB28_2813:                            # %.loopexit365.loopexit.i222
+	b	.LBB28_2778
+.LBB28_2812:                            # %.loopexit365.loopexit.i222
 .Ltmp1906:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$a0, $s1
@@ -49094,12 +49208,12 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ori	$s0, $zero, 1
-	b	.LBB28_2815
-.LBB28_2814:
+	b	.LBB28_2814
+.LBB28_2813:
 .Ltmp1903:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-.LBB28_2815:                            # %.loopexit365.i216
+.LBB28_2814:                            # %.loopexit365.i216
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 680
 	add.d	$a0, $sp, $a0
@@ -49107,8 +49221,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 696
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2817
-# %bb.2816:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i285.i218
+	beq	$a0, $a1, .LBB28_2816
+# %bb.2815:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i285.i218
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 696
 	add.d	$a1, $sp, $a1
@@ -49116,14 +49230,14 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2817:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit287.i209
+.LBB28_2816:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit287.i209
 	move	$s8, $s1
-	b	.LBB28_2819
-.LBB28_2818:
+	b	.LBB28_2818
+.LBB28_2817:
 .Ltmp1900:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-.LBB28_2819:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit287.i209
+.LBB28_2818:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit287.i209
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 712
 	add.d	$a0, $sp, $a0
@@ -49131,8 +49245,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 728
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2821
-# %bb.2820:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i288.i213
+	beq	$a0, $a1, .LBB28_2820
+# %bb.2819:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i288.i213
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 728
 	add.d	$a1, $sp, $a1
@@ -49140,14 +49254,14 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2821:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit290.i202
+.LBB28_2820:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit290.i202
 	move	$s7, $s8
-	b	.LBB28_2823
-.LBB28_2822:
+	b	.LBB28_2822
+.LBB28_2821:
 .Ltmp1897:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-.LBB28_2823:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit290.i202
+.LBB28_2822:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit290.i202
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 744
 	add.d	$a0, $sp, $a0
@@ -49155,8 +49269,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2826
-# %bb.2824:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i291.i206
+	beq	$a0, $a1, .LBB28_2825
+# %bb.2823:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i291.i206
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
@@ -49164,14 +49278,14 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2826
-.LBB28_2825:
+	b	.LBB28_2825
+.LBB28_2824:
 .Ltmp1894:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-.LBB28_2826:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit293.i194
+.LBB28_2825:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit293.i194
 	move	$s6, $s7
-.LBB28_2827:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit293.i194
+.LBB28_2826:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit293.i194
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 776
 	add.d	$a0, $sp, $a0
@@ -49179,8 +49293,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2829
-# %bb.2828:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i294.i198
+	beq	$a0, $a1, .LBB28_2828
+# %bb.2827:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i294.i198
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
@@ -49188,9 +49302,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2829:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit296.i187
+.LBB28_2828:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit296.i187
 	move	$s5, $s6
-.LBB28_2830:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit296.i187
+.LBB28_2829:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit296.i187
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 808
 	add.d	$a0, $sp, $a0
@@ -49198,8 +49312,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2832
-# %bb.2831:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i297.i191
+	beq	$a0, $a1, .LBB28_2831
+# %bb.2830:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i297.i191
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
@@ -49207,9 +49321,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2832:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit299.i180
+.LBB28_2831:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit299.i180
 	move	$s4, $s5
-.LBB28_2833:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit299.i180
+.LBB28_2832:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit299.i180
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 840
 	add.d	$a0, $sp, $a0
@@ -49217,8 +49331,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2835
-# %bb.2834:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i300.i184
+	beq	$a0, $a1, .LBB28_2834
+# %bb.2833:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i300.i184
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
@@ -49226,9 +49340,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2835:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i173
+.LBB28_2834:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i173
 	move	$s3, $s4
-.LBB28_2836:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i173
+.LBB28_2835:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i173
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 872
 	add.d	$a0, $sp, $a0
@@ -49236,8 +49350,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2838
-# %bb.2837:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i303.i177
+	beq	$a0, $a1, .LBB28_2837
+# %bb.2836:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i303.i177
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
@@ -49245,9 +49359,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2838:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i166
+.LBB28_2837:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i166
 	move	$s2, $s3
-.LBB28_2839:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i166
+.LBB28_2838:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i166
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 904
 	add.d	$a0, $sp, $a0
@@ -49255,8 +49369,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2841
-# %bb.2840:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i306.i170
+	beq	$a0, $a1, .LBB28_2840
+# %bb.2839:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i306.i170
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
@@ -49264,9 +49378,9 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2841:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i158
+.LBB28_2840:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i158
 	move	$fp, $s2
-.LBB28_2842:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i158
+.LBB28_2841:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit308.i158
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 936
 	add.d	$a0, $sp, $a0
@@ -49274,8 +49388,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2844
-# %bb.2843:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i309.i162
+	beq	$a0, $a1, .LBB28_2843
+# %bb.2842:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i309.i162
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
@@ -49283,7 +49397,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2844:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i150
+.LBB28_2843:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit311.i150
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 968
 	add.d	$a0, $sp, $a0
@@ -49291,8 +49405,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2846
-# %bb.2845:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i312.i154
+	beq	$a0, $a1, .LBB28_2845
+# %bb.2844:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i312.i154
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
@@ -49300,7 +49414,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2846:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i142
+.LBB28_2845:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit314.i142
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1000
 	add.d	$a0, $sp, $a0
@@ -49308,8 +49422,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2848
-# %bb.2847:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i315.i146
+	beq	$a0, $a1, .LBB28_2847
+# %bb.2846:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i315.i146
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
@@ -49317,7 +49431,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2848:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i134
+.LBB28_2847:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit317.i134
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1032
 	add.d	$a0, $sp, $a0
@@ -49325,8 +49439,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2850
-# %bb.2849:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i318.i138
+	beq	$a0, $a1, .LBB28_2849
+# %bb.2848:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i318.i138
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
@@ -49334,7 +49448,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2850:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i127
+.LBB28_2849:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit320.i127
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1064
 	add.d	$a0, $sp, $a0
@@ -49342,8 +49456,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2852
-# %bb.2851:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i321.i131
+	beq	$a0, $a1, .LBB28_2851
+# %bb.2850:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i321.i131
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
@@ -49351,7 +49465,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2852:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i119
+.LBB28_2851:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit323.i119
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1096
 	add.d	$a0, $sp, $a0
@@ -49359,8 +49473,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2854
-# %bb.2853:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i324.i123
+	beq	$a0, $a1, .LBB28_2853
+# %bb.2852:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i324.i123
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
@@ -49368,7 +49482,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2854:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit326.i111
+.LBB28_2853:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit326.i111
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1128
 	add.d	$a0, $sp, $a0
@@ -49376,8 +49490,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2856
-# %bb.2855:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i327.i115
+	beq	$a0, $a1, .LBB28_2855
+# %bb.2854:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i327.i115
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
@@ -49385,7 +49499,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2856:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit329.i103
+.LBB28_2855:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit329.i103
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1160
 	add.d	$a0, $sp, $a0
@@ -49393,8 +49507,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2858
-# %bb.2857:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i330.i107
+	beq	$a0, $a1, .LBB28_2857
+# %bb.2856:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i330.i107
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
@@ -49402,7 +49516,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2858:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit332.i95
+.LBB28_2857:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit332.i95
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -49410,8 +49524,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2860
-# %bb.2859:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i333.i99
+	beq	$a0, $a1, .LBB28_2859
+# %bb.2858:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i333.i99
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
@@ -49419,7 +49533,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2860:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit335.i87
+.LBB28_2859:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit335.i87
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1224
 	add.d	$a0, $sp, $a0
@@ -49427,8 +49541,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2862
-# %bb.2861:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i336.i91
+	beq	$a0, $a1, .LBB28_2861
+# %bb.2860:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i336.i91
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
@@ -49436,7 +49550,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2862:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i75
+.LBB28_2861:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i75
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1256
 	add.d	$a0, $sp, $a0
@@ -49444,8 +49558,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_2864
-# %bb.2863:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i339.i79
+	beq	$a0, $a1, .LBB28_2863
+# %bb.2862:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i339.i79
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
@@ -49453,158 +49567,161 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2864:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit341.i80
+.LBB28_2863:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit341.i80
 	addi.d	$s1, $sp, 1128
 	xor	$a0, $s1, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s0, $a0
-	bnez	$a0, .LBB28_2945
+	bnez	$a0, .LBB28_2865
 	.p2align	4, , 16
-.LBB28_2865:                            # %.preheader.i82
+.LBB28_2864:                            # %.preheader.i82
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$fp, $fp, -88
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	bne	$fp, $s1, .LBB28_2865
-	b	.LBB28_2945
+	bne	$fp, $s1, .LBB28_2864
+.LBB28_2865:                            # %.loopexit.i83
+	ld.d	$a0, $sp, 448                   # 8-byte Folded Reload
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
 .LBB28_2866:
 .Ltmp1891:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2827
+	b	.LBB28_2826
 .LBB28_2867:
 .Ltmp1888:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2830
+	b	.LBB28_2829
 .LBB28_2868:
 .Ltmp1885:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2833
+	b	.LBB28_2832
 .LBB28_2869:
 .Ltmp1882:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2836
+	b	.LBB28_2835
 .LBB28_2870:
 .Ltmp1879:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2839
+	b	.LBB28_2838
 .LBB28_2871:
 .Ltmp1876:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2841
+	b	.LBB28_2840
 .LBB28_2872:
 .Ltmp1873:                              # EH_LABEL
 	move	$fp, $s2
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2842
+	b	.LBB28_2841
 .LBB28_2873:
 .Ltmp1870:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s2
-	b	.LBB28_2844
+	b	.LBB28_2843
 .LBB28_2874:
 .Ltmp1867:                              # EH_LABEL
 	move	$fp, $s2
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2844
+	b	.LBB28_2843
 .LBB28_2875:
 .Ltmp1864:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s2
-	b	.LBB28_2846
+	b	.LBB28_2845
 .LBB28_2876:
 .Ltmp1861:                              # EH_LABEL
 	move	$fp, $s2
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2846
+	b	.LBB28_2845
 .LBB28_2877:
 .Ltmp1858:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s2
-	b	.LBB28_2848
+	b	.LBB28_2847
 .LBB28_2878:
 .Ltmp1855:                              # EH_LABEL
 	move	$fp, $s2
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2848
+	b	.LBB28_2847
 .LBB28_2879:
 .Ltmp1852:                              # EH_LABEL
 	move	$fp, $s2
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2850
+	b	.LBB28_2849
 .LBB28_2880:
 .Ltmp1849:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s2
-	b	.LBB28_2852
+	b	.LBB28_2851
 .LBB28_2881:
 .Ltmp1846:                              # EH_LABEL
 	move	$fp, $s1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2852
+	b	.LBB28_2851
 .LBB28_2882:
 .Ltmp1843:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s1
-	b	.LBB28_2854
+	b	.LBB28_2853
 .LBB28_2883:
 .Ltmp1840:                              # EH_LABEL
 	move	$fp, $s1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2854
+	b	.LBB28_2853
 .LBB28_2884:
 .Ltmp1837:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s1
-	b	.LBB28_2856
+	b	.LBB28_2855
 .LBB28_2885:
 .Ltmp1834:                              # EH_LABEL
 	move	$fp, $s1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2856
+	b	.LBB28_2855
 .LBB28_2886:
 .Ltmp1831:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s1
-	b	.LBB28_2858
+	b	.LBB28_2857
 .LBB28_2887:
 .Ltmp1828:                              # EH_LABEL
 	move	$fp, $s1
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2858
+	b	.LBB28_2857
 .LBB28_2888:
 .Ltmp1825:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$fp, $s1
-	b	.LBB28_2860
+	b	.LBB28_2859
 .LBB28_2889:
 .Ltmp1822:                              # EH_LABEL
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2860
+	b	.LBB28_2859
 .LBB28_2890:
 .Ltmp1819:                              # EH_LABEL
 	b	.LBB28_2892
@@ -49613,10 +49730,10 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 .LBB28_2892:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i75
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	move	$s0, $zero
-	b	.LBB28_2862
+	b	.LBB28_2861
 .LBB28_2893:                            # %.loopexit365.loopexit.i
 .Ltmp1813:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
@@ -49629,13 +49746,13 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
+	move	$a0, $s5
+	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
+	jirl	$ra, $ra, 0
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $s3
-	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
-	jirl	$ra, $ra, 0
-	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 2096
@@ -49679,7 +49796,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	b	.LBB28_2895
 .LBB28_2894:
 .Ltmp1810:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
 .LBB28_2895:                            # %.loopexit365.i
 	lu12i.w	$a0, 1
@@ -49703,7 +49820,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	b	.LBB28_2899
 .LBB28_2898:
 .Ltmp1807:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
 .LBB28_2899:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit287.i
 	lu12i.w	$a0, 1
@@ -49727,7 +49844,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	b	.LBB28_2903
 .LBB28_2902:
 .Ltmp1804:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
 .LBB28_2903:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit290.i
 	lu12i.w	$a0, 1
@@ -49749,7 +49866,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	b	.LBB28_2906
 .LBB28_2905:
 .Ltmp1801:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
 .LBB28_2906:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit293.i
 	move	$s6, $s7
@@ -49771,7 +49888,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB28_2909:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit296.i
-	move	$s4, $s6
+	move	$s5, $s6
 .LBB28_2910:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit296.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 808
@@ -49790,7 +49907,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB28_2912:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit299.i
-	move	$s3, $s4
+	move	$s4, $s5
 .LBB28_2913:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit299.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 840
@@ -49809,7 +49926,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB28_2915:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i
-	move	$s2, $s3
+	move	$s3, $s4
 .LBB28_2916:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit302.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 872
@@ -49828,7 +49945,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB28_2918:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i
-	move	$fp, $s2
+	move	$fp, $s3
 .LBB28_2919:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit305.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 904
@@ -50038,7 +50155,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	xor	$a0, $s1, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s0, $a0
-	bnez	$a0, .LBB28_2945
+	bnez	$a0, .LBB28_3071
 	.p2align	4, , 16
 .LBB28_2944:                            # %.preheader.i22
                                         # =>This Inner Loop Header: Depth=1
@@ -50047,170 +50164,167 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s1, .LBB28_2944
-.LBB28_2945:                            # %.loopexit.i23
-	ld.d	$a0, $sp, 448                   # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(_Unwind_Resume)
-	jirl	$ra, $ra, 0
-.LBB28_2946:
+	b	.LBB28_3071
+.LBB28_2945:
 .Ltmp1798:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
 	b	.LBB28_2907
-.LBB28_2947:
+.LBB28_2946:
 .Ltmp1795:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
 	b	.LBB28_2910
-.LBB28_2948:
+.LBB28_2947:
 .Ltmp1792:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
 	b	.LBB28_2913
-.LBB28_2949:
+.LBB28_2948:
 .Ltmp1789:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
 	b	.LBB28_2916
-.LBB28_2950:
+.LBB28_2949:
 .Ltmp1786:                              # EH_LABEL
-	move	$fp, $s2
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$fp, $s1
+	move	$s2, $a0
 	move	$s0, $zero
 	b	.LBB28_2919
-.LBB28_2951:
+.LBB28_2950:
 .Ltmp1783:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
-	move	$fp, $s2
+	move	$fp, $s1
+	b	.LBB28_2921
+.LBB28_2951:
+.Ltmp1780:                              # EH_LABEL
+	move	$fp, $s1
+	move	$s2, $a0
+	move	$s0, $zero
 	b	.LBB28_2921
 .LBB28_2952:
-.Ltmp1780:                              # EH_LABEL
-	move	$fp, $s2
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	move	$s0, $zero
-	b	.LBB28_2921
-.LBB28_2953:
 .Ltmp1777:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
-	move	$fp, $s2
+	move	$fp, $s1
+	b	.LBB28_2923
+.LBB28_2953:
+.Ltmp1774:                              # EH_LABEL
+	move	$fp, $s1
+	move	$s2, $a0
+	move	$s0, $zero
 	b	.LBB28_2923
 .LBB28_2954:
-.Ltmp1774:                              # EH_LABEL
-	move	$fp, $s2
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	move	$s0, $zero
-	b	.LBB28_2923
-.LBB28_2955:
 .Ltmp1771:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
-	move	$fp, $s2
+	move	$fp, $s1
+	b	.LBB28_2925
+.LBB28_2955:
+.Ltmp1768:                              # EH_LABEL
+	move	$fp, $s1
+	move	$s2, $a0
+	move	$s0, $zero
 	b	.LBB28_2925
 .LBB28_2956:
-.Ltmp1768:                              # EH_LABEL
-	move	$fp, $s2
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	move	$s0, $zero
-	b	.LBB28_2925
-.LBB28_2957:
 .Ltmp1765:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
-	move	$fp, $s2
+	move	$fp, $s1
+	b	.LBB28_2927
+.LBB28_2957:
+.Ltmp1762:                              # EH_LABEL
+	move	$fp, $s1
+	move	$s2, $a0
+	move	$s0, $zero
 	b	.LBB28_2927
 .LBB28_2958:
-.Ltmp1762:                              # EH_LABEL
-	move	$fp, $s0
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	move	$s0, $zero
-	b	.LBB28_2927
-.LBB28_2959:
 .Ltmp1759:                              # EH_LABEL
-	move	$fp, $s2
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$fp, $s1
+	move	$s2, $a0
 	move	$s0, $zero
 	b	.LBB28_2929
-.LBB28_2960:
+.LBB28_2959:
 .Ltmp1756:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
-	move	$fp, $s2
+	move	$fp, $s1
+	b	.LBB28_2931
+.LBB28_2960:
+.Ltmp1753:                              # EH_LABEL
+	move	$fp, $s1
+	move	$s2, $a0
+	move	$s0, $zero
 	b	.LBB28_2931
 .LBB28_2961:
-.Ltmp1753:                              # EH_LABEL
-	move	$fp, $s2
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	move	$s0, $zero
-	b	.LBB28_2931
-.LBB28_2962:
 .Ltmp1750:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
-	move	$fp, $s2
+	move	$fp, $s1
+	b	.LBB28_2933
+.LBB28_2962:
+.Ltmp1747:                              # EH_LABEL
+	move	$fp, $s1
+	move	$s2, $a0
+	move	$s0, $zero
 	b	.LBB28_2933
 .LBB28_2963:
-.Ltmp1747:                              # EH_LABEL
-	move	$fp, $s2
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	move	$s0, $zero
-	b	.LBB28_2933
-.LBB28_2964:
 .Ltmp1744:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
-	move	$fp, $s2
+	move	$fp, $s1
+	b	.LBB28_2935
+.LBB28_2964:
+.Ltmp1741:                              # EH_LABEL
+	move	$fp, $s1
+	move	$s2, $a0
+	move	$s0, $zero
 	b	.LBB28_2935
 .LBB28_2965:
-.Ltmp1741:                              # EH_LABEL
-	move	$fp, $s2
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	move	$s0, $zero
-	b	.LBB28_2935
-.LBB28_2966:
 .Ltmp1738:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
-	move	$fp, $s2
+	move	$fp, $s1
+	b	.LBB28_2937
+.LBB28_2966:
+.Ltmp1735:                              # EH_LABEL
+	move	$fp, $s1
+	move	$s2, $a0
+	move	$s0, $zero
 	b	.LBB28_2937
 .LBB28_2967:
-.Ltmp1735:                              # EH_LABEL
-	move	$fp, $s2
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	move	$s0, $zero
-	b	.LBB28_2937
-.LBB28_2968:
 .Ltmp1732:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	move	$s2, $a0
 	move	$s0, $zero
-	move	$fp, $s2
+	move	$fp, $s1
+	b	.LBB28_2939
+.LBB28_2968:
+.Ltmp1729:                              # EH_LABEL
+	move	$s2, $a0
+	move	$s0, $zero
 	b	.LBB28_2939
 .LBB28_2969:
-.Ltmp1729:                              # EH_LABEL
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	move	$s0, $zero
-	b	.LBB28_2939
-.LBB28_2970:
 .Ltmp1726:                              # EH_LABEL
-	b	.LBB28_2972
-.LBB28_2971:
+	b	.LBB28_2971
+.LBB28_2970:
 .Ltmp1723:                              # EH_LABEL
-.LBB28_2972:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+.LBB28_2971:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit338.i
+	move	$s2, $a0
 	move	$s0, $zero
 	b	.LBB28_2941
-.LBB28_2973:                            # %.loopexit.loopexit.i
+.LBB28_2972:                            # %.loopexit.loopexit.i
 .Ltmp1713:                              # EH_LABEL
 	move	$fp, $a0
 	addi.d	$a0, $sp, 1128
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2976
-.LBB28_2974:
+	b	.LBB28_2975
+.LBB28_2973:
 .Ltmp1710:                              # EH_LABEL
-.LBB28_2975:                            # %.loopexit.i1
+.LBB28_2974:                            # %.loopexit.i1
 	move	$fp, $a0
-.LBB28_2976:                            # %.loopexit.i1
+.LBB28_2975:                            # %.loopexit.i1
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1256
 	add.d	$a0, $sp, $a0
@@ -50218,20 +50332,20 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3155
-# %bb.2977:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i10.i
+	beq	$a0, $a1, .LBB28_3154
+# %bb.2976:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i10.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-.LBB28_2978:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit12.i
+.LBB28_2977:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit12.i
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB28_2979:                            # %.loopexit784.loopexit.i
+.LBB28_2978:                            # %.loopexit784.loopexit.i
 .Ltmp1707:                              # EH_LABEL
 	move	$s2, $a0
 	move	$a0, $s1
@@ -50371,260 +50485,260 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ori	$fp, $zero, 1
-	b	.LBB28_2981
-.LBB28_2980:
+	b	.LBB28_2980
+.LBB28_2979:
 .Ltmp1704:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
-.LBB28_2981:                            # %.loopexit784.i
+.LBB28_2980:                            # %.loopexit784.i
 	ld.d	$a0, $sp, 456
 	addi.d	$a1, $sp, 472
-	beq	$a0, $a1, .LBB28_2984
-# %bb.2982:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i616.i
+	beq	$a0, $a1, .LBB28_2983
+# %bb.2981:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i616.i
 	ld.d	$a1, $sp, 472
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2984
-.LBB28_2983:
+	b	.LBB28_2983
+.LBB28_2982:
 .Ltmp1701:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
-.LBB28_2984:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit618.i
+.LBB28_2983:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit618.i
 	move	$s8, $s1
-	b	.LBB28_2986
-.LBB28_2985:
+	b	.LBB28_2985
+.LBB28_2984:
 .Ltmp1698:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
-.LBB28_2986:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit618.i
+.LBB28_2985:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit618.i
 	ld.d	$a0, $sp, 488
-	beq	$a0, $s5, .LBB28_2989
-# %bb.2987:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i619.i
+	beq	$a0, $s5, .LBB28_2988
+# %bb.2986:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i619.i
 	ld.d	$a1, $sp, 504
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2989
-.LBB28_2988:
+	b	.LBB28_2988
+.LBB28_2987:
 .Ltmp1695:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
-.LBB28_2989:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit621.i
+.LBB28_2988:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit621.i
 	move	$s7, $s8
 	ld.d	$a0, $sp, 520
 	addi.d	$a1, $sp, 536
-	beq	$a0, $a1, .LBB28_2993
-.LBB28_2990:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i622.i
+	beq	$a0, $a1, .LBB28_2992
+.LBB28_2989:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i622.i
 	ld.d	$a1, $sp, 536
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2993
-.LBB28_2991:
+	b	.LBB28_2992
+.LBB28_2990:
 .Ltmp1692:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 520
 	addi.d	$a1, $sp, 536
-	bne	$a0, $a1, .LBB28_2990
-	b	.LBB28_2993
-.LBB28_2992:
+	bne	$a0, $a1, .LBB28_2989
+	b	.LBB28_2992
+.LBB28_2991:
 .Ltmp1689:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
-.LBB28_2993:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit624.i
+.LBB28_2992:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit624.i
 	move	$s6, $s7
 	ld.d	$a0, $sp, 552
 	addi.d	$a1, $sp, 568
-	beq	$a0, $a1, .LBB28_2997
-.LBB28_2994:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i625.i
+	beq	$a0, $a1, .LBB28_2996
+.LBB28_2993:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i625.i
 	ld.d	$a1, $sp, 568
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB28_2997
-.LBB28_2995:
+	b	.LBB28_2996
+.LBB28_2994:
 .Ltmp1686:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 552
 	addi.d	$a1, $sp, 568
-	bne	$a0, $a1, .LBB28_2994
-	b	.LBB28_2997
-.LBB28_2996:
+	bne	$a0, $a1, .LBB28_2993
+	b	.LBB28_2996
+.LBB28_2995:
 .Ltmp1683:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
-.LBB28_2997:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit627.i
+.LBB28_2996:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit627.i
 	move	$s3, $s6
 	ld.d	$a0, $sp, 584
 	addi.d	$a1, $sp, 600
-	beq	$a0, $a1, .LBB28_2999
-.LBB28_2998:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i628.i
+	beq	$a0, $a1, .LBB28_2998
+.LBB28_2997:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i628.i
 	ld.d	$a1, $sp, 600
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_2999:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit630.i
+.LBB28_2998:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit630.i
 	move	$s8, $s3
 	ld.d	$a0, $sp, 616
 	addi.d	$a1, $sp, 632
-	beq	$a0, $a1, .LBB28_3001
-.LBB28_3000:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i631.i
+	beq	$a0, $a1, .LBB28_3000
+.LBB28_2999:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i631.i
 	ld.d	$a1, $sp, 632
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3001:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit633.i
+.LBB28_3000:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit633.i
 	ld.d	$a0, $sp, 648
 	addi.d	$a1, $sp, 664
-	bne	$a0, $a1, .LBB28_3073
-# %bb.3002:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit636.i
+	bne	$a0, $a1, .LBB28_3072
+# %bb.3001:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit636.i
 	ld.d	$a0, $sp, 680
 	addi.d	$a1, $sp, 696
-	bne	$a0, $a1, .LBB28_3074
-.LBB28_3003:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit639.i
+	bne	$a0, $a1, .LBB28_3073
+.LBB28_3002:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit639.i
 	ld.d	$a0, $sp, 712
 	addi.d	$a1, $sp, 728
-	bne	$a0, $a1, .LBB28_3075
-.LBB28_3004:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit642.i
+	bne	$a0, $a1, .LBB28_3074
+.LBB28_3003:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit642.i
 	ld.d	$a0, $sp, 744
 	addi.d	$a1, $sp, 760
-	beq	$a0, $a1, .LBB28_3006
-.LBB28_3005:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i643.i
+	beq	$a0, $a1, .LBB28_3005
+.LBB28_3004:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i643.i
 	ld.d	$a1, $sp, 760
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3006:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit645.i
+.LBB28_3005:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit645.i
 	st.d	$s8, $sp, 440                   # 8-byte Folded Spill
-.LBB28_3007:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit645.i
+.LBB28_3006:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit645.i
 	ld.d	$a0, $sp, 776
 	addi.d	$a1, $sp, 792
-	beq	$a0, $a1, .LBB28_3009
-# %bb.3008:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i646.i
+	beq	$a0, $a1, .LBB28_3008
+# %bb.3007:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i646.i
 	ld.d	$a1, $sp, 792
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3009:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit648.i
+.LBB28_3008:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit648.i
 	ld.d	$s8, $sp, 440                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 808
 	addi.d	$a1, $sp, 824
-	beq	$a0, $a1, .LBB28_3011
-.LBB28_3010:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i649.i
+	beq	$a0, $a1, .LBB28_3010
+.LBB28_3009:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i649.i
 	ld.d	$a1, $sp, 824
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3011:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit651.i
+.LBB28_3010:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit651.i
 	st.d	$s8, $sp, 448                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 840
 	addi.d	$a1, $sp, 856
-	beq	$a0, $a1, .LBB28_3013
-.LBB28_3012:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i652.i
+	beq	$a0, $a1, .LBB28_3012
+.LBB28_3011:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i652.i
 	ld.d	$a1, $sp, 856
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3013:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit654.i
+.LBB28_3012:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit654.i
 	ld.d	$s0, $sp, 448                   # 8-byte Folded Reload
-.LBB28_3014:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit654.i
+.LBB28_3013:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit654.i
 	ld.d	$a0, $sp, 872
 	addi.d	$a1, $sp, 888
-	bne	$a0, $a1, .LBB28_3022
-# %bb.3015:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit657.i
+	bne	$a0, $a1, .LBB28_3021
+# %bb.3014:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit657.i
 	ld.d	$a0, $sp, 904
 	addi.d	$a1, $sp, 920
-	bne	$a0, $a1, .LBB28_3023
-.LBB28_3016:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit660.i
+	bne	$a0, $a1, .LBB28_3022
+.LBB28_3015:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit660.i
 	ld.d	$a0, $sp, 936
 	addi.d	$a1, $sp, 952
-	bne	$a0, $a1, .LBB28_3024
-.LBB28_3017:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit663.i
+	bne	$a0, $a1, .LBB28_3023
+.LBB28_3016:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit663.i
 	ld.d	$a0, $sp, 968
 	addi.d	$a1, $sp, 984
-	bne	$a0, $a1, .LBB28_3025
-.LBB28_3018:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit666.i
+	bne	$a0, $a1, .LBB28_3024
+.LBB28_3017:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit666.i
 	ld.d	$a0, $sp, 1000
 	addi.d	$a1, $sp, 1016
-	bne	$a0, $a1, .LBB28_3026
-.LBB28_3019:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit669.i
+	bne	$a0, $a1, .LBB28_3025
+.LBB28_3018:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit669.i
 	ld.d	$a0, $sp, 1032
 	addi.d	$a1, $sp, 1048
-	bne	$a0, $a1, .LBB28_3027
-.LBB28_3020:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit672.i
+	bne	$a0, $a1, .LBB28_3026
+.LBB28_3019:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit672.i
 	ld.d	$a0, $sp, 1064
 	addi.d	$a1, $sp, 1080
-	bne	$a0, $a1, .LBB28_3028
-.LBB28_3021:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit675.i
+	bne	$a0, $a1, .LBB28_3027
+.LBB28_3020:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit675.i
 	ld.d	$a0, $sp, 1096
 	addi.d	$a1, $sp, 1112
-	bne	$a0, $a1, .LBB28_3029
-	b	.LBB28_3030
-.LBB28_3022:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i655.i
+	bne	$a0, $a1, .LBB28_3028
+	b	.LBB28_3029
+.LBB28_3021:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i655.i
 	ld.d	$a1, $sp, 888
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 904
 	addi.d	$a1, $sp, 920
-	beq	$a0, $a1, .LBB28_3016
-.LBB28_3023:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i658.i
+	beq	$a0, $a1, .LBB28_3015
+.LBB28_3022:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i658.i
 	ld.d	$a1, $sp, 920
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 936
 	addi.d	$a1, $sp, 952
-	beq	$a0, $a1, .LBB28_3017
-.LBB28_3024:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i661.i
+	beq	$a0, $a1, .LBB28_3016
+.LBB28_3023:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i661.i
 	ld.d	$a1, $sp, 952
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 968
 	addi.d	$a1, $sp, 984
-	beq	$a0, $a1, .LBB28_3018
-.LBB28_3025:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i664.i
+	beq	$a0, $a1, .LBB28_3017
+.LBB28_3024:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i664.i
 	ld.d	$a1, $sp, 984
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 1000
 	addi.d	$a1, $sp, 1016
-	beq	$a0, $a1, .LBB28_3019
-.LBB28_3026:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i667.i
+	beq	$a0, $a1, .LBB28_3018
+.LBB28_3025:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i667.i
 	ld.d	$a1, $sp, 1016
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 1032
 	addi.d	$a1, $sp, 1048
-	beq	$a0, $a1, .LBB28_3020
-.LBB28_3027:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i670.i
+	beq	$a0, $a1, .LBB28_3019
+.LBB28_3026:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i670.i
 	ld.d	$a1, $sp, 1048
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 1064
 	addi.d	$a1, $sp, 1080
-	beq	$a0, $a1, .LBB28_3021
-.LBB28_3028:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i673.i
+	beq	$a0, $a1, .LBB28_3020
+.LBB28_3027:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i673.i
 	ld.d	$a1, $sp, 1080
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 1096
 	addi.d	$a1, $sp, 1112
-	beq	$a0, $a1, .LBB28_3030
-.LBB28_3029:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i676.i
+	beq	$a0, $a1, .LBB28_3029
+.LBB28_3028:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i676.i
 	ld.d	$a1, $sp, 1112
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3030:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit678.i
+.LBB28_3029:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit678.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 648
 	add.d	$a0, $sp, $a0
@@ -50632,8 +50746,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 664
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3032
-# %bb.3031:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i679.i
+	beq	$a0, $a1, .LBB28_3031
+# %bb.3030:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i679.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 664
 	add.d	$a1, $sp, $a1
@@ -50641,7 +50755,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3032:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit681.i
+.LBB28_3031:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit681.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 680
 	add.d	$a0, $sp, $a0
@@ -50649,8 +50763,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 696
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3034
-# %bb.3033:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i682.i
+	beq	$a0, $a1, .LBB28_3033
+# %bb.3032:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i682.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 696
 	add.d	$a1, $sp, $a1
@@ -50658,7 +50772,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3034:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit684.i
+.LBB28_3033:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit684.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 712
 	add.d	$a0, $sp, $a0
@@ -50666,8 +50780,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 728
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3036
-# %bb.3035:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i685.i
+	beq	$a0, $a1, .LBB28_3035
+# %bb.3034:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i685.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 728
 	add.d	$a1, $sp, $a1
@@ -50675,7 +50789,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3036:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit687.i
+.LBB28_3035:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit687.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 744
 	add.d	$a0, $sp, $a0
@@ -50683,8 +50797,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3038
-# %bb.3037:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i688.i
+	beq	$a0, $a1, .LBB28_3037
+# %bb.3036:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i688.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
@@ -50692,7 +50806,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3038:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit690.i
+.LBB28_3037:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit690.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 776
 	add.d	$a0, $sp, $a0
@@ -50700,8 +50814,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3040
-# %bb.3039:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i691.i
+	beq	$a0, $a1, .LBB28_3039
+# %bb.3038:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i691.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
@@ -50709,7 +50823,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3040:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit693.i
+.LBB28_3039:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit693.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 808
 	add.d	$a0, $sp, $a0
@@ -50717,8 +50831,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3042
-# %bb.3041:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i694.i
+	beq	$a0, $a1, .LBB28_3041
+# %bb.3040:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i694.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
@@ -50726,7 +50840,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3042:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit696.i
+.LBB28_3041:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit696.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 840
 	add.d	$a0, $sp, $a0
@@ -50734,8 +50848,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3044
-# %bb.3043:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i697.i
+	beq	$a0, $a1, .LBB28_3043
+# %bb.3042:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i697.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
@@ -50743,7 +50857,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3044:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit699.i
+.LBB28_3043:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit699.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 872
 	add.d	$a0, $sp, $a0
@@ -50751,8 +50865,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3046
-# %bb.3045:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i700.i
+	beq	$a0, $a1, .LBB28_3045
+# %bb.3044:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i700.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
@@ -50760,7 +50874,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3046:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit702.i
+.LBB28_3045:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit702.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 904
 	add.d	$a0, $sp, $a0
@@ -50768,8 +50882,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3048
-# %bb.3047:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i703.i
+	beq	$a0, $a1, .LBB28_3047
+# %bb.3046:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i703.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
@@ -50777,7 +50891,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3048:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit705.i
+.LBB28_3047:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit705.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 936
 	add.d	$a0, $sp, $a0
@@ -50785,8 +50899,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3050
-# %bb.3049:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i706.i
+	beq	$a0, $a1, .LBB28_3049
+# %bb.3048:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i706.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
@@ -50794,7 +50908,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3050:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit708.i
+.LBB28_3049:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit708.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 968
 	add.d	$a0, $sp, $a0
@@ -50802,8 +50916,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3052
-# %bb.3051:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i709.i
+	beq	$a0, $a1, .LBB28_3051
+# %bb.3050:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i709.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
@@ -50811,7 +50925,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3052:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit711.i
+.LBB28_3051:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit711.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1000
 	add.d	$a0, $sp, $a0
@@ -50819,8 +50933,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3054
-# %bb.3053:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i712.i
+	beq	$a0, $a1, .LBB28_3053
+# %bb.3052:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i712.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
@@ -50828,7 +50942,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3054:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit714.i
+.LBB28_3053:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit714.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1032
 	add.d	$a0, $sp, $a0
@@ -50836,8 +50950,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3056
-# %bb.3055:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i715.i
+	beq	$a0, $a1, .LBB28_3055
+# %bb.3054:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i715.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
@@ -50845,7 +50959,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3056:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit717.i
+.LBB28_3055:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit717.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1064
 	add.d	$a0, $sp, $a0
@@ -50853,8 +50967,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3058
-# %bb.3057:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i718.i
+	beq	$a0, $a1, .LBB28_3057
+# %bb.3056:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i718.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
@@ -50862,7 +50976,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3058:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit720.i
+.LBB28_3057:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit720.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1096
 	add.d	$a0, $sp, $a0
@@ -50870,8 +50984,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3060
-# %bb.3059:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i721.i
+	beq	$a0, $a1, .LBB28_3059
+# %bb.3058:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i721.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
@@ -50879,7 +50993,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3060:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit723.i
+.LBB28_3059:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit723.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1128
 	add.d	$a0, $sp, $a0
@@ -50887,8 +51001,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3062
-# %bb.3061:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i724.i
+	beq	$a0, $a1, .LBB28_3061
+# %bb.3060:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i724.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
@@ -50896,7 +51010,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3062:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit726.i
+.LBB28_3061:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit726.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1160
 	add.d	$a0, $sp, $a0
@@ -50904,8 +51018,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3064
-# %bb.3063:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i727.i
+	beq	$a0, $a1, .LBB28_3063
+# %bb.3062:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i727.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
@@ -50913,7 +51027,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3064:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit729.i
+.LBB28_3063:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit729.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -50921,8 +51035,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3066
-# %bb.3065:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i730.i
+	beq	$a0, $a1, .LBB28_3065
+# %bb.3064:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i730.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
@@ -50930,7 +51044,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3066:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit732.i
+.LBB28_3065:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit732.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1224
 	add.d	$a0, $sp, $a0
@@ -50938,8 +51052,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3068
-# %bb.3067:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i733.i
+	beq	$a0, $a1, .LBB28_3067
+# %bb.3066:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i733.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
@@ -50947,7 +51061,7 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3068:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit735.i
+.LBB28_3067:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit735.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1256
 	add.d	$a0, $sp, $a0
@@ -50955,8 +51069,8 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_3070
-# %bb.3069:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i736.i
+	beq	$a0, $a1, .LBB28_3069
+# %bb.3068:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i736.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
@@ -50964,550 +51078,550 @@ _GLOBAL__sub_I_user_counters_tabular_test.cc: # @_GLOBAL__sub_I_user_counters_ta
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_3070:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit738.i
+.LBB28_3069:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit738.i
 	addi.d	$s1, $sp, 1128
 	xor	$a0, $s1, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $fp, $a0
-	bnez	$a0, .LBB28_3072
+	bnez	$a0, .LBB28_3071
 	.p2align	4, , 16
-.LBB28_3071:                            # %.preheader.i
+.LBB28_3070:                            # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$s0, $s0, -88
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	bne	$s0, $s1, .LBB28_3071
-.LBB28_3072:                            # %.loopexit.i
+	bne	$s0, $s1, .LBB28_3070
+.LBB28_3071:                            # %.loopexit.i
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB28_3073:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i634.i
+.LBB28_3072:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i634.i
 	ld.d	$a1, $sp, 664
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 680
 	addi.d	$a1, $sp, 696
-	beq	$a0, $a1, .LBB28_3003
-.LBB28_3074:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i637.i
+	beq	$a0, $a1, .LBB28_3002
+.LBB28_3073:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i637.i
 	ld.d	$a1, $sp, 696
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 712
 	addi.d	$a1, $sp, 728
-	beq	$a0, $a1, .LBB28_3004
-.LBB28_3075:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i640.i
+	beq	$a0, $a1, .LBB28_3003
+.LBB28_3074:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i640.i
 	ld.d	$a1, $sp, 728
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 744
 	addi.d	$a1, $sp, 760
-	bne	$a0, $a1, .LBB28_3005
-	b	.LBB28_3006
-.LBB28_3076:
+	bne	$a0, $a1, .LBB28_3004
+	b	.LBB28_3005
+.LBB28_3075:
 .Ltmp1680:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 584
 	addi.d	$a1, $sp, 600
-	bne	$a0, $a1, .LBB28_2998
-	b	.LBB28_2999
-.LBB28_3077:
+	bne	$a0, $a1, .LBB28_2997
+	b	.LBB28_2998
+.LBB28_3076:
 .Ltmp1677:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_2999
-.LBB28_3078:
+	b	.LBB28_2998
+.LBB28_3077:
 .Ltmp1674:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 616
 	addi.d	$a1, $sp, 632
-	bne	$a0, $a1, .LBB28_3000
-	b	.LBB28_3001
-.LBB28_3079:
+	bne	$a0, $a1, .LBB28_2999
+	b	.LBB28_3000
+.LBB28_3078:
 .Ltmp1671:                              # EH_LABEL
 	move	$s8, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3001
-.LBB28_3080:
+	b	.LBB28_3000
+.LBB28_3079:
 .Ltmp1668:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s8, $s3
 	ld.d	$a0, $sp, 680
 	addi.d	$a1, $sp, 696
-	beq	$a0, $a1, .LBB28_3003
-	b	.LBB28_3074
-.LBB28_3081:
+	beq	$a0, $a1, .LBB28_3002
+	b	.LBB28_3073
+.LBB28_3080:
 .Ltmp1665:                              # EH_LABEL
 	move	$s8, $s1
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 680
 	addi.d	$a1, $sp, 696
-	beq	$a0, $a1, .LBB28_3003
-	b	.LBB28_3074
-.LBB28_3082:
+	beq	$a0, $a1, .LBB28_3002
+	b	.LBB28_3073
+.LBB28_3081:
 .Ltmp1662:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 712
 	addi.d	$a1, $sp, 728
-	beq	$a0, $a1, .LBB28_3004
-	b	.LBB28_3075
-.LBB28_3083:
+	beq	$a0, $a1, .LBB28_3003
+	b	.LBB28_3074
+.LBB28_3082:
 .Ltmp1659:                              # EH_LABEL
-	b	.LBB28_3085
-.LBB28_3084:
+	b	.LBB28_3084
+.LBB28_3083:
 .Ltmp1656:                              # EH_LABEL
 	move	$s8, $s4
-.LBB28_3085:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit642.i
+.LBB28_3084:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit642.i
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 744
 	addi.d	$a1, $sp, 760
-	bne	$a0, $a1, .LBB28_3005
-	b	.LBB28_3006
-.LBB28_3086:
+	bne	$a0, $a1, .LBB28_3004
+	b	.LBB28_3005
+.LBB28_3085:
 .Ltmp1653:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	st.d	$s4, $sp, 440                   # 8-byte Folded Spill
-	b	.LBB28_3007
-.LBB28_3087:
+	b	.LBB28_3006
+.LBB28_3086:
 .Ltmp1650:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3007
-.LBB28_3088:
+	b	.LBB28_3006
+.LBB28_3087:
 .Ltmp1647:                              # EH_LABEL
-	b	.LBB28_3090
-.LBB28_3089:
+	b	.LBB28_3089
+.LBB28_3088:
 .Ltmp1644:                              # EH_LABEL
 	ld.d	$s8, $sp, 424                   # 8-byte Folded Reload
-.LBB28_3090:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit648.i
+.LBB28_3089:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit648.i
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 808
 	addi.d	$a1, $sp, 824
-	bne	$a0, $a1, .LBB28_3010
-	b	.LBB28_3011
-.LBB28_3091:
+	bne	$a0, $a1, .LBB28_3009
+	b	.LBB28_3010
+.LBB28_3090:
 .Ltmp1641:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3011
-.LBB28_3092:
+	b	.LBB28_3010
+.LBB28_3091:
 .Ltmp1638:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 840
 	addi.d	$a1, $sp, 856
-	bne	$a0, $a1, .LBB28_3012
-	b	.LBB28_3013
-.LBB28_3093:
+	bne	$a0, $a1, .LBB28_3011
+	b	.LBB28_3012
+.LBB28_3092:
 .Ltmp1635:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s8
-	b	.LBB28_3014
-.LBB28_3094:
+	b	.LBB28_3013
+.LBB28_3093:
 .Ltmp1632:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3014
-.LBB28_3095:
+	b	.LBB28_3013
+.LBB28_3094:
 .Ltmp1629:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
 	ld.d	$a0, $sp, 904
 	addi.d	$a1, $sp, 920
-	beq	$a0, $a1, .LBB28_3016
-	b	.LBB28_3023
-.LBB28_3096:
+	beq	$a0, $a1, .LBB28_3015
+	b	.LBB28_3022
+.LBB28_3095:
 .Ltmp1626:                              # EH_LABEL
 	move	$s0, $s7
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 904
 	addi.d	$a1, $sp, 920
-	beq	$a0, $a1, .LBB28_3016
-	b	.LBB28_3023
-.LBB28_3097:
+	beq	$a0, $a1, .LBB28_3015
+	b	.LBB28_3022
+.LBB28_3096:
 .Ltmp1623:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s7
 	ld.d	$a0, $sp, 936
 	addi.d	$a1, $sp, 952
-	beq	$a0, $a1, .LBB28_3017
-	b	.LBB28_3024
-.LBB28_3098:
+	beq	$a0, $a1, .LBB28_3016
+	b	.LBB28_3023
+.LBB28_3097:
 .Ltmp1620:                              # EH_LABEL
 	move	$s0, $s4
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 936
 	addi.d	$a1, $sp, 952
-	beq	$a0, $a1, .LBB28_3017
-	b	.LBB28_3024
-.LBB28_3099:
+	beq	$a0, $a1, .LBB28_3016
+	b	.LBB28_3023
+.LBB28_3098:
 .Ltmp1617:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s4
 	ld.d	$a0, $sp, 968
 	addi.d	$a1, $sp, 984
-	beq	$a0, $a1, .LBB28_3018
-	b	.LBB28_3025
-.LBB28_3100:
+	beq	$a0, $a1, .LBB28_3017
+	b	.LBB28_3024
+.LBB28_3099:
 .Ltmp1614:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 968
 	addi.d	$a1, $sp, 984
-	beq	$a0, $a1, .LBB28_3018
-	b	.LBB28_3025
-.LBB28_3101:
+	beq	$a0, $a1, .LBB28_3017
+	b	.LBB28_3024
+.LBB28_3100:
 .Ltmp1611:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
 	ld.d	$a0, $sp, 1000
 	addi.d	$a1, $sp, 1016
-	beq	$a0, $a1, .LBB28_3019
-	b	.LBB28_3026
-.LBB28_3102:
+	beq	$a0, $a1, .LBB28_3018
+	b	.LBB28_3025
+.LBB28_3101:
 .Ltmp1608:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 1000
 	addi.d	$a1, $sp, 1016
-	beq	$a0, $a1, .LBB28_3019
-	b	.LBB28_3026
-.LBB28_3103:
+	beq	$a0, $a1, .LBB28_3018
+	b	.LBB28_3025
+.LBB28_3102:
 .Ltmp1605:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
 	ld.d	$a0, $sp, 1032
 	addi.d	$a1, $sp, 1048
-	beq	$a0, $a1, .LBB28_3020
-	b	.LBB28_3027
-.LBB28_3104:
+	beq	$a0, $a1, .LBB28_3019
+	b	.LBB28_3026
+.LBB28_3103:
 .Ltmp1602:                              # EH_LABEL
 	move	$s0, $fp
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 1032
 	addi.d	$a1, $sp, 1048
-	beq	$a0, $a1, .LBB28_3020
-	b	.LBB28_3027
-.LBB28_3105:
+	beq	$a0, $a1, .LBB28_3019
+	b	.LBB28_3026
+.LBB28_3104:
 .Ltmp1599:                              # EH_LABEL
 	move	$s0, $s1
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 1064
 	addi.d	$a1, $sp, 1080
-	beq	$a0, $a1, .LBB28_3021
-	b	.LBB28_3028
-.LBB28_3106:
+	beq	$a0, $a1, .LBB28_3020
+	b	.LBB28_3027
+.LBB28_3105:
 .Ltmp1596:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s1
 	ld.d	$a0, $sp, 1096
 	addi.d	$a1, $sp, 1112
-	bne	$a0, $a1, .LBB28_3029
-	b	.LBB28_3030
-.LBB28_3107:
+	bne	$a0, $a1, .LBB28_3028
+	b	.LBB28_3029
+.LBB28_3106:
 .Ltmp1593:                              # EH_LABEL
 	move	$s0, $fp
 	move	$s2, $a0
 	move	$fp, $zero
 	ld.d	$a0, $sp, 1096
 	addi.d	$a1, $sp, 1112
-	bne	$a0, $a1, .LBB28_3029
-	b	.LBB28_3030
-.LBB28_3108:
+	bne	$a0, $a1, .LBB28_3028
+	b	.LBB28_3029
+.LBB28_3107:
 .Ltmp1590:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3030
-.LBB28_3109:
+	b	.LBB28_3029
+.LBB28_3108:
 .Ltmp1587:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3032
-.LBB28_3110:
+	b	.LBB28_3031
+.LBB28_3109:
 .Ltmp1584:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3032
-.LBB28_3111:
+	b	.LBB28_3031
+.LBB28_3110:
 .Ltmp1581:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3034
-.LBB28_3112:
+	b	.LBB28_3033
+.LBB28_3111:
 .Ltmp1578:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3034
-.LBB28_3113:
+	b	.LBB28_3033
+.LBB28_3112:
 .Ltmp1575:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3036
-.LBB28_3114:
+	b	.LBB28_3035
+.LBB28_3113:
 .Ltmp1572:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3036
-.LBB28_3115:
+	b	.LBB28_3035
+.LBB28_3114:
 .Ltmp1569:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3038
-.LBB28_3116:
+	b	.LBB28_3037
+.LBB28_3115:
 .Ltmp1566:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3038
-.LBB28_3117:
+	b	.LBB28_3037
+.LBB28_3116:
 .Ltmp1563:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3040
-.LBB28_3118:
+	b	.LBB28_3039
+.LBB28_3117:
 .Ltmp1560:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3040
-.LBB28_3119:
+	b	.LBB28_3039
+.LBB28_3118:
 .Ltmp1557:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3042
-.LBB28_3120:
+	b	.LBB28_3041
+.LBB28_3119:
 .Ltmp1554:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3042
-.LBB28_3121:
+	b	.LBB28_3041
+.LBB28_3120:
 .Ltmp1551:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3044
-.LBB28_3122:
+	b	.LBB28_3043
+.LBB28_3121:
 .Ltmp1548:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3044
-.LBB28_3123:
+	b	.LBB28_3043
+.LBB28_3122:
 .Ltmp1545:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3046
-.LBB28_3124:
+	b	.LBB28_3045
+.LBB28_3123:
 .Ltmp1542:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3046
-.LBB28_3125:
+	b	.LBB28_3045
+.LBB28_3124:
 .Ltmp1539:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3048
-.LBB28_3126:
+	b	.LBB28_3047
+.LBB28_3125:
 .Ltmp1536:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3048
-.LBB28_3127:
+	b	.LBB28_3047
+.LBB28_3126:
 .Ltmp1533:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3050
-.LBB28_3128:
+	b	.LBB28_3049
+.LBB28_3127:
 .Ltmp1530:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3050
-.LBB28_3129:
+	b	.LBB28_3049
+.LBB28_3128:
 .Ltmp1527:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3052
-.LBB28_3130:
+	b	.LBB28_3051
+.LBB28_3129:
 .Ltmp1524:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3052
-.LBB28_3131:
+	b	.LBB28_3051
+.LBB28_3130:
 .Ltmp1521:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3054
-.LBB28_3132:
+	b	.LBB28_3053
+.LBB28_3131:
 .Ltmp1518:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3054
-.LBB28_3133:
+	b	.LBB28_3053
+.LBB28_3132:
 .Ltmp1515:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3056
-.LBB28_3134:
+	b	.LBB28_3055
+.LBB28_3133:
 .Ltmp1512:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3056
-.LBB28_3135:
+	b	.LBB28_3055
+.LBB28_3134:
 .Ltmp1509:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3058
-.LBB28_3136:
+	b	.LBB28_3057
+.LBB28_3135:
 .Ltmp1506:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3058
-.LBB28_3137:
+	b	.LBB28_3057
+.LBB28_3136:
 .Ltmp1503:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3060
-.LBB28_3138:
+	b	.LBB28_3059
+.LBB28_3137:
 .Ltmp1500:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3060
-.LBB28_3139:
+	b	.LBB28_3059
+.LBB28_3138:
 .Ltmp1497:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3062
-.LBB28_3140:
+	b	.LBB28_3061
+.LBB28_3139:
 .Ltmp1494:                              # EH_LABEL
 	move	$s0, $s3
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3062
-.LBB28_3141:
+	b	.LBB28_3061
+.LBB28_3140:
 .Ltmp1491:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
 	move	$s0, $s3
-	b	.LBB28_3064
-.LBB28_3142:
+	b	.LBB28_3063
+.LBB28_3141:
 .Ltmp1488:                              # EH_LABEL
 	move	$s0, $fp
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3064
-.LBB28_3143:
+	b	.LBB28_3063
+.LBB28_3142:
 .Ltmp1485:                              # EH_LABEL
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3066
-.LBB28_3144:
+	b	.LBB28_3065
+.LBB28_3143:
 .Ltmp1482:                              # EH_LABEL
-	b	.LBB28_3146
-.LBB28_3145:
+	b	.LBB28_3145
+.LBB28_3144:
 .Ltmp1479:                              # EH_LABEL
-.LBB28_3146:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit735.i
+.LBB28_3145:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit735.i
 	move	$s2, $a0
 	move	$fp, $zero
-	b	.LBB28_3068
-.LBB28_3147:
+	b	.LBB28_3067
+.LBB28_3146:
 .Ltmp3195:                              # EH_LABEL
 	ld.d	$a1, $sp, 1128
 	move	$fp, $a0
-	beqz	$a1, .LBB28_3153
-	b	.LBB28_3152
-.LBB28_3148:
+	beqz	$a1, .LBB28_3152
+	b	.LBB28_3151
+.LBB28_3147:
 .Ltmp3094:                              # EH_LABEL
 	ld.d	$a1, $sp, 1128
 	move	$fp, $a0
-	bnez	$a1, .LBB28_3152
-	b	.LBB28_3153
-.LBB28_3149:
+	bnez	$a1, .LBB28_3151
+	b	.LBB28_3152
+.LBB28_3148:
 .Ltmp2993:                              # EH_LABEL
 	ld.d	$a1, $sp, 1128
 	move	$fp, $a0
-	bnez	$a1, .LBB28_3152
-	b	.LBB28_3153
-.LBB28_3150:
+	bnez	$a1, .LBB28_3151
+	b	.LBB28_3152
+.LBB28_3149:
 .Ltmp2880:                              # EH_LABEL
 	ld.d	$a1, $sp, 1128
 	move	$fp, $a0
-	bnez	$a1, .LBB28_3152
-	b	.LBB28_3153
-.LBB28_3151:
+	bnez	$a1, .LBB28_3151
+	b	.LBB28_3152
+.LBB28_3150:
 .Ltmp1720:                              # EH_LABEL
 	ld.d	$a1, $sp, 1128
 	move	$fp, $a0
-	beqz	$a1, .LBB28_3153
-.LBB28_3152:                            # %_ZNKSt14default_deleteIN9benchmark9BenchmarkEEclEPS1_.exit.i3.i3182
+	beqz	$a1, .LBB28_3152
+.LBB28_3151:                            # %_ZNKSt14default_deleteIN9benchmark9BenchmarkEEclEPS1_.exit.i3.i3182
 	ld.d	$a0, $a1, 0
 	ld.d	$a2, $a0, 8
 	move	$a0, $a1
 	jirl	$ra, $a2, 0
-.LBB28_3153:                            # %_ZNSt10unique_ptrIN9benchmark9BenchmarkESt14default_deleteIS1_EED2Ev.exit4.i3183
+.LBB28_3152:                            # %_ZNSt10unique_ptrIN9benchmark9BenchmarkESt14default_deleteIS1_EED2Ev.exit4.i3183
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1256
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	beqz	$a0, .LBB28_3155
-# %bb.3154:                             # %_ZNKSt14default_deleteIN9benchmark8internal17FunctionBenchmarkEEclEPS2_.exit.i6.i3185
+	beqz	$a0, .LBB28_3154
+# %bb.3153:                             # %_ZNKSt14default_deleteIN9benchmark8internal17FunctionBenchmarkEEclEPS2_.exit.i6.i3185
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 8
 	jirl	$ra, $a1, 0
-.LBB28_3155:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit12.i
+.LBB28_3154:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit12.i
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0

@@ -70,8 +70,9 @@ hypre_SMGRelaxCreate:                   # @hypre_SMGRelaxCreate
 	st.w	$zero, $a0, 0
 	vst	$vr0, $fp, 88
 	st.d	$s1, $fp, 104
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 128
+	vrepli.b	$vr0, 0
+	vst	$vr0, $fp, 128
+	vst	$vr0, $fp, 144
 	st.d	$s1, $fp, 200
 	move	$a0, $fp
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -1367,20 +1368,9 @@ hypre_SMGRelaxSetZeroGuess:             # @hypre_SMGRelaxSetZeroGuess
 .Lfunc_end15:
 	.size	hypre_SMGRelaxSetZeroGuess, .Lfunc_end15-hypre_SMGRelaxSetZeroGuess
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function hypre_SMGRelaxSetNumSpaces
-.LCPI16_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI16_1:
+	.p2align	4, 0x0                          # -- Begin function hypre_SMGRelaxSetNumSpaces
+.LCPI16_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
@@ -1433,21 +1423,21 @@ hypre_SMGRelaxSetNumSpaces:             # @hypre_SMGRelaxSetNumSpaces
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 80
 	blez	$s0, .LBB16_5
-# %bb.1:                                # %iter.check
+# %bb.1:                                # %.lr.ph
 	ld.d	$a2, $fp, 48
 	ld.d	$a3, $fp, 56
-	ori	$a1, $zero, 4
+	ori	$a1, $zero, 12
 	bgeu	$s0, $a1, .LBB16_6
 # %bb.2:
 	move	$a1, $zero
-.LBB16_3:                               # %vec.epilog.scalar.ph.preheader
+.LBB16_3:                               # %scalar.ph.preheader
 	alsl.d	$a0, $a1, $a0, 2
 	alsl.d	$a3, $a1, $a3, 2
 	alsl.d	$a2, $a1, $a2, 2
 	sub.d	$a4, $s0, $a1
 	ori	$a5, $zero, 1
 	.p2align	4, , 16
-.LBB16_4:                               # %vec.epilog.scalar.ph
+.LBB16_4:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$zero, $a2, 0
 	st.w	$a5, $a3, 0
@@ -1473,7 +1463,7 @@ hypre_SMGRelaxSetNumSpaces:             # @hypre_SMGRelaxSetNumSpaces
 	ret
 .LBB16_6:                               # %vector.memcheck
 	sub.d	$a5, $a3, $a2
-	ori	$a4, $zero, 64
+	ori	$a4, $zero, 32
 	move	$a1, $zero
 	bltu	$a5, $a4, .LBB16_3
 # %bb.7:                                # %vector.memcheck
@@ -1481,73 +1471,36 @@ hypre_SMGRelaxSetNumSpaces:             # @hypre_SMGRelaxSetNumSpaces
 	bltu	$a5, $a4, .LBB16_3
 # %bb.8:                                # %vector.memcheck
 	sub.d	$a4, $a0, $a3
-	ori	$a5, $zero, 64
+	ori	$a5, $zero, 32
 	bltu	$a4, $a5, .LBB16_3
-# %bb.9:                                # %vector.main.loop.iter.check
-	ori	$a1, $zero, 16
-	bgeu	$s0, $a1, .LBB16_11
-# %bb.10:
-	move	$a1, $zero
-	b	.LBB16_15
-.LBB16_11:                              # %vector.ph
-	andi	$a4, $s0, 12
-	bstrpick.d	$a1, $s0, 30, 4
-	slli.d	$a1, $a1, 4
-	addi.d	$a5, $a0, 32
-	addi.d	$a6, $a3, 32
-	pcalau12i	$a7, %pc_hi20(.LCPI16_0)
-	xvld	$xr0, $a7, %pc_lo12(.LCPI16_0)
-	addi.d	$a7, $a2, 32
-	xvrepli.b	$xr1, 0
-	xvrepli.w	$xr2, 1
-	move	$t0, $a1
-	.p2align	4, , 16
-.LBB16_12:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvaddi.wu	$xr3, $xr0, 8
-	xvst	$xr1, $a7, -32
-	xvst	$xr1, $a7, 0
-	xvst	$xr2, $a6, -32
-	xvst	$xr2, $a6, 0
-	xvst	$xr0, $a5, -32
-	xvst	$xr3, $a5, 0
-	xvaddi.wu	$xr0, $xr0, 16
-	addi.d	$t0, $t0, -16
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	addi.d	$a7, $a7, 64
-	bnez	$t0, .LBB16_12
-# %bb.13:                               # %middle.block
-	beq	$a1, $s0, .LBB16_5
-# %bb.14:                               # %vec.epilog.iter.check
-	beqz	$a4, .LBB16_3
-.LBB16_15:                              # %vec.epilog.ph
-	move	$a7, $a1
-	pcalau12i	$a1, %pc_hi20(.LCPI16_1)
-	vld	$vr0, $a1, %pc_lo12(.LCPI16_1)
-	bstrpick.d	$a1, $s0, 30, 2
-	slli.d	$a1, $a1, 2
-	vreplgr2vr.w	$vr1, $a7
-	vor.v	$vr0, $vr1, $vr0
-	sub.d	$a4, $a7, $a1
-	alsl.d	$a5, $a7, $a0, 2
-	alsl.d	$a6, $a7, $a3, 2
-	alsl.d	$a7, $a7, $a2, 2
+# %bb.9:                                # %vector.ph
+	bstrpick.d	$a1, $s0, 30, 3
+	slli.d	$a1, $a1, 3
+	addi.d	$a4, $a0, 16
+	addi.d	$a5, $a3, 16
+	pcalau12i	$a6, %pc_hi20(.LCPI16_0)
+	vld	$vr0, $a6, %pc_lo12(.LCPI16_0)
+	addi.d	$a6, $a2, 16
 	vrepli.b	$vr1, 0
 	vrepli.w	$vr2, 1
+	move	$a7, $a1
 	.p2align	4, , 16
-.LBB16_16:                              # %vec.epilog.vector.body
+.LBB16_10:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr1, $a7, 0
-	vst	$vr2, $a6, 0
-	vst	$vr0, $a5, 0
-	vaddi.wu	$vr0, $vr0, 4
-	addi.d	$a4, $a4, 4
-	addi.d	$a5, $a5, 16
-	addi.d	$a6, $a6, 16
-	addi.d	$a7, $a7, 16
-	bnez	$a4, .LBB16_16
-# %bb.17:                               # %vec.epilog.middle.block
+	vaddi.wu	$vr3, $vr0, 4
+	vst	$vr1, $a6, -16
+	vst	$vr1, $a6, 0
+	vst	$vr2, $a5, -16
+	vst	$vr2, $a5, 0
+	vst	$vr0, $a4, -16
+	vst	$vr3, $a4, 0
+	vaddi.wu	$vr0, $vr0, 8
+	addi.d	$a7, $a7, -8
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	bnez	$a7, .LBB16_10
+# %bb.11:                               # %middle.block
 	bne	$a1, $s0, .LBB16_3
 	b	.LBB16_5
 .Lfunc_end16:

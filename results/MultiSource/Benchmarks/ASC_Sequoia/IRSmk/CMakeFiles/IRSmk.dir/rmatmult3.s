@@ -214,7 +214,7 @@ rmatmult3:                              # @rmatmult3
 	sub.d	$t1, $t7, $t8
 	st.d	$t1, $sp, 80                    # 8-byte Folded Spill
 	st.d	$t0, $sp, 632                   # 8-byte Folded Spill
-	bstrins.d	$t0, $zero, 1, 0
+	bstrins.d	$t0, $zero, 0, 0
 	addi.d	$t1, $a3, -8
 	st.d	$t1, $sp, 744                   # 8-byte Folded Spill
 	st.d	$a3, $sp, 776                   # 8-byte Folded Spill
@@ -353,7 +353,7 @@ rmatmult3:                              # @rmatmult3
 	ld.d	$s2, $sp, 632                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 552                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 488                   # 8-byte Folded Reload
-	ori	$s3, $zero, 12
+	ori	$s3, $zero, 10
 	move	$t2, $s5
 	ld.d	$s4, $sp, 648                   # 8-byte Folded Reload
 	bgeu	$s2, $s3, .LBB0_10
@@ -1071,123 +1071,123 @@ rmatmult3:                              # @rmatmult3
                                         # =>    This Inner Loop Header: Depth=3
 	slli.d	$s3, $s2, 3
 	ld.d	$a1, $sp, 872                   # 8-byte Folded Reload
-	xvldx	$xr0, $a1, $s3
+	vldx	$vr0, $a1, $s3
 	ld.d	$s6, $sp, 744                   # 8-byte Folded Reload
-	xvldx	$xr1, $s6, $s3
-	xvldx	$xr2, $s7, $s3
+	vldx	$vr1, $s6, $s3
+	vldx	$vr2, $s7, $s3
 	ld.d	$a1, $sp, 776                   # 8-byte Folded Reload
-	xvldx	$xr3, $a1, $s3
+	vldx	$vr3, $a1, $s3
 	ld.d	$a1, $sp, 864                   # 8-byte Folded Reload
-	xvldx	$xr4, $a1, $s3
-	xvldx	$xr5, $a7, $s3
-	xvfmul.d	$xr2, $xr2, $xr3
-	xvfmadd.d	$xr0, $xr0, $xr1, $xr2
-	xvfmadd.d	$xr0, $xr4, $xr5, $xr0
+	vldx	$vr4, $a1, $s3
+	vldx	$vr5, $a7, $s3
+	vfmul.d	$vr2, $vr2, $vr3
+	vfmadd.d	$vr0, $vr0, $vr1, $vr2
+	vfmadd.d	$vr0, $vr4, $vr5, $vr0
 	ld.d	$a1, $sp, 856                   # 8-byte Folded Reload
-	xvldx	$xr1, $a1, $s3
-	xvldx	$xr2, $t1, $s3
+	vldx	$vr1, $a1, $s3
+	vldx	$vr2, $t1, $s3
 	ld.d	$a1, $sp, 984                   # 8-byte Folded Reload
-	xvldx	$xr3, $a1, $s3
+	vldx	$vr3, $a1, $s3
 	ld.d	$a1, $sp, 784                   # 8-byte Folded Reload
-	xvldx	$xr4, $a1, $s3
+	vldx	$vr4, $a1, $s3
 	ld.d	$a1, $sp, 976                   # 8-byte Folded Reload
-	xvldx	$xr5, $a1, $s3
-	xvldx	$xr6, $t3, $s3
+	vldx	$vr5, $a1, $s3
+	vldx	$vr6, $t3, $s3
 	ld.d	$a1, $sp, 848                   # 8-byte Folded Reload
-	xvldx	$xr7, $a1, $s3
-	xvldx	$xr8, $t0, $s3
-	xvfmadd.d	$xr0, $xr1, $xr2, $xr0
-	xvfmadd.d	$xr0, $xr3, $xr4, $xr0
-	xvfmadd.d	$xr0, $xr5, $xr6, $xr0
-	xvfmadd.d	$xr0, $xr7, $xr8, $xr0
+	vldx	$vr7, $a1, $s3
+	vldx	$vr8, $t0, $s3
+	vfmadd.d	$vr0, $vr1, $vr2, $vr0
+	vfmadd.d	$vr0, $vr3, $vr4, $vr0
+	vfmadd.d	$vr0, $vr5, $vr6, $vr0
+	vfmadd.d	$vr0, $vr7, $vr8, $vr0
 	ld.d	$a1, $sp, 968                   # 8-byte Folded Reload
-	xvldx	$xr1, $a1, $s3
+	vldx	$vr1, $a1, $s3
 	ld.d	$a1, $sp, 736                   # 8-byte Folded Reload
-	xvldx	$xr2, $a1, $s3
+	vldx	$vr2, $a1, $s3
 	ld.d	$a1, $sp, 960                   # 8-byte Folded Reload
-	xvldx	$xr3, $a1, $s3
-	xvldx	$xr4, $t4, $s3
+	vldx	$vr3, $a1, $s3
+	vldx	$vr4, $t4, $s3
 	ld.d	$a1, $sp, 952                   # 8-byte Folded Reload
-	xvldx	$xr5, $a1, $s3
-	xvldx	$xr6, $a3, $s3
+	vldx	$vr5, $a1, $s3
+	vldx	$vr6, $a3, $s3
 	ld.d	$a1, $sp, 944                   # 8-byte Folded Reload
-	xvldx	$xr7, $a1, $s3
+	vldx	$vr7, $a1, $s3
 	ld.d	$a1, $sp, 768                   # 8-byte Folded Reload
-	xvldx	$xr8, $a1, $s3
-	xvfmadd.d	$xr0, $xr1, $xr2, $xr0
-	xvfmadd.d	$xr0, $xr3, $xr4, $xr0
-	xvfmadd.d	$xr0, $xr5, $xr6, $xr0
-	xvfmadd.d	$xr0, $xr7, $xr8, $xr0
+	vldx	$vr8, $a1, $s3
+	vfmadd.d	$vr0, $vr1, $vr2, $vr0
+	vfmadd.d	$vr0, $vr3, $vr4, $vr0
+	vfmadd.d	$vr0, $vr5, $vr6, $vr0
+	vfmadd.d	$vr0, $vr7, $vr8, $vr0
 	ld.d	$a1, $sp, 936                   # 8-byte Folded Reload
-	xvldx	$xr1, $a1, $s3
-	xvldx	$xr2, $ra, $s3
+	vldx	$vr1, $a1, $s3
+	vldx	$vr2, $ra, $s3
 	ld.d	$a1, $sp, 928                   # 8-byte Folded Reload
-	xvldx	$xr3, $a1, $s3
-	xvldx	$xr4, $s8, $s3
+	vldx	$vr3, $a1, $s3
+	vldx	$vr4, $s8, $s3
 	ld.d	$a1, $sp, 920                   # 8-byte Folded Reload
-	xvldx	$xr5, $a1, $s3
-	xvldx	$xr6, $s5, $s3
+	vldx	$vr5, $a1, $s3
+	vldx	$vr6, $s5, $s3
 	ld.d	$a1, $sp, 912                   # 8-byte Folded Reload
-	xvldx	$xr7, $a1, $s3
-	xvldx	$xr8, $t5, $s3
-	xvfmadd.d	$xr0, $xr1, $xr2, $xr0
-	xvfmadd.d	$xr0, $xr3, $xr4, $xr0
-	xvfmadd.d	$xr0, $xr5, $xr6, $xr0
-	xvfmadd.d	$xr0, $xr7, $xr8, $xr0
+	vldx	$vr7, $a1, $s3
+	vldx	$vr8, $t5, $s3
+	vfmadd.d	$vr0, $vr1, $vr2, $vr0
+	vfmadd.d	$vr0, $vr3, $vr4, $vr0
+	vfmadd.d	$vr0, $vr5, $vr6, $vr0
+	vfmadd.d	$vr0, $vr7, $vr8, $vr0
 	ld.d	$a1, $sp, 904                   # 8-byte Folded Reload
-	xvldx	$xr1, $a1, $s3
-	xvldx	$xr2, $a5, $s3
+	vldx	$vr1, $a1, $s3
+	vldx	$vr2, $a5, $s3
 	ld.d	$a1, $sp, 896                   # 8-byte Folded Reload
-	xvldx	$xr3, $a1, $s3
-	xvldx	$xr4, $a2, $s3
+	vldx	$vr3, $a1, $s3
+	vldx	$vr4, $a2, $s3
 	ld.d	$a1, $sp, 832                   # 8-byte Folded Reload
-	xvldx	$xr5, $a1, $s3
-	xvldx	$xr6, $a6, $s3
+	vldx	$vr5, $a1, $s3
+	vldx	$vr6, $a6, $s3
 	ld.d	$a1, $sp, 888                   # 8-byte Folded Reload
-	xvldx	$xr7, $a1, $s3
-	xvldx	$xr8, $t7, $s3
-	xvfmadd.d	$xr0, $xr1, $xr2, $xr0
-	xvfmadd.d	$xr0, $xr3, $xr4, $xr0
-	xvfmadd.d	$xr0, $xr5, $xr6, $xr0
-	xvfmadd.d	$xr0, $xr7, $xr8, $xr0
+	vldx	$vr7, $a1, $s3
+	vldx	$vr8, $t7, $s3
+	vfmadd.d	$vr0, $vr1, $vr2, $vr0
+	vfmadd.d	$vr0, $vr3, $vr4, $vr0
+	vfmadd.d	$vr0, $vr5, $vr6, $vr0
+	vfmadd.d	$vr0, $vr7, $vr8, $vr0
 	ld.d	$a1, $sp, 880                   # 8-byte Folded Reload
-	xvldx	$xr1, $a1, $s3
+	vldx	$vr1, $a1, $s3
 	ld.d	$a1, $sp, 752                   # 8-byte Folded Reload
-	xvldx	$xr2, $a1, $s3
+	vldx	$vr2, $a1, $s3
 	ld.d	$a1, $sp, 840                   # 8-byte Folded Reload
-	xvldx	$xr3, $a1, $s3
-	xvldx	$xr4, $a0, $s3
+	vldx	$vr3, $a1, $s3
+	vldx	$vr4, $a0, $s3
 	ld.d	$a1, $sp, 824                   # 8-byte Folded Reload
-	xvldx	$xr5, $a1, $s3
-	xvldx	$xr6, $t8, $s3
+	vldx	$vr5, $a1, $s3
+	vldx	$vr6, $t8, $s3
 	ld.d	$a1, $sp, 816                   # 8-byte Folded Reload
-	xvldx	$xr7, $a1, $s3
+	vldx	$vr7, $a1, $s3
 	ld.d	$a1, $sp, 760                   # 8-byte Folded Reload
-	xvldx	$xr8, $a1, $s3
-	xvfmadd.d	$xr0, $xr1, $xr2, $xr0
-	xvfmadd.d	$xr0, $xr3, $xr4, $xr0
-	xvfmadd.d	$xr0, $xr5, $xr6, $xr0
-	xvfmadd.d	$xr0, $xr7, $xr8, $xr0
+	vldx	$vr8, $a1, $s3
+	vfmadd.d	$vr0, $vr1, $vr2, $vr0
+	vfmadd.d	$vr0, $vr3, $vr4, $vr0
+	vfmadd.d	$vr0, $vr5, $vr6, $vr0
+	vfmadd.d	$vr0, $vr7, $vr8, $vr0
 	ld.d	$a1, $sp, 808                   # 8-byte Folded Reload
-	xvldx	$xr1, $a1, $s3
-	xvldx	$xr2, $a4, $s3
+	vldx	$vr1, $a1, $s3
+	vldx	$vr2, $a4, $s3
 	ld.d	$a1, $sp, 800                   # 8-byte Folded Reload
-	xvldx	$xr3, $a1, $s3
-	xvldx	$xr4, $fp, $s3
-	xvldx	$xr5, $s4, $s3
-	xvldx	$xr6, $t6, $s3
+	vldx	$vr3, $a1, $s3
+	vldx	$vr4, $fp, $s3
+	vldx	$vr5, $s4, $s3
+	vldx	$vr6, $t6, $s3
 	ld.d	$a1, $sp, 792                   # 8-byte Folded Reload
-	xvldx	$xr7, $a1, $s3
-	xvldx	$xr8, $s0, $s3
-	xvfmadd.d	$xr0, $xr1, $xr2, $xr0
-	xvfmadd.d	$xr0, $xr3, $xr4, $xr0
-	xvfmadd.d	$xr0, $xr5, $xr6, $xr0
-	xvfmadd.d	$xr0, $xr7, $xr8, $xr0
+	vldx	$vr7, $a1, $s3
+	vldx	$vr8, $s0, $s3
+	vfmadd.d	$vr0, $vr1, $vr2, $vr0
+	vfmadd.d	$vr0, $vr3, $vr4, $vr0
+	vfmadd.d	$vr0, $vr5, $vr6, $vr0
+	vfmadd.d	$vr0, $vr7, $vr8, $vr0
 	ld.d	$s5, $sp, 992                   # 8-byte Folded Reload
-	xvstx	$xr0, $s5, $s3
+	vstx	$vr0, $s5, $s3
 	move	$s5, $t2
-	addi.d	$s1, $s1, -4
-	addi.w	$s2, $s2, 4
+	addi.d	$s1, $s1, -2
+	addi.w	$s2, $s2, 2
 	bnez	$s1, .LBB0_51
 # %bb.52:                               # %middle.block
                                         #   in Loop: Header=BB0_6 Depth=2

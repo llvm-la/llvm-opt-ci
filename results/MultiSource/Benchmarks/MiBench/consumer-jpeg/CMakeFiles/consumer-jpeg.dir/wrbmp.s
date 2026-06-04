@@ -253,8 +253,9 @@ finish_output_bmp:                      # @finish_output_bmp
 	mul.d	$a3, $a4, $a3
 	add.d	$a3, $a3, $a5
 	st.w	$zero, $sp, 64
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 20
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 20
+	vst	$vr0, $sp, 36
 	st.d	$zero, $sp, 50
 	lu12i.w	$a5, 4
 	ori	$a5, $a5, 3394
@@ -510,11 +511,11 @@ put_gray_rows:                          # @put_gray_rows
 # %bb.1:                                # %iter.check
 	ld.d	$a0, $fp, 32
 	ld.d	$a5, $a0, 0
-	ori	$a0, $zero, 16
+	ori	$a0, $zero, 8
 	bltu	$a2, $a0, .LBB3_6
 # %bb.2:                                # %iter.check
 	sub.d	$a1, $a4, $a5
-	ori	$a0, $zero, 64
+	ori	$a0, $zero, 32
 	bltu	$a1, $a0, .LBB3_6
 # %bb.3:                                # %vector.main.loop.iter.check
 	bgeu	$a2, $a0, .LBB3_7
@@ -530,47 +531,47 @@ put_gray_rows:                          # @put_gray_rows
 	move	$a3, $a5
 	b	.LBB3_14
 .LBB3_7:                                # %vector.ph
-	andi	$a7, $a2, 48
-	bstrpick.d	$a0, $a2, 31, 6
-	slli.d	$a6, $a0, 6
+	andi	$a7, $a2, 24
+	bstrpick.d	$a0, $a2, 31, 5
+	slli.d	$a6, $a0, 5
 	sub.d	$a1, $a2, $a6
 	add.d	$a0, $a4, $a6
 	add.d	$a3, $a5, $a6
-	addi.d	$t0, $a5, 32
-	addi.d	$t1, $a4, 32
+	addi.d	$t0, $a5, 16
+	addi.d	$t1, $a4, 16
 	move	$t2, $a6
 	.p2align	4, , 16
 .LBB3_8:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $t0, -32
-	xvld	$xr1, $t0, 0
-	xvst	$xr0, $t1, -32
-	xvst	$xr1, $t1, 0
-	addi.d	$t2, $t2, -64
-	addi.d	$t0, $t0, 64
-	addi.d	$t1, $t1, 64
+	vld	$vr0, $t0, -16
+	vld	$vr1, $t0, 0
+	vst	$vr0, $t1, -16
+	vst	$vr1, $t1, 0
+	addi.d	$t2, $t2, -32
+	addi.d	$t0, $t0, 32
+	addi.d	$t1, $t1, 32
 	bnez	$t2, .LBB3_8
 # %bb.9:                                # %middle.block
 	beq	$a6, $a2, .LBB3_15
 # %bb.10:                               # %vec.epilog.iter.check
 	beqz	$a7, .LBB3_14
 .LBB3_11:                               # %vec.epilog.ph
-	bstrpick.d	$a3, $a2, 31, 4
-	slli.d	$a7, $a3, 4
+	bstrpick.d	$a3, $a2, 31, 3
+	slli.d	$a7, $a3, 3
 	sub.d	$a1, $a2, $a7
-	alsl.d	$a0, $a3, $a4, 4
-	alsl.d	$a3, $a3, $a5, 4
+	alsl.d	$a0, $a3, $a4, 3
+	alsl.d	$a3, $a3, $a5, 3
 	sub.d	$t0, $a6, $a7
 	add.d	$a5, $a5, $a6
 	add.d	$a4, $a4, $a6
 	.p2align	4, , 16
 .LBB3_12:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a5, 0
-	vst	$vr0, $a4, 0
-	addi.d	$t0, $t0, 16
-	addi.d	$a5, $a5, 16
-	addi.d	$a4, $a4, 16
+	ld.d	$a6, $a5, 0
+	st.d	$a6, $a4, 0
+	addi.d	$t0, $t0, 8
+	addi.d	$a5, $a5, 8
+	addi.d	$a4, $a4, 8
 	bnez	$t0, .LBB3_12
 # %bb.13:                               # %vec.epilog.middle.block
 	beq	$a7, $a2, .LBB3_15

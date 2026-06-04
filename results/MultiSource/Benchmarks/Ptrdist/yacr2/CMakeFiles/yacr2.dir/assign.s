@@ -203,18 +203,18 @@ NetsAssign:                             # @NetsAssign
 	.type	MaxNetsAssign,@function
 MaxNetsAssign:                          # @MaxNetsAssign
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(channelNets)
 	ld.d	$s1, $a0, %got_pc_lo12(channelNets)
 	ld.d	$a0, $s1, 0
@@ -275,9 +275,9 @@ MaxNetsAssign:                          # @MaxNetsAssign
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ori	$s7, $zero, 2
 	addi.w	$s8, $zero, -1
-	ori	$s5, $zero, 9
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
+	ori	$s5, $zero, 5
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	b	.LBB3_11
 	.p2align	4, , 16
 .LBB3_9:                                #   in Loop: Header=BB3_11 Depth=1
@@ -332,10 +332,10 @@ MaxNetsAssign:                          # @MaxNetsAssign
 	addi.d	$a3, $a2, -1
 	or	$a4, $a4, $a5
 	move	$a5, $a3
-	bstrins.d	$a5, $zero, 2, 0
+	bstrins.d	$a5, $zero, 1, 0
 	ori	$a6, $zero, 1
 	move	$a7, $a3
-	bstrins.d	$a7, $a6, 2, 0
+	bstrins.d	$a7, $a6, 1, 0
 	move	$t0, $s8
 	b	.LBB3_16
 	.p2align	4, , 16
@@ -370,29 +370,27 @@ MaxNetsAssign:                          # @MaxNetsAssign
 	.p2align	4, , 16
 .LBB3_19:                               # %vector.body.preheader
                                         #   in Loop: Header=BB3_16 Depth=2
-	addi.d	$t2, $t1, 40
+	addi.d	$t2, $t1, 24
 	move	$t3, $a5
-	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
-	xvori.b	$xr0, $xr1, 0
+	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
+	vori.b	$vr0, $vr1, 0
 	.p2align	4, , 16
 .LBB3_20:                               # %vector.body
                                         #   Parent Loop BB3_11 Depth=1
                                         #     Parent Loop BB3_16 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvld	$xr2, $t2, -32
-	xvld	$xr3, $t2, 0
-	xvadd.d	$xr0, $xr2, $xr0
-	xvadd.d	$xr1, $xr3, $xr1
-	addi.d	$t3, $t3, -8
-	addi.d	$t2, $t2, 64
+	vld	$vr2, $t2, -16
+	vld	$vr3, $t2, 0
+	vadd.d	$vr0, $vr2, $vr0
+	vadd.d	$vr1, $vr3, $vr1
+	addi.d	$t3, $t3, -4
+	addi.d	$t2, $t2, 32
 	bnez	$t3, .LBB3_20
 # %bb.21:                               # %middle.block
                                         #   in Loop: Header=BB3_16 Depth=2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$t2, $xr0, 0
+	vadd.d	$vr0, $vr1, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t2, $vr0, 0
 	move	$t4, $a7
 	beq	$a3, $a5, .LBB3_14
 .LBB3_22:                               # %scalar.ph.preheader
@@ -439,18 +437,18 @@ MaxNetsAssign:                          # @MaxNetsAssign
 	bne	$a0, $a2, .LBB3_25
 	b	.LBB3_10
 .LBB3_26:                               # %._crit_edge
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 	ret
 .Lfunc_end3:
 	.size	MaxNetsAssign, .Lfunc_end3-MaxNetsAssign
@@ -461,18 +459,18 @@ MaxNetsAssign:                          # @MaxNetsAssign
 	.type	LeftNetsAssign,@function
 LeftNetsAssign:                         # @LeftNetsAssign
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -224
+	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(channelNets)
 	ld.d	$s3, $a0, %got_pc_lo12(channelNets)
 	ld.d	$a0, $s3, 0
@@ -514,12 +512,12 @@ LeftNetsAssign:                         # @LeftNetsAssign
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	pcalau12i	$s1, %pc_hi20(netsAssign)
 	pcalau12i	$a0, %pc_hi20(costMatrix)
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(channelTracks)
 	ld.d	$s4, $a0, %got_pc_lo12(channelTracks)
 	move	$t1, $zero
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 80                   # 32-byte Folded Spill
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	lu12i.w	$s6, 244
 	ori	$s8, $s6, 576
 	lu12i.w	$a0, 2
@@ -623,7 +621,7 @@ LeftNetsAssign:                         # @LeftNetsAssign
 	jirl	$ra, $ra, 0
 	ld.d	$s5, $s2, 0
 	slli.d	$a0, $fp, 3
-	ld.d	$t1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 104                   # 8-byte Folded Reload
 	addi.d	$t1, $t1, -1
 	stx.d	$zero, $s5, $a0
 	beqz	$t1, .LBB4_5
@@ -639,21 +637,21 @@ LeftNetsAssign:                         # @LeftNetsAssign
                                         #         Child Loop BB4_63 Depth 4
                                         #       Child Loop BB4_67 Depth 3
 	ld.d	$a3, $s3, 0
-	st.d	$t1, $sp, 120                   # 8-byte Folded Spill
+	st.d	$t1, $sp, 104                   # 8-byte Folded Spill
 	beqz	$a3, .LBB4_20
 # %bb.23:                               # %.lr.ph66.i
                                         #   in Loop: Header=BB4_22 Depth=2
 	ld.d	$a0, $s0, 0
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	ld.d	$a1, $s4, 0
 	ld.d	$s1, $s1, %pc_lo12(netsAssign)
 	beqz	$a1, .LBB4_32
 # %bb.24:                               # %.lr.ph66.split.i.preheader
                                         #   in Loop: Header=BB4_22 Depth=2
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(costMatrix)
 	ori	$a4, $zero, 1
 	ori	$a2, $zero, 1
@@ -724,16 +722,16 @@ LeftNetsAssign:                         # @LeftNetsAssign
 	beqz	$a2, .LBB4_35
 # %bb.37:                               #   in Loop: Header=BB4_36 Depth=3
 	move	$fp, $s3
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, %pc_lo12(costMatrix)
 	ldx.d	$s0, $a1, $a0
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(LongestPathVCG)
 	jirl	$ra, $ra, 0
 	pcalau12i	$s3, %pc_hi20(tracksNoHCV)
 	ld.d	$a3, $s3, %pc_lo12(tracksNoHCV)
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	move	$a1, $s2
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(NoHCV)
@@ -837,7 +835,7 @@ LeftNetsAssign:                         # @LeftNetsAssign
 # %bb.53:                               # %.lr.ph35.split.preheader.i
                                         #   in Loop: Header=BB4_22 Depth=2
 	move	$fp, $zero
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, %pc_lo12(costMatrix)
 	addi.d	$a1, $a1, 1
 	ori	$a4, $zero, 2
@@ -848,10 +846,10 @@ LeftNetsAssign:                         # @LeftNetsAssign
 	addi.d	$a4, $a3, -1
 	addi.w	$a6, $zero, -1
 	move	$a5, $a4
-	bstrins.d	$a5, $zero, 2, 0
+	bstrins.d	$a5, $zero, 1, 0
 	ori	$t1, $zero, 1
 	move	$a7, $a4
-	bstrins.d	$a7, $t1, 2, 0
+	bstrins.d	$a7, $t1, 1, 0
 	b	.LBB4_56
 	.p2align	4, , 16
 .LBB4_54:                               # %._crit_edge.i
@@ -879,7 +877,7 @@ LeftNetsAssign:                         # @LeftNetsAssign
 # %bb.57:                               # %.lr.ph.i
                                         #   in Loop: Header=BB4_56 Depth=3
 	ldx.d	$t1, $a2, $t1
-	ori	$t2, $zero, 9
+	ori	$t2, $zero, 5
 	bgeu	$a1, $t2, .LBB4_59
 # %bb.58:                               #   in Loop: Header=BB4_56 Depth=3
 	move	$t2, $zero
@@ -888,30 +886,28 @@ LeftNetsAssign:                         # @LeftNetsAssign
 	.p2align	4, , 16
 .LBB4_59:                               # %vector.body.preheader
                                         #   in Loop: Header=BB4_56 Depth=3
-	addi.d	$t2, $t1, 40
+	addi.d	$t2, $t1, 24
 	move	$t3, $a5
-	xvld	$xr1, $sp, 80                   # 32-byte Folded Reload
-	xvori.b	$xr0, $xr1, 0
+	vld	$vr1, $sp, 80                   # 16-byte Folded Reload
+	vori.b	$vr0, $vr1, 0
 	.p2align	4, , 16
 .LBB4_60:                               # %vector.body
                                         #   Parent Loop BB4_7 Depth=1
                                         #     Parent Loop BB4_22 Depth=2
                                         #       Parent Loop BB4_56 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	xvld	$xr2, $t2, -32
-	xvld	$xr3, $t2, 0
-	xvadd.d	$xr0, $xr2, $xr0
-	xvadd.d	$xr1, $xr3, $xr1
-	addi.d	$t3, $t3, -8
-	addi.d	$t2, $t2, 64
+	vld	$vr2, $t2, -16
+	vld	$vr3, $t2, 0
+	vadd.d	$vr0, $vr2, $vr0
+	vadd.d	$vr1, $vr3, $vr1
+	addi.d	$t3, $t3, -4
+	addi.d	$t2, $t2, 32
 	bnez	$t3, .LBB4_60
 # %bb.61:                               # %middle.block
                                         #   in Loop: Header=BB4_56 Depth=3
-	xvadd.d	$xr0, $xr1, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$t2, $xr0, 0
+	vadd.d	$vr0, $vr1, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t2, $vr0, 0
 	move	$t4, $a7
 	beq	$a4, $a5, .LBB4_54
 .LBB4_62:                               # %scalar.ph.preheader
@@ -969,18 +965,18 @@ LeftNetsAssign:                         # @LeftNetsAssign
 	move	$t1, $zero
 	b	.LBB4_6
 .LBB4_69:                               # %._crit_edge64
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 224
 	ret
 .Lfunc_end4:
 	.size	LeftNetsAssign, .Lfunc_end4-LeftNetsAssign
@@ -991,18 +987,18 @@ LeftNetsAssign:                         # @LeftNetsAssign
 	.type	RightNetsAssign,@function
 RightNetsAssign:                        # @RightNetsAssign
 # %bb.0:
-	addi.d	$sp, $sp, -256
-	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -240
+	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(channelNets)
 	ld.d	$s3, $a0, %got_pc_lo12(channelNets)
 	ld.d	$a0, $s3, 0
@@ -1030,18 +1026,18 @@ RightNetsAssign:                        # @RightNetsAssign
 	ld.d	$a0, $a5, 0
 	bgeu	$a0, $a4, .LBB5_5
 .LBB5_4:                                # %._crit_edge64
-	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 256
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 240
 	ret
 .LBB5_5:                                # %.lr.ph63.preheader
 	pcalau12i	$a0, %got_pc_hi20(TOP)
@@ -1061,12 +1057,12 @@ RightNetsAssign:                        # @RightNetsAssign
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	pcalau12i	$s1, %pc_hi20(netsAssign)
 	pcalau12i	$a0, %pc_hi20(costMatrix)
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(channelTracks)
 	ld.d	$s4, $a0, %got_pc_lo12(channelTracks)
 	move	$t2, $zero
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	lu12i.w	$s8, 244
 	ori	$s5, $s8, 576
 	lu12i.w	$a0, 2
@@ -1158,7 +1154,7 @@ RightNetsAssign:                        # @RightNetsAssign
 	beqz	$t2, .LBB5_69
 # %bb.20:                               # %.lr.ph57.preheader
                                         #   in Loop: Header=BB5_8 Depth=1
-	st.d	$t2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$t2, $sp, 120                   # 8-byte Folded Spill
 	st.d	$a4, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$s7, $s2, 0
 	b	.LBB5_23
@@ -1174,10 +1170,10 @@ RightNetsAssign:                        # @RightNetsAssign
 	jirl	$ra, $ra, 0
 	ld.d	$s7, $s2, 0
 	slli.d	$a0, $fp, 3
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$a1, $a1, -1
 	stx.d	$zero, $s7, $a0
-	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
 	beqz	$a1, .LBB5_6
 .LBB5_23:                               # %.lr.ph57
                                         #   Parent Loop BB5_8 Depth=1
@@ -1195,16 +1191,16 @@ RightNetsAssign:                        # @RightNetsAssign
 # %bb.24:                               # %.lr.ph66.i
                                         #   in Loop: Header=BB5_23 Depth=2
 	ld.d	$a0, $s0, 0
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	ld.d	$a1, $s4, 0
 	ld.d	$s1, $s1, %pc_lo12(netsAssign)
 	beqz	$a1, .LBB5_33
 # %bb.25:                               # %.lr.ph66.split.i.preheader
                                         #   in Loop: Header=BB5_23 Depth=2
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(costMatrix)
 	ori	$a4, $zero, 1
 	ori	$a2, $zero, 1
@@ -1275,16 +1271,16 @@ RightNetsAssign:                        # @RightNetsAssign
 	beqz	$a2, .LBB5_36
 # %bb.38:                               #   in Loop: Header=BB5_37 Depth=3
 	move	$fp, $s3
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, %pc_lo12(costMatrix)
 	ldx.d	$s0, $a1, $a0
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(LongestPathVCG)
 	jirl	$ra, $ra, 0
 	pcalau12i	$s3, %pc_hi20(tracksNoHCV)
 	ld.d	$a3, $s3, %pc_lo12(tracksNoHCV)
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s2
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(NoHCV)
@@ -1388,7 +1384,7 @@ RightNetsAssign:                        # @RightNetsAssign
 # %bb.54:                               # %.lr.ph35.split.preheader.i
                                         #   in Loop: Header=BB5_23 Depth=2
 	move	$fp, $zero
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, %pc_lo12(costMatrix)
 	addi.d	$a1, $a1, 1
 	ori	$a4, $zero, 2
@@ -1399,10 +1395,10 @@ RightNetsAssign:                        # @RightNetsAssign
 	addi.d	$a4, $a3, -1
 	addi.w	$a6, $zero, -1
 	move	$a5, $a4
-	bstrins.d	$a5, $zero, 2, 0
+	bstrins.d	$a5, $zero, 1, 0
 	ori	$t1, $zero, 1
 	move	$a7, $a4
-	bstrins.d	$a7, $t1, 2, 0
+	bstrins.d	$a7, $t1, 1, 0
 	b	.LBB5_57
 	.p2align	4, , 16
 .LBB5_55:                               # %._crit_edge.i
@@ -1430,7 +1426,7 @@ RightNetsAssign:                        # @RightNetsAssign
 # %bb.58:                               # %.lr.ph.i
                                         #   in Loop: Header=BB5_57 Depth=3
 	ldx.d	$t1, $a2, $t1
-	ori	$t2, $zero, 9
+	ori	$t2, $zero, 5
 	bgeu	$a1, $t2, .LBB5_60
 # %bb.59:                               #   in Loop: Header=BB5_57 Depth=3
 	move	$t2, $zero
@@ -1439,30 +1435,28 @@ RightNetsAssign:                        # @RightNetsAssign
 	.p2align	4, , 16
 .LBB5_60:                               # %vector.body.preheader
                                         #   in Loop: Header=BB5_57 Depth=3
-	addi.d	$t2, $t1, 40
+	addi.d	$t2, $t1, 24
 	move	$t3, $a5
-	xvld	$xr1, $sp, 96                   # 32-byte Folded Reload
-	xvori.b	$xr0, $xr1, 0
+	vld	$vr1, $sp, 96                   # 16-byte Folded Reload
+	vori.b	$vr0, $vr1, 0
 	.p2align	4, , 16
 .LBB5_61:                               # %vector.body
                                         #   Parent Loop BB5_8 Depth=1
                                         #     Parent Loop BB5_23 Depth=2
                                         #       Parent Loop BB5_57 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	xvld	$xr2, $t2, -32
-	xvld	$xr3, $t2, 0
-	xvadd.d	$xr0, $xr2, $xr0
-	xvadd.d	$xr1, $xr3, $xr1
-	addi.d	$t3, $t3, -8
-	addi.d	$t2, $t2, 64
+	vld	$vr2, $t2, -16
+	vld	$vr3, $t2, 0
+	vadd.d	$vr0, $vr2, $vr0
+	vadd.d	$vr1, $vr3, $vr1
+	addi.d	$t3, $t3, -4
+	addi.d	$t2, $t2, 32
 	bnez	$t3, .LBB5_61
 # %bb.62:                               # %middle.block
                                         #   in Loop: Header=BB5_57 Depth=3
-	xvadd.d	$xr0, $xr1, $xr0
-	xvhaddw.q.d	$xr0, $xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 2
-	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$t2, $xr0, 0
+	vadd.d	$vr0, $vr1, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t2, $vr0, 0
 	move	$t4, $a7
 	beq	$a4, $a5, .LBB5_55
 .LBB5_63:                               # %scalar.ph.preheader
@@ -1563,13 +1557,13 @@ Select:                                 # @Select
 	addi.d	$a4, $a3, -1
 	or	$a5, $a6, $a5
 	move	$a6, $a4
-	bstrins.d	$a6, $zero, 2, 0
+	bstrins.d	$a6, $zero, 1, 0
 	ori	$a7, $zero, 1
 	move	$t0, $a4
-	bstrins.d	$t0, $a7, 2, 0
+	bstrins.d	$t0, $a7, 1, 0
 	addi.w	$t2, $zero, -1
-	ori	$t1, $zero, 9
-	xvrepli.b	$xr0, 0
+	ori	$t1, $zero, 5
+	vrepli.b	$vr0, 0
 	b	.LBB6_5
 	.p2align	4, , 16
 .LBB6_3:                                # %._crit_edge
@@ -1602,28 +1596,26 @@ Select:                                 # @Select
 	.p2align	4, , 16
 .LBB6_8:                                # %vector.body.preheader
                                         #   in Loop: Header=BB6_5 Depth=1
-	addi.d	$t4, $t3, 40
+	addi.d	$t4, $t3, 24
 	move	$t5, $a6
-	xvori.b	$xr1, $xr0, 0
-	xvori.b	$xr2, $xr0, 0
+	vori.b	$vr1, $vr0, 0
+	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB6_9:                                # %vector.body
                                         #   Parent Loop BB6_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr3, $t4, -32
-	xvld	$xr4, $t4, 0
-	xvadd.d	$xr1, $xr3, $xr1
-	xvadd.d	$xr2, $xr4, $xr2
-	addi.d	$t5, $t5, -8
-	addi.d	$t4, $t4, 64
+	vld	$vr3, $t4, -16
+	vld	$vr4, $t4, 0
+	vadd.d	$vr1, $vr3, $vr1
+	vadd.d	$vr2, $vr4, $vr2
+	addi.d	$t5, $t5, -4
+	addi.d	$t4, $t4, 32
 	bnez	$t5, .LBB6_9
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB6_5 Depth=1
-	xvadd.d	$xr1, $xr2, $xr1
-	xvhaddw.q.d	$xr1, $xr1, $xr1
-	xvpermi.d	$xr2, $xr1, 2
-	xvadd.d	$xr1, $xr2, $xr1
-	xvpickve2gr.d	$t4, $xr1, 0
+	vadd.d	$vr1, $vr2, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$t4, $vr1, 0
 	move	$t6, $t0
 	beq	$a4, $a6, .LBB6_3
 .LBB6_11:                               # %scalar.ph.preheader
