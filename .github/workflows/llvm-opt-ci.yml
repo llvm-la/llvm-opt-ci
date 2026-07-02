@@ -1,9 +1,14 @@
 name: Show Opt Results
 
 on:
-  # workflow_dispatch:
   issues:
     types: [opened]
+  issue_comment:
+    types: [created]
+
+concurrency:
+  group: opt-ci-${{ github.event.issue.number }}
+  cancel-in-progress: true
 
 permissions:
   issues: write
@@ -24,14 +29,16 @@ jobs:
   configure:
     runs-on: [self-hosted, llvm-ci]
     outputs:
-      PR_ID: ${{ steps.extract.outputs.PR_ID }}
-      FLAG:  ${{ steps.extract.outputs.FLAG }}
+      PR_ID:       ${{ steps.extract.outputs.PR_ID }}
+      FLAG:        ${{ steps.extract.outputs.FLAG }}
+      TESTS:       ${{ steps.extract.outputs.TESTS }}
+      COMMIT_HASH: ${{ steps.extract.outputs.COMMIT_HASH }}
     steps:
       - uses: actions/checkout@v4
         with:
           clean: false
           fetch-depth: 0
-        
+
       - name: Cleanup old builds
         run: |
           if [ -d "${BUILDS_DIR}" ]; then
@@ -39,84 +46,89 @@ jobs:
           else
             mkdir -p ${BUILDS_DIR}
           fi
-      
+
       - name: Update repos
-        run: |
-          cd ${WORKSPACE}
-          sh scripts/fetch-upstream.sh
-      
+        run: sh scripts/fetch-upstream.sh
+
       - name: Extract issue body
         id: extract
         env:
-          GH_ISSUE_BODY: ${{ github.event.issue.body }}
-        run: sh scripts/extract-issue-body.sh
+          GH_ISSUE_BODY: >-
+            ${{ github.event_name == 'issue_comment'
+              && github.event.comment.body
+              || github.event.issue.body }}
+        run: python3 scripts/extract_issue_body.py
 
   without-pr:
     needs: configure
     runs-on: [self-hosted, llvm-ci]
     steps:
-      - name: Checkout PR branch without pull commits.
+      - name: Checkout PR branch without pull commits
         run: |
           PR_BRANCH=pr-${{ needs.configure.outputs.PR_ID }}-$(date +%s)
           cd ${LLVM_SRC_DIR}
-
           git fetch origin pull/${{ needs.configure.outputs.PR_ID }}/head:${PR_BRANCH}
           git checkout ${PR_BRANCH}
-
           pr_commits=$(git rev-list main.. --count)
           git checkout HEAD~${pr_commits}
 
-          cd ${WORKSPACE}
-          sh scripts/build-llvm.sh
+      - name: Build LLVM
+        run: sh scripts/build-llvm.sh
 
-      - name: Generate Test Suite Asm files
+      - name: Build test suites
         env:
           FLAG: ${{ needs.configure.outputs.FLAG }}
         run: |
           cd ${WORKSPACE}
-          sh scripts/build-test-suite.sh
-          sh scripts/copy-asm.sh before
+          BUILD_DIR="${BUILDS_DIR}/base" \
+          ASM_DIR="${BUILDS_DIR}" \
+          make -f scripts/Makefile \
+            SUITES="${{ needs.configure.outputs.TESTS }}" \
+            PHASE=base build copy-asm
 
   with-pr:
     needs: [without-pr, configure]
     runs-on: [self-hosted, llvm-ci]
     steps:
-      - name: Checkout PR branch with pull commits.
+      - name: Checkout PR branch with pull commits
         run: |
           cd ${LLVM_SRC_DIR}
           git switch -
+          git log -1
 
-          cd ${WORKSPACE}
-          sh scripts/build-llvm.sh
+      - name: Build LLVM
+        run: sh scripts/build-llvm.sh
 
-      - name: Generate Test Suite Asm files
+      - name: Build test suites
         env:
           FLAG: ${{ needs.configure.outputs.FLAG }}
         run: |
           cd ${WORKSPACE}
-          sh scripts/build-test-suite.sh
-          sh scripts/copy-asm.sh after
+          BUILD_DIR="${BUILDS_DIR}/opt" \
+          ASM_DIR="${BUILDS_DIR}" \
+          make -f scripts/Makefile \
+            SUITES="${{ needs.configure.outputs.TESTS }}" \
+            PHASE=opt build copy-asm
 
   results:
     needs: [with-pr, configure]
     runs-on: [self-hosted, llvm-ci]
     steps:
-      - name: Diff PR
+      - name: Diff and create PR
         id: pr
         env:
           GH_ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
           FLAG: ${{ needs.configure.outputs.FLAG }}
           PR_ID: ${{ needs.configure.outputs.PR_ID }}
-        run: |
-          cd ${WORKSPACE}
-          sh scripts/diff-pr.sh
-      
-      - name: Create comment
+          TESTS: ${{ needs.configure.outputs.TESTS }}
+          COMMIT_HASH: ${{ needs.configure.outputs.COMMIT_HASH }}
+          BUILD_TIME: "N/A"
+        run: python3 scripts/diff_pr.py
+
+      - name: Comment on issue
         uses: tangaac/issues-helper@v3.7.6
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
-          body: |
-            Hello @${{ github.event.issue.user.login }}
-            Optimization results can be found:  ${{ steps.pr.outputs.PR_URL }}
+          body-path: results/issue_comment.md

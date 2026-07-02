@@ -1,0 +1,37 @@
+name: Cleanup Stale PRs and Issues
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: [self-hosted, llvm-ci]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Close stale PRs (15 days)
+        run: |
+          gh pr list --state open --json updatedAt \
+            --jq '.[] | select((now - (.updatedAt | fromdateepoch)) > 1296000) | .number' \
+            | while read -r pr; do
+                echo "Closing PR #$pr (idle >15 days)"
+                gh pr comment "$pr" --body "Auto-closed: idle for 15 days."
+                gh pr close "$pr" --delete-branch
+              done
+
+      - name: Close stale issues (30 days)
+        run: |
+          gh issue list --state open --json updatedAt \
+            --jq '.[] | select((now - (.updatedAt | fromdateepoch)) > 2592000) | .number' \
+            | while read -r issue; do
+                echo "Closing issue #$issue (idle >30 days)"
+                gh issue comment "$issue" --body "Auto-closed: idle for 30 days."
+                gh issue close "$issue"
+              done

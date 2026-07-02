@@ -9,3 +9,4 @@ assignees: ''
 
 pr=
 flag=-mlsx -O3
+test=test-suite
