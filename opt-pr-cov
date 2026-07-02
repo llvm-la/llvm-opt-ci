@@ -4,7 +4,7 @@
 Usage:
     ./opt-pr-cov --pr 12345
     ./opt-pr-cov --branch my-feature
-    ./opt-pr-cov --branch my-feature --llvm-dir ~/dev/llvm --flag "-O2" --test "test-suite,polybench"
+    ./opt-pr-cov --branch my-feature --llvm-dir /path/to/llvm --flag "-O2" --test "test-suite,polybench"
     ./opt-pr-cov --pr 12345 --fresh          # re-run from scratch
 """
 
@@ -349,6 +349,7 @@ def parse_args():
 
 def main():
     args = parse_args()
+    global LLVM_SRC
     LLVM_SRC = (args.llvm_dir or LLVM_SRC).resolve()
 
     if not LLVM_SRC.is_dir():
