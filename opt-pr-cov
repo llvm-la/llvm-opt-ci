@@ -18,7 +18,7 @@ from pathlib import Path
 
 # ── Paths (match workflow env layout) ───────────────────────────────────────
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent
 LLVM_SRC = ROOT / "repos" / "llvm-project"
 TS_SRC = ROOT / "repos" / "llvm-test-suite"
 BUILD_LLVM_DIR = ROOT / "build" / "build-llvm"
