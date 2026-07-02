@@ -1,0 +1,400 @@
+#!/usr/bin/env python3
+"""Local LLVM optimization comparison — build base/opt, diff asm, create commits.
+
+Usage:
+    python3 scripts/local_opt.py --pr 12345
+    python3 scripts/local_opt.py --pr 12345 --flag "-O2" --test "test-suite,polybench"
+    python3 scripts/local_opt.py --pr 12345 --fresh          # re-run from scratch
+"""
+
+import argparse
+import os
+import shutil
+import subprocess
+import sys
+import time
+from datetime import datetime
+from pathlib import Path
+
+# ── Paths (match workflow env layout) ───────────────────────────────────────
+
+ROOT = Path(__file__).resolve().parent.parent
+LLVM_SRC = ROOT / "repos" / "llvm-project"
+TS_SRC = ROOT / "repos" / "llvm-test-suite"
+BUILD_LLVM_DIR = ROOT / "build" / "build-llvm"
+BUILD_DIR = ROOT / "build"
+RESULTS_DIR = ROOT / "results"
+STATE_DIR = BUILD_DIR / ".state"
+
+# ── Steps ──────────────────────────────────────────────────────────────────
+
+STEPS = [
+    "fetch-pr",
+    "checkout-base",
+    "build-llvm-base",
+    "build-ts-base",
+    "checkout-opt",
+    "build-llvm-opt",
+    "build-ts-opt",
+    "create-commits",
+]
+
+# ── Helpers ─────────────────────────────────────────────────────────────────
+
+
+def run(cmd: str, **kwargs):
+    """Run a shell command, return CompletedProcess."""
+    return subprocess.run(cmd, shell=True, **kwargs)
+
+
+def check(cmd: str, **kwargs):
+    """Run a shell command, raise on failure."""
+    subprocess.run(cmd, shell=True, check=True, **kwargs)
+
+
+def fmt_seconds(seconds: int) -> str:
+    m, s = divmod(seconds, 60)
+    return f"{m}m {s}s" if m else f"{s}s"
+
+
+def env_for_phase(phase: str, flag: str, suites: str) -> dict:
+    """Build env dict for Makefile-based test-suite build."""
+    e = os.environ.copy()
+    e.update(
+        BUILD_DIR=str(BUILD_DIR / phase),
+        ASM_DIR=str(BUILD_DIR),
+        BUILD_LLVM_DIR=str(BUILD_LLVM_DIR),
+        TS_SRC_DIR=str(TS_SRC),
+        LLVM_SRC_DIR=str(LLVM_SRC),
+        FLAG=flag,
+    )
+    return e
+
+
+# ── State management ───────────────────────────────────────────────────────
+
+
+def _state_path() -> Path:
+    return STATE_DIR / "current"
+
+
+def read_state() -> dict | None:
+    p = _state_path()
+    if not p.exists():
+        return None
+    d = {}
+    for line in p.read_text().splitlines():
+        if "=" in line:
+            k, v = line.split("=", 1)
+            d[k] = v
+    return d
+
+
+def write_state(d: dict):
+    STATE_DIR.mkdir(parents=True, exist_ok=True)
+    _state_path().write_text("\n".join(f"{k}={v}" for k, v in d.items()) + "\n")
+
+
+def mark_step(step: str):
+    s = read_state() or {}
+    s[step] = "done"
+    write_state(s)
+
+
+def step_done(step: str) -> bool:
+    s = read_state() or {}
+    return s.get(step) == "done"
+
+
+def init_state(pr_id: str, flag: str, tests: str) -> str:
+    """Create or reuse state. Returns branch name."""
+    existing = read_state()
+
+    if existing and existing.get("pr") == pr_id:
+        # Same PR — reuse timestamp
+        branch = existing["branch"]
+        # Check parameters — auto-clear if changed
+        if existing.get("flag") != flag or existing.get("test") != tests:
+            for s in STEPS:
+                existing.pop(s, None)
+            existing["flag"] = flag
+            existing["test"] = tests
+            write_state(existing)
+    else:
+        # New or different PR — fresh timestamp
+        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+        branch = f"opt-pr-{pr_id}-{ts}"
+        existing = {"pr": pr_id, "branch": branch, "flag": flag, "test": tests}
+
+    write_state(existing)
+    return existing["branch"]
+
+
+def clear_steps():
+    """Remove all step markers, keep metadata."""
+    s = read_state() or {}
+    for step in STEPS:
+        s.pop(step, None)
+    write_state(s)
+
+
+# ── Progress display ────────────────────────────────────────────────────────
+
+
+class Progress:
+    def __init__(self, steps: list[str], done: set[str]):
+        self.steps = steps
+        self.done = done
+        self.max_len = max(len(s) for s in steps)
+
+    def draw(self, current: str | None = None):
+        lines = []
+        for i, step in enumerate(self.steps, 1):
+            if step in self.done:
+                marker = "[OK]"
+            elif step == current:
+                marker = "[-->]"
+            else:
+                marker = "[  ]"
+            lines.append(f"{marker} Step {i}/{len(self.steps)}: {step}")
+        print("\r" + "\n".join(lines))
+
+
+# ── Git helpers ─────────────────────────────────────────────────────────────
+
+
+class GitRestore:
+    """Save and restore llvm-project working tree."""
+
+    def __init__(self):
+        self.original_branch = None
+        self.original_sha = None
+
+    def save(self):
+        r = run(f"cd '{LLVM_SRC}' && git branch --show-current", capture_output=True, text=True)
+        self.original_branch = r.stdout.strip() or ""
+        r = run(f"cd '{LLVM_SRC}' && git rev-parse HEAD", capture_output=True, text=True)
+        self.original_sha = r.stdout.strip() or ""
+
+    def restore(self):
+        if self.original_branch:
+            run(f"cd '{LLVM_SRC}' && git checkout '{self.original_branch}' 2>/dev/null || git checkout '{self.original_sha}'")
+        else:
+            run(f"cd '{LLVM_SRC}' && git checkout '{self.original_sha}'")
+
+
+def fetch_pr(pr_id: str) -> tuple[str, int]:
+    """Fetch PR branch. Returns (commit_sha, pr_commits_count)."""
+    branch = f"pr-{pr_id}-local"
+    check(f"cd '{LLVM_SRC}' && git fetch origin pull/{pr_id}/head:{branch}")
+    r = run(f"cd '{LLVM_SRC}' && git rev-parse {branch}", capture_output=True, text=True)
+    sha = r.stdout.strip()
+    r = run(f"cd '{LLVM_SRC}' && git rev-list main..{branch} --count", capture_output=True, text=True)
+    count = int(r.stdout.strip())
+    return sha, count
+
+
+# ── Step implementations ───────────────────────────────────────────────────
+
+
+def step_build_llvm():
+    check(
+        f"BUILD_LLVM_DIR='{BUILD_LLVM_DIR}' LLVM_SRC_DIR='{LLVM_SRC}' "
+        f"sh '{ROOT}/scripts/build-llvm.sh'"
+    )
+
+
+def step_build_ts(phase: str, flag: str, suites: str):
+    check(
+        f'cd "{ROOT}" && make -f scripts/Makefile '
+        f'SUITES="{suites}" PHASE={phase} build copy-asm',
+        env=env_for_phase(phase, flag, suites),
+    )
+
+
+def diff_files(base_dir: str, opt_dir: str) -> list[tuple[str, str, str]]:
+    """Find differing files. Returns [(rel, base_file, opt_file)]."""
+    diffs = []
+    proc = os.popen(f"diff -rq '{base_dir}' '{opt_dir}' 2>/dev/null | grep -i differ || true")
+    for line in proc:
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            parts = line.split()
+            f1, f2 = parts[1], parts[3]
+            rel = f1.removeprefix(base_dir + "/")
+            diffs.append((rel, f1, f2))
+        except (IndexError, AttributeError):
+            continue
+    proc.close()
+    return diffs
+
+
+def create_commits(branch: str, pr_id: str, flag: str, tests: str, commit_sha: str):
+    """Create branch with two commits: base files, then opt files."""
+    results_base = RESULTS_DIR / "base"
+    results_opt = RESULTS_DIR / "opt"
+
+    # Only copy differing files
+    all_diffs: list[tuple[str, str, str]] = []
+    for suite in tests.split(","):
+        suite = suite.strip()
+        base_suite = BUILD_DIR / "base" / suite
+        opt_suite = BUILD_DIR / "opt" / suite
+        if base_suite.is_dir() and opt_suite.is_dir():
+            all_diffs.extend(diff_files(str(base_suite), str(opt_suite)))
+
+    if not all_diffs:
+        print("\nNo differences found between base and opt.")
+        return
+
+    # Clean and create branch from main
+    check(f"cd '{ROOT}' && git checkout -B '{branch}' main")
+    check(f"cd '{ROOT}' && git clean -ffd")
+    check(f"cd '{ROOT}' && git rm -rf . 2>/dev/null || true")
+
+    # Copy differing files
+    for rel, f1, f2 in all_diffs:
+        # Base files
+        dst = results_base / rel
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(f1, dst)
+        # Opt files
+        dst = results_opt / rel
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(f2, dst)
+
+    # Commit 1: base
+    check(f"cd '{ROOT}' && git add -A")
+    msg = f"base: LLVM PR #{pr_id} ({flag}) {commit_sha}"
+    check(f"cd '{ROOT}' && git commit -m '{msg}' --allow-empty")
+
+    # Remove base files, keep opt files
+    check(f"cd '{ROOT}' && git rm -rf '{results_base}' || true")
+
+    # Commit 2: opt
+    check(f"cd '{ROOT}' && git add -A")
+    msg = f"opt: LLVM PR #{pr_id} ({flag}) {commit_sha}"
+    check(f"cd '{ROOT}' && git commit -m '{msg}' --allow-empty")
+
+    print(f"\nBranch '{branch}' created with 2 commits.")
+    print(f"  Run: git diff HEAD~1  (view changes)")
+
+
+# ── Main ────────────────────────────────────────────────────────────────────
+
+
+def parse_args():
+    p = argparse.ArgumentParser(description="Local LLVM opt comparison")
+    p.add_argument("--pr", required=True, type=int, help="LLVM PR number")
+    p.add_argument("--flag", default="-mlsx -O3", help="Compiler flags (default: -mlsx -O3)")
+    p.add_argument("--test", default="test-suite", help="Comma-separated test suites")
+    p.add_argument("--fresh", action="store_true", help="Ignore cache, re-run all steps")
+    return p.parse_args()
+
+
+def main():
+    args = parse_args()
+    pr_id = str(args.pr)
+
+    # Check for uncommitted changes in llvm-project
+    r = run(f"cd '{LLVM_SRC}' && git status --porcelain", capture_output=True, text=True)
+    if r.stdout.strip():
+        print(f"Error: {LLVM_SRC} has uncommitted changes. Commit or stash first.", file=sys.stderr)
+        sys.exit(1)
+
+    # Check for uncommitted changes in this repo (results/ might be in a branch)
+    r = run(f"cd '{ROOT}' && git status --porcelain", capture_output=True, text=True)
+    if r.stdout.strip():
+        print(f"Error: {ROOT} has uncommitted changes. Commit or stash first.", file=sys.stderr)
+        sys.exit(1)
+
+    # Init state / branch name
+    branch = init_state(pr_id, args.flag, args.test)
+
+    if args.fresh:
+        print(f"Fresh run on branch '{branch}' (PR #{pr_id})")
+        clear_steps()
+
+    git = GitRestore()
+    git.save()
+
+    # Determine which steps to run
+    done = {s for s in STEPS if step_done(s)}
+    prog = Progress(STEPS, done)
+    prog.draw()
+
+    try:
+        # ── Step 1: Fetch PR ──
+        if not step_done("fetch-pr"):
+            prog.draw("fetch-pr")
+            t0 = time.time()
+            commit_sha, pr_commits = fetch_pr(pr_id)
+            print(f"\n[OK] Step 1/8: fetch-pr       ({fmt_seconds(int(time.time()-t0))}) — {pr_commits} commits")
+            mark_step("fetch-pr")
+
+        # ── Step 2: Checkout base ──
+        if not step_done("checkout-base"):
+            prog.draw("checkout-base")
+            t0 = time.time()
+            check(f"cd '{LLVM_SRC}' && git checkout HEAD~{pr_commits}")
+            mark_step("checkout-base")
+
+        # ── Step 3: Build LLVM (base) ──
+        if not step_done("build-llvm-base"):
+            prog.draw("build-llvm-base")
+            t0 = time.time()
+            step_build_llvm()
+            print(f"\n[OK] Step 3/8: build-llvm-base ({fmt_seconds(int(time.time()-t0))})")
+            mark_step("build-llvm-base")
+
+        # ── Step 4: Build test suites (base) ──
+        if not step_done("build-ts-base"):
+            prog.draw("build-ts-base")
+            t0 = time.time()
+            step_build_ts("base", args.flag, args.test)
+            print(f"\n[OK] Step 4/8: build-ts-base   ({fmt_seconds(int(time.time()-t0))})")
+            mark_step("build-ts-base")
+
+        # ── Step 5: Checkout opt ──
+        if not step_done("checkout-opt"):
+            prog.draw("checkout-opt")
+            t0 = time.time()
+            check(f"cd '{LLVM_SRC}' && git checkout pr-{pr_id}-local")
+            mark_step("checkout-opt")
+
+        # ── Step 6: Build LLVM (opt) ──
+        if not step_done("build-llvm-opt"):
+            prog.draw("build-llvm-opt")
+            t0 = time.time()
+            step_build_llvm()
+            print(f"\n[OK] Step 6/8: build-llvm-opt  ({fmt_seconds(int(time.time()-t0))})")
+            mark_step("build-llvm-opt")
+
+        # ── Step 7: Build test suites (opt) ──
+        if not step_done("build-ts-opt"):
+            prog.draw("build-ts-opt")
+            t0 = time.time()
+            step_build_ts("opt", args.flag, args.test)
+            print(f"\n[OK] Step 7/8: build-ts-opt    ({fmt_seconds(int(time.time()-t0))})")
+            mark_step("build-ts-opt")
+
+        # ── Step 8: Create commits ──
+        if not step_done("create-commits"):
+            prog.draw("create-commits")
+            t0 = time.time()
+            create_commits(branch, pr_id, args.flag, args.test, commit_sha)
+            mark_step("create-commits")
+
+        print("\nAll steps complete. Branch:", branch)
+
+    except subprocess.CalledProcessError as e:
+        print(f"\nBuild failed at step '{e.cmd}' (exit {e.returncode})", file=sys.stderr)
+        sys.exit(1)
+    finally:
+        git.restore()
+
+
+if __name__ == "__main__":
+    main()
