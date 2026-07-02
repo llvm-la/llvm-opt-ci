@@ -2,41 +2,37 @@
 """Generate markdown reports from asm diff between base and opt directories."""
 
 import os
-import shutil
+import subprocess
 import sys
+from dataclasses import dataclass, field
+
+
+@dataclass
+class DiffStats:
+    """Aggregated diff statistics for all differing files."""
+    total_adds: int = 0
+    total_dels: int = 0
+    file_count: int = 0
+    only_decreased: int = 0
+    only_increased: int = 0
+    mixed: int = 0
+    top10: list[tuple[str, int, int]] = field(default_factory=list)
+
+    @property
+    def net(self) -> int:
+        return self.total_adds - self.total_dels
 
 
 def format_number(n: int) -> str:
-    """Format integer with comma separators: 1234 → 1,234."""
+    """Format integer with comma separators: 1234 -> 1,234."""
     return f"{n:,}"
 
 
-def diff_stat(file1: str, file2: str) -> tuple[int, int]:
-    """Count added and removed lines between two files."""
-    adds = 0
-    dels = 0
-    try:
-        result = shutil.which("diff")
-        if not result:
-            return 0, 0
-        proc = os.popen(f"diff '{file1}' '{file2}' 2>/dev/null")
-        for line in proc:
-            if line.startswith("+"):
-                adds += 1
-            elif line.startswith("-"):
-                dels += 1
-        proc.close()
-    except Exception:
-        pass
-    return adds, dels
+def compute_diff_stats(base_dir: str, opt_dir: str) -> DiffStats:
+    """Compute diff statistics between base and opt directories once."""
+    stats = DiffStats()
+    per_file: list[tuple[str, int, int]] = []
 
-
-def find_diff_files(base_dir: str, opt_dir: str) -> list[tuple[str, str, str]]:
-    """Find files that differ between base and opt directories.
-
-    Returns list of (relative_path, base_file, opt_file).
-    """
-    result = []
     proc = os.popen(
         f"diff -rq '{base_dir}' '{opt_dir}' 2>/dev/null | grep -i differ || true"
     )
@@ -44,18 +40,45 @@ def find_diff_files(base_dir: str, opt_dir: str) -> list[tuple[str, str, str]]:
         line = line.strip()
         if not line:
             continue
-        # Format: "Files path/to/base/f and path/to/opt/f differ"
         try:
             parts = line.split()
-            # parts[1] = base file, parts[3] = opt file
             f1 = parts[1]
             f2 = parts[3]
             rel = f1.removeprefix(base_dir + "/")
-            result.append((rel, f1, f2))
         except (IndexError, AttributeError):
             continue
+
+        adds, dels = _count_diff_lines(f1, f2)
+        per_file.append((rel, adds, dels))
+        stats.total_adds += adds
+        stats.total_dels += dels
+        stats.file_count += 1
+
+        if adds == 0 and dels > 0:
+            stats.only_decreased += 1
+        elif adds > 0 and dels == 0:
+            stats.only_increased += 1
+        else:
+            stats.mixed += 1
+
     proc.close()
-    return result
+
+    stats.top10 = sorted(per_file, key=lambda x: x[1] + x[2], reverse=True)[:10]
+    return stats
+
+
+def _count_diff_lines(file1: str, file2: str) -> tuple[int, int]:
+    """Count added and removed lines between two files."""
+    adds = 0
+    dels = 0
+    proc = os.popen(f"diff '{file1}' '{file2}' 2>/dev/null || true")
+    for line in proc:
+        if line.startswith("+"):
+            adds += 1
+        elif line.startswith("-"):
+            dels += 1
+    proc.close()
+    return adds, dels
 
 
 def run():
@@ -72,112 +95,89 @@ def run():
             print(f"Error: {d} directory not found", file=sys.stderr)
             sys.exit(1)
 
-    # Collect diff statistics for all differing files
-    diff_files = find_diff_files(base_dir, opt_dir)
-    stats: list[tuple[str, int, int]] = []
-
-    for rel, f1, f2 in diff_files:
-        adds, dels = diff_stat(f1, f2)
-        stats.append((rel, adds, dels))
-
-    total_adds = sum(a for _, a, _ in stats)
-    total_dels = sum(d for _, _, d in stats)
-    file_count = len(stats)
-
-    # Top 10 files by total changes (adds + dels), descending
-    top10 = sorted(stats, key=lambda x: x[1] + x[2], reverse=True)[:10]
+    stats = compute_diff_stats(base_dir, opt_dir)
 
     # Generate Issue comment markdown
     issue_comment = os.path.join(results_dir, "issue_comment.md")
     with open(issue_comment, "w") as f:
-        f.write(_build_issue_comment())
+        f.write(_build_issue_comment(stats))
 
     # Generate PR body markdown
     pr_body = os.path.join(results_dir, "pr_body.md")
     with open(pr_body, "w") as f:
-        f.write(_build_pr_body(top10))
+        f.write(_build_pr_body(stats))
 
-    print(f"Reports generated: {file_count} files differ, +{format_number(total_adds)} / -{format_number(total_dels)} lines")
+    net_sign = "+" if stats.net >= 0 else ""
+    print(
+        f"Reports generated: {stats.file_count} files differ, "
+        f"+{format_number(stats.total_adds)} / -{format_number(stats.total_dels)} lines "
+        f"(net {net_sign}{format_number(stats.net)})"
+    )
 
 
-def _build_issue_comment() -> str:
-    pr_id = os.environ.get("PR_ID", "")
-    flag = os.environ.get("FLAG", "")
-    tests = os.environ.get("TESTS", "")
-    commit_hash = os.environ.get("COMMIT_HASH", "")
-    build_time = os.environ.get("BUILD_TIME", "N/A")
-    author = os.environ.get("GH_ISSUE_AUTHOR", "")
-    results_dir = os.environ.get("RESULTS_DIR", "")
+def _env(name: str, default: str = "") -> str:
+    return os.environ.get(name, default)
 
-    # Recompute totals inline (read from issue_comment.md generation context)
-    base_dir = os.path.join(results_dir, "base")
-    opt_dir = os.path.join(results_dir, "opt")
-    diff_files = find_diff_files(base_dir, opt_dir)
-    total_adds = total_dels = 0
-    for _, f1, f2 in diff_files:
-        a, d = diff_stat(f1, f2)
-        total_adds += a
-        total_dels += d
-    file_count = len(diff_files)
 
+def _build_issue_comment(s: DiffStats) -> str:
+    net_sign = "+" if s.net >= 0 else ""
     lines = [
-        f"Hello @{author}",
+        f"Hello @{_env('GH_ISSUE_AUTHOR')}",
         "",
-        f"**PR**: [LLVM PR #{pr_id}](https://github.com/llvm/llvm-project/pull/{pr_id})",
-        f"**Commit**: `{commit_hash}`",
-        f"**Tests**: {tests}",
-        f"**Flag**: `{flag}`",
-        f"**Build Time**: {build_time}",
-        f"**Changes**: +{format_number(total_adds)} / -{format_number(total_dels)} lines across {file_count} files",
+        f"**PR**: [LLVM PR #{_env('PR_ID')}](https://github.com/llvm/llvm-project/pull/{_env('PR_ID')})",
+        f"**Commit**: `{_env('COMMIT_HASH')}`",
+        f"**Tests**: {_env('TESTS')}",
+        f"**Flag**: `{_env('FLAG')}`",
+        f"**Build Time**: {_env('BUILD_TIME', 'N/A')}",
+        "",
+        "## Summary",
+        "",
+        f"| Metric | Value |",
+        f"|---|---|",
+        f"| Files changed | {s.file_count} |",
+        f"| Lines added | +{format_number(s.total_adds)} |",
+        f"| Lines removed | -{format_number(s.total_dels)} |",
+        f"| Net change | {net_sign}{format_number(s.net)} |",
+        f"| Only decreased | {s.only_decreased} |",
+        f"| Only increased | {s.only_increased} |",
+        f"| Mixed | {s.mixed} |",
         "",
         "Results: see the comparison PR diff below.",
     ]
-    return "\\n".join(lines) + "\\n"
+    return "\n".join(lines) + "\n"
 
 
-def _build_pr_body(top10: list[tuple[str, int, int]]) -> str:
-    pr_id = os.environ.get("PR_ID", "")
-    flag = os.environ.get("FLAG", "")
-    tests = os.environ.get("TESTS", "")
-    commit_hash = os.environ.get("COMMIT_HASH", "")
-    build_time = os.environ.get("BUILD_TIME", "N/A")
-    author = os.environ.get("GH_ISSUE_AUTHOR", "")
-    results_dir = os.environ.get("RESULTS_DIR", "")
-
-    base_dir = os.path.join(results_dir, "base")
-    opt_dir = os.path.join(results_dir, "opt")
-    diff_files = find_diff_files(base_dir, opt_dir)
-    total_adds = total_dels = 0
-    for _, f1, f2 in diff_files:
-        a, d = diff_stat(f1, f2)
-        total_adds += a
-        total_dels += d
-    file_count = len(diff_files)
-
+def _build_pr_body(s: DiffStats) -> str:
+    net_sign = "+" if s.net >= 0 else ""
     lines = [
         "# LLVM Optimization Analysis",
         "",
         "| | |",
         "|---|---|",
-        f"| **Requester** | @{author} |",
-        f"| **Commit** | `{commit_hash}` |",
-        f"| **Tests** | {tests} |",
-        f"| **Flag** | `{flag}` |",
-        f"| **Build Time** | {build_time} |",
+        f"| **Requester** | @{_env('GH_ISSUE_AUTHOR')} |",
+        f"| **Commit** | `{_env('COMMIT_HASH')}` |",
+        f"| **Tests** | {_env('TESTS')} |",
+        f"| **Flag** | `{_env('FLAG')}` |",
+        f"| **Build Time** | {_env('BUILD_TIME', 'N/A')} |",
         "",
         "## Diff Summary",
         "",
-        f"**Total**: +{format_number(total_adds)} / -{format_number(total_dels)} lines across {file_count} files",
+        f"**Total**: +{format_number(s.total_adds)} / -{format_number(s.total_dels)} lines "
+        f"(net {net_sign}{format_number(s.net)}) across {s.file_count} files",
+        "",
+        f"**Decreased only**: {s.only_decreased} files | "
+        f"**Increased only**: {s.only_increased} files | "
+        f"**Mixed**: {s.mixed} files",
         "",
         "### Top 10 Changes",
         "",
         "| File | +Lines | -Lines |",
         "|---|---|---|",
     ]
-    for rel, adds, dels in top10:
+    for rel, adds, dels in s.top10:
         lines.append(f"| {rel} | +{format_number(adds)} | -{format_number(dels)} |")
 
-    return "\\n".join(lines) + "\\n"
+    return "\n".join(lines) + "\n"
 
 
 if __name__ == "__main__":

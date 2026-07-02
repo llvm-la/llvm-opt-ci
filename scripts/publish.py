@@ -39,7 +39,7 @@ def run():
         copy_diff_files(side, builds_dir, results_dir, suites)
 
     # Generate reports
-    subprocess.run(["python3", "scripts/report.py"], check=True)
+    subprocess.run(["python3", "scripts/gen_report.py"], check=True)
 
     # Push base branch
     os.chdir(workspace)
