@@ -174,7 +174,7 @@ jobs:
 
   on-failure:
     needs: [configure, without-pr, with-pr, results]
-    if: always() && (contains([needs.without-pr.result, needs.with-pr.result, needs.results.result], 'failure'))
+    if: always() && (needs.without-pr.result == 'failure' || needs.with-pr.result == 'failure' || needs.results.result == 'failure')
     runs-on: [self-hosted, llvm-ci]
     steps:
       - name: Comment failure on issue
