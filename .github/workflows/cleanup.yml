@@ -21,6 +21,7 @@ jobs:
           gh pr list --state open --json updatedAt \
             --jq '.[] | select((now - (.updatedAt | fromdateiso8601)) > 1296000) | .number' \
             | while read -r pr; do
+                [ -z "$pr" ] && continue
                 echo "Closing PR #$pr (idle >15 days)"
                 gh pr comment "$pr" --body "Auto-closed: idle for 15 days."
                 gh pr close "$pr" --delete-branch
@@ -31,6 +32,7 @@ jobs:
           gh issue list --state open --json updatedAt \
             --jq '.[] | select((now - (.updatedAt | fromdateiso8601)) > 2592000) | .number' \
             | while read -r issue; do
+                [ -z "$issue" ] && continue
                 echo "Closing issue #$issue (idle >30 days)"
                 gh issue comment "$issue" --body "Auto-closed: idle for 30 days."
                 gh issue close "$issue"
