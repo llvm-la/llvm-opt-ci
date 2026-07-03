@@ -13,12 +13,19 @@ permissions:
 jobs:
   cleanup:
     runs-on: [self-hosted, llvm-ci]
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
+      - name: Generate App token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.LLVM_LA_BOT_APP_ID }}
+          private-key: ${{ secrets.LLVM_LA_BOT_PRIVATE_KEY }}
+
       - name: Close stale PRs (15 days)
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           gh pr list --state open --json updatedAt,number \
             --jq '.[] | select((now - (.updatedAt | fromdateiso8601)) > 1296000) | .number' \
@@ -30,6 +37,8 @@ jobs:
               done
 
       - name: Close stale issues (30 days)
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           gh issue list --state open --json updatedAt,number \
             --jq '.[] | select((now - (.updatedAt | fromdateiso8601)) > 2592000) | .number' \
