@@ -27,6 +27,7 @@ env:
 
 jobs:
   configure:
+    if: github.event.sender.type != 'Bot'
     runs-on: [self-hosted, llvm-ci]
     outputs:
       PR_ID:       ${{ steps.extract.outputs.PR_ID }}
