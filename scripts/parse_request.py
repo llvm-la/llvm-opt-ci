@@ -11,21 +11,21 @@ def run():
     body = os.environ.get("GH_ISSUE_BODY", "")
 
     # Strip /remake command prefix if present
-    body = re.sub(r"^/remake\\s*", "", body)
+    body = re.sub(r"^/remake\s*", "", body)
 
-    # Extract PR ID (required)
-    pr_match = re.search(r"pr=(\\d+)", body)
+    # Extract PR ID (required) — allow optional spaces after pr=
+    pr_match = re.search(r"pr\s*=\s*(\d+)", body)
     if not pr_match:
-        print("Error: No pr= found in issue body", file=sys.stderr)
+        print(f"Error: No pr= found in issue body. Body: {body!r}", file=sys.stderr)
         sys.exit(1)
     pr_id = pr_match.group(1)
 
     # Extract optional flag with default
-    flag_match = re.search(r"flag=(.+?)(?:\\n|$)", body)
+    flag_match = re.search(r"flag\s*=\s*(.+?)(?:\n|$)", body)
     flag = flag_match.group(1).strip() if flag_match else "-mlsx -O3"
 
     # Extract optional test list with default
-    test_match = re.search(r"test=(.+?)(?:\\n|$)", body)
+    test_match = re.search(r"test\s*=\s*(.+?)(?:\n|$)", body)
     tests = test_match.group(1).strip() if test_match else "test-suite"
 
     # Fetch LLVM PR commit SHA via gh API
@@ -47,10 +47,10 @@ def run():
     github_output = os.environ.get("GITHUB_OUTPUT")
     if github_output:
         with open(github_output, "a") as f:
-            f.write(f"PR_ID={pr_id}\\n")
-            f.write(f"FLAG={flag}\\n")
-            f.write(f"TESTS={tests}\\n")
-            f.write(f"COMMIT_HASH={commit_hash}\\n")
+            f.write(f"PR_ID={pr_id}\n")
+            f.write(f"FLAG={flag}\n")
+            f.write(f"TESTS={tests}\n")
+            f.write(f"COMMIT_HASH={commit_hash}\n")
 
 
 if __name__ == "__main__":

@@ -62,10 +62,7 @@ jobs:
         id: extract
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
-          GH_ISSUE_BODY: >-
-            ${{ github.event_name == 'issue_comment'
-              && github.event.comment.body
-              || github.event.issue.body }}
+          GH_ISSUE_BODY: ${{ github.event_name == 'issue_comment' && github.event.comment.body || github.event.issue.body }}
         run: python3 scripts/parse_request.py
 
   without-pr:
