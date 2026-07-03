@@ -13,6 +13,8 @@ permissions:
 jobs:
   cleanup:
     runs-on: [self-hosted, llvm-ci]
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
