@@ -18,7 +18,7 @@ jobs:
 
       - name: Close stale PRs (15 days)
         run: |
-          gh pr list --state open --json updatedAt \
+          gh pr list --state open --json updatedAt,number \
             --jq '.[] | select((now - (.updatedAt | fromdateiso8601)) > 1296000) | .number' \
             | while read -r pr; do
                 [ -z "$pr" ] && continue
@@ -29,7 +29,7 @@ jobs:
 
       - name: Close stale issues (30 days)
         run: |
-          gh issue list --state open --json updatedAt \
+          gh issue list --state open --json updatedAt,number \
             --jq '.[] | select((now - (.updatedAt | fromdateiso8601)) > 2592000) | .number' \
             | while read -r issue; do
                 [ -z "$issue" ] && continue
