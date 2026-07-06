@@ -131,9 +131,8 @@ def _push_branches(
 
     # -- pr-*-base --
     subprocess.run(["git", "checkout", "-B", base_branch], check=True)
-    shutil.rmtree("results", ignore_errors=True)
     _copy_side(base_side, "results")
-    subprocess.run(["git", "add", "-A"], check=True)
+    subprocess.run(["git", "add", "results"], check=True)
     subprocess.run(
         ["git", "commit", "-q", "-m", f"base: LLVM before PR {pr_id} ({commit_hash})", "--allow-empty"],
         check=True,
@@ -144,9 +143,17 @@ def _push_branches(
 
     # -- pr-*-opt (based on pr-*-base's commit) --
     subprocess.run(["git", "checkout", "-B", opt_branch], check=True)
-    shutil.rmtree("results", ignore_errors=True)
+    # Remove suite files from previous commit, keep base/ and opt/ source dirs intact
+    for item in os.listdir(results_dir):
+        if item in ("base", "opt") or item.endswith(".md"):
+            continue
+        p = os.path.join(results_dir, item)
+        if os.path.isdir(p):
+            shutil.rmtree(p)
+        elif os.path.isfile(p):
+            os.remove(p)
     _copy_side(opt_side, "results")
-    subprocess.run(["git", "add", "-A"], check=True)
+    subprocess.run(["git", "add", "results"], check=True)
     subprocess.run(
         ["git", "commit", "-q", "-m", f"opt: LLVM after PR {pr_id} ({commit_hash})", "--allow-empty"],
         check=True,
