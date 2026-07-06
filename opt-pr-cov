@@ -288,8 +288,8 @@ def create_commits(branch: str, label: str, flag: str, tests: str, commit_sha: s
     all_diffs: list[tuple[str, str, str]] = []
     for suite in tests.split(","):
         suite = suite.strip()
-        base_suite = BUILD_DIR / "base" / suite
-        opt_suite = BUILD_DIR / "opt" / suite
+        base_suite = BUILD_DIR / "asm" / "base" / suite
+        opt_suite = BUILD_DIR / "asm" / "opt" / suite
         if base_suite.is_dir() and opt_suite.is_dir():
             all_diffs.extend(diff_files(str(base_suite), str(opt_suite)))
 

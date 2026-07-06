@@ -84,8 +84,8 @@ def run():
 def copy_diff_files(side: str, builds_dir: str, results_dir: str, suites: list[str]):
     """Copy differing asm files from base/opt builds to results directory."""
     for suite in suites:
-        base_suite = os.path.join(builds_dir, "base", suite)
-        opt_suite = os.path.join(builds_dir, "opt", suite)
+        base_suite = os.path.join(builds_dir, "asm", "base", suite)
+        opt_suite = os.path.join(builds_dir, "asm", "opt", suite)
 
         if not os.path.isdir(base_suite) or not os.path.isdir(opt_suite):
             continue

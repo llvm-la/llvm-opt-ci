@@ -17,7 +17,7 @@ build:
 copy-asm:
 	@for suite in $(subst $(comma), $(space), $(SUITES)); do \
 		echo "==> Copying asm for $$suite ($(PHASE)) ..."; \
-		dest="$(ASM_DIR)/$(PHASE)/$$suite"; \
+		dest="$(ASM_DIR)/asm/$(PHASE)/$$suite"; \
 		mkdir -p "$$dest"; \
 		cd "$(BUILD_DIR)/$$suite" && \
 		fd -es -x rsync -R --ignore-existing {} "$$dest"; \
