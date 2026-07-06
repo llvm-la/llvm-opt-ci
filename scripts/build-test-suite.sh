@@ -18,3 +18,6 @@ cmake "$TS_SRC_DIR" \
   -G Ninja
 
 ninja
+
+# Prevent git from treating FetchContent _deps as unregistered submodules
+find "$BUILD_DIR" -path "*/_deps/*/.git" -type d -exec rm -rf {} + 2>/dev/null || true
