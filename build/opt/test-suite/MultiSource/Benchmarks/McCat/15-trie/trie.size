@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/McCat/15-trie/trie  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               408      784
+.dynstr               164     1192
+.gnu.version           34     1356
+.gnu.version_r         32     1392
+.rela.dyn             120     1424
+.rela.plt             336     1544
+.eh_frame              44     1880
+.eh_frame_hdr          20     1924
+.rodata.cst4            4     1944
+.rodata.str1.1         29     1948
+.plt                  256    67520
+.text                2244    67776
+.dynamic              464   135560
+.fini_array             8   136024
+.init_array             8   136032
+.got                   40   136040
+.relro_padding      60528   136080
+.data                   0   201616
+.got.plt              136   201616
+.sdata                  8   201752
+.tm_clone_table         0   201760
+.bss                    1   201760
+.comment              111        0
+Total               65092
+
+

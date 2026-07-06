@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vextrins 
+VERIFY: %b/fpcmp-target %o %S/lsx-vextrins.reference_output

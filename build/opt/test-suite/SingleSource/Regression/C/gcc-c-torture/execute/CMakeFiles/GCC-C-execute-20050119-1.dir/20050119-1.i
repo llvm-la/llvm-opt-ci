@@ -1,0 +1,44 @@
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/20050119-1.c"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 399 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/20050119-1.c" 2
+
+typedef enum { A, B, C, D } E;
+
+struct S {
+  E __attribute__ ((mode (__byte__))) a;
+  E __attribute__ ((mode (__byte__))) b;
+  E __attribute__ ((mode (__byte__))) c;
+  E __attribute__ ((mode (__byte__))) d;
+};
+
+extern void abort (void);
+extern void exit (int);
+
+void
+foo (struct S *s)
+{
+  if (s->a != s->b)
+    abort ();
+  if (s->c != C)
+    abort ();
+}
+
+int
+main (void)
+{
+  struct S s[2];
+  s[0].a = B;
+  s[0].b = B;
+  s[0].c = C;
+  s[0].d = D;
+  s[1].a = D;
+  s[1].b = C;
+  s[1].c = B;
+  s[1].d = A;
+  foo (s);
+  exit (0);
+}

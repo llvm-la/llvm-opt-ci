@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MicroBenchmarks/LoopVectorization/LoopEpilogueVectorizationBenchmarks  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4104      784
+.dynstr                 5499     4888
+.gnu.version             342    10388
+.gnu.version_r           384    10732
+.rela.dyn               9192    11120
+.rela.plt               3432    20312
+.eh_frame              18668    23744
+.eh_frame_hdr           4260    42412
+.gcc_except_table      12996    46672
+.rodata                 2588    59672
+.rodata.cst16            160    62272
+.rodata.cst32             32    62432
+.rodata.cst4               4    62464
+.rodata.cst8              80    62472
+.rodata.str1.1          7440    62552
+.rodata.str1.8           960    69992
+.plt                    2320   136496
+.text                 252676   138816
+.data.rel.ro            1720   457032
+.dynamic                 496   458752
+.fini_array                8   459248
+.init_array              160   459256
+.got                     344   459416
+.relro_padding         64528   459760
+.data                   1040   525296
+.got.plt                1168   526336
+.sdata                     8   527504
+.tm_clone_table            0   527512
+.bss                    5736   527512
+.comment                 111        0
+Total                 400553
+
+

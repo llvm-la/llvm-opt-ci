@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Shootout-C++/Shootout-C++-heapsort  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               216      784
+.dynstr               190     1000
+.gnu.version           18     1190
+.gnu.version_r         80     1208
+.rela.dyn              96     1288
+.rela.plt             144     1384
+.eh_frame              44     1528
+.eh_frame_hdr          20     1572
+.rodata.cst4            4     1592
+.rodata.cst8            8     1600
+.rodata.str1.1          7     1608
+.plt                  128    67152
+.text                1392    67296
+.dynamic              496   134224
+.fini_array             8   134720
+.init_array             8   134728
+.got                   32   134736
+.relro_padding      61840   134768
+.data                   8   200304
+.got.plt               72   200312
+.sdata                  8   200384
+.tm_clone_table         0   200392
+.bss                    1   200392
+.comment              111        0
+Total               65028
+
+

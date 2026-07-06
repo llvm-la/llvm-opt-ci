@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Regression/C/gcc-c-torture/execute/GCC-C-execute-gofast  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               168      784
+.dynstr                81      952
+.gnu.version           14     1034
+.gnu.version_r         32     1048
+.rela.dyn             120     1080
+.rela.plt              96     1200
+.eh_frame              44     1296
+.eh_frame_hdr          20     1340
+.rodata.cst4            4     1360
+.rodata.str1.1         17     1364
+.plt                   96    66928
+.text                1612    67040
+.dynamic              448   134192
+.fini_array             8   134640
+.init_array             8   134648
+.got                   40   134656
+.relro_padding      61912   134696
+.data                   0   200232
+.got.plt               56   200232
+.sdata                  8   200288
+.tm_clone_table         0   200296
+.bss                    8   200296
+.comment              111        0
+Total               65000
+
+

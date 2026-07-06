@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/C++11/stdthreadbug  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 336      784
+.dynstr                 420     1120
+.gnu.version             28     1540
+.gnu.version_r          144     1568
+.rela.dyn               288     1712
+.rela.plt               216     2000
+.eh_frame               108     2216
+.eh_frame_hdr            28     2324
+.gcc_except_table        28     2352
+.rodata                  65     2380
+.rodata.cst4              4     2448
+.plt                    176    68000
+.text                   868    68192
+.data.rel.ro             64   134600
+.dynamic                496   134664
+.fini_array               8   135160
+.init_array               8   135168
+.got                     32   135176
+.relro_padding        61400   135208
+.data                     8   200744
+.got.plt                 96   200752
+.sdata                    8   200848
+.tm_clone_table           0   200856
+.bss                      1   200856
+.comment                111        0
+Total                 65038
+
+

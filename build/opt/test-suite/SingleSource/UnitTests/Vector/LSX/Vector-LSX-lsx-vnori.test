@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vnori 
+VERIFY: %b/fpcmp-target %o %S/lsx-vnori.reference_output

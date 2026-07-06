@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MicroBenchmarks/ImageProcessing/Interpolation/Interpolation  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4200      784
+.dynstr                 5577     4984
+.gnu.version             350    10562
+.gnu.version_r           384    10912
+.rela.dyn               9168    11296
+.rela.plt               3528    20464
+.eh_frame              18428    23992
+.eh_frame_hdr           4196    42420
+.gcc_except_table      12640    46616
+.rodata                 2588    59256
+.rodata.cst16            160    61856
+.rodata.cst32             32    62016
+.rodata.cst4               4    62048
+.rodata.cst8              80    62056
+.rodata.str1.1          7437    62136
+.rodata.str1.8           960    69576
+.plt                    2384   136080
+.text                 250116   138464
+.data.rel.ro            1720   454120
+.dynamic                 496   455840
+.fini_array                8   456336
+.init_array              152   456344
+.got                     344   456496
+.relro_padding          1912   456840
+.data                   1040   522376
+.got.plt                1200   523416
+.sdata                     8   524616
+.tm_clone_table            0   524624
+.bss                    2088   524624
+.comment                 111        0
+Total                 331408
+
+

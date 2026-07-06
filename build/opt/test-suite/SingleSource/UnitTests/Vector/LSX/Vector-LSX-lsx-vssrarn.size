@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/Vector/LSX/Vector-LSX-lsx-vssrarn  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               192      784
+.dynstr                86      976
+.gnu.version           16     1062
+.gnu.version_r         32     1080
+.rela.dyn              96     1112
+.rela.plt             144     1208
+.eh_frame              44     1352
+.eh_frame_hdr          20     1396
+.rodata.cst16        1360     1424
+.rodata.cst4            4     2784
+.rodata.str1.1        154     2788
+.plt                  128    68480
+.text                5092    68608
+.dynamic              448   139240
+.fini_array             8   139688
+.init_array             8   139696
+.got                   32   139704
+.relro_padding      56872   139736
+.data                   0   205272
+.got.plt               72   205272
+.sdata                  8   205344
+.tm_clone_table         0   205352
+.bss                    1   205352
+.comment              111        0
+Total               65025
+
+

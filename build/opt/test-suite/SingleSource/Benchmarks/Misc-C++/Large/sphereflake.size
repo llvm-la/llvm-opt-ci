@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Misc-C++/Large/sphereflake  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               336      784
+.dynstr               399     1120
+.gnu.version           28     1520
+.gnu.version_r        128     1548
+.rela.dyn             144     1680
+.rela.plt             240     1824
+.eh_frame             212     2064
+.eh_frame_hdr          44     2276
+.rodata.cst16          96     2320
+.rodata.cst4            4     2416
+.rodata.cst8          136     2424
+.rodata.str1.1         12     2560
+.plt                  192    68112
+.text                5512    68320
+.dynamic              496   139368
+.fini_array             8   139864
+.init_array            16   139872
+.got                   40   139888
+.relro_padding      56680   139928
+.data                   0   205464
+.got.plt              104   205464
+.sdata                  8   205568
+.tm_clone_table         0   205576
+.bss                   32   205576
+.comment              111        0
+Total               65075
+
+

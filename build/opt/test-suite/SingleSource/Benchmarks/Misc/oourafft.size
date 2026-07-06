@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Misc/oourafft  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               127     1072
+.gnu.version           24     1200
+.gnu.version_r         64     1224
+.rela.dyn              96     1288
+.rela.plt             240     1384
+.eh_frame              44     1624
+.eh_frame_hdr          20     1668
+.rodata.cst16          16     1696
+.rodata.cst4            4     1712
+.rodata.cst8           48     1720
+.rodata.str1.1         52     1768
+.plt                  192    67360
+.text                7096    67552
+.dynamic              464   140184
+.fini_array             8   140648
+.init_array             8   140656
+.got                   32   140664
+.relro_padding      55912   140696
+.data                   0   206232
+.got.plt              104   206232
+.sdata                  8   206336
+.tm_clone_table         0   206344
+.bss                    1   206344
+.comment              111        0
+Total               65056
+
+

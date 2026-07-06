@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/McCat/12-IOtest/iotest  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                75      928
+.gnu.version           12     1004
+.gnu.version_r         32     1016
+.rela.dyn              96     1048
+.rela.plt              96     1144
+.eh_frame              44     1240
+.eh_frame_hdr          20     1284
+.rodata.cst4            4     1304
+.rodata.str1.1         99     1308
+.plt                   96    66944
+.text                2992    67040
+.dynamic              448   135568
+.fini_array             8   136016
+.init_array             8   136024
+.got                   32   136032
+.relro_padding      60544   136064
+.data                   0   201600
+.got.plt               56   201600
+.sdata                  8   201656
+.tm_clone_table         0   201664
+.bss                   24   201664
+.comment              111        0
+Total               65046
+
+

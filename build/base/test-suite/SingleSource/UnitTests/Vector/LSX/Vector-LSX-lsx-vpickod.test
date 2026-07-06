@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vpickod 
+VERIFY: %b/fpcmp-target %o %S/lsx-vpickod.reference_output

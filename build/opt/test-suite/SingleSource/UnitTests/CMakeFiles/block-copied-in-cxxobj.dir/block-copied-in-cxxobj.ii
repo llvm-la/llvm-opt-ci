@@ -1,0 +1,14 @@
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/UnitTests/block-copied-in-cxxobj.cpp"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 470 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/UnitTests/block-copied-in-cxxobj.cpp" 2
+# 28 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/UnitTests/block-copied-in-cxxobj.cpp"
+int
+main()
+{
+# 46 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/UnitTests/block-copied-in-cxxobj.cpp"
+        return 0;
+}

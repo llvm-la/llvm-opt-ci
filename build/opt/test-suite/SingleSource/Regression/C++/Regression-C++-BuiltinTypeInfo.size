@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Regression/C++/Regression-C++-BuiltinTypeInfo  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               192      784
+.dynstr               137      976
+.gnu.version           16     1114
+.gnu.version_r         64     1132
+.rela.dyn             144     1200
+.rela.plt              96     1344
+.eh_frame              44     1440
+.eh_frame_hdr          20     1484
+.rodata.cst4            4     1504
+.rodata.str1.1          3     1508
+.plt                   96    67056
+.text                 692    67168
+.dynamic              496   133400
+.fini_array             8   133896
+.init_array             8   133904
+.got                   48   133912
+.relro_padding      62648   133960
+.data                   0   199496
+.got.plt               56   199496
+.sdata                  8   199552
+.tm_clone_table         0   199560
+.bss                    1   199560
+.comment              111        0
+Total               64989
+
+

@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vilvl 
+VERIFY: %b/fpcmp-target %o %S/lsx-vilvl.reference_output

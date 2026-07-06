@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Shootout-C++/Shootout-C++-ackermann  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               312      784
+.dynstr               393     1096
+.gnu.version           26     1490
+.gnu.version_r        128     1516
+.rela.dyn             120     1648
+.rela.plt             216     1768
+.eh_frame              92     1984
+.eh_frame_hdr          28     2076
+.rodata.cst4            4     2104
+.rodata.str1.1         11     2108
+.plt                  176    67664
+.text                 928    67840
+.dynamic              496   134304
+.fini_array             8   134800
+.init_array             8   134808
+.got                   40   134816
+.relro_padding      61752   134856
+.data                   0   200392
+.got.plt               96   200392
+.sdata                  8   200488
+.tm_clone_table         0   200496
+.bss                    1   200496
+.comment              111        0
+Total               65051
+
+

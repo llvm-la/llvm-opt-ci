@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/UnitTests/C++11/frame_layout/frame_layout  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                  720      784
+.dynstr                  789     1504
+.gnu.version              60     2294
+.gnu.version_r           176     2356
+.rela.dyn                600     2536
+.rela.plt                576     3136
+.eh_frame               3920     3712
+.eh_frame_hdr            540     7632
+.gcc_except_table       1196     8172
+.rodata.cst4               4     9368
+.rodata.str1.1           339     9372
+.plt                     416    75248
+.text                 110228    75680
+.data.rel.ro             128   251448
+.dynamic                 496   251576
+.fini_array                8   252072
+.init_array               16   252080
+.got                      48   252096
+.relro_padding         10000   252144
+.data                     16   317680
+.got.plt                 216   317696
+.sdata                     8   317912
+.tm_clone_table            0   317920
+.bss                      32   317920
+.comment                 111        0
+Total                 130740
+
+

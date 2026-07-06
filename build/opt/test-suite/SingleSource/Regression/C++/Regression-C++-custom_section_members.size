@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Regression/C++/Regression-C++-custom_section_members  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym                96      784
+.dynstr               100      880
+.gnu.version            8      980
+.gnu.version_r         32      988
+.rela.dyn              96     1024
+.rela.plt              48     1120
+.eh_frame              44     1168
+.eh_frame_hdr          20     1212
+.rodata.cst4            4     1232
+.plt                   64    66784
+.text                 584    66848
+section                12    67432
+.dynamic              496   132984
+.fini_array             8   133480
+.init_array             8   133488
+.got                   32   133496
+.relro_padding      63080   133528
+.data                   0   199064
+.got.plt               40   199064
+.sdata                  8   199104
+.tm_clone_table         0   199112
+.bss                    1   199112
+.comment              111        0
+Total               64989
+
+

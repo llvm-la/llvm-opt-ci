@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Misc-C++/stepanov_container  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 720      784
+.dynstr                 819     1504
+.gnu.version             60     2324
+.gnu.version_r          192     2384
+.rela.dyn               144     2576
+.rela.plt               624     2720
+.eh_frame              1364     3344
+.eh_frame_hdr           316     4708
+.gcc_except_table       324     5024
+.rodata.cst4              4     5348
+.rodata.cst8             16     5352
+.rodata.str1.1           97     5368
+.plt                    448    71008
+.text                 18472    71456
+.dynamic                496   155464
+.fini_array               8   155960
+.init_array              16   155968
+.got                     32   155984
+.relro_padding        40592   156016
+.data                     8   221552
+.got.plt                232   221560
+.sdata                    8   221792
+.tm_clone_table           0   221800
+.bss                     32   221800
+.comment                111        0
+Total                 65232
+
+

@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Olden/perimeter/perimeter  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               192      784
+.dynstr                85      976
+.gnu.version           16     1062
+.gnu.version_r         32     1080
+.rela.dyn             120     1112
+.rela.plt             144     1232
+.eh_frame              44     1376
+.eh_frame_hdr          20     1420
+.rodata                64     1440
+.rodata.cst4            4     1504
+.rodata.str1.1         79     1508
+.plt                  128    67136
+.text                2884    67264
+.dynamic              448   135688
+.fini_array             8   136136
+.init_array             8   136144
+.got                   40   136152
+.relro_padding      60416   136192
+.data                   0   201728
+.got.plt               72   201728
+.sdata                  8   201800
+.tm_clone_table         0   201808
+.bss                    8   201808
+.comment              111        0
+Total               65028
+
+

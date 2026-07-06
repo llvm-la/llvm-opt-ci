@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Regression/C/Regression-C-sumarray  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                85      928
+.gnu.version           12     1014
+.gnu.version_r         32     1028
+.rela.dyn              96     1064
+.rela.plt              96     1160
+.eh_frame              44     1256
+.eh_frame_hdr          20     1300
+.rodata.cst16         416     1328
+.rodata.cst4            4     1744
+.rodata.str1.1         14     1748
+.plt                   96    67312
+.text                1212    67424
+.dynamic              464   134176
+.fini_array             8   134640
+.init_array             8   134648
+.got                   32   134656
+.relro_padding      61920   134688
+.data                   0   200224
+.got.plt               56   200224
+.sdata                  8   200280
+.tm_clone_table         0   200288
+.bss                    1   200288
+.comment              111        0
+Total               64976
+
+

@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/McGill/queens  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               312      784
+.dynstr               138     1096
+.gnu.version           26     1234
+.gnu.version_r         32     1260
+.rela.dyn             144     1296
+.rela.plt             216     1440
+.eh_frame              44     1656
+.eh_frame_hdr          20     1700
+.rodata.cst4            4     1720
+.rodata.str1.1        398     1724
+.plt                  176    67664
+.text                2504    67840
+.dynamic              464   135880
+.fini_array             8   136344
+.init_array             8   136352
+.got                   48   136360
+.relro_padding      60200   136408
+.data                   4   201944
+.got.plt               96   201952
+.sdata                  8   202048
+.tm_clone_table         0   202056
+.bss                 2460   202064
+.comment              111        0
+Total               67518
+
+

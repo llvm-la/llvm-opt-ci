@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Olden/power/power  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               192      784
+.dynstr                95      976
+.gnu.version           16     1072
+.gnu.version_r         64     1088
+.rela.dyn              96     1152
+.rela.plt             144     1248
+.eh_frame              44     1392
+.eh_frame_hdr          20     1436
+.rodata.cst16          64     1456
+.rodata.cst4            4     1520
+.rodata.cst8          120     1528
+.rodata.str1.1        107     1648
+.plt                  128    67296
+.text                6420    67424
+.dynamic              464   139384
+.fini_array             8   139848
+.init_array             8   139856
+.got                   32   139864
+.relro_padding      56712   139896
+.data                 592   205432
+.got.plt               72   206024
+.sdata                  8   206096
+.tm_clone_table         0   206104
+.bss                    1   206104
+.comment              111        0
+Total               65619
+
+

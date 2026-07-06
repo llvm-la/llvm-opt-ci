@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Applications/lua/lua  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym               2256      784
+.dynstr                722     3040
+.gnu.version           188     3762
+.gnu.version_r          64     3952
+.rela.dyn             9264     4016
+.rela.plt             2136    13280
+.eh_frame               44    15416
+.eh_frame_hdr           20    15460
+.rodata               3476    15480
+.rodata.cst16           16    18960
+.rodata.cst4             4    18976
+.rodata.cst8            24    18984
+.rodata.str1.1        6954    19008
+.rodata.str1.8          32    25968
+.plt                  1456    91536
+.text               159392    92992
+.data.rel.ro          3184   317920
+.dynamic               464   321104
+.fini_array              8   321568
+.init_array              8   321576
+.got                   120   321584
+.relro_padding        5976   321704
+.data                    8   387240
+.got.plt               736   387248
+.sdata                   8   387984
+.tm_clone_table          0   387992
+.bss                    16   387992
+.comment               111        0
+Total               196784
+
+

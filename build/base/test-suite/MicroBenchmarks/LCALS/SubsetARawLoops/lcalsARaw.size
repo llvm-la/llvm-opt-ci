@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MicroBenchmarks/LCALS/SubsetARawLoops/lcalsARaw  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4848      784
+.dynstr                 6056     5632
+.gnu.version             404    11688
+.gnu.version_r           416    12092
+.rela.dyn               9360    12512
+.rela.plt               4128    21872
+.eh_frame              20592    26000
+.eh_frame_hdr           4612    46592
+.gcc_except_table      15076    51204
+.rodata                 3116    66280
+.rodata.cst16            928    69408
+.rodata.cst32             64    70336
+.rodata.cst4               4    70400
+.rodata.cst8             200    70408
+.rodata.str1.1          8803    70608
+.rodata.str1.8          1696    79416
+.plt                    2784   146656
+.text                 426596   149440
+.data.rel.ro            1752   641576
+.dynamic                 496   643328
+.fini_array                8   643824
+.init_array              160   643832
+.got                     368   643992
+.relro_padding         11000   644360
+.data                   1048   709896
+.got.plt                1400   710944
+.sdata                     8   712344
+.tm_clone_table            0   712352
+.bss                     744   712352
+.comment                 111        0
+Total                 526875
+
+

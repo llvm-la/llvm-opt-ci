@@ -1,0 +1,35 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/UnitTests/Vectorizer/tf-find-last  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 624      784
+.dynstr                 654     1408
+.gnu.version             52     2062
+.gnu.version_r          192     2116
+.rela.dyn              2112     2312
+.rela.plt               456     4424
+.eh_frame              1564     4880
+.eh_frame_hdr           556     6444
+.gcc_except_table      1816     7000
+.rodata                 510     8816
+.rodata.cst16           128     9328
+.rodata.cst4              4     9456
+.rodata.str1.1         1089     9460
+.plt                    336    76096
+.text                 31872    76448
+.data.rel.ro            640   173856
+.dynamic                496   174496
+.fini_array               8   174992
+.init_array              16   175000
+.got                     48   175016
+.relro_padding        21544   175064
+.data                     8   240600
+.got.plt                176   240608
+.sdata                    8   240784
+.tm_clone_table           0   240792
+.bss                   5008   240792
+.comment                111        0
+Total                 70125
+
+

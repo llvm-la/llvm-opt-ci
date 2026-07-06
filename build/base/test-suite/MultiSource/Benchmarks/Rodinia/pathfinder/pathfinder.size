@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Rodinia/pathfinder/pathfinder  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               168      784
+.dynstr                82      952
+.gnu.version           14     1034
+.gnu.version_r         32     1048
+.rela.dyn              96     1080
+.rela.plt             120     1176
+.eh_frame              44     1296
+.eh_frame_hdr          20     1340
+.rodata.cst4            4     1360
+.rodata.str1.1          4     1364
+.plt                  112    66912
+.text                3032    67040
+.dynamic              448   135608
+.fini_array             8   136056
+.init_array             8   136064
+.got                   32   136072
+.relro_padding      60504   136104
+.data                   0   201640
+.got.plt               64   201640
+.sdata                  8   201704
+.tm_clone_table         0   201712
+.bss                 1384   201712
+.comment              111        0
+Total               66392
+
+

@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/sim/sim  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               576      784
+.dynstr               205     1360
+.gnu.version           48     1566
+.gnu.version_r         32     1616
+.rela.dyn             144     1648
+.rela.plt             480     1792
+.eh_frame              44     2272
+.eh_frame_hdr          20     2316
+.rodata                72     2336
+.rodata.cst16          64     2416
+.rodata.cst4            4     2480
+.rodata.cst8           16     2488
+.rodata.str1.1        834     2504
+.plt                  352    68880
+.text               17752    69248
+.dynamic              448   152536
+.fini_array             8   152984
+.init_array             8   152992
+.got                   48   153000
+.relro_padding      43560   153048
+.data                   0   218584
+.got.plt              184   218584
+.sdata                  8   218768
+.tm_clone_table         0   218776
+.bss                  552   218776
+.comment              111        0
+Total               65667
+
+

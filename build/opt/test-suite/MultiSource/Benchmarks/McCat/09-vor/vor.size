@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/McCat/09-vor/vor  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               312      784
+.dynstr               134     1096
+.gnu.version           26     1230
+.gnu.version_r         64     1256
+.rela.dyn             168     1320
+.rela.plt             240     1488
+.eh_frame              44     1728
+.eh_frame_hdr          20     1772
+.rodata.cst16          16     1792
+.rodata.cst4            4     1808
+.rodata.cst8           16     1816
+.rodata.str1.1        242     1832
+.plt                  192    67616
+.text               11064    67808
+.dynamic              464   144408
+.fini_array             8   144872
+.init_array             8   144880
+.got                   56   144888
+.relro_padding      51664   144944
+.data                   8   210480
+.got.plt              104   210488
+.sdata                  8   210592
+.tm_clone_table         0   210600
+.bss                   60   210600
+.comment              111        0
+Total               65130
+
+

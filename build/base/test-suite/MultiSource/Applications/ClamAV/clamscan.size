@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Applications/ClamAV/clamscan  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym               3360      784
+.dynstr               1132     4144
+.gnu.version           280     5276
+.gnu.version_r          48     5556
+.rela.dyn            60600     5608
+.rela.plt             3192    66208
+.eh_frame               64    69400
+.eh_frame_hdr           28    69464
+.rodata              33124    69496
+.rodata.cst16         1104   102624
+.rodata.cst32           32   103728
+.rodata.cst4             4   103760
+.rodata.cst8            16   103764
+.rodata.str1.1       96160   103780
+.rodata.str1.8         960   199944
+.rodata.str4.4          40   200904
+.plt                  2160   266480
+.text               530072   268640
+.data.rel.ro          9344   864248
+.dynamic               448   873592
+.fini_array              8   874040
+.init_array              8   874048
+.got                   256   874056
+.relro_padding       43192   874312
+.data                56692   939848
+.got.plt              1088   996544
+.sdata                   8   997632
+.tm_clone_table          0   997640
+.bss                  4672   997648
+.comment               111        0
+Total               848300
+
+

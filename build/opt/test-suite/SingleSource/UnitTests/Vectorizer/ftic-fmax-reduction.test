@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/ftic-fmax-reduction 
+VERIFY: %b/fpcmp-target %o %S/fmax-reduction.reference_output-ftic

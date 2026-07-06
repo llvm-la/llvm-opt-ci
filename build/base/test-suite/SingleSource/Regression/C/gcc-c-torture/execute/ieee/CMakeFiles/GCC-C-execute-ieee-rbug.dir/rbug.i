@@ -1,0 +1,61 @@
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/ieee/rbug.c"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 399 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/ieee/rbug.c" 2
+
+
+
+
+double d (unsigned long long k)
+{
+  double x;
+
+  x = (double) k;
+  return x;
+}
+
+float s (unsigned long long k)
+{
+  float x;
+
+  x = (float) k;
+  return x;
+}
+
+main ()
+{
+  unsigned long long int k;
+  double x;
+
+
+
+
+
+
+
+  if (sizeof (double) >= 8)
+    {
+      k = 0x8693ba6d7d220401ULL;
+      x = d (k);
+      k = (unsigned long long) x;
+      if (k != 0x8693ba6d7d220800ULL)
+ abort ();
+    }
+
+  k = 0x8234508000000001ULL;
+  x = s (k);
+  k = (unsigned long long) x;
+
+
+
+
+
+  if (k != 0x8234510000000000ULL)
+    abort ();
+
+
+  exit (0);
+}

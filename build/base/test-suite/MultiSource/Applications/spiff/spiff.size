@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Applications/spiff/spiff  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 744      784
+.dynstr                 264     1528
+.gnu.version             62     1792
+.gnu.version_r           32     1856
+.rela.dyn               720     1888
+.rela.plt               648     2608
+.eh_frame                44     3256
+.eh_frame_hdr            20     3300
+.rodata                 360     3320
+.rodata.cst16            16     3680
+.rodata.cst4              4     3696
+.rodata.str1.1         2096     3700
+.rodata.str1.8           96     5800
+.plt                    464    71440
+.text                 23300    71904
+.dynamic                448   160744
+.fini_array               8   161192
+.init_array               8   161200
+.got                    240   161208
+.relro_padding        35160   161448
+.data                     2   226984
+.got.plt                240   226992
+.sdata                    8   227232
+.tm_clone_table           0   227240
+.bss                1291824   227240
+.comment                111        0
+Total               1357016
+
+

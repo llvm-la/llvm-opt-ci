@@ -1,0 +1,89 @@
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/ieee/inf-2.c"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 399 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/ieee/inf-2.c" 2
+extern void abort (void);
+
+void test(double f, double i)
+{
+  if (f == __builtin_inf())
+    abort ();
+  if (f == -__builtin_inf())
+    abort ();
+  if (i == -__builtin_inf())
+    abort ();
+  if (i != __builtin_inf())
+    abort ();
+
+  if (f >= __builtin_inf())
+    abort ();
+  if (f > __builtin_inf())
+    abort ();
+  if (i > __builtin_inf())
+    abort ();
+  if (f <= -__builtin_inf())
+    abort ();
+  if (f < -__builtin_inf())
+    abort ();
+}
+
+void testf(float f, float i)
+{
+
+
+
+  if (f == __builtin_inff())
+    abort ();
+  if (f == -__builtin_inff())
+    abort ();
+  if (i == -__builtin_inff())
+    abort ();
+  if (i != __builtin_inff())
+    abort ();
+
+  if (f >= __builtin_inff())
+    abort ();
+  if (f > __builtin_inff())
+    abort ();
+  if (i > __builtin_inff())
+    abort ();
+  if (f <= -__builtin_inff())
+    abort ();
+  if (f < -__builtin_inff())
+    abort ();
+
+}
+
+void testl(long double f, long double i)
+{
+  if (f == __builtin_infl())
+    abort ();
+  if (f == -__builtin_infl())
+    abort ();
+  if (i == -__builtin_infl())
+    abort ();
+  if (i != __builtin_infl())
+    abort ();
+
+  if (f >= __builtin_infl())
+    abort ();
+  if (f > __builtin_infl())
+    abort ();
+  if (i > __builtin_infl())
+    abort ();
+  if (f <= -__builtin_infl())
+    abort ();
+  if (f < -__builtin_infl())
+    abort ();
+}
+
+int main()
+{
+  test (34.0, __builtin_inf());
+  testf (34.0f, __builtin_inff());
+  testl (34.0l, __builtin_infl());
+  return 0;
+}

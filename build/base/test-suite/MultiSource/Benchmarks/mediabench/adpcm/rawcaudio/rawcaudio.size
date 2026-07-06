@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/mediabench/adpcm/rawcaudio/rawcaudio  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               240      784
+.dynstr                99     1024
+.gnu.version           20     1124
+.gnu.version_r         32     1144
+.rela.dyn             120     1176
+.rela.plt             168     1296
+.eh_frame              44     1464
+.eh_frame_hdr          20     1508
+.rodata               420     1528
+.rodata.cst4            4     1948
+.rodata.str1.1         39     1952
+.plt                  144    67536
+.text                1592    67680
+.dynamic              448   134808
+.fini_array             8   135256
+.init_array             8   135264
+.got                   40   135272
+.relro_padding      61296   135312
+.data                   0   200848
+.got.plt               80   200848
+.sdata                  8   200928
+.tm_clone_table         0   200936
+.bss                 2506   200936
+.comment              111        0
+Total               67544
+
+

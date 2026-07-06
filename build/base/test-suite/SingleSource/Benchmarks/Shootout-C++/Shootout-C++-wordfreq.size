@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Shootout-C++/Shootout-C++-wordfreq  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 576      784
+.dynstr                 489     1360
+.gnu.version             48     1850
+.gnu.version_r          128     1900
+.rela.dyn               144     2032
+.rela.plt               480     2176
+.eh_frame               532     2656
+.eh_frame_hdr           108     3188
+.gcc_except_table       140     3296
+.rodata.cst4              4     3436
+.rodata.str1.1           57     3440
+.plt                    352    69040
+.text                  5100    69408
+.dynamic                496   140048
+.fini_array               8   140544
+.init_array               8   140552
+.got                     40   140560
+.relro_padding        56008   140600
+.data                     8   206136
+.got.plt                184   206144
+.sdata                    8   206328
+.tm_clone_table           0   206336
+.bss                      1   206336
+.comment                111        0
+Total                 65127
+
+

@@ -1,0 +1,35 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/MiBench/office-ispell/office-ispell  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym               1560      784
+.dynstr                490     2344
+.gnu.version           130     2834
+.gnu.version_r          32     2964
+.rela.dyn             2544     3000
+.rela.plt             1440     5544
+.eh_frame               44     6984
+.eh_frame_hdr           20     7028
+.rodata               1060     7048
+.rodata.cst16           16     8112
+.rodata.cst4             4     8128
+.rodata.str1.1        8495     8132
+.rodata.str1.8          48    16632
+.plt                   992    82224
+.text                57824    83232
+.data.rel.ro           320   206592
+.dynamic               464   206912
+.fini_array              8   207376
+.init_array              8   207384
+.got                   520   207392
+.relro_padding       54232   207912
+.data                   48   273448
+.got.plt               504   273496
+.sdata                   8   274000
+.tm_clone_table          0   274008
+.bss                131464   274008
+.comment               111        0
+Total               262483
+
+

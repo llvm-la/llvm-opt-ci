@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Applications/aha/aha  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                76      928
+.gnu.version           12     1004
+.gnu.version_r         32     1016
+.rela.dyn            1344     1048
+.rela.plt              96     2392
+.eh_frame              44     2488
+.eh_frame_hdr          20     2532
+.rodata                 8     2552
+.rodata.cst4            4     2560
+.rodata.str1.1        275     2564
+.plt                   96    68384
+.text                5400    68480
+.dynamic              448   139416
+.fini_array             8   139864
+.init_array             8   139872
+.got                   32   139880
+.relro_padding      56696   139912
+.data                 908   205448
+.got.plt               56   206360
+.sdata                  8   206416
+.tm_clone_table         0   206424
+.bss                  188   206424
+.comment              111        0
+Total               66111
+
+

@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Prolangs-C++/ocean/ocean  :
+section                  size     addr
+.interp                    37      680
+.note.ABI-tag              32      720
+.gnu.hash                  28      752
+.dynsym                   264      784
+.dynstr                   280     1048
+.gnu.version               22     1328
+.gnu.version_r            128     1352
+.rela.dyn                 864     1480
+.rela.plt                 144     2344
+.eh_frame                 692     2488
+.eh_frame_hdr             140     3180
+.gcc_except_table         224     3320
+.rodata                    32     3544
+.rodata.cst16              16     3584
+.rodata.cst4                4     3600
+.plt                      128    69152
+.text                    6664    69280
+.data.rel.ro              280   141480
+.dynamic                  496   141760
+.fini_array                 8   142256
+.init_array                 8   142264
+.got                       32   142272
+.relro_padding          54304   142304
+.data                       8   207840
+.got.plt                   72   207848
+.sdata                      8   207920
+.tm_clone_table             0   207928
+.bss                  4000016   207928
+.comment                  111        0
+Total                 4065042
+
+

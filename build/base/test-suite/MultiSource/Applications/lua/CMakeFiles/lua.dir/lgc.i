@@ -1,0 +1,2882 @@
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lgc.c"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 399 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lgc.c" 2
+
+
+
+
+
+
+# 1 "/usr/include/string.h" 1 3 4
+# 26 "/usr/include/string.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/libc-header-start.h" 1 3 4
+# 33 "/usr/include/loongarch64-linux-gnu/bits/libc-header-start.h" 3 4
+# 1 "/usr/include/features.h" 1 3 4
+# 415 "/usr/include/features.h" 3 4
+# 1 "/usr/include/features-time64.h" 1 3 4
+# 20 "/usr/include/features-time64.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/wordsize.h" 1 3 4
+# 21 "/usr/include/features-time64.h" 2 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/timesize.h" 1 3 4
+# 22 "/usr/include/features-time64.h" 2 3 4
+# 416 "/usr/include/features.h" 2 3 4
+# 501 "/usr/include/features.h" 3 4
+# 1 "/usr/include/stdc-predef.h" 1 3 4
+# 502 "/usr/include/features.h" 2 3 4
+# 523 "/usr/include/features.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/sys/cdefs.h" 1 3 4
+# 730 "/usr/include/loongarch64-linux-gnu/sys/cdefs.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/wordsize.h" 1 3 4
+# 731 "/usr/include/loongarch64-linux-gnu/sys/cdefs.h" 2 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/long-double.h" 1 3 4
+# 732 "/usr/include/loongarch64-linux-gnu/sys/cdefs.h" 2 3 4
+# 524 "/usr/include/features.h" 2 3 4
+# 547 "/usr/include/features.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/gnu/stubs.h" 1 3 4
+
+
+
+
+# 1 "/usr/include/loongarch64-linux-gnu/bits/wordsize.h" 1 3 4
+# 6 "/usr/include/loongarch64-linux-gnu/gnu/stubs.h" 2 3 4
+
+
+
+
+
+# 1 "/usr/include/loongarch64-linux-gnu/gnu/stubs-lp64d.h" 1 3 4
+# 12 "/usr/include/loongarch64-linux-gnu/gnu/stubs.h" 2 3 4
+# 548 "/usr/include/features.h" 2 3 4
+# 34 "/usr/include/loongarch64-linux-gnu/bits/libc-header-start.h" 2 3 4
+# 27 "/usr/include/string.h" 2 3 4
+
+
+
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 1 3 4
+# 93 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3 4
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_size_t.h" 1 3 4
+# 18 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_size_t.h" 3 4
+typedef long unsigned int size_t;
+# 94 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3 4
+# 108 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3 4
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_null.h" 1 3 4
+# 109 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3 4
+# 34 "/usr/include/string.h" 2 3 4
+# 43 "/usr/include/string.h" 3 4
+extern void *memcpy (void *__restrict __dest, const void *__restrict __src,
+       size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern void *memmove (void *__dest, const void *__src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+extern void *memccpy (void *__restrict __dest, const void *__restrict __src,
+        int __c, size_t __n)
+    __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2))) ;
+
+
+
+
+extern void *memset (void *__s, int __c, size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int memcmp (const void *__s1, const void *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 80 "/usr/include/string.h" 3 4
+extern int __memcmpeq (const void *__s1, const void *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 107 "/usr/include/string.h" 3 4
+extern void *memchr (const void *__s, int __c, size_t __n)
+      __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 141 "/usr/include/string.h" 3 4
+extern char *strcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+extern char *strncpy (char *__restrict __dest,
+        const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern char *strcat (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+extern char *strncat (char *__restrict __dest, const char *__restrict __src,
+        size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strcmp (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern int strncmp (const char *__s1, const char *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strcoll (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern size_t strxfrm (char *__restrict __dest,
+         const char *__restrict __src, size_t __n)
+    __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2))) ;
+
+
+
+# 1 "/usr/include/loongarch64-linux-gnu/bits/types/locale_t.h" 1 3 4
+# 22 "/usr/include/loongarch64-linux-gnu/bits/types/locale_t.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/types/__locale_t.h" 1 3 4
+# 27 "/usr/include/loongarch64-linux-gnu/bits/types/__locale_t.h" 3 4
+struct __locale_struct
+{
+
+  struct __locale_data *__locales[13];
+
+
+  const unsigned short int *__ctype_b;
+  const int *__ctype_tolower;
+  const int *__ctype_toupper;
+
+
+  const char *__names[13];
+};
+
+typedef struct __locale_struct *__locale_t;
+# 23 "/usr/include/loongarch64-linux-gnu/bits/types/locale_t.h" 2 3 4
+
+typedef __locale_t locale_t;
+# 173 "/usr/include/string.h" 2 3 4
+
+
+extern int strcoll_l (const char *__s1, const char *__s2, locale_t __l)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 3)));
+
+
+extern size_t strxfrm_l (char *__dest, const char *__src, size_t __n,
+    locale_t __l) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 4)))
+                                           ;
+
+
+
+
+
+extern char *strdup (const char *__s)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+extern char *strndup (const char *__string, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+# 246 "/usr/include/string.h" 3 4
+extern char *strchr (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 273 "/usr/include/string.h" 3 4
+extern char *strrchr (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 286 "/usr/include/string.h" 3 4
+extern char *strchrnul (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern size_t strcspn (const char *__s, const char *__reject)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern size_t strspn (const char *__s, const char *__accept)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 323 "/usr/include/string.h" 3 4
+extern char *strpbrk (const char *__s, const char *__accept)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 350 "/usr/include/string.h" 3 4
+extern char *strstr (const char *__haystack, const char *__needle)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern char *strtok (char *__restrict __s, const char *__restrict __delim)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+
+
+extern char *__strtok_r (char *__restrict __s,
+    const char *__restrict __delim,
+    char **__restrict __save_ptr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 3)));
+
+extern char *strtok_r (char *__restrict __s, const char *__restrict __delim,
+         char **__restrict __save_ptr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 3)));
+# 380 "/usr/include/string.h" 3 4
+extern char *strcasestr (const char *__haystack, const char *__needle)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+
+
+extern void *memmem (const void *__haystack, size_t __haystacklen,
+       const void *__needle, size_t __needlelen)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 3)))
+
+                                         ;
+
+
+
+extern void *__mempcpy (void *__restrict __dest,
+   const void *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+extern void *mempcpy (void *__restrict __dest,
+        const void *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern size_t strlen (const char *__s)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+extern size_t strnlen (const char *__string, size_t __maxlen)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+extern char *strerror (int __errnum) __attribute__ ((__nothrow__ ));
+# 432 "/usr/include/string.h" 3 4
+extern int strerror_r (int __errnum, char *__buf, size_t __buflen) __asm__ ("" "__xpg_strerror_r") __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)))
+
+
+                                          ;
+# 458 "/usr/include/string.h" 3 4
+extern char *strerror_l (int __errnum, locale_t __l) __attribute__ ((__nothrow__ ));
+
+
+
+# 1 "/usr/include/strings.h" 1 3 4
+# 23 "/usr/include/strings.h" 3 4
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 1 3 4
+# 93 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3 4
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_size_t.h" 1 3 4
+# 94 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3 4
+# 24 "/usr/include/strings.h" 2 3 4
+# 34 "/usr/include/strings.h" 3 4
+extern int bcmp (const void *__s1, const void *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern void bcopy (const void *__src, void *__dest, size_t __n)
+  __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern void bzero (void *__s, size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+# 68 "/usr/include/strings.h" 3 4
+extern char *index (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 96 "/usr/include/strings.h" 3 4
+extern char *rindex (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+extern int ffs (int __i) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int ffsl (long int __l) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+__extension__ extern int ffsll (long long int __ll)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int strcasecmp (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strncasecmp (const char *__s1, const char *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+
+extern int strcasecmp_l (const char *__s1, const char *__s2, locale_t __loc)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 3)));
+
+
+
+extern int strncasecmp_l (const char *__s1, const char *__s2,
+     size_t __n, locale_t __loc)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 4)));
+# 463 "/usr/include/string.h" 2 3 4
+
+
+
+extern void explicit_bzero (void *__s, size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)))
+                                                  ;
+
+
+
+extern char *strsep (char **__restrict __stringp,
+       const char *__restrict __delim)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern char *strsignal (int __sig) __attribute__ ((__nothrow__ ));
+# 489 "/usr/include/string.h" 3 4
+extern char *__stpcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+extern char *stpcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+extern char *__stpncpy (char *__restrict __dest,
+   const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+extern char *stpncpy (char *__restrict __dest,
+        const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern size_t strlcpy (char *__restrict __dest,
+         const char *__restrict __src, size_t __n)
+  __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2))) ;
+
+
+
+extern size_t strlcat (char *__restrict __dest,
+         const char *__restrict __src, size_t __n)
+  __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2))) ;
+# 8 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lgc.c" 2
+
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lua.h" 1
+# 12 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lua.h"
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stdarg.h" 1 3
+# 47 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stdarg.h" 3
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stdarg_header_macro.h" 1 3
+# 48 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stdarg.h" 2 3
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stdarg___gnuc_va_list.h" 1 3
+# 12 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stdarg___gnuc_va_list.h" 3
+typedef __builtin_va_list __gnuc_va_list;
+# 52 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stdarg.h" 2 3
+
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stdarg_va_list.h" 1 3
+# 12 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stdarg_va_list.h" 3
+typedef __builtin_va_list va_list;
+# 57 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stdarg.h" 2 3
+
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stdarg_va_arg.h" 1 3
+# 62 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stdarg.h" 2 3
+
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stdarg___va_copy.h" 1 3
+# 67 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stdarg.h" 2 3
+
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stdarg_va_copy.h" 1 3
+# 72 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stdarg.h" 2 3
+# 13 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lua.h" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 1 3
+# 84 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_header_macro.h" 1 3
+# 85 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_ptrdiff_t.h" 1 3
+# 18 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_ptrdiff_t.h" 3
+typedef long int ptrdiff_t;
+# 89 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_size_t.h" 1 3
+# 94 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+# 103 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_wchar_t.h" 1 3
+# 24 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_wchar_t.h" 3
+typedef int wchar_t;
+# 104 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_null.h" 1 3
+# 109 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+# 123 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_max_align_t.h" 1 3
+# 19 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_max_align_t.h" 3
+typedef struct {
+  long long __clang_max_align_nonce1
+      __attribute__((__aligned__(__alignof__(long long))));
+  long double __clang_max_align_nonce2
+      __attribute__((__aligned__(__alignof__(long double))));
+} max_align_t;
+# 124 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_offsetof.h" 1 3
+# 129 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+# 14 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lua.h" 2
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/luaconf.h" 1
+# 11 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/luaconf.h"
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/limits.h" 1 3
+# 25 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/limits.h" 3
+# 1 "/usr/include/limits.h" 1 3 4
+# 26 "/usr/include/limits.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/libc-header-start.h" 1 3 4
+# 27 "/usr/include/limits.h" 2 3 4
+# 195 "/usr/include/limits.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/posix1_lim.h" 1 3 4
+# 27 "/usr/include/loongarch64-linux-gnu/bits/posix1_lim.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/wordsize.h" 1 3 4
+# 28 "/usr/include/loongarch64-linux-gnu/bits/posix1_lim.h" 2 3 4
+# 161 "/usr/include/loongarch64-linux-gnu/bits/posix1_lim.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/local_lim.h" 1 3 4
+# 38 "/usr/include/loongarch64-linux-gnu/bits/local_lim.h" 3 4
+# 1 "/usr/include/linux/limits.h" 1 3 4
+# 39 "/usr/include/loongarch64-linux-gnu/bits/local_lim.h" 2 3 4
+# 81 "/usr/include/loongarch64-linux-gnu/bits/local_lim.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/pthread_stack_min-dynamic.h" 1 3 4
+# 29 "/usr/include/loongarch64-linux-gnu/bits/pthread_stack_min-dynamic.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/pthread_stack_min.h" 1 3 4
+# 30 "/usr/include/loongarch64-linux-gnu/bits/pthread_stack_min-dynamic.h" 2 3 4
+# 82 "/usr/include/loongarch64-linux-gnu/bits/local_lim.h" 2 3 4
+# 162 "/usr/include/loongarch64-linux-gnu/bits/posix1_lim.h" 2 3 4
+# 196 "/usr/include/limits.h" 2 3 4
+
+
+
+# 1 "/usr/include/loongarch64-linux-gnu/bits/posix2_lim.h" 1 3 4
+# 200 "/usr/include/limits.h" 2 3 4
+# 26 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/limits.h" 2 3
+# 12 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/luaconf.h" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 1 3
+# 88 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_ptrdiff_t.h" 1 3
+# 89 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_size_t.h" 1 3
+# 94 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+# 103 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_wchar_t.h" 1 3
+# 104 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+# 128 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_offsetof.h" 1 3
+# 129 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+# 13 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/luaconf.h" 2
+# 532 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/luaconf.h"
+# 1 "/usr/include/math.h" 1 3 4
+# 27 "/usr/include/math.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/libc-header-start.h" 1 3 4
+# 28 "/usr/include/math.h" 2 3 4
+# 37 "/usr/include/math.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/types.h" 1 3 4
+# 27 "/usr/include/loongarch64-linux-gnu/bits/types.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/wordsize.h" 1 3 4
+# 28 "/usr/include/loongarch64-linux-gnu/bits/types.h" 2 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/timesize.h" 1 3 4
+# 29 "/usr/include/loongarch64-linux-gnu/bits/types.h" 2 3 4
+
+
+typedef unsigned char __u_char;
+typedef unsigned short int __u_short;
+typedef unsigned int __u_int;
+typedef unsigned long int __u_long;
+
+
+typedef signed char __int8_t;
+typedef unsigned char __uint8_t;
+typedef signed short int __int16_t;
+typedef unsigned short int __uint16_t;
+typedef signed int __int32_t;
+typedef unsigned int __uint32_t;
+
+typedef signed long int __int64_t;
+typedef unsigned long int __uint64_t;
+
+
+
+
+
+
+typedef __int8_t __int_least8_t;
+typedef __uint8_t __uint_least8_t;
+typedef __int16_t __int_least16_t;
+typedef __uint16_t __uint_least16_t;
+typedef __int32_t __int_least32_t;
+typedef __uint32_t __uint_least32_t;
+typedef __int64_t __int_least64_t;
+typedef __uint64_t __uint_least64_t;
+
+
+
+typedef long int __quad_t;
+typedef unsigned long int __u_quad_t;
+
+
+
+
+
+
+
+typedef long int __intmax_t;
+typedef unsigned long int __uintmax_t;
+# 141 "/usr/include/loongarch64-linux-gnu/bits/types.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/typesizes.h" 1 3 4
+# 142 "/usr/include/loongarch64-linux-gnu/bits/types.h" 2 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/time64.h" 1 3 4
+# 143 "/usr/include/loongarch64-linux-gnu/bits/types.h" 2 3 4
+
+
+typedef unsigned long int __dev_t;
+typedef unsigned int __uid_t;
+typedef unsigned int __gid_t;
+typedef unsigned long int __ino_t;
+typedef unsigned long int __ino64_t;
+typedef unsigned int __mode_t;
+typedef unsigned int __nlink_t;
+typedef long int __off_t;
+typedef long int __off64_t;
+typedef int __pid_t;
+typedef struct { int __val[2]; } __fsid_t;
+typedef long int __clock_t;
+typedef unsigned long int __rlim_t;
+typedef unsigned long int __rlim64_t;
+typedef unsigned int __id_t;
+typedef long int __time_t;
+typedef unsigned int __useconds_t;
+typedef long int __suseconds_t;
+typedef long int __suseconds64_t;
+
+typedef int __daddr_t;
+typedef int __key_t;
+
+
+typedef int __clockid_t;
+
+
+typedef void * __timer_t;
+
+
+typedef int __blksize_t;
+
+
+
+
+typedef long int __blkcnt_t;
+typedef long int __blkcnt64_t;
+
+
+typedef unsigned long int __fsblkcnt_t;
+typedef unsigned long int __fsblkcnt64_t;
+
+
+typedef unsigned long int __fsfilcnt_t;
+typedef unsigned long int __fsfilcnt64_t;
+
+
+typedef long int __fsword_t;
+
+typedef long int __ssize_t;
+
+
+typedef long int __syscall_slong_t;
+
+typedef unsigned long int __syscall_ulong_t;
+
+
+
+typedef __off64_t __loff_t;
+typedef char *__caddr_t;
+
+
+typedef long int __intptr_t;
+
+
+typedef unsigned int __socklen_t;
+
+
+
+
+typedef int __sig_atomic_t;
+# 38 "/usr/include/math.h" 2 3 4
+
+
+# 1 "/usr/include/loongarch64-linux-gnu/bits/math-vector.h" 1 3 4
+# 27 "/usr/include/loongarch64-linux-gnu/bits/math-vector.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/libm-simd-decl-stubs.h" 1 3 4
+# 28 "/usr/include/loongarch64-linux-gnu/bits/math-vector.h" 2 3 4
+# 41 "/usr/include/math.h" 2 3 4
+
+
+# 1 "/usr/include/loongarch64-linux-gnu/bits/floatn.h" 1 3 4
+# 23 "/usr/include/loongarch64-linux-gnu/bits/floatn.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/long-double.h" 1 3 4
+# 24 "/usr/include/loongarch64-linux-gnu/bits/floatn.h" 2 3 4
+# 80 "/usr/include/loongarch64-linux-gnu/bits/floatn.h" 3 4
+typedef long double _Float128;
+# 95 "/usr/include/loongarch64-linux-gnu/bits/floatn.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/floatn-common.h" 1 3 4
+# 24 "/usr/include/loongarch64-linux-gnu/bits/floatn-common.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/long-double.h" 1 3 4
+# 25 "/usr/include/loongarch64-linux-gnu/bits/floatn-common.h" 2 3 4
+# 214 "/usr/include/loongarch64-linux-gnu/bits/floatn-common.h" 3 4
+typedef float _Float32;
+# 251 "/usr/include/loongarch64-linux-gnu/bits/floatn-common.h" 3 4
+typedef double _Float64;
+# 268 "/usr/include/loongarch64-linux-gnu/bits/floatn-common.h" 3 4
+typedef double _Float32x;
+# 285 "/usr/include/loongarch64-linux-gnu/bits/floatn-common.h" 3 4
+typedef long double _Float64x;
+# 96 "/usr/include/loongarch64-linux-gnu/bits/floatn.h" 2 3 4
+# 44 "/usr/include/math.h" 2 3 4
+# 156 "/usr/include/math.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/flt-eval-method.h" 1 3 4
+# 157 "/usr/include/math.h" 2 3 4
+# 167 "/usr/include/math.h" 3 4
+typedef float float_t;
+typedef double double_t;
+# 208 "/usr/include/math.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/fp-logb.h" 1 3 4
+# 209 "/usr/include/math.h" 2 3 4
+# 251 "/usr/include/math.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/fp-fast.h" 1 3 4
+# 252 "/usr/include/math.h" 2 3 4
+# 275 "/usr/include/math.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/mathcalls-macros.h" 1 3 4
+# 276 "/usr/include/math.h" 2 3 4
+
+
+
+
+
+# 1 "/usr/include/loongarch64-linux-gnu/bits/mathcalls-helper-functions.h" 1 3 4
+# 20 "/usr/include/loongarch64-linux-gnu/bits/mathcalls-helper-functions.h" 3 4
+extern int __fpclassify (double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+extern int __signbit (double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+
+extern int __isinf (double __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+extern int __finite (double __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+extern int __isnan (double __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+extern int __iseqsig (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+extern int __issignaling (double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+# 282 "/usr/include/math.h" 2 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 1 3 4
+# 53 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+ extern double acos (double __x) __attribute__ ((__nothrow__ )); extern double __acos (double __x) __attribute__ ((__nothrow__ ));
+
+ extern double asin (double __x) __attribute__ ((__nothrow__ )); extern double __asin (double __x) __attribute__ ((__nothrow__ ));
+
+ extern double atan (double __x) __attribute__ ((__nothrow__ )); extern double __atan (double __x) __attribute__ ((__nothrow__ ));
+
+ extern double atan2 (double __y, double __x) __attribute__ ((__nothrow__ )); extern double __atan2 (double __y, double __x) __attribute__ ((__nothrow__ ));
+
+
+ extern double cos (double __x) __attribute__ ((__nothrow__ )); extern double __cos (double __x) __attribute__ ((__nothrow__ ));
+
+ extern double sin (double __x) __attribute__ ((__nothrow__ )); extern double __sin (double __x) __attribute__ ((__nothrow__ ));
+
+ extern double tan (double __x) __attribute__ ((__nothrow__ )); extern double __tan (double __x) __attribute__ ((__nothrow__ ));
+# 89 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+ extern double cosh (double __x) __attribute__ ((__nothrow__ )); extern double __cosh (double __x) __attribute__ ((__nothrow__ ));
+
+ extern double sinh (double __x) __attribute__ ((__nothrow__ )); extern double __sinh (double __x) __attribute__ ((__nothrow__ ));
+
+ extern double tanh (double __x) __attribute__ ((__nothrow__ )); extern double __tanh (double __x) __attribute__ ((__nothrow__ ));
+# 103 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+ extern double acosh (double __x) __attribute__ ((__nothrow__ )); extern double __acosh (double __x) __attribute__ ((__nothrow__ ));
+
+ extern double asinh (double __x) __attribute__ ((__nothrow__ )); extern double __asinh (double __x) __attribute__ ((__nothrow__ ));
+
+ extern double atanh (double __x) __attribute__ ((__nothrow__ )); extern double __atanh (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+ extern double exp (double __x) __attribute__ ((__nothrow__ )); extern double __exp (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double frexp (double __x, int *__exponent) __attribute__ ((__nothrow__ )); extern double __frexp (double __x, int *__exponent) __attribute__ ((__nothrow__ ));
+
+
+extern double ldexp (double __x, int __exponent) __attribute__ ((__nothrow__ )); extern double __ldexp (double __x, int __exponent) __attribute__ ((__nothrow__ ));
+
+
+ extern double log (double __x) __attribute__ ((__nothrow__ )); extern double __log (double __x) __attribute__ ((__nothrow__ ));
+
+
+ extern double log10 (double __x) __attribute__ ((__nothrow__ )); extern double __log10 (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double modf (double __x, double *__iptr) __attribute__ ((__nothrow__ )); extern double __modf (double __x, double *__iptr) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+# 152 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+ extern double expm1 (double __x) __attribute__ ((__nothrow__ )); extern double __expm1 (double __x) __attribute__ ((__nothrow__ ));
+
+
+ extern double log1p (double __x) __attribute__ ((__nothrow__ )); extern double __log1p (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double logb (double __x) __attribute__ ((__nothrow__ )); extern double __logb (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+ extern double exp2 (double __x) __attribute__ ((__nothrow__ )); extern double __exp2 (double __x) __attribute__ ((__nothrow__ ));
+
+
+ extern double log2 (double __x) __attribute__ ((__nothrow__ )); extern double __log2 (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+ extern double pow (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __pow (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+extern double sqrt (double __x) __attribute__ ((__nothrow__ )); extern double __sqrt (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+ extern double hypot (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __hypot (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+ extern double cbrt (double __x) __attribute__ ((__nothrow__ )); extern double __cbrt (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double ceil (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double fabs (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double floor (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double fmod (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __fmod (double __x, double __y) __attribute__ ((__nothrow__ ));
+# 210 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern int isinf (double __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+
+
+extern int finite (double __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+extern double drem (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __drem (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern double significand (double __x) __attribute__ ((__nothrow__ )); extern double __significand (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double copysign (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern double nan (const char *__tagb) __attribute__ ((__nothrow__ )); extern double __nan (const char *__tagb) __attribute__ ((__nothrow__ ));
+# 246 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern int isnan (double __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+
+
+
+extern double j0 (double) __attribute__ ((__nothrow__ )); extern double __j0 (double) __attribute__ ((__nothrow__ ));
+extern double j1 (double) __attribute__ ((__nothrow__ )); extern double __j1 (double) __attribute__ ((__nothrow__ ));
+extern double jn (int, double) __attribute__ ((__nothrow__ )); extern double __jn (int, double) __attribute__ ((__nothrow__ ));
+extern double y0 (double) __attribute__ ((__nothrow__ )); extern double __y0 (double) __attribute__ ((__nothrow__ ));
+extern double y1 (double) __attribute__ ((__nothrow__ )); extern double __y1 (double) __attribute__ ((__nothrow__ ));
+extern double yn (int, double) __attribute__ ((__nothrow__ )); extern double __yn (int, double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+ extern double erf (double) __attribute__ ((__nothrow__ )); extern double __erf (double) __attribute__ ((__nothrow__ ));
+ extern double erfc (double) __attribute__ ((__nothrow__ )); extern double __erfc (double) __attribute__ ((__nothrow__ ));
+extern double lgamma (double) __attribute__ ((__nothrow__ )); extern double __lgamma (double) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern double tgamma (double) __attribute__ ((__nothrow__ )); extern double __tgamma (double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern double gamma (double) __attribute__ ((__nothrow__ )); extern double __gamma (double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern double lgamma_r (double, int *__signgamp) __attribute__ ((__nothrow__ )); extern double __lgamma_r (double, int *__signgamp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double rint (double __x) __attribute__ ((__nothrow__ )); extern double __rint (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double nextafter (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __nextafter (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+extern double nexttoward (double __x, long double __y) __attribute__ ((__nothrow__ )); extern double __nexttoward (double __x, long double __y) __attribute__ ((__nothrow__ ));
+# 308 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern double remainder (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __remainder (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern double scalbn (double __x, int __n) __attribute__ ((__nothrow__ )); extern double __scalbn (double __x, int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ilogb (double __x) __attribute__ ((__nothrow__ )); extern int __ilogb (double __x) __attribute__ ((__nothrow__ ));
+# 326 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern double scalbln (double __x, long int __n) __attribute__ ((__nothrow__ )); extern double __scalbln (double __x, long int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern double nearbyint (double __x) __attribute__ ((__nothrow__ )); extern double __nearbyint (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern double round (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern double trunc (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern double remquo (double __x, double __y, int *__quo) __attribute__ ((__nothrow__ )); extern double __remquo (double __x, double __y, int *__quo) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long int lrint (double __x) __attribute__ ((__nothrow__ )); extern long int __lrint (double __x) __attribute__ ((__nothrow__ ));
+__extension__
+extern long long int llrint (double __x) __attribute__ ((__nothrow__ )); extern long long int __llrint (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long int lround (double __x) __attribute__ ((__nothrow__ )); extern long int __lround (double __x) __attribute__ ((__nothrow__ ));
+__extension__
+extern long long int llround (double __x) __attribute__ ((__nothrow__ )); extern long long int __llround (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern double fdim (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __fdim (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern double fmax (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double fmin (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern double fma (double __x, double __y, double __z) __attribute__ ((__nothrow__ )); extern double __fma (double __x, double __y, double __z) __attribute__ ((__nothrow__ ));
+# 468 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern double scalb (double __x, double __n) __attribute__ ((__nothrow__ )); extern double __scalb (double __x, double __n) __attribute__ ((__nothrow__ ));
+# 283 "/usr/include/math.h" 2 3 4
+# 298 "/usr/include/math.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/mathcalls-helper-functions.h" 1 3 4
+# 20 "/usr/include/loongarch64-linux-gnu/bits/mathcalls-helper-functions.h" 3 4
+extern int __fpclassifyf (float __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+extern int __signbitf (float __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+
+extern int __isinff (float __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+extern int __finitef (float __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+extern int __isnanf (float __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+extern int __iseqsigf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+extern int __issignalingf (float __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+# 299 "/usr/include/math.h" 2 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 1 3 4
+# 53 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+ extern float acosf (float __x) __attribute__ ((__nothrow__ )); extern float __acosf (float __x) __attribute__ ((__nothrow__ ));
+
+ extern float asinf (float __x) __attribute__ ((__nothrow__ )); extern float __asinf (float __x) __attribute__ ((__nothrow__ ));
+
+ extern float atanf (float __x) __attribute__ ((__nothrow__ )); extern float __atanf (float __x) __attribute__ ((__nothrow__ ));
+
+ extern float atan2f (float __y, float __x) __attribute__ ((__nothrow__ )); extern float __atan2f (float __y, float __x) __attribute__ ((__nothrow__ ));
+
+
+ extern float cosf (float __x) __attribute__ ((__nothrow__ )); extern float __cosf (float __x) __attribute__ ((__nothrow__ ));
+
+ extern float sinf (float __x) __attribute__ ((__nothrow__ )); extern float __sinf (float __x) __attribute__ ((__nothrow__ ));
+
+ extern float tanf (float __x) __attribute__ ((__nothrow__ )); extern float __tanf (float __x) __attribute__ ((__nothrow__ ));
+# 89 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+ extern float coshf (float __x) __attribute__ ((__nothrow__ )); extern float __coshf (float __x) __attribute__ ((__nothrow__ ));
+
+ extern float sinhf (float __x) __attribute__ ((__nothrow__ )); extern float __sinhf (float __x) __attribute__ ((__nothrow__ ));
+
+ extern float tanhf (float __x) __attribute__ ((__nothrow__ )); extern float __tanhf (float __x) __attribute__ ((__nothrow__ ));
+# 103 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+ extern float acoshf (float __x) __attribute__ ((__nothrow__ )); extern float __acoshf (float __x) __attribute__ ((__nothrow__ ));
+
+ extern float asinhf (float __x) __attribute__ ((__nothrow__ )); extern float __asinhf (float __x) __attribute__ ((__nothrow__ ));
+
+ extern float atanhf (float __x) __attribute__ ((__nothrow__ )); extern float __atanhf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+ extern float expf (float __x) __attribute__ ((__nothrow__ )); extern float __expf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float frexpf (float __x, int *__exponent) __attribute__ ((__nothrow__ )); extern float __frexpf (float __x, int *__exponent) __attribute__ ((__nothrow__ ));
+
+
+extern float ldexpf (float __x, int __exponent) __attribute__ ((__nothrow__ )); extern float __ldexpf (float __x, int __exponent) __attribute__ ((__nothrow__ ));
+
+
+ extern float logf (float __x) __attribute__ ((__nothrow__ )); extern float __logf (float __x) __attribute__ ((__nothrow__ ));
+
+
+ extern float log10f (float __x) __attribute__ ((__nothrow__ )); extern float __log10f (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float modff (float __x, float *__iptr) __attribute__ ((__nothrow__ )); extern float __modff (float __x, float *__iptr) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+# 152 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+ extern float expm1f (float __x) __attribute__ ((__nothrow__ )); extern float __expm1f (float __x) __attribute__ ((__nothrow__ ));
+
+
+ extern float log1pf (float __x) __attribute__ ((__nothrow__ )); extern float __log1pf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float logbf (float __x) __attribute__ ((__nothrow__ )); extern float __logbf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+ extern float exp2f (float __x) __attribute__ ((__nothrow__ )); extern float __exp2f (float __x) __attribute__ ((__nothrow__ ));
+
+
+ extern float log2f (float __x) __attribute__ ((__nothrow__ )); extern float __log2f (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+ extern float powf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __powf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+extern float sqrtf (float __x) __attribute__ ((__nothrow__ )); extern float __sqrtf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+ extern float hypotf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __hypotf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+ extern float cbrtf (float __x) __attribute__ ((__nothrow__ )); extern float __cbrtf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float ceilf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float fabsf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float floorf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float fmodf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __fmodf (float __x, float __y) __attribute__ ((__nothrow__ ));
+# 210 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern int isinff (float __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+
+
+extern int finitef (float __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+extern float dremf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __dremf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern float significandf (float __x) __attribute__ ((__nothrow__ )); extern float __significandf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float copysignf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern float nanf (const char *__tagb) __attribute__ ((__nothrow__ )); extern float __nanf (const char *__tagb) __attribute__ ((__nothrow__ ));
+# 246 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern int isnanf (float __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+
+
+
+extern float j0f (float) __attribute__ ((__nothrow__ )); extern float __j0f (float) __attribute__ ((__nothrow__ ));
+extern float j1f (float) __attribute__ ((__nothrow__ )); extern float __j1f (float) __attribute__ ((__nothrow__ ));
+extern float jnf (int, float) __attribute__ ((__nothrow__ )); extern float __jnf (int, float) __attribute__ ((__nothrow__ ));
+extern float y0f (float) __attribute__ ((__nothrow__ )); extern float __y0f (float) __attribute__ ((__nothrow__ ));
+extern float y1f (float) __attribute__ ((__nothrow__ )); extern float __y1f (float) __attribute__ ((__nothrow__ ));
+extern float ynf (int, float) __attribute__ ((__nothrow__ )); extern float __ynf (int, float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+ extern float erff (float) __attribute__ ((__nothrow__ )); extern float __erff (float) __attribute__ ((__nothrow__ ));
+ extern float erfcf (float) __attribute__ ((__nothrow__ )); extern float __erfcf (float) __attribute__ ((__nothrow__ ));
+extern float lgammaf (float) __attribute__ ((__nothrow__ )); extern float __lgammaf (float) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern float tgammaf (float) __attribute__ ((__nothrow__ )); extern float __tgammaf (float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern float gammaf (float) __attribute__ ((__nothrow__ )); extern float __gammaf (float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern float lgammaf_r (float, int *__signgamp) __attribute__ ((__nothrow__ )); extern float __lgammaf_r (float, int *__signgamp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float rintf (float __x) __attribute__ ((__nothrow__ )); extern float __rintf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float nextafterf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __nextafterf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+extern float nexttowardf (float __x, long double __y) __attribute__ ((__nothrow__ )); extern float __nexttowardf (float __x, long double __y) __attribute__ ((__nothrow__ ));
+# 308 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern float remainderf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __remainderf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern float scalbnf (float __x, int __n) __attribute__ ((__nothrow__ )); extern float __scalbnf (float __x, int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ilogbf (float __x) __attribute__ ((__nothrow__ )); extern int __ilogbf (float __x) __attribute__ ((__nothrow__ ));
+# 326 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern float scalblnf (float __x, long int __n) __attribute__ ((__nothrow__ )); extern float __scalblnf (float __x, long int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern float nearbyintf (float __x) __attribute__ ((__nothrow__ )); extern float __nearbyintf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern float roundf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern float truncf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern float remquof (float __x, float __y, int *__quo) __attribute__ ((__nothrow__ )); extern float __remquof (float __x, float __y, int *__quo) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long int lrintf (float __x) __attribute__ ((__nothrow__ )); extern long int __lrintf (float __x) __attribute__ ((__nothrow__ ));
+__extension__
+extern long long int llrintf (float __x) __attribute__ ((__nothrow__ )); extern long long int __llrintf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long int lroundf (float __x) __attribute__ ((__nothrow__ )); extern long int __lroundf (float __x) __attribute__ ((__nothrow__ ));
+__extension__
+extern long long int llroundf (float __x) __attribute__ ((__nothrow__ )); extern long long int __llroundf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern float fdimf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __fdimf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern float fmaxf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float fminf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern float fmaf (float __x, float __y, float __z) __attribute__ ((__nothrow__ )); extern float __fmaf (float __x, float __y, float __z) __attribute__ ((__nothrow__ ));
+# 468 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern float scalbf (float __x, float __n) __attribute__ ((__nothrow__ )); extern float __scalbf (float __x, float __n) __attribute__ ((__nothrow__ ));
+# 300 "/usr/include/math.h" 2 3 4
+# 367 "/usr/include/math.h" 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/mathcalls-helper-functions.h" 1 3 4
+# 20 "/usr/include/loongarch64-linux-gnu/bits/mathcalls-helper-functions.h" 3 4
+extern int __fpclassifyl (long double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+extern int __signbitl (long double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+
+extern int __isinfl (long double __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+extern int __finitel (long double __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+extern int __isnanl (long double __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+extern int __iseqsigl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+extern int __issignalingl (long double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+# 368 "/usr/include/math.h" 2 3 4
+# 1 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 1 3 4
+# 53 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+ extern long double acosl (long double __x) __attribute__ ((__nothrow__ )); extern long double __acosl (long double __x) __attribute__ ((__nothrow__ ));
+
+ extern long double asinl (long double __x) __attribute__ ((__nothrow__ )); extern long double __asinl (long double __x) __attribute__ ((__nothrow__ ));
+
+ extern long double atanl (long double __x) __attribute__ ((__nothrow__ )); extern long double __atanl (long double __x) __attribute__ ((__nothrow__ ));
+
+ extern long double atan2l (long double __y, long double __x) __attribute__ ((__nothrow__ )); extern long double __atan2l (long double __y, long double __x) __attribute__ ((__nothrow__ ));
+
+
+ extern long double cosl (long double __x) __attribute__ ((__nothrow__ )); extern long double __cosl (long double __x) __attribute__ ((__nothrow__ ));
+
+ extern long double sinl (long double __x) __attribute__ ((__nothrow__ )); extern long double __sinl (long double __x) __attribute__ ((__nothrow__ ));
+
+ extern long double tanl (long double __x) __attribute__ ((__nothrow__ )); extern long double __tanl (long double __x) __attribute__ ((__nothrow__ ));
+# 89 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+ extern long double coshl (long double __x) __attribute__ ((__nothrow__ )); extern long double __coshl (long double __x) __attribute__ ((__nothrow__ ));
+
+ extern long double sinhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __sinhl (long double __x) __attribute__ ((__nothrow__ ));
+
+ extern long double tanhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __tanhl (long double __x) __attribute__ ((__nothrow__ ));
+# 103 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+ extern long double acoshl (long double __x) __attribute__ ((__nothrow__ )); extern long double __acoshl (long double __x) __attribute__ ((__nothrow__ ));
+
+ extern long double asinhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __asinhl (long double __x) __attribute__ ((__nothrow__ ));
+
+ extern long double atanhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __atanhl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+ extern long double expl (long double __x) __attribute__ ((__nothrow__ )); extern long double __expl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double frexpl (long double __x, int *__exponent) __attribute__ ((__nothrow__ )); extern long double __frexpl (long double __x, int *__exponent) __attribute__ ((__nothrow__ ));
+
+
+extern long double ldexpl (long double __x, int __exponent) __attribute__ ((__nothrow__ )); extern long double __ldexpl (long double __x, int __exponent) __attribute__ ((__nothrow__ ));
+
+
+ extern long double logl (long double __x) __attribute__ ((__nothrow__ )); extern long double __logl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+ extern long double log10l (long double __x) __attribute__ ((__nothrow__ )); extern long double __log10l (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double modfl (long double __x, long double *__iptr) __attribute__ ((__nothrow__ )); extern long double __modfl (long double __x, long double *__iptr) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+# 152 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+ extern long double expm1l (long double __x) __attribute__ ((__nothrow__ )); extern long double __expm1l (long double __x) __attribute__ ((__nothrow__ ));
+
+
+ extern long double log1pl (long double __x) __attribute__ ((__nothrow__ )); extern long double __log1pl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double logbl (long double __x) __attribute__ ((__nothrow__ )); extern long double __logbl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+ extern long double exp2l (long double __x) __attribute__ ((__nothrow__ )); extern long double __exp2l (long double __x) __attribute__ ((__nothrow__ ));
+
+
+ extern long double log2l (long double __x) __attribute__ ((__nothrow__ )); extern long double __log2l (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+ extern long double powl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __powl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+extern long double sqrtl (long double __x) __attribute__ ((__nothrow__ )); extern long double __sqrtl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+ extern long double hypotl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __hypotl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+ extern long double cbrtl (long double __x) __attribute__ ((__nothrow__ )); extern long double __cbrtl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double ceill (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double fabsl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double floorl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double fmodl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __fmodl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+# 210 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern int isinfl (long double __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+
+
+extern int finitel (long double __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+extern long double dreml (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __dreml (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double significandl (long double __x) __attribute__ ((__nothrow__ )); extern long double __significandl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double copysignl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern long double nanl (const char *__tagb) __attribute__ ((__nothrow__ )); extern long double __nanl (const char *__tagb) __attribute__ ((__nothrow__ ));
+# 246 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern int isnanl (long double __value) __attribute__ ((__nothrow__ ))
+  __attribute__ ((__const__));
+
+
+
+
+
+extern long double j0l (long double) __attribute__ ((__nothrow__ )); extern long double __j0l (long double) __attribute__ ((__nothrow__ ));
+extern long double j1l (long double) __attribute__ ((__nothrow__ )); extern long double __j1l (long double) __attribute__ ((__nothrow__ ));
+extern long double jnl (int, long double) __attribute__ ((__nothrow__ )); extern long double __jnl (int, long double) __attribute__ ((__nothrow__ ));
+extern long double y0l (long double) __attribute__ ((__nothrow__ )); extern long double __y0l (long double) __attribute__ ((__nothrow__ ));
+extern long double y1l (long double) __attribute__ ((__nothrow__ )); extern long double __y1l (long double) __attribute__ ((__nothrow__ ));
+extern long double ynl (int, long double) __attribute__ ((__nothrow__ )); extern long double __ynl (int, long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+ extern long double erfl (long double) __attribute__ ((__nothrow__ )); extern long double __erfl (long double) __attribute__ ((__nothrow__ ));
+ extern long double erfcl (long double) __attribute__ ((__nothrow__ )); extern long double __erfcl (long double) __attribute__ ((__nothrow__ ));
+extern long double lgammal (long double) __attribute__ ((__nothrow__ )); extern long double __lgammal (long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern long double tgammal (long double) __attribute__ ((__nothrow__ )); extern long double __tgammal (long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern long double gammal (long double) __attribute__ ((__nothrow__ )); extern long double __gammal (long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern long double lgammal_r (long double, int *__signgamp) __attribute__ ((__nothrow__ )); extern long double __lgammal_r (long double, int *__signgamp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double rintl (long double __x) __attribute__ ((__nothrow__ )); extern long double __rintl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double nextafterl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __nextafterl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+extern long double nexttowardl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __nexttowardl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+# 308 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern long double remainderl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __remainderl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double scalbnl (long double __x, int __n) __attribute__ ((__nothrow__ )); extern long double __scalbnl (long double __x, int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ilogbl (long double __x) __attribute__ ((__nothrow__ )); extern int __ilogbl (long double __x) __attribute__ ((__nothrow__ ));
+# 326 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern long double scalblnl (long double __x, long int __n) __attribute__ ((__nothrow__ )); extern long double __scalblnl (long double __x, long int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double nearbyintl (long double __x) __attribute__ ((__nothrow__ )); extern long double __nearbyintl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double roundl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern long double truncl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern long double remquol (long double __x, long double __y, int *__quo) __attribute__ ((__nothrow__ )); extern long double __remquol (long double __x, long double __y, int *__quo) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long int lrintl (long double __x) __attribute__ ((__nothrow__ )); extern long int __lrintl (long double __x) __attribute__ ((__nothrow__ ));
+__extension__
+extern long long int llrintl (long double __x) __attribute__ ((__nothrow__ )); extern long long int __llrintl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long int lroundl (long double __x) __attribute__ ((__nothrow__ )); extern long int __lroundl (long double __x) __attribute__ ((__nothrow__ ));
+__extension__
+extern long long int llroundl (long double __x) __attribute__ ((__nothrow__ )); extern long long int __llroundl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double fdiml (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __fdiml (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double fmaxl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double fminl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern long double fmal (long double __x, long double __y, long double __z) __attribute__ ((__nothrow__ )); extern long double __fmal (long double __x, long double __y, long double __z) __attribute__ ((__nothrow__ ));
+# 468 "/usr/include/loongarch64-linux-gnu/bits/mathcalls.h" 3 4
+extern long double scalbl (long double __x, long double __n) __attribute__ ((__nothrow__ )); extern long double __scalbl (long double __x, long double __n) __attribute__ ((__nothrow__ ));
+# 369 "/usr/include/math.h" 2 3 4
+# 823 "/usr/include/math.h" 3 4
+extern int signgam;
+# 903 "/usr/include/math.h" 3 4
+enum
+  {
+    FP_NAN =
+
+      0,
+    FP_INFINITE =
+
+      1,
+    FP_ZERO =
+
+      2,
+    FP_SUBNORMAL =
+
+      3,
+    FP_NORMAL =
+
+      4
+  };
+# 533 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/luaconf.h" 2
+# 17 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lua.h" 2
+# 50 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lua.h"
+typedef struct lua_State lua_State;
+
+typedef int (*lua_CFunction) (lua_State *L);
+
+
+
+
+
+typedef const char * (*lua_Reader) (lua_State *L, void *ud, size_t *sz);
+
+typedef int (*lua_Writer) (lua_State *L, const void* p, size_t sz, void* ud);
+
+
+
+
+
+typedef void * (*lua_Alloc) (void *ud, void *ptr, size_t osize, size_t nsize);
+# 99 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lua.h"
+typedef double lua_Number;
+
+
+
+typedef ptrdiff_t lua_Integer;
+
+
+
+
+
+
+extern lua_State *(lua_newstate) (lua_Alloc f, void *ud);
+extern void (lua_close) (lua_State *L);
+extern lua_State *(lua_newthread) (lua_State *L);
+
+extern lua_CFunction (lua_atpanic) (lua_State *L, lua_CFunction panicf);
+
+
+
+
+
+extern int (lua_gettop) (lua_State *L);
+extern void (lua_settop) (lua_State *L, int idx);
+extern void (lua_pushvalue) (lua_State *L, int idx);
+extern void (lua_remove) (lua_State *L, int idx);
+extern void (lua_insert) (lua_State *L, int idx);
+extern void (lua_replace) (lua_State *L, int idx);
+extern int (lua_checkstack) (lua_State *L, int sz);
+
+extern void (lua_xmove) (lua_State *from, lua_State *to, int n);
+
+
+
+
+
+
+extern int (lua_isnumber) (lua_State *L, int idx);
+extern int (lua_isstring) (lua_State *L, int idx);
+extern int (lua_iscfunction) (lua_State *L, int idx);
+extern int (lua_isuserdata) (lua_State *L, int idx);
+extern int (lua_type) (lua_State *L, int idx);
+extern const char *(lua_typename) (lua_State *L, int tp);
+
+extern int (lua_equal) (lua_State *L, int idx1, int idx2);
+extern int (lua_rawequal) (lua_State *L, int idx1, int idx2);
+extern int (lua_lessthan) (lua_State *L, int idx1, int idx2);
+
+extern lua_Number (lua_tonumber) (lua_State *L, int idx);
+extern lua_Integer (lua_tointeger) (lua_State *L, int idx);
+extern int (lua_toboolean) (lua_State *L, int idx);
+extern const char *(lua_tolstring) (lua_State *L, int idx, size_t *len);
+extern size_t (lua_objlen) (lua_State *L, int idx);
+extern lua_CFunction (lua_tocfunction) (lua_State *L, int idx);
+extern void *(lua_touserdata) (lua_State *L, int idx);
+extern lua_State *(lua_tothread) (lua_State *L, int idx);
+extern const void *(lua_topointer) (lua_State *L, int idx);
+
+
+
+
+
+extern void (lua_pushnil) (lua_State *L);
+extern void (lua_pushnumber) (lua_State *L, lua_Number n);
+extern void (lua_pushinteger) (lua_State *L, lua_Integer n);
+extern void (lua_pushlstring) (lua_State *L, const char *s, size_t l);
+extern void (lua_pushstring) (lua_State *L, const char *s);
+extern const char *(lua_pushvfstring) (lua_State *L, const char *fmt,
+                                                      va_list argp);
+extern const char *(lua_pushfstring) (lua_State *L, const char *fmt, ...);
+extern void (lua_pushcclosure) (lua_State *L, lua_CFunction fn, int n);
+extern void (lua_pushboolean) (lua_State *L, int b);
+extern void (lua_pushlightuserdata) (lua_State *L, void *p);
+extern int (lua_pushthread) (lua_State *L);
+
+
+
+
+
+extern void (lua_gettable) (lua_State *L, int idx);
+extern void (lua_getfield) (lua_State *L, int idx, const char *k);
+extern void (lua_rawget) (lua_State *L, int idx);
+extern void (lua_rawgeti) (lua_State *L, int idx, int n);
+extern void (lua_createtable) (lua_State *L, int narr, int nrec);
+extern void *(lua_newuserdata) (lua_State *L, size_t sz);
+extern int (lua_getmetatable) (lua_State *L, int objindex);
+extern void (lua_getfenv) (lua_State *L, int idx);
+
+
+
+
+
+extern void (lua_settable) (lua_State *L, int idx);
+extern void (lua_setfield) (lua_State *L, int idx, const char *k);
+extern void (lua_rawset) (lua_State *L, int idx);
+extern void (lua_rawseti) (lua_State *L, int idx, int n);
+extern int (lua_setmetatable) (lua_State *L, int objindex);
+extern int (lua_setfenv) (lua_State *L, int idx);
+
+
+
+
+
+extern void (lua_call) (lua_State *L, int nargs, int nresults);
+extern int (lua_pcall) (lua_State *L, int nargs, int nresults, int errfunc);
+extern int (lua_cpcall) (lua_State *L, lua_CFunction func, void *ud);
+extern int (lua_load) (lua_State *L, lua_Reader reader, void *dt,
+                                        const char *chunkname);
+
+extern int (lua_dump) (lua_State *L, lua_Writer writer, void *data);
+
+
+
+
+
+extern int (lua_yield) (lua_State *L, int nresults);
+extern int (lua_resume) (lua_State *L, int narg);
+extern int (lua_status) (lua_State *L);
+# 230 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lua.h"
+extern int (lua_gc) (lua_State *L, int what, int data);
+
+
+
+
+
+
+extern int (lua_error) (lua_State *L);
+
+extern int (lua_next) (lua_State *L, int idx);
+
+extern void (lua_concat) (lua_State *L, int n);
+
+extern lua_Alloc (lua_getallocf) (lua_State *L, void **ud);
+extern void lua_setallocf (lua_State *L, lua_Alloc f, void *ud);
+# 298 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lua.h"
+extern void lua_setlevel (lua_State *from, lua_State *to);
+# 326 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lua.h"
+typedef struct lua_Debug lua_Debug;
+
+
+
+typedef void (*lua_Hook) (lua_State *L, lua_Debug *ar);
+
+
+extern int lua_getstack (lua_State *L, int level, lua_Debug *ar);
+extern int lua_getinfo (lua_State *L, const char *what, lua_Debug *ar);
+extern const char *lua_getlocal (lua_State *L, const lua_Debug *ar, int n);
+extern const char *lua_setlocal (lua_State *L, const lua_Debug *ar, int n);
+extern const char *lua_getupvalue (lua_State *L, int funcindex, int n);
+extern const char *lua_setupvalue (lua_State *L, int funcindex, int n);
+
+extern int lua_sethook (lua_State *L, lua_Hook func, int mask, int count);
+extern lua_Hook lua_gethook (lua_State *L);
+extern int lua_gethookmask (lua_State *L);
+extern int lua_gethookcount (lua_State *L);
+
+
+struct lua_Debug {
+  int event;
+  const char *name;
+  const char *namewhat;
+  const char *what;
+  const char *source;
+  int currentline;
+  int nups;
+  int linedefined;
+  int lastlinedefined;
+  char short_src[60];
+
+  int i_ci;
+};
+# 13 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lgc.c" 2
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/ldebug.h" 1
+# 11 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/ldebug.h"
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lstate.h" 1
+# 12 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lstate.h"
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lobject.h" 1
+# 12 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lobject.h"
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stdarg.h" 1 3
+# 13 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lobject.h" 2
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/llimits.h" 1
+# 12 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/llimits.h"
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 1 3
+# 88 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_ptrdiff_t.h" 1 3
+# 89 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_size_t.h" 1 3
+# 94 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+# 103 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_wchar_t.h" 1 3
+# 104 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+# 128 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_offsetof.h" 1 3
+# 129 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+# 13 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/llimits.h" 2
+
+
+
+
+
+typedef unsigned int lu_int32;
+
+typedef size_t lu_mem;
+
+typedef ptrdiff_t l_mem;
+
+
+
+
+typedef unsigned char lu_byte;
+# 47 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/llimits.h"
+typedef union { double u; void *s; long l; } L_Umaxalign;
+
+
+
+typedef double l_uacNumber;
+# 88 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/llimits.h"
+typedef lu_int32 Instruction;
+# 16 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lobject.h" 2
+# 36 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lobject.h"
+typedef union GCObject GCObject;
+# 49 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lobject.h"
+typedef struct GCheader {
+  GCObject *next; lu_byte tt; lu_byte marked;
+} GCheader;
+
+
+
+
+
+
+
+typedef union {
+  GCObject *gc;
+  void *p;
+  lua_Number n;
+  int b;
+} Value;
+# 73 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lobject.h"
+typedef struct lua_TValue {
+  Value value; int tt;
+} TValue;
+# 193 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lobject.h"
+typedef TValue *StkId;
+
+
+
+
+
+typedef union TString {
+  L_Umaxalign dummy;
+  struct {
+    GCObject *next; lu_byte tt; lu_byte marked;
+    lu_byte reserved;
+    unsigned int hash;
+    size_t len;
+  } tsv;
+} TString;
+
+
+
+
+
+
+
+typedef union Udata {
+  L_Umaxalign dummy;
+  struct {
+    GCObject *next; lu_byte tt; lu_byte marked;
+    struct Table *metatable;
+    struct Table *env;
+    size_t len;
+  } uv;
+} Udata;
+
+
+
+
+
+
+
+typedef struct Proto {
+  GCObject *next; lu_byte tt; lu_byte marked;
+  TValue *k;
+  Instruction *code;
+  struct Proto **p;
+  int *lineinfo;
+  struct LocVar *locvars;
+  TString **upvalues;
+  TString *source;
+  int sizeupvalues;
+  int sizek;
+  int sizecode;
+  int sizelineinfo;
+  int sizep;
+  int sizelocvars;
+  int linedefined;
+  int lastlinedefined;
+  GCObject *gclist;
+  lu_byte nups;
+  lu_byte numparams;
+  lu_byte is_vararg;
+  lu_byte maxstacksize;
+} Proto;
+# 262 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lobject.h"
+typedef struct LocVar {
+  TString *varname;
+  int startpc;
+  int endpc;
+} LocVar;
+
+
+
+
+
+
+
+typedef struct UpVal {
+  GCObject *next; lu_byte tt; lu_byte marked;
+  TValue *v;
+  union {
+    TValue value;
+    struct {
+      struct UpVal *prev;
+      struct UpVal *next;
+    } l;
+  } u;
+} UpVal;
+# 295 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lobject.h"
+typedef struct CClosure {
+  GCObject *next; lu_byte tt; lu_byte marked; lu_byte isC; lu_byte nupvalues; GCObject *gclist; struct Table *env;
+  lua_CFunction f;
+  TValue upvalue[1];
+} CClosure;
+
+
+typedef struct LClosure {
+  GCObject *next; lu_byte tt; lu_byte marked; lu_byte isC; lu_byte nupvalues; GCObject *gclist; struct Table *env;
+  struct Proto *p;
+  UpVal *upvals[1];
+} LClosure;
+
+
+typedef union Closure {
+  CClosure c;
+  LClosure l;
+} Closure;
+# 323 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lobject.h"
+typedef union TKey {
+  struct {
+    Value value; int tt;
+    struct Node *next;
+  } nk;
+  TValue tvk;
+} TKey;
+
+
+typedef struct Node {
+  TValue i_val;
+  TKey i_key;
+} Node;
+
+
+typedef struct Table {
+  GCObject *next; lu_byte tt; lu_byte marked;
+  lu_byte flags;
+  lu_byte lsizenode;
+  struct Table *metatable;
+  TValue *array;
+  Node *node;
+  Node *lastfree;
+  GCObject *gclist;
+  int sizearray;
+} Table;
+# 365 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lobject.h"
+__attribute__((visibility("hidden"))) extern const TValue luaO_nilobject_;
+
+
+
+__attribute__((visibility("hidden"))) extern int luaO_log2 (unsigned int x);
+__attribute__((visibility("hidden"))) extern int luaO_int2fb (unsigned int x);
+__attribute__((visibility("hidden"))) extern int luaO_fb2int (int x);
+__attribute__((visibility("hidden"))) extern int luaO_rawequalObj (const TValue *t1, const TValue *t2);
+__attribute__((visibility("hidden"))) extern int luaO_str2d (const char *s, lua_Number *result);
+__attribute__((visibility("hidden"))) extern const char *luaO_pushvfstring (lua_State *L, const char *fmt,
+                                                       va_list argp);
+__attribute__((visibility("hidden"))) extern const char *luaO_pushfstring (lua_State *L, const char *fmt, ...);
+__attribute__((visibility("hidden"))) extern void luaO_chunkid (char *out, const char *source, size_t len);
+# 13 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lstate.h" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/ltm.h" 1
+# 18 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/ltm.h"
+typedef enum {
+  TM_INDEX,
+  TM_NEWINDEX,
+  TM_GC,
+  TM_MODE,
+  TM_EQ,
+  TM_ADD,
+  TM_SUB,
+  TM_MUL,
+  TM_DIV,
+  TM_MOD,
+  TM_POW,
+  TM_UNM,
+  TM_LEN,
+  TM_LT,
+  TM_LE,
+  TM_CONCAT,
+  TM_CALL,
+  TM_N
+} TMS;
+# 46 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/ltm.h"
+__attribute__((visibility("hidden"))) extern const char *const luaT_typenames[];
+
+
+__attribute__((visibility("hidden"))) extern const TValue *luaT_gettm (Table *events, TMS event, TString *ename);
+__attribute__((visibility("hidden"))) extern const TValue *luaT_gettmbyobj (lua_State *L, const TValue *o,
+                                                       TMS event);
+__attribute__((visibility("hidden"))) extern void luaT_init (lua_State *L);
+# 14 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lstate.h" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lzio.h" 1
+# 13 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lzio.h"
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lmem.h" 1
+# 11 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lmem.h"
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 1 3
+# 88 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_ptrdiff_t.h" 1 3
+# 89 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_size_t.h" 1 3
+# 94 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+# 103 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_wchar_t.h" 1 3
+# 104 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+# 128 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 3
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/__stddef_offsetof.h" 1 3
+# 129 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/build-llvm/lib/clang/22/include/stddef.h" 2 3
+# 12 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lmem.h" 2
+# 41 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lmem.h"
+__attribute__((visibility("hidden"))) extern void *luaM_realloc_ (lua_State *L, void *block, size_t oldsize,
+                                                          size_t size);
+__attribute__((visibility("hidden"))) extern void *luaM_toobig (lua_State *L);
+__attribute__((visibility("hidden"))) extern void *luaM_growaux_ (lua_State *L, void *block, int *size,
+                               size_t size_elem, int limit,
+                               const char *errormsg);
+# 14 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lzio.h" 2
+
+
+
+
+typedef struct Zio ZIO;
+
+
+
+
+
+typedef struct Mbuffer {
+  char *buffer;
+  size_t n;
+  size_t buffsize;
+} Mbuffer;
+# 46 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lzio.h"
+__attribute__((visibility("hidden"))) extern char *luaZ_openspace (lua_State *L, Mbuffer *buff, size_t n);
+__attribute__((visibility("hidden"))) extern void luaZ_init (lua_State *L, ZIO *z, lua_Reader reader,
+                                        void *data);
+__attribute__((visibility("hidden"))) extern size_t luaZ_read (ZIO* z, void* b, size_t n);
+__attribute__((visibility("hidden"))) extern int luaZ_lookahead (ZIO *z);
+
+
+
+
+
+struct Zio {
+  size_t n;
+  const char *p;
+  lua_Reader reader;
+  void* data;
+  lua_State *L;
+};
+
+
+__attribute__((visibility("hidden"))) extern int luaZ_fill (ZIO *z);
+# 15 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lstate.h" 2
+
+
+
+struct lua_longjmp;
+# 38 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lstate.h"
+typedef struct stringtable {
+  GCObject **hash;
+  lu_int32 nuse;
+  int size;
+} stringtable;
+
+
+
+
+
+typedef struct CallInfo {
+  StkId base;
+  StkId func;
+  StkId top;
+  const Instruction *savedpc;
+  int nresults;
+  int tailcalls;
+} CallInfo;
+# 68 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lstate.h"
+typedef struct global_State {
+  stringtable strt;
+  lua_Alloc frealloc;
+  void *ud;
+  lu_byte currentwhite;
+  lu_byte gcstate;
+  int sweepstrgc;
+  GCObject *rootgc;
+  GCObject **sweepgc;
+  GCObject *gray;
+  GCObject *grayagain;
+  GCObject *weak;
+  GCObject *tmudata;
+  Mbuffer buff;
+  lu_mem GCthreshold;
+  lu_mem totalbytes;
+  lu_mem estimate;
+  lu_mem gcdept;
+  int gcpause;
+  int gcstepmul;
+  lua_CFunction panic;
+  TValue l_registry;
+  struct lua_State *mainthread;
+  UpVal uvhead;
+  struct Table *mt[(8 +1)];
+  TString *tmname[TM_N];
+} global_State;
+
+
+
+
+
+struct lua_State {
+  GCObject *next; lu_byte tt; lu_byte marked;
+  lu_byte status;
+  StkId top;
+  StkId base;
+  global_State *l_G;
+  CallInfo *ci;
+  const Instruction *savedpc;
+  StkId stack_last;
+  StkId stack;
+  CallInfo *end_ci;
+  CallInfo *base_ci;
+  int stacksize;
+  int size_ci;
+  unsigned short nCcalls;
+  unsigned short baseCcalls;
+  lu_byte hookmask;
+  lu_byte allowhook;
+  int basehookcount;
+  int hookcount;
+  lua_Hook hook;
+  TValue l_gt;
+  TValue env;
+  GCObject *openupval;
+  GCObject *gclist;
+  struct lua_longjmp *errorJmp;
+  ptrdiff_t errfunc;
+};
+# 136 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lstate.h"
+union GCObject {
+  GCheader gch;
+  union TString ts;
+  union Udata u;
+  union Closure cl;
+  struct Table h;
+  struct Proto p;
+  struct UpVal uv;
+  struct lua_State th;
+};
+# 165 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lstate.h"
+__attribute__((visibility("hidden"))) extern lua_State *luaE_newthread (lua_State *L);
+__attribute__((visibility("hidden"))) extern void luaE_freethread (lua_State *L, lua_State *L1);
+# 12 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/ldebug.h" 2
+# 21 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/ldebug.h"
+__attribute__((visibility("hidden"))) extern void luaG_typeerror (lua_State *L, const TValue *o,
+                                             const char *opname);
+__attribute__((visibility("hidden"))) extern void luaG_concaterror (lua_State *L, StkId p1, StkId p2);
+__attribute__((visibility("hidden"))) extern void luaG_aritherror (lua_State *L, const TValue *p1,
+                                              const TValue *p2);
+__attribute__((visibility("hidden"))) extern int luaG_ordererror (lua_State *L, const TValue *p1,
+                                             const TValue *p2);
+__attribute__((visibility("hidden"))) extern void luaG_runerror (lua_State *L, const char *fmt, ...);
+__attribute__((visibility("hidden"))) extern void luaG_errormsg (lua_State *L);
+__attribute__((visibility("hidden"))) extern int luaG_checkcode (const Proto *pt);
+__attribute__((visibility("hidden"))) extern int luaG_checkopenop (Instruction i);
+# 15 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lgc.c" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/ldo.h" 1
+# 38 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/ldo.h"
+typedef void (*Pfunc) (lua_State *L, void *ud);
+
+__attribute__((visibility("hidden"))) extern int luaD_protectedparser (lua_State *L, ZIO *z, const char *name);
+__attribute__((visibility("hidden"))) extern void luaD_callhook (lua_State *L, int event, int line);
+__attribute__((visibility("hidden"))) extern int luaD_precall (lua_State *L, StkId func, int nresults);
+__attribute__((visibility("hidden"))) extern void luaD_call (lua_State *L, StkId func, int nResults);
+__attribute__((visibility("hidden"))) extern int luaD_pcall (lua_State *L, Pfunc func, void *u,
+                                        ptrdiff_t oldtop, ptrdiff_t ef);
+__attribute__((visibility("hidden"))) extern int luaD_poscall (lua_State *L, StkId firstResult);
+__attribute__((visibility("hidden"))) extern void luaD_reallocCI (lua_State *L, int newsize);
+__attribute__((visibility("hidden"))) extern void luaD_reallocstack (lua_State *L, int newsize);
+__attribute__((visibility("hidden"))) extern void luaD_growstack (lua_State *L, int n);
+
+__attribute__((visibility("hidden"))) extern void luaD_throw (lua_State *L, int errcode);
+__attribute__((visibility("hidden"))) extern int luaD_rawrunprotected (lua_State *L, Pfunc f, void *ud);
+
+__attribute__((visibility("hidden"))) extern void luaD_seterrorobj (lua_State *L, int errcode, StkId oldtop);
+# 16 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lgc.c" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lfunc.h" 1
+# 21 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lfunc.h"
+__attribute__((visibility("hidden"))) extern Proto *luaF_newproto (lua_State *L);
+__attribute__((visibility("hidden"))) extern Closure *luaF_newCclosure (lua_State *L, int nelems, Table *e);
+__attribute__((visibility("hidden"))) extern Closure *luaF_newLclosure (lua_State *L, int nelems, Table *e);
+__attribute__((visibility("hidden"))) extern UpVal *luaF_newupval (lua_State *L);
+__attribute__((visibility("hidden"))) extern UpVal *luaF_findupval (lua_State *L, StkId level);
+__attribute__((visibility("hidden"))) extern void luaF_close (lua_State *L, StkId level);
+__attribute__((visibility("hidden"))) extern void luaF_freeproto (lua_State *L, Proto *f);
+__attribute__((visibility("hidden"))) extern void luaF_freeclosure (lua_State *L, Closure *c);
+__attribute__((visibility("hidden"))) extern void luaF_freeupval (lua_State *L, UpVal *uv);
+__attribute__((visibility("hidden"))) extern const char *luaF_getlocalname (const Proto *func, int local_number,
+                                         int pc);
+# 17 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lgc.c" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lgc.h" 1
+# 99 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lgc.h"
+__attribute__((visibility("hidden"))) extern size_t luaC_separateudata (lua_State *L, int all);
+__attribute__((visibility("hidden"))) extern void luaC_callGCTM (lua_State *L);
+__attribute__((visibility("hidden"))) extern void luaC_freeall (lua_State *L);
+__attribute__((visibility("hidden"))) extern void luaC_step (lua_State *L);
+__attribute__((visibility("hidden"))) extern void luaC_fullgc (lua_State *L);
+__attribute__((visibility("hidden"))) extern void luaC_link (lua_State *L, GCObject *o, lu_byte tt);
+__attribute__((visibility("hidden"))) extern void luaC_linkupval (lua_State *L, UpVal *uv);
+__attribute__((visibility("hidden"))) extern void luaC_barrierf (lua_State *L, GCObject *o, GCObject *v);
+__attribute__((visibility("hidden"))) extern void luaC_barrierback (lua_State *L, Table *t);
+# 18 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lgc.c" 2
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lstring.h" 1
+# 26 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lstring.h"
+__attribute__((visibility("hidden"))) extern void luaS_resize (lua_State *L, int newsize);
+__attribute__((visibility("hidden"))) extern Udata *luaS_newudata (lua_State *L, size_t s, Table *e);
+__attribute__((visibility("hidden"))) extern TString *luaS_newlstr (lua_State *L, const char *str, size_t l);
+# 22 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lgc.c" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/ltable.h" 1
+# 21 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/ltable.h"
+__attribute__((visibility("hidden"))) extern const TValue *luaH_getnum (Table *t, int key);
+__attribute__((visibility("hidden"))) extern TValue *luaH_setnum (lua_State *L, Table *t, int key);
+__attribute__((visibility("hidden"))) extern const TValue *luaH_getstr (Table *t, TString *key);
+__attribute__((visibility("hidden"))) extern TValue *luaH_setstr (lua_State *L, Table *t, TString *key);
+__attribute__((visibility("hidden"))) extern const TValue *luaH_get (Table *t, const TValue *key);
+__attribute__((visibility("hidden"))) extern TValue *luaH_set (lua_State *L, Table *t, const TValue *key);
+__attribute__((visibility("hidden"))) extern Table *luaH_new (lua_State *L, int narray, int lnhash);
+__attribute__((visibility("hidden"))) extern void luaH_resizearray (lua_State *L, Table *t, int nasize);
+__attribute__((visibility("hidden"))) extern void luaH_free (lua_State *L, Table *t);
+__attribute__((visibility("hidden"))) extern int luaH_next (lua_State *L, Table *t, StkId key);
+__attribute__((visibility("hidden"))) extern int luaH_getn (Table *t);
+# 23 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lgc.c" 2
+# 62 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lgc.c"
+static void removeentry (Node *n) {
+  ((void)0);
+  if (((((&(n)->i_key.nk))->tt) >= 4))
+    ((((&(n)->i_key.nk))->tt) = ((8 +3)));
+}
+
+
+static void reallymarkobject (global_State *g, GCObject *o) {
+  ((void)0);
+  (((o)->gch.marked) &= ((lu_byte)(~((((1<<(0)) | (1<<(1))))))));
+  switch (o->gch.tt) {
+    case 4: {
+      return;
+    }
+    case 7: {
+      Table *mt = (&(&((o)->u))->uv)->metatable;
+      (((o)->gch.marked) |= ((1<<(2))));
+      if (mt) { if (((((((GCObject *)((mt)))))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g, (((GCObject *)((mt))))); };
+      { if (((((((GCObject *)(((&(&((o)->u))->uv)->env)))))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g, (((GCObject *)(((&(&((o)->u))->uv)->env))))); };
+      return;
+    }
+    case (8 +2): {
+      UpVal *uv = (&((o)->uv));
+      { ((void)0); if ((((uv->v)->tt) >= 4) && (((((uv->v)->value.gc))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g,((uv->v)->value.gc)); };
+      if (uv->v == &uv->u.value)
+        (((o)->gch.marked) |= ((1<<(2))));
+      return;
+    }
+    case 6: {
+      (&((o)->cl))->c.gclist = g->gray;
+      g->gray = o;
+      break;
+    }
+    case 5: {
+      (&((o)->h))->gclist = g->gray;
+      g->gray = o;
+      break;
+    }
+    case 8: {
+      (&((o)->th))->gclist = g->gray;
+      g->gray = o;
+      break;
+    }
+    case (8 +1): {
+      (&((o)->p))->gclist = g->gray;
+      g->gray = o;
+      break;
+    }
+    default: ((void)0);
+  }
+}
+
+
+static void marktmu (global_State *g) {
+  GCObject *u = g->tmudata;
+  if (u) {
+    do {
+      u = u->gch.next;
+      ((u)->gch.marked = ((lu_byte)((((u)->gch.marked & ((lu_byte)((~((1<<(2))|((1<<(0)) | (1<<(1)))))))) | ((lu_byte)((g)->currentwhite & ((1<<(0)) | (1<<(1)))))))));
+      reallymarkobject(g, u);
+    } while (u != g->tmudata);
+  }
+}
+
+
+
+size_t luaC_separateudata (lua_State *L, int all) {
+  global_State *g = (L->l_G);
+  size_t deadmem = 0;
+  GCObject **p = &g->mainthread->next;
+  GCObject *curr;
+  while ((curr = *p) != ((void*)0)) {
+    if (!((((curr)->gch.marked) & ((((1<<(0)) | (1<<(1)))))) || all) || ((((&(&((curr)->u))->uv))->marked) & ((1<<(3)))))
+      p = &curr->gch.next;
+    else if ((((&(&((curr)->u))->uv)->metatable) == ((void*)0) ? ((void*)0) : (((&(&((curr)->u))->uv)->metatable)->flags & (1u<<(TM_GC))) ? ((void*)0) : luaT_gettm((&(&((curr)->u))->uv)->metatable, TM_GC, ((L->l_G))->tmname[TM_GC])) == ((void*)0)) {
+      ((((&(&((curr)->u))->uv))->marked) |= ((1<<(3))));
+      p = &curr->gch.next;
+    }
+    else {
+      deadmem += (sizeof(union Udata)+((&(&((curr)->u))->uv))->len);
+      ((((&(&((curr)->u))->uv))->marked) |= ((1<<(3))));
+      *p = curr->gch.next;
+
+      if (g->tmudata == ((void*)0))
+        g->tmudata = curr->gch.next = curr;
+      else {
+        curr->gch.next = g->tmudata->gch.next;
+        g->tmudata->gch.next = curr;
+        g->tmudata = curr;
+      }
+    }
+  }
+  return deadmem;
+}
+
+
+static int traversetable (global_State *g, Table *h) {
+  int i;
+  int weakkey = 0;
+  int weakvalue = 0;
+  const TValue *mode;
+  if (h->metatable)
+    { if (((((((GCObject *)((h->metatable)))))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g, (((GCObject *)((h->metatable))))); };
+  mode = ((h->metatable) == ((void*)0) ? ((void*)0) : ((h->metatable)->flags & (1u<<(TM_MODE))) ? ((void*)0) : luaT_gettm(h->metatable, TM_MODE, (g)->tmname[TM_MODE]));
+  if (mode && (((mode)->tt) == 4)) {
+    weakkey = (strchr(((const char *)(((&(mode)->value.gc->ts)) + 1)), 'k') != ((void*)0));
+    weakvalue = (strchr(((const char *)(((&(mode)->value.gc->ts)) + 1)), 'v') != ((void*)0));
+    if (weakkey || weakvalue) {
+      h->marked &= ~((1<<(3)) | (1<<(4)));
+      h->marked |= ((lu_byte)(((weakkey << 3) | (weakvalue << 4))));
+
+      h->gclist = g->weak;
+      g->weak = (((GCObject *)((h))));
+    }
+  }
+  if (weakkey && weakvalue) return 1;
+  if (!weakvalue) {
+    i = h->sizearray;
+    while (i--)
+      { ((void)0); if ((((&h->array[i])->tt) >= 4) && (((((&h->array[i])->value.gc))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g,((&h->array[i])->value.gc)); };
+  }
+  i = ((1<<((h)->lsizenode)));
+  while (i--) {
+    Node *n = (&(h)->node[i]);
+    ((void)0);
+    if (((((&(n)->i_val))->tt) == 0))
+      removeentry(n);
+    else {
+      ((void)0);
+      if (!weakkey) { ((void)0); if (((((&(n)->i_key.nk))->tt) >= 4) && ((((((&(n)->i_key.nk))->value.gc))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g,(((&(n)->i_key.nk))->value.gc)); };
+      if (!weakvalue) { ((void)0); if (((((&(n)->i_val))->tt) >= 4) && ((((((&(n)->i_val))->value.gc))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g,(((&(n)->i_val))->value.gc)); };
+    }
+  }
+  return weakkey || weakvalue;
+}
+
+
+
+
+
+
+static void traverseproto (global_State *g, Proto *f) {
+  int i;
+  if (f->source) (((f->source)->tsv.marked) &= ((lu_byte)(~((((1<<(0)) | (1<<(1))))))));
+  for (i=0; i<f->sizek; i++)
+    { ((void)0); if ((((&f->k[i])->tt) >= 4) && (((((&f->k[i])->value.gc))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g,((&f->k[i])->value.gc)); };
+  for (i=0; i<f->sizeupvalues; i++) {
+    if (f->upvalues[i])
+      (((f->upvalues[i])->tsv.marked) &= ((lu_byte)(~((((1<<(0)) | (1<<(1))))))));
+  }
+  for (i=0; i<f->sizep; i++) {
+    if (f->p[i])
+      { if (((((((GCObject *)((f->p[i])))))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g, (((GCObject *)((f->p[i]))))); };
+  }
+  for (i=0; i<f->sizelocvars; i++) {
+    if (f->locvars[i].varname)
+      (((f->locvars[i].varname)->tsv.marked) &= ((lu_byte)(~((((1<<(0)) | (1<<(1))))))));
+  }
+}
+
+
+
+static void traverseclosure (global_State *g, Closure *cl) {
+  { if (((((((GCObject *)((cl->c.env)))))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g, (((GCObject *)((cl->c.env))))); };
+  if (cl->c.isC) {
+    int i;
+    for (i=0; i<cl->c.nupvalues; i++)
+      { ((void)0); if ((((&cl->c.upvalue[i])->tt) >= 4) && (((((&cl->c.upvalue[i])->value.gc))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g,((&cl->c.upvalue[i])->value.gc)); };
+  }
+  else {
+    int i;
+    ((void)0);
+    { if (((((((GCObject *)((cl->l.p)))))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g, (((GCObject *)((cl->l.p))))); };
+    for (i=0; i<cl->l.nupvalues; i++)
+      { if (((((((GCObject *)((cl->l.upvals[i])))))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g, (((GCObject *)((cl->l.upvals[i]))))); };
+  }
+}
+
+
+static void checkstacksizes (lua_State *L, StkId max) {
+  int ci_used = ((int)((L->ci - L->base_ci)));
+  int s_used = ((int)((max - L->stack)));
+  if (L->size_ci > 20000)
+    return;
+  if (4*ci_used < L->size_ci && 2*8 < L->size_ci)
+    luaD_reallocCI(L, L->size_ci/2);
+  ((void)0);
+  if (4*s_used < L->stacksize &&
+      2*((2*20)+5) < L->stacksize)
+    luaD_reallocstack(L, L->stacksize/2);
+  ((void)0);
+}
+
+
+static void traversestack (global_State *g, lua_State *l) {
+  StkId o, lim;
+  CallInfo *ci;
+  { ((void)0); if (((((&l->l_gt))->tt) >= 4) && ((((((&l->l_gt))->value.gc))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g,(((&l->l_gt))->value.gc)); };
+  lim = l->top;
+  for (ci = l->base_ci; ci <= l->ci; ci++) {
+    ((void)0);
+    if (lim < ci->top) lim = ci->top;
+  }
+  for (o = l->stack; o < l->top; o++)
+    { ((void)0); if ((((o)->tt) >= 4) && (((((o)->value.gc))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g,((o)->value.gc)); };
+  for (; o <= lim; o++)
+    ((o)->tt=0);
+  checkstacksizes(l, lim);
+}
+
+
+
+
+
+
+static l_mem propagatemark (global_State *g) {
+  GCObject *o = g->gray;
+  ((void)0);
+  (((o)->gch.marked) |= ((1<<(2))));
+  switch (o->gch.tt) {
+    case 5: {
+      Table *h = (&((o)->h));
+      g->gray = h->gclist;
+      if (traversetable(g, h))
+        (((o)->gch.marked) &= ((lu_byte)(~((1<<(2))))));
+      return sizeof(Table) + sizeof(TValue) * h->sizearray +
+                             sizeof(Node) * ((1<<((h)->lsizenode)));
+    }
+    case 6: {
+      Closure *cl = (&((o)->cl));
+      g->gray = cl->c.gclist;
+      traverseclosure(g, cl);
+      return (cl->c.isC) ? (((int)(sizeof(CClosure))) + ((int)(sizeof(TValue)*((cl->c.nupvalues)-1)))) :
+                           (((int)(sizeof(LClosure))) + ((int)(sizeof(TValue *)*((cl->l.nupvalues)-1))));
+    }
+    case 8: {
+      lua_State *th = (&((o)->th));
+      g->gray = th->gclist;
+      th->gclist = g->grayagain;
+      g->grayagain = o;
+      (((o)->gch.marked) &= ((lu_byte)(~((1<<(2))))));
+      traversestack(g, th);
+      return sizeof(lua_State) + sizeof(TValue) * th->stacksize +
+                                 sizeof(CallInfo) * th->size_ci;
+    }
+    case (8 +1): {
+      Proto *p = (&((o)->p));
+      g->gray = p->gclist;
+      traverseproto(g, p);
+      return sizeof(Proto) + sizeof(Instruction) * p->sizecode +
+                             sizeof(Proto *) * p->sizep +
+                             sizeof(TValue) * p->sizek +
+                             sizeof(int) * p->sizelineinfo +
+                             sizeof(LocVar) * p->sizelocvars +
+                             sizeof(TString *) * p->sizeupvalues;
+    }
+    default: ((void)0); return 0;
+  }
+}
+
+
+static size_t propagateall (global_State *g) {
+  size_t m = 0;
+  while (g->gray) m += propagatemark(g);
+  return m;
+}
+# 337 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/lua/lgc.c"
+static int iscleared (const TValue *o, int iskey) {
+  if (!(((o)->tt) >= 4)) return 0;
+  if ((((o)->tt) == 4)) {
+    ((((&(o)->value.gc->ts))->tsv.marked) &= ((lu_byte)(~((((1<<(0)) | (1<<(1))))))));
+    return 0;
+  }
+  return (((((o)->value.gc))->gch.marked) & ((((1<<(0)) | (1<<(1)))))) ||
+    ((((o)->tt) == 7) && (!iskey && ((((&(&(o)->value.gc->u)->uv))->marked) & ((1<<(3))))));
+}
+
+
+
+
+
+static void cleartable (GCObject *l) {
+  while (l) {
+    Table *h = (&((l)->h));
+    int i = h->sizearray;
+    ((void)0);
+
+    if (((h->marked) & ((1<<(4))))) {
+      while (i--) {
+        TValue *o = &h->array[i];
+        if (iscleared(o, 0))
+          ((o)->tt=0);
+      }
+    }
+    i = ((1<<((h)->lsizenode)));
+    while (i--) {
+      Node *n = (&(h)->node[i]);
+      if (!((((&(n)->i_val))->tt) == 0) &&
+          (iscleared((&(n)->i_key.tvk), 1) || iscleared((&(n)->i_val), 0))) {
+        (((&(n)->i_val))->tt=0);
+        removeentry(n);
+      }
+    }
+    l = h->gclist;
+  }
+}
+
+
+static void freeobj (lua_State *L, GCObject *o) {
+  switch (o->gch.tt) {
+    case (8 +1): luaF_freeproto(L, (&((o)->p))); break;
+    case 6: luaF_freeclosure(L, (&((o)->cl))); break;
+    case (8 +2): luaF_freeupval(L, (&((o)->uv))); break;
+    case 5: luaH_free(L, (&((o)->h))); break;
+    case 8: {
+      ((void)0);
+      luaE_freethread(L, (&((o)->th)));
+      break;
+    }
+    case 4: {
+      (L->l_G)->strt.nuse--;
+      luaM_realloc_(L, (o), ((sizeof(union TString)+(((&(&((o)->ts))->tsv))->len+1)*sizeof(char))), 0);
+      break;
+    }
+    case 7: {
+      luaM_realloc_(L, (o), ((sizeof(union Udata)+((&(&((o)->u))->uv))->len)), 0);
+      break;
+    }
+    default: ((void)0);
+  }
+}
+
+
+
+
+
+
+static GCObject **sweeplist (lua_State *L, GCObject **p, lu_mem count) {
+  GCObject *curr;
+  global_State *g = (L->l_G);
+  int deadmask = (g->currentwhite ^ ((1<<(0)) | (1<<(1))));
+  while ((curr = *p) != ((void*)0) && count-- > 0) {
+    if (curr->gch.tt == 8)
+      sweeplist(L,&(&((curr)->th))->openupval,((lu_mem)(~(lu_mem)0)-2));
+    if ((curr->gch.marked ^ ((1<<(0)) | (1<<(1)))) & deadmask) {
+      ((void)0);
+      ((curr)->gch.marked = ((lu_byte)((((curr)->gch.marked & ((lu_byte)((~((1<<(2))|((1<<(0)) | (1<<(1)))))))) | ((lu_byte)((g)->currentwhite & ((1<<(0)) | (1<<(1)))))))));
+      p = &curr->gch.next;
+    }
+    else {
+      ((void)0);
+      *p = curr->gch.next;
+      if (curr == g->rootgc)
+        g->rootgc = curr->gch.next;
+      freeobj(L, curr);
+    }
+  }
+  return p;
+}
+
+
+static void checkSizes (lua_State *L) {
+  global_State *g = (L->l_G);
+
+  if (g->strt.nuse < ((lu_int32)(g->strt.size/4)) &&
+      g->strt.size > 32*2)
+    luaS_resize(L, g->strt.size/2);
+
+  if (((&g->buff)->buffsize) > 32*2) {
+    size_t newsize = ((&g->buff)->buffsize) / 2;
+    ((((&g->buff)->buffer)=((char *)(((((size_t)((newsize)+1)) <= ((size_t)(~(size_t)0)-2)/(sizeof(char))) ? luaM_realloc_(L, ((&g->buff)->buffer), ((&g->buff)->buffsize)*(sizeof(char)), (newsize)*(sizeof(char))) : luaM_toobig(L))))), (&g->buff)->buffsize = newsize);
+  }
+}
+
+
+static void GCTM (lua_State *L) {
+  global_State *g = (L->l_G);
+  GCObject *o = g->tmudata->gch.next;
+  Udata *udata = (&((o)->u));
+  const TValue *tm;
+
+  if (o == g->tmudata)
+    g->tmudata = ((void*)0);
+  else
+    g->tmudata->gch.next = udata->uv.next;
+  udata->uv.next = g->mainthread->next;
+  g->mainthread->next = o;
+  ((o)->gch.marked = ((lu_byte)((((o)->gch.marked & ((lu_byte)((~((1<<(2))|((1<<(0)) | (1<<(1)))))))) | ((lu_byte)((g)->currentwhite & ((1<<(0)) | (1<<(1)))))))));
+  tm = ((udata->uv.metatable) == ((void*)0) ? ((void*)0) : ((udata->uv.metatable)->flags & (1u<<(TM_GC))) ? ((void*)0) : luaT_gettm(udata->uv.metatable, TM_GC, ((L->l_G))->tmname[TM_GC]));
+  if (tm != ((void*)0)) {
+    lu_byte oldah = L->allowhook;
+    lu_mem oldt = g->GCthreshold;
+    L->allowhook = 0;
+    g->GCthreshold = 2*g->totalbytes;
+    { const TValue *o2=(tm); TValue *o1=(L->top); o1->value = o2->value; o1->tt=o2->tt; ((void)0); };
+    { TValue *i_o=(L->top+1); i_o->value.gc=((GCObject *)((udata))); i_o->tt=7; ((void)0); };
+    L->top += 2;
+    luaD_call(L, L->top - 2, 0);
+    L->allowhook = oldah;
+    g->GCthreshold = oldt;
+  }
+}
+
+
+
+
+
+void luaC_callGCTM (lua_State *L) {
+  while ((L->l_G)->tmudata)
+    GCTM(L);
+}
+
+
+void luaC_freeall (lua_State *L) {
+  global_State *g = (L->l_G);
+  int i;
+  g->currentwhite = ((1<<(0)) | (1<<(1))) | (1<<(6));
+  sweeplist(L,&g->rootgc,((lu_mem)(~(lu_mem)0)-2));
+  for (i = 0; i < g->strt.size; i++)
+    sweeplist(L,&g->strt.hash[i],((lu_mem)(~(lu_mem)0)-2));
+}
+
+
+static void markmt (global_State *g) {
+  int i;
+  for (i=0; i<(8 +1); i++)
+    if (g->mt[i]) { if (((((((GCObject *)((g->mt[i])))))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g, (((GCObject *)((g->mt[i]))))); };
+}
+
+
+
+static void markroot (lua_State *L) {
+  global_State *g = (L->l_G);
+  g->gray = ((void*)0);
+  g->grayagain = ((void*)0);
+  g->weak = ((void*)0);
+  { if (((((((GCObject *)((g->mainthread)))))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g, (((GCObject *)((g->mainthread))))); };
+
+  { ((void)0); if (((((&g->mainthread->l_gt))->tt) >= 4) && ((((((&g->mainthread->l_gt))->value.gc))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g,(((&g->mainthread->l_gt))->value.gc)); };
+  { ((void)0); if (((((&(L->l_G)->l_registry))->tt) >= 4) && ((((((&(L->l_G)->l_registry))->value.gc))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g,(((&(L->l_G)->l_registry))->value.gc)); };
+  markmt(g);
+  g->gcstate = 1;
+}
+
+
+static void remarkupvals (global_State *g) {
+  UpVal *uv;
+  for (uv = g->uvhead.u.l.next; uv != &g->uvhead; uv = uv->u.l.next) {
+    ((void)0);
+    if ((!((((((GCObject *)((uv)))))->gch.marked) & ((1<<(2)))) && !((((((GCObject *)((uv)))))->gch.marked) & ((((1<<(0)) | (1<<(1))))))))
+      { ((void)0); if ((((uv->v)->tt) >= 4) && (((((uv->v)->value.gc))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g,((uv->v)->value.gc)); };
+  }
+}
+
+
+static void atomic (lua_State *L) {
+  global_State *g = (L->l_G);
+  size_t udsize;
+
+  remarkupvals(g);
+
+  propagateall(g);
+
+  g->gray = g->weak;
+  g->weak = ((void*)0);
+  ((void)0);
+  { if (((((((GCObject *)((L)))))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) reallymarkobject(g, (((GCObject *)((L))))); };
+  markmt(g);
+  propagateall(g);
+
+  g->gray = g->grayagain;
+  g->grayagain = ((void*)0);
+  propagateall(g);
+  udsize = luaC_separateudata(L, 0);
+  marktmu(g);
+  udsize += propagateall(g);
+  cleartable(g->weak);
+
+  g->currentwhite = ((lu_byte)(((g->currentwhite ^ ((1<<(0)) | (1<<(1)))))));
+  g->sweepstrgc = 0;
+  g->sweepgc = &g->rootgc;
+  g->gcstate = 2;
+  g->estimate = g->totalbytes - udsize;
+}
+
+
+static l_mem singlestep (lua_State *L) {
+  global_State *g = (L->l_G);
+
+  switch (g->gcstate) {
+    case 0: {
+      markroot(L);
+      return 0;
+    }
+    case 1: {
+      if (g->gray)
+        return propagatemark(g);
+      else {
+        atomic(L);
+        return 0;
+      }
+    }
+    case 2: {
+      lu_mem old = g->totalbytes;
+      sweeplist(L,&g->strt.hash[g->sweepstrgc++],((lu_mem)(~(lu_mem)0)-2));
+      if (g->sweepstrgc >= g->strt.size)
+        g->gcstate = 3;
+      ((void)0);
+      g->estimate -= old - g->totalbytes;
+      return 10;
+    }
+    case 3: {
+      lu_mem old = g->totalbytes;
+      g->sweepgc = sweeplist(L, g->sweepgc, 40);
+      if (*g->sweepgc == ((void*)0)) {
+        checkSizes(L);
+        g->gcstate = 4;
+      }
+      ((void)0);
+      g->estimate -= old - g->totalbytes;
+      return 40*10;
+    }
+    case 4: {
+      if (g->tmudata) {
+        GCTM(L);
+        if (g->estimate > 100)
+          g->estimate -= 100;
+        return 100;
+      }
+      else {
+        g->gcstate = 0;
+        g->gcdept = 0;
+        return 0;
+      }
+    }
+    default: ((void)0); return 0;
+  }
+}
+
+
+void luaC_step (lua_State *L) {
+  global_State *g = (L->l_G);
+  l_mem lim = (1024u/100) * g->gcstepmul;
+  if (lim == 0)
+    lim = (((lu_mem)(~(lu_mem)0)-2)-1)/2;
+  g->gcdept += g->totalbytes - g->GCthreshold;
+  do {
+    lim -= singlestep(L);
+    if (g->gcstate == 0)
+      break;
+  } while (lim > 0);
+  if (g->gcstate != 0) {
+    if (g->gcdept < 1024u)
+      g->GCthreshold = g->totalbytes + 1024u;
+    else {
+      g->gcdept -= 1024u;
+      g->GCthreshold = g->totalbytes;
+    }
+  }
+  else {
+    ((void)0);
+    (g->GCthreshold = (g->estimate/100) * g->gcpause);
+  }
+}
+
+
+void luaC_fullgc (lua_State *L) {
+  global_State *g = (L->l_G);
+  if (g->gcstate <= 1) {
+
+    g->sweepstrgc = 0;
+    g->sweepgc = &g->rootgc;
+
+    g->gray = ((void*)0);
+    g->grayagain = ((void*)0);
+    g->weak = ((void*)0);
+    g->gcstate = 2;
+  }
+  ((void)0);
+
+  while (g->gcstate != 4) {
+    ((void)0);
+    singlestep(L);
+  }
+  markroot(L);
+  while (g->gcstate != 0) {
+    singlestep(L);
+  }
+  (g->GCthreshold = (g->estimate/100) * g->gcpause);
+}
+
+
+void luaC_barrierf (lua_State *L, GCObject *o, GCObject *v) {
+  global_State *g = (L->l_G);
+  ((void)0);
+  ((void)0);
+  ((void)0);
+
+  if (g->gcstate == 1)
+    reallymarkobject(g, v);
+  else
+    ((o)->gch.marked = ((lu_byte)((((o)->gch.marked & ((lu_byte)((~((1<<(2))|((1<<(0)) | (1<<(1)))))))) | ((lu_byte)((g)->currentwhite & ((1<<(0)) | (1<<(1)))))))));
+}
+
+
+void luaC_barrierback (lua_State *L, Table *t) {
+  global_State *g = (L->l_G);
+  GCObject *o = (((GCObject *)((t))));
+  ((void)0);
+  ((void)0);
+  (((o)->gch.marked) &= ((lu_byte)(~((1<<(2))))));
+  t->gclist = g->grayagain;
+  g->grayagain = o;
+}
+
+
+void luaC_link (lua_State *L, GCObject *o, lu_byte tt) {
+  global_State *g = (L->l_G);
+  o->gch.next = g->rootgc;
+  g->rootgc = o;
+  o->gch.marked = ((lu_byte)((g)->currentwhite & ((1<<(0)) | (1<<(1)))));
+  o->gch.tt = tt;
+}
+
+
+void luaC_linkupval (lua_State *L, UpVal *uv) {
+  global_State *g = (L->l_G);
+  GCObject *o = (((GCObject *)((uv))));
+  o->gch.next = g->rootgc;
+  g->rootgc = o;
+  if ((!(((o)->gch.marked) & ((1<<(2)))) && !(((o)->gch.marked) & ((((1<<(0)) | (1<<(1)))))))) {
+    if (g->gcstate == 1) {
+      (((o)->gch.marked) |= ((1<<(2))));
+      { if (((((uv->v)->tt) >= 4) && (((((uv->v)->value.gc))->gch.marked) & ((((1<<(0)) | (1<<(1))))))) && ((((((GCObject *)((uv)))))->gch.marked) & ((1<<(2))))) luaC_barrierf(L,(((GCObject *)((uv)))),((uv->v)->value.gc)); };
+    }
+    else {
+      ((o)->gch.marked = ((lu_byte)((((o)->gch.marked & ((lu_byte)((~((1<<(2))|((1<<(0)) | (1<<(1)))))))) | ((lu_byte)((g)->currentwhite & ((1<<(0)) | (1<<(1)))))))));
+      ((void)0);
+    }
+  }
+}

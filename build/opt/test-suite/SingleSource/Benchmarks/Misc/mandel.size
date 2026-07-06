@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Misc/mandel  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                84      928
+.gnu.version           12     1012
+.gnu.version_r         64     1024
+.rela.dyn              96     1088
+.rela.plt              96     1184
+.eh_frame              64     1280
+.eh_frame_hdr          28     1344
+.rodata.cst4            4     1372
+.rodata.cst8           40     1376
+.rodata.str1.1          4     1416
+.plt                   96    66960
+.text                1716    67072
+.dynamic              464   134328
+.fini_array             8   134792
+.init_array             8   134800
+.got                   32   134808
+.relro_padding      61768   134840
+.data                   0   200376
+.got.plt               56   200376
+.sdata                  8   200432
+.tm_clone_table         0   200440
+.bss                   24   200440
+.comment              111        0
+Total               65024
+
+

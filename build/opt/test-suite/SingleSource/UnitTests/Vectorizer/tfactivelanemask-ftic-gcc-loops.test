@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/tfactivelanemask-ftic-gcc-loops 
+VERIFY: %b/fpcmp-target %o %S/gcc-loops.reference_output.little-endian-tfactivelanemask-ftic

@@ -1,0 +1,30 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Regression/C++/Regression-C++-ofstream_ctor  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr               206      928
+.gnu.version           12     1134
+.gnu.version_r         64     1148
+.rela.dyn              96     1216
+.rela.plt              96     1312
+.eh_frame              92     1408
+.eh_frame_hdr          28     1500
+.rodata.cst4            4     1528
+.plt                   96    67072
+.text                 616    67168
+.dynamic              496   133320
+.fini_array             8   133816
+.init_array             8   133824
+.got                   32   133832
+.relro_padding      62744   133864
+.data                   0   199400
+.got.plt               56   199400
+.sdata                  8   199456
+.tm_clone_table         0   199464
+.bss                    1   199464
+.comment              111        0
+Total               65015
+
+

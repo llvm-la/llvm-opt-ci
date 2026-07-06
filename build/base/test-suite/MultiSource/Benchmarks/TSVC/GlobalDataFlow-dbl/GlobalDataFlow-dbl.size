@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/TSVC/GlobalDataFlow-dbl/GlobalDataFlow-dbl  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 312      784
+.dynstr                 135     1096
+.gnu.version             26     1232
+.gnu.version_r           64     1260
+.rela.dyn               312     1328
+.rela.plt               264     1640
+.eh_frame                44     1904
+.eh_frame_hdr            20     1948
+.rodata                 544     1968
+.rodata.cst16            32     2512
+.rodata.cst4              4     2544
+.rodata.str1.1         1022     2548
+.plt                    208    69120
+.text                 68976    69344
+.data.rel.ro            264   203872
+.dynamic                464   204136
+.fini_array               8   204600
+.init_array               8   204608
+.got                     32   204616
+.relro_padding        57496   204648
+.data                     8   270184
+.got.plt                112   270192
+.sdata                    8   270304
+.tm_clone_table           0   270312
+.bss                5566064   270336
+.comment                111        0
+Total               5696635
+
+

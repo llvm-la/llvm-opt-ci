@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Applications/d/make_dparser  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym               1104      784
+.dynstr                391     1888
+.gnu.version            92     2280
+.gnu.version_r          32     2372
+.rela.dyn           118248     2408
+.rela.plt             1008   120656
+.eh_frame               44   121664
+.eh_frame_hdr           20   121708
+.rodata               2124   121728
+.rodata.cst4             4   123852
+.rodata.str1.1        7467   123856
+.rodata.str1.8          40   131328
+.plt                   704   196912
+.text                96896   197632
+.data.rel.ro           176   360064
+.dynamic               448   360240
+.fini_array              8   360688
+.init_array              8   360696
+.got                    72   360704
+.relro_padding       32440   360776
+.data                92304   426312
+.got.plt               360   518616
+.sdata                   8   518976
+.tm_clone_table          0   518984
+.bss                   496   518984
+.comment               111        0
+Total               354702
+
+

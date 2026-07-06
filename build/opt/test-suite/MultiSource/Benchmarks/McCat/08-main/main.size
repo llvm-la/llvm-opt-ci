@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/McCat/08-main/main  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               336      784
+.dynstr               133     1120
+.gnu.version           28     1254
+.gnu.version_r         64     1284
+.rela.dyn             120     1352
+.rela.plt             264     1472
+.eh_frame              92     1736
+.eh_frame_hdr          36     1828
+.rodata.cst4            4     1864
+.rodata.cst8           32     1872
+.rodata.str1.1        524     1904
+.plt                  208    67968
+.text               10416    68192
+.dynamic              464   144144
+.fini_array             8   144608
+.init_array             8   144616
+.got                   40   144624
+.relro_padding      51944   144664
+.data                 864   210200
+.got.plt              112   211064
+.sdata                  8   211176
+.tm_clone_table         0   211184
+.bss                    1   211184
+.comment              111        0
+Total               65914
+
+

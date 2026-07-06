@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Adobe-C++/simple_types_constant_folding  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym                360      784
+.dynstr                190     1144
+.gnu.version            30     1334
+.gnu.version_r          80     1364
+.rela.dyn               96     1448
+.rela.plt              312     1544
+.eh_frame            12500     1856
+.eh_frame_hdr         2332    14356
+.rodata.cst4             4    16688
+.rodata.cst8           104    16696
+.rodata.str1.1        8249    16800
+.plt                   240    90592
+.text               176208    90848
+.dynamic               496   332592
+.fini_array              8   333088
+.init_array              8   333096
+.got                    32   333104
+.relro_padding       60080   333136
+.data                   16   398672
+.got.plt               128   398688
+.sdata                   8   398816
+.tm_clone_table          0   398824
+.bss                336040   398824
+.comment               111        0
+Total               597729
+
+

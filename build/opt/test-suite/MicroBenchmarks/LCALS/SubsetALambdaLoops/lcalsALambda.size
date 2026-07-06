@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MicroBenchmarks/LCALS/SubsetALambdaLoops/lcalsALambda  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4848      784
+.dynstr                 6056     5632
+.gnu.version             404    11688
+.gnu.version_r           416    12092
+.rela.dyn               9360    12512
+.rela.plt               4128    21872
+.eh_frame              20848    26000
+.eh_frame_hdr           4660    46848
+.gcc_except_table      15100    51508
+.rodata                 3116    66608
+.rodata.cst16            928    69728
+.rodata.cst32             64    70656
+.rodata.cst4               4    70720
+.rodata.cst8             200    70728
+.rodata.str1.1          8923    70928
+.rodata.str1.8          1696    79856
+.plt                    2784   147088
+.text                 428740   149888
+.data.rel.ro            1752   644168
+.dynamic                 496   645920
+.fini_array                8   646416
+.init_array              160   646424
+.got                     368   646584
+.relro_padding          8408   646952
+.data                   1048   712488
+.got.plt                1400   713536
+.sdata                     8   714936
+.tm_clone_table            0   714944
+.bss                     744   714944
+.comment                 111        0
+Total                 526875
+
+

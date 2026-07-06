@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/BenchmarkGame/nsieve-bits  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               192      784
+.dynstr                97      976
+.gnu.version           16     1074
+.gnu.version_r         32     1092
+.rela.dyn              96     1128
+.rela.plt             144     1224
+.eh_frame              44     1368
+.eh_frame_hdr          20     1412
+.rodata.cst4            4     1432
+.rodata.str1.1         22     1436
+.plt                  128    67008
+.text                1220    67136
+.dynamic              464   133896
+.fini_array             8   134360
+.init_array             8   134368
+.got                   32   134376
+.relro_padding      62200   134408
+.data                   0   199944
+.got.plt               72   199944
+.sdata                  8   200016
+.tm_clone_table         0   200024
+.bss                    1   200024
+.comment              111        0
+Total               65016
+
+

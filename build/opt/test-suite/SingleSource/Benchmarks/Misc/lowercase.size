@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Misc/lowercase  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               120      784
+.dynstr                78      904
+.gnu.version           10      982
+.gnu.version_r         32      992
+.rela.dyn              96     1024
+.rela.plt              72     1120
+.eh_frame              44     1192
+.eh_frame_hdr          20     1236
+.rodata.cst4            4     1256
+.rodata.str1.1         29     1260
+.plt                   80    66832
+.text                1128    66912
+.dynamic              464   133576
+.fini_array             8   134040
+.init_array             8   134048
+.got                   32   134056
+.relro_padding      62520   134088
+.data                   0   199624
+.got.plt               48   199624
+.sdata                  8   199672
+.tm_clone_table         0   199680
+.bss                    1   199680
+.comment              111        0
+Total               65010
+
+

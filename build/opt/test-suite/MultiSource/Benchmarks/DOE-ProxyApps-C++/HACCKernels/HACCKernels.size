@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C++/HACCKernels/HACCKernels  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 432      784
+.dynstr                 506     1216
+.gnu.version             36     1722
+.gnu.version_r          176     1760
+.rela.dyn               216     1936
+.rela.plt               312     2152
+.eh_frame               172     2464
+.eh_frame_hdr            36     2636
+.gcc_except_table       104     2672
+.rodata                  72     2776
+.rodata.cst4              4     2848
+.rodata.str1.1          135     2852
+.plt                    240    68528
+.text                  3772    68768
+.dynamic                496   138080
+.fini_array               8   138576
+.init_array               8   138584
+.got                     64   138592
+.relro_padding        57952   138656
+.data                    40   204192
+.got.plt                128   204232
+.sdata                    8   204360
+.tm_clone_table           0   204368
+.bss                      1   204368
+.comment                111        0
+Total                 65126
+
+

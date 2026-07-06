@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/UnitTests/Threads/2010-12-08-tls  :
+section              size     addr
+.interp                37      736
+.note.ABI-tag          32      776
+.gnu.hash              28      808
+.dynsym               120      840
+.dynstr                68      960
+.gnu.version           10     1028
+.gnu.version_r         32     1040
+.rela.dyn              96     1072
+.rela.plt              72     1168
+.eh_frame              44     1240
+.eh_frame_hdr          20     1284
+.rodata.cst4            4     1304
+.rodata.str1.1          9     1308
+.plt                   80    66864
+.text                 648    66944
+.tdata                  4   133128
+.dynamic              448   133136
+.fini_array             8   133584
+.init_array             8   133592
+.got                   32   133600
+.relro_padding      62976   133632
+.data                   0   199168
+.got.plt               48   199168
+.sdata                  8   199216
+.tm_clone_table         0   199224
+.bss                    1   199224
+.comment              111        0
+Total               64944
+
+

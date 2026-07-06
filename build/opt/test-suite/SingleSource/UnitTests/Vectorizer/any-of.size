@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/Vectorizer/any-of  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 624      784
+.dynstr                 636     1408
+.gnu.version             52     2044
+.gnu.version_r          192     2096
+.rela.dyn               960     2288
+.rela.plt               456     3248
+.eh_frame              1036     3704
+.eh_frame_hdr           308     4740
+.gcc_except_table      1740     5048
+.rodata                 198     6788
+.rodata.cst4              4     6988
+.rodata.str1.1          345     6992
+.plt                    336    72880
+.text                 22208    73216
+.data.rel.ro            256   160960
+.dynamic                496   161216
+.fini_array               8   161712
+.init_array              16   161720
+.got                     48   161736
+.relro_padding        34824   161784
+.data                     8   227320
+.got.plt                176   227328
+.sdata                    8   227504
+.tm_clone_table           0   227512
+.bss                   5008   227512
+.comment                111        0
+Total                 70151
+
+

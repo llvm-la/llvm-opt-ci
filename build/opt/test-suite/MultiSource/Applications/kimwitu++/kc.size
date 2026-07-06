@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Applications/kimwitu++/kc  :
+section                 size      addr
+.interp                   37       680
+.note.ABI-tag             32       720
+.gnu.hash                 36       752
+.dynsym                 2520       792
+.dynstr                 2538      3312
+.gnu.version             210      5850
+.gnu.version_r           240      6060
+.rela.dyn             144624      6304
+.rela.plt               2112    150928
+.eh_frame              50488    153040
+.eh_frame_hdr          13676    203528
+.gcc_except_table       2676    217204
+.rodata                55465    219880
+.rodata.cst4               4    275348
+.rodata.str1.1        139900    275352
+.plt                    1440    480800
+.text                 558916    482240
+.data.rel.ro           40608   1106696
+.dynamic                 496   1147304
+.fini_array                8   1147800
+.init_array               56   1147808
+.got                    1544   1147864
+.relro_padding         30240   1149408
+.data                  29512   1214944
+.got.plt                 728   1244456
+.sdata                     8   1245184
+.tm_clone_table            0   1245192
+.bss                   12246   1245192
+.comment                 111         0
+Total                1090471
+
+

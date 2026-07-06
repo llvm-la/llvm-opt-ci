@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Prolangs-C/plot2fig/plot2fig  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               552      784
+.dynstr               205     1336
+.gnu.version           46     1542
+.gnu.version_r         32     1588
+.rela.dyn             504     1624
+.rela.plt             456     2128
+.eh_frame              44     2584
+.eh_frame_hdr          20     2628
+.rodata               200     2648
+.rodata.cst4            4     2848
+.rodata.cst8           48     2856
+.rodata.str1.1       1146     2904
+.plt                  336    69600
+.text                9368    69952
+.dynamic              464   144856
+.fini_array             8   145320
+.init_array             8   145328
+.got                  168   145336
+.relro_padding      51104   145504
+.data                 200   211040
+.got.plt              176   211240
+.sdata                  8   211416
+.tm_clone_table         0   211424
+.bss                   80   211424
+.comment              111        0
+Total               65385
+
+

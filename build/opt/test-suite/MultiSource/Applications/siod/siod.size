@@ -1,0 +1,37 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Applications/siod/siod  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               32      752
+.dynsym               3240      784
+.dynstr               1013     4024
+.gnu.version           270     5038
+.gnu.version_r          64     5308
+.rela.dyn             1344     5376
+.rela.plt             3048     6720
+.eh_frame               44     9768
+.eh_frame_hdr           20     9812
+.rodata               2188     9832
+.rodata.cst16           32    12032
+.rodata.cst4             4    12064
+.rodata.cst8            56    12072
+.rodata.str1.1        8030    12128
+.rodata.str1.8          64    20160
+.plt                  2064    85760
+.plt.got                16    87824
+.text               148508    87840
+.data.rel.ro           240   301888
+.dynamic               464   302128
+.fini_array              8   302592
+.init_array              8   302600
+.got                   168   302608
+.relro_padding       24904   302776
+.data                  152   368312
+.got.plt              1040   368464
+.sdata                   8   369504
+.tm_clone_table          0   369512
+.bss                  1368   369520
+.comment               111        0
+Total               198577
+
+

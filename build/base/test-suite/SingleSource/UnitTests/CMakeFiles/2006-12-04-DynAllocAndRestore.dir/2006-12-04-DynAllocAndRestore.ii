@@ -1,0 +1,54 @@
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/UnitTests/2006-12-04-DynAllocAndRestore.cpp"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 470 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/UnitTests/2006-12-04-DynAllocAndRestore.cpp" 2
+class MamaDebugTest {
+private:
+  int N;
+
+protected:
+  MamaDebugTest(int n) : N(n) {}
+
+  int getN() const { return N; }
+
+};
+
+class BabyDebugTest : public MamaDebugTest {
+private:
+
+public:
+  BabyDebugTest(int n) : MamaDebugTest(n) {}
+
+  static int doh;
+
+  int doit() {
+    int N = getN();
+    int Table[N];
+
+    int sum = 0;
+
+    for (int i = 0; i < N; ++i) {
+      int j = i;
+      Table[i] = j;
+    }
+    for (int i = 0; i < N; ++i) {
+      int j = Table[i];
+      sum += j;
+    }
+
+    return sum;
+  }
+
+};
+
+int BabyDebugTest::doh;
+
+
+int main(int argc, const char *argv[]) {
+  BabyDebugTest BDT(20);
+  BDT.doit();
+  return 0;
+}

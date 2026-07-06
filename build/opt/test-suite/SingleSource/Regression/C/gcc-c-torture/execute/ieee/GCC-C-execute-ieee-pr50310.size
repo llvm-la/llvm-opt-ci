@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Regression/C/gcc-c-torture/execute/ieee/GCC-C-execute-ieee-pr50310  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym                96      784
+.dynstr                61      880
+.gnu.version            8      942
+.gnu.version_r         32      952
+.rela.dyn              96      984
+.rela.plt              48     1080
+.eh_frame              44     1128
+.eh_frame_hdr          20     1172
+.rodata.cst16          48     1200
+.rodata.cst32          32     1248
+.rodata.cst4            4     1280
+.plt                   64    66832
+.text                1284    66912
+.dynamic              448   133736
+.fini_array             8   134184
+.init_array             8   134192
+.got                   32   134200
+.relro_padding      62376   134232
+.data                   0   199768
+.got.plt               40   199768
+.sdata                  8   199808
+.tm_clone_table         0   199816
+.bss                  592   199824
+.comment              111        0
+Total               65557
+
+

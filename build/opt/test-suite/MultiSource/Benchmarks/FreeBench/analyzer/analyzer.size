@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/FreeBench/analyzer/analyzer  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              32      752
+.dynsym               648      784
+.dynstr               230     1432
+.gnu.version           54     1662
+.gnu.version_r         32     1716
+.rela.dyn             648     1752
+.rela.plt             552     2400
+.eh_frame              44     2952
+.eh_frame_hdr          20     2996
+.rodata.cst4            4     3016
+.rodata.cst8            8     3024
+.rodata.str1.1       2948     3032
+.plt                  400    71520
+.text               10304    71936
+.dynamic              448   147776
+.fini_array             8   148224
+.init_array             8   148232
+.got                   80   148240
+.relro_padding      48288   148320
+.data                 152   213856
+.got.plt              208   214008
+.sdata                  8   214216
+.tm_clone_table         0   214224
+.bss                  152   214224
+.comment              111        0
+Total               65456
+
+

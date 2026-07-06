@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LASX-lasx-xvmulwod-1 
+VERIFY: %b/fpcmp-target %o %S/lasx-xvmulwod-1.reference_output

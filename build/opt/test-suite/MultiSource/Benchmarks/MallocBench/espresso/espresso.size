@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/MallocBench/espresso/espresso  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               36      752
+.dynsym               1008      792
+.dynstr                344     1800
+.gnu.version            84     2144
+.gnu.version_r          32     2228
+.rela.dyn             3384     2264
+.rela.plt              840     5648
+.eh_frame               44     6488
+.eh_frame_hdr           20     6532
+.rodata               2204     6552
+.rodata.cst16           32     8768
+.rodata.cst4             4     8800
+.rodata.cst8             8     8808
+.rodata.str1.1        8474     8816
+.plt                   592    82832
+.text               160096    83424
+.dynamic               448   309056
+.fini_array              8   309504
+.init_array              8   309512
+.got                   320   309520
+.relro_padding       17840   309840
+.data                 2984   375376
+.got.plt               304   378360
+.sdata                   8   378664
+.tm_clone_table          0   378672
+.bss                  1792   378672
+.comment               111        0
+Total               201094
+
+

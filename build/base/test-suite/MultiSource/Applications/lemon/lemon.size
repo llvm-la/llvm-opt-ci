@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Applications/lemon/lemon  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym              1104      784
+.dynstr               360     1888
+.gnu.version           92     2248
+.gnu.version_r         32     2340
+.rela.dyn             720     2376
+.rela.plt            1008     3096
+.eh_frame              44     4104
+.eh_frame_hdr          20     4148
+.rodata               484     4168
+.rodata.cst16          32     4656
+.rodata.cst4            4     4688
+.rodata.str1.1       5370     4692
+.plt                  704    75600
+.text               50896    76320
+.dynamic              448   192752
+.fini_array             8   193200
+.init_array             8   193208
+.got                   48   193216
+.relro_padding       3344   193264
+.data                 325   258800
+.got.plt              360   259128
+.sdata                  8   259488
+.tm_clone_table         0   259496
+.bss                  192   259496
+.comment              111        0
+Total               65819
+
+

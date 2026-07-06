@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Polybench/datamining/correlation/correlation  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               312      784
+.dynstr               135     1096
+.gnu.version           26     1232
+.gnu.version_r         64     1260
+.rela.dyn             120     1328
+.rela.plt             240     1448
+.eh_frame              44     1688
+.eh_frame_hdr          20     1732
+.rodata.cst16          16     1760
+.rodata.cst4            4     1776
+.rodata.cst8           24     1784
+.rodata.str1.1         58     1808
+.plt                  192    67408
+.text                2384    67616
+.dynamic              464   135536
+.fini_array             8   136000
+.init_array             8   136008
+.got                   40   136016
+.relro_padding      60552   136056
+.data                   0   201592
+.got.plt              104   201592
+.sdata                  8   201696
+.tm_clone_table         0   201704
+.bss                   56   201704
+.comment              111        0
+Total               65087
+
+

@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Stanford/Perm  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                83      928
+.gnu.version           12     1012
+.gnu.version_r         32     1024
+.rela.dyn              96     1056
+.rela.plt              96     1152
+.eh_frame              44     1248
+.eh_frame_hdr          20     1292
+.rodata.cst16          16     1312
+.rodata.cst4            4     1328
+.rodata.str1.1         20     1332
+.plt                   96    66896
+.text                1672    67008
+.dynamic              464   134216
+.fini_array             8   134680
+.init_array             8   134688
+.got                   32   134696
+.relro_padding      61880   134728
+.data                   0   200264
+.got.plt               56   200264
+.sdata                  8   200320
+.tm_clone_table         0   200328
+.bss                94584   200328
+.comment              111        0
+Total              159583
+
+

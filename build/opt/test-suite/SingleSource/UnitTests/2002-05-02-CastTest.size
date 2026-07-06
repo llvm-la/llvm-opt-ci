@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/2002-05-02-CastTest  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                75      928
+.gnu.version           12     1004
+.gnu.version_r         32     1016
+.rela.dyn              96     1048
+.rela.plt              96     1144
+.eh_frame              44     1240
+.eh_frame_hdr          20     1284
+.rodata.cst4            4     1304
+.rodata.str1.1        323     1308
+.plt                   96    67168
+.text                1056    67264
+.dynamic              448   133856
+.fini_array             8   134304
+.init_array             8   134312
+.got                   32   134320
+.relro_padding      62256   134352
+.data                   0   199888
+.got.plt               56   199888
+.sdata                  8   199944
+.tm_clone_table         0   199952
+.bss                    1   199952
+.comment              111        0
+Total               65023
+
+

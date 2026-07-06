@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Applications/obsequi/Obsequi  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym               1200      784
+.dynstr                443     1984
+.gnu.version           100     2428
+.gnu.version_r          48     2528
+.rela.dyn              672     2576
+.rela.plt             1032     3248
+.eh_frame               44     4280
+.eh_frame_hdr           20     4324
+.rodata                176     4344
+.rodata.cst16           32     4528
+.rodata.cst4             4     4560
+.rodata.str1.1        2588     4564
+.plt                   720    72688
+.text                40036    73408
+.dynamic               448   178984
+.fini_array              8   179432
+.init_array              8   179440
+.got                   224   179448
+.relro_padding       16936   179672
+.data                  105   245208
+.got.plt               368   245320
+.sdata                   8   245688
+.tm_clone_table          0   245696
+.bss                900856   245696
+.comment               111        0
+Total               966284
+
+

@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/SciMark2-C/scimark2  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               336      784
+.dynstr               132     1120
+.gnu.version           28     1252
+.gnu.version_r         64     1280
+.rela.dyn             120     1344
+.rela.plt             264     1464
+.eh_frame              44     1728
+.eh_frame_hdr          20     1772
+.rodata                76     1792
+.rodata.cst16          32     1872
+.rodata.cst4            4     1904
+.rodata.cst8           24     1912
+.rodata.str1.1        632     1936
+.plt                  208    68112
+.text               14280    68320
+.dynamic              464   148136
+.fini_array             8   148600
+.init_array             8   148608
+.got                   40   148616
+.relro_padding      47952   148656
+.data                   0   214192
+.got.plt              112   214192
+.sdata                  8   214304
+.tm_clone_table         0   214312
+.bss                   24   214312
+.comment              111        0
+Total               65088
+
+

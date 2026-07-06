@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LASX-lasx-xvsrlrni 
+VERIFY: %b/fpcmp-target %o %S/lasx-xvsrlrni.reference_output

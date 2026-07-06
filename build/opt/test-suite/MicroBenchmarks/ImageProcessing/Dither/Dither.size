@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MicroBenchmarks/ImageProcessing/Dither/Dither  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4224      784
+.dynstr                 5651     5008
+.gnu.version             352    10660
+.gnu.version_r           384    11012
+.rela.dyn               9288    11400
+.rela.plt               3504    20688
+.eh_frame              18532    24192
+.eh_frame_hdr           4228    42724
+.gcc_except_table      12692    46952
+.rodata                 3028    59648
+.rodata.cst16            208    62688
+.rodata.cst32             32    62896
+.rodata.cst4               4    62928
+.rodata.cst8              88    62936
+.rodata.str1.1          7417    63024
+.rodata.str1.8           960    70448
+.plt                    2368   136944
+.text                 251940   139328
+.data.rel.ro            1768   456808
+.dynamic                 496   458576
+.fini_array                8   459072
+.init_array              152   459080
+.got                     344   459232
+.relro_padding         64712   459576
+.data                   1040   525112
+.got.plt                1192   526152
+.sdata                     8   527344
+.tm_clone_table            0   527352
+.bss                    2088   527352
+.comment                 111        0
+Total                 396916
+
+

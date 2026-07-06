@@ -1,0 +1,30 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Shootout-C++/Shootout-C++-fibo  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               330     1072
+.gnu.version           24     1402
+.gnu.version_r        128     1428
+.rela.dyn             120     1560
+.rela.plt             192     1680
+.eh_frame              92     1872
+.eh_frame_hdr          28     1964
+.rodata.cst4            4     1992
+.plt                  160    67536
+.text                 892    67712
+.dynamic              496   134144
+.fini_array             8   134640
+.init_array             8   134648
+.got                   40   134656
+.relro_padding      61912   134696
+.data                   0   200232
+.got.plt               88   200232
+.sdata                  8   200320
+.tm_clone_table         0   200328
+.bss                    1   200328
+.comment              111        0
+Total               65027
+
+

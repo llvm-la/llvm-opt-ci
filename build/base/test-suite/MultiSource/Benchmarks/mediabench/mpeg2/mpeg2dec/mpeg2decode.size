@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/mediabench/mpeg2/mpeg2dec/mpeg2decode  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               720      784
+.dynstr               251     1504
+.gnu.version           60     1756
+.gnu.version_r         32     1816
+.rela.dyn            3192     1848
+.rela.plt             624     5040
+.eh_frame              44     5664
+.eh_frame_hdr          20     5708
+.rodata              1005     5728
+.rodata.cst16         608     6736
+.rodata.cst32         192     7344
+.rodata.cst4            4     7536
+.rodata.cst8            8     7544
+.rodata.str1.1       3774     7552
+.rodata.str1.8        104    11328
+.plt                  448    76976
+.text               53264    77440
+.dynamic              464   196240
+.fini_array             8   196704
+.init_array             8   196712
+.got                 1064   196720
+.relro_padding      64360   197784
+.data                1724   263320
+.got.plt              232   265048
+.sdata                  8   265280
+.tm_clone_table         0   265288
+.bss                17149   265296
+.comment              111        0
+Total              149575
+
+

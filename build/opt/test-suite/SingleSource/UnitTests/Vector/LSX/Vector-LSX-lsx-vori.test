@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vori 
+VERIFY: %b/fpcmp-target %o %S/lsx-vori.reference_output

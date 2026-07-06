@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Adobe-C++/stepanov_vector  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 528      784
+.dynstr                 302     1312
+.gnu.version             44     1614
+.gnu.version_r          176     1660
+.rela.dyn               408     1840
+.rela.plt               456     2248
+.eh_frame               708     2704
+.eh_frame_hdr           172     3412
+.gcc_except_table       196     3584
+.rodata.cst4              4     3780
+.rodata.cst8             16     3784
+.rodata.str1.1          560     3800
+.plt                    336    69904
+.text                 16672    70240
+.dynamic                496   152448
+.fini_array               8   152944
+.init_array               8   152952
+.got                     32   152960
+.relro_padding        43616   152992
+.data                   152   218528
+.got.plt                176   218680
+.sdata                    8   218856
+.tm_clone_table           0   218864
+.bss                  32040   218864
+.comment                111        0
+Total                 97322
+
+

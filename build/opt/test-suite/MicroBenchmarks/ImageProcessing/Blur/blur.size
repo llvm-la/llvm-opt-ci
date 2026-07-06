@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MicroBenchmarks/ImageProcessing/Blur/blur  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4200      784
+.dynstr                 5574     4984
+.gnu.version             350    10558
+.gnu.version_r           384    10908
+.rela.dyn               9168    11296
+.rela.plt               3528    20464
+.eh_frame              18388    23992
+.eh_frame_hdr           4188    42380
+.gcc_except_table      12608    46568
+.rodata                 2588    59176
+.rodata.cst16            160    61776
+.rodata.cst32             32    61936
+.rodata.cst4               4    61968
+.rodata.cst8              88    61976
+.rodata.str1.1          7424    62064
+.rodata.str1.8           960    69488
+.plt                    2384   135984
+.text                 251492   138368
+.data.rel.ro            1720   455400
+.dynamic                 496   457120
+.fini_array                8   457616
+.init_array              152   457624
+.got                     344   457776
+.relro_padding           632   458120
+.data                   1040   523656
+.got.plt                1200   524696
+.sdata                     8   525896
+.tm_clone_table            0   525904
+.bss                    2080   525904
+.comment                 111        0
+Total                 331408
+
+

@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/UnitTests/Vectorizer/VPlanNativePath/outer-loop-vect  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 384      784
+.dynstr                 409     1168
+.gnu.version             32     1578
+.gnu.version_r          144     1612
+.rela.dyn               192     1760
+.rela.plt               240     1952
+.eh_frame               220     2192
+.eh_frame_hdr            44     2412
+.gcc_except_table       148     2456
+.rodata.cst16           304     2608
+.rodata.cst4              4     2912
+.rodata.str1.1          149     2916
+.plt                    192    68608
+.text                  9120    68800
+.dynamic                496   143456
+.fini_array               8   143952
+.init_array              16   143960
+.got                     48   143976
+.relro_padding        52584   144024
+.data                     8   209560
+.got.plt                104   209568
+.sdata                    8   209672
+.tm_clone_table           0   209680
+.bss                   5008   209680
+.comment                111        0
+Total                 70070
+
+

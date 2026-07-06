@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LASX-lasx-xvreplgr2vr 
+VERIFY: %b/fpcmp-target %o %S/lasx-xvreplgr2vr.reference_output

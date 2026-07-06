@@ -1,0 +1,35 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/tramp3d-v4/tramp3d-v4  :
+section               size      addr
+.interp                 37       680
+.note.ABI-tag           32       720
+.gnu.hash               28       752
+.dynsym               1800       784
+.dynstr               2375      2584
+.gnu.version           150      4960
+.gnu.version_r         240      5112
+.rela.dyn            16968      5352
+.rela.plt             1416     22320
+.eh_frame               44     23736
+.eh_frame_hdr           20     23780
+.rodata              15660     23800
+.rodata.cst16          240     39472
+.rodata.cst4             4     39712
+.rodata.cst8             8     39720
+.rodata.str1.1        4453     39728
+.plt                   976    109728
+.text               762832    110720
+.data.rel.ro          6168    939088
+.dynamic               496    945256
+.fini_array              8    945752
+.init_array             56    945760
+.got                   104    945816
+.relro_padding       37120    945920
+.data                   64   1011456
+.got.plt               496   1011520
+.sdata                   8   1012016
+.tm_clone_table          0   1012024
+.bss                  1436   1012032
+.comment               111         0
+Total               853350
+
+

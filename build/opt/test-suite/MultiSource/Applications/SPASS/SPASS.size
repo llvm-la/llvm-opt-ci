@@ -1,0 +1,35 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Applications/SPASS/SPASS  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym               1080      784
+.dynstr                373     1864
+.gnu.version            90     2238
+.gnu.version_r          64     2328
+.rela.dyn             7224     2392
+.rela.plt              960     9616
+.eh_frame               64    10576
+.eh_frame_hdr           28    10640
+.rodata              43812    10668
+.rodata.cst16          352    54480
+.rodata.cst4             4    54832
+.rodata.str1.1       19231    54836
+.rodata.str1.8          96    74072
+.plt                   672   139712
+.text               531680   140384
+.data.rel.ro          1784   737600
+.dynamic               464   739384
+.fini_array              8   739848
+.init_array              8   739856
+.got                   632   739864
+.relro_padding       45936   740496
+.data                   16   806032
+.got.plt               344   806048
+.sdata                   8   806392
+.tm_clone_table          0   806400
+.bss                358540   806400
+.comment               111        0
+Total              1013678
+
+

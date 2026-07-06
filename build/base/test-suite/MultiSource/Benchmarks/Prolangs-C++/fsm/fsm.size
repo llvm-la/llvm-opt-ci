@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Prolangs-C++/fsm/fsm  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               276     1072
+.gnu.version           24     1348
+.gnu.version_r        112     1372
+.rela.dyn             360     1488
+.rela.plt             192     1848
+.eh_frame             172     2040
+.eh_frame_hdr          44     2212
+.rodata                13     2256
+.rodata.cst4            4     2272
+.rodata.str1.1         78     2276
+.plt                  160    67904
+.text                1956    68064
+.data.rel.ro          104   135560
+.dynamic              496   135664
+.fini_array             8   136160
+.init_array             8   136168
+.got                   32   136176
+.relro_padding      60400   136208
+.data                  36   201744
+.got.plt               88   201784
+.sdata                  8   201872
+.tm_clone_table         0   201880
+.bss                    1   201880
+.comment              111        0
+Total               65068
+
+

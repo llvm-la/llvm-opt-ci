@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/VersaBench/8b10b/8b10b  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               312      784
+.dynstr               119     1096
+.gnu.version           26     1216
+.gnu.version_r         32     1244
+.rela.dyn             120     1280
+.rela.plt             240     1400
+.eh_frame              44     1640
+.eh_frame_hdr          20     1684
+.rodata.cst16          16     1712
+.rodata.cst4            4     1728
+.rodata.str1.1         57     1732
+.plt                  192    67328
+.text                1784    67520
+.dynamic              448   134840
+.fini_array             8   135288
+.init_array             8   135296
+.got                   40   135304
+.relro_padding      61264   135344
+.data                 324   200880
+.got.plt              104   201208
+.sdata                  8   201312
+.tm_clone_table         0   201320
+.bss                 4104   201320
+.comment              111        0
+Total               69482
+
+

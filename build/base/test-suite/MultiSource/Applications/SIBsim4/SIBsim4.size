@@ -1,0 +1,35 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Applications/SIBsim4/SIBsim4  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym              1008      784
+.dynstr               363     1792
+.gnu.version           84     2156
+.gnu.version_r         32     2240
+.rela.dyn             312     2272
+.rela.plt             840     2584
+.eh_frame              44     3424
+.eh_frame_hdr          20     3468
+.rodata              2256     3488
+.rodata.cst16          48     5744
+.rodata.cst4            4     5792
+.rodata.cst8           32     5800
+.rodata.str1.1       1932     5832
+.plt                  592    73312
+.plt.got               16    73904
+.text               43756    73920
+.dynamic              448   183216
+.fini_array             8   183664
+.init_array             8   183672
+.got                  104   183680
+.relro_padding      12824   183784
+.data                   0   249320
+.got.plt              304   249320
+.sdata                  8   249624
+.tm_clone_table         0   249632
+.bss                 1280   249632
+.comment              111        0
+Total               66531
+
+

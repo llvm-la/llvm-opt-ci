@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vfrstp 
+VERIFY: %b/fpcmp-target %o %S/lsx-vfrstp.reference_output

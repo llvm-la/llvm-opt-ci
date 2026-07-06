@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Stanford/Bubblesort  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                83      928
+.gnu.version           12     1012
+.gnu.version_r         32     1024
+.rela.dyn              96     1056
+.rela.plt              96     1152
+.eh_frame              44     1248
+.eh_frame_hdr          20     1292
+.rodata.cst4            4     1312
+.rodata.str1.1         22     1316
+.plt                   96    66880
+.text                1352    66976
+.dynamic              464   133864
+.fini_array             8   134328
+.init_array             8   134336
+.got                   32   134344
+.relro_padding      62232   134376
+.data                   0   199912
+.got.plt               56   199912
+.sdata                  8   199968
+.tm_clone_table         0   199976
+.bss                94584   199976
+.comment              111        0
+Total              159601
+
+

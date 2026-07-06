@@ -1,0 +1,142 @@
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/vcirc/vcirc.cpp"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 470 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/vcirc/vcirc.cpp" 2
+
+
+
+
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/vcirc/vpoint.h" 1
+# 10 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/vcirc/vpoint.h"
+enum Boolean { False, True };
+
+class Location {
+protected:
+   int X;
+   int Y;
+
+public:
+   Location(int InitX, int InitY);
+   int GetX(void);
+   int GetY(void);
+};
+
+class Point : public Location {
+
+
+   protected:
+   Boolean Visible;
+
+public:
+   Point(int InitX, int InitY) : Location(InitX,InitY) {
+ Visible = False;
+   }
+   virtual void Show(void);
+   virtual void Hide(void);
+   Boolean IsVisible(void);
+   void MoveTo(int NewX, int NewY);
+};
+# 9 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/vcirc/vcirc.cpp" 2
+
+
+
+Location::Location(int InitX, int InitY) {
+   X = InitX;
+   Y = InitY;
+}
+
+int Location::GetX() {
+   return X;
+}
+
+int Location::GetY() {
+   return Y;
+}
+
+
+
+
+void Point::Show() {
+   Visible = True;
+
+}
+
+void Point::Hide(void) {
+   Visible = False;
+
+}
+
+Boolean Point::IsVisible() {
+   return Visible;
+}
+
+void Point::MoveTo(int NewX, int NewY) {
+   Hide();
+   X = NewX;
+   Y = NewY;
+   Show();
+}
+
+
+
+class Circle : public Point {
+   int Radius;
+
+public:
+   Circle(int InitX, int InitY, int InitRadius) : Point(InitX,InitY) {
+ Radius = InitRadius;
+   }
+   void Show(void);
+   void Hide(void);
+   void Expand(int ExpandBy);
+   void Contract(int ContractBy);
+};
+
+void Circle::Show()
+{
+   Visible = True;
+
+}
+
+void Circle::Hide()
+{
+   if (!Visible) return;
+   unsigned int TempColor;
+
+
+   Visible = False;
+
+
+}
+
+void Circle::Expand(int ExpandBy)
+{
+   Boolean vis = Visible;
+   if (vis) Hide();
+   Radius += ExpandBy;
+   if (Radius < 0)
+      Radius = 0;
+   if (vis) Show();
+}
+
+inline void Circle::Contract(int ContractBy)
+{
+   Expand(-ContractBy);
+}
+
+int main()
+{
+   Circle MyCircle(50, 100, 25);
+   MyCircle.Show();
+   MyCircle.MoveTo(100, 125);
+
+   MyCircle.Expand(25);
+   MyCircle.Contract(35);
+   return 0;
+}

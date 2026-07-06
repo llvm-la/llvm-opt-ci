@@ -1,0 +1,146 @@
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/ieee/fp-cmp-4f.c"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 399 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/ieee/fp-cmp-4f.c" 2
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/ieee/fp-cmp-4.c" 1
+
+
+
+
+void
+test_isunordered(float x, float y, int true)
+{
+  if (__builtin_isunordered(x, y))
+    {
+      if (! true)
+ abort ();
+    }
+  else
+    {
+      if (true)
+ abort ();
+    }
+}
+
+void
+test_isless(float x, float y, int true)
+{
+  if (__builtin_isless(x, y))
+    {
+      if (! true)
+ abort ();
+    }
+  else
+    {
+      if (true)
+ abort ();
+    }
+}
+
+void
+test_islessequal(float x, float y, int true)
+{
+  if (__builtin_islessequal(x, y))
+    {
+      if (! true)
+ abort ();
+    }
+  else
+    {
+      if (true)
+ abort ();
+    }
+}
+
+void
+test_isgreater(float x, float y, int true)
+{
+  if (__builtin_isgreater(x, y))
+    {
+      if (! true)
+ abort ();
+    }
+  else
+    {
+      if (true)
+ abort ();
+    }
+}
+
+void
+test_isgreaterequal(float x, float y, int true)
+{
+  if (__builtin_isgreaterequal(x, y))
+    {
+      if (! true)
+ abort ();
+    }
+  else
+    {
+      if (true)
+ abort ();
+    }
+}
+
+void
+test_islessgreater(float x, float y, int true)
+{
+  if (__builtin_islessgreater(x, y))
+    {
+      if (! true)
+ abort ();
+    }
+  else
+    {
+      if (true)
+ abort ();
+    }
+}
+
+
+
+int
+main()
+{
+  struct try
+  {
+    float x, y;
+    unsigned unord : 1;
+    unsigned lt : 1;
+    unsigned le : 1;
+    unsigned gt : 1;
+    unsigned ge : 1;
+    unsigned lg : 1;
+  };
+
+  static struct try const data[] =
+  {
+    { (0.0 / 0.0), (0.0 / 0.0), 1, 0, 0, 0, 0, 0 },
+    { 0.0, (0.0 / 0.0), 1, 0, 0, 0, 0, 0 },
+    { (0.0 / 0.0), 0.0, 1, 0, 0, 0, 0, 0 },
+    { 0.0, 0.0, 0, 0, 1, 0, 1, 0 },
+    { 1.0, 2.0, 0, 1, 1, 0, 0, 1 },
+    { 2.0, 1.0, 0, 0, 0, 1, 1, 1 },
+  };
+
+  const int n = sizeof(data) / sizeof(data[0]);
+  int i;
+
+  for (i = 0; i < n; ++i)
+    {
+      test_isunordered (data[i].x, data[i].y, data[i].unord);
+      test_isless (data[i].x, data[i].y, data[i].lt);
+      test_islessequal (data[i].x, data[i].y, data[i].le);
+      test_isgreater (data[i].x, data[i].y, data[i].gt);
+      test_isgreaterequal (data[i].x, data[i].y, data[i].ge);
+      test_islessgreater (data[i].x, data[i].y, data[i].lg);
+    }
+
+  exit (0);
+}
+# 3 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/ieee/fp-cmp-4f.c" 2
+

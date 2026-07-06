@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MicroBenchmarks/LoopInterchange/LoopInterchange  :
+section                  size     addr
+.interp                    37      680
+.note.ABI-tag              32      720
+.gnu.hash                  28      752
+.dynsym                  4128      784
+.dynstr                  5565     4912
+.gnu.version              344    10478
+.gnu.version_r            384    10824
+.rela.dyn                9168    11208
+.rela.plt                3456    20376
+.eh_frame               18132    23832
+.eh_frame_hdr            4140    41964
+.gcc_except_table       12496    46104
+.rodata                  2588    58600
+.rodata.cst16             176    61200
+.rodata.cst32              32    61376
+.rodata.cst4                4    61408
+.rodata.cst8               80    61416
+.rodata.str1.1           7319    61496
+.rodata.str1.8            960    68816
+.plt                     2336   135312
+.text                  245380   137664
+.data.rel.ro             1720   448584
+.dynamic                  496   450304
+.fini_array                 8   450800
+.init_array               152   450808
+.got                      344   450960
+.relro_padding           7448   451304
+.data                    1040   516840
+.got.plt                 1176   517880
+.sdata                      8   519056
+.tm_clone_table             0   519064
+.bss                  4195000   519064
+.comment                  111        0
+Total                 4524288
+
+

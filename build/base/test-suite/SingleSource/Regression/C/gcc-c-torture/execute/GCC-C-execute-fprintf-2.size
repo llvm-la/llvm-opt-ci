@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Regression/C/gcc-c-torture/execute/GCC-C-execute-fprintf-2  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               125     1072
+.gnu.version           24     1198
+.gnu.version_r         32     1224
+.rela.dyn              96     1256
+.rela.plt             240     1352
+.eh_frame              44     1592
+.eh_frame_hdr          20     1636
+.rodata.cst4            4     1656
+.rodata.str1.1         86     1660
+.plt                  192    67296
+.text                1008    67488
+.dynamic              448   134032
+.fini_array             8   134480
+.init_array             8   134488
+.got                   32   134496
+.relro_padding      62080   134528
+.data                   0   200064
+.got.plt              104   200064
+.sdata                  8   200168
+.tm_clone_table         0   200176
+.bss                    1   200176
+.comment              111        0
+Total               65056
+
+

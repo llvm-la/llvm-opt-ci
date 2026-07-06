@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/ftic-early-exit 
+VERIFY: %b/fpcmp-target %o %S/early-exit.reference_output-ftic

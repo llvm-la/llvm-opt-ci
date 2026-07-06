@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Applications/Burg/burg  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               792      784
+.dynstr               261     1576
+.gnu.version           66     1838
+.gnu.version_r         32     1904
+.rela.dyn            1008     1936
+.rela.plt             672     2944
+.eh_frame              44     3616
+.eh_frame_hdr          20     3660
+.rodata              2226     3680
+.rodata.cst4            4     5908
+.rodata.str1.1       8220     5912
+.rodata.str1.8         24    14136
+.plt                  480    79696
+.text               49328    80192
+.dynamic              448   195056
+.fini_array             8   195504
+.init_array             8   195512
+.got                  328   195520
+.relro_padding        760   195848
+.data                 166   261384
+.got.plt              248   261552
+.sdata                  8   261800
+.tm_clone_table         0   261808
+.bss                16676   261808
+.comment              111        0
+Total               82035
+
+

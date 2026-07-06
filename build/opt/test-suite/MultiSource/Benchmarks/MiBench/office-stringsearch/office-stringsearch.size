@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/MiBench/office-stringsearch/office-stringsearch  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               360      784
+.dynstr               176     1144
+.gnu.version           30     1320
+.gnu.version_r         32     1352
+.rela.dyn           64056     1384
+.rela.plt             288    65440
+.eh_frame              64    65728
+.eh_frame_hdr          28    65792
+.rodata.cst16          16    65824
+.rodata.cst4            4    65840
+.rodata.str1.1       4151    65844
+.plt                  224   135536
+.text                5608   135776
+.data.rel.ro        21320   206920
+.dynamic              464   228240
+.fini_array             8   228704
+.init_array             8   228712
+.got                   40   228720
+.relro_padding      33384   228760
+.data                 256   294296
+.got.plt              120   294552
+.sdata                  8   294672
+.tm_clone_table         0   294680
+.bss                 5240   294688
+.comment              111        0
+Total              136093
+
+

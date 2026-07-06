@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Olden/em3d/em3d  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               116     1072
+.gnu.version           24     1188
+.gnu.version_r         32     1212
+.rela.dyn             216     1248
+.rela.plt             240     1464
+.eh_frame              44     1704
+.eh_frame_hdr          20     1748
+.rodata.cst4            4     1768
+.rodata.cst8            8     1776
+.rodata.str1.1        442     1784
+.plt                  192    67776
+.text                5084    67968
+.dynamic              448   138592
+.fini_array             8   139040
+.init_array             8   139048
+.got                   72   139056
+.relro_padding      57480   139128
+.data                   0   204664
+.got.plt              104   204664
+.sdata                  8   204768
+.tm_clone_table         0   204776
+.bss                   40   204776
+.comment              111        0
+Total               65086
+
+

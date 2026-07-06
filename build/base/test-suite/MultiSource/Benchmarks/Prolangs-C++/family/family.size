@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Prolangs-C++/family/family  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 312      784
+.dynstr                 278     1096
+.gnu.version             26     1374
+.gnu.version_r          112     1400
+.rela.dyn               456     1512
+.rela.plt               192     1968
+.eh_frame               244     2160
+.eh_frame_hdr            60     2404
+.gcc_except_table        72     2464
+.rodata                  28     2536
+.rodata.cst4              4     2564
+.rodata.str1.1           36     2568
+.plt                    160    68144
+.text                  1628    68320
+.data.rel.ro            136   135488
+.dynamic                496   135624
+.fini_array               8   136120
+.init_array               8   136128
+.got                     32   136136
+.relro_padding        60440   136168
+.data                     8   201704
+.got.plt                 88   201712
+.sdata                    8   201800
+.tm_clone_table           0   201808
+.bss                      1   201808
+.comment                111        0
+Total                 65041
+
+

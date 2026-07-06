@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Shootout-C++/Shootout-C++-ary  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 456      784
+.dynstr                 427     1240
+.gnu.version             38     1668
+.gnu.version_r          176     1708
+.rela.dyn               144     1888
+.rela.plt               336     2032
+.eh_frame               116     2368
+.eh_frame_hdr            28     2484
+.gcc_except_table        44     2512
+.rodata.cst16            16     2560
+.rodata.cst4              4     2576
+.rodata.str1.1           49     2580
+.plt                    256    68176
+.text                  1208    68448
+.dynamic                496   135192
+.fini_array               8   135688
+.init_array               8   135696
+.got                     40   135704
+.relro_padding        60864   135744
+.data                     8   201280
+.got.plt                136   201288
+.sdata                    8   201424
+.tm_clone_table           0   201432
+.bss                      1   201432
+.comment                111        0
+Total                 65075
+
+

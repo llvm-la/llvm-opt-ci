@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/mediabench/g721/g721encode/encode  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               112     1072
+.gnu.version           24     1184
+.gnu.version_r         32     1208
+.rela.dyn             240     1240
+.rela.plt             168     1480
+.eh_frame              44     1648
+.eh_frame_hdr          20     1692
+.rodata               192     1712
+.rodata.cst16          48     1904
+.rodata.cst32          96     1952
+.rodata.cst4            4     2048
+.rodata.str1.1        339     2052
+.plt                  144    67936
+.text                9060    68096
+.dynamic              448   142696
+.fini_array             8   143144
+.init_array             8   143152
+.got                   80   143160
+.relro_padding      53368   143240
+.data                 306   208776
+.got.plt               80   209088
+.sdata                  8   209168
+.tm_clone_table         0   209176
+.bss                   12   209176
+.comment              111        0
+Total               65337
+
+

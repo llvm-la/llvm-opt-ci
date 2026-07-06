@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Regression/C++/EH/Regression-C++-exception_spec_test  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 384      784
+.dynstr                 310     1168
+.gnu.version             32     1478
+.gnu.version_r           80     1512
+.rela.dyn               192     1592
+.rela.plt               264     1784
+.eh_frame               196     2048
+.eh_frame_hdr            52     2244
+.gcc_except_table        60     2296
+.rodata.cst4              4     2356
+.rodata.str1.1          309     2360
+.plt                    208    68208
+.text                  1012    68416
+.dynamic                496   134968
+.fini_array               8   135464
+.init_array               8   135472
+.got                     48   135480
+.relro_padding        61080   135528
+.data                    16   201064
+.got.plt                112   201080
+.sdata                    8   201192
+.tm_clone_table           0   201200
+.bss                      1   201200
+.comment                111        0
+Total                 65088
+
+

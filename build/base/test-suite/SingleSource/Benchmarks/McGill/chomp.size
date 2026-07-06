@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/McGill/chomp  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               121     1072
+.gnu.version           24     1194
+.gnu.version_r         32     1220
+.rela.dyn             120     1256
+.rela.plt             216     1376
+.eh_frame              44     1592
+.eh_frame_hdr          20     1636
+.rodata.cst4            4     1656
+.rodata.str1.1        247     1660
+.plt                  176    67456
+.text                7312    67648
+.dynamic              464   140496
+.fini_array             8   140960
+.init_array             8   140968
+.got                   40   140976
+.relro_padding      55592   141016
+.data                   0   206552
+.got.plt               96   206552
+.sdata                  8   206648
+.tm_clone_table         0   206656
+.bss                   32   206656
+.comment              111        0
+Total               65060
+
+

@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MicroBenchmarks/ImageProcessing/BilateralFiltering/BilateralFilter  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4272      784
+.dynstr                 5662     5056
+.gnu.version             356    10718
+.gnu.version_r           384    11076
+.rela.dyn               9288    11464
+.rela.plt               3552    20752
+.eh_frame              18452    24304
+.eh_frame_hdr           4212    42756
+.gcc_except_table      12648    46968
+.rodata                 2644    59616
+.rodata.cst16            160    62272
+.rodata.cst32             32    62432
+.rodata.cst4               4    62464
+.rodata.cst8             104    62472
+.rodata.str1.1          7386    62576
+.rodata.str1.8           960    69968
+.plt                    2400   136464
+.text                 249060   138880
+.data.rel.ro            1768   453480
+.dynamic                 496   455248
+.fini_array                8   455744
+.init_array              152   455752
+.got                     344   455904
+.relro_padding          2504   456248
+.data                   1040   521784
+.got.plt                1208   522824
+.sdata                     8   524032
+.tm_clone_table            0   524040
+.bss                    2072   524040
+.comment                 111        0
+Total                 331384
+
+

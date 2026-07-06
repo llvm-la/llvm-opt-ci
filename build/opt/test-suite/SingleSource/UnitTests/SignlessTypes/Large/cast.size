@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/SignlessTypes/Large/cast  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               168      784
+.dynstr               141      952
+.gnu.version           14     1094
+.gnu.version_r         48     1108
+.rela.dyn              96     1160
+.rela.plt             120     1256
+.eh_frame              44     1376
+.eh_frame_hdr          20     1420
+.rodata.cst4            4     1440
+.rodata.str1.1        210     1444
+.plt                  112    67200
+.text                3500    67328
+.dynamic              496   136368
+.fini_array             8   136864
+.init_array             8   136872
+.got                   32   136880
+.relro_padding      59696   136912
+.data                   0   202448
+.got.plt               64   202448
+.sdata                  8   202512
+.tm_clone_table         0   202520
+.bss                    1   202520
+.comment              111        0
+Total               64998
+
+

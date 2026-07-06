@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/MiBench/consumer-lame/consumer-lame  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym               1368      784
+.dynstr                409     2152
+.gnu.version           114     2562
+.gnu.version_r          64     2676
+.rela.dyn             7080     2744
+.rela.plt             1248     9824
+.eh_frame               44    11072
+.eh_frame_hdr           20    11116
+.rodata               3844    11136
+.rodata.cst16         3680    14992
+.rodata.cst32           32    18672
+.rodata.cst4             4    18704
+.rodata.cst8          1112    18712
+.rodata.str1.1       10595    19824
+.plt                   864    95968
+.text               165344    96832
+.data.rel.ro           672   327712
+.dynamic               464   328384
+.fini_array              8   328848
+.init_array              8   328856
+.got                   240   328864
+.relro_padding       64112   329104
+.data                69444   394656
+.got.plt               440   464104
+.sdata                   8   464544
+.tm_clone_table          0   464552
+.bss                506540   464560
+.comment               111        0
+Total               837966
+
+

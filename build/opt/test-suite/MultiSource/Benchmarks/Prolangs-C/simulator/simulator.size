@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Prolangs-C/simulator/simulator  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               624      784
+.dynstr               213     1408
+.gnu.version           52     1622
+.gnu.version_r         64     1676
+.rela.dyn            2400     1744
+.rela.plt             528     4144
+.eh_frame              44     4672
+.eh_frame_hdr          20     4716
+.rodata               388     4736
+.rodata.cst4            4     5124
+.rodata.cst8           16     5128
+.rodata.str1.1       4797     5144
+.plt                  384    75488
+.text               36836    75872
+.dynamic              464   178248
+.fini_array             8   178712
+.init_array             8   178720
+.got                  112   178728
+.relro_padding      17768   178840
+.data                1344   244376
+.got.plt              200   245720
+.sdata                  8   245920
+.tm_clone_table         0   245928
+.bss                   48   245928
+.common              4441   245976
+.comment              111        0
+Total               70979
+
+

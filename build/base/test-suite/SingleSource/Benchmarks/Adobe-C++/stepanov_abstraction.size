@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Adobe-C++/stepanov_abstraction  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               384      784
+.dynstr               194     1168
+.gnu.version           32     1362
+.gnu.version_r         80     1396
+.rela.dyn             672     1480
+.rela.plt             336     2152
+.eh_frame            1228     2488
+.eh_frame_hdr         268     3716
+.rodata.cst4            4     3984
+.rodata.cst8           16     3992
+.rodata.str1.1       1042     4008
+.plt                  256    70592
+.text               22144    70848
+.dynamic              496   158528
+.fini_array             8   159024
+.init_array             8   159032
+.got                   32   159040
+.relro_padding      37536   159072
+.data                 208   224608
+.got.plt              136   224816
+.sdata                  8   224952
+.tm_clone_table         0   224960
+.bss                96040   224960
+.comment              111        0
+Total              161336
+
+

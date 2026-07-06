@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/MiBench/network-patricia/network-patricia  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               384      784
+.dynstr               156     1168
+.gnu.version           32     1324
+.gnu.version_r         32     1356
+.rela.dyn             120     1392
+.rela.plt             312     1512
+.eh_frame              44     1824
+.eh_frame_hdr          20     1868
+.rodata.cst4            4     1888
+.rodata.str1.1        188     1892
+.plt                  240    67616
+.text                2452    67872
+.dynamic              464   135864
+.fini_array             8   136328
+.init_array             8   136336
+.got                   40   136344
+.relro_padding      60224   136384
+.data                   0   201920
+.got.plt              128   201920
+.sdata                  8   202048
+.tm_clone_table         0   202056
+.bss                    1   202056
+.comment              111        0
+Total               65073
+
+

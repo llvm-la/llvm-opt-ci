@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Prolangs-C++/trees/trees  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 240      784
+.dynstr                 273     1024
+.gnu.version             20     1298
+.gnu.version_r          128     1320
+.rela.dyn               672     1448
+.rela.plt               120     2120
+.eh_frame               476     2240
+.eh_frame_hdr           116     2716
+.gcc_except_table       136     2832
+.rodata                  40     2968
+.rodata.cst4              4     3008
+.rodata.str1.1            6     3012
+.plt                    112    68560
+.text                  5428    68672
+.data.rel.ro            208   139640
+.dynamic                496   139848
+.fini_array               8   140344
+.init_array               8   140352
+.got                     32   140360
+.relro_padding        56216   140392
+.data                     8   205928
+.got.plt                 64   205936
+.sdata                    8   206000
+.tm_clone_table           0   206008
+.bss                     16   206008
+.comment                111        0
+Total                 65043
+
+

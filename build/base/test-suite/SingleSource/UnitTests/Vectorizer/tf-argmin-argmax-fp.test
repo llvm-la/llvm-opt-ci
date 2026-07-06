@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/tf-argmin-argmax-fp 
+VERIFY: %b/fpcmp-target %o %S/argmin-argmax-fp.reference_output-tf

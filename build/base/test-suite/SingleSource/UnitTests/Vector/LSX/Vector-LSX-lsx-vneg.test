@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vneg 
+VERIFY: %b/fpcmp-target %o %S/lsx-vneg.reference_output

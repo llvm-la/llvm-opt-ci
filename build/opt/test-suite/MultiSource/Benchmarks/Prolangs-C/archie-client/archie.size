@@ -1,0 +1,35 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Prolangs-C/archie-client/archie  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym              1104      784
+.dynstr               394     1888
+.gnu.version           92     2282
+.gnu.version_r         32     2376
+.rela.dyn           12984     2408
+.rela.plt            1032    15392
+.eh_frame              44    16424
+.eh_frame_hdr          20    16468
+.rodata               588    16488
+.rodata.cst16          32    17088
+.rodata.cst4            4    17120
+.rodata.str1.1       3831    17124
+.rodata.str1.8         56    20960
+.plt                  720    86560
+.text               19064    87296
+.data.rel.ro          104   171896
+.dynamic              448   172000
+.fini_array             8   172448
+.init_array             8   172456
+.got                  128   172464
+.relro_padding      24016   172592
+.data                6156   238128
+.got.plt              368   244288
+.sdata                  8   244656
+.tm_clone_table         0   244664
+.bss                 2288   244672
+.comment              111        0
+Total               73737
+
+

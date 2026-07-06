@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/FreeBench/fourinarow/fourinarow  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               336      784
+.dynstr               134     1120
+.gnu.version           28     1254
+.gnu.version_r         32     1284
+.rela.dyn             144     1320
+.rela.plt             240     1464
+.eh_frame              44     1704
+.eh_frame_hdr          20     1748
+.rodata.cst4            4     1768
+.rodata.str1.1        338     1772
+.plt                  192    67648
+.text               28580    67840
+.dynamic              448   161960
+.fini_array             8   162408
+.init_array             8   162416
+.got                   48   162424
+.relro_padding      34136   162472
+.data                   4   228008
+.got.plt              104   228016
+.sdata                  8   228120
+.tm_clone_table         0   228128
+.bss                  112   228128
+.comment              111        0
+Total               65176
+
+

@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Misc-C++/Large/ray  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 432      784
+.dynstr                 533     1216
+.gnu.version             36     1750
+.gnu.version_r          224     1788
+.rela.dyn               528     2016
+.rela.plt               264     2544
+.eh_frame               412     2808
+.eh_frame_hdr            84     3220
+.gcc_except_table        96     3304
+.rodata                  22     3400
+.rodata.cst16            48     3424
+.rodata.cst4              4     3472
+.rodata.cst8             24     3480
+.rodata.str1.1           12     3504
+.plt                    208    69056
+.text                  5012    69280
+.data.rel.ro            144   139832
+.dynamic                496   139976
+.fini_array               8   140472
+.init_array               8   140480
+.got                     40   140488
+.relro_padding        56080   140528
+.data                    24   206064
+.got.plt                112   206088
+.sdata                    8   206200
+.tm_clone_table           0   206208
+.bss                      2   206208
+.comment                111        0
+Total                 65069
+
+

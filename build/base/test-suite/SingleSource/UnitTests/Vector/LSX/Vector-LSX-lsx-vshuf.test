@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vshuf 
+VERIFY: %b/fpcmp-target %o %S/lsx-vshuf.reference_output

@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Prolangs-C++/garage/garage  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 336      784
+.dynstr                 291     1120
+.gnu.version             28     1412
+.gnu.version_r          112     1440
+.rela.dyn               480     1552
+.rela.plt               216     2032
+.eh_frame               292     2248
+.eh_frame_hdr            76     2540
+.gcc_except_table       176     2616
+.rodata                  21     2792
+.rodata.cst4              4     2816
+.rodata.str1.1           79     2820
+.plt                    176    68448
+.text                  3804    68640
+.data.rel.ro            136   137984
+.dynamic                496   138120
+.fini_array               8   138616
+.init_array              16   138624
+.got                     32   138640
+.relro_padding        57936   138672
+.data                     8   204208
+.got.plt                 96   204216
+.sdata                    8   204312
+.tm_clone_table           0   204320
+.bss                    168   204320
+.comment                111        0
+Total                 65203
+
+

@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Polybench/linear-algebra/solvers/durbin/durbin  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               312      784
+.dynstr               138     1096
+.gnu.version           26     1234
+.gnu.version_r         32     1260
+.rela.dyn             120     1296
+.rela.plt             240     1416
+.eh_frame              44     1656
+.eh_frame_hdr          20     1700
+.rodata.cst4            4     1720
+.rodata.cst8            8     1728
+.rodata.str1.1        214     1736
+.plt                  192    67488
+.text                2784    67680
+.dynamic              464   136000
+.fini_array             8   136464
+.init_array             8   136472
+.got                   40   136480
+.relro_padding      60088   136520
+.data                   0   202056
+.got.plt              104   202056
+.sdata                  8   202160
+.tm_clone_table         0   202168
+.bss                   56   202168
+.comment              111        0
+Total               65118
+
+

@@ -1,0 +1,131 @@
+	.file	"pr35472.c"
+	.text
+	.globl	foo                             # -- Begin function foo
+	.p2align	5
+	.type	foo,@function
+foo:                                    # @foo
+# %bb.0:
+	addi.w	$a2, $zero, -1
+	lu32i.d	$a2, 0
+	st.w	$a2, $a0, 0
+	pcalau12i	$a0, %pc_hi20(p)
+	st.d	$a1, $a0, %pc_lo12(p)
+	ret
+.Lfunc_end0:
+	.size	foo, .Lfunc_end0-foo
+                                        # -- End function
+	.globl	test                            # -- Begin function test
+	.p2align	5
+	.type	test,@function
+test:                                   # @test
+# %bb.0:
+	addi.d	$sp, $sp, -144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$zero, $sp, 76
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 84
+	vst	$vr0, $sp, 100
+	vst	$vr0, $sp, 116
+	st.w	$zero, $sp, 132
+	vst	$vr0, $sp, 8
+	vst	$vr0, $sp, 24
+	vst	$vr0, $sp, 40
+	vst	$vr0, $sp, 56
+	addi.d	$a0, $sp, 72
+	addi.d	$a1, $sp, 8
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(p)
+	ld.d	$a0, $a0, %pc_lo12(p)
+	vld	$vr0, $sp, 120
+	vld	$vr1, $sp, 104
+	vld	$vr2, $sp, 88
+	vld	$vr3, $sp, 72
+	vst	$vr0, $a0, 48
+	vst	$vr1, $a0, 32
+	vst	$vr2, $a0, 16
+	vst	$vr3, $a0, 0
+	vld	$vr0, $sp, 24
+	vst	$vr0, $a0, 16
+	vld	$vr0, $sp, 40
+	vst	$vr0, $a0, 32
+	vld	$vr0, $sp, 56
+	vst	$vr0, $a0, 48
+	vld	$vr0, $sp, 8
+	vst	$vr0, $a0, 0
+	ld.w	$a0, $sp, 8
+	addi.w	$a1, $zero, -1
+	bne	$a0, $a1, .LBB1_2
+# %bb.1:
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
+	ret
+.LBB1_2:
+	pcaddu18i	$ra, %call36(abort)
+	jirl	$ra, $ra, 0
+.Lfunc_end1:
+	.size	test, .Lfunc_end1-test
+                                        # -- End function
+	.globl	main                            # -- Begin function main
+	.p2align	5
+	.type	main,@function
+main:                                   # @main
+# %bb.0:
+	addi.d	$sp, $sp, -144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$zero, $sp, 76
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 84
+	vst	$vr0, $sp, 100
+	vst	$vr0, $sp, 116
+	st.w	$zero, $sp, 132
+	vst	$vr0, $sp, 8
+	vst	$vr0, $sp, 24
+	vst	$vr0, $sp, 40
+	vst	$vr0, $sp, 56
+	addi.d	$a0, $sp, 72
+	addi.d	$a1, $sp, 8
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(p)
+	ld.d	$a0, $a0, %pc_lo12(p)
+	vld	$vr0, $sp, 120
+	vld	$vr1, $sp, 104
+	vld	$vr2, $sp, 88
+	vld	$vr3, $sp, 72
+	vst	$vr0, $a0, 48
+	vst	$vr1, $a0, 32
+	vst	$vr2, $a0, 16
+	vst	$vr3, $a0, 0
+	vld	$vr0, $sp, 24
+	vst	$vr0, $a0, 16
+	vld	$vr0, $sp, 40
+	vst	$vr0, $a0, 32
+	vld	$vr0, $sp, 56
+	vst	$vr0, $a0, 48
+	vld	$vr0, $sp, 8
+	vst	$vr0, $a0, 0
+	ld.w	$a0, $sp, 8
+	addi.w	$a1, $zero, -1
+	bne	$a0, $a1, .LBB2_2
+# %bb.1:                                # %test.exit
+	move	$a0, $zero
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
+	ret
+.LBB2_2:
+	pcaddu18i	$ra, %call36(abort)
+	jirl	$ra, $ra, 0
+.Lfunc_end2:
+	.size	main, .Lfunc_end2-main
+                                        # -- End function
+	.type	p,@object                       # @p
+	.bss
+	.globl	p
+	.p2align	3, 0x0
+p:
+	.dword	0
+	.size	p, 8
+
+	.section	".note.GNU-stack","",@progbits
+	.addrsig

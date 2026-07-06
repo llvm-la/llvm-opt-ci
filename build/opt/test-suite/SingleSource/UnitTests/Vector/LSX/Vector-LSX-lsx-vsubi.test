@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vsubi 
+VERIFY: %b/fpcmp-target %o %S/lsx-vsubi.reference_output

@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vfsqrt_d 
+VERIFY: %b/fpcmp-target %o %S/lsx-vfsqrt_d.reference_output

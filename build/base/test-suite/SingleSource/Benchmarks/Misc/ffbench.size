@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Misc/ffbench  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               240      784
+.dynstr               109     1024
+.gnu.version           20     1134
+.gnu.version_r         64     1156
+.rela.dyn             120     1224
+.rela.plt             168     1344
+.eh_frame              44     1512
+.eh_frame_hdr          20     1556
+.rodata.cst16          16     1584
+.rodata.cst4            4     1600
+.rodata.cst8           32     1608
+.rodata.str1.1        146     1640
+.plt                  144    67328
+.text                2884    67488
+.dynamic              464   135912
+.fini_array             8   136376
+.init_array             8   136384
+.got                   40   136392
+.relro_padding      60176   136432
+.data                   0   201968
+.got.plt               80   201968
+.sdata                  8   202048
+.tm_clone_table         0   202056
+.bss                    9   202056
+.comment              111        0
+Total               65012
+
+

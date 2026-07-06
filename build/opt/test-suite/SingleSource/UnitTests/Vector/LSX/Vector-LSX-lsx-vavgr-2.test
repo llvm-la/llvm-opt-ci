@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vavgr-2 
+VERIFY: %b/fpcmp-target %o %S/lsx-vavgr-2.reference_output

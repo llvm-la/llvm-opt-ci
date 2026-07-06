@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/tf-gcc-loops 
+VERIFY: %b/fpcmp-target %o %S/gcc-loops.reference_output.little-endian-tf

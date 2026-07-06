@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/RSBench/rsbench  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               624      784
+.dynstr               202     1408
+.gnu.version           52     1610
+.gnu.version_r         64     1664
+.rela.dyn             120     1728
+.rela.plt             552     1848
+.eh_frame              84     2400
+.eh_frame_hdr          36     2484
+.rodata              1928     2520
+.rodata.cst16        1168     4448
+.rodata.cst4            4     5616
+.rodata.cst8          296     5624
+.rodata.str1.1       1785     5920
+.plt                  400    73248
+.text               19424    73664
+.dynamic              464   158624
+.fini_array             8   159088
+.init_array             8   159096
+.got                   40   159104
+.relro_padding      37464   159144
+.data                   0   224680
+.got.plt              208   224680
+.sdata                  8   224888
+.tm_clone_table         0   224896
+.bss                 1384   224896
+.comment              111        0
+Total               66531
+
+

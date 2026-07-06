@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/ASC_Sequoia/IRSmk/IRSmk  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               264      784
+.dynstr               124     1048
+.gnu.version           22     1172
+.gnu.version_r         32     1196
+.rela.dyn              96     1232
+.rela.plt             216     1328
+.eh_frame              44     1544
+.eh_frame_hdr          20     1588
+.rodata.cst4            4     1608
+.rodata.str1.1        421     1612
+.plt                  176    67584
+.text                7460    67776
+.dynamic              464   140776
+.fini_array             8   141240
+.init_array             8   141248
+.got                   32   141256
+.relro_padding      55320   141288
+.data                   0   206824
+.got.plt               96   206824
+.sdata                  8   206920
+.tm_clone_table         0   206928
+.bss                    1   206928
+.common                44   206932
+.comment              111        0
+Total               65068
+
+

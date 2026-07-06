@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/TSVC/Expansion-flt/Expansion-flt  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 264      784
+.dynstr                 127     1048
+.gnu.version             22     1176
+.gnu.version_r           32     1200
+.rela.dyn               312     1232
+.rela.plt               216     1544
+.eh_frame                44     1760
+.eh_frame_hdr            20     1804
+.rodata                 544     1824
+.rodata.cst16            32     2368
+.rodata.cst4              4     2400
+.rodata.str1.1         1052     2404
+.plt                    176    68992
+.text                 49848    69184
+.data.rel.ro            136   184576
+.dynamic                464   184712
+.fini_array               8   185176
+.init_array               8   185184
+.got                     32   185192
+.relro_padding        11384   185224
+.data                     8   250760
+.got.plt                 96   250768
+.sdata                    8   250864
+.tm_clone_table           0   250872
+.bss                2847232   250880
+.comment                111        0
+Total               2912277
+
+

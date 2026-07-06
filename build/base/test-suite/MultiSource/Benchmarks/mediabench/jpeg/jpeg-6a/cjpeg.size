@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/mediabench/jpeg/jpeg-6a/cjpeg  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym                624      784
+.dynstr                237     1408
+.gnu.version            52     1646
+.gnu.version_r          32     1700
+.rela.dyn             4320     1736
+.rela.plt              504     6056
+.eh_frame               44     6560
+.eh_frame_hdr           20     6604
+.rodata               3332     6624
+.rodata.cst16         1056     9968
+.rodata.cst32           32    11024
+.rodata.cst4             4    11056
+.rodata.cst8            48    11064
+.rodata.str1.1        7478    11112
+.plt                   368    84128
+.text               168304    84512
+.data.rel.ro          1344   318352
+.dynamic               448   319696
+.fini_array              8   320144
+.init_array              8   320152
+.got                   120   320160
+.relro_padding        7400   320280
+.data                    0   385816
+.got.plt               192   385816
+.sdata                   8   386008
+.tm_clone_table          0   386016
+.bss                    29   386016
+.comment               111        0
+Total               196220
+
+

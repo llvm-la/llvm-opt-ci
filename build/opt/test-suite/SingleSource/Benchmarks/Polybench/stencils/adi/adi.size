@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Polybench/stencils/adi/adi  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               130     1072
+.gnu.version           24     1202
+.gnu.version_r         32     1228
+.rela.dyn             120     1264
+.rela.plt             216     1384
+.eh_frame              44     1600
+.eh_frame_hdr          20     1644
+.rodata.cst16          32     1664
+.rodata.cst4            4     1696
+.rodata.cst8           40     1704
+.rodata.str1.1         58     1744
+.plt                  176    67344
+.text                2680    67520
+.dynamic              464   135736
+.fini_array             8   136200
+.init_array             8   136208
+.got                   40   136216
+.relro_padding      60352   136256
+.data                   0   201792
+.got.plt               96   201792
+.sdata                  8   201888
+.tm_clone_table         0   201896
+.bss                   56   201896
+.comment              111        0
+Total               65104
+
+

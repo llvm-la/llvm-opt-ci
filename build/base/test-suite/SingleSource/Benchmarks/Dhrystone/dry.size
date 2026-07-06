@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Dhrystone/dry  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               168      784
+.dynstr                91      952
+.gnu.version           14     1044
+.gnu.version_r         32     1060
+.rela.dyn              96     1096
+.rela.plt             120     1192
+.eh_frame              44     1312
+.eh_frame_hdr          20     1356
+.rodata.cst4            4     1376
+.rodata.str1.8         32     1384
+.plt                  112    66960
+.text                1556    67072
+.dynamic              464   134168
+.fini_array             8   134632
+.init_array             8   134640
+.got                   32   134648
+.relro_padding      61928   134680
+.data                   4   200216
+.got.plt               64   200224
+.sdata                  8   200288
+.tm_clone_table         0   200296
+.bss                10644   200296
+.comment              111        0
+Total               75657
+
+

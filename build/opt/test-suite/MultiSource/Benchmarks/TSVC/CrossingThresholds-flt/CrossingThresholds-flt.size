@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/TSVC/CrossingThresholds-flt/CrossingThresholds-flt  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 264      784
+.dynstr                 127     1048
+.gnu.version             22     1176
+.gnu.version_r           32     1200
+.rela.dyn               312     1232
+.rela.plt               216     1544
+.eh_frame                44     1760
+.eh_frame_hdr            20     1804
+.rodata                 544     1824
+.rodata.cst16            32     2368
+.rodata.cst4              4     2400
+.rodata.str1.1          997     2404
+.plt                    176    68944
+.text                 47080    69120
+.data.rel.ro            136   181744
+.dynamic                464   181880
+.fini_array               8   182344
+.init_array               8   182352
+.got                     32   182360
+.relro_padding        14216   182392
+.data                     8   247928
+.got.plt                 96   247936
+.sdata                    8   248032
+.tm_clone_table           0   248040
+.bss                2847232   248048
+.comment                111        0
+Total               2912286
+
+

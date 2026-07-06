@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/MallocBench/cfrac/cfrac  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               792      784
+.dynstr               260     1576
+.gnu.version           66     1836
+.gnu.version_r         64     1904
+.rela.dyn             552     1968
+.rela.plt             648     2520
+.eh_frame              44     3168
+.eh_frame_hdr          20     3212
+.rodata                88     3232
+.rodata.cst16          32     3328
+.rodata.cst4            4     3360
+.rodata.cst8           16     3368
+.rodata.str1.1        727     3384
+.plt                  464    69648
+.text               24236    70112
+.dynamic              464   159888
+.fini_array             8   160352
+.init_array             8   160360
+.got                  152   160368
+.relro_padding      36088   160520
+.data               13200   226056
+.got.plt              240   239256
+.sdata                  8   239496
+.tm_clone_table         0   239504
+.bss                  560   239504
+.comment              111        0
+Total               78949
+
+

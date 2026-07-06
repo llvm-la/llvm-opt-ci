@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LASX-lasx-xvilvh 
+VERIFY: %b/fpcmp-target %o %S/lasx-xvilvh.reference_output

@@ -1,0 +1,30 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Regression/C/Regression-C-PR10189  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym                96      784
+.dynstr                71      880
+.gnu.version            8      952
+.gnu.version_r         32      960
+.rela.dyn              96      992
+.rela.plt              48     1088
+.eh_frame              44     1136
+.eh_frame_hdr          20     1180
+.rodata.cst4            4     1200
+.plt                   64    66752
+.text                1116    66816
+.dynamic              464   133472
+.fini_array             8   133936
+.init_array             8   133944
+.got                   32   133952
+.relro_padding      62624   133984
+.data                   0   199520
+.got.plt               40   199520
+.sdata                  8   199560
+.tm_clone_table         0   199568
+.bss                   28   199568
+.comment              111        0
+Total               65019
+
+

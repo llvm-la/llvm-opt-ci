@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/TSVC/ControlFlow-dbl/ControlFlow-dbl  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 288      784
+.dynstr                 132     1072
+.gnu.version             24     1204
+.gnu.version_r           32     1228
+.rela.dyn               384     1264
+.rela.plt               240     1648
+.eh_frame                44     1888
+.eh_frame_hdr            20     1932
+.rodata                 544     1952
+.rodata.cst16            32     2496
+.rodata.cst4              4     2528
+.rodata.str1.1         1195     2532
+.plt                    192    69264
+.text                 75800    69472
+.data.rel.ro            288   210816
+.dynamic                464   211104
+.fini_array               8   211568
+.init_array               8   211576
+.got                     32   211584
+.relro_padding        50528   211616
+.data                     8   277152
+.got.plt                104   277160
+.sdata                    8   277264
+.tm_clone_table           0   277272
+.bss                5566064   277280
+.comment                111        0
+Total               5696651
+
+

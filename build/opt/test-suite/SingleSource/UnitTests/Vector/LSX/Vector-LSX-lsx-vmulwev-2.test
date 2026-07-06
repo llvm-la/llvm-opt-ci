@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vmulwev-2 
+VERIFY: %b/fpcmp-target %o %S/lsx-vmulwev-2.reference_output

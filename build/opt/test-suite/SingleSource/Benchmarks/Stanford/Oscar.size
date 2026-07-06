@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Stanford/Oscar  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                86      928
+.gnu.version           12     1014
+.gnu.version_r         32     1028
+.rela.dyn              96     1064
+.rela.plt              96     1160
+.eh_frame              44     1256
+.eh_frame_hdr          20     1300
+.rodata.cst4            4     1320
+.rodata.str1.1         15     1324
+.plt                   96    66880
+.text                3552    66976
+.dynamic              464   136064
+.fini_array             8   136528
+.init_array             8   136536
+.got                   32   136544
+.relro_padding      60032   136576
+.data                   0   202112
+.got.plt               56   202112
+.sdata                  8   202168
+.tm_clone_table         0   202176
+.bss                94584   202176
+.comment              111        0
+Total              159597
+
+

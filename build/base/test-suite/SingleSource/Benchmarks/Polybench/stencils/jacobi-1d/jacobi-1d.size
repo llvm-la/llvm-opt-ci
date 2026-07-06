@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Polybench/stencils/jacobi-1d/jacobi-1d  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               312      784
+.dynstr               138     1096
+.gnu.version           26     1234
+.gnu.version_r         32     1260
+.rela.dyn             120     1296
+.rela.plt             240     1416
+.eh_frame              44     1656
+.eh_frame_hdr          20     1700
+.rodata.cst4            4     1720
+.rodata.cst8           24     1728
+.rodata.str1.1        126     1752
+.plt                  192    67424
+.text                2860    67616
+.dynamic              464   136016
+.fini_array             8   136480
+.init_array             8   136488
+.got                   40   136496
+.relro_padding      60072   136536
+.data                   0   202072
+.got.plt              104   202072
+.sdata                  8   202176
+.tm_clone_table         0   202184
+.bss                   56   202184
+.comment              111        0
+Total               65106
+
+

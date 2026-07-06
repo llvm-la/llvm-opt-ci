@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/SimpleMOC/SimpleMOC  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               888      784
+.dynstr               288     1672
+.gnu.version           74     1960
+.gnu.version_r         64     2036
+.rela.dyn             120     2104
+.rela.plt             816     2224
+.eh_frame              44     3040
+.eh_frame_hdr          20     3084
+.rodata.cst16          64     3104
+.rodata.cst4            4     3168
+.rodata.cst8           56     3176
+.rodata.str1.1       2185     3232
+.plt                  576    70960
+.text               34384    71552
+.dynamic              464   171472
+.fini_array             8   171936
+.init_array             8   171944
+.got                   40   171952
+.relro_padding      24616   171992
+.data                   0   237528
+.got.plt              296   237528
+.sdata                  8   237824
+.tm_clone_table         0   237832
+.bss                 1384   237832
+.comment              111        0
+Total               66615
+
+

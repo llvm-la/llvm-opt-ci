@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Prolangs-C++/vcirc/vcirc  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               168      784
+.dynstr               232      952
+.gnu.version           14     1184
+.gnu.version_r         64     1200
+.rela.dyn             432     1264
+.rela.plt              48     1696
+.eh_frame             124     1744
+.eh_frame_hdr          36     1868
+.rodata                25     1904
+.rodata.cst4            4     1932
+.plt                   64    67472
+.text                1096    67552
+.data.rel.ro          144   134184
+.dynamic              496   134328
+.fini_array             8   134824
+.init_array             8   134832
+.got                   32   134840
+.relro_padding      61736   134872
+.data                   0   200408
+.got.plt               40   200408
+.sdata                  8   200448
+.tm_clone_table         0   200456
+.bss                    1   200456
+.comment              111        0
+Total               64988
+
+

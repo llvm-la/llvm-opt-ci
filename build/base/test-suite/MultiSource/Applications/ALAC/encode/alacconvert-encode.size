@@ -1,0 +1,37 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Applications/ALAC/encode/alacconvert-encode  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 672      784
+.dynstr                 355     1456
+.gnu.version             56     1812
+.gnu.version_r          128     1868
+.rela.dyn               408     2000
+.rela.plt               504     2408
+.eh_frame               888     2912
+.eh_frame_hdr           180     3800
+.gcc_except_table        48     3980
+.rodata                 376     4032
+.rodata.cst16            48     4416
+.rodata.cst32            64     4464
+.rodata.cst4              4     4528
+.rodata.cst8             16     4532
+.rodata.str1.1          458     4548
+.plt                    368    70544
+.text                 39108    70912
+.data.rel.ro             80   175560
+.dynamic                496   175640
+.fini_array               8   176136
+.init_array               8   176144
+.got                     56   176152
+.relro_padding        20400   176208
+.data                     8   241744
+.got.plt                192   241752
+.sdata                    8   241944
+.tm_clone_table           0   241952
+.bss                      1   241952
+.comment                111        0
+Total                 65146
+
+

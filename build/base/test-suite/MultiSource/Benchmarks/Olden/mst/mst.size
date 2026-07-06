@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Olden/mst/mst  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               240      784
+.dynstr                97     1024
+.gnu.version           20     1122
+.gnu.version_r         32     1144
+.rela.dyn             120     1176
+.rela.plt             192     1296
+.eh_frame              44     1488
+.eh_frame_hdr          20     1532
+.rodata.cst4            4     1552
+.rodata.str1.1        233     1556
+.plt                  160    67328
+.text                3156    67488
+.dynamic              448   136184
+.fini_array             8   136632
+.init_array             8   136640
+.got                   40   136648
+.relro_padding      59920   136688
+.data                   4   202224
+.got.plt               88   202232
+.sdata                  8   202320
+.tm_clone_table         0   202328
+.bss                   36   202328
+.comment              111        0
+Total               65086
+
+

@@ -1,0 +1,37 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C++/CLAMR/CLAMR  :
+section                 size      addr
+.interp                   37       680
+.note.ABI-tag             32       720
+.gnu.hash                 32       752
+.dynsym                 3672       784
+.dynstr                 4561      4456
+.gnu.version             306      9018
+.gnu.version_r           304      9324
+.rela.dyn               2112      9632
+.rela.plt               3360     11744
+.eh_frame              21724     15104
+.eh_frame_hdr           4396     36828
+.gcc_except_table      22768     41224
+.rodata                  720     63992
+.rodata.cst16            416     64720
+.rodata.cst4               4     65136
+.rodata.cst8             176     65144
+.rodata.str1.1         27616     65320
+.rodata.str1.8          1576     92936
+.plt                    2272    160048
+.text                 725728    162336
+.data.rel.ro             344    953600
+.dynamic                 496    953944
+.fini_array                8    954440
+.init_array               16    954448
+.got                     320    954464
+.relro_padding         28256    954784
+.data                    108   1020320
+.got.plt                1144   1020432
+.sdata                     8   1021576
+.tm_clone_table            0   1021584
+.bss                    2808   1021584
+.comment                 111         0
+Total                 855431
+
+

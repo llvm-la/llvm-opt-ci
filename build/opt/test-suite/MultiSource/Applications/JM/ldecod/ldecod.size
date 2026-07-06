@@ -1,0 +1,37 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Applications/JM/ldecod/ldecod  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               32      752
+.dynsym               1032      784
+.dynstr                351     1816
+.gnu.version            86     2168
+.gnu.version_r          64     2256
+.rela.dyn             2304     2320
+.rela.plt              912     4624
+.eh_frame               44     5536
+.eh_frame_hdr           20     5580
+.rodata              46696     5600
+.rodata.cst16          576    52304
+.rodata.cst32          128    52880
+.rodata.cst4             4    53008
+.rodata.str1.1       19146    53012
+.rodata.str1.8         344    72160
+.plt                   640   138048
+.text               310536   138688
+.data.rel.ro           328   514760
+.dynamic               464   515088
+.fini_array              8   515552
+.init_array              8   515560
+.got                   440   515568
+.relro_padding        8280   516008
+.data                 1320   581544
+.got.plt               328   582864
+.sdata                   8   583192
+.tm_clone_table          0   583200
+.bss                   480   583200
+.common             404812   583680
+.comment               111        0
+Total               799571
+
+

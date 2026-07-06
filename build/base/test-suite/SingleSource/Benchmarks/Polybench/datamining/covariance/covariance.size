@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Polybench/datamining/covariance/covariance  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               130     1072
+.gnu.version           24     1202
+.gnu.version_r         32     1228
+.rela.dyn             120     1264
+.rela.plt             216     1384
+.eh_frame              44     1600
+.eh_frame_hdr          20     1644
+.rodata.cst16          16     1664
+.rodata.cst4            4     1680
+.rodata.cst8           16     1688
+.rodata.str1.1         58     1704
+.plt                  176    67312
+.text                2568    67488
+.dynamic              464   135592
+.fini_array             8   136056
+.init_array             8   136064
+.got                   40   136072
+.relro_padding      60496   136112
+.data                   0   201648
+.got.plt               96   201648
+.sdata                  8   201744
+.tm_clone_table         0   201752
+.bss                   56   201752
+.comment              111        0
+Total               65096
+
+

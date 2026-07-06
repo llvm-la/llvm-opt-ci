@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/MiBench/automotive-bitcount/automotive-bitcount  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              36      752
+.dynsym               480      792
+.dynstr               171     1272
+.gnu.version           40     1444
+.gnu.version_r         32     1484
+.rela.dyn             120     1520
+.rela.plt             360     1640
+.eh_frame              44     2000
+.eh_frame_hdr          20     2044
+.rodata               512     2064
+.rodata.cst4            4     2576
+.rodata.str1.1        298     2580
+.plt                  272    68416
+.text                3572    68704
+.dynamic              464   137816
+.fini_array             8   138280
+.init_array             8   138288
+.got                   40   138296
+.relro_padding      58272   138336
+.data                   8   203872
+.got.plt              144   203880
+.sdata                  8   204024
+.tm_clone_table         0   204032
+.bss                    1   204032
+.comment              111        0
+Total               65094
+
+

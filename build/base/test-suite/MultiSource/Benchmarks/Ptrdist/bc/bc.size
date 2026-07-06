@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Ptrdist/bc/bc  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              32      752
+.dynsym               960      784
+.dynstr               320     1744
+.gnu.version           80     2064
+.gnu.version_r         32     2144
+.rela.dyn            1296     2176
+.rela.plt             792     3472
+.eh_frame              44     4264
+.eh_frame_hdr          20     4308
+.rodata              5926     4328
+.rodata.cst16          48    10256
+.rodata.cst4            4    10304
+.rodata.str1.1       3386    10308
+.plt                  560    79232
+.text               51532    79808
+.dynamic              448   196880
+.fini_array             8   197328
+.init_array             8   197336
+.got                  432   197344
+.relro_padding      64368   197776
+.data                2909   263312
+.got.plt              288   266224
+.sdata                  8   266512
+.tm_clone_table         0   266520
+.bss                 4088   266520
+.comment              111        0
+Total              137769
+
+

@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Stanford/Puzzle  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               168      784
+.dynstr                90      952
+.gnu.version           14     1042
+.gnu.version_r         32     1056
+.rela.dyn              96     1088
+.rela.plt             120     1184
+.eh_frame              44     1304
+.eh_frame_hdr          20     1348
+.rodata.cst16         112     1376
+.rodata.cst4            4     1488
+.rodata.str1.1         57     1492
+.plt                  112    67088
+.text                5384    67200
+.dynamic              464   138120
+.fini_array             8   138584
+.init_array             8   138592
+.got                   32   138600
+.relro_padding      57976   138632
+.data                   0   204168
+.got.plt               64   204168
+.sdata                  8   204232
+.tm_clone_table         0   204240
+.bss                94608   204240
+.comment              111        0
+Total              159629
+
+

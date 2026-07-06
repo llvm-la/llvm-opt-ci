@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Ptrdist/yacr2/yacr2  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               432      784
+.dynstr               162     1216
+.gnu.version           36     1378
+.gnu.version_r         32     1416
+.rela.dyn             648     1448
+.rela.plt             336     2096
+.eh_frame              44     2432
+.eh_frame_hdr          20     2476
+.rodata.cst4            4     2496
+.rodata.str1.1        690     2500
+.plt                  256    68736
+.text               30456    68992
+.dynamic              448   164984
+.fini_array             8   165432
+.init_array             8   165440
+.got                  216   165448
+.relro_padding      30944   165664
+.data                   0   231200
+.got.plt              136   231200
+.sdata                  8   231336
+.tm_clone_table         0   231344
+.bss                  336   231344
+.comment              111        0
+Total               65428
+
+

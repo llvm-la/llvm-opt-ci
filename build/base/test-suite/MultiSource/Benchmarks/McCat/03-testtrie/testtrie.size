@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/McCat/03-testtrie/testtrie  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               456      784
+.dynstr               182     1240
+.gnu.version           38     1422
+.gnu.version_r         32     1460
+.rela.dyn             144     1496
+.rela.plt             360     1640
+.eh_frame              44     2000
+.eh_frame_hdr          20     2044
+.rodata.cst16          16     2064
+.rodata.cst4            4     2080
+.rodata.str1.1        101     2084
+.plt                  272    67728
+.text                2476    68000
+.dynamic              464   136016
+.fini_array             8   136480
+.init_array             8   136488
+.got                   48   136496
+.relro_padding      60064   136544
+.data                   0   202080
+.got.plt              144   202080
+.sdata                  8   202224
+.tm_clone_table         0   202232
+.bss                   40   202232
+.comment              111        0
+Total               65137
+
+

@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Bullet/bullet  :
+section                 size      addr
+.interp                   37       680
+.note.ABI-tag             32       720
+.gnu.hash                 28       752
+.dynsym                  984       784
+.dynstr                  576      1768
+.gnu.version              82      2344
+.gnu.version_r           144      2428
+.rela.dyn              67104      2576
+.rela.plt                816     69680
+.eh_frame              41280     70496
+.eh_frame_hdr           9924    111776
+.gcc_except_table      13680    121700
+.rodata                 9999    135380
+.rodata.cst16           1328    145392
+.rodata.cst4               4    146720
+.rodata.cst8              16    146728
+.rodata.str1.1          1556    146744
+.plt                     576    213840
+.text                 652100    214432
+.data.rel.ro           23560    932072
+.dynamic                 496    955632
+.fini_array                8    956128
+.init_array               56    956136
+.got                     136    956192
+.relro_padding         26712    956328
+.data                 748112   1021864
+.got.plt                 296   1769976
+.sdata                     8   1770272
+.tm_clone_table            0   1770280
+.bss                   43424   1770288
+.comment                 111         0
+Total                1643185
+
+

@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MicroBenchmarks/ImageProcessing/Dilate/Dilate  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4176      784
+.dynstr                 5570     4960
+.gnu.version             348    10530
+.gnu.version_r           384    10880
+.rela.dyn               9168    11264
+.rela.plt               3504    20432
+.eh_frame              18356    23936
+.eh_frame_hdr           4180    42292
+.gcc_except_table      12596    46472
+.rodata                 2588    59072
+.rodata.cst16            176    61664
+.rodata.cst32             32    61840
+.rodata.cst4               4    61872
+.rodata.cst8              80    61880
+.rodata.str1.1          7367    61960
+.rodata.str1.8           960    69328
+.plt                    2368   135824
+.text                 248548   138208
+.data.rel.ro            1720   452296
+.dynamic                 496   454016
+.fini_array                8   454512
+.init_array              152   454520
+.got                     344   454672
+.relro_padding          3736   455016
+.data                   1040   520552
+.got.plt                1192   521592
+.sdata                     8   522784
+.tm_clone_table            0   522792
+.bss                    2072   522792
+.comment                 111        0
+Total                 331381
+
+

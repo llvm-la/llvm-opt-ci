@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MicroBenchmarks/Builtins/Int128/Builtins  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4200      784
+.dynstr                 5537     4984
+.gnu.version             350    10522
+.gnu.version_r           384    10872
+.rela.dyn               9168    11256
+.rela.plt               3528    20424
+.eh_frame              18892    23952
+.eh_frame_hdr           4284    42844
+.gcc_except_table      13136    47128
+.rodata                 2588    60264
+.rodata.cst16            176    62864
+.rodata.cst32             32    63040
+.rodata.cst4               4    63072
+.rodata.cst8              80    63080
+.rodata.str1.1          7669    63160
+.rodata.str1.8           976    70832
+.plt                    2384   137344
+.text                 253444   139744
+.data.rel.ro            1720   458728
+.dynamic                 496   460448
+.fini_array                8   460944
+.init_array              152   460952
+.got                     344   461104
+.relro_padding         62840   461448
+.data                   1040   526984
+.got.plt                1200   528024
+.sdata                     8   529224
+.tm_clone_table            0   529232
+.bss                     744   529232
+.comment                 111        0
+Total                 395592
+
+

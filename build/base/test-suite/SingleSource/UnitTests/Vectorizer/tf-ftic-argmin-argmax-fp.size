@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/UnitTests/Vectorizer/tf-ftic-argmin-argmax-fp  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                  840      784
+.dynstr                  920     1624
+.gnu.version              70     2544
+.gnu.version_r           224     2616
+.rela.dyn              21312     2840
+.rela.plt                672    24152
+.eh_frame              11660    24824
+.eh_frame_hdr           4124    36484
+.gcc_except_table      12012    40608
+.rodata                 8631    52620
+.rodata.cst16             32    61264
+.rodata.cst4               4    61296
+.rodata.cst8               8    61304
+.rodata.str1.1          7975    61312
+.plt                     480   134832
+.text                 206112   135328
+.data.rel.ro            7040   406976
+.dynamic                 496   414016
+.fini_array                8   414512
+.init_array               16   414520
+.got                      48   414536
+.relro_padding         44168   414584
+.data                      8   480120
+.got.plt                 248   480128
+.sdata                     8   480376
+.tm_clone_table            0   480384
+.bss                    5008   480384
+.comment                 111        0
+Total                 332332
+
+

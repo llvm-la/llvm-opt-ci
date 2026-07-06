@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Prolangs-C++/deriv2/deriv2  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 408      784
+.dynstr                 482     1192
+.gnu.version             34     1674
+.gnu.version_r          160     1708
+.rela.dyn              1344     1872
+.rela.plt               216     3216
+.eh_frame               492     3432
+.eh_frame_hdr           116     3924
+.gcc_except_table       244     4040
+.rodata                  80     4284
+.rodata.cst4              4     4364
+.rodata.str1.1          241     4368
+.plt                    176    70160
+.text                  5768    70336
+.data.rel.ro            448   141640
+.dynamic                496   142088
+.fini_array               8   142584
+.init_array               8   142592
+.got                     40   142600
+.relro_padding        53968   142640
+.data                     8   208176
+.got.plt                 96   208184
+.sdata                    8   208280
+.tm_clone_table           0   208288
+.bss                      1   208288
+.comment                111        0
+Total                 65054
+
+

@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vbitrevi 
+VERIFY: %b/fpcmp-target %o %S/lsx-vbitrevi.reference_output

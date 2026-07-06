@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Regression/C++/EH/Regression-C++-function_try_block  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 360      784
+.dynstr                 286     1144
+.gnu.version             30     1430
+.gnu.version_r          112     1460
+.rela.dyn               168     1576
+.rela.plt               264     1744
+.eh_frame               172     2008
+.eh_frame_hdr            44     2180
+.gcc_except_table       108     2224
+.rodata.cst4              4     2332
+.rodata.str1.1          170     2336
+.plt                    208    68048
+.text                  1328    68256
+.dynamic                496   135120
+.fini_array               8   135616
+.init_array               8   135624
+.got                     40   135632
+.relro_padding        60936   135672
+.data                    16   201208
+.got.plt                112   201224
+.sdata                    8   201336
+.tm_clone_table           0   201344
+.bss                     12   201344
+.comment                111        0
+Total                 65098
+
+

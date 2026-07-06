@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Regression/C/Regression-C-casts  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               168      784
+.dynstr                92      952
+.gnu.version           14     1044
+.gnu.version_r         32     1060
+.rela.dyn              96     1096
+.rela.plt             120     1192
+.eh_frame              44     1312
+.eh_frame_hdr          20     1356
+.rodata.cst4            4     1376
+.rodata.str1.1       1333     1380
+.plt                  112    68256
+.text                1952    68384
+.dynamic              464   135872
+.fini_array             8   136336
+.init_array             8   136344
+.got                   32   136352
+.relro_padding      60224   136384
+.data                   0   201920
+.got.plt               64   201920
+.sdata                  8   201984
+.tm_clone_table         0   201992
+.bss                    1   201992
+.comment              111        0
+Total               65004
+
+

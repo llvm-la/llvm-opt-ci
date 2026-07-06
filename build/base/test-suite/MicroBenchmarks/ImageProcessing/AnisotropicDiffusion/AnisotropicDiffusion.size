@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MicroBenchmarks/ImageProcessing/AnisotropicDiffusion/AnisotropicDiffusion  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4200      784
+.dynstr                 5574     4984
+.gnu.version             350    10558
+.gnu.version_r           384    10908
+.rela.dyn               9168    11296
+.rela.plt               3528    20464
+.eh_frame              18348    23992
+.eh_frame_hdr           4180    42340
+.gcc_except_table      12596    46520
+.rodata                 2588    59120
+.rodata.cst16            160    61712
+.rodata.cst32             32    61872
+.rodata.cst4               4    61904
+.rodata.cst8              80    61912
+.rodata.str1.1          7395    61992
+.rodata.str1.8           960    69392
+.plt                    2384   135888
+.text                 248772   138272
+.data.rel.ro            1720   452584
+.dynamic                 496   454304
+.fini_array                8   454800
+.init_array              152   454808
+.got                     344   454960
+.relro_padding          3448   455304
+.data                   1040   520840
+.got.plt                1200   521880
+.sdata                     8   523080
+.tm_clone_table            0   523088
+.bss                    2072   523088
+.comment                 111        0
+Total                 331399
+
+

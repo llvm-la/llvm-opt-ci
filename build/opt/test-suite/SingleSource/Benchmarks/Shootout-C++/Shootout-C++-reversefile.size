@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Shootout-C++/Shootout-C++-reversefile  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 648      784
+.dynstr                 722     1432
+.gnu.version             54     2154
+.gnu.version_r          208     2208
+.rela.dyn               168     2416
+.rela.plt               504     2584
+.eh_frame               364     3088
+.eh_frame_hdr            76     3452
+.gcc_except_table       156     3528
+.rodata.cst4              4     3684
+.rodata.str1.1           50     3688
+.plt                    368    69280
+.text                  5412    69664
+.dynamic                496   140616
+.fini_array               8   141112
+.init_array               8   141120
+.got                     48   141128
+.relro_padding        55432   141176
+.data                     8   206712
+.got.plt                192   206720
+.sdata                    8   206912
+.tm_clone_table           0   206920
+.bss                      1   206920
+.comment                111        0
+Total                 65143
+
+

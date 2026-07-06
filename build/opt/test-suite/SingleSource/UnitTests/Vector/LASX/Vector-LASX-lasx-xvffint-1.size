@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/Vector/LASX/Vector-LASX-lasx-xvffint-1  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               192      784
+.dynstr                86      976
+.gnu.version           16     1062
+.gnu.version_r         32     1080
+.rela.dyn              96     1112
+.rela.plt             144     1208
+.eh_frame              44     1352
+.eh_frame_hdr          20     1396
+.rodata.cst32         640     1440
+.rodata.cst4            4     2080
+.rodata.str1.1        158     2084
+.plt                  128    67792
+.text                2596    67936
+.dynamic              448   136072
+.fini_array             8   136520
+.init_array             8   136528
+.got                   32   136536
+.relro_padding      60040   136568
+.data                   0   202104
+.got.plt               72   202104
+.sdata                  8   202176
+.tm_clone_table         0   202184
+.bss                    1   202184
+.comment              111        0
+Total               64981
+
+

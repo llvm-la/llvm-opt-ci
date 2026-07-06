@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Adobe-C++/functionobjects  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               480      784
+.dynstr               233     1264
+.gnu.version           40     1498
+.gnu.version_r        112     1540
+.rela.dyn              96     1656
+.rela.plt             432     1752
+.eh_frame             908     2184
+.eh_frame_hdr         196     3092
+.rodata.cst4            4     3288
+.rodata.cst8            8     3296
+.rodata.str1.1        331     3304
+.plt                  320    69184
+.text               15492    69504
+.dynamic              496   150536
+.fini_array             8   151032
+.init_array             8   151040
+.got                   32   151048
+.relro_padding      45528   151080
+.data                   0   216616
+.got.plt              168   216616
+.sdata                  8   216784
+.tm_clone_table         0   216792
+.bss                   40   216792
+.comment              111        0
+Total               65148
+
+

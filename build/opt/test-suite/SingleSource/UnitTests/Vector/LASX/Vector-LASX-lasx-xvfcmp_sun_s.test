@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LASX-lasx-xvfcmp_sun_s 
+VERIFY: %b/fpcmp-target %o %S/lasx-xvfcmp_sun_s.reference_output

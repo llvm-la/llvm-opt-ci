@@ -1,0 +1,30 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/UnitTests/vla  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym                96      784
+.dynstr                61      880
+.gnu.version            8      942
+.gnu.version_r         32      952
+.rela.dyn              96      984
+.rela.plt              48     1080
+.eh_frame              44     1128
+.eh_frame_hdr          20     1172
+.rodata.cst4            4     1192
+.plt                   64    66736
+.text                1096    66816
+.dynamic              448   133448
+.fini_array             8   133896
+.init_array             8   133904
+.got                   32   133912
+.relro_padding      62664   133944
+.data                 144   199480
+.got.plt               40   199624
+.sdata                  8   199664
+.tm_clone_table         0   199672
+.bss                    1   199672
+.comment              111        0
+Total               65130
+
+

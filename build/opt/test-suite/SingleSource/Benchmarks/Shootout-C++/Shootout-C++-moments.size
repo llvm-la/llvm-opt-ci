@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Shootout-C++/Shootout-C++-moments  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 336      784
+.dynstr                 278     1120
+.gnu.version             28     1398
+.gnu.version_r          176     1428
+.rela.dyn               120     1608
+.rela.plt               264     1728
+.eh_frame               276     1992
+.eh_frame_hdr            60     2268
+.gcc_except_table        44     2328
+.rodata.cst4              4     2372
+.rodata.str1.1          218     2376
+.plt                    208    68144
+.text                  3492    68352
+.dynamic                496   137384
+.fini_array               8   137880
+.init_array               8   137888
+.got                     32   137896
+.relro_padding        58680   137928
+.data                     8   203464
+.got.plt                112   203472
+.sdata                    8   203584
+.tm_clone_table           0   203592
+.bss                      1   203592
+.comment                111        0
+Total                 65065
+
+

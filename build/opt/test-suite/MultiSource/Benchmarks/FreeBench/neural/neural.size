@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/FreeBench/neural/neural  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               456      784
+.dynstr               177     1240
+.gnu.version           38     1418
+.gnu.version_r         64     1456
+.rela.dyn             120     1520
+.rela.plt             384     1640
+.eh_frame              44     2024
+.eh_frame_hdr          20     2068
+.rodata.cst16          32     2096
+.rodata.cst4            4     2128
+.rodata.cst8           24     2136
+.rodata.str1.1        571     2160
+.plt                  288    68272
+.text                6068    68576
+.dynamic              464   140184
+.fini_array             8   140648
+.init_array             8   140656
+.got                   40   140664
+.relro_padding      55904   140704
+.data                   4   206240
+.got.plt              152   206248
+.sdata                  8   206400
+.tm_clone_table         0   206408
+.bss                   80   206408
+.comment              111        0
+Total               65166
+
+

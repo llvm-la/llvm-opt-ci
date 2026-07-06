@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Regression/C++/Regression-C++-global_ctor  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               168      784
+.dynstr               125      952
+.gnu.version           14     1078
+.gnu.version_r         32     1092
+.rela.dyn             120     1128
+.rela.plt             120     1248
+.eh_frame             108     1368
+.eh_frame_hdr          36     1476
+.rodata.cst4            4     1512
+.rodata.str1.1         46     1516
+.plt                  112    67104
+.text                 924    67232
+.dynamic              496   133696
+.fini_array             8   134192
+.init_array            16   134200
+.got                   32   134216
+.relro_padding      62360   134248
+.data                   0   199784
+.got.plt               64   199784
+.sdata                  8   199848
+.tm_clone_table         0   199856
+.bss                   21   199856
+.comment              111        0
+Total               65022
+
+

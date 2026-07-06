@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/ASCI_Purple/SMG2000/smg2000  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym                672      784
+.dynstr                241     1456
+.gnu.version            56     1698
+.gnu.version_r          64     1756
+.rela.dyn              552     1824
+.rela.plt              600     2376
+.eh_frame               44     2976
+.eh_frame_hdr           20     3020
+.rodata                104     3040
+.rodata.cst16          496     3152
+.rodata.cst4             4     3648
+.rodata.cst8             8     3656
+.rodata.str1.1        1525     3664
+.plt                   432    70736
+.text               191084    71168
+.dynamic               464   327792
+.fini_array              8   328256
+.init_array              8   328264
+.got                   184   328272
+.relro_padding       64760   328456
+.data                    8   393992
+.got.plt               224   394000
+.sdata                   8   394224
+.tm_clone_table          0   394232
+.bss                    48   394232
+.comment               111        0
+Total               261822
+
+

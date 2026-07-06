@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C++/PENNANT/PENNANT  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 1704      784
+.dynstr                 2546     2488
+.gnu.version             142     5034
+.gnu.version_r           256     5176
+.rela.dyn                288     5432
+.rela.plt               1488     5720
+.eh_frame               3180     7208
+.eh_frame_hdr            676    10388
+.gcc_except_table       3044    11064
+.rodata                    1    14108
+.rodata.cst16             96    14112
+.rodata.cst4               4    14208
+.rodata.cst8             112    14216
+.rodata.str1.1          1614    14328
+.rodata.str1.8           112    15944
+.plt                    1024    81600
+.text                 100956    82624
+.dynamic                 496   249120
+.fini_array                8   249616
+.init_array                8   249624
+.got                      88   249632
+.relro_padding         12424   249720
+.data                     12   315256
+.got.plt                 520   315272
+.sdata                     8   315792
+.tm_clone_table            0   315800
+.bss                       8   315800
+.comment                 111        0
+Total                 131023
+
+

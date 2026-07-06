@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/TSVC/ControlFlow-flt/ControlFlow-flt  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 288      784
+.dynstr                 132     1072
+.gnu.version             24     1204
+.gnu.version_r           32     1228
+.rela.dyn               384     1264
+.rela.plt               240     1648
+.eh_frame                44     1888
+.eh_frame_hdr            20     1932
+.rodata                 544     1952
+.rodata.cst16            32     2496
+.rodata.cst4              4     2528
+.rodata.str1.1         1195     2532
+.plt                    192    69264
+.text                 55896    69472
+.data.rel.ro            160   190912
+.dynamic                464   191072
+.fini_array               8   191536
+.init_array               8   191544
+.got                     32   191552
+.relro_padding         5024   191584
+.data                     8   257120
+.got.plt                104   257128
+.sdata                    8   257232
+.tm_clone_table           0   257240
+.bss                2847232   257248
+.comment                111        0
+Total               2912283
+
+

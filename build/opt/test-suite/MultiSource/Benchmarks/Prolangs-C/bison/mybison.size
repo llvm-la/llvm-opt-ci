@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Prolangs-C/bison/mybison  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              44      752
+.dynsym               960      800
+.dynstr               313     1760
+.gnu.version           80     2074
+.gnu.version_r         32     2156
+.rela.dyn            1800     2192
+.rela.plt             768     3992
+.eh_frame              44     4760
+.eh_frame_hdr          20     4804
+.rodata              1860     4824
+.rodata.cst4            4     6684
+.rodata.str1.1       4624     6688
+.plt                  544    76848
+.text               67960    77408
+.dynamic              448   210904
+.fini_array             8   211352
+.init_array             8   211360
+.got                  600   211368
+.relro_padding      50176   211968
+.data                   4   277504
+.got.plt              280   277512
+.sdata                  8   277792
+.tm_clone_table         0   277800
+.bss                 2040   277800
+.comment              111        0
+Total              132805
+
+

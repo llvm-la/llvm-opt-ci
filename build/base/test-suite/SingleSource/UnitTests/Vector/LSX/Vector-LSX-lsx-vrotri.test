@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vrotri 
+VERIFY: %b/fpcmp-target %o %S/lsx-vrotri.reference_output

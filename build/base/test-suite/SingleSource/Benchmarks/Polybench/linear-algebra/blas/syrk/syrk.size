@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Polybench/linear-algebra/blas/syrk/syrk  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               312      784
+.dynstr               138     1096
+.gnu.version           26     1234
+.gnu.version_r         32     1260
+.rela.dyn             120     1296
+.rela.plt             240     1416
+.eh_frame              44     1656
+.eh_frame_hdr          20     1700
+.rodata.cst16          16     1728
+.rodata.cst4            4     1744
+.rodata.cst8           24     1752
+.rodata.str1.1        134     1776
+.plt                  192    67456
+.text                3312    67648
+.dynamic              464   136496
+.fini_array             8   136960
+.init_array             8   136968
+.got                   40   136976
+.relro_padding      59592   137016
+.data                   0   202552
+.got.plt              104   202552
+.sdata                  8   202656
+.tm_clone_table         0   202664
+.bss                   56   202664
+.comment              111        0
+Total               65102
+
+

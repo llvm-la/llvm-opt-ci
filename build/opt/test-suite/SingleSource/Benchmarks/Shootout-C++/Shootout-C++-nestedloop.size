@@ -1,0 +1,30 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Shootout-C++/Shootout-C++-nestedloop  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               301     1072
+.gnu.version           24     1374
+.gnu.version_r        112     1400
+.rela.dyn             120     1512
+.rela.plt             192     1632
+.eh_frame              92     1824
+.eh_frame_hdr          28     1916
+.rodata.cst4            4     1944
+.plt                  160    67488
+.text                 776    67648
+.dynamic              496   133960
+.fini_array             8   134456
+.init_array             8   134464
+.got                   40   134472
+.relro_padding      62096   134512
+.data                   0   200048
+.got.plt               88   200048
+.sdata                  8   200136
+.tm_clone_table         0   200144
+.bss                    1   200144
+.comment              111        0
+Total               65050
+
+

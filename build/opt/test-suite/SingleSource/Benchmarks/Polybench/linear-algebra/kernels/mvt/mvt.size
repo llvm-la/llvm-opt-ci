@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Polybench/linear-algebra/kernels/mvt/mvt  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               312      784
+.dynstr               138     1096
+.gnu.version           26     1234
+.gnu.version_r         32     1260
+.rela.dyn             120     1296
+.rela.plt             240     1416
+.eh_frame              44     1656
+.eh_frame_hdr          20     1700
+.rodata.cst16          16     1728
+.rodata.cst4            4     1744
+.rodata.cst8           16     1752
+.rodata.str1.1        126     1768
+.plt                  192    67440
+.text                2696    67648
+.dynamic              464   135880
+.fini_array             8   136344
+.init_array             8   136352
+.got                   40   136360
+.relro_padding      60208   136400
+.data                   0   201936
+.got.plt              104   201936
+.sdata                  8   202040
+.tm_clone_table         0   202048
+.bss                   56   202048
+.comment              111        0
+Total               65086
+
+

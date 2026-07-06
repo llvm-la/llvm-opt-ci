@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Polybench/linear-algebra/blas/gesummv/gesummv  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               130     1072
+.gnu.version           24     1202
+.gnu.version_r         32     1228
+.rela.dyn             120     1264
+.rela.plt             216     1384
+.eh_frame              44     1600
+.eh_frame_hdr          20     1644
+.rodata.cst16          16     1664
+.rodata.cst4            4     1680
+.rodata.cst8           16     1688
+.rodata.str1.1         58     1704
+.plt                  176    67312
+.text                2032    67488
+.dynamic              464   135056
+.fini_array             8   135520
+.init_array             8   135528
+.got                   40   135536
+.relro_padding      61032   135576
+.data                   0   201112
+.got.plt               96   201112
+.sdata                  8   201208
+.tm_clone_table         0   201216
+.bss                   56   201216
+.comment              111        0
+Total               65096
+
+

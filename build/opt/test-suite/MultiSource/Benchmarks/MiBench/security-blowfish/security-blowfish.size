@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/MiBench/security-blowfish/security-blowfish  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               264      784
+.dynstr               115     1048
+.gnu.version           22     1164
+.gnu.version_r         32     1188
+.rela.dyn             168     1224
+.rela.plt             216     1392
+.eh_frame              44     1608
+.eh_frame_hdr          20     1652
+.rodata              8392     1672
+.rodata.cst4            4    10064
+.rodata.str1.1        924    10068
+.plt                  176    76528
+.text               12260    76704
+.dynamic              464   154504
+.fini_array             8   154968
+.init_array             8   154976
+.got                   32   154984
+.relro_padding      41592   155016
+.data                1291   220560
+.got.plt               96   221856
+.sdata                  8   221952
+.tm_clone_table         0   221960
+.bss                    1   221960
+.comment              111        0
+Total               66345
+
+

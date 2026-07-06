@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Prolangs-C/TimberWolfMC/timberwolfmc  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               40      752
+.dynsym                888      792
+.dynstr                295     1680
+.gnu.version            74     1976
+.gnu.version_r          64     2052
+.rela.dyn             5640     2120
+.rela.plt              720     7760
+.eh_frame               44     8480
+.eh_frame_hdr           20     8524
+.rodata                544     8544
+.rodata.cst16          208     9088
+.rodata.cst4             4     9296
+.rodata.cst8           312     9304
+.rodata.str1.1       12464     9616
+.rodata.str1.8          40    22080
+.plt                   512    87664
+.text               246396    88192
+.dynamic               464   400128
+.fini_array              8   400592
+.init_array              8   400600
+.got                  1880   400608
+.relro_padding       56264   402488
+.data                    0   468024
+.got.plt               264   468024
+.sdata                   8   468288
+.tm_clone_table          0   468296
+.bss                    97   468296
+.common               1560   468400
+.comment               111        0
+Total               328998
+
+

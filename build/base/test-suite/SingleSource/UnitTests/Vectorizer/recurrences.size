@@ -1,0 +1,35 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/UnitTests/Vectorizer/recurrences  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 528      784
+.dynstr                 596     1312
+.gnu.version             44     1908
+.gnu.version_r          160     1952
+.rela.dyn               480     2112
+.rela.plt               360     2592
+.eh_frame               348     2952
+.eh_frame_hdr           100     3300
+.gcc_except_table       188     3400
+.rodata                  72     3588
+.rodata.cst16            16     3664
+.rodata.cst4              4     3680
+.rodata.str1.1           94     3684
+.plt                    272    69328
+.text                  4192    69600
+.data.rel.ro             96   139328
+.dynamic                496   139424
+.fini_array               8   139920
+.init_array              16   139928
+.got                     48   139944
+.relro_padding        56616   139992
+.data                     8   205528
+.got.plt                144   205536
+.sdata                    8   205680
+.tm_clone_table           0   205688
+.bss                   5008   205688
+.comment                111        0
+Total                 70110
+
+

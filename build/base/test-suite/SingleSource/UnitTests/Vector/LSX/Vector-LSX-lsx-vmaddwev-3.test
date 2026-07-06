@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vmaddwev-3 
+VERIFY: %b/fpcmp-target %o %S/lsx-vmaddwev-3.reference_output

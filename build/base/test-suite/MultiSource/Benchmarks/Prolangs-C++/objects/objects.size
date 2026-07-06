@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Prolangs-C++/objects/objects  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 336      784
+.dynstr                 316     1120
+.gnu.version             28     1436
+.gnu.version_r           96     1464
+.rela.dyn              1584     1560
+.rela.plt               192     3144
+.eh_frame               564     3336
+.eh_frame_hdr           140     3900
+.gcc_except_table        88     4040
+.rodata                  34     4128
+.rodata.cst4              4     4164
+.rodata.str1.1           22     4168
+.plt                    160    69728
+.text                  3916    69888
+.data.rel.ro            520   139344
+.dynamic                496   139864
+.fini_array               8   140360
+.init_array               8   140368
+.got                     32   140376
+.relro_padding        56200   140408
+.data                     8   205944
+.got.plt                 88   205952
+.sdata                    8   206040
+.tm_clone_table           0   206048
+.bss                      1   206048
+.comment                111        0
+Total                 65057
+
+

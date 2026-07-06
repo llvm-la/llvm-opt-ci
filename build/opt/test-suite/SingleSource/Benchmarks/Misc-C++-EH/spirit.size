@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Misc-C++-EH/spirit  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 984      784
+.dynstr                 878     1768
+.gnu.version             82     2646
+.gnu.version_r          176     2728
+.rela.dyn             14040     2904
+.rela.plt               720    16944
+.eh_frame              6916    17664
+.eh_frame_hdr          1812    24580
+.gcc_except_table      2900    26392
+.rodata               23108    29292
+.rodata.cst16            16    52400
+.rodata.cst4              4    52416
+.rodata.str1.1        88741    52420
+.plt                    512   206704
+.plt.got                 16   207216
+.text                 73956   207232
+.data.rel.ro           5208   346728
+.dynamic                496   351936
+.fini_array               8   352432
+.init_array               8   352440
+.got                     48   352448
+.relro_padding        40720   352496
+.data                    24   418032
+.got.plt                264   418056
+.sdata                    8   418320
+.tm_clone_table           0   418328
+.bss                     80   418328
+.comment                111        0
+Total                261933
+
+

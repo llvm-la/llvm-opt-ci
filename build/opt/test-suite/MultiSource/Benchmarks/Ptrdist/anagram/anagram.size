@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Ptrdist/anagram/anagram  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               672      784
+.dynstr               240     1456
+.gnu.version           56     1696
+.gnu.version_r         32     1752
+.rela.dyn             168     1784
+.rela.plt             552     1952
+.eh_frame              44     2504
+.eh_frame_hdr          20     2548
+.rodata.cst16          16     2576
+.rodata.cst4            4     2592
+.rodata.str1.1        370     2596
+.plt                  400    68512
+.text                6296    68928
+.dynamic              448   140760
+.fini_array             8   141208
+.init_array             8   141216
+.got                   56   141224
+.relro_padding      55328   141280
+.data                   4   206816
+.got.plt              208   206824
+.sdata                  8   207032
+.tm_clone_table         0   207040
+.bss                41600   207040
+.comment              111        0
+Total              106746
+
+

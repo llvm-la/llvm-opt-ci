@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LASX-lasx-xvbitclri 
+VERIFY: %b/fpcmp-target %o %S/lasx-xvbitclri.reference_output

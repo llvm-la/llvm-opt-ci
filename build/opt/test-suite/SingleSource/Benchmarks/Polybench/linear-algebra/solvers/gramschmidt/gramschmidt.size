@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Polybench/linear-algebra/solvers/gramschmidt/gramschmidt  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               336      784
+.dynstr               143     1120
+.gnu.version           28     1264
+.gnu.version_r         64     1292
+.rela.dyn             120     1360
+.rela.plt             264     1480
+.eh_frame              44     1744
+.eh_frame_hdr          20     1788
+.rodata.cst16          16     1808
+.rodata.cst4            4     1824
+.rodata.cst8           16     1832
+.rodata.str1.1        148     1848
+.plt                  208    67536
+.text                2520    67744
+.dynamic              464   135800
+.fini_array             8   136264
+.init_array             8   136272
+.got                   40   136280
+.relro_padding      60288   136320
+.data                   0   201856
+.got.plt              112   201856
+.sdata                  8   201968
+.tm_clone_table         0   201976
+.bss                   56   201976
+.comment              111        0
+Total               65123
+
+

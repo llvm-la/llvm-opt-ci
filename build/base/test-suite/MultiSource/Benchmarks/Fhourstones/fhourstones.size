@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Fhourstones/fhourstones  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               264      784
+.dynstr               103     1048
+.gnu.version           22     1152
+.gnu.version_r         32     1176
+.rela.dyn             240     1208
+.rela.plt             192     1448
+.eh_frame              44     1640
+.eh_frame_hdr          20     1684
+.rodata.cst4            4     1704
+.rodata.str1.1        290     1708
+.plt                  160    67536
+.text                8308    67712
+.dynamic              448   141560
+.fini_array             8   142008
+.init_array             8   142016
+.got                   80   142024
+.relro_padding      54504   142104
+.data                 448   207640
+.got.plt               88   208088
+.sdata                  8   208176
+.tm_clone_table         0   208184
+.bss                 2436   208192
+.comment              111        0
+Total               67915
+
+

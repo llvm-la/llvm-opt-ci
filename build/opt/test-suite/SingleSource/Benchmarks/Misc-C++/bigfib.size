@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Misc-C++/bigfib  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 936      784
+.dynstr                1295     1720
+.gnu.version             78     3016
+.gnu.version_r          240     3096
+.rela.dyn               240     3336
+.rela.plt               720     3576
+.eh_frame               548     4296
+.eh_frame_hdr           108     4844
+.gcc_except_table       416     4952
+.rodata.cst4              4     5368
+.rodata.str1.1          361     5372
+.plt                    512    71280
+.text                  9168    71808
+.dynamic                496   146512
+.fini_array               8   147008
+.init_array               8   147016
+.got                     72   147024
+.relro_padding        49512   147096
+.data                     8   212632
+.got.plt                264   212640
+.sdata                    8   212904
+.tm_clone_table           0   212912
+.bss                     16   212912
+.comment                111        0
+Total                 65226
+
+

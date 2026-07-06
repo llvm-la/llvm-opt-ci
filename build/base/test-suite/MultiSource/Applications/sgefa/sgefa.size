@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Applications/sgefa/sgefa  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               336      784
+.dynstr               132     1120
+.gnu.version           28     1252
+.gnu.version_r         64     1280
+.rela.dyn             120     1344
+.rela.plt             264     1464
+.eh_frame              44     1728
+.eh_frame_hdr          20     1772
+.rodata                56     1792
+.rodata.cst16          16     1856
+.rodata.cst4            4     1872
+.rodata.cst8           24     1880
+.rodata.str1.1        864     1904
+.plt                  208    68304
+.text               15748    68512
+.dynamic              464   149800
+.fini_array             8   150264
+.init_array             8   150272
+.got                   40   150280
+.relro_padding      46288   150320
+.data                   0   215856
+.got.plt              112   215856
+.sdata                  8   215968
+.tm_clone_table         0   215976
+.bss                    1   215976
+.comment              111        0
+Total               65065
+
+

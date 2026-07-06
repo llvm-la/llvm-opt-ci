@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/McGill/exptree  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               384      784
+.dynstr               158     1168
+.gnu.version           32     1326
+.gnu.version_r         32     1360
+.rela.dyn             144     1392
+.rela.plt             288     1536
+.eh_frame              44     1824
+.eh_frame_hdr          20     1868
+.rodata                68     1888
+.rodata.cst16          16     1968
+.rodata.cst4            4     1984
+.rodata.str1.1         89     1988
+.plt                  224    67616
+.text                3764    67840
+.dynamic              464   137144
+.fini_array             8   137608
+.init_array             8   137616
+.got                   48   137624
+.relro_padding      58936   137672
+.data                   0   203208
+.got.plt              120   203208
+.sdata                  8   203328
+.tm_clone_table         0   203336
+.bss                   64   203336
+.comment              111        0
+Total               65131
+
+

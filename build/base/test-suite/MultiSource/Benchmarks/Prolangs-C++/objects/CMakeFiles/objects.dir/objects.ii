@@ -1,0 +1,460 @@
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/objects/objects.cpp"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 470 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/objects/objects.cpp" 2
+
+
+
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/objects/onlyobj.h" 1
+
+
+
+
+
+
+
+class Object
+{
+ public :
+
+
+
+  Object () {}
+
+
+
+  virtual ~Object () {}
+
+
+
+  virtual int operator == (Object &) = 0;
+  int operator != (Object &o) { return !(*this == o); }
+
+
+
+  virtual char *Type () { return "Object"; }
+};
+
+typedef Object *Objp;
+# 7 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/objects/objects.cpp" 2
+static int strlen(char *str1) {return 0;}
+static int strcmp(char *str1, char *str2) {return 0;}
+static char *strcpy(char *str1, char *str2) {return "";}
+static char *strncpy(char *str1, char *str2, int i) {return "";}
+static char *strcat(char *str1, char *str2) {return "";}
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/objects/artest.h" 1
+# 15 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/objects/artest.h"
+enum TblType
+{
+ PERS,
+ VOLAT,
+};
+
+class Table : public Object
+{
+ public:
+
+
+
+  Table (enum TblType t = PERS) : type (t) { Init (); }
+
+
+
+  virtual int Insert (Object *, int pos=0) = 0;
+  virtual int Append (Object *p) { return Insert (p, Nelem ()); }
+  Table &operator << (Object *p) { Append (p); return *this; }
+
+
+
+  virtual int Assign (Object *o, int pos = 0)
+   { Fetch (pos); return Insert (o, pos); }
+
+
+
+  virtual Object *Get (int pos) = 0;
+  Object *Cur () { return Get (CurInd ()); }
+  Object *First () { return Get (0); }
+  Object *Next () { return Get (CurInd()+1); }
+  Object *Prev () { return Get (CurInd()-1); }
+  Object *Last () { return Get (Nelem()-1); }
+  Object *operator [] (int pos) { return Get (pos); }
+
+
+
+
+
+
+  virtual Object *Fetch (int pos = 0) = 0;
+  virtual int Remove (int pos=0)
+   { Object *o = Fetch (pos); delete o; return o == 0 ? 0 : 1; }
+
+
+
+  virtual int Search (Object &) ;
+
+
+
+  virtual int CurInd () { return curind; }
+  virtual int Nelem () { return nelem; }
+  char *Type () { return "Table"; }
+  enum TblType TblType () { return type; }
+
+
+
+  int operator == (Object &o) ;
+
+ protected:
+
+  int nelem, curind;
+  enum TblType type;
+  void Init () { nelem = 0; curind = -1; }
+};
+
+class Array : public Table
+{
+ public:
+
+
+
+  Array (int sz=100, enum TblType t = PERS);
+
+
+
+  ~Array ();
+
+
+
+  int Append (Object *p);
+  int Insert (Object *, int pos=0);
+
+
+
+  virtual int Assign (Object *o, int pos = 0);
+
+
+
+  Object *Get (int pos) ;
+  Object *Fetch (int pos=0);
+
+
+
+  int Size () { return size; }
+  char *Type () { return "Array"; }
+
+ protected:
+
+  Object **array;
+  int size;
+};
+
+class SpArray : public Array
+{
+ public:
+
+
+
+   SpArray (int sz=100, enum TblType t = PERS) : Array (sz, t) {}
+
+
+
+  ~SpArray ();
+
+
+
+  virtual int Assign (Object *o, int pos = 0);
+
+
+
+  Object *Get (int=0) ;
+  Object *Fetch (int=0);
+
+
+
+  int Search (Object &) ;
+
+
+
+  char *Type () { return "SpArray"; }
+  int IsEmptySlot (int pos) { return ((Get (pos) == 0) ? 1 : 0); }
+
+ private :
+
+
+
+  int Append (Object *) { return 0; }
+  int Insert (Object *, int=0) { return 0; }
+};
+# 14 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/objects/objects.cpp" 2
+
+
+
+
+
+
+
+int Table::Search (Object &obj)
+{
+ for (int i = 0; i < nelem; i++)
+  if (obj == * (Get(i)))
+   return i;
+ return -1;
+}
+
+
+
+
+
+
+
+int Table::operator == (Object &tblobj)
+{
+ char *a;
+ if (strcmp (a=tblobj.Type (), Type ()))
+  return 0;
+ Table *tblptr = (Table *) &tblobj;
+ if (tblptr->Nelem () == nelem)
+ {
+ Object *b;
+  for (int i = 0; i < nelem; i++)
+   if (*(b=tblptr->Get (i)) != *(Get(i)))
+    return 0;
+ }
+ else
+  return 0;
+ return 1;
+}
+
+
+
+
+Array::Array (int sz, enum TblType t) : Table (t)
+{
+ array = new Objp [sz];
+ size = sz;
+ for (int i = 0; i < sz; i++)
+  array [i] = 0;
+}
+
+
+
+
+Array::~Array ()
+{
+ if (type == VOLAT)
+ {
+  for (int i = nelem - 1; i >= 0; i--)
+   Remove (i);
+ }
+
+ if (array)
+ {
+  delete array;
+  array = 0;
+ }
+ Init ();
+}
+
+
+
+
+int Array::Append (Object *o)
+{
+ if (nelem == size)
+  return 0;
+ array [curind = nelem] = o;
+ nelem ++;
+ return 1;
+}
+
+
+
+
+
+
+int Array::Insert (Object *obj, int pos)
+{
+ if (pos > nelem || pos < 0 || nelem >= size)
+  return 0;
+ for (int i = nelem; i > pos; i--)
+  array [i] = array [i - 1];
+ array [pos] = obj;
+ nelem ++;
+ curind = pos;
+ return 1;
+}
+
+
+
+
+int Array::Assign (Object *obj, int pos)
+{
+ if (pos > nelem || pos < 0 || nelem >= size)
+  return 0;
+ if (pos == nelem)
+  nelem ++;
+ array [curind = pos] = obj;
+ return 1;
+}
+
+
+
+
+Object *Array::Get (int idx)
+{
+ if (idx >= nelem || idx < 0)
+  return 0;
+ curind = idx;
+ return array [idx];
+}
+
+
+
+
+
+Object *Array::Fetch (int idx)
+{
+ if (idx >= nelem || idx < 0)
+  return 0;
+ Object *ret = Get (idx);
+ for (int i = idx; i < nelem - 1; i++)
+  array [i] = array [i + 1];
+ array [nelem - 1] = 0;
+ if (idx == nelem - 1)
+  curind = idx - 1;
+ else
+  curind = idx;
+ nelem --;
+ return ret;
+}
+
+
+
+
+
+int SpArray::Assign (Object *o, int pos)
+{
+ if (pos >= size || pos < 0)
+  return 0;
+ if (array [pos] == 0)
+  nelem ++;
+ array [curind = pos] = o;
+ return 1;
+}
+
+
+
+Object *SpArray::Get (int idx)
+{
+ if (idx >= size || idx < 0)
+  return 0;
+ curind = idx;
+ return array [idx];
+}
+
+
+
+
+Object *SpArray::Fetch (int pos)
+{
+ Object *ret = Get (pos);
+ if (ret)
+ {
+  array [pos] = 0;
+  if (pos == nelem - 1)
+   curind = pos - 1;
+  else
+   curind = pos;
+  nelem --;
+ }
+ return ret;
+}
+
+
+
+int SpArray::Search (Object &o)
+{
+ for (int i = 0; i < size; i++)
+ {
+  Object *p = array [i];
+  if (p != 0)
+   if (*p == o)
+    return i;
+ }
+ return -1;
+}
+
+
+
+
+
+SpArray::~SpArray ()
+{
+ if (type == VOLAT)
+ {
+  for (int i = size - 1; i >= 0; i--)
+   if (array [i] != 0)
+    Remove (i);
+ }
+
+ if (array)
+ {
+  delete array;
+  array = 0;
+ }
+ Init ();
+}
+
+class A : public Object
+{
+        public :
+                int operator == (Object &o)
+                        { char *a;
+    if (strcmp (a=o.Type (),Type ())) return 0;
+                                return i == ((A&)o).i; }
+                char *Type () { return "A"; }
+                A (int j = 0) : i(j) {}
+                operator int () { return i; }
+                ~A () {}
+        protected :
+                int i;
+};
+
+class B : public A
+{
+        public :
+                int operator == (Object &o)
+   { char *a;
+                                if (strcmp (a=o.Type (),Type ())) return 0;
+                                return j == ((B&)o).j; }
+                char *Type () { return "B"; }
+                B (int j=0) {}
+                operator int () { return j; }
+                ~B () {}
+        protected :
+                int j;
+};
+
+
+int main ()
+{
+        A *a1 = new A(1);
+        A *a2 = new A(2);
+ A *a3;
+        Array *ar = new Array(3,VOLAT);
+ SpArray *sar = new SpArray(3,VOLAT);
+ Array *a;
+ if (0)
+  a = ar;
+ else
+  a = sar;
+ a->Assign(a1);
+ a->Assign(a2, 2);
+ a3 = (A *)a->Fetch(2);
+ a3->Type();
+}

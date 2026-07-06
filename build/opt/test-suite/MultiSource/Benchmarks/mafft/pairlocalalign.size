@@ -1,0 +1,35 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/mafft/pairlocalalign  :
+section                  size     addr
+.interp                    37      680
+.note.ABI-tag              32      720
+.gnu.hash                  28      752
+.dynsym                  1176      784
+.dynstr                   412     1960
+.gnu.version               98     2372
+.gnu.version_r             64     2472
+.rela.dyn                2400     2536
+.rela.plt                1056     4936
+.eh_frame                  44     5992
+.eh_frame_hdr              20     6036
+.rodata                 13548     6056
+.rodata.cst16            2560    19616
+.rodata.cst4                4    22176
+.rodata.cst8              232    22184
+.rodata.str1.1           8418    22416
+.rodata.str1.8             32    30840
+.plt                      736    96416
+.text                  394880    97152
+.dynamic                  464   557568
+.fini_array                 8   558032
+.init_array                 8   558040
+.got                      800   558048
+.relro_padding          30976   558848
+.data                    8053   624384
+.got.plt                  376   632440
+.sdata                      8   632816
+.tm_clone_table             0   632824
+.bss                132716656   632824
+.comment                  111        0
+Total               133183237
+
+

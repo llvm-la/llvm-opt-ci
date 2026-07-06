@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/Vector/LSX/Vector-LSX-lsx-vbitclri  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               192      784
+.dynstr                86      976
+.gnu.version           16     1062
+.gnu.version_r         32     1080
+.rela.dyn              96     1112
+.rela.plt             144     1208
+.eh_frame              44     1352
+.eh_frame_hdr          20     1396
+.rodata.cst16         240     1424
+.rodata.cst4            4     1664
+.rodata.str1.1        155     1668
+.plt                  128    67360
+.text                2776    67488
+.dynamic              448   135800
+.fini_array             8   136248
+.init_array             8   136256
+.got                   32   136264
+.relro_padding      60312   136296
+.data                   0   201832
+.got.plt               72   201832
+.sdata                  8   201904
+.tm_clone_table         0   201912
+.bss                    1   201912
+.comment              111        0
+Total               65030
+
+

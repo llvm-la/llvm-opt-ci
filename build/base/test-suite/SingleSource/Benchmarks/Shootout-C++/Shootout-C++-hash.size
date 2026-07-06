@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Shootout-C++/Shootout-C++-hash  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 552      784
+.dynstr                 457     1336
+.gnu.version             46     1794
+.gnu.version_r          176     1840
+.rela.dyn               144     2016
+.rela.plt               432     2160
+.eh_frame               300     2592
+.eh_frame_hdr            60     2892
+.gcc_except_table        84     2952
+.rodata                 232     3040
+.rodata.cst4              4     3272
+.rodata.str1.1           94     3276
+.plt                    320    68912
+.text                  3784    69248
+.dynamic                496   138568
+.fini_array               8   139064
+.init_array               8   139072
+.got                     40   139080
+.relro_padding        57488   139120
+.data                     8   204656
+.got.plt                168   204664
+.sdata                    8   204832
+.tm_clone_table           0   204840
+.bss                      1   204840
+.comment                111        0
+Total                 65118
+
+

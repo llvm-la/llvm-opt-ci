@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/CoyoteBench/huffbench  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               360      784
+.dynstr               145     1144
+.gnu.version           30     1290
+.gnu.version_r         32     1320
+.rela.dyn             144     1352
+.rela.plt             264     1496
+.eh_frame              44     1760
+.eh_frame_hdr          20     1804
+.rodata.cst4            4     1824
+.rodata.str1.1        157     1828
+.plt                  208    67536
+.text                3728    67744
+.dynamic              464   137008
+.fini_array             8   137472
+.init_array             8   137480
+.got                   48   137488
+.relro_padding      59072   137536
+.data                   8   203072
+.got.plt              112   203080
+.sdata                  8   203192
+.tm_clone_table         0   203200
+.bss                    1   203200
+.comment              111        0
+Total               65073
+
+

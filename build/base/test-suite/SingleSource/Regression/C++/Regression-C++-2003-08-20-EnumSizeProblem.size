@@ -1,0 +1,30 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Regression/C++/Regression-C++-2003-08-20-EnumSizeProblem  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym                96      784
+.dynstr               100      880
+.gnu.version            8      980
+.gnu.version_r         32      988
+.rela.dyn              96     1024
+.rela.plt              48     1120
+.eh_frame              44     1168
+.eh_frame_hdr          20     1212
+.rodata.cst4            4     1232
+.plt                   64    66784
+.text                 616    66848
+.dynamic              496   133000
+.fini_array             8   133496
+.init_array             8   133504
+.got                   32   133512
+.relro_padding      63064   133544
+.data                   0   199080
+.got.plt               40   199080
+.sdata                  8   199120
+.tm_clone_table         0   199128
+.bss                    1   199128
+.comment              111        0
+Total               64993
+
+

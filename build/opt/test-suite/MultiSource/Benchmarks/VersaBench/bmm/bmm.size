@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/VersaBench/bmm/bmm  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                  192      784
+.dynstr                   85      976
+.gnu.version              16     1062
+.gnu.version_r            32     1080
+.rela.dyn                 96     1112
+.rela.plt                144     1208
+.eh_frame                 44     1352
+.eh_frame_hdr             20     1396
+.rodata.cst4               4     1416
+.rodata.str1.1            96     1420
+.plt                     128    67056
+.text                   1936    67200
+.dynamic                 448   134672
+.fini_array                8   135120
+.init_array                8   135128
+.got                      32   135136
+.relro_padding         61440   135168
+.data                      0   200704
+.got.plt                  72   200704
+.sdata                     8   200776
+.tm_clone_table            0   200784
+.bss                12582924   200784
+.comment                 111        0
+Total               12647941
+
+

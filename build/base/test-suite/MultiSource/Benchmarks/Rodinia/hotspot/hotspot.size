@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Rodinia/hotspot/hotspot  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               240      784
+.dynstr               102     1024
+.gnu.version           20     1126
+.gnu.version_r         32     1148
+.rela.dyn             144     1184
+.rela.plt             144     1328
+.eh_frame              44     1472
+.eh_frame_hdr          20     1516
+.rodata.cst4            4     1536
+.rodata.cst8           56     1544
+.rodata.str1.1         30     1600
+.plt                  128    67168
+.text                4760    67296
+.dynamic              448   137592
+.fini_array             8   138040
+.init_array             8   138048
+.got                   48   138056
+.relro_padding      58504   138104
+.data                  32   203640
+.got.plt               72   203672
+.sdata                  8   203744
+.tm_clone_table         0   203752
+.bss                 1384   203752
+.comment              111        0
+Total               66444
+
+

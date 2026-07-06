@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Regression/C/Regression-C-globalrefs  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                86      928
+.gnu.version           12     1014
+.gnu.version_r         32     1028
+.rela.dyn             192     1064
+.rela.plt              96     1256
+.eh_frame              44     1352
+.eh_frame_hdr          20     1396
+.rodata.cst4            4     1416
+.rodata.str1.1        100     1420
+.plt                   96    67056
+.text                 872    67168
+.dynamic              464   133576
+.fini_array             8   134040
+.init_array             8   134048
+.got                   32   134056
+.relro_padding      62520   134088
+.data                  32   199624
+.got.plt               56   199656
+.sdata                  8   199712
+.tm_clone_table         0   199720
+.bss                  272   199720
+.comment              111        0
+Total               65306
+
+

@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Prolangs-C++/shapes/shapes  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 360      784
+.dynstr                 438     1144
+.gnu.version             30     1582
+.gnu.version_r          160     1612
+.rela.dyn              1200     1776
+.rela.plt               192     2976
+.eh_frame               516     3168
+.eh_frame_hdr           124     3684
+.gcc_except_table       100     3808
+.rodata                  33     3908
+.rodata.cst4              4     3944
+.plt                    160    69488
+.text                  4860    69664
+.data.rel.ro            376   140064
+.dynamic                496   140440
+.fini_array               8   140936
+.init_array               8   140944
+.got                     40   140952
+.relro_padding        55616   140992
+.data                     8   206528
+.got.plt                 88   206536
+.sdata                    8   206624
+.tm_clone_table           0   206632
+.bss                    976   206632
+.comment                111        0
+Total                 66009
+
+

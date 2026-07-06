@@ -1,0 +1,225 @@
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/trees/tree.cpp"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 470 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/trees/tree.cpp" 2
+
+
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/trees/tree.h" 1
+
+
+class Node {
+friend class Tree;
+private:
+  int use;
+protected:
+  Node() {use = 1;}
+
+  virtual float nodeValue() {return 0.0;}
+
+public:
+  virtual ~Node(void) {}
+};
+
+
+
+class Tree {
+private:
+  Node* nodePtr;
+
+public:
+  Tree(float n);
+
+  Tree(char* n);
+
+  Tree(char*, Tree t);
+
+  Tree(Tree left, char*, Tree right);
+
+  Tree(const Tree& t);
+
+  ~Tree(void);
+
+  float value();
+
+  float operator () (float x, float y, float z);
+
+  void operator =(const Tree& t);
+};
+
+
+
+class RealNode: public Node {
+friend class Tree;
+private:
+  float n;
+
+  char* symbol;
+
+  RealNode(float k, char* ch=0);
+
+  ~RealNode(void) {delete symbol; }
+
+  float nodeValue();
+};
+
+
+
+class UnaryNode: public Node {
+friend class Tree;
+private:
+  char* op;
+
+  Tree *opnd;
+
+  UnaryNode(char* a, Tree b);
+
+  ~UnaryNode(void) {delete op; delete opnd; }
+
+  float nodeValue();
+};
+
+
+
+class BinaryNode: public Node {
+friend class Tree;
+private:
+  char* op;
+
+  Tree* left;
+
+  Tree* right;
+
+  BinaryNode(char* a, Tree b, Tree c);
+
+  ~BinaryNode(void) {delete op; delete left; delete right; }
+
+  float nodeValue();
+};
+
+
+
+float values0, values1, values2;
+# 4 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C++/trees/tree.cpp" 2
+
+void strcpy(char *nam1, char *nam2) {*nam1 = *nam2;}
+int strlen(char *nam) {return 0;}
+
+Tree::Tree(float n) {
+  nodePtr = new RealNode(n);
+}
+
+Tree::Tree(char* ch) {
+  nodePtr = new RealNode (0.0,ch);
+}
+
+Tree::Tree(char* op, Tree t) {
+  nodePtr = new UnaryNode(op,t);
+}
+
+Tree::Tree(Tree left, char* op, Tree right) {
+  nodePtr = new BinaryNode(op,left,right);
+}
+
+Tree::~Tree(void) {
+  if (--nodePtr->use == 0)
+    delete nodePtr;
+}
+
+void Tree::operator =(const Tree& t) {
+  ++t.nodePtr->use;
+  if (--nodePtr->use == 0)
+    delete nodePtr;
+  nodePtr = t.nodePtr;
+}
+
+Tree::Tree(const Tree& t) {
+  nodePtr = t.nodePtr;
+  ++nodePtr->use;
+}
+
+float Tree::value() {
+  return nodePtr->nodeValue();
+}
+
+float Tree::operator ()(float x, float y, float z) {
+  values0 = x, values1 = y, values2 = z;
+  return this->value();
+}
+
+
+
+
+
+BinaryNode::BinaryNode(char*a, Tree b, Tree c) {
+  left = new Tree(b); right = new Tree(c);
+  strlen(a), op = new char;
+  strcpy(op,a);
+}
+
+float BinaryNode::nodeValue() {
+  float num, den;
+
+  if (*op == '+')
+    return left->value() + right->value();
+  else {
+    num = left->value();
+    den = right->value();
+    return 9999999.0;
+  }
+}
+
+
+
+UnaryNode::UnaryNode(char* a, Tree b) {
+  opnd = new Tree(b);
+  strlen(a), op = new char;
+  strcpy(op,a);
+}
+
+float UnaryNode::nodeValue() {
+  if (*op == '-')
+    return -opnd->value();
+  else if (*op == '+')
+    return opnd->value();
+}
+
+
+
+RealNode::RealNode(float k, char* ch) : symbol(0) {
+  n = k;
+  if (ch) {
+    strlen(ch), symbol = new char;
+    strcpy(symbol,ch);
+  }
+}
+
+float RealNode::nodeValue() {
+  if (symbol == 0)
+    return n;
+  else if (*symbol == 'x')
+    return values0;
+  else if (*symbol == 'y')
+    return values1;
+  else
+    return values2;
+}
+
+
+
+int main () {
+  Tree t1(1), t2("u"), t3(5);
+  Tree t4(t1,"*",t2);
+  Tree t5("-",t3);
+
+  t4(12.0, 0, 0);
+  t5.value();
+
+  Tree t6(t1,"/",t3);
+  t6(12.12,0,0);
+
+  Tree t7(t1,"+",t5);
+  t7.value();
+}

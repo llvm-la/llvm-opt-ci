@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Prolangs-C/unix-tbl/unix-tbl  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              36      752
+.dynsym               672      792
+.dynstr               226     1464
+.gnu.version           56     1690
+.gnu.version_r         32     1748
+.rela.dyn            1728     1784
+.rela.plt             504     3512
+.eh_frame              44     4016
+.eh_frame_hdr          20     4060
+.rodata              1056     4080
+.rodata.cst16          32     5136
+.rodata.cst4            4     5168
+.rodata.str1.1       3893     5172
+.plt                  368    74608
+.text               38188    74976
+.data.rel.ro           96   178704
+.dynamic              448   178800
+.fini_array             8   179248
+.init_array             8   179256
+.got                  464   179264
+.relro_padding      16880   179728
+.data                  96   245264
+.got.plt              192   245360
+.sdata                  8   245552
+.tm_clone_table         0   245560
+.bss                51892   245560
+.comment              111        0
+Total              117131
+
+

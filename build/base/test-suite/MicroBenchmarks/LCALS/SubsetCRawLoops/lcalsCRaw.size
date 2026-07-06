@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MicroBenchmarks/LCALS/SubsetCRawLoops/lcalsCRaw  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4800      784
+.dynstr                 6033     5584
+.gnu.version             400    11618
+.gnu.version_r           400    12020
+.rela.dyn               9336    12424
+.rela.plt               4080    21760
+.eh_frame              21488    25840
+.eh_frame_hdr           4796    47328
+.gcc_except_table      15300    52124
+.rodata                 3116    67424
+.rodata.cst16            896    70544
+.rodata.cst32             64    71440
+.rodata.cst4               4    71504
+.rodata.cst8             184    71512
+.rodata.str1.1          9138    71696
+.rodata.str1.8          1696    80840
+.plt                    2752   148080
+.text                 435236   150848
+.data.rel.ro            1752   651624
+.dynamic                 496   653376
+.fini_array                8   653872
+.init_array              160   653880
+.got                     360   654040
+.relro_padding           960   654400
+.data                   1048   719936
+.got.plt                1384   720984
+.sdata                     8   722368
+.tm_clone_table            0   722376
+.bss                     856   722376
+.comment                 111        0
+Total                 526959
+
+

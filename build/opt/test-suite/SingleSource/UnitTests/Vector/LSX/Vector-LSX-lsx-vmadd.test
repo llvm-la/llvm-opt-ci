@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vmadd 
+VERIFY: %b/fpcmp-target %o %S/lsx-vmadd.reference_output

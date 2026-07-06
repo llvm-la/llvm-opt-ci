@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Regression/C++/Regression-C++-2003-05-14-array-init  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               120      784
+.dynstr               107      904
+.gnu.version           10     1012
+.gnu.version_r         32     1024
+.rela.dyn              96     1056
+.rela.plt              72     1152
+.eh_frame              44     1224
+.eh_frame_hdr          20     1268
+.rodata.cst4            4     1288
+.rodata.str1.1         13     1292
+.plt                   80    66848
+.text                 644    66944
+.dynamic              496   133128
+.fini_array             8   133624
+.init_array             8   133632
+.got                   32   133640
+.relro_padding      62936   133672
+.data                  16   199208
+.got.plt               48   199224
+.sdata                  8   199272
+.tm_clone_table         0   199280
+.bss                    1   199280
+.comment              111        0
+Total               65003
+
+

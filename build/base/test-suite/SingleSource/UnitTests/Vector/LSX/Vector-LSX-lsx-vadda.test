@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vadda 
+VERIFY: %b/fpcmp-target %o %S/lsx-vadda.reference_output

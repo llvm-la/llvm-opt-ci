@@ -1,0 +1,30 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/conditional-gnu-ext-cxx  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym                96      784
+.dynstr               100      880
+.gnu.version            8      980
+.gnu.version_r         32      988
+.rela.dyn              96     1024
+.rela.plt              48     1120
+.eh_frame              44     1168
+.eh_frame_hdr          20     1212
+.rodata.cst4            4     1232
+.plt                   64    66784
+.text                 848    66848
+.dynamic              496   133232
+.fini_array             8   133728
+.init_array             8   133736
+.got                   32   133744
+.relro_padding      62832   133776
+.data                   4   199312
+.got.plt               40   199320
+.sdata                  8   199360
+.tm_clone_table         0   199368
+.bss                   12   199368
+.comment              111        0
+Total               65008
+
+

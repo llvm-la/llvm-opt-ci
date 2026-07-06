@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/MiBench/security-sha/security-sha  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               264      784
+.dynstr               117     1048
+.gnu.version           22     1166
+.gnu.version_r         32     1188
+.rela.dyn             120     1224
+.rela.plt             192     1344
+.eh_frame              44     1536
+.eh_frame_hdr          20     1580
+.rodata.cst16          16     1600
+.rodata.cst4            4     1616
+.rodata.str1.1         59     1620
+.plt                  160    67216
+.text                4088    67392
+.dynamic              464   137016
+.fini_array             8   137480
+.init_array             8   137488
+.got                   40   137496
+.relro_padding      59072   137536
+.data                   0   203072
+.got.plt               88   203072
+.sdata                  8   203160
+.tm_clone_table         0   203168
+.bss                    1   203168
+.comment              111        0
+Total               65035
+
+

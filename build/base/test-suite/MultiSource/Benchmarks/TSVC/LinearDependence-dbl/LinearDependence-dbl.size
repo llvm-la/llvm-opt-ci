@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/TSVC/LinearDependence-dbl/LinearDependence-dbl  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 264      784
+.dynstr                 127     1048
+.gnu.version             22     1176
+.gnu.version_r           32     1200
+.rela.dyn               312     1232
+.rela.plt               216     1544
+.eh_frame                44     1760
+.eh_frame_hdr            20     1804
+.rodata                 544     1824
+.rodata.cst16            32     2368
+.rodata.cst4              4     2400
+.rodata.str1.1         1086     2404
+.plt                    176    69040
+.text                 71072    69216
+.data.rel.ro            264   205824
+.dynamic                464   206088
+.fini_array               8   206552
+.init_array               8   206560
+.got                     32   206568
+.relro_padding        55544   206600
+.data                     8   272136
+.got.plt                 96   272144
+.sdata                    8   272240
+.tm_clone_table           0   272248
+.bss                5566064   272256
+.comment                111        0
+Total               5696655
+
+

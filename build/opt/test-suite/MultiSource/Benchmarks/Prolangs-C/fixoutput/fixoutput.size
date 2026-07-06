@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Prolangs-C/fixoutput/fixoutput  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               336      784
+.dynstr               128     1120
+.gnu.version           28     1248
+.gnu.version_r         32     1276
+.rela.dyn             192     1312
+.rela.plt             264     1504
+.eh_frame              44     1768
+.eh_frame_hdr          20     1812
+.rodata               152     1832
+.rodata.cst4            4     1984
+.rodata.str1.1       1201     1988
+.plt                  208    68736
+.text                3692    68960
+.dynamic              448   138192
+.fini_array             8   138640
+.init_array             8   138648
+.got                   64   138656
+.relro_padding      57888   138720
+.data                   0   204256
+.got.plt              112   204256
+.sdata                  8   204368
+.tm_clone_table         0   204376
+.bss                   49   204376
+.comment              111        0
+Total               65094
+
+

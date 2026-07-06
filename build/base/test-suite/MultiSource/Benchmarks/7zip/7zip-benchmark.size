@@ -1,0 +1,39 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/7zip/7zip-benchmark  :
+section                 size      addr
+.interp                   37       680
+.note.ABI-tag             32       720
+.gnu.hash                 28       752
+.dynsym                 3024       784
+.dynstr                 1464      3808
+.gnu.version             252      5272
+.gnu.version_r           128      5524
+.rela.dyn              94056      5656
+.rela.plt               2712     99712
+.eh_frame              68772    102424
+.eh_frame_hdr          17364    171196
+.gcc_except_table      49420    188560
+.rodata                15124    237984
+.rodata.cst16           2368    253120
+.rodata.cst32             96    255488
+.rodata.cst4               4    255584
+.rodata.str1.1          6152    255588
+.rodata.str1.8            72    261744
+.rodata.str4.4          5872    261816
+.rodata.str4.8           816    267688
+.plt                    1840    334048
+.text                 963856    335904
+.data.rel.ro           35144   1365296
+.dynamic                 496   1400440
+.fini_array                8   1400936
+.init_array              304   1400944
+.got                    1112   1401248
+.relro_padding         39432   1402360
+.data                   3368   1467896
+.got.plt                 928   1471264
+.sdata                     8   1472192
+.tm_clone_table            0   1472200
+.bss                   29248   1472208
+.comment                 111         0
+Total                1343648
+
+

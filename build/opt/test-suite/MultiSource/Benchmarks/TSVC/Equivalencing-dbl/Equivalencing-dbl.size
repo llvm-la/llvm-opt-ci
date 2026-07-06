@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/TSVC/Equivalencing-dbl/Equivalencing-dbl  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 264      784
+.dynstr                 127     1048
+.gnu.version             22     1176
+.gnu.version_r           32     1200
+.rela.dyn               312     1232
+.rela.plt               216     1544
+.eh_frame                44     1760
+.eh_frame_hdr            20     1804
+.rodata                 544     1824
+.rodata.cst16            32     2368
+.rodata.cst4              4     2400
+.rodata.str1.1          952     2404
+.plt                    176    68896
+.text                 66428    69088
+.data.rel.ro            264   201056
+.dynamic                464   201320
+.fini_array               8   201784
+.init_array               8   201792
+.got                     32   201800
+.relro_padding        60312   201832
+.data                     8   267368
+.got.plt                 96   267376
+.sdata                    8   267472
+.tm_clone_table           0   267480
+.bss                5566052   267488
+.comment                111        0
+Total               5696633
+
+

@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Olden/bh/bh  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              32      752
+.dynsym               432      784
+.dynstr               169     1216
+.gnu.version           36     1386
+.gnu.version_r         64     1424
+.rela.dyn             168     1488
+.rela.plt             336     1656
+.eh_frame              44     1992
+.eh_frame_hdr          20     2036
+.rodata.cst16          16     2064
+.rodata.cst4            4     2080
+.rodata.cst8          104     2088
+.rodata.str1.1        154     2192
+.plt                  256    67888
+.text               10972    68160
+.dynamic              464   144672
+.fini_array             8   145136
+.init_array             8   145144
+.got                   56   145152
+.relro_padding      51400   145208
+.data                   0   210744
+.got.plt              136   210744
+.sdata                  8   210880
+.tm_clone_table         0   210888
+.bss                   24   210888
+.common                52   210912
+.comment              111        0
+Total               65143
+
+

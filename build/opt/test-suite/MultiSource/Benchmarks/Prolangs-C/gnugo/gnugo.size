@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Prolangs-C/gnugo/gnugo  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               480      784
+.dynstr               181     1264
+.gnu.version           40     1446
+.gnu.version_r         32     1488
+.rela.dyn             528     1520
+.rela.plt             408     2048
+.eh_frame              44     2456
+.eh_frame_hdr          20     2500
+.rodata               924     2520
+.rodata.cst16          16     3456
+.rodata.cst4            4     3472
+.rodata.str1.1       2951     3476
+.plt                  304    71968
+.text               26704    72288
+.dynamic              448   164528
+.fini_array             8   164976
+.init_array             8   164984
+.got                  176   164992
+.relro_padding      31440   165168
+.data                   0   230704
+.got.plt              160   230704
+.sdata                  8   230864
+.tm_clone_table         0   230872
+.bss                 1556   230880
+.comment              111        0
+Total               66648
+
+

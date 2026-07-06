@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Polybench/linear-algebra/solvers/lu/lu  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               336      784
+.dynstr               145     1120
+.gnu.version           28     1266
+.gnu.version_r         32     1296
+.rela.dyn             120     1328
+.rela.plt             264     1448
+.eh_frame              44     1712
+.eh_frame_hdr          20     1756
+.rodata.cst4            4     1776
+.rodata.cst8           16     1784
+.rodata.str1.1        134     1800
+.plt                  208    67472
+.text                3260    67680
+.dynamic              464   136480
+.fini_array             8   136944
+.init_array             8   136952
+.got                   40   136960
+.relro_padding      59608   137000
+.data                   0   202536
+.got.plt              112   202536
+.sdata                  8   202648
+.tm_clone_table         0   202656
+.bss                   56   202656
+.comment              111        0
+Total               65123
+
+

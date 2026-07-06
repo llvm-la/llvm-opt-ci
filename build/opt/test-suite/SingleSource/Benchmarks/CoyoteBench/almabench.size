@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/CoyoteBench/almabench  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               312      784
+.dynstr               121     1096
+.gnu.version           26     1218
+.gnu.version_r         64     1244
+.rela.dyn             120     1312
+.rela.plt             240     1432
+.eh_frame              44     1672
+.eh_frame_hdr          20     1716
+.rodata              4864     1736
+.rodata.cst16          16     6600
+.rodata.cst4            4     6616
+.rodata.cst8          128     6624
+.rodata.str1.1         10     6752
+.plt                  192    72304
+.text                5368    72512
+.dynamic              464   143416
+.fini_array             8   143880
+.init_array             8   143888
+.got                   40   143896
+.relro_padding      52672   143936
+.data                   0   209472
+.got.plt              104   209472
+.sdata                  8   209576
+.tm_clone_table         0   209584
+.bss                    1   209584
+.comment              111        0
+Total               65042
+
+

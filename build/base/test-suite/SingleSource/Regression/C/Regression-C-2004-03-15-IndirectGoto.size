@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Regression/C/Regression-C-2004-03-15-IndirectGoto  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               120      784
+.dynstr                76      904
+.gnu.version           10      980
+.gnu.version_r         32      992
+.rela.dyn             192     1024
+.rela.plt              72     1216
+.eh_frame              44     1288
+.eh_frame_hdr          20     1332
+.rodata.cst4            4     1352
+.rodata.str1.1         10     1356
+.plt                   80    66912
+.text                 844    67008
+.data.rel.ro           40   133392
+.dynamic              464   133432
+.fini_array             8   133896
+.init_array             8   133904
+.got                   32   133912
+.relro_padding      62664   133944
+.data                   0   199480
+.got.plt               48   199480
+.sdata                  8   199528
+.tm_clone_table         0   199536
+.bss                    1   199536
+.comment              111        0
+Total               64985
+
+

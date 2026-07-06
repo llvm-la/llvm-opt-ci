@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MicroBenchmarks/harris/harris  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4224      784
+.dynstr                 5608     5008
+.gnu.version             352    10616
+.gnu.version_r           384    10968
+.rela.dyn               9192    11352
+.rela.plt               3528    20544
+.eh_frame              18292    24072
+.eh_frame_hdr           4164    42364
+.gcc_except_table      12608    46528
+.rodata                 2588    59136
+.rodata.cst16            160    61728
+.rodata.cst32             32    61888
+.rodata.cst4               4    61920
+.rodata.cst8              80    61928
+.rodata.str1.1          7305    62008
+.rodata.str1.8           960    69320
+.plt                    2384   135824
+.text                 252004   138208
+.data.rel.ro            1720   455752
+.dynamic                 496   457472
+.fini_array                8   457968
+.init_array              152   457976
+.got                     352   458128
+.relro_padding           272   458480
+.data                   1040   524016
+.got.plt                1200   525056
+.sdata                     8   526256
+.tm_clone_table            0   526264
+.bss                     696   526264
+.comment                 111        0
+Total                 330021
+
+

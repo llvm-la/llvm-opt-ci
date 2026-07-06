@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Polybench/stencils/heat-3d/heat-3d  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               130     1072
+.gnu.version           24     1202
+.gnu.version_r         32     1228
+.rela.dyn             120     1264
+.rela.plt             216     1384
+.eh_frame              44     1600
+.eh_frame_hdr          20     1644
+.rodata.cst16          16     1664
+.rodata.cst4            4     1680
+.rodata.cst8            8     1688
+.rodata.str1.1         58     1696
+.plt                  176    67296
+.text                2672    67488
+.dynamic              464   135696
+.fini_array             8   136160
+.init_array             8   136168
+.got                   40   136176
+.relro_padding      60392   136216
+.data                   0   201752
+.got.plt               96   201752
+.sdata                  8   201848
+.tm_clone_table         0   201856
+.bss                   56   201856
+.comment              111        0
+Total               65088
+
+

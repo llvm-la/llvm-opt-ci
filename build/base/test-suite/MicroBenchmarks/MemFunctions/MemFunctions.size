@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MicroBenchmarks/MemFunctions/MemFunctions  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4152      784
+.dynstr                 5565     4936
+.gnu.version             346    10502
+.gnu.version_r           384    10848
+.rela.dyn               9168    11232
+.rela.plt               3480    20400
+.eh_frame              25396    23880
+.eh_frame_hdr           5572    49276
+.gcc_except_table      24252    54848
+.rodata                 2644    79104
+.rodata.cst16            272    81760
+.rodata.cst32             32    82032
+.rodata.cst4               4    82064
+.rodata.cst8              80    82072
+.rodata.str1.1         12765    82152
+.rodata.str1.8           976    94920
+.plt                    2352   161440
+.text                 452388   163808
+.data.rel.ro            1720   681736
+.dynamic                 496   683456
+.fini_array                8   683952
+.init_array              152   683960
+.got                     344   684112
+.relro_padding         36440   684456
+.data                   1040   749992
+.got.plt                1184   751032
+.sdata                     8   752216
+.tm_clone_table            0   752224
+.bss                    2024   752224
+.comment                 111        0
+Total                 593452
+
+

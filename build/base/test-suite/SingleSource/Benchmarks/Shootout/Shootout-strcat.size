@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Shootout/Shootout-strcat  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               124     1072
+.gnu.version           24     1196
+.gnu.version_r         32     1220
+.rela.dyn              96     1256
+.rela.plt             240     1352
+.eh_frame              44     1592
+.eh_frame_hdr          20     1636
+.rodata.cst4            4     1656
+.rodata.str1.1         40     1660
+.plt                  192    67248
+.text                 928    67456
+.dynamic              464   133920
+.fini_array             8   134384
+.init_array             8   134392
+.got                   32   134400
+.relro_padding      62176   134432
+.data                   0   199968
+.got.plt              104   199968
+.sdata                  8   200072
+.tm_clone_table         0   200080
+.bss                    1   200080
+.comment              111        0
+Total               65041
+
+

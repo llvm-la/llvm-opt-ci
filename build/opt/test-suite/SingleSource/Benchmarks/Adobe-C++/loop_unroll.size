@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Adobe-C++/loop_unroll  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym                336      784
+.dynstr                183     1120
+.gnu.version            28     1304
+.gnu.version_r          80     1332
+.rela.dyn               96     1416
+.rela.plt              288     1512
+.eh_frame            14172     1800
+.eh_frame_hdr         2268    15972
+.rodata.cst4             4    18240
+.rodata.cst8            48    18248
+.rodata.str1.1         523    18296
+.plt                   224    84368
+.text               380548    84608
+.dynamic               496   530696
+.fini_array              8   531192
+.init_array              8   531200
+.got                    32   531208
+.relro_padding       58584   531240
+.data                   16   596776
+.got.plt               120   596792
+.sdata                   8   596912
+.tm_clone_table          0   596920
+.bss                 99240   596920
+.comment               111        0
+Total               557518
+
+

@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vmini-2 
+VERIFY: %b/fpcmp-target %o %S/lsx-vmini-2.reference_output

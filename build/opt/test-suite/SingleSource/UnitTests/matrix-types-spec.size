@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/matrix-types-spec  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym                432      784
+.dynstr                336     1216
+.gnu.version            36     1552
+.gnu.version_r         144     1588
+.rela.dyn              120     1736
+.rela.plt              336     1856
+.eh_frame              660     2192
+.eh_frame_hdr          124     2852
+.rodata.cst16          240     2976
+.rodata.cst4             4     3216
+.rodata.cst8            16     3224
+.rodata.str1.1          17     3240
+.plt                   256    68800
+.text               701396    69056
+.dynamic               496   835992
+.fini_array              8   836488
+.init_array              8   836496
+.got                    40   836504
+.relro_padding       15424   836544
+.data                    0   902080
+.got.plt               136   902080
+.sdata                   8   902216
+.tm_clone_table          0   902224
+.bss                     1   902224
+.comment               111        0
+Total               720446
+
+

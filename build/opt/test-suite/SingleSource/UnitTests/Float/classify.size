@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/Float/classify  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               168      784
+.dynstr                78      952
+.gnu.version           14     1030
+.gnu.version_r         32     1044
+.rela.dyn              96     1080
+.rela.plt             120     1176
+.eh_frame             124     1296
+.eh_frame_hdr          52     1420
+.rodata.cst4            4     1472
+.rodata.str1.1       1457     1476
+.plt                  112    68480
+.text               29260    68608
+.dynamic              448   163408
+.fini_array             8   163856
+.init_array             8   163864
+.got                   32   163872
+.relro_padding      32704   163904
+.data                 608   229440
+.got.plt               64   230048
+.sdata                  8   230112
+.tm_clone_table         0   230120
+.bss                  304   230128
+.comment              111        0
+Total               65909
+
+

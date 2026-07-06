@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Prolangs-C/loader/loader  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               480      784
+.dynstr               175     1264
+.gnu.version           40     1440
+.gnu.version_r         64     1480
+.rela.dyn              96     1544
+.rela.plt             432     1640
+.eh_frame              44     2072
+.eh_frame_hdr          20     2116
+.rodata               120     2136
+.rodata.cst4            4     2256
+.rodata.str1.1       1417     2260
+.plt                  320    69216
+.text                9732    69536
+.dynamic              464   144808
+.fini_array             8   145272
+.init_array             8   145280
+.got                   32   145288
+.relro_padding      51288   145320
+.data                  12   210856
+.got.plt              168   210872
+.sdata                  8   211040
+.tm_clone_table         0   211048
+.bss                   24   211048
+.common               161   211072
+.comment              111        0
+Total               65325
+
+

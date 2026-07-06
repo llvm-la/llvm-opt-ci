@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Regression/C++/EH/Regression-C++-recursive-throw  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 240      784
+.dynstr                 241     1024
+.gnu.version             20     1266
+.gnu.version_r           64     1288
+.rela.dyn               192     1352
+.rela.plt               144     1544
+.eh_frame               172     1688
+.eh_frame_hdr            44     1860
+.gcc_except_table        40     1904
+.rodata                  16     1944
+.rodata.cst4              4     1960
+.plt                    128    67504
+.text                   772    67648
+.data.rel.ro             16   133960
+.dynamic                496   133976
+.fini_array               8   134472
+.init_array               8   134480
+.got                     32   134488
+.relro_padding        62088   134520
+.data                    16   200056
+.got.plt                 72   200072
+.sdata                    8   200144
+.tm_clone_table           0   200152
+.bss                      3   200152
+.comment                111        0
+Total                 65032
+
+

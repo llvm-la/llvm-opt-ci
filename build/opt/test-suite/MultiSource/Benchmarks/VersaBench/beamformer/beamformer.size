@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/VersaBench/beamformer/beamformer  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               360      784
+.dynstr               145     1144
+.gnu.version           30     1290
+.gnu.version_r         64     1320
+.rela.dyn             144     1384
+.rela.plt             264     1528
+.eh_frame              44     1792
+.eh_frame_hdr          20     1836
+.rodata.cst16          32     1856
+.rodata.cst4            4     1888
+.rodata.cst8            8     1896
+.rodata.str1.1         67     1904
+.plt                  208    67520
+.text               22340    67744
+.dynamic              464   155624
+.fini_array             8   156088
+.init_array             8   156096
+.got                   48   156104
+.relro_padding      40456   156152
+.data                   4   221688
+.got.plt              112   221696
+.sdata                  8   221808
+.tm_clone_table         0   221816
+.bss                 8196   221816
+.comment              111        0
+Total               73242
+
+

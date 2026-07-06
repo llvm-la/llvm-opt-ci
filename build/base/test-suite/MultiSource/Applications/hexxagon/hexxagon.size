@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Applications/hexxagon/hexxagon  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 720      784
+.dynstr                 520     1504
+.gnu.version             60     2024
+.gnu.version_r          176     2084
+.rela.dyn               192     2264
+.rela.plt               600     2456
+.eh_frame              1144     3056
+.eh_frame_hdr           268     4200
+.gcc_except_table        72     4468
+.rodata                 152     4540
+.rodata.cst4              4     4692
+.rodata.str1.1         3622     4696
+.rodata.str1.8           16     8320
+.plt                    432    73872
+.text                 18768    74304
+.dynamic                496   158608
+.fini_array               8   159104
+.init_array               8   159112
+.got                     56   159120
+.relro_padding        37432   159176
+.data                     8   224712
+.got.plt                224   224720
+.sdata                    8   224944
+.tm_clone_table           0   224952
+.bss                     25   224952
+.comment                111        0
+Total                 65219
+
+

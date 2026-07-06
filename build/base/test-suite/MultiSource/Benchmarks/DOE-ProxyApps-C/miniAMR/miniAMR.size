@@ -1,0 +1,35 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/miniAMR/miniAMR  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               480      784
+.dynstr               174     1264
+.gnu.version           40     1438
+.gnu.version_r         64     1480
+.rela.dyn             624     1544
+.rela.plt             432     2168
+.eh_frame              44     2600
+.eh_frame_hdr          20     2644
+.rodata               352     2664
+.rodata.cst4            4     3016
+.rodata.cst8            8     3024
+.rodata.str1.1      10107     3032
+.plt                  320    78688
+.text               52716    79008
+.data.rel.ro          208   197264
+.dynamic              464   197472
+.fini_array             8   197936
+.init_array             8   197944
+.got                   32   197952
+.relro_padding      64160   197984
+.data                   0   263520
+.got.plt              168   263520
+.sdata                  8   263688
+.tm_clone_table         0   263696
+.bss                 1384   263696
+.common              4812   265080
+.comment              111        0
+Total              136845
+
+

@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LASX-lasx-xvbitrevi 
+VERIFY: %b/fpcmp-target %o %S/lasx-xvbitrevi.reference_output

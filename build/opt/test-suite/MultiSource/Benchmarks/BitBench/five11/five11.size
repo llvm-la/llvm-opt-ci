@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/BitBench/five11/five11  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               336      784
+.dynstr               128     1120
+.gnu.version           28     1248
+.gnu.version_r         32     1276
+.rela.dyn             120     1312
+.rela.plt             264     1432
+.eh_frame              44     1696
+.eh_frame_hdr          20     1740
+.rodata.cst4            4     1760
+.rodata.str1.1         29     1764
+.plt                  208    67344
+.text                2520    67552
+.dynamic              448   135608
+.fini_array             8   136056
+.init_array             8   136064
+.got                   40   136072
+.relro_padding      60496   136112
+.data                   0   201648
+.got.plt              112   201648
+.sdata                  8   201760
+.tm_clone_table         0   201768
+.bss                    1   201768
+.comment              111        0
+Total               65062
+
+

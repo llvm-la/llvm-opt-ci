@@ -1,0 +1,35 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/Vectorizer/tfactivelanemask-early-exit  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 528      784
+.dynstr                 638     1312
+.gnu.version             44     1950
+.gnu.version_r          160     1996
+.rela.dyn              5592     2160
+.rela.plt               360     7752
+.eh_frame              7684     8112
+.eh_frame_hdr          2140    15796
+.gcc_except_table      8024    17936
+.rodata                3178    25960
+.rodata.cst16           848    29152
+.rodata.cst4              4    30000
+.rodata.str1.1          710    30004
+.plt                    272    96256
+.text                 85860    96544
+.data.rel.ro           1808   247944
+.dynamic                496   249752
+.fini_array               8   250248
+.init_array               8   250256
+.got                     48   250264
+.relro_padding        11832   250312
+.data                     8   315848
+.got.plt                144   315856
+.sdata                    8   316000
+.tm_clone_table           0   316008
+.bss                      1   316008
+.comment                111        0
+Total                130611
+
+

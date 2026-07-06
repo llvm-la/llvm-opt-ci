@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/UnitTests/Vector/LSX/Vector-LSX-lsx-vfnmadd_d  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               192      784
+.dynstr                86      976
+.gnu.version           16     1062
+.gnu.version_r         32     1080
+.rela.dyn              96     1112
+.rela.plt             144     1208
+.eh_frame              44     1352
+.eh_frame_hdr          20     1396
+.rodata.cst16         400     1424
+.rodata.cst4            4     1824
+.rodata.str1.1        156     1828
+.plt                  128    67520
+.text                2272    67648
+.dynamic              448   135456
+.fini_array             8   135904
+.init_array             8   135912
+.got                   32   135920
+.relro_padding      60656   135952
+.data                   0   201488
+.got.plt               72   201488
+.sdata                  8   201560
+.tm_clone_table         0   201568
+.bss                    1   201568
+.comment              111        0
+Total               65031
+
+

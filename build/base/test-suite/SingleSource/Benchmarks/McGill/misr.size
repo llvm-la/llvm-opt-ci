@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/McGill/misr  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               312      784
+.dynstr               140     1096
+.gnu.version           26     1236
+.gnu.version_r         32     1264
+.rela.dyn              96     1296
+.rela.plt             264     1392
+.eh_frame              44     1656
+.eh_frame_hdr          20     1700
+.rodata.cst4            4     1720
+.rodata.cst8           24     1728
+.rodata.str1.1        183     1752
+.plt                  208    67472
+.text                2448    67680
+.dynamic              464   135664
+.fini_array             8   136128
+.init_array             8   136136
+.got                   32   136144
+.relro_padding      60432   136176
+.data                   0   201712
+.got.plt              112   201712
+.sdata                  8   201824
+.tm_clone_table         0   201832
+.bss                    8   201832
+.comment              111        0
+Total               65081
+
+

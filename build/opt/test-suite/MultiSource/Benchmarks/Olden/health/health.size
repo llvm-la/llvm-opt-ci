@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Olden/health/health  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               240      784
+.dynstr               110     1024
+.gnu.version           20     1134
+.gnu.version_r         64     1156
+.rela.dyn             168     1224
+.rela.plt             192     1392
+.eh_frame              44     1584
+.eh_frame_hdr          20     1628
+.rodata.cst16          16     1648
+.rodata.cst4            4     1664
+.rodata.cst8           16     1672
+.rodata.str1.1        260     1688
+.plt                  160    67488
+.text                4376    67648
+.dynamic              464   137560
+.fini_array             8   138024
+.init_array             8   138032
+.got                   56   138040
+.relro_padding      58512   138096
+.data                   0   203632
+.got.plt               88   203632
+.sdata                  8   203720
+.tm_clone_table         0   203728
+.bss                   32   203728
+.comment              111        0
+Total               65074
+
+

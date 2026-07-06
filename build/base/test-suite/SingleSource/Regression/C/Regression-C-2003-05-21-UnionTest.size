@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Regression/C/Regression-C-2003-05-21-UnionTest  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              32      752
+.dynsym               144      784
+.dynstr                88      928
+.gnu.version           12     1016
+.gnu.version_r         32     1028
+.rela.dyn              96     1064
+.rela.plt              72     1160
+.eh_frame              44     1232
+.eh_frame_hdr          20     1276
+.rodata.cst4            4     1296
+.rodata.str1.1          7     1300
+.plt                   80    66848
+.text                 652    66944
+.dynamic              464   133136
+.fini_array             8   133600
+.init_array             8   133608
+.got                   32   133616
+.relro_padding      62960   133648
+.data                   0   199184
+.got.plt               48   199184
+.sdata                  8   199232
+.tm_clone_table         0   199240
+.bss                    1   199240
+.comment              111        0
+Total               64992
+
+

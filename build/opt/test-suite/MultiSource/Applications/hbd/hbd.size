@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Applications/hbd/hbd  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 936      784
+.dynstr                 418     1720
+.gnu.version             78     2138
+.gnu.version_r          128     2216
+.rela.dyn              3744     2344
+.rela.plt               792     6088
+.eh_frame              1632     6880
+.eh_frame_hdr           308     8512
+.gcc_except_table      1024     8820
+.rodata                1128     9844
+.rodata.cst16           368    10976
+.rodata.cst4              4    11344
+.rodata.str1.1         3023    11348
+.plt                    560    79920
+.text                 35556    80480
+.dynamic                496   181576
+.fini_array               8   182072
+.init_array              16   182080
+.got                    344   182096
+.relro_padding        14168   182440
+.data                  2072   247976
+.got.plt                288   250048
+.sdata                    8   250336
+.tm_clone_table           0   250344
+.bss                   2692   250344
+.comment                111        0
+Total                 69999
+
+

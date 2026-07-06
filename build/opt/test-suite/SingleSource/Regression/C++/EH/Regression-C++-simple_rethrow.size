@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Regression/C++/EH/Regression-C++-simple_rethrow  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 360      784
+.dynstr                 286     1144
+.gnu.version             30     1430
+.gnu.version_r          112     1460
+.rela.dyn               168     1576
+.rela.plt               264     1744
+.eh_frame               180     2008
+.eh_frame_hdr            44     2188
+.gcc_except_table        52     2232
+.rodata.cst4              4     2284
+.rodata.str1.1           61     2288
+.plt                    208    67888
+.text                   816    68096
+.dynamic                496   134448
+.fini_array               8   134944
+.init_array               8   134952
+.got                     40   134960
+.relro_padding        61608   135000
+.data                    16   200536
+.got.plt                112   200552
+.sdata                    8   200664
+.tm_clone_table           0   200672
+.bss                      1   200672
+.comment                111        0
+Total                 65090
+
+

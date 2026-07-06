@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/MiBench/telecomm-FFT/telecomm-fft  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              36      752
+.dynsym               432      792
+.dynstr               156     1224
+.gnu.version           36     1380
+.gnu.version_r         64     1416
+.rela.dyn             120     1480
+.rela.plt             312     1600
+.eh_frame              44     1912
+.eh_frame_hdr          20     1956
+.rodata                24     1976
+.rodata.cst16          32     2000
+.rodata.cst4            4     2032
+.rodata.cst8           64     2040
+.rodata.str1.1        388     2104
+.plt                  240    68032
+.text                4900    68288
+.dynamic              464   138728
+.fini_array             8   139192
+.init_array             8   139200
+.got                   40   139208
+.relro_padding      57360   139248
+.data                   8   204784
+.got.plt              128   204792
+.sdata                  8   204920
+.tm_clone_table         0   204928
+.bss                    1   204928
+.comment              111        0
+Total               65077
+
+

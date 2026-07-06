@@ -1,0 +1,30 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Regression/C/gcc-c-torture/execute/GCC-C-execute-strncmp-1  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               168      784
+.dynstr                81      952
+.gnu.version           14     1034
+.gnu.version_r         32     1048
+.rela.dyn              96     1080
+.rela.plt             120     1176
+.eh_frame              44     1296
+.eh_frame_hdr          20     1340
+.rodata.cst4            4     1360
+.plt                  112    66912
+.text                1384    67040
+.dynamic              448   133960
+.fini_array             8   134408
+.init_array             8   134416
+.got                   32   134424
+.relro_padding      62152   134456
+.data                   0   199992
+.got.plt               64   199992
+.sdata                  8   200056
+.tm_clone_table         0   200064
+.bss                  176   200064
+.comment              111        0
+Total               65179
+
+

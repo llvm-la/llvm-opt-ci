@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/FreeBench/pcompress2/pcompress2  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               552      784
+.dynstr               184     1336
+.gnu.version           46     1520
+.gnu.version_r         32     1568
+.rela.dyn             240     1600
+.rela.plt             456     1840
+.eh_frame              44     2296
+.eh_frame_hdr          20     2340
+.rodata.cst16          48     2368
+.rodata.cst4            4     2416
+.rodata.str1.1        347     2420
+.plt                  336    68304
+.text                6596    68640
+.dynamic              448   140776
+.fini_array             8   141224
+.init_array             8   141232
+.got                   80   141240
+.relro_padding      55288   141320
+.data                   0   206856
+.got.plt              176   206856
+.sdata                  8   207032
+.tm_clone_table         0   207040
+.bss                 6872   207040
+.comment              111        0
+Total               72001
+
+

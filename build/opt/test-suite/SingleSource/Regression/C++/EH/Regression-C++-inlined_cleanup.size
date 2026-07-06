@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Regression/C++/EH/Regression-C++-inlined_cleanup  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 432      784
+.dynstr                 382     1216
+.gnu.version             36     1598
+.gnu.version_r          128     1636
+.rela.dyn               336     1768
+.rela.plt               288     2104
+.eh_frame               180     2392
+.eh_frame_hdr            44     2572
+.gcc_except_table        80     2616
+.rodata                  19     2696
+.rodata.cst4              4     2716
+.rodata.str1.1           51     2720
+.plt                    224    68320
+.text                  1104    68544
+.data.rel.ro             48   135184
+.dynamic                496   135232
+.fini_array               8   135728
+.init_array               8   135736
+.got                     40   135744
+.relro_padding        60824   135784
+.data                    32   201320
+.got.plt                120   201352
+.sdata                    8   201472
+.tm_clone_table           0   201480
+.bss                      1   201480
+.comment                111        0
+Total                 65101
+
+

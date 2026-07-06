@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/SmallPT/smallpt  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               312      784
+.dynstr               188     1096
+.gnu.version           26     1284
+.gnu.version_r        112     1312
+.rela.dyn             120     1424
+.rela.plt             240     1544
+.eh_frame             132     1784
+.eh_frame_hdr          28     1916
+.rodata.cst16          64     1952
+.rodata.cst4            4     2016
+.rodata.cst8           96     2024
+.rodata.str1.1         20     2120
+.plt                  192    67680
+.text                6232    67872
+.dynamic              496   139640
+.fini_array             8   140136
+.init_array             8   140144
+.got                   40   140152
+.relro_padding      56416   140192
+.data                 792   205728
+.got.plt              104   206520
+.sdata                  8   206624
+.tm_clone_table         0   206632
+.bss                    1   206632
+.comment              111        0
+Total               65847
+
+

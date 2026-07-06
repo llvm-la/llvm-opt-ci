@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Applications/lambda-0.1.3/lambda  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                1008      784
+.dynstr                 542     1792
+.gnu.version             84     2334
+.gnu.version_r          144     2420
+.rela.dyn              5472     2568
+.rela.plt               792     8040
+.eh_frame              2532     8832
+.eh_frame_hdr           612    11364
+.gcc_except_table      1068    11976
+.rodata                 540    13044
+.rodata.cst4              4    13584
+.rodata.str1.1          743    13588
+.plt                    560    79872
+.text                 33348    80448
+.data.rel.ro           1752   179336
+.dynamic                496   181088
+.fini_array               8   181584
+.init_array               8   181592
+.got                    128   181600
+.relro_padding        14880   181728
+.data                    28   247264
+.got.plt                288   247296
+.sdata                    8   247584
+.tm_clone_table           0   247592
+.bss                     52   247592
+.comment                111        0
+Total                 65305
+
+

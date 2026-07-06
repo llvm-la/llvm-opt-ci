@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Prolangs-C/agrep/agrep  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 792      784
+.dynstr                 289     1576
+.gnu.version             66     1866
+.gnu.version_r           32     1932
+.rela.dyn              1080     1968
+.rela.plt               696     3048
+.eh_frame                44     3744
+.eh_frame_hdr            20     3788
+.rodata                1772     3808
+.rodata.cst16           416     5584
+.rodata.cst4              4     6000
+.rodata.str1.1         2244     6004
+.plt                    496    73792
+.text                 58712    74304
+.dynamic                448   198552
+.fini_array               8   199000
+.init_array               8   199008
+.got                    360   199016
+.relro_padding        62768   199376
+.data                    32   264912
+.got.plt                256   264944
+.sdata                    8   265200
+.tm_clone_table           0   265208
+.bss                1592233   265216
+.comment                111        0
+Total               1722992
+
+

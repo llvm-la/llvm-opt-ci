@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Regression/C/Regression-C-2004-08-12-InlinerAndAllocas  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                86      928
+.gnu.version           12     1014
+.gnu.version_r         32     1028
+.rela.dyn              96     1064
+.rela.plt              96     1160
+.eh_frame              44     1256
+.eh_frame_hdr          20     1300
+.rodata.cst4            4     1320
+.rodata.str1.1          4     1324
+.plt                   96    66864
+.text                 792    66976
+.dynamic              464   133304
+.fini_array             8   133768
+.init_array             8   133776
+.got                   32   133784
+.relro_padding      62792   133816
+.data                   0   199352
+.got.plt               56   199352
+.sdata                  8   199408
+.tm_clone_table         0   199416
+.bss                    1   199416
+.comment              111        0
+Total               65003
+
+

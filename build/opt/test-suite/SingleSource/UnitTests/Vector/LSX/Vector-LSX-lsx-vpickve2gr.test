@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vpickve2gr 
+VERIFY: %b/fpcmp-target %o %S/lsx-vpickve2gr.reference_output

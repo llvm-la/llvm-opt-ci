@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/PAQ8p/paq8p  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 1392      784
+.dynstr                  639     2176
+.gnu.version             116     2816
+.gnu.version_r           176     2932
+.rela.dyn                240     3112
+.rela.plt               1248     3352
+.eh_frame               2476     4600
+.eh_frame_hdr            572     7076
+.gcc_except_table       1580     7648
+.rodata                 1480     9228
+.rodata.cst16             96    10720
+.rodata.cst32             32    10816
+.rodata.cst4               4    10848
+.rodata.cst8               8    10856
+.rodata.str1.1          1413    10864
+.plt                     864    77824
+.text                 103368    78688
+.dynamic                 496   247592
+.fini_array                8   248088
+.init_array               16   248096
+.got                      56   248112
+.relro_padding         13976   248168
+.data                     64   313704
+.got.plt                 440   313768
+.sdata                     8   314208
+.tm_clone_table            0   314216
+.bss                  409245   314224
+.comment                 111        0
+Total                 540221
+
+

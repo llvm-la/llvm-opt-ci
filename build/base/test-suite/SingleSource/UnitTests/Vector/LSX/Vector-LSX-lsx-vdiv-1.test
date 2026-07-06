@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vdiv-1 
+VERIFY: %b/fpcmp-target %o %S/lsx-vdiv-1.reference_output

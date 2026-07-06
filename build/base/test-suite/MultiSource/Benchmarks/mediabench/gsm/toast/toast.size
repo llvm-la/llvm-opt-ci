@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/mediabench/gsm/toast/toast  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym              1224      784
+.dynstr               380     2008
+.gnu.version          102     2388
+.gnu.version_r         32     2492
+.rela.dyn            1248     2528
+.rela.plt            1080     3776
+.eh_frame              44     4856
+.eh_frame_hdr          20     4900
+.rodata             14096     4920
+.rodata.cst16         256    19024
+.rodata.cst4            4    19280
+.rodata.str1.1       2079    19284
+.plt                  752    86912
+.text               43120    87680
+.dynamic              448   196336
+.fini_array             8   196784
+.init_array             8   196792
+.got                  160   196800
+.relro_padding      65184   196960
+.data                 414   262496
+.got.plt              384   262912
+.sdata                  8   263296
+.tm_clone_table         0   263304
+.bss                  340   263304
+.comment              111        0
+Total              131599
+
+

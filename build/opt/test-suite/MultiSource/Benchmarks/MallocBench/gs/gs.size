@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/MallocBench/gs/gs  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym               1272      784
+.dynstr                397     2056
+.gnu.version           106     2454
+.gnu.version_r          64     2560
+.rela.dyn            16416     2624
+.rela.plt             1152    19040
+.eh_frame               44    20192
+.eh_frame_hdr           20    20236
+.rodata               2916    20256
+.rodata.cst16           48    23184
+.rodata.cst4             4    23232
+.rodata.cst8           152    23240
+.rodata.str1.1        6025    23392
+.rodata.str1.8          16    29424
+.plt                   800    94976
+.text               168868    95776
+.data.rel.ro           432   330184
+.dynamic               464   330616
+.fini_array              8   331080
+.init_array              8   331088
+.got                   392   331096
+.relro_padding       61728   331488
+.data                 6352   397024
+.got.plt               408   403376
+.sdata                   8   403784
+.tm_clone_table          0   403792
+.bss                 15408   403792
+.comment               111        0
+Total               283716
+
+

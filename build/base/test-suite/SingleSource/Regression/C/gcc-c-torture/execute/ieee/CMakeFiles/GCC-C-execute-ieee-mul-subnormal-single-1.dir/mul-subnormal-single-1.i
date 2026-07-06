@@ -1,0 +1,72 @@
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/ieee/mul-subnormal-single-1.c"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 399 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/ieee/mul-subnormal-single-1.c" 2
+# 11 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/ieee/mul-subnormal-single-1.c"
+union uf
+{
+  unsigned int u;
+  float f;
+};
+
+static float
+u2f (unsigned int v)
+{
+  union uf u;
+  u.u = v;
+  return u.f;
+}
+
+static unsigned int
+f2u (float v)
+{
+  union uf u;
+  u.f = v;
+  return u.u;
+}
+
+int ok = 1;
+
+static void
+tstmul (unsigned int ux, unsigned int uy, unsigned int ur)
+{
+  float x = u2f (ux);
+  float y = u2f (uy);
+
+  if (f2u (x * y) != ur)
+
+
+    ok = 0;
+}
+
+
+
+struct
+{
+  unsigned int p1, p2, res;
+} expected[] =
+  {
+    {0xfff, 0x3f800400, 0xfff},
+    {0xf, 0x3fc88888, 0x17},
+    {0xf, 0x3f844444, 0xf}
+  };
+
+int
+main ()
+{
+  unsigned int i;
+
+  for (i = 0; i < sizeof (expected) / sizeof (expected[0]); i++)
+    {
+      tstmul (expected[i].p1, expected[i].p2, expected[i].res);
+      tstmul (expected[i].p2, expected[i].p1, expected[i].res);
+    }
+
+  if (!ok)
+    abort ();
+
+  exit (0);
+}

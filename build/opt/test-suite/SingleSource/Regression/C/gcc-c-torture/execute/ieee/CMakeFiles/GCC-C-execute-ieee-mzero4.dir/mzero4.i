@@ -1,0 +1,64 @@
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/ieee/mzero4.c"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 399 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/SingleSource/Regression/C/gcc-c-torture/execute/ieee/mzero4.c" 2
+
+
+
+
+
+
+void abort (void);
+typedef long unsigned int size_t;
+extern int memcmp (const void *, const void *, size_t);
+
+double sin (double);
+double tan (double);
+double atan (double);
+
+float sinf (float);
+float tanf (float);
+float atanf (float);
+
+void expectd (double, double);
+void expectf (float, float);
+
+void
+expectd (double value, double expected)
+{
+  if (value != expected
+      || memcmp ((void *)&value, (void *) &expected, sizeof (double)) != 0)
+    abort ();
+}
+
+void
+expectf (float value, float expected)
+{
+  if (value != expected
+      || memcmp ((void *)&value, (void *) &expected, sizeof (float)) != 0)
+    abort ();
+}
+
+int main ()
+{
+  expectd (sin (0.0), 0.0);
+  expectd (tan (0.0), 0.0);
+  expectd (atan (0.0), 0.0);
+
+  expectd (sin (-0.0), -0.0);
+  expectd (tan (-0.0), -0.0);
+  expectd (atan (-0.0), -0.0);
+
+  expectf (sinf (0.0f), 0.0f);
+  expectf (tanf (0.0f), 0.0f);
+  expectf (atanf (0.0f), 0.0f);
+
+  expectf (sinf (-0.0f), -0.0f);
+  expectf (tanf (-0.0f), -0.0f);
+  expectf (atanf (-0.0f), -0.0f);
+
+  return 0;
+}

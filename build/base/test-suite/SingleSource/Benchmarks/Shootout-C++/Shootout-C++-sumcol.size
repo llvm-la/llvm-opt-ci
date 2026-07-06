@@ -1,0 +1,30 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Shootout-C++/Shootout-C++-sumcol  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               336      784
+.dynstr               407     1120
+.gnu.version           28     1528
+.gnu.version_r        128     1556
+.rela.dyn             144     1688
+.rela.plt             216     1832
+.eh_frame             100     2048
+.eh_frame_hdr          28     2148
+.rodata.cst4            4     2176
+.plt                  176    67728
+.text                 944    67904
+.dynamic              496   134384
+.fini_array             8   134880
+.init_array             8   134888
+.got                   48   134896
+.relro_padding      61664   134944
+.data                   0   200480
+.got.plt               96   200480
+.sdata                  8   200576
+.tm_clone_table         0   200584
+.bss                    1   200584
+.comment              111        0
+Total               65048
+
+

@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/UnitTests/Vector/LASX/Vector-LASX-lasx-xvfcmp_sun_s  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               192      784
+.dynstr                86      976
+.gnu.version           16     1062
+.gnu.version_r         32     1080
+.rela.dyn              96     1112
+.rela.plt             144     1208
+.eh_frame              44     1352
+.eh_frame_hdr          20     1396
+.rodata.cst32         448     1440
+.rodata.cst4            4     1888
+.rodata.str1.1        161     1892
+.plt                  128    67600
+.text                2220    67744
+.dynamic              448   135504
+.fini_array             8   135952
+.init_array             8   135960
+.got                   32   135968
+.relro_padding      60608   136000
+.data                   0   201536
+.got.plt               72   201536
+.sdata                  8   201608
+.tm_clone_table         0   201616
+.bss                    1   201616
+.comment              111        0
+Total               64984
+
+

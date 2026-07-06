@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/miniGMG/miniGMG  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               528      784
+.dynstr               184     1312
+.gnu.version           44     1496
+.gnu.version_r         64     1540
+.rela.dyn             120     1608
+.rela.plt             456     1728
+.eh_frame              44     2184
+.eh_frame_hdr          20     2228
+.rodata               356     2248
+.rodata.cst16         128     2608
+.rodata.cst4            4     2736
+.rodata.cst8           88     2744
+.rodata.str1.1        770     2832
+.plt                  336    69152
+.text               65288    69504
+.dynamic              464   200328
+.fini_array             8   200792
+.init_array             8   200800
+.got                   40   200808
+.relro_padding      61296   200848
+.data                   4   266384
+.got.plt              176   266392
+.sdata                  8   266568
+.tm_clone_table         0   266576
+.bss                    1   266576
+.comment              111        0
+Total              130643
+
+

@@ -1,0 +1,35 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/UnitTests/Vectorizer/ftic-fmax-reduction  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 696      784
+.dynstr                 679     1480
+.gnu.version             58     2160
+.gnu.version_r          192     2220
+.rela.dyn              1440     2416
+.rela.plt               528     3856
+.eh_frame               844     4384
+.eh_frame_hdr           276     5228
+.gcc_except_table      1552     5504
+.rodata                 328     7056
+.rodata.cst16            32     7392
+.rodata.cst4              4     7424
+.rodata.str1.1          486     7428
+.plt                    384    73456
+.text                 18016    73856
+.data.rel.ro            416   157408
+.dynamic                496   157824
+.fini_array               8   158320
+.init_array              16   158328
+.got                     48   158344
+.relro_padding        38216   158392
+.data                     8   223928
+.got.plt                200   223936
+.sdata                    8   224136
+.tm_clone_table           0   224144
+.bss                   5008   224144
+.comment                111        0
+Total                 70147
+
+

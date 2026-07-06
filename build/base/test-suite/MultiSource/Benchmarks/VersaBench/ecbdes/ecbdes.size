@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/VersaBench/ecbdes/ecbdes  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               240      784
+.dynstr                98     1024
+.gnu.version           20     1122
+.gnu.version_r         32     1144
+.rela.dyn             168     1176
+.rela.plt             192     1344
+.eh_frame              44     1536
+.eh_frame_hdr          20     1580
+.rodata              8448     1600
+.rodata.cst16          48    10048
+.rodata.cst4            4    10096
+.rodata.str1.1        305    10100
+.plt                  160    75952
+.text                7748    76128
+.dynamic              448   149416
+.fini_array             8   149864
+.init_array             8   149872
+.got                   40   149880
+.relro_padding      46688   149920
+.data                 960   215456
+.got.plt               88   216416
+.sdata                  8   216504
+.tm_clone_table         0   216512
+.bss                   44   216512
+.comment              111        0
+Total               66027
+
+

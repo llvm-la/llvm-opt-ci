@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Prolangs-C++/primes/primes  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               216      784
+.dynstr               223     1000
+.gnu.version           18     1224
+.gnu.version_r         80     1244
+.rela.dyn             504     1328
+.rela.plt             120     1832
+.eh_frame             156     1952
+.eh_frame_hdr          44     2108
+.rodata                30     2152
+.rodata.cst4            4     2184
+.rodata.str1.1          4     2188
+.plt                  112    67728
+.text                1012    67840
+.data.rel.ro          160   134392
+.dynamic              496   134552
+.fini_array             8   135048
+.init_array             8   135056
+.got                   32   135064
+.relro_padding      61512   135096
+.data                   0   200632
+.got.plt               64   200632
+.sdata                  8   200696
+.tm_clone_table         0   200704
+.bss                    1   200704
+.comment              111        0
+Total               65020
+
+

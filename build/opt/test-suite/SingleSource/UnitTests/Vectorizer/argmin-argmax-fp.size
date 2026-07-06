@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/Vectorizer/argmin-argmax-fp  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                  840      784
+.dynstr                  920     1624
+.gnu.version              70     2544
+.gnu.version_r           224     2616
+.rela.dyn              21312     2840
+.rela.plt                672    24152
+.eh_frame              11660    24824
+.eh_frame_hdr           4124    36484
+.gcc_except_table      11988    40608
+.rodata                 8631    52596
+.rodata.cst16             32    61232
+.rodata.cst4               4    61264
+.rodata.cst8               8    61272
+.rodata.str1.1          7975    61280
+.plt                     480   134800
+.text                 202176   135296
+.data.rel.ro            7040   403008
+.dynamic                 496   410048
+.fini_array                8   410544
+.init_array               16   410552
+.got                      48   410568
+.relro_padding         48136   410616
+.data                      8   476152
+.got.plt                 248   476160
+.sdata                     8   476408
+.tm_clone_table            0   476416
+.bss                    5008   476416
+.comment                 111        0
+Total                 332340
+
+

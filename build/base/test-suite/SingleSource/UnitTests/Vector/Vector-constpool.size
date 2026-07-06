@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/UnitTests/Vector/Vector-constpool  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               120      784
+.dynstr                68      904
+.gnu.version           10      972
+.gnu.version_r         32      984
+.rela.dyn              96     1016
+.rela.plt              72     1112
+.eh_frame              44     1184
+.eh_frame_hdr          20     1228
+.rodata.cst16       32000     1248
+.rodata.cst4            4    33248
+.rodata.str1.1         21    33252
+.plt                   80    98816
+.text               24756    98912
+.dynamic              448   189208
+.fini_array             8   189656
+.init_array             8   189664
+.got                   32   189672
+.relro_padding       6904   189704
+.data                   0   255240
+.got.plt               48   255240
+.sdata                  8   255288
+.tm_clone_table         0   255296
+.bss                    1   255296
+.comment              111        0
+Total               64988
+
+

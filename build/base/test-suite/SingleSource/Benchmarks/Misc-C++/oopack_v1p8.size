@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Misc-C++/oopack_v1p8  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym                360      784
+.dynstr                275     1144
+.gnu.version            30     1420
+.gnu.version_r          80     1452
+.rela.dyn             1224     1536
+.rela.plt              264     2760
+.eh_frame              212     3024
+.eh_frame_hdr           52     3236
+.rodata                 83     3288
+.rodata.cst16           32     3376
+.rodata.cst4             4     3408
+.rodata.cst8            48     3416
+.rodata.str1.1         475     3464
+.rodata.str1.8          72     3944
+.plt                   208    69552
+.text                 4940    69760
+.data.rel.ro           336   140240
+.dynamic               496   140576
+.fini_array              8   141072
+.init_array              8   141080
+.got                    32   141088
+.relro_padding       55488   141120
+.data                   88   206656
+.got.plt               112   206744
+.sdata                   8   206856
+.tm_clone_table          0   206864
+.bss                116024   206864
+.comment               111        0
+Total               181167
+
+

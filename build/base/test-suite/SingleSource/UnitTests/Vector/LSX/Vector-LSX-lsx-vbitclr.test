@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vbitclr 
+VERIFY: %b/fpcmp-target %o %S/lsx-vbitclr.reference_output

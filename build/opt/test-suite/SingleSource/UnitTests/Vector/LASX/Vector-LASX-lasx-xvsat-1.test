@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LASX-lasx-xvsat-1 
+VERIFY: %b/fpcmp-target %o %S/lasx-xvsat-1.reference_output

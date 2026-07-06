@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Misc-C++/mandel-text  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr               112      928
+.gnu.version           12     1040
+.gnu.version_r         32     1052
+.rela.dyn             120     1088
+.rela.plt              72     1208
+.eh_frame              44     1280
+.eh_frame_hdr          20     1324
+.rodata.cst4            4     1344
+.rodata.cst8           16     1352
+.plt                   80    66912
+.text                1004    67008
+.dynamic              496   133552
+.fini_array             8   134048
+.init_array             8   134056
+.got                   40   134064
+.relro_padding      62504   134104
+.data                   0   199640
+.got.plt               48   199640
+.sdata                  8   199688
+.tm_clone_table         0   199696
+.bss                    1   199696
+.comment              111        0
+Total               64981
+
+

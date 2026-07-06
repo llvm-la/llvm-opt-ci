@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vst 
+VERIFY: %b/fpcmp-target %o %S/lsx-vst.reference_output

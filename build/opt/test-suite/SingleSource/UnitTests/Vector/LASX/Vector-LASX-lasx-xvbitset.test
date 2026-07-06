@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LASX-lasx-xvbitset 
+VERIFY: %b/fpcmp-target %o %S/lasx-xvbitset.reference_output

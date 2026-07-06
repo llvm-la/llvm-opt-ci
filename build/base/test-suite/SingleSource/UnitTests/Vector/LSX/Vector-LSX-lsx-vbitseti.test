@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vbitseti 
+VERIFY: %b/fpcmp-target %o %S/lsx-vbitseti.reference_output

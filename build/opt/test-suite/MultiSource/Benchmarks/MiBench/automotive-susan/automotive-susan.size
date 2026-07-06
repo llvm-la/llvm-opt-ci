@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/MiBench/automotive-susan/automotive-susan  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               552      784
+.dynstr               190     1336
+.gnu.version           46     1526
+.gnu.version_r         64     1572
+.rela.dyn             120     1640
+.rela.plt             480     1760
+.eh_frame              44     2240
+.eh_frame_hdr          20     2284
+.rodata               264     2304
+.rodata.cst16         144     2576
+.rodata.cst4            4     2720
+.rodata.cst8           40     2728
+.rodata.str1.1       1321     2768
+.plt                  352    69632
+.text               27500    69984
+.dynamic              464   163024
+.fini_array             8   163488
+.init_array             8   163496
+.got                   40   163504
+.relro_padding      33064   163544
+.data                   0   229080
+.got.plt              184   229080
+.sdata                  8   229264
+.tm_clone_table         0   229272
+.bss                    1   229272
+.comment              111        0
+Total               65126
+
+

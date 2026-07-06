@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Prolangs-C++/simul/simul  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               216      784
+.dynstr               236     1000
+.gnu.version           18     1236
+.gnu.version_r         96     1256
+.rela.dyn             504     1352
+.rela.plt             120     1856
+.eh_frame             228     1976
+.eh_frame_hdr          68     2204
+.rodata                31     2272
+.rodata.cst4            4     2304
+.plt                  112    67856
+.text                2544    67968
+.data.rel.ro          152   136048
+.dynamic              496   136200
+.fini_array             8   136696
+.init_array             8   136704
+.got                   32   136712
+.relro_padding      59864   136744
+.data                   8   202280
+.got.plt               64   202288
+.sdata                  8   202352
+.tm_clone_table         0   202360
+.bss                16009   202360
+.comment              111        0
+Total               81034
+
+

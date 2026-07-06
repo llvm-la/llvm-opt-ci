@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vsrlrn 
+VERIFY: %b/fpcmp-target %o %S/lsx-vsrlrn.reference_output

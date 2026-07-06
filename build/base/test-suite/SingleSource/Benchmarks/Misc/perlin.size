@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Misc/perlin  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                85      928
+.gnu.version           12     1014
+.gnu.version_r         32     1028
+.rela.dyn              96     1064
+.rela.plt              96     1160
+.eh_frame              44     1256
+.eh_frame_hdr          20     1300
+.rodata              1024     1320
+.rodata.cst16          16     2352
+.rodata.cst4            4     2368
+.rodata.cst8           72     2376
+.rodata.str1.1          4     2448
+.plt                   96    68000
+.text                1716    68096
+.dynamic              464   135352
+.fini_array             8   135816
+.init_array             8   135824
+.got                   32   135832
+.relro_padding      60744   135864
+.data                   0   201400
+.got.plt               56   201400
+.sdata                  8   201456
+.tm_clone_table         0   201464
+.bss                 2056   201464
+.comment              111        0
+Total               67045
+
+

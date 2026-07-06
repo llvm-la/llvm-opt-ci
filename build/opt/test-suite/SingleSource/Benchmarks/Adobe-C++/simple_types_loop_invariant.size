@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Adobe-C++/simple_types_loop_invariant  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym                360      784
+.dynstr                190     1144
+.gnu.version            30     1334
+.gnu.version_r          80     1364
+.rela.dyn               96     1448
+.rela.plt              312     1544
+.eh_frame             7860     1856
+.eh_frame_hdr         1372     9716
+.rodata.cst4             4    11088
+.rodata.cst8            48    11096
+.rodata.str1.1        5229    11144
+.plt                   240    81920
+.text               142992    82176
+.dynamic               496   290704
+.fini_array              8   291200
+.init_array              8   291208
+.got                    32   291216
+.relro_padding       36432   291248
+.data                   16   356784
+.got.plt               128   356800
+.sdata                   8   356928
+.tm_clone_table          0   356936
+.bss                336040   356936
+.comment               111        0
+Total               532189
+
+

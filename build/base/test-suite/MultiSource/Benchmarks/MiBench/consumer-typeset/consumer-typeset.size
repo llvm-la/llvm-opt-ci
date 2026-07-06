@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/MiBench/consumer-typeset/consumer-typeset  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym               1272      784
+.dynstr                429     2056
+.gnu.version           106     2486
+.gnu.version_r          64     2592
+.rela.dyn            19320     2656
+.rela.plt             1152    21976
+.eh_frame               44    23128
+.eh_frame_hdr           20    23172
+.rodata              10212    23192
+.rodata.cst16          256    33408
+.rodata.cst4             4    33664
+.rodata.cst8           120    33672
+.rodata.str1.1       42229    33792
+.rodata.str1.8         112    76024
+.plt                   800   141680
+.text               468644   142496
+.data.rel.ro          3336   676680
+.dynamic               464   680016
+.fini_array              8   680480
+.init_array              8   680488
+.got                   448   680496
+.relro_padding       39952   680944
+.data                 2800   746480
+.got.plt               408   749280
+.sdata                   8   749688
+.tm_clone_table          0   749696
+.bss                 64992   749696
+.comment               111        0
+Total               657416
+
+

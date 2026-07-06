@@ -1,0 +1,35 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/CoMD/CoMD  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               864      784
+.dynstr               318     1648
+.gnu.version           72     1966
+.gnu.version_r         64     2040
+.rela.dyn             408     2104
+.rela.plt             768     2512
+.eh_frame              44     3280
+.eh_frame_hdr          20     3324
+.rodata               108     3344
+.rodata.cst16          96     3456
+.rodata.cst4            4     3552
+.rodata.cst8           56     3560
+.rodata.str1.1       5072     3616
+.rodata.str1.8         40     8688
+.plt                  544    74272
+.text               38800    74816
+.dynamic              464   179152
+.fini_array             8   179616
+.init_array             8   179624
+.got                   48   179632
+.relro_padding      16928   179680
+.data                  96   245216
+.got.plt              280   245312
+.sdata                  8   245592
+.tm_clone_table         0   245600
+.bss                  840   245600
+.comment              111        0
+Total               66166
+
+

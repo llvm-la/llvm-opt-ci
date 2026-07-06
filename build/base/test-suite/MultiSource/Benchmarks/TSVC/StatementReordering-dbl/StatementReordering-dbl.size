@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/TSVC/StatementReordering-dbl/StatementReordering-dbl  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 264      784
+.dynstr                 127     1048
+.gnu.version             22     1176
+.gnu.version_r           32     1200
+.rela.dyn               312     1232
+.rela.plt               216     1544
+.eh_frame                44     1760
+.eh_frame_hdr            20     1804
+.rodata                 544     1824
+.rodata.cst16            32     2368
+.rodata.cst4              4     2400
+.rodata.str1.1          924     2404
+.plt                    176    68864
+.text                 64660    69056
+.data.rel.ro            264   199264
+.dynamic                464   199528
+.fini_array               8   199992
+.init_array               8   200000
+.got                     32   200008
+.relro_padding        62104   200040
+.data                     8   265576
+.got.plt                 96   265584
+.sdata                    8   265680
+.tm_clone_table           0   265688
+.bss                5566064   265696
+.comment                111        0
+Total               5696641
+
+

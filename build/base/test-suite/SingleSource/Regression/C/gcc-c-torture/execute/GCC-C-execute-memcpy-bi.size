@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Regression/C/gcc-c-torture/execute/GCC-C-execute-memcpy-bi  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                73      928
+.gnu.version           12     1002
+.gnu.version_r         32     1016
+.rela.dyn              96     1048
+.rela.plt              96     1144
+.eh_frame              44     1240
+.eh_frame_hdr          20     1284
+.rodata.cst16          80     1312
+.rodata.cst4            4     1392
+.plt                   96    66944
+.text                4060    67040
+.dynamic              448   136640
+.fini_array             8   137088
+.init_array             8   137096
+.got                   32   137104
+.relro_padding      59472   137136
+.data                   0   202672
+.got.plt               56   202672
+.sdata                  8   202728
+.tm_clone_table         0   202736
+.bss                  176   202736
+.comment              111        0
+Total               65173
+
+

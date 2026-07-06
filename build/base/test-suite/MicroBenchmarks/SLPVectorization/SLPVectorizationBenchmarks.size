@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MicroBenchmarks/SLPVectorization/SLPVectorizationBenchmarks  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4224      784
+.dynstr                 5543     5008
+.gnu.version             352    10552
+.gnu.version_r           384    10904
+.rela.dyn               9192    11288
+.rela.plt               3552    20480
+.eh_frame              19112    24032
+.eh_frame_hdr           4372    43144
+.gcc_except_table      12944    47516
+.rodata                 2588    60464
+.rodata.cst16            160    63056
+.rodata.cst32             32    63216
+.rodata.cst4               4    63248
+.rodata.cst8              96    63256
+.rodata.str1.1          8395    63352
+.rodata.str1.8           960    71752
+.plt                    2400   138256
+.text                 256260   140672
+.data.rel.ro            1720   462472
+.dynamic                 496   464192
+.fini_array                8   464688
+.init_array              160   464696
+.got                     344   464856
+.relro_padding         59088   465200
+.data                   1040   530736
+.got.plt                1208   531776
+.sdata                     8   532984
+.tm_clone_table            0   532992
+.bss                     848   532992
+.comment                 111        0
+Total                 395698
+
+

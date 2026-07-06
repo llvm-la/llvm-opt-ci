@@ -1,0 +1,30 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Regression/C/Regression-C-2003-06-16-InvalidInitializer  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym                96      784
+.dynstr                71      880
+.gnu.version            8      952
+.gnu.version_r         32      960
+.rela.dyn              96      992
+.rela.plt              48     1088
+.eh_frame              44     1136
+.eh_frame_hdr          20     1180
+.rodata.cst4            4     1200
+.plt                   64    66752
+.text                 584    66816
+.dynamic              464   132936
+.fini_array             8   133400
+.init_array             8   133408
+.got                   32   133416
+.relro_padding      63160   133448
+.data                   8   198984
+.got.plt               40   198992
+.sdata                  8   199032
+.tm_clone_table         0   199040
+.bss                    1   199040
+.comment              111        0
+Total               65004
+
+

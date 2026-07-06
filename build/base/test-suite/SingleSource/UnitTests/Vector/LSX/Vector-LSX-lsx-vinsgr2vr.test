@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vinsgr2vr 
+VERIFY: %b/fpcmp-target %o %S/lsx-vinsgr2vr.reference_output

@@ -1,0 +1,66 @@
+	.file	"pr61517.c"
+	.text
+	.globl	main                            # -- Begin function main
+	.p2align	5
+	.type	main,@function
+main:                                   # @main
+# %bb.0:
+	pcalau12i	$a0, %pc_hi20(c)
+	ld.d	$a1, $a0, %pc_lo12(c)
+	pcalau12i	$a0, %pc_hi20(a)
+	ld.w	$a2, $a0, %pc_lo12(a)
+	ori	$a3, $zero, 1
+	st.w	$a3, $a1, 0
+	pcalau12i	$a3, %pc_hi20(b)
+	ld.w	$a3, $a3, %pc_lo12(b)
+	bnez	$a3, .LBB0_2
+# %bb.1:
+	pcalau12i	$a3, %pc_hi20(d)
+	st.h	$a2, $a3, %pc_lo12(d)
+	st.w	$a2, $a1, 0
+.LBB0_2:
+	ld.w	$a0, $a0, %pc_lo12(a)
+	bnez	$a0, .LBB0_4
+# %bb.3:
+	move	$a0, $zero
+	ret
+.LBB0_4:
+	pcaddu18i	$ra, %call36(abort)
+	jirl	$ra, $ra, 0
+.Lfunc_end0:
+	.size	main, .Lfunc_end0-main
+                                        # -- End function
+	.type	a,@object                       # @a
+	.bss
+	.globl	a
+	.p2align	2, 0x0
+a:
+	.word	0                               # 0x0
+	.size	a, 4
+
+	.type	c,@object                       # @c
+	.data
+	.globl	c
+	.p2align	3, 0x0
+c:
+	.dword	a
+	.size	c, 8
+
+	.type	b,@object                       # @b
+	.bss
+	.globl	b
+	.p2align	2, 0x0
+b:
+	.word	0                               # 0x0
+	.size	b, 4
+
+	.type	d,@object                       # @d
+	.globl	d
+	.p2align	1, 0x0
+d:
+	.half	0                               # 0x0
+	.size	d, 2
+
+	.section	".note.GNU-stack","",@progbits
+	.addrsig
+	.addrsig_sym a

@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/MiBench/telecomm-CRC32/telecomm-CRC32  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               264      784
+.dynstr               118     1048
+.gnu.version           22     1166
+.gnu.version_r         32     1188
+.rela.dyn              96     1224
+.rela.plt             216     1320
+.eh_frame              44     1536
+.eh_frame_hdr          20     1580
+.rodata              2048     1600
+.rodata.cst4            4     3648
+.rodata.str1.1         16     3652
+.plt                  176    69216
+.text                1252    69408
+.dynamic              464   136200
+.fini_array             8   136664
+.init_array             8   136672
+.got                   32   136680
+.relro_padding      59896   136712
+.data                   0   202248
+.got.plt               96   202248
+.sdata                  8   202344
+.tm_clone_table         0   202352
+.bss                    1   202352
+.comment              111        0
+Total               65029
+
+

@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Misc/matmul_f64_4x4  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                86      928
+.gnu.version           12     1014
+.gnu.version_r         32     1028
+.rela.dyn              96     1064
+.rela.plt              96     1160
+.eh_frame              44     1256
+.eh_frame_hdr          20     1300
+.rodata               256     1320
+.rodata.cst4            4     1576
+.rodata.str1.1          6     1580
+.plt                   96    67136
+.text                1452    67232
+.dynamic              464   134224
+.fini_array             8   134688
+.init_array             8   134696
+.got                   32   134704
+.relro_padding      61872   134736
+.data                   0   200272
+.got.plt               56   200272
+.sdata                  8   200328
+.tm_clone_table         0   200336
+.bss                    1   200336
+.comment              111        0
+Total               65001
+
+

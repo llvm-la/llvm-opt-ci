@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Shootout-C++/EH/Shootout-C++-except  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 576      784
+.dynstr                 659     1360
+.gnu.version             48     2020
+.gnu.version_r          176     2068
+.rela.dyn               312     2248
+.rela.plt               408     2560
+.eh_frame               236     2968
+.eh_frame_hdr            60     3204
+.gcc_except_table        76     3264
+.rodata                  30     3340
+.rodata.cst4              4     3372
+.rodata.str1.1           47     3376
+.plt                    304    68960
+.text                  1232    69280
+.data.rel.ro             32   136048
+.dynamic                496   136080
+.fini_array               8   136576
+.init_array               8   136584
+.got                     48   136592
+.relro_padding        59968   136640
+.data                    24   202176
+.got.plt                160   202200
+.sdata                    8   202360
+.tm_clone_table           0   202368
+.bss                     24   202368
+.comment                111        0
+Total                 65152
+
+

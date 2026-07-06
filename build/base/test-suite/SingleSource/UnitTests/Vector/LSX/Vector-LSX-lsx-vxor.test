@@ -1,0 +1,2 @@
+RUN: cd %S ; %S/Vector-LSX-lsx-vxor 
+VERIFY: %b/fpcmp-target %o %S/lsx-vxor.reference_output

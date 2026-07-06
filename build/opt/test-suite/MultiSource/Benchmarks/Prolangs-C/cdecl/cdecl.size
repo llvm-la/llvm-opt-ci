@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Prolangs-C/cdecl/cdecl  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               864      784
+.dynstr               295     1648
+.gnu.version           72     1944
+.gnu.version_r         32     2016
+.rela.dyn           16128     2048
+.rela.plt             720    18176
+.eh_frame              44    18896
+.eh_frame_hdr          20    18940
+.rodata               880    18960
+.rodata.cst4            4    19840
+.rodata.str1.1       3380    19844
+.plt                  512    88768
+.text               16548    89280
+.dynamic              448   171368
+.fini_array             8   171816
+.init_array             8   171824
+.got                   64   171832
+.relro_padding      24712   171896
+.data               11032   237432
+.got.plt              264   248464
+.sdata                  8   248728
+.tm_clone_table         0   248736
+.bss                85777   248736
+.comment              111        0
+Total              162028
+
+

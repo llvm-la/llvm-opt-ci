@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Rodinia/srad/srad  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               192      784
+.dynstr                94      976
+.gnu.version           16     1070
+.gnu.version_r         64     1088
+.rela.dyn              96     1152
+.rela.plt             144     1248
+.eh_frame              44     1392
+.eh_frame_hdr          20     1436
+.rodata.cst4            4     1456
+.rodata.str1.1          6     1460
+.plt                  128    67008
+.text                6840    67136
+.dynamic              464   139512
+.fini_array             8   139976
+.init_array             8   139984
+.got                   32   139992
+.relro_padding      56584   140024
+.data                   0   205560
+.got.plt               72   205560
+.sdata                  8   205632
+.tm_clone_table         0   205640
+.bss                 1384   205640
+.comment              111        0
+Total               66416
+
+

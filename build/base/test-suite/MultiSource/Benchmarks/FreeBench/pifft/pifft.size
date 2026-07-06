@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/FreeBench/pifft/pifft  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               480      784
+.dynstr               188     1264
+.gnu.version           40     1452
+.gnu.version_r         64     1492
+.rela.dyn             120     1560
+.rela.plt             408     1680
+.eh_frame              44     2088
+.eh_frame_hdr          20     2132
+.rodata.cst4            4     2152
+.rodata.cst8           32     2160
+.rodata.str1.1        301     2192
+.plt                  304    68032
+.text               59968    68352
+.dynamic              464   193856
+.fini_array             8   194320
+.init_array             8   194328
+.got                   40   194336
+.relro_padding       2232   194376
+.data                   0   259912
+.got.plt              160   259912
+.sdata                  8   260072
+.tm_clone_table         0   260080
+.bss                    1   260080
+.comment              111        0
+Total               65102
+
+

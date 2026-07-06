@@ -1,0 +1,35 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/Vectorizer/tfactivelanemask-fmax-reduction  :
+section                size     addr
+.interp                  37      680
+.note.ABI-tag            32      720
+.gnu.hash                28      752
+.dynsym                 696      784
+.dynstr                 679     1480
+.gnu.version             58     2160
+.gnu.version_r          192     2220
+.rela.dyn              1440     2416
+.rela.plt               528     3856
+.eh_frame               844     4384
+.eh_frame_hdr           276     5228
+.gcc_except_table      1552     5504
+.rodata                 328     7056
+.rodata.cst16            48     7392
+.rodata.cst4              4     7440
+.rodata.str1.1          486     7444
+.plt                    384    73472
+.text                 17536    73856
+.data.rel.ro            416   156928
+.dynamic                496   157344
+.fini_array               8   157840
+.init_array              16   157848
+.got                     48   157864
+.relro_padding        38696   157912
+.data                     8   223448
+.got.plt                200   223456
+.sdata                    8   223656
+.tm_clone_table           0   223664
+.bss                   5008   223664
+.comment                111        0
+Total                 70163
+
+

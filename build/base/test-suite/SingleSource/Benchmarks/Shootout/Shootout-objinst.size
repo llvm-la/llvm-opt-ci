@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Shootout/Shootout-objinst  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               216      784
+.dynstr               103     1000
+.gnu.version           18     1104
+.gnu.version_r         32     1124
+.rela.dyn              96     1160
+.rela.plt             168     1256
+.eh_frame              44     1424
+.eh_frame_hdr          20     1468
+.rodata.cst4            4     1488
+.rodata.str1.1         11     1492
+.plt                  144    67040
+.text                1560    67200
+.dynamic              464   134296
+.fini_array             8   134760
+.init_array             8   134768
+.got                   32   134776
+.relro_padding      61800   134808
+.data                   0   200344
+.got.plt               80   200344
+.sdata                  8   200424
+.tm_clone_table         0   200432
+.bss                    1   200432
+.comment              111        0
+Total               65025
+
+

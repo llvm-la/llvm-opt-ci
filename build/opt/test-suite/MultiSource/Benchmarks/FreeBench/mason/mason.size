@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/FreeBench/mason/mason  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               122     1072
+.gnu.version           24     1194
+.gnu.version_r         32     1220
+.rela.dyn             144     1256
+.rela.plt             192     1400
+.eh_frame              44     1592
+.eh_frame_hdr          20     1636
+.rodata               288     1656
+.rodata.cst4            4     1944
+.rodata.str1.1        160     1948
+.plt                  160    67648
+.text                2624    67808
+.dynamic              448   135968
+.fini_array             8   136416
+.init_array             8   136424
+.got                   48   136432
+.relro_padding      60128   136480
+.data                   0   202016
+.got.plt               88   202016
+.sdata                  8   202104
+.tm_clone_table         0   202112
+.bss                    1   202112
+.comment              111        0
+Total               65047
+
+

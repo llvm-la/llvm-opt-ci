@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Trimaran/enc-rc4/enc-rc4  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               240      784
+.dynstr               100     1024
+.gnu.version           20     1124
+.gnu.version_r         32     1144
+.rela.dyn              96     1176
+.rela.plt             192     1272
+.eh_frame              44     1464
+.eh_frame_hdr          20     1508
+.rodata               420     1528
+.rodata.cst16        1024     1952
+.rodata.cst4            4     2976
+.rodata.str1.1         58     2980
+.plt                  160    68576
+.text                3924    68736
+.dynamic              448   138200
+.fini_array             8   138648
+.init_array             8   138656
+.got                   32   138664
+.relro_padding      57912   138696
+.data                 210   204232
+.got.plt               88   204448
+.sdata                  8   204536
+.tm_clone_table         0   204544
+.bss                    1   204544
+.comment              111        0
+Total               65257
+
+

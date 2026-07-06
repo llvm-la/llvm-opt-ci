@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Regression/C/gcc-c-torture/execute/GCC-C-execute-pr78622  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                77      928
+.gnu.version           12     1006
+.gnu.version_r         32     1020
+.rela.dyn              96     1056
+.rela.plt              96     1152
+.eh_frame              44     1248
+.eh_frame_hdr          20     1292
+.rodata.cst4            4     1312
+.rodata.str1.1         19     1316
+.plt                   96    66880
+.text                 876    66976
+.dynamic              448   133392
+.fini_array             8   133840
+.init_array             8   133848
+.got                   32   133856
+.relro_padding      62720   133888
+.data                   0   199424
+.got.plt               56   199424
+.sdata                  8   199480
+.tm_clone_table         0   199488
+.bss                    1   199488
+.comment              111        0
+Total               65005
+
+

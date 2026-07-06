@@ -1,0 +1,35 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/Vectorizer/tfactivelanemask-argmin-argmax-int  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                  720      784
+.dynstr                  872     1504
+.gnu.version              60     2376
+.gnu.version_r           192     2436
+.rela.dyn              29184     2632
+.rela.plt                552    31816
+.eh_frame              20740    32368
+.eh_frame_hdr           6676    53108
+.gcc_except_table      19628    59784
+.rodata                15579    79412
+.rodata.cst16             32    94992
+.rodata.cst4               4    95024
+.rodata.str1.1          9494    95028
+.plt                     400   170064
+.text                 342496   170464
+.data.rel.ro            9664   578496
+.dynamic                 496   588160
+.fini_array                8   588656
+.init_array               16   588664
+.got                      48   588680
+.relro_padding          1096   588728
+.data                      8   654264
+.got.plt                 208   654272
+.sdata                     8   654480
+.tm_clone_table            0   654488
+.bss                    5008   654488
+.comment                 111        0
+Total                 463397
+
+

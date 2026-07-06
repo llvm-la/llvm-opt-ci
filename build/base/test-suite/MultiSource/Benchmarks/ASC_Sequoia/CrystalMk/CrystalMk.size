@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/ASC_Sequoia/CrystalMk/CrystalMk  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               216      784
+.dynstr               106     1000
+.gnu.version           18     1106
+.gnu.version_r         64     1124
+.rela.dyn              96     1192
+.rela.plt             168     1288
+.eh_frame              44     1456
+.eh_frame_hdr          20     1500
+.rodata.cst16          16     1520
+.rodata.cst4            4     1536
+.rodata.cst8          144     1544
+.rodata.str1.1        105     1688
+.plt                  144    67344
+.text                5080    67488
+.dynamic              464   138104
+.fini_array             8   138568
+.init_array             8   138576
+.got                   32   138584
+.relro_padding      57992   138616
+.data                   0   204152
+.got.plt               80   204152
+.sdata                  8   204232
+.tm_clone_table         0   204240
+.bss                    1   204240
+.comment              111        0
+Total               65026
+
+

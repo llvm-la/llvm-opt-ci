@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/UnitTests/Vector/LSX/Vector-LSX-lsx-vsubi  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               192      784
+.dynstr                86      976
+.gnu.version           16     1062
+.gnu.version_r         32     1080
+.rela.dyn              96     1112
+.rela.plt             144     1208
+.eh_frame              44     1352
+.eh_frame_hdr          20     1396
+.rodata.cst16         224     1424
+.rodata.cst4            4     1648
+.rodata.str1.1        152     1652
+.plt                  128    67344
+.text                3072    67488
+.dynamic              448   136096
+.fini_array             8   136544
+.init_array             8   136552
+.got                   32   136560
+.relro_padding      60016   136592
+.data                   0   202128
+.got.plt               72   202128
+.sdata                  8   202200
+.tm_clone_table         0   202208
+.bss                    1   202208
+.comment              111        0
+Total               65011
+
+

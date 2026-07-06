@@ -1,0 +1,78 @@
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C++/HPCCG/HPC_Sparse_Matrix.cpp"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 470 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C++/HPCCG/HPC_Sparse_Matrix.cpp" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C++/HPCCG/HPC_Sparse_Matrix.hpp" 1
+# 36 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C++/HPCCG/HPC_Sparse_Matrix.hpp"
+const int max_external = 100000;
+const int max_num_messages = 500;
+const int max_num_neighbors = max_num_messages;
+
+
+struct HPC_Sparse_Matrix_STRUCT {
+  char *title;
+  int start_row;
+  int stop_row;
+  int total_nrow;
+  long long total_nnz;
+  int local_nrow;
+  int local_ncol;
+  int local_nnz;
+  int * nnz_in_row;
+  double ** ptr_to_vals_in_row;
+  int ** ptr_to_inds_in_row;
+  double ** ptr_to_diags;
+# 68 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C++/HPCCG/HPC_Sparse_Matrix.hpp"
+  double *list_of_vals;
+  int *list_of_inds;
+
+};
+typedef struct HPC_Sparse_Matrix_STRUCT HPC_Sparse_Matrix;
+
+
+void destroyMatrix(HPC_Sparse_Matrix * &A);
+# 2 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C++/HPCCG/HPC_Sparse_Matrix.cpp" 2
+
+
+
+
+
+
+
+void destroyMatrix(HPC_Sparse_Matrix * &A)
+{
+  if(A->title)
+  {
+    delete [] A->title;
+  }
+  if(A->nnz_in_row)
+  {
+    delete [] A->nnz_in_row;
+  }
+  if(A->list_of_vals)
+  {
+    delete [] A->list_of_vals;
+  }
+  if(A->ptr_to_vals_in_row !=0)
+  {
+    delete [] A->ptr_to_vals_in_row;
+  }
+  if(A->list_of_inds)
+  {
+    delete [] A->list_of_inds;
+  }
+  if(A->ptr_to_inds_in_row !=0)
+  {
+    delete [] A->ptr_to_inds_in_row;
+  }
+  if(A->ptr_to_diags)
+  {
+    delete [] A->ptr_to_diags;
+  }
+# 71 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C++/HPCCG/HPC_Sparse_Matrix.cpp"
+  delete A;
+  A = 0;
+}

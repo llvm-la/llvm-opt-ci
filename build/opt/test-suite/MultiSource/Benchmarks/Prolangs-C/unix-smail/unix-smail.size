@@ -1,0 +1,34 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Prolangs-C/unix-smail/unix-smail  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              32      752
+.dynsym              1344      784
+.dynstr               417     2128
+.gnu.version          112     2546
+.gnu.version_r         32     2660
+.rela.dyn            1176     2696
+.rela.plt            1176     3872
+.eh_frame              44     5048
+.eh_frame_hdr          20     5092
+.rodata               480     5112
+.rodata.cst4            4     5592
+.rodata.str1.1       1534     5596
+.rodata.str1.8         64     7136
+.plt                  816    72736
+.text               20776    73568
+.data.rel.ro           40   159880
+.dynamic              448   159920
+.fini_array             8   160368
+.init_array             8   160376
+.got                  248   160384
+.relro_padding      35976   160632
+.data                 264   226168
+.got.plt              416   226432
+.sdata                  8   226848
+.tm_clone_table         0   226856
+.bss                18688   226856
+.comment              111        0
+Total               84311
+
+

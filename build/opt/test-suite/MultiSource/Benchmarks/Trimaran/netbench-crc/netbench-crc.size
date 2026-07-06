@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/Trimaran/netbench-crc/netbench-crc  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               288      784
+.dynstr               116     1072
+.gnu.version           24     1188
+.gnu.version_r         32     1212
+.rela.dyn             144     1248
+.rela.plt             192     1392
+.eh_frame              44     1584
+.eh_frame_hdr          20     1628
+.rodata.cst16          16     1648
+.rodata.cst4            4     1664
+.rodata.str1.1        158     1668
+.plt                  160    67376
+.text                1812    67552
+.dynamic              448   134904
+.fini_array             8   135352
+.init_array             8   135360
+.got                   48   135368
+.relro_padding      61192   135416
+.data               43600   200952
+.got.plt               88   244552
+.sdata                  8   244640
+.tm_clone_table         0   244648
+.bss                 2056   244648
+.comment              111        0
+Total              110674
+
+

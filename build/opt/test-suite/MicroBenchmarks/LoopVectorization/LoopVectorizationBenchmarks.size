@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MicroBenchmarks/LoopVectorization/LoopVectorizationBenchmarks  :
+section                 size     addr
+.interp                   37      680
+.note.ABI-tag             32      720
+.gnu.hash                 28      752
+.dynsym                 4680      784
+.dynstr                 5692     5464
+.gnu.version             390    11156
+.gnu.version_r           384    11548
+.rela.dyn               9288    11936
+.rela.plt               4008    21224
+.eh_frame              28564    25232
+.eh_frame_hdr           5988    53796
+.gcc_except_table      24928    59784
+.rodata                 2588    84712
+.rodata.cst16            272    87312
+.rodata.cst32             32    87584
+.rodata.cst4               4    87616
+.rodata.cst8              96    87624
+.rodata.str1.1         17031    87720
+.rodata.str1.8           960   104752
+.plt                    2704   171248
+.text                 450596   173952
+.data.rel.ro            1720   690088
+.dynamic                 496   691808
+.fini_array                8   692304
+.init_array              192   692312
+.got                     344   692504
+.relro_padding         28048   692848
+.data                   1040   758384
+.got.plt                1360   759424
+.sdata                     8   760784
+.tm_clone_table            0   760792
+.bss                   12208   760792
+.comment                 111        0
+Total                 603837
+
+

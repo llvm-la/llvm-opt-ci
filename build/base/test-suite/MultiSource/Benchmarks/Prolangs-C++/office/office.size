@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/Prolangs-C++/office/office  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               312      784
+.dynstr               431     1096
+.gnu.version           26     1528
+.gnu.version_r        112     1556
+.rela.dyn             648     1672
+.rela.plt             168     2320
+.eh_frame             228     2488
+.eh_frame_hdr          60     2716
+.rodata                58     2776
+.rodata.cst4            4     2836
+.rodata.str1.1        328     2840
+.plt                  144    68704
+.text                2748    68864
+.data.rel.ro          208   137152
+.dynamic              496   137360
+.fini_array             8   137856
+.init_array             8   137864
+.got                   40   137872
+.relro_padding      58696   137912
+.data                   0   203448
+.got.plt               80   203448
+.sdata                  8   203528
+.tm_clone_table         0   203536
+.bss                   40   203536
+.comment              111        0
+Total               65059
+
+

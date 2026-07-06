@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Misc/whetstone  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               384      784
+.dynstr               138     1168
+.gnu.version           32     1306
+.gnu.version_r         64     1340
+.rela.dyn             120     1408
+.rela.plt             312     1528
+.eh_frame              44     1840
+.eh_frame_hdr          20     1884
+.rodata.cst16          16     1904
+.rodata.cst4            4     1920
+.rodata.str1.1         72     1924
+.plt                  240    67536
+.text                3528    67776
+.dynamic              464   136840
+.fini_array             8   137304
+.init_array             8   137312
+.got                   40   137320
+.relro_padding      59248   137360
+.data                   0   202896
+.got.plt              128   202896
+.sdata                  8   203024
+.tm_clone_table         0   203032
+.bss                   84   203032
+.comment              111        0
+Total               65170
+
+

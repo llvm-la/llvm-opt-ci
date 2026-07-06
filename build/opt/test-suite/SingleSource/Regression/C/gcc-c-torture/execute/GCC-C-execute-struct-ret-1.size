@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Regression/C/gcc-c-torture/execute/GCC-C-execute-struct-ret-1  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               192      784
+.dynstr                88      976
+.gnu.version           16     1064
+.gnu.version_r         32     1080
+.rela.dyn             120     1112
+.rela.plt             144     1232
+.eh_frame              44     1376
+.eh_frame_hdr          20     1420
+.rodata                34     1440
+.rodata.cst4            4     1476
+.rodata.str1.1         63     1480
+.plt                  128    67088
+.text                 972    67232
+.dynamic              448   133744
+.fini_array             8   134192
+.init_array             8   134200
+.got                   32   134208
+.relro_padding      62368   134240
+.data                 240   199776
+.got.plt               72   200016
+.sdata                  8   200088
+.tm_clone_table         0   200096
+.bss                  101   200096
+.comment              111        0
+Total               65350
+
+

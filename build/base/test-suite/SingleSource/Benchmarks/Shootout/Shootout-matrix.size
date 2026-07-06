@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/Benchmarks/Shootout/Shootout-matrix  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               216      784
+.dynstr               104     1000
+.gnu.version           18     1104
+.gnu.version_r         32     1124
+.rela.dyn              96     1160
+.rela.plt             168     1256
+.eh_frame              44     1424
+.eh_frame_hdr          20     1468
+.rodata.cst16         336     1488
+.rodata.cst4            4     1824
+.rodata.str1.1         13     1828
+.plt                  144    67392
+.text                5028    67552
+.dynamic              464   138120
+.fini_array             8   138584
+.init_array             8   138592
+.got                   32   138600
+.relro_padding      57976   138632
+.data                   0   204168
+.got.plt               80   204168
+.sdata                  8   204248
+.tm_clone_table         0   204256
+.bss                    1   204256
+.comment              111        0
+Total               65008
+
+

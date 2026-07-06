@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/BitBench/drop3/drop3  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               312      784
+.dynstr               123     1096
+.gnu.version           26     1220
+.gnu.version_r         32     1248
+.rela.dyn             120     1280
+.rela.plt             240     1400
+.eh_frame              44     1640
+.eh_frame_hdr          20     1684
+.rodata.cst4            4     1704
+.rodata.str1.1         31     1708
+.plt                  192    67280
+.text                1876    67488
+.dynamic              448   134904
+.fini_array             8   135352
+.init_array             8   135360
+.got                   40   135368
+.relro_padding      61200   135408
+.data                   0   200944
+.got.plt              104   200944
+.sdata                  8   201048
+.tm_clone_table         0   201056
+.bss                    1   201056
+.comment              111        0
+Total               65045
+
+

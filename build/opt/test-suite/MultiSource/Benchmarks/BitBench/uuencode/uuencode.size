@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Benchmarks/BitBench/uuencode/uuencode  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               360      784
+.dynstr               137     1144
+.gnu.version           30     1282
+.gnu.version_r         32     1312
+.rela.dyn             120     1344
+.rela.plt             288     1464
+.eh_frame              44     1752
+.eh_frame_hdr          20     1796
+.rodata.cst4            4     1816
+.rodata.str1.1         40     1820
+.rodata.str1.8         40     1864
+.plt                  224    67440
+.text                4972    67680
+.dynamic              448   138192
+.fini_array             8   138640
+.init_array             8   138648
+.got                   40   138656
+.relro_padding      57912   138696
+.data                   0   204232
+.got.plt              120   204232
+.sdata                  8   204352
+.tm_clone_table         0   204360
+.bss                    1   204360
+.comment              111        0
+Total               65064
+
+

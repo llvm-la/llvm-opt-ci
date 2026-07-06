@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Regression/C/Regression-C-uint64_to_float  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               168      784
+.dynstr                94      952
+.gnu.version           14     1046
+.gnu.version_r         64     1060
+.rela.dyn             192     1128
+.rela.plt             120     1320
+.eh_frame              44     1440
+.eh_frame_hdr          20     1484
+.rodata.cst4            4     1504
+.rodata.str1.1        195     1508
+.plt                  112    67248
+.text               10684    67360
+.data.rel.ro           32   143584
+.dynamic              464   143616
+.fini_array             8   144080
+.init_array             8   144088
+.got                   32   144096
+.relro_padding      52480   144128
+.data                   0   209664
+.got.plt               64   209664
+.sdata                  8   209728
+.tm_clone_table         0   209736
+.bss                    1   209736
+.comment              111        0
+Total               65016
+
+

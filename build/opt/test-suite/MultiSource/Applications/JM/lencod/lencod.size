@@ -1,0 +1,38 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/MultiSource/Applications/JM/lencod/lencod  :
+section               size      addr
+.interp                 37       680
+.note.ABI-tag           32       720
+.gnu.hash               32       752
+.dynsym               1248       784
+.dynstr                418      2032
+.gnu.version           104      2450
+.gnu.version_r          64      2556
+.rela.dyn            16416      2624
+.rela.plt             1128     19040
+.eh_frame               44     20168
+.eh_frame_hdr           20     20212
+.rodata              50456     20232
+.rodata.cst16          752     70688
+.rodata.cst32          480     71440
+.rodata.cst4             4     71920
+.rodata.cst8           224     71928
+.rodata.str1.1       33514     72152
+.rodata.str1.8        2952    105672
+.plt                   784    174160
+.text               748136    174944
+.data.rel.ro           472    988616
+.dynamic               464    989088
+.fini_array              8    989552
+.init_array              8    989560
+.got                  1384    989568
+.relro_padding       57624    990952
+.data                13800   1056488
+.got.plt               400   1070288
+.sdata                   8   1070688
+.tm_clone_table          0   1070696
+.bss                 39064   1070704
+.common              69088   1109768
+.comment               111         0
+Total              1039276
+
+

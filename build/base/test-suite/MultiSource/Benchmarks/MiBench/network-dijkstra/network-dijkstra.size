@@ -1,0 +1,31 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/MiBench/network-dijkstra/network-dijkstra  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               384      784
+.dynstr               158     1168
+.gnu.version           32     1326
+.gnu.version_r         32     1360
+.rela.dyn             144     1392
+.rela.plt             288     1536
+.eh_frame              44     1824
+.eh_frame_hdr          20     1868
+.rodata.cst4            4     1888
+.rodata.str1.1        187     1892
+.plt                  224    67616
+.text                2248    67840
+.dynamic              464   135624
+.fini_array             8   136088
+.init_array             8   136096
+.got                   48   136104
+.relro_padding      60456   136152
+.data                   0   201688
+.got.plt              120   201688
+.sdata                  8   201808
+.tm_clone_table         0   201816
+.bss                40852   201824
+.comment              111        0
+Total              105937
+
+

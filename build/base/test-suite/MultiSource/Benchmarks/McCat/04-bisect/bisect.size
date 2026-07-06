@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/McCat/04-bisect/bisect  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               264      784
+.dynstr               124     1048
+.gnu.version           22     1172
+.gnu.version_r         32     1196
+.rela.dyn             120     1232
+.rela.plt             192     1352
+.eh_frame              44     1544
+.eh_frame_hdr          20     1588
+.rodata.cst16          16     1616
+.rodata.cst4            4     1632
+.rodata.cst8           16     1640
+.rodata.str1.1        122     1656
+.plt                  160    67328
+.text                3152    67488
+.dynamic              464   136176
+.fini_array             8   136640
+.init_array             8   136648
+.got                   40   136656
+.relro_padding      59912   136696
+.data                   0   202232
+.got.plt               88   202232
+.sdata                  8   202320
+.tm_clone_table         0   202328
+.bss                    1   202328
+.comment              111        0
+Total               65025
+
+

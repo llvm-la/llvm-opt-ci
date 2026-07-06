@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/opt/test-suite/SingleSource/Benchmarks/Shootout-C++/Shootout-C++-methcall  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               384      784
+.dynstr               500     1168
+.gnu.version           32     1668
+.gnu.version_r        160     1700
+.rela.dyn             432     1864
+.rela.plt             240     2296
+.eh_frame             100     2536
+.eh_frame_hdr          28     2636
+.rodata                19     2664
+.rodata.cst4            4     2684
+.rodata.str1.1         11     2688
+.plt                  192    68240
+.text                1352    68448
+.data.rel.ro          120   135336
+.dynamic              496   135456
+.fini_array             8   135952
+.init_array             8   135960
+.got                   40   135968
+.relro_padding      60600   136008
+.data                   0   201544
+.got.plt              104   201544
+.sdata                  8   201648
+.tm_clone_table         0   201656
+.bss                    1   201656
+.comment              111        0
+Total               65047
+
+

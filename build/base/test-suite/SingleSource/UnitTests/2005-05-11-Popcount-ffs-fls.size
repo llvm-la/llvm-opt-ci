@@ -1,0 +1,32 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/SingleSource/UnitTests/2005-05-11-Popcount-ffs-fls  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym               144      784
+.dynstr                73      928
+.gnu.version           12     1002
+.gnu.version_r         32     1016
+.rela.dyn              96     1048
+.rela.plt              96     1144
+.eh_frame              44     1240
+.eh_frame_hdr          20     1284
+.rodata                64     1304
+.rodata.cst4            4     1368
+.rodata.str1.1        361     1372
+.plt                   96    67280
+.text                1768    67392
+.dynamic              448   134696
+.fini_array             8   135144
+.init_array             8   135152
+.got                   32   135160
+.relro_padding      61416   135192
+.data                   0   200728
+.got.plt               56   200728
+.sdata                  8   200784
+.tm_clone_table         0   200792
+.bss                    8   200792
+.comment              111        0
+Total               65002
+
+

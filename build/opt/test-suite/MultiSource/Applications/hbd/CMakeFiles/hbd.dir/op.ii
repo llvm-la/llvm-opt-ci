@@ -1,0 +1,37 @@
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/hbd/op.cpp"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 470 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/repos/llvm-test-suite/MultiSource/Applications/hbd/op.cpp" 2
+
+
+
+
+
+
+
+
+char *op2str[] = {
+  " + ", " - ", " * ", " / ", " %% ", ".", " = ", " << ",
+  " >> ", " >>> ", " & ", " | ", " ^ ", "~", "-", "(cast)",
+  "return ", "throw ", "new ", "goto ", " += ", " -= ", "++", "--",
+  " ? ", " : ", " error ", " cmp ", " == ", " != ", " < ", " >= ",
+  " > ", " <= ", "!", " && ", " || ", " instanceof ", ", ",
+  ""
+};
+int op_prec[] = {
+  27, 27, 29, 29, 29, 39, 2, 26,
+  26, 26, 19, 17, 18, 32, 32, 39,
+  38, 38, 38, 38, 2, 2, 32, 32,
+  14, 14, 39, 20, 20, 20, 22, 22,
+  22, 22, 32, 16, 15, 32, 1,
+  39
+};
+int op_assoc[] = {
+  0,0,0,0,0,0,1,0, 0,0,0,0,0,0,0,0,
+  0,0,1,1,0,0,0,0, 0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,
+  0
+};

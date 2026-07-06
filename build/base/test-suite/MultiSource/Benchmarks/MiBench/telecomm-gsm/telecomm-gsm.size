@@ -1,0 +1,33 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Benchmarks/MiBench/telecomm-gsm/telecomm-gsm  :
+section              size     addr
+.interp                37      680
+.note.ABI-tag          32      720
+.gnu.hash              28      752
+.dynsym              1224      784
+.dynstr               390     2008
+.gnu.version          102     2398
+.gnu.version_r         32     2500
+.rela.dyn            1248     2536
+.rela.plt            1080     3784
+.eh_frame              44     4864
+.eh_frame_hdr          20     4908
+.rodata             14096     4928
+.rodata.cst16         256    19024
+.rodata.cst4            4    19280
+.rodata.str1.1       2079    19284
+.plt                  752    86912
+.text               43116    87680
+.dynamic              464   196336
+.fini_array             8   196800
+.init_array             8   196808
+.got                  160   196816
+.relro_padding      65168   196976
+.data                 416   262512
+.got.plt              384   262928
+.sdata                  8   263312
+.tm_clone_table         0   263320
+.bss                  336   263320
+.comment              111        0
+Total              131603
+
+

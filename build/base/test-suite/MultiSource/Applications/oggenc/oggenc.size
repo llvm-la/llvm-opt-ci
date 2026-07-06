@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Applications/oggenc/oggenc  :
+section                size      addr
+.interp                  37       680
+.note.ABI-tag            32       720
+.gnu.hash                56       752
+.dynsym                1536       808
+.dynstr                 506      2344
+.gnu.version            128      2850
+.gnu.version_r           64      2980
+.rela.dyn             93096      3048
+.rela.plt              1248     96144
+.eh_frame                44     97392
+.eh_frame_hdr            20     97436
+.rodata               29240     97456
+.rodata.cst16           288    126704
+.rodata.cst32            32    126992
+.rodata.cst4              4    127024
+.rodata.cst8            336    127032
+.rodata.str1.1        10600    127368
+.plt                    864    203504
+.text                261832    204384
+.data.rel.ro            504    531752
+.dynamic                464    532256
+.fini_array               8    532720
+.init_array               8    532728
+.got                     56    532736
+.relro_padding        57032    532792
+.data               1649904    598328
+.got.plt                440   2248232
+.sdata                    8   2248672
+.tm_clone_table           0   2248680
+.bss                  30072   2248680
+.comment                111         0
+Total               2138570
+
+

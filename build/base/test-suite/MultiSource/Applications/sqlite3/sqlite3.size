@@ -1,0 +1,36 @@
+/home/date/work/actions-runner/_work/llvm-opt-ci/llvm-opt-ci/build/base/test-suite/MultiSource/Applications/sqlite3/sqlite3  :
+section               size     addr
+.interp                 37      680
+.note.ABI-tag           32      720
+.gnu.hash               28      752
+.dynsym               1488      784
+.dynstr                523     2272
+.gnu.version           124     2796
+.gnu.version_r          48     2920
+.rela.dyn             6720     2968
+.rela.plt             1368     9688
+.eh_frame              800    11056
+.eh_frame_hdr          108    11856
+.rodata              17280    11968
+.rodata.cst16          592    29248
+.rodata.cst4             4    29840
+.rodata.cst8           200    29848
+.rodata.str1.1       17097    30048
+.rodata.str1.8         296    47152
+.plt                   944   112992
+.text               525020   113952
+.data.rel.ro          2592   704512
+.dynamic               448   707104
+.fini_array              8   707552
+.init_array              8   707560
+.got                    56   707568
+.relro_padding       13272   707624
+.data                 2107   773160
+.got.plt               480   775272
+.sdata                   8   775752
+.tm_clone_table          0   775760
+.bss                   640   775760
+.comment               111        0
+Total               592439
+
+
