@@ -5,6 +5,7 @@ import os
 import shutil
 import subprocess
 import sys
+import time
 
 
 def run():
@@ -15,15 +16,14 @@ def run():
     builds_dir = os.environ["BUILDS_DIR"]
     workspace = os.environ["WORKSPACE"]
 
-    base_branch = f"pr-{pr_id}-base"
-    opt_branch = f"pr-{pr_id}-opt"
+    ts = str(int(time.time()))
+    base_branch = f"pr-{pr_id}-base-{ts}"
+    opt_branch = f"pr-{pr_id}-opt-{ts}"
 
-    # Clean and create results directory
     if os.path.exists(results_dir):
         shutil.rmtree(results_dir)
     os.makedirs(results_dir, exist_ok=True)
 
-    # Configure git for github-actions
     subprocess.run(
         ["git", "config", "user.name", "github-actions[bot]"], check=True
     )
@@ -35,54 +35,58 @@ def run():
     # Find differing asm files and copy to RESULTS_DIR/base and RESULTS_DIR/opt
     suites = [s.strip() for s in tests.split(",")]
 
+    has_diff = False
     for side in ("base", "opt"):
-        copy_diff_files(side, builds_dir, results_dir, suites)
+        found = copy_diff_files(side, builds_dir, results_dir, suites)
+        has_diff = has_diff or found
 
-    # Generate reports
+    # Generate reports (issue comment + PR body)
     subprocess.run(["python3", "scripts/gen_report.py"], check=True)
 
-    # Push base branch
     os.chdir(workspace)
-    _push_branch(base_branch, results_dir, "base", pr_id, commit_hash, "base")
 
-    # Push opt branch
-    _push_branch(opt_branch, results_dir, "opt", pr_id, commit_hash, "opt")
+    if has_diff:
+        _push_branches(base_branch, opt_branch, results_dir, pr_id, commit_hash)
 
-    # Create or update PR (opt -> base)
-    subprocess.run(["git", "checkout", base_branch], check=True)
+        subprocess.run(["git", "checkout", base_branch], check=True)
 
-    existing_pr = _find_existing_pr(base_branch, opt_branch)
+        existing_pr = _find_existing_pr(base_branch, opt_branch)
 
-    if existing_pr:
-        pr_url = existing_pr
-        subprocess.run(
-            ["gh", "pr", "edit", pr_url, "--body-file", os.path.join(results_dir, "pr_body.md")],
-            check=True,
-        )
+        if existing_pr:
+            pr_url = existing_pr
+            subprocess.run(
+                ["gh", "pr", "edit", pr_url, "--body-file", os.path.join(results_dir, "pr_body.md")],
+                check=True,
+            )
+        else:
+            result = subprocess.run(
+                [
+                    "gh", "pr", "create",
+                    "--title", f"LLVM Optimization: PR {pr_id} [bot]",
+                    "--body-file", os.path.join(results_dir, "pr_body.md"),
+                    "--base", base_branch,
+                    "--head", opt_branch,
+                ],
+                capture_output=True, text=True, check=True,
+            )
+            pr_url = result.stdout.strip()
+
+        github_output = os.environ.get("GITHUB_OUTPUT")
+        if github_output:
+            with open(github_output, "a") as f:
+                f.write(f"PR_URL={pr_url}\n")
+
+        print(f"PR URL: {pr_url}")
     else:
-        result = subprocess.run(
-            [
-                "gh", "pr", "create",
-                "--title", f"LLVM Optimization: PR {pr_id} [bot]",
-                "--body-file", os.path.join(results_dir, "pr_body.md"),
-                "--base", base_branch,
-                "--head", opt_branch,
-            ],
-            capture_output=True, text=True, check=True,
-        )
-        pr_url = result.stdout.strip()
-
-    # Output PR URL for GitHub Actions
-    github_output = os.environ.get("GITHUB_OUTPUT")
-    if github_output:
-        with open(github_output, "a") as f:
-            f.write(f"PR_URL={pr_url}\n")
-
-    print(f"PR URL: {pr_url}")
+        print("No differences found — PR skipped, issue comment posted.")
 
 
-def copy_diff_files(side: str, builds_dir: str, results_dir: str, suites: list[str]):
-    """Copy differing asm files from base/opt builds to results directory."""
+def copy_diff_files(side: str, builds_dir: str, results_dir: str, suites: list[str]) -> bool:
+    """Copy differing asm files from base/opt builds to results directory.
+
+    Returns True if any diff files were found.
+    """
+    found = False
     for suite in suites:
         base_suite = os.path.join(builds_dir, "asm", "base", suite)
         opt_suite = os.path.join(builds_dir, "asm", "opt", suite)
@@ -99,41 +103,71 @@ def copy_diff_files(side: str, builds_dir: str, results_dir: str, suites: list[s
                 continue
             try:
                 parts = line.split()
-                f1 = parts[1]  # base file
-                f2 = parts[3]  # opt file
+                f1 = parts[1]
+                f2 = parts[3]
                 rel = f1.removeprefix(base_suite + "/")
 
                 src = f1 if side == "base" else f2
                 dst = os.path.join(results_dir, side, suite, rel)
                 os.makedirs(os.path.dirname(dst), exist_ok=True)
                 shutil.copy2(src, dst)
+                found = True
             except (IndexError, AttributeError):
                 continue
         proc.close()
+    return found
 
 
-def _push_branch(
-    branch: str, results_dir: str, side: str, pr_id: str, commit_hash: str, label: str
+def _push_branches(
+    base_branch: str, opt_branch: str, results_dir: str, pr_id: str, commit_hash: str
 ):
-    """Clean the working tree, copy results, commit, and push a branch."""
-    subprocess.run(["git", "checkout", "-B", branch], check=True)
-    subprocess.run(["git", "clean", "-ffd"], check=True)
-    subprocess.run(["git", "rm", "-rf", "."], stderr=subprocess.DEVNULL, check=False)
+    """Push pr-*-base and pr-*-opt branches.
 
-    side_dir = os.path.join(results_dir, side)
-    if os.path.isdir(side_dir) and os.listdir(side_dir):
-        for item in os.listdir(side_dir):
-            src = os.path.join(side_dir, item)
-            shutil.copytree(src, item, dirs_exist_ok=True) if os.path.isdir(src) else shutil.copy2(src, item)
+    pr-*-base: base asm files in results/
+    pr-*-opt: based on pr-*-base, with opt asm files replacing results/
+    """
+    base_side = os.path.join(results_dir, "base")
+    opt_side = os.path.join(results_dir, "opt")
 
+    # -- pr-*-base --
+    subprocess.run(["git", "checkout", "-B", base_branch], check=True)
+    shutil.rmtree("results", ignore_errors=True)
+    _copy_side(base_side, "results")
     subprocess.run(["git", "add", "-A"], check=True)
     subprocess.run(
-        ["git", "commit", "-q", "-m", f"{label}: LLVM {'before' if side == 'base' else 'after'} PR {pr_id} ({commit_hash})", "--allow-empty"],
+        ["git", "commit", "-q", "-m", f"base: LLVM before PR {pr_id} ({commit_hash})", "--allow-empty"],
         check=True,
     )
     subprocess.run(
-        ["git", "push", "--force", "--set-upstream", "origin", branch], check=True
+        ["git", "push", "--force", "--set-upstream", "origin", base_branch], check=True
     )
+
+    # -- pr-*-opt (based on pr-*-base's commit) --
+    subprocess.run(["git", "checkout", "-B", opt_branch], check=True)
+    shutil.rmtree("results", ignore_errors=True)
+    _copy_side(opt_side, "results")
+    subprocess.run(["git", "add", "-A"], check=True)
+    subprocess.run(
+        ["git", "commit", "-q", "-m", f"opt: LLVM after PR {pr_id} ({commit_hash})", "--allow-empty"],
+        check=True,
+    )
+    subprocess.run(
+        ["git", "push", "--force", "--set-upstream", "origin", opt_branch], check=True
+    )
+
+
+def _copy_side(src_dir: str, dst_dir: str):
+    """Copy contents of src_dir into dst_dir (flat, create dst if needed)."""
+    if not os.path.isdir(src_dir):
+        return
+    for item in os.listdir(src_dir):
+        src = os.path.join(src_dir, item)
+        dst = os.path.join(dst_dir, item)
+        if os.path.isdir(src):
+            shutil.copytree(src, dst, dirs_exist_ok=True)
+        else:
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            shutil.copy2(src, dst)
 
 
 def _find_existing_pr(base_branch: str, head_branch: str) -> str | None:

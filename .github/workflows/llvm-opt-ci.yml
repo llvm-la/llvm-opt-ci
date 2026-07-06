@@ -107,11 +107,6 @@ jobs:
           SECONDS=$(( TOTAL % 60 ))
           printf "duration=%dm %ds\n" "$MINUTES" "$SECONDS" >> "$GITHUB_OUTPUT"
 
-      - name: Upload build time
-        run: |
-          echo "${{ steps.timing.outputs.duration }}" > "${RESULTS_DIR}/build_time_base.txt"
-        continue-on-error: true
-
   with-pr:
     needs: [without-pr, configure]
     runs-on: [self-hosted, llvm-ci]
@@ -149,11 +144,6 @@ jobs:
           MINUTES=$(( TOTAL / 60 ))
           SECONDS=$(( TOTAL % 60 ))
           printf "duration=%dm %ds\n" "$MINUTES" "$SECONDS" >> "$GITHUB_OUTPUT"
-
-      - name: Upload build time
-        run: |
-          echo "${{ steps.timing.outputs.duration }}" > "${RESULTS_DIR}/build_time_opt.txt"
-        continue-on-error: true
 
   results:
     needs: [with-pr, without-pr, configure]

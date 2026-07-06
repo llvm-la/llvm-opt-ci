@@ -91,9 +91,7 @@ def run():
     opt_dir = os.path.join(results_dir, "opt")
 
     for d in (base_dir, opt_dir):
-        if not os.path.isdir(d):
-            print(f"Error: {d} directory not found", file=sys.stderr)
-            sys.exit(1)
+        os.makedirs(d, exist_ok=True)
 
     stats = compute_diff_stats(base_dir, opt_dir)
 
@@ -142,7 +140,8 @@ def _build_issue_comment(s: DiffStats) -> str:
         f"| Only increased | {s.only_increased} |",
         f"| Mixed | {s.mixed} |",
         "",
-        "Results: see the comparison PR diff below.",
+        "Results: see the comparison PR diff below." if s.file_count > 0
+        else "No changes detected — base and opt output are identical.",
     ]
     return "\n".join(lines) + "\n"
 
