@@ -68,14 +68,14 @@ def compute_diff_stats(base_dir: str, opt_dir: str) -> DiffStats:
 
 
 def _count_diff_lines(file1: str, file2: str) -> tuple[int, int]:
-    """Count added and removed lines between two files."""
+    """Count added and removed lines between two files (unified diff)."""
     adds = 0
     dels = 0
-    proc = os.popen(f"diff '{file1}' '{file2}' 2>/dev/null || true")
+    proc = os.popen(f"diff -u '{file1}' '{file2}' 2>/dev/null || true")
     for line in proc:
-        if line.startswith("+"):
+        if line.startswith("+") and not line.startswith("+++"):
             adds += 1
-        elif line.startswith("-"):
+        elif line.startswith("-") and not line.startswith("---"):
             dels += 1
     proc.close()
     return adds, dels

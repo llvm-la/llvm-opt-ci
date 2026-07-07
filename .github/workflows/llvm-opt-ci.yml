@@ -169,12 +169,9 @@ jobs:
         run: python3 scripts/publish.py
 
       - name: Comment on issue
-        uses: tangaac/issues-helper@v3.7.6
-        with:
-          actions: 'create-comment'
-          token: ${{ steps.app-token.outputs.token }}
-          issue-number: ${{ github.event.issue.number }}
-          body-path: results/issue_comment.md
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: gh issue comment ${{ github.event.issue.number }} --body-file results/issue_comment.md
 
   on-failure:
     needs: [configure, without-pr, with-pr, results]
@@ -189,12 +186,12 @@ jobs:
           private-key: ${{ secrets.LLVM_LA_BOT_PRIVATE_KEY }}
 
       - name: Comment failure on issue
-        uses: tangaac/issues-helper@v3.7.6
-        with:
-          actions: 'create-comment'
-          token: ${{ steps.app-token.outputs.token }}
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            Hello @${{ github.event.issue.user.login }}
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          gh issue comment ${{ github.event.issue.number }} --body "$(cat <<'EOF'
+          Hello @${{ github.event.issue.user.login }}
 
-            Build failed for PR #${{ needs.configure.outputs.PR_ID }}. Check the [workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.
+          Build failed for PR #${{ needs.configure.outputs.PR_ID }}. Check the [workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.
+          EOF
+          )"
