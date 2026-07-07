@@ -3676,14 +3676,8 @@ intrapred_chroma:                       # @intrapred_chroma
 	vshuf.h	$vr7, $vr0, $vr8
 	vsub.w	$vr5, $vr5, $vr9
 	vsub.w	$vr6, $vr6, $vr7
-	xvpickve2gr.d	$t4, $xr2, 0
-	vinsgr2vr.w	$vr7, $t4, 0
-	xvpickve2gr.d	$t4, $xr2, 1
-	vinsgr2vr.w	$vr7, $t4, 1
-	xvpickve2gr.d	$t4, $xr2, 2
-	vinsgr2vr.w	$vr7, $t4, 2
-	xvpickve2gr.d	$t4, $xr2, 3
-	vinsgr2vr.w	$vr7, $t4, 3
+	xvpermi.q	$xr7, $xr2, 1
+	vpickev.w	$vr7, $vr7, $vr2
 	vaddi.wu	$vr8, $vr7, 1
 	vaddi.wu	$vr7, $vr7, 5
 	vmadd.w	$vr1, $vr5, $vr8
@@ -3878,23 +3872,9 @@ intrapred_chroma:                       # @intrapred_chroma
 	xvsrai.w	$xr5, $xr6, 5
 	xvmaxi.w	$xr5, $xr5, 0
 	xvmin.w	$xr5, $xr5, $xr2
-	xvpickve2gr.w	$t5, $xr5, 0
-	vinsgr2vr.h	$vr6, $t5, 0
-	xvpickve2gr.w	$t5, $xr5, 1
-	vinsgr2vr.h	$vr6, $t5, 1
-	xvpickve2gr.w	$t5, $xr5, 2
-	vinsgr2vr.h	$vr6, $t5, 2
-	xvpickve2gr.w	$t5, $xr5, 3
-	vinsgr2vr.h	$vr6, $t5, 3
-	xvpickve2gr.w	$t5, $xr5, 4
-	vinsgr2vr.h	$vr6, $t5, 4
-	xvpickve2gr.w	$t5, $xr5, 5
-	vinsgr2vr.h	$vr6, $t5, 5
-	xvpickve2gr.w	$t5, $xr5, 6
-	vinsgr2vr.h	$vr6, $t5, 6
-	xvpickve2gr.w	$t5, $xr5, 7
-	vinsgr2vr.h	$vr6, $t5, 7
-	vst	$vr6, $t3, 0
+	xvpermi.d	$xr6, $xr5, 78
+	xvpickev.h	$xr5, $xr6, $xr5
+	vst	$vr5, $t3, 0
 	xvaddi.wu	$xr3, $xr3, 8
 	addi.d	$t4, $t4, -8
 	addi.d	$t3, $t3, 16

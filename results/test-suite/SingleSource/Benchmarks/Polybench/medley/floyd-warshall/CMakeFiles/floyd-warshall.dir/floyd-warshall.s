@@ -212,56 +212,32 @@ main:                                   # @main
                                         # =>  This Inner Loop Header: Depth=2
 	xvmul.d	$xr14, $xr13, $xr11
 	xvmul.d	$xr15, $xr12, $xr11
-	xvpickve2gr.d	$t0, $xr15, 0
-	vinsgr2vr.w	$vr16, $t0, 0
-	xvpickve2gr.d	$t0, $xr15, 1
-	vinsgr2vr.w	$vr16, $t0, 1
-	xvpickve2gr.d	$t0, $xr15, 2
-	vinsgr2vr.w	$vr16, $t0, 2
-	xvpickve2gr.d	$t0, $xr15, 3
-	vinsgr2vr.w	$vr16, $t0, 3
-	xvpickve2gr.d	$t0, $xr14, 0
-	vinsgr2vr.w	$vr15, $t0, 0
-	xvpickve2gr.d	$t0, $xr14, 1
-	vinsgr2vr.w	$vr15, $t0, 1
-	xvpickve2gr.d	$t0, $xr14, 2
-	vinsgr2vr.w	$vr15, $t0, 2
-	xvpickve2gr.d	$t0, $xr14, 3
-	vinsgr2vr.w	$vr15, $t0, 3
-	xvpermi.q	$xr16, $xr15, 2
-	xvmuh.wu	$xr14, $xr16, $xr0
-	xvsub.w	$xr15, $xr16, $xr14
-	xvsrli.w	$xr15, $xr15, 1
-	xvadd.w	$xr14, $xr15, $xr14
+	xvpermi.q	$xr16, $xr15, 1
+	vpickev.w	$vr15, $vr16, $vr15
+	xvpermi.q	$xr16, $xr14, 1
+	vpickev.w	$vr14, $vr16, $vr14
+	xvpermi.q	$xr15, $xr14, 2
+	xvmuh.wu	$xr14, $xr15, $xr0
+	xvsub.w	$xr16, $xr15, $xr14
+	xvsrli.w	$xr16, $xr16, 1
+	xvadd.w	$xr14, $xr16, $xr14
 	xvsrli.w	$xr14, $xr14, 2
-	xvmsub.w	$xr16, $xr14, $xr1
-	xvaddi.wu	$xr14, $xr16, 1
+	xvmsub.w	$xr15, $xr14, $xr1
+	xvaddi.wu	$xr14, $xr15, 1
 	add.d	$t0, $a6, $a7
 	xvadd.d	$xr15, $xr13, $xr11
 	xvadd.d	$xr16, $xr12, $xr11
-	xvpickve2gr.d	$t1, $xr16, 0
-	vinsgr2vr.w	$vr17, $t1, 0
-	xvpickve2gr.d	$t1, $xr16, 1
-	vinsgr2vr.w	$vr17, $t1, 1
-	xvpickve2gr.d	$t1, $xr16, 2
-	vinsgr2vr.w	$vr17, $t1, 2
-	xvpickve2gr.d	$t1, $xr16, 3
-	vinsgr2vr.w	$vr17, $t1, 3
-	xvpickve2gr.d	$t1, $xr15, 0
-	vinsgr2vr.w	$vr16, $t1, 0
-	xvpickve2gr.d	$t1, $xr15, 1
-	vinsgr2vr.w	$vr16, $t1, 1
-	xvpickve2gr.d	$t1, $xr15, 2
-	vinsgr2vr.w	$vr16, $t1, 2
-	xvpickve2gr.d	$t1, $xr15, 3
-	vinsgr2vr.w	$vr16, $t1, 3
-	xvpermi.q	$xr17, $xr16, 2
-	xvmul.w	$xr15, $xr17, $xr2
+	xvpermi.q	$xr17, $xr16, 1
+	vpickev.w	$vr16, $vr17, $vr16
+	xvpermi.q	$xr17, $xr15, 1
+	vpickev.w	$vr15, $vr17, $vr15
+	xvpermi.q	$xr16, $xr15, 2
+	xvmul.w	$xr15, $xr16, $xr2
 	xvsle.wu	$xr15, $xr15, $xr3
-	xvmul.w	$xr16, $xr17, $xr4
-	xvsle.wu	$xr16, $xr16, $xr5
-	xvor.v	$xr15, $xr15, $xr16
-	xvmul.w	$xr16, $xr17, $xr6
+	xvmul.w	$xr17, $xr16, $xr4
+	xvsle.wu	$xr17, $xr17, $xr5
+	xvor.v	$xr15, $xr15, $xr17
+	xvmul.w	$xr16, $xr16, $xr6
 	xvsle.wu	$xr16, $xr16, $xr7
 	xvor.v	$xr15, $xr16, $xr15
 	xvbitsel.v	$xr14, $xr14, $xr10, $xr15
@@ -399,56 +375,32 @@ main:                                   # @main
                                         # =>  This Inner Loop Header: Depth=2
 	xvmul.d	$xr14, $xr13, $xr11
 	xvmul.d	$xr15, $xr12, $xr11
-	xvpickve2gr.d	$a7, $xr15, 0
-	vinsgr2vr.w	$vr16, $a7, 0
-	xvpickve2gr.d	$a7, $xr15, 1
-	vinsgr2vr.w	$vr16, $a7, 1
-	xvpickve2gr.d	$a7, $xr15, 2
-	vinsgr2vr.w	$vr16, $a7, 2
-	xvpickve2gr.d	$a7, $xr15, 3
-	vinsgr2vr.w	$vr16, $a7, 3
-	xvpickve2gr.d	$a7, $xr14, 0
-	vinsgr2vr.w	$vr15, $a7, 0
-	xvpickve2gr.d	$a7, $xr14, 1
-	vinsgr2vr.w	$vr15, $a7, 1
-	xvpickve2gr.d	$a7, $xr14, 2
-	vinsgr2vr.w	$vr15, $a7, 2
-	xvpickve2gr.d	$a7, $xr14, 3
-	vinsgr2vr.w	$vr15, $a7, 3
-	xvpermi.q	$xr16, $xr15, 2
-	xvmuh.wu	$xr14, $xr16, $xr0
-	xvsub.w	$xr15, $xr16, $xr14
-	xvsrli.w	$xr15, $xr15, 1
-	xvadd.w	$xr14, $xr15, $xr14
+	xvpermi.q	$xr16, $xr15, 1
+	vpickev.w	$vr15, $vr16, $vr15
+	xvpermi.q	$xr16, $xr14, 1
+	vpickev.w	$vr14, $vr16, $vr14
+	xvpermi.q	$xr15, $xr14, 2
+	xvmuh.wu	$xr14, $xr15, $xr0
+	xvsub.w	$xr16, $xr15, $xr14
+	xvsrli.w	$xr16, $xr16, 1
+	xvadd.w	$xr14, $xr16, $xr14
 	xvsrli.w	$xr14, $xr14, 2
-	xvmsub.w	$xr16, $xr14, $xr1
-	xvaddi.wu	$xr14, $xr16, 1
+	xvmsub.w	$xr15, $xr14, $xr1
+	xvaddi.wu	$xr14, $xr15, 1
 	add.d	$a7, $a5, $a6
 	xvadd.d	$xr15, $xr13, $xr11
 	xvadd.d	$xr16, $xr12, $xr11
-	xvpickve2gr.d	$t0, $xr16, 0
-	vinsgr2vr.w	$vr17, $t0, 0
-	xvpickve2gr.d	$t0, $xr16, 1
-	vinsgr2vr.w	$vr17, $t0, 1
-	xvpickve2gr.d	$t0, $xr16, 2
-	vinsgr2vr.w	$vr17, $t0, 2
-	xvpickve2gr.d	$t0, $xr16, 3
-	vinsgr2vr.w	$vr17, $t0, 3
-	xvpickve2gr.d	$t0, $xr15, 0
-	vinsgr2vr.w	$vr16, $t0, 0
-	xvpickve2gr.d	$t0, $xr15, 1
-	vinsgr2vr.w	$vr16, $t0, 1
-	xvpickve2gr.d	$t0, $xr15, 2
-	vinsgr2vr.w	$vr16, $t0, 2
-	xvpickve2gr.d	$t0, $xr15, 3
-	vinsgr2vr.w	$vr16, $t0, 3
-	xvpermi.q	$xr17, $xr16, 2
-	xvmul.w	$xr15, $xr17, $xr2
+	xvpermi.q	$xr17, $xr16, 1
+	vpickev.w	$vr16, $vr17, $vr16
+	xvpermi.q	$xr17, $xr15, 1
+	vpickev.w	$vr15, $vr17, $vr15
+	xvpermi.q	$xr16, $xr15, 2
+	xvmul.w	$xr15, $xr16, $xr2
 	xvsle.wu	$xr15, $xr15, $xr3
-	xvmul.w	$xr16, $xr17, $xr4
-	xvsle.wu	$xr16, $xr16, $xr5
-	xvor.v	$xr15, $xr15, $xr16
-	xvmul.w	$xr16, $xr17, $xr6
+	xvmul.w	$xr17, $xr16, $xr4
+	xvsle.wu	$xr17, $xr17, $xr5
+	xvor.v	$xr15, $xr15, $xr17
+	xvmul.w	$xr16, $xr16, $xr6
 	xvsle.wu	$xr16, $xr16, $xr7
 	xvor.v	$xr15, $xr16, $xr15
 	xvbitsel.v	$xr14, $xr14, $xr10, $xr15

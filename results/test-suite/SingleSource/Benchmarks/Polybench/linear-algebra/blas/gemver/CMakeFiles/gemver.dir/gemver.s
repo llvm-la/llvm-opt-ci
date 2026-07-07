@@ -312,18 +312,12 @@ main:                                   # @main
                                         #   Parent Loop BB7_19 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvmul.d	$xr13, $xr12, $xr11
-	xvpickve2gr.d	$t0, $xr13, 0
-	vinsgr2vr.w	$vr14, $t0, 0
-	xvpickve2gr.d	$t0, $xr13, 1
-	vinsgr2vr.w	$vr14, $t0, 1
-	xvpickve2gr.d	$t0, $xr13, 2
-	vinsgr2vr.w	$vr14, $t0, 2
-	xvpickve2gr.d	$t0, $xr13, 3
-	vinsgr2vr.w	$vr14, $t0, 3
-	vmuh.wu	$vr13, $vr14, $vr8
-	vsrli.w	$vr13, $vr13, 7
-	vmsub.w	$vr14, $vr13, $vr9
-	vext2xv.du.wu	$xr13, $xr14
+	xvpermi.q	$xr14, $xr13, 1
+	vpickev.w	$vr13, $vr14, $vr13
+	vmuh.wu	$vr14, $vr13, $vr8
+	vsrli.w	$vr14, $vr14, 7
+	vmsub.w	$vr13, $vr14, $vr9
+	vext2xv.du.wu	$xr13, $xr13
 	xvffint.d.lu	$xr13, $xr13
 	xvfdiv.d	$xr13, $xr13, $xr10
 	add.d	$t0, $a5, $a7

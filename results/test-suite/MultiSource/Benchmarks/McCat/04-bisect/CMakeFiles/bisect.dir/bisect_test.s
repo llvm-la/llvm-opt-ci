@@ -44,14 +44,8 @@ test_matrix:                            # @test_matrix
 	vext2xv.du.wu	$xr2, $xr0
 	xvffint.d.lu	$xr2, $xr2
 	xvst	$xr2, $a4, 0
-	xvpickve2gr.d	$a7, $xr1, 0
-	vinsgr2vr.w	$vr2, $a7, 0
-	xvpickve2gr.d	$a7, $xr1, 1
-	vinsgr2vr.w	$vr2, $a7, 1
-	xvpickve2gr.d	$a7, $xr1, 2
-	vinsgr2vr.w	$vr2, $a7, 2
-	xvpickve2gr.d	$a7, $xr1, 3
-	vinsgr2vr.w	$vr2, $a7, 3
+	xvpermi.q	$xr2, $xr1, 1
+	vpickev.w	$vr2, $vr2, $vr1
 	vaddi.wu	$vr2, $vr2, 1
 	vext2xv.du.wu	$xr2, $xr2
 	xvffint.d.lu	$xr2, $xr2
@@ -220,14 +214,8 @@ main:                                   # @main
 	vext2xv.du.wu	$xr2, $xr0
 	xvffint.d.lu	$xr2, $xr2
 	xvst	$xr2, $a4, 0
-	xvpickve2gr.d	$a7, $xr1, 0
-	vinsgr2vr.w	$vr2, $a7, 0
-	xvpickve2gr.d	$a7, $xr1, 1
-	vinsgr2vr.w	$vr2, $a7, 1
-	xvpickve2gr.d	$a7, $xr1, 2
-	vinsgr2vr.w	$vr2, $a7, 2
-	xvpickve2gr.d	$a7, $xr1, 3
-	vinsgr2vr.w	$vr2, $a7, 3
+	xvpermi.q	$xr2, $xr1, 1
+	vpickev.w	$vr2, $vr2, $vr1
 	vaddi.wu	$vr2, $vr2, 1
 	vext2xv.du.wu	$xr2, $xr2
 	xvffint.d.lu	$xr2, $xr2

@@ -947,23 +947,9 @@ _ZN11ALACDecoder6DecodeEP9BitBufferPhjjPj: # @_ZN11ALACDecoder6DecodeEP9BitBuffe
                                         #   Parent Loop BB3_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr0, $a4, 0
-	xvpickve2gr.w	$a7, $xr0, 0
-	vinsgr2vr.h	$vr1, $a7, 0
-	xvpickve2gr.w	$a7, $xr0, 1
-	vinsgr2vr.h	$vr1, $a7, 1
-	xvpickve2gr.w	$a7, $xr0, 2
-	vinsgr2vr.h	$vr1, $a7, 2
-	xvpickve2gr.w	$a7, $xr0, 3
-	vinsgr2vr.h	$vr1, $a7, 3
-	xvpickve2gr.w	$a7, $xr0, 4
-	vinsgr2vr.h	$vr1, $a7, 4
-	xvpickve2gr.w	$a7, $xr0, 5
-	vinsgr2vr.h	$vr1, $a7, 5
-	xvpickve2gr.w	$a7, $xr0, 6
-	vinsgr2vr.h	$vr1, $a7, 6
-	xvpickve2gr.w	$a7, $xr0, 7
-	vinsgr2vr.h	$vr1, $a7, 7
-	vst	$vr1, $a6, 0
+	xvpermi.d	$xr1, $xr0, 78
+	xvpickev.h	$xr0, $xr1, $xr0
+	vst	$vr0, $a6, 0
 	addi.d	$a6, $a6, 16
 	addi.d	$a5, $a5, -8
 	addi.d	$a4, $a4, 32

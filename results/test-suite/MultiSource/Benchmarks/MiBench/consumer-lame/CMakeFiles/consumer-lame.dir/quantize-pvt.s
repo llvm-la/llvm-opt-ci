@@ -3691,33 +3691,21 @@ quantize_xrpow_ISO:                     # @quantize_xrpow_ISO
 	add.d	$a5, $a1, $a2
 	xvld	$xr4, $a0, 0
 	xvfcmp.clt.d	$xr5, $xr3, $xr1
-	xvpickve2gr.d	$a6, $xr5, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	xvpickve2gr.d	$a6, $xr5, 1
-	vinsgr2vr.w	$vr6, $a6, 1
-	xvpickve2gr.d	$a6, $xr5, 2
-	vinsgr2vr.w	$vr6, $a6, 2
-	xvpickve2gr.d	$a6, $xr5, 3
-	vinsgr2vr.w	$vr6, $a6, 3
-	xvfcmp.clt.d	$xr5, $xr4, $xr1
-	xvpickve2gr.d	$a6, $xr5, 0
-	vinsgr2vr.w	$vr7, $a6, 0
-	xvpickve2gr.d	$a6, $xr5, 1
-	vinsgr2vr.w	$vr7, $a6, 1
-	xvpickve2gr.d	$a6, $xr5, 2
-	vinsgr2vr.w	$vr7, $a6, 2
-	xvpickve2gr.d	$a6, $xr5, 3
-	vinsgr2vr.w	$vr7, $a6, 3
+	xvpermi.q	$xr6, $xr5, 1
+	vpickev.w	$vr5, $vr6, $vr5
+	xvfcmp.clt.d	$xr6, $xr4, $xr1
+	xvpermi.q	$xr7, $xr6, 1
+	vpickev.w	$vr6, $vr7, $vr6
 	xvfmadd.d	$xr3, $xr0, $xr3, $xr2
 	xvfmadd.d	$xr4, $xr0, $xr4, $xr2
 	xvftintrz.l.d	$xr3, $xr3
-	xvpermi.d	$xr5, $xr3, 238
-	xvpickev.w	$xr3, $xr5, $xr3
+	xvpermi.d	$xr7, $xr3, 238
+	xvpickev.w	$xr3, $xr7, $xr3
 	xvftintrz.l.d	$xr4, $xr4
-	xvpermi.d	$xr5, $xr4, 238
-	xvpickev.w	$xr4, $xr5, $xr4
-	vandn.v	$vr3, $vr6, $vr3
-	vandn.v	$vr4, $vr7, $vr4
+	xvpermi.d	$xr7, $xr4, 238
+	xvpickev.w	$xr4, $xr7, $xr4
+	vandn.v	$vr3, $vr5, $vr3
+	vandn.v	$vr4, $vr6, $vr4
 	vstx	$vr3, $a5, $a3
 	vstx	$vr4, $a5, $a4
 	addi.d	$a2, $a2, 32

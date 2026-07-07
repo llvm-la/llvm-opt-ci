@@ -110,15 +110,9 @@ show_setup:                             # @show_setup
 	move	$a0, $zero
 	xvadd.d	$xr0, $xr0, $xr1
 	xvsrli.d	$xr0, $xr0, 12
-	xvpickve2gr.d	$a1, $xr0, 0
-	vinsgr2vr.w	$vr1, $a1, 0
-	xvpickve2gr.d	$a1, $xr0, 1
-	vinsgr2vr.w	$vr1, $a1, 1
-	xvpickve2gr.d	$a1, $xr0, 2
-	vinsgr2vr.w	$vr1, $a1, 2
-	xvpickve2gr.d	$a1, $xr0, 3
-	vinsgr2vr.w	$vr1, $a1, 3
-	vst	$vr1, $fp, 60
+	xvpermi.q	$xr1, $xr0, 1
+	vpickev.w	$vr0, $vr1, $vr0
+	vst	$vr0, $fp, 60
 .LBB1_8:
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload

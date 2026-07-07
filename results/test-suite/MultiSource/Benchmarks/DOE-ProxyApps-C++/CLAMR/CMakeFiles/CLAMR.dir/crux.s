@@ -348,24 +348,12 @@ _ZN4Crux16store_MallocPlusE10MallocPlus: # @_ZN4Crux16store_MallocPlusE10MallocP
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr2, $a3, -32
 	xvld	$xr3, $a3, 0
-	xvpickve2gr.d	$a5, $xr2, 0
-	vinsgr2vr.w	$vr4, $a5, 0
-	xvpickve2gr.d	$a5, $xr2, 1
-	vinsgr2vr.w	$vr4, $a5, 1
-	xvpickve2gr.d	$a5, $xr2, 2
-	vinsgr2vr.w	$vr4, $a5, 2
-	xvpickve2gr.d	$a5, $xr2, 3
-	vinsgr2vr.w	$vr4, $a5, 3
-	xvpickve2gr.d	$a5, $xr3, 0
-	vinsgr2vr.w	$vr2, $a5, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	vinsgr2vr.w	$vr2, $a5, 1
-	xvpickve2gr.d	$a5, $xr3, 2
-	vinsgr2vr.w	$vr2, $a5, 2
-	xvpickve2gr.d	$a5, $xr3, 3
-	vinsgr2vr.w	$vr2, $a5, 3
-	vmul.w	$vr0, $vr0, $vr4
-	vmul.w	$vr1, $vr1, $vr2
+	xvpermi.q	$xr4, $xr2, 1
+	vpickev.w	$vr2, $vr4, $vr2
+	xvpermi.q	$xr4, $xr3, 1
+	vpickev.w	$vr3, $vr4, $vr3
+	vmul.w	$vr0, $vr0, $vr2
+	vmul.w	$vr1, $vr1, $vr3
 	addi.d	$a4, $a4, -8
 	addi.d	$a3, $a3, 64
 	bnez	$a4, .LBB2_14
@@ -1114,24 +1102,12 @@ _ZN4Crux18restore_MallocPlusE10MallocPlus: # @_ZN4Crux18restore_MallocPlusE10Mal
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr2, $a3, -32
 	xvld	$xr3, $a3, 0
-	xvpickve2gr.d	$a5, $xr2, 0
-	vinsgr2vr.w	$vr4, $a5, 0
-	xvpickve2gr.d	$a5, $xr2, 1
-	vinsgr2vr.w	$vr4, $a5, 1
-	xvpickve2gr.d	$a5, $xr2, 2
-	vinsgr2vr.w	$vr4, $a5, 2
-	xvpickve2gr.d	$a5, $xr2, 3
-	vinsgr2vr.w	$vr4, $a5, 3
-	xvpickve2gr.d	$a5, $xr3, 0
-	vinsgr2vr.w	$vr2, $a5, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	vinsgr2vr.w	$vr2, $a5, 1
-	xvpickve2gr.d	$a5, $xr3, 2
-	vinsgr2vr.w	$vr2, $a5, 2
-	xvpickve2gr.d	$a5, $xr3, 3
-	vinsgr2vr.w	$vr2, $a5, 3
-	vmul.w	$vr0, $vr0, $vr4
-	vmul.w	$vr1, $vr1, $vr2
+	xvpermi.q	$xr4, $xr2, 1
+	vpickev.w	$vr2, $vr4, $vr2
+	xvpermi.q	$xr4, $xr3, 1
+	vpickev.w	$vr3, $vr4, $vr3
+	vmul.w	$vr0, $vr0, $vr2
+	vmul.w	$vr1, $vr1, $vr3
 	addi.d	$a4, $a4, -8
 	addi.d	$a3, $a3, 64
 	bnez	$a4, .LBB21_21

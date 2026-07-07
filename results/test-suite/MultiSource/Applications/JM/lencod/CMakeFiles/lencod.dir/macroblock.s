@@ -8962,14 +8962,8 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	vshuf.h	$vr5, $vr10, $vr7
 	vsub.w	$vr3, $vr3, $vr8
 	vsub.w	$vr4, $vr4, $vr5
-	xvpickve2gr.d	$a6, $xr1, 0
-	vinsgr2vr.w	$vr5, $a6, 0
-	xvpickve2gr.d	$a6, $xr1, 1
-	vinsgr2vr.w	$vr5, $a6, 1
-	xvpickve2gr.d	$a6, $xr1, 2
-	vinsgr2vr.w	$vr5, $a6, 2
-	xvpickve2gr.d	$a6, $xr1, 3
-	vinsgr2vr.w	$vr5, $a6, 3
+	xvpermi.q	$xr5, $xr1, 1
+	vpickev.w	$vr5, $vr5, $vr1
 	vaddi.wu	$vr6, $vr5, 1
 	vaddi.wu	$vr5, $vr5, 5
 	vmadd.w	$vr0, $vr3, $vr6
@@ -9068,14 +9062,8 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	vshuf.h	$vr5, $vr10, $vr7
 	vsub.w	$vr3, $vr3, $vr8
 	vsub.w	$vr4, $vr4, $vr5
-	xvpickve2gr.d	$a7, $xr1, 0
-	vinsgr2vr.w	$vr5, $a7, 0
-	xvpickve2gr.d	$a7, $xr1, 1
-	vinsgr2vr.w	$vr5, $a7, 1
-	xvpickve2gr.d	$a7, $xr1, 2
-	vinsgr2vr.w	$vr5, $a7, 2
-	xvpickve2gr.d	$a7, $xr1, 3
-	vinsgr2vr.w	$vr5, $a7, 3
+	xvpermi.q	$xr5, $xr1, 1
+	vpickev.w	$vr5, $vr5, $vr1
 	vaddi.wu	$vr6, $vr5, 1
 	vaddi.wu	$vr5, $vr5, 5
 	vmadd.w	$vr0, $vr3, $vr6
@@ -9198,23 +9186,9 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	xvsrai.w	$xr4, $xr5, 5
 	xvmaxi.w	$xr4, $xr4, 0
 	xvmin.w	$xr4, $xr4, $xr1
-	xvpickve2gr.w	$t1, $xr4, 0
-	vinsgr2vr.h	$vr5, $t1, 0
-	xvpickve2gr.w	$t1, $xr4, 1
-	vinsgr2vr.h	$vr5, $t1, 1
-	xvpickve2gr.w	$t1, $xr4, 2
-	vinsgr2vr.h	$vr5, $t1, 2
-	xvpickve2gr.w	$t1, $xr4, 3
-	vinsgr2vr.h	$vr5, $t1, 3
-	xvpickve2gr.w	$t1, $xr4, 4
-	vinsgr2vr.h	$vr5, $t1, 4
-	xvpickve2gr.w	$t1, $xr4, 5
-	vinsgr2vr.h	$vr5, $t1, 5
-	xvpickve2gr.w	$t1, $xr4, 6
-	vinsgr2vr.h	$vr5, $t1, 6
-	xvpickve2gr.w	$t1, $xr4, 7
-	vinsgr2vr.h	$vr5, $t1, 7
-	vst	$vr5, $a7, 0
+	xvpermi.d	$xr5, $xr4, 78
+	xvpickev.h	$xr4, $xr5, $xr4
+	vst	$vr4, $a7, 0
 	xvaddi.wu	$xr2, $xr2, 8
 	addi.d	$t0, $t0, -8
 	addi.d	$a7, $a7, 16

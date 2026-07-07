@@ -920,23 +920,23 @@ AesCbc_Decode:                          # @AesCbc_Decode
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0                          # -- Begin function AesCtr_Code
 .LCPI3_0:
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	2                               # 0x2
+	.word	2                               # 0x2
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.word	3                               # 0x3
+	.word	3                               # 0x3
+	.word	3                               # 0x3
 .LCPI3_1:
-	.word	2                               # 0x2
-	.word	2                               # 0x2
-	.word	2                               # 0x2
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	3                               # 0x3
-	.word	3                               # 0x3
-	.word	3                               # 0x3
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	1                               # 0x1
+	.word	1                               # 0x1
+	.word	1                               # 0x1
 .LCPI3_2:
 	.word	0                               # 0x0
 	.word	8                               # 0x8
@@ -988,43 +988,48 @@ AesCtr_Code:                            # @AesCtr_Code
 	xvld	$xr2, $sp, 48                   # 32-byte Folded Reload
 	xvshuf.w	$xr2, $xr0, $xr0
 	xvld	$xr3, $sp, 16                   # 32-byte Folded Reload
+	xvsrl.w	$xr0, $xr2, $xr3
 	xvsrl.w	$xr1, $xr1, $xr3
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.b	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.b	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.b	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.b	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.b	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vld	$vr1, $s1, 0
+	vpickve2gr.h	$a0, $vr1, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	vpickve2gr.h	$a0, $vr1, 2
+	vinsgr2vr.h	$vr2, $a0, 1
+	vpickve2gr.h	$a0, $vr1, 4
+	vinsgr2vr.h	$vr2, $a0, 2
+	vpickve2gr.h	$a0, $vr1, 6
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpermi.d	$xr1, $xr1, 14
+	vpickve2gr.h	$a0, $vr1, 0
+	vinsgr2vr.h	$vr2, $a0, 4
+	vpickve2gr.h	$a0, $vr1, 2
+	vinsgr2vr.h	$vr2, $a0, 5
+	vpickve2gr.h	$a0, $vr1, 4
+	vinsgr2vr.h	$vr2, $a0, 6
+	vpickve2gr.h	$a0, $vr1, 6
+	vinsgr2vr.h	$vr2, $a0, 7
+	vpickve2gr.h	$a0, $vr0, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	vpickve2gr.h	$a0, $vr0, 2
+	vinsgr2vr.h	$vr1, $a0, 1
+	vpickve2gr.h	$a0, $vr0, 4
+	vinsgr2vr.h	$vr1, $a0, 2
+	vpickve2gr.h	$a0, $vr0, 6
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpermi.d	$xr0, $xr0, 14
+	vpickve2gr.h	$a0, $vr0, 0
+	vinsgr2vr.h	$vr1, $a0, 4
+	vpickve2gr.h	$a0, $vr0, 2
+	vinsgr2vr.h	$vr1, $a0, 5
+	vpickve2gr.h	$a0, $vr0, 4
+	vinsgr2vr.h	$vr1, $a0, 6
+	vpickve2gr.h	$a0, $vr0, 6
+	vld	$vr0, $s1, 0
 	addi.d	$a1, $s1, 16
-	xvsrl.w	$xr2, $xr2, $xr3
-	vinsgr2vr.b	$vr0, $a0, 7
-	xvpickve2gr.w	$a0, $xr2, 0
-	vinsgr2vr.b	$vr0, $a0, 8
-	xvpickve2gr.w	$a0, $xr2, 1
-	vinsgr2vr.b	$vr0, $a0, 9
-	xvpickve2gr.w	$a0, $xr2, 2
-	vinsgr2vr.b	$vr0, $a0, 10
-	xvpickve2gr.w	$a0, $xr2, 3
-	vinsgr2vr.b	$vr0, $a0, 11
-	xvpickve2gr.w	$a0, $xr2, 4
-	vinsgr2vr.b	$vr0, $a0, 12
-	xvpickve2gr.w	$a0, $xr2, 5
-	vinsgr2vr.b	$vr0, $a0, 13
-	xvpickve2gr.w	$a0, $xr2, 6
-	vinsgr2vr.b	$vr0, $a0, 14
-	xvpickve2gr.w	$a0, $xr2, 7
-	vinsgr2vr.b	$vr0, $a0, 15
-	vxor.v	$vr0, $vr1, $vr0
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpermi.q	$xr1, $xr2, 2
+	xvpermi.d	$xr2, $xr1, 78
+	xvpickev.b	$xr1, $xr2, $xr1
+	vxor.v	$vr0, $vr0, $vr1
 	addi.d	$fp, $fp, -1
 	vst	$vr0, $s1, 0
 	move	$s1, $a1

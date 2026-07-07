@@ -222,18 +222,12 @@ main:                                   # @main
                                         #   Parent Loop BB7_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvadd.d	$xr10, $xr9, $xr8
-	xvpickve2gr.d	$t7, $xr10, 0
-	vinsgr2vr.w	$vr11, $t7, 0
-	xvpickve2gr.d	$t7, $xr10, 1
-	vinsgr2vr.w	$vr11, $t7, 1
-	xvpickve2gr.d	$t7, $xr10, 2
-	vinsgr2vr.w	$vr11, $t7, 2
-	xvpickve2gr.d	$t7, $xr10, 3
-	vinsgr2vr.w	$vr11, $t7, 3
-	vmuh.wu	$vr10, $vr11, $vr5
-	vsrli.w	$vr10, $vr10, 6
-	vmsub.w	$vr11, $vr10, $vr6
-	vext2xv.du.wu	$xr10, $xr11
+	xvpermi.q	$xr11, $xr10, 1
+	vpickev.w	$vr10, $vr11, $vr10
+	vmuh.wu	$vr11, $vr10, $vr5
+	vsrli.w	$vr11, $vr11, 6
+	vmsub.w	$vr10, $vr11, $vr6
+	vext2xv.du.wu	$xr10, $xr10
 	xvffint.d.lu	$xr10, $xr10
 	xvfdiv.d	$xr10, $xr10, $xr7
 	xvst	$xr10, $t6, 0
@@ -281,18 +275,12 @@ main:                                   # @main
                                         #   Parent Loop BB7_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvsub.d	$xr10, $xr8, $xr9
-	xvpickve2gr.d	$t5, $xr10, 0
-	vinsgr2vr.w	$vr11, $t5, 0
-	xvpickve2gr.d	$t5, $xr10, 1
-	vinsgr2vr.w	$vr11, $t5, 1
-	xvpickve2gr.d	$t5, $xr10, 2
-	vinsgr2vr.w	$vr11, $t5, 2
-	xvpickve2gr.d	$t5, $xr10, 3
-	vinsgr2vr.w	$vr11, $t5, 3
-	vmuh.wu	$vr10, $vr11, $vr1
-	vsrli.w	$vr10, $vr10, 7
-	vmsub.w	$vr11, $vr10, $vr2
-	vext2xv.du.wu	$xr10, $xr11
+	xvpermi.q	$xr11, $xr10, 1
+	vpickev.w	$vr10, $vr11, $vr10
+	vmuh.wu	$vr11, $vr10, $vr1
+	vsrli.w	$vr11, $vr11, 7
+	vmsub.w	$vr10, $vr11, $vr2
+	vext2xv.du.wu	$xr10, $xr10
 	xvffint.d.lu	$xr10, $xr10
 	xvfdiv.d	$xr10, $xr10, $xr3
 	add.d	$t5, $t2, $t4

@@ -2610,40 +2610,42 @@ lame_encode_buffer:                     # @lame_encode_buffer
 	xvadd.w	$xr1, $xr6, $xr1
 	xvadd.w	$xr2, $xr5, $xr2
 	xvsrli.w	$xr3, $xr1, 31
-	xvavg.w	$xr1, $xr1, $xr3
+	xvavg.wu	$xr1, $xr1, $xr3
 	xvsrli.w	$xr3, $xr2, 31
-	xvavg.w	$xr2, $xr2, $xr3
-	xvpickve2gr.w	$a5, $xr1, 0
+	xvavg.wu	$xr2, $xr2, $xr3
+	vpickve2gr.h	$a5, $vr1, 0
 	vinsgr2vr.h	$vr3, $a5, 0
-	xvpickve2gr.w	$a5, $xr1, 1
+	vpickve2gr.h	$a5, $vr1, 2
 	vinsgr2vr.h	$vr3, $a5, 1
-	xvpickve2gr.w	$a5, $xr1, 2
+	vpickve2gr.h	$a5, $vr1, 4
 	vinsgr2vr.h	$vr3, $a5, 2
-	xvpickve2gr.w	$a5, $xr1, 3
+	vpickve2gr.h	$a5, $vr1, 6
 	vinsgr2vr.h	$vr3, $a5, 3
-	xvpickve2gr.w	$a5, $xr1, 4
+	xvpermi.d	$xr1, $xr1, 14
+	vpickve2gr.h	$a5, $vr1, 0
 	vinsgr2vr.h	$vr3, $a5, 4
-	xvpickve2gr.w	$a5, $xr1, 5
+	vpickve2gr.h	$a5, $vr1, 2
 	vinsgr2vr.h	$vr3, $a5, 5
-	xvpickve2gr.w	$a5, $xr1, 6
+	vpickve2gr.h	$a5, $vr1, 4
 	vinsgr2vr.h	$vr3, $a5, 6
-	xvpickve2gr.w	$a5, $xr1, 7
+	vpickve2gr.h	$a5, $vr1, 6
 	vinsgr2vr.h	$vr3, $a5, 7
-	xvpickve2gr.w	$a5, $xr2, 0
+	vpickve2gr.h	$a5, $vr2, 0
 	vinsgr2vr.h	$vr1, $a5, 0
-	xvpickve2gr.w	$a5, $xr2, 1
+	vpickve2gr.h	$a5, $vr2, 2
 	vinsgr2vr.h	$vr1, $a5, 1
-	xvpickve2gr.w	$a5, $xr2, 2
+	vpickve2gr.h	$a5, $vr2, 4
 	vinsgr2vr.h	$vr1, $a5, 2
-	xvpickve2gr.w	$a5, $xr2, 3
+	vpickve2gr.h	$a5, $vr2, 6
 	vinsgr2vr.h	$vr1, $a5, 3
-	xvpickve2gr.w	$a5, $xr2, 4
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a5, $vr2, 0
 	vinsgr2vr.h	$vr1, $a5, 4
-	xvpickve2gr.w	$a5, $xr2, 5
+	vpickve2gr.h	$a5, $vr2, 2
 	vinsgr2vr.h	$vr1, $a5, 5
-	xvpickve2gr.w	$a5, $xr2, 6
+	vpickve2gr.h	$a5, $vr2, 4
 	vinsgr2vr.h	$vr1, $a5, 6
-	xvpickve2gr.w	$a5, $xr2, 7
+	vpickve2gr.h	$a5, $vr2, 6
 	vinsgr2vr.h	$vr1, $a5, 7
 	xvpermi.q	$xr1, $xr3, 2
 	xvst	$xr1, $a2, 0

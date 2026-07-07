@@ -374,15 +374,6 @@ foo:                                    # @foo
 	.word	0x429c0000                      # float 78
 	.word	0x429e0000                      # float 79
 .LCPI2_13:
-	.word	0x00000000                      # float 0
-	.word	0x41200000                      # float 10
-	.word	0x41a00000                      # float 20
-	.word	0x41f00000                      # float 30
-	.word	0x42200000                      # float 40
-	.word	0x42480000                      # float 50
-	.word	0x42700000                      # float 60
-	.word	0x428c0000                      # float 70
-.LCPI2_14:
 	.word	0x42a00000                      # float 80
 	.word	0x42b40000                      # float 90
 	.word	0x42c80000                      # float 100
@@ -391,6 +382,15 @@ foo:                                    # @foo
 	.word	0x43020000                      # float 130
 	.word	0x430c0000                      # float 140
 	.word	0x43160000                      # float 150
+.LCPI2_14:
+	.word	0x00000000                      # float 0
+	.word	0x41200000                      # float 10
+	.word	0x41a00000                      # float 20
+	.word	0x41f00000                      # float 30
+	.word	0x42200000                      # float 40
+	.word	0x42480000                      # float 50
+	.word	0x42700000                      # float 60
+	.word	0x428c0000                      # float 70
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
 .LCPI2_2:
@@ -504,56 +504,64 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(results)
-	addi.d	$a2, $a0, %pc_lo12(results)
-	xvld	$xr0, $a2, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI2_13)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI2_13)
+	addi.d	$a0, $a0, %pc_lo12(results)
+	xvld	$xr0, $a0, 32
+	pcalau12i	$a1, %pc_hi20(.LCPI2_13)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI2_13)
+	xvld	$xr2, $a0, 0
 	xvfcmp.cune.s	$xr1, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.w	$a1, $xr1, 2
-	vinsgr2vr.b	$vr0, $a1, 2
-	xvpickve2gr.w	$a3, $xr1, 3
-	vinsgr2vr.b	$vr0, $a3, 3
-	xvpickve2gr.w	$a4, $xr1, 4
-	vinsgr2vr.b	$vr0, $a4, 4
-	xvpickve2gr.w	$a4, $xr1, 5
-	xvpickve2gr.w	$a5, $xr1, 6
-	pcalau12i	$a6, %pc_hi20(.LCPI2_14)
-	xvld	$xr2, $a6, %pc_lo12(.LCPI2_14)
-	xvpickve2gr.w	$a6, $xr1, 7
-	xvld	$xr1, $a2, 32
-	vinsgr2vr.b	$vr0, $a4, 5
-	vinsgr2vr.b	$vr0, $a5, 6
-	vinsgr2vr.b	$vr0, $a6, 7
-	xvfcmp.cune.s	$xr1, $xr1, $xr2
-	xvpickve2gr.w	$a4, $xr1, 0
-	vinsgr2vr.b	$vr0, $a4, 8
-	xvpickve2gr.w	$a4, $xr1, 1
-	vinsgr2vr.b	$vr0, $a4, 9
-	xvpickve2gr.w	$a4, $xr1, 2
-	vinsgr2vr.b	$vr0, $a4, 10
-	xvpickve2gr.w	$a4, $xr1, 3
-	vinsgr2vr.b	$vr0, $a4, 11
-	xvpickve2gr.w	$a4, $xr1, 4
-	vinsgr2vr.b	$vr0, $a4, 12
-	xvpickve2gr.w	$a4, $xr1, 5
-	xvpickve2gr.w	$a5, $xr1, 6
-	xvpickve2gr.w	$a6, $xr1, 7
-	vld	$vr1, $a2, 64
-	pcalau12i	$a2, %pc_hi20(.LCPI2_15)
-	vld	$vr2, $a2, %pc_lo12(.LCPI2_15)
-	vinsgr2vr.b	$vr0, $a4, 13
-	vinsgr2vr.b	$vr0, $a5, 14
-	vinsgr2vr.b	$vr0, $a6, 15
-	vfcmp.cune.s	$vr1, $vr1, $vr2
-	vpickve2gr.b	$a2, $vr0, 0
-	vinsgr2vr.w	$vr2, $a2, 0
+	vpickve2gr.h	$a1, $vr1, 0
+	vinsgr2vr.h	$vr0, $a1, 0
+	vpickve2gr.h	$a1, $vr1, 2
+	vinsgr2vr.h	$vr0, $a1, 1
+	vpickve2gr.h	$a1, $vr1, 4
+	vinsgr2vr.h	$vr0, $a1, 2
+	vpickve2gr.h	$a1, $vr1, 6
+	vinsgr2vr.h	$vr0, $a1, 3
+	xvpermi.d	$xr1, $xr1, 14
+	vpickve2gr.h	$a1, $vr1, 0
+	vinsgr2vr.h	$vr0, $a1, 4
+	vpickve2gr.h	$a1, $vr1, 2
+	vinsgr2vr.h	$vr0, $a1, 5
+	vpickve2gr.h	$a1, $vr1, 4
+	pcalau12i	$a2, %pc_hi20(.LCPI2_14)
+	xvld	$xr3, $a2, %pc_lo12(.LCPI2_14)
+	vinsgr2vr.h	$vr0, $a1, 6
+	vpickve2gr.h	$a1, $vr1, 6
+	vinsgr2vr.h	$vr0, $a1, 7
+	xvfcmp.cune.s	$xr1, $xr2, $xr3
+	vpickve2gr.h	$a1, $vr1, 0
+	vinsgr2vr.h	$vr2, $a1, 0
+	vpickve2gr.h	$a1, $vr1, 2
+	vinsgr2vr.h	$vr2, $a1, 1
+	vpickve2gr.h	$a1, $vr1, 4
+	vinsgr2vr.h	$vr2, $a1, 2
+	vpickve2gr.h	$a1, $vr1, 6
+	vinsgr2vr.h	$vr2, $a1, 3
+	xvpermi.d	$xr1, $xr1, 14
+	vpickve2gr.h	$a1, $vr1, 0
+	vinsgr2vr.h	$vr2, $a1, 4
+	vpickve2gr.h	$a1, $vr1, 2
+	vinsgr2vr.h	$vr2, $a1, 5
+	vpickve2gr.h	$a1, $vr1, 4
+	vinsgr2vr.h	$vr2, $a1, 6
+	vpickve2gr.h	$a1, $vr1, 6
+	vinsgr2vr.h	$vr2, $a1, 7
+	vld	$vr1, $a0, 64
+	pcalau12i	$a0, %pc_hi20(.LCPI2_15)
+	vld	$vr3, $a0, %pc_lo12(.LCPI2_15)
+	xvpermi.q	$xr2, $xr0, 2
+	xvpermi.d	$xr0, $xr2, 78
+	xvpickev.b	$xr0, $xr0, $xr2
+	vfcmp.cune.s	$vr1, $vr1, $vr3
+	vpickve2gr.b	$a0, $vr0, 0
+	vinsgr2vr.w	$vr2, $a0, 0
+	vpickve2gr.b	$a0, $vr0, 1
 	vinsgr2vr.w	$vr2, $a0, 1
-	vinsgr2vr.w	$vr2, $a1, 2
-	vinsgr2vr.w	$vr2, $a3, 3
+	vpickve2gr.b	$a0, $vr0, 2
+	vinsgr2vr.w	$vr2, $a0, 2
+	vpickve2gr.b	$a0, $vr0, 3
+	vinsgr2vr.w	$vr2, $a0, 3
 	vor.v	$vr1, $vr2, $vr1
 	vpickve2gr.w	$a0, $vr1, 0
 	vinsgr2vr.b	$vr2, $a0, 0

@@ -356,32 +356,27 @@ _ZL20BM_PRESSURE_CALC_RAWRN9benchmark5StateE: # @_ZL20BM_PRESSURE_CALC_RAWRN9ben
 	xvld	$xr8, $t1, 0
 	xvbitclri.d	$xr9, $xr7, 63
 	xvfcmp.cule.d	$xr9, $xr1, $xr9
-	xvand.v	$xr9, $xr9, $xr7
-	xvfcmp.cle.d	$xr10, $xr2, $xr8
-	xvandn.v	$xr7, $xr10, $xr9
+	xvand.v	$xr10, $xr9, $xr7
+	xvfcmp.cle.d	$xr9, $xr2, $xr8
+	xvandn.v	$xr7, $xr9, $xr10
 	xvfcmp.clt.d	$xr8, $xr7, $xr3
-	xvor.v	$xr10, $xr10, $xr8
-	xvpickve2gr.d	$t4, $xr10, 0
-	andi	$t5, $t4, 1
-	xvst	$xr9, $t3, 0
-	beqz	$t5, .LBB1_18
+	xvor.v	$xr9, $xr9, $xr8
+	vpickve2gr.w	$t4, $vr9, 0
+	andi	$t4, $t4, 1
+	xvst	$xr10, $t3, 0
+	beqz	$t4, .LBB1_18
 # %bb.17:                               # %pred.store.if
                                         #   in Loop: Header=BB1_16 Depth=2
-	xvpickve2gr.d	$t5, $xr8, 0
-	andi	$t5, $t5, 1
-	xvpickve.d	$xr9, $xr7, 0
-	movgr2cf	$fcc0, $t5
-	fsel	$ft1, $ft1, $ft5, $fcc0
-	fst.d	$ft1, $t3, 0
+	vpickve2gr.w	$t4, $vr8, 0
+	andi	$t4, $t4, 1
+	xvpickve.d	$xr10, $xr7, 0
+	movgr2cf	$fcc0, $t4
+	fsel	$ft2, $ft2, $ft5, $fcc0
+	fst.d	$ft2, $t3, 0
 .LBB1_18:                               # %pred.store.continue
                                         #   in Loop: Header=BB1_16 Depth=2
-	vinsgr2vr.w	$vr9, $t4, 0
-	xvpickve2gr.d	$t4, $xr10, 1
-	vinsgr2vr.w	$vr9, $t4, 1
-	xvpickve2gr.d	$t4, $xr10, 2
-	vinsgr2vr.w	$vr9, $t4, 2
-	xvpickve2gr.d	$t4, $xr10, 3
-	vinsgr2vr.w	$vr9, $t4, 3
+	xvpermi.q	$xr10, $xr9, 1
+	vpickev.w	$vr9, $vr10, $vr9
 	vpickve2gr.w	$t4, $vr9, 1
 	andi	$t4, $t4, 1
 	bnez	$t4, .LBB1_21
@@ -399,7 +394,7 @@ _ZL20BM_PRESSURE_CALC_RAWRN9benchmark5StateE: # @_ZL20BM_PRESSURE_CALC_RAWRN9ben
 	.p2align	4, , 16
 .LBB1_21:                               # %pred.store.if100
                                         #   in Loop: Header=BB1_16 Depth=2
-	xvpickve2gr.d	$t4, $xr8, 1
+	vpickve2gr.w	$t4, $vr8, 2
 	andi	$t4, $t4, 1
 	xvpickve.d	$xr10, $xr7, 1
 	movgr2cf	$fcc0, $t4
@@ -410,7 +405,8 @@ _ZL20BM_PRESSURE_CALC_RAWRN9benchmark5StateE: # @_ZL20BM_PRESSURE_CALC_RAWRN9ben
 	beqz	$t4, .LBB1_20
 .LBB1_22:                               # %pred.store.if102
                                         #   in Loop: Header=BB1_16 Depth=2
-	xvpickve2gr.d	$t4, $xr8, 2
+	xvpermi.q	$xr10, $xr8, 1
+	vpickve2gr.w	$t4, $vr10, 0
 	andi	$t4, $t4, 1
 	xvpickve.d	$xr10, $xr7, 2
 	movgr2cf	$fcc0, $t4
@@ -421,7 +417,8 @@ _ZL20BM_PRESSURE_CALC_RAWRN9benchmark5StateE: # @_ZL20BM_PRESSURE_CALC_RAWRN9ben
 	beqz	$t4, .LBB1_15
 .LBB1_23:                               # %pred.store.if104
                                         #   in Loop: Header=BB1_16 Depth=2
-	xvpickve2gr.d	$t4, $xr8, 3
+	xvpermi.q	$xr8, $xr8, 1
+	vpickve2gr.w	$t4, $vr8, 2
 	andi	$t4, $t4, 1
 	xvpickve.d	$xr7, $xr7, 3
 	movgr2cf	$fcc0, $t4

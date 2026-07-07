@@ -60,6 +60,23 @@ _ZN12btAxisSweep3C2ERK9btVector3S2_tP22btOverlappingPairCacheb: # @_ZN12btAxisSw
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI1_5:
+	.half	0                               # 0x0
+	.half	4                               # 0x4
+	.half	8                               # 0x8
+	.half	12                              # 0xc
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
 	.section	.text._ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb,"axG",@progbits,_ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb,comdat
 	.weak	_ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb
 	.p2align	5
@@ -216,11 +233,11 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	bltu	$s1, $a1, .LBB1_23
 # %bb.12:                               # %vector.main.loop.iter.check
 	addi.d	$a1, $s1, -1
-	ori	$a3, $zero, 17
-	ori	$a2, $zero, 1
-	bgeu	$s1, $a3, .LBB1_16
+	ori	$a2, $zero, 17
+	ori	$a3, $zero, 1
+	bgeu	$s1, $a2, .LBB1_16
 # %bb.13:
-	move	$a3, $zero
+	move	$a2, $zero
 	ori	$a4, $zero, 1
 	b	.LBB1_20
 .LBB1_14:
@@ -248,8 +265,8 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	b	.LBB1_25
 .LBB1_16:                               # %vector.ph76
 	andi	$a5, $a1, 12
-	move	$a3, $a1
-	bstrins.d	$a3, $zero, 3, 0
+	move	$a2, $a1
+	bstrins.d	$a2, $zero, 3, 0
 	pcalau12i	$a4, %pc_hi20(.LCPI1_0)
 	xvld	$xr0, $a4, %pc_lo12(.LCPI1_0)
 	pcalau12i	$a4, %pc_hi20(.LCPI1_1)
@@ -262,43 +279,55 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	move	$a4, $a1
 	bstrins.d	$a4, $a6, 3, 0
 	addi.d	$a6, $a0, 700
-	move	$a7, $a3
+	move	$a7, $a2
 	.p2align	4, , 16
 .LBB1_17:                               # %vector.body79
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$t0, $xr3, 0
+	xvpermi.q	$xr4, $xr3, 1
+	vpickev.w	$vr5, $vr4, $vr3
+	xvpermi.q	$xr4, $xr2, 1
+	vpickev.w	$vr4, $vr4, $vr2
+	xvpermi.q	$xr5, $xr4, 2
+	vpickve2gr.h	$t0, $vr5, 0
 	vinsgr2vr.h	$vr4, $t0, 0
-	xvpickve2gr.d	$t0, $xr3, 1
+	vpickve2gr.h	$t0, $vr5, 2
 	vinsgr2vr.h	$vr4, $t0, 1
-	xvpickve2gr.d	$t0, $xr3, 2
+	vpickve2gr.h	$t0, $vr5, 4
 	vinsgr2vr.h	$vr4, $t0, 2
-	xvpickve2gr.d	$t0, $xr3, 3
+	vpickve2gr.h	$t0, $vr5, 6
 	vinsgr2vr.h	$vr4, $t0, 3
-	xvpickve2gr.d	$t0, $xr2, 0
+	xvpermi.d	$xr5, $xr5, 14
+	vpickve2gr.h	$t0, $vr5, 0
 	vinsgr2vr.h	$vr4, $t0, 4
-	xvpickve2gr.d	$t0, $xr2, 1
+	vpickve2gr.h	$t0, $vr5, 2
 	vinsgr2vr.h	$vr4, $t0, 5
-	xvpickve2gr.d	$t0, $xr2, 2
+	vpickve2gr.h	$t0, $vr5, 4
 	vinsgr2vr.h	$vr4, $t0, 6
-	xvpickve2gr.d	$t0, $xr2, 3
+	vpickve2gr.h	$t0, $vr5, 6
 	vinsgr2vr.h	$vr4, $t0, 7
-	xvpickve2gr.d	$t0, $xr1, 0
-	vinsgr2vr.h	$vr5, $t0, 0
-	xvpickve2gr.d	$t0, $xr1, 1
-	vinsgr2vr.h	$vr5, $t0, 1
-	xvpickve2gr.d	$t0, $xr1, 2
-	vinsgr2vr.h	$vr5, $t0, 2
-	xvpickve2gr.d	$t0, $xr1, 3
-	vinsgr2vr.h	$vr5, $t0, 3
-	xvpickve2gr.d	$t0, $xr0, 0
-	vinsgr2vr.h	$vr5, $t0, 4
-	xvpickve2gr.d	$t0, $xr0, 1
-	vinsgr2vr.h	$vr5, $t0, 5
-	xvpickve2gr.d	$t0, $xr0, 2
-	vinsgr2vr.h	$vr5, $t0, 6
-	xvpickve2gr.d	$t0, $xr0, 3
-	vinsgr2vr.h	$vr5, $t0, 7
-	xvpermi.q	$xr4, $xr5, 2
+	xvpermi.q	$xr5, $xr1, 1
+	vpickev.w	$vr5, $vr5, $vr1
+	xvpermi.q	$xr6, $xr0, 1
+	vpickev.w	$vr6, $vr6, $vr0
+	xvpermi.q	$xr5, $xr6, 2
+	vpickve2gr.h	$t0, $vr5, 0
+	vinsgr2vr.h	$vr6, $t0, 0
+	vpickve2gr.h	$t0, $vr5, 2
+	vinsgr2vr.h	$vr6, $t0, 1
+	vpickve2gr.h	$t0, $vr5, 4
+	vinsgr2vr.h	$vr6, $t0, 2
+	vpickve2gr.h	$t0, $vr5, 6
+	vinsgr2vr.h	$vr6, $t0, 3
+	xvpermi.d	$xr5, $xr5, 14
+	vpickve2gr.h	$t0, $vr5, 0
+	vinsgr2vr.h	$vr6, $t0, 4
+	vpickve2gr.h	$t0, $vr5, 2
+	vinsgr2vr.h	$vr6, $t0, 5
+	vpickve2gr.h	$t0, $vr5, 4
+	vinsgr2vr.h	$vr6, $t0, 6
+	vpickve2gr.h	$t0, $vr5, 6
+	vinsgr2vr.h	$vr6, $t0, 7
+	xvpermi.q	$xr4, $xr6, 2
 	xvaddi.hu	$xr4, $xr4, 1
 	vpickve2gr.h	$t0, $vr4, 0
 	vpickve2gr.h	$t1, $vr4, 1
@@ -334,7 +363,7 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	addi.d	$a6, $a6, 1280
 	bnez	$a7, .LBB1_17
 # %bb.18:                               # %middle.block82
-	beq	$a1, $a3, .LBB1_25
+	beq	$a1, $a2, .LBB1_25
 # %bb.19:                               # %vec.epilog.iter.check
 	beqz	$a5, .LBB1_26
 .LBB1_20:                               # %vec.epilog.ph
@@ -343,34 +372,31 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	xvld	$xr0, $a5, %pc_lo12(.LCPI1_4)
 	bstrins.d	$a6, $zero, 1, 0
 	move	$a5, $a1
-	bstrins.d	$a5, $a2, 1, 0
+	bstrins.d	$a5, $a3, 1, 0
 	xvreplgr2vr.d	$xr1, $a4
 	xvadd.d	$xr0, $xr1, $xr0
-	sub.d	$a2, $a3, $a6
-	slli.d	$a4, $a3, 6
-	alsl.d	$a3, $a3, $a4, 4
-	add.d	$a3, $a3, $a0
-	addi.d	$a3, $a3, 220
+	sub.d	$a3, $a2, $a6
+	pcalau12i	$a4, %pc_hi20(.LCPI1_5)
+	xvld	$xr1, $a4, %pc_lo12(.LCPI1_5)
+	slli.d	$a4, $a2, 6
+	alsl.d	$a2, $a2, $a4, 4
+	add.d	$a2, $a2, $a0
+	addi.d	$a2, $a2, 220
 	.p2align	4, , 16
 .LBB1_21:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a4, $xr0, 0
-	vinsgr2vr.h	$vr1, $a4, 0
-	xvpickve2gr.d	$a4, $xr0, 1
-	vinsgr2vr.h	$vr1, $a4, 1
-	xvpickve2gr.d	$a4, $xr0, 2
-	vinsgr2vr.h	$vr1, $a4, 2
-	xvpickve2gr.d	$a4, $xr0, 3
-	vinsgr2vr.h	$vr1, $a4, 3
-	vaddi.hu	$vr1, $vr1, 1
-	vstelm.h	$vr1, $a3, -80, 0
-	vstelm.h	$vr1, $a3, 0, 1
-	vstelm.h	$vr1, $a3, 80, 2
-	vstelm.h	$vr1, $a3, 160, 3
+	xvpermi.d	$xr2, $xr0, 78
+	xvori.b	$xr3, $xr1, 0
+	xvshuf.h	$xr3, $xr2, $xr0
+	vaddi.hu	$vr2, $vr3, 1
+	vstelm.h	$vr2, $a2, -80, 0
+	vstelm.h	$vr2, $a2, 0, 1
+	vstelm.h	$vr2, $a2, 80, 2
+	vstelm.h	$vr2, $a2, 160, 3
 	xvaddi.du	$xr0, $xr0, 4
-	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 320
-	bnez	$a2, .LBB1_21
+	addi.d	$a3, $a3, 4
+	addi.d	$a2, $a2, 320
+	bnez	$a3, .LBB1_21
 # %bb.22:                               # %vec.epilog.middle.block
 	beq	$a1, $a6, .LBB1_25
 .LBB1_23:                               # %.lr.ph.preheader
@@ -443,7 +469,7 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	addi.d	$sp, $sp, 80
 	ret
 .LBB1_26:
-	addi.d	$a5, $a3, 1
+	addi.d	$a5, $a2, 1
 	b	.LBB1_23
 .Lfunc_end1:
 	.size	_ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb, .Lfunc_end1-_ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb

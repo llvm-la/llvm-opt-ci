@@ -291,18 +291,12 @@ main:                                   # @main
                                         # =>  This Inner Loop Header: Depth=2
 	xvaddi.du	$xr8, $xr7, 1
 	xvmul.d	$xr8, $xr8, $xr6
-	xvpickve2gr.d	$a7, $xr8, 0
-	vinsgr2vr.w	$vr9, $a7, 0
-	xvpickve2gr.d	$a7, $xr8, 1
-	vinsgr2vr.w	$vr9, $a7, 1
-	xvpickve2gr.d	$a7, $xr8, 2
-	vinsgr2vr.w	$vr9, $a7, 2
-	xvpickve2gr.d	$a7, $xr8, 3
-	vinsgr2vr.w	$vr9, $a7, 3
-	vmuh.wu	$vr8, $vr9, $vr3
-	vsrli.w	$vr8, $vr8, 11
-	vmsub.w	$vr9, $vr8, $vr4
-	vext2xv.du.wu	$xr8, $xr9
+	xvpermi.q	$xr9, $xr8, 1
+	vpickev.w	$vr8, $vr9, $vr8
+	vmuh.wu	$vr9, $vr8, $vr3
+	vsrli.w	$vr9, $vr9, 11
+	vmsub.w	$vr8, $vr9, $vr4
+	vext2xv.du.wu	$xr8, $xr8
 	xvffint.d.lu	$xr8, $xr8
 	xvfdiv.d	$xr8, $xr8, $xr5
 	add.d	$a7, $a5, $a6

@@ -466,6 +466,39 @@ Lzma2Enc_SetProps:                      # @Lzma2Enc_SetProps
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
+.LCPI5_1:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	16                              # 0x10
+	.byte	20                              # 0x14
+	.byte	24                              # 0x18
+	.byte	28                              # 0x1c
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
 	.text
 	.globl	Lzma2Enc_WriteProperties
 	.p2align	5
@@ -478,22 +511,22 @@ Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
 	pcaddu18i	$ra, %call36(LzmaEncProps_GetDictSize)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(.LCPI5_0)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI5_0)
-	xvreplgr2vr.w	$xr2, $a0
+	xvld	$xr0, $a1, %pc_lo12(.LCPI5_0)
+	xvreplgr2vr.w	$xr1, $a0
 	addi.w	$a0, $zero, -8
-	xvrepli.w	$xr3, 1
+	xvrepli.w	$xr2, 1
 	ori	$a1, $zero, 24
 	.p2align	4, , 16
 .LBB5_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	move	$a2, $a0
-	xvand.v	$xr0, $xr1, $xr3
-	xvbitseti.w	$xr0, $xr0, 1
-	xvsrli.w	$xr4, $xr1, 1
+	xvand.v	$xr3, $xr0, $xr2
+	xvbitseti.w	$xr3, $xr3, 1
+	xvsrli.w	$xr4, $xr0, 1
 	xvaddi.wu	$xr4, $xr4, 11
-	xvsll.w	$xr0, $xr0, $xr4
-	xvsle.wu	$xr0, $xr2, $xr0
-	xvmskltz.w	$xr4, $xr0
+	xvsll.w	$xr3, $xr3, $xr4
+	xvsle.wu	$xr3, $xr1, $xr3
+	xvmskltz.w	$xr4, $xr3
 	xvpickve2gr.wu	$a3, $xr4, 0
 	xvpickve2gr.wu	$a0, $xr4, 4
 	bstrins.d	$a3, $a0, 7, 4
@@ -501,34 +534,22 @@ Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
 	bnez	$a3, .LBB5_3
 # %bb.2:                                # %vector.body
                                         #   in Loop: Header=BB5_1 Depth=1
-	xvaddi.wu	$xr1, $xr1, 8
+	xvaddi.wu	$xr0, $xr0, 8
 	bne	$a2, $a1, .LBB5_1
 .LBB5_3:                                # %middle.split
 	andi	$a1, $a3, 255
 	beqz	$a1, .LBB5_5
 # %bb.4:                                # %vector.early.exit
-	xvpickve2gr.w	$a1, $xr0, 0
-	vinsgr2vr.b	$vr1, $a1, 0
-	xvpickve2gr.w	$a1, $xr0, 1
-	vinsgr2vr.b	$vr1, $a1, 1
-	xvpickve2gr.w	$a1, $xr0, 2
-	vinsgr2vr.b	$vr1, $a1, 2
-	xvpickve2gr.w	$a1, $xr0, 3
-	vinsgr2vr.b	$vr1, $a1, 3
-	xvpickve2gr.w	$a1, $xr0, 4
-	vinsgr2vr.b	$vr1, $a1, 4
-	xvpickve2gr.w	$a1, $xr0, 5
-	vinsgr2vr.b	$vr1, $a1, 5
-	xvpickve2gr.w	$a1, $xr0, 6
-	vinsgr2vr.b	$vr1, $a1, 6
-	xvpickve2gr.w	$a1, $xr0, 7
-	vinsgr2vr.b	$vr1, $a1, 7
+	pcalau12i	$a1, %pc_hi20(.LCPI5_1)
+	xvld	$xr0, $a1, %pc_lo12(.LCPI5_1)
+	xvpermi.d	$xr1, $xr3, 78
+	xvshuf.b	$xr0, $xr1, $xr3, $xr0
 	lu12i.w	$a1, 20576
 	ori	$a1, $a1, 1800
 	lu32i.d	$a1, 131844
 	lu52i.d	$a1, $a1, 16
-	vreplgr2vr.d	$vr0, $a1
-	vand.v	$vr0, $vr1, $vr0
+	vreplgr2vr.d	$vr1, $a1
+	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 2

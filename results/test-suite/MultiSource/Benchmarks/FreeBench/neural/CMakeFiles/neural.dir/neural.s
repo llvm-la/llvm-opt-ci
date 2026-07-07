@@ -846,40 +846,12 @@ main:                                   # @main
 	xvst	$xr2, $a7, -32
 	xvst	$xr3, $a7, 0
 	xvfcmp.cune.s	$xr2, $xr2, $xr10
-	xvpickve2gr.w	$t1, $xr2, 0
-	vinsgr2vr.h	$vr4, $t1, 0
-	xvpickve2gr.w	$t1, $xr2, 1
-	vinsgr2vr.h	$vr4, $t1, 1
-	xvpickve2gr.w	$t1, $xr2, 2
-	vinsgr2vr.h	$vr4, $t1, 2
-	xvpickve2gr.w	$t1, $xr2, 3
-	vinsgr2vr.h	$vr4, $t1, 3
-	xvpickve2gr.w	$t1, $xr2, 4
-	vinsgr2vr.h	$vr4, $t1, 4
-	xvpickve2gr.w	$t1, $xr2, 5
-	vinsgr2vr.h	$vr4, $t1, 5
-	xvpickve2gr.w	$t1, $xr2, 6
-	vinsgr2vr.h	$vr4, $t1, 6
-	xvpickve2gr.w	$t1, $xr2, 7
-	vinsgr2vr.h	$vr4, $t1, 7
-	xvfcmp.cune.s	$xr2, $xr3, $xr10
-	xvpickve2gr.w	$t1, $xr2, 0
-	vinsgr2vr.h	$vr3, $t1, 0
-	xvpickve2gr.w	$t1, $xr2, 1
-	vinsgr2vr.h	$vr3, $t1, 1
-	xvpickve2gr.w	$t1, $xr2, 2
-	vinsgr2vr.h	$vr3, $t1, 2
-	xvpickve2gr.w	$t1, $xr2, 3
-	vinsgr2vr.h	$vr3, $t1, 3
-	xvpickve2gr.w	$t1, $xr2, 4
-	vinsgr2vr.h	$vr3, $t1, 4
-	xvpickve2gr.w	$t1, $xr2, 5
-	vinsgr2vr.h	$vr3, $t1, 5
-	xvpickve2gr.w	$t1, $xr2, 6
-	vinsgr2vr.h	$vr3, $t1, 6
-	xvpickve2gr.w	$t1, $xr2, 7
-	vinsgr2vr.h	$vr3, $t1, 7
-	vor.v	$vr0, $vr0, $vr4
+	xvpermi.d	$xr4, $xr2, 78
+	xvpickev.h	$xr2, $xr4, $xr2
+	xvfcmp.cune.s	$xr3, $xr3, $xr10
+	xvpermi.d	$xr4, $xr3, 78
+	xvpickev.h	$xr3, $xr4, $xr3
+	vor.v	$vr0, $vr0, $vr2
 	vor.v	$vr1, $vr1, $vr3
 	addi.d	$t0, $t0, -16
 	addi.d	$a7, $a7, 64

@@ -551,45 +551,21 @@ FmoInit:                                # @FmoInit
 	xvaddi.du	$xr5, $xr1, 8
 	xvaddi.du	$xr6, $xr2, 8
 	xvslt.du	$xr7, $xr2, $xr0
-	xvpickve2gr.d	$t1, $xr7, 0
-	vinsgr2vr.w	$vr8, $t1, 0
-	xvpickve2gr.d	$t1, $xr7, 1
-	vinsgr2vr.w	$vr8, $t1, 1
-	xvpickve2gr.d	$t1, $xr7, 2
-	vinsgr2vr.w	$vr8, $t1, 2
-	xvpickve2gr.d	$t1, $xr7, 3
-	vinsgr2vr.w	$vr8, $t1, 3
-	xvslt.du	$xr7, $xr1, $xr0
-	xvpickve2gr.d	$t1, $xr7, 0
-	vinsgr2vr.w	$vr9, $t1, 0
-	xvpickve2gr.d	$t1, $xr7, 1
-	vinsgr2vr.w	$vr9, $t1, 1
-	xvpickve2gr.d	$t1, $xr7, 2
-	vinsgr2vr.w	$vr9, $t1, 2
-	xvpickve2gr.d	$t1, $xr7, 3
-	vinsgr2vr.w	$vr9, $t1, 3
-	xvpermi.q	$xr8, $xr9, 2
+	xvpermi.q	$xr8, $xr7, 1
+	vpickev.w	$vr7, $vr8, $vr7
+	xvslt.du	$xr8, $xr1, $xr0
+	xvpermi.q	$xr9, $xr8, 1
+	vpickev.w	$vr8, $vr9, $vr8
+	xvpermi.q	$xr7, $xr8, 2
 	xvslt.du	$xr6, $xr6, $xr0
-	xvpickve2gr.d	$t1, $xr6, 0
-	vinsgr2vr.w	$vr7, $t1, 0
-	xvpickve2gr.d	$t1, $xr6, 1
-	vinsgr2vr.w	$vr7, $t1, 1
-	xvpickve2gr.d	$t1, $xr6, 2
-	vinsgr2vr.w	$vr7, $t1, 2
-	xvpickve2gr.d	$t1, $xr6, 3
-	vinsgr2vr.w	$vr7, $t1, 3
+	xvpermi.q	$xr8, $xr6, 1
+	vpickev.w	$vr6, $vr8, $vr6
 	xvslt.du	$xr5, $xr5, $xr0
-	xvpickve2gr.d	$t1, $xr5, 0
-	vinsgr2vr.w	$vr6, $t1, 0
-	xvpickve2gr.d	$t1, $xr5, 1
-	vinsgr2vr.w	$vr6, $t1, 1
-	xvpickve2gr.d	$t1, $xr5, 2
-	vinsgr2vr.w	$vr6, $t1, 2
-	xvpickve2gr.d	$t1, $xr5, 3
-	vinsgr2vr.w	$vr6, $t1, 3
-	xvpermi.q	$xr7, $xr6, 2
-	xvbitsel.v	$xr5, $xr4, $xr3, $xr8
-	xvbitsel.v	$xr6, $xr4, $xr3, $xr7
+	xvpermi.q	$xr8, $xr5, 1
+	vpickev.w	$vr5, $vr8, $vr5
+	xvpermi.q	$xr6, $xr5, 2
+	xvbitsel.v	$xr5, $xr4, $xr3, $xr7
+	xvbitsel.v	$xr6, $xr4, $xr3, $xr6
 	xvst	$xr5, $a7, -32
 	xvst	$xr6, $a7, 0
 	xvaddi.du	$xr2, $xr2, 16
@@ -616,15 +592,9 @@ FmoInit:                                # @FmoInit
 .LBB0_88:                               # %vec.epilog.vector.body120
                                         # =>This Inner Loop Header: Depth=1
 	xvslt.du	$xr4, $xr3, $xr0
-	xvpickve2gr.d	$a7, $xr4, 0
-	vinsgr2vr.w	$vr5, $a7, 0
-	xvpickve2gr.d	$a7, $xr4, 1
-	vinsgr2vr.w	$vr5, $a7, 1
-	xvpickve2gr.d	$a7, $xr4, 2
-	vinsgr2vr.w	$vr5, $a7, 2
-	xvpickve2gr.d	$a7, $xr4, 3
-	vinsgr2vr.w	$vr5, $a7, 3
-	vbitsel.v	$vr4, $vr2, $vr1, $vr5
+	xvpermi.q	$xr5, $xr4, 1
+	vpickev.w	$vr4, $vr5, $vr4
+	vbitsel.v	$vr4, $vr2, $vr1, $vr4
 	vst	$vr4, $a6, 0
 	xvaddi.du	$xr3, $xr3, 4
 	addi.d	$a5, $a5, 4

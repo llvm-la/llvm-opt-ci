@@ -1761,23 +1761,9 @@ _ZN11ALACEncoder10EncodeMonoEP9BitBufferPvjjj: # @_ZN11ALACEncoder10EncodeMonoEP
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr2, $a7, 0
 	xvand.v	$xr3, $xr2, $xr0
-	xvpickve2gr.w	$t0, $xr3, 0
-	vinsgr2vr.h	$vr4, $t0, 0
-	xvpickve2gr.w	$t0, $xr3, 1
-	vinsgr2vr.h	$vr4, $t0, 1
-	xvpickve2gr.w	$t0, $xr3, 2
-	vinsgr2vr.h	$vr4, $t0, 2
-	xvpickve2gr.w	$t0, $xr3, 3
-	vinsgr2vr.h	$vr4, $t0, 3
-	xvpickve2gr.w	$t0, $xr3, 4
-	vinsgr2vr.h	$vr4, $t0, 4
-	xvpickve2gr.w	$t0, $xr3, 5
-	vinsgr2vr.h	$vr4, $t0, 5
-	xvpickve2gr.w	$t0, $xr3, 6
-	vinsgr2vr.h	$vr4, $t0, 6
-	xvpickve2gr.w	$t0, $xr3, 7
-	vinsgr2vr.h	$vr4, $t0, 7
-	vst	$vr4, $a4, 0
+	xvpermi.d	$xr4, $xr3, 78
+	xvpickev.h	$xr3, $xr4, $xr3
+	vst	$vr3, $a4, 0
 	xvsra.w	$xr2, $xr2, $xr1
 	xvst	$xr2, $a5, 0
 	addi.d	$a7, $a7, 32
@@ -1820,23 +1806,9 @@ _ZN11ALACEncoder10EncodeMonoEP9BitBufferPvjjj: # @_ZN11ALACEncoder10EncodeMonoEP
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr2, $a4, 0
 	xvand.v	$xr3, $xr2, $xr0
-	xvpickve2gr.w	$a7, $xr3, 0
-	vinsgr2vr.h	$vr4, $a7, 0
-	xvpickve2gr.w	$a7, $xr3, 1
-	vinsgr2vr.h	$vr4, $a7, 1
-	xvpickve2gr.w	$a7, $xr3, 2
-	vinsgr2vr.h	$vr4, $a7, 2
-	xvpickve2gr.w	$a7, $xr3, 3
-	vinsgr2vr.h	$vr4, $a7, 3
-	xvpickve2gr.w	$a7, $xr3, 4
-	vinsgr2vr.h	$vr4, $a7, 4
-	xvpickve2gr.w	$a7, $xr3, 5
-	vinsgr2vr.h	$vr4, $a7, 5
-	xvpickve2gr.w	$a7, $xr3, 6
-	vinsgr2vr.h	$vr4, $a7, 6
-	xvpickve2gr.w	$a7, $xr3, 7
-	vinsgr2vr.h	$vr4, $a7, 7
-	vst	$vr4, $a5, 0
+	xvpermi.d	$xr4, $xr3, 78
+	xvpickev.h	$xr3, $xr4, $xr3
+	vst	$vr3, $a5, 0
 	xvsra.w	$xr2, $xr2, $xr1
 	xvst	$xr2, $a4, 0
 	addi.d	$a6, $a6, -8

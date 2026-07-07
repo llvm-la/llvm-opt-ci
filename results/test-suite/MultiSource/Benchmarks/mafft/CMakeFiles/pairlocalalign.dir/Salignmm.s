@@ -1911,24 +1911,12 @@ A__align:                               # @A__align
                                         # =>This Inner Loop Header: Depth=1
 	xvsub.d	$xr5, $xr3, $xr1
 	xvsub.d	$xr6, $xr3, $xr2
-	xvpickve2gr.d	$a7, $xr6, 0
-	vinsgr2vr.w	$vr7, $a7, 0
-	xvpickve2gr.d	$a7, $xr6, 1
-	vinsgr2vr.w	$vr7, $a7, 1
-	xvpickve2gr.d	$a7, $xr6, 2
-	vinsgr2vr.w	$vr7, $a7, 2
-	xvpickve2gr.d	$a7, $xr6, 3
-	vinsgr2vr.w	$vr7, $a7, 3
-	xvpickve2gr.d	$a7, $xr5, 0
-	vinsgr2vr.w	$vr6, $a7, 0
-	xvpickve2gr.d	$a7, $xr5, 1
-	vinsgr2vr.w	$vr6, $a7, 1
-	xvpickve2gr.d	$a7, $xr5, 2
-	vinsgr2vr.w	$vr6, $a7, 2
-	xvpickve2gr.d	$a7, $xr5, 3
-	vinsgr2vr.w	$vr6, $a7, 3
-	xvpermi.q	$xr7, $xr6, 2
-	xvmul.w	$xr5, $xr0, $xr7
+	xvpermi.q	$xr7, $xr6, 1
+	vpickev.w	$vr6, $vr7, $vr6
+	xvpermi.q	$xr7, $xr5, 1
+	vpickev.w	$vr5, $vr7, $vr5
+	xvpermi.q	$xr6, $xr5, 2
+	xvmul.w	$xr5, $xr0, $xr6
 	xvpermi.q	$xr6, $xr5, 1
 	vext2xv.d.w	$xr6, $xr6
 	xvffint.d.l	$xr6, $xr6
@@ -5587,7 +5575,7 @@ A__align_gapmap:                        # @A__align_gapmap
 	movgr2fr.w	$fs0, $zero
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$t0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 56                    # 8-byte Folded Reload
 	bnez	$a0, .LBB6_108
 	b	.LBB6_94
 .LBB6_93:                               # %._crit_edge383.loopexit
@@ -5598,7 +5586,7 @@ A__align_gapmap:                        # @A__align_gapmap
 	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$t0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 56                    # 8-byte Folded Reload
 	bnez	$a0, .LBB6_108
 .LBB6_94:                               # %.preheader320
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
@@ -5635,24 +5623,12 @@ A__align_gapmap:                        # @A__align_gapmap
                                         # =>This Inner Loop Header: Depth=1
 	xvsub.d	$xr5, $xr3, $xr1
 	xvsub.d	$xr6, $xr3, $xr2
-	xvpickve2gr.d	$a7, $xr6, 0
-	vinsgr2vr.w	$vr7, $a7, 0
-	xvpickve2gr.d	$a7, $xr6, 1
-	vinsgr2vr.w	$vr7, $a7, 1
-	xvpickve2gr.d	$a7, $xr6, 2
-	vinsgr2vr.w	$vr7, $a7, 2
-	xvpickve2gr.d	$a7, $xr6, 3
-	vinsgr2vr.w	$vr7, $a7, 3
-	xvpickve2gr.d	$a7, $xr5, 0
-	vinsgr2vr.w	$vr6, $a7, 0
-	xvpickve2gr.d	$a7, $xr5, 1
-	vinsgr2vr.w	$vr6, $a7, 1
-	xvpickve2gr.d	$a7, $xr5, 2
-	vinsgr2vr.w	$vr6, $a7, 2
-	xvpickve2gr.d	$a7, $xr5, 3
-	vinsgr2vr.w	$vr6, $a7, 3
-	xvpermi.q	$xr7, $xr6, 2
-	xvmul.w	$xr5, $xr0, $xr7
+	xvpermi.q	$xr7, $xr6, 1
+	vpickev.w	$vr6, $vr7, $vr6
+	xvpermi.q	$xr7, $xr5, 1
+	vpickev.w	$vr5, $vr7, $vr5
+	xvpermi.q	$xr6, $xr5, 2
+	xvmul.w	$xr5, $xr0, $xr6
 	xvpermi.q	$xr6, $xr5, 1
 	vext2xv.d.w	$xr6, $xr6
 	xvffint.d.l	$xr6, $xr6
@@ -5750,7 +5726,7 @@ A__align_gapmap:                        # @A__align_gapmap
 	ffint.d.w	$fa1, $fa0
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fa0, $fa0
-	ld.d	$a1, $t0, %pc_lo12(A__align_gapmap.lastverticalw)
+	ld.d	$a1, $a7, %pc_lo12(A__align_gapmap.lastverticalw)
 	fneg.d	$fa1, $fa1
 	addi.d	$a0, $s1, 1
 	bstrpick.d	$a2, $a0, 31, 0
@@ -5831,7 +5807,7 @@ A__align_gapmap:                        # @A__align_gapmap
 	addi.d	$a1, $a1, 4
 	bnez	$a2, .LBB6_107
 .LBB6_108:                              # %.loopexit
-	ld.d	$s3, $t0, %pc_lo12(A__align_gapmap.lastverticalw)
+	ld.d	$s3, $a7, %pc_lo12(A__align_gapmap.lastverticalw)
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$s6, $a0, %pc_lo12(A__align_gapmap.mseq1)
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload

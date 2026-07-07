@@ -6695,13 +6695,13 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	xvld	$xr3, $a2, %pc_lo12(.LCPI9_2)
 	addi.d	$a1, $a1, 16
 	addi.d	$a2, $a4, 16
-	xvldi	$xr5, -3200
+	xvldi	$xr6, -3200
 	b	.LBB9_3
 	.p2align	4, , 16
 .LBB9_2:                                # %pred.load.continue20
                                         #   in Loop: Header=BB9_3 Depth=1
-	xvslt.w	$xr5, $xr6, $xr5
-	xvbitsel.v	$xr5, $xr4, $xr3, $xr5
+	xvslt.w	$xr6, $xr7, $xr6
+	xvbitsel.v	$xr6, $xr4, $xr3, $xr6
 	xvaddi.du	$xr2, $xr2, 8
 	xvaddi.du	$xr1, $xr1, 8
 	xvaddi.wu	$xr3, $xr3, 8
@@ -6711,133 +6711,133 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	beqz	$a0, .LBB9_19
 .LBB9_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvsle.du	$xr7, $xr2, $xr0
-	xvpickve2gr.d	$a3, $xr7, 0
-	andi	$a4, $a3, 1
-	xvori.b	$xr4, $xr5, 0
-                                        # implicit-def: $xr5
+	xvsle.du	$xr5, $xr2, $xr0
+	vpickve2gr.h	$a3, $vr5, 0
+	andi	$a3, $a3, 1
+	xvori.b	$xr4, $xr6, 0
                                         # implicit-def: $xr6
-	bnez	$a4, .LBB9_11
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr7
+	beqz	$a3, .LBB9_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB9_3 Depth=1
-	xvpickve2gr.d	$a4, $xr7, 1
-	andi	$a5, $a4, 1
-	bnez	$a5, .LBB9_12
-.LBB9_5:                                # %pred.load.continue8
+	ld.w	$a3, $a2, -16
+	ld.w	$a4, $a1, -16
+	vinsgr2vr.w	$vr6, $a3, 0
+	vinsgr2vr.w	$vr7, $a4, 0
+.LBB9_5:                                # %pred.load.continue
                                         #   in Loop: Header=BB9_3 Depth=1
-	xvpickve2gr.d	$a5, $xr7, 2
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB9_13
-.LBB9_6:                                # %pred.load.continue10
+	vshuf4i.w	$vr8, $vr5, 8
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a3, $vr8, 1
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB9_7
+# %bb.6:                                # %pred.load.if7
                                         #   in Loop: Header=BB9_3 Depth=1
-	xvpickve2gr.d	$a6, $xr7, 3
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB9_14
-.LBB9_7:                                # %pred.load.continue12
+	ld.w	$a3, $a2, -12
+	ld.w	$a4, $a1, -12
+	xvinsgr2vr.w	$xr6, $a3, 1
+	xvinsgr2vr.w	$xr7, $a4, 1
+.LBB9_7:                                # %pred.load.continue8
                                         #   in Loop: Header=BB9_3 Depth=1
-	xvsle.du	$xr7, $xr1, $xr0
-	xvpickve2gr.d	$a7, $xr7, 0
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB9_15
-.LBB9_8:                                # %pred.load.continue14
+	xvpermi.q	$xr8, $xr5, 1
+	vshuf4i.w	$vr8, $vr8, 128
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a3, $vr8, 2
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB9_9
+# %bb.8:                                # %pred.load.if9
                                         #   in Loop: Header=BB9_3 Depth=1
-	xvpickve2gr.d	$t0, $xr7, 1
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB9_16
-.LBB9_9:                                # %pred.load.continue16
+	ld.w	$a3, $a2, -8
+	ld.w	$a4, $a1, -8
+	xvinsgr2vr.w	$xr6, $a3, 2
+	xvinsgr2vr.w	$xr7, $a4, 2
+.LBB9_9:                                # %pred.load.continue10
                                         #   in Loop: Header=BB9_3 Depth=1
-	xvpickve2gr.d	$t1, $xr7, 2
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB9_17
-.LBB9_10:                               # %pred.load.continue18
+	xvpermi.q	$xr8, $xr5, 1
+	vshuf4i.w	$vr8, $vr8, 128
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a3, $vr8, 3
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB9_11
+# %bb.10:                               # %pred.load.if11
                                         #   in Loop: Header=BB9_3 Depth=1
-	xvpickve2gr.d	$t2, $xr7, 3
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB9_2
-	b	.LBB9_18
-	.p2align	4, , 16
-.LBB9_11:                               # %pred.load.if
+	ld.w	$a3, $a2, -4
+	ld.w	$a4, $a1, -4
+	xvinsgr2vr.w	$xr6, $a3, 3
+	xvinsgr2vr.w	$xr7, $a4, 3
+.LBB9_11:                               # %pred.load.continue12
                                         #   in Loop: Header=BB9_3 Depth=1
-	ld.w	$a4, $a2, -16
-	ld.w	$a5, $a1, -16
-	vinsgr2vr.w	$vr5, $a4, 0
-	vinsgr2vr.w	$vr6, $a5, 0
-	xvpickve2gr.d	$a4, $xr7, 1
-	andi	$a5, $a4, 1
-	beqz	$a5, .LBB9_5
-.LBB9_12:                               # %pred.load.if7
+	xvsle.du	$xr8, $xr1, $xr0
+	xvpermi.d	$xr9, $xr8, 64
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 4
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB9_13
+# %bb.12:                               # %pred.load.if13
                                         #   in Loop: Header=BB9_3 Depth=1
-	ld.w	$a5, $a2, -12
-	ld.w	$a6, $a1, -12
-	xvinsgr2vr.w	$xr5, $a5, 1
-	xvinsgr2vr.w	$xr6, $a6, 1
-	xvpickve2gr.d	$a5, $xr7, 2
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB9_6
-.LBB9_13:                               # %pred.load.if9
+	ld.w	$a3, $a2, 0
+	ld.w	$a4, $a1, 0
+	xvinsgr2vr.w	$xr6, $a3, 4
+	xvinsgr2vr.w	$xr7, $a4, 4
+.LBB9_13:                               # %pred.load.continue14
                                         #   in Loop: Header=BB9_3 Depth=1
-	ld.w	$a6, $a2, -8
-	ld.w	$a7, $a1, -8
-	xvinsgr2vr.w	$xr5, $a6, 2
-	xvinsgr2vr.w	$xr6, $a7, 2
-	xvpickve2gr.d	$a6, $xr7, 3
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB9_7
-.LBB9_14:                               # %pred.load.if11
+	vshuf4i.w	$vr9, $vr8, 8
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 5
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB9_15
+# %bb.14:                               # %pred.load.if15
                                         #   in Loop: Header=BB9_3 Depth=1
-	ld.w	$a7, $a2, -4
-	ld.w	$t0, $a1, -4
-	xvinsgr2vr.w	$xr5, $a7, 3
-	xvinsgr2vr.w	$xr6, $t0, 3
-	xvsle.du	$xr7, $xr1, $xr0
-	xvpickve2gr.d	$a7, $xr7, 0
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB9_8
-.LBB9_15:                               # %pred.load.if13
+	ld.w	$a3, $a2, 4
+	ld.w	$a4, $a1, 4
+	xvinsgr2vr.w	$xr6, $a3, 5
+	xvinsgr2vr.w	$xr7, $a4, 5
+.LBB9_15:                               # %pred.load.continue16
                                         #   in Loop: Header=BB9_3 Depth=1
-	ld.w	$t0, $a2, 0
-	ld.w	$t1, $a1, 0
-	xvinsgr2vr.w	$xr5, $t0, 4
-	xvinsgr2vr.w	$xr6, $t1, 4
-	xvpickve2gr.d	$t0, $xr7, 1
-	andi	$t1, $t0, 1
-	beqz	$t1, .LBB9_9
-.LBB9_16:                               # %pred.load.if15
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 6
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB9_17
+# %bb.16:                               # %pred.load.if17
                                         #   in Loop: Header=BB9_3 Depth=1
-	ld.w	$t1, $a2, 4
-	ld.w	$t2, $a1, 4
-	xvinsgr2vr.w	$xr5, $t1, 5
-	xvinsgr2vr.w	$xr6, $t2, 5
-	xvpickve2gr.d	$t1, $xr7, 2
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB9_10
-.LBB9_17:                               # %pred.load.if17
+	ld.w	$a3, $a2, 8
+	ld.w	$a4, $a1, 8
+	xvinsgr2vr.w	$xr6, $a3, 6
+	xvinsgr2vr.w	$xr7, $a4, 6
+.LBB9_17:                               # %pred.load.continue18
                                         #   in Loop: Header=BB9_3 Depth=1
-	ld.w	$t2, $a2, 8
-	ld.w	$t3, $a1, 8
-	xvinsgr2vr.w	$xr5, $t2, 6
-	xvinsgr2vr.w	$xr6, $t3, 6
-	xvpickve2gr.d	$t2, $xr7, 3
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB9_2
-.LBB9_18:                               # %pred.load.if19
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 7
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB9_2
+# %bb.18:                               # %pred.load.if19
                                         #   in Loop: Header=BB9_3 Depth=1
-	ld.w	$t3, $a2, 12
-	ld.w	$t4, $a1, 12
-	xvinsgr2vr.w	$xr5, $t3, 7
-	xvinsgr2vr.w	$xr6, $t4, 7
+	ld.w	$a3, $a2, 12
+	ld.w	$a4, $a1, 12
+	xvinsgr2vr.w	$xr6, $a3, 7
+	xvinsgr2vr.w	$xr7, $a4, 7
 	b	.LBB9_2
 .LBB9_19:                               # %"_ZSt10__invoke_rIiRZ4mainE3$_1JPiS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.w	$vr0, $a3, 0
-	vinsgr2vr.w	$vr0, $a4, 1
-	vinsgr2vr.w	$vr0, $a5, 2
-	vinsgr2vr.w	$vr0, $a6, 3
-	vinsgr2vr.w	$vr1, $a7, 0
-	vinsgr2vr.w	$vr1, $t0, 1
-	vinsgr2vr.w	$vr1, $t1, 2
-	vinsgr2vr.w	$vr1, $t2, 3
+	xvpermi.q	$xr0, $xr5, 1
+	vpickev.w	$vr0, $vr0, $vr5
+	xvpermi.q	$xr1, $xr8, 1
+	vpickev.w	$vr1, $vr1, $vr8
 	xvpermi.q	$xr0, $xr1, 2
-	xvbitsel.v	$xr0, $xr4, $xr5, $xr0
+	xvbitsel.v	$xr0, $xr4, $xr6, $xr0
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -7240,13 +7240,13 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	xvld	$xr3, $a2, %pc_lo12(.LCPI14_2)
 	addi.d	$a1, $a1, 16
 	addi.d	$a2, $a4, 16
-	xvldi	$xr5, -3200
+	xvldi	$xr6, -3200
 	b	.LBB14_3
 	.p2align	4, , 16
 .LBB14_2:                               # %pred.load.continue20
                                         #   in Loop: Header=BB14_3 Depth=1
-	xvfcmp.clt.s	$xr5, $xr6, $xr5
-	xvbitsel.v	$xr5, $xr4, $xr3, $xr5
+	xvfcmp.clt.s	$xr6, $xr7, $xr6
+	xvbitsel.v	$xr6, $xr4, $xr3, $xr6
 	xvaddi.du	$xr2, $xr2, 8
 	xvaddi.du	$xr1, $xr1, 8
 	xvaddi.wu	$xr3, $xr3, 8
@@ -7256,131 +7256,131 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	beqz	$a0, .LBB14_19
 .LBB14_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvsle.du	$xr7, $xr2, $xr0
-	xvpickve2gr.d	$a3, $xr7, 0
-	andi	$a4, $a3, 1
-	xvori.b	$xr4, $xr5, 0
-                                        # implicit-def: $xr5
+	xvsle.du	$xr5, $xr2, $xr0
+	vpickve2gr.h	$a3, $vr5, 0
+	andi	$a3, $a3, 1
+	xvori.b	$xr4, $xr6, 0
                                         # implicit-def: $xr6
-	bnez	$a4, .LBB14_11
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr7
+	beqz	$a3, .LBB14_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB14_3 Depth=1
-	xvpickve2gr.d	$a4, $xr7, 1
-	andi	$a5, $a4, 1
-	bnez	$a5, .LBB14_12
-.LBB14_5:                               # %pred.load.continue8
+	fld.s	$fa6, $a2, -16
+	fld.s	$fa7, $a1, -16
+.LBB14_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB14_3 Depth=1
-	xvpickve2gr.d	$a5, $xr7, 2
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB14_13
-.LBB14_6:                               # %pred.load.continue10
-                                        #   in Loop: Header=BB14_3 Depth=1
-	xvpickve2gr.d	$a6, $xr7, 3
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB14_14
-.LBB14_7:                               # %pred.load.continue12
-                                        #   in Loop: Header=BB14_3 Depth=1
-	xvsle.du	$xr7, $xr1, $xr0
-	xvpickve2gr.d	$a7, $xr7, 0
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB14_15
-.LBB14_8:                               # %pred.load.continue14
-                                        #   in Loop: Header=BB14_3 Depth=1
-	xvpickve2gr.d	$t0, $xr7, 1
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB14_16
-.LBB14_9:                               # %pred.load.continue16
-                                        #   in Loop: Header=BB14_3 Depth=1
-	xvpickve2gr.d	$t1, $xr7, 2
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB14_17
-.LBB14_10:                              # %pred.load.continue18
-                                        #   in Loop: Header=BB14_3 Depth=1
-	xvpickve2gr.d	$t2, $xr7, 3
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB14_2
-	b	.LBB14_18
-	.p2align	4, , 16
-.LBB14_11:                              # %pred.load.if
-                                        #   in Loop: Header=BB14_3 Depth=1
-	fld.s	$fa5, $a2, -16
-	fld.s	$fa6, $a1, -16
-	xvpickve2gr.d	$a4, $xr7, 1
-	andi	$a5, $a4, 1
-	beqz	$a5, .LBB14_5
-.LBB14_12:                              # %pred.load.if7
+	vshuf4i.w	$vr8, $vr5, 8
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a3, $vr8, 1
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB14_7
+# %bb.6:                                # %pred.load.if7
                                         #   in Loop: Header=BB14_3 Depth=1
 	fld.s	$ft0, $a2, -12
 	fld.s	$ft1, $a1, -12
-	xvinsve0.w	$xr5, $xr8, 1
-	xvinsve0.w	$xr6, $xr9, 1
-	xvpickve2gr.d	$a5, $xr7, 2
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB14_6
-.LBB14_13:                              # %pred.load.if9
+	xvinsve0.w	$xr6, $xr8, 1
+	xvinsve0.w	$xr7, $xr9, 1
+.LBB14_7:                               # %pred.load.continue8
+                                        #   in Loop: Header=BB14_3 Depth=1
+	xvpermi.q	$xr8, $xr5, 1
+	vshuf4i.w	$vr8, $vr8, 128
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a3, $vr8, 2
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB14_9
+# %bb.8:                                # %pred.load.if9
                                         #   in Loop: Header=BB14_3 Depth=1
 	fld.s	$ft0, $a2, -8
 	fld.s	$ft1, $a1, -8
-	xvinsve0.w	$xr5, $xr8, 2
-	xvinsve0.w	$xr6, $xr9, 2
-	xvpickve2gr.d	$a6, $xr7, 3
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB14_7
-.LBB14_14:                              # %pred.load.if11
+	xvinsve0.w	$xr6, $xr8, 2
+	xvinsve0.w	$xr7, $xr9, 2
+.LBB14_9:                               # %pred.load.continue10
                                         #   in Loop: Header=BB14_3 Depth=1
-	fld.s	$fa7, $a2, -4
-	fld.s	$ft0, $a1, -4
-	xvinsve0.w	$xr5, $xr7, 3
+	xvpermi.q	$xr8, $xr5, 1
+	vshuf4i.w	$vr8, $vr8, 128
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a3, $vr8, 3
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB14_11
+# %bb.10:                               # %pred.load.if11
+                                        #   in Loop: Header=BB14_3 Depth=1
+	fld.s	$ft0, $a2, -4
+	fld.s	$ft1, $a1, -4
 	xvinsve0.w	$xr6, $xr8, 3
-	xvsle.du	$xr7, $xr1, $xr0
-	xvpickve2gr.d	$a7, $xr7, 0
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB14_8
-.LBB14_15:                              # %pred.load.if13
+	xvinsve0.w	$xr7, $xr9, 3
+.LBB14_11:                              # %pred.load.continue12
                                         #   in Loop: Header=BB14_3 Depth=1
-	fld.s	$ft0, $a2, 0
-	fld.s	$ft1, $a1, 0
-	xvinsve0.w	$xr5, $xr8, 4
+	xvsle.du	$xr8, $xr1, $xr0
+	xvpermi.d	$xr9, $xr8, 64
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 4
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB14_13
+# %bb.12:                               # %pred.load.if13
+                                        #   in Loop: Header=BB14_3 Depth=1
+	fld.s	$ft1, $a2, 0
+	fld.s	$ft2, $a1, 0
 	xvinsve0.w	$xr6, $xr9, 4
-	xvpickve2gr.d	$t0, $xr7, 1
-	andi	$t1, $t0, 1
-	beqz	$t1, .LBB14_9
-.LBB14_16:                              # %pred.load.if15
+	xvinsve0.w	$xr7, $xr10, 4
+.LBB14_13:                              # %pred.load.continue14
                                         #   in Loop: Header=BB14_3 Depth=1
-	fld.s	$ft0, $a2, 4
-	fld.s	$ft1, $a1, 4
-	xvinsve0.w	$xr5, $xr8, 5
+	vshuf4i.w	$vr9, $vr8, 8
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 5
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB14_15
+# %bb.14:                               # %pred.load.if15
+                                        #   in Loop: Header=BB14_3 Depth=1
+	fld.s	$ft1, $a2, 4
+	fld.s	$ft2, $a1, 4
 	xvinsve0.w	$xr6, $xr9, 5
-	xvpickve2gr.d	$t1, $xr7, 2
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB14_10
-.LBB14_17:                              # %pred.load.if17
+	xvinsve0.w	$xr7, $xr10, 5
+.LBB14_15:                              # %pred.load.continue16
                                         #   in Loop: Header=BB14_3 Depth=1
-	fld.s	$ft0, $a2, 8
-	fld.s	$ft1, $a1, 8
-	xvinsve0.w	$xr5, $xr8, 6
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 6
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB14_17
+# %bb.16:                               # %pred.load.if17
+                                        #   in Loop: Header=BB14_3 Depth=1
+	fld.s	$ft1, $a2, 8
+	fld.s	$ft2, $a1, 8
 	xvinsve0.w	$xr6, $xr9, 6
-	xvpickve2gr.d	$t2, $xr7, 3
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB14_2
-.LBB14_18:                              # %pred.load.if19
+	xvinsve0.w	$xr7, $xr10, 6
+.LBB14_17:                              # %pred.load.continue18
                                         #   in Loop: Header=BB14_3 Depth=1
-	fld.s	$fa7, $a2, 12
-	fld.s	$ft0, $a1, 12
-	xvinsve0.w	$xr5, $xr7, 7
-	xvinsve0.w	$xr6, $xr8, 7
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 7
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB14_2
+# %bb.18:                               # %pred.load.if19
+                                        #   in Loop: Header=BB14_3 Depth=1
+	fld.s	$ft1, $a2, 12
+	fld.s	$ft2, $a1, 12
+	xvinsve0.w	$xr6, $xr9, 7
+	xvinsve0.w	$xr7, $xr10, 7
 	b	.LBB14_2
 .LBB14_19:                              # %"_ZSt10__invoke_rIiRZ4mainE3$_1JPfS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.w	$vr0, $a3, 0
-	vinsgr2vr.w	$vr0, $a4, 1
-	vinsgr2vr.w	$vr0, $a5, 2
-	vinsgr2vr.w	$vr0, $a6, 3
-	vinsgr2vr.w	$vr1, $a7, 0
-	vinsgr2vr.w	$vr1, $t0, 1
-	vinsgr2vr.w	$vr1, $t1, 2
-	vinsgr2vr.w	$vr1, $t2, 3
+	xvpermi.q	$xr0, $xr5, 1
+	vpickev.w	$vr0, $vr0, $vr5
+	xvpermi.q	$xr1, $xr8, 1
+	vpickev.w	$vr1, $vr1, $vr8
 	xvpermi.q	$xr0, $xr1, 2
-	xvbitsel.v	$xr0, $xr4, $xr5, $xr0
+	xvbitsel.v	$xr0, $xr4, $xr6, $xr0
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -7624,18 +7624,13 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	ld.h	$a3, $a3, 0
 	blez	$a3, .LBB19_36
 # %bb.1:                                # %vector.ph
-	addi.d	$sp, $sp, -32
-	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
 	ld.d	$a4, $a1, 0
 	ld.d	$a1, $a2, 0
 	addi.d	$a0, $a3, 15
 	bstrpick.d	$a0, $a0, 15, 4
 	slli.d	$a0, $a0, 4
 	addi.d	$a2, $a3, -1
-	xvreplgr2vr.d	$xr0, $a2
+	xvreplgr2vr.d	$xr1, $a2
 	pcalau12i	$a2, %pc_hi20(.LCPI19_0)
 	xvld	$xr2, $a2, %pc_lo12(.LCPI19_0)
 	pcalau12i	$a2, %pc_hi20(.LCPI19_1)
@@ -7648,13 +7643,13 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	xvld	$xr6, $a2, %pc_lo12(.LCPI19_4)
 	addi.d	$a1, $a1, 16
 	addi.d	$a2, $a4, 16
-	xvldi	$xr7, -2688
+	xvldi	$xr8, -2688
 	b	.LBB19_3
 	.p2align	4, , 16
 .LBB19_2:                               # %pred.load.continue36
                                         #   in Loop: Header=BB19_3 Depth=1
-	xvslt.h	$xr7, $xr8, $xr7
-	xvbitsel.v	$xr7, $xr1, $xr6, $xr7
+	xvslt.h	$xr8, $xr9, $xr8
+	xvbitsel.v	$xr8, $xr0, $xr6, $xr8
 	xvaddi.du	$xr5, $xr5, 16
 	xvaddi.du	$xr4, $xr4, 16
 	xvaddi.du	$xr3, $xr3, 16
@@ -7666,317 +7661,392 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	beqz	$a0, .LBB19_35
 .LBB19_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvsle.du	$xr9, $xr5, $xr0
-	xvpickve2gr.d	$a3, $xr9, 0
-	andi	$a4, $a3, 1
-	xvori.b	$xr1, $xr7, 0
-                                        # implicit-def: $xr7
+	xvsle.du	$xr7, $xr5, $xr1
+	vpickve2gr.b	$a3, $vr7, 0
+	andi	$a3, $a3, 1
+	xvori.b	$xr0, $xr8, 0
                                         # implicit-def: $xr8
-	bnez	$a4, .LBB19_19
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr9
+	beqz	$a3, .LBB19_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB19_3 Depth=1
-	xvpickve2gr.d	$a4, $xr9, 1
-	andi	$a5, $a4, 1
-	bnez	$a5, .LBB19_20
-.LBB19_5:                               # %pred.load.continue8
+	ld.h	$a3, $a2, -16
+	ld.h	$a4, $a1, -16
+	vinsgr2vr.h	$vr8, $a3, 0
+	vinsgr2vr.h	$vr9, $a4, 0
+.LBB19_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB19_3 Depth=1
-	xvpickve2gr.d	$a5, $xr9, 2
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB19_21
-.LBB19_6:                               # %pred.load.continue10
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.h	$xr10, $xr11, $xr10
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.b	$xr10, $xr11, $xr10
+	vpickve2gr.b	$a3, $vr10, 1
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_7
+# %bb.6:                                # %pred.load.if7
                                         #   in Loop: Header=BB19_3 Depth=1
-	xvpickve2gr.d	$a6, $xr9, 3
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB19_22
-.LBB19_7:                               # %pred.load.continue12
-                                        #   in Loop: Header=BB19_3 Depth=1
-	xvsle.du	$xr9, $xr4, $xr0
-	xvpickve2gr.d	$a7, $xr9, 0
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB19_23
-.LBB19_8:                               # %pred.load.continue14
-                                        #   in Loop: Header=BB19_3 Depth=1
-	xvpickve2gr.d	$t0, $xr9, 1
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB19_24
-.LBB19_9:                               # %pred.load.continue16
-                                        #   in Loop: Header=BB19_3 Depth=1
-	xvpickve2gr.d	$t1, $xr9, 2
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB19_25
-.LBB19_10:                              # %pred.load.continue18
-                                        #   in Loop: Header=BB19_3 Depth=1
-	xvpickve2gr.d	$t2, $xr9, 3
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB19_26
-.LBB19_11:                              # %pred.load.continue20
-                                        #   in Loop: Header=BB19_3 Depth=1
-	xvsle.du	$xr9, $xr3, $xr0
-	xvpickve2gr.d	$t3, $xr9, 0
-	andi	$t4, $t3, 1
-	bnez	$t4, .LBB19_27
-.LBB19_12:                              # %pred.load.continue22
-                                        #   in Loop: Header=BB19_3 Depth=1
-	xvpickve2gr.d	$t4, $xr9, 1
-	andi	$t5, $t4, 1
-	bnez	$t5, .LBB19_28
-.LBB19_13:                              # %pred.load.continue24
-                                        #   in Loop: Header=BB19_3 Depth=1
-	xvpickve2gr.d	$t5, $xr9, 2
-	andi	$t6, $t5, 1
-	bnez	$t6, .LBB19_29
-.LBB19_14:                              # %pred.load.continue26
-                                        #   in Loop: Header=BB19_3 Depth=1
-	xvpickve2gr.d	$t6, $xr9, 3
-	andi	$t7, $t6, 1
-	bnez	$t7, .LBB19_30
-.LBB19_15:                              # %pred.load.continue28
-                                        #   in Loop: Header=BB19_3 Depth=1
-	xvsle.du	$xr9, $xr2, $xr0
-	xvpickve2gr.d	$t7, $xr9, 0
-	andi	$t8, $t7, 1
-	bnez	$t8, .LBB19_31
-.LBB19_16:                              # %pred.load.continue30
-                                        #   in Loop: Header=BB19_3 Depth=1
-	xvpickve2gr.d	$t8, $xr9, 1
-	andi	$fp, $t8, 1
-	bnez	$fp, .LBB19_32
-.LBB19_17:                              # %pred.load.continue32
-                                        #   in Loop: Header=BB19_3 Depth=1
-	xvpickve2gr.d	$fp, $xr9, 2
-	andi	$s0, $fp, 1
-	bnez	$s0, .LBB19_33
-.LBB19_18:                              # %pred.load.continue34
-                                        #   in Loop: Header=BB19_3 Depth=1
-	xvpickve2gr.d	$s0, $xr9, 3
-	andi	$s1, $s0, 1
-	beqz	$s1, .LBB19_2
-	b	.LBB19_34
-	.p2align	4, , 16
-.LBB19_19:                              # %pred.load.if
-                                        #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$a4, $a2, -16
-	ld.h	$a5, $a1, -16
-	vinsgr2vr.h	$vr7, $a4, 0
-	vinsgr2vr.h	$vr8, $a5, 0
-	xvpickve2gr.d	$a4, $xr9, 1
-	andi	$a5, $a4, 1
-	beqz	$a5, .LBB19_5
-.LBB19_20:                              # %pred.load.if7
-                                        #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$a5, $a2, -14
-	ld.h	$a6, $a1, -14
-	xvreplgr2vr.h	$xr10, $a5
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 17
-	xvreplgr2vr.h	$xr10, $a6
+	ld.h	$a3, $a2, -14
+	ld.h	$a4, $a1, -14
+	xvreplgr2vr.h	$xr10, $a3
 	xvpermi.q	$xr10, $xr8, 18
 	xvextrins.h	$xr8, $xr10, 17
-	xvpickve2gr.d	$a5, $xr9, 2
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB19_6
-.LBB19_21:                              # %pred.load.if9
+	xvreplgr2vr.h	$xr10, $a4
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 17
+.LBB19_7:                               # %pred.load.continue8
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$a6, $a2, -12
-	ld.h	$a7, $a1, -12
-	xvreplgr2vr.h	$xr10, $a6
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 34
-	xvreplgr2vr.h	$xr10, $a7
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.h	$xr10, $xr11, $xr10
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.b	$xr10, $xr11, $xr10
+	vpickve2gr.b	$a3, $vr10, 2
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_9
+# %bb.8:                                # %pred.load.if9
+                                        #   in Loop: Header=BB19_3 Depth=1
+	ld.h	$a3, $a2, -12
+	ld.h	$a4, $a1, -12
+	xvreplgr2vr.h	$xr10, $a3
 	xvpermi.q	$xr10, $xr8, 18
 	xvextrins.h	$xr8, $xr10, 34
-	xvpickve2gr.d	$a6, $xr9, 3
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB19_7
-.LBB19_22:                              # %pred.load.if11
+	xvreplgr2vr.h	$xr10, $a4
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 34
+.LBB19_9:                               # %pred.load.continue10
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$a7, $a2, -10
-	ld.h	$t0, $a1, -10
-	xvreplgr2vr.h	$xr9, $a7
-	xvpermi.q	$xr9, $xr7, 18
-	xvextrins.h	$xr7, $xr9, 51
-	xvreplgr2vr.h	$xr9, $t0
-	xvpermi.q	$xr9, $xr8, 18
-	xvextrins.h	$xr8, $xr9, 51
-	xvsle.du	$xr9, $xr4, $xr0
-	xvpickve2gr.d	$a7, $xr9, 0
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB19_8
-.LBB19_23:                              # %pred.load.if13
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.h	$xr10, $xr11, $xr10
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.b	$xr10, $xr11, $xr10
+	vpickve2gr.b	$a3, $vr10, 3
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_11
+# %bb.10:                               # %pred.load.if11
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$t0, $a2, -8
-	ld.h	$t1, $a1, -8
-	xvreplgr2vr.h	$xr10, $t0
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 68
-	xvreplgr2vr.h	$xr10, $t1
+	ld.h	$a3, $a2, -10
+	ld.h	$a4, $a1, -10
+	xvreplgr2vr.h	$xr10, $a3
 	xvpermi.q	$xr10, $xr8, 18
-	xvextrins.h	$xr8, $xr10, 68
-	xvpickve2gr.d	$t0, $xr9, 1
-	andi	$t1, $t0, 1
-	beqz	$t1, .LBB19_9
-.LBB19_24:                              # %pred.load.if15
+	xvextrins.h	$xr8, $xr10, 51
+	xvreplgr2vr.h	$xr10, $a4
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 51
+.LBB19_11:                              # %pred.load.continue12
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$t1, $a2, -6
-	ld.h	$t2, $a1, -6
-	xvreplgr2vr.h	$xr10, $t1
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 85
-	xvreplgr2vr.h	$xr10, $t2
-	xvpermi.q	$xr10, $xr8, 18
-	xvextrins.h	$xr8, $xr10, 85
-	xvpickve2gr.d	$t1, $xr9, 2
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB19_10
-.LBB19_25:                              # %pred.load.if17
+	xvsle.du	$xr10, $xr4, $xr1
+	xvpermi.q	$xr11, $xr10, 1
+	vpickev.w	$vr11, $vr11, $vr10
+	xvpermi.q	$xr11, $xr11, 2
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.h	$xr11, $xr12, $xr11
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.b	$xr11, $xr12, $xr11
+	vpickve2gr.b	$a3, $vr11, 4
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_13
+# %bb.12:                               # %pred.load.if13
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$t2, $a2, -4
-	ld.h	$t3, $a1, -4
-	xvreplgr2vr.h	$xr10, $t2
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 102
-	xvreplgr2vr.h	$xr10, $t3
-	xvpermi.q	$xr10, $xr8, 18
-	xvextrins.h	$xr8, $xr10, 102
-	xvpickve2gr.d	$t2, $xr9, 3
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB19_11
-.LBB19_26:                              # %pred.load.if19
+	ld.h	$a3, $a2, -8
+	ld.h	$a4, $a1, -8
+	xvreplgr2vr.h	$xr11, $a3
+	xvpermi.q	$xr11, $xr8, 18
+	xvextrins.h	$xr8, $xr11, 68
+	xvreplgr2vr.h	$xr11, $a4
+	xvpermi.q	$xr11, $xr9, 18
+	xvextrins.h	$xr9, $xr11, 68
+.LBB19_13:                              # %pred.load.continue14
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$t3, $a2, -2
-	ld.h	$t4, $a1, -2
-	xvreplgr2vr.h	$xr9, $t3
-	xvpermi.q	$xr9, $xr7, 18
-	xvextrins.h	$xr7, $xr9, 119
-	xvreplgr2vr.h	$xr9, $t4
-	xvpermi.q	$xr9, $xr8, 18
-	xvextrins.h	$xr8, $xr9, 119
-	xvsle.du	$xr9, $xr3, $xr0
-	xvpickve2gr.d	$t3, $xr9, 0
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB19_12
-.LBB19_27:                              # %pred.load.if21
+	xvpermi.q	$xr11, $xr10, 1
+	vpickev.w	$vr11, $vr11, $vr10
+	xvpermi.q	$xr11, $xr11, 2
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.h	$xr11, $xr12, $xr11
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.b	$xr11, $xr12, $xr11
+	vpickve2gr.b	$a3, $vr11, 5
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_15
+# %bb.14:                               # %pred.load.if15
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$t4, $a2, 0
-	ld.h	$t5, $a1, 0
-	xvreplgr2vr.h	$xr10, $t4
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 0
-	xvreplgr2vr.h	$xr10, $t5
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 0
-	xvpickve2gr.d	$t4, $xr9, 1
-	andi	$t5, $t4, 1
-	beqz	$t5, .LBB19_13
-.LBB19_28:                              # %pred.load.if23
+	ld.h	$a3, $a2, -6
+	ld.h	$a4, $a1, -6
+	xvreplgr2vr.h	$xr11, $a3
+	xvpermi.q	$xr11, $xr8, 18
+	xvextrins.h	$xr8, $xr11, 85
+	xvreplgr2vr.h	$xr11, $a4
+	xvpermi.q	$xr11, $xr9, 18
+	xvextrins.h	$xr9, $xr11, 85
+.LBB19_15:                              # %pred.load.continue16
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$t5, $a2, 2
-	ld.h	$t6, $a1, 2
-	xvreplgr2vr.h	$xr10, $t5
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 17
-	xvreplgr2vr.h	$xr10, $t6
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 17
-	xvpickve2gr.d	$t5, $xr9, 2
-	andi	$t6, $t5, 1
-	beqz	$t6, .LBB19_14
-.LBB19_29:                              # %pred.load.if25
+	xvpermi.q	$xr11, $xr10, 1
+	vpickev.w	$vr11, $vr11, $vr10
+	xvpermi.q	$xr11, $xr11, 2
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.h	$xr11, $xr12, $xr11
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.b	$xr11, $xr12, $xr11
+	vpickve2gr.b	$a3, $vr11, 6
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_17
+# %bb.16:                               # %pred.load.if17
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$t6, $a2, 4
-	ld.h	$t7, $a1, 4
-	xvreplgr2vr.h	$xr10, $t6
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 34
-	xvreplgr2vr.h	$xr10, $t7
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 34
-	xvpickve2gr.d	$t6, $xr9, 3
-	andi	$t7, $t6, 1
-	beqz	$t7, .LBB19_15
-.LBB19_30:                              # %pred.load.if27
+	ld.h	$a3, $a2, -4
+	ld.h	$a4, $a1, -4
+	xvreplgr2vr.h	$xr11, $a3
+	xvpermi.q	$xr11, $xr8, 18
+	xvextrins.h	$xr8, $xr11, 102
+	xvreplgr2vr.h	$xr11, $a4
+	xvpermi.q	$xr11, $xr9, 18
+	xvextrins.h	$xr9, $xr11, 102
+.LBB19_17:                              # %pred.load.continue18
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$t7, $a2, 6
-	ld.h	$t8, $a1, 6
-	xvreplgr2vr.h	$xr9, $t7
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.h	$xr7, $xr9, 51
-	xvreplgr2vr.h	$xr9, $t8
-	xvpermi.q	$xr9, $xr8, 48
-	xvextrins.h	$xr8, $xr9, 51
-	xvsle.du	$xr9, $xr2, $xr0
-	xvpickve2gr.d	$t7, $xr9, 0
-	andi	$t8, $t7, 1
-	beqz	$t8, .LBB19_16
-.LBB19_31:                              # %pred.load.if29
+	xvpermi.q	$xr11, $xr10, 1
+	vpickev.w	$vr11, $vr11, $vr10
+	xvpermi.q	$xr11, $xr11, 2
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.h	$xr11, $xr12, $xr11
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.b	$xr11, $xr12, $xr11
+	vpickve2gr.b	$a3, $vr11, 7
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_19
+# %bb.18:                               # %pred.load.if19
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$t8, $a2, 8
-	ld.h	$fp, $a1, 8
-	xvreplgr2vr.h	$xr10, $t8
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 68
-	xvreplgr2vr.h	$xr10, $fp
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 68
-	xvpickve2gr.d	$t8, $xr9, 1
-	andi	$fp, $t8, 1
-	beqz	$fp, .LBB19_17
-.LBB19_32:                              # %pred.load.if31
+	ld.h	$a3, $a2, -2
+	ld.h	$a4, $a1, -2
+	xvreplgr2vr.h	$xr11, $a3
+	xvpermi.q	$xr11, $xr8, 18
+	xvextrins.h	$xr8, $xr11, 119
+	xvreplgr2vr.h	$xr11, $a4
+	xvpermi.q	$xr11, $xr9, 18
+	xvextrins.h	$xr9, $xr11, 119
+.LBB19_19:                              # %pred.load.continue20
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$fp, $a2, 10
-	ld.h	$s0, $a1, 10
-	xvreplgr2vr.h	$xr10, $fp
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 85
-	xvreplgr2vr.h	$xr10, $s0
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 85
-	xvpickve2gr.d	$fp, $xr9, 2
-	andi	$s0, $fp, 1
-	beqz	$s0, .LBB19_18
-.LBB19_33:                              # %pred.load.if33
+	xvsle.du	$xr11, $xr3, $xr1
+	xvpermi.q	$xr12, $xr11, 1
+	vpickev.w	$vr12, $vr12, $vr11
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a3, $vr12, 8
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_21
+# %bb.20:                               # %pred.load.if21
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$s0, $a2, 12
-	ld.h	$s1, $a1, 12
-	xvreplgr2vr.h	$xr10, $s0
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 102
-	xvreplgr2vr.h	$xr10, $s1
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 102
-	xvpickve2gr.d	$s0, $xr9, 3
-	andi	$s1, $s0, 1
-	beqz	$s1, .LBB19_2
-.LBB19_34:                              # %pred.load.if35
+	ld.h	$a3, $a2, 0
+	ld.h	$a4, $a1, 0
+	xvreplgr2vr.h	$xr12, $a3
+	xvpermi.q	$xr12, $xr8, 48
+	xvextrins.h	$xr8, $xr12, 0
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr9, 48
+	xvextrins.h	$xr9, $xr12, 0
+.LBB19_21:                              # %pred.load.continue22
                                         #   in Loop: Header=BB19_3 Depth=1
-	ld.h	$s1, $a2, 14
-	ld.h	$s2, $a1, 14
-	xvreplgr2vr.h	$xr9, $s1
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.h	$xr7, $xr9, 119
-	xvreplgr2vr.h	$xr9, $s2
-	xvpermi.q	$xr9, $xr8, 48
-	xvextrins.h	$xr8, $xr9, 119
+	xvpermi.q	$xr12, $xr11, 1
+	vpickev.w	$vr12, $vr12, $vr11
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr12, $xr13
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a3, $vr12, 9
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_23
+# %bb.22:                               # %pred.load.if23
+                                        #   in Loop: Header=BB19_3 Depth=1
+	ld.h	$a3, $a2, 2
+	ld.h	$a4, $a1, 2
+	xvreplgr2vr.h	$xr12, $a3
+	xvpermi.q	$xr12, $xr8, 48
+	xvextrins.h	$xr8, $xr12, 17
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr9, 48
+	xvextrins.h	$xr9, $xr12, 17
+.LBB19_23:                              # %pred.load.continue24
+                                        #   in Loop: Header=BB19_3 Depth=1
+	xvpermi.q	$xr12, $xr11, 1
+	vpickev.w	$vr12, $vr12, $vr11
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr12, $xr13
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a3, $vr12, 10
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_25
+# %bb.24:                               # %pred.load.if25
+                                        #   in Loop: Header=BB19_3 Depth=1
+	ld.h	$a3, $a2, 4
+	ld.h	$a4, $a1, 4
+	xvreplgr2vr.h	$xr12, $a3
+	xvpermi.q	$xr12, $xr8, 48
+	xvextrins.h	$xr8, $xr12, 34
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr9, 48
+	xvextrins.h	$xr9, $xr12, 34
+.LBB19_25:                              # %pred.load.continue26
+                                        #   in Loop: Header=BB19_3 Depth=1
+	xvpermi.q	$xr12, $xr11, 1
+	vpickev.w	$vr12, $vr12, $vr11
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr12, $xr13
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a3, $vr12, 11
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_27
+# %bb.26:                               # %pred.load.if27
+                                        #   in Loop: Header=BB19_3 Depth=1
+	ld.h	$a3, $a2, 6
+	ld.h	$a4, $a1, 6
+	xvreplgr2vr.h	$xr12, $a3
+	xvpermi.q	$xr12, $xr8, 48
+	xvextrins.h	$xr8, $xr12, 51
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr9, 48
+	xvextrins.h	$xr9, $xr12, 51
+.LBB19_27:                              # %pred.load.continue28
+                                        #   in Loop: Header=BB19_3 Depth=1
+	xvsle.du	$xr12, $xr2, $xr1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a3, $vr13, 12
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_29
+# %bb.28:                               # %pred.load.if29
+                                        #   in Loop: Header=BB19_3 Depth=1
+	ld.h	$a3, $a2, 8
+	ld.h	$a4, $a1, 8
+	xvreplgr2vr.h	$xr13, $a3
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 68
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 68
+.LBB19_29:                              # %pred.load.continue30
+                                        #   in Loop: Header=BB19_3 Depth=1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a3, $vr13, 13
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_31
+# %bb.30:                               # %pred.load.if31
+                                        #   in Loop: Header=BB19_3 Depth=1
+	ld.h	$a3, $a2, 10
+	ld.h	$a4, $a1, 10
+	xvreplgr2vr.h	$xr13, $a3
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 85
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 85
+.LBB19_31:                              # %pred.load.continue32
+                                        #   in Loop: Header=BB19_3 Depth=1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a3, $vr13, 14
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_33
+# %bb.32:                               # %pred.load.if33
+                                        #   in Loop: Header=BB19_3 Depth=1
+	ld.h	$a3, $a2, 12
+	ld.h	$a4, $a1, 12
+	xvreplgr2vr.h	$xr13, $a3
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 102
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 102
+.LBB19_33:                              # %pred.load.continue34
+                                        #   in Loop: Header=BB19_3 Depth=1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a3, $vr13, 15
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB19_2
+# %bb.34:                               # %pred.load.if35
+                                        #   in Loop: Header=BB19_3 Depth=1
+	ld.h	$a3, $a2, 14
+	ld.h	$a4, $a1, 14
+	xvreplgr2vr.h	$xr13, $a3
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 119
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 119
 	b	.LBB19_2
 .LBB19_35:                              # %"_ZSt10__invoke_rIsRZ4mainE3$_3JPsS2_sEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.h	$vr0, $a3, 0
-	vinsgr2vr.h	$vr0, $a4, 1
-	vinsgr2vr.h	$vr0, $a5, 2
-	vinsgr2vr.h	$vr0, $a6, 3
-	vinsgr2vr.h	$vr0, $a7, 4
-	vinsgr2vr.h	$vr0, $t0, 5
-	vinsgr2vr.h	$vr0, $t1, 6
-	vinsgr2vr.h	$vr0, $t2, 7
-	vinsgr2vr.h	$vr2, $t3, 0
-	vinsgr2vr.h	$vr2, $t4, 1
-	vinsgr2vr.h	$vr2, $t5, 2
-	vinsgr2vr.h	$vr2, $t6, 3
-	vinsgr2vr.h	$vr2, $t7, 4
-	vinsgr2vr.h	$vr2, $t8, 5
-	vinsgr2vr.h	$vr2, $fp, 6
-	vinsgr2vr.h	$vr2, $s0, 7
-	xvpermi.q	$xr0, $xr2, 2
-	xvbitsel.v	$xr0, $xr1, $xr7, $xr0
+	xvpermi.q	$xr1, $xr7, 1
+	vpickev.w	$vr2, $vr1, $vr7
+	xvpermi.q	$xr1, $xr10, 1
+	vpickev.w	$vr1, $vr1, $vr10
+	xvpermi.q	$xr2, $xr1, 2
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr1, $a0, 1
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr1, $a0, 2
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr1, $a0, 4
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr1, $a0, 5
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr1, $a0, 6
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpermi.q	$xr2, $xr11, 1
+	vpickev.w	$vr2, $vr2, $vr11
+	xvpermi.q	$xr3, $xr12, 1
+	vpickev.w	$vr3, $vr3, $vr12
+	xvpermi.q	$xr2, $xr3, 2
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr3, $a0, 1
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr3, $a0, 2
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr3, $a0, 4
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr3, $a0, 5
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr3, $a0, 6
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr3, $a0, 7
+	xvpermi.q	$xr1, $xr3, 2
+	xvbitsel.v	$xr0, $xr0, $xr8, $xr1
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.h	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -7994,11 +8064,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	addi.d	$a2, $zero, -1
 	maskeqz	$a1, $a2, $a1
 	or	$a0, $a1, $a0
-	ld.d	$s2, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
 	ext.w.h	$a0, $a0
 	ret
 .LBB19_36:
@@ -8132,13 +8197,13 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	xvld	$xr3, $a2, %pc_lo12(.LCPI23_2)
 	addi.d	$a1, $a1, 16
 	addi.d	$a2, $a4, 16
-	xvldi	$xr5, -3200
+	xvldi	$xr6, -3200
 	b	.LBB23_3
 	.p2align	4, , 16
 .LBB23_2:                               # %pred.load.continue20
                                         #   in Loop: Header=BB23_3 Depth=1
-	xvslt.w	$xr5, $xr6, $xr5
-	xvbitsel.v	$xr5, $xr3, $xr4, $xr5
+	xvslt.w	$xr6, $xr7, $xr6
+	xvbitsel.v	$xr6, $xr3, $xr4, $xr6
 	xvaddi.du	$xr2, $xr2, 8
 	xvaddi.du	$xr1, $xr1, 8
 	xvaddi.wu	$xr3, $xr3, 8
@@ -8148,133 +8213,133 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	beqz	$a0, .LBB23_19
 .LBB23_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvsle.du	$xr7, $xr2, $xr0
-	xvpickve2gr.d	$a3, $xr7, 0
-	andi	$a4, $a3, 1
-	xvori.b	$xr4, $xr5, 0
-                                        # implicit-def: $xr5
+	xvsle.du	$xr5, $xr2, $xr0
+	vpickve2gr.h	$a3, $vr5, 0
+	andi	$a3, $a3, 1
+	xvori.b	$xr4, $xr6, 0
                                         # implicit-def: $xr6
-	bnez	$a4, .LBB23_11
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr7
+	beqz	$a3, .LBB23_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB23_3 Depth=1
-	xvpickve2gr.d	$a4, $xr7, 1
-	andi	$a5, $a4, 1
-	bnez	$a5, .LBB23_12
-.LBB23_5:                               # %pred.load.continue8
+	ld.w	$a3, $a2, -16
+	ld.w	$a4, $a1, -16
+	vinsgr2vr.w	$vr6, $a3, 0
+	vinsgr2vr.w	$vr7, $a4, 0
+.LBB23_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB23_3 Depth=1
-	xvpickve2gr.d	$a5, $xr7, 2
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB23_13
-.LBB23_6:                               # %pred.load.continue10
+	vshuf4i.w	$vr8, $vr5, 8
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a3, $vr8, 1
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB23_7
+# %bb.6:                                # %pred.load.if7
                                         #   in Loop: Header=BB23_3 Depth=1
-	xvpickve2gr.d	$a6, $xr7, 3
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB23_14
-.LBB23_7:                               # %pred.load.continue12
+	ld.w	$a3, $a2, -12
+	ld.w	$a4, $a1, -12
+	xvinsgr2vr.w	$xr6, $a3, 1
+	xvinsgr2vr.w	$xr7, $a4, 1
+.LBB23_7:                               # %pred.load.continue8
                                         #   in Loop: Header=BB23_3 Depth=1
-	xvsle.du	$xr7, $xr1, $xr0
-	xvpickve2gr.d	$a7, $xr7, 0
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB23_15
-.LBB23_8:                               # %pred.load.continue14
+	xvpermi.q	$xr8, $xr5, 1
+	vshuf4i.w	$vr8, $vr8, 128
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a3, $vr8, 2
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB23_9
+# %bb.8:                                # %pred.load.if9
                                         #   in Loop: Header=BB23_3 Depth=1
-	xvpickve2gr.d	$t0, $xr7, 1
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB23_16
-.LBB23_9:                               # %pred.load.continue16
+	ld.w	$a3, $a2, -8
+	ld.w	$a4, $a1, -8
+	xvinsgr2vr.w	$xr6, $a3, 2
+	xvinsgr2vr.w	$xr7, $a4, 2
+.LBB23_9:                               # %pred.load.continue10
                                         #   in Loop: Header=BB23_3 Depth=1
-	xvpickve2gr.d	$t1, $xr7, 2
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB23_17
-.LBB23_10:                              # %pred.load.continue18
+	xvpermi.q	$xr8, $xr5, 1
+	vshuf4i.w	$vr8, $vr8, 128
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a3, $vr8, 3
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB23_11
+# %bb.10:                               # %pred.load.if11
                                         #   in Loop: Header=BB23_3 Depth=1
-	xvpickve2gr.d	$t2, $xr7, 3
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB23_2
-	b	.LBB23_18
-	.p2align	4, , 16
-.LBB23_11:                              # %pred.load.if
+	ld.w	$a3, $a2, -4
+	ld.w	$a4, $a1, -4
+	xvinsgr2vr.w	$xr6, $a3, 3
+	xvinsgr2vr.w	$xr7, $a4, 3
+.LBB23_11:                              # %pred.load.continue12
                                         #   in Loop: Header=BB23_3 Depth=1
-	ld.w	$a4, $a2, -16
-	ld.w	$a5, $a1, -16
-	vinsgr2vr.w	$vr5, $a4, 0
-	vinsgr2vr.w	$vr6, $a5, 0
-	xvpickve2gr.d	$a4, $xr7, 1
-	andi	$a5, $a4, 1
-	beqz	$a5, .LBB23_5
-.LBB23_12:                              # %pred.load.if7
+	xvsle.du	$xr8, $xr1, $xr0
+	xvpermi.d	$xr9, $xr8, 64
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 4
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB23_13
+# %bb.12:                               # %pred.load.if13
                                         #   in Loop: Header=BB23_3 Depth=1
-	ld.w	$a5, $a2, -12
-	ld.w	$a6, $a1, -12
-	xvinsgr2vr.w	$xr5, $a5, 1
-	xvinsgr2vr.w	$xr6, $a6, 1
-	xvpickve2gr.d	$a5, $xr7, 2
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB23_6
-.LBB23_13:                              # %pred.load.if9
+	ld.w	$a3, $a2, 0
+	ld.w	$a4, $a1, 0
+	xvinsgr2vr.w	$xr6, $a3, 4
+	xvinsgr2vr.w	$xr7, $a4, 4
+.LBB23_13:                              # %pred.load.continue14
                                         #   in Loop: Header=BB23_3 Depth=1
-	ld.w	$a6, $a2, -8
-	ld.w	$a7, $a1, -8
-	xvinsgr2vr.w	$xr5, $a6, 2
-	xvinsgr2vr.w	$xr6, $a7, 2
-	xvpickve2gr.d	$a6, $xr7, 3
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB23_7
-.LBB23_14:                              # %pred.load.if11
+	vshuf4i.w	$vr9, $vr8, 8
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 5
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB23_15
+# %bb.14:                               # %pred.load.if15
                                         #   in Loop: Header=BB23_3 Depth=1
-	ld.w	$a7, $a2, -4
-	ld.w	$t0, $a1, -4
-	xvinsgr2vr.w	$xr5, $a7, 3
-	xvinsgr2vr.w	$xr6, $t0, 3
-	xvsle.du	$xr7, $xr1, $xr0
-	xvpickve2gr.d	$a7, $xr7, 0
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB23_8
-.LBB23_15:                              # %pred.load.if13
+	ld.w	$a3, $a2, 4
+	ld.w	$a4, $a1, 4
+	xvinsgr2vr.w	$xr6, $a3, 5
+	xvinsgr2vr.w	$xr7, $a4, 5
+.LBB23_15:                              # %pred.load.continue16
                                         #   in Loop: Header=BB23_3 Depth=1
-	ld.w	$t0, $a2, 0
-	ld.w	$t1, $a1, 0
-	xvinsgr2vr.w	$xr5, $t0, 4
-	xvinsgr2vr.w	$xr6, $t1, 4
-	xvpickve2gr.d	$t0, $xr7, 1
-	andi	$t1, $t0, 1
-	beqz	$t1, .LBB23_9
-.LBB23_16:                              # %pred.load.if15
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 6
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB23_17
+# %bb.16:                               # %pred.load.if17
                                         #   in Loop: Header=BB23_3 Depth=1
-	ld.w	$t1, $a2, 4
-	ld.w	$t2, $a1, 4
-	xvinsgr2vr.w	$xr5, $t1, 5
-	xvinsgr2vr.w	$xr6, $t2, 5
-	xvpickve2gr.d	$t1, $xr7, 2
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB23_10
-.LBB23_17:                              # %pred.load.if17
+	ld.w	$a3, $a2, 8
+	ld.w	$a4, $a1, 8
+	xvinsgr2vr.w	$xr6, $a3, 6
+	xvinsgr2vr.w	$xr7, $a4, 6
+.LBB23_17:                              # %pred.load.continue18
                                         #   in Loop: Header=BB23_3 Depth=1
-	ld.w	$t2, $a2, 8
-	ld.w	$t3, $a1, 8
-	xvinsgr2vr.w	$xr5, $t2, 6
-	xvinsgr2vr.w	$xr6, $t3, 6
-	xvpickve2gr.d	$t2, $xr7, 3
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB23_2
-.LBB23_18:                              # %pred.load.if19
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 7
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB23_2
+# %bb.18:                               # %pred.load.if19
                                         #   in Loop: Header=BB23_3 Depth=1
-	ld.w	$t3, $a2, 12
-	ld.w	$t4, $a1, 12
-	xvinsgr2vr.w	$xr5, $t3, 7
-	xvinsgr2vr.w	$xr6, $t4, 7
+	ld.w	$a3, $a2, 12
+	ld.w	$a4, $a1, 12
+	xvinsgr2vr.w	$xr6, $a3, 7
+	xvinsgr2vr.w	$xr7, $a4, 7
 	b	.LBB23_2
 .LBB23_19:                              # %"_ZSt10__invoke_rIiRZ4mainE3$_5JPiS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.w	$vr0, $a3, 0
-	vinsgr2vr.w	$vr0, $a4, 1
-	vinsgr2vr.w	$vr0, $a5, 2
-	vinsgr2vr.w	$vr0, $a6, 3
-	vinsgr2vr.w	$vr1, $a7, 0
-	vinsgr2vr.w	$vr1, $t0, 1
-	vinsgr2vr.w	$vr1, $t1, 2
-	vinsgr2vr.w	$vr1, $t2, 3
+	xvpermi.q	$xr0, $xr5, 1
+	vpickev.w	$vr0, $vr0, $vr5
+	xvpermi.q	$xr1, $xr8, 1
+	vpickev.w	$vr1, $vr1, $vr8
 	xvpermi.q	$xr0, $xr1, 2
-	xvbitsel.v	$xr0, $xr4, $xr5, $xr0
+	xvbitsel.v	$xr0, $xr4, $xr6, $xr0
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -8420,13 +8485,13 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	xvld	$xr3, $a2, %pc_lo12(.LCPI27_2)
 	addi.d	$a1, $a1, 16
 	addi.d	$a2, $a4, 16
-	xvldi	$xr5, -3200
+	xvldi	$xr6, -3200
 	b	.LBB27_3
 	.p2align	4, , 16
 .LBB27_2:                               # %pred.load.continue20
                                         #   in Loop: Header=BB27_3 Depth=1
-	xvfcmp.clt.s	$xr5, $xr6, $xr5
-	xvbitsel.v	$xr5, $xr3, $xr4, $xr5
+	xvfcmp.clt.s	$xr6, $xr7, $xr6
+	xvbitsel.v	$xr6, $xr3, $xr4, $xr6
 	xvaddi.du	$xr2, $xr2, 8
 	xvaddi.du	$xr1, $xr1, 8
 	xvaddi.wu	$xr3, $xr3, 8
@@ -8436,131 +8501,131 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	beqz	$a0, .LBB27_19
 .LBB27_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvsle.du	$xr7, $xr2, $xr0
-	xvpickve2gr.d	$a3, $xr7, 0
-	andi	$a4, $a3, 1
-	xvori.b	$xr4, $xr5, 0
-                                        # implicit-def: $xr5
+	xvsle.du	$xr5, $xr2, $xr0
+	vpickve2gr.h	$a3, $vr5, 0
+	andi	$a3, $a3, 1
+	xvori.b	$xr4, $xr6, 0
                                         # implicit-def: $xr6
-	bnez	$a4, .LBB27_11
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr7
+	beqz	$a3, .LBB27_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB27_3 Depth=1
-	xvpickve2gr.d	$a4, $xr7, 1
-	andi	$a5, $a4, 1
-	bnez	$a5, .LBB27_12
-.LBB27_5:                               # %pred.load.continue8
+	fld.s	$fa6, $a2, -16
+	fld.s	$fa7, $a1, -16
+.LBB27_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB27_3 Depth=1
-	xvpickve2gr.d	$a5, $xr7, 2
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB27_13
-.LBB27_6:                               # %pred.load.continue10
-                                        #   in Loop: Header=BB27_3 Depth=1
-	xvpickve2gr.d	$a6, $xr7, 3
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB27_14
-.LBB27_7:                               # %pred.load.continue12
-                                        #   in Loop: Header=BB27_3 Depth=1
-	xvsle.du	$xr7, $xr1, $xr0
-	xvpickve2gr.d	$a7, $xr7, 0
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB27_15
-.LBB27_8:                               # %pred.load.continue14
-                                        #   in Loop: Header=BB27_3 Depth=1
-	xvpickve2gr.d	$t0, $xr7, 1
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB27_16
-.LBB27_9:                               # %pred.load.continue16
-                                        #   in Loop: Header=BB27_3 Depth=1
-	xvpickve2gr.d	$t1, $xr7, 2
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB27_17
-.LBB27_10:                              # %pred.load.continue18
-                                        #   in Loop: Header=BB27_3 Depth=1
-	xvpickve2gr.d	$t2, $xr7, 3
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB27_2
-	b	.LBB27_18
-	.p2align	4, , 16
-.LBB27_11:                              # %pred.load.if
-                                        #   in Loop: Header=BB27_3 Depth=1
-	fld.s	$fa5, $a2, -16
-	fld.s	$fa6, $a1, -16
-	xvpickve2gr.d	$a4, $xr7, 1
-	andi	$a5, $a4, 1
-	beqz	$a5, .LBB27_5
-.LBB27_12:                              # %pred.load.if7
+	vshuf4i.w	$vr8, $vr5, 8
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a3, $vr8, 1
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB27_7
+# %bb.6:                                # %pred.load.if7
                                         #   in Loop: Header=BB27_3 Depth=1
 	fld.s	$ft0, $a2, -12
 	fld.s	$ft1, $a1, -12
-	xvinsve0.w	$xr5, $xr8, 1
-	xvinsve0.w	$xr6, $xr9, 1
-	xvpickve2gr.d	$a5, $xr7, 2
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB27_6
-.LBB27_13:                              # %pred.load.if9
+	xvinsve0.w	$xr6, $xr8, 1
+	xvinsve0.w	$xr7, $xr9, 1
+.LBB27_7:                               # %pred.load.continue8
+                                        #   in Loop: Header=BB27_3 Depth=1
+	xvpermi.q	$xr8, $xr5, 1
+	vshuf4i.w	$vr8, $vr8, 128
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a3, $vr8, 2
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB27_9
+# %bb.8:                                # %pred.load.if9
                                         #   in Loop: Header=BB27_3 Depth=1
 	fld.s	$ft0, $a2, -8
 	fld.s	$ft1, $a1, -8
-	xvinsve0.w	$xr5, $xr8, 2
-	xvinsve0.w	$xr6, $xr9, 2
-	xvpickve2gr.d	$a6, $xr7, 3
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB27_7
-.LBB27_14:                              # %pred.load.if11
+	xvinsve0.w	$xr6, $xr8, 2
+	xvinsve0.w	$xr7, $xr9, 2
+.LBB27_9:                               # %pred.load.continue10
                                         #   in Loop: Header=BB27_3 Depth=1
-	fld.s	$fa7, $a2, -4
-	fld.s	$ft0, $a1, -4
-	xvinsve0.w	$xr5, $xr7, 3
+	xvpermi.q	$xr8, $xr5, 1
+	vshuf4i.w	$vr8, $vr8, 128
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a3, $vr8, 3
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB27_11
+# %bb.10:                               # %pred.load.if11
+                                        #   in Loop: Header=BB27_3 Depth=1
+	fld.s	$ft0, $a2, -4
+	fld.s	$ft1, $a1, -4
 	xvinsve0.w	$xr6, $xr8, 3
-	xvsle.du	$xr7, $xr1, $xr0
-	xvpickve2gr.d	$a7, $xr7, 0
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB27_8
-.LBB27_15:                              # %pred.load.if13
+	xvinsve0.w	$xr7, $xr9, 3
+.LBB27_11:                              # %pred.load.continue12
                                         #   in Loop: Header=BB27_3 Depth=1
-	fld.s	$ft0, $a2, 0
-	fld.s	$ft1, $a1, 0
-	xvinsve0.w	$xr5, $xr8, 4
+	xvsle.du	$xr8, $xr1, $xr0
+	xvpermi.d	$xr9, $xr8, 64
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 4
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB27_13
+# %bb.12:                               # %pred.load.if13
+                                        #   in Loop: Header=BB27_3 Depth=1
+	fld.s	$ft1, $a2, 0
+	fld.s	$ft2, $a1, 0
 	xvinsve0.w	$xr6, $xr9, 4
-	xvpickve2gr.d	$t0, $xr7, 1
-	andi	$t1, $t0, 1
-	beqz	$t1, .LBB27_9
-.LBB27_16:                              # %pred.load.if15
+	xvinsve0.w	$xr7, $xr10, 4
+.LBB27_13:                              # %pred.load.continue14
                                         #   in Loop: Header=BB27_3 Depth=1
-	fld.s	$ft0, $a2, 4
-	fld.s	$ft1, $a1, 4
-	xvinsve0.w	$xr5, $xr8, 5
+	vshuf4i.w	$vr9, $vr8, 8
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 5
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB27_15
+# %bb.14:                               # %pred.load.if15
+                                        #   in Loop: Header=BB27_3 Depth=1
+	fld.s	$ft1, $a2, 4
+	fld.s	$ft2, $a1, 4
 	xvinsve0.w	$xr6, $xr9, 5
-	xvpickve2gr.d	$t1, $xr7, 2
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB27_10
-.LBB27_17:                              # %pred.load.if17
+	xvinsve0.w	$xr7, $xr10, 5
+.LBB27_15:                              # %pred.load.continue16
                                         #   in Loop: Header=BB27_3 Depth=1
-	fld.s	$ft0, $a2, 8
-	fld.s	$ft1, $a1, 8
-	xvinsve0.w	$xr5, $xr8, 6
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 6
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB27_17
+# %bb.16:                               # %pred.load.if17
+                                        #   in Loop: Header=BB27_3 Depth=1
+	fld.s	$ft1, $a2, 8
+	fld.s	$ft2, $a1, 8
 	xvinsve0.w	$xr6, $xr9, 6
-	xvpickve2gr.d	$t2, $xr7, 3
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB27_2
-.LBB27_18:                              # %pred.load.if19
+	xvinsve0.w	$xr7, $xr10, 6
+.LBB27_17:                              # %pred.load.continue18
                                         #   in Loop: Header=BB27_3 Depth=1
-	fld.s	$fa7, $a2, 12
-	fld.s	$ft0, $a1, 12
-	xvinsve0.w	$xr5, $xr7, 7
-	xvinsve0.w	$xr6, $xr8, 7
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a3, $vr9, 7
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB27_2
+# %bb.18:                               # %pred.load.if19
+                                        #   in Loop: Header=BB27_3 Depth=1
+	fld.s	$ft1, $a2, 12
+	fld.s	$ft2, $a1, 12
+	xvinsve0.w	$xr6, $xr9, 7
+	xvinsve0.w	$xr7, $xr10, 7
 	b	.LBB27_2
 .LBB27_19:                              # %"_ZSt10__invoke_rIiRZ4mainE3$_5JPfS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.w	$vr0, $a3, 0
-	vinsgr2vr.w	$vr0, $a4, 1
-	vinsgr2vr.w	$vr0, $a5, 2
-	vinsgr2vr.w	$vr0, $a6, 3
-	vinsgr2vr.w	$vr1, $a7, 0
-	vinsgr2vr.w	$vr1, $t0, 1
-	vinsgr2vr.w	$vr1, $t1, 2
-	vinsgr2vr.w	$vr1, $t2, 3
+	xvpermi.q	$xr0, $xr5, 1
+	vpickev.w	$vr0, $vr0, $vr5
+	xvpermi.q	$xr1, $xr8, 1
+	vpickev.w	$vr1, $vr1, $vr8
 	xvpermi.q	$xr0, $xr1, 2
-	xvbitsel.v	$xr0, $xr4, $xr5, $xr0
+	xvbitsel.v	$xr0, $xr4, $xr6, $xr0
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -8710,18 +8775,13 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	ld.h	$a3, $a3, 0
 	blez	$a3, .LBB31_36
 # %bb.1:                                # %vector.ph
-	addi.d	$sp, $sp, -32
-	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
 	ld.d	$a4, $a1, 0
 	ld.d	$a1, $a2, 0
 	addi.d	$a0, $a3, 15
 	bstrpick.d	$a0, $a0, 15, 4
 	slli.d	$a0, $a0, 4
 	addi.d	$a2, $a3, -1
-	xvreplgr2vr.d	$xr0, $a2
+	xvreplgr2vr.d	$xr1, $a2
 	pcalau12i	$a2, %pc_hi20(.LCPI31_0)
 	xvld	$xr2, $a2, %pc_lo12(.LCPI31_0)
 	pcalau12i	$a2, %pc_hi20(.LCPI31_1)
@@ -8734,13 +8794,13 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	xvld	$xr6, $a2, %pc_lo12(.LCPI31_4)
 	addi.d	$a1, $a1, 16
 	addi.d	$a2, $a4, 16
-	xvldi	$xr7, -2688
+	xvldi	$xr8, -2688
 	b	.LBB31_3
 	.p2align	4, , 16
 .LBB31_2:                               # %pred.load.continue36
                                         #   in Loop: Header=BB31_3 Depth=1
-	xvslt.h	$xr7, $xr8, $xr7
-	xvbitsel.v	$xr7, $xr6, $xr1, $xr7
+	xvslt.h	$xr8, $xr9, $xr8
+	xvbitsel.v	$xr8, $xr6, $xr0, $xr8
 	xvaddi.du	$xr5, $xr5, 16
 	xvaddi.du	$xr4, $xr4, 16
 	xvaddi.du	$xr3, $xr3, 16
@@ -8752,317 +8812,392 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	beqz	$a0, .LBB31_35
 .LBB31_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvsle.du	$xr9, $xr5, $xr0
-	xvpickve2gr.d	$a3, $xr9, 0
-	andi	$a4, $a3, 1
-	xvori.b	$xr1, $xr7, 0
-                                        # implicit-def: $xr7
+	xvsle.du	$xr7, $xr5, $xr1
+	vpickve2gr.b	$a3, $vr7, 0
+	andi	$a3, $a3, 1
+	xvori.b	$xr0, $xr8, 0
                                         # implicit-def: $xr8
-	bnez	$a4, .LBB31_19
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr9
+	beqz	$a3, .LBB31_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB31_3 Depth=1
-	xvpickve2gr.d	$a4, $xr9, 1
-	andi	$a5, $a4, 1
-	bnez	$a5, .LBB31_20
-.LBB31_5:                               # %pred.load.continue8
+	ld.h	$a3, $a2, -16
+	ld.h	$a4, $a1, -16
+	vinsgr2vr.h	$vr8, $a3, 0
+	vinsgr2vr.h	$vr9, $a4, 0
+.LBB31_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB31_3 Depth=1
-	xvpickve2gr.d	$a5, $xr9, 2
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB31_21
-.LBB31_6:                               # %pred.load.continue10
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.h	$xr10, $xr11, $xr10
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.b	$xr10, $xr11, $xr10
+	vpickve2gr.b	$a3, $vr10, 1
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_7
+# %bb.6:                                # %pred.load.if7
                                         #   in Loop: Header=BB31_3 Depth=1
-	xvpickve2gr.d	$a6, $xr9, 3
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB31_22
-.LBB31_7:                               # %pred.load.continue12
-                                        #   in Loop: Header=BB31_3 Depth=1
-	xvsle.du	$xr9, $xr4, $xr0
-	xvpickve2gr.d	$a7, $xr9, 0
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB31_23
-.LBB31_8:                               # %pred.load.continue14
-                                        #   in Loop: Header=BB31_3 Depth=1
-	xvpickve2gr.d	$t0, $xr9, 1
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB31_24
-.LBB31_9:                               # %pred.load.continue16
-                                        #   in Loop: Header=BB31_3 Depth=1
-	xvpickve2gr.d	$t1, $xr9, 2
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB31_25
-.LBB31_10:                              # %pred.load.continue18
-                                        #   in Loop: Header=BB31_3 Depth=1
-	xvpickve2gr.d	$t2, $xr9, 3
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB31_26
-.LBB31_11:                              # %pred.load.continue20
-                                        #   in Loop: Header=BB31_3 Depth=1
-	xvsle.du	$xr9, $xr3, $xr0
-	xvpickve2gr.d	$t3, $xr9, 0
-	andi	$t4, $t3, 1
-	bnez	$t4, .LBB31_27
-.LBB31_12:                              # %pred.load.continue22
-                                        #   in Loop: Header=BB31_3 Depth=1
-	xvpickve2gr.d	$t4, $xr9, 1
-	andi	$t5, $t4, 1
-	bnez	$t5, .LBB31_28
-.LBB31_13:                              # %pred.load.continue24
-                                        #   in Loop: Header=BB31_3 Depth=1
-	xvpickve2gr.d	$t5, $xr9, 2
-	andi	$t6, $t5, 1
-	bnez	$t6, .LBB31_29
-.LBB31_14:                              # %pred.load.continue26
-                                        #   in Loop: Header=BB31_3 Depth=1
-	xvpickve2gr.d	$t6, $xr9, 3
-	andi	$t7, $t6, 1
-	bnez	$t7, .LBB31_30
-.LBB31_15:                              # %pred.load.continue28
-                                        #   in Loop: Header=BB31_3 Depth=1
-	xvsle.du	$xr9, $xr2, $xr0
-	xvpickve2gr.d	$t7, $xr9, 0
-	andi	$t8, $t7, 1
-	bnez	$t8, .LBB31_31
-.LBB31_16:                              # %pred.load.continue30
-                                        #   in Loop: Header=BB31_3 Depth=1
-	xvpickve2gr.d	$t8, $xr9, 1
-	andi	$fp, $t8, 1
-	bnez	$fp, .LBB31_32
-.LBB31_17:                              # %pred.load.continue32
-                                        #   in Loop: Header=BB31_3 Depth=1
-	xvpickve2gr.d	$fp, $xr9, 2
-	andi	$s0, $fp, 1
-	bnez	$s0, .LBB31_33
-.LBB31_18:                              # %pred.load.continue34
-                                        #   in Loop: Header=BB31_3 Depth=1
-	xvpickve2gr.d	$s0, $xr9, 3
-	andi	$s1, $s0, 1
-	beqz	$s1, .LBB31_2
-	b	.LBB31_34
-	.p2align	4, , 16
-.LBB31_19:                              # %pred.load.if
-                                        #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$a4, $a2, -16
-	ld.h	$a5, $a1, -16
-	vinsgr2vr.h	$vr7, $a4, 0
-	vinsgr2vr.h	$vr8, $a5, 0
-	xvpickve2gr.d	$a4, $xr9, 1
-	andi	$a5, $a4, 1
-	beqz	$a5, .LBB31_5
-.LBB31_20:                              # %pred.load.if7
-                                        #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$a5, $a2, -14
-	ld.h	$a6, $a1, -14
-	xvreplgr2vr.h	$xr10, $a5
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 17
-	xvreplgr2vr.h	$xr10, $a6
+	ld.h	$a3, $a2, -14
+	ld.h	$a4, $a1, -14
+	xvreplgr2vr.h	$xr10, $a3
 	xvpermi.q	$xr10, $xr8, 18
 	xvextrins.h	$xr8, $xr10, 17
-	xvpickve2gr.d	$a5, $xr9, 2
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB31_6
-.LBB31_21:                              # %pred.load.if9
+	xvreplgr2vr.h	$xr10, $a4
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 17
+.LBB31_7:                               # %pred.load.continue8
                                         #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$a6, $a2, -12
-	ld.h	$a7, $a1, -12
-	xvreplgr2vr.h	$xr10, $a6
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 34
-	xvreplgr2vr.h	$xr10, $a7
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.h	$xr10, $xr11, $xr10
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.b	$xr10, $xr11, $xr10
+	vpickve2gr.b	$a3, $vr10, 2
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_9
+# %bb.8:                                # %pred.load.if9
+                                        #   in Loop: Header=BB31_3 Depth=1
+	ld.h	$a3, $a2, -12
+	ld.h	$a4, $a1, -12
+	xvreplgr2vr.h	$xr10, $a3
 	xvpermi.q	$xr10, $xr8, 18
 	xvextrins.h	$xr8, $xr10, 34
-	xvpickve2gr.d	$a6, $xr9, 3
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB31_7
-.LBB31_22:                              # %pred.load.if11
+	xvreplgr2vr.h	$xr10, $a4
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 34
+.LBB31_9:                               # %pred.load.continue10
                                         #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$a7, $a2, -10
-	ld.h	$t0, $a1, -10
-	xvreplgr2vr.h	$xr9, $a7
-	xvpermi.q	$xr9, $xr7, 18
-	xvextrins.h	$xr7, $xr9, 51
-	xvreplgr2vr.h	$xr9, $t0
-	xvpermi.q	$xr9, $xr8, 18
-	xvextrins.h	$xr8, $xr9, 51
-	xvsle.du	$xr9, $xr4, $xr0
-	xvpickve2gr.d	$a7, $xr9, 0
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB31_8
-.LBB31_23:                              # %pred.load.if13
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.h	$xr10, $xr11, $xr10
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.b	$xr10, $xr11, $xr10
+	vpickve2gr.b	$a3, $vr10, 3
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_11
+# %bb.10:                               # %pred.load.if11
                                         #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$t0, $a2, -8
-	ld.h	$t1, $a1, -8
-	xvreplgr2vr.h	$xr10, $t0
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 68
-	xvreplgr2vr.h	$xr10, $t1
+	ld.h	$a3, $a2, -10
+	ld.h	$a4, $a1, -10
+	xvreplgr2vr.h	$xr10, $a3
 	xvpermi.q	$xr10, $xr8, 18
-	xvextrins.h	$xr8, $xr10, 68
-	xvpickve2gr.d	$t0, $xr9, 1
-	andi	$t1, $t0, 1
-	beqz	$t1, .LBB31_9
-.LBB31_24:                              # %pred.load.if15
+	xvextrins.h	$xr8, $xr10, 51
+	xvreplgr2vr.h	$xr10, $a4
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 51
+.LBB31_11:                              # %pred.load.continue12
                                         #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$t1, $a2, -6
-	ld.h	$t2, $a1, -6
-	xvreplgr2vr.h	$xr10, $t1
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 85
-	xvreplgr2vr.h	$xr10, $t2
-	xvpermi.q	$xr10, $xr8, 18
-	xvextrins.h	$xr8, $xr10, 85
-	xvpickve2gr.d	$t1, $xr9, 2
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB31_10
-.LBB31_25:                              # %pred.load.if17
+	xvsle.du	$xr10, $xr4, $xr1
+	xvpermi.q	$xr11, $xr10, 1
+	vpickev.w	$vr11, $vr11, $vr10
+	xvpermi.q	$xr11, $xr11, 2
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.h	$xr11, $xr12, $xr11
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.b	$xr11, $xr12, $xr11
+	vpickve2gr.b	$a3, $vr11, 4
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_13
+# %bb.12:                               # %pred.load.if13
                                         #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$t2, $a2, -4
-	ld.h	$t3, $a1, -4
-	xvreplgr2vr.h	$xr10, $t2
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 102
-	xvreplgr2vr.h	$xr10, $t3
-	xvpermi.q	$xr10, $xr8, 18
-	xvextrins.h	$xr8, $xr10, 102
-	xvpickve2gr.d	$t2, $xr9, 3
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB31_11
-.LBB31_26:                              # %pred.load.if19
+	ld.h	$a3, $a2, -8
+	ld.h	$a4, $a1, -8
+	xvreplgr2vr.h	$xr11, $a3
+	xvpermi.q	$xr11, $xr8, 18
+	xvextrins.h	$xr8, $xr11, 68
+	xvreplgr2vr.h	$xr11, $a4
+	xvpermi.q	$xr11, $xr9, 18
+	xvextrins.h	$xr9, $xr11, 68
+.LBB31_13:                              # %pred.load.continue14
                                         #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$t3, $a2, -2
-	ld.h	$t4, $a1, -2
-	xvreplgr2vr.h	$xr9, $t3
-	xvpermi.q	$xr9, $xr7, 18
-	xvextrins.h	$xr7, $xr9, 119
-	xvreplgr2vr.h	$xr9, $t4
-	xvpermi.q	$xr9, $xr8, 18
-	xvextrins.h	$xr8, $xr9, 119
-	xvsle.du	$xr9, $xr3, $xr0
-	xvpickve2gr.d	$t3, $xr9, 0
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB31_12
-.LBB31_27:                              # %pred.load.if21
+	xvpermi.q	$xr11, $xr10, 1
+	vpickev.w	$vr11, $vr11, $vr10
+	xvpermi.q	$xr11, $xr11, 2
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.h	$xr11, $xr12, $xr11
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.b	$xr11, $xr12, $xr11
+	vpickve2gr.b	$a3, $vr11, 5
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_15
+# %bb.14:                               # %pred.load.if15
                                         #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$t4, $a2, 0
-	ld.h	$t5, $a1, 0
-	xvreplgr2vr.h	$xr10, $t4
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 0
-	xvreplgr2vr.h	$xr10, $t5
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 0
-	xvpickve2gr.d	$t4, $xr9, 1
-	andi	$t5, $t4, 1
-	beqz	$t5, .LBB31_13
-.LBB31_28:                              # %pred.load.if23
+	ld.h	$a3, $a2, -6
+	ld.h	$a4, $a1, -6
+	xvreplgr2vr.h	$xr11, $a3
+	xvpermi.q	$xr11, $xr8, 18
+	xvextrins.h	$xr8, $xr11, 85
+	xvreplgr2vr.h	$xr11, $a4
+	xvpermi.q	$xr11, $xr9, 18
+	xvextrins.h	$xr9, $xr11, 85
+.LBB31_15:                              # %pred.load.continue16
                                         #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$t5, $a2, 2
-	ld.h	$t6, $a1, 2
-	xvreplgr2vr.h	$xr10, $t5
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 17
-	xvreplgr2vr.h	$xr10, $t6
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 17
-	xvpickve2gr.d	$t5, $xr9, 2
-	andi	$t6, $t5, 1
-	beqz	$t6, .LBB31_14
-.LBB31_29:                              # %pred.load.if25
+	xvpermi.q	$xr11, $xr10, 1
+	vpickev.w	$vr11, $vr11, $vr10
+	xvpermi.q	$xr11, $xr11, 2
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.h	$xr11, $xr12, $xr11
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.b	$xr11, $xr12, $xr11
+	vpickve2gr.b	$a3, $vr11, 6
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_17
+# %bb.16:                               # %pred.load.if17
                                         #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$t6, $a2, 4
-	ld.h	$t7, $a1, 4
-	xvreplgr2vr.h	$xr10, $t6
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 34
-	xvreplgr2vr.h	$xr10, $t7
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 34
-	xvpickve2gr.d	$t6, $xr9, 3
-	andi	$t7, $t6, 1
-	beqz	$t7, .LBB31_15
-.LBB31_30:                              # %pred.load.if27
+	ld.h	$a3, $a2, -4
+	ld.h	$a4, $a1, -4
+	xvreplgr2vr.h	$xr11, $a3
+	xvpermi.q	$xr11, $xr8, 18
+	xvextrins.h	$xr8, $xr11, 102
+	xvreplgr2vr.h	$xr11, $a4
+	xvpermi.q	$xr11, $xr9, 18
+	xvextrins.h	$xr9, $xr11, 102
+.LBB31_17:                              # %pred.load.continue18
                                         #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$t7, $a2, 6
-	ld.h	$t8, $a1, 6
-	xvreplgr2vr.h	$xr9, $t7
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.h	$xr7, $xr9, 51
-	xvreplgr2vr.h	$xr9, $t8
-	xvpermi.q	$xr9, $xr8, 48
-	xvextrins.h	$xr8, $xr9, 51
-	xvsle.du	$xr9, $xr2, $xr0
-	xvpickve2gr.d	$t7, $xr9, 0
-	andi	$t8, $t7, 1
-	beqz	$t8, .LBB31_16
-.LBB31_31:                              # %pred.load.if29
+	xvpermi.q	$xr11, $xr10, 1
+	vpickev.w	$vr11, $vr11, $vr10
+	xvpermi.q	$xr11, $xr11, 2
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.h	$xr11, $xr12, $xr11
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.b	$xr11, $xr12, $xr11
+	vpickve2gr.b	$a3, $vr11, 7
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_19
+# %bb.18:                               # %pred.load.if19
                                         #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$t8, $a2, 8
-	ld.h	$fp, $a1, 8
-	xvreplgr2vr.h	$xr10, $t8
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 68
-	xvreplgr2vr.h	$xr10, $fp
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 68
-	xvpickve2gr.d	$t8, $xr9, 1
-	andi	$fp, $t8, 1
-	beqz	$fp, .LBB31_17
-.LBB31_32:                              # %pred.load.if31
+	ld.h	$a3, $a2, -2
+	ld.h	$a4, $a1, -2
+	xvreplgr2vr.h	$xr11, $a3
+	xvpermi.q	$xr11, $xr8, 18
+	xvextrins.h	$xr8, $xr11, 119
+	xvreplgr2vr.h	$xr11, $a4
+	xvpermi.q	$xr11, $xr9, 18
+	xvextrins.h	$xr9, $xr11, 119
+.LBB31_19:                              # %pred.load.continue20
                                         #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$fp, $a2, 10
-	ld.h	$s0, $a1, 10
-	xvreplgr2vr.h	$xr10, $fp
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 85
-	xvreplgr2vr.h	$xr10, $s0
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 85
-	xvpickve2gr.d	$fp, $xr9, 2
-	andi	$s0, $fp, 1
-	beqz	$s0, .LBB31_18
-.LBB31_33:                              # %pred.load.if33
+	xvsle.du	$xr11, $xr3, $xr1
+	xvpermi.q	$xr12, $xr11, 1
+	vpickev.w	$vr12, $vr12, $vr11
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a3, $vr12, 8
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_21
+# %bb.20:                               # %pred.load.if21
                                         #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$s0, $a2, 12
-	ld.h	$s1, $a1, 12
-	xvreplgr2vr.h	$xr10, $s0
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 102
-	xvreplgr2vr.h	$xr10, $s1
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 102
-	xvpickve2gr.d	$s0, $xr9, 3
-	andi	$s1, $s0, 1
-	beqz	$s1, .LBB31_2
-.LBB31_34:                              # %pred.load.if35
+	ld.h	$a3, $a2, 0
+	ld.h	$a4, $a1, 0
+	xvreplgr2vr.h	$xr12, $a3
+	xvpermi.q	$xr12, $xr8, 48
+	xvextrins.h	$xr8, $xr12, 0
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr9, 48
+	xvextrins.h	$xr9, $xr12, 0
+.LBB31_21:                              # %pred.load.continue22
                                         #   in Loop: Header=BB31_3 Depth=1
-	ld.h	$s1, $a2, 14
-	ld.h	$s2, $a1, 14
-	xvreplgr2vr.h	$xr9, $s1
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.h	$xr7, $xr9, 119
-	xvreplgr2vr.h	$xr9, $s2
-	xvpermi.q	$xr9, $xr8, 48
-	xvextrins.h	$xr8, $xr9, 119
+	xvpermi.q	$xr12, $xr11, 1
+	vpickev.w	$vr12, $vr12, $vr11
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr12, $xr13
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a3, $vr12, 9
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_23
+# %bb.22:                               # %pred.load.if23
+                                        #   in Loop: Header=BB31_3 Depth=1
+	ld.h	$a3, $a2, 2
+	ld.h	$a4, $a1, 2
+	xvreplgr2vr.h	$xr12, $a3
+	xvpermi.q	$xr12, $xr8, 48
+	xvextrins.h	$xr8, $xr12, 17
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr9, 48
+	xvextrins.h	$xr9, $xr12, 17
+.LBB31_23:                              # %pred.load.continue24
+                                        #   in Loop: Header=BB31_3 Depth=1
+	xvpermi.q	$xr12, $xr11, 1
+	vpickev.w	$vr12, $vr12, $vr11
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr12, $xr13
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a3, $vr12, 10
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_25
+# %bb.24:                               # %pred.load.if25
+                                        #   in Loop: Header=BB31_3 Depth=1
+	ld.h	$a3, $a2, 4
+	ld.h	$a4, $a1, 4
+	xvreplgr2vr.h	$xr12, $a3
+	xvpermi.q	$xr12, $xr8, 48
+	xvextrins.h	$xr8, $xr12, 34
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr9, 48
+	xvextrins.h	$xr9, $xr12, 34
+.LBB31_25:                              # %pred.load.continue26
+                                        #   in Loop: Header=BB31_3 Depth=1
+	xvpermi.q	$xr12, $xr11, 1
+	vpickev.w	$vr12, $vr12, $vr11
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr12, $xr13
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a3, $vr12, 11
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_27
+# %bb.26:                               # %pred.load.if27
+                                        #   in Loop: Header=BB31_3 Depth=1
+	ld.h	$a3, $a2, 6
+	ld.h	$a4, $a1, 6
+	xvreplgr2vr.h	$xr12, $a3
+	xvpermi.q	$xr12, $xr8, 48
+	xvextrins.h	$xr8, $xr12, 51
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr9, 48
+	xvextrins.h	$xr9, $xr12, 51
+.LBB31_27:                              # %pred.load.continue28
+                                        #   in Loop: Header=BB31_3 Depth=1
+	xvsle.du	$xr12, $xr2, $xr1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a3, $vr13, 12
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_29
+# %bb.28:                               # %pred.load.if29
+                                        #   in Loop: Header=BB31_3 Depth=1
+	ld.h	$a3, $a2, 8
+	ld.h	$a4, $a1, 8
+	xvreplgr2vr.h	$xr13, $a3
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 68
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 68
+.LBB31_29:                              # %pred.load.continue30
+                                        #   in Loop: Header=BB31_3 Depth=1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a3, $vr13, 13
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_31
+# %bb.30:                               # %pred.load.if31
+                                        #   in Loop: Header=BB31_3 Depth=1
+	ld.h	$a3, $a2, 10
+	ld.h	$a4, $a1, 10
+	xvreplgr2vr.h	$xr13, $a3
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 85
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 85
+.LBB31_31:                              # %pred.load.continue32
+                                        #   in Loop: Header=BB31_3 Depth=1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a3, $vr13, 14
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_33
+# %bb.32:                               # %pred.load.if33
+                                        #   in Loop: Header=BB31_3 Depth=1
+	ld.h	$a3, $a2, 12
+	ld.h	$a4, $a1, 12
+	xvreplgr2vr.h	$xr13, $a3
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 102
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 102
+.LBB31_33:                              # %pred.load.continue34
+                                        #   in Loop: Header=BB31_3 Depth=1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a3, $vr13, 15
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB31_2
+# %bb.34:                               # %pred.load.if35
+                                        #   in Loop: Header=BB31_3 Depth=1
+	ld.h	$a3, $a2, 14
+	ld.h	$a4, $a1, 14
+	xvreplgr2vr.h	$xr13, $a3
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 119
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 119
 	b	.LBB31_2
 .LBB31_35:                              # %"_ZSt10__invoke_rIsRZ4mainE3$_7JPsS2_sEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.h	$vr0, $a3, 0
-	vinsgr2vr.h	$vr0, $a4, 1
-	vinsgr2vr.h	$vr0, $a5, 2
-	vinsgr2vr.h	$vr0, $a6, 3
-	vinsgr2vr.h	$vr0, $a7, 4
-	vinsgr2vr.h	$vr0, $t0, 5
-	vinsgr2vr.h	$vr0, $t1, 6
-	vinsgr2vr.h	$vr0, $t2, 7
-	vinsgr2vr.h	$vr2, $t3, 0
-	vinsgr2vr.h	$vr2, $t4, 1
-	vinsgr2vr.h	$vr2, $t5, 2
-	vinsgr2vr.h	$vr2, $t6, 3
-	vinsgr2vr.h	$vr2, $t7, 4
-	vinsgr2vr.h	$vr2, $t8, 5
-	vinsgr2vr.h	$vr2, $fp, 6
-	vinsgr2vr.h	$vr2, $s0, 7
-	xvpermi.q	$xr0, $xr2, 2
-	xvbitsel.v	$xr0, $xr1, $xr7, $xr0
+	xvpermi.q	$xr1, $xr7, 1
+	vpickev.w	$vr2, $vr1, $vr7
+	xvpermi.q	$xr1, $xr10, 1
+	vpickev.w	$vr1, $vr1, $vr10
+	xvpermi.q	$xr2, $xr1, 2
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr1, $a0, 1
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr1, $a0, 2
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr1, $a0, 4
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr1, $a0, 5
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr1, $a0, 6
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpermi.q	$xr2, $xr11, 1
+	vpickev.w	$vr2, $vr2, $vr11
+	xvpermi.q	$xr3, $xr12, 1
+	vpickev.w	$vr3, $vr3, $vr12
+	xvpermi.q	$xr2, $xr3, 2
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr3, $a0, 1
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr3, $a0, 2
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr3, $a0, 4
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr3, $a0, 5
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr3, $a0, 6
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr3, $a0, 7
+	xvpermi.q	$xr1, $xr3, 2
+	xvbitsel.v	$xr0, $xr0, $xr8, $xr1
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.h	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -9080,11 +9215,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	addi.d	$a2, $zero, -1
 	maskeqz	$a1, $a2, $a1
 	or	$a0, $a1, $a0
-	ld.d	$s2, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
 	ext.w.h	$a0, $a0
 	ret
 .LBB31_36:
@@ -9215,13 +9345,13 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	xvld	$xr3, $a4, %pc_lo12(.LCPI35_2)
 	addi.d	$a2, $a2, 16
 	addi.d	$a3, $a3, 16
-	xvldi	$xr5, -3200
+	xvldi	$xr6, -3200
 	b	.LBB35_3
 	.p2align	4, , 16
 .LBB35_2:                               # %pred.load.continue20
                                         #   in Loop: Header=BB35_3 Depth=1
-	xvslt.w	$xr5, $xr6, $xr5
-	xvbitsel.v	$xr5, $xr4, $xr3, $xr5
+	xvslt.w	$xr6, $xr7, $xr6
+	xvbitsel.v	$xr6, $xr4, $xr3, $xr6
 	xvaddi.du	$xr2, $xr2, 8
 	xvaddi.du	$xr1, $xr1, 8
 	xvaddi.wu	$xr3, $xr3, 8
@@ -9231,133 +9361,133 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	beqz	$a1, .LBB35_19
 .LBB35_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvsle.du	$xr7, $xr2, $xr0
-	xvpickve2gr.d	$a4, $xr7, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr4, $xr5, 0
-                                        # implicit-def: $xr5
+	xvsle.du	$xr5, $xr2, $xr0
+	vpickve2gr.h	$a4, $vr5, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr4, $xr6, 0
                                         # implicit-def: $xr6
-	bnez	$a5, .LBB35_11
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr7
+	beqz	$a4, .LBB35_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB35_3 Depth=1
-	xvpickve2gr.d	$a5, $xr7, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB35_12
-.LBB35_5:                               # %pred.load.continue8
+	ld.w	$a4, $a3, -16
+	ld.w	$a5, $a2, -16
+	vinsgr2vr.w	$vr6, $a4, 0
+	vinsgr2vr.w	$vr7, $a5, 0
+.LBB35_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB35_3 Depth=1
-	xvpickve2gr.d	$a6, $xr7, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB35_13
-.LBB35_6:                               # %pred.load.continue10
+	vshuf4i.w	$vr8, $vr5, 8
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a4, $vr8, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB35_7
+# %bb.6:                                # %pred.load.if7
                                         #   in Loop: Header=BB35_3 Depth=1
-	xvpickve2gr.d	$a7, $xr7, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB35_14
-.LBB35_7:                               # %pred.load.continue12
+	ld.w	$a4, $a3, -12
+	ld.w	$a5, $a2, -12
+	xvinsgr2vr.w	$xr6, $a4, 1
+	xvinsgr2vr.w	$xr7, $a5, 1
+.LBB35_7:                               # %pred.load.continue8
                                         #   in Loop: Header=BB35_3 Depth=1
-	xvsle.du	$xr7, $xr1, $xr0
-	xvpickve2gr.d	$t0, $xr7, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB35_15
-.LBB35_8:                               # %pred.load.continue14
+	xvpermi.q	$xr8, $xr5, 1
+	vshuf4i.w	$vr8, $vr8, 128
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a4, $vr8, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB35_9
+# %bb.8:                                # %pred.load.if9
                                         #   in Loop: Header=BB35_3 Depth=1
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB35_16
-.LBB35_9:                               # %pred.load.continue16
+	ld.w	$a4, $a3, -8
+	ld.w	$a5, $a2, -8
+	xvinsgr2vr.w	$xr6, $a4, 2
+	xvinsgr2vr.w	$xr7, $a5, 2
+.LBB35_9:                               # %pred.load.continue10
                                         #   in Loop: Header=BB35_3 Depth=1
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB35_17
-.LBB35_10:                              # %pred.load.continue18
+	xvpermi.q	$xr8, $xr5, 1
+	vshuf4i.w	$vr8, $vr8, 128
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a4, $vr8, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB35_11
+# %bb.10:                               # %pred.load.if11
                                         #   in Loop: Header=BB35_3 Depth=1
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB35_2
-	b	.LBB35_18
-	.p2align	4, , 16
-.LBB35_11:                              # %pred.load.if
+	ld.w	$a4, $a3, -4
+	ld.w	$a5, $a2, -4
+	xvinsgr2vr.w	$xr6, $a4, 3
+	xvinsgr2vr.w	$xr7, $a5, 3
+.LBB35_11:                              # %pred.load.continue12
                                         #   in Loop: Header=BB35_3 Depth=1
-	ld.w	$a5, $a3, -16
-	ld.w	$a6, $a2, -16
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	xvpickve2gr.d	$a5, $xr7, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB35_5
-.LBB35_12:                              # %pred.load.if7
+	xvsle.du	$xr8, $xr1, $xr0
+	xvpermi.d	$xr9, $xr8, 64
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB35_13
+# %bb.12:                               # %pred.load.if13
                                         #   in Loop: Header=BB35_3 Depth=1
-	ld.w	$a6, $a3, -12
-	ld.w	$a7, $a2, -12
-	xvinsgr2vr.w	$xr5, $a6, 1
-	xvinsgr2vr.w	$xr6, $a7, 1
-	xvpickve2gr.d	$a6, $xr7, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB35_6
-.LBB35_13:                              # %pred.load.if9
+	ld.w	$a4, $a3, 0
+	ld.w	$a5, $a2, 0
+	xvinsgr2vr.w	$xr6, $a4, 4
+	xvinsgr2vr.w	$xr7, $a5, 4
+.LBB35_13:                              # %pred.load.continue14
                                         #   in Loop: Header=BB35_3 Depth=1
-	ld.w	$a7, $a3, -8
-	ld.w	$t0, $a2, -8
-	xvinsgr2vr.w	$xr5, $a7, 2
-	xvinsgr2vr.w	$xr6, $t0, 2
-	xvpickve2gr.d	$a7, $xr7, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB35_7
-.LBB35_14:                              # %pred.load.if11
+	vshuf4i.w	$vr9, $vr8, 8
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB35_15
+# %bb.14:                               # %pred.load.if15
                                         #   in Loop: Header=BB35_3 Depth=1
-	ld.w	$t0, $a3, -4
-	ld.w	$t1, $a2, -4
-	xvinsgr2vr.w	$xr5, $t0, 3
-	xvinsgr2vr.w	$xr6, $t1, 3
-	xvsle.du	$xr7, $xr1, $xr0
-	xvpickve2gr.d	$t0, $xr7, 0
-	andi	$t1, $t0, 1
-	beqz	$t1, .LBB35_8
-.LBB35_15:                              # %pred.load.if13
+	ld.w	$a4, $a3, 4
+	ld.w	$a5, $a2, 4
+	xvinsgr2vr.w	$xr6, $a4, 5
+	xvinsgr2vr.w	$xr7, $a5, 5
+.LBB35_15:                              # %pred.load.continue16
                                         #   in Loop: Header=BB35_3 Depth=1
-	ld.w	$t1, $a3, 0
-	ld.w	$t2, $a2, 0
-	xvinsgr2vr.w	$xr5, $t1, 4
-	xvinsgr2vr.w	$xr6, $t2, 4
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB35_9
-.LBB35_16:                              # %pred.load.if15
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB35_17
+# %bb.16:                               # %pred.load.if17
                                         #   in Loop: Header=BB35_3 Depth=1
-	ld.w	$t2, $a3, 4
-	ld.w	$t3, $a2, 4
-	xvinsgr2vr.w	$xr5, $t2, 5
-	xvinsgr2vr.w	$xr6, $t3, 5
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB35_10
-.LBB35_17:                              # %pred.load.if17
+	ld.w	$a4, $a3, 8
+	ld.w	$a5, $a2, 8
+	xvinsgr2vr.w	$xr6, $a4, 6
+	xvinsgr2vr.w	$xr7, $a5, 6
+.LBB35_17:                              # %pred.load.continue18
                                         #   in Loop: Header=BB35_3 Depth=1
-	ld.w	$t3, $a3, 8
-	ld.w	$t4, $a2, 8
-	xvinsgr2vr.w	$xr5, $t3, 6
-	xvinsgr2vr.w	$xr6, $t4, 6
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB35_2
-.LBB35_18:                              # %pred.load.if19
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB35_2
+# %bb.18:                               # %pred.load.if19
                                         #   in Loop: Header=BB35_3 Depth=1
-	ld.w	$t4, $a3, 12
-	ld.w	$t5, $a2, 12
-	xvinsgr2vr.w	$xr5, $t4, 7
-	xvinsgr2vr.w	$xr6, $t5, 7
+	ld.w	$a4, $a3, 12
+	ld.w	$a5, $a2, 12
+	xvinsgr2vr.w	$xr6, $a4, 7
+	xvinsgr2vr.w	$xr7, $a5, 7
 	b	.LBB35_2
 .LBB35_19:                              # %"_ZSt10__invoke_rIiRZ4mainE3$_9JPiS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.w	$vr0, $a4, 0
-	vinsgr2vr.w	$vr0, $a5, 1
-	vinsgr2vr.w	$vr0, $a6, 2
-	vinsgr2vr.w	$vr0, $a7, 3
-	vinsgr2vr.w	$vr1, $t0, 0
-	vinsgr2vr.w	$vr1, $t1, 1
-	vinsgr2vr.w	$vr1, $t2, 2
-	vinsgr2vr.w	$vr1, $t3, 3
+	xvpermi.q	$xr0, $xr5, 1
+	vpickev.w	$vr0, $vr0, $vr5
+	xvpermi.q	$xr1, $xr8, 1
+	vpickev.w	$vr1, $vr1, $vr8
 	xvpermi.q	$xr0, $xr1, 2
-	xvbitsel.v	$xr0, $xr4, $xr5, $xr0
+	xvbitsel.v	$xr0, $xr4, $xr6, $xr0
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -9497,13 +9627,13 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	xvld	$xr3, $a4, %pc_lo12(.LCPI39_2)
 	addi.d	$a2, $a2, 16
 	addi.d	$a3, $a3, 16
-	xvldi	$xr5, -3200
+	xvldi	$xr6, -3200
 	b	.LBB39_3
 	.p2align	4, , 16
 .LBB39_2:                               # %pred.load.continue20
                                         #   in Loop: Header=BB39_3 Depth=1
-	xvfcmp.clt.s	$xr5, $xr6, $xr5
-	xvbitsel.v	$xr5, $xr4, $xr3, $xr5
+	xvfcmp.clt.s	$xr6, $xr7, $xr6
+	xvbitsel.v	$xr6, $xr4, $xr3, $xr6
 	xvaddi.du	$xr2, $xr2, 8
 	xvaddi.du	$xr1, $xr1, 8
 	xvaddi.wu	$xr3, $xr3, 8
@@ -9513,131 +9643,131 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	beqz	$a1, .LBB39_19
 .LBB39_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvsle.du	$xr7, $xr2, $xr0
-	xvpickve2gr.d	$a4, $xr7, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr4, $xr5, 0
-                                        # implicit-def: $xr5
+	xvsle.du	$xr5, $xr2, $xr0
+	vpickve2gr.h	$a4, $vr5, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr4, $xr6, 0
                                         # implicit-def: $xr6
-	bnez	$a5, .LBB39_11
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr7
+	beqz	$a4, .LBB39_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB39_3 Depth=1
-	xvpickve2gr.d	$a5, $xr7, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB39_12
-.LBB39_5:                               # %pred.load.continue8
+	fld.s	$fa6, $a3, -16
+	fld.s	$fa7, $a2, -16
+.LBB39_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB39_3 Depth=1
-	xvpickve2gr.d	$a6, $xr7, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB39_13
-.LBB39_6:                               # %pred.load.continue10
-                                        #   in Loop: Header=BB39_3 Depth=1
-	xvpickve2gr.d	$a7, $xr7, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB39_14
-.LBB39_7:                               # %pred.load.continue12
-                                        #   in Loop: Header=BB39_3 Depth=1
-	xvsle.du	$xr7, $xr1, $xr0
-	xvpickve2gr.d	$t0, $xr7, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB39_15
-.LBB39_8:                               # %pred.load.continue14
-                                        #   in Loop: Header=BB39_3 Depth=1
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB39_16
-.LBB39_9:                               # %pred.load.continue16
-                                        #   in Loop: Header=BB39_3 Depth=1
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB39_17
-.LBB39_10:                              # %pred.load.continue18
-                                        #   in Loop: Header=BB39_3 Depth=1
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB39_2
-	b	.LBB39_18
-	.p2align	4, , 16
-.LBB39_11:                              # %pred.load.if
-                                        #   in Loop: Header=BB39_3 Depth=1
-	fld.s	$fa5, $a3, -16
-	fld.s	$fa6, $a2, -16
-	xvpickve2gr.d	$a5, $xr7, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB39_5
-.LBB39_12:                              # %pred.load.if7
+	vshuf4i.w	$vr8, $vr5, 8
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a4, $vr8, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB39_7
+# %bb.6:                                # %pred.load.if7
                                         #   in Loop: Header=BB39_3 Depth=1
 	fld.s	$ft0, $a3, -12
 	fld.s	$ft1, $a2, -12
-	xvinsve0.w	$xr5, $xr8, 1
-	xvinsve0.w	$xr6, $xr9, 1
-	xvpickve2gr.d	$a6, $xr7, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB39_6
-.LBB39_13:                              # %pred.load.if9
+	xvinsve0.w	$xr6, $xr8, 1
+	xvinsve0.w	$xr7, $xr9, 1
+.LBB39_7:                               # %pred.load.continue8
+                                        #   in Loop: Header=BB39_3 Depth=1
+	xvpermi.q	$xr8, $xr5, 1
+	vshuf4i.w	$vr8, $vr8, 128
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a4, $vr8, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB39_9
+# %bb.8:                                # %pred.load.if9
                                         #   in Loop: Header=BB39_3 Depth=1
 	fld.s	$ft0, $a3, -8
 	fld.s	$ft1, $a2, -8
-	xvinsve0.w	$xr5, $xr8, 2
-	xvinsve0.w	$xr6, $xr9, 2
-	xvpickve2gr.d	$a7, $xr7, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB39_7
-.LBB39_14:                              # %pred.load.if11
+	xvinsve0.w	$xr6, $xr8, 2
+	xvinsve0.w	$xr7, $xr9, 2
+.LBB39_9:                               # %pred.load.continue10
                                         #   in Loop: Header=BB39_3 Depth=1
-	fld.s	$fa7, $a3, -4
-	fld.s	$ft0, $a2, -4
-	xvinsve0.w	$xr5, $xr7, 3
+	xvpermi.q	$xr8, $xr5, 1
+	vshuf4i.w	$vr8, $vr8, 128
+	xvpermi.d	$xr9, $xr8, 78
+	xvpickev.h	$xr8, $xr9, $xr8
+	vpickve2gr.h	$a4, $vr8, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB39_11
+# %bb.10:                               # %pred.load.if11
+                                        #   in Loop: Header=BB39_3 Depth=1
+	fld.s	$ft0, $a3, -4
+	fld.s	$ft1, $a2, -4
 	xvinsve0.w	$xr6, $xr8, 3
-	xvsle.du	$xr7, $xr1, $xr0
-	xvpickve2gr.d	$t0, $xr7, 0
-	andi	$t1, $t0, 1
-	beqz	$t1, .LBB39_8
-.LBB39_15:                              # %pred.load.if13
+	xvinsve0.w	$xr7, $xr9, 3
+.LBB39_11:                              # %pred.load.continue12
                                         #   in Loop: Header=BB39_3 Depth=1
-	fld.s	$ft0, $a3, 0
-	fld.s	$ft1, $a2, 0
-	xvinsve0.w	$xr5, $xr8, 4
+	xvsle.du	$xr8, $xr1, $xr0
+	xvpermi.d	$xr9, $xr8, 64
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB39_13
+# %bb.12:                               # %pred.load.if13
+                                        #   in Loop: Header=BB39_3 Depth=1
+	fld.s	$ft1, $a3, 0
+	fld.s	$ft2, $a2, 0
 	xvinsve0.w	$xr6, $xr9, 4
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB39_9
-.LBB39_16:                              # %pred.load.if15
+	xvinsve0.w	$xr7, $xr10, 4
+.LBB39_13:                              # %pred.load.continue14
                                         #   in Loop: Header=BB39_3 Depth=1
-	fld.s	$ft0, $a3, 4
-	fld.s	$ft1, $a2, 4
-	xvinsve0.w	$xr5, $xr8, 5
+	vshuf4i.w	$vr9, $vr8, 8
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB39_15
+# %bb.14:                               # %pred.load.if15
+                                        #   in Loop: Header=BB39_3 Depth=1
+	fld.s	$ft1, $a3, 4
+	fld.s	$ft2, $a2, 4
 	xvinsve0.w	$xr6, $xr9, 5
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB39_10
-.LBB39_17:                              # %pred.load.if17
+	xvinsve0.w	$xr7, $xr10, 5
+.LBB39_15:                              # %pred.load.continue16
                                         #   in Loop: Header=BB39_3 Depth=1
-	fld.s	$ft0, $a3, 8
-	fld.s	$ft1, $a2, 8
-	xvinsve0.w	$xr5, $xr8, 6
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB39_17
+# %bb.16:                               # %pred.load.if17
+                                        #   in Loop: Header=BB39_3 Depth=1
+	fld.s	$ft1, $a3, 8
+	fld.s	$ft2, $a2, 8
 	xvinsve0.w	$xr6, $xr9, 6
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB39_2
-.LBB39_18:                              # %pred.load.if19
+	xvinsve0.w	$xr7, $xr10, 6
+.LBB39_17:                              # %pred.load.continue18
                                         #   in Loop: Header=BB39_3 Depth=1
-	fld.s	$fa7, $a3, 12
-	fld.s	$ft0, $a2, 12
-	xvinsve0.w	$xr5, $xr7, 7
-	xvinsve0.w	$xr6, $xr8, 7
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB39_2
+# %bb.18:                               # %pred.load.if19
+                                        #   in Loop: Header=BB39_3 Depth=1
+	fld.s	$ft1, $a3, 12
+	fld.s	$ft2, $a2, 12
+	xvinsve0.w	$xr6, $xr9, 7
+	xvinsve0.w	$xr7, $xr10, 7
 	b	.LBB39_2
 .LBB39_19:                              # %"_ZSt10__invoke_rIiRZ4mainE3$_9JPfS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.w	$vr0, $a4, 0
-	vinsgr2vr.w	$vr0, $a5, 1
-	vinsgr2vr.w	$vr0, $a6, 2
-	vinsgr2vr.w	$vr0, $a7, 3
-	vinsgr2vr.w	$vr1, $t0, 0
-	vinsgr2vr.w	$vr1, $t1, 1
-	vinsgr2vr.w	$vr1, $t2, 2
-	vinsgr2vr.w	$vr1, $t3, 3
+	xvpermi.q	$xr0, $xr5, 1
+	vpickev.w	$vr0, $vr0, $vr5
+	xvpermi.q	$xr1, $xr8, 1
+	vpickev.w	$vr1, $vr1, $vr8
 	xvpermi.q	$xr0, $xr1, 2
-	xvbitsel.v	$xr0, $xr4, $xr5, $xr0
+	xvbitsel.v	$xr0, $xr4, $xr6, $xr0
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -9779,19 +9909,13 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ld.h	$a0, $a3, 0
 	blez	$a0, .LBB43_36
 # %bb.1:                                # %vector.ph
-	addi.d	$sp, $sp, -48
-	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	ld.d	$a3, $a1, 0
 	ld.d	$a2, $a2, 0
 	addi.d	$a1, $a0, 15
 	bstrpick.d	$a1, $a1, 15, 4
 	slli.d	$a1, $a1, 4
 	addi.d	$a4, $a0, -1
-	xvreplgr2vr.d	$xr0, $a4
+	xvreplgr2vr.d	$xr1, $a4
 	pcalau12i	$a4, %pc_hi20(.LCPI43_0)
 	xvld	$xr2, $a4, %pc_lo12(.LCPI43_0)
 	pcalau12i	$a4, %pc_hi20(.LCPI43_1)
@@ -9804,13 +9928,13 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	xvld	$xr6, $a4, %pc_lo12(.LCPI43_4)
 	addi.d	$a2, $a2, 16
 	addi.d	$a3, $a3, 16
-	xvldi	$xr7, -2688
+	xvldi	$xr8, -2688
 	b	.LBB43_3
 	.p2align	4, , 16
 .LBB43_2:                               # %pred.load.continue36
                                         #   in Loop: Header=BB43_3 Depth=1
-	xvslt.h	$xr7, $xr8, $xr7
-	xvbitsel.v	$xr7, $xr1, $xr6, $xr7
+	xvslt.h	$xr8, $xr9, $xr8
+	xvbitsel.v	$xr8, $xr0, $xr6, $xr8
 	xvaddi.du	$xr5, $xr5, 16
 	xvaddi.du	$xr4, $xr4, 16
 	xvaddi.du	$xr3, $xr3, 16
@@ -9822,317 +9946,392 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	beqz	$a1, .LBB43_35
 .LBB43_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvsle.du	$xr9, $xr5, $xr0
-	xvpickve2gr.d	$a4, $xr9, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr1, $xr7, 0
-                                        # implicit-def: $xr7
+	xvsle.du	$xr7, $xr5, $xr1
+	vpickve2gr.b	$a4, $vr7, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr0, $xr8, 0
                                         # implicit-def: $xr8
-	bnez	$a5, .LBB43_19
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr9
+	beqz	$a4, .LBB43_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB43_3 Depth=1
-	xvpickve2gr.d	$a5, $xr9, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB43_20
-.LBB43_5:                               # %pred.load.continue8
+	ld.h	$a4, $a3, -16
+	ld.h	$a5, $a2, -16
+	vinsgr2vr.h	$vr8, $a4, 0
+	vinsgr2vr.h	$vr9, $a5, 0
+.LBB43_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB43_3 Depth=1
-	xvpickve2gr.d	$a6, $xr9, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB43_21
-.LBB43_6:                               # %pred.load.continue10
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.h	$xr10, $xr11, $xr10
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.b	$xr10, $xr11, $xr10
+	vpickve2gr.b	$a4, $vr10, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_7
+# %bb.6:                                # %pred.load.if7
                                         #   in Loop: Header=BB43_3 Depth=1
-	xvpickve2gr.d	$a7, $xr9, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB43_22
-.LBB43_7:                               # %pred.load.continue12
-                                        #   in Loop: Header=BB43_3 Depth=1
-	xvsle.du	$xr9, $xr4, $xr0
-	xvpickve2gr.d	$t0, $xr9, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB43_23
-.LBB43_8:                               # %pred.load.continue14
-                                        #   in Loop: Header=BB43_3 Depth=1
-	xvpickve2gr.d	$t1, $xr9, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB43_24
-.LBB43_9:                               # %pred.load.continue16
-                                        #   in Loop: Header=BB43_3 Depth=1
-	xvpickve2gr.d	$t2, $xr9, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB43_25
-.LBB43_10:                              # %pred.load.continue18
-                                        #   in Loop: Header=BB43_3 Depth=1
-	xvpickve2gr.d	$t3, $xr9, 3
-	andi	$t4, $t3, 1
-	bnez	$t4, .LBB43_26
-.LBB43_11:                              # %pred.load.continue20
-                                        #   in Loop: Header=BB43_3 Depth=1
-	xvsle.du	$xr9, $xr3, $xr0
-	xvpickve2gr.d	$t4, $xr9, 0
-	andi	$t5, $t4, 1
-	bnez	$t5, .LBB43_27
-.LBB43_12:                              # %pred.load.continue22
-                                        #   in Loop: Header=BB43_3 Depth=1
-	xvpickve2gr.d	$t5, $xr9, 1
-	andi	$t6, $t5, 1
-	bnez	$t6, .LBB43_28
-.LBB43_13:                              # %pred.load.continue24
-                                        #   in Loop: Header=BB43_3 Depth=1
-	xvpickve2gr.d	$t6, $xr9, 2
-	andi	$t7, $t6, 1
-	bnez	$t7, .LBB43_29
-.LBB43_14:                              # %pred.load.continue26
-                                        #   in Loop: Header=BB43_3 Depth=1
-	xvpickve2gr.d	$t7, $xr9, 3
-	andi	$t8, $t7, 1
-	bnez	$t8, .LBB43_30
-.LBB43_15:                              # %pred.load.continue28
-                                        #   in Loop: Header=BB43_3 Depth=1
-	xvsle.du	$xr9, $xr2, $xr0
-	xvpickve2gr.d	$t8, $xr9, 0
-	andi	$fp, $t8, 1
-	bnez	$fp, .LBB43_31
-.LBB43_16:                              # %pred.load.continue30
-                                        #   in Loop: Header=BB43_3 Depth=1
-	xvpickve2gr.d	$fp, $xr9, 1
-	andi	$s0, $fp, 1
-	bnez	$s0, .LBB43_32
-.LBB43_17:                              # %pred.load.continue32
-                                        #   in Loop: Header=BB43_3 Depth=1
-	xvpickve2gr.d	$s0, $xr9, 2
-	andi	$s1, $s0, 1
-	bnez	$s1, .LBB43_33
-.LBB43_18:                              # %pred.load.continue34
-                                        #   in Loop: Header=BB43_3 Depth=1
-	xvpickve2gr.d	$s1, $xr9, 3
-	andi	$s2, $s1, 1
-	beqz	$s2, .LBB43_2
-	b	.LBB43_34
-	.p2align	4, , 16
-.LBB43_19:                              # %pred.load.if
-                                        #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$a5, $a3, -16
-	ld.h	$a6, $a2, -16
-	vinsgr2vr.h	$vr7, $a5, 0
-	vinsgr2vr.h	$vr8, $a6, 0
-	xvpickve2gr.d	$a5, $xr9, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB43_5
-.LBB43_20:                              # %pred.load.if7
-                                        #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$a6, $a3, -14
-	ld.h	$a7, $a2, -14
-	xvreplgr2vr.h	$xr10, $a6
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 17
-	xvreplgr2vr.h	$xr10, $a7
+	ld.h	$a4, $a3, -14
+	ld.h	$a5, $a2, -14
+	xvreplgr2vr.h	$xr10, $a4
 	xvpermi.q	$xr10, $xr8, 18
 	xvextrins.h	$xr8, $xr10, 17
-	xvpickve2gr.d	$a6, $xr9, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB43_6
-.LBB43_21:                              # %pred.load.if9
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 17
+.LBB43_7:                               # %pred.load.continue8
                                         #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$a7, $a3, -12
-	ld.h	$t0, $a2, -12
-	xvreplgr2vr.h	$xr10, $a7
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 34
-	xvreplgr2vr.h	$xr10, $t0
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.h	$xr10, $xr11, $xr10
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.b	$xr10, $xr11, $xr10
+	vpickve2gr.b	$a4, $vr10, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_9
+# %bb.8:                                # %pred.load.if9
+                                        #   in Loop: Header=BB43_3 Depth=1
+	ld.h	$a4, $a3, -12
+	ld.h	$a5, $a2, -12
+	xvreplgr2vr.h	$xr10, $a4
 	xvpermi.q	$xr10, $xr8, 18
 	xvextrins.h	$xr8, $xr10, 34
-	xvpickve2gr.d	$a7, $xr9, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB43_7
-.LBB43_22:                              # %pred.load.if11
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 34
+.LBB43_9:                               # %pred.load.continue10
                                         #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$t0, $a3, -10
-	ld.h	$t1, $a2, -10
-	xvreplgr2vr.h	$xr9, $t0
-	xvpermi.q	$xr9, $xr7, 18
-	xvextrins.h	$xr7, $xr9, 51
-	xvreplgr2vr.h	$xr9, $t1
-	xvpermi.q	$xr9, $xr8, 18
-	xvextrins.h	$xr8, $xr9, 51
-	xvsle.du	$xr9, $xr4, $xr0
-	xvpickve2gr.d	$t0, $xr9, 0
-	andi	$t1, $t0, 1
-	beqz	$t1, .LBB43_8
-.LBB43_23:                              # %pred.load.if13
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.h	$xr10, $xr11, $xr10
+	xvpermi.d	$xr11, $xr10, 78
+	xvpickev.b	$xr10, $xr11, $xr10
+	vpickve2gr.b	$a4, $vr10, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_11
+# %bb.10:                               # %pred.load.if11
                                         #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$t1, $a3, -8
-	ld.h	$t2, $a2, -8
-	xvreplgr2vr.h	$xr10, $t1
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 68
-	xvreplgr2vr.h	$xr10, $t2
+	ld.h	$a4, $a3, -10
+	ld.h	$a5, $a2, -10
+	xvreplgr2vr.h	$xr10, $a4
 	xvpermi.q	$xr10, $xr8, 18
-	xvextrins.h	$xr8, $xr10, 68
-	xvpickve2gr.d	$t1, $xr9, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB43_9
-.LBB43_24:                              # %pred.load.if15
+	xvextrins.h	$xr8, $xr10, 51
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 51
+.LBB43_11:                              # %pred.load.continue12
                                         #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$t2, $a3, -6
-	ld.h	$t3, $a2, -6
-	xvreplgr2vr.h	$xr10, $t2
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 85
-	xvreplgr2vr.h	$xr10, $t3
-	xvpermi.q	$xr10, $xr8, 18
-	xvextrins.h	$xr8, $xr10, 85
-	xvpickve2gr.d	$t2, $xr9, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB43_10
-.LBB43_25:                              # %pred.load.if17
+	xvsle.du	$xr10, $xr4, $xr1
+	xvpermi.q	$xr11, $xr10, 1
+	vpickev.w	$vr11, $vr11, $vr10
+	xvpermi.q	$xr11, $xr11, 2
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.h	$xr11, $xr12, $xr11
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.b	$xr11, $xr12, $xr11
+	vpickve2gr.b	$a4, $vr11, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_13
+# %bb.12:                               # %pred.load.if13
                                         #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$t3, $a3, -4
-	ld.h	$t4, $a2, -4
-	xvreplgr2vr.h	$xr10, $t3
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 102
-	xvreplgr2vr.h	$xr10, $t4
-	xvpermi.q	$xr10, $xr8, 18
-	xvextrins.h	$xr8, $xr10, 102
-	xvpickve2gr.d	$t3, $xr9, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB43_11
-.LBB43_26:                              # %pred.load.if19
+	ld.h	$a4, $a3, -8
+	ld.h	$a5, $a2, -8
+	xvreplgr2vr.h	$xr11, $a4
+	xvpermi.q	$xr11, $xr8, 18
+	xvextrins.h	$xr8, $xr11, 68
+	xvreplgr2vr.h	$xr11, $a5
+	xvpermi.q	$xr11, $xr9, 18
+	xvextrins.h	$xr9, $xr11, 68
+.LBB43_13:                              # %pred.load.continue14
                                         #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$t4, $a3, -2
-	ld.h	$t5, $a2, -2
-	xvreplgr2vr.h	$xr9, $t4
-	xvpermi.q	$xr9, $xr7, 18
-	xvextrins.h	$xr7, $xr9, 119
-	xvreplgr2vr.h	$xr9, $t5
-	xvpermi.q	$xr9, $xr8, 18
-	xvextrins.h	$xr8, $xr9, 119
-	xvsle.du	$xr9, $xr3, $xr0
-	xvpickve2gr.d	$t4, $xr9, 0
-	andi	$t5, $t4, 1
-	beqz	$t5, .LBB43_12
-.LBB43_27:                              # %pred.load.if21
+	xvpermi.q	$xr11, $xr10, 1
+	vpickev.w	$vr11, $vr11, $vr10
+	xvpermi.q	$xr11, $xr11, 2
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.h	$xr11, $xr12, $xr11
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.b	$xr11, $xr12, $xr11
+	vpickve2gr.b	$a4, $vr11, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_15
+# %bb.14:                               # %pred.load.if15
                                         #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$t5, $a3, 0
-	ld.h	$t6, $a2, 0
-	xvreplgr2vr.h	$xr10, $t5
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 0
-	xvreplgr2vr.h	$xr10, $t6
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 0
-	xvpickve2gr.d	$t5, $xr9, 1
-	andi	$t6, $t5, 1
-	beqz	$t6, .LBB43_13
-.LBB43_28:                              # %pred.load.if23
+	ld.h	$a4, $a3, -6
+	ld.h	$a5, $a2, -6
+	xvreplgr2vr.h	$xr11, $a4
+	xvpermi.q	$xr11, $xr8, 18
+	xvextrins.h	$xr8, $xr11, 85
+	xvreplgr2vr.h	$xr11, $a5
+	xvpermi.q	$xr11, $xr9, 18
+	xvextrins.h	$xr9, $xr11, 85
+.LBB43_15:                              # %pred.load.continue16
                                         #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$t6, $a3, 2
-	ld.h	$t7, $a2, 2
-	xvreplgr2vr.h	$xr10, $t6
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 17
-	xvreplgr2vr.h	$xr10, $t7
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 17
-	xvpickve2gr.d	$t6, $xr9, 2
-	andi	$t7, $t6, 1
-	beqz	$t7, .LBB43_14
-.LBB43_29:                              # %pred.load.if25
+	xvpermi.q	$xr11, $xr10, 1
+	vpickev.w	$vr11, $vr11, $vr10
+	xvpermi.q	$xr11, $xr11, 2
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.h	$xr11, $xr12, $xr11
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.b	$xr11, $xr12, $xr11
+	vpickve2gr.b	$a4, $vr11, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_17
+# %bb.16:                               # %pred.load.if17
                                         #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$t7, $a3, 4
-	ld.h	$t8, $a2, 4
-	xvreplgr2vr.h	$xr10, $t7
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 34
-	xvreplgr2vr.h	$xr10, $t8
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 34
-	xvpickve2gr.d	$t7, $xr9, 3
-	andi	$t8, $t7, 1
-	beqz	$t8, .LBB43_15
-.LBB43_30:                              # %pred.load.if27
+	ld.h	$a4, $a3, -4
+	ld.h	$a5, $a2, -4
+	xvreplgr2vr.h	$xr11, $a4
+	xvpermi.q	$xr11, $xr8, 18
+	xvextrins.h	$xr8, $xr11, 102
+	xvreplgr2vr.h	$xr11, $a5
+	xvpermi.q	$xr11, $xr9, 18
+	xvextrins.h	$xr9, $xr11, 102
+.LBB43_17:                              # %pred.load.continue18
                                         #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$t8, $a3, 6
-	ld.h	$fp, $a2, 6
-	xvreplgr2vr.h	$xr9, $t8
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.h	$xr7, $xr9, 51
-	xvreplgr2vr.h	$xr9, $fp
-	xvpermi.q	$xr9, $xr8, 48
-	xvextrins.h	$xr8, $xr9, 51
-	xvsle.du	$xr9, $xr2, $xr0
-	xvpickve2gr.d	$t8, $xr9, 0
-	andi	$fp, $t8, 1
-	beqz	$fp, .LBB43_16
-.LBB43_31:                              # %pred.load.if29
+	xvpermi.q	$xr11, $xr10, 1
+	vpickev.w	$vr11, $vr11, $vr10
+	xvpermi.q	$xr11, $xr11, 2
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.h	$xr11, $xr12, $xr11
+	xvpermi.d	$xr12, $xr11, 78
+	xvpickev.b	$xr11, $xr12, $xr11
+	vpickve2gr.b	$a4, $vr11, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_19
+# %bb.18:                               # %pred.load.if19
                                         #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$fp, $a3, 8
-	ld.h	$s0, $a2, 8
-	xvreplgr2vr.h	$xr10, $fp
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 68
-	xvreplgr2vr.h	$xr10, $s0
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 68
-	xvpickve2gr.d	$fp, $xr9, 1
-	andi	$s0, $fp, 1
-	beqz	$s0, .LBB43_17
-.LBB43_32:                              # %pred.load.if31
+	ld.h	$a4, $a3, -2
+	ld.h	$a5, $a2, -2
+	xvreplgr2vr.h	$xr11, $a4
+	xvpermi.q	$xr11, $xr8, 18
+	xvextrins.h	$xr8, $xr11, 119
+	xvreplgr2vr.h	$xr11, $a5
+	xvpermi.q	$xr11, $xr9, 18
+	xvextrins.h	$xr9, $xr11, 119
+.LBB43_19:                              # %pred.load.continue20
                                         #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$s0, $a3, 10
-	ld.h	$s1, $a2, 10
-	xvreplgr2vr.h	$xr10, $s0
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 85
-	xvreplgr2vr.h	$xr10, $s1
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 85
-	xvpickve2gr.d	$s0, $xr9, 2
-	andi	$s1, $s0, 1
-	beqz	$s1, .LBB43_18
-.LBB43_33:                              # %pred.load.if33
+	xvsle.du	$xr11, $xr3, $xr1
+	xvpermi.q	$xr12, $xr11, 1
+	vpickev.w	$vr12, $vr12, $vr11
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 8
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_21
+# %bb.20:                               # %pred.load.if21
                                         #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$s1, $a3, 12
-	ld.h	$s2, $a2, 12
-	xvreplgr2vr.h	$xr10, $s1
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 102
-	xvreplgr2vr.h	$xr10, $s2
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 102
-	xvpickve2gr.d	$s1, $xr9, 3
-	andi	$s2, $s1, 1
-	beqz	$s2, .LBB43_2
-.LBB43_34:                              # %pred.load.if35
+	ld.h	$a4, $a3, 0
+	ld.h	$a5, $a2, 0
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 48
+	xvextrins.h	$xr8, $xr12, 0
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 48
+	xvextrins.h	$xr9, $xr12, 0
+.LBB43_21:                              # %pred.load.continue22
                                         #   in Loop: Header=BB43_3 Depth=1
-	ld.h	$s2, $a3, 14
-	ld.h	$s3, $a2, 14
-	xvreplgr2vr.h	$xr9, $s2
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.h	$xr7, $xr9, 119
-	xvreplgr2vr.h	$xr9, $s3
-	xvpermi.q	$xr9, $xr8, 48
-	xvextrins.h	$xr8, $xr9, 119
+	xvpermi.q	$xr12, $xr11, 1
+	vpickev.w	$vr12, $vr12, $vr11
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr12, $xr13
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 9
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_23
+# %bb.22:                               # %pred.load.if23
+                                        #   in Loop: Header=BB43_3 Depth=1
+	ld.h	$a4, $a3, 2
+	ld.h	$a5, $a2, 2
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 48
+	xvextrins.h	$xr8, $xr12, 17
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 48
+	xvextrins.h	$xr9, $xr12, 17
+.LBB43_23:                              # %pred.load.continue24
+                                        #   in Loop: Header=BB43_3 Depth=1
+	xvpermi.q	$xr12, $xr11, 1
+	vpickev.w	$vr12, $vr12, $vr11
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr12, $xr13
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 10
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_25
+# %bb.24:                               # %pred.load.if25
+                                        #   in Loop: Header=BB43_3 Depth=1
+	ld.h	$a4, $a3, 4
+	ld.h	$a5, $a2, 4
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 48
+	xvextrins.h	$xr8, $xr12, 34
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 48
+	xvextrins.h	$xr9, $xr12, 34
+.LBB43_25:                              # %pred.load.continue26
+                                        #   in Loop: Header=BB43_3 Depth=1
+	xvpermi.q	$xr12, $xr11, 1
+	vpickev.w	$vr12, $vr12, $vr11
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr12, $xr13
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 11
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_27
+# %bb.26:                               # %pred.load.if27
+                                        #   in Loop: Header=BB43_3 Depth=1
+	ld.h	$a4, $a3, 6
+	ld.h	$a5, $a2, 6
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 48
+	xvextrins.h	$xr8, $xr12, 51
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 48
+	xvextrins.h	$xr9, $xr12, 51
+.LBB43_27:                              # %pred.load.continue28
+                                        #   in Loop: Header=BB43_3 Depth=1
+	xvsle.du	$xr12, $xr2, $xr1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 12
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_29
+# %bb.28:                               # %pred.load.if29
+                                        #   in Loop: Header=BB43_3 Depth=1
+	ld.h	$a4, $a3, 8
+	ld.h	$a5, $a2, 8
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 68
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 68
+.LBB43_29:                              # %pred.load.continue30
+                                        #   in Loop: Header=BB43_3 Depth=1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 13
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_31
+# %bb.30:                               # %pred.load.if31
+                                        #   in Loop: Header=BB43_3 Depth=1
+	ld.h	$a4, $a3, 10
+	ld.h	$a5, $a2, 10
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 85
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 85
+.LBB43_31:                              # %pred.load.continue32
+                                        #   in Loop: Header=BB43_3 Depth=1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 14
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_33
+# %bb.32:                               # %pred.load.if33
+                                        #   in Loop: Header=BB43_3 Depth=1
+	ld.h	$a4, $a3, 12
+	ld.h	$a5, $a2, 12
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 102
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 102
+.LBB43_33:                              # %pred.load.continue34
+                                        #   in Loop: Header=BB43_3 Depth=1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 15
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB43_2
+# %bb.34:                               # %pred.load.if35
+                                        #   in Loop: Header=BB43_3 Depth=1
+	ld.h	$a4, $a3, 14
+	ld.h	$a5, $a2, 14
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 119
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 119
 	b	.LBB43_2
 .LBB43_35:                              # %"_ZSt10__invoke_rIsRZ4mainE4$_11JPsS2_sEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.h	$vr0, $a4, 0
-	vinsgr2vr.h	$vr0, $a5, 1
-	vinsgr2vr.h	$vr0, $a6, 2
-	vinsgr2vr.h	$vr0, $a7, 3
-	vinsgr2vr.h	$vr0, $t0, 4
-	vinsgr2vr.h	$vr0, $t1, 5
-	vinsgr2vr.h	$vr0, $t2, 6
-	vinsgr2vr.h	$vr0, $t3, 7
-	vinsgr2vr.h	$vr2, $t4, 0
-	vinsgr2vr.h	$vr2, $t5, 1
-	vinsgr2vr.h	$vr2, $t6, 2
-	vinsgr2vr.h	$vr2, $t7, 3
-	vinsgr2vr.h	$vr2, $t8, 4
-	vinsgr2vr.h	$vr2, $fp, 5
-	vinsgr2vr.h	$vr2, $s0, 6
-	vinsgr2vr.h	$vr2, $s1, 7
-	xvpermi.q	$xr0, $xr2, 2
-	xvbitsel.v	$xr0, $xr1, $xr7, $xr0
+	xvpermi.q	$xr1, $xr7, 1
+	vpickev.w	$vr2, $vr1, $vr7
+	xvpermi.q	$xr1, $xr10, 1
+	vpickev.w	$vr1, $vr1, $vr10
+	xvpermi.q	$xr2, $xr1, 2
+	vpickve2gr.h	$a1, $vr2, 0
+	vinsgr2vr.h	$vr1, $a1, 0
+	vpickve2gr.h	$a1, $vr2, 2
+	vinsgr2vr.h	$vr1, $a1, 1
+	vpickve2gr.h	$a1, $vr2, 4
+	vinsgr2vr.h	$vr1, $a1, 2
+	vpickve2gr.h	$a1, $vr2, 6
+	vinsgr2vr.h	$vr1, $a1, 3
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a1, $vr2, 0
+	vinsgr2vr.h	$vr1, $a1, 4
+	vpickve2gr.h	$a1, $vr2, 2
+	vinsgr2vr.h	$vr1, $a1, 5
+	vpickve2gr.h	$a1, $vr2, 4
+	vinsgr2vr.h	$vr1, $a1, 6
+	vpickve2gr.h	$a1, $vr2, 6
+	vinsgr2vr.h	$vr1, $a1, 7
+	xvpermi.q	$xr2, $xr11, 1
+	vpickev.w	$vr2, $vr2, $vr11
+	xvpermi.q	$xr3, $xr12, 1
+	vpickev.w	$vr3, $vr3, $vr12
+	xvpermi.q	$xr2, $xr3, 2
+	vpickve2gr.h	$a1, $vr2, 0
+	vinsgr2vr.h	$vr3, $a1, 0
+	vpickve2gr.h	$a1, $vr2, 2
+	vinsgr2vr.h	$vr3, $a1, 1
+	vpickve2gr.h	$a1, $vr2, 4
+	vinsgr2vr.h	$vr3, $a1, 2
+	vpickve2gr.h	$a1, $vr2, 6
+	vinsgr2vr.h	$vr3, $a1, 3
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a1, $vr2, 0
+	vinsgr2vr.h	$vr3, $a1, 4
+	vpickve2gr.h	$a1, $vr2, 2
+	vinsgr2vr.h	$vr3, $a1, 5
+	vpickve2gr.h	$a1, $vr2, 4
+	vinsgr2vr.h	$vr3, $a1, 6
+	vpickve2gr.h	$a1, $vr2, 6
+	vinsgr2vr.h	$vr3, $a1, 7
+	xvpermi.q	$xr1, $xr3, 2
+	xvbitsel.v	$xr0, $xr0, $xr8, $xr1
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.h	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -10149,12 +10348,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
 	or	$a0, $a0, $a1
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
 .LBB43_36:                              # %"_ZSt10__invoke_rIsRZ4mainE4$_11JPsS2_sEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ext.w.h	$a0, $a0
 	ret
@@ -10996,13 +11189,13 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_21E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a4, 20
 	addi.d	$a3, $a5, 20
-	xvldi	$xr5, -3200
+	xvldi	$xr6, -3200
 	b	.LBB71_3
 	.p2align	4, , 16
 .LBB71_2:                               # %pred.load.continue21
                                         #   in Loop: Header=BB71_3 Depth=1
-	xvslt.w	$xr5, $xr6, $xr5
-	xvbitsel.v	$xr5, $xr4, $xr1, $xr5
+	xvslt.w	$xr6, $xr7, $xr6
+	xvbitsel.v	$xr6, $xr4, $xr1, $xr6
 	addi.d	$a0, $a0, 8
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a2, $a2, 32
@@ -11010,137 +11203,139 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_21E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	beq	$a1, $a0, .LBB71_20
 .LBB71_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvreplgr2vr.d	$xr7, $a0
-	xvor.v	$xr4, $xr7, $xr3
-	xvsle.du	$xr8, $xr4, $xr0
-	xvpickve2gr.d	$a4, $xr8, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr4, $xr5, 0
-                                        # implicit-def: $xr5
+	xvreplgr2vr.d	$xr8, $a0
+	xvor.v	$xr4, $xr8, $xr3
+	xvsle.du	$xr5, $xr4, $xr0
+	vpickve2gr.h	$a4, $vr5, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr4, $xr6, 0
                                         # implicit-def: $xr6
-	bnez	$a5, .LBB71_12
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr7
+	beqz	$a4, .LBB71_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB71_3 Depth=1
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB71_13
-.LBB71_5:                               # %pred.load.continue9
+	ld.w	$a4, $a2, -8
+	ld.w	$a5, $a3, -8
+	vinsgr2vr.w	$vr6, $a4, 0
+	vinsgr2vr.w	$vr7, $a5, 0
+.LBB71_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB71_3 Depth=1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB71_14
-.LBB71_6:                               # %pred.load.continue11
+	vshuf4i.w	$vr9, $vr5, 8
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB71_7
+# %bb.6:                                # %pred.load.if8
                                         #   in Loop: Header=BB71_3 Depth=1
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB71_8
-.LBB71_7:                               # %pred.load.if12
+	ld.w	$a4, $a2, -4
+	ld.w	$a5, $a3, -4
+	xvinsgr2vr.w	$xr6, $a4, 1
+	xvinsgr2vr.w	$xr7, $a5, 1
+.LBB71_7:                               # %pred.load.continue9
                                         #   in Loop: Header=BB71_3 Depth=1
-	ld.w	$t0, $a2, 4
-	ld.w	$t1, $a3, 4
-	xvinsgr2vr.w	$xr5, $t0, 3
-	xvinsgr2vr.w	$xr6, $t1, 3
-.LBB71_8:                               # %pred.load.continue13
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB71_9
+# %bb.8:                                # %pred.load.if10
                                         #   in Loop: Header=BB71_3 Depth=1
-	xvor.v	$xr7, $xr7, $xr2
-	xvsle.du	$xr7, $xr7, $xr0
-	xvpickve2gr.d	$t0, $xr7, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB71_15
-# %bb.9:                                # %pred.load.continue15
+	ld.w	$a4, $a2, 0
+	ld.w	$a5, $a3, 0
+	xvinsgr2vr.w	$xr6, $a4, 2
+	xvinsgr2vr.w	$xr7, $a5, 2
+.LBB71_9:                               # %pred.load.continue11
                                         #   in Loop: Header=BB71_3 Depth=1
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB71_16
-.LBB71_10:                              # %pred.load.continue17
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB71_11
+# %bb.10:                               # %pred.load.if12
                                         #   in Loop: Header=BB71_3 Depth=1
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB71_17
-.LBB71_11:                              # %pred.load.continue19
+	ld.w	$a4, $a2, 4
+	ld.w	$a5, $a3, 4
+	xvinsgr2vr.w	$xr6, $a4, 3
+	xvinsgr2vr.w	$xr7, $a5, 3
+.LBB71_11:                              # %pred.load.continue13
                                         #   in Loop: Header=BB71_3 Depth=1
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB71_2
-	b	.LBB71_18
-	.p2align	4, , 16
-.LBB71_12:                              # %pred.load.if
+	xvor.v	$xr8, $xr8, $xr2
+	xvsle.du	$xr8, $xr8, $xr0
+	xvpermi.d	$xr9, $xr8, 64
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB71_13
+# %bb.12:                               # %pred.load.if14
                                         #   in Loop: Header=BB71_3 Depth=1
-	ld.w	$a5, $a2, -8
-	ld.w	$a6, $a3, -8
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB71_5
-.LBB71_13:                              # %pred.load.if8
+	ld.w	$a4, $a2, 8
+	ld.w	$a5, $a3, 8
+	xvinsgr2vr.w	$xr6, $a4, 4
+	xvinsgr2vr.w	$xr7, $a5, 4
+.LBB71_13:                              # %pred.load.continue15
                                         #   in Loop: Header=BB71_3 Depth=1
-	ld.w	$a6, $a2, -4
-	ld.w	$a7, $a3, -4
-	xvinsgr2vr.w	$xr5, $a6, 1
-	xvinsgr2vr.w	$xr6, $a7, 1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB71_6
-.LBB71_14:                              # %pred.load.if10
+	vshuf4i.w	$vr9, $vr8, 8
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB71_15
+# %bb.14:                               # %pred.load.if16
                                         #   in Loop: Header=BB71_3 Depth=1
-	ld.w	$a7, $a2, 0
-	ld.w	$t0, $a3, 0
-	xvinsgr2vr.w	$xr5, $a7, 2
-	xvinsgr2vr.w	$xr6, $t0, 2
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB71_7
-	b	.LBB71_8
-	.p2align	4, , 16
-.LBB71_15:                              # %pred.load.if14
+	ld.w	$a4, $a2, 12
+	ld.w	$a5, $a3, 12
+	xvinsgr2vr.w	$xr6, $a4, 5
+	xvinsgr2vr.w	$xr7, $a5, 5
+.LBB71_15:                              # %pred.load.continue17
                                         #   in Loop: Header=BB71_3 Depth=1
-	ld.w	$t1, $a2, 8
-	ld.w	$t2, $a3, 8
-	xvinsgr2vr.w	$xr5, $t1, 4
-	xvinsgr2vr.w	$xr6, $t2, 4
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB71_10
-.LBB71_16:                              # %pred.load.if16
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB71_17
+# %bb.16:                               # %pred.load.if18
                                         #   in Loop: Header=BB71_3 Depth=1
-	ld.w	$t2, $a2, 12
-	ld.w	$t3, $a3, 12
-	xvinsgr2vr.w	$xr5, $t2, 5
-	xvinsgr2vr.w	$xr6, $t3, 5
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB71_11
-.LBB71_17:                              # %pred.load.if18
+	ld.w	$a4, $a2, 16
+	ld.w	$a5, $a3, 16
+	xvinsgr2vr.w	$xr6, $a4, 6
+	xvinsgr2vr.w	$xr7, $a5, 6
+.LBB71_17:                              # %pred.load.continue19
                                         #   in Loop: Header=BB71_3 Depth=1
-	ld.w	$t3, $a2, 16
-	ld.w	$t4, $a3, 16
-	xvinsgr2vr.w	$xr5, $t3, 6
-	xvinsgr2vr.w	$xr6, $t4, 6
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB71_2
-.LBB71_18:                              # %pred.load.if20
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB71_2
+# %bb.18:                               # %pred.load.if20
                                         #   in Loop: Header=BB71_3 Depth=1
-	ld.w	$t4, $a2, 20
-	ld.w	$t5, $a3, 20
-	xvinsgr2vr.w	$xr5, $t4, 7
-	xvinsgr2vr.w	$xr6, $t5, 7
+	ld.w	$a4, $a2, 20
+	ld.w	$a5, $a3, 20
+	xvinsgr2vr.w	$xr6, $a4, 7
+	xvinsgr2vr.w	$xr7, $a5, 7
 	b	.LBB71_2
 .LBB71_19:
 	addi.w	$a0, $zero, -1
 	ret
 .LBB71_20:                              # %"_ZSt10__invoke_rIiRZ4mainE4$_21JPiS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.w	$vr0, $a4, 0
-	vinsgr2vr.w	$vr0, $a5, 1
-	vinsgr2vr.w	$vr0, $a6, 2
-	vinsgr2vr.w	$vr0, $a7, 3
-	vinsgr2vr.w	$vr1, $t0, 0
-	vinsgr2vr.w	$vr1, $t1, 1
-	vinsgr2vr.w	$vr1, $t2, 2
-	vinsgr2vr.w	$vr1, $t3, 3
+	xvpermi.q	$xr0, $xr5, 1
+	vpickev.w	$vr0, $vr0, $vr5
+	xvpermi.q	$xr1, $xr8, 1
+	vpickev.w	$vr1, $vr1, $vr8
 	xvpermi.q	$xr0, $xr1, 2
-	xvbitsel.v	$xr0, $xr4, $xr5, $xr0
+	xvbitsel.v	$xr0, $xr4, $xr6, $xr0
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -11289,13 +11484,13 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_21E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a4, 20
 	addi.d	$a3, $a5, 20
-	xvldi	$xr5, -3200
+	xvldi	$xr6, -3200
 	b	.LBB75_3
 	.p2align	4, , 16
 .LBB75_2:                               # %pred.load.continue21
                                         #   in Loop: Header=BB75_3 Depth=1
-	xvfcmp.clt.s	$xr5, $xr6, $xr5
-	xvbitsel.v	$xr5, $xr4, $xr1, $xr5
+	xvfcmp.clt.s	$xr6, $xr7, $xr6
+	xvbitsel.v	$xr6, $xr4, $xr1, $xr6
 	addi.d	$a0, $a0, 8
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a2, $a2, 32
@@ -11303,135 +11498,137 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_21E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	beq	$a1, $a0, .LBB75_20
 .LBB75_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvreplgr2vr.d	$xr7, $a0
-	xvor.v	$xr4, $xr7, $xr3
-	xvsle.du	$xr8, $xr4, $xr0
-	xvpickve2gr.d	$a4, $xr8, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr4, $xr5, 0
-                                        # implicit-def: $xr5
+	xvreplgr2vr.d	$xr8, $a0
+	xvor.v	$xr4, $xr8, $xr3
+	xvsle.du	$xr5, $xr4, $xr0
+	vpickve2gr.h	$a4, $vr5, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr4, $xr6, 0
                                         # implicit-def: $xr6
-	bnez	$a5, .LBB75_12
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr7
+	beqz	$a4, .LBB75_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB75_3 Depth=1
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB75_13
-.LBB75_5:                               # %pred.load.continue9
+	fld.s	$fa6, $a2, -8
+	fld.s	$fa7, $a3, -8
+.LBB75_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB75_3 Depth=1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB75_14
-.LBB75_6:                               # %pred.load.continue11
-                                        #   in Loop: Header=BB75_3 Depth=1
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB75_8
-.LBB75_7:                               # %pred.load.if12
-                                        #   in Loop: Header=BB75_3 Depth=1
-	fld.s	$ft0, $a2, 4
-	fld.s	$ft1, $a3, 4
-	xvinsve0.w	$xr5, $xr8, 3
-	xvinsve0.w	$xr6, $xr9, 3
-.LBB75_8:                               # %pred.load.continue13
-                                        #   in Loop: Header=BB75_3 Depth=1
-	xvor.v	$xr7, $xr7, $xr2
-	xvsle.du	$xr7, $xr7, $xr0
-	xvpickve2gr.d	$t0, $xr7, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB75_15
-# %bb.9:                                # %pred.load.continue15
-                                        #   in Loop: Header=BB75_3 Depth=1
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB75_16
-.LBB75_10:                              # %pred.load.continue17
-                                        #   in Loop: Header=BB75_3 Depth=1
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB75_17
-.LBB75_11:                              # %pred.load.continue19
-                                        #   in Loop: Header=BB75_3 Depth=1
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB75_2
-	b	.LBB75_18
-	.p2align	4, , 16
-.LBB75_12:                              # %pred.load.if
-                                        #   in Loop: Header=BB75_3 Depth=1
-	fld.s	$fa5, $a2, -8
-	fld.s	$fa6, $a3, -8
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB75_5
-.LBB75_13:                              # %pred.load.if8
+	vshuf4i.w	$vr9, $vr5, 8
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB75_7
+# %bb.6:                                # %pred.load.if8
                                         #   in Loop: Header=BB75_3 Depth=1
 	fld.s	$ft1, $a2, -4
 	fld.s	$ft2, $a3, -4
-	xvinsve0.w	$xr5, $xr9, 1
-	xvinsve0.w	$xr6, $xr10, 1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB75_6
-.LBB75_14:                              # %pred.load.if10
+	xvinsve0.w	$xr6, $xr9, 1
+	xvinsve0.w	$xr7, $xr10, 1
+.LBB75_7:                               # %pred.load.continue9
+                                        #   in Loop: Header=BB75_3 Depth=1
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB75_9
+# %bb.8:                                # %pred.load.if10
                                         #   in Loop: Header=BB75_3 Depth=1
 	fld.s	$ft1, $a2, 0
 	fld.s	$ft2, $a3, 0
-	xvinsve0.w	$xr5, $xr9, 2
-	xvinsve0.w	$xr6, $xr10, 2
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB75_7
-	b	.LBB75_8
-	.p2align	4, , 16
-.LBB75_15:                              # %pred.load.if14
+	xvinsve0.w	$xr6, $xr9, 2
+	xvinsve0.w	$xr7, $xr10, 2
+.LBB75_9:                               # %pred.load.continue11
                                         #   in Loop: Header=BB75_3 Depth=1
-	fld.s	$ft0, $a2, 8
-	fld.s	$ft1, $a3, 8
-	xvinsve0.w	$xr5, $xr8, 4
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB75_11
+# %bb.10:                               # %pred.load.if12
+                                        #   in Loop: Header=BB75_3 Depth=1
+	fld.s	$ft1, $a2, 4
+	fld.s	$ft2, $a3, 4
+	xvinsve0.w	$xr6, $xr9, 3
+	xvinsve0.w	$xr7, $xr10, 3
+.LBB75_11:                              # %pred.load.continue13
+                                        #   in Loop: Header=BB75_3 Depth=1
+	xvor.v	$xr8, $xr8, $xr2
+	xvsle.du	$xr8, $xr8, $xr0
+	xvpermi.d	$xr9, $xr8, 64
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB75_13
+# %bb.12:                               # %pred.load.if14
+                                        #   in Loop: Header=BB75_3 Depth=1
+	fld.s	$ft1, $a2, 8
+	fld.s	$ft2, $a3, 8
 	xvinsve0.w	$xr6, $xr9, 4
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB75_10
-.LBB75_16:                              # %pred.load.if16
+	xvinsve0.w	$xr7, $xr10, 4
+.LBB75_13:                              # %pred.load.continue15
                                         #   in Loop: Header=BB75_3 Depth=1
-	fld.s	$ft0, $a2, 12
-	fld.s	$ft1, $a3, 12
-	xvinsve0.w	$xr5, $xr8, 5
+	vshuf4i.w	$vr9, $vr8, 8
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB75_15
+# %bb.14:                               # %pred.load.if16
+                                        #   in Loop: Header=BB75_3 Depth=1
+	fld.s	$ft1, $a2, 12
+	fld.s	$ft2, $a3, 12
 	xvinsve0.w	$xr6, $xr9, 5
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB75_11
-.LBB75_17:                              # %pred.load.if18
+	xvinsve0.w	$xr7, $xr10, 5
+.LBB75_15:                              # %pred.load.continue17
                                         #   in Loop: Header=BB75_3 Depth=1
-	fld.s	$ft0, $a2, 16
-	fld.s	$ft1, $a3, 16
-	xvinsve0.w	$xr5, $xr8, 6
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB75_17
+# %bb.16:                               # %pred.load.if18
+                                        #   in Loop: Header=BB75_3 Depth=1
+	fld.s	$ft1, $a2, 16
+	fld.s	$ft2, $a3, 16
 	xvinsve0.w	$xr6, $xr9, 6
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB75_2
-.LBB75_18:                              # %pred.load.if20
+	xvinsve0.w	$xr7, $xr10, 6
+.LBB75_17:                              # %pred.load.continue19
                                         #   in Loop: Header=BB75_3 Depth=1
-	fld.s	$fa7, $a2, 20
-	fld.s	$ft0, $a3, 20
-	xvinsve0.w	$xr5, $xr7, 7
-	xvinsve0.w	$xr6, $xr8, 7
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB75_2
+# %bb.18:                               # %pred.load.if20
+                                        #   in Loop: Header=BB75_3 Depth=1
+	fld.s	$ft1, $a2, 20
+	fld.s	$ft2, $a3, 20
+	xvinsve0.w	$xr6, $xr9, 7
+	xvinsve0.w	$xr7, $xr10, 7
 	b	.LBB75_2
 .LBB75_19:
 	addi.w	$a0, $zero, -1
 	ret
 .LBB75_20:                              # %"_ZSt10__invoke_rIiRZ4mainE4$_21JPfS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.w	$vr0, $a4, 0
-	vinsgr2vr.w	$vr0, $a5, 1
-	vinsgr2vr.w	$vr0, $a6, 2
-	vinsgr2vr.w	$vr0, $a7, 3
-	vinsgr2vr.w	$vr1, $t0, 0
-	vinsgr2vr.w	$vr1, $t1, 1
-	vinsgr2vr.w	$vr1, $t2, 2
-	vinsgr2vr.w	$vr1, $t3, 3
+	xvpermi.q	$xr0, $xr5, 1
+	vpickev.w	$vr0, $vr0, $vr5
+	xvpermi.q	$xr1, $xr8, 1
+	vpickev.w	$vr1, $vr1, $vr8
 	xvpermi.q	$xr0, $xr1, 2
-	xvbitsel.v	$xr0, $xr4, $xr5, $xr0
+	xvbitsel.v	$xr0, $xr4, $xr6, $xr0
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -11582,12 +11779,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_23E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ori	$a0, $zero, 4
 	blt	$a3, $a0, .LBB79_35
 # %bb.1:                                # %vector.ph
-	addi.d	$sp, $sp, -48
-	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	move	$a0, $zero
 	addi.d	$a4, $a3, -4
 	xvreplgr2vr.d	$xr1, $a4
@@ -11608,13 +11799,13 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_23E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	slli.d	$a1, $a1, 4
 	addi.d	$a2, $a4, 18
 	addi.d	$a3, $a5, 18
-	xvldi	$xr7, -2688
+	xvldi	$xr8, -2688
 	b	.LBB79_3
 	.p2align	4, , 16
 .LBB79_2:                               # %pred.load.continue37
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvslt.h	$xr7, $xr8, $xr7
-	xvbitsel.v	$xr7, $xr0, $xr2, $xr7
+	xvslt.h	$xr8, $xr9, $xr8
+	xvbitsel.v	$xr8, $xr0, $xr2, $xr8
 	addi.d	$a0, $a0, 16
 	xvaddi.hu	$xr2, $xr2, 16
 	addi.d	$a2, $a2, 32
@@ -11622,296 +11813,349 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_23E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	beq	$a1, $a0, .LBB79_36
 .LBB79_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvreplgr2vr.d	$xr9, $a0
-	xvor.v	$xr0, $xr9, $xr6
-	xvsle.du	$xr10, $xr0, $xr1
-	xvpickve2gr.d	$a4, $xr10, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr0, $xr7, 0
-                                        # implicit-def: $xr7
+	xvreplgr2vr.d	$xr11, $a0
+	xvor.v	$xr0, $xr11, $xr6
+	xvsle.du	$xr7, $xr0, $xr1
+	vpickve2gr.b	$a4, $vr7, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr0, $xr8, 0
                                         # implicit-def: $xr8
-	bnez	$a5, .LBB79_22
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr9
+	beqz	$a4, .LBB79_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvpickve2gr.d	$a5, $xr10, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB79_23
-.LBB79_5:                               # %pred.load.continue9
+	ld.h	$a4, $a2, -12
+	ld.h	$a5, $a3, -12
+	vinsgr2vr.h	$vr8, $a4, 0
+	vinsgr2vr.h	$vr9, $a5, 0
+.LBB79_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvpickve2gr.d	$a6, $xr10, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB79_24
-.LBB79_6:                               # %pred.load.continue11
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.h	$xr10, $xr12, $xr10
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.b	$xr10, $xr12, $xr10
+	vpickve2gr.b	$a4, $vr10, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_7
+# %bb.6:                                # %pred.load.if8
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvpickve2gr.d	$a7, $xr10, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB79_8
-.LBB79_7:                               # %pred.load.if12
+	ld.h	$a4, $a2, -10
+	ld.h	$a5, $a3, -10
+	xvreplgr2vr.h	$xr10, $a4
+	xvpermi.q	$xr10, $xr8, 18
+	xvextrins.h	$xr8, $xr10, 17
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 17
+.LBB79_7:                               # %pred.load.continue9
                                         #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$t0, $a2, -6
-	ld.h	$t1, $a3, -6
-	xvreplgr2vr.h	$xr10, $t0
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 51
-	xvreplgr2vr.h	$xr10, $t1
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.h	$xr10, $xr12, $xr10
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.b	$xr10, $xr12, $xr10
+	vpickve2gr.b	$a4, $vr10, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_9
+# %bb.8:                                # %pred.load.if10
+                                        #   in Loop: Header=BB79_3 Depth=1
+	ld.h	$a4, $a2, -8
+	ld.h	$a5, $a3, -8
+	xvreplgr2vr.h	$xr10, $a4
+	xvpermi.q	$xr10, $xr8, 18
+	xvextrins.h	$xr8, $xr10, 34
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 34
+.LBB79_9:                               # %pred.load.continue11
+                                        #   in Loop: Header=BB79_3 Depth=1
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.h	$xr10, $xr12, $xr10
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.b	$xr10, $xr12, $xr10
+	vpickve2gr.b	$a4, $vr10, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_11
+# %bb.10:                               # %pred.load.if12
+                                        #   in Loop: Header=BB79_3 Depth=1
+	ld.h	$a4, $a2, -6
+	ld.h	$a5, $a3, -6
+	xvreplgr2vr.h	$xr10, $a4
 	xvpermi.q	$xr10, $xr8, 18
 	xvextrins.h	$xr8, $xr10, 51
-.LBB79_8:                               # %pred.load.continue13
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 51
+.LBB79_11:                              # %pred.load.continue13
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvor.v	$xr10, $xr9, $xr5
+	xvor.v	$xr10, $xr11, $xr5
 	xvsle.du	$xr10, $xr10, $xr1
-	xvpickve2gr.d	$t0, $xr10, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB79_25
-# %bb.9:                                # %pred.load.continue15
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_13
+# %bb.12:                               # %pred.load.if14
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvpickve2gr.d	$t1, $xr10, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB79_26
-.LBB79_10:                              # %pred.load.continue17
+	ld.h	$a4, $a2, -4
+	ld.h	$a5, $a3, -4
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 68
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 68
+.LBB79_13:                              # %pred.load.continue15
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvpickve2gr.d	$t2, $xr10, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB79_27
-.LBB79_11:                              # %pred.load.continue19
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_15
+# %bb.14:                               # %pred.load.if16
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvpickve2gr.d	$t3, $xr10, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB79_13
-.LBB79_12:                              # %pred.load.if20
+	ld.h	$a4, $a2, -2
+	ld.h	$a5, $a3, -2
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 85
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 85
+.LBB79_15:                              # %pred.load.continue17
                                         #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$t4, $a2, 2
-	ld.h	$t5, $a3, 2
-	xvreplgr2vr.h	$xr10, $t4
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 119
-	xvreplgr2vr.h	$xr10, $t5
-	xvpermi.q	$xr10, $xr8, 18
-	xvextrins.h	$xr8, $xr10, 119
-.LBB79_13:                              # %pred.load.continue21
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_17
+# %bb.16:                               # %pred.load.if18
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvor.v	$xr10, $xr9, $xr4
-	xvsle.du	$xr10, $xr10, $xr1
-	xvpickve2gr.d	$t4, $xr10, 0
-	andi	$t5, $t4, 1
-	bnez	$t5, .LBB79_28
-# %bb.14:                               # %pred.load.continue23
+	ld.h	$a4, $a2, 0
+	ld.h	$a5, $a3, 0
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 102
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 102
+.LBB79_17:                              # %pred.load.continue19
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvpickve2gr.d	$t5, $xr10, 1
-	andi	$t6, $t5, 1
-	bnez	$t6, .LBB79_29
-.LBB79_15:                              # %pred.load.continue25
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_19
+# %bb.18:                               # %pred.load.if20
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvpickve2gr.d	$t6, $xr10, 2
-	andi	$t7, $t6, 1
-	bnez	$t7, .LBB79_30
-.LBB79_16:                              # %pred.load.continue27
+	ld.h	$a4, $a2, 2
+	ld.h	$a5, $a3, 2
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 119
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 119
+.LBB79_19:                              # %pred.load.continue21
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvpickve2gr.d	$t7, $xr10, 3
-	andi	$t8, $t7, 1
-	beqz	$t8, .LBB79_18
-.LBB79_17:                              # %pred.load.if28
+	xvor.v	$xr12, $xr11, $xr4
+	xvsle.du	$xr12, $xr12, $xr1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 8
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_21
+# %bb.20:                               # %pred.load.if22
                                         #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$t8, $a2, 10
-	ld.h	$fp, $a3, 10
-	xvreplgr2vr.h	$xr10, $t8
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 51
-	xvreplgr2vr.h	$xr10, $fp
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 51
-.LBB79_18:                              # %pred.load.continue29
+	ld.h	$a4, $a2, 4
+	ld.h	$a5, $a3, 4
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 0
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 0
+.LBB79_21:                              # %pred.load.continue23
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvor.v	$xr9, $xr9, $xr3
-	xvsle.du	$xr9, $xr9, $xr1
-	xvpickve2gr.d	$t8, $xr9, 0
-	andi	$fp, $t8, 1
-	bnez	$fp, .LBB79_31
-# %bb.19:                               # %pred.load.continue31
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 9
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_23
+# %bb.22:                               # %pred.load.if24
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvpickve2gr.d	$fp, $xr9, 1
-	andi	$s0, $fp, 1
-	bnez	$s0, .LBB79_32
-.LBB79_20:                              # %pred.load.continue33
+	ld.h	$a4, $a2, 6
+	ld.h	$a5, $a3, 6
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 17
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 17
+.LBB79_23:                              # %pred.load.continue25
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvpickve2gr.d	$s0, $xr9, 2
-	andi	$s1, $s0, 1
-	bnez	$s1, .LBB79_33
-.LBB79_21:                              # %pred.load.continue35
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 10
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_25
+# %bb.24:                               # %pred.load.if26
                                         #   in Loop: Header=BB79_3 Depth=1
-	xvpickve2gr.d	$s1, $xr9, 3
-	andi	$s2, $s1, 1
-	beqz	$s2, .LBB79_2
-	b	.LBB79_34
-	.p2align	4, , 16
-.LBB79_22:                              # %pred.load.if
+	ld.h	$a4, $a2, 8
+	ld.h	$a5, $a3, 8
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 34
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 34
+.LBB79_25:                              # %pred.load.continue27
                                         #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$a5, $a2, -12
-	ld.h	$a6, $a3, -12
-	vinsgr2vr.h	$vr7, $a5, 0
-	vinsgr2vr.h	$vr8, $a6, 0
-	xvpickve2gr.d	$a5, $xr10, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB79_5
-.LBB79_23:                              # %pred.load.if8
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 11
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_27
+# %bb.26:                               # %pred.load.if28
                                         #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$a6, $a2, -10
-	ld.h	$a7, $a3, -10
-	xvreplgr2vr.h	$xr11, $a6
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 17
-	xvreplgr2vr.h	$xr11, $a7
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 17
-	xvpickve2gr.d	$a6, $xr10, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB79_6
-.LBB79_24:                              # %pred.load.if10
+	ld.h	$a4, $a2, 10
+	ld.h	$a5, $a3, 10
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 51
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 51
+.LBB79_27:                              # %pred.load.continue29
                                         #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$a7, $a2, -8
-	ld.h	$t0, $a3, -8
-	xvreplgr2vr.h	$xr11, $a7
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 34
-	xvreplgr2vr.h	$xr11, $t0
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 34
-	xvpickve2gr.d	$a7, $xr10, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB79_7
-	b	.LBB79_8
-	.p2align	4, , 16
-.LBB79_25:                              # %pred.load.if14
+	xvor.v	$xr11, $xr11, $xr3
+	xvsle.du	$xr11, $xr11, $xr1
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 12
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_29
+# %bb.28:                               # %pred.load.if30
                                         #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$t1, $a2, -4
-	ld.h	$t2, $a3, -4
-	xvreplgr2vr.h	$xr11, $t1
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 68
-	xvreplgr2vr.h	$xr11, $t2
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 68
-	xvpickve2gr.d	$t1, $xr10, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB79_10
-.LBB79_26:                              # %pred.load.if16
+	ld.h	$a4, $a2, 12
+	ld.h	$a5, $a3, 12
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 68
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 68
+.LBB79_29:                              # %pred.load.continue31
                                         #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$t2, $a2, -2
-	ld.h	$t3, $a3, -2
-	xvreplgr2vr.h	$xr11, $t2
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 85
-	xvreplgr2vr.h	$xr11, $t3
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 85
-	xvpickve2gr.d	$t2, $xr10, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB79_11
-.LBB79_27:                              # %pred.load.if18
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 13
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_31
+# %bb.30:                               # %pred.load.if32
                                         #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$t3, $a2, 0
-	ld.h	$t4, $a3, 0
-	xvreplgr2vr.h	$xr11, $t3
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 102
-	xvreplgr2vr.h	$xr11, $t4
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 102
-	xvpickve2gr.d	$t3, $xr10, 3
-	andi	$t4, $t3, 1
-	bnez	$t4, .LBB79_12
-	b	.LBB79_13
-	.p2align	4, , 16
-.LBB79_28:                              # %pred.load.if22
+	ld.h	$a4, $a2, 14
+	ld.h	$a5, $a3, 14
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 85
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 85
+.LBB79_31:                              # %pred.load.continue33
                                         #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$t5, $a2, 4
-	ld.h	$t6, $a3, 4
-	xvreplgr2vr.h	$xr11, $t5
-	xvpermi.q	$xr11, $xr7, 48
-	xvextrins.h	$xr7, $xr11, 0
-	xvreplgr2vr.h	$xr11, $t6
-	xvpermi.q	$xr11, $xr8, 48
-	xvextrins.h	$xr8, $xr11, 0
-	xvpickve2gr.d	$t5, $xr10, 1
-	andi	$t6, $t5, 1
-	beqz	$t6, .LBB79_15
-.LBB79_29:                              # %pred.load.if24
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 14
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_33
+# %bb.32:                               # %pred.load.if34
                                         #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$t6, $a2, 6
-	ld.h	$t7, $a3, 6
-	xvreplgr2vr.h	$xr11, $t6
-	xvpermi.q	$xr11, $xr7, 48
-	xvextrins.h	$xr7, $xr11, 17
-	xvreplgr2vr.h	$xr11, $t7
-	xvpermi.q	$xr11, $xr8, 48
-	xvextrins.h	$xr8, $xr11, 17
-	xvpickve2gr.d	$t6, $xr10, 2
-	andi	$t7, $t6, 1
-	beqz	$t7, .LBB79_16
-.LBB79_30:                              # %pred.load.if26
+	ld.h	$a4, $a2, 16
+	ld.h	$a5, $a3, 16
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 102
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 102
+.LBB79_33:                              # %pred.load.continue35
                                         #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$t7, $a2, 8
-	ld.h	$t8, $a3, 8
-	xvreplgr2vr.h	$xr11, $t7
-	xvpermi.q	$xr11, $xr7, 48
-	xvextrins.h	$xr7, $xr11, 34
-	xvreplgr2vr.h	$xr11, $t8
-	xvpermi.q	$xr11, $xr8, 48
-	xvextrins.h	$xr8, $xr11, 34
-	xvpickve2gr.d	$t7, $xr10, 3
-	andi	$t8, $t7, 1
-	bnez	$t8, .LBB79_17
-	b	.LBB79_18
-	.p2align	4, , 16
-.LBB79_31:                              # %pred.load.if30
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 15
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB79_2
+# %bb.34:                               # %pred.load.if36
                                         #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$fp, $a2, 12
-	ld.h	$s0, $a3, 12
-	xvreplgr2vr.h	$xr10, $fp
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 68
-	xvreplgr2vr.h	$xr10, $s0
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 68
-	xvpickve2gr.d	$fp, $xr9, 1
-	andi	$s0, $fp, 1
-	beqz	$s0, .LBB79_20
-.LBB79_32:                              # %pred.load.if32
-                                        #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$s0, $a2, 14
-	ld.h	$s1, $a3, 14
-	xvreplgr2vr.h	$xr10, $s0
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 85
-	xvreplgr2vr.h	$xr10, $s1
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 85
-	xvpickve2gr.d	$s0, $xr9, 2
-	andi	$s1, $s0, 1
-	beqz	$s1, .LBB79_21
-.LBB79_33:                              # %pred.load.if34
-                                        #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$s1, $a2, 16
-	ld.h	$s2, $a3, 16
-	xvreplgr2vr.h	$xr10, $s1
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 102
-	xvreplgr2vr.h	$xr10, $s2
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 102
-	xvpickve2gr.d	$s1, $xr9, 3
-	andi	$s2, $s1, 1
-	beqz	$s2, .LBB79_2
-.LBB79_34:                              # %pred.load.if36
-                                        #   in Loop: Header=BB79_3 Depth=1
-	ld.h	$s2, $a2, 18
-	ld.h	$s3, $a3, 18
-	xvreplgr2vr.h	$xr9, $s2
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.h	$xr7, $xr9, 119
-	xvreplgr2vr.h	$xr9, $s3
-	xvpermi.q	$xr9, $xr8, 48
-	xvextrins.h	$xr8, $xr9, 119
+	ld.h	$a4, $a2, 18
+	ld.h	$a5, $a3, 18
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 119
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 119
 	b	.LBB79_2
 .LBB79_35:
 	lu12i.w	$a0, 15
@@ -11919,24 +12163,52 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_23E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ext.w.h	$a0, $a0
 	ret
 .LBB79_36:                              # %"_ZSt10__invoke_rIsRZ4mainE4$_23JPsS2_sEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.h	$vr1, $a4, 0
-	vinsgr2vr.h	$vr1, $a5, 1
-	vinsgr2vr.h	$vr1, $a6, 2
-	vinsgr2vr.h	$vr1, $a7, 3
-	vinsgr2vr.h	$vr1, $t0, 4
-	vinsgr2vr.h	$vr1, $t1, 5
-	vinsgr2vr.h	$vr1, $t2, 6
-	vinsgr2vr.h	$vr1, $t3, 7
-	vinsgr2vr.h	$vr2, $t4, 0
-	vinsgr2vr.h	$vr2, $t5, 1
-	vinsgr2vr.h	$vr2, $t6, 2
-	vinsgr2vr.h	$vr2, $t7, 3
-	vinsgr2vr.h	$vr2, $t8, 4
-	vinsgr2vr.h	$vr2, $fp, 5
-	vinsgr2vr.h	$vr2, $s0, 6
-	vinsgr2vr.h	$vr2, $s1, 7
-	xvpermi.q	$xr1, $xr2, 2
-	xvbitsel.v	$xr0, $xr0, $xr7, $xr1
+	xvpermi.q	$xr1, $xr7, 1
+	vpickev.w	$vr2, $vr1, $vr7
+	xvpermi.q	$xr1, $xr10, 1
+	vpickev.w	$vr1, $vr1, $vr10
+	xvpermi.q	$xr2, $xr1, 2
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr1, $a0, 1
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr1, $a0, 2
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr1, $a0, 4
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr1, $a0, 5
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr1, $a0, 6
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpermi.q	$xr2, $xr12, 1
+	vpickev.w	$vr2, $vr2, $vr12
+	xvpermi.q	$xr3, $xr11, 1
+	vpickev.w	$vr3, $vr3, $vr11
+	xvpermi.q	$xr2, $xr3, 2
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr3, $a0, 1
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr3, $a0, 2
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr3, $a0, 4
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr3, $a0, 5
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr3, $a0, 6
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr3, $a0, 7
+	xvpermi.q	$xr1, $xr3, 2
+	xvbitsel.v	$xr0, $xr0, $xr8, $xr1
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.h	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -11954,12 +12226,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_23E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a2, $zero, -1
 	maskeqz	$a1, $a2, $a1
 	or	$a0, $a1, $a0
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
 	ext.w.h	$a0, $a0
 	ret
 .Lfunc_end79:
@@ -12093,13 +12359,13 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_25E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a4, 20
 	addi.d	$a3, $a5, 20
-	xvldi	$xr5, -3200
+	xvldi	$xr6, -3200
 	b	.LBB83_3
 	.p2align	4, , 16
 .LBB83_2:                               # %pred.load.continue21
                                         #   in Loop: Header=BB83_3 Depth=1
-	xvslt.w	$xr5, $xr6, $xr5
-	xvbitsel.v	$xr5, $xr4, $xr1, $xr5
+	xvslt.w	$xr6, $xr7, $xr6
+	xvbitsel.v	$xr6, $xr4, $xr1, $xr6
 	addi.d	$a0, $a0, 8
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a2, $a2, 32
@@ -12107,134 +12373,136 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_25E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	beq	$a1, $a0, .LBB83_19
 .LBB83_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvreplgr2vr.d	$xr7, $a0
-	xvor.v	$xr4, $xr7, $xr3
-	xvsle.du	$xr8, $xr4, $xr0
-	xvpickve2gr.d	$a4, $xr8, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr4, $xr5, 0
-                                        # implicit-def: $xr5
+	xvreplgr2vr.d	$xr8, $a0
+	xvor.v	$xr4, $xr8, $xr3
+	xvsle.du	$xr5, $xr4, $xr0
+	vpickve2gr.h	$a4, $vr5, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr4, $xr6, 0
                                         # implicit-def: $xr6
-	bnez	$a5, .LBB83_12
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr7
+	beqz	$a4, .LBB83_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB83_3 Depth=1
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB83_13
-.LBB83_5:                               # %pred.load.continue9
+	ld.w	$a4, $a2, -8
+	ld.w	$a5, $a3, -8
+	vinsgr2vr.w	$vr6, $a4, 0
+	vinsgr2vr.w	$vr7, $a5, 0
+.LBB83_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB83_3 Depth=1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB83_14
-.LBB83_6:                               # %pred.load.continue11
+	vshuf4i.w	$vr9, $vr5, 8
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB83_7
+# %bb.6:                                # %pred.load.if8
                                         #   in Loop: Header=BB83_3 Depth=1
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB83_8
-.LBB83_7:                               # %pred.load.if12
+	ld.w	$a4, $a2, -4
+	ld.w	$a5, $a3, -4
+	xvinsgr2vr.w	$xr6, $a4, 1
+	xvinsgr2vr.w	$xr7, $a5, 1
+.LBB83_7:                               # %pred.load.continue9
                                         #   in Loop: Header=BB83_3 Depth=1
-	ld.w	$t0, $a2, 4
-	ld.w	$t1, $a3, 4
-	xvinsgr2vr.w	$xr5, $t0, 3
-	xvinsgr2vr.w	$xr6, $t1, 3
-.LBB83_8:                               # %pred.load.continue13
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB83_9
+# %bb.8:                                # %pred.load.if10
                                         #   in Loop: Header=BB83_3 Depth=1
-	xvor.v	$xr7, $xr7, $xr2
-	xvsle.du	$xr7, $xr7, $xr0
-	xvpickve2gr.d	$t0, $xr7, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB83_15
-# %bb.9:                                # %pred.load.continue15
+	ld.w	$a4, $a2, 0
+	ld.w	$a5, $a3, 0
+	xvinsgr2vr.w	$xr6, $a4, 2
+	xvinsgr2vr.w	$xr7, $a5, 2
+.LBB83_9:                               # %pred.load.continue11
                                         #   in Loop: Header=BB83_3 Depth=1
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB83_16
-.LBB83_10:                              # %pred.load.continue17
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB83_11
+# %bb.10:                               # %pred.load.if12
                                         #   in Loop: Header=BB83_3 Depth=1
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB83_17
-.LBB83_11:                              # %pred.load.continue19
+	ld.w	$a4, $a2, 4
+	ld.w	$a5, $a3, 4
+	xvinsgr2vr.w	$xr6, $a4, 3
+	xvinsgr2vr.w	$xr7, $a5, 3
+.LBB83_11:                              # %pred.load.continue13
                                         #   in Loop: Header=BB83_3 Depth=1
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB83_2
-	b	.LBB83_18
-	.p2align	4, , 16
-.LBB83_12:                              # %pred.load.if
+	xvor.v	$xr8, $xr8, $xr2
+	xvsle.du	$xr8, $xr8, $xr0
+	xvpermi.d	$xr9, $xr8, 64
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB83_13
+# %bb.12:                               # %pred.load.if14
                                         #   in Loop: Header=BB83_3 Depth=1
-	ld.w	$a5, $a2, -8
-	ld.w	$a6, $a3, -8
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB83_5
-.LBB83_13:                              # %pred.load.if8
+	ld.w	$a4, $a2, 8
+	ld.w	$a5, $a3, 8
+	xvinsgr2vr.w	$xr6, $a4, 4
+	xvinsgr2vr.w	$xr7, $a5, 4
+.LBB83_13:                              # %pred.load.continue15
                                         #   in Loop: Header=BB83_3 Depth=1
-	ld.w	$a6, $a2, -4
-	ld.w	$a7, $a3, -4
-	xvinsgr2vr.w	$xr5, $a6, 1
-	xvinsgr2vr.w	$xr6, $a7, 1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB83_6
-.LBB83_14:                              # %pred.load.if10
+	vshuf4i.w	$vr9, $vr8, 8
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB83_15
+# %bb.14:                               # %pred.load.if16
                                         #   in Loop: Header=BB83_3 Depth=1
-	ld.w	$a7, $a2, 0
-	ld.w	$t0, $a3, 0
-	xvinsgr2vr.w	$xr5, $a7, 2
-	xvinsgr2vr.w	$xr6, $t0, 2
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB83_7
-	b	.LBB83_8
-	.p2align	4, , 16
-.LBB83_15:                              # %pred.load.if14
+	ld.w	$a4, $a2, 12
+	ld.w	$a5, $a3, 12
+	xvinsgr2vr.w	$xr6, $a4, 5
+	xvinsgr2vr.w	$xr7, $a5, 5
+.LBB83_15:                              # %pred.load.continue17
                                         #   in Loop: Header=BB83_3 Depth=1
-	ld.w	$t1, $a2, 8
-	ld.w	$t2, $a3, 8
-	xvinsgr2vr.w	$xr5, $t1, 4
-	xvinsgr2vr.w	$xr6, $t2, 4
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB83_10
-.LBB83_16:                              # %pred.load.if16
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB83_17
+# %bb.16:                               # %pred.load.if18
                                         #   in Loop: Header=BB83_3 Depth=1
-	ld.w	$t2, $a2, 12
-	ld.w	$t3, $a3, 12
-	xvinsgr2vr.w	$xr5, $t2, 5
-	xvinsgr2vr.w	$xr6, $t3, 5
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB83_11
-.LBB83_17:                              # %pred.load.if18
+	ld.w	$a4, $a2, 16
+	ld.w	$a5, $a3, 16
+	xvinsgr2vr.w	$xr6, $a4, 6
+	xvinsgr2vr.w	$xr7, $a5, 6
+.LBB83_17:                              # %pred.load.continue19
                                         #   in Loop: Header=BB83_3 Depth=1
-	ld.w	$t3, $a2, 16
-	ld.w	$t4, $a3, 16
-	xvinsgr2vr.w	$xr5, $t3, 6
-	xvinsgr2vr.w	$xr6, $t4, 6
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB83_2
-.LBB83_18:                              # %pred.load.if20
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB83_2
+# %bb.18:                               # %pred.load.if20
                                         #   in Loop: Header=BB83_3 Depth=1
-	ld.w	$t4, $a2, 20
-	ld.w	$t5, $a3, 20
-	xvinsgr2vr.w	$xr5, $t4, 7
-	xvinsgr2vr.w	$xr6, $t5, 7
+	ld.w	$a4, $a2, 20
+	ld.w	$a5, $a3, 20
+	xvinsgr2vr.w	$xr6, $a4, 7
+	xvinsgr2vr.w	$xr7, $a5, 7
 	b	.LBB83_2
 .LBB83_19:                              # %"_ZSt10__invoke_rIiRZ4mainE4$_25JPiS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.w	$vr0, $a4, 0
-	vinsgr2vr.w	$vr0, $a5, 1
-	vinsgr2vr.w	$vr0, $a6, 2
-	vinsgr2vr.w	$vr0, $a7, 3
-	vinsgr2vr.w	$vr1, $t0, 0
-	vinsgr2vr.w	$vr1, $t1, 1
-	vinsgr2vr.w	$vr1, $t2, 2
-	vinsgr2vr.w	$vr1, $t3, 3
+	xvpermi.q	$xr0, $xr5, 1
+	vpickev.w	$vr0, $vr0, $vr5
+	xvpermi.q	$xr1, $xr8, 1
+	vpickev.w	$vr1, $vr1, $vr8
 	xvpermi.q	$xr0, $xr1, 2
-	xvbitsel.v	$xr0, $xr4, $xr5, $xr0
+	xvbitsel.v	$xr0, $xr4, $xr6, $xr0
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -12383,13 +12651,13 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_25E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a4, 20
 	addi.d	$a3, $a5, 20
-	xvldi	$xr5, -3200
+	xvldi	$xr6, -3200
 	b	.LBB87_3
 	.p2align	4, , 16
 .LBB87_2:                               # %pred.load.continue21
                                         #   in Loop: Header=BB87_3 Depth=1
-	xvfcmp.clt.s	$xr5, $xr6, $xr5
-	xvbitsel.v	$xr5, $xr4, $xr1, $xr5
+	xvfcmp.clt.s	$xr6, $xr7, $xr6
+	xvbitsel.v	$xr6, $xr4, $xr1, $xr6
 	addi.d	$a0, $a0, 8
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a2, $a2, 32
@@ -12397,132 +12665,134 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_25E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	beq	$a1, $a0, .LBB87_19
 .LBB87_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvreplgr2vr.d	$xr7, $a0
-	xvor.v	$xr4, $xr7, $xr3
-	xvsle.du	$xr8, $xr4, $xr0
-	xvpickve2gr.d	$a4, $xr8, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr4, $xr5, 0
-                                        # implicit-def: $xr5
+	xvreplgr2vr.d	$xr8, $a0
+	xvor.v	$xr4, $xr8, $xr3
+	xvsle.du	$xr5, $xr4, $xr0
+	vpickve2gr.h	$a4, $vr5, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr4, $xr6, 0
                                         # implicit-def: $xr6
-	bnez	$a5, .LBB87_12
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr7
+	beqz	$a4, .LBB87_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB87_3 Depth=1
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB87_13
-.LBB87_5:                               # %pred.load.continue9
+	fld.s	$fa6, $a2, -8
+	fld.s	$fa7, $a3, -8
+.LBB87_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB87_3 Depth=1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB87_14
-.LBB87_6:                               # %pred.load.continue11
-                                        #   in Loop: Header=BB87_3 Depth=1
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB87_8
-.LBB87_7:                               # %pred.load.if12
-                                        #   in Loop: Header=BB87_3 Depth=1
-	fld.s	$ft0, $a2, 4
-	fld.s	$ft1, $a3, 4
-	xvinsve0.w	$xr5, $xr8, 3
-	xvinsve0.w	$xr6, $xr9, 3
-.LBB87_8:                               # %pred.load.continue13
-                                        #   in Loop: Header=BB87_3 Depth=1
-	xvor.v	$xr7, $xr7, $xr2
-	xvsle.du	$xr7, $xr7, $xr0
-	xvpickve2gr.d	$t0, $xr7, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB87_15
-# %bb.9:                                # %pred.load.continue15
-                                        #   in Loop: Header=BB87_3 Depth=1
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB87_16
-.LBB87_10:                              # %pred.load.continue17
-                                        #   in Loop: Header=BB87_3 Depth=1
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB87_17
-.LBB87_11:                              # %pred.load.continue19
-                                        #   in Loop: Header=BB87_3 Depth=1
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB87_2
-	b	.LBB87_18
-	.p2align	4, , 16
-.LBB87_12:                              # %pred.load.if
-                                        #   in Loop: Header=BB87_3 Depth=1
-	fld.s	$fa5, $a2, -8
-	fld.s	$fa6, $a3, -8
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB87_5
-.LBB87_13:                              # %pred.load.if8
+	vshuf4i.w	$vr9, $vr5, 8
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB87_7
+# %bb.6:                                # %pred.load.if8
                                         #   in Loop: Header=BB87_3 Depth=1
 	fld.s	$ft1, $a2, -4
 	fld.s	$ft2, $a3, -4
-	xvinsve0.w	$xr5, $xr9, 1
-	xvinsve0.w	$xr6, $xr10, 1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB87_6
-.LBB87_14:                              # %pred.load.if10
+	xvinsve0.w	$xr6, $xr9, 1
+	xvinsve0.w	$xr7, $xr10, 1
+.LBB87_7:                               # %pred.load.continue9
+                                        #   in Loop: Header=BB87_3 Depth=1
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB87_9
+# %bb.8:                                # %pred.load.if10
                                         #   in Loop: Header=BB87_3 Depth=1
 	fld.s	$ft1, $a2, 0
 	fld.s	$ft2, $a3, 0
-	xvinsve0.w	$xr5, $xr9, 2
-	xvinsve0.w	$xr6, $xr10, 2
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB87_7
-	b	.LBB87_8
-	.p2align	4, , 16
-.LBB87_15:                              # %pred.load.if14
+	xvinsve0.w	$xr6, $xr9, 2
+	xvinsve0.w	$xr7, $xr10, 2
+.LBB87_9:                               # %pred.load.continue11
                                         #   in Loop: Header=BB87_3 Depth=1
-	fld.s	$ft0, $a2, 8
-	fld.s	$ft1, $a3, 8
-	xvinsve0.w	$xr5, $xr8, 4
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB87_11
+# %bb.10:                               # %pred.load.if12
+                                        #   in Loop: Header=BB87_3 Depth=1
+	fld.s	$ft1, $a2, 4
+	fld.s	$ft2, $a3, 4
+	xvinsve0.w	$xr6, $xr9, 3
+	xvinsve0.w	$xr7, $xr10, 3
+.LBB87_11:                              # %pred.load.continue13
+                                        #   in Loop: Header=BB87_3 Depth=1
+	xvor.v	$xr8, $xr8, $xr2
+	xvsle.du	$xr8, $xr8, $xr0
+	xvpermi.d	$xr9, $xr8, 64
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB87_13
+# %bb.12:                               # %pred.load.if14
+                                        #   in Loop: Header=BB87_3 Depth=1
+	fld.s	$ft1, $a2, 8
+	fld.s	$ft2, $a3, 8
 	xvinsve0.w	$xr6, $xr9, 4
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB87_10
-.LBB87_16:                              # %pred.load.if16
+	xvinsve0.w	$xr7, $xr10, 4
+.LBB87_13:                              # %pred.load.continue15
                                         #   in Loop: Header=BB87_3 Depth=1
-	fld.s	$ft0, $a2, 12
-	fld.s	$ft1, $a3, 12
-	xvinsve0.w	$xr5, $xr8, 5
+	vshuf4i.w	$vr9, $vr8, 8
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB87_15
+# %bb.14:                               # %pred.load.if16
+                                        #   in Loop: Header=BB87_3 Depth=1
+	fld.s	$ft1, $a2, 12
+	fld.s	$ft2, $a3, 12
 	xvinsve0.w	$xr6, $xr9, 5
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB87_11
-.LBB87_17:                              # %pred.load.if18
+	xvinsve0.w	$xr7, $xr10, 5
+.LBB87_15:                              # %pred.load.continue17
                                         #   in Loop: Header=BB87_3 Depth=1
-	fld.s	$ft0, $a2, 16
-	fld.s	$ft1, $a3, 16
-	xvinsve0.w	$xr5, $xr8, 6
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB87_17
+# %bb.16:                               # %pred.load.if18
+                                        #   in Loop: Header=BB87_3 Depth=1
+	fld.s	$ft1, $a2, 16
+	fld.s	$ft2, $a3, 16
 	xvinsve0.w	$xr6, $xr9, 6
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB87_2
-.LBB87_18:                              # %pred.load.if20
+	xvinsve0.w	$xr7, $xr10, 6
+.LBB87_17:                              # %pred.load.continue19
                                         #   in Loop: Header=BB87_3 Depth=1
-	fld.s	$fa7, $a2, 20
-	fld.s	$ft0, $a3, 20
-	xvinsve0.w	$xr5, $xr7, 7
-	xvinsve0.w	$xr6, $xr8, 7
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB87_2
+# %bb.18:                               # %pred.load.if20
+                                        #   in Loop: Header=BB87_3 Depth=1
+	fld.s	$ft1, $a2, 20
+	fld.s	$ft2, $a3, 20
+	xvinsve0.w	$xr6, $xr9, 7
+	xvinsve0.w	$xr7, $xr10, 7
 	b	.LBB87_2
 .LBB87_19:                              # %"_ZSt10__invoke_rIiRZ4mainE4$_25JPfS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.w	$vr0, $a4, 0
-	vinsgr2vr.w	$vr0, $a5, 1
-	vinsgr2vr.w	$vr0, $a6, 2
-	vinsgr2vr.w	$vr0, $a7, 3
-	vinsgr2vr.w	$vr1, $t0, 0
-	vinsgr2vr.w	$vr1, $t1, 1
-	vinsgr2vr.w	$vr1, $t2, 2
-	vinsgr2vr.w	$vr1, $t3, 3
+	xvpermi.q	$xr0, $xr5, 1
+	vpickev.w	$vr0, $vr0, $vr5
+	xvpermi.q	$xr1, $xr8, 1
+	vpickev.w	$vr1, $vr1, $vr8
 	xvpermi.q	$xr0, $xr1, 2
-	xvbitsel.v	$xr0, $xr4, $xr5, $xr0
+	xvbitsel.v	$xr0, $xr4, $xr6, $xr0
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -12671,12 +12941,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_27E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ori	$a0, $zero, 3
 	blt	$a3, $a4, .LBB91_36
 # %bb.1:                                # %vector.ph
-	addi.d	$sp, $sp, -48
-	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	move	$a0, $zero
 	addi.d	$a4, $a3, -4
 	xvreplgr2vr.d	$xr1, $a4
@@ -12697,13 +12961,13 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_27E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	slli.d	$a1, $a1, 4
 	addi.d	$a2, $a4, 18
 	addi.d	$a3, $a5, 18
-	xvldi	$xr7, -2688
+	xvldi	$xr8, -2688
 	b	.LBB91_3
 	.p2align	4, , 16
 .LBB91_2:                               # %pred.load.continue37
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvslt.h	$xr7, $xr8, $xr7
-	xvbitsel.v	$xr7, $xr0, $xr2, $xr7
+	xvslt.h	$xr8, $xr9, $xr8
+	xvbitsel.v	$xr8, $xr0, $xr2, $xr8
 	addi.d	$a0, $a0, 16
 	xvaddi.hu	$xr2, $xr2, 16
 	addi.d	$a2, $a2, 32
@@ -12711,316 +12975,397 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_27E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	beq	$a1, $a0, .LBB91_35
 .LBB91_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvreplgr2vr.d	$xr9, $a0
-	xvor.v	$xr0, $xr9, $xr6
-	xvsle.du	$xr10, $xr0, $xr1
-	xvpickve2gr.d	$a4, $xr10, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr0, $xr7, 0
-                                        # implicit-def: $xr7
+	xvreplgr2vr.d	$xr11, $a0
+	xvor.v	$xr0, $xr11, $xr6
+	xvsle.du	$xr7, $xr0, $xr1
+	vpickve2gr.b	$a4, $vr7, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr0, $xr8, 0
                                         # implicit-def: $xr8
-	bnez	$a5, .LBB91_22
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr9
+	beqz	$a4, .LBB91_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvpickve2gr.d	$a5, $xr10, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB91_23
-.LBB91_5:                               # %pred.load.continue9
+	ld.h	$a4, $a2, -12
+	ld.h	$a5, $a3, -12
+	vinsgr2vr.h	$vr8, $a4, 0
+	vinsgr2vr.h	$vr9, $a5, 0
+.LBB91_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvpickve2gr.d	$a6, $xr10, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB91_24
-.LBB91_6:                               # %pred.load.continue11
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.h	$xr10, $xr12, $xr10
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.b	$xr10, $xr12, $xr10
+	vpickve2gr.b	$a4, $vr10, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_7
+# %bb.6:                                # %pred.load.if8
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvpickve2gr.d	$a7, $xr10, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB91_8
-.LBB91_7:                               # %pred.load.if12
+	ld.h	$a4, $a2, -10
+	ld.h	$a5, $a3, -10
+	xvreplgr2vr.h	$xr10, $a4
+	xvpermi.q	$xr10, $xr8, 18
+	xvextrins.h	$xr8, $xr10, 17
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 17
+.LBB91_7:                               # %pred.load.continue9
                                         #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$t0, $a2, -6
-	ld.h	$t1, $a3, -6
-	xvreplgr2vr.h	$xr10, $t0
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 51
-	xvreplgr2vr.h	$xr10, $t1
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.h	$xr10, $xr12, $xr10
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.b	$xr10, $xr12, $xr10
+	vpickve2gr.b	$a4, $vr10, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_9
+# %bb.8:                                # %pred.load.if10
+                                        #   in Loop: Header=BB91_3 Depth=1
+	ld.h	$a4, $a2, -8
+	ld.h	$a5, $a3, -8
+	xvreplgr2vr.h	$xr10, $a4
+	xvpermi.q	$xr10, $xr8, 18
+	xvextrins.h	$xr8, $xr10, 34
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 34
+.LBB91_9:                               # %pred.load.continue11
+                                        #   in Loop: Header=BB91_3 Depth=1
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.h	$xr10, $xr12, $xr10
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.b	$xr10, $xr12, $xr10
+	vpickve2gr.b	$a4, $vr10, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_11
+# %bb.10:                               # %pred.load.if12
+                                        #   in Loop: Header=BB91_3 Depth=1
+	ld.h	$a4, $a2, -6
+	ld.h	$a5, $a3, -6
+	xvreplgr2vr.h	$xr10, $a4
 	xvpermi.q	$xr10, $xr8, 18
 	xvextrins.h	$xr8, $xr10, 51
-.LBB91_8:                               # %pred.load.continue13
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 51
+.LBB91_11:                              # %pred.load.continue13
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvor.v	$xr10, $xr9, $xr5
+	xvor.v	$xr10, $xr11, $xr5
 	xvsle.du	$xr10, $xr10, $xr1
-	xvpickve2gr.d	$t0, $xr10, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB91_25
-# %bb.9:                                # %pred.load.continue15
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_13
+# %bb.12:                               # %pred.load.if14
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvpickve2gr.d	$t1, $xr10, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB91_26
-.LBB91_10:                              # %pred.load.continue17
+	ld.h	$a4, $a2, -4
+	ld.h	$a5, $a3, -4
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 68
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 68
+.LBB91_13:                              # %pred.load.continue15
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvpickve2gr.d	$t2, $xr10, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB91_27
-.LBB91_11:                              # %pred.load.continue19
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_15
+# %bb.14:                               # %pred.load.if16
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvpickve2gr.d	$t3, $xr10, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB91_13
-.LBB91_12:                              # %pred.load.if20
+	ld.h	$a4, $a2, -2
+	ld.h	$a5, $a3, -2
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 85
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 85
+.LBB91_15:                              # %pred.load.continue17
                                         #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$t4, $a2, 2
-	ld.h	$t5, $a3, 2
-	xvreplgr2vr.h	$xr10, $t4
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 119
-	xvreplgr2vr.h	$xr10, $t5
-	xvpermi.q	$xr10, $xr8, 18
-	xvextrins.h	$xr8, $xr10, 119
-.LBB91_13:                              # %pred.load.continue21
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_17
+# %bb.16:                               # %pred.load.if18
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvor.v	$xr10, $xr9, $xr4
-	xvsle.du	$xr10, $xr10, $xr1
-	xvpickve2gr.d	$t4, $xr10, 0
-	andi	$t5, $t4, 1
-	bnez	$t5, .LBB91_28
-# %bb.14:                               # %pred.load.continue23
+	ld.h	$a4, $a2, 0
+	ld.h	$a5, $a3, 0
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 102
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 102
+.LBB91_17:                              # %pred.load.continue19
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvpickve2gr.d	$t5, $xr10, 1
-	andi	$t6, $t5, 1
-	bnez	$t6, .LBB91_29
-.LBB91_15:                              # %pred.load.continue25
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_19
+# %bb.18:                               # %pred.load.if20
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvpickve2gr.d	$t6, $xr10, 2
-	andi	$t7, $t6, 1
-	bnez	$t7, .LBB91_30
-.LBB91_16:                              # %pred.load.continue27
+	ld.h	$a4, $a2, 2
+	ld.h	$a5, $a3, 2
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 119
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 119
+.LBB91_19:                              # %pred.load.continue21
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvpickve2gr.d	$t7, $xr10, 3
-	andi	$t8, $t7, 1
-	beqz	$t8, .LBB91_18
-.LBB91_17:                              # %pred.load.if28
+	xvor.v	$xr12, $xr11, $xr4
+	xvsle.du	$xr12, $xr12, $xr1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 8
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_21
+# %bb.20:                               # %pred.load.if22
                                         #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$t8, $a2, 10
-	ld.h	$fp, $a3, 10
-	xvreplgr2vr.h	$xr10, $t8
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 51
-	xvreplgr2vr.h	$xr10, $fp
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 51
-.LBB91_18:                              # %pred.load.continue29
+	ld.h	$a4, $a2, 4
+	ld.h	$a5, $a3, 4
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 0
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 0
+.LBB91_21:                              # %pred.load.continue23
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvor.v	$xr9, $xr9, $xr3
-	xvsle.du	$xr9, $xr9, $xr1
-	xvpickve2gr.d	$t8, $xr9, 0
-	andi	$fp, $t8, 1
-	bnez	$fp, .LBB91_31
-# %bb.19:                               # %pred.load.continue31
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 9
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_23
+# %bb.22:                               # %pred.load.if24
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvpickve2gr.d	$fp, $xr9, 1
-	andi	$s0, $fp, 1
-	bnez	$s0, .LBB91_32
-.LBB91_20:                              # %pred.load.continue33
+	ld.h	$a4, $a2, 6
+	ld.h	$a5, $a3, 6
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 17
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 17
+.LBB91_23:                              # %pred.load.continue25
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvpickve2gr.d	$s0, $xr9, 2
-	andi	$s1, $s0, 1
-	bnez	$s1, .LBB91_33
-.LBB91_21:                              # %pred.load.continue35
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 10
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_25
+# %bb.24:                               # %pred.load.if26
                                         #   in Loop: Header=BB91_3 Depth=1
-	xvpickve2gr.d	$s1, $xr9, 3
-	andi	$s2, $s1, 1
-	beqz	$s2, .LBB91_2
-	b	.LBB91_34
-	.p2align	4, , 16
-.LBB91_22:                              # %pred.load.if
+	ld.h	$a4, $a2, 8
+	ld.h	$a5, $a3, 8
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 34
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 34
+.LBB91_25:                              # %pred.load.continue27
                                         #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$a5, $a2, -12
-	ld.h	$a6, $a3, -12
-	vinsgr2vr.h	$vr7, $a5, 0
-	vinsgr2vr.h	$vr8, $a6, 0
-	xvpickve2gr.d	$a5, $xr10, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB91_5
-.LBB91_23:                              # %pred.load.if8
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 11
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_27
+# %bb.26:                               # %pred.load.if28
                                         #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$a6, $a2, -10
-	ld.h	$a7, $a3, -10
-	xvreplgr2vr.h	$xr11, $a6
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 17
-	xvreplgr2vr.h	$xr11, $a7
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 17
-	xvpickve2gr.d	$a6, $xr10, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB91_6
-.LBB91_24:                              # %pred.load.if10
+	ld.h	$a4, $a2, 10
+	ld.h	$a5, $a3, 10
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 51
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 51
+.LBB91_27:                              # %pred.load.continue29
                                         #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$a7, $a2, -8
-	ld.h	$t0, $a3, -8
-	xvreplgr2vr.h	$xr11, $a7
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 34
-	xvreplgr2vr.h	$xr11, $t0
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 34
-	xvpickve2gr.d	$a7, $xr10, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB91_7
-	b	.LBB91_8
-	.p2align	4, , 16
-.LBB91_25:                              # %pred.load.if14
+	xvor.v	$xr11, $xr11, $xr3
+	xvsle.du	$xr11, $xr11, $xr1
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 12
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_29
+# %bb.28:                               # %pred.load.if30
                                         #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$t1, $a2, -4
-	ld.h	$t2, $a3, -4
-	xvreplgr2vr.h	$xr11, $t1
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 68
-	xvreplgr2vr.h	$xr11, $t2
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 68
-	xvpickve2gr.d	$t1, $xr10, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB91_10
-.LBB91_26:                              # %pred.load.if16
+	ld.h	$a4, $a2, 12
+	ld.h	$a5, $a3, 12
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 68
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 68
+.LBB91_29:                              # %pred.load.continue31
                                         #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$t2, $a2, -2
-	ld.h	$t3, $a3, -2
-	xvreplgr2vr.h	$xr11, $t2
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 85
-	xvreplgr2vr.h	$xr11, $t3
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 85
-	xvpickve2gr.d	$t2, $xr10, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB91_11
-.LBB91_27:                              # %pred.load.if18
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 13
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_31
+# %bb.30:                               # %pred.load.if32
                                         #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$t3, $a2, 0
-	ld.h	$t4, $a3, 0
-	xvreplgr2vr.h	$xr11, $t3
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 102
-	xvreplgr2vr.h	$xr11, $t4
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 102
-	xvpickve2gr.d	$t3, $xr10, 3
-	andi	$t4, $t3, 1
-	bnez	$t4, .LBB91_12
-	b	.LBB91_13
-	.p2align	4, , 16
-.LBB91_28:                              # %pred.load.if22
+	ld.h	$a4, $a2, 14
+	ld.h	$a5, $a3, 14
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 85
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 85
+.LBB91_31:                              # %pred.load.continue33
                                         #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$t5, $a2, 4
-	ld.h	$t6, $a3, 4
-	xvreplgr2vr.h	$xr11, $t5
-	xvpermi.q	$xr11, $xr7, 48
-	xvextrins.h	$xr7, $xr11, 0
-	xvreplgr2vr.h	$xr11, $t6
-	xvpermi.q	$xr11, $xr8, 48
-	xvextrins.h	$xr8, $xr11, 0
-	xvpickve2gr.d	$t5, $xr10, 1
-	andi	$t6, $t5, 1
-	beqz	$t6, .LBB91_15
-.LBB91_29:                              # %pred.load.if24
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 14
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_33
+# %bb.32:                               # %pred.load.if34
                                         #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$t6, $a2, 6
-	ld.h	$t7, $a3, 6
-	xvreplgr2vr.h	$xr11, $t6
-	xvpermi.q	$xr11, $xr7, 48
-	xvextrins.h	$xr7, $xr11, 17
-	xvreplgr2vr.h	$xr11, $t7
-	xvpermi.q	$xr11, $xr8, 48
-	xvextrins.h	$xr8, $xr11, 17
-	xvpickve2gr.d	$t6, $xr10, 2
-	andi	$t7, $t6, 1
-	beqz	$t7, .LBB91_16
-.LBB91_30:                              # %pred.load.if26
+	ld.h	$a4, $a2, 16
+	ld.h	$a5, $a3, 16
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 102
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 102
+.LBB91_33:                              # %pred.load.continue35
                                         #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$t7, $a2, 8
-	ld.h	$t8, $a3, 8
-	xvreplgr2vr.h	$xr11, $t7
-	xvpermi.q	$xr11, $xr7, 48
-	xvextrins.h	$xr7, $xr11, 34
-	xvreplgr2vr.h	$xr11, $t8
-	xvpermi.q	$xr11, $xr8, 48
-	xvextrins.h	$xr8, $xr11, 34
-	xvpickve2gr.d	$t7, $xr10, 3
-	andi	$t8, $t7, 1
-	bnez	$t8, .LBB91_17
-	b	.LBB91_18
-	.p2align	4, , 16
-.LBB91_31:                              # %pred.load.if30
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 15
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB91_2
+# %bb.34:                               # %pred.load.if36
                                         #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$fp, $a2, 12
-	ld.h	$s0, $a3, 12
-	xvreplgr2vr.h	$xr10, $fp
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 68
-	xvreplgr2vr.h	$xr10, $s0
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 68
-	xvpickve2gr.d	$fp, $xr9, 1
-	andi	$s0, $fp, 1
-	beqz	$s0, .LBB91_20
-.LBB91_32:                              # %pred.load.if32
-                                        #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$s0, $a2, 14
-	ld.h	$s1, $a3, 14
-	xvreplgr2vr.h	$xr10, $s0
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 85
-	xvreplgr2vr.h	$xr10, $s1
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 85
-	xvpickve2gr.d	$s0, $xr9, 2
-	andi	$s1, $s0, 1
-	beqz	$s1, .LBB91_21
-.LBB91_33:                              # %pred.load.if34
-                                        #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$s1, $a2, 16
-	ld.h	$s2, $a3, 16
-	xvreplgr2vr.h	$xr10, $s1
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 102
-	xvreplgr2vr.h	$xr10, $s2
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 102
-	xvpickve2gr.d	$s1, $xr9, 3
-	andi	$s2, $s1, 1
-	beqz	$s2, .LBB91_2
-.LBB91_34:                              # %pred.load.if36
-                                        #   in Loop: Header=BB91_3 Depth=1
-	ld.h	$s2, $a2, 18
-	ld.h	$s3, $a3, 18
-	xvreplgr2vr.h	$xr9, $s2
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.h	$xr7, $xr9, 119
-	xvreplgr2vr.h	$xr9, $s3
-	xvpermi.q	$xr9, $xr8, 48
-	xvextrins.h	$xr8, $xr9, 119
+	ld.h	$a4, $a2, 18
+	ld.h	$a5, $a3, 18
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 119
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 119
 	b	.LBB91_2
 .LBB91_35:                              # %"_ZSt10__invoke_rIsRZ4mainE4$_27JPsS2_sEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.h	$vr1, $a4, 0
-	vinsgr2vr.h	$vr1, $a5, 1
-	vinsgr2vr.h	$vr1, $a6, 2
-	vinsgr2vr.h	$vr1, $a7, 3
-	vinsgr2vr.h	$vr1, $t0, 4
-	vinsgr2vr.h	$vr1, $t1, 5
-	vinsgr2vr.h	$vr1, $t2, 6
-	vinsgr2vr.h	$vr1, $t3, 7
-	vinsgr2vr.h	$vr2, $t4, 0
-	vinsgr2vr.h	$vr2, $t5, 1
-	vinsgr2vr.h	$vr2, $t6, 2
-	vinsgr2vr.h	$vr2, $t7, 3
-	vinsgr2vr.h	$vr2, $t8, 4
-	vinsgr2vr.h	$vr2, $fp, 5
-	vinsgr2vr.h	$vr2, $s0, 6
-	vinsgr2vr.h	$vr2, $s1, 7
-	xvpermi.q	$xr1, $xr2, 2
-	xvbitsel.v	$xr0, $xr0, $xr7, $xr1
+	xvpermi.q	$xr1, $xr7, 1
+	vpickev.w	$vr2, $vr1, $vr7
+	xvpermi.q	$xr1, $xr10, 1
+	vpickev.w	$vr1, $vr1, $vr10
+	xvpermi.q	$xr2, $xr1, 2
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr1, $a0, 1
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr1, $a0, 2
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr1, $a0, 4
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr1, $a0, 5
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr1, $a0, 6
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpermi.q	$xr2, $xr12, 1
+	vpickev.w	$vr2, $vr2, $vr12
+	xvpermi.q	$xr3, $xr11, 1
+	vpickev.w	$vr3, $vr3, $vr11
+	xvpermi.q	$xr2, $xr3, 2
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr3, $a0, 1
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr3, $a0, 2
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr3, $a0, 4
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr3, $a0, 5
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr3, $a0, 6
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr3, $a0, 7
+	xvpermi.q	$xr1, $xr3, 2
+	xvbitsel.v	$xr0, $xr0, $xr8, $xr1
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.h	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -13038,12 +13383,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_27E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ori	$a2, $zero, 3
 	maskeqz	$a1, $a2, $a1
 	or	$a0, $a1, $a0
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
 .LBB91_36:                              # %"_ZSt10__invoke_rIsRZ4mainE4$_27JPsS2_sEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ext.w.h	$a0, $a0
 	ret
@@ -13178,13 +13517,13 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_29E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a4, 20
 	addi.d	$a3, $a5, 20
-	xvldi	$xr5, -3200
+	xvldi	$xr6, -3200
 	b	.LBB95_3
 	.p2align	4, , 16
 .LBB95_2:                               # %pred.load.continue21
                                         #   in Loop: Header=BB95_3 Depth=1
-	xvslt.w	$xr5, $xr6, $xr5
-	xvbitsel.v	$xr5, $xr4, $xr1, $xr5
+	xvslt.w	$xr6, $xr7, $xr6
+	xvbitsel.v	$xr6, $xr4, $xr1, $xr6
 	addi.d	$a0, $a0, 8
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a2, $a2, 32
@@ -13192,134 +13531,136 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_29E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	beq	$a1, $a0, .LBB95_19
 .LBB95_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvreplgr2vr.d	$xr7, $a0
-	xvor.v	$xr4, $xr7, $xr3
-	xvsle.du	$xr8, $xr4, $xr0
-	xvpickve2gr.d	$a4, $xr8, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr4, $xr5, 0
-                                        # implicit-def: $xr5
+	xvreplgr2vr.d	$xr8, $a0
+	xvor.v	$xr4, $xr8, $xr3
+	xvsle.du	$xr5, $xr4, $xr0
+	vpickve2gr.h	$a4, $vr5, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr4, $xr6, 0
                                         # implicit-def: $xr6
-	bnez	$a5, .LBB95_12
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr7
+	beqz	$a4, .LBB95_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB95_3 Depth=1
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB95_13
-.LBB95_5:                               # %pred.load.continue9
+	ld.w	$a4, $a2, -8
+	ld.w	$a5, $a3, -8
+	vinsgr2vr.w	$vr6, $a4, 0
+	vinsgr2vr.w	$vr7, $a5, 0
+.LBB95_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB95_3 Depth=1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB95_14
-.LBB95_6:                               # %pred.load.continue11
+	vshuf4i.w	$vr9, $vr5, 8
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB95_7
+# %bb.6:                                # %pred.load.if8
                                         #   in Loop: Header=BB95_3 Depth=1
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB95_8
-.LBB95_7:                               # %pred.load.if12
+	ld.w	$a4, $a2, -4
+	ld.w	$a5, $a3, -4
+	xvinsgr2vr.w	$xr6, $a4, 1
+	xvinsgr2vr.w	$xr7, $a5, 1
+.LBB95_7:                               # %pred.load.continue9
                                         #   in Loop: Header=BB95_3 Depth=1
-	ld.w	$t0, $a2, 4
-	ld.w	$t1, $a3, 4
-	xvinsgr2vr.w	$xr5, $t0, 3
-	xvinsgr2vr.w	$xr6, $t1, 3
-.LBB95_8:                               # %pred.load.continue13
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB95_9
+# %bb.8:                                # %pred.load.if10
                                         #   in Loop: Header=BB95_3 Depth=1
-	xvor.v	$xr7, $xr7, $xr2
-	xvsle.du	$xr7, $xr7, $xr0
-	xvpickve2gr.d	$t0, $xr7, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB95_15
-# %bb.9:                                # %pred.load.continue15
+	ld.w	$a4, $a2, 0
+	ld.w	$a5, $a3, 0
+	xvinsgr2vr.w	$xr6, $a4, 2
+	xvinsgr2vr.w	$xr7, $a5, 2
+.LBB95_9:                               # %pred.load.continue11
                                         #   in Loop: Header=BB95_3 Depth=1
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB95_16
-.LBB95_10:                              # %pred.load.continue17
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB95_11
+# %bb.10:                               # %pred.load.if12
                                         #   in Loop: Header=BB95_3 Depth=1
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB95_17
-.LBB95_11:                              # %pred.load.continue19
+	ld.w	$a4, $a2, 4
+	ld.w	$a5, $a3, 4
+	xvinsgr2vr.w	$xr6, $a4, 3
+	xvinsgr2vr.w	$xr7, $a5, 3
+.LBB95_11:                              # %pred.load.continue13
                                         #   in Loop: Header=BB95_3 Depth=1
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB95_2
-	b	.LBB95_18
-	.p2align	4, , 16
-.LBB95_12:                              # %pred.load.if
+	xvor.v	$xr8, $xr8, $xr2
+	xvsle.du	$xr8, $xr8, $xr0
+	xvpermi.d	$xr9, $xr8, 64
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB95_13
+# %bb.12:                               # %pred.load.if14
                                         #   in Loop: Header=BB95_3 Depth=1
-	ld.w	$a5, $a2, -8
-	ld.w	$a6, $a3, -8
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB95_5
-.LBB95_13:                              # %pred.load.if8
+	ld.w	$a4, $a2, 8
+	ld.w	$a5, $a3, 8
+	xvinsgr2vr.w	$xr6, $a4, 4
+	xvinsgr2vr.w	$xr7, $a5, 4
+.LBB95_13:                              # %pred.load.continue15
                                         #   in Loop: Header=BB95_3 Depth=1
-	ld.w	$a6, $a2, -4
-	ld.w	$a7, $a3, -4
-	xvinsgr2vr.w	$xr5, $a6, 1
-	xvinsgr2vr.w	$xr6, $a7, 1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB95_6
-.LBB95_14:                              # %pred.load.if10
+	vshuf4i.w	$vr9, $vr8, 8
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB95_15
+# %bb.14:                               # %pred.load.if16
                                         #   in Loop: Header=BB95_3 Depth=1
-	ld.w	$a7, $a2, 0
-	ld.w	$t0, $a3, 0
-	xvinsgr2vr.w	$xr5, $a7, 2
-	xvinsgr2vr.w	$xr6, $t0, 2
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB95_7
-	b	.LBB95_8
-	.p2align	4, , 16
-.LBB95_15:                              # %pred.load.if14
+	ld.w	$a4, $a2, 12
+	ld.w	$a5, $a3, 12
+	xvinsgr2vr.w	$xr6, $a4, 5
+	xvinsgr2vr.w	$xr7, $a5, 5
+.LBB95_15:                              # %pred.load.continue17
                                         #   in Loop: Header=BB95_3 Depth=1
-	ld.w	$t1, $a2, 8
-	ld.w	$t2, $a3, 8
-	xvinsgr2vr.w	$xr5, $t1, 4
-	xvinsgr2vr.w	$xr6, $t2, 4
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB95_10
-.LBB95_16:                              # %pred.load.if16
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB95_17
+# %bb.16:                               # %pred.load.if18
                                         #   in Loop: Header=BB95_3 Depth=1
-	ld.w	$t2, $a2, 12
-	ld.w	$t3, $a3, 12
-	xvinsgr2vr.w	$xr5, $t2, 5
-	xvinsgr2vr.w	$xr6, $t3, 5
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB95_11
-.LBB95_17:                              # %pred.load.if18
+	ld.w	$a4, $a2, 16
+	ld.w	$a5, $a3, 16
+	xvinsgr2vr.w	$xr6, $a4, 6
+	xvinsgr2vr.w	$xr7, $a5, 6
+.LBB95_17:                              # %pred.load.continue19
                                         #   in Loop: Header=BB95_3 Depth=1
-	ld.w	$t3, $a2, 16
-	ld.w	$t4, $a3, 16
-	xvinsgr2vr.w	$xr5, $t3, 6
-	xvinsgr2vr.w	$xr6, $t4, 6
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB95_2
-.LBB95_18:                              # %pred.load.if20
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB95_2
+# %bb.18:                               # %pred.load.if20
                                         #   in Loop: Header=BB95_3 Depth=1
-	ld.w	$t4, $a2, 20
-	ld.w	$t5, $a3, 20
-	xvinsgr2vr.w	$xr5, $t4, 7
-	xvinsgr2vr.w	$xr6, $t5, 7
+	ld.w	$a4, $a2, 20
+	ld.w	$a5, $a3, 20
+	xvinsgr2vr.w	$xr6, $a4, 7
+	xvinsgr2vr.w	$xr7, $a5, 7
 	b	.LBB95_2
 .LBB95_19:                              # %"_ZSt10__invoke_rIiRZ4mainE4$_29JPiS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.w	$vr0, $a4, 0
-	vinsgr2vr.w	$vr0, $a5, 1
-	vinsgr2vr.w	$vr0, $a6, 2
-	vinsgr2vr.w	$vr0, $a7, 3
-	vinsgr2vr.w	$vr1, $t0, 0
-	vinsgr2vr.w	$vr1, $t1, 1
-	vinsgr2vr.w	$vr1, $t2, 2
-	vinsgr2vr.w	$vr1, $t3, 3
+	xvpermi.q	$xr0, $xr5, 1
+	vpickev.w	$vr0, $vr0, $vr5
+	xvpermi.q	$xr1, $xr8, 1
+	vpickev.w	$vr1, $vr1, $vr8
 	xvpermi.q	$xr0, $xr1, 2
-	xvbitsel.v	$xr0, $xr4, $xr5, $xr0
+	xvbitsel.v	$xr0, $xr4, $xr6, $xr0
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -13468,13 +13809,13 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_29E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a4, 20
 	addi.d	$a3, $a5, 20
-	xvldi	$xr5, -3200
+	xvldi	$xr6, -3200
 	b	.LBB99_3
 	.p2align	4, , 16
 .LBB99_2:                               # %pred.load.continue21
                                         #   in Loop: Header=BB99_3 Depth=1
-	xvfcmp.clt.s	$xr5, $xr6, $xr5
-	xvbitsel.v	$xr5, $xr4, $xr1, $xr5
+	xvfcmp.clt.s	$xr6, $xr7, $xr6
+	xvbitsel.v	$xr6, $xr4, $xr1, $xr6
 	addi.d	$a0, $a0, 8
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a2, $a2, 32
@@ -13482,132 +13823,134 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_29E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	beq	$a1, $a0, .LBB99_19
 .LBB99_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvreplgr2vr.d	$xr7, $a0
-	xvor.v	$xr4, $xr7, $xr3
-	xvsle.du	$xr8, $xr4, $xr0
-	xvpickve2gr.d	$a4, $xr8, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr4, $xr5, 0
-                                        # implicit-def: $xr5
+	xvreplgr2vr.d	$xr8, $a0
+	xvor.v	$xr4, $xr8, $xr3
+	xvsle.du	$xr5, $xr4, $xr0
+	vpickve2gr.h	$a4, $vr5, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr4, $xr6, 0
                                         # implicit-def: $xr6
-	bnez	$a5, .LBB99_12
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr7
+	beqz	$a4, .LBB99_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB99_3 Depth=1
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB99_13
-.LBB99_5:                               # %pred.load.continue9
+	fld.s	$fa6, $a2, -8
+	fld.s	$fa7, $a3, -8
+.LBB99_5:                               # %pred.load.continue
                                         #   in Loop: Header=BB99_3 Depth=1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB99_14
-.LBB99_6:                               # %pred.load.continue11
-                                        #   in Loop: Header=BB99_3 Depth=1
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB99_8
-.LBB99_7:                               # %pred.load.if12
-                                        #   in Loop: Header=BB99_3 Depth=1
-	fld.s	$ft0, $a2, 4
-	fld.s	$ft1, $a3, 4
-	xvinsve0.w	$xr5, $xr8, 3
-	xvinsve0.w	$xr6, $xr9, 3
-.LBB99_8:                               # %pred.load.continue13
-                                        #   in Loop: Header=BB99_3 Depth=1
-	xvor.v	$xr7, $xr7, $xr2
-	xvsle.du	$xr7, $xr7, $xr0
-	xvpickve2gr.d	$t0, $xr7, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB99_15
-# %bb.9:                                # %pred.load.continue15
-                                        #   in Loop: Header=BB99_3 Depth=1
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB99_16
-.LBB99_10:                              # %pred.load.continue17
-                                        #   in Loop: Header=BB99_3 Depth=1
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB99_17
-.LBB99_11:                              # %pred.load.continue19
-                                        #   in Loop: Header=BB99_3 Depth=1
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB99_2
-	b	.LBB99_18
-	.p2align	4, , 16
-.LBB99_12:                              # %pred.load.if
-                                        #   in Loop: Header=BB99_3 Depth=1
-	fld.s	$fa5, $a2, -8
-	fld.s	$fa6, $a3, -8
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB99_5
-.LBB99_13:                              # %pred.load.if8
+	vshuf4i.w	$vr9, $vr5, 8
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB99_7
+# %bb.6:                                # %pred.load.if8
                                         #   in Loop: Header=BB99_3 Depth=1
 	fld.s	$ft1, $a2, -4
 	fld.s	$ft2, $a3, -4
-	xvinsve0.w	$xr5, $xr9, 1
-	xvinsve0.w	$xr6, $xr10, 1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB99_6
-.LBB99_14:                              # %pred.load.if10
+	xvinsve0.w	$xr6, $xr9, 1
+	xvinsve0.w	$xr7, $xr10, 1
+.LBB99_7:                               # %pred.load.continue9
+                                        #   in Loop: Header=BB99_3 Depth=1
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB99_9
+# %bb.8:                                # %pred.load.if10
                                         #   in Loop: Header=BB99_3 Depth=1
 	fld.s	$ft1, $a2, 0
 	fld.s	$ft2, $a3, 0
-	xvinsve0.w	$xr5, $xr9, 2
-	xvinsve0.w	$xr6, $xr10, 2
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB99_7
-	b	.LBB99_8
-	.p2align	4, , 16
-.LBB99_15:                              # %pred.load.if14
+	xvinsve0.w	$xr6, $xr9, 2
+	xvinsve0.w	$xr7, $xr10, 2
+.LBB99_9:                               # %pred.load.continue11
                                         #   in Loop: Header=BB99_3 Depth=1
-	fld.s	$ft0, $a2, 8
-	fld.s	$ft1, $a3, 8
-	xvinsve0.w	$xr5, $xr8, 4
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB99_11
+# %bb.10:                               # %pred.load.if12
+                                        #   in Loop: Header=BB99_3 Depth=1
+	fld.s	$ft1, $a2, 4
+	fld.s	$ft2, $a3, 4
+	xvinsve0.w	$xr6, $xr9, 3
+	xvinsve0.w	$xr7, $xr10, 3
+.LBB99_11:                              # %pred.load.continue13
+                                        #   in Loop: Header=BB99_3 Depth=1
+	xvor.v	$xr8, $xr8, $xr2
+	xvsle.du	$xr8, $xr8, $xr0
+	xvpermi.d	$xr9, $xr8, 64
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB99_13
+# %bb.12:                               # %pred.load.if14
+                                        #   in Loop: Header=BB99_3 Depth=1
+	fld.s	$ft1, $a2, 8
+	fld.s	$ft2, $a3, 8
 	xvinsve0.w	$xr6, $xr9, 4
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB99_10
-.LBB99_16:                              # %pred.load.if16
+	xvinsve0.w	$xr7, $xr10, 4
+.LBB99_13:                              # %pred.load.continue15
                                         #   in Loop: Header=BB99_3 Depth=1
-	fld.s	$ft0, $a2, 12
-	fld.s	$ft1, $a3, 12
-	xvinsve0.w	$xr5, $xr8, 5
+	vshuf4i.w	$vr9, $vr8, 8
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB99_15
+# %bb.14:                               # %pred.load.if16
+                                        #   in Loop: Header=BB99_3 Depth=1
+	fld.s	$ft1, $a2, 12
+	fld.s	$ft2, $a3, 12
 	xvinsve0.w	$xr6, $xr9, 5
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB99_11
-.LBB99_17:                              # %pred.load.if18
+	xvinsve0.w	$xr7, $xr10, 5
+.LBB99_15:                              # %pred.load.continue17
                                         #   in Loop: Header=BB99_3 Depth=1
-	fld.s	$ft0, $a2, 16
-	fld.s	$ft1, $a3, 16
-	xvinsve0.w	$xr5, $xr8, 6
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB99_17
+# %bb.16:                               # %pred.load.if18
+                                        #   in Loop: Header=BB99_3 Depth=1
+	fld.s	$ft1, $a2, 16
+	fld.s	$ft2, $a3, 16
 	xvinsve0.w	$xr6, $xr9, 6
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB99_2
-.LBB99_18:                              # %pred.load.if20
+	xvinsve0.w	$xr7, $xr10, 6
+.LBB99_17:                              # %pred.load.continue19
                                         #   in Loop: Header=BB99_3 Depth=1
-	fld.s	$fa7, $a2, 20
-	fld.s	$ft0, $a3, 20
-	xvinsve0.w	$xr5, $xr7, 7
-	xvinsve0.w	$xr6, $xr8, 7
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB99_2
+# %bb.18:                               # %pred.load.if20
+                                        #   in Loop: Header=BB99_3 Depth=1
+	fld.s	$ft1, $a2, 20
+	fld.s	$ft2, $a3, 20
+	xvinsve0.w	$xr6, $xr9, 7
+	xvinsve0.w	$xr7, $xr10, 7
 	b	.LBB99_2
 .LBB99_19:                              # %"_ZSt10__invoke_rIiRZ4mainE4$_29JPfS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.w	$vr0, $a4, 0
-	vinsgr2vr.w	$vr0, $a5, 1
-	vinsgr2vr.w	$vr0, $a6, 2
-	vinsgr2vr.w	$vr0, $a7, 3
-	vinsgr2vr.w	$vr1, $t0, 0
-	vinsgr2vr.w	$vr1, $t1, 1
-	vinsgr2vr.w	$vr1, $t2, 2
-	vinsgr2vr.w	$vr1, $t3, 3
+	xvpermi.q	$xr0, $xr5, 1
+	vpickev.w	$vr0, $vr0, $vr5
+	xvpermi.q	$xr1, $xr8, 1
+	vpickev.w	$vr1, $vr1, $vr8
 	xvpermi.q	$xr0, $xr1, 2
-	xvbitsel.v	$xr0, $xr4, $xr5, $xr0
+	xvbitsel.v	$xr0, $xr4, $xr6, $xr0
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -13756,12 +14099,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_31E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ori	$a0, $zero, 2
 	blt	$a3, $a4, .LBB103_36
 # %bb.1:                                # %vector.ph
-	addi.d	$sp, $sp, -48
-	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	move	$a0, $zero
 	addi.d	$a4, $a3, -4
 	xvreplgr2vr.d	$xr1, $a4
@@ -13782,13 +14119,13 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_31E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	slli.d	$a1, $a1, 4
 	addi.d	$a2, $a4, 18
 	addi.d	$a3, $a5, 18
-	xvldi	$xr7, -2688
+	xvldi	$xr8, -2688
 	b	.LBB103_3
 	.p2align	4, , 16
 .LBB103_2:                              # %pred.load.continue37
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvslt.h	$xr7, $xr8, $xr7
-	xvbitsel.v	$xr7, $xr0, $xr2, $xr7
+	xvslt.h	$xr8, $xr9, $xr8
+	xvbitsel.v	$xr8, $xr0, $xr2, $xr8
 	addi.d	$a0, $a0, 16
 	xvaddi.hu	$xr2, $xr2, 16
 	addi.d	$a2, $a2, 32
@@ -13796,316 +14133,397 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_31E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	beq	$a1, $a0, .LBB103_35
 .LBB103_3:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvreplgr2vr.d	$xr9, $a0
-	xvor.v	$xr0, $xr9, $xr6
-	xvsle.du	$xr10, $xr0, $xr1
-	xvpickve2gr.d	$a4, $xr10, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr0, $xr7, 0
-                                        # implicit-def: $xr7
+	xvreplgr2vr.d	$xr11, $a0
+	xvor.v	$xr0, $xr11, $xr6
+	xvsle.du	$xr7, $xr0, $xr1
+	vpickve2gr.b	$a4, $vr7, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr0, $xr8, 0
                                         # implicit-def: $xr8
-	bnez	$a5, .LBB103_22
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr9
+	beqz	$a4, .LBB103_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvpickve2gr.d	$a5, $xr10, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB103_23
-.LBB103_5:                              # %pred.load.continue9
+	ld.h	$a4, $a2, -12
+	ld.h	$a5, $a3, -12
+	vinsgr2vr.h	$vr8, $a4, 0
+	vinsgr2vr.h	$vr9, $a5, 0
+.LBB103_5:                              # %pred.load.continue
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvpickve2gr.d	$a6, $xr10, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB103_24
-.LBB103_6:                              # %pred.load.continue11
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.h	$xr10, $xr12, $xr10
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.b	$xr10, $xr12, $xr10
+	vpickve2gr.b	$a4, $vr10, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_7
+# %bb.6:                                # %pred.load.if8
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvpickve2gr.d	$a7, $xr10, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB103_8
-.LBB103_7:                              # %pred.load.if12
+	ld.h	$a4, $a2, -10
+	ld.h	$a5, $a3, -10
+	xvreplgr2vr.h	$xr10, $a4
+	xvpermi.q	$xr10, $xr8, 18
+	xvextrins.h	$xr8, $xr10, 17
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 17
+.LBB103_7:                              # %pred.load.continue9
                                         #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$t0, $a2, -6
-	ld.h	$t1, $a3, -6
-	xvreplgr2vr.h	$xr10, $t0
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 51
-	xvreplgr2vr.h	$xr10, $t1
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.h	$xr10, $xr12, $xr10
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.b	$xr10, $xr12, $xr10
+	vpickve2gr.b	$a4, $vr10, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_9
+# %bb.8:                                # %pred.load.if10
+                                        #   in Loop: Header=BB103_3 Depth=1
+	ld.h	$a4, $a2, -8
+	ld.h	$a5, $a3, -8
+	xvreplgr2vr.h	$xr10, $a4
+	xvpermi.q	$xr10, $xr8, 18
+	xvextrins.h	$xr8, $xr10, 34
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 34
+.LBB103_9:                              # %pred.load.continue11
+                                        #   in Loop: Header=BB103_3 Depth=1
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.h	$xr10, $xr12, $xr10
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.b	$xr10, $xr12, $xr10
+	vpickve2gr.b	$a4, $vr10, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_11
+# %bb.10:                               # %pred.load.if12
+                                        #   in Loop: Header=BB103_3 Depth=1
+	ld.h	$a4, $a2, -6
+	ld.h	$a5, $a3, -6
+	xvreplgr2vr.h	$xr10, $a4
 	xvpermi.q	$xr10, $xr8, 18
 	xvextrins.h	$xr8, $xr10, 51
-.LBB103_8:                              # %pred.load.continue13
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 51
+.LBB103_11:                             # %pred.load.continue13
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvor.v	$xr10, $xr9, $xr5
+	xvor.v	$xr10, $xr11, $xr5
 	xvsle.du	$xr10, $xr10, $xr1
-	xvpickve2gr.d	$t0, $xr10, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB103_25
-# %bb.9:                                # %pred.load.continue15
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_13
+# %bb.12:                               # %pred.load.if14
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvpickve2gr.d	$t1, $xr10, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB103_26
-.LBB103_10:                             # %pred.load.continue17
+	ld.h	$a4, $a2, -4
+	ld.h	$a5, $a3, -4
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 68
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 68
+.LBB103_13:                             # %pred.load.continue15
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvpickve2gr.d	$t2, $xr10, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB103_27
-.LBB103_11:                             # %pred.load.continue19
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_15
+# %bb.14:                               # %pred.load.if16
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvpickve2gr.d	$t3, $xr10, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB103_13
-.LBB103_12:                             # %pred.load.if20
+	ld.h	$a4, $a2, -2
+	ld.h	$a5, $a3, -2
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 85
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 85
+.LBB103_15:                             # %pred.load.continue17
                                         #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$t4, $a2, 2
-	ld.h	$t5, $a3, 2
-	xvreplgr2vr.h	$xr10, $t4
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 119
-	xvreplgr2vr.h	$xr10, $t5
-	xvpermi.q	$xr10, $xr8, 18
-	xvextrins.h	$xr8, $xr10, 119
-.LBB103_13:                             # %pred.load.continue21
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_17
+# %bb.16:                               # %pred.load.if18
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvor.v	$xr10, $xr9, $xr4
-	xvsle.du	$xr10, $xr10, $xr1
-	xvpickve2gr.d	$t4, $xr10, 0
-	andi	$t5, $t4, 1
-	bnez	$t5, .LBB103_28
-# %bb.14:                               # %pred.load.continue23
+	ld.h	$a4, $a2, 0
+	ld.h	$a5, $a3, 0
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 102
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 102
+.LBB103_17:                             # %pred.load.continue19
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvpickve2gr.d	$t5, $xr10, 1
-	andi	$t6, $t5, 1
-	bnez	$t6, .LBB103_29
-.LBB103_15:                             # %pred.load.continue25
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_19
+# %bb.18:                               # %pred.load.if20
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvpickve2gr.d	$t6, $xr10, 2
-	andi	$t7, $t6, 1
-	bnez	$t7, .LBB103_30
-.LBB103_16:                             # %pred.load.continue27
+	ld.h	$a4, $a2, 2
+	ld.h	$a5, $a3, 2
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 119
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 119
+.LBB103_19:                             # %pred.load.continue21
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvpickve2gr.d	$t7, $xr10, 3
-	andi	$t8, $t7, 1
-	beqz	$t8, .LBB103_18
-.LBB103_17:                             # %pred.load.if28
+	xvor.v	$xr12, $xr11, $xr4
+	xvsle.du	$xr12, $xr12, $xr1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 8
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_21
+# %bb.20:                               # %pred.load.if22
                                         #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$t8, $a2, 10
-	ld.h	$fp, $a3, 10
-	xvreplgr2vr.h	$xr10, $t8
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 51
-	xvreplgr2vr.h	$xr10, $fp
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 51
-.LBB103_18:                             # %pred.load.continue29
+	ld.h	$a4, $a2, 4
+	ld.h	$a5, $a3, 4
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 0
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 0
+.LBB103_21:                             # %pred.load.continue23
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvor.v	$xr9, $xr9, $xr3
-	xvsle.du	$xr9, $xr9, $xr1
-	xvpickve2gr.d	$t8, $xr9, 0
-	andi	$fp, $t8, 1
-	bnez	$fp, .LBB103_31
-# %bb.19:                               # %pred.load.continue31
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 9
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_23
+# %bb.22:                               # %pred.load.if24
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvpickve2gr.d	$fp, $xr9, 1
-	andi	$s0, $fp, 1
-	bnez	$s0, .LBB103_32
-.LBB103_20:                             # %pred.load.continue33
+	ld.h	$a4, $a2, 6
+	ld.h	$a5, $a3, 6
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 17
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 17
+.LBB103_23:                             # %pred.load.continue25
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvpickve2gr.d	$s0, $xr9, 2
-	andi	$s1, $s0, 1
-	bnez	$s1, .LBB103_33
-.LBB103_21:                             # %pred.load.continue35
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 10
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_25
+# %bb.24:                               # %pred.load.if26
                                         #   in Loop: Header=BB103_3 Depth=1
-	xvpickve2gr.d	$s1, $xr9, 3
-	andi	$s2, $s1, 1
-	beqz	$s2, .LBB103_2
-	b	.LBB103_34
-	.p2align	4, , 16
-.LBB103_22:                             # %pred.load.if
+	ld.h	$a4, $a2, 8
+	ld.h	$a5, $a3, 8
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 34
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 34
+.LBB103_25:                             # %pred.load.continue27
                                         #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$a5, $a2, -12
-	ld.h	$a6, $a3, -12
-	vinsgr2vr.h	$vr7, $a5, 0
-	vinsgr2vr.h	$vr8, $a6, 0
-	xvpickve2gr.d	$a5, $xr10, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB103_5
-.LBB103_23:                             # %pred.load.if8
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 11
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_27
+# %bb.26:                               # %pred.load.if28
                                         #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$a6, $a2, -10
-	ld.h	$a7, $a3, -10
-	xvreplgr2vr.h	$xr11, $a6
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 17
-	xvreplgr2vr.h	$xr11, $a7
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 17
-	xvpickve2gr.d	$a6, $xr10, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB103_6
-.LBB103_24:                             # %pred.load.if10
+	ld.h	$a4, $a2, 10
+	ld.h	$a5, $a3, 10
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 51
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 51
+.LBB103_27:                             # %pred.load.continue29
                                         #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$a7, $a2, -8
-	ld.h	$t0, $a3, -8
-	xvreplgr2vr.h	$xr11, $a7
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 34
-	xvreplgr2vr.h	$xr11, $t0
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 34
-	xvpickve2gr.d	$a7, $xr10, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB103_7
-	b	.LBB103_8
-	.p2align	4, , 16
-.LBB103_25:                             # %pred.load.if14
+	xvor.v	$xr11, $xr11, $xr3
+	xvsle.du	$xr11, $xr11, $xr1
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 12
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_29
+# %bb.28:                               # %pred.load.if30
                                         #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$t1, $a2, -4
-	ld.h	$t2, $a3, -4
-	xvreplgr2vr.h	$xr11, $t1
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 68
-	xvreplgr2vr.h	$xr11, $t2
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 68
-	xvpickve2gr.d	$t1, $xr10, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB103_10
-.LBB103_26:                             # %pred.load.if16
+	ld.h	$a4, $a2, 12
+	ld.h	$a5, $a3, 12
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 68
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 68
+.LBB103_29:                             # %pred.load.continue31
                                         #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$t2, $a2, -2
-	ld.h	$t3, $a3, -2
-	xvreplgr2vr.h	$xr11, $t2
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 85
-	xvreplgr2vr.h	$xr11, $t3
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 85
-	xvpickve2gr.d	$t2, $xr10, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB103_11
-.LBB103_27:                             # %pred.load.if18
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 13
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_31
+# %bb.30:                               # %pred.load.if32
                                         #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$t3, $a2, 0
-	ld.h	$t4, $a3, 0
-	xvreplgr2vr.h	$xr11, $t3
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 102
-	xvreplgr2vr.h	$xr11, $t4
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 102
-	xvpickve2gr.d	$t3, $xr10, 3
-	andi	$t4, $t3, 1
-	bnez	$t4, .LBB103_12
-	b	.LBB103_13
-	.p2align	4, , 16
-.LBB103_28:                             # %pred.load.if22
+	ld.h	$a4, $a2, 14
+	ld.h	$a5, $a3, 14
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 85
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 85
+.LBB103_31:                             # %pred.load.continue33
                                         #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$t5, $a2, 4
-	ld.h	$t6, $a3, 4
-	xvreplgr2vr.h	$xr11, $t5
-	xvpermi.q	$xr11, $xr7, 48
-	xvextrins.h	$xr7, $xr11, 0
-	xvreplgr2vr.h	$xr11, $t6
-	xvpermi.q	$xr11, $xr8, 48
-	xvextrins.h	$xr8, $xr11, 0
-	xvpickve2gr.d	$t5, $xr10, 1
-	andi	$t6, $t5, 1
-	beqz	$t6, .LBB103_15
-.LBB103_29:                             # %pred.load.if24
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 14
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_33
+# %bb.32:                               # %pred.load.if34
                                         #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$t6, $a2, 6
-	ld.h	$t7, $a3, 6
-	xvreplgr2vr.h	$xr11, $t6
-	xvpermi.q	$xr11, $xr7, 48
-	xvextrins.h	$xr7, $xr11, 17
-	xvreplgr2vr.h	$xr11, $t7
-	xvpermi.q	$xr11, $xr8, 48
-	xvextrins.h	$xr8, $xr11, 17
-	xvpickve2gr.d	$t6, $xr10, 2
-	andi	$t7, $t6, 1
-	beqz	$t7, .LBB103_16
-.LBB103_30:                             # %pred.load.if26
+	ld.h	$a4, $a2, 16
+	ld.h	$a5, $a3, 16
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 102
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 102
+.LBB103_33:                             # %pred.load.continue35
                                         #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$t7, $a2, 8
-	ld.h	$t8, $a3, 8
-	xvreplgr2vr.h	$xr11, $t7
-	xvpermi.q	$xr11, $xr7, 48
-	xvextrins.h	$xr7, $xr11, 34
-	xvreplgr2vr.h	$xr11, $t8
-	xvpermi.q	$xr11, $xr8, 48
-	xvextrins.h	$xr8, $xr11, 34
-	xvpickve2gr.d	$t7, $xr10, 3
-	andi	$t8, $t7, 1
-	bnez	$t8, .LBB103_17
-	b	.LBB103_18
-	.p2align	4, , 16
-.LBB103_31:                             # %pred.load.if30
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 15
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB103_2
+# %bb.34:                               # %pred.load.if36
                                         #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$fp, $a2, 12
-	ld.h	$s0, $a3, 12
-	xvreplgr2vr.h	$xr10, $fp
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 68
-	xvreplgr2vr.h	$xr10, $s0
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 68
-	xvpickve2gr.d	$fp, $xr9, 1
-	andi	$s0, $fp, 1
-	beqz	$s0, .LBB103_20
-.LBB103_32:                             # %pred.load.if32
-                                        #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$s0, $a2, 14
-	ld.h	$s1, $a3, 14
-	xvreplgr2vr.h	$xr10, $s0
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 85
-	xvreplgr2vr.h	$xr10, $s1
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 85
-	xvpickve2gr.d	$s0, $xr9, 2
-	andi	$s1, $s0, 1
-	beqz	$s1, .LBB103_21
-.LBB103_33:                             # %pred.load.if34
-                                        #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$s1, $a2, 16
-	ld.h	$s2, $a3, 16
-	xvreplgr2vr.h	$xr10, $s1
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 102
-	xvreplgr2vr.h	$xr10, $s2
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 102
-	xvpickve2gr.d	$s1, $xr9, 3
-	andi	$s2, $s1, 1
-	beqz	$s2, .LBB103_2
-.LBB103_34:                             # %pred.load.if36
-                                        #   in Loop: Header=BB103_3 Depth=1
-	ld.h	$s2, $a2, 18
-	ld.h	$s3, $a3, 18
-	xvreplgr2vr.h	$xr9, $s2
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.h	$xr7, $xr9, 119
-	xvreplgr2vr.h	$xr9, $s3
-	xvpermi.q	$xr9, $xr8, 48
-	xvextrins.h	$xr8, $xr9, 119
+	ld.h	$a4, $a2, 18
+	ld.h	$a5, $a3, 18
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 119
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 119
 	b	.LBB103_2
 .LBB103_35:                             # %"_ZSt10__invoke_rIsRZ4mainE4$_31JPsS2_sEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.h	$vr1, $a4, 0
-	vinsgr2vr.h	$vr1, $a5, 1
-	vinsgr2vr.h	$vr1, $a6, 2
-	vinsgr2vr.h	$vr1, $a7, 3
-	vinsgr2vr.h	$vr1, $t0, 4
-	vinsgr2vr.h	$vr1, $t1, 5
-	vinsgr2vr.h	$vr1, $t2, 6
-	vinsgr2vr.h	$vr1, $t3, 7
-	vinsgr2vr.h	$vr2, $t4, 0
-	vinsgr2vr.h	$vr2, $t5, 1
-	vinsgr2vr.h	$vr2, $t6, 2
-	vinsgr2vr.h	$vr2, $t7, 3
-	vinsgr2vr.h	$vr2, $t8, 4
-	vinsgr2vr.h	$vr2, $fp, 5
-	vinsgr2vr.h	$vr2, $s0, 6
-	vinsgr2vr.h	$vr2, $s1, 7
-	xvpermi.q	$xr1, $xr2, 2
-	xvbitsel.v	$xr0, $xr0, $xr7, $xr1
+	xvpermi.q	$xr1, $xr7, 1
+	vpickev.w	$vr2, $vr1, $vr7
+	xvpermi.q	$xr1, $xr10, 1
+	vpickev.w	$vr1, $vr1, $vr10
+	xvpermi.q	$xr2, $xr1, 2
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr1, $a0, 1
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr1, $a0, 2
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr1, $a0, 4
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr1, $a0, 5
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr1, $a0, 6
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpermi.q	$xr2, $xr12, 1
+	vpickev.w	$vr2, $vr2, $vr12
+	xvpermi.q	$xr3, $xr11, 1
+	vpickev.w	$vr3, $vr3, $vr11
+	xvpermi.q	$xr2, $xr3, 2
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr3, $a0, 1
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr3, $a0, 2
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr3, $a0, 4
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr3, $a0, 5
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr3, $a0, 6
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr3, $a0, 7
+	xvpermi.q	$xr1, $xr3, 2
+	xvbitsel.v	$xr0, $xr0, $xr8, $xr1
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.h	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -14123,12 +14541,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_31E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ori	$a2, $zero, 2
 	maskeqz	$a1, $a2, $a1
 	or	$a0, $a1, $a0
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
 .LBB103_36:                             # %"_ZSt10__invoke_rIsRZ4mainE4$_31JPsS2_sEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ext.w.h	$a0, $a0
 	ret
@@ -14261,13 +14673,13 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_33E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a4, 20
 	addi.d	$a3, $a5, 20
-	xvldi	$xr5, -3200
+	xvldi	$xr6, -3200
 	b	.LBB107_3
 	.p2align	4, , 16
 .LBB107_2:                              # %pred.load.continue21
                                         #   in Loop: Header=BB107_3 Depth=1
-	xvslt.w	$xr5, $xr6, $xr5
-	xvbitsel.v	$xr5, $xr4, $xr1, $xr5
+	xvslt.w	$xr6, $xr7, $xr6
+	xvbitsel.v	$xr6, $xr4, $xr1, $xr6
 	addi.d	$a0, $a0, 8
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a2, $a2, 32
@@ -14275,134 +14687,136 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_33E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	beq	$a1, $a0, .LBB107_19
 .LBB107_3:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvreplgr2vr.d	$xr7, $a0
-	xvor.v	$xr4, $xr7, $xr3
-	xvsle.du	$xr8, $xr4, $xr0
-	xvpickve2gr.d	$a4, $xr8, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr4, $xr5, 0
-                                        # implicit-def: $xr5
+	xvreplgr2vr.d	$xr8, $a0
+	xvor.v	$xr4, $xr8, $xr3
+	xvsle.du	$xr5, $xr4, $xr0
+	vpickve2gr.h	$a4, $vr5, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr4, $xr6, 0
                                         # implicit-def: $xr6
-	bnez	$a5, .LBB107_12
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr7
+	beqz	$a4, .LBB107_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB107_3 Depth=1
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB107_13
-.LBB107_5:                              # %pred.load.continue9
+	ld.w	$a4, $a2, -8
+	ld.w	$a5, $a3, -8
+	vinsgr2vr.w	$vr6, $a4, 0
+	vinsgr2vr.w	$vr7, $a5, 0
+.LBB107_5:                              # %pred.load.continue
                                         #   in Loop: Header=BB107_3 Depth=1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB107_14
-.LBB107_6:                              # %pred.load.continue11
+	vshuf4i.w	$vr9, $vr5, 8
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB107_7
+# %bb.6:                                # %pred.load.if8
                                         #   in Loop: Header=BB107_3 Depth=1
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB107_8
-.LBB107_7:                              # %pred.load.if12
+	ld.w	$a4, $a2, -4
+	ld.w	$a5, $a3, -4
+	xvinsgr2vr.w	$xr6, $a4, 1
+	xvinsgr2vr.w	$xr7, $a5, 1
+.LBB107_7:                              # %pred.load.continue9
                                         #   in Loop: Header=BB107_3 Depth=1
-	ld.w	$t0, $a2, 4
-	ld.w	$t1, $a3, 4
-	xvinsgr2vr.w	$xr5, $t0, 3
-	xvinsgr2vr.w	$xr6, $t1, 3
-.LBB107_8:                              # %pred.load.continue13
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB107_9
+# %bb.8:                                # %pred.load.if10
                                         #   in Loop: Header=BB107_3 Depth=1
-	xvor.v	$xr7, $xr7, $xr2
-	xvsle.du	$xr7, $xr7, $xr0
-	xvpickve2gr.d	$t0, $xr7, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB107_15
-# %bb.9:                                # %pred.load.continue15
+	ld.w	$a4, $a2, 0
+	ld.w	$a5, $a3, 0
+	xvinsgr2vr.w	$xr6, $a4, 2
+	xvinsgr2vr.w	$xr7, $a5, 2
+.LBB107_9:                              # %pred.load.continue11
                                         #   in Loop: Header=BB107_3 Depth=1
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB107_16
-.LBB107_10:                             # %pred.load.continue17
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB107_11
+# %bb.10:                               # %pred.load.if12
                                         #   in Loop: Header=BB107_3 Depth=1
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB107_17
-.LBB107_11:                             # %pred.load.continue19
+	ld.w	$a4, $a2, 4
+	ld.w	$a5, $a3, 4
+	xvinsgr2vr.w	$xr6, $a4, 3
+	xvinsgr2vr.w	$xr7, $a5, 3
+.LBB107_11:                             # %pred.load.continue13
                                         #   in Loop: Header=BB107_3 Depth=1
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB107_2
-	b	.LBB107_18
-	.p2align	4, , 16
-.LBB107_12:                             # %pred.load.if
+	xvor.v	$xr8, $xr8, $xr2
+	xvsle.du	$xr8, $xr8, $xr0
+	xvpermi.d	$xr9, $xr8, 64
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB107_13
+# %bb.12:                               # %pred.load.if14
                                         #   in Loop: Header=BB107_3 Depth=1
-	ld.w	$a5, $a2, -8
-	ld.w	$a6, $a3, -8
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB107_5
-.LBB107_13:                             # %pred.load.if8
+	ld.w	$a4, $a2, 8
+	ld.w	$a5, $a3, 8
+	xvinsgr2vr.w	$xr6, $a4, 4
+	xvinsgr2vr.w	$xr7, $a5, 4
+.LBB107_13:                             # %pred.load.continue15
                                         #   in Loop: Header=BB107_3 Depth=1
-	ld.w	$a6, $a2, -4
-	ld.w	$a7, $a3, -4
-	xvinsgr2vr.w	$xr5, $a6, 1
-	xvinsgr2vr.w	$xr6, $a7, 1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB107_6
-.LBB107_14:                             # %pred.load.if10
+	vshuf4i.w	$vr9, $vr8, 8
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB107_15
+# %bb.14:                               # %pred.load.if16
                                         #   in Loop: Header=BB107_3 Depth=1
-	ld.w	$a7, $a2, 0
-	ld.w	$t0, $a3, 0
-	xvinsgr2vr.w	$xr5, $a7, 2
-	xvinsgr2vr.w	$xr6, $t0, 2
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB107_7
-	b	.LBB107_8
-	.p2align	4, , 16
-.LBB107_15:                             # %pred.load.if14
+	ld.w	$a4, $a2, 12
+	ld.w	$a5, $a3, 12
+	xvinsgr2vr.w	$xr6, $a4, 5
+	xvinsgr2vr.w	$xr7, $a5, 5
+.LBB107_15:                             # %pred.load.continue17
                                         #   in Loop: Header=BB107_3 Depth=1
-	ld.w	$t1, $a2, 8
-	ld.w	$t2, $a3, 8
-	xvinsgr2vr.w	$xr5, $t1, 4
-	xvinsgr2vr.w	$xr6, $t2, 4
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB107_10
-.LBB107_16:                             # %pred.load.if16
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB107_17
+# %bb.16:                               # %pred.load.if18
                                         #   in Loop: Header=BB107_3 Depth=1
-	ld.w	$t2, $a2, 12
-	ld.w	$t3, $a3, 12
-	xvinsgr2vr.w	$xr5, $t2, 5
-	xvinsgr2vr.w	$xr6, $t3, 5
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB107_11
-.LBB107_17:                             # %pred.load.if18
+	ld.w	$a4, $a2, 16
+	ld.w	$a5, $a3, 16
+	xvinsgr2vr.w	$xr6, $a4, 6
+	xvinsgr2vr.w	$xr7, $a5, 6
+.LBB107_17:                             # %pred.load.continue19
                                         #   in Loop: Header=BB107_3 Depth=1
-	ld.w	$t3, $a2, 16
-	ld.w	$t4, $a3, 16
-	xvinsgr2vr.w	$xr5, $t3, 6
-	xvinsgr2vr.w	$xr6, $t4, 6
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB107_2
-.LBB107_18:                             # %pred.load.if20
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB107_2
+# %bb.18:                               # %pred.load.if20
                                         #   in Loop: Header=BB107_3 Depth=1
-	ld.w	$t4, $a2, 20
-	ld.w	$t5, $a3, 20
-	xvinsgr2vr.w	$xr5, $t4, 7
-	xvinsgr2vr.w	$xr6, $t5, 7
+	ld.w	$a4, $a2, 20
+	ld.w	$a5, $a3, 20
+	xvinsgr2vr.w	$xr6, $a4, 7
+	xvinsgr2vr.w	$xr7, $a5, 7
 	b	.LBB107_2
 .LBB107_19:                             # %"_ZSt10__invoke_rIiRZ4mainE4$_33JPiS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.w	$vr0, $a4, 0
-	vinsgr2vr.w	$vr0, $a5, 1
-	vinsgr2vr.w	$vr0, $a6, 2
-	vinsgr2vr.w	$vr0, $a7, 3
-	vinsgr2vr.w	$vr1, $t0, 0
-	vinsgr2vr.w	$vr1, $t1, 1
-	vinsgr2vr.w	$vr1, $t2, 2
-	vinsgr2vr.w	$vr1, $t3, 3
+	xvpermi.q	$xr0, $xr5, 1
+	vpickev.w	$vr0, $vr0, $vr5
+	xvpermi.q	$xr1, $xr8, 1
+	vpickev.w	$vr1, $vr1, $vr8
 	xvpermi.q	$xr0, $xr1, 2
-	xvbitsel.v	$xr0, $xr4, $xr5, $xr0
+	xvbitsel.v	$xr0, $xr4, $xr6, $xr0
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -14549,13 +14963,13 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_33E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a4, 20
 	addi.d	$a3, $a5, 20
-	xvldi	$xr5, -3200
+	xvldi	$xr6, -3200
 	b	.LBB111_3
 	.p2align	4, , 16
 .LBB111_2:                              # %pred.load.continue21
                                         #   in Loop: Header=BB111_3 Depth=1
-	xvfcmp.clt.s	$xr5, $xr6, $xr5
-	xvbitsel.v	$xr5, $xr4, $xr1, $xr5
+	xvfcmp.clt.s	$xr6, $xr7, $xr6
+	xvbitsel.v	$xr6, $xr4, $xr1, $xr6
 	addi.d	$a0, $a0, 8
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a2, $a2, 32
@@ -14563,132 +14977,134 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_33E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	beq	$a1, $a0, .LBB111_19
 .LBB111_3:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvreplgr2vr.d	$xr7, $a0
-	xvor.v	$xr4, $xr7, $xr3
-	xvsle.du	$xr8, $xr4, $xr0
-	xvpickve2gr.d	$a4, $xr8, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr4, $xr5, 0
-                                        # implicit-def: $xr5
+	xvreplgr2vr.d	$xr8, $a0
+	xvor.v	$xr4, $xr8, $xr3
+	xvsle.du	$xr5, $xr4, $xr0
+	vpickve2gr.h	$a4, $vr5, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr4, $xr6, 0
                                         # implicit-def: $xr6
-	bnez	$a5, .LBB111_12
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr7
+	beqz	$a4, .LBB111_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB111_3 Depth=1
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB111_13
-.LBB111_5:                              # %pred.load.continue9
+	fld.s	$fa6, $a2, -8
+	fld.s	$fa7, $a3, -8
+.LBB111_5:                              # %pred.load.continue
                                         #   in Loop: Header=BB111_3 Depth=1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB111_14
-.LBB111_6:                              # %pred.load.continue11
-                                        #   in Loop: Header=BB111_3 Depth=1
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB111_8
-.LBB111_7:                              # %pred.load.if12
-                                        #   in Loop: Header=BB111_3 Depth=1
-	fld.s	$ft0, $a2, 4
-	fld.s	$ft1, $a3, 4
-	xvinsve0.w	$xr5, $xr8, 3
-	xvinsve0.w	$xr6, $xr9, 3
-.LBB111_8:                              # %pred.load.continue13
-                                        #   in Loop: Header=BB111_3 Depth=1
-	xvor.v	$xr7, $xr7, $xr2
-	xvsle.du	$xr7, $xr7, $xr0
-	xvpickve2gr.d	$t0, $xr7, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB111_15
-# %bb.9:                                # %pred.load.continue15
-                                        #   in Loop: Header=BB111_3 Depth=1
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB111_16
-.LBB111_10:                             # %pred.load.continue17
-                                        #   in Loop: Header=BB111_3 Depth=1
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB111_17
-.LBB111_11:                             # %pred.load.continue19
-                                        #   in Loop: Header=BB111_3 Depth=1
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB111_2
-	b	.LBB111_18
-	.p2align	4, , 16
-.LBB111_12:                             # %pred.load.if
-                                        #   in Loop: Header=BB111_3 Depth=1
-	fld.s	$fa5, $a2, -8
-	fld.s	$fa6, $a3, -8
-	xvpickve2gr.d	$a5, $xr8, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB111_5
-.LBB111_13:                             # %pred.load.if8
+	vshuf4i.w	$vr9, $vr5, 8
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB111_7
+# %bb.6:                                # %pred.load.if8
                                         #   in Loop: Header=BB111_3 Depth=1
 	fld.s	$ft1, $a2, -4
 	fld.s	$ft2, $a3, -4
-	xvinsve0.w	$xr5, $xr9, 1
-	xvinsve0.w	$xr6, $xr10, 1
-	xvpickve2gr.d	$a6, $xr8, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB111_6
-.LBB111_14:                             # %pred.load.if10
+	xvinsve0.w	$xr6, $xr9, 1
+	xvinsve0.w	$xr7, $xr10, 1
+.LBB111_7:                              # %pred.load.continue9
+                                        #   in Loop: Header=BB111_3 Depth=1
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB111_9
+# %bb.8:                                # %pred.load.if10
                                         #   in Loop: Header=BB111_3 Depth=1
 	fld.s	$ft1, $a2, 0
 	fld.s	$ft2, $a3, 0
-	xvinsve0.w	$xr5, $xr9, 2
-	xvinsve0.w	$xr6, $xr10, 2
-	xvpickve2gr.d	$a7, $xr8, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB111_7
-	b	.LBB111_8
-	.p2align	4, , 16
-.LBB111_15:                             # %pred.load.if14
+	xvinsve0.w	$xr6, $xr9, 2
+	xvinsve0.w	$xr7, $xr10, 2
+.LBB111_9:                              # %pred.load.continue11
                                         #   in Loop: Header=BB111_3 Depth=1
-	fld.s	$ft0, $a2, 8
-	fld.s	$ft1, $a3, 8
-	xvinsve0.w	$xr5, $xr8, 4
+	xvpermi.q	$xr9, $xr5, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB111_11
+# %bb.10:                               # %pred.load.if12
+                                        #   in Loop: Header=BB111_3 Depth=1
+	fld.s	$ft1, $a2, 4
+	fld.s	$ft2, $a3, 4
+	xvinsve0.w	$xr6, $xr9, 3
+	xvinsve0.w	$xr7, $xr10, 3
+.LBB111_11:                             # %pred.load.continue13
+                                        #   in Loop: Header=BB111_3 Depth=1
+	xvor.v	$xr8, $xr8, $xr2
+	xvsle.du	$xr8, $xr8, $xr0
+	xvpermi.d	$xr9, $xr8, 64
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB111_13
+# %bb.12:                               # %pred.load.if14
+                                        #   in Loop: Header=BB111_3 Depth=1
+	fld.s	$ft1, $a2, 8
+	fld.s	$ft2, $a3, 8
 	xvinsve0.w	$xr6, $xr9, 4
-	xvpickve2gr.d	$t1, $xr7, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB111_10
-.LBB111_16:                             # %pred.load.if16
+	xvinsve0.w	$xr7, $xr10, 4
+.LBB111_13:                             # %pred.load.continue15
                                         #   in Loop: Header=BB111_3 Depth=1
-	fld.s	$ft0, $a2, 12
-	fld.s	$ft1, $a3, 12
-	xvinsve0.w	$xr5, $xr8, 5
+	vshuf4i.w	$vr9, $vr8, 8
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB111_15
+# %bb.14:                               # %pred.load.if16
+                                        #   in Loop: Header=BB111_3 Depth=1
+	fld.s	$ft1, $a2, 12
+	fld.s	$ft2, $a3, 12
 	xvinsve0.w	$xr6, $xr9, 5
-	xvpickve2gr.d	$t2, $xr7, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB111_11
-.LBB111_17:                             # %pred.load.if18
+	xvinsve0.w	$xr7, $xr10, 5
+.LBB111_15:                             # %pred.load.continue17
                                         #   in Loop: Header=BB111_3 Depth=1
-	fld.s	$ft0, $a2, 16
-	fld.s	$ft1, $a3, 16
-	xvinsve0.w	$xr5, $xr8, 6
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB111_17
+# %bb.16:                               # %pred.load.if18
+                                        #   in Loop: Header=BB111_3 Depth=1
+	fld.s	$ft1, $a2, 16
+	fld.s	$ft2, $a3, 16
 	xvinsve0.w	$xr6, $xr9, 6
-	xvpickve2gr.d	$t3, $xr7, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB111_2
-.LBB111_18:                             # %pred.load.if20
+	xvinsve0.w	$xr7, $xr10, 6
+.LBB111_17:                             # %pred.load.continue19
                                         #   in Loop: Header=BB111_3 Depth=1
-	fld.s	$fa7, $a2, 20
-	fld.s	$ft0, $a3, 20
-	xvinsve0.w	$xr5, $xr7, 7
-	xvinsve0.w	$xr6, $xr8, 7
+	xvpermi.q	$xr9, $xr8, 1
+	vshuf4i.w	$vr9, $vr9, 128
+	xvpermi.q	$xr9, $xr9, 2
+	xvpermi.d	$xr10, $xr9, 78
+	xvpickev.h	$xr9, $xr10, $xr9
+	vpickve2gr.h	$a4, $vr9, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB111_2
+# %bb.18:                               # %pred.load.if20
+                                        #   in Loop: Header=BB111_3 Depth=1
+	fld.s	$ft1, $a2, 20
+	fld.s	$ft2, $a3, 20
+	xvinsve0.w	$xr6, $xr9, 7
+	xvinsve0.w	$xr7, $xr10, 7
 	b	.LBB111_2
 .LBB111_19:                             # %"_ZSt10__invoke_rIiRZ4mainE4$_33JPfS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.w	$vr0, $a4, 0
-	vinsgr2vr.w	$vr0, $a5, 1
-	vinsgr2vr.w	$vr0, $a6, 2
-	vinsgr2vr.w	$vr0, $a7, 3
-	vinsgr2vr.w	$vr1, $t0, 0
-	vinsgr2vr.w	$vr1, $t1, 1
-	vinsgr2vr.w	$vr1, $t2, 2
-	vinsgr2vr.w	$vr1, $t3, 3
+	xvpermi.q	$xr0, $xr5, 1
+	vpickev.w	$vr0, $vr0, $vr5
+	xvpermi.q	$xr1, $xr8, 1
+	vpickev.w	$vr1, $vr1, $vr8
 	xvpermi.q	$xr0, $xr1, 2
-	xvbitsel.v	$xr0, $xr4, $xr5, $xr0
+	xvbitsel.v	$xr0, $xr4, $xr6, $xr0
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -14835,12 +15251,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_35E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ori	$a0, $zero, 4
 	blt	$a3, $a0, .LBB115_36
 # %bb.1:                                # %vector.ph
-	addi.d	$sp, $sp, -48
-	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	move	$a0, $zero
 	addi.d	$a4, $a3, -4
 	xvreplgr2vr.d	$xr1, $a4
@@ -14861,13 +15271,13 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_35E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	slli.d	$a1, $a1, 4
 	addi.d	$a2, $a4, 18
 	addi.d	$a3, $a5, 18
-	xvldi	$xr7, -2688
+	xvldi	$xr8, -2688
 	b	.LBB115_3
 	.p2align	4, , 16
 .LBB115_2:                              # %pred.load.continue37
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvslt.h	$xr7, $xr8, $xr7
-	xvbitsel.v	$xr7, $xr0, $xr2, $xr7
+	xvslt.h	$xr8, $xr9, $xr8
+	xvbitsel.v	$xr8, $xr0, $xr2, $xr8
 	addi.d	$a0, $a0, 16
 	xvaddi.hu	$xr2, $xr2, 16
 	addi.d	$a2, $a2, 32
@@ -14875,316 +15285,397 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_35E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	beq	$a1, $a0, .LBB115_35
 .LBB115_3:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvreplgr2vr.d	$xr9, $a0
-	xvor.v	$xr0, $xr9, $xr6
-	xvsle.du	$xr10, $xr0, $xr1
-	xvpickve2gr.d	$a4, $xr10, 0
-	andi	$a5, $a4, 1
-	xvori.b	$xr0, $xr7, 0
-                                        # implicit-def: $xr7
+	xvreplgr2vr.d	$xr11, $a0
+	xvor.v	$xr0, $xr11, $xr6
+	xvsle.du	$xr7, $xr0, $xr1
+	vpickve2gr.b	$a4, $vr7, 0
+	andi	$a4, $a4, 1
+	xvori.b	$xr0, $xr8, 0
                                         # implicit-def: $xr8
-	bnez	$a5, .LBB115_22
-# %bb.4:                                # %pred.load.continue
+                                        # implicit-def: $xr9
+	beqz	$a4, .LBB115_5
+# %bb.4:                                # %pred.load.if
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvpickve2gr.d	$a5, $xr10, 1
-	andi	$a6, $a5, 1
-	bnez	$a6, .LBB115_23
-.LBB115_5:                              # %pred.load.continue9
+	ld.h	$a4, $a2, -12
+	ld.h	$a5, $a3, -12
+	vinsgr2vr.h	$vr8, $a4, 0
+	vinsgr2vr.h	$vr9, $a5, 0
+.LBB115_5:                              # %pred.load.continue
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvpickve2gr.d	$a6, $xr10, 2
-	andi	$a7, $a6, 1
-	bnez	$a7, .LBB115_24
-.LBB115_6:                              # %pred.load.continue11
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.h	$xr10, $xr12, $xr10
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.b	$xr10, $xr12, $xr10
+	vpickve2gr.b	$a4, $vr10, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_7
+# %bb.6:                                # %pred.load.if8
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvpickve2gr.d	$a7, $xr10, 3
-	andi	$t0, $a7, 1
-	beqz	$t0, .LBB115_8
-.LBB115_7:                              # %pred.load.if12
+	ld.h	$a4, $a2, -10
+	ld.h	$a5, $a3, -10
+	xvreplgr2vr.h	$xr10, $a4
+	xvpermi.q	$xr10, $xr8, 18
+	xvextrins.h	$xr8, $xr10, 17
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 17
+.LBB115_7:                              # %pred.load.continue9
                                         #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$t0, $a2, -6
-	ld.h	$t1, $a3, -6
-	xvreplgr2vr.h	$xr10, $t0
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 51
-	xvreplgr2vr.h	$xr10, $t1
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.h	$xr10, $xr12, $xr10
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.b	$xr10, $xr12, $xr10
+	vpickve2gr.b	$a4, $vr10, 2
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_9
+# %bb.8:                                # %pred.load.if10
+                                        #   in Loop: Header=BB115_3 Depth=1
+	ld.h	$a4, $a2, -8
+	ld.h	$a5, $a3, -8
+	xvreplgr2vr.h	$xr10, $a4
+	xvpermi.q	$xr10, $xr8, 18
+	xvextrins.h	$xr8, $xr10, 34
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 34
+.LBB115_9:                              # %pred.load.continue11
+                                        #   in Loop: Header=BB115_3 Depth=1
+	xvpermi.q	$xr10, $xr7, 1
+	vpickev.w	$vr10, $vr10, $vr7
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.h	$xr10, $xr12, $xr10
+	xvpermi.d	$xr12, $xr10, 78
+	xvpickev.b	$xr10, $xr12, $xr10
+	vpickve2gr.b	$a4, $vr10, 3
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_11
+# %bb.10:                               # %pred.load.if12
+                                        #   in Loop: Header=BB115_3 Depth=1
+	ld.h	$a4, $a2, -6
+	ld.h	$a5, $a3, -6
+	xvreplgr2vr.h	$xr10, $a4
 	xvpermi.q	$xr10, $xr8, 18
 	xvextrins.h	$xr8, $xr10, 51
-.LBB115_8:                              # %pred.load.continue13
+	xvreplgr2vr.h	$xr10, $a5
+	xvpermi.q	$xr10, $xr9, 18
+	xvextrins.h	$xr9, $xr10, 51
+.LBB115_11:                             # %pred.load.continue13
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvor.v	$xr10, $xr9, $xr5
+	xvor.v	$xr10, $xr11, $xr5
 	xvsle.du	$xr10, $xr10, $xr1
-	xvpickve2gr.d	$t0, $xr10, 0
-	andi	$t1, $t0, 1
-	bnez	$t1, .LBB115_25
-# %bb.9:                                # %pred.load.continue15
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 4
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_13
+# %bb.12:                               # %pred.load.if14
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvpickve2gr.d	$t1, $xr10, 1
-	andi	$t2, $t1, 1
-	bnez	$t2, .LBB115_26
-.LBB115_10:                             # %pred.load.continue17
+	ld.h	$a4, $a2, -4
+	ld.h	$a5, $a3, -4
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 68
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 68
+.LBB115_13:                             # %pred.load.continue15
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvpickve2gr.d	$t2, $xr10, 2
-	andi	$t3, $t2, 1
-	bnez	$t3, .LBB115_27
-.LBB115_11:                             # %pred.load.continue19
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 5
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_15
+# %bb.14:                               # %pred.load.if16
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvpickve2gr.d	$t3, $xr10, 3
-	andi	$t4, $t3, 1
-	beqz	$t4, .LBB115_13
-.LBB115_12:                             # %pred.load.if20
+	ld.h	$a4, $a2, -2
+	ld.h	$a5, $a3, -2
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 85
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 85
+.LBB115_15:                             # %pred.load.continue17
                                         #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$t4, $a2, 2
-	ld.h	$t5, $a3, 2
-	xvreplgr2vr.h	$xr10, $t4
-	xvpermi.q	$xr10, $xr7, 18
-	xvextrins.h	$xr7, $xr10, 119
-	xvreplgr2vr.h	$xr10, $t5
-	xvpermi.q	$xr10, $xr8, 18
-	xvextrins.h	$xr8, $xr10, 119
-.LBB115_13:                             # %pred.load.continue21
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 6
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_17
+# %bb.16:                               # %pred.load.if18
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvor.v	$xr10, $xr9, $xr4
-	xvsle.du	$xr10, $xr10, $xr1
-	xvpickve2gr.d	$t4, $xr10, 0
-	andi	$t5, $t4, 1
-	bnez	$t5, .LBB115_28
-# %bb.14:                               # %pred.load.continue23
+	ld.h	$a4, $a2, 0
+	ld.h	$a5, $a3, 0
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 102
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 102
+.LBB115_17:                             # %pred.load.continue19
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvpickve2gr.d	$t5, $xr10, 1
-	andi	$t6, $t5, 1
-	bnez	$t6, .LBB115_29
-.LBB115_15:                             # %pred.load.continue25
+	xvpermi.q	$xr12, $xr10, 1
+	vpickev.w	$vr12, $vr12, $vr10
+	xvpermi.q	$xr12, $xr12, 2
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.h	$xr12, $xr13, $xr12
+	xvpermi.d	$xr13, $xr12, 78
+	xvpickev.b	$xr12, $xr13, $xr12
+	vpickve2gr.b	$a4, $vr12, 7
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_19
+# %bb.18:                               # %pred.load.if20
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvpickve2gr.d	$t6, $xr10, 2
-	andi	$t7, $t6, 1
-	bnez	$t7, .LBB115_30
-.LBB115_16:                             # %pred.load.continue27
+	ld.h	$a4, $a2, 2
+	ld.h	$a5, $a3, 2
+	xvreplgr2vr.h	$xr12, $a4
+	xvpermi.q	$xr12, $xr8, 18
+	xvextrins.h	$xr8, $xr12, 119
+	xvreplgr2vr.h	$xr12, $a5
+	xvpermi.q	$xr12, $xr9, 18
+	xvextrins.h	$xr9, $xr12, 119
+.LBB115_19:                             # %pred.load.continue21
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvpickve2gr.d	$t7, $xr10, 3
-	andi	$t8, $t7, 1
-	beqz	$t8, .LBB115_18
-.LBB115_17:                             # %pred.load.if28
+	xvor.v	$xr12, $xr11, $xr4
+	xvsle.du	$xr12, $xr12, $xr1
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 8
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_21
+# %bb.20:                               # %pred.load.if22
                                         #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$t8, $a2, 10
-	ld.h	$fp, $a3, 10
-	xvreplgr2vr.h	$xr10, $t8
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 51
-	xvreplgr2vr.h	$xr10, $fp
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 51
-.LBB115_18:                             # %pred.load.continue29
+	ld.h	$a4, $a2, 4
+	ld.h	$a5, $a3, 4
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 0
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 0
+.LBB115_21:                             # %pred.load.continue23
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvor.v	$xr9, $xr9, $xr3
-	xvsle.du	$xr9, $xr9, $xr1
-	xvpickve2gr.d	$t8, $xr9, 0
-	andi	$fp, $t8, 1
-	bnez	$fp, .LBB115_31
-# %bb.19:                               # %pred.load.continue31
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 9
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_23
+# %bb.22:                               # %pred.load.if24
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvpickve2gr.d	$fp, $xr9, 1
-	andi	$s0, $fp, 1
-	bnez	$s0, .LBB115_32
-.LBB115_20:                             # %pred.load.continue33
+	ld.h	$a4, $a2, 6
+	ld.h	$a5, $a3, 6
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 17
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 17
+.LBB115_23:                             # %pred.load.continue25
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvpickve2gr.d	$s0, $xr9, 2
-	andi	$s1, $s0, 1
-	bnez	$s1, .LBB115_33
-.LBB115_21:                             # %pred.load.continue35
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 10
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_25
+# %bb.24:                               # %pred.load.if26
                                         #   in Loop: Header=BB115_3 Depth=1
-	xvpickve2gr.d	$s1, $xr9, 3
-	andi	$s2, $s1, 1
-	beqz	$s2, .LBB115_2
-	b	.LBB115_34
-	.p2align	4, , 16
-.LBB115_22:                             # %pred.load.if
+	ld.h	$a4, $a2, 8
+	ld.h	$a5, $a3, 8
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 34
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 34
+.LBB115_25:                             # %pred.load.continue27
                                         #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$a5, $a2, -12
-	ld.h	$a6, $a3, -12
-	vinsgr2vr.h	$vr7, $a5, 0
-	vinsgr2vr.h	$vr8, $a6, 0
-	xvpickve2gr.d	$a5, $xr10, 1
-	andi	$a6, $a5, 1
-	beqz	$a6, .LBB115_5
-.LBB115_23:                             # %pred.load.if8
+	xvpermi.q	$xr13, $xr12, 1
+	vpickev.w	$vr13, $vr13, $vr12
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 11
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_27
+# %bb.26:                               # %pred.load.if28
                                         #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$a6, $a2, -10
-	ld.h	$a7, $a3, -10
-	xvreplgr2vr.h	$xr11, $a6
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 17
-	xvreplgr2vr.h	$xr11, $a7
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 17
-	xvpickve2gr.d	$a6, $xr10, 2
-	andi	$a7, $a6, 1
-	beqz	$a7, .LBB115_6
-.LBB115_24:                             # %pred.load.if10
+	ld.h	$a4, $a2, 10
+	ld.h	$a5, $a3, 10
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 51
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 51
+.LBB115_27:                             # %pred.load.continue29
                                         #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$a7, $a2, -8
-	ld.h	$t0, $a3, -8
-	xvreplgr2vr.h	$xr11, $a7
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 34
-	xvreplgr2vr.h	$xr11, $t0
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 34
-	xvpickve2gr.d	$a7, $xr10, 3
-	andi	$t0, $a7, 1
-	bnez	$t0, .LBB115_7
-	b	.LBB115_8
-	.p2align	4, , 16
-.LBB115_25:                             # %pred.load.if14
+	xvor.v	$xr11, $xr11, $xr3
+	xvsle.du	$xr11, $xr11, $xr1
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 12
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_29
+# %bb.28:                               # %pred.load.if30
                                         #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$t1, $a2, -4
-	ld.h	$t2, $a3, -4
-	xvreplgr2vr.h	$xr11, $t1
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 68
-	xvreplgr2vr.h	$xr11, $t2
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 68
-	xvpickve2gr.d	$t1, $xr10, 1
-	andi	$t2, $t1, 1
-	beqz	$t2, .LBB115_10
-.LBB115_26:                             # %pred.load.if16
+	ld.h	$a4, $a2, 12
+	ld.h	$a5, $a3, 12
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 68
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 68
+.LBB115_29:                             # %pred.load.continue31
                                         #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$t2, $a2, -2
-	ld.h	$t3, $a3, -2
-	xvreplgr2vr.h	$xr11, $t2
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 85
-	xvreplgr2vr.h	$xr11, $t3
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 85
-	xvpickve2gr.d	$t2, $xr10, 2
-	andi	$t3, $t2, 1
-	beqz	$t3, .LBB115_11
-.LBB115_27:                             # %pred.load.if18
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 13
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_31
+# %bb.30:                               # %pred.load.if32
                                         #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$t3, $a2, 0
-	ld.h	$t4, $a3, 0
-	xvreplgr2vr.h	$xr11, $t3
-	xvpermi.q	$xr11, $xr7, 18
-	xvextrins.h	$xr7, $xr11, 102
-	xvreplgr2vr.h	$xr11, $t4
-	xvpermi.q	$xr11, $xr8, 18
-	xvextrins.h	$xr8, $xr11, 102
-	xvpickve2gr.d	$t3, $xr10, 3
-	andi	$t4, $t3, 1
-	bnez	$t4, .LBB115_12
-	b	.LBB115_13
-	.p2align	4, , 16
-.LBB115_28:                             # %pred.load.if22
+	ld.h	$a4, $a2, 14
+	ld.h	$a5, $a3, 14
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 85
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 85
+.LBB115_31:                             # %pred.load.continue33
                                         #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$t5, $a2, 4
-	ld.h	$t6, $a3, 4
-	xvreplgr2vr.h	$xr11, $t5
-	xvpermi.q	$xr11, $xr7, 48
-	xvextrins.h	$xr7, $xr11, 0
-	xvreplgr2vr.h	$xr11, $t6
-	xvpermi.q	$xr11, $xr8, 48
-	xvextrins.h	$xr8, $xr11, 0
-	xvpickve2gr.d	$t5, $xr10, 1
-	andi	$t6, $t5, 1
-	beqz	$t6, .LBB115_15
-.LBB115_29:                             # %pred.load.if24
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 14
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_33
+# %bb.32:                               # %pred.load.if34
                                         #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$t6, $a2, 6
-	ld.h	$t7, $a3, 6
-	xvreplgr2vr.h	$xr11, $t6
-	xvpermi.q	$xr11, $xr7, 48
-	xvextrins.h	$xr7, $xr11, 17
-	xvreplgr2vr.h	$xr11, $t7
-	xvpermi.q	$xr11, $xr8, 48
-	xvextrins.h	$xr8, $xr11, 17
-	xvpickve2gr.d	$t6, $xr10, 2
-	andi	$t7, $t6, 1
-	beqz	$t7, .LBB115_16
-.LBB115_30:                             # %pred.load.if26
+	ld.h	$a4, $a2, 16
+	ld.h	$a5, $a3, 16
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 102
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 102
+.LBB115_33:                             # %pred.load.continue35
                                         #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$t7, $a2, 8
-	ld.h	$t8, $a3, 8
-	xvreplgr2vr.h	$xr11, $t7
-	xvpermi.q	$xr11, $xr7, 48
-	xvextrins.h	$xr7, $xr11, 34
-	xvreplgr2vr.h	$xr11, $t8
-	xvpermi.q	$xr11, $xr8, 48
-	xvextrins.h	$xr8, $xr11, 34
-	xvpickve2gr.d	$t7, $xr10, 3
-	andi	$t8, $t7, 1
-	bnez	$t8, .LBB115_17
-	b	.LBB115_18
-	.p2align	4, , 16
-.LBB115_31:                             # %pred.load.if30
+	xvpermi.q	$xr13, $xr11, 1
+	vpickev.w	$vr13, $vr13, $vr11
+	xvpermi.q	$xr13, $xr13, 2
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.h	$xr13, $xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 78
+	xvpickev.b	$xr13, $xr14, $xr13
+	vpickve2gr.b	$a4, $vr13, 15
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB115_2
+# %bb.34:                               # %pred.load.if36
                                         #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$fp, $a2, 12
-	ld.h	$s0, $a3, 12
-	xvreplgr2vr.h	$xr10, $fp
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 68
-	xvreplgr2vr.h	$xr10, $s0
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 68
-	xvpickve2gr.d	$fp, $xr9, 1
-	andi	$s0, $fp, 1
-	beqz	$s0, .LBB115_20
-.LBB115_32:                             # %pred.load.if32
-                                        #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$s0, $a2, 14
-	ld.h	$s1, $a3, 14
-	xvreplgr2vr.h	$xr10, $s0
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 85
-	xvreplgr2vr.h	$xr10, $s1
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 85
-	xvpickve2gr.d	$s0, $xr9, 2
-	andi	$s1, $s0, 1
-	beqz	$s1, .LBB115_21
-.LBB115_33:                             # %pred.load.if34
-                                        #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$s1, $a2, 16
-	ld.h	$s2, $a3, 16
-	xvreplgr2vr.h	$xr10, $s1
-	xvpermi.q	$xr10, $xr7, 48
-	xvextrins.h	$xr7, $xr10, 102
-	xvreplgr2vr.h	$xr10, $s2
-	xvpermi.q	$xr10, $xr8, 48
-	xvextrins.h	$xr8, $xr10, 102
-	xvpickve2gr.d	$s1, $xr9, 3
-	andi	$s2, $s1, 1
-	beqz	$s2, .LBB115_2
-.LBB115_34:                             # %pred.load.if36
-                                        #   in Loop: Header=BB115_3 Depth=1
-	ld.h	$s2, $a2, 18
-	ld.h	$s3, $a3, 18
-	xvreplgr2vr.h	$xr9, $s2
-	xvpermi.q	$xr9, $xr7, 48
-	xvextrins.h	$xr7, $xr9, 119
-	xvreplgr2vr.h	$xr9, $s3
-	xvpermi.q	$xr9, $xr8, 48
-	xvextrins.h	$xr8, $xr9, 119
+	ld.h	$a4, $a2, 18
+	ld.h	$a5, $a3, 18
+	xvreplgr2vr.h	$xr13, $a4
+	xvpermi.q	$xr13, $xr8, 48
+	xvextrins.h	$xr8, $xr13, 119
+	xvreplgr2vr.h	$xr13, $a5
+	xvpermi.q	$xr13, $xr9, 48
+	xvextrins.h	$xr9, $xr13, 119
 	b	.LBB115_2
 .LBB115_35:                             # %"_ZSt10__invoke_rIsRZ4mainE4$_35JPsS2_sEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit.loopexit"
-	vinsgr2vr.h	$vr1, $a4, 0
-	vinsgr2vr.h	$vr1, $a5, 1
-	vinsgr2vr.h	$vr1, $a6, 2
-	vinsgr2vr.h	$vr1, $a7, 3
-	vinsgr2vr.h	$vr1, $t0, 4
-	vinsgr2vr.h	$vr1, $t1, 5
-	vinsgr2vr.h	$vr1, $t2, 6
-	vinsgr2vr.h	$vr1, $t3, 7
-	vinsgr2vr.h	$vr2, $t4, 0
-	vinsgr2vr.h	$vr2, $t5, 1
-	vinsgr2vr.h	$vr2, $t6, 2
-	vinsgr2vr.h	$vr2, $t7, 3
-	vinsgr2vr.h	$vr2, $t8, 4
-	vinsgr2vr.h	$vr2, $fp, 5
-	vinsgr2vr.h	$vr2, $s0, 6
-	vinsgr2vr.h	$vr2, $s1, 7
-	xvpermi.q	$xr1, $xr2, 2
-	xvbitsel.v	$xr0, $xr0, $xr7, $xr1
+	xvpermi.q	$xr1, $xr7, 1
+	vpickev.w	$vr2, $vr1, $vr7
+	xvpermi.q	$xr1, $xr10, 1
+	vpickev.w	$vr1, $vr1, $vr10
+	xvpermi.q	$xr2, $xr1, 2
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr1, $a0, 1
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr1, $a0, 2
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr1, $a0, 4
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr1, $a0, 5
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr1, $a0, 6
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpermi.q	$xr2, $xr12, 1
+	vpickev.w	$vr2, $vr2, $vr12
+	xvpermi.q	$xr3, $xr11, 1
+	vpickev.w	$vr3, $vr3, $vr11
+	xvpermi.q	$xr2, $xr3, 2
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr3, $a0, 1
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr3, $a0, 2
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$a0, $vr2, 0
+	vinsgr2vr.h	$vr3, $a0, 4
+	vpickve2gr.h	$a0, $vr2, 2
+	vinsgr2vr.h	$vr3, $a0, 5
+	vpickve2gr.h	$a0, $vr2, 4
+	vinsgr2vr.h	$vr3, $a0, 6
+	vpickve2gr.h	$a0, $vr2, 6
+	vinsgr2vr.h	$vr3, $a0, 7
+	xvpermi.q	$xr1, $xr3, 2
+	xvbitsel.v	$xr0, $xr0, $xr8, $xr1
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.h	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -15202,12 +15693,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_35E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ori	$a2, $zero, 4
 	maskeqz	$a1, $a2, $a1
 	or	$a0, $a1, $a0
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
 .LBB115_36:                             # %"_ZSt10__invoke_rIsRZ4mainE4$_35JPsS2_sEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ext.w.h	$a0, $a0
 	ret

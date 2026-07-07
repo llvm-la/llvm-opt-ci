@@ -709,14 +709,8 @@ init_array:                             # @init_array
 	xvstx	$xr1, $a6, $a5
 	add.d	$a6, $a3, $a4
 	xvstx	$xr1, $a6, $a5
-	xvpickve2gr.d	$a6, $xr0, 0
-	vinsgr2vr.w	$vr5, $a6, 0
-	xvpickve2gr.d	$a6, $xr0, 1
-	vinsgr2vr.w	$vr5, $a6, 1
-	xvpickve2gr.d	$a6, $xr0, 2
-	vinsgr2vr.w	$vr5, $a6, 2
-	xvpickve2gr.d	$a6, $xr0, 3
-	vinsgr2vr.w	$vr5, $a6, 3
+	xvpermi.q	$xr5, $xr0, 1
+	vpickev.w	$vr5, $vr5, $vr0
 	vaddi.wu	$vr5, $vr5, 1
 	vext2xv.du.wu	$xr5, $xr5
 	xvffint.d.lu	$xr5, $xr5

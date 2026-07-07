@@ -1,7 +1,42 @@
 	.file	"mode-dependent-address.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function f883b
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function f883b
 .LCPI0_0:
+	.byte	0                               # 0x0
+	.byte	8                               # 0x8
+	.byte	16                              # 0x10
+	.byte	24                              # 0x18
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI0_1:
 	.byte	0                               # 0x0
 	.byte	4                               # 0x4
 	.byte	8                               # 0x8
@@ -25,37 +60,33 @@
 f883b:                                  # @f883b
 # %bb.0:                                # %vector.ph
 	pcalau12i	$a4, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a4, %pc_lo12(.LCPI0_0)
+	xvld	$xr0, $a4, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a4, %pc_hi20(.LCPI0_1)
+	vld	$vr1, $a4, %pc_lo12(.LCPI0_1)
 	move	$a4, $zero
-	vrepli.w	$vr1, 32
+	vrepli.w	$vr2, 32
 	ori	$a5, $zero, 96
 	.p2align	4, , 16
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a6, $a1, 0
-	vinsgr2vr.d	$vr2, $a6, 0
-	vmini.h	$vr2, $vr2, 1
-	vilvl.h	$vr2, $vr2, $vr2
-	vld	$vr3, $a2, 0
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	xvld	$xr4, $a3, 0
-	vsra.w	$vr2, $vr2, $vr3
-	vadd.w	$vr2, $vr2, $vr1
-	vsrli.w	$vr2, $vr2, 7
-	xvpickve2gr.d	$a6, $xr4, 0
-	vinsgr2vr.b	$vr3, $a6, 0
-	xvpickve2gr.d	$a6, $xr4, 1
-	vinsgr2vr.b	$vr3, $a6, 1
-	xvpickve2gr.d	$a6, $xr4, 2
-	vinsgr2vr.b	$vr3, $a6, 2
-	xvpickve2gr.d	$a6, $xr4, 3
-	vinsgr2vr.b	$vr3, $a6, 3
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vori.b	$vr2, $vr2, 251
-	vand.v	$vr2, $vr2, $vr3
+	vinsgr2vr.d	$vr3, $a6, 0
+	vmini.h	$vr3, $vr3, 1
+	vilvl.h	$vr3, $vr3, $vr3
+	vld	$vr4, $a2, 0
+	vslli.w	$vr3, $vr3, 16
+	vsrai.w	$vr3, $vr3, 16
+	xvld	$xr5, $a3, 0
+	vsra.w	$vr3, $vr3, $vr4
+	vadd.w	$vr3, $vr3, $vr2
+	vsrli.w	$vr3, $vr3, 7
+	xvpermi.d	$xr4, $xr5, 78
+	xvshuf.b	$xr4, $xr4, $xr5, $xr0
+	vshuf.b	$vr3, $vr0, $vr3, $vr1
+	vori.b	$vr3, $vr3, 251
+	vand.v	$vr3, $vr3, $vr4
 	add.d	$a6, $a0, $a4
-	vstelm.w	$vr2, $a6, 0, 0
+	vstelm.w	$vr3, $a6, 0, 0
 	addi.d	$a4, $a4, 4
 	addi.d	$a3, $a3, 32
 	addi.d	$a2, $a2, 16
@@ -193,6 +224,39 @@ f883b:                                  # @f883b
 	.dword	93                              # 0x5d
 	.dword	94                              # 0x5e
 	.dword	95                              # 0x5f
+.LCPI1_58:
+	.byte	0                               # 0x0
+	.byte	8                               # 0x8
+	.byte	16                              # 0x10
+	.byte	24                              # 0x18
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
 .LCPI1_1:
@@ -342,7 +406,7 @@ f883b:                                  # @f883b
 	.word	93                              # 0x5d
 	.word	94                              # 0x5e
 	.word	95                              # 0x5f
-.LCPI1_58:
+.LCPI1_59:
 	.byte	0                               # 0x0
 	.byte	4                               # 0x4
 	.byte	8                               # 0x8
@@ -450,177 +514,179 @@ main:                                   # @main
 	xvld	$xr1, $a4, %pc_lo12(.LCPI1_22)
 	pcalau12i	$a4, %pc_hi20(.LCPI1_23)
 	vld	$vr2, $a4, %pc_lo12(.LCPI1_23)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_24)
-	vld	$vr3, $a4, %pc_lo12(.LCPI1_24)
-	xvst	$xr0, $a2, 256
-	xvst	$xr1, $a2, 288
-	vst	$vr2, $a0, 80
-	vst	$vr3, $a1, 160
-	pcalau12i	$a4, %pc_hi20(.LCPI1_25)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_25)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_26)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_26)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_27)
-	xvld	$xr2, $a4, %pc_lo12(.LCPI1_27)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_28)
-	vld	$vr3, $a4, %pc_lo12(.LCPI1_28)
-	vst	$vr0, $a1, 176
-	xvst	$xr1, $a2, 320
-	xvst	$xr2, $a2, 352
-	vst	$vr3, $a0, 96
-	pcalau12i	$a4, %pc_hi20(.LCPI1_29)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_29)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_30)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_30)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_31)
-	xvld	$xr2, $a4, %pc_lo12(.LCPI1_31)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_32)
-	xvld	$xr3, $a4, %pc_lo12(.LCPI1_32)
-	vst	$vr0, $a1, 192
-	vst	$vr1, $a1, 208
-	xvst	$xr2, $a2, 384
-	xvst	$xr3, $a2, 416
-	pcalau12i	$a4, %pc_hi20(.LCPI1_33)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_33)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_34)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_34)
 	lu12i.w	$a4, 61664
 	ori	$a4, $a4, 3340
 	lu32i.d	$a4, 135440
 	lu52i.d	$a4, $a4, 305
 	st.d	$a4, $a3, 12
-	vst	$vr0, $a0, 112
-	vst	$vr1, $a1, 224
-	pcalau12i	$a4, %pc_hi20(.LCPI1_35)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_35)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_36)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_36)
+	xvst	$xr0, $a2, 256
+	xvst	$xr1, $a2, 288
+	vst	$vr2, $a0, 80
+	pcalau12i	$a4, %pc_hi20(.LCPI1_24)
+	vld	$vr0, $a4, %pc_lo12(.LCPI1_24)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_25)
+	vld	$vr1, $a4, %pc_lo12(.LCPI1_25)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_26)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI1_26)
 	lu12i.w	$a4, 94561
 	ori	$a4, $a4, 1300
 	st.w	$a4, $a3, 20
-	vst	$vr0, $a1, 240
-	xvst	$xr1, $a2, 448
-	pcalau12i	$a4, %pc_hi20(.LCPI1_37)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI1_37)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_38)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_38)
+	vst	$vr0, $a1, 160
+	vst	$vr1, $a1, 176
+	xvst	$xr2, $a2, 320
+	pcalau12i	$a4, %pc_hi20(.LCPI1_27)
+	xvld	$xr0, $a4, %pc_lo12(.LCPI1_27)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_28)
+	vld	$vr1, $a4, %pc_lo12(.LCPI1_28)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_29)
+	vld	$vr2, $a4, %pc_lo12(.LCPI1_29)
 	lu12i.w	$a4, 111009
 	ori	$a4, $a4, 2328
 	lu32i.d	$a4, -123620
 	lu52i.d	$a4, $a4, 497
 	st.d	$a4, $a3, 24
-	xvst	$xr0, $a2, 480
-	vst	$vr1, $a0, 128
-	pcalau12i	$a4, %pc_hi20(.LCPI1_39)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_39)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_40)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_40)
+	xvst	$xr0, $a2, 352
+	vst	$vr1, $a0, 96
+	vst	$vr2, $a1, 192
+	pcalau12i	$a4, %pc_hi20(.LCPI1_30)
+	vld	$vr0, $a4, %pc_lo12(.LCPI1_30)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_31)
+	xvld	$xr1, $a4, %pc_lo12(.LCPI1_31)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_32)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI1_32)
 	lu12i.w	$a4, 400
 	ori	$a4, $a4, 24
 	lu32i.d	$a4, -327654
 	lu52i.d	$a4, $a4, 1
 	st.d	$a4, $a0, 48
-	vst	$vr0, $a1, 256
-	vst	$vr1, $a1, 272
-	pcalau12i	$a4, %pc_hi20(.LCPI1_41)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI1_41)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_42)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_42)
+	vst	$vr0, $a1, 208
+	xvst	$xr1, $a2, 384
+	xvst	$xr2, $a2, 416
+	pcalau12i	$a4, %pc_hi20(.LCPI1_33)
+	vld	$vr0, $a4, %pc_lo12(.LCPI1_33)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_34)
+	vld	$vr1, $a4, %pc_lo12(.LCPI1_34)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_35)
+	vld	$vr2, $a4, %pc_lo12(.LCPI1_35)
 	lu12i.w	$a4, 464
 	ori	$a4, $a4, 28
 	lu32i.d	$a4, -65506
 	lu52i.d	$a4, $a4, 1
 	st.d	$a4, $a0, 56
-	xvst	$xr0, $a2, 512
-	xvst	$xr1, $a2, 544
-	pcalau12i	$a4, %pc_hi20(.LCPI1_43)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_43)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_44)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_44)
+	vst	$vr0, $a0, 112
+	vst	$vr1, $a1, 224
+	vst	$vr2, $a1, 240
+	pcalau12i	$a4, %pc_hi20(.LCPI1_36)
+	xvld	$xr0, $a4, %pc_lo12(.LCPI1_36)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_37)
+	xvld	$xr1, $a4, %pc_lo12(.LCPI1_37)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_38)
+	vld	$vr2, $a4, %pc_lo12(.LCPI1_38)
 	lu12i.w	$a4, 143906
 	ori	$a4, $a4, 288
 	lu32i.d	$a4, 402724
 	lu52i.d	$a4, $a4, 626
 	st.d	$a4, $a3, 32
-	vst	$vr0, $a0, 144
-	vst	$vr1, $a1, 288
-	pcalau12i	$a4, %pc_hi20(.LCPI1_45)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_45)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_46)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_46)
+	xvst	$xr0, $a2, 448
+	xvst	$xr1, $a2, 480
+	vst	$vr2, $a0, 128
+	pcalau12i	$a4, %pc_hi20(.LCPI1_39)
+	vld	$vr0, $a4, %pc_lo12(.LCPI1_39)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_40)
+	vld	$vr1, $a4, %pc_lo12(.LCPI1_40)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_41)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI1_41)
 	lu12i.w	$a4, 176802
 	ori	$a4, $a4, 2344
 	lu32i.d	$a4, -119508
 	lu52i.d	$a4, $a4, 754
 	st.d	$a4, $a3, 40
-	vst	$vr0, $a1, 304
-	xvst	$xr1, $a2, 576
-	pcalau12i	$a4, %pc_hi20(.LCPI1_47)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI1_47)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_48)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_48)
+	vst	$vr0, $a1, 256
+	vst	$vr1, $a1, 272
+	xvst	$xr2, $a2, 512
+	pcalau12i	$a4, %pc_hi20(.LCPI1_42)
+	xvld	$xr0, $a4, %pc_lo12(.LCPI1_42)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_43)
+	vld	$vr1, $a4, %pc_lo12(.LCPI1_43)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_44)
+	vld	$vr2, $a4, %pc_lo12(.LCPI1_44)
 	lu12i.w	$a4, 209699
 	ori	$a4, $a4, 304
 	lu32i.d	$a4, 406836
 	lu52i.d	$a4, $a4, 883
 	st.d	$a4, $a3, 48
-	xvst	$xr0, $a2, 608
-	vst	$vr1, $a0, 160
-	pcalau12i	$a4, %pc_hi20(.LCPI1_49)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_49)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_50)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_50)
+	xvst	$xr0, $a2, 544
+	vst	$vr1, $a0, 144
+	vst	$vr2, $a1, 288
+	pcalau12i	$a4, %pc_hi20(.LCPI1_45)
+	vld	$vr0, $a4, %pc_lo12(.LCPI1_45)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_46)
+	xvld	$xr1, $a4, %pc_lo12(.LCPI1_46)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_47)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI1_47)
 	lu12i.w	$a4, 242595
 	ori	$a4, $a4, 2360
 	lu32i.d	$a4, -115396
 	lu52i.d	$a4, $a4, 1011
 	st.d	$a4, $a3, 56
-	vst	$vr0, $a1, 320
-	vst	$vr1, $a1, 336
-	pcalau12i	$a4, %pc_hi20(.LCPI1_51)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI1_51)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_52)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_52)
+	vst	$vr0, $a1, 304
+	xvst	$xr1, $a2, 576
+	xvst	$xr2, $a2, 608
+	pcalau12i	$a4, %pc_hi20(.LCPI1_48)
+	vld	$vr0, $a4, %pc_lo12(.LCPI1_48)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_49)
+	vld	$vr1, $a4, %pc_lo12(.LCPI1_49)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_50)
+	vld	$vr2, $a4, %pc_lo12(.LCPI1_50)
 	lu12i.w	$a4, 275492
 	ori	$a4, $a4, 320
 	lu32i.d	$a4, 410948
 	lu52i.d	$a4, $a4, 1140
 	st.d	$a4, $a3, 64
-	xvst	$xr0, $a2, 640
-	xvst	$xr1, $a2, 672
+	vst	$vr0, $a0, 160
+	vst	$vr1, $a1, 320
+	vst	$vr2, $a1, 336
+	pcalau12i	$a4, %pc_hi20(.LCPI1_51)
+	xvld	$xr0, $a4, %pc_lo12(.LCPI1_51)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_52)
+	xvld	$xr1, $a4, %pc_lo12(.LCPI1_52)
 	pcalau12i	$a4, %pc_hi20(.LCPI1_53)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_53)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_54)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_54)
+	vld	$vr2, $a4, %pc_lo12(.LCPI1_53)
 	lu12i.w	$a4, 308388
 	ori	$a4, $a4, 2376
 	lu32i.d	$a4, -111284
 	lu52i.d	$a4, $a4, 1268
 	st.d	$a4, $a3, 72
-	vst	$vr0, $a0, 176
-	vst	$vr1, $a1, 352
+	xvst	$xr0, $a2, 640
+	xvst	$xr1, $a2, 672
+	vst	$vr2, $a0, 176
+	pcalau12i	$a4, %pc_hi20(.LCPI1_54)
+	vld	$vr0, $a4, %pc_lo12(.LCPI1_54)
 	pcalau12i	$a4, %pc_hi20(.LCPI1_55)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_55)
+	vld	$vr1, $a4, %pc_lo12(.LCPI1_55)
 	pcalau12i	$a4, %pc_hi20(.LCPI1_56)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_56)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI1_56)
 	lu12i.w	$a4, 341285
 	ori	$a4, $a4, 336
 	lu32i.d	$a4, 415060
 	lu52i.d	$a4, $a4, 1397
 	st.d	$a4, $a3, 80
-	vst	$vr0, $a1, 368
-	xvst	$xr1, $a2, 704
+	vst	$vr0, $a1, 352
+	vst	$vr1, $a1, 368
+	xvst	$xr2, $a2, 704
 	pcalau12i	$a4, %pc_hi20(.LCPI1_57)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_57)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI1_57)
 	pcalau12i	$a4, %pc_hi20(.LCPI1_58)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_58)
+	xvld	$xr0, $a4, %pc_lo12(.LCPI1_58)
+	pcalau12i	$a4, %pc_hi20(.LCPI1_59)
+	vld	$vr1, $a4, %pc_lo12(.LCPI1_59)
 	lu12i.w	$a4, 374181
 	ori	$a4, $a4, 2392
 	lu32i.d	$a4, -107172
 	lu52i.d	$a4, $a4, 1525
 	st.d	$a4, $a3, 88
-	xvst	$xr1, $a2, 736
-	vrepli.w	$vr1, 32
+	xvst	$xr2, $a2, 736
+	vrepli.w	$vr2, 32
 	pcalau12i	$a3, %pc_hi20(result)
 	addi.d	$a3, $a3, %pc_lo12(result)
 	move	$a4, $zero
@@ -629,29 +695,23 @@ main:                                   # @main
 .LBB1_1:                                # %vector.body26
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a6, $a0, 0
-	vinsgr2vr.d	$vr2, $a6, 0
-	vmini.h	$vr2, $vr2, 1
-	vilvl.h	$vr2, $vr2, $vr2
-	vld	$vr3, $a1, 0
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	xvld	$xr4, $a2, 0
-	vsra.w	$vr2, $vr2, $vr3
-	vadd.w	$vr2, $vr2, $vr1
-	vsrli.w	$vr2, $vr2, 7
-	xvpickve2gr.d	$a6, $xr4, 0
-	vinsgr2vr.b	$vr3, $a6, 0
-	xvpickve2gr.d	$a6, $xr4, 1
-	vinsgr2vr.b	$vr3, $a6, 1
-	xvpickve2gr.d	$a6, $xr4, 2
-	vinsgr2vr.b	$vr3, $a6, 2
-	xvpickve2gr.d	$a6, $xr4, 3
-	vinsgr2vr.b	$vr3, $a6, 3
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vori.b	$vr2, $vr2, 251
-	vand.v	$vr2, $vr2, $vr3
+	vinsgr2vr.d	$vr3, $a6, 0
+	vmini.h	$vr3, $vr3, 1
+	vilvl.h	$vr3, $vr3, $vr3
+	vld	$vr4, $a1, 0
+	vslli.w	$vr3, $vr3, 16
+	vsrai.w	$vr3, $vr3, 16
+	xvld	$xr5, $a2, 0
+	vsra.w	$vr3, $vr3, $vr4
+	vadd.w	$vr3, $vr3, $vr2
+	vsrli.w	$vr3, $vr3, 7
+	xvpermi.d	$xr4, $xr5, 78
+	xvshuf.b	$xr4, $xr4, $xr5, $xr0
+	vshuf.b	$vr3, $vr0, $vr3, $vr1
+	vori.b	$vr3, $vr3, 251
+	vand.v	$vr3, $vr3, $vr4
 	add.d	$a6, $a3, $a4
-	vstelm.w	$vr2, $a6, 0, 0
+	vstelm.w	$vr3, $a6, 0, 0
 	addi.d	$a4, $a4, 4
 	addi.d	$a2, $a2, 32
 	addi.d	$a1, $a1, 16

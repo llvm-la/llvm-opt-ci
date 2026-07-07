@@ -10,9 +10,42 @@
 	.word	32                              # 0x20
 	.word	64                              # 0x40
 	.word	128                             # 0x80
+.LCPI0_1:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	16                              # 0x10
+	.byte	20                              # 0x14
+	.byte	24                              # 0x18
+	.byte	28                              # 0x1c
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI0_1:
+.LCPI0_2:
 	.byte	0                               # 0x0
 	.byte	4                               # 0x4
 	.byte	8                               # 0x8
@@ -47,14 +80,14 @@ rsdec_204:                              # @rsdec_204
 	st.d	$s6, $sp, 1672                  # 8-byte Folded Spill
 	st.d	$s7, $sp, 1664                  # 8-byte Folded Spill
 	st.d	$s8, $sp, 1656                  # 8-byte Folded Spill
-	pcalau12i	$s1, %pc_hi20(inited)
-	ld.bu	$a2, $s1, %pc_lo12(inited)
+	pcalau12i	$s2, %pc_hi20(inited)
+	ld.bu	$a2, $s2, %pc_lo12(inited)
 	move	$s0, $a1
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(index_of)
 	addi.d	$s3, $a0, %pc_lo12(index_of)
 	pcalau12i	$a0, %pc_hi20(alpha_to)
-	addi.d	$s2, $a0, %pc_lo12(alpha_to)
+	addi.d	$s1, $a0, %pc_lo12(alpha_to)
 	bnez	$a2, .LBB0_6
 # %bb.1:
 	ori	$a0, $zero, 0
@@ -67,14 +100,14 @@ rsdec_204:                              # @rsdec_204
 	ori	$a0, $zero, 4
 	st.w	$a0, $s3, 64
 	ori	$a4, $zero, 29
-	st.w	$a4, $s2, 32
+	st.w	$a4, $s1, 32
 	ori	$a0, $zero, 5
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
 	xvld	$xr0, $a1, %pc_lo12(.LCPI0_0)
 	st.w	$a0, $s3, 128
 	ori	$a0, $zero, 6
 	st.w	$a0, $s3, 256
-	xvst	$xr0, $s2, 0
+	xvst	$xr0, $s1, 0
 	ori	$a0, $zero, 7
 	st.w	$a0, $s3, 512
 	ori	$a0, $zero, 8
@@ -86,7 +119,7 @@ rsdec_204:                              # @rsdec_204
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_2:                                #   in Loop: Header=BB0_3 Depth=1
-	stx.w	$a5, $s2, $a0
+	stx.w	$a5, $s1, $a0
 	slli.d	$a4, $a5, 2
 	stx.w	$a1, $s3, $a4
 	addi.d	$a0, $a0, 4
@@ -97,7 +130,7 @@ rsdec_204:                              # @rsdec_204
 	slli.w	$a5, $a4, 1
 	blt	$a4, $a2, .LBB0_2
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
-	ld.w	$a4, $s2, 32
+	ld.w	$a4, $s1, 32
 	xor	$a4, $a5, $a4
 	xori	$a5, $a4, 256
 	b	.LBB0_2
@@ -108,7 +141,7 @@ rsdec_204:                              # @rsdec_204
 	pcaddu18i	$ra, %call36(gen_poly)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
-	st.b	$a0, $s1, %pc_lo12(inited)
+	st.b	$a0, $s2, %pc_lo12(inited)
 .LBB0_6:                                # %.preheader32.preheader
 	ld.d	$a0, $s0, 188
 	vinsgr2vr.d	$vr0, $a0, 0
@@ -147,9 +180,9 @@ rsdec_204:                              # @rsdec_204
 	xvpermi.q	$xr0, $xr2, 48
 	xvextrins.b	$xr2, $xr0, 204
 	pcalau12i	$a0, %pc_hi20(recd)
-	addi.d	$s1, $a0, %pc_lo12(recd)
+	addi.d	$s2, $a0, %pc_lo12(recd)
 	ld.d	$a0, $s0, 196
-	xvst	$xr2, $s1, 0
+	xvst	$xr2, $s2, 0
 	vinsgr2vr.d	$vr0, $a0, 0
 	vpickve2gr.b	$a0, $vr0, 0
 	xvreplgr2vr.b	$xr1, $a0
@@ -185,8 +218,8 @@ rsdec_204:                              # @rsdec_204
 	xvreplgr2vr.b	$xr0, $a0
 	xvpermi.q	$xr0, $xr2, 48
 	xvextrins.b	$xr2, $xr0, 204
-	xvst	$xr2, $s1, 32
-	addi.d	$a0, $s1, 64
+	xvst	$xr2, $s2, 32
+	addi.d	$a0, $s2, 64
 	ori	$a2, $zero, 204
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
@@ -200,8 +233,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 268
-	vst	$vr2, $s1, 284
+	vst	$vr1, $s2, 268
+	vst	$vr2, $s2, 284
 	ld.w	$a0, $s0, 8
 	ld.w	$a1, $s0, 12
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -210,8 +243,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 300
-	vst	$vr2, $s1, 316
+	vst	$vr1, $s2, 300
+	vst	$vr2, $s2, 316
 	ld.w	$a0, $s0, 16
 	ld.w	$a1, $s0, 20
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -220,8 +253,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 332
-	vst	$vr2, $s1, 348
+	vst	$vr1, $s2, 332
+	vst	$vr2, $s2, 348
 	ld.w	$a0, $s0, 24
 	ld.w	$a1, $s0, 28
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -230,8 +263,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 364
-	vst	$vr2, $s1, 380
+	vst	$vr1, $s2, 364
+	vst	$vr2, $s2, 380
 	ld.w	$a0, $s0, 32
 	ld.w	$a1, $s0, 36
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -240,8 +273,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 396
-	vst	$vr2, $s1, 412
+	vst	$vr1, $s2, 396
+	vst	$vr2, $s2, 412
 	ld.w	$a0, $s0, 40
 	ld.w	$a1, $s0, 44
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -250,8 +283,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 428
-	vst	$vr2, $s1, 444
+	vst	$vr1, $s2, 428
+	vst	$vr2, $s2, 444
 	ld.w	$a0, $s0, 48
 	ld.w	$a1, $s0, 52
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -260,8 +293,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 460
-	vst	$vr2, $s1, 476
+	vst	$vr1, $s2, 460
+	vst	$vr2, $s2, 476
 	ld.w	$a0, $s0, 56
 	ld.w	$a1, $s0, 60
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -270,8 +303,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 492
-	vst	$vr2, $s1, 508
+	vst	$vr1, $s2, 492
+	vst	$vr2, $s2, 508
 	ld.w	$a0, $s0, 64
 	ld.w	$a1, $s0, 68
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -280,8 +313,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 524
-	vst	$vr2, $s1, 540
+	vst	$vr1, $s2, 524
+	vst	$vr2, $s2, 540
 	ld.w	$a0, $s0, 72
 	ld.w	$a1, $s0, 76
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -290,8 +323,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 556
-	vst	$vr2, $s1, 572
+	vst	$vr1, $s2, 556
+	vst	$vr2, $s2, 572
 	ld.w	$a0, $s0, 80
 	ld.w	$a1, $s0, 84
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -300,8 +333,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 588
-	vst	$vr2, $s1, 604
+	vst	$vr1, $s2, 588
+	vst	$vr2, $s2, 604
 	ld.w	$a0, $s0, 88
 	ld.w	$a1, $s0, 92
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -310,8 +343,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 620
-	vst	$vr2, $s1, 636
+	vst	$vr1, $s2, 620
+	vst	$vr2, $s2, 636
 	ld.w	$a0, $s0, 96
 	ld.w	$a1, $s0, 100
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -320,8 +353,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 652
-	vst	$vr2, $s1, 668
+	vst	$vr1, $s2, 652
+	vst	$vr2, $s2, 668
 	ld.w	$a0, $s0, 104
 	ld.w	$a1, $s0, 108
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -330,8 +363,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 684
-	vst	$vr2, $s1, 700
+	vst	$vr1, $s2, 684
+	vst	$vr2, $s2, 700
 	ld.w	$a0, $s0, 112
 	ld.w	$a1, $s0, 116
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -340,8 +373,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 716
-	vst	$vr2, $s1, 732
+	vst	$vr1, $s2, 716
+	vst	$vr2, $s2, 732
 	ld.w	$a0, $s0, 120
 	ld.w	$a1, $s0, 124
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -350,8 +383,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 748
-	vst	$vr2, $s1, 764
+	vst	$vr1, $s2, 748
+	vst	$vr2, $s2, 764
 	ld.w	$a0, $s0, 128
 	ld.w	$a1, $s0, 132
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -360,8 +393,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 780
-	vst	$vr2, $s1, 796
+	vst	$vr1, $s2, 780
+	vst	$vr2, $s2, 796
 	ld.w	$a0, $s0, 136
 	ld.w	$a1, $s0, 140
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -370,8 +403,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 812
-	vst	$vr2, $s1, 828
+	vst	$vr1, $s2, 812
+	vst	$vr2, $s2, 828
 	ld.w	$a0, $s0, 144
 	ld.w	$a1, $s0, 148
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -380,8 +413,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 844
-	vst	$vr2, $s1, 860
+	vst	$vr1, $s2, 844
+	vst	$vr2, $s2, 860
 	ld.w	$a0, $s0, 152
 	ld.w	$a1, $s0, 156
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -390,8 +423,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 876
-	vst	$vr2, $s1, 892
+	vst	$vr1, $s2, 876
+	vst	$vr2, $s2, 892
 	ld.w	$a0, $s0, 160
 	ld.w	$a1, $s0, 164
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -400,8 +433,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 908
-	vst	$vr2, $s1, 924
+	vst	$vr1, $s2, 908
+	vst	$vr2, $s2, 924
 	ld.w	$a0, $s0, 168
 	ld.w	$a1, $s0, 172
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -410,8 +443,8 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 940
-	vst	$vr2, $s1, 956
+	vst	$vr1, $s2, 940
+	vst	$vr2, $s2, 956
 	ld.w	$a0, $s0, 176
 	ld.w	$a1, $s0, 180
 	vinsgr2vr.w	$vr1, $a0, 0
@@ -420,22 +453,22 @@ rsdec_204:                              # @rsdec_204
 	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vst	$vr1, $s1, 972
-	vst	$vr2, $s1, 988
+	vst	$vr1, $s2, 972
+	vst	$vr2, $s2, 988
 	ld.bu	$a0, $s0, 184
-	st.w	$a0, $s1, 1004
+	st.w	$a0, $s2, 1004
 	ld.bu	$a0, $s0, 185
-	st.w	$a0, $s1, 1008
+	st.w	$a0, $s2, 1008
 	ld.bu	$a0, $s0, 186
-	st.w	$a0, $s1, 1012
+	st.w	$a0, $s2, 1012
 	ld.bu	$a1, $s0, 187
 	move	$a0, $zero
-	st.w	$a1, $s1, 1016
+	st.w	$a1, $s2, 1016
 	ori	$a1, $zero, 992
 	.p2align	4, , 16
 .LBB0_7:                                # %vector.body124
                                         # =>This Inner Loop Header: Depth=1
-	xvldx	$xr1, $s1, $a0
+	xvldx	$xr1, $s2, $a0
 	xvpermi.q	$xr2, $xr1, 1
 	vpickve2gr.w	$a2, $vr2, 2
 	vinsgr2vr.d	$vr3, $a2, 0
@@ -488,39 +521,39 @@ rsdec_204:                              # @rsdec_204
 	vinsgr2vr.w	$vr2, $t0, 2
 	vinsgr2vr.w	$vr2, $t1, 3
 	xvpermi.q	$xr1, $xr2, 2
-	xvstx	$xr1, $s1, $a0
+	xvstx	$xr1, $s2, $a0
 	addi.d	$a0, $a0, 32
 	bne	$a0, $a1, .LBB0_7
 # %bb.8:                                # %.preheader
-	ld.w	$a0, $s1, 992
+	ld.w	$a0, $s2, 992
 	move	$a1, $zero
-	ld.w	$a2, $s1, 996
+	ld.w	$a2, $s2, 996
 	slli.d	$a0, $a0, 2
-	ld.w	$a3, $s1, 1000
+	ld.w	$a3, $s2, 1000
 	ldx.w	$a0, $s3, $a0
 	slli.d	$a2, $a2, 2
 	ldx.w	$a2, $s3, $a2
 	slli.d	$a3, $a3, 2
 	ldx.w	$a3, $s3, $a3
-	st.w	$a0, $s1, 992
-	ld.w	$a0, $s1, 1004
-	st.w	$a2, $s1, 996
-	st.w	$a3, $s1, 1000
-	ld.w	$a2, $s1, 1008
+	st.w	$a0, $s2, 992
+	ld.w	$a0, $s2, 1004
+	st.w	$a2, $s2, 996
+	st.w	$a3, $s2, 1000
+	ld.w	$a2, $s2, 1008
 	slli.d	$a0, $a0, 2
 	ldx.w	$a0, $s3, $a0
-	ld.w	$a3, $s1, 1012
+	ld.w	$a3, $s2, 1012
 	slli.d	$a2, $a2, 2
-	ld.w	$a4, $s1, 1016
+	ld.w	$a4, $s2, 1016
 	ldx.w	$a2, $s3, $a2
 	slli.d	$a3, $a3, 2
 	ldx.w	$a3, $s3, $a3
 	slli.d	$a4, $a4, 2
 	ldx.w	$a4, $s3, $a4
-	st.w	$a0, $s1, 1004
-	st.w	$a2, $s1, 1008
-	st.w	$a3, $s1, 1012
-	st.w	$a4, $s1, 1016
+	st.w	$a0, $s2, 1004
+	st.w	$a2, $s2, 1008
+	st.w	$a3, $s2, 1012
+	st.w	$a4, $s2, 1016
 	ori	$a2, $zero, 1
 	addi.d	$a3, $sp, 220
 	addi.w	$a0, $zero, -1
@@ -558,7 +591,7 @@ rsdec_204:                              # @rsdec_204
 	beq	$t3, $a4, .LBB0_9
 .LBB0_12:                               #   Parent Loop BB0_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.w	$t4, $s1, $t3
+	ldx.w	$t4, $s2, $t3
 	beq	$t4, $a0, .LBB0_11
 # %bb.13:                               #   in Loop: Header=BB0_12 Depth=2
 	add.w	$t4, $t2, $t4
@@ -572,7 +605,7 @@ rsdec_204:                              # @rsdec_204
 	sub.d	$t5, $t5, $t6
 	add.w	$t4, $t4, $t5
 	slli.d	$t4, $t4, 2
-	ldx.w	$t4, $s2, $t4
+	ldx.w	$t4, $s1, $t4
 	xor	$t1, $t4, $t1
 	st.w	$t1, $t0, 0
 	b	.LBB0_11
@@ -768,7 +801,7 @@ rsdec_204:                              # @rsdec_204
 	sub.d	$t0, $t0, $t6
 	add.w	$a7, $a7, $t0
 	slli.d	$a7, $a7, 2
-	ldx.w	$a7, $s2, $a7
+	ldx.w	$a7, $s1, $a7
 	slli.d	$t0, $ra, 2
 	stx.w	$a7, $s8, $t0
 	b	.LBB0_32
@@ -990,7 +1023,7 @@ rsdec_204:                              # @rsdec_204
 	beq	$a7, $t1, .LBB0_52
 # %bb.51:                               #   in Loop: Header=BB0_17 Depth=1
 	slli.d	$a7, $a7, 2
-	ldx.w	$s6, $s2, $a7
+	ldx.w	$s6, $s1, $a7
 	alsl.d	$fp, $t4, $a6, 2
 	bgtz	$s5, .LBB0_53
 	b	.LBB0_16
@@ -1034,7 +1067,7 @@ rsdec_204:                              # @rsdec_204
 	sub.d	$t0, $t0, $t4
 	add.w	$a7, $a7, $t0
 	slli.d	$a7, $a7, 2
-	ldx.w	$a7, $s2, $a7
+	ldx.w	$a7, $s1, $a7
 	xor	$s6, $a7, $s6
 	st.w	$s6, $fp, 0
 	b	.LBB0_54
@@ -1046,17 +1079,17 @@ rsdec_204:                              # @rsdec_204
 	.p2align	4, , 16
 .LBB0_59:                               #   in Loop: Header=BB0_60 Depth=1
 	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $s2, $a3
-	stx.w	$a3, $s1, $a0
+	ldx.w	$a3, $s1, $a3
+	stx.w	$a3, $s2, $a0
 	addi.d	$a0, $a0, 4
 	beq	$a0, $a2, .LBB0_94
 .LBB0_60:                               # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
-	ldx.w	$a3, $s1, $a0
+	ldx.w	$a3, $s2, $a0
 	bne	$a3, $a1, .LBB0_59
 # %bb.61:                               #   in Loop: Header=BB0_60 Depth=1
 	move	$a3, $zero
-	stx.w	$a3, $s1, $a0
+	stx.w	$a3, $s2, $a0
 	addi.d	$a0, $a0, 4
 	bne	$a0, $a2, .LBB0_60
 	b	.LBB0_94
@@ -1135,7 +1168,7 @@ rsdec_204:                              # @rsdec_204
 	sub.d	$t5, $t5, $t6
 	add.w	$t4, $t4, $t5
 	slli.d	$t5, $t4, 2
-	ldx.w	$t5, $s2, $t5
+	ldx.w	$t5, $s1, $t5
 	st.w	$t4, $t0, 0
 	xor	$t2, $t5, $t2
 	b	.LBB0_71
@@ -1176,11 +1209,11 @@ rsdec_204:                              # @rsdec_204
 	beq	$t1, $a0, .LBB0_81
 # %bb.79:                               #   in Loop: Header=BB0_78 Depth=1
 	slli.d	$t1, $t1, 2
-	ldx.w	$t1, $s2, $t1
+	ldx.w	$t1, $s1, $t1
 	beq	$t2, $a0, .LBB0_83
 # %bb.80:                               #   in Loop: Header=BB0_78 Depth=1
 	slli.d	$t2, $t2, 2
-	ldx.w	$t2, $s2, $t2
+	ldx.w	$t2, $s1, $t2
 	xor	$t1, $t2, $t1
 	bltu	$a3, $a6, .LBB0_77
 	b	.LBB0_84
@@ -1189,7 +1222,7 @@ rsdec_204:                              # @rsdec_204
 	beq	$t2, $a0, .LBB0_89
 # %bb.82:                               #   in Loop: Header=BB0_78 Depth=1
 	slli.d	$t1, $t2, 2
-	ldx.w	$t1, $s2, $t1
+	ldx.w	$t1, $s1, $t1
 .LBB0_83:                               #   in Loop: Header=BB0_78 Depth=1
 	bltu	$a3, $a6, .LBB0_77
 .LBB0_84:                               # %.lr.ph364.i
@@ -1222,7 +1255,7 @@ rsdec_204:                              # @rsdec_204
 	sub.d	$t6, $t6, $t7
 	add.w	$t5, $t5, $t6
 	slli.d	$t5, $t5, 2
-	ldx.w	$t5, $s2, $t5
+	ldx.w	$t5, $s1, $t5
 	xor	$t1, $t5, $t1
 	st.w	$t1, $t2, 0
 	b	.LBB0_85
@@ -1238,426 +1271,120 @@ rsdec_204:                              # @rsdec_204
 	.p2align	4, , 16
 .LBB0_91:                               #   in Loop: Header=BB0_92 Depth=1
 	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $s2, $a3
-	stx.w	$a3, $s1, $a0
+	ldx.w	$a3, $s1, $a3
+	stx.w	$a3, $s2, $a0
 	addi.d	$a0, $a0, 4
 	beq	$a0, $a2, .LBB0_94
 .LBB0_92:                               # %.preheader320.i
                                         # =>This Inner Loop Header: Depth=1
-	ldx.w	$a3, $s1, $a0
+	ldx.w	$a3, $s2, $a0
 	bne	$a3, $a1, .LBB0_91
 # %bb.93:                               #   in Loop: Header=BB0_92 Depth=1
 	move	$a3, $zero
-	stx.w	$a3, $s1, $a0
+	stx.w	$a3, $s2, $a0
 	addi.d	$a0, $a0, 4
 	bne	$a0, $a2, .LBB0_92
 .LBB0_94:                               # %iter.check
-	xvld	$xr0, $s1, 268
-	xvld	$xr1, $s1, 300
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.b	$vr2, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.b	$vr2, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.b	$vr2, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.b	$vr2, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.b	$vr2, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.b	$vr2, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.b	$vr2, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.b	$vr2, $a0, 7
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.b	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.b	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.b	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.b	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.b	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.b	$vr0, $a0, 7
-	vpackev.d	$vr0, $vr0, $vr2
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
-	vst	$vr0, $a1, 0
-	xvld	$xr0, $s1, 332
-	xvld	$xr1, $s1, 364
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.b	$vr2, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.b	$vr2, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.b	$vr2, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.b	$vr2, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.b	$vr2, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.b	$vr2, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.b	$vr2, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.b	$vr2, $a0, 7
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.b	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.b	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.b	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.b	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.b	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.b	$vr0, $a0, 7
-	vpackev.d	$vr0, $vr0, $vr2
-	vst	$vr0, $a1, 16
-	xvld	$xr0, $s1, 396
-	xvld	$xr1, $s1, 428
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.b	$vr2, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.b	$vr2, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.b	$vr2, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.b	$vr2, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.b	$vr2, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.b	$vr2, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.b	$vr2, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.b	$vr2, $a0, 7
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.b	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.b	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.b	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.b	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.b	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.b	$vr0, $a0, 7
-	vpackev.d	$vr0, $vr0, $vr2
-	vst	$vr0, $a1, 32
-	xvld	$xr0, $s1, 460
-	xvld	$xr1, $s1, 492
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.b	$vr2, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.b	$vr2, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.b	$vr2, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.b	$vr2, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.b	$vr2, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.b	$vr2, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.b	$vr2, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.b	$vr2, $a0, 7
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.b	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.b	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.b	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.b	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.b	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.b	$vr0, $a0, 7
-	vpackev.d	$vr0, $vr0, $vr2
-	vst	$vr0, $a1, 48
-	xvld	$xr0, $s1, 524
-	xvld	$xr1, $s1, 556
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.b	$vr2, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.b	$vr2, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.b	$vr2, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.b	$vr2, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.b	$vr2, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.b	$vr2, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.b	$vr2, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.b	$vr2, $a0, 7
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.b	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.b	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.b	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.b	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.b	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.b	$vr0, $a0, 7
-	vpackev.d	$vr0, $vr0, $vr2
-	vst	$vr0, $a1, 64
-	xvld	$xr0, $s1, 588
-	xvld	$xr1, $s1, 620
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.b	$vr2, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.b	$vr2, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.b	$vr2, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.b	$vr2, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.b	$vr2, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.b	$vr2, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.b	$vr2, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.b	$vr2, $a0, 7
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.b	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.b	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.b	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.b	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.b	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.b	$vr0, $a0, 7
-	vpackev.d	$vr0, $vr0, $vr2
-	vst	$vr0, $a1, 80
-	xvld	$xr0, $s1, 652
-	xvld	$xr1, $s1, 684
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.b	$vr2, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.b	$vr2, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.b	$vr2, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.b	$vr2, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.b	$vr2, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.b	$vr2, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.b	$vr2, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.b	$vr2, $a0, 7
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.b	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.b	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.b	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.b	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.b	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.b	$vr0, $a0, 7
-	vpackev.d	$vr0, $vr0, $vr2
-	vst	$vr0, $a1, 96
-	xvld	$xr0, $s1, 716
-	xvld	$xr1, $s1, 748
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.b	$vr2, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.b	$vr2, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.b	$vr2, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.b	$vr2, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.b	$vr2, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.b	$vr2, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.b	$vr2, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.b	$vr2, $a0, 7
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.b	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.b	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.b	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.b	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.b	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.b	$vr0, $a0, 7
-	vpackev.d	$vr0, $vr0, $vr2
-	vst	$vr0, $a1, 112
-	xvld	$xr0, $s1, 780
-	xvld	$xr1, $s1, 812
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.b	$vr2, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.b	$vr2, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.b	$vr2, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.b	$vr2, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.b	$vr2, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.b	$vr2, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.b	$vr2, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.b	$vr2, $a0, 7
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.b	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.b	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.b	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.b	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.b	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.b	$vr0, $a0, 7
-	vpackev.d	$vr0, $vr0, $vr2
-	vst	$vr0, $a1, 128
-	xvld	$xr0, $s1, 844
-	xvld	$xr1, $s1, 876
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.b	$vr2, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.b	$vr2, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.b	$vr2, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.b	$vr2, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.b	$vr2, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.b	$vr2, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.b	$vr2, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.b	$vr2, $a0, 7
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.b	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.b	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.b	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.b	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.b	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.b	$vr0, $a0, 7
-	vpackev.d	$vr0, $vr0, $vr2
-	vst	$vr0, $a1, 144
-	xvld	$xr0, $s1, 908
-	xvld	$xr1, $s1, 940
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.b	$vr2, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.b	$vr2, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.b	$vr2, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.b	$vr2, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.b	$vr2, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.b	$vr2, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.b	$vr2, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.b	$vr2, $a0, 7
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.b	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.b	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.b	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.b	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.b	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.b	$vr0, $a0, 7
-	vpackev.d	$vr0, $vr0, $vr2
-	vst	$vr0, $a1, 160
-	vld	$vr0, $s1, 972
+	xvld	$xr1, $s2, 268
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	vld	$vr1, $a0, %pc_lo12(.LCPI0_1)
+	xvld	$xr0, $a0, %pc_lo12(.LCPI0_1)
+	xvld	$xr2, $s2, 300
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.b	$xr1, $xr3, $xr1, $xr0
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.b	$xr2, $xr3, $xr2, $xr0
+	vpackev.d	$vr1, $vr2, $vr1
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	vst	$vr1, $a1, 0
+	xvld	$xr1, $s2, 332
+	xvld	$xr2, $s2, 364
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.b	$xr1, $xr3, $xr1, $xr0
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.b	$xr2, $xr3, $xr2, $xr0
+	vpackev.d	$vr1, $vr2, $vr1
+	vst	$vr1, $a1, 16
+	xvld	$xr1, $s2, 396
+	xvld	$xr2, $s2, 428
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.b	$xr1, $xr3, $xr1, $xr0
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.b	$xr2, $xr3, $xr2, $xr0
+	vpackev.d	$vr1, $vr2, $vr1
+	vst	$vr1, $a1, 32
+	xvld	$xr1, $s2, 460
+	xvld	$xr2, $s2, 492
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.b	$xr1, $xr3, $xr1, $xr0
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.b	$xr2, $xr3, $xr2, $xr0
+	vpackev.d	$vr1, $vr2, $vr1
+	vst	$vr1, $a1, 48
+	xvld	$xr1, $s2, 524
+	xvld	$xr2, $s2, 556
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.b	$xr1, $xr3, $xr1, $xr0
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.b	$xr2, $xr3, $xr2, $xr0
+	vpackev.d	$vr1, $vr2, $vr1
+	vst	$vr1, $a1, 64
+	xvld	$xr1, $s2, 588
+	xvld	$xr2, $s2, 620
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.b	$xr1, $xr3, $xr1, $xr0
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.b	$xr2, $xr3, $xr2, $xr0
+	vpackev.d	$vr1, $vr2, $vr1
+	vst	$vr1, $a1, 80
+	xvld	$xr1, $s2, 652
+	xvld	$xr2, $s2, 684
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.b	$xr1, $xr3, $xr1, $xr0
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.b	$xr2, $xr3, $xr2, $xr0
+	vpackev.d	$vr1, $vr2, $vr1
+	vst	$vr1, $a1, 96
+	xvld	$xr1, $s2, 716
+	xvld	$xr2, $s2, 748
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.b	$xr1, $xr3, $xr1, $xr0
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.b	$xr2, $xr3, $xr2, $xr0
+	vpackev.d	$vr1, $vr2, $vr1
+	vst	$vr1, $a1, 112
+	xvld	$xr1, $s2, 780
+	xvld	$xr2, $s2, 812
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.b	$xr1, $xr3, $xr1, $xr0
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.b	$xr2, $xr3, $xr2, $xr0
+	vpackev.d	$vr1, $vr2, $vr1
+	vst	$vr1, $a1, 128
+	xvld	$xr1, $s2, 844
+	xvld	$xr2, $s2, 876
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.b	$xr1, $xr3, $xr1, $xr0
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.b	$xr2, $xr3, $xr2, $xr0
+	vpackev.d	$vr1, $vr2, $vr1
+	vst	$vr1, $a1, 144
+	xvld	$xr1, $s2, 908
+	xvld	$xr2, $s2, 940
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.b	$xr1, $xr3, $xr1, $xr0
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.b	$xr0, $xr3, $xr2, $xr0
+	vpackev.d	$vr0, $vr0, $vr1
+	vst	$vr0, $a1, 160
+	vld	$vr0, $s2, 972
+	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_2)
 	vshuf.b	$vr0, $vr0, $vr0, $vr1
 	vstelm.w	$vr0, $a1, 176, 0
-	vld	$vr0, $s1, 988
+	vld	$vr0, $s2, 988
 	vshuf.b	$vr0, $vr0, $vr0, $vr1
 	vstelm.w	$vr0, $a1, 180, 0
-	vld	$vr0, $s1, 1004
+	vld	$vr0, $s2, 1004
 	vshuf.b	$vr0, $vr0, $vr0, $vr1
 	vstelm.w	$vr0, $a1, 184, 0
 	ld.d	$s8, $sp, 1656                  # 8-byte Folded Reload
@@ -1685,17 +1412,17 @@ rsdec_204:                              # @rsdec_204
 	.p2align	4, , 16
 .LBB0_98:                               #   in Loop: Header=BB0_99 Depth=1
 	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $s2, $a3
-	stx.w	$a3, $s1, $a0
+	ldx.w	$a3, $s1, $a3
+	stx.w	$a3, $s2, $a0
 	addi.d	$a0, $a0, 4
 	beq	$a0, $a2, .LBB0_94
 .LBB0_99:                               # %.preheader314.i
                                         # =>This Inner Loop Header: Depth=1
-	ldx.w	$a3, $s1, $a0
+	ldx.w	$a3, $s2, $a0
 	bne	$a3, $a1, .LBB0_98
 # %bb.100:                              #   in Loop: Header=BB0_99 Depth=1
 	move	$a3, $zero
-	stx.w	$a3, $s1, $a0
+	stx.w	$a3, $s2, $a0
 	addi.d	$a0, $a0, 4
 	bne	$a0, $a2, .LBB0_99
 	b	.LBB0_94
@@ -1707,16 +1434,16 @@ rsdec_204:                              # @rsdec_204
 	.p2align	4, , 16
 .LBB0_102:                              #   in Loop: Header=BB0_103 Depth=1
 	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $s2, $a3
-	stx.w	$a3, $s1, $a1
+	ldx.w	$a3, $s1, $a3
+	stx.w	$a3, $s2, $a1
 	addi.d	$a1, $a1, 4
 	beq	$a1, $a2, .LBB0_105
 .LBB0_103:                              # =>This Inner Loop Header: Depth=1
-	ldx.w	$a3, $s1, $a1
+	ldx.w	$a3, $s2, $a1
 	bne	$a3, $a0, .LBB0_102
 # %bb.104:                              #   in Loop: Header=BB0_103 Depth=1
 	move	$a3, $zero
-	stx.w	$a3, $s1, $a1
+	stx.w	$a3, $s2, $a1
 	addi.d	$a1, $a1, 4
 	bne	$a1, $a2, .LBB0_103
 .LBB0_105:                              # %.preheader310.i
@@ -1752,11 +1479,11 @@ rsdec_204:                              # @rsdec_204
 	sub.d	$t0, $t0, $t1
 	add.w	$a7, $a7, $t0
 	slli.d	$a7, $a7, 2
-	ldx.w	$a7, $s2, $a7
+	ldx.w	$a7, $s1, $a7
 	slli.d	$a6, $a6, 2
-	ldx.w	$t0, $s1, $a6
+	ldx.w	$t0, $s2, $a6
 	xor	$a7, $t0, $a7
-	stx.w	$a7, $s1, $a6
+	stx.w	$a7, $s2, $a6
 .LBB0_108:                              #   in Loop: Header=BB0_109 Depth=1
 	addi.d	$a1, $a1, 1
 	beq	$a1, $s5, .LBB0_94
@@ -1796,7 +1523,7 @@ rsdec_204:                              # @rsdec_204
 	sub.d	$t5, $t5, $t6
 	add.w	$t4, $t4, $t5
 	slli.d	$t4, $t4, 2
-	ldx.w	$t4, $s2, $t4
+	ldx.w	$t4, $s1, $t4
 	xor	$t0, $t4, $t0
 	b	.LBB0_110
 	.p2align	4, , 16
@@ -1833,7 +1560,7 @@ rsdec_204:                              # @rsdec_204
 	sub.d	$t5, $t5, $t6
 	add.w	$t4, $t4, $t5
 	slli.d	$t4, $t4, 2
-	ldx.w	$t4, $s2, $t4
+	ldx.w	$t4, $s1, $t4
 	xori	$t4, $t4, 1
 	slli.d	$t4, $t4, 2
 	ldx.w	$t4, $s3, $t4

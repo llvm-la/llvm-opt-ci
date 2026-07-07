@@ -120,22 +120,10 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB0_12:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a5, $xr1, 0
-	vinsgr2vr.w	$vr2, $a5, 0
-	xvpickve2gr.d	$a5, $xr1, 1
-	vinsgr2vr.w	$vr2, $a5, 1
-	xvpickve2gr.d	$a5, $xr1, 2
-	vinsgr2vr.w	$vr2, $a5, 2
-	xvpickve2gr.d	$a5, $xr1, 3
-	vinsgr2vr.w	$vr2, $a5, 3
-	xvpickve2gr.d	$a5, $xr0, 0
-	vinsgr2vr.w	$vr3, $a5, 0
-	xvpickve2gr.d	$a5, $xr0, 1
-	vinsgr2vr.w	$vr3, $a5, 1
-	xvpickve2gr.d	$a5, $xr0, 2
-	vinsgr2vr.w	$vr3, $a5, 2
-	xvpickve2gr.d	$a5, $xr0, 3
-	vinsgr2vr.w	$vr3, $a5, 3
+	xvpermi.q	$xr2, $xr1, 1
+	vpickev.w	$vr2, $vr2, $vr1
+	xvpermi.q	$xr3, $xr0, 1
+	vpickev.w	$vr3, $vr3, $vr0
 	xvpermi.q	$xr2, $xr3, 2
 	xvaddi.wu	$xr2, $xr2, 1
 	xvst	$xr2, $a3, 0

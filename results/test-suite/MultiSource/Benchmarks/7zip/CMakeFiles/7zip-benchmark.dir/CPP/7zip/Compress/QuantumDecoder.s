@@ -499,37 +499,39 @@ _ZN9NCompress8NQuantum8CDecoder4InitEv: # @_ZN9NCompress8NQuantum8CDecoder4InitE
                                         # =>This Inner Loop Header: Depth=1
 	xvsub.w	$xr4, $xr3, $xr1
 	xvsub.w	$xr5, $xr3, $xr2
-	xvpickve2gr.w	$t3, $xr5, 0
+	vpickve2gr.h	$t3, $vr5, 0
 	vinsgr2vr.h	$vr6, $t3, 0
-	xvpickve2gr.w	$t3, $xr5, 1
+	vpickve2gr.h	$t3, $vr5, 2
 	vinsgr2vr.h	$vr6, $t3, 1
-	xvpickve2gr.w	$t3, $xr5, 2
+	vpickve2gr.h	$t3, $vr5, 4
 	vinsgr2vr.h	$vr6, $t3, 2
-	xvpickve2gr.w	$t3, $xr5, 3
+	vpickve2gr.h	$t3, $vr5, 6
 	vinsgr2vr.h	$vr6, $t3, 3
-	xvpickve2gr.w	$t3, $xr5, 4
+	xvpermi.d	$xr5, $xr5, 14
+	vpickve2gr.h	$t3, $vr5, 0
 	vinsgr2vr.h	$vr6, $t3, 4
-	xvpickve2gr.w	$t3, $xr5, 5
+	vpickve2gr.h	$t3, $vr5, 2
 	vinsgr2vr.h	$vr6, $t3, 5
-	xvpickve2gr.w	$t3, $xr5, 6
+	vpickve2gr.h	$t3, $vr5, 4
 	vinsgr2vr.h	$vr6, $t3, 6
-	xvpickve2gr.w	$t3, $xr5, 7
+	vpickve2gr.h	$t3, $vr5, 6
 	vinsgr2vr.h	$vr6, $t3, 7
-	xvpickve2gr.w	$t3, $xr4, 0
+	vpickve2gr.h	$t3, $vr4, 0
 	vinsgr2vr.h	$vr5, $t3, 0
-	xvpickve2gr.w	$t3, $xr4, 1
+	vpickve2gr.h	$t3, $vr4, 2
 	vinsgr2vr.h	$vr5, $t3, 1
-	xvpickve2gr.w	$t3, $xr4, 2
+	vpickve2gr.h	$t3, $vr4, 4
 	vinsgr2vr.h	$vr5, $t3, 2
-	xvpickve2gr.w	$t3, $xr4, 3
+	vpickve2gr.h	$t3, $vr4, 6
 	vinsgr2vr.h	$vr5, $t3, 3
-	xvpickve2gr.w	$t3, $xr4, 4
+	xvpermi.d	$xr4, $xr4, 14
+	vpickve2gr.h	$t3, $vr4, 0
 	vinsgr2vr.h	$vr5, $t3, 4
-	xvpickve2gr.w	$t3, $xr4, 5
+	vpickve2gr.h	$t3, $vr4, 2
 	vinsgr2vr.h	$vr5, $t3, 5
-	xvpickve2gr.w	$t3, $xr4, 6
+	vpickve2gr.h	$t3, $vr4, 4
 	vinsgr2vr.h	$vr5, $t3, 6
-	xvpickve2gr.w	$t3, $xr4, 7
+	vpickve2gr.h	$t3, $vr4, 6
 	vinsgr2vr.h	$vr5, $t3, 7
 	xvpermi.q	$xr6, $xr5, 2
 	xvst	$xr6, $a7, 0
@@ -595,37 +597,39 @@ _ZN9NCompress8NQuantum8CDecoder4InitEv: # @_ZN9NCompress8NQuantum8CDecoder4InitE
                                         # =>This Inner Loop Header: Depth=1
 	xvsub.w	$xr4, $xr3, $xr0
 	xvsub.w	$xr5, $xr3, $xr1
-	xvpickve2gr.w	$t2, $xr5, 0
+	vpickve2gr.h	$t2, $vr5, 0
 	vinsgr2vr.h	$vr6, $t2, 0
-	xvpickve2gr.w	$t2, $xr5, 1
+	vpickve2gr.h	$t2, $vr5, 2
 	vinsgr2vr.h	$vr6, $t2, 1
-	xvpickve2gr.w	$t2, $xr5, 2
+	vpickve2gr.h	$t2, $vr5, 4
 	vinsgr2vr.h	$vr6, $t2, 2
-	xvpickve2gr.w	$t2, $xr5, 3
+	vpickve2gr.h	$t2, $vr5, 6
 	vinsgr2vr.h	$vr6, $t2, 3
-	xvpickve2gr.w	$t2, $xr5, 4
+	xvpermi.d	$xr5, $xr5, 14
+	vpickve2gr.h	$t2, $vr5, 0
 	vinsgr2vr.h	$vr6, $t2, 4
-	xvpickve2gr.w	$t2, $xr5, 5
+	vpickve2gr.h	$t2, $vr5, 2
 	vinsgr2vr.h	$vr6, $t2, 5
-	xvpickve2gr.w	$t2, $xr5, 6
+	vpickve2gr.h	$t2, $vr5, 4
 	vinsgr2vr.h	$vr6, $t2, 6
-	xvpickve2gr.w	$t2, $xr5, 7
+	vpickve2gr.h	$t2, $vr5, 6
 	vinsgr2vr.h	$vr6, $t2, 7
-	xvpickve2gr.w	$t2, $xr4, 0
+	vpickve2gr.h	$t2, $vr4, 0
 	vinsgr2vr.h	$vr5, $t2, 0
-	xvpickve2gr.w	$t2, $xr4, 1
+	vpickve2gr.h	$t2, $vr4, 2
 	vinsgr2vr.h	$vr5, $t2, 1
-	xvpickve2gr.w	$t2, $xr4, 2
+	vpickve2gr.h	$t2, $vr4, 4
 	vinsgr2vr.h	$vr5, $t2, 2
-	xvpickve2gr.w	$t2, $xr4, 3
+	vpickve2gr.h	$t2, $vr4, 6
 	vinsgr2vr.h	$vr5, $t2, 3
-	xvpickve2gr.w	$t2, $xr4, 4
+	xvpermi.d	$xr4, $xr4, 14
+	vpickve2gr.h	$t2, $vr4, 0
 	vinsgr2vr.h	$vr5, $t2, 4
-	xvpickve2gr.w	$t2, $xr4, 5
+	vpickve2gr.h	$t2, $vr4, 2
 	vinsgr2vr.h	$vr5, $t2, 5
-	xvpickve2gr.w	$t2, $xr4, 6
+	vpickve2gr.h	$t2, $vr4, 4
 	vinsgr2vr.h	$vr5, $t2, 6
-	xvpickve2gr.w	$t2, $xr4, 7
+	vpickve2gr.h	$t2, $vr4, 6
 	vinsgr2vr.h	$vr5, $t2, 7
 	xvpermi.q	$xr6, $xr5, 2
 	xvst	$xr6, $a6, 0

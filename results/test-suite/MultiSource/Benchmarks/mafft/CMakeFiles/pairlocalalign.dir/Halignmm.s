@@ -2517,7 +2517,7 @@ H__align:                               # @H__align
 .LBB2_165:
 	movgr2fr.w	$fs0, $zero
 	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 112                   # 8-byte Folded Reload
 	beqz	$a1, .LBB2_167
 	b	.LBB2_181
 .LBB2_166:                              # %._crit_edge706.loopexit
@@ -2529,7 +2529,7 @@ H__align:                               # @H__align
 	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$t8, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 112                   # 8-byte Folded Reload
 	bnez	$a1, .LBB2_181
 .LBB2_167:                              # %.preheader646
 	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
@@ -2564,24 +2564,12 @@ H__align:                               # @H__align
                                         # =>This Inner Loop Header: Depth=1
 	xvsub.d	$xr5, $xr3, $xr1
 	xvsub.d	$xr6, $xr3, $xr2
-	xvpickve2gr.d	$a7, $xr6, 0
-	vinsgr2vr.w	$vr7, $a7, 0
-	xvpickve2gr.d	$a7, $xr6, 1
-	vinsgr2vr.w	$vr7, $a7, 1
-	xvpickve2gr.d	$a7, $xr6, 2
-	vinsgr2vr.w	$vr7, $a7, 2
-	xvpickve2gr.d	$a7, $xr6, 3
-	vinsgr2vr.w	$vr7, $a7, 3
-	xvpickve2gr.d	$a7, $xr5, 0
-	vinsgr2vr.w	$vr6, $a7, 0
-	xvpickve2gr.d	$a7, $xr5, 1
-	vinsgr2vr.w	$vr6, $a7, 1
-	xvpickve2gr.d	$a7, $xr5, 2
-	vinsgr2vr.w	$vr6, $a7, 2
-	xvpickve2gr.d	$a7, $xr5, 3
-	vinsgr2vr.w	$vr6, $a7, 3
-	xvpermi.q	$xr7, $xr6, 2
-	xvmul.w	$xr5, $xr0, $xr7
+	xvpermi.q	$xr7, $xr6, 1
+	vpickev.w	$vr6, $vr7, $vr6
+	xvpermi.q	$xr7, $xr5, 1
+	vpickev.w	$vr5, $vr7, $vr5
+	xvpermi.q	$xr6, $xr5, 2
+	xvmul.w	$xr5, $xr0, $xr6
 	xvpermi.q	$xr6, $xr5, 1
 	vext2xv.d.w	$xr6, $xr6
 	xvffint.d.l	$xr6, $xr6
@@ -2768,7 +2756,7 @@ H__align:                               # @H__align
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(H__align.ijp)
 	st.d	$a0, $sp, 408                   # 8-byte Folded Spill
-	ld.d	$a0, $t0, 0
+	ld.d	$a0, $a7, 0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s0, 0

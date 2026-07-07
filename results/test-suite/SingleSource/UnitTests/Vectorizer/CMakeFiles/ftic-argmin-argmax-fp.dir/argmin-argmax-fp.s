@@ -29285,7 +29285,7 @@ _ZL19checkVectorFunctionIjfEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
                                         #   in Loop: Header=BB1_6 Depth=1
 	sub.d	$a4, $a3, $a2
 	ori	$a6, $zero, 64
-	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 176                   # 8-byte Folded Reload
 	bltu	$a4, $a6, .LBB1_79
 # %bb.69:                               # %vector.main.loop.iter.check1222
                                         #   in Loop: Header=BB1_6 Depth=1
@@ -29294,10 +29294,10 @@ _ZL19checkVectorFunctionIjfEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bgeu	$a5, $a1, .LBB1_72
 # %bb.70:                               #   in Loop: Header=BB1_6 Depth=1
 	move	$a1, $zero
-	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 176                   # 8-byte Folded Reload
 	b	.LBB1_76
 .LBB1_71:                               #   in Loop: Header=BB1_6 Depth=1
-	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 176                   # 8-byte Folded Reload
 	b	.LBB1_79
 .LBB1_72:                               # %vector.ph1223
                                         #   in Loop: Header=BB1_6 Depth=1
@@ -29310,7 +29310,7 @@ _ZL19checkVectorFunctionIjfEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	addi.d	$a6, $a3, 32
 	addi.d	$a7, $a2, 32
 	move	$t0, $a1
-	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 176                   # 8-byte Folded Reload
 	xvld	$xr6, $sp, 16                   # 32-byte Folded Reload
 	.p2align	4, , 16
 .LBB1_73:                               # %vector.body1226
@@ -29319,30 +29319,18 @@ _ZL19checkVectorFunctionIjfEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	xvand.v	$xr2, $xr0, $xr6
 	xvand.v	$xr3, $xr1, $xr6
 	xvseqi.d	$xr3, $xr3, 0
-	xvpickve2gr.d	$t1, $xr3, 0
-	vinsgr2vr.w	$vr4, $t1, 0
-	xvpickve2gr.d	$t1, $xr3, 1
-	vinsgr2vr.w	$vr4, $t1, 1
-	xvpickve2gr.d	$t1, $xr3, 2
-	vinsgr2vr.w	$vr4, $t1, 2
-	xvpickve2gr.d	$t1, $xr3, 3
-	vinsgr2vr.w	$vr4, $t1, 3
+	xvpermi.q	$xr4, $xr3, 1
+	vpickev.w	$vr3, $vr4, $vr3
 	xvseqi.d	$xr2, $xr2, 0
-	xvpickve2gr.d	$t1, $xr2, 0
-	vinsgr2vr.w	$vr3, $t1, 0
-	xvpickve2gr.d	$t1, $xr2, 1
-	vinsgr2vr.w	$vr3, $t1, 1
-	xvpickve2gr.d	$t1, $xr2, 2
-	vinsgr2vr.w	$vr3, $t1, 2
-	xvpickve2gr.d	$t1, $xr2, 3
-	vinsgr2vr.w	$vr3, $t1, 3
-	xvpermi.q	$xr4, $xr3, 2
-	xvreplgr2vr.w	$xr2, $t2
-	xvreplgr2vr.w	$xr3, $s8
-	xvbitsel.v	$xr5, $xr3, $xr2, $xr4
+	xvpermi.q	$xr4, $xr2, 1
+	vpickev.w	$vr2, $vr4, $vr2
+	xvpermi.q	$xr3, $xr2, 2
+	xvreplgr2vr.w	$xr2, $t1
+	xvreplgr2vr.w	$xr4, $s8
+	xvbitsel.v	$xr5, $xr4, $xr2, $xr3
 	xvst	$xr5, $a7, -32
 	xvst	$xr5, $a7, 0
-	xvbitsel.v	$xr2, $xr2, $xr3, $xr4
+	xvbitsel.v	$xr2, $xr2, $xr4, $xr3
 	xvst	$xr2, $a6, -32
 	xvst	$xr2, $a6, 0
 	xvaddi.du	$xr1, $xr1, 16
@@ -29375,19 +29363,13 @@ _ZL19checkVectorFunctionIjfEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
                                         # =>  This Inner Loop Header: Depth=2
 	xvand.v	$xr1, $xr0, $xr5
 	xvseqi.d	$xr1, $xr1, 0
-	xvpickve2gr.d	$a7, $xr1, 0
-	vinsgr2vr.w	$vr2, $a7, 0
-	xvpickve2gr.d	$a7, $xr1, 1
-	vinsgr2vr.w	$vr2, $a7, 1
-	xvpickve2gr.d	$a7, $xr1, 2
-	vinsgr2vr.w	$vr2, $a7, 2
-	xvpickve2gr.d	$a7, $xr1, 3
-	vinsgr2vr.w	$vr2, $a7, 3
-	vreplgr2vr.w	$vr1, $t2
+	xvpermi.q	$xr2, $xr1, 1
+	vpickev.w	$vr1, $vr2, $vr1
+	vreplgr2vr.w	$vr2, $t1
 	vreplgr2vr.w	$vr3, $s8
-	vbitsel.v	$vr4, $vr3, $vr1, $vr2
+	vbitsel.v	$vr4, $vr3, $vr2, $vr1
 	vst	$vr4, $a6, 0
-	vbitsel.v	$vr1, $vr1, $vr3, $vr2
+	vbitsel.v	$vr1, $vr2, $vr3, $vr1
 	vst	$vr1, $a5, 0
 	xvaddi.du	$xr0, $xr0, 4
 	addi.d	$a4, $a4, 4
@@ -29407,7 +29389,7 @@ _ZL19checkVectorFunctionIjfEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
                                         # =>  This Inner Loop Header: Depth=2
 	andi	$a4, $a1, 1
 	sltui	$a4, $a4, 1
-	movgr2fr.w	$fa0, $t2
+	movgr2fr.w	$fa0, $t1
 	movgr2fr.w	$fa1, $s8
 	movgr2cf	$fcc0, $a4
 	fsel	$fa2, $fa1, $fa0, $fcc0
@@ -32177,7 +32159,7 @@ _ZL19checkVectorFunctionIifEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
                                         #   in Loop: Header=BB2_6 Depth=1
 	sub.d	$a4, $a3, $a2
 	ori	$a6, $zero, 64
-	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 176                   # 8-byte Folded Reload
 	bltu	$a4, $a6, .LBB2_79
 # %bb.69:                               # %vector.main.loop.iter.check1222
                                         #   in Loop: Header=BB2_6 Depth=1
@@ -32186,10 +32168,10 @@ _ZL19checkVectorFunctionIifEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bgeu	$a5, $a1, .LBB2_72
 # %bb.70:                               #   in Loop: Header=BB2_6 Depth=1
 	move	$a1, $zero
-	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 176                   # 8-byte Folded Reload
 	b	.LBB2_76
 .LBB2_71:                               #   in Loop: Header=BB2_6 Depth=1
-	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 176                   # 8-byte Folded Reload
 	b	.LBB2_79
 .LBB2_72:                               # %vector.ph1223
                                         #   in Loop: Header=BB2_6 Depth=1
@@ -32202,7 +32184,7 @@ _ZL19checkVectorFunctionIifEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	addi.d	$a6, $a3, 32
 	addi.d	$a7, $a2, 32
 	move	$t0, $a1
-	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 176                   # 8-byte Folded Reload
 	xvld	$xr6, $sp, 16                   # 32-byte Folded Reload
 	.p2align	4, , 16
 .LBB2_73:                               # %vector.body1226
@@ -32211,30 +32193,18 @@ _ZL19checkVectorFunctionIifEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	xvand.v	$xr2, $xr0, $xr6
 	xvand.v	$xr3, $xr1, $xr6
 	xvseqi.d	$xr3, $xr3, 0
-	xvpickve2gr.d	$t1, $xr3, 0
-	vinsgr2vr.w	$vr4, $t1, 0
-	xvpickve2gr.d	$t1, $xr3, 1
-	vinsgr2vr.w	$vr4, $t1, 1
-	xvpickve2gr.d	$t1, $xr3, 2
-	vinsgr2vr.w	$vr4, $t1, 2
-	xvpickve2gr.d	$t1, $xr3, 3
-	vinsgr2vr.w	$vr4, $t1, 3
+	xvpermi.q	$xr4, $xr3, 1
+	vpickev.w	$vr3, $vr4, $vr3
 	xvseqi.d	$xr2, $xr2, 0
-	xvpickve2gr.d	$t1, $xr2, 0
-	vinsgr2vr.w	$vr3, $t1, 0
-	xvpickve2gr.d	$t1, $xr2, 1
-	vinsgr2vr.w	$vr3, $t1, 1
-	xvpickve2gr.d	$t1, $xr2, 2
-	vinsgr2vr.w	$vr3, $t1, 2
-	xvpickve2gr.d	$t1, $xr2, 3
-	vinsgr2vr.w	$vr3, $t1, 3
-	xvpermi.q	$xr4, $xr3, 2
-	xvreplgr2vr.w	$xr2, $t2
-	xvreplgr2vr.w	$xr3, $s8
-	xvbitsel.v	$xr5, $xr3, $xr2, $xr4
+	xvpermi.q	$xr4, $xr2, 1
+	vpickev.w	$vr2, $vr4, $vr2
+	xvpermi.q	$xr3, $xr2, 2
+	xvreplgr2vr.w	$xr2, $t1
+	xvreplgr2vr.w	$xr4, $s8
+	xvbitsel.v	$xr5, $xr4, $xr2, $xr3
 	xvst	$xr5, $a7, -32
 	xvst	$xr5, $a7, 0
-	xvbitsel.v	$xr2, $xr2, $xr3, $xr4
+	xvbitsel.v	$xr2, $xr2, $xr4, $xr3
 	xvst	$xr2, $a6, -32
 	xvst	$xr2, $a6, 0
 	xvaddi.du	$xr1, $xr1, 16
@@ -32267,19 +32237,13 @@ _ZL19checkVectorFunctionIifEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
                                         # =>  This Inner Loop Header: Depth=2
 	xvand.v	$xr1, $xr0, $xr5
 	xvseqi.d	$xr1, $xr1, 0
-	xvpickve2gr.d	$a7, $xr1, 0
-	vinsgr2vr.w	$vr2, $a7, 0
-	xvpickve2gr.d	$a7, $xr1, 1
-	vinsgr2vr.w	$vr2, $a7, 1
-	xvpickve2gr.d	$a7, $xr1, 2
-	vinsgr2vr.w	$vr2, $a7, 2
-	xvpickve2gr.d	$a7, $xr1, 3
-	vinsgr2vr.w	$vr2, $a7, 3
-	vreplgr2vr.w	$vr1, $t2
+	xvpermi.q	$xr2, $xr1, 1
+	vpickev.w	$vr1, $vr2, $vr1
+	vreplgr2vr.w	$vr2, $t1
 	vreplgr2vr.w	$vr3, $s8
-	vbitsel.v	$vr4, $vr3, $vr1, $vr2
+	vbitsel.v	$vr4, $vr3, $vr2, $vr1
 	vst	$vr4, $a6, 0
-	vbitsel.v	$vr1, $vr1, $vr3, $vr2
+	vbitsel.v	$vr1, $vr2, $vr3, $vr1
 	vst	$vr1, $a5, 0
 	xvaddi.du	$xr0, $xr0, 4
 	addi.d	$a4, $a4, 4
@@ -32299,7 +32263,7 @@ _ZL19checkVectorFunctionIifEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
                                         # =>  This Inner Loop Header: Depth=2
 	andi	$a4, $a1, 1
 	sltui	$a4, $a4, 1
-	movgr2fr.w	$fa0, $t2
+	movgr2fr.w	$fa0, $t1
 	movgr2fr.w	$fa1, $s8
 	movgr2cf	$fcc0, $a4
 	fsel	$fa2, $fa1, $fa0, $fcc0

@@ -185,15 +185,9 @@ main:                                   # @main
                                         # =>  This Inner Loop Header: Depth=2
 	xvaddi.du	$xr4, $xr3, 2
 	xvmul.d	$xr4, $xr4, $xr2
-	xvpickve2gr.d	$a7, $xr4, 0
-	vinsgr2vr.w	$vr5, $a7, 0
-	xvpickve2gr.d	$a7, $xr4, 1
-	vinsgr2vr.w	$vr5, $a7, 1
-	xvpickve2gr.d	$a7, $xr4, 2
-	vinsgr2vr.w	$vr5, $a7, 2
-	xvpickve2gr.d	$a7, $xr4, 3
-	vinsgr2vr.w	$vr5, $a7, 3
-	vaddi.wu	$vr4, $vr5, 2
+	xvpermi.q	$xr5, $xr4, 1
+	vpickev.w	$vr4, $vr5, $vr4
+	vaddi.wu	$vr4, $vr4, 2
 	vext2xv.du.wu	$xr4, $xr4
 	xvffint.d.lu	$xr4, $xr4
 	xvfdiv.d	$xr4, $xr4, $xr1
@@ -295,15 +289,9 @@ main:                                   # @main
                                         # =>  This Inner Loop Header: Depth=2
 	xvaddi.du	$xr4, $xr3, 2
 	xvmul.d	$xr4, $xr4, $xr2
-	xvpickve2gr.d	$t1, $xr4, 0
-	vinsgr2vr.w	$vr5, $t1, 0
-	xvpickve2gr.d	$t1, $xr4, 1
-	vinsgr2vr.w	$vr5, $t1, 1
-	xvpickve2gr.d	$t1, $xr4, 2
-	vinsgr2vr.w	$vr5, $t1, 2
-	xvpickve2gr.d	$t1, $xr4, 3
-	vinsgr2vr.w	$vr5, $t1, 3
-	vaddi.wu	$vr4, $vr5, 2
+	xvpermi.q	$xr5, $xr4, 1
+	vpickev.w	$vr4, $vr5, $vr4
+	vaddi.wu	$vr4, $vr4, 2
 	vext2xv.du.wu	$xr4, $xr4
 	xvffint.d.lu	$xr4, $xr4
 	xvfdiv.d	$xr4, $xr4, $xr1

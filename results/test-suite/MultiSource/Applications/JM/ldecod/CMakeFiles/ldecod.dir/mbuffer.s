@@ -3211,26 +3211,14 @@ init_lists:                             # @init_lists
 	xvld	$xr6, $a6, 0
 	xvseq.d	$xr3, $xr3, $xr4
 	xvxor.v	$xr3, $xr3, $xr1
-	xvpickve2gr.d	$t1, $xr3, 0
-	vinsgr2vr.w	$vr4, $t1, 0
-	xvpickve2gr.d	$t1, $xr3, 1
-	vinsgr2vr.w	$vr4, $t1, 1
-	xvpickve2gr.d	$t1, $xr3, 2
-	vinsgr2vr.w	$vr4, $t1, 2
-	xvpickve2gr.d	$t1, $xr3, 3
-	vinsgr2vr.w	$vr4, $t1, 3
-	xvseq.d	$xr3, $xr5, $xr6
-	xvxor.v	$xr3, $xr3, $xr1
-	xvpickve2gr.d	$t1, $xr3, 0
-	vinsgr2vr.w	$vr5, $t1, 0
-	xvpickve2gr.d	$t1, $xr3, 1
-	vinsgr2vr.w	$vr5, $t1, 1
-	xvpickve2gr.d	$t1, $xr3, 2
-	vinsgr2vr.w	$vr5, $t1, 2
-	xvpickve2gr.d	$t1, $xr3, 3
-	vinsgr2vr.w	$vr5, $t1, 3
-	vor.v	$vr0, $vr0, $vr4
-	vor.v	$vr2, $vr2, $vr5
+	xvpermi.q	$xr4, $xr3, 1
+	vpickev.w	$vr3, $vr4, $vr3
+	xvseq.d	$xr4, $xr5, $xr6
+	xvxor.v	$xr4, $xr4, $xr1
+	xvpermi.q	$xr5, $xr4, 1
+	vpickev.w	$vr4, $vr5, $vr4
+	vor.v	$vr0, $vr0, $vr3
+	vor.v	$vr2, $vr2, $vr4
 	addi.d	$t0, $t0, -8
 	addi.d	$a6, $a6, 64
 	addi.d	$a7, $a7, 64

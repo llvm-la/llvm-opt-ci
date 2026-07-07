@@ -13821,7 +13821,43 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_0E10_M_managerERSt9_Any_
 	.size	_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_0E10_M_managerERSt9_Any_dataRKS7_St18_Manager_operation, .Lfunc_end19-_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_0E10_M_managerERSt9_Any_dataRKS7_St18_Manager_operation
 	.cfi_endproc
                                         # -- End function
-	.p2align	5                               # -- Begin function _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS3_
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS3_
+.LCPI20_0:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	16                              # 0x10
+	.byte	20                              # 0x14
+	.byte	24                              # 0x18
+	.byte	28                              # 0x1c
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.text
+	.p2align	5
 	.type	_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS3_,@function
 _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS3_: # @"_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS3_"
 .Lfunc_begin11:
@@ -13883,28 +13919,16 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_1E9_M_invokeERKSt9_Any_d
 	andi	$a1, $a3, 255
 	beqz	$a1, .LBB20_7
 # %bb.6:                                # %.split.loop.exit.i.i.i
-	xvpickve2gr.w	$a1, $xr0, 0
-	vinsgr2vr.b	$vr1, $a1, 0
-	xvpickve2gr.w	$a1, $xr0, 1
-	vinsgr2vr.b	$vr1, $a1, 1
-	xvpickve2gr.w	$a1, $xr0, 2
-	vinsgr2vr.b	$vr1, $a1, 2
-	xvpickve2gr.w	$a1, $xr0, 3
-	vinsgr2vr.b	$vr1, $a1, 3
-	xvpickve2gr.w	$a1, $xr0, 4
-	vinsgr2vr.b	$vr1, $a1, 4
-	xvpickve2gr.w	$a1, $xr0, 5
-	vinsgr2vr.b	$vr1, $a1, 5
-	xvpickve2gr.w	$a1, $xr0, 6
-	vinsgr2vr.b	$vr1, $a1, 6
-	xvpickve2gr.w	$a1, $xr0, 7
-	vinsgr2vr.b	$vr1, $a1, 7
+	pcalau12i	$a1, %pc_hi20(.LCPI20_0)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI20_0)
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.b	$xr0, $xr2, $xr0, $xr1
 	lu12i.w	$a1, 20576
 	ori	$a1, $a1, 1800
 	lu32i.d	$a1, 131844
 	lu52i.d	$a1, $a1, 16
-	vreplgr2vr.d	$vr0, $a1
-	vand.v	$vr0, $vr1, $vr0
+	vreplgr2vr.d	$vr1, $a1
+	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 2
@@ -14043,7 +14067,43 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_1E10_M_managerERSt9_Any_
 	.size	_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_1E10_M_managerERSt9_Any_dataRKS7_St18_Manager_operation, .Lfunc_end21-_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_1E10_M_managerERSt9_Any_dataRKS7_St18_Manager_operation
 	.cfi_endproc
                                         # -- End function
-	.p2align	5                               # -- Begin function _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_2E9_M_invokeERKSt9_Any_dataOS3_
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_2E9_M_invokeERKSt9_Any_dataOS3_
+.LCPI22_0:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	16                              # 0x10
+	.byte	20                              # 0x14
+	.byte	24                              # 0x18
+	.byte	28                              # 0x1c
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.text
+	.p2align	5
 	.type	_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_2E9_M_invokeERKSt9_Any_dataOS3_,@function
 _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_2E9_M_invokeERKSt9_Any_dataOS3_: # @"_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_2E9_M_invokeERKSt9_Any_dataOS3_"
 .Lfunc_begin12:
@@ -14105,28 +14165,16 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_2E9_M_invokeERKSt9_Any_d
 	andi	$a1, $a3, 255
 	beqz	$a1, .LBB22_7
 # %bb.6:                                # %.split.loop.exit.i.i.i
-	xvpickve2gr.w	$a1, $xr0, 0
-	vinsgr2vr.b	$vr1, $a1, 0
-	xvpickve2gr.w	$a1, $xr0, 1
-	vinsgr2vr.b	$vr1, $a1, 1
-	xvpickve2gr.w	$a1, $xr0, 2
-	vinsgr2vr.b	$vr1, $a1, 2
-	xvpickve2gr.w	$a1, $xr0, 3
-	vinsgr2vr.b	$vr1, $a1, 3
-	xvpickve2gr.w	$a1, $xr0, 4
-	vinsgr2vr.b	$vr1, $a1, 4
-	xvpickve2gr.w	$a1, $xr0, 5
-	vinsgr2vr.b	$vr1, $a1, 5
-	xvpickve2gr.w	$a1, $xr0, 6
-	vinsgr2vr.b	$vr1, $a1, 6
-	xvpickve2gr.w	$a1, $xr0, 7
-	vinsgr2vr.b	$vr1, $a1, 7
+	pcalau12i	$a1, %pc_hi20(.LCPI22_0)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI22_0)
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.b	$xr0, $xr2, $xr0, $xr1
 	lu12i.w	$a1, 20576
 	ori	$a1, $a1, 1800
 	lu32i.d	$a1, 131844
 	lu52i.d	$a1, $a1, 16
-	vreplgr2vr.d	$vr0, $a1
-	vand.v	$vr0, $vr1, $vr0
+	vreplgr2vr.d	$vr1, $a1
+	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 2
@@ -14265,7 +14313,43 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_2E10_M_managerERSt9_Any_
 	.size	_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_2E10_M_managerERSt9_Any_dataRKS7_St18_Manager_operation, .Lfunc_end23-_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_2E10_M_managerERSt9_Any_dataRKS7_St18_Manager_operation
 	.cfi_endproc
                                         # -- End function
-	.p2align	5                               # -- Begin function _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS3_
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS3_
+.LCPI24_0:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	16                              # 0x10
+	.byte	20                              # 0x14
+	.byte	24                              # 0x18
+	.byte	28                              # 0x1c
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.text
+	.p2align	5
 	.type	_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS3_,@function
 _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS3_: # @"_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS3_"
 .Lfunc_begin13:
@@ -14316,9 +14400,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_3E9_M_invokeERKSt9_Any_d
 	xvld	$xr1, $a3, 32
 	xvld	$xr4, $a3, 64
 	xvld	$xr5, $a3, 96
-	xvseqi.w	$xr2, $xr0, 0
-	xvseqi.w	$xr3, $xr1, 0
-	xvor.v	$xr0, $xr2, $xr3
+	xvseqi.w	$xr3, $xr0, 0
+	xvseqi.w	$xr2, $xr1, 0
+	xvor.v	$xr0, $xr3, $xr2
 	xvseqi.w	$xr1, $xr4, 0
 	xvor.v	$xr4, $xr0, $xr1
 	xvseqi.w	$xr0, $xr5, 0
@@ -14337,113 +14421,59 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_3E9_M_invokeERKSt9_Any_d
 	andi	$a1, $a3, 255
 	beqz	$a1, .LBB24_7
 # %bb.6:                                # %.split.loop.exit.i.i.i
-	xvpickve2gr.w	$a1, $xr2, 0
-	vinsgr2vr.b	$vr4, $a1, 0
-	xvpickve2gr.w	$a1, $xr2, 1
-	vinsgr2vr.b	$vr4, $a1, 1
-	xvpickve2gr.w	$a1, $xr2, 2
-	vinsgr2vr.b	$vr4, $a1, 2
-	xvpickve2gr.w	$a1, $xr2, 3
-	vinsgr2vr.b	$vr4, $a1, 3
-	xvpickve2gr.w	$a1, $xr2, 4
-	vinsgr2vr.b	$vr4, $a1, 4
-	xvpickve2gr.w	$a1, $xr2, 5
-	vinsgr2vr.b	$vr4, $a1, 5
-	xvpickve2gr.w	$a1, $xr2, 6
-	vinsgr2vr.b	$vr4, $a1, 6
-	xvpickve2gr.w	$a1, $xr2, 7
-	vinsgr2vr.b	$vr4, $a1, 7
+	pcalau12i	$a1, %pc_hi20(.LCPI24_0)
+	xvld	$xr4, $a1, %pc_lo12(.LCPI24_0)
+	xvpermi.d	$xr5, $xr3, 78
+	xvshuf.b	$xr3, $xr5, $xr3, $xr4
 	lu12i.w	$a1, 20576
 	ori	$a1, $a1, 1800
 	lu32i.d	$a1, 131844
 	lu52i.d	$a1, $a1, 16
-	vreplgr2vr.d	$vr2, $a1
-	vand.v	$vr4, $vr4, $vr2
-	vbsrl.v	$vr5, $vr4, 4
-	vmax.bu	$vr4, $vr5, $vr4
-	vbsrl.v	$vr5, $vr4, 2
-	vmax.bu	$vr4, $vr5, $vr4
-	vbsrl.v	$vr5, $vr4, 1
-	vmax.bu	$vr4, $vr5, $vr4
-	vpickve2gr.b	$a1, $vr4, 0
-	ori	$a3, $zero, 8
-	sub.d	$a1, $a3, $a1
+	vreplgr2vr.d	$vr5, $a1
+	vand.v	$vr3, $vr3, $vr5
+	vbsrl.v	$vr6, $vr3, 4
+	vmax.bu	$vr3, $vr6, $vr3
+	vbsrl.v	$vr6, $vr3, 2
+	vmax.bu	$vr3, $vr6, $vr3
+	vbsrl.v	$vr6, $vr3, 1
+	vmax.bu	$vr3, $vr6, $vr3
+	vpickve2gr.b	$a1, $vr3, 0
+	ori	$a2, $zero, 8
+	sub.d	$a1, $a2, $a1
 	andi	$a1, $a1, 255
-	addi.d	$a2, $a1, -8
-	sltui	$a2, $a2, 1
-	xvpickve2gr.w	$a4, $xr3, 0
-	vinsgr2vr.b	$vr4, $a4, 0
-	xvpickve2gr.w	$a4, $xr3, 1
-	vinsgr2vr.b	$vr4, $a4, 1
-	xvpickve2gr.w	$a4, $xr3, 2
-	vinsgr2vr.b	$vr4, $a4, 2
-	xvpickve2gr.w	$a4, $xr3, 3
-	vinsgr2vr.b	$vr4, $a4, 3
-	xvpickve2gr.w	$a4, $xr3, 4
-	vinsgr2vr.b	$vr4, $a4, 4
-	xvpickve2gr.w	$a4, $xr3, 5
-	vinsgr2vr.b	$vr4, $a4, 5
-	xvpickve2gr.w	$a4, $xr3, 6
-	vinsgr2vr.b	$vr4, $a4, 6
-	xvpickve2gr.w	$a4, $xr3, 7
-	vinsgr2vr.b	$vr4, $a4, 7
-	vand.v	$vr3, $vr4, $vr2
-	vbsrl.v	$vr4, $vr3, 4
-	vmax.bu	$vr3, $vr4, $vr3
-	vbsrl.v	$vr4, $vr3, 2
-	vmax.bu	$vr3, $vr4, $vr3
-	vbsrl.v	$vr4, $vr3, 1
-	vmax.bu	$vr3, $vr4, $vr3
-	vpickve2gr.b	$a4, $vr3, 0
-	sub.d	$a4, $a3, $a4
+	addi.d	$a3, $a1, -8
+	sltui	$a3, $a3, 1
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.b	$xr2, $xr3, $xr2, $xr4
+	vand.v	$vr2, $vr2, $vr5
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 2
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 1
+	vmax.bu	$vr2, $vr3, $vr2
+	vpickve2gr.b	$a4, $vr2, 0
+	sub.d	$a4, $a2, $a4
 	andi	$a4, $a4, 255
 	addi.d	$a5, $a4, -8
 	sltui	$a5, $a5, 1
-	xvpickve2gr.w	$a6, $xr1, 0
-	vinsgr2vr.b	$vr3, $a6, 0
-	xvpickve2gr.w	$a6, $xr1, 1
-	vinsgr2vr.b	$vr3, $a6, 1
-	xvpickve2gr.w	$a6, $xr1, 2
-	vinsgr2vr.b	$vr3, $a6, 2
-	xvpickve2gr.w	$a6, $xr1, 3
-	vinsgr2vr.b	$vr3, $a6, 3
-	xvpickve2gr.w	$a6, $xr1, 4
-	vinsgr2vr.b	$vr3, $a6, 4
-	xvpickve2gr.w	$a6, $xr1, 5
-	vinsgr2vr.b	$vr3, $a6, 5
-	xvpickve2gr.w	$a6, $xr1, 6
-	vinsgr2vr.b	$vr3, $a6, 6
-	xvpickve2gr.w	$a6, $xr1, 7
-	vinsgr2vr.b	$vr3, $a6, 7
-	vand.v	$vr1, $vr3, $vr2
-	vbsrl.v	$vr3, $vr1, 4
-	vmax.bu	$vr1, $vr3, $vr1
-	vbsrl.v	$vr3, $vr1, 2
-	vmax.bu	$vr1, $vr3, $vr1
-	vbsrl.v	$vr3, $vr1, 1
-	vmax.bu	$vr1, $vr3, $vr1
+	xvpermi.d	$xr2, $xr1, 78
+	xvshuf.b	$xr1, $xr2, $xr1, $xr4
+	vand.v	$vr1, $vr1, $vr5
+	vbsrl.v	$vr2, $vr1, 4
+	vmax.bu	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 2
+	vmax.bu	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 1
+	vmax.bu	$vr1, $vr2, $vr1
 	vpickve2gr.b	$a6, $vr1, 0
-	sub.d	$a6, $a3, $a6
+	sub.d	$a6, $a2, $a6
 	andi	$a6, $a6, 255
 	addi.d	$a7, $a6, -8
 	sltui	$a7, $a7, 1
-	xvpickve2gr.w	$t0, $xr0, 0
-	vinsgr2vr.b	$vr1, $t0, 0
-	xvpickve2gr.w	$t0, $xr0, 1
-	vinsgr2vr.b	$vr1, $t0, 1
-	xvpickve2gr.w	$t0, $xr0, 2
-	vinsgr2vr.b	$vr1, $t0, 2
-	xvpickve2gr.w	$t0, $xr0, 3
-	vinsgr2vr.b	$vr1, $t0, 3
-	xvpickve2gr.w	$t0, $xr0, 4
-	vinsgr2vr.b	$vr1, $t0, 4
-	xvpickve2gr.w	$t0, $xr0, 5
-	vinsgr2vr.b	$vr1, $t0, 5
-	xvpickve2gr.w	$t0, $xr0, 6
-	vinsgr2vr.b	$vr1, $t0, 6
-	xvpickve2gr.w	$t0, $xr0, 7
-	vinsgr2vr.b	$vr1, $t0, 7
-	vand.v	$vr0, $vr1, $vr2
+	xvpermi.d	$xr1, $xr0, 78
+	xvshuf.b	$xr0, $xr1, $xr0, $xr4
+	vand.v	$vr0, $vr0, $vr5
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 2
@@ -14451,20 +14481,20 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_3E9_M_invokeERKSt9_Any_d
 	vbsrl.v	$vr1, $vr0, 1
 	vmax.bu	$vr0, $vr1, $vr0
 	vpickve2gr.b	$t0, $vr0, 0
-	sub.d	$a3, $a3, $t0
-	andi	$a3, $a3, 255
-	addi.d	$a3, $a3, 24
+	sub.d	$a2, $a2, $t0
+	andi	$a2, $a2, 255
+	addi.d	$a2, $a2, 24
 	addi.d	$a6, $a6, 16
 	masknez	$a6, $a6, $a7
-	maskeqz	$a3, $a3, $a7
-	or	$a3, $a3, $a6
+	maskeqz	$a2, $a2, $a7
+	or	$a2, $a2, $a6
 	addi.d	$a4, $a4, 8
-	maskeqz	$a3, $a3, $a5
+	maskeqz	$a2, $a2, $a5
 	masknez	$a4, $a4, $a5
-	or	$a3, $a3, $a4
-	maskeqz	$a3, $a3, $a2
-	masknez	$a1, $a1, $a2
-	or	$a1, $a3, $a1
+	or	$a2, $a2, $a4
+	maskeqz	$a2, $a2, $a3
+	masknez	$a1, $a1, $a3
+	or	$a1, $a2, $a1
 	sub.w	$fp, $a1, $a0
 	ld.d	$a3, $sp, 24
 	bnez	$a3, .LBB24_8
@@ -14979,7 +15009,43 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_5E10_M_managerERSt9_Any_
 	.size	_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_5E10_M_managerERSt9_Any_dataRKS7_St18_Manager_operation, .Lfunc_end29-_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_5E10_M_managerERSt9_Any_dataRKS7_St18_Manager_operation
 	.cfi_endproc
                                         # -- End function
-	.p2align	5                               # -- Begin function _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_6E9_M_invokeERKSt9_Any_dataOS3_
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_6E9_M_invokeERKSt9_Any_dataOS3_
+.LCPI30_0:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	16                              # 0x10
+	.byte	20                              # 0x14
+	.byte	24                              # 0x18
+	.byte	28                              # 0x1c
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.text
+	.p2align	5
 	.type	_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_6E9_M_invokeERKSt9_Any_dataOS3_,@function
 _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_6E9_M_invokeERKSt9_Any_dataOS3_: # @"_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_6E9_M_invokeERKSt9_Any_dataOS3_"
 .Lfunc_begin16:
@@ -15041,28 +15107,16 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_6E9_M_invokeERKSt9_Any_d
 	andi	$a1, $a3, 255
 	beqz	$a1, .LBB30_7
 # %bb.6:                                # %vector.early.exit
-	xvpickve2gr.w	$a1, $xr0, 0
-	vinsgr2vr.b	$vr1, $a1, 0
-	xvpickve2gr.w	$a1, $xr0, 1
-	vinsgr2vr.b	$vr1, $a1, 1
-	xvpickve2gr.w	$a1, $xr0, 2
-	vinsgr2vr.b	$vr1, $a1, 2
-	xvpickve2gr.w	$a1, $xr0, 3
-	vinsgr2vr.b	$vr1, $a1, 3
-	xvpickve2gr.w	$a1, $xr0, 4
-	vinsgr2vr.b	$vr1, $a1, 4
-	xvpickve2gr.w	$a1, $xr0, 5
-	vinsgr2vr.b	$vr1, $a1, 5
-	xvpickve2gr.w	$a1, $xr0, 6
-	vinsgr2vr.b	$vr1, $a1, 6
-	xvpickve2gr.w	$a1, $xr0, 7
-	vinsgr2vr.b	$vr1, $a1, 7
+	pcalau12i	$a1, %pc_hi20(.LCPI30_0)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI30_0)
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.b	$xr0, $xr2, $xr0, $xr1
 	lu12i.w	$a1, 20576
 	ori	$a1, $a1, 1800
 	lu32i.d	$a1, 131844
 	lu52i.d	$a1, $a1, 16
-	vreplgr2vr.d	$vr0, $a1
-	vand.v	$vr0, $vr1, $vr0
+	vreplgr2vr.d	$vr1, $a1
+	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 2
@@ -15203,7 +15257,43 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_6E10_M_managerERSt9_Any_
 	.size	_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_6E10_M_managerERSt9_Any_dataRKS7_St18_Manager_operation, .Lfunc_end31-_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_6E10_M_managerERSt9_Any_dataRKS7_St18_Manager_operation
 	.cfi_endproc
                                         # -- End function
-	.p2align	5                               # -- Begin function _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS3_
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS3_
+.LCPI32_0:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	16                              # 0x10
+	.byte	20                              # 0x14
+	.byte	24                              # 0x18
+	.byte	28                              # 0x1c
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.text
+	.p2align	5
 	.type	_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS3_,@function
 _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS3_: # @"_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS3_"
 .Lfunc_begin17:
@@ -15265,28 +15355,16 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_7E9_M_invokeERKSt9_Any_d
 	andi	$a1, $a3, 255
 	beqz	$a1, .LBB32_7
 # %bb.6:                                # %vector.early.exit
-	xvpickve2gr.w	$a1, $xr0, 0
-	vinsgr2vr.b	$vr1, $a1, 0
-	xvpickve2gr.w	$a1, $xr0, 1
-	vinsgr2vr.b	$vr1, $a1, 1
-	xvpickve2gr.w	$a1, $xr0, 2
-	vinsgr2vr.b	$vr1, $a1, 2
-	xvpickve2gr.w	$a1, $xr0, 3
-	vinsgr2vr.b	$vr1, $a1, 3
-	xvpickve2gr.w	$a1, $xr0, 4
-	vinsgr2vr.b	$vr1, $a1, 4
-	xvpickve2gr.w	$a1, $xr0, 5
-	vinsgr2vr.b	$vr1, $a1, 5
-	xvpickve2gr.w	$a1, $xr0, 6
-	vinsgr2vr.b	$vr1, $a1, 6
-	xvpickve2gr.w	$a1, $xr0, 7
-	vinsgr2vr.b	$vr1, $a1, 7
+	pcalau12i	$a1, %pc_hi20(.LCPI32_0)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI32_0)
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.b	$xr0, $xr2, $xr0, $xr1
 	lu12i.w	$a1, 20576
 	ori	$a1, $a1, 1800
 	lu32i.d	$a1, 131844
 	lu52i.d	$a1, $a1, 16
-	vreplgr2vr.d	$vr0, $a1
-	vand.v	$vr0, $vr1, $vr0
+	vreplgr2vr.d	$vr1, $a1
+	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 2
@@ -15427,7 +15505,43 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_7E10_M_managerERSt9_Any_
 	.size	_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_7E10_M_managerERSt9_Any_dataRKS7_St18_Manager_operation, .Lfunc_end33-_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_7E10_M_managerERSt9_Any_dataRKS7_St18_Manager_operation
 	.cfi_endproc
                                         # -- End function
-	.p2align	5                               # -- Begin function _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_8E9_M_invokeERKSt9_Any_dataOS3_
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_8E9_M_invokeERKSt9_Any_dataOS3_
+.LCPI34_0:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	16                              # 0x10
+	.byte	20                              # 0x14
+	.byte	24                              # 0x18
+	.byte	28                              # 0x1c
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.text
+	.p2align	5
 	.type	_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_8E9_M_invokeERKSt9_Any_dataOS3_,@function
 _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_8E9_M_invokeERKSt9_Any_dataOS3_: # @"_ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_8E9_M_invokeERKSt9_Any_dataOS3_"
 .Lfunc_begin18:
@@ -15477,14 +15591,14 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_8E9_M_invokeERKSt9_Any_d
 	xvldx	$xr0, $a4, $fp
 	xvld	$xr1, $a3, 32
 	xvld	$xr2, $a3, 64
-	xvld	$xr4, $a3, 96
+	xvld	$xr3, $a3, 96
 	xvseqi.w	$xr0, $xr0, 0
 	xvseqi.w	$xr1, $xr1, 0
-	xvor.v	$xr5, $xr0, $xr1
-	xvseqi.w	$xr3, $xr2, 0
-	xvor.v	$xr5, $xr5, $xr3
-	xvseqi.w	$xr2, $xr4, 0
-	xvor.v	$xr4, $xr5, $xr2
+	xvor.v	$xr4, $xr0, $xr1
+	xvseqi.w	$xr2, $xr2, 0
+	xvor.v	$xr4, $xr4, $xr2
+	xvseqi.w	$xr3, $xr3, 0
+	xvor.v	$xr4, $xr4, $xr3
 	xvmskltz.w	$xr4, $xr4
 	xvpickve2gr.wu	$a3, $xr4, 0
 	xvpickve2gr.wu	$a4, $xr4, 4
@@ -15499,120 +15613,66 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_8E9_M_invokeERKSt9_Any_d
 	andi	$a1, $a3, 255
 	beqz	$a1, .LBB34_7
 # %bb.6:                                # %vector.early.exit
-	xvpickve2gr.w	$a1, $xr2, 0
-	vinsgr2vr.b	$vr4, $a1, 0
-	xvpickve2gr.w	$a1, $xr2, 1
-	vinsgr2vr.b	$vr4, $a1, 1
-	xvpickve2gr.w	$a1, $xr2, 2
-	vinsgr2vr.b	$vr4, $a1, 2
-	xvpickve2gr.w	$a1, $xr2, 3
-	vinsgr2vr.b	$vr4, $a1, 3
-	xvpickve2gr.w	$a1, $xr2, 4
-	vinsgr2vr.b	$vr4, $a1, 4
-	xvpickve2gr.w	$a1, $xr2, 5
-	vinsgr2vr.b	$vr4, $a1, 5
-	xvpickve2gr.w	$a1, $xr2, 6
-	vinsgr2vr.b	$vr4, $a1, 6
-	xvpickve2gr.w	$a1, $xr2, 7
-	vinsgr2vr.b	$vr4, $a1, 7
+	pcalau12i	$a1, %pc_hi20(.LCPI34_0)
+	xvld	$xr4, $a1, %pc_lo12(.LCPI34_0)
+	xvpermi.d	$xr5, $xr3, 78
+	xvshuf.b	$xr3, $xr5, $xr3, $xr4
 	lu12i.w	$a1, 20576
 	ori	$a1, $a1, 1800
 	lu32i.d	$a1, 131844
 	lu52i.d	$a1, $a1, 16
-	vreplgr2vr.d	$vr2, $a1
-	vand.v	$vr4, $vr4, $vr2
-	vbsrl.v	$vr5, $vr4, 4
-	vmax.bu	$vr4, $vr5, $vr4
-	vbsrl.v	$vr5, $vr4, 2
-	vmax.bu	$vr4, $vr5, $vr4
-	vbsrl.v	$vr5, $vr4, 1
-	vmax.bu	$vr4, $vr5, $vr4
-	vpickve2gr.b	$a2, $vr4, 0
-	ori	$a1, $zero, 8
-	sub.d	$a2, $a1, $a2
-	andi	$a2, $a2, 255
-	addi.d	$a2, $a2, 24
-	xvpickve2gr.w	$a3, $xr3, 0
-	vinsgr2vr.b	$vr4, $a3, 0
-	xvpickve2gr.w	$a3, $xr3, 1
-	vinsgr2vr.b	$vr4, $a3, 1
-	xvpickve2gr.w	$a3, $xr3, 2
-	vinsgr2vr.b	$vr4, $a3, 2
-	xvpickve2gr.w	$a3, $xr3, 3
-	vinsgr2vr.b	$vr4, $a3, 3
-	xvpickve2gr.w	$a3, $xr3, 4
-	vinsgr2vr.b	$vr4, $a3, 4
-	xvpickve2gr.w	$a3, $xr3, 5
-	vinsgr2vr.b	$vr4, $a3, 5
-	xvpickve2gr.w	$a3, $xr3, 6
-	vinsgr2vr.b	$vr4, $a3, 6
-	xvpickve2gr.w	$a3, $xr3, 7
-	vinsgr2vr.b	$vr4, $a3, 7
-	vand.v	$vr3, $vr4, $vr2
-	vbsrl.v	$vr4, $vr3, 4
-	vmax.bu	$vr3, $vr4, $vr3
-	vbsrl.v	$vr4, $vr3, 2
-	vmax.bu	$vr3, $vr4, $vr3
-	vbsrl.v	$vr4, $vr3, 1
-	vmax.bu	$vr3, $vr4, $vr3
-	vpickve2gr.b	$a3, $vr3, 0
-	sub.d	$a3, $a1, $a3
+	vreplgr2vr.d	$vr5, $a1
+	vand.v	$vr3, $vr3, $vr5
+	vbsrl.v	$vr6, $vr3, 4
+	vmax.bu	$vr3, $vr6, $vr3
+	vbsrl.v	$vr6, $vr3, 2
+	vmax.bu	$vr3, $vr6, $vr3
+	vbsrl.v	$vr6, $vr3, 1
+	vmax.bu	$vr3, $vr6, $vr3
+	vpickve2gr.b	$a1, $vr3, 0
+	ori	$a2, $zero, 8
+	sub.d	$a1, $a2, $a1
+	andi	$a1, $a1, 255
+	addi.d	$a1, $a1, 24
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.b	$xr2, $xr3, $xr2, $xr4
+	vand.v	$vr2, $vr2, $vr5
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 2
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 1
+	vmax.bu	$vr2, $vr3, $vr2
+	vpickve2gr.b	$a3, $vr2, 0
+	sub.d	$a3, $a2, $a3
 	andi	$a3, $a3, 255
 	addi.d	$a4, $a3, 16
 	addi.d	$a3, $a3, -8
 	sltui	$a3, $a3, 1
 	masknez	$a4, $a4, $a3
-	maskeqz	$a2, $a2, $a3
-	or	$a2, $a2, $a4
-	xvpickve2gr.w	$a3, $xr1, 0
-	vinsgr2vr.b	$vr3, $a3, 0
-	xvpickve2gr.w	$a3, $xr1, 1
-	vinsgr2vr.b	$vr3, $a3, 1
-	xvpickve2gr.w	$a3, $xr1, 2
-	vinsgr2vr.b	$vr3, $a3, 2
-	xvpickve2gr.w	$a3, $xr1, 3
-	vinsgr2vr.b	$vr3, $a3, 3
-	xvpickve2gr.w	$a3, $xr1, 4
-	vinsgr2vr.b	$vr3, $a3, 4
-	xvpickve2gr.w	$a3, $xr1, 5
-	vinsgr2vr.b	$vr3, $a3, 5
-	xvpickve2gr.w	$a3, $xr1, 6
-	vinsgr2vr.b	$vr3, $a3, 6
-	xvpickve2gr.w	$a3, $xr1, 7
-	vinsgr2vr.b	$vr3, $a3, 7
-	vand.v	$vr1, $vr3, $vr2
-	vbsrl.v	$vr3, $vr1, 4
-	vmax.bu	$vr1, $vr3, $vr1
-	vbsrl.v	$vr3, $vr1, 2
-	vmax.bu	$vr1, $vr3, $vr1
-	vbsrl.v	$vr3, $vr1, 1
-	vmax.bu	$vr1, $vr3, $vr1
+	maskeqz	$a1, $a1, $a3
+	or	$a1, $a1, $a4
+	xvpermi.d	$xr2, $xr1, 78
+	xvshuf.b	$xr1, $xr2, $xr1, $xr4
+	vand.v	$vr1, $vr1, $vr5
+	vbsrl.v	$vr2, $vr1, 4
+	vmax.bu	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 2
+	vmax.bu	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 1
+	vmax.bu	$vr1, $vr2, $vr1
 	vpickve2gr.b	$a3, $vr1, 0
-	sub.d	$a3, $a1, $a3
+	sub.d	$a3, $a2, $a3
 	andi	$a3, $a3, 255
 	addi.d	$a4, $a3, 8
 	addi.d	$a3, $a3, -8
 	sltui	$a3, $a3, 1
-	maskeqz	$a2, $a2, $a3
+	maskeqz	$a1, $a1, $a3
 	masknez	$a3, $a4, $a3
-	or	$a2, $a2, $a3
-	xvpickve2gr.w	$a3, $xr0, 0
-	vinsgr2vr.b	$vr1, $a3, 0
-	xvpickve2gr.w	$a3, $xr0, 1
-	vinsgr2vr.b	$vr1, $a3, 1
-	xvpickve2gr.w	$a3, $xr0, 2
-	vinsgr2vr.b	$vr1, $a3, 2
-	xvpickve2gr.w	$a3, $xr0, 3
-	vinsgr2vr.b	$vr1, $a3, 3
-	xvpickve2gr.w	$a3, $xr0, 4
-	vinsgr2vr.b	$vr1, $a3, 4
-	xvpickve2gr.w	$a3, $xr0, 5
-	vinsgr2vr.b	$vr1, $a3, 5
-	xvpickve2gr.w	$a3, $xr0, 6
-	vinsgr2vr.b	$vr1, $a3, 6
-	xvpickve2gr.w	$a3, $xr0, 7
-	vinsgr2vr.b	$vr1, $a3, 7
-	vand.v	$vr0, $vr1, $vr2
+	or	$a1, $a1, $a3
+	xvpermi.d	$xr1, $xr0, 78
+	xvshuf.b	$xr0, $xr1, $xr0, $xr4
+	vand.v	$vr0, $vr0, $vr5
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 2
@@ -15620,13 +15680,13 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_8E9_M_invokeERKSt9_Any_d
 	vbsrl.v	$vr1, $vr0, 1
 	vmax.bu	$vr0, $vr1, $vr0
 	vpickve2gr.b	$a3, $vr0, 0
-	sub.d	$a1, $a1, $a3
-	andi	$a1, $a1, 255
-	addi.d	$a3, $a1, -8
+	sub.d	$a2, $a2, $a3
+	andi	$a2, $a2, 255
+	addi.d	$a3, $a2, -8
 	sltui	$a3, $a3, 1
-	maskeqz	$a2, $a2, $a3
-	masknez	$a1, $a1, $a3
-	or	$a1, $a2, $a1
+	maskeqz	$a1, $a1, $a3
+	masknez	$a2, $a2, $a3
+	or	$a1, $a1, $a2
 	sub.d	$a0, $a1, $a0
 	alsl.d	$a0, $a0, $a0, 1
 	addi.w	$fp, $a0, 2
@@ -16294,22 +16354,10 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj512ELj3E
 	.p2align	4, , 16
 .LBB43_4:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a6, $xr1, 0
-	vinsgr2vr.w	$vr3, $a6, 0
-	xvpickve2gr.d	$a6, $xr1, 1
-	vinsgr2vr.w	$vr3, $a6, 1
-	xvpickve2gr.d	$a6, $xr1, 2
-	vinsgr2vr.w	$vr3, $a6, 2
-	xvpickve2gr.d	$a6, $xr1, 3
-	vinsgr2vr.w	$vr3, $a6, 3
-	xvpickve2gr.d	$a6, $xr0, 0
-	vinsgr2vr.w	$vr4, $a6, 0
-	xvpickve2gr.d	$a6, $xr0, 1
-	vinsgr2vr.w	$vr4, $a6, 1
-	xvpickve2gr.d	$a6, $xr0, 2
-	vinsgr2vr.w	$vr4, $a6, 2
-	xvpickve2gr.d	$a6, $xr0, 3
-	vinsgr2vr.w	$vr4, $a6, 3
+	xvpermi.q	$xr3, $xr1, 1
+	vpickev.w	$vr3, $vr3, $vr1
+	xvpermi.q	$xr4, $xr0, 1
+	vpickev.w	$vr4, $vr4, $vr0
 	xvpermi.q	$xr3, $xr4, 2
 	xvaddi.wu	$xr3, $xr3, 1
 	xvstx	$xr3, $a4, $a3
@@ -16469,22 +16517,10 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj512ELj3E
 	.p2align	4, , 16
 .LBB46_4:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a5, $xr1, 0
-	vinsgr2vr.w	$vr3, $a5, 0
-	xvpickve2gr.d	$a5, $xr1, 1
-	vinsgr2vr.w	$vr3, $a5, 1
-	xvpickve2gr.d	$a5, $xr1, 2
-	vinsgr2vr.w	$vr3, $a5, 2
-	xvpickve2gr.d	$a5, $xr1, 3
-	vinsgr2vr.w	$vr3, $a5, 3
-	xvpickve2gr.d	$a5, $xr0, 0
-	vinsgr2vr.w	$vr4, $a5, 0
-	xvpickve2gr.d	$a5, $xr0, 1
-	vinsgr2vr.w	$vr4, $a5, 1
-	xvpickve2gr.d	$a5, $xr0, 2
-	vinsgr2vr.w	$vr4, $a5, 2
-	xvpickve2gr.d	$a5, $xr0, 3
-	vinsgr2vr.w	$vr4, $a5, 3
+	xvpermi.q	$xr3, $xr1, 1
+	vpickev.w	$vr3, $vr3, $vr1
+	xvpermi.q	$xr4, $xr0, 1
+	vpickev.w	$vr4, $vr4, $vr0
 	xvpermi.q	$xr3, $xr4, 2
 	xvaddi.wu	$xr3, $xr3, 1
 	xvstx	$xr3, $a0, $a3
@@ -20290,22 +20326,10 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj512ELj17
 	.p2align	4, , 16
 .LBB82_4:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a6, $xr1, 0
-	vinsgr2vr.w	$vr3, $a6, 0
-	xvpickve2gr.d	$a6, $xr1, 1
-	vinsgr2vr.w	$vr3, $a6, 1
-	xvpickve2gr.d	$a6, $xr1, 2
-	vinsgr2vr.w	$vr3, $a6, 2
-	xvpickve2gr.d	$a6, $xr1, 3
-	vinsgr2vr.w	$vr3, $a6, 3
-	xvpickve2gr.d	$a6, $xr0, 0
-	vinsgr2vr.w	$vr4, $a6, 0
-	xvpickve2gr.d	$a6, $xr0, 1
-	vinsgr2vr.w	$vr4, $a6, 1
-	xvpickve2gr.d	$a6, $xr0, 2
-	vinsgr2vr.w	$vr4, $a6, 2
-	xvpickve2gr.d	$a6, $xr0, 3
-	vinsgr2vr.w	$vr4, $a6, 3
+	xvpermi.q	$xr3, $xr1, 1
+	vpickev.w	$vr3, $vr3, $vr1
+	xvpermi.q	$xr4, $xr0, 1
+	vpickev.w	$vr4, $vr4, $vr0
 	xvpermi.q	$xr3, $xr4, 2
 	xvaddi.wu	$xr3, $xr3, 1
 	xvstx	$xr3, $a4, $a3
@@ -20465,22 +20489,10 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj512ELj17
 	.p2align	4, , 16
 .LBB85_4:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a5, $xr1, 0
-	vinsgr2vr.w	$vr3, $a5, 0
-	xvpickve2gr.d	$a5, $xr1, 1
-	vinsgr2vr.w	$vr3, $a5, 1
-	xvpickve2gr.d	$a5, $xr1, 2
-	vinsgr2vr.w	$vr3, $a5, 2
-	xvpickve2gr.d	$a5, $xr1, 3
-	vinsgr2vr.w	$vr3, $a5, 3
-	xvpickve2gr.d	$a5, $xr0, 0
-	vinsgr2vr.w	$vr4, $a5, 0
-	xvpickve2gr.d	$a5, $xr0, 1
-	vinsgr2vr.w	$vr4, $a5, 1
-	xvpickve2gr.d	$a5, $xr0, 2
-	vinsgr2vr.w	$vr4, $a5, 2
-	xvpickve2gr.d	$a5, $xr0, 3
-	vinsgr2vr.w	$vr4, $a5, 3
+	xvpermi.q	$xr3, $xr1, 1
+	vpickev.w	$vr3, $vr3, $vr1
+	xvpermi.q	$xr4, $xr0, 1
+	vpickev.w	$vr4, $vr4, $vr0
 	xvpermi.q	$xr3, $xr4, 2
 	xvaddi.wu	$xr3, $xr3, 1
 	xvstx	$xr3, $a0, $a3
@@ -23265,22 +23277,10 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3E
 	.p2align	4, , 16
 .LBB111_4:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a6, $xr1, 0
-	vinsgr2vr.w	$vr5, $a6, 0
-	xvpickve2gr.d	$a6, $xr1, 1
-	vinsgr2vr.w	$vr5, $a6, 1
-	xvpickve2gr.d	$a6, $xr1, 2
-	vinsgr2vr.w	$vr5, $a6, 2
-	xvpickve2gr.d	$a6, $xr1, 3
-	vinsgr2vr.w	$vr5, $a6, 3
-	xvpickve2gr.d	$a6, $xr0, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	xvpickve2gr.d	$a6, $xr0, 1
-	vinsgr2vr.w	$vr6, $a6, 1
-	xvpickve2gr.d	$a6, $xr0, 2
-	vinsgr2vr.w	$vr6, $a6, 2
-	xvpickve2gr.d	$a6, $xr0, 3
-	vinsgr2vr.w	$vr6, $a6, 3
+	xvpermi.q	$xr5, $xr1, 1
+	vpickev.w	$vr5, $vr5, $vr1
+	xvpermi.q	$xr6, $xr0, 1
+	vpickev.w	$vr6, $vr6, $vr0
 	xvpermi.q	$xr5, $xr6, 2
 	xvaddi.wu	$xr5, $xr5, 1
 	xvstx	$xr5, $a4, $a3
@@ -23445,22 +23445,10 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3E
 	.p2align	4, , 16
 .LBB114_4:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a5, $xr1, 0
-	vinsgr2vr.w	$vr5, $a5, 0
-	xvpickve2gr.d	$a5, $xr1, 1
-	vinsgr2vr.w	$vr5, $a5, 1
-	xvpickve2gr.d	$a5, $xr1, 2
-	vinsgr2vr.w	$vr5, $a5, 2
-	xvpickve2gr.d	$a5, $xr1, 3
-	vinsgr2vr.w	$vr5, $a5, 3
-	xvpickve2gr.d	$a5, $xr0, 0
-	vinsgr2vr.w	$vr6, $a5, 0
-	xvpickve2gr.d	$a5, $xr0, 1
-	vinsgr2vr.w	$vr6, $a5, 1
-	xvpickve2gr.d	$a5, $xr0, 2
-	vinsgr2vr.w	$vr6, $a5, 2
-	xvpickve2gr.d	$a5, $xr0, 3
-	vinsgr2vr.w	$vr6, $a5, 3
+	xvpermi.q	$xr5, $xr1, 1
+	vpickev.w	$vr5, $vr5, $vr1
+	xvpermi.q	$xr6, $xr0, 1
+	vpickev.w	$vr6, $vr6, $vr0
 	xvpermi.q	$xr5, $xr6, 2
 	xvaddi.wu	$xr5, $xr5, 1
 	xvstx	$xr5, $a0, $a3
@@ -26126,22 +26114,10 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17
 	.p2align	4, , 16
 .LBB140_4:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a6, $xr1, 0
-	vinsgr2vr.w	$vr5, $a6, 0
-	xvpickve2gr.d	$a6, $xr1, 1
-	vinsgr2vr.w	$vr5, $a6, 1
-	xvpickve2gr.d	$a6, $xr1, 2
-	vinsgr2vr.w	$vr5, $a6, 2
-	xvpickve2gr.d	$a6, $xr1, 3
-	vinsgr2vr.w	$vr5, $a6, 3
-	xvpickve2gr.d	$a6, $xr0, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	xvpickve2gr.d	$a6, $xr0, 1
-	vinsgr2vr.w	$vr6, $a6, 1
-	xvpickve2gr.d	$a6, $xr0, 2
-	vinsgr2vr.w	$vr6, $a6, 2
-	xvpickve2gr.d	$a6, $xr0, 3
-	vinsgr2vr.w	$vr6, $a6, 3
+	xvpermi.q	$xr5, $xr1, 1
+	vpickev.w	$vr5, $vr5, $vr1
+	xvpermi.q	$xr6, $xr0, 1
+	vpickev.w	$vr6, $vr6, $vr0
 	xvpermi.q	$xr5, $xr6, 2
 	xvaddi.wu	$xr5, $xr5, 1
 	xvstx	$xr5, $a4, $a3
@@ -26306,22 +26282,10 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17
 	.p2align	4, , 16
 .LBB143_4:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a5, $xr1, 0
-	vinsgr2vr.w	$vr5, $a5, 0
-	xvpickve2gr.d	$a5, $xr1, 1
-	vinsgr2vr.w	$vr5, $a5, 1
-	xvpickve2gr.d	$a5, $xr1, 2
-	vinsgr2vr.w	$vr5, $a5, 2
-	xvpickve2gr.d	$a5, $xr1, 3
-	vinsgr2vr.w	$vr5, $a5, 3
-	xvpickve2gr.d	$a5, $xr0, 0
-	vinsgr2vr.w	$vr6, $a5, 0
-	xvpickve2gr.d	$a5, $xr0, 1
-	vinsgr2vr.w	$vr6, $a5, 1
-	xvpickve2gr.d	$a5, $xr0, 2
-	vinsgr2vr.w	$vr6, $a5, 2
-	xvpickve2gr.d	$a5, $xr0, 3
-	vinsgr2vr.w	$vr6, $a5, 3
+	xvpermi.q	$xr5, $xr1, 1
+	vpickev.w	$vr5, $vr5, $vr1
+	xvpermi.q	$xr6, $xr0, 1
+	vpickev.w	$vr6, $vr6, $vr0
 	xvpermi.q	$xr5, $xr6, 2
 	xvaddi.wu	$xr5, $xr5, 1
 	xvstx	$xr5, $a0, $a3

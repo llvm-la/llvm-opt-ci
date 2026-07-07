@@ -4982,22 +4982,24 @@ updateRCModel:                          # @updateRCModel
 	xvld	$xr2, $a3, 0
 	xvbitclri.d	$xr2, $xr2, 63
 	xvfcmp.clt.d	$xr2, $xr1, $xr2
-	xvpickve2gr.d	$a6, $xr2, 0
+	vpickve2gr.w	$a6, $vr2, 0
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB15_38
 # %bb.35:                               # %pred.store.continue
                                         #   in Loop: Header=BB15_34 Depth=1
-	xvpickve2gr.d	$a6, $xr2, 1
+	vpickve2gr.w	$a6, $vr2, 2
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB15_39
 .LBB15_36:                              # %pred.store.continue166
                                         #   in Loop: Header=BB15_34 Depth=1
-	xvpickve2gr.d	$a6, $xr2, 2
+	xvpermi.q	$xr3, $xr2, 1
+	vpickve2gr.w	$a6, $vr3, 0
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB15_40
 .LBB15_37:                              # %pred.store.continue168
                                         #   in Loop: Header=BB15_34 Depth=1
-	xvpickve2gr.d	$a6, $xr2, 3
+	xvpermi.q	$xr2, $xr2, 1
+	vpickve2gr.w	$a6, $vr2, 2
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB15_33
 	b	.LBB15_41
@@ -5005,19 +5007,21 @@ updateRCModel:                          # @updateRCModel
 .LBB15_38:                              # %pred.store.if
                                         #   in Loop: Header=BB15_34 Depth=1
 	st.w	$a4, $a2, -8
-	xvpickve2gr.d	$a6, $xr2, 1
+	vpickve2gr.w	$a6, $vr2, 2
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB15_36
 .LBB15_39:                              # %pred.store.if165
                                         #   in Loop: Header=BB15_34 Depth=1
 	st.w	$a4, $a2, -4
-	xvpickve2gr.d	$a6, $xr2, 2
+	xvpermi.q	$xr3, $xr2, 1
+	vpickve2gr.w	$a6, $vr3, 0
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB15_37
 .LBB15_40:                              # %pred.store.if167
                                         #   in Loop: Header=BB15_34 Depth=1
 	st.w	$a4, $a2, 0
-	xvpickve2gr.d	$a6, $xr2, 3
+	xvpermi.q	$xr2, $xr2, 1
+	vpickve2gr.w	$a6, $vr2, 2
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB15_33
 .LBB15_41:                              # %pred.store.if169
@@ -5548,22 +5552,24 @@ updateMADModel:                         # @updateMADModel
 	xvld	$xr2, $a2, 0
 	xvbitclri.d	$xr2, $xr2, 63
 	xvfcmp.clt.d	$xr2, $xr1, $xr2
-	xvpickve2gr.d	$a5, $xr2, 0
+	vpickve2gr.w	$a5, $vr2, 0
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB17_32
 # %bb.29:                               # %pred.store.continue
                                         #   in Loop: Header=BB17_28 Depth=1
-	xvpickve2gr.d	$a5, $xr2, 1
+	vpickve2gr.w	$a5, $vr2, 2
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB17_33
 .LBB17_30:                              # %pred.store.continue122
                                         #   in Loop: Header=BB17_28 Depth=1
-	xvpickve2gr.d	$a5, $xr2, 2
+	xvpermi.q	$xr3, $xr2, 1
+	vpickve2gr.w	$a5, $vr3, 0
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB17_34
 .LBB17_31:                              # %pred.store.continue124
                                         #   in Loop: Header=BB17_28 Depth=1
-	xvpickve2gr.d	$a5, $xr2, 3
+	xvpermi.q	$xr2, $xr2, 1
+	vpickve2gr.w	$a5, $vr2, 2
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB17_27
 	b	.LBB17_35
@@ -5571,19 +5577,21 @@ updateMADModel:                         # @updateMADModel
 .LBB17_32:                              # %pred.store.if
                                         #   in Loop: Header=BB17_28 Depth=1
 	st.w	$a3, $a1, -8
-	xvpickve2gr.d	$a5, $xr2, 1
+	vpickve2gr.w	$a5, $vr2, 2
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB17_30
 .LBB17_33:                              # %pred.store.if121
                                         #   in Loop: Header=BB17_28 Depth=1
 	st.w	$a3, $a1, -4
-	xvpickve2gr.d	$a5, $xr2, 2
+	xvpermi.q	$xr3, $xr2, 1
+	vpickve2gr.w	$a5, $vr3, 0
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB17_31
 .LBB17_34:                              # %pred.store.if123
                                         #   in Loop: Header=BB17_28 Depth=1
 	st.w	$a3, $a1, 0
-	xvpickve2gr.d	$a5, $xr2, 3
+	xvpermi.q	$xr2, $xr2, 1
+	vpickve2gr.w	$a5, $vr2, 2
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB17_27
 .LBB17_35:                              # %pred.store.if125

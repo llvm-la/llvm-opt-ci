@@ -251,62 +251,50 @@ main:                                   # @main
 	bnez	$a0, .LBB1_10
 # %bb.1:                                # %.preheader30.preheader
 	addi.d	$s0, $sp, 172
-	xvld	$xr0, $sp, 56
+	xvld	$xr0, $sp, 88
 	vinsgr2vr.d	$vr1, $s0, 0
-	xvld	$xr2, $sp, 88
+	xvld	$xr2, $sp, 56
 	vori.b	$vr3, $vr1, 0
 	vinsgr2vr.d	$vr3, $s1, 1
 	vinsgr2vr.d	$vr1, $s0, 1
 	xvpermi.q	$xr1, $xr3, 2
 	xvreplgr2vr.d	$xr3, $s0
-	xvst	$xr3, $sp, 16                   # 32-byte Folded Spill
-	xvseq.d	$xr0, $xr0, $xr3
-	xvpickve2gr.d	$a0, $xr0, 0
-	vinsgr2vr.h	$vr3, $a0, 0
-	xvpickve2gr.d	$a0, $xr0, 1
-	vinsgr2vr.h	$vr3, $a0, 1
-	xvpickve2gr.d	$a1, $xr0, 2
-	vinsgr2vr.h	$vr3, $a1, 2
-	xvpickve2gr.d	$a2, $xr0, 3
-	vinsgr2vr.h	$vr3, $a2, 3
-	xvseq.d	$xr0, $xr2, $xr1
-	xvpickve2gr.d	$a3, $xr0, 0
-	vinsgr2vr.h	$vr3, $a3, 4
-	xvpickve2gr.d	$a3, $xr0, 1
-	vinsgr2vr.h	$vr3, $a3, 5
-	xvpickve2gr.d	$a3, $xr0, 2
-	vinsgr2vr.h	$vr3, $a3, 6
-	xvpickve2gr.d	$a3, $xr0, 3
-	vinsgr2vr.h	$vr3, $a3, 7
-	xvld	$xr0, $sp, 120
-	vinsgr2vr.d	$vr1, $s1, 0
-	vinsgr2vr.d	$vr1, $s0, 1
-	xvpermi.d	$xr1, $xr1, 84
 	xvseq.d	$xr0, $xr0, $xr1
-	xvpickve2gr.d	$a3, $xr0, 0
-	vinsgr2vr.w	$vr1, $a3, 0
-	xvpickve2gr.d	$a3, $xr0, 1
-	vinsgr2vr.w	$vr1, $a3, 1
-	xvpickve2gr.d	$a3, $xr0, 2
-	vinsgr2vr.w	$vr1, $a3, 2
-	xvpickve2gr.d	$a3, $xr0, 3
-	vinsgr2vr.w	$vr1, $a3, 3
-	vpickve2gr.h	$a3, $vr3, 0
-	vinsgr2vr.w	$vr0, $a3, 0
-	vinsgr2vr.w	$vr0, $a0, 1
-	vinsgr2vr.w	$vr0, $a1, 2
-	vinsgr2vr.w	$vr0, $a2, 3
-	vand.v	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
-	vinsgr2vr.h	$vr1, $a0, 0
-	vpickve2gr.w	$a0, $vr0, 1
-	vinsgr2vr.h	$vr1, $a0, 1
-	vpickve2gr.w	$a0, $vr0, 2
-	vinsgr2vr.h	$vr1, $a0, 2
-	vpickve2gr.w	$a0, $vr0, 3
-	vinsgr2vr.h	$vr1, $a0, 3
-	vshuf4i.d	$vr1, $vr3, 12
-	vslli.h	$vr0, $vr1, 15
+	xvpermi.q	$xr1, $xr0, 1
+	vpickev.w	$vr0, $vr1, $vr0
+	xvst	$xr3, $sp, 16                   # 32-byte Folded Spill
+	xvseq.d	$xr1, $xr2, $xr3
+	xvpermi.q	$xr2, $xr1, 1
+	vpickev.w	$vr1, $vr2, $vr1
+	xvpermi.q	$xr1, $xr0, 2
+	xvpermi.d	$xr0, $xr1, 78
+	xvpickev.h	$xr0, $xr0, $xr1
+	xvld	$xr1, $sp, 120
+	vinsgr2vr.d	$vr2, $s1, 0
+	vinsgr2vr.d	$vr2, $s0, 1
+	xvpermi.d	$xr2, $xr2, 84
+	xvseq.d	$xr1, $xr1, $xr2
+	xvpermi.q	$xr2, $xr1, 1
+	vpickev.w	$vr1, $vr2, $vr1
+	vpickve2gr.h	$a0, $vr0, 0
+	vinsgr2vr.w	$vr2, $a0, 0
+	vpickve2gr.h	$a0, $vr0, 1
+	vinsgr2vr.w	$vr2, $a0, 1
+	vpickve2gr.h	$a0, $vr0, 2
+	vinsgr2vr.w	$vr2, $a0, 2
+	vpickve2gr.h	$a0, $vr0, 3
+	vinsgr2vr.w	$vr2, $a0, 3
+	vand.v	$vr1, $vr2, $vr1
+	vpickve2gr.w	$a0, $vr1, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	vpickve2gr.w	$a0, $vr1, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	vpickve2gr.w	$a0, $vr1, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	vpickve2gr.w	$a0, $vr1, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	vshuf4i.d	$vr2, $vr0, 12
+	vslli.h	$vr0, $vr2, 15
 	vmskltz.h	$vr0, $vr0
 	vpickve2gr.hu	$a0, $vr0, 0
 	ori	$a1, $zero, 255
@@ -359,32 +347,38 @@ main:                                   # @main
 	andi	$a0, $a0, 15
 	bnez	$a0, .LBB1_10
 # %bb.8:                                # %.thread.us.5
-	xvld	$xr1, $sp, 104
-	xvld	$xr2, $sp, 136
+	xvld	$xr1, $sp, 136
+	xvld	$xr2, $sp, 104
 	addi.d	$a0, $sp, 168
 	xvreplgr2vr.d	$xr3, $a0
 	xvseq.d	$xr1, $xr1, $xr3
 	xvxor.v	$xr1, $xr1, $xr0
-	xvpickve2gr.d	$a0, $xr1, 0
-	xvpickve2gr.d	$a1, $xr1, 1
+	xvpermi.q	$xr4, $xr1, 1
+	vpickev.w	$vr1, $vr4, $vr1
+	xvseq.d	$xr2, $xr2, $xr3
+	xvxor.v	$xr0, $xr2, $xr0
+	xvpermi.q	$xr2, $xr0, 1
+	vpickev.w	$vr0, $vr2, $vr0
+	xvpermi.q	$xr0, $xr1, 2
+	xvpermi.d	$xr1, $xr0, 78
+	xvpickev.h	$xr0, $xr1, $xr0
+	vpickve2gr.h	$a0, $vr0, 0
+	vpickve2gr.h	$a1, $vr0, 1
 	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 1
-	sub.d	$a0, $a1, $a0
-	xvpickve2gr.d	$a1, $xr1, 2
+	bstrins.d	$a0, $a1, 63, 1
+	vpickve2gr.h	$a1, $vr0, 2
 	bstrins.d	$a0, $a1, 2, 2
-	xvpickve2gr.d	$a1, $xr1, 3
+	vpickve2gr.h	$a1, $vr0, 3
 	bstrins.d	$a0, $a1, 3, 3
-	xvseq.d	$xr1, $xr2, $xr3
-	xvxor.v	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a1, $xr0, 0
+	vpickve2gr.h	$a1, $vr0, 4
 	bstrins.d	$a0, $a1, 4, 4
-	xvpickve2gr.d	$a1, $xr0, 1
+	vpickve2gr.h	$a1, $vr0, 5
 	bstrins.d	$a0, $a1, 5, 5
-	xvpickve2gr.d	$a1, $xr0, 2
+	vpickve2gr.h	$a1, $vr0, 6
 	andi	$a1, $a1, 1
 	slli.d	$a1, $a1, 6
 	or	$a0, $a0, $a1
-	xvpickve2gr.d	$a1, $xr0, 3
+	vpickve2gr.h	$a1, $vr0, 7
 	slli.d	$a1, $a1, 7
 	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255

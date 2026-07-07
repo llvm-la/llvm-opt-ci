@@ -6772,7 +6772,7 @@ display_main_menu:                      # @display_main_menu
 	bgeu	$s8, $a1, .LBB27_189
 # %bb.188:                              #   in Loop: Header=BB27_169 Depth=2
 	move	$a1, $zero
-	ori	$a3, $zero, 1
+	ori	$a2, $zero, 1
 	b	.LBB27_198
 	.p2align	4, , 16
 .LBB27_189:                             # %vector.main.loop.iter.check
@@ -6781,15 +6781,15 @@ display_main_menu:                      # @display_main_menu
 	bgeu	$s8, $a1, .LBB27_191
 # %bb.190:                              #   in Loop: Header=BB27_169 Depth=2
 	move	$a1, $zero
-	ori	$a3, $zero, 1
+	ori	$a2, $zero, 1
 	b	.LBB27_195
 .LBB27_191:                             # %vector.ph
                                         #   in Loop: Header=BB27_169 Depth=2
-	andi	$a2, $s8, 12
+	andi	$a3, $s8, 12
 	bstrpick.d	$a1, $s8, 30, 4
 	slli.d	$a1, $a1, 4
 	xvreplgr2vr.w	$xr0, $a0
-	addi.d	$a3, $sp, 168
+	addi.d	$a2, $sp, 168
 	move	$a4, $a1
 	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
 	vori.b	$vr1, $vr2, 0
@@ -6798,69 +6798,41 @@ display_main_menu:                      # @display_main_menu
                                         #   Parent Loop BB27_8 Depth=1
                                         #     Parent Loop BB27_169 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvld	$xr3, $a3, -32
-	xvld	$xr4, $a3, 0
+	xvld	$xr3, $a2, -32
+	xvld	$xr4, $a2, 0
 	xvseq.w	$xr3, $xr3, $xr0
-	xvpickve2gr.w	$a5, $xr3, 0
-	vinsgr2vr.h	$vr5, $a5, 0
-	xvpickve2gr.w	$a5, $xr3, 1
-	vinsgr2vr.h	$vr5, $a5, 1
-	xvpickve2gr.w	$a5, $xr3, 2
-	vinsgr2vr.h	$vr5, $a5, 2
-	xvpickve2gr.w	$a5, $xr3, 3
-	vinsgr2vr.h	$vr5, $a5, 3
-	xvpickve2gr.w	$a5, $xr3, 4
-	vinsgr2vr.h	$vr5, $a5, 4
-	xvpickve2gr.w	$a5, $xr3, 5
-	vinsgr2vr.h	$vr5, $a5, 5
-	xvpickve2gr.w	$a5, $xr3, 6
-	vinsgr2vr.h	$vr5, $a5, 6
-	xvpickve2gr.w	$a5, $xr3, 7
-	vinsgr2vr.h	$vr5, $a5, 7
-	xvseq.w	$xr3, $xr4, $xr0
-	xvpickve2gr.w	$a5, $xr3, 0
-	vinsgr2vr.h	$vr4, $a5, 0
-	xvpickve2gr.w	$a5, $xr3, 1
-	vinsgr2vr.h	$vr4, $a5, 1
-	xvpickve2gr.w	$a5, $xr3, 2
-	vinsgr2vr.h	$vr4, $a5, 2
-	xvpickve2gr.w	$a5, $xr3, 3
-	vinsgr2vr.h	$vr4, $a5, 3
-	xvpickve2gr.w	$a5, $xr3, 4
-	vinsgr2vr.h	$vr4, $a5, 4
-	xvpickve2gr.w	$a5, $xr3, 5
-	vinsgr2vr.h	$vr4, $a5, 5
-	xvpickve2gr.w	$a5, $xr3, 6
-	vinsgr2vr.h	$vr4, $a5, 6
-	xvpickve2gr.w	$a5, $xr3, 7
-	vinsgr2vr.h	$vr4, $a5, 7
-	vor.v	$vr1, $vr1, $vr5
+	xvpermi.d	$xr5, $xr3, 78
+	xvpickev.h	$xr3, $xr5, $xr3
+	xvseq.w	$xr4, $xr4, $xr0
+	xvpermi.d	$xr5, $xr4, 78
+	xvpickev.h	$xr4, $xr5, $xr4
+	vor.v	$vr1, $vr1, $vr3
 	vor.v	$vr2, $vr2, $vr4
 	addi.d	$a4, $a4, -16
-	addi.d	$a3, $a3, 64
+	addi.d	$a2, $a2, 64
 	bnez	$a4, .LBB27_192
 # %bb.193:                              # %middle.block
                                         #   in Loop: Header=BB27_169 Depth=2
 	vor.v	$vr0, $vr2, $vr1
 	vslli.h	$vr0, $vr0, 15
 	vmskltz.h	$vr0, $vr0
-	vpickve2gr.hu	$a3, $vr0, 0
-	sltui	$a3, $a3, 1
+	vpickve2gr.hu	$a2, $vr0, 0
+	sltui	$a2, $a2, 1
 	beq	$a1, $s8, .LBB27_200
 # %bb.194:                              # %vec.epilog.iter.check
                                         #   in Loop: Header=BB27_169 Depth=2
-	beqz	$a2, .LBB27_198
+	beqz	$a3, .LBB27_198
 .LBB27_195:                             # %vec.epilog.ph
                                         #   in Loop: Header=BB27_169 Depth=2
-	move	$a4, $a1
-	sltui	$a2, $a3, 1
+	move	$a3, $a1
+	sltui	$a2, $a2, 1
 	bstrpick.d	$a1, $s8, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplgr2vr.w	$vr1, $a0
 	vreplgr2vr.w	$vr0, $a2
-	sub.d	$a2, $a4, $a1
-	addi.d	$a3, $sp, 136
-	alsl.d	$a3, $a4, $a3, 2
+	sub.d	$a2, $a3, $a1
+	addi.d	$a4, $sp, 136
+	alsl.d	$a3, $a3, $a4, 2
 	.p2align	4, , 16
 .LBB27_196:                             # %vec.epilog.vector.body
                                         #   Parent Loop BB27_8 Depth=1
@@ -6877,28 +6849,28 @@ display_main_menu:                      # @display_main_menu
 	vslli.w	$vr0, $vr0, 31
 	vmskltz.w	$vr0, $vr0
 	vpickve2gr.hu	$a2, $vr0, 0
-	sltui	$a3, $a2, 1
+	sltui	$a2, $a2, 1
 	beq	$a1, $s8, .LBB27_200
 .LBB27_198:                             # %.lr.ph.preheader
                                         #   in Loop: Header=BB27_169 Depth=2
-	addi.d	$a2, $sp, 136
-	alsl.d	$a2, $a1, $a2, 2
+	addi.d	$a3, $sp, 136
+	alsl.d	$a3, $a1, $a3, 2
 	sub.d	$a1, $s8, $a1
 	.p2align	4, , 16
 .LBB27_199:                             # %.lr.ph
                                         #   Parent Loop BB27_8 Depth=1
                                         #     Parent Loop BB27_169 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$a4, $a2, 0
+	ld.w	$a4, $a3, 0
 	xor	$a4, $a4, $a0
 	sltui	$a4, $a4, 1
-	masknez	$a3, $a3, $a4
+	masknez	$a2, $a2, $a4
 	addi.d	$a1, $a1, -1
-	addi.d	$a2, $a2, 4
+	addi.d	$a3, $a3, 4
 	bnez	$a1, .LBB27_199
 .LBB27_200:                             # %._crit_edge
                                         #   in Loop: Header=BB27_169 Depth=2
-	beqz	$a3, .LBB27_202
+	beqz	$a2, .LBB27_202
 .LBB27_201:                             # %._crit_edge.thread
                                         #   in Loop: Header=BB27_169 Depth=2
 	slli.d	$a1, $s8, 2

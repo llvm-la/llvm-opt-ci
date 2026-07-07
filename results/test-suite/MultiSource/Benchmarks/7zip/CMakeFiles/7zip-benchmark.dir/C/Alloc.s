@@ -47,6 +47,39 @@ MidAlloc:                               # @MidAlloc
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI3_1:
+	.byte	0                               # 0x0
+	.byte	8                               # 0x8
+	.byte	16                              # 0x10
+	.byte	24                              # 0x18
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
 	.text
 	.p2align	5
 	.type	VirtualAlloc,@function
@@ -151,15 +184,11 @@ VirtualAlloc:                           # @VirtualAlloc
 	addi.w	$a0, $zero, -1
 	beq	$s1, $a0, .LBB3_11
 # %bb.7:
-	xvld	$xr1, $fp, -144                 # 32-byte Folded Reload
-	xvpickve2gr.d	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.d	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.d	$a0, $xr1, 2
-	vinsgr2vr.b	$vr0, $a0, 2
-	xvpickve2gr.d	$a0, $xr1, 3
-	vinsgr2vr.b	$vr0, $a0, 3
+	pcalau12i	$a0, %pc_hi20(.LCPI3_1)
+	xvld	$xr0, $a0, %pc_lo12(.LCPI3_1)
+	xvld	$xr2, $fp, -144                 # 32-byte Folded Reload
+	xvpermi.d	$xr1, $xr2, 78
+	xvshuf.b	$xr0, $xr1, $xr2, $xr0
 	lu12i.w	$a0, 4128
 	ori	$a0, $a0, 772
 	vreplgr2vr.w	$vr1, $a0
@@ -247,6 +276,39 @@ VirtualAlloc:                           # @VirtualAlloc
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI4_1:
+	.byte	0                               # 0x0
+	.byte	8                               # 0x8
+	.byte	16                              # 0x10
+	.byte	24                              # 0x18
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
 	.text
 	.globl	MidFree
 	.p2align	5
@@ -264,18 +326,18 @@ MidFree:                                # @MidFree
 	addi.w	$a1, $zero, -32
 	pcalau12i	$a2, %pc_hi20(g_HugePageAddr)
 	addi.d	$a2, $a2, %pc_lo12(g_HugePageAddr)
-	xvreplgr2vr.d	$xr4, $a2
+	xvreplgr2vr.d	$xr3, $a2
 	ori	$a2, $zero, 448
 	.p2align	4, , 16
 .LBB4_2:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvslli.d	$xr0, $xr1, 3
-	xvadd.d	$xr0, $xr4, $xr0
+	xvadd.d	$xr0, $xr3, $xr0
 	xvpickve2gr.d	$a3, $xr0, 0
-	xvld	$xr3, $a3, 0
+	xvld	$xr4, $a3, 0
 	move	$a3, $a1
-	xvseq.d	$xr3, $xr3, $xr2
-	xvmskltz.d	$xr5, $xr3
+	xvseq.d	$xr4, $xr4, $xr2
+	xvmskltz.d	$xr5, $xr4
 	xvpickve2gr.wu	$a4, $xr5, 0
 	xvpickve2gr.wu	$a1, $xr5, 4
 	bstrins.d	$a4, $a1, 3, 2
@@ -289,14 +351,10 @@ MidFree:                                # @MidFree
 	andi	$a2, $a4, 15
 	beqz	$a2, .LBB4_7
 # %bb.5:                                # %vector.early.exit
-	xvpickve2gr.d	$a2, $xr3, 0
-	vinsgr2vr.b	$vr1, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
-	vinsgr2vr.b	$vr1, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
-	vinsgr2vr.b	$vr1, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
-	vinsgr2vr.b	$vr1, $a2, 3
+	pcalau12i	$a2, %pc_hi20(.LCPI4_1)
+	xvld	$xr1, $a2, %pc_lo12(.LCPI4_1)
+	xvpermi.d	$xr2, $xr4, 78
+	xvshuf.b	$xr1, $xr2, $xr4, $xr1
 	lu12i.w	$a2, 4128
 	ori	$a2, $a2, 772
 	vreplgr2vr.w	$vr2, $a2
@@ -511,6 +569,39 @@ BigAlloc:                               # @BigAlloc
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI8_1:
+	.byte	0                               # 0x0
+	.byte	8                               # 0x8
+	.byte	16                              # 0x10
+	.byte	24                              # 0x18
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
 	.text
 	.globl	BigFree
 	.p2align	5
@@ -528,18 +619,18 @@ BigFree:                                # @BigFree
 	addi.w	$a1, $zero, -32
 	pcalau12i	$a2, %pc_hi20(g_HugePageAddr)
 	addi.d	$a2, $a2, %pc_lo12(g_HugePageAddr)
-	xvreplgr2vr.d	$xr4, $a2
+	xvreplgr2vr.d	$xr3, $a2
 	ori	$a2, $zero, 448
 	.p2align	4, , 16
 .LBB8_2:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvslli.d	$xr0, $xr1, 3
-	xvadd.d	$xr0, $xr4, $xr0
+	xvadd.d	$xr0, $xr3, $xr0
 	xvpickve2gr.d	$a3, $xr0, 0
-	xvld	$xr3, $a3, 0
+	xvld	$xr4, $a3, 0
 	move	$a3, $a1
-	xvseq.d	$xr3, $xr3, $xr2
-	xvmskltz.d	$xr5, $xr3
+	xvseq.d	$xr4, $xr4, $xr2
+	xvmskltz.d	$xr5, $xr4
 	xvpickve2gr.wu	$a4, $xr5, 0
 	xvpickve2gr.wu	$a1, $xr5, 4
 	bstrins.d	$a4, $a1, 3, 2
@@ -553,14 +644,10 @@ BigFree:                                # @BigFree
 	andi	$a2, $a4, 15
 	beqz	$a2, .LBB8_7
 # %bb.5:                                # %vector.early.exit
-	xvpickve2gr.d	$a2, $xr3, 0
-	vinsgr2vr.b	$vr1, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
-	vinsgr2vr.b	$vr1, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
-	vinsgr2vr.b	$vr1, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
-	vinsgr2vr.b	$vr1, $a2, 3
+	pcalau12i	$a2, %pc_hi20(.LCPI8_1)
+	xvld	$xr1, $a2, %pc_lo12(.LCPI8_1)
+	xvpermi.d	$xr2, $xr4, 78
+	xvshuf.b	$xr1, $xr2, $xr4, $xr1
 	lu12i.w	$a2, 4128
 	ori	$a2, $a2, 772
 	vreplgr2vr.w	$vr2, $a2

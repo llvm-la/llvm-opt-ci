@@ -3231,29 +3231,18 @@ small_pass:                             # @small_pass
                                         # =>This Inner Loop Header: Depth=1
 	xvaddi.du	$xr4, $xr3, 1
 	xvpickve2gr.d	$a4, $xr4, 0
-	slli.d	$a5, $a4, 2
-	xvstx	$xr1, $s7, $a5
-	vinsgr2vr.w	$vr5, $a4, 0
-	xvpickve2gr.d	$a4, $xr4, 1
-	vinsgr2vr.w	$vr5, $a4, 1
-	xvpickve2gr.d	$a4, $xr4, 2
-	vinsgr2vr.w	$vr5, $a4, 2
-	xvpickve2gr.d	$a4, $xr4, 3
-	vinsgr2vr.w	$vr5, $a4, 3
-	xvpickve2gr.d	$a4, $xr2, 0
-	vinsgr2vr.w	$vr4, $a4, 0
-	xvpickve2gr.d	$a4, $xr2, 1
-	vinsgr2vr.w	$vr4, $a4, 1
-	xvpickve2gr.d	$a4, $xr2, 2
-	vinsgr2vr.w	$vr4, $a4, 2
-	xvpickve2gr.d	$a4, $xr2, 3
-	vinsgr2vr.w	$vr4, $a4, 3
-	vaddi.wu	$vr4, $vr4, 1
-	xvpermi.q	$xr5, $xr4, 2
-	xvstx	$xr5, $s8, $a5
-	xvstx	$xr0, $fp, $a5
-	xvstx	$xr1, $s1, $a5
-	xvstx	$xr5, $s2, $a5
+	slli.d	$a4, $a4, 2
+	xvstx	$xr1, $s7, $a4
+	xvpermi.q	$xr5, $xr4, 1
+	vpickev.w	$vr4, $vr5, $vr4
+	xvpermi.q	$xr5, $xr2, 1
+	vpickev.w	$vr5, $vr5, $vr2
+	vaddi.wu	$vr5, $vr5, 1
+	xvpermi.q	$xr4, $xr5, 2
+	xvstx	$xr4, $s8, $a4
+	xvstx	$xr0, $fp, $a4
+	xvstx	$xr1, $s1, $a4
+	xvstx	$xr4, $s2, $a4
 	xvaddi.du	$xr3, $xr3, 8
 	addi.d	$a3, $a3, -8
 	xvaddi.du	$xr2, $xr2, 8

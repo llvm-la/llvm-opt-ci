@@ -429,22 +429,10 @@ findDuplicate:                          # @findDuplicate
 	xvld	$xr5, $a5, 0
 	xvxor.v	$xr2, $xr2, $xr4
 	xvxor.v	$xr3, $xr3, $xr5
-	xvpickve2gr.d	$a7, $xr1, 0
-	vinsgr2vr.w	$vr4, $a7, 0
-	xvpickve2gr.d	$a7, $xr1, 1
-	vinsgr2vr.w	$vr4, $a7, 1
-	xvpickve2gr.d	$a7, $xr1, 2
-	vinsgr2vr.w	$vr4, $a7, 2
-	xvpickve2gr.d	$a7, $xr1, 3
-	vinsgr2vr.w	$vr4, $a7, 3
-	xvpickve2gr.d	$a7, $xr0, 0
-	vinsgr2vr.w	$vr5, $a7, 0
-	xvpickve2gr.d	$a7, $xr0, 1
-	vinsgr2vr.w	$vr5, $a7, 1
-	xvpickve2gr.d	$a7, $xr0, 2
-	vinsgr2vr.w	$vr5, $a7, 2
-	xvpickve2gr.d	$a7, $xr0, 3
-	vinsgr2vr.w	$vr5, $a7, 3
+	xvpermi.q	$xr4, $xr1, 1
+	vpickev.w	$vr4, $vr4, $vr1
+	xvpermi.q	$xr5, $xr0, 1
+	vpickev.w	$vr5, $vr5, $vr0
 	xvpermi.q	$xr4, $xr5, 2
 	xvaddi.wu	$xr5, $xr4, 1
 	xvaddi.wu	$xr4, $xr4, 9
@@ -483,14 +471,8 @@ findDuplicate:                          # @findDuplicate
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a4, 0
 	vxor.v	$vr1, $vr1, $vr2
-	xvpickve2gr.d	$a5, $xr0, 0
-	vinsgr2vr.w	$vr2, $a5, 0
-	xvpickve2gr.d	$a5, $xr0, 1
-	vinsgr2vr.w	$vr2, $a5, 1
-	xvpickve2gr.d	$a5, $xr0, 2
-	vinsgr2vr.w	$vr2, $a5, 2
-	xvpickve2gr.d	$a5, $xr0, 3
-	vinsgr2vr.w	$vr2, $a5, 3
+	xvpermi.q	$xr2, $xr0, 1
+	vpickev.w	$vr2, $vr2, $vr0
 	vaddi.wu	$vr2, $vr2, 1
 	vxor.v	$vr1, $vr1, $vr2
 	xvaddi.du	$xr0, $xr0, 4
@@ -587,22 +569,10 @@ main:                                   # @main
 	xvld	$xr8, $a5, 32
 	xvxor.v	$xr5, $xr7, $xr5
 	xvxor.v	$xr6, $xr8, $xr6
-	xvpickve2gr.d	$a5, $xr3, 0
-	vinsgr2vr.w	$vr7, $a5, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	vinsgr2vr.w	$vr7, $a5, 1
-	xvpickve2gr.d	$a5, $xr3, 2
-	vinsgr2vr.w	$vr7, $a5, 2
-	xvpickve2gr.d	$a5, $xr3, 3
-	vinsgr2vr.w	$vr7, $a5, 3
-	xvpickve2gr.d	$a5, $xr4, 0
-	vinsgr2vr.w	$vr8, $a5, 0
-	xvpickve2gr.d	$a5, $xr4, 1
-	vinsgr2vr.w	$vr8, $a5, 1
-	xvpickve2gr.d	$a5, $xr4, 2
-	vinsgr2vr.w	$vr8, $a5, 2
-	xvpickve2gr.d	$a5, $xr4, 3
-	vinsgr2vr.w	$vr8, $a5, 3
+	xvpermi.q	$xr7, $xr3, 1
+	vpickev.w	$vr7, $vr7, $vr3
+	xvpermi.q	$xr8, $xr4, 1
+	vpickev.w	$vr8, $vr8, $vr4
 	xvpermi.q	$xr7, $xr8, 2
 	xvaddi.wu	$xr8, $xr7, 1
 	xvaddi.wu	$xr7, $xr7, 9
@@ -661,22 +631,10 @@ main:                                   # @main
 	xvld	$xr8, $a5, 32
 	xvxor.v	$xr5, $xr7, $xr5
 	xvxor.v	$xr6, $xr8, $xr6
-	xvpickve2gr.d	$a5, $xr3, 0
-	vinsgr2vr.w	$vr7, $a5, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	vinsgr2vr.w	$vr7, $a5, 1
-	xvpickve2gr.d	$a5, $xr3, 2
-	vinsgr2vr.w	$vr7, $a5, 2
-	xvpickve2gr.d	$a5, $xr3, 3
-	vinsgr2vr.w	$vr7, $a5, 3
-	xvpickve2gr.d	$a5, $xr4, 0
-	vinsgr2vr.w	$vr8, $a5, 0
-	xvpickve2gr.d	$a5, $xr4, 1
-	vinsgr2vr.w	$vr8, $a5, 1
-	xvpickve2gr.d	$a5, $xr4, 2
-	vinsgr2vr.w	$vr8, $a5, 2
-	xvpickve2gr.d	$a5, $xr4, 3
-	vinsgr2vr.w	$vr8, $a5, 3
+	xvpermi.q	$xr7, $xr3, 1
+	vpickev.w	$vr7, $vr7, $vr3
+	xvpermi.q	$xr8, $xr4, 1
+	vpickev.w	$vr8, $vr8, $vr4
 	xvpermi.q	$xr7, $xr8, 2
 	xvaddi.wu	$xr8, $xr7, 1
 	xvaddi.wu	$xr7, $xr7, 9
@@ -735,22 +693,10 @@ main:                                   # @main
 	xvld	$xr8, $a5, 32
 	xvxor.v	$xr5, $xr7, $xr5
 	xvxor.v	$xr6, $xr8, $xr6
-	xvpickve2gr.d	$a5, $xr3, 0
-	vinsgr2vr.w	$vr7, $a5, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	vinsgr2vr.w	$vr7, $a5, 1
-	xvpickve2gr.d	$a5, $xr3, 2
-	vinsgr2vr.w	$vr7, $a5, 2
-	xvpickve2gr.d	$a5, $xr3, 3
-	vinsgr2vr.w	$vr7, $a5, 3
-	xvpickve2gr.d	$a5, $xr4, 0
-	vinsgr2vr.w	$vr8, $a5, 0
-	xvpickve2gr.d	$a5, $xr4, 1
-	vinsgr2vr.w	$vr8, $a5, 1
-	xvpickve2gr.d	$a5, $xr4, 2
-	vinsgr2vr.w	$vr8, $a5, 2
-	xvpickve2gr.d	$a5, $xr4, 3
-	vinsgr2vr.w	$vr8, $a5, 3
+	xvpermi.q	$xr7, $xr3, 1
+	vpickev.w	$vr7, $vr7, $vr3
+	xvpermi.q	$xr8, $xr4, 1
+	vpickev.w	$vr8, $vr8, $vr4
 	xvpermi.q	$xr7, $xr8, 2
 	xvaddi.wu	$xr8, $xr7, 1
 	xvaddi.wu	$xr7, $xr7, 9
@@ -809,22 +755,10 @@ main:                                   # @main
 	xvld	$xr8, $a5, 32
 	xvxor.v	$xr5, $xr7, $xr5
 	xvxor.v	$xr6, $xr8, $xr6
-	xvpickve2gr.d	$a5, $xr3, 0
-	vinsgr2vr.w	$vr7, $a5, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	vinsgr2vr.w	$vr7, $a5, 1
-	xvpickve2gr.d	$a5, $xr3, 2
-	vinsgr2vr.w	$vr7, $a5, 2
-	xvpickve2gr.d	$a5, $xr3, 3
-	vinsgr2vr.w	$vr7, $a5, 3
-	xvpickve2gr.d	$a5, $xr4, 0
-	vinsgr2vr.w	$vr8, $a5, 0
-	xvpickve2gr.d	$a5, $xr4, 1
-	vinsgr2vr.w	$vr8, $a5, 1
-	xvpickve2gr.d	$a5, $xr4, 2
-	vinsgr2vr.w	$vr8, $a5, 2
-	xvpickve2gr.d	$a5, $xr4, 3
-	vinsgr2vr.w	$vr8, $a5, 3
+	xvpermi.q	$xr7, $xr3, 1
+	vpickev.w	$vr7, $vr7, $vr3
+	xvpermi.q	$xr8, $xr4, 1
+	vpickev.w	$vr8, $vr8, $vr4
 	xvpermi.q	$xr7, $xr8, 2
 	xvaddi.wu	$xr8, $xr7, 1
 	xvaddi.wu	$xr7, $xr7, 9
@@ -882,22 +816,10 @@ main:                                   # @main
 	xvld	$xr8, $a4, 32
 	xvxor.v	$xr5, $xr7, $xr5
 	xvxor.v	$xr6, $xr8, $xr6
-	xvpickve2gr.d	$a4, $xr3, 0
-	vinsgr2vr.w	$vr7, $a4, 0
-	xvpickve2gr.d	$a4, $xr3, 1
-	vinsgr2vr.w	$vr7, $a4, 1
-	xvpickve2gr.d	$a4, $xr3, 2
-	vinsgr2vr.w	$vr7, $a4, 2
-	xvpickve2gr.d	$a4, $xr3, 3
-	vinsgr2vr.w	$vr7, $a4, 3
-	xvpickve2gr.d	$a4, $xr4, 0
-	vinsgr2vr.w	$vr8, $a4, 0
-	xvpickve2gr.d	$a4, $xr4, 1
-	vinsgr2vr.w	$vr8, $a4, 1
-	xvpickve2gr.d	$a4, $xr4, 2
-	vinsgr2vr.w	$vr8, $a4, 2
-	xvpickve2gr.d	$a4, $xr4, 3
-	vinsgr2vr.w	$vr8, $a4, 3
+	xvpermi.q	$xr7, $xr3, 1
+	vpickev.w	$vr7, $vr7, $vr3
+	xvpermi.q	$xr8, $xr4, 1
+	vpickev.w	$vr8, $vr8, $vr4
 	xvpermi.q	$xr7, $xr8, 2
 	xvaddi.wu	$xr8, $xr7, 1
 	xvaddi.wu	$xr7, $xr7, 9

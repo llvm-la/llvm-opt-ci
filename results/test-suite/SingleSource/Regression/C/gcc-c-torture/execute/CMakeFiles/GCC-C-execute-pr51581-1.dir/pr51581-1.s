@@ -308,26 +308,14 @@ f8:                                     # @f8
 	xvmul.d	$xr2, $xr4, $xr0
 	xvsrli.d	$xr2, $xr2, 33
 	xvsrli.d	$xr1, $xr1, 33
-	xvpickve2gr.d	$a4, $xr1, 0
-	vinsgr2vr.w	$vr3, $a4, 0
-	xvpickve2gr.d	$a4, $xr1, 1
-	vinsgr2vr.w	$vr3, $a4, 1
-	xvpickve2gr.d	$a4, $xr1, 2
-	vinsgr2vr.w	$vr3, $a4, 2
-	xvpickve2gr.d	$a4, $xr1, 3
-	vinsgr2vr.w	$vr3, $a4, 3
-	xvpickve2gr.d	$a4, $xr2, 0
-	vinsgr2vr.w	$vr1, $a4, 0
-	xvpickve2gr.d	$a4, $xr2, 1
-	vinsgr2vr.w	$vr1, $a4, 1
-	xvpickve2gr.d	$a4, $xr2, 2
-	vinsgr2vr.w	$vr1, $a4, 2
-	xvpickve2gr.d	$a4, $xr2, 3
-	vinsgr2vr.w	$vr1, $a4, 3
-	xvpermi.q	$xr3, $xr1, 2
+	xvpermi.q	$xr3, $xr1, 1
+	vpickev.w	$vr1, $vr3, $vr1
+	xvpermi.q	$xr3, $xr2, 1
+	vpickev.w	$vr2, $vr3, $vr2
+	xvpermi.q	$xr1, $xr2, 2
 	add.d	$a4, $a3, $a0
 	addi.d	$a0, $a0, 32
-	xvstx	$xr3, $a4, $a2
+	xvstx	$xr1, $a4, $a2
 	bnez	$a0, .LBB7_1
 # %bb.2:                                # %middle.block
 	ret
@@ -375,26 +363,14 @@ f9:                                     # @f9
 	xvmul.d	$xr2, $xr5, $xr0
 	xvmul.d	$xr3, $xr3, $xr0
 	xvsrai.d	$xr3, $xr3, 34
-	xvpickve2gr.d	$a4, $xr3, 0
-	vinsgr2vr.w	$vr4, $a4, 0
-	xvpickve2gr.d	$a4, $xr3, 1
-	vinsgr2vr.w	$vr4, $a4, 1
-	xvpickve2gr.d	$a4, $xr3, 2
-	vinsgr2vr.w	$vr4, $a4, 2
-	xvpickve2gr.d	$a4, $xr3, 3
-	vinsgr2vr.w	$vr4, $a4, 3
+	xvpermi.q	$xr4, $xr3, 1
+	vpickev.w	$vr3, $vr4, $vr3
 	xvsrai.d	$xr2, $xr2, 34
-	xvpickve2gr.d	$a4, $xr2, 0
-	vinsgr2vr.w	$vr3, $a4, 0
-	xvpickve2gr.d	$a4, $xr2, 1
-	vinsgr2vr.w	$vr3, $a4, 1
-	xvpickve2gr.d	$a4, $xr2, 2
-	vinsgr2vr.w	$vr3, $a4, 2
-	xvpickve2gr.d	$a4, $xr2, 3
-	vinsgr2vr.w	$vr3, $a4, 3
-	xvpermi.q	$xr4, $xr3, 2
+	xvpermi.q	$xr4, $xr2, 1
+	vpickev.w	$vr2, $vr4, $vr2
+	xvpermi.q	$xr3, $xr2, 2
 	xvsrli.w	$xr1, $xr1, 31
-	xvadd.w	$xr1, $xr4, $xr1
+	xvadd.w	$xr1, $xr3, $xr1
 	add.d	$a4, $a3, $a0
 	addi.d	$a0, $a0, 32
 	xvstx	$xr1, $a4, $a2
@@ -454,26 +430,14 @@ f10:                                    # @f10
 	xvmul.d	$xr2, $xr4, $xr0
 	xvsrli.d	$xr2, $xr2, 34
 	xvsrli.d	$xr1, $xr1, 34
-	xvpickve2gr.d	$a4, $xr1, 0
-	vinsgr2vr.w	$vr3, $a4, 0
-	xvpickve2gr.d	$a4, $xr1, 1
-	vinsgr2vr.w	$vr3, $a4, 1
-	xvpickve2gr.d	$a4, $xr1, 2
-	vinsgr2vr.w	$vr3, $a4, 2
-	xvpickve2gr.d	$a4, $xr1, 3
-	vinsgr2vr.w	$vr3, $a4, 3
-	xvpickve2gr.d	$a4, $xr2, 0
-	vinsgr2vr.w	$vr1, $a4, 0
-	xvpickve2gr.d	$a4, $xr2, 1
-	vinsgr2vr.w	$vr1, $a4, 1
-	xvpickve2gr.d	$a4, $xr2, 2
-	vinsgr2vr.w	$vr1, $a4, 2
-	xvpickve2gr.d	$a4, $xr2, 3
-	vinsgr2vr.w	$vr1, $a4, 3
-	xvpermi.q	$xr3, $xr1, 2
+	xvpermi.q	$xr3, $xr1, 1
+	vpickev.w	$vr1, $vr3, $vr1
+	xvpermi.q	$xr3, $xr2, 1
+	vpickev.w	$vr2, $vr3, $vr2
+	xvpermi.q	$xr1, $xr2, 2
 	add.d	$a4, $a3, $a0
 	addi.d	$a0, $a0, 32
-	xvstx	$xr3, $a4, $a2
+	xvstx	$xr1, $a4, $a2
 	bnez	$a0, .LBB9_1
 # %bb.2:                                # %middle.block
 	ret
@@ -521,26 +485,14 @@ f11:                                    # @f11
 	xvmul.d	$xr2, $xr5, $xr0
 	xvmul.d	$xr3, $xr3, $xr0
 	xvsrai.d	$xr3, $xr3, 35
-	xvpickve2gr.d	$a4, $xr3, 0
-	vinsgr2vr.w	$vr4, $a4, 0
-	xvpickve2gr.d	$a4, $xr3, 1
-	vinsgr2vr.w	$vr4, $a4, 1
-	xvpickve2gr.d	$a4, $xr3, 2
-	vinsgr2vr.w	$vr4, $a4, 2
-	xvpickve2gr.d	$a4, $xr3, 3
-	vinsgr2vr.w	$vr4, $a4, 3
+	xvpermi.q	$xr4, $xr3, 1
+	vpickev.w	$vr3, $vr4, $vr3
 	xvsrai.d	$xr2, $xr2, 35
-	xvpickve2gr.d	$a4, $xr2, 0
-	vinsgr2vr.w	$vr3, $a4, 0
-	xvpickve2gr.d	$a4, $xr2, 1
-	vinsgr2vr.w	$vr3, $a4, 1
-	xvpickve2gr.d	$a4, $xr2, 2
-	vinsgr2vr.w	$vr3, $a4, 2
-	xvpickve2gr.d	$a4, $xr2, 3
-	vinsgr2vr.w	$vr3, $a4, 3
-	xvpermi.q	$xr4, $xr3, 2
+	xvpermi.q	$xr4, $xr2, 1
+	vpickev.w	$vr2, $vr4, $vr2
+	xvpermi.q	$xr3, $xr2, 2
 	xvsrli.w	$xr1, $xr1, 31
-	xvadd.w	$xr1, $xr4, $xr1
+	xvadd.w	$xr1, $xr3, $xr1
 	add.d	$a4, $a3, $a0
 	addi.d	$a0, $a0, 32
 	xvstx	$xr1, $a4, $a2

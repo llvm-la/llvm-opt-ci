@@ -49,111 +49,98 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	add.d	$a5, $fp, $a2
 	vld	$vr7, $a5, -8
 	vpickve2gr.h	$a6, $vr8, 7
-	vpickve2gr.h	$a7, $vr7, 5
-	ext.w.h	$a7, $a7
-	vinsgr2vr.d	$vr9, $a7, 0
-	vpickve2gr.h	$t0, $vr7, 6
-	ext.w.h	$t0, $t0
-	vinsgr2vr.d	$vr9, $t0, 1
-	vpickve2gr.h	$t1, $vr7, 3
-	ext.w.h	$t1, $t1
-	vinsgr2vr.d	$vr8, $t1, 0
-	vpickve2gr.h	$t2, $vr7, 4
-	ext.w.h	$t2, $t2
-	vinsgr2vr.d	$vr8, $t2, 1
-	xvpermi.q	$xr8, $xr9, 2
 	ext.w.h	$a6, $a6
-	vinsgr2vr.d	$vr9, $a6, 0
+	vinsgr2vr.d	$vr8, $a6, 0
 	vpickve2gr.h	$a6, $vr7, 0
 	ext.w.h	$a6, $a6
-	vinsgr2vr.d	$vr9, $a6, 1
-	vpickve2gr.h	$t3, $vr7, 1
+	vinsgr2vr.d	$vr8, $a6, 1
+	vpickve2gr.h	$a7, $vr7, 1
+	ext.w.h	$a7, $a7
+	vinsgr2vr.d	$vr9, $a7, 0
+	vpickve2gr.h	$t0, $vr7, 2
+	ext.w.h	$t0, $t0
+	vinsgr2vr.d	$vr9, $t0, 1
+	xvpermi.q	$xr8, $xr9, 2
+	vpickve2gr.h	$t1, $vr7, 5
+	ext.w.h	$t1, $t1
+	vinsgr2vr.d	$vr10, $t1, 0
+	vpickve2gr.h	$t2, $vr7, 6
+	ext.w.h	$t2, $t2
+	vinsgr2vr.d	$vr10, $t2, 1
+	vpickve2gr.h	$t3, $vr7, 3
 	ext.w.h	$t3, $t3
-	vinsgr2vr.d	$vr10, $t3, 0
-	vpickve2gr.h	$t4, $vr7, 2
+	vinsgr2vr.d	$vr9, $t3, 0
+	vpickve2gr.h	$t4, $vr7, 4
 	ext.w.h	$t4, $t4
-	vinsgr2vr.d	$vr10, $t4, 1
+	vinsgr2vr.d	$vr9, $t4, 1
 	xvpermi.q	$xr9, $xr10, 2
-	vinsgr2vr.d	$vr11, $t4, 0
-	vinsgr2vr.d	$vr11, $t1, 1
-	vinsgr2vr.d	$vr10, $a6, 0
-	vinsgr2vr.d	$vr10, $t3, 1
+	vinsgr2vr.d	$vr11, $t2, 0
+	vpickve2gr.h	$t2, $vr7, 7
+	ext.w.h	$t2, $t2
+	vinsgr2vr.d	$vr11, $t2, 1
+	vinsgr2vr.d	$vr10, $t4, 0
+	vinsgr2vr.d	$vr10, $t1, 1
 	xvpermi.q	$xr10, $xr11, 2
 	vinsgr2vr.d	$vr12, $t0, 0
-	vpickve2gr.h	$a6, $vr7, 7
-	ext.w.h	$a6, $a6
-	vinsgr2vr.d	$vr12, $a6, 1
+	vinsgr2vr.d	$vr12, $t3, 1
 	vld	$vr14, $a5, -4
-	vinsgr2vr.d	$vr11, $t2, 0
+	vinsgr2vr.d	$vr11, $a6, 0
 	vinsgr2vr.d	$vr11, $a7, 1
 	xvpermi.q	$xr11, $xr12, 2
-	vpickve2gr.h	$a6, $vr14, 6
+	vpickve2gr.h	$a6, $vr14, 2
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr13, $a6, 0
-	vpickve2gr.h	$a6, $vr14, 7
+	vpickve2gr.h	$a6, $vr14, 3
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr13, $a6, 1
-	vpickve2gr.h	$a6, $vr14, 4
+	vpickve2gr.h	$a6, $vr14, 0
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr12, $a6, 0
-	vpickve2gr.h	$a6, $vr14, 5
+	vpickve2gr.h	$a6, $vr14, 1
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr12, $a6, 1
 	xvpermi.q	$xr12, $xr13, 2
-	vpickve2gr.h	$a6, $vr14, 2
+	vpickve2gr.h	$a6, $vr14, 6
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr15, $a6, 0
-	vpickve2gr.h	$a6, $vr14, 3
+	vpickve2gr.h	$a6, $vr14, 7
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr15, $a6, 1
-	vpickve2gr.h	$a6, $vr14, 0
+	vpickve2gr.h	$a6, $vr14, 4
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr13, $a6, 0
-	vpickve2gr.h	$a6, $vr14, 1
+	vpickve2gr.h	$a6, $vr14, 5
 	vld	$vr16, $a5, -2
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr13, $a6, 1
 	xvpermi.q	$xr13, $xr15, 2
-	vpickve2gr.h	$a6, $vr16, 6
+	vpickve2gr.h	$a6, $vr16, 2
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr15, $a6, 0
-	vpickve2gr.h	$a6, $vr16, 7
+	vpickve2gr.h	$a6, $vr16, 3
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr15, $a6, 1
-	vpickve2gr.h	$a6, $vr16, 4
+	vpickve2gr.h	$a6, $vr16, 0
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr14, $a6, 0
-	vpickve2gr.h	$a6, $vr16, 5
+	vpickve2gr.h	$a6, $vr16, 1
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr14, $a6, 1
 	xvpermi.q	$xr14, $xr15, 2
-	vpickve2gr.h	$a6, $vr16, 2
+	vpickve2gr.h	$a6, $vr16, 6
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr17, $a6, 0
-	vpickve2gr.h	$a6, $vr16, 3
+	vpickve2gr.h	$a6, $vr16, 7
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr17, $a6, 1
-	vpickve2gr.h	$a6, $vr16, 0
+	vpickve2gr.h	$a6, $vr16, 4
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr15, $a6, 0
-	vpickve2gr.h	$a6, $vr16, 1
+	vpickve2gr.h	$a6, $vr16, 5
 	vldx	$vr16, $fp, $a2
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr15, $a6, 1
 	xvpermi.q	$xr15, $xr17, 2
-	vpickve2gr.h	$a6, $vr16, 6
-	ext.w.h	$a6, $a6
-	vinsgr2vr.d	$vr17, $a6, 0
-	vpickve2gr.h	$a6, $vr16, 7
-	ext.w.h	$a6, $a6
-	vinsgr2vr.d	$vr17, $a6, 1
-	vpickve2gr.h	$a6, $vr16, 4
-	ext.w.h	$a6, $a6
-	vinsgr2vr.d	$vr18, $a6, 0
-	vpickve2gr.h	$a6, $vr16, 5
-	ext.w.h	$a6, $a6
-	vinsgr2vr.d	$vr18, $a6, 1
-	xvpermi.q	$xr18, $xr17, 2
 	vpickve2gr.h	$a6, $vr16, 2
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr17, $a6, 0
@@ -162,81 +149,81 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	vinsgr2vr.d	$vr17, $a6, 1
 	vpickve2gr.h	$a6, $vr16, 0
 	ext.w.h	$a6, $a6
-	vinsgr2vr.d	$vr19, $a6, 0
+	vinsgr2vr.d	$vr18, $a6, 0
 	vpickve2gr.h	$a6, $vr16, 1
+	ext.w.h	$a6, $a6
+	vinsgr2vr.d	$vr18, $a6, 1
+	xvpermi.q	$xr18, $xr17, 2
+	vpickve2gr.h	$a6, $vr16, 6
+	ext.w.h	$a6, $a6
+	vinsgr2vr.d	$vr17, $a6, 0
+	vpickve2gr.h	$a6, $vr16, 7
+	ext.w.h	$a6, $a6
+	vinsgr2vr.d	$vr17, $a6, 1
+	vpickve2gr.h	$a6, $vr16, 4
+	ext.w.h	$a6, $a6
+	vinsgr2vr.d	$vr19, $a6, 0
+	vpickve2gr.h	$a6, $vr16, 5
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr19, $a6, 1
 	vld	$vr20, $a5, 2
 	xvpermi.q	$xr19, $xr17, 2
 	xvslli.d	$xr17, $xr19, 13
 	xvslli.d	$xr16, $xr18, 13
-	vpickve2gr.h	$a6, $vr20, 6
+	vpickve2gr.h	$a6, $vr20, 2
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr19, $a6, 0
-	vpickve2gr.h	$a6, $vr20, 7
+	vpickve2gr.h	$a6, $vr20, 3
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr19, $a6, 1
-	vpickve2gr.h	$a6, $vr20, 4
+	vpickve2gr.h	$a6, $vr20, 0
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr18, $a6, 0
-	vpickve2gr.h	$a6, $vr20, 5
+	vpickve2gr.h	$a6, $vr20, 1
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr18, $a6, 1
 	xvpermi.q	$xr18, $xr19, 2
-	vpickve2gr.h	$a6, $vr20, 2
+	vpickve2gr.h	$a6, $vr20, 6
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr21, $a6, 0
-	vpickve2gr.h	$a6, $vr20, 3
+	vpickve2gr.h	$a6, $vr20, 7
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr21, $a6, 1
-	vpickve2gr.h	$a6, $vr20, 0
+	vpickve2gr.h	$a6, $vr20, 4
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr19, $a6, 0
-	vpickve2gr.h	$a6, $vr20, 1
+	vpickve2gr.h	$a6, $vr20, 5
 	vld	$vr22, $a5, 4
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr19, $a6, 1
 	xvpermi.q	$xr19, $xr21, 2
-	vpickve2gr.h	$a6, $vr22, 6
+	vpickve2gr.h	$a6, $vr22, 2
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr21, $a6, 0
-	vpickve2gr.h	$a6, $vr22, 7
+	vpickve2gr.h	$a6, $vr22, 3
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr21, $a6, 1
-	vpickve2gr.h	$a6, $vr22, 4
+	vpickve2gr.h	$a6, $vr22, 0
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr20, $a6, 0
-	vpickve2gr.h	$a6, $vr22, 5
+	vpickve2gr.h	$a6, $vr22, 1
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr20, $a6, 1
 	xvpermi.q	$xr20, $xr21, 2
-	vpickve2gr.h	$a6, $vr22, 2
+	vpickve2gr.h	$a6, $vr22, 6
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr23, $a6, 0
-	vpickve2gr.h	$a6, $vr22, 3
+	vpickve2gr.h	$a6, $vr22, 7
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr23, $a6, 1
-	vpickve2gr.h	$a6, $vr22, 0
+	vpickve2gr.h	$a6, $vr22, 4
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr21, $a6, 0
-	vpickve2gr.h	$a6, $vr22, 1
+	vpickve2gr.h	$a6, $vr22, 5
 	vld	$vr24, $a5, 8
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr21, $a6, 1
 	xvpermi.q	$xr21, $xr23, 2
-	vpickve2gr.h	$a6, $vr24, 2
-	ext.w.h	$a6, $a6
-	vinsgr2vr.d	$vr23, $a6, 0
-	vpickve2gr.h	$a6, $vr24, 3
-	ext.w.h	$a6, $a6
-	vinsgr2vr.d	$vr23, $a6, 1
-	vpickve2gr.h	$a6, $vr24, 0
-	ext.w.h	$a6, $a6
-	vinsgr2vr.d	$vr22, $a6, 0
-	vpickve2gr.h	$a6, $vr24, 1
-	ext.w.h	$a6, $a6
-	vinsgr2vr.d	$vr22, $a6, 1
-	xvpermi.q	$xr22, $xr23, 2
 	vpickve2gr.h	$a6, $vr24, 6
 	ext.w.h	$a6, $a6
 	vinsgr2vr.d	$vr23, $a6, 0
@@ -245,25 +232,25 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	vinsgr2vr.d	$vr23, $a6, 1
 	vpickve2gr.h	$a6, $vr24, 4
 	ext.w.h	$a6, $a6
-	vinsgr2vr.d	$vr25, $a6, 0
+	vinsgr2vr.d	$vr22, $a6, 0
 	vpickve2gr.h	$a6, $vr24, 5
+	ext.w.h	$a6, $a6
+	vinsgr2vr.d	$vr22, $a6, 1
+	xvpermi.q	$xr22, $xr23, 2
+	vpickve2gr.h	$a6, $vr24, 2
+	ext.w.h	$a6, $a6
+	vinsgr2vr.d	$vr23, $a6, 0
+	vpickve2gr.h	$a6, $vr24, 3
+	ext.w.h	$a6, $a6
+	vinsgr2vr.d	$vr23, $a6, 1
+	vpickve2gr.h	$a6, $vr24, 0
+	ext.w.h	$a6, $a6
+	vinsgr2vr.d	$vr25, $a6, 0
+	vpickve2gr.h	$a6, $vr24, 1
 	vld	$vr24, $a5, 10
 	ext.w.h	$a5, $a6
 	vinsgr2vr.d	$vr25, $a5, 1
 	xvpermi.q	$xr25, $xr23, 2
-	vpickve2gr.h	$a5, $vr24, 6
-	ext.w.h	$a5, $a5
-	vinsgr2vr.d	$vr23, $a5, 0
-	vpickve2gr.h	$a5, $vr24, 7
-	ext.w.h	$a5, $a5
-	vinsgr2vr.d	$vr23, $a5, 1
-	vpickve2gr.h	$a5, $vr24, 4
-	ext.w.h	$a5, $a5
-	vinsgr2vr.d	$vr26, $a5, 0
-	vpickve2gr.h	$a5, $vr24, 5
-	ext.w.h	$a5, $a5
-	vinsgr2vr.d	$vr26, $a5, 1
-	xvpermi.q	$xr26, $xr23, 2
 	vpickve2gr.h	$a5, $vr24, 2
 	ext.w.h	$a5, $a5
 	vinsgr2vr.d	$vr23, $a5, 0
@@ -272,8 +259,21 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	vinsgr2vr.d	$vr23, $a5, 1
 	vpickve2gr.h	$a5, $vr24, 0
 	ext.w.h	$a5, $a5
-	vinsgr2vr.d	$vr27, $a5, 0
+	vinsgr2vr.d	$vr26, $a5, 0
 	vpickve2gr.h	$a5, $vr24, 1
+	ext.w.h	$a5, $a5
+	vinsgr2vr.d	$vr26, $a5, 1
+	xvpermi.q	$xr26, $xr23, 2
+	vpickve2gr.h	$a5, $vr24, 6
+	ext.w.h	$a5, $a5
+	vinsgr2vr.d	$vr23, $a5, 0
+	vpickve2gr.h	$a5, $vr24, 7
+	ext.w.h	$a5, $a5
+	vinsgr2vr.d	$vr23, $a5, 1
+	vpickve2gr.h	$a5, $vr24, 4
+	ext.w.h	$a5, $a5
+	vinsgr2vr.d	$vr27, $a5, 0
+	vpickve2gr.h	$a5, $vr24, 5
 	ext.w.h	$a5, $a5
 	vinsgr2vr.d	$vr27, $a5, 1
 	xvpermi.q	$xr27, $xr23, 2
@@ -301,23 +301,14 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	xvmax.d	$xr9, $xr9, $xr5
 	xvmin.d	$xr9, $xr9, $xr6
 	xvmin.d	$xr8, $xr8, $xr6
-	xvpickve2gr.d	$a5, $xr8, 0
-	vinsgr2vr.h	$vr10, $a5, 0
-	xvpickve2gr.d	$a5, $xr8, 1
-	vinsgr2vr.h	$vr10, $a5, 1
-	xvpickve2gr.d	$a5, $xr8, 2
-	vinsgr2vr.h	$vr10, $a5, 2
-	xvpickve2gr.d	$a5, $xr8, 3
-	vinsgr2vr.h	$vr10, $a5, 3
-	xvpickve2gr.d	$a5, $xr9, 0
-	vinsgr2vr.h	$vr10, $a5, 4
-	xvpickve2gr.d	$a5, $xr9, 1
-	vinsgr2vr.h	$vr10, $a5, 5
-	xvpickve2gr.d	$a5, $xr9, 2
-	vinsgr2vr.h	$vr10, $a5, 6
-	xvpickve2gr.d	$a5, $xr9, 3
-	vinsgr2vr.h	$vr10, $a5, 7
-	vstx	$vr10, $a2, $a3
+	xvpermi.q	$xr10, $xr8, 1
+	vpickev.w	$vr8, $vr10, $vr8
+	xvpermi.q	$xr10, $xr9, 1
+	vpickev.w	$vr9, $vr10, $vr9
+	xvpermi.q	$xr9, $xr8, 2
+	xvpermi.d	$xr8, $xr9, 78
+	xvpickev.h	$xr8, $xr8, $xr9
+	vstx	$vr8, $a2, $a3
 	addi.d	$a2, $a2, 16
 	vori.b	$vr8, $vr7, 0
 	bne	$a2, $a4, .LBB0_1

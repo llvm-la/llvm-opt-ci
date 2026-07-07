@@ -14840,42 +14840,11 @@ _ZL29singleEarlyExitWithSingleLoadItEmPT_S1_S1_i: # @_ZL29singleEarlyExitWithSin
 	slli.d	$a4, $a7, 48
 	beqz	$a4, .LBB48_11
 # %bb.10:                               # %vector.early.exit
-	vpickve2gr.h	$a0, $vr0, 0
-	vinsgr2vr.b	$vr1, $a0, 0
-	vpickve2gr.h	$a0, $vr0, 1
-	vinsgr2vr.b	$vr1, $a0, 1
-	vpickve2gr.h	$a0, $vr0, 2
-	vinsgr2vr.b	$vr1, $a0, 2
-	vpickve2gr.h	$a0, $vr0, 3
-	vinsgr2vr.b	$vr1, $a0, 3
-	vpickve2gr.h	$a0, $vr0, 4
-	vinsgr2vr.b	$vr1, $a0, 4
-	vpickve2gr.h	$a0, $vr0, 5
-	vinsgr2vr.b	$vr1, $a0, 5
-	vpickve2gr.h	$a0, $vr0, 6
-	vinsgr2vr.b	$vr1, $a0, 6
-	vpickve2gr.h	$a0, $vr0, 7
-	vinsgr2vr.b	$vr1, $a0, 7
-	xvpermi.d	$xr0, $xr0, 14
-	vpickve2gr.h	$a0, $vr0, 0
-	vinsgr2vr.b	$vr1, $a0, 8
-	vpickve2gr.h	$a0, $vr0, 1
-	vinsgr2vr.b	$vr1, $a0, 9
-	vpickve2gr.h	$a0, $vr0, 2
-	vinsgr2vr.b	$vr1, $a0, 10
-	vpickve2gr.h	$a0, $vr0, 3
-	vinsgr2vr.b	$vr1, $a0, 11
-	vpickve2gr.h	$a0, $vr0, 4
-	vinsgr2vr.b	$vr1, $a0, 12
-	vpickve2gr.h	$a0, $vr0, 5
-	vpickve2gr.h	$a1, $vr0, 6
-	vpickve2gr.h	$a3, $vr0, 7
-	pcalau12i	$a4, %pc_hi20(.LCPI48_0)
-	vld	$vr0, $a4, %pc_lo12(.LCPI48_0)
-	vinsgr2vr.b	$vr1, $a0, 13
-	vinsgr2vr.b	$vr1, $a1, 14
-	vinsgr2vr.b	$vr1, $a3, 15
-	vand.v	$vr0, $vr1, $vr0
+	pcalau12i	$a0, %pc_hi20(.LCPI48_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI48_0)
+	xvpermi.d	$xr2, $xr0, 78
+	xvpickev.b	$xr0, $xr2, $xr0
+	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
@@ -14932,7 +14901,43 @@ _ZL18callThroughOptnoneIRPFmPtS0_S0_iEJS0_S0_S0_RlEEmOT_DpOT0_: # @_ZL18callThro
 	.size	_ZL18callThroughOptnoneIRPFmPtS0_S0_iEJS0_S0_S0_RlEEmOT_DpOT0_, .Lfunc_end49-_ZL18callThroughOptnoneIRPFmPtS0_S0_iEJS0_S0_S0_RlEEmOT_DpOT0_
 	.cfi_endproc
                                         # -- End function
-	.p2align	5                               # -- Begin function _ZL29singleEarlyExitWithSingleLoadIjEmPT_S1_S1_i
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZL29singleEarlyExitWithSingleLoadIjEmPT_S1_S1_i
+.LCPI50_0:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	16                              # 0x10
+	.byte	20                              # 0x14
+	.byte	24                              # 0x18
+	.byte	28                              # 0x1c
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.text
+	.p2align	5
 	.type	_ZL29singleEarlyExitWithSingleLoadIjEmPT_S1_S1_i,@function
 _ZL29singleEarlyExitWithSingleLoadIjEmPT_S1_S1_i: # @_ZL29singleEarlyExitWithSingleLoadIjEmPT_S1_S1_i
 # %bb.0:
@@ -14982,28 +14987,16 @@ _ZL29singleEarlyExitWithSingleLoadIjEmPT_S1_S1_i: # @_ZL29singleEarlyExitWithSin
 	andi	$a4, $a7, 255
 	beqz	$a4, .LBB50_11
 # %bb.10:                               # %vector.early.exit
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.b	$vr1, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.b	$vr1, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.b	$vr1, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.b	$vr1, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.b	$vr1, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.b	$vr1, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.b	$vr1, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.b	$vr1, $a0, 7
+	pcalau12i	$a0, %pc_hi20(.LCPI50_0)
+	xvld	$xr1, $a0, %pc_lo12(.LCPI50_0)
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.b	$xr0, $xr2, $xr0, $xr1
 	lu12i.w	$a0, 20576
 	ori	$a0, $a0, 1800
 	lu32i.d	$a0, 131844
 	lu52i.d	$a0, $a0, 16
-	vreplgr2vr.d	$vr0, $a0
-	vand.v	$vr0, $vr1, $vr0
+	vreplgr2vr.d	$vr1, $a0
+	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 2
@@ -15058,7 +15051,43 @@ _ZL18callThroughOptnoneIRPFmPjS0_S0_iEJS0_S0_S0_RlEEmOT_DpOT0_: # @_ZL18callThro
 	.size	_ZL18callThroughOptnoneIRPFmPjS0_S0_iEJS0_S0_S0_RlEEmOT_DpOT0_, .Lfunc_end51-_ZL18callThroughOptnoneIRPFmPjS0_S0_iEJS0_S0_S0_RlEEmOT_DpOT0_
 	.cfi_endproc
                                         # -- End function
-	.p2align	5                               # -- Begin function _ZL29singleEarlyExitWithSingleLoadImEmPT_S1_S1_i
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZL29singleEarlyExitWithSingleLoadImEmPT_S1_S1_i
+.LCPI52_0:
+	.byte	0                               # 0x0
+	.byte	8                               # 0x8
+	.byte	16                              # 0x10
+	.byte	24                              # 0x18
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.text
+	.p2align	5
 	.type	_ZL29singleEarlyExitWithSingleLoadImEmPT_S1_S1_i,@function
 _ZL29singleEarlyExitWithSingleLoadImEmPT_S1_S1_i: # @_ZL29singleEarlyExitWithSingleLoadImEmPT_S1_S1_i
 # %bb.0:
@@ -15108,18 +15137,14 @@ _ZL29singleEarlyExitWithSingleLoadImEmPT_S1_S1_i: # @_ZL29singleEarlyExitWithSin
 	andi	$a4, $a7, 15
 	beqz	$a4, .LBB52_11
 # %bb.10:                               # %vector.early.exit
-	xvpickve2gr.d	$a0, $xr0, 0
-	vinsgr2vr.b	$vr1, $a0, 0
-	xvpickve2gr.d	$a0, $xr0, 1
-	vinsgr2vr.b	$vr1, $a0, 1
-	xvpickve2gr.d	$a0, $xr0, 2
-	vinsgr2vr.b	$vr1, $a0, 2
-	xvpickve2gr.d	$a0, $xr0, 3
-	vinsgr2vr.b	$vr1, $a0, 3
+	pcalau12i	$a0, %pc_hi20(.LCPI52_0)
+	xvld	$xr1, $a0, %pc_lo12(.LCPI52_0)
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.b	$xr0, $xr2, $xr0, $xr1
 	lu12i.w	$a0, 4128
 	ori	$a0, $a0, 772
-	vreplgr2vr.w	$vr0, $a0
-	vand.v	$vr0, $vr1, $vr0
+	vreplgr2vr.w	$vr1, $a0
+	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 2
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 1
@@ -15362,42 +15387,11 @@ _ZL27singleEarlyExitWithTwoLoadsItEmPT_S1_S1_i: # @_ZL27singleEarlyExitWithTwoLo
 	slli.d	$a5, $t1, 48
 	beqz	$a5, .LBB55_11
 # %bb.10:                               # %vector.early.exit
-	vpickve2gr.h	$a0, $vr0, 0
-	vinsgr2vr.b	$vr1, $a0, 0
-	vpickve2gr.h	$a0, $vr0, 1
-	vinsgr2vr.b	$vr1, $a0, 1
-	vpickve2gr.h	$a0, $vr0, 2
-	vinsgr2vr.b	$vr1, $a0, 2
-	vpickve2gr.h	$a0, $vr0, 3
-	vinsgr2vr.b	$vr1, $a0, 3
-	vpickve2gr.h	$a0, $vr0, 4
-	vinsgr2vr.b	$vr1, $a0, 4
-	vpickve2gr.h	$a0, $vr0, 5
-	vinsgr2vr.b	$vr1, $a0, 5
-	vpickve2gr.h	$a0, $vr0, 6
-	vinsgr2vr.b	$vr1, $a0, 6
-	vpickve2gr.h	$a0, $vr0, 7
-	vinsgr2vr.b	$vr1, $a0, 7
-	xvpermi.d	$xr0, $xr0, 14
-	vpickve2gr.h	$a0, $vr0, 0
-	vinsgr2vr.b	$vr1, $a0, 8
-	vpickve2gr.h	$a0, $vr0, 1
-	vinsgr2vr.b	$vr1, $a0, 9
-	vpickve2gr.h	$a0, $vr0, 2
-	vinsgr2vr.b	$vr1, $a0, 10
-	vpickve2gr.h	$a0, $vr0, 3
-	vinsgr2vr.b	$vr1, $a0, 11
-	vpickve2gr.h	$a0, $vr0, 4
-	vinsgr2vr.b	$vr1, $a0, 12
-	vpickve2gr.h	$a0, $vr0, 5
-	vpickve2gr.h	$a1, $vr0, 6
-	vpickve2gr.h	$a2, $vr0, 7
-	pcalau12i	$a3, %pc_hi20(.LCPI55_0)
-	vld	$vr0, $a3, %pc_lo12(.LCPI55_0)
-	vinsgr2vr.b	$vr1, $a0, 13
-	vinsgr2vr.b	$vr1, $a1, 14
-	vinsgr2vr.b	$vr1, $a2, 15
-	vand.v	$vr0, $vr1, $vr0
+	pcalau12i	$a0, %pc_hi20(.LCPI55_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI55_0)
+	xvpermi.d	$xr2, $xr0, 78
+	xvpickev.b	$xr0, $xr2, $xr0
+	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
@@ -15422,7 +15416,43 @@ _ZL27singleEarlyExitWithTwoLoadsItEmPT_S1_S1_i: # @_ZL27singleEarlyExitWithTwoLo
 .Lfunc_end55:
 	.size	_ZL27singleEarlyExitWithTwoLoadsItEmPT_S1_S1_i, .Lfunc_end55-_ZL27singleEarlyExitWithTwoLoadsItEmPT_S1_S1_i
                                         # -- End function
-	.p2align	5                               # -- Begin function _ZL27singleEarlyExitWithTwoLoadsIjEmPT_S1_S1_i
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZL27singleEarlyExitWithTwoLoadsIjEmPT_S1_S1_i
+.LCPI56_0:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	16                              # 0x10
+	.byte	20                              # 0x14
+	.byte	24                              # 0x18
+	.byte	28                              # 0x1c
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.text
+	.p2align	5
 	.type	_ZL27singleEarlyExitWithTwoLoadsIjEmPT_S1_S1_i,@function
 _ZL27singleEarlyExitWithTwoLoadsIjEmPT_S1_S1_i: # @_ZL27singleEarlyExitWithTwoLoadsIjEmPT_S1_S1_i
 # %bb.0:
@@ -15454,18 +15484,18 @@ _ZL27singleEarlyExitWithTwoLoadsIjEmPT_S1_S1_i: # @_ZL27singleEarlyExitWithTwoLo
 	slli.d	$a0, $a0, 3
 	ori	$a5, $zero, 8
 	sub.d	$a5, $a5, $a0
-	xvrepli.b	$xr1, -1
+	xvrepli.b	$xr0, -1
 	move	$a6, $a2
 	move	$a7, $a1
 	.p2align	4, , 16
 .LBB56_7:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, 0
+	xvld	$xr1, $a6, 0
 	xvld	$xr2, $a7, 0
 	move	$t0, $a4
-	xvseq.w	$xr0, $xr0, $xr2
-	xvxor.v	$xr0, $xr0, $xr1
-	xvmskltz.w	$xr2, $xr0
+	xvseq.w	$xr1, $xr1, $xr2
+	xvxor.v	$xr1, $xr1, $xr0
+	xvmskltz.w	$xr2, $xr1
 	xvpickve2gr.wu	$t1, $xr2, 0
 	xvpickve2gr.wu	$a4, $xr2, 4
 	bstrins.d	$t1, $a4, 7, 4
@@ -15480,28 +15510,16 @@ _ZL27singleEarlyExitWithTwoLoadsIjEmPT_S1_S1_i: # @_ZL27singleEarlyExitWithTwoLo
 	andi	$a5, $t1, 255
 	beqz	$a5, .LBB56_11
 # %bb.10:                               # %vector.early.exit
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.b	$vr1, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.b	$vr1, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.b	$vr1, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.b	$vr1, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.b	$vr1, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.b	$vr1, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.b	$vr1, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.b	$vr1, $a0, 7
+	pcalau12i	$a0, %pc_hi20(.LCPI56_0)
+	xvld	$xr0, $a0, %pc_lo12(.LCPI56_0)
+	xvpermi.d	$xr2, $xr1, 78
+	xvshuf.b	$xr0, $xr2, $xr1, $xr0
 	lu12i.w	$a0, 20576
 	ori	$a0, $a0, 1800
 	lu32i.d	$a0, 131844
 	lu52i.d	$a0, $a0, 16
-	vreplgr2vr.d	$vr0, $a0
-	vand.v	$vr0, $vr1, $vr0
+	vreplgr2vr.d	$vr1, $a0
+	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 2
@@ -15524,7 +15542,43 @@ _ZL27singleEarlyExitWithTwoLoadsIjEmPT_S1_S1_i: # @_ZL27singleEarlyExitWithTwoLo
 .Lfunc_end56:
 	.size	_ZL27singleEarlyExitWithTwoLoadsIjEmPT_S1_S1_i, .Lfunc_end56-_ZL27singleEarlyExitWithTwoLoadsIjEmPT_S1_S1_i
                                         # -- End function
-	.p2align	5                               # -- Begin function _ZL27singleEarlyExitWithTwoLoadsImEmPT_S1_S1_i
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZL27singleEarlyExitWithTwoLoadsImEmPT_S1_S1_i
+.LCPI57_0:
+	.byte	0                               # 0x0
+	.byte	8                               # 0x8
+	.byte	16                              # 0x10
+	.byte	24                              # 0x18
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.text
+	.p2align	5
 	.type	_ZL27singleEarlyExitWithTwoLoadsImEmPT_S1_S1_i,@function
 _ZL27singleEarlyExitWithTwoLoadsImEmPT_S1_S1_i: # @_ZL27singleEarlyExitWithTwoLoadsImEmPT_S1_S1_i
 # %bb.0:
@@ -15556,18 +15610,18 @@ _ZL27singleEarlyExitWithTwoLoadsImEmPT_S1_S1_i: # @_ZL27singleEarlyExitWithTwoLo
 	slli.d	$a0, $a0, 2
 	ori	$a5, $zero, 4
 	sub.d	$a5, $a5, $a0
-	xvrepli.b	$xr1, -1
+	xvrepli.b	$xr0, -1
 	move	$a6, $a2
 	move	$a7, $a1
 	.p2align	4, , 16
 .LBB57_7:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a6, 0
+	xvld	$xr1, $a6, 0
 	xvld	$xr2, $a7, 0
 	move	$t0, $a4
-	xvseq.d	$xr0, $xr0, $xr2
-	xvxor.v	$xr0, $xr0, $xr1
-	xvmskltz.d	$xr2, $xr0
+	xvseq.d	$xr1, $xr1, $xr2
+	xvxor.v	$xr1, $xr1, $xr0
+	xvmskltz.d	$xr2, $xr1
 	xvpickve2gr.wu	$t1, $xr2, 0
 	xvpickve2gr.wu	$a4, $xr2, 4
 	bstrins.d	$t1, $a4, 3, 2
@@ -15582,18 +15636,14 @@ _ZL27singleEarlyExitWithTwoLoadsImEmPT_S1_S1_i: # @_ZL27singleEarlyExitWithTwoLo
 	andi	$a5, $t1, 15
 	beqz	$a5, .LBB57_11
 # %bb.10:                               # %vector.early.exit
-	xvpickve2gr.d	$a0, $xr0, 0
-	vinsgr2vr.b	$vr1, $a0, 0
-	xvpickve2gr.d	$a0, $xr0, 1
-	vinsgr2vr.b	$vr1, $a0, 1
-	xvpickve2gr.d	$a0, $xr0, 2
-	vinsgr2vr.b	$vr1, $a0, 2
-	xvpickve2gr.d	$a0, $xr0, 3
-	vinsgr2vr.b	$vr1, $a0, 3
+	pcalau12i	$a0, %pc_hi20(.LCPI57_0)
+	xvld	$xr0, $a0, %pc_lo12(.LCPI57_0)
+	xvpermi.d	$xr2, $xr1, 78
+	xvshuf.b	$xr0, $xr2, $xr1, $xr0
 	lu12i.w	$a0, 4128
 	ori	$a0, $a0, 772
-	vreplgr2vr.w	$vr0, $a0
-	vand.v	$vr0, $vr1, $vr0
+	vreplgr2vr.w	$vr1, $a0
+	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 2
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 1
@@ -15842,7 +15892,43 @@ _ZL39singleEarlyExitWithThreeLoadsAndComputeItEmPT_S1_S1_i: # @_ZL39singleEarlyE
 .Lfunc_end59:
 	.size	_ZL39singleEarlyExitWithThreeLoadsAndComputeItEmPT_S1_S1_i, .Lfunc_end59-_ZL39singleEarlyExitWithThreeLoadsAndComputeItEmPT_S1_S1_i
                                         # -- End function
-	.p2align	5                               # -- Begin function _ZL39singleEarlyExitWithThreeLoadsAndComputeIjEmPT_S1_S1_i
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZL39singleEarlyExitWithThreeLoadsAndComputeIjEmPT_S1_S1_i
+.LCPI60_0:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	16                              # 0x10
+	.byte	20                              # 0x14
+	.byte	24                              # 0x18
+	.byte	28                              # 0x1c
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.text
+	.p2align	5
 	.type	_ZL39singleEarlyExitWithThreeLoadsAndComputeIjEmPT_S1_S1_i,@function
 _ZL39singleEarlyExitWithThreeLoadsAndComputeIjEmPT_S1_S1_i: # @_ZL39singleEarlyExitWithThreeLoadsAndComputeIjEmPT_S1_S1_i
 # %bb.0:
@@ -15909,28 +15995,16 @@ _ZL39singleEarlyExitWithThreeLoadsAndComputeIjEmPT_S1_S1_i: # @_ZL39singleEarlyE
 	andi	$a6, $t3, 255
 	beqz	$a6, .LBB60_11
 # %bb.10:                               # %vector.early.exit
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.b	$vr1, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.b	$vr1, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.b	$vr1, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.b	$vr1, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.b	$vr1, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.b	$vr1, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.b	$vr1, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.b	$vr1, $a0, 7
+	pcalau12i	$a0, %pc_hi20(.LCPI60_0)
+	xvld	$xr1, $a0, %pc_lo12(.LCPI60_0)
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.b	$xr0, $xr2, $xr0, $xr1
 	lu12i.w	$a0, 20576
 	ori	$a0, $a0, 1800
 	lu32i.d	$a0, 131844
 	lu52i.d	$a0, $a0, 16
-	vreplgr2vr.d	$vr0, $a0
-	vand.v	$vr0, $vr1, $vr0
+	vreplgr2vr.d	$vr1, $a0
+	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 2
@@ -15953,7 +16027,43 @@ _ZL39singleEarlyExitWithThreeLoadsAndComputeIjEmPT_S1_S1_i: # @_ZL39singleEarlyE
 .Lfunc_end60:
 	.size	_ZL39singleEarlyExitWithThreeLoadsAndComputeIjEmPT_S1_S1_i, .Lfunc_end60-_ZL39singleEarlyExitWithThreeLoadsAndComputeIjEmPT_S1_S1_i
                                         # -- End function
-	.p2align	5                               # -- Begin function _ZL39singleEarlyExitWithThreeLoadsAndComputeImEmPT_S1_S1_i
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZL39singleEarlyExitWithThreeLoadsAndComputeImEmPT_S1_S1_i
+.LCPI61_0:
+	.byte	0                               # 0x0
+	.byte	8                               # 0x8
+	.byte	16                              # 0x10
+	.byte	24                              # 0x18
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.text
+	.p2align	5
 	.type	_ZL39singleEarlyExitWithThreeLoadsAndComputeImEmPT_S1_S1_i,@function
 _ZL39singleEarlyExitWithThreeLoadsAndComputeImEmPT_S1_S1_i: # @_ZL39singleEarlyExitWithThreeLoadsAndComputeImEmPT_S1_S1_i
 # %bb.0:
@@ -16020,18 +16130,14 @@ _ZL39singleEarlyExitWithThreeLoadsAndComputeImEmPT_S1_S1_i: # @_ZL39singleEarlyE
 	andi	$a6, $t3, 15
 	beqz	$a6, .LBB61_11
 # %bb.10:                               # %vector.early.exit
-	xvpickve2gr.d	$a0, $xr0, 0
-	vinsgr2vr.b	$vr1, $a0, 0
-	xvpickve2gr.d	$a0, $xr0, 1
-	vinsgr2vr.b	$vr1, $a0, 1
-	xvpickve2gr.d	$a0, $xr0, 2
-	vinsgr2vr.b	$vr1, $a0, 2
-	xvpickve2gr.d	$a0, $xr0, 3
-	vinsgr2vr.b	$vr1, $a0, 3
+	pcalau12i	$a0, %pc_hi20(.LCPI61_0)
+	xvld	$xr1, $a0, %pc_lo12(.LCPI61_0)
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.b	$xr0, $xr2, $xr0, $xr1
 	lu12i.w	$a0, 4128
 	ori	$a0, $a0, 772
-	vreplgr2vr.w	$vr0, $a0
-	vand.v	$vr0, $vr1, $vr0
+	vreplgr2vr.w	$vr1, $a0
+	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 2
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 1
