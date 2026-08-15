@@ -297,7 +297,6 @@ def create_commits(branch: str, label: str, flag: str, tests: str, commit_sha: s
     # Clean and create branch from main
     check(f"cd '{ROOT}' && git checkout -B '{branch}' main")
     check(f"cd '{ROOT}' && git clean -ffd")
-    check(f"cd '{ROOT}' && git rm -rf . 2>/dev/null || true")
 
     # Copy differing files from base
     for rel, f1, f2 in all_diffs:
@@ -306,7 +305,7 @@ def create_commits(branch: str, label: str, flag: str, tests: str, commit_sha: s
         shutil.copy2(f1, dst)
 
     # Commit 1: base
-    check(f"cd '{ROOT}' && git add -A")
+    check(f"cd '{ROOT}' && git add -A {RESULTS_DIR}")
     msg = f"base: {label} ({flag}) {commit_sha}"
     check(f"cd '{ROOT}' && git commit -m '{msg}' --allow-empty")
 
@@ -317,7 +316,7 @@ def create_commits(branch: str, label: str, flag: str, tests: str, commit_sha: s
         shutil.copy2(f2, dst)
 
     # Commit 2: opt
-    check(f"cd '{ROOT}' && git add -A")
+    check(f"cd '{ROOT}' && git add -A {RESULTS_DIR}")
     msg = f"opt: {label} ({flag}) {commit_sha}"
     check(f"cd '{ROOT}' && git commit -m '{msg}' --allow-empty")
 
