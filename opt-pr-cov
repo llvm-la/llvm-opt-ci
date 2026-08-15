@@ -281,9 +281,6 @@ def diff_files(base_dir: str, opt_dir: str) -> list[tuple[str, str, str]]:
 
 def create_commits(branch: str, label: str, flag: str, tests: str, commit_sha: str):
     """Create branch with two commits: base files, then opt files."""
-    results_base = RESULTS_DIR / "base"
-    results_opt = RESULTS_DIR / "opt"
-
     # Only copy differing files
     all_diffs: list[tuple[str, str, str]] = []
     for suite in tests.split(","):
@@ -302,24 +299,22 @@ def create_commits(branch: str, label: str, flag: str, tests: str, commit_sha: s
     check(f"cd '{ROOT}' && git clean -ffd")
     check(f"cd '{ROOT}' && git rm -rf . 2>/dev/null || true")
 
-    # Copy differing files
+    # Copy differing files from base
     for rel, f1, f2 in all_diffs:
-        # Base files
-        dst = results_base / rel
+        dst = RESULTS_DIR / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(f1, dst)
-        # Opt files
-        dst = results_opt / rel
-        dst.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(f2, dst)
 
     # Commit 1: base
     check(f"cd '{ROOT}' && git add -A")
     msg = f"base: {label} ({flag}) {commit_sha}"
     check(f"cd '{ROOT}' && git commit -m '{msg}' --allow-empty")
 
-    # Remove base files, keep opt files
-    check(f"cd '{ROOT}' && git rm -rf '{results_base}' || true")
+    # Copy differing files from opt
+    for rel, f1, f2 in all_diffs:
+        dst = RESULTS_DIR / rel
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(f2, dst)
 
     # Commit 2: opt
     check(f"cd '{ROOT}' && git add -A")
