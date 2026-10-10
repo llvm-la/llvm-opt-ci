@@ -20,17 +20,13 @@ if [ -f CMakeCache.txt ]; then
   fi
 fi
 
-# Use sccache only if it actually works (a zombie server must not break the build)
-LAUNCHER_FLAGS=""
-if command -v sccache >/dev/null 2>&1 \
-   && echo 'int main(){return 0;}' | sccache clang -x c - -o /dev/null -c 2>/dev/null; then
-  LAUNCHER_FLAGS="-DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache"
-fi
-
+# No sccache: a wedged sccache daemon aborts every compile. Explicitly empty
+# launcher values also override any cached sccache settings in the build dir.
 cmake "$expected_src" \
   -DCMAKE_CXX_COMPILER=clang++ \
   -DCMAKE_C_COMPILER=clang \
-  $LAUNCHER_FLAGS \
+  -DCMAKE_C_COMPILER_LAUNCHER= \
+  -DCMAKE_CXX_COMPILER_LAUNCHER= \
   -DCMAKE_BUILD_TYPE=Release \
   -DLLVM_USE_LINKER=mold \
   -DBUILD_SHARED_LIBS=true \
