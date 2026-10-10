@@ -97,9 +97,10 @@ def write_state(d: dict):
     _state_path().write_text("\n".join(f"{k}={v}" for k, v in d.items()) + "\n")
 
 
-def mark_step(step: str):
+def mark_step(step: str, **meta):
     s = read_state() or {}
     s[step] = "done"
+    s.update(meta)
     write_state(s)
 
 
@@ -396,6 +397,24 @@ def main():
     commit_sha = None
     merge_base = None
 
+    # Restore context persisted by earlier runs (needed when steps are skipped).
+    # Fall back to recomputing from git for state files written by older versions.
+    state = read_state() or {}
+    opt_branch = state.get("opt_branch") or opt_branch
+    commit_sha = state.get("commit_sha") or commit_sha
+    merge_base = state.get("merge_base") or merge_base
+    if state.get("fetch-remote") == "done" and not opt_branch:
+        opt_branch = f"pr-{pr_id}-local" if use_pr else local_branch
+    if opt_branch and (not commit_sha or not merge_base):
+        if not commit_sha:
+            r = run(f"cd '{LLVM_SRC}' && git rev-parse {opt_branch}", capture_output=True, text=True)
+            commit_sha = r.stdout.strip() if r.returncode == 0 else None
+        if not merge_base:
+            merge_base = find_merge_base(opt_branch)
+        if not commit_sha or not merge_base:
+            print("Error: cannot recover run context from state; use --fresh to re-run.", file=sys.stderr)
+            sys.exit(1)
+
     try:
         step_num = 0
 
@@ -413,7 +432,7 @@ def main():
                 commit_sha = r.stdout.strip()
                 opt_branch = local_branch
             print(f"\n[OK] Step {step_num}/9: fetch-remote   ({fmt_seconds(int(time.time()-t0))})")
-            mark_step("fetch-remote")
+            mark_step("fetch-remote", opt_branch=opt_branch, commit_sha=commit_sha)
 
         # ── Step 2: Find merge-base ──
         if not step_done("find-merge-base"):
@@ -422,7 +441,7 @@ def main():
             step_num = 2
             merge_base = find_merge_base(opt_branch)
             print(f"\n[OK] Step {step_num}/9: find-merge-base ({fmt_seconds(int(time.time()-t0))}) — {merge_base[:8]}")
-            mark_step("find-merge-base")
+            mark_step("find-merge-base", merge_base=merge_base)
 
         # ── Step 3: Checkout base ──
         if not step_done("checkout-base"):
