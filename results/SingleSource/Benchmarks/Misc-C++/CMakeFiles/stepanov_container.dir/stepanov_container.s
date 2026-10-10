@@ -4192,17 +4192,17 @@ _ZSt16__introsort_loopISt15_Deque_iteratorIdRdPdElSt4lessIvEEvT_S6_T0_T1_: # @_Z
 	sub.d	$a1, $a0, $a2
 	srli.d	$a1, $a1, 3
 	sltu	$a3, $zero, $a0
-	sub.d	$a4, $a1, $a3
+	sub.d	$a6, $a1, $a3
 	ld.d	$a3, $fp, 0
 	ld.d	$a1, $fp, 8
-	slli.d	$a6, $a4, 6
 	ld.d	$a4, $s0, 16
 	ld.d	$a5, $s0, 0
+	slli.d	$a6, $a6, 6
 	sub.d	$a7, $a3, $a1
 	srai.d	$a7, $a7, 3
-	add.d	$a6, $a6, $a7
-	sub.d	$a7, $a4, $a5
-	srai.d	$a7, $a7, 3
+	sub.d	$t0, $a4, $a5
+	srai.d	$t0, $t0, 3
+	add.d	$a7, $a7, $t0
 	add.d	$a6, $a6, $a7
 	blt	$a6, $s2, .LBB29_5
 # %bb.2:                                #   in Loop: Header=BB29_1 Depth=1
@@ -4303,17 +4303,17 @@ _ZSt22__final_insertion_sortISt15_Deque_iteratorIdRdPdESt4lessIvEEvT_S6_T0_: # @
 	sub.d	$a2, $a1, $a0
 	srli.d	$a2, $a2, 3
 	sltu	$a3, $zero, $a1
-	sub.d	$a2, $a2, $a3
+	sub.d	$a6, $a2, $a3
 	ld.d	$a3, $fp, 0
 	ld.d	$a4, $fp, 8
-	slli.d	$a6, $a2, 6
 	ld.d	$a5, $s0, 16
 	ld.d	$a2, $s0, 0
+	slli.d	$a6, $a6, 6
 	sub.d	$a7, $a3, $a4
 	srai.d	$a7, $a7, 3
-	add.d	$a6, $a6, $a7
-	sub.d	$a7, $a5, $a2
-	srai.d	$a7, $a7, 3
+	sub.d	$t0, $a5, $a2
+	srai.d	$t0, $t0, 3
+	add.d	$a7, $a7, $t0
 	add.d	$a6, $a6, $a7
 	ori	$a7, $zero, 17
 	blt	$a6, $a7, .LBB30_4
@@ -4623,23 +4623,23 @@ _ZSt27__unguarded_partition_pivotISt15_Deque_iteratorIdRdPdESt4lessIvEET_S6_S6_T
 	sub.d	$a5, $a3, $a4
 	srli.d	$a5, $a5, 3
 	sltu	$a6, $zero, $a3
-	sub.d	$a5, $a5, $a6
+	sub.d	$t0, $a5, $a6
 	ld.d	$a7, $a2, 0
-	ld.d	$a2, $a2, 8
-	slli.d	$t0, $a5, 6
+	ld.d	$a5, $a2, 8
 	ld.d	$a6, $a1, 16
-	ld.d	$a5, $a1, 0
-	sub.d	$t1, $a7, $a2
+	ld.d	$a2, $a1, 0
+	slli.d	$t0, $t0, 6
+	sub.d	$t1, $a7, $a5
 	srai.d	$t2, $t1, 3
-	add.d	$t0, $t0, $t2
-	sub.d	$t1, $a6, $a5
+	sub.d	$t1, $a6, $a2
 	srai.d	$t1, $t1, 3
+	add.d	$t1, $t2, $t1
 	add.d	$t0, $t0, $t1
 	ld.d	$a1, $a1, 8
 	srli.d	$t1, $t0, 63
 	add.d	$t0, $t0, $t1
 	srai.d	$t3, $t0, 1
-	sub.d	$t0, $a5, $a1
+	sub.d	$t0, $a2, $a1
 	srai.d	$t0, $t0, 3
 	add.d	$t1, $t3, $t0
 	bltz	$t1, .LBB32_4
@@ -4647,7 +4647,7 @@ _ZSt27__unguarded_partition_pivotISt15_Deque_iteratorIdRdPdESt4lessIvEET_S6_S6_T
 	ori	$t4, $zero, 63
 	bltu	$t4, $t1, .LBB32_5
 # %bb.2:
-	alsl.d	$t1, $t3, $a5, 3
+	alsl.d	$t1, $t3, $a2, 3
 	addi.w	$t4, $zero, -1
 	addi.d	$t3, $t0, 1
 	bge	$t0, $t4, .LBB32_7
@@ -4672,7 +4672,7 @@ _ZSt27__unguarded_partition_pivotISt15_Deque_iteratorIdRdPdESt4lessIvEET_S6_S6_T
 	ori	$t4, $zero, 62
 	blt	$t4, $t0, .LBB32_10
 # %bb.8:
-	addi.d	$t0, $a5, 8
+	addi.d	$t0, $a2, 8
 	addi.d	$t3, $t2, -1
 	bgtz	$t2, .LBB32_12
 .LBB32_9:
@@ -4714,51 +4714,51 @@ _ZSt27__unguarded_partition_pivotISt15_Deque_iteratorIdRdPdESt4lessIvEET_S6_S6_T
 	fcmp.cule.d	$fcc0, $fa0, $fa2
 	bcnez	$fcc0, .LBB32_21
 # %bb.18:
-	fld.d	$fa0, $a5, 0
-	fst.d	$fa2, $a5, 0
+	fld.d	$fa0, $a2, 0
+	fst.d	$fa2, $a2, 0
 	fst.d	$fa0, $t1, 0
 	b	.LBB32_27
 .LBB32_19:
 	fcmp.cule.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB32_23
 # %bb.20:
-	fld.d	$fa0, $a5, 0
-	fst.d	$fa1, $a5, 0
+	fld.d	$fa0, $a2, 0
+	fst.d	$fa1, $a2, 0
 	fst.d	$fa0, $t0, 0
 	b	.LBB32_27
 .LBB32_21:
-	fld.d	$fa2, $a5, 0
+	fld.d	$fa2, $a2, 0
 	fcmp.cule.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB32_25
 # %bb.22:
-	fst.d	$fa0, $a5, 0
+	fst.d	$fa0, $a2, 0
 	fst.d	$fa2, $t2, 0
 	b	.LBB32_27
 .LBB32_23:
-	fld.d	$fa1, $a5, 0
+	fld.d	$fa1, $a2, 0
 	fcmp.cule.d	$fcc0, $fa0, $fa2
 	bcnez	$fcc0, .LBB32_26
 # %bb.24:
-	fst.d	$fa0, $a5, 0
+	fst.d	$fa0, $a2, 0
 	fst.d	$fa1, $t2, 0
 	b	.LBB32_27
 .LBB32_25:
-	fst.d	$fa1, $a5, 0
+	fst.d	$fa1, $a2, 0
 	fst.d	$fa2, $t0, 0
 	b	.LBB32_27
 .LBB32_26:
-	fst.d	$fa2, $a5, 0
+	fst.d	$fa2, $a2, 0
 	fst.d	$fa1, $t1, 0
 	.p2align	4, , 16
 .LBB32_27:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB32_31 Depth 2
                                         #     Child Loop BB32_39 Depth 2
 	fld.d	$fa1, $t0, 0
-	fld.d	$fa0, $a5, 0
+	fld.d	$fa0, $a2, 0
 	fcmp.cule.d	$fcc0, $fa0, $fa1
 	bceqz	$fcc0, .LBB32_31
 .LBB32_28:                              #   in Loop: Header=BB32_27 Depth=1
-	beq	$a7, $a2, .LBB32_33
+	beq	$a7, $a5, .LBB32_33
 # %bb.29:                               #   in Loop: Header=BB32_27 Depth=1
 	fld.d	$fa2, $a7, -8
 	fcmp.cule.d	$fcc0, $fa2, $fa0
@@ -4782,9 +4782,9 @@ _ZSt27__unguarded_partition_pivotISt15_Deque_iteratorIdRdPdESt4lessIvEET_S6_S6_T
 	b	.LBB32_30
 	.p2align	4, , 16
 .LBB32_33:                              #   in Loop: Header=BB32_27 Depth=1
-	ld.d	$a2, $a3, -8
+	ld.d	$a5, $a3, -8
 	addi.d	$a3, $a3, -8
-	addi.d	$a7, $a2, 512
+	addi.d	$a7, $a5, 512
 	fld.d	$fa2, $a7, -8
 	fcmp.cule.d	$fcc0, $fa2, $fa0
 	addi.d	$t1, $a7, -8
@@ -4820,11 +4820,11 @@ _ZSt27__unguarded_partition_pivotISt15_Deque_iteratorIdRdPdESt4lessIvEET_S6_S6_T
 	bceqz	$fcc0, .LBB32_35
 .LBB32_39:                              #   Parent Loop BB32_27 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bne	$t1, $a2, .LBB32_38
+	bne	$t1, $a5, .LBB32_38
 # %bb.40:                               #   in Loop: Header=BB32_39 Depth=2
-	ld.d	$a2, $a3, -8
+	ld.d	$a5, $a3, -8
 	addi.d	$a3, $a3, -8
-	addi.d	$t1, $a2, 512
+	addi.d	$t1, $a5, 512
 	b	.LBB32_38
 .LBB32_41:
 	st.d	$t0, $a0, 0

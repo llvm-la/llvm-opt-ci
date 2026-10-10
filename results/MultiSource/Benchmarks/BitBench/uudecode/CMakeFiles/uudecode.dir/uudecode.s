@@ -126,8 +126,8 @@ decode:                                 # @decode
 # %bb.5:                                #   in Loop: Header=BB2_2 Depth=1
 	alsl.d	$a6, $a5, $a5, 1
 	addi.d	$a7, $a2, 3
+	add.d	$a7, $a7, $a3
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $a3
 	add.d	$a7, $a0, $a1
 	bltu	$a7, $a6, .LBB2_9
 .LBB2_6:                                #   in Loop: Header=BB2_2 Depth=1
@@ -785,8 +785,8 @@ main:                                   # @main
 .LBB4_17:                               #   in Loop: Header=BB4_9 Depth=2
 	addi.d	$a2, $a4, -1
 	sltui	$a2, $a2, 1
-	sub.d	$a1, $a1, $a2
 	sub.d	$a1, $a1, $a3
+	sub.d	$a1, $a1, $a2
 	addi.w	$a1, $a1, 2
 	addi.w	$a0, $a0, 4
 .LBB4_18:                               #   in Loop: Header=BB4_9 Depth=2

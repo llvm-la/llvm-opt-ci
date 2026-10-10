@@ -233,8 +233,8 @@ write_out_picture:                      # @write_out_picture
 	ld.w	$a2, $s4, 8
 	ld.w	$a3, $s4, 12
 	ldx.w	$s1, $a0, $a1
-	mul.d	$a0, $a2, $s3
-	mul.w	$a0, $a0, $a3
+	mul.d	$a0, $a2, $a3
+	mul.w	$a0, $a0, $s3
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
@@ -491,8 +491,8 @@ write_out_picture:                      # @write_out_picture
 	bne	$a0, $a1, .LBB3_29
 # %bb.36:
 	or	$a0, $s6, $s5
-	or	$a0, $a0, $s7
-	or	$a0, $a0, $s8
+	or	$a1, $s7, $s8
+	or	$a0, $a0, $a1
 	addi.w	$a0, $a0, 0
 	move	$s1, $s3
 	bnez	$a0, .LBB3_29
@@ -1010,8 +1010,8 @@ write_out_picture:                      # @write_out_picture
 # %bb.107:
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	or	$a0, $s5, $a0
-	or	$a0, $a0, $fp
-	or	$a0, $a0, $s4
+	or	$a1, $fp, $s4
+	or	$a0, $a0, $a1
 	move	$s1, $s3
 	bnez	$a0, .LBB3_100
 # %bb.108:

@@ -3788,10 +3788,10 @@ _Z13UpdateArchiveP7CCodecsRKN9NWildcard7CCensorER14CUpdateOptionsR16CUpdateError
 # %bb.84:                               #   in Loop: Header=BB12_78 Depth=1
 	ld.w	$a3, $a5, 160
 	or	$a3, $a6, $a3
-	or	$a3, $a3, $a7
-	or	$a3, $a3, $t0
-	or	$a3, $a3, $t1
-	or	$a3, $a3, $t2
+	or	$a5, $a7, $t0
+	or	$a3, $a3, $a5
+	or	$a5, $t1, $t2
+	or	$a3, $a3, $a5
 	sltu	$a3, $zero, $a3
 	or	$a3, $a3, $a4
 	b	.LBB12_77

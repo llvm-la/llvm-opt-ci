@@ -423,8 +423,8 @@ pdivmod:                                # @pdivmod
 	ldx.hu	$a5, $a1, $t7
 	ori	$t3, $t2, 4095
 	xor	$t3, $s4, $t3
-	add.d	$t3, $s3, $t3
 	add.d	$a5, $t3, $a5
+	add.d	$a5, $s3, $a5
 	bstrpick.d	$t3, $a5, 31, 16
 	stx.h	$a5, $a1, $t7
 	bnez	$t3, .LBB0_56

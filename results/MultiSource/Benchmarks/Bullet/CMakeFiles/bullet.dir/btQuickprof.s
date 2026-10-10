@@ -373,14 +373,14 @@ _ZN12CProfileNode6ReturnEv:             # @_ZN12CProfileNode6ReturnEv
 	ld.d	$a2, $a1, 0
 	sub.d	$a0, $a0, $a2
 	lu12i.w	$a2, 244
-	ld.d	$a3, $sp, 8
 	ld.d	$a1, $a1, 8
-	ld.d	$a4, $fp, 16
+	ld.d	$a3, $fp, 16
+	ld.d	$a4, $sp, 8
 	ori	$a2, $a2, 576
 	mul.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a1, $a1, $a4
-	sub.d	$a0, $a0, $a1
+	add.d	$a1, $a1, $a3
+	sub.d	$a1, $a4, $a1
+	add.d	$a0, $a0, $a1
 	srli.d	$a1, $a0, 1
 	andi	$a2, $a0, 1
 	or	$a1, $a2, $a1
@@ -780,15 +780,15 @@ _ZN15CProfileManager20Get_Time_Since_ResetEv: # @_ZN15CProfileManager20Get_Time_
 	ld.d	$a2, $a1, 0
 	sub.d	$a0, $a0, $a2
 	lu12i.w	$a2, 244
-	ld.d	$a3, $sp, 16
 	ld.d	$a1, $a1, 8
-	pcalau12i	$a4, %pc_hi20(_ZN15CProfileManager9ResetTimeE)
-	ld.d	$a4, $a4, %pc_lo12(_ZN15CProfileManager9ResetTimeE)
+	pcalau12i	$a3, %pc_hi20(_ZN15CProfileManager9ResetTimeE)
+	ld.d	$a3, $a3, %pc_lo12(_ZN15CProfileManager9ResetTimeE)
+	ld.d	$a4, $sp, 16
 	ori	$a2, $a2, 576
 	mul.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a1, $a1, $a4
-	sub.d	$a0, $a0, $a1
+	add.d	$a1, $a1, $a3
+	sub.d	$a1, $a4, $a1
+	add.d	$a0, $a0, $a1
 	srli.d	$a1, $a0, 1
 	andi	$a2, $a0, 1
 	or	$a1, $a2, $a1
@@ -879,15 +879,15 @@ _ZN15CProfileManager13dumpRecursiveEP16CProfileIteratori: # @_ZN15CProfileManage
 	ld.d	$a2, $a1, 0
 	sub.d	$a0, $a0, $a2
 	lu12i.w	$a2, 244
-	ld.d	$a3, $sp, 32
 	ld.d	$a1, $a1, 8
-	pcalau12i	$a4, %pc_hi20(_ZN15CProfileManager9ResetTimeE)
-	ld.d	$a4, $a4, %pc_lo12(_ZN15CProfileManager9ResetTimeE)
+	pcalau12i	$a3, %pc_hi20(_ZN15CProfileManager9ResetTimeE)
+	ld.d	$a3, $a3, %pc_lo12(_ZN15CProfileManager9ResetTimeE)
+	ld.d	$a4, $sp, 32
 	ori	$a2, $a2, 576
 	mul.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a1, $a1, $a4
-	sub.d	$a0, $a0, $a1
+	add.d	$a1, $a1, $a3
+	sub.d	$a1, $a4, $a1
+	add.d	$a0, $a0, $a1
 	srli.d	$a1, $a0, 1
 	andi	$a2, $a0, 1
 	or	$a1, $a2, $a1

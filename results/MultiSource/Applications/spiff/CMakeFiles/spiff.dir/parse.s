@@ -294,9 +294,9 @@ P_file_parse:                           # @P_file_parse
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	add.d	$a1, $s2, $s3
+	add.d	$a0, $s3, $a0
 	ld.d	$s3, $sp, 120                   # 8-byte Folded Reload
-	add.d	$a0, $a1, $a0
+	add.d	$a0, $s2, $a0
 	st.d	$a0, $s8, %pc_lo12(_P_nextchr)
 	b	.LBB1_10
 .LBB1_23:                               #   in Loop: Header=BB1_10 Depth=2
@@ -444,9 +444,9 @@ P_file_parse:                           # @P_file_parse
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	add.d	$a1, $s2, $s3
+	add.d	$a0, $s3, $a0
 	ld.d	$s3, $sp, 120                   # 8-byte Folded Reload
-	add.d	$a0, $a1, $a0
+	add.d	$a0, $s2, $a0
 	st.d	$a0, $s8, %pc_lo12(_P_nextchr)
 	ld.bu	$a0, $a0, 0
 	bnez	$a0, .LBB1_44
@@ -584,9 +584,9 @@ P_file_parse:                           # @P_file_parse
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	add.d	$a1, $s3, $s4
+	add.d	$a1, $s4, $a0
 	ld.w	$a2, $fp, %pc_lo12(_P_stringsize)
-	add.d	$a1, $a1, $a0
+	add.d	$a1, $s3, $a1
 	st.d	$a1, $s8, %pc_lo12(_P_nextchr)
 	add.d	$a0, $a0, $s4
 	add.d	$a0, $a2, $a0

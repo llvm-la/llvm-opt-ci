@@ -276,8 +276,8 @@ ana_AnalyzeProblem:                     # @ana_AnalyzeProblem
 	ld.d	$a5, $sp, 8                     # 8-byte Folded Reload
 	st.w	$a4, $a5, %pc_lo12(ana_EQUATIONS)
 	andn	$a0, $a1, $a0
-	and	$a0, $a0, $a2
-	and	$a0, $a0, $a3
+	and	$a1, $a2, $a3
+	and	$a0, $a0, $a1
 	pcalau12i	$a1, %pc_hi20(ana_PUREPROPOSITIONAL)
 	st.w	$a0, $a1, %pc_lo12(ana_PUREPROPOSITIONAL)
 .LBB0_39:

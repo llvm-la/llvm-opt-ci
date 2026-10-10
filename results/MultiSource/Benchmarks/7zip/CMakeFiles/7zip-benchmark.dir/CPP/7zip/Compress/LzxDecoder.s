@@ -438,8 +438,8 @@ _ZN9NCompress4NLzx8CDecoder8ReadBitsEj: # @_ZN9NCompress4NLzx8CDecoder8ReadBitsE
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $s0, 68
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s2
+	or	$a0, $a1, $a0
 	st.w	$a0, $s0, 64
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $s0, 68
@@ -561,8 +561,8 @@ _ZN9NCompress4NLzx8CDecoder9ReadTableEPhS2_j: # @_ZN9NCompress4NLzx8CDecoder9Rea
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $s1, 68
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s3
+	or	$a0, $a1, $a0
 	st.w	$a0, $s1, 64
 	addi.w	$a1, $a2, -16
 	st.w	$a1, $s1, 68
@@ -662,8 +662,8 @@ _ZN9NCompress4NLzx8CDecoder9ReadTableEPhS2_j: # @_ZN9NCompress4NLzx8CDecoder9Rea
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $s1, 68
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s5
+	or	$a0, $a1, $a0
 	st.w	$a0, $s1, 64
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $s1, 68
@@ -716,8 +716,8 @@ _ZN9NCompress4NLzx8CDecoder9ReadTableEPhS2_j: # @_ZN9NCompress4NLzx8CDecoder9Rea
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $s1, 68
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s5
+	or	$a0, $a1, $a0
 	st.w	$a0, $s1, 64
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $s1, 68
@@ -788,8 +788,8 @@ _ZN9NCompress4NLzx8CDecoder9ReadTableEPhS2_j: # @_ZN9NCompress4NLzx8CDecoder9Rea
 	ori	$a4, $a4, 4080
 	and	$a3, $a3, $a4
 	srli.d	$a2, $a2, 20
-	add.d	$a2, $a3, $a2
 	sub.d	$a0, $a0, $a2
+	sub.d	$a0, $a0, $a3
 	b	.LBB6_14
 	.p2align	4, , 16
 .LBB6_40:                               #   in Loop: Header=BB6_42 Depth=2
@@ -801,8 +801,8 @@ _ZN9NCompress4NLzx8CDecoder9ReadTableEPhS2_j: # @_ZN9NCompress4NLzx8CDecoder9Rea
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $s1, 68
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s5
+	or	$a0, $a1, $a0
 	st.w	$a0, $s1, 64
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $s1, 68
@@ -1441,8 +1441,8 @@ _ZN9NCompress8NHuffman8CDecoderILi16ELj20EE12DecodeSymbolINS_4NLzx10NBitStream8C
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $s0, 52
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s1
+	or	$a0, $a1, $a0
 	st.w	$a0, $s0, 48
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $s0, 52
@@ -1571,8 +1571,8 @@ _ZN9NCompress4NLzx8CDecoder10ReadTablesEv: # @_ZN9NCompress4NLzx8CDecoder10ReadT
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $fp, 68
-	or	$a0, $a1, $a0
-	or	$s6, $a0, $s1
+	or	$a0, $a0, $s1
+	or	$s6, $a1, $a0
 	st.w	$s6, $fp, 64
 	addi.w	$s5, $a2, -16
 	st.w	$s5, $fp, 68
@@ -1657,8 +1657,8 @@ _ZN9NCompress4NLzx8CDecoder10ReadTablesEv: # @_ZN9NCompress4NLzx8CDecoder10ReadT
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $fp, 68
-	or	$a0, $a1, $a0
-	or	$s7, $a0, $s1
+	or	$a0, $a0, $s1
+	or	$s7, $a1, $a0
 	st.w	$s7, $fp, 64
 	addi.w	$s2, $a2, -16
 	st.w	$s2, $fp, 68
@@ -1705,8 +1705,8 @@ _ZN9NCompress4NLzx8CDecoder10ReadTablesEv: # @_ZN9NCompress4NLzx8CDecoder10ReadT
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $fp, 68
-	or	$a0, $a1, $a0
-	or	$s7, $a0, $s1
+	or	$a0, $a0, $s1
+	or	$s7, $a1, $a0
 	st.w	$s7, $fp, 64
 	addi.w	$s4, $a2, -16
 	st.w	$s4, $fp, 68
@@ -1757,8 +1757,8 @@ _ZN9NCompress4NLzx8CDecoder10ReadTablesEv: # @_ZN9NCompress4NLzx8CDecoder10ReadT
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $fp, 68
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s1
+	or	$a0, $a1, $a0
 	st.w	$a0, $fp, 64
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $fp, 68
@@ -1822,8 +1822,8 @@ _ZN9NCompress4NLzx8CDecoder10ReadTablesEv: # @_ZN9NCompress4NLzx8CDecoder10ReadT
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $fp, 68
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s1
+	or	$a0, $a1, $a0
 	st.w	$a0, $fp, 64
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $fp, 68
@@ -1895,8 +1895,8 @@ _ZN9NCompress4NLzx8CDecoder10ReadTablesEv: # @_ZN9NCompress4NLzx8CDecoder10ReadT
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $fp, 68
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s1
+	or	$a0, $a1, $a0
 	st.w	$a0, $fp, 64
 	addi.w	$a1, $a2, -16
 	st.w	$a1, $fp, 68
@@ -2182,8 +2182,8 @@ _ZN9NCompress4NLzx10NBitStream8CDecoder11ReadBitsBigEj: # @_ZN9NCompress4NLzx10N
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $fp, 52
-	or	$a0, $a1, $a0
-	or	$s6, $a0, $s0
+	or	$a0, $a0, $s0
+	or	$s6, $a1, $a0
 	st.w	$s6, $fp, 48
 	addi.w	$s5, $a2, -16
 	st.w	$s5, $fp, 52
@@ -2229,8 +2229,8 @@ _ZN9NCompress4NLzx10NBitStream8CDecoder11ReadBitsBigEj: # @_ZN9NCompress4NLzx10N
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $fp, 52
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s0
+	or	$a0, $a1, $a0
 	st.w	$a0, $fp, 48
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $fp, 52
@@ -2956,8 +2956,8 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$s5, $fp, 68
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s2
+	or	$a0, $a1, $a0
 	st.w	$a0, $fp, 64
 	addi.w	$s2, $s5, -16
 	st.w	$s2, $fp, 68
@@ -3033,8 +3033,8 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$s4, $fp, 68
-	or	$a0, $a1, $a0
-	or	$s5, $a0, $s2
+	or	$a0, $a0, $s2
+	or	$s5, $a1, $a0
 	st.w	$s5, $fp, 64
 	addi.w	$a0, $s4, -16
 	st.w	$a0, $fp, 68
@@ -3073,8 +3073,8 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $fp, 68
-	or	$a0, $a1, $a0
-	or	$s8, $a0, $s2
+	or	$a0, $a0, $s2
+	or	$s8, $a1, $a0
 	st.w	$s8, $fp, 64
 	addi.w	$s7, $a2, -16
 	st.w	$s7, $fp, 68
@@ -3121,8 +3121,8 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $fp, 68
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s2
+	or	$a0, $a1, $a0
 	st.w	$a0, $fp, 64
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $fp, 68
@@ -3372,8 +3372,8 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $fp, 68
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s5
+	or	$a0, $a1, $a0
 	st.w	$a0, $fp, 64
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $fp, 68
@@ -3522,8 +3522,8 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $fp, 68
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s6
+	or	$a0, $a1, $a0
 	st.w	$a0, $fp, 64
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $fp, 68
@@ -3637,8 +3637,8 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $fp, 68
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s6
+	or	$a0, $a1, $a0
 	st.w	$a0, $fp, 64
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $fp, 68
@@ -3870,8 +3870,8 @@ _ZN9NCompress8NHuffman8CDecoderILi16ELj249EE12DecodeSymbolINS_4NLzx10NBitStream8
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $s0, 52
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s1
+	or	$a0, $a1, $a0
 	st.w	$a0, $s0, 48
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $s0, 52
@@ -3999,8 +3999,8 @@ _ZN9NCompress8NHuffman8CDecoderILi16ELj8EE12DecodeSymbolINS_4NLzx10NBitStream8CD
 	slli.d	$a1, $a1, 16
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $s0, 52
-	or	$a0, $a1, $a0
 	or	$a0, $a0, $s1
+	or	$a0, $a1, $a0
 	st.w	$a0, $s0, 48
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $s0, 52

@@ -153,22 +153,22 @@ is_tar:                                 # @is_tar
 	ld.bu	$a0, $fp, 155
 	ld.bu	$a3, $fp, 154
 	ld.bu	$a4, $fp, 153
+	ld.bu	$a5, $fp, 152
 	vadd.w	$vr0, $vr1, $vr0
-	add.d	$a0, $a0, $a3
-	ld.bu	$a3, $fp, 152
-	add.d	$a0, $a0, $a4
-	ld.bu	$a4, $fp, 151
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	add.d	$a0, $a0, $a3
-	ld.bu	$a3, $fp, 150
-	add.d	$a0, $a0, $a4
-	ld.bu	$a4, $fp, 149
-	vhaddw.q.d	$vr0, $vr0, $vr0
+	add.d	$a3, $a4, $a5
+	ld.bu	$a4, $fp, 151
+	ld.bu	$a5, $fp, 150
 	add.d	$a0, $a0, $a3
-	vpickve2gr.d	$a3, $vr0, 0
-	add.d	$a0, $a0, $a4
+	ld.bu	$a3, $fp, 149
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	add.d	$a4, $a4, $a5
+	vpickve2gr.d	$a5, $vr0, 0
+	add.d	$a3, $a4, $a3
+	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $a1
-	sub.d	$a0, $a3, $a0
+	sub.d	$a0, $a5, $a0
 	addi.w	$a0, $a0, 256
 	bne	$a0, $a2, .LBB0_27
 # %bb.26:

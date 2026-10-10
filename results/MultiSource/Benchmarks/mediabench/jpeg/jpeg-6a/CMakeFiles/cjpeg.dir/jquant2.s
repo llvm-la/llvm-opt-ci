@@ -1864,9 +1864,9 @@ update_box:                             # @update_box
 	slli.d	$t5, $a7, 3
 	mulw.d.w	$t1, $t1, $t1
 	mulw.d.w	$t4, $t4, $t4
+	mulw.d.w	$t5, $t5, $t5
+	add.d	$t1, $t1, $t5
 	add.d	$t1, $t4, $t1
-	mulw.d.w	$t4, $t5, $t5
-	add.d	$t1, $t1, $t4
 	st.d	$t1, $a1, 24
 	move	$fp, $zero
 	blt	$t2, $a3, .LBB9_68

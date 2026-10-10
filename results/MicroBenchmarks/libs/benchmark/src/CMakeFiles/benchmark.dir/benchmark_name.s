@@ -40,11 +40,11 @@ _ZNK9benchmark13BenchmarkName3strB5cxx11Ev: # @_ZNK9benchmark13BenchmarkName3str
 	ld.d	$a6, $s0, 200
 	ld.d	$a7, $s0, 232
 	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a4
-	add.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a6
+	add.d	$a1, $a2, $a3
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $a4, $a5
+	add.d	$a1, $a1, $a6
+	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $a7
 	addi.d	$a1, $a0, 8
 .Ltmp0:                                 # EH_LABEL

@@ -1179,29 +1179,29 @@ _ZN5Hydro4initEv:                       # @_ZN5Hydro4initEv
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	fld.d	$fs0, $fp, 88
 	fld.d	$fs1, $fp, 96
-	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
-	sub.d	$a0, $a4, $a5
+	sub.d	$a0, $a3, $a5
 	addi.w	$a1, $zero, -16
 	sltu	$a0, $a1, $a0
-	sub.d	$a2, $s2, $a4
+	sub.d	$a2, $s2, $a3
 	sltu	$a2, $a1, $a2
 	or	$a0, $a0, $a2
-	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
-	sub.d	$a2, $a3, $a4
+	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
+	sub.d	$a2, $a4, $a3
 	sltu	$a2, $a1, $a2
-	or	$a0, $a0, $a2
-	sub.d	$a2, $a4, $s3
-	sltu	$a2, $a1, $a2
+	sub.d	$a3, $a3, $s3
+	sltu	$a3, $a1, $a3
+	or	$a2, $a2, $a3
 	or	$a0, $a0, $a2
 	sub.d	$a2, $s2, $a5
 	sltu	$a2, $a1, $a2
-	or	$a0, $a0, $a2
-	sub.d	$a2, $a3, $a5
-	sltu	$a2, $a1, $a2
-	or	$a0, $a0, $a2
-	sub.d	$a2, $s3, $a5
-	sltu	$a1, $a1, $a2
+	sub.d	$a3, $a4, $a5
+	sltu	$a3, $a1, $a3
+	or	$a2, $a2, $a3
+	sub.d	$a3, $s3, $a5
+	sltu	$a1, $a1, $a3
+	or	$a1, $a2, $a1
 	or	$a0, $a0, $a1
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	addi.d	$a0, $s0, 8

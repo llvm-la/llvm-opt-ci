@@ -112,8 +112,8 @@ config3:                                # @config3
 	ld.d	$a4, $a4, 152
 	ld.w	$t6, $t6, 16
 	ld.w	$a4, $a4, 68
-	add.d	$a4, $t6, $a4
-	sub.d	$a4, $t2, $a4
+	sub.d	$t6, $t2, $t6
+	sub.d	$a4, $t6, $a4
 	b	.LBB0_6
 .LBB0_9:
 	ld.d	$t2, $t1, 0
@@ -162,8 +162,8 @@ config3:                                # @config3
 	ld.d	$a1, $a1, 152
 	ld.w	$t4, $t4, 12
 	ld.w	$a1, $a1, 60
-	add.d	$a1, $t4, $a1
-	sub.d	$a1, $a6, $a1
+	sub.d	$t4, $a6, $t4
+	sub.d	$a1, $t4, $a1
 	b	.LBB0_14
 .LBB0_17:
 	ld.d	$a6, $t1, 0

@@ -861,14 +861,14 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	vld	$vr4, $a5, 8
 	vshuf4i.d	$vr5, $vr4, 9
 	vand.v	$vr5, $vr5, $vr0
+	vand.v	$vr6, $vr4, $vr1
+	vor.v	$vr5, $vr6, $vr5
 	vldx	$vr6, $a5, $a3
-	vand.v	$vr7, $vr4, $vr1
-	vor.v	$vr5, $vr7, $vr5
 	vsrli.d	$vr5, $vr5, 1
-	vxor.v	$vr5, $vr5, $vr6
-	vand.v	$vr6, $vr4, $vr2
-	vseqi.d	$vr6, $vr6, 0
-	vandn.v	$vr6, $vr6, $vr3
+	vand.v	$vr7, $vr4, $vr2
+	vseqi.d	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr3
+	vxor.v	$vr6, $vr6, $vr7
 	vxor.v	$vr5, $vr5, $vr6
 	vstx	$vr5, $a0, $a2
 	addi.d	$a2, $a2, 16
@@ -877,14 +877,14 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	ld.d	$a2, $a0, 1816
 	vpickve2gr.d	$a3, $vr4, 1
 	bstrpick.d	$a4, $a2, 30, 1
-	ldptr.d	$a5, $a0, 4984
 	slli.d	$a4, $a4, 1
 	bstrins.d	$a3, $a4, 30, 0
+	ldptr.d	$a4, $a0, 4984
 	srli.d	$a3, $a3, 1
-	xor	$a3, $a3, $a5
-	andi	$a4, $a2, 1
-	sub.d	$a4, $zero, $a4
-	and	$a4, $a4, $a1
+	andi	$a5, $a2, 1
+	sub.d	$a5, $zero, $a5
+	and	$a5, $a5, $a1
+	xor	$a4, $a4, $a5
 	xor	$a3, $a3, $a4
 	st.d	$a3, $a0, 1808
 	vinsgr2vr.d	$vr4, $a2, 1
@@ -900,14 +900,14 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	vldx	$vr5, $a6, $a3
 	vshuf4i.d	$vr4, $vr5, 9
 	vand.v	$vr4, $vr4, $vr0
+	vand.v	$vr6, $vr5, $vr1
+	vor.v	$vr4, $vr6, $vr4
 	vldx	$vr6, $a6, $a4
-	vand.v	$vr7, $vr5, $vr1
-	vor.v	$vr4, $vr7, $vr4
 	vsrli.d	$vr4, $vr4, 1
-	vxor.v	$vr4, $vr4, $vr6
-	vand.v	$vr6, $vr5, $vr2
-	vseqi.d	$vr6, $vr6, 0
-	vandn.v	$vr6, $vr6, $vr3
+	vand.v	$vr7, $vr5, $vr2
+	vseqi.d	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr3
+	vxor.v	$vr6, $vr6, $vr7
 	vxor.v	$vr4, $vr4, $vr6
 	addi.d	$a2, $a2, 16
 	vstx	$vr4, $a6, $a5
@@ -915,17 +915,17 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	bnez	$a2, .LBB4_4
 # %bb.5:
 	ld.d	$a3, $a0, 0
-	move	$a2, $zero
 	ldptr.d	$a4, $a0, 4984
+	move	$a2, $zero
 	bstrpick.d	$a5, $a3, 30, 1
-	ldptr.d	$a6, $a0, 3168
 	slli.d	$a5, $a5, 1
 	bstrins.d	$a4, $a5, 30, 0
+	ldptr.d	$a5, $a0, 3168
 	srli.d	$a4, $a4, 1
-	xor	$a4, $a4, $a6
 	andi	$a3, $a3, 1
 	sub.d	$a3, $zero, $a3
 	and	$a1, $a3, $a1
+	xor	$a1, $a5, $a1
 	xor	$a1, $a4, $a1
 	stptr.d	$a1, $a0, 4984
 .LBB4_6:

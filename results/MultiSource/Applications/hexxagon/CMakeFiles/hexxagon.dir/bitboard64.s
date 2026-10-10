@@ -480,16 +480,16 @@ _Z6getBFPii:                            # @_Z6getBFPii
 	addi.d	$a6, $zero, -14
 	maskeqz	$a4, $a6, $a4
 	or	$a4, $a4, $a5
-	add.d	$a2, $a2, $a4
-	ori	$a4, $zero, 2
-	sltu	$a4, $a4, $a1
-	addi.d	$a5, $zero, -3
-	maskeqz	$a4, $a5, $a4
+	ori	$a5, $zero, 2
+	sltu	$a5, $a5, $a1
+	addi.d	$a6, $zero, -3
+	maskeqz	$a5, $a6, $a5
+	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $a4
 	ori	$a4, $zero, 3
 	sltu	$a4, $a4, $a1
-	addi.d	$a6, $zero, -2
-	maskeqz	$a4, $a6, $a4
+	addi.d	$a5, $zero, -2
+	maskeqz	$a4, $a5, $a4
 	add.d	$a2, $a2, $a4
 	ori	$a4, $zero, 4
 	sltu	$a4, $a4, $a1
@@ -502,12 +502,12 @@ _Z6getBFPii:                            # @_Z6getBFPii
 	or	$a0, $a2, $a0
 	ori	$a2, $zero, 7
 	sltu	$a2, $a2, $a1
-	maskeqz	$a2, $a5, $a2
-	add.d	$a0, $a0, $a2
-	ori	$a2, $zero, 8
-	sltu	$a1, $a2, $a1
-	addi.d	$a2, $zero, -4
-	maskeqz	$a1, $a2, $a1
+	maskeqz	$a2, $a6, $a2
+	ori	$a3, $zero, 8
+	sltu	$a1, $a3, $a1
+	addi.d	$a3, $zero, -4
+	maskeqz	$a1, $a3, $a1
+	add.d	$a1, $a2, $a1
 	add.w	$a0, $a0, $a1
 	ret
 .Lfunc_end11:
@@ -544,39 +544,39 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$s0, $zero, 4
 	addi.w	$a0, $zero, -1
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$s1, $a0, %got_pc_lo12(_ZSt4cout)
 	move	$s2, $zero
 	ori	$s3, $zero, 4
-	ori	$s6, $zero, 1
-	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
+	ori	$s8, $zero, 1
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB12_2
 	.p2align	4, , 16
 .LBB12_1:                               #   in Loop: Header=BB12_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.3)
 	ori	$a2, $zero, 1
-	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
-	addi.w	$s6, $s6, 1
-	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	addi.w	$s8, $s8, 1
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	addi.w	$s3, $s3, -1
-	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$s2, $s2, 9
 	ori	$s0, $zero, 4
 	ori	$a0, $zero, 10
-	beq	$s6, $a0, .LBB12_15
+	beq	$s8, $a0, .LBB12_15
 .LBB12_2:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB12_4 Depth 2
                                         #     Child Loop BB12_7 Depth 2
-	bltu	$s0, $s6, .LBB12_5
+	bltu	$s0, $s8, .LBB12_5
 # %bb.3:                                #   in Loop: Header=BB12_2 Depth=1
 	ori	$a1, $zero, 1
 	sltu	$a0, $a1, $s3
@@ -595,14 +595,14 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
 	addi.w	$fp, $fp, -1
 	bnez	$fp, .LBB12_4
 .LBB12_5:                               #   in Loop: Header=BB12_2 Depth=1
-	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
-	sltu	$s4, $s0, $s6
-	addi.w	$s3, $s6, 4
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	sltu	$s4, $s0, $s8
+	addi.w	$s3, $s8, 4
 	ori	$a0, $zero, 5
-	sltu	$a0, $a0, $s6
-	addi.w	$fp, $s6, -5
+	sltu	$a0, $a0, $s8
+	addi.w	$fp, $s8, -5
 	ori	$a1, $zero, 1
-	sltu	$a1, $a1, $s6
+	sltu	$a1, $a1, $s8
 	addi.d	$a2, $zero, -10
 	masknez	$a2, $a2, $a1
 	addi.d	$a3, $zero, -14
@@ -611,29 +611,29 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
 	add.d	$a0, $s4, $a0
 	sub.d	$a0, $zero, $a0
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 32                    # 8-byte Folded Spill
-	add.d	$a0, $a1, $s2
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	add.d	$s6, $a1, $s2
 	ori	$s1, $zero, 10
-	sltui	$s7, $s6, 6
-	addi.d	$a0, $s6, -9
+	sltui	$s7, $s8, 6
+	addi.d	$a0, $s8, -9
 	sltui	$a0, $a0, 1
 	ori	$a1, $zero, 7
-	sltu	$a1, $a1, $s6
+	sltu	$a1, $a1, $s8
 	ori	$a2, $zero, 6
-	sltu	$s5, $a2, $s6
+	sltu	$s5, $a2, $s8
 	ori	$a2, $zero, 3
-	sltu	$a2, $a2, $s6
+	sltu	$a2, $a2, $s8
 	ori	$a3, $zero, 2
-	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
-	sltu	$a3, $a3, $s6
+	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	sltu	$a3, $a3, $s8
 	addi.d	$a4, $zero, -3
 	maskeqz	$s0, $a4, $a3
 	addi.d	$a3, $zero, -2
 	maskeqz	$s2, $a3, $a2
-	maskeqz	$s8, $a4, $a1
-	addi.d	$a1, $zero, -4
-	maskeqz	$s6, $a1, $a0
+	maskeqz	$a1, $a4, $a1
+	addi.d	$a2, $zero, -4
+	maskeqz	$a0, $a2, $a0
+	add.d	$s8, $a1, $a0
 	b	.LBB12_7
 	.p2align	4, , 16
 .LBB12_6:                               #   in Loop: Header=BB12_7 Depth=2
@@ -659,8 +659,7 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
 	or	$a0, $s7, $a0
 	beqz	$a0, .LBB12_6
 # %bb.9:                                #   in Loop: Header=BB12_7 Depth=2
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	add.d	$a0, $a0, $s1
+	add.d	$a0, $s6, $s1
 	add.d	$a0, $a0, $s0
 	add.d	$a0, $a0, $s2
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
@@ -669,9 +668,8 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
 	masknez	$a0, $a0, $s5
 	maskeqz	$a1, $a1, $s5
 	or	$a0, $a1, $a0
-	add.d	$a0, $a0, $s8
-	add.w	$a0, $a0, $s6
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	add.w	$a0, $a0, $s8
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB12_6
 # %bb.10:                               #   in Loop: Header=BB12_7 Depth=2
 	ori	$a1, $zero, 63
@@ -681,7 +679,7 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
 	sltu	$a1, $a1, $a0
 	sltui	$a2, $a0, 32
 	slli.d	$a1, $a1, 2
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	ldx.w	$a1, $a3, $a1
 	addi.d	$a3, $zero, -32
 	masknez	$a2, $a3, $a2

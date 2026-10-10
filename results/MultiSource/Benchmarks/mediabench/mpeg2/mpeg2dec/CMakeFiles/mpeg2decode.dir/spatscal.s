@@ -609,8 +609,8 @@ Make_Spatial_Prediction_Frame:          # @Make_Spatial_Prediction_Frame
 .LBB3_7:                                #   in Loop: Header=BB3_5 Depth=1
 	sub.d	$s2, $fp, $s5
 	slli.d	$s3, $s5, 1
+	add.d	$s5, $s0, $s5
 	add.d	$s1, $s5, $s1
-	add.d	$s1, $s0, $s1
 	.p2align	4, , 16
 .LBB3_8:                                #   Parent Loop BB3_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -737,8 +737,8 @@ Make_Spatial_Prediction_Frame:          # @Make_Spatial_Prediction_Frame
 .LBB3_22:                               #   in Loop: Header=BB3_20 Depth=1
 	sub.d	$s2, $fp, $s5
 	slli.d	$s3, $s5, 1
+	add.d	$s5, $a0, $s5
 	add.d	$s1, $s5, $s1
-	add.d	$s1, $a0, $s1
 	.p2align	4, , 16
 .LBB3_23:                               #   Parent Loop BB3_20 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -867,8 +867,8 @@ Make_Spatial_Prediction_Frame:          # @Make_Spatial_Prediction_Frame
 .LBB3_35:                               #   in Loop: Header=BB3_33 Depth=1
 	sub.d	$s2, $fp, $ra
 	slli.d	$s5, $ra, 1
-	add.d	$t3, $ra, $s1
-	add.d	$s1, $s0, $t3
+	add.d	$t3, $s0, $ra
+	add.d	$s1, $t3, $s1
 	.p2align	4, , 16
 .LBB3_36:                               #   Parent Loop BB3_33 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -981,8 +981,8 @@ Make_Spatial_Prediction_Frame:          # @Make_Spatial_Prediction_Frame
 .LBB3_48:                               #   in Loop: Header=BB3_46 Depth=1
 	sub.d	$s2, $fp, $s5
 	slli.d	$s3, $s5, 1
+	add.d	$s5, $s0, $s5
 	add.d	$s1, $s5, $s1
-	add.d	$s1, $s0, $s1
 	.p2align	4, , 16
 .LBB3_49:                               #   Parent Loop BB3_46 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -1091,8 +1091,8 @@ Make_Spatial_Prediction_Frame:          # @Make_Spatial_Prediction_Frame
 .LBB3_61:                               #   in Loop: Header=BB3_59 Depth=1
 	sub.d	$s2, $fp, $ra
 	slli.d	$s5, $ra, 1
-	add.d	$s1, $ra, $s1
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	add.d	$s3, $s3, $ra
 	add.d	$s1, $s3, $s1
 	.p2align	4, , 16
 .LBB3_62:                               #   Parent Loop BB3_59 Depth=1

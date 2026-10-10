@@ -856,10 +856,10 @@ F_floatmul:                             # @F_floatmul
 	vshuf.b	$vr5, $vr0, $vr5, $vr0
 	vslli.w	$vr5, $vr5, 24
 	vsrai.w	$vr5, $vr5, 24
-	vadd.w	$vr1, $vr1, $vr4
-	vadd.w	$vr3, $vr3, $vr5
 	vadd.w	$vr1, $vr1, $vr2
+	vadd.w	$vr1, $vr1, $vr4
 	vadd.w	$vr3, $vr3, $vr2
+	vadd.w	$vr3, $vr3, $vr5
 	addi.d	$a5, $a5, -8
 	addi.d	$a1, $a1, -8
 	bnez	$a5, .LBB4_13
@@ -914,10 +914,10 @@ F_floatmul:                             # @F_floatmul
 	vshuf.b	$vr5, $vr0, $vr5, $vr0
 	vslli.w	$vr5, $vr5, 24
 	vsrai.w	$vr5, $vr5, 24
-	vadd.w	$vr1, $vr1, $vr4
-	vadd.w	$vr3, $vr3, $vr5
 	vadd.w	$vr1, $vr1, $vr2
+	vadd.w	$vr1, $vr1, $vr4
 	vadd.w	$vr3, $vr3, $vr2
+	vadd.w	$vr3, $vr3, $vr5
 	addi.d	$a5, $a5, -8
 	addi.d	$a4, $a4, -8
 	bnez	$a5, .LBB4_21

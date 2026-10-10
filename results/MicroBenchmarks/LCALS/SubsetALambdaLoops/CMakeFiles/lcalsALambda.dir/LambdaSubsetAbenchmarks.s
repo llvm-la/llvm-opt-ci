@@ -353,13 +353,13 @@ _ZL23BM_PRESSURE_CALC_LAMBDARN9benchmark5StateE: # @_ZL23BM_PRESSURE_CALC_LAMBDA
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr6, $t1, 0
 	vld	$vr7, $t2, 0
+	vld	$vr8, $t4, 0
 	vfmul.d	$vr6, $vr6, $vr7
-	vld	$vr7, $t4, 0
-	vbitclri.d	$vr8, $vr6, 63
-	vfcmp.cule.d	$vr8, $vr1, $vr8
+	vbitclri.d	$vr7, $vr6, 63
+	vfcmp.cule.d	$vr7, $vr1, $vr7
+	vfcmp.cult.d	$vr8, $vr8, $vr2
 	vand.v	$vr6, $vr8, $vr6
-	vfcmp.cult.d	$vr7, $vr7, $vr2
-	vand.v	$vr6, $vr7, $vr6
+	vand.v	$vr6, $vr6, $vr7
 	vfcmp.clt.d	$vr7, $vr6, $vr3
 	vbitsel.v	$vr6, $vr6, $vr3, $vr7
 	vst	$vr6, $t3, 0

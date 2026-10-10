@@ -4633,8 +4633,8 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	sltu	$t0, $zero, $a7
 	xor	$t1, $s4, $a6
 	sltui	$t1, $t1, 1
-	and	$t2, $a4, $t1
-	and	$t2, $t0, $t2
+	and	$t2, $t0, $a4
+	and	$t2, $t2, $t1
 	bnez	$t2, .LBB14_67
 # %bb.69:                               #   in Loop: Header=BB14_68 Depth=2
 	and	$t1, $t1, $a5
@@ -11836,8 +11836,8 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	ld.d	$a1, $a1, %got_pc_lo12(read_hash)
 	ld.d	$a2, $a1, 0
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	mul.d	$a1, $a1, $s1
 	mul.d	$a0, $a0, $a1
-	mul.d	$a0, $a0, $s1
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
 	slli.d	$a0, $a0, 1
@@ -11857,8 +11857,8 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	ld.d	$a1, $a1, %got_pc_lo12(read_hash)
 	ld.d	$a2, $a1, 0
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	mul.d	$a1, $a1, $s1
 	mul.d	$a0, $a1, $a0
-	mul.d	$a0, $a0, $s1
 	add.w	$a0, $a0, $a5
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	jirl	$ra, $a2, 0

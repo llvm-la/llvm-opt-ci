@@ -570,64 +570,64 @@ my_popcount:                            # @my_popcount
 	bstrpick.d	$a2, $a0, 1, 1
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 2, 2
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 3, 3
+	bstrpick.d	$a3, $a0, 3, 3
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 4, 4
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 5, 5
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 6, 6
+	bstrpick.d	$a3, $a0, 5, 5
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 6, 6
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 7, 7
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 8, 8
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 9, 9
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 10, 10
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 11, 11
+	bstrpick.d	$a3, $a0, 8, 8
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 9, 9
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 10, 10
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 11, 11
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 12, 12
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 13, 13
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 14, 14
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 15, 15
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 16, 16
+	bstrpick.d	$a3, $a0, 13, 13
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 14, 14
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 15, 15
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 16, 16
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 17, 17
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 18, 18
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 19, 19
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 20, 20
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 21, 21
+	bstrpick.d	$a3, $a0, 18, 18
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 19, 19
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 20, 20
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 21, 21
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 22, 22
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 23, 23
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 24, 24
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 25, 25
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 26, 26
+	bstrpick.d	$a3, $a0, 23, 23
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 24, 24
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 25, 25
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 26, 26
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 27, 27
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 28, 28
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 29, 29
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 30, 30
-	add.d	$a1, $a2, $a1
+	bstrpick.d	$a3, $a0, 28, 28
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 29, 29
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 30, 30
+	add.d	$a2, $a3, $a2
 	bstrpick.d	$a0, $a0, 31, 31
+	add.d	$a0, $a0, $a2
 	add.w	$a0, $a0, $a1
 	ret
 .Lfunc_end4:
@@ -642,64 +642,64 @@ my_parity:                              # @my_parity
 	bstrpick.d	$a1, $a0, 31, 1
 	add.d	$a1, $a1, $a0
 	bstrpick.d	$a2, $a0, 31, 2
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 3
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 4
+	bstrpick.d	$a3, $a0, 31, 3
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 4
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 31, 5
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 6
+	bstrpick.d	$a3, $a0, 31, 6
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 31, 7
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 8
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 9
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 10
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 11
+	bstrpick.d	$a3, $a0, 31, 8
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 9
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 10
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 11
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 31, 12
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 13
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 14
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 15
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 16
+	bstrpick.d	$a3, $a0, 31, 13
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 14
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 15
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 16
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 31, 17
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 18
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 19
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 20
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 21
+	bstrpick.d	$a3, $a0, 31, 18
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 19
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 20
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 21
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 31, 22
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 23
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 24
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 25
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 26
+	bstrpick.d	$a3, $a0, 31, 23
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 24
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 25
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 26
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 31, 27
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 28
-	add.d	$a1, $a2, $a1
-	srli.d	$a2, $a0, 29
-	add.d	$a1, $a2, $a1
-	srli.d	$a2, $a0, 30
-	add.d	$a1, $a2, $a1
+	bstrpick.d	$a3, $a0, 31, 28
+	add.d	$a2, $a3, $a2
+	srli.d	$a3, $a0, 29
+	add.d	$a2, $a3, $a2
+	srli.d	$a3, $a0, 30
+	add.d	$a2, $a3, $a2
 	srli.d	$a0, $a0, 31
+	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $a1
 	andi	$a0, $a0, 1
 	ret
@@ -2421,129 +2421,129 @@ my_popcountl:                           # @my_popcountl
 	bstrpick.d	$a2, $a0, 1, 1
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 2, 2
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 3, 3
+	bstrpick.d	$a3, $a0, 3, 3
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 4, 4
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 5, 5
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 6, 6
+	bstrpick.d	$a3, $a0, 5, 5
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 6, 6
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 7, 7
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 8, 8
+	bstrpick.d	$a3, $a0, 8, 8
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 9, 9
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 10, 10
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 11, 11
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 12, 12
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 13, 13
+	bstrpick.d	$a3, $a0, 10, 10
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 11, 11
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 12, 12
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 13, 13
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 14, 14
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 15, 15
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 16, 16
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 17, 17
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 18, 18
+	bstrpick.d	$a3, $a0, 15, 15
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 16, 16
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 17, 17
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 18, 18
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 19, 19
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 20, 20
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 21, 21
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 22, 22
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 23, 23
+	bstrpick.d	$a3, $a0, 20, 20
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 21, 21
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 22, 22
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 23, 23
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 24, 24
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 25, 25
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 26, 26
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 27, 27
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 28, 28
+	bstrpick.d	$a3, $a0, 25, 25
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 26, 26
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 27, 27
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 28, 28
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 29, 29
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 30, 30
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 31
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 32, 32
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 33, 33
+	bstrpick.d	$a3, $a0, 30, 30
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 31
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 32, 32
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 33, 33
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 34, 34
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 35, 35
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 36, 36
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 37, 37
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 38, 38
+	bstrpick.d	$a3, $a0, 35, 35
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 36, 36
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 37, 37
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 38, 38
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 39, 39
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 40, 40
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 41, 41
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 42, 42
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 43, 43
+	bstrpick.d	$a3, $a0, 40, 40
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 41, 41
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 42, 42
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 43, 43
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 44, 44
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 45, 45
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 46, 46
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 47, 47
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 48, 48
+	bstrpick.d	$a3, $a0, 45, 45
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 46, 46
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 47, 47
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 48, 48
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 49, 49
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 50, 50
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 51, 51
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 52, 52
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 53, 53
+	bstrpick.d	$a3, $a0, 50, 50
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 51, 51
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 52, 52
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 53, 53
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 54, 54
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 55, 55
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 56, 56
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 57, 57
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 58, 58
+	bstrpick.d	$a3, $a0, 55, 55
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 56, 56
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 57, 57
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 58, 58
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 59, 59
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 60, 60
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 61, 61
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 62, 62
-	add.d	$a1, $a2, $a1
+	bstrpick.d	$a3, $a0, 60, 60
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 61, 61
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 62, 62
+	add.d	$a2, $a3, $a2
 	srli.d	$a0, $a0, 63
-	add.w	$a0, $a1, $a0
+	add.d	$a0, $a2, $a0
+	add.w	$a0, $a0, $a1
 	ret
 .Lfunc_end10:
 	.size	my_popcountl, .Lfunc_end10-my_popcountl
@@ -2557,128 +2557,128 @@ my_parityl:                             # @my_parityl
 	srli.d	$a1, $a0, 1
 	add.d	$a1, $a1, $a0
 	srli.d	$a2, $a0, 2
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 3
+	srli.d	$a3, $a0, 3
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 4
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 5
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 6
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 7
+	srli.d	$a3, $a0, 5
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 6
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 7
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 8
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 9
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 10
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 11
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 12
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 13
+	srli.d	$a3, $a0, 10
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 11
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 12
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 13
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 14
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 15
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 16
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 17
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 18
+	srli.d	$a3, $a0, 15
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 16
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 17
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 18
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 19
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 20
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 21
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 22
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 23
+	srli.d	$a3, $a0, 20
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 21
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 22
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 23
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 24
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 25
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 26
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 27
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 28
+	srli.d	$a3, $a0, 25
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 26
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 27
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 28
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 29
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 30
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 31
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 32
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 33
+	srli.d	$a3, $a0, 30
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 31
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 32
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 33
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 34
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 35
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 36
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 37
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 38
+	srli.d	$a3, $a0, 35
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 36
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 37
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 38
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 39
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 40
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 41
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 42
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 43
+	srli.d	$a3, $a0, 40
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 41
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 42
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 43
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 44
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 45
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 46
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 47
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 48
+	srli.d	$a3, $a0, 45
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 46
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 47
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 48
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 49
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 50
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 51
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 52
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 53
+	srli.d	$a3, $a0, 50
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 51
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 52
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 53
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 54
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 55
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 56
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 57
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 58
+	srli.d	$a3, $a0, 55
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 56
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 57
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 58
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 59
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 60
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 61
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 62
-	add.d	$a1, $a1, $a2
+	srli.d	$a3, $a0, 60
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 61
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 62
+	add.d	$a2, $a2, $a3
 	srli.d	$a0, $a0, 63
+	add.d	$a0, $a2, $a0
 	add.d	$a0, $a1, $a0
 	andi	$a0, $a0, 1
 	ret
@@ -4400,129 +4400,129 @@ my_popcountll:                          # @my_popcountll
 	bstrpick.d	$a2, $a0, 1, 1
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 2, 2
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 3, 3
+	bstrpick.d	$a3, $a0, 3, 3
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 4, 4
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 5, 5
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 6, 6
+	bstrpick.d	$a3, $a0, 5, 5
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 6, 6
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 7, 7
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 8, 8
+	bstrpick.d	$a3, $a0, 8, 8
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 9, 9
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 10, 10
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 11, 11
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 12, 12
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 13, 13
+	bstrpick.d	$a3, $a0, 10, 10
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 11, 11
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 12, 12
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 13, 13
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 14, 14
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 15, 15
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 16, 16
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 17, 17
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 18, 18
+	bstrpick.d	$a3, $a0, 15, 15
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 16, 16
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 17, 17
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 18, 18
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 19, 19
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 20, 20
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 21, 21
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 22, 22
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 23, 23
+	bstrpick.d	$a3, $a0, 20, 20
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 21, 21
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 22, 22
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 23, 23
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 24, 24
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 25, 25
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 26, 26
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 27, 27
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 28, 28
+	bstrpick.d	$a3, $a0, 25, 25
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 26, 26
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 27, 27
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 28, 28
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 29, 29
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 30, 30
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 31, 31
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 32, 32
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 33, 33
+	bstrpick.d	$a3, $a0, 30, 30
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 31, 31
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 32, 32
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 33, 33
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 34, 34
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 35, 35
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 36, 36
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 37, 37
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 38, 38
+	bstrpick.d	$a3, $a0, 35, 35
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 36, 36
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 37, 37
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 38, 38
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 39, 39
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 40, 40
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 41, 41
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 42, 42
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 43, 43
+	bstrpick.d	$a3, $a0, 40, 40
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 41, 41
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 42, 42
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 43, 43
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 44, 44
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 45, 45
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 46, 46
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 47, 47
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 48, 48
+	bstrpick.d	$a3, $a0, 45, 45
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 46, 46
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 47, 47
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 48, 48
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 49, 49
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 50, 50
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 51, 51
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 52, 52
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 53, 53
+	bstrpick.d	$a3, $a0, 50, 50
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 51, 51
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 52, 52
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 53, 53
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 54, 54
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 55, 55
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 56, 56
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 57, 57
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 58, 58
+	bstrpick.d	$a3, $a0, 55, 55
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 56, 56
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 57, 57
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 58, 58
+	add.d	$a2, $a3, $a2
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a0, 59, 59
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 60, 60
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 61, 61
-	add.d	$a1, $a2, $a1
-	bstrpick.d	$a2, $a0, 62, 62
-	add.d	$a1, $a2, $a1
+	bstrpick.d	$a3, $a0, 60, 60
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 61, 61
+	add.d	$a2, $a3, $a2
+	bstrpick.d	$a3, $a0, 62, 62
+	add.d	$a2, $a3, $a2
 	srli.d	$a0, $a0, 63
-	add.w	$a0, $a1, $a0
+	add.d	$a0, $a2, $a0
+	add.w	$a0, $a0, $a1
 	ret
 .Lfunc_end16:
 	.size	my_popcountll, .Lfunc_end16-my_popcountll
@@ -4536,128 +4536,128 @@ my_parityll:                            # @my_parityll
 	srli.d	$a1, $a0, 1
 	add.d	$a1, $a1, $a0
 	srli.d	$a2, $a0, 2
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 3
+	srli.d	$a3, $a0, 3
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 4
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 5
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 6
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 7
+	srli.d	$a3, $a0, 5
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 6
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 7
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 8
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 9
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 10
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 11
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 12
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 13
+	srli.d	$a3, $a0, 10
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 11
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 12
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 13
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 14
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 15
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 16
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 17
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 18
+	srli.d	$a3, $a0, 15
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 16
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 17
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 18
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 19
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 20
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 21
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 22
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 23
+	srli.d	$a3, $a0, 20
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 21
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 22
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 23
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 24
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 25
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 26
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 27
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 28
+	srli.d	$a3, $a0, 25
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 26
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 27
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 28
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 29
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 30
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 31
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 32
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 33
+	srli.d	$a3, $a0, 30
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 31
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 32
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 33
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 34
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 35
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 36
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 37
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 38
+	srli.d	$a3, $a0, 35
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 36
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 37
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 38
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 39
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 40
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 41
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 42
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 43
+	srli.d	$a3, $a0, 40
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 41
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 42
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 43
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 44
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 45
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 46
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 47
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 48
+	srli.d	$a3, $a0, 45
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 46
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 47
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 48
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 49
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 50
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 51
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 52
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 53
+	srli.d	$a3, $a0, 50
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 51
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 52
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 53
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 54
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 55
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 56
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 57
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 58
+	srli.d	$a3, $a0, 55
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 56
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 57
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 58
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
 	srli.d	$a2, $a0, 59
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 60
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 61
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $a0, 62
-	add.d	$a1, $a1, $a2
+	srli.d	$a3, $a0, 60
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 61
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a0, 62
+	add.d	$a2, $a2, $a3
 	srli.d	$a0, $a0, 63
+	add.d	$a0, $a2, $a0
 	add.d	$a0, $a1, $a0
 	andi	$a0, $a0, 1
 	ret
@@ -5226,62 +5226,62 @@ main:                                   # @main
 	bstrpick.d	$a1, $fp, 31, 2
 	add.d	$a0, $a0, $a1
 	bstrpick.d	$a1, $fp, 31, 3
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 4
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 5
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 6
+	bstrpick.d	$a2, $fp, 31, 4
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $fp, 31, 5
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $fp, 31, 6
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	bstrpick.d	$a1, $fp, 31, 7
 	add.d	$a0, $a0, $a1
 	bstrpick.d	$a1, $fp, 31, 8
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 9
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 10
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 11
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 12
+	bstrpick.d	$a2, $fp, 31, 9
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $fp, 31, 10
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $fp, 31, 11
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $fp, 31, 12
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	bstrpick.d	$a1, $fp, 31, 13
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 14
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 15
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 16
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 17
+	bstrpick.d	$a2, $fp, 31, 14
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $fp, 31, 15
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $fp, 31, 16
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $fp, 31, 17
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	bstrpick.d	$a1, $fp, 31, 18
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 19
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 20
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 21
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 22
+	bstrpick.d	$a2, $fp, 31, 19
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $fp, 31, 20
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $fp, 31, 21
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $fp, 31, 22
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	bstrpick.d	$a1, $fp, 31, 23
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 24
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 25
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 26
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 27
+	bstrpick.d	$a2, $fp, 31, 24
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $fp, 31, 25
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $fp, 31, 26
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $fp, 31, 27
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	bstrpick.d	$a1, $fp, 31, 28
-	add.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $fp, 31, 29
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 30
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 31
+	bstrpick.d	$a2, $fp, 31, 29
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 30
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 31
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	xor	$a0, $a0, $s3
 	andi	$a0, $a0, 1
@@ -6254,128 +6254,128 @@ main:                                   # @main
 	srli.d	$a0, $fp, 1
 	add.d	$a0, $a0, $fp
 	srli.d	$a1, $fp, 2
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 3
+	srli.d	$a2, $fp, 3
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 4
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 5
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 6
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 7
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 8
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 9
+	srli.d	$a2, $fp, 6
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 7
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 8
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 9
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 10
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 11
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 12
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 13
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 14
+	srli.d	$a2, $fp, 11
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 12
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 13
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 14
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 15
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 16
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 17
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 18
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 19
+	srli.d	$a2, $fp, 16
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 17
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 18
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 19
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 20
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 21
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 22
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 23
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 24
+	srli.d	$a2, $fp, 21
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 22
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 23
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 24
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 25
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 26
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 27
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 28
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 29
+	srli.d	$a2, $fp, 26
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 27
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 28
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 29
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 30
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 31
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 32
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 33
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 34
+	srli.d	$a2, $fp, 31
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 32
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 33
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 34
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 35
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 36
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 37
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 38
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 39
+	srli.d	$a2, $fp, 36
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 37
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 38
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 39
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 40
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 41
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 42
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 43
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 44
+	srli.d	$a2, $fp, 41
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 42
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 43
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 44
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 45
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 46
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 47
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 48
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 49
+	srli.d	$a2, $fp, 46
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 47
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 48
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 49
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 50
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 51
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 52
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 53
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 54
+	srli.d	$a2, $fp, 51
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 52
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 53
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 54
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 55
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 56
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 57
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 58
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 59
+	srli.d	$a2, $fp, 56
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 57
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 58
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 59
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 60
+	srli.d	$a2, $fp, 61
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 62
+	add.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 61
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 62
-	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $s6
 	xor	$a0, $a0, $s7
 	andi	$a0, $a0, 1
 	bnez	$a0, .LBB18_93
@@ -7302,128 +7302,128 @@ main:                                   # @main
 	srli.d	$a0, $fp, 1
 	add.d	$a0, $a0, $fp
 	srli.d	$a1, $fp, 2
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 3
+	srli.d	$a2, $fp, 3
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 4
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 5
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 6
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 7
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 8
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 9
+	srli.d	$a2, $fp, 6
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 7
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 8
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 9
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 10
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 11
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 12
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 13
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 14
+	srli.d	$a2, $fp, 11
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 12
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 13
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 14
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 15
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 16
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 17
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 18
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 19
+	srli.d	$a2, $fp, 16
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 17
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 18
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 19
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 20
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 21
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 22
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 23
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 24
+	srli.d	$a2, $fp, 21
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 22
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 23
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 24
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 25
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 26
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 27
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 28
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 29
+	srli.d	$a2, $fp, 26
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 27
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 28
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 29
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 30
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 31
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 32
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 33
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 34
+	srli.d	$a2, $fp, 31
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 32
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 33
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 34
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 35
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 36
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 37
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 38
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 39
+	srli.d	$a2, $fp, 36
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 37
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 38
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 39
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 40
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 41
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 42
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 43
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 44
+	srli.d	$a2, $fp, 41
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 42
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 43
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 44
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 45
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 46
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 47
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 48
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 49
+	srli.d	$a2, $fp, 46
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 47
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 48
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 49
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 50
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 51
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 52
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 53
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 54
+	srli.d	$a2, $fp, 51
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 52
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 53
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 54
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 55
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 56
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 57
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 58
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 59
+	srli.d	$a2, $fp, 56
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 57
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 58
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 59
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	srli.d	$a1, $fp, 60
+	srli.d	$a2, $fp, 61
+	add.d	$a1, $a1, $a2
+	srli.d	$a2, $fp, 62
+	add.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 61
-	add.d	$a0, $a0, $a1
-	srli.d	$a1, $fp, 62
-	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $s6
 	xor	$a0, $a0, $s7
 	andi	$a0, $a0, 1
 	vld	$vr11, $sp, 368                 # 16-byte Folded Reload

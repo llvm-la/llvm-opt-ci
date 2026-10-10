@@ -2120,27 +2120,27 @@ _ZNK14btQuantizedBvh26reportAabbOverlappingNodexEP21btNodeOverlapCallbackRK9btVe
 	ld.hu	$a0, $s8, 6
 	ld.hu	$a1, $s8, 0
 	sltu	$a0, $a0, $s3
-	ld.hu	$a2, $s8, 10
 	xori	$a0, $a0, 1
+	ld.hu	$a2, $s8, 10
 	sltu	$a1, $s5, $a1
 	xori	$a1, $a1, 1
+	ld.hu	$a3, $s8, 4
 	sltu	$a2, $a2, $s7
 	xori	$a2, $a2, 1
-	ld.hu	$a3, $s8, 4
 	and	$a0, $a0, $a2
-	and	$a0, $a0, $a1
-	ld.hu	$a1, $s8, 8
 	sltu	$a2, $t2, $a3
 	xori	$a2, $a2, 1
-	and	$a2, $a0, $a2
-	sltu	$a0, $a1, $s4
-	ld.hu	$a1, $s8, 2
+	ld.hu	$a3, $s8, 8
+	and	$a1, $a1, $a2
+	and	$a1, $a0, $a1
+	ld.hu	$a2, $s8, 2
+	sltu	$a0, $a3, $s4
 	xori	$a3, $a0, 1
 	ld.w	$a0, $s8, 12
-	and	$a2, $a2, $a3
-	sltu	$a1, $s6, $a1
-	xori	$a1, $a1, 1
-	and	$a1, $a2, $a1
+	sltu	$a2, $s6, $a2
+	xori	$a2, $a2, 1
+	and	$a2, $a3, $a2
+	and	$a1, $a1, $a2
 	bltz	$a0, .LBB13_10
 # %bb.8:                                #   in Loop: Header=BB13_7 Depth=1
 	beqz	$a1, .LBB13_10
@@ -2191,8 +2191,8 @@ _ZNK14btQuantizedBvh26reportAabbOverlappingNodexEP21btNodeOverlapCallbackRK9btVe
 	fld.s	$fa1, $s4, 16
 	fld.s	$fa2, $s1, 0
 	fld.s	$fa3, $s4, 0
-	fcmp.cule.s	$fcc1, $fa0, $fa1
-	fcmp.cule.s	$fcc0, $fa3, $fa2
+	fcmp.cule.s	$fcc0, $fa0, $fa1
+	fcmp.cule.s	$fcc1, $fa3, $fa2
 	fld.s	$fa0, $s2, 8
 	fld.s	$fa1, $s4, 24
 	fld.s	$fa2, $s1, 8
@@ -2209,13 +2209,13 @@ _ZNK14btQuantizedBvh26reportAabbOverlappingNodexEP21btNodeOverlapCallbackRK9btVe
 	movcf2gr	$a2, $fcc2
 	and	$a2, $a1, $a2
 	movcf2gr	$a3, $fcc5
+	movcf2gr	$a4, $fcc3
 	ld.w	$a1, $s4, 32
-	and	$a2, $a2, $a3
-	movcf2gr	$a3, $fcc3
-	and	$a2, $a2, $a3
-	movcf2gr	$a3, $fcc1
+	and	$a3, $a3, $a4
 	and	$a2, $a2, $a3
 	movcf2gr	$a3, $fcc0
+	movcf2gr	$a4, $fcc1
+	and	$a3, $a3, $a4
 	and	$a2, $a2, $a3
 	bne	$a1, $s6, .LBB13_19
 # %bb.17:                               #   in Loop: Header=BB13_16 Depth=1
@@ -2342,34 +2342,34 @@ _ZNK14btQuantizedBvh26walkStacklessQuantizedTreeEP21btNodeOverlapCallbackPtS2_ii
 .LBB14_3:                               # =>This Inner Loop Header: Depth=1
 	ld.hu	$a0, $s2, 0
 	ld.hu	$a1, $s5, 6
+	ld.hu	$a2, $s1, 0
+	ld.hu	$a3, $s5, 0
 	sltu	$a0, $a1, $a0
-	ld.hu	$a1, $s1, 0
-	ld.hu	$a2, $s5, 0
-	ld.hu	$a3, $s2, 4
-	ld.hu	$a4, $s5, 10
 	xori	$a0, $a0, 1
-	sltu	$a1, $a1, $a2
+	sltu	$a1, $a2, $a3
+	ld.hu	$a2, $s2, 4
+	ld.hu	$a3, $s5, 10
 	xori	$a1, $a1, 1
-	sltu	$a2, $a4, $a3
+	ld.hu	$a4, $s1, 4
+	ld.hu	$a5, $s5, 4
+	sltu	$a2, $a3, $a2
 	xori	$a2, $a2, 1
 	and	$a0, $a0, $a2
-	ld.hu	$a2, $s1, 4
-	ld.hu	$a3, $s5, 4
-	and	$a0, $a0, $a1
-	ld.hu	$a1, $s2, 2
-	ld.hu	$a4, $s5, 8
-	sltu	$a2, $a2, $a3
+	sltu	$a2, $a4, $a5
 	xori	$a2, $a2, 1
-	and	$a2, $a0, $a2
-	sltu	$a0, $a4, $a1
-	ld.hu	$a1, $s1, 2
-	ld.hu	$a3, $s5, 2
-	xori	$a4, $a0, 1
+	ld.hu	$a3, $s2, 2
+	ld.hu	$a4, $s5, 8
+	ld.hu	$a5, $s1, 2
+	ld.hu	$a6, $s5, 2
+	and	$a1, $a1, $a2
+	and	$a1, $a0, $a1
+	sltu	$a2, $a4, $a3
+	sltu	$a3, $a5, $a6
 	ld.w	$a0, $s5, 12
-	and	$a2, $a2, $a4
-	sltu	$a1, $a1, $a3
-	xori	$a1, $a1, 1
-	and	$a1, $a2, $a1
+	xori	$a2, $a2, 1
+	xori	$a3, $a3, 1
+	and	$a2, $a2, $a3
+	and	$a1, $a1, $a2
 	bltz	$a0, .LBB14_6
 # %bb.4:                                #   in Loop: Header=BB14_3 Depth=1
 	beqz	$a1, .LBB14_6
@@ -2510,34 +2510,34 @@ _ZNK14btQuantizedBvh39walkStacklessQuantizedTreeCacheFriendlyEP21btNodeOverlapCa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.hu	$a0, $s1, 0
 	ld.hu	$a1, $s7, 6
+	ld.hu	$a2, $s0, 0
+	ld.hu	$a3, $s7, 0
 	sltu	$a0, $a1, $a0
-	ld.hu	$a1, $s0, 0
-	ld.hu	$a2, $s7, 0
-	ld.hu	$a3, $s1, 4
-	ld.hu	$a4, $s7, 10
 	xori	$a0, $a0, 1
-	sltu	$a1, $a1, $a2
+	sltu	$a1, $a2, $a3
+	ld.hu	$a2, $s1, 4
+	ld.hu	$a3, $s7, 10
 	xori	$a1, $a1, 1
-	sltu	$a2, $a4, $a3
+	ld.hu	$a4, $s0, 4
+	ld.hu	$a5, $s7, 4
+	sltu	$a2, $a3, $a2
 	xori	$a2, $a2, 1
 	and	$a0, $a0, $a2
-	ld.hu	$a2, $s0, 4
-	ld.hu	$a3, $s7, 4
-	and	$a0, $a0, $a1
-	ld.hu	$a1, $s1, 2
-	ld.hu	$a4, $s7, 8
-	sltu	$a2, $a2, $a3
+	sltu	$a2, $a4, $a5
 	xori	$a2, $a2, 1
-	and	$a2, $a0, $a2
-	sltu	$a0, $a4, $a1
-	ld.hu	$a1, $s0, 2
-	ld.hu	$a3, $s7, 2
-	xori	$a4, $a0, 1
+	ld.hu	$a3, $s1, 2
+	ld.hu	$a4, $s7, 8
+	ld.hu	$a5, $s0, 2
+	ld.hu	$a6, $s7, 2
+	and	$a1, $a1, $a2
+	and	$a1, $a0, $a1
+	sltu	$a2, $a4, $a3
+	sltu	$a3, $a5, $a6
 	ld.w	$a0, $s7, 12
-	and	$a2, $a2, $a4
-	sltu	$a1, $a1, $a3
-	xori	$a1, $a1, 1
-	and	$a1, $a2, $a1
+	xori	$a2, $a2, 1
+	xori	$a3, $a3, 1
+	and	$a2, $a2, $a3
+	and	$a1, $a1, $a2
 	bltz	$a0, .LBB15_15
 # %bb.13:                               #   in Loop: Header=BB15_12 Depth=2
 	beqz	$a1, .LBB15_15
@@ -2744,8 +2744,8 @@ _ZNK14btQuantizedBvh17walkStacklessTreeEP21btNodeOverlapCallbackRK9btVector3S4_:
 	fld.s	$fa1, $s4, 16
 	fld.s	$fa2, $s0, 0
 	fld.s	$fa3, $s4, 0
-	fcmp.cule.s	$fcc1, $fa0, $fa1
-	fcmp.cule.s	$fcc0, $fa3, $fa2
+	fcmp.cule.s	$fcc0, $fa0, $fa1
+	fcmp.cule.s	$fcc1, $fa3, $fa2
 	fld.s	$fa0, $s1, 8
 	fld.s	$fa1, $s4, 24
 	fld.s	$fa2, $s0, 8
@@ -2762,13 +2762,13 @@ _ZNK14btQuantizedBvh17walkStacklessTreeEP21btNodeOverlapCallbackRK9btVector3S4_:
 	movcf2gr	$a2, $fcc2
 	and	$a2, $a1, $a2
 	movcf2gr	$a3, $fcc5
+	movcf2gr	$a4, $fcc3
 	ld.w	$a1, $s4, 32
-	and	$a2, $a2, $a3
-	movcf2gr	$a3, $fcc3
-	and	$a2, $a2, $a3
-	movcf2gr	$a3, $fcc1
+	and	$a3, $a3, $a4
 	and	$a2, $a2, $a3
 	movcf2gr	$a3, $fcc0
+	movcf2gr	$a4, $fcc1
+	and	$a3, $a3, $a4
 	and	$a2, $a2, $a3
 	bne	$a1, $s6, .LBB17_6
 # %bb.4:                                #   in Loop: Header=BB17_3 Depth=1

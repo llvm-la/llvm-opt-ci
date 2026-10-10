@@ -144,7 +144,7 @@ main:                                   # @main
 	ld.h	$a5, $a1, 4
 	ld.h	$a1, $a1, 6
 	add.d	$a2, $a4, $a2
-	add.d	$a2, $a5, $a2
+	add.d	$a1, $a1, $a5
 	add.d	$a1, $a1, $a2
 	stx.h	$a1, $a3, $a0
 	ld.hu	$a0, $a3, 2

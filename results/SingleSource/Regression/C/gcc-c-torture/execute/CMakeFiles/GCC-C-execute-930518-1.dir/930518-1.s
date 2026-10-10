@@ -27,12 +27,11 @@ f:                                      # @f
 	beq	$a2, $a4, .LBB0_9
 # %bb.2:
 	ori	$a4, $zero, 1
-	sltui	$a6, $a5, 2
-	masknez	$a7, $a3, $a6
-	maskeqz	$a6, $a5, $a6
-	or	$a6, $a6, $a7
-	add.d	$a2, $a2, $a6
-	sub.w	$a2, $a3, $a2
+	sltui	$a2, $a5, 2
+	masknez	$a3, $a3, $a2
+	maskeqz	$a2, $a5, $a2
+	or	$a2, $a2, $a3
+	sub.w	$a2, $a5, $a2
 	ori	$a3, $zero, 7
 	st.w	$a4, $a1, %pc_lo12(bar)
 	bgeu	$a2, $a3, .LBB0_4
@@ -116,11 +115,10 @@ main:                                   # @main
 	ori	$a1, $zero, 2
 	sub.w	$a5, $a1, $a0
 	sltui	$a2, $a5, 2
-	masknez	$a3, $a1, $a2
+	masknez	$a1, $a1, $a2
 	maskeqz	$a2, $a5, $a2
-	or	$a2, $a2, $a3
-	add.d	$a2, $a0, $a2
-	sub.w	$a1, $a1, $a2
+	or	$a1, $a2, $a1
+	sub.w	$a1, $a5, $a1
 	ori	$a3, $zero, 7
 	addi.d	$a2, $sp, 0
 	bgeu	$a1, $a3, .LBB1_5

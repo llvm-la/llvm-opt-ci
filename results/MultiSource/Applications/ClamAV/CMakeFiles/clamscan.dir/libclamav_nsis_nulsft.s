@@ -371,10 +371,10 @@ cli_scannulsft:                         # @cli_scannulsft
 	ori	$a2, $zero, 1
 	maskeqz	$a2, $a2, $a0
 	masknez	$a0, $a1, $a0
-	or	$a0, $a2, $a0
 	lu12i.w	$a1, 10
 	ori	$a1, $a1, 404
 	add.d	$a1, $sp, $a1
+	or	$a1, $a1, $a2
 	or	$a0, $a1, $a0
 	ld.b	$a1, $a0, 0
 	addi.d	$a1, $a1, 1
@@ -457,10 +457,10 @@ cli_scannulsft:                         # @cli_scannulsft
 	ori	$a2, $zero, 1
 	maskeqz	$a2, $a2, $a0
 	masknez	$a0, $a1, $a0
-	or	$a0, $a2, $a0
 	lu12i.w	$a1, 10
 	ori	$a1, $a1, 404
 	add.d	$a1, $sp, $a1
+	or	$a1, $a1, $a2
 	or	$a0, $a1, $a0
 	ld.b	$a1, $a0, 0
 	bstrpick.d	$a2, $s6, 30, 0

@@ -237,14 +237,14 @@ FORMAT3_4:                              # @FORMAT3_4
 	ld.d	$a1, $s3, 0
 	add.d	$a1, $a1, $s1
 	ld.b	$a1, $a1, 2
-	slli.d	$a2, $s2, 16
-	slli.d	$a0, $a0, 8
-	add.d	$s1, $a0, $a2
+	slli.d	$s1, $s2, 16
+	slli.d	$s2, $a0, 8
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
+	add.d	$a0, $s1, $a0
 	ori	$a1, $zero, 1
-	add.w	$a0, $s1, $a0
+	add.w	$a0, $s2, $a0
 	bne	$s0, $a1, .LBB1_41
 # %bb.26:
 	lu12i.w	$a2, 256

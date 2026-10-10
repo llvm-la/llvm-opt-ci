@@ -216,10 +216,10 @@ test_array_ptr:                         # @test_array_ptr
 	bne	$a0, $a1, .LBB0_48
 # %bb.21:
 	ld.w	$a0, $s0, %pc_lo12(v1)
-	sub.d	$a1, $zero, $a0
-	ld.w	$a2, $s0, %pc_lo12(v1)
+	ld.w	$a1, $s0, %pc_lo12(v1)
+	sub.d	$a2, $zero, $a0
 	ori	$a0, $zero, 28
-	mul.d	$a1, $a1, $a0
+	mul.d	$a2, $a2, $a0
 	add.d	$a1, $fp, $a1
 	add.d	$a1, $a1, $a2
 	ld.bu	$a1, $a1, 28
@@ -229,8 +229,8 @@ test_array_ptr:                         # @test_array_ptr
 	pcalau12i	$a1, %pc_hi20(v3)
 	ld.w	$a3, $a1, %pc_lo12(v3)
 	mul.d	$a0, $a2, $a0
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a3
+	add.d	$a2, $fp, $a3
+	add.d	$a0, $a2, $a0
 	ld.bu	$a0, $a0, 28
 	bnez	$a0, .LBB0_50
 # %bb.23:
@@ -239,8 +239,8 @@ test_array_ptr:                         # @test_array_ptr
 	ld.w	$a3, $a1, %pc_lo12(v5)
 	ori	$a0, $zero, 28
 	mul.d	$a2, $a2, $a0
-	add.d	$a2, $fp, $a2
-	add.d	$a2, $a2, $a3
+	add.d	$a3, $fp, $a3
+	add.d	$a2, $a3, $a2
 	ld.bu	$a3, $a2, 28
 	ld.w	$a2, $s0, %pc_lo12(v1)
 	bnez	$a3, .LBB0_51
@@ -602,8 +602,8 @@ test_array_ptr:                         # @test_array_ptr
 	ld.w	$a2, $s0, %pc_lo12(v1)
 	sub.d	$a1, $zero, $a1
 	mul.d	$a0, $a1, $a0
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a2
+	add.d	$a1, $fp, $a2
+	add.d	$a0, $a1, $a0
 	addi.d	$a3, $a0, 28
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
@@ -620,8 +620,8 @@ test_array_ptr:                         # @test_array_ptr
 	ld.w	$a1, $a1, %pc_lo12(v3)
 	ori	$a2, $zero, 28
 	mul.d	$a0, $a0, $a2
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	addi.d	$a3, $a0, 28
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
@@ -636,8 +636,8 @@ test_array_ptr:                         # @test_array_ptr
 .LBB0_51:
 	ld.w	$a1, $a1, %pc_lo12(v5)
 	mul.d	$a0, $a2, $a0
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	addi.d	$a3, $a0, 28
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)

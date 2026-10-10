@@ -59,10 +59,10 @@ padd:                                   # @padd
 	.p2align	4, , 16
 .LBB0_7:                                # =>This Inner Loop Header: Depth=1
 	add.d	$a7, $a1, $a3
-	ld.hu	$a7, $a7, 8
 	ldx.hu	$t0, $a6, $a3
-	add.d	$a2, $a2, $a7
+	ld.hu	$a7, $a7, 8
 	add.d	$a2, $a2, $t0
+	add.d	$a2, $a2, $a7
 	stx.h	$a2, $a4, $a3
 	ld.hu	$a7, $fp, 4
 	alsl.d	$a7, $a7, $a6, 1

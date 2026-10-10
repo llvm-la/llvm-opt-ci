@@ -950,15 +950,15 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 	.cfi_offset 31, -88
 	move	$s4, $a3
 	move	$s3, $a2
-	ld.wu	$a2, $a2, 32
-	ld.w	$a3, $s3, 28
+	ld.w	$a2, $a2, 28
+	ld.wu	$a3, $s3, 32
 	ld.w	$a5, $s4, 20
 	move	$s7, $a4
 	move	$fp, $a1
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	srli.d	$a0, $a2, 3
-	mul.d	$a0, $a0, $a3
-	mul.w	$a0, $a0, $a5
+	srli.d	$a0, $a3, 3
+	mul.d	$a1, $a2, $a5
+	mul.w	$a0, $a0, $a1
 	addi.w	$s0, $a0, 8
 	st.w	$zero, $sp, 388
 	st.w	$zero, $sp, 384
@@ -1525,15 +1525,15 @@ _Z10DecodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_ij: # @_Z10DecodeALACP8_IO
 	.cfi_offset 31, -88
 	move	$s4, $a3
 	move	$s5, $a2
-	ld.wu	$a2, $a3, 32
-	ld.w	$a3, $s5, 28
+	ld.w	$a2, $a2, 28
+	ld.wu	$a3, $a3, 32
 	ld.w	$a4, $s5, 20
 	move	$s8, $a5
 	move	$s1, $a1
 	move	$s6, $a0
-	srli.d	$a0, $a2, 3
-	mul.d	$a0, $a0, $a3
-	mul.w	$s0, $a0, $a4
+	srli.d	$a0, $a3, 3
+	mul.d	$a1, $a2, $a4
+	mul.w	$s0, $a0, $a1
 	addi.w	$s7, $s0, 8
 	st.w	$zero, $sp, 124
 	st.w	$zero, $sp, 120

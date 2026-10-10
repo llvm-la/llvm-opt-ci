@@ -7,11 +7,12 @@
 jpeg_idct_float:                        # @jpeg_idct_float
 # %bb.0:
 	addi.d	$sp, $sp, -272
+	st.d	$fp, $sp, 264                   # 8-byte Folded Spill
 	ld.d	$a5, $a1, 88
 	ld.d	$a0, $a0, 408
 	addi.d	$a1, $a2, 64
 	addi.d	$a2, $a5, 128
-	addi.d	$a5, $sp, 16
+	addi.d	$a5, $sp, 8
 	ori	$a6, $zero, 9
 	ori	$a7, $zero, 1
 	lu12i.w	$t0, 260944
@@ -115,18 +116,18 @@ jpeg_idct_float:                        # @jpeg_idct_float
 	ld.hu	$t6, $a1, -32
 	ld.hu	$t2, $a1, -16
 	ld.hu	$t5, $a1, 0
-	or	$t0, $t6, $t3
-	or	$t0, $t0, $t2
+	or	$t7, $t6, $t3
 	ld.hu	$t1, $a1, 16
-	or	$t7, $t0, $t5
 	ld.hu	$t4, $a1, 32
+	or	$t8, $t2, $t5
 	ld.hu	$t0, $a1, 48
-	or	$t7, $t7, $t1
-	ld.h	$t8, $a1, -64
-	or	$t7, $t7, $t4
-	or	$t7, $t7, $t0
+	or	$t7, $t7, $t8
+	or	$t8, $t1, $t4
+	ld.h	$fp, $a1, -64
+	or	$t8, $t8, $t0
+	or	$t7, $t7, $t8
 	fld.s	$fa4, $a2, -128
-	movgr2fr.w	$fa5, $t8
+	movgr2fr.w	$fa5, $fp
 	ffint.s.w	$fa5, $fa5
 	slli.d	$t7, $t7, 48
 	fmul.s	$fa4, $fa4, $fa5
@@ -145,7 +146,7 @@ jpeg_idct_float:                        # @jpeg_idct_float
 	move	$a1, $zero
 	addi.d	$a0, $a0, 128
 	bstrpick.d	$a2, $a4, 31, 0
-	addi.d	$a4, $sp, 16
+	addi.d	$a4, $sp, 8
 	ori	$a5, $zero, 64
 	.p2align	4, , 16
 .LBB0_6:                                # =>This Inner Loop Header: Depth=1
@@ -242,6 +243,7 @@ jpeg_idct_float:                        # @jpeg_idct_float
 	addi.d	$a4, $a4, 32
 	bne	$a1, $a5, .LBB0_6
 # %bb.7:
+	ld.d	$fp, $sp, 264                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 272
 	ret
 .Lfunc_end0:

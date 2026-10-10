@@ -303,33 +303,33 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(counter0)
 	fld.s	$fa0, $a0, %pc_lo12(counter0)
-	vldi	$vr1, -1272
-	fcmp.cune.s	$fcc0, $fa0, $fa1
 	pcalau12i	$a0, %pc_hi20(counter1)
-	fld.s	$fa0, $a0, %pc_lo12(counter1)
+	fld.s	$fa1, $a0, %pc_lo12(counter1)
+	vldi	$vr2, -1272
+	fcmp.cune.s	$fcc0, $fa0, $fa2
+	fcmp.cune.s	$fcc1, $fa1, $fa2
 	pcalau12i	$a0, %pc_hi20(counter2)
-	fld.s	$fa2, $a0, %pc_lo12(counter2)
-	pcalau12i	$a0, %pc_hi20(counter3)
-	fld.s	$fa3, $a0, %pc_lo12(counter3)
-	pcalau12i	$a0, %pc_hi20(counter4)
-	fld.s	$fa4, $a0, %pc_lo12(counter4)
-	fcmp.cune.s	$fcc1, $fa0, $fa1
+	fld.s	$fa0, $a0, %pc_lo12(counter2)
 	movcf2gr	$a0, $fcc0
-	fcmp.cune.s	$fcc0, $fa2, $fa1
 	movcf2gr	$a1, $fcc1
-	fcmp.cune.s	$fcc1, $fa3, $fa1
+	pcalau12i	$a2, %pc_hi20(counter3)
+	fld.s	$fa1, $a2, %pc_lo12(counter3)
+	fcmp.cune.s	$fcc0, $fa0, $fa2
+	pcalau12i	$a2, %pc_hi20(counter4)
+	fld.s	$fa0, $a2, %pc_lo12(counter4)
+	fcmp.cune.s	$fcc1, $fa1, $fa2
+	pcalau12i	$a2, %pc_hi20(counter5)
+	fld.s	$fa1, $a2, %pc_lo12(counter5)
 	movcf2gr	$a2, $fcc0
-	fcmp.cune.s	$fcc0, $fa4, $fa1
-	pcalau12i	$a3, %pc_hi20(counter5)
-	fld.s	$fa0, $a3, %pc_lo12(counter5)
+	fcmp.cune.s	$fcc0, $fa0, $fa2
 	or	$a0, $a0, $a1
-	or	$a0, $a0, $a2
 	movcf2gr	$a1, $fcc1
+	or	$a1, $a2, $a1
+	fcmp.cune.s	$fcc1, $fa1, $fa2
 	or	$a0, $a0, $a1
 	movcf2gr	$a1, $fcc0
-	fcmp.cune.s	$fcc0, $fa0, $fa1
-	or	$a0, $a0, $a1
-	movcf2gr	$a1, $fcc0
+	movcf2gr	$a2, $fcc1
+	or	$a1, $a1, $a2
 	or	$a0, $a0, $a1
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16

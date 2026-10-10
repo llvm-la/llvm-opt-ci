@@ -576,8 +576,8 @@ jinit_c_master_control:                 # @jinit_c_master_control
 	slt	$a1, $a1, $a0
 	xor	$a0, $s3, $a0
 	sltui	$a0, $a0, 1
-	and	$a0, $a0, $a1
-	and	$a0, $s2, $a0
+	and	$a1, $s2, $a1
+	and	$a0, $a1, $a0
 	bnez	$a0, .LBB0_81
 # %bb.83:                               #   in Loop: Header=BB0_82 Depth=3
 	ld.d	$a0, $fp, 0

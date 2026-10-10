@@ -108,40 +108,40 @@ crc_loop:                               # @crc_loop
 	lu12i.w	$t2, -489336
 	ori	$t2, $t2, 2184
 	mul.d	$t3, $t1, $t2
-	xor	$a4, $a4, $t3
 	and	$a0, $a0, $t2
-	lu12i.w	$t3, 279616
-	ori	$t3, $t3, 1092
-	mul.d	$t4, $a0, $t3
-	xor	$a4, $a4, $t4
+	lu12i.w	$t4, 279616
+	ori	$t4, $t4, 1092
+	mul.d	$t5, $a0, $t4
+	xor	$t3, $t3, $t5
+	xor	$a4, $a4, $t3
 	and	$a1, $a4, $a1
 	mul.d	$a4, $a2, $t2
-	mul.d	$t4, $a6, $a3
-	xor	$a4, $t4, $a4
-	mul.d	$t4, $t1, $t3
-	xor	$a4, $a4, $t4
-	mul.d	$t4, $a0, $a7
-	xor	$a4, $a4, $t4
+	mul.d	$t3, $a6, $a3
+	xor	$a4, $t3, $a4
+	mul.d	$t3, $t1, $t4
+	mul.d	$t5, $a0, $a7
+	xor	$t3, $t3, $t5
+	xor	$a4, $a4, $t3
 	and	$a4, $a4, $a5
 	or	$a1, $a4, $a1
 	mul.d	$a4, $a2, $a7
-	mul.d	$a5, $a6, $t3
+	mul.d	$a5, $a6, $t4
 	xor	$a4, $a5, $a4
 	mul.d	$a5, $t1, $a3
-	xor	$a4, $a4, $a5
-	mul.d	$a5, $a0, $t2
+	mul.d	$t3, $a0, $t2
+	xor	$a5, $a5, $t3
 	xor	$a4, $a4, $a5
 	and	$a4, $a4, $t0
-	or	$a1, $a1, $a4
-	mul.d	$a2, $a2, $t3
-	mul.d	$a4, $a6, $t2
-	xor	$a2, $a4, $a2
-	mul.d	$a4, $t1, $a7
-	xor	$a2, $a2, $a4
+	mul.d	$a2, $a2, $t4
+	mul.d	$a5, $a6, $t2
+	xor	$a2, $a5, $a2
+	mul.d	$a5, $t1, $a7
 	mul.d	$a0, $a0, $a3
+	xor	$a0, $a5, $a0
 	xor	$a0, $a2, $a0
 	lu32i.d	$t2, 0
 	and	$a0, $a0, $t2
+	or	$a0, $a4, $a0
 	or	$a0, $a1, $a0
 	slli.d	$a1, $a0, 14
 	slli.d	$a2, $a0, 1

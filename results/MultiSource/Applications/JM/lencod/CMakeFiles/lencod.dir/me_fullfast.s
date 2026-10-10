@@ -3125,8 +3125,8 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vpickve2gr.w	$t8, $vr5, 0
 	slli.d	$t8, $t8, 2
 	ldx.w	$t8, $s5, $t8
+	add.d	$t5, $t5, $t6
 	add.d	$t0, $t0, $t5
-	add.d	$t0, $t0, $t6
 	add.d	$t0, $t0, $t7
 	add.d	$a7, $t8, $a7
 	vpickve2gr.w	$t5, $vr5, 1
@@ -3139,8 +3139,8 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$t7, $t7, 2
 	ldx.w	$t7, $s5, $t7
 	vld	$vr5, $t1, 0
+	add.d	$t5, $t5, $t6
 	add.d	$a7, $a7, $t5
-	add.d	$a7, $a7, $t6
 	add.d	$a7, $a7, $t7
 	vilvh.h	$vr6, $vr14, $vr5
 	vilvl.h	$vr5, $vr14, $vr5
@@ -3174,8 +3174,8 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$t8, $t8, 2
 	ldx.w	$t8, $s5, $t8
 	add.d	$a5, $t5, $a5
-	add.d	$a5, $a5, $t6
-	add.d	$a5, $a5, $t7
+	add.d	$t5, $t6, $t7
+	add.d	$a5, $a5, $t5
 	add.d	$a5, $a5, $t8
 	vpickve2gr.w	$t5, $vr5, 0
 	slli.d	$t5, $t5, 2
@@ -3190,8 +3190,8 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$t8, $t8, 2
 	ldx.w	$t8, $s5, $t8
 	add.d	$a4, $t5, $a4
-	add.d	$a4, $a4, $t6
-	add.d	$a4, $a4, $t7
+	add.d	$t5, $t6, $t7
+	add.d	$a4, $a4, $t5
 	add.d	$a4, $a4, $t8
 	addi.w	$t3, $t3, -1
 	add.d	$t1, $t1, $t2
@@ -3936,78 +3936,78 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	ld.w	$a4, $a3, %pc_lo12(img_padded_size_x)
 	move	$a3, $zero
 	move	$a5, $zero
-	move	$t2, $zero
+	move	$a6, $zero
 	move	$t3, $zero
-	addi.d	$a6, $a0, 16
-	slli.d	$a7, $a4, 1
-	ori	$t0, $zero, 4
-	move	$t1, $s2
+	addi.d	$a7, $a0, 16
+	slli.d	$t0, $a4, 1
+	ori	$t1, $zero, 4
+	move	$t2, $s2
 	.p2align	4, , 16
 .LBB4_78:                               #   Parent Loop BB4_29 Depth=1
                                         #     Parent Loop BB4_77 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.hu	$t4, $a6, -16
-	ld.hu	$t5, $t1, 0
-	ld.hu	$t6, $a6, -14
-	ld.hu	$t7, $t1, 2
+	ld.hu	$t4, $a7, -16
+	ld.hu	$t5, $t2, 0
 	sub.d	$t4, $t4, $t5
 	slli.d	$t4, $t4, 2
+	ld.hu	$t5, $a7, -14
+	ld.hu	$t6, $t2, 2
 	ldx.w	$t4, $s5, $t4
-	sub.d	$t5, $t6, $t7
+	ld.hu	$t7, $a7, -12
+	ld.hu	$t8, $t2, 4
+	sub.d	$t5, $t5, $t6
 	slli.d	$t5, $t5, 2
 	ldx.w	$t5, $s5, $t5
+	sub.d	$t6, $t7, $t8
+	slli.d	$t6, $t6, 2
+	ldx.w	$t6, $s5, $t6
 	add.d	$t3, $t4, $t3
-	ld.hu	$t4, $a6, -12
-	ld.hu	$t6, $t1, 4
-	add.d	$t3, $t3, $t5
-	ld.hu	$t5, $a6, -10
-	ld.hu	$t7, $t1, 6
-	sub.d	$t4, $t4, $t6
-	slli.d	$t4, $t4, 2
-	ldx.w	$t4, $s5, $t4
-	sub.d	$t5, $t5, $t7
-	slli.d	$t5, $t5, 2
-	ldx.w	$t5, $s5, $t5
+	add.d	$t4, $t5, $t6
+	ld.hu	$t5, $a7, -10
+	ld.hu	$t6, $t2, 6
 	add.d	$t3, $t3, $t4
-	ld.hu	$t4, $a6, -8
-	ld.hu	$t6, $t1, 8
+	ld.hu	$t4, $a7, -8
+	ld.hu	$t7, $t2, 8
+	sub.d	$t5, $t5, $t6
+	slli.d	$t5, $t5, 2
+	ldx.w	$t5, $s5, $t5
+	sub.d	$t4, $t4, $t7
+	slli.d	$t4, $t4, 2
+	ld.hu	$t6, $a7, -6
+	ld.hu	$t7, $t2, 10
+	ldx.w	$t4, $s5, $t4
+	ld.hu	$t8, $a7, -4
+	ld.hu	$fp, $t2, 12
+	sub.d	$t6, $t6, $t7
+	slli.d	$t6, $t6, 2
+	ldx.w	$t6, $s5, $t6
+	sub.d	$t7, $t8, $fp
+	slli.d	$t7, $t7, 2
+	ldx.w	$t7, $s5, $t7
+	ld.hu	$t8, $a7, -2
+	ld.hu	$fp, $t2, 14
 	add.d	$t3, $t3, $t5
-	ld.hu	$t5, $a6, -6
-	ld.hu	$t7, $t1, 10
+	add.d	$a6, $t4, $a6
+	add.d	$t4, $t6, $t7
+	sub.d	$t5, $t8, $fp
+	slli.d	$t5, $t5, 2
+	ldx.w	$t5, $s5, $t5
+	add.d	$a6, $a6, $t4
+	ld.hu	$t4, $a7, 0
+	ld.hu	$t6, $t2, 16
+	add.d	$a6, $a6, $t5
+	ld.hu	$t5, $a7, 2
+	ld.hu	$t7, $t2, 18
 	sub.d	$t4, $t4, $t6
 	slli.d	$t4, $t4, 2
 	ldx.w	$t4, $s5, $t4
 	sub.d	$t5, $t5, $t7
 	slli.d	$t5, $t5, 2
+	ld.hu	$t6, $a7, 4
+	ld.hu	$t7, $t2, 20
 	ldx.w	$t5, $s5, $t5
-	add.d	$t2, $t4, $t2
-	ld.hu	$t4, $a6, -4
-	ld.hu	$t6, $t1, 12
-	add.d	$t2, $t2, $t5
-	ld.hu	$t5, $a6, -2
-	ld.hu	$t7, $t1, 14
-	sub.d	$t4, $t4, $t6
-	slli.d	$t4, $t4, 2
-	ldx.w	$t4, $s5, $t4
-	sub.d	$t5, $t5, $t7
-	slli.d	$t5, $t5, 2
-	ldx.w	$t5, $s5, $t5
-	add.d	$t2, $t2, $t4
-	ld.hu	$t4, $a6, 0
-	ld.hu	$t6, $t1, 16
-	add.d	$t2, $t2, $t5
-	ld.hu	$t5, $a6, 2
-	ld.hu	$t7, $t1, 18
-	sub.d	$t4, $t4, $t6
-	slli.d	$t4, $t4, 2
-	ldx.w	$t4, $s5, $t4
-	sub.d	$t5, $t5, $t7
-	slli.d	$t5, $t5, 2
-	ld.hu	$t6, $a6, 4
-	ld.hu	$t7, $t1, 20
-	ldx.w	$t5, $s5, $t5
-	ld.hu	$t8, $a6, 6
-	ld.hu	$fp, $t1, 22
+	ld.hu	$t8, $a7, 6
+	ld.hu	$fp, $t2, 22
 	sub.d	$t6, $t6, $t7
 	slli.d	$t6, $t6, 2
 	ldx.w	$t6, $s5, $t6
@@ -4015,17 +4015,17 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$t7, $t7, 2
 	ldx.w	$t7, $s5, $t7
 	add.d	$a5, $t4, $a5
-	add.d	$a5, $a5, $t5
-	add.d	$a5, $a5, $t6
+	add.d	$t4, $t5, $t6
+	add.d	$a5, $a5, $t4
 	add.d	$a5, $a5, $t7
-	ld.hu	$t4, $a6, 8
-	ld.hu	$t5, $t1, 24
-	ld.hu	$t6, $a6, 10
-	ld.hu	$t7, $t1, 26
-	ld.hu	$t8, $a6, 12
-	ld.hu	$fp, $t1, 28
-	ld.hu	$s0, $a6, 14
-	ld.hu	$s1, $t1, 30
+	ld.hu	$t4, $a7, 8
+	ld.hu	$t5, $t2, 24
+	ld.hu	$t6, $a7, 10
+	ld.hu	$t7, $t2, 26
+	ld.hu	$t8, $a7, 12
+	ld.hu	$fp, $t2, 28
+	ld.hu	$s0, $a7, 14
+	ld.hu	$s1, $t2, 30
 	sub.d	$t4, $t4, $t5
 	sub.d	$t5, $t6, $t7
 	sub.d	$t6, $t8, $fp
@@ -4039,30 +4039,30 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$t7, $t7, 2
 	ldx.w	$t7, $s5, $t7
 	add.d	$a3, $t4, $a3
-	add.d	$a3, $a3, $t5
-	add.d	$a3, $a3, $t6
+	add.d	$t4, $t5, $t6
+	add.d	$a3, $a3, $t4
 	add.d	$a3, $a3, $t7
-	addi.w	$t0, $t0, -1
-	add.d	$a6, $a6, $a7
-	addi.d	$t1, $t1, 32
-	bnez	$t0, .LBB4_78
+	addi.w	$t1, $t1, -1
+	add.d	$a7, $a7, $t0
+	addi.d	$t2, $t2, 32
+	bnez	$t1, .LBB4_78
 # %bb.79:                               #   in Loop: Header=BB4_77 Depth=2
 	addi.d	$s2, $s2, 128
-	ld.d	$t0, $sp, 272                   # 8-byte Folded Reload
-	alsl.d	$a6, $a1, $t0, 3
-	slli.d	$a7, $a1, 3
-	ldx.d	$a7, $t0, $a7
-	ld.d	$t0, $a6, 8
+	ld.d	$t1, $sp, 272                   # 8-byte Folded Reload
+	alsl.d	$a7, $a1, $t1, 3
+	slli.d	$t0, $a1, 3
+	ldx.d	$t0, $t1, $t0
+	ld.d	$t1, $a7, 8
 	alsl.d	$a0, $a4, $a0, 3
-	ld.d	$a4, $a6, 16
-	ld.d	$t1, $sp, 280                   # 8-byte Folded Reload
-	stx.w	$t3, $a7, $t1
-	stx.w	$t2, $t0, $t1
-	ld.d	$a6, $a6, 24
-	stx.w	$a5, $a4, $t1
+	ld.d	$a4, $a7, 16
+	ld.d	$t2, $sp, 280                   # 8-byte Folded Reload
+	stx.w	$t3, $t0, $t2
+	stx.w	$a6, $t1, $t2
+	ld.d	$a6, $a7, 24
+	stx.w	$a5, $a4, $t2
 	addi.d	$a1, $a1, 4
 	addi.w	$a2, $a2, 1
-	stx.w	$a3, $a6, $t1
+	stx.w	$a3, $a6, $t2
 	ori	$a3, $zero, 4
 	bne	$a2, $a3, .LBB4_77
 # %bb.80:                               #   in Loop: Header=BB4_29 Depth=1

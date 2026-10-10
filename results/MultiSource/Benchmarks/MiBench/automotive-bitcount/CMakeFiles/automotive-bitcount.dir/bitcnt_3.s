@@ -17,8 +17,8 @@ ntbl_bitcount:                          # @ntbl_bitcount
 	bstrpick.d	$a5, $a0, 15, 12
 	ldx.b	$a5, $a2, $a5
 	add.d	$a1, $a3, $a1
-	add.d	$a1, $a1, $a4
-	add.d	$a1, $a1, $a5
+	add.d	$a3, $a4, $a5
+	add.d	$a1, $a1, $a3
 	bstrpick.d	$a3, $a0, 19, 16
 	ldx.b	$a3, $a2, $a3
 	bstrpick.d	$a4, $a0, 23, 20
@@ -27,9 +27,9 @@ ntbl_bitcount:                          # @ntbl_bitcount
 	ldx.b	$a5, $a2, $a5
 	bstrpick.d	$a0, $a0, 31, 28
 	ldx.b	$a0, $a2, $a0
-	add.d	$a1, $a1, $a3
-	add.d	$a1, $a1, $a4
-	add.d	$a1, $a1, $a5
+	add.d	$a2, $a3, $a4
+	add.d	$a2, $a2, $a5
+	add.d	$a1, $a1, $a2
 	add.w	$a0, $a1, $a0
 	ret
 .Lfunc_end0:
@@ -52,7 +52,7 @@ BW_btbl_bitcount:                       # @BW_btbl_bitcount
 	bstrpick.d	$a0, $a0, 23, 16
 	ldx.b	$a0, $a2, $a0
 	add.d	$a1, $a3, $a1
-	add.d	$a1, $a1, $a4
+	add.d	$a0, $a4, $a0
 	add.d	$a0, $a1, $a0
 	ret
 .Lfunc_end1:
@@ -75,7 +75,7 @@ AR_btbl_bitcount:                       # @AR_btbl_bitcount
 	bstrpick.d	$a0, $a0, 31, 24
 	ldx.b	$a0, $a2, $a0
 	add.d	$a1, $a3, $a1
-	add.d	$a1, $a1, $a4
+	add.d	$a0, $a4, $a0
 	add.d	$a0, $a1, $a0
 	ret
 .Lfunc_end2:

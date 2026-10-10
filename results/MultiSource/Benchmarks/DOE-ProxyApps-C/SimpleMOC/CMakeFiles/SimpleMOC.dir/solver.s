@@ -578,10 +578,10 @@ attenuate_fluxes:                       # @attenuate_fluxes
 	vpickve2gr.h	$a1, $vr0, 4
 	andi	$a1, $a1, 1
 	slli.d	$a1, $a1, 6
+	vpickve2gr.h	$a5, $vr0, 6
+	slli.d	$a5, $a5, 7
+	or	$a1, $a1, $a5
 	or	$a1, $a2, $a1
-	vpickve2gr.h	$a2, $vr0, 6
-	slli.d	$a2, $a2, 7
-	or	$a1, $a1, $a2
 	andi	$a2, $a1, 255
 	move	$a1, $zero
 	bnez	$a2, .LBB0_41
@@ -1118,10 +1118,10 @@ attenuate_fluxes:                       # @attenuate_fluxes
 	vpickve2gr.h	$a5, $vr9, 4
 	andi	$a5, $a5, 1
 	slli.d	$a5, $a5, 6
+	vpickve2gr.h	$s0, $vr9, 6
+	slli.d	$s0, $s0, 7
+	or	$a5, $a5, $s0
 	or	$a5, $t1, $a5
-	vpickve2gr.h	$t1, $vr9, 6
-	slli.d	$t1, $t1, 7
-	or	$a5, $a5, $t1
 	andi	$t1, $a5, 255
 	move	$a5, $zero
 	bnez	$t1, .LBB0_10
@@ -1220,10 +1220,10 @@ attenuate_fluxes:                       # @attenuate_fluxes
 	vpickve2gr.h	$a5, $vr9, 4
 	andi	$a5, $a5, 1
 	slli.d	$a5, $a5, 6
+	vpickve2gr.h	$s0, $vr9, 6
+	slli.d	$s0, $s0, 7
+	or	$a5, $a5, $s0
 	or	$a5, $t1, $a5
-	vpickve2gr.h	$t1, $vr9, 6
-	slli.d	$t1, $t1, 7
-	or	$a5, $a5, $t1
 	andi	$a5, $a5, 255
 	move	$s5, $zero
 	bnez	$a5, .LBB0_5
@@ -1322,10 +1322,10 @@ attenuate_fluxes:                       # @attenuate_fluxes
 	vpickve2gr.h	$a5, $vr9, 4
 	andi	$a5, $a5, 1
 	slli.d	$a5, $a5, 6
+	vpickve2gr.h	$s0, $vr9, 6
+	slli.d	$s0, $s0, 7
+	or	$a5, $a5, $s0
 	or	$a5, $t1, $a5
-	vpickve2gr.h	$t1, $vr9, 6
-	slli.d	$t1, $t1, 7
-	or	$a5, $a5, $t1
 	andi	$a5, $a5, 255
 	move	$s5, $zero
 	bnez	$a5, .LBB0_15

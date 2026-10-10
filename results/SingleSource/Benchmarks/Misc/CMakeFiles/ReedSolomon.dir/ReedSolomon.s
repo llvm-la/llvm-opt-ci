@@ -1277,8 +1277,8 @@ rsdec_204:                              # @rsdec_204
 	srai.d	$a7, $a7, 7
 	add.d	$a7, $a7, $t2
 	slli.d	$t2, $a7, 8
+	add.d	$a7, $a7, $t1
 	sub.d	$a7, $t2, $a7
-	sub.d	$a7, $a7, $t1
 	add.d	$a7, $t0, $a7
 	addi.w	$a7, $a7, 255
 	mul.d	$t0, $a7, $s4

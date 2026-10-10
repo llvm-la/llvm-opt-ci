@@ -55568,19 +55568,19 @@ _ZNSt5dequeIPN2kc7impl_IDESaIS2_EE16_M_push_back_auxIJRKS2_EEEvDpOT_: # @_ZNSt5d
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 6
+	srai.d	$a4, $a4, 3
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 3
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 3
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 255
@@ -55805,19 +55805,19 @@ _ZNSt5dequeIPN2kc7impl_IDESaIS2_EE16_M_push_back_auxIJS2_EEEvDpOT_: # @_ZNSt5deq
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 6
+	srai.d	$a4, $a4, 3
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 3
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 3
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 255
@@ -55886,19 +55886,19 @@ _ZNSt5dequeIPN2kc14impl_operatorsESaIS2_EE16_M_push_back_auxIJS2_EEEvDpOT_: # @_
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 6
+	srai.d	$a4, $a4, 3
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 3
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 3
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 255
@@ -56123,19 +56123,19 @@ _ZNSt5dequeIPN2kc20impl_dollarvarstatusESaIS2_EE16_M_push_back_auxIJS2_EEEvDpOT_
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 6
+	srai.d	$a4, $a4, 3
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 3
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 3
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 255
@@ -56360,19 +56360,19 @@ _ZNSt5dequeIPN2kc14impl_variablesESaIS2_EE16_M_push_back_auxIJS2_EEEvDpOT_: # @_
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 6
+	srai.d	$a4, $a4, 3
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 3
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 3
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 255
@@ -56597,19 +56597,19 @@ _ZNSt5dequeIPN2kc16impl_phylumnamesESaIS2_EE16_M_push_back_auxIJRKS2_EEEvDpOT_: 
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 6
+	srai.d	$a4, $a4, 3
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 3
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 3
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 255
@@ -56834,19 +56834,19 @@ _ZNSt5dequeIPN2kc16impl_phylumnamesESaIS2_EE16_M_push_back_auxIJS2_EEEvDpOT_: # 
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 6
+	srai.d	$a4, $a4, 3
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 3
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 3
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 255
@@ -56915,19 +56915,19 @@ _ZNSt5dequeIPN2kc14impl_variablesESaIS2_EE16_M_push_back_auxIJRKS2_EEEvDpOT_: # 
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 6
+	srai.d	$a4, $a4, 3
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 3
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 3
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 255
@@ -56996,19 +56996,19 @@ _ZNSt5dequeIPN2kc14impl_operatorsESaIS2_EE16_M_push_back_auxIJRKS2_EEEvDpOT_: # 
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 6
+	srai.d	$a4, $a4, 3
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 3
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 3
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 255
@@ -57077,19 +57077,19 @@ _ZNSt5dequeIPN2kc14impl_argumentsESaIS2_EE16_M_push_back_auxIJS2_EEEvDpOT_: # @_
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 6
+	srai.d	$a4, $a4, 3
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 3
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 3
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 255
@@ -57314,19 +57314,19 @@ _ZNSt5dequeIiSaIiEE16_M_push_back_auxIJiEEEvDpOT_: # @_ZNSt5dequeIiSaIiEE16_M_pu
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 7
+	srai.d	$a4, $a4, 2
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 2
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 2
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 511
@@ -57551,19 +57551,19 @@ _ZNSt5dequeIPN2kc20impl_withexpressionsESaIS2_EE16_M_push_back_auxIJRKS2_EEEvDpO
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 6
+	srai.d	$a4, $a4, 3
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 3
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 3
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 255

@@ -1528,8 +1528,8 @@ _ZN11ALACEncoder16EncodeStereoFastEP9BitBufferPvjjj: # @_ZN11ALACEncoder16Encode
 	maskeqz	$a0, $a5, $a0
 	add.d	$a0, $a0, $a3
 	ld.h	$a5, $s3, 8
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $a2
 	addi.w	$a0, $a0, 320
 	mul.d	$a1, $a4, $a5
 	add.d	$a1, $a1, $a3

@@ -80,28 +80,28 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	vinsgr2vr.w	$vr3, $a7, 3
 	vsigncov.w	$vr2, $vr2, $vr2
 	vsigncov.w	$vr3, $vr3, $vr3
-	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
 	ld.w	$a4, $a2, -40
 	ld.w	$a5, $a2, -28
 	ld.w	$a6, $a2, -16
 	ld.w	$a7, $a2, -4
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
+	vinsgr2vr.w	$vr4, $a4, 0
+	vinsgr2vr.w	$vr4, $a5, 1
+	vinsgr2vr.w	$vr4, $a6, 2
+	vinsgr2vr.w	$vr4, $a7, 3
 	ld.w	$a4, $a2, 8
 	ld.w	$a5, $a2, 20
 	ld.w	$a6, $a2, 32
 	ld.w	$a7, $a2, 44
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
-	vsigncov.w	$vr2, $vr2, $vr2
-	vsigncov.w	$vr3, $vr3, $vr3
+	vinsgr2vr.w	$vr5, $a4, 0
+	vinsgr2vr.w	$vr5, $a5, 1
+	vinsgr2vr.w	$vr5, $a6, 2
+	vinsgr2vr.w	$vr5, $a7, 3
+	vsigncov.w	$vr4, $vr4, $vr4
+	vsigncov.w	$vr5, $vr5, $vr5
+	vmax.wu	$vr2, $vr4, $vr2
 	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
+	vmax.wu	$vr2, $vr5, $vr3
+	vmax.wu	$vr1, $vr2, $vr1
 	addi.d	$a3, $a3, -8
 	addi.d	$a2, $a2, 96
 	bnez	$a3, .LBB0_5
@@ -452,28 +452,28 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	vinsgr2vr.w	$vr3, $a7, 3
 	vsigncov.w	$vr2, $vr2, $vr2
 	vsigncov.w	$vr3, $vr3, $vr3
-	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
 	ld.w	$a4, $a2, -40
 	ld.w	$a5, $a2, -28
 	ld.w	$a6, $a2, -16
 	ld.w	$a7, $a2, -4
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
+	vinsgr2vr.w	$vr4, $a4, 0
+	vinsgr2vr.w	$vr4, $a5, 1
+	vinsgr2vr.w	$vr4, $a6, 2
+	vinsgr2vr.w	$vr4, $a7, 3
 	ld.w	$a4, $a2, 8
 	ld.w	$a5, $a2, 20
 	ld.w	$a6, $a2, 32
 	ld.w	$a7, $a2, 44
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
-	vsigncov.w	$vr2, $vr2, $vr2
-	vsigncov.w	$vr3, $vr3, $vr3
+	vinsgr2vr.w	$vr5, $a4, 0
+	vinsgr2vr.w	$vr5, $a5, 1
+	vinsgr2vr.w	$vr5, $a6, 2
+	vinsgr2vr.w	$vr5, $a7, 3
+	vsigncov.w	$vr4, $vr4, $vr4
+	vsigncov.w	$vr5, $vr5, $vr5
+	vmax.wu	$vr2, $vr4, $vr2
 	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
+	vmax.wu	$vr2, $vr5, $vr3
+	vmax.wu	$vr1, $vr2, $vr1
 	addi.d	$a3, $a3, -8
 	addi.d	$a2, $a2, 96
 	bnez	$a3, .LBB4_22

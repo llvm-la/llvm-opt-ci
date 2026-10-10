@@ -61,9 +61,9 @@ Gsm_Short_Term_Analysis_Filter:         # @Gsm_Short_Term_Analysis_Filter
 	vldx	$vr1, $s1, $s2
 	vsrai.h	$vr0, $vr0, 2
 	vsrai.h	$vr2, $vr1, 2
-	vadd.h	$vr0, $vr2, $vr0
 	vsrai.h	$vr1, $vr1, 1
-	vadd.h	$vr0, $vr0, $vr1
+	vadd.h	$vr1, $vr2, $vr1
+	vadd.h	$vr0, $vr1, $vr0
 	vst	$vr0, $sp, 16
 	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(LARp_to_rp)
@@ -1548,9 +1548,9 @@ Gsm_Short_Term_Synthesis_Filter:        # @Gsm_Short_Term_Synthesis_Filter
 	vldx	$vr1, $s2, $s3
 	vsrai.h	$vr0, $vr0, 2
 	vsrai.h	$vr2, $vr1, 2
-	vadd.h	$vr0, $vr2, $vr0
 	vsrai.h	$vr1, $vr1, 1
-	vadd.h	$vr0, $vr0, $vr1
+	vadd.h	$vr1, $vr2, $vr1
+	vadd.h	$vr0, $vr1, $vr0
 	vst	$vr0, $sp, 16
 	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(LARp_to_rp)

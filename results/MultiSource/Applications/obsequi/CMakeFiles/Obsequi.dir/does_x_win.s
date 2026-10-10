@@ -63,8 +63,8 @@ does_next_player_win:                   # @does_next_player_win
 	slli.d	$a6, $t3, 2
 	addi.d	$t4, $a6, 12
 	ldx.w	$t0, $t4, $s1
-	or	$t2, $t2, $a5
-	or	$t2, $t2, $t1
+	or	$t5, $a5, $t1
+	or	$t2, $t2, $t5
 	or	$t2, $t2, $a7
 	or	$t2, $t2, $t0
 	ldx.wu	$t5, $a4, $a6
@@ -254,8 +254,8 @@ does_next_player_win:                   # @does_next_player_win
 	add.w	$a3, $a2, $a3
 	srli.d	$a3, $a3, 1
 	add.d	$a1, $a1, $s1
-	add.d	$a1, $a1, $a6
-	add.w	$a1, $a1, $a3
+	add.d	$a7, $a6, $a3
+	add.w	$a1, $a1, $a7
 	alsl.d	$a6, $a6, $a6, 1
 	sub.w	$a7, $a4, $a6
 	andi	$t0, $a2, 1
@@ -303,13 +303,13 @@ does_next_player_win:                   # @does_next_player_win
 	sub.w	$a4, $a4, $t1
 	mul.d	$a4, $a4, $a5
 	srli.d	$a5, $a4, 63
-	srli.d	$a4, $a4, 32
 	ld.w	$t2, $sp, 164
+	srli.d	$a4, $a4, 32
 	add.d	$a4, $a4, $a5
 	ld.w	$a5, $sp, 168
-	add.d	$a0, $t1, $a0
-	add.d	$a0, $a0, $t2
-	add.w	$a0, $a0, $a4
+	add.d	$t1, $t1, $t2
+	add.d	$a4, $t1, $a4
+	add.w	$a0, $a4, $a0
 	sub.d	$a2, $a2, $a5
 	bstrpick.d	$a4, $a2, 31, 31
 	add.w	$a2, $a2, $a4
@@ -966,8 +966,8 @@ does_who_just_moved_win:                # @does_who_just_moved_win
 	slli.d	$a6, $t3, 2
 	addi.d	$t4, $a6, 12
 	ldx.w	$t0, $t4, $s2
-	or	$t2, $t2, $a5
-	or	$t2, $t2, $t1
+	or	$t5, $a5, $t1
+	or	$t2, $t2, $t5
 	or	$t2, $t2, $a7
 	or	$t2, $t2, $t0
 	ldx.wu	$t5, $a4, $a6
@@ -1045,8 +1045,8 @@ does_who_just_moved_win:                # @does_who_just_moved_win
 	add.w	$a2, $a0, $a2
 	srli.d	$a2, $a2, 1
 	add.d	$a1, $a1, $s2
-	add.d	$a1, $a1, $a6
-	add.w	$a1, $a1, $a2
+	add.d	$a1, $a1, $a2
+	add.w	$a1, $a1, $a6
 	alsl.d	$a6, $a6, $a6, 1
 	sub.w	$a7, $a3, $a6
 	andi	$t0, $a0, 1
@@ -1094,13 +1094,13 @@ does_who_just_moved_win:                # @does_who_just_moved_win
 	sub.w	$a3, $a3, $t1
 	mul.d	$a3, $a3, $a4
 	srli.d	$a4, $a3, 63
-	srli.d	$a3, $a3, 32
 	ld.w	$t2, $sp, 164
+	srli.d	$a3, $a3, 32
 	add.d	$a3, $a3, $a4
 	ld.w	$a4, $sp, 168
-	add.d	$a5, $t1, $a5
-	add.d	$a5, $a5, $t2
-	add.w	$a3, $a5, $a3
+	add.d	$t1, $t1, $t2
+	add.d	$a3, $t1, $a3
+	add.w	$a3, $a3, $a5
 	sub.d	$a0, $a0, $a4
 	bstrpick.d	$a5, $a0, 31, 31
 	add.w	$a0, $a0, $a5

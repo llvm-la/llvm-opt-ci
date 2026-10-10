@@ -6,39 +6,36 @@
 	.type	foo,@function
 foo:                                    # @foo
 # %bb.0:
-	addi.d	$sp, $sp, -2032
-	st.d	$ra, $sp, 2024                  # 8-byte Folded Spill
-	st.d	$fp, $sp, 2016                  # 8-byte Folded Spill
-	st.d	$s0, $sp, 2008                  # 8-byte Folded Spill
-	st.d	$s1, $sp, 2000                  # 8-byte Folded Spill
-	st.d	$s2, $sp, 1992                  # 8-byte Folded Spill
-	st.d	$s3, $sp, 1984                  # 8-byte Folded Spill
-	st.d	$s4, $sp, 1976                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1968                  # 8-byte Folded Spill
-	st.d	$s6, $sp, 1960                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1952                  # 8-byte Folded Spill
-	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
-	addi.d	$sp, $sp, -288
-	stptr.d	$zero, $sp, 2224                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2216                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2208                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2200                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2192                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2184                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2176                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2168                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2160                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2152                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2144                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2136                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2128                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2120                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2112                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2104                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2096                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2088                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2080                # 8-byte Folded Spill
-	stptr.d	$zero, $sp, 2072                # 8-byte Folded Spill
+	addi.d	$sp, $sp, -2016
+	st.d	$ra, $sp, 2008                  # 8-byte Folded Spill
+	st.d	$fp, $sp, 2000                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 1992                  # 8-byte Folded Spill
+	st.d	$s1, $sp, 1984                  # 8-byte Folded Spill
+	st.d	$s2, $sp, 1976                  # 8-byte Folded Spill
+	st.d	$s3, $sp, 1968                  # 8-byte Folded Spill
+	st.d	$s4, $sp, 1960                  # 8-byte Folded Spill
+	st.d	$s5, $sp, 1952                  # 8-byte Folded Spill
+	st.d	$s6, $sp, 1944                  # 8-byte Folded Spill
+	st.d	$s7, $sp, 1936                  # 8-byte Folded Spill
+	st.d	$s8, $sp, 1928                  # 8-byte Folded Spill
+	move	$a0, $zero
+	move	$t2, $zero
+	st.d	$zero, $sp, 1872                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1864                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1856                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1848                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1840                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1832                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1824                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1816                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1808                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1800                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1792                # 8-byte Folded Spill
+	move	$t6, $zero
+	move	$t7, $zero
+	move	$t8, $zero
+	move	$fp, $zero
+	move	$s0, $zero
 	move	$s1, $zero
 	move	$s2, $zero
 	move	$s3, $zero
@@ -47,17 +44,9 @@ foo:                                    # @foo
 	move	$s6, $zero
 	move	$s7, $zero
 	move	$s8, $zero
-	move	$s0, $zero
-	move	$fp, $zero
-	move	$t8, $zero
-	move	$t7, $zero
-	move	$t6, $zero
-	move	$t5, $zero
-	move	$t4, $zero
-	move	$t3, $zero
-	move	$t2, $zero
-	move	$t1, $zero
+	move	$ra, $zero
 	move	$t0, $zero
+	move	$t4, $zero
 	move	$a7, $zero
 	move	$a6, $zero
 	move	$a5, $zero
@@ -65,181 +54,189 @@ foo:                                    # @foo
 	move	$a3, $zero
 	move	$a2, $zero
 	move	$a1, $zero
-	move	$a0, $zero
-	ldptr.d	$ra, $sp, 2224                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2224                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2216                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2216                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2208                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2208                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2200                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2200                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2192                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2192                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2184                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2184                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2176                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2176                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2168                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2168                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2160                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2160                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2152                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2152                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2144                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2144                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2136                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2136                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2128                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2128                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2120                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2120                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2112                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2112                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2104                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2104                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2096                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2096                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2088                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2088                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2080                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2080                  # 8-byte Folded Spill
-	ldptr.d	$ra, $sp, 2072                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	stptr.d	$ra, $sp, 2072                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	stptr.d	$s1, $sp, 2064                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	stptr.d	$s2, $sp, 2056                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	stptr.d	$s3, $sp, 2048                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$s4, $sp, 2040                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$s5, $sp, 2032                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$s6, $sp, 2024                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$s7, $sp, 2016                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$s8, $sp, 2008                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$s0, $sp, 2000                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$fp, $sp, 1992                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$t8, $sp, 1984                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$t7, $sp, 1976                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$t6, $sp, 1968                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$t5, $sp, 1960                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$t4, $sp, 1952                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$t3, $sp, 1944                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$t2, $sp, 1936                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$t1, $sp, 1928                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$t0, $sp, 1920                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$a7, $sp, 1912                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$a6, $sp, 1904                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$a5, $sp, 1896                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$a4, $sp, 1888                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$a3, $sp, 1880                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$a2, $sp, 1872                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$a1, $sp, 1840                  # 8-byte Folded Spill
-	#APP
-	#NO_APP
-	st.d	$a0, $sp, 1816                  # 8-byte Folded Spill
-	move	$a0, $zero
-	st.d	$zero, $sp, 1760                # 8-byte Folded Spill
-	st.d	$zero, $sp, 1776                # 8-byte Folded Spill
 	st.d	$zero, $sp, 1784                # 8-byte Folded Spill
-	st.d	$zero, $sp, 1800                # 8-byte Folded Spill
-	st.d	$zero, $sp, 1808                # 8-byte Folded Spill
-	st.d	$zero, $sp, 1832                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1776                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1920                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1912                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1904                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1896                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1888                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1880                # 8-byte Folded Spill
+	move	$t3, $zero
+	move	$t1, $zero
+	#APP
+	#NO_APP
+	#APP
+	#NO_APP
+	or	$a0, $t2, $a0
+	move	$t2, $zero
+	#APP
+	#NO_APP
+	ld.d	$t5, $sp, 1872                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$t2, $t2, $t5
+	or	$a0, $a0, $t2
+	ld.d	$t2, $sp, 1864                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	ld.d	$t5, $sp, 1856                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$t2, $t2, $t5
+	ld.d	$t5, $sp, 1848                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$t2, $t2, $t5
+	or	$a0, $a0, $t2
+	ld.d	$t2, $sp, 1840                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	ld.d	$t5, $sp, 1832                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$t2, $t2, $t5
+	ld.d	$t5, $sp, 1824                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$t2, $t2, $t5
+	ld.d	$t5, $sp, 1816                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$t2, $t2, $t5
+	or	$a0, $a0, $t2
+	ld.d	$t2, $sp, 1808                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	ld.d	$t5, $sp, 1800                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$t2, $t2, $t5
+	ld.d	$t5, $sp, 1792                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$t2, $t2, $t5
+	#APP
+	#NO_APP
+	or	$t2, $t2, $t6
+	#APP
+	#NO_APP
+	or	$t2, $t2, $t7
+	or	$a0, $a0, $t2
+	#APP
+	#NO_APP
+	#APP
+	#NO_APP
+	or	$t2, $t8, $fp
+	#APP
+	#NO_APP
+	or	$t2, $t2, $s0
+	#APP
+	#NO_APP
+	or	$t2, $t2, $s1
+	#APP
+	#NO_APP
+	or	$t2, $t2, $s2
+	#APP
+	#NO_APP
+	or	$t2, $t2, $s3
+	or	$a0, $a0, $t2
+	#APP
+	#NO_APP
+	#APP
+	#NO_APP
+	or	$t2, $s4, $s5
+	#APP
+	#NO_APP
+	or	$t2, $t2, $s6
+	#APP
+	#NO_APP
+	or	$t2, $t2, $s7
+	#APP
+	#NO_APP
+	or	$t2, $t2, $s8
+	#APP
+	#NO_APP
+	or	$t2, $t2, $ra
+	#APP
+	#NO_APP
+	or	$t0, $t2, $t0
+	or	$a0, $a0, $t0
+	#APP
+	#NO_APP
+	#APP
+	#NO_APP
+	or	$a7, $t4, $a7
+	#APP
+	#NO_APP
+	or	$a6, $a7, $a6
+	#APP
+	#NO_APP
+	or	$a5, $a6, $a5
+	#APP
+	#NO_APP
+	or	$a4, $a5, $a4
+	#APP
+	#NO_APP
+	or	$a3, $a4, $a3
+	#APP
+	#NO_APP
+	or	$a2, $a3, $a2
+	#APP
+	#NO_APP
+	or	$a1, $a2, $a1
+	or	$a0, $a0, $a1
+	st.d	$a0, $sp, 1872                  # 8-byte Folded Spill
+	ld.d	$s7, $sp, 1784                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	ld.d	$ra, $sp, 1776                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	ld.d	$a0, $sp, 1920                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	st.d	$a0, $sp, 1920                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 1912                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	st.d	$a0, $sp, 1912                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 1904                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	st.d	$a0, $sp, 1904                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 1896                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	st.d	$a0, $sp, 1896                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 1888                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	st.d	$a0, $sp, 1888                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 1880                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	st.d	$a0, $sp, 1880                  # 8-byte Folded Spill
+	#APP
+	#NO_APP
+	st.d	$t3, $sp, 1856                  # 8-byte Folded Spill
+	#APP
+	#NO_APP
+	st.d	$t1, $sp, 1864                  # 8-byte Folded Spill
+	move	$a1, $zero
+	move	$a0, $zero
 	st.d	$zero, $sp, 1848                # 8-byte Folded Spill
-	st.d	$zero, $sp, 1864                # 8-byte Folded Spill
-	st.d	$zero, $sp, 1856                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1840                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1832                # 8-byte Folded Spill
 	st.d	$zero, $sp, 1824                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1816                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1808                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1800                # 8-byte Folded Spill
 	st.d	$zero, $sp, 1792                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1784                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1776                # 8-byte Folded Spill
 	st.d	$zero, $sp, 1768                # 8-byte Folded Spill
+	st.d	$zero, $sp, 1760                # 8-byte Folded Spill
 	st.d	$zero, $sp, 1752                # 8-byte Folded Spill
 	st.d	$zero, $sp, 1744                # 8-byte Folded Spill
 	st.d	$zero, $sp, 1736                # 8-byte Folded Spill
@@ -455,9 +452,8 @@ foo:                                    # @foo
 	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
+	move	$s8, $zero
 	st.d	$zero, $sp, 32                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
-	move	$s7, $zero
 	move	$s6, $zero
 	move	$s5, $zero
 	move	$s4, $zero
@@ -481,149 +477,77 @@ foo:                                    # @foo
 	move	$a4, $zero
 	move	$a3, $zero
 	move	$a2, $zero
-	move	$a1, $zero
+	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
 	#APP
 	#NO_APP
-	ldptr.d	$ra, $sp, 2224                  # 8-byte Folded Reload
-	ldptr.d	$s8, $sp, 2216                  # 8-byte Folded Reload
-	or	$ra, $s8, $ra
-	ldptr.d	$s8, $sp, 2208                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2200                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2192                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2184                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2176                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2168                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2160                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2152                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2144                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2136                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2128                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2120                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2112                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2104                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2096                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2088                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2080                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2072                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2064                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2056                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ldptr.d	$s8, $sp, 2048                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 2040                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 2032                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 2024                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 2016                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 2008                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 2000                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1992                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1984                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1976                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1968                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1960                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1952                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1936                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1928                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1920                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1912                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1904                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1896                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1888                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1880                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1872                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1840                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	ld.d	$s8, $sp, 1816                  # 8-byte Folded Reload
-	or	$ra, $ra, $s8
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1760                  # 8-byte Folded Reload
+	or	$ra, $s7, $ra
+	ld.d	$s7, $sp, 1920                  # 8-byte Folded Reload
+	or	$ra, $ra, $s7
+	ld.d	$s7, $sp, 1912                  # 8-byte Folded Reload
+	or	$ra, $ra, $s7
+	ld.d	$s7, $sp, 1904                  # 8-byte Folded Reload
+	or	$ra, $ra, $s7
+	ld.d	$s7, $sp, 1896                  # 8-byte Folded Reload
+	or	$ra, $ra, $s7
+	ld.d	$s7, $sp, 1888                  # 8-byte Folded Reload
+	or	$ra, $ra, $s7
+	ld.d	$s7, $sp, 1880                  # 8-byte Folded Reload
+	or	$ra, $ra, $s7
+	ld.d	$s7, $sp, 1856                  # 8-byte Folded Reload
+	or	$ra, $ra, $s7
+	ld.d	$s7, $sp, 1872                  # 8-byte Folded Reload
+	or	$ra, $s7, $ra
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
+	ld.d	$s7, $sp, 1864                  # 8-byte Folded Reload
+	or	$s7, $s7, $a1
+	or	$s7, $s7, $a0
+	ld.d	$a0, $sp, 1848                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$s7, $s7, $a0
+	ld.d	$a0, $sp, 1840                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$s7, $s7, $a0
+	ld.d	$a0, $sp, 1832                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$s7, $s7, $a0
+	ld.d	$a0, $sp, 1824                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$s7, $s7, $a0
+	ld.d	$a0, $sp, 1816                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$s7, $s7, $a0
+	ld.d	$a0, $sp, 1808                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$s7, $s7, $a0
+	ld.d	$a0, $sp, 1800                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$s7, $s7, $a0
+	or	$s7, $ra, $s7
+	ld.d	$a0, $sp, 1792                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	ld.d	$a1, $sp, 1784                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$ra, $a0, $a1
 	ld.d	$a0, $sp, 1776                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1784                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1800                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1808                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1832                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1848                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1864                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1856                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1824                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1792                  # 8-byte Folded Reload
-	#APP
-	#NO_APP
-	or	$ra, $ra, $a0
 	ld.d	$a0, $sp, 1768                  # 8-byte Folded Reload
+	#APP
+	#NO_APP
+	or	$ra, $ra, $a0
+	ld.d	$a0, $sp, 1760                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
@@ -651,14 +575,14 @@ foo:                                    # @foo
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
+	or	$s7, $s7, $ra
 	ld.d	$a0, $sp, 1704                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1696                  # 8-byte Folded Reload
+	ld.d	$a1, $sp, 1696                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
+	or	$ra, $a0, $a1
 	ld.d	$a0, $sp, 1688                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
@@ -699,14 +623,14 @@ foo:                                    # @foo
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
+	or	$s7, $s7, $ra
 	ld.d	$a0, $sp, 1608                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1600                  # 8-byte Folded Reload
+	ld.d	$a1, $sp, 1600                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
+	or	$ra, $a0, $a1
 	ld.d	$a0, $sp, 1592                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
@@ -751,14 +675,14 @@ foo:                                    # @foo
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
+	or	$s7, $s7, $ra
 	ld.d	$a0, $sp, 1504                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1496                  # 8-byte Folded Reload
+	ld.d	$a1, $sp, 1496                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
+	or	$ra, $a0, $a1
 	ld.d	$a0, $sp, 1488                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
@@ -807,14 +731,14 @@ foo:                                    # @foo
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
+	or	$s7, $s7, $ra
 	ld.d	$a0, $sp, 1392                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1384                  # 8-byte Folded Reload
+	ld.d	$a1, $sp, 1384                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
+	or	$ra, $a0, $a1
 	ld.d	$a0, $sp, 1376                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
@@ -867,14 +791,14 @@ foo:                                    # @foo
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
+	or	$s7, $s7, $ra
 	ld.d	$a0, $sp, 1272                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1264                  # 8-byte Folded Reload
+	ld.d	$a1, $sp, 1264                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
+	or	$ra, $a0, $a1
 	ld.d	$a0, $sp, 1256                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
@@ -931,14 +855,14 @@ foo:                                    # @foo
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
+	or	$s7, $s7, $ra
 	ld.d	$a0, $sp, 1144                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1136                  # 8-byte Folded Reload
+	ld.d	$a1, $sp, 1136                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
+	or	$ra, $a0, $a1
 	ld.d	$a0, $sp, 1128                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
@@ -999,14 +923,14 @@ foo:                                    # @foo
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
+	or	$s7, $s7, $ra
 	ld.d	$a0, $sp, 1008                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 1000                  # 8-byte Folded Reload
+	ld.d	$a1, $sp, 1000                  # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
+	or	$ra, $a0, $a1
 	ld.d	$a0, $sp, 992                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
@@ -1071,14 +995,14 @@ foo:                                    # @foo
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
+	or	$s7, $s7, $ra
 	ld.d	$a0, $sp, 864                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 856                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 856                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
+	or	$ra, $a0, $a1
 	ld.d	$a0, $sp, 848                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
@@ -1147,14 +1071,14 @@ foo:                                    # @foo
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
+	or	$s7, $s7, $ra
 	ld.d	$a0, $sp, 712                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 704                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 704                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
+	or	$ra, $a0, $a1
 	ld.d	$a0, $sp, 696                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
@@ -1227,14 +1151,14 @@ foo:                                    # @foo
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
+	or	$s7, $s7, $ra
 	ld.d	$a0, $sp, 552                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 544                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 544                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
+	or	$ra, $a0, $a1
 	ld.d	$a0, $sp, 536                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
@@ -1311,14 +1235,14 @@ foo:                                    # @foo
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
+	or	$s7, $s7, $ra
 	ld.d	$a0, $sp, 384                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 376                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
+	or	$ra, $a0, $a1
 	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
@@ -1399,14 +1323,14 @@ foo:                                    # @foo
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
+	or	$s7, $s7, $ra
 	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
+	or	$ra, $a0, $a1
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	#APP
 	#NO_APP
@@ -1487,20 +1411,16 @@ foo:                                    # @foo
 	#APP
 	#NO_APP
 	or	$ra, $ra, $a0
+	#APP
+	#NO_APP
+	or	$s8, $ra, $s8
+	or	$s7, $s7, $s8
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$ra, $ra, $a0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$s8, $ra, $a0
-	#APP
-	#NO_APP
-	or	$s7, $s8, $s7
-	#APP
-	#NO_APP
-	or	$s6, $s7, $s6
+	or	$s6, $a0, $s6
 	#APP
 	#NO_APP
 	or	$s5, $s6, $s5
@@ -1567,27 +1487,28 @@ foo:                                    # @foo
 	#APP
 	#NO_APP
 	or	$a2, $a3, $a2
+	or	$a2, $s7, $a2
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$a1, $a2, $a1
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	#APP
 	#NO_APP
-	or	$a0, $a1, $a0
+	or	$a0, $a0, $a1
+	or	$a0, $a2, $a0
 	addi.w	$a0, $a0, 0
-	addi.d	$sp, $sp, 288
-	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 1960                  # 8-byte Folded Reload
-	ld.d	$s5, $sp, 1968                  # 8-byte Folded Reload
-	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1992                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 2000                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 2032
+	ld.d	$s8, $sp, 1928                  # 8-byte Folded Reload
+	ld.d	$s7, $sp, 1936                  # 8-byte Folded Reload
+	ld.d	$s6, $sp, 1944                  # 8-byte Folded Reload
+	ld.d	$s5, $sp, 1952                  # 8-byte Folded Reload
+	ld.d	$s4, $sp, 1960                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 1968                  # 8-byte Folded Reload
+	ld.d	$s2, $sp, 1976                  # 8-byte Folded Reload
+	ld.d	$s1, $sp, 1984                  # 8-byte Folded Reload
+	ld.d	$s0, $sp, 1992                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 2000                  # 8-byte Folded Reload
+	ld.d	$ra, $sp, 2008                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 2016
 	ret
 .Lfunc_end0:
 	.size	foo, .Lfunc_end0-foo

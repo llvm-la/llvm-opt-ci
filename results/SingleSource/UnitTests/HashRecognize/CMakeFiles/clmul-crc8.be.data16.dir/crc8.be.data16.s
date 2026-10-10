@@ -95,14 +95,14 @@ crc_loop:                               # @crc_loop
 	slli.d	$a3, $a1, 9
 	xor	$a2, $a2, $a3
 	slli.d	$a3, $a1, 11
-	xor	$a2, $a2, $a3
-	slli.d	$a3, $a1, 14
+	slli.d	$a4, $a1, 14
+	xor	$a3, $a3, $a4
 	xor	$a2, $a2, $a3
 	slli.d	$a3, $a1, 18
-	xor	$a2, $a2, $a3
-	slli.d	$a3, $a1, 19
-	xor	$a2, $a2, $a3
+	slli.d	$a4, $a1, 19
+	xor	$a3, $a3, $a4
 	slli.d	$a1, $a1, 20
+	xor	$a1, $a3, $a1
 	xor	$a1, $a2, $a1
 	slli.d	$a0, $a0, 24
 	xor	$a0, $a1, $a0
@@ -110,8 +110,8 @@ crc_loop:                               # @crc_loop
 	slli.d	$a1, $a0, 2
 	xor	$a1, $a0, $a1
 	slli.d	$a2, $a0, 3
-	xor	$a1, $a1, $a2
 	slli.d	$a0, $a0, 4
+	xor	$a0, $a2, $a0
 	xor	$a0, $a1, $a0
 	andi	$a0, $a0, 255
 	ret

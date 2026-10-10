@@ -8,49 +8,49 @@ test:                                   # @test
 # %bb.0:
 	ld.h	$a3, $a1, 0
 	ld.h	$a4, $a1, 16
+	ld.h	$a5, $a1, 32
 	mul.d	$a3, $a3, $a2
 	add.d	$a0, $a3, $a0
-	ld.h	$a3, $a1, 32
-	mul.d	$a4, $a4, $a2
-	add.d	$a0, $a4, $a0
+	mul.d	$a3, $a4, $a2
+	mul.d	$a4, $a5, $a2
+	add.d	$a3, $a4, $a3
 	ld.h	$a4, $a1, 48
-	mul.d	$a3, $a3, $a2
+	ld.h	$a5, $a1, 64
 	add.d	$a0, $a3, $a0
-	ld.h	$a3, $a1, 64
+	ld.h	$a3, $a1, 80
 	mul.d	$a4, $a4, $a2
-	add.d	$a0, $a4, $a0
-	ld.h	$a4, $a1, 80
+	mul.d	$a5, $a5, $a2
+	add.d	$a4, $a5, $a4
 	mul.d	$a3, $a3, $a2
-	add.d	$a0, $a3, $a0
-	ld.h	$a3, $a1, 96
-	mul.d	$a4, $a4, $a2
-	add.d	$a0, $a4, $a0
+	ld.h	$a5, $a1, 96
+	add.d	$a3, $a3, $a4
 	ld.h	$a4, $a1, 112
-	mul.d	$a3, $a3, $a2
 	add.d	$a0, $a3, $a0
-	ld.h	$a3, $a1, 128
+	mul.d	$a3, $a5, $a2
+	ld.h	$a5, $a1, 128
 	mul.d	$a4, $a4, $a2
-	add.d	$a0, $a4, $a0
-	ld.h	$a4, $a1, 144
-	mul.d	$a3, $a3, $a2
-	add.d	$a0, $a3, $a0
-	ld.h	$a3, $a1, 160
-	mul.d	$a4, $a4, $a2
-	add.d	$a0, $a4, $a0
+	ld.h	$a6, $a1, 144
+	add.d	$a3, $a4, $a3
+	mul.d	$a4, $a5, $a2
+	add.d	$a3, $a4, $a3
+	mul.d	$a4, $a6, $a2
+	ld.h	$a5, $a1, 160
+	add.d	$a3, $a4, $a3
 	ld.h	$a4, $a1, 176
-	mul.d	$a3, $a3, $a2
 	add.d	$a0, $a3, $a0
-	ld.h	$a3, $a1, 192
+	mul.d	$a3, $a5, $a2
+	ld.h	$a5, $a1, 192
 	mul.d	$a4, $a4, $a2
-	add.d	$a0, $a4, $a0
+	add.d	$a3, $a4, $a3
 	ld.h	$a4, $a1, 208
-	mul.d	$a3, $a3, $a2
-	add.d	$a0, $a3, $a0
-	ld.h	$a3, $a1, 224
+	mul.d	$a5, $a5, $a2
+	add.d	$a3, $a5, $a3
+	ld.h	$a5, $a1, 224
 	mul.d	$a4, $a4, $a2
+	add.d	$a3, $a4, $a3
 	ld.h	$a1, $a1, 240
-	add.d	$a0, $a4, $a0
-	mul.d	$a3, $a3, $a2
+	mul.d	$a4, $a5, $a2
+	add.d	$a3, $a4, $a3
 	add.d	$a0, $a3, $a0
 	mul.d	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0

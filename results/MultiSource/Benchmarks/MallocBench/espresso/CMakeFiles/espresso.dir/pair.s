@@ -338,15 +338,15 @@ set_pair1:                              # @set_pair1
 	addi.d	$a3, $a3, 4
 	bnez	$a0, .LBB1_62
 .LBB1_63:
+	ld.w	$fp, $s8, 0
 	st.d	$s7, $sp, 72                    # 8-byte Folded Spill
 	ld.w	$s2, $s7, 0
-	ld.w	$fp, $s8, 0
 	ldx.w	$a0, $a2, $s5
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a6, $sp, 32                    # 8-byte Folded Spill
 	sub.w	$s7, $a1, $a6
-	add.d	$a0, $s4, $s7
-	add.w	$s6, $a0, $fp
+	add.d	$a0, $s7, $fp
+	add.w	$s6, $s4, $a0
 	slli.d	$a0, $s6, 2
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -618,8 +618,8 @@ set_pair1:                              # @set_pair1
 	slli.d	$a3, $a0, 1
 	alsl.d	$a0, $a5, $s2, 3
 	add.d	$a2, $a2, $a3
-	add.d	$a2, $a2, $a5
-	sub.w	$a2, $a2, $t3
+	sub.d	$a3, $a5, $t3
+	add.w	$a2, $a2, $a3
 	sub.d	$a3, $s1, $a5
 	.p2align	4, , 16
 .LBB1_97:                               # =>This Inner Loop Header: Depth=1

@@ -690,8 +690,8 @@ _ZN9NCompress6NBZip211CThreadInfo12EncodeBlock3Ej: # @_ZN9NCompress6NBZip211CThr
 	ld.d	$a0, $a0, 424
 	ori	$a2, $s0, 3920
 	mul.d	$a1, $a1, $a2
-	add.d	$a0, $a0, $a1
-	ori	$a1, $s0, 3552
+	ori	$a2, $s0, 3552
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(Event_Wait)
 	jirl	$ra, $ra, 0
@@ -767,8 +767,8 @@ _ZN9NCompress6NBZip211CThreadInfo12EncodeBlock3Ej: # @_ZN9NCompress6NBZip211CThr
 	bstrpick.d	$a1, $s2, 31, 0
 	ori	$a2, $s0, 3920
 	mul.d	$a1, $a1, $a2
-	add.d	$a0, $a0, $a1
-	ori	$a1, $s0, 3552
+	ori	$a2, $s0, 3552
+	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(Event_Set)
 	jirl	$ra, $ra, 0
@@ -2890,8 +2890,8 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	sub.d	$a0, $a2, $a1
 	add.d	$a0, $s7, $a0
 	nor	$a1, $a1, $zero
-	add.d	$a1, $s7, $a1
-	add.d	$a1, $a1, $a2
+	add.d	$a3, $s7, $a2
+	add.d	$a1, $a3, $a1
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 .LBB29_47:                              #   in Loop: Header=BB29_41 Depth=2
@@ -2997,144 +2997,144 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	ld.w	$a2, $a1, 4
 	addi.d	$a2, $a2, 1
 	st.w	$a2, $a1, 4
-	vld	$vr0, $sp, 512
-	vld	$vr1, $sp, 480
-	vld	$vr2, $sp, 1440
-	vld	$vr3, $sp, 544
+	vld	$vr0, $sp, 1472
+	vld	$vr1, $sp, 1440
+	vld	$vr2, $sp, 512
+	vld	$vr3, $sp, 480
 	vld	$vr4, $sp, 576
-	vadd.w	$vr0, $vr0, $vr1
-	vld	$vr1, $sp, 608
-	vadd.w	$vr0, $vr3, $vr0
-	vld	$vr3, $sp, 640
-	vadd.w	$vr0, $vr4, $vr0
-	vld	$vr4, $sp, 672
-	vadd.w	$vr0, $vr1, $vr0
-	vld	$vr1, $sp, 704
-	vadd.w	$vr0, $vr3, $vr0
-	vld	$vr3, $sp, 736
-	vadd.w	$vr0, $vr4, $vr0
-	vld	$vr4, $sp, 768
-	vadd.w	$vr0, $vr1, $vr0
-	vld	$vr1, $sp, 800
-	vadd.w	$vr0, $vr3, $vr0
-	vld	$vr3, $sp, 832
-	vadd.w	$vr0, $vr4, $vr0
-	vld	$vr4, $sp, 864
-	vadd.w	$vr0, $vr1, $vr0
-	vld	$vr1, $sp, 896
-	vadd.w	$vr0, $vr3, $vr0
+	vld	$vr5, $sp, 544
+	vld	$vr6, $sp, 640
+	vadd.w	$vr2, $vr2, $vr3
+	vld	$vr3, $sp, 608
+	vadd.w	$vr4, $vr4, $vr5
+	vld	$vr5, $sp, 672
+	vadd.w	$vr2, $vr4, $vr2
+	vld	$vr4, $sp, 736
+	vadd.w	$vr3, $vr6, $vr3
+	vld	$vr6, $sp, 704
+	vadd.w	$vr3, $vr5, $vr3
+	vld	$vr5, $sp, 768
+	vadd.w	$vr2, $vr3, $vr2
+	vld	$vr3, $sp, 800
+	vadd.w	$vr4, $vr4, $vr6
+	vld	$vr6, $sp, 864
+	vadd.w	$vr4, $vr5, $vr4
+	vld	$vr5, $sp, 832
+	vadd.w	$vr3, $vr3, $vr4
+	vld	$vr4, $sp, 896
+	vadd.w	$vr2, $vr3, $vr2
 	vld	$vr3, $sp, 928
-	vadd.w	$vr0, $vr4, $vr0
-	vld	$vr4, $sp, 960
-	vadd.w	$vr0, $vr1, $vr0
-	vld	$vr1, $sp, 992
-	vadd.w	$vr0, $vr3, $vr0
-	vld	$vr3, $sp, 1024
-	vadd.w	$vr0, $vr4, $vr0
-	vld	$vr4, $sp, 1056
-	vadd.w	$vr0, $vr1, $vr0
-	vld	$vr1, $sp, 1088
-	vadd.w	$vr0, $vr3, $vr0
-	vld	$vr3, $sp, 1120
-	vadd.w	$vr0, $vr4, $vr0
-	vld	$vr4, $sp, 1152
-	vadd.w	$vr0, $vr1, $vr0
-	vld	$vr1, $sp, 1184
-	vadd.w	$vr0, $vr3, $vr0
-	vld	$vr3, $sp, 1216
-	vadd.w	$vr0, $vr4, $vr0
-	vld	$vr4, $sp, 1248
-	vadd.w	$vr0, $vr1, $vr0
-	vld	$vr1, $sp, 1280
-	vadd.w	$vr0, $vr3, $vr0
-	vld	$vr3, $sp, 1312
-	vadd.w	$vr0, $vr4, $vr0
-	vld	$vr4, $sp, 1344
-	vadd.w	$vr0, $vr1, $vr0
-	vld	$vr1, $sp, 1376
-	vadd.w	$vr0, $vr3, $vr0
-	vld	$vr3, $sp, 1408
-	vadd.w	$vr0, $vr4, $vr0
-	vld	$vr4, $sp, 1472
-	vadd.w	$vr0, $vr1, $vr0
-	vadd.w	$vr0, $vr3, $vr0
-	vadd.w	$vr0, $vr2, $vr0
-	vld	$vr1, $sp, 496
-	vld	$vr2, $sp, 464
-	vadd.w	$vr0, $vr4, $vr0
-	vld	$vr3, $sp, 528
+	vadd.w	$vr5, $vr6, $vr5
+	vld	$vr6, $sp, 960
+	vadd.w	$vr4, $vr4, $vr5
+	vld	$vr5, $sp, 1024
+	vadd.w	$vr3, $vr3, $vr4
+	vld	$vr4, $sp, 992
+	vadd.w	$vr3, $vr6, $vr3
+	vld	$vr6, $sp, 1056
+	vadd.w	$vr2, $vr3, $vr2
+	vld	$vr3, $sp, 1088
+	vadd.w	$vr4, $vr5, $vr4
+	vld	$vr5, $sp, 1120
+	vadd.w	$vr4, $vr6, $vr4
+	vld	$vr6, $sp, 1152
+	vadd.w	$vr3, $vr3, $vr4
+	vld	$vr4, $sp, 1216
+	vadd.w	$vr3, $vr5, $vr3
+	vld	$vr5, $sp, 1184
+	vadd.w	$vr3, $vr6, $vr3
+	vld	$vr6, $sp, 1248
+	vadd.w	$vr2, $vr3, $vr2
+	vld	$vr3, $sp, 1280
+	vadd.w	$vr4, $vr4, $vr5
+	vld	$vr5, $sp, 1312
+	vadd.w	$vr4, $vr6, $vr4
+	vld	$vr6, $sp, 1344
+	vadd.w	$vr3, $vr3, $vr4
+	vld	$vr4, $sp, 1376
+	vadd.w	$vr3, $vr5, $vr3
+	vld	$vr5, $sp, 1408
+	vadd.w	$vr3, $vr6, $vr3
+	vadd.w	$vr3, $vr4, $vr3
+	vadd.w	$vr2, $vr3, $vr2
+	vadd.w	$vr1, $vr1, $vr5
+	vadd.w	$vr0, $vr0, $vr1
+	vadd.w	$vr0, $vr0, $vr2
+	vld	$vr1, $sp, 1424
+	vld	$vr2, $sp, 496
+	vld	$vr3, $sp, 464
 	vld	$vr4, $sp, 560
-	vadd.w	$vr1, $vr1, $vr2
-	vld	$vr2, $sp, 592
-	vadd.w	$vr1, $vr3, $vr1
-	vld	$vr3, $sp, 624
-	vadd.w	$vr1, $vr4, $vr1
-	vld	$vr4, $sp, 656
-	vadd.w	$vr1, $vr2, $vr1
-	vld	$vr2, $sp, 688
-	vadd.w	$vr1, $vr3, $vr1
-	vld	$vr3, $sp, 720
-	vadd.w	$vr1, $vr4, $vr1
-	vld	$vr4, $sp, 752
-	vadd.w	$vr1, $vr2, $vr1
-	vld	$vr2, $sp, 784
-	vadd.w	$vr1, $vr3, $vr1
-	vld	$vr3, $sp, 816
-	vadd.w	$vr1, $vr4, $vr1
-	vld	$vr4, $sp, 848
-	vadd.w	$vr1, $vr2, $vr1
-	vld	$vr2, $sp, 880
-	vadd.w	$vr1, $vr3, $vr1
+	vld	$vr5, $sp, 528
+	vld	$vr6, $sp, 624
+	vadd.w	$vr2, $vr2, $vr3
+	vld	$vr3, $sp, 592
+	vadd.w	$vr4, $vr4, $vr5
+	vld	$vr5, $sp, 656
+	vadd.w	$vr2, $vr4, $vr2
+	vld	$vr4, $sp, 720
+	vadd.w	$vr3, $vr6, $vr3
+	vld	$vr6, $sp, 688
+	vadd.w	$vr3, $vr5, $vr3
+	vld	$vr5, $sp, 752
+	vadd.w	$vr2, $vr3, $vr2
+	vld	$vr3, $sp, 784
+	vadd.w	$vr4, $vr4, $vr6
+	vld	$vr6, $sp, 848
+	vadd.w	$vr4, $vr5, $vr4
+	vld	$vr5, $sp, 816
+	vadd.w	$vr3, $vr3, $vr4
+	vld	$vr4, $sp, 880
+	vadd.w	$vr2, $vr3, $vr2
 	vld	$vr3, $sp, 912
-	vadd.w	$vr1, $vr4, $vr1
-	vld	$vr4, $sp, 944
-	vadd.w	$vr1, $vr2, $vr1
-	vld	$vr2, $sp, 976
-	vadd.w	$vr1, $vr3, $vr1
-	vld	$vr3, $sp, 1008
-	vadd.w	$vr1, $vr4, $vr1
-	vld	$vr4, $sp, 1040
-	vadd.w	$vr1, $vr2, $vr1
-	vld	$vr2, $sp, 1072
-	vadd.w	$vr1, $vr3, $vr1
-	vld	$vr3, $sp, 1104
-	vadd.w	$vr1, $vr4, $vr1
-	vld	$vr4, $sp, 1136
-	vadd.w	$vr1, $vr2, $vr1
-	vld	$vr2, $sp, 1168
-	vadd.w	$vr1, $vr3, $vr1
-	vld	$vr3, $sp, 1200
-	vadd.w	$vr1, $vr4, $vr1
-	vld	$vr4, $sp, 1232
-	vadd.w	$vr1, $vr2, $vr1
-	vld	$vr2, $sp, 1264
-	vadd.w	$vr1, $vr3, $vr1
-	vld	$vr3, $sp, 1296
-	vadd.w	$vr1, $vr4, $vr1
-	vld	$vr4, $sp, 1328
-	vadd.w	$vr1, $vr2, $vr1
-	vld	$vr2, $sp, 1360
-	vadd.w	$vr1, $vr3, $vr1
-	vld	$vr3, $sp, 1392
-	vadd.w	$vr1, $vr4, $vr1
-	vld	$vr4, $sp, 1424
-	vadd.w	$vr1, $vr2, $vr1
-	vld	$vr2, $sp, 1456
-	vadd.w	$vr1, $vr3, $vr1
-	vadd.w	$vr1, $vr4, $vr1
+	vadd.w	$vr5, $vr6, $vr5
+	vld	$vr6, $sp, 944
+	vadd.w	$vr4, $vr4, $vr5
+	vld	$vr5, $sp, 1008
+	vadd.w	$vr3, $vr3, $vr4
+	vld	$vr4, $sp, 976
+	vadd.w	$vr3, $vr6, $vr3
+	vld	$vr6, $sp, 1040
+	vadd.w	$vr2, $vr3, $vr2
+	vld	$vr3, $sp, 1072
+	vadd.w	$vr4, $vr5, $vr4
+	vld	$vr5, $sp, 1104
+	vadd.w	$vr4, $vr6, $vr4
+	vld	$vr6, $sp, 1136
+	vadd.w	$vr3, $vr3, $vr4
+	vld	$vr4, $sp, 1200
+	vadd.w	$vr3, $vr5, $vr3
+	vld	$vr5, $sp, 1168
+	vadd.w	$vr3, $vr6, $vr3
+	vld	$vr6, $sp, 1232
+	vadd.w	$vr2, $vr3, $vr2
+	vld	$vr3, $sp, 1264
+	vadd.w	$vr4, $vr4, $vr5
+	vld	$vr5, $sp, 1296
+	vadd.w	$vr4, $vr6, $vr4
+	vld	$vr6, $sp, 1328
+	vadd.w	$vr3, $vr3, $vr4
+	vld	$vr4, $sp, 1360
+	vadd.w	$vr3, $vr5, $vr3
+	vld	$vr5, $sp, 1392
+	vadd.w	$vr3, $vr6, $vr3
+	vld	$vr6, $sp, 1456
+	vadd.w	$vr3, $vr4, $vr3
+	vadd.w	$vr2, $vr3, $vr2
+	vadd.w	$vr1, $vr1, $vr5
+	vadd.w	$vr1, $vr6, $vr1
 	add.w	$s6, $a5, $a0
-	vadd.w	$vr1, $vr2, $vr1
+	vadd.w	$vr1, $vr1, $vr2
 	vadd.w	$vr0, $vr0, $vr1
 	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
 	ld.w	$a0, $sp, 1488
+	ld.w	$a2, $sp, 1492
 	ld.d	$a1, $fp, 32
-	vpickve2gr.d	$a2, $vr0, 0
-	ld.w	$a3, $sp, 1492
-	add.d	$a0, $a0, $a2
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
+	add.d	$a0, $a2, $a0
 	ld.w	$a4, $a1, 0
 	ld.w	$a2, $a1, 4
-	add.d	$a0, $a3, $a0
+	add.d	$a0, $a0, $a3
 	addi.w	$t0, $a0, 0
 	slli.d	$a3, $a4, 3
 	sub.d	$t1, $a3, $a2

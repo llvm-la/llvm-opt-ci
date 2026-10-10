@@ -99,8 +99,8 @@ crc_loop:                               # @crc_loop
 	slli.d	$a2, $a2, 1
 	bstrins.d	$a2, $a1, 21, 14
 	slli.d	$a1, $a1, 16
-	xor	$a1, $a2, $a1
 	xor	$a0, $a1, $a0
+	xor	$a0, $a2, $a0
 	bstrpick.d	$a0, $a0, 23, 8
 	ret
 .Lfunc_end1:

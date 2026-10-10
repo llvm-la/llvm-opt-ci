@@ -251,8 +251,8 @@ ADD_INT_TO_LOC:                         # @ADD_INT_TO_LOC
 	ld.b	$a5, $a1, 0
 	slli.d	$a4, $a4, 8
 	andi	$a6, $a5, 256
-	add.d	$a5, $a5, $a6
 	add.d	$a4, $a5, $a4
+	add.d	$a4, $a4, $a6
 	addi.d	$a3, $a3, -1
 	addi.d	$a1, $a1, 1
 	bnez	$a3, .LBB5_3

@@ -387,8 +387,8 @@ common:                                 # @common
 	ldx.w	$t3, $t0, $a4
 	ldx.w	$t4, $t0, $a5
 	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	add.w	$t1, $t1, $t4
+	add.d	$t2, $t3, $t4
+	add.w	$t1, $t1, $t2
 	blt	$a6, $t1, .LBB1_37
 # %bb.39:                               #   in Loop: Header=BB1_38 Depth=1
 	stptr.w	$a7, $t0, 2668

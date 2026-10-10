@@ -77,22 +77,22 @@ main:                                   # @main
 	vld	$vr3, $a0, 272
 	vld	$vr4, $a0, 240
 	vld	$vr5, $a0, 208
-	vld	$vr6, $a0, 176
+	vld	$vr6, $a0, 112
 	vld	$vr7, $a0, 48
 	vld	$vr8, $a0, 16
 	vld	$vr9, $a0, 80
-	vld	$vr10, $a0, 112
+	vld	$vr10, $a0, 176
 	vld	$vr11, $a0, 144
 	vadd.w	$vr7, $vr7, $vr8
-	vadd.w	$vr7, $vr9, $vr7
-	vadd.w	$vr7, $vr10, $vr7
-	vadd.w	$vr7, $vr11, $vr7
+	vadd.w	$vr6, $vr6, $vr9
 	vadd.w	$vr6, $vr6, $vr7
+	vadd.w	$vr7, $vr10, $vr11
+	vadd.w	$vr5, $vr5, $vr7
 	vadd.w	$vr5, $vr5, $vr6
-	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr2, $vr2, $vr3
 	vadd.w	$vr1, $vr1, $vr2
+	vadd.w	$vr1, $vr1, $vr5
 	vadd.w	$vr0, $vr0, $vr1
 	vld	$vr1, $a0, 352
 	vld	$vr2, $a0, 320
@@ -100,35 +100,35 @@ main:                                   # @main
 	vld	$vr4, $a0, 256
 	vld	$vr5, $a0, 224
 	vld	$vr6, $a0, 192
-	vld	$vr7, $a0, 160
+	vld	$vr7, $a0, 96
 	vld	$vr8, $a0, 32
 	vld	$vr9, $a0, 0
 	vld	$vr10, $a0, 64
-	vld	$vr11, $a0, 96
+	vld	$vr11, $a0, 160
 	vld	$vr12, $a0, 128
 	vadd.w	$vr8, $vr8, $vr9
-	vadd.w	$vr8, $vr10, $vr8
-	vadd.w	$vr8, $vr11, $vr8
-	vadd.w	$vr8, $vr12, $vr8
+	vadd.w	$vr7, $vr7, $vr10
 	vadd.w	$vr7, $vr7, $vr8
+	vadd.w	$vr8, $vr11, $vr12
+	vadd.w	$vr6, $vr6, $vr8
 	vadd.w	$vr6, $vr6, $vr7
-	vadd.w	$vr5, $vr5, $vr6
 	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr2, $vr2, $vr3
+	vadd.w	$vr2, $vr2, $vr6
 	vadd.w	$vr1, $vr1, $vr2
+	ld.w	$a1, $a0, 384
+	ld.w	$a2, $a0, 388
 	vadd.w	$vr0, $vr0, $vr1
 	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a1, $vr0, 0
-	ld.w	$a2, $a0, 384
-	ld.w	$a3, $a0, 388
-	ld.w	$a4, $a0, 392
-	ld.w	$a5, $a0, 396
+	ld.w	$a3, $a0, 392
 	add.d	$a1, $a2, $a1
+	ld.w	$a2, $a0, 396
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	add.d	$a1, $a3, $a1
-	add.d	$a1, $a4, $a1
-	add.w	$a1, $a5, $a1
+	vpickve2gr.d	$a3, $vr0, 0
+	add.d	$a1, $a2, $a1
+	add.w	$a1, $a1, $a3
 	pcalau12i	$a2, %pc_hi20(.L.str)
 	addi.d	$a2, $a2, %pc_lo12(.L.str)
 	move	$fp, $a0
@@ -141,22 +141,22 @@ main:                                   # @main
 	vld	$vr3, $fp, 272
 	vld	$vr4, $fp, 240
 	vld	$vr5, $fp, 208
-	vld	$vr6, $fp, 176
+	vld	$vr6, $fp, 112
 	vld	$vr7, $fp, 48
 	vld	$vr8, $fp, 16
 	vld	$vr9, $fp, 80
-	vld	$vr10, $fp, 112
+	vld	$vr10, $fp, 176
 	vld	$vr11, $fp, 144
 	vadd.w	$vr7, $vr7, $vr8
-	vadd.w	$vr7, $vr9, $vr7
-	vadd.w	$vr7, $vr10, $vr7
-	vadd.w	$vr7, $vr11, $vr7
+	vadd.w	$vr6, $vr6, $vr9
 	vadd.w	$vr6, $vr6, $vr7
+	vadd.w	$vr7, $vr10, $vr11
+	vadd.w	$vr5, $vr5, $vr7
 	vadd.w	$vr5, $vr5, $vr6
-	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr2, $vr2, $vr3
 	vadd.w	$vr1, $vr1, $vr2
+	vadd.w	$vr1, $vr1, $vr5
 	vadd.w	$vr0, $vr0, $vr1
 	vld	$vr1, $fp, 352
 	vld	$vr2, $fp, 320
@@ -164,35 +164,35 @@ main:                                   # @main
 	vld	$vr4, $fp, 256
 	vld	$vr5, $fp, 224
 	vld	$vr6, $fp, 192
-	vld	$vr7, $fp, 160
+	vld	$vr7, $fp, 96
 	vld	$vr8, $fp, 32
 	vld	$vr9, $fp, 0
 	vld	$vr10, $fp, 64
-	vld	$vr11, $fp, 96
+	vld	$vr11, $fp, 160
 	vld	$vr12, $fp, 128
 	vadd.w	$vr8, $vr8, $vr9
-	vadd.w	$vr8, $vr10, $vr8
-	vadd.w	$vr8, $vr11, $vr8
-	vadd.w	$vr8, $vr12, $vr8
+	vadd.w	$vr7, $vr7, $vr10
 	vadd.w	$vr7, $vr7, $vr8
+	vadd.w	$vr8, $vr11, $vr12
+	vadd.w	$vr6, $vr6, $vr8
 	vadd.w	$vr6, $vr6, $vr7
-	vadd.w	$vr5, $vr5, $vr6
 	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr2, $vr2, $vr3
+	vadd.w	$vr2, $vr2, $vr6
 	vadd.w	$vr1, $vr1, $vr2
+	ld.w	$a0, $fp, 384
+	ld.w	$a1, $fp, 388
 	vadd.w	$vr0, $vr0, $vr1
 	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a0, $vr0, 0
-	ld.w	$a1, $fp, 384
-	ld.w	$a2, $fp, 388
-	ld.w	$a3, $fp, 392
-	ld.w	$a4, $fp, 396
+	ld.w	$a2, $fp, 392
 	add.d	$a0, $a1, $a0
+	ld.w	$a1, $fp, 396
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	add.d	$a0, $a2, $a0
-	add.d	$a0, $a3, $a0
-	add.w	$a1, $a4, $a0
+	vpickve2gr.d	$a2, $vr0, 0
+	add.d	$a0, $a1, $a0
+	add.w	$a1, $a0, $a2
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(printf)

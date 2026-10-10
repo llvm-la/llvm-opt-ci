@@ -14544,8 +14544,8 @@ searchAnchors:                          # @searchAnchors
 # %bb.33:                               #   in Loop: Header=BB63_27 Depth=1
 	ld.w	$a3, $fp, 0
 	st.w	$s3, $fp, 4
-	add.d	$a3, $a1, $a3
-	add.d	$a3, $s3, $a3
+	add.d	$a4, $s3, $a1
+	add.d	$a3, $a4, $a3
 	bstrpick.d	$a4, $a3, 31, 31
 	add.w	$a3, $a3, $a4
 	srli.d	$a3, $a3, 1
@@ -14571,8 +14571,8 @@ searchAnchors:                          # @searchAnchors
 # %bb.36:
 	ld.w	$a2, $fp, 0
 	st.w	$s3, $fp, 4
-	add.d	$a1, $a2, $a1
 	add.d	$a1, $a1, $s3
+	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a1, 31, 31
 	add.w	$a1, $a1, $a2
 	srli.d	$a1, $a1, 1

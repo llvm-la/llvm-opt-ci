@@ -2147,11 +2147,11 @@ agrep:                                  # @agrep
 	ld.wu	$a5, $sp, 72
 	ldx.w	$a0, $s6, $a0
 	srli.d	$a1, $a5, 1
-	or	$a1, $a1, $a0
-	st.w	$a1, $sp, 160
+	or	$a2, $a1, $a0
+	st.w	$a2, $sp, 160
 	blez	$fp, .LBB6_33
 # %bb.31:                               #   in Loop: Header=BB6_27 Depth=2
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a3, $sp, 164
 	addi.d	$a4, $sp, 76
 	.p2align	4, , 16
@@ -2159,18 +2159,18 @@ agrep:                                  # @agrep
                                         #     Parent Loop BB6_27 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$a6, $a4, 0
-	srli.d	$a7, $a6, 1
-	or	$a7, $a7, $a0
-	and	$a1, $a1, $a5
-	bstrpick.d	$a1, $a1, 31, 1
-	and	$a1, $a7, $a1
-	and	$a1, $a1, $a5
-	st.w	$a1, $a3, 0
+	and	$a2, $a2, $a5
+	bstrpick.d	$a2, $a2, 31, 1
+	and	$a2, $a2, $a5
+	srli.d	$a5, $a6, 1
+	or	$a5, $a5, $a0
+	and	$a2, $a5, $a2
+	st.w	$a2, $a3, 0
 	addi.d	$a4, $a4, 4
-	addi.d	$a2, $a2, -1
+	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 4
 	move	$a5, $a6
-	bnez	$a2, .LBB6_32
+	bnez	$a1, .LBB6_32
 .LBB6_33:                               #   in Loop: Header=BB6_27 Depth=2
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
@@ -2245,11 +2245,11 @@ agrep:                                  # @agrep
 	ld.wu	$a5, $sp, 160
 	ldx.w	$a0, $s6, $a0
 	srli.d	$a1, $a5, 1
-	or	$a1, $a1, $a0
-	st.w	$a1, $sp, 72
+	or	$a2, $a1, $a0
+	st.w	$a2, $sp, 72
 	blez	$fp, .LBB6_47
 # %bb.45:                               #   in Loop: Header=BB6_27 Depth=2
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a3, $sp, 76
 	addi.d	$a4, $sp, 164
 	.p2align	4, , 16
@@ -2257,18 +2257,18 @@ agrep:                                  # @agrep
                                         #     Parent Loop BB6_27 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$a6, $a4, 0
-	srli.d	$a7, $a6, 1
-	or	$a7, $a7, $a0
-	and	$a1, $a1, $a5
-	bstrpick.d	$a1, $a1, 31, 1
-	and	$a1, $a7, $a1
-	and	$a1, $a1, $a5
-	st.w	$a1, $a3, 0
+	and	$a2, $a2, $a5
+	bstrpick.d	$a2, $a2, 31, 1
+	and	$a2, $a2, $a5
+	srli.d	$a5, $a6, 1
+	or	$a5, $a5, $a0
+	and	$a2, $a5, $a2
+	st.w	$a2, $a3, 0
 	addi.d	$a4, $a4, 4
-	addi.d	$a2, $a2, -1
+	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 4
 	move	$a5, $a6
-	bnez	$a2, .LBB6_46
+	bnez	$a1, .LBB6_46
 .LBB6_47:                               #   in Loop: Header=BB6_27 Depth=2
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0

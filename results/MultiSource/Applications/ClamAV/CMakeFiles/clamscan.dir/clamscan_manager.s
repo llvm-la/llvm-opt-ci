@@ -429,8 +429,7 @@ scanmanager:                            # @scanmanager
 	pcaddu18i	$ra, %call36(opt_check)
 	jirl	$ra, $ra, 0
 	sltu	$a0, $zero, $a0
-	slli.d	$a0, $a0, 6
-	or	$s1, $s1, $a0
+	slli.d	$s2, $a0, 6
 	pcalau12i	$a0, %pc_hi20(.L.str.31)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.31)
 	move	$a0, $fp
@@ -438,7 +437,7 @@ scanmanager:                            # @scanmanager
 	jirl	$ra, $ra, 0
 	sltu	$a0, $zero, $a0
 	slli.d	$a0, $a0, 3
-	or	$s1, $s1, $a0
+	or	$s2, $s2, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.32)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.32)
 	move	$a0, $fp
@@ -446,6 +445,7 @@ scanmanager:                            # @scanmanager
 	jirl	$ra, $ra, 0
 	sltu	$a0, $zero, $a0
 	slli.d	$a0, $a0, 8
+	or	$a0, $s2, $a0
 	or	$s1, $s1, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.33)
@@ -486,10 +486,10 @@ scanmanager:                            # @scanmanager
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 4
 	or	$a1, $s3, $s2
-	or	$a1, $a1, $s1
 	or	$a1, $a1, $s4
 	or	$a1, $a1, $s5
-	or	$s1, $a1, $a0
+	or	$a0, $a1, $a0
+	or	$s1, $a0, $s1
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.38)
 	move	$a0, $fp

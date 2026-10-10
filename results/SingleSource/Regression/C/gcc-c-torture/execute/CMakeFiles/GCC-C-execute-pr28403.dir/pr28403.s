@@ -7,12 +7,12 @@
 foo:                                    # @foo
 # %bb.0:
 	add.d	$a0, $a1, $a0
-	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a4
-	add.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a6
-	add.d	$a0, $a0, $a7
+	add.d	$a1, $a2, $a3
+	add.d	$a1, $a1, $a4
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $a5, $a6
+	add.d	$a1, $a1, $a7
+	add.d	$a0, $a0, $a1
 	pcalau12i	$a1, %pc_hi20(global)
 	st.w	$a0, $a1, %pc_lo12(global)
 	move	$a0, $zero

@@ -183,21 +183,20 @@ config1:                                # @config1
 	pcalau12i	$a5, %got_pc_hi20(blockmy)
 	ld.d	$a5, $a5, %got_pc_lo12(blockmy)
 	st.w	$a4, $a5, 0
-	sub.w	$a4, $a0, $a1
-	pcalau12i	$a5, %got_pc_hi20(numBinsX)
-	ld.d	$a5, $a5, %got_pc_lo12(numBinsX)
-	ld.wu	$a5, $a5, 0
-	addi.w	$a6, $a5, 0
-	div.w	$a4, $a4, $a6
-	mul.d	$a6, $a4, $a5
-	add.d	$a6, $a1, $a6
+	sub.w	$a0, $a0, $a1
+	pcalau12i	$a4, %got_pc_hi20(numBinsX)
+	ld.d	$a4, $a4, %got_pc_lo12(numBinsX)
+	ld.wu	$a4, $a4, 0
+	addi.w	$a5, $a4, 0
+	div.w	$a5, $a0, $a5
+	mul.d	$a6, $a5, $a4
 	sub.w	$a0, $a0, $a6
-	srli.d	$a6, $a5, 31
-	add.w	$a5, $a5, $a6
-	srai.d	$a5, $a5, 1
-	slt	$a0, $a0, $a5
+	srli.d	$a6, $a4, 31
+	add.w	$a4, $a4, $a6
+	srai.d	$a4, $a4, 1
+	slt	$a0, $a0, $a4
 	xori	$a0, $a0, 1
-	add.d	$a0, $a4, $a0
+	add.d	$a0, $a5, $a0
 	pcalau12i	$a4, %got_pc_hi20(binWidthX)
 	ld.d	$a4, $a4, %got_pc_lo12(binWidthX)
 	st.w	$a0, $a4, 0
@@ -210,16 +209,15 @@ config1:                                # @config1
 	pcalau12i	$a1, %got_pc_hi20(numBinsY)
 	ld.d	$a1, $a1, %got_pc_lo12(numBinsY)
 	ld.w	$a1, $a1, 0
-	div.w	$a0, $a0, $a1
-	mul.d	$a4, $a0, $a1
-	add.d	$a4, $a3, $a4
-	sub.w	$a2, $a2, $a4
+	div.w	$a2, $a0, $a1
+	mul.d	$a4, $a2, $a1
+	sub.w	$a0, $a0, $a4
 	bstrpick.d	$a4, $a1, 31, 31
 	add.w	$a1, $a1, $a4
 	srai.d	$a1, $a1, 1
-	slt	$a1, $a2, $a1
-	xori	$a1, $a1, 1
-	add.d	$a0, $a0, $a1
+	slt	$a0, $a0, $a1
+	xori	$a0, $a0, 1
+	add.d	$a0, $a2, $a0
 	pcalau12i	$a1, %got_pc_hi20(binWidthY)
 	ld.d	$a1, $a1, %got_pc_lo12(binWidthY)
 	st.w	$a0, $a1, 0

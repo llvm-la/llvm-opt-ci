@@ -95,8 +95,8 @@ cli_regexec:                            # @cli_regexec
 	ld.bu	$s3, $fp, 0
 	move	$s2, $s4
 	sub.d	$a0, $a1, $s4
-	add.d	$a0, $s4, $a0
-	add.d	$a0, $a0, $a3
+	add.d	$a4, $s4, $a3
+	add.d	$a0, $a4, $a0
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	add.d	$a0, $a3, $a1
 	sub.d	$s8, $a0, $s4
@@ -148,8 +148,8 @@ cli_regexec:                            # @cli_regexec
 	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
 	ld.bu	$s3, $fp, 0
 	sub.d	$a0, $a1, $s5
-	add.d	$a0, $s5, $a0
-	add.d	$a0, $a0, $a2
+	add.d	$a3, $s5, $a2
+	add.d	$a0, $a3, $a0
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	add.d	$a0, $a2, $a1
 	sub.d	$s7, $a0, $s5

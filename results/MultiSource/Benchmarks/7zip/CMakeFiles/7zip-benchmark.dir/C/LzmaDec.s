@@ -405,8 +405,8 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	bstrins.d	$s7, $zero, 1, 0
 	addi.d	$a2, $a0, -1
 	add.d	$a0, $s7, $s4
-	add.d	$a3, $a5, $s4
-	add.d	$a3, $s5, $a3
+	add.d	$a3, $s5, $a5
+	add.d	$a3, $a3, $s4
 	sub.d	$a4, $a5, $s7
 	add.d	$a5, $s6, $a5
 	.p2align	4, , 16

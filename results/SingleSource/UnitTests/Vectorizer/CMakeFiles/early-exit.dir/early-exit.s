@@ -13592,9 +13592,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_1E9_M_invokeERKSt9_Any_d
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.wu	$a1, $vr0, 0
-	add.d	$a0, $a1, $a0
-	ori	$a1, $zero, 4
-	sub.w	$fp, $a1, $a0
+	ori	$a2, $zero, 4
+	sub.d	$a0, $a2, $a0
+	sub.w	$fp, $a0, $a1
 	ld.d	$a3, $sp, 32
 	beqz	$a3, .LBB20_8
 .LBB20_7:
@@ -13804,9 +13804,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_2E9_M_invokeERKSt9_Any_d
 	vbsrl.v	$vr1, $vr0, 2
 	vmax.hu	$vr0, $vr1, $vr0
 	vpickve2gr.hu	$a1, $vr0, 0
-	add.d	$a0, $a1, $a0
-	ori	$a1, $zero, 8
-	sub.w	$fp, $a1, $a0
+	ori	$a2, $zero, 8
+	sub.d	$a0, $a2, $a0
+	sub.w	$fp, $a0, $a1
 	ld.d	$a3, $sp, 32
 	beqz	$a3, .LBB22_8
 .LBB22_7:
@@ -13995,8 +13995,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_3E9_M_invokeERKSt9_Any_d
 	vseqi.w	$vr1, $vr4, 0
 	vseqi.w	$vr0, $vr5, 0
 	vor.v	$vr4, $vr3, $vr2
-	vor.v	$vr4, $vr4, $vr1
-	vor.v	$vr4, $vr4, $vr0
+	vor.v	$vr5, $vr1, $vr0
+	vor.v	$vr4, $vr4, $vr5
 	vsetnez.v	$fcc0, $vr4
 	bcnez	$fcc0, .LBB24_6
 # %bb.4:                                #   in Loop: Header=BB24_3 Depth=1
@@ -14633,9 +14633,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_6E9_M_invokeERKSt9_Any_d
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.wu	$a1, $vr0, 0
-	add.d	$a0, $a1, $a0
-	ori	$a1, $zero, 4
-	sub.d	$a0, $a1, $a0
+	ori	$a2, $zero, 4
+	sub.d	$a0, $a2, $a0
+	sub.d	$a0, $a0, $a1
 	alsl.d	$a0, $a0, $a0, 1
 	addi.w	$fp, $a0, 2
 	ld.d	$a3, $sp, 32
@@ -14847,9 +14847,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_7E9_M_invokeERKSt9_Any_d
 	vbsrl.v	$vr1, $vr0, 2
 	vmax.hu	$vr0, $vr1, $vr0
 	vpickve2gr.hu	$a1, $vr0, 0
-	add.d	$a0, $a1, $a0
-	ori	$a1, $zero, 8
-	sub.d	$a0, $a1, $a0
+	ori	$a2, $zero, 8
+	sub.d	$a0, $a2, $a0
+	sub.d	$a0, $a0, $a1
 	alsl.d	$a0, $a0, $a0, 1
 	addi.w	$fp, $a0, 2
 	ld.d	$a3, $sp, 32
@@ -15040,8 +15040,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_8E9_M_invokeERKSt9_Any_d
 	vseqi.w	$vr2, $vr2, 0
 	vseqi.w	$vr3, $vr3, 0
 	vor.v	$vr4, $vr0, $vr1
-	vor.v	$vr4, $vr4, $vr2
-	vor.v	$vr4, $vr4, $vr3
+	vor.v	$vr5, $vr2, $vr3
+	vor.v	$vr4, $vr4, $vr5
 	vsetnez.v	$fcc0, $vr4
 	bcnez	$fcc0, .LBB34_6
 # %bb.4:                                #   in Loop: Header=BB34_3 Depth=1
@@ -16805,8 +16805,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_13E9_M_invokeERKSt
 	vor.v	$vr6, $vr1, $vr6
 	vor.v	$vr7, $vr0, $vr7
 	vor.v	$vr8, $vr4, $vr5
-	vor.v	$vr8, $vr8, $vr6
-	vor.v	$vr8, $vr8, $vr7
+	vor.v	$vr9, $vr6, $vr7
+	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr8, $vr8, 31
 	vmskltz.w	$vr8, $vr8
 	vpickve2gr.hu	$a4, $vr8, 0
@@ -18092,8 +18092,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_18E9_M_invokeERKSt
 	vor.v	$vr6, $vr1, $vr6
 	vor.v	$vr7, $vr0, $vr7
 	vor.v	$vr8, $vr4, $vr5
-	vor.v	$vr8, $vr8, $vr6
-	vor.v	$vr8, $vr8, $vr7
+	vor.v	$vr9, $vr6, $vr7
+	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr8, $vr8, 31
 	vmskltz.w	$vr8, $vr8
 	vpickve2gr.hu	$a4, $vr8, 0
@@ -19376,8 +19376,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_23E9_M_invokeERKSt
 	vor.v	$vr6, $vr1, $vr6
 	vor.v	$vr7, $vr0, $vr7
 	vor.v	$vr8, $vr4, $vr5
-	vor.v	$vr8, $vr8, $vr6
-	vor.v	$vr8, $vr8, $vr7
+	vor.v	$vr9, $vr6, $vr7
+	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr8, $vr8, 31
 	vmskltz.w	$vr8, $vr8
 	vpickve2gr.hu	$a4, $vr8, 0
@@ -21275,8 +21275,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_28E9_M_invokeERKSt
 	vor.v	$vr10, $vr14, $vr10
 	vor.v	$vr11, $vr15, $vr11
 	vor.v	$vr12, $vr8, $vr9
-	vor.v	$vr12, $vr12, $vr10
-	vor.v	$vr12, $vr12, $vr11
+	vor.v	$vr13, $vr10, $vr11
+	vor.v	$vr12, $vr12, $vr13
 	vslli.w	$vr12, $vr12, 31
 	vmskltz.w	$vr12, $vr12
 	vpickve2gr.hu	$a5, $vr12, 0
@@ -22694,8 +22694,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_33E9_M_invokeERKSt
 	vor.v	$vr10, $vr14, $vr10
 	vor.v	$vr11, $vr15, $vr11
 	vor.v	$vr12, $vr8, $vr9
-	vor.v	$vr12, $vr12, $vr10
-	vor.v	$vr12, $vr12, $vr11
+	vor.v	$vr13, $vr10, $vr11
+	vor.v	$vr12, $vr12, $vr13
 	vslli.w	$vr12, $vr12, 31
 	vmskltz.w	$vr12, $vr12
 	vpickve2gr.hu	$a5, $vr12, 0
@@ -24687,8 +24687,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_38E9_M_invokeERKSt
 	vor.v	$vr6, $vr1, $vr6
 	vor.v	$vr7, $vr0, $vr7
 	vor.v	$vr8, $vr4, $vr5
-	vor.v	$vr8, $vr8, $vr6
-	vor.v	$vr8, $vr8, $vr7
+	vor.v	$vr9, $vr6, $vr7
+	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr8, $vr8, 31
 	vmskltz.w	$vr8, $vr8
 	vpickve2gr.hu	$a4, $vr8, 0
@@ -26245,8 +26245,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_43E9_M_invokeERKSt
 	vor.v	$vr6, $vr1, $vr6
 	vor.v	$vr7, $vr0, $vr7
 	vor.v	$vr8, $vr4, $vr5
-	vor.v	$vr8, $vr8, $vr6
-	vor.v	$vr8, $vr8, $vr7
+	vor.v	$vr9, $vr6, $vr7
+	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr8, $vr8, 31
 	vmskltz.w	$vr8, $vr8
 	vpickve2gr.hu	$a4, $vr8, 0
@@ -28454,8 +28454,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_48E9_M_invokeERKSt
 	vor.v	$vr10, $vr14, $vr10
 	vor.v	$vr11, $vr15, $vr11
 	vor.v	$vr12, $vr8, $vr9
-	vor.v	$vr12, $vr12, $vr10
-	vor.v	$vr12, $vr12, $vr11
+	vor.v	$vr13, $vr10, $vr11
+	vor.v	$vr12, $vr12, $vr13
 	vslli.w	$vr12, $vr12, 31
 	vmskltz.w	$vr12, $vr12
 	vpickve2gr.hu	$a5, $vr12, 0
@@ -31583,8 +31583,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_53E9_M_invokeERKSt
 	vor.v	$vr6, $vr1, $vr6
 	vor.v	$vr7, $vr0, $vr7
 	vor.v	$vr8, $vr4, $vr5
-	vor.v	$vr8, $vr8, $vr6
-	vor.v	$vr8, $vr8, $vr7
+	vor.v	$vr9, $vr6, $vr7
+	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr8, $vr8, 31
 	vmskltz.w	$vr8, $vr8
 	vpickve2gr.hu	$a0, $vr8, 0
@@ -31614,8 +31614,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_53E9_M_invokeERKSt
 	vor.v	$vr6, $vr1, $vr6
 	vor.v	$vr7, $vr0, $vr7
 	vor.v	$vr8, $vr4, $vr5
-	vor.v	$vr8, $vr8, $vr6
-	vor.v	$vr8, $vr8, $vr7
+	vor.v	$vr9, $vr6, $vr7
+	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr8, $vr8, 31
 	vmskltz.w	$vr8, $vr8
 	vpickve2gr.hu	$a1, $vr8, 0
@@ -31643,8 +31643,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_53E9_M_invokeERKSt
 	vor.v	$vr6, $vr1, $vr6
 	vor.v	$vr7, $vr0, $vr7
 	vor.v	$vr8, $vr4, $vr5
-	vor.v	$vr8, $vr8, $vr6
-	vor.v	$vr8, $vr8, $vr7
+	vor.v	$vr9, $vr6, $vr7
+	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr8, $vr8, 31
 	vmskltz.w	$vr8, $vr8
 	vpickve2gr.hu	$a1, $vr8, 0
@@ -31672,8 +31672,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_53E9_M_invokeERKSt
 	vor.v	$vr6, $vr1, $vr6
 	vor.v	$vr7, $vr0, $vr7
 	vor.v	$vr8, $vr4, $vr5
-	vor.v	$vr8, $vr8, $vr6
-	vor.v	$vr8, $vr8, $vr7
+	vor.v	$vr9, $vr6, $vr7
+	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr8, $vr8, 31
 	vmskltz.w	$vr8, $vr8
 	vpickve2gr.hu	$a1, $vr8, 0
@@ -34758,8 +34758,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_58E9_M_invokeERKSt
 	vor.v	$vr10, $vr14, $vr10
 	vor.v	$vr11, $vr15, $vr11
 	vor.v	$vr12, $vr8, $vr9
-	vor.v	$vr12, $vr12, $vr10
-	vor.v	$vr12, $vr12, $vr11
+	vor.v	$vr13, $vr10, $vr11
+	vor.v	$vr12, $vr12, $vr13
 	vslli.w	$vr12, $vr12, 31
 	vmskltz.w	$vr12, $vr12
 	vpickve2gr.hu	$a0, $vr12, 0
@@ -34801,8 +34801,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_58E9_M_invokeERKSt
 	vor.v	$vr10, $vr14, $vr10
 	vor.v	$vr11, $vr15, $vr11
 	vor.v	$vr12, $vr8, $vr9
-	vor.v	$vr12, $vr12, $vr10
-	vor.v	$vr12, $vr12, $vr11
+	vor.v	$vr13, $vr10, $vr11
+	vor.v	$vr12, $vr12, $vr13
 	vslli.w	$vr12, $vr12, 31
 	vmskltz.w	$vr12, $vr12
 	vpickve2gr.hu	$a1, $vr12, 0
@@ -34842,8 +34842,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_58E9_M_invokeERKSt
 	vor.v	$vr10, $vr14, $vr10
 	vor.v	$vr11, $vr15, $vr11
 	vor.v	$vr12, $vr8, $vr9
-	vor.v	$vr12, $vr12, $vr10
-	vor.v	$vr12, $vr12, $vr11
+	vor.v	$vr13, $vr10, $vr11
+	vor.v	$vr12, $vr12, $vr13
 	vslli.w	$vr12, $vr12, 31
 	vmskltz.w	$vr12, $vr12
 	vpickve2gr.hu	$a1, $vr12, 0
@@ -34883,8 +34883,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_58E9_M_invokeERKSt
 	vor.v	$vr10, $vr14, $vr10
 	vor.v	$vr11, $vr15, $vr11
 	vor.v	$vr12, $vr8, $vr9
-	vor.v	$vr12, $vr12, $vr10
-	vor.v	$vr12, $vr12, $vr11
+	vor.v	$vr13, $vr10, $vr11
+	vor.v	$vr12, $vr12, $vr13
 	vslli.w	$vr12, $vr12, 31
 	vmskltz.w	$vr12, $vr12
 	vpickve2gr.hu	$a1, $vr12, 0
@@ -36512,8 +36512,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_63E9_M_invokeERKSt
 	vor.v	$vr6, $vr1, $vr6
 	vor.v	$vr7, $vr0, $vr7
 	vor.v	$vr8, $vr4, $vr5
-	vor.v	$vr8, $vr8, $vr6
-	vor.v	$vr8, $vr8, $vr7
+	vor.v	$vr9, $vr6, $vr7
+	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr8, $vr8, 31
 	vmskltz.w	$vr8, $vr8
 	vpickve2gr.hu	$a0, $vr8, 0
@@ -36543,8 +36543,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_63E9_M_invokeERKSt
 	vor.v	$vr6, $vr1, $vr6
 	vor.v	$vr7, $vr0, $vr7
 	vor.v	$vr8, $vr4, $vr5
-	vor.v	$vr8, $vr8, $vr6
-	vor.v	$vr8, $vr8, $vr7
+	vor.v	$vr9, $vr6, $vr7
+	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr8, $vr8, 31
 	vmskltz.w	$vr8, $vr8
 	vpickve2gr.hu	$a1, $vr8, 0
@@ -36572,8 +36572,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_63E9_M_invokeERKSt
 	vor.v	$vr6, $vr1, $vr6
 	vor.v	$vr7, $vr0, $vr7
 	vor.v	$vr8, $vr4, $vr5
-	vor.v	$vr8, $vr8, $vr6
-	vor.v	$vr8, $vr8, $vr7
+	vor.v	$vr9, $vr6, $vr7
+	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr8, $vr8, 31
 	vmskltz.w	$vr8, $vr8
 	vpickve2gr.hu	$a1, $vr8, 0
@@ -36601,8 +36601,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_63E9_M_invokeERKSt
 	vor.v	$vr6, $vr1, $vr6
 	vor.v	$vr7, $vr0, $vr7
 	vor.v	$vr8, $vr4, $vr5
-	vor.v	$vr8, $vr8, $vr6
-	vor.v	$vr8, $vr8, $vr7
+	vor.v	$vr9, $vr6, $vr7
+	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr8, $vr8, 31
 	vmskltz.w	$vr8, $vr8
 	vpickve2gr.hu	$a1, $vr8, 0
@@ -37949,8 +37949,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_65E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -38176,8 +38176,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_66E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -38403,8 +38403,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_67E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -38630,8 +38630,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_68E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -38857,8 +38857,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_69E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -39083,8 +39083,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_70E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -39309,8 +39309,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_71E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -39535,8 +39535,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_72E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -39761,8 +39761,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_73E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -39987,8 +39987,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_74E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -40215,8 +40215,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_75E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -40443,8 +40443,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_76E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -40671,8 +40671,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_77E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -40899,8 +40899,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_78E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -41127,8 +41127,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_79E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -41357,8 +41357,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_80E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -41589,8 +41589,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_81E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -41821,8 +41821,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_82E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -42053,8 +42053,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_83E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -42285,8 +42285,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_84E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -44351,8 +44351,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_90E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -44586,8 +44586,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_91E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -44821,8 +44821,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_92E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -45056,8 +45056,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_93E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1
@@ -45291,8 +45291,8 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_94E9_M_invokeERKSt9_A
 	vpackev.w	$vr3, $vr2, $vr1
 	vadd.w	$vr3, $vr3, $vr4
 	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
+	vilvh.w	$vr5, $vr2, $vr1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vori.b	$vr4, $vr0, 0
 	vshuf.w	$vr4, $vr2, $vr1

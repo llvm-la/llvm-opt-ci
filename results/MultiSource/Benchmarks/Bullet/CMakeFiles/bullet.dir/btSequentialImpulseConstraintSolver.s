@@ -4268,8 +4268,8 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	ld.d	$a6, $sp, 8                     # 8-byte Folded Reload
 	and	$a5, $a5, $a6
 	srli.d	$a4, $a4, 33
-	add.d	$a4, $a5, $a4
-	sub.w	$a3, $a3, $a4
+	sub.d	$a3, $a3, $a4
+	sub.w	$a3, $a3, $a5
 	slli.d	$a3, $a3, 2
 	ldx.w	$a4, $a0, $a3
 	ld.w	$a5, $a0, 8
@@ -4353,8 +4353,8 @@ _ZN35btSequentialImpulseConstraintSolver33solveGroupCacheFriendlyIterationsEPP17
 	ld.d	$a6, $sp, 8                     # 8-byte Folded Reload
 	and	$a5, $a5, $a6
 	srli.d	$a4, $a4, 33
-	add.d	$a4, $a5, $a4
-	sub.w	$a3, $a3, $a4
+	sub.d	$a3, $a3, $a4
+	sub.w	$a3, $a3, $a5
 	slli.d	$a3, $a3, 2
 	ldx.w	$a4, $a0, $a3
 	ld.w	$a5, $a0, 8

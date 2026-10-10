@@ -705,8 +705,8 @@ get_mem5Dpel:                           # @get_mem5Dpel
 	bne	$s6, $s5, .LBB6_4
 .LBB6_5:
 	mul.d	$a0, $s3, $s2
-	mul.d	$a0, $a0, $s1
-	mul.d	$a0, $a0, $s0
+	mul.d	$a1, $s1, $s0
+	mul.d	$a0, $a0, $a1
 	mul.d	$a0, $a0, $fp
 	slli.w	$a0, $a0, 1
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
@@ -1994,8 +1994,8 @@ get_mem5Dint:                           # @get_mem5Dint
 	bne	$s6, $s5, .LBB18_4
 .LBB18_5:
 	mul.d	$a0, $s3, $s2
-	mul.d	$a0, $a0, $s1
-	mul.d	$a0, $a0, $s0
+	mul.d	$a1, $s1, $s0
+	mul.d	$a0, $a0, $a1
 	mul.d	$a0, $a0, $fp
 	slli.w	$a0, $a0, 2
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
@@ -3186,8 +3186,8 @@ get_mem5Dshort:                         # @get_mem5Dshort
 	bne	$s6, $s5, .LBB30_4
 .LBB30_5:
 	mul.d	$a0, $s3, $s2
-	mul.d	$a0, $a0, $s1
-	mul.d	$a0, $a0, $s0
+	mul.d	$a1, $s1, $s0
+	mul.d	$a0, $a0, $a1
 	mul.d	$a0, $a0, $fp
 	slli.w	$a0, $a0, 1
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
@@ -3314,10 +3314,10 @@ get_mem6Dshort:                         # @get_mem6Dshort
 .LBB31_10:
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	mul.d	$a0, $a0, $s3
-	mul.d	$a0, $a0, $s2
-	mul.d	$a0, $a0, $s1
-	mul.d	$a0, $a0, $s0
-	mul.d	$a0, $a0, $fp
+	mul.d	$a1, $s2, $s1
+	mul.d	$a0, $a0, $a1
+	mul.d	$a1, $s0, $fp
+	mul.d	$a0, $a0, $a1
 	slli.w	$a0, $a0, 1
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload

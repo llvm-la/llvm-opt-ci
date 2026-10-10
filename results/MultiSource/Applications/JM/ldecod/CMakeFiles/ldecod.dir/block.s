@@ -489,11 +489,11 @@ intrapred:                              # @intrapred
 	bstrpick.d	$a6, $a6, 15, 0
 	bstrpick.d	$a7, $s6, 15, 0
 	add.d	$a2, $a3, $a2
-	add.d	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	add.d	$a0, $a0, $a7
-	add.d	$a0, $a0, $a6
-	add.d	$a0, $a0, $a5
+	add.d	$a0, $a2, $a0
+	add.d	$a1, $a7, $a6
+	add.d	$a1, $a1, $a5
+	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $a4
 	addi.d	$a0, $a0, 4
 	bstrpick.d	$a1, $a0, 31, 3
@@ -1090,8 +1090,8 @@ intrapred:                              # @intrapred
 	bstrpick.d	$a3, $s8, 15, 0
 .LBB0_70:
 	add.d	$a2, $a3, $a2
-	add.d	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
+	add.d	$a0, $a2, $a0
 	addi.d	$a0, $a0, 2
 	srli.d	$a1, $a0, 2
 .LBB0_71:
@@ -1697,9 +1697,9 @@ intrapred_luma_16x16:                   # @intrapred_luma_16x16
 	alsl.d	$a5, $t0, $a5, 1
 	add.d	$a5, $a7, $a5
 	alsl.d	$a5, $a6, $a5, 2
-	add.d	$a4, $a4, $a5
 	add.d	$a3, $a3, $a4
-	add.w	$a1, $a1, $a3
+	add.d	$a1, $a1, $a3
+	add.w	$a1, $a1, $a5
 	alsl.d	$a1, $a2, $a1, 3
 	alsl.d	$a1, $a1, $a1, 2
 	addi.w	$a1, $a1, 32
@@ -1828,9 +1828,9 @@ intrapred_luma_16x16:                   # @intrapred_luma_16x16
 	alsl.d	$s1, $s1, $s2, 1
 	add.d	$t8, $t8, $s1
 	alsl.d	$t8, $s0, $t8, 2
-	add.d	$t7, $t7, $t8
 	add.d	$t3, $t3, $t7
-	add.w	$t3, $t6, $t3
+	add.d	$t3, $t6, $t3
+	add.w	$t3, $t3, $t8
 	alsl.d	$t3, $t4, $t3, 3
 	alsl.d	$t3, $t3, $t3, 2
 	addi.w	$t3, $t3, 32
@@ -2050,35 +2050,35 @@ intrapred_luma_16x16:                   # @intrapred_luma_16x16
 	slli.d	$a3, $a3, 1
 	ldx.hu	$a4, $a4, $a3
 	ld.hu	$a5, $a2, 2
-	ld.hu	$a6, $a2, 4
-	ld.hu	$a7, $a2, 6
 	move	$a3, $zero
 	add.d	$a4, $a4, $a5
-	add.d	$a4, $a4, $a6
-	add.d	$a4, $a4, $a7
-	ld.hu	$a5, $a2, 8
-	ld.hu	$a6, $a2, 10
-	ld.hu	$a7, $a2, 12
-	ld.hu	$t0, $a2, 14
+	ld.hu	$a5, $a2, 4
+	ld.hu	$a6, $a2, 6
+	ld.hu	$a7, $a2, 8
+	ld.hu	$t0, $a2, 10
+	ld.hu	$t1, $a2, 12
+	add.d	$a5, $a5, $a6
 	add.d	$a4, $a4, $a5
-	add.d	$a4, $a4, $a6
-	add.d	$a4, $a4, $a7
-	add.d	$a4, $a4, $t0
-	ld.hu	$a5, $a2, 16
-	ld.hu	$a6, $a2, 18
-	ld.hu	$a7, $a2, 20
-	ld.hu	$t0, $a2, 22
+	add.d	$a5, $a7, $t0
+	add.d	$a5, $a5, $t1
+	ld.hu	$a6, $a2, 14
+	ld.hu	$a7, $a2, 16
+	ld.hu	$t0, $a2, 18
+	ld.hu	$t1, $a2, 20
 	add.d	$a4, $a4, $a5
-	add.d	$a4, $a4, $a6
-	add.d	$a4, $a4, $a7
-	add.d	$a4, $a4, $t0
-	ld.hu	$a5, $a2, 24
-	ld.hu	$a6, $a2, 26
-	ld.hu	$a7, $a2, 28
+	add.d	$a5, $a6, $a7
+	add.d	$a5, $a5, $t0
+	add.d	$a5, $a5, $t1
+	add.d	$a4, $a4, $a5
+	ld.hu	$a5, $a2, 22
+	ld.hu	$a6, $a2, 24
+	ld.hu	$a7, $a2, 26
+	ld.hu	$t0, $a2, 28
 	ld.hu	$a2, $a2, 30
-	add.d	$a4, $a4, $a5
-	add.d	$a4, $a4, $a6
-	add.d	$a4, $a4, $a7
+	add.d	$a5, $a5, $a6
+	add.d	$a5, $a5, $a7
+	add.d	$a5, $a5, $t0
+	add.d	$a2, $a5, $a2
 	add.w	$a2, $a4, $a2
 	b	.LBB1_91
 .LBB1_61:
@@ -2686,7 +2686,7 @@ intrapred_chroma:                       # @intrapred_chroma
 	ldx.hu	$a3, $a6, $a3
 	add.d	$a4, $a4, $s6
 .LBB2_27:                               #   in Loop: Header=BB2_31 Depth=2
-	add.d	$a4, $a4, $s5
+	add.d	$a3, $s5, $a3
 	add.d	$a3, $a4, $a3
 	addi.d	$a3, $a3, 2
 .LBB2_28:                               #   in Loop: Header=BB2_31 Depth=2
@@ -2727,7 +2727,7 @@ intrapred_chroma:                       # @intrapred_chroma
 	ld.hu	$ra, $s7, 4
 	ld.hu	$s7, $s7, 6
 	add.d	$a4, $a4, $s8
-	add.d	$a4, $a4, $ra
+	add.d	$s7, $ra, $s7
 	add.d	$s7, $a4, $s7
 	bnez	$a2, .LBB2_48
 	b	.LBB2_37
@@ -2747,7 +2747,7 @@ intrapred_chroma:                       # @intrapred_chroma
 	ld.hu	$s7, $a3, 4
 	ld.hu	$a3, $a3, 6
 	add.d	$a4, $a4, $a6
-	add.d	$a4, $a4, $s7
+	add.d	$a3, $s7, $a3
 	add.d	$s7, $a4, $a3
 	bnez	$a1, .LBB2_44
 .LBB2_37:                               #   in Loop: Header=BB2_31 Depth=2
@@ -2808,7 +2808,7 @@ intrapred_chroma:                       # @intrapred_chroma
 	slli.d	$a3, $a3, 1
 	ldx.hu	$a3, $s6, $a3
 	add.d	$a4, $a4, $s5
-	add.d	$a4, $a4, $a6
+	add.d	$a3, $a6, $a3
 	add.d	$s5, $a4, $a3
 	beqz	$a0, .LBB2_49
 .LBB2_45:                               #   in Loop: Header=BB2_31 Depth=2
@@ -2850,8 +2850,8 @@ intrapred_chroma:                       # @intrapred_chroma
 	slli.d	$a4, $a4, 1
 	ldx.hu	$a4, $s6, $a4
 	add.d	$a6, $s5, $a6
-	add.d	$a3, $a6, $a3
-	add.d	$s5, $a3, $a4
+	add.d	$a3, $a3, $a4
+	add.d	$s5, $a6, $a3
 	bnez	$a0, .LBB2_45
 .LBB2_49:                               #   in Loop: Header=BB2_31 Depth=2
 	addi.d	$a3, $s5, 2
@@ -3588,9 +3588,9 @@ intrapred_chroma:                       # @intrapred_chroma
 	ori	$t4, $zero, 24
 	mul.d	$t5, $t2, $t4
 	mul.d	$t1, $t1, $t4
-	add.d	$t1, $t5, $t1
 	addi.d	$t6, $sp, 56
-	add.d	$t1, $t1, $t6
+	add.d	$t7, $t5, $t6
+	add.d	$t1, $t7, $t1
 	addi.d	$t1, $t1, 44
 	sub.d	$t0, $t0, $t2
 	mul.d	$a7, $a7, $t4
@@ -4085,13 +4085,13 @@ itrans:                                 # @itrans
 # %bb.2:
 	alsl.d	$a3, $a3, $a3, 1
 	slli.d	$a3, $a3, 8
-	add.d	$a3, $a0, $a3
 	slli.d	$a4, $a4, 6
+	add.d	$a4, $a0, $a4
 	slli.d	$a2, $a2, 5
 	add.d	$a2, $a0, $a2
 	alsl.d	$a1, $a1, $a2, 1
 	ld.d	$a2, $a1, 104
-	add.d	$a3, $a3, $a4
+	add.d	$a3, $a4, $a3
 	ori	$a4, $zero, 2408
 	vldx	$vr0, $a3, $a4
 	vinsgr2vr.d	$vr1, $a2, 0
@@ -4146,9 +4146,9 @@ itrans:                                 # @itrans
 	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
 	alsl.d	$a3, $a3, $a3, 1
 	slli.d	$a3, $a3, 8
-	add.d	$a3, $a0, $a3
 	slli.d	$a4, $a4, 6
-	add.d	$t3, $a3, $a4
+	add.d	$a4, $a0, $a4
+	add.d	$t3, $a4, $a3
 	ori	$a3, $zero, 2408
 	ldx.w	$a3, $t3, $a3
 	ori	$a4, $zero, 2416
@@ -5441,8 +5441,8 @@ itrans_sp:                              # @itrans_sp
 	alsl.d	$a2, $a3, $a3, 1
 	slli.d	$a2, $a2, 8
 	slli.d	$a3, $a4, 6
+	add.d	$a3, $a3, $a0
 	add.d	$a2, $a2, $a3
-	add.d	$a2, $a2, $a0
 	addi.d	$a4, $a2, 2047
 	addi.d	$a2, $a4, 361
 	slli.d	$a3, $t1, 6

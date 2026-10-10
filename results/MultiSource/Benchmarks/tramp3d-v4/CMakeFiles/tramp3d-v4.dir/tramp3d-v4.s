@@ -4603,8 +4603,8 @@ _Z25findIntersectionEndpointsiiiiiiRiS_S_: # @_Z25findIntersectionEndpointsiiiii
 	maskeqz	$t3, $a0, $t3
 	or	$t3, $t3, $t4
 	slt	$t4, $a0, $a3
-	sub.d	$t3, $t3, $a0
-	sub.w	$t3, $t3, $t4
+	add.d	$t5, $a0, $t4
+	sub.w	$t3, $t3, $t5
 	div.wu	$t3, $t3, $t1
 	add.d	$t3, $t3, $t4
 	mul.d	$t3, $t3, $t1
@@ -4654,8 +4654,8 @@ _Z25findIntersectionEndpointsiiiiiiRiS_S_: # @_Z25findIntersectionEndpointsiiiii
 	maskeqz	$t2, $a2, $t2
 	or	$t2, $t2, $t3
 	slt	$t3, $a2, $t1
-	sub.d	$t2, $t2, $a2
-	sub.w	$t2, $t2, $t3
+	add.d	$t4, $a2, $t3
+	sub.w	$t2, $t2, $t4
 	div.wu	$t2, $t2, $t0
 	add.d	$t2, $t2, $t3
 	mul.d	$t2, $t2, $a3
@@ -28690,15 +28690,15 @@ _ZN5Pooma9positionsI22UniformRectilinearMeshI10MeshTraitsILi3Ed21UniformRectilin
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $a0, 0
 .LBB162_32:                             #   in Loop: Header=BB162_10 Depth=2
-	ld.d	$a1, $s1, 8
-	mul.w	$a2, $s8, $s6
-	ori	$a4, $zero, 80
-	mul.d	$a3, $fp, $a4
-	add.d	$a1, $a1, $a3
-	mul.d	$a3, $s7, $a4
-	add.d	$a1, $a1, $a3
-	mul.d	$a2, $a2, $a4
-	add.d	$a3, $a1, $a2
+	mul.w	$a1, $s8, $s6
+	ld.d	$a2, $s1, 8
+	ori	$a5, $zero, 80
+	mul.d	$a3, $fp, $a5
+	mul.d	$a4, $s7, $a5
+	add.d	$a3, $a3, $a4
+	add.d	$a2, $a2, $a3
+	mul.d	$a1, $a1, $a5
+	add.d	$a3, $a2, $a1
 	ld.d	$a4, $s0, 40
 	alsl.d	$a5, $s7, $s7, 1
 	ld.d	$a6, $s5, 136
@@ -28724,7 +28724,7 @@ _ZN5Pooma9positionsI22UniformRectilinearMeshI10MeshTraitsILi3Ed21UniformRectilin
 	vextrins.d	$vr5, $vr6, 16
 	vfsub.d	$vr1, $vr1, $vr5
 	vfmadd.d	$vr1, $vr4, $vr1, $vr3
-	vstx	$vr1, $a1, $a2
+	vstx	$vr1, $a2, $a1
 	fst.d	$fa0, $a3, 16
 	vst	$vr4, $a3, 24
 	fst.d	$fa2, $a3, 40
@@ -45523,8 +45523,8 @@ _ZN6EngineILi3Ed10MultiPatchI7GridTag6RemoteI5BrickEEEC2ERK10GridLayoutILi3EE: #
 	ld.d	$a1, $a1, 8
 	move	$s0, $a0
 	mul.d	$a0, $a2, $s3
-	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a1, $a0
 	ld.d	$a1, $s1, 0
 	st.w	$zero, $s0, 8
 	st.d	$s4, $s0, 0
@@ -49513,8 +49513,8 @@ _ZN15IntersectorDataILi3EE9intersectI6EngineILi3Ed14MultiPatchViewI7GridTag6Remo
 	ori	$a2, $zero, 1
 	sub.d	$a5, $a2, $a5
 	mul.d	$a5, $a5, $a7
+	sub.d	$a6, $a6, $t0
 	add.d	$a4, $a4, $a6
-	sub.d	$a4, $a4, $t0
 	add.w	$a4, $a4, $a5
 	srai.d	$a5, $a4, 63
 	andn	$a5, $a4, $a5
@@ -49527,17 +49527,17 @@ _ZN15IntersectorDataILi3EE9intersectI6EngineILi3Ed14MultiPatchViewI7GridTag6Remo
 	st.w	$a6, $fp, 4
 	ld.w	$a6, $a0, 152
 	ld.w	$a7, $a0, 148
-	ld.w	$t0, $a0, 156
 	addi.d	$a6, $a6, -1
+	ld.w	$t0, $a0, 156
 	ld.w	$t1, $a1, 16
 	ld.w	$t2, $a1, 20
+	ld.w	$t3, $a1, 12
 	mul.d	$a6, $a6, $t0
-	ld.w	$t0, $a1, 12
-	sub.d	$t1, $a2, $t1
-	mul.d	$t1, $t1, $t2
+	sub.d	$t0, $a2, $t1
+	mul.d	$t0, $t0, $t2
+	sub.d	$a7, $a7, $t3
 	add.d	$a6, $a6, $a7
-	sub.d	$a6, $a6, $t0
-	add.w	$a6, $a6, $t1
+	add.w	$a6, $a6, $t0
 	srai.d	$a7, $a6, 63
 	andn	$a7, $a6, $a7
 	st.w	$a7, $fp, 16
@@ -49553,17 +49553,17 @@ _ZN15IntersectorDataILi3EE9intersectI6EngineILi3Ed14MultiPatchViewI7GridTag6Remo
 	ld.w	$t0, $a0, 164
 	ld.w	$t1, $a0, 168
 	slt	$a6, $zero, $a6
-	slt	$a7, $zero, $a7
+	ld.w	$a0, $a0, 160
 	addi.d	$t0, $t0, -1
 	mul.d	$t0, $t0, $t1
 	ld.w	$t1, $a1, 28
 	ld.w	$t2, $a1, 32
-	ld.w	$a0, $a0, 160
 	ld.w	$a1, $a1, 24
+	slt	$a7, $zero, $a7
 	sub.d	$a2, $a2, $t1
 	mul.d	$a2, $a2, $t2
-	add.d	$a0, $t0, $a0
 	sub.d	$a0, $a0, $a1
+	add.d	$a0, $t0, $a0
 	add.w	$a0, $a0, $a2
 	srai.d	$a1, $a0, 63
 	andn	$a1, $a0, $a1
@@ -49571,8 +49571,8 @@ _ZN15IntersectorDataILi3EE9intersectI6EngineILi3Ed14MultiPatchViewI7GridTag6Remo
 	slt	$a0, $zero, $a0
 	or	$a0, $a0, $a7
 	or	$a0, $a0, $a6
-	or	$a0, $a0, $a5
-	or	$a0, $a0, $a4
+	or	$a1, $a5, $a4
+	or	$a0, $a0, $a1
 	or	$a0, $a0, $a3
 	b	.LBB250_16
 .LBB250_14:
@@ -51325,6 +51325,7 @@ _ZN21IntersectDomainSingleI8IntervalILi1EE5RangeILi1EES2_ILi3EELi3ELb1EE9interse
 	slt	$a1, $a3, $a0
 	sub.d	$a1, $zero, $a1
 	ori	$a1, $a1, 1
+	sub.w	$a3, $a3, $a0
 	b	.LBB258_21
 .LBB258_4:
 	ld.w	$a5, $a1, 4
@@ -51377,8 +51378,8 @@ _ZN21IntersectDomainSingleI8IntervalILi1EE5RangeILi1EES2_ILi3EELi3ELb1EE9interse
 	maskeqz	$t0, $a6, $t0
 	or	$t0, $t0, $t1
 	slt	$t1, $a6, $a0
-	sub.d	$t0, $t0, $a6
-	sub.w	$t0, $t0, $t1
+	add.d	$t2, $a6, $t1
+	sub.w	$t0, $t0, $t2
 	div.wu	$t0, $t0, $a4
 	add.d	$t0, $t0, $t1
 	mul.d	$t0, $t0, $a4
@@ -51427,11 +51428,10 @@ _ZN21IntersectDomainSingleI8IntervalILi1EE5RangeILi1EES2_ILi3EELi3ELb1EE9interse
 	add.w	$a6, $a7, $a6
 	bne	$a1, $a6, .LBB258_19
 .LBB258_20:
-	sub.w	$a4, $a3, $a0
-	mod.w	$a4, $a4, $a1
-	sub.d	$a3, $a3, $a4
-.LBB258_21:
 	sub.w	$a3, $a3, $a0
+	mod.w	$a4, $a3, $a1
+	sub.w	$a3, $a3, $a4
+.LBB258_21:
 	div.w	$a3, $a3, $a1
 	addi.d	$a3, $a3, 1
 	st.w	$a0, $a2, 24
@@ -51476,6 +51476,7 @@ _ZN21IntersectDomainSingleI8IntervalILi1EE5RangeILi1EES2_ILi3EELi2ELb1EE9interse
 	slt	$a1, $a3, $a0
 	sub.d	$a1, $zero, $a1
 	ori	$a1, $a1, 1
+	sub.w	$a3, $a3, $a0
 	b	.LBB259_21
 .LBB259_4:
 	ld.w	$a5, $a1, 4
@@ -51528,8 +51529,8 @@ _ZN21IntersectDomainSingleI8IntervalILi1EE5RangeILi1EES2_ILi3EELi2ELb1EE9interse
 	maskeqz	$t0, $a6, $t0
 	or	$t0, $t0, $t1
 	slt	$t1, $a6, $a0
-	sub.d	$t0, $t0, $a6
-	sub.w	$t0, $t0, $t1
+	add.d	$t2, $a6, $t1
+	sub.w	$t0, $t0, $t2
 	div.wu	$t0, $t0, $a4
 	add.d	$t0, $t0, $t1
 	mul.d	$t0, $t0, $a4
@@ -51578,11 +51579,10 @@ _ZN21IntersectDomainSingleI8IntervalILi1EE5RangeILi1EES2_ILi3EELi2ELb1EE9interse
 	add.w	$a6, $a7, $a6
 	bne	$a1, $a6, .LBB259_19
 .LBB259_20:
-	sub.w	$a4, $a3, $a0
-	mod.w	$a4, $a4, $a1
-	sub.d	$a3, $a3, $a4
-.LBB259_21:
 	sub.w	$a3, $a3, $a0
+	mod.w	$a4, $a3, $a1
+	sub.w	$a3, $a3, $a4
+.LBB259_21:
 	div.w	$a3, $a3, $a1
 	addi.d	$a3, $a3, 1
 	st.w	$a0, $a2, 12
@@ -51627,6 +51627,7 @@ _ZN21IntersectDomainSingleI8IntervalILi1EE5RangeILi1EES2_ILi3EELi1ELb1EE9interse
 	slt	$a1, $a3, $a0
 	sub.d	$a1, $zero, $a1
 	ori	$a1, $a1, 1
+	sub.w	$a3, $a3, $a0
 	b	.LBB260_21
 .LBB260_4:
 	ld.w	$a5, $a1, 4
@@ -51679,8 +51680,8 @@ _ZN21IntersectDomainSingleI8IntervalILi1EE5RangeILi1EES2_ILi3EELi1ELb1EE9interse
 	maskeqz	$t0, $a6, $t0
 	or	$t0, $t0, $t1
 	slt	$t1, $a6, $a0
-	sub.d	$t0, $t0, $a6
-	sub.w	$t0, $t0, $t1
+	add.d	$t2, $a6, $t1
+	sub.w	$t0, $t0, $t2
 	div.wu	$t0, $t0, $a4
 	add.d	$t0, $t0, $t1
 	mul.d	$t0, $t0, $a4
@@ -51729,11 +51730,10 @@ _ZN21IntersectDomainSingleI8IntervalILi1EE5RangeILi1EES2_ILi3EELi1ELb1EE9interse
 	add.w	$a6, $a7, $a6
 	bne	$a1, $a6, .LBB260_19
 .LBB260_20:
-	sub.w	$a4, $a3, $a0
-	mod.w	$a4, $a4, $a1
-	sub.d	$a3, $a3, $a4
-.LBB260_21:
 	sub.w	$a3, $a3, $a0
+	mod.w	$a4, $a3, $a1
+	sub.w	$a3, $a3, $a4
+.LBB260_21:
 	div.w	$a3, $a3, $a1
 	addi.d	$a3, $a3, 1
 	st.w	$a0, $a2, 0
@@ -51837,8 +51837,8 @@ _ZN21IntersectDomainSingleI5RangeILi1EE8IntervalILi1EES0_ILi3EELi3ELb1EE9interse
 	maskeqz	$t0, $a7, $t0
 	or	$t0, $t0, $t2
 	slt	$t2, $a7, $a4
-	sub.d	$t0, $t0, $a7
-	sub.w	$t0, $t0, $t2
+	add.d	$t3, $a7, $t2
+	sub.w	$t0, $t0, $t3
 	div.wu	$t0, $t0, $a6
 	add.d	$t0, $t0, $t2
 	mul.d	$t0, $t0, $a6
@@ -52003,8 +52003,8 @@ _ZN21IntersectDomainSingleI5RangeILi1EE8IntervalILi1EES0_ILi3EELi2ELb1EE9interse
 	maskeqz	$t0, $a7, $t0
 	or	$t0, $t0, $t2
 	slt	$t2, $a7, $a4
-	sub.d	$t0, $t0, $a7
-	sub.w	$t0, $t0, $t2
+	add.d	$t3, $a7, $t2
+	sub.w	$t0, $t0, $t3
 	div.wu	$t0, $t0, $a6
 	add.d	$t0, $t0, $t2
 	mul.d	$t0, $t0, $a6
@@ -52169,8 +52169,8 @@ _ZN21IntersectDomainSingleI5RangeILi1EE8IntervalILi1EES0_ILi3EELi1ELb1EE9interse
 	maskeqz	$t0, $a7, $t0
 	or	$t0, $t0, $t2
 	slt	$t2, $a7, $a4
-	sub.d	$t0, $t0, $a7
-	sub.w	$t0, $t0, $t2
+	add.d	$t3, $a7, $t2
+	sub.w	$t0, $t0, $t3
 	div.wu	$t0, $t0, $a6
 	add.d	$t0, $t0, $t2
 	mul.d	$t0, $t0, $a6
@@ -53156,21 +53156,21 @@ _ZN6EngineILi3Ed6RemoteI10BrickViewUEEC2IS_ILi3EdS0_I5BrickEE8IntervalILi3EEEERK
 	st.w	$a5, $sp, 68
 	st.w	$a5, $sp, 80
 	mul.d	$a5, $a6, $a5
-	add.d	$a2, $a5, $a2
-	ld.w	$a5, $a1, 92
 	ld.w	$s6, $s0, 20
-	ld.w	$a7, $s0, 16
+	ld.w	$a7, $a1, 92
 	st.w	$zero, $sp, 56
-	st.w	$a5, $sp, 72
-	st.w	$a5, $sp, 84
-	mul.d	$a5, $a7, $a5
-	add.d	$a2, $a5, $a2
-	ld.w	$a5, $a1, 76
-	ld.w	$t0, $a1, 80
+	ld.w	$t0, $s0, 16
 	st.w	$s6, $sp, 60
+	st.w	$a7, $sp, 72
+	st.w	$a7, $sp, 84
+	mul.d	$a7, $t0, $a7
+	add.d	$a5, $a7, $a5
+	ld.w	$a7, $a1, 76
+	ld.w	$t1, $a1, 80
+	add.d	$a2, $a5, $a2
 	st.w	$a2, $sp, 88
-	mul.d	$a2, $a5, $a6
-	mul.d	$a5, $t0, $a7
+	mul.d	$a2, $a7, $a6
+	mul.d	$a5, $t1, $t0
 	add.d	$a3, $a4, $a3
 	ld.d	$a4, $a1, 104
 	add.d	$a2, $a3, $a2
@@ -55006,21 +55006,19 @@ _ZN11LeafFunctorI6EngineILi3Ed6RemoteI10BrickViewUEE10EngineViewI10RemoteViewEE5
 	vstelm.w	$vr0, $sp, 100, 1
 	vstelm.w	$vr0, $sp, 112, 1
 	vpickve2gr.w	$a1, $vr0, 2
-	mul.d	$a1, $a1, $s5
-	vpickve2gr.w	$a2, $vr0, 0
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
-	add.d	$a1, $a1, $a2
+	mul.d	$s3, $a1, $s5
+	vpickve2gr.w	$a1, $vr0, 0
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	add.d	$a1, $s3, $a1
 	vpickve2gr.w	$s8, $vr0, 3
 	mul.d	$s7, $s8, $s5
 	st.w	$s7, $sp, 104
 	st.w	$s7, $sp, 116
 	mul.d	$a0, $a0, $s7
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	add.d	$s0, $a1, $a0
 	sub.d	$a0, $zero, $s0
 	st.w	$a0, $sp, 120
-	addi.d	$s3, $sp, 128
 	mulw.d.w	$a0, $s8, $s5
 	mul.d	$s6, $a0, $s4
 	st.d	$zero, $sp, 128
@@ -55030,6 +55028,7 @@ _ZN11LeafFunctorI6EngineILi3Ed6RemoteI10BrickViewUEE10EngineViewI10RemoteViewEE5
 	move	$s1, $a0
 	beqz	$s6, .LBB281_6
 # %bb.5:
+	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	slli.w	$s3, $s6, 3
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
@@ -55037,7 +55036,7 @@ _ZN11LeafFunctorI6EngineILi3Ed6RemoteI10BrickViewUEE10EngineViewI10RemoteViewEE5
 	move	$s2, $a0
 	alsl.d	$a0, $s6, $a0, 3
 	add.d	$a1, $s2, $s3
-	addi.d	$s3, $sp, 128
+	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB281_7
 .LBB281_6:
 	move	$s2, $zero
@@ -55064,19 +55063,18 @@ _ZN11LeafFunctorI6EngineILi3Ed6RemoteI10BrickViewUEE10EngineViewI10RemoteViewEE5
 	st.w	$s5, $fp, 4
 	st.w	$s6, $fp, 24
 	st.w	$s6, $fp, 36
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	sub.d	$a0, $a0, $s0
 	st.w	$zero, $fp, 8
 	st.w	$s8, $fp, 12
 	st.w	$s5, $fp, 28
 	st.w	$s5, $fp, 40
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	add.d	$a0, $a0, $a1
 	st.w	$zero, $fp, 16
 	st.w	$s4, $fp, 20
 	st.w	$s7, $fp, 32
 	st.w	$s7, $fp, 44
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	add.d	$a1, $s3, $a1
 	add.w	$a0, $a0, $a1
 	st.w	$a0, $fp, 48
 	st.d	$a0, $fp, 56
@@ -55085,7 +55083,7 @@ _ZN11LeafFunctorI6EngineILi3Ed6RemoteI10BrickViewUEE10EngineViewI10RemoteViewEE5
 	st.w	$a1, $s1, 0
 	alsl.d	$a0, $a0, $s2, 3
 	st.d	$a0, $fp, 72
-	move	$a0, $s3
+	addi.d	$a0, $sp, 128
 	pcaddu18i	$ra, %call36(_ZN12DataBlockPtrIdLb0EED2Ev)
 	jirl	$ra, $ra, 0
 .LBB281_8:
@@ -55162,23 +55160,23 @@ _ZN6EngineILi3Ed6RemoteI10BrickViewUEEC2IS3_8IntervalILi3EEEERKT_RKT0_: # @_ZN6E
 	st.w	$a3, $sp, 68
 	st.w	$a3, $sp, 80
 	mul.d	$a3, $a5, $a3
-	add.d	$a2, $a3, $a2
-	ld.w	$a3, $a1, 52
+	ld.w	$a6, $a1, 52
 	ld.w	$s6, $s0, 20
-	ld.w	$a6, $s0, 16
+	ld.w	$a7, $s0, 16
 	st.w	$zero, $sp, 56
-	st.w	$a3, $sp, 72
-	st.w	$a3, $sp, 84
-	mul.d	$a3, $a6, $a3
+	st.w	$a6, $sp, 72
+	st.w	$a6, $sp, 84
+	mul.d	$a6, $a7, $a6
+	add.d	$a3, $a6, $a3
 	add.d	$a2, $a3, $a2
 	st.w	$a2, $sp, 88
 	ld.w	$a2, $a1, 32
 	ld.w	$a3, $a1, 36
-	ld.w	$a7, $a1, 40
+	ld.w	$a6, $a1, 40
 	st.w	$s6, $sp, 60
 	mul.d	$a2, $a2, $a4
 	mul.d	$a3, $a3, $a5
-	mul.d	$a4, $a7, $a6
+	mul.d	$a4, $a6, $a7
 	ld.d	$a5, $a1, 64
 	add.d	$a2, $a3, $a2
 	ld.d	$s3, $a1, 72
@@ -56433,21 +56431,19 @@ _ZN11LeafFunctorI6EngineILi3Ed6RemoteI9BrickViewEE10EngineViewI10RemoteViewEE5ap
 	vstelm.w	$vr0, $sp, 100, 1
 	vstelm.w	$vr0, $sp, 112, 1
 	vpickve2gr.w	$a1, $vr0, 2
-	mul.d	$a1, $a1, $s5
-	vpickve2gr.w	$a2, $vr0, 0
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
-	add.d	$a1, $a1, $a2
+	mul.d	$s3, $a1, $s5
+	vpickve2gr.w	$a1, $vr0, 0
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	add.d	$a1, $s3, $a1
 	vpickve2gr.w	$s8, $vr0, 3
 	mul.d	$s7, $s8, $s5
 	st.w	$s7, $sp, 104
 	st.w	$s7, $sp, 116
 	mul.d	$a0, $a0, $s7
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	add.d	$s0, $a1, $a0
 	sub.d	$a0, $zero, $s0
 	st.w	$a0, $sp, 120
-	addi.d	$s3, $sp, 128
 	mulw.d.w	$a0, $s8, $s5
 	mul.d	$s6, $a0, $s4
 	st.d	$zero, $sp, 128
@@ -56457,6 +56453,7 @@ _ZN11LeafFunctorI6EngineILi3Ed6RemoteI9BrickViewEE10EngineViewI10RemoteViewEE5ap
 	move	$s1, $a0
 	beqz	$s6, .LBB290_6
 # %bb.5:
+	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	slli.w	$s3, $s6, 3
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
@@ -56464,7 +56461,7 @@ _ZN11LeafFunctorI6EngineILi3Ed6RemoteI9BrickViewEE10EngineViewI10RemoteViewEE5ap
 	move	$s2, $a0
 	alsl.d	$a0, $s6, $a0, 3
 	add.d	$a1, $s2, $s3
-	addi.d	$s3, $sp, 128
+	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB290_7
 .LBB290_6:
 	move	$s2, $zero
@@ -56491,19 +56488,18 @@ _ZN11LeafFunctorI6EngineILi3Ed6RemoteI9BrickViewEE10EngineViewI10RemoteViewEE5ap
 	st.w	$s5, $fp, 4
 	st.w	$s6, $fp, 24
 	st.w	$s6, $fp, 36
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	sub.d	$a0, $a0, $s0
 	st.w	$zero, $fp, 8
 	st.w	$s8, $fp, 12
 	st.w	$s5, $fp, 28
 	st.w	$s5, $fp, 40
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	add.d	$a0, $a0, $a1
 	st.w	$zero, $fp, 16
 	st.w	$s4, $fp, 20
 	st.w	$s7, $fp, 32
 	st.w	$s7, $fp, 44
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	add.d	$a1, $s3, $a1
 	add.w	$a0, $a0, $a1
 	st.w	$a0, $fp, 48
 	st.d	$a0, $fp, 56
@@ -56512,7 +56508,7 @@ _ZN11LeafFunctorI6EngineILi3Ed6RemoteI9BrickViewEE10EngineViewI10RemoteViewEE5ap
 	st.w	$a1, $s1, 0
 	alsl.d	$a0, $a0, $s2, 3
 	st.d	$a0, $fp, 72
-	move	$a0, $s3
+	addi.d	$a0, $sp, 128
 	pcaddu18i	$ra, %call36(_ZN12DataBlockPtrIdLb0EED2Ev)
 	jirl	$ra, $ra, 0
 .LBB290_8:
@@ -57459,47 +57455,47 @@ _ZN11FieldEngineI22UniformRectilinearMeshI10MeshTraitsILi3Ed21UniformRectilinear
 	ld.d	$a1, $s1, 80
 	ld.d	$a2, $s1, 72
 	ld.d	$a1, $a1, 8
-	ori	$a5, $zero, 40
-	mul.d	$a2, $a2, $a5
+	ori	$a3, $zero, 40
+	mul.d	$a2, $a2, $a3
+	mul.d	$a3, $a4, $a3
+	ld.w	$a4, $a0, 172
+	ld.w	$a5, $a0, 184
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
-	ld.w	$a2, $a0, 172
-	ld.w	$a3, $a0, 184
-	mul.d	$a4, $a4, $a5
-	add.d	$a1, $a1, $a4
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
-	mul.d	$a4, $a2, $a4
-	add.d	$a3, $a4, $a3
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	mul.d	$a2, $a4, $a2
+	add.d	$a2, $a2, $a5
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	mul.w	$a3, $a4, $a3
+	div.w	$a3, $a3, $a4
+	addi.d	$a3, $a3, 1
+	st.w	$a2, $sp, 208
+	ld.w	$a2, $a0, 176
+	ld.w	$a5, $a0, 188
+	st.w	$a3, $sp, 212
+	st.w	$a4, $sp, 216
+	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	mul.d	$a3, $a2, $a3
+	add.d	$a3, $a3, $a5
+	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
 	mul.w	$a4, $a2, $a4
 	div.w	$a4, $a4, $a2
 	addi.d	$a4, $a4, 1
-	st.w	$a3, $sp, 208
-	ld.w	$a3, $a0, 176
-	ld.w	$a5, $a0, 188
-	st.w	$a4, $sp, 212
-	st.w	$a2, $sp, 216
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
-	mul.d	$a2, $a3, $a2
-	add.d	$a2, $a2, $a5
-	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
-	mul.w	$a4, $a3, $a4
-	div.w	$a4, $a4, $a3
-	addi.d	$a4, $a4, 1
-	st.w	$a2, $sp, 220
-	ld.w	$a2, $a0, 180
+	st.w	$a3, $sp, 220
+	ld.w	$a3, $a0, 180
 	ld.w	$a0, $a0, 192
 	st.w	$a4, $sp, 224
-	st.w	$a3, $sp, 228
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
-	mul.d	$a3, $a2, $a3
-	add.d	$a0, $a3, $a0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	mul.w	$a3, $a2, $a3
-	div.w	$a3, $a3, $a2
-	addi.d	$a3, $a3, 1
+	st.w	$a2, $sp, 228
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	mul.d	$a2, $a3, $a2
+	add.d	$a0, $a2, $a0
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	mul.w	$a2, $a3, $a2
+	div.w	$a2, $a2, $a3
+	addi.d	$a2, $a2, 1
 	st.w	$a0, $sp, 232
-	st.w	$a3, $sp, 236
-	st.w	$a2, $sp, 240
+	st.w	$a2, $sp, 236
+	st.w	$a3, $sp, 240
 	addi.d	$a0, $sp, 160
 	addi.d	$a2, $sp, 208
 	pcaddu18i	$ra, %call36(_ZN6EngineILi3Ed6RemoteI9BrickViewEEC2IS_ILi3EdS0_I5BrickEE5RangeILi3EEEERKT_RKT0_)
@@ -62148,8 +62144,8 @@ _ZN6EngineILi3E6VectorILi3Ed4FullE10MultiPatchI7GridTag6RemoteI5BrickEEEC2ERK10G
 	ld.d	$a1, $a1, 8
 	move	$s0, $a0
 	mul.d	$a0, $a2, $s3
-	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a1, $a0
 	ld.d	$a1, $s1, 0
 	st.w	$zero, $s0, 8
 	st.d	$s4, $s0, 0
@@ -65936,8 +65932,8 @@ _ZN15IntersectorDataILi3EE9intersectI6EngineILi3E6VectorILi3Ed4FullE14MultiPatch
 	ori	$a2, $zero, 1
 	sub.d	$a5, $a2, $a5
 	mul.d	$a5, $a5, $a7
+	sub.d	$a6, $a6, $t0
 	add.d	$a4, $a4, $a6
-	sub.d	$a4, $a4, $t0
 	add.w	$a4, $a4, $a5
 	srai.d	$a5, $a4, 63
 	andn	$a5, $a4, $a5
@@ -65950,17 +65946,17 @@ _ZN15IntersectorDataILi3EE9intersectI6EngineILi3E6VectorILi3Ed4FullE14MultiPatch
 	st.w	$a6, $fp, 4
 	ld.w	$a6, $a0, 152
 	ld.w	$a7, $a0, 148
-	ld.w	$t0, $a0, 156
 	addi.d	$a6, $a6, -1
+	ld.w	$t0, $a0, 156
 	ld.w	$t1, $a1, 16
 	ld.w	$t2, $a1, 20
+	ld.w	$t3, $a1, 12
 	mul.d	$a6, $a6, $t0
-	ld.w	$t0, $a1, 12
-	sub.d	$t1, $a2, $t1
-	mul.d	$t1, $t1, $t2
+	sub.d	$t0, $a2, $t1
+	mul.d	$t0, $t0, $t2
+	sub.d	$a7, $a7, $t3
 	add.d	$a6, $a6, $a7
-	sub.d	$a6, $a6, $t0
-	add.w	$a6, $a6, $t1
+	add.w	$a6, $a6, $t0
 	srai.d	$a7, $a6, 63
 	andn	$a7, $a6, $a7
 	st.w	$a7, $fp, 16
@@ -65976,17 +65972,17 @@ _ZN15IntersectorDataILi3EE9intersectI6EngineILi3E6VectorILi3Ed4FullE14MultiPatch
 	ld.w	$t0, $a0, 164
 	ld.w	$t1, $a0, 168
 	slt	$a6, $zero, $a6
-	slt	$a7, $zero, $a7
+	ld.w	$a0, $a0, 160
 	addi.d	$t0, $t0, -1
 	mul.d	$t0, $t0, $t1
 	ld.w	$t1, $a1, 28
 	ld.w	$t2, $a1, 32
-	ld.w	$a0, $a0, 160
 	ld.w	$a1, $a1, 24
+	slt	$a7, $zero, $a7
 	sub.d	$a2, $a2, $t1
 	mul.d	$a2, $a2, $t2
-	add.d	$a0, $t0, $a0
 	sub.d	$a0, $a0, $a1
+	add.d	$a0, $t0, $a0
 	add.w	$a0, $a0, $a2
 	srai.d	$a1, $a0, 63
 	andn	$a1, $a0, $a1
@@ -65994,8 +65990,8 @@ _ZN15IntersectorDataILi3EE9intersectI6EngineILi3E6VectorILi3Ed4FullE14MultiPatch
 	slt	$a0, $zero, $a0
 	or	$a0, $a0, $a7
 	or	$a0, $a0, $a6
-	or	$a0, $a0, $a5
-	or	$a0, $a0, $a4
+	or	$a1, $a5, $a4
+	or	$a0, $a0, $a1
 	or	$a0, $a0, $a3
 	b	.LBB331_16
 .LBB331_14:
@@ -66322,21 +66318,21 @@ _ZN6EngineILi3E6VectorILi3Ed4FullE6RemoteI10BrickViewUEEC2IS_ILi3ES2_S3_I5BrickE
 	st.w	$a5, $sp, 68
 	st.w	$a5, $sp, 80
 	mul.d	$a5, $a6, $a5
-	add.d	$a2, $a5, $a2
-	ld.w	$a5, $a1, 92
 	ld.w	$s6, $s0, 20
-	ld.w	$a7, $s0, 16
+	ld.w	$a7, $a1, 92
 	st.w	$zero, $sp, 56
-	st.w	$a5, $sp, 72
-	st.w	$a5, $sp, 84
-	mul.d	$a5, $a7, $a5
-	add.d	$a2, $a5, $a2
-	ld.w	$a5, $a1, 76
-	ld.w	$t0, $a1, 80
+	ld.w	$t0, $s0, 16
 	st.w	$s6, $sp, 60
+	st.w	$a7, $sp, 72
+	st.w	$a7, $sp, 84
+	mul.d	$a7, $t0, $a7
+	add.d	$a5, $a7, $a5
+	ld.w	$a7, $a1, 76
+	ld.w	$t1, $a1, 80
+	add.d	$a2, $a5, $a2
 	st.w	$a2, $sp, 88
-	mul.d	$a2, $a5, $a6
-	mul.d	$a5, $t0, $a7
+	mul.d	$a2, $a7, $a6
+	mul.d	$a5, $t1, $t0
 	add.d	$a3, $a4, $a3
 	ld.d	$a4, $a1, 104
 	add.d	$a2, $a3, $a2
@@ -67368,13 +67364,13 @@ _ZN11LeafFunctorI6EngineILi3E6VectorILi3Ed4FullE6RemoteI10BrickViewUEE10EngineVi
 	st.w	$s8, $fp, 12
 	st.w	$s5, $fp, 28
 	st.w	$s5, $fp, 40
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	add.d	$a0, $a0, $a1
 	st.w	$zero, $fp, 16
 	st.w	$s4, $fp, 20
 	st.w	$s7, $fp, 32
 	st.w	$s7, $fp, 44
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	add.d	$a1, $a1, $a2
 	add.w	$a0, $a0, $a1
 	st.w	$a0, $fp, 48
 	st.d	$a0, $fp, 56
@@ -67462,23 +67458,23 @@ _ZN6EngineILi3E6VectorILi3Ed4FullE6RemoteI10BrickViewUEEC2IS6_8IntervalILi3EEEER
 	st.w	$a3, $sp, 68
 	st.w	$a3, $sp, 80
 	mul.d	$a3, $a5, $a3
-	add.d	$a2, $a3, $a2
-	ld.w	$a3, $a1, 52
+	ld.w	$a6, $a1, 52
 	ld.w	$s6, $s0, 20
-	ld.w	$a6, $s0, 16
+	ld.w	$a7, $s0, 16
 	st.w	$zero, $sp, 56
-	st.w	$a3, $sp, 72
-	st.w	$a3, $sp, 84
-	mul.d	$a3, $a6, $a3
+	st.w	$a6, $sp, 72
+	st.w	$a6, $sp, 84
+	mul.d	$a6, $a7, $a6
+	add.d	$a3, $a6, $a3
 	add.d	$a2, $a3, $a2
 	st.w	$a2, $sp, 88
 	ld.w	$a2, $a1, 32
 	ld.w	$a3, $a1, 36
-	ld.w	$a7, $a1, 40
+	ld.w	$a6, $a1, 40
 	st.w	$s6, $sp, 60
 	mul.d	$a2, $a2, $a4
 	mul.d	$a3, $a3, $a5
-	mul.d	$a4, $a7, $a6
+	mul.d	$a4, $a6, $a7
 	ld.d	$a5, $a1, 64
 	add.d	$a2, $a3, $a2
 	ld.d	$s4, $a1, 72
@@ -68829,13 +68825,13 @@ _ZN11LeafFunctorI6EngineILi3E6VectorILi3Ed4FullE6RemoteI9BrickViewEE10EngineView
 	st.w	$s8, $fp, 12
 	st.w	$s5, $fp, 28
 	st.w	$s5, $fp, 40
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	add.d	$a0, $a0, $a1
 	st.w	$zero, $fp, 16
 	st.w	$s4, $fp, 20
 	st.w	$s7, $fp, 32
 	st.w	$s7, $fp, 44
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	add.d	$a1, $a1, $a2
 	add.w	$a0, $a0, $a1
 	st.w	$a0, $fp, 48
 	st.d	$a0, $fp, 56
@@ -69793,47 +69789,47 @@ _ZN11FieldEngineI22UniformRectilinearMeshI10MeshTraitsILi3Ed21UniformRectilinear
 	ld.d	$a1, $s1, 80
 	ld.d	$a2, $s1, 72
 	ld.d	$a1, $a1, 8
-	ori	$a5, $zero, 40
-	mul.d	$a2, $a2, $a5
+	ori	$a3, $zero, 40
+	mul.d	$a2, $a2, $a3
+	mul.d	$a3, $a4, $a3
+	ld.w	$a4, $a0, 172
+	ld.w	$a5, $a0, 184
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
-	ld.w	$a2, $a0, 172
-	ld.w	$a3, $a0, 184
-	mul.d	$a4, $a4, $a5
-	add.d	$a1, $a1, $a4
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
-	mul.d	$a4, $a2, $a4
-	add.d	$a3, $a4, $a3
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	mul.d	$a2, $a4, $a2
+	add.d	$a2, $a2, $a5
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	mul.w	$a3, $a4, $a3
+	div.w	$a3, $a3, $a4
+	addi.d	$a3, $a3, 1
+	st.w	$a2, $sp, 208
+	ld.w	$a2, $a0, 176
+	ld.w	$a5, $a0, 188
+	st.w	$a3, $sp, 212
+	st.w	$a4, $sp, 216
+	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	mul.d	$a3, $a2, $a3
+	add.d	$a3, $a3, $a5
+	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
 	mul.w	$a4, $a2, $a4
 	div.w	$a4, $a4, $a2
 	addi.d	$a4, $a4, 1
-	st.w	$a3, $sp, 208
-	ld.w	$a3, $a0, 176
-	ld.w	$a5, $a0, 188
-	st.w	$a4, $sp, 212
-	st.w	$a2, $sp, 216
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
-	mul.d	$a2, $a3, $a2
-	add.d	$a2, $a2, $a5
-	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
-	mul.w	$a4, $a3, $a4
-	div.w	$a4, $a4, $a3
-	addi.d	$a4, $a4, 1
-	st.w	$a2, $sp, 220
-	ld.w	$a2, $a0, 180
+	st.w	$a3, $sp, 220
+	ld.w	$a3, $a0, 180
 	ld.w	$a0, $a0, 192
 	st.w	$a4, $sp, 224
-	st.w	$a3, $sp, 228
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
-	mul.d	$a3, $a2, $a3
-	add.d	$a0, $a3, $a0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	mul.w	$a3, $a2, $a3
-	div.w	$a3, $a3, $a2
-	addi.d	$a3, $a3, 1
+	st.w	$a2, $sp, 228
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	mul.d	$a2, $a3, $a2
+	add.d	$a0, $a2, $a0
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	mul.w	$a2, $a3, $a2
+	div.w	$a2, $a2, $a3
+	addi.d	$a2, $a2, 1
 	st.w	$a0, $sp, 232
-	st.w	$a3, $sp, 236
-	st.w	$a2, $sp, 240
+	st.w	$a2, $sp, 236
+	st.w	$a3, $sp, 240
 	addi.d	$a0, $sp, 160
 	addi.d	$a2, $sp, 208
 	pcaddu18i	$ra, %call36(_ZN6EngineILi3E6VectorILi3Ed4FullE6RemoteI9BrickViewEEC2IS_ILi3ES2_S3_I5BrickEE5RangeILi3EEEERKT_RKT0_)
@@ -79832,111 +79828,111 @@ _ZN14PeriodicFaceBCILi3EEC2I5FieldI22UniformRectilinearMeshI10MeshTraitsILi3Ed21
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZNK11FieldEngineI22UniformRectilinearMeshI10MeshTraitsILi3Ed21UniformRectilinearTag12CartesianTagLi3EEEd10MultiPatchI7GridTag6RemoteI5BrickEEE11totalDomainEv)
 	jirl	$ra, $ra, 0
-	ld.wu	$a5, $s1, 48
-	st.w	$a5, $s2, 48
-	srli.d	$a0, $a5, 31
-	ld.d	$a3, $s0, 16
-	add.w	$a0, $a5, $a0
+	ld.wu	$a4, $s1, 48
+	st.w	$a4, $s2, 48
+	srli.d	$a0, $a4, 31
+	ld.d	$a2, $s0, 16
+	add.w	$a0, $a4, $a0
 	srai.d	$a0, $a0, 1
 	slli.d	$a1, $a0, 2
-	ldx.w	$a4, $a3, $a1
+	ldx.w	$a3, $a2, $a1
 	slli.d	$a1, $a0, 3
-	ldx.wu	$a2, $s2, $a1
-	andi	$a5, $a5, 1
-	alsl.d	$a7, $a0, $s2, 3
-	bnez	$a5, .LBB399_4
+	ldx.wu	$a7, $s2, $a1
+	andi	$a4, $a4, 1
+	alsl.d	$a6, $a0, $s2, 3
+	bnez	$a4, .LBB399_4
 # %bb.1:
-	alsl.d	$a5, $a0, $s0, 2
-	ld.w	$a5, $a5, 112
-	sub.w	$t0, $a5, $a4
-	addi.d	$a5, $t0, 1
-	st.w	$a5, $a7, 4
-	ld.d	$a5, $s0, 24
-	sub.d	$a5, $a5, $a3
-	srli.d	$a5, $a5, 2
-	lu12i.w	$a6, -349526
-	ori	$a6, $a6, 2731
-	lu32i.d	$a6, -349526
-	lu52i.d	$a6, $a6, -1366
-	mul.d	$a5, $a5, $a6
-	bstrpick.d	$t1, $a5, 31, 0
-	ori	$a6, $zero, 1
-	bne	$t1, $a6, .LBB399_7
+	alsl.d	$a4, $a0, $s0, 2
+	ld.w	$a4, $a4, 112
+	sub.w	$t0, $a4, $a3
+	addi.d	$a4, $t0, 1
+	st.w	$a4, $a6, 4
+	ld.d	$a4, $s0, 24
+	sub.d	$a4, $a4, $a2
+	srli.d	$a4, $a4, 2
+	lu12i.w	$a5, -349526
+	ori	$a5, $a5, 2731
+	lu32i.d	$a5, -349526
+	lu52i.d	$a5, $a5, -1366
+	mul.d	$a4, $a4, $a5
+	bstrpick.d	$t1, $a4, 31, 0
+	ori	$a5, $zero, 1
+	bne	$t1, $a5, .LBB399_7
 # %bb.2:
-	ld.w	$a7, $s0, 12
-	ld.w	$a5, $s0, 92
-	bne	$a7, $a6, .LBB399_9
+	ld.w	$a6, $s0, 12
+	ld.w	$a4, $s0, 92
+	bne	$a6, $a5, .LBB399_9
 # %bb.3:
-	ld.w	$a6, $s0, 100
-	ld.w	$a7, $s0, 108
-	move	$t3, $a5
-	move	$t4, $a6
-	move	$t2, $a7
+	ld.w	$a5, $s0, 100
+	ld.w	$a6, $s0, 108
+	move	$t3, $a4
+	move	$t4, $a5
+	move	$t2, $a6
 	b	.LBB399_10
 .LBB399_4:
-	alsl.d	$a5, $a0, $s0, 2
-	ld.w	$t0, $a5, 124
-	ld.w	$a5, $a7, 4
-	nor	$a6, $t0, $zero
-	add.d	$a6, $a2, $a6
-	add.d	$a6, $a6, $a5
-	addi.d	$t0, $t0, 1
-	st.w	$a6, $a7, 0
-	st.w	$t0, $a7, 4
-	ld.d	$a7, $s0, 24
-	sub.d	$a7, $a7, $a3
-	srli.d	$a7, $a7, 2
-	lu12i.w	$t0, -349526
-	ori	$t0, $t0, 2731
-	lu32i.d	$t0, -349526
-	lu52i.d	$t0, $t0, -1366
-	mul.d	$a7, $a7, $t0
-	bstrpick.d	$a7, $a7, 31, 0
-	ori	$t0, $zero, 1
-	bne	$a7, $t0, .LBB399_8
+	alsl.d	$a4, $a0, $s0, 2
+	ld.w	$t0, $a4, 124
+	ld.w	$a4, $a6, 4
+	nor	$a5, $t0, $zero
+	add.d	$a4, $a7, $a4
+	add.d	$a5, $a4, $a5
+	addi.d	$a7, $t0, 1
+	st.w	$a5, $a6, 0
+	st.w	$a7, $a6, 4
+	ld.d	$a6, $s0, 24
+	sub.d	$a6, $a6, $a2
+	srli.d	$a6, $a6, 2
+	lu12i.w	$a7, -349526
+	ori	$a7, $a7, 2731
+	lu32i.d	$a7, -349526
+	lu52i.d	$a7, $a7, -1366
+	mul.d	$a6, $a6, $a7
+	bstrpick.d	$a6, $a6, 31, 0
+	ori	$a7, $zero, 1
+	bne	$a6, $a7, .LBB399_8
 # %bb.5:
-	ld.w	$t1, $s0, 12
-	ld.w	$a7, $s0, 92
-	bne	$t1, $t0, .LBB399_15
+	ld.w	$t0, $s0, 12
+	ld.w	$a6, $s0, 92
+	bne	$t0, $a7, .LBB399_15
 # %bb.6:
-	ld.w	$t0, $s0, 100
-	ld.w	$t1, $s0, 108
+	ld.w	$a7, $s0, 100
+	ld.w	$t0, $s0, 108
+	move	$t1, $a6
 	move	$t2, $a7
 	move	$t3, $t0
-	move	$t4, $t1
 	b	.LBB399_16
 .LBB399_7:
-	ld.w	$a5, $s0, 92
-	ld.w	$a6, $s0, 100
-	ld.w	$a7, $s0, 108
-	st.w	$a5, $sp, 36
-	st.w	$a6, $sp, 44
-	move	$t2, $a7
+	ld.w	$a4, $s0, 92
+	ld.w	$a5, $s0, 100
+	ld.w	$a6, $s0, 108
+	st.w	$a4, $sp, 36
+	st.w	$a5, $sp, 44
+	move	$t2, $a6
 	b	.LBB399_11
 .LBB399_8:
-	ld.w	$a7, $s0, 92
-	ld.w	$t0, $s0, 100
-	ld.w	$t1, $s0, 108
-	st.w	$a7, $sp, 36
-	st.w	$t0, $sp, 44
-	st.w	$t1, $sp, 52
-	addi.d	$a3, $sp, 32
-	alsl.d	$a3, $a0, $a3, 3
-	ld.w	$a3, $a3, 4
-	addi.d	$a4, $a4, -2
-	add.d	$t2, $a4, $a3
+	ld.w	$a6, $s0, 92
+	ld.w	$a7, $s0, 100
+	ld.w	$t0, $s0, 108
+	st.w	$a6, $sp, 36
+	st.w	$a7, $sp, 44
+	st.w	$t0, $sp, 52
+	addi.d	$a2, $sp, 32
+	alsl.d	$a2, $a0, $a2, 3
+	ld.w	$a2, $a2, 4
+	addi.d	$a3, $a3, -2
+	add.d	$t1, $a3, $a2
 	b	.LBB399_18
 .LBB399_9:
-	ld.w	$t2, $a3, 0
-	ld.w	$a6, $s0, 100
-	ld.w	$a7, $s0, 108
-	ld.w	$t4, $a3, 4
-	sub.d	$t2, $a5, $t2
-	ld.w	$t5, $a3, 8
+	ld.w	$t2, $a2, 0
+	ld.w	$a5, $s0, 100
+	ld.w	$a6, $s0, 108
+	ld.w	$t4, $a2, 4
+	sub.d	$t2, $a4, $t2
+	ld.w	$t5, $a2, 8
 	addi.d	$t3, $t2, 1
-	sub.d	$t2, $a6, $t4
+	sub.d	$t2, $a5, $t4
 	addi.d	$t4, $t2, 1
-	sub.d	$t2, $a7, $t5
+	sub.d	$t2, $a6, $t5
 	addi.d	$t2, $t2, 1
 .LBB399_10:
 	st.w	$t3, $sp, 36
@@ -79946,89 +79942,88 @@ _ZN14PeriodicFaceBCILi3EEC2I5FieldI22UniformRectilinearMeshI10MeshTraitsILi3Ed21
 	addi.d	$t2, $sp, 32
 	alsl.d	$t2, $a0, $t2, 3
 	ld.wu	$t3, $t2, 4
-	addi.d	$a4, $a4, -2
-	bstrpick.d	$t2, $a4, 31, 0
-	add.d	$a4, $a2, $t2
-	add.d	$a4, $a4, $t3
-	add.d	$a2, $a2, $t0
+	addi.d	$a3, $a3, -2
+	bstrpick.d	$t2, $a3, 31, 0
+	add.d	$a3, $a7, $t3
+	add.d	$a3, $a3, $t2
+	add.d	$a7, $a7, $t0
 	ori	$t0, $zero, 1
-	bstrpick.d	$a2, $a2, 31, 0
+	bstrpick.d	$a7, $a7, 31, 0
 	bne	$t1, $t0, .LBB399_14
 # %bb.12:
 	ld.w	$t1, $s0, 12
 	beq	$t1, $t0, .LBB399_14
 # %bb.13:
-	ld.w	$t0, $a3, 0
-	ld.w	$t1, $a3, 4
-	sub.d	$a5, $a5, $t0
-	ld.w	$a3, $a3, 8
+	ld.w	$t0, $a2, 0
+	ld.w	$t1, $a2, 4
+	sub.d	$a4, $a4, $t0
+	ld.w	$a2, $a2, 8
+	addi.d	$a4, $a4, 1
+	sub.d	$a5, $a5, $t1
 	addi.d	$a5, $a5, 1
-	sub.d	$a6, $a6, $t1
-	addi.d	$a6, $a6, 1
-	sub.d	$a3, $a7, $a3
-	addi.d	$a7, $a3, 1
+	sub.d	$a2, $a6, $a2
+	addi.d	$a6, $a2, 1
 .LBB399_14:
-	st.w	$a5, $sp, 12
-	st.w	$a6, $sp, 20
-	st.w	$a7, $sp, 28
-	addi.d	$a3, $sp, 8
-	alsl.d	$a3, $a0, $a3, 3
-	ld.w	$a3, $a3, 4
-	add.d	$a2, $a2, $t2
-	sub.d	$a2, $a2, $a4
-	add.d	$a2, $a3, $a2
+	st.w	$a4, $sp, 12
+	st.w	$a5, $sp, 20
+	st.w	$a6, $sp, 28
+	addi.d	$a2, $sp, 8
+	alsl.d	$a2, $a0, $a2, 3
+	ld.w	$a2, $a2, 4
+	add.d	$a4, $a7, $t2
+	sub.d	$a4, $a4, $a3
+	add.d	$a2, $a2, $a4
 	addi.d	$a2, $a2, 1
 	alsl.d	$a0, $a0, $fp, 3
-	stx.w	$a4, $fp, $a1
+	stx.w	$a3, $fp, $a1
 	b	.LBB399_19
 .LBB399_15:
-	ld.w	$t2, $a3, 0
-	ld.w	$t0, $s0, 100
-	ld.w	$t1, $s0, 108
-	ld.w	$t3, $a3, 4
+	ld.w	$t1, $a2, 0
+	ld.w	$a7, $s0, 100
+	ld.w	$t0, $s0, 108
+	ld.w	$t2, $a2, 4
+	sub.d	$t1, $a6, $t1
+	ld.w	$t3, $a2, 8
+	addi.d	$t1, $t1, 1
 	sub.d	$t2, $a7, $t2
-	ld.w	$t4, $a3, 8
 	addi.d	$t2, $t2, 1
 	sub.d	$t3, $t0, $t3
 	addi.d	$t3, $t3, 1
-	sub.d	$t4, $t1, $t4
-	addi.d	$t4, $t4, 1
 .LBB399_16:
-	st.w	$t2, $sp, 36
-	st.w	$t3, $sp, 44
-	st.w	$t4, $sp, 52
-	addi.d	$t2, $sp, 32
-	alsl.d	$t2, $a0, $t2, 3
-	ld.w	$t2, $t2, 4
-	ld.w	$t3, $s0, 12
-	addi.d	$a4, $a4, -2
-	ori	$t4, $zero, 1
-	add.d	$t2, $a4, $t2
-	beq	$t3, $t4, .LBB399_18
+	st.w	$t1, $sp, 36
+	st.w	$t2, $sp, 44
+	st.w	$t3, $sp, 52
+	addi.d	$t1, $sp, 32
+	alsl.d	$t1, $a0, $t1, 3
+	ld.w	$t1, $t1, 4
+	ld.w	$t2, $s0, 12
+	addi.d	$a3, $a3, -2
+	ori	$t3, $zero, 1
+	add.d	$t1, $a3, $t1
+	beq	$t2, $t3, .LBB399_18
 # %bb.17:
-	ld.w	$t3, $a3, 0
-	ld.w	$t4, $a3, 4
-	sub.d	$a7, $a7, $t3
-	ld.w	$a3, $a3, 8
-	addi.d	$a7, $a7, 1
-	sub.d	$t0, $t0, $t4
-	addi.d	$t0, $t0, 1
-	sub.d	$a3, $t1, $a3
-	addi.d	$t1, $a3, 1
-.LBB399_18:
-	st.w	$a7, $sp, 12
-	st.w	$t0, $sp, 20
-	st.w	$t1, $sp, 28
-	addi.d	$a3, $sp, 8
-	alsl.d	$a3, $a0, $a3, 3
-	ld.w	$a3, $a3, 4
+	ld.w	$t2, $a2, 0
+	ld.w	$t3, $a2, 4
 	sub.d	$a6, $a6, $t2
-	add.d	$a4, $a4, $a6
-	add.d	$a3, $a4, $a3
+	ld.w	$a2, $a2, 8
+	addi.d	$a6, $a6, 1
+	sub.d	$a7, $a7, $t3
+	addi.d	$a7, $a7, 1
+	sub.d	$a2, $t0, $a2
+	addi.d	$t0, $a2, 1
+.LBB399_18:
+	st.w	$a6, $sp, 12
+	st.w	$a7, $sp, 20
+	st.w	$t0, $sp, 28
+	addi.d	$a2, $sp, 8
+	alsl.d	$a2, $a0, $a2, 3
+	ld.w	$a2, $a2, 4
+	sub.d	$a5, $a5, $t1
+	add.d	$a2, $a3, $a2
 	add.d	$a2, $a2, $a5
-	sub.d	$a2, $a2, $a3
+	sub.d	$a2, $a4, $a2
 	alsl.d	$a0, $a0, $fp, 3
-	stx.w	$a6, $fp, $a1
+	stx.w	$a5, $fp, $a1
 .LBB399_19:
 	st.w	$a2, $a0, 4
 	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
@@ -96284,8 +96279,8 @@ _ZN15KernelEvaluatorI15InlineKernelTagE8evaluateI5FieldI22UniformRectilinearMesh
 	addi.d	$a7, $s5, -1
 	sltu	$a7, $zero, $a7
 	or	$a3, $a3, $a6
-	or	$a3, $a3, $a7
 	ld.d	$a6, $sp, 8                     # 8-byte Folded Reload
+	or	$a6, $a6, $a7
 	or	$a7, $a6, $a3
 	move	$t7, $a0
 	move	$s3, $t0
@@ -109259,36 +109254,36 @@ _ZN11FieldEngineI22UniformRectilinearMeshI10MeshTraitsILi3Ed21UniformRectilinear
 	ld.w	$a0, $a3, 36
 	.p2align	4, , 16
 .LBB521_42:                             #   in Loop: Header=BB521_36 Depth=2
-	ld.w	$a3, $sp, 144
+	ld.w	$a2, $sp, 144
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
-	move	$a2, $a4
-	beq	$a3, $a4, .LBB521_47
+	move	$a3, $a4
+	beq	$a2, $a4, .LBB521_47
 # %bb.43:                               #   in Loop: Header=BB521_36 Depth=2
 	ld.d	$a1, $a1, 0
 	.p2align	4, , 16
 .LBB521_44:                             #   Parent Loop BB521_28 Depth=1
                                         #     Parent Loop BB521_36 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	slli.d	$a2, $a3, 4
-	ldx.w	$a4, $a1, $a2
-	alsl.d	$a2, $a3, $a1, 4
-	beq	$a4, $a0, .LBB521_46
+	slli.d	$a3, $a2, 4
+	ldx.w	$a3, $a1, $a3
+	alsl.d	$a2, $a2, $a1, 4
+	beq	$a3, $a0, .LBB521_46
 # %bb.45:                               #   in Loop: Header=BB521_44 Depth=3
-	ld.w	$a3, $a2, 12
-	addi.w	$a2, $zero, -1
-	bne	$a3, $a2, .LBB521_44
+	ld.w	$a2, $a2, 12
+	addi.w	$a3, $zero, -1
+	bne	$a2, $a3, .LBB521_44
 	b	.LBB521_47
 	.p2align	4, , 16
 .LBB521_46:                             #   in Loop: Header=BB521_36 Depth=2
-	ld.w	$a2, $a2, 8
+	ld.w	$a3, $a2, 8
 .LBB521_47:                             #   in Loop: Header=BB521_36 Depth=2
 	ld.d	$a0, $s0, 72
 	ld.d	$a1, $s0, 64
 	ld.d	$a0, $a0, 8
-	ori	$a3, $zero, 40
-	mul.d	$a1, $a1, $a3
-	add.d	$a0, $a0, $a1
-	mul.d	$a1, $a2, $a3
+	ori	$a2, $zero, 40
+	mul.d	$a1, $a1, $a2
+	mul.d	$a2, $a3, $a2
+	add.d	$a1, $a1, $a2
 	add.d	$a1, $a0, $a1
 	addi.d	$a0, $sp, 64
 	addi.d	$a2, $sp, 112
@@ -134715,9 +134710,9 @@ _ZN15KernelEvaluatorI15InlineKernelTagE8evaluateI5FieldI22UniformRectilinearMesh
 	addi.d	$a7, $s6, -1
 	sltu	$a7, $zero, $a7
 	or	$a3, $a3, $a6
-	or	$a3, $a3, $a7
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	or	$a0, $a0, $a3
+	or	$a6, $a0, $a7
+	or	$a0, $a6, $a3
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	move	$a7, $s0
 	move	$t7, $s0
@@ -147242,36 +147237,36 @@ _ZN11FieldEngineI22UniformRectilinearMeshI10MeshTraitsILi3Ed21UniformRectilinear
 	ld.w	$a0, $a3, 36
 	.p2align	4, , 16
 .LBB645_42:                             #   in Loop: Header=BB645_36 Depth=2
-	ld.w	$a3, $sp, 160
+	ld.w	$a2, $sp, 160
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
-	move	$a2, $a4
-	beq	$a3, $a4, .LBB645_47
+	move	$a3, $a4
+	beq	$a2, $a4, .LBB645_47
 # %bb.43:                               #   in Loop: Header=BB645_36 Depth=2
 	ld.d	$a1, $a1, 0
 	.p2align	4, , 16
 .LBB645_44:                             #   Parent Loop BB645_28 Depth=1
                                         #     Parent Loop BB645_36 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	slli.d	$a2, $a3, 4
-	ldx.w	$a4, $a1, $a2
-	alsl.d	$a2, $a3, $a1, 4
-	beq	$a4, $a0, .LBB645_46
+	slli.d	$a3, $a2, 4
+	ldx.w	$a3, $a1, $a3
+	alsl.d	$a2, $a2, $a1, 4
+	beq	$a3, $a0, .LBB645_46
 # %bb.45:                               #   in Loop: Header=BB645_44 Depth=3
-	ld.w	$a3, $a2, 12
-	addi.w	$a2, $zero, -1
-	bne	$a3, $a2, .LBB645_44
+	ld.w	$a2, $a2, 12
+	addi.w	$a3, $zero, -1
+	bne	$a2, $a3, .LBB645_44
 	b	.LBB645_47
 	.p2align	4, , 16
 .LBB645_46:                             #   in Loop: Header=BB645_36 Depth=2
-	ld.w	$a2, $a2, 8
+	ld.w	$a3, $a2, 8
 .LBB645_47:                             #   in Loop: Header=BB645_36 Depth=2
 	ld.d	$a0, $s0, 72
 	ld.d	$a1, $s0, 64
 	ld.d	$a0, $a0, 8
-	ori	$a3, $zero, 40
-	mul.d	$a1, $a1, $a3
-	add.d	$a0, $a0, $a1
-	mul.d	$a1, $a2, $a3
+	ori	$a2, $zero, 40
+	mul.d	$a1, $a1, $a2
+	mul.d	$a2, $a3, $a2
+	add.d	$a1, $a1, $a2
 	add.d	$a1, $a0, $a1
 	addi.d	$a0, $sp, 72
 	addi.d	$a2, $sp, 128
@@ -151916,8 +151911,8 @@ _ZNK4Adv51X13MomentumfluxZILi3EEclI5FieldI22UniformRectilinearMeshI10MeshTraitsI
 	ld.d	$t0, $t0, 72
 	mul.d	$t1, $t1, $a2
 	mul.d	$t2, $t3, $a6
-	add.d	$t1, $t1, $a0
-	add.w	$t1, $t1, $t2
+	add.d	$t1, $t1, $t2
+	add.w	$t1, $t1, $a0
 	addi.w	$t2, $t1, -1
 	slli.d	$t2, $t2, 3
 	fldx.d	$fa2, $t0, $t2
@@ -170003,9 +169998,9 @@ _ZN15KernelEvaluatorI15InlineKernelTagE8evaluateI5FieldI22UniformRectilinearMesh
 	addi.d	$s4, $s2, -1
 	sltu	$s4, $zero, $s4
 	or	$a5, $a5, $fp
-	or	$a5, $a5, $s4
 	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
-	or	$s5, $a3, $a5
+	or	$fp, $a3, $s4
+	or	$s5, $fp, $a5
 	move	$s6, $t5
 	move	$s7, $s0
 	move	$s4, $a6
@@ -232329,8 +232324,8 @@ _ZN15KernelEvaluatorI15InlineKernelTagE8evaluateI5FieldI22UniformRectilinearMesh
 	addi.d	$a7, $s5, -1
 	sltu	$a7, $zero, $a7
 	or	$a3, $a3, $a6
-	or	$a3, $a3, $a7
 	ld.d	$a6, $sp, 16                    # 8-byte Folded Reload
+	or	$a6, $a6, $a7
 	or	$a7, $a6, $a3
 	move	$t7, $a0
 	move	$s3, $t0

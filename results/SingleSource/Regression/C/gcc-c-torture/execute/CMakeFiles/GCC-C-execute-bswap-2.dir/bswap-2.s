@@ -66,8 +66,8 @@ fake_read_be32:                         # @fake_read_be32
 	slli.w	$a2, $a2, 16
 	slli.w	$a3, $a3, 24
 	or	$a2, $a2, $a3
-	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
+	or	$a0, $a2, $a0
 	ret
 .Lfunc_end3:
 	.size	fake_read_be32, .Lfunc_end3-fake_read_be32

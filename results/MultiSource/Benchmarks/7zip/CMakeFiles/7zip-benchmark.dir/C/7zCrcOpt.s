@@ -56,8 +56,8 @@ CrcUpdateT4:                            # @CrcUpdateT4
 	srli.d	$t0, $t0, 22
 	ldx.w	$t0, $a3, $t0
 	xor	$t1, $t2, $t1
-	xor	$a0, $t1, $a0
 	xor	$a0, $a0, $t0
+	xor	$a0, $t1, $a0
 	addi.d	$a2, $a2, -4
 	addi.d	$a1, $a1, 4
 	bltu	$a7, $a2, .LBB0_7
@@ -137,8 +137,8 @@ CrcUpdateT8:                            # @CrcUpdateT8
 	srli.d	$t0, $t0, 22
 	ldx.w	$t0, $a3, $t0
 	xor	$t1, $t2, $t1
-	xor	$a0, $t1, $a0
 	xor	$a0, $a0, $t0
+	xor	$a0, $t1, $a0
 	addi.d	$a2, $a2, -4
 	addi.d	$a1, $a1, 4
 	bltu	$a7, $a2, .LBB1_7

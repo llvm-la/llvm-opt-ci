@@ -80,8 +80,8 @@ Flush_Buffer:                           # @Flush_Buffer
 	masknez	$t1, $a3, $t0
 	maskeqz	$t0, $a4, $t0
 	or	$t0, $t0, $t1
-	add.d	$a0, $a0, $t0
 	sub.d	$a0, $a0, $a6
+	add.d	$a0, $a0, $t0
 	addi.w	$a0, $a0, 7
 	ori	$a6, $zero, 72
 	bltu	$a0, $a6, .LBB1_7

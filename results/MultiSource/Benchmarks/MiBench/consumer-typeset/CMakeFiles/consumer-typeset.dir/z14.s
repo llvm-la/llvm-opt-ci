@@ -575,8 +575,8 @@ FillObject:                             # @FillObject
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s8, 56
 	ld.w	$a2, $s6, 48
-	add.d	$a0, $a0, $s3
-	sub.d	$a0, $a0, $a1
+	sub.d	$a1, $s3, $a1
+	add.d	$a0, $a0, $a1
 	add.w	$s3, $a0, $a2
 	move	$a0, $s3
 	bge	$s3, $s5, .LBB0_66
@@ -1228,10 +1228,10 @@ FillObject:                             # @FillObject
 	ld.w	$a2, $s6, 56
 	st.d	$zero, $sp, 288                 # 8-byte Folded Spill
 	add.d	$a1, $a1, $a0
-	add.d	$a1, $a1, $a2
-	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
-	sub.d	$a2, $a2, $a1
-	st.d	$a2, $sp, 280                   # 8-byte Folded Spill
+	ld.d	$a3, $sp, 280                   # 8-byte Folded Reload
+	sub.d	$a2, $a3, $a2
+	sub.d	$a1, $a2, $a1
+	st.d	$a1, $sp, 280                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $a0
 	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
@@ -1478,16 +1478,16 @@ FillObject:                             # @FillObject
 	bne	$fp, $s0, .LBB0_198
 	b	.LBB0_208
 .LBB0_206:                              #   in Loop: Header=BB0_135 Depth=3
-	ld.w	$a0, $s6, 48
-	ld.h	$a1, $s1, 52
+	ld.h	$a0, $s1, 52
+	ld.w	$a1, $s6, 48
 	ld.w	$a2, $s6, 56
 	ld.d	$a3, $sp, 264                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $a2
-	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
-	add.w	$a0, $a0, $a1
+	add.d	$a3, $a3, $a0
+	add.d	$a1, $a1, $a3
+	add.w	$a1, $a1, $a2
+	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	add.w	$a0, $a1, $a0
 	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	st.d	$a0, $sp, 264                   # 8-byte Folded Spill
@@ -1524,10 +1524,10 @@ FillObject:                             # @FillObject
 	ld.w	$a1, $s6, 48
 	ld.w	$a2, $s6, 56
 	add.d	$a0, $a1, $a0
-	add.d	$a0, $a0, $a2
 	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $a0
-	st.d	$a1, $sp, 256                   # 8-byte Folded Spill
+	sub.d	$a1, $a1, $a2
+	sub.d	$a0, $a1, $a0
+	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 288                   # 8-byte Folded Spill
 	b	.LBB0_217

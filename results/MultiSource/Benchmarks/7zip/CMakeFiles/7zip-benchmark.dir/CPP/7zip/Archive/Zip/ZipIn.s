@@ -2836,8 +2836,8 @@ _ZN8NArchive4NZip10CInArchive28ReadLocalItemAfterCdItemFullERNS0_7CItemExE: # @_
 	ld.d	$a6, $fp, 16
 	add.d	$a1, $a2, $a1
 	ld.d	$a4, $a4, 48
-	add.d	$a1, $a1, $a3
-	add.d	$a1, $a1, $a5
+	add.d	$a2, $a3, $a5
+	add.d	$a1, $a1, $a2
 	add.d	$a1, $a1, $a6
 .Ltmp84:                                # EH_LABEL
 	move	$a2, $zero
@@ -3428,8 +3428,8 @@ _ZN8NArchive4NZip10CInArchive6FindCdERNS0_7CCdInfoE: # @_ZN8NArchive4NZip10CInAr
 	ld.wu	$a2, $s7, 16
 	st.d	$a0, $s1, 0
 	sub.d	$a0, $a1, $a0
-	sub.d	$a0, $a0, $a2
-	sub.d	$a0, $a0, $s4
+	add.d	$a1, $a2, $s4
+	sub.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s5
 	st.d	$a2, $s1, 8
 	beqz	$a0, .LBB24_34

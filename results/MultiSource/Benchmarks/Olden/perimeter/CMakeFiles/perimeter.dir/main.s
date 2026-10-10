@@ -40,9 +40,8 @@ CountTree:                              # @CountTree
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(CountTree)
 	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	add.d	$a0, $s1, $s3
-	add.d	$a2, $a0, $s0
+	add.d	$a1, $s1, $s3
+	add.d	$a2, $s0, $a0
 	vld	$vr0, $s2, 8
 	vld	$vr1, $s2, 24
 	ld.d	$fp, $s2, 24
@@ -55,7 +54,7 @@ CountTree:                              # @CountTree
 	vxori.b	$vr1, $vr1, 255
 	vpickev.w	$vr0, $vr1, $vr0
 	vsetnez.v	$fcc0, $vr0
-	add.d	$s3, $a2, $a1
+	add.d	$s3, $a1, $a2
 	bcnez	$fcc0, .LBB0_2
 # %bb.3:
 	addi.w	$a0, $s3, 1
@@ -116,7 +115,7 @@ perimeter:                              # @perimeter
 	jirl	$ra, $ra, 0
 	ld.d	$s0, $s0, 8
 	add.d	$a1, $s1, $s3
-	add.d	$a1, $a1, $s2
+	add.d	$a0, $s2, $a0
 	add.d	$s3, $a1, $a0
 	ld.w	$a0, $s0, 0
 	beq	$a0, $s4, .LBB1_1

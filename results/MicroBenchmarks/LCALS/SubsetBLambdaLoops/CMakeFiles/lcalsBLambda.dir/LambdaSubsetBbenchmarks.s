@@ -265,10 +265,10 @@ _ZL15BM_INIT3_LAMBDARN9benchmark5StateE: # @_ZL15BM_INIT3_LAMBDARN9benchmark5Sta
 	vpickve2gr.h	$a3, $vr0, 4
 	andi	$a3, $a3, 1
 	slli.d	$a3, $a3, 6
+	vpickve2gr.h	$a5, $vr0, 6
+	slli.d	$a5, $a5, 7
+	or	$a3, $a3, $a5
 	or	$a3, $a4, $a3
-	vpickve2gr.h	$a4, $vr0, 6
-	slli.d	$a4, $a4, 7
-	or	$a3, $a3, $a4
 	andi	$a3, $a3, 255
 	sub.d	$a4, $a0, $s1
 	addi.w	$a5, $zero, -16

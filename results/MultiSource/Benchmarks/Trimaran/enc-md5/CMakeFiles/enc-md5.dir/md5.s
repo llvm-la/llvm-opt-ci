@@ -37,16 +37,17 @@ md5_starts:                             # @md5_starts
 md5_process:                            # @md5_process
 # %bb.0:
 	addi.d	$sp, $sp, -96
-	st.d	$fp, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	ld.wu	$s2, $a1, 0
 	ld.wu	$t5, $a1, 4
 	ld.wu	$a6, $a1, 8
@@ -71,11 +72,11 @@ md5_process:                            # @md5_process
 	and	$s4, $a3, $a4
 	or	$s3, $s4, $s3
 	add.d	$s4, $s2, $a1
+	lu12i.w	$s5, -166230
+	ori	$s5, $s5, 1144
+	lu32i.d	$s5, 0
+	add.d	$s4, $s4, $s5
 	add.d	$s3, $s4, $s3
-	lu12i.w	$s4, -166230
-	ori	$s4, $s4, 1144
-	lu32i.d	$s4, 0
-	add.d	$s3, $s3, $s4
 	slli.d	$s4, $s3, 7
 	bstrpick.d	$s3, $s3, 31, 25
 	add.d	$s4, $s4, $a4
@@ -84,11 +85,11 @@ md5_process:                            # @md5_process
 	and	$s5, $a4, $s3
 	or	$s4, $s5, $s4
 	add.d	$s5, $t5, $a2
+	lu12i.w	$s6, -95109
+	ori	$s6, $s6, 1878
+	lu32i.d	$s6, 0
+	add.d	$s5, $s5, $s6
 	add.d	$s4, $s5, $s4
-	lu12i.w	$s5, -95109
-	ori	$s5, $s5, 1878
-	lu32i.d	$s5, 0
-	add.d	$s4, $s4, $s5
 	slli.d	$s5, $s4, 12
 	bstrpick.d	$s4, $s4, 31, 20
 	add.d	$s5, $s5, $s3
@@ -97,10 +98,10 @@ md5_process:                            # @md5_process
 	and	$s6, $s3, $s4
 	or	$s5, $s6, $s5
 	add.d	$s6, $a6, $a3
+	lu12i.w	$s7, 147975
+	ori	$s7, $s7, 219
+	add.d	$s6, $s6, $s7
 	add.d	$s5, $s6, $s5
-	lu12i.w	$s6, 147975
-	ori	$s6, $s6, 219
-	add.d	$s5, $s5, $s6
 	slli.d	$s6, $s5, 17
 	bstrpick.d	$s5, $s5, 31, 15
 	add.d	$s6, $s6, $s4
@@ -109,11 +110,11 @@ md5_process:                            # @md5_process
 	and	$s7, $s4, $s5
 	or	$s6, $s7, $s6
 	add.d	$s7, $t7, $a4
+	lu12i.w	$s8, -255012
+	ori	$s8, $s8, 3822
+	lu32i.d	$s8, 0
+	add.d	$s7, $s7, $s8
 	add.d	$s6, $s7, $s6
-	lu12i.w	$s7, -255012
-	ori	$s7, $s7, 3822
-	lu32i.d	$s7, 0
-	add.d	$s6, $s6, $s7
 	slli.d	$s7, $s6, 22
 	bstrpick.d	$s6, $s6, 31, 10
 	add.d	$s7, $s7, $s5
@@ -122,10 +123,10 @@ md5_process:                            # @md5_process
 	and	$s8, $s5, $s6
 	or	$s7, $s8, $s7
 	add.d	$s3, $t0, $s3
-	add.d	$s3, $s3, $s7
-	lu12i.w	$s7, -43072
-	ori	$s7, $s7, 4015
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -43072
+	ori	$s8, $s8, 4015
+	lu32i.d	$s8, 0
+	add.d	$s3, $s3, $s8
 	add.d	$s3, $s3, $s7
 	slli.d	$s7, $s3, 7
 	bstrpick.d	$s3, $s3, 31, 25
@@ -135,9 +136,9 @@ md5_process:                            # @md5_process
 	and	$s8, $s6, $s3
 	or	$s7, $s8, $s7
 	add.d	$s4, $fp, $s4
-	add.d	$s4, $s4, $s7
-	lu12i.w	$s7, 292988
-	ori	$s7, $s7, 1578
+	lu12i.w	$s8, 292988
+	ori	$s8, $s8, 1578
+	add.d	$s4, $s4, $s8
 	add.d	$s4, $s4, $s7
 	slli.d	$s7, $s4, 12
 	bstrpick.d	$s4, $s4, 31, 20
@@ -147,10 +148,10 @@ md5_process:                            # @md5_process
 	and	$s8, $s3, $s4
 	or	$s7, $s8, $s7
 	add.d	$s5, $t2, $s5
-	add.d	$s5, $s5, $s7
-	lu12i.w	$s7, -359676
-	ori	$s7, $s7, 1555
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -359676
+	ori	$s8, $s8, 1555
+	lu32i.d	$s8, 0
+	add.d	$s5, $s5, $s8
 	add.d	$s5, $s5, $s7
 	slli.d	$s7, $s5, 17
 	bstrpick.d	$s5, $s5, 31, 15
@@ -160,10 +161,10 @@ md5_process:                            # @md5_process
 	and	$s8, $s4, $s5
 	or	$s7, $s8, $s7
 	add.d	$s6, $s1, $s6
-	add.d	$s6, $s6, $s7
-	lu12i.w	$s7, -11159
-	ori	$s7, $s7, 1281
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -11159
+	ori	$s8, $s8, 1281
+	lu32i.d	$s8, 0
+	add.d	$s6, $s6, $s8
 	add.d	$s6, $s6, $s7
 	slli.d	$s7, $s6, 22
 	bstrpick.d	$s6, $s6, 31, 10
@@ -173,9 +174,9 @@ md5_process:                            # @md5_process
 	and	$s8, $s5, $s6
 	or	$s7, $s8, $s7
 	add.d	$s3, $t3, $s3
-	add.d	$s3, $s3, $s7
-	lu12i.w	$s7, 432137
-	ori	$s7, $s7, 2264
+	lu12i.w	$s8, 432137
+	ori	$s8, $s8, 2264
+	add.d	$s3, $s3, $s8
 	add.d	$s3, $s3, $s7
 	slli.d	$s7, $s3, 7
 	bstrpick.d	$s3, $s3, 31, 25
@@ -185,10 +186,10 @@ md5_process:                            # @md5_process
 	and	$s8, $s6, $s3
 	or	$s7, $s8, $s7
 	add.d	$s4, $a5, $s4
-	add.d	$s4, $s4, $s7
-	lu12i.w	$s7, -478129
-	ori	$s7, $s7, 1967
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -478129
+	ori	$s8, $s8, 1967
+	lu32i.d	$s8, 0
+	add.d	$s4, $s4, $s8
 	add.d	$s4, $s4, $s7
 	slli.d	$s7, $s4, 12
 	bstrpick.d	$s4, $s4, 31, 20
@@ -198,10 +199,10 @@ md5_process:                            # @md5_process
 	and	$s8, $s3, $s4
 	or	$s7, $s8, $s7
 	add.d	$s5, $t6, $s5
-	add.d	$s5, $s5, $s7
-	lu12i.w	$s7, -11
-	ori	$s7, $s7, 2993
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -11
+	ori	$s8, $s8, 2993
+	lu32i.d	$s8, 0
+	add.d	$s5, $s5, $s8
 	add.d	$s5, $s5, $s7
 	slli.d	$s7, $s5, 17
 	bstrpick.d	$s5, $s5, 31, 15
@@ -211,10 +212,10 @@ md5_process:                            # @md5_process
 	and	$s8, $s4, $s5
 	or	$s7, $s8, $s7
 	add.d	$s6, $a7, $s6
-	add.d	$s6, $s6, $s7
-	lu12i.w	$s7, -485939
-	ori	$s7, $s7, 1982
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -485939
+	ori	$s8, $s8, 1982
+	lu32i.d	$s8, 0
+	add.d	$s6, $s6, $s8
 	add.d	$s6, $s6, $s7
 	slli.d	$s7, $s6, 22
 	bstrpick.d	$s6, $s6, 31, 10
@@ -224,9 +225,9 @@ md5_process:                            # @md5_process
 	and	$s8, $s5, $s6
 	or	$s7, $s8, $s7
 	add.d	$s3, $t8, $s3
-	add.d	$s3, $s3, $s7
-	lu12i.w	$s7, 440577
-	ori	$s7, $s7, 290
+	lu12i.w	$s8, 440577
+	ori	$s8, $s8, 290
+	add.d	$s3, $s3, $s8
 	add.d	$s3, $s3, $s7
 	slli.d	$s7, $s3, 7
 	bstrpick.d	$s3, $s3, 31, 25
@@ -236,10 +237,10 @@ md5_process:                            # @md5_process
 	and	$s8, $s6, $s3
 	or	$s7, $s8, $s7
 	add.d	$s4, $t1, $s4
-	add.d	$s4, $s4, $s7
-	lu12i.w	$s7, -9849
-	ori	$s7, $s7, 403
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -9849
+	ori	$s8, $s8, 403
+	lu32i.d	$s8, 0
+	add.d	$s4, $s4, $s8
 	add.d	$s4, $s4, $s7
 	slli.d	$s7, $s4, 12
 	bstrpick.d	$s4, $s4, 31, 20
@@ -249,10 +250,10 @@ md5_process:                            # @md5_process
 	and	$s8, $s3, $s4
 	or	$s7, $s8, $s7
 	add.d	$s5, $s0, $s5
-	add.d	$s5, $s5, $s7
-	lu12i.w	$s7, -366700
-	ori	$s7, $s7, 910
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -366700
+	ori	$s8, $s8, 910
+	lu32i.d	$s8, 0
+	add.d	$s5, $s5, $s8
 	add.d	$s5, $s5, $s7
 	slli.d	$s7, $s5, 17
 	bstrpick.d	$s5, $s5, 31, 15
@@ -262,9 +263,9 @@ md5_process:                            # @md5_process
 	and	$s8, $s4, $s5
 	or	$s7, $s8, $s7
 	add.d	$s6, $t4, $s6
-	add.d	$s6, $s6, $s7
-	lu12i.w	$s7, 301888
-	ori	$s7, $s7, 2081
+	lu12i.w	$s8, 301888
+	ori	$s8, $s8, 2081
+	add.d	$s6, $s6, $s8
 	add.d	$s6, $s6, $s7
 	slli.d	$s7, $s6, 22
 	bstrpick.d	$s6, $s6, 31, 10
@@ -274,10 +275,10 @@ md5_process:                            # @md5_process
 	andn	$s8, $s5, $s4
 	or	$s7, $s7, $s8
 	add.d	$s3, $t5, $s3
-	add.d	$s3, $s3, $s7
-	lu12i.w	$s7, -40478
-	ori	$s7, $s7, 1378
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -40478
+	ori	$s8, $s8, 1378
+	lu32i.d	$s8, 0
+	add.d	$s3, $s3, $s8
 	add.d	$s3, $s3, $s7
 	slli.d	$s7, $s3, 5
 	bstrpick.d	$s3, $s3, 31, 27
@@ -287,10 +288,10 @@ md5_process:                            # @md5_process
 	andn	$s8, $s6, $s5
 	or	$s7, $s7, $s8
 	add.d	$s4, $t2, $s4
-	add.d	$s4, $s4, $s7
-	lu12i.w	$s7, -261109
-	ori	$s7, $s7, 832
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -261109
+	ori	$s8, $s8, 832
+	lu32i.d	$s8, 0
+	add.d	$s4, $s4, $s8
 	add.d	$s4, $s4, $s7
 	slli.d	$s7, $s4, 9
 	bstrpick.d	$s4, $s4, 31, 23
@@ -300,9 +301,9 @@ md5_process:                            # @md5_process
 	andn	$s8, $s3, $s6
 	or	$s7, $s7, $s8
 	add.d	$s5, $a7, $s5
-	add.d	$s5, $s5, $s7
-	lu12i.w	$s7, 157157
-	ori	$s7, $s7, 2641
+	lu12i.w	$s8, 157157
+	ori	$s8, $s8, 2641
+	add.d	$s5, $s5, $s8
 	add.d	$s5, $s5, $s7
 	slli.d	$s7, $s5, 14
 	bstrpick.d	$s5, $s5, 31, 18
@@ -312,10 +313,10 @@ md5_process:                            # @md5_process
 	andn	$s8, $s4, $s3
 	or	$s7, $s7, $s8
 	add.d	$s6, $s2, $s6
-	add.d	$s6, $s6, $s7
-	lu12i.w	$s7, -91284
-	ori	$s7, $s7, 1962
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -91284
+	ori	$s8, $s8, 1962
+	lu32i.d	$s8, 0
+	add.d	$s6, $s6, $s8
 	add.d	$s6, $s6, $s7
 	slli.d	$s7, $s6, 20
 	bstrpick.d	$s6, $s6, 31, 12
@@ -325,10 +326,10 @@ md5_process:                            # @md5_process
 	andn	$s8, $s5, $s4
 	or	$s7, $s7, $s8
 	add.d	$s3, $fp, $s3
-	add.d	$s3, $s3, $s7
-	lu12i.w	$s7, -171279
-	ori	$s7, $s7, 93
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -171279
+	ori	$s8, $s8, 93
+	lu32i.d	$s8, 0
+	add.d	$s3, $s3, $s8
 	add.d	$s3, $s3, $s7
 	slli.d	$s7, $s3, 5
 	bstrpick.d	$s3, $s3, 31, 27
@@ -338,9 +339,9 @@ md5_process:                            # @md5_process
 	andn	$s8, $s6, $s5
 	or	$s7, $s7, $s8
 	add.d	$s4, $t6, $s4
-	add.d	$s4, $s4, $s7
-	lu12i.w	$s7, 9281
-	ori	$s7, $s7, 1107
+	lu12i.w	$s8, 9281
+	ori	$s8, $s8, 1107
+	add.d	$s4, $s4, $s8
 	add.d	$s4, $s4, $s7
 	slli.d	$s7, $s4, 9
 	bstrpick.d	$s4, $s4, 31, 23
@@ -350,10 +351,10 @@ md5_process:                            # @md5_process
 	andn	$s8, $s3, $s6
 	or	$s7, $s7, $s8
 	add.d	$s5, $t4, $s5
-	add.d	$s5, $s5, $s7
-	lu12i.w	$s7, -161250
-	ori	$s7, $s7, 1665
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -161250
+	ori	$s8, $s8, 1665
+	lu32i.d	$s8, 0
+	add.d	$s5, $s5, $s8
 	add.d	$s5, $s5, $s7
 	slli.d	$s7, $s5, 14
 	bstrpick.d	$s5, $s5, 31, 18
@@ -363,10 +364,10 @@ md5_process:                            # @md5_process
 	andn	$s8, $s4, $s3
 	or	$s7, $s7, $s8
 	add.d	$s6, $t0, $s6
-	add.d	$s6, $s6, $s7
-	lu12i.w	$s7, -99009
-	ori	$s7, $s7, 3016
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -99009
+	ori	$s8, $s8, 3016
+	lu32i.d	$s8, 0
+	add.d	$s6, $s6, $s8
 	add.d	$s6, $s6, $s7
 	slli.d	$s7, $s6, 20
 	bstrpick.d	$s6, $s6, 31, 12
@@ -376,9 +377,9 @@ md5_process:                            # @md5_process
 	andn	$s8, $s5, $s4
 	or	$s7, $s7, $s8
 	add.d	$s3, $a5, $s3
-	add.d	$s3, $s3, $s7
-	lu12i.w	$s7, 138780
-	ori	$s7, $s7, 3558
+	lu12i.w	$s8, 138780
+	ori	$s8, $s8, 3558
+	add.d	$s3, $s3, $s8
 	add.d	$s3, $s3, $s7
 	slli.d	$s7, $s3, 5
 	bstrpick.d	$s3, $s3, 31, 27
@@ -388,10 +389,10 @@ md5_process:                            # @md5_process
 	andn	$s8, $s6, $s5
 	or	$s7, $s7, $s8
 	add.d	$s4, $s0, $s4
-	add.d	$s4, $s4, $s7
-	lu12i.w	$s7, -248976
-	ori	$s7, $s7, 2006
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -248976
+	ori	$s8, $s8, 2006
+	lu32i.d	$s8, 0
+	add.d	$s4, $s4, $s8
 	add.d	$s4, $s4, $s7
 	slli.d	$s7, $s4, 9
 	bstrpick.d	$s4, $s4, 31, 23
@@ -401,10 +402,10 @@ md5_process:                            # @md5_process
 	andn	$s8, $s3, $s6
 	or	$s7, $s7, $s8
 	add.d	$s5, $t7, $s5
-	add.d	$s5, $s5, $s7
-	lu12i.w	$s7, -45744
-	ori	$s7, $s7, 3463
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -45744
+	ori	$s8, $s8, 3463
+	lu32i.d	$s8, 0
+	add.d	$s5, $s5, $s8
 	add.d	$s5, $s5, $s7
 	slli.d	$s7, $s5, 14
 	bstrpick.d	$s5, $s5, 31, 18
@@ -414,9 +415,9 @@ md5_process:                            # @md5_process
 	andn	$s8, $s4, $s3
 	or	$s7, $s7, $s8
 	add.d	$s6, $t3, $s6
-	add.d	$s6, $s6, $s7
-	lu12i.w	$s7, 284065
-	ori	$s7, $s7, 1261
+	lu12i.w	$s8, 284065
+	ori	$s8, $s8, 1261
+	add.d	$s6, $s6, $s8
 	add.d	$s6, $s6, $s7
 	slli.d	$s7, $s6, 20
 	bstrpick.d	$s6, $s6, 31, 12
@@ -426,10 +427,10 @@ md5_process:                            # @md5_process
 	andn	$s8, $s5, $s4
 	or	$s7, $s7, $s8
 	add.d	$s3, $t1, $s3
-	add.d	$s3, $s3, $s7
-	lu12i.w	$s7, -352706
-	ori	$s7, $s7, 2309
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -352706
+	ori	$s8, $s8, 2309
+	lu32i.d	$s8, 0
+	add.d	$s3, $s3, $s8
 	add.d	$s3, $s3, $s7
 	slli.d	$s7, $s3, 5
 	bstrpick.d	$s3, $s3, 31, 27
@@ -439,10 +440,10 @@ md5_process:                            # @md5_process
 	andn	$s8, $s6, $s5
 	or	$s7, $s7, $s8
 	add.d	$s4, $a6, $s4
-	add.d	$s4, $s4, $s7
-	lu12i.w	$s7, -12550
-	ori	$s7, $s7, 1016
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -12550
+	ori	$s8, $s8, 1016
+	lu32i.d	$s8, 0
+	add.d	$s4, $s4, $s8
 	add.d	$s4, $s4, $s7
 	slli.d	$s7, $s4, 9
 	bstrpick.d	$s4, $s4, 31, 23
@@ -463,10 +464,10 @@ md5_process:                            # @md5_process
 	and	$s8, $s7, $s3
 	xor	$s8, $s8, $s4
 	add.d	$s6, $t8, $s6
-	add.d	$s6, $s6, $s8
-	lu12i.w	$s8, -470364
-	ori	$s8, $s8, 3210
-	lu32i.d	$s8, 0
+	lu12i.w	$ra, -470364
+	ori	$ra, $ra, 3210
+	lu32i.d	$ra, 0
+	add.d	$s6, $s6, $ra
 	add.d	$s6, $s6, $s8
 	slli.d	$s8, $s6, 20
 	bstrpick.d	$s6, $s6, 31, 12
@@ -474,10 +475,10 @@ md5_process:                            # @md5_process
 	add.d	$s6, $s8, $s6
 	xor	$s7, $s7, $s6
 	add.d	$s3, $fp, $s3
-	add.d	$s3, $s3, $s7
-	lu12i.w	$s7, -93
-	ori	$s7, $s7, 2370
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -93
+	ori	$s8, $s8, 2370
+	lu32i.d	$s8, 0
+	add.d	$s3, $s3, $s8
 	add.d	$s3, $s3, $s7
 	bstrpick.d	$s7, $s3, 31, 28
 	alsl.d	$s3, $s3, $s6, 4
@@ -485,10 +486,10 @@ md5_process:                            # @md5_process
 	xor	$s7, $s6, $s5
 	xor	$s7, $s7, $s3
 	add.d	$s4, $t3, $s4
-	add.d	$s4, $s4, $s7
-	lu12i.w	$s7, -493793
-	ori	$s7, $s7, 1665
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -493793
+	ori	$s8, $s8, 1665
+	lu32i.d	$s8, 0
+	add.d	$s4, $s4, $s8
 	add.d	$s4, $s4, $s7
 	slli.d	$s7, $s4, 11
 	bstrpick.d	$s4, $s4, 31, 21
@@ -497,9 +498,9 @@ md5_process:                            # @md5_process
 	xor	$s7, $s3, $s6
 	xor	$s7, $s7, $s4
 	add.d	$s5, $a7, $s5
-	add.d	$s5, $s5, $s7
-	lu12i.w	$s7, 448982
-	ori	$s7, $s7, 290
+	lu12i.w	$s8, 448982
+	ori	$s8, $s8, 290
+	add.d	$s5, $s5, $s8
 	add.d	$s5, $s5, $s7
 	slli.d	$s7, $s5, 16
 	bstrpick.d	$s5, $s5, 31, 16
@@ -508,10 +509,10 @@ md5_process:                            # @md5_process
 	xor	$s7, $s4, $s3
 	xor	$s7, $s7, $s5
 	add.d	$s6, $s0, $s6
-	add.d	$s6, $s6, $s7
-	lu12i.w	$s7, -8621
-	ori	$s7, $s7, 2060
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -8621
+	ori	$s8, $s8, 2060
+	lu32i.d	$s8, 0
+	add.d	$s6, $s6, $s8
 	add.d	$s6, $s6, $s7
 	slli.d	$s7, $s6, 23
 	bstrpick.d	$s6, $s6, 31, 9
@@ -520,10 +521,10 @@ md5_process:                            # @md5_process
 	xor	$s7, $s5, $s4
 	xor	$s7, $s7, $s6
 	add.d	$s3, $t5, $s3
-	add.d	$s3, $s3, $s7
-	lu12i.w	$s7, -373778
-	ori	$s7, $s7, 2628
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -373778
+	ori	$s8, $s8, 2628
+	lu32i.d	$s8, 0
+	add.d	$s3, $s3, $s8
 	add.d	$s3, $s3, $s7
 	bstrpick.d	$s7, $s3, 31, 28
 	alsl.d	$s3, $s3, $s6, 4
@@ -531,9 +532,9 @@ md5_process:                            # @md5_process
 	xor	$s7, $s6, $s5
 	xor	$s7, $s7, $s3
 	add.d	$s4, $t0, $s4
-	add.d	$s4, $s4, $s7
-	lu12i.w	$s7, 310764
-	ori	$s7, $s7, 4009
+	lu12i.w	$s8, 310764
+	ori	$s8, $s8, 4009
+	add.d	$s4, $s4, $s8
 	add.d	$s4, $s4, $s7
 	slli.d	$s7, $s4, 11
 	bstrpick.d	$s4, $s4, 31, 21
@@ -542,10 +543,10 @@ md5_process:                            # @md5_process
 	xor	$s7, $s3, $s6
 	xor	$s7, $s7, $s4
 	add.d	$s5, $s1, $s5
-	add.d	$s5, $s5, $s7
-	lu12i.w	$s7, -37964
-	ori	$s7, $s7, 2912
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -37964
+	ori	$s8, $s8, 2912
+	lu32i.d	$s8, 0
+	add.d	$s5, $s5, $s8
 	add.d	$s5, $s5, $s7
 	slli.d	$s7, $s5, 16
 	bstrpick.d	$s5, $s5, 31, 16
@@ -554,10 +555,10 @@ md5_process:                            # @md5_process
 	xor	$s7, $s4, $s3
 	xor	$s7, $s7, $s5
 	add.d	$s6, $t6, $s6
-	add.d	$s6, $s6, $s7
-	lu12i.w	$s7, -267269
-	ori	$s7, $s7, 3184
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -267269
+	ori	$s8, $s8, 3184
+	lu32i.d	$s8, 0
+	add.d	$s6, $s6, $s8
 	add.d	$s6, $s6, $s7
 	slli.d	$s7, $s6, 23
 	bstrpick.d	$s6, $s6, 31, 9
@@ -566,9 +567,9 @@ md5_process:                            # @md5_process
 	xor	$s7, $s5, $s4
 	xor	$s7, $s7, $s6
 	add.d	$s3, $t1, $s3
-	add.d	$s3, $s3, $s7
-	lu12i.w	$s7, 166327
-	ori	$s7, $s7, 3782
+	lu12i.w	$s8, 166327
+	ori	$s8, $s8, 3782
+	add.d	$s3, $s3, $s8
 	add.d	$s3, $s3, $s7
 	bstrpick.d	$s7, $s3, 31, 28
 	alsl.d	$s3, $s3, $s6, 4
@@ -576,10 +577,10 @@ md5_process:                            # @md5_process
 	xor	$s7, $s6, $s5
 	xor	$s7, $s7, $s3
 	add.d	$s4, $s2, $s4
-	add.d	$s4, $s4, $s7
-	lu12i.w	$s7, -87534
-	ori	$s7, $s7, 2042
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -87534
+	ori	$s8, $s8, 2042
+	lu32i.d	$s8, 0
+	add.d	$s4, $s4, $s8
 	add.d	$s4, $s4, $s7
 	slli.d	$s7, $s4, 11
 	bstrpick.d	$s4, $s4, 31, 21
@@ -588,10 +589,10 @@ md5_process:                            # @md5_process
 	xor	$s7, $s3, $s6
 	xor	$s7, $s7, $s4
 	add.d	$s5, $t7, $s5
-	add.d	$s5, $s5, $s7
-	lu12i.w	$s7, -176397
-	ori	$s7, $s7, 133
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -176397
+	ori	$s8, $s8, 133
+	lu32i.d	$s8, 0
+	add.d	$s5, $s5, $s8
 	add.d	$s5, $s5, $s7
 	slli.d	$s7, $s5, 16
 	bstrpick.d	$s5, $s5, 31, 16
@@ -600,9 +601,9 @@ md5_process:                            # @md5_process
 	xor	$s7, $s4, $s3
 	xor	$s7, $s7, $s5
 	add.d	$s6, $t2, $s6
-	add.d	$s6, $s6, $s7
-	lu12i.w	$s7, 18561
-	ori	$s7, $s7, 3333
+	lu12i.w	$s8, 18561
+	ori	$s8, $s8, 3333
+	add.d	$s6, $s6, $s8
 	add.d	$s6, $s6, $s7
 	slli.d	$s7, $s6, 23
 	bstrpick.d	$s6, $s6, 31, 9
@@ -611,10 +612,10 @@ md5_process:                            # @md5_process
 	xor	$s7, $s5, $s4
 	xor	$s7, $s7, $s6
 	add.d	$s3, $a5, $s3
-	add.d	$s3, $s3, $s7
-	lu12i.w	$s7, -156339
-	ori	$s7, $s7, 57
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -156339
+	ori	$s8, $s8, 57
+	lu32i.d	$s8, 0
+	add.d	$s3, $s3, $s8
 	add.d	$s3, $s3, $s7
 	bstrpick.d	$s7, $s3, 31, 28
 	alsl.d	$s3, $s3, $s6, 4
@@ -622,10 +623,10 @@ md5_process:                            # @md5_process
 	xor	$s7, $s6, $s5
 	xor	$s7, $s7, $s3
 	add.d	$s4, $t8, $s4
-	add.d	$s4, $s4, $s7
-	lu12i.w	$s7, -102983
-	ori	$s7, $s7, 2533
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -102983
+	ori	$s8, $s8, 2533
+	lu32i.d	$s8, 0
+	add.d	$s4, $s4, $s8
 	add.d	$s4, $s4, $s7
 	slli.d	$s7, $s4, 11
 	bstrpick.d	$s4, $s4, 31, 21
@@ -634,9 +635,9 @@ md5_process:                            # @md5_process
 	xor	$s7, $s3, $s6
 	xor	$s7, $s7, $s4
 	add.d	$s5, $t4, $s5
-	add.d	$s5, $s5, $s7
-	lu12i.w	$s7, 129575
-	ori	$s7, $s7, 3320
+	lu12i.w	$s8, 129575
+	ori	$s8, $s8, 3320
+	add.d	$s5, $s5, $s8
 	add.d	$s5, $s5, $s7
 	slli.d	$s7, $s5, 16
 	bstrpick.d	$s5, $s5, 31, 16
@@ -645,10 +646,10 @@ md5_process:                            # @md5_process
 	xor	$s7, $s4, $s3
 	xor	$s7, $s7, $s5
 	add.d	$s6, $a6, $s6
-	add.d	$s6, $s6, $s7
-	lu12i.w	$s7, -243003
-	ori	$s7, $s7, 1637
-	lu32i.d	$s7, 0
+	lu12i.w	$s8, -243003
+	ori	$s8, $s8, 1637
+	lu32i.d	$s8, 0
+	add.d	$s6, $s6, $s8
 	add.d	$s6, $s6, $s7
 	slli.d	$s7, $s6, 23
 	bstrpick.d	$s6, $s6, 31, 9
@@ -657,11 +658,11 @@ md5_process:                            # @md5_process
 	orn	$s7, $s6, $s4
 	xor	$s7, $s7, $s5
 	add.d	$s2, $s2, $s3
-	add.d	$s2, $s2, $s7
 	lu12i.w	$s3, -48494
 	ori	$s3, $s3, 580
 	lu32i.d	$s3, 0
 	add.d	$s2, $s2, $s3
+	add.d	$s2, $s2, $s7
 	slli.d	$s3, $s2, 6
 	bstrpick.d	$s2, $s2, 31, 26
 	add.d	$s3, $s3, $s6
@@ -679,10 +680,10 @@ md5_process:                            # @md5_process
 	orn	$s3, $s1, $s6
 	xor	$s3, $s3, $s2
 	add.d	$s0, $s0, $s5
-	add.d	$s0, $s0, $s3
-	lu12i.w	$s3, -345790
-	ori	$s3, $s3, 935
-	lu32i.d	$s3, 0
+	lu12i.w	$s4, -345790
+	ori	$s4, $s4, 935
+	lu32i.d	$s4, 0
+	add.d	$s0, $s0, $s4
 	add.d	$s0, $s0, $s3
 	slli.d	$s3, $s0, 15
 	bstrpick.d	$s0, $s0, 31, 17
@@ -691,10 +692,10 @@ md5_process:                            # @md5_process
 	orn	$s3, $s0, $s2
 	xor	$s3, $s3, $s1
 	add.d	$fp, $fp, $s6
-	add.d	$fp, $fp, $s3
-	lu12i.w	$s3, -14022
-	ori	$s3, $s3, 57
-	lu32i.d	$s3, 0
+	lu12i.w	$s4, -14022
+	ori	$s4, $s4, 57
+	lu32i.d	$s4, 0
+	add.d	$fp, $fp, $s4
 	add.d	$fp, $fp, $s3
 	slli.d	$s3, $fp, 21
 	bstrpick.d	$fp, $fp, 31, 11
@@ -703,10 +704,10 @@ md5_process:                            # @md5_process
 	orn	$s3, $fp, $s1
 	xor	$s3, $s3, $s0
 	add.d	$t8, $t8, $s2
-	add.d	$t8, $t8, $s3
 	lu12i.w	$s2, 415157
 	ori	$s2, $s2, 2499
 	add.d	$t8, $t8, $s2
+	add.d	$t8, $t8, $s3
 	slli.d	$s2, $t8, 6
 	bstrpick.d	$t8, $t8, 31, 26
 	add.d	$s2, $s2, $fp
@@ -714,11 +715,11 @@ md5_process:                            # @md5_process
 	orn	$s2, $t8, $s0
 	xor	$s2, $s2, $fp
 	add.d	$t7, $t7, $s1
-	add.d	$t7, $t7, $s2
 	lu12i.w	$s1, -462644
 	ori	$s1, $s1, 3218
 	lu32i.d	$s1, 0
 	add.d	$t7, $t7, $s1
+	add.d	$t7, $t7, $s2
 	slli.d	$s1, $t7, 10
 	bstrpick.d	$t7, $t7, 31, 22
 	add.d	$s1, $s1, $t8
@@ -726,11 +727,11 @@ md5_process:                            # @md5_process
 	orn	$s1, $t7, $fp
 	xor	$s1, $s1, $t8
 	add.d	$t6, $t6, $s0
-	add.d	$t6, $t6, $s1
 	lu12i.w	$s0, -257
 	ori	$s0, $s0, 1149
 	lu32i.d	$s0, 0
 	add.d	$t6, $t6, $s0
+	add.d	$t6, $t6, $s1
 	slli.d	$s0, $t6, 15
 	bstrpick.d	$t6, $t6, 31, 17
 	add.d	$s0, $s0, $t7
@@ -738,11 +739,11 @@ md5_process:                            # @md5_process
 	orn	$s0, $t6, $t8
 	xor	$s0, $s0, $t7
 	add.d	$t5, $t5, $fp
-	add.d	$t5, $t5, $s0
 	lu12i.w	$fp, -501691
 	ori	$fp, $fp, 3537
 	lu32i.d	$fp, 0
 	add.d	$t5, $t5, $fp
+	add.d	$t5, $t5, $s0
 	slli.d	$fp, $t5, 21
 	bstrpick.d	$t5, $t5, 31, 11
 	add.d	$fp, $fp, $t6
@@ -750,10 +751,10 @@ md5_process:                            # @md5_process
 	orn	$fp, $t5, $t7
 	xor	$fp, $fp, $t6
 	add.d	$t3, $t3, $t8
-	add.d	$t3, $t3, $fp
 	lu12i.w	$t8, 457351
 	ori	$t8, $t8, 3663
 	add.d	$t3, $t3, $t8
+	add.d	$t3, $t3, $fp
 	slli.d	$t8, $t3, 6
 	bstrpick.d	$t3, $t3, 31, 26
 	add.d	$t8, $t8, $t5
@@ -761,11 +762,11 @@ md5_process:                            # @md5_process
 	orn	$t8, $t3, $t6
 	xor	$t8, $t8, $t5
 	add.d	$t4, $t4, $t7
-	add.d	$t4, $t4, $t8
 	lu12i.w	$t7, -7474
 	ori	$t7, $t7, 1760
 	lu32i.d	$t7, 0
 	add.d	$t4, $t4, $t7
+	add.d	$t4, $t4, $t8
 	slli.d	$t7, $t4, 10
 	bstrpick.d	$t4, $t4, 31, 22
 	add.d	$t7, $t7, $t3
@@ -773,11 +774,11 @@ md5_process:                            # @md5_process
 	orn	$t7, $t4, $t5
 	xor	$t7, $t7, $t3
 	add.d	$t2, $t2, $t6
-	add.d	$t2, $t2, $t7
 	lu12i.w	$t6, -380908
 	ori	$t6, $t6, 788
 	lu32i.d	$t6, 0
 	add.d	$t2, $t2, $t6
+	add.d	$t2, $t2, $t7
 	slli.d	$t6, $t2, 15
 	bstrpick.d	$t2, $t2, 31, 17
 	add.d	$t6, $t6, $t4
@@ -785,10 +786,10 @@ md5_process:                            # @md5_process
 	orn	$t6, $t2, $t3
 	xor	$t6, $t6, $t4
 	add.d	$t1, $t1, $t5
-	add.d	$t1, $t1, $t6
 	lu12i.w	$t5, 319617
 	ori	$t5, $t5, 417
 	add.d	$t1, $t1, $t5
+	add.d	$t1, $t1, $t6
 	slli.d	$t5, $t1, 21
 	bstrpick.d	$t1, $t1, 31, 11
 	add.d	$t5, $t5, $t2
@@ -796,11 +797,11 @@ md5_process:                            # @md5_process
 	orn	$t5, $t1, $t4
 	xor	$t5, $t5, $t2
 	add.d	$t0, $t0, $t3
-	add.d	$t0, $t0, $t5
 	lu12i.w	$t3, -35529
 	ori	$t3, $t3, 3714
 	lu32i.d	$t3, 0
 	add.d	$t0, $t0, $t3
+	add.d	$t0, $t0, $t5
 	slli.d	$t3, $t0, 6
 	bstrpick.d	$t0, $t0, 31, 26
 	add.d	$t3, $t3, $t1
@@ -808,10 +809,10 @@ md5_process:                            # @md5_process
 	orn	$t3, $t0, $t2
 	xor	$t3, $t3, $t1
 	add.d	$a7, $a7, $t4
-	add.d	$a7, $a7, $t3
-	lu12i.w	$t3, -273489
-	ori	$t3, $t3, 565
-	lu32i.d	$t3, 0
+	lu12i.w	$t4, -273489
+	ori	$t4, $t4, 565
+	lu32i.d	$t4, 0
+	add.d	$a7, $a7, $t4
 	add.d	$a7, $a7, $t3
 	slli.d	$t3, $a7, 10
 	bstrpick.d	$a7, $a7, 31, 22
@@ -820,10 +821,10 @@ md5_process:                            # @md5_process
 	orn	$t3, $a7, $t1
 	xor	$t3, $t3, $t0
 	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
 	lu12i.w	$t2, 175485
 	ori	$t2, $t2, 699
 	add.d	$a6, $a6, $t2
+	add.d	$a6, $a6, $t3
 	slli.d	$t2, $a6, 15
 	bstrpick.d	$a6, $a6, 31, 17
 	add.d	$t2, $t2, $a7
@@ -831,11 +832,11 @@ md5_process:                            # @md5_process
 	orn	$t2, $a6, $t0
 	xor	$t2, $t2, $a7
 	add.d	$a5, $a5, $t1
-	add.d	$a5, $a5, $t2
 	lu12i.w	$t1, -83859
 	ori	$t1, $t1, 913
 	lu32i.d	$t1, 0
 	add.d	$a5, $a5, $t1
+	add.d	$a5, $a5, $t2
 	slli.d	$t1, $a5, 21
 	bstrpick.d	$a5, $a5, 31, 11
 	add.d	$a1, $t0, $a1
@@ -848,16 +849,17 @@ md5_process:                            # @md5_process
 	st.d	$a1, $a0, 32
 	add.d	$a1, $a7, $a2
 	st.d	$a1, $a0, 40
-	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end1:

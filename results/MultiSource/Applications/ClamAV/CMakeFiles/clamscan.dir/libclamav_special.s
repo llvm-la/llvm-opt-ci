@@ -42,25 +42,25 @@ cli_check_mydoom_log:                   # @cli_check_mydoom_log
 	vpickve2gr.w	$a1, $vr0, 0
 	vpickve2gr.w	$a2, $vr0, 1
 	add.d	$a1, $a2, $a1
-	vpickve2gr.w	$a2, $vr0, 2
-	ld.w	$a3, $sp, 36
-	add.d	$a1, $a2, $a1
-	vpickve2gr.w	$a2, $vr0, 3
-	add.d	$a1, $a2, $a1
-	revb.2w	$a2, $a3
-	ld.w	$a3, $sp, 40
+	ld.w	$a2, $sp, 36
+	vpickve2gr.w	$a3, $vr0, 2
+	vpickve2gr.w	$a4, $vr0, 3
+	add.d	$a3, $a4, $a3
+	revb.2w	$a2, $a2
 	xor	$a2, $a2, $a0
 	st.w	$a2, $sp, 36
-	add.d	$a1, $a2, $a1
-	revb.2w	$a2, $a3
-	xor	$a2, $a2, $a0
-	ld.w	$a3, $sp, 44
-	st.w	$a2, $sp, 40
-	add.d	$a1, $a2, $a1
+	add.d	$a2, $a2, $a3
+	ld.w	$a3, $sp, 40
 	vst	$vr0, $sp, 20
-	revb.2w	$a2, $a3
+	add.d	$a1, $a2, $a1
+	ld.w	$a2, $sp, 44
+	revb.2w	$a3, $a3
+	xor	$a3, $a3, $a0
+	st.w	$a3, $sp, 40
+	revb.2w	$a2, $a2
 	xor	$a0, $a2, $a0
 	st.w	$a0, $sp, 44
+	add.d	$a0, $a0, $a3
 	add.w	$a0, $a0, $a1
 	nor	$s1, $a0, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
@@ -96,25 +96,25 @@ cli_check_mydoom_log:                   # @cli_check_mydoom_log
 	vpickve2gr.w	$a1, $vr0, 0
 	vpickve2gr.w	$a2, $vr0, 1
 	add.d	$a1, $a2, $a1
-	vpickve2gr.w	$a2, $vr0, 2
-	ld.w	$a3, $sp, 36
-	add.d	$a1, $a2, $a1
-	vpickve2gr.w	$a2, $vr0, 3
-	add.d	$a1, $a2, $a1
-	revb.2w	$a2, $a3
-	ld.w	$a3, $sp, 40
+	ld.w	$a2, $sp, 36
+	vpickve2gr.w	$a3, $vr0, 2
+	vpickve2gr.w	$a4, $vr0, 3
+	add.d	$a3, $a4, $a3
+	revb.2w	$a2, $a2
 	xor	$a2, $a2, $a0
 	st.w	$a2, $sp, 36
-	add.d	$a1, $a2, $a1
-	revb.2w	$a2, $a3
-	xor	$a2, $a2, $a0
-	ld.w	$a3, $sp, 44
-	st.w	$a2, $sp, 40
-	add.d	$a1, $a2, $a1
+	add.d	$a2, $a2, $a3
+	ld.w	$a3, $sp, 40
 	vst	$vr0, $sp, 20
-	revb.2w	$a2, $a3
+	add.d	$a1, $a2, $a1
+	ld.w	$a2, $sp, 44
+	revb.2w	$a3, $a3
+	xor	$a3, $a3, $a0
+	st.w	$a3, $sp, 40
+	revb.2w	$a2, $a2
 	xor	$a0, $a2, $a0
 	st.w	$a0, $sp, 44
+	add.d	$a0, $a0, $a3
 	add.w	$a0, $a0, $a1
 	nor	$s1, $a0, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
@@ -150,25 +150,25 @@ cli_check_mydoom_log:                   # @cli_check_mydoom_log
 	vpickve2gr.w	$a1, $vr0, 0
 	vpickve2gr.w	$a2, $vr0, 1
 	add.d	$a1, $a2, $a1
-	vpickve2gr.w	$a2, $vr0, 2
-	ld.w	$a3, $sp, 36
-	add.d	$a1, $a2, $a1
-	vpickve2gr.w	$a2, $vr0, 3
-	add.d	$a1, $a2, $a1
-	revb.2w	$a2, $a3
-	ld.w	$a3, $sp, 40
+	ld.w	$a2, $sp, 36
+	vpickve2gr.w	$a3, $vr0, 2
+	vpickve2gr.w	$a4, $vr0, 3
+	add.d	$a3, $a4, $a3
+	revb.2w	$a2, $a2
 	xor	$a2, $a2, $a0
 	st.w	$a2, $sp, 36
-	add.d	$a1, $a2, $a1
-	revb.2w	$a2, $a3
-	xor	$a2, $a2, $a0
-	ld.w	$a3, $sp, 44
-	st.w	$a2, $sp, 40
-	add.d	$a1, $a2, $a1
+	add.d	$a2, $a2, $a3
+	ld.w	$a3, $sp, 40
 	vst	$vr0, $sp, 20
-	revb.2w	$a2, $a3
+	add.d	$a1, $a2, $a1
+	ld.w	$a2, $sp, 44
+	revb.2w	$a3, $a3
+	xor	$a3, $a3, $a0
+	st.w	$a3, $sp, 40
+	revb.2w	$a2, $a2
 	xor	$a0, $a2, $a0
 	st.w	$a0, $sp, 44
+	add.d	$a0, $a0, $a3
 	add.w	$a0, $a0, $a1
 	nor	$s1, $a0, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
@@ -204,25 +204,25 @@ cli_check_mydoom_log:                   # @cli_check_mydoom_log
 	vpickve2gr.w	$a1, $vr0, 0
 	vpickve2gr.w	$a2, $vr0, 1
 	add.d	$a1, $a2, $a1
-	vpickve2gr.w	$a2, $vr0, 2
-	ld.w	$a3, $sp, 36
-	add.d	$a1, $a2, $a1
-	vpickve2gr.w	$a2, $vr0, 3
-	add.d	$a1, $a2, $a1
-	revb.2w	$a2, $a3
-	ld.w	$a3, $sp, 40
+	ld.w	$a2, $sp, 36
+	vpickve2gr.w	$a3, $vr0, 2
+	vpickve2gr.w	$a4, $vr0, 3
+	add.d	$a3, $a4, $a3
+	revb.2w	$a2, $a2
 	xor	$a2, $a2, $a0
 	st.w	$a2, $sp, 36
-	add.d	$a1, $a2, $a1
-	revb.2w	$a2, $a3
-	xor	$a2, $a2, $a0
-	ld.w	$a3, $sp, 44
-	st.w	$a2, $sp, 40
-	add.d	$a1, $a2, $a1
+	add.d	$a2, $a2, $a3
+	ld.w	$a3, $sp, 40
 	vst	$vr0, $sp, 20
-	revb.2w	$a2, $a3
+	add.d	$a1, $a2, $a1
+	ld.w	$a2, $sp, 44
+	revb.2w	$a3, $a3
+	xor	$a3, $a3, $a0
+	st.w	$a3, $sp, 40
+	revb.2w	$a2, $a2
 	xor	$a0, $a2, $a0
 	st.w	$a0, $sp, 44
+	add.d	$a0, $a0, $a3
 	add.w	$a0, $a0, $a1
 	nor	$s1, $a0, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
@@ -258,25 +258,25 @@ cli_check_mydoom_log:                   # @cli_check_mydoom_log
 	vpickve2gr.w	$a1, $vr0, 0
 	vpickve2gr.w	$a2, $vr0, 1
 	add.d	$a1, $a2, $a1
-	vpickve2gr.w	$a2, $vr0, 2
-	ld.w	$a3, $sp, 36
-	add.d	$a1, $a2, $a1
-	vpickve2gr.w	$a2, $vr0, 3
-	add.d	$a1, $a2, $a1
-	revb.2w	$a2, $a3
-	ld.w	$a3, $sp, 40
+	ld.w	$a2, $sp, 36
+	vpickve2gr.w	$a3, $vr0, 2
+	vpickve2gr.w	$a4, $vr0, 3
+	add.d	$a3, $a4, $a3
+	revb.2w	$a2, $a2
 	xor	$a2, $a2, $a0
 	st.w	$a2, $sp, 36
-	add.d	$a1, $a2, $a1
-	revb.2w	$a2, $a3
-	xor	$a2, $a2, $a0
-	ld.w	$a3, $sp, 44
-	st.w	$a2, $sp, 40
-	add.d	$a1, $a2, $a1
+	add.d	$a2, $a2, $a3
+	ld.w	$a3, $sp, 40
 	vst	$vr0, $sp, 20
-	revb.2w	$a2, $a3
+	add.d	$a1, $a2, $a1
+	ld.w	$a2, $sp, 44
+	revb.2w	$a3, $a3
+	xor	$a3, $a3, $a0
+	st.w	$a3, $sp, 40
+	revb.2w	$a2, $a2
 	xor	$a0, $a2, $a0
 	st.w	$a0, $sp, 44
+	add.d	$a0, $a0, $a3
 	add.w	$a0, $a0, $a1
 	nor	$s0, $a0, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
@@ -411,14 +411,14 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 .LBB1_10:                               #   in Loop: Header=BB1_7 Depth=1
 	addi.d	$a2, $a1, -255
 	sltui	$a4, $a2, 1
-	addi.d	$a3, $a0, -254
+	addi.d	$a5, $a0, -254
 	ld.bu	$a2, $sp, 72
-	sltui	$a5, $a3, 1
 	ld.bu	$a3, $sp, 73
+	sltui	$a5, $a5, 1
 	and	$a4, $a4, $a5
 	sltui	$a5, $a2, 1
-	and	$a4, $a4, $a5
-	sltui	$a5, $a3, 2
+	sltui	$a6, $a3, 2
+	and	$a5, $a5, $a6
 	and	$a4, $a4, $a5
 	bnez	$a4, .LBB1_41
 # %bb.11:                               #   in Loop: Header=BB1_7 Depth=1

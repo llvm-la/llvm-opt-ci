@@ -1030,13 +1030,13 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	ext.w.b	$s6, $s8
 	srai.d	$a0, $s6, 63
-	ld.d	$s8, $s0, 120
 	andn	$a0, $s6, $a0
+	ld.d	$s8, $s0, 120
 	add.d	$a0, $s3, $a0
 	ld.d	$a2, $s0, 96
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	add.d	$a1, $a1, $s8
 	sub.d	$a1, $s4, $a1
+	sub.d	$a1, $a1, $s8
 	st.d	$a1, $s0, 128
 	sub.d	$a2, $s7, $a2
 	st.d	$a2, $s0, 112

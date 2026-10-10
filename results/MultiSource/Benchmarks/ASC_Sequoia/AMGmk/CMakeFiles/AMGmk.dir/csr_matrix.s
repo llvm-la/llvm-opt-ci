@@ -1482,8 +1482,8 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	alsl.d	$t3, $t4, $s8, 2
 	sub.d	$t5, $t1, $t4
 	alsl.d	$t6, $a4, $a0, 2
-	add.d	$a4, $a4, $t1
 	sub.d	$a4, $a4, $t4
+	add.d	$a4, $a4, $t1
 	.p2align	4, , 16
 .LBB9_88:                               #   Parent Loop BB9_83 Depth=1
                                         # =>  This Inner Loop Header: Depth=2

@@ -1209,8 +1209,8 @@ _ZN8NArchive3N7z6UpdateEP9IInStreamPKNS0_18CArchiveDatabaseExERK13CObjectVectorI
 	slli.d	$a0, $s1, 33
 	ld.w	$a1, $sp, 1276
 	ld.d	$a2, $sp, 1280
-	or	$a0, $a0, $s8
 	or	$a0, $a0, $s3
+	or	$a0, $a0, $s8
 	ori	$a3, $zero, 12
 	mul.d	$a1, $a1, $a3
 	add.d	$a3, $a2, $a1

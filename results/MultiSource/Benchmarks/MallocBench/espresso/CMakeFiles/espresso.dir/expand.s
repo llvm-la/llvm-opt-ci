@@ -668,8 +668,8 @@ essen_parts:                            # @essen_parts
 	srli.d	$a1, $a1, 22
 	ldx.w	$a1, $a4, $a1
 	add.d	$a3, $a5, $a3
-	add.d	$a0, $a3, $a0
-	add.w	$a0, $a0, $a1
+	add.d	$a0, $a0, $a1
+	add.w	$a0, $a3, $a0
 	blt	$s7, $a0, .LBB2_4
 # %bb.9:                                #   in Loop: Header=BB2_5 Depth=1
 	ori	$a1, $zero, 2
@@ -721,8 +721,8 @@ essen_parts:                            # @essen_parts
 	andi	$a4, $a4, 508
 	ldx.w	$a4, $a6, $a4
 	add.d	$a0, $a5, $a0
-	add.d	$a0, $a0, $a7
-	add.d	$a0, $a0, $t0
+	add.d	$a5, $a7, $t0
+	add.d	$a0, $a0, $a5
 	add.w	$a0, $a0, $a4
 	bge	$s7, $a0, .LBB2_13
 	b	.LBB2_4
@@ -1875,8 +1875,8 @@ feasibly_covered:                       # @feasibly_covered
 	srli.d	$a2, $a2, 22
 	ldx.w	$a2, $a5, $a2
 	add.d	$a4, $a6, $a4
-	add.d	$a1, $a4, $a1
-	add.w	$a1, $a1, $a2
+	add.d	$a1, $a1, $a2
+	add.w	$a1, $a4, $a1
 	blt	$s5, $a1, .LBB8_4
 # %bb.9:                                #   in Loop: Header=BB8_5 Depth=1
 	ori	$a2, $zero, 2
@@ -1928,8 +1928,8 @@ feasibly_covered:                       # @feasibly_covered
 	andi	$a5, $a5, 508
 	ldx.w	$a5, $a7, $a5
 	add.d	$a1, $a6, $a1
-	add.d	$a1, $a1, $t0
-	add.d	$a1, $a1, $t1
+	add.d	$a6, $t0, $t1
+	add.d	$a1, $a1, $a6
 	add.w	$a1, $a1, $a5
 	bge	$s5, $a1, .LBB8_13
 	b	.LBB8_4

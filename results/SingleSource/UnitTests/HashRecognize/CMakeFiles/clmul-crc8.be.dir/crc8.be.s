@@ -93,15 +93,15 @@ crc_loop:                               # @crc_loop
 	slli.d	$a2, $a0, 2
 	xor	$a1, $a2, $a1
 	slli.d	$a2, $a0, 4
-	xor	$a1, $a1, $a2
 	slli.d	$a0, $a0, 8
+	xor	$a0, $a2, $a0
 	xor	$a0, $a1, $a0
 	bstrpick.d	$a0, $a0, 15, 8
 	slli.d	$a1, $a0, 2
 	xor	$a1, $a0, $a1
 	slli.d	$a2, $a0, 3
-	xor	$a1, $a1, $a2
 	slli.d	$a0, $a0, 4
+	xor	$a0, $a2, $a0
 	xor	$a0, $a1, $a0
 	andi	$a0, $a0, 255
 	ret

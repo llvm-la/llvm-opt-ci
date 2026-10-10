@@ -222,7 +222,7 @@ Decode_Picture:                         # @Decode_Picture
 	jirl	$ra, $ra, 0
 .LBB0_26:
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	beqz	$a0, .LBB0_206
+	beqz	$a0, .LBB0_204
 # %bb.27:
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, 0
@@ -232,12 +232,12 @@ Decode_Picture:                         # @Decode_Picture
 # %bb.28:
 	ld.w	$a2, $fp, 0
 	ori	$a1, $zero, 1
-	beqz	$a2, .LBB0_209
+	beqz	$a2, .LBB0_207
 .LBB0_29:
 	pcalau12i	$a1, %got_pc_hi20(picture_coding_type)
 	ld.d	$a1, $a1, %got_pc_lo12(picture_coding_type)
 	ld.w	$a1, $a1, 0
-	bne	$a1, $a0, .LBB0_207
+	bne	$a1, $a0, .LBB0_205
 # %bb.30:
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	addi.w	$a1, $a0, -1
@@ -248,8 +248,8 @@ Decode_Picture:                         # @Decode_Picture
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	ori	$a1, $zero, 3
-	bne	$a0, $a1, .LBB0_208
-	b	.LBB0_210
+	bne	$a0, $a1, .LBB0_206
+	b	.LBB0_208
 .LBB0_31:
 	mul.d	$a0, $s1, $s0
 	addi.d	$a1, $s3, -3
@@ -318,7 +318,7 @@ Decode_Picture:                         # @Decode_Picture
 	move	$s2, $a0
 	addi.w	$a0, $a0, -432
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	bgeu	$a1, $a0, .LBB0_211
+	bgeu	$a1, $a0, .LBB0_209
 # %bb.37:                               #   in Loop: Header=BB0_35 Depth=1
 	pcaddu18i	$ra, %call36(Flush_Buffer32)
 	jirl	$ra, $ra, 0
@@ -418,7 +418,7 @@ Decode_Picture:                         # @Decode_Picture
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	ori	$t1, $zero, 3
-	bnez	$a0, .LBB0_205
+	bnez	$a0, .LBB0_203
 # %bb.48:                               #   in Loop: Header=BB0_43 Depth=2
 	ld.wu	$s2, $sp, 292
 	andi	$a0, $s2, 16
@@ -609,7 +609,7 @@ Decode_Picture:                         # @Decode_Picture
 	st.d	$s2, $sp, 96                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	bnez	$a0, .LBB0_205
+	bnez	$a0, .LBB0_203
 # %bb.83:                               #   in Loop: Header=BB0_43 Depth=2
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	andi	$a0, $a0, 4
@@ -640,7 +640,7 @@ Decode_Picture:                         # @Decode_Picture
 	ld.w	$a0, $a0, 0
 	ori	$t1, $zero, 3
 	beqz	$a0, .LBB0_87
-	b	.LBB0_205
+	b	.LBB0_203
 .LBB0_86:                               #   in Loop: Header=BB0_43 Depth=2
 	pcalau12i	$a0, %got_pc_hi20(backward_f_code)
 	ld.d	$a0, $a0, %got_pc_lo12(backward_f_code)
@@ -659,7 +659,7 @@ Decode_Picture:                         # @Decode_Picture
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	ori	$t1, $zero, 3
-	bnez	$a0, .LBB0_205
+	bnez	$a0, .LBB0_203
 	.p2align	4, , 16
 .LBB0_87:                               #   in Loop: Header=BB0_43 Depth=2
 	pcalau12i	$a0, %got_pc_hi20(concealment_motion_vectors)
@@ -728,7 +728,7 @@ Decode_Picture:                         # @Decode_Picture
 .LBB0_100:                              #   in Loop: Header=BB0_43 Depth=2
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	bnez	$a0, .LBB0_205
+	bnez	$a0, .LBB0_203
 # %bb.101:                              #   in Loop: Header=BB0_43 Depth=2
 	pcalau12i	$a0, %got_pc_hi20(block_count)
 	ld.d	$s3, $a0, %got_pc_lo12(block_count)
@@ -752,7 +752,7 @@ Decode_Picture:                         # @Decode_Picture
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	ori	$t1, $zero, 3
-	bnez	$a0, .LBB0_205
+	bnez	$a0, .LBB0_203
 .LBB0_106:                              #   in Loop: Header=BB0_107 Depth=3
 	ld.w	$s2, $s3, 0
 	addi.d	$s6, $s6, 1
@@ -1587,28 +1587,28 @@ Decode_Picture:                         # @Decode_Picture
 	ld.d	$a3, $a1, -118
 	vinsgr2vr.d	$vr0, $a2, 0
 	vinsgr2vr.d	$vr1, $a3, 0
-	vldi	$vr7, -2568
-	vmax.h	$vr0, $vr0, $vr7
-	vmax.h	$vr1, $vr1, $vr7
+	vldi	$vr9, -2568
+	vmax.h	$vr0, $vr0, $vr9
+	vmax.h	$vr1, $vr1, $vr9
 	ld.d	$a2, $a1, -110
-	vld	$vr8, $sp, 144                  # 16-byte Folded Reload
-	vmin.h	$vr0, $vr0, $vr8
-	vmin.h	$vr1, $vr1, $vr8
-	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
-	vilvl.h	$vr2, $vr6, $vr0
+	vld	$vr10, $sp, 144                 # 16-byte Folded Reload
+	vmin.h	$vr0, $vr0, $vr10
+	vmin.h	$vr1, $vr1, $vr10
+	vld	$vr8, $sp, 160                  # 16-byte Folded Reload
+	vilvl.h	$vr2, $vr8, $vr0
 	vinsgr2vr.d	$vr3, $a2, 0
 	ld.d	$a2, $a1, -102
-	vilvl.h	$vr4, $vr6, $vr1
+	vilvl.h	$vr4, $vr8, $vr1
 	vpackev.d	$vr0, $vr1, $vr0
 	vst	$vr0, $a1, -126
 	vinsgr2vr.d	$vr0, $a2, 0
-	vmax.h	$vr1, $vr3, $vr7
-	vmax.h	$vr0, $vr0, $vr7
-	vmin.h	$vr1, $vr1, $vr8
-	vmin.h	$vr0, $vr0, $vr8
+	vmax.h	$vr1, $vr3, $vr9
+	vmax.h	$vr0, $vr0, $vr9
+	vmin.h	$vr1, $vr1, $vr10
+	vmin.h	$vr0, $vr0, $vr10
 	ld.d	$a2, $a1, -94
-	vilvl.h	$vr3, $vr6, $vr1
-	vilvl.h	$vr5, $vr6, $vr0
+	vilvl.h	$vr3, $vr8, $vr1
+	vilvl.h	$vr5, $vr8, $vr0
 	vpackev.d	$vr0, $vr0, $vr1
 	vinsgr2vr.d	$vr1, $a2, 0
 	ld.d	$a2, $a1, -86
@@ -1616,82 +1616,82 @@ Decode_Picture:                         # @Decode_Picture
 	vadd.w	$vr0, $vr2, $vr3
 	vadd.w	$vr2, $vr4, $vr5
 	vinsgr2vr.d	$vr3, $a2, 0
-	vmax.h	$vr1, $vr1, $vr7
-	vmax.h	$vr3, $vr3, $vr7
-	vmin.h	$vr1, $vr1, $vr8
-	vmin.h	$vr3, $vr3, $vr8
+	vmax.h	$vr1, $vr1, $vr9
+	vmax.h	$vr3, $vr3, $vr9
 	ld.d	$a2, $a1, -78
-	vilvl.h	$vr4, $vr6, $vr1
-	vilvl.h	$vr5, $vr6, $vr3
-	vpackev.d	$vr1, $vr3, $vr1
-	vinsgr2vr.d	$vr3, $a2, 0
+	vmin.h	$vr1, $vr1, $vr10
+	vmin.h	$vr3, $vr3, $vr10
+	vilvl.h	$vr4, $vr8, $vr1
+	vinsgr2vr.d	$vr5, $a2, 0
 	ld.d	$a2, $a1, -70
+	vilvl.h	$vr6, $vr8, $vr3
+	vpackev.d	$vr1, $vr3, $vr1
 	vst	$vr1, $a1, -94
-	vadd.w	$vr0, $vr0, $vr4
-	vadd.w	$vr1, $vr2, $vr5
-	vinsgr2vr.d	$vr2, $a2, 0
-	vmax.h	$vr3, $vr3, $vr7
-	vmax.h	$vr2, $vr2, $vr7
-	vmin.h	$vr3, $vr3, $vr8
-	vmin.h	$vr2, $vr2, $vr8
+	vinsgr2vr.d	$vr1, $a2, 0
+	vmax.h	$vr3, $vr5, $vr9
+	vmax.h	$vr1, $vr1, $vr9
+	vmin.h	$vr3, $vr3, $vr10
+	vmin.h	$vr1, $vr1, $vr10
+	vilvl.h	$vr5, $vr8, $vr3
+	vilvl.h	$vr7, $vr8, $vr1
 	ld.d	$a2, $a1, -62
-	vilvl.h	$vr4, $vr6, $vr3
-	vilvl.h	$vr5, $vr6, $vr2
-	vpackev.d	$vr2, $vr2, $vr3
+	vpackev.d	$vr1, $vr1, $vr3
+	vst	$vr1, $a1, -78
+	vadd.w	$vr1, $vr4, $vr5
 	vinsgr2vr.d	$vr3, $a2, 0
 	ld.d	$a2, $a1, -54
-	vst	$vr2, $a1, -78
-	vadd.w	$vr0, $vr0, $vr4
-	vadd.w	$vr1, $vr1, $vr5
+	vadd.w	$vr0, $vr0, $vr1
+	vadd.w	$vr1, $vr6, $vr7
+	vadd.w	$vr1, $vr2, $vr1
 	vinsgr2vr.d	$vr2, $a2, 0
-	vmax.h	$vr3, $vr3, $vr7
-	vmax.h	$vr2, $vr2, $vr7
-	vmin.h	$vr3, $vr3, $vr8
-	vmin.h	$vr2, $vr2, $vr8
+	vmax.h	$vr3, $vr3, $vr9
+	vmax.h	$vr2, $vr2, $vr9
 	ld.d	$a2, $a1, -46
-	vilvl.h	$vr4, $vr6, $vr3
-	vilvl.h	$vr5, $vr6, $vr2
-	vpackev.d	$vr2, $vr2, $vr3
-	vinsgr2vr.d	$vr3, $a2, 0
+	vmin.h	$vr3, $vr3, $vr10
+	vmin.h	$vr2, $vr2, $vr10
+	vilvl.h	$vr4, $vr8, $vr3
+	vinsgr2vr.d	$vr5, $a2, 0
 	ld.d	$a2, $a1, -38
+	vilvl.h	$vr6, $vr8, $vr2
+	vpackev.d	$vr2, $vr2, $vr3
 	vst	$vr2, $a1, -62
-	vadd.w	$vr0, $vr0, $vr4
-	vadd.w	$vr1, $vr1, $vr5
 	vinsgr2vr.d	$vr2, $a2, 0
-	vmax.h	$vr3, $vr3, $vr7
-	vmax.h	$vr2, $vr2, $vr7
-	vmin.h	$vr3, $vr3, $vr8
-	vmin.h	$vr2, $vr2, $vr8
+	vmax.h	$vr3, $vr5, $vr9
+	vmax.h	$vr2, $vr2, $vr9
+	vmin.h	$vr3, $vr3, $vr10
+	vmin.h	$vr2, $vr2, $vr10
 	ld.d	$a2, $a1, -30
-	vilvl.h	$vr4, $vr6, $vr3
-	vilvl.h	$vr5, $vr6, $vr2
+	vilvl.h	$vr5, $vr8, $vr3
+	vilvl.h	$vr7, $vr8, $vr2
 	vpackev.d	$vr2, $vr2, $vr3
 	vinsgr2vr.d	$vr3, $a2, 0
 	ld.d	$a2, $a1, -22
 	vst	$vr2, $a1, -46
-	vadd.w	$vr0, $vr0, $vr4
-	vadd.w	$vr1, $vr1, $vr5
-	vinsgr2vr.d	$vr2, $a2, 0
-	vmax.h	$vr3, $vr3, $vr7
-	vmax.h	$vr2, $vr2, $vr7
-	vmin.h	$vr3, $vr3, $vr8
-	vmin.h	$vr2, $vr2, $vr8
+	vadd.w	$vr2, $vr4, $vr5
+	vadd.w	$vr4, $vr6, $vr7
+	vinsgr2vr.d	$vr5, $a2, 0
+	vmax.h	$vr3, $vr3, $vr9
+	vmax.h	$vr5, $vr5, $vr9
+	vmin.h	$vr3, $vr3, $vr10
+	vmin.h	$vr5, $vr5, $vr10
+	vilvl.h	$vr6, $vr8, $vr3
+	vilvl.h	$vr7, $vr8, $vr5
 	ld.d	$a2, $a1, -14
-	vilvl.h	$vr4, $vr6, $vr3
-	vilvl.h	$vr5, $vr6, $vr2
-	vpackev.d	$vr2, $vr2, $vr3
+	vpackev.d	$vr3, $vr5, $vr3
+	vst	$vr3, $a1, -30
+	vadd.w	$vr2, $vr2, $vr6
 	vinsgr2vr.d	$vr3, $a2, 0
 	ld.d	$a2, $a1, -6
-	vst	$vr2, $a1, -30
-	vadd.w	$vr0, $vr0, $vr4
-	vadd.w	$vr1, $vr1, $vr5
+	vadd.w	$vr0, $vr0, $vr2
+	vadd.w	$vr2, $vr4, $vr7
+	vadd.w	$vr1, $vr1, $vr2
 	vinsgr2vr.d	$vr2, $a2, 0
-	vmax.h	$vr3, $vr3, $vr7
-	vmax.h	$vr2, $vr2, $vr7
-	vmin.h	$vr3, $vr3, $vr8
-	vmin.h	$vr2, $vr2, $vr8
-	vilvl.h	$vr4, $vr6, $vr3
-	vilvl.h	$vr5, $vr6, $vr2
+	vmax.h	$vr3, $vr3, $vr9
+	vmax.h	$vr2, $vr2, $vr9
+	vmin.h	$vr3, $vr3, $vr10
+	vmin.h	$vr2, $vr2, $vr10
+	vilvl.h	$vr4, $vr8, $vr3
+	vilvl.h	$vr5, $vr8, $vr2
 	vpackev.d	$vr2, $vr2, $vr3
 	vadd.w	$vr0, $vr0, $vr4
 	vadd.w	$vr1, $vr1, $vr5
@@ -1728,18 +1728,20 @@ Decode_Picture:                         # @Decode_Picture
 	pcalau12i	$a1, %got_pc_hi20(Coded_Picture_Width)
 	ld.d	$a1, $a1, %got_pc_lo12(Coded_Picture_Width)
 	ld.w	$a1, $a1, 0
-	bne	$a3, $t1, .LBB0_197
+	bne	$a3, $t1, .LBB0_196
 # %bb.189:                              #   in Loop: Header=BB0_180 Depth=3
 	slli.d	$a2, $a2, 3
 	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
-	beqz	$a3, .LBB0_204
+	beqz	$a3, .LBB0_199
 # %bb.190:                              #   in Loop: Header=BB0_180 Depth=3
 	bstrpick.d	$a3, $s1, 31, 1
 	or	$a3, $a3, $s5
 	mul.w	$a3, $a1, $a3
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $s4
-	b	.LBB0_196
+	add.d	$a0, $a0, $a2
+	add.d	$a5, $a0, $a3
+	slli.w	$a1, $a1, 1
+	b	.LBB0_201
 	.p2align	4, , 16
 .LBB0_191:                              #   in Loop: Header=BB0_180 Depth=3
 	pcaddu18i	$ra, %call36(Fast_IDCT)
@@ -1762,7 +1764,7 @@ Decode_Picture:                         # @Decode_Picture
 	sra.w	$a3, $s5, $a2
 	slli.d	$a1, $a1, 3
 	andi	$a2, $s0, 8
-	bne	$a5, $t1, .LBB0_198
+	bne	$a5, $t1, .LBB0_197
 # %bb.193:                              #   in Loop: Header=BB0_180 Depth=3
 	pcalau12i	$a5, %got_pc_hi20(current_frame)
 	ld.d	$a5, $a5, %got_pc_lo12(current_frame)
@@ -1771,32 +1773,31 @@ Decode_Picture:                         # @Decode_Picture
 	ld.d	$a1, $a1, %got_pc_lo12(Chroma_Width)
 	ld.w	$a1, $a1, 0
 	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
-	beqz	$a6, .LBB0_199
+	beqz	$a6, .LBB0_198
 # %bb.194:                              #   in Loop: Header=BB0_180 Depth=3
 	ori	$a6, $zero, 1
-	beq	$a4, $a6, .LBB0_199
+	beq	$a4, $a6, .LBB0_198
 # %bb.195:                              #   in Loop: Header=BB0_180 Depth=3
 	bstrpick.d	$a3, $s1, 1, 1
 	or	$a3, $a3, $s5
 	mul.w	$a3, $a1, $a3
 	add.d	$a3, $a5, $a3
-	add.d	$a0, $a3, $a0
-.LBB0_196:                              #   in Loop: Header=BB0_180 Depth=3
-	add.d	$a5, $a0, $a2
+	add.d	$a2, $a3, $a2
+	add.d	$a5, $a2, $a0
 	slli.w	$a1, $a1, 1
-	b	.LBB0_202
+	b	.LBB0_201
 	.p2align	4, , 16
-.LBB0_197:                              #   in Loop: Header=BB0_180 Depth=3
+.LBB0_196:                              #   in Loop: Header=BB0_180 Depth=3
 	slli.w	$a1, $a1, 1
 	andi	$a3, $s2, 8
 	or	$a3, $a3, $s5
 	mul.w	$a3, $a1, $a3
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a3
 	alsl.d	$a5, $a2, $a0, 3
-	b	.LBB0_202
+	b	.LBB0_201
 	.p2align	4, , 16
-.LBB0_198:                              #   in Loop: Header=BB0_180 Depth=3
+.LBB0_197:                              #   in Loop: Header=BB0_180 Depth=3
 	pcalau12i	$a4, %got_pc_hi20(current_frame)
 	ld.d	$a4, $a4, %got_pc_lo12(current_frame)
 	ldx.d	$a4, $a4, $a1
@@ -1807,18 +1808,24 @@ Decode_Picture:                         # @Decode_Picture
 	andi	$a5, $s2, 8
 	add.d	$a3, $a3, $a5
 	mul.w	$a3, $a1, $a3
-	add.d	$a3, $a4, $a3
+	add.d	$a0, $a4, $a0
 	b	.LBB0_200
-.LBB0_199:                              #   in Loop: Header=BB0_180 Depth=3
+.LBB0_198:                              #   in Loop: Header=BB0_180 Depth=3
 	andi	$a4, $s2, 8
 	add.d	$a3, $a3, $a4
 	mul.w	$a3, $a1, $a3
-	add.d	$a3, $a5, $a3
+	add.d	$a0, $a5, $a0
+	b	.LBB0_200
+.LBB0_199:                              #   in Loop: Header=BB0_180 Depth=3
+	andi	$a3, $s2, 8
+	or	$a3, $a3, $s5
+	mul.w	$a3, $a1, $a3
+	add.d	$a0, $a0, $s4
+	.p2align	4, , 16
 .LBB0_200:                              #   in Loop: Header=BB0_180 Depth=3
-	add.d	$a0, $a3, $a0
+	add.d	$a0, $a0, $a2
+	add.d	$a5, $a0, $a3
 .LBB0_201:                              #   in Loop: Header=BB0_180 Depth=3
-	add.d	$a5, $a0, $a2
-.LBB0_202:                              #   in Loop: Header=BB0_180 Depth=3
 	ld.d	$a0, $fp, 0
 	addi.d	$a3, $a1, -8
 	add.d	$a2, $a0, $s8
@@ -1829,7 +1836,7 @@ Decode_Picture:                         # @Decode_Picture
 	add.d	$a6, $a4, $a6
 	add.d	$a4, $a5, $a3
 	bnez	$s6, .LBB0_178
-# %bb.203:                              #   in Loop: Header=BB0_180 Depth=3
+# %bb.202:                              #   in Loop: Header=BB0_180 Depth=3
 	ld.bu	$a7, $a5, 0
 	ldx.b	$a6, $a6, $a7
 	st.b	$a6, $a5, 0
@@ -2223,19 +2230,12 @@ Decode_Picture:                         # @Decode_Picture
 	add.d	$a0, $a1, $a0
 	ldx.b	$a0, $a0, $a2
 	b	.LBB0_179
-.LBB0_204:                              #   in Loop: Header=BB0_180 Depth=3
-	andi	$a3, $s2, 8
-	or	$a3, $a3, $s5
-	mul.w	$a3, $a1, $a3
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $s4
-	b	.LBB0_201
 	.p2align	4, , 16
-.LBB0_205:                              #   in Loop: Header=BB0_35 Depth=1
+.LBB0_203:                              #   in Loop: Header=BB0_35 Depth=1
 	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
 	ori	$s7, $zero, 1
 	b	.LBB0_34
-.LBB0_206:
+.LBB0_204:
 	pcalau12i	$a0, %got_pc_hi20(progressive_frame)
 	ld.d	$a0, $a0, %got_pc_lo12(progressive_frame)
 	ld.w	$a0, $a0, 0
@@ -2245,9 +2245,9 @@ Decode_Picture:                         # @Decode_Picture
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	ori	$a1, $zero, 3
-	bne	$a0, $a1, .LBB0_208
-	b	.LBB0_210
-.LBB0_207:
+	bne	$a0, $a1, .LBB0_206
+	b	.LBB0_208
+.LBB0_205:
 	pcalau12i	$a0, %got_pc_hi20(progressive_frame)
 	ld.d	$fp, $a0, %got_pc_lo12(progressive_frame)
 	ld.w	$a0, $fp, 0
@@ -2269,13 +2269,13 @@ Decode_Picture:                         # @Decode_Picture
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	ori	$a1, $zero, 3
-	beq	$a0, $a1, .LBB0_210
-.LBB0_208:
+	beq	$a0, $a1, .LBB0_208
+.LBB0_206:
 	ld.w	$a0, $fp, 0
 	sltui	$a1, $a0, 1
-.LBB0_209:
+.LBB0_207:
 	st.w	$a1, $fp, 0
-.LBB0_210:
+.LBB0_208:
 	ld.d	$s8, $sp, 312                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 320                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 328                   # 8-byte Folded Reload
@@ -2289,12 +2289,12 @@ Decode_Picture:                         # @Decode_Picture
 	ld.d	$ra, $sp, 392                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 400
 	ret
-.LBB0_211:
+.LBB0_209:
 	pcalau12i	$a0, %got_pc_hi20(Quiet_Flag)
 	ld.d	$a0, $a0, %got_pc_lo12(Quiet_Flag)
 	ld.w	$a0, $a0, 0
 	bnez	$a0, .LBB0_26
-# %bb.212:
+# %bb.210:
 	pcalau12i	$a0, %pc_hi20(.Lstr.4)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.4)
 	b	.LBB0_25

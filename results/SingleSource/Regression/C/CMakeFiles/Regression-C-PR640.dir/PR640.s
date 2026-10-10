@@ -77,11 +77,11 @@ test_stdarg_va:                         # @test_stdarg_va
 	sltui	$a0, $a0, 1
 	addi.d	$a1, $a1, -1
 	sltui	$a1, $a1, 1
-	and	$a0, $a0, $a1
-	lu12i.w	$a1, 483860
-	ori	$a1, $a1, 869
-	xor	$a1, $a2, $a1
-	sltui	$a1, $a1, 1
+	lu12i.w	$a4, 483860
+	ori	$a4, $a4, 869
+	xor	$a2, $a2, $a4
+	sltui	$a2, $a2, 1
+	and	$a0, $a0, $a2
 	and	$a0, $a0, $a1
 	addi.d	$a1, $a3, -2
 	sltui	$a1, $a1, 1
@@ -110,11 +110,11 @@ test_stdarg_builtin_va:                 # @test_stdarg_builtin_va
 	sltui	$a0, $a0, 1
 	addi.d	$a1, $a1, -1
 	sltui	$a1, $a1, 1
-	and	$a0, $a0, $a1
-	lu12i.w	$a1, 483860
-	ori	$a1, $a1, 873
-	xor	$a1, $a2, $a1
-	sltui	$a1, $a1, 1
+	lu12i.w	$a4, 483860
+	ori	$a4, $a4, 873
+	xor	$a2, $a2, $a4
+	sltui	$a2, $a2, 1
+	and	$a0, $a0, $a2
 	and	$a0, $a0, $a1
 	addi.d	$a1, $a3, -2
 	sltui	$a1, $a1, 1

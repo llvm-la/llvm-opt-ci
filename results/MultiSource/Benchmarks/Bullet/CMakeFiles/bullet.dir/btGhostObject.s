@@ -1355,23 +1355,23 @@ _Z9btRayAabbRK9btVector3S1_S1_S1_RfRS_: # @_Z9btRayAabbRK9btVector3S1_S1_S1_RfRS
 	slli.d	$a0, $a0, 3
 	or	$a0, $a0, $a1
 	slli.d	$a1, $a2, 1
+	slli.d	$a2, $a3, 4
+	or	$a1, $a1, $a2
 	or	$a0, $a1, $a0
-	slli.d	$a1, $a3, 4
-	or	$a0, $a0, $a1
 	slli.d	$a1, $a6, 2
+	slli.d	$a2, $a7, 5
+	or	$a1, $a1, $a2
 	or	$a0, $a1, $a0
-	slli.d	$a1, $a7, 5
-	or	$a0, $a0, $a1
 	slli.d	$a1, $t0, 3
 	or	$a1, $a1, $t1
 	slli.d	$a2, $t2, 1
+	slli.d	$a3, $t3, 4
+	or	$a2, $a2, $a3
 	or	$a1, $a2, $a1
-	slli.d	$a2, $t3, 4
-	or	$a1, $a1, $a2
 	slli.d	$a2, $t4, 2
 	slli.d	$a3, $t5, 5
+	or	$a2, $a2, $a3
 	or	$a1, $a2, $a1
-	or	$a1, $a1, $a3
 	and	$a0, $a0, $a1
 	addi.w	$a0, $a0, 0
 	beqz	$a0, .LBB12_2

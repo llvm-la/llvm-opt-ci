@@ -1053,12 +1053,12 @@ map_symbolic:                           # @map_symbolic
 	b	.LBB3_17
 .LBB3_20:
 	ld.d	$a0, $fp, 0
-	ld.w	$a0, $a0, 4
-	add.d	$s3, $a0, $s0
+	ld.w	$s3, $a0, 4
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(set_ord)
 	jirl	$ra, $ra, 0
-	sub.d	$a0, $s3, $a0
+	sub.d	$a0, $s0, $a0
+	add.d	$a0, $s3, $a0
 	bstrpick.d	$a1, $a0, 31, 31
 	add.d	$a0, $a0, $a1
 	addi.w	$a1, $a0, 0

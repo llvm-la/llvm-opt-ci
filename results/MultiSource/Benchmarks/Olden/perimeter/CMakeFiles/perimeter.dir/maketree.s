@@ -96,7 +96,7 @@ MakeTree:                               # @MakeTree
 	maskeqz	$a4, $a4, $t0
 	or	$a3, $a4, $a3
 	add.d	$a1, $a3, $a1
-	add.d	$a1, $a1, $a5
+	add.d	$a2, $a5, $a2
 	add.d	$a1, $a1, $a2
 	bstrins.d	$a1, $zero, 3, 3
 	addi.w	$a1, $a1, 0

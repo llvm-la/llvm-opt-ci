@@ -3138,8 +3138,8 @@ _ZN9NCompress8NDeflate8NDecoder6CCoder8CodeRealEP20ISequentialOutStreamPKyP21ICo
 	sub.d	$a2, $a5, $a2
 	bstrpick.d	$a2, $a2, 31, 3
 	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $a4
-	sub.d	$a0, $a3, $a0
+	sub.d	$a1, $a3, $a4
+	sub.d	$a0, $a1, $a0
 	add.d	$s6, $a0, $a2
 .LBB12_4:
 .Ltmp12:                                # EH_LABEL
@@ -3195,8 +3195,8 @@ _ZN9NCompress8NDeflate8NDecoder6CCoder8CodeRealEP20ISequentialOutStreamPKyP21ICo
 	sub.d	$a1, $s5, $a1
 	bstrpick.d	$a1, $a1, 31, 3
 	add.d	$a0, $a0, $s6
+	add.d	$a2, $a2, $a4
 	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a4
 	add.d	$a1, $a3, $a1
 	sub.d	$a0, $a0, $a1
 	st.d	$a0, $sp, 16
@@ -3283,8 +3283,8 @@ _ZN9NCompress8NDeflate8NDecoder6CCoder8CodeRealEP20ISequentialOutStreamPKyP21ICo
 	sub.d	$a1, $s7, $a1
 	bstrpick.d	$a1, $a1, 31, 3
 	add.d	$a0, $a0, $s6
+	add.d	$a2, $a2, $a4
 	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a4
 	add.d	$a1, $a3, $a1
 	sub.d	$a0, $a0, $a1
 	st.d	$a0, $sp, 16

@@ -319,7 +319,7 @@ bmhi_search:                            # @bmhi_search
 	addi.d	$s4, $a3, -1
 	add.d	$a1, $a1, $a4
 	nor	$a3, $s2, $zero
-	add.d	$a1, $a3, $a1
+	add.d	$a0, $a0, $a3
 	add.d	$s5, $a0, $a1
 	pcalau12i	$a0, %pc_hi20(skip)
 	addi.d	$s6, $a0, %pc_lo12(skip)

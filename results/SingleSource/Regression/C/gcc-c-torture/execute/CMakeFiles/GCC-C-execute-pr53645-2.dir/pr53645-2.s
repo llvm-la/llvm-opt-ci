@@ -1069,8 +1069,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 16
 	and	$a3, $a3, $s6
 	srli.d	$a2, $a2, 17
-	add.d	$a2, $a3, $a2
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.42:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1081,8 +1081,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 16
 	and	$a3, $a3, $s6
 	srli.d	$a2, $a2, 17
-	add.d	$a2, $a3, $a2
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.43:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1097,8 +1097,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 16
 	and	$a3, $a3, $s6
 	srli.d	$a2, $a2, 17
-	add.d	$a2, $a3, $a2
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.44:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1109,8 +1109,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 16
 	and	$a3, $a3, $s6
 	srli.d	$a2, $a2, 17
-	add.d	$a2, $a3, $a2
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.45:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1125,8 +1125,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 16
 	and	$a3, $a3, $s6
 	srli.d	$a2, $a2, 17
-	add.d	$a2, $a3, $a2
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.46:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1137,8 +1137,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 16
 	and	$a3, $a3, $s6
 	srli.d	$a2, $a2, 17
-	add.d	$a2, $a3, $a2
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.47:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1153,8 +1153,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 16
 	and	$a3, $a3, $s6
 	srli.d	$a2, $a2, 17
-	add.d	$a2, $a3, $a2
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.48:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1165,8 +1165,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 16
 	and	$a3, $a3, $s6
 	srli.d	$a2, $a2, 17
-	add.d	$a2, $a3, $a2
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.49:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1253,8 +1253,8 @@ main:                                   # @main
 	srli.d	$a2, $a2, 16
 	and	$a2, $a2, $s8
 	srli.d	$a3, $a2, 1
-	add.d	$a2, $a2, $a3
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.58:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1265,8 +1265,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 16
 	and	$a3, $a3, $s8
 	srli.d	$a2, $a2, 18
-	add.d	$a2, $a3, $a2
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.59:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1281,8 +1281,8 @@ main:                                   # @main
 	srli.d	$a2, $a2, 16
 	and	$a2, $a2, $s8
 	srli.d	$a3, $a2, 1
-	add.d	$a2, $a2, $a3
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.60:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1293,8 +1293,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 16
 	and	$a3, $a3, $s8
 	srli.d	$a2, $a2, 18
-	add.d	$a2, $a3, $a2
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.61:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1309,8 +1309,8 @@ main:                                   # @main
 	srli.d	$a2, $a2, 16
 	and	$a2, $a2, $s8
 	srli.d	$a3, $a2, 1
-	add.d	$a2, $a2, $a3
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.62:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1321,8 +1321,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 16
 	and	$a3, $a3, $s8
 	srli.d	$a2, $a2, 18
-	add.d	$a2, $a3, $a2
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.63:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1337,8 +1337,8 @@ main:                                   # @main
 	srli.d	$a2, $a2, 16
 	and	$a2, $a2, $s8
 	srli.d	$a3, $a2, 1
-	add.d	$a2, $a2, $a3
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.64:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1349,8 +1349,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 16
 	and	$a3, $a3, $s8
 	srli.d	$a2, $a2, 18
-	add.d	$a2, $a3, $a2
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.65:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1453,8 +1453,8 @@ main:                                   # @main
 	srli.d	$a2, $a2, 16
 	and	$a2, $a2, $s8
 	srli.d	$a3, $a2, 1
-	add.d	$a2, $a2, $a3
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.75:                               #   in Loop: Header=BB24_1 Depth=1
@@ -1527,8 +1527,8 @@ main:                                   # @main
 	srli.d	$a2, $a2, 16
 	and	$a2, $a2, $s8
 	srli.d	$a3, $a2, 1
-	add.d	$a2, $a2, $a3
 	sub.d	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a3
 	bstrpick.d	$a1, $a1, 15, 0
 	bne	$a0, $a1, .LBB24_197
 # %bb.81:                               #   in Loop: Header=BB24_1 Depth=1

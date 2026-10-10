@@ -94,13 +94,13 @@ update_real:                            # @update_real
 	slli.d	$a3, $a3, 7
 	pcalau12i	$a4, %got_pc_hi20(g_info)
 	ld.d	$a4, $a4, %got_pc_lo12(g_info)
-	add.d	$a3, $a4, $a3
-	ori	$a4, $zero, 12
-	mul.d	$a1, $a1, $a4
+	ori	$a5, $zero, 12
+	mul.d	$a1, $a1, $a5
 	add.d	$a1, $a3, $a1
+	add.d	$a1, $a4, $a1
 	ld.w	$a3, $a1, 4
 	sub.d	$a3, $a2, $a3
-	mul.d	$a0, $a0, $a4
+	mul.d	$a0, $a0, $a5
 	pcalau12i	$a4, %got_pc_hi20(g_info_totals)
 	ld.d	$a4, $a4, %got_pc_lo12(g_info_totals)
 	add.d	$a0, $a4, $a0
@@ -137,27 +137,27 @@ toggle_move:                            # @toggle_move
 	ld.d	$a4, $a4, %got_pc_lo12(g_board)
 	add.d	$t5, $a4, $a2
 	slli.d	$t6, $a0, 32
-	srai.d	$t0, $t6, 30
-	ldx.w	$a2, $t5, $t0
+	srai.d	$a6, $t6, 30
+	ldx.w	$a2, $t5, $a6
 	xor	$a2, $a2, $a3
-	stx.w	$a2, $t5, $t0
+	stx.w	$a2, $t5, $a6
 	slli.d	$a2, $a1, 7
-	add.d	$a6, $a4, $a2
-	srai.d	$a3, $a0, 32
-	slli.d	$a2, $a3, 2
-	ldx.w	$a4, $a6, $a2
-	ori	$a5, $zero, 1
-	sll.w	$a5, $a5, $a0
-	xor	$a4, $a4, $a5
-	stx.w	$a4, $a6, $a2
+	add.d	$a7, $a4, $a2
+	srai.d	$a5, $a0, 32
+	slli.d	$a2, $a5, 2
+	ldx.w	$a3, $a7, $a2
+	ori	$a4, $zero, 1
+	sll.w	$a4, $a4, $a0
+	xor	$a3, $a3, $a4
+	stx.w	$a3, $a7, $a2
 	addi.w	$a2, $t3, 1
-	slli.d	$a7, $a2, 2
-	ldx.w	$a4, $a6, $a7
-	xor	$a4, $a4, $a5
-	stx.w	$a4, $a6, $a7
+	slli.d	$t0, $a2, 2
+	ldx.w	$a3, $a7, $t0
+	xor	$a3, $a3, $a4
+	stx.w	$a3, $a7, $t0
 	addi.w	$t4, $a0, -1
-	lu12i.w	$a5, -16
-	lu12i.w	$a7, 15
+	lu12i.w	$a4, -16
+	lu12i.w	$t0, 15
 	alsl.d	$t1, $t2, $t2, 1
 	slli.d	$s0, $t2, 2
 	beqz	$t4, .LBB2_2
@@ -173,7 +173,7 @@ toggle_move:                            # @toggle_move
 	slli.d	$fp, $t7, 1
 	andn	$t8, $fp, $t8
 	and	$t7, $t8, $t7
-	move	$t8, $a5
+	move	$t8, $a4
 	lu32i.d	$t8, 0
 	and	$t8, $t7, $t8
 	bstrpick.d	$t7, $t7, 15, 1
@@ -186,7 +186,7 @@ toggle_move:                            # @toggle_move
 	srli.d	$fp, $t7, 28
 	sltui	$fp, $fp, 1
 	add.d	$t7, $t8, $t7
-	ori	$t8, $a7, 4094
+	ori	$t8, $t0, 4094
 	or	$t8, $fp, $t8
 	and	$t7, $t7, $t8
 	slli.d	$t8, $t1, 7
@@ -211,32 +211,32 @@ toggle_move:                            # @toggle_move
 	ld.d	$t7, $t7, %got_pc_lo12(g_info_totals)
 	ldx.w	$s2, $t7, $t4
 .LBB2_3:
-	add.d	$t4, $t5, $t0
+	add.d	$t4, $t5, $a6
 	ld.w	$t8, $t4, -4
 	ld.w	$t4, $t4, 4
-	ldx.w	$t7, $t5, $t0
+	ldx.w	$t7, $t5, $a6
 	addi.w	$s4, $a0, 0
 	srai.d	$s1, $t6, 32
-	and	$t0, $t4, $t8
+	and	$a6, $t4, $t8
 	slli.d	$t8, $t7, 1
 	or	$t4, $t8, $t7
-	slli.d	$fp, $t0, 1
-	and	$t0, $fp, $t0
-	andn	$t0, $t0, $t4
-	lu32i.d	$a5, 0
-	and	$t4, $t0, $a5
-	bstrpick.d	$t0, $t0, 15, 1
-	slli.d	$fp, $t0, 3
-	pcalau12i	$t0, %got_pc_hi20(move_table16)
-	ld.d	$t0, $t0, %got_pc_lo12(move_table16)
-	ldx.wu	$fp, $t0, $fp
+	slli.d	$fp, $a6, 1
+	and	$a6, $fp, $a6
+	andn	$a6, $a6, $t4
+	lu32i.d	$a4, 0
+	and	$t4, $a6, $a4
+	bstrpick.d	$a6, $a6, 15, 1
+	slli.d	$fp, $a6, 3
+	pcalau12i	$a6, %got_pc_hi20(move_table16)
+	ld.d	$a6, $a6, %got_pc_lo12(move_table16)
+	ldx.wu	$fp, $a6, $fp
 	srli.d	$t4, $t4, 14
-	ldx.w	$t4, $t0, $t4
+	ldx.w	$t4, $a6, $t4
 	srli.d	$s3, $fp, 28
 	sltui	$s3, $s3, 1
 	add.d	$t4, $t4, $fp
-	ori	$a7, $a7, 4094
-	or	$fp, $s3, $a7
+	ori	$t0, $t0, 4094
+	or	$fp, $s3, $t0
 	and	$s5, $t4, $fp
 	slli.d	$t4, $t1, 7
 	pcalau12i	$t1, %got_pc_hi20(g_info)
@@ -274,17 +274,17 @@ toggle_move:                            # @toggle_move
 	and	$t5, $t5, $s4
 	bstrpick.d	$s4, $t5, 15, 1
 	slli.d	$s4, $s4, 3
-	ldx.wu	$s4, $t0, $s4
-	and	$t5, $t5, $a5
+	ldx.wu	$s4, $a6, $s4
+	and	$t5, $t5, $a4
 	srli.d	$s5, $s4, 28
 	sltui	$s5, $s5, 1
 	srli.d	$t5, $t5, 14
-	ldx.w	$t5, $t0, $t5
+	ldx.w	$t5, $a6, $t5
 	srai.d	$t6, $t6, 29
 	add.d	$t6, $t6, $s0
 	ldx.w	$s0, $fp, $t6
 	add.d	$t5, $t5, $s4
-	or	$s4, $s5, $a7
+	or	$s4, $s5, $t0
 	and	$t5, $t5, $s4
 	sub.d	$s0, $s3, $s0
 	add.d	$s0, $s0, $t5
@@ -295,23 +295,23 @@ toggle_move:                            # @toggle_move
 	alsl.d	$t3, $a1, $a1, 1
 	beqz	$t5, .LBB2_7
 # %bb.6:
-	alsl.d	$t6, $t5, $a6, 2
+	alsl.d	$t6, $t5, $a7, 2
 	slli.d	$s0, $t5, 2
 	ld.w	$s3, $t6, -4
 	ld.w	$t6, $t6, 4
-	ldx.w	$s0, $a6, $s0
+	ldx.w	$s0, $a7, $s0
 	and	$t6, $t6, $s3
 	slli.d	$s3, $s0, 1
 	or	$s0, $s3, $s0
 	slli.d	$s3, $t6, 1
 	andn	$s0, $s3, $s0
 	and	$t6, $s0, $t6
-	and	$s0, $t6, $a5
+	and	$s0, $t6, $a4
 	bstrpick.d	$t6, $t6, 15, 1
 	slli.d	$t6, $t6, 3
-	ldx.wu	$t6, $t0, $t6
+	ldx.wu	$t6, $a6, $t6
 	srli.d	$s0, $s0, 14
-	ldx.w	$s0, $t0, $s0
+	ldx.w	$s0, $a6, $s0
 	srli.d	$s3, $t6, 28
 	sltui	$s3, $s3, 1
 	add.d	$t6, $s0, $t6
@@ -322,7 +322,7 @@ toggle_move:                            # @toggle_move
 	ldx.w	$s5, $s0, $t5
 	mul.d	$s4, $a1, $s4
 	ldx.w	$s6, $t2, $s4
-	or	$s3, $s3, $a7
+	or	$s3, $s3, $t0
 	and	$t6, $t6, $s3
 	sub.d	$s3, $t6, $s5
 	add.d	$s3, $s3, $s6
@@ -331,7 +331,7 @@ toggle_move:                            # @toggle_move
 .LBB2_7:
 	slli.d	$t5, $a1, 2
 	ldx.w	$s0, $s2, $t5
-	alsl.d	$t6, $a3, $a6, 2
+	alsl.d	$t6, $a5, $a7, 2
 	nor	$t7, $t8, $t7
 	add.d	$t5, $fp, $s1
 	beq	$a2, $s0, .LBB2_9
@@ -341,25 +341,25 @@ toggle_move:                            # @toggle_move
 	add.d	$a0, $a0, $t8
 	srai.d	$a0, $a0, 32
 	slli.d	$t8, $a0, 2
-	alsl.d	$fp, $a0, $a6, 2
+	alsl.d	$fp, $a0, $a7, 2
 	ld.w	$s0, $fp, -4
 	ld.w	$fp, $fp, 4
-	ldx.w	$a6, $a6, $t8
+	ldx.w	$a7, $a7, $t8
 	and	$t8, $fp, $s0
-	slli.d	$fp, $a6, 1
-	or	$a6, $fp, $a6
+	slli.d	$fp, $a7, 1
+	or	$a7, $fp, $a7
 	slli.d	$fp, $t8, 1
-	andn	$a6, $fp, $a6
-	and	$a6, $a6, $t8
-	and	$t8, $a6, $a5
-	bstrpick.d	$a6, $a6, 15, 1
-	slli.d	$a6, $a6, 3
-	ldx.wu	$a6, $t0, $a6
+	andn	$a7, $fp, $a7
+	and	$a7, $a7, $t8
+	and	$t8, $a7, $a4
+	bstrpick.d	$a7, $a7, 15, 1
+	slli.d	$a7, $a7, 3
+	ldx.wu	$a7, $a6, $a7
 	srli.d	$t8, $t8, 14
-	ldx.w	$t8, $t0, $t8
-	srli.d	$fp, $a6, 28
+	ldx.w	$t8, $a6, $t8
+	srli.d	$fp, $a7, 28
 	sltui	$fp, $fp, 1
-	add.d	$a6, $t8, $a6
+	add.d	$a7, $t8, $a7
 	slli.d	$t8, $t3, 7
 	add.d	$t8, $t1, $t8
 	ori	$s0, $zero, 12
@@ -367,75 +367,75 @@ toggle_move:                            # @toggle_move
 	ldx.w	$s1, $t8, $a0
 	mul.d	$s0, $a1, $s0
 	ldx.w	$s2, $t2, $s0
-	or	$fp, $fp, $a7
-	and	$a6, $a6, $fp
-	sub.d	$fp, $a6, $s1
+	or	$fp, $fp, $t0
+	and	$a7, $a7, $fp
+	sub.d	$fp, $a7, $s1
 	add.d	$fp, $fp, $s2
 	stx.w	$fp, $t2, $s0
-	stx.w	$a6, $t8, $a0
+	stx.w	$a7, $t8, $a0
 .LBB2_9:
-	and	$a0, $t7, $a5
-	bstrpick.d	$a6, $t7, 15, 0
-	slli.d	$a6, $a6, 2
-	ldx.wu	$a6, $t0, $a6
+	and	$a0, $t7, $a4
+	bstrpick.d	$a7, $t7, 15, 0
+	slli.d	$a7, $a7, 2
+	ldx.wu	$a7, $a6, $a7
 	srli.d	$a0, $a0, 14
-	ldx.w	$a0, $t0, $a0
-	srli.d	$t7, $a6, 28
+	ldx.w	$a0, $a6, $a0
+	srli.d	$t7, $a7, 28
 	sltui	$t7, $t7, 1
-	add.d	$a0, $a0, $a6
-	or	$a6, $t7, $a7
+	add.d	$a0, $a0, $a7
+	or	$a7, $t7, $t0
 	ld.w	$t7, $t5, 4
 	ld.w	$t8, $t4, 4
-	and	$a0, $a0, $a6
-	ld.w	$a6, $t6, 0
+	and	$a0, $a0, $a7
+	ld.w	$a7, $t6, 0
 	sub.d	$t6, $a0, $t7
 	add.d	$t6, $t6, $t8
 	st.w	$t6, $t4, 4
-	slli.d	$t4, $a6, 1
-	or	$t6, $t4, $a6
-	andn	$t6, $a5, $t6
-	nor	$a6, $t4, $a6
-	bstrpick.d	$a6, $a6, 15, 0
-	slli.d	$a6, $a6, 2
-	ldx.wu	$a6, $t0, $a6
+	slli.d	$t4, $a7, 1
+	or	$t6, $t4, $a7
+	andn	$t6, $a4, $t6
+	nor	$a7, $t4, $a7
+	bstrpick.d	$a7, $a7, 15, 0
+	slli.d	$a7, $a7, 2
+	ldx.wu	$a7, $a6, $a7
 	srli.d	$t4, $t6, 14
-	ldx.w	$t4, $t0, $t4
+	ldx.w	$t4, $a6, $t4
 	st.w	$a0, $t5, 4
-	srli.d	$a0, $a6, 28
+	srli.d	$a0, $a7, 28
 	sltui	$a0, $a0, 1
-	add.d	$a6, $t4, $a6
-	or	$a0, $a0, $a7
-	and	$a0, $a6, $a0
-	slli.d	$a6, $t3, 7
-	add.d	$a6, $t1, $a6
+	add.d	$a7, $t4, $a7
+	or	$a0, $a0, $t0
+	and	$a0, $a7, $a0
+	slli.d	$a7, $t3, 7
+	add.d	$a7, $t1, $a7
 	ori	$t1, $zero, 12
-	mul.d	$a3, $a3, $t1
-	add.d	$a3, $a6, $a3
-	ld.w	$t3, $a3, 4
+	mul.d	$a5, $a5, $t1
+	add.d	$a5, $a7, $a5
+	ld.w	$t3, $a5, 4
 	mul.d	$a1, $a1, $t1
 	add.d	$a1, $t2, $a1
 	ld.w	$t2, $a1, 4
-	slli.d	$t4, $a4, 1
-	or	$t5, $t4, $a4
-	andn	$a5, $a5, $t5
-	nor	$a4, $t4, $a4
-	bstrpick.d	$a4, $a4, 15, 0
-	slli.d	$a4, $a4, 2
-	ldx.wu	$a4, $t0, $a4
-	srli.d	$a5, $a5, 14
-	ldx.w	$a5, $t0, $a5
-	st.w	$a0, $a3, 4
-	srli.d	$a3, $a4, 28
-	sltui	$a3, $a3, 1
-	add.d	$a4, $a5, $a4
+	slli.d	$t4, $a3, 1
+	nor	$t5, $t4, $a3
+	bstrpick.d	$t5, $t5, 15, 0
+	slli.d	$t5, $t5, 2
+	ldx.wu	$t5, $a6, $t5
+	st.w	$a0, $a5, 4
+	or	$a3, $t4, $a3
+	andn	$a3, $a4, $a3
+	srli.d	$a4, $t5, 28
+	sltui	$a4, $a4, 1
+	srli.d	$a3, $a3, 14
+	ldx.w	$a3, $a6, $a3
 	mul.d	$a2, $a2, $t1
-	add.d	$a2, $a6, $a2
+	add.d	$a2, $a7, $a2
 	ld.w	$a5, $a2, 4
-	or	$a3, $a3, $a7
-	and	$a3, $a4, $a3
-	add.d	$a0, $a0, $t2
+	add.d	$a3, $a3, $t5
+	or	$a4, $a4, $t0
+	and	$a3, $a3, $a4
 	add.d	$a4, $t3, $a5
-	sub.d	$a0, $a0, $a4
+	sub.d	$a4, $t2, $a4
+	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $a3
 	st.w	$a0, $a1, 4
 	st.w	$a3, $a2, 4
@@ -768,7 +768,7 @@ score_move:                             # @score_move
 	ld.w	$a7, $s1, 4
 	and	$a3, $a7, $a3
 	slli.d	$a7, $a3, 1
-	and	$a7, $a7, $s2
+	and	$a3, $s2, $a3
 	and	$a3, $a7, $a3
 	bstrpick.d	$a7, $a3, 15, 1
 	slli.d	$a7, $a7, 3
@@ -849,8 +849,8 @@ score_move:                             # @score_move
 	add.d	$a3, $a7, $a3
 	or	$a7, $fp, $t3
 	and	$a3, $a3, $a7
-	add.d	$a7, $t6, $s1
-	sub.d	$s1, $a7, $a3
+	sub.d	$a3, $t6, $a3
+	add.d	$s1, $a3, $s1
 .LBB4_6:
 	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	xori	$a2, $fp, 1
@@ -890,8 +890,8 @@ score_move:                             # @score_move
 	add.d	$a3, $a3, $a6
 	or	$a6, $t1, $t3
 	and	$a3, $a3, $a6
-	add.d	$a0, $a0, $s1
-	sub.d	$s1, $a0, $a3
+	sub.d	$a0, $a0, $a3
+	add.d	$s1, $a0, $s1
 .LBB4_8:
 	ld.w	$a0, $t6, 0
 	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
@@ -907,9 +907,9 @@ score_move:                             # @score_move
 	slli.d	$a2, $fp, 12
 	pcalau12i	$a3, %got_pc_hi20(g_first_move)
 	ld.d	$a3, $a3, %got_pc_lo12(g_first_move)
-	add.d	$a2, $a3, $a2
 	slli.d	$a1, $a1, 7
 	add.d	$a1, $a2, $a1
+	add.d	$a1, $a3, $a1
 	ldx.w	$a1, $a1, $a4
 	add.w	$a0, $a1, $a0
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload

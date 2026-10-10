@@ -287,20 +287,20 @@ est_mem_usage:                          # @est_mem_usage
 	ftintrz.w.s	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
 	srai.d	$a3, $a1, 63
-	srli.d	$a3, $a3, 61
 	ld.d	$a4, $a0, 80
+	srli.d	$a3, $a3, 61
 	add.d	$a3, $a1, $a3
 	srai.d	$a3, $a3, 3
-	ld.w	$a5, $a0, 32
-	slli.d	$a6, $a4, 5
+	slli.d	$a5, $a4, 5
+	ld.w	$a6, $a0, 32
 	ld.d	$a7, $a0, 96
 	ld.d	$t0, $a0, 48
-	mul.d	$a5, $a4, $a5
 	ld.w	$t1, $a0, 36
+	mul.d	$a6, $a4, $a6
 	slli.d	$t2, $a7, 5
 	alsl.d	$a7, $a7, $t2, 3
-	mul.d	$a2, $a5, $a2
-	mul.d	$a2, $a2, $t1
+	mul.d	$t2, $a6, $t1
+	mul.d	$a2, $t2, $a2
 	ori	$t2, $zero, 48
 	mul.d	$t2, $a1, $t2
 	mul.d	$t3, $a3, $t1
@@ -312,11 +312,11 @@ est_mem_usage:                          # @est_mem_usage
 	mul.d	$t6, $t1, $t4
 	mul.w	$a0, $a0, $t5
 	slli.w	$t5, $a0, 1
-	add.d	$t7, $a3, $a4
-	add.d	$a5, $t7, $a5
-	add.d	$a5, $a5, $t3
-	add.d	$a2, $a5, $a2
-	add.d	$a2, $a2, $a0
+	add.d	$a6, $a4, $a6
+	add.d	$a6, $a3, $a6
+	add.d	$a6, $a6, $t3
+	add.d	$a6, $a6, $a0
+	add.d	$a2, $a6, $a2
 	add.d	$a4, $a4, $t5
 	mul.d	$a4, $a4, $t0
 	add.d	$a0, $a3, $a0
@@ -324,7 +324,7 @@ est_mem_usage:                          # @est_mem_usage
 	addi.d	$a3, $t1, 12
 	mul.d	$a3, $a3, $t3
 	add.d	$a1, $t4, $a1
-	add.d	$a4, $a6, $t2
+	add.d	$a4, $a5, $t2
 	add.d	$a4, $a4, $a7
 	add.d	$a4, $a4, $t6
 	add.d	$a3, $a4, $a3

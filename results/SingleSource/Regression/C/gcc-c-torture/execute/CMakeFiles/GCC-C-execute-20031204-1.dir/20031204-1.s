@@ -51,8 +51,8 @@ root_nfs_parse_addr:                    # @root_nfs_parse_addr
 	or	$t1, $t2, $t1
 	add.w	$a1, $a1, $t1
 	sltui	$t1, $a1, 4
-	add.d	$a7, $a7, $t1
-	add.d	$t0, $a7, $t0
+	add.d	$a7, $a7, $t0
+	add.d	$t0, $a7, $t1
 	addi.d	$a7, $t0, -1
 	bltu	$a1, $a6, .LBB1_1
 # %bb.6:
@@ -124,8 +124,8 @@ main:                                   # @main
 	or	$a7, $t0, $a7
 	add.w	$a1, $a1, $a7
 	sltui	$a7, $a1, 4
-	add.d	$a0, $a0, $a7
-	add.d	$a6, $a0, $a6
+	add.d	$a0, $a0, $a6
+	add.d	$a6, $a0, $a7
 	addi.d	$a0, $a6, -1
 	bltu	$a1, $a5, .LBB2_1
 # %bb.6:

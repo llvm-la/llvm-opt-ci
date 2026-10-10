@@ -128,29 +128,29 @@ lame_decode_initfile:                   # @lame_decode_initfile
 	ld.d	$a1, $a1, %got_pc_lo12(tabsel_123)
 	ld.w	$a2, $s3, 52
 	ld.w	$a3, $s3, 60
+	slli.d	$a2, $a2, 6
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	slli.d	$a1, $a2, 6
-	add.d	$a0, $a0, $a1
 	alsl.d	$a0, $a3, $a0, 2
 	ld.w	$a0, $a0, -64
 	st.w	$a0, $s0, 0
 	ld.w	$a0, $s3, 40
 	move	$s3, $zero
+	sltu	$a1, $zero, $s8
 	sltui	$a0, $a0, 1
-	ori	$a1, $zero, 576
-	masknez	$a1, $a1, $a0
-	ori	$a2, $zero, 1152
-	maskeqz	$a0, $a2, $a0
-	sltu	$a2, $zero, $s8
-	or	$a0, $a0, $a1
-	mul.d	$a0, $a0, $s8
-	maskeqz	$a0, $a0, $a2
-	addi.w	$a1, $zero, -1
-	lu32i.d	$a1, 0
-	masknez	$a2, $a1, $a2
+	ori	$a2, $zero, 576
+	masknez	$a2, $a2, $a0
+	ori	$a3, $zero, 1152
+	maskeqz	$a0, $a3, $a0
 	or	$a0, $a0, $a2
+	mul.d	$a0, $a0, $s8
+	maskeqz	$a0, $a0, $a1
+	addi.w	$a2, $zero, -1
+	lu32i.d	$a2, 0
+	masknez	$a1, $a2, $a1
+	or	$a0, $a0, $a1
 	maskeqz	$a0, $a0, $s7
-	masknez	$a1, $a1, $s7
+	masknez	$a1, $a2, $s7
 	or	$a0, $a0, $a1
 	st.d	$a0, $fp, 0
 .LBB1_8:

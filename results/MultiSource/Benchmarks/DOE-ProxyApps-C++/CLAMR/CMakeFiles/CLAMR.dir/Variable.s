@@ -2450,8 +2450,8 @@ _ZN2PP8Variable13set_var_valueERSt6vectorIiSaIiEERS1_INSt7__cxx1112basic_stringI
 	ld.d	$a0, $s2, 0
 	ld.d	$a2, $s1, 0
 	add.d	$a1, $a0, $fp
-	add.d	$a0, $a2, $s4
-	add.d	$a0, $a0, $fp
+	add.d	$a0, $s4, $fp
+	add.d	$a0, $a2, $a0
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_assignERKS4_)
 	jirl	$ra, $ra, 0
 	addi.d	$s0, $s0, 1

@@ -6657,14 +6657,14 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	vld	$vr4, $a5, 8
 	vshuf4i.d	$vr5, $vr4, 9
 	vand.v	$vr5, $vr5, $vr0
+	vand.v	$vr6, $vr4, $vr1
+	vor.v	$vr5, $vr6, $vr5
 	vldx	$vr6, $a5, $a3
-	vand.v	$vr7, $vr4, $vr1
-	vor.v	$vr5, $vr7, $vr5
 	vsrli.d	$vr5, $vr5, 1
-	vxor.v	$vr5, $vr5, $vr6
-	vand.v	$vr6, $vr4, $vr2
-	vseqi.d	$vr6, $vr6, 0
-	vandn.v	$vr6, $vr6, $vr3
+	vand.v	$vr7, $vr4, $vr2
+	vseqi.d	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr3
+	vxor.v	$vr6, $vr6, $vr7
 	vxor.v	$vr5, $vr5, $vr6
 	vstx	$vr5, $a0, $a2
 	addi.d	$a2, $a2, 16
@@ -6673,14 +6673,14 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	ld.d	$a2, $a0, 1816
 	vpickve2gr.d	$a3, $vr4, 1
 	bstrpick.d	$a4, $a2, 30, 1
-	ldptr.d	$a5, $a0, 4984
 	slli.d	$a4, $a4, 1
 	bstrins.d	$a3, $a4, 30, 0
+	ldptr.d	$a4, $a0, 4984
 	srli.d	$a3, $a3, 1
-	xor	$a3, $a3, $a5
-	andi	$a4, $a2, 1
-	sub.d	$a4, $zero, $a4
-	and	$a4, $a4, $a1
+	andi	$a5, $a2, 1
+	sub.d	$a5, $zero, $a5
+	and	$a5, $a5, $a1
+	xor	$a4, $a4, $a5
 	xor	$a3, $a3, $a4
 	st.d	$a3, $a0, 1808
 	vinsgr2vr.d	$vr4, $a2, 1
@@ -6696,14 +6696,14 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	vldx	$vr5, $a6, $a3
 	vshuf4i.d	$vr4, $vr5, 9
 	vand.v	$vr4, $vr4, $vr0
+	vand.v	$vr6, $vr5, $vr1
+	vor.v	$vr4, $vr6, $vr4
 	vldx	$vr6, $a6, $a4
-	vand.v	$vr7, $vr5, $vr1
-	vor.v	$vr4, $vr7, $vr4
 	vsrli.d	$vr4, $vr4, 1
-	vxor.v	$vr4, $vr4, $vr6
-	vand.v	$vr6, $vr5, $vr2
-	vseqi.d	$vr6, $vr6, 0
-	vandn.v	$vr6, $vr6, $vr3
+	vand.v	$vr7, $vr5, $vr2
+	vseqi.d	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr3
+	vxor.v	$vr6, $vr6, $vr7
 	vxor.v	$vr4, $vr4, $vr6
 	addi.d	$a2, $a2, 16
 	vstx	$vr4, $a6, $a5
@@ -6711,17 +6711,17 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	bnez	$a2, .LBB6_4
 # %bb.5:
 	ld.d	$a3, $a0, 0
-	move	$a2, $zero
 	ldptr.d	$a4, $a0, 4984
+	move	$a2, $zero
 	bstrpick.d	$a5, $a3, 30, 1
-	ldptr.d	$a6, $a0, 3168
 	slli.d	$a5, $a5, 1
 	bstrins.d	$a4, $a5, 30, 0
+	ldptr.d	$a5, $a0, 3168
 	srli.d	$a4, $a4, 1
-	xor	$a4, $a4, $a6
 	andi	$a3, $a3, 1
 	sub.d	$a3, $zero, $a3
 	and	$a1, $a3, $a1
+	xor	$a1, $a5, $a1
 	xor	$a1, $a4, $a1
 	stptr.d	$a1, $a0, 4984
 .LBB6_6:
@@ -6932,7 +6932,6 @@ _ZL9init_dataIfEvRKSt10unique_ptrIA_T_St14default_deleteIS2_EEj: # @_ZL9init_dat
 # %bb.0:
 	addi.d	$sp, $sp, -16
 	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(_ZL3rng)
 	addi.d	$a1, $a1, %pc_lo12(_ZL3rng)
 	move	$a2, $zero
@@ -7009,14 +7008,14 @@ _ZL9init_dataIfEvRKSt10unique_ptrIA_T_St14default_deleteIS2_EEj: # @_ZL9init_dat
 	vld	$vr8, $t7, 8
 	vshuf4i.d	$vr9, $vr8, 9
 	vand.v	$vr9, $vr9, $vr0
+	vand.v	$vr10, $vr8, $vr1
+	vor.v	$vr9, $vr10, $vr9
 	vldx	$vr10, $t7, $a4
-	vand.v	$vr11, $vr8, $vr1
-	vor.v	$vr9, $vr11, $vr9
 	vsrli.d	$vr9, $vr9, 1
-	vxor.v	$vr9, $vr9, $vr10
-	vand.v	$vr10, $vr8, $vr2
-	vseqi.d	$vr10, $vr10, 0
-	vandn.v	$vr10, $vr10, $vr3
+	vand.v	$vr11, $vr8, $vr2
+	vseqi.d	$vr11, $vr11, 0
+	vandn.v	$vr11, $vr11, $vr3
+	vxor.v	$vr10, $vr10, $vr11
 	vxor.v	$vr9, $vr9, $vr10
 	vstx	$vr9, $a1, $t6
 	addi.d	$t6, $t6, 16
@@ -7025,14 +7024,14 @@ _ZL9init_dataIfEvRKSt10unique_ptrIA_T_St14default_deleteIS2_EEj: # @_ZL9init_dat
 	ld.d	$t6, $a1, 1816
 	vpickve2gr.d	$t7, $vr8, 1
 	bstrpick.d	$t8, $t6, 30, 1
-	ldptr.d	$fp, $a1, 4984
 	slli.d	$t8, $t8, 1
 	bstrins.d	$t7, $t8, 30, 0
+	ldptr.d	$t8, $a1, 4984
 	srli.d	$t7, $t7, 1
-	xor	$t7, $t7, $fp
-	andi	$t8, $t6, 1
-	sub.d	$t8, $zero, $t8
-	and	$t8, $t8, $a5
+	andi	$fp, $t6, 1
+	sub.d	$fp, $zero, $fp
+	and	$fp, $fp, $a5
+	xor	$t8, $t8, $fp
 	xor	$t7, $t7, $t8
 	st.d	$t7, $a1, 1808
 	vinsgr2vr.d	$vr8, $t6, 1
@@ -7044,14 +7043,14 @@ _ZL9init_dataIfEvRKSt10unique_ptrIA_T_St14default_deleteIS2_EEj: # @_ZL9init_dat
 	vldx	$vr9, $t7, $t0
 	vshuf4i.d	$vr8, $vr9, 9
 	vand.v	$vr8, $vr8, $vr0
+	vand.v	$vr10, $vr9, $vr1
+	vor.v	$vr8, $vr10, $vr8
 	vldx	$vr10, $t7, $t1
-	vand.v	$vr11, $vr9, $vr1
-	vor.v	$vr8, $vr11, $vr8
 	vsrli.d	$vr8, $vr8, 1
-	vxor.v	$vr8, $vr8, $vr10
-	vand.v	$vr10, $vr9, $vr2
-	vseqi.d	$vr10, $vr10, 0
-	vandn.v	$vr10, $vr10, $vr3
+	vand.v	$vr11, $vr9, $vr2
+	vseqi.d	$vr11, $vr11, 0
+	vandn.v	$vr11, $vr11, $vr3
+	vxor.v	$vr10, $vr10, $vr11
 	vxor.v	$vr8, $vr8, $vr10
 	addi.d	$t6, $t6, 16
 	vstx	$vr8, $t7, $t2
@@ -7059,17 +7058,17 @@ _ZL9init_dataIfEvRKSt10unique_ptrIA_T_St14default_deleteIS2_EEj: # @_ZL9init_dat
 	bnez	$t6, .LBB11_6
 # %bb.7:                                #   in Loop: Header=BB11_2 Depth=1
 	ld.d	$t7, $a1, 0
-	move	$t6, $zero
 	ldptr.d	$t8, $a1, 4984
+	move	$t6, $zero
 	bstrpick.d	$fp, $t7, 30, 1
-	ldptr.d	$s0, $a1, 3168
 	slli.d	$fp, $fp, 1
 	bstrins.d	$t8, $fp, 30, 0
+	ldptr.d	$fp, $a1, 3168
 	srli.d	$t8, $t8, 1
-	xor	$t8, $t8, $s0
 	andi	$t7, $t7, 1
 	sub.d	$t7, $zero, $t7
 	and	$t7, $t7, $a5
+	xor	$t7, $fp, $t7
 	xor	$t7, $t8, $t7
 	stptr.d	$t7, $a1, 4984
 	b	.LBB11_1
@@ -7080,7 +7079,6 @@ _ZL9init_dataIfEvRKSt10unique_ptrIA_T_St14default_deleteIS2_EEj: # @_ZL9init_dat
 	fstx.s	$ft0, $a0, $t7
 	bne	$a2, $t5, .LBB11_2
 # %bb.9:
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret

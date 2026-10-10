@@ -76,8 +76,8 @@ f2:                                     # @f2
 f3h:                                    # @f3h
 # %bb.0:
 	add.d	$a0, $a1, $a0
-	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
+	add.d	$a1, $a2, $a3
+	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $a4
 	ret
 .Lfunc_end2:
@@ -124,12 +124,12 @@ f3:                                     # @f3
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a0, 8
 	ld.d	$a3, $a0, 16
-	addi.d	$a4, $a0, 32
-	ld.d	$a0, $a0, 24
-	st.d	$a4, $sp, 8
-	add.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $a3
-	add.d	$a0, $a1, $a0
+	ld.d	$a4, $a0, 24
+	addi.d	$a0, $a0, 32
+	st.d	$a0, $sp, 8
+	add.d	$a0, $a1, $a2
+	add.d	$a1, $a3, $a4
+	add.d	$a0, $a0, $a1
 	addi.d	$a0, $a0, 4
 	addi.d	$sp, $sp, 80
 	ret

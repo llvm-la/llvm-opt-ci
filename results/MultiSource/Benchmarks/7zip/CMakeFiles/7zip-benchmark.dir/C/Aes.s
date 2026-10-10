@@ -111,27 +111,27 @@ AesGenTables:                           # @AesGenTables
 	vslli.w	$vr9, $vr7, 8
 	vslli.w	$vr10, $vr7, 16
 	vslli.w	$vr11, $vr8, 24
-	vor.v	$vr11, $vr11, $vr9
-	vor.v	$vr11, $vr11, $vr6
-	vor.v	$vr11, $vr11, $vr10
+	vor.v	$vr12, $vr9, $vr6
+	vor.v	$vr12, $vr12, $vr10
+	vor.v	$vr11, $vr11, $vr12
 	vst	$vr11, $a4, -2048
 	vslli.w	$vr11, $vr6, 8
 	vor.v	$vr11, $vr8, $vr11
+	vslli.w	$vr12, $vr7, 24
+	vor.v	$vr10, $vr10, $vr12
 	vor.v	$vr10, $vr11, $vr10
-	vslli.w	$vr11, $vr7, 24
-	vor.v	$vr10, $vr10, $vr11
 	vst	$vr10, $a4, -1024
 	vslli.w	$vr10, $vr8, 8
-	vslli.w	$vr12, $vr6, 16
-	vor.v	$vr10, $vr10, $vr12
-	vor.v	$vr10, $vr10, $vr7
+	vslli.w	$vr11, $vr6, 16
+	vor.v	$vr11, $vr11, $vr7
 	vor.v	$vr10, $vr10, $vr11
+	vor.v	$vr10, $vr10, $vr12
 	vst	$vr10, $a4, 0
 	vslli.w	$vr8, $vr8, 16
 	vslli.w	$vr6, $vr6, 24
-	vor.v	$vr6, $vr8, $vr6
-	ldx.w	$a6, $a1, $a3
 	vor.v	$vr6, $vr6, $vr7
+	ldx.w	$a6, $a1, $a3
+	vor.v	$vr6, $vr8, $vr6
 	vor.v	$vr6, $vr6, $vr9
 	vst	$vr6, $a4, 1024
 	vinsgr2vr.w	$vr6, $a6, 0
@@ -165,29 +165,29 @@ AesGenTables:                           # @AesGenTables
 	vslli.w	$vr9, $vr7, 16
 	vor.v	$vr8, $vr9, $vr8
 	vslli.w	$vr9, $vr11, 24
+	vor.v	$vr9, $vr9, $vr6
 	vor.v	$vr8, $vr8, $vr9
-	vor.v	$vr8, $vr8, $vr6
 	vst	$vr8, $a2, -2048
 	vslli.w	$vr8, $vr6, 8
 	vslli.w	$vr9, $vr10, 16
 	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr9, $vr7, 24
+	vor.v	$vr9, $vr9, $vr11
 	vor.v	$vr8, $vr8, $vr9
-	vor.v	$vr8, $vr8, $vr11
 	vst	$vr8, $a2, -1024
 	vslli.w	$vr8, $vr11, 8
 	vslli.w	$vr9, $vr6, 16
 	vor.v	$vr8, $vr8, $vr9
 	vslli.w	$vr9, $vr10, 24
+	vor.v	$vr9, $vr9, $vr7
 	vor.v	$vr8, $vr8, $vr9
-	vor.v	$vr8, $vr8, $vr7
 	vst	$vr8, $a2, 0
 	vslli.w	$vr7, $vr7, 8
 	vslli.w	$vr8, $vr11, 16
 	vor.v	$vr7, $vr7, $vr8
 	vslli.w	$vr6, $vr6, 24
-	vor.v	$vr6, $vr7, $vr6
 	vor.v	$vr6, $vr6, $vr10
+	vor.v	$vr6, $vr7, $vr6
 	vst	$vr6, $a2, 1024
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 16
@@ -350,17 +350,17 @@ AesCbc_Decode:                          # @AesCbc_Decode
 	vinsgr2vr.w	$vr2, $s8, 2
 	vinsgr2vr.w	$vr2, $t7, 3
 	vslli.w	$vr2, $vr2, 16
-	vor.v	$vr1, $vr1, $vr2
 	ldx.b	$t3, $t1, $t4
-	vinsgr2vr.w	$vr2, $s3, 0
-	vinsgr2vr.w	$vr2, $s6, 1
-	vinsgr2vr.w	$vr2, $t6, 2
-	vinsgr2vr.w	$vr2, $t3, 3
-	vld	$vr3, $t2, 0
-	vslli.w	$vr2, $vr2, 24
+	vinsgr2vr.w	$vr3, $s3, 0
+	vinsgr2vr.w	$vr3, $s6, 1
+	vinsgr2vr.w	$vr3, $t6, 2
+	vinsgr2vr.w	$vr3, $t3, 3
+	vslli.w	$vr3, $vr3, 24
+	vld	$vr4, $t2, 0
+	vor.v	$vr2, $vr2, $vr3
 	ld.w	$t2, $a0, 0
 	vor.v	$vr1, $vr1, $vr2
-	vxor.v	$vr1, $vr1, $vr3
+	vxor.v	$vr1, $vr1, $vr4
 	vpickve2gr.w	$t3, $vr1, 0
 	xor	$t2, $t3, $t2
 	st.w	$t2, $a1, 0
@@ -455,23 +455,23 @@ AesCbc_Decode:                          # @AesCbc_Decode
 	slli.d	$s6, $s6, 2
 	ldx.w	$s6, $t0, $s6
 	xor	$t4, $t4, $s1
+	xor	$t8, $t8, $fp
 	xor	$t4, $t4, $t8
-	xor	$t4, $t4, $fp
 	xor	$t5, $t5, $s5
-	xor	$t5, $t5, $s2
-	xor	$t5, $t5, $s3
+	xor	$t8, $s2, $s3
+	xor	$t5, $t5, $t8
 	xor	$t8, $s0, $s6
-	xor	$t8, $t8, $s4
 	vpickve2gr.bu	$fp, $vr1, 12
 	slli.d	$fp, $fp, 2
 	ldx.w	$fp, $t0, $fp
 	srli.d	$t6, $t6, 22
 	ldx.w	$s0, $a6, $t6
 	ld.w	$s1, $t2, 20
-	xor	$t6, $t8, $s7
+	xor	$t6, $s4, $s7
+	xor	$t6, $t8, $t6
 	xor	$t7, $t7, $fp
-	xor	$t7, $t7, $s0
-	xor	$t7, $t7, $s1
+	xor	$t8, $s0, $s1
+	xor	$t7, $t7, $t8
 	andi	$s1, $t4, 255
 	andi	$t8, $t7, 255
 	andi	$s0, $t5, 255
@@ -523,18 +523,18 @@ AesCbc_Decode:                          # @AesCbc_Decode
 	srli.d	$s4, $s4, 22
 	ldx.w	$s4, $a6, $s4
 	xor	$s1, $s3, $s1
-	xor	$s1, $s1, $s5
-	xor	$s1, $s1, $s6
+	xor	$s3, $s5, $s6
+	xor	$s1, $s1, $s3
 	vld	$vr1, $t2, 0
 	xor	$s0, $s7, $s0
-	xor	$s0, $s0, $ra
+	xor	$s2, $ra, $s2
 	xor	$s0, $s0, $s2
 	xor	$t5, $t5, $fp
+	xor	$t7, $t7, $s8
 	xor	$t5, $t5, $t7
-	xor	$t5, $t5, $s8
 	xor	$t4, $t4, $t8
+	xor	$t6, $t6, $s4
 	xor	$t4, $t4, $t6
-	xor	$t4, $t4, $s4
 	vinsgr2vr.w	$vr2, $s1, 0
 	vinsgr2vr.w	$vr2, $t4, 1
 	vinsgr2vr.w	$vr2, $s0, 2
@@ -864,7 +864,7 @@ Aes_SetKey_Dec:                         # @Aes_SetKey_Dec
 	alsl.d	$a6, $a6, $a3, 2
 	ldx.w	$a6, $a6, $a5
 	xor	$a7, $t0, $a7
-	xor	$a7, $a7, $t1
+	xor	$a6, $t1, $a6
 	xor	$a6, $a7, $a6
 	st.w	$a6, $a0, 0
 	addi.d	$a1, $a1, -1
@@ -986,23 +986,23 @@ Aes_Encode:                             # @Aes_Encode
 	slli.d	$s4, $s4, 2
 	ldx.w	$s4, $t0, $s4
 	xor	$t2, $t2, $fp
+	xor	$t6, $t6, $t7
 	xor	$t2, $t2, $t6
-	xor	$t2, $t2, $t7
 	xor	$t3, $t3, $s3
-	xor	$t3, $t3, $s0
-	xor	$t3, $t3, $s1
+	xor	$t6, $s0, $s1
+	xor	$t3, $t3, $t6
 	xor	$t6, $t8, $s4
-	xor	$t6, $t6, $s2
 	vpickve2gr.bu	$t7, $vr0, 12
 	slli.d	$t7, $t7, 2
 	ldx.w	$t7, $t0, $t7
 	srli.d	$t4, $t4, 22
 	ldx.w	$t4, $a6, $t4
 	ld.w	$t8, $a3, -12
-	xor	$t6, $t6, $s5
+	xor	$fp, $s2, $s5
+	xor	$t6, $t6, $fp
 	xor	$t5, $t5, $t7
-	xor	$t4, $t5, $t4
 	xor	$t4, $t4, $t8
+	xor	$t4, $t5, $t4
 	addi.w	$s0, $t1, 0
 	andi	$fp, $t3, 255
 	andi	$t7, $t4, 255
@@ -1055,18 +1055,18 @@ Aes_Encode:                             # @Aes_Encode
 	srli.d	$s3, $s3, 22
 	ldx.w	$s3, $a6, $s3
 	xor	$t8, $s2, $t8
-	xor	$t8, $t8, $s4
-	xor	$t8, $t8, $s5
+	xor	$s2, $s4, $s5
+	xor	$t8, $t8, $s2
 	vld	$vr0, $a3, 0
 	xor	$fp, $s6, $fp
-	xor	$fp, $fp, $s7
+	xor	$s1, $s7, $s1
 	xor	$fp, $fp, $s1
 	xor	$t3, $t3, $t5
+	xor	$t4, $t4, $s0
 	xor	$t3, $t3, $t4
-	xor	$t3, $t3, $s0
 	xor	$t2, $t2, $t7
-	xor	$t2, $t2, $t6
-	xor	$t2, $t2, $s3
+	xor	$t4, $t6, $s3
+	xor	$t2, $t2, $t4
 	vinsgr2vr.w	$vr1, $fp, 0
 	vinsgr2vr.w	$vr1, $t2, 1
 	vinsgr2vr.w	$vr1, $t8, 2
@@ -1087,15 +1087,15 @@ Aes_Encode:                             # @Aes_Encode
 	slli.d	$a3, $a3, 8
 	bstrpick.d	$a5, $t2, 23, 16
 	ldx.bu	$a5, $a2, $a5
+	bstrpick.d	$a6, $t6, 31, 24
+	ldx.b	$a6, $a2, $a6
 	or	$a3, $a3, $a4
-	bstrpick.d	$a4, $t6, 31, 24
-	ldx.b	$a4, $a2, $a4
-	slli.d	$a5, $a5, 16
-	ld.w	$a6, $a0, 48
-	or	$a3, $a3, $a5
-	slli.d	$a4, $a4, 24
+	slli.d	$a4, $a5, 16
+	ld.w	$a5, $a0, 48
+	slli.d	$a6, $a6, 24
+	or	$a4, $a4, $a6
 	or	$a3, $a3, $a4
-	xor	$a3, $a3, $a6
+	xor	$a3, $a3, $a5
 	st.w	$a3, $a1, 0
 	bstrpick.d	$a3, $t2, 15, 8
 	ldx.bu	$a3, $a2, $a3
@@ -1103,15 +1103,15 @@ Aes_Encode:                             # @Aes_Encode
 	slli.d	$a3, $a3, 8
 	bstrpick.d	$a5, $t6, 23, 16
 	ldx.bu	$a5, $a2, $a5
+	bstrpick.d	$a6, $t3, 31, 24
+	ldx.b	$a6, $a2, $a6
 	or	$a3, $a3, $a4
-	bstrpick.d	$a4, $t3, 31, 24
-	ldx.b	$a4, $a2, $a4
-	slli.d	$a5, $a5, 16
-	ld.w	$a6, $a0, 52
-	or	$a3, $a3, $a5
-	slli.d	$a4, $a4, 24
+	slli.d	$a4, $a5, 16
+	ld.w	$a5, $a0, 52
+	slli.d	$a6, $a6, 24
+	or	$a4, $a4, $a6
 	or	$a3, $a3, $a4
-	xor	$a3, $a3, $a6
+	xor	$a3, $a3, $a5
 	st.w	$a3, $a1, 4
 	bstrpick.d	$a3, $t6, 15, 8
 	ldx.bu	$a3, $a2, $a3
@@ -1119,15 +1119,15 @@ Aes_Encode:                             # @Aes_Encode
 	slli.d	$a3, $a3, 8
 	bstrpick.d	$a5, $t3, 23, 16
 	ldx.bu	$a5, $a2, $a5
+	bstrpick.d	$a6, $t4, 31, 24
+	ldx.b	$a6, $a2, $a6
 	or	$a3, $a3, $a4
-	bstrpick.d	$a4, $t4, 31, 24
-	ldx.b	$a4, $a2, $a4
-	slli.d	$a5, $a5, 16
-	ld.w	$a6, $a0, 56
-	or	$a3, $a3, $a5
-	slli.d	$a4, $a4, 24
+	slli.d	$a4, $a5, 16
+	ld.w	$a5, $a0, 56
+	slli.d	$a6, $a6, 24
+	or	$a4, $a4, $a6
 	or	$a3, $a3, $a4
-	xor	$a3, $a3, $a6
+	xor	$a3, $a3, $a5
 	st.w	$a3, $a1, 8
 	bstrpick.d	$a3, $t3, 15, 8
 	ldx.bu	$a3, $a2, $a3
@@ -1135,13 +1135,13 @@ Aes_Encode:                             # @Aes_Encode
 	slli.d	$a3, $a3, 8
 	bstrpick.d	$a5, $t4, 23, 16
 	ldx.bu	$a5, $a2, $a5
+	bstrpick.d	$a6, $t2, 31, 24
+	ldx.b	$a2, $a2, $a6
 	or	$a3, $a3, $a4
-	bstrpick.d	$a4, $t2, 31, 24
-	ldx.b	$a2, $a2, $a4
 	slli.d	$a4, $a5, 16
 	ld.w	$a0, $a0, 60
-	or	$a3, $a3, $a4
 	slli.d	$a2, $a2, 24
+	or	$a2, $a4, $a2
 	or	$a2, $a3, $a2
 	xor	$a0, $a2, $a0
 	st.w	$a0, $a1, 12

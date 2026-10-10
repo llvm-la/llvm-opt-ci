@@ -13888,8 +13888,8 @@ _ZL29singleEarlyExitWithSingleLoadItEmPT_S1_S1_i: # @_ZL29singleEarlyExitWithSin
 	vbsrl.v	$vr1, $vr0, 2
 	vmax.hu	$vr0, $vr1, $vr0
 	vpickve2gr.hu	$a0, $vr0, 0
-	add.d	$a0, $a0, $a2
 	ori	$a1, $zero, 8
+	sub.d	$a1, $a1, $a2
 	sub.d	$a0, $a1, $a0
 	ret
 .Lfunc_end48:
@@ -13992,8 +13992,8 @@ _ZL29singleEarlyExitWithSingleLoadIjEmPT_S1_S1_i: # @_ZL29singleEarlyExitWithSin
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.wu	$a0, $vr0, 0
-	add.d	$a0, $a0, $a2
 	ori	$a1, $zero, 4
+	sub.d	$a1, $a1, $a2
 	sub.d	$a0, $a1, $a0
 	ret
 .Lfunc_end50:
@@ -14092,8 +14092,8 @@ _ZL29singleEarlyExitWithSingleLoadImEmPT_S1_S1_i: # @_ZL29singleEarlyExitWithSin
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.du	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
-	add.d	$a0, $a0, $a2
 	ori	$a1, $zero, 2
+	sub.d	$a1, $a1, $a2
 	sub.d	$a0, $a1, $a0
 	ret
 .Lfunc_end52:
@@ -14292,8 +14292,8 @@ _ZL27singleEarlyExitWithTwoLoadsItEmPT_S1_S1_i: # @_ZL27singleEarlyExitWithTwoLo
 	vbsrl.v	$vr1, $vr0, 2
 	vmax.hu	$vr0, $vr1, $vr0
 	vpickve2gr.hu	$a0, $vr0, 0
-	add.d	$a0, $a0, $a4
 	ori	$a1, $zero, 8
+	sub.d	$a1, $a1, $a4
 	sub.d	$a0, $a1, $a0
 	ret
 .Lfunc_end55:
@@ -14370,8 +14370,8 @@ _ZL27singleEarlyExitWithTwoLoadsIjEmPT_S1_S1_i: # @_ZL27singleEarlyExitWithTwoLo
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.wu	$a0, $vr0, 0
-	add.d	$a0, $a0, $a4
 	ori	$a1, $zero, 4
+	sub.d	$a1, $a1, $a4
 	sub.d	$a0, $a1, $a0
 	ret
 .Lfunc_end56:
@@ -14444,8 +14444,8 @@ _ZL27singleEarlyExitWithTwoLoadsImEmPT_S1_S1_i: # @_ZL27singleEarlyExitWithTwoLo
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.du	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
-	add.d	$a0, $a0, $a4
 	ori	$a1, $zero, 2
+	sub.d	$a1, $a1, $a4
 	sub.d	$a0, $a1, $a0
 	ret
 .Lfunc_end57:
@@ -14553,44 +14553,44 @@ _ZL39singleEarlyExitWithThreeLoadsAndComputeIhEmPT_S1_S1_i: # @_ZL39singleEarlyE
 	vpickve2gr.b	$a6, $vr1, 12
 	andi	$a6, $a6, 1
 	slli.d	$a6, $a6, 6
-	or	$a6, $a7, $a6
-	vpickve2gr.b	$a7, $vr1, 14
-	andi	$a7, $a7, 1
-	slli.d	$a7, $a7, 7
-	or	$a6, $a6, $a7
+	vpickve2gr.b	$t0, $vr1, 14
+	andi	$t0, $t0, 1
+	slli.d	$t0, $t0, 7
+	or	$a6, $a6, $t0
 	vseqi.w	$vr2, $vr4, 1
-	vpickve2gr.b	$a7, $vr2, 0
-	andi	$a7, $a7, 1
-	slli.d	$a7, $a7, 8
-	or	$a6, $a6, $a7
+	vpickve2gr.b	$t0, $vr2, 0
+	andi	$t0, $t0, 1
+	slli.d	$t0, $t0, 8
+	or	$a6, $a6, $t0
 	vseqi.w	$vr3, $vr5, 1
 	vpickev.h	$vr2, $vr3, $vr2
-	vpickve2gr.b	$a7, $vr2, 2
-	andi	$a7, $a7, 1
-	slli.d	$a7, $a7, 9
-	or	$a6, $a6, $a7
-	vpickve2gr.b	$a7, $vr2, 4
-	andi	$a7, $a7, 1
-	slli.d	$a7, $a7, 10
-	or	$a6, $a6, $a7
+	vpickve2gr.b	$t0, $vr2, 2
+	andi	$t0, $t0, 1
+	slli.d	$t0, $t0, 9
+	or	$a6, $a6, $t0
+	vpickve2gr.b	$t0, $vr2, 4
+	andi	$t0, $t0, 1
+	slli.d	$t0, $t0, 10
+	or	$a6, $a6, $t0
+	or	$a6, $a7, $a6
 	vpickve2gr.b	$a7, $vr2, 6
 	andi	$a7, $a7, 1
 	slli.d	$a7, $a7, 11
-	or	$a6, $a6, $a7
-	vpickve2gr.b	$a7, $vr2, 8
-	andi	$a7, $a7, 1
-	slli.d	$a7, $a7, 12
-	or	$a6, $a6, $a7
-	vpickve2gr.b	$a7, $vr2, 10
-	andi	$a7, $a7, 1
-	slli.d	$a7, $a7, 13
-	or	$a6, $a6, $a7
-	vpickve2gr.b	$a7, $vr2, 12
-	andi	$a7, $a7, 1
-	slli.d	$a7, $a7, 14
-	or	$a6, $a6, $a7
-	vpickve2gr.b	$a7, $vr2, 14
-	slli.d	$a7, $a7, 15
+	vpickve2gr.b	$t0, $vr2, 8
+	andi	$t0, $t0, 1
+	slli.d	$t0, $t0, 12
+	or	$a7, $a7, $t0
+	vpickve2gr.b	$t0, $vr2, 10
+	andi	$t0, $t0, 1
+	slli.d	$t0, $t0, 13
+	or	$a7, $a7, $t0
+	vpickve2gr.b	$t0, $vr2, 12
+	andi	$t0, $t0, 1
+	slli.d	$t0, $t0, 14
+	or	$a7, $a7, $t0
+	vpickve2gr.b	$t0, $vr2, 14
+	slli.d	$t0, $t0, 15
+	or	$a7, $a7, $t0
 	or	$a6, $a6, $a7
 	bstrpick.d	$a6, $a6, 15, 0
 	bnez	$a6, .LBB58_12
@@ -14725,8 +14725,8 @@ _ZL39singleEarlyExitWithThreeLoadsAndComputeItEmPT_S1_S1_i: # @_ZL39singleEarlyE
 	vbsrl.v	$vr1, $vr0, 2
 	vmax.hu	$vr0, $vr1, $vr0
 	vpickve2gr.hu	$a0, $vr0, 0
-	add.d	$a0, $a0, $a5
 	ori	$a1, $zero, 8
+	sub.d	$a1, $a1, $a5
 	sub.d	$a0, $a1, $a0
 	ret
 .Lfunc_end59:
@@ -14813,8 +14813,8 @@ _ZL39singleEarlyExitWithThreeLoadsAndComputeIjEmPT_S1_S1_i: # @_ZL39singleEarlyE
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.wu	$a0, $vr0, 0
-	add.d	$a0, $a0, $a5
 	ori	$a1, $zero, 4
+	sub.d	$a1, $a1, $a5
 	sub.d	$a0, $a1, $a0
 	ret
 .Lfunc_end60:
@@ -14896,8 +14896,8 @@ _ZL39singleEarlyExitWithThreeLoadsAndComputeImEmPT_S1_S1_i: # @_ZL39singleEarlyE
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.du	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
-	add.d	$a0, $a0, $a6
 	ori	$a1, $zero, 2
+	sub.d	$a1, $a1, $a6
 	sub.d	$a0, $a1, $a0
 	ret
 .Lfunc_end61:

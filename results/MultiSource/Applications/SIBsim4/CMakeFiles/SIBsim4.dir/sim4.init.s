@@ -1683,8 +1683,8 @@ print_res:                              # @print_res
 	beqz	$a0, .LBB4_34
 .LBB4_33:
 	ld.w	$a1, $s4, 68
-	add.d	$a2, $s3, $s6
-	sub.d	$a0, $a0, $a2
+	sub.d	$a0, $a0, $s6
+	sub.d	$a0, $a0, $s3
 	add.d	$a1, $s5, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $a0, 1
@@ -1903,8 +1903,8 @@ print_res:                              # @print_res
 .LBB4_60:
 	ld.w	$a1, $s4, 68
 	sub.d	$a0, $a0, $s3
-	add.d	$a1, $s2, $a1
-	add.d	$a0, $a1, $a0
+	add.d	$a0, $s2, $a0
+	add.d	$a0, $a0, $a1
 	addi.w	$a1, $a0, 5
 	pcalau12i	$a0, %pc_hi20(.L.str.31)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.31)

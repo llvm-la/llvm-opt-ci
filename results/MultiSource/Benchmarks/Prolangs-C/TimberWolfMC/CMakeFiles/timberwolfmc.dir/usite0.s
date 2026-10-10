@@ -106,14 +106,15 @@ usite0:                                 # @usite0
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(ufixnet)
 	jirl	$ra, $ra, 0
-	add.d	$fp, $a0, $fp
+	move	$s3, $a0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(usoftnet)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s4, 0
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a2, $a2, 0
-	add.d	$s5, $fp, $a0
+	add.d	$a0, $fp, $a0
+	add.d	$s5, $s3, $a0
 	add.w	$a0, $s5, $s7
 	add.w	$a1, $a2, $a1
 	bge	$a1, $a0, .LBB0_2

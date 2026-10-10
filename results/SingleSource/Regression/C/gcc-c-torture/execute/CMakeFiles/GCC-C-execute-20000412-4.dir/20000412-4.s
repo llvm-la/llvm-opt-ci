@@ -13,12 +13,12 @@ f:                                      # @f
 	srai.d	$a5, $a4, 63
 	andn	$a5, $a4, $a5
 	addi.d	$a4, $a5, -3
-	add.d	$a5, $a2, $a5
 	nor	$a0, $a0, $zero
+	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $a5
 	mul.d	$a0, $a3, $a0
-	add.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a1
+	sub.d	$a1, $a2, $a1
+	add.d	$a0, $a1, $a0
 	.p2align	4, , 16
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
 	add.w	$a0, $a0, $a3

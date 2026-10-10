@@ -200,8 +200,8 @@ bigTableSetup:                          # @bigTableSetup
 	vseq.w	$vr11, $vr6, $vr11
 	vxor.v	$vr12, $vr10, $vr5
 	vsrli.w	$vr7, $vr7, 19
-	vand.v	$vr7, $vr7, $vr9
 	vand.v	$vr7, $vr7, $vr1
+	vand.v	$vr7, $vr7, $vr9
 	vxor.v	$vr7, $vr6, $vr7
 	vandn.v	$vr9, $vr11, $vr9
 	vbitsel.v	$vr9, $vr10, $vr12, $vr9

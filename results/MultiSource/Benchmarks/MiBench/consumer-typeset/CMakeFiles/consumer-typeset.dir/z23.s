@@ -1958,11 +1958,11 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.w	$a2, $a0, 48
 	st.w	$s8, $a0, 56
 	ld.d	$a0, $s0, 0
-	ld.w	$a2, $fp, 60
 	ld.d	$a3, $a0, 192
+	ld.w	$a0, $fp, 60
 	ld.w	$a1, $fp, 88
-	add.d	$a0, $a5, $a2
-	sub.w	$a2, $a6, $a0
+	sub.d	$a2, $a6, $a5
+	sub.w	$a2, $a2, $a0
 	move	$a0, $fp
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s0, 0
@@ -2785,8 +2785,8 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.w	$a0, $a1, 0
 	ld.w	$a1, $s0, 56
 	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
-	add.d	$a0, $a2, $a0
-	sub.d	$a0, $s1, $a0
+	sub.d	$a2, $s1, $a2
+	sub.d	$a0, $a2, $a0
 	add.d	$a0, $a0, $a1
 .LBB0_398:
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
@@ -4123,12 +4123,12 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
-	ld.d	$fp, $a0, 8
+	ld.d	$s0, $a0, 8
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	beq	$fp, $a0, .LBB1_44
+	beq	$s0, $a0, .LBB1_44
 # %bb.1:
-	move	$s0, $a0
+	move	$fp, $a0
 	ori	$s1, $zero, 1
 	ori	$s2, $zero, 9
 	ori	$s3, $zero, 91
@@ -4138,11 +4138,11 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 	addi.d	$a0, $a0, -9
 	bltu	$a0, $s3, .LBB1_9
 .LBB1_3:                                #   in Loop: Header=BB1_4 Depth=1
-	ld.d	$fp, $fp, 8
-	beq	$fp, $s0, .LBB1_44
+	ld.d	$s0, $s0, 8
+	beq	$s0, $fp, .LBB1_44
 .LBB1_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_5 Depth 2
-	move	$s4, $fp
+	move	$s4, $s0
 	.p2align	4, , 16
 .LBB1_5:                                #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -4161,12 +4161,12 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 .LBB1_9:
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $s4, 2
-	ld.d	$s6, $fp, 8
+	ld.d	$s6, $s0, 8
 	ld.w	$s2, $a0, 48
 	move	$s7, $zero
-	beq	$s6, $s0, .LBB1_21
+	beq	$s6, $fp, .LBB1_21
 # %bb.10:
-	ori	$fp, $zero, 1
+	ori	$s0, $zero, 1
 	ori	$s1, $zero, 9
 	ori	$s5, $zero, 90
 	ori	$s8, $zero, 1
@@ -4179,7 +4179,7 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 	bnez	$a0, .LBB1_22
 .LBB1_12:                               #   in Loop: Header=BB1_13 Depth=1
 	ld.d	$s6, $s6, 8
-	beq	$s6, $s0, .LBB1_24
+	beq	$s6, $fp, .LBB1_24
 .LBB1_13:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_14 Depth 2
 	move	$s3, $s6
@@ -4192,7 +4192,7 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 # %bb.15:                               #   in Loop: Header=BB1_13 Depth=1
 	beq	$a0, $s1, .LBB1_11
 # %bb.16:                               #   in Loop: Header=BB1_13 Depth=1
-	bne	$a0, $fp, .LBB1_19
+	bne	$a0, $s0, .LBB1_19
 # %bb.17:                               #   in Loop: Header=BB1_13 Depth=1
 	beqz	$s8, .LBB1_20
 # %bb.18:                               #   in Loop: Header=BB1_13 Depth=1
@@ -4200,7 +4200,7 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 	bstrpick.d	$s8, $a0, 9, 9
 	move	$s7, $s3
 	ld.d	$s6, $s6, 8
-	bne	$s6, $s0, .LBB1_13
+	bne	$s6, $fp, .LBB1_13
 	b	.LBB1_24
 	.p2align	4, , 16
 .LBB1_19:                               #   in Loop: Header=BB1_13 Depth=1
@@ -4211,7 +4211,7 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 	move	$s8, $zero
 	move	$s7, $s3
 	ld.d	$s6, $s6, 8
-	bne	$s6, $s0, .LBB1_13
+	bne	$s6, $fp, .LBB1_13
 	b	.LBB1_24
 .LBB1_21:
                                         # implicit-def: $r26
@@ -4233,10 +4233,10 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 	jirl	$ra, $ra, 0
 	move	$s7, $zero
 .LBB1_24:
-	beq	$s6, $s0, .LBB1_44
+	beq	$s6, $fp, .LBB1_44
 # %bb.25:
 	move	$s8, $zero
-	ori	$fp, $zero, 9
+	ori	$s0, $zero, 9
 	ori	$s1, $zero, 1
 	b	.LBB1_28
 	.p2align	4, , 16
@@ -4248,7 +4248,7 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 	addi.w	$s8, $s8, 1
 	move	$s4, $s3
 	move	$s3, $s5
-	beq	$s6, $s0, .LBB1_46
+	beq	$s6, $fp, .LBB1_46
 .LBB1_28:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_34 Depth 2
                                         #       Child Loop BB1_35 Depth 3
@@ -4279,7 +4279,7 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 	ld.d	$s6, $s6, 8
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	move	$s7, $zero
-	beq	$s6, $s0, .LBB1_26
+	beq	$s6, $fp, .LBB1_26
 # %bb.31:                               #   in Loop: Header=BB1_28 Depth=1
 	ori	$s4, $zero, 1
 	b	.LBB1_34
@@ -4291,7 +4291,7 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 	bnez	$a0, .LBB1_42
 .LBB1_33:                               #   in Loop: Header=BB1_34 Depth=2
 	ld.d	$s6, $s6, 8
-	beq	$s6, $s0, .LBB1_27
+	beq	$s6, $fp, .LBB1_27
 .LBB1_34:                               #   Parent Loop BB1_28 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB1_35 Depth 3
@@ -4304,7 +4304,7 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 	ld.bu	$a0, $s5, 32
 	beqz	$a0, .LBB1_35
 # %bb.36:                               #   in Loop: Header=BB1_34 Depth=2
-	beq	$a0, $fp, .LBB1_32
+	beq	$a0, $s0, .LBB1_32
 # %bb.37:                               #   in Loop: Header=BB1_34 Depth=2
 	bne	$a0, $s1, .LBB1_40
 # %bb.38:                               #   in Loop: Header=BB1_34 Depth=2
@@ -4314,7 +4314,7 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 	bstrpick.d	$s4, $a0, 9, 9
 	move	$s7, $s5
 	ld.d	$s6, $s6, 8
-	bne	$s6, $s0, .LBB1_34
+	bne	$s6, $fp, .LBB1_34
 	b	.LBB1_27
 	.p2align	4, , 16
 .LBB1_40:                               #   in Loop: Header=BB1_34 Depth=2
@@ -4326,7 +4326,7 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 	move	$s4, $zero
 	move	$s7, $s5
 	ld.d	$s6, $s6, 8
-	bne	$s6, $s0, .LBB1_34
+	bne	$s6, $fp, .LBB1_34
 	b	.LBB1_27
 	.p2align	4, , 16
 .LBB1_42:                               #   in Loop: Header=BB1_28 Depth=1
@@ -4365,9 +4365,9 @@ FindAdjustIncrement:                    # @FindAdjustIncrement
 .LBB1_46:
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	ld.w	$a0, $a0, 56
-	add.d	$a0, $s2, $a0
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	sub.w	$a0, $a1, $a0
+	sub.d	$a0, $a1, $a0
+	sub.w	$a0, $a0, $s2
 	div.w	$a0, $a0, $s8
 	b	.LBB1_45
 .Lfunc_end1:

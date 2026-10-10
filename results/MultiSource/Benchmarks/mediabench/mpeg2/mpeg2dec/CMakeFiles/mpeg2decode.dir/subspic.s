@@ -42,11 +42,11 @@ Substitute_Frame_Buffer:                # @Substitute_Frame_Buffer
 # %bb.5:
 	pcalau12i	$a0, %got_pc_hi20(temporal_reference)
 	ld.d	$a0, $a0, %got_pc_lo12(temporal_reference)
-	ld.w	$a0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(Substitute_Frame_Buffer.previous_anchor_temporal_reference)
 	ld.w	$a1, $a1, %pc_lo12(Substitute_Frame_Buffer.previous_anchor_temporal_reference)
-	add.d	$a0, $a2, $a0
+	ld.w	$a0, $a0, 0
 	nor	$a1, $a1, $zero
+	add.d	$a1, $a1, $a2
 	add.w	$a2, $a1, $a0
 .LBB0_6:
 	pcalau12i	$a0, %got_pc_hi20(Substitute_Picture_Filename)

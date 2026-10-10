@@ -110,15 +110,15 @@ des_encrypt:                            # @des_encrypt
 	addi.d	$s0, $t3, 1537
 	ldx.d	$s8, $s0, $s8
 	xor	$t0, $s1, $t0
-	xor	$t0, $t0, $s2
-	xor	$t0, $t0, $s3
-	xor	$t0, $t0, $s4
-	xor	$t0, $t0, $s5
-	xor	$t0, $t0, $s6
+	xor	$s1, $s2, $s3
+	xor	$t0, $t0, $s1
+	xor	$s1, $s4, $s5
+	xor	$s1, $s1, $s6
+	xor	$t0, $t0, $s1
 	ld.d	$s1, $a1, -16
 	ld.d	$s2, $a1, -8
-	xor	$t0, $t0, $s7
-	xor	$t0, $t0, $s8
+	xor	$s3, $s7, $s8
+	xor	$t0, $t0, $s3
 	xor	$s1, $t0, $s1
 	xor	$s2, $t0, $s2
 	srli.d	$s3, $s2, 4
@@ -149,14 +149,14 @@ des_encrypt:                            # @des_encrypt
 	andi	$s3, $s3, 504
 	ldx.d	$s3, $s0, $s3
 	xor	$s4, $s4, $s5
-	xor	$s4, $s4, $s6
+	xor	$s1, $s6, $s1
 	xor	$s1, $s4, $s1
-	xor	$s1, $s1, $s7
-	xor	$s1, $s1, $s8
+	xor	$s4, $s7, $s8
+	xor	$s2, $s4, $s2
 	xor	$s1, $s1, $s2
 	ld.d	$s2, $a1, 0
 	ld.d	$s4, $a1, 8
-	xor	$s1, $s1, $s3
+	xor	$a7, $s3, $a7
 	xor	$a7, $s1, $a7
 	xor	$s1, $a7, $s2
 	xor	$s2, $a7, $s4
@@ -188,14 +188,14 @@ des_encrypt:                            # @des_encrypt
 	andi	$s3, $s3, 504
 	ldx.d	$s3, $s0, $s3
 	xor	$s4, $s4, $s5
-	xor	$s4, $s4, $s6
+	xor	$s1, $s6, $s1
 	xor	$s1, $s4, $s1
-	xor	$s1, $s1, $s7
-	xor	$s1, $s1, $s8
+	xor	$s4, $s7, $s8
+	xor	$s2, $s4, $s2
 	xor	$s1, $s1, $s2
 	ld.d	$s2, $a1, 16
 	ld.d	$s4, $a1, 24
-	xor	$s1, $s1, $s3
+	xor	$t0, $s3, $t0
 	xor	$t0, $s1, $t0
 	xor	$s1, $t0, $s2
 	xor	$s2, $t0, $s4
@@ -227,12 +227,12 @@ des_encrypt:                            # @des_encrypt
 	andi	$s1, $s1, 504
 	ldx.d	$s0, $s0, $s1
 	xor	$s1, $s4, $s5
-	xor	$s1, $s1, $s6
+	xor	$t6, $s6, $t6
 	xor	$t6, $s1, $t6
+	xor	$t7, $t7, $t8
+	xor	$t7, $t7, $fp
 	xor	$t6, $t6, $t7
-	xor	$t6, $t6, $t8
-	xor	$t6, $t6, $fp
-	xor	$t6, $t6, $s0
+	xor	$a7, $s0, $a7
 	xor	$a7, $t6, $a7
 	addi.d	$a2, $a2, 8
 	addi.d	$a1, $a1, 64
@@ -286,15 +286,15 @@ des_encrypt:                            # @des_encrypt
 	addi.d	$s0, $t3, 1537
 	ldx.d	$s8, $s0, $s8
 	xor	$t0, $s1, $t0
-	xor	$t0, $t0, $s2
-	xor	$t0, $t0, $s3
-	xor	$t0, $t0, $s4
-	xor	$t0, $t0, $s5
-	xor	$t0, $t0, $s6
+	xor	$s1, $s2, $s3
+	xor	$t0, $t0, $s1
+	xor	$s1, $s4, $s5
+	xor	$s1, $s1, $s6
+	xor	$t0, $t0, $s1
 	ld.d	$s1, $a1, -24
 	ld.d	$s2, $a1, -16
-	xor	$t0, $t0, $s7
-	xor	$t0, $t0, $s8
+	xor	$s3, $s7, $s8
+	xor	$t0, $t0, $s3
 	xor	$s1, $t0, $s1
 	xor	$s2, $t0, $s2
 	srli.d	$s3, $s2, 4
@@ -325,14 +325,14 @@ des_encrypt:                            # @des_encrypt
 	andi	$s3, $s3, 504
 	ldx.d	$s3, $s0, $s3
 	xor	$s4, $s4, $s5
-	xor	$s4, $s4, $s6
+	xor	$s1, $s6, $s1
 	xor	$s1, $s4, $s1
-	xor	$s1, $s1, $s7
-	xor	$s1, $s1, $s8
+	xor	$s4, $s7, $s8
+	xor	$s2, $s4, $s2
 	xor	$s1, $s1, $s2
 	ld.d	$s2, $a1, -40
 	ld.d	$s4, $a1, -32
-	xor	$s1, $s1, $s3
+	xor	$a7, $s3, $a7
 	xor	$a7, $s1, $a7
 	xor	$s1, $a7, $s2
 	xor	$s2, $a7, $s4
@@ -364,14 +364,14 @@ des_encrypt:                            # @des_encrypt
 	andi	$s3, $s3, 504
 	ldx.d	$s3, $s0, $s3
 	xor	$s4, $s4, $s5
-	xor	$s4, $s4, $s6
+	xor	$s1, $s6, $s1
 	xor	$s1, $s4, $s1
-	xor	$s1, $s1, $s7
-	xor	$s1, $s1, $s8
+	xor	$s4, $s7, $s8
+	xor	$s2, $s4, $s2
 	xor	$s1, $s1, $s2
 	ld.d	$s2, $a1, -56
 	ld.d	$s4, $a1, -48
-	xor	$s1, $s1, $s3
+	xor	$t0, $s3, $t0
 	xor	$t0, $s1, $t0
 	xor	$s1, $t0, $s2
 	xor	$s2, $t0, $s4
@@ -403,12 +403,12 @@ des_encrypt:                            # @des_encrypt
 	andi	$s1, $s1, 504
 	ldx.d	$s0, $s0, $s1
 	xor	$s1, $s4, $s5
-	xor	$s1, $s1, $s6
+	xor	$t6, $s6, $t6
 	xor	$t6, $s1, $t6
+	xor	$t7, $t7, $t8
+	xor	$t7, $t7, $fp
 	xor	$t6, $t6, $t7
-	xor	$t6, $t6, $t8
-	xor	$t6, $t6, $fp
-	xor	$t6, $t6, $s0
+	xor	$a7, $s0, $a7
 	xor	$a7, $t6, $a7
 	addi.d	$a2, $a2, -8
 	addi.d	$a1, $a1, -64
@@ -536,15 +536,15 @@ des_encrypt2:                           # @des_encrypt2
 	andi	$t8, $t8, 504
 	ldx.d	$t8, $t4, $t8
 	xor	$a4, $fp, $a4
-	xor	$a4, $a4, $s0
-	xor	$a4, $a4, $s1
+	xor	$fp, $s0, $s1
+	xor	$a4, $a4, $fp
+	xor	$t6, $t6, $s2
+	xor	$t6, $t6, $s3
 	xor	$a4, $a4, $t6
-	xor	$a4, $a4, $s2
-	xor	$a4, $a4, $s3
 	ld.d	$t6, $a1, -16
 	ld.d	$fp, $a1, -8
+	xor	$t7, $t7, $t8
 	xor	$a4, $a4, $t7
-	xor	$a4, $a4, $t8
 	xor	$t6, $a4, $t6
 	xor	$t7, $a4, $fp
 	srli.d	$t8, $t7, 4
@@ -575,14 +575,14 @@ des_encrypt2:                           # @des_encrypt2
 	andi	$t8, $t8, 504
 	ldx.d	$t8, $t4, $t8
 	xor	$fp, $fp, $s0
-	xor	$fp, $fp, $s1
+	xor	$t6, $s1, $t6
 	xor	$t6, $fp, $t6
-	xor	$t6, $t6, $s2
-	xor	$t6, $t6, $s3
+	xor	$fp, $s2, $s3
+	xor	$t7, $fp, $t7
 	xor	$t6, $t6, $t7
 	ld.d	$t7, $a1, 0
 	ld.d	$fp, $a1, 8
-	xor	$t6, $t6, $t8
+	xor	$a3, $t8, $a3
 	xor	$a3, $t6, $a3
 	xor	$t6, $a3, $t7
 	xor	$t7, $a3, $fp
@@ -614,14 +614,14 @@ des_encrypt2:                           # @des_encrypt2
 	andi	$t8, $t8, 504
 	ldx.d	$t8, $t4, $t8
 	xor	$fp, $fp, $s0
-	xor	$fp, $fp, $s1
+	xor	$t6, $s1, $t6
 	xor	$t6, $fp, $t6
-	xor	$t6, $t6, $s2
-	xor	$t6, $t6, $s3
+	xor	$fp, $s2, $s3
+	xor	$t7, $fp, $t7
 	xor	$t6, $t6, $t7
 	ld.d	$t7, $a1, 16
 	ld.d	$fp, $a1, 24
-	xor	$t6, $t6, $t8
+	xor	$a4, $t8, $a4
 	xor	$a4, $t6, $a4
 	xor	$t6, $a4, $t7
 	xor	$t7, $a4, $fp
@@ -653,12 +653,12 @@ des_encrypt2:                           # @des_encrypt2
 	andi	$t8, $t8, 504
 	ldx.d	$t8, $t4, $t8
 	xor	$fp, $fp, $s0
-	xor	$fp, $fp, $s1
+	xor	$t6, $s1, $t6
 	xor	$t6, $fp, $t6
-	xor	$t6, $t6, $s2
-	xor	$t6, $t6, $s3
+	xor	$fp, $s2, $s3
+	xor	$t7, $fp, $t7
 	xor	$t6, $t6, $t7
-	xor	$t6, $t6, $t8
+	xor	$a3, $t8, $a3
 	xor	$a3, $t6, $a3
 	addi.d	$a2, $a2, 8
 	addi.d	$a1, $a1, 64
@@ -712,15 +712,15 @@ des_encrypt2:                           # @des_encrypt2
 	andi	$t8, $t8, 504
 	ldx.d	$t8, $t4, $t8
 	xor	$a4, $fp, $a4
-	xor	$a4, $a4, $s0
-	xor	$a4, $a4, $s1
+	xor	$fp, $s0, $s1
+	xor	$a4, $a4, $fp
+	xor	$t6, $t6, $s2
+	xor	$t6, $t6, $s3
 	xor	$a4, $a4, $t6
-	xor	$a4, $a4, $s2
-	xor	$a4, $a4, $s3
 	ld.d	$t6, $a1, -24
 	ld.d	$fp, $a1, -16
+	xor	$t7, $t7, $t8
 	xor	$a4, $a4, $t7
-	xor	$a4, $a4, $t8
 	xor	$t6, $a4, $t6
 	xor	$t7, $a4, $fp
 	srli.d	$t8, $t7, 4
@@ -751,14 +751,14 @@ des_encrypt2:                           # @des_encrypt2
 	andi	$t8, $t8, 504
 	ldx.d	$t8, $t4, $t8
 	xor	$fp, $fp, $s0
-	xor	$fp, $fp, $s1
+	xor	$t6, $s1, $t6
 	xor	$t6, $fp, $t6
-	xor	$t6, $t6, $s2
-	xor	$t6, $t6, $s3
+	xor	$fp, $s2, $s3
+	xor	$t7, $fp, $t7
 	xor	$t6, $t6, $t7
 	ld.d	$t7, $a1, -40
 	ld.d	$fp, $a1, -32
-	xor	$t6, $t6, $t8
+	xor	$a3, $t8, $a3
 	xor	$a3, $t6, $a3
 	xor	$t6, $a3, $t7
 	xor	$t7, $a3, $fp
@@ -790,14 +790,14 @@ des_encrypt2:                           # @des_encrypt2
 	andi	$t8, $t8, 504
 	ldx.d	$t8, $t4, $t8
 	xor	$fp, $fp, $s0
-	xor	$fp, $fp, $s1
+	xor	$t6, $s1, $t6
 	xor	$t6, $fp, $t6
-	xor	$t6, $t6, $s2
-	xor	$t6, $t6, $s3
+	xor	$fp, $s2, $s3
+	xor	$t7, $fp, $t7
 	xor	$t6, $t6, $t7
 	ld.d	$t7, $a1, -56
 	ld.d	$fp, $a1, -48
-	xor	$t6, $t6, $t8
+	xor	$a4, $t8, $a4
 	xor	$a4, $t6, $a4
 	xor	$t6, $a4, $t7
 	xor	$t7, $a4, $fp
@@ -829,12 +829,12 @@ des_encrypt2:                           # @des_encrypt2
 	andi	$t8, $t8, 504
 	ldx.d	$t8, $t4, $t8
 	xor	$fp, $fp, $s0
-	xor	$fp, $fp, $s1
+	xor	$t6, $s1, $t6
 	xor	$t6, $fp, $t6
-	xor	$t6, $t6, $s2
-	xor	$t6, $t6, $s3
+	xor	$fp, $s2, $s3
+	xor	$t7, $fp, $t7
 	xor	$t6, $t6, $t7
-	xor	$t6, $t6, $t8
+	xor	$a3, $t8, $a3
 	xor	$a3, $t6, $a3
 	addi.d	$a2, $a2, -8
 	addi.d	$a1, $a1, -64

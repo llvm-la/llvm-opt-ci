@@ -173,25 +173,25 @@ _Z11check_tracePKcS0_PK13trace_elementdjbjjbbi: # @_Z11check_tracePKcS0_PK13trac
 	fadd.d	$fs3, $ft14, $fa0
 	fadd.d	$fs0, $fs3, $fa0
 	fadd.d	$fs1, $fs0, $fa0
-	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 88                   # 8-byte Folded Spill
 	fadd.d	$fs2, $fs1, $fa0
-	fst.d	$fs1, $sp, 104                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 96                   # 8-byte Folded Spill
 	fadd.d	$ft1, $fs2, $fa0
-	fst.d	$fs2, $sp, 112                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 104                  # 8-byte Folded Spill
 	fadd.d	$ft7, $ft1, $fa0
-	fst.d	$ft1, $sp, 128                  # 8-byte Folded Spill
+	fst.d	$ft1, $sp, 120                  # 8-byte Folded Spill
 	fadd.d	$fa5, $ft7, $fa0
 	fadd.d	$fa4, $fa5, $fa0
-	fst.d	$fa5, $sp, 136                  # 8-byte Folded Spill
+	fst.d	$fa5, $sp, 128                  # 8-byte Folded Spill
 	fadd.d	$fa3, $fa4, $fa0
-	fst.d	$fa4, $sp, 152                  # 8-byte Folded Spill
+	fst.d	$fa4, $sp, 144                  # 8-byte Folded Spill
 	fadd.d	$fa1, $fa3, $fa0
-	fst.d	$fa3, $sp, 160                  # 8-byte Folded Spill
+	fst.d	$fa3, $sp, 152                  # 8-byte Folded Spill
 	fadd.d	$ft0, $fa1, $fa0
-	fst.d	$fa1, $sp, 168                  # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 160                  # 8-byte Folded Spill
 	fadd.d	$fa2, $ft0, $fa0
-	fst.d	$fa2, $sp, 192                  # 8-byte Folded Spill
-	fst.d	$ft0, $sp, 184                  # 8-byte Folded Spill
+	fst.d	$fa2, $sp, 184                  # 8-byte Folded Spill
+	fst.d	$ft0, $sp, 176                  # 8-byte Folded Spill
 	fdiv.d	$ft0, $fa2, $ft0
 	fdiv.d	$ft0, $ft0, $fa1
 	fdiv.d	$ft0, $ft0, $fa3
@@ -249,66 +249,65 @@ _Z11check_tracePKcS0_PK13trace_elementdjbjjbbi: # @_Z11check_tracePKcS0_PK13trac
 	fdiv.d	$fa1, $fa1, $fs7
 	ori	$a1, $zero, 39
 	mul.d	$a2, $a0, $a1
-	st.d	$a2, $sp, 200                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 192                   # 8-byte Folded Spill
 	ori	$a1, $zero, 38
 	mul.d	$a1, $a0, $a1
-	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
 	div.d	$a1, $a2, $a1
 	ext.w.h	$a1, $a1
 	alsl.d	$s5, $a0, $a0, 3
 	alsl.d	$a2, $s5, $a0, 2
-	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
 	slli.d	$t4, $a0, 5
 	alsl.d	$a2, $a0, $t4, 2
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
 	alsl.d	$t6, $a0, $a0, 4
 	alsl.d	$a2, $t6, $a0, 1
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
-	div.d	$a1, $a1, $a2
-	ext.w.h	$a1, $a1
-	alsl.d	$a2, $a0, $t4, 1
 	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
-	add.d	$a2, $t4, $a0
+	alsl.d	$a2, $a0, $t4, 1
 	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
+	div.d	$a1, $a1, $a2
+	ext.w.h	$a1, $a1
+	add.d	$a2, $t4, $a0
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
 	div.d	$a1, $a1, $t4
 	ext.w.h	$a1, $a1
 	sub.d	$a2, $t4, $a0
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
 	ori	$a2, $zero, 30
 	mul.d	$a2, $a0, $a2
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
 	ori	$a2, $zero, 29
 	mul.d	$a2, $a0, $a2
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
 	ori	$a2, $zero, 28
 	mul.d	$a2, $a0, $a2
-	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
-	div.d	$a1, $a1, $a2
-	ext.w.h	$a1, $a1
-	move	$t7, $fp
-	alsl.d	$fp, $a0, $a0, 1
-	alsl.d	$a2, $fp, $fp, 3
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
-	ori	$a2, $zero, 26
-	mul.d	$a2, $a0, $a2
+	st.d	$fp, $sp, 200                   # 8-byte Folded Spill
+	alsl.d	$fp, $a0, $a0, 1
+	alsl.d	$a2, $fp, $fp, 3
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	div.d	$a1, $a1, $a2
+	ext.w.h	$a1, $a1
+	ori	$a2, $zero, 26
+	mul.d	$t7, $a0, $a2
+	div.d	$a1, $a1, $t7
 	ext.w.h	$a1, $a1
 	alsl.d	$t8, $fp, $a0, 3
 	div.d	$a1, $a1, $t8
@@ -387,7 +386,6 @@ _Z11check_tracePKcS0_PK13trace_elementdjbjjbbi: # @_Z11check_tracePKcS0_PK13trac
 	div.d	$a1, $a0, $a1
 	ext.w.h	$a1, $a1
 	div.d	$a1, $a1, $fp
-	move	$fp, $t7
 	ext.w.h	$a1, $a1
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
@@ -431,26 +429,26 @@ _Z11check_tracePKcS0_PK13trace_elementdjbjjbbi: # @_Z11check_tracePKcS0_PK13trac
 	fdiv.d	$fa1, $fa1, $ft13
 	fdiv.d	$fa1, $fa1, $ft14
 	fdiv.d	$fa1, $fa1, $fs3
+	fld.d	$fa2, $sp, 88                   # 8-byte Folded Reload
+	fdiv.d	$fa1, $fa1, $fa2
 	fld.d	$fa2, $sp, 96                   # 8-byte Folded Reload
 	fdiv.d	$fa1, $fa1, $fa2
 	fld.d	$fa2, $sp, 104                  # 8-byte Folded Reload
 	fdiv.d	$fa1, $fa1, $fa2
-	fld.d	$fa2, $sp, 112                  # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fld.d	$fa2, $sp, 128                  # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 120                  # 8-byte Folded Reload
 	fdiv.d	$fa1, $fa1, $fa2
 	fdiv.d	$fa1, $fa1, $ft7
-	fld.d	$fa2, $sp, 136                  # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 128                  # 8-byte Folded Reload
+	fdiv.d	$fa1, $fa1, $fa2
+	fld.d	$fa2, $sp, 144                  # 8-byte Folded Reload
 	fdiv.d	$fa1, $fa1, $fa2
 	fld.d	$fa2, $sp, 152                  # 8-byte Folded Reload
 	fdiv.d	$fa1, $fa1, $fa2
 	fld.d	$fa2, $sp, 160                  # 8-byte Folded Reload
 	fdiv.d	$fa1, $fa1, $fa2
-	fld.d	$fa2, $sp, 168                  # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 176                  # 8-byte Folded Reload
 	fdiv.d	$fa1, $fa1, $fa2
 	fld.d	$fa2, $sp, 184                  # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fld.d	$fa2, $sp, 192                  # 8-byte Folded Reload
 	fdiv.d	$fa1, $fa1, $fa2
 	fdiv.d	$fa2, $ft0, $fa0
 	fdiv.d	$fa0, $fa1, $fa0
@@ -479,6 +477,8 @@ _Z11check_tracePKcS0_PK13trace_elementdjbjjbbi: # @_Z11check_tracePKcS0_PK13trac
 	ext.w.h	$a1, $a1
 	div.d	$a1, $a1, $t8
 	ext.w.h	$a1, $a1
+	div.d	$a1, $a1, $t7
+	ext.w.h	$a1, $a1
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
@@ -494,10 +494,10 @@ _Z11check_tracePKcS0_PK13trace_elementdjbjjbbi: # @_Z11check_tracePKcS0_PK13trac
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
+	div.d	$a1, $a1, $t4
+	ext.w.h	$a1, $a1
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	div.d	$a1, $a1, $a2
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $t4
 	ext.w.h	$a1, $a1
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	div.d	$a1, $a1, $a2
@@ -505,25 +505,22 @@ _Z11check_tracePKcS0_PK13trace_elementdjbjjbbi: # @_Z11check_tracePKcS0_PK13trac
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
-	div.d	$a1, $a1, $a2
-	ext.w.h	$a1, $a1
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a2, $s7
 	div.d	$a2, $a2, $a0
 	ext.w.h	$a1, $a1
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 192                   # 8-byte Folded Reload
 	div.d	$a1, $a1, $a3
 	ext.w.h	$a1, $a1
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
-	ld.b	$a4, $s0, 0
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.b	$a4, $fp, 0
 	div.d	$a0, $a1, $a0
 	mul.d	$a0, $a0, $a2
 	ext.w.b	$a5, $a0
@@ -534,7 +531,7 @@ _Z11check_tracePKcS0_PK13trace_elementdjbjjbbi: # @_Z11check_tracePKcS0_PK13trac
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(_ZL35check_and_print_value_and_alignmentIcEbPKcS1_jPKvT_S4_)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s0, 8
+	fld.d	$fa0, $fp, 8
 	move	$s1, $a0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a4, $fa0
@@ -548,8 +545,9 @@ _Z11check_tracePKcS0_PK13trace_elementdjbjjbbi: # @_Z11check_tracePKcS0_PK13trac
 	pcaddu18i	$ra, %call36(_ZL35check_and_print_value_and_alignmentIcEbPKcS1_jPKvT_S4_)
 	jirl	$ra, $ra, 0
 	ld.d	$a4, $sp, 256                   # 8-byte Folded Reload
-	or	$a0, $s1, $a0
-	or	$fp, $fp, $a0
+	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
+	or	$a1, $a1, $s1
+	or	$fp, $a1, $a0
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 .LBB0_4:
 	addi.d	$a0, $a0, -1
@@ -1801,22 +1799,23 @@ main:                                   # @main
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb0ELb0ELb0ELb0ELb0EEbiRVi)
 	jirl	$ra, $ra, 0
-	or	$fp, $fp, $a0
+	or	$s0, $fp, $a0
 	ori	$a0, $zero, 42
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb1ELb1ELb0ELb0ELb0EEbiRVi)
 	jirl	$ra, $ra, 0
-	or	$fp, $fp, $a0
+	move	$fp, $a0
 	ori	$a0, $zero, 42
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb0ELb1ELb0ELb0ELb0EEbiRVi)
 	jirl	$ra, $ra, 0
-	or	$fp, $fp, $a0
+	or	$a0, $fp, $a0
+	or	$s0, $s0, $a0
 	ori	$a0, $zero, 42
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb1ELb0ELb1ELb0ELb0EEbiRVi)
 	jirl	$ra, $ra, 0
-	or	$fp, $fp, $a0
+	move	$fp, $a0
 	ori	$a0, $zero, 42
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb0ELb0ELb1ELb0ELb0EEbiRVi)
@@ -1826,12 +1825,13 @@ main:                                   # @main
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb1ELb1ELb1ELb0ELb0EEbiRVi)
 	jirl	$ra, $ra, 0
-	or	$fp, $fp, $a0
+	or	$a0, $fp, $a0
+	or	$s0, $s0, $a0
 	ori	$a0, $zero, 42
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb0ELb1ELb1ELb0ELb0EEbiRVi)
 	jirl	$ra, $ra, 0
-	or	$fp, $fp, $a0
+	move	$fp, $a0
 	ori	$a0, $zero, 42
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb1ELb0ELb0ELb1ELb0EEbiRVi)
@@ -1846,12 +1846,13 @@ main:                                   # @main
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb1ELb1ELb0ELb1ELb0EEbiRVi)
 	jirl	$ra, $ra, 0
-	or	$fp, $fp, $a0
+	or	$a0, $fp, $a0
+	or	$s0, $s0, $a0
 	ori	$a0, $zero, 42
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb0ELb1ELb0ELb1ELb0EEbiRVi)
 	jirl	$ra, $ra, 0
-	or	$fp, $fp, $a0
+	move	$fp, $a0
 	ori	$a0, $zero, 42
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb1ELb0ELb1ELb1ELb0EEbiRVi)
@@ -1871,12 +1872,13 @@ main:                                   # @main
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb0ELb1ELb1ELb1ELb0EEbiRVi)
 	jirl	$ra, $ra, 0
-	or	$fp, $fp, $a0
+	or	$a0, $fp, $a0
+	or	$s0, $s0, $a0
 	ori	$a0, $zero, 42
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb1ELb0ELb0ELb0ELb1EEbiRVi)
 	jirl	$ra, $ra, 0
-	or	$fp, $fp, $a0
+	move	$fp, $a0
 	ori	$a0, $zero, 42
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb0ELb0ELb0ELb0ELb1EEbiRVi)
@@ -1901,12 +1903,13 @@ main:                                   # @main
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb0ELb0ELb1ELb0ELb1EEbiRVi)
 	jirl	$ra, $ra, 0
-	or	$fp, $fp, $a0
+	or	$a0, $fp, $a0
+	or	$s0, $s0, $a0
 	ori	$a0, $zero, 42
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb1ELb1ELb1ELb0ELb1EEbiRVi)
 	jirl	$ra, $ra, 0
-	or	$fp, $fp, $a0
+	move	$fp, $a0
 	ori	$a0, $zero, 42
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb0ELb1ELb1ELb0ELb1EEbiRVi)
@@ -1936,12 +1939,13 @@ main:                                   # @main
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb1ELb0ELb1ELb1ELb1EEbiRVi)
 	jirl	$ra, $ra, 0
-	or	$fp, $fp, $a0
+	or	$a0, $fp, $a0
+	or	$s0, $s0, $a0
 	ori	$a0, $zero, 42
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb0ELb0ELb1ELb1ELb1EEbiRVi)
 	jirl	$ra, $ra, 0
-	or	$fp, $fp, $a0
+	move	$fp, $a0
 	ori	$a0, $zero, 42
 	addi.d	$a1, $sp, 4
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb1ELb1ELb1ELb1ELb1EEbiRVi)
@@ -1952,6 +1956,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Z19check_frame_variantILb0ELb1ELb1ELb1ELb1EEbiRVi)
 	jirl	$ra, $ra, 0
 	or	$a0, $fp, $a0
+	or	$a0, $s0, $a0
 	andi	$a0, $a0, 1
 	sub.d	$a0, $zero, $a0
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload

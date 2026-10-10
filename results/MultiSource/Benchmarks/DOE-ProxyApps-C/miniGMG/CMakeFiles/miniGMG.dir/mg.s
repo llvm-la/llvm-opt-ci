@@ -1012,29 +1012,28 @@ create_domain:                          # @create_domain
 	ld.w	$a0, $s4, 1548
 	ld.d	$t1, $sp, 248                   # 8-byte Folded Reload
 	slt	$t1, $a3, $t1
-	ld.w	$fp, $s4, 1552
 	ld.d	$t2, $sp, 224                   # 8-byte Folded Reload
-	add.d	$s2, $t2, $a0
-	add.w	$t1, $s2, $t1
+	add.d	$fp, $t2, $a0
+	add.w	$t1, $fp, $t1
+	mod.w	$t1, $t1, $a0
 	ld.d	$t2, $sp, 240                   # 8-byte Folded Reload
-	slt	$s2, $a4, $t2
-	ld.d	$t2, $sp, 232                   # 8-byte Folded Reload
-	add.d	$s3, $t2, $fp
-	add.w	$s2, $s3, $s2
+	slt	$fp, $a4, $t2
+	ld.w	$s2, $s4, 1552
 	srli.d	$s3, $t0, 31
 	ld.d	$t2, $sp, 424                   # 8-byte Folded Reload
 	add.d	$s3, $s3, $t2
 	slt	$s5, $a6, $a7
 	xori	$s5, $s5, 1
-	ld.w	$s6, $s4, 1556
 	add.d	$s3, $s3, $s5
-	mod.w	$t1, $t1, $a0
-	mod.w	$s2, $s2, $fp
-	add.w	$s3, $s3, $s6
-	mod.w	$s3, $s3, $s6
-	move	$s6, $s0
-	mul.d	$fp, $s3, $fp
-	add.d	$fp, $fp, $s2
+	ld.w	$s5, $s4, 1556
+	ld.d	$t2, $sp, 232                   # 8-byte Folded Reload
+	add.d	$fp, $t2, $fp
+	add.w	$fp, $fp, $s2
+	mod.w	$fp, $fp, $s2
+	add.w	$s3, $s3, $s5
+	mod.w	$s3, $s3, $s5
+	mul.d	$s2, $s3, $s2
+	add.d	$fp, $s2, $fp
 	mul.d	$a0, $fp, $a0
 	add.d	$t1, $a0, $t1
 	.p2align	4, , 16
@@ -1849,13 +1848,13 @@ create_domain:                          # @create_domain
 	ld.d	$a3, $sp, 432                   # 8-byte Folded Reload
 	add.d	$fp, $a3, $t1
 	add.w	$t6, $fp, $t6
-	mod.w	$t6, $t6, $t1
 	ld.w	$fp, $s4, 1556
+	mod.w	$t6, $t6, $t1
 	slt	$a7, $t5, $a7
 	xori	$a7, $a7, 1
 	ld.d	$a3, $sp, 416                   # 8-byte Folded Reload
-	add.d	$a7, $a3, $a7
-	add.w	$a7, $a7, $fp
+	add.d	$s5, $a3, $fp
+	add.w	$a7, $s5, $a7
 	mod.w	$a7, $a7, $fp
 	mul.d	$a7, $a7, $t1
 	add.d	$a7, $a7, $t6

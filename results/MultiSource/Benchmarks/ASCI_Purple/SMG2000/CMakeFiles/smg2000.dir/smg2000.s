@@ -559,7 +559,7 @@ main:                                   # @main
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	mul.d	$a0, $a0, $a3
 	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
-	add.d	$a0, $a4, $a0
+	sub.d	$a1, $a1, $a4
 	sub.w	$a0, $a1, $a0
 	div.w	$a0, $a0, $s5
 	mul.d	$s8, $a0, $s8

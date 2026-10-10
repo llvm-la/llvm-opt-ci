@@ -1368,9 +1368,9 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	ld.w	$a0, $a2, 192
 	ld.w	$a1, $a2, 196
 	slli.d	$a3, $a3, 9
-	add.d	$a2, $a2, $a3
-	lu12i.w	$a3, 1
-	ori	$a3, $a3, 720
+	lu12i.w	$a4, 1
+	ori	$a4, $a4, 720
+	add.d	$a3, $a3, $a4
 	add.d	$a2, $a2, $a3
 	pcaddu18i	$ra, %call36(rc_store_diff)
 	jirl	$ra, $ra, 0

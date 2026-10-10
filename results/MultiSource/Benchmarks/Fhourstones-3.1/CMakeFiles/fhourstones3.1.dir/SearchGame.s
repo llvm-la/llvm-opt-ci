@@ -37,14 +37,14 @@ positioncode:                           # @positioncode
 	slli.d	$a0, $a0, 3
 	pcalau12i	$a1, %pc_hi20(color)
 	addi.d	$a1, $a1, %pc_lo12(color)
-	ldx.d	$a0, $a1, $a0
 	ld.d	$a2, $a1, 0
-	ld.d	$a1, $a1, 8
-	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a1
-	lu12i.w	$a1, 66052
-	ori	$a1, $a1, 129
-	lu32i.d	$a1, 1032
+	ld.d	$a3, $a1, 8
+	ldx.d	$a0, $a1, $a0
+	add.d	$a1, $a2, $a3
+	lu12i.w	$a2, 66052
+	ori	$a2, $a2, 129
+	lu32i.d	$a2, 1032
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	ret
 .Lfunc_end1:
@@ -341,14 +341,14 @@ hash:                                   # @hash
 	slli.d	$a0, $a0, 3
 	pcalau12i	$a2, %pc_hi20(color)
 	addi.d	$a2, $a2, %pc_lo12(color)
-	ldx.d	$a0, $a2, $a0
 	ld.d	$a3, $a2, 0
-	ld.d	$a2, $a2, 8
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a2
-	lu12i.w	$a2, 66052
-	ori	$a2, $a2, 129
-	lu32i.d	$a2, 1032
+	ld.d	$a4, $a2, 8
+	ldx.d	$a0, $a2, $a0
+	add.d	$a2, $a3, $a4
+	lu12i.w	$a3, 66052
+	ori	$a3, $a3, 129
+	lu32i.d	$a3, 1032
+	add.d	$a2, $a2, $a3
 	ori	$a3, $zero, 9
 	add.d	$a0, $a0, $a2
 	blt	$a3, $a1, .LBB11_6
@@ -405,14 +405,14 @@ transpose:                              # @transpose
 	slli.d	$a0, $a0, 3
 	pcalau12i	$a2, %pc_hi20(color)
 	addi.d	$a2, $a2, %pc_lo12(color)
-	ldx.d	$a0, $a2, $a0
 	ld.d	$a3, $a2, 0
-	ld.d	$a2, $a2, 8
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a2
-	lu12i.w	$a2, 66052
-	ori	$a2, $a2, 129
-	lu32i.d	$a2, 1032
+	ld.d	$a4, $a2, 8
+	ldx.d	$a0, $a2, $a0
+	add.d	$a2, $a3, $a4
+	lu12i.w	$a3, 66052
+	ori	$a3, $a3, 129
+	lu32i.d	$a3, 1032
+	add.d	$a2, $a2, $a3
 	ori	$a3, $zero, 9
 	add.d	$a0, $a0, $a2
 	blt	$a3, $a1, .LBB12_6
@@ -567,12 +567,12 @@ htstat:                                 # @htstat
 	ld.w	$a4, $sp, 4
 	ld.w	$a3, $sp, 8
 	ld.w	$a2, $sp, 12
-	ld.w	$a1, $sp, 16
-	ld.w	$a0, $sp, 20
+	ld.w	$a0, $sp, 16
+	ld.w	$a1, $sp, 20
 	add.d	$a5, $a3, $a4
-	add.d	$a5, $a2, $a5
-	add.d	$a5, $a1, $a5
-	add.w	$a5, $a0, $a5
+	add.d	$a6, $a0, $a2
+	add.d	$a5, $a6, $a5
+	add.w	$a5, $a1, $a5
 	blez	$a5, .LBB14_8
 # %bb.7:
 	movgr2fr.w	$fa0, $a4
@@ -587,10 +587,10 @@ htstat:                                 # @htstat
 	movgr2fr.w	$fa3, $a2
 	ffint.d.w	$fa3, $fa3
 	fdiv.d	$fa3, $fa3, $fa1
-	movgr2fr.w	$fa4, $a1
+	movgr2fr.w	$fa4, $a0
 	ffint.d.w	$fa4, $fa4
 	fdiv.d	$fa4, $fa4, $fa1
-	movgr2fr.w	$fa5, $a0
+	movgr2fr.w	$fa5, $a1
 	ffint.d.w	$fa5, $fa5
 	fdiv.d	$fa1, $fa5, $fa1
 	movfr2gr.d	$a1, $fa0
@@ -989,10 +989,10 @@ ab:                                     # @ab
 	ld.d	$a3, $s1, 0
 	ld.d	$a4, $s1, 8
 	add.d	$a2, $a2, $a3
-	add.d	$a2, $a2, $a4
 	lu12i.w	$a3, 66052
 	ori	$a3, $a3, 129
 	lu32i.d	$a3, 1032
+	add.d	$a3, $a4, $a3
 	ori	$a4, $zero, 9
 	add.d	$a2, $a2, $a3
 	blt	$a4, $t8, .LBB19_40

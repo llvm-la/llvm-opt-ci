@@ -34,8 +34,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -55,8 +55,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a5, $a6, $a5
+	xor	$a5, $a7, $a5
+	xor	$a5, $a5, $a6
 	srli.d	$a6, $a5, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -76,8 +76,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -97,8 +97,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a5, $a6, $a5
+	xor	$a5, $a7, $a5
+	xor	$a5, $a5, $a6
 	srli.d	$a6, $a5, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -118,8 +118,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -139,8 +139,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a5, $a6, $a5
+	xor	$a5, $a7, $a5
+	xor	$a5, $a5, $a6
 	srli.d	$a6, $a5, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -160,8 +160,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -181,8 +181,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a5, $a6, $a5
+	xor	$a5, $a7, $a5
+	xor	$a5, $a5, $a6
 	srli.d	$a6, $a5, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -202,8 +202,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -223,8 +223,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a5, $a6, $a5
+	xor	$a5, $a7, $a5
+	xor	$a5, $a5, $a6
 	srli.d	$a6, $a5, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -244,8 +244,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -265,8 +265,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a5, $a6, $a5
+	xor	$a5, $a7, $a5
+	xor	$a5, $a5, $a6
 	srli.d	$a6, $a5, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -286,8 +286,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -307,8 +307,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a5, $a6, $a5
+	xor	$a5, $a7, $a5
+	xor	$a5, $a5, $a6
 	srli.d	$a6, $a5, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -328,8 +328,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a2, $a6, $a2
 	ldx.d	$a2, $a3, $a2
@@ -373,8 +373,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -394,8 +394,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a5, $a6, $a5
+	xor	$a5, $a7, $a5
+	xor	$a5, $a5, $a6
 	srli.d	$a6, $a5, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -415,8 +415,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -436,8 +436,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a5, $a6, $a5
+	xor	$a5, $a7, $a5
+	xor	$a5, $a5, $a6
 	srli.d	$a6, $a5, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -457,8 +457,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -478,8 +478,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a5, $a6, $a5
+	xor	$a5, $a7, $a5
+	xor	$a5, $a5, $a6
 	srli.d	$a6, $a5, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -499,8 +499,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -520,8 +520,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a5, $a6, $a5
+	xor	$a5, $a7, $a5
+	xor	$a5, $a5, $a6
 	srli.d	$a6, $a5, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -541,8 +541,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -562,8 +562,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a5, $a6, $a5
+	xor	$a5, $a7, $a5
+	xor	$a5, $a5, $a6
 	srli.d	$a6, $a5, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -583,8 +583,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -604,8 +604,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a5, $a6, $a5
+	xor	$a5, $a7, $a5
+	xor	$a5, $a5, $a6
 	srli.d	$a6, $a5, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -625,8 +625,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -646,8 +646,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a5, $a6, $a5
+	xor	$a5, $a7, $a5
+	xor	$a5, $a5, $a6
 	srli.d	$a6, $a5, 21
 	and	$a6, $a6, $a2
 	ldx.d	$a6, $a3, $a6
@@ -667,8 +667,8 @@ BF_encrypt:                             # @BF_encrypt
 	xor	$a6, $a6, $t0
 	add.d	$a6, $a6, $t1
 	bstrpick.d	$a6, $a6, 31, 0
-	xor	$a6, $a7, $a6
-	xor	$a4, $a6, $a4
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a6
 	srli.d	$a6, $a4, 21
 	and	$a2, $a6, $a2
 	ldx.d	$a2, $a3, $a2
@@ -689,8 +689,8 @@ BF_encrypt:                             # @BF_encrypt
 	ld.d	$a6, $a1, 0
 .LBB0_3:
 	add.d	$a1, $a2, $a3
-	xor	$a1, $t0, $a1
-	xor	$a1, $a1, $a5
+	xor	$a2, $t0, $a5
+	xor	$a1, $a2, $a1
 	xor	$a2, $a6, $a4
 	bstrpick.d	$a1, $a1, 31, 0
 	st.d	$a1, $a0, 8

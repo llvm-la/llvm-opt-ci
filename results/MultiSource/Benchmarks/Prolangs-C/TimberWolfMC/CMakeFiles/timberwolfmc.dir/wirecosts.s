@@ -29,7 +29,7 @@ wirecosts:                              # @wirecosts
 	vpickve2gr.w	$t0, $vr2, 0
 	sub.d	$a7, $t0, $a7
 	vpickve2gr.w	$t0, $vr2, 1
-	add.d	$a7, $a7, $t0
+	add.d	$a6, $t0, $a6
 	add.d	$a6, $a7, $a6
 	st.w	$a6, $a0, 0
 	ld.w	$a7, $a2, 0

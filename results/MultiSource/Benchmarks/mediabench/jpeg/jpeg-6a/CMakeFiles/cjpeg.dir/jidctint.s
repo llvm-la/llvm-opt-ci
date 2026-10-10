@@ -50,30 +50,30 @@ jpeg_idct_islow:                        # @jpeg_idct_islow
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_1:                                #   in Loop: Header=BB0_3 Depth=1
-	ld.w	$ra, $t7, 64
-	ld.w	$t6, $t7, 192
-	mul.w	$s3, $ra, $s3
-	mul.w	$t6, $t6, $s5
-	add.d	$s5, $t6, $s3
+	ld.w	$t6, $t7, 64
+	ld.w	$ra, $t7, 192
+	mul.w	$t6, $t6, $s3
+	mul.w	$s3, $ra, $s5
+	add.d	$s5, $s3, $t6
 	mul.d	$s5, $s5, $a3
-	mul.d	$t6, $t6, $a6
-	add.d	$t6, $s5, $t6
+	mul.d	$s3, $s3, $a6
+	add.d	$s3, $s5, $s3
 	ori	$ra, $a5, 2174
 	ld.h	$a4, $a2, 0
 	ld.w	$s1, $t7, 0
 	ld.w	$a1, $t7, 128
-	mul.d	$s3, $s3, $ra
-	add.d	$s3, $s5, $s3
+	mul.d	$t6, $t6, $ra
+	add.d	$t6, $s5, $t6
 	mul.w	$a4, $s1, $a4
 	mul.w	$a1, $a1, $s2
 	add.d	$s1, $a1, $a4
 	slli.d	$s1, $s1, 13
 	sub.d	$a1, $a4, $a1
 	slli.d	$a1, $a1, 13
-	add.d	$a4, $s1, $s3
-	sub.d	$s2, $s1, $s3
-	add.d	$s5, $a1, $t6
-	sub.d	$s3, $a1, $t6
+	add.d	$a4, $s1, $t6
+	sub.d	$s2, $s1, $t6
+	add.d	$s5, $a1, $s3
+	sub.d	$s3, $a1, $s3
 	ld.w	$a1, $t7, 224
 	ld.w	$t6, $t7, 160
 	ld.w	$s1, $t7, 96
@@ -148,24 +148,24 @@ jpeg_idct_islow:                        # @jpeg_idct_islow
 .LBB0_3:                                # =>This Inner Loop Header: Depth=1
 	ld.h	$s4, $a2, 16
 	ld.h	$s3, $a2, 32
+	or	$ra, $s3, $s4
 	ld.h	$s6, $a2, 48
-	or	$s2, $s3, $s4
-	or	$ra, $s2, $s6
 	ld.h	$s2, $a2, 64
 	ld.h	$s7, $a2, 80
 	ld.h	$s5, $a2, 96
 	ld.h	$s8, $a2, 112
-	or	$ra, $ra, $s2
-	or	$ra, $ra, $s7
-	or	$ra, $ra, $s5
+	or	$t6, $s6, $s2
+	or	$t6, $ra, $t6
+	or	$ra, $s7, $s5
 	or	$ra, $ra, $s8
-	slli.d	$ra, $ra, 48
-	bnez	$ra, .LBB0_1
+	or	$t6, $t6, $ra
+	slli.d	$t6, $t6, 48
+	bnez	$t6, .LBB0_1
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
-	ld.h	$s2, $a2, 0
-	ld.w	$s3, $t7, 0
-	mul.d	$s2, $s2, $s3
-	slli.d	$s2, $s2, 2
+	ld.h	$t6, $a2, 0
+	ld.w	$s2, $t7, 0
+	mul.d	$t6, $t6, $s2
+	slli.d	$s2, $t6, 2
 	st.w	$s2, $t8, 0
 	st.w	$s2, $t8, 32
 	st.w	$s2, $t8, 64
@@ -285,19 +285,19 @@ jpeg_idct_islow:                        # @jpeg_idct_islow
 .LBB0_8:                                # =>This Inner Loop Header: Depth=1
 	ld.wu	$s7, $t7, -12
 	ld.wu	$s4, $t7, -8
-	ld.wu	$s3, $t7, -4
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ldx.d	$a1, $a0, $a2
 	or	$s0, $s4, $s7
-	or	$s0, $s0, $s3
+	ld.wu	$s3, $t7, -4
 	ld.w	$s8, $t7, 0
 	ld.wu	$s2, $t7, 4
 	ld.wu	$s5, $t7, 8
 	ld.wu	$s1, $t7, 12
-	or	$s0, $s0, $s8
-	or	$s0, $s0, $s2
-	or	$s0, $s0, $s5
-	or	$s0, $s0, $s1
+	or	$s6, $s3, $s8
+	or	$s0, $s0, $s6
+	or	$s6, $s2, $s5
+	or	$s6, $s6, $s1
+	or	$s0, $s0, $s6
 	addi.w	$s6, $s0, 0
 	add.d	$s0, $a1, $a4
 	bnez	$s6, .LBB0_6

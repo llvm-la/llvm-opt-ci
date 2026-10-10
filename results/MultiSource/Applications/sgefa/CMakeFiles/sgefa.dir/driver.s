@@ -652,8 +652,8 @@ matgen:                                 # @matgen
 	vandn.v	$vr10, $vr15, $vr10
 	vand.v	$vr11, $vr12, $vr13
 	vandn.v	$vr12, $vr14, $vr13
+	vor.v	$vr12, $vr12, $vr14
 	vor.v	$vr10, $vr10, $vr12
-	vor.v	$vr10, $vr10, $vr14
 	vbitsel.v	$vr11, $vr3, $vr2, $vr11
 	vpickve2gr.w	$t3, $vr10, 0
 	andi	$t3, $t3, 1

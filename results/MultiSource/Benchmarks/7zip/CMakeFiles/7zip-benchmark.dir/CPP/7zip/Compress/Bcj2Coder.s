@@ -655,13 +655,13 @@ _ZN9NCompress5NBcj28CEncoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 .LBB5_27:                               #   Parent Loop BB5_24 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s7, 0
+	add.d	$a1, $s1, $s0
+	sub.w	$a2, $s8, $a1
 	ld.d	$a1, $fp, 16
-	add.d	$a2, $s1, $s0
-	sub.w	$a2, $s8, $a2
 	ld.d	$a4, $a0, 40
-	add.d	$a0, $a1, $s2
-	bstrpick.d	$a1, $s1, 31, 0
-	add.d	$a1, $a0, $a1
+	bstrpick.d	$a0, $s1, 31, 0
+	add.d	$a0, $s2, $a0
+	add.d	$a1, $a1, $a0
 .Ltmp47:                                # EH_LABEL
 	addi.d	$a3, $sp, 104
 	move	$a0, $s7
@@ -700,9 +700,9 @@ _ZN9NCompress5NBcj28CEncoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB5_44 Depth 3
 	ld.d	$a0, $fp, 16
-	bstrpick.d	$s0, $s8, 31, 0
+	bstrpick.d	$s1, $s8, 31, 0
 	ld.wu	$a1, $fp, 32
-	ldx.bu	$s7, $a0, $s0
+	ldx.bu	$s7, $a0, $s1
 	ld.d	$a0, $fp, 24
 	addi.d	$a2, $a1, 1
 	st.w	$a2, $fp, 32
@@ -729,28 +729,28 @@ _ZN9NCompress5NBcj28CEncoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 	bge	$a0, $a1, .LBB5_33
 .LBB5_41:                               #   in Loop: Header=BB5_36 Depth=2
 	ld.d	$a0, $fp, 16
-	add.d	$a1, $s0, $a0
+	add.d	$a1, $s1, $a0
 	ld.bu	$a4, $a1, 4
 	ld.bu	$a2, $a1, 3
-	slli.w	$a3, $a4, 24
-	slli.w	$a2, $a2, 16
-	or	$a2, $a2, $a3
 	ld.bu	$a1, $a1, 2
 	addi.w	$a5, $s8, 1
 	bstrpick.d	$a3, $a5, 31, 0
 	ldx.bu	$a0, $a0, $a3
+	slli.w	$a3, $a4, 24
+	slli.w	$a2, $a2, 16
+	or	$a2, $a2, $a3
 	slli.w	$a1, $a1, 8
 	ld.d	$a3, $sp, 120
-	or	$a1, $a2, $a1
-	or	$s2, $a1, $a0
+	or	$a0, $a1, $a0
+	or	$s2, $a2, $a0
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $s8
-	add.w	$s1, $a0, $s2
+	add.w	$s0, $a0, $s2
 	beqz	$a3, .LBB5_47
 # %bb.42:                               #   in Loop: Header=BB5_36 Depth=2
 	ld.d	$a0, $sp, 112
-	add.d	$s0, $a0, $s0
-	bgeu	$s3, $s0, .LBB5_57
+	add.d	$s1, $a0, $s1
+	bgeu	$s3, $s1, .LBB5_57
 # %bb.43:                               #   in Loop: Header=BB5_36 Depth=2
 	st.d	$a5, $sp, 64                    # 8-byte Folded Spill
 	st.d	$a4, $sp, 72                    # 8-byte Folded Spill
@@ -773,7 +773,7 @@ _ZN9NCompress5NBcj28CEncoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 	ld.d	$a0, $sp, 104
 	add.d	$s3, $a0, $s5
 	addi.d	$s6, $s6, 1
-	bltu	$s3, $s0, .LBB5_44
+	bltu	$s3, $s1, .LBB5_44
 	b	.LBB5_55
 .LBB5_47:                               #   in Loop: Header=BB5_36 Depth=2
 	addi.d	$a0, $s7, -232
@@ -788,7 +788,7 @@ _ZN9NCompress5NBcj28CEncoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	beqz	$a1, .LBB5_75
 .LBB5_48:                               #   in Loop: Header=BB5_36 Depth=2
-	bstrpick.d	$a1, $s1, 31, 0
+	bstrpick.d	$a1, $s0, 31, 0
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	bltu	$a1, $a2, .LBB5_61
 	b	.LBB5_76
@@ -837,7 +837,7 @@ _ZN9NCompress5NBcj28CEncoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 	bltu	$a1, $a3, .LBB5_61
 	b	.LBB5_76
 .LBB5_59:                               #   in Loop: Header=BB5_36 Depth=2
-	add.d	$a0, $s2, $s0
+	add.d	$a0, $s2, $s1
 	addi.d	$a1, $a0, 5
 	addi.d	$a0, $s7, -232
 	sltui	$s2, $a0, 1
@@ -886,7 +886,7 @@ _ZN9NCompress5NBcj28CEncoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 	or	$s7, $a1, $a0
 	ld.wu	$a0, $s7, 8
 	ld.d	$a1, $s7, 0
-	srli.d	$a2, $s1, 24
+	srli.d	$a2, $s0, 24
 	addi.d	$a3, $a0, 1
 	st.w	$a3, $s7, 8
 	stx.b	$a2, $a1, $a0
@@ -902,7 +902,7 @@ _ZN9NCompress5NBcj28CEncoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 # %bb.65:                               #   in Loop: Header=BB5_36 Depth=2
 	ld.w	$a0, $s7, 8
 .LBB5_66:                               #   in Loop: Header=BB5_36 Depth=2
-	srli.d	$a1, $s1, 16
+	srli.d	$a1, $s0, 16
 	ld.d	$a2, $s7, 0
 	addi.d	$a3, $a0, 1
 	st.w	$a3, $s7, 8
@@ -920,7 +920,7 @@ _ZN9NCompress5NBcj28CEncoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 # %bb.68:                               #   in Loop: Header=BB5_36 Depth=2
 	ld.w	$a0, $s7, 8
 .LBB5_69:                               #   in Loop: Header=BB5_36 Depth=2
-	srli.d	$a1, $s1, 8
+	srli.d	$a1, $s0, 8
 	ld.d	$a2, $s7, 0
 	addi.d	$a3, $a0, 1
 	st.w	$a3, $s7, 8
@@ -942,7 +942,7 @@ _ZN9NCompress5NBcj28CEncoder8CodeRealEPP19ISequentialInStreamPPKyjPP20ISequentia
 	addi.d	$a2, $a0, 1
 	st.w	$a2, $s7, 8
 	bstrpick.d	$a0, $a0, 31, 0
-	stx.b	$s1, $a1, $a0
+	stx.b	$s0, $a1, $a0
 	ld.w	$a0, $s7, 8
 	ld.w	$a1, $s7, 12
 	addi.w	$s8, $s8, 5

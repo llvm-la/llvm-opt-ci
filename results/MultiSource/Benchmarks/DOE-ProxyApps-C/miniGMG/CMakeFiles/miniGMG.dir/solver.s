@@ -128,7 +128,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	jirl	$ra, $ra, 0
 	bnez	$fp, .LBB0_2
 .LBB0_4:
-	move	$a3, $zero
+	move	$a4, $zero
 	fmul.d	$fs4, $fs4, $fa0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1728
@@ -142,19 +142,19 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	b	.LBB0_6
 	.p2align	4, , 16
 .LBB0_5:                                #   in Loop: Header=BB0_6 Depth=1
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
-	add.w	$a3, $a0, $a3
+	add.w	$a4, $a0, $a4
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	slti	$a0, $a2, 4
 	ori	$a1, $zero, 4
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $a2, $a0
-	slti	$a2, $a3, 200
-	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
-	and	$a2, $a2, $a4
-	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
-	and	$a2, $a2, $a4
+	slti	$a2, $a4, 200
+	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	and	$a3, $a3, $a5
+	and	$a2, $a2, $a3
 	or	$a0, $a0, $a1
 	move	$s1, $s2
 	move	$s2, $a0
@@ -220,7 +220,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
                                         #     Child Loop BB0_188 Depth 2
                                         #     Child Loop BB0_191 Depth 2
                                         #     Child Loop BB0_193 Depth 2
-	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
 	slli.d	$fp, $s2, 2
 	addi.w	$s0, $fp, 1
 	slli.d	$s3, $s0, 3
@@ -2217,8 +2217,8 @@ CABiCGStab:                             # @CABiCGStab
 	sltui	$a0, $a1, 196
 	addi.w	$a1, $a1, 4
 	ld.d	$a2, $sp, 1232                  # 8-byte Folded Reload
-	and	$a0, $a0, $a2
-	ld.d	$a2, $sp, 1136                  # 8-byte Folded Reload
+	ld.d	$a3, $sp, 1136                  # 8-byte Folded Reload
+	and	$a2, $a2, $a3
 	and	$a0, $a0, $a2
 	move	$a2, $a1
 	beqz	$a0, .LBB1_42
@@ -5116,8 +5116,8 @@ CACG:                                   # @CACG
 .LBB3_4:                                #   in Loop: Header=BB3_5 Depth=1
 	sltui	$a0, $s3, 196
 	addi.w	$s3, $s3, 4
-	and	$a0, $a0, $s8
-	and	$a0, $a0, $s5
+	and	$a1, $s8, $s5
+	and	$a0, $a0, $a1
 	ori	$s8, $zero, 4
 	beqz	$a0, .LBB3_24
 .LBB3_5:                                # =>This Loop Header: Depth=1

@@ -1995,35 +1995,35 @@ emit_dqt:                               # @emit_dqt
 	jirl	$ra, $a1, 0
 .LBB7_2:
 	ld.d	$a0, $s1, 0
-	ld.d	$a1, $s1, 8
-	ld.d	$a2, $s1, 16
+	ld.d	$a1, $s1, 16
+	ld.d	$a2, $s1, 8
 	ld.d	$a3, $s1, 24
-	or	$a0, $a0, $a2
-	or	$a1, $a1, $a3
-	ld.d	$a2, $s1, 32
-	ld.d	$a3, $s1, 40
+	or	$a0, $a0, $a1
+	ld.d	$a1, $s1, 32
 	ld.d	$a4, $s1, 48
-	ld.d	$a5, $s1, 56
-	or	$a0, $a0, $a2
-	or	$a1, $a1, $a3
-	or	$a0, $a0, $a4
-	or	$a1, $a1, $a5
-	ld.d	$a2, $s1, 64
-	ld.d	$a3, $s1, 72
-	ld.d	$a4, $s1, 80
-	ld.d	$a5, $s1, 88
-	or	$a0, $a0, $a2
-	or	$a1, $a1, $a3
-	or	$a0, $a0, $a4
-	or	$a1, $a1, $a5
+	ld.d	$a5, $s1, 40
+	ld.d	$a6, $s1, 56
+	or	$a2, $a2, $a3
+	or	$a1, $a1, $a4
+	or	$a0, $a0, $a1
+	or	$a1, $a5, $a6
+	ld.d	$a3, $s1, 64
+	ld.d	$a4, $s1, 72
+	ld.d	$a5, $s1, 80
+	ld.d	$a6, $s1, 88
+	or	$a1, $a2, $a1
 	ld.d	$a2, $s1, 96
-	ld.d	$a3, $s1, 104
-	ld.d	$a4, $s1, 112
-	ld.d	$a5, $s1, 120
+	or	$a3, $a3, $a5
+	or	$a4, $a4, $a6
+	ld.d	$a5, $s1, 104
+	or	$a2, $a3, $a2
+	or	$a0, $a0, $a2
+	ld.d	$a2, $s1, 112
+	ld.d	$a3, $s1, 120
+	or	$a4, $a4, $a5
+	or	$a1, $a1, $a4
 	or	$a0, $a0, $a2
 	or	$a1, $a1, $a3
-	or	$a0, $a0, $a4
-	or	$a1, $a1, $a5
 	or	$a0, $a1, $a0
 	vinsgr2vr.d	$vr0, $a0, 0
 	vrepli.h	$vr1, 255
@@ -2720,40 +2720,40 @@ emit_dht:                               # @emit_dht
 	ld.bu	$a1, $s0, 2
 	ld.bu	$a2, $s0, 3
 	ld.bu	$a3, $s0, 4
-	ld.bu	$a4, $s0, 5
 	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a4
-	ld.bu	$a1, $s0, 6
-	ld.bu	$a2, $s0, 7
-	ld.bu	$a3, $s0, 8
-	ld.bu	$a4, $s0, 9
+	add.d	$a1, $a2, $a3
 	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a4
-	ld.bu	$a1, $s0, 10
-	ld.bu	$a2, $s0, 11
-	ld.bu	$a3, $s0, 12
-	ld.bu	$a4, $s0, 13
-	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a1, $a0, $a4
-	ld.bu	$a2, $s0, 14
-	ld.bu	$a3, $s0, 15
-	ld.d	$a0, $fp, 32
-	ld.bu	$a4, $s0, 16
+	ld.bu	$a1, $s0, 5
+	ld.bu	$a2, $s0, 6
+	ld.bu	$a3, $s0, 7
+	ld.bu	$a4, $s0, 8
+	ld.bu	$a5, $s0, 9
 	add.d	$a1, $a1, $a2
 	add.d	$a1, $a1, $a3
-	ld.d	$a2, $a0, 0
-	add.w	$s2, $a1, $a4
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $a4, $a5
+	ld.bu	$a2, $s0, 10
+	ld.bu	$a3, $s0, 11
+	ld.bu	$a4, $s0, 12
+	ld.bu	$a5, $s0, 13
+	add.d	$a1, $a0, $a1
+	add.d	$a0, $a2, $a3
+	add.d	$a0, $a0, $a4
+	add.d	$a2, $a0, $a5
+	ld.bu	$a3, $s0, 14
+	ld.bu	$a4, $s0, 15
+	ld.bu	$a5, $s0, 16
+	ld.d	$a0, $fp, 32
+	add.d	$a2, $a2, $a3
+	add.d	$a1, $a1, $a2
+	add.d	$a2, $a4, $a5
+	ld.d	$a3, $a0, 0
+	add.w	$s2, $a1, $a2
 	addi.d	$s3, $s2, 19
 	srli.d	$a1, $s3, 8
-	addi.d	$a3, $a2, 1
-	st.d	$a3, $a0, 0
-	st.b	$a1, $a2, 0
+	addi.d	$a2, $a3, 1
+	st.d	$a2, $a0, 0
+	st.b	$a1, $a3, 0
 	ld.d	$a1, $a0, 8
 	addi.d	$a1, $a1, -1
 	st.d	$a1, $a0, 8

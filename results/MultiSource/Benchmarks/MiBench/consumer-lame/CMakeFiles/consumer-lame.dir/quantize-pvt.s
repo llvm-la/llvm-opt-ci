@@ -1907,26 +1907,26 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	vinsgr2vr.w	$vr3, $t6, 1
 	vinsgr2vr.w	$vr3, $t7, 2
 	vinsgr2vr.w	$vr3, $t8, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
 	ld.w	$t5, $a5, 4
 	ld.w	$t6, $a5, 16
 	ld.w	$t7, $a5, 28
 	ld.w	$t8, $a5, 40
-	vinsgr2vr.w	$vr2, $t5, 0
-	vinsgr2vr.w	$vr2, $t6, 1
-	vinsgr2vr.w	$vr2, $t7, 2
-	vinsgr2vr.w	$vr2, $t8, 3
+	vinsgr2vr.w	$vr4, $t5, 0
+	vinsgr2vr.w	$vr4, $t6, 1
+	vinsgr2vr.w	$vr4, $t7, 2
+	vinsgr2vr.w	$vr4, $t8, 3
 	ld.w	$t5, $a5, 52
 	ld.w	$t6, $a5, 64
 	ld.w	$t7, $a5, 76
 	ld.w	$t8, $a5, 88
-	vinsgr2vr.w	$vr3, $t5, 0
-	vinsgr2vr.w	$vr3, $t6, 1
-	vinsgr2vr.w	$vr3, $t7, 2
-	vinsgr2vr.w	$vr3, $t8, 3
+	vinsgr2vr.w	$vr5, $t5, 0
+	vinsgr2vr.w	$vr5, $t6, 1
+	vinsgr2vr.w	$vr5, $t7, 2
+	vinsgr2vr.w	$vr5, $t8, 3
+	vmax.w	$vr2, $vr4, $vr2
 	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
+	vmax.w	$vr2, $vr5, $vr3
+	vmax.w	$vr1, $vr2, $vr1
 	addi.d	$t4, $t4, -8
 	addi.d	$a5, $a5, 96
 	bnez	$t4, .LBB8_43
@@ -2043,26 +2043,26 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	vinsgr2vr.w	$vr3, $s0, 1
 	vinsgr2vr.w	$vr3, $s1, 2
 	vinsgr2vr.w	$vr3, $s2, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
 	ld.w	$fp, $t2, 4
 	ld.w	$s0, $t2, 16
 	ld.w	$s1, $t2, 28
 	ld.w	$s2, $t2, 40
-	vinsgr2vr.w	$vr2, $fp, 0
-	vinsgr2vr.w	$vr2, $s0, 1
-	vinsgr2vr.w	$vr2, $s1, 2
-	vinsgr2vr.w	$vr2, $s2, 3
+	vinsgr2vr.w	$vr4, $fp, 0
+	vinsgr2vr.w	$vr4, $s0, 1
+	vinsgr2vr.w	$vr4, $s1, 2
+	vinsgr2vr.w	$vr4, $s2, 3
 	ld.w	$fp, $t2, 52
 	ld.w	$s0, $t2, 64
 	ld.w	$s1, $t2, 76
 	ld.w	$s2, $t2, 88
-	vinsgr2vr.w	$vr3, $fp, 0
-	vinsgr2vr.w	$vr3, $s0, 1
-	vinsgr2vr.w	$vr3, $s1, 2
-	vinsgr2vr.w	$vr3, $s2, 3
+	vinsgr2vr.w	$vr5, $fp, 0
+	vinsgr2vr.w	$vr5, $s0, 1
+	vinsgr2vr.w	$vr5, $s1, 2
+	vinsgr2vr.w	$vr5, $s2, 3
+	vmax.w	$vr2, $vr4, $vr2
 	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
+	vmax.w	$vr2, $vr5, $vr3
+	vmax.w	$vr1, $vr2, $vr1
 	addi.d	$t8, $t8, -8
 	addi.d	$t2, $t2, 96
 	bnez	$t8, .LBB8_54
@@ -2165,26 +2165,26 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	vinsgr2vr.w	$vr3, $t8, 1
 	vinsgr2vr.w	$vr3, $fp, 2
 	vinsgr2vr.w	$vr3, $s0, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
 	ld.w	$t7, $a7, 4
 	ld.w	$t8, $a7, 16
 	ld.w	$fp, $a7, 28
 	ld.w	$s0, $a7, 40
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
+	vinsgr2vr.w	$vr4, $t7, 0
+	vinsgr2vr.w	$vr4, $t8, 1
+	vinsgr2vr.w	$vr4, $fp, 2
+	vinsgr2vr.w	$vr4, $s0, 3
 	ld.w	$t7, $a7, 52
 	ld.w	$t8, $a7, 64
 	ld.w	$fp, $a7, 76
 	ld.w	$s0, $a7, 88
-	vinsgr2vr.w	$vr3, $t7, 0
-	vinsgr2vr.w	$vr3, $t8, 1
-	vinsgr2vr.w	$vr3, $fp, 2
-	vinsgr2vr.w	$vr3, $s0, 3
+	vinsgr2vr.w	$vr5, $t7, 0
+	vinsgr2vr.w	$vr5, $t8, 1
+	vinsgr2vr.w	$vr5, $fp, 2
+	vinsgr2vr.w	$vr5, $s0, 3
+	vmax.w	$vr2, $vr4, $vr2
 	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
+	vmax.w	$vr2, $vr5, $vr3
+	vmax.w	$vr1, $vr2, $vr1
 	addi.d	$t6, $t6, -8
 	addi.d	$a7, $a7, 96
 	bnez	$t6, .LBB8_62
@@ -2284,26 +2284,26 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	vinsgr2vr.w	$vr3, $t8, 1
 	vinsgr2vr.w	$vr3, $fp, 2
 	vinsgr2vr.w	$vr3, $s0, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
 	ld.w	$t7, $t0, 4
 	ld.w	$t8, $t0, 16
 	ld.w	$fp, $t0, 28
 	ld.w	$s0, $t0, 40
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
+	vinsgr2vr.w	$vr4, $t7, 0
+	vinsgr2vr.w	$vr4, $t8, 1
+	vinsgr2vr.w	$vr4, $fp, 2
+	vinsgr2vr.w	$vr4, $s0, 3
 	ld.w	$t7, $t0, 52
 	ld.w	$t8, $t0, 64
 	ld.w	$fp, $t0, 76
 	ld.w	$s0, $t0, 88
-	vinsgr2vr.w	$vr3, $t7, 0
-	vinsgr2vr.w	$vr3, $t8, 1
-	vinsgr2vr.w	$vr3, $fp, 2
-	vinsgr2vr.w	$vr3, $s0, 3
+	vinsgr2vr.w	$vr5, $t7, 0
+	vinsgr2vr.w	$vr5, $t8, 1
+	vinsgr2vr.w	$vr5, $fp, 2
+	vinsgr2vr.w	$vr5, $s0, 3
+	vmax.w	$vr2, $vr4, $vr2
 	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
+	vmax.w	$vr2, $vr5, $vr3
+	vmax.w	$vr1, $vr2, $vr1
 	addi.d	$t1, $t1, -8
 	addi.d	$t0, $t0, 96
 	bnez	$t1, .LBB8_70

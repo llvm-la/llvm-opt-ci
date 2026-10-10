@@ -326,8 +326,8 @@ find_SNode:                             # @find_SNode
 # %bb.1:
 	ld.w	$a5, $a4, 228
 	slli.d	$a6, $a1, 12
-	add.d	$a6, $a6, $a2
-	add.w	$a6, $a6, $a3
+	add.d	$a7, $a2, $a3
+	add.w	$a6, $a6, $a7
 	mod.wu	$a5, $a6, $a5
 	bstrpick.d	$a5, $a5, 31, 0
 	slli.d	$a5, $a5, 3
@@ -489,8 +489,8 @@ find_PNode:                             # @find_PNode
 	slli.d	$t0, $a2, 16
 	add.d	$a7, $a7, $a3
 	ld.w	$a0, $a0, 196
+	add.d	$t0, $t0, $a4
 	add.d	$a7, $a7, $t0
-	add.d	$a7, $a7, $a4
 	add.w	$a7, $a7, $a5
 	mod.wu	$a0, $a7, $a0
 	bstrpick.d	$a0, $a0, 31, 0
@@ -544,17 +544,17 @@ insert_PNode_internal:                  # @insert_PNode_internal
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$fp, $a0
-	ld.d	$s3, $a1, 160
-	ld.d	$s4, $a1, 200
-	ld.w	$s5, $a1, 152
-	ld.d	$a3, $a1, 136
+	ld.d	$a1, $a1, 160
+	ld.d	$s3, $s0, 200
+	ld.w	$s4, $s0, 152
+	ld.d	$s5, $s0, 136
 	ld.w	$a0, $a0, 200
 	ld.w	$s7, $fp, 196
-	ld.d	$s6, $a1, 144
+	ld.d	$s6, $s0, 144
 	addi.w	$a0, $a0, 1
 	bgeu	$s7, $a0, .LBB12_8
 # %bb.1:
-	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	ld.w	$a0, $fp, 192
 	ld.d	$s1, $fp, 184
 	addi.d	$a0, $a0, 1
@@ -604,13 +604,13 @@ insert_PNode_internal:                  # @insert_PNode_internal
 	ld.w	$a0, $fp, 200
 	ld.w	$s7, $fp, 196
 	addi.d	$a0, $a0, 1
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 .LBB12_8:
-	slli.d	$a1, $s3, 8
-	slli.d	$a2, $s4, 16
-	add.d	$a1, $a1, $s5
+	slli.d	$a1, $a1, 8
+	slli.d	$a2, $s3, 16
+	add.d	$a1, $a1, $s4
+	add.d	$a2, $a2, $s5
 	add.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $a3
 	add.w	$a1, $a1, $s6
 	ld.d	$a2, $fp, 184
 	mod.wu	$a1, $a1, $s7
@@ -4092,12 +4092,12 @@ free_old_nodes:                         # @free_old_nodes
 	ld.w	$a1, $s0, 200
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $s0, 152
-	slli.d	$a1, $a1, 16
 	ld.w	$a3, $s0, 136
+	slli.d	$a1, $a1, 16
 	ld.w	$a4, $s0, 144
 	add.d	$a0, $a0, $a2
+	add.d	$a1, $a1, $a3
 	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $a3
 	ld.w	$a1, $fp, 196
 	add.w	$a0, $a0, $a4
 	ld.d	$a2, $fp, 184
@@ -4309,8 +4309,8 @@ add_PNode:                              # @add_PNode
 	slli.d	$a4, $s6, 16
 	or	$a4, $a4, $s8
 	ld.w	$a5, $t1, 196
+	add.d	$a4, $a4, $a1
 	add.d	$a3, $a4, $a3
-	add.d	$a3, $a3, $a1
 	add.w	$a3, $a3, $a2
 	mod.wu	$a3, $a3, $a5
 	bstrpick.d	$a3, $a3, 31, 0
@@ -5630,11 +5630,11 @@ reduce_one:                             # @reduce_one
 	slli.d	$a5, $a4, 3
 	slli.d	$a4, $a4, 6
 	or	$a4, $a4, $a5
-	ld.d	$a5, $sp, 16                    # 8-byte Folded Reload
-	add.d	$a4, $a5, $a4
 	slli.d	$a5, $a3, 4
 	alsl.d	$a3, $a3, $a5, 3
-	add.d	$a3, $a4, $a3
+	ld.d	$a5, $sp, 16                    # 8-byte Folded Reload
+	add.d	$a3, $a5, $a3
+	add.d	$a3, $a3, $a4
 	slli.d	$a2, $a2, 2
 	ldx.w	$a2, $a3, $a2
 	bnez	$a2, .LBB37_14
@@ -6705,8 +6705,8 @@ goto_PNode:                             # @goto_PNode
 	ld.d	$a3, $s0, 16
 	ld.w	$a5, $s1, 228
 	slli.d	$a6, $a1, 12
-	add.d	$a6, $a6, $a2
-	add.w	$a6, $a6, $a3
+	add.d	$a7, $a2, $a3
+	add.w	$a6, $a6, $a7
 	mod.wu	$a5, $a6, $a5
 	bstrpick.d	$a5, $a5, 31, 0
 	slli.d	$a5, $a5, 3
@@ -7128,17 +7128,17 @@ check_assoc_priority:                   # @check_assoc_priority
 	b	.LBB47_13
 .LBB47_4:
 	andi	$a2, $a7, 24
-	beqz	$a2, .LBB47_24
+	beqz	$a2, .LBB47_20
 # %bb.5:
 	ld.w	$a2, $a0, 0
-	beqz	$a2, .LBB47_24
+	beqz	$a2, .LBB47_20
 # %bb.6:
 	ld.w	$a1, $a1, 12
 	ld.w	$a3, $a0, 4
-	bge	$a1, $a3, .LBB47_20
+	bge	$a1, $a3, .LBB47_21
 # %bb.7:
 	move	$a0, $zero
-	b	.LBB47_22
+	b	.LBB47_23
 .LBB47_8:
 	beqz	$a2, .LBB47_14
 # %bb.9:
@@ -7174,16 +7174,16 @@ check_assoc_priority:                   # @check_assoc_priority
 	slli.d	$t1, $a7, 3
 	slli.d	$a7, $a7, 6
 	or	$a7, $a7, $t1
-	add.d	$a7, $a3, $a7
 	slli.d	$t1, $t0, 4
 	alsl.d	$t0, $t0, $t1, 3
-	add.d	$a7, $a7, $t0
+	add.d	$t0, $a3, $t0
+	add.d	$a7, $t0, $a7
 	slli.d	$a2, $a2, 2
 	ldx.w	$a2, $a7, $a2
-	beqz	$a2, .LBB47_25
+	beqz	$a2, .LBB47_24
 .LBB47_14:
 	ld.w	$a2, $a1, 0
-	beqz	$a2, .LBB47_24
+	beqz	$a2, .LBB47_20
 # %bb.15:
 	ld.w	$a7, $a0, 12
 	ld.w	$a1, $a1, 4
@@ -7214,16 +7214,25 @@ check_assoc_priority:                   # @check_assoc_priority
 	slli.d	$a4, $a2, 3
 	slli.d	$a2, $a2, 6
 	or	$a2, $a2, $a4
-	b	.LBB47_23
+	add.d	$a2, $a3, $a2
+	slli.d	$a3, $a1, 4
+	alsl.d	$a1, $a1, $a3, 3
+	add.d	$a1, $a2, $a1
+	slli.d	$a0, $a0, 2
+	ldx.w	$a0, $a1, $a0
+	beqz	$a0, .LBB47_24
 .LBB47_20:
+	move	$a0, $zero
+	ret
+.LBB47_21:
 	ori	$a0, $zero, 1
-	blt	$a3, $a1, .LBB47_22
-# %bb.21:
+	blt	$a3, $a1, .LBB47_23
+# %bb.22:
 	srli.d	$a0, $a7, 1
 	bstrpick.d	$a1, $a2, 1, 1
 	bstrins.d	$a0, $a1, 63, 1
 	addi.d	$a0, $a0, 2
-.LBB47_22:
+.LBB47_23:
 	andi	$a1, $a2, 20
 	sltui	$a1, $a1, 1
 	addi.d	$a2, $a2, -9
@@ -7245,18 +7254,14 @@ check_assoc_priority:                   # @check_assoc_priority
 	or	$a2, $a2, $a3
 	pcalau12i	$a3, %pc_hi20(child_table)
 	addi.d	$a3, $a3, %pc_lo12(child_table)
-.LBB47_23:
-	add.d	$a2, $a3, $a2
-	slli.d	$a3, $a1, 4
-	alsl.d	$a1, $a1, $a3, 3
-	add.d	$a1, $a2, $a1
+	slli.d	$a4, $a1, 4
+	alsl.d	$a1, $a1, $a4, 3
+	add.d	$a1, $a3, $a1
+	add.d	$a1, $a1, $a2
 	slli.d	$a0, $a0, 2
 	ldx.w	$a0, $a1, $a0
-	beqz	$a0, .LBB47_25
+	bnez	$a0, .LBB47_20
 .LBB47_24:
-	move	$a0, $zero
-	ret
-.LBB47_25:
 	addi.w	$a0, $zero, -1
 	ret
 .Lfunc_end47:

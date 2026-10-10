@@ -27,299 +27,299 @@ assemble:                               # @assemble
 	mul.d	$t3, $a6, $a4
 	ori	$a6, $zero, 346
 	mul.d	$t4, $t1, $a6
-	add.d	$t3, $t3, $t4
 	mul.d	$t1, $t1, $a4
+	add.d	$t2, $t3, $t2
 	addi.d	$t1, $t1, 1
 	stx.h	$t1, $a1, $t0
 	ld.h	$t0, $a5, 2
-	ld.h	$t5, $a1, 0
-	add.d	$t2, $t3, $t2
-	addi.d	$t3, $a7, 1
+	ld.h	$t3, $a1, 0
+	add.d	$t2, $t2, $t4
+	addi.d	$t5, $a7, 1
 	revb.2h	$t0, $t0
-	xor	$t0, $t0, $t5
+	xor	$t0, $t0, $t3
 	st.h	$t0, $a1, 2
-	bstrpick.d	$t0, $t3, 15, 0
+	bstrpick.d	$t0, $t5, 15, 0
 	slli.d	$t0, $t0, 1
-	ldx.h	$t5, $a1, $t0
+	ldx.h	$t3, $a1, $t0
 	xor	$t1, $t2, $t1
-	add.d	$t2, $t2, $t3
+	add.d	$t2, $t2, $t5
 	mul.d	$t2, $t2, $a4
-	mul.d	$t3, $t5, $a6
-	add.d	$t2, $t3, $t2
-	mul.d	$t5, $t5, $a4
-	add.d	$t2, $t2, $t4
-	addi.d	$t4, $t5, 1
-	stx.h	$t4, $a1, $t0
-	ld.h	$t0, $a5, 4
-	ld.h	$t5, $a1, 2
-	xor	$t1, $t4, $t1
-	addi.d	$t4, $a7, 2
-	revb.2h	$t0, $t0
-	xor	$t0, $t0, $t5
-	st.h	$t0, $a1, 4
-	bstrpick.d	$t0, $t4, 15, 0
-	slli.d	$t0, $t0, 1
-	ldx.h	$t5, $a1, $t0
-	xor	$t1, $t1, $t2
-	add.d	$t2, $t2, $t4
-	mul.d	$t2, $t2, $a4
-	mul.d	$t4, $t5, $a6
+	mul.d	$t5, $t3, $a6
+	mul.d	$t3, $t3, $a4
+	add.d	$t4, $t5, $t4
 	add.d	$t2, $t4, $t2
-	mul.d	$t5, $t5, $a4
-	add.d	$t2, $t2, $t3
-	addi.d	$t3, $t5, 1
+	addi.d	$t3, $t3, 1
+	stx.h	$t3, $a1, $t0
+	ld.h	$t0, $a5, 4
+	ld.h	$t4, $a1, 2
+	addi.d	$t6, $a7, 2
+	xor	$t1, $t3, $t1
+	revb.2h	$t0, $t0
+	xor	$t0, $t0, $t4
+	st.h	$t0, $a1, 4
+	bstrpick.d	$t0, $t6, 15, 0
+	slli.d	$t0, $t0, 1
+	ldx.h	$t3, $a1, $t0
+	xor	$t1, $t1, $t2
+	add.d	$t2, $t2, $t6
+	mul.d	$t2, $t2, $a4
+	mul.d	$t4, $t3, $a6
+	mul.d	$t3, $t3, $a4
+	add.d	$t5, $t4, $t5
+	addi.d	$t3, $t3, 1
 	stx.h	$t3, $a1, $t0
 	ld.h	$t0, $a5, 6
-	ld.h	$t5, $a1, 4
-	xor	$t1, $t3, $t1
-	addi.d	$t3, $a7, 3
+	ld.h	$t6, $a1, 4
+	add.d	$t2, $t5, $t2
+	addi.d	$t5, $a7, 3
 	revb.2h	$t0, $t0
-	xor	$t0, $t0, $t5
+	xor	$t0, $t0, $t6
 	st.h	$t0, $a1, 6
-	bstrpick.d	$t0, $t3, 15, 0
+	bstrpick.d	$t0, $t5, 15, 0
 	slli.d	$t0, $t0, 1
-	ldx.h	$t5, $a1, $t0
-	xor	$t1, $t1, $t2
-	add.d	$t2, $t2, $t3
-	mul.d	$t2, $t2, $a4
-	mul.d	$t3, $t5, $a6
-	add.d	$t2, $t3, $t2
-	mul.d	$t5, $t5, $a4
-	add.d	$t2, $t2, $t4
-	addi.d	$t4, $t5, 1
+	ldx.h	$t6, $a1, $t0
+	xor	$t1, $t3, $t1
+	add.d	$t3, $t2, $t5
+	mul.d	$t3, $t3, $a4
+	mul.d	$t5, $t6, $a6
+	mul.d	$t6, $t6, $a4
+	add.d	$t4, $t5, $t4
+	add.d	$t3, $t4, $t3
+	addi.d	$t4, $t6, 1
 	stx.h	$t4, $a1, $t0
 	ld.h	$t0, $a5, 8
-	ld.h	$t5, $a1, 6
+	ld.h	$t6, $a1, 6
 	xor	$t1, $t4, $t1
 	addi.d	$t4, $a7, 4
 	revb.2h	$t0, $t0
-	xor	$t0, $t0, $t5
+	xor	$t0, $t0, $t6
 	st.h	$t0, $a1, 8
 	bstrpick.d	$t0, $t4, 15, 0
 	slli.d	$t0, $t0, 1
-	ldx.h	$t5, $a1, $t0
+	ldx.h	$t6, $a1, $t0
 	xor	$t1, $t1, $t2
-	add.d	$t2, $t2, $t4
+	add.d	$t2, $t3, $t4
 	mul.d	$t2, $t2, $a4
-	mul.d	$t4, $t5, $a6
-	add.d	$t2, $t4, $t2
-	mul.d	$t5, $t5, $a4
-	add.d	$t2, $t2, $t3
-	addi.d	$t3, $t5, 1
-	stx.h	$t3, $a1, $t0
+	mul.d	$t4, $t6, $a6
+	mul.d	$t6, $t6, $a4
+	add.d	$t5, $t4, $t5
+	add.d	$t2, $t5, $t2
+	addi.d	$t5, $t6, 1
+	stx.h	$t5, $a1, $t0
 	ld.h	$t0, $a5, 10
-	ld.h	$t5, $a1, 8
-	xor	$t1, $t3, $t1
-	addi.d	$t3, $a7, 5
+	ld.h	$t6, $a1, 8
+	xor	$t1, $t5, $t1
+	addi.d	$t5, $a7, 5
 	revb.2h	$t0, $t0
-	xor	$t0, $t0, $t5
+	xor	$t0, $t0, $t6
 	st.h	$t0, $a1, 10
-	bstrpick.d	$t0, $t3, 15, 0
+	bstrpick.d	$t0, $t5, 15, 0
 	slli.d	$t0, $t0, 1
-	ldx.h	$t5, $a1, $t0
-	xor	$t1, $t1, $t2
-	add.d	$t2, $t2, $t3
-	mul.d	$t2, $t2, $a4
-	mul.d	$t3, $t5, $a6
-	add.d	$t2, $t3, $t2
-	mul.d	$t5, $t5, $a4
-	add.d	$t2, $t2, $t4
-	addi.d	$t4, $t5, 1
+	ldx.h	$t6, $a1, $t0
+	xor	$t1, $t1, $t3
+	add.d	$t3, $t2, $t5
+	mul.d	$t3, $t3, $a4
+	mul.d	$t5, $t6, $a6
+	mul.d	$t6, $t6, $a4
+	add.d	$t4, $t5, $t4
+	add.d	$t3, $t4, $t3
+	addi.d	$t4, $t6, 1
 	stx.h	$t4, $a1, $t0
 	ld.h	$t0, $a5, 12
-	ld.h	$t5, $a1, 10
+	ld.h	$t6, $a1, 10
 	xor	$t1, $t4, $t1
 	addi.d	$t4, $a7, 6
 	revb.2h	$t0, $t0
-	xor	$t0, $t0, $t5
+	xor	$t0, $t0, $t6
 	st.h	$t0, $a1, 12
 	bstrpick.d	$t0, $t4, 15, 0
 	slli.d	$t0, $t0, 1
-	ldx.h	$t5, $a1, $t0
+	ldx.h	$t6, $a1, $t0
 	xor	$t1, $t1, $t2
-	add.d	$t2, $t2, $t4
+	add.d	$t2, $t3, $t4
 	mul.d	$t2, $t2, $a4
-	mul.d	$t4, $t5, $a6
-	add.d	$t2, $t4, $t2
-	mul.d	$t5, $t5, $a4
-	add.d	$t2, $t2, $t3
-	addi.d	$t3, $t5, 1
-	stx.h	$t3, $a1, $t0
+	mul.d	$t4, $t6, $a6
+	mul.d	$t6, $t6, $a4
+	add.d	$t5, $t4, $t5
+	add.d	$t2, $t5, $t2
+	addi.d	$t5, $t6, 1
+	stx.h	$t5, $a1, $t0
 	ld.h	$t0, $a5, 14
-	ld.h	$t5, $a1, 12
-	xor	$t1, $t3, $t1
-	addi.d	$t3, $a7, 7
+	ld.h	$t6, $a1, 12
+	xor	$t1, $t5, $t1
+	addi.d	$t5, $a7, 7
 	revb.2h	$t0, $t0
-	xor	$t0, $t0, $t5
+	xor	$t0, $t0, $t6
 	st.h	$t0, $a1, 14
-	bstrpick.d	$t0, $t3, 15, 0
+	bstrpick.d	$t0, $t5, 15, 0
 	slli.d	$t0, $t0, 1
-	ldx.h	$t5, $a1, $t0
-	xor	$t1, $t1, $t2
-	add.d	$t2, $t2, $t3
-	mul.d	$t2, $t2, $a4
-	mul.d	$t3, $t5, $a6
-	add.d	$t2, $t3, $t2
-	mul.d	$t5, $t5, $a4
-	add.d	$t2, $t2, $t4
-	addi.d	$t4, $t5, 1
+	ldx.h	$t6, $a1, $t0
+	xor	$t1, $t1, $t3
+	add.d	$t3, $t2, $t5
+	mul.d	$t3, $t3, $a4
+	mul.d	$t5, $t6, $a6
+	mul.d	$t6, $t6, $a4
+	add.d	$t4, $t5, $t4
+	add.d	$t3, $t4, $t3
+	addi.d	$t4, $t6, 1
 	stx.h	$t4, $a1, $t0
 	ld.h	$t0, $a5, 16
-	ld.h	$t5, $a1, 14
+	ld.h	$t6, $a1, 14
 	xor	$t1, $t4, $t1
 	addi.d	$t4, $a7, 8
 	revb.2h	$t0, $t0
-	xor	$t0, $t0, $t5
+	xor	$t0, $t0, $t6
 	st.h	$t0, $a1, 16
 	bstrpick.d	$t0, $t4, 15, 0
 	slli.d	$t0, $t0, 1
-	ldx.h	$t5, $a1, $t0
+	ldx.h	$t6, $a1, $t0
 	xor	$t1, $t1, $t2
-	add.d	$t2, $t2, $t4
+	add.d	$t2, $t3, $t4
 	mul.d	$t2, $t2, $a4
-	mul.d	$t4, $t5, $a6
-	add.d	$t2, $t4, $t2
-	mul.d	$t5, $t5, $a4
-	add.d	$t2, $t2, $t3
-	addi.d	$t3, $t5, 1
-	stx.h	$t3, $a1, $t0
+	mul.d	$t4, $t6, $a6
+	mul.d	$t6, $t6, $a4
+	add.d	$t5, $t4, $t5
+	add.d	$t2, $t5, $t2
+	addi.d	$t5, $t6, 1
+	stx.h	$t5, $a1, $t0
 	ld.h	$t0, $a5, 18
-	ld.h	$t5, $a1, 16
-	xor	$t1, $t3, $t1
-	addi.d	$t3, $a7, 9
+	ld.h	$t6, $a1, 16
+	xor	$t1, $t5, $t1
+	addi.d	$t5, $a7, 9
 	revb.2h	$t0, $t0
-	xor	$t0, $t0, $t5
+	xor	$t0, $t0, $t6
 	st.h	$t0, $a1, 18
-	bstrpick.d	$t0, $t3, 15, 0
+	bstrpick.d	$t0, $t5, 15, 0
 	slli.d	$t0, $t0, 1
-	ldx.h	$t5, $a1, $t0
-	xor	$t1, $t1, $t2
-	add.d	$t2, $t2, $t3
-	mul.d	$t2, $t2, $a4
-	mul.d	$t3, $t5, $a6
-	add.d	$t2, $t3, $t2
-	mul.d	$t5, $t5, $a4
-	add.d	$t2, $t2, $t4
-	addi.d	$t4, $t5, 1
+	ldx.h	$t6, $a1, $t0
+	xor	$t1, $t1, $t3
+	add.d	$t3, $t2, $t5
+	mul.d	$t3, $t3, $a4
+	mul.d	$t5, $t6, $a6
+	mul.d	$t6, $t6, $a4
+	add.d	$t4, $t5, $t4
+	add.d	$t3, $t4, $t3
+	addi.d	$t4, $t6, 1
 	stx.h	$t4, $a1, $t0
 	ld.h	$t0, $a5, 20
-	ld.h	$t5, $a1, 18
+	ld.h	$t6, $a1, 18
 	xor	$t1, $t4, $t1
 	addi.d	$t4, $a7, 10
 	revb.2h	$t0, $t0
-	xor	$t0, $t0, $t5
+	xor	$t0, $t0, $t6
 	st.h	$t0, $a1, 20
 	bstrpick.d	$t0, $t4, 15, 0
 	slli.d	$t0, $t0, 1
-	ldx.h	$t5, $a1, $t0
+	ldx.h	$t6, $a1, $t0
 	xor	$t1, $t1, $t2
-	add.d	$t2, $t2, $t4
+	add.d	$t2, $t3, $t4
 	mul.d	$t2, $t2, $a4
-	mul.d	$t4, $t5, $a6
-	add.d	$t2, $t4, $t2
-	mul.d	$t5, $t5, $a4
-	add.d	$t2, $t2, $t3
-	addi.d	$t3, $t5, 1
-	stx.h	$t3, $a1, $t0
+	mul.d	$t4, $t6, $a6
+	mul.d	$t6, $t6, $a4
+	add.d	$t5, $t4, $t5
+	add.d	$t2, $t5, $t2
+	addi.d	$t5, $t6, 1
+	stx.h	$t5, $a1, $t0
 	ld.h	$t0, $a5, 22
-	ld.h	$t5, $a1, 20
-	xor	$t1, $t3, $t1
-	addi.d	$t3, $a7, 11
+	ld.h	$t6, $a1, 20
+	xor	$t1, $t5, $t1
+	addi.d	$t5, $a7, 11
 	revb.2h	$t0, $t0
-	xor	$t0, $t0, $t5
+	xor	$t0, $t0, $t6
 	st.h	$t0, $a1, 22
-	bstrpick.d	$t0, $t3, 15, 0
+	bstrpick.d	$t0, $t5, 15, 0
 	slli.d	$t0, $t0, 1
-	ldx.h	$t5, $a1, $t0
-	xor	$t1, $t1, $t2
-	add.d	$t2, $t2, $t3
-	mul.d	$t2, $t2, $a4
-	mul.d	$t3, $t5, $a6
-	add.d	$t2, $t3, $t2
-	mul.d	$t5, $t5, $a4
-	add.d	$t2, $t2, $t4
-	addi.d	$t4, $t5, 1
+	ldx.h	$t6, $a1, $t0
+	xor	$t1, $t1, $t3
+	add.d	$t3, $t2, $t5
+	mul.d	$t3, $t3, $a4
+	mul.d	$t5, $t6, $a6
+	mul.d	$t6, $t6, $a4
+	add.d	$t4, $t5, $t4
+	add.d	$t3, $t4, $t3
+	addi.d	$t4, $t6, 1
 	stx.h	$t4, $a1, $t0
 	ld.h	$t0, $a5, 24
-	ld.h	$t5, $a1, 22
+	ld.h	$t6, $a1, 22
 	xor	$t1, $t4, $t1
 	addi.d	$t4, $a7, 12
 	revb.2h	$t0, $t0
-	xor	$t0, $t0, $t5
+	xor	$t0, $t0, $t6
 	st.h	$t0, $a1, 24
 	bstrpick.d	$t0, $t4, 15, 0
 	slli.d	$t0, $t0, 1
-	ldx.h	$t5, $a1, $t0
+	ldx.h	$t6, $a1, $t0
 	xor	$t1, $t1, $t2
-	add.d	$t2, $t2, $t4
+	add.d	$t2, $t3, $t4
 	mul.d	$t2, $t2, $a4
-	mul.d	$t4, $t5, $a6
-	add.d	$t2, $t4, $t2
-	mul.d	$t5, $t5, $a4
-	add.d	$t2, $t2, $t3
-	addi.d	$t3, $t5, 1
-	stx.h	$t3, $a1, $t0
+	mul.d	$t4, $t6, $a6
+	mul.d	$t6, $t6, $a4
+	add.d	$t5, $t4, $t5
+	add.d	$t2, $t5, $t2
+	addi.d	$t5, $t6, 1
+	stx.h	$t5, $a1, $t0
 	ld.h	$t0, $a5, 26
-	ld.h	$t5, $a1, 24
-	xor	$t1, $t3, $t1
-	addi.d	$t3, $a7, 13
+	ld.h	$t6, $a1, 24
+	xor	$t1, $t5, $t1
+	addi.d	$t5, $a7, 13
 	revb.2h	$t0, $t0
-	xor	$t0, $t0, $t5
+	xor	$t0, $t0, $t6
 	st.h	$t0, $a1, 26
-	bstrpick.d	$t0, $t3, 15, 0
+	bstrpick.d	$t0, $t5, 15, 0
 	slli.d	$t0, $t0, 1
-	ldx.h	$t5, $a1, $t0
-	xor	$t1, $t1, $t2
-	add.d	$t2, $t2, $t3
-	mul.d	$t2, $t2, $a4
-	mul.d	$t3, $t5, $a6
-	add.d	$t2, $t3, $t2
-	mul.d	$t5, $t5, $a4
-	add.d	$t2, $t2, $t4
-	addi.d	$t4, $t5, 1
+	ldx.h	$t6, $a1, $t0
+	xor	$t1, $t1, $t3
+	add.d	$t3, $t2, $t5
+	mul.d	$t3, $t3, $a4
+	mul.d	$t5, $t6, $a6
+	mul.d	$t6, $t6, $a4
+	add.d	$t4, $t5, $t4
+	add.d	$t3, $t4, $t3
+	addi.d	$t4, $t6, 1
 	stx.h	$t4, $a1, $t0
 	ld.h	$t0, $a5, 28
-	ld.h	$t5, $a1, 26
+	ld.h	$t6, $a1, 26
 	xor	$t1, $t4, $t1
 	addi.d	$t4, $a7, 14
 	revb.2h	$t0, $t0
-	xor	$t0, $t0, $t5
+	xor	$t0, $t0, $t6
 	st.h	$t0, $a1, 28
 	bstrpick.d	$t0, $t4, 15, 0
 	slli.d	$t0, $t0, 1
-	ldx.h	$t5, $a1, $t0
+	ldx.h	$t6, $a1, $t0
 	xor	$t1, $t1, $t2
-	add.d	$t2, $t2, $t4
+	add.d	$t2, $t3, $t4
 	mul.d	$t2, $t2, $a4
-	mul.d	$t4, $t5, $a6
-	add.d	$t2, $t4, $t2
-	mul.d	$t5, $t5, $a4
-	add.d	$t2, $t2, $t3
-	addi.d	$t3, $t5, 1
-	stx.h	$t3, $a1, $t0
+	mul.d	$t4, $t6, $a6
+	mul.d	$t6, $t6, $a4
+	add.d	$t5, $t4, $t5
+	add.d	$t2, $t5, $t2
+	addi.d	$t5, $t6, 1
+	stx.h	$t5, $a1, $t0
 	addi.d	$a7, $a7, 15
+	xor	$t0, $t5, $t1
 	ld.h	$a5, $a5, 30
-	ld.h	$t0, $a1, 28
-	xor	$t1, $t3, $t1
-	xor	$t1, $t1, $t2
+	ld.h	$t1, $a1, 28
+	xor	$t0, $t0, $t3
+	xor	$t0, $t0, $t2
 	revb.2h	$a5, $a5
-	xor	$a5, $a5, $t0
+	xor	$a5, $a5, $t1
 	st.h	$a5, $a1, 30
 	add.d	$a5, $t2, $a7
 	bstrpick.d	$a7, $a7, 15, 0
 	slli.d	$a7, $a7, 1
-	ldx.h	$t0, $a1, $a7
+	ldx.h	$t1, $a1, $a7
 	pcalau12i	$t2, %pc_hi20(bx)
 	st.h	$a4, $t2, %pc_lo12(bx)
 	mul.d	$a5, $a5, $a4
-	mul.d	$a6, $t0, $a6
+	mul.d	$a6, $t1, $a6
 	add.d	$a5, $a6, $a5
 	pcalau12i	$t2, %pc_hi20(cx)
 	st.h	$a5, $t2, %pc_lo12(cx)
 	pcalau12i	$t2, %pc_hi20(tmp)
 	st.h	$a6, $t2, %pc_lo12(tmp)
 	st.h	$a6, $a3, %pc_lo12(si)
-	mul.d	$a3, $t0, $a4
+	mul.d	$a3, $t1, $a4
 	add.d	$a4, $a5, $t4
 	pcalau12i	$a5, %pc_hi20(dx)
 	st.h	$a4, $a5, %pc_lo12(dx)
@@ -331,7 +331,7 @@ assemble:                               # @assemble
 	xor	$a1, $a4, $a3
 	pcalau12i	$a2, %pc_hi20(res)
 	st.h	$a1, $a2, %pc_lo12(res)
-	xor	$a1, $a1, $t1
+	xor	$a1, $a1, $t0
 	pcalau12i	$a2, %pc_hi20(inter)
 	st.h	$a1, $a2, %pc_lo12(inter)
 	st.h	$zero, $a0, %pc_lo12(i)

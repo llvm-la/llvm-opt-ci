@@ -295,15 +295,15 @@ des_set_key:                            # @des_set_key
 	andi	$t6, $t1, 63
 	alsl.d	$t6, $t6, $a4, 3
 	ldptr.d	$t6, $t6, 2048
-	ldptr.d	$t4, $t4, 2560
 	srli.d	$t1, $t1, 12
 	andi	$t1, $t1, 504
 	add.d	$t1, $a4, $t1
 	ldptr.d	$t1, $t1, 3072
+	ldptr.d	$t4, $t4, 2560
 	ldptr.d	$t5, $t5, 3584
 	or	$t2, $t2, $t3
-	or	$t3, $t4, $t6
-	or	$t1, $t3, $t1
+	or	$t1, $t6, $t1
+	or	$t1, $t4, $t1
 	or	$t1, $t1, $t5
 	slli.d	$t3, $t1, 18
 	bstrins.d	$t3, $t2, 17, 2

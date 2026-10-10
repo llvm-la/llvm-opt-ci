@@ -100,17 +100,17 @@ crc_loop:                               # @crc_loop
 	slli.d	$a0, $a0, 1
 	ldx.hu	$a0, $a3, $a0
 	srli.d	$a2, $a2, 8
-	xor	$a2, $a2, $a0
 	srli.d	$a4, $a1, 16
 	xor	$a2, $a4, $a2
+	xor	$a2, $a2, $a0
 	andi	$a2, $a2, 255
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a2, $a3, $a2
 	srli.d	$a0, $a0, 8
 	bstrpick.d	$a1, $a1, 31, 24
 	andi	$a4, $a2, 255
-	xor	$a0, $a0, $a4
 	xor	$a0, $a1, $a0
+	xor	$a0, $a0, $a4
 	slli.d	$a0, $a0, 1
 	ldx.hu	$a0, $a3, $a0
 	srli.d	$a1, $a2, 8

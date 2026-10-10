@@ -2149,8 +2149,8 @@ prfs_DoSplitting:                       # @prfs_DoSplitting
 	ld.w	$a3, $s0, 72
 	move	$s5, $a0
 	sub.d	$a0, $a1, $a0
-	add.d	$a0, $a0, $a2
-	add.w	$s3, $a0, $a3
+	add.d	$a1, $a2, $a3
+	add.w	$s3, $a0, $a1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(clause_CreateBody)
 	jirl	$ra, $ra, 0

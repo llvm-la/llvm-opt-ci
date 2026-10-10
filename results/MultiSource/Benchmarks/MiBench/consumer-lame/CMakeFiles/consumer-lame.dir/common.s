@@ -257,9 +257,9 @@ print_header:                           # @print_header
 	addi.d	$a2, $a2, %pc_lo12(tabsel_123)
 	ld.w	$a3, $fp, 24
 	ld.w	$a4, $fp, 32
+	slli.d	$a3, $a3, 6
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a2, $a1
-	slli.d	$a2, $a3, 6
-	add.d	$a1, $a1, $a2
 	alsl.d	$a1, $a4, $a1, 2
 	ld.w	$a2, $a1, -64
 	ld.w	$a3, $fp, 44
@@ -309,9 +309,9 @@ print_header_compact:                   # @print_header_compact
 	pcalau12i	$a4, %pc_hi20(tabsel_123)
 	addi.d	$a4, $a4, %pc_lo12(tabsel_123)
 	ld.w	$a6, $a0, 32
+	slli.d	$a5, $a5, 6
+	add.d	$a4, $a4, $a5
 	add.d	$a1, $a4, $a1
-	slli.d	$a4, $a5, 6
-	add.d	$a1, $a1, $a4
 	alsl.d	$a1, $a6, $a1, 2
 	ld.w	$a5, $a0, 36
 	ld.w	$a4, $a1, -64

@@ -44,8 +44,8 @@ petite_inflate2x_1to9:                  # @petite_inflate2x_1to9
 	slli.d	$a2, $a1, 5
 	alsl.d	$a1, $a1, $a2, 2
 	ldx.wu	$a1, $a3, $a1
-	add.d	$a1, $s8, $a1
-	add.d	$s3, $a1, $a0
+	add.d	$a0, $s8, $a0
+	add.d	$s3, $a0, $a1
 	ori	$a0, $zero, 4
 	bgeu	$s7, $a0, .LBB0_6
 	b	.LBB0_144

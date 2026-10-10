@@ -263,10 +263,10 @@ _ZL12BM_INIT3_RAWRN9benchmark5StateE:   # @_ZL12BM_INIT3_RAWRN9benchmark5StateE
 	vpickve2gr.h	$a2, $vr0, 4
 	andi	$a2, $a2, 1
 	slli.d	$a2, $a2, 6
+	vpickve2gr.h	$a4, $vr0, 6
+	slli.d	$a4, $a4, 7
+	or	$a2, $a2, $a4
 	or	$a2, $a3, $a2
-	vpickve2gr.h	$a3, $vr0, 6
-	slli.d	$a3, $a3, 7
-	or	$a2, $a2, $a3
 	andi	$a2, $a2, 255
 	sub.d	$a3, $a1, $s1
 	addi.w	$a4, $zero, -16

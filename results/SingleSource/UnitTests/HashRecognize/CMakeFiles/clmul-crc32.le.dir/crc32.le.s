@@ -92,22 +92,22 @@ crc_loop:                               # @crc_loop
 	slli.d	$a1, $a0, 4
 	xor	$a1, $a0, $a1
 	slli.d	$a2, $a0, 8
-	xor	$a1, $a1, $a2
-	slli.d	$a2, $a0, 11
+	slli.d	$a3, $a0, 11
+	xor	$a2, $a2, $a3
 	xor	$a1, $a1, $a2
 	slli.d	$a2, $a0, 12
-	xor	$a1, $a1, $a2
-	slli.d	$a2, $a0, 19
-	xor	$a1, $a1, $a2
-	slli.d	$a2, $a0, 20
+	slli.d	$a3, $a0, 19
+	xor	$a2, $a2, $a3
+	slli.d	$a3, $a0, 20
+	xor	$a2, $a2, $a3
 	xor	$a1, $a1, $a2
 	slli.d	$a2, $a0, 22
-	xor	$a1, $a1, $a2
-	slli.d	$a2, $a0, 26
-	xor	$a1, $a1, $a2
-	slli.d	$a2, $a0, 27
-	xor	$a1, $a1, $a2
+	slli.d	$a3, $a0, 26
+	xor	$a2, $a2, $a3
+	slli.d	$a3, $a0, 27
+	xor	$a2, $a2, $a3
 	slli.d	$a0, $a0, 28
+	xor	$a0, $a2, $a0
 	xor	$a0, $a1, $a0
 	bstrpick.d	$a0, $a0, 31, 0
 	slli.d	$a1, $a0, 11

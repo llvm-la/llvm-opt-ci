@@ -245,29 +245,29 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 # %bb.1:
 	ld.d	$a0, $fp, 64
 	ld.wu	$a1, $s3, 8
+	ld.d	$a2, $fp, 16
 	ldx.hu	$a0, $a0, $a1
-	ld.d	$a1, $fp, 16
-	ld.w	$a2, $fp, 32
+	ld.w	$a1, $fp, 32
+	ld.bu	$a2, $a2, 0
 	add.d	$a0, $fp, $a0
-	ld.bu	$a1, $a1, 0
-	ld.bu	$a0, $a0, 683
-	ld.bu	$s2, $s3, 2
 	addi.d	$a3, $fp, 940
-	ldx.bu	$a1, $a3, $a1
+	ld.bu	$s2, $s3, 2
+	ldx.bu	$a2, $a3, $a2
+	ld.bu	$a0, $a0, 683
 	ld.bu	$a4, $s3, 3
 	ldx.bu	$a3, $a3, $s2
-	add.d	$a0, $a2, $a0
-	add.d	$a0, $a0, $a1
-	ld.w	$a2, $fp, 44
+	add.d	$a1, $a1, $a2
+	add.d	$a0, $a1, $a0
+	ld.w	$a1, $fp, 44
 	alsl.d	$a0, $a3, $a0, 1
 	slli.d	$a3, $a4, 7
 	add.d	$a3, $fp, $a3
-	srli.d	$a2, $a2, 26
-	andi	$a2, $a2, 32
-	add.d	$a0, $a0, $a2
+	srli.d	$a1, $a1, 26
+	andi	$a1, $a1, 32
+	add.d	$a0, $a0, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	alsl.d	$a0, $a0, $a3, 1
-	st.w	$a1, $fp, 40
+	st.w	$a2, $fp, 40
 	ori	$a1, $zero, 2672
 	ld.wu	$a3, $s0, 8
 	ldx.hu	$a2, $a0, $a1
@@ -1040,8 +1040,8 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	ld.w	$a2, $sp, 52
 .LBB2_80:                               #   in Loop: Header=BB2_66 Depth=1
 	ld.h	$a0, $s2, 0
-	add.d	$a0, $s4, $a0
 	add.d	$a0, $a0, $a2
+	add.d	$a0, $s4, $a0
 	st.h	$a0, $s2, 0
 	b	.LBB2_66
 .LBB2_81:
@@ -1064,8 +1064,8 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	slli.d	$a6, $a2, 3
 	alsl.d	$a2, $a2, $a6, 2
 	add.d	$a2, $s3, $a2
-	add.d	$a1, $a4, $a1
 	sub.d	$a1, $zero, $a1
+	sub.d	$a1, $a1, $a4
 	addi.d	$a6, $sp, 56
 	move	$t0, $a4
 	move	$a7, $s4

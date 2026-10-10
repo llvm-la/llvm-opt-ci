@@ -85,29 +85,29 @@ CrcGenerateTable:                       # @CrcGenerateTable
 	vseqi.w	$vr11, $vr11, 0
 	vandn.v	$vr11, $vr11, $vr5
 	vsrli.w	$vr12, $vr10, 2
-	vxor.v	$vr11, $vr12, $vr11
-	vand.v	$vr12, $vr0, $vr6
-	vseqi.w	$vr12, $vr12, 0
-	vandn.v	$vr12, $vr12, $vr2
-	vxor.v	$vr11, $vr12, $vr11
+	vand.v	$vr13, $vr0, $vr6
+	vseqi.w	$vr13, $vr13, 0
+	vandn.v	$vr13, $vr13, $vr2
+	vxor.v	$vr11, $vr13, $vr11
+	vxor.v	$vr11, $vr11, $vr12
 	vand.v	$vr12, $vr0, $vr7
 	vseqi.w	$vr12, $vr12, 0
 	vandn.v	$vr12, $vr12, $vr5
 	vsrli.w	$vr11, $vr11, 2
-	vxor.v	$vr11, $vr11, $vr12
-	vand.v	$vr12, $vr0, $vr8
-	vseqi.w	$vr12, $vr12, 0
-	vandn.v	$vr12, $vr12, $vr2
+	vand.v	$vr13, $vr0, $vr8
+	vseqi.w	$vr13, $vr13, 0
+	vandn.v	$vr13, $vr13, $vr2
+	vxor.v	$vr12, $vr13, $vr12
 	vxor.v	$vr11, $vr12, $vr11
 	vand.v	$vr9, $vr9, $vr8
 	vseqi.w	$vr9, $vr9, 0
 	vandn.v	$vr9, $vr9, $vr5
 	vsrli.w	$vr11, $vr11, 2
-	vxor.v	$vr9, $vr11, $vr9
 	vand.v	$vr10, $vr10, $vr8
 	vseqi.w	$vr10, $vr10, 0
 	vandn.v	$vr10, $vr10, $vr2
 	vxor.v	$vr9, $vr10, $vr9
+	vxor.v	$vr9, $vr9, $vr11
 	vstx	$vr9, $a0, $a1
 	addi.d	$a1, $a1, 16
 	vaddi.wu	$vr0, $vr0, 4

@@ -1275,8 +1275,8 @@ _ZN8NArchive4NCab10CInArchive4OpenEPKyRNS0_11CDatabaseExE: # @_ZN8NArchive4NCab1
 	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	bstrins.d	$s7, $a3, 63, 32
 	or	$a2, $s7, $a2
-	or	$a1, $a2, $a1
 	or	$a0, $a1, $a0
+	or	$a0, $a2, $a0
 	st.d	$a0, $s5, 0
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)

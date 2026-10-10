@@ -4692,8 +4692,8 @@ LzmaEnc_CodeOneBlock:                   # @LzmaEnc_CodeOneBlock
 	srli.d	$a6, $a6, 2
 	and	$a6, $a6, $s6
 	ldx.w	$a6, $s3, $a6
-	add.d	$a5, $a5, $a3
-	add.w	$a5, $a5, $a6
+	add.d	$a5, $a5, $a6
+	add.w	$a5, $a5, $a3
 	bgeu	$a5, $a4, .LBB24_199
 # %bb.198:                              #   in Loop: Header=BB24_27 Depth=1
 	move	$a7, $zero
@@ -5899,8 +5899,8 @@ LzmaEnc_CodeOneBlock:                   # @LzmaEnc_CodeOneBlock
 	ld.d	$a3, $s4, 24
 	add.d	$a0, $a0, $a1
 	sub.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
 	lu12i.w	$a1, 2
+	add.d	$a1, $a3, $a1
 	add.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
 	bltu	$a0, $a1, .LBB24_27
@@ -6314,8 +6314,8 @@ LzmaEnc_CodeOneBlock:                   # @LzmaEnc_CodeOneBlock
 	addi.d	$a0, $sp, 600
 	add.d	$a0, $a0, $a1
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
-	add.d	$a2, $a2, $s8
 	add.d	$a1, $a2, $a1
+	add.d	$a1, $a1, $s8
 	ori	$a2, $zero, 12
 	sub.w	$a2, $a2, $s5
 	pcaddu18i	$ra, %call36(memcpy)
@@ -6499,8 +6499,8 @@ LzmaEnc_CodeOneBlock:                   # @LzmaEnc_CodeOneBlock
 	srli.d	$a4, $a4, 2
 	and	$a4, $a4, $s6
 	ldx.w	$a4, $s3, $a4
-	ld.d	$a5, $sp, 480                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $a5
+	add.d	$a0, $a0, $a4
+	ld.d	$a4, $sp, 480                   # 8-byte Folded Reload
 	add.w	$a0, $a0, $a4
 	bltu	$t5, $a0, .LBB24_422
 # %bb.421:                              #   in Loop: Header=BB24_378 Depth=2
@@ -7879,8 +7879,8 @@ LzmaEnc_CodeOneBlock:                   # @LzmaEnc_CodeOneBlock
 	and	$t0, $t0, $s6
 	ldx.w	$t0, $s3, $t0
 	add.d	$a6, $a6, $a3
+	add.d	$a7, $a7, $t0
 	add.d	$a6, $a6, $a7
-	add.d	$a6, $a6, $t0
 	bstrpick.d	$t0, $fp, 31, 0
 	slli.d	$a7, $a4, 6
 	alsl.d	$a7, $t0, $a7, 2
@@ -7929,7 +7929,7 @@ LzmaEnc_CodeOneBlock:                   # @LzmaEnc_CodeOneBlock
 	xori	$a2, $a2, 508
 	ldx.w	$a2, $s3, $a2
 	add.d	$a3, $a6, $a3
-	add.d	$a3, $a3, $a7
+	add.d	$a2, $a7, $a2
 	add.d	$a2, $a3, $a2
 	bstrpick.d	$a6, $s0, 31, 0
 	slli.d	$a3, $a4, 6
@@ -8626,45 +8626,45 @@ LenPriceEnc_UpdateTable:                # @LenPriceEnc_UpdateTable
 	lu12i.w	$a5, 3
 	ori	$a5, $a5, 4092
 	and	$a7, $a7, $a5
-	ld.hu	$t0, $a0, 2
-	ldx.w	$t2, $a2, $a7
+	ldx.w	$t1, $a2, $a7
 	xori	$a7, $a7, 508
 	ldx.w	$a7, $a2, $a7
-	srli.d	$t0, $t0, 2
+	ld.hu	$t0, $a0, 2
 	slli.d	$a1, $a1, 3
-	bstrpick.d	$t1, $a1, 31, 3
-	alsl.d	$t3, $t1, $a0, 4
+	bstrpick.d	$t2, $a1, 31, 3
+	alsl.d	$t3, $t2, $a0, 4
 	ld.hu	$a1, $t3, 12
-	and	$t4, $t0, $a5
-	ldx.w	$t0, $a2, $t4
-	xori	$t5, $t4, 508
+	srli.d	$t0, $t0, 2
+	and	$t6, $t0, $a5
+	ldx.w	$t0, $a2, $t6
 	srli.d	$t7, $a1, 4
 	ld.hu	$a1, $t3, 8
 	slli.d	$t4, $t7, 2
 	ldx.w	$t8, $a2, $t4
 	ld.hu	$t4, $t3, 6
-	srli.d	$t6, $a1, 4
-	slli.d	$a1, $t6, 2
+	srli.d	$t5, $a1, 4
+	slli.d	$a1, $t5, 2
 	ldx.w	$fp, $a2, $a1
 	srli.d	$t4, $t4, 4
 	slli.d	$a1, $t4, 2
 	ldx.w	$s0, $a2, $a1
-	ldx.w	$a1, $a2, $t5
-	add.d	$t5, $t8, $t2
-	add.d	$t5, $t5, $fp
-	add.d	$t5, $t5, $s0
+	xori	$a1, $t6, 508
+	ldx.w	$a1, $a2, $a1
+	add.d	$t6, $t8, $t1
+	add.d	$t8, $fp, $s0
+	add.d	$t6, $t6, $t8
 	ori	$t8, $zero, 1
-	st.w	$t5, $a4, 0
+	st.w	$t6, $a4, 0
 	beq	$a6, $t8, .LBB30_21
 # %bb.2:
-	alsl.d	$t8, $t6, $a2, 2
-	alsl.d	$t5, $t4, $a2, 2
+	alsl.d	$t8, $t5, $a2, 2
+	alsl.d	$t6, $t4, $a2, 2
 	xori	$t7, $t7, 127
 	slli.d	$t7, $t7, 2
-	ldx.w	$t7, $a2, $t7
 	ld.w	$t8, $t8, 0
-	ld.w	$fp, $t5, 0
-	add.d	$t7, $t7, $t2
+	ldx.w	$t7, $a2, $t7
+	ld.w	$fp, $t6, 0
+	add.d	$t8, $t1, $t8
 	add.d	$t7, $t7, $t8
 	add.d	$t7, $t7, $fp
 	ori	$t8, $zero, 2
@@ -8675,26 +8675,26 @@ LenPriceEnc_UpdateTable:                # @LenPriceEnc_UpdateTable
 	srli.d	$t7, $t7, 4
 	slli.d	$t8, $t7, 2
 	ldx.w	$t8, $a2, $t8
-	xori	$t6, $t6, 127
-	slli.d	$fp, $t6, 2
+	xori	$t5, $t5, 127
+	slli.d	$fp, $t5, 2
 	ldx.w	$fp, $a2, $fp
-	ld.w	$s0, $t5, 0
-	add.d	$t8, $t8, $t2
+	ld.w	$s0, $t6, 0
+	add.d	$t8, $t8, $t1
 	add.d	$t8, $t8, $fp
 	add.d	$t8, $t8, $s0
 	ori	$fp, $zero, 3
 	st.w	$t8, $a4, 8
 	beq	$a6, $fp, .LBB30_21
 # %bb.4:
-	alsl.d	$t6, $t6, $a2, 2
+	alsl.d	$t5, $t5, $a2, 2
 	xori	$t7, $t7, 127
 	slli.d	$t7, $t7, 2
 	ldx.w	$t7, $a2, $t7
-	ld.w	$t6, $t6, 0
 	ld.w	$t5, $t5, 0
-	add.d	$t7, $t7, $t2
-	add.d	$t6, $t7, $t6
-	add.d	$t5, $t6, $t5
+	ld.w	$t6, $t6, 0
+	add.d	$t7, $t7, $t1
+	add.d	$t5, $t5, $t6
+	add.d	$t5, $t7, $t5
 	ori	$t6, $zero, 4
 	st.w	$t5, $a4, 12
 	beq	$a6, $t6, .LBB30_21
@@ -8710,7 +8710,7 @@ LenPriceEnc_UpdateTable:                # @LenPriceEnc_UpdateTable
 	xori	$t4, $t4, 127
 	slli.d	$fp, $t4, 2
 	ldx.w	$fp, $a2, $fp
-	add.d	$t8, $t8, $t2
+	add.d	$t8, $t8, $t1
 	add.d	$t7, $t8, $t7
 	add.d	$t7, $t7, $fp
 	ori	$t8, $zero, 5
@@ -8721,10 +8721,10 @@ LenPriceEnc_UpdateTable:                # @LenPriceEnc_UpdateTable
 	alsl.d	$t4, $t4, $a2, 2
 	xori	$t6, $t6, 127
 	slli.d	$t6, $t6, 2
-	ldx.w	$t6, $a2, $t6
 	ld.w	$t7, $t7, 0
+	ldx.w	$t6, $a2, $t6
 	ld.w	$t8, $t4, 0
-	add.d	$t6, $t6, $t2
+	add.d	$t7, $t1, $t7
 	add.d	$t6, $t6, $t7
 	add.d	$t6, $t6, $t8
 	ori	$t7, $zero, 6
@@ -8739,7 +8739,7 @@ LenPriceEnc_UpdateTable:                # @LenPriceEnc_UpdateTable
 	slli.d	$t7, $t5, 2
 	ldx.w	$t7, $a2, $t7
 	ld.w	$t8, $t4, 0
-	add.d	$t6, $t6, $t2
+	add.d	$t6, $t6, $t1
 	add.d	$t6, $t6, $t7
 	add.d	$t6, $t6, $t8
 	ori	$t7, $zero, 7
@@ -8752,14 +8752,14 @@ LenPriceEnc_UpdateTable:                # @LenPriceEnc_UpdateTable
 	ldx.w	$t3, $a2, $t3
 	ld.w	$t5, $t5, 0
 	ld.w	$t4, $t4, 0
-	add.d	$t2, $t3, $t2
-	add.d	$t2, $t2, $t5
-	add.d	$t2, $t2, $t4
+	add.d	$t1, $t3, $t1
+	add.d	$t3, $t5, $t4
+	add.d	$t1, $t1, $t3
 	ori	$t3, $zero, 9
-	st.w	$t2, $a4, 28
+	st.w	$t1, $a4, 28
 	bltu	$a6, $t3, .LBB30_21
 # %bb.9:
-	slli.d	$t1, $t1, 3
+	slli.d	$t1, $t2, 3
 	alsl.d	$t1, $t1, $a0, 1
 	ld.hu	$t2, $t1, 268
 	srli.d	$t5, $t2, 4
@@ -8775,7 +8775,7 @@ LenPriceEnc_UpdateTable:                # @LenPriceEnc_UpdateTable
 	ldx.w	$t7, $a2, $t7
 	add.d	$t0, $t0, $a7
 	add.d	$t6, $t6, $t0
-	add.d	$t6, $t6, $t8
+	add.d	$t7, $t8, $t7
 	add.d	$t6, $t6, $t7
 	st.w	$t6, $a4, 32
 	beq	$a6, $t3, .LBB30_21
@@ -8784,10 +8784,10 @@ LenPriceEnc_UpdateTable:                # @LenPriceEnc_UpdateTable
 	alsl.d	$t3, $t2, $a2, 2
 	xori	$t5, $t5, 127
 	slli.d	$t5, $t5, 2
-	ldx.w	$t5, $a2, $t5
 	ld.w	$t6, $t6, 0
+	ldx.w	$t5, $a2, $t5
 	ld.w	$t7, $t3, 0
-	add.d	$t5, $t5, $t0
+	add.d	$t6, $t0, $t6
 	add.d	$t5, $t5, $t6
 	add.d	$t5, $t5, $t7
 	ori	$t6, $zero, 10
@@ -8816,8 +8816,8 @@ LenPriceEnc_UpdateTable:                # @LenPriceEnc_UpdateTable
 	ld.w	$t4, $t4, 0
 	ld.w	$t3, $t3, 0
 	add.d	$t5, $t5, $t0
-	add.d	$t4, $t5, $t4
 	add.d	$t3, $t4, $t3
+	add.d	$t3, $t5, $t3
 	ori	$t4, $zero, 12
 	st.w	$t3, $a4, 44
 	beq	$a6, $t4, .LBB30_21
@@ -8844,10 +8844,10 @@ LenPriceEnc_UpdateTable:                # @LenPriceEnc_UpdateTable
 	alsl.d	$t2, $t2, $a2, 2
 	xori	$t4, $t4, 127
 	slli.d	$t4, $t4, 2
-	ldx.w	$t4, $a2, $t4
 	ld.w	$t5, $t5, 0
+	ldx.w	$t4, $a2, $t4
 	ld.w	$t6, $t2, 0
-	add.d	$t4, $t4, $t0
+	add.d	$t5, $t0, $t5
 	add.d	$t4, $t4, $t5
 	add.d	$t4, $t4, $t6
 	ori	$t5, $zero, 14
@@ -8876,8 +8876,8 @@ LenPriceEnc_UpdateTable:                # @LenPriceEnc_UpdateTable
 	ld.w	$t3, $t3, 0
 	ld.w	$t2, $t2, 0
 	add.d	$t0, $t1, $t0
-	add.d	$t0, $t0, $t3
-	add.d	$t0, $t0, $t2
+	add.d	$t1, $t3, $t2
+	add.d	$t0, $t0, $t1
 	ori	$t1, $zero, 17
 	st.w	$t0, $a4, 60
 	bltu	$a6, $t1, .LBB30_21
@@ -10030,8 +10030,8 @@ LitEnc_GetPriceMatched:                 # @LitEnc_GetPriceMatched
 .LBB34_1:                               # =>This Inner Loop Header: Depth=1
 	slli.d	$a2, $a2, 1
 	and	$a7, $a1, $a2
-	add.d	$a7, $a7, $a1
 	bstrpick.d	$t0, $a6, 31, 8
+	add.d	$t0, $a1, $t0
 	add.w	$a7, $a7, $t0
 	slli.d	$a7, $a7, 1
 	ldx.h	$a7, $a0, $a7

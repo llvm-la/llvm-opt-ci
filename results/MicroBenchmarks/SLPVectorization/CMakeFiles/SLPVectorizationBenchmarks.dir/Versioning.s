@@ -6822,14 +6822,14 @@ _ZSt25__generate_canonical_pow2IdLm53ESt23mersenne_twister_engineImLm32ELm624ELm
 	vld	$vr0, $a2, 8
 	vshuf4i.d	$vr1, $vr0, 9
 	vand.v	$vr1, $vr1, $vr4
+	vand.v	$vr2, $vr0, $vr5
+	vor.v	$vr1, $vr2, $vr1
 	vldx	$vr2, $a2, $s1
-	vand.v	$vr3, $vr0, $vr5
-	vor.v	$vr1, $vr3, $vr1
 	vsrli.d	$vr1, $vr1, 1
-	vxor.v	$vr1, $vr1, $vr2
-	vand.v	$vr2, $vr0, $vr6
-	vseqi.d	$vr2, $vr2, 0
-	vandn.v	$vr2, $vr2, $vr7
+	vand.v	$vr3, $vr0, $vr6
+	vseqi.d	$vr3, $vr3, 0
+	vandn.v	$vr3, $vr3, $vr7
+	vxor.v	$vr2, $vr2, $vr3
 	vxor.v	$vr1, $vr1, $vr2
 	vstx	$vr1, $fp, $a1
 	addi.d	$a1, $a1, 16
@@ -6838,14 +6838,14 @@ _ZSt25__generate_canonical_pow2IdLm53ESt23mersenne_twister_engineImLm32ELm624ELm
 	ld.d	$a1, $fp, 1816
 	vpickve2gr.d	$a2, $vr0, 1
 	bstrpick.d	$a3, $a1, 30, 1
-	ldptr.d	$a4, $fp, 4984
 	slli.d	$a3, $a3, 1
 	bstrins.d	$a2, $a3, 30, 0
+	ldptr.d	$a3, $fp, 4984
 	srli.d	$a2, $a2, 1
-	xor	$a2, $a2, $a4
-	andi	$a3, $a1, 1
-	sub.d	$a3, $zero, $a3
-	and	$a3, $a3, $s2
+	andi	$a4, $a1, 1
+	sub.d	$a4, $zero, $a4
+	and	$a4, $a4, $s2
+	xor	$a3, $a3, $a4
 	xor	$a2, $a2, $a3
 	st.d	$a2, $fp, 1808
 	vinsgr2vr.d	$vr0, $a1, 1
@@ -6857,14 +6857,14 @@ _ZSt25__generate_canonical_pow2IdLm53ESt23mersenne_twister_engineImLm32ELm624ELm
 	vldx	$vr1, $a2, $s5
 	vshuf4i.d	$vr0, $vr1, 9
 	vand.v	$vr0, $vr0, $vr4
+	vand.v	$vr2, $vr1, $vr5
+	vor.v	$vr0, $vr2, $vr0
 	vldx	$vr2, $a2, $s6
-	vand.v	$vr3, $vr1, $vr5
-	vor.v	$vr0, $vr3, $vr0
 	vsrli.d	$vr0, $vr0, 1
-	vxor.v	$vr0, $vr0, $vr2
-	vand.v	$vr2, $vr1, $vr6
-	vseqi.d	$vr2, $vr2, 0
-	vandn.v	$vr2, $vr2, $vr7
+	vand.v	$vr3, $vr1, $vr6
+	vseqi.d	$vr3, $vr3, 0
+	vandn.v	$vr3, $vr3, $vr7
+	vxor.v	$vr2, $vr2, $vr3
 	vxor.v	$vr0, $vr0, $vr2
 	addi.d	$a1, $a1, 16
 	vstx	$vr0, $a2, $s7
@@ -6872,17 +6872,17 @@ _ZSt25__generate_canonical_pow2IdLm53ESt23mersenne_twister_engineImLm32ELm624ELm
 	bnez	$a1, .LBB31_6
 # %bb.7:                                #   in Loop: Header=BB31_2 Depth=1
 	ld.d	$a2, $fp, 0
-	move	$a1, $zero
 	ldptr.d	$a3, $fp, 4984
+	move	$a1, $zero
 	bstrpick.d	$a4, $a2, 30, 1
-	ldptr.d	$a5, $fp, 3168
 	slli.d	$a4, $a4, 1
 	bstrins.d	$a3, $a4, 30, 0
+	ldptr.d	$a4, $fp, 3168
 	srli.d	$a3, $a3, 1
-	xor	$a3, $a3, $a5
 	andi	$a2, $a2, 1
 	sub.d	$a2, $zero, $a2
 	and	$a2, $a2, $s2
+	xor	$a2, $a4, $a2
 	xor	$a2, $a3, $a2
 	stptr.d	$a2, $fp, 4984
 	b	.LBB31_1
@@ -6939,14 +6939,14 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	vld	$vr4, $a5, 8
 	vshuf4i.d	$vr5, $vr4, 9
 	vand.v	$vr5, $vr5, $vr0
+	vand.v	$vr6, $vr4, $vr1
+	vor.v	$vr5, $vr6, $vr5
 	vldx	$vr6, $a5, $a3
-	vand.v	$vr7, $vr4, $vr1
-	vor.v	$vr5, $vr7, $vr5
 	vsrli.d	$vr5, $vr5, 1
-	vxor.v	$vr5, $vr5, $vr6
-	vand.v	$vr6, $vr4, $vr2
-	vseqi.d	$vr6, $vr6, 0
-	vandn.v	$vr6, $vr6, $vr3
+	vand.v	$vr7, $vr4, $vr2
+	vseqi.d	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr3
+	vxor.v	$vr6, $vr6, $vr7
 	vxor.v	$vr5, $vr5, $vr6
 	vstx	$vr5, $a0, $a2
 	addi.d	$a2, $a2, 16
@@ -6955,14 +6955,14 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	ld.d	$a2, $a0, 1816
 	vpickve2gr.d	$a3, $vr4, 1
 	bstrpick.d	$a4, $a2, 30, 1
-	ldptr.d	$a5, $a0, 4984
 	slli.d	$a4, $a4, 1
 	bstrins.d	$a3, $a4, 30, 0
+	ldptr.d	$a4, $a0, 4984
 	srli.d	$a3, $a3, 1
-	xor	$a3, $a3, $a5
-	andi	$a4, $a2, 1
-	sub.d	$a4, $zero, $a4
-	and	$a4, $a4, $a1
+	andi	$a5, $a2, 1
+	sub.d	$a5, $zero, $a5
+	and	$a5, $a5, $a1
+	xor	$a4, $a4, $a5
 	xor	$a3, $a3, $a4
 	st.d	$a3, $a0, 1808
 	vinsgr2vr.d	$vr4, $a2, 1
@@ -6978,14 +6978,14 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	vldx	$vr5, $a6, $a3
 	vshuf4i.d	$vr4, $vr5, 9
 	vand.v	$vr4, $vr4, $vr0
+	vand.v	$vr6, $vr5, $vr1
+	vor.v	$vr4, $vr6, $vr4
 	vldx	$vr6, $a6, $a4
-	vand.v	$vr7, $vr5, $vr1
-	vor.v	$vr4, $vr7, $vr4
 	vsrli.d	$vr4, $vr4, 1
-	vxor.v	$vr4, $vr4, $vr6
-	vand.v	$vr6, $vr5, $vr2
-	vseqi.d	$vr6, $vr6, 0
-	vandn.v	$vr6, $vr6, $vr3
+	vand.v	$vr7, $vr5, $vr2
+	vseqi.d	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr3
+	vxor.v	$vr6, $vr6, $vr7
 	vxor.v	$vr4, $vr4, $vr6
 	addi.d	$a2, $a2, 16
 	vstx	$vr4, $a6, $a5
@@ -6993,17 +6993,17 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	bnez	$a2, .LBB32_4
 # %bb.5:
 	ld.d	$a3, $a0, 0
-	move	$a2, $zero
 	ldptr.d	$a4, $a0, 4984
+	move	$a2, $zero
 	bstrpick.d	$a5, $a3, 30, 1
-	ldptr.d	$a6, $a0, 3168
 	slli.d	$a5, $a5, 1
 	bstrins.d	$a4, $a5, 30, 0
+	ldptr.d	$a5, $a0, 3168
 	srli.d	$a4, $a4, 1
-	xor	$a4, $a4, $a6
 	andi	$a3, $a3, 1
 	sub.d	$a3, $zero, $a3
 	and	$a1, $a3, $a1
+	xor	$a1, $a5, $a1
 	xor	$a1, $a4, $a1
 	stptr.d	$a1, $a0, 4984
 .LBB32_6:

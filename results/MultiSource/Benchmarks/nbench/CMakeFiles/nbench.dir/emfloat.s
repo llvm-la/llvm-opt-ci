@@ -216,31 +216,31 @@ DivideInternalFPF:                      # @DivideInternalFPF
 .LBB1_3:
 	ld.hu	$a3, $a0, 4
 	ld.hu	$a4, $a0, 6
-	ld.hu	$a6, $a1, 4
-	ld.hu	$t0, $a1, 6
 	ld.hu	$a5, $a0, 8
-	ld.hu	$t2, $a1, 8
-	ld.hu	$a7, $a0, 10
-	or	$a6, $t0, $a6
-	or	$t0, $a4, $a3
-	or	$a6, $a6, $t2
-	ld.hu	$t2, $a1, 10
-	or	$t0, $t0, $a5
-	or	$t0, $t0, $a7
-	slli.d	$t0, $t0, 48
-	or	$a6, $a6, $t2
-	beqz	$t0, .LBB1_18
+	ld.hu	$a6, $a0, 10
+	or	$a7, $a4, $a3
+	ld.hu	$t0, $a1, 4
+	ld.hu	$t2, $a1, 6
+	ld.hu	$t3, $a1, 8
+	ld.hu	$t4, $a1, 10
+	or	$t5, $a5, $a6
+	or	$a7, $a7, $t5
+	or	$t0, $t2, $t0
+	or	$t2, $t3, $t4
+	slli.d	$t3, $a7, 48
+	or	$a7, $t0, $t2
+	beqz	$t3, .LBB1_18
 # %bb.4:
-	beqz	$a6, .LBB1_24
+	beqz	$a7, .LBB1_24
 # %bb.5:
 	move	$fp, $zero
-	move	$t7, $zero
 	move	$t8, $zero
+	move	$t7, $zero
 	move	$t6, $zero
 	move	$t0, $zero
 	move	$t3, $zero
 	move	$t4, $zero
-	move	$a6, $zero
+	move	$a7, $zero
 	ld.b	$t2, $a0, 1
 	ld.b	$t5, $a1, 1
 	st.b	$t1, $a2, 0
@@ -264,24 +264,24 @@ DivideInternalFPF:                      # @DivideInternalFPF
 	bstrpick.d	$s0, $t5, 16, 16
 	st.h	$t5, $sp, 22
 	bstrpick.d	$t6, $t6, 15, 0
-	add.d	$fp, $s0, $fp
 	sub.d	$t6, $t6, $fp
+	sub.d	$t6, $t6, $s0
 	ld.hu	$fp, $a1, 6
 	bstrpick.d	$s0, $t6, 16, 16
 	st.h	$t6, $sp, 20
-	bstrpick.d	$t8, $t8, 15, 0
-	add.d	$fp, $s0, $fp
-	ld.h	$s0, $a1, 4
-	sub.d	$t8, $t8, $fp
-	st.h	$t8, $sp, 18
-	bstrpick.d	$fp, $t8, 16, 16
-	add.d	$fp, $fp, $s0
+	bstrpick.d	$t7, $t7, 15, 0
 	sub.d	$t7, $t7, $fp
-	st.h	$t7, $sp, 16
+	ld.h	$fp, $a1, 4
+	sub.d	$t7, $t7, $s0
+	st.h	$t7, $sp, 18
+	bstrpick.d	$s0, $t7, 16, 16
+	sub.d	$t8, $t8, $fp
+	sub.d	$t8, $t8, $s0
+	st.h	$t8, $sp, 16
 	ori	$fp, $zero, 1
 .LBB1_7:                                #   in Loop: Header=BB1_8 Depth=1
-	bstrpick.d	$s0, $a7, 15, 15
-	slli.d	$a7, $a7, 1
+	bstrpick.d	$s0, $a6, 15, 15
+	slli.d	$a6, $a6, 1
 	slli.d	$s1, $a5, 1
 	bstrpick.d	$a5, $a5, 15, 15
 	or	$s0, $s1, $s0
@@ -302,22 +302,22 @@ DivideInternalFPF:                      # @DivideInternalFPF
 	bstrpick.d	$t0, $t0, 15, 15
 	or	$t3, $fp, $t3
 	st.h	$t3, $a2, 6
-	slli.d	$a6, $a6, 1
-	or	$t0, $a6, $t0
-	ext.w.h	$a6, $t0
+	slli.d	$a7, $a7, 1
+	or	$t0, $a7, $t0
+	ext.w.h	$a7, $t0
 	st.h	$t0, $a2, 4
 	addi.d	$t1, $t1, -1
 	st.h	$t1, $a2, 2
-	move	$fp, $t7
-	move	$t7, $t8
-	move	$t8, $t6
+	move	$fp, $t8
+	move	$t8, $t7
+	move	$t7, $t6
 	move	$t6, $t5
 	move	$t0, $t3
 	move	$t3, $t4
 	move	$t4, $a4
 	move	$a4, $a5
 	move	$a5, $s0
-	bltz	$a6, .LBB1_28
+	bltz	$a7, .LBB1_28
 .LBB1_8:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_10 Depth 2
 	bstrpick.d	$t5, $a3, 15, 15
@@ -325,18 +325,18 @@ DivideInternalFPF:                      # @DivideInternalFPF
 	or	$t5, $s0, $t5
 	st.h	$t5, $sp, 22
 	bstrpick.d	$t6, $t6, 15, 15
-	slli.d	$s0, $t8, 1
+	slli.d	$s0, $t7, 1
 	or	$t6, $s0, $t6
 	st.h	$t6, $sp, 20
-	bstrpick.d	$t8, $t8, 15, 15
-	slli.d	$s0, $t7, 1
-	or	$t8, $s0, $t8
-	st.h	$t8, $sp, 18
 	bstrpick.d	$t7, $t7, 15, 15
-	slli.d	$s0, $fp, 1
+	slli.d	$s0, $t8, 1
 	or	$t7, $s0, $t7
+	st.h	$t7, $sp, 18
+	bstrpick.d	$t8, $t8, 15, 15
+	slli.d	$s0, $fp, 1
+	or	$t8, $s0, $t8
 	ext.w.h	$fp, $fp
-	st.h	$t7, $sp, 16
+	st.h	$t8, $sp, 16
 	bltz	$fp, .LBB1_6
 # %bb.9:                                #   in Loop: Header=BB1_8 Depth=1
 	move	$s1, $zero
@@ -367,8 +367,8 @@ DivideInternalFPF:                      # @DivideInternalFPF
 	ld.hu	$a5, $a1, 8
 	ld.hu	$a6, $a1, 10
 	or	$a3, $a4, $a3
-	or	$a3, $a3, $a5
-	or	$a3, $a3, $a6
+	or	$a4, $a5, $a6
+	or	$a3, $a3, $a4
 	beqz	$a3, .LBB1_20
 .LBB1_15:
 	ld.b	$a0, $a0, 1
@@ -387,8 +387,8 @@ DivideInternalFPF:                      # @DivideInternalFPF
 	ld.hu	$a5, $a0, 8
 	ld.hu	$a6, $a0, 10
 	or	$a3, $a4, $a3
-	or	$a3, $a3, $a5
-	or	$a3, $a3, $a6
+	or	$a4, $a5, $a6
+	or	$a3, $a3, $a4
 	beqz	$a3, .LBB1_20
 .LBB1_17:
 	lu12i.w	$a3, -524272
@@ -402,7 +402,7 @@ DivideInternalFPF:                      # @DivideInternalFPF
 	st.b	$a0, $a2, 1
 	b	.LBB1_28
 .LBB1_18:
-	beqz	$a6, .LBB1_20
+	beqz	$a7, .LBB1_20
 # %bb.19:
 	lu12i.w	$a0, -524272
 	b	.LBB1_25
@@ -452,8 +452,8 @@ DivideInternalFPF:                      # @DivideInternalFPF
 	ld.hu	$a4, $a2, 8
 	ld.hu	$a5, $a2, 10
 	or	$a1, $a3, $a1
-	or	$a1, $a1, $a4
-	or	$a1, $a1, $a5
+	or	$a3, $a4, $a5
+	or	$a1, $a1, $a3
 	beqz	$a1, .LBB1_33
 # %bb.30:
 	ld.hu	$a3, $a2, 2
@@ -729,22 +729,22 @@ DoEmFloatIteration:                     # @DoEmFloatIteration
 	jirl	$ra, $ra, 0
 	b	.LBB2_6
 .LBB2_14:                               #   in Loop: Header=BB2_7 Depth=2
-	ld.hu	$t1, $a2, 4
-	ld.hu	$t0, $a2, 6
-	ld.hu	$a7, $a2, 8
+	ld.hu	$t0, $a2, 4
+	ld.hu	$a7, $a2, 6
 	ld.hu	$a4, $a0, 4
 	ld.hu	$a5, $a0, 6
 	ld.hu	$a6, $a0, 8
 	ld.hu	$t2, $a0, 10
+	ld.hu	$t1, $a2, 8
 	ld.hu	$a3, $a2, 10
 	or	$a4, $a5, $a4
-	or	$a4, $a4, $a6
-	or	$a4, $a4, $t2
+	or	$a5, $a6, $t2
+	or	$a4, $a4, $a5
 	beqz	$a4, .LBB2_16
 # %bb.15:                               #   in Loop: Header=BB2_7 Depth=2
-	or	$a4, $t0, $t1
-	or	$a4, $a4, $a7
-	or	$a4, $a4, $a3
+	or	$a4, $a7, $t0
+	or	$a5, $t1, $a3
+	or	$a4, $a4, $a5
 	bnez	$a4, .LBB2_17
 .LBB2_16:                               #   in Loop: Header=BB2_7 Depth=2
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
@@ -784,24 +784,24 @@ DoEmFloatIteration:                     # @DoEmFloatIteration
 	move	$t3, $a1
 	move	$a1, $t4
 .LBB2_21:                               #   in Loop: Header=BB2_22 Depth=3
-	slli.d	$t4, $t1, 15
-	bstrpick.d	$t1, $t1, 15, 1
-	bstrpick.d	$t5, $t0, 15, 1
-	slli.d	$t0, $t0, 15
-	or	$t4, $t4, $t5
+	slli.d	$t4, $t0, 15
+	bstrpick.d	$t0, $t0, 15, 1
 	bstrpick.d	$t5, $a7, 15, 1
 	slli.d	$a7, $a7, 15
-	or	$t5, $t0, $t5
+	or	$t4, $t4, $t5
+	bstrpick.d	$t5, $t1, 15, 1
+	slli.d	$t1, $t1, 15
+	or	$t5, $a7, $t5
 	bstrpick.d	$a3, $a3, 15, 1
-	or	$a3, $a7, $a3
+	or	$a3, $t1, $a3
 	st.h	$a1, $s4, 4
 	bstrpick.d	$a7, $a5, 15, 1
-	slli.d	$t0, $t3, 15
+	slli.d	$t1, $t3, 15
 	slli.d	$t3, $a5, 15
-	or	$a5, $t0, $a7
+	or	$a5, $t1, $a7
 	st.h	$a5, $s4, 6
 	bstrpick.d	$a7, $a6, 15, 1
-	slli.d	$t0, $a6, 15
+	slli.d	$t1, $a6, 15
 	or	$a6, $t3, $a7
 	pcalau12i	$a7, %pc_hi20(.LCPI2_0)
 	vld	$vr1, $a7, %pc_lo12(.LCPI2_0)
@@ -812,13 +812,13 @@ DoEmFloatIteration:                     # @DoEmFloatIteration
 	pcalau12i	$t3, %pc_hi20(.LCPI2_1)
 	vld	$vr1, $t3, %pc_lo12(.LCPI2_1)
 	vinsgr2vr.h	$vr2, $a4, 2
-	or	$a4, $t0, $a7
+	or	$a4, $t1, $a7
 	st.h	$a4, $s4, 10
 	vsll.h	$vr1, $vr2, $vr1
 	addi.w	$t2, $t2, -1
 	vor.v	$vr0, $vr1, $vr0
-	move	$t0, $t4
-	move	$a7, $t5
+	move	$a7, $t4
+	move	$t1, $t5
 	beqz	$t2, .LBB2_24
 .LBB2_22:                               #   Parent Loop BB2_4 Depth=1
                                         #     Parent Loop BB2_7 Depth=2
@@ -965,8 +965,8 @@ DoEmFloatIteration:                     # @DoEmFloatIteration
 	ld.hu	$a3, $s4, 8
 	ld.hu	$a4, $s4, 10
 	or	$a1, $a2, $a1
-	or	$a1, $a1, $a3
-	or	$a1, $a1, $a4
+	or	$a2, $a3, $a4
+	or	$a1, $a1, $a2
 	beqz	$a1, .LBB2_44
 # %bb.41:                               #   in Loop: Header=BB2_7 Depth=2
 	ld.hu	$a1, $s4, 2
@@ -1202,20 +1202,20 @@ AddSubInternalFPF:                      # @AddSubInternalFPF
 	st.h	$a0, $a3, 10
 	bstrpick.d	$a2, $t4, 15, 0
 	bstrpick.d	$a4, $t5, 15, 0
+	add.d	$a2, $a2, $a4
 	add.d	$a1, $a2, $a1
-	add.d	$a1, $a1, $a4
 	srli.d	$a2, $a1, 16
 	st.h	$a1, $a3, 8
 	bstrpick.d	$a4, $t0, 15, 0
 	bstrpick.d	$a5, $t1, 15, 0
+	add.d	$a4, $a4, $a5
 	add.d	$a2, $a2, $a4
-	add.d	$a2, $a2, $a5
 	srli.d	$a4, $a2, 16
 	st.h	$a2, $a3, 6
 	bstrpick.d	$a5, $a6, 15, 0
 	bstrpick.d	$a6, $a7, 15, 0
+	add.d	$a5, $a5, $a6
 	add.d	$a4, $a4, $a5
-	add.d	$a4, $a4, $a6
 	srli.d	$a5, $a4, 16
 	st.h	$a4, $a3, 4
 	bnez	$a5, .LBB3_19
@@ -1320,20 +1320,20 @@ AddSubInternalFPF:                      # @AddSubInternalFPF
 	st.h	$t2, $a3, 10
 	bstrpick.d	$t3, $t4, 15, 0
 	bstrpick.d	$t4, $t5, 15, 0
-	add.d	$a2, $a2, $t4
+	sub.d	$t3, $t3, $t4
 	sub.d	$a2, $t3, $a2
 	bstrpick.d	$t3, $a2, 16, 16
 	st.h	$a2, $a3, 8
 	bstrpick.d	$t0, $t0, 15, 0
 	bstrpick.d	$t1, $t1, 15, 0
-	add.d	$t1, $t3, $t1
 	sub.d	$t0, $t0, $t1
+	sub.d	$t0, $t0, $t3
 	bstrpick.d	$t1, $t0, 16, 16
 	st.h	$t0, $a3, 6
 	bstrpick.d	$a6, $a6, 15, 0
 	bstrpick.d	$a7, $a7, 15, 0
-	add.d	$a7, $t1, $a7
 	sub.d	$a6, $a6, $a7
+	sub.d	$a6, $a6, $t1
 	slli.d	$a7, $a6, 47
 	st.h	$a6, $a3, 4
 	bltz	$a7, .LBB3_34
@@ -1342,9 +1342,9 @@ AddSubInternalFPF:                      # @AddSubInternalFPF
 	bstrpick.d	$a1, $a2, 15, 0
 	bstrpick.d	$a2, $t0, 15, 0
 	bstrpick.d	$a6, $a6, 15, 0
-	or	$a2, $a2, $a6
 	or	$a1, $a2, $a1
 	or	$a0, $a1, $a0
+	or	$a0, $a0, $a6
 	beqz	$a0, .LBB3_35
 .LBB3_31:
 	ori	$a0, $zero, 2
@@ -1379,9 +1379,9 @@ AddSubInternalFPF:                      # @AddSubInternalFPF
 	sub.d	$a7, $t0, $a6
 	bstrpick.d	$a6, $a7, 15, 0
 	st.h	$a7, $a3, 4
-	or	$a2, $a2, $a6
 	or	$a1, $a2, $a1
 	or	$a0, $a1, $a0
+	or	$a0, $a0, $a6
 	bnez	$a0, .LBB3_31
 .LBB3_35:
 	st.h	$zero, $a3, 0
@@ -1396,8 +1396,8 @@ AddSubInternalFPF:                      # @AddSubInternalFPF
 	ld.hu	$a4, $a3, 8
 	ld.hu	$a5, $a3, 10
 	or	$a1, $a2, $a1
-	or	$a1, $a1, $a4
-	or	$a1, $a1, $a5
+	or	$a2, $a4, $a5
+	or	$a1, $a1, $a2
 	beqz	$a1, .LBB3_41
 # %bb.38:
 	ld.hu	$a2, $a3, 2
@@ -1523,8 +1523,8 @@ RoundInternalFPF:                       # @RoundInternalFPF
 	ld.hu	$a4, $a0, 8
 	ld.hu	$a5, $a0, 10
 	or	$a2, $a3, $a2
-	or	$a2, $a2, $a4
-	or	$a2, $a2, $a5
+	or	$a3, $a4, $a5
+	or	$a2, $a2, $a3
 	beqz	$a2, .LBB4_5
 # %bb.2:
 	ld.hu	$a3, $a0, 2

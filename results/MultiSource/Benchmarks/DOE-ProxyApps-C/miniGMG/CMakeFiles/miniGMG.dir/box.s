@@ -235,7 +235,7 @@ create_box:                             # @create_box
 	mul.d	$a1, $s2, $s5
 	add.d	$a1, $a1, $s4
 	add.d	$a1, $a1, $s0
-	add.d	$a1, $a1, $s1
+	add.d	$a0, $s1, $a0
 	add.d	$a0, $a1, $a0
 	slli.w	$a0, $a0, 3
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload

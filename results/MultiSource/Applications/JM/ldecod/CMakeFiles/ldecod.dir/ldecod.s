@@ -1928,10 +1928,10 @@ init_global_buffers:                    # @init_global_buffers
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $s1
-	add.d	$a0, $a0, $s2
-	add.d	$a0, $a0, $s3
-	add.d	$a0, $a0, $s4
-	add.d	$a0, $a0, $s5
+	add.d	$a1, $s2, $s3
+	add.d	$a1, $a1, $s4
+	add.d	$a1, $a1, $s5
+	add.d	$a0, $a0, $a1
 	ldx.w	$a1, $s0, $s8
 	add.w	$a0, $a0, $s6
 	ori	$a2, $zero, 1

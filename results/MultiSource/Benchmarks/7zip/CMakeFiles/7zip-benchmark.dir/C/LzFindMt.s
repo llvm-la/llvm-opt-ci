@@ -2085,11 +2085,11 @@ GetHeads3:                              # @GetHeads3
 .LBB33_1:                               # =>This Inner Loop Header: Depth=1
 	ld.bu	$a7, $a0, 0
 	slli.d	$a7, $a7, 2
+	ld.bu	$t0, $a0, 2
+	ld.bu	$t1, $a0, 1
 	ldx.w	$a7, $a6, $a7
-	ld.bu	$t0, $a0, 1
-	ld.bu	$t1, $a0, 2
-	xor	$a7, $a7, $t0
-	slli.d	$t0, $t1, 8
+	slli.d	$t0, $t0, 8
+	xor	$t0, $t1, $t0
 	xor	$a7, $a7, $t0
 	and	$a7, $a7, $a3
 	bstrpick.d	$a7, $a7, 31, 0
@@ -2119,14 +2119,14 @@ GetHeads4b:                             # @GetHeads4b
 .LBB34_1:                               # =>This Inner Loop Header: Depth=1
 	ld.bu	$a7, $a0, 0
 	slli.d	$a7, $a7, 2
-	ldx.w	$a7, $a6, $a7
-	ld.bu	$t0, $a0, 1
-	ld.bu	$t1, $a0, 2
+	ld.bu	$t0, $a0, 2
+	ld.bu	$t1, $a0, 1
 	ld.bu	$t2, $a0, 3
-	xor	$a7, $a7, $t0
-	slli.d	$t0, $t1, 8
-	xor	$a7, $a7, $t0
-	slli.d	$t0, $t2, 16
+	ldx.w	$a7, $a6, $a7
+	slli.d	$t0, $t0, 8
+	xor	$t0, $t1, $t0
+	slli.d	$t1, $t2, 16
+	xor	$t0, $t0, $t1
 	xor	$a7, $a7, $t0
 	and	$a7, $a7, $a3
 	bstrpick.d	$a7, $a7, 31, 0
@@ -2158,12 +2158,12 @@ GetHeads4:                              # @GetHeads4
 	slli.d	$a7, $a7, 2
 	ld.bu	$t0, $a0, 3
 	ldx.w	$a7, $a6, $a7
-	ld.bu	$t1, $a0, 1
-	ld.bu	$t2, $a0, 2
+	ld.bu	$t1, $a0, 2
+	ld.bu	$t2, $a0, 1
 	slli.d	$t0, $t0, 2
 	ldx.w	$t0, $a6, $t0
-	xor	$a7, $a7, $t1
-	slli.d	$t1, $t2, 8
+	slli.d	$t1, $t1, 8
+	xor	$t1, $t2, $t1
 	xor	$a7, $a7, $t1
 	slli.d	$t0, $t0, 5
 	xor	$a7, $a7, $t0

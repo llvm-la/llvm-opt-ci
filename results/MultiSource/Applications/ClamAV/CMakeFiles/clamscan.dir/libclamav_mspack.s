@@ -9085,8 +9085,8 @@ qtm_decompress:                         # @qtm_decompress
 	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
 .LBB13_22:                              #   in Loop: Header=BB13_11 Depth=1
 	sub.d	$a0, $s4, $a0
-	add.d	$a0, $a0, $a1
-	add.w	$a0, $s6, $a0
+	add.d	$a1, $s6, $a1
+	add.w	$a0, $a1, $a0
 	lu12i.w	$a1, 8
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	add.w	$a1, $a2, $a1

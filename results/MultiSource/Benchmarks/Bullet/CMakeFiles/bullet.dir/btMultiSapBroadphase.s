@@ -1624,8 +1624,8 @@ _ZN20btMultiSapBroadphase15testAabbOverlapEP17btBroadphaseProxyS1_: # @_ZN20btMu
 	fld.s	$fa1, $a1, 112
 	fld.s	$fa2, $a0, 112
 	fld.s	$fa3, $a1, 96
-	fcmp.cule.s	$fcc1, $fa0, $fa1
-	fcmp.cule.s	$fcc0, $fa3, $fa2
+	fcmp.cule.s	$fcc0, $fa0, $fa1
+	fcmp.cule.s	$fcc1, $fa3, $fa2
 	fld.s	$fa0, $a0, 104
 	fld.s	$fa1, $a1, 120
 	fld.s	$fa2, $a0, 120
@@ -1642,12 +1642,12 @@ _ZN20btMultiSapBroadphase15testAabbOverlapEP17btBroadphaseProxyS1_: # @_ZN20btMu
 	movcf2gr	$a1, $fcc2
 	and	$a0, $a0, $a1
 	movcf2gr	$a1, $fcc5
-	and	$a0, $a0, $a1
-	movcf2gr	$a1, $fcc3
-	and	$a0, $a0, $a1
-	movcf2gr	$a1, $fcc1
+	movcf2gr	$a2, $fcc3
+	and	$a1, $a1, $a2
 	and	$a0, $a0, $a1
 	movcf2gr	$a1, $fcc0
+	movcf2gr	$a2, $fcc1
+	and	$a1, $a1, $a2
 	and	$a0, $a0, $a1
 	ret
 .Lfunc_end14:

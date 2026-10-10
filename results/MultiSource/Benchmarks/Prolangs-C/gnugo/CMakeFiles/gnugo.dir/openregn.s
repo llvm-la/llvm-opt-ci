@@ -19,9 +19,9 @@ openregion:                             # @openregion
 	addi.w	$a0, $a0, 1
 	alsl.d	$a2, $a4, $a4, 3
 	alsl.d	$a2, $a2, $a4, 1
-	add.d	$a2, $a5, $a2
 	pcalau12i	$a6, %got_pc_hi20(p)
 	ld.d	$a6, $a6, %got_pc_lo12(p)
+	add.d	$a6, $a6, $a5
 	add.d	$a2, $a6, $a2
 	add.d	$a1, $a3, $a1
 	sub.d	$a1, $a1, $a5

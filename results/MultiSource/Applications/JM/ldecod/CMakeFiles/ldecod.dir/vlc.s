@@ -2208,8 +2208,8 @@ readSyntaxElement_Level_VLCN:           # @readSyntaxElement_Level_VLCN
 	add.d	$a6, $a6, $t0
 	ori	$t0, $zero, 2048
 	sll.w	$a7, $t0, $a7
-	add.d	$a1, $a1, $a7
 	add.d	$a1, $a1, $t5
+	add.d	$a1, $a1, $a7
 	addi.d	$a7, $a1, -2047
 	b	.LBB24_26
 .LBB24_24:
@@ -2359,15 +2359,15 @@ readSyntaxElement_TotalZerosChromaDC:   # @readSyntaxElement_TotalZerosChromaDC
 	mul.d	$a5, $a2, $a4
 	pcalau12i	$a2, %pc_hi20(readSyntaxElement_TotalZerosChromaDC.lentab)
 	addi.d	$a2, $a2, %pc_lo12(readSyntaxElement_TotalZerosChromaDC.lentab)
-	add.d	$a2, $a2, $a5
 	slli.d	$a3, $a3, 6
 	add.d	$a2, $a2, $a3
+	add.d	$a2, $a2, $a5
 	pcalau12i	$a4, %pc_hi20(readSyntaxElement_TotalZerosChromaDC.codtab)
 	addi.d	$a6, $a4, %pc_lo12(readSyntaxElement_TotalZerosChromaDC.codtab)
 	ld.d	$a1, $a1, 0
 	move	$a4, $zero
-	add.d	$a5, $a6, $a5
-	add.d	$a5, $a5, $a3
+	add.d	$a3, $a6, $a3
+	add.d	$a5, $a3, $a5
 	ld.w	$a3, $a1, 8
 	ld.d	$a6, $a1, 16
 	ld.w	$a7, $a1, 12

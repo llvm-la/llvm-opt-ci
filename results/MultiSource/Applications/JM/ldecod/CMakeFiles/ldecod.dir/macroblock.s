@@ -2151,12 +2151,12 @@ read_one_macroblock:                    # @read_one_macroblock
 	ld.d	$t1, $t1, 8
 	mul.d	$t0, $t0, $a4
 	ldx.b	$t2, $a5, $a7
+	add.d	$t0, $t0, $a1
+	ld.d	$t1, $t1, 0
 	add.d	$a6, $a6, $t0
-	ld.d	$t0, $t1, 0
-	add.d	$a6, $a6, $a1
 	alsl.d	$a6, $t2, $a6, 3
 	ld.d	$a6, $a6, 24
-	ldx.d	$t0, $t0, $a2
+	ldx.d	$t0, $t1, $a2
 	ld.w	$t1, $fp, 92
 	stx.d	$a6, $t0, $a3
 	addi.d	$a6, $a7, 1
@@ -2186,12 +2186,12 @@ read_one_macroblock:                    # @read_one_macroblock
 	ld.d	$t1, $t1, 8
 	mul.d	$t0, $t0, $a4
 	ldx.b	$t2, $a5, $a7
+	add.d	$t0, $t0, $a1
+	ld.d	$t1, $t1, 0
 	add.d	$a6, $a6, $t0
-	ld.d	$t0, $t1, 0
-	add.d	$a6, $a6, $a1
 	alsl.d	$a6, $t2, $a6, 3
 	ld.d	$a6, $a6, 24
-	ldx.d	$t0, $t0, $a2
+	ldx.d	$t0, $t1, $a2
 	ld.w	$t1, $fp, 92
 	stx.d	$a6, $t0, $a3
 	addi.d	$a6, $a7, 1
@@ -2221,12 +2221,12 @@ read_one_macroblock:                    # @read_one_macroblock
 	ld.d	$t1, $t1, 8
 	mul.d	$t0, $t0, $a4
 	ldx.b	$t2, $a5, $a7
+	add.d	$t0, $t0, $a1
+	ld.d	$t1, $t1, 0
 	add.d	$a6, $a6, $t0
-	ld.d	$t0, $t1, 0
-	add.d	$a6, $a6, $a1
 	alsl.d	$a6, $t2, $a6, 3
 	ld.d	$a6, $a6, 24
-	ldx.d	$t0, $t0, $a2
+	ldx.d	$t0, $t1, $a2
 	ld.w	$t1, $fp, 92
 	stx.d	$a6, $t0, $a3
 	addi.d	$a6, $a7, 1
@@ -2256,12 +2256,12 @@ read_one_macroblock:                    # @read_one_macroblock
 	ld.d	$t1, $t1, 8
 	mul.d	$t0, $t0, $a4
 	ldx.b	$t2, $a5, $a7
+	add.d	$t0, $t0, $a1
+	ld.d	$t1, $t1, 0
 	add.d	$a6, $a6, $t0
-	ld.d	$t0, $t1, 0
-	add.d	$a6, $a6, $a1
 	alsl.d	$a6, $t2, $a6, 3
 	ld.d	$a6, $a6, 24
-	ldx.d	$t0, $t0, $a2
+	ldx.d	$t0, $t1, $a2
 	ld.w	$t1, $fp, 92
 	stx.d	$a6, $t0, $a3
 	addi.d	$a6, $a7, 1
@@ -9353,14 +9353,14 @@ readCBPandCoeffsFromNAL:                # @readCBPandCoeffsFromNAL
 	ld.d	$a2, $sp, 232                   # 8-byte Folded Reload
 	alsl.d	$a2, $a2, $a2, 1
 	slli.d	$a2, $a2, 7
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
-	add.d	$a3, $a3, $a2
-	slli.d	$a4, $a1, 6
-	add.d	$a1, $a3, $a4
+	slli.d	$a3, $a1, 6
+	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
+	add.d	$a1, $a1, $a3
+	add.d	$a1, $a1, $a2
 	addi.d	$a5, $a0, -4
-	ld.d	$a3, $sp, 192                   # 8-byte Folded Reload
-	add.d	$a2, $a3, $a2
-	add.d	$a4, $a2, $a4
+	ld.d	$a4, $sp, 192                   # 8-byte Folded Reload
+	add.d	$a3, $a4, $a3
+	add.d	$a4, $a3, $a2
 	ori	$a2, $zero, 3
 	sub.d	$a2, $a2, $a0
 	ori	$a3, $zero, 1
@@ -10169,10 +10169,10 @@ readCBPandCoeffsFromNAL:                # @readCBPandCoeffsFromNAL
 	stptr.w	$a0, $fp, 5616
 	alsl.d	$a0, $s2, $s2, 1
 	slli.d	$a0, $a0, 8
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	add.d	$a0, $a1, $a0
 	slli.d	$a1, $s1, 6
-	add.d	$s1, $a0, $a1
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	add.d	$a1, $a2, $a1
+	add.d	$s1, $a1, $a0
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	beqz	$a0, .LBB15_287
 # %bb.274:                              #   in Loop: Header=BB15_270 Depth=2
@@ -10258,10 +10258,10 @@ readCBPandCoeffsFromNAL:                # @readCBPandCoeffsFromNAL
 	move	$a1, $zero
 	alsl.d	$a2, $s2, $s2, 1
 	slli.d	$a2, $a2, 8
-	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
-	add.d	$a2, $a3, $a2
 	slli.d	$a3, $s1, 6
-	add.d	$a2, $a2, $a3
+	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
+	add.d	$a3, $a4, $a3
+	add.d	$a2, $a3, $a2
 	addi.d	$a3, $sp, 440
 	addi.d	$a4, $sp, 376
 	b	.LBB15_285
@@ -10371,10 +10371,10 @@ readCBPandCoeffsFromNAL:                # @readCBPandCoeffsFromNAL
 	move	$a1, $zero
 	alsl.d	$a2, $s2, $s2, 1
 	slli.d	$a2, $a2, 8
-	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
-	add.d	$a2, $a3, $a2
 	slli.d	$a3, $s1, 6
-	add.d	$a2, $a2, $a3
+	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
+	add.d	$a3, $a4, $a3
+	add.d	$a2, $a3, $a2
 	addi.d	$a3, $sp, 440
 	addi.d	$a4, $sp, 376
 	b	.LBB15_297
@@ -14697,29 +14697,29 @@ decode_one_macroblock:                  # @decode_one_macroblock
 # %bb.128:                              #   in Loop: Header=BB25_70 Depth=2
 	move	$a0, $zero
 	ld.d	$a3, $a3, 0
-	ld.d	$a5, $sp, 408                   # 8-byte Folded Reload
-	slli.d	$a4, $a5, 3
-	slli.d	$a5, $a5, 8
-	ld.w	$a6, $s7, 12
+	ld.d	$a6, $sp, 408                   # 8-byte Folded Reload
+	slli.d	$a4, $a6, 3
+	ld.w	$a5, $s7, 12
+	slli.d	$a6, $a6, 8
 	ldx.d	$a3, $a3, $s5
-	or	$a4, $a5, $a4
-	add.d	$a4, $a2, $a4
-	ori	$a2, $zero, 1584
-	mul.d	$a5, $a6, $a2
-	ldx.d	$a2, $a3, $t5
-	add.d	$a3, $a4, $a5
-	addi.d	$a3, $a3, 24
+	or	$a4, $a6, $a4
+	ori	$a6, $zero, 1584
+	mul.d	$a5, $a5, $a6
+	add.d	$a4, $a4, $a5
+	ldx.d	$a3, $a3, $t5
+	add.d	$a2, $a2, $a4
+	addi.d	$a2, $a2, 24
 	bstrpick.d	$a1, $a1, 31, 0
 	.p2align	4, , 16
 .LBB25_129:                             #   Parent Loop BB25_64 Depth=1
                                         #     Parent Loop BB25_70 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$a4, $a3, 0
-	beq	$a4, $a2, .LBB25_145
+	ld.d	$a4, $a2, 0
+	beq	$a4, $a3, .LBB25_145
 # %bb.130:                              #   in Loop: Header=BB25_129 Depth=3
 	addi.w	$a0, $a0, 1
 	addi.d	$a1, $a1, -1
-	addi.d	$a3, $a3, 8
+	addi.d	$a2, $a2, 8
 	bnez	$a1, .LBB25_129
 	b	.LBB25_144
 .LBB25_131:                             #   in Loop: Header=BB25_70 Depth=2
@@ -16568,13 +16568,13 @@ decode_one_macroblock:                  # @decode_one_macroblock
 	mul.d	$t0, $t0, $t8
 	ldx.d	$a3, $t4, $a3
 	ldx.d	$t1, $t4, $t1
-	mul.d	$a6, $a6, $t3
 	ld.d	$t4, $sp, 544                   # 8-byte Folded Reload
 	ldx.wu	$t4, $s7, $t4
+	mul.d	$a6, $a6, $t3
 	ldx.d	$a3, $a3, $a5
 	ldx.d	$a5, $t1, $t2
-	add.d	$a6, $a6, $t0
-	sll.w	$t0, $s8, $t4
+	sll.w	$t1, $s8, $t4
+	add.d	$a6, $a6, $t1
 	ldx.w	$a3, $a3, $a4
 	ldx.w	$a5, $a5, $a4
 	add.d	$a6, $a6, $t0

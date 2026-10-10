@@ -612,10 +612,10 @@ table_Init:                             # @table_Init
 .LBB4_10:
 	ori	$a3, $zero, 24
 	mul.d	$a4, $a4, $a3
-	add.d	$a4, $s0, $a4
 	sub.d	$a5, $zero, $a1
 	mul.d	$a3, $a5, $a3
-	add.d	$a3, $a4, $a3
+	add.d	$a3, $s0, $a3
+	add.d	$a3, $a3, $a4
 	st.d	$a3, $a0, 0
 	sub.d	$a2, $a2, $a1
 	st.w	$a2, $a0, 32

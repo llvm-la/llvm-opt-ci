@@ -703,8 +703,8 @@ _ZN9benchmark8internal17BenchmarkFamilies14FindBenchmarksENSt7__cxx1112basic_str
 	or	$a2, $a2, $a3
 	sub.d	$a1, $a1, $a2
 	srai.d	$a1, $a1, 2
-	mul.d	$a0, $a0, $a1
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	mul.d	$a0, $a0, $a2
 	mul.d	$fp, $a0, $a1
 	ori	$a0, $zero, 101
 	bltu	$fp, $a0, .LBB4_35
@@ -41958,19 +41958,19 @@ _ZNSt5dequeIlSaIlEE16_M_push_back_auxIJRKlEEEvDpOT_: # @_ZNSt5dequeIlSaIlEE16_M_
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 6
+	srai.d	$a4, $a4, 3
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 3
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 3
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 255
@@ -42206,15 +42206,15 @@ _ZNSt5dequeINSt8__detail9_StateSeqINSt7__cxx1112regex_traitsIcEEEESaIS5_EE16_M_p
 	srai.d	$a3, $a3, 3
 	lu12i.w	$a4, -349526
 	ori	$a4, $a4, 2731
-	lu32i.d	$a4, -349526
 	ld.d	$a5, $fp, 32
 	ld.d	$a6, $fp, 16
+	lu32i.d	$a4, -349526
 	lu52i.d	$a4, $a4, -1366
 	mul.d	$a3, $a3, $a4
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a5, $a6
-	srai.d	$a3, $a3, 3
-	mul.d	$a3, $a3, $a4
+	sub.d	$a5, $a5, $a6
+	srai.d	$a5, $a5, 3
+	mul.d	$a4, $a5, $a4
+	add.d	$a3, $a3, $a4
 	add.d	$a2, $a2, $a3
 	lu12i.w	$a3, 349525
 	ori	$a3, $a3, 1365
@@ -42455,15 +42455,15 @@ _ZNSt5dequeINSt8__detail9_StateSeqINSt7__cxx1112regex_traitsIcEEEESaIS5_EE16_M_p
 	srai.d	$a3, $a3, 3
 	lu12i.w	$a4, -349526
 	ori	$a4, $a4, 2731
-	lu32i.d	$a4, -349526
 	ld.d	$a5, $fp, 32
 	ld.d	$a6, $fp, 16
+	lu32i.d	$a4, -349526
 	lu52i.d	$a4, $a4, -1366
 	mul.d	$a3, $a3, $a4
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a5, $a6
-	srai.d	$a3, $a3, 3
-	mul.d	$a3, $a3, $a4
+	sub.d	$a5, $a5, $a6
+	srai.d	$a5, $a5, 3
+	mul.d	$a4, $a5, $a4
+	add.d	$a3, $a3, $a4
 	add.d	$a2, $a2, $a3
 	lu12i.w	$a3, 349525
 	ori	$a3, $a3, 1365
@@ -50088,8 +50088,8 @@ _ZN9benchmark8internal16AddNegatedPowersIiEEvPSt6vectorIT_SaIS3_EES3_S3_i: # @_Z
 	addi.d	$a4, $a4, -4
 	xor	$a5, $a4, $a0
 	sltu	$a5, $zero, $a5
-	add.d	$a6, $a0, $a5
-	sub.d	$a4, $a4, $a6
+	sub.d	$a4, $a4, $a0
+	sub.d	$a4, $a4, $a5
 	srli.d	$a4, $a4, 3
 	add.d	$a4, $a4, $a5
 	ori	$a5, $zero, 23

@@ -152,12 +152,12 @@ _ZN8NWindows5NTime19GetSecondsSince1601EjjjjjjRy: # @_ZN8NWindows5NTime19GetSeco
 	and	$a0, $a0, $a1
 	addi.w	$a1, $a2, -1
 	sltui	$a2, $a1, 31
-	and	$a0, $a0, $a2
-	sltui	$a2, $a3, 24
+	sltui	$t2, $a3, 24
+	and	$a2, $t2, $a2
 	and	$a0, $a2, $a0
 	sltui	$a2, $a4, 60
-	and	$a0, $a2, $a0
-	sltui	$a2, $a5, 60
+	sltui	$t2, $a5, 60
+	and	$a2, $t2, $a2
 	and	$a0, $a2, $a0
 	st.d	$zero, $a6, 0
 	beqz	$a0, .LBB4_14

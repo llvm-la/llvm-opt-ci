@@ -1710,13 +1710,13 @@ writeMVD_CABAC:                         # @writeMVD_CABAC
 	ld.d	$a0, $s8, 0
 	ld.w	$a2, $sp, 44
 	ldptr.d	$a3, $a0, 14224
-	mul.d	$a2, $a2, $s1
 	ld.w	$a4, $sp, 52
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a3, $a2
 	ld.w	$a3, $sp, 48
-	add.d	$a5, $a2, $a1
 	slli.d	$a4, $a4, 5
-	add.d	$a4, $a5, $a4
+	add.d	$a4, $a1, $a4
+	add.d	$a4, $a2, $a4
 	alsl.d	$a3, $a3, $a4, 3
 	alsl.d	$a3, $s6, $a3, 2
 	ld.w	$a3, $a3, 76
@@ -1752,13 +1752,13 @@ writeMVD_CABAC:                         # @writeMVD_CABAC
 	ld.w	$a2, $sp, 68
 	ldptr.d	$a4, $a3, 14224
 	ori	$a5, $zero, 536
+	ld.w	$a6, $sp, 76
 	mul.d	$a2, $a2, $a5
-	ld.w	$a5, $sp, 76
 	add.d	$a2, $a4, $a2
 	ld.w	$a4, $sp, 72
-	add.d	$a1, $a2, $a1
-	slli.d	$a5, $a5, 5
+	slli.d	$a5, $a6, 5
 	add.d	$a1, $a1, $a5
+	add.d	$a1, $a2, $a1
 	alsl.d	$a1, $a4, $a1, 3
 	alsl.d	$a1, $s6, $a1, 2
 	ld.w	$a1, $a1, 76
@@ -1783,7 +1783,7 @@ writeMVD_CABAC:                         # @writeMVD_CABAC
 	sll.w	$a1, $a1, $a2
 	add.w	$a0, $a1, $a0
 	ori	$a1, $zero, 2
-	alsl.w	$s3, $s6, $s6, 2
+	alsl.w	$s1, $s6, $s6, 2
 	bgeu	$a1, $a0, .LBB15_16
 	b	.LBB15_18
 .LBB15_13:
@@ -1797,13 +1797,13 @@ writeMVD_CABAC:                         # @writeMVD_CABAC
 .LBB15_15:
 	add.w	$a0, $a1, $a0
 	ori	$a1, $zero, 2
-	alsl.w	$s3, $s6, $s6, 2
+	alsl.w	$s1, $s6, $s6, 2
 	bltu	$a1, $a0, .LBB15_18
 .LBB15_16:
-	move	$a0, $s3
-	ld.w	$s1, $fp, 4
+	move	$a0, $s1
+	ld.w	$s3, $fp, 4
 	st.w	$a0, $fp, 24
-	bnez	$s1, .LBB15_20
+	bnez	$s3, .LBB15_20
 	b	.LBB15_22
 .LBB15_17:
 	ld.w	$a2, $a2, 424
@@ -1811,19 +1811,19 @@ writeMVD_CABAC:                         # @writeMVD_CABAC
 	srl.w	$a1, $a1, $a2
 	add.w	$a0, $a1, $a0
 	ori	$a1, $zero, 2
-	alsl.w	$s3, $s6, $s6, 2
+	alsl.w	$s1, $s6, $s6, 2
 	bgeu	$a1, $a0, .LBB15_16
 .LBB15_18:
 	ori	$a1, $zero, 33
 	bltu	$a0, $a1, .LBB15_21
 # %bb.19:
-	addi.w	$a0, $s3, 3
-	ld.w	$s1, $fp, 4
+	addi.w	$a0, $s1, 3
+	ld.w	$s3, $fp, 4
 	st.w	$a0, $fp, 24
-	beqz	$s1, .LBB15_22
+	beqz	$s3, .LBB15_22
 .LBB15_20:
-	srai.d	$s2, $s1, 31
-	xor	$s4, $s1, $s2
+	srai.d	$s2, $s3, 31
+	xor	$s4, $s3, $s2
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $s5, 4
 	addi.d	$a2, $a0, 816
@@ -1833,22 +1833,22 @@ writeMVD_CABAC:                         # @writeMVD_CABAC
 	jirl	$ra, $ra, 0
 	nor	$a0, $s2, $zero
 	add.w	$a1, $a0, $s4
-	alsl.d	$a0, $s3, $s5, 4
+	alsl.d	$a0, $s1, $s5, 4
 	addi.d	$a2, $a0, 976
 	ori	$a3, $zero, 3
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(unary_exp_golomb_mv_encode)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a1, $s1, 31, 31
+	bstrpick.d	$a1, $s3, 31, 31
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(biari_encode_symbol_eq_prob)
 	jirl	$ra, $ra, 0
 	b	.LBB15_23
 .LBB15_21:
-	addi.w	$a0, $s3, 2
-	ld.w	$s1, $fp, 4
+	addi.w	$a0, $s1, 2
+	ld.w	$s3, $fp, 4
 	st.w	$a0, $fp, 24
-	bnez	$s1, .LBB15_20
+	bnez	$s3, .LBB15_20
 .LBB15_22:
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 4
@@ -2759,8 +2759,8 @@ write_and_store_CBP_block_bit:          # @write_and_store_CBP_block_bit
 	addi.d	$a3, $a3, 5
 	sll.d	$a1, $a1, $a3
 	or	$a0, $a0, $a2
+	or	$a1, $a1, $a5
 	or	$a0, $a0, $a1
-	or	$a0, $a0, $a5
 	or	$a0, $a0, $a4
 	st.d	$a0, $a7, 408
 	b	.LBB21_45
@@ -2882,12 +2882,11 @@ write_significance_map:                 # @write_significance_map
 	move	$s1, $a1
 	slli.d	$a3, $a2, 2
 	pcalau12i	$a1, %pc_hi20(maxpos)
-	addi.d	$a5, $a1, %pc_lo12(maxpos)
+	addi.d	$a4, $a1, %pc_lo12(maxpos)
 	pcalau12i	$a1, %got_pc_hi20(img)
 	ld.d	$a1, $a1, %got_pc_lo12(img)
 	ld.d	$a1, $a1, 0
-	ldptr.d	$a4, $a1, 14216
-	ld.d	$a4, $a4, 40
+	ldptr.d	$a5, $a1, 14216
 	ld.w	$t0, $a1, 24
 	ori	$a1, $zero, 1
 	lu12i.w	$a6, 2
@@ -2903,24 +2902,25 @@ write_significance_map:                 # @write_significance_map
 	ori	$a6, $zero, 3328
 	ori	$a7, $zero, 928
 .LBB22_3:
-	ldx.w	$a0, $a5, $a3
-	add.d	$a5, $a4, $a7
-	pcalau12i	$a7, %pc_hi20(type2ctx_last)
-	addi.d	$a7, $a7, %pc_lo12(type2ctx_last)
-	ldx.w	$a3, $a7, $a3
-	ori	$a7, $zero, 240
-	mul.d	$a7, $a3, $a7
-	ori	$a3, $zero, 7
-	add.d	$a4, $a4, $a6
-	beq	$a2, $a3, .LBB22_5
+	ldx.w	$a0, $a4, $a3
+	ld.d	$a4, $a5, 40
+	pcalau12i	$a5, %pc_hi20(type2ctx_last)
+	addi.d	$a5, $a5, %pc_lo12(type2ctx_last)
+	ldx.w	$a3, $a5, $a3
+	ori	$a5, $zero, 240
+	mul.d	$a3, $a3, $a5
+	add.d	$a5, $a7, $a3
+	ori	$a7, $zero, 7
+	add.d	$a6, $a6, $a3
+	beq	$a2, $a7, .LBB22_5
 # %bb.4:
 	ori	$a3, $zero, 1
 	bne	$a2, $a3, .LBB22_11
 .LBB22_5:
 	addi.d	$s0, $s0, -4
 	ori	$a3, $zero, 1
-	add.d	$s2, $a5, $a7
-	add.d	$s3, $a4, $a7
+	add.d	$s2, $a4, $a5
+	add.d	$s3, $a4, $a6
 	beqz	$a1, .LBB22_12
 .LBB22_6:
 	bge	$a3, $a0, .LBB22_17
@@ -2964,8 +2964,8 @@ write_significance_map:                 # @write_significance_map
 .LBB22_11:
 	move	$a3, $zero
 	addi.w	$a0, $a0, -1
-	add.d	$s2, $a5, $a7
-	add.d	$s3, $a4, $a7
+	add.d	$s2, $a4, $a5
+	add.d	$s3, $a4, $a6
 	bnez	$a1, .LBB22_6
 .LBB22_12:
 	bge	$a3, $a0, .LBB22_17

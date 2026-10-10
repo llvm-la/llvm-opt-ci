@@ -1901,7 +1901,7 @@ Cscore_m_1:                             # @Cscore_m_1
 	maskeqz	$t7, $s5, $s6
 	or	$t6, $t7, $t6
 	add.d	$t6, $t6, $fp
-	add.d	$t6, $t6, $s7
+	add.d	$t5, $s7, $t5
 	add.d	$t5, $t6, $t5
 	bstrpick.d	$t5, $t5, 31, 0
 	movgr2fr.d	$fa4, $t5

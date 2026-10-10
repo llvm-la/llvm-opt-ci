@@ -947,10 +947,10 @@ maktab:                                 # @maktab
 	pcalau12i	$a1, %got_pc_hi20(dboxflg)
 	ld.d	$a1, $a1, %got_pc_lo12(dboxflg)
 	ld.w	$a1, $a1, 0
-	or	$a0, $a0, $a1
-	pcalau12i	$a1, %got_pc_hi20(left1flg)
-	ld.d	$a1, $a1, %got_pc_lo12(left1flg)
-	ld.w	$a1, $a1, 0
+	pcalau12i	$a2, %got_pc_hi20(left1flg)
+	ld.d	$a2, $a2, %got_pc_lo12(left1flg)
+	ld.w	$a2, $a2, 0
+	or	$a1, $a1, $a2
 	or	$a0, $a0, $a1
 	sltu	$a4, $zero, $a0
 	ori	$fp, $zero, 40

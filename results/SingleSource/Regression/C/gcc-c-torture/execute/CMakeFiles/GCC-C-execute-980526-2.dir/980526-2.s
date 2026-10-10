@@ -51,8 +51,8 @@ getname:                                # @getname
 	mul.d	$a5, $a7, $t0
 	mul.d	$a1, $a1, $a4
 	add.d	$a0, $a0, $a3
+	add.d	$a2, $a2, $a5
 	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $a1
 	addi.d	$a0, $a0, 5
 	bstrpick.d	$a0, $a0, 31, 0

@@ -51,8 +51,8 @@ get_mem_estimate:                       # @get_mem_estimate
 	slli.w	$a4, $a2, 1
 	slli.d	$a2, $a2, 4
 	alsl.d	$a2, $a4, $a2, 2
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a2, $a1
-	add.d	$a1, $a1, $a3
 	alsl.d	$a0, $a0, $a1, 3
 	ret
 .Lfunc_end1:

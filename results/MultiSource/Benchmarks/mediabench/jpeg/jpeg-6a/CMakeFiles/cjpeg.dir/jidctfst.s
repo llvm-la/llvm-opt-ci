@@ -103,20 +103,20 @@ jpeg_idct_ifast:                        # @jpeg_idct_ifast
 	ld.h	$fp, $a2, -32
 	ld.h	$t5, $a2, -16
 	ld.h	$s0, $a2, 0
-	ld.h	$t6, $a2, 16
 	or	$t7, $fp, $t4
-	or	$t7, $t7, $t5
-	or	$t7, $t7, $s0
-	or	$t8, $t7, $t6
+	ld.h	$t6, $a2, 16
 	ld.h	$s1, $a2, 32
+	or	$t8, $t5, $s0
+	or	$t8, $t7, $t8
 	ld.h	$t7, $a2, 48
-	ld.h	$s2, $a2, -64
-	ld.w	$s3, $a5, -128
-	or	$t8, $t8, $s1
-	or	$t8, $t8, $t7
-	slli.d	$s4, $t8, 48
-	mul.d	$t8, $s3, $s2
-	bnez	$s4, .LBB0_1
+	or	$s2, $t6, $s1
+	ld.h	$s3, $a2, -64
+	ld.w	$s4, $a5, -128
+	or	$s2, $s2, $t7
+	or	$t8, $t8, $s2
+	slli.d	$s2, $t8, 48
+	mul.d	$t8, $s4, $s3
+	bnez	$s2, .LBB0_1
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
 	st.w	$t8, $a6, 0
 	st.w	$t8, $a6, 32
@@ -218,19 +218,19 @@ jpeg_idct_ifast:                        # @jpeg_idct_ifast
 .LBB0_7:                                # =>This Inner Loop Header: Depth=1
 	ld.w	$t5, $a5, -12
 	ld.w	$fp, $a5, -8
-	ld.w	$t6, $a5, -4
 	ldx.d	$t2, $a3, $a2
+	ld.w	$t6, $a5, -4
 	ld.w	$t4, $a5, 0
 	or	$t3, $fp, $t5
-	or	$t3, $t3, $t6
 	ld.w	$t7, $a5, 4
-	or	$t3, $t3, $t4
 	ld.w	$s0, $a5, 8
+	or	$s1, $t6, $t4
 	ld.w	$t8, $a5, 12
-	or	$t3, $t3, $t7
+	or	$t3, $t3, $s1
+	or	$s2, $t7, $s0
 	ld.w	$s1, $a5, -16
-	or	$t3, $t3, $s0
-	or	$t3, $t3, $t8
+	or	$s2, $s2, $t8
+	or	$t3, $t3, $s2
 	add.d	$t2, $t2, $a4
 	bnez	$t3, .LBB0_6
 # %bb.8:                                #   in Loop: Header=BB0_7 Depth=1

@@ -135,7 +135,7 @@ bmha_search:                            # @bmha_search
 	addi.d	$a6, $a6, -1
 	add.d	$a1, $a1, $a7
 	nor	$a7, $a4, $zero
-	add.d	$a1, $a7, $a1
+	add.d	$a0, $a0, $a7
 	add.d	$a1, $a0, $a1
 	pcalau12i	$a0, %pc_hi20(skip)
 	addi.d	$a7, $a0, %pc_lo12(skip)

@@ -256,29 +256,29 @@ MatchFinder_Construct:                  # @MatchFinder_Construct
 	vseqi.w	$vr11, $vr11, 0
 	vandn.v	$vr11, $vr11, $vr5
 	vsrli.w	$vr12, $vr10, 2
-	vxor.v	$vr11, $vr12, $vr11
-	vand.v	$vr12, $vr0, $vr6
-	vseqi.w	$vr12, $vr12, 0
-	vandn.v	$vr12, $vr12, $vr2
-	vxor.v	$vr11, $vr12, $vr11
+	vand.v	$vr13, $vr0, $vr6
+	vseqi.w	$vr13, $vr13, 0
+	vandn.v	$vr13, $vr13, $vr2
+	vxor.v	$vr11, $vr13, $vr11
+	vxor.v	$vr11, $vr11, $vr12
 	vand.v	$vr12, $vr0, $vr7
 	vseqi.w	$vr12, $vr12, 0
 	vandn.v	$vr12, $vr12, $vr5
 	vsrli.w	$vr11, $vr11, 2
-	vxor.v	$vr11, $vr11, $vr12
-	vand.v	$vr12, $vr0, $vr8
-	vseqi.w	$vr12, $vr12, 0
-	vandn.v	$vr12, $vr12, $vr2
+	vand.v	$vr13, $vr0, $vr8
+	vseqi.w	$vr13, $vr13, 0
+	vandn.v	$vr13, $vr13, $vr2
+	vxor.v	$vr12, $vr13, $vr12
 	vxor.v	$vr11, $vr12, $vr11
 	vand.v	$vr9, $vr9, $vr8
 	vseqi.w	$vr9, $vr9, 0
 	vandn.v	$vr9, $vr9, $vr5
 	vsrli.w	$vr11, $vr11, 2
-	vxor.v	$vr9, $vr11, $vr9
 	vand.v	$vr10, $vr10, $vr8
 	vseqi.w	$vr10, $vr10, 0
 	vandn.v	$vr10, $vr10, $vr2
 	vxor.v	$vr9, $vr10, $vr9
+	vxor.v	$vr9, $vr9, $vr11
 	vstx	$vr9, $a0, $a1
 	addi.d	$a1, $a1, 16
 	vaddi.wu	$vr0, $vr0, 4
@@ -357,13 +357,13 @@ MatchFinder_Create:                     # @MatchFinder_Create
 	add.d	$a2, $s1, $a2
 	st.w	$a2, $fp, 88
 	st.w	$a4, $fp, 92
+	add.d	$a2, $a2, $a4
+	ld.w	$a4, $fp, 100
+	add.d	$a2, $a2, $a5
 	add.d	$a0, $a2, $a0
-	ld.w	$a2, $fp, 100
-	add.d	$a0, $a0, $a4
-	add.d	$a0, $a0, $a5
 	addu16i.d	$a0, $a0, 8
 	addi.w	$s2, $a0, 0
-	beqz	$a2, .LBB9_4
+	beqz	$a4, .LBB9_4
 # %bb.3:
 	st.w	$s2, $fp, 84
 	b	.LBB9_7
@@ -414,10 +414,10 @@ MatchFinder_Create:                     # @MatchFinder_Create
 	bstrpick.d	$a3, $a2, 31, 1
 	bstrpick.d	$a2, $a2, 31, 9
 	bstrpick.d	$a3, $a3, 62, 0
+	lu12i.w	$a4, 15
+	ori	$a4, $a4, 4095
+	or	$a2, $a2, $a4
 	or	$a2, $a3, $a2
-	lu12i.w	$a3, 15
-	ori	$a3, $a3, 4095
-	or	$a2, $a2, $a3
 	lu12i.w	$a3, 4096
 	sltu	$a3, $a3, $a2
 	addi.d	$a4, $a0, -3

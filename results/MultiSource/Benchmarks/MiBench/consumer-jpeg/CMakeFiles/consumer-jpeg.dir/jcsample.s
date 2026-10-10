@@ -346,31 +346,31 @@ fullsize_smooth_downsample:             # @fullsize_smooth_downsample
 	slli.d	$t2, $a0, 3
 	ldx.d	$t7, $s0, $t2
 	alsl.d	$t3, $a0, $s1, 3
+	ldx.d	$s4, $s1, $t2
 	ld.d	$t8, $t3, -8
 	addi.d	$a0, $a0, 1
-	slli.d	$t3, $a0, 3
-	ldx.d	$t3, $s1, $t3
-	ldx.d	$s4, $s1, $t2
-	addi.d	$t4, $t8, 1
+	slli.d	$t2, $a0, 3
+	ldx.d	$t3, $s1, $t2
 	ld.bu	$t2, $t8, 0
+	ld.bu	$t6, $s4, 0
+	addi.d	$t4, $t8, 1
 	addi.d	$t5, $t3, 1
-	ld.bu	$t6, $t3, 0
-	ld.bu	$s5, $s4, 0
+	ld.bu	$s2, $t3, 0
+	add.d	$t2, $t2, $t6
 	ld.bu	$s3, $t8, 1
+	ld.bu	$s5, $s4, 1
 	ld.bu	$s6, $t3, 1
-	add.d	$t2, $t6, $t2
-	ld.bu	$t6, $s4, 1
-	add.d	$s2, $t2, $s5
-	add.d	$s3, $s6, $s3
+	add.d	$s2, $s2, $t2
 	addi.d	$t2, $s4, 1
-	add.d	$s3, $s3, $t6
-	slli.d	$t6, $s2, 1
-	sub.d	$t6, $t6, $s5
-	add.d	$t6, $t6, $s3
-	mul.d	$s5, $a1, $s5
-	mul.d	$t6, $t6, $a2
-	add.d	$t6, $s5, $t6
+	add.d	$s3, $s3, $s5
+	add.d	$s3, $s6, $s3
+	slli.d	$s5, $s2, 1
+	sub.d	$s5, $s5, $t6
+	add.d	$s5, $s5, $s3
+	mul.d	$t6, $a1, $t6
+	mul.d	$s5, $s5, $a2
 	add.d	$t6, $t6, $t0
+	add.d	$t6, $t6, $s5
 	srli.d	$t6, $t6, 16
 	st.b	$t6, $t7, 0
 	addi.d	$t6, $t7, 1
@@ -454,92 +454,92 @@ fullsize_smooth_downsample:             # @fullsize_smooth_downsample
 	vshuf.w	$vr18, $vr4, $vr9
 	vadd.w	$vr4, $vr13, $vr11
 	vadd.w	$vr11, $vr12, $vr19
-	vadd.w	$vr12, $vr15, $vr16
-	vadd.w	$vr13, $vr14, $vr17
+	vadd.w	$vr13, $vr15, $vr16
+	vadd.w	$vr15, $vr14, $vr17
+	vbsrl.v	$vr9, $vr15, 12
+	vbsll.v	$vr12, $vr13, 4
+	vor.v	$vr14, $vr12, $vr9
 	vbsrl.v	$vr9, $vr13, 12
-	vbsll.v	$vr14, $vr12, 4
-	vor.v	$vr14, $vr14, $vr9
-	vbsrl.v	$vr9, $vr12, 12
-	vbsll.v	$vr15, $vr11, 4
-	vor.v	$vr15, $vr15, $vr9
+	vbsll.v	$vr12, $vr11, 4
+	vor.v	$vr12, $vr12, $vr9
 	vbsrl.v	$vr9, $vr11, 12
 	vbsll.v	$vr16, $vr4, 4
-	vor.v	$vr9, $vr16, $vr9
-	vbsll.v	$vr16, $vr13, 4
 	pcalau12i	$s4, %pc_hi20(.LCPI3_1)
 	vld	$vr17, $s4, %pc_lo12(.LCPI3_1)
+	vor.v	$vr9, $vr16, $vr9
+	vbsll.v	$vr16, $vr15, 4
 	vor.v	$vr16, $vr16, $vr20
-	vilvh.w	$vr19, $vr2, $vr11
-	vilvl.w	$vr20, $vr2, $vr13
-	vilvl.w	$vr18, $vr2, $vr18
+	vilvl.w	$vr19, $vr2, $vr15
+	vori.b	$vr20, $vr17, 0
 	vori.b	$vr21, $vr17, 0
 	vori.b	$vr22, $vr17, 0
+	vshuf.w	$vr17, $vr2, $vr15
+	vadd.d	$vr17, $vr19, $vr17
+	vilvl.w	$vr19, $vr2, $vr13
+	vshuf.w	$vr22, $vr2, $vr13
+	vadd.d	$vr19, $vr19, $vr22
+	vilvl.w	$vr22, $vr2, $vr11
+	vshuf.w	$vr21, $vr2, $vr11
+	vadd.d	$vr21, $vr22, $vr21
+	vilvl.w	$vr22, $vr2, $vr4
+	vilvl.w	$vr18, $vr2, $vr18
+	vshuf.w	$vr20, $vr2, $vr4
+	vadd.d	$vr20, $vr22, $vr20
+	vshuf4i.w	$vr22, $vr15, 16
+	vsub.d	$vr18, $vr18, $vr5
+	vadd.d	$vr18, $vr18, $vr22
+	vilvl.h	$vr22, $vr2, $vr10
 	vilvl.w	$vr16, $vr2, $vr16
 	vadd.d	$vr16, $vr18, $vr16
-	vori.b	$vr18, $vr17, 0
-	vshuf.w	$vr17, $vr2, $vr13
-	vadd.d	$vr17, $vr20, $vr17
-	vilvh.w	$vr20, $vr2, $vr13
-	vilvl.w	$vr14, $vr2, $vr14
-	vadd.d	$vr14, $vr20, $vr14
-	vilvl.w	$vr20, $vr2, $vr12
-	vshuf.w	$vr18, $vr2, $vr12
-	vadd.d	$vr18, $vr20, $vr18
-	vilvh.w	$vr20, $vr2, $vr12
-	vilvl.w	$vr15, $vr2, $vr15
-	vadd.d	$vr15, $vr20, $vr15
-	vilvl.w	$vr20, $vr2, $vr11
-	vshuf.w	$vr22, $vr2, $vr11
-	vadd.d	$vr20, $vr20, $vr22
-	vilvl.w	$vr22, $vr2, $vr9
-	vadd.d	$vr19, $vr19, $vr22
-	vilvl.w	$vr22, $vr2, $vr4
-	vshuf.w	$vr21, $vr2, $vr4
-	vadd.d	$vr21, $vr22, $vr21
-	vshuf4i.w	$vr22, $vr13, 16
-	vsub.d	$vr16, $vr16, $vr5
-	vadd.d	$vr16, $vr16, $vr22
-	vilvl.h	$vr22, $vr2, $vr10
-	vshuf4i.w	$vr13, $vr13, 50
+	vilvh.w	$vr18, $vr2, $vr15
+	vshuf4i.w	$vr15, $vr15, 50
 	vsub.d	$vr17, $vr17, $vr6
-	vadd.d	$vr13, $vr17, $vr13
-	vshuf4i.w	$vr17, $vr12, 16
-	vsub.d	$vr14, $vr14, $vr7
-	vadd.d	$vr14, $vr14, $vr17
-	vilvl.w	$vr17, $vr2, $vr22
+	vadd.d	$vr15, $vr17, $vr15
+	vshuf4i.w	$vr17, $vr13, 16
+	vsub.d	$vr18, $vr18, $vr7
+	vadd.d	$vr17, $vr18, $vr17
+	vilvl.w	$vr18, $vr2, $vr22
 	vilvh.w	$vr22, $vr2, $vr22
 	vilvh.h	$vr10, $vr2, $vr10
-	vshuf4i.w	$vr12, $vr12, 50
-	vsub.d	$vr18, $vr18, $vr8
-	vadd.d	$vr12, $vr18, $vr12
-	vshuf4i.w	$vr18, $vr11, 16
-	vsub.d	$vr15, $vr15, $vr17
-	vadd.d	$vr15, $vr15, $vr18
-	vilvl.w	$vr18, $vr2, $vr10
+	vilvl.w	$vr14, $vr2, $vr14
+	vadd.d	$vr14, $vr17, $vr14
+	vilvh.w	$vr17, $vr2, $vr13
+	vshuf4i.w	$vr13, $vr13, 50
+	vsub.d	$vr19, $vr19, $vr8
+	vadd.d	$vr13, $vr19, $vr13
+	vshuf4i.w	$vr19, $vr11, 16
+	vsub.d	$vr17, $vr17, $vr18
+	vadd.d	$vr17, $vr17, $vr19
+	vilvl.w	$vr19, $vr2, $vr10
 	vilvh.w	$vr10, $vr2, $vr10
+	vilvl.w	$vr12, $vr2, $vr12
+	vadd.d	$vr12, $vr17, $vr12
+	vilvh.w	$vr17, $vr2, $vr11
 	vshuf4i.w	$vr11, $vr11, 50
-	vsub.d	$vr20, $vr20, $vr22
-	vadd.d	$vr11, $vr20, $vr11
-	vshuf4i.w	$vr20, $vr4, 16
-	vsub.d	$vr19, $vr19, $vr18
-	vadd.d	$vr19, $vr19, $vr20
-	vshuf4i.w	$vr20, $vr4, 50
-	vsub.d	$vr21, $vr21, $vr10
-	vadd.d	$vr20, $vr21, $vr20
+	vsub.d	$vr21, $vr21, $vr22
+	vadd.d	$vr11, $vr21, $vr11
+	vshuf4i.w	$vr21, $vr4, 16
+	vsub.d	$vr17, $vr17, $vr19
+	vadd.d	$vr17, $vr17, $vr21
+	vilvl.w	$vr21, $vr2, $vr9
+	vadd.d	$vr17, $vr17, $vr21
+	vshuf4i.w	$vr21, $vr4, 50
+	vsub.d	$vr20, $vr20, $vr10
+	vadd.d	$vr20, $vr20, $vr21
 	vmul.d	$vr10, $vr0, $vr10
 	vmadd.d	$vr10, $vr20, $vr1
-	vmul.d	$vr18, $vr0, $vr18
-	vmadd.d	$vr18, $vr19, $vr1
-	vmul.d	$vr19, $vr0, $vr22
-	vmadd.d	$vr19, $vr11, $vr1
-	vmul.d	$vr11, $vr0, $vr17
-	vmadd.d	$vr11, $vr15, $vr1
+	vmul.d	$vr19, $vr0, $vr19
+	vmadd.d	$vr19, $vr17, $vr1
+	vmul.d	$vr17, $vr0, $vr22
+	vmadd.d	$vr17, $vr11, $vr1
+	vmul.d	$vr11, $vr0, $vr18
+	vmadd.d	$vr11, $vr12, $vr1
 	vmul.d	$vr8, $vr0, $vr8
-	vmadd.d	$vr8, $vr12, $vr1
+	vmadd.d	$vr8, $vr13, $vr1
 	vmul.d	$vr7, $vr0, $vr7
 	vmadd.d	$vr7, $vr14, $vr1
 	vmul.d	$vr6, $vr0, $vr6
-	vmadd.d	$vr6, $vr13, $vr1
+	vmadd.d	$vr6, $vr15, $vr1
 	vmul.d	$vr5, $vr0, $vr5
 	vmadd.d	$vr5, $vr16, $vr1
 	vadd.d	$vr5, $vr5, $vr3
@@ -554,11 +554,11 @@ fullsize_smooth_downsample:             # @fullsize_smooth_downsample
 	vpickev.w	$vr6, $vr7, $vr6
 	vpickev.h	$vr5, $vr6, $vr5
 	vadd.d	$vr6, $vr11, $vr3
-	vadd.d	$vr7, $vr19, $vr3
+	vadd.d	$vr7, $vr17, $vr3
 	vsrli.d	$vr7, $vr7, 16
 	vsrli.d	$vr6, $vr6, 16
 	vpickev.w	$vr6, $vr7, $vr6
-	vadd.d	$vr7, $vr18, $vr3
+	vadd.d	$vr7, $vr19, $vr3
 	vadd.d	$vr8, $vr10, $vr3
 	vsrli.d	$vr8, $vr8, 16
 	vsrli.d	$vr7, $vr7, 16
@@ -596,8 +596,8 @@ fullsize_smooth_downsample:             # @fullsize_smooth_downsample
 	add.d	$t8, $t8, $s3
 	mul.d	$s4, $a1, $s4
 	mul.d	$t8, $t8, $a2
+	add.d	$s4, $s4, $t0
 	add.d	$t8, $s4, $t8
-	add.d	$t8, $t8, $t0
 	srli.d	$t8, $t8, 16
 	st.b	$t8, $t3, 0
 	addi.w	$t6, $t6, -1
@@ -611,8 +611,8 @@ fullsize_smooth_downsample:             # @fullsize_smooth_downsample
 	sub.d	$t4, $t4, $t2
 	mul.d	$t2, $a1, $t2
 	mul.d	$t4, $t4, $a2
-	add.d	$t2, $t2, $t4
 	add.d	$t2, $t2, $t0
+	add.d	$t2, $t2, $t4
 	srli.d	$t2, $t2, 16
 	st.b	$t2, $t3, 0
 	ld.w	$t2, $fp, 12
@@ -847,41 +847,41 @@ h2v2_smooth_downsample:                 # @h2v2_smooth_downsample
 	ld.d	$t1, $a7, 8
 	ld.d	$t3, $a7, -8
 	addi.d	$a0, $a0, 2
-	slli.d	$a7, $a0, 3
-	ld.bu	$t2, $t0, 0
+	ld.bu	$a7, $t0, 0
+	ld.bu	$t2, $t0, 1
 	ld.bu	$t4, $t1, 0
-	ld.bu	$t5, $t0, 1
-	ld.bu	$t6, $t1, 1
-	ldx.d	$a7, $s1, $a7
-	add.d	$t2, $t4, $t2
-	add.d	$t4, $t2, $t5
-	add.d	$t4, $t4, $t6
-	ld.bu	$t5, $t3, 0
-	ld.bu	$t6, $t3, 1
-	ld.bu	$t7, $a7, 0
-	ld.bu	$t8, $a7, 1
+	ld.bu	$t5, $t1, 1
+	slli.d	$t6, $a0, 3
+	ldx.d	$t6, $s1, $t6
+	add.d	$a7, $t4, $a7
+	add.d	$t2, $t2, $t5
+	add.d	$t2, $a7, $t2
+	ld.bu	$t4, $t3, 0
+	ld.bu	$t5, $t3, 1
+	ld.bu	$t7, $t6, 0
+	ld.bu	$t8, $t6, 1
 	ld.bu	$s2, $t0, 2
 	ld.bu	$s3, $t1, 2
-	add.d	$t2, $t2, $t5
-	add.d	$t2, $t2, $t6
-	add.d	$t2, $t2, $t7
-	add.d	$t2, $t2, $t8
-	add.d	$t2, $t2, $s2
-	ld.bu	$t6, $t3, 2
-	ld.bu	$t8, $a7, 2
-	add.w	$t2, $t2, $s3
-	add.d	$t5, $t7, $t5
-	add.d	$t5, $t5, $t6
-	add.d	$t5, $t5, $t8
-	alsl.d	$t2, $t2, $t5, 1
-	mul.d	$t4, $t4, $a2
-	mul.d	$t2, $t2, $a3
-	add.d	$t2, $t4, $t2
+	add.d	$t5, $t4, $t5
+	add.d	$a7, $a7, $t5
+	add.d	$t5, $t7, $t8
+	add.d	$a7, $a7, $t5
+	ld.bu	$t5, $t3, 2
+	add.d	$t8, $s2, $s3
+	ld.bu	$s2, $t6, 2
+	add.w	$a7, $a7, $t8
+	add.d	$t4, $t4, $t5
+	add.d	$t4, $t7, $t4
+	add.d	$t4, $t4, $s2
+	alsl.d	$a7, $a7, $t4, 1
+	mul.d	$t2, $t2, $a2
+	mul.d	$a7, $a7, $a3
 	add.d	$t2, $t2, $a5
-	srli.d	$t2, $t2, 16
-	st.b	$t2, $a6, 0
+	add.d	$a7, $t2, $a7
+	srli.d	$a7, $a7, 16
+	st.b	$a7, $a6, 0
 	addi.d	$a6, $a6, 1
-	addi.d	$a7, $a7, 3
+	addi.d	$a7, $t6, 3
 	addi.d	$t2, $t0, 3
 	addi.d	$t1, $t1, 3
 	addi.d	$t0, $t3, 3
@@ -891,24 +891,24 @@ h2v2_smooth_downsample:                 # @h2v2_smooth_downsample
                                         # =>  This Inner Loop Header: Depth=2
 	ld.bu	$t4, $t2, -1
 	ld.bu	$t5, $t2, 0
+	ld.bu	$t6, $t1, -1
+	ld.bu	$t7, $t1, 0
+	ld.bu	$t8, $t0, -1
+	ld.bu	$s2, $t0, 0
 	add.d	$t4, $t5, $t4
-	ld.bu	$t5, $t1, -1
-	ld.bu	$t6, $t1, 0
-	ld.bu	$t7, $t0, -1
-	ld.bu	$t8, $t0, 0
-	ld.bu	$s2, $a7, -1
+	add.d	$t5, $t6, $t7
 	add.d	$t4, $t4, $t5
-	add.d	$t4, $t4, $t6
-	add.d	$t5, $t8, $t7
-	add.d	$t5, $t5, $s2
-	ld.bu	$t6, $a7, 0
-	ld.bu	$t7, $t2, -2
-	ld.bu	$t8, $t2, 1
-	ld.bu	$s2, $t1, -2
+	add.d	$t5, $s2, $t8
+	ld.bu	$t6, $a7, -1
+	ld.bu	$t7, $a7, 0
+	ld.bu	$t8, $t2, -2
+	ld.bu	$s2, $t2, 1
+	ld.bu	$s3, $t1, -2
+	add.d	$t6, $t6, $t7
 	add.d	$t5, $t5, $t6
-	add.d	$t5, $t5, $t7
-	add.d	$t5, $t5, $t8
-	add.d	$t5, $t5, $s2
+	add.d	$t6, $t8, $s2
+	add.d	$t6, $t6, $s3
+	add.d	$t5, $t5, $t6
 	ld.bu	$t6, $t1, 1
 	ld.bu	$t7, $t0, -2
 	ld.bu	$t8, $t0, 1
@@ -921,8 +921,8 @@ h2v2_smooth_downsample:                 # @h2v2_smooth_downsample
 	add.d	$t5, $t5, $t6
 	mul.d	$t4, $t4, $a2
 	mul.d	$t5, $t5, $a3
-	add.d	$t4, $t4, $t5
 	add.d	$t4, $t4, $a5
+	add.d	$t4, $t4, $t5
 	srli.d	$t4, $t4, 16
 	st.b	$t4, $a6, 0
 	addi.d	$a6, $a6, 1
@@ -935,35 +935,35 @@ h2v2_smooth_downsample:                 # @h2v2_smooth_downsample
 	addi.d	$t0, $t0, 2
 	bgez	$t4, .LBB6_7
 # %bb.8:                                #   in Loop: Header=BB6_6 Depth=1
-	ld.bu	$t3, $t2, 0
-	ld.bu	$t4, $t1, 0
-	ld.bu	$t5, $t2, -1
+	ld.bu	$t3, $t2, -1
+	ld.bu	$t4, $t2, 0
+	ld.bu	$t5, $t1, 0
 	ld.bu	$t6, $t1, -1
+	add.d	$t4, $t5, $t4
+	add.d	$t3, $t3, $t6
 	add.d	$t3, $t4, $t3
-	add.d	$t4, $t3, $t5
-	add.d	$t4, $t4, $t6
 	ld.bu	$t5, $t0, -1
 	ld.bu	$t6, $t0, 0
 	ld.bu	$t7, $a7, -1
 	ld.bu	$t8, $a7, 0
 	ld.bu	$t2, $t2, -2
 	ld.bu	$t1, $t1, -2
-	add.d	$t3, $t3, $t5
-	add.d	$t3, $t3, $t6
-	add.d	$t3, $t3, $t7
-	add.d	$t3, $t3, $t8
-	add.d	$t2, $t3, $t2
+	add.d	$t5, $t5, $t6
+	add.d	$t4, $t4, $t5
+	add.d	$t5, $t7, $t8
+	add.d	$t2, $t5, $t2
 	ld.bu	$t0, $t0, -2
 	ld.bu	$a7, $a7, -2
+	add.d	$t2, $t4, $t2
 	add.w	$t1, $t2, $t1
 	add.d	$t2, $t8, $t6
-	add.d	$t0, $t2, $t0
 	add.d	$a7, $t0, $a7
+	add.d	$a7, $t2, $a7
 	alsl.d	$a7, $t1, $a7, 1
-	mul.d	$t0, $t4, $a2
+	mul.d	$t0, $t3, $a2
 	mul.d	$a7, $a7, $a3
+	add.d	$t0, $t0, $a5
 	add.d	$a7, $t0, $a7
-	add.d	$a7, $a7, $a5
 	srli.d	$a7, $a7, 16
 	st.b	$a7, $a6, 0
 	ld.w	$a6, $fp, 12
@@ -1052,8 +1052,8 @@ h2v2_downsample:                        # @h2v2_downsample
 	ld.bu	$t2, $a4, 0
 	ld.bu	$t3, $a4, 1
 	add.d	$t0, $a5, $t0
+	add.d	$t1, $t1, $t2
 	add.d	$t0, $t0, $t1
-	add.d	$t0, $t0, $t2
 	add.d	$t0, $t0, $t3
 	srli.d	$t0, $t0, 2
 	st.b	$t0, $a7, 0

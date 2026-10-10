@@ -248,8 +248,8 @@ _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm:  # @_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	vshuf.b	$vr2, $vr3, $vr0, $vr4
 	vslli.w	$vr2, $vr2, 8
 	ld.w	$a0, $sp, 32
-	vor.v	$vr1, $vr1, $vr2
 	vsrli.w	$vr0, $vr0, 24
+	vor.v	$vr0, $vr2, $vr0
 	vor.v	$vr0, $vr1, $vr0
 	revb.2w	$a0, $a0
 	b	.LBB2_6

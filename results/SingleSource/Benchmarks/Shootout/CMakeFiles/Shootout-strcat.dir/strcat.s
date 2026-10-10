@@ -85,8 +85,8 @@ main:                                   # @main
 	addi.d	$s1, $s1, 6
 	beqz	$s2, .LBB0_3
 .LBB0_8:                                # =>This Inner Loop Header: Depth=1
-	add.d	$a0, $fp, $s0
-	sub.d	$a0, $a0, $s1
+	sub.d	$a0, $fp, $s1
+	add.d	$a0, $a0, $s0
 	blt	$s3, $a0, .LBB0_7
 # %bb.9:                                #   in Loop: Header=BB0_8 Depth=1
 	slli.w	$s0, $s0, 1

@@ -240,20 +240,20 @@ SegmentFree:                            # @SegmentFree
 	ld.d	$a5, $a5, %got_pc_lo12(channelColumns)
 	ld.d	$a5, $a5, 0
 	mul.d	$a6, $a5, $a3
-	add.d	$a6, $a6, $a1
-	sltu	$a1, $a4, $a2
-	masknez	$a4, $a4, $a1
-	maskeqz	$a1, $a2, $a1
-	or	$a1, $a1, $a4
+	sltu	$a7, $a4, $a2
+	masknez	$a4, $a4, $a7
+	maskeqz	$a2, $a2, $a7
+	or	$a2, $a2, $a4
+	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $a6
 	.p2align	4, , 16
 .LBB5_2:                                # =>This Inner Loop Header: Depth=1
-	ld.bu	$a2, $a0, 0
-	bnez	$a2, .LBB5_8
+	ld.bu	$a1, $a0, 0
+	bnez	$a1, .LBB5_8
 # %bb.3:                                #   in Loop: Header=BB5_2 Depth=1
 	addi.d	$a3, $a3, 1
 	add.d	$a0, $a0, $a5
-	bgeu	$a1, $a3, .LBB5_2
+	bgeu	$a2, $a3, .LBB5_2
 	b	.LBB5_7
 .LBB5_4:
 	pcalau12i	$a4, %got_pc_hi20(channelColumns)
@@ -407,8 +407,8 @@ PrintChannel:                           # @PrintChannel
 	srli.d	$a2, $a1, 2
 	and	$a2, $a2, $s5
 	bstrins.d	$a1, $zero, 2, 0
-	add.d	$a1, $a1, $a2
-	sub.d	$a1, $a0, $a1
+	sub.d	$a0, $a0, $a1
+	sub.d	$a1, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -785,8 +785,8 @@ PrintChannel:                           # @PrintChannel
 	srli.d	$a2, $a1, 2
 	and	$a2, $a2, $s5
 	bstrins.d	$a1, $zero, 2, 0
-	add.d	$a1, $a1, $a2
-	sub.d	$a1, $a0, $a1
+	sub.d	$a0, $a0, $a1
+	sub.d	$a1, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0

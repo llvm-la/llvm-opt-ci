@@ -4948,8 +4948,8 @@ dmxpy:                                  # @dmxpy
 	vmskltz.b	$vr0, $vr0
 	vpickve2gr.hu	$a2, $vr0, 0
 	sltu	$a2, $zero, $a2
-	or	$a1, $a2, $a1
 	or	$a0, $a1, $a0
+	or	$a0, $a2, $a0
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $ra, 30, 2
 	slli.d	$a0, $a0, 2

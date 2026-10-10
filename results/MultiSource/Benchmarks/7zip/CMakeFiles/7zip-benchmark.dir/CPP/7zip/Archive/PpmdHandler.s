@@ -1748,8 +1748,8 @@ _ZN8NArchive5NPpmd8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArc
 	ldptr.d	$a3, $sp, 26672
 	add.d	$a1, $a1, $a0
 	ldptr.d	$a0, $sp, 26712
+	sub.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
-	sub.d	$a1, $a1, $a3
 	st.d	$a1, $s2, 72
 	ori	$a1, $zero, 1
 	st.b	$a1, $s2, 80

@@ -381,8 +381,6 @@ full_verify:                            # @full_verify
 	bnez	$a2, .LBB2_3
 # %bb.4:
 	vadd.w	$vr0, $vr1, $vr0
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
 	lu12i.w	$a1, 32767
 	ori	$a2, $a1, 4064
 	ldx.w	$a2, $a0, $a2
@@ -390,31 +388,33 @@ full_verify:                            # @full_verify
 	ldx.w	$a3, $a0, $a3
 	ori	$a4, $a1, 4072
 	ldx.w	$a4, $a0, $a4
-	vpickve2gr.d	$a5, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	slt	$a2, $a3, $a2
-	add.d	$a2, $a5, $a2
 	slt	$a3, $a4, $a3
-	ori	$a5, $a1, 4076
-	ldx.w	$a5, $a0, $a5
-	ori	$a6, $a1, 4080
-	ldx.w	$a6, $a0, $a6
 	add.d	$a2, $a2, $a3
-	slt	$a3, $a5, $a4
-	add.d	$a2, $a2, $a3
-	slt	$a3, $a6, $a5
-	add.d	$a2, $a2, $a3
-	ori	$a3, $a1, 4084
+	ori	$a3, $a1, 4076
 	ldx.w	$a3, $a0, $a3
-	ori	$a4, $a1, 4088
+	ori	$a5, $a1, 4080
+	ldx.w	$a5, $a0, $a5
+	vpickve2gr.d	$a6, $vr0, 0
+	add.d	$a2, $a6, $a2
+	slt	$a4, $a3, $a4
+	slt	$a3, $a5, $a3
+	add.d	$a3, $a4, $a3
+	ori	$a4, $a1, 4084
 	ldx.w	$a4, $a0, $a4
+	ori	$a6, $a1, 4088
+	ldx.w	$a6, $a0, $a6
 	ori	$a1, $a1, 4092
 	ldx.w	$a0, $a0, $a1
-	slt	$a1, $a3, $a6
-	add.d	$a1, $a2, $a1
-	slt	$a2, $a4, $a3
-	add.d	$a1, $a1, $a2
-	slt	$a0, $a0, $a4
-	add.w	$a1, $a1, $a0
+	slt	$a1, $a4, $a5
+	add.d	$a1, $a3, $a1
+	slt	$a3, $a6, $a4
+	add.d	$a1, $a1, $a3
+	slt	$a0, $a0, $a6
+	add.d	$a0, $a1, $a0
+	add.w	$a1, $a2, $a0
 	beqz	$a1, .LBB2_6
 # %bb.5:
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -1026,8 +1026,6 @@ main:                                   # @main
 	bnez	$a2, .LBB5_3
 # %bb.4:
 	vadd.w	$vr0, $vr1, $vr0
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
 	lu12i.w	$a1, 32767
 	ori	$a2, $a1, 4064
 	ldx.w	$a2, $a0, $a2
@@ -1035,31 +1033,33 @@ main:                                   # @main
 	ldx.w	$a3, $a0, $a3
 	ori	$a4, $a1, 4072
 	ldx.w	$a4, $a0, $a4
-	vpickve2gr.d	$a5, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	slt	$a2, $a3, $a2
-	add.d	$a2, $a5, $a2
 	slt	$a3, $a4, $a3
-	ori	$a5, $a1, 4076
-	ldx.w	$a5, $a0, $a5
-	ori	$a6, $a1, 4080
-	ldx.w	$a6, $a0, $a6
 	add.d	$a2, $a2, $a3
-	slt	$a3, $a5, $a4
-	add.d	$a2, $a2, $a3
-	slt	$a3, $a6, $a5
-	add.d	$a2, $a2, $a3
-	ori	$a3, $a1, 4084
+	ori	$a3, $a1, 4076
 	ldx.w	$a3, $a0, $a3
-	ori	$a4, $a1, 4088
+	ori	$a5, $a1, 4080
+	ldx.w	$a5, $a0, $a5
+	vpickve2gr.d	$a6, $vr0, 0
+	add.d	$a2, $a6, $a2
+	slt	$a4, $a3, $a4
+	slt	$a3, $a5, $a3
+	add.d	$a3, $a4, $a3
+	ori	$a4, $a1, 4084
 	ldx.w	$a4, $a0, $a4
+	ori	$a6, $a1, 4088
+	ldx.w	$a6, $a0, $a6
 	ori	$a1, $a1, 4092
 	ldx.w	$a0, $a0, $a1
-	slt	$a1, $a3, $a6
-	add.d	$a1, $a2, $a1
-	slt	$a2, $a4, $a3
-	add.d	$a1, $a1, $a2
-	slt	$a0, $a0, $a4
-	add.w	$a1, $a1, $a0
+	slt	$a1, $a4, $a5
+	add.d	$a1, $a3, $a1
+	slt	$a3, $a6, $a4
+	add.d	$a1, $a1, $a3
+	slt	$a0, $a0, $a6
+	add.d	$a0, $a1, $a0
+	add.w	$a1, $a2, $a0
 	beqz	$a1, .LBB5_7
 # %bb.5:
 	pcalau12i	$a0, %pc_hi20(.L.str)

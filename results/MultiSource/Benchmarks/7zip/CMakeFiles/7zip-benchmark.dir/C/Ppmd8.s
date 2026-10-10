@@ -639,13 +639,13 @@ Ppmd8_Update1:                          # @Ppmd8_Update1
 	ld.w	$a1, $fp, 24
 	bnez	$a1, .LBB6_5
 # %bb.4:
-	ld.hu	$a1, $a0, 4
-	ld.d	$a2, $fp, 56
+	ld.d	$a1, $fp, 56
+	ld.hu	$a2, $a0, 4
 	ld.hu	$a0, $a0, 2
 	ld.d	$a3, $fp, 88
-	slli.d	$a1, $a1, 16
-	add.d	$a1, $a2, $a1
+	slli.d	$a2, $a2, 16
 	add.d	$a0, $a1, $a0
+	add.d	$a0, $a0, $a2
 	bgeu	$a0, $a3, .LBB6_7
 .LBB6_5:
 	move	$a0, $fp
@@ -1009,8 +1009,8 @@ Rescale:                                # @Rescale
 	sub.d	$a6, $t1, $t2
 	alsl.d	$a5, $t1, $t1, 1
 	slli.d	$a5, $a5, 1
-	add.d	$a5, $a5, $a0
 	add.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a0
 	addi.d	$t0, $a5, 24
 	.p2align	4, , 16
 .LBB7_27:                               # =>This Inner Loop Header: Depth=1
@@ -1121,13 +1121,13 @@ Ppmd8_Update1_0:                        # @Ppmd8_Update1_0
 	ld.w	$a1, $fp, 24
 	bnez	$a1, .LBB8_4
 # %bb.3:
-	ld.hu	$a1, $a0, 4
-	ld.d	$a2, $fp, 56
+	ld.d	$a1, $fp, 56
+	ld.hu	$a2, $a0, 4
 	ld.hu	$a0, $a0, 2
 	ld.d	$a3, $fp, 88
-	slli.d	$a1, $a1, 16
-	add.d	$a1, $a2, $a1
+	slli.d	$a2, $a2, 16
 	add.d	$a0, $a1, $a0
+	add.d	$a0, $a0, $a2
 	bgeu	$a0, $a3, .LBB8_6
 .LBB8_4:
 	move	$a0, $fp
@@ -1169,13 +1169,13 @@ Ppmd8_UpdateBin:                        # @Ppmd8_UpdateBin
 	st.w	$a1, $fp, 40
 	bnez	$a2, .LBB9_2
 # %bb.1:
-	ld.hu	$a1, $a0, 4
-	ld.d	$a2, $fp, 56
+	ld.d	$a1, $fp, 56
+	ld.hu	$a2, $a0, 4
 	ld.hu	$a0, $a0, 2
 	ld.d	$a3, $fp, 88
-	slli.d	$a1, $a1, 16
-	add.d	$a1, $a2, $a1
+	slli.d	$a2, $a2, 16
 	add.d	$a0, $a1, $a0
+	add.d	$a0, $a0, $a2
 	bgeu	$a0, $a3, .LBB9_4
 .LBB9_2:
 	move	$a0, $fp
@@ -2000,8 +2000,8 @@ CreateSuccessors:                       # @CreateSuccessors
 	ld.bu	$a1, $a1, -5
 	ld.hu	$a3, $s0, 2
 	addi.d	$a5, $a1, -1
-	add.d	$a4, $a1, $a4
 	sub.d	$a3, $a3, $a4
+	sub.d	$a3, $a3, $a1
 	addi.d	$a3, $a3, 1
 	slli.d	$a4, $a5, 1
 	bgeu	$a3, $a4, .LBB13_21
@@ -2914,9 +2914,9 @@ GetUsedMemory:                          # @GetUsedMemory
 	sub.d	$a3, $a6, $a5
 	addi.d	$a4, $zero, -12
 	mul.d	$a1, $a1, $a4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $a2
-	add.w	$a0, $a0, $a3
+	add.d	$a0, $a0, $a3
+	add.w	$a0, $a0, $a1
 	ret
 .Lfunc_end16:
 	.size	GetUsedMemory, .Lfunc_end16-GetUsedMemory
@@ -2995,8 +2995,8 @@ CutOff:                                 # @CutOff
 	ld.hu	$a2, $s5, 2
 	ld.d	$a4, $s0, 88
 	slli.d	$a0, $a0, 16
-	add.d	$a0, $a3, $a0
-	add.d	$a2, $a0, $a2
+	add.d	$a2, $a3, $a2
+	add.d	$a2, $a2, $a0
 	bltu	$a2, $a4, .LBB17_5
 # %bb.8:                                #   in Loop: Header=BB17_7 Depth=1
 	ld.w	$a0, $s0, 36
@@ -3067,8 +3067,8 @@ CutOff:                                 # @CutOff
 	ld.hu	$a1, $fp, 4
 	ld.d	$a2, $s0, 88
 	slli.d	$a0, $a0, 16
-	add.d	$a0, $a3, $a0
-	add.d	$a1, $a0, $a1
+	add.d	$a1, $a3, $a1
+	add.d	$a1, $a1, $a0
 	bltu	$a1, $a2, .LBB17_29
 # %bb.18:
 	ld.w	$a0, $s0, 36

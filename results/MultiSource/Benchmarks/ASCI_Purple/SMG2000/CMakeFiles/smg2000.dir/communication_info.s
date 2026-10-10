@@ -252,9 +252,9 @@ hypre_CreateCommInfoFromStencil:        # @hypre_CreateCommInfoFromStencil
 	addi.w	$s6, $s6, 1
 	slli.d	$a1, $s6, 6
 	alsl.d	$a1, $s6, $a1, 3
-	add.d	$a0, $a0, $a1
-	slli.d	$a1, $s3, 4
-	alsl.d	$a1, $s3, $a1, 3
+	slli.d	$a2, $s3, 4
+	alsl.d	$a2, $s3, $a2, 3
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
 	alsl.d	$a0, $a1, $a0, 3
@@ -561,10 +561,10 @@ hypre_CreateCommInfoFromStencil:        # @hypre_CreateCommInfoFromStencil
 	addi.w	$s3, $s3, 1
 	slli.d	$a1, $s3, 6
 	alsl.d	$a1, $s3, $a1, 3
-	add.d	$a0, $a0, $a1
-	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
-	slli.d	$a1, $a2, 4
-	alsl.d	$a1, $a2, $a1, 3
+	ld.d	$a3, $sp, 184                   # 8-byte Folded Reload
+	slli.d	$a2, $a3, 4
+	alsl.d	$a2, $a3, $a2, 3
+	add.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
 	alsl.d	$a0, $a1, $a0, 3

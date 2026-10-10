@@ -140,11 +140,11 @@ main:                                   # @main
 	vslt.du	$vr15, $vr15, $vr0
 	vpickev.w	$vr15, $vr15, $vr16
 	vsub.w	$vr9, $vr9, $vr15
-	vand.v	$vr15, $vr21, $vr23
-	vand.v	$vr15, $vr15, $vr10
+	vand.v	$vr15, $vr23, $vr10
+	vand.v	$vr15, $vr21, $vr15
 	vadd.w	$vr11, $vr11, $vr15
-	vand.v	$vr15, $vr22, $vr24
-	vand.v	$vr15, $vr15, $vr10
+	vand.v	$vr15, $vr24, $vr10
+	vand.v	$vr15, $vr22, $vr15
 	vadd.w	$vr12, $vr12, $vr15
 	vsub.w	$vr5, $vr5, $vr17
 	vsub.w	$vr14, $vr14, $vr18

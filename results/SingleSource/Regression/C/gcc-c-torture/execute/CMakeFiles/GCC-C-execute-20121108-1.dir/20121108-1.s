@@ -50,39 +50,41 @@ string_to_ip:                           # @string_to_ip
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	addi.d	$a1, $sp, 8
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$a1, $sp, 0
 	pcaddu18i	$ra, %call36(strtoul1)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 8
+	ld.d	$a1, $sp, 0
 	ld.bu	$a2, $a1, 0
 	move	$fp, $a0
 	sltu	$a0, $zero, $a2
 	add.d	$a0, $a1, $a0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	pcaddu18i	$ra, %call36(strtoul1)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 8
+	ld.d	$a1, $sp, 0
 	ld.bu	$a2, $a1, 0
 	sltu	$a2, $zero, $a2
 	add.d	$a2, $a1, $a2
-	slli.d	$a1, $fp, 16
-	slli.d	$a0, $a0, 8
-	or	$fp, $a1, $a0
-	addi.d	$a1, $sp, 8
+	slli.d	$fp, $fp, 16
+	slli.d	$s0, $a0, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(strtoul1)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 8
+	ld.d	$a1, $sp, 0
 	ld.bu	$a2, $a1, 0
-	or	$fp, $a0, $fp
+	or	$a0, $a0, $fp
+	or	$fp, $a0, $s0
 	sltu	$a0, $zero, $a2
 	add.d	$a0, $a1, $a0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
                                         # implicit-def: $r6
 	pcaddu18i	$ra, %call36(strtoul1)
 	jirl	$ra, $ra, 0
 	slli.w	$a1, $fp, 8
 	or	$a0, $a0, $a1
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32

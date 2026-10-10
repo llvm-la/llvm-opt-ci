@@ -6124,10 +6124,10 @@ _Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vadd.b	$vr0, $vr0, $vr2
-	vadd.b	$vr1, $vr1, $vr3
 	vadd.b	$vr0, $vr0, $vr4
+	vadd.b	$vr0, $vr0, $vr2
 	vadd.b	$vr1, $vr1, $vr4
+	vadd.b	$vr1, $vr1, $vr3
 	addi.d	$a2, $a2, -32
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB27_9
@@ -6155,8 +6155,8 @@ _Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a3, $a2, 0
 	vinsgr2vr.w	$vr1, $a3, 0
-	vadd.b	$vr0, $vr0, $vr1
 	vadd.b	$vr0, $vr0, $vr4
+	vadd.b	$vr0, $vr0, $vr1
 	addi.d	$a0, $a0, 4
 	addi.d	$a2, $a2, 4
 	bnez	$a0, .LBB27_13
@@ -6353,8 +6353,8 @@ _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc: # @_Z13test_constantIa2
 	pcalau12i	$fp, %pc_hi20(init_value)
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
-	vrepli.b	$vr5, 103
-	vst	$vr5, $sp, 48                   # 16-byte Folded Spill
+	vrepli.b	$vr6, 103
+	vst	$vr6, $sp, 48                   # 16-byte Folded Spill
 	b	.LBB28_4
 	.p2align	4, , 16
 .LBB28_3:                               #   in Loop: Header=BB28_4 Depth=1
@@ -6388,16 +6388,16 @@ _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc: # @_Z13test_constantIa2
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vmuh.b	$vr2, $vr2, $vr5
+	vmuh.b	$vr2, $vr2, $vr6
 	vsrai.b	$vr2, $vr2, 1
 	vsrli.b	$vr4, $vr2, 7
-	vadd.b	$vr2, $vr2, $vr4
-	vmuh.b	$vr3, $vr3, $vr5
+	vmuh.b	$vr3, $vr3, $vr6
 	vsrai.b	$vr3, $vr3, 1
-	vsrli.b	$vr4, $vr3, 7
-	vadd.b	$vr3, $vr3, $vr4
+	vsrli.b	$vr5, $vr3, 7
 	vadd.b	$vr0, $vr2, $vr0
+	vadd.b	$vr0, $vr0, $vr4
 	vadd.b	$vr1, $vr3, $vr1
+	vadd.b	$vr1, $vr1, $vr5
 	addi.d	$a2, $a2, -32
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB28_9
@@ -6425,11 +6425,11 @@ _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc: # @_Z13test_constantIa2
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a3, $a2, 0
 	vinsgr2vr.w	$vr1, $a3, 0
-	vmuh.b	$vr1, $vr1, $vr5
+	vmuh.b	$vr1, $vr1, $vr6
 	vsrai.b	$vr1, $vr1, 1
 	vsrli.b	$vr2, $vr1, 7
-	vadd.b	$vr1, $vr1, $vr2
 	vadd.b	$vr0, $vr1, $vr0
+	vadd.b	$vr0, $vr0, $vr2
 	addi.d	$a0, $a0, 4
 	addi.d	$a2, $a2, 4
 	bnez	$a0, .LBB28_13
@@ -6472,7 +6472,7 @@ _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc: # @_Z13test_constantIa2
 	addi.d	$a0, $a0, %pc_lo12(.L.str.299)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	vld	$vr5, $sp, 48                   # 16-byte Folded Reload
+	vld	$vr6, $sp, 48                   # 16-byte Folded Reload
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	b	.LBB28_3
 .LBB28_19:
@@ -6639,8 +6639,8 @@ _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc: # @_Z13test_co
 	pcalau12i	$fp, %pc_hi20(init_value)
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
-	vrepli.b	$vr5, -119
-	vst	$vr5, $sp, 48                   # 16-byte Folded Spill
+	vrepli.b	$vr6, -119
+	vst	$vr6, $sp, 48                   # 16-byte Folded Spill
 	b	.LBB29_4
 	.p2align	4, , 16
 .LBB29_3:                               #   in Loop: Header=BB29_4 Depth=1
@@ -6674,18 +6674,18 @@ _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc: # @_Z13test_co
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vmuh.b	$vr4, $vr2, $vr5
+	vmuh.b	$vr4, $vr2, $vr6
 	vadd.b	$vr2, $vr4, $vr2
 	vsrai.b	$vr2, $vr2, 6
 	vsrli.b	$vr4, $vr2, 7
-	vadd.b	$vr2, $vr2, $vr4
-	vmuh.b	$vr4, $vr3, $vr5
-	vadd.b	$vr3, $vr4, $vr3
+	vmuh.b	$vr5, $vr3, $vr6
+	vadd.b	$vr3, $vr5, $vr3
 	vsrai.b	$vr3, $vr3, 6
-	vsrli.b	$vr4, $vr3, 7
-	vadd.b	$vr3, $vr3, $vr4
+	vsrli.b	$vr5, $vr3, 7
 	vadd.b	$vr0, $vr2, $vr0
+	vadd.b	$vr0, $vr0, $vr4
 	vadd.b	$vr1, $vr3, $vr1
+	vadd.b	$vr1, $vr1, $vr5
 	addi.d	$a2, $a2, -32
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB29_9
@@ -6713,12 +6713,12 @@ _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc: # @_Z13test_co
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a3, $a2, 0
 	vinsgr2vr.w	$vr1, $a3, 0
-	vmuh.b	$vr2, $vr1, $vr5
+	vmuh.b	$vr2, $vr1, $vr6
 	vadd.b	$vr1, $vr2, $vr1
 	vsrai.b	$vr1, $vr1, 6
 	vsrli.b	$vr2, $vr1, 7
-	vadd.b	$vr1, $vr1, $vr2
 	vadd.b	$vr0, $vr1, $vr0
+	vadd.b	$vr0, $vr0, $vr2
 	addi.d	$a0, $a0, 4
 	addi.d	$a2, $a2, 4
 	bnez	$a0, .LBB29_13
@@ -6741,7 +6741,7 @@ _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc: # @_Z13test_co
 	bstrpick.d	$a5, $a4, 7, 7
 	ext.w.b	$a4, $a4
 	srai.d	$a4, $a4, 6
-	add.d	$a4, $a4, $a5
+	add.d	$a0, $a5, $a0
 	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 1
@@ -6766,7 +6766,7 @@ _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc: # @_Z13test_co
 	addi.d	$a0, $a0, %pc_lo12(.L.str.299)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	vld	$vr5, $sp, 48                   # 16-byte Folded Reload
+	vld	$vr6, $sp, 48                   # 16-byte Folded Reload
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	b	.LBB29_3
 .LBB29_19:
@@ -12574,10 +12574,10 @@ _Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vadd.b	$vr0, $vr0, $vr2
-	vadd.b	$vr1, $vr1, $vr3
 	vadd.b	$vr0, $vr0, $vr4
+	vadd.b	$vr0, $vr0, $vr2
 	vadd.b	$vr1, $vr1, $vr4
+	vadd.b	$vr1, $vr1, $vr3
 	addi.d	$a2, $a2, -32
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB59_9
@@ -12605,8 +12605,8 @@ _Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a3, $a2, 0
 	vinsgr2vr.w	$vr1, $a3, 0
-	vadd.b	$vr0, $vr0, $vr1
 	vadd.b	$vr0, $vr0, $vr4
+	vadd.b	$vr0, $vr0, $vr1
 	addi.d	$a0, $a0, 4
 	addi.d	$a2, $a2, 4
 	bnez	$a0, .LBB59_13
@@ -19112,10 +19112,10 @@ _Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vadd.h	$vr0, $vr0, $vr2
-	vadd.h	$vr1, $vr1, $vr3
 	vadd.h	$vr0, $vr0, $vr4
+	vadd.h	$vr0, $vr0, $vr2
 	vadd.h	$vr1, $vr1, $vr4
+	vadd.h	$vr1, $vr1, $vr3
 	addi.d	$a2, $a2, -16
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB91_9
@@ -19142,8 +19142,8 @@ _Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a3, $a2, 0
 	vinsgr2vr.d	$vr1, $a3, 0
-	vadd.h	$vr0, $vr0, $vr1
 	vadd.h	$vr0, $vr0, $vr4
+	vadd.h	$vr0, $vr0, $vr1
 	addi.d	$a0, $a0, 4
 	addi.d	$a2, $a2, 8
 	bnez	$a0, .LBB91_13
@@ -19390,13 +19390,13 @@ _Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc: # @_Z13test_constantIs2
 	vmuh.h	$vr2, $vr2, $vr4
 	vsrai.h	$vr2, $vr2, 1
 	vsrli.h	$vr5, $vr2, 15
-	vadd.h	$vr2, $vr2, $vr5
 	vmuh.h	$vr3, $vr3, $vr4
 	vsrai.h	$vr3, $vr3, 1
 	vsrli.h	$vr4, $vr3, 15
-	vadd.h	$vr3, $vr3, $vr4
 	vadd.h	$vr0, $vr2, $vr0
+	vadd.h	$vr0, $vr0, $vr5
 	vadd.h	$vr1, $vr3, $vr1
+	vadd.h	$vr1, $vr1, $vr4
 	addi.d	$a2, $a2, -16
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB92_9
@@ -19427,8 +19427,8 @@ _Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc: # @_Z13test_constantIs2
 	vmuh.h	$vr1, $vr1, $vr2
 	vsrai.h	$vr1, $vr1, 1
 	vsrli.h	$vr2, $vr1, 15
-	vadd.h	$vr1, $vr1, $vr2
 	vadd.h	$vr0, $vr1, $vr0
+	vadd.h	$vr0, $vr0, $vr2
 	addi.d	$a0, $a0, 4
 	addi.d	$a2, $a2, 8
 	bnez	$a0, .LBB92_13
@@ -19647,10 +19647,10 @@ _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc: # @_Z13test_co
 	ori	$s6, $a0, 3904
 	lu12i.w	$a0, 8
 	ori	$a0, $a0, 2185
-	vreplgr2vr.h	$vr5, $a0
+	vreplgr2vr.h	$vr6, $a0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
-	vst	$vr5, $sp, 48                   # 16-byte Folded Spill
+	vst	$vr6, $sp, 48                   # 16-byte Folded Spill
 	b	.LBB93_4
 	.p2align	4, , 16
 .LBB93_3:                               #   in Loop: Header=BB93_4 Depth=1
@@ -19684,18 +19684,18 @@ _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc: # @_Z13test_co
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vmuh.h	$vr4, $vr2, $vr5
+	vmuh.h	$vr4, $vr2, $vr6
 	vadd.h	$vr2, $vr4, $vr2
 	vsrai.h	$vr2, $vr2, 6
 	vsrli.h	$vr4, $vr2, 15
-	vadd.h	$vr2, $vr2, $vr4
-	vmuh.h	$vr4, $vr3, $vr5
-	vadd.h	$vr3, $vr4, $vr3
+	vmuh.h	$vr5, $vr3, $vr6
+	vadd.h	$vr3, $vr5, $vr3
 	vsrai.h	$vr3, $vr3, 6
-	vsrli.h	$vr4, $vr3, 15
-	vadd.h	$vr3, $vr3, $vr4
+	vsrli.h	$vr5, $vr3, 15
 	vadd.h	$vr0, $vr2, $vr0
+	vadd.h	$vr0, $vr0, $vr4
 	vadd.h	$vr1, $vr3, $vr1
+	vadd.h	$vr1, $vr1, $vr5
 	addi.d	$a2, $a2, -16
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB93_9
@@ -19722,12 +19722,12 @@ _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc: # @_Z13test_co
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a3, $a2, 0
 	vinsgr2vr.d	$vr1, $a3, 0
-	vmuh.h	$vr2, $vr1, $vr5
+	vmuh.h	$vr2, $vr1, $vr6
 	vadd.h	$vr1, $vr2, $vr1
 	vsrai.h	$vr1, $vr1, 6
 	vsrli.h	$vr2, $vr1, 15
-	vadd.h	$vr1, $vr1, $vr2
 	vadd.h	$vr0, $vr1, $vr0
+	vadd.h	$vr0, $vr0, $vr2
 	addi.d	$a0, $a0, 4
 	addi.d	$a2, $a2, 8
 	bnez	$a0, .LBB93_13
@@ -19750,7 +19750,7 @@ _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc: # @_Z13test_co
 	bstrpick.d	$a5, $a4, 15, 15
 	ext.w.h	$a4, $a4
 	srai.d	$a4, $a4, 6
-	add.d	$a4, $a4, $a5
+	add.d	$a0, $a5, $a0
 	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 2
@@ -19777,7 +19777,7 @@ _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc: # @_Z13test_co
 	addi.d	$a0, $a0, %pc_lo12(.L.str.299)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	vld	$vr5, $sp, 48                   # 16-byte Folded Reload
+	vld	$vr6, $sp, 48                   # 16-byte Folded Reload
 	ori	$a6, $zero, 4
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	b	.LBB93_3
@@ -25794,10 +25794,10 @@ _Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vadd.h	$vr0, $vr0, $vr2
-	vadd.h	$vr1, $vr1, $vr3
 	vadd.h	$vr0, $vr0, $vr4
+	vadd.h	$vr0, $vr0, $vr2
 	vadd.h	$vr1, $vr1, $vr4
+	vadd.h	$vr1, $vr1, $vr3
 	addi.d	$a2, $a2, -16
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB123_9
@@ -25824,8 +25824,8 @@ _Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a3, $a2, 0
 	vinsgr2vr.d	$vr1, $a3, 0
-	vadd.h	$vr0, $vr0, $vr1
 	vadd.h	$vr0, $vr0, $vr4
+	vadd.h	$vr0, $vr0, $vr1
 	addi.d	$a0, $a0, 4
 	addi.d	$a2, $a2, 8
 	bnez	$a0, .LBB123_13
@@ -32134,10 +32134,10 @@ _Z13test_constantIi34custom_multiple_constant_multiply2IiEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vadd.w	$vr0, $vr0, $vr2
-	vadd.w	$vr1, $vr1, $vr3
 	vadd.w	$vr0, $vr0, $vr4
+	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr4
+	vadd.w	$vr1, $vr1, $vr3
 	addi.d	$a2, $a2, -8
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB155_7
@@ -32339,7 +32339,7 @@ _Z13test_constantIi22custom_constant_divideIiEEvPT_iPKc: # @_Z13test_constantIi2
 	move	$s8, $zero
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
-	vreplgr2vr.w	$vr5, $fp
+	vreplgr2vr.w	$vr6, $fp
 	b	.LBB156_4
 	.p2align	4, , 16
 .LBB156_3:                              #   in Loop: Header=BB156_4 Depth=1
@@ -32364,16 +32364,16 @@ _Z13test_constantIi22custom_constant_divideIiEEvPT_iPKc: # @_Z13test_constantIi2
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vmuh.w	$vr2, $vr2, $vr5
+	vmuh.w	$vr2, $vr2, $vr6
 	vsrai.w	$vr2, $vr2, 1
 	vsrli.w	$vr4, $vr2, 31
-	vadd.w	$vr2, $vr2, $vr4
-	vmuh.w	$vr3, $vr3, $vr5
+	vmuh.w	$vr3, $vr3, $vr6
 	vsrai.w	$vr3, $vr3, 1
-	vsrli.w	$vr4, $vr3, 31
-	vadd.w	$vr3, $vr3, $vr4
+	vsrli.w	$vr5, $vr3, 31
 	vadd.w	$vr0, $vr2, $vr0
+	vadd.w	$vr0, $vr0, $vr4
 	vadd.w	$vr1, $vr3, $vr1
+	vadd.w	$vr1, $vr1, $vr5
 	addi.d	$a2, $a2, -8
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB156_7
@@ -32415,7 +32415,7 @@ _Z13test_constantIi22custom_constant_divideIiEEvPT_iPKc: # @_Z13test_constantIi2
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	vreplgr2vr.w	$vr5, $fp
+	vreplgr2vr.w	$vr6, $fp
 	ori	$a6, $zero, 8
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	b	.LBB156_3
@@ -32578,7 +32578,7 @@ _Z13test_constantIi31custom_multiple_constant_divideIiEEvPT_iPKc: # @_Z13test_co
 	move	$s8, $zero
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
-	vreplgr2vr.w	$vr5, $fp
+	vreplgr2vr.w	$vr6, $fp
 	b	.LBB157_4
 	.p2align	4, , 16
 .LBB157_3:                              #   in Loop: Header=BB157_4 Depth=1
@@ -32603,18 +32603,18 @@ _Z13test_constantIi31custom_multiple_constant_divideIiEEvPT_iPKc: # @_Z13test_co
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vmuh.w	$vr4, $vr2, $vr5
+	vmuh.w	$vr4, $vr2, $vr6
 	vadd.w	$vr2, $vr4, $vr2
 	vsrai.w	$vr2, $vr2, 6
 	vsrli.w	$vr4, $vr2, 31
-	vadd.w	$vr2, $vr2, $vr4
-	vmuh.w	$vr4, $vr3, $vr5
-	vadd.w	$vr3, $vr4, $vr3
+	vmuh.w	$vr5, $vr3, $vr6
+	vadd.w	$vr3, $vr5, $vr3
 	vsrai.w	$vr3, $vr3, 6
-	vsrli.w	$vr4, $vr3, 31
-	vadd.w	$vr3, $vr3, $vr4
+	vsrli.w	$vr5, $vr3, 31
 	vadd.w	$vr0, $vr2, $vr0
+	vadd.w	$vr0, $vr0, $vr4
 	vadd.w	$vr1, $vr3, $vr1
+	vadd.w	$vr1, $vr1, $vr5
 	addi.d	$a2, $a2, -8
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB157_7
@@ -32660,7 +32660,7 @@ _Z13test_constantIi31custom_multiple_constant_divideIiEEvPT_iPKc: # @_Z13test_co
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	vreplgr2vr.w	$vr5, $fp
+	vreplgr2vr.w	$vr6, $fp
 	ori	$a6, $zero, 8
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	b	.LBB157_3
@@ -37980,10 +37980,10 @@ _Z13test_constantIj34custom_multiple_constant_multiply2IjEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vadd.w	$vr0, $vr0, $vr2
-	vadd.w	$vr1, $vr1, $vr3
 	vadd.w	$vr0, $vr0, $vr4
+	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr4
+	vadd.w	$vr1, $vr1, $vr3
 	addi.d	$a2, $a2, -8
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB187_7
@@ -43809,10 +43809,10 @@ _Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vadd.d	$vr0, $vr0, $vr2
-	vadd.d	$vr1, $vr1, $vr3
 	vadd.d	$vr0, $vr0, $vr4
+	vadd.d	$vr0, $vr0, $vr2
 	vadd.d	$vr1, $vr1, $vr4
+	vadd.d	$vr1, $vr1, $vr3
 	addi.d	$a2, $a2, -4
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB219_7
@@ -49621,10 +49621,10 @@ _Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vadd.d	$vr0, $vr0, $vr2
-	vadd.d	$vr1, $vr1, $vr3
 	vadd.d	$vr0, $vr0, $vr4
+	vadd.d	$vr0, $vr0, $vr2
 	vadd.d	$vr1, $vr1, $vr4
+	vadd.d	$vr1, $vr1, $vr3
 	addi.d	$a2, $a2, -4
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB251_7

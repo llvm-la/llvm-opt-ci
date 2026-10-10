@@ -23,13 +23,13 @@ f:                                      # @f
 # %bb.0:
 	pcalau12i	$a1, %pc_hi20(n)
 	ld.w	$a2, $a1, %pc_lo12(n)
-	add.d	$a2, $a2, $a0
 	slti	$a3, $a0, 1
 	ori	$a4, $zero, 1
 	masknez	$a4, $a4, $a3
-	maskeqz	$a0, $a0, $a3
-	or	$a0, $a0, $a4
-	sub.d	$a0, $a2, $a0
+	maskeqz	$a3, $a0, $a3
+	or	$a3, $a3, $a4
+	sub.d	$a0, $a0, $a3
+	add.d	$a0, $a2, $a0
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $a1, %pc_lo12(n)
 	move	$a0, $zero

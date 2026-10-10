@@ -3873,10 +3873,10 @@ _Z8picModelR5Mixer:                     # @_Z8picModelR5Mixer
 	slli.d	$a6, $t7, 3
 	bstrpick.d	$a6, $a6, 14, 8
 	slli.d	$a6, $a6, 8
-	xor	$a5, $a5, $a6
-	slli.d	$a6, $t2, 6
-	bstrpick.d	$a6, $a6, 15, 11
-	slli.d	$a6, $a6, 11
+	slli.d	$a7, $t2, 6
+	bstrpick.d	$a7, $a7, 15, 11
+	slli.d	$a7, $a7, 11
+	xor	$a6, $a6, $a7
 	xor	$a5, $a5, $a6
 	addi.d	$a5, $a5, 512
 	st.w	$a5, $a3, %pc_lo12(_ZZ8picModelR5MixerE3cxt.2)
@@ -4964,8 +4964,8 @@ _Z11recordModelR5Mixer:                 # @_Z11recordModelR5Mixer
 	slli.d	$s7, $s8, 10
 	ld.w	$s8, $t4, 136
 	slli.d	$s6, $s6, 18
+	or	$s7, $s7, $t5
 	or	$s6, $s7, $s6
-	or	$s6, $s6, $t5
 	addi.d	$s7, $s8, 1
 	st.w	$s7, $t4, 136
 	mul.d	$t4, $s6, $t0
@@ -5120,8 +5120,8 @@ _Z11recordModelR5Mixer:                 # @_Z11recordModelR5Mixer
 	slli.d	$t2, $t2, 10
 	ld.w	$t4, $t3, 136
 	slli.d	$t7, $a7, 18
-	or	$t2, $t5, $t2
-	or	$t2, $t2, $t7
+	or	$t7, $t5, $t7
+	or	$t2, $t7, $t2
 	addi.d	$t8, $t4, 1
 	st.w	$t8, $t3, 136
 	mul.d	$t2, $t2, $t0
@@ -5140,8 +5140,7 @@ _Z11recordModelR5Mixer:                 # @_Z11recordModelR5Mixer
 	ldx.bu	$t2, $t6, $t2
 	ld.w	$t4, $t3, 136
 	slli.d	$t2, $t2, 10
-	or	$t2, $t5, $t2
-	or	$t2, $t2, $t7
+	or	$t2, $t7, $t2
 	addi.d	$t6, $t4, 1
 	st.w	$t6, $t3, 136
 	mul.d	$t2, $t2, $t0
@@ -5529,8 +5528,8 @@ _Z11sparseModelR5Mixerii:               # @_Z11sparseModelR5Mixerii
 	addi.d	$a4, $a5, 1
 	st.w	$a4, $s4, 136
 	mul.d	$a3, $a3, $s5
-	add.d	$a3, $a5, $a3
-	add.d	$a3, $a3, $s5
+	add.d	$a4, $a5, $s5
+	add.d	$a3, $a4, $a3
 	rotri.w	$a3, $a3, 16
 	mul.d	$a3, $a3, $s8
 	add.d	$a3, $a3, $a5
@@ -5544,10 +5543,10 @@ _Z11sparseModelR5Mixerii:               # @_Z11sparseModelR5Mixerii
 	addi.d	$a5, $a4, 1
 	st.w	$a5, $s4, 136
 	mul.d	$a3, $a3, $s5
-	add.d	$a3, $a4, $a3
 	lu12i.w	$a5, 482253
 	ori	$a5, $a5, 358
-	add.d	$a3, $a3, $a5
+	add.d	$a5, $a4, $a5
+	add.d	$a3, $a5, $a3
 	rotri.w	$a3, $a3, 16
 	mul.d	$a3, $a3, $s8
 	add.d	$a3, $a3, $a4
@@ -5562,10 +5561,10 @@ _Z11sparseModelR5Mixerii:               # @_Z11sparseModelR5Mixerii
 	addi.d	$a4, $a5, 1
 	st.w	$a4, $s4, 136
 	mul.d	$a3, $a3, $s5
-	add.d	$a3, $a5, $a3
 	lu12i.w	$a4, -325197
 	ori	$a4, $a4, 2585
-	add.d	$a3, $a3, $a4
+	add.d	$a4, $a5, $a4
+	add.d	$a3, $a4, $a3
 	rotri.w	$a3, $a3, 16
 	mul.d	$a3, $a3, $s8
 	add.d	$a3, $a3, $a5
@@ -5579,10 +5578,10 @@ _Z11sparseModelR5Mixerii:               # @_Z11sparseModelR5Mixerii
 	addi.d	$a5, $a4, 1
 	st.w	$a5, $s4, 136
 	mul.d	$a3, $a3, $s5
-	add.d	$a3, $a4, $a3
 	lu12i.w	$a5, -84070
 	ori	$a5, $a5, 716
-	add.d	$a3, $a3, $a5
+	add.d	$a5, $a4, $a5
+	add.d	$a3, $a5, $a3
 	rotri.w	$a3, $a3, 16
 	mul.d	$a3, $a3, $s8
 	add.d	$a3, $a3, $a4
@@ -5597,10 +5596,10 @@ _Z11sparseModelR5Mixerii:               # @_Z11sparseModelR5Mixerii
 	addi.d	$a4, $a5, 1
 	st.w	$a4, $s4, 136
 	mul.d	$a3, $a3, $s5
-	add.d	$a3, $a5, $a3
 	lu12i.w	$a4, 157056
 	ori	$a4, $a4, 2943
-	add.d	$a3, $a3, $a4
+	add.d	$a4, $a5, $a4
+	add.d	$a3, $a4, $a3
 	rotri.w	$a3, $a3, 16
 	mul.d	$a3, $a3, $s8
 	add.d	$a3, $a3, $a5
@@ -5613,10 +5612,10 @@ _Z11sparseModelR5Mixerii:               # @_Z11sparseModelR5Mixerii
 	addi.d	$a3, $a4, 1
 	st.w	$a3, $s4, 136
 	mul.d	$a0, $a0, $s5
-	add.d	$a0, $a4, $a0
 	lu12i.w	$a3, 398183
 	ori	$a3, $a3, 1074
-	add.d	$a0, $a0, $a3
+	add.d	$a3, $a4, $a3
+	add.d	$a0, $a3, $a0
 	rotri.w	$a0, $a0, 16
 	mul.d	$a0, $a0, $s8
 	add.d	$a0, $a0, $a4
@@ -5885,26 +5884,26 @@ _Z11sparseModelR5Mixerii:               # @_Z11sparseModelR5Mixerii
 	stx.w	$a1, $s7, $a2
 	ld.w	$a1, $s2, %pc_lo12(pos)
 	ld.w	$a2, $s1, 0
-	slli.d	$a3, $a0, 17
-	addi.w	$a4, $a1, -2
+	addi.w	$a3, $a1, -2
 	addi.w	$a2, $a2, -1
-	and	$a4, $a2, $a4
-	ldx.bu	$a4, $fp, $a4
+	and	$a3, $a2, $a3
+	ldx.bu	$a3, $fp, $a3
 	addi.w	$a1, $a1, -3
 	and	$a1, $a2, $a1
 	ldx.bu	$a1, $fp, $a1
-	ld.w	$a2, $s4, 136
-	slli.d	$a4, $a4, 8
-	or	$a3, $a4, $a3
+	slli.d	$a2, $a0, 17
+	ld.w	$a4, $s4, 136
+	slli.d	$a3, $a3, 8
+	or	$a1, $a2, $a1
 	or	$a1, $a3, $a1
-	addi.d	$a3, $a2, 1
-	st.w	$a3, $s4, 136
+	addi.d	$a2, $a4, 1
+	st.w	$a2, $s4, 136
 	mul.d	$a1, $a1, $s5
-	add.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $a4
 	rotri.w	$a1, $a1, 16
 	mul.d	$a1, $a1, $s8
-	add.d	$a1, $a1, $a2
-	slli.d	$a2, $a2, 2
+	add.d	$a1, $a1, $a4
+	slli.d	$a2, $a4, 2
 	stx.w	$a1, $s7, $a2
 	ld.wu	$a1, $s6, %pc_lo12(c4)
 	lu12i.w	$a2, 1807
@@ -6331,18 +6330,18 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	dbar	20
 	beqz	$a0, .LBB40_83
 .LBB40_11:
-	pcalau12i	$s0, %pc_hi20(bpos)
-	ld.w	$a0, $s0, %pc_lo12(bpos)
-	pcalau12i	$s1, %pc_hi20(pos)
-	ld.w	$a5, $s1, %pc_lo12(pos)
+	pcalau12i	$s1, %pc_hi20(bpos)
+	ld.w	$a0, $s1, %pc_lo12(bpos)
+	pcalau12i	$t0, %pc_hi20(pos)
+	ld.w	$a5, $t0, %pc_lo12(pos)
 	pcalau12i	$s2, %pc_hi20(_ZZ8bmpModelR5MixerE3eoi)
 	bnez	$a0, .LBB40_26
 # %bb.12:
 	addi.w	$a2, $a5, -54
 	pcalau12i	$a0, %pc_hi20(buf)
-	addi.d	$s3, $a0, %pc_lo12(buf)
-	ld.w	$a1, $s3, 0
-	ld.d	$a0, $s3, 16
+	addi.d	$fp, $a0, %pc_lo12(buf)
+	ld.w	$a1, $fp, 0
+	ld.d	$a0, $fp, 16
 	addi.w	$a1, $a1, -1
 	and	$a2, $a1, $a2
 	ldx.bu	$a2, $a0, $a2
@@ -6355,44 +6354,44 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	ori	$a3, $zero, 77
 	bne	$a2, $a3, .LBB40_20
 # %bb.14:
-	addi.w	$a2, $a5, -43
+	addi.w	$a2, $a5, -44
 	and	$a2, $a1, $a2
 	ldx.bu	$a2, $a0, $a2
-	addi.w	$a3, $a5, -44
+	addi.w	$a3, $a5, -43
 	and	$a3, $a1, $a3
 	ldx.bu	$a3, $a0, $a3
-	slli.w	$a2, $a2, 8
 	addi.w	$a4, $a5, -42
 	and	$a4, $a1, $a4
 	ldx.bu	$a4, $a0, $a4
 	addi.w	$a6, $a5, -41
 	and	$a6, $a1, $a6
 	ldx.b	$a6, $a0, $a6
-	or	$a2, $a2, $a3
+	slli.w	$a3, $a3, 8
+	or	$a2, $a3, $a2
 	slli.w	$a3, $a4, 16
-	or	$a2, $a2, $a3
-	slli.w	$a3, $a6, 24
+	slli.w	$a4, $a6, 24
+	or	$a3, $a3, $a4
 	or	$a2, $a2, $a3
 	ori	$a3, $zero, 54
 	bne	$a2, $a3, .LBB40_20
 # %bb.15:
-	addi.w	$a2, $a5, -39
+	addi.w	$a2, $a5, -40
 	and	$a2, $a1, $a2
 	ldx.bu	$a2, $a0, $a2
-	addi.w	$a3, $a5, -40
+	addi.w	$a3, $a5, -39
 	and	$a3, $a1, $a3
 	ldx.bu	$a3, $a0, $a3
-	slli.w	$a2, $a2, 8
 	addi.w	$a4, $a5, -38
 	and	$a4, $a1, $a4
 	ldx.bu	$a4, $a0, $a4
 	addi.w	$a6, $a5, -37
 	and	$a6, $a1, $a6
 	ldx.b	$a6, $a0, $a6
-	or	$a2, $a2, $a3
+	slli.w	$a3, $a3, 8
+	or	$a2, $a3, $a2
 	slli.w	$a3, $a4, 16
-	or	$a2, $a2, $a3
-	slli.w	$a3, $a6, 24
+	slli.w	$a4, $a6, 24
+	or	$a3, $a3, $a4
 	or	$a2, $a2, $a3
 	ori	$a3, $zero, 40
 	bne	$a2, $a3, .LBB40_20
@@ -6410,29 +6409,31 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	and	$a1, $a1, $a6
 	ldx.bu	$a0, $a0, $a1
 	or	$a1, $a3, $a2
-	or	$a1, $a1, $a4
+	or	$a0, $a4, $a0
 	or	$a0, $a1, $a0
 	bnez	$a0, .LBB40_20
 # %bb.17:
 	ori	$a0, $zero, 36
+	move	$s3, $t0
 	pcaddu18i	$ra, %call36(_Z2i4i)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 3
 	bstrins.d	$a0, $zero, 1, 0
 	alsl.d	$a0, $a0, $a0, 1
-	pcalau12i	$fp, %pc_hi20(_ZZ8bmpModelR5MixerE1w)
-	st.w	$a0, $fp, %pc_lo12(_ZZ8bmpModelR5MixerE1w)
+	pcalau12i	$s0, %pc_hi20(_ZZ8bmpModelR5MixerE1w)
+	st.w	$a0, $s0, %pc_lo12(_ZZ8bmpModelR5MixerE1w)
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(_Z2i4i)
 	jirl	$ra, $ra, 0
-	ld.w	$a5, $s1, %pc_lo12(pos)
+	move	$t0, $s3
+	ld.w	$a5, $s3, %pc_lo12(pos)
 	move	$a2, $a0
 	lu12i.w	$a0, 15
 	ori	$a0, $a0, 4095
 	st.w	$a5, $s2, %pc_lo12(_ZZ8bmpModelR5MixerE3eoi)
 	blt	$a0, $a2, .LBB40_20
 # %bb.18:
-	ld.w	$a0, $fp, %pc_lo12(_ZZ8bmpModelR5MixerE1w)
+	ld.w	$a0, $s0, %pc_lo12(_ZZ8bmpModelR5MixerE1w)
 	lu12i.w	$a1, 47
 	ori	$a1, $a1, 4095
 	blt	$a1, $a0, .LBB40_20
@@ -6450,9 +6451,10 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.w	$a5, $s1, %pc_lo12(pos)
+	move	$t0, $s3
+	ld.w	$a5, $s3, %pc_lo12(pos)
 .LBB40_20:
-	ld.w	$a0, $s0, %pc_lo12(bpos)
+	ld.w	$a0, $s1, %pc_lo12(bpos)
 	bnez	$a0, .LBB40_26
 # %bb.21:
 	pcalau12i	$a0, %pc_hi20(c4)
@@ -6477,7 +6479,7 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 .LBB40_24:
 	ori	$a1, $zero, 4
 	bne	$a2, $a1, .LBB40_33
-.LBB40_25:
+# %bb.25:
 	pcalau12i	$a0, %pc_hi20(_ZZ8bmpModelR5MixerE4tiff)
 	st.w	$zero, $a0, %pc_lo12(_ZZ8bmpModelR5MixerE4tiff)
 .LBB40_26:
@@ -6489,17 +6491,16 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	st.w	$zero, $a1, %pc_lo12(_ZZ8bmpModelR5MixerE1w)
 	b	.LBB40_32
 .LBB40_28:
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	ld.w	$a1, $s0, %pc_lo12(bpos)
+	ld.w	$a1, $s1, %pc_lo12(bpos)
 	pcalau12i	$a0, %pc_hi20(_ZZ8bmpModelR5MixerE4scm3)
 	addi.d	$t1, $a0, %pc_lo12(_ZZ8bmpModelR5MixerE4scm3)
 	pcalau12i	$a0, %pc_hi20(_ZZ8bmpModelR5MixerE4scm4)
 	addi.d	$s6, $a0, %pc_lo12(_ZZ8bmpModelR5MixerE4scm4)
 	pcalau12i	$a0, %pc_hi20(buf)
-	addi.d	$a0, $a0, %pc_lo12(buf)
+	addi.d	$t3, $a0, %pc_lo12(buf)
 	pcalau12i	$a4, %pc_hi20(_ZZ8bmpModelR5MixerE1w)
 	pcalau12i	$a2, %pc_hi20(_ZZ8bmpModelR5MixerE4scm1)
-	addi.d	$t2, $a2, %pc_lo12(_ZZ8bmpModelR5MixerE4scm1)
+	addi.d	$s3, $a2, %pc_lo12(_ZZ8bmpModelR5MixerE4scm1)
 	pcalau12i	$a2, %pc_hi20(_ZZ8bmpModelR5MixerE4scm2)
 	addi.d	$s5, $a2, %pc_lo12(_ZZ8bmpModelR5MixerE4scm2)
 	pcalau12i	$a2, %pc_hi20(_ZZ8bmpModelR5MixerE4scm5)
@@ -6507,26 +6508,27 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	pcalau12i	$a2, %pc_hi20(_ZZ8bmpModelR5MixerE4scm6)
 	addi.d	$ra, $a2, %pc_lo12(_ZZ8bmpModelR5MixerE4scm6)
 	pcalau12i	$a2, %pc_hi20(_ZZ8bmpModelR5MixerE4scm7)
-	addi.d	$t4, $a2, %pc_lo12(_ZZ8bmpModelR5MixerE4scm7)
+	addi.d	$a3, $a2, %pc_lo12(_ZZ8bmpModelR5MixerE4scm7)
 	pcalau12i	$a2, %pc_hi20(_ZZ8bmpModelR5MixerE4scm8)
-	addi.d	$t8, $a2, %pc_lo12(_ZZ8bmpModelR5MixerE4scm8)
+	addi.d	$a6, $a2, %pc_lo12(_ZZ8bmpModelR5MixerE4scm8)
 	pcalau12i	$a2, %pc_hi20(_ZZ8bmpModelR5MixerE4scm9)
-	addi.d	$a6, $a2, %pc_lo12(_ZZ8bmpModelR5MixerE4scm9)
+	addi.d	$a7, $a2, %pc_lo12(_ZZ8bmpModelR5MixerE4scm9)
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 112                   # 8-byte Folded Spill
-	st.d	$a4, $sp, 80                    # 8-byte Folded Spill
-	st.d	$a6, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 104                   # 8-byte Folded Spill
+	st.d	$t3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$t0, $sp, 64                    # 8-byte Folded Spill
 	beqz	$a1, .LBB40_30
 # %bb.29:
 	ld.w	$s0, $t1, 24
 	ld.w	$fp, $s6, 24
-	move	$t7, $t8
-	move	$s1, $t4
+	move	$a0, $a6
+	move	$t0, $a3
 	b	.LBB40_31
 .LBB40_30:
 	pcalau12i	$a1, %pc_hi20(_ZZ8bmpModelR5MixerE2cm)
+	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
 	addi.d	$t7, $a1, %pc_lo12(_ZZ8bmpModelR5MixerE2cm)
 	lu12i.w	$a1, 349525
 	ori	$a1, $a1, 1366
@@ -6536,84 +6538,84 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	add.d	$a1, $a1, $a2
 	addi.w	$a2, $a1, 0
 	alsl.d	$a1, $a2, $a1, 1
-	sub.d	$t0, $a5, $a1
-	st.d	$t0, $sp, 16                    # 8-byte Folded Spill
-	ld.w	$a1, $a0, 0
+	sub.d	$s1, $a5, $a1
+	ld.w	$a1, $t3, 0
 	addi.w	$a3, $a5, -3
-	ld.d	$a2, $a0, 16
+	ld.d	$a2, $t3, 16
 	ld.w	$t5, $a4, %pc_lo12(_ZZ8bmpModelR5MixerE1w)
 	addi.w	$a1, $a1, -1
 	and	$a3, $a1, $a3
 	ldx.bu	$a3, $a2, $a3
-	addi.d	$a7, $t5, -3
-	sub.w	$a6, $a5, $a7
+	addi.d	$a0, $t5, -3
+	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
+	sub.w	$a6, $a5, $a0
 	and	$a6, $a6, $a1
 	ldx.bu	$a6, $a2, $a6
 	sub.w	$a7, $a5, $t5
 	and	$a7, $a7, $a1
 	ldx.bu	$a7, $a2, $a7
-	addi.d	$t3, $t5, 3
-	sub.w	$a5, $a5, $t3
+	addi.d	$a0, $t5, 3
+	sub.w	$a5, $a5, $a0
 	and	$a1, $a5, $a1
 	ldx.bu	$a1, $a2, $a1
-	addi.w	$s0, $t0, 0
-	add.d	$a5, $a6, $a3
-	add.d	$a5, $a5, $a7
-	add.d	$t0, $a5, $a1
-	st.d	$t0, $sp, 24                    # 8-byte Folded Spill
+	addi.w	$s0, $s1, 0
+	add.d	$a5, $a3, $a7
+	add.d	$a5, $a6, $a5
+	add.d	$a0, $a5, $a1
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	mul.d	$a5, $a3, $a3
 	mul.d	$a6, $a6, $a6
+	mul.d	$a7, $a7, $a7
+	add.d	$a5, $a5, $a7
 	add.d	$a5, $a6, $a5
-	mul.d	$a6, $a7, $a7
-	add.d	$a5, $a5, $a6
 	mul.d	$a1, $a1, $a1
 	add.d	$a1, $a5, $a1
-	mul.d	$a5, $t0, $t0
+	mul.d	$a5, $a0, $a0
 	pcalau12i	$a6, %pc_hi20(ilog+16)
 	ld.d	$a6, $a6, %pc_lo12(ilog+16)
 	srli.d	$a5, $a5, 2
 	sub.d	$a1, $a1, $a5
 	bstrpick.d	$a1, $a1, 17, 2
 	ldx.bu	$a1, $a6, $a1
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	lu12i.w	$a1, 7325
 	ori	$s4, $a1, 2291
 	mul.d	$a1, $a3, $s4
 	lu12i.w	$a5, 12208
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	ori	$s5, $a5, 271
-	st.d	$t4, $sp, 40                    # 8-byte Folded Spill
-	mul.d	$t6, $s0, $s5
-	add.w	$a1, $t6, $a1
+	mul.d	$t4, $s0, $s5
+	add.w	$a1, $t4, $a1
 	lu12i.w	$a5, 4881
 	ori	$a5, $a5, 3097
 	add.d	$a1, $a1, $a5
 	bstrpick.d	$a5, $a1, 31, 9
 	srli.d	$a3, $a3, 3
 	bstrpick.d	$s2, $s0, 31, 4
-	xor	$a3, $a3, $a5
 	xor	$a3, $a3, $s2
-	ld.w	$a5, $t7, 136
 	xor	$a1, $a3, $a1
-	lu12i.w	$t3, 16384
-	xor	$a1, $a1, $t3
-	addi.d	$a3, $a5, 1
-	st.w	$a3, $t7, 136
-	lu12i.w	$a3, 241126
-	st.d	$s6, $sp, 64                    # 8-byte Folded Spill
-	ori	$s6, $a3, 2227
+	ld.w	$a3, $t7, 136
+	xor	$a1, $a1, $a5
+	lu12i.w	$t2, 16384
+	xor	$a1, $a1, $t2
+	addi.d	$a5, $a3, 1
+	st.w	$a5, $t7, 136
+	lu12i.w	$a5, 241126
+	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
+	ori	$s6, $a5, 2227
 	mul.d	$a1, $a1, $s6
-	add.d	$a1, $a1, $a5
+	add.d	$a1, $a1, $a3
 	rotri.w	$a1, $a1, 16
-	lu12i.w	$a3, 30140
+	lu12i.w	$a5, 30140
 	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
-	ori	$s7, $a3, 3351
+	ori	$s7, $a5, 3351
 	ld.d	$s8, $t7, 96
 	mul.d	$a1, $a1, $s7
-	add.d	$a1, $a1, $a5
-	slli.d	$a3, $a5, 2
+	add.d	$a1, $a1, $a3
+	slli.d	$a3, $a3, 2
 	stx.w	$a1, $s8, $a3
-	ld.w	$a1, $s1, %pc_lo12(pos)
-	ld.w	$a3, $a0, 0
+	ld.w	$a1, $t0, %pc_lo12(pos)
+	ld.w	$a3, $t3, 0
 	addi.w	$a5, $a1, -3
 	addi.w	$a3, $a3, -1
 	and	$a5, $a3, $a5
@@ -6624,8 +6626,9 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	mul.d	$a3, $a6, $s4
 	mul.d	$a7, $a1, $s5
 	lu12i.w	$a5, 17091
-	ori	$fp, $a5, 71
-	mul.d	$a5, $s0, $fp
+	move	$t6, $s3
+	ori	$s3, $a5, 71
+	mul.d	$a5, $s0, $s3
 	add.d	$a3, $a5, $a3
 	add.w	$a3, $a3, $a7
 	lu12i.w	$a7, 70801
@@ -6634,14 +6637,14 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	bstrpick.d	$a7, $a3, 31, 9
 	srli.d	$a6, $a6, 3
 	srli.d	$a1, $a1, 4
-	bstrpick.d	$t4, $s0, 31, 5
+	bstrpick.d	$fp, $s0, 31, 5
 	xor	$a1, $a6, $a1
-	xor	$a1, $a1, $a7
-	xor	$a1, $a1, $t4
+	xor	$a1, $a1, $fp
 	xor	$a1, $a1, $a3
+	xor	$a1, $a1, $a7
 	ld.w	$a3, $t7, 136
-	lu12i.w	$t0, 16383
-	ori	$a6, $t0, 4095
+	lu12i.w	$a0, 16383
+	ori	$a6, $a0, 4095
 	xor	$a1, $a1, $a6
 	addi.d	$a6, $a3, 1
 	st.w	$a6, $t7, 136
@@ -6652,8 +6655,8 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	add.d	$a1, $a1, $a3
 	slli.d	$a3, $a3, 2
 	stx.w	$a1, $s8, $a3
-	ld.w	$a1, $s1, %pc_lo12(pos)
-	ld.w	$a3, $a0, 0
+	ld.w	$a1, $t0, %pc_lo12(pos)
+	ld.w	$a3, $t3, 0
 	bstrpick.d	$a6, $s0, 31, 6
 	addi.w	$a7, $a1, -3
 	addi.w	$a3, $a3, -1
@@ -6668,66 +6671,66 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	ldx.bu	$a3, $a2, $a3
 	srli.d	$a7, $ra, 2
 	srli.d	$a1, $a1, 6
-	lu12i.w	$s3, 26856
-	ori	$s3, $s3, 323
-	mul.d	$s0, $s0, $s3
-	mul.d	$s3, $a3, $s4
+	lu12i.w	$t8, 26856
+	ori	$t8, $t8, 323
+	mul.d	$s0, $s0, $t8
+	mul.d	$t8, $a3, $s4
 	mul.d	$a7, $a7, $s5
-	mul.d	$a1, $a1, $fp
-	add.d	$s3, $s0, $s3
-	add.d	$a7, $s3, $a7
+	mul.d	$a1, $a1, $s3
+	add.d	$t8, $s0, $t8
+	add.d	$a7, $t8, $a7
 	add.w	$a1, $a7, $a1
 	lu12i.w	$a7, 146486
 	ori	$a7, $a7, 2281
 	add.d	$a1, $a1, $a7
 	bstrpick.d	$a7, $a1, 31, 9
 	srli.d	$a3, $a3, 3
-	srli.d	$s3, $ra, 6
+	srli.d	$t8, $ra, 6
 	bstrpick.d	$a6, $a6, 57, 0
-	xor	$a3, $a3, $s3
-	ld.w	$s3, $t7, 136
-	xor	$a3, $a3, $a7
+	xor	$a3, $a3, $t8
+	ld.w	$t8, $t7, 136
 	xor	$a3, $a3, $a6
 	xor	$a1, $a3, $a1
-	addi.d	$a3, $s3, 1
+	xor	$a1, $a1, $a7
+	addi.d	$a3, $t8, 1
 	st.w	$a3, $t7, 136
 	mul.d	$a1, $a1, $s6
-	add.d	$a1, $a1, $s3
+	add.d	$a1, $a1, $t8
 	rotri.w	$a1, $a1, 16
 	mul.d	$a1, $a1, $s7
-	add.d	$a1, $a1, $s3
-	slli.d	$a3, $s3, 2
+	add.d	$a1, $a1, $t8
+	slli.d	$a3, $t8, 2
 	stx.w	$a1, $s8, $a3
-	ld.w	$a1, $s1, %pc_lo12(pos)
-	ld.w	$a3, $a0, 0
+	ld.w	$a1, $t0, %pc_lo12(pos)
+	ld.w	$a3, $t3, 0
 	sub.w	$a1, $a1, $t5
 	addi.w	$a3, $a3, -1
 	and	$a1, $a3, $a1
 	ldx.bu	$a1, $a2, $a1
 	mul.d	$a3, $a1, $s4
-	add.w	$a3, $t6, $a3
+	add.w	$a3, $t4, $a3
 	lu12i.w	$a7, 151368
 	ori	$a7, $a7, 1282
 	add.d	$a3, $a3, $a7
 	bstrpick.d	$a7, $a3, 31, 9
 	srli.d	$a1, $a1, 3
-	xor	$a1, $a1, $a7
 	xor	$a1, $a1, $s2
-	ld.w	$a7, $t7, 136
 	xor	$a1, $a1, $a3
-	ori	$a3, $t3, 1
-	xor	$a1, $a1, $a3
-	addi.d	$a3, $a7, 1
-	st.w	$a3, $t7, 136
+	ld.w	$a3, $t7, 136
+	xor	$a1, $a1, $a7
+	ori	$a7, $t2, 1
+	xor	$a1, $a1, $a7
+	addi.d	$a7, $a3, 1
+	st.w	$a7, $t7, 136
 	mul.d	$a1, $a1, $s6
-	add.d	$a1, $a1, $a7
+	add.d	$a1, $a1, $a3
 	rotri.w	$a1, $a1, 16
 	mul.d	$a1, $a1, $s7
-	add.d	$a1, $a1, $a7
-	slli.d	$a3, $a7, 2
+	add.d	$a1, $a1, $a3
+	slli.d	$a3, $a3, 2
 	stx.w	$a1, $s8, $a3
-	ld.w	$a1, $s1, %pc_lo12(pos)
-	ld.w	$a3, $a0, 0
+	ld.w	$a1, $t0, %pc_lo12(pos)
+	ld.w	$a3, $t3, 0
 	sub.w	$a7, $a1, $t5
 	addi.w	$a3, $a3, -1
 	and	$a7, $a3, $a7
@@ -6736,63 +6739,63 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	and	$a1, $a3, $a1
 	ldx.bu	$a1, $a2, $a1
 	mul.d	$a3, $a7, $s4
-	mul.d	$s3, $a1, $s5
+	mul.d	$t8, $a1, $s5
 	add.d	$a3, $a5, $a3
-	add.w	$a3, $a3, $s3
-	lu12i.w	$s3, 217288
-	ori	$s3, $s3, 748
-	add.d	$a3, $a3, $s3
-	bstrpick.d	$s3, $a3, 31, 9
+	add.w	$a3, $a3, $t8
+	lu12i.w	$t8, 217288
+	ori	$t8, $t8, 748
+	add.d	$a3, $a3, $t8
+	bstrpick.d	$t8, $a3, 31, 9
 	srli.d	$a7, $a7, 3
 	srli.d	$a1, $a1, 4
 	xor	$a1, $a7, $a1
-	xor	$a1, $a1, $s3
-	xor	$a1, $a1, $t4
-	ld.w	$a7, $t7, 136
+	xor	$a1, $a1, $fp
 	xor	$a1, $a1, $a3
-	ori	$a3, $t0, 4094
-	xor	$a1, $a1, $a3
-	addi.d	$a3, $a7, 1
-	st.w	$a3, $t7, 136
+	ld.w	$a3, $t7, 136
+	xor	$a1, $a1, $t8
+	ori	$a7, $a0, 4094
+	xor	$a1, $a1, $a7
+	addi.d	$a7, $a3, 1
+	st.w	$a7, $t7, 136
 	mul.d	$a1, $a1, $s6
-	add.d	$a1, $a1, $a7
+	add.d	$a1, $a1, $a3
 	rotri.w	$a1, $a1, 16
 	mul.d	$a1, $a1, $s7
-	add.d	$a1, $a1, $a7
-	slli.d	$a3, $a7, 2
+	add.d	$a1, $a1, $a3
+	slli.d	$a3, $a3, 2
 	stx.w	$a1, $s8, $a3
-	ld.w	$a1, $a0, 0
-	ld.w	$a3, $s1, %pc_lo12(pos)
+	ld.w	$a1, $t3, 0
+	ld.w	$a3, $t0, %pc_lo12(pos)
 	addi.w	$a1, $a1, -1
 	addi.w	$a7, $a3, -1
 	and	$a7, $a1, $a7
 	ldx.bu	$a7, $a2, $a7
-	sub.w	$s3, $a3, $t5
-	and	$s3, $a1, $s3
-	ldx.bu	$s3, $a2, $s3
+	sub.w	$t8, $a3, $t5
+	and	$t8, $a1, $t8
+	ldx.bu	$t8, $a2, $t8
 	srli.d	$ra, $a7, 2
 	addi.w	$a3, $a3, -2
 	and	$a1, $a1, $a3
 	ldx.bu	$a1, $a2, $a1
-	mul.d	$a3, $s3, $s4
+	mul.d	$a3, $t8, $s4
 	mul.d	$ra, $ra, $s5
 	add.d	$a3, $s0, $a3
 	add.d	$a3, $a3, $ra
 	move	$ra, $a4
 	srli.d	$a1, $a1, 6
-	mul.d	$a1, $a1, $fp
+	mul.d	$a1, $a1, $s3
 	add.w	$a1, $a3, $a1
 	lu12i.w	$a3, 292973
 	ori	$a3, $a3, 466
 	add.d	$a1, $a1, $a3
 	bstrpick.d	$a3, $a1, 31, 9
-	srli.d	$s3, $s3, 3
+	srli.d	$t8, $t8, 3
 	srli.d	$a7, $a7, 6
-	xor	$a7, $s3, $a7
-	xor	$a3, $a7, $a3
+	xor	$a7, $t8, $a7
+	xor	$a6, $a7, $a6
 	ld.w	$a7, $t7, 136
-	xor	$a3, $a3, $a6
-	xor	$a1, $a3, $a1
+	xor	$a1, $a6, $a1
+	xor	$a1, $a1, $a3
 	xori	$a1, $a1, 1
 	addi.d	$a3, $a7, 1
 	st.w	$a3, $t7, 136
@@ -6803,8 +6806,8 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	add.d	$a1, $a1, $a7
 	slli.d	$a3, $a7, 2
 	stx.w	$a1, $s8, $a3
-	ld.w	$a1, $s1, %pc_lo12(pos)
-	ld.w	$a3, $a0, 0
+	ld.w	$a1, $t0, %pc_lo12(pos)
+	ld.w	$a3, $t3, 0
 	addi.w	$a6, $a1, -3
 	addi.w	$a3, $a3, -1
 	and	$a6, $a3, $a6
@@ -6812,11 +6815,11 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	sub.w	$a7, $a1, $t5
 	and	$a7, $a3, $a7
 	ldx.bu	$a7, $a2, $a7
-	addi.w	$s3, $a1, -1
-	and	$s3, $a3, $s3
+	addi.w	$t8, $a1, -1
+	and	$t8, $a3, $t8
 	addi.w	$a1, $a1, -2
 	and	$a1, $a3, $a1
-	ldx.bu	$a3, $a2, $s3
+	ldx.bu	$a3, $a2, $t8
 	ldx.bu	$a1, $a2, $a1
 	add.d	$a6, $a7, $a6
 	srli.d	$a7, $a6, 3
@@ -6824,20 +6827,20 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	srli.d	$a1, $a1, 5
 	mul.d	$a7, $a7, $s4
 	mul.d	$a3, $a3, $s5
-	mul.d	$a1, $a1, $fp
-	add.d	$a7, $s0, $a7
-	add.d	$a3, $a7, $a3
+	mul.d	$a1, $a1, $s3
+	move	$s3, $t6
+	add.d	$a3, $s0, $a3
+	add.d	$a3, $a3, $a7
 	add.w	$a1, $a3, $a1
 	lu12i.w	$a3, 341801
 	ori	$a3, $a3, 3957
 	add.d	$a1, $a1, $a3
 	bstrpick.d	$a3, $a1, 31, 9
-	ld.d	$t3, $sp, 16                    # 8-byte Folded Reload
-	xor	$a6, $a6, $t3
+	xor	$a6, $a6, $s1
 	bstrpick.d	$a6, $a6, 31, 6
 	ld.w	$a7, $t7, 136
-	xor	$a3, $a6, $a3
-	xor	$a1, $a3, $a1
+	xor	$a1, $a6, $a1
+	xor	$a1, $a1, $a3
 	xori	$a1, $a1, 1
 	addi.d	$a3, $a7, 1
 	st.w	$a3, $t7, 136
@@ -6848,8 +6851,8 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	add.d	$a1, $a1, $a7
 	slli.d	$a3, $a7, 2
 	stx.w	$a1, $s8, $a3
-	ld.w	$a1, $s1, %pc_lo12(pos)
-	ld.w	$a3, $a0, 0
+	ld.w	$a1, $t0, %pc_lo12(pos)
+	ld.w	$a3, $t3, 0
 	addi.w	$a6, $a1, -1
 	addi.w	$a3, $a3, -1
 	and	$a6, $a3, $a6
@@ -6868,23 +6871,23 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	srli.d	$a6, $a6, 3
 	srli.d	$a1, $a1, 4
 	xor	$a1, $a6, $a1
-	xor	$a1, $a1, $a7
-	xor	$a1, $a1, $t4
-	ld.w	$a6, $t7, 136
-	xor	$a1, $a1, $a3
-	ori	$fp, $t0, 4093
 	xor	$a1, $a1, $fp
-	addi.d	$a3, $a6, 1
-	st.w	$a3, $t7, 136
+	xor	$a1, $a1, $a3
+	ld.w	$a3, $t7, 136
+	xor	$a1, $a1, $a7
+	ori	$s0, $a0, 4093
+	xor	$a1, $a1, $s0
+	addi.d	$a6, $a3, 1
+	st.w	$a6, $t7, 136
 	mul.d	$a1, $a1, $s6
-	add.d	$a1, $a1, $a6
+	add.d	$a1, $a1, $a3
 	rotri.w	$a1, $a1, 16
 	mul.d	$a1, $a1, $s7
-	add.d	$a1, $a1, $a6
-	slli.d	$a3, $a6, 2
+	add.d	$a1, $a1, $a3
+	slli.d	$a3, $a3, 2
 	stx.w	$a1, $s8, $a3
-	ld.w	$a1, $s1, %pc_lo12(pos)
-	ld.w	$a3, $a0, 0
+	ld.w	$a1, $t0, %pc_lo12(pos)
+	ld.w	$a3, $t3, 0
 	addi.w	$a6, $a1, -3
 	addi.w	$a3, $a3, -1
 	and	$a6, $a3, $a6
@@ -6907,11 +6910,11 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	srli.d	$a3, $a3, 3
 	bstrpick.d	$a1, $a1, 31, 4
 	xor	$a1, $a3, $a1
-	xor	$a1, $a1, $a7
-	ld.w	$a3, $t7, 136
-	xor	$a1, $a1, $t4
-	xor	$a1, $a1, $a6
 	xor	$a1, $a1, $fp
+	ld.w	$a3, $t7, 136
+	xor	$a1, $a1, $a6
+	xor	$a1, $a1, $a7
+	xor	$a1, $a1, $s0
 	addi.d	$a6, $a3, 1
 	st.w	$a6, $t7, 136
 	mul.d	$a1, $a1, $s6
@@ -6921,8 +6924,8 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	add.d	$a1, $a1, $a3
 	slli.d	$a3, $a3, 2
 	stx.w	$a1, $s8, $a3
-	ld.w	$a1, $s1, %pc_lo12(pos)
-	ld.w	$a3, $a0, 0
+	ld.w	$a1, $t0, %pc_lo12(pos)
+	ld.w	$a3, $t3, 0
 	addi.w	$a6, $a1, -3
 	addi.w	$a3, $a3, -1
 	and	$a6, $a3, $a6
@@ -6936,38 +6939,37 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	add.d	$a3, $a7, $a6
 	sub.d	$a1, $a3, $a1
 	mul.d	$a3, $a1, $s4
-	add.w	$a3, $t6, $a3
+	add.w	$a3, $t4, $a3
 	lu12i.w	$a6, 444341
 	ori	$a6, $a6, 1748
 	add.d	$a3, $a3, $a6
 	bstrpick.d	$a6, $a3, 31, 9
 	bstrpick.d	$a1, $a1, 31, 3
-	xor	$a1, $a1, $a6
 	xor	$a1, $a1, $s2
-	ld.w	$a6, $t7, 136
 	xor	$a1, $a1, $a3
-	lu12i.w	$a4, 16384
-	ori	$a3, $a4, 2
-	xor	$a1, $a1, $a3
-	addi.d	$a3, $a6, 1
-	st.w	$a3, $t7, 136
+	ld.w	$a3, $t7, 136
+	xor	$a1, $a1, $a6
+	ori	$a6, $t2, 2
+	xor	$a1, $a1, $a6
+	addi.d	$a6, $a3, 1
+	st.w	$a6, $t7, 136
 	mul.d	$a1, $a1, $s6
-	add.d	$a1, $a1, $a6
+	add.d	$a1, $a1, $a3
 	rotri.w	$a1, $a1, 16
 	mul.d	$a1, $a1, $s7
-	add.d	$a1, $a1, $a6
-	slli.d	$a3, $a6, 2
+	add.d	$a1, $a1, $a3
+	slli.d	$a3, $a3, 2
 	stx.w	$a1, $s8, $a3
-	ld.w	$a1, $s1, %pc_lo12(pos)
-	ld.w	$a3, $a0, 0
+	ld.w	$a1, $t0, %pc_lo12(pos)
+	ld.w	$a3, $t3, 0
 	sub.w	$a6, $a1, $t5
 	addi.w	$a3, $a3, -1
 	and	$a6, $a3, $a6
 	addi.w	$a7, $a1, -1
 	and	$a7, $a3, $a7
 	ldx.bu	$a7, $a2, $a7
-	addi.d	$s0, $t5, 1
-	sub.w	$a1, $a1, $s0
+	addi.d	$t8, $t5, 1
+	sub.w	$a1, $a1, $t8
 	and	$a1, $a3, $a1
 	ldx.bu	$a1, $a2, $a1
 	ldx.bu	$a3, $a2, $a6
@@ -6982,12 +6984,12 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	srli.d	$a3, $a3, 3
 	bstrpick.d	$a1, $a1, 31, 4
 	xor	$a1, $a3, $a1
-	bstrpick.d	$a3, $a6, 31, 9
-	xor	$a1, $a1, $a3
-	ld.w	$a3, $t7, 136
-	xor	$a1, $a1, $t4
-	xor	$a1, $a1, $a6
 	xor	$a1, $a1, $fp
+	xor	$a1, $a1, $a6
+	ld.w	$a3, $t7, 136
+	bstrpick.d	$a6, $a6, 31, 9
+	xor	$a1, $a1, $a6
+	xor	$a1, $a1, $s0
 	addi.d	$a6, $a3, 1
 	st.w	$a6, $t7, 136
 	mul.d	$a1, $a1, $s6
@@ -6997,12 +6999,12 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	add.d	$a1, $a1, $a3
 	slli.d	$a3, $a3, 2
 	stx.w	$a1, $s8, $a3
-	ld.w	$a1, $s1, %pc_lo12(pos)
-	ld.w	$a3, $a0, 0
+	ld.w	$a1, $t0, %pc_lo12(pos)
+	ld.w	$a3, $t3, 0
 	sub.w	$a6, $a1, $t5
 	addi.w	$a3, $a3, -1
 	and	$a6, $a3, $a6
-	sub.w	$a7, $a1, $s0
+	sub.w	$a7, $a1, $t8
 	addi.w	$a1, $a1, -1
 	and	$a1, $a3, $a1
 	and	$a3, $a3, $a7
@@ -7012,52 +7014,52 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	add.d	$a1, $a1, $a6
 	sub.d	$a1, $a1, $a3
 	mul.d	$a3, $a1, $s4
-	add.w	$a3, $t6, $a3
+	add.w	$a3, $t4, $a3
 	lu12i.w	$a6, -506577
 	ori	$a6, $a6, 538
 	add.d	$a3, $a3, $a6
-	bstrpick.d	$a6, $a3, 31, 9
 	bstrpick.d	$a1, $a1, 31, 3
-	xor	$a1, $a1, $a6
 	xor	$a1, $a1, $s2
-	ld.w	$a6, $t7, 136
+	bstrpick.d	$a6, $a3, 31, 9
 	xor	$a1, $a1, $a3
-	ori	$a3, $a4, 3
-	xor	$a1, $a1, $a3
-	addi.d	$a3, $a6, 1
-	st.w	$a3, $t7, 136
+	ld.w	$a3, $t7, 136
+	xor	$a1, $a1, $a6
+	ori	$a6, $t2, 3
+	xor	$a1, $a1, $a6
+	addi.d	$a6, $a3, 1
+	st.w	$a6, $t7, 136
 	mul.d	$a1, $a1, $s6
-	add.d	$a1, $a1, $a6
+	add.d	$a1, $a1, $a3
 	rotri.w	$a1, $a1, 16
 	mul.d	$a1, $a1, $s7
-	add.d	$a1, $a1, $a6
-	slli.d	$a3, $a6, 2
+	add.d	$a1, $a1, $a3
+	slli.d	$a3, $a3, 2
 	stx.w	$a1, $s8, $a3
-	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
-	srli.d	$a1, $s3, 2
+	ld.d	$t6, $sp, 8                     # 8-byte Folded Reload
+	srli.d	$a1, $t6, 2
 	mul.d	$a1, $a1, $s4
 	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
-	srli.d	$a3, $a4, 5
+	ld.d	$t2, $sp, 24                    # 8-byte Folded Reload
+	srli.d	$a3, $t2, 5
 	mul.d	$a3, $a3, $s5
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	add.d	$a1, $a5, $a1
 	add.w	$a1, $a1, $a3
 	lu12i.w	$a3, -440657
 	ori	$a3, $a3, 4
 	add.d	$a1, $a1, $a3
 	bstrpick.d	$a3, $a1, 31, 9
-	xor	$a5, $s3, $t3
+	xor	$a5, $t6, $s1
 	bstrpick.d	$a5, $a5, 31, 5
-	xor	$a3, $a5, $a3
+	xor	$a1, $a5, $a1
 	ld.w	$a5, $t7, 136
-	xor	$a1, $a3, $a1
-	ori	$a3, $t0, 4092
+	xor	$a1, $a1, $a3
+	ori	$a3, $a0, 4092
 	xor	$a1, $a1, $a3
 	addi.d	$a3, $a5, 1
 	st.w	$a3, $t7, 136
 	mul.d	$a1, $a1, $s6
-	ld.d	$s6, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
 	add.d	$a1, $a5, $a1
 	rotri.w	$a1, $a1, 16
 	mul.d	$a1, $a1, $s7
@@ -7065,35 +7067,35 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	add.d	$a1, $a1, $a5
 	slli.d	$a3, $a5, 2
 	stx.w	$a1, $s8, $a3
-	ld.w	$t4, $s1, %pc_lo12(pos)
-	ld.w	$a1, $a0, 0
+	ld.w	$t4, $t0, %pc_lo12(pos)
+	ld.w	$a1, $t3, 0
 	addi.w	$a3, $t4, -3
 	addi.w	$a5, $a1, -1
 	and	$a1, $a5, $a3
 	ldx.bu	$a3, $a2, $a1
-	sub.w	$t6, $t4, $t5
-	and	$a6, $a5, $t6
+	sub.w	$t7, $t4, $t5
+	and	$a6, $a5, $t7
 	ldx.bu	$a7, $a2, $a6
-	addi.d	$t7, $t5, 3
-	sub.w	$t7, $t4, $t7
-	and	$s2, $a5, $t7
-	ldx.bu	$t7, $a2, $s2
-	ld.w	$fp, $t2, 0
+	addi.d	$a0, $t5, 3
+	sub.w	$t8, $t4, $a0
+	and	$s2, $a5, $t8
+	ldx.bu	$t8, $a2, $s2
+	ld.w	$fp, $s3, 0
 	add.d	$a3, $a7, $a3
-	sub.d	$a3, $a3, $t7
+	sub.d	$a3, $a3, $t8
 	slli.d	$a3, $a3, 8
 	addi.d	$a7, $fp, -256
 	and	$a3, $a3, $a7
-	st.w	$a3, $t2, 24
+	st.w	$a3, $s3, 24
 	ldx.bu	$a3, $a2, $a1
-	addi.d	$a7, $t5, -3
-	sub.w	$a7, $t4, $a7
-	and	$t7, $a5, $a7
-	ldx.bu	$a7, $a2, $t7
-	ldx.bu	$fp, $a2, $a6
+	addi.d	$a0, $t5, -3
+	sub.w	$a7, $t4, $a0
+	and	$t8, $a5, $a7
+	ldx.bu	$a7, $a2, $a6
+	ldx.bu	$fp, $a2, $t8
 	ld.w	$s0, $s5, 0
-	add.d	$a3, $a7, $a3
-	sub.d	$a3, $a3, $fp
+	sub.d	$a3, $a3, $a7
+	add.d	$a3, $fp, $a3
 	slli.d	$a3, $a3, 8
 	addi.d	$a7, $s0, -256
 	and	$a3, $a3, $a7
@@ -7132,74 +7134,76 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	addi.d	$a3, $t5, -256
 	and	$a1, $a1, $a3
 	st.w	$a1, $s7, 24
-	ldx.bu	$a1, $a2, $t7
+	ldx.bu	$a1, $a2, $t8
 	addi.w	$a3, $a7, 6
 	and	$a3, $a5, $a3
 	ldx.bu	$a3, $a2, $a3
-	ld.w	$t5, $ra, 0
+	ld.w	$t5, $a4, 0
 	slli.d	$a1, $a1, 9
 	slli.d	$a3, $a3, 8
 	sub.d	$a1, $a1, $a3
 	addi.d	$a3, $t5, -256
 	and	$a1, $a1, $a3
-	st.w	$a1, $ra, 24
-	ldx.bu	$a1, $a2, $t7
+	st.w	$a1, $a4, 24
+	ldx.bu	$a1, $a2, $t8
 	addi.w	$a3, $t4, -1
 	and	$a3, $a5, $a3
 	ldx.bu	$a3, $a2, $a3
-	addi.w	$t4, $t6, 2
+	addi.w	$t4, $t7, 2
 	and	$t4, $a5, $t4
 	ldx.bu	$t4, $a2, $t4
-	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
-	ld.w	$t5, $s1, 0
+	ld.d	$t0, $sp, 40                    # 8-byte Folded Reload
+	ld.w	$t5, $t0, 0
 	add.d	$a1, $a3, $a1
 	sub.d	$a1, $a1, $t4
 	slli.d	$a1, $a1, 8
 	addi.d	$a3, $t5, -256
 	and	$a1, $a1, $a3
-	st.w	$a1, $s1, 24
+	st.w	$a1, $t0, 24
 	addi.w	$a1, $a7, 3
 	and	$a1, $a5, $a1
 	ldx.bu	$a3, $a2, $a6
-	ldx.bu	$a5, $a2, $t7
+	ldx.bu	$a5, $a2, $t8
 	ldx.bu	$a1, $a2, $a1
-	ld.w	$a2, $t8, 0
+	ld.d	$a6, $sp, 16                    # 8-byte Folded Reload
+	ld.w	$a2, $a6, 0
 	add.d	$a3, $a5, $a3
 	sub.d	$a1, $a3, $a1
 	slli.d	$a1, $a1, 8
 	addi.d	$a2, $a2, -256
 	and	$a1, $a1, $a2
-	st.w	$a1, $t8, 24
-	srli.d	$a1, $s3, 3
-	slli.d	$a2, $a4, 1
+	move	$a0, $a6
+	st.w	$a1, $a6, 24
+	srli.d	$a1, $t6, 3
+	slli.d	$a2, $t2, 1
 	andi	$a2, $a2, 384
-	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
-	ld.w	$a3, $a4, 0
+	ld.d	$a5, $sp, 104                   # 8-byte Folded Reload
+	ld.w	$a3, $a5, 0
 	or	$a1, $a2, $a1
 	lu12i.w	$a2, 524287
 	ori	$a2, $a2, 3840
 	add.d	$a2, $a3, $a2
 	slli.d	$a1, $a1, 8
 	and	$a1, $a2, $a1
-	st.w	$a1, $a4, 24
-	move	$t7, $t8
+	st.w	$a1, $a5, 24
 .LBB40_31:
-	ld.d	$a1, $t2, 32
+	st.d	$s3, $sp, 56                    # 8-byte Folded Spill
+	ld.d	$a1, $s3, 32
 	pcalau12i	$a2, %pc_hi20(y)
-	ld.w	$a0, $a2, %pc_lo12(y)
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	ld.w	$a2, $a2, %pc_lo12(y)
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	ld.hu	$a3, $a1, 0
-	slli.d	$a2, $a0, 16
+	slli.d	$a2, $a2, 16
 	addi.d	$t4, $a2, 64
 	sub.d	$a2, $t4, $a3
 	srli.d	$a6, $a2, 7
-	ld.w	$a7, $t2, 24
+	ld.w	$a7, $s3, 24
 	pcalau12i	$a2, %pc_hi20(c0)
-	ld.w	$a2, $a2, %pc_lo12(c0)
+	ld.w	$a5, $a2, %pc_lo12(c0)
 	add.d	$a3, $a3, $a6
-	ld.d	$s2, $t2, 16
+	ld.d	$s2, $s3, 16
 	st.h	$a3, $a1, 0
-	add.w	$s3, $a2, $a7
+	add.w	$s3, $a5, $a7
 	slli.d	$a1, $s3, 1
 	ldx.hu	$a1, $s2, $a1
 	pcalau12i	$a3, %pc_hi20(stretch+16)
@@ -7209,11 +7213,10 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	ori	$t6, $a3, 4094
 	and	$a1, $a1, $t6
 	ldx.h	$a1, $t5, $a1
-	ld.w	$a0, $s4, 96
+	ld.w	$s1, $s4, 96
 	ld.d	$a3, $s4, 32
 	ld.d	$a7, $s5, 32
-	slli.d	$a6, $a0, 1
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	slli.d	$a6, $s1, 1
 	stx.h	$a1, $a3, $a6
 	ld.hu	$a1, $a7, 0
 	sub.d	$a6, $t4, $a1
@@ -7222,23 +7225,24 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	add.d	$a1, $a1, $a6
 	ld.d	$a6, $s5, 16
 	st.h	$a1, $a7, 0
-	add.w	$s4, $t8, $a2
+	add.w	$s4, $t8, $a5
 	slli.d	$a1, $s4, 1
 	ldx.hu	$a1, $a6, $a1
 	srli.d	$a1, $a1, 3
 	and	$a1, $a1, $t6
 	ldx.h	$a1, $t5, $a1
 	ld.d	$a7, $t1, 32
-	alsl.d	$t8, $a0, $a3, 1
+	alsl.d	$t8, $s1, $a3, 1
 	st.h	$a1, $t8, 2
 	ld.hu	$a1, $a7, 0
 	sub.d	$a3, $t4, $a1
 	srli.d	$a3, $a3, 7
 	add.d	$a1, $a1, $a3
+	move	$t2, $s5
 	ld.d	$s5, $t1, 16
 	st.h	$a1, $a7, 0
-	add.w	$s0, $s0, $a2
-	slli.d	$a1, $s0, 1
+	add.w	$t3, $s0, $a5
+	slli.d	$a1, $t3, 1
 	ldx.hu	$a1, $s5, $a1
 	srli.d	$a1, $a1, 3
 	and	$a1, $a1, $t6
@@ -7249,11 +7253,11 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	sub.d	$a7, $t4, $a1
 	srli.d	$a7, $a7, 7
 	add.d	$a1, $a1, $a7
-	move	$t3, $t1
-	move	$t1, $s6
+	st.d	$t1, $sp, 48                    # 8-byte Folded Spill
+	move	$s0, $s6
 	ld.d	$s6, $s6, 16
 	st.h	$a1, $a3, 0
-	add.w	$fp, $fp, $a2
+	add.w	$fp, $fp, $a5
 	slli.d	$a1, $fp, 1
 	ldx.hu	$a1, $s6, $a1
 	srli.d	$a1, $a1, 3
@@ -7266,10 +7270,10 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	srli.d	$a7, $a7, 7
 	ld.w	$s8, $s7, 24
 	add.d	$a1, $a1, $a7
-	move	$a5, $s7
+	move	$t7, $s7
 	ld.d	$s7, $s7, 16
 	st.h	$a1, $a3, 0
-	add.w	$s8, $s8, $a2
+	add.w	$s8, $s8, $a5
 	slli.d	$a1, $s8, 1
 	ldx.hu	$a1, $s7, $a1
 	srli.d	$a1, $a1, 3
@@ -7282,48 +7286,50 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	srli.d	$a7, $a7, 7
 	ld.w	$a4, $ra, 24
 	add.d	$a1, $a1, $a7
-	move	$a0, $ra
+	move	$t1, $ra
 	ld.d	$ra, $ra, 16
 	st.h	$a1, $a3, 0
-	add.w	$a7, $a4, $a2
+	add.w	$a7, $a4, $a5
 	slli.d	$a1, $a7, 1
 	ldx.hu	$a1, $ra, $a1
 	srli.d	$a1, $a1, 3
 	and	$a1, $a1, $t6
 	ldx.h	$a1, $t5, $a1
-	ld.d	$a3, $s1, 32
+	ld.d	$a3, $t0, 32
 	st.h	$a1, $t8, 10
 	ld.hu	$a1, $a3, 0
 	sub.d	$a4, $t4, $a1
 	srli.d	$a4, $a4, 7
-	ld.w	$t0, $s1, 24
+	move	$a2, $t0
+	ld.w	$t0, $t0, 24
 	add.d	$a4, $a1, $a4
-	ld.d	$a1, $s1, 16
+	ld.d	$a1, $a2, 16
 	st.h	$a4, $a3, 0
-	add.w	$a3, $t0, $a2
+	add.w	$a3, $t0, $a5
 	slli.d	$a4, $a3, 1
 	ldx.hu	$a4, $a1, $a4
 	srli.d	$a4, $a4, 3
 	and	$a4, $a4, $t6
 	ldx.h	$a4, $t5, $a4
-	ld.d	$t0, $t7, 32
+	ld.d	$t0, $a0, 32
 	alsl.d	$s2, $s3, $s2, 1
 	st.h	$a4, $t8, 12
 	ld.hu	$a4, $t0, 0
-	st.d	$s2, $t2, 32
+	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
+	st.d	$s2, $s3, 32
 	alsl.d	$a6, $s4, $a6, 1
-	ld.d	$t2, $sp, 96                    # 8-byte Folded Reload
 	st.d	$a6, $t2, 32
 	sub.d	$a6, $t4, $a4
 	srli.d	$a6, $a6, 7
-	ld.w	$t2, $t7, 24
+	ld.w	$t2, $a0, 24
 	add.d	$a4, $a4, $a6
-	ld.d	$a6, $t7, 16
+	ld.d	$a6, $a0, 16
 	st.h	$a4, $t0, 0
-	add.w	$a4, $t2, $a2
+	add.w	$a4, $t2, $a5
 	slli.d	$t0, $a4, 1
 	ldx.hu	$t0, $a6, $t0
-	alsl.d	$t2, $s0, $s5, 1
+	alsl.d	$t2, $t3, $s5, 1
+	ld.d	$t3, $sp, 48                    # 8-byte Folded Reload
 	st.d	$t2, $t3, 32
 	alsl.d	$t2, $fp, $s6, 1
 	srli.d	$t0, $t0, 3
@@ -7331,29 +7337,29 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	ldx.h	$t0, $t5, $t0
 	ld.d	$fp, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$t3, $fp, 32
-	st.d	$t2, $t1, 32
+	st.d	$t2, $s0, 32
 	alsl.d	$t2, $s8, $s7, 1
 	st.h	$t0, $t8, 14
 	ld.hu	$t0, $t3, 0
-	st.d	$t2, $a5, 32
+	st.d	$t2, $t7, 32
 	alsl.d	$a7, $a7, $ra, 1
-	st.d	$a7, $a0, 32
+	st.d	$a7, $t1, 32
 	sub.d	$a7, $t4, $t0
 	srli.d	$a7, $a7, 7
 	ld.w	$t1, $fp, 24
 	add.d	$a7, $t0, $a7
 	ld.d	$t0, $fp, 16
 	st.h	$a7, $t3, 0
-	add.w	$a7, $t1, $a2
+	add.w	$a7, $t1, $a5
 	slli.d	$t1, $a7, 1
 	ldx.hu	$t1, $t0, $t1
 	alsl.d	$a1, $a3, $a1, 1
-	st.d	$a1, $s1, 32
+	st.d	$a1, $a2, 32
 	alsl.d	$a1, $a4, $a6, 1
 	srli.d	$a3, $t1, 3
 	and	$a3, $a3, $t6
 	ldx.h	$a3, $t5, $a3
-	st.d	$a1, $t7, 32
+	st.d	$a1, $a0, 32
 	alsl.d	$a1, $a7, $t0, 1
 	st.d	$a1, $fp, 32
 	st.h	$a3, $t8, 16
@@ -7367,7 +7373,7 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	add.d	$a4, $a4, $a6
 	ld.d	$a6, $a1, 16
 	st.h	$a4, $a3, 0
-	add.w	$a3, $a7, $a2
+	add.w	$a3, $a7, $a5
 	slli.d	$a4, $a3, 1
 	ldx.hu	$a4, $a6, $a4
 	alsl.d	$a3, $a3, $a6, 1
@@ -7375,28 +7381,28 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	and	$a4, $a4, $t6
 	ldx.h	$a4, $t5, $a4
 	st.d	$a3, $a1, 32
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	addi.d	$a0, $a0, 10
+	addi.d	$a0, $s1, 10
 	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	st.w	$a0, $a1, 96
 	st.h	$a4, $t8, 18
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	ld.w	$a5, $a0, %pc_lo12(pos)
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.w	$a2, $a0, %pc_lo12(pos)
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.w	$a4, $a0, 0
-	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
 	ld.w	$a3, $a3, %pc_lo12(bpos)
 	ld.d	$a0, $a0, 16
-	addi.w	$a5, $a5, -1
+	addi.w	$a2, $a2, -1
 	addi.w	$a4, $a4, -1
-	and	$a4, $a4, $a5
-	ldx.bu	$a4, $a0, $a4
+	and	$a2, $a4, $a2
+	ldx.bu	$a4, $a0, $a2
 	pcalau12i	$a0, %pc_hi20(_ZZ8bmpModelR5MixerE2cm)
 	addi.d	$a0, $a0, %pc_lo12(_ZZ8bmpModelR5MixerE2cm)
-	ld.d	$a5, $sp, 64                    # 8-byte Folded Reload
+	move	$a2, $a5
+	ld.d	$a5, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN10ContextMap4mix1ER5Mixeriiii)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(_ZZ8bmpModelR5MixerE1w)
 .LBB40_32:
 	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
@@ -7418,11 +7424,12 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	ori	$a1, $zero, 200
 	bne	$a2, $a1, .LBB40_26
 # %bb.35:
-	ld.w	$a1, $s3, 0
+	move	$s3, $t0
+	ld.w	$a1, $fp, 0
 	move	$a4, $zero
 	move	$a2, $zero
 	move	$a3, $zero
-	ld.d	$a7, $s3, 16
+	ld.d	$a7, $fp, 16
 	addi.w	$a6, $a5, -196
 	addi.w	$t0, $a1, -1
 	and	$a1, $t0, $a6
@@ -7461,72 +7468,72 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	addi.d	$t6, $t6, -3
 	bltu	$t5, $t6, .LBB40_41
 # %bb.39:                               #   in Loop: Header=BB40_38 Depth=1
-	addi.w	$t6, $t4, -7
+	addi.w	$t6, $t4, -8
 	and	$t6, $t6, $t0
 	ldx.bu	$t6, $a7, $t6
-	addi.w	$t7, $t4, -8
+	addi.w	$t7, $t4, -7
 	and	$t7, $t7, $t0
 	ldx.bu	$t7, $a7, $t7
-	slli.w	$t6, $t6, 8
 	addi.w	$t8, $t4, -6
 	and	$t8, $t8, $t0
 	ldx.bu	$t8, $a7, $t8
 	addi.w	$fp, $t4, -5
 	and	$fp, $fp, $t0
 	ldx.b	$fp, $a7, $fp
-	or	$t6, $t6, $t7
+	slli.w	$t7, $t7, 8
+	or	$t6, $t7, $t6
 	slli.w	$t7, $t8, 16
-	or	$t6, $t6, $t7
-	slli.w	$t7, $fp, 24
+	slli.w	$t8, $fp, 24
+	or	$t7, $t7, $t8
 	or	$t6, $t6, $t7
 	bne	$t6, $t5, .LBB40_41
 # %bb.40:                               #   in Loop: Header=BB40_38 Depth=1
-	addi.w	$t6, $t4, -4
-	addi.w	$t7, $t4, -3
+	addi.w	$t6, $t4, -12
+	addi.w	$t7, $t4, -4
+	addi.w	$t8, $t4, -3
+	and	$t8, $t8, $t0
+	ldx.bu	$t8, $a7, $t8
 	and	$t7, $t7, $t0
 	ldx.bu	$t7, $a7, $t7
-	and	$t6, $t6, $t0
-	ldx.bu	$t6, $a7, $t6
-	addi.w	$t8, $t4, -2
-	and	$t8, $t8, $t0
-	ldx.bu	$t8, $a7, $t8
-	addi.w	$fp, $t4, -12
-	slli.d	$t7, $t7, 8
-	or	$t6, $t7, $t6
-	slli.d	$t7, $t8, 16
-	or	$t6, $t6, $t7
-	addi.w	$t7, $t4, -1
-	and	$t7, $t7, $t0
-	ldx.b	$t7, $a7, $t7
-	addi.w	$t8, $t4, -11
-	and	$t8, $t8, $t0
-	ldx.bu	$t8, $a7, $t8
+	addi.w	$fp, $t4, -2
 	and	$fp, $fp, $t0
 	ldx.bu	$fp, $a7, $fp
-	slli.d	$t7, $t7, 24
-	or	$t6, $t6, $t7
-	slli.d	$t7, $t8, 8
-	or	$t7, $t7, $fp
-	addi.d	$t8, $t7, -256
+	addi.w	$s0, $t4, -1
+	and	$s0, $s0, $t0
+	ldx.b	$s0, $a7, $s0
+	slli.d	$t8, $t8, 8
+	or	$t7, $t8, $t7
+	slli.d	$t8, $fp, 16
+	slli.d	$fp, $s0, 24
+	addi.w	$s0, $t4, -11
+	and	$s0, $s0, $t0
+	ldx.bu	$s0, $a7, $s0
+	and	$t6, $t6, $t0
+	ldx.bu	$t6, $a7, $t6
+	or	$t8, $t8, $fp
+	or	$t7, $t7, $t8
+	slli.d	$t8, $s0, 8
+	or	$t6, $t8, $t6
+	addi.d	$t8, $t6, -256
 	sltui	$t8, $t8, 1
-	maskeqz	$fp, $t6, $t8
+	maskeqz	$fp, $t7, $t8
 	masknez	$a2, $a2, $t8
 	or	$a2, $fp, $a2
-	addi.d	$t8, $t7, -257
+	addi.d	$t8, $t6, -257
 	sltui	$t8, $t8, 1
-	maskeqz	$fp, $t6, $t8
+	maskeqz	$fp, $t7, $t8
 	masknez	$a4, $a4, $t8
 	or	$a4, $fp, $a4
-	addi.d	$t8, $t7, -259
+	addi.d	$t8, $t6, -259
 	sltui	$t8, $t8, 1
-	maskeqz	$fp, $t6, $t8
+	maskeqz	$fp, $t7, $t8
 	masknez	$a6, $a6, $t8
 	or	$a6, $fp, $a6
-	addi.d	$t7, $t7, -277
-	sltui	$t7, $t7, 1
-	maskeqz	$t6, $t6, $t7
-	masknez	$a3, $a3, $t7
-	or	$a3, $t6, $a3
+	addi.d	$t6, $t6, -277
+	sltui	$t6, $t6, 1
+	maskeqz	$t7, $t7, $t6
+	masknez	$a3, $a3, $t6
+	or	$a3, $t7, $a3
 .LBB40_41:                              #   in Loop: Header=BB40_38 Depth=1
 	bge	$t4, $t1, .LBB40_44
 # %bb.42:                               #   in Loop: Header=BB40_38 Depth=1
@@ -7573,11 +7580,15 @@ _Z8bmpModelR5Mixer:                     # @_Z8bmpModelR5Mixer
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.w	$a5, $s1, %pc_lo12(pos)
+	move	$t0, $s3
+	ld.w	$a5, $s3, %pc_lo12(pos)
 	b	.LBB40_26
 .LBB40_52:
 	st.w	$zero, $a1, %pc_lo12(_ZZ8bmpModelR5MixerE1w)
-	b	.LBB40_25
+	pcalau12i	$a0, %pc_hi20(_ZZ8bmpModelR5MixerE4tiff)
+	st.w	$zero, $a0, %pc_lo12(_ZZ8bmpModelR5MixerE4tiff)
+	move	$t0, $s3
+	b	.LBB40_26
 .LBB40_53:
 	pcalau12i	$a0, %pc_hi20(_ZGVZ8bmpModelR5MixerE4scm1)
 	addi.d	$s0, $a0, %pc_lo12(_ZGVZ8bmpModelR5MixerE4scm1)
@@ -8074,23 +8085,23 @@ _Z2i4i:                                 # @_Z2i4i
 	addi.d	$a1, $a1, %pc_lo12(buf)
 	ld.w	$a2, $a1, 0
 	addi.w	$a2, $a2, -1
-	ld.d	$a1, $a1, 16
 	and	$a3, $a2, $a0
+	ld.d	$a1, $a1, 16
 	addi.w	$a4, $a0, 1
 	and	$a4, $a2, $a4
-	ldx.bu	$a4, $a1, $a4
 	addi.w	$a5, $a0, 2
 	and	$a5, $a2, $a5
 	addi.w	$a0, $a0, 3
 	and	$a0, $a2, $a0
-	ldx.bu	$a2, $a1, $a3
-	ldx.bu	$a3, $a1, $a5
-	slli.w	$a4, $a4, 8
+	ldx.bu	$a2, $a1, $a4
+	ldx.bu	$a3, $a1, $a3
+	ldx.bu	$a4, $a1, $a5
 	ldx.b	$a0, $a1, $a0
-	or	$a1, $a4, $a2
-	slli.w	$a2, $a3, 16
-	or	$a1, $a1, $a2
+	slli.w	$a1, $a2, 8
+	or	$a1, $a1, $a3
+	slli.w	$a2, $a4, 16
 	slli.w	$a0, $a0, 24
+	or	$a0, $a2, $a0
 	or	$a0, $a1, $a0
 	ret
 .Lfunc_end41:
@@ -8221,15 +8232,15 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	and	$a0, $a5, $a0
 	ldx.bu	$a0, $a2, $a0
 	add.d	$a5, $t7, $t4
-	add.d	$a5, $a5, $t8
-	add.d	$a4, $a5, $a0
+	add.d	$s1, $t8, $a0
+	add.d	$a4, $a5, $s1
 	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
 	mul.d	$a5, $t4, $t4
 	mul.d	$t7, $t7, $t7
 	add.d	$a5, $t7, $a5
 	mul.d	$t7, $t8, $t8
-	add.d	$a5, $a5, $t7
 	mul.d	$a0, $a0, $a0
+	add.d	$a0, $t7, $a0
 	add.d	$a0, $a5, $a0
 	mul.d	$a5, $a4, $a4
 	pcalau12i	$t7, %pc_hi20(ilog+16)
@@ -8258,8 +8269,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	lu12i.w	$a4, 16384
 	ld.w	$t8, $t6, 136
 	or	$t4, $t4, $a4
-	xor	$a5, $t4, $a5
-	xor	$a0, $a5, $a0
+	xor	$a0, $t4, $a0
+	xor	$a0, $a0, $a5
 	addi.d	$a5, $t8, 1
 	st.w	$a5, $t6, 136
 	lu12i.w	$a5, 241126
@@ -8297,8 +8308,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	xor	$a0, $a0, $t4
 	ld.w	$t4, $t6, 136
 	or	$a0, $a0, $a4
-	xor	$a0, $t8, $a0
 	xor	$a0, $a0, $a5
+	xor	$a0, $t8, $a0
 	addi.d	$a5, $t4, 1
 	st.w	$a5, $t6, 136
 	mul.d	$a0, $a0, $s1
@@ -8332,8 +8343,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	xor	$a0, $a0, $t4
 	ld.w	$t4, $t6, 136
 	or	$a0, $a0, $a4
-	xor	$a0, $s7, $a0
 	xor	$a0, $a0, $a5
+	xor	$a0, $s7, $a0
 	addi.d	$a5, $t4, 1
 	st.w	$a5, $t6, 136
 	mul.d	$a0, $a0, $s1
@@ -8364,20 +8375,20 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$t4, $t4, 5
 	srli.d	$a0, $a0, 6
 	xor	$a0, $t4, $a0
-	xor	$a0, $a0, $s7
-	ld.w	$t4, $t6, 136
-	xor	$a5, $a0, $a5
+	xor	$a0, $a0, $a5
+	ld.w	$a5, $t6, 136
+	xor	$t4, $a0, $s7
 	ori	$a0, $a4, 1
-	xor	$a5, $a5, $a0
-	addi.d	$s7, $t4, 1
+	xor	$t4, $t4, $a0
+	addi.d	$s7, $a5, 1
 	st.w	$s7, $t6, 136
-	mul.d	$a5, $a5, $s1
-	add.d	$a5, $a5, $t4
-	rotri.w	$a5, $a5, 16
-	mul.d	$a5, $a5, $s2
-	add.d	$a5, $a5, $t4
-	slli.d	$t4, $t4, 2
-	stx.w	$a5, $s3, $t4
+	mul.d	$t4, $t4, $s1
+	add.d	$t4, $t4, $a5
+	rotri.w	$t4, $t4, 16
+	mul.d	$t4, $t4, $s2
+	add.d	$t4, $t4, $a5
+	slli.d	$a5, $a5, 2
+	stx.w	$t4, $s3, $a5
 	ld.w	$a5, $a3, %pc_lo12(pos)
 	ld.w	$t4, $a1, 0
 	sub.w	$s7, $a5, $s0
@@ -8401,8 +8412,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a5, $a5, 6
 	xor	$a5, $s7, $a5
 	ld.w	$s7, $t6, 136
-	xor	$a5, $a5, $s8
 	xor	$a5, $a5, $t4
+	xor	$a5, $a5, $s8
 	xor	$a5, $a5, $a0
 	addi.d	$t4, $s7, 1
 	st.w	$t4, $t6, 136
@@ -8436,8 +8447,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a5, $a5, 6
 	xor	$a5, $s7, $a5
 	ld.w	$s7, $t6, 136
-	xor	$a5, $a5, $s8
 	xor	$a5, $a5, $t4
+	xor	$a5, $a5, $s8
 	xor	$a5, $a5, $a0
 	addi.d	$t4, $s7, 1
 	st.w	$t4, $t6, 136
@@ -8471,8 +8482,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a5, $a5, 6
 	xor	$a5, $s8, $a5
 	ld.w	$s8, $t6, 136
-	xor	$a5, $a5, $s6
 	xor	$a5, $a5, $t4
+	xor	$a5, $a5, $s6
 	xor	$a0, $a5, $a0
 	addi.d	$a5, $s8, 1
 	st.w	$a5, $t6, 136
@@ -8505,19 +8516,19 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$t4, $t4, 5
 	srli.d	$a0, $a0, 6
 	xor	$a0, $t4, $a0
+	xor	$a0, $a0, $a5
+	ld.w	$a5, $t6, 136
 	xor	$a0, $a0, $s6
-	ld.w	$t4, $t6, 136
-	xor	$a0, $a0, $a5
-	ori	$a5, $a4, 2
-	xor	$a0, $a0, $a5
-	addi.d	$a5, $t4, 1
-	st.w	$a5, $t6, 136
+	ori	$t4, $a4, 2
+	xor	$a0, $a0, $t4
+	addi.d	$t4, $a5, 1
+	st.w	$t4, $t6, 136
 	mul.d	$a0, $a0, $s1
-	add.d	$a0, $a0, $t4
+	add.d	$a0, $a0, $a5
 	rotri.w	$a0, $a0, 16
 	mul.d	$a0, $a0, $s2
-	add.d	$a0, $a0, $t4
-	slli.d	$a5, $t4, 2
+	add.d	$a0, $a0, $a5
+	slli.d	$a5, $a5, 2
 	stx.w	$a0, $s3, $a5
 	ld.w	$a0, $a3, %pc_lo12(pos)
 	ld.w	$a5, $a1, 0
@@ -8536,8 +8547,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	add.d	$a5, $a5, $t4
 	bstrpick.d	$t4, $a5, 31, 9
 	srli.d	$a0, $a0, 4
-	xor	$a0, $a0, $t4
-	xor	$t4, $a0, $a5
+	xor	$a0, $a0, $a5
+	xor	$t4, $a0, $t4
 	ld.w	$s6, $t6, 136
 	lu12i.w	$a5, 49151
 	ori	$a0, $a5, 4093
@@ -8570,8 +8581,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$t4, $t4, 4
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	ld.w	$s5, $t6, 136
-	xor	$t4, $t4, $s8
 	xor	$t4, $t4, $s6
+	xor	$t4, $t4, $s8
 	xor	$t4, $t4, $a0
 	addi.d	$s6, $s5, 1
 	st.w	$s6, $t6, 136
@@ -8600,8 +8611,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	bstrpick.d	$s6, $s5, 31, 9
 	srli.d	$t4, $t4, 4
 	ld.w	$s8, $t6, 136
-	xor	$t4, $t4, $s6
 	xor	$t4, $t4, $s5
+	xor	$t4, $t4, $s6
 	xor	$a0, $t4, $a0
 	addi.d	$t4, $s8, 1
 	st.w	$t4, $t6, 136
@@ -8629,20 +8640,20 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	add.d	$t4, $t4, $s5
 	bstrpick.d	$s5, $t4, 31, 9
 	srli.d	$a0, $a0, 4
-	xor	$a0, $a0, $s5
-	ld.w	$s5, $t6, 136
-	xor	$t4, $a0, $t4
+	xor	$a0, $a0, $t4
+	ld.w	$t4, $t6, 136
+	xor	$s5, $a0, $s5
 	ori	$a0, $a5, 4092
-	xor	$t4, $t4, $a0
-	addi.d	$s6, $s5, 1
+	xor	$s5, $s5, $a0
+	addi.d	$s6, $t4, 1
 	st.w	$s6, $t6, 136
-	mul.d	$t4, $t4, $s1
-	add.d	$t4, $t4, $s5
-	rotri.w	$t4, $t4, 16
-	mul.d	$t4, $t4, $s2
-	add.d	$t4, $t4, $s5
-	slli.d	$s5, $s5, 2
-	stx.w	$t4, $s3, $s5
+	mul.d	$s5, $s5, $s1
+	add.d	$s5, $s5, $t4
+	rotri.w	$s5, $s5, 16
+	mul.d	$s5, $s5, $s2
+	add.d	$s5, $s5, $t4
+	slli.d	$t4, $t4, 2
+	stx.w	$s5, $s3, $t4
 	ld.w	$t4, $a3, %pc_lo12(pos)
 	ld.w	$s5, $a1, 0
 	sub.w	$s6, $t4, $s0
@@ -8661,8 +8672,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	bstrpick.d	$s6, $s5, 31, 9
 	srli.d	$t4, $t4, 4
 	ld.w	$s8, $t6, 136
-	xor	$t4, $t4, $s6
 	xor	$t4, $t4, $s5
+	xor	$t4, $t4, $s6
 	xor	$t4, $t4, $a0
 	addi.d	$s5, $s8, 1
 	st.w	$s5, $t6, 136
@@ -8691,8 +8702,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	bstrpick.d	$s6, $s5, 31, 9
 	srli.d	$t4, $t4, 4
 	ld.w	$s8, $t6, 136
-	xor	$t4, $t4, $s6
 	xor	$t4, $t4, $s5
+	xor	$t4, $t4, $s6
 	xor	$t4, $t4, $a0
 	addi.d	$s5, $s8, 1
 	st.w	$s5, $t6, 136
@@ -8721,8 +8732,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	bstrpick.d	$s6, $s5, 31, 9
 	srli.d	$t4, $t4, 4
 	ld.w	$s8, $t6, 136
-	xor	$t4, $t4, $s6
 	xor	$t4, $t4, $s5
+	xor	$t4, $t4, $s6
 	xor	$a0, $t4, $a0
 	addi.d	$t4, $s8, 1
 	st.w	$t4, $t6, 136
@@ -8750,19 +8761,19 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	add.d	$t4, $t4, $s5
 	bstrpick.d	$s5, $t4, 31, 9
 	srli.d	$a0, $a0, 4
+	xor	$a0, $a0, $t4
+	ld.w	$t4, $t6, 136
 	xor	$a0, $a0, $s5
-	ld.w	$s5, $t6, 136
-	xor	$a0, $a0, $t4
-	ori	$t4, $a5, 4091
-	xor	$a0, $a0, $t4
-	addi.d	$t4, $s5, 1
-	st.w	$t4, $t6, 136
+	ori	$s5, $a5, 4091
+	xor	$a0, $a0, $s5
+	addi.d	$s5, $t4, 1
+	st.w	$s5, $t6, 136
 	mul.d	$a0, $a0, $s1
-	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $t4
 	rotri.w	$a0, $a0, 16
 	mul.d	$a0, $a0, $s2
-	add.d	$a0, $a0, $s5
-	slli.d	$t4, $s5, 2
+	add.d	$a0, $a0, $t4
+	slli.d	$t4, $t4, 2
 	stx.w	$a0, $s3, $t4
 	ld.w	$a0, $a3, %pc_lo12(pos)
 	ld.w	$t4, $a1, 0
@@ -8795,8 +8806,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a0, $a0, 7
 	xor	$s5, $s5, $s6
 	xor	$a0, $s5, $a0
-	xor	$a0, $a0, $fp
-	xor	$fp, $a0, $t4
+	xor	$a0, $a0, $t4
+	xor	$fp, $a0, $fp
 	ld.w	$s5, $t6, 136
 	lu12i.w	$a0, 16383
 	ori	$t4, $a0, 4091
@@ -8840,8 +8851,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	xor	$s6, $s6, $s8
 	xor	$fp, $s6, $fp
 	ld.w	$s6, $t6, 136
-	xor	$fp, $fp, $s5
 	xor	$a4, $fp, $a4
+	xor	$a4, $a4, $s5
 	xor	$a4, $a4, $t4
 	addi.d	$fp, $s6, 1
 	st.w	$fp, $t6, 136
@@ -8883,8 +8894,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	xor	$s5, $s5, $s8
 	xor	$a4, $s5, $a4
 	ld.w	$s5, $t6, 136
-	xor	$a4, $a4, $s6
 	xor	$a4, $a4, $fp
+	xor	$a4, $a4, $s6
 	xor	$a4, $a4, $t4
 	addi.d	$t4, $s5, 1
 	st.w	$t4, $t6, 136
@@ -8917,7 +8928,7 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	mul.d	$fp, $fp, $t7
 	mul.d	$s8, $s5, $s4
 	mul.d	$s6, $s6, $ra
-	add.d	$fp, $fp, $s8
+	add.d	$s6, $s8, $s6
 	add.w	$fp, $fp, $s6
 	lu12i.w	$s6, -98856
 	ori	$s6, $s6, 3961
@@ -8930,8 +8941,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	or	$a4, $a4, $a0
 	ld.w	$s5, $t6, 136
 	xor	$a4, $a4, $t4
-	xor	$a4, $a4, $s6
 	xor	$a4, $a4, $fp
+	xor	$a4, $a4, $s6
 	addi.d	$t4, $s5, 1
 	st.w	$t4, $t6, 136
 	mul.d	$a4, $a4, $s1
@@ -8978,8 +8989,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a4, $a4, 5
 	xor	$a4, $fp, $a4
 	ld.w	$fp, $t6, 136
-	xor	$a4, $a4, $s6
 	xor	$a4, $a4, $t4
+	xor	$a4, $a4, $s6
 	xor	$a0, $a4, $a0
 	addi.d	$a4, $fp, 1
 	st.w	$a4, $t6, 136
@@ -9018,9 +9029,9 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a4, $a4, 5
 	srli.d	$a0, $a0, 6
 	xor	$a0, $a4, $a0
-	xor	$a0, $a0, $fp
-	ld.w	$a4, $t6, 136
 	xor	$a0, $a0, $t4
+	ld.w	$a4, $t6, 136
+	xor	$a0, $a0, $fp
 	lu12i.w	$ra, 16384
 	ori	$t4, $ra, 5
 	xor	$a0, $a0, $t4
@@ -9063,8 +9074,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a0, $a0, 5
 	xor	$a0, $a4, $a0
 	ld.w	$a4, $t6, 136
-	xor	$a0, $a0, $s5
 	xor	$a0, $a0, $fp
+	xor	$a0, $a0, $s5
 	xor	$a0, $a0, $t4
 	addi.d	$t4, $a4, 1
 	st.w	$t4, $t6, 136
@@ -9105,9 +9116,9 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a4, $a4, 4
 	srli.d	$a0, $a0, 5
 	xor	$a0, $a4, $a0
-	xor	$a0, $a0, $fp
-	ld.w	$a4, $t6, 136
 	xor	$a0, $a0, $t4
+	ld.w	$a4, $t6, 136
+	xor	$a0, $a0, $fp
 	ori	$s8, $ra, 6
 	xor	$a0, $a0, $s8
 	addi.d	$t4, $a4, 1
@@ -9149,8 +9160,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a0, $a0, 5
 	xor	$a0, $a4, $a0
 	ld.w	$a4, $t6, 136
-	xor	$a0, $a0, $fp
 	xor	$a0, $a0, $t4
+	xor	$a0, $a0, $fp
 	xor	$a0, $a0, $s8
 	addi.d	$t4, $a4, 1
 	st.w	$t4, $t6, 136
@@ -9191,8 +9202,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a0, $a0, 5
 	xor	$a0, $t4, $a0
 	ld.w	$t4, $t6, 136
-	xor	$a0, $a0, $fp
 	xor	$a0, $a0, $a4
+	xor	$a0, $a0, $fp
 	xor	$a0, $a0, $s8
 	addi.d	$a4, $t4, 1
 	st.w	$a4, $t6, 136
@@ -9229,8 +9240,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a0, $a0, 5
 	xor	$a0, $a4, $a0
 	ld.w	$a4, $t6, 136
-	xor	$a0, $a0, $fp
 	xor	$a0, $a0, $t4
+	xor	$a0, $a0, $fp
 	xor	$a0, $a0, $s8
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$t4, $a4, 1
@@ -9271,9 +9282,9 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a4, $a4, 4
 	srli.d	$a0, $a0, 5
 	xor	$a0, $a4, $a0
-	xor	$a0, $a0, $fp
-	ld.w	$a4, $t6, 136
 	xor	$a0, $a0, $t4
+	ld.w	$a4, $t6, 136
+	xor	$a0, $a0, $fp
 	ori	$t4, $ra, 7
 	xor	$a0, $a0, $t4
 	addi.d	$fp, $a4, 1
@@ -9316,8 +9327,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a0, $a0, 6
 	xor	$a0, $a4, $a0
 	ld.w	$a4, $t6, 136
-	xor	$a0, $a0, $s4
 	xor	$a0, $a0, $fp
+	xor	$a0, $a0, $s4
 	xor	$a0, $a0, $t4
 	addi.d	$t4, $a4, 1
 	st.w	$t4, $t6, 136
@@ -9350,54 +9361,54 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	add.d	$a4, $a4, $t4
 	bstrpick.d	$t4, $a4, 31, 9
 	bstrpick.d	$a0, $a0, 31, 3
+	xor	$a0, $a0, $a4
+	ld.w	$a4, $t6, 136
 	xor	$a0, $a0, $t4
-	ld.w	$t4, $t6, 136
-	xor	$a0, $a0, $a4
-	ori	$a4, $a5, 4088
-	xor	$a0, $a0, $a4
-	addi.d	$fp, $t4, 1
+	ori	$t4, $a5, 4088
+	xor	$a0, $a0, $t4
+	addi.d	$fp, $a4, 1
 	st.w	$fp, $t6, 136
 	mul.d	$a0, $a0, $s1
-	add.d	$a0, $a0, $t4
+	add.d	$a0, $a0, $a4
 	rotri.w	$a0, $a0, 16
 	mul.d	$a0, $a0, $s2
-	add.d	$a0, $a0, $t4
-	slli.d	$t4, $t4, 2
-	stx.w	$a0, $s3, $t4
+	add.d	$a0, $a0, $a4
+	slli.d	$a4, $a4, 2
+	stx.w	$a0, $s3, $a4
 	ld.w	$a0, $a3, %pc_lo12(pos)
-	ld.w	$t4, $a1, 0
+	ld.w	$a4, $a1, 0
 	sub.w	$fp, $a0, $t3
-	addi.w	$t4, $t4, -1
-	and	$fp, $t4, $fp
+	addi.w	$a4, $a4, -1
+	and	$fp, $a4, $fp
 	ldx.bu	$fp, $a2, $fp
 	sub.w	$s4, $a0, $s0
-	and	$s4, $t4, $s4
+	and	$s4, $a4, $s4
 	ldx.bu	$s4, $a2, $s4
 	addi.w	$a0, $a0, -1
-	and	$a0, $t4, $a0
+	and	$a0, $a4, $a0
 	ldx.bu	$a0, $a2, $a0
-	sub.d	$t4, $fp, $s4
-	srli.d	$t4, $t4, 1
-	add.w	$a0, $t4, $a0
+	sub.d	$a4, $fp, $s4
+	srli.d	$a4, $a4, 1
+	add.w	$a0, $a4, $a0
 	srai.d	$a0, $a0, 2
-	mul.d	$t4, $a0, $t7
+	mul.d	$a4, $a0, $t7
 	lu12i.w	$fp, 408963
 	ori	$fp, $fp, 1060
-	add.d	$t4, $t4, $fp
-	bstrpick.d	$fp, $t4, 31, 9
+	add.d	$a4, $a4, $fp
 	bstrpick.d	$a0, $a0, 31, 3
-	ld.w	$s4, $t6, 136
-	xor	$a0, $a0, $fp
-	xor	$a0, $a0, $t4
 	xor	$a0, $a0, $a4
-	addi.d	$a4, $s4, 1
+	ld.w	$fp, $t6, 136
+	bstrpick.d	$a4, $a4, 31, 9
+	xor	$a0, $a0, $a4
+	xor	$a0, $a0, $t4
+	addi.d	$a4, $fp, 1
 	st.w	$a4, $t6, 136
 	mul.d	$a0, $a0, $s1
-	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $fp
 	rotri.w	$a0, $a0, 16
 	mul.d	$a0, $a0, $s2
-	add.d	$a0, $a0, $s4
-	slli.d	$a4, $s4, 2
+	add.d	$a0, $a0, $fp
+	slli.d	$a4, $fp, 2
 	stx.w	$a0, $s3, $a4
 	ld.w	$a0, $a3, %pc_lo12(pos)
 	ld.w	$a4, $a1, 0
@@ -9419,19 +9430,19 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	addi.d	$a4, $a4, 455
 	bstrpick.d	$t4, $a4, 31, 9
 	bstrpick.d	$a0, $a0, 31, 3
+	xor	$a0, $a0, $a4
+	ld.w	$a4, $t6, 136
 	xor	$a0, $a0, $t4
-	ld.w	$t4, $t6, 136
-	xor	$a0, $a0, $a4
-	ori	$a4, $a5, 4087
-	xor	$a0, $a0, $a4
-	addi.d	$a4, $t4, 1
-	st.w	$a4, $t6, 136
+	ori	$a5, $a5, 4087
+	xor	$a0, $a0, $a5
+	addi.d	$a5, $a4, 1
+	st.w	$a5, $t6, 136
 	mul.d	$a0, $a0, $s1
-	add.d	$a0, $a0, $t4
+	add.d	$a0, $a0, $a4
 	rotri.w	$a0, $a0, 16
 	mul.d	$a0, $a0, $s2
-	add.d	$a0, $a0, $t4
-	slli.d	$a4, $t4, 2
+	add.d	$a0, $a0, $a4
+	slli.d	$a4, $a4, 2
 	stx.w	$a0, $s3, $a4
 	ld.w	$a0, $a3, %pc_lo12(pos)
 	ld.w	$a4, $a1, 0
@@ -10391,44 +10402,44 @@ _Z9bmpModel8R5Mixer:                    # @_Z9bmpModel8R5Mixer
 	ld.w	$a1, $a0, 0
 	ld.d	$a0, $a0, 16
 	addi.w	$a1, $a1, -1
+	and	$a2, $a1, $a2
+	ldx.bu	$a2, $a0, $a2
 	addi.w	$a4, $a3, -43
 	and	$a4, $a1, $a4
 	ldx.bu	$a4, $a0, $a4
-	and	$a2, $a1, $a2
-	ldx.bu	$a2, $a0, $a2
-	slli.w	$a4, $a4, 8
 	addi.w	$a5, $a3, -42
 	and	$a5, $a1, $a5
 	ldx.bu	$a5, $a0, $a5
 	addi.w	$a6, $a3, -41
 	and	$a6, $a1, $a6
 	ldx.b	$a6, $a0, $a6
+	slli.w	$a4, $a4, 8
 	or	$a2, $a4, $a2
 	slli.w	$a4, $a5, 16
-	or	$a2, $a2, $a4
-	slli.w	$a4, $a6, 24
+	slli.w	$a5, $a6, 24
+	or	$a4, $a4, $a5
 	or	$a2, $a2, $a4
 	ori	$a4, $zero, 1078
 	pcalau12i	$s2, %pc_hi20(_ZZ9bmpModel8R5MixerE4ibmp)
 	bltu	$a4, $a2, .LBB44_6
 # %bb.2:
-	addi.w	$a2, $a3, -39
+	addi.w	$a2, $a3, -40
 	and	$a2, $a1, $a2
 	ldx.bu	$a2, $a0, $a2
-	addi.w	$a4, $a3, -40
+	addi.w	$a4, $a3, -39
 	and	$a4, $a1, $a4
 	ldx.bu	$a4, $a0, $a4
-	slli.w	$a2, $a2, 8
 	addi.w	$a5, $a3, -38
 	and	$a5, $a1, $a5
 	ldx.bu	$a5, $a0, $a5
 	addi.w	$a6, $a3, -37
 	and	$a6, $a1, $a6
 	ldx.b	$a6, $a0, $a6
-	or	$a2, $a2, $a4
+	slli.w	$a4, $a4, 8
+	or	$a2, $a4, $a2
 	slli.w	$a4, $a5, 16
-	or	$a2, $a2, $a4
-	slli.w	$a4, $a6, 24
+	slli.w	$a5, $a6, 24
+	or	$a4, $a4, $a5
 	or	$a2, $a2, $a4
 	ori	$a4, $zero, 40
 	bne	$a2, $a4, .LBB44_6
@@ -10446,8 +10457,8 @@ _Z9bmpModel8R5Mixer:                    # @_Z9bmpModel8R5Mixer
 	and	$a6, $a1, $a6
 	ldx.bu	$a6, $a0, $a6
 	or	$a2, $a4, $a2
-	or	$a2, $a2, $a5
-	or	$a2, $a2, $a6
+	or	$a4, $a5, $a6
+	or	$a2, $a2, $a4
 	bnez	$a2, .LBB44_6
 # %bb.4:
 	addi.w	$a2, $a3, -26
@@ -11018,8 +11029,8 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	dbar	20
 	beqz	$a0, .LBB48_280
 .LBB48_15:
-	pcalau12i	$t7, %pc_hi20(bpos)
-	ld.w	$a0, $t7, %pc_lo12(bpos)
+	pcalau12i	$t6, %pc_hi20(bpos)
+	ld.w	$a0, $t6, %pc_lo12(bpos)
 	pcalau12i	$s1, %pc_hi20(_ZZ9jpegModelR5MixerE4jpeg)
 	ld.w	$a1, $s1, %pc_lo12(_ZZ9jpegModelR5MixerE4jpeg)
 	beqz	$a0, .LBB48_20
@@ -11160,7 +11171,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	move	$fp, $a0
 	move	$a0, $a1
 	move	$a1, $zero
-	move	$s0, $t7
+	move	$s0, $t6
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(_ZZ9jpegModelR5MixerE4pred)
@@ -11171,7 +11182,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	move	$t7, $s0
+	move	$t6, $s0
 	move	$a0, $fp
 	move	$a4, $zero
 	b	.LBB48_24
@@ -11311,8 +11322,8 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	addi.w	$t0, $a2, -1
 	and	$t0, $a4, $t0
 	ldx.bu	$t0, $a1, $t0
-	add.d	$a7, $t1, $a7
-	sub.w	$a7, $a6, $a7
+	sub.d	$a7, $a6, $a7
+	sub.w	$a7, $a7, $t1
 	beqz	$a7, .LBB48_63
 # %bb.54:
 	beqz	$t0, .LBB48_61
@@ -11363,8 +11374,8 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	ldx.bu	$a7, $a1, $a0
 	move	$a0, $zero
 	slli.d	$a3, $a3, 8
+	add.d	$a6, $a6, $a7
 	add.d	$a3, $a6, $a3
-	add.d	$a3, $a3, $a7
 	pcalau12i	$a6, %pc_hi20(_ZZ9jpegModelR5MixerE7dqt_end)
 	st.w	$a3, $a6, %pc_lo12(_ZZ9jpegModelR5MixerE7dqt_end)
 	b	.LBB48_65
@@ -11407,10 +11418,10 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	ld.d	$a0, $a0, 16
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
-	move	$fp, $t7
+	move	$fp, $t6
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	move	$t7, $fp
+	move	$t6, $fp
 .LBB48_69:
 	pcalau12i	$a0, %pc_hi20(pos)
 	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
@@ -11419,7 +11430,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	addi.d	$s2, $a1, %pc_lo12(buf)
 	bne	$a0, $s0, .LBB48_107
 # %bb.70:
-	ld.w	$a0, $t7, %pc_lo12(bpos)
+	ld.w	$a0, $t6, %pc_lo12(bpos)
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB48_107
 # %bb.71:
@@ -11428,12 +11439,11 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	blez	$a0, .LBB48_123
 # %bb.72:
-	st.d	$t7, $sp, 136                   # 8-byte Folded Spill
+	st.d	$t6, $sp, 136                   # 8-byte Folded Spill
 	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
 	move	$a1, $zero
 	pcalau12i	$a0, %pc_hi20(_ZZ9jpegModelR5MixerE2ht+16)
 	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
-	ori	$a3, $zero, 9
 	pcalau12i	$a6, %pc_hi20(_ZZ9jpegModelR5MixerE3huf+16)
 	pcalau12i	$a7, %pc_hi20(_ZZ9jpegModelR5MixerE4hbuf+16)
 	ori	$t0, $zero, 256
@@ -11444,20 +11454,20 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	ld.d	$a2, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE2ht+16)
 	slli.d	$t2, $a1, 2
 	ldx.w	$a2, $a2, $t2
-	ld.w	$t3, $s2, 0
-	move	$t2, $zero
-	ld.d	$t4, $s2, 16
+	ld.w	$t2, $s2, 0
+	ld.d	$t3, $s2, 16
 	addi.w	$t5, $a2, 2
-	addi.w	$t3, $t3, -1
-	and	$t6, $t3, $t5
-	ldx.bu	$t6, $t4, $t6
-	addi.w	$t7, $a2, 3
-	and	$t3, $t3, $t7
-	ldx.bu	$t3, $t4, $t3
+	addi.w	$t2, $t2, -1
+	and	$t4, $t2, $t5
+	ldx.bu	$t6, $t3, $t4
+	addi.w	$t4, $a2, 3
+	and	$t2, $t2, $t4
+	ldx.bu	$t3, $t3, $t2
+	move	$t2, $zero
 	addi.w	$t4, $a2, 4
 	slli.d	$a2, $t6, 8
-	add.d	$a2, $t5, $a2
-	add.w	$t3, $a2, $t3
+	add.d	$t3, $t5, $t3
+	add.w	$t3, $t3, $a2
 	.p2align	4, , 16
 .LBB48_74:                              #   Parent Loop BB48_73 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -11472,7 +11482,8 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	addi.w	$a2, $a2, 53
 	bge	$t3, $a2, .LBB48_83
 # %bb.77:                               #   in Loop: Header=BB48_74 Depth=2
-	beq	$t2, $a3, .LBB48_83
+	ori	$a0, $zero, 9
+	beq	$t2, $a0, .LBB48_83
 # %bb.78:                               #   in Loop: Header=BB48_74 Depth=2
 	ld.w	$a2, $s2, 0
 	ld.d	$t5, $s2, 16
@@ -11500,13 +11511,13 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
                                         #     Parent Loop BB48_74 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$a0, $s2, 0
-	ld.d	$a4, $s2, 16
+	ld.d	$a3, $s2, 16
 	addi.w	$a0, $a0, -1
 	and	$a0, $a0, $s0
-	ld.d	$a5, $a7, %pc_lo12(_ZZ9jpegModelR5MixerE4hbuf+16)
-	ldx.b	$a0, $a4, $a0
-	add.d	$a4, $a5, $a2
-	stx.b	$a0, $a4, $t7
+	ld.d	$a4, $a7, %pc_lo12(_ZZ9jpegModelR5MixerE4hbuf+16)
+	ldx.b	$a0, $a3, $a0
+	add.d	$a3, $a4, $a2
+	stx.b	$a0, $a3, $t7
 	addi.d	$t7, $t7, 1
 	addi.w	$s0, $s0, 1
 	bne	$t7, $t0, .LBB48_81
@@ -11526,23 +11537,23 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	add.d	$t6, $t6, $fp
 	st.w	$s1, $t6, 4
 	st.w	$a2, $t6, 8
-	ldx.bu	$s4, $t5, $s0
+	ldx.bu	$s0, $t5, $s0
 	slli.d	$fp, $s1, 1
 	st.w	$fp, $t6, 12
 	addi.w	$fp, $t4, 2
 	and	$fp, $t7, $fp
-	ldx.bu	$s0, $t5, $fp
-	or	$a2, $a2, $s4
-	alsl.d	$s1, $s1, $s0, 1
+	ldx.bu	$s3, $t5, $fp
+	or	$a2, $a2, $s0
+	alsl.d	$s1, $s1, $s3, 1
 	st.w	$s1, $t6, 16
 	st.w	$a2, $t6, 20
-	ldx.bu	$s0, $t5, $fp
+	ldx.bu	$s4, $t5, $fp
 	slli.d	$fp, $s1, 1
 	st.w	$fp, $t6, 24
 	addi.w	$fp, $t4, 3
 	and	$fp, $t7, $fp
 	ldx.bu	$s3, $t5, $fp
-	add.d	$a2, $a2, $s0
+	add.d	$a2, $a2, $s4
 	alsl.d	$s1, $s1, $s3, 1
 	st.w	$s1, $t6, 28
 	st.w	$a2, $t6, 32
@@ -11553,61 +11564,61 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	and	$fp, $t7, $fp
 	ldx.bu	$s3, $t5, $fp
 	add.d	$a2, $a2, $s7
-	alsl.w	$s8, $s1, $s3, 1
+	alsl.w	$s5, $s1, $s3, 1
 	alsl.d	$s1, $s1, $s3, 1
 	st.w	$s1, $t6, 40
 	st.w	$a2, $t6, 44
-	ldx.bu	$s6, $t5, $fp
-	slli.d	$fp, $s8, 1
+	ldx.bu	$s8, $t5, $fp
+	slli.d	$fp, $s5, 1
 	st.w	$fp, $t6, 48
 	addi.w	$fp, $t4, 5
 	and	$fp, $t7, $fp
 	ldx.bu	$s1, $t5, $fp
-	add.d	$a2, $a2, $s6
-	alsl.w	$s3, $s8, $s1, 1
-	alsl.d	$s1, $s8, $s1, 1
+	add.d	$a2, $a2, $s8
+	alsl.w	$s3, $s5, $s1, 1
+	alsl.d	$s1, $s5, $s1, 1
 	st.w	$s1, $t6, 52
 	st.w	$a2, $t6, 56
-	ldx.bu	$ra, $t5, $fp
+	ldx.bu	$s6, $t5, $fp
 	slli.d	$fp, $s3, 1
 	st.w	$fp, $t6, 60
 	addi.w	$fp, $t4, 6
 	and	$fp, $t7, $fp
 	ldx.bu	$s1, $t5, $fp
-	add.d	$a2, $a2, $ra
+	add.d	$a2, $a2, $s6
 	alsl.w	$s5, $s3, $s1, 1
 	alsl.d	$s1, $s3, $s1, 1
 	st.w	$s1, $t6, 64
 	st.w	$a2, $t6, 68
-	ldx.bu	$s8, $t5, $fp
-	slli.d	$fp, $s5, 1
-	st.w	$fp, $t6, 72
-	addi.w	$fp, $t4, 7
-	and	$fp, $t7, $fp
-	ldx.bu	$s1, $t5, $fp
-	add.d	$a2, $a2, $s8
-	alsl.w	$a0, $s5, $s1, 1
-	alsl.d	$s1, $s5, $s1, 1
-	st.w	$s1, $t6, 76
+	ldx.bu	$fp, $t5, $fp
+	slli.d	$s1, $s5, 1
+	st.w	$s1, $t6, 72
+	addi.w	$s1, $t4, 7
+	and	$s1, $t7, $s1
+	ldx.bu	$s3, $t5, $s1
+	add.d	$a2, $a2, $fp
+	alsl.w	$a0, $s5, $s3, 1
+	alsl.d	$s3, $s5, $s3, 1
+	st.w	$s3, $t6, 76
 	st.w	$a2, $t6, 80
-	ldx.bu	$s3, $t5, $fp
-	slli.d	$fp, $a0, 1
-	st.w	$fp, $t6, 84
-	addi.w	$fp, $t4, 8
-	and	$fp, $t7, $fp
-	ldx.bu	$s1, $t5, $fp
-	add.d	$a2, $a2, $s3
-	alsl.w	$s5, $a0, $s1, 1
-	alsl.d	$a0, $a0, $s1, 1
+	ldx.bu	$ra, $t5, $s1
+	slli.d	$s1, $a0, 1
+	st.w	$s1, $t6, 84
+	addi.w	$s1, $t4, 8
+	and	$s1, $t7, $s1
+	ldx.bu	$s3, $t5, $s1
+	add.d	$a2, $a2, $ra
+	alsl.w	$s5, $a0, $s3, 1
+	alsl.d	$a0, $a0, $s3, 1
 	st.w	$a0, $t6, 88
 	st.w	$a2, $t6, 92
-	ldx.bu	$fp, $t5, $fp
+	ldx.bu	$s3, $t5, $s1
 	slli.d	$a0, $s5, 1
 	st.w	$a0, $t6, 96
 	addi.w	$a0, $t4, 9
 	and	$a0, $t7, $a0
 	ldx.bu	$s1, $t5, $a0
-	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $s3
 	alsl.w	$t1, $s5, $s1, 1
 	alsl.d	$s1, $s5, $s1, 1
 	st.w	$s1, $t6, 100
@@ -11618,96 +11629,96 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	addi.w	$a0, $t4, 10
 	and	$a0, $t7, $a0
 	ldx.bu	$s5, $t5, $a0
-	add.d	$a5, $a2, $s1
-	alsl.w	$a4, $t1, $s5, 1
-	alsl.d	$a2, $t1, $s5, 1
-	st.w	$a2, $t6, 112
-	st.w	$a5, $t6, 116
-	ldx.bu	$a2, $t5, $a0
-	slli.d	$a0, $a4, 1
+	add.d	$a2, $a2, $s1
+	alsl.w	$a5, $t1, $s5, 1
+	alsl.d	$t1, $t1, $s5, 1
+	st.w	$t1, $t6, 112
+	st.w	$a2, $t6, 116
+	ldx.bu	$s5, $t5, $a0
+	slli.d	$a0, $a5, 1
 	st.w	$a0, $t6, 120
 	addi.w	$a0, $t4, 11
 	and	$a0, $t7, $a0
 	ldx.bu	$t1, $t5, $a0
-	add.d	$s4, $t8, $s4
-	add.d	$a5, $a5, $a2
-	alsl.w	$s5, $a4, $t1, 1
-	alsl.d	$a4, $a4, $t1, 1
-	st.w	$a4, $t6, 124
-	st.w	$a5, $t6, 128
-	ldx.bu	$t8, $t5, $a0
-	slli.d	$a0, $s5, 1
+	add.d	$a4, $a2, $s5
+	alsl.w	$a3, $a5, $t1, 1
+	alsl.d	$a2, $a5, $t1, 1
+	st.w	$a2, $t6, 124
+	st.w	$a4, $t6, 128
+	ldx.bu	$a2, $t5, $a0
+	slli.d	$a0, $a3, 1
 	st.w	$a0, $t6, 132
 	addi.w	$a0, $t4, 12
 	and	$a0, $t7, $a0
-	ldx.bu	$a4, $t5, $a0
-	add.d	$t1, $s4, $s0
-	add.d	$t1, $t1, $s7
-	add.d	$a5, $a5, $t8
-	alsl.w	$s0, $s5, $a4, 1
-	alsl.d	$a4, $s5, $a4, 1
-	st.w	$a4, $t6, 136
-	st.w	$a5, $t6, 140
+	ldx.bu	$a5, $t5, $a0
+	add.d	$t1, $t8, $s0
+	add.d	$s0, $s4, $s7
+	add.d	$a4, $a4, $a2
+	alsl.w	$s4, $a3, $a5, 1
+	alsl.d	$a3, $a3, $a5, 1
+	st.w	$a3, $t6, 136
+	st.w	$a4, $t6, 140
+	ldx.bu	$t8, $t5, $a0
+	slli.d	$a0, $s4, 1
+	st.w	$a0, $t6, 144
+	addi.w	$a0, $t4, 13
+	and	$a0, $t7, $a0
+	ldx.bu	$a3, $t5, $a0
+	add.d	$a5, $s0, $s8
+	add.d	$a5, $t1, $a5
+	add.d	$a4, $a4, $t8
+	alsl.w	$t1, $s4, $a3, 1
+	alsl.d	$a3, $s4, $a3, 1
+	st.w	$a3, $t6, 148
+	st.w	$a4, $t6, 152
 	ldx.bu	$a0, $t5, $a0
-	slli.d	$a4, $s0, 1
-	st.w	$a4, $t6, 144
-	addi.w	$a4, $t4, 13
-	and	$a4, $t7, $a4
-	ldx.bu	$s4, $t5, $a4
-	add.d	$t1, $t1, $s6
-	add.d	$t1, $t1, $ra
-	add.d	$a5, $a5, $a0
-	alsl.w	$s5, $s0, $s4, 1
-	alsl.d	$s0, $s0, $s4, 1
-	st.w	$s0, $t6, 148
-	st.w	$a5, $t6, 152
-	ldx.bu	$a4, $t5, $a4
-	slli.d	$s0, $s5, 1
-	st.w	$s0, $t6, 156
-	addi.w	$s0, $t4, 14
-	and	$s0, $t7, $s0
-	ldx.bu	$s4, $t5, $s0
-	add.d	$t1, $t1, $s8
-	add.d	$t1, $t1, $s3
-	add.w	$a5, $a5, $a4
-	alsl.w	$s3, $s5, $s4, 1
-	alsl.d	$s4, $s5, $s4, 1
-	st.w	$s4, $t6, 160
-	st.w	$a5, $t6, 164
-	ldx.bu	$s0, $t5, $s0
-	slli.d	$s4, $s3, 1
-	st.w	$s4, $t6, 168
-	addi.w	$s4, $t4, 15
-	and	$s4, $t7, $s4
-	ldx.bu	$s5, $t5, $s4
-	add.d	$t1, $t1, $fp
-	add.d	$t1, $t1, $s1
-	add.d	$a2, $t1, $a2
-	alsl.w	$t1, $s3, $s5, 1
-	alsl.d	$fp, $s3, $s5, 1
-	add.d	$a5, $a5, $s0
+	slli.d	$a3, $t1, 1
+	st.w	$a3, $t6, 156
+	addi.w	$a3, $t4, 14
+	and	$a3, $t7, $a3
+	ldx.bu	$s0, $t5, $a3
+	add.d	$fp, $s6, $fp
+	add.d	$a5, $a5, $fp
+	add.w	$a4, $a4, $a0
+	alsl.w	$fp, $t1, $s0, 1
+	alsl.d	$t1, $t1, $s0, 1
+	st.w	$t1, $t6, 160
+	st.w	$a4, $t6, 164
+	ldx.bu	$a3, $t5, $a3
+	slli.d	$t1, $fp, 1
+	st.w	$t1, $t6, 168
+	addi.w	$t1, $t4, 15
+	and	$t1, $t7, $t1
+	ldx.bu	$s0, $t5, $t1
+	add.d	$s3, $ra, $s3
+	add.d	$s1, $s3, $s1
+	add.d	$s1, $s1, $s5
+	alsl.w	$s3, $fp, $s0, 1
+	alsl.d	$fp, $fp, $s0, 1
+	add.d	$a4, $a4, $a3
 	st.w	$fp, $t6, 172
-	st.w	$a5, $t6, 176
-	ldx.bu	$fp, $t5, $s4
-	slli.d	$s1, $t1, 1
-	st.w	$s1, $t6, 180
+	st.w	$a4, $t6, 176
+	ldx.bu	$t1, $t5, $t1
+	slli.d	$fp, $s3, 1
+	st.w	$fp, $t6, 180
 	addi.w	$t4, $t4, 16
 	and	$t4, $t7, $t4
 	ldx.bu	$t7, $t5, $t4
-	add.d	$a2, $a2, $t8
-	add.d	$a0, $a2, $a0
-	add.d	$a2, $a5, $fp
-	alsl.d	$a5, $t1, $t7, 1
+	add.d	$a2, $s1, $a2
+	add.d	$a2, $a5, $a2
+	add.d	$a4, $a4, $t1
+	alsl.d	$a5, $s3, $t7, 1
 	st.w	$a5, $t6, 184
-	st.w	$a2, $t6, 188
+	st.w	$a4, $t6, 188
 	ldx.bu	$a5, $t5, $t4
-	add.d	$a0, $a0, $a4
-	add.d	$a0, $a0, $s0
-	add.d	$a0, $a0, $fp
-	add.d	$a2, $a2, $a5
-	bstrpick.d	$a2, $a2, 31, 11
-	add.w	$t4, $a0, $a5
-	beqz	$a2, .LBB48_74
+	add.d	$a0, $t8, $a0
+	add.d	$a0, $a0, $a3
+	add.d	$a0, $a0, $t1
+	add.d	$a0, $a0, $a5
+	add.d	$a3, $a4, $a5
+	bstrpick.d	$a3, $a3, 31, 11
+	add.w	$t4, $a2, $a0
+	beqz	$a3, .LBB48_74
 	b	.LBB48_287
 	.p2align	4, , 16
 .LBB48_83:                              #   in Loop: Header=BB48_73 Depth=1
@@ -11812,45 +11823,45 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	slt	$s1, $t2, $a1
 	masknez	$s6, $t2, $s1
 	maskeqz	$s1, $a1, $s1
-	or	$s7, $s1, $s6
+	or	$s6, $s1, $s6
 	pcalau12i	$s1, %pc_hi20(_ZZ9jpegModelR5MixerE6hufsel)
 	addi.d	$s1, $s1, %pc_lo12(_ZZ9jpegModelR5MixerE6hufsel)
 	alsl.d	$s1, $a1, $s1, 2
 	alsl.d	$s3, $a1, $s3, 2
-	alsl.d	$s6, $a1, $s5, 2
-	sub.d	$s7, $s7, $a1
+	alsl.d	$s5, $a1, $s5, 2
+	sub.d	$s6, $s6, $a1
 .LBB48_98:                              #   Parent Loop BB48_92 Depth=1
                                         #     Parent Loop BB48_94 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	beqz	$s7, .LBB48_287
+	beqz	$s6, .LBB48_287
 # %bb.99:                               #   in Loop: Header=BB48_98 Depth=3
-	ld.w	$s5, $s2, 0
-	addi.w	$s5, $s5, -1
-	and	$s5, $s5, $t7
-	ldx.bu	$s5, $a2, $s5
-	srli.d	$s8, $s5, 4
-	st.w	$s8, $s1, 0
-	andi	$s8, $s5, 15
-	st.w	$s8, $s1, 40
-	bltu	$t3, $s5, .LBB48_287
+	ld.w	$s7, $s2, 0
+	addi.w	$s7, $s7, -1
+	and	$s7, $s7, $t7
+	ldx.bu	$s8, $a2, $s7
+	srli.d	$s7, $s8, 4
+	st.w	$s7, $s1, 0
+	andi	$s7, $s8, 15
+	st.w	$s7, $s1, 40
+	bltu	$t3, $s8, .LBB48_287
 # %bb.100:                              #   in Loop: Header=BB48_98 Depth=3
-	bltu	$t4, $s8, .LBB48_287
+	bltu	$t4, $s7, .LBB48_287
 # %bb.101:                              #   in Loop: Header=BB48_98 Depth=3
 	st.w	$a7, $s3, 0
-	ld.w	$s5, $s2, 0
-	addi.w	$s5, $s5, -1
-	and	$s5, $s5, $fp
-	ldx.bu	$s8, $a2, $s5
-	bltu	$t4, $s8, .LBB48_287
+	ld.w	$s7, $s2, 0
+	addi.w	$s7, $s7, -1
+	and	$s7, $s7, $fp
+	ldx.bu	$s7, $a2, $s7
+	bltu	$t4, $s7, .LBB48_287
 # %bb.102:                              #   in Loop: Header=BB48_98 Depth=3
-	st.w	$s8, $s6, 0
+	st.w	$s7, $s5, 0
 	addi.w	$t8, $t8, -1
 	addi.w	$a1, $a1, 1
 	st.w	$a1, $s0, %pc_lo12(_ZZ9jpegModelR5MixerE7mcusize)
 	addi.d	$s1, $s1, 4
 	addi.d	$s3, $s3, 4
-	addi.d	$s6, $s6, 4
-	addi.d	$s7, $s7, -1
+	addi.d	$s5, $s5, 4
+	addi.d	$s6, $s6, -1
 	bnez	$t8, .LBB48_98
 	b	.LBB48_93
 .LBB48_103:                             #   in Loop: Header=BB48_92 Depth=1
@@ -11877,7 +11888,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	pcalau12i	$s4, %pc_hi20(y)
 	beqz	$s6, .LBB48_207
 .LBB48_108:
-	ld.w	$a0, $t7, %pc_lo12(bpos)
+	ld.w	$a0, $t6, %pc_lo12(bpos)
 	ld.w	$a1, $s2, 0
 	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
 	ld.w	$a2, $a2, %pc_lo12(pos)
@@ -11940,6 +11951,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	addi.d	$t1, $zero, -1
 	sll.w	$t2, $t1, $t0
 	andn	$t1, $a6, $t2
+	move	$fp, $t6
 	beqz	$t0, .LBB48_118
 # %bb.117:
 	nor	$t2, $t2, $zero
@@ -11956,7 +11968,6 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	addi.d	$t3, $t3, %pc_lo12(_ZZ9jpegModelR5MixerE4cbuf)
 	beqz	$t6, .LBB48_122
 # %bb.119:
-	move	$fp, $t7
 	addi.d	$t5, $t5, 1
 	srli.d	$t6, $a7, 4
 	move	$a7, $t0
@@ -11980,7 +11991,6 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	bltu	$t6, $t5, .LBB48_120
 # %bb.121:
 	st.w	$t4, $t2, %pc_lo12(_ZZ9jpegModelR5MixerE4cpos)
-	move	$t7, $fp
 .LBB48_122:
 	ld.w	$a7, $s0, 0
 	ld.d	$t5, $s0, 16
@@ -11994,9 +12004,9 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	bstrins.d	$a7, $a6, 1, 0
 	ori	$a6, $a7, 12
 	ld.w	$a7, $t3, 0
-	addi.d	$fp, $t4, 1
+	addi.d	$s1, $t4, 1
 	ld.d	$t1, $t3, 16
-	st.w	$fp, $t2, %pc_lo12(_ZZ9jpegModelR5MixerE4cpos)
+	st.w	$s1, $t2, %pc_lo12(_ZZ9jpegModelR5MixerE4cpos)
 	addi.w	$a7, $a7, -1
 	and	$a7, $a7, $t4
 	stx.b	$a6, $t1, $a7
@@ -12004,6 +12014,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	ld.w	$a7, $a6, %pc_lo12(_ZZ9jpegModelR5MixerE4ssum)
 	add.d	$a7, $a7, $t0
 	st.w	$a7, $a6, %pc_lo12(_ZZ9jpegModelR5MixerE4ssum)
+	move	$t6, $fp
 	b	.LBB48_147
 .LBB48_123:
 	pcalau12i	$a0, %pc_hi20(_ZZ9jpegModelR5MixerE9next_jpeg)
@@ -12119,8 +12130,8 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	stx.w	$t1, $t3, $t2
 	addi.d	$t1, $t1, 1023
 	srli.d	$t1, $t1, 3
-	ori	$fp, $a6, 1
-	st.w	$fp, $t0, %pc_lo12(_ZZ9jpegModelR5MixerE4cpos)
+	ori	$s1, $a6, 1
+	st.w	$s1, $t0, %pc_lo12(_ZZ9jpegModelR5MixerE4cpos)
 	pcalau12i	$t0, %pc_hi20(_ZZ9jpegModelR5MixerE4cbuf)
 	addi.d	$t0, $t0, %pc_lo12(_ZZ9jpegModelR5MixerE4cbuf)
 	ld.w	$t2, $t0, 0
@@ -12154,8 +12165,8 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	blt	$a6, $a5, .LBB48_287
 # %bb.143:
 	pcalau12i	$a6, %pc_hi20(_ZZ9jpegModelR5MixerE4cpos)
-	ld.w	$fp, $a6, %pc_lo12(_ZZ9jpegModelR5MixerE4cpos)
-	andi	$a7, $fp, 63
+	ld.w	$s1, $a6, %pc_lo12(_ZZ9jpegModelR5MixerE4cpos)
+	andi	$a7, $s1, 63
 	beqz	$a7, .LBB48_147
 # %bb.144:
 	pcalau12i	$a7, %pc_hi20(_ZZ9jpegModelR5MixerE4cbuf)
@@ -12164,19 +12175,19 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	ld.w	$t0, $s0, 0
 	ld.d	$t2, $s0, 16
 	addi.w	$t0, $t0, -1
-	and	$t0, $t0, $fp
+	and	$t0, $t0, $s1
 	slli.d	$t0, $t0, 2
 	stx.w	$zero, $t2, $t0
 	ld.w	$t0, $a7, 0
 	addi.w	$t0, $t0, -1
 	ld.d	$t2, $a7, 16
-	and	$t0, $t0, $fp
-	addi.w	$fp, $fp, 1
-	andi	$t1, $fp, 63
+	and	$t0, $t0, $s1
+	addi.w	$s1, $s1, 1
+	andi	$t1, $s1, 63
 	stx.b	$zero, $t2, $t0
 	bnez	$t1, .LBB48_145
 # %bb.146:
-	st.w	$fp, $a6, %pc_lo12(_ZZ9jpegModelR5MixerE4cpos)
+	st.w	$s1, $a6, %pc_lo12(_ZZ9jpegModelR5MixerE4cpos)
 .LBB48_147:
 	addi.w	$a6, $a5, 0
 	bltz	$a6, .LBB48_287
@@ -12205,7 +12216,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 .LBB48_152:
 	st.d	$t1, $sp, 48                    # 8-byte Folded Spill
 	st.d	$t0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$t7, $sp, 136                   # 8-byte Folded Spill
+	st.d	$t6, $sp, 136                   # 8-byte Folded Spill
 	st.w	$zero, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE8huffbits)
 	st.w	$zero, $a3, %pc_lo12(_ZZ9jpegModelR5MixerE8huffsize)
 	addi.w	$a0, $zero, -1
@@ -12221,7 +12232,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	ldx.w	$a0, $a1, $a0
 	slli.w	$s7, $a0, 6
 	andi	$a3, $a5, 63
-	sub.d	$a0, $fp, $a3
+	sub.d	$a0, $s1, $a3
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(_ZZ9jpegModelR5MixerE5sumv2)
 	addi.d	$a0, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE5sumv2)
@@ -12248,7 +12259,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	pcalau12i	$a0, %pc_hi20(_ZZ9jpegModelR5MixerE2we)
 	addi.d	$a6, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE2we)
 	st.d	$a3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 88                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	beqz	$a3, .LBB48_154
 # %bb.153:
@@ -12261,7 +12272,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	ld.d	$a5, $sp, 104                   # 8-byte Folded Reload
 	ld.w	$a3, $a5, 0
 	ld.bu	$a2, $a2, -1
-	addi.w	$a4, $fp, -1
+	addi.w	$a4, $s1, -1
 	ld.d	$a5, $a5, 16
 	addi.w	$a3, $a3, -1
 	and	$a3, $a3, $a4
@@ -12314,8 +12325,8 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 .LBB48_154:
 	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	ld.w	$a0, $s3, 0
-	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
-	ld.w	$a1, $s1, 0
+	ld.d	$fp, $sp, 120                   # 8-byte Folded Reload
+	ld.w	$a1, $fp, 0
 	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a3, $s5, 64
 	move	$a2, $s5
@@ -12331,7 +12342,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	pcaddu18i	$ra, %call36(_Z8update_kiiRiS_)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s3, 4
-	ld.w	$a1, $s1, 4
+	ld.w	$a1, $fp, 4
 	addi.d	$a2, $s5, 4
 	addi.d	$a3, $s5, 68
 	pcaddu18i	$ra, %call36(_Z8update_kiiRiS_)
@@ -12344,8 +12355,8 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	addi.d	$a3, $s5, 100
 	pcaddu18i	$ra, %call36(_Z8update_kiiRiS_)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.w	$a0, $s1, 8
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.w	$a0, $fp, 8
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 8
 	addi.d	$a2, $s5, 8
@@ -12359,9 +12370,9 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	addi.d	$a3, $s5, 104
 	pcaddu18i	$ra, %call36(_Z8update_kiiRiS_)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s1, 12
-	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
-	ld.w	$a1, $s1, 12
+	ld.w	$a0, $fp, 12
+	ld.d	$fp, $sp, 120                   # 8-byte Folded Reload
+	ld.w	$a1, $fp, 12
 	addi.d	$a2, $s5, 12
 	addi.d	$a3, $s5, 76
 	pcaddu18i	$ra, %call36(_Z8update_kiiRiS_)
@@ -12375,19 +12386,19 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	jirl	$ra, $ra, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	vst	$vr0, $s1, 0
+	vst	$vr0, $fp, 0
 	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	ld.w	$a0, $a2, 16
-	ld.w	$a1, $s1, 16
+	ld.w	$a1, $fp, 16
 	vst	$vr0, $s3, 0
 	vst	$vr0, $a2, 0
-	ld.d	$s1, $sp, 152                   # 8-byte Folded Reload
-	vst	$vr0, $s1, 0
+	ld.d	$fp, $sp, 152                   # 8-byte Folded Reload
+	vst	$vr0, $fp, 0
 	addi.d	$a2, $s5, 16
 	addi.d	$a3, $s5, 80
 	pcaddu18i	$ra, %call36(_Z8update_kiiRiS_)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s1, 16
+	ld.w	$a0, $fp, 16
 	ld.w	$a1, $s3, 16
 	addi.d	$a2, $s5, 48
 	addi.d	$a3, $s5, 112
@@ -12395,8 +12406,8 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 20
-	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
-	ld.w	$a1, $s1, 20
+	ld.d	$fp, $sp, 120                   # 8-byte Folded Reload
+	ld.w	$a1, $fp, 20
 	addi.d	$a2, $s5, 20
 	addi.d	$a3, $s5, 84
 	pcaddu18i	$ra, %call36(_Z8update_kiiRiS_)
@@ -12410,13 +12421,13 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	jirl	$ra, $ra, 0
 	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	ld.w	$a0, $s3, 24
-	ld.w	$a1, $s1, 24
+	ld.w	$a1, $fp, 24
 	addi.d	$a2, $s5, 24
 	addi.d	$a3, $s5, 88
 	pcaddu18i	$ra, %call36(_Z8update_kiiRiS_)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 152                   # 8-byte Folded Reload
-	ld.w	$a0, $s1, 24
+	ld.d	$fp, $sp, 152                   # 8-byte Folded Reload
+	ld.w	$a0, $fp, 24
 	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 24
 	addi.d	$a2, $s5, 56
@@ -12430,7 +12441,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	addi.d	$a3, $s5, 92
 	pcaddu18i	$ra, %call36(_Z8update_kiiRiS_)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s1, 28
+	ld.w	$a0, $fp, 28
 	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
 	ld.w	$a1, $s3, 28
 	addi.d	$a2, $s5, 60
@@ -12444,7 +12455,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	vst	$vr0, $s3, 16
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	vst	$vr0, $a1, 16
-	vst	$vr0, $s1, 16
+	vst	$vr0, $fp, 16
 	pcalau12i	$a1, %pc_hi20(_ZZ9jpegModelR5MixerE2ls+16)
 	ld.d	$a1, $a1, %pc_lo12(_ZZ9jpegModelR5MixerE2ls+16)
 	pcalau12i	$a2, %pc_hi20(_ZZ9jpegModelR5MixerE5width)
@@ -12459,8 +12470,8 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	addi.w	$a1, $a3, -1
 	ld.d	$a2, $a7, 16
 	add.d	$a3, $a5, $s7
-	sub.w	$a4, $fp, $a4
-	sub.w	$a5, $fp, $a6
+	sub.w	$a4, $s1, $a4
+	sub.w	$a5, $s1, $a6
 	lu12i.w	$a7, 371373
 	ori	$a7, $a7, 1387
 	lu32i.d	$a7, 305829
@@ -12739,9 +12750,9 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	st.w	$a1, $a4, 28
 	ld.d	$a6, $a3, %pc_lo12(_ZZ9jpegModelR5MixerE4sumu+16)
 	ld.d	$a5, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE4sumv+16)
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ldx.bu	$a1, $s0, $s3
-	ldx.bu	$a2, $s8, $s3
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ldx.bu	$a1, $s0, $s1
+	ldx.bu	$a2, $s8, $s1
 	move	$t1, $zero
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE4qtab+16)
@@ -12749,9 +12760,9 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	alsl.d	$t2, $a1, $a6, 2
 	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
 	alsl.d	$t3, $a2, $a5, 2
-	or	$a1, $s3, $s7
+	or	$a1, $s1, $s7
 	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
-	addi.w	$t4, $s3, 1
+	addi.w	$t4, $s1, 1
 	ori	$t6, $zero, 181
 	lu12i.w	$a1, 6
 	ori	$a4, $a1, 1639
@@ -12759,308 +12770,308 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	b	.LBB48_158
 .LBB48_157:                             #   in Loop: Header=BB48_158 Depth=1
 	addi.d	$t1, $t1, 1
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
 	ori	$a1, $zero, 3
 	beq	$t1, $a1, .LBB48_165
 .LBB48_158:                             # =>This Loop Header: Depth=1
                                         #     Child Loop BB48_161 Depth 2
 	ld.w	$a1, $t2, 0
-	ld.w	$a2, $t3, 0
+	ld.w	$a3, $t3, 0
 	mul.d	$a1, $a1, $t1
-	ori	$a3, $zero, 2
-	sub.d	$a3, $a3, $t1
-	mul.d	$a2, $a2, $a3
-	add.d	$a1, $a2, $a1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
-	ldx.bu	$a2, $a0, $a2
+	ori	$a2, $zero, 2
+	sub.d	$a2, $a2, $t1
+	mul.d	$a3, $a3, $a2
+	add.d	$a1, $a3, $a1
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ldx.bu	$a3, $a0, $a3
 	bstrpick.d	$a7, $a1, 31, 31
 	add.w	$a1, $a1, $a7
 	srai.d	$a1, $a1, 1
-	mul.d	$a2, $a2, $t6
-	addi.d	$a2, $a2, 181
-	div.w	$t8, $a1, $a2
-	ori	$a1, $zero, 10
-	bnez	$s3, .LBB48_160
+	mul.d	$a3, $a3, $t6
+	addi.d	$a3, $a3, 181
+	div.w	$a3, $a1, $a3
+	ori	$t8, $zero, 10
+	bnez	$s1, .LBB48_160
 # %bb.159:                              #   in Loop: Header=BB48_158 Depth=1
 	pcalau12i	$a1, %pc_hi20(_ZZ9jpegModelR5MixerE2ls+16)
 	ld.d	$a1, $a1, %pc_lo12(_ZZ9jpegModelR5MixerE2ls+16)
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
-	ldx.w	$a1, $a1, $a2
-	ld.d	$a7, $sp, 104                   # 8-byte Folded Reload
-	ld.w	$a2, $a7, 0
-	ld.d	$a7, $a7, 16
-	ld.d	$t0, $sp, 88                    # 8-byte Folded Reload
-	sub.w	$a1, $t0, $a1
-	addi.w	$a2, $a2, -1
-	and	$a1, $a2, $a1
+	ld.d	$a7, $sp, 96                    # 8-byte Folded Reload
+	ldx.w	$a1, $a1, $a7
+	ld.d	$t0, $sp, 104                   # 8-byte Folded Reload
+	ld.w	$a7, $t0, 0
+	ld.d	$t0, $t0, 16
+	ld.d	$t5, $sp, 88                    # 8-byte Folded Reload
+	sub.w	$a1, $t5, $a1
+	addi.w	$a7, $a7, -1
+	and	$a1, $a7, $a1
 	slli.d	$a1, $a1, 2
-	ldx.w	$a1, $a7, $a1
-	sub.w	$t8, $t8, $a1
-	ori	$a1, $zero, 14
+	ldx.w	$a1, $t0, $a1
+	sub.w	$a3, $a3, $a1
+	ori	$t8, $zero, 14
 .LBB48_160:                             #   in Loop: Header=BB48_158 Depth=1
 	pcalau12i	$t0, %pc_hi20(ilog+16)
-	ld.d	$a2, $t0, %pc_lo12(ilog+16)
-	pcalau12i	$a7, %pc_hi20(_ZZ9jpegModelR5MixerE8adv_pred+16)
-	st.d	$a7, $sp, 128                   # 8-byte Folded Spill
-	ld.d	$t5, $a7, %pc_lo12(_ZZ9jpegModelR5MixerE8adv_pred+16)
-	srai.d	$fp, $t8, 31
-	xor	$s1, $t8, $fp
-	sub.d	$fp, $s1, $fp
-	mul.d	$a1, $fp, $a1
-	bstrpick.d	$a1, $a1, 15, 1
-	alsl.d	$a1, $a1, $a2, 1
-	ld.bu	$a1, $a1, 1
-	alsl.d	$ra, $t1, $t5, 2
-	addi.w	$fp, $a3, 0
-	sub.d	$a3, $zero, $a1
-	slti	$t5, $t8, 0
-	masknez	$a1, $a1, $t5
-	maskeqz	$a3, $a3, $t5
-	or	$a1, $a3, $a1
+	ld.d	$fp, $t0, %pc_lo12(ilog+16)
+	pcalau12i	$a1, %pc_hi20(_ZZ9jpegModelR5MixerE8adv_pred+16)
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
+	ld.d	$a1, $a1, %pc_lo12(_ZZ9jpegModelR5MixerE8adv_pred+16)
+	srai.d	$t5, $a3, 31
+	xor	$s1, $a3, $t5
+	sub.d	$t5, $s1, $t5
+	mul.d	$t5, $t5, $t8
+	bstrpick.d	$t5, $t5, 15, 1
+	alsl.d	$t5, $t5, $fp, 1
+	ld.bu	$t5, $t5, 1
+	alsl.d	$ra, $t1, $a1, 2
+	addi.w	$s3, $a2, 0
+	sub.d	$a1, $zero, $t5
+	slti	$a2, $a3, 0
+	masknez	$a3, $t5, $a2
+	maskeqz	$a1, $a1, $a2
+	or	$a1, $a1, $a3
 	mul.d	$a1, $a1, $a4
-	srai.d	$t5, $a1, 16
-	srli.d	$a3, $t5, 2
+	srai.d	$a3, $a1, 16
+	srli.d	$a2, $a3, 2
 	srli.d	$a1, $a1, 63
-	add.d	$a3, $a3, $a1
-	ext.w.h	$a3, $a3
-	st.w	$a3, $ra, 0
-	srli.d	$t5, $t5, 4
-	add.d	$a1, $t5, $a1
+	add.d	$a2, $a2, $a1
+	ext.w.h	$a2, $a2
+	st.w	$a2, $ra, 0
+	srli.d	$a3, $a3, 4
+	add.d	$a1, $a3, $a1
 	ext.w.h	$a1, $a1
 	st.w	$a1, $ra, 16
-	srai.d	$a1, $a3, 31
-	xor	$t5, $a3, $a1
-	sub.d	$a1, $t5, $a1
+	srai.d	$a1, $a2, 31
+	xor	$a3, $a2, $a1
+	sub.d	$a1, $a3, $a1
 	addi.d	$s1, $a1, 1
-	addi.d	$t8, $zero, -128
-	move	$s3, $t4
+	addi.d	$a3, $zero, -128
+	move	$s5, $t4
 	.p2align	4, , 16
 .LBB48_161:                             #   Parent Loop BB48_158 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	slti	$a1, $s3, 63
+	slti	$a1, $s5, 63
 	masknez	$t5, $t7, $a1
-	maskeqz	$a1, $s3, $a1
+	maskeqz	$a1, $s5, $a1
 	or	$a1, $a1, $t5
 	ldx.bu	$t5, $s8, $a1
-	ldx.bu	$s5, $s0, $a1
+	ldx.bu	$t8, $s0, $a1
 	slli.d	$t5, $t5, 2
 	ldx.w	$t5, $a5, $t5
-	slli.d	$s5, $s5, 2
-	ldx.w	$s5, $a6, $s5
-	mul.d	$t5, $t5, $fp
-	mul.d	$s5, $s5, $t1
-	add.d	$t5, $t5, $s5
+	slli.d	$t8, $t8, 2
+	ldx.w	$t8, $a6, $t8
+	mul.d	$t5, $t5, $s3
+	mul.d	$t8, $t8, $t1
+	add.d	$t5, $t5, $t8
 	or	$a1, $a1, $s7
 	ldx.bu	$a1, $a0, $a1
-	bstrpick.d	$s5, $t5, 31, 31
-	add.w	$t5, $t5, $s5
+	bstrpick.d	$t8, $t5, 31, 31
+	add.w	$t5, $t5, $t8
 	srai.d	$t5, $t5, 1
 	mul.d	$a1, $a1, $t6
 	addi.d	$a1, $a1, 181
 	div.w	$a1, $t5, $a1
 	srai.d	$t5, $a1, 31
-	xor	$s5, $a1, $t5
-	sub.d	$t5, $s5, $t5
-	slli.d	$s5, $t5, 3
-	alsl.d	$t5, $t5, $s5, 1
+	xor	$t8, $a1, $t5
+	sub.d	$t5, $t8, $t5
+	slli.d	$t8, $t5, 3
+	alsl.d	$t5, $t5, $t8, 1
 	bstrpick.d	$t5, $t5, 15, 1
-	alsl.d	$t5, $t5, $a2, 1
+	alsl.d	$t5, $t5, $fp, 1
 	ld.bu	$t5, $t5, 1
-	sub.d	$s5, $zero, $t5
+	sub.d	$t8, $zero, $t5
 	slti	$a1, $a1, 0
 	masknez	$t5, $t5, $a1
-	maskeqz	$a1, $s5, $a1
-	or	$a1, $a1, $t5
-	mul.d	$t5, $a1, $a4
-	srli.d	$s6, $t5, 63
-	srai.d	$s5, $t5, 18
-	add.d	$s5, $s5, $s6
-	srai.d	$a7, $s5, 63
-	xor	$s5, $s5, $a7
-	sub.d	$a7, $s5, $a7
+	maskeqz	$a1, $t8, $a1
+	or	$t8, $a1, $t5
+	mul.d	$a1, $t8, $a4
+	srli.d	$t5, $a1, 63
+	srai.d	$s6, $a1, 18
+	add.d	$s6, $s6, $t5
+	srai.d	$a7, $s6, 63
+	xor	$s6, $s6, $a7
+	sub.d	$a7, $s6, $a7
 	bltu	$s1, $a7, .LBB48_163
 # %bb.162:                              #   in Loop: Header=BB48_161 Depth=2
-	addi.w	$t8, $t8, -128
+	addi.w	$a3, $a3, -128
 	addi.w	$a1, $zero, -1024
-	addi.w	$s3, $s3, 1
-	bne	$t8, $a1, .LBB48_161
+	addi.w	$s5, $s5, 1
+	bne	$a3, $a1, .LBB48_161
 	b	.LBB48_157
 .LBB48_163:                             #   in Loop: Header=BB48_158 Depth=1
-	srai.d	$a2, $t5, 20
-	add.d	$a7, $a2, $s6
-	ld.w	$a2, $ra, 16
-	srai.d	$t5, $a7, 63
-	xor	$a7, $a7, $t5
-	sub.d	$a7, $a7, $t5
-	srai.d	$t5, $a2, 31
-	xor	$fp, $a2, $t5
-	sub.d	$t5, $fp, $t5
-	ori	$fp, $zero, 9
-	slt	$a1, $fp, $a1
+	srai.d	$a1, $a1, 20
+	add.d	$a1, $a1, $t5
+	ld.w	$fp, $ra, 16
+	srai.d	$a7, $a1, 63
+	xor	$a1, $a1, $a7
+	sub.d	$a7, $a1, $a7
+	srai.d	$a1, $fp, 31
+	xor	$t5, $fp, $a1
+	sub.d	$t5, $t5, $a1
+	ori	$a1, $zero, 9
+	slt	$a1, $a1, $t8
 	slli.d	$a1, $a1, 6
-	add.d	$a3, $a1, $a3
-	sub.d	$a3, $a3, $t8
+	sub.d	$a2, $a2, $a3
+	add.d	$a2, $a1, $a2
 	addi.w	$t5, $t5, 1
-	st.w	$a3, $ra, 0
+	st.w	$a2, $ra, 0
 	bgeu	$t5, $a7, .LBB48_157
 # %bb.164:                              #   in Loop: Header=BB48_158 Depth=1
-	add.d	$a1, $a1, $a2
-	sub.d	$a1, $a1, $t8
+	add.d	$a1, $a1, $fp
+	sub.d	$a1, $a1, $a3
 	st.w	$a1, $ra, 16
 	b	.LBB48_157
 .LBB48_165:
 	ld.w	$a1, $t2, 0
 	ld.w	$a2, $t3, 0
-	add.d	$a2, $a2, $a1
-	ori	$a1, $zero, 1
-	sll.d	$a1, $a1, $s3
+	add.d	$a1, $a2, $a1
+	ori	$a2, $zero, 1
+	sll.d	$a2, $a2, $s1
 	lu12i.w	$a3, 768
 	ori	$t4, $a3, 1549
 	lu32i.d	$t4, 8
-	and	$a3, $a1, $t4
-	slli.w	$t5, $a2, 1
+	and	$a3, $a2, $t4
+	slli.w	$t5, $a1, 1
 	beqz	$a3, .LBB48_167
 # %bb.166:
-	ld.w	$a2, $a6, 4
-	sub.w	$t5, $t5, $a2
+	ld.w	$a1, $a6, 4
+	sub.w	$t5, $t5, $a1
 .LBB48_167:
-	ld.d	$t7, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$t8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$t6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$t7, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	lu12i.w	$a2, 98316
+	lu12i.w	$a1, 98316
 	ld.d	$a7, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 112                   # 8-byte Folded Reload
-	ori	$t3, $a2, 99
-	and	$a1, $a1, $t3
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ori	$t3, $a1, 99
+	and	$a1, $a2, $t3
 	beqz	$a1, .LBB48_169
 # %bb.168:
 	ld.w	$a1, $a5, 4
 	sub.w	$t5, $t5, $a1
 .LBB48_169:
 	ori	$a1, $zero, 1
-	sll.d	$a1, $a1, $s3
-	lu12i.w	$a2, 1920
-	ori	$t2, $a2, 3871
+	sll.d	$a2, $a1, $s1
+	lu12i.w	$a1, 1920
+	ori	$t2, $a1, 3871
 	lu32i.d	$t2, 28
-	and	$a2, $a1, $t2
-	beqz	$a2, .LBB48_171
+	and	$a1, $a2, $t2
+	beqz	$a1, .LBB48_171
 # %bb.170:
-	ld.w	$a2, $a6, 8
-	sub.w	$t5, $t5, $a2
+	ld.w	$a1, $a6, 8
+	sub.w	$t5, $t5, $a1
 .LBB48_171:
-	lu12i.w	$a2, 245790
-	ori	$t1, $a2, 247
+	lu12i.w	$a1, 245790
+	ori	$t1, $a1, 247
 	lu32i.d	$t1, 1024
-	and	$a1, $a1, $t1
+	and	$a1, $a2, $t1
 	beqz	$a1, .LBB48_173
 # %bb.172:
 	ld.w	$a1, $a5, 8
 	sub.w	$t5, $t5, $a1
 .LBB48_173:
 	ori	$a1, $zero, 1
-	sll.d	$a1, $a1, $s3
-	lu12i.w	$a2, 4033
-	ori	$a2, $a2, 4031
-	lu32i.d	$a2, 65598
-	and	$a2, $a1, $a2
-	beqz	$a2, .LBB48_175
+	sll.d	$a2, $a1, $s1
+	lu12i.w	$a1, 4033
+	ori	$a1, $a1, 4031
+	lu32i.d	$a1, 65598
+	and	$a1, $a2, $a1
+	beqz	$a1, .LBB48_175
 # %bb.174:
-	ld.w	$a2, $a6, 12
-	sub.w	$t5, $t5, $a2
+	ld.w	$a1, $a6, 12
+	sub.w	$t5, $t5, $a1
 .LBB48_175:
-	lu12i.w	$a2, 516159
-	ori	$a2, $a2, 511
-	lu32i.d	$a2, 3584
-	and	$a1, $a1, $a2
+	lu12i.w	$a1, 516159
+	ori	$a1, $a1, 511
+	lu32i.d	$a1, 3584
+	and	$a1, $a2, $a1
 	beqz	$a1, .LBB48_177
 # %bb.176:
 	ld.w	$a1, $a5, 12
 	sub.w	$t5, $t5, $a1
 .LBB48_177:
 	ori	$a1, $zero, 1
-	sll.d	$a1, $a1, $s3
-	lu12i.w	$a2, 8163
-	ori	$a2, $a2, 4095
-	lu32i.d	$a2, 229503
-	and	$a2, $a1, $a2
-	beqz	$a2, .LBB48_179
+	sll.d	$a2, $a1, $s1
+	lu12i.w	$a1, 8163
+	ori	$a1, $a1, 4095
+	lu32i.d	$a1, 229503
+	and	$a1, $a2, $a1
+	beqz	$a1, .LBB48_179
 # %bb.178:
-	ld.w	$a2, $a6, 16
-	sub.w	$t5, $t5, $a2
+	ld.w	$a1, $a6, 16
+	sub.w	$t5, $t5, $a1
 .LBB48_179:
-	lu12i.w	$a2, -3969
-	ori	$a2, $a2, 3071
-	lu32i.d	$a2, 7936
-	lu52i.d	$a2, $a2, 2
-	and	$a1, $a1, $a2
+	lu12i.w	$a1, -3969
+	ori	$a1, $a1, 3071
+	lu32i.d	$a1, 7936
+	lu52i.d	$a1, $a1, 2
+	and	$a1, $a2, $a1
 	beqz	$a1, .LBB48_181
 # %bb.180:
 	ld.w	$a1, $a5, 16
 	sub.w	$t5, $t5, $a1
 .LBB48_181:
 	ori	$a1, $zero, 1
-	sll.d	$a1, $a1, $s3
-	lu12i.w	$a2, -507913
-	ori	$a2, $a2, 4095
-	lu32i.d	$a2, 508159
-	lu52i.d	$a2, $a2, 32
-	and	$a2, $a1, $a2
-	beqz	$a2, .LBB48_183
+	sll.d	$a2, $a1, $s1
+	lu12i.w	$a1, -507913
+	ori	$a1, $a1, 4095
+	lu32i.d	$a1, 508159
+	lu52i.d	$a1, $a1, 32
+	and	$a1, $a2, $a1
+	beqz	$a1, .LBB48_183
 # %bb.182:
-	ld.w	$a2, $a6, 20
-	sub.w	$t5, $t5, $a2
+	ld.w	$a1, $a6, 20
+	sub.w	$t5, $t5, $a1
 .LBB48_183:
-	lu12i.w	$a2, -1793
-	ori	$a2, $a2, 4095
-	lu32i.d	$a2, 16257
-	lu52i.d	$a2, $a2, 7
-	and	$a1, $a1, $a2
+	lu12i.w	$a1, -1793
+	ori	$a1, $a1, 4095
+	lu32i.d	$a1, 16257
+	lu52i.d	$a1, $a1, 7
+	and	$a1, $a2, $a1
 	beqz	$a1, .LBB48_185
 # %bb.184:
 	ld.w	$a1, $a5, 20
 	sub.w	$t5, $t5, $a1
 .LBB48_185:
 	ori	$a1, $zero, 1
-	sll.d	$a1, $a1, $s3
-	lu12i.w	$a2, -229377
-	ori	$a2, $a2, 4095
-	lu32i.d	$a2, -7681
-	lu52i.d	$a2, $a2, 112
-	and	$a2, $a1, $a2
-	beqz	$a2, .LBB48_187
+	sll.d	$a2, $a1, $s1
+	lu12i.w	$a1, -229377
+	ori	$a1, $a1, 4095
+	lu32i.d	$a1, -7681
+	lu52i.d	$a1, $a1, 112
+	and	$a1, $a2, $a1
+	beqz	$a1, .LBB48_187
 # %bb.186:
-	ld.w	$a2, $a6, 24
-	sub.w	$t5, $t5, $a2
+	ld.w	$a1, $a6, 24
+	sub.w	$t5, $t5, $a1
 .LBB48_187:
-	lu12i.w	$a2, -513
-	ori	$a2, $a2, 4095
-	lu32i.d	$a2, -491581
-	lu52i.d	$a2, $a2, 271
-	and	$a1, $a1, $a2
+	lu12i.w	$a1, -513
+	ori	$a1, $a1, 4095
+	lu32i.d	$a1, -491581
+	lu52i.d	$a1, $a1, 271
+	and	$a1, $a2, $a1
 	beqz	$a1, .LBB48_189
 # %bb.188:
 	ld.w	$a1, $a5, 24
 	sub.w	$t5, $t5, $a1
 .LBB48_189:
 	ori	$a1, $zero, 1
-	sll.d	$a1, $a1, $s3
-	lu12i.w	$a2, -65537
-	ori	$a2, $a2, 4095
-	lu32i.d	$a2, -3073
-	lu52i.d	$a2, $a2, 1273
-	and	$a2, $a1, $a2
-	beqz	$a2, .LBB48_191
+	sll.d	$a2, $a1, $s1
+	lu12i.w	$a1, -65537
+	ori	$a1, $a1, 4095
+	lu32i.d	$a1, -3073
+	lu52i.d	$a1, $a1, 1273
+	and	$a1, $a2, $a1
+	beqz	$a1, .LBB48_191
 # %bb.190:
-	ld.w	$a2, $a6, 28
-	sub.w	$t5, $t5, $a2
+	ld.w	$a1, $a6, 28
+	sub.w	$t5, $t5, $a1
 .LBB48_191:
 	ld.d	$a6, $sp, 128                   # 8-byte Folded Reload
 	lu32i.d	$a3, -196633
-	lu52i.d	$a2, $a3, 927
-	and	$a1, $a1, $a2
+	lu52i.d	$a1, $a3, 927
+	and	$a1, $a2, $a1
 	beqz	$a1, .LBB48_193
 # %bb.192:
 	ld.w	$a1, $a5, 28
@@ -13072,16 +13083,16 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	mul.d	$a1, $a1, $a2
 	addi.d	$a1, $a1, 181
 	div.w	$a2, $t5, $a1
-	bnez	$s3, .LBB48_195
+	bnez	$s1, .LBB48_195
 # %bb.194:
 	pcalau12i	$a1, %pc_hi20(_ZZ9jpegModelR5MixerE2ls+16)
 	ld.d	$a1, $a1, %pc_lo12(_ZZ9jpegModelR5MixerE2ls+16)
 	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
 	ldx.w	$a1, $a1, $a3
-	ld.w	$a3, $t8, 0
+	ld.w	$a3, $t7, 0
 	ld.d	$a5, $sp, 88                    # 8-byte Folded Reload
 	sub.w	$a1, $a5, $a1
-	ld.d	$a5, $t8, 16
+	ld.d	$a5, $t7, 16
 	addi.w	$a3, $a3, -1
 	and	$a1, $a3, $a1
 	slli.d	$a1, $a1, 2
@@ -13111,12 +13122,12 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	st.w	$a1, $a4, 12
 	pcalau12i	$a1, %pc_hi20(_ZZ9jpegModelR5MixerE3lcp+16)
 	ld.d	$a6, $a1, %pc_lo12(_ZZ9jpegModelR5MixerE3lcp+16)
-	alsl.d	$a3, $t6, $a7, 3
+	alsl.d	$a3, $s3, $a7, 3
 	pcalau12i	$a1, %pc_hi20(_ZZ9jpegModelR5MixerE4zpos+16)
 	ld.d	$a7, $a1, %pc_lo12(_ZZ9jpegModelR5MixerE4zpos+16)
-	ld.d	$a2, $t8, 16
+	ld.d	$a2, $t7, 16
 	ori	$a1, $zero, 1
-	sll.d	$t5, $a1, $s3
+	sll.d	$t5, $a1, $s1
 	and	$t4, $t5, $t4
 	ori	$t0, $zero, 255
 	ori	$a1, $zero, 255
@@ -13124,10 +13135,10 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 # %bb.196:
 	alsl.d	$a1, $a3, $a7, 2
 	ld.w	$a1, $a1, -4
-	ld.w	$t4, $t8, 0
+	ld.w	$t4, $t7, 0
 	add.w	$t6, $a1, $s7
 	ldx.bu	$t6, $a0, $t6
-	add.w	$a1, $a1, $s1
+	add.w	$a1, $a1, $s0
 	addi.w	$t4, $t4, -1
 	and	$a1, $t4, $a1
 	slli.d	$a1, $a1, 2
@@ -13149,6 +13160,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	slti	$a1, $a1, 0
 	masknez	$t4, $t4, $a1
 	maskeqz	$a1, $t6, $a1
+	ld.d	$t6, $sp, 136                   # 8-byte Folded Reload
 	or	$a1, $a1, $t4
 	bstrpick.d	$t4, $a1, 15, 13
 	add.d	$a1, $a1, $t4
@@ -13160,10 +13172,10 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 # %bb.198:
 	alsl.d	$a1, $a3, $a7, 2
 	ld.w	$a1, $a1, -32
-	ld.w	$t0, $t8, 0
+	ld.w	$t0, $t7, 0
 	add.w	$t3, $a1, $s7
 	ldx.bu	$t3, $a0, $t3
-	add.w	$a1, $a1, $s1
+	add.w	$a1, $a1, $s0
 	addi.w	$t0, $t0, -1
 	and	$a1, $t0, $a1
 	slli.d	$a1, $a1, 2
@@ -13192,7 +13204,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 .LBB48_199:
 	st.w	$t0, $a6, 4
 	ori	$a1, $zero, 1
-	sll.d	$t3, $a1, $s3
+	sll.d	$t3, $a1, $s1
 	and	$t2, $t3, $t2
 	ori	$t0, $zero, 255
 	ori	$a1, $zero, 255
@@ -13202,20 +13214,20 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	st.w	$a1, $a6, 8
 	beqz	$t1, .LBB48_204
 .LBB48_201:
-	ld.w	$a0, $s0, %pc_lo12(_ZZ9jpegModelR5MixerE6column)
+	ld.w	$a0, $fp, %pc_lo12(_ZZ9jpegModelR5MixerE6column)
 	st.w	$t0, $a6, 12
 	beqz	$a0, .LBB48_205
 .LBB48_202:
-	ld.w	$a0, $fp, %pc_lo12(_ZZ9jpegModelR5MixerE3row)
+	ld.w	$a0, $t8, %pc_lo12(_ZZ9jpegModelR5MixerE3row)
 	bnez	$a0, .LBB48_207
 	b	.LBB48_206
 .LBB48_203:
 	alsl.d	$a1, $a3, $a7, 2
 	ld.w	$a1, $a1, -8
-	ld.w	$t2, $t8, 0
+	ld.w	$t2, $t7, 0
 	add.w	$t4, $a1, $s7
 	ldx.bu	$t4, $a0, $t4
-	add.w	$a1, $a1, $s1
+	add.w	$a1, $a1, $s0
 	addi.w	$t2, $t2, -1
 	and	$a1, $t2, $a1
 	slli.d	$a1, $a1, 2
@@ -13247,10 +13259,10 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 .LBB48_204:
 	alsl.d	$a1, $a3, $a7, 2
 	ld.w	$a1, $a1, -64
-	ld.w	$a3, $t8, 0
+	ld.w	$a3, $t7, 0
 	add.w	$a7, $a1, $s7
 	ldx.bu	$a7, $a0, $a7
-	add.w	$a1, $a1, $s1
+	add.w	$a1, $a1, $s0
 	addi.w	$a3, $a3, -1
 	and	$a1, $a3, $a1
 	slli.d	$a1, $a1, 2
@@ -13276,7 +13288,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	bstrpick.d	$a1, $a0, 15, 13
 	add.d	$a0, $a0, $a1
 	srai.d	$t0, $a0, 3
-	ld.w	$a0, $s0, %pc_lo12(_ZZ9jpegModelR5MixerE6column)
+	ld.w	$a0, $fp, %pc_lo12(_ZZ9jpegModelR5MixerE6column)
 	st.w	$t0, $a6, 12
 	bnez	$a0, .LBB48_202
 .LBB48_205:
@@ -13284,7 +13296,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	st.w	$a0, $a4, 4
 	ori	$a0, $zero, 1
 	st.w	$a0, $a4, 0
-	ld.w	$a0, $fp, %pc_lo12(_ZZ9jpegModelR5MixerE3row)
+	ld.w	$a0, $t8, %pc_lo12(_ZZ9jpegModelR5MixerE3row)
 	bnez	$a0, .LBB48_207
 .LBB48_206:
 	ld.w	$a0, $a4, 0
@@ -13300,7 +13312,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	ld.w	$a0, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE4data)
 	beqz	$a0, .LBB48_18
 # %bb.209:
-	ld.w	$a0, $t7, %pc_lo12(bpos)
+	ld.w	$a0, $t6, %pc_lo12(bpos)
 	ld.w	$a1, $s2, 0
 	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
 	ld.w	$a2, $a2, %pc_lo12(pos)
@@ -13560,15 +13572,15 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	ld.wu	$a0, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE6mcupos)
 	pcalau12i	$a1, %pc_hi20(_ZZ9jpegModelR5MixerE5color+16)
 	ld.d	$a1, $a1, %pc_lo12(_ZZ9jpegModelR5MixerE5color+16)
-	addi.w	$a7, $a0, 0
-	srai.d	$a2, $a7, 6
+	addi.w	$t0, $a0, 0
+	srai.d	$a2, $t0, 6
 	slli.d	$a6, $a2, 2
-	ldx.w	$s7, $a1, $a6
-	slli.w	$a5, $s7, 6
+	ldx.w	$t7, $a1, $a6
+	slli.w	$a5, $t7, 6
 	pcalau12i	$a1, %pc_hi20(_ZZ9jpegModelR5MixerE8huffcode)
 	ld.w	$a3, $a1, %pc_lo12(_ZZ9jpegModelR5MixerE8huffcode)
-	pcalau12i	$t0, %pc_hi20(_ZZ9jpegModelR5MixerE7hbcount)
-	ld.w	$a2, $t0, %pc_lo12(_ZZ9jpegModelR5MixerE7hbcount)
+	pcalau12i	$a7, %pc_hi20(_ZZ9jpegModelR5MixerE7hbcount)
+	ld.w	$a2, $a7, %pc_lo12(_ZZ9jpegModelR5MixerE7hbcount)
 	pcalau12i	$a1, %pc_hi20(_ZZ9jpegModelR5MixerE8huffbits)
 	ld.w	$a1, $a1, %pc_lo12(_ZZ9jpegModelR5MixerE8huffbits)
 	ori	$a4, $zero, 1
@@ -13577,21 +13589,21 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	sltui	$t2, $a1, 1
 	masknez	$t1, $t1, $t2
 	masknez	$a2, $t1, $a2
-	st.w	$a2, $t0, %pc_lo12(_ZZ9jpegModelR5MixerE7hbcount)
+	st.w	$a2, $a7, %pc_lo12(_ZZ9jpegModelR5MixerE7hbcount)
 	bltz	$a5, .LBB48_226
 # %bb.220:
 	move	$a5, $a0
-	bstrins.d	$a5, $s7, 63, 6
+	bstrins.d	$a5, $t7, 63, 6
 	addi.w	$t4, $a5, 0
 	ori	$a5, $zero, 256
 	bge	$t4, $a5, .LBB48_226
 # %bb.221:
 	slli.d	$a5, $a3, 1
-	sltui	$t0, $s7, 1
-	or	$a5, $a5, $t0
+	sltui	$a7, $t7, 1
 	addi.d	$a1, $a1, 1
 	sll.w	$a1, $a4, $a1
-	or	$t5, $a1, $a5
+	or	$a1, $a1, $a5
+	or	$t5, $a1, $a7
 	pcalau12i	$s2, %pc_hi20(stretch+16)
 	st.d	$t4, $sp, 176                   # 8-byte Folded Spill
 	st.d	$t5, $sp, 160                   # 8-byte Folded Spill
@@ -13683,165 +13695,164 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	st.w	$zero, $fp, %pc_lo12(_ZZ9jpegModelR5MixerE4jpeg)
 	b	.LBB48_19
 .LBB48_227:
-	andi	$t0, $a0, 63
+	andi	$a7, $a0, 63
 	pcalau12i	$a0, %pc_hi20(_ZZ9jpegModelR5MixerE3zzv)
 	addi.d	$a0, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE3zzv)
-	ldx.bu	$a0, $a0, $t0
+	ldx.bu	$a0, $a0, $a7
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(_ZZ9jpegModelR5MixerE3zzu)
-	addi.d	$a1, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE3zzu)
-	pcalau12i	$a0, %pc_hi20(_ZZ9jpegModelR5MixerE8adv_pred+16)
-	ld.d	$a0, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE8adv_pred+16)
-	ldx.bu	$t6, $a1, $t0
-	ld.wu	$a4, $a0, 8
-	lu12i.w	$a1, 7325
-	ori	$a1, $a1, 2291
-	mul.d	$a1, $t5, $a1
+	addi.d	$a0, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE3zzu)
+	pcalau12i	$a1, %pc_hi20(_ZZ9jpegModelR5MixerE8adv_pred+16)
+	ld.d	$a1, $a1, %pc_lo12(_ZZ9jpegModelR5MixerE8adv_pred+16)
+	ldx.bu	$t6, $a0, $a7
+	ld.wu	$a4, $a1, 8
+	lu12i.w	$a0, 7325
+	ori	$a0, $a0, 2291
+	mul.d	$a0, $t5, $a0
 	lu12i.w	$a2, 12208
 	ori	$a2, $a2, 271
 	mul.d	$a5, $t4, $a2
 	lu12i.w	$a3, 17091
 	ori	$a3, $a3, 71
 	mul.d	$t1, $a4, $a3
-	add.d	$t3, $a1, $a5
-	add.d	$a5, $t3, $t1
-	lu12i.w	$t1, 21972
-	ori	$t1, $t1, 3168
-	add.d	$t1, $a5, $t1
+	add.d	$t3, $a0, $a5
+	lu12i.w	$a5, 21972
+	ori	$a5, $a5, 3168
+	add.d	$a5, $t1, $a5
+	add.d	$t1, $t3, $a5
 	bstrpick.d	$t2, $t1, 31, 9
 	bstrpick.d	$a5, $t5, 31, 3
 	bstrpick.d	$t5, $t4, 31, 4
-	st.d	$t5, $sp, 104                   # 8-byte Folded Spill
+	st.d	$t5, $sp, 96                    # 8-byte Folded Spill
 	srli.d	$a4, $a4, 5
 	xor	$t5, $a5, $t5
-	xor	$a4, $a4, $t2
 	xor	$a4, $a4, $t5
-	xor	$t1, $a4, $t1
+	xor	$a4, $a4, $t1
+	xor	$t1, $a4, $t2
 	pcalau12i	$s6, %pc_hi20(_ZZ9jpegModelR5MixerE3cxt+16)
 	ld.d	$a4, $s6, %pc_lo12(_ZZ9jpegModelR5MixerE3cxt+16)
-	lu12i.w	$fp, 16383
-	ori	$t8, $fp, 4095
-	xor	$t1, $t1, $t8
+	lu12i.w	$s3, 16383
+	ori	$s7, $s3, 4095
+	xor	$t1, $t1, $s7
 	st.w	$t1, $a4, 0
-	ld.wu	$t1, $a0, 0
+	ld.wu	$t1, $a1, 0
 	mul.d	$t2, $t1, $a3
+	lu12i.w	$t8, 70801
+	ori	$t8, $t8, 2563
+	add.d	$t2, $t2, $t8
 	add.d	$t2, $t3, $t2
-	lu12i.w	$t7, 70801
-	ori	$t7, $t7, 2563
-	add.d	$t2, $t2, $t7
-	bstrpick.d	$t7, $t2, 31, 9
+	bstrpick.d	$t8, $t2, 31, 9
 	srli.d	$t1, $t1, 5
-	xor	$t1, $t1, $t7
 	xor	$t1, $t1, $t5
 	xor	$t1, $t1, $t2
 	xor	$t1, $t1, $t8
+	xor	$t1, $t1, $s7
 	st.w	$t1, $a4, 4
-	ld.wu	$t1, $a0, 4
+	ld.wu	$t1, $a1, 4
 	mul.d	$t2, $t1, $a3
+	lu12i.w	$t8, 119630
+	ori	$t8, $t8, 1958
+	add.d	$t2, $t2, $t8
 	add.d	$t2, $t3, $t2
-	lu12i.w	$t7, 119630
-	ori	$t7, $t7, 1958
-	add.d	$t2, $t2, $t7
-	bstrpick.d	$t7, $t2, 31, 9
+	bstrpick.d	$t8, $t2, 31, 9
 	srli.d	$t1, $t1, 5
-	xor	$t1, $t1, $t7
 	xor	$t1, $t1, $t5
 	xor	$t1, $t1, $t2
 	xor	$t1, $t1, $t8
-	move	$s3, $t8
-	st.d	$t8, $sp, 96                    # 8-byte Folded Spill
+	xor	$t1, $t1, $s7
 	st.w	$t1, $a4, 8
 	pcalau12i	$t1, %pc_hi20(_ZZ9jpegModelR5MixerE3rs1)
 	ld.wu	$t1, $t1, %pc_lo12(_ZZ9jpegModelR5MixerE3rs1)
-	ld.wu	$t2, $a0, 8
+	ld.wu	$t2, $a1, 8
 	mul.d	$t5, $t1, $a2
-	mul.d	$t7, $t2, $a3
-	add.d	$t8, $t5, $a1
-	add.d	$t5, $t8, $t7
-	lu12i.w	$t7, 168459
-	ori	$t7, $t7, 1353
-	add.d	$t5, $t5, $t7
-	bstrpick.d	$t7, $t5, 31, 9
+	mul.d	$fp, $t2, $a3
+	add.d	$t8, $t5, $a0
+	lu12i.w	$t5, 168459
+	ori	$t5, $t5, 1353
+	add.d	$t5, $fp, $t5
+	add.d	$t5, $t8, $t5
+	bstrpick.d	$fp, $t5, 31, 9
 	srli.d	$s5, $t1, 4
-	st.d	$s5, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 120                   # 8-byte Folded Spill
 	srli.d	$t1, $t2, 5
 	xor	$t2, $a5, $s5
 	xori	$t2, $t2, 1
-	xor	$t1, $t1, $t7
 	xor	$t1, $t1, $t2
+	xor	$t1, $t1, $fp
+	xor	$t5, $t5, $s7
 	xor	$t1, $t1, $t5
-	xor	$t1, $t1, $s3
 	st.w	$t1, $a4, 12
-	ld.wu	$t1, $a0, 0
+	ld.wu	$t1, $a1, 0
 	mul.d	$t5, $t1, $a3
+	lu12i.w	$fp, 217288
+	ori	$fp, $fp, 748
+	add.d	$t5, $t5, $fp
 	add.d	$t5, $t8, $t5
-	lu12i.w	$t7, 217288
-	ori	$t7, $t7, 748
-	add.d	$t5, $t5, $t7
-	bstrpick.d	$t7, $t5, 31, 9
+	bstrpick.d	$fp, $t5, 31, 9
 	srli.d	$t1, $t1, 5
-	xor	$t1, $t1, $t7
 	xor	$t1, $t1, $t2
+	xor	$t1, $t1, $fp
+	xor	$t5, $t5, $s7
 	xor	$t1, $t1, $t5
-	xor	$t1, $t1, $s3
 	st.w	$t1, $a4, 16
-	ld.wu	$t1, $a0, 4
+	ld.wu	$t1, $a1, 4
 	mul.d	$t5, $t1, $a3
+	lu12i.w	$fp, 266117
+	ori	$fp, $fp, 143
+	add.d	$t5, $t5, $fp
 	add.d	$t5, $t8, $t5
-	lu12i.w	$t7, 266117
-	ori	$t7, $t7, 143
-	add.d	$t5, $t5, $t7
-	bstrpick.d	$t7, $t5, 31, 9
+	bstrpick.d	$fp, $t5, 31, 9
 	srli.d	$t1, $t1, 5
-	xor	$t1, $t1, $t7
 	xor	$t1, $t1, $t2
-	xor	$t1, $t1, $t5
-	xor	$t1, $t1, $s3
+	xor	$t1, $t1, $fp
+	xor	$t2, $t5, $s7
+	xor	$t1, $t1, $t2
 	st.w	$t1, $a4, 20
-	ld.wu	$t1, $a0, 8
-	ld.wu	$t2, $a0, 0
+	ld.wu	$t1, $a1, 8
+	ld.wu	$t2, $a1, 0
 	mul.d	$t5, $t1, $a2
-	mul.d	$t7, $t2, $a3
-	add.d	$t5, $a1, $t5
-	add.d	$t5, $t5, $t7
-	lu12i.w	$t7, 314945
-	ori	$t7, $t7, 3634
-	add.d	$t5, $t5, $t7
-	bstrpick.d	$t7, $t5, 31, 9
+	mul.d	$fp, $t2, $a3
+	add.d	$t5, $t5, $fp
+	lu12i.w	$fp, 314945
+	ori	$fp, $fp, 3634
+	add.d	$t5, $t5, $fp
+	add.d	$t5, $a0, $t5
+	bstrpick.d	$fp, $t5, 31, 9
 	srli.d	$t1, $t1, 4
 	srli.d	$t2, $t2, 5
 	xor	$t1, $t1, $t2
-	xor	$t1, $t1, $t7
 	xor	$t1, $t1, $a5
 	xor	$t1, $t1, $t5
-	move	$s5, $fp
-	ori	$t2, $fp, 4094
+	xor	$t1, $t1, $fp
+	move	$s5, $s3
+	ori	$t2, $s3, 4094
 	xor	$t1, $t1, $t2
 	pcalau12i	$t2, %pc_hi20(_ZZ9jpegModelR5MixerE4cpos)
 	pcalau12i	$t5, %pc_hi20(_ZZ9jpegModelR5MixerE5width)
 	ld.w	$t5, $t5, %pc_lo12(_ZZ9jpegModelR5MixerE5width)
-	pcalau12i	$t7, %pc_hi20(_ZZ9jpegModelR5MixerE7mcusize)
-	ld.w	$t7, $t7, %pc_lo12(_ZZ9jpegModelR5MixerE7mcusize)
+	pcalau12i	$fp, %pc_hi20(_ZZ9jpegModelR5MixerE7mcusize)
+	ld.w	$fp, $fp, %pc_lo12(_ZZ9jpegModelR5MixerE7mcusize)
 	ld.w	$s8, $t2, %pc_lo12(_ZZ9jpegModelR5MixerE4cpos)
-	bstrpick.d	$fp, $t4, 31, 5
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	bstrpick.d	$s3, $t4, 31, 5
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
 	st.w	$t1, $a4, 24
-	mul.d	$t1, $t7, $t5
+	mul.d	$t1, $fp, $t5
 	sub.w	$t1, $s8, $t1
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 144                   # 8-byte Folded Spill
 	pcalau12i	$t2, %pc_hi20(_ZZ9jpegModelR5MixerE4cbuf)
 	addi.d	$t2, $t2, %pc_lo12(_ZZ9jpegModelR5MixerE4cbuf)
-	ld.w	$t7, $t2, 0
+	ld.w	$fp, $t2, 0
 	ld.d	$t5, $t2, 16
-	addi.w	$t7, $t7, -1
-	and	$t1, $t7, $t1
-	st.d	$t1, $sp, 144                   # 8-byte Folded Spill
+	addi.w	$ra, $fp, -1
+	and	$t1, $ra, $t1
+	st.d	$t1, $sp, 152                   # 8-byte Folded Spill
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
 	ldx.bu	$t1, $t5, $t1
-	ld.wu	$t2, $a0, 12
+	ld.wu	$t2, $a1, 12
 	mul.d	$fp, $t1, $a2
 	mul.d	$s3, $t2, $a3
-	add.d	$fp, $a1, $fp
 	add.d	$fp, $fp, $s3
+	add.d	$fp, $a0, $fp
 	lu12i.w	$s3, 363774
 	ori	$s3, $s3, 3029
 	add.d	$fp, $fp, $s3
@@ -13849,9 +13860,9 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	srli.d	$t1, $t1, 4
 	srli.d	$t2, $t2, 5
 	xor	$t1, $t2, $t1
-	xor	$t1, $t1, $s3
 	xor	$t1, $t1, $a5
 	xor	$t1, $t1, $fp
+	xor	$t1, $t1, $s3
 	pcalau12i	$t2, %pc_hi20(_ZZ9jpegModelR5MixerE2ls+16)
 	ld.d	$fp, $t2, %pc_lo12(_ZZ9jpegModelR5MixerE2ls+16)
 	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
@@ -13859,33 +13870,32 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	xor	$t1, $t1, $t2
 	st.w	$t1, $a4, 28
 	ldx.w	$t1, $fp, $a6
+	ld.wu	$fp, $a1, 12
 	sub.w	$t1, $s8, $t1
-	and	$t1, $t1, $t7
+	and	$t1, $t1, $ra
 	ldx.bu	$t1, $t5, $t1
-	ld.wu	$fp, $a0, 12
-	mul.d	$s3, $t1, $a2
-	add.d	$s3, $a1, $s3
-	mul.d	$s5, $fp, $a3
-	add.d	$s3, $s3, $s5
+	mul.d	$s3, $fp, $a3
+	add.d	$s3, $a0, $s3
 	lu12i.w	$s5, 412603
 	ori	$s5, $s5, 2424
+	add.d	$s3, $s3, $s5
+	mul.d	$s5, $t1, $a2
 	add.d	$s3, $s3, $s5
 	srli.d	$t1, $t1, 4
 	srli.d	$fp, $fp, 5
 	xor	$t1, $fp, $t1
 	bstrpick.d	$fp, $s3, 31, 9
-	xor	$t1, $t1, $fp
-	xor	$fp, $t1, $a5
+	xor	$t1, $t1, $a5
+	xor	$fp, $t1, $fp
 	pcalau12i	$t1, %pc_hi20(_ZZ9jpegModelR5MixerE3lcp+16)
 	ld.d	$t1, $t1, %pc_lo12(_ZZ9jpegModelR5MixerE3lcp+16)
-	xor	$fp, $fp, $s3
+	xor	$t2, $s3, $t2
 	xor	$t2, $fp, $t2
 	st.w	$t2, $a4, 32
 	ld.wu	$fp, $t1, 0
 	ld.wu	$s3, $t1, 4
+	ld.wu	$s5, $a1, 4
 	mul.d	$t2, $fp, $a2
-	add.d	$t2, $a1, $t2
-	ld.wu	$s5, $a0, 4
 	mul.d	$s8, $s3, $a3
 	add.d	$s8, $t2, $s8
 	lu12i.w	$t2, 26856
@@ -13900,411 +13910,411 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	xor	$fp, $fp, $s3
 	srli.d	$s3, $s5, 6
 	xor	$fp, $fp, $s3
-	bstrpick.d	$s3, $s8, 31, 9
-	xor	$fp, $fp, $s3
-	xori	$s3, $a5, 2
-	xor	$fp, $fp, $s3
+	add.d	$s3, $a0, $s8
+	xori	$s5, $a5, 2
+	xor	$fp, $fp, $s5
+	bstrpick.d	$s8, $s3, 31, 9
 	xor	$fp, $fp, $s8
+	xor	$fp, $fp, $s3
 	st.w	$fp, $a4, 36
 	ld.wu	$fp, $t1, 0
-	ld.wu	$s5, $t1, 4
-	mul.d	$s8, $t4, $t2
-	add.d	$s8, $s8, $a1
-	mul.d	$ra, $fp, $a2
-	add.d	$s8, $s8, $ra
-	mul.d	$ra, $s5, $a3
+	ld.wu	$s3, $t1, 4
+	mul.d	$s8, $fp, $a2
+	mul.d	$ra, $s3, $a3
 	add.d	$s8, $s8, $ra
 	lu12i.w	$ra, -511459
 	ori	$ra, $ra, 1537
 	add.d	$s8, $s8, $ra
+	mul.d	$ra, $t4, $t2
+	add.d	$ra, $ra, $a0
+	add.d	$s8, $ra, $s8
 	srli.d	$fp, $fp, 4
-	bstrpick.d	$s7, $s7, 25, 0
-	xor	$fp, $s7, $fp
-	srli.d	$s5, $s5, 5
-	xor	$fp, $fp, $s5
-	bstrpick.d	$s5, $s8, 31, 9
-	xor	$fp, $fp, $s5
+	srli.d	$s3, $s3, 5
 	xor	$fp, $fp, $s3
-	xor	$fp, $fp, $s8
-	st.w	$fp, $a4, 40
-	ld.w	$fp, $t1, 8
+	bstrpick.d	$t7, $t7, 25, 0
+	xor	$t7, $t7, $fp
+	xor	$t7, $t7, $s5
+	bstrpick.d	$fp, $s8, 31, 9
+	xor	$t7, $t7, $s8
+	xor	$t7, $t7, $fp
+	st.w	$t7, $a4, 40
+	ld.w	$t7, $t1, 8
+	ld.wu	$fp, $t1, 0
 	lu12i.w	$s3, 349525
-	ori	$s7, $s3, 1366
-	mul.d	$fp, $fp, $s7
-	srli.d	$s3, $fp, 63
-	srli.d	$fp, $fp, 32
-	ld.wu	$s5, $t1, 0
-	add.d	$fp, $fp, $s3
-	mul.d	$s3, $t6, $a2
-	add.d	$s8, $s3, $a1
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
-	mul.d	$s3, $s5, $a3
-	add.d	$s3, $s8, $s3
-	mul.d	$s8, $fp, $t2
+	ori	$s5, $s3, 1366
+	mul.d	$t7, $t7, $s5
+	srli.d	$s3, $t7, 63
+	srli.d	$t7, $t7, 32
+	add.d	$t7, $t7, $s3
+	mul.d	$s3, $fp, $a3
+	mul.d	$s8, $t7, $t2
 	add.d	$s3, $s3, $s8
 	lu12i.w	$s8, -462630
 	ori	$s8, $s8, 932
 	add.d	$s3, $s3, $s8
-	srli.d	$s5, $s5, 5
-	bstrpick.d	$fp, $fp, 31, 6
-	xor	$fp, $s5, $fp
-	bstrpick.d	$s5, $s3, 31, 9
-	xor	$fp, $fp, $s5
-	srli.d	$s8, $t6, 4
-	st.d	$s8, $sp, 112                   # 8-byte Folded Spill
-	xori	$s5, $a5, 3
-	xor	$t6, $fp, $s5
-	xor	$t6, $t6, $s8
-	xor	$t6, $t6, $s3
-	st.w	$t6, $a4, 44
-	ld.w	$t6, $t1, 12
-	mul.d	$t6, $t6, $s7
-	srli.d	$fp, $t6, 63
-	srli.d	$t6, $t6, 32
-	ld.wu	$s3, $t1, 4
-	add.d	$fp, $t6, $fp
-	st.d	$a6, $sp, 72                    # 8-byte Folded Spill
-	ld.d	$a6, $sp, 88                    # 8-byte Folded Reload
-	mul.d	$t6, $a6, $a2
-	add.d	$t6, $t6, $a1
-	mul.d	$s8, $s3, $a3
-	add.d	$s8, $t6, $s8
-	mul.d	$ra, $fp, $t2
-	add.d	$s8, $s8, $ra
-	lu12i.w	$ra, -413801
-	ori	$ra, $ra, 327
-	add.d	$ra, $s8, $ra
-	srli.d	$s3, $s3, 5
-	bstrpick.d	$fp, $fp, 31, 6
-	xor	$fp, $s3, $fp
-	bstrpick.d	$s3, $ra, 31, 9
-	xor	$fp, $fp, $s3
-	xor	$fp, $fp, $s5
-	srli.d	$s8, $a6, 4
+	srli.d	$fp, $fp, 5
+	bstrpick.d	$t7, $t7, 31, 6
+	xor	$t7, $fp, $t7
+	mul.d	$fp, $t6, $a2
+	add.d	$fp, $fp, $a0
+	st.d	$fp, $sp, 104                   # 8-byte Folded Spill
+	add.d	$fp, $fp, $s3
+	srli.d	$s3, $t6, 4
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	xori	$t6, $a5, 3
+	xor	$t7, $t7, $t6
+	xor	$t7, $t7, $s3
+	bstrpick.d	$s3, $fp, 31, 9
+	xor	$t7, $t7, $s3
+	xor	$t7, $t7, $fp
+	st.w	$t7, $a4, 44
+	ld.w	$t7, $t1, 12
+	mul.d	$t7, $t7, $s5
+	ld.wu	$fp, $t1, 4
+	srli.d	$s3, $t7, 63
+	srli.d	$t7, $t7, 32
+	add.d	$t7, $t7, $s3
+	mul.d	$s3, $fp, $a3
+	mul.d	$s8, $t7, $t2
+	add.d	$s3, $s3, $s8
+	lu12i.w	$s8, -413801
+	ori	$s8, $s8, 327
+	add.d	$s3, $s3, $s8
+	srli.d	$fp, $fp, 5
+	bstrpick.d	$t7, $t7, 31, 6
+	xor	$t7, $fp, $t7
+	xor	$fp, $t7, $t6
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	mul.d	$t6, $s8, $a2
+	add.d	$t7, $t6, $a0
+	add.d	$s3, $t7, $s3
+	srli.d	$t6, $s8, 4
+	xor	$fp, $fp, $t6
+	bstrpick.d	$s8, $s3, 31, 9
 	xor	$fp, $fp, $s8
-	xor	$fp, $fp, $ra
+	xor	$fp, $fp, $s3
 	st.w	$fp, $a4, 48
-	sltui	$fp, $t0, 3
+	sltui	$fp, $a7, 3
 	ori	$s3, $zero, 3
 	masknez	$s3, $s3, $fp
-	maskeqz	$t0, $t0, $fp
-	or	$t0, $t0, $s3
-	mul.d	$t0, $t0, $a3
-	srai.d	$fp, $a7, 2
+	maskeqz	$a7, $a7, $fp
+	or	$a7, $a7, $s3
+	mul.d	$a7, $a7, $a3
+	srai.d	$fp, $t0, 2
 	mul.d	$s3, $fp, $a2
-	add.d	$t0, $s3, $t0
-	add.d	$t0, $t0, $a1
+	add.d	$a7, $s3, $a7
 	lu12i.w	$s3, -391829
 	ori	$s3, $s3, 3495
-	add.d	$t0, $t0, $s3
+	add.d	$a7, $a7, $s3
+	add.d	$a7, $a7, $a0
 	bstrpick.d	$fp, $fp, 31, 4
-	bstrpick.d	$s3, $t0, 31, 9
-	xor	$fp, $fp, $s3
 	xor	$fp, $fp, $a5
-	xor	$t0, $fp, $t0
-	pcalau12i	$fp, %pc_hi20(_ZZ9jpegModelR5MixerE6column)
-	ld.w	$fp, $fp, %pc_lo12(_ZZ9jpegModelR5MixerE6column)
-	lu12i.w	$ra, 16383
-	ori	$s3, $ra, 4092
-	xor	$t0, $t0, $s3
-	st.w	$t0, $a4, 52
-	srai.d	$t0, $fp, 1
-	mul.d	$s5, $t0, $a3
-	add.d	$t3, $t3, $s5
-	lu12i.w	$s5, -343000
-	ori	$s5, $s5, 2890
-	add.d	$t3, $t3, $s5
-	bstrpick.d	$t0, $t0, 31, 5
-	bstrpick.d	$s5, $t3, 31, 9
-	xor	$t0, $t0, $s5
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	xor	$t0, $t0, $s5
-	xor	$t0, $t0, $a5
-	xor	$t0, $t0, $t3
-	xor	$t0, $t0, $s3
-	st.w	$t0, $a4, 56
-	ld.w	$t0, $t1, 8
-	mul.d	$t0, $t0, $s7
-	srli.d	$t3, $t0, 63
-	srli.d	$t0, $t0, 32
-	ld.w	$s3, $t1, 0
-	ld.w	$s5, $t1, 12
-	add.d	$t0, $t0, $t3
-	slli.d	$t0, $t0, 8
-	add.w	$t0, $t0, $s3
-	mul.d	$t3, $s5, $s7
-	ld.w	$s3, $t1, 4
-	srli.d	$s5, $t3, 63
+	xor	$fp, $fp, $a7
+	bstrpick.d	$a7, $a7, 31, 9
+	xor	$a7, $fp, $a7
+	lu12i.w	$fp, 16383
+	ori	$fp, $fp, 4092
+	xor	$a7, $a7, $fp
+	pcalau12i	$s3, %pc_hi20(_ZZ9jpegModelR5MixerE6column)
+	ld.w	$s3, $s3, %pc_lo12(_ZZ9jpegModelR5MixerE6column)
+	st.w	$a7, $a4, 52
+	lu12i.w	$a7, -343000
+	ori	$a7, $a7, 2890
+	srai.d	$s8, $s3, 1
+	mul.d	$ra, $s8, $a3
+	add.d	$a7, $ra, $a7
+	add.d	$a7, $t3, $a7
+	bstrpick.d	$t3, $s8, 31, 5
+	ld.d	$s8, $sp, 96                    # 8-byte Folded Reload
+	xor	$t3, $t3, $s8
+	xor	$t3, $t3, $a5
+	xor	$t3, $t3, $a7
+	bstrpick.d	$a7, $a7, 31, 9
+	xor	$a7, $t3, $a7
+	xor	$a7, $a7, $fp
+	st.w	$a7, $a4, 56
+	ld.w	$a7, $t1, 8
+	mul.d	$a7, $a7, $s5
+	srli.d	$t3, $a7, 63
+	srli.d	$a7, $a7, 32
+	ld.w	$fp, $t1, 0
+	ld.w	$s8, $t1, 12
+	add.d	$a7, $a7, $t3
+	slli.d	$a7, $a7, 8
+	add.w	$a7, $a7, $fp
+	mul.d	$t3, $s8, $s5
+	ld.w	$fp, $t1, 4
+	srli.d	$s8, $t3, 63
 	srli.d	$t3, $t3, 32
-	add.w	$t3, $t3, $s5
+	add.w	$t3, $t3, $s8
 	slli.d	$t3, $t3, 8
-	add.d	$t3, $t3, $s3
-	srai.d	$fp, $fp, 2
+	add.d	$t3, $t3, $fp
+	srai.d	$fp, $s3, 2
 	mul.d	$s3, $fp, $a2
-	add.d	$s3, $a1, $s3
-	mul.d	$s5, $t0, $a3
-	add.d	$s3, $s3, $s5
-	mul.d	$s5, $t3, $t2
-	add.d	$s3, $s3, $s5
-	lu12i.w	$s5, -267315
-	ori	$s5, $s5, 2608
-	add.d	$s3, $s3, $s5
+	add.d	$s3, $a0, $s3
+	mul.d	$s8, $a7, $a3
+	add.d	$s3, $s3, $s8
+	lu12i.w	$s8, -267315
+	ori	$s8, $s8, 2608
+	mul.d	$ra, $t3, $t2
+	add.d	$s8, $ra, $s8
+	add.d	$s3, $s3, $s8
 	bstrpick.d	$fp, $fp, 31, 4
-	bstrpick.d	$t0, $t0, 31, 5
-	xor	$t0, $fp, $t0
+	bstrpick.d	$a7, $a7, 31, 5
+	xor	$a7, $fp, $a7
 	bstrpick.d	$t3, $t3, 31, 6
-	xor	$t0, $t0, $t3
-	bstrpick.d	$t3, $s3, 31, 9
-	xor	$t3, $t0, $t3
-	pcalau12i	$t0, %pc_hi20(_ZZ9jpegModelR5MixerE4ssum)
-	ld.w	$fp, $t0, %pc_lo12(_ZZ9jpegModelR5MixerE4ssum)
-	xori	$t0, $a5, 4
-	xor	$t3, $t3, $t0
+	xor	$t3, $a7, $t3
+	xori	$a7, $a5, 4
+	xor	$t3, $t3, $a7
+	pcalau12i	$fp, %pc_hi20(_ZZ9jpegModelR5MixerE4ssum)
+	ld.w	$fp, $fp, %pc_lo12(_ZZ9jpegModelR5MixerE4ssum)
+	bstrpick.d	$s8, $s3, 31, 9
+	xor	$t3, $t3, $s8
 	xor	$t3, $t3, $s3
 	st.w	$t3, $a4, 60
 	srai.d	$t3, $fp, 4
-	mul.d	$fp, $t3, $a2
+	lu12i.w	$fp, -245342
+	ori	$fp, $fp, 1680
+	mul.d	$s3, $t3, $a2
+	add.d	$fp, $s3, $fp
 	mul.d	$s3, $t4, $a3
-	add.d	$s5, $a1, $s3
-	add.d	$fp, $s5, $fp
-	lu12i.w	$s5, -245342
-	ori	$s5, $s5, 1680
-	add.d	$fp, $fp, $s5
+	add.d	$s8, $a0, $s3
+	add.d	$fp, $s8, $fp
 	bstrpick.d	$t3, $t3, 31, 4
-	bstrpick.d	$s5, $fp, 31, 9
-	xor	$t3, $t3, $s5
-	ld.d	$a6, $sp, 80                    # 8-byte Folded Reload
-	bstrpick.d	$s5, $a6, 58, 0
-	xor	$t3, $t3, $t0
-	xor	$t3, $t3, $s5
+	ld.d	$t4, $sp, 80                    # 8-byte Folded Reload
+	bstrpick.d	$s8, $t4, 58, 0
+	xor	$t3, $t3, $a7
+	xor	$t3, $t3, $s8
+	bstrpick.d	$ra, $fp, 31, 9
+	xor	$t3, $t3, $ra
+	xor	$fp, $fp, $s7
 	xor	$t3, $t3, $fp
-	ld.d	$t4, $sp, 96                    # 8-byte Folded Reload
-	xor	$t3, $t3, $t4
 	st.w	$t3, $a4, 64
-	add.d	$t3, $t8, $s3
-	lu12i.w	$t8, -196513
-	ori	$t8, $t8, 1075
-	add.d	$t3, $t3, $t8
-	bstrpick.d	$t8, $t3, 31, 9
-	xor	$t8, $t0, $t8
-	xor	$t8, $t8, $s5
-	ld.d	$fp, $sp, 152                   # 8-byte Folded Reload
+	lu12i.w	$t3, -196513
+	ori	$t3, $t3, 1075
+	add.d	$t3, $s3, $t3
+	add.d	$t3, $t8, $t3
+	xor	$t8, $a7, $s8
+	ld.d	$t4, $sp, 120                   # 8-byte Folded Reload
+	xor	$t8, $t8, $t4
+	bstrpick.d	$fp, $t3, 31, 9
 	xor	$t8, $t8, $fp
+	xor	$t3, $t3, $s7
+	pcalau12i	$t4, %pc_hi20(_ZZ9jpegModelR5MixerE5ssum3)
+	ld.w	$t4, $t4, %pc_lo12(_ZZ9jpegModelR5MixerE5ssum3)
 	xor	$t3, $t8, $t3
-	pcalau12i	$t8, %pc_hi20(_ZZ9jpegModelR5MixerE5ssum3)
-	ld.w	$t8, $t8, %pc_lo12(_ZZ9jpegModelR5MixerE5ssum3)
-	xor	$t3, $t3, $t4
 	st.w	$t3, $a4, 68
-	srai.d	$a7, $a7, 3
-	srai.d	$t3, $t8, 3
-	ld.wu	$t4, $a0, 12
-	mul.d	$t8, $a7, $a2
+	srai.d	$t0, $t0, 3
+	srai.d	$t3, $t4, 3
+	ld.wu	$t4, $a1, 12
+	mul.d	$t8, $t0, $a2
 	mul.d	$fp, $t3, $a3
-	add.d	$t8, $t8, $a1
 	add.d	$t8, $t8, $fp
 	mul.d	$fp, $t4, $t2
 	add.d	$t8, $t8, $fp
 	lu12i.w	$fp, -120828
 	ori	$fp, $fp, 793
 	add.d	$t8, $t8, $fp
-	bstrpick.d	$a7, $a7, 31, 4
+	bstrpick.d	$t0, $t0, 31, 4
 	bstrpick.d	$t3, $t3, 31, 5
+	xor	$t0, $t0, $t3
+	add.d	$t3, $t8, $a0
+	srli.d	$t4, $t4, 6
+	xor	$t0, $t0, $t4
+	bstrpick.d	$t4, $t3, 31, 9
+	xor	$a7, $t0, $a7
+	xor	$a7, $a7, $t4
 	xor	$a7, $a7, $t3
-	srli.d	$t3, $t4, 6
-	xor	$a7, $a7, $t3
-	bstrpick.d	$t3, $t8, 31, 9
-	xor	$a7, $a7, $t3
-	xor	$a7, $a7, $t0
-	xor	$a7, $a7, $t8
 	st.w	$a7, $a4, 72
 	ld.w	$a7, $t1, 0
-	mul.d	$a7, $a7, $s7
+	mul.d	$a7, $a7, $s5
 	ld.w	$t0, $t1, 4
 	srli.d	$t3, $a7, 63
 	srli.d	$a7, $a7, 32
 	add.d	$a7, $a7, $t3
-	mul.d	$t0, $t0, $s7
+	mul.d	$t0, $t0, $s5
 	srli.d	$t3, $t0, 63
+	ld.wu	$t4, $a1, 20
 	srli.d	$t0, $t0, 32
 	add.w	$t0, $t0, $t3
-	ld.wu	$t3, $a0, 20
-	mul.d	$t4, $a7, $a2
-	add.w	$t4, $a1, $t4
-	mul.d	$t8, $t0, $a3
-	add.d	$t4, $t4, $t8
-	mul.d	$t8, $t3, $t2
-	add.d	$t4, $t4, $t8
+	mul.d	$t3, $t0, $a3
+	mul.d	$t8, $t4, $t2
+	add.d	$t3, $t3, $t8
 	lu12i.w	$t8, -71999
 	ori	$t8, $t8, 188
-	add.d	$t4, $t4, $t8
+	add.d	$t3, $t3, $t8
+	mul.d	$t8, $a7, $a2
+	add.w	$t8, $a0, $t8
+	add.d	$t3, $t8, $t3
 	bstrpick.d	$a7, $a7, 31, 4
+	srli.d	$t4, $t4, 6
+	xor	$a7, $a7, $t4
 	bstrpick.d	$t0, $t0, 31, 5
 	xor	$a7, $a7, $t0
-	srli.d	$t0, $t3, 6
-	xor	$a7, $a7, $t0
-	bstrpick.d	$t0, $t4, 31, 9
-	xor	$a7, $a7, $t0
+	bstrpick.d	$t0, $t3, 31, 9
 	xor	$a7, $a5, $a7
-	xor	$a7, $a7, $t4
+	xor	$a7, $a7, $t3
+	xor	$a7, $a7, $t0
 	xori	$a7, $a7, 5
 	st.w	$a7, $a4, 76
-	ld.d	$a7, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 152                   # 8-byte Folded Reload
 	ldx.bu	$a7, $t5, $a7
-	ld.wu	$t0, $a0, 24
+	ld.wu	$t0, $a1, 24
 	mul.d	$t3, $a7, $a2
 	mul.d	$t4, $t0, $a3
-	add.d	$t3, $a1, $t3
 	add.d	$t3, $t3, $t4
+	add.d	$t3, $a0, $t3
 	lu12i.w	$t4, -50027
 	ori	$t4, $t4, 3356
 	add.d	$t3, $t3, $t4
 	srli.d	$a7, $a7, 4
 	srli.d	$t0, $t0, 5
 	xor	$a7, $t0, $a7
-	bstrpick.d	$t0, $t3, 31, 9
-	xor	$a7, $a7, $t0
 	xor	$a7, $a7, $a5
 	xor	$a7, $a7, $t3
-	ori	$t0, $ra, 4090
+	bstrpick.d	$t0, $t3, 31, 9
+	xor	$a7, $a7, $t0
+	lu12i.w	$t0, 16383
+	ori	$t0, $t0, 4090
 	xor	$a7, $a7, $t0
 	st.w	$a7, $a4, 80
 	ld.d	$a7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 72                    # 8-byte Folded Reload
 	ldx.w	$a6, $a7, $a6
-	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
-	sub.w	$a6, $a7, $a6
-	and	$a6, $a6, $t7
+	ld.wu	$a7, $a1, 16
+	ld.d	$t3, $sp, 144                   # 8-byte Folded Reload
+	sub.w	$a6, $t3, $a6
+	ld.d	$t3, $sp, 136                   # 8-byte Folded Reload
+	and	$a6, $a6, $t3
 	ldx.bu	$a6, $t5, $a6
-	ld.wu	$a7, $a0, 16
-	mul.d	$t3, $a6, $a2
-	mul.d	$t4, $a7, $a3
-	add.d	$t3, $a1, $t3
-	add.d	$t3, $t3, $t4
+	mul.d	$t3, $a7, $a3
+	add.d	$t3, $a0, $t3
 	lu12i.w	$t4, -1198
 	ori	$t4, $t4, 2751
 	add.d	$t3, $t3, $t4
-	bstrpick.d	$t4, $t3, 31, 9
+	mul.d	$t4, $a6, $a2
+	add.d	$t3, $t3, $t4
 	srli.d	$a6, $a6, 4
 	srli.d	$a7, $a7, 5
 	xor	$a6, $a7, $a6
-	xor	$a6, $a6, $t4
+	bstrpick.d	$a7, $t3, 31, 9
 	xor	$a6, $a6, $a5
-	xor	$a6, $a6, $t3
-	xor	$a6, $a6, $t0
+	xor	$a6, $a6, $a7
+	xor	$a7, $t3, $t0
+	xor	$a6, $a6, $a7
 	st.w	$a6, $a4, 84
-	ld.wu	$a6, $a0, 8
+	ld.wu	$a6, $a1, 8
 	mul.d	$a7, $a6, $a2
 	lu12i.w	$t0, 30540
 	ori	$t0, $t0, 2075
-	add.d	$t0, $a1, $t0
+	add.d	$t0, $a0, $t0
 	add.d	$a7, $t0, $a7
 	bstrpick.d	$t3, $a7, 31, 9
 	srli.d	$a6, $a6, 4
-	xor	$a6, $a6, $t3
 	xor	$a6, $a6, $a5
 	xor	$a6, $a6, $a7
+	xor	$a6, $a6, $t3
 	lu12i.w	$a7, 16384
 	ori	$a7, $a7, 5
 	xor	$a6, $a6, $a7
 	st.w	$a6, $a4, 88
-	ld.wu	$a6, $a0, 0
+	ld.wu	$a6, $a1, 0
 	mul.d	$t3, $a6, $a2
 	add.d	$t3, $t0, $t3
-	bstrpick.d	$t4, $t3, 31, 9
 	srli.d	$a6, $a6, 4
-	xor	$a6, $a6, $t4
 	xor	$a6, $a6, $a5
+	xor	$a6, $a6, $t3
+	bstrpick.d	$t3, $t3, 31, 9
 	xor	$a6, $a6, $t3
 	xor	$a6, $a6, $a7
 	st.w	$a6, $a4, 92
-	ld.wu	$a6, $a0, 4
+	ld.wu	$a6, $a1, 4
 	mul.d	$t3, $a6, $a2
 	add.d	$t0, $t0, $t3
 	bstrpick.d	$t3, $t0, 31, 9
 	srli.d	$a6, $a6, 4
-	xor	$a6, $a6, $t3
 	xor	$a6, $a6, $a5
 	xor	$a6, $a6, $t0
+	xor	$a6, $a6, $t3
 	xor	$a6, $a6, $a7
 	st.w	$a6, $a4, 96
 	ld.wu	$a6, $t1, 4
-	ld.wu	$a7, $a0, 24
+	ld.wu	$a7, $a1, 24
 	mul.d	$t0, $a6, $a3
-	add.d	$t0, $t6, $t0
 	mul.d	$t3, $a7, $t2
 	add.d	$t0, $t0, $t3
 	lu12i.w	$t3, 123316
 	ori	$t3, $t3, 1864
 	add.d	$t0, $t0, $t3
+	add.d	$t0, $t7, $t0
 	srli.d	$a6, $a6, 5
 	srli.d	$a7, $a7, 6
 	xor	$a6, $a6, $a7
 	bstrpick.d	$a7, $t0, 31, 9
-	xor	$a6, $a6, $a7
 	xori	$a5, $a5, 6
 	xor	$a6, $a6, $a5
-	xor	$a6, $a6, $s8
+	xor	$a6, $a6, $t6
+	xor	$a6, $a6, $a7
 	xor	$a6, $a6, $t0
 	st.w	$a6, $a4, 100
 	ld.wu	$a6, $t1, 0
-	ld.wu	$a7, $a0, 16
+	ld.wu	$a7, $a1, 16
 	mul.d	$t0, $a6, $a3
-	ld.d	$t3, $sp, 120                   # 8-byte Folded Reload
-	add.d	$t0, $t3, $t0
 	mul.d	$t3, $a7, $t2
 	add.d	$t0, $t0, $t3
 	lu12i.w	$t3, 172145
 	ori	$t3, $t3, 1259
 	add.d	$t0, $t0, $t3
+	ld.d	$t3, $sp, 104                   # 8-byte Folded Reload
+	add.d	$t0, $t3, $t0
 	bstrpick.d	$t3, $t0, 31, 9
 	srli.d	$a6, $a6, 5
 	srli.d	$a7, $a7, 6
 	xor	$a6, $a6, $a7
-	xor	$a6, $a6, $t3
 	xor	$a6, $a6, $a5
 	ld.d	$a7, $sp, 112                   # 8-byte Folded Reload
 	xor	$a6, $a6, $a7
+	xor	$a6, $a6, $t3
 	xor	$a6, $a6, $t0
-	ld.w	$a7, $s0, 96
 	st.w	$a6, $a4, 104
-	ld.d	$a6, $s0, 32
-	ld.wu	$t0, $t1, 0
-	slli.d	$t3, $a7, 1
+	ld.w	$a6, $s0, 96
+	ld.wu	$a7, $t1, 0
+	ld.d	$t0, $s0, 32
+	ld.wu	$t1, $t1, 4
+	slli.d	$t3, $a6, 1
 	ori	$t4, $zero, 128
-	stx.h	$t4, $a6, $t3
-	ld.wu	$a6, $t1, 4
-	ld.wu	$a0, $a0, 12
-	mul.d	$a2, $t0, $a2
-	add.d	$a1, $a1, $a2
-	mul.d	$a2, $a6, $a3
-	add.d	$a1, $a1, $a2
-	mul.d	$a2, $a0, $t2
-	add.d	$a1, $a1, $a2
-	lu12i.w	$a2, 220974
-	ori	$a2, $a2, 654
-	add.d	$a1, $a1, $a2
-	srli.d	$a2, $t0, 4
-	srli.d	$a3, $a6, 5
+	stx.h	$t4, $t0, $t3
+	ld.wu	$a1, $a1, 12
+	mul.d	$a2, $a7, $a2
+	mul.d	$a3, $t1, $a3
+	add.d	$a2, $a2, $a3
+	mul.d	$a3, $a1, $t2
+	add.d	$a2, $a2, $a3
+	lu12i.w	$a3, 220974
+	ori	$a3, $a3, 654
+	add.d	$a2, $a2, $a3
+	add.d	$a0, $a0, $a2
+	srli.d	$a2, $a7, 4
+	srli.d	$a3, $t1, 5
 	xor	$a2, $a2, $a3
-	srli.d	$a0, $a0, 6
-	xor	$a0, $a2, $a0
-	bstrpick.d	$a2, $a1, 31, 9
-	xor	$a0, $a0, $a2
-	xor	$a0, $a0, $a5
-	xor	$a0, $a0, $a1
+	srli.d	$a1, $a1, 6
+	xor	$a1, $a2, $a1
+	xor	$a1, $a1, $a5
+	bstrpick.d	$a2, $a0, 31, 9
+	xor	$a1, $a1, $a2
+	xor	$a0, $a1, $a0
 	st.w	$a0, $a4, 108
-	addi.d	$a0, $a7, 1
+	addi.d	$a0, $a6, 1
 	st.w	$a0, $s0, 96
 	pcalau12i	$a0, %pc_hi20(_ZZ9jpegModelR5MixerE2sm+24)
 	addi.d	$fp, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE2sm+24)
+	move	$s5, $zero
 	move	$s7, $zero
-	move	$s8, $zero
 	lu12i.w	$a0, 1
-	ori	$s5, $a0, 4094
+	ori	$s8, $a0, 4094
 	ori	$s3, $zero, 112
 .LBB48_228:                             # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s6, %pc_lo12(_ZZ9jpegModelR5MixerE3cxt+16)
-	ldx.w	$a1, $a0, $s7
+	ldx.w	$a1, $a0, $s5
 	pcalau12i	$a0, %pc_hi20(_ZZ9jpegModelR5MixerE1t)
 	addi.d	$a0, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE1t)
 	pcaddu18i	$ra, %call36(_ZN2BHILi9EEixEj)
@@ -14315,7 +14325,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	slli.d	$a1, $a1, 2
 	ldx.wu	$a4, $a2, $a1
 	addi.d	$a5, $a0, 1
-	stx.d	$a5, $a3, $s8
+	stx.d	$a5, $a3, $s7
 	andi	$a3, $a4, 1023
 	addi.d	$a5, $a3, -1023
 	sltui	$a5, $a5, 1
@@ -14345,7 +14355,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	ld.d	$a1, $s2, %pc_lo12(stretch+16)
 	srli.d	$a0, $a0, 19
 	ld.w	$a2, $s0, 96
-	and	$a0, $a0, $s5
+	and	$a0, $a0, $s8
 	ldx.h	$a0, $a1, $a0
 	ld.d	$a1, $s0, 32
 	addi.d	$a3, $a2, 1
@@ -14353,9 +14363,9 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	slli.d	$a2, $a2, 1
 	stx.h	$a0, $a1, $a2
 	addi.d	$fp, $fp, 32
-	addi.d	$s7, $s7, 4
-	addi.d	$s8, $s8, 8
-	bne	$s7, $s3, .LBB48_228
+	addi.d	$s5, $s5, 4
+	addi.d	$s7, $s7, 8
+	bne	$s5, $s3, .LBB48_228
 	b	.LBB48_231
 .LBB48_229:
 	ld.d	$a2, $s1, %pc_lo12(_ZZ9jpegModelR5MixerE2cp+16)
@@ -15047,7 +15057,7 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	st.w	$zero, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE6column)
 	pcalau12i	$a0, %pc_hi20(_ZZ9jpegModelR5MixerE3row)
 	st.w	$zero, $a0, %pc_lo12(_ZZ9jpegModelR5MixerE3row)
-	ld.d	$t7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 136                   # 8-byte Folded Reload
 	pcalau12i	$s4, %pc_hi20(y)
 	bnez	$s6, .LBB48_108
 	b	.LBB48_207
@@ -17296,8 +17306,8 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	slli.d	$a2, $a4, 8
 	or	$a2, $a2, $a3
 	slli.d	$a3, $a5, 16
-	or	$a2, $a2, $a3
 	slli.d	$a1, $a1, 24
+	or	$a1, $a3, $a1
 	or	$a1, $a2, $a1
 	addi.d	$a2, $s5, -1
 	st.w	$a1, $t5, %pc_lo12(_ZZ8wavModelR5MixerE1s)
@@ -17564,21 +17574,21 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	ldx.bu	$a2, $a0, $a2
 	lu12i.w	$a3, 7325
 	ori	$t0, $a3, 2291
-	mul.d	$a3, $a2, $t0
-	lu12i.w	$a5, 12208
-	ori	$t1, $a5, 271
-	mul.d	$a5, $s6, $t1
-	add.w	$a3, $a5, $a3
+	mul.d	$a5, $a2, $t0
+	lu12i.w	$a4, 12208
+	ori	$t1, $a4, 271
+	mul.d	$a4, $s6, $t1
+	add.w	$a5, $a4, $a5
 	lu12i.w	$a6, 4881
 	ori	$a6, $a6, 3097
-	add.d	$a6, $a3, $a6
+	add.d	$a6, $a5, $a6
 	bstrpick.d	$a7, $a6, 31, 9
 	srli.d	$a2, $a2, 3
-	bstrpick.d	$a3, $s6, 31, 4
-	xor	$a2, $a2, $a7
-	xor	$a2, $a2, $a3
-	ld.w	$t2, $t8, 136
+	bstrpick.d	$a5, $s6, 31, 4
+	xor	$a2, $a2, $a5
 	xor	$a2, $a2, $a6
+	ld.w	$t2, $t8, 136
+	xor	$a2, $a2, $a7
 	lu12i.w	$s1, 16384
 	xor	$a2, $a2, $s1
 	addi.d	$a6, $t2, 1
@@ -17590,11 +17600,11 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	rotri.w	$a2, $a2, 16
 	lu12i.w	$a7, 30140
 	ori	$a7, $a7, 3351
-	ld.d	$a4, $t8, 96
+	ld.d	$a3, $t8, 96
 	mul.d	$a2, $a2, $a7
 	add.d	$a2, $a2, $t2
 	slli.d	$t2, $t2, 2
-	stx.w	$a2, $a4, $t2
+	stx.w	$a2, $a3, $t2
 	ld.w	$a2, $s5, %pc_lo12(pos)
 	ld.w	$t2, $s8, 0
 	addi.w	$t3, $a2, -1
@@ -17618,8 +17628,8 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	ori	$t5, $t5, 323
 	mul.d	$t5, $s6, $t5
 	st.d	$t5, $sp, 216                   # 8-byte Folded Spill
-	add.d	$t3, $t5, $t3
-	add.d	$t3, $t3, $t4
+	add.d	$t4, $t5, $t4
+	add.d	$t3, $t4, $t3
 	add.w	$a2, $t3, $a2
 	lu12i.w	$t3, 97657
 	ori	$t3, $t3, 2886
@@ -17629,9 +17639,9 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	bstrpick.d	$t5, $s6, 31, 6
 	st.d	$t5, $sp, 224                   # 8-byte Folded Spill
 	ld.w	$t4, $t8, 136
-	xor	$t2, $t2, $t3
 	xor	$t2, $t2, $t5
 	xor	$a2, $t2, $a2
+	xor	$a2, $a2, $t3
 	addi.d	$t2, $t4, 1
 	st.w	$t2, $t8, 136
 	mul.d	$a2, $a2, $a6
@@ -17640,7 +17650,7 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	mul.d	$a2, $a2, $a7
 	add.d	$a2, $a2, $t4
 	slli.d	$t2, $t4, 2
-	stx.w	$a2, $a4, $t2
+	stx.w	$a2, $a3, $t2
 	slli.d	$t3, $a1, 1
 	ld.w	$t2, $s5, %pc_lo12(pos)
 	ld.w	$t5, $s8, 0
@@ -17671,28 +17681,28 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	or	$t2, $t5, $t2
 	bstrpick.d	$t5, $t2, 27, 3
 	mul.d	$t2, $t2, $t0
-	st.d	$a5, $sp, 88                    # 8-byte Folded Spill
-	add.w	$t2, $a5, $t2
+	st.d	$a4, $sp, 192                   # 8-byte Folded Spill
+	add.w	$t2, $a4, $t2
 	lu12i.w	$t6, 102539
 	ori	$t6, $t6, 1887
 	add.d	$t2, $t2, $t6
 	bstrpick.d	$t6, $t2, 31, 9
 	bstrpick.d	$t5, $t5, 60, 0
-	xor	$t5, $t5, $t6
-	ld.w	$t6, $t8, 136
-	st.d	$a3, $sp, 192                   # 8-byte Folded Spill
-	xor	$t5, $t5, $a3
+	st.d	$a5, $sp, 88                    # 8-byte Folded Spill
+	xor	$t5, $t5, $a5
+	ld.w	$t7, $t8, 136
 	xor	$t2, $t5, $t2
+	xor	$t2, $t2, $t6
 	xor	$t2, $t2, $s1
-	addi.d	$t5, $t6, 1
+	addi.d	$t5, $t7, 1
 	st.w	$t5, $t8, 136
 	mul.d	$t2, $t2, $a6
-	add.d	$t2, $t2, $t6
+	add.d	$t2, $t2, $t7
 	rotri.w	$t2, $t2, 16
 	mul.d	$t2, $t2, $a7
-	add.d	$t2, $t2, $t6
-	slli.d	$t5, $t6, 2
-	stx.w	$t2, $a4, $t5
+	add.d	$t2, $t2, $t7
+	slli.d	$t5, $t7, 2
+	stx.w	$t2, $a3, $t5
 	ld.w	$t2, $s5, %pc_lo12(pos)
 	ld.w	$t5, $s8, 0
 	bstrpick.d	$t7, $s6, 31, 5
@@ -17718,7 +17728,7 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	or	$t6, $t6, $fp
 	slli.d	$t6, $t6, 5
 	srli.d	$fp, $s2, 3
-	move	$a3, $s5
+	move	$a4, $s5
 	alsl.d	$s5, $a1, $a1, 2
 	alsl.d	$s2, $a1, $s0, 1
 	sub.w	$s3, $t2, $s5
@@ -17736,8 +17746,8 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	mul.d	$s3, $t2, $t1
 	mul.d	$a2, $s6, $s7
 	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	add.d	$t5, $a2, $t5
-	add.w	$t5, $t5, $s3
+	add.d	$s3, $a2, $s3
+	add.w	$t5, $s3, $t5
 	lu12i.w	$s3, 168459
 	ori	$s3, $s3, 1353
 	add.d	$t5, $t5, $s3
@@ -17746,10 +17756,10 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	srli.d	$t2, $t2, 4
 	bstrpick.d	$a2, $t7, 58, 0
 	xor	$t2, $t2, $fp
-	xor	$t2, $t2, $s3
 	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	xor	$t2, $t2, $a2
 	xor	$t2, $t2, $t5
+	xor	$t2, $t2, $s3
 	ld.w	$t5, $t8, 136
 	lu12i.w	$a2, 16383
 	ori	$t7, $a2, 4094
@@ -17762,8 +17772,8 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	mul.d	$t2, $t2, $a7
 	add.d	$t2, $t2, $t5
 	slli.d	$t5, $t5, 2
-	stx.w	$t2, $a4, $t5
-	ld.w	$s3, $a3, %pc_lo12(pos)
+	stx.w	$t2, $a3, $t5
+	ld.w	$s3, $a4, %pc_lo12(pos)
 	ld.w	$t2, $s8, 0
 	sub.w	$t5, $s3, $a1
 	addi.w	$s4, $t2, -1
@@ -17826,13 +17836,13 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	alsl.d	$s8, $a1, $s6, 2
 	sub.w	$s3, $s3, $s8
 	and	$s3, $s4, $s3
+	ldx.b	$s3, $a0, $s3
 	ldx.bu	$t8, $a0, $t8
 	bstrpick.d	$s1, $s1, 7, 6
-	ldx.b	$s3, $a0, $s3
-	slli.d	$t6, $t6, 4
 	slli.d	$s1, $s1, 2
-	or	$t6, $t6, $s1
-	bstrpick.d	$s1, $s3, 7, 6
+	bstrpick.d	$s3, $s3, 7, 6
+	or	$s1, $s1, $s3
+	slli.d	$t6, $t6, 4
 	or	$t6, $t6, $s1
 	srli.d	$t8, $t8, 5
 	or	$t8, $t5, $t8
@@ -17853,28 +17863,28 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	xor	$t2, $t2, $t5
 	addu16i.d	$t5, $t8, 15259
 	addi.d	$t5, $t5, 1071
-	bstrpick.d	$t6, $t5, 31, 9
-	ld.w	$t8, $a2, 136
-	xor	$t2, $t2, $t6
 	ld.d	$t0, $sp, 224                   # 8-byte Folded Reload
 	xor	$t2, $t2, $t0
+	ld.w	$t6, $a2, 136
 	xor	$t2, $t2, $t5
-	addi.d	$t5, $t8, 1
+	bstrpick.d	$t5, $t5, 31, 9
+	xor	$t2, $t2, $t5
+	addi.d	$t5, $t6, 1
 	st.w	$t5, $a2, 136
 	xori	$t2, $t2, 1
 	move	$t1, $a6
 	mul.d	$t2, $t2, $a6
-	add.d	$t2, $t2, $t8
+	add.d	$t2, $t2, $t6
 	rotri.w	$t2, $t2, 16
 	st.d	$a7, $sp, 48                    # 8-byte Folded Spill
 	mul.d	$t2, $t2, $a7
-	add.d	$t2, $t2, $t8
-	slli.d	$t5, $t8, 2
-	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
-	stx.w	$t2, $a4, $t5
+	add.d	$t2, $t2, $t6
+	slli.d	$t5, $t6, 2
+	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
+	stx.w	$t2, $a3, $t5
 	move	$s1, $a5
 	ld.w	$t2, $a5, 0
-	ld.w	$s3, $a3, %pc_lo12(pos)
+	ld.w	$s3, $a4, %pc_lo12(pos)
 	addi.w	$s4, $t2, -1
 	sub.w	$t2, $s3, $a1
 	and	$t2, $s4, $t2
@@ -18044,14 +18054,14 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	or	$t2, $t5, $t2
 	ld.d	$t0, $sp, 40                    # 8-byte Folded Reload
 	mul.d	$t5, $fp, $t0
-	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
-	mul.d	$t6, $s5, $a4
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
-	mul.d	$t7, $t2, $a3
-	ld.d	$a3, $sp, 216                   # 8-byte Folded Reload
-	add.d	$t5, $a3, $t5
-	add.d	$t5, $t5, $t6
-	add.w	$t5, $t5, $t7
+	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	mul.d	$t6, $s5, $a3
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	mul.d	$t7, $t2, $a4
+	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	add.d	$t5, $a4, $t5
+	add.d	$t6, $t6, $t7
+	add.w	$t5, $t5, $t6
 	lu12i.w	$t6, 292973
 	ori	$t6, $t6, 466
 	add.d	$t5, $t5, $t6
@@ -18061,22 +18071,22 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	bstrpick.d	$t2, $t2, 31, 5
 	xor	$t7, $t7, $t8
 	xor	$t2, $t7, $t2
-	xor	$t2, $t2, $t6
-	ld.w	$t6, $t4, 136
-	ld.d	$a3, $sp, 224                   # 8-byte Folded Reload
-	xor	$t2, $t2, $a3
+	ld.d	$a4, $sp, 224                   # 8-byte Folded Reload
+	xor	$t2, $t2, $a4
+	ld.w	$t7, $t4, 136
 	xor	$t2, $t2, $t5
+	xor	$t2, $t2, $t6
 	xori	$t2, $t2, 1
-	addi.d	$t5, $t6, 1
+	addi.d	$t5, $t7, 1
 	st.w	$t5, $t4, 136
 	move	$a6, $t1
 	mul.d	$t2, $t2, $t1
-	add.d	$t2, $t2, $t6
+	add.d	$t2, $t2, $t7
 	rotri.w	$t2, $t2, 16
 	ld.d	$a7, $sp, 48                    # 8-byte Folded Reload
 	mul.d	$t2, $t2, $a7
-	add.d	$t2, $t2, $t6
-	slli.d	$t5, $t6, 2
+	add.d	$t2, $t2, $t7
+	slli.d	$t5, $t7, 2
 	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
 	stx.w	$t2, $s2, $t5
 	pcalau12i	$t2, %pc_hi20(_ZZ8wavModelR5MixerE2pr)
@@ -18085,32 +18095,32 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	ldx.w	$t8, $t2, $t5
 	srai.d	$t5, $t8, 8
 	mul.d	$s4, $t5, $t0
-	ld.d	$a5, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 192                   # 8-byte Folded Reload
 	add.w	$t6, $a5, $s4
 	lu12i.w	$t7, 297854
 	ori	$t7, $t7, 3563
 	add.d	$t6, $t6, $t7
 	bstrpick.d	$t7, $t6, 31, 9
 	bstrpick.d	$s3, $t5, 31, 3
-	xor	$t5, $s3, $t7
-	ld.d	$ra, $sp, 192                   # 8-byte Folded Reload
-	xor	$t5, $t5, $ra
-	ld.w	$t7, $t4, 136
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	xor	$t5, $s3, $ra
 	xor	$t5, $t5, $t6
+	ld.w	$t6, $t4, 136
+	xor	$t5, $t5, $t7
 	lu12i.w	$s1, 16384
-	ori	$t6, $s1, 1
-	xor	$t5, $t5, $t6
-	addi.d	$t6, $t7, 1
-	st.w	$t6, $t4, 136
+	ori	$t7, $s1, 1
+	xor	$t5, $t5, $t7
+	addi.d	$t7, $t6, 1
+	st.w	$t7, $t4, 136
 	mul.d	$t5, $t5, $t1
-	add.d	$t5, $t5, $t7
+	add.d	$t5, $t5, $t6
 	rotri.w	$t5, $t5, 16
 	mul.d	$t5, $t5, $a7
-	add.d	$t5, $t5, $t7
-	slli.d	$t6, $t7, 2
+	add.d	$t5, $t5, $t6
+	slli.d	$t6, $t6, 2
 	stx.w	$t5, $s2, $t6
-	ld.d	$a3, $sp, 184                   # 8-byte Folded Reload
-	ld.w	$t5, $a3, %pc_lo12(pos)
+	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
+	ld.w	$t5, $a4, %pc_lo12(pos)
 	ld.w	$t6, $s8, 0
 	addi.d	$s0, $a1, 1
 	sub.w	$t5, $t5, $s0
@@ -18136,22 +18146,22 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	add.d	$t5, $t5, $t6
 	bstrpick.d	$t6, $t5, 31, 9
 	bstrpick.d	$t2, $t2, 31, 3
-	xor	$t2, $t2, $t6
 	xor	$t2, $t2, $ra
-	ld.w	$t6, $t4, 136
 	xor	$t2, $t2, $t5
+	ld.w	$t5, $t4, 136
+	xor	$t2, $t2, $t6
 	ori	$s1, $s1, 2
 	xor	$t2, $t2, $s1
-	addi.d	$t5, $t6, 1
-	st.w	$t5, $t4, 136
+	addi.d	$t6, $t5, 1
+	st.w	$t6, $t4, 136
 	mul.d	$t2, $t2, $t1
-	add.d	$t2, $t2, $t6
+	add.d	$t2, $t2, $t5
 	rotri.w	$t2, $t2, 16
 	mul.d	$t2, $t2, $a7
-	add.d	$t2, $t2, $t6
-	slli.d	$t5, $t6, 2
+	add.d	$t2, $t2, $t5
+	slli.d	$t5, $t5, 2
 	stx.w	$t2, $s2, $t5
-	ld.w	$t5, $a3, %pc_lo12(pos)
+	ld.w	$t5, $a4, %pc_lo12(pos)
 	ld.w	$t2, $s8, 0
 	sub.w	$t6, $t5, $s0
 	addi.w	$s5, $t2, -1
@@ -18174,7 +18184,7 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	srli.d	$t6, $t6, 16
 	ld.w	$t3, $t7, 16
 	slli.w	$t7, $s5, 24
-	move	$s5, $a3
+	move	$s5, $a4
 	slli.w	$t5, $t5, 16
 	or	$t5, $t7, $t5
 	add.d	$t7, $t3, $fp
@@ -18184,32 +18194,32 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	add.d	$t6, $a2, $s4
 	srai.d	$t5, $t5, 9
-	mul.d	$t1, $t5, $a4
+	mul.d	$t1, $t5, $a3
 	add.w	$t1, $t6, $t1
 	lu12i.w	$t6, 412603
 	ori	$t6, $t6, 2424
 	add.d	$t1, $t1, $t6
-	bstrpick.d	$t6, $t1, 31, 9
 	bstrpick.d	$t5, $t5, 31, 4
-	xor	$t5, $t5, $t6
 	xor	$t5, $t5, $s3
+	bstrpick.d	$t6, $t1, 31, 9
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	xor	$t5, $t5, $a2
-	ld.w	$t6, $t4, 136
 	xor	$t1, $t5, $t1
+	ld.w	$t5, $t4, 136
+	xor	$t1, $t1, $t6
 	lu12i.w	$a2, 16383
-	ori	$t5, $a2, 4093
-	xor	$t1, $t1, $t5
-	addi.d	$t5, $t6, 1
-	st.w	$t5, $t4, 136
+	ori	$t6, $a2, 4093
+	xor	$t1, $t1, $t6
+	addi.d	$t6, $t5, 1
+	st.w	$t6, $t4, 136
 	mul.d	$t1, $t1, $a6
-	add.d	$t1, $t1, $t6
+	add.d	$t1, $t1, $t5
 	rotri.w	$t1, $t1, 16
 	mul.d	$t1, $t1, $a7
-	add.d	$t1, $t1, $t6
-	slli.d	$t5, $t6, 2
+	add.d	$t1, $t1, $t5
+	slli.d	$t5, $t5, 2
 	stx.w	$t1, $s2, $t5
-	ld.w	$t1, $a3, %pc_lo12(pos)
+	ld.w	$t1, $a4, %pc_lo12(pos)
 	ld.w	$t5, $s8, 0
 	sub.w	$t6, $t1, $s0
 	addi.w	$t5, $t5, -1
@@ -18234,20 +18244,20 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	srli.d	$t1, $t1, 16
 	slli.d	$t6, $fp, 1
 	sub.d	$t6, $t8, $t6
-	add.d	$t3, $t6, $t3
 	add.d	$t3, $t3, $t5
+	add.d	$t3, $t6, $t3
 	sub.w	$t1, $t3, $t1
 	srai.d	$t1, $t1, 8
-	mul.d	$a4, $t1, $t0
-	add.w	$a4, $a5, $a4
-	lu12i.w	$a5, 444341
-	ori	$a5, $a5, 1748
-	add.d	$a4, $a4, $a5
-	bstrpick.d	$a5, $a4, 31, 9
+	mul.d	$a3, $t1, $t0
+	add.w	$a3, $a5, $a3
+	lu12i.w	$a4, 444341
+	ori	$a4, $a4, 1748
+	add.d	$a3, $a3, $a4
+	bstrpick.d	$a4, $a3, 31, 9
 	bstrpick.d	$t1, $t1, 31, 3
-	xor	$a5, $t1, $a5
+	xor	$a5, $t1, $ra
 	ld.w	$t1, $t4, 136
-	xor	$a3, $a5, $ra
+	xor	$a3, $a5, $a3
 	xor	$a3, $a3, $a4
 	xor	$a3, $a3, $s1
 	addi.d	$a4, $t1, 1
@@ -18295,8 +18305,8 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	and	$a6, $a4, $a6
 	ldx.bu	$t1, $a0, $a6
 	srli.d	$t0, $t0, 16
-	add.d	$a5, $a5, $t8
 	add.d	$a5, $a5, $a7
+	add.d	$a5, $a5, $t8
 	add.d	$a7, $t0, $t1
 	sub.w	$a5, $a5, $a7
 	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
@@ -18501,13 +18511,13 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	sub.d	$a1, $a4, $a1
 	sub.d	$a0, $t8, $a0
 	srli.d	$a2, $a2, 16
-	add.d	$a0, $a0, $a3
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.wu	$a3, $fp, 0
 	add.d	$a0, $a0, $a2
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.wu	$a2, $fp, 0
 	alsl.d	$a1, $a1, $a1, 2
-	add.w	$a0, $a0, $a1
-	and	$a1, $a3, $a5
+	add.d	$a0, $a0, $a1
+	add.w	$a0, $a0, $a3
+	and	$a1, $a2, $a5
 	srli.d	$a0, $a0, 1
 	addi.d	$a1, $a1, -256
 	and	$a0, $a1, $a0
@@ -19218,10 +19228,10 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	bstrpick.d	$t0, $a7, 31, 9
 	srli.d	$t1, $a6, 3
 	bstrpick.d	$a6, $s4, 31, 4
-	xor	$t0, $t1, $t0
-	xor	$t0, $t0, $a6
+	xor	$t1, $t1, $a6
+	xor	$a7, $t1, $a7
 	ld.w	$t4, $s7, 136
-	xor	$t0, $t0, $a7
+	xor	$t0, $a7, $t0
 	lu12i.w	$a7, 16384
 	xor	$t1, $t0, $a7
 	addi.d	$t0, $t4, 1
@@ -19246,25 +19256,25 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	ldx.bu	$t6, $a0, $t6
 	addi.w	$t4, $t4, -2
 	and	$t4, $t5, $t4
-	ldx.bu	$t4, $a0, $t4
+	ldx.bu	$t5, $a0, $t4
 	mul.d	$t8, $t6, $a4
-	mul.d	$fp, $t4, $t3
-	lu12i.w	$t5, 17091
-	ori	$t7, $t5, 71
-	mul.d	$t5, $s4, $t7
-	add.d	$t8, $t5, $t8
+	mul.d	$fp, $t5, $t3
+	lu12i.w	$t4, 17091
+	ori	$t7, $t4, 71
+	mul.d	$t4, $s4, $t7
+	add.d	$t8, $t4, $t8
 	add.w	$t8, $t8, $fp
 	lu12i.w	$fp, 70801
 	ori	$fp, $fp, 2563
 	add.d	$t8, $t8, $fp
 	bstrpick.d	$fp, $t8, 31, 9
 	srli.d	$t6, $t6, 3
-	srli.d	$s0, $t4, 4
-	bstrpick.d	$t4, $s4, 31, 5
+	srli.d	$s0, $t5, 4
+	bstrpick.d	$t5, $s4, 31, 5
 	xor	$t6, $t6, $s0
-	xor	$t6, $t6, $fp
-	xor	$t6, $t6, $t4
-	xor	$t8, $t6, $t8
+	xor	$t6, $t6, $t5
+	xor	$t6, $t6, $t8
+	xor	$t8, $t6, $fp
 	ld.w	$fp, $s7, 136
 	lu12i.w	$t6, 16383
 	ori	$t6, $t6, 4095
@@ -19310,11 +19320,11 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	srli.d	$t8, $t8, 5
 	bstrpick.d	$s0, $s0, 57, 0
 	xor	$s0, $s2, $s0
-	xor	$s0, $s0, $s1
+	xor	$t8, $s1, $t8
 	ld.w	$s1, $s7, 136
 	xor	$t8, $s0, $t8
-	xor	$t8, $t8, $fp
 	xor	$t7, $t8, $t7
+	xor	$t7, $t7, $fp
 	addi.d	$t8, $s1, 1
 	st.w	$t8, $s7, 136
 	mul.d	$t7, $t7, $t0
@@ -19346,43 +19356,43 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	add.d	$t8, $t8, $fp
 	bstrpick.d	$fp, $t8, 31, 9
 	bstrpick.d	$t7, $t7, 7, 3
-	xor	$t7, $t7, $fp
 	xor	$t7, $t7, $a6
-	ld.w	$fp, $s7, 136
 	xor	$t7, $t7, $t8
+	ld.w	$s0, $s7, 136
+	xor	$t7, $t7, $fp
 	ori	$t8, $a7, 1
 	xor	$t7, $t7, $t8
-	addi.d	$s0, $fp, 1
-	st.w	$s0, $s7, 136
+	addi.d	$fp, $s0, 1
+	st.w	$fp, $s7, 136
 	mul.d	$t7, $t7, $t0
-	add.d	$t7, $t7, $fp
+	add.d	$t7, $t7, $s0
 	rotri.w	$t7, $t7, 16
 	mul.d	$t7, $t7, $t1
-	add.d	$t7, $t7, $fp
-	slli.d	$fp, $fp, 2
+	add.d	$t7, $t7, $s0
+	slli.d	$fp, $s0, 2
 	stx.w	$t7, $t2, $fp
 	andi	$t7, $a1, 255
-	mul.d	$s0, $t7, $a4
-	add.w	$t7, $a5, $s0
-	lu12i.w	$fp, 200197
-	ori	$fp, $fp, 677
-	add.d	$t7, $t7, $fp
+	mul.d	$fp, $t7, $a4
+	add.w	$t7, $a5, $fp
+	lu12i.w	$s0, 200197
+	ori	$s0, $s0, 677
+	add.d	$t7, $t7, $s0
 	bstrpick.d	$s1, $t7, 31, 9
-	bstrpick.d	$fp, $a1, 7, 3
-	xori	$fp, $fp, 1
-	xor	$s1, $fp, $s1
-	ld.w	$s2, $s7, 136
-	xor	$s1, $s1, $a6
-	xor	$t7, $s1, $t7
+	bstrpick.d	$s0, $a1, 7, 3
+	xori	$s0, $s0, 1
+	xor	$s2, $s0, $a6
+	ld.w	$s3, $s7, 136
+	xor	$t7, $s2, $t7
+	xor	$t7, $t7, $s1
 	xor	$t7, $t7, $a7
-	addi.d	$s1, $s2, 1
+	addi.d	$s1, $s3, 1
 	st.w	$s1, $s7, 136
 	mul.d	$t7, $t7, $t0
-	add.d	$t7, $s2, $t7
+	add.d	$t7, $s3, $t7
 	rotri.w	$t7, $t7, 16
 	mul.d	$t7, $t7, $t1
-	add.d	$t7, $t7, $s2
-	slli.d	$s1, $s2, 2
+	add.d	$t7, $t7, $s3
+	slli.d	$s1, $s3, 2
 	stx.w	$t7, $t2, $s1
 	ld.d	$t7, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$t7, $t7, %pc_lo12(_ZZ8wavModelR5MixerE1w)
@@ -19402,19 +19412,19 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	add.d	$s2, $s2, $s3
 	bstrpick.d	$s3, $s2, 31, 9
 	bstrpick.d	$s1, $s1, 7, 3
-	xor	$s1, $s1, $s3
-	ld.w	$s3, $s7, 136
 	xor	$s1, $s1, $a6
+	ld.w	$s4, $s7, 136
 	xor	$s1, $s1, $s2
+	xor	$s1, $s1, $s3
 	xor	$t8, $s1, $t8
-	addi.d	$s1, $s3, 1
+	addi.d	$s1, $s4, 1
 	st.w	$s1, $s7, 136
 	mul.d	$t8, $t8, $t0
-	add.d	$t8, $t8, $s3
+	add.d	$t8, $t8, $s4
 	rotri.w	$t8, $t8, 16
 	mul.d	$t8, $t8, $t1
-	add.d	$t8, $t8, $s3
-	slli.d	$s1, $s3, 2
+	add.d	$t8, $t8, $s4
+	slli.d	$s1, $s4, 2
 	stx.w	$t8, $t2, $s1
 	ld.w	$s1, $s5, %pc_lo12(pos)
 	ld.w	$t8, $s8, 0
@@ -19442,27 +19452,27 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	add.d	$s1, $s2, $s1
 	bstrpick.d	$s2, $s1, 8, 1
 	mul.d	$t3, $s2, $t3
-	add.d	$t5, $t5, $s0
-	add.w	$t3, $t5, $t3
-	lu12i.w	$t5, 314945
-	ori	$t5, $t5, 3634
-	add.d	$t3, $t3, $t5
-	bstrpick.d	$t5, $t3, 31, 9
-	bstrpick.d	$s0, $s1, 8, 5
-	xor	$t5, $s0, $t5
-	xor	$t5, $t5, $fp
-	ld.w	$fp, $s7, 136
-	xor	$t4, $t5, $t4
+	add.d	$t4, $t4, $fp
+	add.w	$t3, $t4, $t3
+	lu12i.w	$t4, 314945
+	ori	$t4, $t4, 3634
+	add.d	$t3, $t3, $t4
+	bstrpick.d	$t4, $s1, 8, 5
+	xor	$t4, $t4, $s0
+	xor	$t4, $t4, $t5
+	xor	$t4, $t4, $t3
+	ld.w	$t5, $s7, 136
+	bstrpick.d	$t3, $t3, 31, 9
 	xor	$t3, $t4, $t3
 	xor	$t3, $t3, $t6
-	addi.d	$t4, $fp, 1
+	addi.d	$t4, $t5, 1
 	st.w	$t4, $s7, 136
 	mul.d	$t3, $t3, $t0
-	add.d	$t3, $t3, $fp
+	add.d	$t3, $t3, $t5
 	rotri.w	$t3, $t3, 16
 	mul.d	$t3, $t3, $t1
-	add.d	$t3, $t3, $fp
-	slli.d	$t4, $fp, 2
+	add.d	$t3, $t3, $t5
+	slli.d	$t4, $t5, 2
 	stx.w	$t3, $t2, $t4
 	ld.w	$t3, $s5, %pc_lo12(pos)
 	ld.w	$t4, $s8, 0
@@ -19485,20 +19495,20 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	add.d	$a2, $a2, $a3
 	bstrpick.d	$a3, $a2, 31, 9
 	bstrpick.d	$a1, $a1, 7, 3
-	xor	$a1, $a1, $a3
 	xor	$a1, $a1, $a6
-	ld.w	$a3, $s7, 136
 	xor	$a1, $a1, $a2
-	ori	$a2, $a7, 2
-	xor	$a1, $a1, $a2
-	addi.d	$a2, $a3, 1
-	st.w	$a2, $s7, 136
+	ld.w	$a2, $s7, 136
+	xor	$a1, $a1, $a3
+	ori	$a3, $a7, 2
+	xor	$a1, $a1, $a3
+	addi.d	$a3, $a2, 1
+	st.w	$a3, $s7, 136
 	mul.d	$a1, $a1, $t0
-	add.d	$a1, $a1, $a3
+	add.d	$a1, $a1, $a2
 	rotri.w	$a1, $a1, 16
 	mul.d	$a1, $a1, $t1
-	add.d	$a1, $a1, $a3
-	slli.d	$a2, $a3, 2
+	add.d	$a1, $a1, $a2
+	slli.d	$a2, $a2, 2
 	stx.w	$a1, $t2, $a2
 	ld.w	$a1, $s5, %pc_lo12(pos)
 	ld.w	$a2, $s8, 0
@@ -19533,10 +19543,10 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	sub.d	$a7, $t0, $a7
 	addu16i.d	$t0, $t2, 2
 	addi.d	$t0, $t0, -256
+	lu12i.w	$t1, 31
+	ori	$t1, $t1, 3840
+	and	$t0, $t0, $t1
 	and	$a7, $t0, $a7
-	lu12i.w	$t0, 31
-	ori	$t0, $t0, 3840
-	and	$a7, $a7, $t0
 	st.w	$a7, $t6, 24
 	ldx.bu	$a3, $a0, $a3
 	ldx.bu	$a4, $a0, $a4
@@ -19546,8 +19556,6 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	or	$a3, $a3, $a4
 	slli.d	$a4, $a5, 8
 	or	$a4, $a4, $a6
-	ori	$a5, $zero, 509
-	mul.d	$a4, $a4, $a5
 	alsl.d	$a5, $t7, $t7, 1
 	sub.w	$a1, $a1, $a5
 	and	$a5, $a2, $a1
@@ -19555,18 +19563,20 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	and	$a1, $a2, $a1
 	ldx.bu	$a1, $a0, $a1
 	ldx.bu	$a0, $a0, $a5
-	alsl.d	$a2, $a3, $a3, 1
-	add.d	$a2, $a4, $a2
+	ori	$a2, $zero, 509
+	mul.d	$a2, $a4, $a2
 	slli.d	$a1, $a1, 8
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	ld.w	$a3, $s6, 0
 	or	$a0, $a1, $a0
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.w	$a1, $s6, 0
+	alsl.d	$a3, $a3, $a3, 1
+	add.d	$a0, $a3, $a0
 	add.d	$a0, $a2, $a0
-	slli.d	$a0, $a0, 8
-	addu16i.d	$a1, $a3, 2
+	addu16i.d	$a1, $a1, 2
 	addi.d	$a1, $a1, -256
+	and	$a1, $a1, $t1
+	slli.d	$a0, $a0, 8
 	and	$a0, $a1, $a0
-	and	$a0, $a0, $t0
 	st.w	$a0, $s6, 24
 	ld.d	$s1, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 160                   # 8-byte Folded Reload
@@ -20412,8 +20422,8 @@ _Z6execxtii:                            # @_Z6execxtii
 	slli.w	$a2, $a2, 4
 	slli.w	$a1, $a1, 20
 	or	$a1, $a2, $a1
-	or	$a1, $a1, $a3
 	or	$a0, $a1, $a0
+	or	$a0, $a0, $a3
 	ret
 .Lfunc_end63:
 	.size	_Z6execxtii, .Lfunc_end63-_Z6execxtii
@@ -20566,8 +20576,8 @@ _Z8exeModelR5Mixer:                     # @_Z8exeModelR5Mixer
 	maskeqz	$s0, $s0, $s1
 	ld.w	$s1, $a3, 136
 	or	$t7, $t7, $s0
-	or	$t7, $s2, $t7
 	or	$t7, $t7, $t8
+	or	$t7, $s2, $t7
 	addi.d	$t8, $s1, 1
 	st.w	$t8, $a3, 136
 	mul.d	$t7, $t7, $t0
@@ -21763,18 +21773,18 @@ _Z13contextModel2v:                     # @_Z13contextModel2v
 	addi.w	$a5, $a1, -3
 	and	$a5, $a4, $a5
 	ldx.bu	$a5, $a3, $a5
-	slli.d	$a2, $a2, 24
-	slli.d	$a5, $a5, 16
-	or	$a2, $a5, $a2
-	addi.w	$a5, $a1, -2
-	and	$a5, $a4, $a5
-	ldx.bu	$a5, $a3, $a5
+	addi.w	$a6, $a1, -2
+	and	$a6, $a4, $a6
 	addi.w	$a1, $a1, -1
 	and	$a1, $a4, $a1
+	slli.d	$a2, $a2, 24
+	ldx.bu	$a4, $a3, $a6
+	slli.d	$a5, $a5, 16
 	ldx.bu	$a1, $a3, $a1
-	slli.d	$a3, $a5, 8
+	or	$a2, $a5, $a2
+	slli.d	$a3, $a4, 8
 	ld.w	$a4, $s6, %pc_lo12(_ZZ13contextModel2vE8filetype)
-	or	$a2, $a2, $a3
+	or	$a1, $a3, $a1
 	or	$a1, $a2, $a1
 	ori	$a2, $zero, 8
 	st.w	$a1, $a0, %pc_lo12(_ZZ13contextModel2vE4size)
@@ -22437,60 +22447,60 @@ _Z13contextModel2v:                     # @_Z13contextModel2v
 .LBB69_75:
 	ori	$a0, $zero, 2
 	slt	$a1, $a0, $s3
-	masknez	$a4, $a0, $a1
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	ld.w	$a3, $a0, %pc_lo12(pos)
-	ld.w	$a0, $s7, 0
-	maskeqz	$a5, $s3, $a1
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $s3, $a1
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.w	$a3, $a2, %pc_lo12(pos)
+	ld.w	$a2, $s7, 0
+	or	$a4, $a1, $a0
 	ld.d	$a1, $s7, 16
-	addi.w	$a2, $a3, -1
-	addi.w	$a6, $a0, -1
-	and	$a0, $a6, $a2
+	addi.w	$a0, $a3, -1
+	addi.w	$a5, $a2, -1
+	and	$a0, $a5, $a0
 	ldx.bu	$a2, $a1, $a0
 	addi.w	$a0, $a3, -2
-	and	$a0, $a6, $a0
+	and	$a0, $a5, $a0
 	ldx.bu	$a0, $a1, $a0
 	addi.w	$a3, $a3, -3
-	ld.w	$a7, $s4, 88
-	and	$a3, $a6, $a3
+	ld.w	$a6, $s4, 92
+	and	$a3, $a5, $a3
 	ldx.bu	$a3, $a1, $a3
-	ld.w	$a6, $s4, 92
-	addi.d	$a1, $a7, 1
-	st.w	$a1, $s4, 88
+	ld.w	$a5, $s4, 88
+	add.d	$a1, $a2, $a6
+	addi.d	$a6, $a1, 8
 	ld.d	$a1, $s4, 80
-	add.d	$a6, $a2, $a6
-	addi.d	$a6, $a6, 8
-	slli.d	$a7, $a7, 2
-	stx.w	$a6, $a1, $a7
-	ld.w	$a6, $s4, 92
-	or	$a4, $a5, $a4
-	ld.w	$a5, $s2, %pc_lo12(c0)
-	ld.w	$a7, $s4, 88
-	addi.d	$a6, $a6, 264
-	st.w	$a6, $s4, 92
-	add.d	$a5, $a5, $a6
-	addi.d	$a6, $a7, 1
-	st.w	$a6, $s4, 88
+	addi.d	$a7, $a5, 1
+	st.w	$a7, $s4, 88
+	slli.d	$a5, $a5, 2
+	stx.w	$a6, $a1, $a5
+	ld.w	$a5, $s4, 92
 	xor	$a6, $a2, $a0
-	sltui	$a6, $a6, 1
-	slli.d	$a7, $a7, 2
+	ld.w	$a7, $s2, %pc_lo12(c0)
+	ld.w	$t0, $s4, 88
+	addi.d	$a5, $a5, 264
+	st.w	$a5, $s4, 92
+	add.d	$a5, $a7, $a5
+	addi.d	$a7, $t0, 1
+	st.w	$a7, $s4, 88
+	slli.d	$a7, $t0, 2
 	stx.w	$a5, $a1, $a7
 	ld.w	$a5, $s4, 92
+	sltui	$a6, $a6, 1
 	slli.d	$a6, $a6, 6
-	add.d	$a4, $a4, $a6
-	ld.w	$a6, $s1, %pc_lo12(c4)
+	ld.w	$a7, $s1, %pc_lo12(c4)
 	addi.d	$a5, $a5, 256
-	ld.w	$a7, $s6, %pc_lo12(_ZZ13contextModel2vE8filetype)
+	ld.w	$t0, $s6, %pc_lo12(_ZZ13contextModel2vE8filetype)
 	st.w	$a5, $s4, 92
-	srli.d	$a6, $a6, 2
-	andi	$a6, $a6, 56
-	addi.d	$a7, $a7, -8
-	sltui	$a7, $a7, 1
-	slli.d	$a7, $a7, 7
+	srli.d	$a7, $a7, 2
+	andi	$a7, $a7, 56
+	addi.d	$t0, $t0, -8
+	sltui	$t0, $t0, 1
+	slli.d	$t0, $t0, 7
+	add.d	$a5, $a6, $a5
 	add.d	$a4, $a4, $a5
 	ld.w	$a5, $s4, 88
+	add.d	$a6, $a7, $t0
 	add.d	$a4, $a4, $a6
-	add.d	$a4, $a4, $a7
 	addi.d	$a4, $a4, -2
 	addi.d	$a6, $a5, 1
 	st.w	$a6, $s4, 88
@@ -23251,8 +23261,8 @@ _ZN9Predictor6updateEv:                 # @_ZN9Predictor6updateEv
 	andi	$t4, $t2, 127
 	srli.d	$t2, $t2, 7
 	slli.d	$t8, $t0, 5
-	add.d	$t0, $t8, $t0
 	add.d	$t0, $t2, $t0
+	add.d	$t0, $t0, $t8
 	addi.w	$t0, $t0, 16
 	alsl.d	$t2, $t0, $t5, 1
 	slli.d	$t8, $t0, 1
@@ -23282,14 +23292,14 @@ _ZN9Predictor6updateEv:                 # @_ZN9Predictor6updateEv
 	srli.d	$t5, $t5, 2
 	srli.d	$t8, $t8, 3
 	xor	$t5, $t8, $t5
-	xor	$t5, $t5, $s2
 	xor	$t5, $t5, $s1
-	bstrpick.d	$t5, $t5, 15, 0
-	xor	$t8, $a5, $t5
-	ldx.h	$s1, $a1, $t3
+	xor	$t5, $t5, $s2
+	bstrpick.d	$t8, $t5, 15, 0
 	lu12i.w	$t5, 15
+	ldx.h	$s1, $a1, $t3
 	ori	$t5, $t5, 4095
-	xor	$t8, $t8, $t5
+	xor	$t5, $a5, $t5
+	xor	$t8, $t5, $t8
 	pcalau12i	$s2, %pc_hi20(_ZZN9Predictor6updateEvE2a2)
 	addi.d	$s2, $s2, %pc_lo12(_ZZN9Predictor6updateEvE2a2)
 	ld.w	$s3, $s2, 0
@@ -23309,8 +23319,8 @@ _ZN9Predictor6updateEv:                 # @_ZN9Predictor6updateEv
 	andi	$s3, $s1, 127
 	srli.d	$s1, $s1, 7
 	slli.d	$s5, $t8, 5
-	add.d	$t8, $s5, $t8
 	add.d	$t8, $s1, $t8
+	add.d	$t8, $t8, $s5
 	addi.w	$t8, $t8, 16
 	alsl.d	$s1, $t8, $s4, 1
 	slli.d	$s5, $t8, 1
@@ -23343,9 +23353,9 @@ _ZN9Predictor6updateEv:                 # @_ZN9Predictor6updateEv
 	srli.d	$s4, $s4, 4
 	xor	$s2, $s3, $s2
 	xor	$s2, $s2, $s4
-	xor	$s2, $s2, $s6
-	ldx.h	$t3, $a1, $t3
 	xor	$s2, $s2, $s5
+	ldx.h	$t3, $a1, $t3
+	xor	$s2, $s2, $s6
 	bstrpick.d	$s2, $s2, 15, 0
 	xor	$s2, $s2, $a5
 	pcalau12i	$s3, %pc_hi20(_ZZN9Predictor6updateEvE2a3)
@@ -23367,8 +23377,8 @@ _ZN9Predictor6updateEv:                 # @_ZN9Predictor6updateEv
 	andi	$s4, $t3, 127
 	srli.d	$t3, $t3, 7
 	slli.d	$s6, $s2, 5
-	add.d	$s2, $s6, $s2
 	add.d	$t3, $t3, $s2
+	add.d	$t3, $t3, $s6
 	addi.w	$t3, $t3, 16
 	alsl.d	$s2, $t3, $s5, 1
 	slli.d	$s6, $t3, 1
@@ -23432,42 +23442,41 @@ _ZN9Predictor6updateEv:                 # @_ZN9Predictor6updateEv
 	srli.d	$s2, $s2, 2
 	srli.d	$s3, $s3, 3
 	xor	$s2, $s3, $s2
-	xor	$s1, $s2, $s1
-	xor	$t4, $s1, $t4
-	ldx.h	$s1, $a1, $t3
+	xor	$t4, $s2, $t4
+	ldx.h	$s2, $a1, $t3
+	xor	$t4, $t4, $s1
 	bstrpick.d	$t4, $t4, 15, 0
-	xor	$t4, $a5, $t4
-	xor	$t4, $t4, $t5
+	xor	$t4, $t5, $t4
 	pcalau12i	$t5, %pc_hi20(_ZZN9Predictor6updateEvE2a5)
 	addi.d	$t5, $t5, %pc_lo12(_ZZN9Predictor6updateEvE2a5)
-	ld.w	$s2, $t5, 0
+	ld.w	$s1, $t5, 0
 	ld.d	$s3, $t5, 24
-	slli.d	$s4, $s2, 1
+	slli.d	$s4, $s1, 1
 	ldx.hu	$s5, $s3, $s4
-	alsl.d	$s2, $s2, $s3, 1
+	alsl.d	$s1, $s1, $s3, 1
 	sub.d	$s6, $a4, $s5
-	ld.hu	$s7, $s2, 2
+	ld.hu	$s7, $s1, 2
 	srli.d	$s6, $s6, 7
 	add.d	$s5, $s5, $s6
 	stx.h	$s5, $s3, $s4
 	sub.d	$s4, $a4, $s7
 	srli.d	$s4, $s4, 7
 	add.d	$s4, $s7, $s4
-	st.h	$s4, $s2, 2
-	andi	$s2, $s1, 127
-	srli.d	$s1, $s1, 7
+	st.h	$s4, $s1, 2
+	andi	$s1, $s2, 127
+	srli.d	$s2, $s2, 7
 	slli.d	$s4, $t4, 5
 	add.d	$t4, $s4, $t4
-	add.d	$t4, $s1, $t4
+	add.d	$t4, $s2, $t4
 	addi.w	$t4, $t4, 16
-	alsl.d	$s1, $t4, $s3, 1
+	alsl.d	$s2, $t4, $s3, 1
 	slli.d	$s4, $t4, 1
 	ldx.hu	$s3, $s3, $s4
-	ld.hu	$s1, $s1, 2
+	ld.hu	$s2, $s2, 2
 	st.w	$t4, $t5, 0
-	sub.d	$t4, $a2, $s2
+	sub.d	$t4, $a2, $s1
 	mul.d	$t4, $t4, $s3
-	mul.d	$t5, $s2, $s1
+	mul.d	$t5, $s1, $s2
 	add.d	$t4, $t5, $t4
 	ldx.bu	$a7, $a6, $a7
 	ldx.bu	$t0, $a6, $t0
@@ -23485,9 +23494,9 @@ _ZN9Predictor6updateEv:                 # @_ZN9Predictor6updateEv
 	srli.d	$t4, $t5, 4
 	xor	$a7, $t0, $a7
 	xor	$a7, $a7, $t4
-	xor	$a7, $a7, $t2
-	ldx.h	$a1, $a1, $t3
 	xor	$a7, $a7, $t1
+	ldx.h	$a1, $a1, $t3
+	xor	$a7, $a7, $t2
 	bstrpick.d	$a7, $a7, 15, 0
 	xor	$a5, $a7, $a5
 	pcalau12i	$a7, %pc_hi20(_ZZN9Predictor6updateEvE2a6)
@@ -23523,7 +23532,7 @@ _ZN9Predictor6updateEv:                 # @_ZN9Predictor6updateEv
 	add.d	$a1, $a2, $a1
 	srli.d	$a1, $a1, 11
 	add.d	$a2, $a3, $s0
-	add.d	$a2, $a2, $a6
+	add.d	$a1, $a6, $a1
 	add.d	$a1, $a2, $a1
 	addi.d	$a1, $a1, 2
 	bstrpick.d	$a1, $a1, 24, 2
@@ -24936,9 +24945,9 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
 	mul.d	$a0, $a1, $a0
+	add.d	$a0, $a0, $fp
 	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
-	add.d	$a0, $a0, $fp
 	addi.w	$a0, $a0, -1
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	add.d	$a1, $a1, $a0
@@ -25590,8 +25599,8 @@ _Z10encode_exeP8_IO_FILES0_ii:          # @_Z10encode_exeP8_IO_FILES0_ii
 	slli.d	$a6, $a6, 16
 	slli.d	$a4, $a4, 24
 	or	$a4, $a4, $a6
+	or	$a5, $a5, $a7
 	or	$a4, $a4, $a5
-	or	$a4, $a4, $a7
 	add.d	$a4, $a1, $a4
 	slli.w	$a5, $a4, 7
 	srli.d	$a5, $a5, 31
@@ -25840,8 +25849,8 @@ _Z10decode_exeR7Encoder:                # @_Z10decode_exeR7Encoder
 	pcalau12i	$a5, %pc_hi20(_ZZ10decode_exeR7EncoderE5begin)
 	ld.w	$a5, $a5, %pc_lo12(_ZZ10decode_exeR7EncoderE5begin)
 	slli.d	$a6, $a6, 16
+	or	$a4, $a4, $a6
 	or	$a3, $a3, $a4
-	or	$a3, $a3, $a6
 	add.d	$a2, $a5, $a2
 	sub.d	$a2, $a3, $a2
 	slli.w	$a3, $a2, 7

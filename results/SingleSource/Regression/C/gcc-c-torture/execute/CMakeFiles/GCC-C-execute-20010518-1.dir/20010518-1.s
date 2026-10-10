@@ -13,16 +13,16 @@ add:                                    # @add
 	ld.d	$t4, $sp, 0
 	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a4
-	add.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a6
+	add.d	$a1, $a3, $a4
+	add.d	$a1, $a1, $a5
+	add.d	$a1, $a1, $a6
+	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $a7
-	add.d	$a0, $a0, $t4
-	add.d	$a0, $a0, $t3
-	add.d	$a0, $a0, $t2
-	add.d	$a0, $a0, $t1
-	add.w	$a0, $a0, $t0
+	add.d	$a1, $t4, $t3
+	add.d	$a1, $a1, $t2
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $t1, $t0
+	add.w	$a0, $a0, $a1
 	ret
 .Lfunc_end0:
 	.size	add, .Lfunc_end0-add

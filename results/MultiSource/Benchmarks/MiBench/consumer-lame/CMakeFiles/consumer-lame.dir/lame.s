@@ -1292,14 +1292,14 @@ lame_encode_frame:                      # @lame_encode_frame
 	addi.d	$s1, $a0, 72
 	ori	$s3, $zero, 4
 	ori	$a0, $zero, 608
-	vreplgr2vr.d	$vr3, $a0
+	vreplgr2vr.d	$vr0, $a0
+	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	addi.d	$s8, $sp, 144
 	addi.d	$s2, $sp, 112
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 784
 	add.d	$s5, $sp, $a0
 	ori	$s7, $zero, 8
-	vst	$vr3, $sp, 80                   # 16-byte Folded Spill
 	b	.LBB2_15
 	.p2align	4, , 16
 .LBB2_14:                               #   in Loop: Header=BB2_15 Depth=1
@@ -1327,6 +1327,8 @@ lame_encode_frame:                      # @lame_encode_frame
 	bstrpick.d	$a2, $a1, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplgr2vr.d	$vr0, $a0
+	vld	$vr1, $sp, 80                   # 16-byte Folded Reload
+	vadd.d	$vr0, $vr0, $vr1
 	addi.d	$a3, $sp, 192
 	lu12i.w	$a4, 4
 	ori	$a4, $a4, 1824
@@ -1339,8 +1341,6 @@ lame_encode_frame:                      # @lame_encode_frame
 	vld	$vr2, $a3, 0
 	vadd.d	$vr1, $vr1, $vr0
 	vadd.d	$vr2, $vr2, $vr0
-	vadd.d	$vr1, $vr1, $vr3
-	vadd.d	$vr2, $vr2, $vr3
 	vst	$vr1, $a4, -16
 	vst	$vr2, $a4, 0
 	addi.d	$a5, $a5, -4
@@ -1390,7 +1390,6 @@ lame_encode_frame:                      # @lame_encode_frame
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(L3psycho_anal)
 	jirl	$ra, $ra, 0
-	vld	$vr3, $sp, 80                   # 16-byte Folded Reload
 	ld.w	$a0, $fp, 204
 	bstrpick.d	$a1, $a0, 31, 0
 	blez	$a0, .LBB2_14

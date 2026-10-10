@@ -21,8 +21,8 @@ foo:                                    # @foo
 	bstrpick.d	$a1, $a4, 15, 0
 	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $a6
+	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $a7
 	addi.d	$a0, $a0, -1
 	ret

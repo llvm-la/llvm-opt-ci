@@ -3454,8 +3454,8 @@ _ZN8NWindows5NFile5NFindL16fillin_CFileInfoERNS1_9CFileInfoEPKc: # @_ZN8NWindows
 	srli.d	$a3, $a1, 7
 	bstrins.d	$a2, $a3, 0, 0
 	slli.d	$a1, $a1, 16
-	or	$a1, $a1, $a2
-	lu12i.w	$a2, 8
+	lu12i.w	$a3, 8
+	or	$a1, $a1, $a3
 	or	$a1, $a1, $a2
 	ld.w	$a2, $sp, 120
 	xori	$a1, $a1, 1

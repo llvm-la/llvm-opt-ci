@@ -2420,8 +2420,8 @@ lib_file_open:                          # @lib_file_open
 	move	$s7, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	add.d	$a0, $s0, $a0
-	add.w	$s6, $a0, $s6
+	add.d	$a1, $s0, $s6
+	add.w	$s6, $a1, $a0
 	lu12i.w	$a0, 1
 	blt	$a0, $s6, .LBB31_9
 # %bb.14:                               #   in Loop: Header=BB31_10 Depth=2

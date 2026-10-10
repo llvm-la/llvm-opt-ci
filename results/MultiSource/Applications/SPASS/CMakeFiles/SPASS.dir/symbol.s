@@ -163,8 +163,8 @@ symbol_SignatureCreate:                 # @symbol_SignatureCreate
 	st.d	$a0, $s6, %pc_lo12(symbol_FREEDSYMBOLS)
 	slli.d	$a0, $s3, 3
 	slli.d	$a1, $s2, 2
+	or	$a1, $s1, $a1
 	or	$a0, $a1, $a0
-	or	$a0, $s1, $a0
 	pcalau12i	$a1, %pc_hi20(symbol_SIGNATURE)
 	ld.d	$a1, $a1, %pc_lo12(symbol_SIGNATURE)
 	sub.d	$a0, $zero, $a0
@@ -176,8 +176,8 @@ symbol_SignatureCreate:                 # @symbol_SignatureCreate
 	ld.w	$a0, $s5, %pc_lo12(symbol_ACTINDEX)
 	slli.d	$a1, $s2, 2
 	slli.d	$a2, $a0, 3
-	or	$a1, $a1, $a2
 	or	$a1, $s1, $a1
+	or	$a1, $a1, $a2
 	sub.d	$a1, $zero, $a1
 	pcalau12i	$a3, %pc_hi20(symbol_SIGNATURE)
 	ld.d	$a3, $a3, %pc_lo12(symbol_SIGNATURE)

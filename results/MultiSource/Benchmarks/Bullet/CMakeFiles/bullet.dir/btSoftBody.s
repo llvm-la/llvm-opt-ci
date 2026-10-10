@@ -3463,8 +3463,8 @@ _ZN10btSoftBody10appendNoteEPKcRK9btVector3RK9btVector4PNS_4NodeES9_S9_S9_: # @_
 	sltu	$a3, $zero, $a5
 	add.d	$a0, $a3, $a0
 	sltu	$a3, $zero, $a6
-	add.d	$a0, $a0, $a3
-	sltu	$a3, $zero, $a7
+	sltu	$t0, $zero, $a7
+	add.d	$a3, $a3, $t0
 	add.d	$a0, $a0, $a3
 	ld.d	$a3, $fp, 800
 	ori	$t0, $zero, 88
@@ -12403,8 +12403,8 @@ _ZN10btSoftBody16generateClustersEii:   # @_ZN10btSoftBody16generateClustersEii
 	srli.d	$a2, $a1, 32
 	and	$a2, $a2, $a6
 	srli.d	$a1, $a1, 33
-	add.d	$a1, $a2, $a1
-	sub.w	$a0, $a0, $a1
+	sub.d	$a0, $a0, $a1
+	sub.w	$a0, $a0, $a2
 	slli.d	$a0, $a0, 2
 	ldx.w	$a0, $a0, $s5
 	slli.d	$a1, $a0, 2
@@ -22413,8 +22413,8 @@ _ZN11btSparseSdfILi3EE8EvaluateERK9btVector3P16btCollisionShapeRS1_f: # @_ZN11bt
 	ori	$a4, $a4, 2048
 	and	$a1, $a1, $a4
 	slli.d	$a5, $a3, 16
-	xor	$a1, $a1, $a5
 	xor	$a1, $a1, $a3
+	xor	$a1, $a1, $a5
 	bstrpick.d	$a3, $a1, 31, 11
 	bstrpick.d	$a5, $a2, 15, 0
 	add.d	$a1, $a1, $a5
@@ -22422,8 +22422,8 @@ _ZN11btSparseSdfILi3EE8EvaluateERK9btVector3P16btCollisionShapeRS1_f: # @_ZN11bt
 	srli.d	$a2, $a2, 5
 	and	$a2, $a2, $a4
 	slli.d	$a3, $a1, 16
-	xor	$a2, $a2, $a3
 	xor	$a1, $a2, $a1
+	xor	$a1, $a1, $a3
 	bstrpick.d	$a2, $a1, 31, 11
 	bstrpick.d	$a3, $a0, 15, 0
 	add.d	$a1, $a1, $a3
@@ -22431,8 +22431,8 @@ _ZN11btSparseSdfILi3EE8EvaluateERK9btVector3P16btCollisionShapeRS1_f: # @_ZN11bt
 	srli.d	$a2, $a0, 5
 	and	$a2, $a2, $a4
 	slli.d	$a3, $a1, 16
-	xor	$a2, $a2, $a3
 	xor	$a1, $a2, $a1
+	xor	$a1, $a1, $a3
 	bstrpick.d	$a2, $a1, 31, 11
 	add.w	$a1, $a2, $a1
 	slli.d	$a2, $a1, 16
@@ -22444,8 +22444,8 @@ _ZN11btSparseSdfILi3EE8EvaluateERK9btVector3P16btCollisionShapeRS1_f: # @_ZN11bt
 	srli.d	$a2, $s7, 5
 	and	$a2, $a2, $a4
 	slli.d	$a3, $a1, 16
-	xor	$a2, $a2, $a3
 	xor	$a1, $a2, $a1
+	xor	$a1, $a1, $a3
 	bstrpick.d	$a2, $a1, 31, 11
 	bstrpick.d	$a3, $s7, 47, 32
 	add.d	$a1, $a1, $a3
@@ -22453,8 +22453,8 @@ _ZN11btSparseSdfILi3EE8EvaluateERK9btVector3P16btCollisionShapeRS1_f: # @_ZN11bt
 	srli.d	$a2, $s7, 37
 	and	$a2, $a2, $a4
 	slli.d	$a3, $a1, 16
-	xor	$a2, $a2, $a3
 	xor	$a1, $a2, $a1
+	xor	$a1, $a1, $a3
 	bstrpick.d	$a2, $a1, 31, 11
 	add.w	$a1, $a2, $a1
 	slli.d	$a2, $a1, 3

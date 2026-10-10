@@ -1519,8 +1519,8 @@ decode_poc:                             # @decode_poc
 	ldx.w	$a2, $a0, $a2
 	add.w	$a3, $a3, $a4
 	stptr.w	$a3, $a0, 5664
-	add.d	$a1, $a1, $a3
-	add.w	$a1, $a1, $a2
+	add.d	$a1, $a1, $a2
+	add.w	$a1, $a1, $a3
 	stptr.w	$a1, $a0, 5668
 	slt	$a2, $a3, $a1
 	masknez	$a1, $a1, $a2

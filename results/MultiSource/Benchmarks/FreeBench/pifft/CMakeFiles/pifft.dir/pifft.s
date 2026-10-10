@@ -3993,8 +3993,8 @@ mp_unexp_sub:                           # @mp_unexp_sub
 	maskeqz	$a3, $a0, $a3
 	or	$a2, $a3, $a2
 	nor	$a0, $a0, $zero
-	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a2
 	bstrpick.d	$a0, $a0, 31, 0
 	slli.d	$a0, $a0, 2
 	addi.d	$a2, $a0, 4

@@ -539,8 +539,8 @@ getHorSubImageSixTap:                   # @getHorSubImageSixTap
 	ld.hu	$ra, $fp, 6
 	addi.d	$fp, $fp, 2
 	alsl.d	$t5, $t5, $t5, 2
-	add.d	$t7, $t7, $s1
-	sub.d	$t5, $t7, $t5
+	sub.d	$t5, $s1, $t5
+	add.d	$t5, $t7, $t5
 	add.d	$t5, $t5, $ra
 	ld.w	$t7, $a6, 0
 	addi.w	$s1, $t5, 16
@@ -744,16 +744,16 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 .LBB2_8:                                # =>This Inner Loop Header: Depth=1
 	ld.hu	$a1, $s0, 0
 	ld.hu	$a2, $fp, 0
-	ld.hu	$s1, $t8, 0
 	add.d	$a2, $a2, $a1
+	ld.hu	$s1, $t8, 0
 	slli.d	$s2, $a2, 4
 	alsl.d	$a2, $a2, $s2, 2
-	add.d	$s1, $s1, $a1
 	ld.hu	$s2, $t6, 0
+	add.d	$s1, $s1, $a1
 	alsl.d	$s1, $s1, $s1, 2
 	sub.d	$a2, $a2, $s1
-	add.d	$a1, $a2, $a1
 	add.d	$a1, $a1, $s2
+	add.d	$a1, $a2, $a1
 	addi.w	$a1, $a1, 16
 	srai.d	$a2, $a1, 5
 	srai.d	$a1, $a1, 63
@@ -789,17 +789,17 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 .LBB2_12:                               # =>This Inner Loop Header: Depth=1
 	ld.hu	$a1, $t3, 0
 	ld.hu	$a2, $t4, 0
-	ld.hu	$t8, $t2, 0
-	ld.hu	$fp, $t5, 0
 	add.d	$a1, $a2, $a1
-	slli.d	$a2, $a1, 4
-	alsl.d	$a1, $a1, $a2, 2
-	add.d	$a2, $fp, $t8
+	ld.hu	$a2, $t2, 0
+	ld.hu	$t8, $t5, 0
+	slli.d	$fp, $a1, 4
+	alsl.d	$a1, $a1, $fp, 2
 	ld.hu	$fp, $t7, 0
-	alsl.d	$a2, $a2, $a2, 2
-	sub.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $t8
-	add.d	$a1, $a1, $fp
+	add.d	$t8, $t8, $a2
+	alsl.d	$t8, $t8, $t8, 2
+	sub.d	$a1, $a1, $t8
+	add.d	$a2, $a2, $fp
+	add.d	$a1, $a1, $a2
 	addi.w	$a1, $a1, 16
 	srai.d	$a2, $a1, 5
 	srai.d	$a1, $a1, 63
@@ -875,18 +875,18 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
                                         # =>  This Inner Loop Header: Depth=2
 	ld.hu	$a1, $t7, 0
 	ld.hu	$a2, $s2, 0
-	ld.hu	$s4, $fp, 0
-	ld.hu	$s5, $s0, 0
 	add.d	$a1, $a2, $a1
 	slli.d	$a2, $a1, 4
+	ld.hu	$s4, $fp, 0
+	ld.hu	$s5, $s0, 0
 	alsl.d	$a1, $a1, $a2, 2
-	add.d	$a2, $s5, $s4
-	ld.hu	$s4, $s1, 0
-	ld.hu	$s5, $t8, 0
-	alsl.d	$a2, $a2, $a2, 2
-	sub.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $s4
-	add.d	$a1, $a1, $s5
+	ld.hu	$a2, $s1, 0
+	ld.hu	$s6, $t8, 0
+	add.d	$s4, $s5, $s4
+	alsl.d	$s4, $s4, $s4, 2
+	sub.d	$a1, $a1, $s4
+	add.d	$a2, $a2, $s6
+	add.d	$a1, $a1, $a2
 	addi.w	$a1, $a1, 16
 	srai.d	$a2, $a1, 5
 	srai.d	$a1, $a1, 63
@@ -965,10 +965,10 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	vilvl.h	$vr7, $vr1, $vr7
 	vmadd.w	$vr4, $vr8, $vr3
 	vmadd.w	$vr5, $vr6, $vr3
-	vadd.w	$vr5, $vr5, $vr10
-	vadd.w	$vr4, $vr4, $vr9
-	vadd.w	$vr4, $vr4, $vr7
-	vadd.w	$vr5, $vr5, $vr11
+	vadd.w	$vr6, $vr9, $vr7
+	vadd.w	$vr4, $vr4, $vr6
+	vadd.w	$vr6, $vr10, $vr11
+	vadd.w	$vr5, $vr5, $vr6
 	vaddi.wu	$vr5, $vr5, 16
 	vaddi.wu	$vr4, $vr4, 16
 	vsrai.w	$vr4, $vr4, 5
@@ -1043,8 +1043,8 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	add.d	$a2, $s2, $a2
 	alsl.d	$a2, $a2, $a2, 2
 	sub.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $s3
-	add.d	$a1, $a1, $s2
+	add.d	$a2, $s3, $s2
+	add.d	$a1, $a1, $a2
 	addi.w	$a1, $a1, 16
 	srai.d	$a2, $a1, 5
 	srai.d	$a1, $a1, 63
@@ -1103,8 +1103,8 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	add.d	$a2, $s1, $a2
 	alsl.d	$a2, $a2, $a2, 2
 	sub.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $s2
-	add.d	$a1, $a1, $s1
+	add.d	$a2, $s2, $s1
+	add.d	$a1, $a1, $a2
 	addi.w	$a1, $a1, 16
 	srai.d	$a2, $a1, 5
 	srai.d	$a1, $a1, 63
@@ -1158,8 +1158,8 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	add.d	$t1, $t2, $t1
 	alsl.d	$t1, $t1, $t1, 2
 	sub.d	$a1, $a1, $t1
-	add.d	$a1, $a1, $t3
-	add.d	$a1, $a1, $t2
+	add.d	$t1, $t3, $t2
+	add.d	$a1, $a1, $t1
 	addi.w	$a1, $a1, 16
 	srai.d	$t1, $a1, 5
 	srai.d	$a1, $a1, 63
@@ -1193,13 +1193,13 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	vld	$vr5, $a2, 0
 	vld	$vr6, $a4, 0
 	vadd.w	$vr5, $vr5, $vr4
-	vmul.w	$vr5, $vr5, $vr0
 	vld	$vr7, $s0, 0
+	vmul.w	$vr5, $vr5, $vr0
 	vadd.w	$vr6, $vr6, $vr4
 	vmadd.w	$vr5, $vr6, $vr1
-	vadd.w	$vr4, $vr5, $vr4
 	vadd.w	$vr4, $vr4, $vr7
 	vadd.w	$vr4, $vr4, $vr3
+	vadd.w	$vr4, $vr5, $vr4
 	vsrai.w	$vr4, $vr4, 10
 	vmaxi.w	$vr4, $vr4, 0
 	vmin.w	$vr4, $vr4, $vr2
@@ -1225,16 +1225,16 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 .LBB2_46:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $s3, 0
 	ld.w	$a2, $s2, 0
-	ld.w	$a4, $s1, 0
 	add.w	$a2, $a2, $a1
+	ld.w	$a4, $s1, 0
 	slli.d	$s4, $a2, 4
 	alsl.d	$a2, $a2, $s4, 2
-	add.w	$a4, $a4, $a1
 	ld.w	$s4, $s0, 0
+	add.w	$a4, $a4, $a1
 	alsl.d	$a4, $a4, $a4, 2
 	sub.d	$a2, $a2, $a4
-	add.d	$a1, $a2, $a1
 	add.d	$a1, $a1, $s4
+	add.d	$a1, $a2, $a1
 	addi.w	$a1, $a1, 512
 	srai.d	$a2, $a1, 10
 	srai.d	$a1, $a1, 63
@@ -1263,27 +1263,27 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 .LBB2_49:
 	slli.d	$fp, $s5, 2
 	vldi	$vr3, -3838
-	move	$s0, $t4
-	move	$a1, $t5
-	move	$a4, $t3
-	move	$a2, $t6
+	move	$a1, $t4
+	move	$a4, $t5
+	move	$a2, $t3
+	move	$s0, $t6
 	move	$s1, $t7
 	move	$s2, $t8
 	move	$s3, $fp
 	.p2align	4, , 16
 .LBB2_50:                               # =>This Inner Loop Header: Depth=1
-	vld	$vr4, $s0, 0
-	vld	$vr5, $a1, 0
-	vld	$vr6, $a4, 0
-	vld	$vr7, $a2, 0
+	vld	$vr4, $a1, 0
+	vld	$vr5, $a4, 0
+	vld	$vr6, $a2, 0
+	vld	$vr7, $s0, 0
 	vadd.w	$vr4, $vr5, $vr4
-	vmul.w	$vr4, $vr4, $vr0
 	vld	$vr5, $s1, 0
+	vmul.w	$vr4, $vr4, $vr0
 	vadd.w	$vr7, $vr7, $vr6
 	vmadd.w	$vr4, $vr7, $vr1
-	vadd.w	$vr4, $vr4, $vr6
+	vadd.w	$vr5, $vr6, $vr5
+	vadd.w	$vr5, $vr5, $vr3
 	vadd.w	$vr4, $vr4, $vr5
-	vadd.w	$vr4, $vr4, $vr3
 	vsrai.w	$vr4, $vr4, 10
 	vmaxi.w	$vr4, $vr4, 0
 	vmin.w	$vr4, $vr4, $vr2
@@ -1292,10 +1292,10 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	addi.d	$s3, $s3, -4
 	addi.d	$s2, $s2, 8
 	addi.d	$s1, $s1, 16
+	addi.d	$s0, $s0, 16
 	addi.d	$a2, $a2, 16
 	addi.d	$a4, $a4, 16
 	addi.d	$a1, $a1, 16
-	addi.d	$s0, $s0, 16
 	bnez	$s3, .LBB2_50
 # %bb.51:
 	beq	$fp, $a3, .LBB2_54
@@ -1311,17 +1311,17 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 .LBB2_53:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $t4, 0
 	ld.w	$a2, $t5, 0
-	ld.w	$a4, $t3, 0
-	ld.w	$fp, $t6, 0
 	add.w	$a1, $a2, $a1
-	slli.d	$a2, $a1, 4
-	alsl.d	$a1, $a1, $a2, 2
-	add.w	$a2, $fp, $a4
+	ld.w	$a2, $t3, 0
+	ld.w	$a4, $t6, 0
+	slli.d	$fp, $a1, 4
+	alsl.d	$a1, $a1, $fp, 2
 	ld.w	$fp, $t7, 0
-	alsl.d	$a2, $a2, $a2, 2
-	sub.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $a4
-	add.d	$a1, $a1, $fp
+	add.w	$a4, $a4, $a2
+	alsl.d	$a4, $a4, $a4, 2
+	sub.d	$a1, $a1, $a4
+	add.d	$a2, $a2, $fp
+	add.d	$a1, $a1, $a2
 	addi.w	$a1, $a1, 512
 	srai.d	$a2, $a1, 10
 	srai.d	$a1, $a1, 63
@@ -1399,14 +1399,14 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	vld	$vr6, $s7, 0
 	vld	$vr7, $s8, 0
 	vadd.w	$vr4, $vr5, $vr4
-	vadd.w	$vr5, $vr7, $vr6
-	vld	$vr6, $ra, 0
-	vld	$vr7, $s4, 0
+	vld	$vr5, $ra, 0
+	vld	$vr8, $s4, 0
+	vadd.w	$vr6, $vr7, $vr6
 	vmul.w	$vr4, $vr4, $vr0
-	vmadd.w	$vr4, $vr5, $vr1
-	vadd.w	$vr4, $vr4, $vr6
-	vadd.w	$vr4, $vr4, $vr7
-	vadd.w	$vr4, $vr4, $vr3
+	vmadd.w	$vr4, $vr6, $vr1
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr5, $vr5, $vr3
+	vadd.w	$vr4, $vr4, $vr5
 	vsrai.w	$vr4, $vr4, 10
 	vmaxi.w	$vr4, $vr4, 0
 	vmin.w	$vr4, $vr4, $vr2
@@ -1438,18 +1438,18 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $fp, 0
 	ld.w	$a4, $s5, 0
-	ld.w	$t5, $s1, 0
-	ld.w	$s7, $s2, 0
 	add.w	$a1, $a4, $a1
 	slli.d	$a4, $a1, 4
+	ld.w	$t5, $s1, 0
+	ld.w	$s7, $s2, 0
 	alsl.d	$a1, $a1, $a4, 2
-	add.w	$a4, $s7, $t5
-	ld.w	$t5, $s3, 0
-	ld.w	$s7, $s4, 0
-	alsl.d	$a4, $a4, $a4, 2
-	sub.d	$a1, $a1, $a4
-	add.d	$a1, $a1, $t5
-	add.d	$a1, $a1, $s7
+	ld.w	$a4, $s3, 0
+	ld.w	$s8, $s4, 0
+	add.w	$t5, $s7, $t5
+	alsl.d	$t5, $t5, $t5, 2
+	sub.d	$a1, $a1, $t5
+	add.d	$a4, $a4, $s8
+	add.d	$a1, $a1, $a4
 	addi.w	$a1, $a1, 512
 	srai.d	$a4, $a1, 10
 	srai.d	$a1, $a1, 63
@@ -1502,28 +1502,28 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	slli.d	$t8, $s4, 2
 	vreplgr2vr.w	$vr2, $a5
 	vldi	$vr3, -3838
-	move	$fp, $t0
-	move	$a1, $t6
-	move	$a4, $t1
-	move	$a2, $a7
+	move	$a1, $t0
+	move	$a4, $t6
+	move	$a2, $t1
+	move	$fp, $a7
 	move	$s0, $t7
 	move	$s1, $t5
 	move	$s2, $t8
 	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB2_67:                               # =>This Inner Loop Header: Depth=1
-	vld	$vr4, $fp, 0
-	vld	$vr5, $a1, 0
-	vld	$vr6, $a4, 0
-	vld	$vr7, $a2, 0
+	vld	$vr4, $a1, 0
+	vld	$vr5, $a4, 0
+	vld	$vr6, $a2, 0
+	vld	$vr7, $fp, 0
 	vadd.w	$vr4, $vr5, $vr4
 	vld	$vr5, $s0, 0
 	vmul.w	$vr4, $vr4, $vr0
 	vadd.w	$vr6, $vr7, $vr6
 	vmadd.w	$vr4, $vr6, $vr1
+	vadd.w	$vr5, $vr5, $vr7
+	vadd.w	$vr5, $vr5, $vr3
 	vadd.w	$vr4, $vr4, $vr5
-	vadd.w	$vr4, $vr4, $vr7
-	vadd.w	$vr4, $vr4, $vr3
 	vsrai.w	$vr4, $vr4, 10
 	vmaxi.w	$vr4, $vr4, 0
 	vmin.w	$vr4, $vr4, $vr2
@@ -1532,10 +1532,10 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	addi.d	$s2, $s2, -4
 	addi.d	$s1, $s1, 8
 	addi.d	$s0, $s0, 16
+	addi.d	$fp, $fp, 16
 	addi.d	$a2, $a2, 16
 	addi.d	$a4, $a4, 16
 	addi.d	$a1, $a1, 16
-	addi.d	$fp, $fp, 16
 	bnez	$s2, .LBB2_67
 # %bb.68:
 	beq	$t8, $a3, .LBB2_71
@@ -1560,8 +1560,8 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	add.w	$a2, $a4, $a2
 	alsl.d	$a2, $a2, $a2, 2
 	sub.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $s2
-	add.d	$a1, $a1, $a4
+	add.d	$a2, $s2, $a4
+	add.d	$a1, $a1, $a2
 	addi.w	$a1, $a1, 512
 	srai.d	$a2, $a1, 10
 	srai.d	$a1, $a1, 63
@@ -1648,10 +1648,10 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	vilvl.h	$vr10, $vr1, $vr10
 	vmadd.w	$vr5, $vr9, $vr3
 	vmadd.w	$vr7, $vr8, $vr3
-	vadd.w	$vr6, $vr7, $vr6
-	vadd.w	$vr4, $vr5, $vr4
 	vadd.w	$vr4, $vr4, $vr10
+	vadd.w	$vr4, $vr5, $vr4
 	vadd.w	$vr5, $vr6, $vr11
+	vadd.w	$vr5, $vr7, $vr5
 	vaddi.wu	$vr5, $vr5, 16
 	vaddi.wu	$vr4, $vr4, 16
 	vsrai.w	$vr4, $vr4, 5
@@ -1729,10 +1729,10 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	vilvl.h	$vr10, $vr1, $vr10
 	vmadd.w	$vr4, $vr9, $vr3
 	vmadd.w	$vr5, $vr7, $vr3
+	vadd.w	$vr7, $vr8, $vr10
+	vadd.w	$vr4, $vr4, $vr7
+	vadd.w	$vr6, $vr6, $vr11
 	vadd.w	$vr5, $vr5, $vr6
-	vadd.w	$vr4, $vr4, $vr8
-	vadd.w	$vr4, $vr4, $vr10
-	vadd.w	$vr5, $vr5, $vr11
 	vaddi.wu	$vr5, $vr5, 16
 	vaddi.wu	$vr4, $vr4, 16
 	vsrai.w	$vr4, $vr4, 5
@@ -1811,10 +1811,10 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	vilvh.h	$vr10, $vr1, $vr10
 	vmadd.w	$vr4, $vr8, $vr3
 	vmadd.w	$vr5, $vr6, $vr3
-	vadd.w	$vr5, $vr5, $vr10
-	vadd.w	$vr4, $vr4, $vr11
-	vadd.w	$vr4, $vr4, $vr9
-	vadd.w	$vr5, $vr5, $vr7
+	vadd.w	$vr6, $vr11, $vr9
+	vadd.w	$vr4, $vr4, $vr6
+	vadd.w	$vr6, $vr10, $vr7
+	vadd.w	$vr5, $vr5, $vr6
 	vaddi.wu	$vr5, $vr5, 16
 	vaddi.wu	$vr4, $vr4, 16
 	vsrai.w	$vr4, $vr4, 5
@@ -1841,8 +1841,8 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	vreplgr2vr.w	$vr2, $a5
 	vldi	$vr3, -3838
 	move	$a1, $t2
-	move	$a4, $t6
-	move	$a2, $t0
+	move	$a2, $t6
+	move	$a4, $t0
 	move	$t8, $a7
 	move	$fp, $t1
 	move	$s0, $t5
@@ -1850,17 +1850,17 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	.p2align	4, , 16
 .LBB2_98:                               # =>This Inner Loop Header: Depth=1
 	vld	$vr4, $a1, 0
-	vld	$vr5, $a4, 0
-	vld	$vr6, $a2, 0
+	vld	$vr5, $a2, 0
+	vld	$vr6, $a4, 0
 	vld	$vr7, $t8, 0
 	vadd.w	$vr4, $vr5, $vr4
 	vld	$vr5, $fp, 0
 	vmul.w	$vr4, $vr4, $vr0
 	vadd.w	$vr6, $vr7, $vr6
 	vmadd.w	$vr4, $vr6, $vr1
+	vadd.w	$vr5, $vr5, $vr7
+	vadd.w	$vr5, $vr5, $vr3
 	vadd.w	$vr4, $vr4, $vr5
-	vadd.w	$vr4, $vr4, $vr7
-	vadd.w	$vr4, $vr4, $vr3
 	vsrai.w	$vr4, $vr4, 10
 	vmaxi.w	$vr4, $vr4, 0
 	vmin.w	$vr4, $vr4, $vr2
@@ -1870,8 +1870,8 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	addi.d	$s0, $s0, 8
 	addi.d	$fp, $fp, 16
 	addi.d	$t8, $t8, 16
-	addi.d	$a2, $a2, 16
 	addi.d	$a4, $a4, 16
+	addi.d	$a2, $a2, 16
 	addi.d	$a1, $a1, 16
 	bnez	$s1, .LBB2_98
 # %bb.99:
@@ -1897,8 +1897,8 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	add.w	$a2, $a4, $a2
 	alsl.d	$a2, $a2, $a2, 2
 	sub.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $s1
-	add.d	$a1, $a1, $a4
+	add.d	$a2, $s1, $a4
+	add.d	$a1, $a1, $a2
 	addi.w	$a1, $a1, 512
 	srai.d	$a2, $a1, 10
 	srai.d	$a1, $a1, 63
@@ -1954,9 +1954,9 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	vmul.w	$vr4, $vr4, $vr0
 	vadd.w	$vr6, $vr7, $vr6
 	vmadd.w	$vr4, $vr6, $vr1
+	vadd.w	$vr5, $vr5, $vr7
+	vadd.w	$vr5, $vr5, $vr3
 	vadd.w	$vr4, $vr4, $vr5
-	vadd.w	$vr4, $vr4, $vr7
-	vadd.w	$vr4, $vr4, $vr3
 	vsrai.w	$vr4, $vr4, 10
 	vmaxi.w	$vr4, $vr4, 0
 	vmin.w	$vr4, $vr4, $vr2
@@ -1993,8 +1993,8 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	add.w	$t1, $t2, $t1
 	alsl.d	$t1, $t1, $t1, 2
 	sub.d	$a1, $a1, $t1
-	add.d	$a1, $a1, $t3
-	add.d	$a1, $a1, $t2
+	add.d	$t1, $t3, $t2
+	add.d	$a1, $a1, $t1
 	addi.w	$a1, $a1, 512
 	srai.d	$t1, $a1, 10
 	srai.d	$a1, $a1, 63
@@ -2082,10 +2082,10 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	vilvh.h	$vr10, $vr1, $vr10
 	vmadd.w	$vr4, $vr8, $vr3
 	vmadd.w	$vr5, $vr6, $vr3
-	vadd.w	$vr5, $vr5, $vr10
-	vadd.w	$vr4, $vr4, $vr11
-	vadd.w	$vr4, $vr4, $vr9
-	vadd.w	$vr5, $vr5, $vr7
+	vadd.w	$vr6, $vr11, $vr9
+	vadd.w	$vr4, $vr4, $vr6
+	vadd.w	$vr6, $vr10, $vr7
+	vadd.w	$vr5, $vr5, $vr6
 	vaddi.wu	$vr5, $vr5, 16
 	vaddi.wu	$vr4, $vr4, 16
 	vsrai.w	$vr4, $vr4, 5
@@ -2164,10 +2164,10 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	vilvh.h	$vr10, $vr1, $vr10
 	vmadd.w	$vr4, $vr8, $vr3
 	vmadd.w	$vr5, $vr6, $vr3
-	vadd.w	$vr5, $vr5, $vr10
-	vadd.w	$vr4, $vr4, $vr11
-	vadd.w	$vr4, $vr4, $vr9
-	vadd.w	$vr5, $vr5, $vr7
+	vadd.w	$vr6, $vr11, $vr9
+	vadd.w	$vr4, $vr4, $vr6
+	vadd.w	$vr6, $vr10, $vr7
+	vadd.w	$vr5, $vr5, $vr6
 	vaddi.wu	$vr5, $vr5, 16
 	vaddi.wu	$vr4, $vr4, 16
 	vsrai.w	$vr4, $vr4, 5

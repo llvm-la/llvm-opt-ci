@@ -1658,14 +1658,14 @@ _ZL19checkVectorFunctionIfEvSt8functionIFT_PS1_jEES4_PKc: # @_ZL19checkVectorFun
 	vld	$vr8, $t6, 8
 	vshuf4i.d	$vr9, $vr8, 9
 	vand.v	$vr9, $vr9, $vr0
+	vand.v	$vr10, $vr8, $vr1
+	vor.v	$vr9, $vr10, $vr9
 	vldx	$vr10, $t6, $a3
-	vand.v	$vr11, $vr8, $vr1
-	vor.v	$vr9, $vr11, $vr9
 	vsrli.d	$vr9, $vr9, 1
-	vxor.v	$vr9, $vr9, $vr10
-	vand.v	$vr10, $vr8, $vr2
-	vseqi.d	$vr10, $vr10, 0
-	vandn.v	$vr10, $vr10, $vr3
+	vand.v	$vr11, $vr8, $vr2
+	vseqi.d	$vr11, $vr11, 0
+	vandn.v	$vr11, $vr11, $vr3
+	vxor.v	$vr10, $vr10, $vr11
 	vxor.v	$vr9, $vr9, $vr10
 	vstx	$vr9, $a0, $t5
 	addi.d	$t5, $t5, 16
@@ -1674,14 +1674,14 @@ _ZL19checkVectorFunctionIfEvSt8functionIFT_PS1_jEES4_PKc: # @_ZL19checkVectorFun
 	ld.d	$t5, $a0, 1816
 	vpickve2gr.d	$t6, $vr8, 1
 	bstrpick.d	$t7, $t5, 30, 1
-	ldptr.d	$t8, $a0, 4984
 	slli.d	$t7, $t7, 1
 	bstrins.d	$t6, $t7, 30, 0
+	ldptr.d	$t7, $a0, 4984
 	srli.d	$t6, $t6, 1
-	xor	$t6, $t6, $t8
-	andi	$t7, $t5, 1
-	sub.d	$t7, $zero, $t7
-	and	$t7, $t7, $a4
+	andi	$t8, $t5, 1
+	sub.d	$t8, $zero, $t8
+	and	$t8, $t8, $a4
+	xor	$t7, $t7, $t8
 	xor	$t6, $t6, $t7
 	st.d	$t6, $a0, 1808
 	vinsgr2vr.d	$vr8, $t5, 1
@@ -1693,14 +1693,14 @@ _ZL19checkVectorFunctionIfEvSt8functionIFT_PS1_jEES4_PKc: # @_ZL19checkVectorFun
 	vldx	$vr9, $t6, $a7
 	vshuf4i.d	$vr8, $vr9, 9
 	vand.v	$vr8, $vr8, $vr0
+	vand.v	$vr10, $vr9, $vr1
+	vor.v	$vr8, $vr10, $vr8
 	vldx	$vr10, $t6, $t0
-	vand.v	$vr11, $vr9, $vr1
-	vor.v	$vr8, $vr11, $vr8
 	vsrli.d	$vr8, $vr8, 1
-	vxor.v	$vr8, $vr8, $vr10
-	vand.v	$vr10, $vr9, $vr2
-	vseqi.d	$vr10, $vr10, 0
-	vandn.v	$vr10, $vr10, $vr3
+	vand.v	$vr11, $vr9, $vr2
+	vseqi.d	$vr11, $vr11, 0
+	vandn.v	$vr11, $vr11, $vr3
+	vxor.v	$vr10, $vr10, $vr11
 	vxor.v	$vr8, $vr8, $vr10
 	addi.d	$t5, $t5, 16
 	vstx	$vr8, $t6, $t1
@@ -1708,17 +1708,17 @@ _ZL19checkVectorFunctionIfEvSt8functionIFT_PS1_jEES4_PKc: # @_ZL19checkVectorFun
 	bnez	$t5, .LBB1_9
 # %bb.10:                               #   in Loop: Header=BB1_5 Depth=1
 	ld.d	$t6, $a0, 0
-	move	$t5, $zero
 	ldptr.d	$t7, $a0, 4984
+	move	$t5, $zero
 	bstrpick.d	$t8, $t6, 30, 1
-	ldptr.d	$s3, $a0, 3168
 	slli.d	$t8, $t8, 1
 	bstrins.d	$t7, $t8, 30, 0
+	ldptr.d	$t8, $a0, 3168
 	srli.d	$t7, $t7, 1
-	xor	$t7, $t7, $s3
 	andi	$t6, $t6, 1
 	sub.d	$t6, $zero, $t6
 	and	$t6, $t6, $a4
+	xor	$t6, $t8, $t6
 	xor	$t6, $t7, $t6
 	stptr.d	$t6, $a0, 4984
 	b	.LBB1_4

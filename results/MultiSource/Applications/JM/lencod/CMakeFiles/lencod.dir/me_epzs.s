@@ -5123,9 +5123,9 @@ EPZSSpatialPredictors:                  # @EPZSSpatialPredictors
 	addi.d	$t2, $t2, %pc_lo12(mv_scale)
 	pcalau12i	$t3, %pc_hi20(mv_rescale)
 	ld.w	$t4, $t3, %pc_lo12(mv_rescale)
-	add.d	$a4, $t2, $a4
 	slli.d	$a6, $a6, 7
-	add.d	$a6, $a4, $a6
+	add.d	$a6, $t2, $a6
+	add.d	$a6, $a6, $a4
 	addi.d	$t3, $t4, 8
 	st.d	$zero, $t0, 0
 	pcalau12i	$a4, %got_pc_hi20(img)

@@ -1257,8 +1257,8 @@ luaD_poscall:                           # @luaD_poscall
 	bstrins.d	$a3, $zero, 4, 0
 	add.d	$a2, $a2, $a3
 	add.d	$a3, $a2, $a4
-	add.d	$a2, $a7, $a5
-	sub.d	$a6, $zero, $a2
+	sub.d	$a2, $zero, $a5
+	sub.d	$a6, $a2, $a7
 	move	$a2, $a7
 	.p2align	4, , 16
 .LBB8_19:                               # =>This Inner Loop Header: Depth=1

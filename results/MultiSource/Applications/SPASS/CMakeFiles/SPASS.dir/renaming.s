@@ -1489,9 +1489,9 @@ ren_FreeRenaming:                       # @ren_FreeRenaming
 	beqz	$s5, .LBB5_38
 # %bb.21:                               #   in Loop: Header=BB5_4 Depth=1
 	sltu	$a0, $zero, $a0
-	or	$a1, $s8, $a0
-	or	$a1, $a1, $s6
+	or	$a1, $s8, $s6
 	or	$a1, $a1, $s7
+	or	$a1, $a1, $a0
 	andi	$a1, $a1, 1
 	bnez	$a1, .LBB5_57
 # %bb.22:                               #   in Loop: Header=BB5_4 Depth=1
@@ -4405,8 +4405,8 @@ ren_AFactorBigger3:                     # @ren_AFactorBigger3
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(ren_NotPFactorOk)
 	jirl	$ra, $ra, 0
-	add.d	$a1, $s5, $s1
-	add.d	$a1, $a1, $s6
+	add.d	$a1, $s1, $s6
+	add.d	$a1, $s5, $a1
 	add.d	$a1, $a1, $a0
 	ori	$s1, $zero, 1
 	bltu	$s1, $a1, .LBB21_48
@@ -4707,8 +4707,8 @@ ren_BFactorBigger3:                     # @ren_BFactorBigger3
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(ren_NotPFactorOk)
 	jirl	$ra, $ra, 0
-	add.d	$a1, $s5, $s1
-	add.d	$a1, $a1, $s6
+	add.d	$a1, $s1, $s6
+	add.d	$a1, $s5, $a1
 	add.d	$a1, $a1, $a0
 	ori	$s1, $zero, 1
 	bltu	$s1, $a1, .LBB22_50

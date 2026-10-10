@@ -791,8 +791,8 @@ padOverlaps:                            # @padOverlaps
 	ld.d	$t7, $t7, 152
 	ld.w	$t8, $s0, 12
 	ld.w	$t7, $t7, 56
-	add.d	$t7, $t8, $t7
-	sub.w	$t7, $fp, $t7
+	sub.d	$t8, $fp, $t8
+	sub.w	$t7, $t8, $t7
 	blez	$t7, .LBB2_2
 # %bb.30:                               #   in Loop: Header=BB2_3 Depth=1
 	blez	$a6, .LBB2_2
@@ -851,7 +851,7 @@ padOverlaps:                            # @padOverlaps
 	ld.d	$t8, $t8, 152
 	ld.w	$fp, $s0, 16
 	ld.w	$t8, $t8, 64
-	add.d	$t8, $fp, $t8
+	sub.d	$t7, $t7, $fp
 	sub.w	$t7, $t7, $t8
 	blez	$t7, .LBB2_2
 # %bb.42:                               #   in Loop: Header=BB2_3 Depth=1

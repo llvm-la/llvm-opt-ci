@@ -36851,17 +36851,17 @@ _ZN2PP11PowerParser11end_do_loopERiRSt5dequeIiSaIiEERNSt7__cxx1118basic_stringst
 	sub.d	$a2, $a1, $a0
 	srli.d	$a2, $a2, 3
 	sltu	$a1, $zero, $a1
-	sub.d	$a1, $a2, $a1
-	ld.d	$a2, $s3, 48
-	ld.d	$a3, $s3, 56
-	slli.d	$a4, $a1, 7
+	sub.d	$a2, $a2, $a1
+	ld.d	$a3, $s3, 48
+	ld.d	$a4, $s3, 56
 	ld.d	$a5, $s3, 32
 	ld.d	$a1, $s3, 16
-	sub.d	$a2, $a2, $a3
-	srai.d	$a2, $a2, 2
-	add.d	$a2, $a4, $a2
-	sub.d	$a3, $a5, $a1
+	slli.d	$a2, $a2, 7
+	sub.d	$a3, $a3, $a4
 	srai.d	$a3, $a3, 2
+	sub.d	$a4, $a5, $a1
+	srai.d	$a4, $a4, 2
+	add.d	$a3, $a3, $a4
 	addi.w	$s4, $s5, 0
 	addi.w	$a4, $zero, -1
 	add.d	$a3, $a2, $a3
@@ -37202,19 +37202,19 @@ _ZN2PP11PowerParser10end_do_retERiRSt5dequeIiSaIiEERNSt7__cxx1118basic_stringstr
 	ld.d	$a1, $fp, 72
 	ld.d	$a0, $fp, 40
 	sub.d	$a2, $a1, $a0
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
 	sltu	$a1, $zero, $a1
+	ld.d	$a3, $fp, 48
+	ld.d	$a4, $fp, 56
 	sub.d	$a1, $a2, $a1
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
+	ld.d	$a5, $fp, 32
 	ld.d	$a2, $fp, 16
+	sub.d	$a3, $a3, $a4
 	slli.d	$a1, $a1, 7
 	srai.d	$a3, $a3, 2
-	add.d	$a1, $a1, $a3
-	sub.d	$a3, $a4, $a2
-	srai.d	$a3, $a3, 2
+	sub.d	$a4, $a5, $a2
+	srai.d	$a4, $a4, 2
+	add.d	$a3, $a3, $a4
 	add.d	$a3, $a1, $a3
 	addi.w	$a1, $a3, 0
 	blez	$a1, .LBB53_1
@@ -37341,19 +37341,19 @@ _ZN2PP11PowerParser12jump_to_callERiRSt5dequeIiSaIiEES5_RNSt7__cxx1118basic_stri
 	move	$s2, $a1
 	move	$s5, $a0
 	sub.d	$a0, $a6, $a2
-	ld.d	$a1, $s4, 48
-	ld.d	$a3, $s4, 56
 	srli.d	$a0, $a0, 3
-	sltu	$a4, $zero, $a6
-	sub.d	$a0, $a0, $a4
-	sub.d	$a3, $a1, $a3
-	ld.d	$a4, $s4, 32
+	sltu	$a1, $zero, $a6
+	ld.d	$a3, $s4, 48
+	ld.d	$a4, $s4, 56
+	sub.d	$a0, $a0, $a1
+	ld.d	$a5, $s4, 32
 	ld.d	$a1, $s4, 16
+	sub.d	$a3, $a3, $a4
 	slli.d	$a0, $a0, 7
 	srai.d	$a3, $a3, 2
-	add.d	$a0, $a0, $a3
-	sub.d	$a3, $a4, $a1
-	srai.d	$a3, $a3, 2
+	sub.d	$a4, $a5, $a1
+	srai.d	$a4, $a4, 2
+	add.d	$a3, $a3, $a4
 	add.d	$a0, $a0, $a3
 	slli.d	$s1, $a0, 32
 	lu12i.w	$fp, 427197
@@ -37562,27 +37562,27 @@ _ZN2PP11PowerParser12jump_to_callERiRSt5dequeIiSaIiEES5_RNSt7__cxx1118basic_stri
 	jirl	$ra, $ra, 0
 .Ltmp2050:                              # EH_LABEL
 # %bb.31:
-	ld.d	$a5, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a1, $a5, 72
-	ld.d	$a0, $a5, 40
+	ld.d	$a6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $a6, 72
+	ld.d	$a0, $a6, 40
 	sub.d	$a2, $a1, $a0
-	ld.d	$a3, $a5, 48
-	ld.d	$a4, $a5, 56
 	srli.d	$a2, $a2, 3
 	sltu	$a1, $zero, $a1
+	ld.d	$a3, $a6, 48
+	ld.d	$a4, $a6, 56
 	sub.d	$a2, $a2, $a1
+	ld.d	$a5, $a6, 32
+	ld.d	$a1, $a6, 16
 	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $a5, 32
-	ld.d	$a1, $a5, 16
 	slli.d	$a2, $a2, 7
 	srli.d	$a3, $a3, 2
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a1
-	srli.d	$a3, $a3, 2
+	sub.d	$a4, $a5, $a1
+	srli.d	$a4, $a4, 2
+	add.d	$a3, $a3, $a4
 	add.d	$a2, $a2, $a3
 	slli.d	$a2, $a2, 32
 	ori	$a3, $zero, 0
-	ld.d	$a4, $a5, 24
+	ld.d	$a4, $a6, 24
 	lu32i.d	$a3, -1
 	add.d	$a2, $a2, $a3
 	srai.d	$a3, $a2, 32
@@ -38371,25 +38371,25 @@ _ZN2PP11PowerParser12jump_to_callERiRSt5dequeIiSaIiEES5_RNSt7__cxx1118basic_stri
 	jirl	$ra, $ra, 0
 .Ltmp2130:                              # EH_LABEL
 # %bb.150:                              #   in Loop: Header=BB54_44 Depth=1
-	ld.d	$a5, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a1, $a5, 72
-	ld.d	$a0, $a5, 40
+	ld.d	$a6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $a6, 72
+	ld.d	$a0, $a6, 40
 	sub.d	$a2, $a1, $a0
-	ld.d	$a3, $a5, 48
-	ld.d	$a4, $a5, 56
 	srli.d	$a2, $a2, 3
 	sltu	$a1, $zero, $a1
+	ld.d	$a3, $a6, 48
+	ld.d	$a4, $a6, 56
 	sub.d	$a2, $a2, $a1
+	ld.d	$a5, $a6, 32
+	ld.d	$a1, $a6, 16
 	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $a5, 32
-	ld.d	$a1, $a5, 16
 	slli.d	$a2, $a2, 7
 	srli.d	$a3, $a3, 2
+	sub.d	$a4, $a5, $a1
+	srli.d	$a4, $a4, 2
+	add.d	$a3, $a3, $a4
 	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a1
-	srli.d	$a3, $a3, 2
-	add.d	$a2, $a2, $a3
-	ld.d	$a4, $a5, 24
+	ld.d	$a4, $a6, 24
 	slli.d	$a2, $a2, 32
 	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
 	add.d	$a2, $a2, $a3
@@ -42347,19 +42347,19 @@ _ZN2PP11PowerParser11check_enddoERSt5dequeIiSaIiEERNSt7__cxx1118basic_stringstre
 	ld.d	$a1, $s1, 72
 	ld.d	$a0, $s1, 40
 	sub.d	$a2, $a1, $a0
-	ld.d	$a3, $s1, 48
-	ld.d	$a4, $s1, 56
 	srli.d	$a2, $a2, 3
 	sltu	$a1, $zero, $a1
+	ld.d	$a3, $s1, 48
+	ld.d	$a4, $s1, 56
 	sub.d	$a2, $a2, $a1
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $s1, 32
+	ld.d	$a5, $s1, 32
 	ld.d	$a1, $s1, 16
+	sub.d	$a3, $a3, $a4
 	slli.d	$a2, $a2, 7
 	srli.d	$a3, $a3, 2
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a1
-	srli.d	$a3, $a3, 2
+	sub.d	$a4, $a5, $a1
+	srli.d	$a4, $a4, 2
+	add.d	$a3, $a3, $a4
 	add.w	$a2, $a2, $a3
 	bge	$s6, $a2, .LBB57_16
 # %bb.4:                                #   in Loop: Header=BB57_3 Depth=1
@@ -55939,8 +55939,8 @@ _ZN2PP11PowerParser14get_rb_satsizeEPi: # @_ZN2PP11PowerParser14get_rb_satsizeEP
 	alsl.d	$a7, $a7, $t1, 4
 	sub.d	$a6, $t0, $a6
 	srli.d	$a6, $a6, 5
-	add.d	$a6, $a7, $a6
 	add.d	$a0, $a0, $a6
+	add.d	$a0, $a0, $a7
 	addi.d	$a5, $a5, 8
 	addi.d	$a3, $a3, 1
 	addi.d	$a4, $a4, -1
@@ -56517,8 +56517,8 @@ _ZN2PP11PowerParser19get_rb_num_varnamesEv: # @_ZN2PP11PowerParser19get_rb_num_v
 	alsl.d	$a7, $a7, $t1, 2
 	sub.d	$a6, $t0, $a6
 	srli.d	$a6, $a6, 7
-	add.d	$a6, $a7, $a6
-	add.w	$a0, $a0, $a6
+	add.d	$a0, $a0, $a6
+	add.w	$a0, $a0, $a7
 	addi.d	$a5, $a5, 8
 	addi.d	$a3, $a3, 1
 	addi.d	$a4, $a4, -1
@@ -56582,8 +56582,8 @@ _ZN2PP11PowerParser19get_rb_num_varnamesEv: # @_ZN2PP11PowerParser19get_rb_num_v
 	alsl.d	$a6, $a6, $t0, 2
 	sub.d	$a5, $a7, $a5
 	srli.d	$a5, $a5, 7
-	add.d	$a5, $a6, $a5
-	add.w	$a0, $a0, $a5
+	add.d	$a0, $a0, $a5
+	add.w	$a0, $a0, $a6
 	addi.d	$a4, $a4, 8
 	addi.d	$a1, $a1, 1
 	addi.d	$a3, $a3, -1
@@ -63300,8 +63300,8 @@ _ZN2PP11PowerParser13vstr_to_charsEPcRSt6vectorINSt7__cxx1112basic_stringIcSt11c
 	masknez	$a2, $a2, $a4
 	maskeqz	$a4, $a5, $a4
 	or	$a2, $a4, $a2
-	add.d	$a2, $a2, $a3
-	sub.d	$a1, $a2, $a1
+	sub.d	$a1, $a3, $a1
+	add.d	$a1, $a2, $a1
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a2, $a1, 1
 	ori	$a1, $zero, 32
@@ -69100,7 +69100,7 @@ _ZNSt5dequeIN2PP3CmdESaIS1_EE8_M_eraseESt15_Deque_iteratorIS1_RS1_PS1_E: # @_ZNS
 	srai.d	$t5, $t5, 4
 	mul.d	$t5, $t5, $s2
 	sub.d	$t3, $t4, $t3
-	add.d	$t3, $t3, $t5
+	add.d	$a0, $t5, $a0
 	ld.d	$t4, $s0, 72
 	add.d	$s3, $t3, $a0
 	ld.d	$t3, $s0, 48
@@ -69112,8 +69112,8 @@ _ZNSt5dequeIN2PP3CmdESaIS1_EE8_M_eraseESt15_Deque_iteratorIS1_RS1_PS1_E: # @_ZNS
 	srai.d	$t8, $t8, 4
 	mul.d	$t8, $t8, $s2
 	sub.d	$t5, $t5, $t7
+	add.d	$t6, $t6, $t8
 	add.d	$t5, $t5, $t6
-	add.d	$t5, $t5, $t8
 	srli.d	$t5, $t5, 1
 	bgeu	$s3, $t5, .LBB175_7
 # %bb.3:
@@ -71297,12 +71297,12 @@ _ZNSt5dequeIbSaIbEEC2ERKS1_:            # @_ZNSt5dequeIbSaIbEEC2ERKS1_
 	ld.d	$a1, $s1, 48
 	ld.d	$a2, $s1, 56
 	ld.d	$a3, $s1, 32
-	slli.d	$a0, $a0, 9
 	ld.d	$a4, $s1, 16
+	slli.d	$a0, $a0, 9
 	sub.d	$a1, $a1, $a2
 	add.d	$a1, $a1, $a3
-	add.d	$a0, $a1, $a0
-	sub.d	$fp, $a0, $a4
+	sub.d	$a1, $a1, $a4
+	add.d	$fp, $a1, $a0
 	ori	$a2, $zero, 80
 	move	$a0, $s0
 	move	$a1, $zero
@@ -72635,19 +72635,19 @@ _ZNSt5dequeIiSaIiEE16_M_push_back_auxIJRKiEEEvDpOT_: # @_ZNSt5dequeIiSaIiEE16_M_
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 7
+	srai.d	$a4, $a4, 2
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 2
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 2
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 511

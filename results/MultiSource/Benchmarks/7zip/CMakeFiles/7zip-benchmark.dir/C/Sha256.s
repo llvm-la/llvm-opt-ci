@@ -150,41 +150,41 @@ Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
 	vor.v	$vr1, $vr5, $vr1
 	vshuf.b	$vr5, $vr3, $vr0, $vr4
 	vslli.w	$vr5, $vr5, 8
-	vor.v	$vr1, $vr1, $vr5
-	vld	$vr5, $a0, 56
 	vsrli.w	$vr0, $vr0, 24
+	vld	$vr6, $a0, 56
+	vor.v	$vr0, $vr5, $vr0
 	vor.v	$vr0, $vr1, $vr0
 	vst	$vr0, $sp, 16
-	vslli.w	$vr0, $vr5, 24
-	vshuf.b	$vr1, $vr3, $vr5, $vr2
+	vslli.w	$vr0, $vr6, 24
+	vshuf.b	$vr1, $vr3, $vr6, $vr2
 	vslli.w	$vr1, $vr1, 16
 	vor.v	$vr0, $vr1, $vr0
-	vshuf.b	$vr1, $vr3, $vr5, $vr4
+	vshuf.b	$vr1, $vr3, $vr6, $vr4
 	vslli.w	$vr1, $vr1, 8
+	vsrli.w	$vr5, $vr6, 24
+	vld	$vr6, $a0, 72
+	vor.v	$vr1, $vr1, $vr5
 	vor.v	$vr0, $vr0, $vr1
-	vld	$vr1, $a0, 72
-	vsrli.w	$vr5, $vr5, 24
-	vor.v	$vr0, $vr0, $vr5
 	vst	$vr0, $sp, 32
-	vslli.w	$vr0, $vr1, 24
-	vshuf.b	$vr5, $vr3, $vr1, $vr2
-	vslli.w	$vr5, $vr5, 16
-	vor.v	$vr0, $vr5, $vr0
-	vshuf.b	$vr5, $vr3, $vr1, $vr4
-	vslli.w	$vr5, $vr5, 8
-	vor.v	$vr0, $vr0, $vr5
-	vld	$vr5, $a0, 88
-	vsrli.w	$vr1, $vr1, 24
+	vslli.w	$vr0, $vr6, 24
+	vshuf.b	$vr1, $vr3, $vr6, $vr2
+	vslli.w	$vr1, $vr1, 16
+	vor.v	$vr0, $vr1, $vr0
+	vshuf.b	$vr1, $vr3, $vr6, $vr4
+	vslli.w	$vr1, $vr1, 8
+	vsrli.w	$vr5, $vr6, 24
+	vld	$vr6, $a0, 88
+	vor.v	$vr1, $vr1, $vr5
 	vor.v	$vr0, $vr0, $vr1
 	vst	$vr0, $sp, 48
-	vslli.w	$vr0, $vr5, 24
-	vshuf.b	$vr1, $vr3, $vr5, $vr2
+	vslli.w	$vr0, $vr6, 24
+	vshuf.b	$vr1, $vr3, $vr6, $vr2
 	vslli.w	$vr1, $vr1, 16
 	vor.v	$vr0, $vr1, $vr0
-	vshuf.b	$vr1, $vr3, $vr5, $vr4
+	vshuf.b	$vr1, $vr3, $vr6, $vr4
 	vslli.w	$vr1, $vr1, 8
-	vor.v	$vr0, $vr0, $vr1
-	vsrli.w	$vr1, $vr5, 24
+	vsrli.w	$vr2, $vr6, 24
+	vor.v	$vr1, $vr1, $vr2
 	vld	$vr2, $a0, 16
 	vld	$vr3, $a0, 0
 	vor.v	$vr0, $vr0, $vr1
@@ -237,15 +237,15 @@ Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
 	xor	$t7, $t7, $s0
 	andn	$t8, $t8, $t6
 	and	$t6, $fp, $t6
-	or	$t6, $t6, $t8
-	ld.w	$t8, $t1, 0
+	ld.w	$fp, $t1, 0
 	andn	$t4, $a3, $t4
 	slli.d	$t4, $t4, 2
-	ldx.w	$fp, $t4, $a2
-	add.d	$t7, $t8, $t7
+	ldx.w	$s0, $t4, $a2
+	or	$t6, $t6, $t8
+	add.d	$t7, $fp, $t7
 	add.d	$t6, $t7, $t6
+	add.d	$t6, $t6, $s0
 	add.d	$t5, $t6, $t5
-	add.d	$t5, $t5, $fp
 	stx.w	$t5, $t4, $a2
 	addi.d	$t6, $a7, -13
 	andi	$t6, $t6, 7
@@ -295,24 +295,24 @@ Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
 	rotri.w	$t6, $t5, 17
 	rotri.w	$t7, $t5, 19
 	xor	$t6, $t6, $t7
-	addi.d	$t7, $t4, 9
-	andi	$t7, $t7, 15
-	slli.d	$t7, $t7, 2
-	ldx.w	$t7, $t7, $a5
-	andi	$t8, $t3, 15
-	slli.d	$t8, $t8, 2
-	ldx.wu	$t8, $t8, $a5
 	srli.d	$t5, $t5, 10
 	xor	$t5, $t6, $t5
-	add.d	$t5, $t5, $t7
-	rotri.w	$t6, $t8, 7
-	rotri.w	$t7, $t8, 18
-	ld.w	$fp, $t2, 0
-	xor	$t6, $t6, $t7
-	srli.d	$t7, $t8, 3
-	xor	$t6, $t6, $t7
-	add.d	$t5, $t5, $fp
+	addi.d	$t6, $t4, 9
+	andi	$t7, $t3, 15
+	slli.d	$t7, $t7, 2
+	ldx.wu	$t7, $t7, $a5
+	andi	$t6, $t6, 15
+	slli.d	$t6, $t6, 2
+	ldx.w	$t6, $t6, $a5
+	rotri.w	$t8, $t7, 7
+	rotri.w	$fp, $t7, 18
+	ld.w	$s0, $t2, 0
+	xor	$t8, $t8, $fp
+	srli.d	$t7, $t7, 3
+	xor	$t7, $t8, $t7
+	add.d	$t6, $t6, $s0
 	add.d	$t5, $t5, $t6
+	add.d	$t5, $t5, $t7
 	b	.LBB2_4
 .LBB2_7:
 	vld	$vr0, $sp, 80

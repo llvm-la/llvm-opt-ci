@@ -2571,8 +2571,8 @@ SIM4:                                   # @SIM4
 	addi.d	$s2, $s8, 1
 	addi.d	$s3, $a2, 1
 	sub.d	$a1, $s8, $t4
-	add.d	$a1, $a1, $s1
-	add.d	$s5, $a1, $a0
+	add.d	$a0, $a1, $a0
+	add.d	$s5, $a0, $s1
 	add.d	$s7, $s1, $a2
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(xmalloc)
@@ -4294,9 +4294,9 @@ SIM4:                                   # @SIM4
 	ld.d	$a6, $sp, 360                   # 8-byte Folded Reload
 .LBB0_483:                              #   in Loop: Header=BB0_485 Depth=2
 	bstrpick.d	$a0, $a0, 31, 0
+	or	$a1, $a1, $a3
+	or	$a1, $a1, $a2
 	or	$a0, $a0, $a1
-	or	$a0, $a0, $a3
-	or	$a0, $a0, $a2
 	st.d	$a0, $s0, 24
 	st.w	$a6, $s0, 8
 	st.w	$a4, $s0, 12
@@ -4446,8 +4446,8 @@ SIM4:                                   # @SIM4
 	ld.w	$a4, $s7, 12
 	add.d	$a1, $a2, $a1
 	sub.d	$a1, $a3, $a1
-	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $a4
+	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, 2
 	bstrpick.d	$a0, $a0, 31, 0
 	movgr2fr.d	$fa0, $a0
@@ -6932,6 +6932,7 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 # %bb.0:
 	addi.d	$sp, $sp, -16
 	fst.d	$fs0, $sp, 8                    # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 0                    # 8-byte Folded Spill
 	addi.w	$a4, $a1, 0
 	addi.w	$a3, $a0, -1
 	bgeu	$a3, $a4, .LBB8_3
@@ -6988,6 +6989,7 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	ori	$a2, $zero, 7
 	bgeu	$a2, $a1, .LBB8_14
 .LBB8_9:
+	fld.d	$fs1, $sp, 0                    # 8-byte Folded Reload
 	fld.d	$fs0, $sp, 8                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
@@ -7017,6 +7019,7 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	bltu	$a2, $a1, .LBB8_9
 .LBB8_14:
 	move	$a0, $zero
+	fld.d	$fs1, $sp, 0                    # 8-byte Folded Reload
 	fld.d	$fs0, $sp, 8                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
@@ -7067,19 +7070,19 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	vseq.b	$vr23, $vr15, $vr8
 	vilvl.b	$vr23, $vr23, $vr23
 	vilvl.h	$vr23, $vr23, $vr23
-	vor.v	$vr19, $vr19, $vr23
 	vseq.b	$vr24, $vr16, $vr8
 	vilvl.b	$vr24, $vr24, $vr24
 	vilvl.h	$vr24, $vr24, $vr24
-	vor.v	$vr22, $vr22, $vr24
 	vseq.b	$vr15, $vr15, $vr10
 	vilvl.b	$vr15, $vr15, $vr15
 	vilvl.h	$vr15, $vr15, $vr15
-	vor.v	$vr19, $vr19, $vr15
+	vor.v	$vr25, $vr23, $vr15
+	vor.v	$vr19, $vr19, $vr25
 	vseq.b	$vr16, $vr16, $vr10
 	vilvl.b	$vr16, $vr16, $vr16
 	vilvl.h	$vr16, $vr16, $vr16
-	vor.v	$vr22, $vr22, $vr16
+	vor.v	$vr25, $vr24, $vr16
+	vor.v	$vr22, $vr22, $vr25
 	vand.v	$vr17, $vr17, $vr12
 	vadd.w	$vr1, $vr1, $vr17
 	vand.v	$vr17, $vr20, $vr12

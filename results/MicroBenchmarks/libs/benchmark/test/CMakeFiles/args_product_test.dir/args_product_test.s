@@ -55,7 +55,7 @@ _ZN34ArgsProductFixture_Empty_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_
 	ld.d	$a7, $a4, 16
 	ld.d	$a4, $a4, 24
 	mul.d	$a5, $a6, $a5
-	mul.d	$a5, $a5, $a7
+	mul.d	$a4, $a7, $a4
 	mul.d	$a4, $a5, $a4
 	st.d	$zero, $sp, 8
 	blez	$a4, .LBB0_9

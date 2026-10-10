@@ -758,8 +758,8 @@ newMat:                                 # @newMat
 	st.w	$a3, $a0, 16
 	st.w	$a4, $a0, 20
 	mul.d	$a0, $a2, $a1
-	mul.d	$a0, $a0, $a3
-	mul.w	$a0, $a0, $a4
+	mul.d	$a1, $a3, $a4
+	mul.w	$a0, $a0, $a1
 	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -890,8 +890,8 @@ mat_set:                                # @mat_set
 	vreplvei.w	$vr1, $vr0, 0
 	addi.d	$a7, $a0, 16
 	mul.d	$t0, $a3, $a4
-	mul.d	$t1, $t0, $a2
-	mul.w	$a1, $t1, $a1
+	mul.d	$a1, $a2, $a1
+	mul.w	$a1, $t0, $a1
 	ori	$t1, $zero, 8
 	b	.LBB3_5
 	.p2align	4, , 16

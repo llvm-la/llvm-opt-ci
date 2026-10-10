@@ -1919,8 +1919,8 @@ very_real_unpack:                       # @very_real_unpack
 	slli.d	$a3, $t2, 1
 	slli.d	$a4, $t3, 2
 	or	$a3, $a3, $a4
-	or	$a3, $a3, $a7
-	or	$a3, $a3, $a6
+	or	$a4, $a7, $a6
+	or	$a3, $a3, $a4
 .LBB1_295:                              #   in Loop: Header=BB1_15 Depth=1
 	alsl.w	$a1, $a2, $a1, 4
 	add.d	$a2, $a1, $a3

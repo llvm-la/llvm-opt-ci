@@ -941,12 +941,12 @@ DoStringSortIteration:                  # @DoStringSortIteration
 	ld.d	$a1, $a1, -8
 	ld.d	$a2, $s5, 0
 	ldx.bu	$s2, $s1, $a0
-	ldx.bu	$a0, $s1, $a1
 	ld.d	$a3, $s5, 8
+	ldx.bu	$a0, $s1, $a1
 	add.d	$a4, $s1, $a2
 	ldx.bu	$fp, $s1, $a2
+	sub.d	$a1, $a1, $a3
 	add.d	$a0, $a1, $a0
-	sub.d	$a0, $a0, $a3
 	addi.d	$a2, $a0, 1
 	add.d	$a0, $a4, $s2
 	addi.d	$a0, $a0, 1
@@ -1058,15 +1058,15 @@ DoStringSortIteration:                  # @DoStringSortIteration
 .LBB3_64:                               #   in Loop: Header=BB3_48 Depth=2
 	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, -8
-	ldx.bu	$a3, $s1, $a2
-	ld.d	$a4, $fp, 8
+	ld.d	$a3, $fp, 8
+	ldx.bu	$a4, $s1, $a2
 	ldx.bu	$s4, $s1, $a1
-	add.d	$a1, $a2, $a3
-	sub.d	$a1, $a1, $a4
+	sub.d	$a1, $a2, $a3
+	add.d	$a1, $a1, $a4
 	addi.d	$a2, $a1, 1
 	add.d	$a0, $a0, $s2
 	addi.d	$a0, $a0, 1
-	add.d	$a1, $s1, $a4
+	add.d	$a1, $s1, $a3
 	pcaddu18i	$ra, %call36(MoveMemory)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $s6, 1
@@ -2334,7 +2334,23 @@ DoAssign:                               # @DoAssign
 	pcaddu18i	$ra, %call36(DoAssignIteration)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s1, 16
-	add.d	$s0, $a0, $s0
+	add.d	$s2, $a0, $s0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(DoAssignIteration)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $s1, 16
+	move	$s0, $a0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(DoAssignIteration)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $s1, 16
+	add.d	$a0, $a0, $s0
+	add.d	$s2, $a0, $s2
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(DoAssignIteration)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $s1, 16
+	move	$s0, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(DoAssignIteration)
 	jirl	$ra, $ra, 0
@@ -2344,22 +2360,8 @@ DoAssign:                               # @DoAssign
 	pcaddu18i	$ra, %call36(DoAssignIteration)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s1, 16
-	add.d	$s0, $a0, $s0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(DoAssignIteration)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, 16
-	add.d	$s0, $a0, $s0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(DoAssignIteration)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, 16
-	add.d	$s0, $a0, $s0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(DoAssignIteration)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, 16
-	add.d	$s0, $a0, $s0
+	add.d	$a0, $a0, $s0
+	add.d	$s0, $a0, $s2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(DoAssignIteration)
 	jirl	$ra, $ra, 0
@@ -2756,36 +2758,36 @@ DoAssignIteration:                      # @DoAssignIteration
 	vld	$vr17, $a0, -144
 	vld	$vr18, $a0, -176
 	vld	$vr19, $a0, -208
-	vld	$vr20, $a0, -240
+	vld	$vr20, $a0, -304
 	vld	$vr21, $a0, -368
 	vld	$vr1, $a0, -400
 	vld	$vr22, $a0, -336
-	vld	$vr23, $a0, -304
+	vld	$vr23, $a0, -240
 	vld	$vr24, $a0, -272
 	vmin.d	$vr21, $vr21, $vr1
-	vmin.d	$vr21, $vr22, $vr21
-	vmin.d	$vr21, $vr23, $vr21
-	vmin.d	$vr21, $vr24, $vr21
+	vmin.d	$vr20, $vr20, $vr22
 	vmin.d	$vr20, $vr20, $vr21
+	vmin.d	$vr21, $vr23, $vr24
+	vmin.d	$vr19, $vr19, $vr21
 	vmin.d	$vr19, $vr19, $vr20
-	vmin.d	$vr18, $vr18, $vr19
 	vmin.d	$vr17, $vr17, $vr18
 	vmin.d	$vr16, $vr16, $vr17
 	vmin.d	$vr15, $vr15, $vr16
-	vmin.d	$vr14, $vr14, $vr15
+	vmin.d	$vr15, $vr15, $vr19
 	vmin.d	$vr13, $vr13, $vr14
 	vmin.d	$vr12, $vr12, $vr13
 	vmin.d	$vr11, $vr11, $vr12
 	vmin.d	$vr10, $vr10, $vr11
-	vmin.d	$vr9, $vr9, $vr10
+	vmin.d	$vr10, $vr10, $vr15
 	vmin.d	$vr8, $vr8, $vr9
 	vmin.d	$vr7, $vr7, $vr8
 	vmin.d	$vr6, $vr6, $vr7
 	vmin.d	$vr5, $vr5, $vr6
 	vmin.d	$vr4, $vr4, $vr5
-	vmin.d	$vr3, $vr3, $vr4
+	vmin.d	$vr4, $vr4, $vr10
 	vmin.d	$vr2, $vr2, $vr3
 	vmin.d	$vr0, $vr0, $vr2
+	vmin.d	$vr0, $vr0, $vr4
 	vld	$vr2, $a0, 384
 	vld	$vr3, $a0, 352
 	vld	$vr4, $a0, 320
@@ -2805,36 +2807,36 @@ DoAssignIteration:                      # @DoAssignIteration
 	vld	$vr18, $a0, -128
 	vld	$vr19, $a0, -160
 	vld	$vr20, $a0, -192
-	vld	$vr21, $a0, -224
+	vld	$vr21, $a0, -288
 	vld	$vr22, $a0, -352
 	vld	$vr23, $a0, -384
 	vld	$vr24, $a0, -320
-	vld	$vr25, $a0, -288
+	vld	$vr25, $a0, -224
 	vld	$vr26, $a0, -256
 	vmin.d	$vr22, $vr22, $vr23
-	vmin.d	$vr22, $vr24, $vr22
-	vmin.d	$vr22, $vr25, $vr22
-	vmin.d	$vr22, $vr26, $vr22
+	vmin.d	$vr21, $vr21, $vr24
 	vmin.d	$vr21, $vr21, $vr22
+	vmin.d	$vr22, $vr25, $vr26
+	vmin.d	$vr20, $vr20, $vr22
 	vmin.d	$vr20, $vr20, $vr21
-	vmin.d	$vr19, $vr19, $vr20
 	vmin.d	$vr18, $vr18, $vr19
 	vmin.d	$vr17, $vr17, $vr18
 	vmin.d	$vr16, $vr16, $vr17
-	vmin.d	$vr15, $vr15, $vr16
+	vmin.d	$vr16, $vr16, $vr20
 	vmin.d	$vr14, $vr14, $vr15
 	vmin.d	$vr13, $vr13, $vr14
 	vmin.d	$vr12, $vr12, $vr13
 	vmin.d	$vr11, $vr11, $vr12
-	vmin.d	$vr10, $vr10, $vr11
+	vmin.d	$vr11, $vr11, $vr16
 	vmin.d	$vr9, $vr9, $vr10
 	vmin.d	$vr8, $vr8, $vr9
 	vmin.d	$vr7, $vr7, $vr8
 	vmin.d	$vr6, $vr6, $vr7
 	vmin.d	$vr5, $vr5, $vr6
-	vmin.d	$vr4, $vr4, $vr5
+	vmin.d	$vr5, $vr5, $vr11
 	vmin.d	$vr3, $vr3, $vr4
 	vmin.d	$vr2, $vr2, $vr3
+	vmin.d	$vr2, $vr2, $vr5
 	vmin.d	$vr0, $vr0, $vr2
 	ld.d	$a2, $a0, 400
 	vbsrl.v	$vr2, $vr0, 8
@@ -11277,15 +11279,15 @@ strsift:                                # @strsift
 .LBB18_12:                              #   in Loop: Header=BB18_6 Depth=1
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, -8
-	ldx.bu	$a3, $s1, $a2
-	ld.d	$a4, $s6, 8
+	ld.d	$a3, $s6, 8
+	ldx.bu	$a4, $s1, $a2
 	ldx.bu	$s7, $s1, $a1
-	add.d	$a1, $a2, $a3
-	sub.d	$a1, $a1, $a4
+	sub.d	$a1, $a2, $a3
+	add.d	$a1, $a1, $a4
 	addi.d	$a2, $a1, 1
 	add.d	$a0, $a0, $s4
 	addi.d	$a0, $a0, 1
-	add.d	$a1, $s1, $a4
+	add.d	$a1, $s1, $a3
 	pcaddu18i	$ra, %call36(MoveMemory)
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $s5, 1
@@ -11402,15 +11404,15 @@ strsift:                                # @strsift
 .LBB18_29:                              #   in Loop: Header=BB18_6 Depth=1
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, -8
-	ldx.bu	$a3, $s1, $a2
-	ld.d	$a4, $s8, 8
+	ld.d	$a3, $s8, 8
+	ldx.bu	$a4, $s1, $a2
 	ldx.bu	$s6, $s1, $a1
-	add.d	$a1, $a2, $a3
-	sub.d	$a1, $a1, $a4
+	sub.d	$a1, $a2, $a3
+	add.d	$a1, $a1, $a4
 	addi.d	$a2, $a1, 1
 	add.d	$a0, $a0, $s4
 	addi.d	$a0, $a0, 1
-	add.d	$a1, $s1, $a4
+	add.d	$a1, $s1, $a3
 	pcaddu18i	$ra, %call36(MoveMemory)
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $s3, 1

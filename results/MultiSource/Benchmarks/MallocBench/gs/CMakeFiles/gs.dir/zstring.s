@@ -251,8 +251,8 @@ zsearch:                                # @zsearch
 	vst	$vr0, $a0, 0
 	ld.d	$a4, $a1, 16
 	sub.d	$a5, $zero, $s4
-	add.d	$a4, $a4, $s3
-	sub.d	$a4, $zero, $a4
+	sub.d	$a6, $zero, $s3
+	sub.d	$a4, $a6, $a4
 	add.d	$a6, $s0, $fp
 	st.d	$a6, $a1, -16
 	ld.d	$a3, $a3, 0

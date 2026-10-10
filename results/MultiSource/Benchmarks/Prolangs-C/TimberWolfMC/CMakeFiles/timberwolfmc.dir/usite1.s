@@ -97,14 +97,15 @@ usite1:                                 # @usite1
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(funccost)
 	ld.d	$s8, $a0, %got_pc_lo12(funccost)
-	ld.w	$s4, $s8, 0
+	ld.w	$s7, $s8, 0
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(ufixnet)
 	jirl	$ra, $ra, 0
-	add.d	$s4, $a0, $s4
+	move	$s4, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(usoftnet)
 	jirl	$ra, $ra, 0
+	add.d	$a0, $s7, $a0
 	add.d	$s4, $s4, $a0
 	pcalau12i	$a0, %got_pc_hi20(finalShot)
 	ld.d	$s7, $a0, %got_pc_lo12(finalShot)

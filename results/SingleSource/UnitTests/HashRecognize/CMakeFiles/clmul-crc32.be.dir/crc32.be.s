@@ -94,9 +94,9 @@ crc_loop:                               # @crc_loop
 	slli.d	$a3, $a1, 3
 	xor	$a2, $a3, $a2
 	slli.d	$a1, $a1, 15
-	xor	$a1, $a2, $a1
 	slli.d	$a0, $a0, 32
 	xor	$a0, $a1, $a0
+	xor	$a0, $a2, $a0
 	srli.d	$a0, $a0, 32
 	slli.w	$a1, $a0, 10
 	slli.w	$a2, $a0, 3

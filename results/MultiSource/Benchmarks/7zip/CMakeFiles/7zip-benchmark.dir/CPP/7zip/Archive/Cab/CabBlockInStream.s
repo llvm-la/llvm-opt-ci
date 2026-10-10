@@ -259,12 +259,12 @@ _ZN8NArchive4NCab10CCheckSum26UpdateEPKvj: # @_ZN8NArchive4NCab10CCheckSum26Upda
 # %bb.5:                                #   in Loop: Header=BB4_3 Depth=1
 	ld.bu	$t1, $a0, 9
 	ld.bu	$t2, $a0, 10
-	slli.d	$t1, $t1, 8
 	ld.b	$t3, $a0, 11
+	slli.d	$t1, $t1, 8
 	or	$t1, $t1, $a5
 	slli.d	$t2, $t2, 16
-	or	$t1, $t1, $t2
-	slli.d	$t2, $t3, 24
+	slli.d	$t3, $t3, 24
+	or	$t2, $t2, $t3
 	or	$t1, $t1, $t2
 	xor	$a4, $t1, $a4
 	b	.LBB4_2
@@ -404,7 +404,7 @@ _ZN8NArchive4NCab17CCabBlockInStream7PreReadERjS2_: # @_ZN8NArchive4NCab17CCabBl
 	addi.d	$a2, $a0, 2
 	st.w	$a2, $sp, 36
 	bstrpick.d	$a1, $a1, 31, 0
-	ldx.bu	$s4, $a1, $s6
+	ldx.bu	$s3, $a1, $s6
 	addi.d	$a1, $a0, 3
 	st.w	$a1, $sp, 36
 	bstrpick.d	$a2, $a2, 31, 0
@@ -412,7 +412,7 @@ _ZN8NArchive4NCab17CCabBlockInStream7PreReadERjS2_: # @_ZN8NArchive4NCab17CCabBl
 	addi.d	$a2, $a0, 4
 	st.w	$a2, $sp, 36
 	bstrpick.d	$a1, $a1, 31, 0
-	ldx.b	$s3, $a1, $s6
+	ldx.b	$s4, $a1, $s6
 	addi.d	$a1, $a0, 5
 	st.w	$a1, $sp, 36
 	bstrpick.d	$a2, $a2, 31, 0
@@ -507,12 +507,12 @@ _ZN8NArchive4NCab17CCabBlockInStream7PreReadERjS2_: # @_ZN8NArchive4NCab17CCabBl
 # %bb.14:                               #   in Loop: Header=BB5_12 Depth=1
 	ld.bu	$t3, $sp, 25
 	ld.bu	$t4, $sp, 26
-	slli.d	$t3, $t3, 8
 	ld.b	$t5, $sp, 27
+	slli.d	$t3, $t3, 8
 	or	$t3, $t3, $a6
 	slli.d	$t4, $t4, 16
-	or	$t3, $t3, $t4
-	slli.d	$t4, $t5, 24
+	slli.d	$t5, $t5, 24
+	or	$t4, $t4, $t5
 	or	$t3, $t3, $t4
 	xor	$a5, $t3, $a5
 	b	.LBB5_11
@@ -613,12 +613,12 @@ _ZN8NArchive4NCab17CCabBlockInStream7PreReadERjS2_: # @_ZN8NArchive4NCab17CCabBl
 	st.w	$a2, $fp, 36
 	bne	$a1, $s6, .LBB5_1
 .LBB5_32:
-	slli.w	$a0, $s4, 8
+	slli.w	$a0, $s3, 8
 	or	$a0, $a0, $s2
 	slli.w	$a3, $s5, 16
 	ld.w	$a1, $sp, 20
-	or	$a0, $a0, $a3
-	slli.w	$a3, $s3, 24
+	slli.w	$a4, $s4, 24
+	or	$a3, $a3, $a4
 	or	$a0, $a0, $a3
 	st.w	$a2, $fp, 40
 	blez	$a1, .LBB5_41

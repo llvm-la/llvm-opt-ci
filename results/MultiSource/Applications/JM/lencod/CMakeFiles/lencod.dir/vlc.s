@@ -599,8 +599,8 @@ levrun_linfo_inter:                     # @levrun_linfo_inter
 	alsl.d	$a4, $a4, $a5, 1
 	pcalau12i	$a5, %pc_hi20(.L__const.levrun_linfo_inter.NTAB)
 	addi.d	$a5, $a5, %pc_lo12(.L__const.levrun_linfo_inter.NTAB)
-	add.d	$a4, $a5, $a4
-	add.d	$a1, $a4, $a1
+	add.d	$a1, $a5, $a1
+	add.d	$a1, $a1, $a4
 	ld.bu	$a1, $a1, -10
 	addi.d	$a1, $a1, 1
 	addi.w	$a4, $a1, -2
@@ -1599,18 +1599,18 @@ writeSyntaxElement_NumCoeffTrailingOnesChromaDC: # @writeSyntaxElement_NumCoeffT
 	pcalau12i	$a2, %pc_hi20(writeSyntaxElement_NumCoeffTrailingOnesChromaDC.lentab)
 	addi.d	$a3, $a2, %pc_lo12(writeSyntaxElement_NumCoeffTrailingOnesChromaDC.lentab)
 	ld.w	$a2, $a0, 8
-	add.d	$a3, $a3, $a5
-	ld.w	$a4, $a0, 4
 	slli.d	$a6, $a2, 6
+	ld.w	$a4, $a0, 4
 	alsl.d	$a6, $a2, $a6, 2
 	add.d	$a3, $a3, $a6
+	add.d	$a3, $a3, $a5
 	slli.d	$a7, $a4, 2
 	ldx.w	$a3, $a3, $a7
 	st.w	$a3, $a0, 12
 	pcalau12i	$t0, %pc_hi20(writeSyntaxElement_NumCoeffTrailingOnesChromaDC.codtab)
 	addi.d	$t0, $t0, %pc_lo12(writeSyntaxElement_NumCoeffTrailingOnesChromaDC.codtab)
-	add.d	$a5, $t0, $a5
-	add.d	$a5, $a5, $a6
+	add.d	$a6, $t0, $a6
+	add.d	$a5, $a6, $a5
 	ldx.w	$a5, $a5, $a7
 	st.w	$a5, $a0, 16
 	beqz	$a3, .LBB25_12
@@ -1816,16 +1816,16 @@ writeSyntaxElement_TotalZerosChromaDC:  # @writeSyntaxElement_TotalZerosChromaDC
 	pcalau12i	$a2, %pc_hi20(writeSyntaxElement_TotalZerosChromaDC.lentab)
 	addi.d	$a2, $a2, %pc_lo12(writeSyntaxElement_TotalZerosChromaDC.lentab)
 	ld.w	$a3, $a0, 4
-	add.d	$a2, $a2, $a5
 	slli.d	$a4, $a4, 6
 	add.d	$a2, $a2, $a4
+	add.d	$a2, $a2, $a5
 	slli.d	$a6, $a3, 2
 	ldx.w	$a2, $a2, $a6
 	st.w	$a2, $a0, 12
 	pcalau12i	$a7, %pc_hi20(writeSyntaxElement_TotalZerosChromaDC.codtab)
 	addi.d	$a7, $a7, %pc_lo12(writeSyntaxElement_TotalZerosChromaDC.codtab)
-	add.d	$a5, $a7, $a5
-	add.d	$a4, $a5, $a4
+	add.d	$a4, $a7, $a4
+	add.d	$a4, $a4, $a5
 	ldx.w	$a4, $a4, $a6
 	st.w	$a4, $a0, 16
 	beqz	$a2, .LBB27_12
@@ -2021,11 +2021,11 @@ writeSyntaxElement_Level_VLC1:          # @writeSyntaxElement_Level_VLC1
 	srai.d	$a4, $a4, 31
 	xor	$a5, $a3, $a4
 	sub.w	$a4, $a5, $a4
-	ori	$a5, $zero, 7
-	srli.d	$a3, $a3, 31
-	bltu	$a5, $a4, .LBB29_6
+	ori	$a6, $zero, 7
+	srli.d	$a5, $a3, 31
+	bltu	$a6, $a4, .LBB29_6
 # %bb.1:
-	alsl.d	$a2, $a4, $a3, 1
+	alsl.d	$a2, $a4, $a5, 1
 	addi.w	$a2, $a2, -1
 	ori	$a4, $zero, 1
 	st.w	$a2, $a0, 12
@@ -2044,12 +2044,12 @@ writeSyntaxElement_Level_VLC1:          # @writeSyntaxElement_Level_VLC1
 	move	$a0, $a2
 	ret
 .LBB29_6:
-	ori	$a5, $zero, 15
-	bltu	$a5, $a4, .LBB29_8
+	ori	$a3, $zero, 15
+	bltu	$a3, $a4, .LBB29_8
 # %bb.7:
 	ori	$a2, $zero, 19
 	st.w	$a2, $a0, 12
-	alsl.d	$a3, $a4, $a3, 1
+	alsl.d	$a3, $a4, $a5, 1
 	addi.d	$a3, $a3, -16
 	ori	$a4, $a3, 16
 	st.w	$a4, $a0, 16
@@ -2058,29 +2058,29 @@ writeSyntaxElement_Level_VLC1:          # @writeSyntaxElement_Level_VLC1
 	ori	$a6, $zero, 2065
 	bltu	$a4, $a6, .LBB29_11
 # %bb.9:
-	ori	$a5, $zero, 15
+	ori	$a3, $zero, 15
 	ori	$a6, $zero, 1
 	.p2align	4, , 16
 .LBB29_10:                              # =>This Inner Loop Header: Depth=1
-	addi.d	$a7, $a5, -2
+	addi.d	$a7, $a3, -2
 	sll.w	$a7, $a6, $a7
 	addi.d	$a7, $a7, -2048
 	addi.w	$a7, $a7, -2032
-	addi.w	$a5, $a5, 1
+	addi.w	$a3, $a3, 1
 	blt	$a7, $a4, .LBB29_10
 .LBB29_11:
-	addi.d	$a6, $a5, -3
+	addi.d	$a6, $a3, -3
 	ori	$a7, $zero, 1
 	sll.w	$a6, $a7, $a6
 	addi.d	$a7, $zero, -32
 	alsl.w	$a4, $a4, $a7, 1
+	or	$a4, $a4, $a5
+	ori	$a5, $zero, 99
 	or	$a4, $a4, $a6
-	ori	$a6, $zero, 99
-	or	$a4, $a4, $a3
-	blt	$a6, $a2, .LBB29_14
+	blt	$a5, $a2, .LBB29_14
 # %bb.12:
 	ori	$a2, $zero, 15
-	bgeu	$a2, $a5, .LBB29_14
+	bgeu	$a2, $a3, .LBB29_14
 # %bb.13:
 	lu12i.w	$a1, 15
 	ori	$a2, $a1, 4095
@@ -2090,7 +2090,7 @@ writeSyntaxElement_Level_VLC1:          # @writeSyntaxElement_Level_VLC1
 	ret
 .LBB29_14:
 	addi.d	$a2, $zero, -2
-	alsl.w	$a2, $a5, $a2, 1
+	alsl.w	$a2, $a3, $a2, 1
 	st.w	$a2, $a0, 12
 	st.w	$a4, $a0, 16
 	blez	$a2, .LBB29_2
@@ -2192,9 +2192,9 @@ writeSyntaxElement_Level_VLCN:          # @writeSyntaxElement_Level_VLCN
 	add.d	$a1, $a1, $a7
 	lu12i.w	$a7, 1
 	alsl.w	$a1, $a1, $a7, 1
-	or	$a1, $t0, $a1
+	or	$a5, $t0, $a5
 	ori	$a7, $zero, 99
-	or	$a5, $a1, $a5
+	or	$a5, $a5, $a1
 	blt	$a7, $a3, .LBB30_9
 # %bb.5:
 	ori	$a1, $zero, 16
@@ -2218,8 +2218,8 @@ writeSyntaxElement_Level_VLCN:          # @writeSyntaxElement_Level_VLCN
 	ori	$a3, $zero, 1
 	sll.w	$a1, $a3, $a1
 	slli.d	$a3, $a6, 1
-	or	$a1, $a1, $a3
-	or	$a5, $a1, $a5
+	or	$a1, $a1, $a5
+	or	$a5, $a1, $a3
 .LBB30_9:
 	st.w	$a4, $a0, 12
 	st.w	$a5, $a0, 16

@@ -1171,10 +1171,10 @@ display_info:                           # @display_info
 	sltui	$s5, $a4, 1
 	pcalau12i	$a4, %got_pc_hi20(scores)
 	ld.d	$a4, $a4, %got_pc_lo12(scores)
-	add.d	$a5, $a4, $a7
-	slli.d	$a4, $a2, 3
-	alsl.d	$a2, $a2, $a4, 2
-	add.d	$s8, $a5, $a2
+	slli.d	$a5, $a2, 3
+	alsl.d	$a2, $a2, $a5, 2
+	add.d	$a2, $a7, $a2
+	add.d	$s8, $a4, $a2
 	masknez	$a2, $a1, $s5
 	maskeqz	$a1, $a3, $s5
 	or	$a4, $a1, $a2

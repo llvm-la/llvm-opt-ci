@@ -8568,8 +8568,8 @@ _ZN8NArchive3N7z10CInArchive13ReadDatabase2ERNS0_18CArchiveDatabaseExEP22ICrypto
 	bnez	$a0, .LBB39_50
 # %bb.48:
 	sub.d	$a0, $s3, $s8
-	add.d	$a0, $s7, $a0
-	add.d	$s6, $a0, $s6
+	add.d	$a1, $s7, $s6
+	add.d	$s6, $a1, $a0
 	ld.d	$a0, $s2, 48
 	addi.d	$a0, $a0, 32
 	st.d	$a0, $s1, 496

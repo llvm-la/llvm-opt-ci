@@ -966,6 +966,7 @@ mew_lzma:                               # @mew_lzma
 	bstrins.d	$a7, $t0, 63, 16
 	bstrpick.d	$t0, $a3, 31, 24
 	st.w	$a7, $t1, 0
+	addi.d	$t2, $s7, 1
 	bnez	$t0, .LBB0_152
 # %bb.151:                              #   in Loop: Header=BB0_20 Depth=2
 	ld.bu	$a5, $a5, 0
@@ -1318,6 +1319,7 @@ mew_lzma:                               # @mew_lzma
 	ld.d	$t7, $sp, 248                   # 8-byte Folded Reload
 	vldi	$vr1, -2812
 	ori	$t8, $zero, 2048
+	addi.d	$t2, $s7, 1
 	ld.d	$t3, $sp, 176                   # 8-byte Folded Reload
 .LBB0_202:                              #   in Loop: Header=BB0_20 Depth=2
 	beqz	$t3, .LBB0_245
@@ -1425,27 +1427,27 @@ mew_lzma:                               # @mew_lzma
 # %bb.221:                              #   in Loop: Header=BB0_20 Depth=2
 	add.d	$a6, $s7, $a5
 	bstrpick.d	$a3, $a3, 31, 0
-	addi.d	$a7, $s7, 1
-	add.d	$a7, $a7, $a3
-	add.d	$a3, $a7, $a5
-	addi.d	$a5, $sp, 276
-	sltu	$a5, $a6, $a5
+	add.d	$a5, $t2, $a5
+	add.d	$a5, $a5, $a3
+	addi.d	$a7, $sp, 276
+	sltu	$a7, $a6, $a7
 	addi.d	$t0, $sp, 272
-	sltu	$t0, $t0, $a3
-	and	$a5, $a5, $t0
-	bnez	$a5, .LBB0_215
+	sltu	$t0, $t0, $a5
+	and	$a7, $a7, $t0
+	bnez	$a7, .LBB0_215
 # %bb.222:                              #   in Loop: Header=BB0_20 Depth=2
-	add.d	$a5, $s7, $a1
-	add.d	$a1, $a7, $a1
-	sltu	$a6, $a6, $a1
-	sltu	$a3, $a5, $a3
-	and	$a3, $a6, $a3
+	add.d	$a7, $s7, $a1
+	add.d	$a1, $t2, $a1
+	add.d	$a1, $a1, $a3
+	sltu	$a3, $a6, $a1
+	sltu	$a5, $a7, $a5
+	and	$a3, $a3, $a5
 	bnez	$a3, .LBB0_215
 # %bb.223:                              #   in Loop: Header=BB0_20 Depth=2
 	addi.d	$a3, $sp, 272
 	sltu	$a1, $a3, $a1
 	addi.d	$a3, $sp, 276
-	sltu	$a3, $a5, $a3
+	sltu	$a3, $a7, $a3
 	and	$a1, $a1, $a3
 	bnez	$a1, .LBB0_215
 # %bb.224:                              #   in Loop: Header=BB0_20 Depth=2
@@ -1575,6 +1577,7 @@ mew_lzma:                               # @mew_lzma
 	st.w	$t2, $sp, 272
 	st.w	$a7, $sp, 276
 	add.d	$a7, $a7, $a5
+	addi.d	$t2, $s7, 1
 	b	.LBB0_154
 .LBB0_244:                              #   in Loop: Header=BB0_20 Depth=2
 	move	$s3, $a3

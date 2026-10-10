@@ -107,28 +107,27 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	.p2align	4, , 16
 .LBB0_11:                               #   in Loop: Header=BB0_13 Depth=2
 	addi.w	$a5, $a5, 1
-	add.d	$t1, $t2, $t3
-	st.w	$t1, $t0, 0
+	add.d	$t0, $t2, $t3
+	st.w	$t0, $t1, 0
 .LBB0_12:                               #   in Loop: Header=BB0_13 Depth=2
 	beq	$a7, $s7, .LBB0_9
 .LBB0_13:                               #   Parent Loop BB0_10 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_19 Depth 3
                                         #       Child Loop BB0_16 Depth 3
-	alsl.d	$t0, $a5, $s3, 2
-	ld.w	$t2, $t0, -4
-	sltu	$t1, $zero, $a7
+	alsl.d	$t1, $a5, $s3, 2
+	ld.w	$t2, $t1, -4
+	sltu	$t0, $zero, $a7
 	addi.w	$a7, $a7, 1
-	add.d	$t2, $t2, $a6
-	add.d	$t2, $t2, $t1
+	add.d	$t0, $a6, $t0
+	add.d	$t2, $t2, $t0
 	bge	$a7, $s7, .LBB0_17
 # %bb.14:                               #   in Loop: Header=BB0_13 Depth=2
 	ori	$t3, $zero, 2
 	beq	$s8, $a3, .LBB0_11
 # %bb.15:                               #   in Loop: Header=BB0_13 Depth=2
 	addi.d	$t2, $t2, 3
-	st.w	$t2, $t0, 0
-	add.d	$t0, $a6, $t1
+	st.w	$t2, $t1, 0
 	slli.d	$t1, $a5, 2
 	ldx.w	$t3, $s3, $t1
 	alsl.d	$t1, $a5, $a1, 2
@@ -153,8 +152,7 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	beq	$s8, $t3, .LBB0_11
 # %bb.18:                               #   in Loop: Header=BB0_13 Depth=2
 	addi.d	$t2, $t2, 2
-	st.w	$t2, $t0, 0
-	add.d	$t0, $a6, $t1
+	st.w	$t2, $t1, 0
 	slli.d	$t1, $a5, 2
 	ldx.w	$t3, $s3, $t1
 	alsl.d	$t1, $a5, $a1, 2
@@ -182,28 +180,27 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_27 Depth 3
                                         #       Child Loop BB0_29 Depth 3
-	alsl.d	$t0, $a5, $s3, 2
-	ld.w	$t2, $t0, -4
-	sltu	$t1, $zero, $a7
+	alsl.d	$t1, $a5, $s3, 2
+	ld.w	$t2, $t1, -4
+	sltu	$t0, $zero, $a7
 	addi.w	$a7, $a7, 1
-	add.d	$t2, $t2, $a6
-	add.d	$t2, $t2, $t1
+	add.d	$t0, $a6, $t0
+	add.d	$t2, $t2, $t0
 	bge	$a7, $s7, .LBB0_25
 # %bb.23:                               #   in Loop: Header=BB0_22 Depth=2
 	bne	$s8, $a3, .LBB0_28
 # %bb.24:                               #   in Loop: Header=BB0_22 Depth=2
 	addi.w	$a5, $a5, 1
-	addi.d	$t1, $t2, 1
-	st.w	$t1, $t0, 0
+	addi.d	$t0, $t2, 1
+	st.w	$t0, $t1, 0
 	b	.LBB0_21
 	.p2align	4, , 16
 .LBB0_25:                               #   in Loop: Header=BB0_22 Depth=2
-	st.w	$t2, $t0, 0
+	st.w	$t2, $t1, 0
 	beq	$s8, $a3, .LBB0_20
 # %bb.26:                               #   in Loop: Header=BB0_22 Depth=2
 	addi.d	$t2, $t2, 1
-	st.w	$t2, $t0, 0
-	add.d	$t0, $a6, $t1
+	st.w	$t2, $t1, 0
 	slli.d	$t1, $a5, 2
 	ldx.w	$t3, $s3, $t1
 	alsl.d	$t1, $a5, $a1, 2
@@ -225,8 +222,7 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	.p2align	4, , 16
 .LBB0_28:                               #   in Loop: Header=BB0_22 Depth=2
 	addi.d	$t2, $t2, 2
-	st.w	$t2, $t0, 0
-	add.d	$t0, $a6, $t1
+	st.w	$t2, $t1, 0
 	slli.d	$t1, $a5, 2
 	ldx.w	$t3, $s3, $t1
 	alsl.d	$t1, $a5, $a1, 2

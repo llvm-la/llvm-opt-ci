@@ -128,80 +128,80 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vslti.h	$vr3, $vr5, 0
 	vssub.h	$vr6, $vr24, $vr4
 	vssub.h	$vr7, $vr24, $vr5
+	vld	$vr8, $a1, 96
+	vld	$vr9, $a1, 112
 	vbitsel.v	$vr2, $vr4, $vr6, $vr2
 	vbitsel.v	$vr3, $vr5, $vr7, $vr3
-	vld	$vr4, $a1, 96
-	vld	$vr5, $a1, 112
+	vslti.h	$vr4, $vr8, 0
+	vslti.h	$vr5, $vr9, 0
+	vssub.h	$vr6, $vr24, $vr8
+	vssub.h	$vr7, $vr24, $vr9
+	vbitsel.v	$vr4, $vr8, $vr6, $vr4
+	vbitsel.v	$vr5, $vr9, $vr7, $vr5
+	vmax.hu	$vr2, $vr4, $vr2
 	vmax.hu	$vr0, $vr2, $vr0
+	vld	$vr2, $a1, 128
+	vld	$vr4, $a1, 144
+	vmax.hu	$vr3, $vr5, $vr3
 	vmax.hu	$vr1, $vr3, $vr1
-	vslti.h	$vr2, $vr4, 0
-	vslti.h	$vr3, $vr5, 0
-	vssub.h	$vr6, $vr24, $vr4
-	vssub.h	$vr7, $vr24, $vr5
-	vbitsel.v	$vr2, $vr4, $vr6, $vr2
-	vbitsel.v	$vr3, $vr5, $vr7, $vr3
-	vld	$vr4, $a1, 128
-	vld	$vr5, $a1, 144
+	vslti.h	$vr3, $vr2, 0
+	vslti.h	$vr5, $vr4, 0
+	vssub.h	$vr6, $vr24, $vr2
+	vssub.h	$vr7, $vr24, $vr4
+	vld	$vr8, $a1, 160
+	vld	$vr9, $a1, 176
+	vbitsel.v	$vr2, $vr2, $vr6, $vr3
+	vbitsel.v	$vr3, $vr4, $vr7, $vr5
+	vslti.h	$vr4, $vr8, 0
+	vslti.h	$vr5, $vr9, 0
+	vssub.h	$vr6, $vr24, $vr8
+	vssub.h	$vr7, $vr24, $vr9
+	vbitsel.v	$vr4, $vr8, $vr6, $vr4
+	vbitsel.v	$vr5, $vr9, $vr7, $vr5
+	vld	$vr6, $a1, 192
+	vld	$vr7, $a1, 208
+	vmax.hu	$vr2, $vr4, $vr2
+	vmax.hu	$vr3, $vr5, $vr3
+	vslti.h	$vr4, $vr6, 0
+	vslti.h	$vr5, $vr7, 0
+	vssub.h	$vr8, $vr24, $vr6
+	vssub.h	$vr9, $vr24, $vr7
+	vbitsel.v	$vr4, $vr6, $vr8, $vr4
+	vbitsel.v	$vr5, $vr7, $vr9, $vr5
+	vmax.hu	$vr2, $vr4, $vr2
 	vmax.hu	$vr0, $vr2, $vr0
+	vld	$vr2, $a1, 224
+	vld	$vr4, $a1, 240
+	vmax.hu	$vr3, $vr5, $vr3
 	vmax.hu	$vr1, $vr3, $vr1
-	vslti.h	$vr2, $vr4, 0
-	vslti.h	$vr3, $vr5, 0
-	vssub.h	$vr6, $vr24, $vr4
-	vssub.h	$vr7, $vr24, $vr5
-	vbitsel.v	$vr2, $vr4, $vr6, $vr2
-	vbitsel.v	$vr3, $vr5, $vr7, $vr3
-	vld	$vr4, $a1, 160
-	vld	$vr5, $a1, 176
+	vslti.h	$vr3, $vr2, 0
+	vslti.h	$vr5, $vr4, 0
+	vssub.h	$vr6, $vr24, $vr2
+	vssub.h	$vr7, $vr24, $vr4
+	vld	$vr8, $a1, 256
+	vld	$vr9, $a1, 272
+	vbitsel.v	$vr2, $vr2, $vr6, $vr3
+	vbitsel.v	$vr3, $vr4, $vr7, $vr5
+	vslti.h	$vr4, $vr8, 0
+	vslti.h	$vr5, $vr9, 0
+	vssub.h	$vr6, $vr24, $vr8
+	vssub.h	$vr7, $vr24, $vr9
+	vbitsel.v	$vr4, $vr8, $vr6, $vr4
+	vbitsel.v	$vr5, $vr9, $vr7, $vr5
+	vld	$vr6, $a1, 288
+	vld	$vr7, $a1, 304
+	vmax.hu	$vr2, $vr4, $vr2
+	vmax.hu	$vr3, $vr5, $vr3
+	vslti.h	$vr4, $vr6, 0
+	vslti.h	$vr5, $vr7, 0
+	vssub.h	$vr8, $vr24, $vr6
+	vssub.h	$vr9, $vr24, $vr7
+	vbitsel.v	$vr4, $vr6, $vr8, $vr4
+	vbitsel.v	$vr5, $vr7, $vr9, $vr5
+	vmax.hu	$vr2, $vr4, $vr2
 	vmax.hu	$vr0, $vr2, $vr0
-	vmax.hu	$vr1, $vr3, $vr1
-	vslti.h	$vr2, $vr4, 0
-	vslti.h	$vr3, $vr5, 0
-	vssub.h	$vr6, $vr24, $vr4
-	vssub.h	$vr7, $vr24, $vr5
-	vbitsel.v	$vr2, $vr4, $vr6, $vr2
-	vbitsel.v	$vr3, $vr5, $vr7, $vr3
-	vld	$vr4, $a1, 192
-	vld	$vr5, $a1, 208
-	vmax.hu	$vr0, $vr2, $vr0
-	vmax.hu	$vr1, $vr3, $vr1
-	vslti.h	$vr2, $vr4, 0
-	vslti.h	$vr3, $vr5, 0
-	vssub.h	$vr6, $vr24, $vr4
-	vssub.h	$vr7, $vr24, $vr5
-	vbitsel.v	$vr2, $vr4, $vr6, $vr2
-	vbitsel.v	$vr3, $vr5, $vr7, $vr3
-	vld	$vr4, $a1, 224
-	vld	$vr5, $a1, 240
-	vmax.hu	$vr0, $vr2, $vr0
-	vmax.hu	$vr1, $vr3, $vr1
-	vslti.h	$vr2, $vr4, 0
-	vslti.h	$vr3, $vr5, 0
-	vssub.h	$vr6, $vr24, $vr4
-	vssub.h	$vr7, $vr24, $vr5
-	vbitsel.v	$vr2, $vr4, $vr6, $vr2
-	vbitsel.v	$vr3, $vr5, $vr7, $vr3
-	vld	$vr4, $a1, 256
-	vld	$vr5, $a1, 272
-	vmax.hu	$vr0, $vr2, $vr0
-	vmax.hu	$vr1, $vr3, $vr1
-	vslti.h	$vr2, $vr4, 0
-	vslti.h	$vr3, $vr5, 0
-	vssub.h	$vr6, $vr24, $vr4
-	vssub.h	$vr7, $vr24, $vr5
-	vbitsel.v	$vr2, $vr4, $vr6, $vr2
-	vbitsel.v	$vr3, $vr5, $vr7, $vr3
-	vld	$vr4, $a1, 288
-	vld	$vr5, $a1, 304
-	vmax.hu	$vr0, $vr2, $vr0
-	vmax.hu	$vr1, $vr3, $vr1
-	vslti.h	$vr2, $vr4, 0
-	vslti.h	$vr3, $vr5, 0
-	vssub.h	$vr6, $vr24, $vr4
-	vssub.h	$vr7, $vr24, $vr5
-	vbitsel.v	$vr2, $vr4, $vr6, $vr2
-	vbitsel.v	$vr3, $vr5, $vr7, $vr3
-	vmax.hu	$vr0, $vr2, $vr0
-	vmax.hu	$vr1, $vr3, $vr1
+	vmax.hu	$vr2, $vr5, $vr3
+	vmax.hu	$vr1, $vr2, $vr1
 	vmax.hu	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.hu	$vr0, $vr1, $vr0
@@ -210,7 +210,7 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vbsrl.v	$vr1, $vr0, 2
 	vmax.hu	$vr0, $vr1, $vr0
 	vpickve2gr.hu	$a0, $vr0, 0
-	move	$s1, $a2
+	move	$s2, $a2
 	beqz	$a0, .LBB0_5
 # %bb.1:
 	vst	$vr24, $sp, 16                  # 16-byte Folded Spill
@@ -227,7 +227,7 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	bstrpick.d	$a0, $a1, 15, 0
 	addi.d	$a2, $a0, -1
 	ori	$a3, $zero, 3
-	ori	$s2, $zero, 1
+	ori	$s3, $zero, 1
 	bltu	$a3, $a2, .LBB0_7
 # %bb.3:
 	slli.d	$a1, $a2, 2
@@ -479,15 +479,15 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vpickev.h	$vr0, $vr3, $vr0
 	vst	$vr1, $s0, 288
 	vst	$vr0, $s0, 304
-	ori	$s2, $zero, 1
+	ori	$s3, $zero, 1
 	ori	$a1, $zero, 1
 	b	.LBB0_11
 .LBB0_5:
-	move	$s2, $zero
+	move	$s3, $zero
 	move	$a1, $zero
 	b	.LBB0_11
 .LBB0_6:
-	move	$s2, $zero
+	move	$s3, $zero
 .LBB0_7:
 	vld	$vr24, $sp, 16                  # 16-byte Folded Reload
 	b	.LBB0_11
@@ -1232,60 +1232,60 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	mul.d	$t0, $a4, $a5
 	ld.h	$t1, $s0, 10
 	add.d	$a7, $a7, $t0
-	mul.d	$t0, $a4, $a6
 	ld.h	$t2, $s0, 4
+	mul.d	$t0, $a4, $a6
 	mul.d	$t3, $t1, $a5
 	add.d	$t0, $t0, $t3
-	ld.h	$t3, $s0, 8
-	mul.d	$t4, $a3, $t2
-	add.d	$t0, $t0, $t4
-	mul.d	$t4, $t1, $a6
-	mul.d	$t5, $t3, $a5
-	ld.h	$t6, $s0, 6
-	add.d	$t4, $t4, $t5
-	mul.d	$t5, $a4, $t2
-	add.d	$t4, $t4, $t5
-	mul.d	$t5, $a3, $t6
-	add.d	$t4, $t4, $t5
-	add.d	$t5, $a4, $a5
-	mul.d	$t5, $t5, $t6
+	mul.d	$t3, $a3, $t2
+	ld.h	$t4, $s0, 8
+	add.d	$t0, $t0, $t3
+	mul.d	$t3, $t1, $a6
+	ld.h	$t5, $s0, 6
+	mul.d	$t6, $t4, $a5
+	add.d	$t3, $t3, $t6
+	mul.d	$t6, $a4, $t2
+	mul.d	$t7, $a3, $t5
+	add.d	$t6, $t6, $t7
+	add.d	$t3, $t3, $t6
+	add.d	$t6, $a4, $a5
+	mul.d	$t6, $t6, $t5
 	mul.d	$t7, $t1, $t2
-	add.d	$t5, $t5, $t7
+	add.d	$t6, $t6, $t7
 	add.d	$t7, $a3, $a6
-	mul.d	$t7, $t7, $t3
-	add.d	$t5, $t5, $t7
-	mul.d	$t7, $t6, $a6
+	mul.d	$t7, $t7, $t4
+	add.d	$t6, $t6, $t7
+	mul.d	$t7, $t5, $a6
 	mul.d	$t8, $t2, $a5
 	add.d	$t7, $t7, $t8
 	add.d	$t8, $a4, $t2
-	mul.d	$t8, $t8, $t3
+	mul.d	$t8, $t8, $t4
 	add.d	$t7, $t7, $t8
-	add.d	$t8, $a3, $t6
+	add.d	$t8, $a3, $t5
 	mul.d	$t8, $t8, $t1
 	add.d	$t7, $t7, $t8
-	mul.d	$t8, $t6, $t2
+	mul.d	$t8, $t5, $t2
 	add.d	$fp, $t2, $a5
 	mul.d	$fp, $fp, $a6
 	add.d	$t8, $t8, $fp
-	add.d	$fp, $t1, $t6
-	mul.d	$fp, $fp, $t3
+	add.d	$fp, $t1, $t5
+	mul.d	$fp, $fp, $t4
+	add.d	$s1, $a3, $t1
+	mul.d	$s1, $s1, $a4
+	add.d	$fp, $fp, $s1
+	mul.d	$s1, $a3, $a5
 	add.d	$t8, $t8, $fp
-	add.d	$fp, $a3, $t1
-	mul.d	$fp, $fp, $a4
-	add.d	$t8, $t8, $fp
-	mul.d	$fp, $a3, $a5
 	mul.d	$a6, $a6, $a6
 	mul.d	$a5, $a5, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a6, $t2, $t2
+	mul.d	$t2, $t5, $t5
+	add.d	$a6, $a6, $t2
 	add.d	$a5, $a5, $a6
-	mul.d	$a6, $t6, $t6
-	add.d	$a5, $a5, $a6
-	mul.d	$a6, $t3, $t3
-	add.d	$a5, $a5, $a6
-	mul.d	$a6, $t1, $t1
-	add.d	$a5, $a5, $a6
+	mul.d	$a6, $t4, $t4
+	mul.d	$t1, $t1, $t1
+	add.d	$a6, $a6, $t1
 	mul.d	$a4, $a4, $a4
+	add.d	$a4, $a6, $a4
 	add.d	$a4, $a5, $a4
 	mul.d	$a5, $a3, $a3
 	add.d	$a4, $a4, $a5
@@ -1296,9 +1296,9 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vori.b	$vr1, $vr24, 0
 	vinsgr2vr.d	$vr1, $t7, 0
 	vori.b	$vr2, $vr24, 0
-	vinsgr2vr.d	$vr2, $t5, 0
+	vinsgr2vr.d	$vr2, $t6, 0
 	vori.b	$vr3, $vr24, 0
-	vinsgr2vr.d	$vr3, $t4, 0
+	vinsgr2vr.d	$vr3, $t3, 0
 	vori.b	$vr4, $vr24, 0
 	vinsgr2vr.d	$vr4, $t0, 0
 	vori.b	$vr5, $vr24, 0
@@ -1306,7 +1306,7 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vori.b	$vr6, $vr24, 0
 	pcalau12i	$a4, %pc_hi20(.LCPI0_0)
 	vld	$vr16, $a4, %pc_lo12(.LCPI0_0)
-	vinsgr2vr.d	$vr6, $fp, 0
+	vinsgr2vr.d	$vr6, $s1, 0
 	vinsgr2vr.h	$vr18, $a3, 1
 	ori	$a3, $zero, 304
 	vori.b	$vr17, $vr24, 0
@@ -1405,7 +1405,7 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vhaddw.q.d	$vr15, $vr15, $vr15
 	vpickve2gr.d	$a2, $vr15, 0
 	slli.d	$a0, $a2, 1
-	beqz	$s2, .LBB0_15
+	beqz	$s3, .LBB0_15
 # %bb.14:
 	vld	$vr16, $s0, 0
 	vld	$vr17, $s0, 16
@@ -1550,7 +1550,7 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vst	$vr15, $s0, 304
 .LBB0_15:
 	lu12i.w	$s3, -8
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
 	beqz	$a0, .LBB0_22
 # %bb.16:
 	vadd.d	$vr13, $vr14, $vr13
@@ -1742,7 +1742,7 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	b	.LBB0_26
 .LBB0_22:
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s1, 0
+	vst	$vr0, $s2, 0
 	b	.LBB0_26
 .LBB0_23:
 	ori	$a0, $zero, 7

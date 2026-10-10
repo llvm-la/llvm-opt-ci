@@ -965,8 +965,8 @@ mem_mono_copy_mono:                     # @mem_mono_copy_mono
 	add.w	$a5, $a5, $a6
 	st.d	$a5, $sp, 128                   # 8-byte Folded Spill
 	bstrpick.d	$a5, $a5, 31, 3
-	add.d	$a1, $a1, $a5
 	add.d	$a1, $a1, $a4
+	add.d	$a1, $a1, $a5
 	addi.d	$a1, $a1, 2
 	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	st.d	$a5, $sp, 96                    # 8-byte Folded Spill

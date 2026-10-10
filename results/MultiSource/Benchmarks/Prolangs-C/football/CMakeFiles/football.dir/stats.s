@@ -16,24 +16,24 @@ a_wild_card:                            # @a_wild_card
 	sltui	$a2, $a2, 1
 	pcalau12i	$a3, %pc_hi20(nfc_wild_card3)
 	ld.w	$a3, $a3, %pc_lo12(nfc_wild_card3)
+	pcalau12i	$a4, %pc_hi20(afc_wild_card1)
+	ld.w	$a4, $a4, %pc_lo12(afc_wild_card1)
 	or	$a1, $a1, $a2
-	pcalau12i	$a2, %pc_hi20(afc_wild_card1)
-	ld.w	$a2, $a2, %pc_lo12(afc_wild_card1)
-	xor	$a3, $a0, $a3
-	sltui	$a3, $a3, 1
-	or	$a1, $a1, $a3
-	xor	$a2, $a0, $a2
+	xor	$a2, $a0, $a3
 	sltui	$a2, $a2, 1
+	xor	$a3, $a0, $a4
+	sltui	$a3, $a3, 1
+	or	$a2, $a2, $a3
 	pcalau12i	$a3, %pc_hi20(afc_wild_card2)
 	ld.w	$a3, $a3, %pc_lo12(afc_wild_card2)
+	pcalau12i	$a4, %pc_hi20(afc_wild_card3)
+	ld.w	$a4, $a4, %pc_lo12(afc_wild_card3)
 	or	$a1, $a1, $a2
-	pcalau12i	$a2, %pc_hi20(afc_wild_card3)
-	ld.w	$a2, $a2, %pc_lo12(afc_wild_card3)
-	xor	$a3, $a0, $a3
-	sltui	$a3, $a3, 1
-	or	$a1, $a1, $a3
-	xor	$a0, $a0, $a2
+	xor	$a2, $a0, $a3
+	sltui	$a2, $a2, 1
+	xor	$a0, $a0, $a4
 	sltui	$a0, $a0, 1
+	or	$a0, $a2, $a0
 	or	$a0, $a1, $a0
 	ret
 .Lfunc_end0:
@@ -55,24 +55,24 @@ a_champ:                                # @a_champ
 	sltui	$a2, $a2, 1
 	pcalau12i	$a3, %pc_hi20(nfc_west_champ)
 	ld.w	$a3, $a3, %pc_lo12(nfc_west_champ)
+	pcalau12i	$a4, %pc_hi20(afc_east_champ)
+	ld.w	$a4, $a4, %pc_lo12(afc_east_champ)
 	or	$a1, $a1, $a2
-	pcalau12i	$a2, %pc_hi20(afc_east_champ)
-	ld.w	$a2, $a2, %pc_lo12(afc_east_champ)
-	xor	$a3, $a0, $a3
-	sltui	$a3, $a3, 1
-	or	$a1, $a1, $a3
-	xor	$a2, $a0, $a2
+	xor	$a2, $a0, $a3
 	sltui	$a2, $a2, 1
+	xor	$a3, $a0, $a4
+	sltui	$a3, $a3, 1
+	or	$a2, $a2, $a3
 	pcalau12i	$a3, %pc_hi20(afc_central_champ)
 	ld.w	$a3, $a3, %pc_lo12(afc_central_champ)
+	pcalau12i	$a4, %pc_hi20(afc_west_champ)
+	ld.w	$a4, $a4, %pc_lo12(afc_west_champ)
 	or	$a1, $a1, $a2
-	pcalau12i	$a2, %pc_hi20(afc_west_champ)
-	ld.w	$a2, $a2, %pc_lo12(afc_west_champ)
-	xor	$a3, $a0, $a3
-	sltui	$a3, $a3, 1
-	or	$a1, $a1, $a3
-	xor	$a0, $a0, $a2
+	xor	$a2, $a0, $a3
+	sltui	$a2, $a2, 1
+	xor	$a0, $a0, $a4
 	sltui	$a0, $a0, 1
+	or	$a0, $a2, $a0
 	or	$a0, $a1, $a0
 	ret
 .Lfunc_end1:
@@ -462,10 +462,10 @@ compute_team_info:                      # @compute_team_info
 	add.d	$s3, $s3, $t7
 	st.w	$s3, $s5, 12
 	add.d	$s6, $s4, $t8
-	mul.d	$s3, $s2, $t1
-	add.d	$s4, $a0, $s3
+	mul.d	$s4, $s2, $t1
 	mul.d	$s3, $s1, $t2
-	add.d	$s4, $s4, $s3
+	add.d	$s7, $a0, $s3
+	add.d	$s4, $s7, $s4
 	ld.w	$s7, $s4, 12
 	st.w	$s6, $s5, 16
 	ld.w	$s6, $s4, 16

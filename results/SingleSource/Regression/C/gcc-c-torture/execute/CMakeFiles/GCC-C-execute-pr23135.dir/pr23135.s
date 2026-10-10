@@ -97,11 +97,11 @@ main:                                   # @main
 	bne	$a1, $a2, .LBB1_12
 # %bb.8:
 	vsub.w	$vr4, $vr8, $vr4
-	vadd.w	$vr4, $vr4, $vr1
-	vadd.w	$vr4, $vr4, $vr0
-	vadd.w	$vr4, $vr4, $vr3
-	vadd.w	$vr4, $vr4, $vr5
-	vadd.w	$vr4, $vr4, $vr6
+	vadd.w	$vr9, $vr1, $vr0
+	vadd.w	$vr4, $vr4, $vr9
+	vadd.w	$vr9, $vr3, $vr5
+	vadd.w	$vr9, $vr9, $vr6
+	vadd.w	$vr4, $vr4, $vr9
 	pcalau12i	$a1, %pc_hi20(k)
 	addi.d	$a1, $a1, %pc_lo12(k)
 	vstelm.d	$vr4, $a1, 0, 0
@@ -112,11 +112,11 @@ main:                                   # @main
 	bne	$a2, $a3, .LBB1_12
 # %bb.9:
 	vmul.w	$vr4, $vr8, $vr7
-	vmul.w	$vr4, $vr4, $vr1
-	vmul.w	$vr4, $vr4, $vr0
-	vmul.w	$vr4, $vr4, $vr3
-	vmul.w	$vr4, $vr4, $vr5
-	vmul.w	$vr4, $vr4, $vr6
+	vmul.w	$vr9, $vr1, $vr0
+	vmul.w	$vr4, $vr4, $vr9
+	vmul.w	$vr9, $vr3, $vr5
+	vmul.w	$vr9, $vr9, $vr6
+	vmul.w	$vr4, $vr4, $vr9
 	vstelm.d	$vr4, $a1, 0, 0
 	vpickve2gr.d	$a2, $vr4, 0
 	lu12i.w	$a3, 355583

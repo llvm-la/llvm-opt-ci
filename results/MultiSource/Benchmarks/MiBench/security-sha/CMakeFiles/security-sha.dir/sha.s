@@ -44,15 +44,15 @@ sha_update:                             # @sha_update
 	ld.w	$a0, $a0, 20
 	move	$fp, $a1
 	slli.w	$a1, $a2, 3
+	nor	$a3, $a0, $zero
+	addi.w	$a3, $a3, 0
+	sltu	$a1, $a3, $a1
 	ld.w	$a3, $s0, 24
-	nor	$a4, $a0, $zero
-	addi.w	$a4, $a4, 0
-	sltu	$a1, $a4, $a1
-	add.d	$a1, $a3, $a1
 	alsl.d	$a0, $a2, $a0, 3
 	st.w	$a0, $s0, 20
 	bstrpick.d	$a0, $a2, 31, 29
-	add.d	$a0, $a1, $a0
+	add.d	$a0, $a3, $a0
+	add.d	$a0, $a0, $a1
 	st.w	$a0, $s0, 24
 	ori	$a0, $zero, 64
 	addi.d	$s1, $s0, 28
@@ -257,8 +257,8 @@ sha_transform:                          # @sha_transform
 	ld.w	$t0, $a5, -24
 	ldx.w	$t1, $a1, $a3
 	xor	$a6, $a7, $a6
-	xor	$a6, $a6, $t0
-	xor	$a6, $a6, $t1
+	xor	$a7, $t0, $t1
+	xor	$a6, $a6, $a7
 	addi.d	$a1, $a1, 4
 	st.w	$a6, $a5, 32
 	bne	$a1, $a4, .LBB3_1
@@ -270,7 +270,7 @@ sha_transform:                          # @sha_transform
 	vpickve2gr.w	$t2, $vr0, 1
 	vpickve2gr.w	$a2, $vr0, 2
 	vpickve2gr.w	$t5, $vr0, 3
-	addi.d	$a7, $sp, 16
+	addi.d	$a6, $sp, 16
 	lu12i.w	$a5, 370727
 	ori	$t1, $a5, 2457
 	ori	$t3, $zero, 80
@@ -279,19 +279,19 @@ sha_transform:                          # @sha_transform
 .LBB3_3:                                # =>This Inner Loop Header: Depth=1
 	move	$a5, $a3
 	move	$t0, $a2
-	move	$a6, $t5
-	and	$a2, $a2, $t2
-	andn	$a3, $t5, $t2
-	or	$a2, $a3, $a2
-	ldx.w	$a3, $a4, $a7
-	rotri.w	$t5, $a5, 27
-	add.d	$t4, $t5, $t4
-	add.d	$a2, $t4, $a2
+	move	$a7, $t5
+	rotri.w	$a2, $a3, 27
+	and	$a3, $t0, $t2
+	andn	$t5, $t5, $t2
+	or	$a3, $t5, $a3
+	ldx.w	$t5, $a4, $a6
+	add.d	$a2, $a2, $t4
 	add.d	$a2, $a2, $a3
-	add.d	$a3, $a2, $t1
+	add.d	$a2, $a2, $t1
+	add.d	$a3, $a2, $t5
 	addi.d	$a4, $a4, 4
 	rotri.w	$a2, $t2, 2
-	move	$t4, $a6
+	move	$t4, $a7
 	move	$t5, $t0
 	move	$t2, $a5
 	bne	$a4, $t3, .LBB3_3
@@ -305,18 +305,18 @@ sha_transform:                          # @sha_transform
 .LBB3_5:                                # =>This Inner Loop Header: Depth=1
 	move	$a4, $a3
 	move	$t1, $a2
-	move	$a7, $t0
+	move	$a6, $t0
 	rotri.w	$a2, $a3, 27
 	xor	$a3, $t1, $a5
+	xor	$a3, $a3, $t0
 	ldx.w	$t0, $t3, $t2
-	xor	$a3, $a3, $a7
+	add.d	$a2, $a2, $a7
 	add.d	$a2, $a2, $a3
-	add.d	$a2, $a2, $a6
-	add.d	$a2, $a2, $t0
-	add.d	$a3, $a2, $t4
+	add.d	$a2, $a2, $t4
+	add.d	$a3, $a2, $t0
 	addi.d	$t2, $t2, 4
 	rotri.w	$a2, $a5, 2
-	move	$a6, $a7
+	move	$a7, $a6
 	move	$t0, $t1
 	move	$a5, $a4
 	bne	$t2, $t5, .LBB3_5
@@ -330,26 +330,26 @@ sha_transform:                          # @sha_transform
 .LBB3_7:                                # =>This Inner Loop Header: Depth=1
 	move	$a5, $a3
 	move	$t0, $a2
-	move	$a6, $t1
+	move	$a7, $t1
 	or	$a2, $t1, $a2
 	and	$a2, $a2, $a4
 	and	$a3, $t1, $t0
 	or	$a2, $a2, $a3
 	ldx.w	$a3, $t3, $t2
 	rotri.w	$t1, $a5, 27
-	add.d	$a7, $t1, $a7
-	add.d	$a2, $a7, $a2
+	add.d	$a6, $t1, $a6
+	add.d	$a2, $a6, $a2
 	add.d	$a2, $a2, $a3
 	add.d	$a3, $a2, $t4
 	addi.d	$t2, $t2, 4
 	rotri.w	$a2, $a4, 2
-	move	$a7, $a6
+	move	$a6, $a7
 	move	$t1, $t0
 	move	$a4, $a5
 	bne	$t2, $t5, .LBB3_7
 # %bb.8:
 	move	$a4, $zero
-	addi.d	$a7, $sp, 256
+	addi.d	$a6, $sp, 256
 	lu12i.w	$t1, -219604
 	ori	$t1, $t1, 470
 	ori	$t2, $zero, 80
@@ -360,15 +360,15 @@ sha_transform:                          # @sha_transform
 	move	$t4, $t0
 	rotri.w	$a2, $a3, 27
 	xor	$a3, $t5, $a5
-	ldx.w	$t0, $a7, $a4
-	xor	$a3, $a3, $t4
+	xor	$a3, $a3, $t0
+	ldx.w	$t0, $a6, $a4
+	add.d	$a2, $a2, $a7
 	add.d	$a2, $a2, $a3
-	add.d	$a2, $a2, $a6
-	add.d	$a2, $a2, $t0
-	add.d	$a3, $a2, $t1
+	add.d	$a2, $a2, $t1
+	add.d	$a3, $a2, $t0
 	addi.d	$a4, $a4, 4
 	rotri.w	$a2, $a5, 2
-	move	$a6, $t4
+	move	$a7, $t4
 	move	$t0, $t5
 	move	$a5, $t3
 	bne	$a4, $t2, .LBB3_9
@@ -739,8 +739,8 @@ sha_stream:                             # @sha_stream
 	ld.w	$t3, $t0, 8
 	ldx.w	$t4, $a7, $s7
 	xor	$t1, $t2, $t1
-	xor	$t1, $t1, $t3
-	xor	$t1, $t1, $t4
+	xor	$t2, $t3, $t4
+	xor	$t1, $t1, $t2
 	addi.d	$a7, $a7, 4
 	st.w	$t1, $t0, 64
 	bne	$a7, $s8, .LBB5_7
@@ -758,15 +758,15 @@ sha_stream:                             # @sha_stream
 	move	$t2, $t0
 	move	$t5, $a7
 	move	$t4, $t7
-	and	$a7, $t6, $a7
-	andn	$t0, $t7, $t6
-	or	$a7, $t0, $a7
-	ldx.w	$t0, $t1, $s7
-	rotri.w	$t7, $t2, 27
-	add.d	$t3, $t3, $t7
+	rotri.w	$a7, $t0, 27
+	and	$t0, $t6, $t5
+	andn	$t7, $t7, $t6
+	or	$t0, $t7, $t0
+	ldx.w	$t7, $t1, $s7
 	add.d	$a7, $t3, $a7
 	add.d	$a7, $a7, $t0
-	add.d	$t0, $a7, $s6
+	add.d	$a7, $a7, $s6
+	add.d	$t0, $a7, $t7
 	addi.d	$t1, $t1, 4
 	rotri.w	$a7, $t6, 2
 	move	$t3, $t4
@@ -784,12 +784,12 @@ sha_stream:                             # @sha_stream
 	move	$t3, $t5
 	rotri.w	$a7, $t0, 27
 	xor	$t0, $t6, $t5
-	ldx.w	$t5, $ra, $t7
 	xor	$t0, $t0, $t2
+	ldx.w	$t5, $ra, $t7
 	add.d	$a7, $t4, $a7
 	add.d	$a7, $a7, $t0
-	add.d	$a7, $a7, $t5
-	add.d	$t0, $a7, $s1
+	add.d	$a7, $a7, $s1
+	add.d	$t0, $a7, $t5
 	addi.d	$t7, $t7, 4
 	rotri.w	$a7, $t2, 2
 	move	$t4, $t3
@@ -832,12 +832,12 @@ sha_stream:                             # @sha_stream
 	move	$t6, $t5
 	rotri.w	$a7, $t0, 27
 	xor	$t0, $t7, $t5
-	ldx.w	$t5, $s5, $t1
 	xor	$t0, $t0, $t2
+	ldx.w	$t5, $s5, $t1
 	add.d	$a7, $t4, $a7
 	add.d	$a7, $a7, $t0
-	add.d	$a7, $a7, $t5
-	add.d	$t0, $a7, $s3
+	add.d	$a7, $a7, $s3
+	add.d	$t0, $a7, $t5
 	addi.d	$t1, $t1, 4
 	rotri.w	$a7, $t2, 2
 	move	$t4, $t6

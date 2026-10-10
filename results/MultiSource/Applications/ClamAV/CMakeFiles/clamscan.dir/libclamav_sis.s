@@ -1425,15 +1425,14 @@ sis_extract_simple:                     # @sis_extract_simple
 	move	$a0, $s0
 	b	.LBB1_133
 .LBB1_100:
+	add.d	$a4, $s2, $a0
 	bstrpick.d	$a2, $a3, 31, 0
-	add.d	$a2, $s2, $a2
-	add.d	$a2, $a2, $a0
-	addi.d	$a4, $a2, 2
+	add.d	$a2, $a4, $a2
+	addi.d	$a5, $a2, 2
 	addi.d	$t2, $t1, 1
 	ld.d	$fp, $sp, 120                   # 8-byte Folded Reload
-	bgeu	$s5, $a4, .LBB1_107
+	bgeu	$s5, $a5, .LBB1_107
 # %bb.101:
-	add.d	$a4, $s2, $a0
 	add.d	$a5, $s5, $t2
 	bgeu	$a4, $a5, .LBB1_107
 # %bb.102:
@@ -1523,15 +1522,14 @@ sis_extract_simple:                     # @sis_extract_simple
 	move	$a0, $fp
 	b	.LBB1_98
 .LBB1_117:
+	add.d	$a4, $s2, $a0
 	bstrpick.d	$a2, $a3, 31, 0
-	add.d	$a2, $s2, $a2
-	add.d	$a2, $a2, $a0
-	addi.d	$a4, $a2, 2
+	add.d	$a2, $a4, $a2
+	addi.d	$a5, $a2, 2
 	addi.d	$t2, $t1, 1
 	ld.d	$fp, $sp, 120                   # 8-byte Folded Reload
-	bgeu	$s6, $a4, .LBB1_134
+	bgeu	$s6, $a5, .LBB1_134
 # %bb.118:
-	add.d	$a4, $s2, $a0
 	add.d	$a5, $s6, $t2
 	bgeu	$a4, $a5, .LBB1_134
 # %bb.119:

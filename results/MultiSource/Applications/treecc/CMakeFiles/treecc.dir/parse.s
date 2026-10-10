@@ -123,8 +123,8 @@ TreeCCParse:                            # @TreeCCParse
 	sltui	$a0, $a0, 1
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $s4, $a0
-	or	$a0, $a0, $a1
-	or	$fp, $fp, $a0
+	or	$a0, $fp, $a0
+	or	$fp, $a0, $a1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(TreeCCNextToken)
 	jirl	$ra, $ra, 0

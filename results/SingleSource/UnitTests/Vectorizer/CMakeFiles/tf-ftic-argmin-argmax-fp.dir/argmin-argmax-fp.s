@@ -30268,26 +30268,26 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t0, .LBB3_20
 .LBB3_14:                               #   in Loop: Header=BB3_12 Depth=3
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	bnez	$a7, .LBB3_21
 .LBB3_15:                               #   in Loop: Header=BB3_12 Depth=3
 	beqz	$t0, .LBB3_17
 .LBB3_16:                               #   in Loop: Header=BB3_12 Depth=3
 	ldptr.d	$t2, $t1, 3184
-	vinsgr2vr.d	$vr6, $t2, 1
+	vinsgr2vr.d	$vr7, $t2, 1
 .LBB3_17:                               #   in Loop: Header=BB3_12 Depth=3
 	vshuf4i.d	$vr4, $vr3, 9
 	vand.v	$vr4, $vr4, $vr1
 	vreplgr2vr.d	$vr5, $s5
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr4, $vr7, $vr4
+	vand.v	$vr6, $vr3, $vr5
+	vor.v	$vr4, $vr6, $vr4
 	vsrli.d	$vr4, $vr4, 1
-	vxor.v	$vr4, $vr4, $vr6
 	vld	$vr6, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr6, $vr3, $vr6
-	vseqi.d	$vr7, $vr6, 0
+	vseqi.d	$vr8, $vr6, 0
 	vreplgr2vr.d	$vr6, $fp
-	vandn.v	$vr7, $vr7, $vr6
+	vandn.v	$vr8, $vr8, $vr6
+	vxor.v	$vr7, $vr7, $vr8
 	vxor.v	$vr4, $vr4, $vr7
 	bnez	$a7, .LBB3_22
 # %bb.18:                               #   in Loop: Header=BB3_12 Depth=3
@@ -30308,11 +30308,11 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t1, $a1, $t1
 	vinsgr2vr.d	$vr3, $t1, 1
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	beqz	$a7, .LBB3_15
 .LBB3_21:                               #   in Loop: Header=BB3_12 Depth=3
 	ldptr.d	$t2, $t1, 3176
-	vinsgr2vr.d	$vr6, $t2, 0
+	vinsgr2vr.d	$vr7, $t2, 0
 	bnez	$t0, .LBB3_16
 	b	.LBB3_17
 	.p2align	4, , 16
@@ -30336,14 +30336,14 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr3, $a7, $a2
 	vshuf4i.d	$vr2, $vr3, 9
 	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr4, $vr3, $vr5
+	vor.v	$vr2, $vr4, $vr2
 	vldx	$vr4, $a7, $s8
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr2, $vr7, $vr2
 	vsrli.d	$vr2, $vr2, 1
-	vxor.v	$vr2, $vr2, $vr4
-	vand.v	$vr4, $vr3, $vr8
-	vseqi.d	$vr4, $vr4, 0
-	vandn.v	$vr4, $vr4, $vr6
+	vand.v	$vr7, $vr3, $vr8
+	vseqi.d	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr6
+	vxor.v	$vr4, $vr4, $vr7
 	vxor.v	$vr2, $vr2, $vr4
 	addi.d	$a6, $a6, 16
 	vstx	$vr2, $a7, $a3
@@ -30351,17 +30351,17 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a6, .LBB3_25
 # %bb.26:                               #   in Loop: Header=BB3_9 Depth=2
 	ld.d	$a6, $a1, 0
-	move	$a7, $zero
 	ldptr.d	$t0, $a1, 4984
+	move	$a7, $zero
 	bstrpick.d	$t1, $a6, 30, 1
-	ldptr.d	$t2, $a1, 3168
 	slli.d	$t1, $t1, 1
 	bstrins.d	$t0, $t1, 30, 0
+	ldptr.d	$t1, $a1, 3168
 	srli.d	$t0, $t0, 1
-	xor	$t0, $t0, $t2
 	andi	$a6, $a6, 1
 	sub.d	$a6, $zero, $a6
 	and	$a6, $a6, $fp
+	xor	$a6, $t1, $a6
 	xor	$a6, $t0, $a6
 	stptr.d	$a6, $a1, 4984
 .LBB3_27:                               #   in Loop: Header=BB3_9 Depth=2
@@ -30399,26 +30399,26 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t1, .LBB3_38
 .LBB3_32:                               #   in Loop: Header=BB3_30 Depth=3
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	bnez	$t0, .LBB3_39
 .LBB3_33:                               #   in Loop: Header=BB3_30 Depth=3
 	beqz	$t1, .LBB3_35
 .LBB3_34:                               #   in Loop: Header=BB3_30 Depth=3
 	ldptr.d	$t3, $t2, 3184
-	vinsgr2vr.d	$vr6, $t3, 1
+	vinsgr2vr.d	$vr7, $t3, 1
 .LBB3_35:                               #   in Loop: Header=BB3_30 Depth=3
 	vshuf4i.d	$vr4, $vr3, 9
 	vand.v	$vr4, $vr4, $vr1
 	vreplgr2vr.d	$vr5, $s5
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr4, $vr7, $vr4
+	vand.v	$vr6, $vr3, $vr5
+	vor.v	$vr4, $vr6, $vr4
 	vsrli.d	$vr4, $vr4, 1
-	vxor.v	$vr4, $vr4, $vr6
 	vld	$vr6, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr6, $vr3, $vr6
-	vseqi.d	$vr7, $vr6, 0
+	vseqi.d	$vr8, $vr6, 0
 	vreplgr2vr.d	$vr6, $fp
-	vandn.v	$vr7, $vr7, $vr6
+	vandn.v	$vr8, $vr8, $vr6
+	vxor.v	$vr7, $vr7, $vr8
 	vxor.v	$vr4, $vr4, $vr7
 	bnez	$t0, .LBB3_40
 # %bb.36:                               #   in Loop: Header=BB3_30 Depth=3
@@ -30439,11 +30439,11 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t2, $a1, $t2
 	vinsgr2vr.d	$vr3, $t2, 1
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	beqz	$t0, .LBB3_33
 .LBB3_39:                               #   in Loop: Header=BB3_30 Depth=3
 	ldptr.d	$t3, $t2, 3176
-	vinsgr2vr.d	$vr6, $t3, 0
+	vinsgr2vr.d	$vr7, $t3, 0
 	bnez	$t1, .LBB3_34
 	b	.LBB3_35
 	.p2align	4, , 16
@@ -30468,14 +30468,14 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr3, $t0, $a2
 	vshuf4i.d	$vr2, $vr3, 9
 	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr4, $vr3, $vr5
+	vor.v	$vr2, $vr4, $vr2
 	vldx	$vr4, $t0, $s8
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr2, $vr7, $vr2
 	vsrli.d	$vr2, $vr2, 1
-	vxor.v	$vr2, $vr2, $vr4
-	vand.v	$vr4, $vr3, $vr8
-	vseqi.d	$vr4, $vr4, 0
-	vandn.v	$vr4, $vr4, $vr6
+	vand.v	$vr7, $vr3, $vr8
+	vseqi.d	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr6
+	vxor.v	$vr4, $vr4, $vr7
 	vxor.v	$vr2, $vr2, $vr4
 	addi.d	$a7, $a7, 16
 	vstx	$vr2, $t0, $a3
@@ -30483,17 +30483,17 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a7, .LBB3_43
 # %bb.44:                               #   in Loop: Header=BB3_9 Depth=2
 	ld.d	$a7, $a1, 0
-	move	$t0, $zero
 	ldptr.d	$t1, $a1, 4984
+	move	$t0, $zero
 	bstrpick.d	$t2, $a7, 30, 1
-	ldptr.d	$t3, $a1, 3168
 	slli.d	$t2, $t2, 1
 	bstrins.d	$t1, $t2, 30, 0
+	ldptr.d	$t2, $a1, 3168
 	srli.d	$t1, $t1, 1
-	xor	$t1, $t1, $t3
 	andi	$a7, $a7, 1
 	sub.d	$a7, $zero, $a7
 	and	$a7, $a7, $fp
+	xor	$a7, $t2, $a7
 	xor	$a7, $t1, $a7
 	stptr.d	$a7, $a1, 4984
 	b	.LBB3_8
@@ -30583,26 +30583,26 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t0, .LBB3_59
 .LBB3_53:                               #   in Loop: Header=BB3_51 Depth=3
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	bnez	$a7, .LBB3_60
 .LBB3_54:                               #   in Loop: Header=BB3_51 Depth=3
 	beqz	$t0, .LBB3_56
 .LBB3_55:                               #   in Loop: Header=BB3_51 Depth=3
 	ldptr.d	$t2, $t1, 3184
-	vinsgr2vr.d	$vr9, $t2, 1
+	vinsgr2vr.d	$vr10, $t2, 1
 .LBB3_56:                               #   in Loop: Header=BB3_51 Depth=3
 	vshuf4i.d	$vr7, $vr6, 9
 	vand.v	$vr7, $vr7, $vr1
 	vreplgr2vr.d	$vr8, $s5
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr7, $vr10, $vr7
+	vand.v	$vr9, $vr6, $vr8
+	vor.v	$vr7, $vr9, $vr7
 	vsrli.d	$vr7, $vr7, 1
-	vxor.v	$vr7, $vr7, $vr9
 	vld	$vr9, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr9, $vr6, $vr9
-	vseqi.d	$vr10, $vr9, 0
+	vseqi.d	$vr11, $vr9, 0
 	vreplgr2vr.d	$vr9, $fp
-	vandn.v	$vr10, $vr10, $vr9
+	vandn.v	$vr11, $vr11, $vr9
+	vxor.v	$vr10, $vr10, $vr11
 	vxor.v	$vr7, $vr7, $vr10
 	bnez	$a7, .LBB3_61
 # %bb.57:                               #   in Loop: Header=BB3_51 Depth=3
@@ -30623,11 +30623,11 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t1, $a1, $t1
 	vinsgr2vr.d	$vr6, $t1, 1
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	beqz	$a7, .LBB3_54
 .LBB3_60:                               #   in Loop: Header=BB3_51 Depth=3
 	ldptr.d	$t2, $t1, 3176
-	vinsgr2vr.d	$vr9, $t2, 0
+	vinsgr2vr.d	$vr10, $t2, 0
 	bnez	$t0, .LBB3_55
 	b	.LBB3_56
 	.p2align	4, , 16
@@ -30652,14 +30652,14 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr6, $a7, $a2
 	vshuf4i.d	$vr5, $vr6, 9
 	vand.v	$vr5, $vr5, $vr1
+	vand.v	$vr7, $vr6, $vr8
+	vor.v	$vr5, $vr7, $vr5
 	vldx	$vr7, $a7, $s8
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr5, $vr10, $vr5
 	vsrli.d	$vr5, $vr5, 1
-	vxor.v	$vr5, $vr5, $vr7
-	vand.v	$vr7, $vr6, $vr11
-	vseqi.d	$vr7, $vr7, 0
-	vandn.v	$vr7, $vr7, $vr9
+	vand.v	$vr10, $vr6, $vr11
+	vseqi.d	$vr10, $vr10, 0
+	vandn.v	$vr10, $vr10, $vr9
+	vxor.v	$vr7, $vr7, $vr10
 	vxor.v	$vr5, $vr5, $vr7
 	addi.d	$a6, $a6, 16
 	vstx	$vr5, $a7, $a3
@@ -30667,17 +30667,17 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a6, .LBB3_64
 # %bb.65:                               #   in Loop: Header=BB3_48 Depth=2
 	ld.d	$a6, $a1, 0
-	move	$a7, $zero
 	ldptr.d	$t0, $a1, 4984
+	move	$a7, $zero
 	bstrpick.d	$t1, $a6, 30, 1
-	ldptr.d	$t2, $a1, 3168
 	slli.d	$t1, $t1, 1
 	bstrins.d	$t0, $t1, 30, 0
+	ldptr.d	$t1, $a1, 3168
 	srli.d	$t0, $t0, 1
-	xor	$t0, $t0, $t2
 	andi	$a6, $a6, 1
 	sub.d	$a6, $zero, $a6
 	and	$a6, $a6, $fp
+	xor	$a6, $t1, $a6
 	xor	$a6, $t0, $a6
 	stptr.d	$a6, $a1, 4984
 .LBB3_66:                               #   in Loop: Header=BB3_48 Depth=2
@@ -30715,26 +30715,26 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t1, .LBB3_77
 .LBB3_71:                               #   in Loop: Header=BB3_69 Depth=3
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	bnez	$t0, .LBB3_78
 .LBB3_72:                               #   in Loop: Header=BB3_69 Depth=3
 	beqz	$t1, .LBB3_74
 .LBB3_73:                               #   in Loop: Header=BB3_69 Depth=3
 	ldptr.d	$t3, $t2, 3184
-	vinsgr2vr.d	$vr9, $t3, 1
+	vinsgr2vr.d	$vr10, $t3, 1
 .LBB3_74:                               #   in Loop: Header=BB3_69 Depth=3
 	vshuf4i.d	$vr7, $vr6, 9
 	vand.v	$vr7, $vr7, $vr1
 	vreplgr2vr.d	$vr8, $s5
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr7, $vr10, $vr7
+	vand.v	$vr9, $vr6, $vr8
+	vor.v	$vr7, $vr9, $vr7
 	vsrli.d	$vr7, $vr7, 1
-	vxor.v	$vr7, $vr7, $vr9
 	vld	$vr9, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr9, $vr6, $vr9
-	vseqi.d	$vr10, $vr9, 0
+	vseqi.d	$vr11, $vr9, 0
 	vreplgr2vr.d	$vr9, $fp
-	vandn.v	$vr10, $vr10, $vr9
+	vandn.v	$vr11, $vr11, $vr9
+	vxor.v	$vr10, $vr10, $vr11
 	vxor.v	$vr7, $vr7, $vr10
 	bnez	$t0, .LBB3_79
 # %bb.75:                               #   in Loop: Header=BB3_69 Depth=3
@@ -30755,11 +30755,11 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t2, $a1, $t2
 	vinsgr2vr.d	$vr6, $t2, 1
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	beqz	$t0, .LBB3_72
 .LBB3_78:                               #   in Loop: Header=BB3_69 Depth=3
 	ldptr.d	$t3, $t2, 3176
-	vinsgr2vr.d	$vr9, $t3, 0
+	vinsgr2vr.d	$vr10, $t3, 0
 	bnez	$t1, .LBB3_73
 	b	.LBB3_74
 	.p2align	4, , 16
@@ -30784,14 +30784,14 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr6, $t0, $a2
 	vshuf4i.d	$vr5, $vr6, 9
 	vand.v	$vr5, $vr5, $vr1
+	vand.v	$vr7, $vr6, $vr8
+	vor.v	$vr5, $vr7, $vr5
 	vldx	$vr7, $t0, $s8
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr5, $vr10, $vr5
 	vsrli.d	$vr5, $vr5, 1
-	vxor.v	$vr5, $vr5, $vr7
-	vand.v	$vr7, $vr6, $vr11
-	vseqi.d	$vr7, $vr7, 0
-	vandn.v	$vr7, $vr7, $vr9
+	vand.v	$vr10, $vr6, $vr11
+	vseqi.d	$vr10, $vr10, 0
+	vandn.v	$vr10, $vr10, $vr9
+	vxor.v	$vr7, $vr7, $vr10
 	vxor.v	$vr5, $vr5, $vr7
 	addi.d	$a7, $a7, 16
 	vstx	$vr5, $t0, $a3
@@ -30799,17 +30799,17 @@ _ZL19checkVectorFunctionImdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a7, .LBB3_82
 # %bb.83:                               #   in Loop: Header=BB3_48 Depth=2
 	ld.d	$a7, $a1, 0
-	move	$t0, $zero
 	ldptr.d	$t1, $a1, 4984
+	move	$t0, $zero
 	bstrpick.d	$t2, $a7, 30, 1
-	ldptr.d	$t3, $a1, 3168
 	slli.d	$t2, $t2, 1
 	bstrins.d	$t1, $t2, 30, 0
+	ldptr.d	$t2, $a1, 3168
 	srli.d	$t1, $t1, 1
-	xor	$t1, $t1, $t3
 	andi	$a7, $a7, 1
 	sub.d	$a7, $zero, $a7
 	and	$a7, $a7, $fp
+	xor	$a7, $t2, $a7
 	xor	$a7, $t1, $a7
 	stptr.d	$a7, $a1, 4984
 	b	.LBB3_47
@@ -33405,26 +33405,26 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t0, .LBB4_20
 .LBB4_14:                               #   in Loop: Header=BB4_12 Depth=3
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	bnez	$a7, .LBB4_21
 .LBB4_15:                               #   in Loop: Header=BB4_12 Depth=3
 	beqz	$t0, .LBB4_17
 .LBB4_16:                               #   in Loop: Header=BB4_12 Depth=3
 	ldptr.d	$t2, $t1, 3184
-	vinsgr2vr.d	$vr6, $t2, 1
+	vinsgr2vr.d	$vr7, $t2, 1
 .LBB4_17:                               #   in Loop: Header=BB4_12 Depth=3
 	vshuf4i.d	$vr4, $vr3, 9
 	vand.v	$vr4, $vr4, $vr1
 	vreplgr2vr.d	$vr5, $s5
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr4, $vr7, $vr4
+	vand.v	$vr6, $vr3, $vr5
+	vor.v	$vr4, $vr6, $vr4
 	vsrli.d	$vr4, $vr4, 1
-	vxor.v	$vr4, $vr4, $vr6
 	vld	$vr6, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr6, $vr3, $vr6
-	vseqi.d	$vr7, $vr6, 0
+	vseqi.d	$vr8, $vr6, 0
 	vreplgr2vr.d	$vr6, $fp
-	vandn.v	$vr7, $vr7, $vr6
+	vandn.v	$vr8, $vr8, $vr6
+	vxor.v	$vr7, $vr7, $vr8
 	vxor.v	$vr4, $vr4, $vr7
 	bnez	$a7, .LBB4_22
 # %bb.18:                               #   in Loop: Header=BB4_12 Depth=3
@@ -33445,11 +33445,11 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t1, $a1, $t1
 	vinsgr2vr.d	$vr3, $t1, 1
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	beqz	$a7, .LBB4_15
 .LBB4_21:                               #   in Loop: Header=BB4_12 Depth=3
 	ldptr.d	$t2, $t1, 3176
-	vinsgr2vr.d	$vr6, $t2, 0
+	vinsgr2vr.d	$vr7, $t2, 0
 	bnez	$t0, .LBB4_16
 	b	.LBB4_17
 	.p2align	4, , 16
@@ -33473,14 +33473,14 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr3, $a7, $a2
 	vshuf4i.d	$vr2, $vr3, 9
 	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr4, $vr3, $vr5
+	vor.v	$vr2, $vr4, $vr2
 	vldx	$vr4, $a7, $s8
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr2, $vr7, $vr2
 	vsrli.d	$vr2, $vr2, 1
-	vxor.v	$vr2, $vr2, $vr4
-	vand.v	$vr4, $vr3, $vr8
-	vseqi.d	$vr4, $vr4, 0
-	vandn.v	$vr4, $vr4, $vr6
+	vand.v	$vr7, $vr3, $vr8
+	vseqi.d	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr6
+	vxor.v	$vr4, $vr4, $vr7
 	vxor.v	$vr2, $vr2, $vr4
 	addi.d	$a6, $a6, 16
 	vstx	$vr2, $a7, $a3
@@ -33488,17 +33488,17 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a6, .LBB4_25
 # %bb.26:                               #   in Loop: Header=BB4_9 Depth=2
 	ld.d	$a6, $a1, 0
-	move	$a7, $zero
 	ldptr.d	$t0, $a1, 4984
+	move	$a7, $zero
 	bstrpick.d	$t1, $a6, 30, 1
-	ldptr.d	$t2, $a1, 3168
 	slli.d	$t1, $t1, 1
 	bstrins.d	$t0, $t1, 30, 0
+	ldptr.d	$t1, $a1, 3168
 	srli.d	$t0, $t0, 1
-	xor	$t0, $t0, $t2
 	andi	$a6, $a6, 1
 	sub.d	$a6, $zero, $a6
 	and	$a6, $a6, $fp
+	xor	$a6, $t1, $a6
 	xor	$a6, $t0, $a6
 	stptr.d	$a6, $a1, 4984
 .LBB4_27:                               #   in Loop: Header=BB4_9 Depth=2
@@ -33536,26 +33536,26 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t1, .LBB4_38
 .LBB4_32:                               #   in Loop: Header=BB4_30 Depth=3
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	bnez	$t0, .LBB4_39
 .LBB4_33:                               #   in Loop: Header=BB4_30 Depth=3
 	beqz	$t1, .LBB4_35
 .LBB4_34:                               #   in Loop: Header=BB4_30 Depth=3
 	ldptr.d	$t3, $t2, 3184
-	vinsgr2vr.d	$vr6, $t3, 1
+	vinsgr2vr.d	$vr7, $t3, 1
 .LBB4_35:                               #   in Loop: Header=BB4_30 Depth=3
 	vshuf4i.d	$vr4, $vr3, 9
 	vand.v	$vr4, $vr4, $vr1
 	vreplgr2vr.d	$vr5, $s5
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr4, $vr7, $vr4
+	vand.v	$vr6, $vr3, $vr5
+	vor.v	$vr4, $vr6, $vr4
 	vsrli.d	$vr4, $vr4, 1
-	vxor.v	$vr4, $vr4, $vr6
 	vld	$vr6, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr6, $vr3, $vr6
-	vseqi.d	$vr7, $vr6, 0
+	vseqi.d	$vr8, $vr6, 0
 	vreplgr2vr.d	$vr6, $fp
-	vandn.v	$vr7, $vr7, $vr6
+	vandn.v	$vr8, $vr8, $vr6
+	vxor.v	$vr7, $vr7, $vr8
 	vxor.v	$vr4, $vr4, $vr7
 	bnez	$t0, .LBB4_40
 # %bb.36:                               #   in Loop: Header=BB4_30 Depth=3
@@ -33576,11 +33576,11 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t2, $a1, $t2
 	vinsgr2vr.d	$vr3, $t2, 1
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	beqz	$t0, .LBB4_33
 .LBB4_39:                               #   in Loop: Header=BB4_30 Depth=3
 	ldptr.d	$t3, $t2, 3176
-	vinsgr2vr.d	$vr6, $t3, 0
+	vinsgr2vr.d	$vr7, $t3, 0
 	bnez	$t1, .LBB4_34
 	b	.LBB4_35
 	.p2align	4, , 16
@@ -33605,14 +33605,14 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr3, $t0, $a2
 	vshuf4i.d	$vr2, $vr3, 9
 	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr4, $vr3, $vr5
+	vor.v	$vr2, $vr4, $vr2
 	vldx	$vr4, $t0, $s8
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr2, $vr7, $vr2
 	vsrli.d	$vr2, $vr2, 1
-	vxor.v	$vr2, $vr2, $vr4
-	vand.v	$vr4, $vr3, $vr8
-	vseqi.d	$vr4, $vr4, 0
-	vandn.v	$vr4, $vr4, $vr6
+	vand.v	$vr7, $vr3, $vr8
+	vseqi.d	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr6
+	vxor.v	$vr4, $vr4, $vr7
 	vxor.v	$vr2, $vr2, $vr4
 	addi.d	$a7, $a7, 16
 	vstx	$vr2, $t0, $a3
@@ -33620,17 +33620,17 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a7, .LBB4_43
 # %bb.44:                               #   in Loop: Header=BB4_9 Depth=2
 	ld.d	$a7, $a1, 0
-	move	$t0, $zero
 	ldptr.d	$t1, $a1, 4984
+	move	$t0, $zero
 	bstrpick.d	$t2, $a7, 30, 1
-	ldptr.d	$t3, $a1, 3168
 	slli.d	$t2, $t2, 1
 	bstrins.d	$t1, $t2, 30, 0
+	ldptr.d	$t2, $a1, 3168
 	srli.d	$t1, $t1, 1
-	xor	$t1, $t1, $t3
 	andi	$a7, $a7, 1
 	sub.d	$a7, $zero, $a7
 	and	$a7, $a7, $fp
+	xor	$a7, $t2, $a7
 	xor	$a7, $t1, $a7
 	stptr.d	$a7, $a1, 4984
 	b	.LBB4_8
@@ -33720,26 +33720,26 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t0, .LBB4_59
 .LBB4_53:                               #   in Loop: Header=BB4_51 Depth=3
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	bnez	$a7, .LBB4_60
 .LBB4_54:                               #   in Loop: Header=BB4_51 Depth=3
 	beqz	$t0, .LBB4_56
 .LBB4_55:                               #   in Loop: Header=BB4_51 Depth=3
 	ldptr.d	$t2, $t1, 3184
-	vinsgr2vr.d	$vr9, $t2, 1
+	vinsgr2vr.d	$vr10, $t2, 1
 .LBB4_56:                               #   in Loop: Header=BB4_51 Depth=3
 	vshuf4i.d	$vr7, $vr6, 9
 	vand.v	$vr7, $vr7, $vr1
 	vreplgr2vr.d	$vr8, $s5
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr7, $vr10, $vr7
+	vand.v	$vr9, $vr6, $vr8
+	vor.v	$vr7, $vr9, $vr7
 	vsrli.d	$vr7, $vr7, 1
-	vxor.v	$vr7, $vr7, $vr9
 	vld	$vr9, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr9, $vr6, $vr9
-	vseqi.d	$vr10, $vr9, 0
+	vseqi.d	$vr11, $vr9, 0
 	vreplgr2vr.d	$vr9, $fp
-	vandn.v	$vr10, $vr10, $vr9
+	vandn.v	$vr11, $vr11, $vr9
+	vxor.v	$vr10, $vr10, $vr11
 	vxor.v	$vr7, $vr7, $vr10
 	bnez	$a7, .LBB4_61
 # %bb.57:                               #   in Loop: Header=BB4_51 Depth=3
@@ -33760,11 +33760,11 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t1, $a1, $t1
 	vinsgr2vr.d	$vr6, $t1, 1
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	beqz	$a7, .LBB4_54
 .LBB4_60:                               #   in Loop: Header=BB4_51 Depth=3
 	ldptr.d	$t2, $t1, 3176
-	vinsgr2vr.d	$vr9, $t2, 0
+	vinsgr2vr.d	$vr10, $t2, 0
 	bnez	$t0, .LBB4_55
 	b	.LBB4_56
 	.p2align	4, , 16
@@ -33789,14 +33789,14 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr6, $a7, $a2
 	vshuf4i.d	$vr5, $vr6, 9
 	vand.v	$vr5, $vr5, $vr1
+	vand.v	$vr7, $vr6, $vr8
+	vor.v	$vr5, $vr7, $vr5
 	vldx	$vr7, $a7, $s8
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr5, $vr10, $vr5
 	vsrli.d	$vr5, $vr5, 1
-	vxor.v	$vr5, $vr5, $vr7
-	vand.v	$vr7, $vr6, $vr11
-	vseqi.d	$vr7, $vr7, 0
-	vandn.v	$vr7, $vr7, $vr9
+	vand.v	$vr10, $vr6, $vr11
+	vseqi.d	$vr10, $vr10, 0
+	vandn.v	$vr10, $vr10, $vr9
+	vxor.v	$vr7, $vr7, $vr10
 	vxor.v	$vr5, $vr5, $vr7
 	addi.d	$a6, $a6, 16
 	vstx	$vr5, $a7, $a3
@@ -33804,17 +33804,17 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a6, .LBB4_64
 # %bb.65:                               #   in Loop: Header=BB4_48 Depth=2
 	ld.d	$a6, $a1, 0
-	move	$a7, $zero
 	ldptr.d	$t0, $a1, 4984
+	move	$a7, $zero
 	bstrpick.d	$t1, $a6, 30, 1
-	ldptr.d	$t2, $a1, 3168
 	slli.d	$t1, $t1, 1
 	bstrins.d	$t0, $t1, 30, 0
+	ldptr.d	$t1, $a1, 3168
 	srli.d	$t0, $t0, 1
-	xor	$t0, $t0, $t2
 	andi	$a6, $a6, 1
 	sub.d	$a6, $zero, $a6
 	and	$a6, $a6, $fp
+	xor	$a6, $t1, $a6
 	xor	$a6, $t0, $a6
 	stptr.d	$a6, $a1, 4984
 .LBB4_66:                               #   in Loop: Header=BB4_48 Depth=2
@@ -33852,26 +33852,26 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t1, .LBB4_77
 .LBB4_71:                               #   in Loop: Header=BB4_69 Depth=3
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	bnez	$t0, .LBB4_78
 .LBB4_72:                               #   in Loop: Header=BB4_69 Depth=3
 	beqz	$t1, .LBB4_74
 .LBB4_73:                               #   in Loop: Header=BB4_69 Depth=3
 	ldptr.d	$t3, $t2, 3184
-	vinsgr2vr.d	$vr9, $t3, 1
+	vinsgr2vr.d	$vr10, $t3, 1
 .LBB4_74:                               #   in Loop: Header=BB4_69 Depth=3
 	vshuf4i.d	$vr7, $vr6, 9
 	vand.v	$vr7, $vr7, $vr1
 	vreplgr2vr.d	$vr8, $s5
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr7, $vr10, $vr7
+	vand.v	$vr9, $vr6, $vr8
+	vor.v	$vr7, $vr9, $vr7
 	vsrli.d	$vr7, $vr7, 1
-	vxor.v	$vr7, $vr7, $vr9
 	vld	$vr9, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr9, $vr6, $vr9
-	vseqi.d	$vr10, $vr9, 0
+	vseqi.d	$vr11, $vr9, 0
 	vreplgr2vr.d	$vr9, $fp
-	vandn.v	$vr10, $vr10, $vr9
+	vandn.v	$vr11, $vr11, $vr9
+	vxor.v	$vr10, $vr10, $vr11
 	vxor.v	$vr7, $vr7, $vr10
 	bnez	$t0, .LBB4_79
 # %bb.75:                               #   in Loop: Header=BB4_69 Depth=3
@@ -33892,11 +33892,11 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t2, $a1, $t2
 	vinsgr2vr.d	$vr6, $t2, 1
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	beqz	$t0, .LBB4_72
 .LBB4_78:                               #   in Loop: Header=BB4_69 Depth=3
 	ldptr.d	$t3, $t2, 3176
-	vinsgr2vr.d	$vr9, $t3, 0
+	vinsgr2vr.d	$vr10, $t3, 0
 	bnez	$t1, .LBB4_73
 	b	.LBB4_74
 	.p2align	4, , 16
@@ -33921,14 +33921,14 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr6, $t0, $a2
 	vshuf4i.d	$vr5, $vr6, 9
 	vand.v	$vr5, $vr5, $vr1
+	vand.v	$vr7, $vr6, $vr8
+	vor.v	$vr5, $vr7, $vr5
 	vldx	$vr7, $t0, $s8
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr5, $vr10, $vr5
 	vsrli.d	$vr5, $vr5, 1
-	vxor.v	$vr5, $vr5, $vr7
-	vand.v	$vr7, $vr6, $vr11
-	vseqi.d	$vr7, $vr7, 0
-	vandn.v	$vr7, $vr7, $vr9
+	vand.v	$vr10, $vr6, $vr11
+	vseqi.d	$vr10, $vr10, 0
+	vandn.v	$vr10, $vr10, $vr9
+	vxor.v	$vr7, $vr7, $vr10
 	vxor.v	$vr5, $vr5, $vr7
 	addi.d	$a7, $a7, 16
 	vstx	$vr5, $t0, $a3
@@ -33936,17 +33936,17 @@ _ZL19checkVectorFunctionIldEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a7, .LBB4_82
 # %bb.83:                               #   in Loop: Header=BB4_48 Depth=2
 	ld.d	$a7, $a1, 0
-	move	$t0, $zero
 	ldptr.d	$t1, $a1, 4984
+	move	$t0, $zero
 	bstrpick.d	$t2, $a7, 30, 1
-	ldptr.d	$t3, $a1, 3168
 	slli.d	$t2, $t2, 1
 	bstrins.d	$t1, $t2, 30, 0
+	ldptr.d	$t2, $a1, 3168
 	srli.d	$t1, $t1, 1
-	xor	$t1, $t1, $t3
 	andi	$a7, $a7, 1
 	sub.d	$a7, $zero, $a7
 	and	$a7, $a7, $fp
+	xor	$a7, $t2, $a7
 	xor	$a7, $t1, $a7
 	stptr.d	$a7, $a1, 4984
 	b	.LBB4_47
@@ -36542,26 +36542,26 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t0, .LBB5_20
 .LBB5_14:                               #   in Loop: Header=BB5_12 Depth=3
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	bnez	$a7, .LBB5_21
 .LBB5_15:                               #   in Loop: Header=BB5_12 Depth=3
 	beqz	$t0, .LBB5_17
 .LBB5_16:                               #   in Loop: Header=BB5_12 Depth=3
 	ldptr.d	$t2, $t1, 3184
-	vinsgr2vr.d	$vr6, $t2, 1
+	vinsgr2vr.d	$vr7, $t2, 1
 .LBB5_17:                               #   in Loop: Header=BB5_12 Depth=3
 	vshuf4i.d	$vr4, $vr3, 9
 	vand.v	$vr4, $vr4, $vr1
 	vreplgr2vr.d	$vr5, $s5
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr4, $vr7, $vr4
+	vand.v	$vr6, $vr3, $vr5
+	vor.v	$vr4, $vr6, $vr4
 	vsrli.d	$vr4, $vr4, 1
-	vxor.v	$vr4, $vr4, $vr6
 	vld	$vr6, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr6, $vr3, $vr6
-	vseqi.d	$vr7, $vr6, 0
+	vseqi.d	$vr8, $vr6, 0
 	vreplgr2vr.d	$vr6, $fp
-	vandn.v	$vr7, $vr7, $vr6
+	vandn.v	$vr8, $vr8, $vr6
+	vxor.v	$vr7, $vr7, $vr8
 	vxor.v	$vr4, $vr4, $vr7
 	bnez	$a7, .LBB5_22
 # %bb.18:                               #   in Loop: Header=BB5_12 Depth=3
@@ -36582,11 +36582,11 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t1, $a1, $t1
 	vinsgr2vr.d	$vr3, $t1, 1
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	beqz	$a7, .LBB5_15
 .LBB5_21:                               #   in Loop: Header=BB5_12 Depth=3
 	ldptr.d	$t2, $t1, 3176
-	vinsgr2vr.d	$vr6, $t2, 0
+	vinsgr2vr.d	$vr7, $t2, 0
 	bnez	$t0, .LBB5_16
 	b	.LBB5_17
 	.p2align	4, , 16
@@ -36610,14 +36610,14 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr3, $a7, $a2
 	vshuf4i.d	$vr2, $vr3, 9
 	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr4, $vr3, $vr5
+	vor.v	$vr2, $vr4, $vr2
 	vldx	$vr4, $a7, $s8
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr2, $vr7, $vr2
 	vsrli.d	$vr2, $vr2, 1
-	vxor.v	$vr2, $vr2, $vr4
-	vand.v	$vr4, $vr3, $vr8
-	vseqi.d	$vr4, $vr4, 0
-	vandn.v	$vr4, $vr4, $vr6
+	vand.v	$vr7, $vr3, $vr8
+	vseqi.d	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr6
+	vxor.v	$vr4, $vr4, $vr7
 	vxor.v	$vr2, $vr2, $vr4
 	addi.d	$a6, $a6, 16
 	vstx	$vr2, $a7, $a3
@@ -36625,17 +36625,17 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a6, .LBB5_25
 # %bb.26:                               #   in Loop: Header=BB5_9 Depth=2
 	ld.d	$a6, $a1, 0
-	move	$a7, $zero
 	ldptr.d	$t0, $a1, 4984
+	move	$a7, $zero
 	bstrpick.d	$t1, $a6, 30, 1
-	ldptr.d	$t2, $a1, 3168
 	slli.d	$t1, $t1, 1
 	bstrins.d	$t0, $t1, 30, 0
+	ldptr.d	$t1, $a1, 3168
 	srli.d	$t0, $t0, 1
-	xor	$t0, $t0, $t2
 	andi	$a6, $a6, 1
 	sub.d	$a6, $zero, $a6
 	and	$a6, $a6, $fp
+	xor	$a6, $t1, $a6
 	xor	$a6, $t0, $a6
 	stptr.d	$a6, $a1, 4984
 .LBB5_27:                               #   in Loop: Header=BB5_9 Depth=2
@@ -36673,26 +36673,26 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t1, .LBB5_38
 .LBB5_32:                               #   in Loop: Header=BB5_30 Depth=3
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	bnez	$t0, .LBB5_39
 .LBB5_33:                               #   in Loop: Header=BB5_30 Depth=3
 	beqz	$t1, .LBB5_35
 .LBB5_34:                               #   in Loop: Header=BB5_30 Depth=3
 	ldptr.d	$t3, $t2, 3184
-	vinsgr2vr.d	$vr6, $t3, 1
+	vinsgr2vr.d	$vr7, $t3, 1
 .LBB5_35:                               #   in Loop: Header=BB5_30 Depth=3
 	vshuf4i.d	$vr4, $vr3, 9
 	vand.v	$vr4, $vr4, $vr1
 	vreplgr2vr.d	$vr5, $s5
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr4, $vr7, $vr4
+	vand.v	$vr6, $vr3, $vr5
+	vor.v	$vr4, $vr6, $vr4
 	vsrli.d	$vr4, $vr4, 1
-	vxor.v	$vr4, $vr4, $vr6
 	vld	$vr6, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr6, $vr3, $vr6
-	vseqi.d	$vr7, $vr6, 0
+	vseqi.d	$vr8, $vr6, 0
 	vreplgr2vr.d	$vr6, $fp
-	vandn.v	$vr7, $vr7, $vr6
+	vandn.v	$vr8, $vr8, $vr6
+	vxor.v	$vr7, $vr7, $vr8
 	vxor.v	$vr4, $vr4, $vr7
 	bnez	$t0, .LBB5_40
 # %bb.36:                               #   in Loop: Header=BB5_30 Depth=3
@@ -36713,11 +36713,11 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t2, $a1, $t2
 	vinsgr2vr.d	$vr3, $t2, 1
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	beqz	$t0, .LBB5_33
 .LBB5_39:                               #   in Loop: Header=BB5_30 Depth=3
 	ldptr.d	$t3, $t2, 3176
-	vinsgr2vr.d	$vr6, $t3, 0
+	vinsgr2vr.d	$vr7, $t3, 0
 	bnez	$t1, .LBB5_34
 	b	.LBB5_35
 	.p2align	4, , 16
@@ -36742,14 +36742,14 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr3, $t0, $a2
 	vshuf4i.d	$vr2, $vr3, 9
 	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr4, $vr3, $vr5
+	vor.v	$vr2, $vr4, $vr2
 	vldx	$vr4, $t0, $s8
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr2, $vr7, $vr2
 	vsrli.d	$vr2, $vr2, 1
-	vxor.v	$vr2, $vr2, $vr4
-	vand.v	$vr4, $vr3, $vr8
-	vseqi.d	$vr4, $vr4, 0
-	vandn.v	$vr4, $vr4, $vr6
+	vand.v	$vr7, $vr3, $vr8
+	vseqi.d	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr6
+	vxor.v	$vr4, $vr4, $vr7
 	vxor.v	$vr2, $vr2, $vr4
 	addi.d	$a7, $a7, 16
 	vstx	$vr2, $t0, $a3
@@ -36757,17 +36757,17 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a7, .LBB5_43
 # %bb.44:                               #   in Loop: Header=BB5_9 Depth=2
 	ld.d	$a7, $a1, 0
-	move	$t0, $zero
 	ldptr.d	$t1, $a1, 4984
+	move	$t0, $zero
 	bstrpick.d	$t2, $a7, 30, 1
-	ldptr.d	$t3, $a1, 3168
 	slli.d	$t2, $t2, 1
 	bstrins.d	$t1, $t2, 30, 0
+	ldptr.d	$t2, $a1, 3168
 	srli.d	$t1, $t1, 1
-	xor	$t1, $t1, $t3
 	andi	$a7, $a7, 1
 	sub.d	$a7, $zero, $a7
 	and	$a7, $a7, $fp
+	xor	$a7, $t2, $a7
 	xor	$a7, $t1, $a7
 	stptr.d	$a7, $a1, 4984
 	b	.LBB5_8
@@ -36857,26 +36857,26 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t0, .LBB5_59
 .LBB5_53:                               #   in Loop: Header=BB5_51 Depth=3
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	bnez	$a7, .LBB5_60
 .LBB5_54:                               #   in Loop: Header=BB5_51 Depth=3
 	beqz	$t0, .LBB5_56
 .LBB5_55:                               #   in Loop: Header=BB5_51 Depth=3
 	ldptr.d	$t2, $t1, 3184
-	vinsgr2vr.d	$vr9, $t2, 1
+	vinsgr2vr.d	$vr10, $t2, 1
 .LBB5_56:                               #   in Loop: Header=BB5_51 Depth=3
 	vshuf4i.d	$vr7, $vr6, 9
 	vand.v	$vr7, $vr7, $vr1
 	vreplgr2vr.d	$vr8, $s5
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr7, $vr10, $vr7
+	vand.v	$vr9, $vr6, $vr8
+	vor.v	$vr7, $vr9, $vr7
 	vsrli.d	$vr7, $vr7, 1
-	vxor.v	$vr7, $vr7, $vr9
 	vld	$vr9, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr9, $vr6, $vr9
-	vseqi.d	$vr10, $vr9, 0
+	vseqi.d	$vr11, $vr9, 0
 	vreplgr2vr.d	$vr9, $fp
-	vandn.v	$vr10, $vr10, $vr9
+	vandn.v	$vr11, $vr11, $vr9
+	vxor.v	$vr10, $vr10, $vr11
 	vxor.v	$vr7, $vr7, $vr10
 	bnez	$a7, .LBB5_61
 # %bb.57:                               #   in Loop: Header=BB5_51 Depth=3
@@ -36897,11 +36897,11 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t1, $a1, $t1
 	vinsgr2vr.d	$vr6, $t1, 1
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	beqz	$a7, .LBB5_54
 .LBB5_60:                               #   in Loop: Header=BB5_51 Depth=3
 	ldptr.d	$t2, $t1, 3176
-	vinsgr2vr.d	$vr9, $t2, 0
+	vinsgr2vr.d	$vr10, $t2, 0
 	bnez	$t0, .LBB5_55
 	b	.LBB5_56
 	.p2align	4, , 16
@@ -36926,14 +36926,14 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr6, $a7, $a2
 	vshuf4i.d	$vr5, $vr6, 9
 	vand.v	$vr5, $vr5, $vr1
+	vand.v	$vr7, $vr6, $vr8
+	vor.v	$vr5, $vr7, $vr5
 	vldx	$vr7, $a7, $s8
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr5, $vr10, $vr5
 	vsrli.d	$vr5, $vr5, 1
-	vxor.v	$vr5, $vr5, $vr7
-	vand.v	$vr7, $vr6, $vr11
-	vseqi.d	$vr7, $vr7, 0
-	vandn.v	$vr7, $vr7, $vr9
+	vand.v	$vr10, $vr6, $vr11
+	vseqi.d	$vr10, $vr10, 0
+	vandn.v	$vr10, $vr10, $vr9
+	vxor.v	$vr7, $vr7, $vr10
 	vxor.v	$vr5, $vr5, $vr7
 	addi.d	$a6, $a6, 16
 	vstx	$vr5, $a7, $a3
@@ -36941,17 +36941,17 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a6, .LBB5_64
 # %bb.65:                               #   in Loop: Header=BB5_48 Depth=2
 	ld.d	$a6, $a1, 0
-	move	$a7, $zero
 	ldptr.d	$t0, $a1, 4984
+	move	$a7, $zero
 	bstrpick.d	$t1, $a6, 30, 1
-	ldptr.d	$t2, $a1, 3168
 	slli.d	$t1, $t1, 1
 	bstrins.d	$t0, $t1, 30, 0
+	ldptr.d	$t1, $a1, 3168
 	srli.d	$t0, $t0, 1
-	xor	$t0, $t0, $t2
 	andi	$a6, $a6, 1
 	sub.d	$a6, $zero, $a6
 	and	$a6, $a6, $fp
+	xor	$a6, $t1, $a6
 	xor	$a6, $t0, $a6
 	stptr.d	$a6, $a1, 4984
 .LBB5_66:                               #   in Loop: Header=BB5_48 Depth=2
@@ -36989,26 +36989,26 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t1, .LBB5_77
 .LBB5_71:                               #   in Loop: Header=BB5_69 Depth=3
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	bnez	$t0, .LBB5_78
 .LBB5_72:                               #   in Loop: Header=BB5_69 Depth=3
 	beqz	$t1, .LBB5_74
 .LBB5_73:                               #   in Loop: Header=BB5_69 Depth=3
 	ldptr.d	$t3, $t2, 3184
-	vinsgr2vr.d	$vr9, $t3, 1
+	vinsgr2vr.d	$vr10, $t3, 1
 .LBB5_74:                               #   in Loop: Header=BB5_69 Depth=3
 	vshuf4i.d	$vr7, $vr6, 9
 	vand.v	$vr7, $vr7, $vr1
 	vreplgr2vr.d	$vr8, $s5
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr7, $vr10, $vr7
+	vand.v	$vr9, $vr6, $vr8
+	vor.v	$vr7, $vr9, $vr7
 	vsrli.d	$vr7, $vr7, 1
-	vxor.v	$vr7, $vr7, $vr9
 	vld	$vr9, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr9, $vr6, $vr9
-	vseqi.d	$vr10, $vr9, 0
+	vseqi.d	$vr11, $vr9, 0
 	vreplgr2vr.d	$vr9, $fp
-	vandn.v	$vr10, $vr10, $vr9
+	vandn.v	$vr11, $vr11, $vr9
+	vxor.v	$vr10, $vr10, $vr11
 	vxor.v	$vr7, $vr7, $vr10
 	bnez	$t0, .LBB5_79
 # %bb.75:                               #   in Loop: Header=BB5_69 Depth=3
@@ -37029,11 +37029,11 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t2, $a1, $t2
 	vinsgr2vr.d	$vr6, $t2, 1
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	beqz	$t0, .LBB5_72
 .LBB5_78:                               #   in Loop: Header=BB5_69 Depth=3
 	ldptr.d	$t3, $t2, 3176
-	vinsgr2vr.d	$vr9, $t3, 0
+	vinsgr2vr.d	$vr10, $t3, 0
 	bnez	$t1, .LBB5_73
 	b	.LBB5_74
 	.p2align	4, , 16
@@ -37058,14 +37058,14 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr6, $t0, $a2
 	vshuf4i.d	$vr5, $vr6, 9
 	vand.v	$vr5, $vr5, $vr1
+	vand.v	$vr7, $vr6, $vr8
+	vor.v	$vr5, $vr7, $vr5
 	vldx	$vr7, $t0, $s8
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr5, $vr10, $vr5
 	vsrli.d	$vr5, $vr5, 1
-	vxor.v	$vr5, $vr5, $vr7
-	vand.v	$vr7, $vr6, $vr11
-	vseqi.d	$vr7, $vr7, 0
-	vandn.v	$vr7, $vr7, $vr9
+	vand.v	$vr10, $vr6, $vr11
+	vseqi.d	$vr10, $vr10, 0
+	vandn.v	$vr10, $vr10, $vr9
+	vxor.v	$vr7, $vr7, $vr10
 	vxor.v	$vr5, $vr5, $vr7
 	addi.d	$a7, $a7, 16
 	vstx	$vr5, $t0, $a3
@@ -37073,17 +37073,17 @@ _ZL19checkVectorFunctionIjdEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a7, .LBB5_82
 # %bb.83:                               #   in Loop: Header=BB5_48 Depth=2
 	ld.d	$a7, $a1, 0
-	move	$t0, $zero
 	ldptr.d	$t1, $a1, 4984
+	move	$t0, $zero
 	bstrpick.d	$t2, $a7, 30, 1
-	ldptr.d	$t3, $a1, 3168
 	slli.d	$t2, $t2, 1
 	bstrins.d	$t1, $t2, 30, 0
+	ldptr.d	$t2, $a1, 3168
 	srli.d	$t1, $t1, 1
-	xor	$t1, $t1, $t3
 	andi	$a7, $a7, 1
 	sub.d	$a7, $zero, $a7
 	and	$a7, $a7, $fp
+	xor	$a7, $t2, $a7
 	xor	$a7, $t1, $a7
 	stptr.d	$a7, $a1, 4984
 	b	.LBB5_47
@@ -39679,26 +39679,26 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t0, .LBB6_20
 .LBB6_14:                               #   in Loop: Header=BB6_12 Depth=3
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	bnez	$a7, .LBB6_21
 .LBB6_15:                               #   in Loop: Header=BB6_12 Depth=3
 	beqz	$t0, .LBB6_17
 .LBB6_16:                               #   in Loop: Header=BB6_12 Depth=3
 	ldptr.d	$t2, $t1, 3184
-	vinsgr2vr.d	$vr6, $t2, 1
+	vinsgr2vr.d	$vr7, $t2, 1
 .LBB6_17:                               #   in Loop: Header=BB6_12 Depth=3
 	vshuf4i.d	$vr4, $vr3, 9
 	vand.v	$vr4, $vr4, $vr1
 	vreplgr2vr.d	$vr5, $s5
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr4, $vr7, $vr4
+	vand.v	$vr6, $vr3, $vr5
+	vor.v	$vr4, $vr6, $vr4
 	vsrli.d	$vr4, $vr4, 1
-	vxor.v	$vr4, $vr4, $vr6
 	vld	$vr6, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr6, $vr3, $vr6
-	vseqi.d	$vr7, $vr6, 0
+	vseqi.d	$vr8, $vr6, 0
 	vreplgr2vr.d	$vr6, $fp
-	vandn.v	$vr7, $vr7, $vr6
+	vandn.v	$vr8, $vr8, $vr6
+	vxor.v	$vr7, $vr7, $vr8
 	vxor.v	$vr4, $vr4, $vr7
 	bnez	$a7, .LBB6_22
 # %bb.18:                               #   in Loop: Header=BB6_12 Depth=3
@@ -39719,11 +39719,11 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t1, $a1, $t1
 	vinsgr2vr.d	$vr3, $t1, 1
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	beqz	$a7, .LBB6_15
 .LBB6_21:                               #   in Loop: Header=BB6_12 Depth=3
 	ldptr.d	$t2, $t1, 3176
-	vinsgr2vr.d	$vr6, $t2, 0
+	vinsgr2vr.d	$vr7, $t2, 0
 	bnez	$t0, .LBB6_16
 	b	.LBB6_17
 	.p2align	4, , 16
@@ -39747,14 +39747,14 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr3, $a7, $a2
 	vshuf4i.d	$vr2, $vr3, 9
 	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr4, $vr3, $vr5
+	vor.v	$vr2, $vr4, $vr2
 	vldx	$vr4, $a7, $s8
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr2, $vr7, $vr2
 	vsrli.d	$vr2, $vr2, 1
-	vxor.v	$vr2, $vr2, $vr4
-	vand.v	$vr4, $vr3, $vr8
-	vseqi.d	$vr4, $vr4, 0
-	vandn.v	$vr4, $vr4, $vr6
+	vand.v	$vr7, $vr3, $vr8
+	vseqi.d	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr6
+	vxor.v	$vr4, $vr4, $vr7
 	vxor.v	$vr2, $vr2, $vr4
 	addi.d	$a6, $a6, 16
 	vstx	$vr2, $a7, $a3
@@ -39762,17 +39762,17 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a6, .LBB6_25
 # %bb.26:                               #   in Loop: Header=BB6_9 Depth=2
 	ld.d	$a6, $a1, 0
-	move	$a7, $zero
 	ldptr.d	$t0, $a1, 4984
+	move	$a7, $zero
 	bstrpick.d	$t1, $a6, 30, 1
-	ldptr.d	$t2, $a1, 3168
 	slli.d	$t1, $t1, 1
 	bstrins.d	$t0, $t1, 30, 0
+	ldptr.d	$t1, $a1, 3168
 	srli.d	$t0, $t0, 1
-	xor	$t0, $t0, $t2
 	andi	$a6, $a6, 1
 	sub.d	$a6, $zero, $a6
 	and	$a6, $a6, $fp
+	xor	$a6, $t1, $a6
 	xor	$a6, $t0, $a6
 	stptr.d	$a6, $a1, 4984
 .LBB6_27:                               #   in Loop: Header=BB6_9 Depth=2
@@ -39810,26 +39810,26 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t1, .LBB6_38
 .LBB6_32:                               #   in Loop: Header=BB6_30 Depth=3
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	bnez	$t0, .LBB6_39
 .LBB6_33:                               #   in Loop: Header=BB6_30 Depth=3
 	beqz	$t1, .LBB6_35
 .LBB6_34:                               #   in Loop: Header=BB6_30 Depth=3
 	ldptr.d	$t3, $t2, 3184
-	vinsgr2vr.d	$vr6, $t3, 1
+	vinsgr2vr.d	$vr7, $t3, 1
 .LBB6_35:                               #   in Loop: Header=BB6_30 Depth=3
 	vshuf4i.d	$vr4, $vr3, 9
 	vand.v	$vr4, $vr4, $vr1
 	vreplgr2vr.d	$vr5, $s5
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr4, $vr7, $vr4
+	vand.v	$vr6, $vr3, $vr5
+	vor.v	$vr4, $vr6, $vr4
 	vsrli.d	$vr4, $vr4, 1
-	vxor.v	$vr4, $vr4, $vr6
 	vld	$vr6, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr6, $vr3, $vr6
-	vseqi.d	$vr7, $vr6, 0
+	vseqi.d	$vr8, $vr6, 0
 	vreplgr2vr.d	$vr6, $fp
-	vandn.v	$vr7, $vr7, $vr6
+	vandn.v	$vr8, $vr8, $vr6
+	vxor.v	$vr7, $vr7, $vr8
 	vxor.v	$vr4, $vr4, $vr7
 	bnez	$t0, .LBB6_40
 # %bb.36:                               #   in Loop: Header=BB6_30 Depth=3
@@ -39850,11 +39850,11 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t2, $a1, $t2
 	vinsgr2vr.d	$vr3, $t2, 1
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr6
+                                        # implicit-def: $vr7
 	beqz	$t0, .LBB6_33
 .LBB6_39:                               #   in Loop: Header=BB6_30 Depth=3
 	ldptr.d	$t3, $t2, 3176
-	vinsgr2vr.d	$vr6, $t3, 0
+	vinsgr2vr.d	$vr7, $t3, 0
 	bnez	$t1, .LBB6_34
 	b	.LBB6_35
 	.p2align	4, , 16
@@ -39879,14 +39879,14 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr3, $t0, $a2
 	vshuf4i.d	$vr2, $vr3, 9
 	vand.v	$vr2, $vr2, $vr1
+	vand.v	$vr4, $vr3, $vr5
+	vor.v	$vr2, $vr4, $vr2
 	vldx	$vr4, $t0, $s8
-	vand.v	$vr7, $vr3, $vr5
-	vor.v	$vr2, $vr7, $vr2
 	vsrli.d	$vr2, $vr2, 1
-	vxor.v	$vr2, $vr2, $vr4
-	vand.v	$vr4, $vr3, $vr8
-	vseqi.d	$vr4, $vr4, 0
-	vandn.v	$vr4, $vr4, $vr6
+	vand.v	$vr7, $vr3, $vr8
+	vseqi.d	$vr7, $vr7, 0
+	vandn.v	$vr7, $vr7, $vr6
+	vxor.v	$vr4, $vr4, $vr7
 	vxor.v	$vr2, $vr2, $vr4
 	addi.d	$a7, $a7, 16
 	vstx	$vr2, $t0, $a3
@@ -39894,17 +39894,17 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a7, .LBB6_43
 # %bb.44:                               #   in Loop: Header=BB6_9 Depth=2
 	ld.d	$a7, $a1, 0
-	move	$t0, $zero
 	ldptr.d	$t1, $a1, 4984
+	move	$t0, $zero
 	bstrpick.d	$t2, $a7, 30, 1
-	ldptr.d	$t3, $a1, 3168
 	slli.d	$t2, $t2, 1
 	bstrins.d	$t1, $t2, 30, 0
+	ldptr.d	$t2, $a1, 3168
 	srli.d	$t1, $t1, 1
-	xor	$t1, $t1, $t3
 	andi	$a7, $a7, 1
 	sub.d	$a7, $zero, $a7
 	and	$a7, $a7, $fp
+	xor	$a7, $t2, $a7
 	xor	$a7, $t1, $a7
 	stptr.d	$a7, $a1, 4984
 	b	.LBB6_8
@@ -39994,26 +39994,26 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t0, .LBB6_59
 .LBB6_53:                               #   in Loop: Header=BB6_51 Depth=3
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	bnez	$a7, .LBB6_60
 .LBB6_54:                               #   in Loop: Header=BB6_51 Depth=3
 	beqz	$t0, .LBB6_56
 .LBB6_55:                               #   in Loop: Header=BB6_51 Depth=3
 	ldptr.d	$t2, $t1, 3184
-	vinsgr2vr.d	$vr9, $t2, 1
+	vinsgr2vr.d	$vr10, $t2, 1
 .LBB6_56:                               #   in Loop: Header=BB6_51 Depth=3
 	vshuf4i.d	$vr7, $vr6, 9
 	vand.v	$vr7, $vr7, $vr1
 	vreplgr2vr.d	$vr8, $s5
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr7, $vr10, $vr7
+	vand.v	$vr9, $vr6, $vr8
+	vor.v	$vr7, $vr9, $vr7
 	vsrli.d	$vr7, $vr7, 1
-	vxor.v	$vr7, $vr7, $vr9
 	vld	$vr9, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr9, $vr6, $vr9
-	vseqi.d	$vr10, $vr9, 0
+	vseqi.d	$vr11, $vr9, 0
 	vreplgr2vr.d	$vr9, $fp
-	vandn.v	$vr10, $vr10, $vr9
+	vandn.v	$vr11, $vr11, $vr9
+	vxor.v	$vr10, $vr10, $vr11
 	vxor.v	$vr7, $vr7, $vr10
 	bnez	$a7, .LBB6_61
 # %bb.57:                               #   in Loop: Header=BB6_51 Depth=3
@@ -40034,11 +40034,11 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t1, $a1, $t1
 	vinsgr2vr.d	$vr6, $t1, 1
 	add.d	$t1, $a1, $a6
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	beqz	$a7, .LBB6_54
 .LBB6_60:                               #   in Loop: Header=BB6_51 Depth=3
 	ldptr.d	$t2, $t1, 3176
-	vinsgr2vr.d	$vr9, $t2, 0
+	vinsgr2vr.d	$vr10, $t2, 0
 	bnez	$t0, .LBB6_55
 	b	.LBB6_56
 	.p2align	4, , 16
@@ -40063,14 +40063,14 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr6, $a7, $a2
 	vshuf4i.d	$vr5, $vr6, 9
 	vand.v	$vr5, $vr5, $vr1
+	vand.v	$vr7, $vr6, $vr8
+	vor.v	$vr5, $vr7, $vr5
 	vldx	$vr7, $a7, $s8
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr5, $vr10, $vr5
 	vsrli.d	$vr5, $vr5, 1
-	vxor.v	$vr5, $vr5, $vr7
-	vand.v	$vr7, $vr6, $vr11
-	vseqi.d	$vr7, $vr7, 0
-	vandn.v	$vr7, $vr7, $vr9
+	vand.v	$vr10, $vr6, $vr11
+	vseqi.d	$vr10, $vr10, 0
+	vandn.v	$vr10, $vr10, $vr9
+	vxor.v	$vr7, $vr7, $vr10
 	vxor.v	$vr5, $vr5, $vr7
 	addi.d	$a6, $a6, 16
 	vstx	$vr5, $a7, $a3
@@ -40078,17 +40078,17 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a6, .LBB6_64
 # %bb.65:                               #   in Loop: Header=BB6_48 Depth=2
 	ld.d	$a6, $a1, 0
-	move	$a7, $zero
 	ldptr.d	$t0, $a1, 4984
+	move	$a7, $zero
 	bstrpick.d	$t1, $a6, 30, 1
-	ldptr.d	$t2, $a1, 3168
 	slli.d	$t1, $t1, 1
 	bstrins.d	$t0, $t1, 30, 0
+	ldptr.d	$t1, $a1, 3168
 	srli.d	$t0, $t0, 1
-	xor	$t0, $t0, $t2
 	andi	$a6, $a6, 1
 	sub.d	$a6, $zero, $a6
 	and	$a6, $a6, $fp
+	xor	$a6, $t1, $a6
 	xor	$a6, $t0, $a6
 	stptr.d	$a6, $a1, 4984
 .LBB6_66:                               #   in Loop: Header=BB6_48 Depth=2
@@ -40126,26 +40126,26 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$t1, .LBB6_77
 .LBB6_71:                               #   in Loop: Header=BB6_69 Depth=3
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	bnez	$t0, .LBB6_78
 .LBB6_72:                               #   in Loop: Header=BB6_69 Depth=3
 	beqz	$t1, .LBB6_74
 .LBB6_73:                               #   in Loop: Header=BB6_69 Depth=3
 	ldptr.d	$t3, $t2, 3184
-	vinsgr2vr.d	$vr9, $t3, 1
+	vinsgr2vr.d	$vr10, $t3, 1
 .LBB6_74:                               #   in Loop: Header=BB6_69 Depth=3
 	vshuf4i.d	$vr7, $vr6, 9
 	vand.v	$vr7, $vr7, $vr1
 	vreplgr2vr.d	$vr8, $s5
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr7, $vr10, $vr7
+	vand.v	$vr9, $vr6, $vr8
+	vor.v	$vr7, $vr9, $vr7
 	vsrli.d	$vr7, $vr7, 1
-	vxor.v	$vr7, $vr7, $vr9
 	vld	$vr9, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr9, $vr6, $vr9
-	vseqi.d	$vr10, $vr9, 0
+	vseqi.d	$vr11, $vr9, 0
 	vreplgr2vr.d	$vr9, $fp
-	vandn.v	$vr10, $vr10, $vr9
+	vandn.v	$vr11, $vr11, $vr9
+	vxor.v	$vr10, $vr10, $vr11
 	vxor.v	$vr7, $vr7, $vr10
 	bnez	$t0, .LBB6_79
 # %bb.75:                               #   in Loop: Header=BB6_69 Depth=3
@@ -40166,11 +40166,11 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	ldx.d	$t2, $a1, $t2
 	vinsgr2vr.d	$vr6, $t2, 1
 	add.d	$t2, $a1, $a7
-                                        # implicit-def: $vr9
+                                        # implicit-def: $vr10
 	beqz	$t0, .LBB6_72
 .LBB6_78:                               #   in Loop: Header=BB6_69 Depth=3
 	ldptr.d	$t3, $t2, 3176
-	vinsgr2vr.d	$vr9, $t3, 0
+	vinsgr2vr.d	$vr10, $t3, 0
 	bnez	$t1, .LBB6_73
 	b	.LBB6_74
 	.p2align	4, , 16
@@ -40195,14 +40195,14 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vldx	$vr6, $t0, $a2
 	vshuf4i.d	$vr5, $vr6, 9
 	vand.v	$vr5, $vr5, $vr1
+	vand.v	$vr7, $vr6, $vr8
+	vor.v	$vr5, $vr7, $vr5
 	vldx	$vr7, $t0, $s8
-	vand.v	$vr10, $vr6, $vr8
-	vor.v	$vr5, $vr10, $vr5
 	vsrli.d	$vr5, $vr5, 1
-	vxor.v	$vr5, $vr5, $vr7
-	vand.v	$vr7, $vr6, $vr11
-	vseqi.d	$vr7, $vr7, 0
-	vandn.v	$vr7, $vr7, $vr9
+	vand.v	$vr10, $vr6, $vr11
+	vseqi.d	$vr10, $vr10, 0
+	vandn.v	$vr10, $vr10, $vr9
+	vxor.v	$vr7, $vr7, $vr10
 	vxor.v	$vr5, $vr5, $vr7
 	addi.d	$a7, $a7, 16
 	vstx	$vr5, $t0, $a3
@@ -40210,17 +40210,17 @@ _ZL19checkVectorFunctionIidEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	bnez	$a7, .LBB6_82
 # %bb.83:                               #   in Loop: Header=BB6_48 Depth=2
 	ld.d	$a7, $a1, 0
-	move	$t0, $zero
 	ldptr.d	$t1, $a1, 4984
+	move	$t0, $zero
 	bstrpick.d	$t2, $a7, 30, 1
-	ldptr.d	$t3, $a1, 3168
 	slli.d	$t2, $t2, 1
 	bstrins.d	$t1, $t2, 30, 0
+	ldptr.d	$t2, $a1, 3168
 	srli.d	$t1, $t1, 1
-	xor	$t1, $t1, $t3
 	andi	$a7, $a7, 1
 	sub.d	$a7, $zero, $a7
 	and	$a7, $a7, $fp
+	xor	$a7, $t2, $a7
 	xor	$a7, $t1, $a7
 	stptr.d	$a7, $a1, 4984
 	b	.LBB6_47
@@ -42695,10 +42695,10 @@ _ZL9init_dataIfEvRKSt10unique_ptrIA_T_St14default_deleteIS2_EEj: # @_ZL9init_dat
 	vand.v	$vr14, $vr12, $vr3
 	vor.v	$vr11, $vr14, $vr11
 	vsrli.d	$vr11, $vr11, 1
-	vxor.v	$vr11, $vr11, $vr13
-	vand.v	$vr13, $vr12, $vr4
-	vseqi.d	$vr13, $vr13, 0
-	vandn.v	$vr13, $vr13, $vr5
+	vand.v	$vr14, $vr12, $vr4
+	vseqi.d	$vr14, $vr14, 0
+	vandn.v	$vr14, $vr14, $vr5
+	vxor.v	$vr13, $vr13, $vr14
 	vxor.v	$vr11, $vr11, $vr13
 	bnez	$t6, .LBB8_16
 # %bb.12:                               #   in Loop: Header=BB8_6 Depth=2
@@ -42745,14 +42745,14 @@ _ZL9init_dataIfEvRKSt10unique_ptrIA_T_St14default_deleteIS2_EEj: # @_ZL9init_dat
 	vldx	$vr11, $t6, $t0
 	vshuf4i.d	$vr10, $vr11, 9
 	vand.v	$vr10, $vr10, $vr2
+	vand.v	$vr12, $vr11, $vr3
+	vor.v	$vr10, $vr12, $vr10
 	vldx	$vr12, $t6, $t1
-	vand.v	$vr13, $vr11, $vr3
-	vor.v	$vr10, $vr13, $vr10
 	vsrli.d	$vr10, $vr10, 1
-	vxor.v	$vr10, $vr10, $vr12
-	vand.v	$vr12, $vr11, $vr4
-	vseqi.d	$vr12, $vr12, 0
-	vandn.v	$vr12, $vr12, $vr5
+	vand.v	$vr13, $vr11, $vr4
+	vseqi.d	$vr13, $vr13, 0
+	vandn.v	$vr13, $vr13, $vr5
+	vxor.v	$vr12, $vr12, $vr13
 	vxor.v	$vr10, $vr10, $vr12
 	addi.d	$t5, $t5, 16
 	vstx	$vr10, $t6, $t2
@@ -42760,17 +42760,17 @@ _ZL9init_dataIfEvRKSt10unique_ptrIA_T_St14default_deleteIS2_EEj: # @_ZL9init_dat
 	bnez	$t5, .LBB8_19
 # %bb.20:                               #   in Loop: Header=BB8_3 Depth=1
 	ld.d	$t6, $a2, 0
-	move	$t5, $zero
 	ldptr.d	$t7, $a2, 4984
+	move	$t5, $zero
 	bstrpick.d	$t8, $t6, 30, 1
-	ldptr.d	$fp, $a2, 3168
 	slli.d	$t8, $t8, 1
 	bstrins.d	$t7, $t8, 30, 0
+	ldptr.d	$t8, $a2, 3168
 	srli.d	$t7, $t7, 1
-	xor	$t7, $t7, $fp
 	andi	$t6, $t6, 1
 	sub.d	$t6, $zero, $t6
 	and	$t6, $t6, $a5
+	xor	$t6, $t8, $t6
 	xor	$t6, $t7, $t6
 	stptr.d	$t6, $a2, 4984
 	b	.LBB8_2

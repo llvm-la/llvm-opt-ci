@@ -173,8 +173,8 @@ main:                                   # @main
 	bstrpick.d	$a0, $a0, 15, 8
 	slli.d	$a0, $a0, 8
 	sltui	$a0, $a0, 1
-	or	$a0, $a0, $a1
-	or	$a0, $s0, $a0
+	or	$a1, $s0, $a1
+	or	$a0, $a1, $a0
 	b	.LBB0_18
 .LBB0_22:
 	xori	$a0, $s0, 1

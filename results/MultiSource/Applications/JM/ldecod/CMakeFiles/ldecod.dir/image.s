@@ -1663,17 +1663,17 @@ find_snr:                               # @find_snr
 	pcalau12i	$t3, %pc_hi20(find_snr.SubHeightC)
 	addi.d	$t3, $t3, %pc_lo12(find_snr.SubHeightC)
 	ld.w	$t4, $s0, 216
-	ldx.w	$t1, $t3, $t1
-	addi.d	$t4, $t4, -2
-	mul.d	$t5, $t4, $t1
+	ldx.w	$t5, $t3, $t1
 	ld.w	$t6, $s0, 232
 	ld.w	$t7, $s0, 236
+	addi.d	$t4, $t4, -2
 	add.d	$t1, $t0, $a7
 	mul.d	$t2, $t1, $t2
+	add.d	$t8, $t7, $t6
 	ld.w	$t3, $s0, 32
 	ld.w	$t1, $s0, 36
-	add.d	$t8, $t7, $t6
-	mul.d	$t5, $t5, $t8
+	mul.d	$t8, $t4, $t8
+	mul.d	$t5, $t8, $t5
 	sub.w	$t8, $t3, $t2
 	add.w	$t5, $t5, $t1
 	mul.d	$t2, $t4, $t6
@@ -7832,18 +7832,18 @@ ercWriteMBMODEandMV:                    # @ercWriteMBMODEandMV
 	ld.h	$t4, $t2, 0
 	ld.h	$t5, $t0, 0
 	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
+	add.d	$t3, $t4, $t5
+	add.d	$a6, $a6, $t3
 	addi.d	$a6, $a6, 2
 	bstrpick.d	$t3, $a6, 62, 61
-	add.d	$a6, $a6, $t3
 	ld.h	$a7, $a7, 2
 	ld.h	$t1, $t1, 2
 	ld.h	$t2, $t2, 2
 	ld.h	$t0, $t0, 2
+	add.d	$a6, $a6, $t3
 	srai.d	$a6, $a6, 2
 	add.d	$a7, $a7, $t1
-	add.d	$a7, $a7, $t2
+	add.d	$t0, $t2, $t0
 	add.d	$a7, $a7, $t0
 	addi.d	$a7, $a7, 2
 	bstrpick.d	$t0, $a7, 62, 61
@@ -7924,18 +7924,18 @@ ercWriteMBMODEandMV:                    # @ercWriteMBMODEandMV
 	ld.h	$t2, $t1, 0
 	ld.h	$t3, $a0, 0
 	add.d	$a5, $a5, $a7
-	add.d	$a5, $a5, $t2
-	add.d	$a5, $a5, $t3
+	add.d	$a7, $t2, $t3
+	add.d	$a5, $a5, $a7
 	addi.d	$a5, $a5, 2
 	bstrpick.d	$a7, $a5, 62, 61
-	add.d	$a5, $a5, $a7
 	ld.h	$a6, $a6, 2
-	ld.h	$a7, $t0, 2
-	ld.h	$t0, $t1, 2
+	ld.h	$t0, $t0, 2
+	ld.h	$t1, $t1, 2
 	ld.h	$a0, $a0, 2
+	add.d	$a5, $a5, $a7
 	srai.d	$a5, $a5, 2
-	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t0
+	add.d	$a0, $t1, $a0
 	add.d	$a0, $a6, $a0
 	addi.d	$a0, $a0, 2
 	bstrpick.d	$a6, $a0, 62, 61
@@ -8087,17 +8087,17 @@ is_new_picture:                         # @is_new_picture
 	ld.w	$a4, $a4, 148
 	ld.w	$a5, $a2, 8
 	ldptr.w	$a6, $a1, 5676
-	xor	$a3, $a3, $a4
-	sltu	$a4, $zero, $a3
+	xor	$a4, $a3, $a4
 	xor	$a5, $a5, $a6
 	ld.w	$a3, $a2, 0
 	ldptr.w	$a6, $a1, 5680
-	sltu	$a5, $zero, $a5
-	or	$a4, $a4, $a5
-	or	$a0, $a4, $a0
-	xor	$a4, $a3, $a6
 	sltu	$a4, $zero, $a4
-	or	$a0, $a0, $a4
+	sltu	$a5, $zero, $a5
+	or	$a0, $a5, $a0
+	xor	$a5, $a3, $a6
+	sltu	$a5, $zero, $a5
+	or	$a0, $a0, $a5
+	or	$a0, $a4, $a0
 	beqz	$a6, .LBB17_3
 # %bb.1:
 	beqz	$a3, .LBB17_3
@@ -8124,10 +8124,10 @@ is_new_picture:                         # @is_new_picture
 .LBB17_8:
 	ld.w	$a4, $a2, 32
 	ldptr.w	$a5, $a1, 5804
+	xor	$a6, $a4, $a5
+	sltu	$a6, $zero, $a6
+	or	$a3, $a3, $a6
 	or	$a0, $a3, $a0
-	xor	$a3, $a4, $a5
-	sltu	$a3, $zero, $a3
-	or	$a0, $a0, $a3
 	beqz	$a5, .LBB17_11
 # %bb.9:
 	beqz	$a4, .LBB17_11

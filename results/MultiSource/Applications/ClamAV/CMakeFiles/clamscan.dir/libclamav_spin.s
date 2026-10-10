@@ -923,8 +923,8 @@ unspin:                                 # @unspin
 	ld.wu	$a0, $fp, 8
 	ld.wu	$a2, $fp, 0
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	add.d	$a1, $a1, $s8
 	add.d	$a0, $a1, $a0
-	add.d	$a0, $a0, $s8
 	sub.d	$a0, $a0, $a2
 	ld.w	$a3, $fp, 12
 	ld.w	$a4, $fp, 4

@@ -230,8 +230,8 @@ write_out_picture:                      # @write_out_picture
 	ldx.w	$a0, $s5, $s2
 	ori	$s7, $s6, 2300
 	ldx.w	$a1, $s5, $s7
-	mul.d	$a0, $a0, $s4
-	mul.w	$a0, $a0, $a1
+	mul.d	$a0, $a0, $a1
+	mul.w	$a0, $a0, $s4
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0

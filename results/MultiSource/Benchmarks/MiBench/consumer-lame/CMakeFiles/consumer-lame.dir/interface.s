@@ -472,9 +472,9 @@ set_pointer:                            # @set_pointer
 	sub.d	$a5, $zero, $a2
 	alsl.d	$a4, $a4, $a4, 3
 	slli.d	$a4, $a4, 8
-	add.d	$a1, $a1, $a4
 	add.d	$a1, $a1, $a3
 	add.d	$a1, $a1, $a5
+	add.d	$a1, $a1, $a4
 	addi.d	$a1, $a1, 612
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0

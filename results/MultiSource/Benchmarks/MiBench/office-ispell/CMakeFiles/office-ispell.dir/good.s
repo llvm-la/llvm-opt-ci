@@ -486,8 +486,8 @@ flagpr:                                 # @flagpr
 	blez	$fp, .LBB2_20
 # %bb.11:
 	addi.w	$a2, $a0, 0
-	add.d	$a1, $s6, $a2
-	sub.d	$a1, $a1, $s4
+	sub.d	$a1, $s6, $s4
+	add.d	$a1, $a1, $a2
 	ld.bu	$a3, $a1, -1
 	pcalau12i	$a4, %got_pc_hi20(hashheader)
 	ld.d	$a4, $a4, %got_pc_lo12(hashheader)

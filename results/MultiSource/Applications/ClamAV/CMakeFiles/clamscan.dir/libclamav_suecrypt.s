@@ -235,12 +235,12 @@ sudecrypt:                              # @sudecrypt
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a0, $s1, 31, 0
 	add.d	$a0, $fp, $a0
-	ld.hu	$a1, $a0, 20
 	st.h	$s0, $a0, 6
 	st.w	$s2, $a0, 40
-	add.d	$a0, $a0, $a1
-	alsl.d	$a1, $s0, $s0, 2
-	slli.d	$a1, $a1, 3
+	ld.hu	$a1, $a0, 20
+	alsl.d	$a2, $s0, $s0, 2
+	slli.d	$a2, $a2, 3
+	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $a1
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 24

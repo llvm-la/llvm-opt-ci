@@ -2151,14 +2151,14 @@ cli_html_normalise:                     # @cli_html_normalise
 	slli.d	$a2, $a3, 6
 	bstrpick.d	$a2, $a2, 31, 8
 	slli.w	$a2, $a2, 8
-	add.d	$a1, $a1, $a2
-	slli.d	$a2, $a3, 22
-	ld.bu	$a3, $s8, 3
+	slli.d	$a3, $a3, 22
 	lu12i.w	$a4, 3072
-	and	$a2, $a2, $a4
+	and	$a3, $a3, $a4
+	ld.bu	$a4, $s8, 3
+	add.d	$a1, $a1, $a3
 	add.d	$a1, $a1, $a2
 	ld.bu	$a2, $s8, 4
-	slli.d	$a3, $a3, 2
+	slli.d	$a3, $a4, 2
 	ld.bu	$a4, $s8, 5
 	ldx.w	$a3, $a0, $a3
 	slli.d	$a2, $a2, 2
@@ -2166,13 +2166,13 @@ cli_html_normalise:                     # @cli_html_normalise
 	slli.d	$a4, $a4, 2
 	ldx.w	$a0, $a0, $a4
 	slli.w	$a3, $a3, 16
-	add.d	$a1, $a1, $a3
 	slli.w	$a2, $a2, 26
-	add.d	$a1, $a1, $a2
+	add.d	$a2, $a3, $a2
 	slli.d	$a0, $a0, 20
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
-	and	$a0, $a0, $a2
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	and	$a0, $a0, $a3
 	addi.w	$a0, $a0, 0
+	add.d	$a0, $a2, $a0
 	add.d	$a0, $a1, $a0
 	st.d	$a0, $sp, 272                   # 8-byte Folded Spill
 	addi.d	$s8, $s8, 8
@@ -6400,14 +6400,14 @@ html_screnc_decode:                     # @html_screnc_decode
 	slli.d	$a4, $a5, 6
 	bstrpick.d	$a4, $a4, 31, 8
 	slli.w	$a4, $a4, 8
-	add.d	$a2, $a2, $a4
-	slli.d	$a4, $a5, 22
-	slli.d	$a5, $s5, 2
-	ldx.w	$a5, $a3, $a5
-	lu12i.w	$a6, 3072
-	and	$a4, $a4, $a6
-	add.d	$a2, $a2, $a4
-	slli.w	$a4, $a5, 16
+	slli.d	$a5, $a5, 22
+	slli.d	$a6, $s5, 2
+	ldx.w	$a6, $a3, $a6
+	lu12i.w	$a7, 3072
+	and	$a5, $a5, $a7
+	add.d	$a2, $a2, $a5
+	slli.w	$a5, $a6, 16
+	add.d	$a2, $a2, $a5
 	slli.d	$a5, $s6, 2
 	ldx.w	$a5, $a3, $a5
 	slli.d	$a1, $a1, 2

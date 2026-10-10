@@ -120,22 +120,22 @@ Ppmd8_DecodeSymbol:                     # @Ppmd8_DecodeSymbol
 	b	.LBB1_3
 .LBB1_7:
 	ld.bu	$a1, $a0, 3
-	ld.d	$a2, $fp, 56
-	ld.wu	$a3, $a0, 8
 	add.d	$a1, $fp, $a1
 	ld.bu	$a1, $a1, 855
-	ldx.bu	$a2, $a2, $a3
+	ld.d	$a2, $fp, 56
+	ld.wu	$a3, $a0, 8
 	slli.d	$a1, $a1, 7
-	add.d	$a2, $fp, $a2
-	ld.bu	$a2, $a2, 600
+	add.d	$a1, $fp, $a1
+	ldx.bu	$a2, $a2, $a3
 	ld.w	$a3, $fp, 32
 	ld.bu	$a0, $a0, 1
 	ld.w	$a4, $fp, 40
-	add.d	$a1, $fp, $a1
-	add.d	$a2, $a3, $a2
-	add.d	$a0, $a2, $a0
-	srli.d	$a2, $a4, 26
-	andi	$a2, $a2, 32
+	add.d	$a2, $fp, $a2
+	ld.bu	$a2, $a2, 600
+	add.d	$a0, $a3, $a0
+	srli.d	$a3, $a4, 26
+	andi	$a3, $a3, 32
+	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $a2
 	bstrpick.d	$a0, $a0, 31, 0
 	alsl.d	$a0, $a0, $a1, 1

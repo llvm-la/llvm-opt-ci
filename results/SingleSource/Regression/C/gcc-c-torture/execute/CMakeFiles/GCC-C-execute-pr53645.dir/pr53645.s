@@ -883,8 +883,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 32
 	and	$a3, $a3, $s1
 	srli.d	$a2, $a2, 33
-	add.d	$a2, $a3, $a2
-	sub.w	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a2
+	sub.w	$a1, $a1, $a3
 	bne	$a0, $a1, .LBB24_101
 # %bb.22:                               #   in Loop: Header=BB24_1 Depth=1
 	vpickve2gr.w	$a0, $vr0, 3
@@ -894,8 +894,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 32
 	and	$a3, $a3, $s1
 	srli.d	$a2, $a2, 33
-	add.d	$a2, $a3, $a2
-	sub.w	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a2
+	sub.w	$a1, $a1, $a3
 	bne	$a0, $a1, .LBB24_101
 # %bb.23:                               #   in Loop: Header=BB24_1 Depth=1
 	#APP
@@ -909,8 +909,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 32
 	and	$a3, $a3, $s1
 	srli.d	$a2, $a2, 33
-	add.d	$a2, $a3, $a2
-	sub.w	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a2
+	sub.w	$a1, $a1, $a3
 	bne	$a0, $a1, .LBB24_101
 # %bb.24:                               #   in Loop: Header=BB24_1 Depth=1
 	vpickve2gr.w	$a0, $vr0, 1
@@ -920,8 +920,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 32
 	and	$a3, $a3, $s1
 	srli.d	$a2, $a2, 33
-	add.d	$a2, $a3, $a2
-	sub.w	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a2
+	sub.w	$a1, $a1, $a3
 	bne	$a0, $a1, .LBB24_101
 # %bb.25:                               #   in Loop: Header=BB24_1 Depth=1
 	#APP
@@ -987,8 +987,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 32
 	and	$a3, $a3, $s7
 	srli.d	$a2, $a2, 34
-	add.d	$a2, $a3, $a2
-	sub.w	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a2
+	sub.w	$a1, $a1, $a3
 	bne	$a0, $a1, .LBB24_101
 # %bb.31:                               #   in Loop: Header=BB24_1 Depth=1
 	#APP
@@ -1014,8 +1014,8 @@ main:                                   # @main
 	srli.d	$a3, $a2, 32
 	and	$a3, $a3, $s7
 	srli.d	$a2, $a2, 34
-	add.d	$a2, $a3, $a2
-	sub.w	$a1, $a1, $a2
+	sub.d	$a1, $a1, $a2
+	sub.w	$a1, $a1, $a3
 	bne	$a0, $a1, .LBB24_101
 # %bb.33:                               #   in Loop: Header=BB24_1 Depth=1
 	#APP

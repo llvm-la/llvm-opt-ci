@@ -345,16 +345,16 @@ main:                                   # @main
 	vadd.w	$vr0, $vr0, $vr1
 	vadd.w	$vr0, $vr0, $vr4
 	vhaddw.d.w	$vr0, $vr0, $vr0
+	ld.w	$a1, $a0, 384
+	ld.w	$a2, $a0, 388
 	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a1, $vr0, 0
-	ld.w	$a2, $a0, 384
-	ld.w	$a3, $a0, 388
-	ld.w	$a4, $a0, 392
+	ld.w	$a3, $a0, 392
 	ld.w	$a0, $a0, 396
 	add.d	$a1, $a2, $a1
+	vpickve2gr.d	$a2, $vr0, 0
 	add.d	$a1, $a3, $a1
-	add.d	$a1, $a4, $a1
-	add.w	$a1, $a0, $a1
+	add.d	$a0, $a0, $a1
+	add.w	$a1, $a0, $a2
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(printf)

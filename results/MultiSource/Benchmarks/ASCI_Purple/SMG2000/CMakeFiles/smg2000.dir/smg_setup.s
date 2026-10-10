@@ -31,15 +31,15 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	st.d	$s7, $sp, 368                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 360                   # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 352                  # 8-byte Folded Spill
-	st.d	$a3, $sp, 184                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 200                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 176                   # 8-byte Folded Spill
 	move	$s3, $a0
 	ld.w	$a0, $a0, 0
 	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 	ld.w	$a0, $s3, 36
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	ld.w	$a0, $s3, 40
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	st.d	$zero, $sp, 280
 	ld.d	$a0, $a1, 24
 	vrepli.b	$vr0, 0
@@ -50,7 +50,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	vst	$vr0, $sp, 264
 	ld.d	$a0, $s0, 40
 	vst	$vr0, $sp, 240
-	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
 	addi.w	$s4, $a1, -1
 	st.w	$s4, $s3, 44
 	pcaddu18i	$ra, %call36(hypre_BoxDuplicate)
@@ -96,7 +96,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	ld.w	$a1, $s3, 60
 	ld.d	$a2, $s3, 64
 	ld.w	$a3, $s3, 48
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 184                   # 8-byte Folded Spill
 	ld.d	$a4, $s3, 52
 	st.w	$a1, $sp, 292
 	st.d	$a2, $sp, 296
@@ -107,22 +107,24 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	stx.w	$a1, $fp, $a0
 	ldx.w	$a1, $s5, $fp
 	ldx.w	$a2, $s6, $fp
-	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
+	st.d	$s4, $sp, 224                   # 8-byte Folded Spill
 	alsl.d	$a0, $s4, $a0, 2
-	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
+	move	$s4, $s1
 	addi.d	$a0, $s1, 8
 	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 208                   # 8-byte Folded Spill
 	addi.d	$a0, $s7, 8
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	beq	$a1, $a2, .LBB0_7
 # %bb.1:
 	addi.w	$s3, $s2, -1
 	beqz	$s3, .LBB0_7
 # %bb.2:
-	alsl.d	$fp, $s4, $s6, 2
-	alsl.d	$s0, $s4, $s5, 2
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	alsl.d	$fp, $a0, $s6, 2
+	alsl.d	$s0, $a0, $s5, 2
 	addi.d	$a1, $sp, 316
 	addi.d	$a2, $sp, 292
 	move	$a0, $s5
@@ -145,8 +147,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	addi.d	$a1, $sp, 316
 	addi.d	$a2, $sp, 292
 	move	$a3, $zero
-	ld.d	$a4, $sp, 224                   # 8-byte Folded Reload
-	addi.d	$a4, $a4, 8
+	addi.d	$a4, $s4, 8
 	pcaddu18i	$ra, %call36(hypre_StructCoarsen)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 0
@@ -161,9 +162,9 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	lu32i.d	$a0, 1
 	st.d	$a0, $sp, 292
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	st.w	$s1, $sp, 300
-	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
 	ld.w	$a0, $a1, 0
 	st.d	$zero, $sp, 316
 	st.w	$zero, $sp, 324
@@ -180,12 +181,11 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	addi.d	$a0, $a0, -2
 	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
 	addi.d	$s3, $a1, 16
-	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
-	addi.d	$s7, $a1, 16
+	addi.d	$s7, $s4, 16
 	ori	$s8, $zero, 1
 	lu32i.d	$s8, 1
 	ori	$a1, $zero, 1
-	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB0_5:                                # =>This Inner Loop Header: Depth=1
 	move	$s1, $a0
@@ -222,7 +222,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	jirl	$ra, $ra, 0
 	st.d	$s8, $sp, 292
 	st.w	$s2, $sp, 300
-	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
 	ld.w	$a0, $a1, 0
 	st.d	$zero, $sp, 316
 	st.w	$zero, $sp, 324
@@ -230,9 +230,9 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	st.w	$a0, $a1, 0
 	ld.w	$a0, $s0, 0
 	ld.w	$a1, $fp, 0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	addi.w	$a2, $a2, 1
-	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
 	beq	$a0, $a1, .LBB0_7
 # %bb.6:                                #   in Loop: Header=BB0_5 Depth=1
 	addi.d	$a0, $s1, -1
@@ -240,17 +240,16 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	addi.d	$s7, $s7, 8
 	bnez	$s1, .LBB0_5
 .LBB0_7:
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 128                   # 8-byte Folded Reload
 	addi.d	$fp, $s2, 1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(hypre_BoxDestroy)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
 	st.w	$fp, $a0, 32
 	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
 	st.d	$a1, $a0, 72
-	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
-	st.d	$a1, $a0, 80
+	st.d	$s4, $a0, 80
 	slli.w	$s0, $fp, 3
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
@@ -260,11 +259,11 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
@@ -277,7 +276,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
-	st.d	$s0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
@@ -286,18 +285,18 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	pcaddu18i	$ra, %call36(hypre_StructMatrixRef)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s3, 0
-	ld.d	$s8, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 176                   # 8-byte Folded Reload
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(hypre_StructVectorRef)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s1, 0
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 200                   # 8-byte Folded Reload
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(hypre_StructVectorRef)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 0
 	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 152                   # 8-byte Folded Reload
 	blez	$t0, .LBB0_15
 # %bb.8:
 	ori	$a0, $zero, 4
@@ -350,15 +349,14 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 .LBB0_15:
 	st.d	$s3, $sp, 72                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 224                   # 8-byte Folded Spill
 	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$a1, $s3, 0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(hypre_StructVectorCreate)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s7, 0
-	addi.d	$s4, $s8, 48
-	move	$a1, $s4
+	addi.d	$s8, $s8, 48
+	move	$a1, $s8
 	pcaddu18i	$ra, %call36(hypre_StructVectorSetNumGhost)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s7, 0
@@ -382,10 +380,11 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	ld.w	$a0, $a0, 36
 	add.w	$s5, $a0, $fp
 	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
 	beqz	$s2, .LBB0_18
 # %bb.16:
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
 	bstrpick.d	$a2, $s2, 31, 0
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$s2, $a0, 8
@@ -394,12 +393,11 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	addi.d	$s1, $a0, 8
 	addi.d	$s3, $s6, 8
 	addi.d	$s7, $s7, 8
-	ld.d	$s6, $sp, 176                   # 8-byte Folded Reload
-	st.d	$s0, $sp, 128                   # 8-byte Folded Spill
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
+	st.d	$s0, $sp, 112                   # 8-byte Folded Spill
+	ld.d	$s0, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
-	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 232                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_17:                               # =>This Inner Loop Header: Depth=1
@@ -419,16 +417,16 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	ld.d	$a1, $s1, -8
 	ld.d	$a2, $s6, 0
 	ld.d	$a3, $s4, 0
-	add.d	$s5, $a4, $s5
+	add.d	$a4, $a4, $s5
+	st.d	$a4, $sp, 200                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(hypre_SMGCreateRAPOp)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s1, 0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixInitializeShell)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s1, 0
-	ld.w	$a0, $a0, 60
+	ld.w	$s5, $a0, 60
 	ld.d	$a1, $s4, 0
-	add.d	$s5, $s5, $a0
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(hypre_StructVectorCreate)
 	jirl	$ra, $ra, 0
@@ -442,7 +440,9 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	ld.d	$a0, $fp, 0
 	ld.w	$a0, $a0, 36
 	ld.d	$a1, $s4, 0
-	add.d	$s5, $s5, $a0
+	add.d	$a0, $s5, $a0
+	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
+	add.d	$s5, $a2, $a0
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(hypre_StructVectorCreate)
 	jirl	$ra, $ra, 0
@@ -472,7 +472,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	pcaddu18i	$ra, %call36(hypre_StructVectorCreate)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s3, 0
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(hypre_StructVectorSetNumGhost)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s3, 0
@@ -496,10 +496,10 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$a1, $s6, 0
 	move	$s0, $a0
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
 	st.d	$s0, $a0, 88
 	move	$a0, $a1
 	move	$a1, $s0
@@ -510,7 +510,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s6, 0
 	ld.w	$a1, $a0, 36
-	ld.d	$s8, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a0, $s8, 0
 	alsl.d	$s0, $a1, $s0, 3
 	move	$a1, $s0
@@ -519,15 +519,15 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	ld.d	$a0, $s8, 0
 	pcaddu18i	$ra, %call36(hypre_StructVectorAssemble)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 168                   # 8-byte Folded Reload
 	beqz	$a0, .LBB0_21
 # %bb.19:
 	ld.d	$a0, $s8, 0
 	ld.w	$a0, $a0, 36
 	move	$fp, $zero
 	alsl.d	$s0, $a0, $s0, 3
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	bstrpick.d	$a0, $a0, 31, 0
 	slli.d	$s1, $a0, 3
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
@@ -593,11 +593,11 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	addi.d	$fp, $fp, 8
 	bne	$s1, $fp, .LBB0_20
 .LBB0_21:
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
 	st.d	$s0, $s1, 96
 	st.d	$s7, $s1, 104
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	st.d	$a0, $s1, 112
 	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
 	st.d	$s3, $s1, 120
@@ -607,7 +607,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	st.d	$s8, $s1, 144
 	st.d	$s8, $s1, 152
 	st.d	$s8, $s1, 160
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 104                   # 8-byte Folded Reload
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
@@ -635,7 +635,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	ld.w	$a1, $a1, 32
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$a1, $a3, 24
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(hypre_StructVectorInitializeData)
 	jirl	$ra, $ra, 0
@@ -650,7 +650,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	ld.d	$a0, $s5, 0
 	pcaddu18i	$ra, %call36(hypre_StructVectorAssemble)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 128                   # 8-byte Folded Reload
 	beqz	$s2, .LBB0_28
 # %bb.22:
 	move	$a2, $s3
@@ -673,7 +673,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	movgr2fr.d	$fs0, $zero
 	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s8, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 216                   # 8-byte Folded Reload
 	b	.LBB0_25
 	.p2align	4, , 16
@@ -701,7 +701,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	st.w	$a3, $sp, 292
 	st.w	$a4, $sp, 296
 	st.w	$a5, $sp, 300
-	ld.d	$fp, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
 	ld.w	$a2, $fp, 0
 	st.w	$a0, $sp, 324
 	addi.d	$a0, $a1, 1
@@ -742,16 +742,16 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	pcaddu18i	$ra, %call36(hypre_SMGRelaxSetSpace)
 	jirl	$ra, $ra, 0
 	ldx.d	$a0, $s4, $s3
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
 	ldx.d	$a1, $a1, $s3
 	pcaddu18i	$ra, %call36(hypre_SMGRelaxSetTempVec)
 	jirl	$ra, $ra, 0
 	ldx.d	$a0, $s4, $s3
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(hypre_SMGRelaxSetNumPreRelax)
 	jirl	$ra, $ra, 0
 	ldx.d	$a0, $s4, $s3
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(hypre_SMGRelaxSetNumPostRelax)
 	jirl	$ra, $ra, 0
 	ldx.d	$a0, $s4, $s3
@@ -802,13 +802,13 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	ld.d	$a1, $fp, -8
 	ld.d	$a2, $s6, -8
 	ld.d	$a3, $s2, -8
-	ld.d	$s2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
 	ldx.d	$a4, $s2, $s3
 	pcaddu18i	$ra, %call36(hypre_SMGResidualSetup)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(hypre_SemiInterpCreate)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
 	stx.d	$a0, $a1, $s3
 	ldx.d	$a1, $s8, $s3
 	ldx.d	$a3, $s5, $s3
@@ -823,7 +823,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
 	stx.d	$a0, $a1, $s3
-	ld.d	$s5, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
 	ldx.d	$a1, $s5, $s3
 	ldx.d	$a3, $s2, $s3
 	ldx.d	$a4, $s0, $s3
@@ -845,7 +845,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	beq	$a0, $s3, .LBB0_27
 .LBB0_25:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$s2, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
 	beqz	$s3, .LBB0_23
 # %bb.26:                               #   in Loop: Header=BB0_25 Depth=1
 	move	$a1, $zero
@@ -865,13 +865,13 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	move	$a1, $zero
 	move	$a2, $zero
 	ori	$a3, $zero, 1
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 128                   # 8-byte Folded Reload
 	move	$fp, $s2
 	ori	$a4, $zero, 1
 	ori	$a5, $zero, 1
 	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 184                   # 8-byte Folded Reload
 	b	.LBB0_29
 .LBB0_28:
 	ld.w	$a0, $s1, 48
@@ -907,16 +907,16 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	pcaddu18i	$ra, %call36(hypre_SMGRelaxSetMaxIter)
 	jirl	$ra, $ra, 0
 	ldx.d	$a0, $s4, $s1
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
 	ldx.d	$a1, $a1, $s1
 	pcaddu18i	$ra, %call36(hypre_SMGRelaxSetTempVec)
 	jirl	$ra, $ra, 0
 	ldx.d	$a0, $s4, $s1
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(hypre_SMGRelaxSetNumPreRelax)
 	jirl	$ra, $ra, 0
 	ldx.d	$a0, $s4, $s1
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(hypre_SMGRelaxSetNumPostRelax)
 	jirl	$ra, $ra, 0
 	ldx.d	$a0, $s4, $s1
@@ -945,7 +945,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	ld.d	$a2, $fp, 0
 	ld.d	$a3, $s3, 0
 	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
 	ldx.d	$a4, $a4, $s1
 	pcaddu18i	$ra, %call36(hypre_SMGResidualSetup)
 	jirl	$ra, $ra, 0
@@ -976,7 +976,7 @@ hypre_SMGSetup:                         # @hypre_SMGSetup
 	st.d	$a1, $s7, 176
 	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
 	st.d	$a1, $s7, 184
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
 	st.d	$a1, $s7, 192
 	blez	$a0, .LBB0_33
 # %bb.32:

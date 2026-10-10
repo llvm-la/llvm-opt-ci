@@ -32,6 +32,7 @@ predictor_zero:                         # @predictor_zero
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.h	$a0, $a0, 20
 	ld.h	$a1, $fp, 36
@@ -46,29 +47,32 @@ predictor_zero:                         # @predictor_zero
 	jirl	$ra, $ra, 0
 	ld.h	$a2, $fp, 24
 	ld.h	$a1, $fp, 40
-	add.d	$s0, $a0, $s0
+	add.d	$s1, $a0, $s0
 	srai.d	$a0, $a2, 2
 	pcaddu18i	$ra, %call36(fmult)
 	jirl	$ra, $ra, 0
 	ld.h	$a2, $fp, 26
 	ld.h	$a1, $fp, 42
-	add.d	$s0, $a0, $s0
+	move	$s0, $a0
 	srai.d	$a0, $a2, 2
 	pcaddu18i	$ra, %call36(fmult)
 	jirl	$ra, $ra, 0
 	ld.h	$a2, $fp, 28
 	ld.h	$a1, $fp, 44
-	add.d	$s0, $a0, $s0
+	add.d	$a0, $a0, $s0
+	add.d	$s0, $a0, $s1
 	srai.d	$a0, $a2, 2
 	pcaddu18i	$ra, %call36(fmult)
 	jirl	$ra, $ra, 0
 	ld.h	$a2, $fp, 30
 	ld.h	$a1, $fp, 46
-	add.d	$fp, $a0, $s0
+	move	$fp, $a0
 	srai.d	$a0, $a2, 2
 	pcaddu18i	$ra, %call36(fmult)
 	jirl	$ra, $ra, 0
-	add.w	$a0, $a0, $fp
+	add.d	$a0, $a0, $fp
+	add.w	$a0, $a0, $s0
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload

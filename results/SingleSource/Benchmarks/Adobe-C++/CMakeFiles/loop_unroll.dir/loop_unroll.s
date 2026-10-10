@@ -878,70 +878,70 @@ _Z27test_for_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a6, $a4, 4
 	ld.w	$a7, $a4, 8
 	ld.w	$t0, $a4, 12
+	ld.w	$t1, $a4, 16
 	add.d	$a5, $a6, $a5
-	ld.w	$a6, $a4, 16
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 20
-	add.d	$a5, $a5, $t0
+	ld.w	$a6, $a4, 20
+	add.d	$a7, $a7, $t0
 	ld.w	$t0, $a4, 24
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 28
 	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 32
-	add.d	$a5, $a5, $t0
+	ld.w	$a7, $a4, 28
+	add.d	$a5, $a5, $t1
+	ld.w	$t1, $a4, 32
+	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a4, 36
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 40
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 44
-	add.d	$a5, $a5, $t0
+	add.d	$a6, $a6, $a7
+	ld.w	$a7, $a4, 40
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 44
+	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a4, 48
 	add.d	$a5, $a5, $a6
 	ld.w	$a6, $a4, 52
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 56
-	add.d	$a5, $a5, $t0
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 56
+	add.d	$a7, $a7, $t0
 	ld.w	$t0, $a4, 60
+	add.d	$a6, $a7, $a6
+	ld.w	$a7, $a4, 64
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 68
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 64
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 68
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 72
+	ld.w	$a6, $a4, 72
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 76
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 80
+	add.d	$a6, $a7, $a6
+	ld.w	$a7, $a4, 84
+	add.d	$a6, $a6, $t0
+	ld.w	$t0, $a4, 88
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 76
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 80
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 84
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 88
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 92
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 96
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 100
-	add.d	$a5, $a5, $a7
+	ld.w	$a6, $a4, 92
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a4, 96
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a4, 100
+	add.d	$a6, $a7, $a6
 	ld.w	$a7, $a4, 104
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 108
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 108
 	add.d	$a5, $a5, $a6
 	ld.w	$a6, $a4, 112
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 116
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 120
-	ld.w	$t1, $a4, 124
-	add.d	$a4, $a5, $a6
-	add.d	$a4, $a4, $a7
-	add.d	$a6, $a4, $t0
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 116
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 120
+	ld.w	$a4, $a4, 124
+	add.d	$a6, $a7, $a6
+	add.d	$a6, $a6, $t0
+	add.d	$a6, $a5, $a6
+	add.d	$a7, $t1, $a4
 	move	$a4, $a2
 	move	$a5, $a3
-	add.d	$a2, $a6, $t1
+	add.d	$a2, $a6, $a7
 	mul.d	$a2, $a2, $fp
-	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $s8
+	add.d	$a0, $a0, $a2
 	addi.d	$a1, $a1, 32
 	addi.d	$a2, $a4, 32
 	addi.d	$a3, $a3, 128
@@ -988,8 +988,8 @@ _Z27test_for_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a2, $a1, 0
 	mul.d	$a2, $a2, $fp
-	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a2
 	addi.d	$a4, $a4, 1
 	addi.d	$a1, $a1, 4
 	bltu	$a4, $s0, .LBB6_12
@@ -1086,8 +1086,8 @@ _Z27test_for_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s7
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB6_24
@@ -1329,68 +1329,68 @@ _Z27test_for_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a6, $a4, 4
 	ld.w	$a7, $a4, 8
 	ld.w	$t0, $a4, 12
+	ld.w	$t1, $a4, 16
 	add.d	$a5, $a6, $a5
-	ld.w	$a6, $a4, 16
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 20
-	add.d	$a5, $a5, $t0
+	ld.w	$a6, $a4, 20
+	add.d	$a7, $a7, $t0
 	ld.w	$t0, $a4, 24
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 28
 	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 32
-	add.d	$a5, $a5, $t0
+	ld.w	$a7, $a4, 28
+	add.d	$a6, $t1, $a6
+	ld.w	$t1, $a4, 32
+	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a4, 36
+	add.d	$a6, $a6, $a7
+	ld.w	$a7, $a4, 40
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 40
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 44
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 48
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 52
-	add.d	$a5, $a5, $a7
+	ld.w	$a6, $a4, 44
+	add.d	$a5, $a5, $t1
+	ld.w	$t1, $a4, 48
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 52
+	add.d	$a6, $a7, $a6
 	ld.w	$a7, $a4, 56
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 60
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 60
+	add.d	$a6, $a6, $t0
+	ld.w	$t0, $a4, 64
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 64
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 68
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 72
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 76
-	add.d	$a5, $a5, $a7
+	ld.w	$a6, $a4, 68
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 72
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a4, 76
+	add.d	$a6, $a7, $a6
 	ld.w	$a7, $a4, 80
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 84
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 84
 	add.d	$a5, $a5, $a6
 	ld.w	$a6, $a4, 88
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 92
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 96
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 92
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 96
+	add.d	$a6, $a7, $a6
+	ld.w	$a7, $a4, 100
+	add.d	$a6, $a6, $t0
+	ld.w	$t0, $a4, 104
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 100
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 104
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 108
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 112
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 116
-	ld.w	$t1, $a4, 120
-	add.d	$a4, $a5, $t0
-	add.d	$a4, $a4, $a6
-	add.d	$a6, $a4, $a7
+	ld.w	$a6, $a4, 108
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a4, 112
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a4, 116
+	ld.w	$a4, $a4, 120
+	add.d	$a6, $a7, $a6
+	add.d	$a6, $a6, $t1
+	add.d	$a6, $a5, $a6
+	add.d	$a7, $t0, $a4
 	move	$a4, $a2
 	move	$a5, $a3
-	add.d	$a2, $a6, $t1
+	add.d	$a2, $a6, $a7
 	mul.d	$a2, $a2, $s4
-	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a2
 	addi.d	$a1, $a1, 31
 	addi.d	$a2, $a4, 31
 	addi.d	$a3, $a3, 124
@@ -1438,8 +1438,8 @@ _Z27test_for_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a2, $a1, 0
 	mul.d	$a2, $a2, $s4
-	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a2
 	addi.d	$a4, $a4, 1
 	addi.d	$a1, $a1, 4
 	bltu	$a4, $s0, .LBB7_12
@@ -1536,8 +1536,8 @@ _Z27test_for_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s7
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB7_24
@@ -1764,79 +1764,79 @@ _Z27test_for_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	move	$a2, $zero
 	move	$a0, $zero
 	ori	$a3, $zero, 30
-	move	$a4, $s8
+	move	$a5, $s8
 	.p2align	4, , 16
 .LBB8_5:                                #   Parent Loop BB8_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a5, $a2, $s1, 2
+	alsl.d	$a4, $a2, $s1, 2
 	slli.d	$a6, $a2, 2
 	ldx.w	$a6, $s1, $a6
-	ld.w	$a7, $a5, 4
-	ld.w	$t0, $a5, 8
-	ld.w	$t1, $a5, 12
+	ld.w	$a7, $a4, 4
+	ld.w	$t0, $a4, 8
+	ld.w	$t1, $a4, 12
+	ld.w	$t2, $a4, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
+	ld.w	$a7, $a4, 20
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 24
+	ld.w	$t0, $a4, 24
+	add.d	$t1, $t1, $t2
+	ld.w	$t2, $a4, 28
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a4, 32
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a4, 36
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 36
+	ld.w	$a7, $a4, 40
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a4, 44
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a4, 48
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a4, 56
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 60
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 48
+	ld.w	$a7, $a4, 64
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a4, 68
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a4, 72
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 76
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a4, 80
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 60
+	ld.w	$a7, $a4, 84
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a4, 88
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a4, 92
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 96
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 100
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 96
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 100
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 104
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 108
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 112
-	ld.w	$t2, $a5, 116
-	add.d	$a5, $a6, $t0
-	add.d	$a5, $a5, $t1
-	add.d	$a7, $a5, $a7
-	move	$a5, $a3
-	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	ld.w	$a7, $a4, 104
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a4, 108
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a4, 112
+	ld.w	$a4, $a4, 116
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a4
+	move	$a4, $a3
+	move	$a6, $a5
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 30
-	addi.d	$a3, $a5, 30
-	addi.d	$a4, $a4, 120
+	addi.d	$a3, $a4, 30
+	addi.d	$a5, $a5, 120
 	bltu	$a2, $s2, .LBB8_5
 # %bb.6:                                #   in Loop: Header=BB8_4 Depth=1
 	addi.w	$a2, $a2, 0
@@ -1847,7 +1847,7 @@ _Z27test_for_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	bltu	$a2, $a3, .LBB8_11
 # %bb.8:                                #   in Loop: Header=BB8_4 Depth=1
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	add.d	$a5, $a5, $a2
+	add.d	$a4, $a4, $a2
 	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
 	vinsgr2vr.w	$vr0, $a0, 0
@@ -1875,17 +1875,17 @@ _Z27test_for_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB8_13
 .LBB8_11:                               #   in Loop: Header=BB8_4 Depth=1
-	alsl.d	$a2, $a5, $s1, 2
+	alsl.d	$a2, $a4, $s1, 2
 	.p2align	4, , 16
 .LBB8_12:                               #   Parent Loop BB8_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a3, $a2, 0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $s3
-	addi.d	$a5, $a5, 1
+	add.d	$a0, $a0, $a3
+	addi.d	$a4, $a4, 1
 	addi.d	$a2, $a2, 4
-	bltu	$a5, $s0, .LBB8_12
+	bltu	$a4, $s0, .LBB8_12
 .LBB8_13:                               #   in Loop: Header=BB8_4 Depth=1
 	pcalau12i	$a2, %pc_hi20(init_value)
 	fld.d	$fa0, $a2, %pc_lo12(init_value)
@@ -1973,8 +1973,8 @@ _Z27test_for_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB8_24
@@ -2296,64 +2296,64 @@ _Z27test_for_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a7, $a3, 4
 	ld.w	$t0, $a3, 8
 	ld.w	$t1, $a3, 12
+	ld.w	$t2, $a3, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a3, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a3, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a3, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 28
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 28
 	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a3, 32
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a3, 36
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a3, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 44
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a3, 44
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a3, 48
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a3, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 56
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 60
+	ld.w	$a7, $a3, 60
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a3, 64
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 68
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a3, 72
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a3, 76
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 88
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a3, 80
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a3, 84
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a3, 88
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a3, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 96
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 96
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a3, 100
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 104
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 108
-	ld.w	$t2, $a3, 112
-	add.d	$a3, $a6, $a7
-	add.d	$a3, $a3, $t0
-	add.d	$a7, $a3, $t1
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a3, 104
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 108
+	ld.w	$a3, $a3, 112
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a3
 	move	$a3, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 29
 	addi.d	$a4, $a3, 29
 	addi.d	$a5, $a5, 116
@@ -2401,8 +2401,8 @@ _Z27test_for_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB10_12
@@ -2493,8 +2493,8 @@ _Z27test_for_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB10_24
@@ -2734,62 +2734,62 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a7, $a3, 4
 	ld.w	$t0, $a3, 8
 	ld.w	$t1, $a3, 12
+	ld.w	$t2, $a3, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a3, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a3, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a3, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 36
+	ld.w	$t0, $a3, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a3, 32
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 48
+	ld.w	$a7, $a3, 36
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a3, 40
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 44
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a3, 48
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a3, 52
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 60
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 64
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a3, 56
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a3, 60
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a3, 64
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a3, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 72
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 72
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a3, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 84
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a3, 80
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 84
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a3, 88
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a3, 92
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 96
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 100
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 104
-	ld.w	$t2, $a3, 108
-	add.d	$a3, $a6, $t1
-	add.d	$a3, $a3, $a7
-	add.d	$a7, $a3, $t0
+	ld.w	$a7, $a3, 96
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a3, 100
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a3, 104
+	ld.w	$a3, $a3, 108
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a3
 	move	$a3, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 28
 	addi.d	$a4, $a3, 28
 	addi.d	$a5, $a5, 112
@@ -2837,8 +2837,8 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB11_12
@@ -2929,8 +2929,8 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB11_24
@@ -3169,60 +3169,60 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a7, $a3, 4
 	ld.w	$t0, $a3, 8
 	ld.w	$t1, $a3, 12
+	ld.w	$t2, $a3, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a3, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a3, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a3, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 32
-	add.d	$a6, $a6, $t1
+	ld.w	$t0, $a3, 28
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a3, 32
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a3, 36
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 44
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a3, 40
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 44
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a3, 48
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a3, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 56
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 56
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a3, 60
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a3, 64
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 68
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 72
+	ld.w	$a7, $a3, 72
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a3, 76
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 80
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a3, 84
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a3, 88
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 96
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 100
-	ld.w	$t2, $a3, 104
-	add.d	$a3, $a6, $t0
-	add.d	$a3, $a3, $t1
-	add.d	$a7, $a3, $a7
+	ld.w	$a7, $a3, 92
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a3, 96
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a3, 100
+	ld.w	$a3, $a3, 104
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a3
 	move	$a3, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 27
 	addi.d	$a4, $a3, 27
 	addi.d	$a5, $a5, 108
@@ -3270,8 +3270,8 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB12_12
@@ -3362,8 +3362,8 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB12_24
@@ -3586,85 +3586,85 @@ _Z27test_for_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         #     Child Loop BB13_5 Depth 2
                                         #     Child Loop BB13_9 Depth 2
                                         #     Child Loop BB13_12 Depth 2
-	move	$a2, $zero
+	move	$a3, $zero
 	move	$a0, $zero
 	ori	$a4, $zero, 26
 	move	$a5, $s6
 	.p2align	4, , 16
 .LBB13_5:                               #   Parent Loop BB13_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a3, $a2, $s1, 2
-	slli.d	$a6, $a2, 2
+	alsl.d	$a2, $a3, $s1, 2
+	slli.d	$a6, $a3, 2
 	ldx.w	$a6, $s1, $a6
-	ld.w	$a7, $a3, 4
-	ld.w	$t0, $a3, 8
-	ld.w	$t1, $a3, 12
+	ld.w	$a7, $a2, 4
+	ld.w	$t0, $a2, 8
+	ld.w	$t1, $a2, 12
+	ld.w	$t2, $a2, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a3, 16
+	ld.w	$a7, $a2, 20
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a2, 24
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 20
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 24
+	ld.w	$t0, $a2, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a2, 32
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a2, 36
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a2, 40
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 28
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 36
+	ld.w	$a7, $a2, 44
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a2, 48
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 52
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 56
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 60
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a2, 64
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 48
+	ld.w	$a7, $a2, 68
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 72
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a2, 76
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 80
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 84
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 60
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 96
-	ld.w	$t2, $a3, 100
-	add.d	$a3, $a6, $a7
-	add.w	$a3, $a3, $t0
-	add.d	$a7, $a3, $t1
-	move	$a3, $a4
+	ld.w	$a7, $a2, 88
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 92
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 96
+	ld.w	$a2, $a2, 100
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.w	$a7, $a6, $a7
+	add.d	$t0, $t2, $a2
+	move	$a2, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
 	addu16i.d	$a0, $a0, 7146
 	addi.w	$a0, $a0, -848
-	addi.d	$a2, $a2, 26
-	addi.d	$a4, $a3, 26
+	addi.d	$a3, $a3, 26
+	addi.d	$a4, $a2, 26
 	addi.d	$a5, $a5, 104
-	bltu	$a2, $s2, .LBB13_5
+	bltu	$a3, $s2, .LBB13_5
 # %bb.6:                                #   in Loop: Header=BB13_4 Depth=1
-	addi.w	$a2, $a2, 0
-	bge	$a2, $s0, .LBB13_13
+	addi.w	$a3, $a3, 0
+	bge	$a3, $s0, .LBB13_13
 # %bb.7:                                #   in Loop: Header=BB13_4 Depth=1
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	ori	$a4, $zero, 8
-	bltu	$a2, $a4, .LBB13_11
+	bltu	$a3, $a4, .LBB13_11
 # %bb.8:                                #   in Loop: Header=BB13_4 Depth=1
-	add.d	$a3, $a3, $s8
+	add.d	$a2, $a2, $s8
 	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
 	vinsgr2vr.w	$vr0, $a0, 0
@@ -3688,20 +3688,20 @@ _Z27test_for_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	beq	$a2, $s8, .LBB13_13
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
+	beq	$a3, $s8, .LBB13_13
 .LBB13_11:                              #   in Loop: Header=BB13_4 Depth=1
-	alsl.d	$a2, $a3, $s1, 2
+	alsl.d	$a3, $a2, $s1, 2
 	.p2align	4, , 16
 .LBB13_12:                              #   Parent Loop BB13_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a4, $a2, 0
+	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
-	addi.d	$a3, $a3, 1
-	addi.d	$a2, $a2, 4
-	bltu	$a3, $s0, .LBB13_12
+	add.d	$a0, $a0, $a4
+	addi.d	$a2, $a2, 1
+	addi.d	$a3, $a3, 4
+	bltu	$a2, $s0, .LBB13_12
 .LBB13_13:                              #   in Loop: Header=BB13_4 Depth=1
 	pcalau12i	$a2, %pc_hi20(init_value)
 	fld.d	$fa0, $a2, %pc_lo12(init_value)
@@ -3789,8 +3789,8 @@ _Z27test_for_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB13_24
@@ -4032,56 +4032,56 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a7, $a2, 4
 	ld.w	$t0, $a2, 8
 	ld.w	$t1, $a2, 12
+	ld.w	$t2, $a2, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a2, 16
+	ld.w	$a7, $a2, 20
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 20
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 28
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 36
+	ld.w	$t0, $a2, 24
+	add.d	$t1, $t1, $t2
+	ld.w	$t2, $a2, 28
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a2, 32
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a2, 36
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a2, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 44
-	add.d	$a6, $a6, $t1
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a2, 44
+	add.d	$t0, $t1, $t0
 	ld.w	$t1, $a2, 48
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 56
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 56
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a2, 60
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a2, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 68
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 68
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a2, 72
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 76
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 80
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 92
-	ld.w	$t2, $a2, 96
-	add.d	$a2, $a6, $t1
-	add.d	$a2, $a2, $a7
-	add.d	$a7, $a2, $t0
+	ld.w	$a7, $a2, 84
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 88
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 92
+	ld.w	$a2, $a2, 96
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a2
 	move	$a2, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 25
 	addi.d	$a4, $a2, 25
 	addi.d	$a5, $a5, 100
@@ -4129,8 +4129,8 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB14_12
@@ -4221,8 +4221,8 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB14_24
@@ -4461,54 +4461,54 @@ _Z27test_for_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a7, $a2, 4
 	ld.w	$t0, $a2, 8
 	ld.w	$t1, $a2, 12
+	ld.w	$t2, $a2, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a2, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a2, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a2, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 28
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 28
 	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a2, 32
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a2, 36
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a2, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 44
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a2, 44
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a2, 48
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 56
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 60
+	ld.w	$a7, $a2, 60
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 64
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 68
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 72
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a2, 76
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 88
-	ld.w	$t2, $a2, 92
-	add.d	$a2, $a6, $t0
-	add.d	$a2, $a2, $t1
-	add.d	$a7, $a2, $a7
+	ld.w	$a7, $a2, 80
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a2, 84
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a2, 88
+	ld.w	$a2, $a2, 92
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a2
 	move	$a2, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 24
 	addi.d	$a4, $a2, 24
 	addi.d	$a5, $a5, 96
@@ -4556,8 +4556,8 @@ _Z27test_for_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB15_12
@@ -4648,8 +4648,8 @@ _Z27test_for_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB15_24
@@ -4891,52 +4891,52 @@ _Z27test_for_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a7, $a2, 4
 	ld.w	$t0, $a2, 8
 	ld.w	$t1, $a2, 12
+	ld.w	$t2, $a2, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a2, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a2, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a2, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 36
+	ld.w	$t0, $a2, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a2, 32
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 48
+	ld.w	$a7, $a2, 36
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 40
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 44
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 48
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a2, 52
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 60
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 64
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a2, 56
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a2, 60
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a2, 64
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a2, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 72
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 72
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a2, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 84
-	ld.w	$t2, $a2, 88
-	add.d	$a2, $a6, $a7
-	add.d	$a2, $a2, $t0
-	add.d	$a7, $a2, $t1
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 80
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 84
+	ld.w	$a2, $a2, 88
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a2
 	move	$a2, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 23
 	addi.d	$a4, $a2, 23
 	addi.d	$a5, $a5, 92
@@ -4984,8 +4984,8 @@ _Z27test_for_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB16_12
@@ -5076,8 +5076,8 @@ _Z27test_for_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB16_24
@@ -5316,50 +5316,50 @@ _Z27test_for_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a7, $a2, 4
 	ld.w	$t0, $a2, 8
 	ld.w	$t1, $a2, 12
+	ld.w	$t2, $a2, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a2, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a2, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a2, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 32
-	add.d	$a6, $a6, $t1
+	ld.w	$t0, $a2, 28
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a2, 32
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a2, 36
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 44
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a2, 40
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 44
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a2, 48
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a2, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 56
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 56
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a2, 60
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 64
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 68
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 80
-	ld.w	$t2, $a2, 84
-	add.d	$a2, $a6, $t1
-	add.d	$a2, $a2, $a7
-	add.d	$a7, $a2, $t0
+	ld.w	$a7, $a2, 72
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 76
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 80
+	ld.w	$a2, $a2, 84
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a2
 	move	$a2, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 22
 	addi.d	$a4, $a2, 22
 	addi.d	$a5, $a5, 88
@@ -5407,8 +5407,8 @@ _Z27test_for_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB17_12
@@ -5499,8 +5499,8 @@ _Z27test_for_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB17_24
@@ -5742,48 +5742,48 @@ _Z27test_for_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a7, $a2, 4
 	ld.w	$t0, $a2, 8
 	ld.w	$t1, $a2, 12
+	ld.w	$t2, $a2, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a2, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a2, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a2, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 32
-	add.d	$a6, $a6, $t1
+	ld.w	$t0, $a2, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a2, 32
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a2, 36
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a2, 40
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 48
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 52
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a2, 44
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a2, 48
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 52
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a2, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 60
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 60
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a2, 64
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 76
-	ld.w	$t2, $a2, 80
-	add.d	$a2, $a6, $t0
-	add.d	$a2, $a2, $t1
-	add.d	$a7, $a2, $a7
+	ld.w	$a7, $a2, 68
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 72
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a2, 76
+	ld.w	$a2, $a2, 80
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a2
 	move	$a2, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 21
 	addi.d	$a4, $a2, 21
 	addi.d	$a5, $a5, 84
@@ -5831,8 +5831,8 @@ _Z27test_for_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB18_12
@@ -5923,8 +5923,8 @@ _Z27test_for_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB18_24
@@ -6267,26 +6267,26 @@ _Z27test_for_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a5, $a5, 76
 	add.d	$a6, $a7, $a6
 	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t1, $t2
+	add.d	$a7, $a7, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
-	add.d	$a1, $a6, $a1
+	add.d	$a7, $t6, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a7, $a7, $s8
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $s5, $s6
+	add.d	$a1, $a7, $a1
 	add.d	$a1, $a1, $s7
 	add.d	$a1, $a1, $s0
-	add.d	$a1, $a1, $s3
+	add.d	$a1, $a6, $a1
+	add.d	$a5, $s3, $a5
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $fp
+	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a1
 	addi.d	$a4, $a4, 20
 	addi.d	$a5, $a0, 20
 	addi.d	$a6, $a3, 80
@@ -6337,8 +6337,8 @@ _Z27test_for_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $s5
+	add.d	$a2, $a2, $s5
+	add.d	$a2, $a2, $a1
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB20_12
@@ -6436,8 +6436,8 @@ _Z27test_for_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB20_25
@@ -6698,26 +6698,26 @@ _Z27test_for_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$s0, $a5, 68
 	ld.w	$a5, $a5, 72
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
-	add.d	$a1, $a6, $a1
+	add.d	$a7, $t0, $t1
+	add.d	$a7, $a7, $t2
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t3, $t4
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t5, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $s8, $s5
+	add.d	$a7, $a7, $s6
+	add.d	$a1, $a7, $a1
 	add.d	$a1, $a1, $s7
-	add.d	$a1, $a1, $s0
+	add.d	$a1, $a6, $a1
+	add.d	$a5, $s0, $a5
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $fp
+	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a1
 	addi.d	$a4, $a4, 19
 	addi.d	$a5, $a0, 19
 	addi.d	$a6, $a3, 76
@@ -6767,8 +6767,8 @@ _Z27test_for_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $s3
+	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a1
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB21_12
@@ -6866,8 +6866,8 @@ _Z27test_for_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB21_25
@@ -7126,25 +7126,25 @@ _Z27test_for_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$s7, $a5, 64
 	ld.w	$a5, $a5, 68
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t4, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $ra, $s8
+	add.d	$a7, $a7, $s5
+	add.d	$a7, $a7, $s6
+	add.d	$a1, $a7, $a1
 	add.d	$a1, $a6, $a1
-	add.d	$a1, $a1, $s7
+	add.d	$a5, $s7, $a5
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $fp
+	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a1
 	addi.d	$a4, $a4, 18
 	addi.d	$a5, $a0, 18
 	addi.d	$a6, $a3, 72
@@ -7193,8 +7193,8 @@ _Z27test_for_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $s3
+	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a1
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB22_12
@@ -7292,8 +7292,8 @@ _Z27test_for_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB22_25
@@ -7552,24 +7552,24 @@ _Z27test_for_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $a5, 60
 	ld.w	$a5, $a5, 64
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
-	add.d	$a1, $a6, $a1
+	add.d	$a7, $t3, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t8, $ra
+	add.d	$a7, $a7, $s8
+	add.d	$a7, $a7, $s5
+	add.d	$a7, $a7, $s6
+	add.d	$a6, $a6, $a7
 	add.d	$a1, $a1, $a5
+	add.d	$a1, $a6, $a1
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $fp
+	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a1
 	addi.d	$a4, $a4, 17
 	addi.d	$a5, $a0, 17
 	addi.d	$a6, $a3, 68
@@ -7618,8 +7618,8 @@ _Z27test_for_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $s3
+	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a1
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB23_12
@@ -7716,8 +7716,8 @@ _Z27test_for_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB23_25
@@ -7972,23 +7972,23 @@ _Z27test_for_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$s3, $a5, 56
 	ld.w	$a5, $a5, 60
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s7
-	add.d	$a6, $a6, $s3
+	add.d	$a7, $t7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a7, $a7, $s5
+	add.d	$a7, $a7, $s7
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $s3, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $fp
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $s8
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a0, 16
 	addi.d	$a6, $a3, 64
@@ -8047,8 +8047,8 @@ _Z27test_for_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s4
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB24_14
@@ -8102,8 +8102,8 @@ _Z27test_for_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB24_21
@@ -8352,21 +8352,21 @@ _Z27test_for_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a5, $a5, 56
 	add.d	$a6, $a7, $a6
 	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t1, $t2
+	add.d	$a7, $a7, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
+	add.d	$a7, $t6, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a7, $a7, $s8
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $s5, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 15
 	addi.d	$a5, $a0, 15
 	addi.d	$a6, $a3, 60
@@ -8424,8 +8424,8 @@ _Z27test_for_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB25_14
@@ -8479,8 +8479,8 @@ _Z27test_for_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB25_21
@@ -8726,21 +8726,21 @@ _Z27test_for_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$s8, $a5, 48
 	ld.w	$a5, $a5, 52
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
+	add.d	$a7, $t0, $t1
+	add.d	$a7, $a7, $t2
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t3, $t4
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t5, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $s8, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 14
 	addi.d	$a5, $a0, 14
 	addi.d	$a6, $a3, 56
@@ -8798,8 +8798,8 @@ _Z27test_for_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB26_14
@@ -8852,8 +8852,8 @@ _Z27test_for_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB26_21
@@ -9093,16 +9093,16 @@ _Z27test_for_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$ra, $a5, 44
 	ld.w	$a5, $a5, 48
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.w	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t4, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.w	$a6, $a6, $a7
+	add.d	$a5, $ra, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
@@ -9151,8 +9151,8 @@ _Z27test_for_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB27_12
@@ -9205,8 +9205,8 @@ _Z27test_for_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB27_19
@@ -9452,19 +9452,19 @@ _Z27test_for_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$t8, $a5, 40
 	ld.w	$a5, $a5, 44
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
+	add.d	$a7, $t3, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t8, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 12
 	addi.d	$a5, $a0, 12
 	addi.d	$a6, $a3, 48
@@ -9512,8 +9512,8 @@ _Z27test_for_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB28_12
@@ -9566,8 +9566,8 @@ _Z27test_for_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB28_19
@@ -9894,18 +9894,18 @@ _Z27test_for_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$t7, $a5, 36
 	ld.w	$a5, $a5, 40
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
+	add.d	$a5, $t7, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 11
 	addi.d	$a5, $a0, 11
 	addi.d	$a6, $a3, 44
@@ -9953,8 +9953,8 @@ _Z27test_for_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB30_12
@@ -10007,8 +10007,8 @@ _Z27test_for_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB30_19
@@ -10253,16 +10253,16 @@ _Z27test_for_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a5, $a5, 36
 	add.d	$a6, $a7, $a6
 	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t1, $t2
+	add.d	$a7, $a7, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
+	add.d	$a5, $t6, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 10
 	addi.d	$a5, $a0, 10
 	addi.d	$a6, $a3, 40
@@ -10310,8 +10310,8 @@ _Z27test_for_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB31_12
@@ -10364,8 +10364,8 @@ _Z27test_for_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB31_19
@@ -10610,16 +10610,16 @@ _Z27test_for_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$t5, $a5, 28
 	ld.w	$a5, $a5, 32
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
+	add.d	$a7, $t0, $t1
+	add.d	$a7, $a7, $t2
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t3, $t4
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t5, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 9
 	addi.d	$a5, $a0, 9
 	addi.d	$a6, $a3, 36
@@ -10667,8 +10667,8 @@ _Z27test_for_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB32_12
@@ -10721,8 +10721,8 @@ _Z27test_for_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB32_19
@@ -10962,15 +10962,15 @@ _Z27test_for_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$t4, $a5, 24
 	ld.w	$a5, $a5, 28
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t4, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 8
 	addi.d	$a5, $a0, 8
 	addi.d	$a6, $a3, 32
@@ -11016,8 +11016,8 @@ _Z27test_for_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s2
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB33_12
@@ -11078,8 +11078,8 @@ _Z27test_for_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB33_19
@@ -11322,14 +11322,14 @@ _Z27test_for_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$t3, $a5, 20
 	ld.w	$a5, $a5, 24
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
+	add.d	$a5, $t3, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 7
 	addi.d	$a5, $a0, 7
 	addi.d	$a6, $a3, 28
@@ -11377,8 +11377,8 @@ _Z27test_for_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB34_12
@@ -11431,8 +11431,8 @@ _Z27test_for_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB34_19
@@ -11672,13 +11672,13 @@ _Z27test_for_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$t2, $a5, 16
 	ld.w	$a5, $a5, 20
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t2, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 6
 	addi.d	$a5, $a0, 6
 	addi.d	$a6, $a3, 24
@@ -11726,8 +11726,8 @@ _Z27test_for_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB35_12
@@ -11780,8 +11780,8 @@ _Z27test_for_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB35_19
@@ -12119,10 +12119,10 @@ _Z27test_for_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	vinsgr2vr.w	$vr11, $a6, 3
 	vadd.w	$vr2, $vr4, $vr2
 	vadd.w	$vr3, $vr5, $vr3
-	vadd.w	$vr2, $vr2, $vr6
-	vadd.w	$vr3, $vr3, $vr7
-	vadd.w	$vr2, $vr2, $vr8
-	vadd.w	$vr3, $vr3, $vr9
+	vadd.w	$vr4, $vr6, $vr8
+	vadd.w	$vr2, $vr2, $vr4
+	vadd.w	$vr4, $vr7, $vr9
+	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr2, $vr2, $vr10
 	vadd.w	$vr3, $vr3, $vr11
 	vreplgr2vr.w	$vr4, $s3
@@ -12158,11 +12158,11 @@ _Z27test_for_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$t1, $a4, 8
 	add.d	$a5, $a6, $a5
 	add.d	$a5, $a5, $a7
-	add.d	$a5, $a5, $t0
-	add.d	$a5, $a5, $t1
+	add.d	$a6, $t0, $t1
+	add.d	$a5, $a5, $a6
 	mul.d	$a5, $a5, $s3
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $a5
 	addi.d	$a2, $a2, 5
 	addi.d	$a3, $a3, 5
 	addi.d	$a4, $a4, 20
@@ -12217,8 +12217,8 @@ _Z27test_for_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s1
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB36_18
@@ -12272,8 +12272,8 @@ _Z27test_for_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB36_25
@@ -12587,10 +12587,10 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	vinsgr2vr.w	$vr9, $a6, 3
 	vadd.w	$vr2, $vr4, $vr2
 	vadd.w	$vr3, $vr5, $vr3
-	vadd.w	$vr2, $vr2, $vr6
-	vadd.w	$vr3, $vr3, $vr7
-	vadd.w	$vr2, $vr2, $vr8
-	vadd.w	$vr3, $vr3, $vr9
+	vadd.w	$vr4, $vr6, $vr8
+	vadd.w	$vr2, $vr2, $vr4
+	vadd.w	$vr4, $vr7, $vr9
+	vadd.w	$vr3, $vr3, $vr4
 	vreplgr2vr.w	$vr4, $s3
 	vmadd.w	$vr0, $vr2, $vr4
 	vreplgr2vr.w	$vr2, $s5
@@ -12622,11 +12622,11 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a7, $a4, 0
 	ld.w	$t0, $a4, 4
 	add.d	$a5, $a6, $a5
-	add.d	$a5, $a5, $a7
-	add.d	$a5, $a5, $t0
+	add.d	$a6, $a7, $t0
+	add.d	$a5, $a5, $a6
 	mul.d	$a5, $a5, $s3
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $a5
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 16
@@ -12681,8 +12681,8 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s1
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB37_18
@@ -12736,8 +12736,8 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB37_25
@@ -13077,8 +13077,8 @@ _Z27test_for_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	add.d	$a5, $a6, $a5
 	add.d	$a5, $a5, $a7
 	mul.d	$a5, $a5, $s3
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s1
+	add.d	$a0, $a0, $a5
 	addi.d	$a2, $a2, 3
 	addi.d	$a3, $a3, 3
 	addi.d	$a4, $a4, 12
@@ -13133,8 +13133,8 @@ _Z27test_for_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB38_18
@@ -13188,8 +13188,8 @@ _Z27test_for_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB38_25
@@ -13498,8 +13498,8 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a6, $a4, 0
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s0
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s2
+	add.d	$a0, $a0, $a5
 	addi.d	$a2, $a2, 2
 	addi.d	$a3, $a3, 2
 	addi.d	$a4, $a4, 8
@@ -13554,8 +13554,8 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s0
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s1, .LBB39_18
@@ -13838,8 +13838,8 @@ _Z27test_for_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB40_10
@@ -14076,70 +14076,70 @@ _Z29test_while_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a6, $a4, 4
 	ld.w	$a7, $a4, 8
 	ld.w	$t0, $a4, 12
+	ld.w	$t1, $a4, 16
 	add.d	$a5, $a6, $a5
-	ld.w	$a6, $a4, 16
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 20
-	add.d	$a5, $a5, $t0
+	ld.w	$a6, $a4, 20
+	add.d	$a7, $a7, $t0
 	ld.w	$t0, $a4, 24
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 28
 	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 32
-	add.d	$a5, $a5, $t0
+	ld.w	$a7, $a4, 28
+	add.d	$a5, $a5, $t1
+	ld.w	$t1, $a4, 32
+	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a4, 36
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 40
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 44
-	add.d	$a5, $a5, $t0
+	add.d	$a6, $a6, $a7
+	ld.w	$a7, $a4, 40
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 44
+	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a4, 48
 	add.d	$a5, $a5, $a6
 	ld.w	$a6, $a4, 52
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 56
-	add.d	$a5, $a5, $t0
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 56
+	add.d	$a7, $a7, $t0
 	ld.w	$t0, $a4, 60
+	add.d	$a6, $a7, $a6
+	ld.w	$a7, $a4, 64
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 68
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 64
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 68
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 72
+	ld.w	$a6, $a4, 72
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 76
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 80
+	add.d	$a6, $a7, $a6
+	ld.w	$a7, $a4, 84
+	add.d	$a6, $a6, $t0
+	ld.w	$t0, $a4, 88
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 76
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 80
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 84
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 88
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 92
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 96
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 100
-	add.d	$a5, $a5, $a7
+	ld.w	$a6, $a4, 92
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a4, 96
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a4, 100
+	add.d	$a6, $a7, $a6
 	ld.w	$a7, $a4, 104
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 108
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 108
 	add.d	$a5, $a5, $a6
 	ld.w	$a6, $a4, 112
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 116
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 120
-	ld.w	$t1, $a4, 124
-	add.d	$a4, $a5, $a6
-	add.d	$a4, $a4, $a7
-	add.d	$a6, $a4, $t0
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 116
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 120
+	ld.w	$a4, $a4, 124
+	add.d	$a6, $a7, $a6
+	add.d	$a6, $a6, $t0
+	add.d	$a6, $a5, $a6
+	add.d	$a7, $t1, $a4
 	move	$a4, $a2
 	move	$a5, $a3
-	add.d	$a2, $a6, $t1
+	add.d	$a2, $a6, $a7
 	mul.d	$a2, $a2, $fp
-	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $s8
+	add.d	$a0, $a0, $a2
 	addi.d	$a1, $a1, 32
 	addi.d	$a2, $a4, 32
 	addi.d	$a3, $a3, 128
@@ -14186,8 +14186,8 @@ _Z29test_while_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a2, $a1, 0
 	mul.d	$a2, $a2, $fp
-	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a2
 	addi.d	$a4, $a4, 1
 	addi.d	$a1, $a1, 4
 	bltu	$a4, $s0, .LBB41_12
@@ -14284,8 +14284,8 @@ _Z29test_while_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s7
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB41_24
@@ -14527,68 +14527,68 @@ _Z29test_while_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a6, $a4, 4
 	ld.w	$a7, $a4, 8
 	ld.w	$t0, $a4, 12
+	ld.w	$t1, $a4, 16
 	add.d	$a5, $a6, $a5
-	ld.w	$a6, $a4, 16
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 20
-	add.d	$a5, $a5, $t0
+	ld.w	$a6, $a4, 20
+	add.d	$a7, $a7, $t0
 	ld.w	$t0, $a4, 24
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 28
 	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 32
-	add.d	$a5, $a5, $t0
+	ld.w	$a7, $a4, 28
+	add.d	$a6, $t1, $a6
+	ld.w	$t1, $a4, 32
+	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a4, 36
+	add.d	$a6, $a6, $a7
+	ld.w	$a7, $a4, 40
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 40
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 44
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 48
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 52
-	add.d	$a5, $a5, $a7
+	ld.w	$a6, $a4, 44
+	add.d	$a5, $a5, $t1
+	ld.w	$t1, $a4, 48
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 52
+	add.d	$a6, $a7, $a6
 	ld.w	$a7, $a4, 56
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 60
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 60
+	add.d	$a6, $a6, $t0
+	ld.w	$t0, $a4, 64
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 64
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 68
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 72
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 76
-	add.d	$a5, $a5, $a7
+	ld.w	$a6, $a4, 68
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 72
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a4, 76
+	add.d	$a6, $a7, $a6
 	ld.w	$a7, $a4, 80
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 84
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 84
 	add.d	$a5, $a5, $a6
 	ld.w	$a6, $a4, 88
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 92
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 96
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 92
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 96
+	add.d	$a6, $a7, $a6
+	ld.w	$a7, $a4, 100
+	add.d	$a6, $a6, $t0
+	ld.w	$t0, $a4, 104
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 100
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 104
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 108
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 112
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 116
-	ld.w	$t1, $a4, 120
-	add.d	$a4, $a5, $t0
-	add.d	$a4, $a4, $a6
-	add.d	$a6, $a4, $a7
+	ld.w	$a6, $a4, 108
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a4, 112
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a4, 116
+	ld.w	$a4, $a4, 120
+	add.d	$a6, $a7, $a6
+	add.d	$a6, $a6, $t1
+	add.d	$a6, $a5, $a6
+	add.d	$a7, $t0, $a4
 	move	$a4, $a2
 	move	$a5, $a3
-	add.d	$a2, $a6, $t1
+	add.d	$a2, $a6, $a7
 	mul.d	$a2, $a2, $s4
-	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a2
 	addi.d	$a1, $a1, 31
 	addi.d	$a2, $a4, 31
 	addi.d	$a3, $a3, 124
@@ -14636,8 +14636,8 @@ _Z29test_while_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a2, $a1, 0
 	mul.d	$a2, $a2, $s4
-	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a2
 	addi.d	$a4, $a4, 1
 	addi.d	$a1, $a1, 4
 	bltu	$a4, $s0, .LBB42_12
@@ -14734,8 +14734,8 @@ _Z29test_while_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s7
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB42_24
@@ -14962,79 +14962,79 @@ _Z29test_while_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	move	$a2, $zero
 	move	$a0, $zero
 	ori	$a3, $zero, 30
-	move	$a4, $s8
+	move	$a5, $s8
 	.p2align	4, , 16
 .LBB43_5:                               #   Parent Loop BB43_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a5, $a2, $s1, 2
+	alsl.d	$a4, $a2, $s1, 2
 	slli.d	$a6, $a2, 2
 	ldx.w	$a6, $s1, $a6
-	ld.w	$a7, $a5, 4
-	ld.w	$t0, $a5, 8
-	ld.w	$t1, $a5, 12
+	ld.w	$a7, $a4, 4
+	ld.w	$t0, $a4, 8
+	ld.w	$t1, $a4, 12
+	ld.w	$t2, $a4, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
+	ld.w	$a7, $a4, 20
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 24
+	ld.w	$t0, $a4, 24
+	add.d	$t1, $t1, $t2
+	ld.w	$t2, $a4, 28
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a4, 32
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a4, 36
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 36
+	ld.w	$a7, $a4, 40
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a4, 44
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a4, 48
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a4, 56
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 60
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 48
+	ld.w	$a7, $a4, 64
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a4, 68
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a4, 72
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 76
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a4, 80
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 60
+	ld.w	$a7, $a4, 84
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a4, 88
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a4, 92
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 96
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 100
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 96
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 100
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 104
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 108
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 112
-	ld.w	$t2, $a5, 116
-	add.d	$a5, $a6, $t0
-	add.d	$a5, $a5, $t1
-	add.d	$a7, $a5, $a7
-	move	$a5, $a3
-	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	ld.w	$a7, $a4, 104
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a4, 108
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a4, 112
+	ld.w	$a4, $a4, 116
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a4
+	move	$a4, $a3
+	move	$a6, $a5
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 30
-	addi.d	$a3, $a5, 30
-	addi.d	$a4, $a4, 120
+	addi.d	$a3, $a4, 30
+	addi.d	$a5, $a5, 120
 	bltu	$a2, $s2, .LBB43_5
 # %bb.6:                                #   in Loop: Header=BB43_4 Depth=1
 	addi.w	$a2, $a2, 0
@@ -15045,7 +15045,7 @@ _Z29test_while_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	bltu	$a2, $a3, .LBB43_11
 # %bb.8:                                #   in Loop: Header=BB43_4 Depth=1
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	add.d	$a5, $a5, $a2
+	add.d	$a4, $a4, $a2
 	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
 	vinsgr2vr.w	$vr0, $a0, 0
@@ -15073,17 +15073,17 @@ _Z29test_while_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB43_13
 .LBB43_11:                              #   in Loop: Header=BB43_4 Depth=1
-	alsl.d	$a2, $a5, $s1, 2
+	alsl.d	$a2, $a4, $s1, 2
 	.p2align	4, , 16
 .LBB43_12:                              #   Parent Loop BB43_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a3, $a2, 0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $s3
-	addi.d	$a5, $a5, 1
+	add.d	$a0, $a0, $a3
+	addi.d	$a4, $a4, 1
 	addi.d	$a2, $a2, 4
-	bltu	$a5, $s0, .LBB43_12
+	bltu	$a4, $s0, .LBB43_12
 .LBB43_13:                              #   in Loop: Header=BB43_4 Depth=1
 	pcalau12i	$a2, %pc_hi20(init_value)
 	fld.d	$fa0, $a2, %pc_lo12(init_value)
@@ -15171,8 +15171,8 @@ _Z29test_while_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB43_24
@@ -15494,64 +15494,64 @@ _Z29test_while_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a7, $a3, 4
 	ld.w	$t0, $a3, 8
 	ld.w	$t1, $a3, 12
+	ld.w	$t2, $a3, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a3, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a3, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a3, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 28
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 28
 	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a3, 32
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a3, 36
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a3, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 44
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a3, 44
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a3, 48
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a3, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 56
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 60
+	ld.w	$a7, $a3, 60
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a3, 64
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 68
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a3, 72
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a3, 76
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 88
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a3, 80
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a3, 84
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a3, 88
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a3, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 96
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 96
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a3, 100
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 104
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 108
-	ld.w	$t2, $a3, 112
-	add.d	$a3, $a6, $a7
-	add.d	$a3, $a3, $t0
-	add.d	$a7, $a3, $t1
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a3, 104
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 108
+	ld.w	$a3, $a3, 112
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a3
 	move	$a3, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 29
 	addi.d	$a4, $a3, 29
 	addi.d	$a5, $a5, 116
@@ -15599,8 +15599,8 @@ _Z29test_while_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB45_12
@@ -15691,8 +15691,8 @@ _Z29test_while_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB45_24
@@ -15932,62 +15932,62 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a7, $a3, 4
 	ld.w	$t0, $a3, 8
 	ld.w	$t1, $a3, 12
+	ld.w	$t2, $a3, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a3, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a3, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a3, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 36
+	ld.w	$t0, $a3, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a3, 32
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 48
+	ld.w	$a7, $a3, 36
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a3, 40
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 44
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a3, 48
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a3, 52
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 60
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 64
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a3, 56
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a3, 60
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a3, 64
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a3, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 72
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 72
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a3, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 84
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a3, 80
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 84
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a3, 88
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a3, 92
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 96
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 100
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 104
-	ld.w	$t2, $a3, 108
-	add.d	$a3, $a6, $t1
-	add.d	$a3, $a3, $a7
-	add.d	$a7, $a3, $t0
+	ld.w	$a7, $a3, 96
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a3, 100
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a3, 104
+	ld.w	$a3, $a3, 108
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a3
 	move	$a3, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 28
 	addi.d	$a4, $a3, 28
 	addi.d	$a5, $a5, 112
@@ -16035,8 +16035,8 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB46_12
@@ -16127,8 +16127,8 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB46_24
@@ -16367,60 +16367,60 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a7, $a3, 4
 	ld.w	$t0, $a3, 8
 	ld.w	$t1, $a3, 12
+	ld.w	$t2, $a3, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a3, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a3, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a3, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 32
-	add.d	$a6, $a6, $t1
+	ld.w	$t0, $a3, 28
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a3, 32
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a3, 36
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 44
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a3, 40
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 44
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a3, 48
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a3, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 56
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 56
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a3, 60
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a3, 64
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 68
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 72
+	ld.w	$a7, $a3, 72
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a3, 76
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 80
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a3, 84
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a3, 88
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 96
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 100
-	ld.w	$t2, $a3, 104
-	add.d	$a3, $a6, $t0
-	add.d	$a3, $a3, $t1
-	add.d	$a7, $a3, $a7
+	ld.w	$a7, $a3, 92
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a3, 96
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a3, 100
+	ld.w	$a3, $a3, 104
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a3
 	move	$a3, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 27
 	addi.d	$a4, $a3, 27
 	addi.d	$a5, $a5, 108
@@ -16468,8 +16468,8 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB47_12
@@ -16560,8 +16560,8 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB47_24
@@ -16784,85 +16784,85 @@ _Z29test_while_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         #     Child Loop BB48_5 Depth 2
                                         #     Child Loop BB48_9 Depth 2
                                         #     Child Loop BB48_12 Depth 2
-	move	$a2, $zero
+	move	$a3, $zero
 	move	$a0, $zero
 	ori	$a4, $zero, 26
 	move	$a5, $s6
 	.p2align	4, , 16
 .LBB48_5:                               #   Parent Loop BB48_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a3, $a2, $s1, 2
-	slli.d	$a6, $a2, 2
+	alsl.d	$a2, $a3, $s1, 2
+	slli.d	$a6, $a3, 2
 	ldx.w	$a6, $s1, $a6
-	ld.w	$a7, $a3, 4
-	ld.w	$t0, $a3, 8
-	ld.w	$t1, $a3, 12
+	ld.w	$a7, $a2, 4
+	ld.w	$t0, $a2, 8
+	ld.w	$t1, $a2, 12
+	ld.w	$t2, $a2, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a3, 16
+	ld.w	$a7, $a2, 20
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a2, 24
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 20
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 24
+	ld.w	$t0, $a2, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a2, 32
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a2, 36
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a2, 40
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 28
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 36
+	ld.w	$a7, $a2, 44
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a2, 48
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 52
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 56
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 60
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a2, 64
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 48
+	ld.w	$a7, $a2, 68
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 72
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a2, 76
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 80
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 84
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 60
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 96
-	ld.w	$t2, $a3, 100
-	add.d	$a3, $a6, $a7
-	add.w	$a3, $a3, $t0
-	add.d	$a7, $a3, $t1
-	move	$a3, $a4
+	ld.w	$a7, $a2, 88
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 92
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 96
+	ld.w	$a2, $a2, 100
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.w	$a7, $a6, $a7
+	add.d	$t0, $t2, $a2
+	move	$a2, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
 	addu16i.d	$a0, $a0, 7146
 	addi.w	$a0, $a0, -848
-	addi.d	$a2, $a2, 26
-	addi.d	$a4, $a3, 26
+	addi.d	$a3, $a3, 26
+	addi.d	$a4, $a2, 26
 	addi.d	$a5, $a5, 104
-	bltu	$a2, $s2, .LBB48_5
+	bltu	$a3, $s2, .LBB48_5
 # %bb.6:                                #   in Loop: Header=BB48_4 Depth=1
-	addi.w	$a2, $a2, 0
-	bge	$a2, $s0, .LBB48_13
+	addi.w	$a3, $a3, 0
+	bge	$a3, $s0, .LBB48_13
 # %bb.7:                                #   in Loop: Header=BB48_4 Depth=1
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	ori	$a4, $zero, 8
-	bltu	$a2, $a4, .LBB48_11
+	bltu	$a3, $a4, .LBB48_11
 # %bb.8:                                #   in Loop: Header=BB48_4 Depth=1
-	add.d	$a3, $a3, $s8
+	add.d	$a2, $a2, $s8
 	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
 	vinsgr2vr.w	$vr0, $a0, 0
@@ -16886,20 +16886,20 @@ _Z29test_while_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	beq	$a2, $s8, .LBB48_13
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
+	beq	$a3, $s8, .LBB48_13
 .LBB48_11:                              #   in Loop: Header=BB48_4 Depth=1
-	alsl.d	$a2, $a3, $s1, 2
+	alsl.d	$a3, $a2, $s1, 2
 	.p2align	4, , 16
 .LBB48_12:                              #   Parent Loop BB48_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a4, $a2, 0
+	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
-	addi.d	$a3, $a3, 1
-	addi.d	$a2, $a2, 4
-	bltu	$a3, $s0, .LBB48_12
+	add.d	$a0, $a0, $a4
+	addi.d	$a2, $a2, 1
+	addi.d	$a3, $a3, 4
+	bltu	$a2, $s0, .LBB48_12
 .LBB48_13:                              #   in Loop: Header=BB48_4 Depth=1
 	pcalau12i	$a2, %pc_hi20(init_value)
 	fld.d	$fa0, $a2, %pc_lo12(init_value)
@@ -16987,8 +16987,8 @@ _Z29test_while_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB48_24
@@ -17230,56 +17230,56 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a7, $a2, 4
 	ld.w	$t0, $a2, 8
 	ld.w	$t1, $a2, 12
+	ld.w	$t2, $a2, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a2, 16
+	ld.w	$a7, $a2, 20
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 20
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 28
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 36
+	ld.w	$t0, $a2, 24
+	add.d	$t1, $t1, $t2
+	ld.w	$t2, $a2, 28
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a2, 32
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a2, 36
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a2, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 44
-	add.d	$a6, $a6, $t1
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a2, 44
+	add.d	$t0, $t1, $t0
 	ld.w	$t1, $a2, 48
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 56
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 56
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a2, 60
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a2, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 68
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 68
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a2, 72
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 76
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 80
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 92
-	ld.w	$t2, $a2, 96
-	add.d	$a2, $a6, $t1
-	add.d	$a2, $a2, $a7
-	add.d	$a7, $a2, $t0
+	ld.w	$a7, $a2, 84
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 88
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 92
+	ld.w	$a2, $a2, 96
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a2
 	move	$a2, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 25
 	addi.d	$a4, $a2, 25
 	addi.d	$a5, $a5, 100
@@ -17327,8 +17327,8 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB49_12
@@ -17419,8 +17419,8 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB49_24
@@ -17659,54 +17659,54 @@ _Z29test_while_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a7, $a2, 4
 	ld.w	$t0, $a2, 8
 	ld.w	$t1, $a2, 12
+	ld.w	$t2, $a2, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a2, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a2, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a2, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 28
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 28
 	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a2, 32
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a2, 36
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a2, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 44
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a2, 44
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a2, 48
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 56
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 60
+	ld.w	$a7, $a2, 60
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 64
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 68
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 72
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a2, 76
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 88
-	ld.w	$t2, $a2, 92
-	add.d	$a2, $a6, $t0
-	add.d	$a2, $a2, $t1
-	add.d	$a7, $a2, $a7
+	ld.w	$a7, $a2, 80
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a2, 84
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a2, 88
+	ld.w	$a2, $a2, 92
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a2
 	move	$a2, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 24
 	addi.d	$a4, $a2, 24
 	addi.d	$a5, $a5, 96
@@ -17754,8 +17754,8 @@ _Z29test_while_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB50_12
@@ -17846,8 +17846,8 @@ _Z29test_while_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB50_24
@@ -18089,52 +18089,52 @@ _Z29test_while_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a7, $a2, 4
 	ld.w	$t0, $a2, 8
 	ld.w	$t1, $a2, 12
+	ld.w	$t2, $a2, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a2, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a2, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a2, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 36
+	ld.w	$t0, $a2, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a2, 32
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 48
+	ld.w	$a7, $a2, 36
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 40
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 44
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 48
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a2, 52
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 60
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 64
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a2, 56
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a2, 60
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a2, 64
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a2, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 72
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 72
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a2, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 84
-	ld.w	$t2, $a2, 88
-	add.d	$a2, $a6, $a7
-	add.d	$a2, $a2, $t0
-	add.d	$a7, $a2, $t1
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 80
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 84
+	ld.w	$a2, $a2, 88
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a2
 	move	$a2, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 23
 	addi.d	$a4, $a2, 23
 	addi.d	$a5, $a5, 92
@@ -18182,8 +18182,8 @@ _Z29test_while_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB51_12
@@ -18274,8 +18274,8 @@ _Z29test_while_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB51_24
@@ -18514,50 +18514,50 @@ _Z29test_while_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a7, $a2, 4
 	ld.w	$t0, $a2, 8
 	ld.w	$t1, $a2, 12
+	ld.w	$t2, $a2, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a2, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a2, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a2, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 32
-	add.d	$a6, $a6, $t1
+	ld.w	$t0, $a2, 28
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a2, 32
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a2, 36
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 44
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a2, 40
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 44
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a2, 48
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a2, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 56
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 56
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a2, 60
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a2, 64
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 68
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 80
-	ld.w	$t2, $a2, 84
-	add.d	$a2, $a6, $t1
-	add.d	$a2, $a2, $a7
-	add.d	$a7, $a2, $t0
+	ld.w	$a7, $a2, 72
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 76
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 80
+	ld.w	$a2, $a2, 84
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a2
 	move	$a2, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 22
 	addi.d	$a4, $a2, 22
 	addi.d	$a5, $a5, 88
@@ -18605,8 +18605,8 @@ _Z29test_while_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB52_12
@@ -18697,8 +18697,8 @@ _Z29test_while_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB52_24
@@ -18940,48 +18940,48 @@ _Z29test_while_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a7, $a2, 4
 	ld.w	$t0, $a2, 8
 	ld.w	$t1, $a2, 12
+	ld.w	$t2, $a2, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a2, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a2, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a2, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 32
-	add.d	$a6, $a6, $t1
+	ld.w	$t0, $a2, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a2, 32
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a2, 36
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a2, 40
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 48
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 52
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a2, 44
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a2, 48
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a2, 52
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a2, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 60
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a2, 60
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a2, 64
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 76
-	ld.w	$t2, $a2, 80
-	add.d	$a2, $a6, $t0
-	add.d	$a2, $a2, $t1
-	add.d	$a7, $a2, $a7
+	ld.w	$a7, $a2, 68
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a2, 72
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a2, 76
+	ld.w	$a2, $a2, 80
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a2
 	move	$a2, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, 21
 	addi.d	$a4, $a2, 21
 	addi.d	$a5, $a5, 84
@@ -19029,8 +19029,8 @@ _Z29test_while_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB53_12
@@ -19121,8 +19121,8 @@ _Z29test_while_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB53_24
@@ -19465,26 +19465,26 @@ _Z29test_while_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a5, $a5, 76
 	add.d	$a6, $a7, $a6
 	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t1, $t2
+	add.d	$a7, $a7, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
-	add.d	$a1, $a6, $a1
+	add.d	$a7, $t6, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a7, $a7, $s8
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $s5, $s6
+	add.d	$a1, $a7, $a1
 	add.d	$a1, $a1, $s7
 	add.d	$a1, $a1, $s0
-	add.d	$a1, $a1, $s3
+	add.d	$a1, $a6, $a1
+	add.d	$a5, $s3, $a5
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $fp
+	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a1
 	addi.d	$a4, $a4, 20
 	addi.d	$a5, $a0, 20
 	addi.d	$a6, $a3, 80
@@ -19535,8 +19535,8 @@ _Z29test_while_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $s5
+	add.d	$a2, $a2, $s5
+	add.d	$a2, $a2, $a1
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB55_12
@@ -19634,8 +19634,8 @@ _Z29test_while_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB55_25
@@ -19896,26 +19896,26 @@ _Z29test_while_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$s0, $a5, 68
 	ld.w	$a5, $a5, 72
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
-	add.d	$a1, $a6, $a1
+	add.d	$a7, $t0, $t1
+	add.d	$a7, $a7, $t2
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t3, $t4
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t5, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $s8, $s5
+	add.d	$a7, $a7, $s6
+	add.d	$a1, $a7, $a1
 	add.d	$a1, $a1, $s7
-	add.d	$a1, $a1, $s0
+	add.d	$a1, $a6, $a1
+	add.d	$a5, $s0, $a5
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $fp
+	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a1
 	addi.d	$a4, $a4, 19
 	addi.d	$a5, $a0, 19
 	addi.d	$a6, $a3, 76
@@ -19965,8 +19965,8 @@ _Z29test_while_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $s3
+	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a1
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB56_12
@@ -20064,8 +20064,8 @@ _Z29test_while_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB56_25
@@ -20324,25 +20324,25 @@ _Z29test_while_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$s7, $a5, 64
 	ld.w	$a5, $a5, 68
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t4, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $ra, $s8
+	add.d	$a7, $a7, $s5
+	add.d	$a7, $a7, $s6
+	add.d	$a1, $a7, $a1
 	add.d	$a1, $a6, $a1
-	add.d	$a1, $a1, $s7
+	add.d	$a5, $s7, $a5
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $fp
+	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a1
 	addi.d	$a4, $a4, 18
 	addi.d	$a5, $a0, 18
 	addi.d	$a6, $a3, 72
@@ -20391,8 +20391,8 @@ _Z29test_while_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $s3
+	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a1
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB57_12
@@ -20490,8 +20490,8 @@ _Z29test_while_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB57_25
@@ -20750,24 +20750,24 @@ _Z29test_while_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $a5, 60
 	ld.w	$a5, $a5, 64
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
-	add.d	$a1, $a6, $a1
+	add.d	$a7, $t3, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t8, $ra
+	add.d	$a7, $a7, $s8
+	add.d	$a7, $a7, $s5
+	add.d	$a7, $a7, $s6
+	add.d	$a6, $a6, $a7
 	add.d	$a1, $a1, $a5
+	add.d	$a1, $a6, $a1
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $fp
+	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a1
 	addi.d	$a4, $a4, 17
 	addi.d	$a5, $a0, 17
 	addi.d	$a6, $a3, 68
@@ -20816,8 +20816,8 @@ _Z29test_while_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a1, $s3
+	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a1
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB58_12
@@ -20914,8 +20914,8 @@ _Z29test_while_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB58_25
@@ -21170,23 +21170,23 @@ _Z29test_while_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$s3, $a5, 56
 	ld.w	$a5, $a5, 60
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s7
-	add.d	$a6, $a6, $s3
+	add.d	$a7, $t7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a7, $a7, $s5
+	add.d	$a7, $a7, $s7
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $s3, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $fp
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $s8
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a0, 16
 	addi.d	$a6, $a3, 64
@@ -21245,8 +21245,8 @@ _Z29test_while_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s4
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB59_14
@@ -21300,8 +21300,8 @@ _Z29test_while_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB59_21
@@ -21550,21 +21550,21 @@ _Z29test_while_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a5, $a5, 56
 	add.d	$a6, $a7, $a6
 	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t1, $t2
+	add.d	$a7, $a7, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
+	add.d	$a7, $t6, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a7, $a7, $s8
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $s5, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 15
 	addi.d	$a5, $a0, 15
 	addi.d	$a6, $a3, 60
@@ -21622,8 +21622,8 @@ _Z29test_while_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB60_14
@@ -21677,8 +21677,8 @@ _Z29test_while_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB60_21
@@ -21924,21 +21924,21 @@ _Z29test_while_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$s8, $a5, 48
 	ld.w	$a5, $a5, 52
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
+	add.d	$a7, $t0, $t1
+	add.d	$a7, $a7, $t2
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t3, $t4
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t5, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $s8, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 14
 	addi.d	$a5, $a0, 14
 	addi.d	$a6, $a3, 56
@@ -21996,8 +21996,8 @@ _Z29test_while_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB61_14
@@ -22050,8 +22050,8 @@ _Z29test_while_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB61_21
@@ -22291,16 +22291,16 @@ _Z29test_while_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$ra, $a5, 44
 	ld.w	$a5, $a5, 48
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.w	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t4, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.w	$a6, $a6, $a7
+	add.d	$a5, $ra, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
@@ -22349,8 +22349,8 @@ _Z29test_while_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB62_12
@@ -22403,8 +22403,8 @@ _Z29test_while_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB62_19
@@ -22650,19 +22650,19 @@ _Z29test_while_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$t8, $a5, 40
 	ld.w	$a5, $a5, 44
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
+	add.d	$a7, $t3, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t8, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 12
 	addi.d	$a5, $a0, 12
 	addi.d	$a6, $a3, 48
@@ -22710,8 +22710,8 @@ _Z29test_while_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB63_12
@@ -22764,8 +22764,8 @@ _Z29test_while_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB63_19
@@ -23092,18 +23092,18 @@ _Z29test_while_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$t7, $a5, 36
 	ld.w	$a5, $a5, 40
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
+	add.d	$a5, $t7, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 11
 	addi.d	$a5, $a0, 11
 	addi.d	$a6, $a3, 44
@@ -23151,8 +23151,8 @@ _Z29test_while_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB65_12
@@ -23205,8 +23205,8 @@ _Z29test_while_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB65_19
@@ -23451,16 +23451,16 @@ _Z29test_while_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a5, $a5, 36
 	add.d	$a6, $a7, $a6
 	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t1, $t2
+	add.d	$a7, $a7, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
+	add.d	$a5, $t6, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 10
 	addi.d	$a5, $a0, 10
 	addi.d	$a6, $a3, 40
@@ -23508,8 +23508,8 @@ _Z29test_while_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB66_12
@@ -23562,8 +23562,8 @@ _Z29test_while_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB66_19
@@ -23808,16 +23808,16 @@ _Z29test_while_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$t5, $a5, 28
 	ld.w	$a5, $a5, 32
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
+	add.d	$a7, $t0, $t1
+	add.d	$a7, $a7, $t2
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t3, $t4
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t5, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 9
 	addi.d	$a5, $a0, 9
 	addi.d	$a6, $a3, 36
@@ -23865,8 +23865,8 @@ _Z29test_while_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB67_12
@@ -23919,8 +23919,8 @@ _Z29test_while_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB67_19
@@ -24160,15 +24160,15 @@ _Z29test_while_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$t4, $a5, 24
 	ld.w	$a5, $a5, 28
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t4, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 8
 	addi.d	$a5, $a0, 8
 	addi.d	$a6, $a3, 32
@@ -24214,8 +24214,8 @@ _Z29test_while_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s2
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB68_12
@@ -24276,8 +24276,8 @@ _Z29test_while_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB68_19
@@ -24520,14 +24520,14 @@ _Z29test_while_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$t3, $a5, 20
 	ld.w	$a5, $a5, 24
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
+	add.d	$a5, $t3, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 7
 	addi.d	$a5, $a0, 7
 	addi.d	$a6, $a3, 28
@@ -24575,8 +24575,8 @@ _Z29test_while_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB69_12
@@ -24629,8 +24629,8 @@ _Z29test_while_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB69_19
@@ -24870,13 +24870,13 @@ _Z29test_while_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$t2, $a5, 16
 	ld.w	$a5, $a5, 20
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t2, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $a5
 	addi.d	$a4, $a4, 6
 	addi.d	$a5, $a0, 6
 	addi.d	$a6, $a3, 24
@@ -24924,8 +24924,8 @@ _Z29test_while_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $s3
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB70_12
@@ -24978,8 +24978,8 @@ _Z29test_while_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB70_19
@@ -25317,10 +25317,10 @@ _Z29test_while_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	vinsgr2vr.w	$vr11, $a6, 3
 	vadd.w	$vr2, $vr4, $vr2
 	vadd.w	$vr3, $vr5, $vr3
-	vadd.w	$vr2, $vr2, $vr6
-	vadd.w	$vr3, $vr3, $vr7
-	vadd.w	$vr2, $vr2, $vr8
-	vadd.w	$vr3, $vr3, $vr9
+	vadd.w	$vr4, $vr6, $vr8
+	vadd.w	$vr2, $vr2, $vr4
+	vadd.w	$vr4, $vr7, $vr9
+	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr2, $vr2, $vr10
 	vadd.w	$vr3, $vr3, $vr11
 	vreplgr2vr.w	$vr4, $s3
@@ -25356,11 +25356,11 @@ _Z29test_while_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$t1, $a4, 8
 	add.d	$a5, $a6, $a5
 	add.d	$a5, $a5, $a7
-	add.d	$a5, $a5, $t0
-	add.d	$a5, $a5, $t1
+	add.d	$a6, $t0, $t1
+	add.d	$a5, $a5, $a6
 	mul.d	$a5, $a5, $s3
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $a5
 	addi.d	$a2, $a2, 5
 	addi.d	$a3, $a3, 5
 	addi.d	$a4, $a4, 20
@@ -25415,8 +25415,8 @@ _Z29test_while_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s1
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB71_18
@@ -25470,8 +25470,8 @@ _Z29test_while_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB71_25
@@ -25785,10 +25785,10 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	vinsgr2vr.w	$vr9, $a6, 3
 	vadd.w	$vr2, $vr4, $vr2
 	vadd.w	$vr3, $vr5, $vr3
-	vadd.w	$vr2, $vr2, $vr6
-	vadd.w	$vr3, $vr3, $vr7
-	vadd.w	$vr2, $vr2, $vr8
-	vadd.w	$vr3, $vr3, $vr9
+	vadd.w	$vr4, $vr6, $vr8
+	vadd.w	$vr2, $vr2, $vr4
+	vadd.w	$vr4, $vr7, $vr9
+	vadd.w	$vr3, $vr3, $vr4
 	vreplgr2vr.w	$vr4, $s3
 	vmadd.w	$vr0, $vr2, $vr4
 	vreplgr2vr.w	$vr2, $s5
@@ -25820,11 +25820,11 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a7, $a4, 0
 	ld.w	$t0, $a4, 4
 	add.d	$a5, $a6, $a5
-	add.d	$a5, $a5, $a7
-	add.d	$a5, $a5, $t0
+	add.d	$a6, $a7, $t0
+	add.d	$a5, $a5, $a6
 	mul.d	$a5, $a5, $s3
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $a5
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 16
@@ -25879,8 +25879,8 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s1
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB72_18
@@ -25934,8 +25934,8 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB72_25
@@ -26275,8 +26275,8 @@ _Z29test_while_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	add.d	$a5, $a6, $a5
 	add.d	$a5, $a5, $a7
 	mul.d	$a5, $a5, $s3
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s1
+	add.d	$a0, $a0, $a5
 	addi.d	$a2, $a2, 3
 	addi.d	$a3, $a3, 3
 	addi.d	$a4, $a4, 12
@@ -26331,8 +26331,8 @@ _Z29test_while_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB73_18
@@ -26386,8 +26386,8 @@ _Z29test_while_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB73_25
@@ -26696,8 +26696,8 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a6, $a4, 0
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s0
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s2
+	add.d	$a0, $a0, $a5
 	addi.d	$a2, $a2, 2
 	addi.d	$a3, $a3, 2
 	addi.d	$a4, $a4, 8
@@ -26752,8 +26752,8 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s0
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s1, .LBB74_18
@@ -27036,8 +27036,8 @@ _Z29test_while_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB75_10
@@ -27270,70 +27270,70 @@ _Z26test_do_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a6, $a4, 4
 	ld.w	$a7, $a4, 8
 	ld.w	$t0, $a4, 12
+	ld.w	$t1, $a4, 16
 	add.d	$a5, $a6, $a5
-	ld.w	$a6, $a4, 16
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 20
-	add.d	$a5, $a5, $t0
+	ld.w	$a6, $a4, 20
+	add.d	$a7, $a7, $t0
 	ld.w	$t0, $a4, 24
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 28
 	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 32
-	add.d	$a5, $a5, $t0
+	ld.w	$a7, $a4, 28
+	add.d	$a5, $a5, $t1
+	ld.w	$t1, $a4, 32
+	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a4, 36
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 40
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 44
-	add.d	$a5, $a5, $t0
+	add.d	$a6, $a6, $a7
+	ld.w	$a7, $a4, 40
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 44
+	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a4, 48
 	add.d	$a5, $a5, $a6
 	ld.w	$a6, $a4, 52
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 56
-	add.d	$a5, $a5, $t0
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 56
+	add.d	$a7, $a7, $t0
 	ld.w	$t0, $a4, 60
+	add.d	$a6, $a7, $a6
+	ld.w	$a7, $a4, 64
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 68
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 64
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 68
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 72
+	ld.w	$a6, $a4, 72
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 76
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 80
+	add.d	$a6, $a7, $a6
+	ld.w	$a7, $a4, 84
+	add.d	$a6, $a6, $t0
+	ld.w	$t0, $a4, 88
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 76
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 80
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 84
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 88
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 92
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 96
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 100
-	add.d	$a5, $a5, $a7
+	ld.w	$a6, $a4, 92
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a4, 96
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a4, 100
+	add.d	$a6, $a7, $a6
 	ld.w	$a7, $a4, 104
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 108
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 108
 	add.d	$a5, $a5, $a6
 	ld.w	$a6, $a4, 112
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 116
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 120
-	ld.w	$t1, $a4, 124
-	add.d	$a4, $a5, $a6
-	add.d	$a4, $a4, $a7
-	add.d	$a6, $a4, $t0
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 116
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 120
+	ld.w	$a4, $a4, 124
+	add.d	$a6, $a7, $a6
+	add.d	$a6, $a6, $t0
+	add.d	$a6, $a5, $a6
+	add.d	$a7, $t1, $a4
 	move	$a4, $a2
 	move	$a5, $a3
-	add.d	$a2, $a6, $t1
+	add.d	$a2, $a6, $a7
 	mul.d	$a2, $a2, $fp
-	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $s8
+	add.d	$a0, $a0, $a2
 	addi.d	$a1, $a1, 32
 	addi.d	$a2, $a4, 32
 	addi.d	$a3, $a3, 128
@@ -27381,8 +27381,8 @@ _Z26test_do_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a3, $a1, 0
 	mul.d	$a3, $a3, $fp
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 4
 	bnez	$a2, .LBB76_12
@@ -27479,8 +27479,8 @@ _Z26test_do_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s7
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB76_24
@@ -27717,68 +27717,68 @@ _Z26test_do_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a6, $a4, 4
 	ld.w	$a7, $a4, 8
 	ld.w	$t0, $a4, 12
+	ld.w	$t1, $a4, 16
 	add.d	$a5, $a6, $a5
-	ld.w	$a6, $a4, 16
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 20
-	add.d	$a5, $a5, $t0
+	ld.w	$a6, $a4, 20
+	add.d	$a7, $a7, $t0
 	ld.w	$t0, $a4, 24
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 28
 	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 32
-	add.d	$a5, $a5, $t0
+	ld.w	$a7, $a4, 28
+	add.d	$a6, $t1, $a6
+	ld.w	$t1, $a4, 32
+	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a4, 36
+	add.d	$a6, $a6, $a7
+	ld.w	$a7, $a4, 40
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 40
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 44
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 48
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 52
-	add.d	$a5, $a5, $a7
+	ld.w	$a6, $a4, 44
+	add.d	$a5, $a5, $t1
+	ld.w	$t1, $a4, 48
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 52
+	add.d	$a6, $a7, $a6
 	ld.w	$a7, $a4, 56
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 60
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 60
+	add.d	$a6, $a6, $t0
+	ld.w	$t0, $a4, 64
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 64
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 68
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 72
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 76
-	add.d	$a5, $a5, $a7
+	ld.w	$a6, $a4, 68
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 72
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a4, 76
+	add.d	$a6, $a7, $a6
 	ld.w	$a7, $a4, 80
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 84
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 84
 	add.d	$a5, $a5, $a6
 	ld.w	$a6, $a4, 88
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 92
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 96
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 92
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 96
+	add.d	$a6, $a7, $a6
+	ld.w	$a7, $a4, 100
+	add.d	$a6, $a6, $t0
+	ld.w	$t0, $a4, 104
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 100
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 104
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 108
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 112
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 116
-	ld.w	$t1, $a4, 120
-	add.d	$a4, $a5, $t0
-	add.d	$a4, $a4, $a6
-	add.d	$a6, $a4, $a7
+	ld.w	$a6, $a4, 108
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a4, 112
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a4, 116
+	ld.w	$a4, $a4, 120
+	add.d	$a6, $a7, $a6
+	add.d	$a6, $a6, $t1
+	add.d	$a6, $a5, $a6
+	add.d	$a7, $t0, $a4
 	move	$a4, $a2
 	move	$a5, $a3
-	add.d	$a2, $a6, $t1
+	add.d	$a2, $a6, $a7
 	mul.d	$a2, $a2, $s4
-	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a2
 	addi.d	$a1, $a1, 31
 	addi.d	$a2, $a4, 31
 	addi.d	$a3, $a3, 124
@@ -27827,8 +27827,8 @@ _Z26test_do_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a3, $a1, 0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 4
 	bnez	$a2, .LBB77_12
@@ -27925,8 +27925,8 @@ _Z26test_do_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s7
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB77_24
@@ -28117,8 +28117,8 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -30
 	move	$s7, $zero
@@ -28160,66 +28160,66 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
+	ld.w	$a7, $a5, 20
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 36
+	ld.w	$t0, $a5, 24
+	add.d	$t1, $t1, $t2
+	ld.w	$t2, $a5, 28
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a5, 32
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a5, 36
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a5, 44
+	add.d	$t0, $t1, $t0
 	ld.w	$t1, $a5, 48
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 56
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a5, 60
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 68
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 72
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 76
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 80
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
+	ld.w	$a7, $a5, 84
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 88
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 92
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 96
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 100
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 96
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 100
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 104
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 108
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 112
-	ld.w	$t2, $a5, 116
-	add.d	$a5, $a6, $t0
-	add.d	$a5, $a5, $t1
-	add.d	$a7, $a5, $a7
+	ld.w	$a7, $a5, 104
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 108
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 112
+	ld.w	$a5, $a5, 116
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 30
 	addi.d	$a3, $a5, 30
 	addi.d	$a4, $a4, 120
@@ -28268,8 +28268,8 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB78_12
@@ -28360,8 +28360,8 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB78_24
@@ -28637,8 +28637,8 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a4, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -29
 	move	$s7, $zero
@@ -28680,64 +28680,64 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a5, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 28
 	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a5, 36
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 44
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 48
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 56
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 60
+	ld.w	$a7, $a5, 60
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 64
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 68
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 72
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 76
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 88
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a5, 80
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 84
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 88
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a5, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 96
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 96
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 100
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 104
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 108
-	ld.w	$t2, $a5, 112
-	add.d	$a5, $a6, $a7
-	add.d	$a5, $a5, $t0
-	add.d	$a7, $a5, $t1
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 104
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 108
+	ld.w	$a5, $a5, 112
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 29
 	addi.d	$a3, $a5, 29
 	addi.d	$a4, $a4, 116
@@ -28786,8 +28786,8 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB80_12
@@ -28878,8 +28878,8 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB80_24
@@ -29073,8 +29073,8 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mulh.du	$a3, $a3, $a4
 	srli.d	$a3, $a3, 1
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -28
 	move	$s7, $zero
@@ -29116,62 +29116,62 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a5, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 36
+	ld.w	$t0, $a5, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a5, 32
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 48
+	ld.w	$a7, $a5, 36
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 40
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 44
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 48
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 52
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 60
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a5, 56
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 60
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 64
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 72
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 72
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 80
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 84
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 88
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 92
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 96
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 100
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 104
-	ld.w	$t2, $a5, 108
-	add.d	$a5, $a6, $t1
-	add.d	$a5, $a5, $a7
-	add.d	$a7, $a5, $t0
+	ld.w	$a7, $a5, 96
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 100
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 104
+	ld.w	$a5, $a5, 108
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 28
 	addi.d	$a3, $a5, 28
 	addi.d	$a4, $a4, 112
@@ -29220,8 +29220,8 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB81_12
@@ -29312,8 +29312,8 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB81_24
@@ -29506,8 +29506,8 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -27
 	move	$s7, $zero
@@ -29549,60 +29549,60 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a5, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
+	ld.w	$t0, $a5, 28
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a5, 32
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a5, 36
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a5, 40
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 44
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a5, 48
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 56
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 60
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 64
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 68
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 72
+	ld.w	$a7, $a5, 72
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 76
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 80
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 84
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 88
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 96
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 100
-	ld.w	$t2, $a5, 104
-	add.d	$a5, $a6, $t0
-	add.d	$a5, $a5, $t1
-	add.d	$a7, $a5, $a7
+	ld.w	$a7, $a5, 92
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 96
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 100
+	ld.w	$a5, $a5, 104
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 27
 	addi.d	$a3, $a5, 27
 	addi.d	$a4, $a4, 108
@@ -29651,8 +29651,8 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB82_12
@@ -29743,8 +29743,8 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB82_24
@@ -29937,8 +29937,8 @@ _Z26test_do_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 3
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -26
 	move	$s7, $zero
@@ -29977,55 +29977,55 @@ _Z26test_do_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a5, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
+	ld.w	$t0, $a5, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a5, 32
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a5, 36
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a5, 40
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 48
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a5, 44
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a5, 48
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 52
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 60
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 60
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 64
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a5, 68
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 72
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 76
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 84
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 96
-	ld.w	$t2, $a5, 100
-	add.d	$a5, $a6, $a7
-	add.w	$a5, $a5, $t0
-	add.d	$a7, $a5, $t1
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 92
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 96
+	ld.w	$a5, $a5, 100
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.w	$a7, $a6, $a7
+	add.d	$t0, $t2, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
 	addu16i.d	$a0, $a0, 7146
@@ -30076,8 +30076,8 @@ _Z26test_do_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB83_12
@@ -30168,8 +30168,8 @@ _Z26test_do_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB83_24
@@ -30365,8 +30365,8 @@ _Z26test_do_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a4, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -25
 	move	$s7, $zero
@@ -30408,56 +30408,56 @@ _Z26test_do_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
+	ld.w	$a7, $a5, 20
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 36
+	ld.w	$t0, $a5, 24
+	add.d	$t1, $t1, $t2
+	ld.w	$t2, $a5, 28
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a5, 32
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a5, 36
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a5, 44
+	add.d	$t0, $t1, $t0
 	ld.w	$t1, $a5, 48
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 56
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a5, 60
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 68
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 72
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 76
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 80
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 92
-	ld.w	$t2, $a5, 96
-	add.d	$a5, $a6, $t1
-	add.d	$a5, $a5, $a7
-	add.d	$a7, $a5, $t0
+	ld.w	$a7, $a5, 84
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 88
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 92
+	ld.w	$a5, $a5, 96
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 25
 	addi.d	$a3, $a5, 25
 	addi.d	$a4, $a4, 100
@@ -30506,8 +30506,8 @@ _Z26test_do_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB84_12
@@ -30598,8 +30598,8 @@ _Z26test_do_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB84_24
@@ -30792,8 +30792,8 @@ _Z26test_do_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -24
 	move	$s7, $zero
@@ -30835,54 +30835,54 @@ _Z26test_do_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a5, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 28
 	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a5, 36
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 44
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 48
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 56
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 60
+	ld.w	$a7, $a5, 60
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 64
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 68
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 72
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 76
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 88
-	ld.w	$t2, $a5, 92
-	add.d	$a5, $a6, $t0
-	add.d	$a5, $a5, $t1
-	add.d	$a7, $a5, $a7
+	ld.w	$a7, $a5, 80
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 84
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 88
+	ld.w	$a5, $a5, 92
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 24
 	addi.d	$a3, $a5, 24
 	addi.d	$a4, $a4, 96
@@ -30931,8 +30931,8 @@ _Z26test_do_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB85_12
@@ -31023,8 +31023,8 @@ _Z26test_do_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB85_24
@@ -31220,8 +31220,8 @@ _Z26test_do_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a4, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -23
 	move	$s7, $zero
@@ -31263,52 +31263,52 @@ _Z26test_do_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a5, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 36
+	ld.w	$t0, $a5, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a5, 32
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 48
+	ld.w	$a7, $a5, 36
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 40
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 44
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 48
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 52
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 60
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a5, 56
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 60
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 64
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 72
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 72
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
-	ld.w	$t2, $a5, 88
-	add.d	$a5, $a6, $a7
-	add.d	$a5, $a5, $t0
-	add.d	$a7, $a5, $t1
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 80
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 84
+	ld.w	$a5, $a5, 88
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 23
 	addi.d	$a3, $a5, 23
 	addi.d	$a4, $a4, 92
@@ -31357,8 +31357,8 @@ _Z26test_do_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB86_12
@@ -31449,8 +31449,8 @@ _Z26test_do_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB86_24
@@ -31643,8 +31643,8 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 2
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -22
 	move	$s7, $zero
@@ -31675,63 +31675,63 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         #     Child Loop BB87_12 Depth 2
 	move	$a2, $zero
 	move	$a0, $zero
-	ori	$a3, $zero, 22
+	ori	$a4, $zero, 22
 	move	$a5, $s8
 	.p2align	4, , 16
 .LBB87_5:                               #   Parent Loop BB87_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a4, $a2, $s1, 2
+	alsl.d	$a3, $a2, $s1, 2
 	slli.d	$a6, $a2, 2
 	ldx.w	$a6, $s1, $a6
-	ld.w	$a7, $a4, 4
-	ld.w	$t0, $a4, 8
-	ld.w	$t1, $a4, 12
+	ld.w	$a7, $a3, 4
+	ld.w	$t0, $a3, 8
+	ld.w	$t1, $a3, 12
+	ld.w	$t2, $a3, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a4, 16
+	ld.w	$a7, $a3, 20
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a3, 24
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a4, 20
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a4, 24
+	ld.w	$t0, $a3, 28
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a3, 32
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a3, 36
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a3, 40
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 44
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a3, 48
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a4, 28
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a4, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a4, 36
+	ld.w	$a7, $a3, 52
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 56
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a3, 60
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a3, 64
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 68
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a4, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a4, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a4, 48
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a4, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a4, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a4, 60
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a4, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a4, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a4, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a4, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a4, 80
-	ld.w	$t2, $a4, 84
-	add.d	$a4, $a6, $t1
-	add.d	$a4, $a4, $a7
-	add.d	$a7, $a4, $t0
-	move	$a4, $a3
+	ld.w	$a7, $a3, 72
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a3, 76
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 80
+	ld.w	$a3, $a3, 84
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a3
+	move	$a3, $a4
 	move	$a6, $a5
-	add.d	$a3, $a7, $t2
-	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
+	add.d	$a4, $a7, $t0
+	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 22
-	addi.d	$a3, $a4, 22
+	addi.d	$a4, $a3, 22
 	addi.d	$a5, $a5, 88
 	bltu	$a2, $s2, .LBB87_5
 # %bb.6:                                #   in Loop: Header=BB87_4 Depth=1
@@ -31739,11 +31739,11 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	bge	$a2, $s0, .LBB87_13
 # %bb.7:                                #   in Loop: Header=BB87_4 Depth=1
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	ori	$a3, $zero, 8
-	bltu	$a2, $a3, .LBB87_11
+	ori	$a4, $zero, 8
+	bltu	$a2, $a4, .LBB87_11
 # %bb.8:                                #   in Loop: Header=BB87_4 Depth=1
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	add.d	$a4, $a4, $a2
+	add.d	$a3, $a3, $a2
 	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
 	vinsgr2vr.w	$vr0, $a0, 0
@@ -31768,18 +31768,18 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
-	beq	$a2, $a3, .LBB87_13
+	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
+	beq	$a2, $a4, .LBB87_13
 .LBB87_11:                              #   in Loop: Header=BB87_4 Depth=1
-	alsl.d	$a2, $a4, $s1, 2
-	sub.d	$a3, $s0, $a4
+	alsl.d	$a2, $a3, $s1, 2
+	sub.d	$a3, $s0, $a3
 	.p2align	4, , 16
 .LBB87_12:                              #   Parent Loop BB87_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB87_12
@@ -31870,8 +31870,8 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB87_24
@@ -32067,8 +32067,8 @@ _Z26test_do_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a4, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -21
 	move	$s7, $zero
@@ -32110,48 +32110,48 @@ _Z26test_do_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a7, $a3, 4
 	ld.w	$t0, $a3, 8
 	ld.w	$t1, $a3, 12
+	ld.w	$t2, $a3, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a3, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a3, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a3, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 32
-	add.d	$a6, $a6, $t1
+	ld.w	$t0, $a3, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a3, 32
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a3, 36
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a3, 40
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 48
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 52
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a3, 44
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a3, 48
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a3, 52
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a3, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 60
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 60
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a3, 64
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 76
-	ld.w	$t2, $a3, 80
-	add.d	$a3, $a6, $t0
-	add.d	$a3, $a3, $t1
-	add.d	$a7, $a3, $a7
+	ld.w	$a7, $a3, 68
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 72
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a3, 76
+	ld.w	$a3, $a3, 80
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a3
 	move	$a3, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 21
 	addi.d	$a4, $a3, 21
 	addi.d	$a5, $a5, 84
@@ -32200,8 +32200,8 @@ _Z26test_do_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB88_12
@@ -32292,8 +32292,8 @@ _Z26test_do_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB88_24
@@ -32565,8 +32565,8 @@ _Z26test_do_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -20
 	move	$s3, $zero
@@ -32633,26 +32633,26 @@ _Z26test_do_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a5, $a5, 76
 	add.d	$a6, $a7, $a6
 	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t1, $t2
+	add.d	$a7, $a7, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
-	add.d	$a1, $a6, $a1
+	add.d	$a7, $t6, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a7, $a7, $s8
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $s5, $s6
+	add.d	$a1, $a7, $a1
 	add.d	$a1, $a1, $s0
 	add.d	$a1, $a1, $s7
-	add.d	$a1, $a1, $s3
+	add.d	$a1, $a6, $a1
+	add.d	$a5, $s3, $a5
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a1
 	addi.d	$a4, $a4, 20
 	addi.d	$a5, $a2, 20
 	addi.d	$a6, $a3, 80
@@ -32704,8 +32704,8 @@ _Z26test_do_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $a1
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB90_12
@@ -32803,8 +32803,8 @@ _Z26test_do_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB90_25
@@ -32997,8 +32997,8 @@ _Z26test_do_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -19
 	move	$s5, $zero
@@ -33062,26 +33062,26 @@ _Z26test_do_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$s7, $a5, 68
 	ld.w	$a5, $a5, 72
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
-	add.d	$a1, $a6, $a1
+	add.d	$a7, $t0, $t1
+	add.d	$a7, $a7, $t2
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t3, $t4
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t5, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $s8, $s5
+	add.d	$a7, $a7, $s6
+	add.d	$a1, $a7, $a1
 	add.d	$a1, $a1, $s0
-	add.d	$a1, $a1, $s7
+	add.d	$a1, $a6, $a1
+	add.d	$a5, $s7, $a5
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a1
 	addi.d	$a4, $a4, 19
 	addi.d	$a5, $a2, 19
 	addi.d	$a6, $a3, 76
@@ -33132,8 +33132,8 @@ _Z26test_do_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a1
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB91_12
@@ -33231,8 +33231,8 @@ _Z26test_do_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB91_25
@@ -33425,8 +33425,8 @@ _Z26test_do_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -18
 	move	$s7, $zero
@@ -33488,25 +33488,25 @@ _Z26test_do_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$s0, $a5, 64
 	ld.w	$a5, $a5, 68
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t4, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $ra, $s8
+	add.d	$a7, $a7, $s5
+	add.d	$a7, $a7, $s6
+	add.d	$a1, $a7, $a1
 	add.d	$a1, $a6, $a1
-	add.d	$a1, $a1, $s0
+	add.d	$a5, $s0, $a5
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a1
 	addi.d	$a4, $a4, 18
 	addi.d	$a5, $a2, 18
 	addi.d	$a6, $a3, 72
@@ -33557,8 +33557,8 @@ _Z26test_do_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a1
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB92_12
@@ -33655,8 +33655,8 @@ _Z26test_do_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB92_25
@@ -33853,8 +33853,8 @@ _Z26test_do_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	and	$a3, $a2, $a3
 	srli.d	$a2, $a2, 4
 	add.d	$a2, $a3, $a2
-	sub.d	$a2, $a0, $a2
-	sub.d	$a0, $a2, $a0
+	sub.d	$a0, $a0, $a0
+	sub.d	$a0, $a0, $a2
 	add.d	$a0, $a5, $a0
 	addi.d	$a0, $a0, -17
 	move	$s7, $zero
@@ -33914,24 +33914,24 @@ _Z26test_do_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a1, $a5, 60
 	ld.w	$a5, $a5, 64
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
-	add.d	$a1, $a6, $a1
+	add.d	$a7, $t3, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t8, $ra
+	add.d	$a7, $a7, $s8
+	add.d	$a7, $a7, $s5
+	add.d	$a7, $a7, $s6
+	add.d	$a6, $a6, $a7
 	add.d	$a1, $a1, $a5
+	add.d	$a1, $a6, $a1
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a1
 	addi.d	$a4, $a4, 17
 	addi.d	$a5, $a2, 17
 	addi.d	$a6, $a3, 68
@@ -33982,8 +33982,8 @@ _Z26test_do_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a1
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB93_12
@@ -34081,8 +34081,8 @@ _Z26test_do_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB93_25
@@ -34334,23 +34334,23 @@ _Z26test_do_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$s3, $a5, 56
 	ld.w	$a5, $a5, 60
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s7
-	add.d	$a6, $a6, $s3
+	add.d	$a7, $t7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a7, $a7, $s5
+	add.d	$a7, $a7, $s7
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $s3, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $fp
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s8
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a2, 16
 	addi.d	$a6, $a3, 64
@@ -34408,8 +34408,8 @@ _Z26test_do_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB94_14
@@ -34463,8 +34463,8 @@ _Z26test_do_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB94_21
@@ -34708,21 +34708,21 @@ _Z26test_do_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a5, $a5, 56
 	add.d	$a6, $a7, $a6
 	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t1, $t2
+	add.d	$a7, $a7, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
+	add.d	$a7, $t6, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a7, $a7, $s8
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $s5, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 15
 	addi.d	$a5, $a2, 15
 	addi.d	$a6, $a3, 60
@@ -34780,8 +34780,8 @@ _Z26test_do_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB95_14
@@ -34835,8 +34835,8 @@ _Z26test_do_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB95_21
@@ -35022,8 +35022,8 @@ _Z26test_do_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mulh.du	$a3, $a3, $a4
 	srli.d	$a3, $a3, 1
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -14
 	move	$s7, $zero
@@ -35079,21 +35079,21 @@ _Z26test_do_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$s8, $a5, 48
 	ld.w	$a5, $a5, 52
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
+	add.d	$a7, $t0, $t1
+	add.d	$a7, $a7, $t2
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t3, $t4
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t5, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $s8, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 14
 	addi.d	$a5, $a2, 14
 	addi.d	$a6, $a3, 56
@@ -35151,8 +35151,8 @@ _Z26test_do_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB96_14
@@ -35205,8 +35205,8 @@ _Z26test_do_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB96_21
@@ -35392,8 +35392,8 @@ _Z26test_do_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 2
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s6, $a0, -13
 	move	$s7, $zero
@@ -35443,16 +35443,16 @@ _Z26test_do_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$ra, $a5, 44
 	ld.w	$a5, $a5, 48
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.w	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t4, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.w	$a6, $a6, $a7
+	add.d	$a5, $ra, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
@@ -35502,8 +35502,8 @@ _Z26test_do_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB97_12
@@ -35556,8 +35556,8 @@ _Z26test_do_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB97_19
@@ -35746,8 +35746,8 @@ _Z26test_do_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 3
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -12
 	move	$s7, $zero
@@ -35800,19 +35800,19 @@ _Z26test_do_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$t8, $a5, 40
 	ld.w	$a5, $a5, 44
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
+	add.d	$a7, $t3, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t8, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 12
 	addi.d	$a5, $a2, 12
 	addi.d	$a6, $a3, 48
@@ -35861,8 +35861,8 @@ _Z26test_do_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB98_12
@@ -35915,8 +35915,8 @@ _Z26test_do_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB98_19
@@ -36187,8 +36187,8 @@ _Z26test_do_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 1
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -11
 	move	$s7, $zero
@@ -36240,18 +36240,18 @@ _Z26test_do_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$t7, $a5, 36
 	ld.w	$a5, $a5, 40
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
+	add.d	$a5, $t7, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 11
 	addi.d	$a5, $a2, 11
 	addi.d	$a6, $a3, 44
@@ -36300,8 +36300,8 @@ _Z26test_do_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB100_12
@@ -36354,8 +36354,8 @@ _Z26test_do_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB100_19
@@ -36544,8 +36544,8 @@ _Z26test_do_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 3
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -10
 	move	$s7, $zero
@@ -36597,16 +36597,16 @@ _Z26test_do_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a5, $a5, 36
 	add.d	$a6, $a7, $a6
 	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t1, $t2
+	add.d	$a7, $a7, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
+	add.d	$a5, $t6, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 10
 	addi.d	$a5, $a2, 10
 	addi.d	$a6, $a3, 40
@@ -36655,8 +36655,8 @@ _Z26test_do_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB101_12
@@ -36709,8 +36709,8 @@ _Z26test_do_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB101_19
@@ -36902,8 +36902,8 @@ _Z26test_do_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	and	$a4, $a2, $a3
 	srli.d	$a2, $a2, 3
 	add.d	$a2, $a4, $a2
-	sub.d	$a2, $a0, $a2
-	sub.d	$a0, $a2, $a0
+	sub.d	$a0, $a0, $a0
+	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -9
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
@@ -36952,16 +36952,16 @@ _Z26test_do_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$t5, $a5, 28
 	ld.w	$a5, $a5, 32
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
+	add.d	$a7, $t0, $t1
+	add.d	$a7, $a7, $t2
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t3, $t4
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t5, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 9
 	addi.d	$a5, $a2, 9
 	addi.d	$a6, $a3, 36
@@ -37010,8 +37010,8 @@ _Z26test_do_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB102_12
@@ -37064,8 +37064,8 @@ _Z26test_do_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB102_19
@@ -37301,15 +37301,15 @@ _Z26test_do_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$t4, $a5, 24
 	ld.w	$a5, $a5, 28
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t4, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s2
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 8
 	addi.d	$a5, $a2, 8
 	addi.d	$a6, $a3, 32
@@ -37356,8 +37356,8 @@ _Z26test_do_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s2
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB103_12
@@ -37422,8 +37422,8 @@ _Z26test_do_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB103_19
@@ -37661,14 +37661,14 @@ _Z26test_do_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$t3, $a5, 20
 	ld.w	$a5, $a5, 24
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
+	add.d	$a5, $t3, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 7
 	addi.d	$a5, $a2, 7
 	addi.d	$a6, $a3, 28
@@ -37717,8 +37717,8 @@ _Z26test_do_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB104_12
@@ -37771,8 +37771,8 @@ _Z26test_do_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB104_19
@@ -37961,8 +37961,8 @@ _Z26test_do_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 2
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -6
 	move	$s7, $zero
@@ -38009,13 +38009,13 @@ _Z26test_do_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$t2, $a5, 16
 	ld.w	$a5, $a5, 20
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t2, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 6
 	addi.d	$a5, $a2, 6
 	addi.d	$a6, $a3, 24
@@ -38064,8 +38064,8 @@ _Z26test_do_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB105_12
@@ -38118,8 +38118,8 @@ _Z26test_do_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB105_19
@@ -38317,8 +38317,8 @@ _Z26test_do_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	addi.w	$a4, $zero, -4
 	and	$a2, $a2, $a4
 	add.d	$a2, $a2, $a3
-	sub.d	$a2, $a0, $a2
-	sub.d	$a0, $a2, $a0
+	sub.d	$a0, $a0, $a0
+	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -5
 	st.d	$a5, $sp, 64                    # 8-byte Folded Spill
@@ -38454,10 +38454,10 @@ _Z26test_do_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	vinsgr2vr.w	$vr11, $a6, 3
 	vadd.w	$vr2, $vr4, $vr2
 	vadd.w	$vr3, $vr5, $vr3
-	vadd.w	$vr2, $vr2, $vr6
-	vadd.w	$vr3, $vr3, $vr7
-	vadd.w	$vr2, $vr2, $vr8
-	vadd.w	$vr3, $vr3, $vr9
+	vadd.w	$vr4, $vr6, $vr8
+	vadd.w	$vr2, $vr2, $vr4
+	vadd.w	$vr4, $vr7, $vr9
+	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr2, $vr2, $vr10
 	vadd.w	$vr3, $vr3, $vr11
 	vreplgr2vr.w	$vr4, $s3
@@ -38493,11 +38493,11 @@ _Z26test_do_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$t1, $a4, 8
 	add.d	$a5, $a6, $a5
 	add.d	$a5, $a5, $a7
-	add.d	$a5, $a5, $t0
-	add.d	$a5, $a5, $t1
+	add.d	$a6, $t0, $t1
+	add.d	$a5, $a5, $a6
 	mul.d	$a5, $a5, $s3
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $a5
 	addi.d	$a3, $a3, 5
 	addi.d	$a2, $a2, 5
 	addi.d	$a4, $a4, 20
@@ -38553,8 +38553,8 @@ _Z26test_do_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s3
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s1
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB106_18
@@ -38608,8 +38608,8 @@ _Z26test_do_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB106_25
@@ -38918,10 +38918,10 @@ _Z26test_do_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	vinsgr2vr.w	$vr9, $a6, 3
 	vadd.w	$vr2, $vr4, $vr2
 	vadd.w	$vr3, $vr5, $vr3
-	vadd.w	$vr2, $vr2, $vr6
-	vadd.w	$vr3, $vr3, $vr7
-	vadd.w	$vr2, $vr2, $vr8
-	vadd.w	$vr3, $vr3, $vr9
+	vadd.w	$vr4, $vr6, $vr8
+	vadd.w	$vr2, $vr2, $vr4
+	vadd.w	$vr4, $vr7, $vr9
+	vadd.w	$vr3, $vr3, $vr4
 	vreplgr2vr.w	$vr4, $s3
 	vmadd.w	$vr0, $vr2, $vr4
 	vreplgr2vr.w	$vr2, $s5
@@ -38953,11 +38953,11 @@ _Z26test_do_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$a7, $a4, 0
 	ld.w	$t0, $a4, 4
 	add.d	$a5, $a6, $a5
-	add.d	$a5, $a5, $a7
-	add.d	$a5, $a5, $t0
+	add.d	$a6, $a7, $t0
+	add.d	$a5, $a5, $a6
 	mul.d	$a5, $a5, $s3
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $a5
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
 	addi.d	$a4, $a4, 16
@@ -39013,8 +39013,8 @@ _Z26test_do_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s3
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s1
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB107_18
@@ -39068,8 +39068,8 @@ _Z26test_do_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB107_25
@@ -39267,8 +39267,8 @@ _Z26test_do_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	addi.w	$a4, $zero, -2
 	and	$a2, $a2, $a4
 	add.d	$a2, $a2, $a3
-	sub.d	$a2, $a0, $a2
-	sub.d	$a0, $a2, $a0
+	sub.d	$a0, $a0, $a0
+	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -3
 	st.d	$a5, $sp, 64                    # 8-byte Folded Spill
@@ -39406,8 +39406,8 @@ _Z26test_do_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	add.d	$a5, $a6, $a5
 	add.d	$a5, $a5, $a7
 	mul.d	$a5, $a5, $s3
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s1
+	add.d	$a0, $a0, $a5
 	addi.d	$a3, $a3, 3
 	addi.d	$a2, $a2, 3
 	addi.d	$a4, $a4, 12
@@ -39463,8 +39463,8 @@ _Z26test_do_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s3
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB108_18
@@ -39518,8 +39518,8 @@ _Z26test_do_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB108_25
@@ -39823,8 +39823,8 @@ _Z26test_do_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$a6, $a4, 0
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s0
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s2
+	add.d	$a0, $a0, $a5
 	addi.d	$a3, $a3, 2
 	addi.d	$a2, $a2, 2
 	addi.d	$a4, $a4, 8
@@ -39880,8 +39880,8 @@ _Z26test_do_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s0
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB109_18
@@ -40165,8 +40165,8 @@ _Z26test_do_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB110_10
@@ -40399,70 +40399,70 @@ _Z28test_goto_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a6, $a4, 4
 	ld.w	$a7, $a4, 8
 	ld.w	$t0, $a4, 12
+	ld.w	$t1, $a4, 16
 	add.d	$a5, $a6, $a5
-	ld.w	$a6, $a4, 16
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 20
-	add.d	$a5, $a5, $t0
+	ld.w	$a6, $a4, 20
+	add.d	$a7, $a7, $t0
 	ld.w	$t0, $a4, 24
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 28
 	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 32
-	add.d	$a5, $a5, $t0
+	ld.w	$a7, $a4, 28
+	add.d	$a5, $a5, $t1
+	ld.w	$t1, $a4, 32
+	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a4, 36
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 40
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 44
-	add.d	$a5, $a5, $t0
+	add.d	$a6, $a6, $a7
+	ld.w	$a7, $a4, 40
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 44
+	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a4, 48
 	add.d	$a5, $a5, $a6
 	ld.w	$a6, $a4, 52
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 56
-	add.d	$a5, $a5, $t0
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 56
+	add.d	$a7, $a7, $t0
 	ld.w	$t0, $a4, 60
+	add.d	$a6, $a7, $a6
+	ld.w	$a7, $a4, 64
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 68
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 64
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 68
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 72
+	ld.w	$a6, $a4, 72
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 76
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 80
+	add.d	$a6, $a7, $a6
+	ld.w	$a7, $a4, 84
+	add.d	$a6, $a6, $t0
+	ld.w	$t0, $a4, 88
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 76
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 80
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 84
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 88
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 92
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 96
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 100
-	add.d	$a5, $a5, $a7
+	ld.w	$a6, $a4, 92
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a4, 96
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a4, 100
+	add.d	$a6, $a7, $a6
 	ld.w	$a7, $a4, 104
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 108
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 108
 	add.d	$a5, $a5, $a6
 	ld.w	$a6, $a4, 112
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 116
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 120
-	ld.w	$t1, $a4, 124
-	add.d	$a4, $a5, $a6
-	add.d	$a4, $a4, $a7
-	add.d	$a6, $a4, $t0
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 116
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 120
+	ld.w	$a4, $a4, 124
+	add.d	$a6, $a7, $a6
+	add.d	$a6, $a6, $t0
+	add.d	$a6, $a5, $a6
+	add.d	$a7, $t1, $a4
 	move	$a4, $a2
 	move	$a5, $a3
-	add.d	$a2, $a6, $t1
+	add.d	$a2, $a6, $a7
 	mul.d	$a2, $a2, $fp
-	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $s8
+	add.d	$a0, $a0, $a2
 	addi.d	$a1, $a1, 32
 	addi.d	$a2, $a4, 32
 	addi.d	$a3, $a3, 128
@@ -40510,8 +40510,8 @@ _Z28test_goto_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a3, $a1, 0
 	mul.d	$a3, $a3, $fp
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 4
 	bnez	$a2, .LBB111_12
@@ -40608,8 +40608,8 @@ _Z28test_goto_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s7
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB111_24
@@ -40846,68 +40846,68 @@ _Z28test_goto_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a6, $a4, 4
 	ld.w	$a7, $a4, 8
 	ld.w	$t0, $a4, 12
+	ld.w	$t1, $a4, 16
 	add.d	$a5, $a6, $a5
-	ld.w	$a6, $a4, 16
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 20
-	add.d	$a5, $a5, $t0
+	ld.w	$a6, $a4, 20
+	add.d	$a7, $a7, $t0
 	ld.w	$t0, $a4, 24
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 28
 	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 32
-	add.d	$a5, $a5, $t0
+	ld.w	$a7, $a4, 28
+	add.d	$a6, $t1, $a6
+	ld.w	$t1, $a4, 32
+	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a4, 36
+	add.d	$a6, $a6, $a7
+	ld.w	$a7, $a4, 40
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 40
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 44
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 48
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 52
-	add.d	$a5, $a5, $a7
+	ld.w	$a6, $a4, 44
+	add.d	$a5, $a5, $t1
+	ld.w	$t1, $a4, 48
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 52
+	add.d	$a6, $a7, $a6
 	ld.w	$a7, $a4, 56
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 60
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 60
+	add.d	$a6, $a6, $t0
+	ld.w	$t0, $a4, 64
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 64
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 68
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 72
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 76
-	add.d	$a5, $a5, $a7
+	ld.w	$a6, $a4, 68
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 72
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a4, 76
+	add.d	$a6, $a7, $a6
 	ld.w	$a7, $a4, 80
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 84
+	add.d	$a6, $a6, $t1
+	ld.w	$t1, $a4, 84
 	add.d	$a5, $a5, $a6
 	ld.w	$a6, $a4, 88
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 92
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 96
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a4, 92
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a4, 96
+	add.d	$a6, $a7, $a6
+	ld.w	$a7, $a4, 100
+	add.d	$a6, $a6, $t0
+	ld.w	$t0, $a4, 104
 	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 100
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 104
-	add.d	$a5, $a5, $t0
-	ld.w	$t0, $a4, 108
-	add.d	$a5, $a5, $a6
-	ld.w	$a6, $a4, 112
-	add.d	$a5, $a5, $a7
-	ld.w	$a7, $a4, 116
-	ld.w	$t1, $a4, 120
-	add.d	$a4, $a5, $t0
-	add.d	$a4, $a4, $a6
-	add.d	$a6, $a4, $a7
+	ld.w	$a6, $a4, 108
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a4, 112
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a4, 116
+	ld.w	$a4, $a4, 120
+	add.d	$a6, $a7, $a6
+	add.d	$a6, $a6, $t1
+	add.d	$a6, $a5, $a6
+	add.d	$a7, $t0, $a4
 	move	$a4, $a2
 	move	$a5, $a3
-	add.d	$a2, $a6, $t1
+	add.d	$a2, $a6, $a7
 	mul.d	$a2, $a2, $s4
-	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a2
 	addi.d	$a1, $a1, 31
 	addi.d	$a2, $a4, 31
 	addi.d	$a3, $a3, 124
@@ -40956,8 +40956,8 @@ _Z28test_goto_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a3, $a1, 0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 4
 	bnez	$a2, .LBB112_12
@@ -41054,8 +41054,8 @@ _Z28test_goto_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s7
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB112_24
@@ -41246,8 +41246,8 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -30
 	move	$s7, $zero
@@ -41289,66 +41289,66 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
+	ld.w	$a7, $a5, 20
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 36
+	ld.w	$t0, $a5, 24
+	add.d	$t1, $t1, $t2
+	ld.w	$t2, $a5, 28
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a5, 32
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a5, 36
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a5, 44
+	add.d	$t0, $t1, $t0
 	ld.w	$t1, $a5, 48
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 56
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a5, 60
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 68
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 72
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 76
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 80
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
+	ld.w	$a7, $a5, 84
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 88
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 92
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 96
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 100
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 96
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 100
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 104
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 108
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 112
-	ld.w	$t2, $a5, 116
-	add.d	$a5, $a6, $t0
-	add.d	$a5, $a5, $t1
-	add.d	$a7, $a5, $a7
+	ld.w	$a7, $a5, 104
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 108
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 112
+	ld.w	$a5, $a5, 116
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 30
 	addi.d	$a3, $a5, 30
 	addi.d	$a4, $a4, 120
@@ -41397,8 +41397,8 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB113_12
@@ -41489,8 +41489,8 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB113_24
@@ -41766,8 +41766,8 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a4, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -29
 	move	$s7, $zero
@@ -41809,64 +41809,64 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a5, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 28
 	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a5, 36
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 44
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 48
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 56
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 60
+	ld.w	$a7, $a5, 60
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 64
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 68
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 72
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 76
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 88
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a5, 80
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 84
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 88
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a5, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 96
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 96
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 100
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 104
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 108
-	ld.w	$t2, $a5, 112
-	add.d	$a5, $a6, $a7
-	add.d	$a5, $a5, $t0
-	add.d	$a7, $a5, $t1
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 104
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 108
+	ld.w	$a5, $a5, 112
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 29
 	addi.d	$a3, $a5, 29
 	addi.d	$a4, $a4, 116
@@ -41915,8 +41915,8 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB115_12
@@ -42007,8 +42007,8 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB115_24
@@ -42202,8 +42202,8 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mulh.du	$a3, $a3, $a4
 	srli.d	$a3, $a3, 1
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -28
 	move	$s7, $zero
@@ -42245,62 +42245,62 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a5, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 36
+	ld.w	$t0, $a5, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a5, 32
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 48
+	ld.w	$a7, $a5, 36
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 40
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 44
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 48
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 52
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 60
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a5, 56
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 60
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 64
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 72
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 72
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 80
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 84
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 88
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 92
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 96
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 100
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 104
-	ld.w	$t2, $a5, 108
-	add.d	$a5, $a6, $t1
-	add.d	$a5, $a5, $a7
-	add.d	$a7, $a5, $t0
+	ld.w	$a7, $a5, 96
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 100
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 104
+	ld.w	$a5, $a5, 108
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 28
 	addi.d	$a3, $a5, 28
 	addi.d	$a4, $a4, 112
@@ -42349,8 +42349,8 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB116_12
@@ -42441,8 +42441,8 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB116_24
@@ -42635,8 +42635,8 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -27
 	move	$s7, $zero
@@ -42678,60 +42678,60 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a5, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
+	ld.w	$t0, $a5, 28
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a5, 32
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a5, 36
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a5, 40
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 44
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a5, 48
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 56
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 60
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 64
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 68
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 72
+	ld.w	$a7, $a5, 72
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 76
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 80
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 84
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 88
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 96
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 100
-	ld.w	$t2, $a5, 104
-	add.d	$a5, $a6, $t0
-	add.d	$a5, $a5, $t1
-	add.d	$a7, $a5, $a7
+	ld.w	$a7, $a5, 92
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 96
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 100
+	ld.w	$a5, $a5, 104
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 27
 	addi.d	$a3, $a5, 27
 	addi.d	$a4, $a4, 108
@@ -42780,8 +42780,8 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB117_12
@@ -42872,8 +42872,8 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB117_24
@@ -43066,8 +43066,8 @@ _Z28test_goto_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 3
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -26
 	move	$s7, $zero
@@ -43106,55 +43106,55 @@ _Z28test_goto_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a5, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
+	ld.w	$t0, $a5, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a5, 32
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a5, 36
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a5, 40
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 48
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a5, 44
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a5, 48
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 52
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 60
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 60
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 64
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a5, 68
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 72
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 76
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 84
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 92
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 96
-	ld.w	$t2, $a5, 100
-	add.d	$a5, $a6, $a7
-	add.w	$a5, $a5, $t0
-	add.d	$a7, $a5, $t1
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 92
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 96
+	ld.w	$a5, $a5, 100
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.w	$a7, $a6, $a7
+	add.d	$t0, $t2, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
 	addu16i.d	$a0, $a0, 7146
@@ -43205,8 +43205,8 @@ _Z28test_goto_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB118_12
@@ -43297,8 +43297,8 @@ _Z28test_goto_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB118_24
@@ -43494,8 +43494,8 @@ _Z28test_goto_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a4, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -25
 	move	$s7, $zero
@@ -43537,56 +43537,56 @@ _Z28test_goto_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
+	ld.w	$a7, $a5, 20
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 36
+	ld.w	$t0, $a5, 24
+	add.d	$t1, $t1, $t2
+	ld.w	$t2, $a5, 28
+	add.d	$a7, $t1, $a7
+	ld.w	$t1, $a5, 32
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a5, 36
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a5, 44
+	add.d	$t0, $t1, $t0
 	ld.w	$t1, $a5, 48
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 56
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a5, 60
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 68
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 72
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 76
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 80
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 88
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 92
-	ld.w	$t2, $a5, 96
-	add.d	$a5, $a6, $t1
-	add.d	$a5, $a5, $a7
-	add.d	$a7, $a5, $t0
+	ld.w	$a7, $a5, 84
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 88
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 92
+	ld.w	$a5, $a5, 96
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 25
 	addi.d	$a3, $a5, 25
 	addi.d	$a4, $a4, 100
@@ -43635,8 +43635,8 @@ _Z28test_goto_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB119_12
@@ -43727,8 +43727,8 @@ _Z28test_goto_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB119_24
@@ -43921,8 +43921,8 @@ _Z28test_goto_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -24
 	move	$s7, $zero
@@ -43964,54 +43964,54 @@ _Z28test_goto_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a5, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 28
 	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a5, 36
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 44
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 48
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 52
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 56
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 60
+	ld.w	$a7, $a5, 60
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 64
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 68
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 72
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 76
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 88
-	ld.w	$t2, $a5, 92
-	add.d	$a5, $a6, $t0
-	add.d	$a5, $a5, $t1
-	add.d	$a7, $a5, $a7
+	ld.w	$a7, $a5, 80
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 84
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 88
+	ld.w	$a5, $a5, 92
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 24
 	addi.d	$a3, $a5, 24
 	addi.d	$a4, $a4, 96
@@ -44060,8 +44060,8 @@ _Z28test_goto_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB120_12
@@ -44152,8 +44152,8 @@ _Z28test_goto_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB120_24
@@ -44349,8 +44349,8 @@ _Z28test_goto_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a4, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -23
 	move	$s7, $zero
@@ -44392,52 +44392,52 @@ _Z28test_goto_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a7, $a5, 4
 	ld.w	$t0, $a5, 8
 	ld.w	$t1, $a5, 12
+	ld.w	$t2, $a5, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a5, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a5, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a5, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 36
+	ld.w	$t0, $a5, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a5, 32
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 48
+	ld.w	$a7, $a5, 36
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 40
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 44
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a5, 48
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a5, 52
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 60
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a5, 64
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a5, 56
+	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a5, 60
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a5, 64
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a5, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 72
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a5, 72
 	add.d	$a6, $a6, $a7
 	ld.w	$a7, $a5, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a5, 80
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a5, 84
-	ld.w	$t2, $a5, 88
-	add.d	$a5, $a6, $a7
-	add.d	$a5, $a5, $t0
-	add.d	$a7, $a5, $t1
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a5, 80
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a5, 84
+	ld.w	$a5, $a5, 88
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a5
 	move	$a5, $a3
 	move	$a6, $a4
-	add.d	$a3, $a7, $t2
+	add.d	$a3, $a7, $t0
 	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a3
 	addi.d	$a2, $a2, 23
 	addi.d	$a3, $a5, 23
 	addi.d	$a4, $a4, 92
@@ -44486,8 +44486,8 @@ _Z28test_goto_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB121_12
@@ -44578,8 +44578,8 @@ _Z28test_goto_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB121_24
@@ -44772,8 +44772,8 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 2
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -22
 	move	$s7, $zero
@@ -44804,63 +44804,63 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         #     Child Loop BB122_12 Depth 2
 	move	$a2, $zero
 	move	$a0, $zero
-	ori	$a3, $zero, 22
+	ori	$a4, $zero, 22
 	move	$a5, $s8
 	.p2align	4, , 16
 .LBB122_5:                              #   Parent Loop BB122_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a4, $a2, $s1, 2
+	alsl.d	$a3, $a2, $s1, 2
 	slli.d	$a6, $a2, 2
 	ldx.w	$a6, $s1, $a6
-	ld.w	$a7, $a4, 4
-	ld.w	$t0, $a4, 8
-	ld.w	$t1, $a4, 12
+	ld.w	$a7, $a3, 4
+	ld.w	$t0, $a3, 8
+	ld.w	$t1, $a3, 12
+	ld.w	$t2, $a3, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a4, 16
+	ld.w	$a7, $a3, 20
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a3, 24
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a4, 20
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a4, 24
+	ld.w	$t0, $a3, 28
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a3, 32
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a3, 36
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a3, 40
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 44
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a3, 48
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a4, 28
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a4, 32
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a4, 36
+	ld.w	$a7, $a3, 52
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 56
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a3, 60
+	add.d	$a7, $t0, $a7
+	ld.w	$t0, $a3, 64
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 68
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a4, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a4, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a4, 48
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a4, 52
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a4, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a4, 60
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a4, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a4, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a4, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a4, 76
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a4, 80
-	ld.w	$t2, $a4, 84
-	add.d	$a4, $a6, $t1
-	add.d	$a4, $a4, $a7
-	add.d	$a7, $a4, $t0
-	move	$a4, $a3
+	ld.w	$a7, $a3, 72
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a3, 76
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 80
+	ld.w	$a3, $a3, 84
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t1
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t2, $a3
+	move	$a3, $a4
 	move	$a6, $a5
-	add.d	$a3, $a7, $t2
-	mul.d	$a3, $a3, $s4
-	add.d	$a0, $a0, $a3
+	add.d	$a4, $a7, $t0
+	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 22
-	addi.d	$a3, $a4, 22
+	addi.d	$a4, $a3, 22
 	addi.d	$a5, $a5, 88
 	bltu	$a2, $s2, .LBB122_5
 # %bb.6:                                #   in Loop: Header=BB122_4 Depth=1
@@ -44868,11 +44868,11 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	bge	$a2, $s0, .LBB122_13
 # %bb.7:                                #   in Loop: Header=BB122_4 Depth=1
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	ori	$a3, $zero, 8
-	bltu	$a2, $a3, .LBB122_11
+	ori	$a4, $zero, 8
+	bltu	$a2, $a4, .LBB122_11
 # %bb.8:                                #   in Loop: Header=BB122_4 Depth=1
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	add.d	$a4, $a4, $a2
+	add.d	$a3, $a3, $a2
 	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
 	vinsgr2vr.w	$vr0, $a0, 0
@@ -44897,18 +44897,18 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
-	beq	$a2, $a3, .LBB122_13
+	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
+	beq	$a2, $a4, .LBB122_13
 .LBB122_11:                             #   in Loop: Header=BB122_4 Depth=1
-	alsl.d	$a2, $a4, $s1, 2
-	sub.d	$a3, $s0, $a4
+	alsl.d	$a2, $a3, $s1, 2
+	sub.d	$a3, $s0, $a3
 	.p2align	4, , 16
 .LBB122_12:                             #   Parent Loop BB122_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB122_12
@@ -44999,8 +44999,8 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB122_24
@@ -45196,8 +45196,8 @@ _Z28test_goto_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a4, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -21
 	move	$s7, $zero
@@ -45239,48 +45239,48 @@ _Z28test_goto_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a7, $a3, 4
 	ld.w	$t0, $a3, 8
 	ld.w	$t1, $a3, 12
+	ld.w	$t2, $a3, 16
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a3, 16
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 20
-	add.d	$a6, $a6, $t1
+	ld.w	$a7, $a3, 20
+	add.d	$t0, $t0, $t1
 	ld.w	$t1, $a3, 24
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 32
-	add.d	$a6, $a6, $t1
+	ld.w	$t0, $a3, 28
+	add.d	$a7, $t2, $a7
+	ld.w	$t2, $a3, 32
+	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a3, 36
+	add.d	$a7, $a7, $t0
+	ld.w	$t0, $a3, 40
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 40
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 44
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 48
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 52
-	add.d	$a6, $a6, $t0
+	ld.w	$a7, $a3, 44
+	add.d	$a6, $a6, $t2
+	ld.w	$t2, $a3, 48
+	add.d	$t0, $t1, $t0
+	ld.w	$t1, $a3, 52
+	add.d	$a7, $t0, $a7
 	ld.w	$t0, $a3, 56
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 60
+	add.d	$a7, $a7, $t2
+	ld.w	$t2, $a3, 60
+	add.d	$a7, $a7, $t1
+	ld.w	$t1, $a3, 64
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 64
-	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a3, 68
-	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a3, 72
-	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a3, 76
-	ld.w	$t2, $a3, 80
-	add.d	$a3, $a6, $t0
-	add.d	$a3, $a3, $t1
-	add.d	$a7, $a3, $a7
+	ld.w	$a7, $a3, 68
+	add.d	$t0, $t0, $t2
+	ld.w	$t2, $a3, 72
+	add.d	$t0, $t0, $t1
+	ld.w	$t1, $a3, 76
+	ld.w	$a3, $a3, 80
+	add.d	$a7, $t0, $a7
+	add.d	$a7, $a7, $t2
+	add.d	$a7, $a6, $a7
+	add.d	$t0, $t1, $a3
 	move	$a3, $a4
 	move	$a6, $a5
-	add.d	$a4, $a7, $t2
+	add.d	$a4, $a7, $t0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, 21
 	addi.d	$a4, $a3, 21
 	addi.d	$a5, $a5, 84
@@ -45329,8 +45329,8 @@ _Z28test_goto_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB123_12
@@ -45421,8 +45421,8 @@ _Z28test_goto_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s5
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB123_24
@@ -45694,8 +45694,8 @@ _Z28test_goto_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -20
 	move	$s3, $zero
@@ -45762,26 +45762,26 @@ _Z28test_goto_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a5, $a5, 76
 	add.d	$a6, $a7, $a6
 	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t1, $t2
+	add.d	$a7, $a7, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
-	add.d	$a1, $a6, $a1
+	add.d	$a7, $t6, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a7, $a7, $s8
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $s5, $s6
+	add.d	$a1, $a7, $a1
 	add.d	$a1, $a1, $s0
 	add.d	$a1, $a1, $s7
-	add.d	$a1, $a1, $s3
+	add.d	$a1, $a6, $a1
+	add.d	$a5, $s3, $a5
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a1
 	addi.d	$a4, $a4, 20
 	addi.d	$a5, $a2, 20
 	addi.d	$a6, $a3, 80
@@ -45833,8 +45833,8 @@ _Z28test_goto_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $a1
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB125_12
@@ -45932,8 +45932,8 @@ _Z28test_goto_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB125_25
@@ -46126,8 +46126,8 @@ _Z28test_goto_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -19
 	move	$s5, $zero
@@ -46191,26 +46191,26 @@ _Z28test_goto_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$s7, $a5, 68
 	ld.w	$a5, $a5, 72
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
-	add.d	$a1, $a6, $a1
+	add.d	$a7, $t0, $t1
+	add.d	$a7, $a7, $t2
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t3, $t4
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t5, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $s8, $s5
+	add.d	$a7, $a7, $s6
+	add.d	$a1, $a7, $a1
 	add.d	$a1, $a1, $s0
-	add.d	$a1, $a1, $s7
+	add.d	$a1, $a6, $a1
+	add.d	$a5, $s7, $a5
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a1
 	addi.d	$a4, $a4, 19
 	addi.d	$a5, $a2, 19
 	addi.d	$a6, $a3, 76
@@ -46261,8 +46261,8 @@ _Z28test_goto_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a1
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB126_12
@@ -46360,8 +46360,8 @@ _Z28test_goto_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB126_25
@@ -46554,8 +46554,8 @@ _Z28test_goto_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 4
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -18
 	move	$s7, $zero
@@ -46617,25 +46617,25 @@ _Z28test_goto_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$s0, $a5, 64
 	ld.w	$a5, $a5, 68
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t4, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $ra, $s8
+	add.d	$a7, $a7, $s5
+	add.d	$a7, $a7, $s6
+	add.d	$a1, $a7, $a1
 	add.d	$a1, $a6, $a1
-	add.d	$a1, $a1, $s0
+	add.d	$a5, $s0, $a5
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a1
 	addi.d	$a4, $a4, 18
 	addi.d	$a5, $a2, 18
 	addi.d	$a6, $a3, 72
@@ -46686,8 +46686,8 @@ _Z28test_goto_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a1
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB127_12
@@ -46784,8 +46784,8 @@ _Z28test_goto_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB127_25
@@ -46982,8 +46982,8 @@ _Z28test_goto_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	and	$a3, $a2, $a3
 	srli.d	$a2, $a2, 4
 	add.d	$a2, $a3, $a2
-	sub.d	$a2, $a0, $a2
-	sub.d	$a0, $a2, $a0
+	sub.d	$a0, $a0, $a0
+	sub.d	$a0, $a0, $a2
 	add.d	$a0, $a5, $a0
 	addi.d	$a0, $a0, -17
 	move	$s7, $zero
@@ -47043,24 +47043,24 @@ _Z28test_goto_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a1, $a5, 60
 	ld.w	$a5, $a5, 64
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s6
-	add.d	$a1, $a6, $a1
+	add.d	$a7, $t3, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t8, $ra
+	add.d	$a7, $a7, $s8
+	add.d	$a7, $a7, $s5
+	add.d	$a7, $a7, $s6
+	add.d	$a6, $a6, $a7
 	add.d	$a1, $a1, $a5
+	add.d	$a1, $a6, $a1
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a1
 	addi.d	$a4, $a4, 17
 	addi.d	$a5, $a2, 17
 	addi.d	$a6, $a3, 68
@@ -47111,8 +47111,8 @@ _Z28test_goto_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a1
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB128_12
@@ -47210,8 +47210,8 @@ _Z28test_goto_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s5
-	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB128_25
@@ -47463,23 +47463,23 @@ _Z28test_goto_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$s3, $a5, 56
 	ld.w	$a5, $a5, 60
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s5
-	add.d	$a6, $a6, $s7
-	add.d	$a6, $a6, $s3
+	add.d	$a7, $t7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a7, $a7, $s5
+	add.d	$a7, $a7, $s7
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $s3, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $fp
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s8
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a2, 16
 	addi.d	$a6, $a3, 64
@@ -47537,8 +47537,8 @@ _Z28test_goto_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB129_14
@@ -47592,8 +47592,8 @@ _Z28test_goto_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB129_21
@@ -47837,21 +47837,21 @@ _Z28test_goto_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a5, $a5, 56
 	add.d	$a6, $a7, $a6
 	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t1, $t2
+	add.d	$a7, $a7, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
-	add.d	$a6, $a6, $s5
+	add.d	$a7, $t6, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a7, $a7, $s8
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $s5, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 15
 	addi.d	$a5, $a2, 15
 	addi.d	$a6, $a3, 60
@@ -47909,8 +47909,8 @@ _Z28test_goto_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB130_14
@@ -47964,8 +47964,8 @@ _Z28test_goto_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB130_21
@@ -48151,8 +48151,8 @@ _Z28test_goto_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mulh.du	$a3, $a3, $a4
 	srli.d	$a3, $a3, 1
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -14
 	move	$s7, $zero
@@ -48208,21 +48208,21 @@ _Z28test_goto_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$s8, $a5, 48
 	ld.w	$a5, $a5, 52
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
-	add.d	$a6, $a6, $s8
+	add.d	$a7, $t0, $t1
+	add.d	$a7, $a7, $t2
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t3, $t4
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t5, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.d	$a7, $a7, $ra
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $s8, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 14
 	addi.d	$a5, $a2, 14
 	addi.d	$a6, $a3, 56
@@ -48280,8 +48280,8 @@ _Z28test_goto_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB131_14
@@ -48334,8 +48334,8 @@ _Z28test_goto_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB131_21
@@ -48521,8 +48521,8 @@ _Z28test_goto_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 2
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s6, $a0, -13
 	move	$s7, $zero
@@ -48572,16 +48572,16 @@ _Z28test_goto_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$ra, $a5, 44
 	ld.w	$a5, $a5, 48
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.w	$a6, $a6, $t8
-	add.d	$a6, $a6, $ra
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t4, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a7, $a7, $t8
+	add.w	$a6, $a6, $a7
+	add.d	$a5, $ra, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
@@ -48631,8 +48631,8 @@ _Z28test_goto_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB132_12
@@ -48685,8 +48685,8 @@ _Z28test_goto_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB132_19
@@ -48875,8 +48875,8 @@ _Z28test_goto_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 3
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -12
 	move	$s7, $zero
@@ -48929,19 +48929,19 @@ _Z28test_goto_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$t8, $a5, 40
 	ld.w	$a5, $a5, 44
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
-	add.d	$a6, $a6, $t8
+	add.d	$a7, $t3, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a7, $a7, $t6
+	add.d	$a7, $a7, $t7
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t8, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 12
 	addi.d	$a5, $a2, 12
 	addi.d	$a6, $a3, 48
@@ -48990,8 +48990,8 @@ _Z28test_goto_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB133_12
@@ -49044,8 +49044,8 @@ _Z28test_goto_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB133_19
@@ -49316,8 +49316,8 @@ _Z28test_goto_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 1
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -11
 	move	$s7, $zero
@@ -49369,18 +49369,18 @@ _Z28test_goto_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$t7, $a5, 36
 	ld.w	$a5, $a5, 40
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a7, $a7, $t5
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t7
+	add.d	$a5, $t7, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 11
 	addi.d	$a5, $a2, 11
 	addi.d	$a6, $a3, 44
@@ -49429,8 +49429,8 @@ _Z28test_goto_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB135_12
@@ -49483,8 +49483,8 @@ _Z28test_goto_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB135_19
@@ -49673,8 +49673,8 @@ _Z28test_goto_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 3
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -10
 	move	$s7, $zero
@@ -49726,16 +49726,16 @@ _Z28test_goto_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a5, $a5, 36
 	add.d	$a6, $a7, $a6
 	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t1, $t2
+	add.d	$a7, $a7, $t3
+	add.d	$a7, $a7, $t4
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t5
-	add.d	$a6, $a6, $t6
+	add.d	$a5, $t6, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 10
 	addi.d	$a5, $a2, 10
 	addi.d	$a6, $a3, 40
@@ -49784,8 +49784,8 @@ _Z28test_goto_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB136_12
@@ -49838,8 +49838,8 @@ _Z28test_goto_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB136_19
@@ -50031,8 +50031,8 @@ _Z28test_goto_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	and	$a4, $a2, $a3
 	srli.d	$a2, $a2, 3
 	add.d	$a2, $a4, $a2
-	sub.d	$a2, $a0, $a2
-	sub.d	$a0, $a2, $a0
+	sub.d	$a0, $a0, $a0
+	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -9
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
@@ -50081,16 +50081,16 @@ _Z28test_goto_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$t5, $a5, 28
 	ld.w	$a5, $a5, 32
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t5
+	add.d	$a7, $t0, $t1
+	add.d	$a7, $a7, $t2
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t3, $t4
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t5, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 9
 	addi.d	$a5, $a2, 9
 	addi.d	$a6, $a3, 36
@@ -50139,8 +50139,8 @@ _Z28test_goto_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB137_12
@@ -50193,8 +50193,8 @@ _Z28test_goto_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB137_19
@@ -50430,15 +50430,15 @@ _Z28test_goto_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$t4, $a5, 24
 	ld.w	$a5, $a5, 28
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $t4
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a7, $t2, $t3
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t4, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s2
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 8
 	addi.d	$a5, $a2, 8
 	addi.d	$a6, $a3, 32
@@ -50485,8 +50485,8 @@ _Z28test_goto_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s2
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB138_12
@@ -50551,8 +50551,8 @@ _Z28test_goto_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB138_19
@@ -50790,14 +50790,14 @@ _Z28test_goto_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$t3, $a5, 20
 	ld.w	$a5, $a5, 24
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
 	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
+	add.d	$a5, $t3, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 7
 	addi.d	$a5, $a2, 7
 	addi.d	$a6, $a3, 28
@@ -50846,8 +50846,8 @@ _Z28test_goto_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB139_12
@@ -50900,8 +50900,8 @@ _Z28test_goto_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB139_19
@@ -51090,8 +51090,8 @@ _Z28test_goto_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	mulh.du	$a3, $a2, $a3
 	srli.d	$a3, $a3, 2
 	mul.d	$a0, $a3, $a0
+	sub.d	$a2, $a2, $a2
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$s8, $a0, -6
 	move	$s7, $zero
@@ -51138,13 +51138,13 @@ _Z28test_goto_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$t2, $a5, 16
 	ld.w	$a5, $a5, 20
 	add.d	$a6, $a7, $a6
-	add.d	$a6, $a6, $t0
-	add.d	$a6, $a6, $t1
-	add.d	$a6, $a6, $t2
+	add.d	$a7, $t0, $t1
+	add.d	$a6, $a6, $a7
+	add.d	$a5, $t2, $a5
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $fp
+	add.d	$a0, $a0, $a5
 	addi.d	$a4, $a4, 6
 	addi.d	$a5, $a2, 6
 	addi.d	$a6, $a3, 24
@@ -51193,8 +51193,8 @@ _Z28test_goto_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB140_12
@@ -51247,8 +51247,8 @@ _Z28test_goto_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB140_19
@@ -51446,8 +51446,8 @@ _Z28test_goto_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	addi.w	$a4, $zero, -4
 	and	$a2, $a2, $a4
 	add.d	$a2, $a2, $a3
-	sub.d	$a2, $a0, $a2
-	sub.d	$a0, $a2, $a0
+	sub.d	$a0, $a0, $a0
+	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -5
 	st.d	$a5, $sp, 64                    # 8-byte Folded Spill
@@ -51583,10 +51583,10 @@ _Z28test_goto_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	vinsgr2vr.w	$vr11, $a6, 3
 	vadd.w	$vr2, $vr4, $vr2
 	vadd.w	$vr3, $vr5, $vr3
-	vadd.w	$vr2, $vr2, $vr6
-	vadd.w	$vr3, $vr3, $vr7
-	vadd.w	$vr2, $vr2, $vr8
-	vadd.w	$vr3, $vr3, $vr9
+	vadd.w	$vr4, $vr6, $vr8
+	vadd.w	$vr2, $vr2, $vr4
+	vadd.w	$vr4, $vr7, $vr9
+	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr2, $vr2, $vr10
 	vadd.w	$vr3, $vr3, $vr11
 	vreplgr2vr.w	$vr4, $s3
@@ -51622,11 +51622,11 @@ _Z28test_goto_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$t1, $a4, 8
 	add.d	$a5, $a6, $a5
 	add.d	$a5, $a5, $a7
-	add.d	$a5, $a5, $t0
-	add.d	$a5, $a5, $t1
+	add.d	$a6, $t0, $t1
+	add.d	$a5, $a5, $a6
 	mul.d	$a5, $a5, $s3
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $a5
 	addi.d	$a3, $a3, 5
 	addi.d	$a2, $a2, 5
 	addi.d	$a4, $a4, 20
@@ -51682,8 +51682,8 @@ _Z28test_goto_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s3
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s1
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB141_18
@@ -51737,8 +51737,8 @@ _Z28test_goto_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB141_25
@@ -52047,10 +52047,10 @@ _Z28test_goto_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	vinsgr2vr.w	$vr9, $a6, 3
 	vadd.w	$vr2, $vr4, $vr2
 	vadd.w	$vr3, $vr5, $vr3
-	vadd.w	$vr2, $vr2, $vr6
-	vadd.w	$vr3, $vr3, $vr7
-	vadd.w	$vr2, $vr2, $vr8
-	vadd.w	$vr3, $vr3, $vr9
+	vadd.w	$vr4, $vr6, $vr8
+	vadd.w	$vr2, $vr2, $vr4
+	vadd.w	$vr4, $vr7, $vr9
+	vadd.w	$vr3, $vr3, $vr4
 	vreplgr2vr.w	$vr4, $s3
 	vmadd.w	$vr0, $vr2, $vr4
 	vreplgr2vr.w	$vr2, $s5
@@ -52082,11 +52082,11 @@ _Z28test_goto_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$a7, $a4, 0
 	ld.w	$t0, $a4, 4
 	add.d	$a5, $a6, $a5
-	add.d	$a5, $a5, $a7
-	add.d	$a5, $a5, $t0
+	add.d	$a6, $a7, $t0
+	add.d	$a5, $a5, $a6
 	mul.d	$a5, $a5, $s3
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $a5
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
 	addi.d	$a4, $a4, 16
@@ -52142,8 +52142,8 @@ _Z28test_goto_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s3
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s1
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB142_18
@@ -52197,8 +52197,8 @@ _Z28test_goto_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB142_25
@@ -52396,8 +52396,8 @@ _Z28test_goto_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	addi.w	$a4, $zero, -2
 	and	$a2, $a2, $a4
 	add.d	$a2, $a2, $a3
-	sub.d	$a2, $a0, $a2
-	sub.d	$a0, $a2, $a0
+	sub.d	$a0, $a0, $a0
+	sub.d	$a0, $a0, $a2
 	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -3
 	st.d	$a5, $sp, 64                    # 8-byte Folded Spill
@@ -52535,8 +52535,8 @@ _Z28test_goto_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	add.d	$a5, $a6, $a5
 	add.d	$a5, $a5, $a7
 	mul.d	$a5, $a5, $s3
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s1
+	add.d	$a0, $a0, $a5
 	addi.d	$a3, $a3, 3
 	addi.d	$a2, $a2, 3
 	addi.d	$a4, $a4, 12
@@ -52592,8 +52592,8 @@ _Z28test_goto_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s3
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB143_18
@@ -52647,8 +52647,8 @@ _Z28test_goto_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
+	add.w	$a0, $a0, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB143_25
@@ -52952,8 +52952,8 @@ _Z28test_goto_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$a6, $a4, 0
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s0
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $s2
+	add.d	$a0, $a0, $a5
 	addi.d	$a3, $a3, 2
 	addi.d	$a2, $a2, 2
 	addi.d	$a4, $a4, 8
@@ -53009,8 +53009,8 @@ _Z28test_goto_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s0
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB144_18
@@ -53294,8 +53294,8 @@ _Z28test_goto_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $fp
-	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB145_10

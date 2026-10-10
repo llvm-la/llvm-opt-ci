@@ -171,8 +171,8 @@ cdist01:                                # @cdist01
 	srli.d	$a4, $a4, 22
 	ldx.w	$a4, $a6, $a4
 	add.d	$a5, $t0, $a5
-	add.d	$a2, $a5, $a2
-	add.w	$a4, $a2, $a4
+	add.d	$a2, $a2, $a4
+	add.w	$a4, $a5, $a2
 	ori	$a5, $zero, 1
 	ori	$a2, $zero, 2
 	blt	$a5, $a4, .LBB2_11
@@ -229,8 +229,8 @@ cdist01:                                # @cdist01
 	andi	$t3, $t3, 508
 	ldx.w	$t3, $t2, $t3
 	add.d	$a4, $t4, $a4
-	add.d	$a4, $a4, $t5
-	add.d	$a4, $a4, $t6
+	add.d	$t4, $t5, $t6
+	add.d	$a4, $a4, $t4
 	add.w	$a4, $a4, $t3
 	bge	$t1, $a4, .LBB2_7
 .LBB2_11:
@@ -334,8 +334,8 @@ cdist:                                  # @cdist
 	srli.d	$a4, $a4, 22
 	ldx.w	$a4, $a7, $a4
 	add.d	$a5, $t0, $a5
-	add.d	$a2, $a5, $a2
-	add.w	$a2, $a2, $a4
+	add.d	$a2, $a2, $a4
+	add.w	$a2, $a5, $a2
 	ori	$a4, $zero, 2
 	bge	$a6, $a4, .LBB3_5
 	b	.LBB3_9
@@ -384,8 +384,8 @@ cdist:                                  # @cdist
 	andi	$t1, $t1, 508
 	ldx.w	$t1, $t0, $t1
 	add.d	$a2, $t2, $a2
-	add.d	$a2, $a2, $t3
-	add.d	$a2, $a2, $t4
+	add.d	$t2, $t3, $t4
+	add.d	$a2, $a2, $t2
 	add.w	$a2, $a2, $t1
 	b	.LBB3_6
 .LBB3_9:
@@ -1092,7 +1092,7 @@ cactive:                                # @cactive
 	srli.d	$a1, $a1, 22
 	ldx.w	$a1, $a3, $a1
 	add.d	$a2, $a4, $a2
-	add.d	$a2, $a2, $a5
+	add.d	$a1, $a5, $a1
 	add.w	$s0, $a2, $a1
 	ori	$a1, $zero, 1
 	blt	$a1, $s0, .LBB6_11
@@ -1141,8 +1141,8 @@ cactive:                                # @cactive
 .LBB6_9:                                # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $s2, 0
 	srli.d	$a2, $a1, 1
-	and	$a1, $a1, $a2
 	and	$a1, $a1, $s4
+	and	$a1, $a1, $a2
 	beq	$a1, $s4, .LBB6_8
 # %bb.10:                               #   in Loop: Header=BB6_9 Depth=1
 	xor	$a0, $a1, $s4
@@ -1159,8 +1159,8 @@ cactive:                                # @cactive
 	andi	$a4, $a4, 508
 	ldx.w	$a4, $s5, $a4
 	add.d	$a1, $a1, $s0
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $a3
 	add.w	$s0, $a1, $a4
 	bge	$s7, $s0, .LBB6_7
 .LBB6_11:

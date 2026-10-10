@@ -84,13 +84,13 @@ _Z13dotableswitchP9Classfile:           # @_Z13dotableswitchP9Classfile
 	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
 	ld.bu	$s8, $a0, 1
 	ld.bu	$a3, $a0, 2
-	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
-	ld.bu	$a3, $a0, 3
 	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
+	ld.bu	$a3, $a0, 3
+	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
 	addi.d	$a3, $a0, 8
 	st.d	$a3, $s3, 0
 	ld.w	$a3, $a0, 4
-	ld.d	$s7, $a4, -8
+	ld.d	$s6, $a4, -8
 	revb.2w	$s4, $a3
 	addi.d	$a1, $a1, 12
 	st.w	$a1, $s1, 0
@@ -101,8 +101,8 @@ _Z13dotableswitchP9Classfile:           # @_Z13dotableswitchP9Classfile
 	st.d	$a0, $s3, 0
 	revb.2w	$s5, $a2
 	sub.d	$a0, $s5, $s4
-	addi.w	$s6, $a0, 1
-	bstrpick.d	$a0, $s6, 31, 0
+	addi.w	$s7, $a0, 1
+	bstrpick.d	$a0, $s7, 31, 0
 	slli.d	$a0, $a0, 4
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
@@ -111,7 +111,7 @@ _Z13dotableswitchP9Classfile:           # @_Z13dotableswitchP9Classfile
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	ld.w	$a0, $s7, 16
+	ld.w	$a0, $s6, 16
 	ori	$a1, $zero, 1
 	st.w	$a1, $s0, 8
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
@@ -129,16 +129,16 @@ _Z13dotableswitchP9Classfile:           # @_Z13dotableswitchP9Classfile
 	or	$a1, $a2, $a1
 	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
 	vld	$vr0, $a2, %pc_lo12(.LCPI0_0)
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
-	slli.d	$a2, $a2, 8
-	or	$a1, $a1, $a2
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	slli.d	$a2, $a2, 8
+	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	or	$a2, $a2, $a3
 	or	$a1, $a1, $a2
 	vst	$vr0, $a0, 0
 	st.d	$a0, $s0, 0
-	st.d	$s7, $s0, 24
+	st.d	$s6, $s0, 24
 	st.w	$a1, $s0, 40
-	st.w	$s6, $s0, 48
+	st.w	$s7, $s0, 48
 	st.d	$fp, $s0, 56
 	pcalau12i	$a0, %got_pc_hi20(donestkptr)
 	ld.d	$a0, $a0, %got_pc_lo12(donestkptr)
@@ -309,9 +309,9 @@ _Z10doluswitchP9Classfile:              # @_Z10doluswitchP9Classfile
 	st.d	$a3, $s3, 0
 	ld.bu	$s5, $a2, 0
 	ld.bu	$s6, $a2, 1
-	ld.bu	$s7, $a2, 2
-	ld.bu	$a3, $a2, 3
+	ld.bu	$a3, $a2, 2
 	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
+	ld.bu	$s7, $a2, 3
 	addi.d	$a3, $a2, 8
 	st.d	$a3, $s3, 0
 	ld.d	$s8, $a4, -8
@@ -347,9 +347,9 @@ _Z10doluswitchP9Classfile:              # @_Z10doluswitchP9Classfile
 	or	$a1, $a2, $a1
 	pcalau12i	$a2, %pc_hi20(.LCPI1_0)
 	vld	$vr0, $a2, %pc_lo12(.LCPI1_0)
-	slli.d	$a2, $s7, 8
-	or	$a1, $a1, $a2
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	slli.d	$a2, $a2, 8
+	or	$a2, $a2, $s7
 	or	$a1, $a1, $a2
 	vst	$vr0, $a0, 0
 	st.d	$a0, $s0, 0

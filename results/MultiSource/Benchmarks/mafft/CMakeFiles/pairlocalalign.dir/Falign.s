@@ -1874,8 +1874,8 @@ mymergesort:                            # @mymergesort
 	alsl.d	$a5, $a4, $fp, 3
 	sub.d	$a6, $s2, $a4
 	addi.d	$a6, $a6, 1
-	add.d	$a2, $a2, $s2
 	sub.d	$a2, $a2, $a4
+	add.d	$a2, $a2, $s2
 	addi.d	$a2, $a2, 1
 	.p2align	4, , 16
 .LBB1_10:                               # =>This Inner Loop Header: Depth=1

@@ -256,10 +256,10 @@ gsm_implode:                            # @gsm_implode
 	ld.h	$a3, $a1, 22
 	ld.b	$t1, $a1, 12
 	ld.h	$a5, $a1, 18
-	ld.b	$t3, $a1, 20
+	ld.b	$t2, $a1, 20
 	slli.d	$s3, $a3, 7
-	ld.h	$t5, $a1, 24
-	ld.b	$t6, $a1, 26
+	ld.h	$t6, $a1, 24
+	ld.b	$t5, $a1, 26
 	ld.h	$a4, $a1, 38
 	ld.h	$t0, $a1, 28
 	ld.b	$t7, $a1, 30
@@ -271,24 +271,24 @@ gsm_implode:                            # @gsm_implode
 	ld.b	$s0, $a1, 46
 	ld.d	$t4, $a1, 0
 	ld.w	$s6, $a1, 14
-	ld.h	$t2, $a1, 52
+	ld.h	$t3, $a1, 52
 	ld.b	$s2, $a1, 54
 	vinsgr2vr.d	$vr3, $t4, 0
 	vinsgr2vr.w	$vr4, $s6, 0
 	ld.w	$s6, $a1, 32
 	ld.h	$t4, $a1, 56
-	bstrins.d	$s3, $t5, 6, 4
-	ld.w	$t5, $a1, 48
+	bstrins.d	$s3, $t6, 6, 4
+	ld.w	$t6, $a1, 48
 	vinsgr2vr.w	$vr1, $s6, 0
 	ld.h	$s6, $a1, 58
 	bstrins.d	$s4, $s5, 6, 4
-	vinsgr2vr.w	$vr2, $t5, 0
-	ld.w	$t5, $a1, 66
+	vinsgr2vr.w	$vr2, $t6, 0
+	ld.w	$t6, $a1, 66
 	slli.d	$s5, $t4, 7
 	bstrins.d	$s5, $s6, 6, 4
 	ld.b	$s6, $a1, 60
-	vinsgr2vr.w	$vr0, $t5, 0
-	ld.h	$t5, $a1, 62
+	vinsgr2vr.w	$vr0, $t6, 0
+	ld.h	$t6, $a1, 62
 	vori.b	$vr5, $vr3, 0
 	vextrins.b	$vr5, $vr3, 20
 	vinsgr2vr.b	$vr5, $s1, 2
@@ -306,7 +306,7 @@ gsm_implode:                            # @gsm_implode
 	andi	$s4, $s4, 14
 	vinsgr2vr.b	$vr5, $a7, 10
 	vextrins.b	$vr5, $vr2, 178
-	vinsgr2vr.b	$vr5, $t2, 12
+	vinsgr2vr.b	$vr5, $t3, 12
 	vinsgr2vr.b	$vr5, $s4, 13
 	pcalau12i	$s4, %pc_hi20(.LCPI0_0)
 	vld	$vr6, $s4, %pc_lo12(.LCPI0_0)
@@ -344,23 +344,22 @@ gsm_implode:                            # @gsm_implode
 	st.b	$t8, $sp, 24
 	slli.d	$t7, $t7, 3
 	st.b	$t7, $sp, 23
-	slli.d	$t6, $t6, 1
-	st.b	$t6, $sp, 22
-	pcalau12i	$t6, %pc_hi20(.LCPI0_1)
-	vld	$vr8, $t6, %pc_lo12(.LCPI0_1)
-	slli.d	$t3, $t3, 5
-	st.b	$t3, $sp, 21
+	slli.d	$t5, $t5, 1
+	st.b	$t5, $sp, 22
+	pcalau12i	$t5, %pc_hi20(.LCPI0_1)
+	vld	$vr8, $t5, %pc_lo12(.LCPI0_1)
+	slli.d	$t2, $t2, 5
+	st.b	$t2, $sp, 21
 	slli.d	$t1, $t1, 3
 	st.b	$t1, $sp, 19
 	vshuf.h	$vr8, $vr4, $vr3
 	slli.d	$a6, $a6, 2
 	st.b	$a6, $sp, 18
 	vld	$vr3, $sp, 16
-	vinsgr2vr.b	$vr5, $t5, 14
+	vinsgr2vr.b	$vr5, $t6, 14
 	vextrins.b	$vr5, $vr0, 242
 	vsll.b	$vr4, $vr5, $vr6
 	vand.v	$vr3, $vr7, $vr3
-	vor.v	$vr3, $vr3, $vr4
 	vinsgr2vr.h	$vr8, $a0, 2
 	vinsgr2vr.h	$vr8, $a5, 4
 	vinsgr2vr.h	$vr8, $a3, 5
@@ -369,11 +368,11 @@ gsm_implode:                            # @gsm_implode
 	vreplvei.h	$vr1, $vr2, 0
 	vinsgr2vr.h	$vr1, $a4, 0
 	vinsgr2vr.h	$vr1, $a7, 1
-	vinsgr2vr.h	$vr1, $t2, 3
+	vinsgr2vr.h	$vr1, $t3, 3
 	vinsgr2vr.h	$vr1, $t4, 4
 	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
 	vld	$vr2, $a0, %pc_lo12(.LCPI0_2)
-	vinsgr2vr.h	$vr1, $t5, 5
+	vinsgr2vr.h	$vr1, $t6, 5
 	vextrins.h	$vr1, $vr0, 96
 	vinsgr2vr.h	$vr1, $s1, 7
 	vsrl.h	$vr0, $vr8, $vr2
@@ -382,11 +381,12 @@ gsm_implode:                            # @gsm_implode
 	lu32i.d	$a0, 65536
 	pcalau12i	$a3, %pc_hi20(.LCPI0_3)
 	vld	$vr2, $a3, %pc_lo12(.LCPI0_3)
-	vreplgr2vr.d	$vr4, $a0
-	vsrl.h	$vr1, $vr1, $vr4
+	vreplgr2vr.d	$vr5, $a0
+	vsrl.h	$vr1, $vr1, $vr5
 	vpickev.b	$vr0, $vr1, $vr0
 	vand.v	$vr0, $vr0, $vr2
 	vor.v	$vr0, $vr0, $vr3
+	vor.v	$vr0, $vr0, $vr4
 	vst	$vr0, $a2, 1
 	ld.h	$a0, $a1, 72
 	ld.h	$a4, $a1, 74

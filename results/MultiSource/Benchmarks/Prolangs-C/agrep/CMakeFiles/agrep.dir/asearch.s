@@ -272,8 +272,8 @@ asearch0:                               # @asearch0
 	and	$a6, $a6, $s3
 	srli.d	$t1, $a7, 1
 	and	$t1, $t1, $s2
-	or	$t0, $t0, $t1
 	or	$a6, $t0, $a6
+	or	$a6, $a6, $t1
 	or	$a6, $a6, $a0
 	st.w	$a6, $a4, 0
 	addi.d	$a5, $a5, 4
@@ -407,8 +407,8 @@ asearch0:                               # @asearch0
 	and	$a7, $a7, $s3
 	srli.d	$t2, $t0, 1
 	and	$t2, $t2, $s2
-	or	$t1, $t1, $t2
 	or	$a7, $t1, $a7
+	or	$a7, $a7, $t2
 	or	$a7, $a7, $a0
 	st.w	$a7, $a5, 0
 	addi.d	$a6, $a6, 4
@@ -448,8 +448,8 @@ asearch0:                               # @asearch0
 	and	$a6, $a6, $s3
 	srli.d	$t1, $a7, 1
 	and	$t1, $t1, $s2
-	or	$t0, $t0, $t1
 	or	$a6, $t0, $a6
+	or	$a6, $a6, $t1
 	or	$a6, $a6, $a2
 	st.w	$a6, $a4, 0
 	addi.d	$a5, $a5, 4
@@ -582,8 +582,8 @@ asearch0:                               # @asearch0
 	and	$a6, $a6, $s3
 	srli.d	$t1, $a7, 1
 	and	$t1, $t1, $s2
-	or	$t0, $t0, $t1
 	or	$a6, $t0, $a6
+	or	$a6, $a6, $t1
 	or	$a6, $a6, $a2
 	st.w	$a6, $a4, 0
 	addi.d	$a5, $a5, 4
@@ -909,8 +909,8 @@ asearch:                                # @asearch
 	bstrpick.d	$a4, $s3, 31, 1
 	and	$a4, $s8, $a4
 	or	$a2, $a2, $a4
-	or	$a2, $a2, $a3
 	or	$a2, $a2, $s4
+	or	$a2, $a2, $a3
 	beq	$fp, $t7, .LBB1_23
 # %bb.20:                               #   in Loop: Header=BB1_19 Depth=2
 	and	$a3, $s1, $s5
@@ -920,8 +920,8 @@ asearch:                                # @asearch
 	bstrpick.d	$a5, $s1, 31, 1
 	and	$a5, $s8, $a5
 	or	$a3, $a3, $a5
-	or	$a3, $a3, $a4
-	or	$t6, $a3, $s3
+	or	$a3, $a3, $s3
+	or	$t6, $a3, $a4
 	ori	$a3, $zero, 2
 	beq	$fp, $a3, .LBB1_23
 # %bb.21:                               #   in Loop: Header=BB1_19 Depth=2
@@ -932,8 +932,8 @@ asearch:                                # @asearch
 	bstrpick.d	$a5, $a6, 31, 1
 	and	$a5, $s8, $a5
 	or	$a3, $a3, $a5
-	or	$a3, $a3, $a4
-	or	$t1, $a3, $s1
+	or	$a3, $a3, $s1
+	or	$t1, $a3, $a4
 	ori	$a3, $zero, 3
 	beq	$fp, $a3, .LBB1_23
 # %bb.22:                               #   in Loop: Header=BB1_19 Depth=2
@@ -944,8 +944,8 @@ asearch:                                # @asearch
 	bstrpick.d	$a5, $t0, 31, 1
 	and	$a5, $s8, $a5
 	or	$a3, $a3, $a5
-	or	$a3, $a3, $a4
-	or	$a7, $a3, $a6
+	or	$a3, $a3, $a6
+	or	$a7, $a3, $a4
 	.p2align	4, , 16
 .LBB1_23:                               #   in Loop: Header=BB1_19 Depth=2
 	move	$s6, $s5
@@ -1073,8 +1073,8 @@ asearch:                                # @asearch
 	and	$a6, $a6, $s0
 	srli.d	$t1, $a7, 1
 	and	$t1, $t1, $s8
-	or	$t0, $t0, $t1
 	or	$a6, $t0, $a6
+	or	$a6, $a6, $t1
 	or	$a6, $a6, $a2
 	st.w	$a6, $a4, 0
 	addi.d	$a5, $a5, 4
@@ -1112,8 +1112,8 @@ asearch:                                # @asearch
 	bstrpick.d	$a6, $a2, 31, 1
 	and	$a6, $s2, $a6
 	or	$a4, $a4, $a6
-	or	$a4, $a4, $a5
-	or	$s3, $a4, $a0
+	or	$a4, $a4, $a0
+	or	$s3, $a4, $a5
 	beq	$fp, $t7, .LBB1_39
 # %bb.38:                               #   in Loop: Header=BB1_19 Depth=2
 	move	$s8, $s6
@@ -1124,8 +1124,8 @@ asearch:                                # @asearch
 	bstrpick.d	$a6, $t6, 31, 1
 	and	$a6, $s2, $a6
 	or	$a4, $a4, $a6
-	or	$a4, $a4, $a5
-	or	$s1, $a4, $a2
+	or	$a2, $a4, $a2
+	or	$s1, $a2, $a5
 	ori	$a2, $zero, 2
 	bne	$fp, $a2, .LBB1_53
 .LBB1_39:                               #   in Loop: Header=BB1_19 Depth=2
@@ -1251,8 +1251,8 @@ asearch:                                # @asearch
 	and	$a5, $a5, $s0
 	srli.d	$t0, $a6, 1
 	and	$t0, $t0, $s2
-	or	$a7, $a7, $t0
 	or	$a5, $a7, $a5
+	or	$a5, $a5, $t0
 	or	$a5, $a5, $a1
 	st.w	$a5, $a3, 0
 	addi.d	$a4, $a4, 4
@@ -1284,8 +1284,8 @@ asearch:                                # @asearch
 	bstrpick.d	$a5, $t1, 31, 1
 	and	$a5, $s2, $a5
 	or	$a2, $a2, $a5
-	or	$a2, $a2, $a4
-	or	$a6, $a2, $t6
+	or	$a2, $a2, $t6
+	or	$a6, $a2, $a4
 	ori	$a2, $zero, 3
 	beq	$fp, $a2, .LBB1_40
 # %bb.54:                               #   in Loop: Header=BB1_19 Depth=2
@@ -1296,8 +1296,8 @@ asearch:                                # @asearch
 	bstrpick.d	$a5, $a7, 31, 1
 	and	$a5, $s2, $a5
 	or	$a2, $a2, $a5
-	or	$a2, $a2, $a4
-	or	$t0, $a2, $t1
+	or	$a2, $a2, $t1
+	or	$t0, $a2, $a4
 	b	.LBB1_40
 	.p2align	4, , 16
 .LBB1_55:                               #   in Loop: Header=BB1_13 Depth=1

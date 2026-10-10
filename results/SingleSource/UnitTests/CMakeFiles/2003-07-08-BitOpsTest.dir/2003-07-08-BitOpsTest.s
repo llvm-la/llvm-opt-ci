@@ -7,14 +7,14 @@
 test:                                   # @test
 # %bb.0:
 	xor	$a4, $a1, $a0
-	xor	$a4, $a4, $a2
-	xor	$a7, $a4, $a3
+	xor	$a5, $a2, $a3
+	xor	$a7, $a4, $a5
 	or	$a4, $a1, $a0
-	or	$a4, $a4, $a2
-	or	$t0, $a4, $a3
+	or	$a5, $a2, $a3
+	or	$t0, $a4, $a5
 	and	$a4, $a1, $a0
-	and	$a4, $a4, $a2
-	and	$a6, $a4, $a3
+	and	$a5, $a2, $a3
+	and	$a6, $a4, $a5
 	andn	$a4, $a0, $a1
 	andn	$a5, $a2, $a3
 	xor	$a4, $a5, $a4

@@ -110,23 +110,23 @@ Ppmd8_EncodeSymbol:                     # @Ppmd8_EncodeSymbol
 	b	.LBB1_3
 .LBB1_7:
 	ld.bu	$a0, $s1, 3
-	ld.d	$a1, $fp, 56
-	ld.wu	$a2, $s1, 8
 	add.d	$a0, $fp, $a0
 	ld.bu	$a0, $a0, 855
-	ldx.bu	$a1, $a1, $a2
+	ld.d	$a1, $fp, 56
+	ld.wu	$a2, $s1, 8
 	slli.d	$a0, $a0, 7
-	add.d	$a1, $fp, $a1
-	ld.bu	$a1, $a1, 600
+	add.d	$a0, $fp, $a0
+	ldx.bu	$a1, $a1, $a2
 	ld.w	$a2, $fp, 32
 	ld.bu	$a3, $s1, 1
 	ld.w	$a4, $fp, 40
-	add.d	$a0, $fp, $a0
+	add.d	$a1, $fp, $a1
+	ld.bu	$a1, $a1, 600
+	add.d	$a2, $a2, $a3
+	srli.d	$a3, $a4, 26
+	andi	$a3, $a3, 32
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a2, $a1
-	add.d	$a1, $a1, $a3
-	srli.d	$a2, $a4, 26
-	andi	$a2, $a2, 32
-	add.d	$a1, $a1, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	alsl.d	$a0, $a1, $a0, 1
 	lu12i.w	$a1, 1

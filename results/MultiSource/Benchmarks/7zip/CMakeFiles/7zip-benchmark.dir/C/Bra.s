@@ -225,7 +225,7 @@ PPC_Convert:                            # @PPC_Convert
 	and	$t2, $t2, $a6
 	add.d	$t5, $a2, $t2
 	add.w	$t3, $a2, $t3
-	add.d	$t3, $t3, $t4
+	add.d	$t2, $t4, $t2
 	add.d	$t2, $t3, $t2
 	srli.d	$t3, $t2, 24
 	bstrins.d	$t3, $a7, 63, 2
@@ -311,12 +311,12 @@ SPARC_Convert:                          # @SPARC_Convert
 	slli.d	$a1, $a1, 24
 	add.d	$t4, $a0, $a4
 	ld.bu	$t5, $t4, 2
-	slli.d	$t3, $t3, 16
 	ld.bu	$t6, $t4, 3
+	slli.d	$t3, $t3, 16
 	or	$a1, $t3, $a1
 	slli.d	$t3, $t5, 8
+	or	$t3, $t3, $t6
 	or	$a1, $a1, $t3
-	or	$a1, $a1, $t6
 	masknez	$t3, $a2, $a3
 	maskeqz	$t5, $a6, $a3
 	or	$t3, $t5, $t3

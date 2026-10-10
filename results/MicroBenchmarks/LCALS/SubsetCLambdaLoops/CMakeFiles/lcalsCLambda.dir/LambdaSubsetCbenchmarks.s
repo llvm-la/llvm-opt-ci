@@ -4442,10 +4442,10 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	vpickve2gr.h	$a0, $vr3, 4
 	andi	$a0, $a0, 1
 	slli.d	$a0, $a0, 6
+	vpickve2gr.h	$t1, $vr3, 6
+	slli.d	$t1, $t1, 7
+	or	$a0, $a0, $t1
 	or	$a0, $a1, $a0
-	vpickve2gr.h	$a1, $vr3, 6
-	slli.d	$a1, $a1, 7
-	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255
 	ld.d	$s7, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
@@ -4528,10 +4528,10 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	vpickve2gr.h	$a0, $vr3, 4
 	andi	$a0, $a0, 1
 	slli.d	$a0, $a0, 6
+	vpickve2gr.h	$t1, $vr3, 6
+	slli.d	$t1, $t1, 7
+	or	$a0, $a0, $t1
 	or	$a0, $a1, $a0
-	vpickve2gr.h	$a1, $vr3, 6
-	slli.d	$a1, $a1, 7
-	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255
 	bnez	$a0, .LBB21_64
 # %bb.81:                               #   in Loop: Header=BB21_6 Depth=1
@@ -4609,10 +4609,10 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	vpickve2gr.h	$a0, $vr3, 4
 	andi	$a0, $a0, 1
 	slli.d	$a0, $a0, 6
+	vpickve2gr.h	$t1, $vr3, 6
+	slli.d	$t1, $t1, 7
+	or	$a0, $a0, $t1
 	or	$a0, $a1, $a0
-	vpickve2gr.h	$a1, $vr3, 6
-	slli.d	$a1, $a1, 7
-	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255
 	bnez	$a0, .LBB21_67
 # %bb.86:                               #   in Loop: Header=BB21_6 Depth=1
@@ -4690,10 +4690,10 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	vpickve2gr.h	$a0, $vr3, 4
 	andi	$a0, $a0, 1
 	slli.d	$a0, $a0, 6
+	vpickve2gr.h	$t1, $vr3, 6
+	slli.d	$t1, $t1, 7
+	or	$a0, $a0, $t1
 	or	$a0, $a1, $a0
-	vpickve2gr.h	$a1, $vr3, 6
-	slli.d	$a1, $a1, 7
-	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255
 	bnez	$a0, .LBB21_70
 # %bb.91:                               #   in Loop: Header=BB21_6 Depth=1
@@ -4771,10 +4771,10 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	vpickve2gr.h	$a0, $vr3, 4
 	andi	$a0, $a0, 1
 	slli.d	$a0, $a0, 6
+	vpickve2gr.h	$t1, $vr3, 6
+	slli.d	$t1, $t1, 7
+	or	$a0, $a0, $t1
 	or	$a0, $a1, $a0
-	vpickve2gr.h	$a1, $vr3, 6
-	slli.d	$a1, $a1, 7
-	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255
 	bnez	$a0, .LBB21_73
 # %bb.96:                               #   in Loop: Header=BB21_6 Depth=1

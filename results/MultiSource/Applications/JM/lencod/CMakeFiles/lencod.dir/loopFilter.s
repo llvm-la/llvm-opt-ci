@@ -537,7 +537,7 @@ GetStrength:                            # @GetStrength
 	addi.d	$s6, $s6, 1
 	addi.w	$s5, $s5, 1
 	ori	$a0, $zero, 16
-	beq	$s6, $a0, .LBB2_52
+	beq	$s6, $a0, .LBB2_53
 .LBB2_5:                                # =>This Inner Loop Header: Depth=1
 	masknez	$a0, $s5, $s8
 	maskeqz	$a1, $fp, $s8
@@ -775,7 +775,7 @@ GetStrength:                            # @GetStrength
 	bge	$t0, $t1, .LBB2_48
 # %bb.45:                               #   in Loop: Header=BB2_5 Depth=1
 	move	$a0, $zero
-	b	.LBB2_51
+	b	.LBB2_52
 .LBB2_46:                               #   in Loop: Header=BB2_5 Depth=1
 	ldx.d	$a3, $t2, $a3
 	ldx.d	$a2, $a3, $a2
@@ -810,7 +810,6 @@ GetStrength:                            # @GetStrength
 	sub.w	$a0, $a0, $a2
 	slt	$a0, $a0, $a6
 	xori	$a0, $a0, 1
-	or	$a0, $a0, $a1
 	b	.LBB2_51
 .LBB2_49:                               #   in Loop: Header=BB2_5 Depth=1
 	ldx.d	$a4, $t2, $a1
@@ -831,24 +830,25 @@ GetStrength:                            # @GetStrength
 	slt	$a1, $a1, $a4
 	xori	$a1, $a1, 1
 	sub.d	$a3, $a3, $a6
-	addi.d	$a3, $a3, -4
 	ld.h	$a2, $a2, 2
 	ld.h	$a0, $a0, 2
+	addi.d	$a3, $a3, -4
 	sltui	$a3, $a3, -7
 	or	$a3, $a5, $a3
-	or	$a1, $a3, $a1
 	sub.d	$a0, $a2, $a0
 	srai.d	$a2, $a0, 63
 	xor	$a0, $a0, $a2
 	sub.d	$a0, $a0, $a2
 	slt	$a0, $a0, $a4
 	xori	$a0, $a0, 1
-	or	$a0, $a1, $a0
+	or	$a0, $a3, $a0
 .LBB2_51:                               #   in Loop: Header=BB2_5 Depth=1
+	or	$a0, $a0, $a1
+.LBB2_52:                               #   in Loop: Header=BB2_5 Depth=1
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	stx.b	$a0, $a1, $s6
 	b	.LBB2_4
-.LBB2_52:
+.LBB2_53:
 	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
@@ -1340,8 +1340,8 @@ EdgeLoop:                               # @EdgeLoop
 	add.d	$a6, $t1, $t2
 	beqz	$t0, .LBB3_39
 .LBB3_38:                               #   in Loop: Header=BB3_7 Depth=1
-	add.d	$a3, $a6, $a3
 	add.d	$a3, $a3, $a4
+	add.d	$a3, $a6, $a3
 	addi.d	$a3, $a3, 2
 	srli.d	$a3, $a3, 2
 .LBB3_39:                               #   in Loop: Header=BB3_7 Depth=1
@@ -1351,8 +1351,8 @@ EdgeLoop:                               # @EdgeLoop
 	ld.d	$a7, $sp, 64                    # 8-byte Folded Reload
 	beqz	$a7, .LBB3_41
 # %bb.40:                               #   in Loop: Header=BB3_7 Depth=1
-	add.d	$a3, $a6, $a2
-	add.d	$a3, $a3, $a5
+	add.d	$a3, $a2, $a5
+	add.d	$a3, $a6, $a3
 	addi.d	$a3, $a3, 2
 	srli.d	$a3, $a3, 2
 .LBB3_41:                               #   in Loop: Header=BB3_7 Depth=1

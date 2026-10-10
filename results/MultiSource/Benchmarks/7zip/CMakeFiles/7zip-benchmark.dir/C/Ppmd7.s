@@ -593,13 +593,13 @@ Ppmd7_Update1:                          # @Ppmd7_Update1
 	ld.w	$a2, $a0, 24
 	bnez	$a2, .LBB6_6
 # %bb.4:
-	ld.hu	$a2, $a1, 4
-	ld.d	$a3, $a0, 64
+	ld.d	$a2, $a0, 64
+	ld.hu	$a3, $a1, 4
 	ld.hu	$a1, $a1, 2
 	ld.d	$a4, $a0, 88
-	slli.d	$a2, $a2, 16
-	add.d	$a2, $a3, $a2
+	slli.d	$a3, $a3, 16
 	add.d	$a1, $a2, $a1
+	add.d	$a1, $a1, $a3
 	bgeu	$a4, $a1, .LBB6_6
 # %bb.5:
 	st.d	$a1, $a0, 8
@@ -797,22 +797,22 @@ Rescale:                                # @Rescale
 	ldx.bu	$a6, $a4, $a3
 	addi.d	$a3, $a5, -1
 	bstrpick.d	$a3, $a3, 31, 0
-	ldx.bu	$t1, $a4, $a3
-	bne	$a6, $t1, .LBB7_21
+	ldx.bu	$t0, $a4, $a3
+	bne	$a6, $t0, .LBB7_21
 # %bb.20:
 	ld.d	$a4, $fp, 64
 	b	.LBB7_29
 .LBB7_21:
 	addi.d	$a3, $fp, 276
-	slli.d	$a7, $t1, 2
+	slli.d	$a7, $t0, 2
 	ldx.wu	$a7, $a3, $a7
 	beqz	$a7, .LBB7_25
 # %bb.22:
 	ld.d	$a4, $fp, 64
-	ldx.w	$t2, $a4, $a7
-	alsl.d	$t1, $t1, $a3, 2
+	ldx.w	$t1, $a4, $a7
+	alsl.d	$t2, $t0, $a3, 2
 	add.d	$t0, $a4, $a7
-	st.w	$t2, $t1, 0
+	st.w	$t1, $t2, 0
 	move	$t1, $s1
 	.p2align	4, , 16
 .LBB7_23:                               # =>This Inner Loop Header: Depth=1
@@ -836,37 +836,37 @@ Rescale:                                # @Rescale
 	move	$s1, $t0
 	b	.LBB7_29
 .LBB7_25:
-	addi.d	$t0, $fp, 108
-	ldx.bu	$a5, $t0, $a6
-	ldx.bu	$t1, $t0, $t1
-	sub.d	$a7, $a5, $t1
-	addi.d	$a5, $a7, -1
+	addi.d	$a7, $fp, 108
+	ldx.bu	$a5, $a7, $a6
+	ldx.bu	$t1, $a7, $t0
+	sub.d	$t0, $a5, $t1
+	addi.d	$a5, $t0, -1
 	bstrpick.d	$a5, $a5, 31, 0
 	ldx.bu	$a6, $a4, $a5
-	ldx.bu	$a4, $t0, $a6
+	ldx.bu	$a4, $a7, $a6
 	slli.d	$a5, $t1, 3
 	alsl.d	$a5, $t1, $a5, 2
 	add.d	$a5, $s1, $a5
-	bne	$a7, $a4, .LBB7_27
+	bne	$t0, $a4, .LBB7_27
 # %bb.26:
 	ld.d	$a4, $fp, 64
 	b	.LBB7_28
 .LBB7_27:
 	addi.d	$a4, $a6, -1
 	bstrpick.d	$a6, $a4, 31, 0
-	ldx.bu	$t0, $t0, $a6
-	sub.d	$a4, $t0, $a7
+	ldx.bu	$a7, $a7, $a6
+	sub.d	$a4, $a7, $t0
 	nor	$a4, $a4, $zero
 	bstrpick.d	$a4, $a4, 31, 0
-	slli.d	$a7, $a4, 2
-	ldx.w	$t1, $a3, $a7
-	slli.d	$t2, $t0, 3
+	slli.d	$t0, $a4, 2
+	ldx.w	$t1, $a3, $t0
 	ld.d	$a4, $fp, 64
-	alsl.d	$t0, $t0, $t2, 2
-	stx.w	$t1, $a5, $t0
-	add.d	$t0, $a5, $t0
-	sub.d	$t0, $t0, $a4
-	stx.w	$t0, $a3, $a7
+	slli.d	$t2, $a7, 3
+	alsl.d	$a7, $a7, $t2, 2
+	stx.w	$t1, $a5, $a7
+	sub.d	$t1, $a5, $a4
+	add.d	$a7, $t1, $a7
+	stx.w	$a7, $a3, $t0
 .LBB7_28:
 	slli.d	$a6, $a6, 2
 	ldx.w	$a7, $a3, $a6
@@ -916,13 +916,13 @@ Ppmd7_Update1_0:                        # @Ppmd7_Update1_0
 	ld.w	$a2, $a0, 24
 	bnez	$a2, .LBB8_5
 # %bb.3:
-	ld.hu	$a2, $a1, 4
-	ld.d	$a3, $a0, 64
+	ld.d	$a2, $a0, 64
+	ld.hu	$a3, $a1, 4
 	ld.hu	$a1, $a1, 2
 	ld.d	$a4, $a0, 88
-	slli.d	$a2, $a2, 16
-	add.d	$a2, $a3, $a2
+	slli.d	$a3, $a3, 16
 	add.d	$a1, $a2, $a1
+	add.d	$a1, $a1, $a3
 	bgeu	$a4, $a1, .LBB8_5
 # %bb.4:
 	st.d	$a1, $a0, 8
@@ -960,13 +960,13 @@ Ppmd7_UpdateBin:                        # @Ppmd7_UpdateBin
 	st.w	$a2, $a0, 44
 	bnez	$a3, .LBB9_3
 # %bb.1:
-	ld.hu	$a2, $a1, 4
-	ld.d	$a3, $a0, 64
+	ld.d	$a2, $a0, 64
+	ld.hu	$a3, $a1, 4
 	ld.hu	$a1, $a1, 2
 	ld.d	$a4, $a0, 88
-	slli.d	$a2, $a2, 16
-	add.d	$a2, $a3, $a2
+	slli.d	$a3, $a3, 16
 	add.d	$a1, $a2, $a1
+	add.d	$a1, $a1, $a3
 	bgeu	$a4, $a1, .LBB9_3
 # %bb.2:
 	st.d	$a1, $a0, 8
@@ -1511,8 +1511,8 @@ CreateSuccessors:                       # @CreateSuccessors
 	ld.bu	$a2, $a1, -5
 	ld.hu	$a3, $s1, 2
 	addi.d	$a1, $a2, -1
-	add.d	$a0, $a2, $a0
 	sub.d	$a0, $a3, $a0
+	sub.d	$a0, $a0, $a2
 	addi.d	$a0, $a0, 1
 	slli.d	$a2, $a1, 1
 	bgeu	$a0, $a2, .LBB12_18
@@ -1794,11 +1794,10 @@ AllocUnitsRare:                         # @AllocUnitsRare
 	b	.LBB13_29
 	.p2align	4, , 16
 .LBB13_28:                              #   in Loop: Header=BB13_29 Depth=1
-	slli.d	$t3, $t4, 2
-	ldx.w	$t4, $a2, $t3
-	st.w	$t4, $t2, 0
-	sub.d	$t2, $t2, $a5
-	stx.w	$t2, $a2, $t3
+	slli.d	$t3, $t5, 2
+	ldx.w	$t5, $a2, $t3
+	st.w	$t5, $t2, 0
+	stx.w	$t4, $a2, $t3
 	move	$t4, $t1
 	beq	$t1, $a3, .LBB13_23
 .LBB13_29:                              # =>This Loop Header: Depth=1
@@ -1823,24 +1822,24 @@ AllocUnitsRare:                         # @AllocUnitsRare
 .LBB13_32:                              #   in Loop: Header=BB13_29 Depth=1
 	addi.d	$t4, $t3, -1
 	bstrpick.d	$t4, $t4, 31, 0
-	ldx.bu	$t4, $a6, $t4
-	ldx.bu	$t5, $a4, $t4
-	beq	$t3, $t5, .LBB13_28
+	ldx.bu	$t5, $a6, $t4
+	ldx.bu	$t6, $a4, $t5
+	sub.d	$t4, $t2, $a5
+	beq	$t3, $t6, .LBB13_28
 # %bb.33:                               #   in Loop: Header=BB13_29 Depth=1
-	addi.d	$t4, $t4, -1
-	bstrpick.d	$t4, $t4, 31, 0
-	ldx.bu	$t5, $a4, $t4
-	sub.d	$t3, $t5, $t3
+	addi.d	$t5, $t5, -1
+	bstrpick.d	$t5, $t5, 31, 0
+	ldx.bu	$t6, $a4, $t5
+	sub.d	$t3, $t6, $t3
 	nor	$t3, $t3, $zero
 	bstrpick.d	$t3, $t3, 31, 0
 	slli.d	$t3, $t3, 2
-	ldx.w	$t6, $a2, $t3
-	slli.d	$t7, $t5, 3
-	alsl.d	$t5, $t5, $t7, 2
-	add.d	$t7, $t2, $t5
-	stx.w	$t6, $t2, $t5
-	sub.d	$t5, $t7, $a5
-	stx.w	$t5, $a2, $t3
+	ldx.w	$t7, $a2, $t3
+	slli.d	$t8, $t6, 3
+	alsl.d	$t6, $t6, $t8, 2
+	stx.w	$t7, $t2, $t6
+	add.d	$t6, $t4, $t6
+	stx.w	$t6, $a2, $t3
 	b	.LBB13_28
 .Lfunc_end13:
 	.size	AllocUnitsRare, .Lfunc_end13-AllocUnitsRare

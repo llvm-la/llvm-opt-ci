@@ -830,12 +830,12 @@ main:                                   # @main
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
 	st.d	$a0, $s1, 56
 	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
 	vst	$vr0, $a0, 0
 	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
 	vst	$vr0, $a0, 16
+	st.d	$a0, $sp, 368                   # 8-byte Folded Spill
 	st.d	$s4, $a0, 32
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(malloc)
@@ -882,403 +882,403 @@ main:                                   # @main
 	ldx.d	$t6, $fp, $t4
 	ld.w	$t7, $t6, 0
 	ld.w	$t8, $a1, 0
-	ld.w	$s6, $t6, 4
-	ld.w	$s7, $a2, 0
 	ldx.d	$t5, $s1, $t4
 	mul.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
-	ld.w	$s6, $t6, 8
-	ld.w	$s7, $a3, 0
-	ld.w	$s8, $t6, 12
-	ld.w	$ra, $a4, 0
+	ld.w	$t8, $t6, 4
+	ld.w	$s6, $a2, 0
+	ld.w	$s7, $t6, 8
+	ld.w	$s8, $a3, 0
+	ld.w	$ra, $t6, 12
+	ld.w	$s3, $a4, 0
+	mul.d	$t8, $s6, $t8
 	add.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$t8, $s8, $s7
+	mul.d	$s3, $s3, $ra
 	ld.w	$s6, $t6, 16
 	ld.w	$s7, $a5, 0
 	ld.w	$s8, $t6, 20
 	ld.w	$ra, $a6, 0
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 24
 	ld.w	$s7, $a7, 0
 	ld.w	$s8, $t6, 28
 	ld.w	$ra, $t0, 0
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $s7, $s6
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 32
 	ld.w	$s7, $t1, 0
 	ld.w	$s8, $t6, 36
 	ld.w	$ra, $t2, 0
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	st.w	$t7, $t5, 0
 	ld.w	$t7, $t6, 0
 	ld.w	$t8, $a1, 4
-	ld.w	$s6, $t6, 4
-	ld.w	$s7, $a2, 4
 	mul.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
+	ld.w	$t8, $t6, 4
+	ld.w	$s3, $a2, 4
 	ld.w	$s6, $t6, 8
 	ld.w	$s7, $a3, 4
 	ld.w	$s8, $t6, 12
 	ld.w	$ra, $a4, 4
+	mul.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 16
 	ld.w	$s7, $a5, 4
 	ld.w	$s8, $t6, 20
 	ld.w	$ra, $a6, 4
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 24
 	ld.w	$s7, $a7, 4
 	ld.w	$s8, $t6, 28
 	ld.w	$ra, $t0, 4
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $s7, $s6
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 32
 	ld.w	$s7, $t1, 4
 	ld.w	$s8, $t6, 36
 	ld.w	$ra, $t2, 4
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	st.w	$t7, $t5, 4
 	ld.w	$t7, $t6, 0
 	ld.w	$t8, $a1, 8
-	ld.w	$s6, $t6, 4
-	ld.w	$s7, $a2, 8
 	mul.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
+	ld.w	$t8, $t6, 4
+	ld.w	$s3, $a2, 8
 	ld.w	$s6, $t6, 8
 	ld.w	$s7, $a3, 8
 	ld.w	$s8, $t6, 12
 	ld.w	$ra, $a4, 8
+	mul.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 16
 	ld.w	$s7, $a5, 8
 	ld.w	$s8, $t6, 20
 	ld.w	$ra, $a6, 8
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 24
 	ld.w	$s7, $a7, 8
 	ld.w	$s8, $t6, 28
 	ld.w	$ra, $t0, 8
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $s7, $s6
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 32
 	ld.w	$s7, $t1, 8
 	ld.w	$s8, $t6, 36
 	ld.w	$ra, $t2, 8
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	st.w	$t7, $t5, 8
 	ld.w	$t7, $t6, 0
 	ld.w	$t8, $a1, 12
-	ld.w	$s6, $t6, 4
-	ld.w	$s7, $a2, 12
 	mul.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
+	ld.w	$t8, $t6, 4
+	ld.w	$s3, $a2, 12
 	ld.w	$s6, $t6, 8
 	ld.w	$s7, $a3, 12
 	ld.w	$s8, $t6, 12
 	ld.w	$ra, $a4, 12
+	mul.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 16
 	ld.w	$s7, $a5, 12
 	ld.w	$s8, $t6, 20
 	ld.w	$ra, $a6, 12
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 24
 	ld.w	$s7, $a7, 12
 	ld.w	$s8, $t6, 28
 	ld.w	$ra, $t0, 12
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $s7, $s6
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 32
 	ld.w	$s7, $t1, 12
 	ld.w	$s8, $t6, 36
 	ld.w	$ra, $t2, 12
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	st.w	$t7, $t5, 12
 	ld.w	$t7, $t6, 0
 	ld.w	$t8, $a1, 16
-	ld.w	$s6, $t6, 4
-	ld.w	$s7, $a2, 16
 	mul.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
+	ld.w	$t8, $t6, 4
+	ld.w	$s3, $a2, 16
 	ld.w	$s6, $t6, 8
 	ld.w	$s7, $a3, 16
 	ld.w	$s8, $t6, 12
 	ld.w	$ra, $a4, 16
+	mul.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 16
 	ld.w	$s7, $a5, 16
 	ld.w	$s8, $t6, 20
 	ld.w	$ra, $a6, 16
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 24
 	ld.w	$s7, $a7, 16
 	ld.w	$s8, $t6, 28
 	ld.w	$ra, $t0, 16
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $s7, $s6
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 32
 	ld.w	$s7, $t1, 16
 	ld.w	$s8, $t6, 36
 	ld.w	$ra, $t2, 16
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	st.w	$t7, $t5, 16
 	ld.w	$t7, $t6, 0
 	ld.w	$t8, $a1, 20
-	ld.w	$s6, $t6, 4
-	ld.w	$s7, $a2, 20
 	mul.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
+	ld.w	$t8, $t6, 4
+	ld.w	$s3, $a2, 20
 	ld.w	$s6, $t6, 8
 	ld.w	$s7, $a3, 20
 	ld.w	$s8, $t6, 12
 	ld.w	$ra, $a4, 20
+	mul.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 16
 	ld.w	$s7, $a5, 20
 	ld.w	$s8, $t6, 20
 	ld.w	$ra, $a6, 20
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 24
 	ld.w	$s7, $a7, 20
 	ld.w	$s8, $t6, 28
 	ld.w	$ra, $t0, 20
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $s7, $s6
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 32
 	ld.w	$s7, $t1, 20
 	ld.w	$s8, $t6, 36
 	ld.w	$ra, $t2, 20
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	st.w	$t7, $t5, 20
 	ld.w	$t7, $t6, 0
 	ld.w	$t8, $a1, 24
-	ld.w	$s6, $t6, 4
-	ld.w	$s7, $a2, 24
 	mul.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
+	ld.w	$t8, $t6, 4
+	ld.w	$s3, $a2, 24
 	ld.w	$s6, $t6, 8
 	ld.w	$s7, $a3, 24
 	ld.w	$s8, $t6, 12
 	ld.w	$ra, $a4, 24
+	mul.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 16
 	ld.w	$s7, $a5, 24
 	ld.w	$s8, $t6, 20
 	ld.w	$ra, $a6, 24
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 24
 	ld.w	$s7, $a7, 24
 	ld.w	$s8, $t6, 28
 	ld.w	$ra, $t0, 24
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $s7, $s6
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 32
 	ld.w	$s7, $t1, 24
 	ld.w	$s8, $t6, 36
 	ld.w	$ra, $t2, 24
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	st.w	$t7, $t5, 24
 	ld.w	$t7, $t6, 0
 	ld.w	$t8, $a1, 28
-	ld.w	$s6, $t6, 4
-	ld.w	$s7, $a2, 28
 	mul.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
+	ld.w	$t8, $t6, 4
+	ld.w	$s3, $a2, 28
 	ld.w	$s6, $t6, 8
 	ld.w	$s7, $a3, 28
 	ld.w	$s8, $t6, 12
 	ld.w	$ra, $a4, 28
+	mul.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 16
 	ld.w	$s7, $a5, 28
 	ld.w	$s8, $t6, 20
 	ld.w	$ra, $a6, 28
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 24
 	ld.w	$s7, $a7, 28
 	ld.w	$s8, $t6, 28
 	ld.w	$ra, $t0, 28
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $s7, $s6
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 32
 	ld.w	$s7, $t1, 28
 	ld.w	$s8, $t6, 36
 	ld.w	$ra, $t2, 28
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	st.w	$t7, $t5, 28
 	ld.w	$t7, $t6, 0
 	ld.w	$t8, $a1, 32
-	ld.w	$s6, $t6, 4
-	ld.w	$s7, $a2, 32
 	mul.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
+	ld.w	$t8, $t6, 4
+	ld.w	$s3, $a2, 32
 	ld.w	$s6, $t6, 8
 	ld.w	$s7, $a3, 32
 	ld.w	$s8, $t6, 12
 	ld.w	$ra, $a4, 32
+	mul.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 16
 	ld.w	$s7, $a5, 32
 	ld.w	$s8, $t6, 20
 	ld.w	$ra, $a6, 32
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 24
 	ld.w	$s7, $a7, 32
 	ld.w	$s8, $t6, 28
 	ld.w	$ra, $t0, 32
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $s7, $s6
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 32
 	ld.w	$s7, $t1, 32
 	ld.w	$s8, $t6, 36
 	ld.w	$ra, $t2, 32
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	st.w	$t7, $t5, 32
 	ld.w	$t7, $t6, 0
 	ld.w	$t8, $a1, 36
-	ld.w	$s6, $t6, 4
-	ld.w	$s7, $a2, 36
 	mul.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
+	ld.w	$t8, $t6, 4
+	ld.w	$s3, $a2, 36
 	ld.w	$s6, $t6, 8
 	ld.w	$s7, $a3, 36
 	ld.w	$s8, $t6, 12
 	ld.w	$ra, $a4, 36
+	mul.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 16
 	ld.w	$s7, $a5, 36
 	ld.w	$s8, $t6, 20
 	ld.w	$ra, $a6, 36
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 24
 	ld.w	$s7, $a7, 36
 	ld.w	$s8, $t6, 28
 	ld.w	$ra, $t0, 36
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
-	mul.d	$t8, $ra, $s8
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $s7, $s6
+	add.d	$t8, $s3, $t8
+	mul.d	$s3, $ra, $s8
 	ld.w	$s6, $t6, 32
 	ld.w	$s7, $t1, 36
 	ld.w	$t6, $t6, 36
 	ld.w	$s8, $t2, 36
+	add.d	$t8, $s3, $t8
 	add.d	$t7, $t8, $t7
 	mul.d	$t8, $s7, $s6
-	add.d	$t7, $t8, $t7
 	mul.d	$t6, $s8, $t6
+	add.d	$t6, $t6, $t8
 	add.d	$t6, $t6, $t7
 	addi.d	$t4, $t4, 8
 	st.w	$t6, $t5, 36
@@ -1371,7 +1371,7 @@ main:                                   # @main
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	move	$a0, $s3
+	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 384                   # 8-byte Folded Reload

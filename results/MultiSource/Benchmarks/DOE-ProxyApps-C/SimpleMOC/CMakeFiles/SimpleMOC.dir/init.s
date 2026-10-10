@@ -45,8 +45,8 @@ calculate_derived_inputs:               # @calculate_derived_inputs
 	ftintrz.w.s	$fa0, $fa0
 	movfr2gr.s	$a4, $fa0
 	st.w	$a4, $a0, 88
+	mul.d	$a3, $a3, $a4
 	mul.d	$a1, $a1, $a3
-	mul.d	$a1, $a1, $a4
 	ld.d	$a3, $a0, 112
 	ld.w	$a4, $a0, 8
 	st.d	$a1, $a0, 96

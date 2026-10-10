@@ -18,7 +18,7 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	st.d	$s6, $sp, 248                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 240                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 232                   # 8-byte Folded Spill
-	move	$s5, $a1
+	move	$s4, $a1
 	vld	$vr0, $a1, 16
 	vslti.h	$vr1, $vr0, 0
 	vld	$vr2, $a1, 48
@@ -60,11 +60,11 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	vbsrl.v	$vr1, $vr0, 2
 	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.hu	$a0, $vr0, 0
-	st.d	$a6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
-	move	$s6, $a2
-	st.d	$a5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
+	move	$s5, $a2
+	st.d	$a5, $sp, 24                    # 8-byte Folded Spill
 	beqz	$a0, .LBB0_2
 # %bb.1:
 	vpickve2gr.h	$a0, $vr0, 0
@@ -85,10 +85,10 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	ori	$t8, $zero, 6
 .LBB0_3:
 	move	$a1, $zero
-	ld.h	$a0, $s5, 0
-	ld.h	$a2, $s5, 2
-	ld.h	$a3, $s5, 4
-	ld.h	$a4, $s5, 6
+	ld.h	$a0, $s4, 0
+	ld.h	$a2, $s4, 2
+	ld.h	$a3, $s4, 4
+	ld.h	$a4, $s4, 6
 	sra.w	$a0, $a0, $t8
 	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
 	sra.w	$a0, $a2, $t8
@@ -97,10 +97,10 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
 	sra.w	$a0, $a4, $t8
 	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
-	ld.h	$a0, $s5, 8
-	ld.h	$a2, $s5, 10
-	ld.h	$a3, $s5, 12
-	ld.h	$a4, $s5, 14
+	ld.h	$a0, $s4, 8
+	ld.h	$a2, $s4, 10
+	ld.h	$a3, $s4, 12
+	ld.h	$a4, $s4, 14
 	sra.w	$a0, $a0, $t8
 	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
 	sra.w	$a0, $a2, $t8
@@ -109,10 +109,10 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
 	sra.w	$a0, $a4, $t8
 	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
-	ld.h	$a0, $s5, 16
-	ld.h	$a2, $s5, 18
-	ld.h	$a3, $s5, 20
-	ld.h	$a4, $s5, 22
+	ld.h	$a0, $s4, 16
+	ld.h	$a2, $s4, 18
+	ld.h	$a3, $s4, 20
+	ld.h	$a4, $s4, 22
 	sra.w	$a0, $a0, $t8
 	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	sra.w	$a0, $a2, $t8
@@ -121,10 +121,10 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	sra.w	$a0, $a4, $t8
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	ld.h	$a0, $s5, 24
-	ld.h	$a2, $s5, 26
-	ld.h	$a3, $s5, 28
-	ld.h	$a4, $s5, 30
+	ld.h	$a0, $s4, 24
+	ld.h	$a2, $s4, 26
+	ld.h	$a3, $s4, 28
+	ld.h	$a4, $s4, 30
 	sra.w	$a0, $a0, $t8
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	sra.w	$a0, $a2, $t8
@@ -133,10 +133,10 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	sra.w	$a0, $a4, $t8
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
-	ld.h	$a0, $s5, 32
-	ld.h	$a2, $s5, 34
-	ld.h	$a3, $s5, 36
-	ld.h	$a4, $s5, 38
+	ld.h	$a0, $s4, 32
+	ld.h	$a2, $s4, 34
+	ld.h	$a3, $s4, 36
+	ld.h	$a4, $s4, 38
 	sra.w	$a0, $a0, $t8
 	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	sra.w	$a0, $a2, $t8
@@ -145,122 +145,122 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	sra.w	$a0, $a4, $t8
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	ld.h	$a0, $s5, 40
-	ld.h	$a2, $s5, 42
-	ld.h	$a3, $s5, 44
-	ld.h	$a4, $s5, 46
-	sra.w	$s4, $a0, $t8
+	ld.h	$a0, $s4, 40
+	ld.h	$a2, $s4, 42
+	ld.h	$a3, $s4, 44
+	ld.h	$a4, $s4, 46
+	sra.w	$a0, $a0, $t8
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	sra.w	$s3, $a2, $t8
 	sra.w	$s2, $a3, $t8
 	sra.w	$s0, $a4, $t8
-	ld.h	$a0, $s5, 48
-	ld.h	$a2, $s5, 50
-	ld.h	$a3, $s5, 52
-	ld.h	$a4, $s5, 54
+	ld.h	$a0, $s4, 48
+	ld.h	$a2, $s4, 50
+	ld.h	$a3, $s4, 52
+	ld.h	$a4, $s4, 54
 	sra.w	$s1, $a0, $t8
 	sra.w	$fp, $a2, $t8
 	sra.w	$a0, $a3, $t8
 	sra.w	$a2, $a4, $t8
-	ld.h	$a3, $s5, 56
-	ld.h	$a4, $s5, 58
-	ld.h	$a5, $s5, 60
-	ld.h	$a6, $s5, 62
+	ld.h	$a3, $s4, 56
+	ld.h	$a4, $s4, 58
+	ld.h	$a5, $s4, 60
+	ld.h	$a6, $s4, 62
 	sra.w	$a3, $a3, $t8
 	sra.w	$a4, $a4, $t8
 	sra.w	$a5, $a5, $t8
 	sra.w	$a6, $a6, $t8
-	ld.h	$a7, $s5, 64
-	ld.h	$t0, $s5, 66
-	ld.h	$t1, $s5, 68
-	ld.h	$t2, $s5, 70
+	ld.h	$a7, $s4, 64
+	ld.h	$t0, $s4, 66
+	ld.h	$t1, $s4, 68
+	ld.h	$t2, $s4, 70
 	sra.w	$a7, $a7, $t8
 	sra.w	$t0, $t0, $t8
 	sra.w	$t1, $t1, $t8
 	sra.w	$t2, $t2, $t8
-	ld.h	$t3, $s5, 72
-	ld.h	$t5, $s5, 74
-	ld.h	$t6, $s5, 76
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	ld.h	$t7, $s5, 78
+	ld.h	$t3, $s4, 72
+	ld.h	$t5, $s4, 74
+	ld.h	$t6, $s4, 76
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	ld.h	$t7, $s4, 78
 	sra.w	$t4, $t3, $t8
 	sra.w	$t5, $t5, $t8
 	sra.w	$t6, $t6, $t8
-	st.d	$t8, $sp, 16                    # 8-byte Folded Spill
+	st.d	$t8, $sp, 8                     # 8-byte Folded Spill
 	sra.w	$t7, $t7, $t8
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$s5, $s6, -40
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$s5, $s5, -40
 	ori	$t3, $zero, 40
 	ori	$t8, $zero, 40
 	.p2align	4, , 16
 .LBB0_4:                                # =>This Inner Loop Header: Depth=1
 	ld.h	$s6, $s5, -40
 	ld.h	$s7, $s5, -38
-	ld.d	$s8, $sp, 224                   # 8-byte Folded Reload
-	mul.d	$s6, $s6, $s8
+	ld.d	$s4, $sp, 224                   # 8-byte Folded Reload
+	mul.d	$s6, $s6, $s4
 	ld.h	$s8, $s5, -36
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	mul.d	$s7, $s7, $ra
+	ld.h	$ra, $s5, -34
+	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
+	mul.d	$s7, $s7, $s4
 	add.d	$s6, $s7, $s6
-	ld.h	$s7, $s5, -34
-	ld.d	$ra, $sp, 208                   # 8-byte Folded Reload
-	mul.d	$s8, $s8, $ra
-	add.d	$s6, $s6, $s8
+	ld.d	$s4, $sp, 208                   # 8-byte Folded Reload
+	mul.d	$s7, $s8, $s4
+	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
+	mul.d	$s8, $ra, $s4
+	add.d	$s7, $s7, $s8
 	ld.h	$s8, $s5, -32
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
-	mul.d	$s7, $s7, $ra
+	ld.h	$ra, $s5, -30
 	add.d	$s6, $s6, $s7
-	ld.h	$s7, $s5, -30
-	ld.d	$ra, $sp, 192                   # 8-byte Folded Reload
-	mul.d	$s8, $s8, $ra
-	add.d	$s6, $s6, $s8
-	ld.h	$s8, $s5, -28
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	mul.d	$s7, $s7, $ra
-	add.d	$s6, $s6, $s7
-	ld.h	$s7, $s5, -26
-	ld.d	$ra, $sp, 176                   # 8-byte Folded Reload
-	mul.d	$s8, $s8, $ra
-	add.d	$s6, $s6, $s8
+	ld.h	$s7, $s5, -28
+	ld.d	$s4, $sp, 192                   # 8-byte Folded Reload
+	mul.d	$s8, $s8, $s4
+	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
+	mul.d	$ra, $ra, $s4
+	add.d	$s8, $s8, $ra
+	ld.d	$s4, $sp, 176                   # 8-byte Folded Reload
+	mul.d	$s7, $s7, $s4
+	ld.h	$ra, $s5, -26
+	add.d	$s7, $s8, $s7
 	ld.h	$s8, $s5, -24
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	mul.d	$s7, $s7, $ra
 	add.d	$s6, $s6, $s7
-	ld.h	$s7, $s5, -22
-	ld.d	$ra, $sp, 160                   # 8-byte Folded Reload
-	mul.d	$s8, $s8, $ra
-	add.d	$s6, $s6, $s8
-	ld.h	$s8, $s5, -20
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	mul.d	$s7, $s7, $ra
-	add.d	$s6, $s6, $s7
-	ld.h	$s7, $s5, -18
-	ld.d	$ra, $sp, 144                   # 8-byte Folded Reload
-	mul.d	$s8, $s8, $ra
-	add.d	$s6, $s6, $s8
-	ld.h	$s8, $s5, -16
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	mul.d	$s7, $s7, $ra
-	add.d	$s6, $s6, $s7
-	ld.h	$s7, $s5, -14
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	mul.d	$s7, $ra, $s4
+	ld.h	$ra, $s5, -22
+	ld.d	$s4, $sp, 160                   # 8-byte Folded Reload
+	mul.d	$s8, $s8, $s4
+	ld.h	$s4, $s5, -20
+	add.d	$s7, $s7, $s8
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
+	mul.d	$s8, $ra, $s8
+	add.d	$s7, $s7, $s8
+	ld.d	$s8, $sp, 144                   # 8-byte Folded Reload
+	mul.d	$s4, $s4, $s8
+	ld.h	$s8, $s5, -18
+	add.d	$s4, $s7, $s4
+	ld.h	$s7, $s5, -16
+	add.d	$s4, $s6, $s4
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	mul.d	$s6, $s8, $s6
+	ld.h	$s8, $s5, -14
 	ld.d	$ra, $sp, 128                   # 8-byte Folded Reload
-	mul.d	$s8, $s8, $ra
-	add.d	$s6, $s6, $s8
-	ld.h	$s8, $s5, -12
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	mul.d	$s7, $s7, $ra
 	add.d	$s6, $s6, $s7
-	ld.h	$s7, $s5, -10
-	ld.d	$ra, $sp, 112                   # 8-byte Folded Reload
+	ld.h	$s7, $s5, -12
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	mul.d	$s8, $s8, $ra
+	ld.h	$ra, $s5, -10
 	add.d	$s6, $s6, $s8
+	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
+	mul.d	$s7, $s7, $s8
+	add.d	$s6, $s6, $s7
+	ld.d	$s7, $sp, 104                   # 8-byte Folded Reload
+	mul.d	$s7, $ra, $s7
 	ld.h	$s8, $s5, -8
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	mul.d	$s7, $s7, $ra
 	add.d	$s6, $s6, $s7
 	ld.h	$s7, $s5, -6
-	ld.d	$ra, $sp, 96                    # 8-byte Folded Reload
-	mul.d	$s8, $s8, $ra
-	add.d	$s6, $s6, $s8
+	add.d	$s4, $s4, $s6
+	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
+	mul.d	$s6, $s8, $s6
 	ld.h	$s8, $s5, -4
 	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
 	mul.d	$s7, $s7, $ra
@@ -272,16 +272,17 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	ld.h	$s8, $s5, 0
 	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
 	mul.d	$s7, $s7, $ra
+	ld.h	$ra, $s5, 2
 	add.d	$s6, $s6, $s7
-	ld.h	$s7, $s5, 2
-	mul.d	$s8, $s8, $s4
-	add.d	$s6, $s6, $s8
+	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	mul.d	$s7, $s8, $s7
+	add.d	$s6, $s6, $s7
+	mul.d	$s7, $ra, $s3
 	ld.h	$s8, $s5, 4
-	mul.d	$s7, $s7, $s3
 	add.d	$s6, $s6, $s7
 	ld.h	$s7, $s5, 6
-	mul.d	$s8, $s8, $s2
-	add.d	$s6, $s6, $s8
+	add.d	$s4, $s4, $s6
+	mul.d	$s6, $s8, $s2
 	ld.h	$s8, $s5, 8
 	mul.d	$s7, $s7, $s0
 	add.d	$s6, $s6, $s7
@@ -293,66 +294,67 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	add.d	$s6, $s6, $s7
 	ld.h	$s7, $s5, 14
 	mul.d	$s8, $s8, $a0
+	ld.h	$ra, $s5, 16
 	add.d	$s6, $s6, $s8
-	ld.h	$s8, $s5, 16
 	mul.d	$s7, $s7, $a2
 	add.d	$s6, $s6, $s7
-	ld.h	$s7, $s5, 18
-	mul.d	$s8, $s8, $a3
-	add.d	$s6, $s6, $s8
-	ld.h	$s8, $s5, 20
-	mul.d	$s7, $s7, $a4
+	mul.d	$s7, $ra, $a3
+	ld.h	$s8, $s5, 18
 	add.d	$s6, $s6, $s7
-	ld.h	$s7, $s5, 22
-	mul.d	$s8, $s8, $a5
-	add.d	$s6, $s6, $s8
-	ld.h	$s8, $s5, 24
-	mul.d	$s7, $s7, $a6
+	ld.h	$s7, $s5, 20
+	add.d	$s4, $s4, $s6
+	mul.d	$s6, $s8, $a4
+	ld.h	$s8, $s5, 22
+	mul.d	$s7, $s7, $a5
 	add.d	$s6, $s6, $s7
-	ld.h	$s7, $s5, 26
-	mul.d	$s8, $s8, $a7
+	ld.h	$s7, $s5, 24
+	mul.d	$s8, $s8, $a6
 	add.d	$s6, $s6, $s8
-	ld.h	$s8, $s5, 28
-	mul.d	$s7, $s7, $t0
+	ld.h	$s8, $s5, 26
+	mul.d	$s7, $s7, $a7
 	add.d	$s6, $s6, $s7
-	ld.h	$s7, $s5, 30
-	mul.d	$s8, $s8, $t1
+	ld.h	$s7, $s5, 28
+	mul.d	$s8, $s8, $t0
 	add.d	$s6, $s6, $s8
-	ld.h	$s8, $s5, 32
-	mul.d	$s7, $s7, $t2
+	ld.h	$s8, $s5, 30
+	mul.d	$s7, $s7, $t1
+	ld.h	$ra, $s5, 32
+	add.d	$s6, $s6, $s7
+	mul.d	$s7, $s8, $t2
+	add.d	$s6, $s6, $s7
+	mul.d	$s7, $ra, $t4
 	add.d	$s6, $s6, $s7
 	ld.h	$s7, $s5, 34
-	mul.d	$s8, $s8, $t4
-	add.d	$s6, $s6, $s8
 	ld.h	$s8, $s5, 36
+	add.d	$s4, $s4, $s6
+	ld.h	$s6, $s5, 38
 	mul.d	$s7, $s7, $t5
-	ld.h	$ra, $s5, 38
-	add.d	$s6, $s6, $s7
-	mul.d	$s7, $s8, $t6
-	add.d	$s6, $s6, $s7
-	mul.d	$s7, $ra, $t7
-	add.d	$s6, $s6, $s7
-	slt	$s7, $a1, $s6
-	masknez	$t3, $t3, $s7
-	maskeqz	$s8, $t8, $s7
-	or	$t3, $s8, $t3
-	maskeqz	$s6, $s6, $s7
-	masknez	$a1, $a1, $s7
+	mul.d	$s8, $s8, $t6
+	add.d	$s7, $s7, $s8
+	mul.d	$s6, $s6, $t7
+	add.d	$s6, $s7, $s6
+	add.d	$s4, $s4, $s6
+	slt	$s6, $a1, $s4
+	masknez	$t3, $t3, $s6
+	maskeqz	$s7, $t8, $s6
+	or	$t3, $s7, $t3
+	maskeqz	$s4, $s4, $s6
+	masknez	$a1, $a1, $s6
 	addi.d	$s5, $s5, -2
 	addi.d	$t8, $t8, 1
-	or	$a1, $s6, $a1
-	ori	$s6, $zero, 121
-	bne	$t8, $s6, .LBB0_4
+	or	$a1, $s4, $a1
+	ori	$s4, $zero, 121
+	bne	$t8, $s4, .LBB0_4
 # %bb.5:
 	slli.d	$a0, $a1, 1
 	ori	$a1, $zero, 6
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	sub.d	$a1, $a1, $a2
-	srl.d	$s4, $a0, $a1
-	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
+	srl.d	$s6, $a0, $a1
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	st.h	$t3, $s2, 0
-	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
-	beqz	$s4, .LBB0_16
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	beqz	$s6, .LBB0_16
 # %bb.6:
 	ext.w.h	$a0, $t3
 	slli.d	$a1, $a0, 1
@@ -537,12 +539,12 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	slli.d	$s5, $a0, 1
-	bge	$s4, $s5, .LBB0_10
+	bge	$s6, $s5, .LBB0_10
 # %bb.7:
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(gsm_norm)
 	jirl	$ra, $ra, 0
-	sll.d	$a1, $s4, $a0
+	sll.d	$a1, $s6, $a0
 	srli.d	$a1, $a1, 16
 	ext.w.h	$fp, $a1
 	sll.d	$a0, $s5, $a0
@@ -569,14 +571,14 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	bge	$a0, $fp, .LBB0_36
 .LBB0_10:
 	ori	$a0, $zero, 3
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	st.h	$a0, $a1, 0
 	ld.h	$a0, $s2, 0
-	ld.d	$t1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$t2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 40                    # 8-byte Folded Reload
 	sub.d	$a2, $t2, $t1
 	addi.w	$a1, $zero, -16
-	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 56                    # 8-byte Folded Reload
 	bltu	$a1, $a2, .LBB0_25
 # %bb.11:
 	alsl.d	$a2, $a0, $t2, 1
@@ -686,14 +688,14 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	vst	$vr0, $t1, 64
 	b	.LBB0_27
 .LBB0_16:
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	st.h	$zero, $a0, 0
 	ld.h	$a0, $s2, 0
-	ld.d	$t2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$t3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t3, $sp, 40                    # 8-byte Folded Reload
 	sub.d	$a2, $t3, $t2
 	addi.w	$a1, $zero, -16
-	ld.d	$t1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 56                    # 8-byte Folded Reload
 	bltu	$a1, $a2, .LBB0_23
 # %bb.17:
 	alsl.d	$a2, $a0, $t3, 1
@@ -883,14 +885,14 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	ret
 .LBB0_28:
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	st.h	$a0, $a1, 0
 	ld.h	$a0, $s2, 0
-	ld.d	$t2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$t3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t3, $sp, 40                    # 8-byte Folded Reload
 	sub.d	$a2, $t3, $t2
 	addi.w	$a1, $zero, -16
-	ld.d	$t1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 56                    # 8-byte Folded Reload
 	bltu	$a1, $a2, .LBB0_34
 # %bb.29:
 	alsl.d	$a2, $a0, $t3, 1
@@ -952,14 +954,14 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	b	.LBB0_27
 .LBB0_36:
 	ori	$a0, $zero, 2
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	st.h	$a0, $a1, 0
 	ld.h	$a0, $s2, 0
-	ld.d	$t2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$t3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t3, $sp, 40                    # 8-byte Folded Reload
 	sub.d	$a2, $t3, $t2
 	addi.w	$a1, $zero, -16
-	ld.d	$t1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 56                    # 8-byte Folded Reload
 	bltu	$a1, $a2, .LBB0_42
 # %bb.37:
 	alsl.d	$a2, $a0, $t3, 1

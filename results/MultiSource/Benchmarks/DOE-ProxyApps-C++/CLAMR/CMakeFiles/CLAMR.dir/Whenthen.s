@@ -6845,8 +6845,8 @@ _ZN2PP8Whenthen8check_wtERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	ldx.d	$a1, $a1, $a3
 	slli.d	$a2, $a2, 9
 	sub.d	$a0, $a0, $a2
-	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $s1
+	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, 1
 	ld.bu	$a0, $a0, 0
 	beqz	$a0, .LBB11_116
@@ -10217,8 +10217,8 @@ _ZN2PP8Whenthen14get_char_arrayERNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	ldx.d	$a1, $a1, $a3
 	slli.d	$a2, $a2, 9
 	sub.d	$a0, $a0, $a2
-	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $s8
+	add.d	$a0, $a1, $a0
 	ld.bu	$a0, $a0, 0
 	beqz	$a0, .LBB15_1
 .LBB15_73:                              #   in Loop: Header=BB15_2 Depth=1
@@ -11314,8 +11314,8 @@ _ZN2PP8Whenthen14list_conditionENSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	ldx.d	$a1, $a1, $a4
 	slli.d	$a3, $a3, 9
 	sub.d	$a0, $a0, $a3
-	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a1, $a0
 	ld.bu	$a0, $a0, 0
 	beqz	$a0, .LBB24_51
 .LBB24_28:                              #   in Loop: Header=BB24_2 Depth=1

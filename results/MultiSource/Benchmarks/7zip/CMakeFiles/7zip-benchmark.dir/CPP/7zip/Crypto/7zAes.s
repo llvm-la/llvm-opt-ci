@@ -1519,8 +1519,8 @@ _ZN7NCrypto7NSevenZ8CDecoder21SetDecoderProperties2EPKhj: # @_ZN7NCrypto7NSevenZ
 	move	$t2, $a7
 	andi	$a7, $a3, 28
 	add.d	$t0, $a2, $a7
-	add.d	$a2, $a2, $t2
-	add.d	$a2, $a1, $a2
+	add.d	$t1, $a1, $t2
+	add.d	$a2, $t1, $a2
 	sub.d	$t1, $t2, $a7
 	add.d	$t2, $t2, $a0
 	addi.d	$t2, $t2, 144
@@ -1704,8 +1704,8 @@ _ZThn176_N7NCrypto7NSevenZ8CDecoder21SetDecoderProperties2EPKhj: # @_ZThn176_N7N
 	move	$t2, $a7
 	andi	$a7, $a3, 28
 	add.d	$t0, $a2, $a7
-	add.d	$a2, $a2, $t2
-	add.d	$a2, $a1, $a2
+	add.d	$t1, $a1, $t2
+	add.d	$a2, $t1, $a2
 	sub.d	$t1, $t2, $a7
 	add.d	$t2, $t2, $a0
 	addi.d	$t2, $t2, -32

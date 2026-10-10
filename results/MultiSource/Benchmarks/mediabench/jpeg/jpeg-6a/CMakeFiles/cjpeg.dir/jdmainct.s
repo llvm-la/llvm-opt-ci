@@ -708,10 +708,10 @@ process_data_context_main:              # @process_data_context_main
 	vpickve2gr.h	$t8, $vr1, 4
 	andi	$t8, $t8, 1
 	slli.d	$t8, $t8, 6
+	vpickve2gr.h	$s4, $vr1, 6
+	slli.d	$s4, $s4, 7
+	or	$t8, $t8, $s4
 	or	$t8, $s2, $t8
-	vpickve2gr.h	$s2, $vr1, 6
-	slli.d	$s2, $s2, 7
-	or	$t8, $t8, $s2
 	andi	$s2, $t8, 255
 	move	$t8, $zero
 	bnez	$s2, .LBB2_42

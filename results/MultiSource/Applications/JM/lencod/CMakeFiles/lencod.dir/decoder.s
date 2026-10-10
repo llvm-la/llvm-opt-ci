@@ -911,56 +911,56 @@ Get_Reference_Pixel:                    # @Get_Reference_Pixel
 	or	$a1, $a1, $t1
 	addi.d	$a1, $a1, -2
 	slt	$t1, $a1, $a6
-	maskeqz	$a1, $a1, $t1
+	maskeqz	$t2, $a1, $t1
 	masknez	$t1, $a6, $t1
-	or	$a1, $a1, $t1
-	slt	$t1, $a2, $a5
-	masknez	$a2, $a2, $t1
-	maskeqz	$t1, $a5, $t1
-	or	$a2, $t1, $a2
-	addi.d	$a2, $a2, -2
-	slt	$t1, $a2, $a4
-	maskeqz	$a2, $a2, $t1
-	masknez	$t1, $a4, $t1
-	or	$a2, $a2, $t1
-	slli.d	$a2, $a2, 3
-	ldx.d	$t8, $a0, $a2
-	slli.d	$a2, $a1, 1
+	slt	$a1, $a2, $a5
+	masknez	$a2, $a2, $a1
+	maskeqz	$a1, $a5, $a1
+	or	$a1, $a1, $a2
+	addi.d	$a1, $a1, -2
+	slt	$a2, $a1, $a4
+	maskeqz	$a1, $a1, $a2
+	masknez	$a2, $a4, $a2
+	or	$a1, $a1, $a2
+	slli.d	$a1, $a1, 3
+	ldx.d	$t8, $a0, $a1
 	ori	$a1, $zero, 1
-	slt	$t1, $a1, $a7
-	masknez	$t2, $a1, $t1
-	maskeqz	$t1, $a7, $t1
-	or	$t1, $t1, $t2
-	addi.d	$t1, $t1, -1
-	slt	$t2, $t1, $a6
-	maskeqz	$t1, $t1, $t2
-	masknez	$t2, $a6, $t2
-	or	$t1, $t1, $t2
+	slt	$a2, $a1, $a7
+	masknez	$t3, $a1, $a2
+	maskeqz	$a2, $a7, $a2
+	or	$a2, $a2, $t3
+	addi.d	$a2, $a2, -1
+	slt	$t3, $a2, $a6
+	maskeqz	$a2, $a2, $t3
+	masknez	$t3, $a6, $t3
+	or	$a2, $a2, $t3
+	slli.d	$a2, $a2, 1
+	ldx.hu	$t3, $t8, $a2
+	or	$t1, $t2, $t1
 	slli.d	$t2, $t1, 1
 	ldx.hu	$t1, $t8, $t2
-	ldx.hu	$t3, $t8, $a2
-	alsl.d	$t1, $t1, $t1, 2
-	sub.d	$t5, $t3, $t1
-	srai.d	$t1, $a7, 63
-	andn	$t3, $a7, $t1
-	slt	$t4, $t3, $a6
-	maskeqz	$t3, $t3, $t4
-	masknez	$t4, $a6, $t4
-	or	$t3, $t3, $t4
+	alsl.d	$t5, $t3, $t3, 2
+	srai.d	$t4, $a7, 63
+	andn	$t3, $a7, $t4
+	slt	$t6, $t3, $a6
+	maskeqz	$t3, $t3, $t6
+	masknez	$t6, $a6, $t6
+	or	$t3, $t3, $t6
 	slli.d	$t3, $t3, 1
 	ldx.hu	$t6, $t8, $t3
-	or	$t1, $a7, $t1
-	addi.d	$t1, $t1, 1
-	slt	$t4, $t1, $a6
-	maskeqz	$t1, $t1, $t4
-	masknez	$t4, $a6, $t4
-	or	$t1, $t1, $t4
-	slli.d	$t4, $t1, 1
+	or	$t4, $a7, $t4
+	addi.d	$t4, $t4, 1
+	slt	$t7, $t4, $a6
+	maskeqz	$t4, $t4, $t7
+	masknez	$t7, $a6, $t7
+	or	$t4, $t4, $t7
+	slli.d	$t4, $t4, 1
 	ldx.hu	$t7, $t8, $t4
+	sub.d	$t5, $t1, $t5
 	ori	$t1, $zero, 20
 	mul.d	$t6, $t6, $t1
-	add.d	$t5, $t6, $t5
-	mul.d	$t6, $t7, $t1
+	mul.d	$t7, $t7, $t1
+	add.d	$t6, $t7, $t6
 	add.d	$fp, $t6, $t5
 	addi.w	$t7, $zero, -2
 	slt	$t5, $t7, $a7
@@ -985,78 +985,79 @@ Get_Reference_Pixel:                    # @Get_Reference_Pixel
 	masknez	$a6, $a6, $s1
 	or	$a6, $a7, $a6
 	slli.d	$a6, $a6, 1
-	slt	$a7, $a1, $a5
-	masknez	$s1, $a1, $a7
-	maskeqz	$a7, $a5, $a7
-	or	$a7, $a7, $s1
-	addi.d	$a7, $a7, -1
-	slt	$s1, $a7, $a4
-	maskeqz	$a7, $a7, $s1
-	masknez	$s1, $a4, $s1
-	or	$a7, $a7, $s1
-	slli.d	$a7, $a7, 3
-	ldx.d	$s1, $a0, $a7
 	ldx.hu	$a7, $t8, $a6
-	alsl.d	$t8, $s0, $s0, 2
-	sub.d	$t8, $fp, $t8
-	ldx.hu	$fp, $s1, $t2
-	add.d	$a7, $t8, $a7
-	ldx.hu	$t8, $s1, $a2
-	ldx.hu	$s0, $s1, $t3
+	slt	$t8, $a1, $a5
+	masknez	$s1, $a1, $t8
+	maskeqz	$t8, $a5, $t8
+	or	$t8, $t8, $s1
+	addi.d	$t8, $t8, -1
+	slt	$s1, $t8, $a4
+	maskeqz	$t8, $t8, $s1
+	masknez	$s1, $a4, $s1
+	or	$t8, $t8, $s1
+	slli.d	$t8, $t8, 3
+	ldx.d	$t8, $a0, $t8
+	alsl.d	$s0, $s0, $s0, 2
+	sub.d	$fp, $fp, $s0
+	add.d	$a7, $fp, $a7
+	ldx.hu	$fp, $t8, $a2
+	ldx.hu	$s0, $t8, $t2
+	ldx.hu	$s1, $t8, $t3
+	ldx.hu	$s2, $t8, $t4
 	alsl.d	$fp, $fp, $fp, 2
-	ldx.hu	$s2, $s1, $t4
-	sub.d	$t8, $t8, $fp
-	mul.d	$fp, $s0, $t1
-	add.d	$t8, $fp, $t8
-	mul.d	$fp, $s2, $t1
-	add.d	$t8, $fp, $t8
-	ldx.hu	$fp, $s1, $t5
-	srai.d	$s0, $a5, 63
-	andn	$s2, $a5, $s0
+	sub.d	$fp, $s0, $fp
+	mul.d	$s0, $s1, $t1
+	mul.d	$s1, $s2, $t1
+	add.d	$s0, $s1, $s0
+	add.d	$fp, $s0, $fp
+	ldx.hu	$s0, $t8, $t5
+	ldx.hu	$t8, $t8, $a6
+	srai.d	$s1, $a5, 63
+	andn	$s2, $a5, $s1
 	slt	$s3, $s2, $a4
 	maskeqz	$s2, $s2, $s3
 	masknez	$s3, $a4, $s3
 	or	$s2, $s2, $s3
 	slli.d	$s2, $s2, 3
 	ldx.d	$s2, $a0, $s2
-	ldx.hu	$s1, $s1, $a6
-	alsl.d	$fp, $fp, $fp, 2
-	sub.w	$t8, $t8, $fp
-	ldx.hu	$fp, $s2, $t2
-	add.d	$t8, $t8, $s1
-	ldx.hu	$s1, $s2, $a2
+	alsl.d	$s0, $s0, $s0, 2
+	sub.w	$fp, $fp, $s0
+	add.d	$t8, $fp, $t8
+	ldx.hu	$fp, $s2, $a2
+	ldx.hu	$s0, $s2, $t2
 	ldx.hu	$s3, $s2, $t3
-	alsl.d	$fp, $fp, $fp, 2
 	ldx.hu	$s4, $s2, $t4
-	sub.d	$fp, $s1, $fp
-	mul.d	$s1, $s3, $t1
-	add.d	$fp, $s1, $fp
-	mul.d	$s1, $s4, $t1
-	add.d	$fp, $s1, $fp
-	ldx.hu	$s1, $s2, $t5
-	or	$s0, $a5, $s0
-	addi.d	$s0, $s0, 1
-	slt	$s3, $s0, $a4
-	maskeqz	$s0, $s0, $s3
-	masknez	$s3, $a4, $s3
-	or	$s0, $s0, $s3
-	slli.d	$s0, $s0, 3
-	ldx.d	$s0, $a0, $s0
+	alsl.d	$fp, $fp, $fp, 2
+	sub.d	$fp, $s0, $fp
+	mul.d	$s0, $s3, $t1
+	mul.d	$s3, $s4, $t1
+	add.d	$s0, $s3, $s0
+	add.d	$fp, $s0, $fp
+	ldx.hu	$s0, $s2, $t5
 	ldx.hu	$s2, $s2, $a6
-	alsl.d	$s1, $s1, $s1, 2
-	sub.d	$fp, $fp, $s1
-	ldx.hu	$s1, $s0, $t2
+	or	$s1, $a5, $s1
+	addi.d	$s1, $s1, 1
+	slt	$s3, $s1, $a4
+	maskeqz	$s1, $s1, $s3
+	masknez	$s3, $a4, $s3
+	or	$s1, $s1, $s3
+	slli.d	$s1, $s1, 3
+	ldx.d	$s1, $a0, $s1
+	alsl.d	$s0, $s0, $s0, 2
+	sub.d	$fp, $fp, $s0
 	add.d	$fp, $fp, $s2
-	ldx.hu	$s2, $s0, $a2
-	ldx.hu	$s3, $s0, $t3
-	alsl.d	$s1, $s1, $s1, 2
-	ldx.hu	$s4, $s0, $t4
-	sub.d	$s1, $s2, $s1
+	ldx.hu	$s0, $s1, $a2
+	ldx.hu	$s2, $s1, $t2
+	ldx.hu	$s3, $s1, $t3
+	ldx.hu	$s4, $s1, $t4
+	alsl.d	$s0, $s0, $s0, 2
+	sub.d	$s0, $s2, $s0
 	mul.d	$s2, $s3, $t1
-	add.d	$s1, $s2, $s1
-	mul.d	$s2, $s4, $t1
-	add.d	$s1, $s2, $s1
-	ldx.hu	$s2, $s0, $t5
+	mul.d	$s3, $s4, $t1
+	add.d	$s2, $s3, $s2
+	add.d	$s0, $s2, $s0
+	ldx.hu	$s2, $s1, $t5
+	ldx.hu	$s1, $s1, $a6
 	slt	$s3, $t7, $a5
 	masknez	$t7, $t7, $s3
 	maskeqz	$s3, $a5, $s3
@@ -1068,24 +1069,24 @@ Get_Reference_Pixel:                    # @Get_Reference_Pixel
 	or	$t7, $t7, $s3
 	slli.d	$t7, $t7, 3
 	ldx.d	$s3, $a0, $t7
-	ldx.hu	$t7, $s0, $a6
-	alsl.d	$s0, $s2, $s2, 2
-	sub.d	$s0, $s1, $s0
-	ldx.hu	$s1, $s3, $t2
-	add.d	$t7, $s0, $t7
+	alsl.d	$t7, $s2, $s2, 2
+	sub.d	$t7, $s0, $t7
+	add.d	$t7, $t7, $s1
 	ldx.hu	$s0, $s3, $a2
+	ldx.hu	$s1, $s3, $t2
 	ldx.hu	$s2, $s3, $t3
-	alsl.d	$s1, $s1, $s1, 2
 	ldx.hu	$s4, $s3, $t4
-	sub.d	$s0, $s0, $s1
+	alsl.d	$s0, $s0, $s0, 2
+	sub.d	$s0, $s1, $s0
 	mul.d	$s1, $s2, $t1
+	mul.d	$s2, $s4, $t1
+	add.d	$s1, $s2, $s1
 	add.d	$s0, $s1, $s0
-	mul.d	$s1, $s4, $t1
-	add.d	$s0, $s1, $s0
-	slt	$s1, $t6, $a5
-	masknez	$t6, $t6, $s1
-	maskeqz	$a5, $a5, $s1
 	ldx.hu	$s1, $s3, $t5
+	ldx.hu	$s2, $s3, $a6
+	slt	$s3, $t6, $a5
+	masknez	$t6, $t6, $s3
+	maskeqz	$a5, $a5, $s3
 	or	$a5, $a5, $t6
 	addi.d	$a5, $a5, 3
 	slt	$t6, $a5, $a4
@@ -1095,22 +1096,21 @@ Get_Reference_Pixel:                    # @Get_Reference_Pixel
 	slli.d	$a4, $a4, 3
 	ldx.d	$a0, $a0, $a4
 	alsl.d	$a4, $s1, $s1, 2
-	ldx.hu	$a5, $s3, $a6
 	sub.d	$a4, $s0, $a4
-	ldx.hu	$t2, $a0, $t2
+	add.w	$a4, $a4, $s2
 	ldx.hu	$a2, $a0, $a2
-	add.w	$a4, $a4, $a5
-	ldx.hu	$a5, $a0, $t3
-	alsl.d	$t2, $t2, $t2, 2
-	sub.d	$a2, $a2, $t2
-	ldx.hu	$t2, $a0, $t4
-	mul.d	$a5, $a5, $t1
-	add.d	$a2, $a5, $a2
-	ldx.hu	$a5, $a0, $t5
-	mul.d	$t2, $t2, $t1
+	ldx.hu	$a5, $a0, $t2
+	ldx.hu	$t2, $a0, $t3
+	ldx.hu	$t3, $a0, $t4
+	alsl.d	$a2, $a2, $a2, 2
+	sub.d	$a2, $a5, $a2
+	mul.d	$a5, $t2, $t1
+	mul.d	$t2, $t3, $t1
+	ldx.hu	$t3, $a0, $t5
+	add.d	$a5, $t2, $a5
 	ldx.hu	$a0, $a0, $a6
-	add.d	$a2, $t2, $a2
-	alsl.d	$a5, $a5, $a5, 2
+	add.d	$a2, $a5, $a2
+	alsl.d	$a5, $t3, $t3, 2
 	sub.d	$a2, $a2, $a5
 	add.d	$a0, $a2, $a0
 	alsl.d	$a2, $t8, $t8, 2
@@ -1118,9 +1118,9 @@ Get_Reference_Pixel:                    # @Get_Reference_Pixel
 	mul.d	$a5, $fp, $t1
 	add.d	$a2, $a5, $a2
 	mul.d	$a5, $t7, $t1
-	add.d	$a2, $a5, $a2
 	alsl.d	$a4, $a4, $a4, 2
-	sub.d	$a2, $a2, $a4
+	sub.d	$a4, $a5, $a4
+	add.d	$a2, $a4, $a2
 	add.d	$a2, $a0, $a2
 	ldptr.w	$a0, $a3, 15520
 	addi.w	$a2, $a2, 512
@@ -1175,44 +1175,44 @@ Get_Reference_Pixel:                    # @Get_Reference_Pixel
 	addi.d	$a2, $a2, -2
 	slt	$a4, $a2, $a6
 	maskeqz	$a2, $a2, $a4
-	masknez	$a4, $a6, $a4
-	or	$a2, $a2, $a4
-	slli.d	$a2, $a2, 1
+	masknez	$a5, $a6, $a4
 	ori	$a4, $zero, 1
-	slt	$a5, $a4, $a7
-	masknez	$t0, $a4, $a5
-	maskeqz	$a5, $a7, $a5
-	or	$a5, $a5, $t0
-	addi.d	$a5, $a5, -1
-	slt	$t0, $a5, $a6
-	maskeqz	$a5, $a5, $t0
-	masknez	$t0, $a6, $t0
-	or	$a5, $a5, $t0
-	slli.d	$a5, $a5, 1
-	ldx.hu	$a5, $a0, $a5
-	ldx.hu	$a2, $a0, $a2
-	alsl.d	$a5, $a5, $a5, 2
-	sub.d	$a2, $a2, $a5
-	srai.d	$t0, $a7, 63
-	andn	$a5, $a7, $t0
-	slt	$t1, $a5, $a6
-	maskeqz	$a5, $a5, $t1
-	masknez	$t1, $a6, $t1
-	or	$a5, $a5, $t1
-	slli.d	$a5, $a5, 1
-	ldx.hu	$a5, $a0, $a5
-	or	$t0, $a7, $t0
-	addi.d	$t0, $t0, 1
+	slt	$t0, $a4, $a7
+	masknez	$t1, $a4, $t0
+	maskeqz	$t0, $a7, $t0
+	or	$t0, $t0, $t1
+	addi.d	$t0, $t0, -1
 	slt	$t1, $t0, $a6
 	maskeqz	$t0, $t0, $t1
 	masknez	$t1, $a6, $t1
 	or	$t0, $t0, $t1
 	slli.d	$t0, $t0, 1
-	ldx.hu	$t1, $a0, $t0
-	ori	$t2, $zero, 20
-	mul.d	$t3, $a5, $t2
-	add.d	$a2, $t3, $a2
-	mul.d	$t1, $t1, $t2
+	ldx.hu	$t0, $a0, $t0
+	or	$a2, $a2, $a5
+	slli.d	$a2, $a2, 1
+	ldx.hu	$a2, $a0, $a2
+	alsl.d	$t1, $t0, $t0, 2
+	srai.d	$t0, $a7, 63
+	andn	$a5, $a7, $t0
+	slt	$t2, $a5, $a6
+	maskeqz	$a5, $a5, $t2
+	masknez	$t2, $a6, $t2
+	or	$a5, $a5, $t2
+	slli.d	$a5, $a5, 1
+	ldx.hu	$a5, $a0, $a5
+	or	$t0, $a7, $t0
+	addi.d	$t0, $t0, 1
+	slt	$t2, $t0, $a6
+	maskeqz	$t0, $t0, $t2
+	masknez	$t2, $a6, $t2
+	or	$t0, $t0, $t2
+	slli.d	$t0, $t0, 1
+	ldx.hu	$t2, $a0, $t0
+	sub.d	$a2, $a2, $t1
+	ori	$t1, $zero, 20
+	mul.d	$t3, $a5, $t1
+	mul.d	$t1, $t2, $t1
+	add.d	$t1, $t1, $t3
 	addi.w	$t2, $zero, -2
 	slt	$t3, $t2, $a7
 	masknez	$t2, $t2, $t3
@@ -1227,13 +1227,13 @@ Get_Reference_Pixel:                    # @Get_Reference_Pixel
 	slt	$t4, $t3, $a7
 	masknez	$t3, $t3, $t4
 	maskeqz	$a7, $a7, $t4
+	slli.d	$t2, $t2, 1
+	ldx.hu	$t2, $a0, $t2
 	or	$a7, $a7, $t3
 	addi.d	$a7, $a7, 3
 	slt	$t3, $a7, $a6
 	maskeqz	$a7, $a7, $t3
 	masknez	$a6, $a6, $t3
-	slli.d	$t2, $t2, 1
-	ldx.hu	$t2, $a0, $t2
 	or	$a6, $a7, $a6
 	slli.d	$a6, $a6, 1
 	ldx.hu	$a6, $a0, $a6
@@ -1339,12 +1339,12 @@ Get_Reference_Pixel:                    # @Get_Reference_Pixel
 	ldx.d	$t2, $a0, $t2
 	slli.d	$a4, $a4, 3
 	ldx.d	$a4, $a0, $a4
-	add.d	$a2, $a5, $a2
-	ldx.hu	$a5, $t2, $a6
-	mul.d	$t2, $t4, $t3
+	mul.d	$t3, $t4, $t3
+	ldx.hu	$t2, $t2, $a6
+	add.d	$a5, $t3, $a5
 	ldx.hu	$a4, $a4, $a6
-	add.d	$a2, $t2, $a2
-	alsl.d	$a5, $a5, $a5, 2
+	add.d	$a2, $a5, $a2
+	alsl.d	$a5, $t2, $t2, 2
 	sub.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $a4
 	ldptr.w	$a3, $a3, 15520
@@ -1403,44 +1403,41 @@ Get_Reference_Pixel:                    # @Get_Reference_Pixel
 	ldx.d	$t1, $a0, $t1
 	slli.d	$t8, $t2, 1
 	ldx.hu	$t2, $t0, $t8
-	ldx.hu	$t5, $t1, $t8
-	alsl.d	$t2, $t2, $t2, 2
 	srai.d	$t4, $a5, 63
 	andn	$t3, $a5, $t4
-	slt	$t6, $t3, $a4
-	maskeqz	$t3, $t3, $t6
-	masknez	$t6, $a4, $t6
-	or	$t3, $t3, $t6
+	slt	$t5, $t3, $a4
+	maskeqz	$t3, $t3, $t5
+	masknez	$t5, $a4, $t5
+	or	$t3, $t3, $t5
 	slli.d	$t3, $t3, 3
 	ldx.d	$t3, $a0, $t3
+	ldx.hu	$t5, $t1, $t8
+	alsl.d	$t2, $t2, $t2, 2
+	ldx.hu	$t6, $t3, $t8
 	or	$t4, $a5, $t4
 	addi.d	$t4, $t4, 1
-	slt	$t6, $t4, $a4
-	maskeqz	$t4, $t4, $t6
-	masknez	$t6, $a4, $t6
-	or	$t4, $t4, $t6
+	slt	$t7, $t4, $a4
+	maskeqz	$t4, $t4, $t7
+	masknez	$t7, $a4, $t7
+	or	$t4, $t4, $t7
 	slli.d	$t4, $t4, 3
 	ldx.d	$t4, $a0, $t4
-	sub.d	$t6, $t5, $t2
-	ldx.hu	$fp, $t3, $t8
+	sub.d	$fp, $t5, $t2
 	ori	$t2, $zero, 20
-	ldx.hu	$s0, $t4, $t8
+	mul.d	$s0, $t6, $t2
+	ldx.hu	$s1, $t4, $t8
 	addi.w	$t7, $zero, -2
 	slt	$t5, $t7, $a5
-	masknez	$s1, $t7, $t5
+	masknez	$t6, $t7, $t5
 	maskeqz	$t5, $a5, $t5
-	or	$t5, $t5, $s1
+	or	$t5, $t5, $t6
 	addi.d	$t5, $t5, 2
-	slt	$s1, $t5, $a4
-	maskeqz	$t5, $t5, $s1
-	masknez	$s1, $a4, $s1
-	or	$t5, $t5, $s1
+	slt	$t6, $t5, $a4
+	maskeqz	$t5, $t5, $t6
+	masknez	$t6, $a4, $t6
+	or	$t5, $t5, $t6
 	slli.d	$t5, $t5, 3
 	ldx.d	$t5, $a0, $t5
-	mul.d	$fp, $fp, $t2
-	add.d	$fp, $fp, $t6
-	mul.d	$s0, $s0, $t2
-	ldx.hu	$s1, $t5, $t8
 	addi.w	$t6, $zero, -3
 	slt	$s2, $t6, $a5
 	masknez	$s3, $t6, $s2
@@ -1453,107 +1450,111 @@ Get_Reference_Pixel:                    # @Get_Reference_Pixel
 	or	$a4, $a5, $a4
 	slli.d	$a4, $a4, 3
 	ldx.d	$a0, $a0, $a4
-	add.d	$a4, $s0, $fp
-	alsl.d	$a5, $s1, $s1, 2
-	sub.d	$a4, $a4, $a5
-	ldx.hu	$a5, $a0, $t8
-	slt	$t8, $a2, $a7
-	masknez	$fp, $a2, $t8
-	maskeqz	$t8, $a7, $t8
-	or	$t8, $t8, $fp
-	addi.d	$t8, $t8, -1
-	slt	$fp, $t8, $a6
-	maskeqz	$t8, $t8, $fp
-	masknez	$fp, $a6, $fp
-	or	$t8, $t8, $fp
-	slli.d	$t8, $t8, 1
-	ldx.hu	$fp, $t0, $t8
-	ldx.hu	$s0, $t1, $t8
-	add.d	$a4, $a4, $a5
-	ldx.hu	$a5, $t3, $t8
-	alsl.d	$fp, $fp, $fp, 2
-	sub.d	$fp, $s0, $fp
-	ldx.hu	$s0, $t4, $t8
-	mul.d	$a5, $a5, $t2
-	ldx.hu	$s1, $t5, $t8
-	add.d	$a5, $a5, $fp
-	mul.d	$fp, $s0, $t2
-	add.d	$a5, $fp, $a5
-	alsl.d	$fp, $s1, $s1, 2
-	sub.w	$a5, $a5, $fp
+	mul.d	$a4, $s1, $t2
+	ldx.hu	$a5, $t5, $t8
+	add.d	$a4, $a4, $s0
 	ldx.hu	$t8, $a0, $t8
+	add.d	$a4, $a4, $fp
+	alsl.d	$a5, $a5, $a5, 2
+	sub.d	$a4, $a4, $a5
+	add.d	$a4, $a4, $t8
+	slt	$a5, $a2, $a7
+	masknez	$t8, $a2, $a5
+	maskeqz	$a5, $a7, $a5
+	or	$a5, $a5, $t8
+	addi.d	$a5, $a5, -1
+	slt	$t8, $a5, $a6
+	maskeqz	$a5, $a5, $t8
+	masknez	$t8, $a6, $t8
+	or	$a5, $a5, $t8
+	slli.d	$a5, $a5, 1
+	ldx.hu	$t8, $t0, $a5
+	ldx.hu	$fp, $t1, $a5
+	ldx.hu	$s0, $t3, $a5
+	ldx.hu	$s1, $t4, $a5
+	alsl.d	$t8, $t8, $t8, 2
+	sub.d	$t8, $fp, $t8
+	mul.d	$fp, $s0, $t2
+	mul.d	$s0, $s1, $t2
+	ldx.hu	$s1, $t5, $a5
+	add.d	$fp, $s0, $fp
+	ldx.hu	$a5, $a0, $a5
+	add.d	$t8, $fp, $t8
+	alsl.d	$fp, $s1, $s1, 2
+	sub.w	$t8, $t8, $fp
+	add.d	$a5, $t8, $a5
 	srai.d	$fp, $a7, 63
-	andn	$s0, $a7, $fp
-	slt	$s1, $s0, $a6
-	maskeqz	$s0, $s0, $s1
-	masknez	$s1, $a6, $s1
-	or	$s0, $s0, $s1
-	slli.d	$s0, $s0, 1
-	ldx.hu	$s1, $t0, $s0
-	ldx.hu	$s2, $t1, $s0
-	add.d	$a5, $a5, $t8
-	ldx.hu	$t8, $t3, $s0
-	alsl.d	$s1, $s1, $s1, 2
-	sub.d	$s1, $s2, $s1
-	ldx.hu	$s2, $t4, $s0
-	mul.d	$t8, $t8, $t2
-	ldx.hu	$s3, $t5, $s0
-	add.d	$t8, $t8, $s1
+	andn	$t8, $a7, $fp
+	slt	$s0, $t8, $a6
+	maskeqz	$t8, $t8, $s0
+	masknez	$s0, $a6, $s0
+	or	$t8, $t8, $s0
+	slli.d	$t8, $t8, 1
+	ldx.hu	$s0, $t0, $t8
+	ldx.hu	$s1, $t1, $t8
+	ldx.hu	$s2, $t3, $t8
+	ldx.hu	$s3, $t4, $t8
+	alsl.d	$s0, $s0, $s0, 2
+	sub.d	$s0, $s1, $s0
 	mul.d	$s1, $s2, $t2
-	add.d	$t8, $s1, $t8
-	alsl.d	$s1, $s3, $s3, 2
-	sub.d	$t8, $t8, $s1
-	ldx.hu	$s0, $a0, $s0
-	or	$fp, $a7, $fp
-	addi.d	$fp, $fp, 1
-	slt	$s1, $fp, $a6
-	maskeqz	$fp, $fp, $s1
-	masknez	$s1, $a6, $s1
-	or	$fp, $fp, $s1
-	slli.d	$fp, $fp, 1
-	ldx.hu	$s1, $t0, $fp
-	ldx.hu	$s2, $t1, $fp
-	add.d	$t8, $t8, $s0
-	ldx.hu	$s0, $t3, $fp
-	alsl.d	$s1, $s1, $s1, 2
-	sub.d	$s1, $s2, $s1
-	ldx.hu	$s2, $t4, $fp
-	mul.d	$s0, $s0, $t2
-	ldx.hu	$s3, $t5, $fp
-	add.d	$s0, $s0, $s1
-	mul.d	$s1, $s2, $t2
+	mul.d	$s2, $s3, $t2
+	ldx.hu	$s3, $t5, $t8
+	add.d	$s1, $s2, $s1
+	ldx.hu	$t8, $a0, $t8
 	add.d	$s0, $s1, $s0
 	alsl.d	$s1, $s3, $s3, 2
 	sub.d	$s0, $s0, $s1
+	add.d	$t8, $s0, $t8
+	or	$fp, $a7, $fp
+	addi.d	$fp, $fp, 1
+	slt	$s0, $fp, $a6
+	maskeqz	$fp, $fp, $s0
+	masknez	$s0, $a6, $s0
+	or	$fp, $fp, $s0
+	slli.d	$fp, $fp, 1
+	ldx.hu	$s0, $t0, $fp
+	ldx.hu	$s1, $t1, $fp
+	ldx.hu	$s2, $t3, $fp
+	ldx.hu	$s3, $t4, $fp
+	alsl.d	$s0, $s0, $s0, 2
+	sub.d	$s0, $s1, $s0
+	mul.d	$s1, $s2, $t2
+	mul.d	$s2, $s3, $t2
+	ldx.hu	$s3, $t5, $fp
+	add.d	$s1, $s2, $s1
 	ldx.hu	$fp, $a0, $fp
-	slt	$s1, $t7, $a7
-	masknez	$t7, $t7, $s1
-	maskeqz	$s1, $a7, $s1
-	or	$t7, $s1, $t7
-	addi.d	$t7, $t7, 2
-	slt	$s1, $t7, $a6
-	maskeqz	$t7, $t7, $s1
-	masknez	$s1, $a6, $s1
-	or	$t7, $t7, $s1
-	slli.d	$s1, $t7, 1
-	ldx.hu	$s2, $t0, $s1
-	ldx.hu	$s3, $t1, $s1
-	add.d	$t7, $s0, $fp
-	ldx.hu	$fp, $t3, $s1
-	alsl.d	$s0, $s2, $s2, 2
-	sub.d	$s0, $s3, $s0
-	ldx.hu	$s2, $t4, $s1
-	mul.d	$fp, $fp, $t2
-	ldx.hu	$s3, $t5, $s1
-	add.d	$fp, $fp, $s0
-	mul.d	$s0, $s2, $t2
+	add.d	$s0, $s1, $s0
+	alsl.d	$s1, $s3, $s3, 2
+	sub.d	$s0, $s0, $s1
 	add.d	$fp, $s0, $fp
-	alsl.d	$s0, $s3, $s3, 2
-	sub.d	$fp, $fp, $s0
-	ldx.hu	$s0, $a0, $s1
-	slt	$s1, $t6, $a7
-	masknez	$t6, $t6, $s1
-	maskeqz	$a7, $a7, $s1
+	slt	$s0, $t7, $a7
+	masknez	$t7, $t7, $s0
+	maskeqz	$s0, $a7, $s0
+	or	$t7, $s0, $t7
+	addi.d	$t7, $t7, 2
+	slt	$s0, $t7, $a6
+	maskeqz	$t7, $t7, $s0
+	masknez	$s0, $a6, $s0
+	or	$t7, $t7, $s0
+	slli.d	$t7, $t7, 1
+	ldx.hu	$s0, $t0, $t7
+	ldx.hu	$s1, $t1, $t7
+	ldx.hu	$s2, $t3, $t7
+	ldx.hu	$s3, $t4, $t7
+	alsl.d	$s0, $s0, $s0, 2
+	sub.d	$s0, $s1, $s0
+	mul.d	$s1, $s2, $t2
+	mul.d	$s2, $s3, $t2
+	ldx.hu	$s3, $t5, $t7
+	add.d	$s1, $s2, $s1
+	ldx.hu	$t7, $a0, $t7
+	add.d	$s0, $s1, $s0
+	alsl.d	$s1, $s3, $s3, 2
+	sub.d	$s0, $s0, $s1
+	add.w	$t7, $s0, $t7
+	slt	$s0, $t6, $a7
+	masknez	$t6, $t6, $s0
+	maskeqz	$a7, $a7, $s0
 	or	$a7, $a7, $t6
 	addi.d	$a7, $a7, 3
 	slt	$t6, $a7, $a6
@@ -1563,15 +1564,14 @@ Get_Reference_Pixel:                    # @Get_Reference_Pixel
 	slli.d	$a6, $a6, 1
 	ldx.hu	$a7, $t0, $a6
 	ldx.hu	$t0, $t1, $a6
-	add.w	$t1, $fp, $s0
-	ldx.hu	$t3, $t3, $a6
+	ldx.hu	$t1, $t3, $a6
+	ldx.hu	$t3, $t4, $a6
 	alsl.d	$a7, $a7, $a7, 2
 	sub.d	$a7, $t0, $a7
-	ldx.hu	$t0, $t4, $a6
-	mul.d	$t3, $t3, $t2
-	add.d	$a7, $t3, $a7
+	mul.d	$t0, $t1, $t2
+	mul.d	$t1, $t3, $t2
 	ldx.hu	$t3, $t5, $a6
-	mul.d	$t0, $t0, $t2
+	add.d	$t0, $t1, $t0
 	ldx.hu	$a0, $a0, $a6
 	add.d	$a6, $t0, $a7
 	alsl.d	$a7, $t3, $t3, 2
@@ -1581,10 +1581,10 @@ Get_Reference_Pixel:                    # @Get_Reference_Pixel
 	sub.d	$a4, $a4, $a5
 	mul.d	$a5, $t8, $t2
 	add.d	$a4, $a5, $a4
-	mul.d	$a5, $t7, $t2
+	mul.d	$a5, $fp, $t2
+	alsl.d	$a6, $t7, $t7, 2
+	sub.d	$a5, $a5, $a6
 	add.d	$a4, $a5, $a4
-	alsl.d	$a5, $t1, $t1, 2
-	sub.d	$a4, $a4, $a5
 	add.d	$a4, $a0, $a4
 	ldptr.w	$a0, $a3, 15520
 	addi.w	$a3, $a4, 512
@@ -1760,19 +1760,19 @@ Get_Reference_Pixel:                    # @Get_Reference_Pixel
 	or	$a4, $a5, $a4
 	slli.d	$a4, $a4, 3
 	ldx.d	$a0, $a0, $a4
-	add.d	$a3, $t7, $a3
-	ldx.hu	$a4, $t6, $a6
-	mul.d	$a5, $t8, $a7
+	mul.d	$a4, $t8, $a7
+	ldx.hu	$a5, $t6, $a6
+	add.d	$a4, $a4, $t7
 	ldx.hu	$a0, $a0, $a6
-	add.d	$a3, $a5, $a3
-	alsl.d	$a4, $a4, $a4, 2
+	add.d	$a3, $a4, $a3
+	alsl.d	$a4, $a5, $a5, 2
 	sub.d	$a3, $a3, $a4
 	add.d	$a0, $a3, $a0
 	alsl.d	$a3, $t0, $t0, 2
 	sub.d	$a2, $a2, $a3
 	mul.d	$a3, $t1, $a7
-	add.d	$a2, $a3, $a2
-	mul.d	$a3, $t2, $a7
+	mul.d	$a4, $t2, $a7
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a3, $a2
 	alsl.d	$a3, $t3, $t3, 2
 	sub.d	$a2, $a2, $a3
@@ -1819,7 +1819,7 @@ Get_Reference_Pixel:                    # @Get_Reference_Pixel
 	add.d	$a0, $a2, $a0
 	b	.LBB3_25
 .LBB3_23:
-	addi.w	$a1, $t7, 16
+	addi.w	$a1, $fp, 16
 .LBB3_24:
 	bstrpick.d	$a2, $a1, 62, 58
 	add.w	$a1, $a1, $a2
@@ -2533,10 +2533,10 @@ compute_residue_b8block:                # @compute_residue_b8block
 	slli.d	$s2, $s4, 2
 	sub.d	$s3, $s3, $s4
 	slli.d	$s4, $s5, 5
-	add.d	$s4, $s4, $a2
 	lu12i.w	$s5, 3
 	ori	$s5, $s5, 336
 	add.d	$s4, $s4, $s5
+	add.d	$s4, $s4, $a2
 	b	.LBB8_7
 	.p2align	4, , 16
 .LBB8_6:                                #   in Loop: Header=BB8_7 Depth=1

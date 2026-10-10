@@ -22387,16 +22387,17 @@ _ZN2PP3Cmd17evaluate_variableEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	addi.w	$a0, $a0, 0
 	bltz	$a0, .LBB56_77
 # %bb.31:
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$a1, $a0, 0
 	blez	$a1, .LBB56_181
 # %bb.32:
 	move	$s3, $zero
-	addi.w	$s1, $s5, 1
+	addi.w	$a0, $s5, 1
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	addi.d	$a0, $a0, 16
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ori	$s6, $zero, 4
 	ori	$s2, $zero, 2
 	ori	$a2, $zero, 1
@@ -22408,9 +22409,10 @@ _ZN2PP3Cmd17evaluate_variableEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	sub.d	$a0, $a4, $a0
 	srai.d	$a6, $a0, 7
 	addi.d	$a0, $s3, 1
-	add.d	$a7, $s1, $s3
+	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
+	add.d	$a7, $a5, $s3
 	slli.d	$s0, $a7, 7
-	add.d	$a5, $s1, $a6
+	add.d	$a5, $a5, $a6
 	add.d	$a6, $a7, $a6
 	slli.d	$a6, $a6, 7
 	addi.d	$a6, $a6, 32
@@ -22471,14 +22473,14 @@ _ZN2PP3Cmd17evaluate_variableEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	pcalau12i	$a0, %pc_hi20(.L.str.85)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.85)
 	ori	$a2, $zero, 37
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1113:                              # EH_LABEL
 # %bb.44:                               #   in Loop: Header=BB56_33 Depth=1
 .Ltmp1114:                              # EH_LABEL
 	addi.w	$a1, $s4, 0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp1115:                              # EH_LABEL
@@ -22526,38 +22528,38 @@ _ZN2PP3Cmd17evaluate_variableEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	pcalau12i	$a0, %pc_hi20(.L.str.86)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.86)
 	ori	$a2, $zero, 17
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1125:                              # EH_LABEL
 # %bb.53:                               #   in Loop: Header=BB56_33 Depth=1
-	ld.d	$a2, $fp, 176
+	ld.d	$a3, $fp, 176
 	ld.d	$a1, $fp, 184
 	ld.d	$a0, $fp, 200
-	sub.d	$a1, $a2, $a1
+	sub.d	$a1, $a3, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a3, $s1, $a1
-	add.d	$a3, $a3, $s3
-	addi.d	$a3, $a3, -1
-	bltz	$a3, .LBB56_56
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	add.d	$a2, $a2, $s3
+	add.d	$a4, $a2, $a1
+	addi.d	$a4, $a4, -1
+	bltz	$a4, .LBB56_56
 # %bb.54:                               #   in Loop: Header=BB56_33 Depth=1
-	ori	$a4, $zero, 3
-	bltu	$a4, $a3, .LBB56_57
+	ori	$a5, $zero, 3
+	bltu	$a5, $a4, .LBB56_57
 # %bb.55:                               #   in Loop: Header=BB56_33 Depth=1
-	add.d	$a0, $a2, $s0
+	add.d	$a0, $a3, $s0
 	b	.LBB56_59
 .LBB56_56:                              #   in Loop: Header=BB56_33 Depth=1
-	srai.d	$a2, $a3, 2
+	srai.d	$a3, $a4, 2
 	b	.LBB56_58
 .LBB56_57:                              #   in Loop: Header=BB56_33 Depth=1
-	srli.d	$a2, $a3, 2
+	srli.d	$a3, $a4, 2
 .LBB56_58:                              #   in Loop: Header=BB56_33 Depth=1
-	slli.d	$a3, $a2, 3
-	ldx.d	$a0, $a0, $a3
-	slli.d	$a2, $a2, 2
-	sub.d	$a1, $a1, $a2
-	add.d	$a1, $s1, $a1
-	add.d	$a1, $a1, $s3
+	slli.d	$a4, $a3, 3
+	ldx.d	$a0, $a0, $a4
+	slli.d	$a3, $a3, 2
+	sub.d	$a1, $a1, $a3
+	add.d	$a1, $a2, $a1
 	slli.d	$a1, $a1, 7
 	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, -128
@@ -22601,7 +22603,7 @@ _ZN2PP3Cmd17evaluate_variableEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	ld.d	$a1, $sp, 160
 	st.d	$a2, $sp, 168
 .Ltmp1130:                              # EH_LABEL
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1131:                              # EH_LABEL
@@ -23005,9 +23007,10 @@ _ZN2PP3Cmd17evaluate_variableEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	sub.d	$a0, $a4, $a0
 	srai.d	$a6, $a0, 7
 	addi.d	$a0, $s3, 1
-	add.d	$a7, $s1, $s3
+	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
+	add.d	$a7, $a5, $s3
 	slli.d	$s0, $a7, 7
-	add.d	$a5, $s1, $a6
+	add.d	$a5, $a5, $a6
 	add.d	$a6, $a7, $a6
 	slli.d	$a6, $a6, 7
 	addi.d	$a6, $a6, 32
@@ -23062,14 +23065,14 @@ _ZN2PP3Cmd17evaluate_variableEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	pcalau12i	$a0, %pc_hi20(.L.str.87)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.87)
 	ori	$a2, $zero, 39
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1150:                              # EH_LABEL
 # %bb.148:                              #   in Loop: Header=BB56_137 Depth=1
 .Ltmp1151:                              # EH_LABEL
 	addi.w	$a1, $s4, 0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp1152:                              # EH_LABEL
@@ -23117,38 +23120,38 @@ _ZN2PP3Cmd17evaluate_variableEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	pcalau12i	$a0, %pc_hi20(.L.str.86)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.86)
 	ori	$a2, $zero, 17
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1162:                              # EH_LABEL
 # %bb.157:                              #   in Loop: Header=BB56_137 Depth=1
-	ld.d	$a2, $fp, 176
+	ld.d	$a3, $fp, 176
 	ld.d	$a1, $fp, 184
 	ld.d	$a0, $fp, 200
-	sub.d	$a1, $a2, $a1
+	sub.d	$a1, $a3, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a3, $s1, $a1
-	add.d	$a3, $a3, $s3
-	addi.d	$a3, $a3, -1
-	bltz	$a3, .LBB56_160
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	add.d	$a2, $a2, $s3
+	add.d	$a4, $a2, $a1
+	addi.d	$a4, $a4, -1
+	bltz	$a4, .LBB56_160
 # %bb.158:                              #   in Loop: Header=BB56_137 Depth=1
-	ori	$a4, $zero, 3
-	bltu	$a4, $a3, .LBB56_161
+	ori	$a5, $zero, 3
+	bltu	$a5, $a4, .LBB56_161
 # %bb.159:                              #   in Loop: Header=BB56_137 Depth=1
-	add.d	$a0, $a2, $s0
+	add.d	$a0, $a3, $s0
 	b	.LBB56_163
 .LBB56_160:                             #   in Loop: Header=BB56_137 Depth=1
-	srai.d	$a2, $a3, 2
+	srai.d	$a3, $a4, 2
 	b	.LBB56_162
 .LBB56_161:                             #   in Loop: Header=BB56_137 Depth=1
-	srli.d	$a2, $a3, 2
+	srli.d	$a3, $a4, 2
 .LBB56_162:                             #   in Loop: Header=BB56_137 Depth=1
-	slli.d	$a3, $a2, 3
-	ldx.d	$a0, $a0, $a3
-	slli.d	$a2, $a2, 2
-	sub.d	$a1, $a1, $a2
-	add.d	$a1, $s1, $a1
-	add.d	$a1, $a1, $s3
+	slli.d	$a4, $a3, 3
+	ldx.d	$a0, $a0, $a4
+	slli.d	$a3, $a3, 2
+	sub.d	$a1, $a1, $a3
+	add.d	$a1, $a2, $a1
 	slli.d	$a1, $a1, 7
 	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, -128
@@ -23192,7 +23195,7 @@ _ZN2PP3Cmd17evaluate_variableEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	ld.d	$a1, $sp, 160
 	st.d	$a2, $sp, 168
 .Ltmp1167:                              # EH_LABEL
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1168:                              # EH_LABEL
@@ -23345,13 +23348,13 @@ _ZN2PP3Cmd17evaluate_variableEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	blez	$a1, .LBB56_182
 # %bb.197:
 	move	$s0, $zero
-	slli.d	$s2, $s1, 7
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	slli.d	$s2, $a0, 7
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
-	lu52i.d	$a0, $a0, 511
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	lu52i.d	$s1, $a0, 511
 	b	.LBB56_200
 .LBB56_198:                             #   in Loop: Header=BB56_200 Depth=1
 	st.w	$a0, $a1, 0
@@ -23370,7 +23373,8 @@ _ZN2PP3Cmd17evaluate_variableEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	ld.d	$a0, $fp, 200
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a3, $s1, $s0
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
+	add.d	$a3, $a3, $s0
 	add.d	$a1, $a3, $a1
 	bltz	$a1, .LBB56_203
 # %bb.201:                              #   in Loop: Header=BB56_200 Depth=1
@@ -23404,7 +23408,7 @@ _ZN2PP3Cmd17evaluate_variableEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	move	$s3, $a0
 	ld.d	$s6, $sp, 448
 	sub.d	$s4, $a1, $s6
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	beq	$s4, $a0, .LBB56_294
 # %bb.209:                              #   in Loop: Header=BB56_200 Depth=1
 	srai.d	$a0, $s4, 2
@@ -23414,10 +23418,9 @@ _ZN2PP3Cmd17evaluate_variableEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
-	sltu	$a1, $a0, $a2
+	sltu	$a1, $a0, $s1
 	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $a2, $a1
+	masknez	$a1, $s1, $a1
 	or	$s5, $a0, $a1
 	slli.d	$a0, $s5, 2
 .Ltmp1186:                              # EH_LABEL
@@ -23560,7 +23563,7 @@ _ZN2PP3Cmd17evaluate_variableEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	st.d	$a0, $sp, 320
 	st.d	$a1, $sp, 336
 .LBB56_234:
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	slti	$a2, $a2, 0
 	masknez	$a3, $s8, $a2
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
@@ -30792,33 +30795,32 @@ _ZN2PP3Cmd17evaluate_functionEiRiS1_RNSt7__cxx1118basic_stringstreamIcSt11char_t
 	jirl	$ra, $ra, 0
 .Ltmp1504:                              # EH_LABEL
 # %bb.242:                              #   in Loop: Header=BB63_222 Depth=1
-	ld.d	$a2, $fp, 176
+	ld.d	$a3, $fp, 176
 	ld.d	$a1, $fp, 184
 	ld.d	$a0, $fp, 200
-	sub.d	$a1, $a2, $a1
+	sub.d	$a1, $a3, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a3, $s5, $a1
-	add.d	$a3, $a3, $s7
-	addi.d	$a3, $a3, -1
-	bltz	$a3, .LBB63_245
+	add.d	$a2, $s5, $s7
+	add.d	$a4, $a2, $a1
+	addi.d	$a4, $a4, -1
+	bltz	$a4, .LBB63_245
 # %bb.243:                              #   in Loop: Header=BB63_222 Depth=1
-	ori	$a4, $zero, 3
-	bltu	$a4, $a3, .LBB63_246
+	ori	$a5, $zero, 3
+	bltu	$a5, $a4, .LBB63_246
 # %bb.244:                              #   in Loop: Header=BB63_222 Depth=1
-	add.d	$a0, $a2, $s3
+	add.d	$a0, $a3, $s3
 	b	.LBB63_248
 .LBB63_245:                             #   in Loop: Header=BB63_222 Depth=1
-	srai.d	$a2, $a3, 2
+	srai.d	$a3, $a4, 2
 	b	.LBB63_247
 .LBB63_246:                             #   in Loop: Header=BB63_222 Depth=1
-	srli.d	$a2, $a3, 2
+	srli.d	$a3, $a4, 2
 .LBB63_247:                             #   in Loop: Header=BB63_222 Depth=1
-	slli.d	$a3, $a2, 3
-	ldx.d	$a0, $a0, $a3
-	slli.d	$a2, $a2, 2
-	sub.d	$a1, $a1, $a2
-	add.d	$a1, $s5, $a1
-	add.d	$a1, $a1, $s7
+	slli.d	$a4, $a3, 3
+	ldx.d	$a0, $a0, $a4
+	slli.d	$a3, $a3, 2
+	sub.d	$a1, $a1, $a3
+	add.d	$a1, $a2, $a1
 	slli.d	$a1, $a1, 7
 	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, -128
@@ -36180,19 +36182,19 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception38
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	.cfi_def_cfa_offset 192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	.cfi_def_cfa_offset 208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -36205,16 +36207,14 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
 	move	$s4, $a0
-	ld.d	$t2, $a2, 72
-	ld.d	$a6, $a2, 40
-	ld.d	$t1, $a0, 176
+	ld.d	$s8, $a2, 72
+	ld.d	$t0, $a0, 176
 	ld.d	$a7, $a0, 184
-	st.d	$a5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$a4, $sp, 8                     # 8-byte Folded Spill
-	move	$s1, $a1
-	ld.d	$t0, $a0, 200
-	sub.d	$a6, $t2, $a6
-	sub.d	$a5, $t1, $a7
+	ld.d	$t1, $a2, 40
+	ld.d	$a6, $a0, 200
+	st.d	$a5, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
+	sub.d	$a5, $t0, $a7
 	srai.d	$a4, $a5, 7
 	bltz	$a5, .LBB71_3
 # %bb.1:
@@ -36227,42 +36227,43 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	srai.d	$a7, $a5, 9
 .LBB71_4:
 	slli.d	$a5, $a7, 3
-	ldx.d	$a5, $t0, $a5
-	slli.d	$a7, $a7, 2
-	sub.d	$a4, $a4, $a7
+	ldx.d	$a5, $a6, $a5
+	slli.d	$a6, $a7, 2
+	sub.d	$a4, $a4, $a6
 	slli.d	$a4, $a4, 7
-	add.d	$t1, $a5, $a4
+	add.d	$t0, $a5, $a4
 .LBB71_5:
-	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
-	srli.d	$s3, $a6, 3
-	ld.d	$s2, $a2, 48
+	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	ld.d	$s3, $a2, 48
 	ld.d	$s0, $a2, 56
-	ld.d	$s8, $a2, 32
-	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	ld.d	$s6, $a2, 16
-	addi.d	$s7, $sp, 88
-	st.d	$s7, $sp, 72
-	ld.d	$a1, $t1, 8
-	ld.d	$s5, $t1, 0
-	sltu	$fp, $zero, $t2
+	ld.d	$s2, $a2, 32
+	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	ld.d	$s7, $a2, 16
+	addi.d	$s6, $sp, 104
+	st.d	$s6, $sp, 88
+	ld.d	$a1, $t0, 8
+	ld.d	$s5, $t0, 0
+	sub.d	$fp, $s8, $t1
 	ori	$a2, $zero, 16
-	st.d	$a1, $sp, 40
-	move	$a0, $s7
+	st.d	$a1, $sp, 56
+	move	$a0, $s6
 	bltu	$a1, $a2, .LBB71_7
 # %bb.6:
-	addi.d	$a0, $sp, 72
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 88
+	addi.d	$a1, $sp, 56
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 40
-	st.d	$a0, $sp, 72
-	st.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 56
+	st.d	$a0, $sp, 88
+	st.d	$a1, $sp, 104
 .LBB71_7:
-	sub.d	$s3, $s3, $fp
+	srli.d	$s1, $fp, 3
+	sltu	$s8, $zero, $s8
 	addi.d	$a2, $a1, 1
-	sub.d	$fp, $s2, $s0
-	move	$s2, $s4
+	sub.d	$fp, $s3, $s0
+	move	$s3, $s4
 	beqz	$a2, .LBB71_11
 # %bb.8:
 	ori	$a1, $zero, 1
@@ -36276,12 +36277,12 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB71_11:
-	slli.d	$a1, $s3, 9
-	ld.d	$a3, $sp, 40
-	ld.d	$a0, $sp, 72
-	add.d	$a2, $fp, $s8
+	sub.d	$a1, $s1, $s8
+	ld.d	$a3, $sp, 56
+	ld.d	$a0, $sp, 88
+	add.d	$a2, $fp, $s2
 	ori	$a4, $zero, 5
-	st.d	$a3, $sp, 80
+	st.d	$a3, $sp, 96
 	bne	$a3, $a4, .LBB71_13
 # %bb.12:
 	ld.w	$a3, $a0, 0
@@ -36292,34 +36293,34 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	xori	$a4, $a4, 102
 	or	$a3, $a3, $a4
 	sltui	$fp, $a3, 1
-	ld.d	$s8, $sp, 32                    # 8-byte Folded Reload
-	add.d	$s0, $a2, $a1
-	bne	$a0, $s7, .LBB71_14
+	slli.d	$s0, $a1, 9
+	sub.d	$s1, $a2, $s7
+	bne	$a0, $s6, .LBB71_14
 	b	.LBB71_15
 .LBB71_13:
 	move	$fp, $zero
-	ld.d	$s8, $sp, 32                    # 8-byte Folded Reload
-	add.d	$s0, $a2, $a1
-	beq	$a0, $s7, .LBB71_15
+	slli.d	$s0, $a1, 9
+	sub.d	$s1, $a2, $s7
+	beq	$a0, $s6, .LBB71_15
 .LBB71_14:
-	ld.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB71_15:
-	sub.d	$s6, $s0, $s6
+	add.d	$s6, $s1, $s0
 	beqz	$fp, .LBB71_20
 # %bb.16:
-	ld.d	$a1, $s2, 232
-	ld.d	$a0, $s2, 200
+	ld.d	$a1, $s3, 232
+	ld.d	$a0, $s3, 200
 	sub.d	$a2, $a1, $a0
 	srli.d	$a2, $a2, 3
 	sltu	$a1, $zero, $a1
-	ld.d	$a3, $s2, 208
-	ld.d	$a4, $s2, 216
+	ld.d	$a3, $s3, 208
+	ld.d	$a4, $s3, 216
 	sub.d	$a2, $a2, $a1
-	ld.d	$a5, $s2, 192
-	ld.d	$a1, $s2, 176
+	ld.d	$a5, $s3, 192
+	ld.d	$a1, $s3, 176
 	sub.d	$a3, $a3, $a4
 	srli.d	$a3, $a3, 7
 	alsl.d	$a2, $a2, $a3, 2
@@ -36327,11 +36328,12 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	srli.d	$a3, $a3, 7
 	add.w	$a2, $a2, $a3
 	ori	$a3, $zero, 2
-	move	$fp, $s1
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	blt	$a2, $a3, .LBB71_88
 # %bb.17:
-	ld.d	$a2, $s2, 184
+	ld.d	$a2, $s3, 184
 	sub.d	$a2, $a1, $a2
 	srai.d	$a3, $a2, 7
 	addi.w	$a4, $zero, -1
@@ -36344,23 +36346,23 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	addi.d	$a0, $a1, 128
 	b	.LBB71_79
 .LBB71_20:
-	ld.d	$a2, $s2, 176
-	ld.d	$a1, $s2, 184
-	ld.d	$a0, $s2, 200
+	ld.d	$a2, $s3, 176
+	ld.d	$a1, $s3, 184
+	ld.d	$a0, $s3, 200
 	sub.d	$a3, $a2, $a1
 	srai.d	$a1, $a3, 7
-	move	$s0, $s1
+	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
 	bltz	$a3, .LBB71_23
 # %bb.21:
 	ori	$a3, $zero, 4
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
 	bltu	$a1, $a3, .LBB71_25
 # %bb.22:
 	srli.d	$a2, $a1, 2
 	b	.LBB71_24
 .LBB71_23:
 	srai.d	$a2, $a3, 9
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
 .LBB71_24:
 	slli.d	$a3, $a2, 3
 	ldx.d	$a0, $a0, $a3
@@ -36369,23 +36371,23 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	slli.d	$a1, $a1, 7
 	add.d	$a2, $a0, $a1
 .LBB71_25:
-	addi.d	$s7, $sp, 88
-	st.d	$s7, $sp, 72
+	addi.d	$s7, $sp, 104
+	st.d	$s7, $sp, 88
 	ld.d	$a1, $a2, 8
 	ld.d	$s5, $a2, 0
 	ori	$a2, $zero, 16
-	st.d	$a1, $sp, 40
+	st.d	$a1, $sp, 56
 	move	$a0, $s7
 	bltu	$a1, $a2, .LBB71_27
 # %bb.26:
-	addi.d	$a0, $sp, 72
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 88
+	addi.d	$a1, $sp, 56
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 40
-	st.d	$a0, $sp, 72
-	st.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 56
+	st.d	$a0, $sp, 88
+	st.d	$a1, $sp, 104
 .LBB71_27:
 	addi.d	$a2, $a1, 1
 	beqz	$a2, .LBB71_31
@@ -36401,10 +36403,10 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB71_31:
-	ld.d	$a1, $sp, 40
-	ld.d	$a0, $sp, 72
+	ld.d	$a1, $sp, 56
+	ld.d	$a0, $sp, 88
 	ori	$a2, $zero, 4
-	st.d	$a1, $sp, 80
+	st.d	$a1, $sp, 96
 	bne	$a1, $a2, .LBB71_33
 # %bb.32:
 	ld.w	$a1, $a0, 0
@@ -36418,23 +36420,23 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	move	$fp, $zero
 	beq	$a0, $s7, .LBB71_35
 .LBB71_34:
-	ld.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB71_35:
 	beqz	$fp, .LBB71_40
 # %bb.36:
-	ld.d	$a1, $s2, 232
-	ld.d	$a0, $s2, 200
+	ld.d	$a1, $s3, 232
+	ld.d	$a0, $s3, 200
 	sub.d	$a2, $a1, $a0
 	srli.d	$a2, $a2, 3
 	sltu	$a1, $zero, $a1
-	ld.d	$a3, $s2, 208
-	ld.d	$a4, $s2, 216
+	ld.d	$a3, $s3, 208
+	ld.d	$a4, $s3, 216
 	sub.d	$a2, $a2, $a1
-	ld.d	$a5, $s2, 192
-	ld.d	$a1, $s2, 176
+	ld.d	$a5, $s3, 192
+	ld.d	$a1, $s3, 176
 	sub.d	$a3, $a3, $a4
 	srli.d	$a3, $a3, 7
 	alsl.d	$a2, $a2, $a3, 2
@@ -36444,7 +36446,7 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	ori	$a3, $zero, 2
 	blt	$a2, $a3, .LBB71_144
 # %bb.37:
-	ld.d	$a2, $s2, 184
+	ld.d	$a2, $s3, 184
 	sub.d	$a2, $a1, $a2
 	srai.d	$a3, $a2, 7
 	addi.w	$a4, $zero, -1
@@ -36461,10 +36463,11 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	st.b	$zero, $s0, 0
 	blez	$a0, .LBB71_50
 # %bb.41:
-	ld.d	$a0, $s8, 16
-	ld.d	$a3, $s8, 24
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $a2, 16
+	ld.d	$a3, $a2, 24
 	move	$a1, $zero
-	ld.d	$a2, $s8, 40
+	ld.d	$a2, $a2, 40
 	sub.d	$a3, $a0, $a3
 	bstrpick.d	$a4, $s6, 30, 0
 	ori	$a5, $zero, 511
@@ -36504,9 +36507,9 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	beqz	$a7, .LBB71_43
 	b	.LBB71_42
 .LBB71_50:
-	ld.d	$a2, $s2, 176
-	ld.d	$a1, $s2, 184
-	ld.d	$a0, $s2, 200
+	ld.d	$a2, $s3, 176
+	ld.d	$a1, $s3, 184
+	ld.d	$a0, $s3, 200
 	sub.d	$a3, $a2, $a1
 	srai.d	$a1, $a3, 7
 	bltz	$a3, .LBB71_54
@@ -36529,23 +36532,23 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	slli.d	$a1, $a1, 7
 	add.d	$a2, $a0, $a1
 .LBB71_56:
-	addi.d	$s7, $sp, 88
-	st.d	$s7, $sp, 72
+	addi.d	$s7, $sp, 104
+	st.d	$s7, $sp, 88
 	ld.d	$a1, $a2, 8
 	ld.d	$s5, $a2, 0
 	ori	$a2, $zero, 16
-	st.d	$a1, $sp, 40
+	st.d	$a1, $sp, 56
 	move	$a0, $s7
 	bltu	$a1, $a2, .LBB71_58
 # %bb.57:
-	addi.d	$a0, $sp, 72
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 88
+	addi.d	$a1, $sp, 56
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 40
-	st.d	$a0, $sp, 72
-	st.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 56
+	st.d	$a0, $sp, 88
+	st.d	$a1, $sp, 104
 .LBB71_58:
 	addi.d	$a2, $a1, 1
 	beqz	$a2, .LBB71_62
@@ -36561,10 +36564,10 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB71_62:
-	ld.d	$a1, $sp, 40
-	ld.d	$a0, $sp, 72
+	ld.d	$a1, $sp, 56
+	ld.d	$a0, $sp, 88
 	ori	$a2, $zero, 6
-	st.d	$a1, $sp, 80
+	st.d	$a1, $sp, 96
 	bne	$a1, $a2, .LBB71_64
 # %bb.63:
 	ld.w	$a1, $a0, 0
@@ -36583,12 +36586,12 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	move	$fp, $zero
 	beq	$a0, $s7, .LBB71_66
 .LBB71_65:
-	ld.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB71_66:
-	addi.d	$s3, $s2, 160
+	addi.d	$s2, $s3, 160
 	beqz	$fp, .LBB71_74
 # %bb.67:
 	slli.d	$a0, $s6, 32
@@ -36611,25 +36614,25 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	bnez	$a0, .LBB71_130
 .LBB71_70:
 	ld.bu	$a0, $s0, 0
-	beqz	$a0, .LBB71_176
+	beqz	$a0, .LBB71_175
 # %bb.71:
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $a0, 16
 	ld.d	$a1, $a0, 24
 	ld.d	$a0, $a0, 40
 	sub.d	$a1, $a2, $a1
 	add.d	$a1, $a1, $s8
-	bltz	$a1, .LBB71_172
+	bltz	$a1, .LBB71_171
 # %bb.72:
 	ori	$a3, $zero, 511
-	bltu	$a3, $a1, .LBB71_173
+	bltu	$a3, $a1, .LBB71_172
 # %bb.73:
 	add.d	$a0, $a2, $s8
-	b	.LBB71_175
+	b	.LBB71_174
 .LBB71_74:
-	ld.d	$a2, $s2, 176
-	ld.d	$a1, $s2, 184
-	ld.d	$a0, $s2, 200
+	ld.d	$a2, $s3, 176
+	ld.d	$a1, $s3, 184
+	ld.d	$a0, $s3, 200
 	sub.d	$a3, $a2, $a1
 	srai.d	$a1, $a3, 7
 	bltz	$a3, .LBB71_113
@@ -36649,23 +36652,23 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	slli.d	$a1, $a1, 7
 	add.d	$a0, $a0, $a1
 .LBB71_79:
-	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
-	move	$a1, $s1
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
+	move	$a1, $s2
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP4Word11fatal_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
-	addi.d	$s4, $s1, 16
+	addi.d	$s4, $s2, 16
 	pcalau12i	$a0, %pc_hi20(.L.str.134)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.134)
 	ori	$a2, $zero, 74
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, 16
+	ld.d	$a0, $s2, 16
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s4, $a0
 	ld.d	$s3, $a0, 240
-	beqz	$s3, .LBB71_319
+	beqz	$s3, .LBB71_318
 # %bb.80:
 	ld.bu	$a0, $s3, 56
 	beqz	$a0, .LBB71_82
@@ -36698,7 +36701,7 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s4, $a0
 	ld.d	$s3, $a0, 240
-	beqz	$s3, .LBB71_319
+	beqz	$s3, .LBB71_318
 # %bb.84:
 	ld.bu	$a0, $s3, 56
 	beqz	$a0, .LBB71_86
@@ -36722,12 +36725,12 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 2
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a0, $a1, 0
 .LBB71_88:
-	ld.d	$a3, $s8, 16
-	ld.d	$a1, $s8, 24
-	ld.d	$a0, $s8, 40
+	ld.d	$a3, $s1, 16
+	ld.d	$a1, $s1, 24
+	ld.d	$a0, $s1, 40
 	addi.w	$s2, $s6, 0
 	sub.d	$a2, $a3, $a1
 	add.d	$a2, $a2, $s2
@@ -36774,15 +36777,15 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	sub.d	$a1, $a1, $a2
 	add.d	$a1, $a3, $a1
 .LBB71_99:
-	st.d	$a1, $sp, 72
-	ld.d	$a1, $a0, 0
-	st.d	$a1, $sp, 80
-	addi.d	$a1, $a1, 512
 	st.d	$a1, $sp, 88
-	st.d	$a0, $sp, 96
-	addi.d	$a0, $sp, 40
-	addi.d	$a2, $sp, 72
-	move	$a1, $s8
+	ld.d	$a1, $a0, 0
+	st.d	$a1, $sp, 96
+	addi.d	$a1, $a1, 512
+	st.d	$a1, $sp, 104
+	st.d	$a0, $sp, 112
+	addi.d	$a0, $sp, 56
+	addi.d	$a2, $sp, 88
+	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIbSaIbEE8_M_eraseESt15_Deque_iteratorIbRbPbE)
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $s0, 16
@@ -36833,20 +36836,20 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	sub.d	$a1, $a1, $a2
 	add.d	$a1, $a3, $a1
 .LBB71_110:
-	st.d	$a1, $sp, 72
-	ld.d	$a1, $a0, 0
-	st.d	$a1, $sp, 80
-	addi.d	$a1, $a1, 512
 	st.d	$a1, $sp, 88
-	st.d	$a0, $sp, 96
-	addi.d	$a0, $sp, 40
-	addi.d	$a2, $sp, 72
+	ld.d	$a1, $a0, 0
+	st.d	$a1, $sp, 96
+	addi.d	$a1, $a1, 512
+	st.d	$a1, $sp, 104
+	st.d	$a0, $sp, 112
+	addi.d	$a0, $sp, 56
+	addi.d	$a2, $sp, 88
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIbSaIbEE8_M_eraseESt15_Deque_iteratorIbRbPbE)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 0
-	b	.LBB71_270
+	b	.LBB71_269
 .LBB71_111:
 	srai.d	$a1, $a2, 2
 	b	.LBB71_134
@@ -36863,23 +36866,23 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	slli.d	$a1, $a1, 7
 	add.d	$a2, $a0, $a1
 .LBB71_115:
-	addi.d	$s7, $sp, 88
-	st.d	$s7, $sp, 72
+	addi.d	$s7, $sp, 104
+	st.d	$s7, $sp, 88
 	ld.d	$a1, $a2, 8
 	ld.d	$s6, $a2, 0
 	ori	$a2, $zero, 16
-	st.d	$a1, $sp, 40
+	st.d	$a1, $sp, 56
 	move	$a0, $s7
 	bltu	$a1, $a2, .LBB71_117
 # %bb.116:
-	addi.d	$a0, $sp, 72
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 88
+	addi.d	$a1, $sp, 56
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 40
-	st.d	$a0, $sp, 72
-	st.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 56
+	st.d	$a0, $sp, 88
+	st.d	$a1, $sp, 104
 .LBB71_117:
 	addi.d	$a2, $a1, 1
 	beqz	$a2, .LBB71_121
@@ -36895,10 +36898,10 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB71_121:
-	ld.d	$a1, $sp, 40
-	ld.d	$a0, $sp, 72
+	ld.d	$a1, $sp, 56
+	ld.d	$a0, $sp, 88
 	ori	$a2, $zero, 2
-	st.d	$a1, $sp, 80
+	st.d	$a1, $sp, 96
 	bne	$a1, $a2, .LBB71_123
 # %bb.122:
 	ld.hu	$a1, $a0, 0
@@ -36912,28 +36915,28 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	move	$fp, $zero
 	beq	$a0, $s7, .LBB71_125
 .LBB71_124:
-	ld.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB71_125:
-	beqz	$fp, .LBB71_270
+	beqz	$fp, .LBB71_269
 # %bb.126:
 	ld.bu	$a0, $s0, 0
-	beqz	$a0, .LBB71_164
+	beqz	$a0, .LBB71_163
 # %bb.127:
 	ori	$fp, $zero, 1
-	st.b	$fp, $sp, 72
-	addi.d	$a1, $sp, 72
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	st.b	$fp, $sp, 88
+	addi.d	$a1, $sp, 88
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIbSaIbEE12emplace_backIJbEEERbDpOT_)
 	jirl	$ra, $ra, 0
-	st.b	$fp, $sp, 72
-	addi.d	$a1, $sp, 72
+	st.b	$fp, $sp, 88
+	addi.d	$a1, $sp, 88
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIbSaIbEE12emplace_backIJbEEERbDpOT_)
 	jirl	$ra, $ra, 0
-	b	.LBB71_270
+	b	.LBB71_269
 .LBB71_128:
 	srli.d	$a2, $a1, 9
 .LBB71_129:
@@ -36945,19 +36948,19 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	ld.bu	$a0, $a0, 0
 	beqz	$a0, .LBB71_70
 .LBB71_130:
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $a0, 16
 	ld.d	$a1, $a0, 24
 	ld.d	$a0, $a0, 40
 	sub.d	$a1, $a2, $a1
 	add.d	$a1, $a1, $s8
-	bltz	$a1, .LBB71_266
+	bltz	$a1, .LBB71_265
 # %bb.131:
 	ori	$a3, $zero, 511
-	bltu	$a3, $a1, .LBB71_265
+	bltu	$a3, $a1, .LBB71_264
 .LBB71_132:
 	add.d	$a0, $a2, $s8
-	b	.LBB71_268
+	b	.LBB71_267
 .LBB71_133:
 	srli.d	$a1, $a2, 2
 .LBB71_134:
@@ -36968,9 +36971,9 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	slli.d	$a1, $a1, 7
 	add.d	$a0, $a0, $a1
 .LBB71_135:
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	move	$a1, $fp
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP4Word11fatal_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 	addi.d	$s4, $fp, 16
@@ -36984,7 +36987,7 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s4, $a0
 	ld.d	$s3, $a0, 240
-	beqz	$s3, .LBB71_319
+	beqz	$s3, .LBB71_318
 # %bb.136:
 	ld.bu	$a0, $s3, 56
 	beqz	$a0, .LBB71_138
@@ -37017,7 +37020,7 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s4, $a0
 	ld.d	$s3, $a0, 240
-	beqz	$s3, .LBB71_319
+	beqz	$s3, .LBB71_318
 # %bb.140:
 	ld.bu	$a0, $s3, 56
 	beqz	$a0, .LBB71_142
@@ -37041,7 +37044,7 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 2
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a0, $a1, 0
 .LBB71_144:
 	slli.d	$a0, $s6, 32
@@ -37057,93 +37060,98 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	bltz	$a1, .LBB71_148
 # %bb.145:
 	ori	$a4, $zero, 512
-	bgeu	$a1, $a4, .LBB71_149
+	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
+	bgeu	$a1, $a4, .LBB71_152
 # %bb.146:
 	ldx.bu	$a1, $a2, $a0
-	bnez	$a1, .LBB71_151
+	bnez	$a1, .LBB71_149
 # %bb.147:
 	add.d	$a1, $a2, $a0
-	b	.LBB71_155
+	b	.LBB71_154
 .LBB71_148:
 	srai.d	$a2, $a1, 9
-	b	.LBB71_150
-.LBB71_149:
-	srli.d	$a2, $a1, 9
-.LBB71_150:
 	slli.d	$a4, $a2, 3
 	ldx.d	$a3, $a3, $a4
 	andi	$a4, $a1, 511
 	ldx.bu	$a4, $a3, $a4
-	beqz	$a4, .LBB71_154
-.LBB71_151:
-	ld.d	$a3, $s8, 16
-	ld.d	$a2, $s8, 24
-	ld.d	$a1, $s8, 40
+	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
+	beqz	$a4, .LBB71_153
+.LBB71_149:
+	ld.d	$a3, $a5, 16
+	ld.d	$a2, $a5, 24
+	ld.d	$a1, $a5, 40
 	sub.d	$a2, $a3, $a2
 	add.d	$a2, $a2, $a0
-	bltz	$a2, .LBB71_158
-# %bb.152:
+	bltz	$a2, .LBB71_157
+# %bb.150:
 	ori	$a4, $zero, 511
-	bltu	$a4, $a2, .LBB71_160
-# %bb.153:
+	bltu	$a4, $a2, .LBB71_159
+# %bb.151:
 	add.d	$a0, $a3, $a0
-	b	.LBB71_268
-.LBB71_154:
+	b	.LBB71_267
+.LBB71_152:
+	srli.d	$a2, $a1, 9
+	slli.d	$a4, $a2, 3
+	ldx.d	$a3, $a3, $a4
+	andi	$a4, $a1, 511
+	ldx.bu	$a4, $a3, $a4
+	bnez	$a4, .LBB71_149
+.LBB71_153:
 	slli.d	$a2, $a2, 9
 	sub.d	$a1, $a1, $a2
 	add.d	$a1, $a3, $a1
-.LBB71_155:
+.LBB71_154:
 	ori	$a2, $zero, 1
 	st.b	$a2, $a1, 0
-	ld.d	$a3, $s8, 16
-	ld.d	$a2, $s8, 24
-	ld.d	$a1, $s8, 40
+	ld.d	$a3, $a5, 16
+	ld.d	$a2, $a5, 24
+	ld.d	$a1, $a5, 40
 	sub.d	$a2, $a3, $a2
 	add.d	$a2, $a2, $a0
-	bltz	$a2, .LBB71_159
-# %bb.156:
+	bltz	$a2, .LBB71_158
+# %bb.155:
 	ori	$a4, $zero, 511
-	bltu	$a4, $a2, .LBB71_162
-# %bb.157:
+	bltu	$a4, $a2, .LBB71_161
+# %bb.156:
 	add.d	$a0, $a3, $a0
 	st.b	$zero, $a0, 0
-	b	.LBB71_269
+	b	.LBB71_268
+.LBB71_157:
+	srai.d	$a0, $a2, 9
+	b	.LBB71_160
 .LBB71_158:
 	srai.d	$a0, $a2, 9
-	b	.LBB71_161
+	b	.LBB71_162
 .LBB71_159:
-	srai.d	$a0, $a2, 9
-	b	.LBB71_163
-.LBB71_160:
 	srli.d	$a0, $a2, 9
-.LBB71_161:
+.LBB71_160:
 	slli.d	$a3, $a0, 3
 	ldx.d	$a1, $a1, $a3
 	slli.d	$a0, $a0, 9
 	sub.d	$a0, $a2, $a0
 	add.d	$a0, $a1, $a0
-	b	.LBB71_268
-.LBB71_162:
+	b	.LBB71_267
+.LBB71_161:
 	srli.d	$a0, $a2, 9
-.LBB71_163:
+.LBB71_162:
 	slli.d	$a3, $a0, 3
 	ldx.d	$a1, $a1, $a3
 	slli.d	$a0, $a0, 9
 	sub.d	$a0, $a2, $a0
 	add.d	$a0, $a1, $a0
 	st.b	$zero, $a0, 0
-	b	.LBB71_269
-.LBB71_164:
-	ld.d	$a0, $s2, 232
-	ld.d	$a1, $s2, 200
+	b	.LBB71_268
+.LBB71_163:
+	ld.d	$a0, $s3, 232
+	ld.d	$a1, $s3, 200
 	sub.d	$a1, $a0, $a1
 	srli.d	$a1, $a1, 3
 	sltu	$a0, $zero, $a0
-	ld.d	$a2, $s2, 208
-	ld.d	$a3, $s2, 216
+	ld.d	$a2, $s3, 208
+	ld.d	$a3, $s3, 216
 	sub.d	$a0, $a1, $a0
-	ld.d	$a1, $s2, 192
-	ld.d	$a4, $s2, 176
+	ld.d	$a1, $s3, 192
+	ld.d	$a4, $s3, 176
 	sub.d	$a2, $a2, $a3
 	srli.d	$a2, $a2, 7
 	alsl.d	$a0, $a0, $a2, 2
@@ -37151,43 +37159,43 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	srli.d	$a1, $a1, 7
 	add.w	$a0, $a0, $a1
 	ori	$a1, $zero, 2
-	blt	$a0, $a1, .LBB71_291
-# %bb.165:
+	blt	$a0, $a1, .LBB71_290
+# %bb.164:
 	ori	$a1, $zero, 1
-	move	$a0, $s3
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EEixEm)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	addi.d	$a0, $sp, 72
+	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZN2PP4Word10get_stringB5cxx11Ev)
 	jirl	$ra, $ra, 0
 .Ltmp1784:                              # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.42)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.42)
-	addi.d	$a0, $sp, 72
+	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_)
 	jirl	$ra, $ra, 0
 .Ltmp1785:                              # EH_LABEL
-# %bb.166:
+# %bb.165:
 	move	$s6, $a0
-	ld.d	$a0, $sp, 72
-	addi.d	$s7, $sp, 88
-	beq	$a0, $s7, .LBB71_168
-# %bb.167:
-	ld.d	$a1, $sp, 88
+	ld.d	$a0, $sp, 88
+	addi.d	$s7, $sp, 104
+	beq	$a0, $s7, .LBB71_167
+# %bb.166:
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB71_168:
-	beqz	$s6, .LBB71_291
-# %bb.169:
+.LBB71_167:
+	beqz	$s6, .LBB71_290
+# %bb.168:
 	ori	$a1, $zero, 1
-	move	$a0, $s3
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EEixEm)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	move	$a1, $fp
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP4Word11fatal_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 	addi.d	$s6, $fp, 16
@@ -37197,43 +37205,43 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s2, 176
-	ld.d	$a2, $s2, 184
-	ld.d	$a0, $s2, 200
+	ld.d	$a1, $s3, 176
+	ld.d	$a2, $s3, 184
+	ld.d	$a0, $s3, 200
 	sub.d	$a3, $a1, $a2
 	srai.d	$a2, $a3, 7
-	bltz	$a3, .LBB71_280
-# %bb.170:
+	bltz	$a3, .LBB71_279
+# %bb.169:
 	ori	$a3, $zero, 4
-	bltu	$a2, $a3, .LBB71_282
-# %bb.171:
+	bltu	$a2, $a3, .LBB71_281
+# %bb.170:
 	srli.d	$a1, $a2, 2
-	b	.LBB71_281
-.LBB71_172:
+	b	.LBB71_280
+.LBB71_171:
 	srai.d	$a2, $a1, 9
-	b	.LBB71_174
-.LBB71_173:
+	b	.LBB71_173
+.LBB71_172:
 	srli.d	$a2, $a1, 9
-.LBB71_174:
+.LBB71_173:
 	slli.d	$a3, $a2, 3
 	ldx.d	$a0, $a0, $a3
 	slli.d	$a2, $a2, 9
 	sub.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
-.LBB71_175:
+.LBB71_174:
 	ld.bu	$a0, $a0, 0
-	beqz	$a0, .LBB71_270
-.LBB71_176:
-	ld.d	$a1, $s2, 232
-	ld.d	$a0, $s2, 200
+	beqz	$a0, .LBB71_269
+.LBB71_175:
+	ld.d	$a1, $s3, 232
+	ld.d	$a0, $s3, 200
 	sub.d	$a2, $a1, $a0
 	srai.d	$a2, $a2, 3
 	sltu	$a1, $zero, $a1
-	ld.d	$a3, $s2, 208
-	ld.d	$a4, $s2, 216
+	ld.d	$a3, $s3, 208
+	ld.d	$a4, $s3, 216
 	sub.d	$a2, $a2, $a1
-	ld.d	$a5, $s2, 192
-	ld.d	$a1, $s2, 176
+	ld.d	$a5, $s3, 192
+	ld.d	$a1, $s3, 176
 	sub.d	$a3, $a3, $a4
 	srai.d	$a3, $a3, 7
 	alsl.d	$a2, $a2, $a3, 2
@@ -37242,95 +37250,95 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	add.d	$s4, $a2, $a3
 	addi.w	$a2, $s4, 0
 	ori	$a3, $zero, 2
-	blt	$a2, $a3, .LBB71_180
-# %bb.177:
-	ld.d	$a2, $s2, 184
+	blt	$a2, $a3, .LBB71_179
+# %bb.176:
+	ld.d	$a2, $s3, 184
 	sub.d	$a2, $a1, $a2
 	srai.d	$a3, $a2, 7
 	addi.w	$a4, $zero, -1
 	addi.d	$a2, $a3, 1
-	blt	$a3, $a4, .LBB71_181
-# %bb.178:
+	blt	$a3, $a4, .LBB71_180
+# %bb.177:
 	ori	$a4, $zero, 2
-	blt	$a4, $a3, .LBB71_182
-# %bb.179:
+	blt	$a4, $a3, .LBB71_181
+# %bb.178:
 	addi.d	$a0, $a1, 128
-	b	.LBB71_184
-.LBB71_180:
-	ori	$a0, $zero, 1
-	beq	$a2, $a0, .LBB71_231
-	b	.LBB71_253
-.LBB71_181:
-	srai.d	$a1, $a2, 2
 	b	.LBB71_183
-.LBB71_182:
+.LBB71_179:
+	ori	$a0, $zero, 1
+	beq	$a2, $a0, .LBB71_230
+	b	.LBB71_252
+.LBB71_180:
+	srai.d	$a1, $a2, 2
+	b	.LBB71_182
+.LBB71_181:
 	srli.d	$a1, $a2, 2
-.LBB71_183:
+.LBB71_182:
 	slli.d	$a3, $a1, 3
 	ldx.d	$a0, $a0, $a3
 	slli.d	$a1, $a1, 2
 	sub.d	$a1, $a2, $a1
 	slli.d	$a1, $a1, 7
 	add.d	$a0, $a0, $a1
-.LBB71_184:
-	addi.d	$s5, $sp, 88
-	st.d	$s5, $sp, 72
+.LBB71_183:
+	addi.d	$s5, $sp, 104
+	st.d	$s5, $sp, 88
 	ld.d	$a1, $a0, 8
 	ld.d	$s6, $a0, 0
 	ori	$a2, $zero, 16
-	st.d	$a1, $sp, 40
+	st.d	$a1, $sp, 56
 	move	$a0, $s5
-	bltu	$a1, $a2, .LBB71_186
-# %bb.185:
-	addi.d	$a0, $sp, 72
-	addi.d	$a1, $sp, 40
+	bltu	$a1, $a2, .LBB71_185
+# %bb.184:
+	addi.d	$a0, $sp, 88
+	addi.d	$a1, $sp, 56
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 40
-	st.d	$a0, $sp, 72
-	st.d	$a1, $sp, 88
-.LBB71_186:
+	ld.d	$a1, $sp, 56
+	st.d	$a0, $sp, 88
+	st.d	$a1, $sp, 104
+.LBB71_185:
 	addi.d	$a2, $a1, 1
-	beqz	$a2, .LBB71_190
-# %bb.187:
+	beqz	$a2, .LBB71_189
+# %bb.186:
 	ori	$a1, $zero, 1
-	bne	$a2, $a1, .LBB71_189
-# %bb.188:
+	bne	$a2, $a1, .LBB71_188
+# %bb.187:
 	ld.b	$a1, $s6, 0
 	st.b	$a1, $a0, 0
-	b	.LBB71_190
-.LBB71_189:
+	b	.LBB71_189
+.LBB71_188:
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB71_190:
-	ld.d	$a1, $sp, 40
-	ld.d	$a0, $sp, 72
+.LBB71_189:
+	ld.d	$a1, $sp, 56
+	ld.d	$a0, $sp, 88
 	ori	$fp, $zero, 1
-	st.d	$a1, $sp, 80
-	bne	$a1, $fp, .LBB71_192
-# %bb.191:
+	st.d	$a1, $sp, 96
+	bne	$a1, $fp, .LBB71_191
+# %bb.190:
 	ld.bu	$a1, $a0, 0
 	addi.d	$a1, $a1, -40
 	sltu	$fp, $zero, $a1
-.LBB71_192:
-	beq	$a0, $s5, .LBB71_194
-# %bb.193:
-	ld.d	$a1, $sp, 88
+.LBB71_191:
+	beq	$a0, $s5, .LBB71_193
+# %bb.192:
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB71_194:
-	beqz	$fp, .LBB71_209
-# %bb.195:
+.LBB71_193:
+	beqz	$fp, .LBB71_208
+# %bb.194:
 	ori	$a1, $zero, 1
-	move	$a0, $s3
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EEixEm)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	move	$a1, $fp
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP4Word11fatal_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 	addi.d	$s6, $fp, 16
@@ -37340,53 +37348,54 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s2, 176
-	ld.d	$a2, $s2, 184
-	ld.d	$a0, $s2, 200
+	ld.d	$a1, $s3, 176
+	ld.d	$a2, $s3, 184
+	ld.d	$a0, $s3, 200
 	sub.d	$a3, $a1, $a2
 	srai.d	$a2, $a3, 7
-	bltz	$a3, .LBB71_198
-# %bb.196:
+	bltz	$a3, .LBB71_197
+# %bb.195:
 	ori	$a3, $zero, 4
-	bltu	$a2, $a3, .LBB71_200
-# %bb.197:
+	bltu	$a2, $a3, .LBB71_199
+# %bb.196:
 	srli.d	$a1, $a2, 2
-	b	.LBB71_199
-.LBB71_198:
+	b	.LBB71_198
+.LBB71_197:
 	srai.d	$a1, $a3, 9
-.LBB71_199:
+.LBB71_198:
 	slli.d	$a3, $a1, 3
 	ldx.d	$a0, $a0, $a3
 	slli.d	$a1, $a1, 2
 	sub.d	$a1, $a2, $a1
 	slli.d	$a1, $a1, 7
 	add.d	$a1, $a0, $a1
-.LBB71_200:
-	addi.d	$a0, $sp, 72
+.LBB71_199:
+	move	$fp, $s2
+	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZN2PP4Word10get_stringB5cxx11Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 72
-	ld.d	$a2, $sp, 80
+	ld.d	$a1, $sp, 88
+	ld.d	$a2, $sp, 96
 .Ltmp1800:                              # EH_LABEL
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1801:                              # EH_LABEL
-# %bb.201:
+# %bb.200:
 .Ltmp1802:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp1803:                              # EH_LABEL
+# %bb.201:
+	ld.d	$a0, $sp, 88
+	addi.d	$s2, $sp, 104
+	beq	$a0, $s2, .LBB71_203
 # %bb.202:
-	ld.d	$a0, $sp, 72
-	addi.d	$s5, $sp, 88
-	beq	$a0, $s5, .LBB71_204
-# %bb.203:
-	ld.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB71_204:
+.LBB71_203:
 	pcalau12i	$a0, %pc_hi20(.L.str.46)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.46)
 	ori	$a2, $zero, 15
@@ -37394,127 +37403,128 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
-	move	$a0, $s3
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EEixEm)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	addi.d	$a0, $sp, 72
+	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZN2PP4Word10get_stringB5cxx11Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 72
-	ld.d	$a2, $sp, 80
+	ld.d	$a1, $sp, 88
+	ld.d	$a2, $sp, 96
 .Ltmp1805:                              # EH_LABEL
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1806:                              # EH_LABEL
-# %bb.205:
+# %bb.204:
 .Ltmp1807:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp1808:                              # EH_LABEL
+# %bb.205:
+	ld.d	$a0, $sp, 88
+	beq	$a0, $s2, .LBB71_207
 # %bb.206:
-	ld.d	$a0, $sp, 72
-	beq	$a0, $s5, .LBB71_208
-# %bb.207:
-	ld.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB71_208:
+.LBB71_207:
 	ori	$a0, $zero, 2
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a0, $a1, 0
-.LBB71_209:
+	move	$s2, $fp
+.LBB71_208:
 	addi.w	$a0, $zero, -2
 	lu32i.d	$a0, 0
-	ld.d	$a2, $s2, 176
-	ld.d	$a1, $s2, 184
+	ld.d	$a2, $s3, 176
+	ld.d	$a1, $s3, 184
 	add.d	$a0, $s4, $a0
 	bstrpick.d	$s6, $a0, 31, 0
-	ld.d	$a0, $s2, 200
+	ld.d	$a0, $s3, 200
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
 	add.d	$a1, $a1, $s6
-	bltz	$a1, .LBB71_212
-# %bb.210:
+	bltz	$a1, .LBB71_211
+# %bb.209:
 	ori	$a3, $zero, 3
-	bltu	$a3, $a1, .LBB71_213
-# %bb.211:
+	bltu	$a3, $a1, .LBB71_212
+# %bb.210:
 	slli.d	$a0, $s6, 7
 	add.d	$a0, $a2, $a0
-	b	.LBB71_215
-.LBB71_212:
-	srai.d	$a2, $a1, 2
 	b	.LBB71_214
-.LBB71_213:
+.LBB71_211:
+	srai.d	$a2, $a1, 2
+	b	.LBB71_213
+.LBB71_212:
 	srli.d	$a2, $a1, 2
-.LBB71_214:
+.LBB71_213:
 	slli.d	$a3, $a2, 3
 	ldx.d	$a0, $a0, $a3
 	slli.d	$a2, $a2, 2
 	sub.d	$a1, $a1, $a2
 	slli.d	$a1, $a1, 7
 	add.d	$a0, $a0, $a1
-.LBB71_215:
-	addi.d	$s5, $sp, 88
-	st.d	$s5, $sp, 72
+.LBB71_214:
+	addi.d	$s5, $sp, 104
+	st.d	$s5, $sp, 88
 	ld.d	$a1, $a0, 8
 	ld.d	$s7, $a0, 0
 	ori	$a2, $zero, 16
-	st.d	$a1, $sp, 40
+	st.d	$a1, $sp, 56
 	move	$a0, $s5
-	bltu	$a1, $a2, .LBB71_217
-# %bb.216:
-	addi.d	$a0, $sp, 72
-	addi.d	$a1, $sp, 40
+	bltu	$a1, $a2, .LBB71_216
+# %bb.215:
+	addi.d	$a0, $sp, 88
+	addi.d	$a1, $sp, 56
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 40
-	st.d	$a0, $sp, 72
-	st.d	$a1, $sp, 88
-.LBB71_217:
+	ld.d	$a1, $sp, 56
+	st.d	$a0, $sp, 88
+	st.d	$a1, $sp, 104
+.LBB71_216:
 	addi.d	$a2, $a1, 1
-	beqz	$a2, .LBB71_221
-# %bb.218:
+	beqz	$a2, .LBB71_220
+# %bb.217:
 	ori	$a1, $zero, 1
-	bne	$a2, $a1, .LBB71_220
-# %bb.219:
+	bne	$a2, $a1, .LBB71_219
+# %bb.218:
 	ld.b	$a1, $s7, 0
 	st.b	$a1, $a0, 0
-	b	.LBB71_221
-.LBB71_220:
+	b	.LBB71_220
+.LBB71_219:
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB71_221:
-	ld.d	$a1, $sp, 40
-	ld.d	$a0, $sp, 72
+.LBB71_220:
+	ld.d	$a1, $sp, 56
+	ld.d	$a0, $sp, 88
 	ori	$fp, $zero, 1
-	st.d	$a1, $sp, 80
-	bne	$a1, $fp, .LBB71_223
-# %bb.222:
+	st.d	$a1, $sp, 96
+	bne	$a1, $fp, .LBB71_222
+# %bb.221:
 	ld.bu	$a1, $a0, 0
 	addi.d	$a1, $a1, -41
 	sltu	$fp, $zero, $a1
-.LBB71_223:
-	beq	$a0, $s5, .LBB71_225
-# %bb.224:
-	ld.d	$a1, $sp, 88
+.LBB71_222:
+	beq	$a0, $s5, .LBB71_224
+# %bb.223:
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB71_225:
-	beqz	$fp, .LBB71_231
-# %bb.226:
-	move	$a0, $s3
+.LBB71_224:
+	beqz	$fp, .LBB71_230
+# %bb.225:
+	move	$a0, $s2
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EEixEm)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	move	$a1, $fp
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP4Word11fatal_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 	addi.d	$s7, $fp, 16
@@ -37533,130 +37543,130 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	move	$a0, $s3
+	move	$a0, $s2
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EEixEm)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	addi.d	$a0, $sp, 72
+	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZN2PP4Word10get_stringB5cxx11Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 72
-	ld.d	$a2, $sp, 80
+	ld.d	$a1, $sp, 88
+	ld.d	$a2, $sp, 96
 .Ltmp1810:                              # EH_LABEL
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1811:                              # EH_LABEL
-# %bb.227:
+# %bb.226:
 .Ltmp1812:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp1813:                              # EH_LABEL
+# %bb.227:
+	ld.d	$a0, $sp, 88
+	addi.d	$a1, $sp, 104
+	beq	$a0, $a1, .LBB71_229
 # %bb.228:
-	ld.d	$a0, $sp, 72
-	addi.d	$a1, $sp, 88
-	beq	$a0, $a1, .LBB71_230
-# %bb.229:
-	ld.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB71_230:
+.LBB71_229:
 	ori	$a0, $zero, 2
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a0, $a1, 0
-.LBB71_231:
-	ld.d	$a2, $s2, 176
-	ld.d	$a1, $s2, 184
+.LBB71_230:
+	ld.d	$a2, $s3, 176
+	ld.d	$a1, $s3, 184
 	addi.d	$a0, $s4, -1
 	bstrpick.d	$s6, $a0, 31, 0
-	ld.d	$a0, $s2, 200
+	ld.d	$a0, $s3, 200
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
 	add.d	$a1, $a1, $s6
-	bltz	$a1, .LBB71_234
-# %bb.232:
+	bltz	$a1, .LBB71_233
+# %bb.231:
 	ori	$a3, $zero, 3
-	bltu	$a3, $a1, .LBB71_235
-# %bb.233:
+	bltu	$a3, $a1, .LBB71_234
+# %bb.232:
 	slli.d	$a0, $s6, 7
 	add.d	$a0, $a2, $a0
-	b	.LBB71_237
-.LBB71_234:
-	srai.d	$a2, $a1, 2
 	b	.LBB71_236
-.LBB71_235:
+.LBB71_233:
+	srai.d	$a2, $a1, 2
+	b	.LBB71_235
+.LBB71_234:
 	srli.d	$a2, $a1, 2
-.LBB71_236:
+.LBB71_235:
 	slli.d	$a3, $a2, 3
 	ldx.d	$a0, $a0, $a3
 	slli.d	$a2, $a2, 2
 	sub.d	$a1, $a1, $a2
 	slli.d	$a1, $a1, 7
 	add.d	$a0, $a0, $a1
-.LBB71_237:
-	addi.d	$s5, $sp, 88
-	st.d	$s5, $sp, 72
+.LBB71_236:
+	addi.d	$s5, $sp, 104
+	st.d	$s5, $sp, 88
 	ld.d	$a1, $a0, 8
 	ld.d	$s7, $a0, 0
 	ori	$a2, $zero, 16
-	st.d	$a1, $sp, 40
+	st.d	$a1, $sp, 56
 	move	$a0, $s5
-	bltu	$a1, $a2, .LBB71_239
-# %bb.238:
-	addi.d	$a0, $sp, 72
-	addi.d	$a1, $sp, 40
+	bltu	$a1, $a2, .LBB71_238
+# %bb.237:
+	addi.d	$a0, $sp, 88
+	addi.d	$a1, $sp, 56
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 40
-	st.d	$a0, $sp, 72
-	st.d	$a1, $sp, 88
-.LBB71_239:
+	ld.d	$a1, $sp, 56
+	st.d	$a0, $sp, 88
+	st.d	$a1, $sp, 104
+.LBB71_238:
 	addi.d	$a2, $a1, 1
-	beqz	$a2, .LBB71_243
-# %bb.240:
+	beqz	$a2, .LBB71_242
+# %bb.239:
 	ori	$a1, $zero, 1
-	bne	$a2, $a1, .LBB71_242
-# %bb.241:
+	bne	$a2, $a1, .LBB71_241
+# %bb.240:
 	ld.b	$a1, $s7, 0
 	st.b	$a1, $a0, 0
-	b	.LBB71_243
-.LBB71_242:
+	b	.LBB71_242
+.LBB71_241:
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB71_243:
-	ld.d	$a1, $sp, 40
-	ld.d	$a0, $sp, 72
-	st.d	$a1, $sp, 80
+.LBB71_242:
+	ld.d	$a1, $sp, 56
+	ld.d	$a0, $sp, 88
+	st.d	$a1, $sp, 96
 	ori	$a2, $zero, 4
 	ori	$fp, $zero, 1
-	bne	$a1, $a2, .LBB71_245
-# %bb.244:
+	bne	$a1, $a2, .LBB71_244
+# %bb.243:
 	ld.w	$a1, $a0, 0
 	lu12i.w	$a2, 452182
 	ori	$a2, $a2, 2164
 	xor	$a1, $a1, $a2
 	sltu	$fp, $zero, $a1
-.LBB71_245:
-	beq	$a0, $s5, .LBB71_247
-# %bb.246:
-	ld.d	$a1, $sp, 88
+.LBB71_244:
+	beq	$a0, $s5, .LBB71_246
+# %bb.245:
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB71_247:
-	beqz	$fp, .LBB71_253
-# %bb.248:
-	move	$a0, $s3
+.LBB71_246:
+	beqz	$fp, .LBB71_252
+# %bb.247:
+	move	$a0, $s2
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EEixEm)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	move	$a1, $fp
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP4Word11fatal_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 	addi.d	$s7, $fp, 16
@@ -37675,207 +37685,208 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	move	$a0, $s3
+	move	$a0, $s2
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EEixEm)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	addi.d	$a0, $sp, 72
+	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZN2PP4Word10get_stringB5cxx11Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 72
-	ld.d	$a2, $sp, 80
+	ld.d	$a1, $sp, 88
+	ld.d	$a2, $sp, 96
 .Ltmp1815:                              # EH_LABEL
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1816:                              # EH_LABEL
-# %bb.249:
+# %bb.248:
 .Ltmp1817:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp1818:                              # EH_LABEL
+# %bb.249:
+	ld.d	$a0, $sp, 88
+	addi.d	$a1, $sp, 104
+	beq	$a0, $a1, .LBB71_251
 # %bb.250:
-	ld.d	$a0, $sp, 72
-	addi.d	$a1, $sp, 88
-	beq	$a0, $a1, .LBB71_252
-# %bb.251:
-	ld.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB71_252:
+.LBB71_251:
 	ori	$a0, $zero, 2
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a0, $a1, 0
-.LBB71_253:
-	move	$a0, $s2
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+.LBB71_252:
+	move	$a0, $s3
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd9math_evalERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $s2, 176
-	ld.d	$a1, $s2, 184
-	ld.d	$a0, $s2, 200
+	ld.d	$a2, $s3, 176
+	ld.d	$a1, $s3, 184
+	ld.d	$a0, $s3, 200
 	sub.d	$a1, $a2, $a1
 	srai.d	$a3, $a1, 7
 	addi.w	$a4, $zero, -1
 	addi.d	$a1, $a3, 1
-	blt	$a3, $a4, .LBB71_256
-# %bb.254:
+	blt	$a3, $a4, .LBB71_255
+# %bb.253:
 	ori	$a4, $zero, 2
-	blt	$a4, $a3, .LBB71_257
-# %bb.255:
+	blt	$a4, $a3, .LBB71_256
+# %bb.254:
 	addi.d	$a0, $a2, 128
-	b	.LBB71_259
-.LBB71_256:
-	srai.d	$a2, $a1, 2
 	b	.LBB71_258
-.LBB71_257:
+.LBB71_255:
+	srai.d	$a2, $a1, 2
+	b	.LBB71_257
+.LBB71_256:
 	srli.d	$a2, $a1, 2
-.LBB71_258:
+.LBB71_257:
 	slli.d	$a3, $a2, 3
 	ldx.d	$a0, $a0, $a3
 	slli.d	$a2, $a2, 2
 	sub.d	$a1, $a1, $a2
 	slli.d	$a1, $a1, 7
 	add.d	$a0, $a0, $a1
-.LBB71_259:
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+.LBB71_258:
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP4Word8get_boolERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB71_263
-# %bb.260:
+	beqz	$a0, .LBB71_262
+# %bb.259:
 	ld.d	$a2, $s1, 16
 	ld.d	$a1, $s1, 24
 	ld.d	$a0, $s1, 40
 	sub.d	$a1, $a2, $a1
 	add.d	$a1, $a1, $s8
-	bltz	$a1, .LBB71_271
-# %bb.261:
+	bltz	$a1, .LBB71_270
+# %bb.260:
 	ori	$a3, $zero, 511
-	bltu	$a3, $a1, .LBB71_272
-# %bb.262:
+	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	bltu	$a3, $a1, .LBB71_271
+# %bb.261:
 	add.d	$a0, $a2, $s8
-	b	.LBB71_274
-.LBB71_263:
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	b	.LBB71_273
+.LBB71_262:
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $a0, 16
 	ld.d	$a1, $a0, 24
 	ld.d	$a0, $a0, 40
 	sub.d	$a1, $a2, $a1
 	add.d	$a1, $a1, $s8
-	bltz	$a1, .LBB71_266
-# %bb.264:
+	bltz	$a1, .LBB71_265
+# %bb.263:
 	ori	$a3, $zero, 511
 	bgeu	$a3, $a1, .LBB71_132
-.LBB71_265:
+.LBB71_264:
 	srli.d	$a2, $a1, 9
-	b	.LBB71_267
-.LBB71_266:
+	b	.LBB71_266
+.LBB71_265:
 	srai.d	$a2, $a1, 9
-.LBB71_267:
+.LBB71_266:
 	slli.d	$a3, $a2, 3
 	ldx.d	$a0, $a0, $a3
 	slli.d	$a2, $a2, 9
 	sub.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
-.LBB71_268:
+.LBB71_267:
 	ori	$a1, $zero, 1
 	st.b	$a1, $a0, 0
-.LBB71_269:
+.LBB71_268:
 	ori	$a0, $zero, 1
 	st.b	$a0, $s0, 0
-.LBB71_270:
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+.LBB71_269:
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
-.LBB71_271:
+.LBB71_270:
 	srai.d	$a2, $a1, 9
-	b	.LBB71_273
-.LBB71_272:
+	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	b	.LBB71_272
+.LBB71_271:
 	srli.d	$a2, $a1, 9
-.LBB71_273:
+.LBB71_272:
 	slli.d	$a3, $a2, 3
 	ldx.d	$a0, $a0, $a3
 	slli.d	$a2, $a2, 9
 	sub.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
-.LBB71_274:
+.LBB71_273:
 	ori	$a1, $zero, 1
 	st.b	$a1, $a0, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a2, $a0, 16
-	ld.d	$a1, $a0, 24
-	ld.d	$a0, $a0, 40
+	ld.d	$a2, $a4, 16
+	ld.d	$a1, $a4, 24
+	ld.d	$a0, $a4, 40
 	sub.d	$a1, $a2, $a1
 	add.d	$a1, $a1, $s8
-	bltz	$a1, .LBB71_277
-# %bb.275:
+	bltz	$a1, .LBB71_276
+# %bb.274:
 	ori	$a3, $zero, 511
-	bltu	$a3, $a1, .LBB71_278
-# %bb.276:
+	bltu	$a3, $a1, .LBB71_277
+# %bb.275:
 	add.d	$a0, $a2, $s8
 	st.b	$zero, $a0, 0
-	b	.LBB71_269
-.LBB71_277:
+	b	.LBB71_268
+.LBB71_276:
 	srai.d	$a2, $a1, 9
-	b	.LBB71_279
-.LBB71_278:
+	b	.LBB71_278
+.LBB71_277:
 	srli.d	$a2, $a1, 9
-.LBB71_279:
+.LBB71_278:
 	slli.d	$a3, $a2, 3
 	ldx.d	$a0, $a0, $a3
 	slli.d	$a2, $a2, 9
 	sub.d	$a1, $a1, $a2
 	add.d	$a0, $a0, $a1
 	st.b	$zero, $a0, 0
-	b	.LBB71_269
-.LBB71_280:
+	b	.LBB71_268
+.LBB71_279:
 	srai.d	$a1, $a3, 9
-.LBB71_281:
+.LBB71_280:
 	slli.d	$a3, $a1, 3
 	ldx.d	$a0, $a0, $a3
 	slli.d	$a1, $a1, 2
 	sub.d	$a1, $a2, $a1
 	slli.d	$a1, $a1, 7
 	add.d	$a1, $a0, $a1
-.LBB71_282:
-	addi.d	$a0, $sp, 72
+.LBB71_281:
+	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZN2PP4Word10get_stringB5cxx11Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 72
-	ld.d	$a2, $sp, 80
+	ld.d	$a1, $sp, 88
+	ld.d	$a2, $sp, 96
 .Ltmp1787:                              # EH_LABEL
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1788:                              # EH_LABEL
-# %bb.283:
+# %bb.282:
 .Ltmp1789:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp1790:                              # EH_LABEL
+# %bb.283:
+	ld.d	$a0, $sp, 88
+	beq	$a0, $s7, .LBB71_285
 # %bb.284:
-	ld.d	$a0, $sp, 72
-	beq	$a0, $s7, .LBB71_286
-# %bb.285:
-	ld.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB71_286:
+.LBB71_285:
 	pcalau12i	$a0, %pc_hi20(.L.str.46)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.46)
 	ori	$a2, $zero, 15
@@ -37883,252 +37894,252 @@ _ZN2PP3Cmd9handle_ifERbRSt5dequeIbSaIbEES5_RNSt7__cxx1118basic_stringstreamIcSt1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
-	move	$a0, $s3
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EEixEm)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	addi.d	$a0, $sp, 72
+	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZN2PP4Word10get_stringB5cxx11Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 72
-	ld.d	$a2, $sp, 80
+	ld.d	$a1, $sp, 88
+	ld.d	$a2, $sp, 96
 .Ltmp1792:                              # EH_LABEL
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1793:                              # EH_LABEL
-# %bb.287:
+# %bb.286:
 .Ltmp1794:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_)
 	jirl	$ra, $ra, 0
 .Ltmp1795:                              # EH_LABEL
+# %bb.287:
+	ld.d	$a0, $sp, 88
+	beq	$a0, $s7, .LBB71_289
 # %bb.288:
-	ld.d	$a0, $sp, 72
-	beq	$a0, $s7, .LBB71_290
-# %bb.289:
-	ld.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB71_290:
+.LBB71_289:
 	ori	$a0, $zero, 2
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a0, $a1, 0
-.LBB71_291:
-	move	$a0, $s2
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+.LBB71_290:
+	move	$a0, $s3
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd9math_evalERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $s2, 176
-	ld.d	$a1, $s2, 184
-	ld.d	$a0, $s2, 200
+	ld.d	$a2, $s3, 176
+	ld.d	$a1, $s3, 184
+	ld.d	$a0, $s3, 200
 	sub.d	$a1, $a2, $a1
 	srai.d	$a3, $a1, 7
 	addi.w	$a4, $zero, -2
 	addi.d	$a1, $a3, 2
-	blt	$a3, $a4, .LBB71_294
-# %bb.292:
+	blt	$a3, $a4, .LBB71_293
+# %bb.291:
 	ori	$a4, $zero, 1
-	blt	$a4, $a3, .LBB71_295
-# %bb.293:
+	blt	$a4, $a3, .LBB71_294
+# %bb.292:
 	addi.d	$a0, $a2, 256
-	b	.LBB71_297
-.LBB71_294:
-	srai.d	$a2, $a1, 2
 	b	.LBB71_296
-.LBB71_295:
+.LBB71_293:
+	srai.d	$a2, $a1, 2
+	b	.LBB71_295
+.LBB71_294:
 	srli.d	$a2, $a1, 2
-.LBB71_296:
+.LBB71_295:
 	slli.d	$a3, $a2, 3
 	ldx.d	$a0, $a0, $a3
 	slli.d	$a2, $a2, 2
 	sub.d	$a1, $a1, $a2
 	slli.d	$a1, $a1, 7
 	add.d	$a0, $a0, $a1
-.LBB71_297:
-	addi.d	$s5, $sp, 88
-	st.d	$s5, $sp, 72
+.LBB71_296:
+	addi.d	$s5, $sp, 104
+	st.d	$s5, $sp, 88
 	ld.d	$a1, $a0, 8
 	ld.d	$s6, $a0, 0
 	ori	$a2, $zero, 16
-	st.d	$a1, $sp, 40
+	st.d	$a1, $sp, 56
 	move	$a0, $s5
-	bltu	$a1, $a2, .LBB71_299
-# %bb.298:
-	addi.d	$a0, $sp, 72
-	addi.d	$a1, $sp, 40
+	bltu	$a1, $a2, .LBB71_298
+# %bb.297:
+	addi.d	$a0, $sp, 88
+	addi.d	$a1, $sp, 56
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 40
-	st.d	$a0, $sp, 72
-	st.d	$a1, $sp, 88
-.LBB71_299:
+	ld.d	$a1, $sp, 56
+	st.d	$a0, $sp, 88
+	st.d	$a1, $sp, 104
+.LBB71_298:
 	addi.d	$a2, $a1, 1
-	beqz	$a2, .LBB71_303
-# %bb.300:
+	beqz	$a2, .LBB71_302
+# %bb.299:
 	ori	$a1, $zero, 1
-	bne	$a2, $a1, .LBB71_302
-# %bb.301:
+	bne	$a2, $a1, .LBB71_301
+# %bb.300:
 	ld.b	$a1, $s6, 0
 	st.b	$a1, $a0, 0
-	b	.LBB71_303
-.LBB71_302:
+	b	.LBB71_302
+.LBB71_301:
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB71_303:
-	ld.d	$a1, $sp, 40
-	ld.d	$a0, $sp, 72
-	st.d	$a1, $sp, 80
+.LBB71_302:
+	ld.d	$a1, $sp, 56
+	ld.d	$a0, $sp, 88
+	st.d	$a1, $sp, 96
 	ori	$a2, $zero, 4
 	ori	$fp, $zero, 1
-	bne	$a1, $a2, .LBB71_305
-# %bb.304:
+	bne	$a1, $a2, .LBB71_304
+# %bb.303:
 	ld.w	$a1, $a0, 0
 	lu12i.w	$a2, 452182
 	ori	$a2, $a2, 2164
 	xor	$a1, $a1, $a2
 	sltu	$fp, $zero, $a1
-.LBB71_305:
-	beq	$a0, $s5, .LBB71_307
-# %bb.306:
-	ld.d	$a1, $sp, 88
+.LBB71_304:
+	beq	$a0, $s5, .LBB71_306
+# %bb.305:
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB71_307:
-	beqz	$fp, .LBB71_311
-# %bb.308:
+.LBB71_306:
+	beqz	$fp, .LBB71_310
+# %bb.307:
 	ori	$a1, $zero, 1
 	ori	$fp, $zero, 1
-	move	$a0, $s3
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EEixEm)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP4Word8get_boolERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB71_310
-# %bb.309:
+	beqz	$a0, .LBB71_309
+# %bb.308:
 	ori	$a2, $zero, 1
-	move	$a0, $s2
+	move	$a0, $s3
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd12delete_wordsEii)
 	jirl	$ra, $ra, 0
-	move	$a0, $s2
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd15reset_name_typeEv)
 	jirl	$ra, $ra, 0
 	move	$fp, $zero
-.LBB71_310:
+.LBB71_309:
 	st.b	$fp, $s0, 0
-	b	.LBB71_270
-.LBB71_311:
+	b	.LBB71_269
+.LBB71_310:
 	ori	$a1, $zero, 2
-	move	$a0, $s3
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EEixEm)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	addi.d	$a0, $sp, 72
+	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZN2PP4Word10get_stringB5cxx11Ev)
 	jirl	$ra, $ra, 0
 .Ltmp1797:                              # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.140)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.140)
-	addi.d	$a0, $sp, 72
+	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_)
 	jirl	$ra, $ra, 0
 .Ltmp1798:                              # EH_LABEL
-# %bb.312:
+# %bb.311:
 	move	$s4, $a0
-	ld.d	$a0, $sp, 72
-	addi.d	$a1, $sp, 88
-	beq	$a0, $a1, .LBB71_314
-# %bb.313:
-	ld.d	$a1, $sp, 88
+	ld.d	$a0, $sp, 88
+	addi.d	$a1, $sp, 104
+	beq	$a0, $a1, .LBB71_313
+# %bb.312:
+	ld.d	$a1, $sp, 104
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB71_314:
-	beqz	$s4, .LBB71_270
-# %bb.315:
+.LBB71_313:
+	beqz	$s4, .LBB71_269
+# %bb.314:
 	ori	$a1, $zero, 1
 	ori	$fp, $zero, 1
-	move	$a0, $s3
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EEixEm)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP4Word8get_boolERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB71_317
-# %bb.316:
-	st.b	$zero, $sp, 72
-	addi.d	$a1, $sp, 72
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	beqz	$a0, .LBB71_316
+# %bb.315:
+	st.b	$zero, $sp, 88
+	addi.d	$a1, $sp, 88
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIbSaIbEE12emplace_backIJbEEERbDpOT_)
 	jirl	$ra, $ra, 0
-	st.b	$fp, $sp, 72
-	b	.LBB71_318
+	st.b	$fp, $sp, 88
+	b	.LBB71_317
+.LBB71_316:
+	st.b	$fp, $sp, 88
+	addi.d	$a1, $sp, 88
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	pcaddu18i	$ra, %call36(_ZNSt5dequeIbSaIbEE12emplace_backIJbEEERbDpOT_)
+	jirl	$ra, $ra, 0
+	st.b	$zero, $sp, 88
 .LBB71_317:
-	st.b	$fp, $sp, 72
-	addi.d	$a1, $sp, 72
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(_ZNSt5dequeIbSaIbEE12emplace_backIJbEEERbDpOT_)
-	jirl	$ra, $ra, 0
-	st.b	$zero, $sp, 72
-.LBB71_318:
-	addi.d	$a1, $sp, 72
+	addi.d	$a1, $sp, 88
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIbSaIbEE12emplace_backIJbEEERbDpOT_)
 	jirl	$ra, $ra, 0
-	b	.LBB71_269
-.LBB71_319:
+	b	.LBB71_268
+.LBB71_318:
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
-.LBB71_320:
+.LBB71_319:
 .Ltmp1796:                              # EH_LABEL
-	b	.LBB71_323
-.LBB71_321:
+	b	.LBB71_322
+.LBB71_320:
 .Ltmp1799:                              # EH_LABEL
-	b	.LBB71_329
-.LBB71_322:
+	b	.LBB71_328
+.LBB71_321:
 .Ltmp1791:                              # EH_LABEL
+.LBB71_322:
+	ld.d	$a2, $sp, 88
+	move	$fp, $a0
+	bne	$a2, $s7, .LBB71_329
+	b	.LBB71_330
 .LBB71_323:
-	ld.d	$a2, $sp, 72
-	move	$fp, $a0
-	bne	$a2, $s7, .LBB71_330
-	b	.LBB71_331
-.LBB71_324:
 .Ltmp1786:                              # EH_LABEL
-	b	.LBB71_329
-.LBB71_325:
+	b	.LBB71_328
+.LBB71_324:
 .Ltmp1814:                              # EH_LABEL
-	b	.LBB71_329
-.LBB71_326:
+	b	.LBB71_328
+.LBB71_325:
 .Ltmp1809:                              # EH_LABEL
-	ld.d	$a2, $sp, 72
+	ld.d	$a2, $sp, 88
 	move	$fp, $a0
-	bne	$a2, $s5, .LBB71_330
-	b	.LBB71_331
-.LBB71_327:
+	bne	$a2, $s2, .LBB71_329
+	b	.LBB71_330
+.LBB71_326:
 .Ltmp1804:                              # EH_LABEL
-	b	.LBB71_329
-.LBB71_328:
+	b	.LBB71_328
+.LBB71_327:
 .Ltmp1819:                              # EH_LABEL
-.LBB71_329:
-	ld.d	$a2, $sp, 72
-	addi.d	$a1, $sp, 88
+.LBB71_328:
+	ld.d	$a2, $sp, 88
+	addi.d	$a1, $sp, 104
 	move	$fp, $a0
-	beq	$a2, $a1, .LBB71_331
-.LBB71_330:
-	ld.d	$a0, $sp, 88
+	beq	$a2, $a1, .LBB71_330
+.LBB71_329:
+	ld.d	$a0, $sp, 104
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB71_331:
+.LBB71_330:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
@@ -38250,48 +38261,46 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	move	$s5, $a2
 	move	$s0, $a0
-	ld.d	$a0, $a2, 72
-	ld.d	$a7, $a2, 40
-	ld.d	$a2, $s0, 176
-	ld.d	$t0, $s0, 184
-	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$s1, $a2, 72
+	ld.d	$t1, $a0, 176
+	ld.d	$t0, $a0, 184
+	ld.d	$a0, $a2, 40
+	ld.d	$a7, $s0, 200
+	st.d	$a5, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	ld.d	$a3, $s0, 200
-	sub.d	$a1, $a0, $a7
-	sub.d	$a7, $a2, $t0
-	srai.d	$a4, $a7, 7
-	bltz	$a7, .LBB72_3
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	sub.d	$a3, $t1, $t0
+	srai.d	$a1, $a3, 7
+	bltz	$a3, .LBB72_3
 # %bb.1:
-	ori	$a7, $zero, 4
-	bltu	$a4, $a7, .LBB72_5
+	ori	$a3, $zero, 4
+	bltu	$a1, $a3, .LBB72_5
 # %bb.2:
-	srli.d	$a2, $a4, 2
+	srli.d	$a4, $a1, 2
 	b	.LBB72_4
 .LBB72_3:
-	srai.d	$a2, $a7, 9
+	srai.d	$a4, $a3, 9
 .LBB72_4:
-	slli.d	$a7, $a2, 3
-	ldx.d	$a3, $a3, $a7
-	slli.d	$a2, $a2, 2
-	sub.d	$a2, $a4, $a2
-	slli.d	$a2, $a2, 7
-	add.d	$a2, $a3, $a2
+	slli.d	$a3, $a4, 3
+	ldx.d	$a3, $a7, $a3
+	slli.d	$a4, $a4, 2
+	sub.d	$a1, $a1, $a4
+	slli.d	$a1, $a1, 7
+	add.d	$t1, $a3, $a1
 .LBB72_5:
-	st.d	$a5, $sp, 48                    # 8-byte Folded Spill
 	st.d	$a6, $sp, 80                    # 8-byte Folded Spill
-	srli.d	$s4, $a1, 3
-	ld.d	$s3, $s5, 48
-	ld.d	$s7, $s5, 56
-	ld.d	$s1, $s5, 32
-	ld.d	$s2, $s5, 16
+	ld.d	$s3, $a2, 48
+	ld.d	$s7, $a2, 56
+	ld.d	$s2, $a2, 32
+	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
+	ld.d	$s4, $a2, 16
 	addi.d	$fp, $sp, 448
 	st.d	$fp, $sp, 432
-	ld.d	$a1, $a2, 8
-	ld.d	$s6, $a2, 0
-	sltu	$s8, $zero, $a0
+	ld.d	$a1, $t1, 8
+	ld.d	$s6, $t1, 0
+	sub.d	$s8, $s1, $a0
 	ori	$a2, $zero, 16
 	st.d	$a1, $sp, 152
 	move	$a0, $fp
@@ -38306,10 +38315,12 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	st.d	$a0, $sp, 432
 	st.d	$a1, $sp, 448
 .LBB72_7:
-	sub.d	$s4, $s4, $s8
-	addi.d	$a2, $a1, 1
+	srli.d	$s8, $s8, 3
+	sltu	$s5, $zero, $s1
 	sub.d	$s3, $s3, $s7
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	addi.d	$a2, $a1, 1
+	sub.d	$s1, $s2, $s4
+	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
 	beqz	$a2, .LBB72_11
 # %bb.8:
 	ori	$a1, $zero, 1
@@ -38323,11 +38334,11 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB72_11:
-	slli.d	$a1, $s4, 7
+	sub.d	$a1, $s8, $s5
 	srai.d	$a2, $s3, 2
 	ld.d	$a4, $sp, 152
 	ld.d	$a0, $sp, 432
-	sub.d	$a3, $s1, $s2
+	srai.d	$a3, $s1, 2
 	ori	$a5, $zero, 5
 	st.d	$a4, $sp, 440
 	bne	$a4, $a5, .LBB72_13
@@ -38340,14 +38351,14 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	xori	$a5, $a5, 111
 	or	$a4, $a4, $a5
 	sltui	$s1, $a4, 1
-	add.d	$s2, $a1, $a2
-	srai.d	$s3, $a3, 2
+	slli.d	$s2, $a1, 7
+	add.d	$s3, $a2, $a3
 	bne	$a0, $fp, .LBB72_14
 	b	.LBB72_15
 .LBB72_13:
 	move	$s1, $zero
-	add.d	$s2, $a1, $a2
-	srai.d	$s3, $a3, 2
+	slli.d	$s2, $a1, 7
+	add.d	$s3, $a2, $a3
 	beq	$a0, $fp, .LBB72_15
 .LBB72_14:
 	ld.d	$a1, $sp, 448
@@ -38385,7 +38396,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	blt	$a3, $a4, .LBB72_43
 # %bb.18:
 	ori	$a4, $zero, 2
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	blt	$a4, $a3, .LBB72_64
 # %bb.19:
 	addi.d	$a0, $a1, 128
@@ -38499,7 +38510,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	blt	$a3, $a4, .LBB72_78
 # %bb.38:
 	ori	$a4, $zero, 2
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	blt	$a4, $a3, .LBB72_112
 # %bb.39:
 	addi.d	$a0, $a1, 128
@@ -38519,7 +38530,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	b	.LBB72_45
 .LBB72_43:
 	srai.d	$a1, $a2, 2
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	b	.LBB72_65
 .LBB72_44:
 	srai.d	$a2, $a3, 9
@@ -38604,7 +38615,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	srli.d	$a3, $a3, 7
 	add.w	$a2, $a2, $a3
 	ori	$a3, $zero, 2
-	blt	$a2, $a3, .LBB72_151
+	blt	$a2, $a3, .LBB72_149
 # %bb.58:
 	ld.d	$a2, $s0, 184
 	sub.d	$a2, $a1, $a2
@@ -38614,11 +38625,11 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	blt	$a3, $a4, .LBB72_131
 # %bb.59:
 	ori	$a4, $zero, 2
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	blt	$a4, $a3, .LBB72_140
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
+	blt	$a4, $a3, .LBB72_138
 # %bb.60:
 	addi.d	$a0, $a1, 128
-	b	.LBB72_142
+	b	.LBB72_140
 .LBB72_61:
 	ld.d	$a2, $s0, 176
 	ld.d	$a1, $s0, 184
@@ -38643,7 +38654,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	add.d	$a0, $a0, $a1
 .LBB72_66:
 	move	$a1, $fp
-	move	$a2, $s7
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(_ZN2PP4Word11fatal_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 	addi.d	$s0, $fp, 16
@@ -38714,16 +38725,17 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 2
-	st.w	$a0, $s7, 0
+	st.w	$a0, $s4, 0
 .LBB72_75:
 	slli.d	$a0, $s3, 32
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, -1
-	ld.d	$a2, $s5, 16
-	ld.d	$a4, $s5, 24
+	ld.d	$a5, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a2, $a5, 16
+	ld.d	$a4, $a5, 24
 	add.d	$a0, $a0, $a1
 	srai.d	$a3, $a0, 32
-	ld.d	$a0, $s5, 40
+	ld.d	$a0, $a5, 40
 	sub.d	$a1, $a2, $a4
 	srai.d	$a1, $a1, 2
 	add.d	$a1, $a1, $a3
@@ -38736,7 +38748,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	b	.LBB72_128
 .LBB72_78:
 	srai.d	$a1, $a2, 2
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	b	.LBB72_113
 .LBB72_79:
 	srai.d	$a2, $a3, 9
@@ -38804,10 +38816,10 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 .LBB72_91:
 	beqz	$s1, .LBB72_130
 # %bb.92:
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
 	move	$a0, $s0
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	move	$a2, $s7
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd9math_evalERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 	move	$fp, $zero
@@ -38893,7 +38905,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 .LBB72_106:                             #   in Loop: Header=BB72_93 Depth=1
 	ld.bu	$a1, $a0, 0
 	addi.d	$a1, $a1, -61
-	sltui	$s8, $a1, 1
+	sltui	$s5, $a1, 1
 	bne	$a0, $s3, .LBB72_109
 	b	.LBB72_110
 	.p2align	4, , 16
@@ -38906,7 +38918,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	st.d	$a1, $sp, 440
 	beq	$a1, $s1, .LBB72_106
 .LBB72_108:                             #   in Loop: Header=BB72_93 Depth=1
-	move	$s8, $zero
+	move	$s5, $zero
 	beq	$a0, $s3, .LBB72_110
 .LBB72_109:                             #   in Loop: Header=BB72_93 Depth=1
 	ld.d	$a1, $sp, 448
@@ -38914,7 +38926,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB72_110:                             #   in Loop: Header=BB72_93 Depth=1
-	bnez	$s8, .LBB72_132
+	bnez	$s5, .LBB72_132
 # %bb.111:                              #   in Loop: Header=BB72_93 Depth=1
 	addi.d	$s4, $s4, 1
 	addi.w	$s6, $s6, 1
@@ -38931,7 +38943,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	add.d	$a0, $a0, $a1
 .LBB72_114:
 	move	$a1, $fp
-	move	$a2, $s7
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(_ZN2PP4Word11fatal_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 	addi.d	$s0, $fp, 16
@@ -39002,16 +39014,17 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 2
-	st.w	$a0, $s7, 0
+	st.w	$a0, $s4, 0
 .LBB72_123:
 	slli.d	$a0, $s3, 32
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, -1
-	ld.d	$a2, $s5, 16
-	ld.d	$a4, $s5, 24
+	ld.d	$a5, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a2, $a5, 16
+	ld.d	$a4, $a5, 24
 	add.d	$a0, $a0, $a1
 	srai.d	$a3, $a0, 32
-	ld.d	$a0, $s5, 40
+	ld.d	$a0, $a5, 40
 	sub.d	$a1, $a2, $a4
 	srai.d	$a1, $a1, 2
 	add.d	$a1, $a1, $a3
@@ -39036,7 +39049,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	st.w	$a0, $a1, 0
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 .LBB72_129:
 	st.b	$a0, $a1, 0
 .LBB72_130:
@@ -39055,8 +39068,8 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	ret
 .LBB72_131:
 	srai.d	$a1, $a2, 2
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	b	.LBB72_141
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
+	b	.LBB72_139
 .LBB72_132:
 	ld.d	$a0, $s0, 232
 	ld.d	$a1, $s0, 200
@@ -39079,13 +39092,13 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	addi.d	$a2, $sp, 432
 	move	$a0, $s0
 	move	$a1, $s6
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP3Cmd9subvar_w0EiRiRNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEES1_)
 	jirl	$ra, $ra, 0
 .LBB72_133:
 	move	$a0, $s0
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
 	move	$a1, $s1
 	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
 	move	$a2, $s2
@@ -39106,8 +39119,8 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	alsl.d	$a2, $a2, $a3, 2
 	sub.d	$a3, $a5, $a0
 	srai.d	$a3, $a3, 7
-	add.d	$fp, $a2, $a3
-	addi.w	$s7, $fp, 0
+	add.d	$s7, $a2, $a3
+	addi.w	$s5, $s7, 0
 	addi.d	$s4, $sp, 1032
 	st.d	$s4, $sp, 1016
 	lu12i.w	$a2, 6
@@ -39118,42 +39131,36 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	st.d	$a3, $sp, 1024
 	ori	$a3, $zero, 1
 	st.b	$zero, $sp, 1034
-	bge	$a3, $s7, .LBB72_137
+	bge	$a3, $s5, .LBB72_137
 # %bb.134:
 	sub.d	$a2, $a0, $a2
 	srai.d	$a3, $a2, 7
 	addi.w	$s6, $zero, -1
 	addi.d	$a2, $a3, 1
-	blt	$a3, $s6, .LBB72_152
+	blt	$a3, $s6, .LBB72_150
 # %bb.135:
 	ori	$a4, $zero, 2
-	blt	$a4, $a3, .LBB72_153
+	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
+	blt	$a4, $a3, .LBB72_151
 # %bb.136:
-	move	$s3, $fp
 	addi.d	$a0, $a0, 128
-	b	.LBB72_155
+	b	.LBB72_153
 .LBB72_137:
 	sub.d	$a3, $a0, $a2
 	srai.d	$a2, $a3, 7
-	bltz	$a2, .LBB72_184
+	b	.LBB72_181
 .LBB72_138:
-	ori	$a3, $zero, 4
-	bltu	$a2, $a3, .LBB72_186
-# %bb.139:
-	srli.d	$a0, $a2, 2
-	b	.LBB72_185
-.LBB72_140:
 	srli.d	$a1, $a2, 2
-.LBB72_141:
+.LBB72_139:
 	slli.d	$a3, $a1, 3
 	ldx.d	$a0, $a0, $a3
 	slli.d	$a1, $a1, 2
 	sub.d	$a1, $a2, $a1
 	slli.d	$a1, $a1, 7
 	add.d	$a0, $a0, $a1
-.LBB72_142:
+.LBB72_140:
 	move	$a1, $fp
-	move	$a2, $s7
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(_ZN2PP4Word11fatal_errorERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi)
 	jirl	$ra, $ra, 0
 	addi.d	$s0, $fp, 16
@@ -39168,13 +39175,13 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	add.d	$a0, $s0, $a0
 	ld.d	$s1, $a0, 240
 	beqz	$s1, .LBB72_406
-# %bb.143:
+# %bb.141:
 	ld.bu	$a0, $s1, 56
-	beqz	$a0, .LBB72_145
-# %bb.144:
+	beqz	$a0, .LBB72_143
+# %bb.142:
 	ld.bu	$a0, $s1, 67
-	b	.LBB72_146
-.LBB72_145:
+	b	.LBB72_144
+.LBB72_143:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
@@ -39183,7 +39190,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	ori	$a1, $zero, 10
 	move	$a0, $s1
 	jirl	$ra, $a2, 0
-.LBB72_146:
+.LBB72_144:
 	ext.w.b	$a1, $a0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
@@ -39201,13 +39208,13 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	add.d	$a0, $s0, $a0
 	ld.d	$s1, $a0, 240
 	beqz	$s1, .LBB72_406
-# %bb.147:
+# %bb.145:
 	ld.bu	$a0, $s1, 56
-	beqz	$a0, .LBB72_149
-# %bb.148:
+	beqz	$a0, .LBB72_147
+# %bb.146:
 	ld.bu	$a0, $s1, 67
-	b	.LBB72_150
-.LBB72_149:
+	b	.LBB72_148
+.LBB72_147:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
@@ -39216,7 +39223,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	ori	$a1, $zero, 10
 	move	$a0, $s1
 	jirl	$ra, $a2, 0
-.LBB72_150:
+.LBB72_148:
 	ext.w.b	$a1, $a0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
@@ -39224,25 +39231,25 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 2
-	st.w	$a0, $s7, 0
-.LBB72_151:
+	st.w	$a0, $s4, 0
+.LBB72_149:
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	b	.LBB72_129
-.LBB72_152:
+.LBB72_150:
 	srai.d	$a0, $a2, 2
-	b	.LBB72_154
-.LBB72_153:
+	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
+	b	.LBB72_152
+.LBB72_151:
 	srli.d	$a0, $a2, 2
-.LBB72_154:
-	move	$s3, $fp
+.LBB72_152:
 	slli.d	$a3, $a0, 3
 	ldx.d	$a1, $a1, $a3
 	slli.d	$a0, $a0, 2
 	sub.d	$a0, $a2, $a0
 	slli.d	$a0, $a0, 7
 	add.d	$a0, $a1, $a0
-.LBB72_155:
+.LBB72_153:
 	addi.d	$fp, $sp, 448
 	st.d	$fp, $sp, 432
 	ld.d	$a1, $a0, 8
@@ -39250,8 +39257,8 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	ori	$a2, $zero, 16
 	st.d	$a1, $sp, 152
 	move	$a0, $fp
-	bltu	$a1, $a2, .LBB72_158
-# %bb.156:
+	bltu	$a1, $a2, .LBB72_156
+# %bb.154:
 .Ltmp1820:                              # EH_LABEL
 	addi.d	$a0, $sp, 432
 	addi.d	$a1, $sp, 152
@@ -39259,116 +39266,121 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp1821:                              # EH_LABEL
-# %bb.157:
+# %bb.155:
 	ld.d	$a1, $sp, 152
 	st.d	$a0, $sp, 432
 	st.d	$a1, $sp, 448
-.LBB72_158:
+.LBB72_156:
 	addi.d	$a2, $a1, 1
-	beqz	$a2, .LBB72_162
-# %bb.159:
+	beqz	$a2, .LBB72_160
+# %bb.157:
 	ori	$a1, $zero, 1
-	bne	$a2, $a1, .LBB72_161
-# %bb.160:
+	bne	$a2, $a1, .LBB72_159
+# %bb.158:
 	ld.b	$a1, $s8, 0
 	st.b	$a1, $a0, 0
-	b	.LBB72_162
-.LBB72_161:
+	b	.LBB72_160
+.LBB72_159:
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB72_162:
+.LBB72_160:
 	ld.d	$a2, $sp, 152
 	ld.d	$a0, $sp, 1016
 	ld.d	$a1, $sp, 432
 	st.d	$a2, $sp, 440
-	beq	$a0, $s4, .LBB72_166
-# %bb.163:
-	beq	$a1, $fp, .LBB72_169
-# %bb.164:
+	beq	$a0, $s4, .LBB72_164
+# %bb.161:
+	beq	$a1, $fp, .LBB72_167
+# %bb.162:
 	ld.d	$a4, $sp, 448
 	ld.d	$a3, $sp, 1032
 	st.d	$a1, $sp, 1016
 	st.d	$a2, $sp, 1024
 	st.d	$a4, $sp, 1032
-	beqz	$a0, .LBB72_168
-# %bb.165:
+	beqz	$a0, .LBB72_166
+# %bb.163:
 	st.d	$a0, $sp, 432
 	st.d	$a3, $sp, 448
-	b	.LBB72_174
-.LBB72_166:
-	beq	$a1, $fp, .LBB72_169
-# %bb.167:
+	b	.LBB72_172
+.LBB72_164:
+	beq	$a1, $fp, .LBB72_167
+# %bb.165:
 	ld.d	$a0, $sp, 448
 	st.d	$a1, $sp, 1016
 	st.d	$a2, $sp, 1024
 	st.d	$a0, $sp, 1032
-.LBB72_168:
+.LBB72_166:
 	st.d	$fp, $sp, 432
 	move	$a0, $fp
-	b	.LBB72_174
-.LBB72_169:
-	beqz	$a2, .LBB72_173
-# %bb.170:
+	b	.LBB72_172
+.LBB72_167:
+	beqz	$a2, .LBB72_171
+# %bb.168:
 	ori	$a3, $zero, 1
-	bne	$a2, $a3, .LBB72_172
-# %bb.171:
+	bne	$a2, $a3, .LBB72_170
+# %bb.169:
 	ld.b	$a1, $a1, 0
 	st.b	$a1, $a0, 0
-	b	.LBB72_173
-.LBB72_172:
+	b	.LBB72_171
+.LBB72_170:
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB72_173:
+.LBB72_171:
 	ld.d	$a1, $sp, 440
 	ld.d	$a0, $sp, 1016
 	stx.b	$zero, $a0, $a1
 	ld.d	$a0, $sp, 432
 	st.d	$a1, $sp, 1024
-.LBB72_174:
+.LBB72_172:
 	st.b	$zero, $a0, 0
 	ld.d	$a0, $sp, 432
 	st.d	$zero, $sp, 440
-	beq	$a0, $fp, .LBB72_176
-# %bb.175:
+	beq	$a0, $fp, .LBB72_174
+# %bb.173:
 	ld.d	$a1, $sp, 448
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB72_176:
+.LBB72_174:
 	ld.d	$a0, $s0, 176
 	ld.d	$a2, $s0, 184
 	ld.d	$a1, $s0, 200
 	sub.d	$a3, $a0, $a2
 	srai.d	$a2, $a3, 7
 	addi.d	$a4, $a2, 1
-	blt	$a2, $s6, .LBB72_179
-# %bb.177:
+	blt	$a2, $s6, .LBB72_177
+# %bb.175:
 	ori	$a5, $zero, 2
 	addi.d	$fp, $s0, 160
-	blt	$a5, $a2, .LBB72_180
-# %bb.178:
+	blt	$a5, $a2, .LBB72_178
+# %bb.176:
 	addi.d	$a4, $a0, 128
-	b	.LBB72_182
-.LBB72_179:
+	b	.LBB72_180
+.LBB72_177:
 	srai.d	$a5, $a4, 2
 	addi.d	$fp, $s0, 160
-	b	.LBB72_181
-.LBB72_180:
+	b	.LBB72_179
+.LBB72_178:
 	srli.d	$a5, $a4, 2
-.LBB72_181:
+.LBB72_179:
 	slli.d	$a6, $a5, 3
 	ldx.d	$a6, $a1, $a6
 	slli.d	$a5, $a5, 2
 	sub.d	$a4, $a4, $a5
 	slli.d	$a4, $a4, 7
 	add.d	$a4, $a6, $a4
-.LBB72_182:
+.LBB72_180:
 	ori	$a5, $zero, 5
-	bltu	$a5, $s7, .LBB72_260
+	bltu	$a5, $s5, .LBB72_260
+.LBB72_181:
+	bltz	$a2, .LBB72_184
+# %bb.182:
+	ori	$a3, $zero, 4
+	bltu	$a2, $a3, .LBB72_186
 # %bb.183:
-	move	$fp, $s3
-	bgez	$a2, .LBB72_138
+	srli.d	$a0, $a2, 2
+	b	.LBB72_185
 .LBB72_184:
 	srai.d	$a0, $a3, 9
 .LBB72_185:
@@ -39558,7 +39570,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 # %bb.214:
 .Ltmp2024:                              # EH_LABEL
 	move	$a0, $s1
-	move	$a1, $s7
+	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp2025:                              # EH_LABEL
@@ -39667,10 +39679,10 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	jirl	$ra, $ra, 0
 .Ltmp2047:                              # EH_LABEL
 # %bb.232:
-	blez	$s7, .LBB72_252
+	blez	$s5, .LBB72_252
 # %bb.233:
 	addi.d	$s4, $sp, 448
-	bstrpick.d	$fp, $fp, 30, 0
+	bstrpick.d	$fp, $s7, 30, 0
 	ori	$s6, $zero, 16
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.5)
@@ -39839,8 +39851,8 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 # %bb.263:
 	move	$s8, $a0
 	ld.d	$a0, $sp, 432
-	addi.d	$s3, $sp, 448
-	beq	$a0, $s3, .LBB72_265
+	addi.d	$s6, $sp, 448
+	beq	$a0, $s6, .LBB72_265
 # %bb.264:
 	ld.d	$a1, $sp, 448
 	addi.d	$a1, $a1, 1
@@ -39949,10 +39961,10 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	jirl	$ra, $ra, 0
 .Ltmp1869:                              # EH_LABEL
 # %bb.279:
-	move	$s6, $a0
+	move	$s7, $a0
 	ori	$a0, $zero, 8
-	ori	$s3, $zero, 1
-	bltu	$s7, $a0, .LBB72_282
+	ori	$s6, $zero, 1
+	bltu	$s5, $a0, .LBB72_282
 # %bb.280:
 	ori	$a1, $zero, 7
 	move	$a0, $fp
@@ -39965,7 +39977,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	jirl	$ra, $ra, 0
 .Ltmp1872:                              # EH_LABEL
 # %bb.281:
-	move	$s3, $a0
+	move	$s6, $a0
 .LBB72_282:
 	ori	$a1, $zero, 3
 	move	$a0, $fp
@@ -39989,13 +40001,12 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	jirl	$ra, $ra, 0
 .Ltmp1878:                              # EH_LABEL
 # %bb.284:
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	addi.w	$a0, $a1, 0
+	addi.w	$a0, $s3, 0
 	blez	$a0, .LBB72_316
 # %bb.285:
-	addi.d	$a0, $a1, -1
+	addi.d	$a0, $s3, -1
 	bstrpick.d	$a1, $a0, 31, 0
-	move	$a0, $s5
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIiSaIiEEixEm)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
@@ -40014,7 +40025,6 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	addi.d	$a1, $a1, 8
 	beq	$a1, $a0, .LBB72_327
 # %bb.288:
-	move	$s8, $s3
 	addi.d	$s3, $a0, 64
 .Ltmp1919:                              # EH_LABEL
 	addi.d	$a0, $sp, 920
@@ -40028,7 +40038,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	ld.d	$a0, $s0, 200
 	sub.d	$a3, $a1, $a2
 	srai.d	$a2, $a3, 7
-	move	$fp, $s6
+	move	$s8, $s6
 	bltz	$a3, .LBB72_335
 # %bb.290:
 	ori	$a3, $zero, 3
@@ -40184,7 +40194,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 .Ltmp1863:                              # EH_LABEL
 .LBB72_311:
 	ld.d	$a0, $sp, 432
-	beq	$a0, $s3, .LBB72_313
+	beq	$a0, $s6, .LBB72_313
 # %bb.312:
 	ld.d	$a1, $sp, 448
 	addi.d	$a1, $a1, 1
@@ -40203,35 +40213,35 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	jirl	$ra, $ra, 0
 	b	.LBB72_130
 .LBB72_316:
-	ld.d	$a1, $s5, 64
-	ld.d	$a0, $s5, 48
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $a0, 64
+	ld.d	$a2, $a0, 48
 	addi.d	$a1, $a1, -4
-	beq	$a0, $a1, .LBB72_318
+	beq	$a2, $a1, .LBB72_318
 # %bb.317:
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
-	st.w	$a1, $a0, 0
-	addi.d	$a0, $a0, 4
-	st.d	$a0, $s5, 48
+	st.w	$a1, $a2, 0
+	addi.d	$a1, $a2, 4
+	st.d	$a1, $a0, 48
 	b	.LBB72_319
 .LBB72_318:
 .Ltmp1880:                              # EH_LABEL
-	move	$a0, $s5
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIiSaIiEE16_M_push_back_auxIJRKiEEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp1881:                              # EH_LABEL
 .LBB72_319:
-	bge	$s6, $s8, .LBB72_321
+	bge	$s7, $s8, .LBB72_321
 # %bb.320:
-	bgez	$s3, .LBB72_323
+	bgez	$s6, .LBB72_323
 .LBB72_321:
-	bge	$s8, $s6, .LBB72_324
+	bge	$s8, $s7, .LBB72_324
 # %bb.322:
-	bgez	$s3, .LBB72_324
+	bgez	$s6, .LBB72_324
 .LBB72_323:
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	b	.LBB72_401
 .LBB72_324:
 	st.d	$zero, $sp, 416
@@ -40394,6 +40404,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	jirl	$ra, $ra, 0
 .LBB72_347:
 .Ltmp1934:                              # EH_LABEL
+	move	$fp, $s7
 	addi.d	$a0, $sp, 152
 	move	$a1, $s1
 	move	$a2, $s2
@@ -40402,16 +40413,17 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 .Ltmp1935:                              # EH_LABEL
 # %bb.348:
 	add.w	$s7, $a0, $s8
+	move	$a0, $s8
 	bltz	$s8, .LBB72_350
 # %bb.349:
 	blt	$fp, $s7, .LBB72_352
 .LBB72_350:
-	bgez	$s8, .LBB72_383
+	bgez	$a0, .LBB72_383
 # %bb.351:
 	bge	$s7, $fp, .LBB72_383
 .LBB72_352:
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.b	$a0, $a1, 0
 	addi.d	$a0, $sp, 152
 	pcaddu18i	$ra, %call36(_ZN2PP4WordD1Ev)
@@ -40668,7 +40680,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	move	$a0, $s3
 	move	$a3, $s5
 	move	$a4, $s6
-	ld.d	$a7, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN2PP8Variable13set_var_valueERSt6vectorIiSaIiEERS1_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISA_EEiiSA_PSt5dequeISA_SB_ERNS5_18basic_stringstreamIcS8_S9_EERi)
 	jirl	$ra, $ra, 0
 .Ltmp1953:                              # EH_LABEL
@@ -40729,7 +40741,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 	addi.d	$s4, $sp, 1032
 .LBB72_400:
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 .LBB72_401:
 	st.b	$a0, $a1, 0
 .LBB72_402:
@@ -41064,7 +41076,7 @@ _ZN2PP3Cmd9handle_doERbRSt5dequeIiSaIiEERiS1_RNSt7__cxx1118basic_stringstreamIcS
 .LBB72_477:
 	ld.d	$a2, $sp, 432
 	move	$fp, $a0
-	bne	$a2, $s3, .LBB72_485
+	bne	$a2, $s6, .LBB72_485
 	b	.LBB72_487
 .LBB72_478:
 .Ltmp1848:                              # EH_LABEL
@@ -61038,8 +61050,8 @@ _ZSt24__copy_move_backward_ditILb1EbRbPbSt15_Deque_iteratorIbS0_S1_EET3_S2_IT0_T
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 .LBB124_10:                             #   in Loop: Header=BB124_5 Depth=1
-	add.d	$a0, $s6, $s4
-	sub.d	$a0, $s8, $a0
+	sub.d	$a0, $s8, $s6
+	sub.d	$a0, $a0, $s4
 	bltz	$a0, .LBB124_3
 # %bb.11:                               #   in Loop: Header=BB124_5 Depth=1
 	bltu	$s2, $a0, .LBB124_13
@@ -61132,8 +61144,8 @@ _ZSt24__copy_move_backward_ditILb1EbRbPbSt15_Deque_iteratorIbS0_S1_EET3_S2_IT0_T
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 .LBB124_27:                             #   in Loop: Header=BB124_22 Depth=2
-	add.d	$a0, $s6, $s3
-	sub.d	$a0, $s8, $a0
+	sub.d	$a0, $s8, $s6
+	sub.d	$a0, $a0, $s3
 	bltz	$a0, .LBB124_20
 # %bb.28:                               #   in Loop: Header=BB124_22 Depth=2
 	bltu	$s0, $a0, .LBB124_30
@@ -61202,8 +61214,8 @@ _ZSt24__copy_move_backward_ditILb1EbRbPbSt15_Deque_iteratorIbS0_S1_EET3_S2_IT0_T
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 .LBB124_42:                             #   in Loop: Header=BB124_37 Depth=1
-	add.d	$a0, $s6, $s1
-	sub.d	$a0, $s8, $a0
+	sub.d	$a0, $s8, $s6
+	sub.d	$a0, $a0, $s1
 	bltz	$a0, .LBB124_35
 # %bb.43:                               #   in Loop: Header=BB124_37 Depth=1
 	bltu	$s3, $a0, .LBB124_45
@@ -61275,8 +61287,8 @@ _ZSt24__copy_move_backward_ditILb1EbRbPbSt15_Deque_iteratorIbS0_S1_EET3_S2_IT0_T
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 .LBB124_57:                             #   in Loop: Header=BB124_52 Depth=1
-	add.d	$a0, $s6, $s1
-	sub.d	$a0, $s8, $a0
+	sub.d	$a0, $s8, $s6
+	sub.d	$a0, $a0, $s1
 	bltz	$a0, .LBB124_50
 # %bb.58:                               #   in Loop: Header=BB124_52 Depth=1
 	bltu	$s3, $a0, .LBB124_60
@@ -61922,19 +61934,19 @@ _ZNSt5dequeIiSaIiEE16_M_push_back_auxIJRKiEEEvDpOT_: # @_ZNSt5dequeIiSaIiEE16_M_
 	ld.d	$a0, $a0, 72
 	ld.d	$a2, $fp, 40
 	sub.d	$a2, $a0, $a2
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	srli.d	$a2, $a2, 3
-	sltu	$a5, $zero, $a0
-	sub.d	$a2, $a2, $a5
-	sub.d	$a3, $a3, $a4
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
+	sltu	$a3, $zero, $a0
+	ld.d	$a4, $fp, 48
+	ld.d	$a5, $fp, 56
+	sub.d	$a2, $a2, $a3
+	ld.d	$a3, $fp, 32
+	ld.d	$a6, $fp, 16
+	sub.d	$a4, $a4, $a5
 	slli.d	$a2, $a2, 7
+	srai.d	$a4, $a4, 2
+	sub.d	$a3, $a3, $a6
 	srai.d	$a3, $a3, 2
-	add.d	$a2, $a2, $a3
-	sub.d	$a3, $a4, $a5
-	srai.d	$a3, $a3, 2
+	add.d	$a3, $a4, $a3
 	add.d	$a2, $a2, $a3
 	addi.w	$a3, $zero, -1
 	lu52i.d	$a3, $a3, 511

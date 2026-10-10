@@ -749,10 +749,10 @@ intrapred8x8:                           # @intrapred8x8
 	vbsrl.v	$vr0, $vr0, 12
 	vbsll.v	$vr1, $vr5, 4
 	vor.v	$vr0, $vr1, $vr0
-	vadd.w	$vr0, $vr0, $vr7
 	vadd.w	$vr1, $vr2, $vr4
 	vadd.w	$vr1, $vr1, $vr3
-	vadd.w	$vr0, $vr0, $vr6
+	vadd.w	$vr2, $vr7, $vr6
+	vadd.w	$vr0, $vr0, $vr2
 	vaddi.wu	$vr0, $vr0, 2
 	vaddi.wu	$vr1, $vr1, 2
 	vsrli.w	$vr1, $vr1, 2
@@ -827,20 +827,20 @@ intrapred8x8:                           # @intrapred8x8
 	ld.hu	$t6, $sp, 430
 	ld.hu	$t7, $sp, 432
 	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a4
-	add.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a6
-	add.d	$a0, $a0, $a7
-	add.d	$a0, $a0, $t0
-	add.d	$a0, $a0, $t1
-	add.d	$a0, $a0, $t2
-	add.w	$a0, $a0, $t3
-	add.d	$a0, $a0, $t4
-	add.d	$a0, $a0, $t5
-	add.d	$a0, $a0, $t6
-	add.d	$a0, $a0, $t7
+	add.d	$a1, $a2, $a3
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $a4, $a5
+	add.d	$a1, $a1, $a6
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $a7, $t0
+	add.d	$a1, $a1, $t1
+	add.d	$a1, $a1, $t2
+	add.d	$a1, $a1, $t3
+	add.w	$a0, $a0, $a1
+	add.d	$a1, $t4, $t5
+	add.d	$a1, $a1, $t6
+	add.d	$a1, $a1, $t7
+	add.d	$a0, $a0, $a1
 	addi.d	$a0, $a0, 8
 	bstrpick.d	$a1, $a0, 31, 4
 	b	.LBB0_79
@@ -1711,11 +1711,11 @@ intrapred8x8:                           # @intrapred8x8
 	vbsll.v	$vr2, $vr7, 4
 	vor.v	$vr2, $vr2, $vr4
 	vslli.w	$vr4, $vr7, 1
-	vadd.w	$vr2, $vr2, $vr4
-	vadd.w	$vr1, $vr3, $vr1
+	vadd.w	$vr0, $vr4, $vr0
 	vadd.w	$vr0, $vr2, $vr0
 	vaddi.wu	$vr0, $vr0, 2
 	vadd.w	$vr1, $vr1, $vr9
+	vadd.w	$vr1, $vr3, $vr1
 	vsrl.w	$vr1, $vr1, $vr8
 	vsrli.w	$vr0, $vr0, 2
 	vpickev.h	$vr2, $vr0, $vr1
@@ -2003,11 +2003,11 @@ intrapred8x8:                           # @intrapred8x8
 	ld.hu	$a7, $sp, 400
 .LBB0_78:
 	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a4
-	add.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a6
+	add.d	$a1, $a2, $a3
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $a4, $a5
+	add.d	$a1, $a1, $a6
+	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $a7
 	addi.d	$a0, $a0, 4
 	bstrpick.d	$a1, $a0, 31, 3
@@ -2097,8 +2097,8 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 # %bb.0:
 	ld.hu	$a4, $a0, 0
 	vld	$vr0, $a0, 2
-	vld	$vr2, $a0, 18
-	vrepli.b	$vr1, 0
+	vld	$vr1, $a0, 18
+	vrepli.b	$vr2, 0
 	pcalau12i	$a5, %pc_hi20(.LCPI1_1)
 	beqz	$a2, .LBB1_5
 # %bb.1:
@@ -2118,7 +2118,7 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	add.d	$t3, $t1, $t3
 	vpickve2gr.hu	$t4, $vr0, 2
 	vpickve2gr.hu	$t5, $vr0, 3
-	vori.b	$vr3, $vr1, 0
+	vori.b	$vr3, $vr2, 0
 	vinsgr2vr.w	$vr3, $t2, 1
 	vinsgr2vr.w	$vr3, $t4, 2
 	vinsgr2vr.w	$vr3, $t5, 3
@@ -2126,49 +2126,49 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	vinsgr2vr.w	$vr4, $t0, 1
 	vinsgr2vr.w	$vr4, $t1, 2
 	vinsgr2vr.w	$vr4, $t4, 3
-	pcalau12i	$t0, %pc_hi20(.LCPI1_0)
-	vld	$vr5, $t0, %pc_lo12(.LCPI1_0)
-	vinsgr2vr.w	$vr6, $t5, 0
-	vexth.wu.hu	$vr7, $vr0
-	vld	$vr0, $a5, %pc_lo12(.LCPI1_1)
-	vshuf.w	$vr5, $vr7, $vr6
-	vori.b	$vr6, $vr1, 0
+	vinsgr2vr.w	$vr5, $t5, 0
+	vori.b	$vr6, $vr2, 0
 	vinsgr2vr.w	$vr6, $t4, 1
+	pcalau12i	$t0, %pc_hi20(.LCPI1_0)
+	vld	$vr7, $t0, %pc_lo12(.LCPI1_0)
+	vld	$vr8, $a5, %pc_lo12(.LCPI1_1)
 	vinsgr2vr.w	$vr6, $t5, 2
-	vsll.w	$vr0, $vr3, $vr0
-	vadd.w	$vr0, $vr4, $vr0
-	vslli.w	$vr3, $vr7, 1
-	vadd.w	$vr3, $vr5, $vr3
+	vexth.wu.hu	$vr9, $vr0
+	vshuf.w	$vr7, $vr9, $vr5
+	vsll.w	$vr0, $vr3, $vr8
+	vslli.w	$vr3, $vr9, 1
+	vadd.w	$vr3, $vr7, $vr3
 	ori	$t0, $zero, 0
 	lu32i.d	$t0, 2
-	vreplgr2vr.d	$vr4, $t0
-	vshuf4i.w	$vr5, $vr7, 57
-	vinsgr2vr.w	$vr5, $a7, 3
-	vadd.w	$vr3, $vr3, $vr5
-	vextrins.w	$vr6, $vr7, 48
+	vreplgr2vr.d	$vr5, $t0
+	vshuf4i.w	$vr7, $vr9, 57
+	vinsgr2vr.w	$vr7, $a7, 3
+	vadd.w	$vr3, $vr3, $vr7
+	vextrins.w	$vr6, $vr9, 48
 	vadd.w	$vr0, $vr0, $vr6
-	vadd.w	$vr0, $vr0, $vr4
+	vadd.w	$vr0, $vr0, $vr5
+	vadd.w	$vr0, $vr4, $vr0
 	vaddi.wu	$vr3, $vr3, 2
 	vsrli.w	$vr3, $vr3, 2
 	vsrli.w	$vr0, $vr0, 2
 	vpickev.h	$vr0, $vr3, $vr0
-	vpickve2gr.w	$t0, $vr7, 3
+	vpickve2gr.w	$t0, $vr9, 3
 	alsl.d	$t0, $a7, $t0, 1
 	add.d	$t0, $t0, $a6
 	addi.d	$t0, $t0, 2
-	vpickve2gr.hu	$t1, $vr2, 2
+	vpickve2gr.hu	$t1, $vr1, 2
 	alsl.d	$a7, $a6, $a7, 1
 	add.d	$a7, $a7, $t1
 	addi.d	$a7, $a7, 2
-	vpickve2gr.hu	$t2, $vr2, 3
+	vpickve2gr.hu	$t2, $vr1, 3
 	alsl.d	$a6, $t1, $a6, 1
 	add.d	$a6, $a6, $t2
 	addi.d	$a6, $a6, 2
-	vpickve2gr.hu	$t3, $vr2, 4
+	vpickve2gr.hu	$t3, $vr1, 4
 	alsl.d	$t1, $t2, $t1, 1
 	add.d	$t1, $t1, $t3
 	addi.d	$t1, $t1, 2
-	vpickve2gr.hu	$t4, $vr2, 5
+	vpickve2gr.hu	$t4, $vr1, 5
 	alsl.d	$t2, $t3, $t2, 1
 	ld.hu	$t3, $a0, 26
 	ld.hu	$t5, $a0, 28
@@ -2185,17 +2185,17 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	alsl.d	$t6, $t6, $t6, 1
 	add.d	$t4, $t4, $t6
 	addi.d	$t4, $t4, 2
-	vinsgr2vr.w	$vr2, $t0, 0
-	vinsgr2vr.w	$vr2, $a7, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $t1, 3
+	vinsgr2vr.w	$vr1, $t0, 0
+	vinsgr2vr.w	$vr1, $a7, 1
+	vinsgr2vr.w	$vr1, $a6, 2
+	vinsgr2vr.w	$vr1, $t1, 3
 	vinsgr2vr.w	$vr3, $t2, 0
 	vinsgr2vr.w	$vr3, $t3, 1
 	vinsgr2vr.w	$vr3, $t5, 2
 	vinsgr2vr.w	$vr3, $t4, 3
 	vsrli.w	$vr3, $vr3, 2
-	vsrli.w	$vr2, $vr2, 2
-	vpickev.h	$vr2, $vr3, $vr2
+	vsrli.w	$vr1, $vr1, 2
+	vpickev.h	$vr1, $vr3, $vr1
 .LBB1_5:
 	vld	$vr3, $a0, 34
 	beqz	$a1, .LBB1_10
@@ -2236,62 +2236,62 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	ld.hu	$a1, $a0, 36
 	alsl.d	$a3, $a2, $a6, 1
 .LBB1_16:
-	addi.d	$t1, $a1, 2
-	add.d	$t2, $t1, $a3
-	ld.hu	$t3, $a0, 38
-	ld.hu	$t4, $a0, 40
-	ld.hu	$t0, $a0, 42
-	ld.hu	$a7, $a0, 44
+	addi.d	$a7, $a1, 2
+	add.d	$t0, $a7, $a3
+	ld.hu	$t1, $a0, 38
+	ld.hu	$t2, $a0, 40
+	ld.hu	$t3, $a0, 42
+	ld.hu	$t4, $a0, 44
 	ld.hu	$a6, $a0, 46
 	ld.hu	$a3, $a0, 48
-	vinsgr2vr.w	$vr3, $t2, 0
+	vinsgr2vr.w	$vr3, $t0, 0
 	vinsgr2vr.w	$vr3, $a2, 1
-	vinsgr2vr.w	$vr3, $t1, 2
-	vinsgr2vr.w	$vr3, $t3, 3
-	vinsgr2vr.w	$vr4, $t4, 0
-	vinsgr2vr.w	$vr4, $t0, 1
-	vinsgr2vr.w	$vr4, $a7, 2
+	vinsgr2vr.w	$vr3, $a7, 2
+	vinsgr2vr.w	$vr3, $t1, 3
+	vinsgr2vr.w	$vr4, $t2, 0
+	vinsgr2vr.w	$vr4, $t3, 1
+	vinsgr2vr.w	$vr4, $t4, 2
 	vinsgr2vr.w	$vr4, $a3, 3
 	addi.d	$a2, $a6, 2
-	vinsgr2vr.w	$vr5, $t0, 0
-	pcalau12i	$t1, %pc_hi20(.LCPI1_2)
-	vld	$vr6, $t1, %pc_lo12(.LCPI1_2)
-	vinsgr2vr.w	$vr5, $a7, 1
+	vinsgr2vr.w	$vr5, $t3, 0
+	pcalau12i	$a7, %pc_hi20(.LCPI1_2)
+	vld	$vr6, $a7, %pc_lo12(.LCPI1_2)
+	vinsgr2vr.w	$vr5, $t4, 1
 	vinsgr2vr.w	$vr5, $a6, 2
 	vinsgr2vr.w	$vr5, $a2, 3
 	vsll.w	$vr5, $vr5, $vr6
-	vadd.w	$vr4, $vr4, $vr5
-	vori.b	$vr5, $vr1, 0
-	vld	$vr6, $a5, %pc_lo12(.LCPI1_1)
-	vinsgr2vr.w	$vr5, $a1, 1
-	vinsgr2vr.w	$vr5, $t3, 2
-	vinsgr2vr.w	$vr5, $t4, 3
-	vsll.w	$vr5, $vr5, $vr6
-	vadd.w	$vr3, $vr3, $vr5
+	vori.b	$vr6, $vr2, 0
+	vld	$vr7, $a5, %pc_lo12(.LCPI1_1)
+	vinsgr2vr.w	$vr6, $a1, 1
+	vinsgr2vr.w	$vr6, $t1, 2
+	vinsgr2vr.w	$vr6, $t2, 3
+	vsll.w	$vr6, $vr6, $vr7
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, 2
-	vreplgr2vr.d	$vr5, $a1
+	vreplgr2vr.d	$vr7, $a1
 	pcalau12i	$a1, %pc_hi20(.LCPI1_3)
-	vld	$vr6, $a1, %pc_lo12(.LCPI1_3)
+	vld	$vr8, $a1, %pc_lo12(.LCPI1_3)
 	slli.d	$a1, $a3, 1
-	vinsgr2vr.w	$vr1, $t3, 1
-	vinsgr2vr.w	$vr1, $t4, 2
-	vinsgr2vr.w	$vr1, $t0, 3
-	vadd.w	$vr1, $vr3, $vr1
-	vinsgr2vr.w	$vr3, $a7, 0
-	vinsgr2vr.w	$vr3, $a6, 1
-	vinsgr2vr.w	$vr3, $a3, 2
-	vinsgr2vr.w	$vr3, $a1, 3
-	vadd.w	$vr3, $vr4, $vr3
-	vadd.w	$vr3, $vr3, $vr6
-	vadd.w	$vr1, $vr1, $vr5
-	vsrli.w	$vr1, $vr1, 2
-	vsrli.w	$vr3, $vr3, 2
-	vpickev.h	$vr3, $vr3, $vr1
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vadd.w	$vr2, $vr6, $vr2
+	vinsgr2vr.w	$vr6, $t4, 0
+	vinsgr2vr.w	$vr6, $a6, 1
+	vinsgr2vr.w	$vr6, $a3, 2
+	vinsgr2vr.w	$vr6, $a1, 3
+	vadd.w	$vr4, $vr4, $vr6
+	vadd.w	$vr4, $vr4, $vr5
+	vadd.w	$vr4, $vr4, $vr8
+	vadd.w	$vr2, $vr2, $vr7
+	vadd.w	$vr2, $vr3, $vr2
+	vsrli.w	$vr2, $vr2, 2
+	vsrli.w	$vr3, $vr4, 2
+	vpickev.h	$vr3, $vr3, $vr2
 .LBB1_17:
 	st.h	$a4, $a0, 0
 	vst	$vr0, $a0, 2
-	vst	$vr2, $a0, 18
+	vst	$vr1, $a0, 18
 	vst	$vr3, $a0, 34
 	ret
 .LBB1_18:
@@ -2528,8 +2528,8 @@ itrans8x8:                              # @itrans8x8
 	vsub.w	$vr4, $vr7, $vr4
 	vadd.w	$vr7, $vr2, $vr4
 	vsrai.w	$vr1, $vr9, 1
-	vadd.w	$vr1, $vr1, $vr9
-	vsub.w	$vr1, $vr12, $vr1
+	vsub.w	$vr9, $vr12, $vr9
+	vsub.w	$vr1, $vr9, $vr1
 	vadd.w	$vr9, $vr1, $vr10
 	vsrai.w	$vr1, $vr9, 2
 	vadd.w	$vr12, $vr12, $vr8
@@ -2634,8 +2634,8 @@ itrans8x8:                              # @itrans8x8
 	vsub.w	$vr13, $vr15, $vr13
 	vadd.w	$vr15, $vr10, $vr13
 	vsrai.w	$vr9, $vr17, 1
-	vadd.w	$vr9, $vr9, $vr17
-	vsub.w	$vr9, $vr20, $vr9
+	vsub.w	$vr17, $vr20, $vr17
+	vsub.w	$vr9, $vr17, $vr9
 	vadd.w	$vr17, $vr9, $vr18
 	vsrai.w	$vr9, $vr17, 2
 	vadd.w	$vr20, $vr20, $vr16
@@ -2699,8 +2699,8 @@ itrans8x8:                              # @itrans8x8
 	vextrins.w	$vr5, $vr14, 33
 	vextrins.w	$vr5, $vr13, 49
 	vsrai.w	$vr7, $vr19, 1
-	vadd.w	$vr7, $vr7, $vr19
-	vsub.w	$vr7, $vr23, $vr7
+	vsub.w	$vr8, $vr23, $vr19
+	vsub.w	$vr7, $vr8, $vr7
 	vadd.w	$vr7, $vr7, $vr5
 	vsrai.w	$vr8, $vr20, 1
 	vadd.w	$vr13, $vr23, $vr20
@@ -2774,8 +2774,8 @@ itrans8x8:                              # @itrans8x8
 	vextrins.w	$vr1, $vr9, 33
 	vextrins.w	$vr1, $vr6, 49
 	vsrai.w	$vr2, $vr8, 1
-	vadd.w	$vr2, $vr2, $vr8
-	vsub.w	$vr2, $vr12, $vr2
+	vsub.w	$vr3, $vr12, $vr8
+	vsub.w	$vr2, $vr3, $vr2
 	vadd.w	$vr2, $vr2, $vr1
 	vsrai.w	$vr3, $vr13, 1
 	vadd.w	$vr6, $vr12, $vr13
@@ -2819,6 +2819,7 @@ itrans8x8:                              # @itrans8x8
 	alsl.d	$a1, $a1, $a4, 2
 	add.d	$a1, $a3, $a1
 	vrepli.b	$vr2, 0
+	vrepli.w	$vr4, 32
 	.p2align	4, , 16
 .LBB2_5:                                # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a6, 0
@@ -2826,8 +2827,7 @@ itrans8x8:                              # @itrans8x8
 	vld	$vr1, $a1, 0
 	vilvl.h	$vr3, $vr2, $vr0
 	vslli.w	$vr3, $vr3, 6
-	vadd.w	$vr1, $vr1, $vr3
-	vrepli.w	$vr3, 32
+	vadd.w	$vr1, $vr1, $vr4
 	vadd.w	$vr1, $vr1, $vr3
 	vsrai.w	$vr1, $vr1, 6
 	vmaxi.w	$vr1, $vr1, 0
@@ -2866,8 +2866,8 @@ itrans8x8:                              # @itrans8x8
 	or	$a3, $a4, $a3
 	st.w	$a3, $a1, 12
 	ldptr.w	$a3, $a0, 5900
+	vadd.w	$vr1, $vr1, $vr4
 	vadd.w	$vr0, $vr1, $vr0
-	vadd.w	$vr0, $vr0, $vr3
 	vsrai.w	$vr0, $vr0, 6
 	vmaxi.w	$vr0, $vr0, 0
 	vpickve2gr.w	$a4, $vr0, 0

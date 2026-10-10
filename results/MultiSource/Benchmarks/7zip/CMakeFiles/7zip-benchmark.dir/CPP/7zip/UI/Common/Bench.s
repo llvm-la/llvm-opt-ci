@@ -18658,12 +18658,12 @@ _Z19GetDecompressRatingyyyyj:           # @_Z19GetDecompressRatingyyyyj
 	mul.d	$a3, $a3, $a5
 	alsl.d	$a2, $a2, $a3, 2
 	bstrpick.d	$a3, $a4, 31, 0
-	mul.d	$a2, $a2, $a3
-	ori	$a3, $zero, 1
-	sltu	$a4, $a3, $a0
-	masknez	$a3, $a3, $a4
-	maskeqz	$a0, $a0, $a4
-	or	$a0, $a0, $a3
+	ori	$a4, $zero, 1
+	sltu	$a5, $a4, $a0
+	masknez	$a4, $a4, $a5
+	maskeqz	$a0, $a0, $a5
+	or	$a0, $a0, $a4
+	mul.d	$a1, $a3, $a1
 	mul.d	$a1, $a2, $a1
 	div.du	$a0, $a1, $a0
 	ret
@@ -20677,9 +20677,9 @@ _Z19GetBenchMemoryUsagejj:              # @_Z19GetBenchMemoryUsagejj
 	bstrpick.d	$a6, $a5, 31, 1
 	bstrpick.d	$a5, $a5, 31, 9
 	bstrpick.d	$a6, $a6, 62, 0
-	or	$a5, $a5, $a6
-	lu12i.w	$a6, 15
-	ori	$a6, $a6, 4095
+	lu12i.w	$a7, 15
+	ori	$a7, $a7, 4095
+	or	$a5, $a5, $a7
 	or	$a5, $a5, $a6
 	lu12i.w	$a6, 4096
 	sltu	$a6, $a6, $a5
@@ -20691,8 +20691,8 @@ _Z19GetBenchMemoryUsagejj:              # @_Z19GetBenchMemoryUsagejj
 	lu12i.w	$a7, 1792
 	maskeqz	$a2, $a7, $a2
 	or	$a2, $a2, $a6
-	add.d	$a2, $a1, $a2
-	add.d	$a2, $a2, $a3
+	add.d	$a3, $a1, $a3
+	add.d	$a2, $a3, $a2
 	alsl.d	$a1, $a1, $a2, 3
 	add.d	$a1, $a1, $a4
 	alsl.d	$a1, $a5, $a1, 2

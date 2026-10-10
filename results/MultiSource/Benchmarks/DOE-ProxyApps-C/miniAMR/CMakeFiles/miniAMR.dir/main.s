@@ -1381,8 +1381,8 @@ allocate:                               # @allocate
 	pcalau12i	$a6, %pc_hi20(init_block_z)
 	ld.w	$a7, $a6, %pc_lo12(init_block_z)
 	mul.d	$a1, $a3, $a1
-	mul.d	$a1, $a1, $a5
-	mul.d	$a1, $a1, $a7
+	mul.d	$a3, $a5, $a7
+	mul.d	$a1, $a1, $a3
 	st.w	$a1, $a0, 0
 	ld.w	$a1, $a2, %pc_lo12(init_block_x)
 	ld.w	$a2, $a4, %pc_lo12(init_block_y)

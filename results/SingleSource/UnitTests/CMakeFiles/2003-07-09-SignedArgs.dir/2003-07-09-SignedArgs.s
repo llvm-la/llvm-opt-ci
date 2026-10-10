@@ -62,8 +62,8 @@ passShort:                              # @passShort
 	jirl	$ra, $ra, 0
 	add.d	$a0, $s6, $s7
 	add.d	$a0, $a0, $s2
-	add.d	$a0, $a0, $s3
-	add.d	$a0, $a0, $s1
+	add.d	$a1, $s3, $s1
+	add.d	$a0, $a0, $a1
 	ext.w.h	$a5, $a0
 	move	$a0, $s0
 	move	$a1, $s2
@@ -140,10 +140,10 @@ getShort:                               # @getShort
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	add.d	$a0, $s3, $s4
-	add.d	$a0, $a0, $s2
-	add.d	$a0, $a0, $s1
-	add.d	$a0, $a0, $s0
-	add.d	$a0, $a0, $fp
+	add.d	$a1, $s2, $s1
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $s0, $fp
+	add.d	$a0, $a0, $a1
 	ext.w.h	$a0, $a0
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -201,11 +201,11 @@ getUnknown:                             # @getUnknown
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	add.d	$a0, $fp, $s5
-	add.d	$a0, $a0, $s0
-	add.d	$a0, $a0, $s1
-	add.d	$a0, $a0, $s2
-	add.d	$a0, $a0, $s3
-	add.w	$a0, $a0, $s4
+	add.d	$a1, $s0, $s1
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $s2, $s3
+	add.d	$a1, $a1, $s4
+	add.w	$a0, $a0, $a1
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload

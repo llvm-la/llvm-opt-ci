@@ -59,9 +59,9 @@ srad_kernel:                            # @srad_kernel
 	vinsgr2vr.d	$vr0, $a6, 0
 	vadd.d	$vr3, $vr10, $vr1
 	vori.b	$vr11, $vr0, 0
-	vinsgr2vr.d	$vr14, $s6, 0
+	vinsgr2vr.d	$vr16, $s6, 0
 	vinsgr2vr.d	$vr11, $s4, 1
-	vori.b	$vr9, $vr14, 0
+	vori.b	$vr9, $vr16, 0
 	vinsgr2vr.d	$vr9, $s4, 1
 	vadd.d	$vr4, $vr9, $vr1
 	vadd.d	$vr6, $vr11, $vr1
@@ -76,69 +76,69 @@ srad_kernel:                            # @srad_kernel
 	ori	$a1, $a0, 4092
 	add.d	$a0, $s4, $a1
 	vinsgr2vr.d	$vr0, $s7, 1
-	vori.b	$vr1, $vr14, 0
+	vori.b	$vr1, $vr16, 0
 	pcalau12i	$a4, %pc_hi20(.LCPI0_0)
-	vld	$vr15, $a4, %pc_lo12(.LCPI0_0)
+	vld	$vr17, $a4, %pc_lo12(.LCPI0_0)
 	vinsgr2vr.d	$vr1, $a2, 1
-	vreplgr2vr.d	$vr16, $a1
-	vadd.d	$vr5, $vr1, $vr16
-	vadd.d	$vr7, $vr0, $vr15
+	vreplgr2vr.d	$vr18, $a1
+	vadd.d	$vr5, $vr1, $vr18
+	vadd.d	$vr7, $vr0, $vr17
 	add.d	$a1, $a3, $a1
 	pcalau12i	$a4, %pc_hi20(.LCPI0_1)
 	vld	$vr13, $a4, %pc_lo12(.LCPI0_1)
 	ori	$a4, $a5, 4092
-	vreplgr2vr.d	$vr17, $a4
-	vadd.d	$vr9, $vr9, $vr17
+	vreplgr2vr.d	$vr14, $a4
+	vadd.d	$vr9, $vr9, $vr14
 	vadd.d	$vr11, $vr11, $vr13
-	vadd.d	$vr8, $vr8, $vr17
-	vadd.d	$vr10, $vr10, $vr17
+	vadd.d	$vr8, $vr8, $vr14
+	vadd.d	$vr10, $vr10, $vr14
 	addu16i.d	$a4, $a3, 128
 	addi.d	$t4, $a4, -4
-	vori.b	$vr17, $vr14, 0
-	vinsgr2vr.d	$vr18, $a3, 0
-	vinsgr2vr.d	$vr17, $s7, 1
-	vori.b	$vr19, $vr18, 0
+	vori.b	$vr19, $vr16, 0
+	vinsgr2vr.d	$vr20, $a3, 0
 	vinsgr2vr.d	$vr19, $s7, 1
-	vori.b	$vr20, $vr14, 0
-	vinsgr2vr.d	$vr20, $a6, 1
-	vadd.d	$vr13, $vr20, $vr16
+	vori.b	$vr21, $vr20, 0
+	vinsgr2vr.d	$vr21, $s7, 1
+	vori.b	$vr22, $vr16, 0
+	vinsgr2vr.d	$vr22, $a6, 1
+	vadd.d	$vr14, $vr22, $vr18
 	vinsgr2vr.d	$vr12, $a2, 1
-	vadd.d	$vr21, $vr19, $vr16
-	vadd.d	$vr22, $vr17, $vr16
+	vadd.d	$vr15, $vr21, $vr18
+	vadd.d	$vr13, $vr19, $vr18
 	lu12i.w	$t5, 1
 	ori	$t7, $t5, 4
-	vinsgr2vr.d	$vr14, $a3, 1
+	vinsgr2vr.d	$vr16, $a3, 1
 	vinsgr2vr.d	$vr23, $s7, 0
-	vadd.d	$vr16, $vr14, $vr16
+	vadd.d	$vr18, $vr16, $vr18
 	vori.b	$vr24, $vr23, 0
 	vinsgr2vr.d	$vr24, $a2, 1
 	vori.b	$vr25, $vr23, 0
 	vinsgr2vr.d	$vr25, $a6, 1
 	vinsgr2vr.d	$vr23, $s6, 1
-	vinsgr2vr.d	$vr18, $s6, 1
+	vinsgr2vr.d	$vr20, $s6, 1
 	vreplgr2vr.d	$vr26, $t7
-	vadd.d	$vr18, $vr18, $vr26
+	vadd.d	$vr20, $vr20, $vr26
 	vadd.d	$vr23, $vr23, $vr26
 	vadd.d	$vr25, $vr25, $vr26
 	vadd.d	$vr24, $vr24, $vr26
 	vinsgr2vr.d	$vr27, $a2, 0
 	vinsgr2vr.d	$vr27, $a6, 1
 	vadd.d	$vr27, $vr27, $vr26
-	vadd.d	$vr14, $vr14, $vr26
-	vadd.d	$vr20, $vr20, $vr26
+	vadd.d	$vr16, $vr16, $vr26
+	vadd.d	$vr22, $vr22, $vr26
+	vadd.d	$vr21, $vr21, $vr26
 	vadd.d	$vr19, $vr19, $vr26
-	vadd.d	$vr17, $vr17, $vr26
 	pcalau12i	$a4, %pc_hi20(.LCPI0_2)
 	vld	$vr26, $a4, %pc_lo12(.LCPI0_2)
-	vadd.d	$vr15, $vr12, $vr15
+	vadd.d	$vr17, $vr12, $vr17
 	add.d	$t1, $a3, $t7
 	add.d	$t3, $a6, $t7
 	vadd.d	$vr12, $vr12, $vr26
 	addi.d	$a4, $s4, 4
 	vpickve2gr.d	$fp, $vr6, 0
 	vpickve2gr.d	$s0, $vr6, 1
-	vpickve2gr.d	$a5, $vr15, 0
-	vpickve2gr.d	$t2, $vr13, 1
+	vpickve2gr.d	$a5, $vr17, 0
+	vpickve2gr.d	$t2, $vr14, 1
 	sltu	$a7, $t1, $t2
 	sltu	$t0, $t3, $a1
 	and	$a7, $a7, $t0
@@ -151,51 +151,51 @@ srad_kernel:                            # @srad_kernel
 	vpickve2gr.d	$t1, $vr10, 0
 	sltu	$a4, $a4, $t2
 	vpickve2gr.d	$t3, $vr3, 1
-	vslt.du	$vr24, $vr24, $vr22
-	vslt.du	$vr25, $vr25, $vr21
-	vpickev.w	$vr24, $vr25, $vr24
-	vslt.du	$vr23, $vr23, $vr15
-	vslt.du	$vr18, $vr18, $vr13
-	vpickev.w	$vr18, $vr18, $vr23
-	vpickev.h	$vr18, $vr18, $vr24
-	vpackev.d	$vr21, $vr22, $vr21
-	vpackod.d	$vr23, $vr13, $vr22
-	vpackod.d	$vr24, $vr15, $vr22
-	vshuf4i.d	$vr22, $vr0, 1
-	vslt.du	$vr17, $vr17, $vr24
-	vslt.du	$vr19, $vr19, $vr23
-	vpickev.w	$vr17, $vr19, $vr17
-	vslt.du	$vr19, $vr12, $vr22
-	vslt.du	$vr20, $vr20, $vr21
-	vpickev.w	$vr19, $vr20, $vr19
-	vpickev.h	$vr17, $vr19, $vr17
-	vand.v	$vr17, $vr18, $vr17
-	vslt.du	$vr14, $vr14, $vr15
-	vslt.du	$vr18, $vr27, $vr15
-	vpickev.w	$vr14, $vr18, $vr14
-	vpackod.d	$vr13, $vr13, $vr15
-	vslt.du	$vr15, $vr12, $vr16
-	vslt.du	$vr12, $vr12, $vr13
-	vpickev.w	$vr12, $vr12, $vr15
-	vand.v	$vr12, $vr14, $vr12
+	vslt.du	$vr16, $vr16, $vr17
+	vslt.du	$vr26, $vr27, $vr17
+	vpickev.w	$vr16, $vr26, $vr16
+	vpackod.d	$vr26, $vr14, $vr17
+	vslt.du	$vr18, $vr12, $vr18
+	vslt.du	$vr26, $vr12, $vr26
+	vpickev.w	$vr18, $vr26, $vr18
+	vand.v	$vr16, $vr16, $vr18
 	and	$a4, $a5, $a4
-	vpickve2gr.w	$a5, $vr12, 0
-	vinsgr2vr.h	$vr13, $a5, 0
-	vpickve2gr.w	$a5, $vr12, 1
-	vinsgr2vr.h	$vr13, $a5, 1
-	vpickve2gr.w	$a5, $vr12, 2
-	vinsgr2vr.h	$vr13, $a5, 2
-	vpickve2gr.w	$a5, $vr12, 3
-	vinsgr2vr.h	$vr13, $a5, 3
-	vor.v	$vr12, $vr17, $vr13
-	vpermi.w	$vr17, $vr12, 228
-	vslli.h	$vr12, $vr17, 15
+	vpickve2gr.w	$a5, $vr16, 0
+	vinsgr2vr.h	$vr18, $a5, 0
+	vpickve2gr.w	$a5, $vr16, 1
+	vinsgr2vr.h	$vr18, $a5, 1
+	vpickve2gr.w	$a5, $vr16, 2
+	vinsgr2vr.h	$vr18, $a5, 2
+	vpickve2gr.w	$a5, $vr16, 3
+	vinsgr2vr.h	$vr18, $a5, 3
+	vpickve2gr.d	$s2, $vr2, 1
+	vslt.du	$vr16, $vr24, $vr13
+	vslt.du	$vr24, $vr25, $vr15
+	vpickev.w	$vr16, $vr24, $vr16
+	vslt.du	$vr23, $vr23, $vr17
+	vslt.du	$vr20, $vr20, $vr14
+	vpickev.w	$vr20, $vr20, $vr23
+	vpickev.h	$vr16, $vr20, $vr16
+	vpackev.d	$vr15, $vr13, $vr15
+	vpackod.d	$vr14, $vr14, $vr13
+	vpackod.d	$vr17, $vr17, $vr13
+	vshuf4i.d	$vr13, $vr0, 1
+	vslt.du	$vr17, $vr19, $vr17
+	vslt.du	$vr14, $vr21, $vr14
+	vpickev.w	$vr14, $vr14, $vr17
+	vslt.du	$vr12, $vr12, $vr13
+	vslt.du	$vr13, $vr22, $vr15
+	vpickev.w	$vr12, $vr13, $vr12
+	vpickev.h	$vr12, $vr12, $vr14
+	vand.v	$vr12, $vr16, $vr12
+	vor.v	$vr13, $vr12, $vr18
+	vpermi.w	$vr12, $vr13, 228
+	vslli.h	$vr12, $vr12, 15
 	vmskltz.h	$vr12, $vr12
+	or	$a4, $t0, $a4
 	vpickve2gr.hu	$a5, $vr12, 0
 	sltu	$a5, $zero, $a5
-	or	$a5, $a5, $a7
-	vpickve2gr.d	$a7, $vr2, 1
-	or	$a4, $t0, $a4
+	or	$a4, $a7, $a4
 	or	$a4, $a5, $a4
 	st.d	$a4, $sp, 272                   # 8-byte Folded Spill
 	vslt.du	$vr3, $vr3, $vr11
@@ -267,7 +267,7 @@ srad_kernel:                            # @srad_kernel
 	addi.d	$a0, $fp, 4
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	ori	$t7, $zero, 512
-	ori	$t0, $zero, 128
+	ori	$a7, $zero, 128
 	lu12i.w	$ra, -1
 	ori	$t2, $zero, 4080
 	st.d	$a6, $sp, 240                   # 8-byte Folded Spill
@@ -280,7 +280,7 @@ srad_kernel:                            # @srad_kernel
 	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
 	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
 	st.d	$t3, $sp, 184                   # 8-byte Folded Spill
-	st.d	$a7, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 176                   # 8-byte Folded Spill
 	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB0_1:                                # =>This Loop Header: Depth=1
@@ -316,7 +316,7 @@ srad_kernel:                            # @srad_kernel
 # %bb.4:                                #   in Loop: Header=BB0_2 Depth=2
 	addi.d	$a0, $a0, 1
 	add.d	$a1, $a1, $t5
-	bne	$a0, $t0, .LBB0_2
+	bne	$a0, $a7, .LBB0_2
 # %bb.5:                                #   in Loop: Header=BB0_1 Depth=1
 	fld.s	$ft0, $s4, 0
 	fsub.s	$ft1, $ft0, $ft0
@@ -471,14 +471,14 @@ srad_kernel:                            # @srad_kernel
 	fst.s	$ft3, $s1, 0
 	fld.s	$ft3, $s0, 0
 	fsub.s	$ft3, $ft3, $ft2
-	fst.s	$ft3, $a7, 0
+	fst.s	$ft3, $s2, 0
 	ori	$a1, $t5, 4
 	fldx.s	$ft3, $a0, $a1
 	fsub.s	$ft3, $ft3, $ft2
 	fst.s	$ft3, $t8, 0
 	fld.s	$ft4, $t3, 0
 	fld.s	$ft5, $s1, 0
-	fld.s	$ft6, $a7, 0
+	fld.s	$ft6, $s2, 0
 	fmul.s	$ft7, $ft4, $ft4
 	fmul.s	$ft8, $ft5, $ft5
 	fadd.s	$ft7, $ft7, $ft8
@@ -1119,8 +1119,8 @@ srad_kernel:                            # @srad_kernel
 	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
 	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$a7, $sp, 176                   # 8-byte Folded Reload
-	ori	$t0, $zero, 128
+	ld.d	$s2, $sp, 176                   # 8-byte Folded Reload
+	ori	$a7, $zero, 128
 	ori	$a0, $zero, 10
 	bne	$t6, $a0, .LBB0_1
 # %bb.63:

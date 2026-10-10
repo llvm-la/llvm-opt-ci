@@ -236,30 +236,30 @@ Ppmd7_DecodeSymbol:                     # @Ppmd7_DecodeSymbol
 	move	$s0, $a1
 	bne	$a2, $a3, .LBB5_19
 # %bb.1:
-	ld.d	$a1, $fp, 64
-	ld.wu	$a2, $a0, 8
-	ldx.hu	$a1, $a1, $a2
-	ld.bu	$a2, $a0, 3
-	ld.w	$a3, $fp, 32
+	ld.bu	$a1, $a0, 3
+	ld.d	$a2, $fp, 64
+	ld.wu	$a3, $a0, 8
+	slli.d	$a1, $a1, 7
 	ld.d	$a4, $fp, 16
+	ldx.hu	$a2, $a2, $a3
 	add.d	$a1, $fp, $a1
-	ld.bu	$a1, $a1, 683
-	slli.d	$a2, $a2, 7
+	ld.w	$a3, $fp, 32
 	ld.bu	$a4, $a4, 0
-	ld.bu	$a0, $a0, 2
-	add.d	$a1, $a3, $a1
-	addi.d	$a3, $fp, 940
-	ldx.bu	$a4, $a3, $a4
-	ldx.bu	$a0, $a3, $a0
-	ld.w	$a3, $fp, 44
 	add.d	$a2, $fp, $a2
-	add.d	$a1, $a1, $a4
-	alsl.d	$a0, $a0, $a1, 1
-	srli.d	$a1, $a3, 26
-	andi	$a1, $a1, 32
-	add.d	$a0, $a0, $a1
+	ld.bu	$a0, $a0, 2
+	addi.d	$a5, $fp, 940
+	ldx.bu	$a4, $a5, $a4
+	ld.bu	$a2, $a2, 683
+	ldx.bu	$a0, $a5, $a0
+	ld.w	$a5, $fp, 44
+	add.d	$a3, $a3, $a4
+	add.d	$a2, $a3, $a2
+	alsl.d	$a0, $a0, $a2, 1
+	srli.d	$a2, $a5, 26
+	andi	$a2, $a2, 32
+	add.d	$a0, $a0, $a2
 	bstrpick.d	$a0, $a0, 31, 0
-	alsl.d	$s1, $a0, $a2, 1
+	alsl.d	$s1, $a0, $a1, 1
 	ori	$s3, $zero, 2672
 	ld.d	$a2, $s0, 16
 	ldx.hu	$a1, $s1, $s3

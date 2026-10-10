@@ -4543,7 +4543,7 @@ diff:                                   # @diff
 	b	.LBB8_64
 .LBB8_56:
 	ori	$a0, $zero, 1
-	bne	$t7, $a0, .LBB8_68
+	bne	$t7, $a0, .LBB8_67
 # %bb.57:
 	move	$s3, $zero
 	pcalau12i	$a1, %pc_hi20(v)
@@ -4567,8 +4567,8 @@ diff:                                   # @diff
 	ld.d	$a7, $sp, 120                   # 8-byte Folded Reload
 	ld.w	$a7, $a7, %pc_lo12(I)
 	add.d	$a5, $a2, $a5
-	add.d	$a4, $a4, $a5
-	sub.w	$s1, $zero, $a4
+	sub.d	$a4, $zero, $a4
+	sub.w	$s1, $a4, $a5
 	alsl.d	$a4, $a7, $a6, 3
 	pcalau12i	$s2, %pc_hi20(J)
 	ld.w	$a5, $s2, %pc_lo12(J)
@@ -4602,7 +4602,7 @@ diff:                                   # @diff
 	or	$s1, $t0, $t1
 .LBB8_59:                               #   in Loop: Header=BB8_60 Depth=1
 	addi.d	$a7, $a7, 1
-	beq	$a7, $a6, .LBB8_70
+	beq	$a7, $a6, .LBB8_69
 .LBB8_60:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_61 Depth 2
 	add.w	$t0, $a5, $a7
@@ -4634,9 +4634,8 @@ diff:                                   # @diff
 	mul.d	$a0, $a0, $t7
 	add.d	$a0, $a0, $a1
 	maskeqz	$a0, $a0, $a2
-.LBB8_66:
 	sub.d	$s1, $zero, $a0
-.LBB8_67:
+.LBB8_66:
 	andi	$a0, $t5, 1
 	masknez	$a1, $s1, $a0
 	maskeqz	$a0, $a3, $a0
@@ -4655,7 +4654,7 @@ diff:                                   # @diff
 	ld.d	$ra, $sp, 264                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 272
 	ret
-.LBB8_68:
+.LBB8_67:
 	pcalau12i	$a2, %pc_hi20(J)
 	ld.w	$a0, $a2, %pc_lo12(J)
 	add.d	$a3, $a0, $s0
@@ -4667,19 +4666,19 @@ diff:                                   # @diff
 	st.w	$a3, $a2, %pc_lo12(J)
 	add.d	$a2, $a4, $s0
 	st.w	$a2, $a5, %pc_lo12(al_len)
-	bltz	$a1, .LBB8_74
-# %bb.69:
+	bltz	$a1, .LBB8_73
+# %bb.68:
 	st.w	$s0, $a0, 0
 	st.w	$s0, $t4, %pc_lo12(last)
-	b	.LBB8_75
-.LBB8_70:
+	b	.LBB8_74
+.LBB8_69:
 	addi.w	$s6, $s3, 0
-	beqz	$s6, .LBB8_76
-# %bb.71:
+	beqz	$s6, .LBB8_75
+# %bb.70:
 	ori	$a0, $zero, 1
 	st.d	$t6, $sp, 168                   # 8-byte Folded Spill
-	bge	$a0, $s6, .LBB8_78
-# %bb.72:
+	bge	$a0, $s6, .LBB8_77
+# %bb.71:
 	addi.d	$a1, $s3, -1
 	ld.w	$a0, $s2, %pc_lo12(J)
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
@@ -4690,15 +4689,15 @@ diff:                                   # @diff
 	add.d	$a0, $a0, $a1
 	st.w	$a0, $s2, %pc_lo12(J)
 	add.d	$a0, $a4, $a1
-	bltz	$a3, .LBB8_81
-# %bb.73:
+	bltz	$a3, .LBB8_80
+# %bb.72:
 	addi.d	$s8, $a2, 4
 	st.w	$a1, $a2, 0
-	b	.LBB8_82
-.LBB8_74:
+	b	.LBB8_81
+.LBB8_73:
 	st.w	$s0, $a0, -4
 	st.w	$a1, $a0, 0
-.LBB8_75:
+.LBB8_74:
 	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	ld.w	$a1, $t6, %pc_lo12(r)
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
@@ -4707,9 +4706,10 @@ diff:                                   # @diff
 	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
 	st.d	$a0, $a4, %pc_lo12(sapp)
 	mul.d	$a0, $a1, $s0
-	add.d	$a0, $a2, $a0
+	sub.d	$a1, $zero, $a2
+	sub.d	$s1, $a1, $a0
 	b	.LBB8_66
-.LBB8_76:
+.LBB8_75:
 	ld.w	$a0, $s2, %pc_lo12(J)
 	add.d	$a1, $a0, $s0
 	ld.d	$a6, $sp, 24                    # 8-byte Folded Reload
@@ -4720,8 +4720,8 @@ diff:                                   # @diff
 	st.w	$a1, $s2, %pc_lo12(J)
 	add.d	$a1, $a3, $s0
 	st.w	$a1, $a6, %pc_lo12(al_len)
-	bltz	$a2, .LBB8_79
-# %bb.77:
+	bltz	$a2, .LBB8_78
+# %bb.76:
 	st.w	$s0, $a0, 0
 	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
 	ld.w	$a2, $a3, %pc_lo12(I)
@@ -4734,14 +4734,14 @@ diff:                                   # @diff
 	addi.w	$a1, $zero, -1
 	lu32i.d	$a1, 0
 	st.w	$a1, $a0, 4
-	b	.LBB8_80
-.LBB8_78:
+	b	.LBB8_79
+.LBB8_77:
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s8, $a2, %pc_lo12(sapp)
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.w	$a0, $s4, %pc_lo12(al_len)
-	b	.LBB8_83
-.LBB8_79:
+	b	.LBB8_82
+.LBB8_78:
 	st.w	$s0, $a0, -4
 	ld.d	$a7, $sp, 120                   # 8-byte Folded Reload
 	ld.w	$a3, $a7, %pc_lo12(I)
@@ -4753,18 +4753,18 @@ diff:                                   # @diff
 	st.w	$a1, $a6, %pc_lo12(al_len)
 	addi.d	$a1, $a2, -1
 	st.w	$a1, $a0, 0
-.LBB8_80:
+.LBB8_79:
 	st.w	$a1, $t4, %pc_lo12(last)
 	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
-	b	.LBB8_67
-.LBB8_81:
+	b	.LBB8_66
+.LBB8_80:
 	st.w	$a1, $a2, -4
 	addi.d	$s8, $a2, 4
 	st.w	$a3, $a2, 0
-.LBB8_82:
+.LBB8_81:
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-.LBB8_83:
+.LBB8_82:
 	addi.d	$a1, $s8, 4
 	st.d	$a1, $a2, %pc_lo12(sapp)
 	st.w	$zero, $s8, 0
@@ -4805,8 +4805,8 @@ diff:                                   # @diff
 	st.d	$a3, $a0, 8
 	stx.d	$a0, $a1, $a2
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	bge	$s6, $a0, .LBB8_85
-# %bb.84:
+	bge	$s6, $a0, .LBB8_84
+# %bb.83:
 	sub.d	$a0, $a0, $s3
 	add.d	$a1, $fp, $a0
 	st.w	$a1, $s2, %pc_lo12(J)
@@ -4818,10 +4818,10 @@ diff:                                   # @diff
 	st.w	$a0, $s8, 4
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	st.w	$a0, $a1, %pc_lo12(last)
-.LBB8_85:
+.LBB8_84:
 	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$t5, $sp, 96                    # 8-byte Folded Reload
-	b	.LBB8_67
+	b	.LBB8_66
 .Lfunc_end8:
 	.size	diff, .Lfunc_end8-diff
                                         # -- End function

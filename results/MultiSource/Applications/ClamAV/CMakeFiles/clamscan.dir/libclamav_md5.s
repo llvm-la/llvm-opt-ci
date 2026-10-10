@@ -44,13 +44,13 @@ cli_md5_update:                         # @cli_md5_update
 	ld.w	$a0, $a0, 0
 	move	$fp, $a2
 	add.d	$a2, $a0, $a2
-	ld.w	$a3, $s1, 4
 	bstrpick.d	$a2, $a2, 28, 0
+	ld.w	$a3, $s1, 4
 	st.w	$a2, $s1, 0
 	sltu	$a2, $a2, $a0
+	srli.d	$a4, $fp, 29
+	add.d	$a3, $a3, $a4
 	add.d	$a2, $a3, $a2
-	srli.d	$a3, $fp, 29
-	add.d	$a2, $a2, $a3
 	st.w	$a2, $s1, 4
 	andi	$a0, $a0, 63
 	addi.d	$s0, $s1, 24
@@ -310,10 +310,10 @@ body:                                   # @body
 	and	$a4, $t3, $t6
 	or	$a3, $a4, $a3
 	st.w	$s5, $a0, 88
-	add.d	$a4, $a6, $s5
-	add.d	$a3, $a4, $a3
+	add.d	$a3, $a6, $a3
 	ld.d	$a2, $sp, 480                   # 8-byte Folded Reload
 	add.d	$a3, $a3, $a2
+	add.d	$a3, $a3, $s5
 	rotri.w	$a3, $a3, 25
 	add.d	$a3, $a3, $t6
 	ld.w	$s1, $a1, 4
@@ -322,9 +322,9 @@ body:                                   # @body
 	or	$a4, $a4, $a5
 	st.w	$s1, $a0, 92
 	add.d	$a5, $t4, $s1
-	add.d	$a4, $a5, $a4
 	ld.d	$a2, $sp, 472                   # 8-byte Folded Reload
-	add.d	$a4, $a4, $a2
+	add.d	$a5, $a5, $a2
+	add.d	$a4, $a5, $a4
 	rotri.w	$a4, $a4, 20
 	add.d	$a4, $a4, $a3
 	ld.w	$t2, $a1, 8
@@ -333,9 +333,9 @@ body:                                   # @body
 	or	$a5, $a5, $a6
 	st.w	$t2, $a0, 96
 	add.d	$a6, $t3, $t2
-	add.d	$a5, $a6, $a5
 	ld.d	$a2, $sp, 464                   # 8-byte Folded Reload
-	add.d	$a5, $a5, $a2
+	add.d	$a6, $a6, $a2
+	add.d	$a5, $a6, $a5
 	rotri.w	$a5, $a5, 15
 	add.d	$a5, $a5, $a4
 	ld.w	$s4, $a1, 12
@@ -344,9 +344,9 @@ body:                                   # @body
 	or	$a6, $a6, $a7
 	st.w	$s4, $a0, 100
 	add.d	$a7, $t6, $s4
-	add.d	$a6, $a7, $a6
 	ld.d	$a2, $sp, 456                   # 8-byte Folded Reload
-	add.d	$a6, $a6, $a2
+	add.d	$a7, $a7, $a2
+	add.d	$a6, $a7, $a6
 	rotri.w	$a6, $a6, 10
 	add.d	$a6, $a6, $a5
 	ld.w	$s0, $a1, 16
@@ -355,9 +355,9 @@ body:                                   # @body
 	or	$a7, $a7, $s2
 	st.w	$s0, $a0, 104
 	add.d	$a3, $a3, $s0
-	add.d	$a3, $a3, $a7
 	ld.d	$a2, $sp, 448                   # 8-byte Folded Reload
 	add.d	$a3, $a3, $a2
+	add.d	$a3, $a3, $a7
 	rotri.w	$a3, $a3, 25
 	add.d	$a3, $a3, $a6
 	ld.w	$s8, $a1, 20
@@ -366,9 +366,9 @@ body:                                   # @body
 	or	$a7, $a7, $s2
 	st.w	$s8, $a0, 108
 	add.d	$a4, $s8, $a4
-	add.d	$a4, $a4, $a7
 	ld.d	$a2, $sp, 440                   # 8-byte Folded Reload
 	add.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a7
 	rotri.w	$a4, $a4, 20
 	add.d	$a7, $a4, $a3
 	ld.w	$s3, $a1, 24
@@ -377,9 +377,9 @@ body:                                   # @body
 	or	$a4, $a4, $s2
 	st.w	$s3, $a0, 112
 	add.d	$a5, $s3, $a5
-	add.d	$a4, $a5, $a4
 	ld.d	$a2, $sp, 432                   # 8-byte Folded Reload
-	add.d	$a4, $a4, $a2
+	add.d	$a5, $a5, $a2
+	add.d	$a4, $a5, $a4
 	rotri.w	$a4, $a4, 15
 	add.d	$a5, $a4, $a7
 	ld.w	$a4, $a1, 28
@@ -388,9 +388,9 @@ body:                                   # @body
 	or	$s2, $s2, $s6
 	st.w	$a4, $a0, 116
 	add.d	$a6, $a4, $a6
-	add.d	$a6, $a6, $s2
 	ld.d	$a2, $sp, 424                   # 8-byte Folded Reload
 	add.d	$a6, $a6, $a2
+	add.d	$a6, $a6, $s2
 	rotri.w	$a6, $a6, 10
 	add.d	$a6, $a6, $a5
 	ld.w	$s7, $a1, 32
@@ -399,9 +399,9 @@ body:                                   # @body
 	or	$s2, $s2, $s6
 	st.w	$s7, $a0, 120
 	add.d	$a3, $s7, $a3
-	add.d	$a3, $a3, $s2
 	ld.d	$a2, $sp, 416                   # 8-byte Folded Reload
 	add.d	$a3, $a3, $a2
+	add.d	$a3, $a3, $s2
 	rotri.w	$a3, $a3, 25
 	add.d	$ra, $a3, $a6
 	ld.w	$s2, $a1, 36
@@ -410,9 +410,9 @@ body:                                   # @body
 	or	$a3, $a3, $s6
 	st.w	$s2, $a0, 124
 	add.d	$a7, $s2, $a7
-	add.d	$a3, $a7, $a3
 	ld.d	$a2, $sp, 408                   # 8-byte Folded Reload
-	add.d	$a3, $a3, $a2
+	add.d	$a7, $a7, $a2
+	add.d	$a3, $a7, $a3
 	rotri.w	$a3, $a3, 20
 	add.d	$a7, $a3, $ra
 	ld.w	$a3, $a1, 40
@@ -421,9 +421,9 @@ body:                                   # @body
 	or	$t0, $s6, $t0
 	st.w	$a3, $a0, 128
 	add.d	$a5, $a3, $a5
-	add.d	$a5, $a5, $t0
 	ld.d	$a2, $sp, 400                   # 8-byte Folded Reload
 	add.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $t0
 	rotri.w	$a5, $a5, 15
 	add.d	$a5, $a5, $a7
 	ld.w	$s6, $a1, 44
@@ -432,9 +432,9 @@ body:                                   # @body
 	or	$t0, $t0, $t1
 	st.w	$s6, $a0, 132
 	add.d	$a6, $s6, $a6
-	add.d	$a6, $a6, $t0
 	ld.d	$a2, $sp, 392                   # 8-byte Folded Reload
 	add.d	$a6, $a6, $a2
+	add.d	$a6, $a6, $t0
 	rotri.w	$a6, $a6, 10
 	add.d	$t0, $a6, $a5
 	ld.w	$a6, $a1, 48
@@ -443,9 +443,9 @@ body:                                   # @body
 	or	$t1, $t1, $t5
 	st.w	$a6, $a0, 136
 	add.d	$t5, $a6, $ra
-	add.d	$t1, $t5, $t1
 	ld.d	$a2, $sp, 384                   # 8-byte Folded Reload
-	add.d	$t1, $t1, $a2
+	add.d	$t5, $t5, $a2
+	add.d	$t1, $t5, $t1
 	rotri.w	$t1, $t1, 25
 	add.d	$t1, $t1, $t0
 	ld.w	$ra, $a1, 52
@@ -454,9 +454,9 @@ body:                                   # @body
 	or	$t5, $t5, $t7
 	st.w	$ra, $a0, 140
 	add.d	$a7, $ra, $a7
-	add.d	$a7, $a7, $t5
 	ld.d	$a2, $sp, 376                   # 8-byte Folded Reload
 	add.d	$a7, $a7, $a2
+	add.d	$a7, $a7, $t5
 	rotri.w	$a7, $a7, 20
 	add.d	$t5, $a7, $t1
 	ld.w	$a7, $a1, 56
@@ -465,9 +465,9 @@ body:                                   # @body
 	or	$t7, $t7, $t8
 	st.w	$a7, $a0, 144
 	add.d	$a5, $a7, $a5
-	add.d	$a5, $a5, $t7
 	ld.d	$a2, $sp, 368                   # 8-byte Folded Reload
 	add.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $t7
 	rotri.w	$a5, $a5, 15
 	add.d	$t7, $a5, $t5
 	ld.w	$a5, $a1, 60
@@ -475,54 +475,54 @@ body:                                   # @body
 	andn	$fp, $t1, $t7
 	or	$t8, $t8, $fp
 	add.d	$t0, $a5, $t0
-	add.d	$t0, $t0, $t8
 	ld.d	$a2, $sp, 360                   # 8-byte Folded Reload
 	add.d	$t0, $t0, $a2
+	add.d	$t0, $t0, $t8
 	rotri.w	$t0, $t0, 10
 	add.d	$t0, $t0, $t7
 	and	$t8, $t0, $t5
 	andn	$fp, $t7, $t5
 	or	$t8, $t8, $fp
 	add.d	$t1, $s1, $t1
-	add.d	$t1, $t1, $t8
 	ld.d	$a2, $sp, 352                   # 8-byte Folded Reload
 	add.d	$t1, $t1, $a2
+	add.d	$t1, $t1, $t8
 	rotri.w	$t1, $t1, 27
 	add.d	$t1, $t1, $t0
 	and	$t8, $t1, $t7
 	andn	$fp, $t0, $t7
 	or	$t8, $t8, $fp
 	add.d	$t5, $s3, $t5
-	add.d	$t5, $t5, $t8
 	ld.d	$a2, $sp, 344                   # 8-byte Folded Reload
 	add.d	$t5, $t5, $a2
+	add.d	$t5, $t5, $t8
 	rotri.w	$t5, $t5, 23
 	add.d	$t5, $t5, $t1
 	and	$t8, $t5, $t0
 	andn	$fp, $t1, $t0
 	or	$t8, $t8, $fp
 	add.d	$t7, $s6, $t7
-	add.d	$t7, $t7, $t8
 	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
 	add.d	$t7, $t7, $a2
+	add.d	$t7, $t7, $t8
 	rotri.w	$t7, $t7, 18
 	add.w	$t7, $t7, $t5
 	and	$t8, $t7, $t1
 	andn	$fp, $t5, $t1
 	or	$t8, $t8, $fp
 	add.d	$t0, $s5, $t0
-	add.d	$t0, $t0, $t8
 	ld.d	$a2, $sp, 328                   # 8-byte Folded Reload
 	add.d	$t0, $t0, $a2
+	add.d	$t0, $t0, $t8
 	rotri.w	$t0, $t0, 12
 	add.d	$t0, $t0, $t7
 	and	$t8, $t0, $t5
 	andn	$fp, $t7, $t5
 	or	$t8, $t8, $fp
 	add.d	$t1, $s8, $t1
-	add.d	$t1, $t1, $t8
 	ld.d	$a2, $sp, 320                   # 8-byte Folded Reload
 	add.d	$t1, $t1, $a2
+	add.d	$t1, $t1, $t8
 	rotri.w	$t1, $t1, 27
 	add.d	$t1, $t1, $t0
 	addi.w	$t8, $t1, 0
@@ -530,18 +530,18 @@ body:                                   # @body
 	andn	$a2, $t0, $t7
 	or	$a2, $fp, $a2
 	add.d	$t5, $a3, $t5
+	ld.d	$fp, $sp, 312                   # 8-byte Folded Reload
+	add.d	$t5, $t5, $fp
 	add.d	$a2, $t5, $a2
-	ld.d	$t5, $sp, 312                   # 8-byte Folded Reload
-	add.d	$a2, $a2, $t5
 	rotri.w	$a2, $a2, 23
 	add.d	$a2, $a2, $t8
 	and	$t5, $a2, $t0
 	andn	$fp, $t1, $t0
 	or	$t5, $t5, $fp
 	add.d	$t7, $a5, $t7
+	ld.d	$fp, $sp, 304                   # 8-byte Folded Reload
+	add.d	$t7, $t7, $fp
 	add.d	$t5, $t7, $t5
-	ld.d	$t7, $sp, 304                   # 8-byte Folded Reload
-	add.d	$t5, $t5, $t7
 	rotri.w	$t5, $t5, 18
 	add.d	$t5, $t5, $a2
 	addi.w	$t7, $t5, 0
@@ -558,8 +558,8 @@ body:                                   # @body
 	andn	$fp, $t5, $a2
 	or	$t8, $t8, $fp
 	add.d	$t1, $s2, $t1
-	add.d	$t1, $t1, $t8
-	ld.d	$t8, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 296                   # 8-byte Folded Reload
+	add.d	$t1, $t1, $fp
 	add.d	$t1, $t1, $t8
 	rotri.w	$t1, $t1, 27
 	add.d	$t1, $t1, $t0
@@ -577,8 +577,8 @@ body:                                   # @body
 	andn	$fp, $t1, $t0
 	or	$t7, $t7, $fp
 	add.d	$t5, $s4, $t5
-	add.d	$t5, $t5, $t7
-	ld.d	$t7, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 288                   # 8-byte Folded Reload
+	add.d	$t5, $t5, $fp
 	add.d	$t5, $t5, $t7
 	rotri.w	$t5, $t5, 18
 	add.d	$t5, $t5, $a2
@@ -587,8 +587,8 @@ body:                                   # @body
 	andn	$t8, $a2, $t8
 	or	$t8, $fp, $t8
 	add.d	$t0, $s7, $t0
-	add.d	$t0, $t0, $t8
-	ld.d	$t8, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 280                   # 8-byte Folded Reload
+	add.d	$t0, $t0, $fp
 	add.d	$t0, $t0, $t8
 	rotri.w	$t0, $t0, 12
 	add.d	$t0, $t0, $t7
@@ -596,8 +596,8 @@ body:                                   # @body
 	andn	$fp, $t5, $a2
 	or	$t8, $t8, $fp
 	add.d	$t1, $ra, $t1
-	add.d	$t1, $t1, $t8
-	ld.d	$t8, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 272                   # 8-byte Folded Reload
+	add.d	$t1, $t1, $fp
 	add.d	$t1, $t1, $t8
 	rotri.w	$t1, $t1, 27
 	add.d	$t1, $t1, $t0
@@ -606,10 +606,10 @@ body:                                   # @body
 	or	$t7, $t8, $t7
 	addi.w	$t8, $t0, 0
 	add.d	$a2, $t2, $a2
-	add.d	$a2, $a2, $t7
-	addi.w	$t7, $t1, 0
 	ld.d	$fp, $sp, 264                   # 8-byte Folded Reload
 	add.d	$a2, $a2, $fp
+	add.d	$a2, $a2, $t7
+	addi.w	$t7, $t1, 0
 	rotri.w	$a2, $a2, 23
 	add.d	$a2, $a2, $t7
 	and	$t7, $a2, $t0
@@ -625,143 +625,143 @@ body:                                   # @body
 	and	$t8, $t7, $t1
 	xor	$t8, $t8, $a2
 	add.d	$t0, $a6, $t0
-	add.d	$t0, $t0, $t8
-	ld.d	$t8, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 256                   # 8-byte Folded Reload
+	add.d	$t0, $t0, $fp
 	add.d	$t0, $t0, $t8
 	rotri.w	$t0, $t0, 12
 	add.d	$t0, $t0, $t5
 	xor	$t7, $t7, $t0
 	add.d	$t1, $s8, $t1
-	add.d	$t1, $t1, $t7
-	ld.d	$t7, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 248                   # 8-byte Folded Reload
+	add.d	$t1, $t1, $t8
 	add.d	$t1, $t1, $t7
 	rotri.w	$t1, $t1, 28
 	add.d	$t1, $t1, $t0
 	xor	$t7, $t0, $t5
 	xor	$t7, $t7, $t1
 	add.d	$a2, $s7, $a2
-	add.d	$a2, $a2, $t7
-	ld.d	$t7, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 240                   # 8-byte Folded Reload
+	add.d	$a2, $a2, $t8
 	add.d	$a2, $a2, $t7
 	rotri.w	$a2, $a2, 21
 	add.d	$a2, $a2, $t1
 	xor	$t7, $t1, $t0
 	xor	$t7, $t7, $a2
 	add.d	$t5, $s6, $t5
-	add.d	$t5, $t5, $t7
-	ld.d	$t7, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 232                   # 8-byte Folded Reload
+	add.d	$t5, $t5, $t8
 	add.d	$t5, $t5, $t7
 	rotri.w	$t5, $t5, 16
 	add.d	$t5, $t5, $a2
 	xor	$t7, $a2, $t1
 	xor	$t7, $t7, $t5
 	add.d	$t0, $a7, $t0
-	add.d	$t0, $t0, $t7
-	ld.d	$t7, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 224                   # 8-byte Folded Reload
+	add.d	$t0, $t0, $t8
 	add.d	$t0, $t0, $t7
 	rotri.w	$t0, $t0, 9
 	add.d	$t0, $t0, $t5
 	xor	$t7, $t5, $a2
 	xor	$t7, $t7, $t0
 	add.d	$t1, $s1, $t1
-	add.d	$t1, $t1, $t7
-	ld.d	$t7, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 216                   # 8-byte Folded Reload
+	add.d	$t1, $t1, $t8
 	add.d	$t1, $t1, $t7
 	rotri.w	$t1, $t1, 28
 	add.d	$t1, $t1, $t0
 	xor	$t7, $t0, $t5
 	xor	$t7, $t7, $t1
 	add.d	$a2, $s0, $a2
-	add.d	$a2, $a2, $t7
-	ld.d	$t7, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 208                   # 8-byte Folded Reload
+	add.d	$a2, $a2, $t8
 	add.d	$a2, $a2, $t7
 	rotri.w	$a2, $a2, 21
 	add.d	$a2, $a2, $t1
 	xor	$t7, $t1, $t0
 	xor	$t7, $t7, $a2
 	add.d	$t5, $a4, $t5
-	add.d	$t5, $t5, $t7
-	ld.d	$t7, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 200                   # 8-byte Folded Reload
+	add.d	$t5, $t5, $t8
 	add.d	$t5, $t5, $t7
 	rotri.w	$t5, $t5, 16
 	add.d	$t5, $t5, $a2
 	xor	$t7, $a2, $t1
 	xor	$t7, $t7, $t5
 	add.d	$t0, $a3, $t0
-	add.d	$t0, $t0, $t7
-	ld.d	$t7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 192                   # 8-byte Folded Reload
+	add.d	$t0, $t0, $t8
 	add.d	$t0, $t0, $t7
 	rotri.w	$t0, $t0, 9
 	add.d	$t0, $t0, $t5
 	xor	$t7, $t5, $a2
 	xor	$t7, $t7, $t0
 	add.d	$t1, $ra, $t1
-	add.d	$t1, $t1, $t7
-	ld.d	$t7, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 184                   # 8-byte Folded Reload
+	add.d	$t1, $t1, $t8
 	add.d	$t1, $t1, $t7
 	rotri.w	$t1, $t1, 28
 	add.d	$t1, $t1, $t0
 	xor	$t7, $t0, $t5
 	xor	$t7, $t7, $t1
 	add.d	$a2, $s5, $a2
-	add.d	$a2, $a2, $t7
-	ld.d	$t7, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 176                   # 8-byte Folded Reload
+	add.d	$a2, $a2, $t8
 	add.d	$a2, $a2, $t7
 	rotri.w	$a2, $a2, 21
 	add.d	$a2, $a2, $t1
 	xor	$t7, $t1, $t0
 	xor	$t7, $t7, $a2
 	add.d	$t5, $s4, $t5
-	add.d	$t5, $t5, $t7
-	ld.d	$t7, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 168                   # 8-byte Folded Reload
+	add.d	$t5, $t5, $t8
 	add.d	$t5, $t5, $t7
 	rotri.w	$t5, $t5, 16
 	add.d	$t5, $t5, $a2
 	xor	$t7, $a2, $t1
 	xor	$t7, $t7, $t5
 	add.d	$t0, $s3, $t0
-	add.d	$t0, $t0, $t7
-	ld.d	$t7, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 160                   # 8-byte Folded Reload
+	add.d	$t0, $t0, $t8
 	add.d	$t0, $t0, $t7
 	rotri.w	$t0, $t0, 9
 	add.d	$t0, $t0, $t5
 	xor	$t7, $t5, $a2
 	xor	$t7, $t7, $t0
 	add.d	$t1, $s2, $t1
-	add.d	$t1, $t1, $t7
-	ld.d	$t7, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 152                   # 8-byte Folded Reload
+	add.d	$t1, $t1, $t8
 	add.d	$t1, $t1, $t7
 	rotri.w	$t1, $t1, 28
 	add.w	$t1, $t1, $t0
 	xor	$t7, $t0, $t5
 	xor	$t7, $t7, $t1
 	add.d	$a2, $a6, $a2
-	add.d	$a2, $a2, $t7
-	ld.d	$t7, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 144                   # 8-byte Folded Reload
+	add.d	$a2, $a2, $t8
 	add.d	$a2, $a2, $t7
 	rotri.w	$a2, $a2, 21
 	add.d	$a2, $a2, $t1
 	xor	$t7, $t1, $t0
 	xor	$t7, $t7, $a2
 	add.d	$t5, $a5, $t5
-	add.d	$t5, $t5, $t7
-	ld.d	$t7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 136                   # 8-byte Folded Reload
+	add.d	$t5, $t5, $t8
 	add.d	$t5, $t5, $t7
 	rotri.w	$t5, $t5, 16
 	add.w	$t5, $t5, $a2
 	xor	$t7, $a2, $t1
 	xor	$t7, $t7, $t5
 	add.d	$t0, $t2, $t0
-	add.d	$t0, $t0, $t7
-	ld.d	$t7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 128                   # 8-byte Folded Reload
+	add.d	$t0, $t0, $t8
 	add.d	$t0, $t0, $t7
 	rotri.w	$t0, $t0, 9
 	add.d	$t0, $t0, $t5
 	add.d	$t1, $s5, $t1
 	orn	$t7, $t0, $a2
 	xor	$t7, $t7, $t5
-	add.d	$t1, $t1, $t7
-	ld.d	$t7, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 120                   # 8-byte Folded Reload
+	add.d	$t1, $t1, $t8
 	add.d	$t1, $t1, $t7
 	rotri.w	$t1, $t1, 26
 	add.d	$t1, $t1, $t0
@@ -776,116 +776,116 @@ body:                                   # @body
 	add.d	$a4, $a7, $t5
 	orn	$a7, $a2, $t0
 	xor	$a7, $a7, $t1
-	add.d	$a4, $a4, $a7
-	ld.d	$a7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 112                   # 8-byte Folded Reload
+	add.d	$a4, $a4, $t5
 	add.d	$a4, $a4, $a7
 	rotri.w	$a4, $a4, 17
 	add.d	$a4, $a4, $a2
 	add.d	$a7, $s8, $t0
 	orn	$t0, $a4, $t1
 	xor	$t0, $t0, $a2
-	add.d	$a7, $a7, $t0
-	ld.d	$t0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 104                   # 8-byte Folded Reload
+	add.d	$a7, $a7, $t5
 	add.d	$a7, $a7, $t0
 	rotri.w	$a7, $a7, 11
 	add.d	$a7, $a7, $a4
 	add.d	$a6, $a6, $t1
 	orn	$t0, $a7, $a2
 	xor	$t0, $t0, $a4
-	add.d	$a6, $a6, $t0
-	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 96                    # 8-byte Folded Reload
+	add.d	$a6, $a6, $t1
 	add.d	$a6, $a6, $t0
 	rotri.w	$a6, $a6, 26
 	add.d	$a6, $a6, $a7
 	add.d	$a2, $s4, $a2
 	orn	$t0, $a6, $a4
 	xor	$t0, $t0, $a7
-	add.d	$a2, $a2, $t0
-	ld.d	$t0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 88                    # 8-byte Folded Reload
+	add.d	$a2, $a2, $t1
 	add.d	$a2, $a2, $t0
 	rotri.w	$a2, $a2, 22
 	add.d	$a2, $a2, $a6
 	add.d	$a3, $a3, $a4
 	orn	$a4, $a2, $a7
 	xor	$a4, $a4, $a6
-	add.d	$a3, $a3, $a4
-	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 80                    # 8-byte Folded Reload
+	add.d	$a3, $a3, $t0
 	add.d	$a3, $a3, $a4
 	rotri.w	$a3, $a3, 17
 	add.d	$a3, $a3, $a2
 	add.d	$a4, $s1, $a7
 	orn	$a7, $a3, $a6
 	xor	$a7, $a7, $a2
-	add.d	$a4, $a4, $a7
-	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 72                    # 8-byte Folded Reload
+	add.d	$a4, $a4, $t0
 	add.d	$a4, $a4, $a7
 	rotri.w	$a4, $a4, 11
 	add.d	$a4, $a4, $a3
 	add.d	$a6, $s7, $a6
 	orn	$a7, $a4, $a2
 	xor	$a7, $a7, $a3
+	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
+	add.d	$a6, $a6, $t0
 	add.d	$a6, $a6, $a7
 	st.w	$a5, $a0, 148
-	ld.d	$a7, $sp, 64                    # 8-byte Folded Reload
-	add.d	$a6, $a6, $a7
 	rotri.w	$a6, $a6, 26
 	add.d	$a6, $a6, $a4
 	add.d	$a2, $a5, $a2
 	orn	$a5, $a6, $a3
 	xor	$a5, $a5, $a4
-	add.d	$a2, $a2, $a5
-	ld.d	$a5, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 56                    # 8-byte Folded Reload
+	add.d	$a2, $a2, $a7
 	add.d	$a2, $a2, $a5
 	rotri.w	$a2, $a2, 22
 	add.d	$a2, $a2, $a6
 	add.d	$a3, $s3, $a3
 	orn	$a5, $a2, $a4
 	xor	$a5, $a5, $a6
-	add.d	$a3, $a3, $a5
-	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 48                    # 8-byte Folded Reload
+	add.d	$a3, $a3, $a7
 	add.d	$a3, $a3, $a5
 	rotri.w	$a3, $a3, 17
 	add.d	$a3, $a3, $a2
 	add.d	$a4, $ra, $a4
 	orn	$a5, $a3, $a6
 	xor	$a5, $a5, $a2
-	add.d	$a4, $a4, $a5
-	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 40                    # 8-byte Folded Reload
+	add.d	$a4, $a4, $a7
 	add.d	$a4, $a4, $a5
 	rotri.w	$a4, $a4, 11
 	add.d	$a4, $a4, $a3
 	add.d	$a5, $s0, $a6
 	orn	$a6, $a4, $a2
 	xor	$a6, $a6, $a3
-	add.d	$a5, $a5, $a6
-	ld.d	$a6, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 32                    # 8-byte Folded Reload
+	add.d	$a5, $a5, $a7
 	add.d	$a5, $a5, $a6
 	rotri.w	$a5, $a5, 26
 	add.d	$a5, $a5, $a4
 	add.d	$a2, $s6, $a2
 	orn	$a6, $a5, $a3
 	xor	$a6, $a6, $a4
-	add.d	$a2, $a2, $a6
-	ld.d	$a6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 24                    # 8-byte Folded Reload
+	add.d	$a2, $a2, $a7
 	add.d	$a2, $a2, $a6
 	rotri.w	$a2, $a2, 22
 	add.d	$a2, $a2, $a5
 	add.d	$a3, $t2, $a3
 	orn	$a6, $a2, $a4
 	xor	$a6, $a6, $a5
-	add.d	$a3, $a3, $a6
-	ld.d	$a6, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 16                    # 8-byte Folded Reload
+	add.d	$a3, $a3, $a7
 	add.d	$a3, $a3, $a6
 	rotri.w	$a3, $a3, 17
 	add.d	$a3, $a3, $a2
 	add.d	$a4, $s2, $a4
 	orn	$a6, $a3, $a5
 	xor	$a6, $a6, $a2
+	ld.d	$a7, $sp, 8                     # 8-byte Folded Reload
+	add.d	$a4, $a4, $a7
 	add.d	$a4, $a4, $a6
 	ld.d	$a6, $sp, 488                   # 8-byte Folded Reload
 	add.d	$a6, $a5, $a6
-	ld.d	$a5, $sp, 8                     # 8-byte Folded Reload
-	add.d	$a4, $a4, $a5
 	rotri.w	$a4, $a4, 11
 	add.d	$a5, $a3, $t6
 	add.d	$t6, $a5, $a4

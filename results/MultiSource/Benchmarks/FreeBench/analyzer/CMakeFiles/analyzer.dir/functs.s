@@ -443,12 +443,12 @@ specul_time_o:                          # @specul_time_o
 .LBB3_34:
 	pcalau12i	$a0, %pc_hi20(prog_time)
 	ld.d	$a0, $a0, %pc_lo12(prog_time)
-	vinsgr2vr.d	$vr0, $a0, 0
 	ld.d	$a1, $s2, %pc_lo12(loop_time)
+	vinsgr2vr.d	$vr0, $a0, 0
 	vffint.d.lu	$vr0, $vr0
 	vreplvei.d	$vr0, $vr0, 0
-	add.d	$a0, $a0, $s1
 	sub.d	$a0, $a0, $a1
+	add.d	$a0, $a0, $s1
 	vinsgr2vr.d	$vr1, $a0, 0
 	vffint.d.lu	$vr1, $vr1
 	vreplvei.d	$vr1, $vr1, 0
@@ -488,12 +488,12 @@ specul_time_o:                          # @specul_time_o
 # %bb.38:
 	pcalau12i	$a0, %pc_hi20(prog_time)
 	ld.d	$a0, $a0, %pc_lo12(prog_time)
-	vinsgr2vr.d	$vr0, $a0, 0
 	ld.d	$a1, $s2, %pc_lo12(loop_time)
+	vinsgr2vr.d	$vr0, $a0, 0
 	vffint.d.lu	$vr0, $vr0
 	vreplvei.d	$vr0, $vr0, 0
-	add.d	$a0, $a0, $s1
 	sub.d	$a0, $a0, $a1
+	add.d	$a0, $a0, $s1
 	vinsgr2vr.d	$vr1, $a0, 0
 	vffint.d.lu	$vr1, $vr1
 	vreplvei.d	$vr1, $vr1, 0
@@ -1057,7 +1057,7 @@ specul_time_r:                          # @specul_time_r
 	add.d	$a0, $a0, $s4
 	mul.d	$a0, $a0, $s3
 	mul.w	$a2, $s2, $s4
-	add.d	$a1, $a1, $a2
+	add.d	$a0, $a2, $a0
 	add.d	$s2, $a1, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
@@ -1098,12 +1098,12 @@ specul_time_r:                          # @specul_time_r
 .LBB4_82:
 	pcalau12i	$a0, %pc_hi20(prog_time)
 	ld.d	$a0, $a0, %pc_lo12(prog_time)
-	vinsgr2vr.d	$vr0, $a0, 0
 	ld.d	$a1, $s3, %pc_lo12(loop_time)
+	vinsgr2vr.d	$vr0, $a0, 0
 	vffint.d.lu	$vr0, $vr0
 	vreplvei.d	$vr0, $vr0, 0
-	add.d	$a0, $a0, $s2
 	sub.d	$a0, $a0, $a1
+	add.d	$a0, $a0, $s2
 	vinsgr2vr.d	$vr1, $a0, 0
 	vffint.d.lu	$vr1, $vr1
 	vreplvei.d	$vr1, $vr1, 0
@@ -1144,12 +1144,12 @@ specul_time_r:                          # @specul_time_r
 # %bb.86:
 	pcalau12i	$a0, %pc_hi20(prog_time)
 	ld.d	$a0, $a0, %pc_lo12(prog_time)
-	vinsgr2vr.d	$vr0, $a0, 0
 	ld.d	$a1, $s3, %pc_lo12(loop_time)
+	vinsgr2vr.d	$vr0, $a0, 0
 	vffint.d.lu	$vr0, $vr0
 	vreplvei.d	$vr0, $vr0, 0
-	add.d	$a0, $a0, $s2
 	sub.d	$a0, $a0, $a1
+	add.d	$a0, $a0, $s2
 	vinsgr2vr.d	$vr1, $a0, 0
 	vffint.d.lu	$vr1, $vr1
 	vreplvei.d	$vr1, $vr1, 0

@@ -667,10 +667,10 @@ fill_window:                            # @fill_window
 	ld.w	$a3, $fp, 80
 	bstrpick.d	$a1, $a1, 31, 0
 	bstrpick.d	$a4, $a0, 31, 0
-	add.d	$a1, $a1, $a4
-	add.w	$a3, $s4, $a3
-	sub.d	$s0, $a2, $a1
-	bltu	$a0, $a3, .LBB5_17
+	sub.d	$a1, $a2, $a1
+	add.w	$a2, $s4, $a3
+	sub.d	$s0, $a1, $a4
+	bltu	$a0, $a2, .LBB5_17
 # %bb.2:                                #   in Loop: Header=BB5_1 Depth=1
 	ld.d	$a0, $fp, 96
 	add.d	$a1, $a0, $s3
@@ -799,8 +799,8 @@ fill_window:                            # @fill_window
 # %bb.19:                               #   in Loop: Header=BB5_1 Depth=1
 	ld.d	$a3, $fp, 96
 	bstrpick.d	$a0, $a0, 31, 0
-	add.d	$a0, $a3, $a0
-	add.d	$s2, $a0, $a1
+	add.d	$a1, $a3, $a1
+	add.d	$s2, $a1, $a0
 	ld.d	$a1, $s8, 0
 	sub.d	$a0, $a2, $s0
 	st.w	$a0, $s8, 8
@@ -1693,10 +1693,10 @@ deflate:                                # @deflate
 	move	$a3, $zero
 .LBB12_31:
 	ld.w	$a4, $fp, 172
-	or	$a3, $a3, $a1
 	sltu	$a4, $zero, $a4
 	slli.d	$a4, $a4, 5
 	or	$a3, $a3, $a4
+	or	$a3, $a3, $a1
 	bstrpick.d	$a4, $a3, 31, 0
 	lu12i.w	$a5, 163840
 	lu32i.d	$a5, 135300
@@ -1800,17 +1800,17 @@ deflate:                                # @deflate
 	ld.w	$a2, $a1, 0
 	ld.w	$a3, $a1, 68
 	sltu	$a2, $zero, $a2
-	ld.d	$a4, $a1, 24
 	sltu	$a3, $zero, $a3
+	ld.d	$a4, $a1, 24
 	slli.d	$a3, $a3, 1
+	ld.d	$a5, $a1, 40
 	or	$a2, $a3, $a2
 	sltu	$a3, $zero, $a4
-	ld.d	$a4, $a1, 40
 	slli.d	$a3, $a3, 2
-	or	$a2, $a2, $a3
+	sltu	$a4, $zero, $a5
 	ld.d	$a1, $a1, 56
-	sltu	$a3, $zero, $a4
-	slli.d	$a3, $a3, 3
+	slli.d	$a4, $a4, 3
+	or	$a3, $a3, $a4
 	or	$a2, $a2, $a3
 	sltu	$a1, $zero, $a1
 	ld.d	$a3, $fp, 40
@@ -3042,7 +3042,7 @@ deflateBound:                           # @deflateBound
 	srli.d	$a3, $a1, 14
 	srli.d	$a1, $a1, 25
 	add.d	$a2, $fp, $a2
-	add.d	$a2, $a2, $a3
+	add.d	$a1, $a3, $a1
 	add.d	$a1, $a2, $a1
 	b	.LBB15_30
 .LBB15_29:

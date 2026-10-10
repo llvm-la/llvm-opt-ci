@@ -3165,10 +3165,10 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	vpickve2gr.h	$a4, $vr4, 4
 	andi	$a4, $a4, 1
 	slli.d	$a4, $a4, 6
+	vpickve2gr.h	$a6, $vr4, 6
+	slli.d	$a6, $a6, 7
+	or	$a4, $a4, $a6
 	or	$a4, $a5, $a4
-	vpickve2gr.h	$a5, $vr4, 6
-	slli.d	$a5, $a5, 7
-	or	$a4, $a4, $a5
 	andi	$a5, $a4, 255
 	move	$a4, $zero
 	bnez	$a5, .LBB4_71

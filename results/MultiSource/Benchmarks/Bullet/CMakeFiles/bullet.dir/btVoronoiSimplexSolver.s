@@ -865,11 +865,11 @@ _ZN22btVoronoiSimplexSolver25closestPtPointTetrahedronERK9btVector3S2_S2_S2_S2_R
 	move	$fp, $a6
 	move	$s0, $a1
 	vld	$vr0, $a1, 0
-	ld.b	$a7, $a6, 16
+	ld.b	$t0, $a6, 16
 	move	$s1, $a3
 	move	$s4, $a2
 	vst	$vr0, $a6, 0
-	ori	$a0, $a7, 15
+	ori	$a0, $t0, 15
 	st.b	$a0, $a6, 16
 	fld.s	$fa0, $a3, 0
 	fld.s	$fa1, $a2, 0
@@ -1002,23 +1002,23 @@ _ZN22btVoronoiSimplexSolver25closestPtPointTetrahedronERK9btVector3S2_S2_S2_S2_R
 	addi.w	$a6, $zero, -1
 	maskeqz	$a1, $a6, $a1
 	or	$a0, $a1, $a0
-	ld.bu	$a1, $sp, 32
-	masknez	$a2, $a2, $a3
-	maskeqz	$a3, $a6, $a3
-	or	$s8, $a3, $a2
-	masknez	$a2, $a4, $a5
-	maskeqz	$a3, $a6, $a5
-	or	$s7, $a3, $a2
-	movcf2gr	$a2, $fcc1
-	movcf2gr	$a3, $fcc0
-	masknez	$a2, $a2, $a3
-	maskeqz	$a3, $a6, $a3
-	andi	$a4, $a1, 240
-	or	$s6, $a3, $a2
+	ld.bu	$a7, $sp, 32
+	masknez	$a1, $a2, $a3
+	maskeqz	$a2, $a6, $a3
+	or	$s8, $a2, $a1
+	masknez	$a1, $a4, $a5
+	maskeqz	$a2, $a6, $a5
+	or	$s7, $a2, $a1
+	movcf2gr	$a1, $fcc1
+	movcf2gr	$a2, $fcc0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a6, $a2
+	or	$s6, $a2, $a1
 	or	$a1, $s7, $a0
-	or	$a1, $a1, $s6
-	or	$a1, $a1, $s8
-	st.b	$a4, $sp, 32
+	or	$a2, $s6, $s8
+	or	$a1, $a1, $a2
+	andi	$a2, $a7, 240
+	st.b	$a2, $sp, 32
 	bltz	$a1, .LBB6_6
 # %bb.1:
 	beqz	$a1, .LBB6_7
@@ -1027,7 +1027,7 @@ _ZN22btVoronoiSimplexSolver25closestPtPointTetrahedronERK9btVector3S2_S2_S2_S2_R
 	ori	$s5, $a1, 4095
 	beqz	$a0, .LBB6_8
 # %bb.3:
-	st.d	$a7, $sp, 8                     # 8-byte Folded Spill
+	st.d	$t0, $sp, 8                     # 8-byte Folded Spill
 	addi.d	$a5, $sp, 16
 	move	$a1, $s0
 	move	$a2, $s4

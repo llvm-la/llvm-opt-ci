@@ -1342,8 +1342,8 @@ _ZN8NArchive3N7z11COutArchive11WriteFolderERKNS0_7CFolderE: # @_ZN8NArchive3N7z1
 	ld.bu	$a1, $s0, 9
 	sltu	$a3, $zero, $s2
 	slli.d	$a3, $a3, 5
-	or	$a0, $a3, $a0
-	or	$s7, $a0, $a2
+	or	$a3, $a3, $a2
+	or	$s7, $a3, $a0
 	beqz	$a1, .LBB12_21
 # %bb.15:                               #   in Loop: Header=BB12_3 Depth=1
 	ld.wu	$a0, $s0, 40

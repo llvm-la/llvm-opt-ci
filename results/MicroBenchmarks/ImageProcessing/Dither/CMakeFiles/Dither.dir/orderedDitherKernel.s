@@ -388,8 +388,8 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	srli.d	$t2, $t1, 32
 	and	$t2, $t2, $a3
 	srli.d	$t1, $t1, 33
-	add.d	$t1, $t2, $t1
-	sub.w	$t1, $a5, $t1
+	sub.d	$t1, $a5, $t1
+	sub.w	$t1, $t1, $t2
 	alsl.d	$t1, $t1, $a4, 2
 	bgeu	$a1, $a6, .LBB0_41
 # %bb.40:                               #   in Loop: Header=BB0_39 Depth=1
@@ -447,8 +447,8 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	srli.d	$t6, $t5, 32
 	and	$t6, $t6, $a3
 	srli.d	$t5, $t5, 33
-	add.d	$t5, $t6, $t5
-	sub.w	$t5, $t2, $t5
+	sub.d	$t5, $t2, $t5
+	sub.w	$t5, $t5, $t6
 	ldx.w	$t6, $fp, $t3
 	slli.d	$t7, $t5, 3
 	alsl.d	$t5, $t5, $t7, 2

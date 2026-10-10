@@ -21,33 +21,33 @@ _ZN9NCompress4NLzx20Cx86ConvertOutStream15MakeTranslationEv: # @_ZN9NCompress4NL
 	b	.LBB0_5
 	.p2align	4, , 16
 .LBB0_3:                                #   in Loop: Header=BB0_5 Depth=1
-	addi.w	$a7, $a5, 5
+	addi.w	$a6, $a5, 5
 .LBB0_4:                                #   in Loop: Header=BB0_5 Depth=1
-	move	$a5, $a7
-	bgeu	$a7, $a3, .LBB0_1
+	move	$a5, $a6
+	bgeu	$a6, $a3, .LBB0_1
 .LBB0_5:                                # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a6, $a5, 31, 0
-	ldx.bu	$a6, $a0, $a6
-	addi.w	$a7, $a5, 1
-	bne	$a6, $a4, .LBB0_4
+	ldx.bu	$a7, $a0, $a6
+	addi.w	$a6, $a5, 1
+	bne	$a7, $a4, .LBB0_4
 # %bb.6:                                #   in Loop: Header=BB0_5 Depth=1
-	addi.d	$a6, $a5, 2
 	bstrpick.d	$a6, $a6, 31, 0
-	ldx.bu	$t0, $a0, $a6
+	ldx.bu	$t2, $a0, $a6
+	addi.d	$a7, $a5, 2
 	bstrpick.d	$a7, $a7, 31, 0
-	ldx.bu	$t2, $a0, $a7
-	slli.w	$t3, $t0, 8
+	ldx.bu	$t3, $a0, $a7
 	addi.d	$t0, $a5, 3
 	bstrpick.d	$t0, $t0, 31, 0
 	ldx.bu	$t4, $a0, $t0
 	addi.d	$t1, $a5, 4
 	bstrpick.d	$t1, $t1, 31, 0
 	ldx.b	$t5, $a0, $t1
+	slli.w	$t3, $t3, 8
 	or	$t2, $t3, $t2
-	slli.w	$t3, $t4, 16
-	or	$t2, $t3, $t2
+	slli.w	$t4, $t4, 16
 	slli.w	$t3, $t5, 24
-	or	$t2, $t3, $t2
+	or	$t4, $t3, $t4
+	or	$t2, $t4, $t2
 	add.d	$t4, $a1, $a5
 	sub.w	$t4, $zero, $t4
 	blt	$t2, $t4, .LBB0_3
@@ -59,9 +59,9 @@ _ZN9NCompress4NLzx20Cx86ConvertOutStream15MakeTranslationEv: # @_ZN9NCompress4NL
 	maskeqz	$t3, $a2, $t3
 	or	$t3, $t3, $t4
 	add.d	$t2, $t3, $t2
-	stx.b	$t2, $a0, $a7
-	srli.d	$a7, $t2, 8
-	stx.b	$a7, $a0, $a6
+	stx.b	$t2, $a0, $a6
+	srli.d	$a6, $t2, 8
+	stx.b	$a6, $a0, $a7
 	srli.d	$a6, $t2, 16
 	stx.b	$a6, $a0, $t0
 	srli.d	$a6, $t2, 24
@@ -222,33 +222,33 @@ _ZN9NCompress4NLzx20Cx86ConvertOutStream5FlushEv: # @_ZN9NCompress4NLzx20Cx86Con
 	b	.LBB2_6
 	.p2align	4, , 16
 .LBB2_4:                                #   in Loop: Header=BB2_6 Depth=1
-	addi.w	$a7, $a5, 5
+	addi.w	$a6, $a5, 5
 .LBB2_5:                                #   in Loop: Header=BB2_6 Depth=1
-	move	$a5, $a7
-	bgeu	$a7, $a3, .LBB2_10
+	move	$a5, $a6
+	bgeu	$a6, $a3, .LBB2_10
 .LBB2_6:                                # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a6, $a5, 31, 0
-	ldx.bu	$a6, $s1, $a6
-	addi.w	$a7, $a5, 1
-	bne	$a6, $a4, .LBB2_5
+	ldx.bu	$a7, $s1, $a6
+	addi.w	$a6, $a5, 1
+	bne	$a7, $a4, .LBB2_5
 # %bb.7:                                #   in Loop: Header=BB2_6 Depth=1
-	addi.d	$a6, $a5, 2
 	bstrpick.d	$a6, $a6, 31, 0
-	ldx.bu	$t0, $s1, $a6
+	ldx.bu	$t2, $s1, $a6
+	addi.d	$a7, $a5, 2
 	bstrpick.d	$a7, $a7, 31, 0
-	ldx.bu	$t2, $s1, $a7
-	slli.w	$t3, $t0, 8
+	ldx.bu	$t3, $s1, $a7
 	addi.d	$t0, $a5, 3
 	bstrpick.d	$t0, $t0, 31, 0
 	ldx.bu	$t4, $s1, $t0
 	addi.d	$t1, $a5, 4
 	bstrpick.d	$t1, $t1, 31, 0
 	ldx.b	$t5, $s1, $t1
+	slli.w	$t3, $t3, 8
 	or	$t2, $t3, $t2
-	slli.w	$t3, $t4, 16
-	or	$t2, $t2, $t3
+	slli.w	$t4, $t4, 16
 	slli.w	$t3, $t5, 24
-	or	$t2, $t2, $t3
+	or	$t4, $t4, $t3
+	or	$t2, $t2, $t4
 	add.d	$t4, $a0, $a5
 	sub.w	$t4, $zero, $t4
 	blt	$t2, $t4, .LBB2_4
@@ -260,9 +260,9 @@ _ZN9NCompress4NLzx20Cx86ConvertOutStream5FlushEv: # @_ZN9NCompress4NLzx20Cx86Con
 	maskeqz	$t3, $a1, $t3
 	or	$t3, $t3, $t4
 	add.d	$t2, $t3, $t2
-	stx.b	$t2, $s1, $a7
-	srli.d	$a7, $t2, 8
-	stx.b	$a7, $s1, $a6
+	stx.b	$t2, $s1, $a6
+	srli.d	$a6, $t2, 8
+	stx.b	$a6, $s1, $a7
 	srli.d	$a6, $t2, 16
 	stx.b	$a6, $s1, $t0
 	srli.d	$a6, $t2, 24

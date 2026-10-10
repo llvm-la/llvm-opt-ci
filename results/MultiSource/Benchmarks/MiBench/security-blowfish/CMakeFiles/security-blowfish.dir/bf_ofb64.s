@@ -17,43 +17,43 @@ BF_ofb64_encrypt:                       # @BF_ofb64_encrypt
 	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	move	$fp, $a5
 	move	$s0, $a4
+	ld.bu	$a4, $a4, 0
+	move	$fp, $a5
 	move	$s1, $a3
 	move	$s2, $a2
 	move	$s3, $a1
 	move	$s4, $a0
-	ld.bu	$a2, $a4, 0
-	ld.bu	$a3, $a4, 1
+	ld.bu	$a2, $s0, 1
 	ld.w	$s5, $a5, 0
-	ld.bu	$a4, $a4, 2
-	slli.d	$a0, $a2, 24
-	slli.d	$a1, $a3, 16
-	or	$a0, $a1, $a0
-	slli.d	$a1, $a4, 8
+	slli.d	$a0, $a4, 24
+	ld.bu	$a3, $s0, 2
+	slli.d	$a1, $a2, 16
 	ld.bu	$a5, $s0, 3
+	or	$a0, $a1, $a0
+	slli.d	$a1, $a3, 8
 	ld.bu	$a6, $s0, 4
+	or	$a1, $a1, $a5
 	or	$a0, $a0, $a1
 	ld.bu	$a7, $s0, 5
-	or	$a0, $a0, $a5
 	slli.d	$a1, $a6, 24
 	ld.bu	$t0, $s0, 6
-	slli.d	$t1, $a7, 16
-	ld.bu	$t2, $s0, 7
-	or	$a1, $t1, $a1
-	slli.d	$t1, $t0, 8
-	or	$a1, $a1, $t1
+	ld.bu	$t1, $s0, 7
+	slli.d	$t2, $a7, 16
+	or	$a1, $t2, $a1
+	slli.d	$t2, $t0, 8
+	or	$t2, $t2, $t1
 	or	$a1, $a1, $t2
 	st.d	$a0, $sp, 8
 	st.d	$a1, $sp, 16
-	st.b	$a2, $sp, 24
-	st.b	$a3, $sp, 25
-	st.b	$a4, $sp, 26
+	st.b	$a4, $sp, 24
+	st.b	$a2, $sp, 25
+	st.b	$a3, $sp, 26
 	st.b	$a5, $sp, 27
 	st.b	$a6, $sp, 28
 	st.b	$a7, $sp, 29
 	st.b	$t0, $sp, 30
-	st.b	$t2, $sp, 31
+	st.b	$t1, $sp, 31
 	beqz	$s2, .LBB0_7
 # %bb.1:
 	move	$s6, $zero

@@ -2326,8 +2326,8 @@ traverse:                               # @traverse
 	maskeqz	$a0, $a0, $a3
 	or	$a0, $a0, $a2
 	nor	$a2, $s5, $zero
-	add.d	$a0, $a0, $a2
-	sub.d	$s1, $a0, $a1
+	sub.d	$a1, $a2, $a1
+	add.d	$s1, $a0, $a1
 	move	$a0, $s1
 	bstrins.d	$a0, $zero, 1, 0
 	add.d	$a0, $s5, $a0
@@ -2475,8 +2475,8 @@ traverse:                               # @traverse
 	maskeqz	$a3, $a3, $a5
 	or	$a3, $a3, $a4
 	nor	$a4, $s5, $zero
-	add.d	$a3, $a3, $a4
-	sub.d	$a2, $a3, $a2
+	sub.d	$a2, $a4, $a2
+	add.d	$a2, $a3, $a2
 	srli.d	$a3, $a2, 2
 	addi.d	$a3, $a3, 1
 	bstrpick.d	$a5, $a3, 62, 3

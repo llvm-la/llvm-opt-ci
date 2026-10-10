@@ -1355,9 +1355,9 @@ Puzzle:                                 # @Puzzle
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.wu	$a1, $vr0, 0
-	add.d	$a0, $a1, $a0
-	ori	$a1, $zero, 4
-	sub.w	$a0, $a1, $a0
+	ori	$a2, $zero, 4
+	sub.d	$a0, $a2, $a0
+	sub.w	$a0, $a0, $a1
 	st.w	$a0, $s1, %pc_lo12(n)
 	b	.LBB6_25
 .LBB6_63:

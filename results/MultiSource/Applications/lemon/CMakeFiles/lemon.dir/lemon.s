@@ -15344,8 +15344,8 @@ statehash:                              # @statehash
 	ld.d	$a0, $a0, 64
 	alsl.d	$a5, $a3, $a3, 3
 	alsl.d	$a3, $a5, $a3, 2
-	add.d	$a1, $a3, $a1
-	add.w	$a1, $a1, $a4
+	add.d	$a1, $a1, $a4
+	add.w	$a1, $a3, $a1
 	bnez	$a0, .LBB87_2
 .LBB87_3:
 	move	$a0, $a1
@@ -15469,8 +15469,8 @@ State_insert:                           # @State_insert
 	ld.d	$a3, $a3, 64
 	alsl.d	$a7, $a4, $a4, 3
 	alsl.d	$a4, $a7, $a4, 2
-	add.d	$a4, $a4, $a5
-	add.w	$s2, $a4, $a6
+	add.d	$a5, $a5, $a6
+	add.w	$s2, $a4, $a5
 	bnez	$a3, .LBB90_3
 .LBB90_4:
 	ld.w	$s7, $s1, 0
@@ -15601,8 +15601,8 @@ State_insert:                           # @State_insert
 	ld.d	$a6, $a6, 64
 	alsl.d	$t2, $t0, $t0, 3
 	alsl.d	$t0, $t2, $t0, 2
-	add.d	$a7, $t0, $a7
-	add.w	$a7, $a7, $t1
+	add.d	$a7, $a7, $t1
+	add.w	$a7, $t0, $a7
 	bnez	$a6, .LBB90_31
 # %bb.32:                               #   in Loop: Header=BB90_29 Depth=1
 	and	$a6, $a7, $s7
@@ -15685,8 +15685,8 @@ State_find:                             # @State_find
 	ld.d	$a4, $a4, 64
 	alsl.d	$a7, $a5, $a5, 3
 	alsl.d	$a5, $a7, $a5, 2
-	add.d	$a2, $a5, $a2
-	add.w	$a2, $a2, $a6
+	add.d	$a2, $a2, $a6
+	add.w	$a2, $a5, $a2
 	bnez	$a4, .LBB91_3
 .LBB91_4:
 	ld.w	$a3, $a1, 0

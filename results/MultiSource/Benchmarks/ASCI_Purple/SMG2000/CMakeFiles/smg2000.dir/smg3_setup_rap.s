@@ -413,18 +413,18 @@ hypre_SMG3CreateRAPOp:                  # @hypre_SMG3CreateRAPOp
 	.type	hypre_SMG3BuildRAPSym,@function
 hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 # %bb.0:
-	addi.d	$sp, $sp, -1408
-	st.d	$ra, $sp, 1400                  # 8-byte Folded Spill
-	st.d	$fp, $sp, 1392                  # 8-byte Folded Spill
-	st.d	$s0, $sp, 1384                  # 8-byte Folded Spill
-	st.d	$s1, $sp, 1376                  # 8-byte Folded Spill
-	st.d	$s2, $sp, 1368                  # 8-byte Folded Spill
-	st.d	$s3, $sp, 1360                  # 8-byte Folded Spill
-	st.d	$s4, $sp, 1352                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1344                  # 8-byte Folded Spill
-	st.d	$s6, $sp, 1336                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1328                  # 8-byte Folded Spill
-	st.d	$s8, $sp, 1320                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -1424
+	st.d	$ra, $sp, 1416                  # 8-byte Folded Spill
+	st.d	$fp, $sp, 1408                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 1400                  # 8-byte Folded Spill
+	st.d	$s1, $sp, 1392                  # 8-byte Folded Spill
+	st.d	$s2, $sp, 1384                  # 8-byte Folded Spill
+	st.d	$s3, $sp, 1376                  # 8-byte Folded Spill
+	st.d	$s4, $sp, 1368                  # 8-byte Folded Spill
+	st.d	$s5, $sp, 1360                  # 8-byte Folded Spill
+	st.d	$s6, $sp, 1352                  # 8-byte Folded Spill
+	st.d	$s7, $sp, 1344                  # 8-byte Folded Spill
+	st.d	$s8, $sp, 1336                  # 8-byte Folded Spill
 	move	$s2, $a3
 	ld.d	$a3, $a3, 8
 	ld.d	$a7, $a3, 8
@@ -544,10 +544,10 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	ld.d	$a0, $a7, 0
 	slli.d	$a1, $s7, 4
 	alsl.d	$a1, $s7, $a1, 3
-	st.d	$a1, $sp, 1216                  # 8-byte Folded Spill
+	st.d	$a1, $sp, 1232                  # 8-byte Folded Spill
 	add.d	$a0, $a0, $a1
-	addi.d	$a3, $sp, 1296
-	st.d	$a0, $sp, 1248                  # 8-byte Folded Spill
+	addi.d	$a3, $sp, 1312
+	st.d	$a0, $sp, 1264                  # 8-byte Folded Spill
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(hypre_StructMapCoarseToFine)
@@ -560,70 +560,70 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	ld.d	$a0, $fp, 40
 	ld.d	$a2, $s2, 40
 	ld.d	$a1, $a1, 0
-	st.d	$a3, $sp, 1272                  # 8-byte Folded Spill
+	st.d	$a3, $sp, 1280                  # 8-byte Folded Spill
 	add.d	$a3, $a3, $s8
-	st.d	$a3, $sp, 1264                  # 8-byte Folded Spill
+	st.d	$a3, $sp, 1288                  # 8-byte Folded Spill
 	ld.d	$a0, $a0, 0
-	st.d	$a0, $sp, 1224                  # 8-byte Folded Spill
+	st.d	$a0, $sp, 1240                  # 8-byte Folded Spill
 	ld.d	$a0, $a2, 0
-	st.d	$a0, $sp, 1208                  # 8-byte Folded Spill
-	st.d	$a1, $sp, 1240                  # 8-byte Folded Spill
+	st.d	$a0, $sp, 1224                  # 8-byte Folded Spill
+	st.d	$a1, $sp, 1272                  # 8-byte Folded Spill
 	add.d	$a0, $a1, $s8
-	st.d	$a0, $sp, 1256                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 1308
-	st.w	$s3, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$a0, $sp, 1248                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 1324
+	st.w	$s3, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 768                   # 8-byte Folded Spill
 	addi.w	$s4, $zero, -1
-	st.d	$zero, $sp, 1308
-	st.d	$s4, $sp, 1200                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 1324
+	st.d	$s4, $sp, 1216                  # 8-byte Folded Spill
 	lu32i.d	$s4, 0
-	st.w	$s4, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.w	$s4, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 1000                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 1308
-	st.w	$s3, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$a0, $sp, 1016                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 1324
+	st.w	$s3, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 720                   # 8-byte Folded Spill
-	st.d	$zero, $sp, 1308
-	st.w	$s4, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$zero, $sp, 1324
+	st.w	$s4, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 712                   # 8-byte Folded Spill
-	st.d	$zero, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$zero, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 760                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s4, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 752                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s3, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
@@ -631,9 +631,9 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	move	$s5, $a0
 	ori	$s1, $zero, 0
 	lu32i.d	$s1, -1
-	st.d	$s1, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s1, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
@@ -641,25 +641,25 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	st.d	$a0, $sp, 744                   # 8-byte Folded Spill
 	ori	$fp, $zero, 0
 	lu32i.d	$fp, 1
-	st.d	$fp, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$fp, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 1184                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 1308
-	st.w	$s3, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$a0, $sp, 1200                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 1324
+	st.w	$s3, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 736                   # 8-byte Folded Spill
-	st.d	$zero, $sp, 1308
-	st.w	$s4, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$zero, $sp, 1324
+	st.w	$s4, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
@@ -667,53 +667,53 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	st.d	$a0, $sp, 728                   # 8-byte Folded Spill
 	ori	$a0, $zero, 8
 	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	st.d	$s5, $sp, 1192                  # 8-byte Folded Spill
-	st.d	$s4, $sp, 1232                  # 8-byte Folded Spill
+	st.d	$s5, $sp, 1208                  # 8-byte Folded Spill
+	st.d	$s4, $sp, 1256                  # 8-byte Folded Spill
 	blt	$s2, $a0, .LBB1_9
 # %bb.6:                                #   in Loop: Header=BB1_3 Depth=1
-	st.d	$s4, $sp, 1308
-	st.w	$s3, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s4, $sp, 1324
+	st.w	$s3, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 640                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 1308
-	st.w	$s3, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s1, $sp, 1324
+	st.w	$s3, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 632                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 1308
-	st.w	$s4, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s4, $sp, 1324
+	st.w	$s4, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 624                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 1308
-	st.w	$s4, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s3, $sp, 1324
+	st.w	$s4, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 616                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 1308
-	st.w	$s4, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s1, $sp, 1324
+	st.w	$s4, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 608                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 1308
-	st.w	$s4, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$fp, $sp, 1324
+	st.w	$s4, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
@@ -723,10 +723,10 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	move	$s4, $s2
 	bltu	$s2, $a0, .LBB1_10
 # %bb.7:                                #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$s2, $sp, 1200                  # 8-byte Folded Reload
-	st.d	$s2, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	ld.d	$s2, $sp, 1216                  # 8-byte Folded Reload
+	st.d	$s2, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
@@ -734,9 +734,9 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	st.d	$a0, $sp, 544                   # 8-byte Folded Spill
 	ori	$a0, $zero, 1
 	lu32i.d	$a0, -1
-	st.d	$a0, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$a0, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
@@ -744,9 +744,9 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	st.d	$a0, $sp, 536                   # 8-byte Folded Spill
 	move	$s3, $s2
 	lu32i.d	$s3, 1
-	st.d	$s3, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s3, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
@@ -754,9 +754,9 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ori	$a0, $zero, 1
 	lu32i.d	$a0, 1
-	st.d	$a0, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$a0, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
@@ -765,10 +765,10 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	ori	$a0, $zero, 20
 	bltu	$s4, $a0, .LBB1_26
 # %bb.8:                                #   in Loop: Header=BB1_3 Depth=1
-	st.d	$s2, $sp, 1308
+	st.d	$s2, $sp, 1324
 	ori	$s5, $zero, 1
-	st.w	$s5, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.w	$s5, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
@@ -776,37 +776,37 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	st.d	$a0, $sp, 496                   # 8-byte Folded Spill
 	ori	$s4, $zero, 1
 	lu32i.d	$s4, -1
-	st.d	$s4, $sp, 1308
-	st.w	$s5, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s4, $sp, 1324
+	st.w	$s5, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 488                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 1308
+	st.d	$s2, $sp, 1324
 	move	$s5, $s1
 	move	$s1, $fp
-	ld.d	$fp, $sp, 1232                  # 8-byte Folded Reload
-	st.w	$fp, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	ld.d	$fp, $sp, 1256                  # 8-byte Folded Reload
+	st.w	$fp, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 480                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 1308
+	st.d	$s4, $sp, 1324
 	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	st.w	$fp, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.w	$fp, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 472                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 1308
-	st.w	$fp, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s3, $sp, 1324
+	st.w	$fp, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
@@ -814,11 +814,11 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	st.d	$a0, $sp, 464                   # 8-byte Folded Spill
 	ori	$a0, $zero, 1
 	lu32i.d	$a0, 1
-	st.d	$a0, $sp, 1308
-	st.w	$fp, $sp, 1316
+	st.d	$a0, $sp, 1324
+	st.w	$fp, $sp, 1332
 	move	$fp, $s1
 	move	$s1, $s5
-	addi.d	$a2, $sp, 1308
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s6
 	ori	$s6, $zero, 1
 	move	$a1, $s0
@@ -836,70 +836,70 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 .LBB1_10:                               #   in Loop: Header=BB1_3 Depth=1
 	move	$s6, $zero
 .LBB1_11:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$s2, $sp, 1200                  # 8-byte Folded Reload
+	ld.d	$s2, $sp, 1216                  # 8-byte Folded Reload
 .LBB1_12:                               #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
 .LBB1_13:                               #   in Loop: Header=BB1_3 Depth=1
-	st.d	$zero, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$zero, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 704                   # 8-byte Folded Spill
-	ld.d	$s0, $sp, 1232                  # 8-byte Folded Reload
-	st.d	$s0, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	ld.d	$s0, $sp, 1256                  # 8-byte Folded Reload
+	st.d	$s0, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 696                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s1, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 688                   # 8-byte Folded Spill
-	st.d	$zero, $sp, 1308
-	st.w	$s0, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$zero, $sp, 1324
+	st.w	$s0, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 680                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 1308
-	st.w	$s0, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s0, $sp, 1324
+	st.w	$s0, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 672                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 1308
-	st.w	$s0, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s3, $sp, 1324
+	st.w	$s0, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 664                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 1308
-	st.w	$s0, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s1, $sp, 1324
+	st.w	$s0, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 656                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 1308
-	st.w	$s0, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$fp, $sp, 1324
+	st.w	$s0, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
@@ -907,9 +907,9 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	st.d	$a0, $sp, 648                   # 8-byte Folded Spill
 	beqz	$s6, .LBB1_15
 # %bb.14:                               #   in Loop: Header=BB1_3 Depth=1
-	st.d	$s2, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s2, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
@@ -917,34 +917,34 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	st.d	$a0, $sp, 592                   # 8-byte Folded Spill
 	ori	$fp, $zero, 1
 	lu32i.d	$fp, -1
-	st.d	$fp, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$fp, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 584                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 1308
-	st.w	$s0, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s2, $sp, 1324
+	st.w	$s0, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 576                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 1308
-	st.w	$s0, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$fp, $sp, 1324
+	st.w	$s0, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 568                   # 8-byte Folded Spill
 	lu32i.d	$s2, 1
-	st.d	$s2, $sp, 1308
-	st.w	$s0, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$s2, $sp, 1324
+	st.w	$s0, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
@@ -952,26 +952,26 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	st.d	$a0, $sp, 560                   # 8-byte Folded Spill
 	ori	$a0, $zero, 1
 	lu32i.d	$a0, 1
-	st.d	$a0, $sp, 1308
-	st.w	$s0, $sp, 1316
-	addi.d	$a2, $sp, 1308
+	st.d	$a0, $sp, 1324
+	st.w	$s0, $sp, 1332
+	addi.d	$a2, $sp, 1324
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 552                   # 8-byte Folded Spill
 .LBB1_15:                               #   in Loop: Header=BB1_3 Depth=1
-	st.d	$zero, $sp, 1308
-	st.w	$s3, $sp, 1316
-	ld.d	$a3, $sp, 1264                  # 8-byte Folded Reload
+	st.d	$zero, $sp, 1324
+	st.w	$s3, $sp, 1332
+	ld.d	$a3, $sp, 1288                  # 8-byte Folded Reload
 	ld.w	$a0, $a3, 4
 	ld.w	$a1, $a3, -8
-	ld.d	$a2, $sp, 1216                  # 8-byte Folded Reload
-	ld.d	$a4, $sp, 1208                  # 8-byte Folded Reload
-	add.d	$s1, $a4, $a2
+	ld.d	$a2, $sp, 1232                  # 8-byte Folded Reload
+	ld.d	$a4, $sp, 1224                  # 8-byte Folded Reload
+	add.d	$s6, $a4, $a2
 	sub.d	$a0, $a0, $a1
 	slli.d	$a1, $a0, 32
-	ld.d	$a2, $sp, 1272                  # 8-byte Folded Reload
+	ld.d	$a2, $sp, 1280                  # 8-byte Folded Reload
 	ldx.w	$a2, $a2, $s8
 	ld.w	$a3, $a3, -12
 	srai.d	$a1, $a1, 63
@@ -979,96 +979,88 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	addi.d	$a0, $a0, 1
 	sub.w	$a1, $a2, $a3
 	addi.d	$a2, $a1, 1
-	ld.d	$s2, $sp, 1256                  # 8-byte Folded Reload
-	ld.w	$a3, $s2, 4
-	ld.w	$a4, $s2, -8
+	ld.d	$fp, $sp, 1248                  # 8-byte Folded Reload
+	ld.w	$a3, $fp, 4
+	ld.w	$a4, $fp, -8
 	mulw.d.w	$a0, $a2, $a0
 	slti	$a1, $a1, 0
 	masknez	$s0, $a0, $a1
 	sub.d	$a0, $a3, $a4
 	slli.d	$a1, $a0, 32
-	ld.d	$a4, $sp, 1240                  # 8-byte Folded Reload
+	ld.d	$a4, $sp, 1272                  # 8-byte Folded Reload
 	ldx.w	$a2, $a4, $s8
-	ld.w	$a3, $s2, -12
+	ld.w	$a3, $fp, -12
 	srai.d	$a1, $a1, 63
 	or	$a0, $a0, $a1
 	addi.d	$a0, $a0, 1
 	sub.w	$a1, $a2, $a3
 	addi.d	$a2, $a1, 1
 	mulw.d.w	$a0, $a2, $a0
-	st.d	$s3, $sp, 1312
+	st.d	$s3, $sp, 1328
 	ldx.w	$a2, $a4, $s8
-	ld.w	$a3, $s2, -12
+	ld.w	$a3, $fp, -12
 	slti	$a1, $a1, 0
 	masknez	$s5, $a0, $a1
-	ld.d	$a0, $sp, 1224                  # 8-byte Folded Reload
-	add.d	$fp, $a0, $s8
+	ld.d	$a0, $sp, 1240                  # 8-byte Folded Reload
+	add.d	$s1, $a0, $s8
 	sub.d	$a0, $a2, $a3
 	slli.d	$a1, $a0, 32
 	srai.d	$a1, $a1, 63
 	or	$a0, $a0, $a1
-	addi.w	$s6, $a0, 1
-	st.d	$s3, $sp, 1308
-	st.w	$zero, $sp, 1316
-	addi.d	$a1, $sp, 1284
-	ld.d	$s3, $sp, 1248                  # 8-byte Folded Reload
+	addi.w	$s2, $a0, 1
+	st.d	$s3, $sp, 1324
+	st.w	$zero, $sp, 1332
+	addi.d	$a1, $sp, 1300
+	ld.d	$s3, $sp, 1264                  # 8-byte Folded Reload
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(hypre_BoxGetSize)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s3, 0
-	ld.w	$a3, $s2, -12
+	ld.w	$a3, $fp, -12
 	ld.w	$a1, $s3, 4
-	ld.w	$a5, $s2, -8
-	ld.w	$a6, $s2, 4
-	sub.d	$t0, $a0, $a3
+	ld.w	$a5, $fp, -8
+	ld.w	$a6, $fp, 4
+	sub.d	$a2, $a0, $a3
 	sub.d	$a4, $a1, $a5
 	sub.w	$a7, $a6, $a5
 	ori	$a5, $zero, 19
-	st.d	$s1, $sp, 1232                  # 8-byte Folded Spill
-	move	$a2, $fp
 	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 1216                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1208                  # 8-byte Folded Spill
-	st.d	$s6, $sp, 1224                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 1256                  # 8-byte Folded Spill
+	st.d	$s5, $sp, 1232                  # 8-byte Folded Spill
 	beq	$s4, $a5, .LBB1_22
 # %bb.16:                               #   in Loop: Header=BB1_3 Depth=1
-	addi.d	$s2, $a7, 1
-	srai.d	$t2, $a7, 31
-	ori	$a6, $zero, 15
-	st.d	$t2, $sp, 1200                  # 8-byte Folded Spill
-	beq	$s4, $a6, .LBB1_20
+	addi.d	$a6, $a7, 1
+	srai.d	$t6, $a7, 31
+	ori	$a5, $zero, 15
+	st.d	$t6, $sp, 1240                  # 8-byte Folded Spill
+	beq	$s4, $a5, .LBB1_20
 # %bb.17:                               #   in Loop: Header=BB1_3 Depth=1
-	ori	$a6, $zero, 7
-	ld.d	$ra, $sp, 1264                  # 8-byte Folded Reload
-	bne	$s4, $a6, .LBB1_24
+	ori	$a5, $zero, 7
+	bne	$s4, $a5, .LBB1_24
 # %bb.18:                               #   in Loop: Header=BB1_3 Depth=1
 	bltz	$a7, .LBB1_73
 # %bb.19:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$a6, $s3, 8
-	ld.d	$a5, $sp, 1256                  # 8-byte Folded Reload
-	ld.w	$a7, $a5, -4
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$a5, $a6, $s2
-	st.d	$a5, $sp, 1256                  # 8-byte Folded Spill
+	ld.w	$a5, $s3, 8
+	ld.w	$a7, $fp, -4
+	sub.d	$a5, $a5, $a7
+	mulw.d.w	$a5, $a5, $a6
+	st.d	$a5, $sp, 1248                  # 8-byte Folded Spill
 	b	.LBB1_74
 	.p2align	4, , 16
 .LBB1_20:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a5, $sp, 1264                  # 8-byte Folded Reload
 	bltz	$a7, .LBB1_27
 # %bb.21:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$a6, $s3, 8
-	ld.d	$a7, $sp, 1256                  # 8-byte Folded Reload
-	ld.w	$a7, $a7, -4
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$t4, $a6, $s2
+	ld.w	$a5, $s3, 8
+	ld.w	$a7, $fp, -4
+	sub.d	$a5, $a5, $a7
+	mulw.d.w	$t4, $a5, $a6
 	b	.LBB1_28
 	.p2align	4, , 16
 .LBB1_22:                               #   in Loop: Header=BB1_3 Depth=1
 	bltz	$a7, .LBB1_50
 # %bb.23:                               #   in Loop: Header=BB1_3 Depth=1
 	ld.w	$a5, $s3, 8
-	ld.d	$a6, $sp, 1256                  # 8-byte Folded Reload
-	ld.w	$a6, $a6, -4
+	ld.w	$a6, $fp, -4
 	sub.d	$a5, $a5, $a6
 	addi.d	$a6, $a7, 1
 	mulw.d.w	$t6, $a5, $a6
@@ -1077,11 +1069,11 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 .LBB1_24:                               #   in Loop: Header=BB1_3 Depth=1
 	bltz	$a7, .LBB1_76
 # %bb.25:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$a6, $s3, 8
-	ld.d	$a5, $sp, 1256                  # 8-byte Folded Reload
-	ld.w	$a7, $a5, -4
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$t7, $a6, $s2
+	ld.w	$a5, $s3, 8
+	ld.w	$a7, $fp, -4
+	sub.d	$a5, $a5, $a7
+	mulw.d.w	$a5, $a5, $a6
+	st.d	$a5, $sp, 1248                  # 8-byte Folded Spill
 	b	.LBB1_77
 .LBB1_26:                               #   in Loop: Header=BB1_3 Depth=1
 	ori	$s3, $zero, 1
@@ -1091,93 +1083,97 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 .LBB1_27:                               #   in Loop: Header=BB1_3 Depth=1
 	move	$t4, $zero
 .LBB1_28:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t7, $fp, -8
-	ld.w	$a6, $fp, 4
-	sub.w	$a7, $a6, $t7
-	addi.d	$t6, $a7, 1
+	ld.d	$s4, $sp, 1288                  # 8-byte Folded Reload
+	ld.w	$t7, $s1, -8
+	ld.w	$a5, $s1, 4
+	sub.w	$a7, $a5, $t7
+	addi.d	$t0, $a7, 1
 	bltz	$a7, .LBB1_30
 # %bb.29:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$a6, $s3, 8
-	ld.w	$t1, $fp, -4
-	sub.d	$a6, $a6, $t1
-	mulw.d.w	$a6, $a6, $t6
+	ld.w	$a5, $s3, 8
+	ld.w	$t1, $s1, -4
+	sub.d	$a5, $a5, $t1
+	mulw.d.w	$a5, $a5, $t0
 	b	.LBB1_31
 .LBB1_30:                               #   in Loop: Header=BB1_3 Depth=1
-	move	$a6, $zero
+	move	$a5, $zero
 .LBB1_31:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t8, $a5, -8
-	ld.w	$t1, $a5, 4
+	ld.w	$t8, $s4, -8
+	ld.w	$t1, $s4, 4
 	sub.w	$t1, $t1, $t8
-	addi.d	$t2, $t1, 1
+	addi.d	$t0, $t1, 1
 	bltz	$t1, .LBB1_33
 # %bb.32:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t3, $sp, 1304
-	ld.w	$t5, $a5, -4
+	ld.w	$t3, $sp, 1320
+	ld.w	$t5, $s4, -4
 	sub.d	$t3, $t3, $t5
-	mulw.d.w	$s0, $t3, $t2
+	mulw.d.w	$s0, $t3, $t0
 	b	.LBB1_34
 .LBB1_33:                               #   in Loop: Header=BB1_3 Depth=1
 	move	$s0, $zero
 .LBB1_34:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$fp, $s1, 4
-	ld.w	$t3, $s1, 16
+	move	$t2, $s1
+	st.d	$s2, $sp, 1288                  # 8-byte Folded Spill
+	ld.w	$fp, $s6, 4
+	ld.w	$t3, $s6, 16
 	sub.w	$t5, $t3, $fp
-	addi.d	$t2, $t5, 1
+	addi.d	$t6, $t5, 1
 	bltz	$t5, .LBB1_36
 # %bb.35:                               #   in Loop: Header=BB1_3 Depth=1
 	ld.w	$t3, $s3, 8
-	ld.w	$s1, $s1, 8
+	move	$t0, $s6
+	ld.w	$s1, $s6, 8
 	sub.d	$t3, $t3, $s1
-	mulw.d.w	$t2, $t3, $t2
+	mulw.d.w	$s3, $t3, $t6
 	b	.LBB1_37
 .LBB1_36:                               #   in Loop: Header=BB1_3 Depth=1
-	move	$t2, $zero
+	move	$t0, $s6
+	move	$s3, $zero
 .LBB1_37:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$s5, $a5, -12
-	ld.d	$a5, $sp, 1272                  # 8-byte Folded Reload
-	ldx.w	$t3, $a5, $s8
+	ld.w	$s5, $s4, -12
+	ld.d	$t3, $sp, 1280                  # 8-byte Folded Reload
+	ldx.w	$t3, $t3, $s8
 	sub.w	$s4, $t3, $s5
 	addi.d	$s6, $s4, 1
-	move	$s3, $t6
 	bltz	$s4, .LBB1_39
 # %bb.38:                               #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
 	ld.w	$t3, $s1, 4
 	ld.w	$s1, $s1, 8
-	mul.d	$a5, $t3, $s6
-	st.d	$a5, $sp, 968                   # 8-byte Folded Spill
+	mul.d	$t3, $t3, $s6
+	st.d	$t3, $sp, 984                   # 8-byte Folded Spill
 	mul.d	$s1, $s1, $s6
 	b	.LBB1_40
 .LBB1_39:                               #   in Loop: Header=BB1_3 Depth=1
-	st.d	$zero, $sp, 968                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 984                 # 8-byte Folded Spill
 	move	$s1, $zero
 .LBB1_40:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t3, $sp, 1284
-	ld.w	$a5, $sp, 1288
-	ld.w	$t6, $sp, 1292
-	slt	$s7, $t3, $a5
+	ld.w	$t3, $sp, 1300
+	ld.w	$s2, $sp, 1304
+	ld.w	$t6, $sp, 1308
+	slt	$s7, $t3, $s2
 	masknez	$ra, $t3, $s7
-	st.d	$a5, $sp, 976                   # 8-byte Folded Spill
-	maskeqz	$s7, $a5, $s7
+	st.d	$s2, $sp, 992                   # 8-byte Folded Spill
+	maskeqz	$s7, $s2, $s7
 	or	$s7, $s7, $ra
 	slt	$ra, $s7, $t6
 	masknez	$s7, $s7, $ra
-	st.d	$t6, $sp, 448                   # 8-byte Folded Spill
+	st.d	$t6, $sp, 512                   # 8-byte Folded Spill
 	maskeqz	$ra, $t6, $ra
 	or	$s7, $ra, $s7
 	blez	$s7, .LBB1_2
 # %bb.41:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a5, $sp, 448                   # 8-byte Folded Reload
-	blez	$a5, .LBB1_2
+	ld.d	$s2, $sp, 512                   # 8-byte Folded Reload
+	blez	$s2, .LBB1_2
 # %bb.42:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a5, $sp, 976                   # 8-byte Folded Reload
-	blez	$a5, .LBB1_2
+	ld.d	$s7, $sp, 992                   # 8-byte Folded Reload
+	blez	$s7, .LBB1_2
 # %bb.43:                               #   in Loop: Header=BB1_3 Depth=1
 	blez	$t3, .LBB1_2
 # %bb.44:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$s7, $sp, 1240                  # 8-byte Folded Reload
+	ld.d	$s7, $sp, 1272                  # 8-byte Folded Reload
 	ldx.w	$s7, $s7, $s8
-	move	$ra, $zero
+	move	$s2, $zero
 	sub.w	$a3, $s7, $a3
 	add.d	$a4, $a4, $t4
 	addi.d	$t4, $a3, 1
@@ -1185,22 +1181,21 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	nor	$s7, $a3, $zero
 	srli.d	$s7, $s7, 31
 	and	$a4, $s7, $a4
-	ld.w	$s7, $a2, -12
-	ld.w	$s8, $a2, 0
-	move	$t6, $s1
-	add.w	$s1, $t0, $a4
+	ld.w	$s7, $t2, -12
+	ld.w	$s8, $t2, 0
+	add.w	$ra, $a2, $a4
 	sub.d	$a2, $a1, $t7
-	add.d	$a2, $a2, $a6
+	add.d	$a2, $a2, $a5
 	sub.w	$a4, $s8, $s7
-	addi.d	$a6, $a4, 1
-	mul.d	$a2, $a6, $a2
+	addi.d	$a5, $a4, 1
+	mul.d	$a2, $a5, $a2
 	nor	$t7, $a4, $zero
 	srli.d	$t7, $t7, 31
 	and	$a2, $t7, $a2
-	ld.w	$t7, $sp, 1296
-	ld.w	$s8, $sp, 1300
+	ld.w	$t7, $sp, 1312
+	ld.w	$s8, $sp, 1316
 	sub.d	$s7, $a0, $s7
-	add.w	$a5, $s7, $a2
+	add.w	$t2, $s7, $a2
 	sub.d	$a2, $t7, $s5
 	sub.d	$t7, $s8, $t8
 	add.d	$t7, $t7, $s0
@@ -1208,15 +1203,14 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	nor	$t8, $s4, $zero
 	srli.d	$t8, $t8, 31
 	and	$t7, $t8, $t7
-	ld.d	$s0, $sp, 1232                  # 8-byte Folded Reload
-	ld.w	$t8, $s0, 0
-	ld.w	$s0, $s0, 12
+	ld.w	$t8, $t0, 0
+	ld.w	$s0, $t0, 12
 	add.w	$a2, $a2, $t7
 	sub.d	$a1, $a1, $fp
 	sub.d	$a0, $a0, $t8
 	sub.w	$t7, $s0, $t8
-	move	$s0, $a5
-	add.d	$a1, $a1, $t2
+	move	$s0, $t2
+	add.d	$a1, $a1, $s3
 	addi.d	$t8, $t7, 1
 	mul.d	$a1, $t8, $a1
 	nor	$fp, $t7, $zero
@@ -1225,285 +1219,287 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	add.w	$a0, $a0, $a1
 	srai.d	$a1, $a3, 31
 	andn	$a1, $t4, $a1
-	mul.d	$t4, $a1, $s2
-	ld.d	$a5, $sp, 1200                  # 8-byte Folded Reload
-	andn	$a5, $t4, $a5
+	mul.d	$a6, $a1, $a6
+	ld.d	$t0, $sp, 1240                  # 8-byte Folded Reload
+	andn	$a6, $a6, $t0
 	srai.d	$t4, $a4, 31
-	andn	$a6, $a6, $t4
-	mul.d	$t0, $a6, $s3
+	andn	$a5, $a5, $t4
+	addi.d	$t0, $a7, 1
+	mul.d	$t0, $a5, $t0
 	srai.d	$a7, $a7, 31
 	andn	$a7, $t0, $a7
 	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
 	ld.w	$s7, $t0, 0
 	srai.d	$t0, $t7, 31
 	andn	$t0, $t8, $t0
-	ld.d	$fp, $sp, 976                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 992                   # 8-byte Folded Reload
 	mul.d	$t4, $fp, $t0
-	mul.d	$a6, $fp, $a6
+	mul.d	$a5, $fp, $a5
 	mul.d	$a1, $fp, $a1
 	addi.d	$t2, $t5, 1
 	mul.d	$t0, $t0, $t2
 	srai.d	$t5, $t5, 31
 	andn	$t0, $t0, $t5
 	addi.d	$t2, $t1, 1
-	mul.d	$t2, $t6, $t2
+	mul.d	$t2, $s1, $t2
 	srai.d	$t1, $t1, 31
 	andn	$t1, $t2, $t1
-	ld.d	$t2, $sp, 1208                  # 8-byte Folded Reload
+	ld.d	$t2, $sp, 1232                  # 8-byte Folded Reload
 	addi.w	$t2, $t2, 0
-	ld.d	$t5, $sp, 1224                  # 8-byte Folded Reload
+	ld.d	$t5, $sp, 1288                  # 8-byte Folded Reload
 	bstrpick.d	$t5, $t5, 31, 0
-	ld.d	$t6, $sp, 1216                  # 8-byte Folded Reload
+	ld.d	$t6, $sp, 1256                  # 8-byte Folded Reload
 	addi.w	$t6, $t6, 0
-	st.d	$t6, $sp, 960                   # 8-byte Folded Spill
+	st.d	$t6, $sp, 976                   # 8-byte Folded Spill
 	slli.d	$t6, $t6, 3
 	ld.d	$t8, $sp, 744                   # 8-byte Folded Reload
 	sub.d	$t8, $t8, $t6
-	st.d	$t8, $sp, 952                   # 8-byte Folded Spill
+	st.d	$t8, $sp, 968                   # 8-byte Folded Spill
 	ld.d	$t8, $sp, 608                   # 8-byte Folded Reload
 	sub.d	$t8, $t8, $t6
-	st.d	$t8, $sp, 944                   # 8-byte Folded Spill
+	st.d	$t8, $sp, 960                   # 8-byte Folded Spill
 	ld.d	$t8, $sp, 752                   # 8-byte Folded Reload
 	sub.d	$t8, $t8, $t6
-	st.d	$t8, $sp, 936                   # 8-byte Folded Spill
-	ld.d	$t8, $sp, 624                   # 8-byte Folded Reload
-	sub.d	$t8, $t8, $t6
-	st.d	$t8, $sp, 928                   # 8-byte Folded Spill
+	st.d	$t8, $sp, 952                   # 8-byte Folded Spill
 	ori	$t8, $zero, 1
 	sub.d	$t8, $t8, $fp
-	ld.d	$fp, $sp, 968                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 984                   # 8-byte Folded Reload
 	mul.d	$t8, $fp, $t8
 	add.d	$t1, $t1, $t8
-	st.d	$t1, $sp, 440                   # 8-byte Folded Spill
+	st.d	$t1, $sp, 504                   # 8-byte Folded Spill
+	srai.d	$t1, $t7, 63
+	or	$t8, $t7, $t1
+	sub.d	$t4, $t4, $t8
+	ld.d	$t8, $sp, 624                   # 8-byte Folded Reload
+	sub.d	$t8, $t8, $t6
+	st.d	$t8, $sp, 944                   # 8-byte Folded Spill
 	nor	$t0, $t0, $zero
 	add.d	$t0, $t0, $t4
-	srai.d	$t1, $t7, 63
-	or	$t4, $t7, $t1
-	sub.d	$t0, $t0, $t4
-	st.d	$t0, $sp, 920                   # 8-byte Folded Spill
+	st.d	$t0, $sp, 936                   # 8-byte Folded Spill
 	nor	$t0, $t7, $t1
-	st.d	$t0, $sp, 912                   # 8-byte Folded Spill
+	st.d	$t0, $sp, 928                   # 8-byte Folded Spill
 	srai.d	$t0, $a4, 63
 	or	$t1, $a4, $t0
 	nor	$a4, $a4, $t0
-	st.d	$a4, $sp, 904                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 920                   # 8-byte Folded Spill
 	ld.d	$a4, $sp, 760                   # 8-byte Folded Reload
 	sub.d	$a4, $a4, $t6
-	st.d	$a4, $sp, 896                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 912                   # 8-byte Folded Spill
 	nor	$a4, $a7, $zero
-	add.d	$a4, $a4, $a6
-	ld.d	$a6, $sp, 728                   # 8-byte Folded Reload
-	sub.d	$a6, $a6, $t6
-	st.d	$a6, $sp, 888                   # 8-byte Folded Spill
-	ld.d	$a6, $sp, 1192                  # 8-byte Folded Reload
-	sub.d	$a6, $a6, $t6
-	st.d	$a6, $sp, 880                   # 8-byte Folded Spill
-	sub.d	$a4, $a4, $t1
-	st.d	$a4, $sp, 872                   # 8-byte Folded Spill
-	nor	$a4, $a5, $zero
-	add.d	$a1, $a4, $a1
+	sub.d	$a5, $a5, $t1
+	add.d	$a4, $a4, $a5
+	st.d	$a4, $sp, 904                   # 8-byte Folded Spill
 	srai.d	$a4, $a3, 63
 	or	$a5, $a3, $a4
 	sub.d	$a1, $a1, $a5
-	st.d	$a1, $sp, 864                   # 8-byte Folded Spill
+	ld.d	$a5, $sp, 728                   # 8-byte Folded Reload
+	sub.d	$a5, $a5, $t6
+	st.d	$a5, $sp, 896                   # 8-byte Folded Spill
+	ld.d	$a5, $sp, 1208                  # 8-byte Folded Reload
+	sub.d	$a5, $a5, $t6
+	st.d	$a5, $sp, 888                   # 8-byte Folded Spill
+	nor	$a5, $a6, $zero
+	add.d	$a1, $a5, $a1
+	st.d	$a1, $sp, 880                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 616                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 856                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 1184                  # 8-byte Folded Reload
+	st.d	$a1, $sp, 872                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 1200                  # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 848                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 864                   # 8-byte Folded Spill
 	nor	$a1, $a3, $a4
-	st.d	$a1, $sp, 840                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 856                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 600                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 832                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 848                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 632                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 824                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 840                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 640                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 816                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 832                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 736                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 808                   # 8-byte Folded Spill
+	move	$t6, $ra
+	st.d	$a1, $sp, 824                   # 8-byte Folded Spill
 	mul.d	$a1, $t3, $s7
-	st.d	$a1, $sp, 800                   # 8-byte Folded Spill
-	sub.w	$a6, $zero, $t3
+	st.d	$a1, $sp, 816                   # 8-byte Folded Spill
+	sub.w	$a5, $zero, $t3
 	slli.d	$a1, $t5, 3
-	add.d	$a3, $t2, $t5
-	slli.d	$a4, $t2, 3
-	ld.d	$a5, $sp, 1000                  # 8-byte Folded Reload
-	sub.d	$a5, $a5, $a1
-	st.d	$a5, $sp, 792                   # 8-byte Folded Spill
-	ld.d	$a5, $sp, 768                   # 8-byte Folded Reload
-	sub.d	$a7, $a5, $a1
-	st.d	$a7, $sp, 784                   # 8-byte Folded Spill
-	sub.d	$a1, $a1, $a4
-	add.d	$a1, $a5, $a1
+	sub.d	$a3, $zero, $t5
+	sub.d	$a3, $a3, $t2
+	st.d	$a3, $sp, 808                   # 8-byte Folded Spill
+	slli.d	$a3, $t2, 3
+	ld.d	$a4, $sp, 1016                  # 8-byte Folded Reload
+	sub.d	$a4, $a4, $a1
+	st.d	$a4, $sp, 800                   # 8-byte Folded Spill
+	ld.d	$a4, $sp, 768                   # 8-byte Folded Reload
+	sub.d	$a6, $a4, $a1
+	st.d	$a6, $sp, 792                   # 8-byte Folded Spill
+	sub.d	$a1, $a1, $a3
+	add.d	$a1, $a4, $a1
+	st.d	$a1, $sp, 784                   # 8-byte Folded Spill
+	sub.d	$a1, $a4, $a3
 	st.d	$a1, $sp, 776                   # 8-byte Folded Spill
-	sub.d	$a1, $a5, $a4
-	st.d	$a1, $sp, 528                   # 8-byte Folded Spill
-	sub.d	$a1, $zero, $a3
-	st.d	$a1, $sp, 520                   # 8-byte Folded Spill
 	slli.d	$a1, $s7, 3
-	st.d	$a1, $sp, 512                   # 8-byte Folded Spill
-	st.d	$a6, $sp, 1272                  # 8-byte Folded Spill
+	st.d	$a1, $sp, 528                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 1288                  # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB1_45:                               #   Parent Loop BB1_3 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB1_46 Depth 3
                                         #         Child Loop BB1_47 Depth 4
-	st.d	$ra, $sp, 504                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 520                   # 8-byte Folded Spill
 	move	$a3, $zero
 	.p2align	4, , 16
 .LBB1_46:                               #   Parent Loop BB1_3 Depth=1
                                         #     Parent Loop BB1_45 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB1_47 Depth 4
-	st.d	$a3, $sp, 992                   # 8-byte Folded Spill
-	move	$a5, $zero
+	st.d	$a3, $sp, 1008                  # 8-byte Folded Spill
+	move	$a6, $zero
 	move	$t3, $zero
 	move	$t5, $zero
 	move	$s5, $a2
-	ld.d	$a1, $sp, 960                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 976                   # 8-byte Folded Reload
 	add.d	$a1, $a1, $a2
 	ld.d	$fp, $sp, 744                   # 8-byte Folded Reload
 	alsl.d	$a2, $a1, $fp, 3
-	st.d	$a2, $sp, 1264                  # 8-byte Folded Spill
+	st.d	$a2, $sp, 1280                  # 8-byte Folded Spill
 	ld.d	$a7, $sp, 608                   # 8-byte Folded Reload
 	alsl.d	$a2, $a1, $a7, 3
-	st.d	$a2, $sp, 1256                  # 8-byte Folded Spill
+	st.d	$a2, $sp, 1272                  # 8-byte Folded Spill
 	ld.d	$t4, $sp, 752                   # 8-byte Folded Reload
 	alsl.d	$a2, $a1, $t4, 3
+	st.d	$a2, $sp, 1264                  # 8-byte Folded Spill
+	ld.d	$a5, $sp, 624                   # 8-byte Folded Reload
+	alsl.d	$a2, $a1, $a5, 3
+	st.d	$a2, $sp, 1256                  # 8-byte Folded Spill
+	ld.d	$t0, $sp, 760                   # 8-byte Folded Reload
+	alsl.d	$a2, $a1, $t0, 3
 	st.d	$a2, $sp, 1248                  # 8-byte Folded Spill
-	ld.d	$a6, $sp, 624                   # 8-byte Folded Reload
-	alsl.d	$a2, $a1, $a6, 3
-	st.d	$a2, $sp, 1240                  # 8-byte Folded Spill
-	ld.d	$t2, $sp, 760                   # 8-byte Folded Reload
-	alsl.d	$a2, $a1, $t2, 3
-	st.d	$a2, $sp, 1232                  # 8-byte Folded Spill
 	ld.d	$s4, $sp, 728                   # 8-byte Folded Reload
 	alsl.d	$a1, $a1, $s4, 3
-	st.d	$a1, $sp, 1224                  # 8-byte Folded Spill
+	st.d	$a1, $sp, 1240                  # 8-byte Folded Spill
 	ld.d	$a1, $sp, 656                   # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1216                  # 8-byte Folded Spill
+	st.d	$a1, $sp, 1232                  # 8-byte Folded Spill
 	ld.d	$a1, $sp, 672                   # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1208                  # 8-byte Folded Spill
+	st.d	$a1, $sp, 1224                  # 8-byte Folded Spill
 	ld.d	$a1, $sp, 680                   # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1200                  # 8-byte Folded Spill
+	st.d	$a1, $sp, 1216                  # 8-byte Folded Spill
 	ld.d	$a1, $sp, 664                   # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1192                  # 8-byte Folded Spill
+	st.d	$a1, $sp, 1208                  # 8-byte Folded Spill
 	ld.d	$a1, $sp, 648                   # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1184                  # 8-byte Folded Spill
+	st.d	$a1, $sp, 1200                  # 8-byte Folded Spill
 	ld.d	$a1, $sp, 688                   # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1176                  # 8-byte Folded Spill
+	st.d	$a1, $sp, 1192                  # 8-byte Folded Spill
 	ld.d	$a1, $sp, 696                   # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1168                  # 8-byte Folded Spill
+	st.d	$a1, $sp, 1184                  # 8-byte Folded Spill
 	ld.d	$a1, $sp, 704                   # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1160                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 920                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 1176                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 936                   # 8-byte Folded Reload
 	sub.d	$a4, $a1, $a0
-	ld.d	$a1, $sp, 912                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 928                   # 8-byte Folded Reload
 	sub.d	$t1, $a1, $a0
-	ld.d	$a0, $sp, 1000                  # 8-byte Folded Reload
-	alsl.d	$a2, $s1, $a0, 3
+	ld.d	$a0, $sp, 1016                  # 8-byte Folded Reload
+	alsl.d	$a2, $t6, $a0, 3
 	ld.d	$a1, $sp, 768                   # 8-byte Folded Reload
-	alsl.d	$s3, $s1, $a1, 3
+	alsl.d	$s3, $t6, $a1, 3
+	ld.d	$a0, $sp, 800                   # 8-byte Folded Reload
+	alsl.d	$a0, $t6, $a0, 3
+	st.d	$a0, $sp, 1168                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 792                   # 8-byte Folded Reload
-	alsl.d	$a0, $s1, $a0, 3
-	st.d	$a0, $sp, 1152                  # 8-byte Folded Spill
+	alsl.d	$a0, $t6, $a0, 3
+	st.d	$a0, $sp, 1160                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 784                   # 8-byte Folded Reload
-	alsl.d	$a0, $s1, $a0, 3
+	alsl.d	$a0, $t6, $a0, 3
+	st.d	$a0, $sp, 1152                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 808                   # 8-byte Folded Reload
+	add.d	$a0, $a0, $t6
+	alsl.d	$a0, $a0, $a1, 3
 	st.d	$a0, $sp, 1144                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 776                   # 8-byte Folded Reload
-	alsl.d	$a0, $s1, $a0, 3
-	st.d	$a0, $sp, 1136                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 520                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $s1
-	alsl.d	$a0, $a0, $a1, 3
-	st.d	$a0, $sp, 1128                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 528                   # 8-byte Folded Reload
-	alsl.d	$a3, $s1, $a0, 3
-	ld.d	$a0, $sp, 864                   # 8-byte Folded Reload
-	sub.d	$ra, $a0, $s1
-	ld.d	$a0, $sp, 840                   # 8-byte Folded Reload
-	sub.d	$t6, $a0, $s1
-	ld.d	$a0, $sp, 904                   # 8-byte Folded Reload
+	alsl.d	$a3, $t6, $a0, 3
+	ld.d	$a0, $sp, 880                   # 8-byte Folded Reload
+	sub.d	$ra, $a0, $t6
+	ld.d	$a0, $sp, 856                   # 8-byte Folded Reload
+	sub.d	$t6, $a0, $t6
+	ld.d	$a0, $sp, 920                   # 8-byte Folded Reload
 	sub.d	$t7, $a0, $s0
-	ld.d	$a0, $sp, 872                   # 8-byte Folded Reload
-	sub.d	$t0, $a0, $s0
+	ld.d	$a0, $sp, 904                   # 8-byte Folded Reload
+	sub.d	$t2, $a0, $s0
 	ld.d	$a0, $sp, 712                   # 8-byte Folded Reload
 	alsl.d	$t8, $s0, $a0, 3
 	ld.d	$a0, $sp, 720                   # 8-byte Folded Reload
 	alsl.d	$s0, $s0, $a0, 3
 	alsl.d	$s1, $s5, $a7, 3
-	alsl.d	$s2, $s5, $a6, 3
+	alsl.d	$s2, $s5, $a5, 3
 	alsl.d	$s6, $s5, $s4, 3
 	ld.d	$a0, $sp, 616                   # 8-byte Folded Reload
 	alsl.d	$a0, $s5, $a0, 3
-	st.d	$a0, $sp, 1120                  # 8-byte Folded Spill
+	st.d	$a0, $sp, 1136                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 600                   # 8-byte Folded Reload
 	alsl.d	$a0, $s5, $a0, 3
-	st.d	$a0, $sp, 1112                  # 8-byte Folded Spill
+	st.d	$a0, $sp, 1128                  # 8-byte Folded Spill
 	alsl.d	$a0, $s5, $fp, 3
-	st.d	$a0, $sp, 1104                  # 8-byte Folded Spill
+	st.d	$a0, $sp, 1120                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 632                   # 8-byte Folded Reload
 	alsl.d	$a0, $s5, $a0, 3
-	st.d	$a0, $sp, 1096                  # 8-byte Folded Spill
+	st.d	$a0, $sp, 1112                  # 8-byte Folded Spill
 	alsl.d	$a0, $s5, $t4, 3
-	st.d	$a0, $sp, 1088                  # 8-byte Folded Spill
+	st.d	$a0, $sp, 1104                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 640                   # 8-byte Folded Reload
 	alsl.d	$a0, $s5, $a0, 3
-	st.d	$a0, $sp, 1080                  # 8-byte Folded Spill
-	alsl.d	$a0, $s5, $t2, 3
-	st.d	$a0, $sp, 1072                  # 8-byte Folded Spill
+	st.d	$a0, $sp, 1096                  # 8-byte Folded Spill
+	alsl.d	$a0, $s5, $t0, 3
+	st.d	$a0, $sp, 1088                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 736                   # 8-byte Folded Reload
 	alsl.d	$a0, $s5, $a0, 3
-	st.d	$a0, $sp, 1064                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 952                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 1080                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 968                   # 8-byte Folded Reload
 	alsl.d	$a1, $s5, $a0, 3
+	ld.d	$a0, $sp, 960                   # 8-byte Folded Reload
+	alsl.d	$a0, $s5, $a0, 3
+	st.d	$a0, $sp, 1072                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 952                   # 8-byte Folded Reload
+	alsl.d	$s8, $s5, $a0, 3
 	ld.d	$a0, $sp, 944                   # 8-byte Folded Reload
 	alsl.d	$a0, $s5, $a0, 3
-	st.d	$a0, $sp, 1056                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 936                   # 8-byte Folded Reload
-	alsl.d	$s8, $s5, $a0, 3
-	ld.d	$a0, $sp, 928                   # 8-byte Folded Reload
-	alsl.d	$a0, $s5, $a0, 3
-	st.d	$a0, $sp, 1048                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 896                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 1064                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 912                   # 8-byte Folded Reload
 	alsl.d	$s4, $s5, $a0, 3
+	ld.d	$a0, $sp, 896                   # 8-byte Folded Reload
+	alsl.d	$a0, $s5, $a0, 3
+	st.d	$a0, $sp, 1056                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 888                   # 8-byte Folded Reload
 	alsl.d	$a0, $s5, $a0, 3
+	st.d	$a0, $sp, 1048                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 872                   # 8-byte Folded Reload
+	alsl.d	$a0, $s5, $a0, 3
 	st.d	$a0, $sp, 1040                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 880                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 864                   # 8-byte Folded Reload
 	alsl.d	$a0, $s5, $a0, 3
 	st.d	$a0, $sp, 1032                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 856                   # 8-byte Folded Reload
-	alsl.d	$a0, $s5, $a0, 3
-	st.d	$a0, $sp, 1024                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 848                   # 8-byte Folded Reload
 	alsl.d	$a0, $s5, $a0, 3
-	st.d	$a0, $sp, 1016                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 832                   # 8-byte Folded Reload
-	alsl.d	$a0, $s5, $a0, 3
-	st.d	$a0, $sp, 1008                  # 8-byte Folded Spill
-	ld.d	$a6, $sp, 824                   # 8-byte Folded Reload
-	alsl.d	$a7, $s5, $a6, 3
-	ld.d	$a6, $sp, 816                   # 8-byte Folded Reload
-	alsl.d	$a6, $s5, $a6, 3
-	ld.d	$t2, $sp, 808                   # 8-byte Folded Reload
-	st.d	$s5, $sp, 984                   # 8-byte Folded Spill
-	alsl.d	$s5, $s5, $t2, 3
-	ld.d	$t2, $sp, 800                   # 8-byte Folded Reload
-	ld.d	$t4, $sp, 512                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 1024                  # 8-byte Folded Spill
+	ld.d	$a5, $sp, 840                   # 8-byte Folded Reload
+	alsl.d	$a7, $s5, $a5, 3
+	ld.d	$a5, $sp, 832                   # 8-byte Folded Reload
+	alsl.d	$a5, $s5, $a5, 3
+	ld.d	$t0, $sp, 824                   # 8-byte Folded Reload
+	st.d	$s5, $sp, 1000                  # 8-byte Folded Spill
+	alsl.d	$s5, $s5, $t0, 3
+	ld.d	$t0, $sp, 816                   # 8-byte Folded Reload
+	ld.d	$t4, $sp, 528                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB1_47:                               #   Parent Loop BB1_3 Depth=1
                                         #     Parent Loop BB1_45 Depth=2
@@ -1511,22 +1507,22 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
                                         # =>      This Inner Loop Header: Depth=4
 	fldx.d	$fa0, $t8, $t3
 	fldx.d	$fa1, $a1, $t5
-	ld.d	$a0, $sp, 1056                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1072                  # 8-byte Folded Reload
 	fldx.d	$fa2, $a0, $t5
-	ld.d	$a0, $sp, 1128                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1144                  # 8-byte Folded Reload
 	fldx.d	$fa3, $a0, $t3
 	fldx.d	$fa4, $s1, $t5
 	fmul.d	$fa1, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa2
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$fp, $sp, 1216                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1232                  # 8-byte Folded Reload
 	fstx.d	$fa0, $fp, $t3
 	fldx.d	$fa0, $t8, $t3
 	fldx.d	$fa1, $s8, $t5
 	move	$fp, $s7
 	add.d	$s7, $a3, $t3
-	ld.d	$a0, $sp, 1048                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1064                  # 8-byte Folded Reload
 	fldx.d	$fa2, $a0, $t5
 	fld.d	$fa3, $s7, -8
 	fldx.d	$fa4, $s2, $t5
@@ -1534,84 +1530,84 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	fmul.d	$fa0, $fa0, $fa2
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$a0, $sp, 1208                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1224                  # 8-byte Folded Reload
 	fstx.d	$fa0, $a0, $t3
 	fldx.d	$fa0, $t8, $t3
 	fldx.d	$fa1, $s4, $t5
 	fldx.d	$fa2, $a3, $t3
 	fldx.d	$fa3, $s6, $t5
-	ld.d	$a0, $sp, 1040                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1056                  # 8-byte Folded Reload
 	fldx.d	$fa4, $a0, $t5
 	fmul.d	$fa1, $fa0, $fa1
 	fmul.d	$fa1, $fa2, $fa1
 	fmadd.d	$fa1, $fa3, $fa2, $fa1
 	fmadd.d	$fa0, $fa0, $fa4, $fa1
-	ld.d	$a0, $sp, 1200                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1216                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a0, $t3
+	fldx.d	$fa0, $t8, $t3
+	ld.d	$a0, $sp, 1048                  # 8-byte Folded Reload
+	fldx.d	$fa1, $a0, $t5
+	ld.d	$a0, $sp, 1040                  # 8-byte Folded Reload
+	fldx.d	$fa2, $a0, $t5
+	fld.d	$fa3, $s7, 8
+	ld.d	$a0, $sp, 1136                  # 8-byte Folded Reload
+	fldx.d	$fa4, $a0, $t5
+	fmul.d	$fa1, $fa0, $fa1
+	fmul.d	$fa0, $fa0, $fa2
+	fmadd.d	$fa0, $fa1, $fa3, $fa0
+	fmadd.d	$fa0, $fa4, $fa3, $fa0
+	ld.d	$a0, $sp, 1208                  # 8-byte Folded Reload
 	fstx.d	$fa0, $a0, $t3
 	fldx.d	$fa0, $t8, $t3
 	ld.d	$a0, $sp, 1032                  # 8-byte Folded Reload
 	fldx.d	$fa1, $a0, $t5
 	ld.d	$a0, $sp, 1024                  # 8-byte Folded Reload
 	fldx.d	$fa2, $a0, $t5
-	fld.d	$fa3, $s7, 8
-	ld.d	$a0, $sp, 1120                  # 8-byte Folded Reload
-	fldx.d	$fa4, $a0, $t5
-	fmul.d	$fa1, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa2
-	fmadd.d	$fa0, $fa1, $fa3, $fa0
-	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$a0, $sp, 1192                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a0, $t3
-	fldx.d	$fa0, $t8, $t3
-	ld.d	$a0, $sp, 1016                  # 8-byte Folded Reload
-	fldx.d	$fa1, $a0, $t5
-	ld.d	$a0, $sp, 1008                  # 8-byte Folded Reload
-	fldx.d	$fa2, $a0, $t5
-	ld.d	$a0, $sp, 1136                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1152                  # 8-byte Folded Reload
 	fldx.d	$fa3, $a0, $t3
-	ld.d	$a0, $sp, 1112                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1128                  # 8-byte Folded Reload
 	fldx.d	$fa4, $a0, $t5
 	fmul.d	$fa1, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa2
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$a0, $sp, 1184                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1200                  # 8-byte Folded Reload
 	fstx.d	$fa0, $a0, $t3
-	ld.d	$a0, $sp, 1104                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1120                  # 8-byte Folded Reload
 	fldx.d	$fa0, $a0, $t5
 	fldx.d	$fa1, $t8, $t3
 	fldx.d	$fa2, $a1, $t5
-	ld.d	$a0, $sp, 1152                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1168                  # 8-byte Folded Reload
 	fldx.d	$fa3, $a0, $t3
 	fldx.d	$fa4, $s0, $t3
-	ld.d	$s7, $sp, 1264                  # 8-byte Folded Reload
+	ld.d	$s7, $sp, 1280                  # 8-byte Folded Reload
 	fldx.d	$fa5, $s7, $t5
-	ld.d	$a0, $sp, 1144                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1160                  # 8-byte Folded Reload
 	fldx.d	$fa6, $a0, $t3
 	fmul.d	$fa2, $fa1, $fa2
 	fmadd.d	$fa0, $fa2, $fa3, $fa0
 	fmul.d	$fa2, $fa4, $fa5
 	fmadd.d	$fa0, $fa2, $fa6, $fa0
 	fldx.d	$fa2, $s1, $t5
-	ld.d	$a0, $sp, 1096                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1112                  # 8-byte Folded Reload
 	fldx.d	$fa5, $a0, $t5
 	fldx.d	$fa7, $a7, $t5
-	ld.d	$s7, $sp, 1256                  # 8-byte Folded Reload
+	ld.d	$s7, $sp, 1272                  # 8-byte Folded Reload
 	fldx.d	$ft0, $s7, $t5
 	fmadd.d	$fa0, $fa2, $fa3, $fa0
 	fmadd.d	$fa0, $fa5, $fa6, $fa0
 	fmadd.d	$fa0, $fa1, $fa7, $fa0
 	fmadd.d	$fa0, $fa4, $ft0, $fa0
-	ld.d	$a0, $sp, 1176                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1192                  # 8-byte Folded Reload
 	fstx.d	$fa0, $a0, $t3
-	ld.d	$a0, $sp, 1088                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1104                  # 8-byte Folded Reload
 	fldx.d	$fa0, $a0, $t5
 	fldx.d	$fa1, $t8, $t3
 	fldx.d	$fa2, $s8, $t5
 	add.d	$s7, $a2, $t3
 	fld.d	$fa3, $s7, -8
 	fldx.d	$fa4, $s0, $t3
-	ld.d	$s7, $sp, 1248                  # 8-byte Folded Reload
+	ld.d	$s7, $sp, 1264                  # 8-byte Folded Reload
 	fldx.d	$fa5, $s7, $t5
 	add.d	$s7, $s3, $t3
 	fld.d	$fa6, $s7, -8
@@ -1621,24 +1617,24 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	fmul.d	$fa2, $fa4, $fa5
 	fmadd.d	$fa0, $fa2, $fa6, $fa0
 	fldx.d	$fa2, $s2, $t5
-	ld.d	$a0, $sp, 1080                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1096                  # 8-byte Folded Reload
 	fldx.d	$fa5, $a0, $t5
-	fldx.d	$fa7, $a6, $t5
-	ld.d	$fp, $sp, 1240                  # 8-byte Folded Reload
+	fldx.d	$fa7, $a5, $t5
+	ld.d	$fp, $sp, 1256                  # 8-byte Folded Reload
 	fldx.d	$ft0, $fp, $t5
 	fmadd.d	$fa0, $fa2, $fa3, $fa0
 	fmadd.d	$fa0, $fa5, $fa6, $fa0
 	fmadd.d	$fa0, $fa1, $fa7, $fa0
 	fmadd.d	$fa0, $fa4, $ft0, $fa0
-	ld.d	$a0, $sp, 1168                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1184                  # 8-byte Folded Reload
 	fstx.d	$fa0, $a0, $t3
-	ld.d	$a0, $sp, 1072                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1088                  # 8-byte Folded Reload
 	fldx.d	$fa0, $a0, $t5
 	fldx.d	$fa1, $t8, $t3
 	fldx.d	$fa2, $s4, $t5
 	fldx.d	$fa3, $a2, $t3
 	fldx.d	$fa4, $s0, $t3
-	ld.d	$fp, $sp, 1232                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1248                  # 8-byte Folded Reload
 	fldx.d	$fa5, $fp, $t5
 	fldx.d	$fa6, $s3, $t3
 	fmul.d	$fa2, $fa1, $fa2
@@ -1646,147 +1642,147 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	fmul.d	$fa2, $fa4, $fa5
 	fmadd.d	$fa0, $fa2, $fa6, $fa0
 	fldx.d	$fa2, $s5, $t5
-	ld.d	$fp, $sp, 1224                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1240                  # 8-byte Folded Reload
 	fldx.d	$fa5, $fp, $t5
 	fldx.d	$fa7, $s6, $t5
-	ld.d	$a0, $sp, 1064                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1080                  # 8-byte Folded Reload
 	fldx.d	$ft0, $a0, $t5
 	fmadd.d	$fa0, $fa1, $fa2, $fa0
 	fmadd.d	$fa0, $fa4, $fa5, $fa0
 	fmadd.d	$fa0, $fa7, $fa3, $fa0
 	fmadd.d	$fa0, $ft0, $fa6, $fa0
-	ld.d	$a0, $sp, 1160                  # 8-byte Folded Reload
+	ld.d	$a0, $sp, 1176                  # 8-byte Folded Reload
 	fstx.d	$fa0, $a0, $t3
 	add.d	$t5, $t5, $t4
-	sub.d	$t2, $t2, $s7
+	sub.d	$t0, $t0, $s7
 	addi.d	$t3, $t3, 8
 	addi.d	$a4, $a4, -1
 	addi.d	$t1, $t1, -1
-	addi.w	$a5, $a5, -1
+	addi.w	$a6, $a6, -1
 	addi.d	$t7, $t7, -1
-	addi.d	$t0, $t0, -1
+	addi.d	$t2, $t2, -1
 	addi.d	$ra, $ra, -1
 	addi.d	$t6, $t6, -1
-	ld.d	$fp, $sp, 1272                  # 8-byte Folded Reload
-	bne	$fp, $a5, .LBB1_47
+	ld.d	$fp, $sp, 1288                  # 8-byte Folded Reload
+	bne	$fp, $a6, .LBB1_47
 # %bb.48:                               #   in Loop: Header=BB1_46 Depth=3
-	ld.d	$a6, $sp, 1272                  # 8-byte Folded Reload
-	sub.w	$s1, $a6, $t6
-	sub.w	$s0, $a6, $t7
-	ld.d	$a0, $sp, 968                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 984                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $a5
-	sub.w	$a2, $a0, $t2
-	ld.d	$a3, $sp, 992                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 1288                  # 8-byte Folded Reload
+	sub.w	$t6, $a5, $t6
+	sub.w	$s0, $a5, $t7
+	ld.d	$a0, $sp, 984                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 1000                  # 8-byte Folded Reload
+	add.d	$a0, $a0, $a6
+	sub.w	$a2, $a0, $t0
+	ld.d	$a3, $sp, 1008                  # 8-byte Folded Reload
 	addi.w	$a3, $a3, 1
-	sub.w	$a0, $a6, $t1
-	ld.d	$a1, $sp, 976                   # 8-byte Folded Reload
+	sub.w	$a0, $a5, $t1
+	ld.d	$a1, $sp, 992                   # 8-byte Folded Reload
 	bne	$a3, $a1, .LBB1_46
 # %bb.49:                               #   in Loop: Header=BB1_45 Depth=2
-	sub.w	$s1, $a6, $ra
-	sub.w	$s0, $a6, $t0
-	ld.d	$a0, $sp, 440                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $a5
-	sub.w	$a2, $a0, $t2
-	ld.d	$ra, $sp, 504                   # 8-byte Folded Reload
-	addi.w	$ra, $ra, 1
-	sub.w	$a0, $a6, $a4
-	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
-	bne	$ra, $a1, .LBB1_45
+	sub.w	$t6, $a5, $ra
+	sub.w	$s0, $a5, $t2
+	ld.d	$a0, $sp, 504                   # 8-byte Folded Reload
+	add.d	$a0, $a0, $a6
+	sub.w	$a2, $a0, $t0
+	ld.d	$s2, $sp, 520                   # 8-byte Folded Reload
+	addi.w	$s2, $s2, 1
+	sub.w	$a0, $a5, $a4
+	ld.d	$a1, $sp, 512                   # 8-byte Folded Reload
+	bne	$s2, $a1, .LBB1_45
 	b	.LBB1_2
 .LBB1_50:                               #   in Loop: Header=BB1_3 Depth=1
 	move	$t6, $zero
 .LBB1_51:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$s3, $sp, 1264                  # 8-byte Folded Reload
-	move	$a6, $t0
-	ld.w	$t5, $fp, -8
-	ld.w	$a5, $fp, 4
+	ld.d	$a6, $sp, 1288                  # 8-byte Folded Reload
+	ld.w	$t5, $s1, -8
+	ld.w	$a5, $s1, 4
 	sub.w	$a5, $a5, $t5
 	addi.d	$t2, $a5, 1
 	bltz	$a5, .LBB1_53
 # %bb.52:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$t0, $sp, 1248                  # 8-byte Folded Reload
-	ld.w	$t0, $t0, 8
-	ld.w	$t1, $fp, -4
+	ld.w	$t0, $s3, 8
+	ld.w	$t1, $s1, -4
 	sub.d	$t0, $t0, $t1
 	mulw.d.w	$t8, $t0, $t2
 	b	.LBB1_54
 .LBB1_53:                               #   in Loop: Header=BB1_3 Depth=1
 	move	$t8, $zero
 .LBB1_54:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t7, $s3, -8
-	ld.w	$t0, $s3, 4
+	ld.w	$t7, $a6, -8
+	ld.w	$t0, $a6, 4
 	sub.w	$t0, $t0, $t7
-	addi.d	$ra, $t0, 1
+	addi.d	$t1, $t0, 1
 	bltz	$t0, .LBB1_56
 # %bb.55:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t2, $sp, 1304
-	ld.w	$t3, $s3, -4
+	ld.w	$t2, $sp, 1320
+	ld.w	$t3, $a6, -4
 	sub.d	$t2, $t2, $t3
-	mulw.d.w	$s0, $t2, $ra
+	mulw.d.w	$s0, $t2, $t1
 	b	.LBB1_57
 .LBB1_56:                               #   in Loop: Header=BB1_3 Depth=1
 	move	$s0, $zero
 .LBB1_57:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$fp, $s1, 4
-	ld.w	$t2, $s1, 16
+	move	$t1, $s1
+	st.d	$s2, $sp, 1288                  # 8-byte Folded Spill
+	ld.w	$fp, $s6, 4
+	ld.w	$t2, $s6, 16
 	sub.w	$t3, $t2, $fp
-	addi.d	$t1, $t3, 1
+	addi.d	$t4, $t3, 1
 	bltz	$t3, .LBB1_59
 # %bb.58:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$t2, $sp, 1248                  # 8-byte Folded Reload
-	ld.w	$t2, $t2, 8
-	ld.w	$s1, $s1, 8
+	ld.w	$t2, $s3, 8
+	ld.w	$s1, $s6, 8
 	sub.d	$t2, $t2, $s1
-	mulw.d.w	$s2, $t2, $t1
+	mulw.d.w	$s2, $t2, $t4
 	b	.LBB1_60
 .LBB1_59:                               #   in Loop: Header=BB1_3 Depth=1
 	move	$s2, $zero
 .LBB1_60:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$s4, $s3, -12
-	ld.d	$t2, $sp, 1272                  # 8-byte Folded Reload
-	ldx.w	$t2, $t2, $s8
+	ld.w	$s4, $a6, -12
+	ld.d	$a6, $sp, 1280                  # 8-byte Folded Reload
+	ldx.w	$t2, $a6, $s8
 	sub.w	$s3, $t2, $s4
 	addi.d	$s5, $s3, 1
+	move	$a6, $s6
 	bltz	$s3, .LBB1_62
 # %bb.61:                               #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
 	ld.w	$t2, $s1, 4
 	ld.w	$s1, $s1, 8
 	mul.d	$t2, $t2, $s5
-	st.d	$t2, $sp, 856                   # 8-byte Folded Spill
+	st.d	$t2, $sp, 872                   # 8-byte Folded Spill
 	mul.d	$s1, $s1, $s5
 	b	.LBB1_63
 .LBB1_62:                               #   in Loop: Header=BB1_3 Depth=1
-	st.d	$zero, $sp, 856                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 872                 # 8-byte Folded Spill
 	move	$s1, $zero
 .LBB1_63:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t2, $sp, 1284
-	ld.w	$t1, $sp, 1288
-	ld.w	$t4, $sp, 1292
-	slt	$s6, $t2, $t1
+	ld.w	$t2, $sp, 1300
+	ld.w	$ra, $sp, 1304
+	ld.w	$t4, $sp, 1308
+	slt	$s6, $t2, $ra
 	masknez	$s7, $t2, $s6
-	st.d	$t1, $sp, 864                   # 8-byte Folded Spill
-	maskeqz	$s6, $t1, $s6
+	st.d	$ra, $sp, 880                   # 8-byte Folded Spill
+	maskeqz	$s6, $ra, $s6
 	or	$s6, $s6, $s7
 	slt	$s7, $s6, $t4
 	masknez	$s6, $s6, $s7
-	st.d	$t4, $sp, 296                   # 8-byte Folded Spill
+	st.d	$t4, $sp, 312                   # 8-byte Folded Spill
 	maskeqz	$s7, $t4, $s7
 	or	$s6, $s7, $s6
 	blez	$s6, .LBB1_2
 # %bb.64:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$t1, $sp, 296                   # 8-byte Folded Reload
-	blez	$t1, .LBB1_2
+	ld.d	$s6, $sp, 312                   # 8-byte Folded Reload
+	blez	$s6, .LBB1_2
 # %bb.65:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$s6, $sp, 864                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 880                   # 8-byte Folded Reload
 	blez	$s6, .LBB1_2
 # %bb.66:                               #   in Loop: Header=BB1_3 Depth=1
 	blez	$t2, .LBB1_2
 # %bb.67:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$s6, $sp, 1240                  # 8-byte Folded Reload
+	ld.d	$s6, $sp, 1272                  # 8-byte Folded Reload
 	ldx.w	$s6, $s6, $s8
-	st.d	$zero, $sp, 304                 # 8-byte Folded Spill
+	move	$ra, $zero
 	sub.w	$s6, $s6, $a3
 	add.d	$a3, $a4, $t6
 	addi.d	$t6, $s6, 1
@@ -1794,9 +1790,9 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	nor	$a4, $s6, $zero
 	srli.d	$a4, $a4, 31
 	and	$a3, $a4, $a3
-	ld.w	$a4, $a2, -12
-	ld.w	$s7, $a2, 0
-	add.w	$a2, $a6, $a3
+	ld.w	$a4, $t1, -12
+	ld.w	$s7, $t1, 0
+	add.w	$a2, $a2, $a3
 	sub.d	$a3, $a1, $t5
 	add.d	$a3, $a3, $t8
 	sub.w	$t5, $s7, $a4
@@ -1805,8 +1801,8 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	nor	$s7, $t5, $zero
 	srli.d	$s7, $s7, 31
 	and	$a3, $s7, $a3
-	ld.w	$s7, $sp, 1296
-	ld.w	$s8, $sp, 1300
+	ld.w	$s7, $sp, 1312
+	ld.w	$s8, $sp, 1316
 	sub.d	$a4, $a0, $a4
 	add.w	$a3, $a4, $a3
 	sub.d	$a4, $s7, $s4
@@ -1816,9 +1812,8 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	nor	$s0, $s3, $zero
 	srli.d	$s0, $s0, 31
 	and	$t7, $s0, $t7
-	ld.d	$s3, $sp, 1232                  # 8-byte Folded Reload
-	ld.w	$s0, $s3, 0
-	ld.w	$s3, $s3, 12
+	ld.w	$s0, $a6, 0
+	ld.w	$s3, $a6, 12
 	add.w	$a4, $a4, $t7
 	sub.d	$a1, $a1, $fp
 	sub.d	$a0, $a0, $s0
@@ -1846,7 +1841,7 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	ld.w	$s2, $a6, 0
 	srai.d	$a6, $t7, 31
 	andn	$a6, $fp, $a6
-	ld.d	$s0, $sp, 864                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 880                   # 8-byte Folded Reload
 	mul.d	$t8, $s0, $a6
 	mul.d	$t6, $s0, $t6
 	mul.d	$a1, $s0, $a1
@@ -1854,166 +1849,1431 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	mul.d	$a6, $a6, $t1
 	srai.d	$t3, $t3, 31
 	andn	$a6, $a6, $t3
-	mul.d	$t1, $s1, $ra
+	addi.d	$t1, $t0, 1
+	mul.d	$t1, $s1, $t1
 	srai.d	$t0, $t0, 31
 	andn	$t0, $t1, $t0
-	ld.d	$t1, $sp, 1208                  # 8-byte Folded Reload
+	ld.d	$t1, $sp, 1232                  # 8-byte Folded Reload
 	addi.w	$t1, $t1, 0
-	ld.d	$t3, $sp, 1224                  # 8-byte Folded Reload
+	ld.d	$t3, $sp, 1288                  # 8-byte Folded Reload
 	bstrpick.d	$t3, $t3, 31, 0
-	ld.d	$t4, $sp, 1216                  # 8-byte Folded Reload
+	ld.d	$t4, $sp, 1256                  # 8-byte Folded Reload
 	addi.w	$t4, $t4, 0
-	st.d	$t4, $sp, 848                   # 8-byte Folded Spill
+	st.d	$t4, $sp, 864                   # 8-byte Folded Spill
 	slli.d	$t4, $t4, 3
 	ld.d	$fp, $sp, 544                   # 8-byte Folded Reload
 	sub.d	$fp, $fp, $t4
-	st.d	$fp, $sp, 840                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 856                   # 8-byte Folded Spill
 	ld.d	$fp, $sp, 744                   # 8-byte Folded Reload
 	sub.d	$fp, $fp, $t4
-	st.d	$fp, $sp, 832                   # 8-byte Folded Spill
-	ld.d	$fp, $sp, 608                   # 8-byte Folded Reload
-	sub.d	$fp, $fp, $t4
-	st.d	$fp, $sp, 824                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 848                   # 8-byte Folded Spill
 	ori	$fp, $zero, 1
 	sub.d	$fp, $fp, $s0
-	ld.d	$s0, $sp, 856                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 872                   # 8-byte Folded Reload
 	mul.d	$fp, $s0, $fp
 	add.d	$t0, $t0, $fp
-	st.d	$t0, $sp, 288                   # 8-byte Folded Spill
+	st.d	$t0, $sp, 304                   # 8-byte Folded Spill
+	srai.d	$t0, $t7, 63
+	or	$fp, $t7, $t0
+	sub.d	$t8, $t8, $fp
+	ld.d	$fp, $sp, 608                   # 8-byte Folded Reload
+	sub.d	$fp, $fp, $t4
+	st.d	$fp, $sp, 840                   # 8-byte Folded Spill
 	nor	$a6, $a6, $zero
 	add.d	$a6, $a6, $t8
-	srai.d	$t0, $t7, 63
-	or	$t8, $t7, $t0
-	sub.d	$a6, $a6, $t8
-	st.d	$a6, $sp, 816                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 832                   # 8-byte Folded Spill
 	nor	$a6, $t7, $t0
-	st.d	$a6, $sp, 808                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 824                   # 8-byte Folded Spill
 	srai.d	$a6, $t5, 63
 	or	$t0, $t5, $a6
 	nor	$a6, $t5, $a6
-	st.d	$a6, $sp, 800                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 816                   # 8-byte Folded Spill
 	ld.d	$a6, $sp, 536                   # 8-byte Folded Reload
 	sub.d	$a6, $a6, $t4
-	st.d	$a6, $sp, 792                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 808                   # 8-byte Folded Spill
 	nor	$a5, $a5, $zero
-	add.d	$a5, $a5, $t6
-	sub.d	$a5, $a5, $t0
-	st.d	$a5, $sp, 784                   # 8-byte Folded Spill
+	sub.d	$a6, $t6, $t0
+	add.d	$a5, $a5, $a6
+	st.d	$a5, $sp, 800                   # 8-byte Folded Spill
 	srai.d	$a5, $s6, 63
 	or	$a6, $s6, $a5
 	nor	$a5, $s6, $a5
-	st.d	$a5, $sp, 776                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 792                   # 8-byte Folded Spill
 	ld.d	$a5, $sp, 752                   # 8-byte Folded Reload
 	sub.d	$a5, $a5, $t4
-	st.d	$a5, $sp, 528                   # 8-byte Folded Spill
-	nor	$a5, $a7, $zero
-	add.d	$a1, $a5, $a1
+	st.d	$a5, $sp, 784                   # 8-byte Folded Spill
+	sub.d	$a1, $a1, $a6
 	ld.d	$a5, $sp, 624                   # 8-byte Folded Reload
 	sub.d	$a5, $a5, $t4
-	st.d	$a5, $sp, 520                   # 8-byte Folded Spill
-	sub.d	$a1, $a1, $a6
-	st.d	$a1, $sp, 512                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 776                   # 8-byte Folded Spill
+	nor	$a5, $a7, $zero
+	add.d	$a1, $a5, $a1
+	st.d	$a1, $sp, 528                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 760                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 520                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 1208                  # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 512                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 1200                  # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
 	st.d	$a1, $sp, 504                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 1192                  # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t4
-	st.d	$a1, $sp, 448                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 1184                  # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t4
-	st.d	$a1, $sp, 440                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 728                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t4
-	st.d	$a1, $sp, 432                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 448                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 616                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t4
-	st.d	$a1, $sp, 424                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 440                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t4
-	st.d	$a1, $sp, 416                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 432                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 600                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t4
-	st.d	$a1, $sp, 408                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 424                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t4
-	st.d	$a1, $sp, 400                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 416                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 632                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t4
-	st.d	$a1, $sp, 392                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 408                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 640                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t4
-	st.d	$a1, $sp, 384                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 400                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 736                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $t4
-	st.d	$a1, $sp, 376                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 392                   # 8-byte Folded Spill
 	mul.d	$a1, $t2, $s2
-	st.d	$a1, $sp, 368                   # 8-byte Folded Spill
-	sub.w	$t2, $zero, $t2
-	ld.d	$a1, $sp, 1000                  # 8-byte Folded Reload
-	addi.d	$a7, $a1, -8
+	st.d	$a1, $sp, 384                   # 8-byte Folded Spill
+	sub.w	$a7, $zero, $t2
+	ld.d	$a1, $sp, 1016                  # 8-byte Folded Reload
+	addi.d	$a6, $a1, -8
 	slli.d	$a1, $t3, 3
-	add.d	$a5, $t1, $t3
-	slli.d	$a6, $t1, 3
-	st.d	$a7, $sp, 360                   # 8-byte Folded Spill
-	sub.d	$a7, $a7, $a1
-	st.d	$a7, $sp, 352                   # 8-byte Folded Spill
-	ld.d	$a7, $sp, 768                   # 8-byte Folded Reload
-	sub.d	$t0, $a7, $a1
-	st.d	$t0, $sp, 344                   # 8-byte Folded Spill
-	sub.d	$a1, $a1, $a6
-	add.d	$a1, $a7, $a1
+	sub.d	$a5, $zero, $t3
+	sub.d	$a5, $a5, $t1
+	st.d	$a5, $sp, 368                   # 8-byte Folded Spill
+	slli.d	$a5, $t1, 3
+	st.d	$a6, $sp, 376                   # 8-byte Folded Spill
+	sub.d	$a6, $a6, $a1
+	st.d	$a6, $sp, 360                   # 8-byte Folded Spill
+	ld.d	$a6, $sp, 768                   # 8-byte Folded Reload
+	sub.d	$t0, $a6, $a1
+	st.d	$t0, $sp, 352                   # 8-byte Folded Spill
+	sub.d	$a1, $a1, $a5
+	add.d	$a1, $a6, $a1
 	addi.d	$a1, $a1, -8
+	st.d	$a1, $sp, 344                   # 8-byte Folded Spill
+	sub.d	$a1, $a6, $a5
 	st.d	$a1, $sp, 336                   # 8-byte Folded Spill
-	sub.d	$a1, $zero, $a5
-	st.d	$a1, $sp, 328                   # 8-byte Folded Spill
-	sub.d	$a1, $a7, $a6
-	st.d	$a1, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 896                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 912                   # 8-byte Folded Spill
 	slli.d	$a1, $s2, 3
-	st.d	$a1, $sp, 888                   # 8-byte Folded Spill
-	addi.d	$a1, $a7, 8
-	st.d	$a1, $sp, 312                   # 8-byte Folded Spill
-	st.d	$t2, $sp, 1272                  # 8-byte Folded Spill
+	st.d	$a1, $sp, 904                   # 8-byte Folded Spill
+	addi.d	$a1, $a6, 8
+	st.d	$a1, $sp, 328                   # 8-byte Folded Spill
+	st.d	$a7, $sp, 1288                  # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB1_68:                               #   Parent Loop BB1_3 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB1_69 Depth 3
                                         #         Child Loop BB1_70 Depth 4
+	st.d	$ra, $sp, 320                   # 8-byte Folded Spill
 	move	$a5, $zero
 	.p2align	4, , 16
 .LBB1_69:                               #   Parent Loop BB1_3 Depth=1
                                         #     Parent Loop BB1_68 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB1_70 Depth 4
-	st.d	$a5, $sp, 880                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 896                   # 8-byte Folded Spill
 	move	$s4, $zero
 	move	$s5, $zero
 	move	$s7, $zero
-	ld.d	$a1, $sp, 848                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 864                   # 8-byte Folded Reload
 	add.d	$a1, $a1, $a4
 	ld.d	$t4, $sp, 544                   # 8-byte Folded Reload
 	alsl.d	$a5, $a1, $t4, 3
-	st.d	$a5, $sp, 1264                  # 8-byte Folded Spill
+	st.d	$a5, $sp, 1272                  # 8-byte Folded Spill
 	ld.d	$s1, $sp, 744                   # 8-byte Folded Reload
 	alsl.d	$a5, $a1, $s1, 3
-	st.d	$a5, $sp, 1256                  # 8-byte Folded Spill
-	ld.d	$t3, $sp, 608                   # 8-byte Folded Reload
-	alsl.d	$a5, $a1, $t3, 3
-	st.d	$a5, $sp, 1248                  # 8-byte Folded Spill
+	st.d	$a5, $sp, 1280                  # 8-byte Folded Spill
+	ld.d	$t2, $sp, 608                   # 8-byte Folded Reload
+	alsl.d	$a5, $a1, $t2, 3
+	st.d	$a5, $sp, 1264                  # 8-byte Folded Spill
 	ld.d	$t6, $sp, 536                   # 8-byte Folded Reload
 	alsl.d	$a5, $a1, $t6, 3
-	st.d	$a5, $sp, 1240                  # 8-byte Folded Spill
+	st.d	$a5, $sp, 1256                  # 8-byte Folded Spill
 	ld.d	$fp, $sp, 752                   # 8-byte Folded Reload
 	alsl.d	$a5, $a1, $fp, 3
-	st.d	$a5, $sp, 1232                  # 8-byte Folded Spill
-	ld.d	$t2, $sp, 624                   # 8-byte Folded Reload
-	alsl.d	$a5, $a1, $t2, 3
-	st.d	$a5, $sp, 1224                  # 8-byte Folded Spill
+	st.d	$a5, $sp, 1248                  # 8-byte Folded Spill
+	ld.d	$t3, $sp, 624                   # 8-byte Folded Reload
+	alsl.d	$a5, $a1, $t3, 3
+	st.d	$a5, $sp, 1240                  # 8-byte Folded Spill
 	ld.d	$t8, $sp, 760                   # 8-byte Folded Reload
 	alsl.d	$a5, $a1, $t8, 3
-	st.d	$a5, $sp, 1216                  # 8-byte Folded Spill
+	st.d	$a5, $sp, 1232                  # 8-byte Folded Spill
 	ld.d	$s8, $sp, 728                   # 8-byte Folded Reload
 	alsl.d	$a1, $a1, $s8, 3
+	st.d	$a1, $sp, 1224                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 576                   # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $a1, 3
+	st.d	$a1, $sp, 1216                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 656                   # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $a1, 3
+	st.d	$a1, $sp, 1208                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 568                   # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $a1, 3
+	st.d	$a1, $sp, 1200                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 672                   # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $a1, 3
+	st.d	$a1, $sp, 1192                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 680                   # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $a1, 3
+	st.d	$a1, $sp, 1184                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 664                   # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $a1, 3
+	st.d	$a1, $sp, 1176                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 560                   # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $a1, 3
+	st.d	$a1, $sp, 1168                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 648                   # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $a1, 3
+	st.d	$a1, $sp, 1160                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 552                   # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $a1, 3
+	st.d	$a1, $sp, 1152                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 592                   # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $a1, 3
+	st.d	$a1, $sp, 1144                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 688                   # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $a1, 3
+	st.d	$a1, $sp, 1136                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 584                   # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $a1, 3
+	st.d	$a1, $sp, 1128                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 696                   # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $a1, 3
+	st.d	$a1, $sp, 1120                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 704                   # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $a1, 3
+	st.d	$a1, $sp, 1112                  # 8-byte Folded Spill
+	ld.d	$a1, $sp, 832                   # 8-byte Folded Reload
+	sub.d	$s0, $a1, $a0
+	ld.d	$a1, $sp, 824                   # 8-byte Folded Reload
+	sub.d	$t5, $a1, $a0
+	ld.d	$a0, $sp, 816                   # 8-byte Folded Reload
+	sub.d	$s2, $a0, $a3
+	ld.d	$a0, $sp, 800                   # 8-byte Folded Reload
+	sub.d	$t0, $a0, $a3
+	ld.d	$a0, $sp, 720                   # 8-byte Folded Reload
+	alsl.d	$s3, $a3, $a0, 3
+	ld.d	$a0, $sp, 712                   # 8-byte Folded Reload
+	alsl.d	$s6, $a3, $a0, 3
+	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
+	add.d	$a0, $a0, $a2
+	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $a1, 3
+	st.d	$a0, $sp, 1104                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
+	alsl.d	$a0, $a2, $a0, 3
+	st.d	$a0, $sp, 1096                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 768                   # 8-byte Folded Reload
+	alsl.d	$a7, $a2, $a0, 3
+	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
+	alsl.d	$ra, $a2, $a0, 3
+	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
+	alsl.d	$a6, $a2, $a0, 3
+	ld.d	$a0, $sp, 792                   # 8-byte Folded Reload
+	sub.d	$a5, $a0, $a2
+	ld.d	$a0, $sp, 528                   # 8-byte Folded Reload
+	sub.d	$t7, $a0, $a2
+	ld.d	$a0, $sp, 344                   # 8-byte Folded Reload
+	alsl.d	$a1, $a2, $a0, 3
+	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
+	alsl.d	$t1, $a2, $a0, 3
+	alsl.d	$t2, $a4, $t2, 3
+	alsl.d	$a2, $a4, $t3, 3
+	alsl.d	$t3, $a4, $s8, 3
+	ld.d	$a0, $sp, 616                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 1088                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 600                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 1080                  # 8-byte Folded Spill
+	alsl.d	$a0, $a4, $t4, 3
+	st.d	$a0, $sp, 1072                  # 8-byte Folded Spill
+	alsl.d	$a0, $a4, $s1, 3
+	st.d	$a0, $sp, 1064                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 632                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 1056                  # 8-byte Folded Spill
+	alsl.d	$a0, $a4, $t6, 3
+	st.d	$a0, $sp, 1048                  # 8-byte Folded Spill
+	alsl.d	$a0, $a4, $fp, 3
+	st.d	$a0, $sp, 1040                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 640                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 1032                  # 8-byte Folded Spill
+	alsl.d	$a0, $a4, $t8, 3
+	st.d	$a0, $sp, 1024                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 736                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 1016                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 856                   # 8-byte Folded Reload
+	alsl.d	$a3, $a4, $a0, 3
+	ld.d	$a0, $sp, 848                   # 8-byte Folded Reload
+	alsl.d	$fp, $a4, $a0, 3
+	ld.d	$a0, $sp, 840                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 1008                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 808                   # 8-byte Folded Reload
+	alsl.d	$t4, $a4, $a0, 3
+	ld.d	$a0, $sp, 784                   # 8-byte Folded Reload
+	alsl.d	$t8, $a4, $a0, 3
+	ld.d	$a0, $sp, 776                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 1000                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 520                   # 8-byte Folded Reload
+	alsl.d	$s1, $a4, $a0, 3
+	ld.d	$a0, $sp, 448                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 992                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 512                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 984                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 440                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 976                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 432                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 968                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 504                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 960                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 424                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 952                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 416                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 944                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 408                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 936                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 400                   # 8-byte Folded Reload
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 928                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
+	st.d	$a4, $sp, 888                   # 8-byte Folded Spill
+	alsl.d	$a0, $a4, $a0, 3
+	st.d	$a0, $sp, 920                   # 8-byte Folded Spill
+	ld.d	$t6, $sp, 384                   # 8-byte Folded Reload
+	.p2align	4, , 16
+.LBB1_70:                               #   Parent Loop BB1_3 Depth=1
+                                        #     Parent Loop BB1_68 Depth=2
+                                        #       Parent Loop BB1_69 Depth=3
+                                        # =>      This Inner Loop Header: Depth=4
+	fldx.d	$fa0, $s6, $s5
+	fldx.d	$fa1, $a3, $s7
+	ld.d	$s8, $sp, 1104                  # 8-byte Folded Reload
+	add.d	$a0, $s8, $s5
+	fld.d	$fa2, $a0, -16
+	fmul.d	$fa0, $fa0, $fa1
+	fmul.d	$fa0, $fa0, $fa2
+	ld.d	$a4, $sp, 1216                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a4, $s5
+	fldx.d	$fa0, $s6, $s5
+	fldx.d	$fa1, $fp, $s7
+	ld.d	$a4, $sp, 1008                  # 8-byte Folded Reload
+	fldx.d	$fa2, $a4, $s7
+	fld.d	$fa3, $a0, -8
+	fldx.d	$fa4, $t2, $s7
+	fmul.d	$fa1, $fa0, $fa1
+	fmul.d	$fa0, $fa0, $fa2
+	fmadd.d	$fa0, $fa1, $fa3, $fa0
+	fmadd.d	$fa0, $fa4, $fa3, $fa0
+	ld.d	$a0, $sp, 1208                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a0, $s5
+	fldx.d	$fa0, $s6, $s5
+	fldx.d	$fa1, $t4, $s7
+	fldx.d	$fa2, $s8, $s5
+	fmul.d	$fa0, $fa0, $fa1
+	fmul.d	$fa0, $fa0, $fa2
+	ld.d	$a0, $sp, 1200                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a0, $s5
+	fldx.d	$fa0, $s6, $s5
+	fldx.d	$fa1, $t8, $s7
+	add.d	$a0, $t1, $s5
+	ld.d	$a4, $sp, 1000                  # 8-byte Folded Reload
+	fldx.d	$fa2, $a4, $s7
+	fld.d	$fa3, $a0, -8
+	fldx.d	$fa4, $a2, $s7
+	fmul.d	$fa1, $fa0, $fa1
+	fmul.d	$fa0, $fa0, $fa2
+	fmadd.d	$fa0, $fa1, $fa3, $fa0
+	fmadd.d	$fa0, $fa4, $fa3, $fa0
+	ld.d	$a4, $sp, 1192                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a4, $s5
+	fldx.d	$fa0, $s6, $s5
+	fldx.d	$fa1, $s1, $s7
+	fldx.d	$fa2, $t1, $s5
+	fldx.d	$fa3, $t3, $s7
+	ld.d	$a4, $sp, 992                   # 8-byte Folded Reload
+	fldx.d	$fa4, $a4, $s7
+	fmul.d	$fa1, $fa0, $fa1
+	fmul.d	$fa1, $fa2, $fa1
+	fmadd.d	$fa1, $fa3, $fa2, $fa1
+	fmadd.d	$fa0, $fa0, $fa4, $fa1
+	ld.d	$a4, $sp, 1184                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a4, $s5
+	fldx.d	$fa0, $s6, $s5
+	ld.d	$a4, $sp, 984                   # 8-byte Folded Reload
+	fldx.d	$fa1, $a4, $s7
+	ld.d	$a4, $sp, 976                   # 8-byte Folded Reload
+	fldx.d	$fa2, $a4, $s7
+	fld.d	$fa3, $a0, 8
+	ld.d	$a0, $sp, 1088                  # 8-byte Folded Reload
+	fldx.d	$fa4, $a0, $s7
+	fmul.d	$fa1, $fa0, $fa1
+	fmul.d	$fa0, $fa0, $fa2
+	fmadd.d	$fa0, $fa1, $fa3, $fa0
+	fmadd.d	$fa0, $fa4, $fa3, $fa0
+	ld.d	$a0, $sp, 1176                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a0, $s5
+	fldx.d	$fa0, $s6, $s5
+	ld.d	$a0, $sp, 968                   # 8-byte Folded Reload
+	fldx.d	$fa1, $a0, $s7
+	fldx.d	$fa2, $a1, $s5
+	fmul.d	$fa0, $fa0, $fa1
+	add.d	$a0, $a1, $s5
+	fmul.d	$fa0, $fa0, $fa2
+	ld.d	$a4, $sp, 1168                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a4, $s5
+	fldx.d	$fa0, $s6, $s5
+	ld.d	$a4, $sp, 960                   # 8-byte Folded Reload
+	fldx.d	$fa1, $a4, $s7
+	ld.d	$a4, $sp, 952                   # 8-byte Folded Reload
+	fldx.d	$fa2, $a4, $s7
+	fld.d	$fa3, $a0, 8
+	ld.d	$a4, $sp, 1080                  # 8-byte Folded Reload
+	fldx.d	$fa4, $a4, $s7
+	fmul.d	$fa1, $fa0, $fa1
+	fmul.d	$fa0, $fa0, $fa2
+	fmadd.d	$fa0, $fa1, $fa3, $fa0
+	fmadd.d	$fa0, $fa4, $fa3, $fa0
+	ld.d	$a4, $sp, 1160                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a4, $s5
+	fldx.d	$fa0, $s6, $s5
+	ld.d	$a4, $sp, 944                   # 8-byte Folded Reload
+	fldx.d	$fa1, $a4, $s7
+	fld.d	$fa2, $a0, 16
+	fmul.d	$fa0, $fa0, $fa1
+	fmul.d	$fa0, $fa0, $fa2
+	ld.d	$a0, $sp, 1152                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a0, $s5
+	fldx.d	$fa0, $s6, $s5
+	fldx.d	$fa1, $a3, $s7
+	ld.d	$a0, $sp, 1072                  # 8-byte Folded Reload
+	fldx.d	$fa2, $a0, $s7
+	fmul.d	$fa0, $fa0, $fa1
+	fldx.d	$fa1, $ra, $s5
+	fldx.d	$fa3, $s3, $s5
+	ld.d	$a0, $sp, 1272                  # 8-byte Folded Reload
+	fldx.d	$fa4, $a0, $s7
+	add.d	$a0, $a6, $s5
+	fld.d	$fa5, $a0, -8
+	add.d	$s8, $ra, $s5
+	fmadd.d	$fa0, $fa0, $fa1, $fa2
+	fmul.d	$fa1, $fa3, $fa4
+	fmadd.d	$fa0, $fa1, $fa5, $fa0
+	ld.d	$a4, $sp, 1144                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a4, $s5
+	ld.d	$a4, $sp, 1064                  # 8-byte Folded Reload
+	fldx.d	$fa0, $a4, $s7
+	fldx.d	$fa1, $s6, $s5
+	fldx.d	$fa2, $fp, $s7
+	fld.d	$fa3, $s8, 8
+	fldx.d	$fa4, $s3, $s5
+	ld.d	$a4, $sp, 1280                  # 8-byte Folded Reload
+	fldx.d	$fa5, $a4, $s7
+	fldx.d	$fa6, $a6, $s5
+	fmul.d	$fa2, $fa1, $fa2
+	fmadd.d	$fa0, $fa2, $fa3, $fa0
+	fmul.d	$fa2, $fa4, $fa5
+	fmadd.d	$fa0, $fa2, $fa6, $fa0
+	fldx.d	$fa2, $t2, $s7
+	ld.d	$a4, $sp, 1056                  # 8-byte Folded Reload
+	fldx.d	$fa5, $a4, $s7
+	ld.d	$a4, $sp, 936                   # 8-byte Folded Reload
+	fldx.d	$fa7, $a4, $s7
+	ld.d	$a4, $sp, 1264                  # 8-byte Folded Reload
+	fldx.d	$ft0, $a4, $s7
+	fmadd.d	$fa0, $fa2, $fa3, $fa0
+	fmadd.d	$fa0, $fa5, $fa6, $fa0
+	fmadd.d	$fa0, $fa1, $fa7, $fa0
+	fmadd.d	$fa0, $fa4, $ft0, $fa0
+	ld.d	$a4, $sp, 1136                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a4, $s5
+	fld.d	$fa0, $s8, 16
+	ld.d	$a4, $sp, 1048                  # 8-byte Folded Reload
+	fldx.d	$fa1, $a4, $s7
+	fldx.d	$fa2, $s6, $s5
+	fldx.d	$fa3, $t4, $s7
+	fldx.d	$fa4, $s3, $s5
+	ld.d	$a4, $sp, 1256                  # 8-byte Folded Reload
+	fldx.d	$fa5, $a4, $s7
+	fld.d	$fa6, $a0, 8
+	fmul.d	$fa2, $fa2, $fa3
+	fmadd.d	$fa0, $fa2, $fa0, $fa1
+	fmul.d	$fa1, $fa4, $fa5
+	fmadd.d	$fa0, $fa1, $fa6, $fa0
+	ld.d	$a0, $sp, 1128                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a0, $s5
+	fldx.d	$fa0, $s6, $s5
+	fldx.d	$fa1, $t8, $s7
+	ld.d	$a0, $sp, 1040                  # 8-byte Folded Reload
+	fldx.d	$fa2, $a0, $s7
+	fmul.d	$fa1, $fa0, $fa1
+	ld.d	$a4, $sp, 1096                  # 8-byte Folded Reload
+	fldx.d	$fa3, $a4, $s5
+	fldx.d	$fa4, $s3, $s5
+	ld.d	$a0, $sp, 1248                  # 8-byte Folded Reload
+	fldx.d	$fa5, $a0, $s7
+	add.d	$a0, $a7, $s5
+	fld.d	$fa6, $a0, -8
+	add.d	$a0, $a4, $s5
+	fmadd.d	$fa1, $fa1, $fa3, $fa2
+	fmul.d	$fa2, $fa4, $fa5
+	fmadd.d	$fa1, $fa2, $fa6, $fa1
+	fldx.d	$fa2, $a2, $s7
+	ld.d	$a4, $sp, 1032                  # 8-byte Folded Reload
+	fldx.d	$fa5, $a4, $s7
+	ld.d	$a4, $sp, 928                   # 8-byte Folded Reload
+	fldx.d	$fa7, $a4, $s7
+	ld.d	$a4, $sp, 1240                  # 8-byte Folded Reload
+	fldx.d	$ft0, $a4, $s7
+	fmadd.d	$fa1, $fa2, $fa3, $fa1
+	fmadd.d	$fa1, $fa5, $fa6, $fa1
+	fmadd.d	$fa0, $fa0, $fa7, $fa1
+	fmadd.d	$fa0, $fa4, $ft0, $fa0
+	ld.d	$a4, $sp, 1120                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a4, $s5
+	fld.d	$fa0, $a0, 8
+	ld.d	$a0, $sp, 1024                  # 8-byte Folded Reload
+	fldx.d	$fa1, $a0, $s7
+	fldx.d	$fa2, $s6, $s5
+	fldx.d	$fa3, $s1, $s7
+	fldx.d	$fa4, $s3, $s5
+	ld.d	$a0, $sp, 1232                  # 8-byte Folded Reload
+	fldx.d	$fa5, $a0, $s7
+	fldx.d	$fa6, $a7, $s5
+	fmul.d	$fa3, $fa2, $fa3
+	fmadd.d	$fa1, $fa3, $fa0, $fa1
+	fmul.d	$fa3, $fa4, $fa5
+	fmadd.d	$fa1, $fa3, $fa6, $fa1
+	ld.d	$a0, $sp, 920                   # 8-byte Folded Reload
+	fldx.d	$fa3, $a0, $s7
+	ld.d	$a0, $sp, 1224                  # 8-byte Folded Reload
+	fldx.d	$fa5, $a0, $s7
+	fldx.d	$fa7, $t3, $s7
+	ld.d	$a0, $sp, 1016                  # 8-byte Folded Reload
+	fldx.d	$ft0, $a0, $s7
+	fmadd.d	$fa1, $fa2, $fa3, $fa1
+	fmadd.d	$fa1, $fa4, $fa5, $fa1
+	fmadd.d	$fa0, $fa7, $fa0, $fa1
+	fmadd.d	$fa0, $ft0, $fa6, $fa0
+	ld.d	$a0, $sp, 1112                  # 8-byte Folded Reload
+	fstx.d	$fa0, $a0, $s5
+	ld.d	$a0, $sp, 904                   # 8-byte Folded Reload
+	add.d	$s7, $s7, $a0
+	ld.d	$a0, $sp, 912                   # 8-byte Folded Reload
+	sub.d	$t6, $t6, $a0
+	addi.d	$s5, $s5, 8
+	addi.d	$s0, $s0, -1
+	addi.d	$t5, $t5, -1
+	addi.w	$s4, $s4, -1
+	addi.d	$s2, $s2, -1
+	addi.d	$t0, $t0, -1
+	addi.d	$a5, $a5, -1
+	addi.d	$t7, $t7, -1
+	ld.d	$a0, $sp, 1288                  # 8-byte Folded Reload
+	bne	$a0, $s4, .LBB1_70
+# %bb.71:                               #   in Loop: Header=BB1_69 Depth=3
+	ld.d	$a7, $sp, 1288                  # 8-byte Folded Reload
+	sub.w	$a2, $a7, $a5
+	sub.w	$a3, $a7, $s2
+	ld.d	$a0, $sp, 872                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 888                   # 8-byte Folded Reload
+	add.d	$a0, $a0, $a6
+	sub.w	$a4, $a0, $t6
+	ld.d	$a5, $sp, 896                   # 8-byte Folded Reload
+	addi.w	$a5, $a5, 1
+	sub.w	$a0, $a7, $t5
+	ld.d	$a1, $sp, 880                   # 8-byte Folded Reload
+	bne	$a5, $a1, .LBB1_69
+# %bb.72:                               #   in Loop: Header=BB1_68 Depth=2
+	sub.w	$a2, $a7, $t7
+	sub.w	$a3, $a7, $t0
+	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
+	add.d	$a0, $a0, $a6
+	sub.w	$a4, $a0, $t6
+	ld.d	$ra, $sp, 320                   # 8-byte Folded Reload
+	addi.w	$ra, $ra, 1
+	sub.w	$a0, $a7, $s0
+	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
+	bne	$ra, $a1, .LBB1_68
+	b	.LBB1_2
+.LBB1_73:                               #   in Loop: Header=BB1_3 Depth=1
+	st.d	$zero, $sp, 1248                # 8-byte Folded Spill
+.LBB1_74:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.d	$t0, $sp, 1288                  # 8-byte Folded Reload
+	ld.w	$t8, $s1, -8
+	ld.w	$a5, $s1, 4
+	sub.w	$t3, $a5, $t8
+	addi.d	$t1, $t3, 1
+	bltz	$t3, .LBB1_79
+# %bb.75:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.w	$a5, $s3, 8
+	move	$t4, $s1
+	ld.w	$a7, $s1, -4
+	sub.d	$a5, $a5, $a7
+	mulw.d.w	$a5, $a5, $t1
+	st.d	$a5, $sp, 1224                  # 8-byte Folded Spill
+	b	.LBB1_80
+.LBB1_76:                               #   in Loop: Header=BB1_3 Depth=1
+	st.d	$zero, $sp, 1248                # 8-byte Folded Spill
+.LBB1_77:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.d	$t0, $sp, 1288                  # 8-byte Folded Reload
+	ld.w	$t6, $s1, -8
+	ld.w	$a5, $s1, 4
+	sub.w	$a7, $a5, $t6
+	addi.d	$t2, $a7, 1
+	bltz	$a7, .LBB1_82
+# %bb.78:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.w	$a5, $s3, 8
+	ld.w	$t1, $s1, -4
+	sub.d	$a5, $a5, $t1
+	mulw.d.w	$fp, $a5, $t2
+	b	.LBB1_83
+.LBB1_79:                               #   in Loop: Header=BB1_3 Depth=1
+	move	$t4, $s1
+	st.d	$zero, $sp, 1224                # 8-byte Folded Spill
+.LBB1_80:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.w	$s1, $t0, -8
+	ld.w	$a5, $t0, 4
+	sub.w	$t1, $a5, $s1
+	addi.d	$t2, $t1, 1
+	bltz	$t1, .LBB1_85
+# %bb.81:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.w	$a5, $sp, 1320
+	ld.w	$a7, $t0, -4
+	sub.d	$a5, $a5, $a7
+	mulw.d.w	$s5, $a5, $t2
+	b	.LBB1_86
+.LBB1_82:                               #   in Loop: Header=BB1_3 Depth=1
+	move	$fp, $zero
+.LBB1_83:                               #   in Loop: Header=BB1_3 Depth=1
+	move	$t2, $s1
+	ld.w	$t8, $t0, -8
+	ld.w	$a5, $t0, 4
+	sub.w	$t1, $a5, $t8
+	addi.d	$t4, $t1, 1
+	bltz	$t1, .LBB1_88
+# %bb.84:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.w	$a5, $sp, 1320
+	ld.w	$t3, $t0, -4
+	sub.d	$a5, $a5, $t3
+	mulw.d.w	$s1, $a5, $t4
+	b	.LBB1_89
+.LBB1_85:                               #   in Loop: Header=BB1_3 Depth=1
+	move	$s5, $zero
+.LBB1_86:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.w	$s4, $s6, 4
+	ld.w	$a5, $s6, 16
+	sub.w	$t6, $a5, $s4
+	addi.d	$t0, $t6, 1
+	bltz	$t6, .LBB1_91
+# %bb.87:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.d	$a5, $sp, 1264                  # 8-byte Folded Reload
+	ld.w	$a5, $a5, 8
+	ld.w	$a7, $s6, 8
+	sub.d	$a5, $a5, $a7
+	mulw.d.w	$t5, $a5, $t0
+	b	.LBB1_92
+.LBB1_88:                               #   in Loop: Header=BB1_3 Depth=1
+	move	$s1, $zero
+.LBB1_89:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.w	$s0, $s6, 4
+	ld.w	$a5, $s6, 16
+	sub.w	$t4, $a5, $s0
+	addi.d	$t7, $t4, 1
+	bltz	$t4, .LBB1_94
+# %bb.90:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.w	$a5, $s3, 8
+	move	$t5, $s6
+	ld.w	$t3, $s6, 8
+	sub.d	$a5, $a5, $t3
+	mulw.d.w	$s3, $a5, $t7
+	b	.LBB1_95
+.LBB1_91:                               #   in Loop: Header=BB1_3 Depth=1
+	move	$t5, $zero
+.LBB1_92:                               #   in Loop: Header=BB1_3 Depth=1
+	move	$fp, $a4
+	ld.d	$a5, $sp, 1288                  # 8-byte Folded Reload
+	ld.w	$t0, $a5, -12
+	ld.d	$a5, $sp, 1280                  # 8-byte Folded Reload
+	ldx.w	$a5, $a5, $s8
+	sub.w	$a7, $a5, $t0
+	addi.d	$ra, $a7, 1
+	move	$a4, $a2
+	bltz	$a7, .LBB1_97
+# %bb.93:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.d	$t2, $sp, 96                    # 8-byte Folded Reload
+	ld.w	$a5, $t2, 4
+	ld.w	$t2, $t2, 8
+	mul.d	$a5, $a5, $ra
+	st.d	$a5, $sp, 1104                  # 8-byte Folded Spill
+	mul.d	$t7, $t2, $ra
+	b	.LBB1_98
+.LBB1_94:                               #   in Loop: Header=BB1_3 Depth=1
+	move	$t5, $s6
+	move	$s3, $zero
+.LBB1_95:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.w	$s5, $t0, -12
+	ld.d	$a5, $sp, 1280                  # 8-byte Folded Reload
+	ldx.w	$a5, $a5, $s8
+	sub.w	$s4, $a5, $s5
+	addi.d	$s6, $s4, 1
+	bltz	$s4, .LBB1_108
+# %bb.96:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.d	$t3, $sp, 96                    # 8-byte Folded Reload
+	ld.w	$a5, $t3, 4
+	ld.w	$t3, $t3, 8
+	mul.d	$a5, $a5, $s6
+	st.d	$a5, $sp, 504                   # 8-byte Folded Spill
+	mul.d	$a5, $t3, $s6
+	b	.LBB1_109
+.LBB1_97:                               #   in Loop: Header=BB1_3 Depth=1
+	st.d	$zero, $sp, 1104                # 8-byte Folded Spill
+	move	$t7, $zero
+.LBB1_98:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.w	$s0, $sp, 1300
+	ld.w	$a2, $sp, 1304
+	ld.w	$s3, $sp, 1308
+	slt	$a5, $s0, $a2
+	masknez	$t2, $s0, $a5
+	st.d	$a2, $sp, 1112                  # 8-byte Folded Spill
+	maskeqz	$a5, $a2, $a5
+	or	$a5, $a5, $t2
+	slt	$t2, $a5, $s3
+	masknez	$a5, $a5, $t2
+	st.d	$s3, $sp, 920                   # 8-byte Folded Spill
+	maskeqz	$t2, $s3, $t2
+	or	$a5, $t2, $a5
+	blez	$a5, .LBB1_2
+# %bb.99:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.d	$a5, $sp, 920                   # 8-byte Folded Reload
+	blez	$a5, .LBB1_2
+# %bb.100:                              #   in Loop: Header=BB1_3 Depth=1
+	ld.d	$a5, $sp, 1112                  # 8-byte Folded Reload
+	blez	$a5, .LBB1_2
+# %bb.101:                              #   in Loop: Header=BB1_3 Depth=1
+	blez	$s0, .LBB1_2
+# %bb.102:                              #   in Loop: Header=BB1_3 Depth=1
+	move	$a2, $a4
+	ld.d	$a5, $sp, 1272                  # 8-byte Folded Reload
+	ldx.w	$a5, $a5, $s8
+	move	$s8, $zero
+	sub.w	$a3, $a5, $a3
+	ld.d	$a5, $sp, 1248                  # 8-byte Folded Reload
+	add.d	$a4, $fp, $a5
+	addi.d	$a5, $a3, 1
+	mul.d	$a4, $a5, $a4
+	nor	$t2, $a3, $zero
+	srli.d	$t2, $t2, 31
+	and	$a4, $t2, $a4
+	ld.w	$t2, $t4, -12
+	ld.w	$fp, $t4, 0
+	move	$t4, $s5
+	add.w	$s5, $a2, $a4
+	sub.d	$a2, $a1, $t8
+	ld.d	$a4, $sp, 1224                  # 8-byte Folded Reload
+	add.d	$a4, $a2, $a4
+	sub.w	$a2, $fp, $t2
+	addi.d	$fp, $a2, 1
+	mul.d	$a4, $fp, $a4
+	nor	$t8, $a2, $zero
+	srli.d	$t8, $t8, 31
+	and	$a4, $t8, $a4
+	ld.w	$t8, $sp, 1312
+	ld.w	$s3, $sp, 1316
+	sub.d	$t2, $a0, $t2
+	add.w	$s7, $t2, $a4
+	sub.d	$a4, $t8, $t0
+	sub.d	$t0, $s3, $s1
+	add.d	$t0, $t0, $t4
+	mul.d	$t0, $ra, $t0
+	nor	$a7, $a7, $zero
+	srli.d	$a7, $a7, 31
+	and	$a7, $a7, $t0
+	ld.w	$t0, $s6, 0
+	ld.w	$t2, $s6, 12
+	add.w	$a4, $a4, $a7
+	sub.d	$a1, $a1, $s4
+	sub.d	$a0, $a0, $t0
+	sub.w	$a7, $t2, $t0
+	add.d	$a1, $a1, $t5
+	addi.d	$t0, $a7, 1
+	mul.d	$a1, $t0, $a1
+	nor	$t2, $a7, $zero
+	srli.d	$t2, $t2, 31
+	and	$a1, $t2, $a1
+	add.w	$t8, $a0, $a1
+	srai.d	$a0, $a3, 31
+	andn	$a0, $a5, $a0
+	mul.d	$a1, $a0, $a6
+	ld.d	$a5, $sp, 1240                  # 8-byte Folded Reload
+	andn	$a1, $a1, $a5
+	srai.d	$a5, $a2, 31
+	andn	$a5, $fp, $a5
+	addi.d	$a6, $t3, 1
+	mul.d	$a6, $a5, $a6
+	srai.d	$t2, $t3, 31
+	andn	$a6, $a6, $t2
+	ld.d	$t2, $sp, 96                    # 8-byte Folded Reload
+	ld.w	$ra, $t2, 0
+	srai.d	$t2, $a7, 31
+	andn	$t0, $t0, $t2
+	ld.d	$fp, $sp, 1112                  # 8-byte Folded Reload
+	mul.d	$t2, $fp, $t0
+	mul.d	$a5, $fp, $a5
+	mul.d	$a0, $fp, $a0
+	addi.d	$t3, $t6, 1
+	mul.d	$t0, $t0, $t3
+	srai.d	$t3, $t6, 31
+	andn	$t0, $t0, $t3
+	addi.d	$t3, $t1, 1
+	mul.d	$t3, $t7, $t3
+	srai.d	$t1, $t1, 31
+	andn	$t1, $t3, $t1
+	mul.d	$t3, $s0, $ra
+	st.d	$t3, $sp, 1096                  # 8-byte Folded Spill
+	ld.d	$t3, $sp, 1232                  # 8-byte Folded Reload
+	addi.w	$t3, $t3, 0
+	bstrpick.d	$t4, $s2, 31, 0
+	ld.d	$t5, $sp, 1256                  # 8-byte Folded Reload
+	addi.w	$t5, $t5, 0
+	st.d	$t5, $sp, 1088                  # 8-byte Folded Spill
+	slli.d	$t5, $t5, 3
+	ld.d	$t6, $sp, 744                   # 8-byte Folded Reload
+	sub.d	$t6, $t6, $t5
+	st.d	$t6, $sp, 1080                  # 8-byte Folded Spill
+	ld.d	$t6, $sp, 752                   # 8-byte Folded Reload
+	sub.d	$t6, $t6, $t5
+	st.d	$t6, $sp, 1072                  # 8-byte Folded Spill
+	ori	$t6, $zero, 1
+	sub.d	$t6, $t6, $fp
+	ld.d	$t7, $sp, 1104                  # 8-byte Folded Reload
+	mul.d	$t6, $t7, $t6
+	add.d	$t1, $t1, $t6
+	st.d	$t1, $sp, 912                   # 8-byte Folded Spill
+	srai.d	$t1, $a7, 63
+	or	$t6, $a7, $t1
+	sub.d	$t2, $t2, $t6
+	ld.d	$t6, $sp, 760                   # 8-byte Folded Reload
+	sub.d	$t6, $t6, $t5
+	st.d	$t6, $sp, 1064                  # 8-byte Folded Spill
+	nor	$t0, $t0, $zero
+	add.d	$t0, $t0, $t2
+	st.d	$t0, $sp, 1056                  # 8-byte Folded Spill
+	nor	$a7, $a7, $t1
+	st.d	$a7, $sp, 1048                  # 8-byte Folded Spill
+	srai.d	$a7, $a2, 63
+	or	$t0, $a2, $a7
+	nor	$a2, $a2, $a7
+	st.d	$a2, $sp, 1040                  # 8-byte Folded Spill
+	ld.d	$a2, $sp, 728                   # 8-byte Folded Reload
+	sub.d	$a2, $a2, $t5
+	st.d	$a2, $sp, 1032                  # 8-byte Folded Spill
+	ld.d	$a2, $sp, 1208                  # 8-byte Folded Reload
+	sub.d	$a2, $a2, $t5
+	st.d	$a2, $sp, 1024                  # 8-byte Folded Spill
+	ld.d	$a2, $sp, 1200                  # 8-byte Folded Reload
+	sub.d	$a2, $a2, $t5
+	st.d	$a2, $sp, 1008                  # 8-byte Folded Spill
+	ld.d	$a2, $sp, 736                   # 8-byte Folded Reload
+	sub.d	$a2, $a2, $t5
+	st.d	$a2, $sp, 1000                  # 8-byte Folded Spill
+	sub.w	$t5, $zero, $s0
+	nor	$a2, $a6, $zero
+	sub.d	$a5, $a5, $t0
+	add.d	$a2, $a2, $a5
+	st.d	$a2, $sp, 992                   # 8-byte Folded Spill
+	srai.d	$a2, $a3, 63
+	or	$a5, $a3, $a2
+	sub.d	$a0, $a0, $a5
+	slli.d	$a5, $t4, 3
+	nor	$a1, $a1, $zero
+	add.d	$a0, $a1, $a0
+	st.d	$a0, $sp, 984                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 1016                  # 8-byte Folded Reload
+	sub.d	$a0, $a0, $a5
+	st.d	$a0, $sp, 976                   # 8-byte Folded Spill
+	nor	$a0, $a3, $a2
+	st.d	$a0, $sp, 968                   # 8-byte Folded Spill
+	ld.d	$a2, $sp, 768                   # 8-byte Folded Reload
+	sub.d	$a0, $a2, $a5
+	st.d	$a0, $sp, 960                   # 8-byte Folded Spill
+	sub.d	$a0, $zero, $t4
+	sub.d	$a0, $a0, $t3
+	st.d	$a0, $sp, 952                   # 8-byte Folded Spill
+	slli.d	$a0, $t3, 3
+	move	$t3, $s7
+	sub.d	$a1, $a5, $a0
+	add.d	$a1, $a2, $a1
+	st.d	$a1, $sp, 944                   # 8-byte Folded Spill
+	sub.d	$a0, $a2, $a0
+	st.d	$a0, $sp, 936                   # 8-byte Folded Spill
+	slli.d	$t6, $ra, 3
+	.p2align	4, , 16
+.LBB1_103:                              #   Parent Loop BB1_3 Depth=1
+                                        # =>  This Loop Header: Depth=2
+                                        #       Child Loop BB1_104 Depth 3
+                                        #         Child Loop BB1_105 Depth 4
+	st.d	$s8, $sp, 928                   # 8-byte Folded Spill
+	move	$a2, $zero
+	.p2align	4, , 16
+.LBB1_104:                              #   Parent Loop BB1_3 Depth=1
+                                        #     Parent Loop BB1_103 Depth=2
+                                        # =>    This Loop Header: Depth=3
+                                        #         Child Loop BB1_105 Depth 4
+	st.d	$a2, $sp, 1128                  # 8-byte Folded Spill
+	move	$a2, $zero
+	move	$a1, $zero
+	move	$a3, $zero
+	move	$fp, $a4
+	ld.d	$a0, $sp, 1088                  # 8-byte Folded Reload
+	add.d	$a0, $a0, $a4
+	ld.d	$t2, $sp, 744                   # 8-byte Folded Reload
+	alsl.d	$a4, $a0, $t2, 3
+	st.d	$a4, $sp, 1288                  # 8-byte Folded Spill
+	ld.d	$t1, $sp, 752                   # 8-byte Folded Reload
+	alsl.d	$a4, $a0, $t1, 3
+	st.d	$a4, $sp, 1280                  # 8-byte Folded Spill
+	ld.d	$a5, $sp, 760                   # 8-byte Folded Reload
+	alsl.d	$a4, $a0, $a5, 3
+	st.d	$a4, $sp, 1272                  # 8-byte Folded Spill
+	ld.d	$t4, $sp, 728                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $t4, 3
+	st.d	$a0, $sp, 1264                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 656                   # 8-byte Folded Reload
+	alsl.d	$a0, $t8, $a0, 3
+	st.d	$a0, $sp, 1256                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 672                   # 8-byte Folded Reload
+	alsl.d	$a0, $t8, $a0, 3
+	st.d	$a0, $sp, 1248                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 680                   # 8-byte Folded Reload
+	alsl.d	$a0, $t8, $a0, 3
+	st.d	$a0, $sp, 1240                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 664                   # 8-byte Folded Reload
+	alsl.d	$a0, $t8, $a0, 3
+	st.d	$a0, $sp, 1232                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 648                   # 8-byte Folded Reload
+	alsl.d	$a0, $t8, $a0, 3
+	st.d	$a0, $sp, 1224                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 688                   # 8-byte Folded Reload
+	alsl.d	$a0, $t8, $a0, 3
+	st.d	$a0, $sp, 1216                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 696                   # 8-byte Folded Reload
+	alsl.d	$a0, $t8, $a0, 3
+	st.d	$a0, $sp, 1208                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 704                   # 8-byte Folded Reload
+	alsl.d	$a0, $t8, $a0, 3
+	st.d	$a0, $sp, 1200                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 1056                  # 8-byte Folded Reload
+	sub.d	$t0, $a0, $t8
+	ld.d	$a0, $sp, 1048                  # 8-byte Folded Reload
+	sub.d	$t8, $a0, $t8
+	ld.d	$a0, $sp, 1016                  # 8-byte Folded Reload
+	alsl.d	$s7, $s5, $a0, 3
+	ld.d	$a4, $sp, 768                   # 8-byte Folded Reload
+	alsl.d	$s8, $s5, $a4, 3
+	ld.d	$a0, $sp, 976                   # 8-byte Folded Reload
+	alsl.d	$a0, $s5, $a0, 3
+	st.d	$a0, $sp, 1192                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 960                   # 8-byte Folded Reload
+	alsl.d	$a0, $s5, $a0, 3
+	st.d	$a0, $sp, 1184                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 944                   # 8-byte Folded Reload
+	alsl.d	$a0, $s5, $a0, 3
+	st.d	$a0, $sp, 1176                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 936                   # 8-byte Folded Reload
+	alsl.d	$a7, $s5, $a0, 3
+	ld.d	$a0, $sp, 952                   # 8-byte Folded Reload
+	add.d	$a0, $a0, $s5
+	alsl.d	$a0, $a0, $a4, 3
+	st.d	$a0, $sp, 1168                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 984                   # 8-byte Folded Reload
+	sub.d	$t7, $a0, $s5
+	ld.d	$a0, $sp, 968                   # 8-byte Folded Reload
+	sub.d	$s0, $a0, $s5
+	ld.d	$a0, $sp, 1040                  # 8-byte Folded Reload
+	sub.d	$a4, $a0, $t3
+	ld.d	$a0, $sp, 992                   # 8-byte Folded Reload
+	sub.d	$s2, $a0, $t3
+	ld.d	$a0, $sp, 712                   # 8-byte Folded Reload
+	alsl.d	$a6, $t3, $a0, 3
+	ld.d	$a0, $sp, 720                   # 8-byte Folded Reload
+	alsl.d	$t3, $t3, $a0, 3
+	alsl.d	$t4, $fp, $t4, 3
+	alsl.d	$a0, $fp, $t2, 3
+	st.d	$a0, $sp, 1160                  # 8-byte Folded Spill
+	alsl.d	$a0, $fp, $t1, 3
+	st.d	$a0, $sp, 1152                  # 8-byte Folded Spill
+	alsl.d	$a0, $fp, $a5, 3
+	st.d	$a0, $sp, 1144                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 736                   # 8-byte Folded Reload
+	alsl.d	$a0, $fp, $a0, 3
+	st.d	$a0, $sp, 1136                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 1080                  # 8-byte Folded Reload
+	alsl.d	$s3, $fp, $a0, 3
+	ld.d	$a0, $sp, 1072                  # 8-byte Folded Reload
+	alsl.d	$s4, $fp, $a0, 3
+	ld.d	$a0, $sp, 1064                  # 8-byte Folded Reload
+	alsl.d	$s5, $fp, $a0, 3
+	ld.d	$a0, $sp, 1032                  # 8-byte Folded Reload
+	alsl.d	$s6, $fp, $a0, 3
+	ld.d	$a0, $sp, 1024                  # 8-byte Folded Reload
+	alsl.d	$t1, $fp, $a0, 3
+	ld.d	$a0, $sp, 1008                  # 8-byte Folded Reload
+	alsl.d	$t2, $fp, $a0, 3
+	ld.d	$a0, $sp, 1000                  # 8-byte Folded Reload
+	st.d	$fp, $sp, 1120                  # 8-byte Folded Spill
+	alsl.d	$a5, $fp, $a0, 3
+	ld.d	$a0, $sp, 1096                  # 8-byte Folded Reload
+	.p2align	4, , 16
+.LBB1_105:                              #   Parent Loop BB1_3 Depth=1
+                                        #     Parent Loop BB1_103 Depth=2
+                                        #       Parent Loop BB1_104 Depth=3
+                                        # =>      This Inner Loop Header: Depth=4
+	fldx.d	$fa0, $a6, $a1
+	fldx.d	$fa1, $s3, $a3
+	ld.d	$fp, $sp, 1168                  # 8-byte Folded Reload
+	fldx.d	$fa2, $fp, $a1
+	fmul.d	$fa0, $fa0, $fa1
+	fmul.d	$fa0, $fa0, $fa2
+	ld.d	$fp, $sp, 1256                  # 8-byte Folded Reload
+	fstx.d	$fa0, $fp, $a1
+	fldx.d	$fa0, $a6, $a1
+	fldx.d	$fa1, $s4, $a3
+	move	$fp, $t6
+	move	$t6, $t5
+	move	$t5, $ra
+	add.d	$ra, $a7, $a1
+	fld.d	$fa2, $ra, -8
+	fmul.d	$fa0, $fa0, $fa1
+	fmul.d	$fa0, $fa0, $fa2
+	ld.d	$s1, $sp, 1248                  # 8-byte Folded Reload
+	fstx.d	$fa0, $s1, $a1
+	fldx.d	$fa0, $a6, $a1
+	fldx.d	$fa1, $s5, $a3
+	fldx.d	$fa2, $a7, $a1
+	fldx.d	$fa3, $t4, $a3
+	fldx.d	$fa4, $s6, $a3
+	fmul.d	$fa1, $fa0, $fa1
+	fmul.d	$fa1, $fa2, $fa1
+	fmadd.d	$fa1, $fa3, $fa2, $fa1
+	fmadd.d	$fa0, $fa0, $fa4, $fa1
+	ld.d	$s1, $sp, 1240                  # 8-byte Folded Reload
+	fstx.d	$fa0, $s1, $a1
+	fldx.d	$fa0, $a6, $a1
+	fldx.d	$fa1, $t1, $a3
+	fld.d	$fa2, $ra, 8
+	fmul.d	$fa0, $fa0, $fa1
+	fmul.d	$fa0, $fa0, $fa2
+	ld.d	$s1, $sp, 1232                  # 8-byte Folded Reload
+	fstx.d	$fa0, $s1, $a1
+	fldx.d	$fa0, $a6, $a1
+	fldx.d	$fa1, $t2, $a3
+	ld.d	$s1, $sp, 1176                  # 8-byte Folded Reload
+	fldx.d	$fa2, $s1, $a1
+	fmul.d	$fa0, $fa0, $fa1
+	fmul.d	$fa0, $fa0, $fa2
+	ld.d	$s1, $sp, 1224                  # 8-byte Folded Reload
+	fstx.d	$fa0, $s1, $a1
+	ld.d	$s1, $sp, 1160                  # 8-byte Folded Reload
+	fldx.d	$fa0, $s1, $a3
+	fldx.d	$fa1, $a6, $a1
+	fldx.d	$fa2, $s3, $a3
+	ld.d	$s1, $sp, 1192                  # 8-byte Folded Reload
+	fldx.d	$fa3, $s1, $a1
+	fldx.d	$fa4, $t3, $a1
+	ld.d	$ra, $sp, 1288                  # 8-byte Folded Reload
+	fldx.d	$fa5, $ra, $a3
+	ld.d	$s1, $sp, 1184                  # 8-byte Folded Reload
+	fldx.d	$fa6, $s1, $a1
+	fmul.d	$fa1, $fa1, $fa2
+	fmadd.d	$fa0, $fa1, $fa3, $fa0
+	fmul.d	$fa1, $fa4, $fa5
+	fmadd.d	$fa0, $fa1, $fa6, $fa0
+	ld.d	$s1, $sp, 1216                  # 8-byte Folded Reload
+	fstx.d	$fa0, $s1, $a1
+	ld.d	$s1, $sp, 1152                  # 8-byte Folded Reload
+	fldx.d	$fa0, $s1, $a3
+	fldx.d	$fa1, $a6, $a1
+	fldx.d	$fa2, $s4, $a3
+	add.d	$ra, $s7, $a1
+	fld.d	$fa3, $ra, -8
+	fldx.d	$fa4, $t3, $a1
+	ld.d	$ra, $sp, 1280                  # 8-byte Folded Reload
+	fldx.d	$fa5, $ra, $a3
+	add.d	$ra, $s8, $a1
+	fld.d	$fa6, $ra, -8
+	move	$ra, $t5
+	move	$t5, $t6
+	move	$t6, $fp
+	fmul.d	$fa1, $fa1, $fa2
+	fmadd.d	$fa0, $fa1, $fa3, $fa0
+	fmul.d	$fa1, $fa4, $fa5
+	fmadd.d	$fa0, $fa1, $fa6, $fa0
+	ld.d	$fp, $sp, 1208                  # 8-byte Folded Reload
+	fstx.d	$fa0, $fp, $a1
+	ld.d	$fp, $sp, 1144                  # 8-byte Folded Reload
+	fldx.d	$fa0, $fp, $a3
+	fldx.d	$fa1, $a6, $a1
+	fldx.d	$fa2, $s5, $a3
+	fldx.d	$fa3, $s7, $a1
+	fldx.d	$fa4, $t3, $a1
+	ld.d	$fp, $sp, 1272                  # 8-byte Folded Reload
+	fldx.d	$fa5, $fp, $a3
+	fldx.d	$fa6, $s8, $a1
+	fmul.d	$fa2, $fa1, $fa2
+	fmadd.d	$fa0, $fa2, $fa3, $fa0
+	fmul.d	$fa2, $fa4, $fa5
+	fmadd.d	$fa0, $fa2, $fa6, $fa0
+	fldx.d	$fa2, $a5, $a3
+	ld.d	$fp, $sp, 1264                  # 8-byte Folded Reload
+	fldx.d	$fa5, $fp, $a3
+	fldx.d	$fa7, $t4, $a3
+	ld.d	$fp, $sp, 1136                  # 8-byte Folded Reload
+	fldx.d	$ft0, $fp, $a3
+	fmadd.d	$fa0, $fa1, $fa2, $fa0
+	fmadd.d	$fa0, $fa4, $fa5, $fa0
+	fmadd.d	$fa0, $fa7, $fa3, $fa0
+	fmadd.d	$fa0, $ft0, $fa6, $fa0
+	ld.d	$fp, $sp, 1200                  # 8-byte Folded Reload
+	fstx.d	$fa0, $fp, $a1
+	add.d	$a3, $a3, $t6
+	sub.d	$a0, $a0, $ra
+	addi.d	$a1, $a1, 8
+	addi.d	$t0, $t0, -1
+	addi.d	$t8, $t8, -1
+	addi.w	$a2, $a2, -1
+	addi.d	$a4, $a4, -1
+	addi.d	$s2, $s2, -1
+	addi.d	$t7, $t7, -1
+	addi.d	$s0, $s0, -1
+	bne	$t5, $a2, .LBB1_105
+# %bb.106:                              #   in Loop: Header=BB1_104 Depth=3
+	sub.w	$s5, $t5, $s0
+	sub.w	$t3, $t5, $a4
+	ld.d	$a1, $sp, 1104                  # 8-byte Folded Reload
+	ld.d	$a3, $sp, 1120                  # 8-byte Folded Reload
+	add.d	$a1, $a1, $a3
+	sub.w	$a4, $a1, $a0
+	ld.d	$a2, $sp, 1128                  # 8-byte Folded Reload
+	addi.w	$a2, $a2, 1
+	sub.w	$t8, $t5, $t8
+	ld.d	$a1, $sp, 1112                  # 8-byte Folded Reload
+	bne	$a2, $a1, .LBB1_104
+# %bb.107:                              #   in Loop: Header=BB1_103 Depth=2
+	sub.w	$s5, $t5, $t7
+	sub.w	$t3, $t5, $s2
+	ld.d	$a1, $sp, 912                   # 8-byte Folded Reload
+	add.d	$a1, $a1, $a3
+	sub.w	$a4, $a1, $a0
+	ld.d	$s8, $sp, 928                   # 8-byte Folded Reload
+	addi.w	$s8, $s8, 1
+	sub.w	$t8, $t5, $t0
+	ld.d	$a0, $sp, 920                   # 8-byte Folded Reload
+	bne	$s8, $a0, .LBB1_103
+	b	.LBB1_2
+.LBB1_108:                              #   in Loop: Header=BB1_3 Depth=1
+	st.d	$zero, $sp, 504                 # 8-byte Folded Spill
+	move	$a5, $zero
+.LBB1_109:                              #   in Loop: Header=BB1_3 Depth=1
+	ld.w	$t3, $sp, 1300
+	ld.w	$t0, $sp, 1304
+	ld.w	$t7, $sp, 1308
+	slt	$s7, $t3, $t0
+	masknez	$ra, $t3, $s7
+	st.d	$t0, $sp, 512                   # 8-byte Folded Spill
+	maskeqz	$s7, $t0, $s7
+	or	$s7, $s7, $ra
+	slt	$ra, $s7, $t7
+	masknez	$s7, $s7, $ra
+	st.d	$t7, $sp, 136                   # 8-byte Folded Spill
+	maskeqz	$ra, $t7, $ra
+	or	$s7, $ra, $s7
+	blez	$s7, .LBB1_2
+# %bb.110:                              #   in Loop: Header=BB1_3 Depth=1
+	ld.d	$t0, $sp, 136                   # 8-byte Folded Reload
+	blez	$t0, .LBB1_2
+# %bb.111:                              #   in Loop: Header=BB1_3 Depth=1
+	ld.d	$t0, $sp, 512                   # 8-byte Folded Reload
+	blez	$t0, .LBB1_2
+# %bb.112:                              #   in Loop: Header=BB1_3 Depth=1
+	blez	$t3, .LBB1_2
+# %bb.113:                              #   in Loop: Header=BB1_3 Depth=1
+	ld.d	$t0, $sp, 1272                  # 8-byte Folded Reload
+	ldx.w	$s7, $t0, $s8
+	st.d	$zero, $sp, 144                 # 8-byte Folded Spill
+	sub.w	$a3, $s7, $a3
+	ld.d	$t0, $sp, 1248                  # 8-byte Folded Reload
+	add.d	$a4, $a4, $t0
+	addi.d	$t0, $a3, 1
+	mul.d	$a4, $t0, $a4
+	nor	$t7, $a3, $zero
+	srli.d	$t7, $t7, 31
+	and	$a4, $t7, $a4
+	ld.w	$s8, $t2, -12
+	ld.w	$t7, $t2, 0
+	add.w	$s7, $a2, $a4
+	sub.d	$a4, $a1, $t6
+	add.d	$a4, $a4, $fp
+	sub.w	$t7, $t7, $s8
+	addi.d	$fp, $t7, 1
+	mul.d	$a4, $fp, $a4
+	nor	$t6, $t7, $zero
+	srli.d	$t6, $t6, 31
+	and	$a4, $t6, $a4
+	ld.w	$t6, $sp, 1312
+	ld.w	$ra, $sp, 1316
+	sub.d	$s8, $a0, $s8
+	add.w	$a4, $s8, $a4
+	sub.d	$t6, $t6, $s5
+	sub.d	$t8, $ra, $t8
+	add.d	$t8, $t8, $s1
+	mul.d	$t8, $s6, $t8
+	nor	$s1, $s4, $zero
+	srli.d	$s1, $s1, 31
+	and	$t8, $s1, $t8
+	ld.w	$s1, $t5, 0
+	ld.w	$s4, $t5, 12
+	add.w	$t6, $t6, $t8
+	sub.d	$a1, $a1, $s0
+	sub.d	$a0, $a0, $s1
+	sub.w	$t8, $s4, $s1
+	add.d	$a1, $a1, $s3
+	addi.d	$s0, $t8, 1
+	mul.d	$a1, $s0, $a1
+	nor	$s1, $t8, $zero
+	srli.d	$s1, $s1, 31
+	and	$a1, $s1, $a1
+	add.w	$a0, $a0, $a1
+	srai.d	$a1, $a3, 31
+	andn	$a1, $t0, $a1
+	mul.d	$a6, $a1, $a6
+	ld.d	$a2, $sp, 1240                  # 8-byte Folded Reload
+	andn	$a6, $a6, $a2
+	srai.d	$s1, $t7, 31
+	andn	$fp, $fp, $s1
+	addi.d	$a2, $a7, 1
+	mul.d	$t0, $fp, $a2
+	srai.d	$a7, $a7, 31
+	andn	$a7, $t0, $a7
+	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
+	ld.w	$s3, $t0, 0
+	srai.d	$t0, $t8, 31
+	andn	$t0, $s0, $t0
+	ld.d	$s1, $sp, 512                   # 8-byte Folded Reload
+	mul.d	$s0, $s1, $t0
+	mul.d	$fp, $s1, $fp
+	mul.d	$a1, $s1, $a1
+	addi.d	$a2, $t4, 1
+	mul.d	$t0, $t0, $a2
+	srai.d	$t4, $t4, 31
+	andn	$t0, $t0, $t4
+	addi.d	$a2, $t1, 1
+	mul.d	$a5, $a5, $a2
+	srai.d	$t1, $t1, 31
+	andn	$a5, $a5, $t1
+	ld.d	$a2, $sp, 1232                  # 8-byte Folded Reload
+	addi.w	$t1, $a2, 0
+	bstrpick.d	$t2, $s2, 31, 0
+	ld.d	$a2, $sp, 1256                  # 8-byte Folded Reload
+	addi.w	$a2, $a2, 0
+	st.d	$a2, $sp, 448                   # 8-byte Folded Spill
+	slli.d	$t4, $a2, 3
+	ld.d	$t5, $sp, 544                   # 8-byte Folded Reload
+	sub.d	$a2, $t5, $t4
+	st.d	$a2, $sp, 440                   # 8-byte Folded Spill
+	ld.d	$t5, $sp, 480                   # 8-byte Folded Reload
+	sub.d	$a2, $t5, $t4
+	st.d	$a2, $sp, 432                   # 8-byte Folded Spill
+	ori	$t5, $zero, 1
+	sub.d	$t5, $t5, $s1
+	ld.d	$a2, $sp, 504                   # 8-byte Folded Reload
+	mul.d	$t5, $a2, $t5
+	add.d	$a2, $a5, $t5
+	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
+	srai.d	$a5, $t8, 63
+	or	$t5, $t8, $a5
+	sub.d	$t5, $s0, $t5
+	ld.d	$s0, $sp, 744                   # 8-byte Folded Reload
+	sub.d	$a2, $s0, $t4
+	st.d	$a2, $sp, 424                   # 8-byte Folded Spill
+	nor	$t0, $t0, $zero
+	add.d	$a2, $t0, $t5
+	st.d	$a2, $sp, 416                   # 8-byte Folded Spill
+	nor	$a2, $t8, $a5
+	st.d	$a2, $sp, 408                   # 8-byte Folded Spill
+	srai.d	$a5, $t7, 63
+	or	$t0, $t7, $a5
+	nor	$a2, $t7, $a5
+	st.d	$a2, $sp, 400                   # 8-byte Folded Spill
+	ld.d	$a5, $sp, 608                   # 8-byte Folded Reload
+	sub.d	$a2, $a5, $t4
+	st.d	$a2, $sp, 392                   # 8-byte Folded Spill
+	nor	$a5, $a7, $zero
+	sub.d	$a7, $fp, $t0
+	add.d	$a2, $a5, $a7
+	st.d	$a2, $sp, 384                   # 8-byte Folded Spill
+	srai.d	$a5, $a3, 63
+	or	$a7, $a3, $a5
+	nor	$a2, $a3, $a5
+	st.d	$a2, $sp, 376                   # 8-byte Folded Spill
+	ld.d	$a3, $sp, 536                   # 8-byte Folded Reload
+	sub.d	$a2, $a3, $t4
+	st.d	$a2, $sp, 368                   # 8-byte Folded Spill
+	sub.d	$a1, $a1, $a7
+	ld.d	$a3, $sp, 472                   # 8-byte Folded Reload
+	sub.d	$a2, $a3, $t4
+	st.d	$a2, $sp, 360                   # 8-byte Folded Spill
+	nor	$a3, $a6, $zero
+	add.d	$a1, $a3, $a1
+	st.d	$a1, $sp, 352                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 752                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 344                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 1208                  # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 336                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 1200                  # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 328                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 624                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 320                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 760                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 312                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 728                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 304                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 616                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 296                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 288                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 464                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 280                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 600                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 272                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 456                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 256                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 496                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 248                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 632                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 240                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 488                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 640                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 224                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 736                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $t4
+	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
+	mul.d	$a1, $t3, $s3
+	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
+	sub.w	$a6, $zero, $t3
+	ld.d	$a1, $sp, 1016                  # 8-byte Folded Reload
+	addi.d	$a2, $a1, -8
+	slli.d	$a1, $t2, 3
+	sub.d	$a3, $zero, $t2
+	sub.d	$a3, $a3, $t1
+	st.d	$a3, $sp, 192                   # 8-byte Folded Spill
+	slli.d	$a3, $t1, 3
+	st.d	$a2, $sp, 200                   # 8-byte Folded Spill
+	sub.d	$a2, $a2, $a1
+	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
+	ld.d	$a5, $sp, 768                   # 8-byte Folded Reload
+	sub.d	$a2, $a5, $a1
+	st.d	$a2, $sp, 176                   # 8-byte Folded Spill
+	sub.d	$a1, $a1, $a3
+	add.d	$a1, $a5, $a1
+	addi.d	$a1, $a1, -8
+	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
+	sub.d	$a1, $a5, $a3
+	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 784                   # 8-byte Folded Spill
+	slli.d	$a1, $s3, 3
+	st.d	$a1, $sp, 776                   # 8-byte Folded Spill
+	addi.d	$a1, $a5, 8
+	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 1288                  # 8-byte Folded Spill
+	.p2align	4, , 16
+.LBB1_114:                              #   Parent Loop BB1_3 Depth=1
+                                        # =>  This Loop Header: Depth=2
+                                        #       Child Loop BB1_115 Depth 3
+                                        #         Child Loop BB1_116 Depth 4
+	move	$a5, $zero
+	.p2align	4, , 16
+.LBB1_115:                              #   Parent Loop BB1_3 Depth=1
+                                        #     Parent Loop BB1_114 Depth=2
+                                        # =>    This Loop Header: Depth=3
+                                        #         Child Loop BB1_116 Depth 4
+	st.d	$a5, $sp, 528                   # 8-byte Folded Spill
+	move	$s6, $zero
+	move	$s0, $zero
+	move	$s2, $zero
+	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
+	add.d	$a1, $a1, $t6
+	ld.d	$a3, $sp, 544                   # 8-byte Folded Reload
+	alsl.d	$a2, $a1, $a3, 3
+	st.d	$a2, $sp, 1272                  # 8-byte Folded Spill
+	ld.d	$t2, $sp, 480                   # 8-byte Folded Reload
+	alsl.d	$a2, $a1, $t2, 3
+	st.d	$a2, $sp, 1280                  # 8-byte Folded Spill
+	ld.d	$t1, $sp, 744                   # 8-byte Folded Reload
+	alsl.d	$a2, $a1, $t1, 3
+	st.d	$a2, $sp, 1264                  # 8-byte Folded Spill
+	ld.d	$t7, $sp, 608                   # 8-byte Folded Reload
+	alsl.d	$a2, $a1, $t7, 3
+	st.d	$a2, $sp, 1256                  # 8-byte Folded Spill
+	ld.d	$t0, $sp, 536                   # 8-byte Folded Reload
+	alsl.d	$a2, $a1, $t0, 3
+	st.d	$a2, $sp, 1248                  # 8-byte Folded Spill
+	ld.d	$fp, $sp, 472                   # 8-byte Folded Reload
+	alsl.d	$a2, $a1, $fp, 3
+	st.d	$a2, $sp, 1240                  # 8-byte Folded Spill
+	ld.d	$s1, $sp, 752                   # 8-byte Folded Reload
+	alsl.d	$a2, $a1, $s1, 3
+	st.d	$a2, $sp, 1232                  # 8-byte Folded Spill
+	ld.d	$t4, $sp, 624                   # 8-byte Folded Reload
+	alsl.d	$a2, $a1, $t4, 3
+	st.d	$a2, $sp, 1224                  # 8-byte Folded Spill
+	ld.d	$t8, $sp, 760                   # 8-byte Folded Reload
+	alsl.d	$a2, $a1, $t8, 3
+	st.d	$a2, $sp, 1216                  # 8-byte Folded Spill
+	ld.d	$a2, $sp, 728                   # 8-byte Folded Reload
+	alsl.d	$a1, $a1, $a2, 3
 	st.d	$a1, $sp, 1208                  # 8-byte Folded Spill
 	ld.d	$a1, $sp, 576                   # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
@@ -2057,1407 +3317,150 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
 	ld.d	$a1, $sp, 704                   # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
 	st.d	$a1, $sp, 1096                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 816                   # 8-byte Folded Reload
-	sub.d	$s0, $a1, $a0
-	ld.d	$a1, $sp, 808                   # 8-byte Folded Reload
-	sub.d	$t5, $a1, $a0
-	ld.d	$a0, $sp, 800                   # 8-byte Folded Reload
-	sub.d	$s2, $a0, $a3
-	ld.d	$a0, $sp, 784                   # 8-byte Folded Reload
-	sub.d	$t0, $a0, $a3
-	ld.d	$a0, $sp, 720                   # 8-byte Folded Reload
-	alsl.d	$s3, $a3, $a0, 3
-	ld.d	$a0, $sp, 712                   # 8-byte Folded Reload
-	alsl.d	$s6, $a3, $a0, 3
-	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $a2
-	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
-	alsl.d	$a0, $a0, $a1, 3
-	st.d	$a0, $sp, 1088                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
-	alsl.d	$a0, $a2, $a0, 3
-	st.d	$a0, $sp, 1080                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 768                   # 8-byte Folded Reload
-	alsl.d	$a7, $a2, $a0, 3
-	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
-	alsl.d	$t1, $a2, $a0, 3
-	ld.d	$a0, $sp, 344                   # 8-byte Folded Reload
-	alsl.d	$a6, $a2, $a0, 3
-	ld.d	$a0, $sp, 776                   # 8-byte Folded Reload
-	sub.d	$a5, $a0, $a2
-	ld.d	$a0, $sp, 512                   # 8-byte Folded Reload
-	sub.d	$t7, $a0, $a2
-	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
-	alsl.d	$a1, $a2, $a0, 3
-	ld.d	$a0, $sp, 320                   # 8-byte Folded Reload
-	alsl.d	$ra, $a2, $a0, 3
-	alsl.d	$a2, $a4, $t3, 3
-	alsl.d	$t2, $a4, $t2, 3
-	alsl.d	$t3, $a4, $s8, 3
-	ld.d	$a0, $sp, 616                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 1072                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 600                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 1064                  # 8-byte Folded Spill
-	alsl.d	$a0, $a4, $t4, 3
-	st.d	$a0, $sp, 1056                  # 8-byte Folded Spill
-	alsl.d	$a0, $a4, $s1, 3
-	st.d	$a0, $sp, 1048                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 632                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 1040                  # 8-byte Folded Spill
-	alsl.d	$a0, $a4, $t6, 3
-	st.d	$a0, $sp, 1032                  # 8-byte Folded Spill
-	alsl.d	$a0, $a4, $fp, 3
-	st.d	$a0, $sp, 1024                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 640                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 1016                  # 8-byte Folded Spill
-	alsl.d	$a0, $a4, $t8, 3
-	st.d	$a0, $sp, 1008                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 736                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 1000                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 840                   # 8-byte Folded Reload
-	alsl.d	$a3, $a4, $a0, 3
-	ld.d	$a0, $sp, 832                   # 8-byte Folded Reload
-	alsl.d	$fp, $a4, $a0, 3
-	ld.d	$a0, $sp, 824                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 992                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 792                   # 8-byte Folded Reload
-	alsl.d	$t4, $a4, $a0, 3
-	ld.d	$a0, $sp, 528                   # 8-byte Folded Reload
-	alsl.d	$t8, $a4, $a0, 3
-	ld.d	$a0, $sp, 520                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 984                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 504                   # 8-byte Folded Reload
-	alsl.d	$s1, $a4, $a0, 3
-	ld.d	$a0, $sp, 432                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 976                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 448                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 968                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 424                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 960                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 416                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 952                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 440                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 944                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 408                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 936                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 400                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 928                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 920                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 384                   # 8-byte Folded Reload
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 912                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
-	st.d	$a4, $sp, 872                   # 8-byte Folded Spill
-	alsl.d	$a0, $a4, $a0, 3
-	st.d	$a0, $sp, 904                   # 8-byte Folded Spill
-	ld.d	$t6, $sp, 368                   # 8-byte Folded Reload
-	.p2align	4, , 16
-.LBB1_70:                               #   Parent Loop BB1_3 Depth=1
-                                        #     Parent Loop BB1_68 Depth=2
-                                        #       Parent Loop BB1_69 Depth=3
-                                        # =>      This Inner Loop Header: Depth=4
-	fldx.d	$fa0, $s6, $s5
-	fldx.d	$fa1, $a3, $s7
-	ld.d	$s8, $sp, 1088                  # 8-byte Folded Reload
-	add.d	$a0, $s8, $s5
-	fld.d	$fa2, $a0, -16
-	fmul.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa2
-	ld.d	$a4, $sp, 1200                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a4, $s5
-	fldx.d	$fa0, $s6, $s5
-	fldx.d	$fa1, $fp, $s7
-	ld.d	$a4, $sp, 992                   # 8-byte Folded Reload
-	fldx.d	$fa2, $a4, $s7
-	fld.d	$fa3, $a0, -8
-	fldx.d	$fa4, $a2, $s7
-	fmul.d	$fa1, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa2
-	fmadd.d	$fa0, $fa1, $fa3, $fa0
-	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$a0, $sp, 1192                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a0, $s5
-	fldx.d	$fa0, $s6, $s5
-	fldx.d	$fa1, $t4, $s7
-	fldx.d	$fa2, $s8, $s5
-	fmul.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa2
-	ld.d	$a0, $sp, 1184                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a0, $s5
-	fldx.d	$fa0, $s6, $s5
-	fldx.d	$fa1, $t8, $s7
-	add.d	$a0, $ra, $s5
-	ld.d	$a4, $sp, 984                   # 8-byte Folded Reload
-	fldx.d	$fa2, $a4, $s7
-	fld.d	$fa3, $a0, -8
-	fldx.d	$fa4, $t2, $s7
-	fmul.d	$fa1, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa2
-	fmadd.d	$fa0, $fa1, $fa3, $fa0
-	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$a4, $sp, 1176                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a4, $s5
-	fldx.d	$fa0, $s6, $s5
-	fldx.d	$fa1, $s1, $s7
-	fldx.d	$fa2, $ra, $s5
-	fldx.d	$fa3, $t3, $s7
-	ld.d	$a4, $sp, 976                   # 8-byte Folded Reload
-	fldx.d	$fa4, $a4, $s7
-	fmul.d	$fa1, $fa0, $fa1
-	fmul.d	$fa1, $fa2, $fa1
-	fmadd.d	$fa1, $fa3, $fa2, $fa1
-	fmadd.d	$fa0, $fa0, $fa4, $fa1
-	ld.d	$a4, $sp, 1168                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a4, $s5
-	fldx.d	$fa0, $s6, $s5
-	ld.d	$a4, $sp, 968                   # 8-byte Folded Reload
-	fldx.d	$fa1, $a4, $s7
-	ld.d	$a4, $sp, 960                   # 8-byte Folded Reload
-	fldx.d	$fa2, $a4, $s7
-	fld.d	$fa3, $a0, 8
-	ld.d	$a0, $sp, 1072                  # 8-byte Folded Reload
-	fldx.d	$fa4, $a0, $s7
-	fmul.d	$fa1, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa2
-	fmadd.d	$fa0, $fa1, $fa3, $fa0
-	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$a0, $sp, 1160                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a0, $s5
-	fldx.d	$fa0, $s6, $s5
-	ld.d	$a0, $sp, 952                   # 8-byte Folded Reload
-	fldx.d	$fa1, $a0, $s7
-	fldx.d	$fa2, $a1, $s5
-	fmul.d	$fa0, $fa0, $fa1
-	add.d	$a0, $a1, $s5
-	fmul.d	$fa0, $fa0, $fa2
-	ld.d	$a4, $sp, 1152                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a4, $s5
-	fldx.d	$fa0, $s6, $s5
-	ld.d	$a4, $sp, 944                   # 8-byte Folded Reload
-	fldx.d	$fa1, $a4, $s7
-	ld.d	$a4, $sp, 936                   # 8-byte Folded Reload
-	fldx.d	$fa2, $a4, $s7
-	fld.d	$fa3, $a0, 8
-	ld.d	$a4, $sp, 1064                  # 8-byte Folded Reload
-	fldx.d	$fa4, $a4, $s7
-	fmul.d	$fa1, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa2
-	fmadd.d	$fa0, $fa1, $fa3, $fa0
-	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$a4, $sp, 1144                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a4, $s5
-	fldx.d	$fa0, $s6, $s5
-	ld.d	$a4, $sp, 928                   # 8-byte Folded Reload
-	fldx.d	$fa1, $a4, $s7
-	fld.d	$fa2, $a0, 16
-	fmul.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa2
-	ld.d	$a0, $sp, 1136                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a0, $s5
-	fldx.d	$fa0, $s6, $s5
-	fldx.d	$fa1, $a3, $s7
-	ld.d	$a0, $sp, 1056                  # 8-byte Folded Reload
-	fldx.d	$fa2, $a0, $s7
-	fmul.d	$fa0, $fa0, $fa1
-	fldx.d	$fa1, $t1, $s5
-	fldx.d	$fa3, $s3, $s5
-	ld.d	$a0, $sp, 1264                  # 8-byte Folded Reload
-	fldx.d	$fa4, $a0, $s7
-	add.d	$a0, $a6, $s5
-	fld.d	$fa5, $a0, -8
-	add.d	$s8, $t1, $s5
-	fmadd.d	$fa0, $fa0, $fa1, $fa2
-	fmul.d	$fa1, $fa3, $fa4
-	fmadd.d	$fa0, $fa1, $fa5, $fa0
-	ld.d	$a4, $sp, 1128                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a4, $s5
-	ld.d	$a4, $sp, 1048                  # 8-byte Folded Reload
-	fldx.d	$fa0, $a4, $s7
-	fldx.d	$fa1, $s6, $s5
-	fldx.d	$fa2, $fp, $s7
-	fld.d	$fa3, $s8, 8
-	fldx.d	$fa4, $s3, $s5
-	ld.d	$a4, $sp, 1256                  # 8-byte Folded Reload
-	fldx.d	$fa5, $a4, $s7
-	fldx.d	$fa6, $a6, $s5
-	fmul.d	$fa2, $fa1, $fa2
-	fmadd.d	$fa0, $fa2, $fa3, $fa0
-	fmul.d	$fa2, $fa4, $fa5
-	fmadd.d	$fa0, $fa2, $fa6, $fa0
-	fldx.d	$fa2, $a2, $s7
-	ld.d	$a4, $sp, 1040                  # 8-byte Folded Reload
-	fldx.d	$fa5, $a4, $s7
-	ld.d	$a4, $sp, 920                   # 8-byte Folded Reload
-	fldx.d	$fa7, $a4, $s7
-	ld.d	$a4, $sp, 1248                  # 8-byte Folded Reload
-	fldx.d	$ft0, $a4, $s7
-	fmadd.d	$fa0, $fa2, $fa3, $fa0
-	fmadd.d	$fa0, $fa5, $fa6, $fa0
-	fmadd.d	$fa0, $fa1, $fa7, $fa0
-	fmadd.d	$fa0, $fa4, $ft0, $fa0
-	ld.d	$a4, $sp, 1120                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a4, $s5
-	fld.d	$fa0, $s8, 16
-	ld.d	$a4, $sp, 1032                  # 8-byte Folded Reload
-	fldx.d	$fa1, $a4, $s7
-	fldx.d	$fa2, $s6, $s5
-	fldx.d	$fa3, $t4, $s7
-	fldx.d	$fa4, $s3, $s5
-	ld.d	$a4, $sp, 1240                  # 8-byte Folded Reload
-	fldx.d	$fa5, $a4, $s7
-	fld.d	$fa6, $a0, 8
-	fmul.d	$fa2, $fa2, $fa3
-	fmadd.d	$fa0, $fa2, $fa0, $fa1
-	fmul.d	$fa1, $fa4, $fa5
-	fmadd.d	$fa0, $fa1, $fa6, $fa0
-	ld.d	$a0, $sp, 1112                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a0, $s5
-	fldx.d	$fa0, $s6, $s5
-	fldx.d	$fa1, $t8, $s7
-	ld.d	$a0, $sp, 1024                  # 8-byte Folded Reload
-	fldx.d	$fa2, $a0, $s7
-	fmul.d	$fa1, $fa0, $fa1
-	ld.d	$a4, $sp, 1080                  # 8-byte Folded Reload
-	fldx.d	$fa3, $a4, $s5
-	fldx.d	$fa4, $s3, $s5
-	ld.d	$a0, $sp, 1232                  # 8-byte Folded Reload
-	fldx.d	$fa5, $a0, $s7
-	add.d	$a0, $a7, $s5
-	fld.d	$fa6, $a0, -8
-	add.d	$a0, $a4, $s5
-	fmadd.d	$fa1, $fa1, $fa3, $fa2
-	fmul.d	$fa2, $fa4, $fa5
-	fmadd.d	$fa1, $fa2, $fa6, $fa1
-	fldx.d	$fa2, $t2, $s7
-	ld.d	$a4, $sp, 1016                  # 8-byte Folded Reload
-	fldx.d	$fa5, $a4, $s7
-	ld.d	$a4, $sp, 912                   # 8-byte Folded Reload
-	fldx.d	$fa7, $a4, $s7
-	ld.d	$a4, $sp, 1224                  # 8-byte Folded Reload
-	fldx.d	$ft0, $a4, $s7
-	fmadd.d	$fa1, $fa2, $fa3, $fa1
-	fmadd.d	$fa1, $fa5, $fa6, $fa1
-	fmadd.d	$fa0, $fa0, $fa7, $fa1
-	fmadd.d	$fa0, $fa4, $ft0, $fa0
-	ld.d	$a4, $sp, 1104                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a4, $s5
-	fld.d	$fa0, $a0, 8
-	ld.d	$a0, $sp, 1008                  # 8-byte Folded Reload
-	fldx.d	$fa1, $a0, $s7
-	fldx.d	$fa2, $s6, $s5
-	fldx.d	$fa3, $s1, $s7
-	fldx.d	$fa4, $s3, $s5
-	ld.d	$a0, $sp, 1216                  # 8-byte Folded Reload
-	fldx.d	$fa5, $a0, $s7
-	fldx.d	$fa6, $a7, $s5
-	fmul.d	$fa3, $fa2, $fa3
-	fmadd.d	$fa1, $fa3, $fa0, $fa1
-	fmul.d	$fa3, $fa4, $fa5
-	fmadd.d	$fa1, $fa3, $fa6, $fa1
-	ld.d	$a0, $sp, 904                   # 8-byte Folded Reload
-	fldx.d	$fa3, $a0, $s7
-	ld.d	$a0, $sp, 1208                  # 8-byte Folded Reload
-	fldx.d	$fa5, $a0, $s7
-	fldx.d	$fa7, $t3, $s7
-	ld.d	$a0, $sp, 1000                  # 8-byte Folded Reload
-	fldx.d	$ft0, $a0, $s7
-	fmadd.d	$fa1, $fa2, $fa3, $fa1
-	fmadd.d	$fa1, $fa4, $fa5, $fa1
-	fmadd.d	$fa0, $fa7, $fa0, $fa1
-	fmadd.d	$fa0, $ft0, $fa6, $fa0
-	ld.d	$a0, $sp, 1096                  # 8-byte Folded Reload
-	fstx.d	$fa0, $a0, $s5
-	ld.d	$a0, $sp, 888                   # 8-byte Folded Reload
-	add.d	$s7, $s7, $a0
-	ld.d	$a0, $sp, 896                   # 8-byte Folded Reload
-	sub.d	$t6, $t6, $a0
-	addi.d	$s5, $s5, 8
-	addi.d	$s0, $s0, -1
-	addi.d	$t5, $t5, -1
-	addi.w	$s4, $s4, -1
-	addi.d	$s2, $s2, -1
-	addi.d	$t0, $t0, -1
-	addi.d	$a5, $a5, -1
-	addi.d	$t7, $t7, -1
-	ld.d	$a0, $sp, 1272                  # 8-byte Folded Reload
-	bne	$a0, $s4, .LBB1_70
-# %bb.71:                               #   in Loop: Header=BB1_69 Depth=3
-	ld.d	$t2, $sp, 1272                  # 8-byte Folded Reload
-	sub.w	$a2, $t2, $a5
-	sub.w	$a3, $t2, $s2
-	ld.d	$a0, $sp, 856                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 872                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $a6
-	sub.w	$a4, $a0, $t6
-	ld.d	$a5, $sp, 880                   # 8-byte Folded Reload
-	addi.w	$a5, $a5, 1
-	sub.w	$a0, $t2, $t5
-	ld.d	$a1, $sp, 864                   # 8-byte Folded Reload
-	bne	$a5, $a1, .LBB1_69
-# %bb.72:                               #   in Loop: Header=BB1_68 Depth=2
-	sub.w	$a2, $t2, $t7
-	sub.w	$a3, $t2, $t0
-	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $a6
-	sub.w	$a4, $a0, $t6
-	ld.d	$a5, $sp, 304                   # 8-byte Folded Reload
-	addi.w	$a5, $a5, 1
-	sub.w	$a0, $t2, $s0
-	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
-	st.d	$a5, $sp, 304                   # 8-byte Folded Spill
-	bne	$a5, $a1, .LBB1_68
-	b	.LBB1_2
-.LBB1_73:                               #   in Loop: Header=BB1_3 Depth=1
-	st.d	$zero, $sp, 1256                # 8-byte Folded Spill
-.LBB1_74:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t8, $a2, -8
-	ld.w	$a6, $a2, 4
-	sub.w	$t3, $a6, $t8
-	addi.d	$a5, $t3, 1
-	bltz	$t3, .LBB1_79
-# %bb.75:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$a6, $s3, 8
-	ld.w	$a7, $a2, -4
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$s3, $a6, $a5
-	b	.LBB1_80
-.LBB1_76:                               #   in Loop: Header=BB1_3 Depth=1
-	move	$t7, $zero
-.LBB1_77:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t1, $fp, -8
-	ld.w	$a6, $fp, 4
-	sub.w	$a7, $a6, $t1
-	addi.d	$a5, $a7, 1
-	bltz	$a7, .LBB1_82
-# %bb.78:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$a6, $s3, 8
-	ld.w	$t2, $fp, -4
-	sub.d	$a6, $a6, $t2
-	mulw.d.w	$fp, $a6, $a5
-	b	.LBB1_83
-.LBB1_79:                               #   in Loop: Header=BB1_3 Depth=1
-	move	$s3, $zero
-.LBB1_80:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$s1, $ra, -8
-	ld.w	$a6, $ra, 4
-	sub.w	$t1, $a6, $s1
-	addi.d	$t7, $t1, 1
-	bltz	$t1, .LBB1_85
-# %bb.81:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$a6, $sp, 1304
-	ld.w	$a7, $ra, -4
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$s5, $a6, $t7
-	b	.LBB1_86
-.LBB1_82:                               #   in Loop: Header=BB1_3 Depth=1
-	move	$fp, $zero
-.LBB1_83:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t8, $ra, -8
-	ld.w	$a6, $ra, 4
-	sub.w	$t2, $a6, $t8
-	addi.d	$a5, $t2, 1
-	move	$t6, $t0
-	bltz	$t2, .LBB1_88
-# %bb.84:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$a6, $sp, 1304
-	ld.w	$t4, $ra, -4
-	sub.d	$a6, $a6, $t4
-	mulw.d.w	$s1, $a6, $a5
-	b	.LBB1_89
-.LBB1_85:                               #   in Loop: Header=BB1_3 Depth=1
-	move	$s5, $zero
-.LBB1_86:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a7, $sp, 1232                  # 8-byte Folded Reload
-	ld.w	$s4, $a7, 4
-	ld.w	$a6, $a7, 16
-	sub.w	$t6, $a6, $s4
-	addi.d	$t5, $t6, 1
-	move	$a5, $t0
-	bltz	$t6, .LBB1_91
-# %bb.87:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a6, $sp, 1248                  # 8-byte Folded Reload
-	ld.w	$a6, $a6, 8
-	ld.w	$a7, $a7, 8
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$s7, $a6, $t5
-	b	.LBB1_92
-.LBB1_88:                               #   in Loop: Header=BB1_3 Depth=1
-	move	$s1, $zero
-.LBB1_89:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$t0, $sp, 1232                  # 8-byte Folded Reload
-	ld.w	$s0, $t0, 4
-	ld.w	$a6, $t0, 16
-	sub.w	$t5, $a6, $s0
-	addi.d	$a5, $t5, 1
-	bltz	$t5, .LBB1_94
-# %bb.90:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$a6, $s3, 8
-	ld.w	$t4, $t0, 8
-	sub.d	$a6, $a6, $t4
-	mulw.d.w	$s3, $a6, $a5
-	b	.LBB1_95
-.LBB1_91:                               #   in Loop: Header=BB1_3 Depth=1
-	move	$s7, $zero
-.LBB1_92:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t0, $ra, -12
-	ld.d	$a6, $sp, 1272                  # 8-byte Folded Reload
-	ldx.w	$a6, $a6, $s8
-	sub.w	$a7, $a6, $t0
-	addi.d	$ra, $a7, 1
-	move	$fp, $a4
-	bltz	$a7, .LBB1_97
-# %bb.93:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$t2, $sp, 96                    # 8-byte Folded Reload
-	ld.w	$a6, $t2, 4
-	ld.w	$t2, $t2, 8
-	mul.d	$a6, $a6, $ra
-	st.d	$a6, $sp, 1088                  # 8-byte Folded Spill
-	mul.d	$s6, $t2, $ra
-	b	.LBB1_98
-.LBB1_94:                               #   in Loop: Header=BB1_3 Depth=1
-	move	$s3, $zero
-.LBB1_95:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$s5, $ra, -12
-	ld.d	$a5, $sp, 1272                  # 8-byte Folded Reload
-	ldx.w	$a6, $a5, $s8
-	sub.w	$s4, $a6, $s5
-	addi.d	$s6, $s4, 1
-	bltz	$s4, .LBB1_108
-# %bb.96:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
-	ld.w	$a6, $t0, 4
-	ld.w	$t4, $t0, 8
-	mul.d	$a5, $a6, $s6
-	st.d	$a5, $sp, 504                   # 8-byte Folded Spill
-	mul.d	$a6, $t4, $s6
-	b	.LBB1_109
-.LBB1_97:                               #   in Loop: Header=BB1_3 Depth=1
-	st.d	$zero, $sp, 1088                # 8-byte Folded Spill
-	move	$s6, $zero
-.LBB1_98:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$s0, $sp, 1284
-	ld.w	$t4, $sp, 1288
-	ld.w	$a4, $sp, 1292
-	slt	$a6, $s0, $t4
-	masknez	$t2, $s0, $a6
-	st.d	$t4, $sp, 1096                  # 8-byte Folded Spill
-	maskeqz	$a6, $t4, $a6
-	or	$a6, $a6, $t2
-	slt	$t2, $a6, $a4
-	masknez	$a6, $a6, $t2
-	st.d	$a4, $sp, 904                   # 8-byte Folded Spill
-	maskeqz	$t2, $a4, $t2
-	or	$a6, $t2, $a6
-	blez	$a6, .LBB1_2
-# %bb.99:                               #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a6, $sp, 904                   # 8-byte Folded Reload
-	blez	$a6, .LBB1_2
-# %bb.100:                              #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a6, $sp, 1096                  # 8-byte Folded Reload
-	blez	$a6, .LBB1_2
-# %bb.101:                              #   in Loop: Header=BB1_3 Depth=1
-	blez	$s0, .LBB1_2
-# %bb.102:                              #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a6, $sp, 1240                  # 8-byte Folded Reload
-	ldx.w	$a6, $a6, $s8
-	move	$s8, $zero
-	sub.w	$a3, $a6, $a3
-	ld.d	$a6, $sp, 1256                  # 8-byte Folded Reload
-	add.d	$a4, $fp, $a6
-	addi.d	$a6, $a3, 1
-	mul.d	$a4, $a6, $a4
-	nor	$t2, $a3, $zero
-	srli.d	$t2, $t2, 31
-	and	$a4, $t2, $a4
-	ld.w	$t2, $a2, -12
-	ld.w	$fp, $a2, 0
-	add.w	$a2, $a5, $a4
-	st.d	$a2, $sp, 1272                  # 8-byte Folded Spill
-	sub.d	$a2, $a1, $t8
-	add.d	$a4, $a2, $s3
-	sub.w	$a2, $fp, $t2
-	addi.d	$fp, $a2, 1
-	mul.d	$a4, $fp, $a4
-	nor	$t8, $a2, $zero
-	srli.d	$t8, $t8, 31
-	and	$a4, $t8, $a4
-	ld.w	$t8, $sp, 1296
-	ld.w	$s3, $sp, 1300
-	sub.d	$t2, $a0, $t2
-	move	$a5, $s5
-	add.w	$s5, $t2, $a4
-	sub.d	$a4, $t8, $t0
-	sub.d	$t0, $s3, $s1
-	add.d	$t0, $t0, $a5
-	mul.d	$t0, $ra, $t0
-	nor	$a7, $a7, $zero
-	srli.d	$a7, $a7, 31
-	and	$a7, $a7, $t0
-	ld.d	$t2, $sp, 1232                  # 8-byte Folded Reload
-	ld.w	$t0, $t2, 0
-	ld.w	$t2, $t2, 12
-	add.w	$a4, $a4, $a7
-	sub.d	$a1, $a1, $s4
-	sub.d	$a0, $a0, $t0
-	sub.w	$a7, $t2, $t0
-	add.d	$a1, $a1, $s7
-	addi.d	$t0, $a7, 1
-	mul.d	$a1, $t0, $a1
-	nor	$t2, $a7, $zero
-	srli.d	$t2, $t2, 31
-	and	$a1, $t2, $a1
-	add.w	$t8, $a0, $a1
-	srai.d	$a0, $a3, 31
-	andn	$a0, $a6, $a0
-	mul.d	$a1, $a0, $s2
-	ld.d	$a5, $sp, 1200                  # 8-byte Folded Reload
-	andn	$a1, $a1, $a5
-	srai.d	$a5, $a2, 31
-	andn	$a5, $fp, $a5
-	addi.d	$a6, $t3, 1
-	mul.d	$a6, $a5, $a6
-	srai.d	$t2, $t3, 31
-	andn	$a6, $a6, $t2
-	ld.d	$t2, $sp, 96                    # 8-byte Folded Reload
-	ld.w	$ra, $t2, 0
-	srai.d	$t2, $a7, 31
-	andn	$t0, $t0, $t2
-	ld.d	$fp, $sp, 1096                  # 8-byte Folded Reload
-	mul.d	$t2, $fp, $t0
-	mul.d	$a5, $fp, $a5
-	mul.d	$a0, $fp, $a0
-	mul.d	$t0, $t0, $t5
-	srai.d	$t3, $t6, 31
-	andn	$t0, $t0, $t3
-	mul.d	$t3, $s6, $t7
-	srai.d	$t1, $t1, 31
-	andn	$t1, $t3, $t1
-	mul.d	$t3, $s0, $ra
-	st.d	$t3, $sp, 1080                  # 8-byte Folded Spill
-	ld.d	$t3, $sp, 1208                  # 8-byte Folded Reload
-	addi.w	$t3, $t3, 0
-	ld.d	$t4, $sp, 1224                  # 8-byte Folded Reload
-	bstrpick.d	$t4, $t4, 31, 0
-	ld.d	$t5, $sp, 1216                  # 8-byte Folded Reload
-	addi.w	$t5, $t5, 0
-	st.d	$t5, $sp, 1072                  # 8-byte Folded Spill
-	slli.d	$t5, $t5, 3
-	ld.d	$t6, $sp, 744                   # 8-byte Folded Reload
-	sub.d	$t6, $t6, $t5
-	st.d	$t6, $sp, 1064                  # 8-byte Folded Spill
-	ld.d	$t6, $sp, 752                   # 8-byte Folded Reload
-	sub.d	$t6, $t6, $t5
-	st.d	$t6, $sp, 1056                  # 8-byte Folded Spill
-	ld.d	$t6, $sp, 760                   # 8-byte Folded Reload
-	sub.d	$t6, $t6, $t5
-	st.d	$t6, $sp, 1048                  # 8-byte Folded Spill
-	ori	$t6, $zero, 1
-	sub.d	$t6, $t6, $fp
-	ld.d	$t7, $sp, 1088                  # 8-byte Folded Reload
-	mul.d	$t6, $t7, $t6
-	add.d	$t1, $t1, $t6
-	st.d	$t1, $sp, 896                   # 8-byte Folded Spill
-	nor	$t0, $t0, $zero
-	add.d	$t0, $t0, $t2
-	srai.d	$t1, $a7, 63
-	or	$t2, $a7, $t1
-	sub.d	$t0, $t0, $t2
-	st.d	$t0, $sp, 1040                  # 8-byte Folded Spill
-	nor	$a7, $a7, $t1
-	st.d	$a7, $sp, 1032                  # 8-byte Folded Spill
-	srai.d	$a7, $a2, 63
-	or	$t0, $a2, $a7
-	nor	$a2, $a2, $a7
-	st.d	$a2, $sp, 1024                  # 8-byte Folded Spill
-	ld.d	$a2, $sp, 728                   # 8-byte Folded Reload
-	sub.d	$a2, $a2, $t5
-	st.d	$a2, $sp, 1016                  # 8-byte Folded Spill
-	ld.d	$a2, $sp, 1192                  # 8-byte Folded Reload
-	sub.d	$a2, $a2, $t5
-	st.d	$a2, $sp, 1008                  # 8-byte Folded Spill
-	ld.d	$a2, $sp, 1184                  # 8-byte Folded Reload
-	sub.d	$a2, $a2, $t5
-	st.d	$a2, $sp, 992                   # 8-byte Folded Spill
-	ld.d	$a2, $sp, 736                   # 8-byte Folded Reload
-	sub.d	$a2, $a2, $t5
-	st.d	$a2, $sp, 984                   # 8-byte Folded Spill
-	sub.w	$t5, $zero, $s0
-	nor	$a2, $a6, $zero
-	add.d	$a2, $a2, $a5
-	slli.d	$a5, $t4, 3
-	sub.d	$a2, $a2, $t0
-	st.d	$a2, $sp, 976                   # 8-byte Folded Spill
-	nor	$a1, $a1, $zero
-	add.d	$a0, $a1, $a0
-	srai.d	$a1, $a3, 63
-	or	$a2, $a3, $a1
-	sub.d	$a0, $a0, $a2
-	st.d	$a0, $sp, 968                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 1000                  # 8-byte Folded Reload
-	sub.d	$a0, $a0, $a5
-	st.d	$a0, $sp, 960                   # 8-byte Folded Spill
-	nor	$a0, $a3, $a1
-	st.d	$a0, $sp, 952                   # 8-byte Folded Spill
-	ld.d	$a3, $sp, 768                   # 8-byte Folded Reload
-	sub.d	$a0, $a3, $a5
-	st.d	$a0, $sp, 944                   # 8-byte Folded Spill
-	add.d	$a0, $t3, $t4
-	slli.d	$a1, $t3, 3
-	sub.d	$a2, $a5, $a1
-	ld.d	$a5, $sp, 1272                  # 8-byte Folded Reload
-	add.d	$a2, $a3, $a2
-	st.d	$a2, $sp, 936                   # 8-byte Folded Spill
-	sub.d	$a1, $a3, $a1
-	st.d	$a1, $sp, 928                   # 8-byte Folded Spill
-	sub.d	$a0, $zero, $a0
-	st.d	$a0, $sp, 920                   # 8-byte Folded Spill
-	slli.d	$t6, $ra, 3
-	.p2align	4, , 16
-.LBB1_103:                              #   Parent Loop BB1_3 Depth=1
-                                        # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB1_104 Depth 3
-                                        #         Child Loop BB1_105 Depth 4
-	st.d	$s8, $sp, 912                   # 8-byte Folded Spill
-	move	$a2, $zero
-	.p2align	4, , 16
-.LBB1_104:                              #   Parent Loop BB1_3 Depth=1
-                                        #     Parent Loop BB1_103 Depth=2
-                                        # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB1_105 Depth 4
-	st.d	$a2, $sp, 1112                  # 8-byte Folded Spill
-	move	$a2, $zero
-	move	$a1, $zero
-	move	$a3, $zero
-	move	$fp, $a4
-	ld.d	$a0, $sp, 1072                  # 8-byte Folded Reload
-	add.d	$a0, $a0, $a4
-	ld.d	$t2, $sp, 744                   # 8-byte Folded Reload
-	alsl.d	$a4, $a0, $t2, 3
-	st.d	$a4, $sp, 1272                  # 8-byte Folded Spill
-	ld.d	$t1, $sp, 752                   # 8-byte Folded Reload
-	alsl.d	$a4, $a0, $t1, 3
-	st.d	$a4, $sp, 1264                  # 8-byte Folded Spill
-	ld.d	$a6, $sp, 760                   # 8-byte Folded Reload
-	alsl.d	$a4, $a0, $a6, 3
-	st.d	$a4, $sp, 1256                  # 8-byte Folded Spill
-	ld.d	$t4, $sp, 728                   # 8-byte Folded Reload
-	alsl.d	$a0, $a0, $t4, 3
-	st.d	$a0, $sp, 1248                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 656                   # 8-byte Folded Reload
-	alsl.d	$a0, $t8, $a0, 3
-	st.d	$a0, $sp, 1240                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 672                   # 8-byte Folded Reload
-	alsl.d	$a0, $t8, $a0, 3
-	st.d	$a0, $sp, 1232                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 680                   # 8-byte Folded Reload
-	alsl.d	$a0, $t8, $a0, 3
-	st.d	$a0, $sp, 1224                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 664                   # 8-byte Folded Reload
-	alsl.d	$a0, $t8, $a0, 3
-	st.d	$a0, $sp, 1216                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 648                   # 8-byte Folded Reload
-	alsl.d	$a0, $t8, $a0, 3
-	st.d	$a0, $sp, 1208                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 688                   # 8-byte Folded Reload
-	alsl.d	$a0, $t8, $a0, 3
-	st.d	$a0, $sp, 1200                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 696                   # 8-byte Folded Reload
-	alsl.d	$a0, $t8, $a0, 3
-	st.d	$a0, $sp, 1192                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 704                   # 8-byte Folded Reload
-	alsl.d	$a0, $t8, $a0, 3
-	st.d	$a0, $sp, 1184                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 1040                  # 8-byte Folded Reload
-	sub.d	$t0, $a0, $t8
-	ld.d	$a0, $sp, 1032                  # 8-byte Folded Reload
-	sub.d	$t8, $a0, $t8
-	ld.d	$a0, $sp, 1000                  # 8-byte Folded Reload
-	alsl.d	$s7, $a5, $a0, 3
-	ld.d	$a4, $sp, 768                   # 8-byte Folded Reload
-	alsl.d	$s8, $a5, $a4, 3
-	ld.d	$a0, $sp, 960                   # 8-byte Folded Reload
-	alsl.d	$a0, $a5, $a0, 3
-	st.d	$a0, $sp, 1176                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 944                   # 8-byte Folded Reload
-	alsl.d	$a0, $a5, $a0, 3
-	st.d	$a0, $sp, 1168                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 936                   # 8-byte Folded Reload
-	alsl.d	$a0, $a5, $a0, 3
-	st.d	$a0, $sp, 1160                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 928                   # 8-byte Folded Reload
-	alsl.d	$a7, $a5, $a0, 3
-	ld.d	$a0, $sp, 920                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $a5
-	alsl.d	$a0, $a0, $a4, 3
-	st.d	$a0, $sp, 1152                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 968                   # 8-byte Folded Reload
-	sub.d	$t7, $a0, $a5
-	ld.d	$a0, $sp, 952                   # 8-byte Folded Reload
-	sub.d	$s0, $a0, $a5
-	ld.d	$a0, $sp, 1024                  # 8-byte Folded Reload
-	sub.d	$a4, $a0, $s5
-	ld.d	$a0, $sp, 976                   # 8-byte Folded Reload
-	sub.d	$s2, $a0, $s5
-	ld.d	$a0, $sp, 712                   # 8-byte Folded Reload
-	alsl.d	$a5, $s5, $a0, 3
-	ld.d	$a0, $sp, 720                   # 8-byte Folded Reload
-	alsl.d	$t3, $s5, $a0, 3
-	alsl.d	$t4, $fp, $t4, 3
-	alsl.d	$a0, $fp, $t2, 3
-	st.d	$a0, $sp, 1144                  # 8-byte Folded Spill
-	alsl.d	$a0, $fp, $t1, 3
-	st.d	$a0, $sp, 1136                  # 8-byte Folded Spill
-	alsl.d	$a0, $fp, $a6, 3
-	st.d	$a0, $sp, 1128                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 736                   # 8-byte Folded Reload
-	alsl.d	$a0, $fp, $a0, 3
-	st.d	$a0, $sp, 1120                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 1064                  # 8-byte Folded Reload
-	alsl.d	$s3, $fp, $a0, 3
-	ld.d	$a0, $sp, 1056                  # 8-byte Folded Reload
-	alsl.d	$s4, $fp, $a0, 3
-	ld.d	$a0, $sp, 1048                  # 8-byte Folded Reload
-	alsl.d	$s5, $fp, $a0, 3
-	ld.d	$a0, $sp, 1016                  # 8-byte Folded Reload
-	alsl.d	$s6, $fp, $a0, 3
-	ld.d	$a0, $sp, 1008                  # 8-byte Folded Reload
-	alsl.d	$t1, $fp, $a0, 3
-	ld.d	$a0, $sp, 992                   # 8-byte Folded Reload
-	alsl.d	$t2, $fp, $a0, 3
-	ld.d	$a0, $sp, 984                   # 8-byte Folded Reload
-	st.d	$fp, $sp, 1104                  # 8-byte Folded Spill
-	alsl.d	$a6, $fp, $a0, 3
-	ld.d	$a0, $sp, 1080                  # 8-byte Folded Reload
-	.p2align	4, , 16
-.LBB1_105:                              #   Parent Loop BB1_3 Depth=1
-                                        #     Parent Loop BB1_103 Depth=2
-                                        #       Parent Loop BB1_104 Depth=3
-                                        # =>      This Inner Loop Header: Depth=4
-	fldx.d	$fa0, $a5, $a1
-	fldx.d	$fa1, $s3, $a3
-	ld.d	$fp, $sp, 1152                  # 8-byte Folded Reload
-	fldx.d	$fa2, $fp, $a1
-	fmul.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa2
-	ld.d	$fp, $sp, 1240                  # 8-byte Folded Reload
-	fstx.d	$fa0, $fp, $a1
-	fldx.d	$fa0, $a5, $a1
-	fldx.d	$fa1, $s4, $a3
-	move	$fp, $t6
-	move	$t6, $t5
-	move	$t5, $ra
-	add.d	$ra, $a7, $a1
-	fld.d	$fa2, $ra, -8
-	fmul.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa2
-	ld.d	$s1, $sp, 1232                  # 8-byte Folded Reload
-	fstx.d	$fa0, $s1, $a1
-	fldx.d	$fa0, $a5, $a1
-	fldx.d	$fa1, $s5, $a3
-	fldx.d	$fa2, $a7, $a1
-	fldx.d	$fa3, $t4, $a3
-	fldx.d	$fa4, $s6, $a3
-	fmul.d	$fa1, $fa0, $fa1
-	fmul.d	$fa1, $fa2, $fa1
-	fmadd.d	$fa1, $fa3, $fa2, $fa1
-	fmadd.d	$fa0, $fa0, $fa4, $fa1
-	ld.d	$s1, $sp, 1224                  # 8-byte Folded Reload
-	fstx.d	$fa0, $s1, $a1
-	fldx.d	$fa0, $a5, $a1
-	fldx.d	$fa1, $t1, $a3
-	fld.d	$fa2, $ra, 8
-	fmul.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa2
-	ld.d	$s1, $sp, 1216                  # 8-byte Folded Reload
-	fstx.d	$fa0, $s1, $a1
-	fldx.d	$fa0, $a5, $a1
-	fldx.d	$fa1, $t2, $a3
-	ld.d	$s1, $sp, 1160                  # 8-byte Folded Reload
-	fldx.d	$fa2, $s1, $a1
-	fmul.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa2
-	ld.d	$s1, $sp, 1208                  # 8-byte Folded Reload
-	fstx.d	$fa0, $s1, $a1
-	ld.d	$s1, $sp, 1144                  # 8-byte Folded Reload
-	fldx.d	$fa0, $s1, $a3
-	fldx.d	$fa1, $a5, $a1
-	fldx.d	$fa2, $s3, $a3
-	ld.d	$s1, $sp, 1176                  # 8-byte Folded Reload
-	fldx.d	$fa3, $s1, $a1
-	fldx.d	$fa4, $t3, $a1
-	ld.d	$ra, $sp, 1272                  # 8-byte Folded Reload
-	fldx.d	$fa5, $ra, $a3
-	ld.d	$s1, $sp, 1168                  # 8-byte Folded Reload
-	fldx.d	$fa6, $s1, $a1
-	fmul.d	$fa1, $fa1, $fa2
-	fmadd.d	$fa0, $fa1, $fa3, $fa0
-	fmul.d	$fa1, $fa4, $fa5
-	fmadd.d	$fa0, $fa1, $fa6, $fa0
-	ld.d	$s1, $sp, 1200                  # 8-byte Folded Reload
-	fstx.d	$fa0, $s1, $a1
-	ld.d	$s1, $sp, 1136                  # 8-byte Folded Reload
-	fldx.d	$fa0, $s1, $a3
-	fldx.d	$fa1, $a5, $a1
-	fldx.d	$fa2, $s4, $a3
-	add.d	$ra, $s7, $a1
-	fld.d	$fa3, $ra, -8
-	fldx.d	$fa4, $t3, $a1
-	ld.d	$ra, $sp, 1264                  # 8-byte Folded Reload
-	fldx.d	$fa5, $ra, $a3
-	add.d	$ra, $s8, $a1
-	fld.d	$fa6, $ra, -8
-	move	$ra, $t5
-	move	$t5, $t6
-	move	$t6, $fp
-	fmul.d	$fa1, $fa1, $fa2
-	fmadd.d	$fa0, $fa1, $fa3, $fa0
-	fmul.d	$fa1, $fa4, $fa5
-	fmadd.d	$fa0, $fa1, $fa6, $fa0
-	ld.d	$fp, $sp, 1192                  # 8-byte Folded Reload
-	fstx.d	$fa0, $fp, $a1
-	ld.d	$fp, $sp, 1128                  # 8-byte Folded Reload
-	fldx.d	$fa0, $fp, $a3
-	fldx.d	$fa1, $a5, $a1
-	fldx.d	$fa2, $s5, $a3
-	fldx.d	$fa3, $s7, $a1
-	fldx.d	$fa4, $t3, $a1
-	ld.d	$fp, $sp, 1256                  # 8-byte Folded Reload
-	fldx.d	$fa5, $fp, $a3
-	fldx.d	$fa6, $s8, $a1
-	fmul.d	$fa2, $fa1, $fa2
-	fmadd.d	$fa0, $fa2, $fa3, $fa0
-	fmul.d	$fa2, $fa4, $fa5
-	fmadd.d	$fa0, $fa2, $fa6, $fa0
-	fldx.d	$fa2, $a6, $a3
-	ld.d	$fp, $sp, 1248                  # 8-byte Folded Reload
-	fldx.d	$fa5, $fp, $a3
-	fldx.d	$fa7, $t4, $a3
-	ld.d	$fp, $sp, 1120                  # 8-byte Folded Reload
-	fldx.d	$ft0, $fp, $a3
-	fmadd.d	$fa0, $fa1, $fa2, $fa0
-	fmadd.d	$fa0, $fa4, $fa5, $fa0
-	fmadd.d	$fa0, $fa7, $fa3, $fa0
-	fmadd.d	$fa0, $ft0, $fa6, $fa0
-	ld.d	$fp, $sp, 1184                  # 8-byte Folded Reload
-	fstx.d	$fa0, $fp, $a1
-	add.d	$a3, $a3, $t6
-	sub.d	$a0, $a0, $ra
-	addi.d	$a1, $a1, 8
-	addi.d	$t0, $t0, -1
-	addi.d	$t8, $t8, -1
-	addi.w	$a2, $a2, -1
-	addi.d	$a4, $a4, -1
-	addi.d	$s2, $s2, -1
-	addi.d	$t7, $t7, -1
-	addi.d	$s0, $s0, -1
-	bne	$t5, $a2, .LBB1_105
-# %bb.106:                              #   in Loop: Header=BB1_104 Depth=3
-	sub.w	$a5, $t5, $s0
-	sub.w	$s5, $t5, $a4
-	ld.d	$a1, $sp, 1088                  # 8-byte Folded Reload
-	ld.d	$a3, $sp, 1104                  # 8-byte Folded Reload
-	add.d	$a1, $a1, $a3
-	sub.w	$a4, $a1, $a0
-	ld.d	$a2, $sp, 1112                  # 8-byte Folded Reload
-	addi.w	$a2, $a2, 1
-	sub.w	$t8, $t5, $t8
-	ld.d	$a1, $sp, 1096                  # 8-byte Folded Reload
-	bne	$a2, $a1, .LBB1_104
-# %bb.107:                              #   in Loop: Header=BB1_103 Depth=2
-	sub.w	$a5, $t5, $t7
-	sub.w	$s5, $t5, $s2
-	ld.d	$a1, $sp, 896                   # 8-byte Folded Reload
-	add.d	$a1, $a1, $a3
-	sub.w	$a4, $a1, $a0
-	ld.d	$s8, $sp, 912                   # 8-byte Folded Reload
-	addi.w	$s8, $s8, 1
-	sub.w	$t8, $t5, $t0
-	ld.d	$a0, $sp, 904                   # 8-byte Folded Reload
-	bne	$s8, $a0, .LBB1_103
-	b	.LBB1_2
-.LBB1_108:                              #   in Loop: Header=BB1_3 Depth=1
-	st.d	$zero, $sp, 504                 # 8-byte Folded Spill
-	move	$a6, $zero
-.LBB1_109:                              #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t4, $sp, 1284
-	ld.w	$a5, $sp, 1288
-	ld.w	$t0, $sp, 1292
-	slt	$s7, $t4, $a5
-	masknez	$ra, $t4, $s7
-	st.d	$a5, $sp, 512                   # 8-byte Folded Spill
-	maskeqz	$s7, $a5, $s7
-	or	$s7, $s7, $ra
-	slt	$ra, $s7, $t0
-	masknez	$s7, $s7, $ra
-	st.d	$t0, $sp, 136                   # 8-byte Folded Spill
-	maskeqz	$ra, $t0, $ra
-	or	$s7, $ra, $s7
-	blez	$s7, .LBB1_2
-# %bb.110:                              #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
-	blez	$a5, .LBB1_2
-# %bb.111:                              #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a5, $sp, 512                   # 8-byte Folded Reload
-	blez	$a5, .LBB1_2
-# %bb.112:                              #   in Loop: Header=BB1_3 Depth=1
-	blez	$t4, .LBB1_2
-# %bb.113:                              #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$t0, $sp, 1240                  # 8-byte Folded Reload
-	ldx.w	$s7, $t0, $s8
-	st.d	$zero, $sp, 144                 # 8-byte Folded Spill
-	sub.w	$a3, $s7, $a3
-	add.d	$a4, $a4, $t7
-	addi.d	$t3, $a3, 1
-	mul.d	$a4, $t3, $a4
-	nor	$t7, $a3, $zero
-	srli.d	$t7, $t7, 31
-	and	$a4, $t7, $a4
-	ld.w	$s8, $a2, -12
-	ld.w	$t7, $a2, 0
-	add.w	$s7, $t6, $a4
-	sub.d	$a4, $a1, $t1
-	add.d	$a4, $a4, $fp
-	sub.w	$t7, $t7, $s8
-	addi.d	$fp, $t7, 1
-	mul.d	$a4, $fp, $a4
-	nor	$t1, $t7, $zero
-	srli.d	$t1, $t1, 31
-	and	$a4, $t1, $a4
-	ld.w	$ra, $sp, 1296
-	ld.w	$t0, $sp, 1300
-	sub.d	$t1, $a0, $s8
-	add.w	$t1, $t1, $a4
-	sub.d	$a4, $ra, $s5
-	sub.d	$t0, $t0, $t8
-	add.d	$t0, $t0, $s1
-	mul.d	$t0, $s6, $t0
-	nor	$t8, $s4, $zero
-	srli.d	$t8, $t8, 31
-	and	$t0, $t8, $t0
-	ld.d	$a2, $sp, 1232                  # 8-byte Folded Reload
-	ld.w	$t8, $a2, 0
-	ld.w	$s1, $a2, 12
-	add.w	$a4, $a4, $t0
-	sub.d	$a1, $a1, $s0
-	sub.d	$a0, $a0, $t8
-	sub.w	$t0, $s1, $t8
-	add.d	$a1, $a1, $s3
-	addi.d	$t8, $t0, 1
-	mul.d	$a1, $t8, $a1
-	nor	$s0, $t0, $zero
-	srli.d	$s0, $s0, 31
-	and	$a1, $s0, $a1
-	add.w	$a0, $a0, $a1
-	srai.d	$a1, $a3, 31
-	andn	$a1, $t3, $a1
-	mul.d	$s0, $a1, $s2
-	ld.d	$a2, $sp, 1200                  # 8-byte Folded Reload
-	andn	$a5, $s0, $a2
-	srai.d	$s0, $t7, 31
-	andn	$fp, $fp, $s0
-	addi.d	$a2, $a7, 1
-	mul.d	$s0, $fp, $a2
-	srai.d	$a7, $a7, 31
-	andn	$a7, $s0, $a7
-	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
-	ld.w	$s2, $s0, 0
-	srai.d	$s0, $t0, 31
-	andn	$t8, $t8, $s0
-	ld.d	$s1, $sp, 512                   # 8-byte Folded Reload
-	mul.d	$s0, $s1, $t8
-	mul.d	$fp, $s1, $fp
-	mul.d	$a1, $s1, $a1
-	addi.d	$a2, $t5, 1
-	mul.d	$t6, $t8, $a2
-	srai.d	$t5, $t5, 31
-	andn	$t5, $t6, $t5
-	addi.d	$a2, $t2, 1
-	mul.d	$a6, $a6, $a2
-	srai.d	$t2, $t2, 31
-	andn	$a6, $a6, $t2
-	ld.d	$a2, $sp, 1208                  # 8-byte Folded Reload
-	addi.w	$t2, $a2, 0
-	ld.d	$a2, $sp, 1224                  # 8-byte Folded Reload
-	bstrpick.d	$t3, $a2, 31, 0
-	ld.d	$a2, $sp, 1216                  # 8-byte Folded Reload
-	addi.w	$a2, $a2, 0
-	st.d	$a2, $sp, 448                   # 8-byte Folded Spill
-	slli.d	$t6, $a2, 3
-	ld.d	$t8, $sp, 544                   # 8-byte Folded Reload
-	sub.d	$a2, $t8, $t6
-	st.d	$a2, $sp, 440                   # 8-byte Folded Spill
-	ld.d	$t8, $sp, 480                   # 8-byte Folded Reload
-	sub.d	$a2, $t8, $t6
-	st.d	$a2, $sp, 432                   # 8-byte Folded Spill
-	ld.d	$t8, $sp, 744                   # 8-byte Folded Reload
-	sub.d	$a2, $t8, $t6
-	st.d	$a2, $sp, 424                   # 8-byte Folded Spill
-	ori	$t8, $zero, 1
-	sub.d	$t8, $t8, $s1
-	ld.d	$a2, $sp, 504                   # 8-byte Folded Reload
-	mul.d	$t8, $a2, $t8
-	add.d	$a2, $a6, $t8
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
-	nor	$a6, $t5, $zero
-	add.d	$a6, $a6, $s0
-	srai.d	$t5, $t0, 63
-	or	$t8, $t0, $t5
-	sub.d	$a2, $a6, $t8
-	st.d	$a2, $sp, 416                   # 8-byte Folded Spill
-	nor	$a2, $t0, $t5
-	st.d	$a2, $sp, 408                   # 8-byte Folded Spill
-	srai.d	$a6, $t7, 63
-	or	$t0, $t7, $a6
-	nor	$a2, $t7, $a6
-	st.d	$a2, $sp, 400                   # 8-byte Folded Spill
-	ld.d	$a6, $sp, 608                   # 8-byte Folded Reload
-	sub.d	$a2, $a6, $t6
-	st.d	$a2, $sp, 392                   # 8-byte Folded Spill
-	nor	$a6, $a7, $zero
-	add.d	$a6, $a6, $fp
-	sub.d	$a2, $a6, $t0
-	st.d	$a2, $sp, 384                   # 8-byte Folded Spill
-	srai.d	$a6, $a3, 63
-	or	$a7, $a3, $a6
-	nor	$a2, $a3, $a6
-	st.d	$a2, $sp, 376                   # 8-byte Folded Spill
-	ld.d	$a3, $sp, 536                   # 8-byte Folded Reload
-	sub.d	$a2, $a3, $t6
-	st.d	$a2, $sp, 368                   # 8-byte Folded Spill
-	nor	$a3, $a5, $zero
-	add.d	$a1, $a3, $a1
-	ld.d	$a3, $sp, 472                   # 8-byte Folded Reload
-	sub.d	$a2, $a3, $t6
-	st.d	$a2, $sp, 360                   # 8-byte Folded Spill
-	sub.d	$a1, $a1, $a7
-	st.d	$a1, $sp, 352                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 752                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 344                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 1192                  # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 336                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 1184                  # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 328                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 624                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 320                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 760                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 312                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 728                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 304                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 616                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 296                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 288                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 464                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 280                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 600                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 272                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 456                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 256                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 496                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 248                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 632                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 240                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 488                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 640                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 224                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 736                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $t6
-	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
-	mul.d	$a1, $t4, $s2
-	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
-	sub.w	$a7, $zero, $t4
-	ld.d	$a1, $sp, 1000                  # 8-byte Folded Reload
-	addi.d	$a2, $a1, -8
-	slli.d	$a1, $t3, 3
-	add.d	$a3, $t2, $t3
-	slli.d	$a5, $t2, 3
-	st.d	$a2, $sp, 200                   # 8-byte Folded Spill
-	sub.d	$a2, $a2, $a1
-	st.d	$a2, $sp, 192                   # 8-byte Folded Spill
-	ld.d	$a6, $sp, 768                   # 8-byte Folded Reload
-	sub.d	$a2, $a6, $a1
-	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
-	sub.d	$a1, $a1, $a5
-	add.d	$a1, $a6, $a1
-	addi.d	$a1, $a1, -8
-	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
-	sub.d	$a1, $zero, $a3
-	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
-	sub.d	$a1, $a6, $a5
-	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 784                   # 8-byte Folded Spill
-	slli.d	$a1, $s2, 3
-	st.d	$a1, $sp, 776                   # 8-byte Folded Spill
-	addi.d	$a1, $a6, 8
-	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
-	st.d	$a7, $sp, 1272                  # 8-byte Folded Spill
-	.p2align	4, , 16
-.LBB1_114:                              #   Parent Loop BB1_3 Depth=1
-                                        # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB1_115 Depth 3
-                                        #         Child Loop BB1_116 Depth 4
-	move	$a5, $zero
-	.p2align	4, , 16
-.LBB1_115:                              #   Parent Loop BB1_3 Depth=1
-                                        #     Parent Loop BB1_114 Depth=2
-                                        # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB1_116 Depth 4
-	st.d	$a5, $sp, 528                   # 8-byte Folded Spill
-	move	$s6, $zero
-	move	$s0, $zero
-	move	$s2, $zero
-	move	$t5, $a4
-	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
-	add.d	$a1, $a1, $a4
-	ld.d	$a3, $sp, 544                   # 8-byte Folded Reload
-	alsl.d	$a2, $a1, $a3, 3
-	st.d	$a2, $sp, 1264                  # 8-byte Folded Spill
-	ld.d	$t2, $sp, 480                   # 8-byte Folded Reload
-	alsl.d	$a2, $a1, $t2, 3
-	st.d	$a2, $sp, 1256                  # 8-byte Folded Spill
-	ld.d	$s8, $sp, 744                   # 8-byte Folded Reload
-	alsl.d	$a2, $a1, $s8, 3
-	st.d	$a2, $sp, 1248                  # 8-byte Folded Spill
-	ld.d	$t6, $sp, 608                   # 8-byte Folded Reload
-	alsl.d	$a2, $a1, $t6, 3
-	st.d	$a2, $sp, 1240                  # 8-byte Folded Spill
-	ld.d	$t0, $sp, 536                   # 8-byte Folded Reload
-	alsl.d	$a2, $a1, $t0, 3
-	st.d	$a2, $sp, 1232                  # 8-byte Folded Spill
-	ld.d	$fp, $sp, 472                   # 8-byte Folded Reload
-	alsl.d	$a2, $a1, $fp, 3
-	st.d	$a2, $sp, 1224                  # 8-byte Folded Spill
-	ld.d	$s1, $sp, 752                   # 8-byte Folded Reload
-	alsl.d	$a2, $a1, $s1, 3
-	st.d	$a2, $sp, 1216                  # 8-byte Folded Spill
-	ld.d	$t4, $sp, 624                   # 8-byte Folded Reload
-	alsl.d	$a2, $a1, $t4, 3
-	st.d	$a2, $sp, 1208                  # 8-byte Folded Spill
-	ld.d	$t7, $sp, 760                   # 8-byte Folded Reload
-	alsl.d	$a2, $a1, $t7, 3
-	st.d	$a2, $sp, 1200                  # 8-byte Folded Spill
-	ld.d	$a2, $sp, 728                   # 8-byte Folded Reload
-	alsl.d	$a1, $a1, $a2, 3
-	st.d	$a1, $sp, 1192                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 576                   # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1184                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 656                   # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1176                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 568                   # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1168                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 672                   # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1160                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 680                   # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1152                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 664                   # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1144                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 560                   # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1136                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 648                   # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1128                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 552                   # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1120                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 592                   # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1112                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 688                   # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1104                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 584                   # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1096                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 696                   # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1088                  # 8-byte Folded Spill
-	ld.d	$a1, $sp, 704                   # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	st.d	$a1, $sp, 1080                  # 8-byte Folded Spill
 	ld.d	$a1, $sp, 416                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $a0
-	ld.d	$a4, $sp, 408                   # 8-byte Folded Reload
-	sub.d	$a7, $a4, $a0
+	ld.d	$a5, $sp, 408                   # 8-byte Folded Reload
+	sub.d	$a7, $a5, $a0
 	ld.d	$a0, $sp, 400                   # 8-byte Folded Reload
-	sub.d	$a4, $a0, $t1
+	sub.d	$a5, $a0, $a4
 	ld.d	$a0, $sp, 384                   # 8-byte Folded Reload
-	sub.d	$t8, $a0, $t1
+	sub.d	$t5, $a0, $a4
 	ld.d	$a0, $sp, 720                   # 8-byte Folded Reload
-	alsl.d	$a6, $t1, $a0, 3
+	alsl.d	$a6, $a4, $a0, 3
 	ld.d	$a0, $sp, 712                   # 8-byte Folded Reload
-	alsl.d	$t3, $t1, $a0, 3
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	alsl.d	$t3, $a4, $a0, 3
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $s7
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
-	alsl.d	$a0, $a0, $a5, 3
-	st.d	$a0, $sp, 1072                  # 8-byte Folded Spill
+	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $a4, 3
+	st.d	$a0, $sp, 1088                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
 	alsl.d	$a0, $s7, $a0, 3
-	st.d	$a0, $sp, 1064                  # 8-byte Folded Spill
+	st.d	$a0, $sp, 1080                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 768                   # 8-byte Folded Reload
 	alsl.d	$a0, $s7, $a0, 3
-	st.d	$a0, $sp, 1056                  # 8-byte Folded Spill
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
-	alsl.d	$a0, $s7, $a0, 3
-	st.d	$a0, $sp, 1048                  # 8-byte Folded Spill
+	st.d	$a0, $sp, 1072                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
-	alsl.d	$t1, $s7, $a0, 3
+	alsl.d	$a0, $s7, $a0, 3
+	st.d	$a0, $sp, 1064                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	alsl.d	$a0, $s7, $a0, 3
+	st.d	$a0, $sp, 1056                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
 	sub.d	$ra, $a0, $s7
 	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
 	sub.d	$s3, $a0, $s7
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
-	alsl.d	$a5, $s7, $a0, 3
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	alsl.d	$a0, $s7, $a0, 3
+	st.d	$a0, $sp, 1048                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	alsl.d	$s4, $s7, $a0, 3
-	alsl.d	$s5, $t5, $t2, 3
-	alsl.d	$s7, $t5, $t6, 3
-	alsl.d	$fp, $t5, $fp, 3
-	alsl.d	$a0, $t5, $t4, 3
-	alsl.d	$t2, $t5, $a2, 3
+	alsl.d	$s5, $t6, $t2, 3
+	alsl.d	$s7, $t6, $t7, 3
+	alsl.d	$fp, $t6, $fp, 3
+	alsl.d	$a0, $t6, $t4, 3
+	alsl.d	$t2, $t6, $a2, 3
 	ld.d	$a2, $sp, 616                   # 8-byte Folded Reload
-	alsl.d	$a2, $t5, $a2, 3
+	alsl.d	$a2, $t6, $a2, 3
 	st.d	$a2, $sp, 1040                  # 8-byte Folded Spill
 	ld.d	$a2, $sp, 464                   # 8-byte Folded Reload
-	alsl.d	$a2, $t5, $a2, 3
+	alsl.d	$a2, $t6, $a2, 3
 	st.d	$a2, $sp, 1032                  # 8-byte Folded Spill
 	ld.d	$a2, $sp, 600                   # 8-byte Folded Reload
-	alsl.d	$a2, $t5, $a2, 3
+	alsl.d	$a2, $t6, $a2, 3
 	st.d	$a2, $sp, 1024                  # 8-byte Folded Spill
 	ld.d	$a2, $sp, 456                   # 8-byte Folded Reload
-	alsl.d	$a2, $t5, $a2, 3
+	alsl.d	$a2, $t6, $a2, 3
 	st.d	$a2, $sp, 1016                  # 8-byte Folded Spill
-	alsl.d	$a2, $t5, $a3, 3
+	alsl.d	$a2, $t6, $a3, 3
 	st.d	$a2, $sp, 1008                  # 8-byte Folded Spill
 	ld.d	$a2, $sp, 496                   # 8-byte Folded Reload
-	alsl.d	$a2, $t5, $a2, 3
+	alsl.d	$a2, $t6, $a2, 3
 	st.d	$a2, $sp, 1000                  # 8-byte Folded Spill
-	alsl.d	$a2, $t5, $s8, 3
+	alsl.d	$a2, $t6, $t1, 3
 	st.d	$a2, $sp, 992                   # 8-byte Folded Spill
 	ld.d	$a2, $sp, 632                   # 8-byte Folded Reload
-	alsl.d	$a2, $t5, $a2, 3
+	alsl.d	$a2, $t6, $a2, 3
 	st.d	$a2, $sp, 984                   # 8-byte Folded Spill
-	alsl.d	$a2, $t5, $t0, 3
+	alsl.d	$a2, $t6, $t0, 3
 	st.d	$a2, $sp, 976                   # 8-byte Folded Spill
 	ld.d	$a2, $sp, 488                   # 8-byte Folded Reload
-	alsl.d	$a2, $t5, $a2, 3
+	alsl.d	$a2, $t6, $a2, 3
 	st.d	$a2, $sp, 968                   # 8-byte Folded Spill
-	alsl.d	$a2, $t5, $s1, 3
+	alsl.d	$a2, $t6, $s1, 3
 	st.d	$a2, $sp, 960                   # 8-byte Folded Spill
 	ld.d	$a2, $sp, 640                   # 8-byte Folded Reload
-	alsl.d	$a2, $t5, $a2, 3
+	alsl.d	$a2, $t6, $a2, 3
 	st.d	$a2, $sp, 952                   # 8-byte Folded Spill
-	alsl.d	$a2, $t5, $t7, 3
+	alsl.d	$a2, $t6, $t8, 3
 	st.d	$a2, $sp, 944                   # 8-byte Folded Spill
 	ld.d	$a2, $sp, 736                   # 8-byte Folded Reload
-	alsl.d	$a2, $t5, $a2, 3
+	alsl.d	$a2, $t6, $a2, 3
 	st.d	$a2, $sp, 936                   # 8-byte Folded Spill
 	ld.d	$a2, $sp, 440                   # 8-byte Folded Reload
-	alsl.d	$a2, $t5, $a2, 3
+	alsl.d	$a2, $t6, $a2, 3
 	ld.d	$a3, $sp, 432                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 928                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 424                   # 8-byte Folded Reload
-	alsl.d	$t6, $t5, $a3, 3
+	alsl.d	$s8, $t6, $a3, 3
 	ld.d	$a3, $sp, 392                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 920                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 368                   # 8-byte Folded Reload
-	alsl.d	$s1, $t5, $a3, 3
+	alsl.d	$s1, $t6, $a3, 3
 	ld.d	$a3, $sp, 360                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 912                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 344                   # 8-byte Folded Reload
-	alsl.d	$t0, $t5, $a3, 3
+	alsl.d	$t0, $t6, $a3, 3
 	ld.d	$a3, $sp, 320                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 904                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 312                   # 8-byte Folded Reload
-	alsl.d	$t4, $t5, $a3, 3
+	alsl.d	$t4, $t6, $a3, 3
 	ld.d	$a3, $sp, 304                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 896                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 336                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 888                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 296                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 880                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 288                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 872                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 280                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 864                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 328                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 856                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 272                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 848                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 264                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 840                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 256                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 832                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 824                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 816                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 808                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 224                   # 8-byte Folded Reload
-	alsl.d	$a3, $t5, $a3, 3
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 800                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 216                   # 8-byte Folded Reload
-	st.d	$t5, $sp, 520                   # 8-byte Folded Spill
-	alsl.d	$a3, $t5, $a3, 3
+	st.d	$t6, $sp, 520                   # 8-byte Folded Spill
+	alsl.d	$a3, $t6, $a3, 3
 	st.d	$a3, $sp, 792                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
 	.p2align	4, , 16
@@ -3467,315 +3470,317 @@ hypre_SMG3BuildRAPSym:                  # @hypre_SMG3BuildRAPSym
                                         # =>      This Inner Loop Header: Depth=4
 	fldx.d	$fa0, $t3, $s0
 	fldx.d	$fa1, $a2, $s2
-	ld.d	$s8, $sp, 1072                  # 8-byte Folded Reload
-	add.d	$t7, $s8, $s0
-	ld.d	$t5, $sp, 928                   # 8-byte Folded Reload
-	fldx.d	$fa2, $t5, $s2
+	ld.d	$t8, $sp, 1088                  # 8-byte Folded Reload
+	add.d	$t7, $t8, $s0
+	ld.d	$a4, $sp, 928                   # 8-byte Folded Reload
+	fldx.d	$fa2, $a4, $s2
 	fld.d	$fa3, $t7, -16
 	fldx.d	$fa4, $s5, $s2
 	fmul.d	$fa1, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa2
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$t5, $sp, 1184                  # 8-byte Folded Reload
-	fstx.d	$fa0, $t5, $s0
+	ld.d	$t6, $sp, 1200                  # 8-byte Folded Reload
+	fstx.d	$fa0, $t6, $s0
 	fldx.d	$fa0, $t3, $s0
-	fldx.d	$fa1, $t6, $s2
-	ld.d	$t5, $sp, 920                   # 8-byte Folded Reload
-	fldx.d	$fa2, $t5, $s2
+	fldx.d	$fa1, $s8, $s2
+	ld.d	$a4, $sp, 920                   # 8-byte Folded Reload
+	fldx.d	$fa2, $a4, $s2
 	fld.d	$fa3, $t7, -8
 	fldx.d	$fa4, $s7, $s2
 	fmul.d	$fa1, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa2
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$t5, $sp, 1176                  # 8-byte Folded Reload
-	fstx.d	$fa0, $t5, $s0
+	ld.d	$t6, $sp, 1192                  # 8-byte Folded Reload
+	fstx.d	$fa0, $t6, $s0
 	fldx.d	$fa0, $t3, $s0
 	fldx.d	$fa1, $s1, $s2
-	ld.d	$t5, $sp, 912                   # 8-byte Folded Reload
-	fldx.d	$fa2, $t5, $s2
-	fldx.d	$fa3, $s8, $s0
+	ld.d	$a4, $sp, 912                   # 8-byte Folded Reload
+	fldx.d	$fa2, $a4, $s2
+	fldx.d	$fa3, $t8, $s0
 	fldx.d	$fa4, $fp, $s2
 	fmul.d	$fa1, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa2
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$t5, $sp, 1168                  # 8-byte Folded Reload
-	fstx.d	$fa0, $t5, $s0
+	ld.d	$t6, $sp, 1184                  # 8-byte Folded Reload
+	fstx.d	$fa0, $t6, $s0
 	fldx.d	$fa0, $t3, $s0
 	fldx.d	$fa1, $t0, $s2
 	add.d	$t7, $s4, $s0
-	ld.d	$t5, $sp, 904                   # 8-byte Folded Reload
-	fldx.d	$fa2, $t5, $s2
+	ld.d	$a4, $sp, 904                   # 8-byte Folded Reload
+	fldx.d	$fa2, $a4, $s2
 	fld.d	$fa3, $t7, -8
 	fldx.d	$fa4, $a0, $s2
 	fmul.d	$fa1, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa2
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$t5, $sp, 1160                  # 8-byte Folded Reload
-	fstx.d	$fa0, $t5, $s0
+	ld.d	$t6, $sp, 1176                  # 8-byte Folded Reload
+	fstx.d	$fa0, $t6, $s0
 	fldx.d	$fa0, $t3, $s0
 	fldx.d	$fa1, $t4, $s2
 	fldx.d	$fa2, $s4, $s0
 	fldx.d	$fa3, $t2, $s2
-	ld.d	$t5, $sp, 896                   # 8-byte Folded Reload
-	fldx.d	$fa4, $t5, $s2
+	ld.d	$a4, $sp, 896                   # 8-byte Folded Reload
+	fldx.d	$fa4, $a4, $s2
 	fmul.d	$fa1, $fa0, $fa1
 	fmul.d	$fa1, $fa2, $fa1
 	fmadd.d	$fa1, $fa3, $fa2, $fa1
 	fmadd.d	$fa0, $fa0, $fa4, $fa1
-	ld.d	$t5, $sp, 1152                  # 8-byte Folded Reload
-	fstx.d	$fa0, $t5, $s0
+	ld.d	$t6, $sp, 1168                  # 8-byte Folded Reload
+	fstx.d	$fa0, $t6, $s0
 	fldx.d	$fa0, $t3, $s0
-	ld.d	$t5, $sp, 888                   # 8-byte Folded Reload
-	fldx.d	$fa1, $t5, $s2
-	ld.d	$t5, $sp, 880                   # 8-byte Folded Reload
-	fldx.d	$fa2, $t5, $s2
+	ld.d	$a4, $sp, 888                   # 8-byte Folded Reload
+	fldx.d	$fa1, $a4, $s2
+	ld.d	$a4, $sp, 880                   # 8-byte Folded Reload
+	fldx.d	$fa2, $a4, $s2
 	fld.d	$fa3, $t7, 8
-	ld.d	$t5, $sp, 1040                  # 8-byte Folded Reload
-	fldx.d	$fa4, $t5, $s2
+	ld.d	$a4, $sp, 1040                  # 8-byte Folded Reload
+	fldx.d	$fa4, $a4, $s2
 	fmul.d	$fa1, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa2
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$t5, $sp, 1144                  # 8-byte Folded Reload
-	fstx.d	$fa0, $t5, $s0
+	ld.d	$t6, $sp, 1160                  # 8-byte Folded Reload
+	fstx.d	$fa0, $t6, $s0
 	fldx.d	$fa0, $t3, $s0
-	ld.d	$t5, $sp, 872                   # 8-byte Folded Reload
-	fldx.d	$fa1, $t5, $s2
+	ld.d	$a4, $sp, 872                   # 8-byte Folded Reload
+	fldx.d	$fa1, $a4, $s2
 	fmul.d	$fa1, $fa0, $fa1
-	ld.d	$t5, $sp, 864                   # 8-byte Folded Reload
-	fldx.d	$fa2, $t5, $s2
-	fldx.d	$fa3, $a5, $s0
-	ld.d	$t5, $sp, 1032                  # 8-byte Folded Reload
-	fldx.d	$fa4, $t5, $s2
-	add.d	$t7, $a5, $s0
+	ld.d	$a4, $sp, 864                   # 8-byte Folded Reload
+	fldx.d	$fa2, $a4, $s2
+	ld.d	$a4, $sp, 1048                  # 8-byte Folded Reload
+	fldx.d	$fa3, $a4, $s0
+	ld.d	$t1, $sp, 1032                  # 8-byte Folded Reload
+	fldx.d	$fa4, $t1, $s2
+	add.d	$t7, $a4, $s0
 	fmul.d	$fa0, $fa0, $fa2
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$t5, $sp, 1136                  # 8-byte Folded Reload
-	fstx.d	$fa0, $t5, $s0
+	ld.d	$t6, $sp, 1152                  # 8-byte Folded Reload
+	fstx.d	$fa0, $t6, $s0
 	fldx.d	$fa0, $t3, $s0
-	ld.d	$t5, $sp, 856                   # 8-byte Folded Reload
-	fldx.d	$fa1, $t5, $s2
-	ld.d	$t5, $sp, 848                   # 8-byte Folded Reload
-	fldx.d	$fa2, $t5, $s2
+	ld.d	$a4, $sp, 856                   # 8-byte Folded Reload
+	fldx.d	$fa1, $a4, $s2
+	ld.d	$a4, $sp, 848                   # 8-byte Folded Reload
+	fldx.d	$fa2, $a4, $s2
 	fld.d	$fa3, $t7, 8
-	ld.d	$t5, $sp, 1024                  # 8-byte Folded Reload
-	fldx.d	$fa4, $t5, $s2
+	ld.d	$a4, $sp, 1024                  # 8-byte Folded Reload
+	fldx.d	$fa4, $a4, $s2
 	fmul.d	$fa1, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa2
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$t5, $sp, 1128                  # 8-byte Folded Reload
-	fstx.d	$fa0, $t5, $s0
+	ld.d	$t6, $sp, 1144                  # 8-byte Folded Reload
+	fstx.d	$fa0, $t6, $s0
 	fldx.d	$fa0, $t3, $s0
-	ld.d	$t5, $sp, 840                   # 8-byte Folded Reload
-	fldx.d	$fa1, $t5, $s2
-	ld.d	$t5, $sp, 832                   # 8-byte Folded Reload
-	fldx.d	$fa2, $t5, $s2
+	ld.d	$a4, $sp, 840                   # 8-byte Folded Reload
+	fldx.d	$fa1, $a4, $s2
+	ld.d	$a4, $sp, 832                   # 8-byte Folded Reload
+	fldx.d	$fa2, $a4, $s2
 	fld.d	$fa3, $t7, 16
-	ld.d	$t5, $sp, 1016                  # 8-byte Folded Reload
-	fldx.d	$fa4, $t5, $s2
+	ld.d	$a4, $sp, 1016                  # 8-byte Folded Reload
+	fldx.d	$fa4, $a4, $s2
 	fmul.d	$fa1, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa2
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
-	ld.d	$t5, $sp, 1120                  # 8-byte Folded Reload
-	fstx.d	$fa0, $t5, $s0
+	ld.d	$t6, $sp, 1136                  # 8-byte Folded Reload
+	fstx.d	$fa0, $t6, $s0
 	fldx.d	$fa0, $t3, $s0
 	fldx.d	$fa1, $a2, $s2
-	ld.d	$t5, $sp, 1008                  # 8-byte Folded Reload
-	fldx.d	$fa2, $t5, $s2
+	ld.d	$a4, $sp, 1008                  # 8-byte Folded Reload
+	fldx.d	$fa2, $a4, $s2
 	fmul.d	$fa1, $fa0, $fa1
-	ld.d	$s8, $sp, 1048                  # 8-byte Folded Reload
-	fldx.d	$fa3, $s8, $s0
+	ld.d	$t1, $sp, 1064                  # 8-byte Folded Reload
+	fldx.d	$fa3, $t1, $s0
 	fldx.d	$fa4, $a6, $s0
-	ld.d	$t5, $sp, 1264                  # 8-byte Folded Reload
-	fldx.d	$fa5, $t5, $s2
-	add.d	$t7, $t1, $s0
+	ld.d	$t6, $sp, 1272                  # 8-byte Folded Reload
+	fldx.d	$fa5, $t6, $s2
+	ld.d	$a4, $sp, 1056                  # 8-byte Folded Reload
+	add.d	$t7, $a4, $s0
 	fld.d	$fa6, $t7, -8
-	add.d	$t5, $s8, $s0
+	add.d	$t8, $t1, $s0
 	fmadd.d	$fa1, $fa1, $fa3, $fa2
 	fmul.d	$fa2, $fa4, $fa5
 	fmadd.d	$fa1, $fa2, $fa6, $fa1
 	fldx.d	$fa2, $s5, $s2
-	ld.d	$s8, $sp, 1000                  # 8-byte Folded Reload
-	fldx.d	$fa5, $s8, $s2
-	ld.d	$s8, $sp, 824                   # 8-byte Folded Reload
-	fldx.d	$fa7, $s8, $s2
-	ld.d	$s8, $sp, 1256                  # 8-byte Folded Reload
-	fldx.d	$ft0, $s8, $s2
+	ld.d	$t1, $sp, 1000                  # 8-byte Folded Reload
+	fldx.d	$fa5, $t1, $s2
+	ld.d	$t1, $sp, 824                   # 8-byte Folded Reload
+	fldx.d	$fa7, $t1, $s2
+	ld.d	$t6, $sp, 1280                  # 8-byte Folded Reload
+	fldx.d	$ft0, $t6, $s2
 	fmadd.d	$fa1, $fa2, $fa3, $fa1
 	fmadd.d	$fa1, $fa5, $fa6, $fa1
 	fmadd.d	$fa0, $fa0, $fa7, $fa1
 	fmadd.d	$fa0, $fa4, $ft0, $fa0
-	ld.d	$s8, $sp, 1112                  # 8-byte Folded Reload
-	fstx.d	$fa0, $s8, $s0
-	ld.d	$s8, $sp, 992                   # 8-byte Folded Reload
-	fldx.d	$fa0, $s8, $s2
+	ld.d	$t6, $sp, 1128                  # 8-byte Folded Reload
+	fstx.d	$fa0, $t6, $s0
+	ld.d	$t1, $sp, 992                   # 8-byte Folded Reload
+	fldx.d	$fa0, $t1, $s2
 	fldx.d	$fa1, $t3, $s0
-	fldx.d	$fa2, $t6, $s2
-	fld.d	$fa3, $t5, 8
+	fldx.d	$fa2, $s8, $s2
+	fld.d	$fa3, $t8, 8
 	fldx.d	$fa4, $a6, $s0
-	ld.d	$s8, $sp, 1248                  # 8-byte Folded Reload
-	fldx.d	$fa5, $s8, $s2
-	fldx.d	$fa6, $t1, $s0
+	ld.d	$t6, $sp, 1264                  # 8-byte Folded Reload
+	fldx.d	$fa5, $t6, $s2
+	fldx.d	$fa6, $a4, $s0
 	fmul.d	$fa2, $fa1, $fa2
 	fmadd.d	$fa0, $fa2, $fa3, $fa0
 	fmul.d	$fa2, $fa4, $fa5
 	fmadd.d	$fa0, $fa2, $fa6, $fa0
 	fldx.d	$fa2, $s7, $s2
-	ld.d	$s8, $sp, 984                   # 8-byte Folded Reload
-	fldx.d	$fa5, $s8, $s2
-	ld.d	$s8, $sp, 816                   # 8-byte Folded Reload
-	fldx.d	$fa7, $s8, $s2
-	ld.d	$s8, $sp, 1240                  # 8-byte Folded Reload
-	fldx.d	$ft0, $s8, $s2
+	ld.d	$a4, $sp, 984                   # 8-byte Folded Reload
+	fldx.d	$fa5, $a4, $s2
+	ld.d	$a4, $sp, 816                   # 8-byte Folded Reload
+	fldx.d	$fa7, $a4, $s2
+	ld.d	$t6, $sp, 1256                  # 8-byte Folded Reload
+	fldx.d	$ft0, $t6, $s2
 	fmadd.d	$fa0, $fa2, $fa3, $fa0
 	fmadd.d	$fa0, $fa5, $fa6, $fa0
 	fmadd.d	$fa0, $fa1, $fa7, $fa0
 	fmadd.d	$fa0, $fa4, $ft0, $fa0
-	ld.d	$s8, $sp, 1104                  # 8-byte Folded Reload
-	fstx.d	$fa0, $s8, $s0
-	fld.d	$fa0, $t5, 16
-	ld.d	$t5, $sp, 976                   # 8-byte Folded Reload
-	fldx.d	$fa1, $t5, $s2
+	ld.d	$t6, $sp, 1120                  # 8-byte Folded Reload
+	fstx.d	$fa0, $t6, $s0
+	fld.d	$fa0, $t8, 16
+	ld.d	$a4, $sp, 976                   # 8-byte Folded Reload
+	fldx.d	$fa1, $a4, $s2
 	fldx.d	$fa2, $t3, $s0
 	fldx.d	$fa3, $s1, $s2
 	fldx.d	$fa4, $a6, $s0
-	ld.d	$t5, $sp, 1232                  # 8-byte Folded Reload
-	fldx.d	$fa5, $t5, $s2
+	ld.d	$t6, $sp, 1248                  # 8-byte Folded Reload
+	fldx.d	$fa5, $t6, $s2
 	fld.d	$fa6, $t7, 8
 	fmul.d	$fa3, $fa2, $fa3
 	fmadd.d	$fa1, $fa3, $fa0, $fa1
 	fmul.d	$fa3, $fa4, $fa5
 	fmadd.d	$fa1, $fa3, $fa6, $fa1
 	fldx.d	$fa3, $fp, $s2
-	ld.d	$t5, $sp, 968                   # 8-byte Folded Reload
-	fldx.d	$fa5, $t5, $s2
-	ld.d	$t5, $sp, 808                   # 8-byte Folded Reload
-	fldx.d	$fa7, $t5, $s2
-	ld.d	$t5, $sp, 1224                  # 8-byte Folded Reload
-	fldx.d	$ft0, $t5, $s2
+	ld.d	$a4, $sp, 968                   # 8-byte Folded Reload
+	fldx.d	$fa5, $a4, $s2
+	ld.d	$a4, $sp, 808                   # 8-byte Folded Reload
+	fldx.d	$fa7, $a4, $s2
+	ld.d	$t6, $sp, 1240                  # 8-byte Folded Reload
+	fldx.d	$ft0, $t6, $s2
 	fmadd.d	$fa0, $fa3, $fa0, $fa1
 	fmadd.d	$fa0, $fa5, $fa6, $fa0
 	fmadd.d	$fa0, $fa2, $fa7, $fa0
 	fmadd.d	$fa0, $fa4, $ft0, $fa0
-	ld.d	$t5, $sp, 1096                  # 8-byte Folded Reload
-	fstx.d	$fa0, $t5, $s0
+	ld.d	$t6, $sp, 1112                  # 8-byte Folded Reload
+	fstx.d	$fa0, $t6, $s0
 	fldx.d	$fa0, $t3, $s0
 	fldx.d	$fa1, $t0, $s2
-	ld.d	$t5, $sp, 960                   # 8-byte Folded Reload
-	fldx.d	$fa2, $t5, $s2
+	ld.d	$a4, $sp, 960                   # 8-byte Folded Reload
+	fldx.d	$fa2, $a4, $s2
 	fmul.d	$fa1, $fa0, $fa1
-	ld.d	$t7, $sp, 1064                  # 8-byte Folded Reload
-	fldx.d	$fa3, $t7, $s0
+	ld.d	$t8, $sp, 1080                  # 8-byte Folded Reload
+	fldx.d	$fa3, $t8, $s0
 	fldx.d	$fa4, $a6, $s0
-	ld.d	$t5, $sp, 1216                  # 8-byte Folded Reload
-	fldx.d	$fa5, $t5, $s2
-	ld.d	$s8, $sp, 1056                  # 8-byte Folded Reload
-	add.d	$t5, $s8, $s0
-	fld.d	$fa6, $t5, -8
-	add.d	$t5, $t7, $s0
+	ld.d	$t6, $sp, 1232                  # 8-byte Folded Reload
+	fldx.d	$fa5, $t6, $s2
+	ld.d	$t1, $sp, 1072                  # 8-byte Folded Reload
+	add.d	$t7, $t1, $s0
+	fld.d	$fa6, $t7, -8
+	add.d	$t7, $t8, $s0
 	fmadd.d	$fa1, $fa1, $fa3, $fa2
 	fmul.d	$fa2, $fa4, $fa5
 	fmadd.d	$fa1, $fa2, $fa6, $fa1
 	fldx.d	$fa2, $a0, $s2
-	ld.d	$t7, $sp, 952                   # 8-byte Folded Reload
-	fldx.d	$fa5, $t7, $s2
-	ld.d	$t7, $sp, 800                   # 8-byte Folded Reload
-	fldx.d	$fa7, $t7, $s2
-	ld.d	$t7, $sp, 1208                  # 8-byte Folded Reload
-	fldx.d	$ft0, $t7, $s2
+	ld.d	$a4, $sp, 952                   # 8-byte Folded Reload
+	fldx.d	$fa5, $a4, $s2
+	ld.d	$a4, $sp, 800                   # 8-byte Folded Reload
+	fldx.d	$fa7, $a4, $s2
+	ld.d	$t6, $sp, 1224                  # 8-byte Folded Reload
+	fldx.d	$ft0, $t6, $s2
 	fmadd.d	$fa1, $fa2, $fa3, $fa1
 	fmadd.d	$fa1, $fa5, $fa6, $fa1
 	fmadd.d	$fa0, $fa0, $fa7, $fa1
 	fmadd.d	$fa0, $fa4, $ft0, $fa0
-	ld.d	$t7, $sp, 1088                  # 8-byte Folded Reload
-	fstx.d	$fa0, $t7, $s0
-	fld.d	$fa0, $t5, 8
-	ld.d	$t5, $sp, 944                   # 8-byte Folded Reload
-	fldx.d	$fa1, $t5, $s2
+	ld.d	$t6, $sp, 1104                  # 8-byte Folded Reload
+	fstx.d	$fa0, $t6, $s0
+	fld.d	$fa0, $t7, 8
+	ld.d	$a4, $sp, 944                   # 8-byte Folded Reload
+	fldx.d	$fa1, $a4, $s2
 	fldx.d	$fa2, $t3, $s0
 	fldx.d	$fa3, $t4, $s2
 	fldx.d	$fa4, $a6, $s0
-	ld.d	$t5, $sp, 1200                  # 8-byte Folded Reload
-	fldx.d	$fa5, $t5, $s2
-	fldx.d	$fa6, $s8, $s0
+	ld.d	$t6, $sp, 1216                  # 8-byte Folded Reload
+	fldx.d	$fa5, $t6, $s2
+	fldx.d	$fa6, $t1, $s0
 	fmul.d	$fa3, $fa2, $fa3
 	fmadd.d	$fa1, $fa3, $fa0, $fa1
 	fmul.d	$fa3, $fa4, $fa5
 	fmadd.d	$fa1, $fa3, $fa6, $fa1
-	ld.d	$t5, $sp, 792                   # 8-byte Folded Reload
-	fldx.d	$fa3, $t5, $s2
-	ld.d	$t5, $sp, 1192                  # 8-byte Folded Reload
-	fldx.d	$fa5, $t5, $s2
+	ld.d	$a4, $sp, 792                   # 8-byte Folded Reload
+	fldx.d	$fa3, $a4, $s2
+	ld.d	$t6, $sp, 1208                  # 8-byte Folded Reload
+	fldx.d	$fa5, $t6, $s2
 	fldx.d	$fa7, $t2, $s2
-	ld.d	$t5, $sp, 936                   # 8-byte Folded Reload
-	fldx.d	$ft0, $t5, $s2
+	ld.d	$a4, $sp, 936                   # 8-byte Folded Reload
+	fldx.d	$ft0, $a4, $s2
 	fmadd.d	$fa1, $fa2, $fa3, $fa1
 	fmadd.d	$fa1, $fa4, $fa5, $fa1
 	fmadd.d	$fa0, $fa7, $fa0, $fa1
 	fmadd.d	$fa0, $ft0, $fa6, $fa0
-	ld.d	$t5, $sp, 1080                  # 8-byte Folded Reload
-	fstx.d	$fa0, $t5, $s0
-	ld.d	$t5, $sp, 776                   # 8-byte Folded Reload
-	add.d	$s2, $s2, $t5
-	ld.d	$t5, $sp, 784                   # 8-byte Folded Reload
-	sub.d	$a3, $a3, $t5
+	ld.d	$t6, $sp, 1096                  # 8-byte Folded Reload
+	fstx.d	$fa0, $t6, $s0
+	ld.d	$a4, $sp, 776                   # 8-byte Folded Reload
+	add.d	$s2, $s2, $a4
+	ld.d	$a4, $sp, 784                   # 8-byte Folded Reload
+	sub.d	$a3, $a3, $a4
 	addi.d	$s0, $s0, 8
 	addi.d	$a1, $a1, -1
 	addi.d	$a7, $a7, -1
 	addi.w	$s6, $s6, -1
-	addi.d	$a4, $a4, -1
-	addi.d	$t8, $t8, -1
+	addi.d	$a5, $a5, -1
+	addi.d	$t5, $t5, -1
 	addi.d	$ra, $ra, -1
 	addi.d	$s3, $s3, -1
-	ld.d	$t5, $sp, 1272                  # 8-byte Folded Reload
-	bne	$t5, $s6, .LBB1_116
+	ld.d	$t6, $sp, 1288                  # 8-byte Folded Reload
+	bne	$t6, $s6, .LBB1_116
 # %bb.117:                              #   in Loop: Header=BB1_115 Depth=3
-	ld.d	$t0, $sp, 1272                  # 8-byte Folded Reload
-	sub.w	$s7, $t0, $ra
-	sub.w	$t1, $t0, $a4
+	ld.d	$a6, $sp, 1288                  # 8-byte Folded Reload
+	sub.w	$s7, $a6, $ra
+	sub.w	$a4, $a6, $a5
 	ld.d	$a0, $sp, 504                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 520                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $a6
-	sub.w	$a4, $a0, $a3
+	ld.d	$t0, $sp, 520                   # 8-byte Folded Reload
+	add.d	$a0, $a0, $t0
+	sub.w	$t6, $a0, $a3
 	ld.d	$a5, $sp, 528                   # 8-byte Folded Reload
 	addi.w	$a5, $a5, 1
-	sub.w	$a0, $t0, $a7
+	sub.w	$a0, $a6, $a7
 	ld.d	$a2, $sp, 512                   # 8-byte Folded Reload
 	bne	$a5, $a2, .LBB1_115
 # %bb.118:                              #   in Loop: Header=BB1_114 Depth=2
-	sub.w	$s7, $t0, $s3
-	sub.w	$t1, $t0, $t8
+	sub.w	$s7, $a6, $s3
+	sub.w	$a4, $a6, $t5
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $a6
-	sub.w	$a4, $a0, $a3
+	add.d	$a0, $a0, $t0
+	sub.w	$t6, $a0, $a3
 	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	addi.w	$a2, $a2, 1
-	sub.w	$a0, $t0, $a1
+	sub.w	$a0, $a6, $a1
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
 	bne	$a2, $a1, .LBB1_114
 	b	.LBB1_2
 .LBB1_119:
 	move	$a0, $zero
-	ld.d	$s8, $sp, 1320                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 1328                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 1336                  # 8-byte Folded Reload
-	ld.d	$s5, $sp, 1344                  # 8-byte Folded Reload
-	ld.d	$s4, $sp, 1352                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 1360                  # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1368                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 1376                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 1384                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 1392                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 1400                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 1408
+	ld.d	$s8, $sp, 1336                  # 8-byte Folded Reload
+	ld.d	$s7, $sp, 1344                  # 8-byte Folded Reload
+	ld.d	$s6, $sp, 1352                  # 8-byte Folded Reload
+	ld.d	$s5, $sp, 1360                  # 8-byte Folded Reload
+	ld.d	$s4, $sp, 1368                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 1376                  # 8-byte Folded Reload
+	ld.d	$s2, $sp, 1384                  # 8-byte Folded Reload
+	ld.d	$s1, $sp, 1392                  # 8-byte Folded Reload
+	ld.d	$s0, $sp, 1400                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1408                  # 8-byte Folded Reload
+	ld.d	$ra, $sp, 1416                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 1424
 	ret
 .Lfunc_end1:
 	.size	hypre_SMG3BuildRAPSym, .Lfunc_end1-hypre_SMG3BuildRAPSym
@@ -3918,7 +3923,7 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	st.d	$a1, $sp, 1056                  # 8-byte Folded Spill
 	add.d	$a0, $a0, $a1
 	addi.d	$a3, $sp, 1136
-	st.d	$a0, $sp, 1104                  # 8-byte Folded Spill
+	st.d	$a0, $sp, 1088                  # 8-byte Folded Spill
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(hypre_StructMapCoarseToFine)
@@ -3931,16 +3936,16 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	ld.d	$a0, $fp, 40
 	ld.d	$a2, $s7, 40
 	ld.d	$a1, $a1, 0
-	st.d	$a3, $sp, 1096                  # 8-byte Folded Spill
+	st.d	$a3, $sp, 1104                  # 8-byte Folded Spill
 	add.d	$a3, $a3, $s6
-	st.d	$a3, $sp, 1080                  # 8-byte Folded Spill
+	st.d	$a3, $sp, 1096                  # 8-byte Folded Spill
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $sp, 1064                  # 8-byte Folded Spill
 	ld.d	$a0, $a2, 0
 	st.d	$a0, $sp, 1048                  # 8-byte Folded Spill
 	st.d	$a1, $sp, 1072                  # 8-byte Folded Spill
 	add.d	$a0, $a1, $s6
-	st.d	$a0, $sp, 1088                  # 8-byte Folded Spill
+	st.d	$a0, $sp, 1080                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 1148
 	ori	$s2, $zero, 1
 	st.w	$s2, $sp, 1156
@@ -4179,8 +4184,8 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	st.w	$s1, $sp, 1156
 	addi.d	$a2, $sp, 1148
 	move	$a0, $s8
-	ori	$s8, $zero, 1
 	move	$a1, $s4
+	ori	$s4, $zero, 1
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 296                   # 8-byte Folded Spill
@@ -4189,7 +4194,7 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	b	.LBB2_10
 	.p2align	4, , 16
 .LBB2_9:                                #   in Loop: Header=BB2_3 Depth=1
-	move	$s8, $zero
+	move	$s4, $zero
 .LBB2_10:                               #   in Loop: Header=BB2_3 Depth=1
 	st.d	$fp, $sp, 1148
 	st.w	$zero, $sp, 1156
@@ -4247,8 +4252,7 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	pcaddu18i	$ra, %call36(hypre_StructMatrixExtractPointerByIndex)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 568                   # 8-byte Folded Spill
-	ld.d	$s4, $sp, 1096                  # 8-byte Folded Reload
-	beqz	$s8, .LBB2_12
+	beqz	$s4, .LBB2_12
 # %bb.11:                               #   in Loop: Header=BB2_3 Depth=1
 	ori	$s1, $zero, 1
 	ld.d	$s2, $sp, 1040                  # 8-byte Folded Reload
@@ -4311,32 +4315,34 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 .LBB2_12:                               #   in Loop: Header=BB2_3 Depth=1
 	st.d	$zero, $sp, 1148
 	st.w	$fp, $sp, 1156
-	ld.d	$s2, $sp, 1080                  # 8-byte Folded Reload
-	ld.w	$a0, $s2, 4
-	ld.w	$a1, $s2, -8
+	ld.d	$s1, $sp, 1096                  # 8-byte Folded Reload
+	ld.w	$a0, $s1, 4
+	ld.w	$a1, $s1, -8
 	ld.d	$a2, $sp, 1056                  # 8-byte Folded Reload
 	ld.d	$a3, $sp, 1048                  # 8-byte Folded Reload
-	add.d	$s3, $a3, $a2
+	add.d	$s2, $a3, $a2
 	sub.d	$a0, $a0, $a1
 	slli.d	$a1, $a0, 32
-	ldx.w	$a2, $s4, $s6
-	ld.w	$a3, $s2, -12
+	ld.d	$a2, $sp, 1104                  # 8-byte Folded Reload
+	ldx.w	$a2, $a2, $s6
+	ld.w	$a3, $s1, -12
 	srai.d	$a1, $a1, 63
 	or	$a0, $a0, $a1
 	addi.d	$a0, $a0, 1
 	sub.w	$a1, $a2, $a3
 	addi.d	$a2, $a1, 1
-	ld.d	$s8, $sp, 1088                  # 8-byte Folded Reload
-	ld.w	$a3, $s8, 4
-	ld.w	$a4, $s8, -8
+	ld.d	$s7, $sp, 1080                  # 8-byte Folded Reload
+	ld.w	$a3, $s7, 4
+	ld.w	$a4, $s7, -8
 	mulw.d.w	$a0, $a2, $a0
 	slti	$a1, $a1, 0
-	masknez	$s4, $a0, $a1
+	masknez	$a0, $a0, $a1
+	st.d	$a0, $sp, 1056                  # 8-byte Folded Spill
 	sub.d	$a0, $a3, $a4
 	slli.d	$a1, $a0, 32
 	ld.d	$a4, $sp, 1072                  # 8-byte Folded Reload
 	ldx.w	$a2, $a4, $s6
-	ld.w	$a3, $s8, -12
+	ld.w	$a3, $s7, -12
 	srai.d	$a1, $a1, 63
 	or	$a0, $a0, $a1
 	addi.d	$a0, $a0, 1
@@ -4345,76 +4351,70 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	mulw.d.w	$a0, $a2, $a0
 	st.d	$fp, $sp, 1152
 	ldx.w	$a2, $a4, $s6
-	ld.w	$a3, $s8, -12
+	ld.w	$a3, $s7, -12
 	slti	$a1, $a1, 0
-	masknez	$s1, $a0, $a1
+	masknez	$s4, $a0, $a1
 	ld.d	$a0, $sp, 1064                  # 8-byte Folded Reload
-	add.d	$a0, $a0, $s6
-	st.d	$a0, $sp, 1064                  # 8-byte Folded Spill
+	add.d	$s3, $a0, $s6
 	sub.w	$a0, $a2, $a3
 	srai.d	$a1, $a0, 63
 	or	$a0, $a0, $a1
 	st.d	$a0, $sp, 488                   # 8-byte Folded Spill
-	addi.w	$s7, $a0, 1
+	addi.w	$s8, $a0, 1
 	st.d	$fp, $sp, 1148
 	st.w	$zero, $sp, 1156
 	addi.d	$a1, $sp, 1124
-	ld.d	$fp, $sp, 1104                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1088                  # 8-byte Folded Reload
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(hypre_BoxGetSize)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 0
-	ld.w	$a3, $s8, -12
+	ld.w	$a3, $s7, -12
 	ld.w	$a1, $fp, 4
-	ld.w	$a5, $s8, -8
-	ld.w	$a6, $s8, 4
+	ld.w	$a5, $s7, -8
+	ld.w	$a6, $s7, 4
 	sub.d	$a2, $a0, $a3
 	sub.d	$a4, $a1, $a5
 	sub.w	$t0, $a6, $a5
 	ori	$a5, $zero, 19
-	st.d	$s3, $sp, 1056                  # 8-byte Folded Spill
-	st.d	$s4, $sp, 1048                  # 8-byte Folded Spill
-	st.d	$s1, $sp, 1040                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1032                  # 8-byte Folded Spill
+	st.d	$s2, $sp, 1064                  # 8-byte Folded Spill
+	st.d	$s8, $sp, 1048                  # 8-byte Folded Spill
 	beq	$s0, $a5, .LBB2_19
 # %bb.13:                               #   in Loop: Header=BB2_3 Depth=1
-	addi.d	$a5, $t0, 1
-	srai.d	$t4, $t0, 31
-	ori	$a6, $zero, 15
-	beq	$s0, $a6, .LBB2_17
+	addi.d	$a6, $t0, 1
+	srai.d	$t7, $t0, 31
+	ori	$a5, $zero, 15
+	st.d	$t7, $sp, 1040                  # 8-byte Folded Spill
+	beq	$s0, $a5, .LBB2_17
 # %bb.14:                               #   in Loop: Header=BB2_3 Depth=1
-	ori	$a6, $zero, 7
-	ld.d	$t1, $sp, 1064                  # 8-byte Folded Reload
-	bne	$s0, $a6, .LBB2_21
+	ori	$a5, $zero, 7
+	bne	$s0, $a5, .LBB2_21
 # %bb.15:                               #   in Loop: Header=BB2_3 Depth=1
 	bltz	$t0, .LBB2_70
 # %bb.16:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1104                  # 8-byte Folded Reload
-	ld.w	$a6, $a6, 8
-	ld.d	$a7, $sp, 1088                  # 8-byte Folded Reload
+	ld.w	$a5, $fp, 8
+	ld.d	$a7, $sp, 1080                  # 8-byte Folded Reload
 	ld.w	$a7, $a7, -4
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$t0, $a6, $a5
+	sub.d	$a5, $a5, $a7
+	mulw.d.w	$a5, $a5, $a6
+	st.d	$a5, $sp, 1080                  # 8-byte Folded Spill
 	b	.LBB2_71
 	.p2align	4, , 16
 .LBB2_17:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$t2, $sp, 1064                  # 8-byte Folded Reload
 	bltz	$t0, .LBB2_24
 # %bb.18:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1104                  # 8-byte Folded Reload
-	ld.w	$a6, $a6, 8
-	ld.d	$a7, $sp, 1088                  # 8-byte Folded Reload
+	ld.w	$a5, $fp, 8
+	ld.d	$a7, $sp, 1080                  # 8-byte Folded Reload
 	ld.w	$a7, $a7, -4
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$fp, $a6, $a5
+	sub.d	$a5, $a5, $a7
+	mulw.d.w	$s0, $a5, $a6
 	b	.LBB2_25
 	.p2align	4, , 16
 .LBB2_19:                               #   in Loop: Header=BB2_3 Depth=1
 	bltz	$t0, .LBB2_47
 # %bb.20:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a5, $sp, 1104                  # 8-byte Folded Reload
-	ld.w	$a5, $a5, 8
-	ld.d	$a6, $sp, 1088                  # 8-byte Folded Reload
+	ld.w	$a5, $fp, 8
+	ld.d	$a6, $sp, 1080                  # 8-byte Folded Reload
 	ld.w	$a6, $a6, -4
 	sub.d	$a5, $a5, $a6
 	addi.d	$a6, $t0, 1
@@ -4424,252 +4424,250 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 .LBB2_21:                               #   in Loop: Header=BB2_3 Depth=1
 	bltz	$t0, .LBB2_73
 # %bb.22:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1104                  # 8-byte Folded Reload
-	ld.w	$a6, $a6, 8
-	ld.d	$a7, $sp, 1088                  # 8-byte Folded Reload
+	ld.w	$a5, $fp, 8
+	ld.d	$a7, $sp, 1080                  # 8-byte Folded Reload
 	ld.w	$a7, $a7, -4
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$t6, $a6, $a5
+	sub.d	$a5, $a5, $a7
+	mulw.d.w	$t6, $a5, $a6
 	b	.LBB2_74
 .LBB2_23:                               #   in Loop: Header=BB2_3 Depth=1
 	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
 	ori	$fp, $zero, 1
-	ori	$s8, $zero, 1
+	ori	$s4, $zero, 1
 	b	.LBB2_10
 .LBB2_24:                               #   in Loop: Header=BB2_3 Depth=1
-	move	$fp, $zero
+	move	$s0, $zero
 .LBB2_25:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$t8, $t2, -8
-	ld.w	$a6, $t2, 4
-	sub.w	$t1, $a6, $t8
+	ld.w	$t8, $s3, -8
+	ld.w	$a5, $s3, 4
+	sub.w	$t1, $a5, $t8
 	addi.d	$t0, $t1, 1
-	st.d	$t4, $sp, 1024                  # 8-byte Folded Spill
 	bltz	$t1, .LBB2_27
 # %bb.26:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1104                  # 8-byte Folded Reload
-	ld.w	$a6, $a6, 8
-	ld.w	$a7, $t2, -4
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$t2, $a6, $t0
+	ld.w	$a5, $fp, 8
+	ld.w	$a7, $s3, -4
+	sub.d	$a5, $a5, $a7
+	mulw.d.w	$t0, $a5, $t0
 	b	.LBB2_28
 .LBB2_27:                               #   in Loop: Header=BB2_3 Depth=1
-	move	$t2, $zero
+	move	$t0, $zero
 .LBB2_28:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$t0, $s2, -8
-	ld.w	$a6, $s2, 4
-	sub.w	$t4, $a6, $t0
-	addi.d	$ra, $t4, 1
+	ld.w	$a7, $s1, -8
+	ld.w	$a5, $s1, 4
+	sub.w	$t4, $a5, $a7
+	addi.d	$t3, $t4, 1
 	bltz	$t4, .LBB2_30
 # %bb.29:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$a6, $sp, 1144
-	ld.w	$a7, $s2, -4
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$s2, $a6, $ra
+	ld.w	$a5, $sp, 1144
+	ld.w	$t2, $s1, -4
+	sub.d	$a5, $a5, $t2
+	mulw.d.w	$s1, $a5, $t3
 	b	.LBB2_31
 .LBB2_30:                               #   in Loop: Header=BB2_3 Depth=1
-	move	$s2, $zero
+	move	$s1, $zero
 .LBB2_31:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$s1, $s3, 4
-	ld.w	$a6, $s3, 16
-	sub.w	$t6, $a6, $s1
-	addi.d	$t7, $t6, 1
+	ld.w	$t2, $s2, 4
+	ld.w	$a5, $s2, 16
+	sub.w	$t6, $a5, $t2
+	addi.d	$t3, $t6, 1
+	st.d	$s4, $sp, 1032                  # 8-byte Folded Spill
 	bltz	$t6, .LBB2_33
 # %bb.32:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1104                  # 8-byte Folded Reload
-	ld.w	$a6, $a6, 8
-	ld.w	$a7, $s3, 8
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$s3, $a6, $t7
+	ld.w	$a5, $fp, 8
+	ld.w	$fp, $s2, 8
+	sub.d	$a5, $a5, $fp
+	move	$t5, $t3
+	mulw.d.w	$t3, $a5, $t3
 	b	.LBB2_34
 .LBB2_33:                               #   in Loop: Header=BB2_3 Depth=1
-	move	$s3, $zero
+	move	$t5, $t3
+	move	$t3, $zero
 .LBB2_34:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1080                  # 8-byte Folded Reload
-	ld.w	$s5, $a6, -12
-	ld.d	$a6, $sp, 1096                  # 8-byte Folded Reload
-	ldx.w	$a6, $a6, $s6
-	sub.w	$s4, $a6, $s5
+	ld.d	$a5, $sp, 1096                  # 8-byte Folded Reload
+	ld.w	$s5, $a5, -12
+	ld.d	$a5, $sp, 1104                  # 8-byte Folded Reload
+	ldx.w	$a5, $a5, $s6
+	sub.w	$s4, $a5, $s5
 	addi.d	$s7, $s4, 1
 	bltz	$s4, .LBB2_36
 # %bb.35:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
-	ld.w	$a6, $a7, 4
-	ld.w	$a7, $a7, 8
-	mul.d	$a6, $a6, $s7
-	st.d	$a6, $sp, 856                   # 8-byte Folded Spill
-	mul.d	$s0, $a7, $s7
+	ld.d	$fp, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$a5, $fp, 4
+	ld.w	$fp, $fp, 8
+	mul.d	$a5, $a5, $s7
+	st.d	$a5, $sp, 856                   # 8-byte Folded Spill
+	mul.d	$s2, $fp, $s7
 	b	.LBB2_37
 .LBB2_36:                               #   in Loop: Header=BB2_3 Depth=1
 	st.d	$zero, $sp, 856                 # 8-byte Folded Spill
-	move	$s0, $zero
+	move	$s2, $zero
 .LBB2_37:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$a7, $sp, 1124
-	ld.w	$t5, $sp, 1128
-	ld.w	$t3, $sp, 1132
-	slt	$a6, $a7, $t5
-	masknez	$s8, $a7, $a6
-	st.d	$t5, $sp, 864                   # 8-byte Folded Spill
-	maskeqz	$a6, $t5, $a6
-	or	$a6, $a6, $s8
-	slt	$s8, $a6, $t3
-	masknez	$a6, $a6, $s8
-	st.d	$t3, $sp, 704                   # 8-byte Folded Spill
-	maskeqz	$s8, $t3, $s8
-	or	$a6, $s8, $a6
-	blez	$a6, .LBB2_2
+	ld.w	$fp, $sp, 1124
+	ld.w	$ra, $sp, 1128
+	ld.w	$t7, $sp, 1132
+	slt	$a5, $fp, $ra
+	masknez	$s8, $fp, $a5
+	st.d	$ra, $sp, 864                   # 8-byte Folded Spill
+	maskeqz	$a5, $ra, $a5
+	or	$a5, $a5, $s8
+	slt	$s8, $a5, $t7
+	masknez	$a5, $a5, $s8
+	st.d	$t7, $sp, 704                   # 8-byte Folded Spill
+	maskeqz	$s8, $t7, $s8
+	or	$a5, $s8, $a5
+	blez	$a5, .LBB2_2
 # %bb.38:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 704                   # 8-byte Folded Reload
-	blez	$a6, .LBB2_2
+	ld.d	$a5, $sp, 704                   # 8-byte Folded Reload
+	blez	$a5, .LBB2_2
 # %bb.39:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 864                   # 8-byte Folded Reload
-	blez	$a6, .LBB2_2
+	ld.d	$a5, $sp, 864                   # 8-byte Folded Reload
+	blez	$a5, .LBB2_2
 # %bb.40:                               #   in Loop: Header=BB2_3 Depth=1
-	blez	$a7, .LBB2_2
+	blez	$fp, .LBB2_2
 # %bb.41:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1072                  # 8-byte Folded Reload
-	ldx.w	$a6, $a6, $s6
-	move	$s8, $zero
-	sub.w	$a3, $a6, $a3
-	add.d	$a4, $a4, $fp
-	addi.d	$a6, $a3, 1
-	mul.d	$a4, $a6, $a4
-	nor	$fp, $a3, $zero
-	srli.d	$fp, $fp, 31
-	and	$a4, $fp, $a4
-	ld.d	$s6, $sp, 1064                  # 8-byte Folded Reload
-	ld.w	$fp, $s6, -12
-	ld.w	$s6, $s6, 0
-	add.w	$t3, $a2, $a4
+	ld.d	$a5, $sp, 1072                  # 8-byte Folded Reload
+	ldx.w	$a5, $a5, $s6
+	move	$t7, $zero
+	sub.w	$a3, $a5, $a3
+	add.d	$a4, $a4, $s0
+	addi.d	$a5, $a3, 1
+	mul.d	$a4, $a5, $a4
+	nor	$s0, $a3, $zero
+	srli.d	$s0, $s0, 31
+	and	$a4, $s0, $a4
+	ld.w	$s0, $s3, -12
+	ld.w	$s6, $s3, 0
+	add.w	$s3, $a2, $a4
 	sub.d	$a2, $a1, $t8
-	add.d	$a2, $a2, $t2
-	sub.w	$a4, $s6, $fp
-	addi.d	$t2, $a4, 1
-	mul.d	$a2, $t2, $a2
+	add.d	$a2, $a2, $t0
+	sub.w	$a4, $s6, $s0
+	addi.d	$t0, $a4, 1
+	mul.d	$a2, $t0, $a2
 	nor	$t8, $a4, $zero
 	srli.d	$t8, $t8, 31
 	and	$a2, $t8, $a2
 	ld.w	$t8, $sp, 1136
 	ld.w	$s6, $sp, 1140
-	sub.d	$fp, $a0, $fp
-	move	$t5, $t7
-	add.w	$t7, $fp, $a2
+	sub.d	$s0, $a0, $s0
+	add.w	$s8, $s0, $a2
 	sub.d	$a2, $t8, $s5
-	sub.d	$t0, $s6, $t0
-	add.d	$t0, $t0, $s2
-	mul.d	$t0, $s7, $t0
+	sub.d	$a7, $s6, $a7
+	add.d	$a7, $a7, $s1
+	mul.d	$a7, $s7, $a7
 	nor	$t8, $s4, $zero
 	srli.d	$t8, $t8, 31
-	and	$t0, $t8, $t0
-	ld.d	$fp, $sp, 1056                  # 8-byte Folded Reload
-	ld.w	$t8, $fp, 0
-	ld.w	$fp, $fp, 12
-	add.w	$a2, $a2, $t0
-	sub.d	$a1, $a1, $s1
-	move	$s1, $t3
+	and	$a7, $t8, $a7
+	ld.d	$s0, $sp, 1064                  # 8-byte Folded Reload
+	ld.w	$t8, $s0, 0
+	ld.w	$s0, $s0, 12
+	add.w	$a2, $a2, $a7
+	sub.d	$a1, $a1, $t2
 	sub.d	$a0, $a0, $t8
-	sub.w	$t0, $fp, $t8
-	add.d	$a1, $a1, $s3
-	addi.d	$t8, $t0, 1
-	mul.d	$a1, $t8, $a1
-	nor	$fp, $t0, $zero
-	srli.d	$fp, $fp, 31
-	and	$a1, $fp, $a1
+	sub.w	$a7, $s0, $t8
+	add.d	$a1, $a1, $t3
+	addi.d	$t2, $a7, 1
+	mul.d	$a1, $t2, $a1
+	nor	$t8, $a7, $zero
+	srli.d	$t8, $t8, 31
+	and	$a1, $t8, $a1
 	add.w	$a1, $a0, $a1
 	srai.d	$a0, $a3, 31
-	andn	$a0, $a6, $a0
-	mul.d	$a5, $a0, $a5
-	ld.d	$a6, $sp, 1024                  # 8-byte Folded Reload
+	andn	$a0, $a5, $a0
+	mul.d	$a5, $a0, $a6
+	ld.d	$a6, $sp, 1040                  # 8-byte Folded Reload
 	andn	$a5, $a5, $a6
 	srai.d	$a6, $a4, 31
-	andn	$a6, $t2, $a6
-	addi.d	$t2, $t1, 1
-	mul.d	$t2, $a6, $t2
+	andn	$a6, $t0, $a6
+	addi.d	$t0, $t1, 1
+	mul.d	$t0, $a6, $t0
 	srai.d	$t1, $t1, 31
+	andn	$t0, $t0, $t1
+	ld.d	$t1, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$s6, $t1, 0
+	srai.d	$t1, $a7, 31
 	andn	$t1, $t2, $t1
-	ld.d	$t2, $sp, 72                    # 8-byte Folded Reload
-	ld.w	$s6, $t2, 0
-	srai.d	$t2, $t0, 31
-	andn	$t2, $t8, $t2
 	ld.d	$t8, $sp, 864                   # 8-byte Folded Reload
-	mul.d	$t3, $t8, $t2
+	mul.d	$t2, $t8, $t1
 	mul.d	$a6, $t8, $a6
 	mul.d	$a0, $t8, $a0
-	mul.d	$t2, $t2, $t5
-	srai.d	$t6, $t6, 31
-	andn	$t2, $t2, $t6
-	mul.d	$t5, $s0, $ra
+	mul.d	$t1, $t1, $t5
+	srai.d	$t3, $t6, 31
+	andn	$t1, $t1, $t3
+	addi.d	$t3, $t4, 1
+	mul.d	$t3, $s2, $t3
 	srai.d	$t4, $t4, 31
-	andn	$t4, $t5, $t4
-	mul.d	$t5, $a7, $s6
-	st.d	$t5, $sp, 848                   # 8-byte Folded Spill
-	ld.d	$t5, $sp, 1040                  # 8-byte Folded Reload
-	addi.w	$fp, $t5, 0
-	ld.d	$t5, $sp, 1032                  # 8-byte Folded Reload
-	bstrpick.d	$s0, $t5, 31, 0
-	ld.d	$t5, $sp, 1048                  # 8-byte Folded Reload
-	addi.w	$t5, $t5, 0
-	slli.d	$t6, $s6, 3
-	st.d	$t6, $sp, 816                   # 8-byte Folded Spill
-	st.d	$t5, $sp, 824                   # 8-byte Folded Spill
-	slli.d	$t5, $t5, 3
-	ld.d	$t6, $sp, 680                   # 8-byte Folded Reload
-	sub.d	$t6, $t6, $t5
-	st.d	$t6, $sp, 808                   # 8-byte Folded Spill
-	ori	$t6, $zero, 1
-	sub.d	$t6, $t6, $t8
-	move	$t8, $t7
-	ld.d	$t7, $sp, 856                   # 8-byte Folded Reload
-	mul.d	$t6, $t7, $t6
-	add.d	$t4, $t4, $t6
-	st.d	$t4, $sp, 696                   # 8-byte Folded Spill
-	nor	$t2, $t2, $zero
-	add.d	$t2, $t2, $t3
-	srai.d	$t3, $t0, 63
-	or	$t4, $t0, $t3
-	sub.d	$t2, $t2, $t4
-	st.d	$t2, $sp, 800                   # 8-byte Folded Spill
-	ld.d	$t2, $sp, 552                   # 8-byte Folded Reload
+	andn	$t3, $t3, $t4
+	mul.d	$t4, $fp, $s6
+	st.d	$t4, $sp, 848                   # 8-byte Folded Spill
+	ld.d	$t4, $sp, 1032                  # 8-byte Folded Reload
+	addi.w	$s0, $t4, 0
+	ld.d	$t4, $sp, 1048                  # 8-byte Folded Reload
+	bstrpick.d	$s1, $t4, 31, 0
+	ld.d	$t4, $sp, 1056                  # 8-byte Folded Reload
+	addi.w	$t4, $t4, 0
+	slli.d	$t5, $s6, 3
+	st.d	$t5, $sp, 816                   # 8-byte Folded Spill
+	st.d	$t4, $sp, 824                   # 8-byte Folded Spill
+	slli.d	$t4, $t4, 3
+	ori	$t5, $zero, 1
+	sub.d	$t5, $t5, $t8
+	move	$t8, $s8
+	ld.d	$t6, $sp, 856                   # 8-byte Folded Reload
+	mul.d	$t5, $t6, $t5
+	add.d	$t3, $t3, $t5
+	st.d	$t3, $sp, 696                   # 8-byte Folded Spill
+	srai.d	$t3, $a7, 63
+	or	$t5, $a7, $t3
 	sub.d	$t2, $t2, $t5
-	st.d	$t2, $sp, 792                   # 8-byte Folded Spill
-	nor	$t0, $t0, $t3
-	st.d	$t0, $sp, 784                   # 8-byte Folded Spill
+	ld.d	$t5, $sp, 680                   # 8-byte Folded Reload
+	sub.d	$t5, $t5, $t4
+	st.d	$t5, $sp, 808                   # 8-byte Folded Spill
+	nor	$t1, $t1, $zero
+	add.d	$t1, $t1, $t2
+	st.d	$t1, $sp, 800                   # 8-byte Folded Spill
+	nor	$a7, $a7, $t3
+	st.d	$a7, $sp, 792                   # 8-byte Folded Spill
+	srai.d	$a7, $a3, 63
+	or	$t1, $a3, $a7
+	sub.d	$a0, $a0, $t1
+	ld.d	$t1, $sp, 552                   # 8-byte Folded Reload
+	sub.d	$t1, $t1, $t4
+	st.d	$t1, $sp, 784                   # 8-byte Folded Spill
 	nor	$a5, $a5, $zero
 	add.d	$a0, $a5, $a0
-	srai.d	$a5, $a3, 63
-	or	$t0, $a3, $a5
-	sub.d	$a0, $a0, $t0
 	st.d	$a0, $sp, 776                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 688                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $t5
+	nor	$a0, $a3, $a7
 	st.d	$a0, $sp, 768                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 560                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $t5
-	st.d	$a0, $sp, 760                   # 8-byte Folded Spill
-	sub.w	$a7, $zero, $a7
-	nor	$a0, $a3, $a5
-	st.d	$a0, $sp, 752                   # 8-byte Folded Spill
-	nor	$a0, $t1, $zero
-	add.d	$a0, $a0, $a6
-	srai.d	$a3, $a4, 63
-	or	$a5, $a4, $a3
-	sub.d	$a0, $a0, $a5
-	st.d	$a0, $sp, 744                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 1112                  # 8-byte Folded Reload
-	alsl.d	$a0, $s0, $a0, 3
-	st.d	$a0, $sp, 736                   # 8-byte Folded Spill
-	nor	$a0, $a4, $a3
+	srai.d	$a0, $a4, 63
+	or	$a3, $a4, $a0
+	sub.d	$a3, $a6, $a3
+	ld.d	$a5, $sp, 688                   # 8-byte Folded Reload
+	sub.d	$a5, $a5, $t4
+	st.d	$a5, $sp, 760                   # 8-byte Folded Spill
+	ld.d	$a5, $sp, 560                   # 8-byte Folded Reload
+	sub.d	$a5, $a5, $t4
+	st.d	$a5, $sp, 752                   # 8-byte Folded Spill
+	sub.w	$a6, $zero, $fp
+	nor	$a5, $t0, $zero
+	add.d	$a3, $a5, $a3
+	st.d	$a3, $sp, 744                   # 8-byte Folded Spill
+	ld.d	$a3, $sp, 1112                  # 8-byte Folded Reload
+	alsl.d	$a3, $s1, $a3, 3
+	st.d	$a3, $sp, 736                   # 8-byte Folded Spill
+	nor	$a0, $a4, $a0
 	st.d	$a0, $sp, 728                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 840                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 832                   # 8-byte Folded Spill
-	sub.d	$a0, $fp, $s0
+	st.d	$s0, $sp, 840                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 832                   # 8-byte Folded Spill
+	sub.d	$a0, $s0, $s1
+	move	$s1, $s3
 	st.d	$a0, $sp, 720                   # 8-byte Folded Spill
-	st.d	$a7, $sp, 1104                  # 8-byte Folded Spill
+	st.d	$a6, $sp, 1104                  # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB2_42:                               #   Parent Loop BB2_3 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB2_43 Depth 3
                                         #         Child Loop BB2_44 Depth 4
-	st.d	$s8, $sp, 712                   # 8-byte Folded Spill
+	st.d	$t7, $sp, 712                   # 8-byte Folded Spill
 	move	$a3, $zero
 	.p2align	4, , 16
 .LBB2_43:                               #   Parent Loop BB2_3 Depth=1
@@ -4678,7 +4676,7 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
                                         #         Child Loop BB2_44 Depth 4
 	st.d	$a3, $sp, 880                   # 8-byte Folded Spill
 	move	$s8, $zero
-	move	$t3, $zero
+	move	$a6, $zero
 	move	$a7, $zero
 	move	$s7, $a2
 	ld.d	$a0, $sp, 824                   # 8-byte Folded Reload
@@ -4688,8 +4686,8 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	ld.d	$t1, $sp, 552                   # 8-byte Folded Reload
 	alsl.d	$a2, $a0, $t1, 3
 	st.d	$a2, $sp, 1096                  # 8-byte Folded Spill
-	ld.d	$s2, $sp, 688                   # 8-byte Folded Reload
-	alsl.d	$a3, $a0, $s2, 3
+	ld.d	$s3, $sp, 688                   # 8-byte Folded Reload
+	alsl.d	$a3, $a0, $s3, 3
 	ld.d	$a5, $sp, 560                   # 8-byte Folded Reload
 	alsl.d	$a2, $a0, $a5, 3
 	st.d	$a2, $sp, 1088                  # 8-byte Folded Spill
@@ -4740,7 +4738,7 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	st.d	$a0, $sp, 968                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 800                   # 8-byte Folded Reload
 	sub.d	$t2, $a0, $a1
-	ld.d	$a0, $sp, 784                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 792                   # 8-byte Folded Reload
 	sub.d	$ra, $a0, $a1
 	ld.d	$a0, $sp, 832                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $s1
@@ -4754,16 +4752,16 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	st.d	$a0, $sp, 952                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 840                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $s1
-	ld.d	$a6, $sp, 736                   # 8-byte Folded Reload
-	alsl.d	$a4, $a0, $a6, 3
+	ld.d	$t3, $sp, 736                   # 8-byte Folded Reload
+	alsl.d	$a4, $a0, $t3, 3
 	st.d	$a4, $sp, 944                   # 8-byte Folded Spill
 	alsl.d	$a4, $a0, $t7, 3
-	alsl.d	$a0, $s1, $a6, 3
+	alsl.d	$a0, $s1, $t3, 3
 	st.d	$a0, $sp, 936                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 776                   # 8-byte Folded Reload
 	sub.d	$s4, $a0, $s1
-	ld.d	$a0, $sp, 752                   # 8-byte Folded Reload
-	sub.d	$a6, $a0, $s1
+	ld.d	$a0, $sp, 768                   # 8-byte Folded Reload
+	sub.d	$t3, $a0, $s1
 	alsl.d	$a0, $s1, $t7, 3
 	st.d	$a0, $sp, 928                   # 8-byte Folded Spill
 	alsl.d	$a0, $s1, $a1, 3
@@ -4776,7 +4774,7 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	sub.d	$s5, $a0, $t8
 	ld.d	$a0, $sp, 728                   # 8-byte Folded Reload
 	sub.d	$t8, $a0, $t8
-	alsl.d	$s3, $s7, $t1, 3
+	alsl.d	$s2, $s7, $t1, 3
 	alsl.d	$t1, $s7, $a5, 3
 	alsl.d	$a0, $s7, $fp, 3
 	st.d	$a0, $sp, 912                   # 8-byte Folded Spill
@@ -4787,15 +4785,15 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	alsl.d	$a0, $s7, $s0, 3
 	st.d	$a0, $sp, 888                   # 8-byte Folded Spill
 	alsl.d	$a0, $s7, $t6, 3
-	alsl.d	$a5, $s7, $s2, 3
-	alsl.d	$s2, $s7, $t5, 3
+	alsl.d	$a5, $s7, $s3, 3
+	alsl.d	$s3, $s7, $t5, 3
 	ld.d	$a1, $sp, 808                   # 8-byte Folded Reload
 	alsl.d	$a2, $s7, $a1, 3
-	ld.d	$a1, $sp, 792                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 784                   # 8-byte Folded Reload
 	alsl.d	$a1, $s7, $a1, 3
-	ld.d	$t4, $sp, 768                   # 8-byte Folded Reload
-	alsl.d	$t5, $s7, $t4, 3
 	ld.d	$t4, $sp, 760                   # 8-byte Folded Reload
+	alsl.d	$t5, $s7, $t4, 3
+	ld.d	$t4, $sp, 752                   # 8-byte Folded Reload
 	st.d	$s7, $sp, 872                   # 8-byte Folded Spill
 	alsl.d	$t6, $s7, $t4, 3
 	ld.d	$t4, $sp, 848                   # 8-byte Folded Reload
@@ -4805,23 +4803,23 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
                                         #     Parent Loop BB2_42 Depth=2
                                         #       Parent Loop BB2_43 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	fldx.d	$fa0, $t7, $t3
+	fldx.d	$fa0, $t7, $a6
 	fldx.d	$fa1, $t0, $a7
 	ld.d	$fp, $sp, 1096                  # 8-byte Folded Reload
 	fldx.d	$fa2, $fp, $a7
 	ld.d	$fp, $sp, 944                   # 8-byte Folded Reload
-	fldx.d	$fa3, $fp, $t3
-	fldx.d	$fa4, $s3, $a7
+	fldx.d	$fa3, $fp, $a6
+	fldx.d	$fa4, $s2, $a7
 	fmul.d	$fa1, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa2
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
 	ld.d	$fp, $sp, 1016                  # 8-byte Folded Reload
-	fstx.d	$fa0, $fp, $t3
-	fldx.d	$fa0, $t7, $t3
+	fstx.d	$fa0, $fp, $a6
+	fldx.d	$fa0, $t7, $a6
 	fldx.d	$fa1, $a3, $a7
 	move	$fp, $s6
-	add.d	$s6, $a4, $t3
+	add.d	$s6, $a4, $a6
 	ld.d	$s0, $sp, 1088                  # 8-byte Folded Reload
 	fldx.d	$fa2, $s0, $a7
 	fld.d	$fa3, $s6, 8
@@ -4831,11 +4829,11 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
 	ld.d	$s0, $sp, 1008                  # 8-byte Folded Reload
-	fstx.d	$fa0, $s0, $t3
-	fldx.d	$fa0, $t7, $t3
+	fstx.d	$fa0, $s0, $a6
+	fldx.d	$fa0, $t7, $a6
 	ld.d	$s0, $sp, 1080                  # 8-byte Folded Reload
 	fldx.d	$fa1, $s0, $a7
-	fldx.d	$fa2, $a4, $t3
+	fldx.d	$fa2, $a4, $a6
 	ld.d	$s0, $sp, 912                   # 8-byte Folded Reload
 	fldx.d	$fa3, $s0, $a7
 	ld.d	$s0, $sp, 1072                  # 8-byte Folded Reload
@@ -4845,8 +4843,8 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	fmadd.d	$fa1, $fa3, $fa2, $fa1
 	fmadd.d	$fa0, $fa0, $fa4, $fa1
 	ld.d	$s0, $sp, 1000                  # 8-byte Folded Reload
-	fstx.d	$fa0, $s0, $t3
-	fldx.d	$fa0, $t7, $t3
+	fstx.d	$fa0, $s0, $a6
+	fldx.d	$fa0, $t7, $a6
 	ld.d	$s0, $sp, 1064                  # 8-byte Folded Reload
 	fldx.d	$fa1, $s0, $a7
 	ld.d	$s0, $sp, 1056                  # 8-byte Folded Reload
@@ -4859,14 +4857,14 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
 	ld.d	$s0, $sp, 992                   # 8-byte Folded Reload
-	fstx.d	$fa0, $s0, $t3
-	fldx.d	$fa0, $t7, $t3
+	fstx.d	$fa0, $s0, $a6
+	fldx.d	$fa0, $t7, $a6
 	ld.d	$s0, $sp, 1048                  # 8-byte Folded Reload
 	fldx.d	$fa1, $s0, $a7
 	ld.d	$s0, $sp, 1040                  # 8-byte Folded Reload
 	fldx.d	$fa2, $s0, $a7
 	ld.d	$s0, $sp, 952                   # 8-byte Folded Reload
-	fldx.d	$fa3, $s0, $t3
+	fldx.d	$fa3, $s0, $a6
 	ld.d	$s0, $sp, 896                   # 8-byte Folded Reload
 	fldx.d	$fa4, $s0, $a7
 	fmul.d	$fa1, $fa0, $fa1
@@ -4874,23 +4872,23 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fmadd.d	$fa0, $fa4, $fa3, $fa0
 	ld.d	$s0, $sp, 984                   # 8-byte Folded Reload
-	fstx.d	$fa0, $s0, $t3
+	fstx.d	$fa0, $s0, $a6
 	ld.d	$s0, $sp, 888                   # 8-byte Folded Reload
 	fldx.d	$fa0, $s0, $a7
-	fldx.d	$fa1, $s1, $t3
+	fldx.d	$fa1, $s1, $a6
 	fldx.d	$fa2, $a2, $a7
 	ld.d	$s0, $sp, 936                   # 8-byte Folded Reload
-	fldx.d	$fa3, $s0, $t3
-	fldx.d	$fa4, $t7, $t3
+	fldx.d	$fa3, $s0, $a6
+	fldx.d	$fa4, $t7, $a6
 	fldx.d	$fa5, $t0, $a7
 	ld.d	$s0, $sp, 960                   # 8-byte Folded Reload
-	fldx.d	$fa6, $s0, $t3
+	fldx.d	$fa6, $s0, $a6
 	fmul.d	$fa2, $fa1, $fa2
 	fmadd.d	$fa0, $fa2, $fa3, $fa0
 	fmul.d	$fa2, $fa4, $fa5
 	fmadd.d	$fa0, $fa2, $fa6, $fa0
 	fldx.d	$fa2, $a0, $a7
-	fldx.d	$fa5, $s3, $a7
+	fldx.d	$fa5, $s2, $a7
 	fldx.d	$fa7, $a1, $a7
 	ld.d	$s0, $sp, 1032                  # 8-byte Folded Reload
 	fldx.d	$ft0, $s0, $a7
@@ -4899,24 +4897,24 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	fmadd.d	$fa0, $fa1, $fa7, $fa0
 	fmadd.d	$fa0, $fa4, $ft0, $fa0
 	ld.d	$s0, $sp, 976                   # 8-byte Folded Reload
-	fstx.d	$fa0, $s0, $t3
+	fstx.d	$fa0, $s0, $a6
 	fldx.d	$fa0, $a5, $a7
-	fldx.d	$fa1, $s1, $t3
+	fldx.d	$fa1, $s1, $a6
 	fldx.d	$fa2, $t5, $a7
 	ld.d	$s0, $sp, 928                   # 8-byte Folded Reload
-	add.d	$s6, $s0, $t3
+	add.d	$s6, $s0, $a6
 	fld.d	$fa3, $s6, 8
-	fldx.d	$fa4, $t7, $t3
+	fldx.d	$fa4, $t7, $a6
 	fldx.d	$fa5, $a3, $a7
 	ld.d	$s0, $sp, 920                   # 8-byte Folded Reload
-	add.d	$s6, $s0, $t3
+	add.d	$s6, $s0, $a6
 	fld.d	$fa6, $s6, 8
 	move	$s6, $fp
 	fmul.d	$fa2, $fa1, $fa2
 	fmadd.d	$fa0, $fa2, $fa3, $fa0
 	fmul.d	$fa2, $fa4, $fa5
 	fmadd.d	$fa0, $fa2, $fa6, $fa0
-	fldx.d	$fa2, $s2, $a7
+	fldx.d	$fa2, $s3, $a7
 	fldx.d	$fa5, $t1, $a7
 	fldx.d	$fa7, $t6, $a7
 	ld.d	$fp, $sp, 1024                  # 8-byte Folded Reload
@@ -4926,129 +4924,128 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	fmadd.d	$fa0, $fa1, $fa7, $fa0
 	fmadd.d	$fa0, $fa4, $ft0, $fa0
 	ld.d	$fp, $sp, 968                   # 8-byte Folded Reload
-	fstx.d	$fa0, $fp, $t3
+	fstx.d	$fa0, $fp, $a6
 	add.d	$a7, $a7, $s7
 	sub.d	$t4, $t4, $s6
-	addi.d	$t3, $t3, 8
+	addi.d	$a6, $a6, 8
 	addi.d	$t2, $t2, -1
 	addi.d	$ra, $ra, -1
 	addi.w	$s8, $s8, -1
 	addi.d	$s4, $s4, -1
-	addi.d	$a6, $a6, -1
+	addi.d	$t3, $t3, -1
 	addi.d	$s5, $s5, -1
 	addi.d	$t8, $t8, -1
 	ld.d	$fp, $sp, 1104                  # 8-byte Folded Reload
 	bne	$fp, $s8, .LBB2_44
 # %bb.45:                               #   in Loop: Header=BB2_43 Depth=3
-	ld.d	$a7, $sp, 1104                  # 8-byte Folded Reload
-	sub.w	$s1, $a7, $a6
-	sub.w	$t8, $a7, $t8
+	ld.d	$a6, $sp, 1104                  # 8-byte Folded Reload
+	sub.w	$s1, $a6, $t3
+	sub.w	$t8, $a6, $t8
 	ld.d	$a0, $sp, 856                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 872                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a4
 	sub.w	$a2, $a0, $t4
 	ld.d	$a3, $sp, 880                   # 8-byte Folded Reload
 	addi.w	$a3, $a3, 1
-	sub.w	$a1, $a7, $ra
+	sub.w	$a1, $a6, $ra
 	ld.d	$a0, $sp, 864                   # 8-byte Folded Reload
 	bne	$a3, $a0, .LBB2_43
 # %bb.46:                               #   in Loop: Header=BB2_42 Depth=2
-	sub.w	$s1, $a7, $s4
-	sub.w	$t8, $a7, $s5
+	sub.w	$s1, $a6, $s4
+	sub.w	$t8, $a6, $s5
 	ld.d	$a0, $sp, 696                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a4
 	sub.w	$a2, $a0, $t4
-	ld.d	$s8, $sp, 712                   # 8-byte Folded Reload
-	addi.w	$s8, $s8, 1
-	sub.w	$a1, $a7, $t2
+	ld.d	$t7, $sp, 712                   # 8-byte Folded Reload
+	addi.w	$t7, $t7, 1
+	sub.w	$a1, $a6, $t2
 	ld.d	$a0, $sp, 704                   # 8-byte Folded Reload
-	bne	$s8, $a0, .LBB2_42
+	bne	$t7, $a0, .LBB2_42
 	b	.LBB2_2
 .LBB2_47:                               #   in Loop: Header=BB2_3 Depth=1
 	move	$t5, $zero
 .LBB2_48:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$t1, $sp, 1064                  # 8-byte Folded Reload
-	ld.w	$t4, $t1, -8
-	ld.w	$a5, $t1, 4
+	ld.w	$t4, $s3, -8
+	ld.w	$a5, $s3, 4
 	sub.w	$a5, $a5, $t4
-	addi.d	$s8, $a5, 1
+	addi.d	$a7, $a5, 1
 	bltz	$a5, .LBB2_50
 # %bb.49:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1104                  # 8-byte Folded Reload
-	ld.w	$a6, $a6, 8
-	ld.w	$t1, $t1, -4
+	ld.w	$a6, $fp, 8
+	ld.w	$t1, $s3, -4
 	sub.d	$a6, $a6, $t1
-	mulw.d.w	$t7, $a6, $s8
+	mulw.d.w	$t7, $a6, $a7
 	b	.LBB2_51
 .LBB2_50:                               #   in Loop: Header=BB2_3 Depth=1
 	move	$t7, $zero
 .LBB2_51:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$t6, $s2, -8
-	ld.w	$a6, $s2, 4
+	ld.w	$t6, $s1, -8
+	ld.w	$a6, $s1, 4
 	sub.w	$t1, $a6, $t6
-	addi.d	$ra, $t1, 1
+	addi.d	$a7, $t1, 1
 	bltz	$t1, .LBB2_53
 # %bb.52:                               #   in Loop: Header=BB2_3 Depth=1
 	ld.w	$a6, $sp, 1144
-	ld.w	$t3, $s2, -4
+	ld.w	$t3, $s1, -4
 	sub.d	$a6, $a6, $t3
-	mulw.d.w	$fp, $a6, $ra
+	mulw.d.w	$fp, $a6, $a7
 	b	.LBB2_54
 .LBB2_53:                               #   in Loop: Header=BB2_3 Depth=1
 	move	$fp, $zero
 .LBB2_54:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$t8, $s3, 4
-	ld.w	$a6, $s3, 16
+	ld.w	$t8, $s2, 4
+	ld.w	$a6, $s2, 16
 	sub.w	$a6, $a6, $t8
-	addi.d	$a7, $a6, 1
+	addi.d	$s8, $a6, 1
+	move	$a7, $s3
 	bltz	$a6, .LBB2_56
 # %bb.55:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$t2, $sp, 1104                  # 8-byte Folded Reload
-	ld.w	$s0, $t2, 8
-	ld.w	$s1, $s3, 8
+	ld.d	$s0, $sp, 1088                  # 8-byte Folded Reload
+	ld.w	$s0, $s0, 8
+	ld.w	$s1, $s2, 8
 	sub.d	$s0, $s0, $s1
-	mulw.d.w	$s1, $s0, $a7
+	mulw.d.w	$s1, $s0, $s8
 	b	.LBB2_57
 .LBB2_56:                               #   in Loop: Header=BB2_3 Depth=1
 	move	$s1, $zero
 .LBB2_57:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$s3, $s2, -12
-	ld.d	$t2, $sp, 1096                  # 8-byte Folded Reload
-	ldx.w	$s0, $t2, $s6
+	ld.d	$s0, $sp, 1096                  # 8-byte Folded Reload
+	ld.w	$s3, $s0, -12
+	ld.d	$s0, $sp, 1104                  # 8-byte Folded Reload
+	ldx.w	$s0, $s0, $s6
 	sub.w	$s2, $s0, $s3
-	addi.d	$s4, $s2, 1
-	move	$t2, $a7
+	addi.d	$ra, $s2, 1
 	bltz	$s2, .LBB2_59
 # %bb.58:                               #   in Loop: Header=BB2_3 Depth=1
 	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$s0, $s5, 4
 	ld.w	$s5, $s5, 8
-	mul.d	$s0, $s0, $s4
+	mul.d	$s0, $s0, $ra
 	st.d	$s0, $sp, 728                   # 8-byte Folded Spill
-	mul.d	$s0, $s5, $s4
+	mul.d	$s0, $s5, $ra
 	b	.LBB2_60
 .LBB2_59:                               #   in Loop: Header=BB2_3 Depth=1
 	st.d	$zero, $sp, 728                 # 8-byte Folded Spill
 	move	$s0, $zero
 .LBB2_60:                               #   in Loop: Header=BB2_3 Depth=1
 	ld.w	$s7, $sp, 1124
-	ld.w	$a7, $sp, 1128
-	ld.w	$t3, $sp, 1132
-	slt	$s5, $s7, $a7
+	ld.w	$t3, $sp, 1128
+	ld.w	$t2, $sp, 1132
+	slt	$s5, $s7, $t3
 	st.d	$s7, $sp, 736                   # 8-byte Folded Spill
 	masknez	$s7, $s7, $s5
-	st.d	$a7, $sp, 744                   # 8-byte Folded Spill
-	maskeqz	$s5, $a7, $s5
+	st.d	$t3, $sp, 744                   # 8-byte Folded Spill
+	maskeqz	$s5, $t3, $s5
 	or	$s5, $s5, $s7
-	slt	$s7, $s5, $t3
+	slt	$s7, $s5, $t2
 	masknez	$s5, $s5, $s7
-	st.d	$t3, $sp, 264                   # 8-byte Folded Spill
-	maskeqz	$s7, $t3, $s7
+	st.d	$t2, $sp, 264                   # 8-byte Folded Spill
+	maskeqz	$s7, $t2, $s7
 	or	$s5, $s7, $s5
 	blez	$s5, .LBB2_2
 # %bb.61:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a7, $sp, 264                   # 8-byte Folded Reload
-	blez	$a7, .LBB2_2
+	ld.d	$t3, $sp, 264                   # 8-byte Folded Reload
+	blez	$t3, .LBB2_2
 # %bb.62:                               #   in Loop: Header=BB2_3 Depth=1
 	ld.d	$s5, $sp, 744                   # 8-byte Folded Reload
 	blez	$s5, .LBB2_2
@@ -5066,9 +5063,8 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	nor	$a4, $s5, $zero
 	srli.d	$a4, $a4, 31
 	and	$a3, $a4, $a3
-	ld.d	$s6, $sp, 1064                  # 8-byte Folded Reload
-	ld.w	$a4, $s6, -12
-	ld.w	$s6, $s6, 0
+	ld.w	$a4, $a7, -12
+	ld.w	$s6, $a7, 0
 	add.w	$a2, $a2, $a3
 	sub.d	$a3, $a1, $t4
 	add.d	$a3, $a3, $t7
@@ -5085,10 +5081,10 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	sub.d	$a4, $s6, $s3
 	sub.d	$t6, $s7, $t6
 	add.d	$t6, $t6, $fp
-	mul.d	$t6, $s4, $t6
+	mul.d	$t6, $ra, $t6
 	nor	$fp, $s2, $zero
 	srli.d	$fp, $fp, 31
-	ld.d	$s3, $sp, 1056                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 1064                  # 8-byte Folded Reload
 	ld.w	$s2, $s3, 0
 	and	$t6, $fp, $t6
 	ld.w	$fp, $s3, 12
@@ -5111,34 +5107,35 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	andn	$t0, $t5, $t0
 	srai.d	$t5, $t4, 31
 	andn	$t5, $t7, $t5
-	mul.d	$a7, $t5, $s8
+	addi.d	$a7, $a5, 1
+	mul.d	$a7, $t5, $a7
 	srai.d	$a5, $a5, 31
 	andn	$a5, $a7, $a5
 	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
-	ld.w	$fp, $a7, 0
+	ld.w	$t2, $a7, 0
 	srai.d	$a7, $t6, 31
 	andn	$a7, $t8, $a7
 	ld.d	$t8, $sp, 744                   # 8-byte Folded Reload
 	mul.d	$t7, $t8, $a7
 	mul.d	$t5, $t8, $t5
 	mul.d	$a1, $t8, $a1
-	mul.d	$a7, $a7, $t2
+	mul.d	$a7, $a7, $s8
 	srai.d	$a6, $a6, 31
 	andn	$a6, $a7, $a6
-	mul.d	$a7, $s0, $ra
+	addi.d	$a7, $t1, 1
+	mul.d	$a7, $s0, $a7
 	srai.d	$t1, $t1, 31
 	andn	$a7, $a7, $t1
 	ld.d	$t3, $sp, 736                   # 8-byte Folded Reload
-	mul.d	$t1, $t3, $fp
+	mul.d	$t1, $t3, $t2
 	st.d	$t1, $sp, 712                   # 8-byte Folded Spill
-	ld.d	$t1, $sp, 1040                  # 8-byte Folded Reload
-	addi.w	$s0, $t1, 0
-	ld.d	$t1, $sp, 1032                  # 8-byte Folded Reload
-	bstrpick.d	$s1, $t1, 31, 0
+	addi.w	$fp, $s4, 0
 	ld.d	$t1, $sp, 1048                  # 8-byte Folded Reload
+	bstrpick.d	$s0, $t1, 31, 0
+	ld.d	$t1, $sp, 1056                  # 8-byte Folded Reload
 	addi.w	$t1, $t1, 0
-	st.d	$fp, $sp, 720                   # 8-byte Folded Spill
-	slli.d	$t2, $fp, 3
+	st.d	$t2, $sp, 720                   # 8-byte Folded Spill
+	slli.d	$t2, $t2, 3
 	st.d	$t2, $sp, 416                   # 8-byte Folded Spill
 	st.d	$t1, $sp, 496                   # 8-byte Folded Spill
 	slli.d	$t1, $t1, 3
@@ -5168,8 +5165,8 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	st.d	$a7, $sp, 256                   # 8-byte Folded Spill
 	srai.d	$a7, $t6, 63
 	or	$a7, $t6, $a7
-	add.d	$a6, $a6, $a7
-	sub.d	$a6, $a6, $t7
+	sub.d	$t1, $a7, $t7
+	add.d	$a6, $a6, $t1
 	sub.d	$a6, $a6, $t3
 	addi.d	$a6, $a6, 1
 	st.d	$a6, $sp, 248                   # 8-byte Folded Spill
@@ -5180,11 +5177,11 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	srai.d	$a6, $t4, 63
 	or	$a6, $t4, $a6
 	st.d	$a7, $sp, 792                   # 8-byte Folded Spill
-	alsl.d	$a7, $s1, $a7, 3
+	alsl.d	$a7, $s0, $a7, 3
 	st.d	$a7, $sp, 352                   # 8-byte Folded Spill
 	addi.d	$a6, $a6, 1
-	add.d	$a5, $a6, $a5
-	sub.d	$a5, $a5, $t5
+	sub.d	$a7, $a6, $t5
+	add.d	$a5, $a7, $a5
 	srai.d	$a7, $s5, 63
 	or	$a7, $s5, $a7
 	ld.d	$t1, $sp, 672                   # 8-byte Folded Reload
@@ -5194,11 +5191,11 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	st.d	$a6, $sp, 344                   # 8-byte Folded Spill
 	sub.d	$a5, $a5, $t3
 	st.d	$a5, $sp, 240                   # 8-byte Folded Spill
-	add.d	$a5, $t0, $a7
-	sub.d	$a1, $a5, $a1
-	st.d	$s0, $sp, 704                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 696                   # 8-byte Folded Spill
-	sub.d	$a5, $s0, $s1
+	sub.d	$a1, $a7, $a1
+	add.d	$a1, $t0, $a1
+	st.d	$fp, $sp, 704                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 696                   # 8-byte Folded Spill
+	sub.d	$a5, $fp, $s0
 	st.d	$a5, $sp, 288                   # 8-byte Folded Spill
 	sub.d	$a1, $a1, $t3
 	addi.d	$a1, $a1, 1
@@ -5616,177 +5613,179 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	bne	$a5, $a1, .LBB2_65
 	b	.LBB2_2
 .LBB2_70:                               #   in Loop: Header=BB2_3 Depth=1
-	move	$t0, $zero
+	st.d	$zero, $sp, 1080                # 8-byte Folded Spill
 .LBB2_71:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$fp, $t1, -8
-	ld.w	$a6, $t1, 4
-	sub.w	$t3, $a6, $fp
-	addi.d	$s3, $t3, 1
+	ld.w	$fp, $s3, -8
+	ld.w	$a5, $s3, 4
+	sub.w	$t3, $a5, $fp
+	addi.d	$s0, $t3, 1
 	bltz	$t3, .LBB2_76
 # %bb.72:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1104                  # 8-byte Folded Reload
-	ld.w	$a6, $a6, 8
-	ld.w	$a7, $t1, -4
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$a6, $a6, $s3
-	st.d	$a6, $sp, 1088                  # 8-byte Folded Spill
+	ld.d	$a5, $sp, 1088                  # 8-byte Folded Reload
+	ld.w	$a5, $a5, 8
+	move	$t0, $s3
+	ld.w	$a7, $s3, -4
+	sub.d	$a5, $a5, $a7
+	mulw.d.w	$s7, $a5, $s0
 	b	.LBB2_77
 .LBB2_73:                               #   in Loop: Header=BB2_3 Depth=1
 	move	$t6, $zero
 .LBB2_74:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$t5, $t1, -8
-	ld.w	$a6, $t1, 4
-	sub.w	$a7, $a6, $t5
-	addi.d	$ra, $a7, 1
+	ld.w	$t5, $s3, -8
+	ld.w	$a5, $s3, 4
+	sub.w	$a7, $a5, $t5
+	addi.d	$t4, $a7, 1
 	bltz	$a7, .LBB2_79
 # %bb.75:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1104                  # 8-byte Folded Reload
-	ld.w	$a6, $a6, 8
-	ld.w	$t1, $t1, -4
-	sub.d	$a6, $a6, $t1
-	mulw.d.w	$t8, $a6, $ra
+	ld.w	$a5, $fp, 8
+	ld.w	$t1, $s3, -4
+	sub.d	$a5, $a5, $t1
+	mulw.d.w	$t8, $a5, $t4
 	b	.LBB2_80
 .LBB2_76:                               #   in Loop: Header=BB2_3 Depth=1
-	st.d	$zero, $sp, 1088                # 8-byte Folded Spill
+	move	$t0, $s3
+	move	$s7, $zero
 .LBB2_77:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$s1, $s2, -8
-	ld.w	$a6, $s2, 4
-	sub.w	$t5, $a6, $s1
+	st.d	$s4, $sp, 1032                  # 8-byte Folded Spill
+	ld.w	$s2, $s1, -8
+	ld.w	$a5, $s1, 4
+	sub.w	$t5, $a5, $s2
 	addi.d	$t1, $t5, 1
 	bltz	$t5, .LBB2_82
 # %bb.78:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$a6, $sp, 1144
-	ld.w	$a7, $s2, -4
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$s8, $a6, $t1
+	ld.w	$a5, $sp, 1144
+	ld.w	$a7, $s1, -4
+	sub.d	$a5, $a5, $a7
+	mulw.d.w	$a5, $a5, $t1
+	st.d	$a5, $sp, 1024                  # 8-byte Folded Spill
 	b	.LBB2_83
 .LBB2_79:                               #   in Loop: Header=BB2_3 Depth=1
 	move	$t8, $zero
 .LBB2_80:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$t7, $s2, -8
-	ld.w	$a6, $s2, 4
-	sub.w	$t1, $a6, $t7
-	addi.d	$s8, $t1, 1
-	move	$t0, $t4
+	ld.w	$t7, $s1, -8
+	ld.w	$a5, $s1, 4
+	sub.w	$t1, $a5, $t7
+	addi.d	$t0, $t1, 1
 	bltz	$t1, .LBB2_85
 # %bb.81:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$a6, $sp, 1144
-	ld.w	$t3, $s2, -4
-	sub.d	$a6, $a6, $t3
-	mulw.d.w	$s0, $a6, $s8
+	ld.w	$a5, $sp, 1144
+	ld.w	$t3, $s1, -4
+	sub.d	$a5, $a5, $t3
+	mulw.d.w	$s0, $a5, $t0
 	b	.LBB2_86
 .LBB2_82:                               #   in Loop: Header=BB2_3 Depth=1
-	move	$s8, $zero
+	st.d	$zero, $sp, 1024                # 8-byte Folded Spill
 .LBB2_83:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a7, $sp, 1056                  # 8-byte Folded Reload
+	ld.d	$a7, $sp, 1064                  # 8-byte Folded Reload
 	ld.w	$s4, $a7, 4
-	ld.w	$a6, $a7, 16
-	sub.w	$t7, $a6, $s4
-	addi.d	$s7, $t7, 1
-	st.d	$t4, $sp, 1024                  # 8-byte Folded Spill
+	ld.w	$a5, $a7, 16
+	sub.w	$t7, $a5, $s4
+	addi.d	$t1, $t7, 1
 	bltz	$t7, .LBB2_88
 # %bb.84:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1104                  # 8-byte Folded Reload
-	ld.w	$a6, $a6, 8
+	ld.d	$a5, $sp, 1088                  # 8-byte Folded Reload
+	ld.w	$a5, $a5, 8
 	ld.w	$a7, $a7, 8
-	sub.d	$a6, $a6, $a7
-	mulw.d.w	$s0, $a6, $s7
+	sub.d	$a5, $a5, $a7
+	mulw.d.w	$ra, $a5, $t1
 	b	.LBB2_89
 .LBB2_85:                               #   in Loop: Header=BB2_3 Depth=1
 	move	$s0, $zero
 .LBB2_86:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$fp, $s3, 4
-	ld.w	$a6, $s3, 16
-	sub.w	$t3, $a6, $fp
+	ld.w	$fp, $s2, 4
+	ld.w	$a5, $s2, 16
+	sub.w	$t3, $a5, $fp
 	addi.d	$t2, $t3, 1
+	move	$t0, $s3
 	bltz	$t3, .LBB2_91
 # %bb.87:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1104                  # 8-byte Folded Reload
-	ld.w	$a6, $a6, 8
-	ld.w	$s1, $s3, 8
-	sub.d	$a6, $a6, $s1
-	mulw.d.w	$s2, $a6, $t2
+	ld.d	$a5, $sp, 1088                  # 8-byte Folded Reload
+	ld.w	$a5, $a5, 8
+	ld.w	$s1, $s2, 8
+	sub.d	$a5, $a5, $s1
+	ld.d	$s1, $sp, 1096                  # 8-byte Folded Reload
+	mulw.d.w	$s2, $a5, $t2
 	b	.LBB2_92
 .LBB2_88:                               #   in Loop: Header=BB2_3 Depth=1
-	move	$s0, $zero
+	move	$ra, $zero
 .LBB2_89:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$t6, $s2, -12
-	ld.d	$a6, $sp, 1096                  # 8-byte Folded Reload
-	ldx.w	$a6, $a6, $s6
-	sub.w	$t4, $a6, $t6
+	ld.w	$t6, $s1, -12
+	ld.d	$a5, $sp, 1104                  # 8-byte Folded Reload
+	ldx.w	$a5, $a5, $s6
+	sub.w	$t4, $a5, $t6
 	addi.d	$t8, $t4, 1
+	move	$s5, $t1
 	bltz	$t4, .LBB2_94
 # %bb.90:                               #   in Loop: Header=BB2_3 Depth=1
 	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
-	ld.w	$a6, $a7, 4
+	ld.w	$a5, $a7, 4
 	ld.w	$a7, $a7, 8
-	mul.d	$a6, $a6, $t8
-	st.d	$a6, $sp, 968                   # 8-byte Folded Spill
-	mul.d	$ra, $a7, $t8
+	mul.d	$a5, $a5, $t8
+	st.d	$a5, $sp, 968                   # 8-byte Folded Spill
+	mul.d	$s3, $a7, $t8
 	b	.LBB2_95
 .LBB2_91:                               #   in Loop: Header=BB2_3 Depth=1
 	move	$s2, $zero
 .LBB2_92:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1080                  # 8-byte Folded Reload
-	ld.w	$s4, $a6, -12
-	ld.d	$a6, $sp, 1096                  # 8-byte Folded Reload
-	ldx.w	$a6, $a6, $s6
-	sub.w	$s3, $a6, $s4
+	ld.w	$s8, $s1, -12
+	ld.d	$a5, $sp, 1104                  # 8-byte Folded Reload
+	ldx.w	$a5, $a5, $s6
+	sub.w	$s3, $a5, $s8
 	addi.d	$s5, $s3, 1
 	bltz	$s3, .LBB2_105
 # %bb.93:                               #   in Loop: Header=BB2_3 Depth=1
 	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
-	ld.w	$a6, $s1, 4
+	ld.w	$a5, $s1, 4
 	ld.w	$s1, $s1, 8
-	mul.d	$a6, $a6, $s5
-	st.d	$a6, $sp, 344                   # 8-byte Folded Spill
+	mul.d	$a5, $a5, $s5
+	st.d	$a5, $sp, 344                   # 8-byte Folded Spill
 	mul.d	$s1, $s1, $s5
 	b	.LBB2_106
 .LBB2_94:                               #   in Loop: Header=BB2_3 Depth=1
 	st.d	$zero, $sp, 968                 # 8-byte Folded Spill
-	move	$ra, $zero
+	move	$s3, $zero
 .LBB2_95:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$s2, $sp, 1124
+	ld.w	$s1, $sp, 1124
 	ld.w	$t1, $sp, 1128
 	ld.w	$t2, $sp, 1132
-	slt	$a6, $s2, $t1
-	masknez	$a7, $s2, $a6
+	slt	$a5, $s1, $t1
+	masknez	$a7, $s1, $a5
 	st.d	$t1, $sp, 976                   # 8-byte Folded Spill
-	maskeqz	$a6, $t1, $a6
-	or	$a6, $a6, $a7
-	slt	$a7, $a6, $t2
-	masknez	$a6, $a6, $a7
+	maskeqz	$a5, $t1, $a5
+	or	$a5, $a5, $a7
+	slt	$a7, $a5, $t2
+	masknez	$a5, $a5, $a7
 	st.d	$t2, $sp, 840                   # 8-byte Folded Spill
 	maskeqz	$a7, $t2, $a7
-	or	$a6, $a7, $a6
-	blez	$a6, .LBB2_2
+	or	$a5, $a7, $a5
+	blez	$a5, .LBB2_2
 # %bb.96:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 840                   # 8-byte Folded Reload
-	blez	$a6, .LBB2_2
+	ld.d	$a5, $sp, 840                   # 8-byte Folded Reload
+	blez	$a5, .LBB2_2
 # %bb.97:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 976                   # 8-byte Folded Reload
-	blez	$a6, .LBB2_2
+	ld.d	$a5, $sp, 976                   # 8-byte Folded Reload
+	blez	$a5, .LBB2_2
 # %bb.98:                               #   in Loop: Header=BB2_3 Depth=1
-	blez	$s2, .LBB2_2
+	blez	$s1, .LBB2_2
 # %bb.99:                               #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1072                  # 8-byte Folded Reload
-	ldx.w	$a6, $a6, $s6
-	move	$s5, $zero
-	sub.w	$a3, $a6, $a3
-	add.d	$a4, $a4, $t0
+	ld.d	$a5, $sp, 1072                  # 8-byte Folded Reload
+	ldx.w	$a5, $a5, $s6
+	move	$s6, $zero
+	sub.w	$a3, $a5, $a3
+	ld.d	$a5, $sp, 1080                  # 8-byte Folded Reload
+	add.d	$a4, $a4, $a5
 	addi.d	$a7, $a3, 1
 	mul.d	$a4, $a7, $a4
-	nor	$a6, $a3, $zero
-	srli.d	$a6, $a6, 31
-	and	$a4, $a6, $a4
-	ld.d	$t0, $sp, 1064                  # 8-byte Folded Reload
-	ld.w	$a6, $t0, -12
+	nor	$a5, $a3, $zero
+	srli.d	$a5, $a5, 31
+	and	$a4, $a5, $a4
+	ld.w	$a5, $t0, -12
 	ld.w	$t0, $t0, 0
-	add.w	$s6, $a2, $a4
+	move	$t1, $s7
+	add.w	$s7, $a2, $a4
 	sub.d	$a2, $a1, $fp
-	ld.d	$a4, $sp, 1088                  # 8-byte Folded Reload
-	add.d	$a4, $a2, $a4
-	sub.w	$a2, $t0, $a6
+	add.d	$a4, $a2, $t1
+	sub.w	$a2, $t0, $a5
 	addi.d	$t0, $a2, 1
 	mul.d	$a4, $t0, $a4
 	nor	$t1, $a2, $zero
@@ -5794,24 +5793,24 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	and	$a4, $t1, $a4
 	ld.w	$t1, $sp, 1136
 	ld.w	$t2, $sp, 1140
-	sub.d	$a6, $a0, $a6
-	move	$fp, $s8
-	add.w	$s8, $a6, $a4
+	sub.d	$a5, $a0, $a5
+	add.w	$s8, $a5, $a4
 	sub.d	$a4, $t1, $t6
-	sub.d	$a6, $t2, $s1
-	add.d	$a6, $a6, $fp
-	mul.d	$a6, $t8, $a6
+	sub.d	$a5, $t2, $s2
+	ld.d	$t1, $sp, 1024                  # 8-byte Folded Reload
+	add.d	$a5, $a5, $t1
+	mul.d	$a5, $t8, $a5
 	nor	$t1, $t4, $zero
 	srli.d	$t1, $t1, 31
-	and	$a6, $t1, $a6
-	ld.d	$t2, $sp, 1056                  # 8-byte Folded Reload
+	and	$a5, $t1, $a5
+	ld.d	$t2, $sp, 1064                  # 8-byte Folded Reload
 	ld.w	$t1, $t2, 0
 	ld.w	$t2, $t2, 12
-	add.w	$a6, $a4, $a6
+	add.w	$a5, $a4, $a5
 	sub.d	$a1, $a1, $s4
 	sub.d	$a0, $a0, $t1
 	sub.w	$a4, $t2, $t1
-	add.d	$a1, $a1, $s0
+	add.d	$a1, $a1, $ra
 	addi.d	$t2, $a4, 1
 	mul.d	$a1, $t2, $a1
 	nor	$t1, $a4, $zero
@@ -5820,79 +5819,79 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	add.w	$t1, $a0, $a1
 	srai.d	$a0, $a3, 31
 	andn	$a0, $a7, $a0
-	mul.d	$a1, $a0, $a5
-	ld.d	$a5, $sp, 1024                  # 8-byte Folded Reload
-	andn	$a1, $a1, $a5
-	srai.d	$a5, $a2, 31
-	andn	$a5, $t0, $a5
-	mul.d	$a7, $a5, $s3
+	mul.d	$a1, $a0, $a6
+	ld.d	$a6, $sp, 1040                  # 8-byte Folded Reload
+	andn	$a1, $a1, $a6
+	srai.d	$a6, $a2, 31
+	andn	$a6, $t0, $a6
+	mul.d	$a7, $a6, $s0
 	srai.d	$t0, $t3, 31
 	andn	$a7, $a7, $t0
 	srai.d	$t0, $a4, 31
 	andn	$t0, $t2, $t0
 	ld.d	$t2, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$s0, $t2, 0
-	mul.d	$t2, $t0, $s7
+	mul.d	$t2, $t0, $s5
 	ld.d	$t6, $sp, 976                   # 8-byte Folded Reload
 	mul.d	$t0, $t6, $t0
-	mul.d	$a5, $t6, $a5
+	mul.d	$a6, $t6, $a6
 	mul.d	$a0, $t6, $a0
 	srai.d	$t3, $t7, 31
 	andn	$t2, $t2, $t3
 	addi.d	$t3, $t5, 1
-	mul.d	$t3, $ra, $t3
+	mul.d	$t3, $s3, $t3
 	srai.d	$t4, $t5, 31
 	andn	$t3, $t3, $t4
-	mul.d	$t4, $s2, $s0
+	mul.d	$t4, $s1, $s0
 	st.d	$t4, $sp, 960                   # 8-byte Folded Spill
-	ld.d	$t4, $sp, 1040                  # 8-byte Folded Reload
-	addi.w	$t7, $t4, 0
 	ld.d	$t4, $sp, 1032                  # 8-byte Folded Reload
-	bstrpick.d	$t8, $t4, 31, 0
+	addi.w	$t7, $t4, 0
 	ld.d	$t4, $sp, 1048                  # 8-byte Folded Reload
+	bstrpick.d	$t8, $t4, 31, 0
+	ld.d	$t4, $sp, 1056                  # 8-byte Folded Reload
 	addi.w	$fp, $t4, 0
-	slli.d	$s3, $s0, 3
 	ori	$t4, $zero, 1
 	sub.d	$t4, $t4, $t6
 	ld.d	$t5, $sp, 968                   # 8-byte Folded Reload
 	mul.d	$t4, $t5, $t4
 	add.d	$t3, $t3, $t4
 	st.d	$t3, $sp, 832                   # 8-byte Folded Spill
+	srai.d	$t3, $a4, 63
+	or	$t4, $a4, $t3
+	sub.d	$t0, $t0, $t4
+	slli.d	$s3, $s0, 3
 	nor	$t2, $t2, $zero
 	add.d	$t0, $t2, $t0
-	srai.d	$t2, $a4, 63
-	or	$t3, $a4, $t2
-	sub.d	$t0, $t0, $t3
 	st.d	$t0, $sp, 928                   # 8-byte Folded Spill
+	nor	$a4, $a4, $t3
+	st.d	$a4, $sp, 920                   # 8-byte Folded Spill
+	srai.d	$a4, $a3, 63
+	or	$t0, $a3, $a4
+	sub.d	$a0, $a0, $t0
 	st.d	$fp, $sp, 936                   # 8-byte Folded Spill
 	slli.d	$t0, $fp, 3
-	nor	$a4, $a4, $t2
-	st.d	$a4, $sp, 920                   # 8-byte Folded Spill
 	nor	$a1, $a1, $zero
 	add.d	$a0, $a1, $a0
-	srai.d	$a1, $a3, 63
-	or	$a4, $a3, $a1
-	sub.d	$a0, $a0, $a4
 	st.d	$a0, $sp, 912                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 680                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $t0
+	nor	$a0, $a3, $a4
 	st.d	$a0, $sp, 904                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 688                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $t0
-	st.d	$a0, $sp, 896                   # 8-byte Folded Spill
-	sub.w	$s1, $zero, $s2
-	nor	$a0, $a3, $a1
-	st.d	$a0, $sp, 888                   # 8-byte Folded Spill
-	nor	$a0, $a7, $zero
-	add.d	$a0, $a0, $a5
-	srai.d	$a1, $a2, 63
-	or	$a3, $a2, $a1
-	sub.d	$a0, $a0, $a3
-	st.d	$a0, $sp, 880                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 1112                  # 8-byte Folded Reload
-	alsl.d	$a0, $t8, $a0, 3
-	st.d	$a0, $sp, 872                   # 8-byte Folded Spill
-	nor	$a0, $a2, $a1
+	srai.d	$a0, $a2, 63
+	or	$a1, $a2, $a0
+	sub.d	$a1, $a6, $a1
+	ld.d	$a3, $sp, 680                   # 8-byte Folded Reload
+	sub.d	$a3, $a3, $t0
+	st.d	$a3, $sp, 896                   # 8-byte Folded Spill
+	ld.d	$a3, $sp, 688                   # 8-byte Folded Reload
+	sub.d	$a3, $a3, $t0
+	st.d	$a3, $sp, 888                   # 8-byte Folded Spill
+	sub.w	$s1, $zero, $s1
+	nor	$a3, $a7, $zero
+	add.d	$a1, $a3, $a1
+	st.d	$a1, $sp, 880                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 1112                  # 8-byte Folded Reload
+	alsl.d	$a1, $t8, $a1, 3
+	st.d	$a1, $sp, 872                   # 8-byte Folded Spill
+	nor	$a0, $a2, $a0
 	st.d	$a0, $sp, 864                   # 8-byte Folded Spill
 	st.d	$t7, $sp, 952                   # 8-byte Folded Spill
 	st.d	$t8, $sp, 944                   # 8-byte Folded Spill
@@ -5904,7 +5903,7 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB2_101 Depth 3
                                         #         Child Loop BB2_102 Depth 4
-	st.d	$s5, $sp, 848                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 848                   # 8-byte Folded Spill
 	move	$a1, $zero
 	.p2align	4, , 16
 .LBB2_101:                              #   Parent Loop BB2_3 Depth=1
@@ -5915,11 +5914,11 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	move	$ra, $zero
 	move	$t2, $zero
 	move	$a7, $zero
-	move	$s4, $a6
+	move	$s4, $a5
 	ld.d	$a0, $sp, 936                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $a6
+	add.d	$a0, $a0, $a5
 	ld.d	$t5, $sp, 680                   # 8-byte Folded Reload
-	alsl.d	$a6, $a0, $t5, 3
+	alsl.d	$a5, $a0, $t5, 3
 	ld.d	$t6, $sp, 688                   # 8-byte Folded Reload
 	alsl.d	$t0, $a0, $t6, 3
 	ld.d	$a1, $sp, 648                   # 8-byte Folded Reload
@@ -5960,28 +5959,28 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	ld.d	$a0, $sp, 920                   # 8-byte Folded Reload
 	sub.d	$t1, $a0, $t1
 	ld.d	$a1, $sp, 872                   # 8-byte Folded Reload
-	alsl.d	$a0, $s6, $a1, 3
+	alsl.d	$a0, $s7, $a1, 3
 	st.d	$a0, $sp, 1016                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 944                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $s7
 	ld.d	$a2, $sp, 672                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a2, 3
 	st.d	$a0, $sp, 1008                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 952                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $s7
 	alsl.d	$a1, $a0, $a1, 3
 	st.d	$a1, $sp, 1000                  # 8-byte Folded Spill
 	ld.d	$a1, $sp, 856                   # 8-byte Folded Reload
-	add.d	$a1, $a1, $s6
+	add.d	$a1, $a1, $s7
 	ld.d	$a3, $sp, 1112                  # 8-byte Folded Reload
 	alsl.d	$s5, $a1, $a3, 3
 	alsl.d	$a0, $a0, $a3, 3
 	ld.d	$a1, $sp, 912                   # 8-byte Folded Reload
-	sub.d	$t4, $a1, $s6
-	ld.d	$a1, $sp, 888                   # 8-byte Folded Reload
-	sub.d	$a5, $a1, $s6
-	alsl.d	$t8, $s6, $a3, 3
-	alsl.d	$a2, $s6, $a2, 3
+	sub.d	$t4, $a1, $s7
+	ld.d	$a1, $sp, 904                   # 8-byte Folded Reload
+	sub.d	$a6, $a1, $s7
+	alsl.d	$fp, $s7, $a3, 3
+	alsl.d	$a2, $s7, $a2, 3
 	ld.d	$a1, $sp, 664                   # 8-byte Folded Reload
 	alsl.d	$a3, $t7, $a1, 3
 	ld.d	$a1, $sp, 656                   # 8-byte Folded Reload
@@ -5993,11 +5992,11 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	alsl.d	$t3, $s4, $t3, 3
 	alsl.d	$t5, $s4, $t5, 3
 	alsl.d	$t6, $s4, $t6, 3
-	ld.d	$t7, $sp, 904                   # 8-byte Folded Reload
+	ld.d	$t7, $sp, 896                   # 8-byte Folded Reload
 	alsl.d	$t7, $s4, $t7, 3
-	ld.d	$fp, $sp, 896                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 888                   # 8-byte Folded Reload
 	st.d	$s4, $sp, 984                   # 8-byte Folded Spill
-	alsl.d	$fp, $s4, $fp, 3
+	alsl.d	$t8, $s4, $t8, 3
 	ld.d	$s4, $sp, 960                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB2_102:                              #   Parent Loop BB2_3 Depth=1
@@ -6005,7 +6004,7 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
                                         #       Parent Loop BB2_101 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	fldx.d	$fa0, $a3, $t2
-	fldx.d	$fa1, $a6, $a7
+	fldx.d	$fa1, $a5, $a7
 	ld.d	$s6, $sp, 1000                  # 8-byte Folded Reload
 	fldx.d	$fa2, $s6, $t2
 	fmul.d	$fa0, $fa0, $fa1
@@ -6058,7 +6057,7 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	ld.d	$s0, $sp, 1016                  # 8-byte Folded Reload
 	fldx.d	$fa3, $s0, $t2
 	fldx.d	$fa4, $a3, $t2
-	fldx.d	$fa5, $a6, $a7
+	fldx.d	$fa5, $a5, $a7
 	ld.d	$s0, $sp, 1008                  # 8-byte Folded Reload
 	fldx.d	$fa6, $s0, $t2
 	fmul.d	$fa1, $fa1, $fa2
@@ -6069,8 +6068,8 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	fstx.d	$fa0, $s0, $t2
 	fldx.d	$fa0, $t6, $a7
 	fldx.d	$fa1, $a4, $t2
-	fldx.d	$fa2, $fp, $a7
-	add.d	$s0, $t8, $t2
+	fldx.d	$fa2, $t8, $a7
+	add.d	$s0, $fp, $t2
 	fld.d	$fa3, $s0, 8
 	fldx.d	$fa4, $a3, $t2
 	fldx.d	$fa5, $t0, $a7
@@ -6092,33 +6091,33 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	addi.d	$t1, $t1, -1
 	addi.w	$ra, $ra, -1
 	addi.d	$t4, $t4, -1
-	addi.d	$a5, $a5, -1
+	addi.d	$a6, $a6, -1
 	addi.d	$s2, $s2, -1
 	addi.d	$a1, $a1, -1
 	bne	$s1, $ra, .LBB2_102
 # %bb.103:                              #   in Loop: Header=BB2_101 Depth=3
-	sub.w	$s6, $s1, $a5
+	sub.w	$s7, $s1, $a6
 	sub.w	$t7, $s1, $a1
 	ld.d	$a0, $sp, 968                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 984                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a2
-	sub.w	$a6, $a0, $s4
+	sub.w	$a5, $a0, $s4
 	ld.d	$a1, $sp, 992                   # 8-byte Folded Reload
 	addi.w	$a1, $a1, 1
 	sub.w	$t1, $s1, $t1
 	ld.d	$a0, $sp, 976                   # 8-byte Folded Reload
 	bne	$a1, $a0, .LBB2_101
 # %bb.104:                              #   in Loop: Header=BB2_100 Depth=2
-	sub.w	$s6, $s1, $t4
+	sub.w	$s7, $s1, $t4
 	sub.w	$t7, $s1, $s2
 	ld.d	$a0, $sp, 832                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a2
-	sub.w	$a6, $a0, $s4
-	ld.d	$s5, $sp, 848                   # 8-byte Folded Reload
-	addi.w	$s5, $s5, 1
+	sub.w	$a5, $a0, $s4
+	ld.d	$s6, $sp, 848                   # 8-byte Folded Reload
+	addi.w	$s6, $s6, 1
 	sub.w	$t1, $s1, $s8
 	ld.d	$a0, $sp, 840                   # 8-byte Folded Reload
-	bne	$s5, $a0, .LBB2_100
+	bne	$s6, $a0, .LBB2_100
 	b	.LBB2_2
 .LBB2_105:                              #   in Loop: Header=BB2_3 Depth=1
 	st.d	$zero, $sp, 344                 # 8-byte Folded Spill
@@ -6126,42 +6125,41 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 .LBB2_106:                              #   in Loop: Header=BB2_3 Depth=1
 	ld.w	$s7, $sp, 1124
 	ld.w	$t2, $sp, 1128
-	ld.w	$t4, $sp, 1132
-	slt	$a6, $s7, $t2
+	ld.w	$ra, $sp, 1132
+	slt	$a5, $s7, $t2
 	st.d	$s7, $sp, 352                   # 8-byte Folded Spill
-	masknez	$s7, $s7, $a6
+	masknez	$s7, $s7, $a5
 	st.d	$t2, $sp, 360                   # 8-byte Folded Spill
-	maskeqz	$a6, $t2, $a6
-	or	$a6, $a6, $s7
-	slt	$s7, $a6, $t4
-	masknez	$a6, $a6, $s7
-	st.d	$t4, $sp, 136                   # 8-byte Folded Spill
-	maskeqz	$s7, $t4, $s7
-	or	$a6, $s7, $a6
-	blez	$a6, .LBB2_2
+	maskeqz	$a5, $t2, $a5
+	or	$a5, $a5, $s7
+	slt	$s7, $a5, $ra
+	masknez	$a5, $a5, $s7
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	maskeqz	$s7, $ra, $s7
+	or	$a5, $s7, $a5
+	blez	$a5, .LBB2_2
 # %bb.107:                              #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
-	blez	$a6, .LBB2_2
+	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
+	blez	$a5, .LBB2_2
 # %bb.108:                              #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 360                   # 8-byte Folded Reload
-	blez	$a6, .LBB2_2
+	ld.d	$a5, $sp, 360                   # 8-byte Folded Reload
+	blez	$a5, .LBB2_2
 # %bb.109:                              #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 352                   # 8-byte Folded Reload
-	blez	$a6, .LBB2_2
+	ld.d	$a5, $sp, 352                   # 8-byte Folded Reload
+	blez	$a5, .LBB2_2
 # %bb.110:                              #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a6, $sp, 1072                  # 8-byte Folded Reload
-	ldx.w	$a6, $a6, $s6
-	st.d	$zero, $sp, 144                 # 8-byte Folded Spill
-	sub.w	$a6, $a6, $a3
+	ld.d	$a5, $sp, 1072                  # 8-byte Folded Reload
+	ldx.w	$a5, $a5, $s6
+	move	$ra, $zero
+	sub.w	$a5, $a5, $a3
 	add.d	$a3, $a4, $t6
-	addi.d	$s6, $a6, 1
+	addi.d	$s6, $a5, 1
 	mul.d	$a3, $s6, $a3
-	nor	$a4, $a6, $zero
+	nor	$a4, $a5, $zero
 	srli.d	$a4, $a4, 31
 	and	$a3, $a4, $a3
-	ld.d	$t6, $sp, 1064                  # 8-byte Folded Reload
-	ld.w	$a4, $t6, -12
-	ld.w	$t6, $t6, 0
+	ld.w	$a4, $t0, -12
+	ld.w	$t6, $t0, 0
 	add.w	$a3, $a2, $a3
 	sub.d	$a2, $a1, $t5
 	add.d	$t5, $a2, $t8
@@ -6175,13 +6173,13 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	ld.w	$s7, $sp, 1140
 	sub.d	$a4, $a0, $a4
 	add.w	$a4, $a4, $t5
-	sub.d	$t5, $t6, $s4
+	sub.d	$t5, $t6, $s8
 	sub.d	$t6, $s7, $t7
 	add.d	$t6, $t6, $s0
 	mul.d	$t6, $s5, $t6
 	nor	$t7, $s3, $zero
 	srli.d	$t7, $t7, 31
-	ld.d	$s3, $sp, 1056                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 1064                  # 8-byte Folded Reload
 	ld.w	$s0, $s3, 0
 	and	$t6, $t7, $t6
 	ld.w	$t7, $s3, 12
@@ -6196,17 +6194,18 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	srli.d	$fp, $fp, 31
 	and	$a1, $fp, $a1
 	add.w	$a0, $a0, $a1
-	srai.d	$a1, $a6, 31
+	srai.d	$a1, $a5, 31
 	andn	$a1, $s6, $a1
-	mul.d	$a5, $a1, $a5
-	andn	$a5, $a5, $t0
+	mul.d	$a6, $a1, $a6
+	ld.d	$t0, $sp, 1040                  # 8-byte Folded Reload
+	andn	$a6, $a6, $t0
 	srai.d	$fp, $a2, 31
 	andn	$t8, $t8, $fp
-	mul.d	$t0, $t8, $ra
+	mul.d	$t0, $t8, $t4
 	srai.d	$a7, $a7, 31
 	andn	$a7, $t0, $a7
 	ld.d	$t0, $sp, 72                    # 8-byte Folded Reload
-	ld.w	$t4, $t0, 0
+	ld.w	$s2, $t0, 0
 	srai.d	$t0, $t5, 31
 	andn	$t0, $t7, $t0
 	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
@@ -6217,20 +6216,20 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	mul.d	$t0, $t0, $t2
 	srai.d	$t3, $t3, 31
 	andn	$t0, $t0, $t3
-	mul.d	$t2, $s1, $s8
+	addi.d	$t2, $t1, 1
+	mul.d	$t2, $s1, $t2
 	srai.d	$t1, $t1, 31
 	andn	$t1, $t2, $t1
 	ld.d	$fp, $sp, 352                   # 8-byte Folded Reload
-	mul.d	$t2, $fp, $t4
+	mul.d	$t2, $fp, $s2
 	st.d	$t2, $sp, 280                   # 8-byte Folded Spill
-	ld.d	$t2, $sp, 1040                  # 8-byte Folded Reload
-	addi.w	$s1, $t2, 0
-	ld.d	$t2, $sp, 1032                  # 8-byte Folded Reload
-	bstrpick.d	$s2, $t2, 31, 0
+	addi.w	$s1, $s4, 0
 	ld.d	$t2, $sp, 1048                  # 8-byte Folded Reload
+	bstrpick.d	$s3, $t2, 31, 0
+	ld.d	$t2, $sp, 1056                  # 8-byte Folded Reload
 	addi.w	$t2, $t2, 0
-	st.d	$t4, $sp, 288                   # 8-byte Folded Spill
-	slli.d	$t3, $t4, 3
+	st.d	$s2, $sp, 288                   # 8-byte Folded Spill
+	slli.d	$t3, $s2, 3
 	st.d	$t3, $sp, 248                   # 8-byte Folded Spill
 	st.d	$t2, $sp, 256                   # 8-byte Folded Spill
 	slli.d	$t2, $t2, 3
@@ -6260,8 +6259,8 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	ld.d	$t3, $sp, 336                   # 8-byte Folded Reload
 	sub.d	$t3, $t3, $t2
 	st.d	$t3, $sp, 200                   # 8-byte Folded Spill
-	add.d	$t0, $t0, $t1
-	sub.d	$t0, $t0, $t7
+	sub.d	$t3, $t1, $t7
+	add.d	$t0, $t0, $t3
 	srai.d	$t3, $a2, 63
 	or	$a2, $a2, $t3
 	ld.d	$t3, $sp, 688                   # 8-byte Folded Reload
@@ -6276,17 +6275,17 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	sub.d	$t0, $t1, $fp
 	st.d	$t0, $sp, 176                   # 8-byte Folded Spill
 	addi.d	$a2, $a2, 1
-	add.d	$a7, $a2, $a7
-	sub.d	$a7, $a7, $t8
-	srai.d	$t0, $a6, 63
-	or	$a6, $a6, $t0
+	sub.d	$t0, $a2, $t8
+	add.d	$a7, $t0, $a7
+	srai.d	$t0, $a5, 63
+	or	$a5, $a5, $t0
 	ld.d	$t0, $sp, 1112                  # 8-byte Folded Reload
 	addi.d	$t0, $t0, 8
-	add.d	$a5, $a5, $a6
 	sub.d	$a1, $a5, $a1
+	add.d	$a1, $a6, $a1
 	st.d	$t0, $sp, 416                   # 8-byte Folded Spill
-	alsl.d	$a5, $s2, $t0, 3
-	st.d	$a5, $sp, 408                   # 8-byte Folded Spill
+	alsl.d	$a6, $s3, $t0, 3
+	st.d	$a6, $sp, 408                   # 8-byte Folded Spill
 	sub.d	$a2, $a2, $fp
 	st.d	$a2, $sp, 168                   # 8-byte Folded Spill
 	sub.d	$a2, $a7, $fp
@@ -6294,20 +6293,21 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	sub.d	$a1, $a1, $fp
 	addi.d	$a1, $a1, 1
 	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
-	sub.d	$a1, $a6, $fp
+	sub.d	$a1, $a5, $fp
 	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 672                   # 8-byte Folded Reload
 	addi.d	$a1, $a1, 8
 	st.d	$a1, $sp, 400                   # 8-byte Folded Spill
 	st.d	$s1, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 264                   # 8-byte Folded Spill
-	sub.d	$a1, $s1, $s2
+	st.d	$s3, $sp, 264                   # 8-byte Folded Spill
+	sub.d	$a1, $s1, $s3
 	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB2_111:                              #   Parent Loop BB2_3 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB2_112 Depth 3
                                         #         Child Loop BB2_113 Depth 4
+	st.d	$ra, $sp, 144                   # 8-byte Folded Spill
 	move	$a5, $zero
 	.p2align	4, , 16
 .LBB2_112:                              #   Parent Loop BB2_3 Depth=1
@@ -6792,12 +6792,11 @@ hypre_SMG3BuildRAPNoSym:                # @hypre_SMG3BuildRAPNoSym
 	sub.w	$t6, $a0, $s2
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a6
-	ld.d	$a5, $sp, 144                   # 8-byte Folded Reload
-	addi.w	$a5, $a5, 1
+	ld.d	$ra, $sp, 144                   # 8-byte Folded Reload
+	addi.w	$ra, $ra, 1
 	add.w	$a0, $a0, $a2
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
-	st.d	$a5, $sp, 144                   # 8-byte Folded Spill
-	bne	$a5, $a1, .LBB2_111
+	bne	$ra, $a1, .LBB2_111
 	b	.LBB2_2
 .LBB2_116:
 	move	$a0, $zero

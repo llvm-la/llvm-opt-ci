@@ -779,18 +779,18 @@ htstat:                                 # @htstat
 	ld.w	$a0, $sp, 8
 	ld.w	$a1, $sp, 12
 	ld.w	$s3, $sp, 16
-	ld.w	$s0, $sp, 20
 	add.d	$a0, $a1, $a0
+	ld.w	$s2, $sp, 20
+	ld.w	$s0, $sp, 24
 	add.d	$a0, $s3, $a0
-	add.d	$a0, $s0, $a0
-	ld.w	$s2, $sp, 24
 	ld.w	$s1, $sp, 28
 	ld.w	$fp, $sp, 32
-	ld.w	$a1, $sp, 36
-	add.d	$a0, $s2, $a0
-	add.d	$a0, $s1, $a0
-	add.d	$a0, $fp, $a0
-	add.w	$s4, $a1, $a0
+	add.d	$a1, $s0, $s2
+	ld.w	$a2, $sp, 36
+	add.d	$a1, $s1, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
+	add.w	$s4, $a2, $a0
 	blez	$s4, .LBB8_9
 # %bb.5:
 	pcalau12i	$a0, %pc_hi20(posed)
@@ -818,10 +818,10 @@ htstat:                                 # @htstat
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
-	movgr2fr.w	$fa2, $s0
+	movgr2fr.w	$fa2, $s2
 	ffint.d.w	$fa2, $fa2
 	fdiv.d	$fa2, $fa2, $fa1
-	movgr2fr.w	$fa3, $s2
+	movgr2fr.w	$fa3, $s0
 	ffint.d.w	$fa3, $fa3
 	fdiv.d	$fa3, $fa3, $fa1
 	movgr2fr.w	$fa4, $s1

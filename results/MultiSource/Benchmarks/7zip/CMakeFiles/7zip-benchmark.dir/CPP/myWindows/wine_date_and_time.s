@@ -157,13 +157,13 @@ FileTimeToDosDateTime:                  # @FileTimeToDosDateTime
 .LBB3_2:
 	beqz	$fp, .LBB3_4
 # %bb.3:
-	slli.d	$a0, $a2, 9
-	slli.d	$a2, $a3, 5
-	add.d	$a0, $a0, $a2
-	lu12i.w	$a2, 6
-	add.d	$a0, $a0, $a1
-	ori	$a1, $a2, 32
-	add.d	$a0, $a0, $a1
+	lu12i.w	$a0, 6
+	slli.d	$a2, $a2, 9
+	slli.d	$a3, $a3, 5
+	ori	$a0, $a0, 32
+	add.d	$a2, $a2, $a3
+	add.d	$a0, $a1, $a0
+	add.d	$a0, $a2, $a0
 	st.h	$a0, $fp, 0
 .LBB3_4:
 	ori	$a0, $zero, 1
@@ -320,9 +320,9 @@ FileTimeToSystemTime:                   # @FileTimeToSystemTime
 	add.d	$a7, $a7, $t0
 	ext.w.h	$a7, $a7
 	srai.d	$a7, $a7, 2
-	add.d	$a6, $a6, $a7
-	lu12i.w	$a7, 6
-	ori	$a7, $a7, 3612
+	lu12i.w	$t0, 6
+	ori	$t0, $t0, 3612
+	add.d	$a6, $a6, $t0
 	add.d	$a6, $a6, $a7
 	slli.d	$a7, $a6, 4
 	alsl.w	$a7, $a6, $a7, 2
@@ -541,9 +541,9 @@ GetSystemTime:                          # @GetSystemTime
 	add.d	$a6, $a6, $a7
 	ext.w.h	$a6, $a6
 	srai.d	$a6, $a6, 2
-	add.d	$a5, $a5, $a6
-	lu12i.w	$a6, 6
-	ori	$a6, $a6, 3612
+	lu12i.w	$a7, 6
+	ori	$a7, $a7, 3612
+	add.d	$a5, $a5, $a7
 	add.d	$a5, $a5, $a6
 	slli.d	$a6, $a5, 4
 	alsl.w	$a6, $a5, $a6, 2
@@ -712,9 +712,9 @@ SystemTimeToFileTime:                   # @SystemTimeToFileTime
 	bstrpick.d	$a7, $a7, 21, 6
 	add.d	$a0, $a0, $a7
 	sub.d	$a0, $a0, $t0
-	add.d	$a0, $a0, $a6
-	lu12i.w	$a6, -143
-	ori	$a6, $a6, 911
+	lu12i.w	$a7, -143
+	ori	$a7, $a7, 911
+	add.d	$a6, $a6, $a7
 	add.w	$a0, $a0, $a6
 	slli.d	$a6, $a0, 4
 	alsl.d	$a0, $a0, $a6, 3

@@ -82,8 +82,8 @@ set_key:                                # @set_key
 	ld.w	$t6, $a5, 0
 	xor	$a1, $t2, $a1
 	xor	$a1, $a1, $t3
-	xor	$a1, $a1, $t4
-	xor	$a1, $a1, $t5
+	xor	$t2, $t4, $t5
+	xor	$a1, $a1, $t2
 	xor	$a1, $a1, $t6
 	ld.w	$t2, $a0, -8
 	addi.d	$t3, $a0, 4
@@ -144,8 +144,8 @@ set_key:                                # @set_key
 	ld.w	$t6, $a5, 0
 	xor	$a1, $t2, $a1
 	xor	$a1, $a1, $t3
-	xor	$a1, $a1, $t4
-	xor	$a1, $a1, $t5
+	xor	$t2, $t4, $t5
+	xor	$a1, $a1, $t2
 	xor	$a1, $a1, $t6
 	ld.w	$t2, $a0, -16
 	addi.d	$t3, $a0, 4
@@ -204,10 +204,10 @@ set_key:                                # @set_key
 	ldx.w	$t7, $t1, $t7
 	ld.w	$t8, $a5, 0
 	xor	$a1, $t4, $a1
-	xor	$a1, $a1, $t5
-	xor	$a1, $a1, $t6
-	xor	$a1, $a1, $t7
-	xor	$a1, $a1, $t8
+	xor	$t4, $t5, $t6
+	xor	$a1, $a1, $t4
+	xor	$t4, $t7, $t8
+	xor	$a1, $a1, $t4
 	ld.w	$t4, $a0, -24
 	addi.d	$t5, $a0, 4
 	st.w	$a1, $a0, 4
@@ -233,7 +233,7 @@ set_key:                                # @set_key
 	srli.d	$t6, $t6, 22
 	ldx.w	$t6, $t1, $t6
 	xor	$t7, $t8, $t7
-	xor	$t7, $t7, $fp
+	xor	$t4, $fp, $t4
 	xor	$t4, $t7, $t4
 	ld.w	$t7, $a0, -8
 	xor	$t4, $t4, $t6
@@ -286,7 +286,7 @@ set_key:                                # @set_key
 	andi	$t1, $t1, 1020
 	ldx.w	$t1, $t0, $t1
 	xor	$t2, $t3, $t2
-	xor	$t2, $t2, $t4
+	xor	$t1, $t4, $t1
 	xor	$t1, $t2, $t1
 	st.w	$t1, $a2, 0
 	ld.wu	$t1, $a1, 4
@@ -303,7 +303,7 @@ set_key:                                # @set_key
 	andi	$t1, $t1, 1020
 	ldx.w	$t1, $t0, $t1
 	xor	$t2, $t3, $t2
-	xor	$t2, $t2, $t4
+	xor	$t1, $t4, $t1
 	xor	$t1, $t2, $t1
 	st.w	$t1, $a2, 4
 	ld.wu	$t1, $a1, 8
@@ -320,7 +320,7 @@ set_key:                                # @set_key
 	andi	$t1, $t1, 1020
 	ldx.w	$t1, $t0, $t1
 	xor	$t2, $t3, $t2
-	xor	$t2, $t2, $t4
+	xor	$t1, $t4, $t1
 	xor	$t1, $t2, $t1
 	st.w	$t1, $a2, 8
 	ld.wu	$t1, $a1, 12
@@ -337,7 +337,7 @@ set_key:                                # @set_key
 	andi	$t1, $t1, 1020
 	ldx.w	$t1, $t0, $t1
 	xor	$t2, $t3, $t2
-	xor	$t2, $t2, $t4
+	xor	$t1, $t4, $t1
 	xor	$t1, $t2, $t1
 	st.w	$t1, $a2, 12
 	ld.w	$t1, $a3, 4
@@ -380,12 +380,15 @@ encrypt:                                # @encrypt
 	move	$a0, $zero
 	ret
 .LBB1_2:
-	addi.d	$sp, $sp, -48
-	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$fp, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
 	vld	$vr0, $a0, 0
 	vld	$vr1, $a2, 8
 	vxor.v	$vr0, $vr1, $vr0
@@ -427,116 +430,116 @@ encrypt:                                # @encrypt
 	and	$t2, $t2, $a7
 	srli.d	$a6, $a6, 22
 	ldx.w	$t7, $a4, $a6
-	xor	$a6, $t6, $a5
+	xor	$t6, $t6, $a5
 	ld.w	$a5, $a2, 32
-	andi	$t6, $t4, 255
-	slli.d	$t6, $t6, 2
-	ldx.w	$t6, $a3, $t6
-	and	$t4, $t4, $a7
+	andi	$a6, $t4, 255
+	slli.d	$a6, $a6, 2
+	ldx.w	$a6, $a3, $a6
+	and	$t8, $t4, $a7
 	srli.d	$t2, $t2, 22
 	ldx.w	$t2, $a4, $t2
-	xor	$t6, $t6, $a5
-	ld.w	$t8, $a2, 36
+	xor	$fp, $a6, $a5
+	ld.w	$s0, $a2, 36
 	andi	$a5, $t3, 255
-	slli.d	$t3, $a5, 2
+	slli.d	$a5, $a5, 2
+	ldx.w	$s1, $a3, $a5
 	vsrli.w	$vr1, $vr0, 8
-	vpickve2gr.bu	$fp, $vr1, 4
+	vpickve2gr.bu	$a6, $vr1, 4
 	addi.d	$a5, $a3, 1024
-	slli.d	$fp, $fp, 2
-	ldx.w	$fp, $a5, $fp
-	vpickve2gr.bu	$s0, $vr1, 8
-	slli.d	$s0, $s0, 2
-	ldx.w	$s0, $a5, $s0
-	vpickve2gr.bu	$s1, $vr1, 12
-	slli.d	$s1, $s1, 2
-	ldx.w	$s1, $a5, $s1
-	ldx.w	$s2, $a3, $t3
-	xor	$t0, $t0, $fp
-	xor	$t3, $a6, $s0
-	xor	$t6, $t6, $s1
+	slli.d	$a6, $a6, 2
+	ldx.w	$t3, $a5, $a6
+	vpickve2gr.bu	$a6, $vr1, 8
+	slli.d	$a6, $a6, 2
+	ldx.w	$t4, $a5, $a6
+	vpickve2gr.bu	$a6, $vr1, 12
+	slli.d	$a6, $a6, 2
+	ldx.w	$s2, $a5, $a6
 	vpickve2gr.bu	$a6, $vr1, 0
 	slli.d	$a6, $a6, 2
-	ldx.w	$fp, $a5, $a6
+	ldx.w	$s3, $a5, $a6
 	vsrli.w	$vr0, $vr0, 16
-	vpickve2gr.bu	$s0, $vr0, 8
+	vpickve2gr.bu	$s4, $vr0, 8
 	addi.d	$a6, $t5, 1
-	slli.d	$t5, $s0, 2
+	slli.d	$t5, $s4, 2
 	ldx.w	$t5, $a6, $t5
-	vpickve2gr.bu	$s0, $vr0, 12
-	slli.d	$s0, $s0, 2
-	ldx.w	$s0, $a6, $s0
-	vpickve2gr.bu	$s1, $vr0, 0
-	slli.d	$s1, $s1, 2
-	ldx.w	$s1, $a6, $s1
-	xor	$t0, $t0, $t5
+	vpickve2gr.bu	$s4, $vr0, 12
+	slli.d	$s4, $s4, 2
+	ldx.w	$s4, $a6, $s4
+	vpickve2gr.bu	$s5, $vr0, 0
+	slli.d	$s5, $s5, 2
+	ldx.w	$s5, $a6, $s5
+	xor	$t3, $t3, $t5
+	xor	$t0, $t0, $t3
 	xor	$t0, $t0, $t1
-	and	$s3, $t0, $a7
-	xor	$t1, $t3, $s0
+	and	$s6, $t0, $a7
+	xor	$t1, $t4, $s4
+	xor	$t1, $t6, $t1
 	xor	$t3, $t1, $t7
-	and	$t7, $t3, $a7
-	xor	$t1, $t6, $s1
+	and	$t4, $t3, $a7
+	xor	$t1, $s2, $s5
+	xor	$t1, $fp, $t1
 	xor	$t6, $t1, $t2
 	and	$t5, $t6, $a7
 	vpickve2gr.bu	$t1, $vr0, 4
 	slli.d	$t1, $t1, 2
 	ldx.w	$t1, $a6, $t1
-	srli.d	$t2, $t4, 22
+	srli.d	$t2, $t8, 22
 	ldx.w	$t2, $a4, $t2
-	xor	$t4, $s2, $t8
-	xor	$t4, $t4, $fp
-	xor	$t1, $t4, $t1
-	xor	$t8, $t1, $t2
-	and	$a7, $t8, $a7
+	xor	$t7, $s1, $s0
+	xor	$t1, $s3, $t1
+	xor	$t1, $t7, $t1
+	xor	$t7, $t1, $t2
+	and	$a7, $t7, $a7
 	ld.w	$t1, $a2, 40
 	andi	$t2, $t0, 255
 	slli.d	$t2, $t2, 2
 	ldx.w	$t2, $a3, $t2
-	srli.d	$t4, $t3, 6
-	andi	$t4, $t4, 1020
-	ldx.w	$t4, $a5, $t4
+	srli.d	$t8, $t3, 6
+	andi	$t8, $t8, 1020
+	ldx.w	$t8, $a5, $t8
 	srli.d	$fp, $t6, 14
 	andi	$fp, $fp, 1020
 	ldx.w	$fp, $a6, $fp
 	srli.d	$a7, $a7, 22
 	ldx.w	$a7, $a4, $a7
 	xor	$t1, $t2, $t1
-	xor	$t1, $t1, $t4
-	xor	$t1, $t1, $fp
+	xor	$t2, $t8, $fp
+	xor	$t1, $t1, $t2
 	xor	$t1, $t1, $a7
 	ld.w	$a7, $a2, 44
 	andi	$t2, $t3, 255
 	slli.d	$t2, $t2, 2
 	ldx.w	$t2, $a3, $t2
-	srli.d	$t4, $t6, 6
-	andi	$t4, $t4, 1020
-	ldx.w	$t4, $a5, $t4
-	srli.d	$fp, $t8, 14
+	srli.d	$t8, $t6, 6
+	andi	$t8, $t8, 1020
+	ldx.w	$t8, $a5, $t8
+	srli.d	$fp, $t7, 14
 	andi	$fp, $fp, 1020
 	ldx.w	$fp, $a6, $fp
-	srli.d	$s0, $s3, 22
+	srli.d	$s0, $s6, 22
 	ldx.w	$s0, $a4, $s0
 	xor	$a7, $t2, $a7
-	xor	$a7, $a7, $t4
-	xor	$a7, $a7, $fp
+	xor	$t2, $t8, $fp
+	xor	$a7, $a7, $t2
 	xor	$t2, $a7, $s0
 	ld.w	$a7, $a2, 48
-	andi	$t4, $t6, 255
-	slli.d	$t4, $t4, 2
-	ldx.w	$t4, $a3, $t4
-	srli.d	$t6, $t8, 6
-	andi	$t6, $t6, 1020
-	ldx.w	$t6, $a5, $t6
+	andi	$t6, $t6, 255
+	slli.d	$t6, $t6, 2
+	ldx.w	$t6, $a3, $t6
+	srli.d	$t8, $t7, 6
+	andi	$t8, $t8, 1020
+	ldx.w	$t8, $a5, $t8
 	srli.d	$fp, $t0, 14
 	andi	$fp, $fp, 1020
 	ldx.w	$fp, $a6, $fp
-	srli.d	$t7, $t7, 22
-	ldx.w	$t7, $a4, $t7
-	xor	$a7, $t4, $a7
+	srli.d	$t4, $t4, 22
+	ldx.w	$t4, $a4, $t4
+	xor	$a7, $t6, $a7
+	xor	$t6, $t8, $fp
 	xor	$a7, $a7, $t6
-	xor	$a7, $a7, $fp
-	xor	$t4, $a7, $t7
+	xor	$t4, $a7, $t4
 	ld.w	$a7, $a2, 52
-	andi	$t6, $t8, 255
+	andi	$t6, $t7, 255
 	slli.d	$t6, $t6, 2
 	ldx.w	$t6, $a3, $t6
 	srli.d	$t0, $t0, 6
@@ -548,8 +551,8 @@ encrypt:                                # @encrypt
 	srli.d	$t0, $t5, 22
 	ldx.w	$a4, $a4, $t0
 	xor	$a7, $t6, $a7
-	xor	$a5, $a7, $a5
 	xor	$a5, $a5, $a6
+	xor	$a5, $a7, $a5
 	xor	$t3, $a5, $a4
 	addi.d	$a4, $a2, 56
 .LBB1_6:
@@ -576,8 +579,8 @@ encrypt:                                # @encrypt
 	addi.d	$a6, $s0, 1025
 	ldx.w	$s0, $a6, $s2
 	xor	$a7, $t5, $a7
-	xor	$a7, $a7, $t6
-	xor	$a7, $a7, $s1
+	xor	$t5, $t6, $s1
+	xor	$a7, $a7, $t5
 	xor	$a7, $a7, $s0
 	and	$t5, $a7, $t7
 	ld.w	$t6, $a4, 4
@@ -593,8 +596,8 @@ encrypt:                                # @encrypt
 	srli.d	$t0, $t0, 22
 	ldx.w	$t0, $a6, $t0
 	xor	$t6, $s0, $t6
-	xor	$t6, $t6, $s1
-	xor	$t6, $t6, $s2
+	xor	$s0, $s1, $s2
+	xor	$t6, $t6, $s0
 	xor	$t0, $t6, $t0
 	and	$t6, $t0, $t7
 	ld.w	$s0, $a4, 8
@@ -610,8 +613,8 @@ encrypt:                                # @encrypt
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $a6, $t8
 	xor	$t4, $t4, $s0
-	xor	$t4, $t4, $s1
-	xor	$t4, $t4, $s2
+	xor	$s0, $s1, $s2
+	xor	$t4, $t4, $s0
 	xor	$t4, $t4, $t8
 	and	$t8, $t4, $t7
 	ld.w	$s0, $a4, 12
@@ -627,8 +630,8 @@ encrypt:                                # @encrypt
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $a6, $fp
 	xor	$t3, $t3, $s0
-	xor	$t1, $t3, $t1
 	xor	$t1, $t1, $t2
+	xor	$t1, $t3, $t1
 	xor	$t3, $t1, $fp
 	and	$t1, $t3, $t7
 	ld.w	$t2, $a4, 16
@@ -644,8 +647,8 @@ encrypt:                                # @encrypt
 	srli.d	$t1, $t1, 22
 	ldx.w	$t1, $a6, $t1
 	xor	$t2, $t7, $t2
-	xor	$t2, $t2, $fp
-	xor	$t2, $t2, $s0
+	xor	$t7, $fp, $s0
+	xor	$t2, $t2, $t7
 	xor	$t1, $t2, $t1
 	ld.w	$t2, $a4, 20
 	andi	$t7, $t0, 255
@@ -660,8 +663,8 @@ encrypt:                                # @encrypt
 	srli.d	$t5, $t5, 22
 	ldx.w	$t5, $a6, $t5
 	xor	$t2, $t7, $t2
-	xor	$t2, $t2, $fp
-	xor	$t2, $t2, $s0
+	xor	$t7, $fp, $s0
+	xor	$t2, $t2, $t7
 	xor	$t2, $t2, $t5
 	ld.w	$t5, $a4, 24
 	andi	$t4, $t4, 255
@@ -676,8 +679,8 @@ encrypt:                                # @encrypt
 	srli.d	$t6, $t6, 22
 	ldx.w	$t6, $a6, $t6
 	xor	$t4, $t4, $t5
-	xor	$t4, $t4, $t7
-	xor	$t4, $t4, $fp
+	xor	$t5, $t7, $fp
+	xor	$t4, $t4, $t5
 	xor	$t4, $t4, $t6
 	ld.w	$t5, $a4, 28
 	andi	$t3, $t3, 255
@@ -692,8 +695,8 @@ encrypt:                                # @encrypt
 	srli.d	$a7, $t8, 22
 	ldx.w	$a6, $a6, $a7
 	xor	$a7, $t3, $t5
-	xor	$a2, $a7, $a2
 	xor	$a2, $a2, $a5
+	xor	$a2, $a7, $a2
 	xor	$t3, $a2, $a6
 	addi.d	$a4, $a4, 32
 .LBB1_7:
@@ -720,8 +723,8 @@ encrypt:                                # @encrypt
 	srli.d	$s2, $s2, 22
 	ldx.w	$s2, $t0, $s2
 	xor	$t5, $t7, $t5
-	xor	$t5, $t5, $t8
-	xor	$t5, $t5, $s1
+	xor	$t7, $t8, $s1
+	xor	$t5, $t5, $t7
 	xor	$t5, $t5, $s2
 	and	$t7, $t5, $a0
 	ld.w	$t8, $a4, 4
@@ -737,8 +740,8 @@ encrypt:                                # @encrypt
 	srli.d	$t6, $t6, 22
 	ldx.w	$t6, $t0, $t6
 	xor	$t8, $s1, $t8
-	xor	$t8, $t8, $s2
-	xor	$t8, $t8, $s3
+	xor	$s1, $s2, $s3
+	xor	$t8, $t8, $s1
 	xor	$t6, $t8, $t6
 	and	$t8, $t6, $a0
 	ld.w	$s1, $a4, 8
@@ -754,8 +757,8 @@ encrypt:                                # @encrypt
 	srli.d	$s0, $s0, 22
 	ldx.w	$s0, $t0, $s0
 	xor	$t4, $t4, $s1
-	xor	$t4, $t4, $s2
-	xor	$t4, $t4, $s3
+	xor	$s1, $s2, $s3
+	xor	$t4, $t4, $s1
 	xor	$s0, $t4, $s0
 	and	$t4, $s0, $a0
 	ld.w	$s1, $a4, 12
@@ -771,8 +774,8 @@ encrypt:                                # @encrypt
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $t0, $fp
 	xor	$t3, $t3, $s1
-	xor	$t1, $t3, $t1
 	xor	$t1, $t1, $t2
+	xor	$t1, $t3, $t1
 	xor	$t2, $t1, $fp
 	and	$t1, $t2, $a0
 	ld.w	$t3, $a4, 16
@@ -788,8 +791,8 @@ encrypt:                                # @encrypt
 	srli.d	$t1, $t1, 22
 	ldx.w	$t1, $t0, $t1
 	xor	$t3, $fp, $t3
-	xor	$t3, $t3, $s1
-	xor	$t3, $t3, $s2
+	xor	$fp, $s1, $s2
+	xor	$t3, $t3, $fp
 	xor	$t1, $t3, $t1
 	and	$fp, $t1, $a0
 	ld.w	$t3, $a4, 20
@@ -805,8 +808,8 @@ encrypt:                                # @encrypt
 	srli.d	$t7, $t7, 22
 	ldx.w	$t7, $t0, $t7
 	xor	$t3, $s1, $t3
-	xor	$t3, $t3, $s2
-	xor	$t3, $t3, $s3
+	xor	$s1, $s2, $s3
+	xor	$t3, $t3, $s1
 	xor	$t3, $t3, $t7
 	and	$t7, $t3, $a0
 	ld.w	$s1, $a4, 24
@@ -822,8 +825,8 @@ encrypt:                                # @encrypt
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $t0, $t8
 	xor	$s0, $s0, $s1
-	xor	$s0, $s0, $s2
-	xor	$s0, $s0, $s3
+	xor	$s1, $s2, $s3
+	xor	$s0, $s0, $s1
 	xor	$s0, $s0, $t8
 	and	$t8, $s0, $a0
 	ld.w	$s1, $a4, 28
@@ -839,8 +842,8 @@ encrypt:                                # @encrypt
 	srli.d	$t4, $t4, 22
 	ldx.w	$t4, $t0, $t4
 	xor	$t2, $t2, $s1
+	xor	$t5, $t5, $t6
 	xor	$t2, $t2, $t5
-	xor	$t2, $t2, $t6
 	xor	$s1, $t2, $t4
 	and	$t2, $s1, $a0
 	ld.w	$t4, $a4, 32
@@ -856,8 +859,8 @@ encrypt:                                # @encrypt
 	srli.d	$t2, $t2, 22
 	ldx.w	$t2, $t0, $t2
 	xor	$t4, $t5, $t4
-	xor	$t4, $t4, $t6
-	xor	$t4, $t4, $s2
+	xor	$t5, $t6, $s2
+	xor	$t4, $t4, $t5
 	xor	$t2, $t4, $t2
 	and	$t5, $t2, $a0
 	ld.w	$t4, $a4, 36
@@ -873,8 +876,8 @@ encrypt:                                # @encrypt
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $t0, $fp
 	xor	$t4, $t6, $t4
-	xor	$t4, $t4, $s2
-	xor	$t4, $t4, $s3
+	xor	$t6, $s2, $s3
+	xor	$t4, $t4, $t6
 	xor	$t4, $t4, $fp
 	and	$t6, $t4, $a0
 	ld.w	$fp, $a4, 40
@@ -890,8 +893,8 @@ encrypt:                                # @encrypt
 	srli.d	$t7, $t7, 22
 	ldx.w	$t7, $t0, $t7
 	xor	$fp, $s0, $fp
-	xor	$fp, $fp, $s2
-	xor	$fp, $fp, $s3
+	xor	$s0, $s2, $s3
+	xor	$fp, $fp, $s0
 	xor	$fp, $fp, $t7
 	and	$t7, $fp, $a0
 	ld.w	$s0, $a4, 44
@@ -907,8 +910,8 @@ encrypt:                                # @encrypt
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $t0, $t8
 	xor	$s0, $s1, $s0
-	xor	$t1, $s0, $t1
 	xor	$t1, $t1, $t3
+	xor	$t1, $s0, $t1
 	xor	$s0, $t1, $t8
 	and	$t1, $s0, $a0
 	ld.w	$t3, $a4, 48
@@ -924,8 +927,8 @@ encrypt:                                # @encrypt
 	srli.d	$t1, $t1, 22
 	ldx.w	$t1, $t0, $t1
 	xor	$t3, $t8, $t3
-	xor	$t3, $t3, $s1
-	xor	$t3, $t3, $s2
+	xor	$t8, $s1, $s2
+	xor	$t3, $t3, $t8
 	xor	$t1, $t3, $t1
 	and	$t8, $t1, $a0
 	ld.w	$t3, $a4, 52
@@ -941,8 +944,8 @@ encrypt:                                # @encrypt
 	srli.d	$t5, $t5, 22
 	ldx.w	$t5, $t0, $t5
 	xor	$t3, $s1, $t3
-	xor	$t3, $t3, $s2
-	xor	$t3, $t3, $s3
+	xor	$s1, $s2, $s3
+	xor	$t3, $t3, $s1
 	xor	$t3, $t3, $t5
 	and	$t5, $t3, $a0
 	ld.w	$s1, $a4, 56
@@ -958,8 +961,8 @@ encrypt:                                # @encrypt
 	srli.d	$t6, $t6, 22
 	ldx.w	$t6, $t0, $t6
 	xor	$fp, $fp, $s1
-	xor	$fp, $fp, $s2
-	xor	$fp, $fp, $s3
+	xor	$s1, $s2, $s3
+	xor	$fp, $fp, $s1
 	xor	$fp, $fp, $t6
 	and	$t6, $fp, $a0
 	ld.w	$s1, $a4, 60
@@ -975,8 +978,8 @@ encrypt:                                # @encrypt
 	srli.d	$t7, $t7, 22
 	ldx.w	$t7, $t0, $t7
 	xor	$s0, $s0, $s1
-	xor	$t2, $s0, $t2
 	xor	$t2, $t2, $t4
+	xor	$t2, $s0, $t2
 	xor	$s0, $t2, $t7
 	and	$t2, $s0, $a0
 	ld.w	$t4, $a4, 64
@@ -992,8 +995,8 @@ encrypt:                                # @encrypt
 	srli.d	$t2, $t2, 22
 	ldx.w	$t2, $t0, $t2
 	xor	$t4, $t7, $t4
-	xor	$t4, $t4, $s1
-	xor	$t4, $t4, $s2
+	xor	$t7, $s1, $s2
+	xor	$t4, $t4, $t7
 	xor	$t2, $t4, $t2
 	and	$t7, $t2, $a0
 	ld.w	$t4, $a4, 68
@@ -1009,8 +1012,8 @@ encrypt:                                # @encrypt
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $t0, $t8
 	xor	$t4, $s1, $t4
-	xor	$t4, $t4, $s2
-	xor	$t4, $t4, $s3
+	xor	$s1, $s2, $s3
+	xor	$t4, $t4, $s1
 	xor	$t4, $t4, $t8
 	and	$t8, $t4, $a0
 	ld.w	$s1, $a4, 72
@@ -1026,8 +1029,8 @@ encrypt:                                # @encrypt
 	srli.d	$t5, $t5, 22
 	ldx.w	$t5, $t0, $t5
 	xor	$fp, $fp, $s1
-	xor	$fp, $fp, $s2
-	xor	$fp, $fp, $s3
+	xor	$s1, $s2, $s3
+	xor	$fp, $fp, $s1
 	xor	$fp, $fp, $t5
 	and	$t5, $fp, $a0
 	ld.w	$s1, $a4, 76
@@ -1043,8 +1046,8 @@ encrypt:                                # @encrypt
 	srli.d	$t6, $t6, 22
 	ldx.w	$t6, $t0, $t6
 	xor	$s0, $s0, $s1
-	xor	$t1, $s0, $t1
 	xor	$t1, $t1, $t3
+	xor	$t1, $s0, $t1
 	xor	$s0, $t1, $t6
 	and	$t1, $s0, $a0
 	ld.w	$t3, $a4, 80
@@ -1060,8 +1063,8 @@ encrypt:                                # @encrypt
 	srli.d	$t1, $t1, 22
 	ldx.w	$t1, $t0, $t1
 	xor	$t3, $t6, $t3
-	xor	$t3, $t3, $s1
-	xor	$t3, $t3, $s2
+	xor	$t6, $s1, $s2
+	xor	$t3, $t3, $t6
 	xor	$t1, $t3, $t1
 	and	$t6, $t1, $a0
 	ld.w	$t3, $a4, 84
@@ -1077,8 +1080,8 @@ encrypt:                                # @encrypt
 	srli.d	$t7, $t7, 22
 	ldx.w	$t7, $t0, $t7
 	xor	$t3, $s1, $t3
-	xor	$t3, $t3, $s2
-	xor	$t3, $t3, $s3
+	xor	$s1, $s2, $s3
+	xor	$t3, $t3, $s1
 	xor	$t3, $t3, $t7
 	and	$t7, $t3, $a0
 	ld.w	$s1, $a4, 88
@@ -1094,8 +1097,8 @@ encrypt:                                # @encrypt
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $t0, $t8
 	xor	$fp, $fp, $s1
-	xor	$fp, $fp, $s2
-	xor	$fp, $fp, $s3
+	xor	$s1, $s2, $s3
+	xor	$fp, $fp, $s1
 	xor	$fp, $fp, $t8
 	and	$t8, $fp, $a0
 	ld.w	$s1, $a4, 92
@@ -1111,8 +1114,8 @@ encrypt:                                # @encrypt
 	srli.d	$t5, $t5, 22
 	ldx.w	$t5, $t0, $t5
 	xor	$s0, $s0, $s1
-	xor	$t2, $s0, $t2
 	xor	$t2, $t2, $t4
+	xor	$t2, $s0, $t2
 	xor	$s0, $t2, $t5
 	and	$t2, $s0, $a0
 	ld.w	$t4, $a4, 96
@@ -1128,8 +1131,8 @@ encrypt:                                # @encrypt
 	srli.d	$t2, $t2, 22
 	ldx.w	$t2, $t0, $t2
 	xor	$t4, $t5, $t4
-	xor	$t4, $t4, $s1
-	xor	$t4, $t4, $s2
+	xor	$t5, $s1, $s2
+	xor	$t4, $t4, $t5
 	xor	$t2, $t4, $t2
 	and	$t5, $t2, $a0
 	ld.w	$t4, $a4, 100
@@ -1145,8 +1148,8 @@ encrypt:                                # @encrypt
 	srli.d	$t6, $t6, 22
 	ldx.w	$t6, $t0, $t6
 	xor	$t4, $s1, $t4
-	xor	$t4, $t4, $s2
-	xor	$t4, $t4, $s3
+	xor	$s1, $s2, $s3
+	xor	$t4, $t4, $s1
 	xor	$t4, $t4, $t6
 	and	$t6, $t4, $a0
 	ld.w	$s1, $a4, 104
@@ -1162,8 +1165,8 @@ encrypt:                                # @encrypt
 	srli.d	$t7, $t7, 22
 	ldx.w	$t7, $t0, $t7
 	xor	$fp, $fp, $s1
-	xor	$fp, $fp, $s2
-	xor	$fp, $fp, $s3
+	xor	$s1, $s2, $s3
+	xor	$fp, $fp, $s1
 	xor	$fp, $fp, $t7
 	and	$t7, $fp, $a0
 	ld.w	$s1, $a4, 108
@@ -1179,8 +1182,8 @@ encrypt:                                # @encrypt
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $t0, $t8
 	xor	$s0, $s0, $s1
-	xor	$t1, $s0, $t1
 	xor	$t1, $t1, $t3
+	xor	$t1, $s0, $t1
 	xor	$s0, $t1, $t8
 	and	$t1, $s0, $a0
 	ld.w	$t3, $a4, 112
@@ -1196,8 +1199,8 @@ encrypt:                                # @encrypt
 	srli.d	$t1, $t1, 22
 	ldx.w	$t1, $t0, $t1
 	xor	$t3, $t8, $t3
-	xor	$t3, $t3, $s1
-	xor	$t3, $t3, $s2
+	xor	$t8, $s1, $s2
+	xor	$t3, $t3, $t8
 	xor	$t1, $t3, $t1
 	and	$t8, $t1, $a0
 	ld.w	$t3, $a4, 116
@@ -1213,8 +1216,8 @@ encrypt:                                # @encrypt
 	srli.d	$t5, $t5, 22
 	ldx.w	$t5, $t0, $t5
 	xor	$t3, $s1, $t3
-	xor	$t3, $t3, $s2
-	xor	$t3, $t3, $s3
+	xor	$s1, $s2, $s3
+	xor	$t3, $t3, $s1
 	xor	$t3, $t3, $t5
 	and	$t5, $t3, $a0
 	ld.w	$s1, $a4, 120
@@ -1230,8 +1233,8 @@ encrypt:                                # @encrypt
 	srli.d	$t6, $t6, 22
 	ldx.w	$t6, $t0, $t6
 	xor	$fp, $fp, $s1
-	xor	$fp, $fp, $s2
-	xor	$fp, $fp, $s3
+	xor	$s1, $s2, $s3
+	xor	$fp, $fp, $s1
 	xor	$fp, $fp, $t6
 	and	$t6, $fp, $a0
 	ld.w	$s1, $a4, 124
@@ -1247,8 +1250,8 @@ encrypt:                                # @encrypt
 	srli.d	$t7, $t7, 22
 	ldx.w	$t7, $t0, $t7
 	xor	$s0, $s0, $s1
-	xor	$t2, $s0, $t2
 	xor	$t2, $t2, $t4
+	xor	$t2, $s0, $t2
 	xor	$s0, $t2, $t7
 	and	$t2, $s0, $a0
 	ld.w	$t4, $a4, 128
@@ -1264,8 +1267,8 @@ encrypt:                                # @encrypt
 	srli.d	$t2, $t2, 22
 	ldx.w	$t2, $t0, $t2
 	xor	$t4, $t7, $t4
-	xor	$t4, $t4, $s1
-	xor	$t4, $t4, $s2
+	xor	$t7, $s1, $s2
+	xor	$t4, $t4, $t7
 	xor	$t2, $t4, $t2
 	and	$t7, $t2, $a0
 	ld.w	$t4, $a4, 132
@@ -1281,8 +1284,8 @@ encrypt:                                # @encrypt
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $t0, $t8
 	xor	$t4, $s1, $t4
-	xor	$t4, $t4, $s2
-	xor	$t4, $t4, $s3
+	xor	$s1, $s2, $s3
+	xor	$t4, $t4, $s1
 	xor	$t4, $t4, $t8
 	and	$t8, $t4, $a0
 	ld.w	$s1, $a4, 136
@@ -1298,8 +1301,8 @@ encrypt:                                # @encrypt
 	srli.d	$t5, $t5, 22
 	ldx.w	$t5, $t0, $t5
 	xor	$fp, $fp, $s1
-	xor	$fp, $fp, $s2
-	xor	$fp, $fp, $s3
+	xor	$s1, $s2, $s3
+	xor	$fp, $fp, $s1
 	xor	$fp, $fp, $t5
 	and	$t5, $fp, $a0
 	ld.w	$s1, $a4, 140
@@ -1315,8 +1318,8 @@ encrypt:                                # @encrypt
 	srli.d	$t1, $t6, 22
 	ldx.w	$t0, $t0, $t1
 	xor	$a3, $a3, $s1
+	xor	$a6, $a6, $a7
 	xor	$a3, $a3, $a6
-	xor	$a3, $a3, $a7
 	xor	$a3, $a3, $t0
 	and	$a0, $a3, $a0
 	andi	$a6, $t2, 255
@@ -1378,11 +1381,11 @@ encrypt:                                # @encrypt
 	vinsgr2vr.w	$vr1, $s0, 1
 	vinsgr2vr.w	$vr1, $s2, 2
 	vinsgr2vr.w	$vr1, $a7, 3
-	vxor.v	$vr0, $vr0, $vr1
-	vinsgr2vr.w	$vr1, $t3, 0
-	vinsgr2vr.w	$vr1, $s1, 1
-	vinsgr2vr.w	$vr1, $s3, 2
-	vinsgr2vr.w	$vr1, $a2, 3
+	vinsgr2vr.w	$vr2, $t3, 0
+	vinsgr2vr.w	$vr2, $s1, 1
+	vinsgr2vr.w	$vr2, $s3, 2
+	vinsgr2vr.w	$vr2, $a2, 3
+	vxor.v	$vr1, $vr1, $vr2
 	vxor.v	$vr0, $vr0, $vr1
 	vinsgr2vr.w	$vr1, $a0, 0
 	vinsgr2vr.w	$vr1, $t7, 1
@@ -1392,12 +1395,15 @@ encrypt:                                # @encrypt
 .LBB1_8:
 	vst	$vr0, $a1, 0
 	ori	$a0, $zero, 1
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end1:
 	.size	encrypt, .Lfunc_end1-encrypt
@@ -1415,12 +1421,14 @@ decrypt:                                # @decrypt
 	move	$a0, $zero
 	ret
 .LBB2_2:
-	addi.d	$sp, $sp, -48
-	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
 	vld	$vr0, $a0, 0
 	vld	$vr1, $a2, 264
 	vxor.v	$vr0, $vr1, $vr0
@@ -1454,71 +1462,71 @@ decrypt:                                # @decrypt
 	addi.d	$t2, $a3, 2047
 	addi.d	$a4, $t2, 1025
 	ldx.w	$t0, $a4, $t0
-	xor	$a6, $a6, $a5
+	xor	$t6, $a6, $a5
 	ld.w	$a5, $a2, 284
-	andi	$t1, $t1, 255
-	slli.d	$t1, $t1, 2
-	ldx.w	$t1, $a3, $t1
-	and	$t6, $t3, $a7
-	srli.d	$t6, $t6, 22
-	ldx.w	$t6, $a4, $t6
-	xor	$t1, $t1, $a5
+	andi	$a6, $t1, 255
+	slli.d	$a6, $a6, 2
+	ldx.w	$a6, $a3, $a6
+	and	$t1, $t3, $a7
+	srli.d	$t1, $t1, 22
+	ldx.w	$t1, $a4, $t1
+	xor	$t7, $a6, $a5
 	ld.w	$a5, $a2, 288
-	andi	$t3, $t3, 255
-	slli.d	$t3, $t3, 2
-	ldx.w	$t3, $a3, $t3
-	and	$t7, $t4, $a7
-	srli.d	$t7, $t7, 22
-	ldx.w	$t7, $a4, $t7
-	xor	$t3, $t3, $a5
-	ld.w	$t8, $a2, 292
+	andi	$a6, $t3, 255
+	slli.d	$a6, $a6, 2
+	ldx.w	$a6, $a3, $a6
+	and	$t3, $t4, $a7
+	srli.d	$t3, $t3, 22
+	ldx.w	$t8, $a4, $t3
+	xor	$fp, $a6, $a5
+	ld.w	$s0, $a2, 292
 	andi	$a5, $t4, 255
-	slli.d	$t4, $a5, 2
+	slli.d	$a5, $a5, 2
+	ldx.w	$s1, $a3, $a5
 	vsrli.w	$vr1, $vr0, 8
-	vpickve2gr.bu	$fp, $vr1, 12
+	vpickve2gr.bu	$a6, $vr1, 12
 	addi.d	$a5, $a3, 1024
-	slli.d	$fp, $fp, 2
-	ldx.w	$fp, $a5, $fp
-	vpickve2gr.bu	$s0, $vr1, 0
-	slli.d	$s0, $s0, 2
-	ldx.w	$s0, $a5, $s0
-	vpickve2gr.bu	$s1, $vr1, 4
-	slli.d	$s1, $s1, 2
-	ldx.w	$s1, $a5, $s1
-	ldx.w	$s2, $a3, $t4
-	xor	$t4, $a6, $fp
-	xor	$t1, $t1, $s0
-	xor	$fp, $t3, $s1
+	slli.d	$a6, $a6, 2
+	ldx.w	$t3, $a5, $a6
+	vpickve2gr.bu	$a6, $vr1, 0
+	slli.d	$a6, $a6, 2
+	ldx.w	$t4, $a5, $a6
+	vpickve2gr.bu	$a6, $vr1, 4
+	slli.d	$a6, $a6, 2
+	ldx.w	$s2, $a5, $a6
 	vpickve2gr.bu	$a6, $vr1, 8
 	slli.d	$a6, $a6, 2
-	ldx.w	$s0, $a5, $a6
+	ldx.w	$s3, $a5, $a6
 	vsrli.w	$vr0, $vr0, 16
-	vpickve2gr.bu	$t3, $vr0, 8
+	vpickve2gr.bu	$s4, $vr0, 8
 	addi.d	$a6, $t2, 1
-	slli.d	$t2, $t3, 2
+	slli.d	$t2, $s4, 2
 	ldx.w	$t2, $a6, $t2
-	vpickve2gr.bu	$t3, $vr0, 12
-	slli.d	$t3, $t3, 2
-	ldx.w	$s1, $a6, $t3
-	vpickve2gr.bu	$t3, $vr0, 0
-	slli.d	$t3, $t3, 2
-	ldx.w	$s3, $a6, $t3
-	xor	$t2, $t4, $t2
+	vpickve2gr.bu	$s4, $vr0, 12
+	slli.d	$s4, $s4, 2
+	ldx.w	$s4, $a6, $s4
+	vpickve2gr.bu	$s5, $vr0, 0
+	slli.d	$s5, $s5, 2
+	ldx.w	$s5, $a6, $s5
+	xor	$t2, $t3, $t2
+	xor	$t2, $t6, $t2
 	xor	$t3, $t2, $t0
 	and	$t0, $t3, $a7
-	xor	$t1, $t1, $s1
-	xor	$t4, $t1, $t6
+	xor	$t2, $t4, $s4
+	xor	$t2, $t7, $t2
+	xor	$t4, $t2, $t1
 	and	$t1, $t4, $a7
-	xor	$t2, $fp, $s3
-	xor	$t6, $t2, $t7
+	xor	$t2, $s2, $s5
+	xor	$t2, $fp, $t2
+	xor	$t6, $t2, $t8
 	and	$t7, $t6, $a7
 	vpickve2gr.bu	$t2, $vr0, 4
 	slli.d	$t2, $t2, 2
 	ldx.w	$t2, $a6, $t2
 	srli.d	$t5, $t5, 22
 	ldx.w	$t5, $a4, $t5
-	xor	$t8, $s2, $t8
-	xor	$t8, $t8, $s0
+	xor	$t8, $s1, $s0
+	xor	$t2, $s3, $t2
 	xor	$t2, $t8, $t2
 	xor	$t5, $t2, $t5
 	and	$a7, $t5, $a7
@@ -1535,8 +1543,8 @@ decrypt:                                # @decrypt
 	srli.d	$t1, $t1, 22
 	ldx.w	$t1, $a4, $t1
 	xor	$t2, $t8, $t2
-	xor	$t2, $t2, $fp
-	xor	$t2, $t2, $s0
+	xor	$t8, $fp, $s0
+	xor	$t2, $t2, $t8
 	xor	$t2, $t2, $t1
 	ld.w	$t1, $a2, 300
 	andi	$t8, $t4, 255
@@ -1551,8 +1559,8 @@ decrypt:                                # @decrypt
 	srli.d	$t7, $t7, 22
 	ldx.w	$t7, $a4, $t7
 	xor	$t1, $t8, $t1
-	xor	$t1, $t1, $fp
-	xor	$t1, $t1, $s0
+	xor	$t8, $fp, $s0
+	xor	$t1, $t1, $t8
 	xor	$t1, $t1, $t7
 	ld.w	$t7, $a2, 304
 	andi	$t8, $t6, 255
@@ -1567,7 +1575,7 @@ decrypt:                                # @decrypt
 	srli.d	$a7, $a7, 22
 	ldx.w	$a7, $a4, $a7
 	xor	$t7, $t8, $t7
-	xor	$t7, $t7, $fp
+	xor	$t3, $fp, $t3
 	xor	$t3, $t7, $t3
 	xor	$t3, $t3, $a7
 	ld.w	$a7, $a2, 308
@@ -1583,8 +1591,8 @@ decrypt:                                # @decrypt
 	srli.d	$t0, $t0, 22
 	ldx.w	$a4, $a4, $t0
 	xor	$a7, $t5, $a7
-	xor	$a5, $a7, $a5
 	xor	$a5, $a5, $a6
+	xor	$a5, $a7, $a5
 	xor	$t4, $a5, $a4
 	addi.d	$a4, $a2, 312
 .LBB2_6:
@@ -1611,8 +1619,8 @@ decrypt:                                # @decrypt
 	addi.d	$a6, $s0, 1025
 	ldx.w	$s0, $a6, $s2
 	xor	$a7, $t0, $a7
-	xor	$a7, $a7, $t5
-	xor	$a7, $a7, $s1
+	xor	$t0, $t5, $s1
+	xor	$a7, $a7, $t0
 	xor	$t0, $a7, $s0
 	and	$a7, $t0, $t6
 	ld.w	$t5, $a4, 4
@@ -1628,8 +1636,8 @@ decrypt:                                # @decrypt
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $a6, $fp
 	xor	$t5, $s0, $t5
-	xor	$t5, $t5, $s1
-	xor	$t5, $t5, $s2
+	xor	$s0, $s1, $s2
+	xor	$t5, $t5, $s0
 	xor	$t5, $t5, $fp
 	and	$fp, $t5, $t6
 	ld.w	$s0, $a4, 8
@@ -1645,7 +1653,7 @@ decrypt:                                # @decrypt
 	srli.d	$t7, $t7, 22
 	ldx.w	$t7, $a6, $t7
 	xor	$s0, $s1, $s0
-	xor	$s0, $s0, $s2
+	xor	$t2, $s2, $t2
 	xor	$t2, $s0, $t2
 	xor	$t7, $t2, $t7
 	and	$s0, $t7, $t6
@@ -1662,7 +1670,7 @@ decrypt:                                # @decrypt
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $a6, $t8
 	xor	$t2, $t4, $t2
-	xor	$t2, $t2, $t3
+	xor	$t1, $t3, $t1
 	xor	$t1, $t2, $t1
 	xor	$t4, $t1, $t8
 	and	$t3, $t4, $t6
@@ -1679,8 +1687,8 @@ decrypt:                                # @decrypt
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $a6, $fp
 	xor	$t1, $t2, $t1
-	xor	$t1, $t1, $t6
-	xor	$t1, $t1, $t8
+	xor	$t2, $t6, $t8
+	xor	$t1, $t1, $t2
 	xor	$t2, $t1, $fp
 	ld.w	$t1, $a4, 20
 	andi	$t6, $t5, 255
@@ -1695,8 +1703,8 @@ decrypt:                                # @decrypt
 	srli.d	$s0, $s0, 22
 	ldx.w	$s0, $a6, $s0
 	xor	$t1, $t6, $t1
-	xor	$t1, $t1, $t8
-	xor	$t1, $t1, $fp
+	xor	$t6, $t8, $fp
+	xor	$t1, $t1, $t6
 	xor	$t1, $t1, $s0
 	ld.w	$t6, $a4, 24
 	andi	$t8, $t7, 255
@@ -1711,7 +1719,7 @@ decrypt:                                # @decrypt
 	srli.d	$t3, $t3, 22
 	ldx.w	$t3, $a6, $t3
 	xor	$t6, $t8, $t6
-	xor	$t6, $t6, $fp
+	xor	$t0, $fp, $t0
 	xor	$t0, $t6, $t0
 	xor	$t3, $t0, $t3
 	ld.w	$t0, $a4, 28
@@ -1727,8 +1735,8 @@ decrypt:                                # @decrypt
 	srli.d	$a7, $a7, 22
 	ldx.w	$a6, $a6, $a7
 	xor	$a7, $t4, $t0
-	xor	$a2, $a7, $a2
 	xor	$a2, $a2, $a5
+	xor	$a2, $a7, $a2
 	xor	$t4, $a2, $a6
 	addi.d	$a4, $a4, 32
 .LBB2_7:
@@ -1755,8 +1763,8 @@ decrypt:                                # @decrypt
 	srli.d	$s2, $s2, 22
 	ldx.w	$s2, $t0, $s2
 	xor	$t5, $t6, $t5
-	xor	$t5, $t5, $t7
-	xor	$t5, $t5, $s1
+	xor	$t6, $t7, $s1
+	xor	$t5, $t5, $t6
 	xor	$t6, $t5, $s2
 	and	$t5, $t6, $a0
 	ld.w	$t7, $a4, 4
@@ -1772,8 +1780,8 @@ decrypt:                                # @decrypt
 	srli.d	$s0, $s0, 22
 	ldx.w	$s0, $t0, $s0
 	xor	$t7, $s1, $t7
-	xor	$t7, $t7, $s2
-	xor	$t7, $t7, $s3
+	xor	$s1, $s2, $s3
+	xor	$t7, $t7, $s1
 	xor	$t7, $t7, $s0
 	and	$s0, $t7, $a0
 	ld.w	$s1, $a4, 8
@@ -1789,7 +1797,7 @@ decrypt:                                # @decrypt
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $t0, $fp
 	xor	$s1, $s2, $s1
-	xor	$s1, $s1, $s3
+	xor	$t2, $s3, $t2
 	xor	$t2, $s1, $t2
 	xor	$t2, $t2, $fp
 	and	$fp, $t2, $a0
@@ -1806,8 +1814,8 @@ decrypt:                                # @decrypt
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $t0, $t8
 	xor	$t4, $t4, $s1
-	xor	$t3, $t4, $t3
 	xor	$t1, $t3, $t1
+	xor	$t1, $t4, $t1
 	xor	$s1, $t1, $t8
 	and	$t8, $s1, $a0
 	ld.w	$t1, $a4, 16
@@ -1823,8 +1831,8 @@ decrypt:                                # @decrypt
 	srli.d	$s0, $s0, 22
 	ldx.w	$s0, $t0, $s0
 	xor	$t1, $t3, $t1
-	xor	$t1, $t1, $t4
-	xor	$t1, $t1, $s2
+	xor	$t3, $t4, $s2
+	xor	$t1, $t1, $t3
 	xor	$t3, $t1, $s0
 	and	$t1, $t3, $a0
 	ld.w	$t4, $a4, 20
@@ -1840,8 +1848,8 @@ decrypt:                                # @decrypt
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $t0, $fp
 	xor	$t4, $s0, $t4
-	xor	$t4, $t4, $s2
-	xor	$t4, $t4, $s3
+	xor	$s0, $s2, $s3
+	xor	$t4, $t4, $s0
 	xor	$t4, $t4, $fp
 	and	$fp, $t4, $a0
 	ld.w	$s0, $a4, 24
@@ -1857,7 +1865,7 @@ decrypt:                                # @decrypt
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $t0, $t8
 	xor	$s0, $s2, $s0
-	xor	$s0, $s0, $s3
+	xor	$t6, $s3, $t6
 	xor	$t6, $s0, $t6
 	xor	$t8, $t6, $t8
 	and	$t6, $t8, $a0
@@ -1874,8 +1882,8 @@ decrypt:                                # @decrypt
 	srli.d	$t5, $t5, 22
 	ldx.w	$t5, $t0, $t5
 	xor	$s0, $s1, $s0
-	xor	$t2, $s0, $t2
 	xor	$t2, $t2, $t7
+	xor	$t2, $s0, $t2
 	xor	$s0, $t2, $t5
 	and	$t7, $s0, $a0
 	ld.w	$t2, $a4, 32
@@ -1891,8 +1899,8 @@ decrypt:                                # @decrypt
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $t0, $fp
 	xor	$t2, $t5, $t2
-	xor	$t2, $t2, $s1
-	xor	$t2, $t2, $s2
+	xor	$t5, $s1, $s2
+	xor	$t2, $t2, $t5
 	xor	$t5, $t2, $fp
 	and	$t2, $t5, $a0
 	ld.w	$fp, $a4, 36
@@ -1908,8 +1916,8 @@ decrypt:                                # @decrypt
 	srli.d	$t6, $t6, 22
 	ldx.w	$t6, $t0, $t6
 	xor	$fp, $s1, $fp
-	xor	$fp, $fp, $s2
-	xor	$fp, $fp, $s3
+	xor	$s1, $s2, $s3
+	xor	$fp, $fp, $s1
 	xor	$t6, $fp, $t6
 	and	$fp, $t6, $a0
 	ld.w	$s1, $a4, 40
@@ -1925,7 +1933,7 @@ decrypt:                                # @decrypt
 	srli.d	$t7, $t7, 22
 	ldx.w	$t7, $t0, $t7
 	xor	$s1, $s2, $s1
-	xor	$s1, $s1, $s3
+	xor	$t3, $s3, $t3
 	xor	$t3, $s1, $t3
 	xor	$t7, $t3, $t7
 	and	$s1, $t7, $a0
@@ -1942,7 +1950,7 @@ decrypt:                                # @decrypt
 	srli.d	$t1, $t1, 22
 	ldx.w	$t1, $t0, $t1
 	xor	$t3, $s0, $t3
-	xor	$t3, $t3, $t8
+	xor	$t4, $t8, $t4
 	xor	$t3, $t3, $t4
 	xor	$s0, $t3, $t1
 	and	$t8, $s0, $a0
@@ -1959,8 +1967,8 @@ decrypt:                                # @decrypt
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $t0, $fp
 	xor	$t1, $t3, $t1
-	xor	$t1, $t1, $t4
-	xor	$t1, $t1, $s2
+	xor	$t3, $t4, $s2
+	xor	$t1, $t1, $t3
 	xor	$t3, $t1, $fp
 	and	$t1, $t3, $a0
 	ld.w	$t4, $a4, 52
@@ -1976,8 +1984,8 @@ decrypt:                                # @decrypt
 	srli.d	$s1, $s1, 22
 	ldx.w	$s1, $t0, $s1
 	xor	$t4, $fp, $t4
-	xor	$t4, $t4, $s2
-	xor	$t4, $t4, $s3
+	xor	$fp, $s2, $s3
+	xor	$t4, $t4, $fp
 	xor	$t4, $t4, $s1
 	and	$fp, $t4, $a0
 	ld.w	$s1, $a4, 56
@@ -1993,7 +2001,7 @@ decrypt:                                # @decrypt
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $t0, $t8
 	xor	$s1, $s2, $s1
-	xor	$s1, $s1, $s3
+	xor	$t5, $s3, $t5
 	xor	$t5, $s1, $t5
 	xor	$t8, $t5, $t8
 	and	$s1, $t8, $a0
@@ -2010,7 +2018,7 @@ decrypt:                                # @decrypt
 	srli.d	$t2, $t2, 22
 	ldx.w	$t2, $t0, $t2
 	xor	$t5, $s0, $t5
-	xor	$t5, $t5, $t7
+	xor	$t6, $t7, $t6
 	xor	$t5, $t5, $t6
 	xor	$s0, $t5, $t2
 	and	$t7, $s0, $a0
@@ -2027,8 +2035,8 @@ decrypt:                                # @decrypt
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $t0, $fp
 	xor	$t2, $t5, $t2
-	xor	$t2, $t2, $t6
-	xor	$t2, $t2, $s2
+	xor	$t5, $t6, $s2
+	xor	$t2, $t2, $t5
 	xor	$t5, $t2, $fp
 	and	$t2, $t5, $a0
 	ld.w	$t6, $a4, 68
@@ -2044,8 +2052,8 @@ decrypt:                                # @decrypt
 	srli.d	$s1, $s1, 22
 	ldx.w	$s1, $t0, $s1
 	xor	$t6, $fp, $t6
-	xor	$t6, $t6, $s2
-	xor	$t6, $t6, $s3
+	xor	$fp, $s2, $s3
+	xor	$t6, $t6, $fp
 	xor	$t6, $t6, $s1
 	and	$fp, $t6, $a0
 	ld.w	$s1, $a4, 72
@@ -2061,7 +2069,7 @@ decrypt:                                # @decrypt
 	srli.d	$t7, $t7, 22
 	ldx.w	$t7, $t0, $t7
 	xor	$s1, $s2, $s1
-	xor	$s1, $s1, $s3
+	xor	$t3, $s3, $t3
 	xor	$t3, $s1, $t3
 	xor	$t7, $t3, $t7
 	and	$s1, $t7, $a0
@@ -2078,7 +2086,7 @@ decrypt:                                # @decrypt
 	srli.d	$t1, $t1, 22
 	ldx.w	$t1, $t0, $t1
 	xor	$t3, $s0, $t3
-	xor	$t3, $t3, $t8
+	xor	$t4, $t8, $t4
 	xor	$t3, $t3, $t4
 	xor	$s0, $t3, $t1
 	and	$t8, $s0, $a0
@@ -2095,8 +2103,8 @@ decrypt:                                # @decrypt
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $t0, $fp
 	xor	$t1, $t3, $t1
-	xor	$t1, $t1, $t4
-	xor	$t1, $t1, $s2
+	xor	$t3, $t4, $s2
+	xor	$t1, $t1, $t3
 	xor	$t3, $t1, $fp
 	and	$t1, $t3, $a0
 	ld.w	$t4, $a4, 84
@@ -2112,8 +2120,8 @@ decrypt:                                # @decrypt
 	srli.d	$s1, $s1, 22
 	ldx.w	$s1, $t0, $s1
 	xor	$t4, $fp, $t4
-	xor	$t4, $t4, $s2
-	xor	$t4, $t4, $s3
+	xor	$fp, $s2, $s3
+	xor	$t4, $t4, $fp
 	xor	$t4, $t4, $s1
 	and	$fp, $t4, $a0
 	ld.w	$s1, $a4, 88
@@ -2129,7 +2137,7 @@ decrypt:                                # @decrypt
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $t0, $t8
 	xor	$s1, $s2, $s1
-	xor	$s1, $s1, $s3
+	xor	$t5, $s3, $t5
 	xor	$t5, $s1, $t5
 	xor	$t8, $t5, $t8
 	and	$s1, $t8, $a0
@@ -2146,7 +2154,7 @@ decrypt:                                # @decrypt
 	srli.d	$t2, $t2, 22
 	ldx.w	$t2, $t0, $t2
 	xor	$t5, $s0, $t5
-	xor	$t5, $t5, $t7
+	xor	$t6, $t7, $t6
 	xor	$t5, $t5, $t6
 	xor	$s0, $t5, $t2
 	and	$t7, $s0, $a0
@@ -2163,8 +2171,8 @@ decrypt:                                # @decrypt
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $t0, $fp
 	xor	$t2, $t5, $t2
-	xor	$t2, $t2, $t6
-	xor	$t2, $t2, $s2
+	xor	$t5, $t6, $s2
+	xor	$t2, $t2, $t5
 	xor	$t5, $t2, $fp
 	and	$t2, $t5, $a0
 	ld.w	$t6, $a4, 100
@@ -2180,8 +2188,8 @@ decrypt:                                # @decrypt
 	srli.d	$s1, $s1, 22
 	ldx.w	$s1, $t0, $s1
 	xor	$t6, $fp, $t6
-	xor	$t6, $t6, $s2
-	xor	$t6, $t6, $s3
+	xor	$fp, $s2, $s3
+	xor	$t6, $t6, $fp
 	xor	$t6, $t6, $s1
 	and	$fp, $t6, $a0
 	ld.w	$s1, $a4, 104
@@ -2197,7 +2205,7 @@ decrypt:                                # @decrypt
 	srli.d	$t7, $t7, 22
 	ldx.w	$t7, $t0, $t7
 	xor	$s1, $s2, $s1
-	xor	$s1, $s1, $s3
+	xor	$t3, $s3, $t3
 	xor	$t3, $s1, $t3
 	xor	$t7, $t3, $t7
 	and	$s1, $t7, $a0
@@ -2214,7 +2222,7 @@ decrypt:                                # @decrypt
 	srli.d	$t1, $t1, 22
 	ldx.w	$t1, $t0, $t1
 	xor	$t3, $s0, $t3
-	xor	$t3, $t3, $t8
+	xor	$t4, $t8, $t4
 	xor	$t3, $t3, $t4
 	xor	$s0, $t3, $t1
 	and	$t8, $s0, $a0
@@ -2231,8 +2239,8 @@ decrypt:                                # @decrypt
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $t0, $fp
 	xor	$t1, $t3, $t1
-	xor	$t1, $t1, $t4
-	xor	$t1, $t1, $s2
+	xor	$t3, $t4, $s2
+	xor	$t1, $t1, $t3
 	xor	$t3, $t1, $fp
 	and	$t1, $t3, $a0
 	ld.w	$t4, $a4, 116
@@ -2248,8 +2256,8 @@ decrypt:                                # @decrypt
 	srli.d	$s1, $s1, 22
 	ldx.w	$s1, $t0, $s1
 	xor	$t4, $fp, $t4
-	xor	$t4, $t4, $s2
-	xor	$t4, $t4, $s3
+	xor	$fp, $s2, $s3
+	xor	$t4, $t4, $fp
 	xor	$t4, $t4, $s1
 	and	$fp, $t4, $a0
 	ld.w	$s1, $a4, 120
@@ -2265,7 +2273,7 @@ decrypt:                                # @decrypt
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $t0, $t8
 	xor	$s1, $s2, $s1
-	xor	$s1, $s1, $s3
+	xor	$t5, $s3, $t5
 	xor	$t5, $s1, $t5
 	xor	$t8, $t5, $t8
 	and	$s1, $t8, $a0
@@ -2282,7 +2290,7 @@ decrypt:                                # @decrypt
 	srli.d	$t2, $t2, 22
 	ldx.w	$t2, $t0, $t2
 	xor	$t5, $s0, $t5
-	xor	$t5, $t5, $t7
+	xor	$t6, $t7, $t6
 	xor	$t5, $t5, $t6
 	xor	$t7, $t5, $t2
 	and	$s0, $t7, $a0
@@ -2299,8 +2307,8 @@ decrypt:                                # @decrypt
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $t0, $fp
 	xor	$t2, $t5, $t2
-	xor	$t2, $t2, $t6
-	xor	$t2, $t2, $s2
+	xor	$t5, $t6, $s2
+	xor	$t2, $t2, $t5
 	xor	$t5, $t2, $fp
 	and	$t2, $t5, $a0
 	ld.w	$t6, $a4, 132
@@ -2316,8 +2324,8 @@ decrypt:                                # @decrypt
 	srli.d	$s1, $s1, 22
 	ldx.w	$s1, $t0, $s1
 	xor	$t6, $fp, $t6
-	xor	$t6, $t6, $s2
-	xor	$t6, $t6, $s3
+	xor	$fp, $s2, $s3
+	xor	$t6, $t6, $fp
 	xor	$t6, $t6, $s1
 	and	$fp, $t6, $a0
 	ld.w	$s1, $a4, 136
@@ -2333,7 +2341,7 @@ decrypt:                                # @decrypt
 	srli.d	$s0, $s0, 22
 	ldx.w	$s0, $t0, $s0
 	xor	$s1, $s2, $s1
-	xor	$s1, $s1, $s3
+	xor	$t3, $s3, $t3
 	xor	$t3, $s1, $t3
 	xor	$t3, $t3, $s0
 	and	$s0, $t3, $a0
@@ -2350,8 +2358,8 @@ decrypt:                                # @decrypt
 	srli.d	$t1, $t1, 22
 	ldx.w	$t0, $t0, $t1
 	xor	$a3, $a3, $s1
+	xor	$a6, $a6, $a7
 	xor	$a3, $a3, $a6
-	xor	$a3, $a3, $a7
 	xor	$a3, $a3, $t0
 	and	$a6, $a3, $a0
 	andi	$a0, $t5, 255
@@ -2413,11 +2421,11 @@ decrypt:                                # @decrypt
 	vinsgr2vr.w	$vr1, $fp, 1
 	vinsgr2vr.w	$vr1, $s3, 2
 	vinsgr2vr.w	$vr1, $a7, 3
-	vxor.v	$vr0, $vr0, $vr1
-	vinsgr2vr.w	$vr1, $t7, 0
-	vinsgr2vr.w	$vr1, $s1, 1
-	vinsgr2vr.w	$vr1, $t5, 2
-	vinsgr2vr.w	$vr1, $a2, 3
+	vinsgr2vr.w	$vr2, $t7, 0
+	vinsgr2vr.w	$vr2, $s1, 1
+	vinsgr2vr.w	$vr2, $t5, 2
+	vinsgr2vr.w	$vr2, $a2, 3
+	vxor.v	$vr1, $vr1, $vr2
 	vxor.v	$vr0, $vr0, $vr1
 	vinsgr2vr.w	$vr1, $a0, 0
 	vinsgr2vr.w	$vr1, $s0, 1
@@ -2427,12 +2435,14 @@ decrypt:                                # @decrypt
 .LBB2_8:
 	vst	$vr0, $a1, 0
 	ori	$a0, $zero, 1
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end2:
 	.size	decrypt, .Lfunc_end2-decrypt

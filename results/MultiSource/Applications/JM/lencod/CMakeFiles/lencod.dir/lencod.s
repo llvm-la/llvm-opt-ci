@@ -2113,8 +2113,8 @@ init_global_buffers:                    # @init_global_buffers
 	st.d	$a0, $a1, 0
 	beqz	$a0, .LBB6_2
 # %bb.1:
-	pcalau12i	$s2, %pc_hi20(active_sps)
-	ld.d	$a0, $s2, %pc_lo12(active_sps)
+	pcalau12i	$s3, %pc_hi20(active_sps)
+	ld.d	$a0, $s3, %pc_lo12(active_sps)
 	ld.w	$a0, $a0, 1148
 	bnez	$a0, .LBB6_5
 	b	.LBB6_3
@@ -2123,8 +2123,8 @@ init_global_buffers:                    # @init_global_buffers
 	addi.d	$a0, $a0, %pc_lo12(.L.str.202)
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
-	pcalau12i	$s2, %pc_hi20(active_sps)
-	ld.d	$a0, $s2, %pc_lo12(active_sps)
+	pcalau12i	$s3, %pc_hi20(active_sps)
+	ld.d	$a0, $s3, %pc_lo12(active_sps)
 	ld.w	$a0, $a0, 1148
 	bnez	$a0, .LBB6_5
 .LBB6_3:
@@ -2160,7 +2160,7 @@ init_global_buffers:                    # @init_global_buffers
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s1, %pc_lo12(img)
 	ldptr.w	$a2, $a1, 15352
-	add.d	$s3, $a0, $s0
+	add.d	$s4, $a0, $s0
 	bltz	$a2, .LBB6_8
 # %bb.6:
 	ld.d	$a0, $fp, 0
@@ -2181,8 +2181,8 @@ init_global_buffers:                    # @init_global_buffers
 	addi.d	$a0, $a0, 8
 	blt	$a3, $a4, .LBB6_7
 .LBB6_8:
-	pcalau12i	$s0, %pc_hi20(input)
-	ld.d	$a1, $s0, %pc_lo12(input)
+	pcalau12i	$s2, %pc_hi20(input)
+	ld.d	$a1, $s2, %pc_lo12(input)
 	ldptr.w	$a0, $a1, 2928
 	bnez	$a0, .LBB6_11
 # %bb.9:
@@ -2199,7 +2199,7 @@ init_global_buffers:                    # @init_global_buffers
 	ori	$a3, $zero, 3
 	pcaddu18i	$ra, %call36(get_mem3Dint)
 	jirl	$ra, $ra, 0
-	add.d	$fp, $a0, $s3
+	add.d	$s0, $a0, $s4
 	pcalau12i	$a0, %pc_hi20(wp_offset)
 	addi.d	$a0, $a0, %pc_lo12(wp_offset)
 	ori	$a1, $zero, 6
@@ -2207,7 +2207,7 @@ init_global_buffers:                    # @init_global_buffers
 	ori	$a3, $zero, 3
 	pcaddu18i	$ra, %call36(get_mem3Dint)
 	jirl	$ra, $ra, 0
-	add.d	$fp, $fp, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(wbp_weight)
 	addi.d	$a0, $a0, %pc_lo12(wbp_weight)
 	ori	$a1, $zero, 6
@@ -2216,8 +2216,9 @@ init_global_buffers:                    # @init_global_buffers
 	ori	$a4, $zero, 3
 	pcaddu18i	$ra, %call36(get_mem4Dint)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, %pc_lo12(input)
-	add.d	$s3, $fp, $a0
+	ld.d	$a1, $s2, %pc_lo12(input)
+	add.d	$a0, $fp, $a0
+	add.d	$s4, $s0, $a0
 .LBB6_12:
 	ldptr.w	$a0, $a1, 2096
 	bnez	$a0, .LBB6_14
@@ -2236,32 +2237,32 @@ init_global_buffers:                    # @init_global_buffers
 	ld.d	$a2, $s1, %pc_lo12(img)
 	ld.w	$a1, $a2, 76
 	ld.w	$a2, $a2, 60
-	add.d	$fp, $a0, $s3
+	add.d	$fp, $a0, $s4
 	pcalau12i	$a0, %pc_hi20(direct_pdir)
 	addi.d	$a0, $a0, %pc_lo12(direct_pdir)
 	pcaddu18i	$ra, %call36(get_mem2D)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, %pc_lo12(input)
-	add.d	$s3, $fp, $a0
+	ld.d	$a1, $s2, %pc_lo12(input)
+	add.d	$s4, $fp, $a0
 .LBB6_15:
 	ldptr.w	$a0, $a1, 4168
 	ori	$a2, $zero, 3
 	bne	$a0, $a2, .LBB6_22
 # %bb.16:
-	pcalau12i	$s4, %pc_hi20(decs)
-	ld.d	$a0, $s4, %pc_lo12(decs)
+	pcalau12i	$s5, %pc_hi20(decs)
+	ld.d	$a0, $s5, %pc_lo12(decs)
 	ori	$a1, $zero, 16
 	ori	$a2, $zero, 16
 	pcaddu18i	$ra, %call36(get_mem2Dint)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, %pc_lo12(input)
+	ld.d	$a1, $s2, %pc_lo12(input)
 	ldptr.w	$fp, $a1, 4728
-	add.d	$s3, $a0, $s3
+	add.d	$s0, $a0, $s4
 	ori	$a1, $zero, 8
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s4, %pc_lo12(decs)
+	ld.d	$a1, $s5, %pc_lo12(decs)
 	st.d	$a0, $a1, 16
 	bnez	$a0, .LBB6_18
 # %bb.17:
@@ -2269,7 +2270,7 @@ init_global_buffers:                    # @init_global_buffers
 	addi.d	$a0, $a0, %pc_lo12(.L.str.203)
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, %pc_lo12(input)
+	ld.d	$a0, $s2, %pc_lo12(input)
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 632
 	ldx.w	$fp, $a0, $a1
@@ -2277,10 +2278,10 @@ init_global_buffers:                    # @init_global_buffers
 	blez	$fp, .LBB6_21
 # %bb.19:
 	move	$fp, $zero
-	move	$s5, $zero
+	move	$s4, $zero
 	.p2align	4, , 16
 .LBB6_20:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s4, %pc_lo12(decs)
+	ld.d	$a0, $s5, %pc_lo12(decs)
 	ld.d	$a1, $s1, %pc_lo12(img)
 	ld.d	$a0, $a0, 16
 	ld.w	$a4, $a1, 32
@@ -2290,32 +2291,32 @@ init_global_buffers:                    # @init_global_buffers
 	addi.w	$a1, $a4, 1
 	pcaddu18i	$ra, %call36(get_mem3Dpel)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, %pc_lo12(input)
+	ld.d	$a1, $s2, %pc_lo12(input)
 	ldptr.w	$a1, $a1, 4728
-	add.d	$s3, $a0, $s3
-	addi.d	$s5, $s5, 1
+	add.d	$s0, $a0, $s0
+	addi.d	$s4, $s4, 1
 	addi.d	$fp, $fp, 8
-	blt	$s5, $a1, .LBB6_20
+	blt	$s4, $a1, .LBB6_20
 .LBB6_21:
-	ld.d	$a0, $s4, %pc_lo12(decs)
+	ld.d	$a0, $s5, %pc_lo12(decs)
 	addi.d	$a0, $a0, 32
 	ori	$a1, $zero, 4
 	ori	$a2, $zero, 4
 	pcaddu18i	$ra, %call36(get_mem2Dpel)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, %pc_lo12(input)
+	ld.d	$a1, $s2, %pc_lo12(input)
 	ld.d	$a3, $s1, %pc_lo12(img)
-	ld.d	$a4, $s4, %pc_lo12(decs)
+	ld.d	$a4, $s5, %pc_lo12(decs)
 	ldptr.w	$a1, $a1, 4728
 	ld.w	$a2, $a3, 68
 	ld.w	$a3, $a3, 52
-	add.d	$fp, $a0, $s3
+	move	$fp, $a0
 	addi.d	$a0, $a4, 8
 	pcaddu18i	$ra, %call36(get_mem3Dpel)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, %pc_lo12(input)
+	ld.d	$a1, $s2, %pc_lo12(input)
 	ld.d	$a3, $s1, %pc_lo12(img)
-	ld.d	$a4, $s4, %pc_lo12(decs)
+	ld.d	$a4, $s5, %pc_lo12(decs)
 	ldptr.w	$a1, $a1, 4728
 	ld.w	$a2, $a3, 68
 	ld.w	$a3, $a3, 52
@@ -2324,7 +2325,7 @@ init_global_buffers:                    # @init_global_buffers
 	pcaddu18i	$ra, %call36(get_mem3Dpel)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $s1, %pc_lo12(img)
-	ld.d	$a3, $s4, %pc_lo12(decs)
+	ld.d	$a3, $s5, %pc_lo12(decs)
 	ldptr.w	$a1, $a2, 15344
 	ldptr.w	$a2, $a2, 15336
 	add.d	$fp, $fp, $a0
@@ -2332,15 +2333,16 @@ init_global_buffers:                    # @init_global_buffers
 	pcaddu18i	$ra, %call36(get_mem2D)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $s1, %pc_lo12(img)
-	ld.d	$a3, $s4, %pc_lo12(decs)
+	ld.d	$a3, $s5, %pc_lo12(decs)
 	ldptr.w	$a1, $a2, 15344
 	ldptr.w	$a2, $a2, 15336
 	add.d	$fp, $fp, $a0
 	addi.d	$a0, $a3, 48
 	pcaddu18i	$ra, %call36(get_mem2D)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, %pc_lo12(input)
-	add.d	$s3, $fp, $a0
+	ld.d	$a1, $s2, %pc_lo12(input)
+	add.d	$a0, $fp, $a0
+	add.d	$s4, $a0, $s0
 .LBB6_22:
 	ldptr.w	$a0, $a1, 4732
 	beqz	$a0, .LBB6_24
@@ -2354,7 +2356,7 @@ init_global_buffers:                    # @init_global_buffers
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s1, %pc_lo12(img)
 	ld.w	$a2, $a1, 68
-	add.d	$fp, $a0, $s3
+	move	$fp, $a0
 	ld.w	$a0, $a1, 52
 	bstrpick.d	$a1, $a2, 62, 60
 	add.w	$a1, $a2, $a1
@@ -2366,9 +2368,10 @@ init_global_buffers:                    # @init_global_buffers
 	addi.d	$a0, $a0, %pc_lo12(refresh_map)
 	pcaddu18i	$ra, %call36(get_mem2D)
 	jirl	$ra, $ra, 0
-	add.d	$s3, $fp, $a0
+	add.d	$a0, $fp, $a0
+	add.d	$s4, $a0, $s4
 .LBB6_24:
-	ld.d	$a0, $s2, %pc_lo12(active_sps)
+	ld.d	$a0, $s3, %pc_lo12(active_sps)
 	ld.w	$a0, $a0, 1148
 	bnez	$a0, .LBB6_27
 # %bb.25:
@@ -2381,7 +2384,7 @@ init_global_buffers:                    # @init_global_buffers
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s1, %pc_lo12(img)
 	ldptr.w	$a2, $a1, 15536
-	add.d	$s3, $a0, $s3
+	add.d	$s4, $a0, $s4
 	beqz	$a2, .LBB6_27
 # %bb.26:
 	ld.w	$a2, $a1, 80
@@ -2391,9 +2394,9 @@ init_global_buffers:                    # @init_global_buffers
 	ori	$a1, $zero, 2
 	pcaddu18i	$ra, %call36(get_mem3Dpel)
 	jirl	$ra, $ra, 0
-	add.d	$s3, $a0, $s3
+	add.d	$s4, $a0, $s4
 .LBB6_27:
-	ld.d	$a0, $s0, %pc_lo12(input)
+	ld.d	$a0, $s2, %pc_lo12(input)
 	ldptr.w	$a0, $a0, 5244
 	ori	$a1, $zero, 3
 	beq	$a0, $a1, .LBB6_32
@@ -2417,9 +2420,9 @@ init_global_buffers:                    # @init_global_buffers
 	pcaddu18i	$ra, %call36(EPZSInit)
 	jirl	$ra, $ra, 0
 .LBB6_33:
-	add.d	$s3, $a0, $s3
+	add.d	$s4, $a0, $s4
 .LBB6_34:
-	ld.d	$a0, $s0, %pc_lo12(input)
+	ld.d	$a0, $s2, %pc_lo12(input)
 	ldptr.w	$a1, $a0, 5116
 	beqz	$a1, .LBB6_38
 # %bb.35:
@@ -2431,7 +2434,7 @@ init_global_buffers:                    # @init_global_buffers
 	addi.d	$a0, $a0, %pc_lo12(quadratic_RC)
 	pcaddu18i	$ra, %call36(rc_alloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, %pc_lo12(input)
+	ld.d	$a0, $s2, %pc_lo12(input)
 	ldptr.w	$a1, $a0, 2940
 	bnez	$a1, .LBB6_37
 # %bb.36:
@@ -2455,7 +2458,7 @@ init_global_buffers:                    # @init_global_buffers
 	addi.d	$a0, $a0, %pc_lo12(quadratic_RC_best)
 	pcaddu18i	$ra, %call36(rc_alloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, %pc_lo12(input)
+	ld.d	$a0, $s2, %pc_lo12(input)
 .LBB6_38:
 	ldptr.w	$a1, $a0, 5084
 	ld.d	$a2, $s1, %pc_lo12(img)
@@ -2467,9 +2470,9 @@ init_global_buffers:                    # @init_global_buffers
 	addi.d	$a0, $a0, %pc_lo12(imgY_tmp)
 	pcaddu18i	$ra, %call36(get_mem2Dpel)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, %pc_lo12(input)
+	ld.d	$a1, $s2, %pc_lo12(input)
 	ld.wu	$a2, $a1, 60
-	add.d	$s2, $a0, $s3
+	move	$fp, $a0
 	ld.wu	$a0, $a1, 56
 	srli.d	$a1, $a2, 31
 	add.w	$a1, $a2, $a1
@@ -2478,13 +2481,13 @@ init_global_buffers:                    # @init_global_buffers
 	add.w	$a0, $a0, $a2
 	srai.d	$a2, $a0, 1
 	pcalau12i	$a0, %pc_hi20(imgUV_tmp)
-	addi.d	$fp, $a0, %pc_lo12(imgUV_tmp)
-	move	$a0, $fp
+	addi.d	$s0, $a0, %pc_lo12(imgUV_tmp)
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(get_mem2Dpel)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, %pc_lo12(input)
+	ld.d	$a1, $s2, %pc_lo12(input)
 	ld.wu	$a2, $a1, 60
-	add.d	$s0, $s2, $a0
+	add.d	$fp, $fp, $a0
 	ld.wu	$a0, $a1, 56
 	srli.d	$a1, $a2, 31
 	add.w	$a1, $a2, $a1
@@ -2492,11 +2495,12 @@ init_global_buffers:                    # @init_global_buffers
 	srli.d	$a2, $a0, 31
 	add.w	$a0, $a0, $a2
 	srai.d	$a2, $a0, 1
-	addi.d	$a0, $fp, 8
+	addi.d	$a0, $s0, 8
 	pcaddu18i	$ra, %call36(get_mem2Dpel)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $s1, %pc_lo12(img)
-	add.d	$s3, $s0, $a0
+	add.d	$a0, $fp, $a0
+	add.d	$s4, $a0, $s4
 .LBB6_40:
 	ld.w	$a1, $a2, 72
 	ld.w	$a2, $a2, 56
@@ -2505,7 +2509,7 @@ init_global_buffers:                    # @init_global_buffers
 	pcaddu18i	$ra, %call36(get_mem2Dint)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s1, %pc_lo12(img)
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s4
 	ld.w	$a2, $a1, 52
 	ld.w	$a1, $a1, 64
 	pcalau12i	$a3, %pc_hi20(img_pad_size_uv_x)
@@ -3828,93 +3832,91 @@ process_2nd_IGOP:                       # @process_2nd_IGOP
 	.type	report,@function
 report:                                 # @report
 # %bb.0:
-	addi.d	$sp, $sp, -1856
-	st.d	$ra, $sp, 1848                  # 8-byte Folded Spill
-	st.d	$fp, $sp, 1840                  # 8-byte Folded Spill
-	st.d	$s0, $sp, 1832                  # 8-byte Folded Spill
-	st.d	$s1, $sp, 1824                  # 8-byte Folded Spill
-	st.d	$s2, $sp, 1816                  # 8-byte Folded Spill
-	st.d	$s3, $sp, 1808                  # 8-byte Folded Spill
-	st.d	$s4, $sp, 1800                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1792                  # 8-byte Folded Spill
-	st.d	$s6, $sp, 1784                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1776                  # 8-byte Folded Spill
-	st.d	$s8, $sp, 1768                  # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 1760                 # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 1752                 # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 1744                 # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 1736                 # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 1728                 # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 1720                 # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 1712                 # 8-byte Folded Spill
+	addi.d	$sp, $sp, -1888
+	st.d	$ra, $sp, 1880                  # 8-byte Folded Spill
+	st.d	$fp, $sp, 1872                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 1864                  # 8-byte Folded Spill
+	st.d	$s1, $sp, 1856                  # 8-byte Folded Spill
+	st.d	$s2, $sp, 1848                  # 8-byte Folded Spill
+	st.d	$s3, $sp, 1840                  # 8-byte Folded Spill
+	st.d	$s4, $sp, 1832                  # 8-byte Folded Spill
+	st.d	$s5, $sp, 1824                  # 8-byte Folded Spill
+	st.d	$s6, $sp, 1816                  # 8-byte Folded Spill
+	st.d	$s7, $sp, 1808                  # 8-byte Folded Spill
+	st.d	$s8, $sp, 1800                  # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 1792                 # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 1784                 # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 1776                 # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 1768                 # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 1760                 # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 1752                 # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 1744                 # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(frame_ctr)
-	addi.d	$a6, $a0, %pc_lo12(frame_ctr)
-	pcalau12i	$s3, %pc_hi20(stats)
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	addi.d	$s4, $a0, %pc_lo12(frame_ctr)
+	pcalau12i	$s8, %pc_hi20(stats)
+	ld.d	$a0, $s8, %pc_lo12(stats)
+	ld.w	$a4, $s4, 4
 	ld.d	$a1, $a0, 1360
-	ld.d	$a2, $a0, 1368
-	ld.w	$a5, $a6, 4
-	add.d	$s0, $a1, $a2
-	ld.d	$a1, $a0, 1376
-	st.d	$a1, $sp, 320                   # 8-byte Folded Spill
-	ld.d	$s6, $a0, 1384
-	ld.d	$a1, $a0, 1392
-	st.d	$a1, $sp, 344                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1400
-	st.d	$a1, $sp, 360                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1408
-	st.d	$a1, $sp, 384                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1416
-	st.d	$a1, $sp, 424                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1424
-	st.d	$a1, $sp, 440                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1432
-	st.d	$a1, $sp, 456                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1440
-	st.d	$a1, $sp, 480                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1448
-	st.d	$a1, $sp, 496                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1456
-	st.d	$a1, $sp, 504                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1464
-	st.d	$a1, $sp, 512                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1472
 	st.d	$a1, $sp, 520                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 2040
-	st.d	$a1, $sp, 552                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 2000
+	ld.d	$a1, $a0, 1368
+	st.d	$a1, $sp, 512                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1376
+	st.d	$a1, $sp, 504                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1384
+	st.d	$a1, $sp, 496                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1392
+	st.d	$a1, $sp, 488                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1400
+	st.d	$a1, $sp, 480                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1408
 	st.d	$a1, $sp, 568                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1416
+	st.d	$a1, $sp, 472                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1424
+	st.d	$a1, $sp, 464                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1432
+	st.d	$a1, $sp, 552                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1440
+	st.d	$a1, $sp, 632                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1448
+	st.d	$a1, $sp, 456                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1456
+	st.d	$a1, $sp, 448                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1464
+	st.d	$a1, $sp, 544                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1472
+	st.d	$a1, $sp, 624                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 2040
+	st.d	$a1, $sp, 656                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 2000
+	st.d	$a1, $sp, 440                   # 8-byte Folded Spill
 	ldptr.d	$a1, $a0, 2080
-	st.d	$a1, $sp, 584                   # 8-byte Folded Spill
-	ldptr.d	$a1, $a0, 2120
-	st.d	$a1, $sp, 616                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1600
-	ld.d	$a2, $a0, 1608
-	pcalau12i	$s4, %pc_hi20(img)
-	ld.d	$a3, $s4, %pc_lo12(img)
-	pcalau12i	$s1, %pc_hi20(input)
-	ld.d	$a4, $s1, %pc_lo12(input)
-	add.d	$a1, $a1, $a2
-	st.d	$a1, $sp, 312                   # 8-byte Folded Spill
-	ld.w	$a1, $a0, 700
-	fld.s	$fa0, $a3, 48
-	ld.w	$a2, $a4, 20
-	ldptr.d	$a3, $a0, 2160
-	st.d	$a3, $sp, 608                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 432                   # 8-byte Folded Spill
+	pcalau12i	$s5, %pc_hi20(img)
+	ld.d	$a1, $s5, %pc_lo12(img)
+	pcalau12i	$s3, %pc_hi20(input)
+	ld.d	$a2, $s3, %pc_lo12(input)
+	ldptr.d	$a3, $a0, 2120
+	st.d	$a3, $sp, 528                   # 8-byte Folded Spill
+	ld.w	$a3, $a0, 700
+	fld.s	$fa0, $a1, 48
+	ld.w	$a1, $a2, 20
+	ldptr.d	$a5, $a0, 2160
+	st.d	$a5, $sp, 600                   # 8-byte Folded Spill
+	addi.d	$a3, $a3, 1
+	movgr2fr.w	$fa1, $a3
 	addi.d	$a1, $a1, 1
-	movgr2fr.w	$fa1, $a1
-	addi.d	$a1, $a2, 1
 	movgr2fr.w	$fa2, $a1
 	ld.d	$a1, $a0, 720
-	ldptr.d	$a2, $a0, 2200
-	st.d	$a2, $sp, 640                   # 8-byte Folded Spill
+	ldptr.d	$a3, $a0, 2200
+	st.d	$a3, $sp, 616                   # 8-byte Folded Spill
 	ffint.s.w	$fa1, $fa1
-	ld.w	$a2, $a4, 8
+	ld.w	$a2, $a2, 8
 	movgr2fr.d	$fa3, $a1
 	ld.d	$a1, $a0, 728
 	fmul.s	$fa0, $fa0, $fa1
-	st.d	$a5, $sp, 624                   # 8-byte Folded Spill
-	add.d	$a2, $a2, $a5
+	st.d	$a4, $sp, 640                   # 8-byte Folded Spill
+	add.d	$a2, $a2, $a4
 	movgr2fr.w	$fa1, $a2
 	movgr2fr.d	$fa4, $a1
 	ld.d	$a1, $a0, 736
@@ -3924,92 +3926,97 @@ report:                                 # @report
 	fdiv.s	$fa0, $fa0, $fa2
 	movgr2fr.d	$fa2, $a1
 	ld.d	$a1, $a0, 1480
-	st.d	$a1, $sp, 296                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 272                   # 8-byte Folded Spill
 	ffint.s.l	$fa3, $fa3
 	fmul.s	$fa3, $fa0, $fa3
 	ffint.s.w	$fa1, $fa1
 	fdiv.s	$fa3, $fa3, $fa1
 	ld.d	$a1, $a0, 1488
-	st.d	$a1, $sp, 288                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1496
-	st.d	$a1, $sp, 280                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1504
-	st.d	$a1, $sp, 272                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1512
-	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1520
-	st.d	$a1, $sp, 256                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1528
-	st.d	$a1, $sp, 248                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1536
 	st.d	$a1, $sp, 240                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1544
+	ld.d	$a1, $a0, 1496
 	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1504
+	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1512
+	st.d	$a1, $sp, 200                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1520
+	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1528
+	st.d	$a1, $sp, 256                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1536
+	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1544
+	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 1552
 	st.d	$a1, $sp, 224                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 1560
-	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 1568
-	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 1576
-	st.d	$a1, $sp, 200                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 1584
-	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1592
-	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
-	ldptr.d	$a1, $a0, 2048
-	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 2008
-	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
-	ldptr.d	$a1, $a0, 2088
 	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1592
+	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
+	ldptr.d	$a1, $a0, 2048
+	st.d	$a1, $sp, 248                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 2008
+	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	ldptr.d	$a1, $a0, 2088
+	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
 	ldptr.d	$a1, $a0, 2128
-	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
 	ldptr.d	$a1, $a0, 2168
 	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
 	ldptr.d	$a1, $a0, 2208
-	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 1968
-	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1616
-	st.d	$a1, $sp, 304                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1624
-	st.d	$a1, $sp, 328                   # 8-byte Folded Spill
-	ld.d	$s8, $a0, 1632
-	ld.d	$a1, $a0, 1640
-	st.d	$a1, $sp, 336                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1648
-	st.d	$a1, $sp, 352                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1656
-	st.d	$a1, $sp, 376                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1664
+	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1600
 	st.d	$a1, $sp, 392                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1608
+	st.d	$a1, $sp, 384                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1616
+	st.d	$a1, $sp, 376                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1624
+	st.d	$a1, $sp, 368                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1632
+	st.d	$a1, $sp, 360                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1640
+	st.d	$a1, $sp, 352                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1648
+	st.d	$a1, $sp, 424                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1656
+	st.d	$a1, $sp, 344                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1664
+	st.d	$a1, $sp, 336                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 1672
 	st.d	$a1, $sp, 416                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 1680
-	st.d	$a1, $sp, 432                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1688
-	st.d	$a1, $sp, 448                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1696
-	st.d	$a1, $sp, 464                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1704
-	st.d	$a1, $sp, 472                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 1712
-	st.d	$a1, $sp, 488                   # 8-byte Folded Spill
-	ldptr.d	$a1, $a0, 2056
-	st.d	$a1, $sp, 528                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 2016
-	st.d	$a1, $sp, 544                   # 8-byte Folded Spill
-	ldptr.d	$a1, $a0, 2096
-	st.d	$a1, $sp, 560                   # 8-byte Folded Spill
-	ldptr.d	$a1, $a0, 2136
 	st.d	$a1, $sp, 576                   # 8-byte Folded Spill
-	ldptr.d	$a1, $a0, 2176
+	ld.d	$a1, $a0, 1688
+	st.d	$a1, $sp, 328                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1696
+	st.d	$a1, $sp, 320                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1704
+	st.d	$a1, $sp, 408                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 1712
+	st.d	$a1, $sp, 560                   # 8-byte Folded Spill
+	ldptr.d	$a1, $a0, 2056
 	st.d	$a1, $sp, 592                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 2016
+	st.d	$a1, $sp, 312                   # 8-byte Folded Spill
+	ldptr.d	$a1, $a0, 2096
+	st.d	$a1, $sp, 304                   # 8-byte Folded Spill
+	ldptr.d	$a1, $a0, 2136
+	st.d	$a1, $sp, 400                   # 8-byte Folded Spill
+	ldptr.d	$a1, $a0, 2176
+	st.d	$a1, $sp, 536                   # 8-byte Folded Spill
 	ldptr.d	$a1, $a0, 2216
-	st.d	$a1, $sp, 600                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 584                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 1976
-	st.d	$a1, $sp, 632                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 608                   # 8-byte Folded Spill
 	fst.s	$fa3, $a0, 744
 	ffint.s.l	$fa3, $fa4
 	fmul.s	$fa3, $fa0, $fa3
@@ -4017,37 +4024,36 @@ report:                                 # @report
 	fst.s	$fa3, $a0, 748
 	ffint.s.l	$fa2, $fa2
 	fmul.s	$fa0, $fa0, $fa2
-	ld.w	$a1, $a6, 8
-	st.d	$a1, $sp, 536                   # 8-byte Folded Spill
-	ld.w	$a1, $a6, 0
-	st.d	$a1, $sp, 408                   # 8-byte Folded Spill
-	st.d	$a6, $sp, 656                   # 8-byte Folded Spill
-	ld.w	$a1, $a6, 12
-	st.d	$a1, $sp, 400                   # 8-byte Folded Spill
+	ld.w	$a1, $s4, 8
+	st.d	$a1, $sp, 296                   # 8-byte Folded Spill
+	ld.w	$a1, $s4, 0
+	st.d	$a1, $sp, 288                   # 8-byte Folded Spill
+	ld.w	$a1, $s4, 12
+	st.d	$a1, $sp, 280                   # 8-byte Folded Spill
 	fdiv.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $a0, 752
 	ori	$s2, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(stdout)
-	ld.d	$s7, $a0, %got_pc_lo12(stdout)
-	ld.d	$a3, $s7, 0
+	ld.d	$s0, $a0, %got_pc_lo12(stdout)
+	ld.d	$a3, $s0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.30)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.30)
 	ori	$a1, $zero, 80
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a1, $a0, 5112
 	pcalau12i	$a2, %pc_hi20(DistortionType)
-	addi.d	$s5, $a2, %pc_lo12(DistortionType)
-	st.d	$s4, $sp, 664                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 368                   # 8-byte Folded Spill
+	addi.d	$s6, $a2, %pc_lo12(DistortionType)
+	st.d	$s3, $sp, 672                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 696                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 664                   # 8-byte Folded Spill
 	beqz	$a1, .LBB14_59
 # %bb.1:
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	ld.d	$a1, $s4, %pc_lo12(img)
+	ld.d	$a1, $s5, %pc_lo12(img)
 	ld.w	$a2, $a0, 20
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	fld.s	$fa0, $a1, 48
 	addi.d	$a1, $a2, 1
 	movgr2fr.w	$fa1, $a1
@@ -4059,48 +4065,48 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.31)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a1, $a0, 5780
-	ld.d	$a0, $s7, 0
-	ori	$s0, $zero, 20
-	mul.d	$a1, $a1, $s0
-	add.d	$a3, $s5, $a1
+	ld.d	$a0, $s0, 0
+	ori	$s1, $zero, 20
+	mul.d	$a1, $a1, $s1
+	add.d	$a3, $s6, $a1
 	pcalau12i	$a1, %pc_hi20(.L.str.32)
 	addi.d	$fp, $a1, %pc_lo12(.L.str.32)
 	move	$a1, $fp
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a1, $a0, 5784
-	ld.d	$a0, $s7, 0
-	mul.d	$a1, $a1, $s0
-	add.d	$a3, $s5, $a1
+	ld.d	$a0, $s0, 0
+	mul.d	$a1, $a1, $s1
+	add.d	$a3, $s6, $a1
 	ori	$a2, $zero, 1
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a1, $a0, 5788
-	ld.d	$a0, $s7, 0
-	mul.d	$a1, $a1, $s0
-	add.d	$a3, $s5, $a1
+	ld.d	$a0, $s0, 0
+	mul.d	$a1, $a1, $s1
+	add.d	$a3, $s6, $a1
 	ori	$a2, $zero, 2
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a1, $a0, 5792
-	ld.d	$a0, $s7, 0
-	mul.d	$a1, $a1, $s0
-	add.d	$a2, $s5, $a1
+	ld.d	$a0, $s0, 0
+	mul.d	$a1, $a1, $s1
+	add.d	$a2, $s6, $a1
 	pcalau12i	$a1, %pc_hi20(.L.str.33)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.33)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a0, $a0, 5776
-	ld.d	$a3, $s7, 0
+	ld.d	$a3, $s0, 0
 	bne	$a0, $s2, .LBB14_3
 # %bb.2:
 	pcalau12i	$a0, %pc_hi20(.L.str.34)
@@ -4115,18 +4121,17 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
-	ld.d	$a0, $s7, 0
+	ld.d	$a1, $s3, %pc_lo12(input)
+	ld.d	$a0, $s0, 0
 	ld.w	$a2, $a1, 56
 	ld.w	$a3, $a1, 60
 	pcalau12i	$a1, %pc_hi20(.L.str.36)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.36)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ld.w	$a0, $a0, 68
-	ld.d	$a3, $s7, 0
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a3, $s0, 0
 	beqz	$a0, .LBB14_6
 # %bb.5:
 	pcalau12i	$a0, %pc_hi20(.L.str.37)
@@ -4141,23 +4146,23 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
-	ld.d	$a0, $s7, 0
+	ld.d	$a1, $s3, %pc_lo12(input)
+	ld.d	$a0, $s0, 0
 	ld.w	$a2, $a1, 28
 	pcalau12i	$a1, %pc_hi20(.L.str.39)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.39)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
-	ld.d	$a0, $s7, 0
+	ld.d	$a1, $s3, %pc_lo12(input)
+	ld.d	$a0, $s0, 0
 	ld.w	$a2, $a1, 32
 	pcalau12i	$a1, %pc_hi20(.L.str.40)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.40)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s3, %pc_lo12(input)
 	ld.w	$a2, $a1, 36
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	bnez	$a2, .LBB14_9
 # %bb.8:
 	ld.w	$a2, $a1, 32
@@ -4166,13 +4171,13 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.41)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s8, %pc_lo12(stats)
 	ld.w	$a0, $a0, 700
 	beqz	$a0, .LBB14_15
 # %bb.10:
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s3, %pc_lo12(input)
 	ld.w	$a2, $a1, 40
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	bnez	$a2, .LBB14_12
 # %bb.11:
 	ld.w	$a2, $a1, 32
@@ -4181,9 +4186,9 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.42)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s3, %pc_lo12(input)
 	ld.w	$a2, $a1, 44
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	bnez	$a2, .LBB14_14
 # %bb.13:
 	ld.w	$a2, $a1, 32
@@ -4193,22 +4198,22 @@ report:                                 # @report
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 .LBB14_15:
-	ld.d	$a3, $s7, 0
+	ld.d	$a3, $s0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.44)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.44)
 	ori	$a1, $zero, 36
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $s3, %pc_lo12(stats)
+	ld.d	$s2, $s8, %pc_lo12(stats)
 	ld.w	$a0, $s2, 700
 	blez	$a0, .LBB14_18
 # %bb.16:
-	ld.d	$fp, $s1, %pc_lo12(input)
+	ld.d	$fp, $s3, %pc_lo12(input)
 	ldptr.w	$a0, $fp, 2968
 	beqz	$a0, .LBB14_21
 # %bb.17:
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	ld.w	$a2, $fp, 12
 	ld.w	$a3, $fp, 16
 	ldptr.w	$a4, $fp, 2104
@@ -4218,13 +4223,13 @@ report:                                 # @report
 	jirl	$ra, $ra, 0
 	b	.LBB14_31
 .LBB14_18:
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s3, %pc_lo12(input)
 	bnez	$a0, .LBB14_20
 # %bb.19:
 	ldptr.w	$a0, $a1, 2136
 	beqz	$a0, .LBB14_142
 .LBB14_20:
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	ld.w	$a2, $a1, 12
 	ld.w	$a3, $a1, 16
 	ldptr.w	$a4, $a1, 2140
@@ -4235,88 +4240,86 @@ report:                                 # @report
 	jirl	$ra, $ra, 0
 	b	.LBB14_31
 .LBB14_21:
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
 	ld.w	$a0, $s2, 700
 	ori	$a1, $zero, 73
-	st.h	$a1, $sp, 672
+	st.h	$a1, $sp, 704
 	pcalau12i	$a1, %pc_hi20(.L.str.47)
-	addi.d	$s5, $a1, %pc_lo12(.L.str.47)
+	addi.d	$s4, $a1, %pc_lo12(.L.str.47)
 	pcalau12i	$a1, %pc_hi20(.L.str.48)
-	addi.d	$s4, $a1, %pc_lo12(.L.str.48)
+	addi.d	$s5, $a1, %pc_lo12(.L.str.48)
 	blez	$a0, .LBB14_24
 # %bb.22:
-	move	$s0, $zero
-	ori	$s8, $zero, 79
+	move	$s1, $zero
+	ori	$s3, $zero, 79
 	.p2align	4, , 16
 .LBB14_23:                              # =>This Inner Loop Header: Depth=1
 	ldptr.w	$a0, $fp, 2964
-	sltui	$s6, $a0, 1
-	addi.d	$a0, $sp, 672
+	sltui	$s7, $a0, 1
+	addi.d	$a0, $sp, 704
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	sub.w	$a0, $s8, $a0
+	sub.w	$a0, $s3, $a0
 	srai.d	$a1, $a0, 63
 	andn	$a2, $a0, $a1
-	masknez	$a0, $s5, $s6
-	maskeqz	$a1, $s4, $s6
+	masknez	$a0, $s4, $s7
+	maskeqz	$a1, $s5, $s7
 	or	$a1, $a1, $a0
-	addi.d	$a0, $sp, 672
+	addi.d	$a0, $sp, 704
 	pcaddu18i	$ra, %call36(strncat)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 700
-	addi.w	$s0, $s0, 1
-	blt	$s0, $a0, .LBB14_23
+	addi.w	$s1, $s1, 1
+	blt	$s1, $a0, .LBB14_23
 .LBB14_24:
-	addi.d	$a0, $sp, 672
+	addi.d	$a0, $sp, 704
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	ori	$s0, $zero, 79
-	sub.w	$a0, $s0, $a0
+	ori	$s1, $zero, 79
+	sub.w	$a0, $s1, $a0
 	srai.d	$a1, $a0, 63
 	andn	$a2, $a0, $a1
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.49)
-	addi.d	$a0, $sp, 672
+	addi.d	$a0, $sp, 704
 	pcaddu18i	$ra, %call36(strncat)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 700
 	blez	$a0, .LBB14_27
 # %bb.25:
-	move	$s8, $zero
+	move	$s3, $zero
 	.p2align	4, , 16
 .LBB14_26:                              # =>This Inner Loop Header: Depth=1
 	ldptr.w	$a0, $fp, 2964
-	sltui	$s6, $a0, 1
-	addi.d	$a0, $sp, 672
+	sltui	$s7, $a0, 1
+	addi.d	$a0, $sp, 704
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	sub.w	$a0, $s0, $a0
+	sub.w	$a0, $s1, $a0
 	srai.d	$a1, $a0, 63
 	andn	$a2, $a0, $a1
-	masknez	$a0, $s5, $s6
-	maskeqz	$a1, $s4, $s6
+	masknez	$a0, $s4, $s7
+	maskeqz	$a1, $s5, $s7
 	or	$a1, $a1, $a0
-	addi.d	$a0, $sp, 672
+	addi.d	$a0, $sp, 704
 	pcaddu18i	$ra, %call36(strncat)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 700
-	addi.w	$s8, $s8, 1
-	blt	$s8, $a0, .LBB14_26
+	addi.w	$s3, $s3, 1
+	blt	$s3, $a0, .LBB14_26
 .LBB14_27:
-	addi.d	$a0, $sp, 672
+	addi.d	$a0, $sp, 704
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	sub.w	$a0, $s0, $a0
+	sub.w	$a0, $s1, $a0
 	srai.d	$a1, $a0, 63
 	andn	$a2, $a0, $a1
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.49)
-	addi.d	$a0, $sp, 672
+	addi.d	$a0, $sp, 704
 	pcaddu18i	$ra, %call36(strncat)
 	jirl	$ra, $ra, 0
 	ldptr.w	$a1, $fp, 2964
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	ld.w	$a3, $fp, 12
 	ld.w	$a4, $fp, 16
 	ldptr.w	$a5, $fp, 2104
@@ -4339,17 +4342,17 @@ report:                                 # @report
 	pcalau12i	$a1, %pc_hi20(.L.str.51)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.51)
 .LBB14_30:
-	addi.d	$a2, $sp, 672
+	addi.d	$a2, $sp, 704
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$s4, $sp, 664                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 672                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 696                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 664                   # 8-byte Folded Reload
 .LBB14_31:
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ori	$s2, $zero, 1
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a0, $a0, 4008
-	ld.d	$a3, $s7, 0
+	ld.d	$a3, $s0, 0
 	sltui	$a0, $a0, 1
 	pcalau12i	$a1, %pc_hi20(.L.str.55)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.55)
@@ -4362,17 +4365,17 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
-	ld.d	$a0, $s7, 0
+	ld.d	$a1, $s3, %pc_lo12(input)
+	ld.d	$a0, $s0, 0
 	ld.w	$a2, $a1, 0
 	ld.w	$a3, $a1, 4
 	pcalau12i	$a1, %pc_hi20(.L.str.56)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.56)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a0, $a0, 5244
-	ld.d	$a3, $s7, 0
+	ld.d	$a3, $s0, 0
 	ori	$a1, $zero, 3
 	bltu	$a1, $a0, .LBB14_37
 # %bb.32:
@@ -4399,7 +4402,7 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(EPZSOutputStats)
 	jirl	$ra, $ra, 0
@@ -4418,9 +4421,9 @@ report:                                 # @report
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 .LBB14_39:
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a0, $a0, 4140
-	ld.d	$a3, $s7, 0
+	ld.d	$a3, $s0, 0
 	ori	$a1, $zero, 1
 	beq	$a0, $a1, .LBB14_42
 # %bb.40:
@@ -4444,9 +4447,9 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a0, $a0, 4168
-	ld.d	$a3, $s7, 0
+	ld.d	$a3, $s0, 0
 	beqz	$a0, .LBB14_46
 # %bb.45:
 	pcalau12i	$a0, %pc_hi20(.L.str.65)
@@ -4461,9 +4464,9 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a0, $a0, 4016
-	ld.d	$a3, $s7, 0
+	ld.d	$a3, $s0, 0
 	ori	$a1, $zero, 1
 	beq	$a0, $a1, .LBB14_50
 # %bb.48:
@@ -4486,9 +4489,9 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a0, $a0, 4012
-	ld.d	$a3, $s7, 0
+	ld.d	$a3, $s0, 0
 	ori	$a1, $zero, 1
 	beq	$a0, $a1, .LBB14_56
 # %bb.54:
@@ -4512,21 +4515,16 @@ report:                                 # @report
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 .LBB14_59:
-	ld.d	$a3, $s7, 0
-	ld.d	$a0, $sp, 320                   # 8-byte Folded Reload
-	add.d	$fp, $s0, $a0
-	ld.d	$a0, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
-	add.d	$s0, $a0, $a1
+	ld.d	$a3, $s0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.73)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.73)
 	ori	$a1, $zero, 80
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a1, $a0, 5112
-	pcalau12i	$s5, %pc_hi20(snr)
+	pcalau12i	$s7, %pc_hi20(snr)
 	beqz	$a1, .LBB14_61
 # %bb.60:
 	ld.w	$a1, $a0, 60
@@ -4536,30 +4534,22 @@ report:                                 # @report
 	ori	$a3, $a2, 1168
 	ldx.w	$a3, $a0, $a3
 	ori	$a2, $a2, 1172
-	ld.d	$a4, $s4, %pc_lo12(img)
+	ld.d	$a4, $s5, %pc_lo12(img)
 	ldx.w	$a0, $a0, $a2
 	lu12i.w	$a2, 3
 	ori	$a5, $a2, 3232
 	ldx.w	$a5, $a4, $a5
 	ori	$a2, $a2, 3236
 	ldx.w	$a2, $a4, $a2
-	mul.d	$a0, $a0, $a3
-	st.d	$a0, $sp, 320                   # 8-byte Folded Spill
+	mul.d	$s1, $a0, $a3
 	mul.d	$a0, $a5, $a5
 	bstrpick.d	$a0, $a0, 31, 0
 	mul.d	$a2, $a2, $a2
-	ld.d	$s2, $s5, %pc_lo12(snr)
-	move	$s4, $s1
-	move	$s1, $s3
-	move	$s3, $s0
-	move	$s0, $fp
-	move	$fp, $s8
-	move	$s8, $s5
-	move	$s5, $s6
-	bstrpick.d	$s6, $a2, 31, 0
+	ld.d	$fp, $s7, %pc_lo12(snr)
+	bstrpick.d	$s2, $a2, 31, 0
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fa0, $fa0
-	fld.s	$fa1, $s2, 108
+	fld.s	$fa1, $fp, 108
 	movgr2fr.w	$fs0, $a1
 	ffint.d.w	$fa2, $fs0
 	movgr2fr.w	$fs3, $zero
@@ -4574,19 +4564,11 @@ report:                                 # @report
 	vldi	$vr1, -988
 	fmul.d	$fa0, $fa0, $fa1
 	fcvt.s.d	$fs2, $fa0
-	movgr2fr.d	$fa0, $s6
-	move	$s6, $s5
-	move	$s5, $s8
-	move	$s8, $fp
-	move	$fp, $s0
-	move	$s0, $s3
-	move	$s3, $s1
-	move	$s1, $s4
-	fld.s	$fa1, $s2, 112
+	movgr2fr.d	$fa0, $s2
+	ori	$s2, $zero, 1
+	fld.s	$fa1, $fp, 112
 	ffint.d.l	$fs5, $fa0
-	ld.d	$a0, $sp, 320                   # 8-byte Folded Reload
-	movgr2fr.w	$fs1, $a0
-	ld.d	$s4, $sp, 664                   # 8-byte Folded Reload
+	movgr2fr.w	$fs1, $s1
 	ffint.d.w	$fs6, $fs1
 	fcmp.ceq.s	$fcc0, $fa1, $fs3
 	fcvt.d.s	$fa0, $fa1
@@ -4596,7 +4578,7 @@ report:                                 # @report
 	fmul.d	$fa0, $fa0, $fs5
 	pcaddu18i	$ra, %call36(log10)
 	jirl	$ra, $ra, 0
-	fld.s	$fa1, $s2, 116
+	fld.s	$fa1, $fp, 116
 	vldi	$vr2, -988
 	fmul.d	$fa0, $fa0, $fa2
 	fcvt.s.d	$fs4, $fa0
@@ -4608,8 +4590,8 @@ report:                                 # @report
 	fmul.d	$fa0, $fa0, $fs5
 	pcaddu18i	$ra, %call36(log10)
 	jirl	$ra, $ra, 0
-	fld.s	$fa1, $s2, 84
-	ld.d	$a0, $s7, 0
+	fld.s	$fa1, $fp, 84
+	ld.d	$a0, $s0, 0
 	vldi	$vr2, -988
 	fmul.d	$fa0, $fa0, $fa2
 	fcvt.s.d	$fs3, $fa0
@@ -4619,27 +4601,27 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.74)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s7, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 88
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	fcvt.d.s	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a1, %pc_hi20(.L.str.75)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.75)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s7, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 92
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	fcvt.d.s	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a1, %pc_hi20(.L.str.76)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.76)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s7, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 108
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	fcvt.d.s	$fa1, $fs2
 	ffint.s.w	$fa2, $fs0
 	fdiv.s	$fa0, $fa0, $fa2
@@ -4650,9 +4632,9 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.77)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s7, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 112
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	fcvt.d.s	$fa1, $fs4
 	ffint.s.w	$fs0, $fs1
 	fdiv.s	$fa0, $fa0, $fs0
@@ -4663,9 +4645,9 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.78)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s7, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 116
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	fcvt.d.s	$fa1, $fs3
 	fdiv.s	$fa0, $fa0, $fs0
 	fcvt.d.s	$fa0, $fa0
@@ -4676,31 +4658,27 @@ report:                                 # @report
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 .LBB14_61:
-	ld.d	$a1, $s3, %pc_lo12(stats)
-	move	$a2, $s6
-	ld.d	$s6, $sp, 656                   # 8-byte Folded Reload
-	ld.w	$a5, $s6, 4
+	ld.d	$a1, $s8, %pc_lo12(stats)
+	ld.w	$a5, $s4, 4
 	ld.d	$a4, $a1, 728
 	ld.d	$a3, $a1, 720
-	ld.d	$a0, $s7, 0
-	add.d	$s2, $fp, $a2
-	ld.d	$a2, $sp, 328                   # 8-byte Folded Reload
-	add.d	$s0, $s0, $a2
+	ld.d	$a0, $s0, 0
 	add.d	$a2, $a3, $a4
+	st.d	$s7, $sp, 680                   # 8-byte Folded Spill
 	beqz	$a5, .LBB14_63
 # %bb.62:
 	ld.d	$a5, $a1, 736
 	ldptr.w	$a6, $a1, 2256
-	add.d	$a1, $a2, $a5
-	add.d	$fp, $a1, $a6
+	add.d	$a1, $a5, $a6
+	add.d	$fp, $a2, $a1
 	pcalau12i	$a1, %pc_hi20(.L.str.80)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.80)
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
-	ld.d	$a1, $s4, %pc_lo12(img)
-	ld.d	$a2, $s1, %pc_lo12(input)
+	ld.d	$a0, $s8, %pc_lo12(stats)
+	ld.d	$a1, $s5, %pc_lo12(img)
+	ld.d	$a2, $s3, %pc_lo12(input)
 	ld.w	$a3, $a0, 700
 	fld.s	$fa0, $a1, 48
 	ld.w	$a1, $a2, 20
@@ -4709,13 +4687,13 @@ report:                                 # @report
 	ffint.s.w	$fa1, $fa1
 	addi.d	$a1, $a1, 1
 	movgr2fr.w	$fa2, $a1
-	ld.w	$a1, $s6, 8
-	ld.w	$a2, $s6, 0
+	ld.w	$a1, $s4, 8
+	ld.w	$a2, $s4, 0
 	fmul.s	$fa0, $fa0, $fa1
 	movgr2fr.d	$fa1, $fp
 	ffint.s.w	$fa2, $fa2
 	add.d	$a1, $a2, $a1
-	ld.w	$a2, $s6, 4
+	ld.w	$a2, $s4, 4
 	fdiv.s	$fa0, $fa0, $fa2
 	ffint.s.l	$fa1, $fa1
 	fmul.s	$fa1, $fa0, $fa1
@@ -4730,8 +4708,8 @@ report:                                 # @report
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
-	ld.d	$a1, $s4, %pc_lo12(img)
+	ld.d	$a0, $s3, %pc_lo12(input)
+	ld.d	$a1, $s5, %pc_lo12(img)
 	ld.w	$a2, $a0, 20
 	fld.s	$fa0, $a1, 48
 	addi.d	$a1, $a2, 1
@@ -4741,16 +4719,13 @@ report:                                 # @report
 	movgr2fr.d	$fa1, $fp
 	fld.s	$fa2, $a0, 8
 	ffint.s.l	$fa1, $fa1
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s8, %pc_lo12(stats)
 	fmul.s	$fa1, $fa0, $fa1
 .LBB14_64:
 	ffint.s.w	$fa2, $fa2
 	fdiv.s	$fa1, $fa1, $fa2
-	ld.d	$a1, $sp, 344                   # 8-byte Folded Reload
-	add.d	$s4, $s2, $a1
-	add.d	$s2, $s0, $s8
 	fst.s	$fa1, $a0, 12
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	fcvt.d.s	$fa0, $fa0
 	lu12i.w	$a1, 280480
 	movgr2fr.w	$fs0, $a1
@@ -4763,28 +4738,28 @@ report:                                 # @report
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
-	ld.d	$a0, $s7, 0
+	ld.d	$a1, $s8, %pc_lo12(stats)
+	ld.d	$a0, $s0, 0
 	ld.w	$a2, $a1, 40
 	pcalau12i	$a1, %pc_hi20(.L.str.83)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.83)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
-	ld.d	$a0, $s7, 0
+	ld.d	$a1, $s8, %pc_lo12(stats)
+	ld.d	$a0, $s0, 0
 	ldptr.w	$a2, $a1, 2256
 	pcalau12i	$a1, %pc_hi20(.L.str.84)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.84)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $s7, 0
+	ld.d	$a3, $s0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.30)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.30)
 	ori	$a1, $zero, 80
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.85)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.85)
 	pcalau12i	$a2, %pc_hi20(.L.str.86)
@@ -4793,7 +4768,7 @@ report:                                 # @report
 	addi.d	$a3, $a3, %pc_lo12(.L.str.15)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s7, 0
+	ld.d	$a1, $s0, 0
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
@@ -4806,6 +4781,7 @@ report:                                 # @report
 	move	$a3, $a0
 	pcalau12i	$s7, %pc_hi20(p_stat)
 	st.d	$a0, $s7, %pc_lo12(p_stat)
+	move	$s1, $s8
 	bnez	$a0, .LBB14_66
 # %bb.65:
 	pcalau12i	$a0, %pc_hi20(errortext)
@@ -4824,14 +4800,11 @@ report:                                 # @report
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $s7, %pc_lo12(p_stat)
 .LBB14_66:
-	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
-	add.d	$s8, $s4, $a0
-	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
-	add.d	$s4, $s2, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.90)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.90)
 	ori	$a1, $zero, 65
 	ori	$a2, $zero, 1
+	ori	$s8, $zero, 1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
@@ -4848,16 +4821,16 @@ report:                                 # @report
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s3, %pc_lo12(input)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	addi.d	$a2, $a1, 280
 	pcalau12i	$a1, %pc_hi20(.L.str.92)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.92)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ld.w	$a1, $a0, 8
-	ld.w	$a2, $s6, 4
+	ld.w	$a2, $s4, 4
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	add.w	$a2, $a2, $a1
 	pcalau12i	$a1, %pc_hi20(.L.str.93)
@@ -4870,7 +4843,7 @@ report:                                 # @report
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s1, %pc_lo12(stats)
 	fld.s	$fa0, $a0, 744
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	fdiv.s	$fa0, $fa0, $fs0
@@ -4880,7 +4853,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.95)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s1, %pc_lo12(stats)
 	fld.s	$fa0, $a0, 748
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	fdiv.s	$fa0, $fa0, $fs0
@@ -4890,8 +4863,9 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.96)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s1, %pc_lo12(stats)
 	ld.w	$a1, $a0, 700
+	st.d	$s1, $sp, 688                   # 8-byte Folded Spill
 	beqz	$a1, .LBB14_68
 # %bb.67:
 	fld.s	$fa0, $a0, 752
@@ -4903,13 +4877,9 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.97)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s1, %pc_lo12(stats)
 .LBB14_68:
 	fld.s	$fa0, $a0, 12
-	ld.d	$a0, $sp, 384                   # 8-byte Folded Reload
-	add.d	$s0, $s8, $a0
-	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
-	add.d	$s2, $s4, $a0
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	fdiv.s	$fa0, $fa0, $fs0
 	fcvt.d.s	$fa0, $fa0
@@ -4918,51 +4888,49 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.98)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a1, $a0, 5780
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
-	ori	$s4, $zero, 20
-	mul.d	$a1, $a1, $s4
-	ld.d	$s8, $sp, 368                   # 8-byte Folded Reload
-	add.d	$a3, $s8, $a1
+	ori	$s0, $zero, 20
+	mul.d	$a1, $a1, $s0
+	add.d	$a3, $s6, $a1
 	pcalau12i	$a1, %pc_hi20(.L.str.99)
 	addi.d	$fp, $a1, %pc_lo12(.L.str.99)
 	move	$a1, $fp
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a1, $a0, 5784
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
-	mul.d	$a1, $a1, $s4
-	add.d	$a3, $s8, $a1
+	mul.d	$a1, $a1, $s0
+	add.d	$a3, $s6, $a1
 	ori	$a2, $zero, 1
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a1, $a0, 5788
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
-	mul.d	$a1, $a1, $s4
-	add.d	$a3, $s8, $a1
+	mul.d	$a1, $a1, $s0
+	add.d	$a3, $s6, $a1
 	ori	$a2, $zero, 2
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a1, $a0, 5792
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
-	mul.d	$a1, $a1, $s4
-	add.d	$a2, $s8, $a1
+	mul.d	$a1, $a1, $s0
+	add.d	$a2, $s6, $a1
 	pcalau12i	$a1, %pc_hi20(.L.str.33)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.33)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a0, $a0, 5776
 	ld.d	$a3, $s7, %pc_lo12(p_stat)
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB14_70
+	bne	$a0, $s8, .LBB14_70
 # %bb.69:
 	pcalau12i	$a0, %pc_hi20(.L.str.34)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.34)
@@ -4976,23 +4944,18 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	move	$s8, $s6
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s3, %pc_lo12(input)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.w	$a2, $a1, 56
 	ld.w	$a3, $a1, 60
-	ld.d	$a1, $sp, 424                   # 8-byte Folded Reload
-	add.d	$fp, $s0, $a1
-	ld.d	$a1, $sp, 376                   # 8-byte Folded Reload
-	add.d	$s0, $s2, $a1
 	pcalau12i	$a1, %pc_hi20(.L.str.100)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.100)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ld.w	$a0, $a0, 68
 	ld.d	$a3, $s7, %pc_lo12(p_stat)
-	ori	$s6, $zero, 1
+	ld.d	$s1, $sp, 688                   # 8-byte Folded Reload
 	beqz	$a0, .LBB14_73
 # %bb.72:
 	pcalau12i	$a0, %pc_hi20(.L.str.101)
@@ -5007,47 +4970,39 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s3, %pc_lo12(input)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.w	$a2, $a1, 28
-	ld.d	$a1, $sp, 440                   # 8-byte Folded Reload
-	add.d	$fp, $fp, $a1
-	ld.d	$a1, $sp, 392                   # 8-byte Folded Reload
-	add.d	$s2, $s0, $a1
 	pcalau12i	$a1, %pc_hi20(.L.str.103)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.103)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s3, %pc_lo12(input)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.w	$a2, $a1, 32
 	pcalau12i	$a1, %pc_hi20(.L.str.104)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.104)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s3, %pc_lo12(input)
 	ld.w	$a2, $a1, 36
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	bnez	$a2, .LBB14_76
 # %bb.75:
 	ld.w	$a2, $a1, 32
 .LBB14_76:
-	ld.d	$a1, $sp, 456                   # 8-byte Folded Reload
-	add.d	$s0, $fp, $a1
-	ld.d	$a1, $sp, 416                   # 8-byte Folded Reload
-	add.d	$s2, $s2, $a1
-	ld.d	$a1, $sp, 408                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 280                   # 8-byte Folded Reload
 	add.w	$fp, $a3, $a1
 	pcalau12i	$a1, %pc_hi20(.L.str.105)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.105)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s1, %pc_lo12(stats)
 	ld.w	$a0, $a0, 700
 	beqz	$a0, .LBB14_82
 # %bb.77:
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s3, %pc_lo12(input)
 	ld.w	$a2, $a1, 40
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	bnez	$a2, .LBB14_79
@@ -5058,7 +5013,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.106)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s3, %pc_lo12(input)
 	ld.w	$a2, $a1, 44
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	bnez	$a2, .LBB14_81
@@ -5070,13 +5025,9 @@ report:                                 # @report
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 .LBB14_82:
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a0, $a0, 4008
 	ld.d	$a3, $s7, %pc_lo12(p_stat)
-	ld.d	$a1, $sp, 480                   # 8-byte Folded Reload
-	add.d	$s0, $s0, $a1
-	ld.d	$a1, $sp, 432                   # 8-byte Folded Reload
-	add.d	$s2, $s2, $a1
 	sltui	$a0, $a0, 1
 	pcalau12i	$a1, %pc_hi20(.L.str.109)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.109)
@@ -5089,7 +5040,7 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s3, %pc_lo12(input)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.w	$a2, $a1, 0
 	ld.w	$a3, $a1, 4
@@ -5097,7 +5048,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.110)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a1, $a0, 4708
 	beqz	$a1, .LBB14_84
 # %bb.83:
@@ -5108,32 +5059,24 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 .LBB14_84:
 	ldptr.w	$a1, $a0, 5244
-	ld.d	$a2, $sp, 496                   # 8-byte Folded Reload
-	add.d	$s0, $s0, $a2
-	ld.d	$a2, $sp, 448                   # 8-byte Folded Reload
-	add.d	$s2, $s2, $a2
 	ori	$a2, $zero, 3
-	slt	$s4, $s6, $fp
+	slt	$s0, $s2, $fp
 	bne	$a1, $a2, .LBB14_86
 # %bb.85:
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(EPZSOutputStats)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 .LBB14_86:
-	ld.d	$a1, $sp, 504                   # 8-byte Folded Reload
-	add.d	$s0, $s0, $a1
-	ld.d	$a1, $sp, 464                   # 8-byte Folded Reload
-	add.d	$s2, $s2, $a1
 	ldptr.w	$a0, $a0, 4140
 	ld.d	$a3, $s7, %pc_lo12(p_stat)
-	maskeqz	$fp, $fp, $s4
+	maskeqz	$fp, $fp, $s0
 	ori	$a1, $zero, 1
-	masknez	$s4, $s6, $s4
+	masknez	$s0, $s2, $s0
 	beq	$a0, $a1, .LBB14_89
 # %bb.87:
 	ori	$a1, $zero, 2
@@ -5156,14 +5099,10 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ldptr.w	$a0, $a0, 4168
 	ld.d	$a3, $s7, %pc_lo12(p_stat)
-	ld.d	$a1, $sp, 512                   # 8-byte Folded Reload
-	add.d	$s0, $s0, $a1
-	ld.d	$a1, $sp, 472                   # 8-byte Folded Reload
-	add.d	$s2, $s2, $a1
-	or	$s6, $fp, $s4
+	or	$s0, $fp, $s0
 	beqz	$a0, .LBB14_93
 # %bb.92:
 	pcalau12i	$a0, %pc_hi20(.L.str.115)
@@ -5179,10 +5118,6 @@ report:                                 # @report
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $s7, %pc_lo12(p_stat)
-	ld.d	$a0, $sp, 520                   # 8-byte Folded Reload
-	add.d	$s0, $s0, $a0
-	ld.d	$a0, $sp, 488                   # 8-byte Folded Reload
-	add.d	$s4, $s2, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.117)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.117)
 	ori	$a1, $zero, 57
@@ -5210,7 +5145,8 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$s2, $sp, 680                   # 8-byte Folded Reload
+	ld.d	$a0, $s2, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 12
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	fcvt.d.s	$fa0, $fa0
@@ -5219,7 +5155,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.120)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s2, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 84
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	fcvt.d.s	$fa0, $fa0
@@ -5236,7 +5172,7 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s2, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 16
 	fld.s	$fa1, $a0, 20
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
@@ -5248,7 +5184,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.123)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s2, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 88
 	fld.s	$fa1, $a0, 92
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
@@ -5267,7 +5203,7 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s3, %pc_lo12(input)
 	ld.w	$a1, $a0, 12
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	srai.d	$a2, $a1, 31
@@ -5277,7 +5213,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.126)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s1, %pc_lo12(stats)
 	fld.s	$fa0, $a0, 4
 	fld.s	$fa1, $a0, 0
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
@@ -5314,7 +5250,7 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s2, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 32
 	fld.s	$fa1, $a0, 24
 	fld.s	$fa2, $a0, 28
@@ -5329,7 +5265,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.130)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s2, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 52
 	fld.s	$fa1, $a0, 44
 	fld.s	$fa2, $a0, 48
@@ -5344,7 +5280,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.131)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s2, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 72
 	fld.s	$fa1, $a0, 64
 	fld.s	$fa2, $a0, 68
@@ -5380,28 +5316,28 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 1072
 	pcalau12i	$a1, %pc_hi20(.L.str.136)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.136)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 1104
 	pcalau12i	$a1, %pc_hi20(.L.str.137)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.137)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 1080
 	pcalau12i	$a1, %pc_hi20(.L.str.138)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.138)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 1112
 	pcalau12i	$a1, %pc_hi20(.L.str.139)
@@ -5429,12 +5365,12 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	fld.d	$fa0, $a1, 1360
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 760
 	ffint.d.l	$fa0, $fa0
-	bstrpick.d	$a1, $s6, 31, 0
+	bstrpick.d	$a1, $s0, 31, 0
 	movgr2fr.d	$fs2, $a1
 	ffint.d.l	$fs3, $fs2
 	fdiv.d	$fa0, $fa0, $fs3
@@ -5443,7 +5379,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.143)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	fld.d	$fa0, $a1, 1368
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 768
@@ -5454,7 +5390,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.144)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	fld.d	$fa0, $a1, 1376
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 776
@@ -5465,7 +5401,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.145)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	fld.d	$fa0, $a1, 1384
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 784
@@ -5476,7 +5412,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.146)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	fld.d	$fa0, $a1, 1424
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 824
@@ -5487,51 +5423,51 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.147)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 832
 	pcalau12i	$a1, %pc_hi20(.L.str.148)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.148)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 864
 	pcalau12i	$a1, %pc_hi20(.L.str.149)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.149)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 840
 	pcalau12i	$a1, %pc_hi20(.L.str.150)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.150)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 872
 	pcalau12i	$a1, %pc_hi20(.L.str.151)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.151)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s1, %pc_lo12(stats)
 	ld.d	$a1, $a0, 1360
 	ld.d	$a2, $a0, 1368
 	ld.d	$a3, $a0, 1376
+	ld.d	$a4, $a0, 1384
 	add.d	$a1, $a2, $a1
-	ld.d	$a2, $a0, 1384
-	ld.d	$a4, $a0, 1424
-	add.d	$a1, $a1, $a3
+	ld.d	$a2, $a0, 1424
+	add.d	$a3, $a3, $a4
 	ld.w	$a0, $a0, 700
+	add.d	$a1, $a1, $a3
 	add.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $a4
 	movgr2fr.d	$fs0, $zero
 	movgr2fr.d	$fs1, $a1
 	fmov.d	$fs4, $fs0
 	beqz	$a0, .LBB14_97
 # %bb.95:
-	ld.w	$a0, $s8, 4
+	ld.w	$a0, $s4, 4
 	fmov.d	$fs4, $fs0
 	beqz	$a0, .LBB14_97
 # %bb.96:
@@ -5556,9 +5492,9 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	fld.d	$fa0, $a1, 1480
-	ld.w	$a3, $s8, 4
+	ld.w	$a3, $s4, 4
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 880
 	ffint.d.l	$fa0, $fa0
@@ -5570,9 +5506,9 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.143)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	fld.d	$fa0, $a1, 1488
-	ld.w	$a3, $s8, 4
+	ld.w	$a3, $s4, 4
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 888
 	ffint.d.l	$fa0, $fa0
@@ -5584,9 +5520,9 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.144)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	fld.d	$fa0, $a1, 1496
-	ld.w	$a3, $s8, 4
+	ld.w	$a3, $s4, 4
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 896
 	ffint.d.l	$fa0, $fa0
@@ -5598,9 +5534,9 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.145)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	fld.d	$fa0, $a1, 1504
-	ld.w	$a3, $s8, 4
+	ld.w	$a3, $s4, 4
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 904
 	ffint.d.l	$fa0, $fa0
@@ -5612,9 +5548,9 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.146)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	fld.d	$fa0, $a1, 1544
-	ld.w	$a3, $s8, 4
+	ld.w	$a3, $s4, 4
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 944
 	ffint.d.l	$fa0, $fa0
@@ -5626,44 +5562,44 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.147)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 952
 	pcalau12i	$a1, %pc_hi20(.L.str.148)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.148)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 984
 	pcalau12i	$a1, %pc_hi20(.L.str.149)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.149)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 960
 	pcalau12i	$a1, %pc_hi20(.L.str.150)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.150)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	ld.d	$a2, $a1, 992
 	pcalau12i	$a1, %pc_hi20(.L.str.151)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.151)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s1, %pc_lo12(stats)
 	ld.d	$a1, $a0, 1480
 	ld.d	$a2, $a0, 1488
 	ld.d	$a3, $a0, 1496
 	ld.d	$a4, $a0, 1504
 	add.d	$a1, $a2, $a1
 	ld.d	$a0, $a0, 1544
-	add.d	$a1, $a1, $a3
-	add.d	$a1, $a1, $a4
-	ld.w	$a2, $s8, 4
+	add.d	$a2, $a3, $a4
+	add.d	$a1, $a1, $a2
+	ld.w	$a2, $s4, 4
 	add.d	$a0, $a1, $a0
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fa0, $fa0
@@ -5672,10 +5608,6 @@ report:                                 # @report
 	fdiv.d	$fs4, $fa0, $fa1
 .LBB14_97:
 	ld.d	$a3, $s7, %pc_lo12(p_stat)
-	ld.d	$a0, $sp, 552                   # 8-byte Folded Reload
-	add.d	$s0, $s0, $a0
-	ld.d	$a0, $sp, 528                   # 8-byte Folded Reload
-	add.d	$s2, $s4, $a0
 	ffint.d.l	$fs5, $fs1
 	pcalau12i	$a0, %pc_hi20(.L.str.154)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.154)
@@ -5704,12 +5636,12 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s1, %pc_lo12(stats)
 	ldptr.d	$a1, $a0, 2056
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	movgr2fr.d	$fa0, $a1
 	ffint.s.l	$fa0, $fa0
-	ld.d	$a1, $sp, 536                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
 	movgr2fr.w	$fa1, $a1
 	ffint.s.w	$fs1, $fa1
 	fdiv.s	$fa0, $fa0, $fs1
@@ -5720,7 +5652,7 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s1, %pc_lo12(stats)
 	ld.d	$a1, $a0, 2040
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	movgr2fr.d	$fa0, $a1
@@ -5732,13 +5664,13 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s1, %pc_lo12(stats)
 	ld.w	$a2, $a1, 700
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	fmov.d	$fa0, $fs0
 	beqz	$a2, .LBB14_100
 # %bb.98:
-	ld.w	$a2, $s8, 4
+	ld.w	$a2, $s4, 4
 	fmov.d	$fa0, $fs0
 	beqz	$a2, .LBB14_100
 # %bb.99:
@@ -5750,10 +5682,47 @@ report:                                 # @report
 	fdiv.s	$fa0, $fa0, $fa1
 	fcvt.d.s	$fa0, $fa0
 .LBB14_100:
-	ld.d	$a1, $sp, 568                   # 8-byte Folded Reload
-	add.d	$s0, $a1, $s0
-	ld.d	$a1, $sp, 544                   # 8-byte Folded Reload
-	add.d	$s2, $a1, $s2
+	ld.d	$a1, $sp, 520                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 512                   # 8-byte Folded Reload
+	add.d	$a1, $a1, $a2
+	st.d	$a1, $sp, 520                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 504                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 496                   # 8-byte Folded Reload
+	add.d	$a1, $a1, $a2
+	st.d	$a1, $sp, 504                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 488                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 480                   # 8-byte Folded Reload
+	add.d	$a1, $a1, $a2
+	st.d	$a1, $sp, 496                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 472                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 464                   # 8-byte Folded Reload
+	add.d	$s6, $a1, $a2
+	ld.d	$a1, $sp, 456                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 448                   # 8-byte Folded Reload
+	add.d	$s8, $a1, $a2
+	ld.d	$a1, $sp, 440                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 432                   # 8-byte Folded Reload
+	add.d	$a1, $a2, $a1
+	st.d	$a1, $sp, 488                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 384                   # 8-byte Folded Reload
+	add.d	$a1, $a1, $a2
+	st.d	$a1, $sp, 512                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 368                   # 8-byte Folded Reload
+	add.d	$s1, $a1, $a2
+	ld.d	$a1, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 352                   # 8-byte Folded Reload
+	add.d	$s0, $a1, $a2
+	ld.d	$a1, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
+	add.d	$s2, $a1, $a2
+	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 320                   # 8-byte Folded Reload
+	add.d	$s3, $a1, $a2
+	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 304                   # 8-byte Folded Reload
+	add.d	$s4, $a2, $a1
 	fdiv.d	$fs3, $fs5, $fs3
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a1, %pc_hi20(.L.str.158)
@@ -5772,7 +5741,8 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$s5, $sp, 688                   # 8-byte Folded Reload
+	ld.d	$a0, $s5, %pc_lo12(stats)
 	ld.d	$a1, $a0, 2016
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	movgr2fr.d	$fa0, $a1
@@ -5783,7 +5753,7 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s5, %pc_lo12(stats)
 	ld.d	$a1, $a0, 2000
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	movgr2fr.d	$fa0, $a1
@@ -5794,13 +5764,14 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s5, %pc_lo12(stats)
 	ld.w	$a2, $a1, 700
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	fmov.d	$fa0, $fs0
 	beqz	$a2, .LBB14_103
 # %bb.101:
-	ld.w	$a2, $s8, 4
+	ld.d	$a2, $sp, 696                   # 8-byte Folded Reload
+	ld.w	$a2, $a2, 4
 	fmov.d	$fa0, $fs0
 	beqz	$a2, .LBB14_103
 # %bb.102:
@@ -5812,10 +5783,33 @@ report:                                 # @report
 	fdiv.s	$fa0, $fa0, $fa1
 	fcvt.d.s	$fa0, $fa0
 .LBB14_103:
-	ld.d	$a1, $sp, 584                   # 8-byte Folded Reload
-	add.d	$s0, $a1, $s0
-	ld.d	$a1, $sp, 560                   # 8-byte Folded Reload
-	add.d	$s4, $a1, $s2
+	ld.d	$a1, $sp, 520                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 504                   # 8-byte Folded Reload
+	add.d	$a1, $a1, $a2
+	st.d	$a1, $sp, 520                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 568                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 496                   # 8-byte Folded Reload
+	add.d	$a1, $a2, $a1
+	st.d	$a1, $sp, 568                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 552                   # 8-byte Folded Reload
+	add.d	$a1, $s6, $a1
+	st.d	$a1, $sp, 552                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 544                   # 8-byte Folded Reload
+	add.d	$s8, $s8, $a1
+	ld.d	$a1, $sp, 528                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 488                   # 8-byte Folded Reload
+	add.d	$a1, $a1, $a2
+	st.d	$a1, $sp, 544                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 512                   # 8-byte Folded Reload
+	add.d	$s6, $a1, $s1
+	ld.d	$a1, $sp, 424                   # 8-byte Folded Reload
+	add.d	$s0, $s0, $a1
+	ld.d	$a1, $sp, 416                   # 8-byte Folded Reload
+	add.d	$s2, $s2, $a1
+	ld.d	$a1, $sp, 408                   # 8-byte Folded Reload
+	add.d	$s1, $s3, $a1
+	ld.d	$a1, $sp, 400                   # 8-byte Folded Reload
+	add.d	$s5, $a1, $s4
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a1, %pc_hi20(.L.str.158)
 	addi.d	$fp, $a1, %pc_lo12(.L.str.158)
@@ -5845,9 +5839,11 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
+	ld.d	$s3, $sp, 688                   # 8-byte Folded Reload
 	ld.d	$a0, $s3, %pc_lo12(stats)
 	ld.w	$a0, $a0, 700
-	ld.w	$a1, $s8, 4
+	ld.d	$a1, $sp, 696                   # 8-byte Folded Reload
+	ld.w	$a1, $a1, 4
 	sltu	$a2, $zero, $a0
 	sltu	$a1, $zero, $a1
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
@@ -5896,7 +5892,7 @@ report:                                 # @report
 	ld.w	$a2, $a1, 700
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	fmov.d	$fa0, $fs0
-	ld.d	$a3, $sp, 624                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 640                   # 8-byte Folded Reload
 	beqz	$a2, .LBB14_106
 # %bb.104:
 	fmov.d	$fa0, $fs0
@@ -5910,10 +5906,24 @@ report:                                 # @report
 	fdiv.s	$fa0, $fa0, $fa1
 	fcvt.d.s	$fa0, $fa0
 .LBB14_106:
-	ld.d	$a1, $sp, 616                   # 8-byte Folded Reload
-	add.d	$fp, $a1, $s0
+	ld.d	$a1, $sp, 520                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 568                   # 8-byte Folded Reload
+	add.d	$fp, $a1, $a2
+	ld.d	$a1, $sp, 632                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 552                   # 8-byte Folded Reload
+	add.d	$s3, $a2, $a1
+	ld.d	$a1, $sp, 624                   # 8-byte Folded Reload
+	add.d	$s4, $s8, $a1
+	ld.d	$a1, $sp, 600                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 544                   # 8-byte Folded Reload
+	add.d	$s8, $a1, $a2
+	add.d	$s0, $s6, $s0
 	ld.d	$a1, $sp, 576                   # 8-byte Folded Reload
-	add.d	$s0, $a1, $s4
+	add.d	$s2, $s2, $a1
+	ld.d	$a1, $sp, 560                   # 8-byte Folded Reload
+	add.d	$s1, $s1, $a1
+	ld.d	$a1, $sp, 536                   # 8-byte Folded Reload
+	add.d	$s5, $a1, $s5
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a1, %pc_hi20(.L.str.158)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.158)
@@ -5923,7 +5933,8 @@ report:                                 # @report
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a0, $sp, 688                   # 8-byte Folded Reload
+	ld.d	$a1, $a0, %pc_lo12(stats)
 	ldptr.d	$a2, $a1, 2136
 	ld.w	$a3, $a1, 700
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
@@ -5939,7 +5950,8 @@ report:                                 # @report
 	fmov.d	$fa2, $fs0
 	beqz	$a3, .LBB14_109
 # %bb.107:
-	ld.w	$a2, $s8, 4
+	ld.d	$a2, $sp, 696                   # 8-byte Folded Reload
+	ld.w	$a2, $a2, 4
 	fmov.d	$fa2, $fs0
 	beqz	$a2, .LBB14_109
 # %bb.108:
@@ -5951,10 +5963,16 @@ report:                                 # @report
 	fdiv.s	$fa2, $fa2, $fa3
 	fcvt.d.s	$fa2, $fa2
 .LBB14_109:
-	ld.d	$a1, $sp, 608                   # 8-byte Folded Reload
-	add.d	$fp, $a1, $fp
+	add.d	$fp, $fp, $s3
+	ld.d	$a1, $sp, 656                   # 8-byte Folded Reload
+	add.d	$s3, $s4, $a1
+	ld.d	$a1, $sp, 616                   # 8-byte Folded Reload
+	add.d	$s4, $a1, $s8
+	add.d	$s0, $s0, $s2
 	ld.d	$a1, $sp, 592                   # 8-byte Folded Reload
-	add.d	$s0, $a1, $s0
+	add.d	$s1, $s1, $a1
+	ld.d	$a1, $sp, 584                   # 8-byte Folded Reload
+	add.d	$s2, $a1, $s5
 	movfr2gr.d	$a2, $fa0
 	movfr2gr.d	$a3, $fa1
 	movfr2gr.d	$a4, $fa2
@@ -5962,7 +5980,8 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.163)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$s6, $sp, 688                   # 8-byte Folded Reload
+	ld.d	$a1, $s6, %pc_lo12(stats)
 	ldptr.d	$a2, $a1, 2176
 	ld.w	$a3, $a1, 700
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
@@ -5978,7 +5997,8 @@ report:                                 # @report
 	fmov.d	$fa2, $fs0
 	beqz	$a3, .LBB14_112
 # %bb.110:
-	ld.w	$a2, $s8, 4
+	ld.d	$a2, $sp, 696                   # 8-byte Folded Reload
+	ld.w	$a2, $a2, 4
 	fmov.d	$fa2, $fs0
 	beqz	$a2, .LBB14_112
 # %bb.111:
@@ -5990,10 +6010,12 @@ report:                                 # @report
 	fdiv.s	$fa2, $fa2, $fa3
 	fcvt.d.s	$fa2, $fa2
 .LBB14_112:
-	ld.d	$a1, $sp, 640                   # 8-byte Folded Reload
-	add.d	$fp, $a1, $fp
-	ld.d	$a1, $sp, 600                   # 8-byte Folded Reload
-	add.d	$s2, $a1, $s0
+	add.d	$fp, $fp, $s3
+	ld.d	$a1, $sp, 648                   # 8-byte Folded Reload
+	add.d	$s3, $a1, $s4
+	add.d	$s1, $s0, $s1
+	ld.d	$a1, $sp, 608                   # 8-byte Folded Reload
+	add.d	$s2, $a1, $s2
 	movfr2gr.d	$a2, $fa0
 	movfr2gr.d	$a3, $fa1
 	movfr2gr.d	$a4, $fa2
@@ -6001,7 +6023,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.164)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s6, %pc_lo12(stats)
 	ldptr.d	$a2, $a1, 2216
 	ld.w	$a3, $a1, 700
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
@@ -6015,9 +6037,11 @@ report:                                 # @report
 	fdiv.s	$fa1, $fa1, $fs2
 	fcvt.d.s	$fa1, $fa1
 	fmov.d	$fa2, $fs0
+	ld.d	$s5, $sp, 672                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 696                   # 8-byte Folded Reload
 	beqz	$a3, .LBB14_115
 # %bb.113:
-	ld.w	$a2, $s8, 4
+	ld.w	$a2, $s4, 4
 	fmov.d	$fa2, $fs0
 	beqz	$a2, .LBB14_115
 # %bb.114:
@@ -6029,10 +6053,8 @@ report:                                 # @report
 	fdiv.s	$fa2, $fa2, $fa3
 	fcvt.d.s	$fa2, $fa2
 .LBB14_115:
-	ld.d	$a1, $sp, 648                   # 8-byte Folded Reload
-	add.d	$s0, $a1, $fp
-	ld.d	$a1, $sp, 632                   # 8-byte Folded Reload
-	add.d	$fp, $a1, $s2
+	add.d	$s0, $s3, $fp
+	add.d	$fp, $s2, $s1
 	movfr2gr.d	$a2, $fa0
 	movfr2gr.d	$a3, $fa1
 	movfr2gr.d	$a4, $fa2
@@ -6040,7 +6062,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.165)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s6, %pc_lo12(stats)
 	ld.d	$a2, $a1, 1976
 	ld.w	$a3, $a1, 700
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
@@ -6056,7 +6078,7 @@ report:                                 # @report
 	fmov.d	$fa2, $fs0
 	beqz	$a3, .LBB14_118
 # %bb.116:
-	ld.w	$a2, $s8, 4
+	ld.w	$a2, $s4, 4
 	fmov.d	$fa2, $fs0
 	beqz	$a2, .LBB14_118
 # %bb.117:
@@ -6109,56 +6131,56 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s6, %pc_lo12(stats)
 	ld.w	$a1, $a0, 700
 	ld.d	$a0, $s7, %pc_lo12(p_stat)
 	beqz	$a1, .LBB14_121
 # %bb.119:
-	ld.w	$a1, $s8, 4
+	ld.w	$a1, $s4, 4
 	beqz	$a1, .LBB14_121
 # %bb.120:
-	ld.d	$a2, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 288                   # 8-byte Folded Reload
-	add.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 280                   # 8-byte Folded Reload
-	add.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 272                   # 8-byte Folded Reload
-	add.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 264                   # 8-byte Folded Reload
-	add.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 256                   # 8-byte Folded Reload
-	add.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
-	add.d	$a2, $a2, $a3
+	ld.d	$a2, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
 	add.d	$a2, $a2, $a3
 	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 208                   # 8-byte Folded Reload
+	add.d	$a3, $a3, $a4
+	ld.d	$a4, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 184                   # 8-byte Folded Reload
+	add.d	$a4, $a4, $a5
+	ld.d	$a5, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 152                   # 8-byte Folded Reload
+	add.d	$a5, $a5, $a6
+	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 128                   # 8-byte Folded Reload
+	add.d	$a6, $a6, $a7
+	ld.d	$a7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 104                   # 8-byte Folded Reload
+	add.d	$a7, $t0, $a7
 	add.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 256                   # 8-byte Folded Reload
+	add.d	$a3, $a4, $a3
+	ld.d	$a4, $sp, 224                   # 8-byte Folded Reload
+	add.d	$a4, $a5, $a4
+	ld.d	$a5, $sp, 160                   # 8-byte Folded Reload
+	add.d	$a5, $a6, $a5
+	ld.d	$a6, $sp, 120                   # 8-byte Folded Reload
+	add.d	$a6, $a6, $a7
 	add.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 264                   # 8-byte Folded Reload
+	add.d	$a3, $a4, $a3
+	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	add.d	$a4, $a5, $a4
+	ld.d	$a5, $sp, 144                   # 8-byte Folded Reload
+	add.d	$a5, $a5, $a6
 	add.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
-	add.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
+	add.d	$a3, $a4, $a3
+	ld.d	$a4, $sp, 176                   # 8-byte Folded Reload
+	add.d	$a4, $a4, $a5
 	add.d	$a2, $a2, $a3
 	ld.d	$a3, $sp, 192                   # 8-byte Folded Reload
-	add.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 184                   # 8-byte Folded Reload
-	add.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 176                   # 8-byte Folded Reload
-	add.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
-	add.d	$a2, $a3, $a2
-	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
-	add.d	$a2, $a3, $a2
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	add.d	$a2, $a3, $a2
-	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
-	add.d	$a2, $a3, $a2
-	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
-	add.d	$a2, $a3, $a2
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
+	add.d	$a3, $a3, $a4
 	add.d	$a2, $a3, $a2
 	movgr2fr.d	$fa0, $a2
 	ffint.s.l	$fa0, $fa0
@@ -6205,6 +6227,7 @@ report:                                 # @report
 	pcaddu18i	$ra, %call36(fopen64)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s0, %pc_lo12(p_log)
+	ld.d	$s7, $sp, 680                   # 8-byte Folded Reload
 	bnez	$a0, .LBB14_126
 	b	.LBB14_125
 .LBB14_123:
@@ -6215,6 +6238,7 @@ report:                                 # @report
 	pcaddu18i	$ra, %call36(fopen64)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s0, %pc_lo12(p_log)
+	ld.d	$s7, $sp, 680                   # 8-byte Folded Reload
 	beqz	$a0, .LBB14_125
 # %bb.124:
 	move	$a3, $a0
@@ -6280,17 +6304,17 @@ report:                                 # @report
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(time)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 1672
-	addi.d	$a0, $sp, 1672
+	st.d	$a0, $sp, 1704
+	addi.d	$a0, $sp, 1704
 	pcaddu18i	$ra, %call36(time)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 1672
+	addi.d	$a0, $sp, 1704
 	pcaddu18i	$ra, %call36(localtime)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.17)
-	addi.d	$a0, $sp, 672
+	addi.d	$a0, $sp, 704
 	ori	$a1, $zero, 1000
 	move	$a3, $fp
 	pcaddu18i	$ra, %call36(strftime)
@@ -6298,12 +6322,12 @@ report:                                 # @report
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	pcalau12i	$a1, %pc_hi20(.L.str.18)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.18)
-	addi.d	$a2, $sp, 672
+	addi.d	$a2, $sp, 704
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.19)
-	addi.d	$a0, $sp, 672
+	addi.d	$a0, $sp, 704
 	ori	$a1, $zero, 1000
 	move	$a3, $fp
 	pcaddu18i	$ra, %call36(strftime)
@@ -6311,46 +6335,46 @@ report:                                 # @report
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	pcalau12i	$a1, %pc_hi20(.L.str.20)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.20)
-	addi.d	$a2, $sp, 672
+	addi.d	$a2, $sp, 704
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
-	move	$s2, $zero
+	ld.d	$a0, $s5, %pc_lo12(input)
+	move	$s1, $zero
 	addi.d	$fp, $a0, 280
-	addi.d	$s4, $zero, -30
-	ori	$s6, $zero, 30
-	addi.d	$s7, $sp, 1682
+	addi.d	$s2, $zero, -30
+	ori	$s3, $zero, 30
+	addi.d	$s4, $sp, 1714
 	.p2align	4, , 16
 .LBB14_127:                             # =>This Inner Loop Header: Depth=1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 0
-	slt	$a1, $s6, $a0
-	masknez	$a2, $s6, $a1
+	slt	$a1, $s3, $a0
+	masknez	$a2, $s3, $a1
 	maskeqz	$a0, $a0, $a1
 	or	$a0, $a0, $a2
-	add.w	$a0, $a0, $s4
+	add.w	$a0, $a0, $s2
 	ldx.b	$a0, $fp, $a0
-	stx.b	$a0, $s2, $s7
+	stx.b	$a0, $s1, $s4
+	addi.d	$s1, $s1, 1
 	addi.d	$s2, $s2, 1
-	addi.d	$s4, $s4, 1
-	bne	$s2, $s6, .LBB14_127
+	bne	$s1, $s3, .LBB14_127
 # %bb.128:
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	pcalau12i	$a1, %pc_hi20(.L.str.173)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.173)
-	addi.d	$a2, $sp, 1682
+	addi.d	$a2, $sp, 1714
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s5, %pc_lo12(input)
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	ld.w	$a2, $a1, 8
 	pcalau12i	$a1, %pc_hi20(.L.str.174)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.174)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s5, %pc_lo12(input)
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	ldptr.w	$a2, $a1, 4704
 	ldptr.w	$a3, $a1, 4708
@@ -6358,7 +6382,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.23)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s5, %pc_lo12(input)
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	ld.w	$a2, $a1, 12
 	pcalau12i	$a1, %pc_hi20(.L.str.175)
@@ -6366,19 +6390,19 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s5, %pc_lo12(input)
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	ld.w	$a2, $a1, 16
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s5, %pc_lo12(input)
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	ldptr.w	$a2, $a1, 2104
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s5, %pc_lo12(input)
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	ld.w	$a2, $a1, 56
 	ld.w	$a3, $a1, 60
@@ -6386,24 +6410,25 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.176)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s5, %pc_lo12(input)
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	ld.w	$a2, $a1, 1560
 	pcalau12i	$a1, %pc_hi20(.L.str.177)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.177)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
+	ld.d	$a1, $s6, %pc_lo12(stats)
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	ld.w	$a2, $a1, 700
 	pcalau12i	$a1, %pc_hi20(.L.str.22)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.22)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s5, %pc_lo12(input)
 	ldptr.w	$a0, $a0, 5244
 	ld.d	$a3, $s0, %pc_lo12(p_log)
 	ori	$a1, $zero, 3
+	ld.d	$s1, $sp, 696                   # 8-byte Folded Reload
 	bltu	$a1, $a0, .LBB14_130
 # %bb.129:
 	slli.d	$a0, $a0, 3
@@ -6415,12 +6440,11 @@ report:                                 # @report
 	pcalau12i	$a0, %pc_hi20(.L.str.182)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.182)
 .LBB14_131:
-	ld.d	$fp, $sp, 664                   # 8-byte Folded Reload
 	ori	$a1, $zero, 7
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s5, %pc_lo12(input)
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	ldptr.w	$a2, $a1, 5780
 	ldptr.w	$a3, $a1, 5784
@@ -6429,24 +6453,25 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.183)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s5, %pc_lo12(input)
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	ld.w	$a2, $a1, 28
 	pcalau12i	$a1, %pc_hi20(.L.str.184)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.184)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s5, %pc_lo12(input)
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	ld.w	$a2, $a1, 32
 	pcalau12i	$a1, %pc_hi20(.L.str.185)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.185)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
-	ld.d	$a1, $fp, %pc_lo12(img)
+	ld.d	$a0, $s6, %pc_lo12(stats)
+	ld.d	$a1, $sp, 664                   # 8-byte Folded Reload
+	ld.d	$a1, $a1, %pc_lo12(img)
 	ld.w	$a0, $a0, 700
-	ld.d	$a2, $s1, %pc_lo12(input)
+	ld.d	$a2, $s5, %pc_lo12(input)
 	fld.s	$fa0, $a1, 48
 	addi.d	$a0, $a0, 1
 	movgr2fr.w	$fa1, $a0
@@ -6464,7 +6489,7 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.186)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s5, %pc_lo12(input)
 	ldptr.w	$a0, $a0, 4008
 	sltui	$a0, $a0, 1
 	pcalau12i	$a1, %pc_hi20(.L.str.188)
@@ -6479,14 +6504,14 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s5, %pc_lo12(input)
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	ldptr.w	$a2, $a1, 4168
 	pcalau12i	$a1, %pc_hi20(.L.str.189)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.189)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s5, %pc_lo12(input)
 	ld.w	$a0, $a0, 68
 	addi.d	$a0, $a0, -1
 	sltui	$a0, $a0, 1
@@ -6502,14 +6527,14 @@ report:                                 # @report
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, %pc_lo12(input)
+	ld.d	$a1, $s5, %pc_lo12(input)
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	ldptr.w	$a2, $a1, 5100
 	pcalau12i	$a1, %pc_hi20(.L.str.192)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.192)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s7, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 12
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	fcvt.d.s	$fa0, $fa0
@@ -6519,7 +6544,7 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s7, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 16
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	fcvt.d.s	$fa0, $fa0
@@ -6527,7 +6552,7 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s7, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 20
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	fcvt.d.s	$fa0, $fa0
@@ -6535,7 +6560,7 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s7, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 84
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	fcvt.d.s	$fa0, $fa0
@@ -6543,7 +6568,7 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s7, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 88
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	fcvt.d.s	$fa0, $fa0
@@ -6551,7 +6576,7 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, %pc_lo12(snr)
+	ld.d	$a0, $s7, %pc_lo12(snr)
 	fld.s	$fa0, $a0, 92
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	fcvt.d.s	$fa0, $fa0
@@ -6559,7 +6584,7 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s6, %pc_lo12(stats)
 	fld.s	$fa0, $a0, 744
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	fcvt.d.s	$fa0, $fa0
@@ -6569,7 +6594,7 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s6, %pc_lo12(stats)
 	fld.s	$fa0, $a0, 748
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	fcvt.d.s	$fa0, $fa0
@@ -6577,7 +6602,7 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s6, %pc_lo12(stats)
 	fld.s	$fa0, $a0, 752
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	fcvt.d.s	$fa0, $fa0
@@ -6585,7 +6610,7 @@ report:                                 # @report
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(stats)
+	ld.d	$a0, $s6, %pc_lo12(stats)
 	fld.s	$fa0, $a0, 12
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	fcvt.d.s	$fa0, $fa0
@@ -6595,8 +6620,8 @@ report:                                 # @report
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, %pc_lo12(p_log)
-	pcalau12i	$s4, %pc_hi20(tot_time)
-	ld.w	$a2, $s4, %pc_lo12(tot_time)
+	pcalau12i	$s2, %pc_hi20(tot_time)
+	ld.w	$a2, $s2, %pc_lo12(tot_time)
 	pcalau12i	$a1, %pc_hi20(.L.str.196)
 	addi.d	$fp, $a1, %pc_lo12(.L.str.196)
 	move	$a1, $fp
@@ -6621,17 +6646,17 @@ report:                                 # @report
 	addi.d	$a1, $a1, %pc_lo12(.L.str.7)
 	pcaddu18i	$ra, %call36(fopen64)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, %pc_lo12(stats)
-	ld.d	$a4, $s1, %pc_lo12(input)
+	ld.d	$a1, $s6, %pc_lo12(stats)
+	ld.d	$a4, $s5, %pc_lo12(input)
 	ld.w	$a3, $a1, 700
 	ld.w	$a2, $a4, 8
 	st.d	$a0, $s0, %pc_lo12(p_log)
 	beqz	$a3, .LBB14_134
 # %bb.132:
-	ld.w	$a5, $s8, 4
+	ld.w	$a5, $s1, 4
 	beqz	$a5, .LBB14_134
 # %bb.133:
-	ld.d	$a6, $s5, %pc_lo12(snr)
+	ld.d	$a6, $s7, %pc_lo12(snr)
 	ld.w	$a3, $a4, 12
 	fld.s	$fa0, $a6, 12
 	fld.s	$fa1, $a6, 16
@@ -6652,7 +6677,7 @@ report:                                 # @report
 	add.d	$t0, $a2, $a5
 	addi.w	$t1, $t0, 0
 	ld.d	$a1, $a1, 736
-	fld.d	$fa6, $s4, %pc_lo12(tot_time)
+	fld.d	$fa6, $s2, %pc_lo12(tot_time)
 	pcalau12i	$t2, %pc_hi20(.LCPI14_0)
 	fld.d	$fa7, $t2, %pc_lo12(.LCPI14_0)
 	div.d	$a6, $a6, $t1
@@ -6681,7 +6706,7 @@ report:                                 # @report
 .LBB14_134:
 	beqz	$a2, .LBB14_137
 # %bb.135:
-	ld.d	$a5, $s5, %pc_lo12(snr)
+	ld.d	$a5, $s7, %pc_lo12(snr)
 	ld.w	$a3, $a4, 12
 	fld.s	$fa0, $a5, 12
 	fld.s	$fa1, $a5, 16
@@ -6698,7 +6723,7 @@ report:                                 # @report
 	fcvt.d.s	$fa4, $fa4
 	fcvt.d.s	$fa5, $fa5
 	ld.d	$a1, $a1, 16
-	fld.d	$fa6, $s4, %pc_lo12(tot_time)
+	fld.d	$fa6, $s2, %pc_lo12(tot_time)
 	pcalau12i	$a6, %pc_hi20(.LCPI14_0)
 	fld.d	$fa7, $a6, %pc_lo12(.LCPI14_0)
 	add.d	$a1, $a1, $a5
@@ -6730,7 +6755,7 @@ report:                                 # @report
 	ld.d	$a0, $s0, %pc_lo12(p_log)
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, %pc_lo12(input)
+	ld.d	$a0, $s5, %pc_lo12(input)
 	ldptr.w	$a0, $a0, 5104
 	beqz	$a0, .LBB14_141
 # %bb.138:
@@ -6765,28 +6790,28 @@ report:                                 # @report
 	pcaddu18i	$ra, %call36(snprintf)
 	jirl	$ra, $ra, 0
 .LBB14_141:
-	fld.d	$fs6, $sp, 1712                 # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 1720                 # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 1728                 # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 1736                 # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 1744                 # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 1752                 # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 1760                 # 8-byte Folded Reload
-	ld.d	$s8, $sp, 1768                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 1776                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 1784                  # 8-byte Folded Reload
-	ld.d	$s5, $sp, 1792                  # 8-byte Folded Reload
-	ld.d	$s4, $sp, 1800                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 1808                  # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1816                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 1824                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 1832                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 1840                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 1848                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 1856
+	fld.d	$fs6, $sp, 1744                 # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 1752                 # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 1760                 # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 1768                 # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 1776                 # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 1784                 # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 1792                 # 8-byte Folded Reload
+	ld.d	$s8, $sp, 1800                  # 8-byte Folded Reload
+	ld.d	$s7, $sp, 1808                  # 8-byte Folded Reload
+	ld.d	$s6, $sp, 1816                  # 8-byte Folded Reload
+	ld.d	$s5, $sp, 1824                  # 8-byte Folded Reload
+	ld.d	$s4, $sp, 1832                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 1840                  # 8-byte Folded Reload
+	ld.d	$s2, $sp, 1848                  # 8-byte Folded Reload
+	ld.d	$s1, $sp, 1856                  # 8-byte Folded Reload
+	ld.d	$s0, $sp, 1864                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1872                  # 8-byte Folded Reload
+	ld.d	$ra, $sp, 1880                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 1888
 	ret
 .LBB14_142:
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	ld.w	$a2, $a1, 12
 	ld.w	$a3, $a1, 16
 	pcalau12i	$a1, %pc_hi20(.L.str.52)

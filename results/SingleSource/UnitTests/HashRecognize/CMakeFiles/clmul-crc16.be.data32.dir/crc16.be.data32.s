@@ -96,22 +96,22 @@ crc_loop:                               # @crc_loop
 	slli.d	$a2, $a1, 4
 	xor	$a2, $a1, $a2
 	slli.d	$a3, $a1, 5
-	xor	$a2, $a2, $a3
-	slli.d	$a3, $a1, 6
+	slli.d	$a4, $a1, 6
+	xor	$a3, $a3, $a4
 	xor	$a2, $a2, $a3
 	slli.d	$a3, $a1, 10
-	xor	$a2, $a2, $a3
-	slli.d	$a3, $a1, 12
-	xor	$a2, $a2, $a3
-	slli.d	$a3, $a1, 13
+	slli.d	$a4, $a1, 12
+	xor	$a3, $a3, $a4
+	slli.d	$a4, $a1, 13
+	xor	$a3, $a3, $a4
 	xor	$a2, $a2, $a3
 	slli.d	$a3, $a1, 20
-	xor	$a2, $a2, $a3
-	slli.d	$a3, $a1, 21
-	xor	$a2, $a2, $a3
-	slli.d	$a3, $a1, 24
-	xor	$a2, $a2, $a3
+	slli.d	$a4, $a1, 21
+	xor	$a3, $a3, $a4
+	slli.d	$a4, $a1, 24
+	xor	$a3, $a3, $a4
 	slli.d	$a1, $a1, 28
+	xor	$a1, $a3, $a1
 	xor	$a1, $a2, $a1
 	slli.d	$a0, $a0, 48
 	xor	$a0, $a1, $a0

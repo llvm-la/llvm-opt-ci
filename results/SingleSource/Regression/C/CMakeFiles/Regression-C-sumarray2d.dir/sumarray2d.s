@@ -230,22 +230,22 @@ main:                                   # @main
 	vld	$vr4, $a1, 64
 	vld	$vr5, $a1, 32
 	vld	$vr6, $a1, 0
-	vld	$vr7, $a1, -32
+	vld	$vr7, $a1, -96
 	vld	$vr8, $a1, -160
 	vld	$vr9, $a1, -192
 	vld	$vr10, $a1, -128
-	vld	$vr11, $a1, -96
+	vld	$vr11, $a1, -32
 	vld	$vr12, $a1, -64
 	vadd.w	$vr8, $vr8, $vr9
-	vadd.w	$vr8, $vr10, $vr8
-	vadd.w	$vr8, $vr11, $vr8
-	vadd.w	$vr8, $vr12, $vr8
+	vadd.w	$vr7, $vr7, $vr10
 	vadd.w	$vr7, $vr7, $vr8
+	vadd.w	$vr8, $vr11, $vr12
+	vadd.w	$vr6, $vr6, $vr8
 	vadd.w	$vr6, $vr6, $vr7
-	vadd.w	$vr5, $vr5, $vr6
 	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr2, $vr2, $vr3
+	vadd.w	$vr2, $vr2, $vr6
 	vadd.w	$vr1, $vr1, $vr2
 	vld	$vr2, $a1, 144
 	vld	$vr3, $a1, 112
@@ -255,36 +255,36 @@ main:                                   # @main
 	vld	$vr7, $a1, -16
 	vld	$vr8, $a1, -48
 	vld	$vr9, $a1, -80
-	vld	$vr10, $a1, -112
+	vld	$vr10, $a1, -144
 	vld	$vr11, $a1, -208
 	vld	$vr12, $a1, -176
-	vld	$vr13, $a1, -144
+	vld	$vr13, $a1, -112
 	vori.b	$vr14, $vr0, 0
 	vinsgr2vr.w	$vr14, $a3, 0
 	vadd.w	$vr11, $vr11, $vr14
-	vadd.w	$vr11, $vr12, $vr11
-	vadd.w	$vr11, $vr13, $vr11
+	vadd.w	$vr10, $vr10, $vr12
 	vadd.w	$vr10, $vr10, $vr11
-	vadd.w	$vr9, $vr9, $vr10
+	vadd.w	$vr9, $vr9, $vr13
 	vadd.w	$vr8, $vr8, $vr9
-	vadd.w	$vr7, $vr7, $vr8
+	vadd.w	$vr8, $vr8, $vr10
 	vadd.w	$vr6, $vr6, $vr7
 	vadd.w	$vr5, $vr5, $vr6
 	vadd.w	$vr4, $vr4, $vr5
-	vadd.w	$vr3, $vr3, $vr4
+	vadd.w	$vr4, $vr4, $vr8
 	vadd.w	$vr2, $vr2, $vr3
+	vadd.w	$vr2, $vr2, $vr4
+	ld.w	$a2, $a1, 176
+	ld.w	$a3, $a1, 180
 	vadd.w	$vr1, $vr1, $vr2
 	vhaddw.d.w	$vr1, $vr1, $vr1
-	vhaddw.q.d	$vr1, $vr1, $vr1
-	vpickve2gr.d	$a2, $vr1, 0
-	ld.w	$a3, $a1, 176
-	ld.w	$a4, $a1, 180
-	ld.w	$a5, $a1, 184
-	ld.w	$a6, $a1, 188
+	ld.w	$a4, $a1, 184
 	add.d	$a2, $a3, $a2
+	ld.w	$a3, $a1, 188
+	vhaddw.q.d	$vr1, $vr1, $vr1
 	add.d	$a2, $a4, $a2
-	add.d	$a2, $a5, $a2
-	add.w	$a3, $a6, $a2
+	vpickve2gr.d	$a4, $vr1, 0
+	add.d	$a2, $a3, $a2
+	add.w	$a3, $a2, $a4
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 400
 	bnez	$a0, .LBB1_15

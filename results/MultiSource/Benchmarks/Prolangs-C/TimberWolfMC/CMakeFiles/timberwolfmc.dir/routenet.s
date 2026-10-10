@@ -110,8 +110,8 @@ routenet:                               # @routenet
 	ld.d	$s2, $a2, %got_pc_lo12(bareMinimum)
 	ld.w	$a2, $s2, 0
 	sltui	$a2, $a2, 1
-	and	$a0, $a0, $a2
-	and	$s3, $a0, $a1
+	and	$a0, $a0, $a1
+	and	$s3, $a0, $a2
 	beqz	$s3, .LBB0_7
 # %bb.6:
 	ori	$a0, $zero, 1
@@ -853,8 +853,8 @@ recursePath:                            # @recursePath
 	beq	$a2, $a3, .LBB1_34
 .LBB1_32:
 	sub.d	$a2, $a0, $a1
-	add.d	$a0, $s4, $a0
-	sub.d	$s4, $a0, $a1
+	sub.d	$a0, $a0, $a1
+	add.d	$s4, $s4, $a0
 	.p2align	4, , 16
 .LBB1_33:                               # =>This Inner Loop Header: Depth=1
 	addi.d	$a2, $a2, -1

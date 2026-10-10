@@ -192,13 +192,14 @@ main:                                   # @main
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.w	$s0, $a0, 0
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	ld.w	$s8, $a0, 0
+	ld.w	$s7, $a0, 0
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$s6, $a0, 0
 	ld.d	$a0, $s3, 0
-	ld.w	$s4, $fp, 0
+	ld.w	$s8, $fp, 0
+	move	$s4, $fp
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
-	ld.w	$s7, $a1, 0
+	ld.w	$fp, $a1, 0
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$s5, $a1, 0
 	ld.d	$a1, $a0, 24
@@ -213,20 +214,20 @@ main:                                   # @main
 	sltu	$a1, $zero, $s0
 	slli.w	$a1, $a1, 3
 	or	$a0, $a0, $a1
-	sltu	$a1, $zero, $s8
-	slli.w	$a1, $a1, 1
-	or	$a0, $a0, $a1
-	sltu	$a1, $zero, $s6
-	slli.w	$a1, $a1, 2
-	or	$a0, $a0, $a1
-	sltu	$a1, $zero, $s4
-	or	$a0, $a0, $a1
 	sltu	$a1, $zero, $s7
-	slli.w	$a1, $a1, 4
-	ld.w	$a2, $fp, 0
+	slli.w	$a1, $a1, 1
+	sltu	$a2, $zero, $s6
+	slli.w	$a2, $a2, 2
+	or	$a1, $a1, $a2
 	or	$a0, $a0, $a1
-	sltu	$a1, $zero, $s5
-	slli.w	$a1, $a1, 8
+	sltu	$a1, $zero, $s8
+	sltu	$a2, $zero, $fp
+	slli.w	$a2, $a2, 4
+	or	$a1, $a1, $a2
+	ld.w	$a2, $s4, 0
+	sltu	$a3, $zero, $s5
+	slli.w	$a3, $a3, 8
+	or	$a1, $a1, $a3
 	or	$s5, $a0, $a1
 	beqz	$a2, .LBB0_32
 # %bb.16:                               #   in Loop: Header=BB0_8 Depth=1

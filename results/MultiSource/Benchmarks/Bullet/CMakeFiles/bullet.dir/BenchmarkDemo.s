@@ -7219,12 +7219,12 @@ _ZN13btRaycastBar24castEP16btCollisionWorld: # @_ZN13btRaycastBar24castEP16btCol
 	lu52i.d	$a2, $a2, 524
 	mulh.d	$a1, $a1, $a2
 	srli.d	$a2, $a1, 63
-	srli.d	$a1, $a1, 7
 	ld.w	$a3, $a5, 4
+	srli.d	$a1, $a1, 7
 	ld.w	$a4, $a5, 0
 	add.d	$a1, $a1, $a2
-	add.d	$a0, $a1, $a0
-	add.w	$a0, $a3, $a0
+	add.d	$a0, $a3, $a0
+	add.w	$a0, $a0, $a1
 	addi.d	$a1, $a4, 1
 	st.w	$a1, $a5, 0
 	ori	$a1, $zero, 49

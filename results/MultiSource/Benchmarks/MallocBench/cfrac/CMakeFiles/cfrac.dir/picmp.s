@@ -44,8 +44,8 @@ picmp:                                  # @picmp
 	bne	$a2, $a3, .LBB0_14
 # %bb.7:
 	ld.hu	$a2, $a0, 8
-	add.d	$a1, $a1, $a2
-	sub.w	$fp, $zero, $a1
+	sub.d	$a1, $zero, $a1
+	sub.w	$fp, $a1, $a2
 	b	.LBB0_14
 .LBB0_8:
 	bltz	$a1, .LBB0_13

@@ -2321,10 +2321,10 @@ load1SeqWithoutName_realloc:            # @load1SeqWithoutName_realloc
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	st.d	$s8, $sp, 64                    # 8-byte Folded Spill
-	add.d	$a0, $fp, $s8
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	add.d	$s4, $a0, $a1
+	add.d	$a0, $s8, $a0
+	add.d	$s4, $fp, $a0
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $s6
 	move	$s8, $s1

@@ -243,8 +243,8 @@ GetAnnexbNALU:                          # @GetAnnexbNALU
 	addi.w	$s3, $a1, 2
 	add.w	$a1, $a0, $s4
 	sub.d	$a2, $s6, $s2
+	sub.d	$a2, $a2, $s4
 	sub.d	$a0, $a2, $a0
-	sub.d	$a0, $a0, $s4
 	add.d	$a0, $a0, $s1
 	addi.d	$a2, $a0, 2
 	ld.d	$a0, $s0, 24

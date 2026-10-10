@@ -72,8 +72,8 @@ psub:                                   # @psub
 	ldx.hu	$a6, $fp, $a1
 	ldx.hu	$a7, $s0, $a1
 	xor	$a6, $a6, $a5
-	add.d	$a2, $a2, $a6
 	add.d	$a2, $a2, $a7
+	add.d	$a2, $a2, $a6
 	stx.h	$a2, $a0, $a1
 	addi.d	$a1, $a1, 2
 	add.d	$a6, $fp, $a1

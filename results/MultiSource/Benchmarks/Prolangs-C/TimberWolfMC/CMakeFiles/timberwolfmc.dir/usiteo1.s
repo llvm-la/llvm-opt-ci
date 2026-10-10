@@ -80,7 +80,7 @@ usiteo1:                                # @usiteo1
 	ldx.d	$a1, $a2, $a1
 	slli.d	$a2, $a3, 3
 	ldx.d	$a1, $a1, $a2
-	add.d	$s5, $a0, $s5
+	add.d	$s8, $a0, $s5
 	pcalau12i	$a0, %got_pc_hi20(occa2ptr)
 	ld.d	$s7, $a0, %got_pc_lo12(occa2ptr)
 	st.d	$a1, $s7, 0
@@ -109,15 +109,16 @@ usiteo1:                                # @usiteo1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(ufixnet)
 	jirl	$ra, $ra, 0
-	add.d	$fp, $a0, $fp
+	move	$s5, $a0
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(usoftnet)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s6, 0
 	ld.w	$a2, $s0, 0
-	add.d	$s8, $fp, $a0
-	move	$fp, $s5
-	add.w	$a0, $s8, $s5
+	add.d	$a0, $fp, $a0
+	move	$fp, $s8
+	add.d	$s8, $s5, $a0
+	add.w	$a0, $s8, $fp
 	add.w	$a1, $a2, $a1
 	bge	$a1, $a0, .LBB0_2
 # %bb.1:

@@ -1660,7 +1660,7 @@ opts_Read:                              # @opts_Read
 	pcalau12i	$a2, %got_pc_hi20(memory_MARKSIZE)
 	ld.d	$a2, $a2, %got_pc_lo12(memory_MARKSIZE)
 	ld.w	$a2, $a2, 0
-	add.d	$a1, $a1, $a2
+	add.d	$a0, $a2, $a0
 	add.d	$a0, $a1, $a0
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$a0, $a0, 16

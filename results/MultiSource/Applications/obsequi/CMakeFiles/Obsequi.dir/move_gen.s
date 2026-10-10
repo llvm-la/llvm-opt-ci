@@ -44,8 +44,8 @@ move_generator:                         # @move_generator
 	srli.d	$t1, $t2, 1
 	bstrpick.d	$t3, $t0, 31, 1
 	and	$t0, $t3, $t0
+	or	$t1, $t1, $t2
 	or	$t0, $t1, $t0
-	or	$t0, $t0, $t2
 	addi.w	$t1, $t0, 0
 	beq	$t1, $a5, .LBB0_3
 # %bb.5:                                #   in Loop: Header=BB0_4 Depth=1

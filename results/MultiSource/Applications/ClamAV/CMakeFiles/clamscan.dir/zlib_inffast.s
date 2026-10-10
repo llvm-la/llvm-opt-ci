@@ -56,8 +56,8 @@ inflate_fast:                           # @inflate_fast
 	add.d	$t3, $t1, $t3
 	st.d	$t3, $sp, 136                   # 8-byte Folded Spill
 	nor	$t3, $t4, $zero
-	add.d	$t1, $t1, $t3
 	sub.d	$a1, $t1, $a1
+	add.d	$a1, $a1, $t3
 	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	andi	$a1, $t4, 28
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
@@ -270,8 +270,8 @@ inflate_fast:                           # @inflate_fast
 # %bb.31:                               #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$t1, $sp, 128                   # 8-byte Folded Reload
 	add.d	$t1, $t1, $fp
-	add.d	$t1, $t1, $t3
-	sub.w	$t1, $t1, $s5
+	sub.d	$t3, $t3, $s5
+	add.w	$t1, $t1, $t3
 	bltu	$t1, $s3, .LBB0_33
 # %bb.32:                               #   in Loop: Header=BB0_1 Depth=1
 	add.d	$t3, $s0, $s1
@@ -351,8 +351,8 @@ inflate_fast:                           # @inflate_fast
 # %bb.47:                               #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	add.d	$a1, $a1, $fp
-	add.d	$a1, $a1, $t3
-	sub.w	$a1, $a1, $s5
+	sub.d	$t3, $t3, $s5
+	add.w	$a1, $a1, $t3
 	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	bltu	$a1, $s3, .LBB0_49
 # %bb.48:                               #   in Loop: Header=BB0_1 Depth=1
@@ -385,8 +385,8 @@ inflate_fast:                           # @inflate_fast
 # %bb.53:                               #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	add.d	$a1, $a1, $fp
-	add.d	$a1, $a1, $t3
-	sub.w	$a1, $a1, $s5
+	sub.d	$t1, $t3, $s5
+	add.w	$a1, $a1, $t1
 	ori	$t1, $zero, 3
 	bltu	$a1, $t1, .LBB0_55
 # %bb.54:                               #   in Loop: Header=BB0_1 Depth=1

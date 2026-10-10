@@ -1577,39 +1577,39 @@ pickSpot:                               # @pickSpot
 	ld.w	$a3, $s6, 60
 	sub.d	$a2, $a2, $s7
 	ld.w	$a4, $s1, 16
-	add.w	$s3, $a1, $a0
-	add.w	$s4, $a3, $a0
+	add.w	$s4, $a1, $a0
+	add.w	$s5, $a3, $a0
 	ld.w	$a0, $s6, 64
 	ld.w	$a1, $s6, 68
 	fld.d	$fa0, $s6, 8
 	addi.d	$a2, $a2, 1
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	add.w	$s2, $a0, $a4
-	add.w	$s5, $a1, $a4
-	move	$a0, $s3
-	move	$a1, $s2
-	move	$a2, $s5
+	add.w	$s3, $a0, $a4
+	add.w	$s2, $a1, $a4
+	move	$a0, $s4
+	move	$a1, $s3
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(wireestx)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s6, 16
-	sub.w	$s3, $s3, $a0
-	move	$a0, $s4
-	move	$a1, $s2
-	move	$a2, $s5
+	sub.w	$s4, $s4, $a0
+	move	$a0, $s5
+	move	$a1, $s3
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(wireestx)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s6, 24
-	add.w	$s4, $a0, $s4
-	move	$a0, $s2
-	move	$a1, $s3
-	move	$a2, $s4
+	add.w	$s5, $a0, $s5
+	move	$a0, $s3
+	move	$a1, $s4
+	move	$a2, $s5
 	pcaddu18i	$ra, %call36(wireesty)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s6, 32
 	move	$s6, $a0
-	move	$a0, $s5
-	move	$a1, $s3
-	move	$a2, $s4
+	move	$a0, $s2
+	move	$a1, $s4
+	move	$a2, $s5
 	pcaddu18i	$ra, %call36(wireesty)
 	jirl	$ra, $ra, 0
 	ld.d	$t8, $sp, 16                    # 8-byte Folded Reload
@@ -1617,17 +1617,17 @@ pickSpot:                               # @pickSpot
 	ld.d	$t6, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a1, $t7, 0
 	ld.w	$a2, $t6, 0
-	add.d	$a0, $a0, $s5
-	sub.w	$a3, $s3, $a1
+	sub.w	$a3, $s4, $a1
 	ld.w	$a7, $t8, 0
 	div.w	$a3, $a3, $a2
-	sub.w	$a4, $s4, $a1
+	sub.w	$a4, $s5, $a1
 	div.w	$a4, $a4, $a2
 	add.d	$a5, $s6, $a7
-	sub.w	$a5, $s2, $a5
+	sub.w	$a5, $s3, $a5
 	div.w	$a5, $a5, $a2
+	sub.d	$a6, $s2, $a7
 	ld.w	$t0, $s1, 12
-	sub.w	$a0, $a0, $a7
+	add.w	$a0, $a0, $a6
 	ld.w	$t1, $s1, 16
 	div.w	$a6, $a0, $a2
 	sub.w	$a0, $t0, $a1
@@ -1887,8 +1887,8 @@ fixSpot:                                # @fixSpot
 	bge	$a3, $a1, .LBB3_17
 # %bb.1:
 	ld.w	$a3, $s4, 0
-	add.d	$a0, $a0, $s1
-	sub.w	$a0, $a0, $a3
+	sub.d	$a5, $s1, $a3
+	add.w	$a0, $a0, $a5
 	div.w	$a0, $a0, $a2
 	add.d	$a3, $s2, $a3
 	sub.w	$a3, $s0, $a3
@@ -2045,8 +2045,8 @@ fixSpot:                                # @fixSpot
 	bge	$a3, $a1, .LBB3_34
 # %bb.18:
 	ld.w	$a3, $s4, 0
-	add.d	$a0, $a0, $s0
-	sub.w	$a0, $a0, $a3
+	sub.d	$a5, $s0, $a3
+	add.w	$a0, $a0, $a5
 	div.w	$a0, $a0, $a2
 	add.d	$a3, $s1, $a3
 	sub.w	$a3, $fp, $a3
@@ -2219,8 +2219,8 @@ fixSpotAsp:                             # @fixSpotAsp
 	pcalau12i	$a1, %got_pc_hi20(spotXhash)
 	ld.d	$s6, $a1, %got_pc_lo12(spotXhash)
 	ld.w	$a1, $s6, 0
-	add.d	$a2, $s5, $a1
-	sub.w	$a3, $s4, $a2
+	sub.d	$a2, $s4, $s5
+	sub.w	$a3, $a2, $a1
 	pcalau12i	$a2, %got_pc_hi20(spotSize)
 	ld.d	$s5, $a2, %got_pc_lo12(spotSize)
 	ld.w	$a2, $s5, 0
@@ -2233,8 +2233,8 @@ fixSpotAsp:                             # @fixSpotAsp
 	bge	$a3, $a1, .LBB4_17
 # %bb.1:
 	ld.w	$a3, $s4, 0
-	add.d	$a0, $a0, $a3
-	sub.w	$a0, $s1, $a0
+	sub.d	$a0, $s1, $a0
+	sub.w	$a0, $a0, $a3
 	div.w	$a0, $a0, $a2
 	add.d	$a3, $s2, $a3
 	sub.w	$a3, $s0, $a3
@@ -2391,8 +2391,8 @@ fixSpotAsp:                             # @fixSpotAsp
 	bge	$a3, $a1, .LBB4_34
 # %bb.18:
 	ld.w	$a3, $s4, 0
-	add.d	$a0, $a0, $s0
-	sub.w	$a0, $a0, $a3
+	sub.d	$a5, $s0, $a3
+	add.w	$a0, $a0, $a5
 	div.w	$a0, $a0, $a2
 	add.d	$a3, $s1, $a3
 	sub.w	$a3, $fp, $a3

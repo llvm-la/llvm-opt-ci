@@ -595,13 +595,13 @@ EXAMINE:                                # @EXAMINE
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s3, 0
 	ldx.b	$a1, $a1, $s2
-	slli.d	$a2, $s1, 16
-	slli.d	$a0, $a0, 8
-	add.d	$s1, $a0, $a2
+	slli.d	$s1, $s1, 16
+	slli.d	$s2, $a0, 8
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
-	add.w	$s1, $s1, $a0
+	add.d	$a0, $s1, $a0
+	add.w	$s1, $s2, $a0
 	st.w	$s1, $sp, 20
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.18)

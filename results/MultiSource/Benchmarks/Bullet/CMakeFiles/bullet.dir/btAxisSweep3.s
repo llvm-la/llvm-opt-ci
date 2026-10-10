@@ -3255,13 +3255,13 @@ _ZN20btAxisSweep3InternalItE11sortMinDownEitP12btDispatcherb: # @_ZN20btAxisSwee
 	ld.hu	$a5, $s3, 2
 	slli.d	$a6, $a5, 6
 	alsl.d	$a5, $a5, $a6, 4
-	add.d	$a5, $a2, $a5
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	masknez	$a6, $a3, $a0
 	maskeqz	$a0, $a4, $a0
 	or	$a0, $a0, $a6
-	add.d	$a0, $a5, $a0
+	add.d	$a0, $a2, $a0
+	add.d	$a0, $a0, $a5
 	ldx.h	$a5, $a0, $a1
 	addi.d	$a5, $a5, 1
 	stx.h	$a5, $a0, $a1
@@ -3502,13 +3502,13 @@ _ZN20btAxisSweep3InternalItE11sortMaxDownEitP12btDispatcherb: # @_ZN20btAxisSwee
 	ld.hu	$a6, $a5, 2
 	slli.d	$a7, $a6, 6
 	alsl.d	$a6, $a6, $a7, 4
-	add.d	$a6, $a2, $a6
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	masknez	$a7, $a3, $a0
 	maskeqz	$a0, $a4, $a0
 	or	$a0, $a0, $a7
-	add.d	$a0, $a6, $a0
+	add.d	$a0, $a2, $a0
+	add.d	$a0, $a0, $a6
 	ldx.h	$a6, $a0, $a1
 	addi.d	$a6, $a6, 1
 	stx.h	$a6, $a0, $a1
@@ -5229,13 +5229,13 @@ _ZN20btAxisSweep3InternalIjE11sortMinDownEijP12btDispatcherb: # @_ZN20btAxisSwee
 	ld.wu	$a5, $s3, 4
 	alsl.d	$a5, $a5, $a5, 1
 	slli.d	$a5, $a5, 5
-	add.d	$a5, $a2, $a5
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	masknez	$a6, $a3, $a0
 	maskeqz	$a0, $a4, $a0
 	or	$a0, $a0, $a6
-	add.d	$a0, $a5, $a0
+	add.d	$a0, $a2, $a0
+	add.d	$a0, $a0, $a5
 	ldx.w	$a5, $a0, $a1
 	addi.d	$a5, $a5, 1
 	stx.w	$a5, $a0, $a1
@@ -5477,13 +5477,13 @@ _ZN20btAxisSweep3InternalIjE11sortMaxDownEijP12btDispatcherb: # @_ZN20btAxisSwee
 	ld.wu	$a6, $a5, 4
 	alsl.d	$a6, $a6, $a6, 1
 	slli.d	$a6, $a6, 5
-	add.d	$a6, $a2, $a6
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	masknez	$a7, $a3, $a0
 	maskeqz	$a0, $a4, $a0
 	or	$a0, $a0, $a7
-	add.d	$a0, $a6, $a0
+	add.d	$a0, $a2, $a0
+	add.d	$a0, $a0, $a6
 	ldx.w	$a6, $a0, $a1
 	addi.d	$a6, $a6, 1
 	stx.w	$a6, $a0, $a1

@@ -27,8 +27,8 @@ test_array_ref_2_3:                     # @test_array_ref_2_3
 	ld.w	$a0, $s0, %pc_lo12(v0)
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s1, .LBB0_26
@@ -74,8 +74,8 @@ test_array_ref_2_3:                     # @test_array_ref_2_3
 	ld.w	$a0, $s1, %pc_lo12(v1)
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s2, .LBB0_32
@@ -120,8 +120,8 @@ test_array_ref_2_3:                     # @test_array_ref_2_3
 	ld.w	$a0, $s0, %pc_lo12(v0)
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s3, .LBB0_38
@@ -166,8 +166,8 @@ test_array_ref_2_3:                     # @test_array_ref_2_3
 	ld.w	$a0, $s1, %pc_lo12(v1)
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s3, .LBB0_44
@@ -484,8 +484,8 @@ test_array_off_2_3:                     # @test_array_off_2_3
 	ld.w	$a0, $s1, %pc_lo12(v0)
 	ld.w	$a1, $s1, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
@@ -518,8 +518,8 @@ test_array_off_2_3:                     # @test_array_off_2_3
 	ld.w	$a0, $s0, %pc_lo12(v1)
 	ld.w	$a1, $s1, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s2, .LBB1_29
@@ -536,8 +536,8 @@ test_array_off_2_3:                     # @test_array_off_2_3
 	ld.w	$a0, $s0, %pc_lo12(v1)
 	ld.w	$a1, $s0, %pc_lo12(v1)
 	alsl.d	$a0, $a0, $a0, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s2, .LBB1_31
@@ -571,8 +571,8 @@ test_array_off_2_3:                     # @test_array_off_2_3
 	ld.w	$a0, $s1, %pc_lo12(v0)
 	ld.w	$a1, $s1, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
@@ -604,8 +604,8 @@ test_array_off_2_3:                     # @test_array_off_2_3
 	ld.w	$a0, $s0, %pc_lo12(v1)
 	ld.w	$a1, $s1, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s3, .LBB1_40
@@ -622,8 +622,8 @@ test_array_off_2_3:                     # @test_array_off_2_3
 	ld.w	$a0, $s0, %pc_lo12(v1)
 	ld.w	$a1, $s0, %pc_lo12(v1)
 	alsl.d	$a0, $a0, $a0, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s1, .LBB1_42
@@ -928,8 +928,8 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a0, $s0, %pc_lo12(v0)
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 2
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s1, .LBB2_48
@@ -938,8 +938,8 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$s1, $zero, 1
@@ -949,9 +949,9 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s1, .LBB2_50
@@ -1002,8 +1002,8 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a0, $s0, %pc_lo12(v0)
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 2
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s3, .LBB2_56
@@ -1012,8 +1012,8 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$s3, $zero, 1
@@ -1023,9 +1023,9 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s3, .LBB2_58
@@ -1033,8 +1033,8 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a0, $s1, %pc_lo12(v1)
 	ld.w	$a1, $s1, %pc_lo12(v1)
 	alsl.d	$a0, $a0, $a0, 2
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
@@ -1044,8 +1044,8 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s1, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 2
@@ -1055,9 +1055,9 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s1, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 4
@@ -1067,9 +1067,9 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s1, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -1080,9 +1080,9 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s1, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -1131,8 +1131,8 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a0, $s0, %pc_lo12(v0)
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 2
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s3, .LBB2_69
@@ -1141,8 +1141,8 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$s3, $zero, 1
@@ -1152,9 +1152,9 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s3, .LBB2_71
@@ -1202,8 +1202,8 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a0, $s0, %pc_lo12(v0)
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 2
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s2, .LBB2_77
@@ -1212,8 +1212,8 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$s2, $zero, 1
@@ -1223,9 +1223,9 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v0)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s2, .LBB2_79
@@ -1233,8 +1233,8 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a0, $s1, %pc_lo12(v1)
 	ld.w	$a1, $s1, %pc_lo12(v1)
 	alsl.d	$a0, $a0, $a0, 2
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
@@ -1244,8 +1244,8 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s1, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 2
@@ -1255,9 +1255,9 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s1, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 4
@@ -1267,9 +1267,9 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s1, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -1280,9 +1280,9 @@ test_array_ref_2_2_5:                   # @test_array_ref_2_2_5
 	ld.w	$a1, $s1, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -1746,8 +1746,8 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a0, $s1, %pc_lo12(v0)
 	ld.w	$a1, $s1, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 2
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s0, .LBB3_32
@@ -1756,22 +1756,22 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a1, $s1, %pc_lo12(v0)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$s0, $zero, 1
 	bne	$a0, $s0, .LBB3_33
 # %bb.3:
 	ld.w	$a0, $s1, %pc_lo12(v0)
-	slli.d	$a1, $a0, 3
-	ld.w	$a2, $s1, %pc_lo12(v0)
-	alsl.d	$a0, $a0, $a1, 1
 	ld.w	$a1, $s1, %pc_lo12(v0)
-	add.d	$a0, $fp, $a0
-	alsl.d	$a2, $a2, $a2, 2
+	slli.d	$a2, $a0, 3
+	alsl.d	$a0, $a0, $a2, 1
+	ld.w	$a2, $s1, %pc_lo12(v0)
+	alsl.d	$a1, $a1, $a1, 2
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s0, .LBB3_34
@@ -1805,8 +1805,8 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a0, $s1, %pc_lo12(v0)
 	ld.w	$a1, $s1, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 2
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s3, .LBB3_38
@@ -1815,8 +1815,8 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a1, $s1, %pc_lo12(v0)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$s3, $zero, 1
@@ -1826,9 +1826,9 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a1, $s1, %pc_lo12(v0)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s3, .LBB3_40
@@ -1836,8 +1836,8 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a0, $s0, %pc_lo12(v1)
 	ld.w	$a1, $s0, %pc_lo12(v1)
 	alsl.d	$a0, $a0, $a0, 2
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
@@ -1847,8 +1847,8 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 2
@@ -1858,9 +1858,9 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 4
@@ -1870,9 +1870,9 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -1883,9 +1883,9 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -1902,8 +1902,8 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a0, $s1, %pc_lo12(v0)
 	ld.w	$a1, $s1, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 2
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s3, .LBB3_47
@@ -1912,22 +1912,22 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a1, $s1, %pc_lo12(v0)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$s3, $zero, 1
 	bne	$a0, $s3, .LBB3_48
 # %bb.18:
 	ld.w	$a0, $s1, %pc_lo12(v0)
-	slli.d	$a1, $a0, 3
-	ld.w	$a2, $s1, %pc_lo12(v0)
-	alsl.d	$a0, $a0, $a1, 1
 	ld.w	$a1, $s1, %pc_lo12(v0)
-	add.d	$a0, $fp, $a0
-	alsl.d	$a2, $a2, $a2, 2
+	slli.d	$a2, $a0, 3
+	alsl.d	$a0, $a0, $a2, 1
+	ld.w	$a2, $s1, %pc_lo12(v0)
+	alsl.d	$a1, $a1, $a1, 2
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s3, .LBB3_49
@@ -1958,8 +1958,8 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a0, $s1, %pc_lo12(v0)
 	ld.w	$a1, $s1, %pc_lo12(v0)
 	alsl.d	$a0, $a0, $a0, 2
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s2, .LBB3_53
@@ -1968,8 +1968,8 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a1, $s1, %pc_lo12(v0)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$s2, $zero, 1
@@ -1979,9 +1979,9 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a1, $s1, %pc_lo12(v0)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s2, .LBB3_55
@@ -1989,8 +1989,8 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a0, $s0, %pc_lo12(v1)
 	ld.w	$a1, $s0, %pc_lo12(v1)
 	alsl.d	$a0, $a0, $a0, 2
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
@@ -2000,8 +2000,8 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 2
@@ -2011,9 +2011,9 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 4
@@ -2023,9 +2023,9 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -2036,9 +2036,9 @@ test_array_off_2_2_5:                   # @test_array_off_2_2_5
 	ld.w	$a1, $s0, %pc_lo12(v1)
 	slli.d	$a2, $a0, 3
 	alsl.d	$a0, $a0, $a2, 1
-	add.d	$a0, $fp, $a0
 	alsl.d	$a1, $a1, $a1, 2
-	add.d	$a0, $a0, $a1
+	add.d	$a1, $fp, $a1
+	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0

@@ -111,11 +111,11 @@ Fast_IDCT:                              # @Fast_IDCT
 	ld.h	$s0, $t6, -4
 	ld.h	$fp, $t6, -8
 	or	$s4, $t8, $s3
-	or	$s4, $s4, $t7
-	or	$s4, $s4, $s2
-	or	$s4, $s4, $s1
-	or	$s4, $s4, $s0
-	or	$s4, $s4, $fp
+	or	$s5, $t7, $s2
+	or	$s4, $s4, $s5
+	or	$s5, $s1, $s0
+	or	$s5, $s5, $fp
+	or	$s4, $s4, $s5
 	slli.d	$s4, $s4, 48
 	bnez	$s4, .LBB0_1
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
@@ -244,12 +244,12 @@ Fast_IDCT:                              # @Fast_IDCT
 	ld.h	$s1, $t6, -16
 	ld.h	$s0, $t6, -48
 	or	$s4, $fp, $s3
-	or	$s4, $s4, $t7
-	or	$s4, $s4, $s2
-	or	$s4, $s4, $t8
-	or	$s5, $s4, $s1
+	or	$s5, $t7, $s2
+	or	$s5, $s4, $s5
+	or	$s4, $t8, $s1
+	or	$s6, $s4, $s0
 	ld.h	$s4, $t6, -96
-	or	$s5, $s5, $s0
+	or	$s5, $s5, $s6
 	slli.d	$s5, $s5, 48
 	bnez	$s5, .LBB0_6
 # %bb.8:                                #   in Loop: Header=BB0_7 Depth=1

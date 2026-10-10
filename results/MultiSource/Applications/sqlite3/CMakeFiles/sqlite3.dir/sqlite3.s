@@ -2051,9 +2051,9 @@ vxprintf:                               # @vxprintf
 .LBB13_199:
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	slt	$a0, $zero, $a3
-	or	$a0, $a4, $a0
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	or	$a0, $a0, $a1
+	or	$a1, $a4, $a1
+	or	$a0, $a1, $a0
 	andi	$a2, $a0, 255
 	beqz	$a2, .LBB13_201
 # %bb.200:
@@ -2366,9 +2366,9 @@ vxprintf:                               # @vxprintf
 	sub.d	$a4, $a3, $a6
 	addi.d	$t0, $sp, 299
 	add.d	$t0, $t0, $a3
-	add.d	$t1, $a5, $a3
-	ld.d	$t2, $sp, 136                   # 8-byte Folded Reload
-	sub.w	$t1, $t1, $t2
+	ld.d	$t1, $sp, 136                   # 8-byte Folded Reload
+	sub.d	$t1, $a5, $t1
+	add.w	$t1, $t1, $a3
 	move	$t2, $a6
 .LBB13_249:                             # =>This Inner Loop Header: Depth=1
 	add.d	$t3, $t4, $t1
@@ -2394,8 +2394,8 @@ vxprintf:                               # @vxprintf
 	add.d	$t1, $t2, $t1
 	add.d	$a3, $a5, $a3
 	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
-	sub.d	$a3, $a3, $a5
-	sub.w	$a3, $a3, $a6
+	add.d	$a5, $a5, $a6
+	sub.w	$a3, $a3, $a5
 .LBB13_253:                             # =>This Inner Loop Header: Depth=1
 	add.d	$a5, $t4, $a3
 	ld.d	$a5, $a5, -7
@@ -15451,7 +15451,7 @@ sqlite3CreateFunc:                      # @sqlite3CreateFunc
 # %bb.7:
 	sltui	$t2, $a5, 1
 	xori	$t1, $t1, 1
-	and	$t1, $t2, $t1
+	and	$t0, $t0, $t2
 	and	$t0, $t0, $t1
 	bnez	$t0, .LBB149_9
 # %bb.8:
@@ -19447,20 +19447,20 @@ strHash:                                # @strHash
 	addi.d	$a0, $a1, 1
 	pcalau12i	$a1, %pc_hi20(sqlite3UpperToLower)
 	addi.d	$a1, $a1, %pc_lo12(sqlite3UpperToLower)
-	move	$a2, $zero
-	ori	$a3, $zero, 1
+	move	$a3, $zero
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB192_3:                              # =>This Inner Loop Header: Depth=1
 	ld.bu	$a4, $fp, 0
+	slli.d	$a5, $a3, 3
 	ldx.bu	$a4, $a1, $a4
-	slli.d	$a5, $a2, 3
 	addi.d	$fp, $fp, 1
-	xor	$a4, $a5, $a4
+	xor	$a3, $a5, $a3
 	addi.w	$a0, $a0, -1
-	xor	$a2, $a4, $a2
-	bltu	$a3, $a0, .LBB192_3
+	xor	$a3, $a3, $a4
+	bltu	$a2, $a0, .LBB192_3
 # %bb.4:
-	bstrpick.d	$a0, $a2, 30, 0
+	bstrpick.d	$a0, $a3, 30, 0
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -19486,12 +19486,12 @@ binHash:                                # @binHash
 	ori	$a3, $zero, 1
 	.p2align	4, , 16
 .LBB193_2:                              # =>This Inner Loop Header: Depth=1
-	ld.b	$a4, $a0, 0
-	slli.d	$a5, $a2, 3
+	slli.d	$a4, $a2, 3
+	ld.b	$a5, $a0, 0
 	addi.d	$a0, $a0, 1
-	xor	$a4, $a5, $a4
-	addi.w	$a1, $a1, -1
 	xor	$a2, $a4, $a2
+	addi.w	$a1, $a1, -1
+	xor	$a2, $a2, $a5
 	bltu	$a3, $a1, .LBB193_2
 # %bb.3:
 	bstrpick.d	$a0, $a2, 30, 0
@@ -20980,13 +20980,13 @@ sqlite3Randomness:                      # @sqlite3Randomness
 	.p2align	4, , 16
 .LBB209_16:                             #   Parent Loop BB209_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.b	$a2, $s7, $a0
-	ldx.b	$a3, $a0, $s6
-	add.d	$a1, $a2, $a1
-	add.d	$a1, $a1, $a3
-	andi	$a3, $a1, 255
-	ldx.b	$a4, $s7, $a3
-	stx.b	$a2, $s7, $a3
+	ldx.b	$a2, $a0, $s6
+	ldx.b	$a3, $s7, $a0
+	add.d	$a1, $a1, $a2
+	add.d	$a1, $a3, $a1
+	andi	$a2, $a1, 255
+	ldx.b	$a4, $s7, $a2
+	stx.b	$a3, $s7, $a2
 	stx.b	$a4, $s7, $a0
 	addi.d	$a0, $a0, 1
 	bne	$a0, $s5, .LBB209_16
@@ -26199,8 +26199,8 @@ sqlite3BtreeMoveto:                     # @sqlite3BtreeMoveto
 	ld.bu	$a5, $s3, 7
 	slli.d	$a4, $a0, 8
 	add.d	$a0, $a1, $a4
-	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
+	add.d	$a6, $a2, $a3
+	add.d	$a0, $a0, $a6
 	beqz	$a5, .LBB248_17
 # %bb.10:                               #   in Loop: Header=BB248_5 Depth=1
 	ld.b	$a6, $a0, 0
@@ -26213,7 +26213,7 @@ sqlite3BtreeMoveto:                     # @sqlite3BtreeMoveto
 # %bb.12:                               #   in Loop: Header=BB248_5 Depth=1
 	move	$a5, $zero
 	add.d	$a2, $a4, $a2
-	add.d	$a2, $a2, $a3
+	add.d	$a1, $a1, $a3
 	add.d	$a1, $a1, $a2
 	addi.d	$a1, $a1, 2
 	ori	$a4, $zero, 8
@@ -30914,8 +30914,8 @@ sqlite3BtreeCommitPhaseOne:             # @sqlite3BtreeCommitPhaseOne
 	mul.d	$a4, $s2, $a4
 	srli.d	$a4, $a4, 18
 	sub.d	$t0, $a4, $a0
+	add.d	$t0, $t0, $a5
 	add.d	$a6, $t0, $a6
-	add.d	$a6, $a6, $a5
 	add.d	$a6, $a6, $a7
 	addi.w	$a6, $a6, 2
 	div.wu	$a4, $a6, $a4
@@ -31604,7 +31604,7 @@ incrVacuumStep:                         # @incrVacuumStep
 	ld.bu	$a4, $a1, 38
 	ld.bu	$a1, $a1, 39
 	or	$a2, $a3, $a2
-	or	$a2, $a2, $a4
+	or	$a1, $a4, $a1
 	or	$a1, $a2, $a1
 	beqz	$a1, .LBB276_14
 # %bb.6:
@@ -31965,18 +31965,18 @@ allocateBtreePage:                      # @allocateBtreePage
 	ld.d	$a0, $s1, 112
 	beqz	$s4, .LBB277_44
 # %bb.24:                               #   in Loop: Header=BB277_15 Depth=1
-	ld.bu	$s4, $a0, 8
-	ld.bu	$fp, $a0, 9
-	slli.w	$a1, $s4, 24
-	slli.w	$a2, $fp, 16
+	ld.bu	$fp, $a0, 8
+	ld.bu	$s4, $a0, 9
+	slli.w	$a1, $fp, 24
+	slli.w	$a2, $s4, 16
 	ld.bu	$s7, $a0, 10
-	or	$a1, $a2, $a1
 	ld.bu	$a3, $a0, 11
+	or	$a1, $a2, $a1
 	ld.d	$a0, $s0, 0
 	slli.w	$a2, $s7, 8
-	or	$a1, $a1, $a2
 	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
-	or	$s3, $a1, $a3
+	or	$a2, $a2, $a3
+	or	$s3, $a1, $a2
 	addi.d	$a2, $sp, 48
 	move	$a1, $s3
 	move	$a3, $zero
@@ -32035,8 +32035,8 @@ allocateBtreePage:                      # @allocateBtreePage
 	move	$s3, $zero
 	move	$a0, $zero
 	move	$s8, $zero
-	st.b	$s4, $a1, 0
-	st.b	$fp, $a1, 1
+	st.b	$fp, $a1, 0
+	st.b	$s4, $a1, 1
 	st.b	$a2, $a1, 2
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	st.b	$a2, $a1, 3
@@ -32370,8 +32370,8 @@ allocateBtreePage:                      # @allocateBtreePage
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a1, $a0, 112
 	move	$a0, $zero
-	st.b	$s4, $a1, 32
-	st.b	$fp, $a1, 33
+	st.b	$fp, $a1, 32
+	st.b	$s4, $a1, 33
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	st.b	$a2, $a1, 34
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
@@ -36193,69 +36193,73 @@ sqlite3VdbeExec:                        # @sqlite3VdbeExec
 # %bb.150:                              #   in Loop: Header=BB294_11 Depth=1
 	move	$s5, $zero
 	move	$s3, $zero
-	move	$a6, $zero
-.LBB294_151:                            #   in Loop: Header=BB294_11 Depth=1
-	bstrpick.d	$a0, $s3, 31, 0
 	move	$s2, $zero
-	move	$a1, $a0
+.LBB294_151:                            #   in Loop: Header=BB294_11 Depth=1
+	bstrpick.d	$a1, $s3, 31, 0
+	move	$a5, $zero
+	move	$a2, $a1
 	.p2align	4, , 16
 .LBB294_152:                            #   Parent Loop BB294_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$s2, $s2, 1
-	srli.d	$a1, $a1, 7
-	addi.d	$a0, $a0, 1
-	bnez	$a1, .LBB294_152
+	addi.d	$a5, $a5, 1
+	srli.d	$a2, $a2, 7
+	addi.d	$a1, $a1, 1
+	bnez	$a2, .LBB294_152
 # %bb.153:                              #   in Loop: Header=BB294_11 Depth=1
-	addi.w	$a1, $s2, -1
-	addi.d	$a2, $zero, -1
-	move	$a3, $a0
+	addi.w	$a2, $a5, -1
+	addi.d	$a3, $zero, -1
+	move	$a4, $a1
 	addi.d	$s7, $fp, 320
 	.p2align	4, , 16
 .LBB294_154:                            #   Parent Loop BB294_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	srli.d	$a3, $a3, 7
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB294_154
+	srli.d	$a4, $a4, 7
+	addi.w	$a3, $a3, 1
+	bnez	$a4, .LBB294_154
 # %bb.155:                              #   in Loop: Header=BB294_11 Depth=1
-	sltu	$a1, $a1, $a2
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-	add.d	$s0, $a1, $a0
-	st.d	$a6, $sp, 56                    # 8-byte Folded Spill
-	sub.d	$a0, $s5, $a6
-	add.d	$a0, $s0, $a0
-	lu12i.w	$a1, 244140
-	ori	$a1, $a1, 2560
-	bltu	$a1, $a0, .LBB294_787
+	sltu	$a0, $a2, $a3
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	add.d	$s0, $a0, $a1
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	sub.d	$a1, $s5, $s2
+	add.d	$a1, $s0, $a1
+	lu12i.w	$a2, 244140
+	ori	$a2, $a2, 2560
+	bltu	$a2, $a1, .LBB294_787
 # %bb.156:                              #   in Loop: Header=BB294_11 Depth=1
-	ld.w	$a0, $s4, 12
-	ld.d	$a1, $fp, 128
-	slli.d	$a2, $a0, 5
-	alsl.d	$a0, $a0, $a2, 4
-	add.d	$a0, $a1, $a0
+	ld.w	$a1, $s4, 12
+	ld.d	$a2, $fp, 128
+	slli.d	$a3, $a1, 5
+	alsl.d	$a1, $a1, $a3, 4
+	add.d	$a0, $a2, $a1
 	add.d	$a1, $s3, $s5
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	sub.d	$s5, $a1, $a2
+	sub.d	$a1, $a1, $a2
+	add.d	$a2, $a1, $a5
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	add.d	$a1, $a1, $s5
-	add.w	$s4, $a1, $s2
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
+	add.w	$s2, $a1, $a2
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$a1, $s4
+	move	$a1, $s2
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(sqlite3VdbeMemGrow)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB294_1
 # %bb.157:                              #   in Loop: Header=BB294_11 Depth=1
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$s3, $a0, 24
 	move	$a0, $s3
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(sqlite3PutVarint)
 	jirl	$ra, $ra, 0
-	ld.d	$t0, $sp, 72                    # 8-byte Folded Reload
-	bgeu	$t0, $s6, .LBB294_535
+	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	bgeu	$s2, $s6, .LBB294_535
 .LBB294_158:                            #   in Loop: Header=BB294_11 Depth=1
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	st.w	$s4, $a1, 32
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	st.w	$a0, $a1, 32
 	ori	$a0, $zero, 80
 	st.h	$a0, $a1, 36
 	st.d	$zero, $a1, 40
@@ -38297,14 +38301,14 @@ sqlite3VdbeExec:                        # @sqlite3VdbeExec
 	b	.LBB294_10
 .LBB294_464:                            #   in Loop: Header=BB294_11 Depth=1
 	ld.d	$s7, $s4, 16
-	move	$a6, $zero
+	move	$s2, $zero
 	move	$s3, $zero
 	move	$s5, $zero
 	move	$s0, $s6
 	b	.LBB294_466
 .LBB294_465:                            #   in Loop: Header=BB294_466 Depth=2
 	sltui	$a0, $a1, 1
-	maskeqz	$a6, $a6, $a0
+	maskeqz	$s2, $s2, $a0
 	addi.d	$s0, $s0, 48
 	add.d	$s5, $s5, $a1
 	bltu	$a5, $s0, .LBB294_151
@@ -38336,10 +38340,8 @@ sqlite3VdbeExec:                        # @sqlite3VdbeExec
 # %bb.471:                              #   in Loop: Header=BB294_466 Depth=2
 	move	$a0, $s0
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	move	$s2, $a6
 	pcaddu18i	$ra, %call36(sqlite3VdbeMemStringify)
 	jirl	$ra, $ra, 0
-	move	$a6, $s2
 	ld.d	$a5, $sp, 72                    # 8-byte Folded Reload
 	ld.hu	$a0, $s0, 36
 .LBB294_472:                            #   in Loop: Header=BB294_466 Depth=2
@@ -38349,10 +38351,8 @@ sqlite3VdbeExec:                        # @sqlite3VdbeExec
 	b	.LBB294_476
 .LBB294_473:                            #   in Loop: Header=BB294_466 Depth=2
 	move	$a0, $s0
-	move	$s2, $a6
 	pcaddu18i	$ra, %call36(applyNumericAffinity)
 	jirl	$ra, $ra, 0
-	move	$a6, $s2
 	ld.d	$a5, $sp, 72                    # 8-byte Folded Reload
 	ld.hu	$a0, $s0, 36
 	andi	$a1, $a0, 8
@@ -38387,7 +38387,6 @@ sqlite3VdbeExec:                        # @sqlite3VdbeExec
 	ld.w	$a1, $s0, 32
 	blez	$a1, .LBB294_483
 # %bb.479:                              #   in Loop: Header=BB294_466 Depth=2
-	move	$s2, $a6
 	ld.w	$a0, $s0, 0
 	add.w	$a0, $a1, $a0
 	ori	$a1, $zero, 1
@@ -38422,7 +38421,6 @@ sqlite3VdbeExec:                        # @sqlite3VdbeExec
 	st.h	$a0, $s0, 36
 .LBB294_482:                            #   in Loop: Header=BB294_466 Depth=2
 	ld.d	$a5, $sp, 72                    # 8-byte Folded Reload
-	move	$a6, $s2
 .LBB294_483:                            #   in Loop: Header=BB294_466 Depth=2
 	andi	$a1, $a0, 1
 	bnez	$a1, .LBB294_490
@@ -38469,7 +38467,7 @@ sqlite3VdbeExec:                        # @sqlite3VdbeExec
 	bgez	$a0, .LBB294_465
 # %bb.494:                              #   in Loop: Header=BB294_466 Depth=2
 	ld.w	$a0, $s0, 0
-	add.w	$a6, $a6, $a0
+	add.w	$s2, $s2, $a0
 	addi.d	$s0, $s0, 48
 	add.d	$s5, $s5, $a1
 	bgeu	$a5, $s0, .LBB294_466
@@ -38792,13 +38790,12 @@ sqlite3VdbeExec:                        # @sqlite3VdbeExec
 # %bb.547:                              #   in Loop: Header=BB294_536 Depth=2
 	addi.d	$a1, $a1, 48
 	move	$a0, $s7
-	bgeu	$t0, $a1, .LBB294_536
+	bgeu	$s2, $a1, .LBB294_536
 	b	.LBB294_556
 .LBB294_548:                            #   in Loop: Header=BB294_536 Depth=2
 	ld.d	$a2, $a1, 0
 	ori	$a3, $zero, 4
-	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
-	bltu	$a4, $a3, .LBB294_551
+	bltu	$t0, $a3, .LBB294_551
 # %bb.549:                              #   in Loop: Header=BB294_536 Depth=2
 	ori	$a3, $zero, 1
 	bltu	$a3, $a2, .LBB294_551
@@ -38831,16 +38828,14 @@ sqlite3VdbeExec:                        # @sqlite3VdbeExec
 	sub.d	$a2, $a3, $a2
 	b	.LBB294_543
 .LBB294_556:                            #   in Loop: Header=BB294_11 Depth=1
-	add.d	$a0, $s5, $s2
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$s2, $s3, -1
+	addi.d	$s4, $s3, -1
 	b	.LBB294_559
 .LBB294_557:                            #   in Loop: Header=BB294_559 Depth=2
 	move	$s0, $zero
 .LBB294_558:                            #   in Loop: Header=BB294_559 Depth=2
 	addi.d	$s6, $s6, 48
 	add.w	$s7, $s0, $s7
-	bltu	$t0, $s6, .LBB294_158
+	bltu	$s2, $s6, .LBB294_158
 .LBB294_559:                            #   Parent Loop BB294_11 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB294_580 Depth 3
@@ -38878,8 +38873,7 @@ sqlite3VdbeExec:                        # @sqlite3VdbeExec
 .LBB294_567:                            #   in Loop: Header=BB294_559 Depth=2
 	ld.d	$a0, $s6, 0
 	ori	$a1, $zero, 4
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	bltu	$a2, $a1, .LBB294_574
+	bltu	$t0, $a1, .LBB294_574
 # %bb.568:                              #   in Loop: Header=BB294_559 Depth=2
 	ori	$a1, $zero, 1
 	bltu	$a1, $a0, .LBB294_574
@@ -38907,7 +38901,7 @@ sqlite3VdbeExec:                        # @sqlite3VdbeExec
 	ld.w	$a0, $s6, 0
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	sub.d	$a1, $a1, $s7
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	add.w	$a1, $a2, $a1
 	add.w	$a0, $s0, $a0
 	slt	$a2, $a0, $a1
@@ -38921,7 +38915,7 @@ sqlite3VdbeExec:                        # @sqlite3VdbeExec
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB294_573:                            #   in Loop: Header=BB294_559 Depth=2
-	ld.d	$t0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
 	b	.LBB294_558
 .LBB294_574:                            #   in Loop: Header=BB294_559 Depth=2
 	srai.d	$a1, $a0, 63
@@ -38949,7 +38943,7 @@ sqlite3VdbeExec:                        # @sqlite3VdbeExec
 	move	$a0, $s6
 .LBB294_579:                            #   in Loop: Header=BB294_559 Depth=2
 	ld.d	$a0, $a0, 0
-	add.d	$a1, $s2, $s7
+	add.d	$a1, $s4, $s7
 	move	$a2, $s0
 	.p2align	4, , 16
 .LBB294_580:                            #   Parent Loop BB294_11 Depth=1
@@ -41957,8 +41951,8 @@ sqlite3BtreeBeginTrans:                 # @sqlite3BtreeBeginTrans
 	ld.bu	$a7, $a1, 54
 	ld.bu	$t0, $a1, 55
 	or	$a5, $a6, $a5
-	or	$a5, $a5, $a7
-	or	$a5, $a5, $t0
+	or	$a6, $a7, $t0
+	or	$a5, $a5, $a6
 	sltu	$a5, $zero, $a5
 	st.b	$a5, $s2, 38
 	ld.bu	$a5, $a1, 64
@@ -41966,7 +41960,7 @@ sqlite3BtreeBeginTrans:                 # @sqlite3BtreeBeginTrans
 	ld.bu	$a7, $a1, 66
 	ld.bu	$a1, $a1, 67
 	or	$a5, $a6, $a5
-	or	$a5, $a5, $a7
+	or	$a1, $a7, $a1
 	or	$a1, $a5, $a1
 	sltu	$a1, $zero, $a1
 	st.b	$a1, $s2, 39
@@ -43443,9 +43437,9 @@ sqlite3BtreeFactory:                    # @sqlite3BtreeFactory
 	alsl.d	$a1, $a1, $a1, 1
 	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
 	add.d	$a1, $s4, $a1
+	add.d	$a1, $a1, $a2
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	add.d	$a1, $a1, $a0
-	add.d	$a0, $a1, $a2
+	add.d	$a0, $a1, $a0
 	addi.d	$s1, $a0, 360
 	addi.w	$a0, $s1, 0
 	pcaddu18i	$ra, %call36(sqlite3_malloc)
@@ -43710,25 +43704,25 @@ sqlite3BtreeFactory:                    # @sqlite3BtreeFactory
 	ld.h	$a1, $sp, 182
 	st.b	$a0, $s3, 34
 	st.h	$a1, $s3, 35
-	ori	$a0, $zero, 1
-	ld.bu	$a1, $sp, 212
-	ld.bu	$a2, $sp, 213
-	ld.bu	$a3, $sp, 214
-	ld.bu	$a4, $sp, 215
-	st.b	$a0, $s3, 37
-	or	$a0, $a2, $a1
-	or	$a0, $a0, $a3
-	or	$a0, $a0, $a4
+	ld.bu	$a0, $sp, 212
+	ld.bu	$a1, $sp, 213
+	ld.bu	$a2, $sp, 214
+	ld.bu	$a3, $sp, 215
+	ori	$a4, $zero, 1
+	st.b	$a4, $s3, 37
+	or	$a0, $a1, $a0
+	or	$a1, $a2, $a3
+	or	$a0, $a0, $a1
 	sltu	$a0, $zero, $a0
+	ld.bu	$a2, $sp, 224
+	ld.bu	$a3, $sp, 225
+	ld.bu	$a4, $sp, 226
+	ld.bu	$a5, $sp, 227
 	st.b	$a0, $s3, 38
-	ld.bu	$a0, $sp, 224
-	ld.bu	$a2, $sp, 225
-	ld.bu	$a3, $sp, 226
-	ld.bu	$a4, $sp, 227
 	ld.bu	$a1, $sp, 180
-	or	$a0, $a2, $a0
-	or	$a0, $a0, $a3
-	or	$a0, $a0, $a4
+	or	$a0, $a3, $a2
+	or	$a2, $a4, $a5
+	or	$a0, $a0, $a2
 	sltu	$a0, $zero, $a0
 	b	.LBB313_76
 .LBB313_74:
@@ -49009,13 +49003,13 @@ clearCell:                              # @clearCell
 # %bb.1:
 	ldx.w	$a0, $s0, $a0
 	ld.hu	$a1, $fp, 46
-	ld.w	$a2, $sp, 52
-	ld.hu	$a3, $sp, 58
+	ld.hu	$a2, $sp, 58
+	ld.w	$a3, $sp, 52
 	revb.2w	$a4, $a0
 	addi.d	$a0, $a1, -4
-	add.d	$a1, $a2, $a0
-	nor	$a2, $a3, $zero
-	add.w	$a1, $a2, $a1
+	nor	$a1, $a2, $zero
+	add.d	$a1, $a1, $a3
+	add.w	$a1, $a1, $a0
 	st.w	$a4, $sp, 28
 	bgeu	$a1, $a0, .LBB350_4
 .LBB350_2:
@@ -49346,8 +49340,8 @@ insertCell:                             # @insertCell
 	ld.bu	$a0, $s5, -1
 	ld.bu	$a1, $s5, 0
 	slli.d	$a0, $a0, 8
-	add.d	$a0, $s7, $a0
-	add.d	$s2, $a0, $a1
+	add.d	$a1, $s7, $a1
+	add.d	$s2, $a1, $a0
 	addi.d	$a2, $sp, 56
 	move	$a0, $fp
 	move	$a1, $s2
@@ -49984,8 +49978,8 @@ freePage:                               # @freePage
 	slli.w	$a3, $a3, 8
 	ld.hu	$a4, $s1, 46
 	or	$a1, $a2, $a1
-	or	$a1, $a1, $a3
-	or	$s1, $a1, $a0
+	or	$a2, $a3, $a0
+	or	$s1, $a1, $a2
 	srli.d	$a1, $a4, 2
 	addi.d	$a1, $a1, -8
 	bge	$s1, $a1, .LBB354_14
@@ -50228,8 +50222,8 @@ allocateSpace:                          # @allocateSpace
 	ld.bu	$a0, $s5, -1
 	ld.bu	$a1, $s5, 0
 	slli.d	$a0, $a0, 8
-	add.d	$a0, $s4, $a0
-	add.d	$s0, $a0, $a1
+	add.d	$a1, $s4, $a1
+	add.d	$s0, $a1, $a0
 	addi.d	$a2, $sp, 40
 	move	$a0, $fp
 	move	$a1, $s0
@@ -51634,13 +51628,13 @@ balance_nonroot:                        # @balance_nonroot
 	st.d	$a2, $sp, 392
 	beqz	$a3, .LBB357_214
 .LBB357_186:
-	st.h	$s0, $s1, 104
 	ld.hu	$a1, $s1, 108
 	ld.bu	$a2, $s1, 90
+	st.h	$s0, $s1, 104
 	st.d	$zero, $sp, 352
 	ld.hu	$a0, $s7, 20
-	add.d	$a1, $fp, $a1
 	add.d	$a1, $a1, $a2
+	add.d	$a1, $fp, $a1
 	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	addi.w	$s1, $a2, 2
 	addi.d	$fp, $a1, 1
@@ -51822,13 +51816,13 @@ balance_nonroot:                        # @balance_nonroot
 	st.d	$a2, $sp, 400
 	beqz	$a3, .LBB357_219
 .LBB357_218:
-	move	$s0, $zero
 	ld.hu	$a0, $s3, 108
 	ld.bu	$a1, $s3, 90
+	move	$s0, $zero
 	st.h	$s1, $s3, 104
 	st.d	$zero, $sp, 360
-	add.d	$a0, $fp, $a0
 	add.d	$a0, $a0, $a1
+	add.d	$a0, $fp, $a0
 	addi.d	$fp, $a0, 1
 	ori	$s1, $zero, 3
 	move	$s3, $s5
@@ -52528,8 +52522,8 @@ balance_quick:                          # @balance_quick
 	ld.bu	$a1, $a0, -2
 	ld.bu	$a0, $a0, -1
 	slli.d	$a1, $a1, 8
-	add.d	$a1, $a2, $a1
-	add.d	$a1, $a1, $a0
+	add.d	$a0, $a2, $a0
+	add.d	$a1, $a0, $a1
 	addi.d	$a2, $sp, 80
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(sqlite3BtreeParseCellPtr)
@@ -54370,8 +54364,8 @@ checkList:                              # @checkList
 	or	$a4, $a2, $a1
 	slli.d	$a3, $s2, 8
 	ld.hu	$a0, $a0, 46
-	or	$a4, $a4, $a3
-	or	$a4, $a4, $s8
+	or	$a5, $a3, $s8
+	or	$a4, $a4, $a5
 	addi.w	$s2, $a4, 0
 	srli.d	$a0, $a0, 2
 	addi.d	$a0, $a0, -8
@@ -54382,8 +54376,8 @@ checkList:                              # @checkList
 # %bb.20:                               #   in Loop: Header=BB378_5 Depth=1
 	addi.d	$s6, $s3, 11
 	add.d	$a0, $a1, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $s8
+	add.d	$a1, $a3, $s8
+	add.d	$a0, $a0, $a1
 	bstrpick.d	$s8, $a0, 31, 0
 	b	.LBB378_23
 .LBB378_21:                             #   in Loop: Header=BB378_23 Depth=2
@@ -54407,8 +54401,8 @@ checkList:                              # @checkList
 	ld.bu	$a4, $a0, 38
 	slli.w	$a2, $a2, 8
 	or	$a1, $a1, $a3
-	or	$a1, $a1, $a2
-	or	$s4, $a1, $s7
+	or	$a2, $a2, $s7
+	or	$s4, $a1, $a2
 	beqz	$a4, .LBB378_29
 # %bb.24:                               #   in Loop: Header=BB378_23 Depth=2
 	addi.d	$a2, $sp, 55
@@ -55019,8 +55013,8 @@ checkTreePage:                          # @checkTreePage
 	ld.bu	$a2, $a1, 2
 	ld.bu	$a1, $a1, 3
 	slli.d	$a2, $a2, 8
-	add.d	$a0, $a0, $a2
-	add.d	$s7, $a0, $a1
+	add.d	$a0, $a0, $a1
+	add.d	$s7, $a0, $a2
 	addi.d	$a2, $sp, 200
 	move	$a0, $s6
 	move	$a1, $s7
@@ -59136,8 +59130,8 @@ getToken:                               # @getToken
 	ldx.bu	$a6, $a5, $a6
 	slli.d	$a4, $a4, 2
 	alsl.d	$a6, $a6, $a6, 1
-	xor	$a4, $a4, $a6
 	xor	$a4, $a4, $a1
+	xor	$a4, $a4, $a6
 	bstrpick.d	$a6, $a4, 31, 0
 	lu12i.w	$a7, 139264
 	lu32i.d	$a7, 264208
@@ -60430,8 +60424,6 @@ sqlite3Parser:                          # @sqlite3Parser
 	move	$a1, $zero
 	b	.LBB399_225
 .LBB399_180:                            #   in Loop: Header=BB399_3 Depth=1
-	ld.wu	$a1, $s0, 16
-	ld.d	$a2, $s0, 8
 	ld.d	$a0, $s0, -88
 	b	.LBB399_429
 .LBB399_181:                            #   in Loop: Header=BB399_3 Depth=1
@@ -61917,14 +61909,14 @@ sqlite3Parser:                          # @sqlite3Parser
 	move	$t3, $s2
 	b	.LBB399_461
 .LBB399_428:                            #   in Loop: Header=BB399_3 Depth=1
-	ld.wu	$a1, $s0, 16
-	ld.d	$a2, $s0, 8
 	ld.d	$a0, $s0, -152
 .LBB399_429:                            #   in Loop: Header=BB399_3 Depth=1
+	ld.wu	$a1, $s0, 16
+	ld.d	$a2, $s0, 8
 	move	$a3, $zero
 	srli.d	$a1, $a1, 1
+	sub.d	$a2, $a2, $a0
 	add.d	$a1, $a2, $a1
-	sub.d	$a1, $a1, $a0
 	slli.d	$a1, $a1, 1
 .LBB399_430:                            #   in Loop: Header=BB399_3 Depth=1
 	bstrpick.d	$a1, $a1, 31, 1
@@ -66744,13 +66736,13 @@ sqlite3Parser:                          # @sqlite3Parser
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(addModuleArgument)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s0, 16
-	ld.d	$a1, $s0, 8
+	ld.d	$a0, $s0, 8
+	ld.w	$a1, $s0, 16
 	ld.d	$a2, $s0, -88
 	ld.wu	$a3, $s1, 240
-	srli.d	$a0, $a0, 1
-	add.d	$a0, $a1, $a0
+	srli.d	$a1, $a1, 1
 	sub.d	$a0, $a0, $a2
+	add.d	$a0, $a0, $a1
 	bstrins.d	$a3, $a0, 63, 1
 	st.w	$a3, $s1, 240
 	ld.d	$a0, $s2, 136
@@ -70754,10 +70746,10 @@ sqlite3CreateIndex:                     # @sqlite3CreateIndex
 	addi.w	$s1, $s3, 1
 	add.d	$a2, $s1, $s3
 	alsl.d	$a1, $s3, $s3, 3
-	alsl.d	$a1, $a2, $a1, 2
+	alsl.d	$a2, $a2, $a1, 2
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	add.d	$a0, $a1, $a0
-	add.d	$a0, $a0, $s6
+	add.d	$a1, $a0, $s6
+	add.d	$a0, $a2, $a1
 	addi.w	$a1, $a0, 89
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(sqlite3DbMallocZero)
@@ -75957,8 +75949,8 @@ sqlite3Update:                          # @sqlite3Update
 	st.d	$t1, $sp, 144                   # 8-byte Folded Spill
 	sltu	$a1, $zero, $t1
 	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
-	add.d	$a1, $fp, $a1
 	add.d	$a0, $a1, $a0
+	add.d	$a0, $fp, $a0
 	st.w	$a0, $s2, 88
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(sqlite3GetVdbe)
@@ -95921,8 +95913,8 @@ identPut:                               # @identPut
 	ldx.bu	$a4, $a0, $a4
 	slli.d	$a5, $a5, 2
 	alsl.d	$a4, $a4, $a4, 1
-	xor	$a4, $a5, $a4
-	xor	$a3, $a4, $a3
+	xor	$a3, $a5, $a3
+	xor	$a3, $a3, $a4
 	bstrpick.d	$a4, $a3, 31, 0
 	lu12i.w	$a5, 139264
 	lu32i.d	$a5, 264208
@@ -120202,10 +120194,10 @@ codeAllEqualityTerms:                   # @codeAllEqualityTerms
 	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
 	addi.d	$a2, $a1, 1
 	st.w	$a2, $s1, 8
-	addi.w	$a1, $a1, 2
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	add.d	$a1, $a1, $a4
-	add.d	$a1, $a1, $a0
+	addi.w	$a2, $a1, 2
+	add.d	$a1, $a4, $a0
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
+	add.d	$a1, $a2, $a1
 	st.w	$a1, $s2, 88
 	blez	$a0, .LBB517_15
 # %bb.1:
@@ -149498,15 +149490,15 @@ juliandayFunc:                          # @juliandayFunc
 	movfr2gr.s	$a1, $fa0
 	add.d	$a0, $a6, $a0
 	add.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a1
-	pcalau12i	$a1, %pc_hi20(.LCPI613_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI613_2)
-	ld.bu	$a1, $sp, 49
 	add.d	$a0, $a0, $a2
+	pcalau12i	$a2, %pc_hi20(.LCPI613_2)
+	fld.d	$fa0, $a2, %pc_lo12(.LCPI613_2)
+	ld.bu	$a2, $sp, 49
+	add.d	$a0, $a0, $a1
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	fadd.d	$fs0, $fa1, $fa0
-	beqz	$a1, .LBB613_4
+	beqz	$a2, .LBB613_4
 # %bb.8:
 	ld.w	$a0, $sp, 28
 	movgr2fr.w	$fa0, $a0
@@ -149723,10 +149715,10 @@ timeFunc:                               # @timeFunc
 	movfr2gr.s	$a1, $fa0
 	add.d	$a0, $a6, $a0
 	add.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a1
-	pcalau12i	$a1, %pc_hi20(.LCPI615_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI615_2)
 	add.d	$a0, $a0, $a2
+	pcalau12i	$a2, %pc_hi20(.LCPI615_2)
+	fld.d	$fa0, $a2, %pc_lo12(.LCPI615_2)
+	add.d	$a0, $a0, $a1
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	fadd.d	$fa0, $fa1, $fa0
@@ -149938,10 +149930,10 @@ datetimeFunc:                           # @datetimeFunc
 	movfr2gr.s	$a1, $fa0
 	add.d	$a0, $a6, $a0
 	add.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a1
-	pcalau12i	$a1, %pc_hi20(.LCPI616_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI616_2)
 	add.d	$a0, $a0, $a2
+	pcalau12i	$a2, %pc_hi20(.LCPI616_2)
+	fld.d	$fa0, $a2, %pc_lo12(.LCPI616_2)
+	add.d	$a0, $a0, $a1
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	fadd.d	$fa0, $fa1, $fa0
@@ -150273,8 +150265,8 @@ strftimeFunc:                           # @strftimeFunc
 	movfr2gr.s	$a3, $fa0
 	add.d	$a1, $a6, $a1
 	add.d	$a1, $a1, $a5
-	add.d	$a1, $a1, $a3
 	add.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $a3
 	fld.d	$fa0, $s8, %pc_lo12(.LCPI617_2)
 	movgr2fr.w	$fa1, $a1
 	ld.bu	$a1, $sp, 225
@@ -150397,9 +150389,9 @@ strftimeFunc:                           # @strftimeFunc
 	movfr2gr.s	$a1, $fa0
 	add.d	$a0, $a6, $a0
 	add.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a1
-	fld.d	$fa0, $s8, %pc_lo12(.LCPI617_2)
 	add.d	$a0, $a0, $a2
+	fld.d	$fa0, $s8, %pc_lo12(.LCPI617_2)
+	add.d	$a0, $a0, $a1
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	fadd.d	$fs0, $fa1, $fa0
@@ -150548,16 +150540,15 @@ strftimeFunc:                           # @strftimeFunc
 	srli.d	$a3, $a3, 32
 	add.w	$a3, $a3, $a0
 	bstrpick.d	$a4, $a3, 31, 31
-	srai.d	$a3, $a3, 2
 	pcalau12i	$a5, %pc_hi20(.LCPI617_10)
 	fld.d	$fa4, $a5, %pc_lo12(.LCPI617_10)
+	srai.d	$a3, $a3, 2
 	add.d	$a3, $a3, $a4
 	slli.d	$a4, $a3, 3
-	sub.d	$a3, $a4, $a3
 	fcmp.clt.d	$fcc0, $fa4, $fa0
 	fsel	$fs1, $fa0, $fa4, $fcc0
-	ld.w	$a4, $sp, 200
-	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
+	ld.w	$a5, $sp, 200
+	st.d	$a5, $sp, 16                    # 8-byte Folded Spill
 	movgr2cf	$fcc0, $a2
 	fsel	$fa0, $fa2, $fa3, $fcc0
 	fsub.d	$fa0, $fs0, $fa0
@@ -150565,7 +150556,8 @@ strftimeFunc:                           # @strftimeFunc
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
 	addi.w	$s8, $a2, 1
-	sub.d	$a0, $a3, $a0
+	add.d	$a0, $a3, $a0
+	sub.d	$a0, $a4, $a0
 	add.d	$a0, $a2, $a0
 	addi.w	$a0, $a0, 7
 	mul.d	$a1, $a0, $a1
@@ -152010,15 +152002,15 @@ isDate:                                 # @isDate
 	movfr2gr.s	$a1, $fa0
 	add.d	$a0, $a5, $a0
 	add.d	$a0, $a0, $a4
-	add.d	$a0, $a0, $a1
-	pcalau12i	$a1, %pc_hi20(.LCPI621_6)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI621_6)
-	ld.bu	$a1, $sp, 273
 	add.d	$a0, $a0, $a2
+	pcalau12i	$a2, %pc_hi20(.LCPI621_6)
+	fld.d	$fa0, $a2, %pc_lo12(.LCPI621_6)
+	ld.bu	$a2, $sp, 273
+	add.d	$a0, $a0, $a1
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	fadd.d	$fa0, $fa1, $fa0
-	beqz	$a1, .LBB621_69
+	beqz	$a2, .LBB621_69
 # %bb.111:                              #   in Loop: Header=BB621_31 Depth=1
 	ld.w	$a0, $sp, 252
 	movgr2fr.w	$fa1, $a0
@@ -152324,8 +152316,8 @@ computeJD:                              # @computeJD
 	movfr2gr.s	$a3, $fa0
 	add.d	$a2, $a2, $a7
 	add.d	$a2, $a2, $a6
-	add.d	$a2, $a2, $a3
 	add.d	$a2, $a2, $a4
+	add.d	$a2, $a2, $a3
 	pcalau12i	$a3, %pc_hi20(.LCPI622_2)
 	fld.d	$fa0, $a3, %pc_lo12(.LCPI622_2)
 	movgr2fr.w	$fa1, $a2
@@ -152824,9 +152816,9 @@ localtimeOffset:                        # @localtimeOffset
 	movfr2gr.s	$a4, $fa0
 	add.d	$a3, $t1, $a3
 	add.d	$a3, $a3, $t0
-	add.d	$a3, $a3, $a4
-	fld.d	$fa0, $a0, %pc_lo12(.LCPI625_2)
 	add.d	$a3, $a3, $a5
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI625_2)
+	add.d	$a3, $a3, $a4
 	movgr2fr.w	$fa1, $a3
 	ffint.d.w	$fa1, $fa1
 	fadd.d	$fa0, $fa1, $fa0
@@ -153019,8 +153011,8 @@ localtimeOffset:                        # @localtimeOffset
 	ftintrz.w.d	$fa1, $fa1
 	movfr2gr.s	$a1, $fa1
 	add.d	$a3, $a4, $a3
-	add.d	$a1, $a3, $a1
-	add.d	$a1, $a1, $a2
+	add.d	$a2, $a3, $a2
+	add.d	$a1, $a2, $a1
 	addi.d	$a1, $a1, 2
 	movgr2fr.w	$fa1, $a1
 	ffint.d.w	$fa1, $fa1

@@ -444,7 +444,7 @@ _ZN3Exp8toStringEj:                     # @_ZN3Exp8toStringEj
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	add.d	$a1, $s0, $s5
-	add.d	$a1, $a1, $s6
+	add.d	$a0, $s6, $a0
 	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, -5
 	pcaddu18i	$ra, %call36(_Znam)
@@ -607,8 +607,8 @@ _ZN3Exp8toStringEj:                     # @_ZN3Exp8toStringEj
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	add.d	$a1, $s0, $s4
-	add.d	$a0, $a1, $a0
+	add.d	$a0, $s4, $a0
+	add.d	$a0, $s0, $a0
 	addi.d	$a0, $a0, -3
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0

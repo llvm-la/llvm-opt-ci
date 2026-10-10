@@ -343,20 +343,20 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	ld.w	$t3, $t0, 0
 	slli.d	$t2, $t2, 2
 	ldx.w	$t4, $a1, $t2
-	ldx.w	$t5, $a2, $t2
 	xor	$t4, $t3, $t4
 	sltui	$t4, $t4, 1
+	ldx.w	$t5, $a2, $t2
+	ld.w	$t6, $a5, 0
+	ldx.w	$t7, $a3, $t2
 	add.d	$a6, $a6, $t4
 	xor	$t3, $t3, $t5
-	ld.w	$t4, $a5, 0
-	ldx.w	$t5, $a3, $t2
 	sltui	$t3, $t3, 1
-	add.d	$a6, $a6, $t3
+	xor	$t4, $t6, $t7
 	ldx.w	$t2, $a4, $t2
-	xor	$t3, $t4, $t5
-	sltui	$t3, $t3, 1
+	sltui	$t4, $t4, 1
+	add.d	$t3, $t3, $t4
 	add.d	$a6, $a6, $t3
-	xor	$t2, $t4, $t2
+	xor	$t2, $t6, $t2
 	sltui	$t2, $t2, 1
 	add.d	$a6, $a6, $t2
 	bstrpick.d	$t2, $a7, 31, 0
@@ -1206,48 +1206,48 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	vinsgr2vr.w	$vr5, $ra, 3
 	vseq.w	$vr2, $vr2, $vr4
 	vseq.w	$vr3, $vr3, $vr5
-	vsub.w	$vr0, $vr0, $vr2
-	vsub.w	$vr1, $vr1, $vr3
-	vld	$vr2, $a6, -16
-	vld	$vr3, $a6, 0
+	vld	$vr4, $a6, -16
+	vld	$vr5, $a6, 0
 	ldx.w	$s2, $a3, $t5
 	ldx.w	$s3, $a3, $t7
 	ldx.w	$s7, $a3, $t8
 	ldx.w	$ra, $a3, $s0
-	vinsgr2vr.w	$vr4, $s2, 0
-	vinsgr2vr.w	$vr4, $s3, 1
-	vinsgr2vr.w	$vr4, $s7, 2
-	vinsgr2vr.w	$vr4, $ra, 3
+	vinsgr2vr.w	$vr6, $s2, 0
+	vinsgr2vr.w	$vr6, $s3, 1
+	vinsgr2vr.w	$vr6, $s7, 2
+	vinsgr2vr.w	$vr6, $ra, 3
 	ldx.w	$s2, $a3, $t2
 	ldx.w	$s3, $a3, $t3
 	ldx.w	$s7, $a3, $t4
 	ldx.w	$ra, $a3, $t6
-	vinsgr2vr.w	$vr5, $s2, 0
-	vinsgr2vr.w	$vr5, $s3, 1
-	vinsgr2vr.w	$vr5, $s7, 2
-	vinsgr2vr.w	$vr5, $ra, 3
-	vseq.w	$vr4, $vr2, $vr4
-	vseq.w	$vr5, $vr3, $vr5
-	vsub.w	$vr0, $vr0, $vr4
-	vsub.w	$vr1, $vr1, $vr5
+	vinsgr2vr.w	$vr7, $s2, 0
+	vinsgr2vr.w	$vr7, $s3, 1
+	vinsgr2vr.w	$vr7, $s7, 2
+	vinsgr2vr.w	$vr7, $ra, 3
+	vseq.w	$vr6, $vr4, $vr6
+	vseq.w	$vr7, $vr5, $vr7
+	vadd.w	$vr2, $vr2, $vr6
+	vsub.w	$vr0, $vr0, $vr2
+	vadd.w	$vr2, $vr3, $vr7
+	vsub.w	$vr1, $vr1, $vr2
 	ldx.w	$t5, $a4, $t5
 	ldx.w	$t7, $a4, $t7
 	ldx.w	$t8, $a4, $t8
 	ldx.w	$s0, $a4, $s0
-	vinsgr2vr.w	$vr4, $t5, 0
-	vinsgr2vr.w	$vr4, $t7, 1
-	vinsgr2vr.w	$vr4, $t8, 2
-	vinsgr2vr.w	$vr4, $s0, 3
+	vinsgr2vr.w	$vr2, $t5, 0
+	vinsgr2vr.w	$vr2, $t7, 1
+	vinsgr2vr.w	$vr2, $t8, 2
+	vinsgr2vr.w	$vr2, $s0, 3
 	ldx.w	$t2, $a4, $t2
 	ldx.w	$t3, $a4, $t3
 	ldx.w	$t4, $a4, $t4
 	ldx.w	$t5, $a4, $t6
-	vinsgr2vr.w	$vr5, $t2, 0
-	vinsgr2vr.w	$vr5, $t3, 1
-	vinsgr2vr.w	$vr5, $t4, 2
-	vinsgr2vr.w	$vr5, $t5, 3
-	vseq.w	$vr2, $vr2, $vr4
-	vseq.w	$vr3, $vr3, $vr5
+	vinsgr2vr.w	$vr3, $t2, 0
+	vinsgr2vr.w	$vr3, $t3, 1
+	vinsgr2vr.w	$vr3, $t4, 2
+	vinsgr2vr.w	$vr3, $t5, 3
+	vseq.w	$vr2, $vr4, $vr2
+	vseq.w	$vr3, $vr5, $vr3
 	vsub.w	$vr0, $vr0, $vr2
 	vsub.w	$vr1, $vr1, $vr3
 	addi.d	$t1, $t1, -8

@@ -8759,20 +8759,19 @@ _ZN6miniFE25generate_matrix_structureINS_9CSRMatrixIdiiEEEEiRKNS_23simple_mesh_d
 	vslt.w	$vr1, $vr11, $vr1
 	slt	$a1, $s8, $a1
 	xori	$a1, $a1, 1
-	vreplgr2vr.w	$vr3, $a1
-	vand.v	$vr1, $vr1, $vr3
+	vreplgr2vr.w	$vr2, $a1
+	vand.v	$vr1, $vr1, $vr2
 	vslli.w	$vr1, $vr1, 31
 	vsrai.w	$vr1, $vr1, 31
 	vld	$vr9, $sp, 480                  # 16-byte Folded Reload
-	vadd.w	$vr2, $vr0, $vr9
-	vbitsel.v	$vr1, $vr11, $vr2, $vr1
+	vadd.w	$vr3, $vr0, $vr9
+	vbitsel.v	$vr1, $vr11, $vr3, $vr1
 	vld	$vr10, $sp, 336                 # 16-byte Folded Reload
-	vslt.w	$vr2, $vr1, $vr10
+	vslt.w	$vr3, $vr1, $vr10
 	vsrli.w	$vr1, $vr1, 31
-	vandn.v	$vr1, $vr1, $vr2
+	vandn.v	$vr1, $vr1, $vr3
 	vld	$vr12, $sp, 288                 # 16-byte Folded Reload
-	vand.v	$vr1, $vr1, $vr12
-	vadd.w	$vr2, $vr6, $vr1
+	vand.v	$vr3, $vr1, $vr12
 	vreplgr2vr.w	$vr1, $fp
 	vor.v	$vr4, $vr8, $vr1
 	vslt.w	$vr5, $vr11, $vr4
@@ -8786,17 +8785,18 @@ _ZN6miniFE25generate_matrix_structureINS_9CSRMatrixIdiiEEEEiRKNS_23simple_mesh_d
 	vsrli.w	$vr5, $vr5, 31
 	vandn.v	$vr5, $vr5, $vr7
 	vand.v	$vr5, $vr5, $vr12
-	vadd.w	$vr7, $vr2, $vr5
+	vadd.w	$vr5, $vr6, $vr5
+	vadd.w	$vr7, $vr5, $vr3
 	addi.w	$a0, $fp, 1
-	vreplgr2vr.w	$vr2, $a0
-	vor.v	$vr5, $vr8, $vr2
+	vreplgr2vr.w	$vr3, $a0
+	vor.v	$vr5, $vr8, $vr3
 	vslt.w	$vr8, $vr11, $vr5
 	slt	$a1, $fp, $s8
 	vreplgr2vr.w	$vr5, $a1
 	vand.v	$vr8, $vr8, $vr5
 	vslli.w	$vr8, $vr8, 31
 	vsrai.w	$vr8, $vr8, 31
-	vadd.w	$vr9, $vr2, $vr9
+	vadd.w	$vr9, $vr3, $vr9
 	vbitsel.v	$vr8, $vr11, $vr9, $vr8
 	vslt.w	$vr9, $vr8, $vr10
 	vsrli.w	$vr8, $vr8, 31
@@ -8808,7 +8808,7 @@ _ZN6miniFE25generate_matrix_structureINS_9CSRMatrixIdiiEEEEiRKNS_23simple_mesh_d
 	vld	$vr13, $sp, 464                 # 16-byte Folded Reload
 	vor.v	$vr7, $vr13, $vr0
 	vslt.w	$vr7, $vr11, $vr7
-	vand.v	$vr7, $vr7, $vr3
+	vand.v	$vr7, $vr7, $vr2
 	vslli.w	$vr7, $vr7, 31
 	vsrai.w	$vr7, $vr7, 31
 	vld	$vr14, $sp, 448                 # 16-byte Folded Reload
@@ -8818,7 +8818,6 @@ _ZN6miniFE25generate_matrix_structureINS_9CSRMatrixIdiiEEEEiRKNS_23simple_mesh_d
 	vsrli.w	$vr7, $vr7, 31
 	vandn.v	$vr7, $vr7, $vr8
 	vand.v	$vr7, $vr7, $vr12
-	vadd.w	$vr7, $vr6, $vr7
 	vor.v	$vr8, $vr13, $vr1
 	vslt.w	$vr8, $vr11, $vr8
 	vand.v	$vr8, $vr8, $vr4
@@ -8831,58 +8830,59 @@ _ZN6miniFE25generate_matrix_structureINS_9CSRMatrixIdiiEEEEiRKNS_23simple_mesh_d
 	vandn.v	$vr8, $vr8, $vr9
 	vand.v	$vr8, $vr8, $vr12
 	vadd.w	$vr7, $vr7, $vr8
-	vor.v	$vr8, $vr13, $vr2
+	vor.v	$vr8, $vr13, $vr3
 	vslt.w	$vr8, $vr11, $vr8
 	vand.v	$vr8, $vr8, $vr5
 	vslli.w	$vr8, $vr8, 31
 	vsrai.w	$vr8, $vr8, 31
-	vadd.w	$vr9, $vr2, $vr14
+	vadd.w	$vr9, $vr3, $vr14
 	vbitsel.v	$vr8, $vr11, $vr9, $vr8
 	vslt.w	$vr9, $vr8, $vr10
 	vsrli.w	$vr8, $vr8, 31
 	vandn.v	$vr8, $vr8, $vr9
 	vand.v	$vr8, $vr8, $vr12
 	vadd.w	$vr7, $vr7, $vr8
+	vadd.w	$vr7, $vr6, $vr7
 	vld	$vr8, $sp, 384                  # 16-byte Folded Reload
 	vbitsel.v	$vr6, $vr6, $vr7, $vr8
 	vld	$vr8, $sp, 432                  # 16-byte Folded Reload
 	vor.v	$vr7, $vr8, $vr0
 	vslt.w	$vr7, $vr11, $vr7
-	vand.v	$vr3, $vr7, $vr3
-	vslli.w	$vr3, $vr3, 31
-	vsrai.w	$vr3, $vr3, 31
+	vand.v	$vr2, $vr7, $vr2
+	vslli.w	$vr2, $vr2, 31
+	vsrai.w	$vr2, $vr2, 31
 	vld	$vr7, $sp, 416                  # 16-byte Folded Reload
 	vadd.w	$vr0, $vr0, $vr7
-	vbitsel.v	$vr0, $vr11, $vr0, $vr3
-	vslt.w	$vr3, $vr0, $vr10
+	vbitsel.v	$vr0, $vr11, $vr0, $vr2
+	vslt.w	$vr2, $vr0, $vr10
 	vsrli.w	$vr0, $vr0, 31
-	vandn.v	$vr0, $vr0, $vr3
+	vandn.v	$vr0, $vr0, $vr2
 	vand.v	$vr0, $vr0, $vr12
-	vadd.w	$vr0, $vr6, $vr0
-	vor.v	$vr3, $vr8, $vr1
-	vslt.w	$vr3, $vr11, $vr3
-	vand.v	$vr3, $vr3, $vr4
-	vslli.w	$vr3, $vr3, 31
-	vsrai.w	$vr3, $vr3, 31
+	vor.v	$vr2, $vr8, $vr1
+	vslt.w	$vr2, $vr11, $vr2
+	vand.v	$vr2, $vr2, $vr4
+	vslli.w	$vr2, $vr2, 31
+	vsrai.w	$vr2, $vr2, 31
 	vadd.w	$vr1, $vr1, $vr7
-	vbitsel.v	$vr1, $vr11, $vr1, $vr3
-	vslt.w	$vr3, $vr1, $vr10
+	vbitsel.v	$vr1, $vr11, $vr1, $vr2
+	vslt.w	$vr2, $vr1, $vr10
 	vsrli.w	$vr1, $vr1, 31
-	vandn.v	$vr1, $vr1, $vr3
+	vandn.v	$vr1, $vr1, $vr2
 	vand.v	$vr1, $vr1, $vr12
 	vadd.w	$vr0, $vr0, $vr1
-	vor.v	$vr1, $vr8, $vr2
+	vor.v	$vr1, $vr8, $vr3
 	vslt.w	$vr1, $vr11, $vr1
 	vand.v	$vr1, $vr1, $vr5
 	vslli.w	$vr1, $vr1, 31
 	vsrai.w	$vr1, $vr1, 31
-	vadd.w	$vr2, $vr2, $vr7
+	vadd.w	$vr2, $vr3, $vr7
 	vbitsel.v	$vr1, $vr11, $vr2, $vr1
 	vslt.w	$vr2, $vr1, $vr10
 	vsrli.w	$vr1, $vr1, 31
 	vandn.v	$vr1, $vr1, $vr2
 	vand.v	$vr1, $vr1, $vr12
 	vadd.w	$vr0, $vr0, $vr1
+	vadd.w	$vr0, $vr6, $vr0
 	vld	$vr1, $sp, 368                  # 16-byte Folded Reload
 	vbitsel.v	$vr0, $vr6, $vr0, $vr1
 	vinsgr2vr.w	$vr0, $zero, 3
@@ -19838,8 +19838,8 @@ _ZN6miniFE25get_elem_nodes_and_coordsIidEEvRKNS_23simple_mesh_descriptionIT_EES2
 	sub.w	$a4, $a1, $a4
 	div.w	$a4, $a4, $a3
 	mod.w	$a1, $a1, $a3
-	or	$a5, $a4, $a2
-	or	$a5, $a5, $a1
+	or	$a5, $a2, $a1
+	or	$a5, $a4, $a5
 	addi.w	$s0, $zero, -1
 	bltz	$a5, .LBB38_6
 # %bb.2:

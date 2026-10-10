@@ -196,8 +196,8 @@ compressBound:                          # @compressBound
 	srli.d	$a2, $a0, 14
 	srli.d	$a3, $a0, 25
 	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
+	add.d	$a1, $a2, $a3
+	add.d	$a0, $a0, $a1
 	addi.d	$a0, $a0, 13
 	ret
 .Lfunc_end2:

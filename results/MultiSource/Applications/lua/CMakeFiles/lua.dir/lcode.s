@@ -70,8 +70,8 @@ luaK_codeABC:                           # @luaK_codeABC
 	or	$a1, $a2, $a1
 	slli.w	$a3, $a3, 23
 	ld.w	$a2, $a5, 8
-	or	$a1, $a1, $a3
-	slli.w	$a3, $a4, 14
+	slli.w	$a4, $a4, 14
+	or	$a3, $a3, $a4
 	or	$a1, $a1, $a3
 	pcaddu18i	$t8, %call36(luaK_code)
 	jr	$t8
@@ -2831,8 +2831,8 @@ codearith:                              # @codearith
 	slli.w	$a0, $a0, 23
 	ld.w	$a2, $a1, 8
 	slli.w	$a1, $s3, 14
-	or	$a0, $a1, $a0
-	or	$a1, $a0, $s1
+	or	$a1, $a1, $s1
+	or	$a1, $a1, $a0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(luaK_code)
 	jirl	$ra, $ra, 0
@@ -4030,8 +4030,8 @@ luaK_setlist:                           # @luaK_setlist
 	blt	$a3, $a2, .LBB34_2
 # %bb.1:
 	slli.w	$a2, $s1, 14
-	or	$a0, $a0, $a2
 	or	$a0, $a0, $a1
+	or	$a0, $a0, $a2
 	ori	$s1, $a0, 34
 	b	.LBB34_3
 .LBB34_2:
@@ -4241,9 +4241,9 @@ condjump:                               # @condjump
 	or	$a1, $a2, $a1
 	slli.w	$a3, $a3, 23
 	ld.w	$a2, $a0, 8
-	or	$a0, $a1, $a3
-	slli.w	$a1, $a4, 14
-	or	$a1, $a0, $a1
+	slli.w	$a0, $a4, 14
+	or	$a0, $a3, $a0
+	or	$a1, $a1, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(luaK_code)
 	jirl	$ra, $ra, 0

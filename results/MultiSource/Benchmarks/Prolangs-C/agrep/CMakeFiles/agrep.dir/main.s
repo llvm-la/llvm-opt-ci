@@ -2049,17 +2049,17 @@ checksg:                                # @checksg
 	vseq.b	$vr8, $vr4, $vr1
 	vbitclri.b	$vr3, $vr3, 2
 	vseq.b	$vr3, $vr3, $vr2
-	vor.v	$vr3, $vr5, $vr3
 	vbitclri.b	$vr4, $vr4, 2
 	vseq.b	$vr4, $vr4, $vr2
-	vor.v	$vr4, $vr6, $vr4
-	vor.v	$vr3, $vr7, $vr3
+	vor.v	$vr5, $vr7, $vr5
+	vor.v	$vr3, $vr5, $vr3
 	vxori.b	$vr3, $vr3, 255
 	vilvl.b	$vr3, $vr3, $vr3
 	vilvl.h	$vr3, $vr3, $vr3
 	vslli.w	$vr3, $vr3, 24
 	vsrai.w	$vr3, $vr3, 24
-	vor.v	$vr4, $vr8, $vr4
+	vor.v	$vr5, $vr8, $vr6
+	vor.v	$vr4, $vr5, $vr4
 	vxori.b	$vr4, $vr4, 255
 	vilvl.b	$vr4, $vr4, $vr4
 	vilvl.h	$vr4, $vr4, $vr4
@@ -3387,8 +3387,8 @@ re1:                                    # @re1
 	or	$t0, $t1, $t0
 	and	$t0, $t0, $s3
 	and	$a2, $a2, $fp
-	or	$a6, $t0, $a6
-	or	$a6, $a6, $a2
+	or	$a2, $a6, $a2
+	or	$a6, $t0, $a2
 	st.w	$a6, $a4, 0
 	addi.d	$a5, $a5, 4
 	addi.w	$a3, $a3, -1
@@ -3780,8 +3780,8 @@ re1:                                    # @re1
 	or	$a7, $t0, $a7
 	and	$a7, $a7, $s3
 	and	$a2, $a2, $fp
-	or	$a5, $a7, $a5
-	or	$a5, $a5, $a2
+	or	$a2, $a5, $a2
+	or	$a5, $a7, $a2
 	st.w	$a5, $a3, 0
 	addi.d	$a4, $a4, 4
 	addi.w	$a1, $a1, -1
@@ -4903,8 +4903,8 @@ re:                                     # @re
 	and	$a5, $a6, $s6
 	and	$a4, $a4, $s3
 	and	$a7, $a7, $fp
-	or	$a5, $a7, $a5
-	or	$a5, $a5, $a4
+	or	$a4, $a5, $a4
+	or	$a5, $a7, $a4
 	st.w	$a5, $a2, 0
 	addi.d	$a3, $a3, 4
 	addi.w	$a1, $a1, -1
@@ -4985,7 +4985,7 @@ re:                                     # @re
 	or	$a1, $a2, $a1
 	and	$a1, $a1, $s3
 	and	$a2, $a4, $fp
-	or	$a1, $a1, $a3
+	or	$a2, $a3, $a2
 	or	$a1, $a1, $a2
 	st.w	$a1, $sp, 176
 	.p2align	4, , 16
@@ -5141,8 +5141,8 @@ re:                                     # @re
 	and	$a4, $a5, $s6
 	and	$a3, $a3, $s3
 	and	$a6, $a6, $fp
-	or	$a4, $a6, $a4
-	or	$a4, $a4, $a3
+	or	$a3, $a4, $a3
+	or	$a4, $a6, $a3
 	st.w	$a4, $a1, 0
 	addi.d	$a2, $a2, 4
 	addi.w	$a0, $a0, -1

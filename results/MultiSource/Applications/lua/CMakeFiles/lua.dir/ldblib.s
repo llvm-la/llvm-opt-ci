@@ -891,10 +891,10 @@ db_sethook:                             # @db_sethook
 	jirl	$ra, $ra, 0
 	sltu	$a0, $zero, $a0
 	slli.d	$a0, $a0, 2
-	or	$a0, $s4, $a0
 	slt	$a1, $zero, $s2
 	slli.d	$a1, $a1, 3
-	or	$s3, $a0, $a1
+	or	$a0, $a0, $a1
+	or	$s3, $s4, $a0
 	pcalau12i	$a0, %pc_hi20(hookf)
 	addi.d	$s4, $a0, %pc_lo12(hookf)
 	b	.LBB10_6

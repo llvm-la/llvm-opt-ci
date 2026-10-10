@@ -105,28 +105,28 @@ cli_scanautoit:                         # @cli_scanautoit
 	ld.bu	$t6, $sp, 1262
 	ld.bu	$t7, $sp, 1263
 	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a4
-	add.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a6
-	add.d	$a0, $a0, $a7
-	add.d	$a0, $a0, $t0
-	add.d	$a0, $a0, $t1
-	add.d	$a0, $a0, $t2
-	add.d	$a0, $a0, $t3
-	add.d	$a0, $a0, $t4
-	add.d	$a0, $a0, $t5
-	add.d	$a0, $a0, $t6
-	add.d	$a0, $a0, $t7
-	lu12i.w	$a1, 2
-	ori	$a2, $a1, 687
-	add.w	$s6, $a0, $a2
+	add.d	$a1, $a2, $a3
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $a4, $a5
+	add.d	$a1, $a1, $a6
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $a7, $t0
+	add.d	$a1, $a1, $t1
+	add.d	$a1, $a1, $t2
+	add.d	$a1, $a1, $t3
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $t4, $t5
+	add.d	$a1, $a1, $t6
+	add.d	$a1, $a1, $t7
+	lu12i.w	$a2, 2
+	ori	$a3, $a2, 687
+	add.d	$a1, $a1, $a3
+	add.w	$s6, $a0, $a1
 	ori	$s8, $zero, 8
 	lu12i.w	$a0, -201978
 	ori	$a0, $a0, 3583
 	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
-	ori	$a0, $a1, 2492
+	ori	$a0, $a2, 2492
 	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(cli_debug_flag)
 	ld.d	$s4, $a0, %got_pc_lo12(cli_debug_flag)
@@ -137,7 +137,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
 	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
-	ori	$a0, $a1, 2476
+	ori	$a0, $a2, 2476
 	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
 	lu12i.w	$a0, 15
 	ori	$a0, $a0, 606
@@ -1048,8 +1048,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $a3, $a1
 	slli.d	$a0, $a0, 3
 	slli.d	$a2, $a2, 8
-	or	$a0, $a0, $a1
-	or	$a1, $a0, $a2
+	or	$a1, $a1, $a2
+	or	$a1, $a0, $a1
 	ori	$a0, $zero, 15
 .LBB0_135:                              #   in Loop: Header=BB0_74 Depth=2
 	addi.w	$a4, $a4, 2
@@ -1211,8 +1211,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a0, $a2, $a0
 	slli.d	$a2, $s2, 1
 	slli.d	$a1, $a1, 8
-	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
+	or	$a0, $a2, $a0
 	ori	$a1, $zero, 15
 	b	.LBB0_176
 .LBB0_164:                              #   in Loop: Header=BB0_74 Depth=2
@@ -1360,8 +1360,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a0, $a2, $a0
 	slli.d	$a2, $a3, 1
 	slli.d	$a1, $a1, 8
-	or	$a0, $a2, $a0
-	or	$a1, $a0, $a1
+	or	$a0, $a0, $a1
+	or	$a1, $a2, $a0
 	ori	$a0, $zero, 15
 	b	.LBB0_198
 .LBB0_187:                              #   in Loop: Header=BB0_74 Depth=2
@@ -1497,8 +1497,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a0, $a2, $a0
 	slli.d	$a2, $a3, 3
 	slli.d	$a1, $a1, 8
-	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
+	or	$a0, $a2, $a0
 	ori	$a1, $zero, 15
 .LBB0_205:                              #   in Loop: Header=BB0_74 Depth=2
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
@@ -1549,8 +1549,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	slli.d	$a2, $a2, 1
 	slli.d	$a1, $a1, 8
-	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
+	or	$a0, $a2, $a0
 	ori	$a1, $zero, 15
 	b	.LBB0_216
 .LBB0_215:                              #   in Loop: Header=BB0_74 Depth=2
@@ -1625,8 +1625,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $a3, $a1
 	slli.d	$a0, $a0, 3
 	slli.d	$a2, $a2, 8
-	or	$a0, $a0, $a1
-	or	$a1, $a0, $a2
+	or	$a1, $a1, $a2
+	or	$a1, $a0, $a1
 	ori	$a0, $zero, 15
 .LBB0_224:                              #   in Loop: Header=BB0_74 Depth=2
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
@@ -1645,8 +1645,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	slli.d	$a2, $a2, 3
 	slli.d	$a1, $a1, 8
-	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
+	or	$a0, $a2, $a0
 	ori	$a1, $zero, 15
 .LBB0_226:                              #   in Loop: Header=BB0_74 Depth=2
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
@@ -3246,8 +3246,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	slli.d	$a0, $a0, 3
 	slli.d	$a2, $a2, 8
+	or	$a1, $a1, $a2
 	or	$a0, $a0, $a1
-	or	$a0, $a0, $a2
 	ori	$a1, $zero, 15
 .LBB0_465:                              #   in Loop: Header=BB0_409 Depth=2
 	addi.w	$a4, $a4, 2
@@ -3261,8 +3261,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	slli.d	$a0, $a0, 3
 	slli.d	$a2, $a2, 8
+	or	$a1, $a1, $a2
 	or	$a0, $a0, $a1
-	or	$a0, $a0, $a2
 	ori	$a1, $zero, 15
 .LBB0_467:                              #   in Loop: Header=BB0_409 Depth=2
 	addi.w	$a4, $a4, 2
@@ -3313,8 +3313,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	slli.d	$a0, $a0, 3
 	slli.d	$a2, $a2, 8
-	or	$a0, $a0, $a1
-	or	$a1, $a0, $a2
+	or	$a1, $a1, $a2
+	or	$a1, $a0, $a1
 	ori	$a0, $zero, 15
 .LBB0_475:                              #   in Loop: Header=BB0_409 Depth=2
 	addi.w	$a4, $a4, 2
@@ -3328,8 +3328,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	slli.d	$a0, $a0, 3
 	slli.d	$a2, $a2, 8
+	or	$a1, $a1, $a2
 	or	$a0, $a0, $a1
-	or	$a0, $a0, $a2
 	ori	$a1, $zero, 15
 .LBB0_477:                              #   in Loop: Header=BB0_409 Depth=2
 	addi.w	$a4, $a4, 2
@@ -3494,8 +3494,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a0, $s8, $a0
 	slli.d	$a2, $s3, 1
 	slli.d	$a1, $a1, 8
-	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
+	or	$a0, $a2, $a0
 	ori	$a1, $zero, 15
 	b	.LBB0_524
 .LBB0_509:                              #   in Loop: Header=BB0_409 Depth=2
@@ -3641,8 +3641,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a0, $s8, $a0
 	slli.d	$a2, $s3, 1
 	slli.d	$a1, $a1, 8
-	or	$a0, $a2, $a0
-	or	$a1, $a0, $a1
+	or	$a0, $a0, $a1
+	or	$a1, $a2, $a0
 	ori	$a0, $zero, 15
 	b	.LBB0_534
 .LBB0_533:                              #   in Loop: Header=BB0_409 Depth=2
@@ -3709,8 +3709,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a0, $s8, $a0
 	slli.d	$a2, $s3, 3
 	slli.d	$a1, $a1, 8
-	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
+	or	$a0, $a2, $a0
 	ori	$a1, $zero, 15
 .LBB0_541:                              #   in Loop: Header=BB0_409 Depth=2
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
@@ -3748,8 +3748,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a0, $s8, $a0
 	slli.d	$a2, $s3, 1
 	slli.d	$a1, $a1, 8
-	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
+	or	$a0, $a2, $a0
 	ori	$a1, $zero, 15
 	b	.LBB0_550
 .LBB0_548:                              #   in Loop: Header=BB0_409 Depth=2
@@ -3822,8 +3822,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	slli.d	$a0, $a0, 3
 	slli.d	$a2, $a2, 8
-	or	$a0, $a0, $a1
-	or	$a1, $a0, $a2
+	or	$a1, $a1, $a2
+	or	$a1, $a0, $a1
 	ori	$a0, $zero, 15
 .LBB0_558:                              #   in Loop: Header=BB0_409 Depth=2
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
@@ -3840,8 +3840,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a0, $s8, $a0
 	slli.d	$a2, $s3, 3
 	slli.d	$a1, $a1, 8
-	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
+	or	$a0, $a2, $a0
 	ori	$a1, $zero, 15
 .LBB0_560:                              #   in Loop: Header=BB0_409 Depth=2
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
@@ -4568,12 +4568,12 @@ MT_decrypt:                             # @MT_decrypt
 	xor	$t8, $fp, $t8
 	slli.d	$fp, $t8, 15
 	and	$fp, $fp, $t6
-	xor	$fp, $fp, $t8
 	ld.b	$s0, $a0, 0
+	xor	$fp, $fp, $t8
 	srli.d	$fp, $fp, 19
 	srli.d	$t8, $t8, 1
-	xor	$t8, $fp, $t8
 	xor	$t8, $s0, $t8
+	xor	$t8, $t8, $fp
 	st.b	$t8, $a0, 0
 	addi.d	$a0, $a0, 1
 	addi.d	$t7, $t7, 4

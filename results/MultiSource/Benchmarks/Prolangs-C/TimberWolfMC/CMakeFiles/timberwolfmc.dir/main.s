@@ -1321,8 +1321,8 @@ prepSpots:                              # @prepSpots
 # %bb.19:                               #   in Loop: Header=BB1_18 Depth=1
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.w	$a5, $a4, %pc_lo12(spotYhash)
-	add.d	$a0, $a0, $s0
-	sub.w	$a0, $a0, $a5
+	sub.d	$a4, $s0, $a5
+	add.w	$a0, $a0, $a4
 	div.w	$a4, $a0, $a3
 	add.d	$a0, $s1, $a5
 	sub.w	$a0, $fp, $a0

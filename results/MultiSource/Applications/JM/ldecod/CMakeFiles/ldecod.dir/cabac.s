@@ -1029,8 +1029,8 @@ unary_exp_golomb_mv_decode:             # @unary_exp_golomb_mv_decode
 	or	$s1, $a0, $s1
 	bne	$s3, $s5, .LBB10_9
 # %bb.10:
-	add.d	$a0, $s0, $s1
-	sub.d	$a0, $a0, $s2
+	sub.d	$a0, $s0, $s2
+	add.d	$a0, $a0, $s1
 	addi.w	$a0, $a0, 2
 	b	.LBB10_14
 .LBB10_11:
@@ -2235,9 +2235,9 @@ readCBP_CABAC:                          # @readCBP_CABAC
 	jirl	$ra, $ra, 0
 	sltu	$a0, $zero, $a0
 	slli.d	$a0, $a0, 3
-	or	$a0, $s1, $a0
-	or	$a0, $a0, $s7
-	or	$s1, $a0, $s6
+	or	$a1, $s1, $s7
+	or	$a1, $a1, $s6
+	or	$s1, $a1, $a0
 	pcalau12i	$a0, %got_pc_hi20(dec_picture)
 	ld.d	$a0, $a0, %got_pc_lo12(dec_picture)
 	ld.d	$a0, $a0, 0
@@ -2787,11 +2787,11 @@ read_and_store_CBP_block_bit:           # @read_and_store_CBP_block_bit
 	add.d	$a1, $s8, $s3
 	addi.d	$a1, $a1, 1
 	bnez	$a0, .LBB21_38
-	b	.LBB21_48
+	b	.LBB21_47
 .LBB21_31:
 	move	$a1, $zero
 	bnez	$a0, .LBB21_38
-	b	.LBB21_48
+	b	.LBB21_47
 .LBB21_32:
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
@@ -2802,7 +2802,7 @@ read_and_store_CBP_block_bit:           # @read_and_store_CBP_block_bit
 	ori	$a1, $zero, 18
 	sub.d	$a1, $a1, $a2
 	bnez	$a0, .LBB21_38
-	b	.LBB21_48
+	b	.LBB21_47
 .LBB21_34:
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	slli.d	$a1, $a1, 2
@@ -2811,7 +2811,7 @@ read_and_store_CBP_block_bit:           # @read_and_store_CBP_block_bit
 # %bb.35:
 	addi.d	$a1, $a1, 19
 	bnez	$a0, .LBB21_38
-	b	.LBB21_48
+	b	.LBB21_47
 .LBB21_36:
 	move	$a3, $s1
 	ld.w	$a1, $sp, 80
@@ -2819,7 +2819,7 @@ read_and_store_CBP_block_bit:           # @read_and_store_CBP_block_bit
 	b	.LBB21_27
 .LBB21_37:
 	addi.d	$a1, $a1, 35
-	beqz	$a0, .LBB21_48
+	beqz	$a0, .LBB21_47
 .LBB21_38:
 	ld.d	$a2, $s5, 312
 	ori	$a4, $zero, 1
@@ -2831,7 +2831,7 @@ read_and_store_CBP_block_bit:           # @read_and_store_CBP_block_bit
 	beq	$s0, $a4, .LBB21_42
 # %bb.40:
 	ori	$a4, $zero, 2
-	bne	$s0, $a4, .LBB21_46
+	bne	$s0, $a4, .LBB21_45
 # %bb.41:
 	addi.d	$a4, $a1, 1
 	ori	$a5, $zero, 1
@@ -2841,8 +2841,10 @@ read_and_store_CBP_block_bit:           # @read_and_store_CBP_block_bit
 	addi.d	$a1, $a1, 5
 	sll.d	$a1, $a5, $a1
 	or	$a4, $a4, $a6
+	or	$a1, $a1, $a3
 	or	$a1, $a4, $a1
-	b	.LBB21_45
+	or	$a1, $a1, $a2
+	b	.LBB21_46
 .LBB21_42:
 	addi.d	$a1, $a1, 1
 	ori	$a4, $zero, 1
@@ -2851,15 +2853,14 @@ read_and_store_CBP_block_bit:           # @read_and_store_CBP_block_bit
 	addi.d	$a1, $a1, 4
 .LBB21_44:
 	sll.d	$a1, $a4, $a1
-.LBB21_45:
 	or	$a1, $a1, $a3
 	or	$a1, $a1, $a2
-	b	.LBB21_47
-.LBB21_46:
+	b	.LBB21_46
+.LBB21_45:
 	or	$a1, $a2, $a3
-.LBB21_47:
+.LBB21_46:
 	st.d	$a1, $s5, 312
-.LBB21_48:
+.LBB21_47:
 	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
@@ -2896,20 +2897,20 @@ read_significance_map:                  # @read_significance_map
 	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a4
 	move	$s0, $a1
-	slli.d	$a4, $a3, 2
+	slli.d	$a5, $a3, 2
 	pcalau12i	$a1, %pc_hi20(maxpos)
 	addi.d	$a7, $a1, %pc_lo12(maxpos)
 	ldptr.w	$t0, $a2, 5584
 	pcalau12i	$a1, %pc_hi20(pos2ctx_map_int)
 	addi.d	$a1, $a1, %pc_lo12(pos2ctx_map_int)
-	ori	$a5, $zero, 2432
+	ori	$a4, $zero, 2432
 	ori	$a6, $zero, 1832
 	bnez	$t0, .LBB22_2
 # %bb.1:
 	ld.w	$a0, $a0, 356
 	beqz	$a0, .LBB22_18
 .LBB22_2:
-	ldx.w	$s2, $a7, $a4
+	ldx.w	$s2, $a7, $a5
 	ori	$a0, $zero, 7
 	beq	$a3, $a0, .LBB22_4
 .LBB22_3:
@@ -2920,19 +2921,19 @@ read_significance_map:                  # @read_significance_map
 	ori	$s3, $zero, 1
 	bge	$s3, $s2, .LBB22_14
 .LBB22_5:
-	ldptr.d	$a0, $a2, 5592
-	pcalau12i	$a2, %pc_hi20(type2ctx_last)
-	addi.d	$a2, $a2, %pc_lo12(type2ctx_last)
-	ld.d	$a0, $a0, 56
-	ldx.w	$a2, $a2, $a4
-	ori	$a4, $zero, 60
-	add.d	$a6, $a0, $a6
-	mul.d	$a2, $a2, $a4
-	slli.d	$a4, $a3, 3
-	ldx.d	$s4, $a1, $a4
-	add.d	$a0, $a0, $a5
-	add.d	$s5, $a6, $a2
-	add.d	$s6, $a0, $a2
+	pcalau12i	$a0, %pc_hi20(type2ctx_last)
+	addi.d	$a0, $a0, %pc_lo12(type2ctx_last)
+	ldx.w	$a0, $a0, $a5
+	ldptr.d	$a2, $a2, 5592
+	ori	$a5, $zero, 60
+	mul.d	$a0, $a0, $a5
+	ld.d	$a2, $a2, 56
+	add.d	$a5, $a6, $a0
+	slli.d	$a6, $a3, 3
+	ldx.d	$s4, $a1, $a6
+	add.d	$a0, $a4, $a0
+	add.d	$s5, $a2, $a5
+	add.d	$s6, $a2, $a0
 	pcalau12i	$a0, %pc_hi20(pos2ctx_last)
 	addi.d	$a0, $a0, %pc_lo12(pos2ctx_last)
 	move	$s1, $zero
@@ -3013,9 +3014,9 @@ read_significance_map:                  # @read_significance_map
 .LBB22_18:
 	pcalau12i	$a0, %pc_hi20(pos2ctx_map)
 	addi.d	$a1, $a0, %pc_lo12(pos2ctx_map)
-	ori	$a5, $zero, 832
+	ori	$a4, $zero, 832
 	ori	$a6, $zero, 232
-	ldx.w	$s2, $a7, $a4
+	ldx.w	$s2, $a7, $a5
 	ori	$a0, $zero, 7
 	bne	$a3, $a0, .LBB22_3
 	b	.LBB22_4
@@ -3163,7 +3164,6 @@ unary_exp_golomb_level_decode:          # @unary_exp_golomb_level_decode
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$fp, $a0
 	pcaddu18i	$ra, %call36(biari_decode_symbol)
@@ -3186,29 +3186,28 @@ unary_exp_golomb_level_decode:          # @unary_exp_golomb_level_decode
 .LBB24_4:
 	beqz	$a0, .LBB24_12
 # %bb.5:
-	move	$s3, $zero
-	move	$a1, $zero
-	ori	$s4, $zero, 1
+	move	$s2, $zero
+	move	$s0, $zero
+	ori	$s3, $zero, 1
 	.p2align	4, , 16
 .LBB24_6:                               # =>This Inner Loop Header: Depth=1
-	move	$s0, $a1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_decode_symbol_eq_prob)
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $a0, -1
 	sltui	$a1, $a1, 1
-	sll.w	$a2, $s4, $s3
-	add.w	$s3, $s3, $a1
-	maskeqz	$s2, $a2, $a1
-	add.d	$a1, $s2, $s0
+	sll.w	$a2, $s3, $s2
+	add.w	$s2, $s2, $a1
+	maskeqz	$a1, $a2, $a1
+	add.d	$s0, $a1, $s0
 	bnez	$a0, .LBB24_6
 # %bb.7:
-	move	$s4, $zero
-	beqz	$s3, .LBB24_10
+	move	$s3, $zero
+	beqz	$s2, .LBB24_10
 # %bb.8:
-	addi.d	$s3, $s3, -1
-	ori	$s5, $zero, 1
-	addi.w	$s6, $zero, -1
+	addi.d	$s2, $s2, -1
+	ori	$s4, $zero, 1
+	addi.w	$s5, $zero, -1
 	.p2align	4, , 16
 .LBB24_9:                               # =>This Inner Loop Header: Depth=1
 	move	$a0, $fp
@@ -3216,15 +3215,14 @@ unary_exp_golomb_level_decode:          # @unary_exp_golomb_level_decode
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $a0, -1
 	sltui	$a0, $a0, 1
-	sll.w	$a1, $s5, $s3
+	sll.w	$a1, $s4, $s2
 	maskeqz	$a0, $a1, $a0
-	addi.w	$s3, $s3, -1
-	or	$s4, $a0, $s4
-	bne	$s3, $s6, .LBB24_9
+	addi.w	$s2, $s2, -1
+	or	$s3, $a0, $s3
+	bne	$s2, $s5, .LBB24_9
 .LBB24_10:
-	add.d	$a0, $s4, $s2
-	add.d	$a0, $a0, $s0
-	sub.d	$a0, $a0, $s1
+	sub.d	$a0, $s0, $s1
+	add.d	$a0, $s3, $a0
 	addi.w	$a0, $a0, 1
 	b	.LBB24_13
 .LBB24_11:
@@ -3233,7 +3231,6 @@ unary_exp_golomb_level_decode:          # @unary_exp_golomb_level_decode
 .LBB24_12:
 	sub.w	$a0, $zero, $s1
 .LBB24_13:
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload

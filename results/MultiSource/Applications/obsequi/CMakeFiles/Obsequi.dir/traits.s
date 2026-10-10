@@ -590,11 +590,11 @@ write_node_info:                        # @write_node_info
 	nor	$a5, $a5, $zero
 	bstrpick.d	$a5, $a5, 15, 0
 	slli.d	$a5, $a5, 2
-	ldx.w	$a5, $a4, $a5
 	srli.d	$a6, $a6, 14
 	ldx.w	$a6, $a4, $a6
-	add.d	$a2, $a5, $a2
+	ldx.w	$a5, $a4, $a5
 	add.d	$a2, $a2, $a6
+	add.d	$a2, $a5, $a2
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 4
 	bnez	$a0, .LBB0_30
@@ -1005,32 +1005,32 @@ tr_non_safe_moves_a_little_touchy:      # @tr_non_safe_moves_a_little_touchy
 .LBB1_5:                                # =>This Inner Loop Header: Depth=1
 	vld	$vr5, $a5, -16
 	vld	$vr6, $a5, -20
-	vld	$vr7, $a5, 0
-	vbsrl.v	$vr8, $vr0, 12
+	vbsrl.v	$vr7, $vr0, 12
 	vld	$vr0, $a5, -4
+	vld	$vr8, $a5, 0
 	vbsll.v	$vr9, $vr6, 4
-	vor.v	$vr8, $vr9, $vr8
-	vbsrl.v	$vr9, $vr6, 12
-	vbsll.v	$vr10, $vr0, 4
-	vor.v	$vr9, $vr10, $vr9
-	vor.v	$vr5, $vr5, $vr8
-	vor.v	$vr7, $vr7, $vr9
-	vsrli.w	$vr8, $vr6, 1
+	vbsrl.v	$vr10, $vr6, 12
+	vbsll.v	$vr11, $vr0, 4
+	vor.v	$vr10, $vr11, $vr10
+	vor.v	$vr5, $vr5, $vr7
+	vor.v	$vr5, $vr5, $vr9
+	vsrli.w	$vr7, $vr6, 1
 	vsrli.w	$vr9, $vr0, 1
 	vor.v	$vr5, $vr5, $vr6
-	vor.v	$vr7, $vr7, $vr0
+	vor.v	$vr8, $vr8, $vr0
+	vor.v	$vr8, $vr8, $vr10
 	vslli.w	$vr10, $vr5, 1
-	vslli.w	$vr11, $vr7, 1
+	vslli.w	$vr11, $vr8, 1
 	vslli.w	$vr6, $vr6, 2
 	vslli.w	$vr12, $vr0, 2
-	vor.v	$vr6, $vr8, $vr6
-	vor.v	$vr8, $vr9, $vr12
+	vor.v	$vr6, $vr7, $vr6
+	vor.v	$vr7, $vr9, $vr12
 	vor.v	$vr6, $vr6, $vr10
-	vor.v	$vr8, $vr8, $vr11
+	vor.v	$vr7, $vr7, $vr11
 	vor.v	$vr9, $vr5, $vr6
-	vor.v	$vr10, $vr7, $vr8
+	vor.v	$vr10, $vr8, $vr7
 	vnor.v	$vr5, $vr5, $vr6
-	vnor.v	$vr6, $vr7, $vr8
+	vnor.v	$vr6, $vr8, $vr7
 	vandn.v	$vr7, $vr9, $vr2
 	vandn.v	$vr8, $vr10, $vr2
 	vilvh.w	$vr9, $vr1, $vr7

@@ -4432,8 +4432,8 @@ cli_loadmd:                             # @cli_loadmd
 	ld.w	$a0, $s0, 0
 	move	$s1, $zero
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	add.d	$a1, $a1, $s8
 	sub.d	$a0, $a0, $a1
-	sub.d	$a0, $a0, $s8
 	st.w	$a0, $s0, 0
 	b	.LBB17_56
 .LBB17_52:

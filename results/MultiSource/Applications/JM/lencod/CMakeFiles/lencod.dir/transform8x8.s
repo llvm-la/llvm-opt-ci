@@ -2217,20 +2217,20 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	ld.hu	$t6, $fp, 46
 	ld.hu	$t7, $fp, 48
 	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a4
-	add.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a6
-	add.d	$a0, $a0, $a7
-	add.d	$a0, $a0, $t0
-	add.d	$a0, $a0, $t1
-	add.d	$a0, $a0, $t2
-	add.w	$a0, $a0, $t3
-	add.d	$a0, $a0, $t4
-	add.d	$a0, $a0, $t5
-	add.d	$a0, $a0, $t6
-	add.d	$a0, $a0, $t7
+	add.d	$a1, $a2, $a3
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $a4, $a5
+	add.d	$a1, $a1, $a6
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $a7, $t0
+	add.d	$a1, $a1, $t1
+	add.d	$a1, $a1, $t2
+	add.d	$a1, $a1, $t3
+	add.w	$a0, $a0, $a1
+	add.d	$a1, $t4, $t5
+	add.d	$a1, $a1, $t6
+	add.d	$a1, $a1, $t7
+	add.d	$a0, $a0, $a1
 	addi.d	$a0, $a0, 8
 	bstrpick.d	$a0, $a0, 31, 4
 	b	.LBB2_43
@@ -2269,11 +2269,11 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	ld.hu	$a7, $fp, 16
 .LBB2_42:
 	add.d	$a0, $a0, $a1
-	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a4
-	add.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a6
+	add.d	$a1, $a2, $a3
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $a4, $a5
+	add.d	$a1, $a1, $a6
+	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $a7
 	addi.d	$a0, $a0, 4
 	bstrpick.d	$a0, $a0, 31, 3
@@ -2591,8 +2591,8 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	vslli.w	$vr1, $vr1, 1
 	vslli.w	$vr4, $vr4, 1
 	vadd.w	$vr10, $vr5, $vr4
-	vadd.w	$vr1, $vr3, $vr1
-	vadd.w	$vr2, $vr1, $vr2
+	vadd.w	$vr1, $vr1, $vr2
+	vadd.w	$vr2, $vr3, $vr1
 	vadd.w	$vr1, $vr10, $vr9
 	vsrli.w	$vr1, $vr1, 2
 	vsrli.w	$vr2, $vr2, 2
@@ -2774,13 +2774,13 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	ori	$a1, $s3, 200
 	stx.h	$a0, $s6, $a1
 	st.h	$a0, $s4, 856
-	ori	$a1, $s3, 140
-	stx.h	$a0, $s6, $a1
 	st.h	$a0, $s4, 796
-	ld.hu	$a0, $fp, 18
+	ld.hu	$a1, $fp, 18
+	ori	$a2, $s3, 140
+	stx.h	$a0, $s6, $a2
+	vpickve2gr.w	$a0, $vr4, 2
+	add.d	$a0, $a0, $a1
 	vpickve2gr.w	$a1, $vr3, 0
-	vpickve2gr.w	$a2, $vr4, 2
-	add.d	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	bstrpick.d	$a0, $a0, 18, 2
 	ori	$a1, $s3, 172
@@ -2964,8 +2964,8 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	vilvl.h	$vr4, $vr0, $vr2
 	vilvl.h	$vr5, $vr0, $vr3
 	vslli.w	$vr4, $vr4, 1
+	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr1, $vr1, $vr4
-	vadd.w	$vr1, $vr1, $vr5
 	vaddi.wu	$vr1, $vr1, 2
 	vsrli.w	$vr1, $vr1, 2
 	vstelm.h	$vr1, $t5, 0, 0
@@ -3547,8 +3547,8 @@ RDCost_for_8x8IntraBlocks:              # @RDCost_for_8x8IntraBlocks
 	slli.d	$a1, $a1, 2
 	bstrins.d	$a1, $zero, 2, 0
 	pcalau12i	$a2, %got_pc_hi20(img)
-	ld.d	$s4, $a2, %got_pc_lo12(img)
-	ld.d	$a2, $s4, 0
+	ld.d	$s3, $a2, %got_pc_lo12(img)
+	ld.d	$a2, $s3, 0
 	ld.w	$a3, $a2, 176
 	ld.w	$a4, $a2, 180
 	ld.w	$a5, $a2, 196
@@ -3560,7 +3560,7 @@ RDCost_for_8x8IntraBlocks:              # @RDCost_for_8x8IntraBlocks
 	pcalau12i	$a0, %got_pc_hi20(enc_picture)
 	ld.d	$a0, $a0, %got_pc_lo12(enc_picture)
 	ld.d	$a0, $a0, 0
-	ldptr.d	$s3, $a0, 6440
+	ldptr.d	$s4, $a0, 6440
 	ldptr.d	$a0, $a2, 14216
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(input)
@@ -3579,13 +3579,13 @@ RDCost_for_8x8IntraBlocks:              # @RDCost_for_8x8IntraBlocks
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(dct_luma8x8)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s4, 0
+	ld.d	$a1, $s3, 0
 	move	$a2, $zero
-	move	$s4, $zero
+	move	$s3, $zero
 	st.w	$a0, $s2, 0
 	ldptr.d	$a0, $a1, 14232
 	alsl.d	$a3, $s6, $s7, 3
-	alsl.d	$a4, $s5, $s3, 3
+	alsl.d	$a4, $s5, $s4, 3
 	slli.d	$a5, $s8, 1
 	vrepli.b	$vr0, 0
 	ori	$a6, $zero, 64
@@ -3596,44 +3596,44 @@ RDCost_for_8x8IntraBlocks:              # @RDCost_for_8x8IntraBlocks
 	vldx	$vr1, $a7, $a5
 	vldx	$vr2, $t0, $a5
 	vilvl.h	$vr3, $vr0, $vr1
+	vilvh.h	$vr1, $vr0, $vr1
 	vilvl.h	$vr4, $vr0, $vr2
 	vsub.w	$vr3, $vr3, $vr4
 	vpickve2gr.w	$a7, $vr3, 0
 	slli.d	$a7, $a7, 2
 	ldx.w	$a7, $a0, $a7
-	vilvh.h	$vr1, $vr0, $vr1
-	vilvh.h	$vr2, $vr0, $vr2
-	vsub.w	$vr1, $vr1, $vr2
-	add.d	$a7, $s4, $a7
 	vpickve2gr.w	$t0, $vr3, 1
 	slli.d	$t0, $t0, 2
 	ldx.w	$t0, $a0, $t0
 	vpickve2gr.w	$t1, $vr3, 2
 	slli.d	$t1, $t1, 2
 	ldx.w	$t1, $a0, $t1
-	vpickve2gr.w	$t2, $vr3, 3
-	slli.d	$t2, $t2, 2
-	ldx.w	$t2, $a0, $t2
-	vpickve2gr.w	$t3, $vr1, 0
-	slli.d	$t3, $t3, 2
-	ldx.w	$t3, $a0, $t3
+	vilvh.h	$vr2, $vr0, $vr2
+	vsub.w	$vr1, $vr1, $vr2
+	add.d	$a7, $s3, $a7
+	add.d	$t0, $t0, $t1
 	add.d	$a7, $a7, $t0
-	add.d	$a7, $a7, $t1
-	add.d	$a7, $a7, $t2
-	add.d	$a7, $a7, $t3
-	vpickve2gr.w	$t0, $vr1, 1
+	vpickve2gr.w	$t0, $vr3, 3
 	slli.d	$t0, $t0, 2
 	ldx.w	$t0, $a0, $t0
-	vpickve2gr.w	$t1, $vr1, 2
+	vpickve2gr.w	$t1, $vr1, 0
 	slli.d	$t1, $t1, 2
 	ldx.w	$t1, $a0, $t1
-	vpickve2gr.w	$t2, $vr1, 3
+	vpickve2gr.w	$t2, $vr1, 1
 	slli.d	$t2, $t2, 2
 	ldx.w	$t2, $a0, $t2
+	vpickve2gr.w	$t3, $vr1, 2
+	slli.d	$t3, $t3, 2
+	ldx.w	$t3, $a0, $t3
+	vpickve2gr.w	$t4, $vr1, 3
+	slli.d	$t4, $t4, 2
+	ldx.w	$t4, $a0, $t4
+	add.d	$t0, $t0, $t1
+	add.d	$t0, $t0, $t2
 	add.d	$a7, $a7, $t0
-	add.d	$a7, $a7, $t1
+	add.d	$t0, $t3, $t4
 	addi.d	$a2, $a2, 8
-	add.d	$s4, $a7, $t2
+	add.d	$s3, $a7, $t0
 	bne	$a2, $a6, .LBB3_1
 # %bb.2:
 	xor	$a0, $s1, $s0
@@ -3672,13 +3672,14 @@ RDCost_for_8x8IntraBlocks:              # @RDCost_for_8x8IntraBlocks
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ldptr.w	$a0, $a0, 4008
-	ld.w	$s0, $sp, 44
+	ld.w	$s1, $sp, 44
 	beqz	$a0, .LBB3_4
 # %bb.3:
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(writeLumaCoeff8x8_CABAC)
 	jirl	$ra, $ra, 0
+	add.w	$a0, $a0, $s1
 	b	.LBB3_5
 .LBB3_4:
 	move	$a0, $zero
@@ -3687,7 +3688,7 @@ RDCost_for_8x8IntraBlocks:              # @RDCost_for_8x8IntraBlocks
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(writeCoeff4x4_CAVLC)
 	jirl	$ra, $ra, 0
-	add.d	$s0, $a0, $s0
+	move	$s0, $a0
 	ori	$a2, $zero, 1
 	move	$a0, $zero
 	move	$a1, $fp
@@ -3701,16 +3702,17 @@ RDCost_for_8x8IntraBlocks:              # @RDCost_for_8x8IntraBlocks
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(writeCoeff4x4_CAVLC)
 	jirl	$ra, $ra, 0
-	add.d	$s0, $a0, $s0
+	add.d	$a0, $a0, $s0
+	add.d	$s0, $a0, $s1
 	ori	$a2, $zero, 3
 	move	$a0, $zero
 	move	$a1, $fp
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(writeCoeff4x4_CAVLC)
 	jirl	$ra, $ra, 0
-.LBB3_5:
 	add.w	$a0, $a0, $s0
-	movgr2fr.d	$fa0, $s4
+.LBB3_5:
+	movgr2fr.d	$fa0, $s3
 	ffint.d.l	$fa0, $fa0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
@@ -3986,7 +3988,6 @@ dct_luma8x8:                            # @dct_luma8x8
 	vinsgr2vr.w	$vr3, $t0, 3
 	vsub.w	$vr1, $vr2, $vr3
 	vsrai.w	$vr0, $vr1, 1
-	vadd.w	$vr0, $vr0, $vr1
 	ori	$a0, $a7, 1108
 	ldx.w	$a0, $a4, $a0
 	ori	$a3, $a7, 1172
@@ -4012,7 +4013,8 @@ dct_luma8x8:                            # @dct_luma8x8
 	vinsgr2vr.w	$vr7, $a6, 2
 	vinsgr2vr.w	$vr7, $t0, 3
 	vsub.w	$vr4, $vr6, $vr7
-	vadd.w	$vr0, $vr0, $vr4
+	vadd.w	$vr5, $vr1, $vr4
+	vadd.w	$vr0, $vr0, $vr5
 	ori	$a0, $a7, 1112
 	ldx.w	$a0, $a4, $a0
 	ori	$a3, $a7, 1176
@@ -4075,8 +4077,8 @@ dct_luma8x8:                            # @dct_luma8x8
 	vsub.w	$vr4, $vr1, $vr4
 	vadd.w	$vr4, $vr4, $vr13
 	vsrai.w	$vr15, $vr5, 1
-	vadd.w	$vr5, $vr5, $vr15
 	vadd.w	$vr5, $vr5, $vr13
+	vadd.w	$vr5, $vr5, $vr15
 	vsub.w	$vr5, $vr1, $vr5
 	vsrai.w	$vr1, $vr5, 2
 	vsub.w	$vr1, $vr4, $vr1
@@ -4123,7 +4125,6 @@ dct_luma8x8:                            # @dct_luma8x8
 	vinsgr2vr.w	$vr11, $t2, 3
 	vsub.w	$vr9, $vr10, $vr11
 	vsrai.w	$vr8, $vr9, 1
-	vadd.w	$vr8, $vr8, $vr9
 	ori	$a0, $a7, 852
 	ldx.w	$a0, $a4, $a0
 	ori	$a3, $a7, 916
@@ -4149,7 +4150,8 @@ dct_luma8x8:                            # @dct_luma8x8
 	vinsgr2vr.w	$vr13, $a6, 2
 	vinsgr2vr.w	$vr13, $t2, 3
 	vsub.w	$vr15, $vr12, $vr13
-	vadd.w	$vr8, $vr8, $vr15
+	vadd.w	$vr14, $vr9, $vr15
+	vadd.w	$vr8, $vr8, $vr14
 	ori	$a0, $a7, 856
 	ldx.w	$a0, $a4, $a0
 	ori	$a3, $a7, 920
@@ -4212,8 +4214,8 @@ dct_luma8x8:                            # @dct_luma8x8
 	vsub.w	$vr15, $vr9, $vr15
 	vadd.w	$vr15, $vr15, $vr21
 	vsrai.w	$vr23, $vr17, 1
-	vadd.w	$vr17, $vr17, $vr23
 	vadd.w	$vr17, $vr17, $vr21
+	vadd.w	$vr17, $vr17, $vr23
 	vsub.w	$vr17, $vr9, $vr17
 	vsrai.w	$vr9, $vr17, 2
 	vsub.w	$vr9, $vr15, $vr9
@@ -4275,12 +4277,12 @@ dct_luma8x8:                            # @dct_luma8x8
 	vsub.w	$vr16, $vr23, $vr24
 	vsub.w	$vr5, $vr26, $vr5
 	vsrai.w	$vr17, $vr14, 1
-	vadd.w	$vr17, $vr17, $vr14
-	vadd.w	$vr17, $vr17, $vr15
+	vadd.w	$vr18, $vr14, $vr15
+	vadd.w	$vr17, $vr17, $vr18
 	vadd.w	$vr17, $vr17, $vr16
 	vsrai.w	$vr18, $vr16, 1
-	vadd.w	$vr18, $vr16, $vr18
-	vadd.w	$vr18, $vr18, $vr5
+	vadd.w	$vr19, $vr16, $vr5
+	vadd.w	$vr18, $vr19, $vr18
 	vsub.w	$vr18, $vr14, $vr18
 	vsrai.w	$vr19, $vr15, 1
 	vadd.w	$vr19, $vr15, $vr19
@@ -4352,12 +4354,12 @@ dct_luma8x8:                            # @dct_luma8x8
 	vsub.w	$vr7, $vr15, $vr16
 	vsub.w	$vr1, $vr10, $vr1
 	vsrai.w	$vr8, $vr4, 1
-	vadd.w	$vr8, $vr8, $vr4
-	vadd.w	$vr8, $vr8, $vr5
+	vadd.w	$vr9, $vr4, $vr5
+	vadd.w	$vr8, $vr8, $vr9
 	vadd.w	$vr8, $vr8, $vr7
 	vsrai.w	$vr9, $vr7, 1
-	vadd.w	$vr9, $vr7, $vr9
-	vadd.w	$vr9, $vr9, $vr1
+	vadd.w	$vr10, $vr7, $vr1
+	vadd.w	$vr9, $vr10, $vr9
 	vsub.w	$vr9, $vr4, $vr9
 	vsrai.w	$vr10, $vr5, 1
 	vadd.w	$vr10, $vr5, $vr10
@@ -4834,8 +4836,8 @@ dct_luma8x8:                            # @dct_luma8x8
 	vsub.w	$vr4, $vr6, $vr4
 	vadd.w	$vr6, $vr2, $vr4
 	vsrai.w	$vr1, $vr9, 1
-	vadd.w	$vr1, $vr1, $vr9
-	vsub.w	$vr1, $vr12, $vr1
+	vsub.w	$vr9, $vr12, $vr9
+	vsub.w	$vr1, $vr9, $vr1
 	vadd.w	$vr9, $vr1, $vr10
 	vsrai.w	$vr1, $vr9, 2
 	vadd.w	$vr12, $vr12, $vr8
@@ -4971,8 +4973,8 @@ dct_luma8x8:                            # @dct_luma8x8
 	vsub.w	$vr13, $vr15, $vr13
 	vadd.w	$vr15, $vr10, $vr13
 	vsrai.w	$vr9, $vr17, 1
-	vadd.w	$vr9, $vr9, $vr17
-	vsub.w	$vr9, $vr20, $vr9
+	vsub.w	$vr17, $vr20, $vr17
+	vsub.w	$vr9, $vr17, $vr9
 	vadd.w	$vr17, $vr9, $vr18
 	vsrai.w	$vr9, $vr17, 2
 	vadd.w	$vr20, $vr20, $vr16
@@ -5036,8 +5038,8 @@ dct_luma8x8:                            # @dct_luma8x8
 	vextrins.w	$vr5, $vr13, 33
 	vextrins.w	$vr5, $vr14, 49
 	vsrai.w	$vr6, $vr19, 1
-	vadd.w	$vr6, $vr6, $vr19
-	vsub.w	$vr6, $vr23, $vr6
+	vsub.w	$vr7, $vr23, $vr19
+	vsub.w	$vr6, $vr7, $vr6
 	vadd.w	$vr6, $vr6, $vr5
 	vsrai.w	$vr7, $vr20, 1
 	vadd.w	$vr13, $vr23, $vr20
@@ -5111,8 +5113,8 @@ dct_luma8x8:                            # @dct_luma8x8
 	vextrins.w	$vr1, $vr9, 33
 	vextrins.w	$vr1, $vr8, 49
 	vsrai.w	$vr2, $vr6, 1
-	vadd.w	$vr2, $vr2, $vr6
-	vsub.w	$vr2, $vr12, $vr2
+	vsub.w	$vr3, $vr12, $vr6
+	vsub.w	$vr2, $vr3, $vr2
 	vadd.w	$vr2, $vr2, $vr1
 	vsrai.w	$vr3, $vr7, 1
 	vadd.w	$vr8, $vr12, $vr7
@@ -5367,8 +5369,8 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 # %bb.0:
 	ld.hu	$a4, $a0, 0
 	vld	$vr0, $a0, 2
-	vld	$vr2, $a0, 18
-	vrepli.b	$vr1, 0
+	vld	$vr1, $a0, 18
+	vrepli.b	$vr2, 0
 	pcalau12i	$a5, %pc_hi20(.LCPI5_1)
 	beqz	$a2, .LBB5_5
 # %bb.1:
@@ -5388,7 +5390,7 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	add.d	$t3, $t1, $t3
 	vpickve2gr.hu	$t4, $vr0, 2
 	vpickve2gr.hu	$t5, $vr0, 3
-	vori.b	$vr3, $vr1, 0
+	vori.b	$vr3, $vr2, 0
 	vinsgr2vr.w	$vr3, $t2, 1
 	vinsgr2vr.w	$vr3, $t4, 2
 	vinsgr2vr.w	$vr3, $t5, 3
@@ -5396,49 +5398,49 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	vinsgr2vr.w	$vr4, $t0, 1
 	vinsgr2vr.w	$vr4, $t1, 2
 	vinsgr2vr.w	$vr4, $t4, 3
-	pcalau12i	$t0, %pc_hi20(.LCPI5_0)
-	vld	$vr5, $t0, %pc_lo12(.LCPI5_0)
-	vinsgr2vr.w	$vr6, $t5, 0
-	vexth.wu.hu	$vr7, $vr0
-	vld	$vr0, $a5, %pc_lo12(.LCPI5_1)
-	vshuf.w	$vr5, $vr7, $vr6
-	vori.b	$vr6, $vr1, 0
+	vinsgr2vr.w	$vr5, $t5, 0
+	vori.b	$vr6, $vr2, 0
 	vinsgr2vr.w	$vr6, $t4, 1
+	pcalau12i	$t0, %pc_hi20(.LCPI5_0)
+	vld	$vr7, $t0, %pc_lo12(.LCPI5_0)
+	vld	$vr8, $a5, %pc_lo12(.LCPI5_1)
 	vinsgr2vr.w	$vr6, $t5, 2
-	vsll.w	$vr0, $vr3, $vr0
-	vadd.w	$vr0, $vr4, $vr0
-	vslli.w	$vr3, $vr7, 1
-	vadd.w	$vr3, $vr5, $vr3
+	vexth.wu.hu	$vr9, $vr0
+	vshuf.w	$vr7, $vr9, $vr5
+	vsll.w	$vr0, $vr3, $vr8
+	vslli.w	$vr3, $vr9, 1
+	vadd.w	$vr3, $vr7, $vr3
 	ori	$t0, $zero, 0
 	lu32i.d	$t0, 2
-	vreplgr2vr.d	$vr4, $t0
-	vshuf4i.w	$vr5, $vr7, 57
-	vinsgr2vr.w	$vr5, $a7, 3
-	vadd.w	$vr3, $vr3, $vr5
-	vextrins.w	$vr6, $vr7, 48
+	vreplgr2vr.d	$vr5, $t0
+	vshuf4i.w	$vr7, $vr9, 57
+	vinsgr2vr.w	$vr7, $a7, 3
+	vadd.w	$vr3, $vr3, $vr7
+	vextrins.w	$vr6, $vr9, 48
 	vadd.w	$vr0, $vr0, $vr6
-	vadd.w	$vr0, $vr0, $vr4
+	vadd.w	$vr0, $vr0, $vr5
+	vadd.w	$vr0, $vr4, $vr0
 	vaddi.wu	$vr3, $vr3, 2
 	vsrli.w	$vr3, $vr3, 2
 	vsrli.w	$vr0, $vr0, 2
 	vpickev.h	$vr0, $vr3, $vr0
-	vpickve2gr.w	$t0, $vr7, 3
+	vpickve2gr.w	$t0, $vr9, 3
 	alsl.d	$t0, $a7, $t0, 1
 	add.d	$t0, $t0, $a6
 	addi.d	$t0, $t0, 2
-	vpickve2gr.hu	$t1, $vr2, 2
+	vpickve2gr.hu	$t1, $vr1, 2
 	alsl.d	$a7, $a6, $a7, 1
 	add.d	$a7, $a7, $t1
 	addi.d	$a7, $a7, 2
-	vpickve2gr.hu	$t2, $vr2, 3
+	vpickve2gr.hu	$t2, $vr1, 3
 	alsl.d	$a6, $t1, $a6, 1
 	add.d	$a6, $a6, $t2
 	addi.d	$a6, $a6, 2
-	vpickve2gr.hu	$t3, $vr2, 4
+	vpickve2gr.hu	$t3, $vr1, 4
 	alsl.d	$t1, $t2, $t1, 1
 	add.d	$t1, $t1, $t3
 	addi.d	$t1, $t1, 2
-	vpickve2gr.hu	$t4, $vr2, 5
+	vpickve2gr.hu	$t4, $vr1, 5
 	alsl.d	$t2, $t3, $t2, 1
 	ld.hu	$t3, $a0, 26
 	ld.hu	$t5, $a0, 28
@@ -5455,17 +5457,17 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	alsl.d	$t6, $t6, $t6, 1
 	add.d	$t4, $t4, $t6
 	addi.d	$t4, $t4, 2
-	vinsgr2vr.w	$vr2, $t0, 0
-	vinsgr2vr.w	$vr2, $a7, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $t1, 3
+	vinsgr2vr.w	$vr1, $t0, 0
+	vinsgr2vr.w	$vr1, $a7, 1
+	vinsgr2vr.w	$vr1, $a6, 2
+	vinsgr2vr.w	$vr1, $t1, 3
 	vinsgr2vr.w	$vr3, $t2, 0
 	vinsgr2vr.w	$vr3, $t3, 1
 	vinsgr2vr.w	$vr3, $t5, 2
 	vinsgr2vr.w	$vr3, $t4, 3
 	vsrli.w	$vr3, $vr3, 2
-	vsrli.w	$vr2, $vr2, 2
-	vpickev.h	$vr2, $vr3, $vr2
+	vsrli.w	$vr1, $vr1, 2
+	vpickev.h	$vr1, $vr3, $vr1
 .LBB5_5:
 	vld	$vr3, $a0, 34
 	beqz	$a1, .LBB5_10
@@ -5506,62 +5508,62 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	ld.hu	$a1, $a0, 36
 	alsl.d	$a3, $a2, $a6, 1
 .LBB5_16:
-	addi.d	$t1, $a1, 2
-	add.d	$t2, $t1, $a3
-	ld.hu	$t3, $a0, 38
-	ld.hu	$t4, $a0, 40
-	ld.hu	$t0, $a0, 42
-	ld.hu	$a7, $a0, 44
+	addi.d	$a7, $a1, 2
+	add.d	$t0, $a7, $a3
+	ld.hu	$t1, $a0, 38
+	ld.hu	$t2, $a0, 40
+	ld.hu	$t3, $a0, 42
+	ld.hu	$t4, $a0, 44
 	ld.hu	$a6, $a0, 46
 	ld.hu	$a3, $a0, 48
-	vinsgr2vr.w	$vr3, $t2, 0
+	vinsgr2vr.w	$vr3, $t0, 0
 	vinsgr2vr.w	$vr3, $a2, 1
-	vinsgr2vr.w	$vr3, $t1, 2
-	vinsgr2vr.w	$vr3, $t3, 3
-	vinsgr2vr.w	$vr4, $t4, 0
-	vinsgr2vr.w	$vr4, $t0, 1
-	vinsgr2vr.w	$vr4, $a7, 2
+	vinsgr2vr.w	$vr3, $a7, 2
+	vinsgr2vr.w	$vr3, $t1, 3
+	vinsgr2vr.w	$vr4, $t2, 0
+	vinsgr2vr.w	$vr4, $t3, 1
+	vinsgr2vr.w	$vr4, $t4, 2
 	vinsgr2vr.w	$vr4, $a3, 3
 	addi.d	$a2, $a6, 2
-	vinsgr2vr.w	$vr5, $t0, 0
-	pcalau12i	$t1, %pc_hi20(.LCPI5_2)
-	vld	$vr6, $t1, %pc_lo12(.LCPI5_2)
-	vinsgr2vr.w	$vr5, $a7, 1
+	vinsgr2vr.w	$vr5, $t3, 0
+	pcalau12i	$a7, %pc_hi20(.LCPI5_2)
+	vld	$vr6, $a7, %pc_lo12(.LCPI5_2)
+	vinsgr2vr.w	$vr5, $t4, 1
 	vinsgr2vr.w	$vr5, $a6, 2
 	vinsgr2vr.w	$vr5, $a2, 3
 	vsll.w	$vr5, $vr5, $vr6
-	vadd.w	$vr4, $vr4, $vr5
-	vori.b	$vr5, $vr1, 0
-	vld	$vr6, $a5, %pc_lo12(.LCPI5_1)
-	vinsgr2vr.w	$vr5, $a1, 1
-	vinsgr2vr.w	$vr5, $t3, 2
-	vinsgr2vr.w	$vr5, $t4, 3
-	vsll.w	$vr5, $vr5, $vr6
-	vadd.w	$vr3, $vr3, $vr5
+	vori.b	$vr6, $vr2, 0
+	vld	$vr7, $a5, %pc_lo12(.LCPI5_1)
+	vinsgr2vr.w	$vr6, $a1, 1
+	vinsgr2vr.w	$vr6, $t1, 2
+	vinsgr2vr.w	$vr6, $t2, 3
+	vsll.w	$vr6, $vr6, $vr7
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, 2
-	vreplgr2vr.d	$vr5, $a1
+	vreplgr2vr.d	$vr7, $a1
 	pcalau12i	$a1, %pc_hi20(.LCPI5_3)
-	vld	$vr6, $a1, %pc_lo12(.LCPI5_3)
+	vld	$vr8, $a1, %pc_lo12(.LCPI5_3)
 	slli.d	$a1, $a3, 1
-	vinsgr2vr.w	$vr1, $t3, 1
-	vinsgr2vr.w	$vr1, $t4, 2
-	vinsgr2vr.w	$vr1, $t0, 3
-	vadd.w	$vr1, $vr3, $vr1
-	vinsgr2vr.w	$vr3, $a7, 0
-	vinsgr2vr.w	$vr3, $a6, 1
-	vinsgr2vr.w	$vr3, $a3, 2
-	vinsgr2vr.w	$vr3, $a1, 3
-	vadd.w	$vr3, $vr4, $vr3
-	vadd.w	$vr3, $vr3, $vr6
-	vadd.w	$vr1, $vr1, $vr5
-	vsrli.w	$vr1, $vr1, 2
-	vsrli.w	$vr3, $vr3, 2
-	vpickev.h	$vr3, $vr3, $vr1
+	vinsgr2vr.w	$vr2, $t1, 1
+	vinsgr2vr.w	$vr2, $t2, 2
+	vinsgr2vr.w	$vr2, $t3, 3
+	vadd.w	$vr2, $vr6, $vr2
+	vinsgr2vr.w	$vr6, $t4, 0
+	vinsgr2vr.w	$vr6, $a6, 1
+	vinsgr2vr.w	$vr6, $a3, 2
+	vinsgr2vr.w	$vr6, $a1, 3
+	vadd.w	$vr4, $vr4, $vr6
+	vadd.w	$vr4, $vr4, $vr5
+	vadd.w	$vr4, $vr4, $vr8
+	vadd.w	$vr2, $vr2, $vr7
+	vadd.w	$vr2, $vr3, $vr2
+	vsrli.w	$vr2, $vr2, 2
+	vsrli.w	$vr3, $vr4, 2
+	vpickev.h	$vr3, $vr3, $vr2
 .LBB5_17:
 	st.h	$a4, $a0, 0
 	vst	$vr0, $a0, 2
-	vst	$vr2, $a0, 18
+	vst	$vr1, $a0, 18
 	vst	$vr3, $a0, 34
 	ret
 .LBB5_18:

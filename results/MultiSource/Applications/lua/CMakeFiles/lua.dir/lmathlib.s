@@ -732,8 +732,8 @@ math_random:                            # @math_random
 	srai.d	$a1, $a1, 61
 	add.d	$a1, $a1, $a2
 	slli.d	$a2, $a1, 31
-	add.d	$a1, $a2, $a1
 	add.d	$a0, $a0, $a1
+	add.d	$a0, $a0, $a2
 	movgr2fr.w	$fa0, $a0
 	ffint.d.w	$fa0, $fa0
 	lu12i.w	$a0, -1024

@@ -2347,7 +2347,7 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	ffint.s.w	$fa1, $fa1
 	fmul.s	$fa1, $fa2, $fa1
 	ftintrz.w.s	$fa1, $fa1
-	movfr2gr.s	$t0, $fa1
+	movfr2gr.s	$s4, $fa1
 	pcalau12i	$a3, %pc_hi20(g_graphics_vars)
 	addi.d	$a3, $a3, %pc_lo12(g_graphics_vars)
 	ld.w	$a4, $a3, 0
@@ -2357,7 +2357,7 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	ld.w	$a1, $a3, 4
 	fmul.s	$fa0, $fa0, $fa1
 	ftintrz.w.s	$fa0, $fa0
-	movfr2gr.s	$s4, $fa0
+	movfr2gr.s	$a4, $fa0
 	add.d	$a1, $a1, $a2
 	movgr2fr.w	$fa0, $a1
 	ffint.s.w	$fa0, $fa0
@@ -2371,7 +2371,7 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	addi.d	$a2, $s5, -3
 	bgeu	$a2, $a1, .LBB19_43
 # %bb.30:
-	st.d	$t0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
 	move	$s3, $a7
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(malloc)
@@ -2433,11 +2433,11 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	ld.w	$a0, $a0, %pc_lo12(g_page_object_num)
 	st.w	$a0, $s1, 16
 	st.w	$s3, $s1, 20
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	st.w	$a0, $s1, 24
+	st.w	$s4, $s1, 24
 	pcalau12i	$a0, %pc_hi20(g_target_annot_list)
 	ld.d	$a1, $a0, %pc_lo12(g_target_annot_list)
-	st.w	$s4, $s1, 28
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	st.w	$a2, $s1, 28
 	st.w	$s6, $s1, 32
 	st.w	$s2, $s1, 36
 	st.d	$a1, $s1, 0
@@ -2464,8 +2464,7 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	move	$a0, $s5
 	move	$a1, $s0
 	move	$a2, $a7
-	move	$a3, $t0
-	move	$a4, $s4
+	move	$a3, $s4
 	move	$a5, $s6
 	move	$a6, $zero
 	pcaddu18i	$ra, %call36(PDFSourceAnnot_New)
@@ -2527,6 +2526,7 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	or	$a1, $a1, $a2
 	beqz	$a1, .LBB19_61
 # %bb.47:
+	move	$s3, $a4
 	ld.w	$a1, $s1, 0
 	ld.hu	$a2, $s1, 4
 	xor	$a3, $a1, $a0
@@ -2559,6 +2559,7 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	ori	$a1, $a1, 628
 	xor	$a1, $a3, $a1
 	or	$a1, $a2, $a1
+	move	$a4, $s3
 	beqz	$a1, .LBB19_65
 # %bb.51:
 	ld.w	$a1, $s1, 0
@@ -2581,16 +2582,15 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 # %bb.53:
 	move	$a0, $s1
 	move	$s0, $a7
-	move	$s2, $t0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	move	$t0, $s2
+	move	$a4, $s3
 	move	$a7, $s0
-	add.d	$a0, $s1, $a0
 	pcalau12i	$a1, %pc_hi20(g_link)
 	addi.d	$a1, $a1, %pc_lo12(g_link)
 	move	$a6, $zero
-	sub.w	$s0, $a0, $a1
+	sub.d	$a1, $s1, $a1
+	add.w	$s0, $a1, $a0
 	b	.LBB19_56
 .LBB19_54:
 	addi.d	$a0, $fp, 2
@@ -2601,8 +2601,7 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	move	$a0, $zero
 	move	$a1, $s0
 	move	$a2, $a7
-	move	$a3, $t0
-	move	$a4, $s4
+	move	$a3, $s4
 	move	$a5, $s6
 	pcaddu18i	$ra, %call36(PDFSourceAnnot_New)
 	jirl	$ra, $ra, 0
@@ -2644,12 +2643,15 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	b	.LBB19_56
 .LBB19_62:
 	ori	$a6, $zero, 2
+	move	$a4, $s3
 	b	.LBB19_56
 .LBB19_63:
 	ori	$a6, $zero, 3
+	move	$a4, $s3
 	b	.LBB19_56
 .LBB19_64:
 	ori	$a6, $zero, 4
+	move	$a4, $s3
 	b	.LBB19_56
 .LBB19_65:
 	ori	$a6, $zero, 5

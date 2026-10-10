@@ -160,46 +160,46 @@ sha256_block:                           # @sha256_block
 	pcalau12i	$a2, %pc_hi20(.LCPI2_0)
 	vld	$vr1, $a2, %pc_lo12(.LCPI2_0)
 	vrepli.b	$vr2, 0
-	vshuf.b	$vr3, $vr2, $vr0, $vr1
 	pcalau12i	$a2, %pc_hi20(.LCPI2_1)
-	vld	$vr4, $a2, %pc_lo12(.LCPI2_1)
+	vld	$vr3, $a2, %pc_lo12(.LCPI2_1)
+	vshuf.b	$vr4, $vr2, $vr0, $vr1
 	vslli.w	$vr5, $vr0, 16
-	vslli.w	$vr3, $vr3, 8
-	vor.v	$vr3, $vr3, $vr5
-	vshuf.b	$vr5, $vr2, $vr0, $vr4
-	vor.v	$vr3, $vr3, $vr5
-	vslli.w	$vr3, $vr3, 8
+	vslli.w	$vr4, $vr4, 8
+	vshuf.b	$vr6, $vr2, $vr0, $vr3
+	vor.v	$vr5, $vr5, $vr6
+	vor.v	$vr4, $vr4, $vr5
+	vslli.w	$vr4, $vr4, 8
 	vld	$vr5, $a1, 16
 	vsrli.w	$vr0, $vr0, 24
-	vor.v	$vr0, $vr3, $vr0
+	vor.v	$vr0, $vr4, $vr0
 	vst	$vr0, $sp, 16
 	vshuf.b	$vr0, $vr2, $vr5, $vr1
-	vslli.w	$vr3, $vr5, 16
+	vslli.w	$vr4, $vr5, 16
 	vslli.w	$vr0, $vr0, 8
-	vor.v	$vr0, $vr0, $vr3
-	vshuf.b	$vr3, $vr2, $vr5, $vr4
-	vor.v	$vr0, $vr0, $vr3
+	vshuf.b	$vr6, $vr2, $vr5, $vr3
+	vor.v	$vr4, $vr4, $vr6
+	vor.v	$vr0, $vr0, $vr4
 	vslli.w	$vr0, $vr0, 8
-	vld	$vr3, $a1, 32
+	vld	$vr4, $a1, 32
 	vsrli.w	$vr5, $vr5, 24
 	vor.v	$vr0, $vr0, $vr5
 	vst	$vr0, $sp, 32
-	vshuf.b	$vr0, $vr2, $vr3, $vr1
-	vslli.w	$vr5, $vr3, 16
+	vshuf.b	$vr0, $vr2, $vr4, $vr1
+	vslli.w	$vr5, $vr4, 16
 	vslli.w	$vr0, $vr0, 8
-	vor.v	$vr0, $vr0, $vr5
-	vshuf.b	$vr5, $vr2, $vr3, $vr4
+	vshuf.b	$vr6, $vr2, $vr4, $vr3
+	vor.v	$vr5, $vr5, $vr6
 	vor.v	$vr0, $vr0, $vr5
 	vslli.w	$vr0, $vr0, 8
 	vld	$vr5, $a1, 48
-	vsrli.w	$vr3, $vr3, 24
-	vor.v	$vr0, $vr0, $vr3
+	vsrli.w	$vr4, $vr4, 24
+	vor.v	$vr0, $vr0, $vr4
 	vst	$vr0, $sp, 48
 	vshuf.b	$vr0, $vr2, $vr5, $vr1
 	vslli.w	$vr1, $vr5, 16
 	vslli.w	$vr0, $vr0, 8
-	vor.v	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr2, $vr5, $vr4
+	vshuf.b	$vr2, $vr2, $vr5, $vr3
+	vor.v	$vr1, $vr1, $vr2
 	vor.v	$vr0, $vr0, $vr1
 	vslli.w	$vr0, $vr0, 8
 	vsrli.w	$vr1, $vr5, 24
@@ -388,8 +388,8 @@ sha256_transform:                       # @sha256_transform
 	andn	$a7, $s7, $s5
 	and	$t0, $s4, $s5
 	or	$a7, $t0, $a7
-	ldx.w	$t0, $a0, $a2
-	ldx.w	$t1, $a1, $a2
+	ldx.w	$t0, $a1, $a2
+	ldx.w	$t1, $a0, $a2
 	add.d	$a7, $a7, $ra
 	add.d	$a6, $a7, $a6
 	add.d	$a6, $a6, $t0
@@ -405,188 +405,188 @@ sha256_transform:                       # @sha256_transform
 	xor	$t0, $t1, $t0
 	add.d	$a7, $a7, $t0
 	add.d	$t4, $a6, $s1
-	add.d	$t0, $a7, $a6
-	rotri.w	$a6, $t4, 6
-	rotri.w	$a7, $t4, 11
-	xor	$a6, $a6, $a7
-	rotri.w	$a7, $t4, 25
-	xor	$a6, $a6, $a7
-	and	$a7, $s5, $t4
-	ld.w	$t1, $a4, 4
-	ld.w	$t2, $a5, 4
-	andn	$t3, $s4, $t4
-	or	$a7, $a7, $t3
-	add.d	$t1, $t1, $s7
-	add.d	$t1, $t1, $t2
-	add.d	$a7, $t1, $a7
 	add.d	$a6, $a7, $a6
-	rotri.w	$a7, $t0, 2
-	rotri.w	$t1, $t0, 13
-	xor	$a7, $a7, $t1
-	rotri.w	$t1, $t0, 22
-	xor	$a7, $a7, $t1
-	and	$t1, $t0, $s3
-	xor	$t2, $t0, $s3
+	rotri.w	$a7, $t4, 6
+	rotri.w	$t0, $t4, 11
+	xor	$a7, $a7, $t0
+	rotri.w	$t0, $t4, 25
+	xor	$a7, $a7, $t0
+	and	$t0, $s5, $t4
+	ld.w	$t1, $a5, 4
+	ld.w	$t2, $a4, 4
+	andn	$t3, $s4, $t4
+	or	$t0, $t0, $t3
+	add.d	$t1, $s7, $t1
+	add.d	$t1, $t2, $t1
+	add.d	$t0, $t1, $t0
+	add.d	$a7, $t0, $a7
+	rotri.w	$t0, $a6, 2
+	rotri.w	$t1, $a6, 13
+	xor	$t0, $t0, $t1
+	rotri.w	$t1, $a6, 22
+	xor	$t0, $t0, $t1
+	and	$t1, $a6, $s3
+	xor	$t2, $a6, $s3
 	and	$t2, $t2, $s6
 	xor	$t1, $t2, $t1
-	add.d	$a7, $a7, $t1
-	add.d	$t5, $a6, $s8
-	add.d	$t1, $a7, $a6
-	rotri.w	$a6, $t5, 6
-	rotri.w	$a7, $t5, 11
-	xor	$a6, $a6, $a7
-	rotri.w	$a7, $t5, 25
-	xor	$a6, $a6, $a7
-	andn	$a7, $s5, $t5
+	add.d	$t0, $t0, $t1
+	add.d	$t5, $a7, $s8
+	add.d	$t1, $t0, $a7
+	rotri.w	$a7, $t5, 6
+	rotri.w	$t0, $t5, 11
+	xor	$a7, $a7, $t0
+	rotri.w	$t0, $t5, 25
+	xor	$a7, $a7, $t0
+	andn	$t0, $s5, $t5
 	ld.w	$t2, $a4, 8
 	ld.w	$t3, $a5, 8
 	and	$t6, $t4, $t5
-	or	$a7, $t6, $a7
+	or	$t0, $t6, $t0
 	add.d	$t2, $t2, $s4
 	add.d	$t2, $t2, $t3
-	add.d	$a7, $t2, $a7
-	add.d	$a6, $a7, $a6
-	rotri.w	$a7, $t1, 2
+	add.d	$t0, $t2, $t0
+	add.d	$a7, $t0, $a7
+	rotri.w	$t0, $t1, 2
 	rotri.w	$t2, $t1, 13
-	xor	$a7, $a7, $t2
+	xor	$t0, $t0, $t2
 	rotri.w	$t2, $t1, 22
-	xor	$a7, $a7, $t2
-	and	$t2, $t1, $t0
-	xor	$t3, $t1, $t0
+	xor	$t0, $t0, $t2
+	and	$t2, $t1, $a6
+	xor	$t3, $t1, $a6
 	and	$t3, $t3, $s3
 	xor	$t2, $t3, $t2
-	add.d	$a7, $a7, $t2
-	add.d	$t3, $a6, $s6
-	add.d	$a7, $a7, $a6
-	rotri.w	$a6, $t3, 6
-	rotri.w	$t2, $t3, 11
-	xor	$a6, $a6, $t2
-	rotri.w	$t2, $t3, 25
-	xor	$a6, $a6, $t2
-	andn	$t2, $t4, $t3
-	ld.w	$t6, $a4, 12
-	ld.w	$t7, $a5, 12
-	and	$t8, $t5, $t3
-	or	$t2, $t8, $t2
-	add.d	$t6, $t6, $s5
-	add.d	$t6, $t6, $t7
-	add.d	$t2, $t6, $t2
-	add.d	$a6, $t2, $a6
-	rotri.w	$t2, $a7, 2
+	add.d	$t0, $t0, $t2
+	add.d	$t2, $a7, $s6
+	add.d	$a7, $t0, $a7
+	rotri.w	$t0, $t2, 6
+	rotri.w	$t3, $t2, 11
+	xor	$t0, $t0, $t3
+	rotri.w	$t3, $t2, 25
+	xor	$t0, $t0, $t3
+	andn	$t3, $t4, $t2
+	ld.w	$t6, $a5, 12
+	ld.w	$t7, $a4, 12
+	and	$t8, $t5, $t2
+	or	$t3, $t8, $t3
+	add.d	$t6, $s5, $t6
+	add.d	$t6, $t7, $t6
+	add.d	$t3, $t6, $t3
+	add.d	$t0, $t3, $t0
+	rotri.w	$t3, $a7, 2
 	rotri.w	$t6, $a7, 13
-	xor	$t2, $t2, $t6
+	xor	$t3, $t3, $t6
 	rotri.w	$t6, $a7, 22
-	xor	$t2, $t2, $t6
+	xor	$t3, $t3, $t6
 	and	$t6, $a7, $t1
 	xor	$t7, $a7, $t1
-	and	$t7, $t7, $t0
+	and	$t7, $t7, $a6
 	xor	$t6, $t7, $t6
-	add.d	$t6, $t2, $t6
-	add.d	$t2, $a6, $s3
-	add.d	$a6, $t6, $a6
-	rotri.w	$t6, $t2, 6
-	rotri.w	$t7, $t2, 11
+	add.d	$t6, $t3, $t6
+	add.d	$t3, $t0, $s3
+	add.d	$t0, $t6, $t0
+	rotri.w	$t6, $t3, 6
+	rotri.w	$t7, $t3, 11
 	xor	$t6, $t6, $t7
-	rotri.w	$t7, $t2, 25
+	rotri.w	$t7, $t3, 25
 	xor	$t6, $t6, $t7
-	andn	$t7, $t5, $t2
+	andn	$t7, $t5, $t3
 	ld.w	$t8, $a4, 16
 	ld.w	$fp, $a5, 16
-	and	$s0, $t3, $t2
+	and	$s0, $t2, $t3
 	or	$t7, $s0, $t7
 	add.d	$t4, $t8, $t4
 	add.d	$t4, $t4, $fp
 	add.d	$t4, $t4, $t7
 	add.d	$t4, $t4, $t6
-	rotri.w	$t6, $a6, 2
-	rotri.w	$t7, $a6, 13
+	rotri.w	$t6, $t0, 2
+	rotri.w	$t7, $t0, 13
 	xor	$t6, $t6, $t7
-	rotri.w	$t7, $a6, 22
+	rotri.w	$t7, $t0, 22
 	xor	$t6, $t6, $t7
-	and	$t7, $a6, $a7
-	xor	$t8, $a6, $a7
+	and	$t7, $t0, $a7
+	xor	$t8, $t0, $a7
 	and	$t8, $t8, $t1
 	xor	$t7, $t8, $t7
 	add.d	$t6, $t6, $t7
-	add.d	$ra, $t4, $t0
+	add.d	$ra, $t4, $a6
 	add.d	$s1, $t6, $t4
-	rotri.w	$t0, $ra, 6
+	rotri.w	$a6, $ra, 6
 	rotri.w	$t4, $ra, 11
-	xor	$t0, $t0, $t4
+	xor	$a6, $a6, $t4
 	rotri.w	$t4, $ra, 25
-	xor	$t0, $t0, $t4
-	andn	$t4, $t3, $ra
+	xor	$a6, $a6, $t4
+	andn	$t4, $t2, $ra
 	ld.w	$t6, $a4, 20
 	ld.w	$t7, $a5, 20
-	and	$t8, $t2, $ra
+	and	$t8, $t3, $ra
 	or	$t4, $t8, $t4
 	add.d	$t5, $t5, $t6
 	add.d	$t5, $t5, $t7
 	add.d	$t4, $t5, $t4
-	add.d	$t0, $t4, $t0
+	add.d	$a6, $t4, $a6
 	rotri.w	$t4, $s1, 2
 	rotri.w	$t5, $s1, 13
 	xor	$t4, $t4, $t5
 	rotri.w	$t5, $s1, 22
 	xor	$t4, $t4, $t5
-	and	$t5, $s1, $a6
-	xor	$t6, $s1, $a6
+	and	$t5, $s1, $t0
+	xor	$t6, $s1, $t0
 	and	$t6, $t6, $a7
 	xor	$t5, $t6, $t5
 	add.d	$t4, $t4, $t5
-	add.d	$s7, $t0, $t1
-	add.d	$s8, $t4, $t0
-	rotri.w	$t0, $s7, 6
+	add.d	$s7, $a6, $t1
+	add.d	$s8, $t4, $a6
+	rotri.w	$a6, $s7, 6
 	rotri.w	$t1, $s7, 11
-	xor	$t0, $t0, $t1
+	xor	$a6, $a6, $t1
 	rotri.w	$t1, $s7, 25
-	xor	$t0, $t0, $t1
+	xor	$a6, $a6, $t1
 	ld.w	$t1, $a4, 24
 	ld.w	$t4, $a5, 24
-	andn	$t5, $t2, $s7
+	andn	$t5, $t3, $s7
 	and	$t6, $ra, $s7
 	or	$t5, $t6, $t5
 	add.d	$t1, $t4, $t1
-	add.d	$t1, $t1, $t3
+	add.d	$t1, $t1, $t2
 	add.d	$t1, $t1, $t5
-	add.d	$t0, $t1, $t0
+	add.d	$a6, $t1, $a6
 	rotri.w	$t1, $s8, 2
-	rotri.w	$t3, $s8, 13
-	xor	$t1, $t1, $t3
-	rotri.w	$t3, $s8, 22
-	xor	$t1, $t1, $t3
-	and	$t3, $s8, $s1
+	rotri.w	$t2, $s8, 13
+	xor	$t1, $t1, $t2
+	rotri.w	$t2, $s8, 22
+	xor	$t1, $t1, $t2
+	and	$t2, $s8, $s1
 	xor	$t4, $s8, $s1
-	and	$t4, $t4, $a6
-	xor	$t3, $t4, $t3
-	add.d	$t1, $t1, $t3
-	add.d	$s4, $t0, $a7
-	add.d	$s6, $t1, $t0
-	rotri.w	$a7, $s4, 6
-	rotri.w	$t0, $s4, 11
-	xor	$a7, $a7, $t0
-	rotri.w	$t0, $s4, 25
-	xor	$a7, $a7, $t0
+	and	$t4, $t4, $t0
+	xor	$t2, $t4, $t2
+	add.d	$t1, $t1, $t2
+	add.d	$s4, $a6, $a7
+	add.d	$s6, $t1, $a6
+	rotri.w	$a6, $s4, 6
+	rotri.w	$a7, $s4, 11
+	xor	$a6, $a6, $a7
+	rotri.w	$a7, $s4, 25
+	xor	$a6, $a6, $a7
 	ld.w	$a4, $a4, 28
 	ld.w	$a5, $a5, 28
-	andn	$t0, $ra, $s4
+	andn	$a7, $ra, $s4
 	and	$t1, $s7, $s4
-	or	$t0, $t1, $t0
+	or	$a7, $t1, $a7
 	add.d	$a4, $a5, $a4
-	add.d	$a4, $a4, $t2
-	add.d	$a4, $a4, $t0
+	add.d	$a4, $a4, $t3
 	add.d	$a4, $a4, $a7
+	add.d	$a4, $a4, $a6
 	rotri.w	$a5, $s6, 2
-	rotri.w	$a7, $s6, 13
-	xor	$a5, $a5, $a7
-	rotri.w	$a7, $s6, 22
-	xor	$a5, $a5, $a7
-	and	$a7, $s6, $s8
-	xor	$t0, $s6, $s8
-	and	$t0, $t0, $s1
-	xor	$a7, $t0, $a7
-	add.d	$a5, $a5, $a7
-	add.d	$s5, $a4, $a6
+	rotri.w	$a6, $s6, 13
+	xor	$a5, $a5, $a6
+	rotri.w	$a6, $s6, 22
+	xor	$a5, $a5, $a6
+	and	$a6, $s6, $s8
+	xor	$a7, $s6, $s8
+	and	$a7, $a7, $s1
+	xor	$a6, $a7, $a6
+	add.d	$a5, $a5, $a6
+	add.d	$s5, $a4, $t0
 	add.d	$s3, $a5, $a4
 	andi	$a4, $a3, 1
 	addi.d	$a2, $a2, 32
@@ -595,29 +595,30 @@ sha256_transform:                       # @sha256_transform
 # %bb.2:
 	ld.w	$a6, $a1, 56
 	ld.w	$a2, $a1, 36
+	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	ld.w	$a2, $a1, 4
 	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
-	ld.w	$a5, $a1, 4
-	ld.w	$a2, $a1, 0
-	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
+	ld.w	$t1, $a1, 0
 	ld.w	$t0, $a1, 60
-	ld.w	$a2, $a1, 40
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	ld.w	$t3, $a1, 8
+	ld.w	$a7, $a1, 40
+	ld.w	$a2, $a1, 8
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	ld.w	$a2, $a1, 44
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	ld.w	$t2, $a1, 12
 	ld.w	$a2, $a1, 48
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	ld.w	$t4, $a1, 16
 	ld.w	$t5, $a1, 52
 	ld.w	$t6, $a1, 20
 	ld.w	$t7, $a1, 24
 	ld.w	$t8, $a1, 28
-	ld.w	$fp, $a1, 32
-	addi.d	$s0, $a0, 64
+	ld.w	$s0, $a1, 32
+	addi.d	$fp, $a0, 64
 	ori	$a2, $zero, 16
 	.p2align	4, , 16
 .LBB4_3:                                # =>This Inner Loop Header: Depth=1
+	st.d	$t5, $sp, 56                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	rotri.w	$a0, $s5, 6
 	rotri.w	$s2, $s5, 11
@@ -627,27 +628,31 @@ sha256_transform:                       # @sha256_transform
 	andn	$s2, $s7, $s5
 	and	$a2, $s4, $s5
 	or	$a2, $a2, $s2
-	st.d	$a6, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 64                    # 8-byte Folded Spill
 	rotri.w	$s2, $a6, 17
 	rotri.w	$a3, $a6, 19
 	xor	$a3, $s2, $a3
 	bstrpick.d	$s2, $a6, 31, 10
 	xor	$a3, $a3, $s2
-	rotri.w	$s2, $a5, 7
-	rotri.w	$a4, $a5, 18
+	move	$t5, $t4
+	move	$t4, $t2
+	move	$t2, $a7
+	st.d	$a7, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$a7, $sp, 40                    # 8-byte Folded Reload
+	rotri.w	$s2, $a7, 7
+	rotri.w	$a4, $a7, 18
 	xor	$a4, $s2, $a4
-	bstrpick.d	$s2, $a5, 31, 3
+	bstrpick.d	$s2, $a7, 31, 3
 	xor	$a4, $a4, $s2
-	ld.d	$a6, $sp, 40                    # 8-byte Folded Reload
-	add.d	$a3, $a3, $a6
-	ld.d	$a7, $sp, 32                    # 8-byte Folded Reload
-	add.d	$a3, $a3, $a7
-	ld.w	$s2, $s0, 0
-	add.w	$a7, $a3, $a4
+	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
+	add.d	$a5, $a6, $t1
+	add.d	$a3, $a3, $a5
+	ld.w	$s2, $fp, 0
+	add.w	$t1, $a3, $a4
 	add.d	$a2, $a2, $ra
 	add.d	$a0, $a2, $a0
 	add.d	$a0, $a0, $s2
-	add.d	$a0, $a0, $a7
+	add.d	$a0, $a0, $t1
 	rotri.w	$a2, $s3, 2
 	rotri.w	$a3, $s3, 13
 	xor	$a2, $a2, $a3
@@ -668,26 +673,27 @@ sha256_transform:                       # @sha256_transform
 	andn	$a3, $s4, $ra
 	and	$a4, $s5, $ra
 	or	$a3, $a4, $a3
+	move	$t3, $t0
 	rotri.w	$a4, $t0, 17
 	rotri.w	$s1, $t0, 19
 	xor	$a4, $a4, $s1
 	bstrpick.d	$s1, $t0, 31, 10
 	xor	$a4, $a4, $s1
-	rotri.w	$s1, $t3, 7
-	rotri.w	$s2, $t3, 18
+	ld.d	$t0, $sp, 32                    # 8-byte Folded Reload
+	rotri.w	$s1, $t0, 7
+	rotri.w	$s2, $t0, 18
 	xor	$s1, $s1, $s2
-	bstrpick.d	$s2, $t3, 31, 3
+	bstrpick.d	$s2, $t0, 31, 3
 	xor	$s1, $s1, $s2
-	st.w	$a7, $a1, 0
-	ld.w	$s2, $s0, 4
-	ld.d	$t1, $sp, 80                    # 8-byte Folded Reload
-	add.d	$a5, $t1, $a5
+	st.w	$t1, $a1, 0
+	ld.w	$s2, $fp, 4
+	add.d	$a5, $t2, $a7
 	add.d	$a4, $a5, $a4
-	add.w	$t1, $a4, $s1
+	add.w	$a7, $a4, $s1
 	add.d	$a4, $s2, $s7
 	add.d	$a3, $a4, $a3
 	add.d	$a2, $a3, $a2
-	add.d	$a2, $a2, $t1
+	add.d	$a2, $a2, $a7
 	rotri.w	$a3, $a0, 2
 	rotri.w	$a4, $a0, 13
 	xor	$a3, $a3, $a4
@@ -708,25 +714,25 @@ sha256_transform:                       # @sha256_transform
 	and	$a3, $ra, $s7
 	andn	$a4, $s5, $s7
 	or	$a3, $a3, $a4
-	rotri.w	$a4, $a7, 17
-	rotri.w	$a5, $a7, 19
+	rotri.w	$a4, $t1, 17
+	rotri.w	$a5, $t1, 19
 	xor	$a4, $a4, $a5
-	bstrpick.d	$a5, $a7, 31, 10
+	bstrpick.d	$a5, $t1, 31, 10
 	bstrpick.d	$a5, $a5, 53, 0
 	xor	$a4, $a4, $a5
-	rotri.w	$a5, $t2, 7
-	rotri.w	$s2, $t2, 18
+	rotri.w	$a5, $t4, 7
+	rotri.w	$s2, $t4, 18
 	xor	$a5, $a5, $s2
-	bstrpick.d	$s2, $t2, 31, 3
+	bstrpick.d	$s2, $t4, 31, 3
 	xor	$a5, $a5, $s2
-	st.w	$t1, $a1, 4
-	ld.w	$s2, $s0, 8
-	add.d	$a4, $a4, $t3
-	ld.d	$t3, $sp, 72                    # 8-byte Folded Reload
-	add.d	$a4, $a4, $t3
-	add.w	$t3, $a4, $a5
+	st.w	$a7, $a1, 4
+	ld.w	$s2, $fp, 8
+	ld.d	$t2, $sp, 80                    # 8-byte Folded Reload
+	add.d	$t0, $t0, $t2
+	add.d	$a4, $a4, $t0
+	add.w	$t0, $a4, $a5
 	add.d	$a4, $s2, $s4
-	add.d	$a4, $a4, $t3
+	add.d	$a4, $a4, $t0
 	add.d	$a3, $a4, $a3
 	add.d	$a2, $a3, $a2
 	rotri.w	$a3, $s1, 2
@@ -749,27 +755,24 @@ sha256_transform:                       # @sha256_transform
 	andn	$a3, $ra, $s2
 	and	$a4, $s7, $s2
 	or	$a3, $a4, $a3
-	st.d	$t1, $sp, 48                    # 8-byte Folded Spill
-	rotri.w	$a4, $t1, 17
-	rotri.w	$a5, $t1, 19
+	rotri.w	$a4, $a7, 17
+	rotri.w	$a5, $a7, 19
 	xor	$a4, $a4, $a5
-	bstrpick.d	$a5, $t1, 31, 10
+	bstrpick.d	$a5, $a7, 31, 10
 	xor	$a4, $a4, $a5
-	rotri.w	$a5, $t4, 7
-	rotri.w	$s6, $t4, 18
+	rotri.w	$a5, $t5, 7
+	rotri.w	$s6, $t5, 18
 	xor	$a5, $a5, $s6
-	bstrpick.d	$s6, $t4, 31, 3
+	bstrpick.d	$s6, $t5, 31, 3
 	xor	$a5, $a5, $s6
-	st.w	$t3, $a1, 8
-	ld.w	$s6, $s0, 12
-	ld.d	$t1, $sp, 64                    # 8-byte Folded Reload
-	add.d	$t2, $t1, $t2
+	st.w	$t0, $a1, 8
+	ld.w	$s6, $fp, 12
+	ld.d	$t2, $sp, 72                    # 8-byte Folded Reload
+	add.d	$t2, $t2, $t4
 	add.d	$a4, $t2, $a4
-	move	$t1, $t5
-	st.d	$t5, $sp, 16                    # 8-byte Folded Spill
-	add.w	$t5, $a4, $a5
+	add.w	$t2, $a4, $a5
 	add.d	$a4, $s6, $s5
-	add.d	$a4, $a4, $t5
+	add.d	$a4, $a4, $t2
 	add.d	$a3, $a4, $a3
 	add.d	$a2, $a3, $a2
 	rotri.w	$a3, $s4, 2
@@ -792,19 +795,20 @@ sha256_transform:                       # @sha256_transform
 	andn	$a3, $s7, $s6
 	and	$a4, $s2, $s6
 	or	$a3, $a4, $a3
-	rotri.w	$a4, $t3, 17
-	rotri.w	$a5, $t3, 19
+	rotri.w	$a4, $t0, 17
+	rotri.w	$a5, $t0, 19
 	xor	$a4, $a4, $a5
-	bstrpick.d	$a5, $t3, 31, 10
+	bstrpick.d	$a5, $t0, 31, 10
 	xor	$a4, $a4, $a5
 	rotri.w	$a5, $t6, 7
 	rotri.w	$s5, $t6, 18
 	xor	$a5, $a5, $s5
 	bstrpick.d	$s5, $t6, 31, 3
 	xor	$a5, $a5, $s5
-	st.w	$t5, $a1, 12
-	ld.w	$s5, $s0, 16
-	add.d	$t4, $t1, $t4
+	st.w	$t2, $a1, 12
+	ld.w	$s5, $fp, 16
+	ld.d	$t4, $sp, 56                    # 8-byte Folded Reload
+	add.d	$t4, $t4, $t5
 	add.d	$a4, $t4, $a4
 	add.w	$t4, $a4, $a5
 	add.d	$a4, $s5, $ra
@@ -831,10 +835,10 @@ sha256_transform:                       # @sha256_transform
 	andn	$a3, $s2, $s8
 	and	$a4, $s6, $s8
 	or	$a3, $a4, $a3
-	rotri.w	$a4, $t5, 17
-	rotri.w	$a5, $t5, 19
+	rotri.w	$a4, $t2, 17
+	rotri.w	$a5, $t2, 19
 	xor	$a4, $a4, $a5
-	bstrpick.d	$a5, $t5, 31, 10
+	bstrpick.d	$a5, $t2, 31, 10
 	xor	$a4, $a4, $a5
 	rotri.w	$a5, $t7, 7
 	rotri.w	$s5, $t7, 18
@@ -842,9 +846,9 @@ sha256_transform:                       # @sha256_transform
 	bstrpick.d	$s5, $t7, 31, 3
 	xor	$a5, $a5, $s5
 	st.w	$t4, $a1, 16
-	ld.w	$s5, $s0, 20
-	ld.d	$t1, $sp, 56                    # 8-byte Folded Reload
-	add.d	$t6, $t6, $t1
+	ld.w	$s5, $fp, 20
+	ld.d	$ra, $sp, 64                    # 8-byte Folded Reload
+	add.d	$t6, $t6, $ra
 	add.d	$a4, $t6, $a4
 	add.w	$t6, $a4, $a5
 	add.d	$a4, $s5, $s7
@@ -882,10 +886,10 @@ sha256_transform:                       # @sha256_transform
 	bstrpick.d	$s1, $t8, 31, 3
 	xor	$a5, $a5, $s1
 	st.w	$t6, $a1, 20
-	ld.w	$s1, $s0, 24
-	add.d	$t7, $t7, $t0
-	add.d	$a4, $t7, $a4
-	add.w	$t7, $a4, $a5
+	ld.w	$s1, $fp, 24
+	add.d	$t7, $t7, $t3
+	add.d	$a5, $t7, $a5
+	add.w	$t7, $a5, $a4
 	add.d	$a4, $s1, $s2
 	add.d	$a4, $a4, $t7
 	add.d	$a3, $a4, $a3
@@ -915,18 +919,18 @@ sha256_transform:                       # @sha256_transform
 	xor	$a4, $a4, $a5
 	bstrpick.d	$a5, $t6, 31, 10
 	xor	$a4, $a4, $a5
-	rotri.w	$a5, $fp, 7
-	rotri.w	$s1, $fp, 18
+	rotri.w	$a5, $s0, 7
+	rotri.w	$s1, $s0, 18
 	xor	$a5, $a5, $s1
-	bstrpick.d	$s1, $fp, 31, 3
+	bstrpick.d	$s1, $s0, 31, 3
 	xor	$a5, $a5, $s1
 	st.w	$t7, $a1, 24
-	ld.w	$s1, $s0, 28
-	add.d	$t8, $t8, $a7
-	add.d	$a4, $t8, $a4
-	add.w	$t8, $a4, $a5
-	add.d	$a4, $s6, $s1
-	add.d	$a4, $a4, $t8
+	ld.w	$s1, $fp, 28
+	add.d	$t8, $t8, $t1
+	add.d	$a5, $t8, $a5
+	add.w	$t8, $a5, $a4
+	add.d	$a4, $s1, $t8
+	add.d	$a4, $s6, $a4
 	add.d	$a3, $a4, $a3
 	add.d	$a2, $a3, $a2
 	rotri.w	$a3, $s4, 2
@@ -960,12 +964,12 @@ sha256_transform:                       # @sha256_transform
 	bstrpick.d	$s1, $a6, 31, 3
 	xor	$a5, $a5, $s1
 	st.w	$t8, $a1, 28
-	ld.w	$s1, $s0, 32
-	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
-	add.d	$a5, $t1, $a5
-	add.d	$a5, $a5, $fp
-	add.w	$fp, $a5, $a4
-	add.d	$a4, $fp, $s1
+	ld.w	$s1, $fp, 32
+	add.d	$a5, $a5, $s0
+	st.d	$a7, $sp, 40                    # 8-byte Folded Spill
+	add.d	$a5, $a7, $a5
+	add.w	$s0, $a5, $a4
+	add.d	$a4, $s0, $s1
 	add.d	$a4, $a4, $s8
 	add.d	$a3, $a4, $a3
 	add.d	$a2, $a3, $a2
@@ -994,16 +998,17 @@ sha256_transform:                       # @sha256_transform
 	xor	$a3, $a3, $a4
 	bstrpick.d	$a4, $t8, 31, 10
 	xor	$a3, $a3, $a4
-	ld.d	$t1, $sp, 80                    # 8-byte Folded Reload
-	rotri.w	$a4, $t1, 7
-	rotri.w	$a5, $t1, 18
+	ld.d	$a7, $sp, 16                    # 8-byte Folded Reload
+	rotri.w	$a4, $a7, 7
+	rotri.w	$a5, $a7, 18
 	xor	$a4, $a4, $a5
-	bstrpick.d	$a5, $t1, 31, 3
+	bstrpick.d	$a5, $a7, 31, 3
 	xor	$a4, $a4, $a5
-	st.w	$fp, $a1, 32
-	ld.w	$a5, $s0, 36
+	st.w	$s0, $a1, 32
+	ld.w	$a5, $fp, 36
 	add.d	$a4, $a4, $a6
-	add.d	$a4, $a4, $t3
+	st.d	$t0, $sp, 32                    # 8-byte Folded Spill
+	add.d	$a4, $a4, $t0
 	add.w	$a6, $a4, $a3
 	add.d	$a3, $a6, $a5
 	add.d	$a3, $a3, $s7
@@ -1029,24 +1034,23 @@ sha256_transform:                       # @sha256_transform
 	andn	$a2, $s2, $s7
 	and	$a3, $s8, $s7
 	or	$a2, $a3, $a2
-	rotri.w	$a3, $fp, 17
-	rotri.w	$a4, $fp, 19
+	rotri.w	$a3, $s0, 17
+	rotri.w	$a4, $s0, 19
 	xor	$a3, $a3, $a4
-	bstrpick.d	$a4, $fp, 31, 10
+	bstrpick.d	$a4, $s0, 31, 10
 	xor	$a3, $a3, $a4
-	ld.d	$t2, $sp, 72                    # 8-byte Folded Reload
-	rotri.w	$a4, $t2, 7
-	rotri.w	$a5, $t2, 18
+	ld.d	$t0, $sp, 80                    # 8-byte Folded Reload
+	rotri.w	$a4, $t0, 7
+	rotri.w	$a5, $t0, 18
 	xor	$a4, $a4, $a5
-	bstrpick.d	$a5, $t2, 31, 3
+	bstrpick.d	$a5, $t0, 31, 3
 	xor	$a4, $a4, $a5
 	st.w	$a6, $a1, 36
-	ld.w	$a5, $s0, 40
-	add.d	$a4, $a4, $t1
-	add.d	$a4, $a4, $t5
-	move	$t1, $t0
-	add.w	$t0, $a4, $a3
-	add.d	$a3, $t0, $a5
+	ld.w	$a5, $fp, 40
+	add.d	$a4, $a4, $a7
+	add.d	$a4, $a4, $t2
+	add.w	$a7, $a4, $a3
+	add.d	$a3, $a7, $a5
 	add.d	$a3, $a3, $ra
 	add.d	$a2, $a3, $a2
 	add.d	$a0, $a2, $a0
@@ -1073,19 +1077,18 @@ sha256_transform:                       # @sha256_transform
 	rotri.w	$a3, $a6, 17
 	rotri.w	$a4, $a6, 19
 	xor	$a3, $a3, $a4
-	st.d	$a6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 48                    # 8-byte Folded Spill
 	bstrpick.d	$a4, $a6, 31, 10
 	xor	$a3, $a3, $a4
-	ld.d	$ra, $sp, 64                    # 8-byte Folded Reload
-	rotri.w	$a4, $ra, 7
-	rotri.w	$a5, $ra, 18
+	ld.d	$t5, $sp, 72                    # 8-byte Folded Reload
+	rotri.w	$a4, $t5, 7
+	rotri.w	$a5, $t5, 18
 	xor	$a4, $a4, $a5
-	bstrpick.d	$a5, $ra, 31, 3
+	bstrpick.d	$a5, $t5, 31, 3
 	xor	$a4, $a4, $a5
-	st.w	$t0, $a1, 40
-	ld.w	$a5, $s0, 44
-	add.d	$a4, $a4, $t2
-	move	$t2, $t5
+	st.w	$a7, $a1, 40
+	ld.w	$a5, $fp, 44
+	add.d	$a4, $a4, $t0
 	add.d	$a4, $a4, $t4
 	add.w	$a6, $a4, $a3
 	add.d	$a3, $a6, $a5
@@ -1112,21 +1115,20 @@ sha256_transform:                       # @sha256_transform
 	andn	$a3, $s7, $s2
 	and	$a4, $s4, $s2
 	or	$a3, $a4, $a3
-	rotri.w	$a4, $t0, 17
-	rotri.w	$a5, $t0, 19
+	rotri.w	$a4, $a7, 17
+	rotri.w	$a5, $a7, 19
 	xor	$a4, $a4, $a5
-	st.d	$t0, $sp, 80                    # 8-byte Folded Spill
-	bstrpick.d	$a5, $t0, 31, 10
+	bstrpick.d	$a5, $a7, 31, 10
 	xor	$a4, $a4, $a5
-	ld.d	$t0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 56                    # 8-byte Folded Reload
 	rotri.w	$a5, $t0, 7
 	rotri.w	$s6, $t0, 18
 	xor	$a5, $a5, $s6
 	bstrpick.d	$s6, $t0, 31, 3
 	xor	$a5, $a5, $s6
 	st.w	$a6, $a1, 44
-	ld.w	$s6, $s0, 48
-	add.d	$a5, $a5, $ra
+	ld.w	$s6, $fp, 48
+	add.d	$a5, $a5, $t5
 	add.d	$a5, $a5, $t6
 	add.w	$a5, $a5, $a4
 	add.d	$a4, $a5, $s6
@@ -1146,10 +1148,10 @@ sha256_transform:                       # @sha256_transform
 	rotri.w	$a2, $a6, 17
 	rotri.w	$a3, $a6, 19
 	xor	$a2, $a2, $a3
-	st.d	$a6, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 80                    # 8-byte Folded Spill
 	bstrpick.d	$a3, $a6, 31, 10
 	xor	$a2, $a2, $a3
-	ld.d	$a6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 64                    # 8-byte Folded Reload
 	rotri.w	$a3, $a6, 7
 	rotri.w	$a4, $a6, 18
 	xor	$a3, $a3, $a4
@@ -1157,7 +1159,7 @@ sha256_transform:                       # @sha256_transform
 	bstrpick.d	$a4, $a4, 60, 0
 	xor	$a3, $a3, $a4
 	st.w	$a5, $a1, 48
-	ld.w	$a4, $s0, 52
+	ld.w	$a4, $fp, 52
 	add.d	$a3, $t0, $a3
 	add.d	$a3, $a3, $t7
 	add.w	$t5, $a3, $a2
@@ -1166,13 +1168,13 @@ sha256_transform:                       # @sha256_transform
 	rotri.w	$a3, $a5, 17
 	rotri.w	$a4, $a5, 19
 	xor	$a3, $a3, $a4
-	st.d	$a5, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a5, $sp, 72                    # 8-byte Folded Spill
 	bstrpick.d	$a4, $a5, 31, 10
 	xor	$a3, $a3, $a4
-	rotri.w	$a4, $t1, 7
-	rotri.w	$a5, $t1, 18
+	rotri.w	$a4, $t3, 7
+	rotri.w	$a5, $t3, 18
 	xor	$a4, $a4, $a5
-	bstrpick.d	$a5, $t1, 31, 3
+	bstrpick.d	$a5, $t3, 31, 3
 	xor	$a4, $a4, $a5
 	add.d	$a4, $a4, $a6
 	add.d	$a4, $a4, $t8
@@ -1182,17 +1184,16 @@ sha256_transform:                       # @sha256_transform
 	xor	$a3, $a3, $a4
 	bstrpick.d	$a4, $t5, 31, 10
 	xor	$a3, $a3, $a4
-	rotri.w	$a4, $a7, 7
-	rotri.w	$a5, $a7, 18
+	rotri.w	$a4, $t1, 7
+	rotri.w	$a5, $t1, 18
 	xor	$a4, $a4, $a5
-	st.d	$a7, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a5, $a7, 31, 3
+	bstrpick.d	$a5, $t1, 31, 3
 	xor	$a4, $a4, $a5
 	st.w	$t5, $a1, 52
-	add.d	$a4, $a4, $t1
-	ld.w	$a5, $s0, 56
-	add.d	$a4, $a4, $fp
-	add.w	$t0, $a4, $a3
+	add.d	$a4, $a4, $t3
+	ld.w	$a5, $fp, 56
+	add.d	$a4, $a4, $s0
+	add.w	$t3, $a4, $a3
 	add.d	$ra, $s6, $s1
 	rotri.w	$a3, $ra, 6
 	rotri.w	$a4, $ra, 11
@@ -1207,7 +1208,7 @@ sha256_transform:                       # @sha256_transform
 	move	$a6, $s7
 	st.w	$s7, $a1, 56
 	add.d	$a2, $a2, $a5
-	ld.w	$a5, $s0, 60
+	ld.w	$a5, $fp, 60
 	add.d	$a2, $a2, $a3
 	add.d	$s7, $a2, $s3
 	rotri.w	$a3, $s7, 6
@@ -1215,7 +1216,7 @@ sha256_transform:                       # @sha256_transform
 	xor	$a3, $a3, $s1
 	rotri.w	$s1, $s7, 25
 	xor	$a3, $a3, $s1
-	add.d	$a5, $t0, $a5
+	add.d	$a5, $t3, $a5
 	add.d	$a5, $a5, $s2
 	andn	$s1, $s2, $s7
 	and	$s2, $ra, $s7
@@ -1265,14 +1266,14 @@ sha256_transform:                       # @sha256_transform
 	xor	$a5, $s6, $s8
 	and	$a5, $a5, $s1
 	xor	$a3, $a5, $a3
-	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
 	add.d	$a2, $a2, $a3
 	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
-	st.w	$t0, $a1, 60
+	move	$t0, $t3
+	st.w	$t3, $a1, 60
 	add.d	$s5, $a4, $a0
 	add.d	$s3, $a2, $a4
 	addi.d	$a2, $a3, 16
-	addi.d	$s0, $s0, 64
+	addi.d	$fp, $fp, 64
 	ori	$a0, $zero, 48
 	bltu	$a3, $a0, .LBB4_3
 # %bb.4:

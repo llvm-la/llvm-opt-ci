@@ -43,16 +43,16 @@ _Z16getHexxagonIndexii:                 # @_Z16getHexxagonIndexii
 	addi.d	$a6, $zero, -14
 	maskeqz	$a4, $a6, $a4
 	or	$a4, $a4, $a5
-	add.d	$a2, $a2, $a4
-	ori	$a4, $zero, 2
-	sltu	$a4, $a4, $a1
-	addi.d	$a5, $zero, -3
-	maskeqz	$a4, $a5, $a4
+	ori	$a5, $zero, 2
+	sltu	$a5, $a5, $a1
+	addi.d	$a6, $zero, -3
+	maskeqz	$a5, $a6, $a5
+	add.d	$a2, $a2, $a5
 	add.d	$a2, $a2, $a4
 	ori	$a4, $zero, 3
 	sltu	$a4, $a4, $a1
-	addi.d	$a6, $zero, -2
-	maskeqz	$a4, $a6, $a4
+	addi.d	$a5, $zero, -2
+	maskeqz	$a4, $a5, $a4
 	add.d	$a2, $a2, $a4
 	ori	$a4, $zero, 4
 	sltu	$a4, $a4, $a1
@@ -65,12 +65,12 @@ _Z16getHexxagonIndexii:                 # @_Z16getHexxagonIndexii
 	or	$a0, $a2, $a0
 	ori	$a2, $zero, 7
 	sltu	$a2, $a2, $a1
-	maskeqz	$a2, $a5, $a2
-	add.d	$a0, $a0, $a2
-	ori	$a2, $zero, 8
-	sltu	$a1, $a2, $a1
-	addi.d	$a2, $zero, -4
-	maskeqz	$a1, $a2, $a1
+	maskeqz	$a2, $a6, $a2
+	ori	$a3, $zero, 8
+	sltu	$a1, $a3, $a1
+	addi.d	$a3, $zero, -4
+	maskeqz	$a1, $a3, $a1
+	add.d	$a1, $a2, $a1
 	add.w	$a0, $a0, $a1
 	ret
 .Lfunc_end0:
@@ -279,14 +279,14 @@ _Z16initCloneLookupsv:                  # @_Z16initCloneLookupsv
 	masknez	$a2, $a2, $a4
 	maskeqz	$a3, $a3, $a4
 	or	$a2, $a3, $a2
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
-	add.d	$a2, $a3, $a2
 	addi.d	$a3, $zero, -2
 	maskeqz	$a1, $a3, $a1
-	add.d	$a1, $a2, $a1
-	addi.d	$a2, $zero, -3
-	masknez	$a0, $a2, $a0
-	add.w	$a1, $a1, $a0
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	add.d	$a1, $a3, $a1
+	addi.d	$a3, $zero, -3
+	masknez	$a0, $a3, $a0
+	add.d	$a0, $a1, $a0
+	add.w	$a1, $a0, $a2
 .LBB1_14:                               #   in Loop: Header=BB1_7 Depth=2
 	ld.d	$a0, $s0, %pc_lo12(clone_lookups)
 	alsl.d	$a0, $s2, $a0, 3
@@ -324,13 +324,13 @@ _Z16initCloneLookupsv:                  # @_Z16initCloneLookupsv
 	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
 	maskeqz	$a4, $a3, $a4
 	add.d	$a2, $a2, $a4
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
-	add.d	$a2, $a4, $a2
 	maskeqz	$a1, $a3, $a1
-	add.d	$a1, $a2, $a1
-	addi.d	$a2, $zero, -3
-	masknez	$a0, $a2, $a0
-	add.w	$a1, $a1, $a0
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	add.d	$a1, $a3, $a1
+	addi.d	$a3, $zero, -3
+	masknez	$a0, $a3, $a0
+	add.d	$a0, $a1, $a0
+	add.w	$a1, $a0, $a2
 .LBB1_18:                               #   in Loop: Header=BB1_7 Depth=2
 	ld.d	$a0, $s0, %pc_lo12(clone_lookups)
 	alsl.d	$a0, $s2, $a0, 3
@@ -379,10 +379,10 @@ _Z16initCloneLookupsv:                  # @_Z16initCloneLookupsv
 	or	$a3, $a4, $a3
 	addi.d	$a4, $zero, -3
 	maskeqz	$a2, $a4, $a2
-	add.d	$a2, $a3, $a2
-	addi.d	$a3, $zero, -4
-	masknez	$a1, $a3, $a1
-	add.w	$a1, $a2, $a1
+	addi.d	$a4, $zero, -4
+	masknez	$a1, $a4, $a1
+	add.d	$a1, $a2, $a1
+	add.w	$a1, $a3, $a1
 .LBB1_22:                               #   in Loop: Header=BB1_7 Depth=2
 	alsl.d	$a0, $s2, $a0, 3
 	pcaddu18i	$ra, %call36(_ZN10BitBoard646setBitEi)
@@ -432,10 +432,10 @@ _Z16initCloneLookupsv:                  # @_Z16initCloneLookupsv
 	or	$a3, $a4, $a3
 	addi.d	$a4, $zero, -3
 	maskeqz	$a2, $a4, $a2
-	add.d	$a2, $a3, $a2
-	addi.d	$a3, $zero, -4
-	masknez	$a1, $a3, $a1
-	add.w	$a1, $a2, $a1
+	addi.d	$a4, $zero, -4
+	masknez	$a1, $a4, $a1
+	add.d	$a1, $a2, $a1
+	add.w	$a1, $a3, $a1
 .LBB1_26:                               #   in Loop: Header=BB1_7 Depth=2
 	alsl.d	$a0, $s2, $a0, 3
 	pcaddu18i	$ra, %call36(_ZN10BitBoard646setBitEi)
@@ -478,9 +478,9 @@ _Z16initCloneLookupsv:                  # @_Z16initCloneLookupsv
 	addi.d	$a3, $zero, -3
 	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
 	maskeqz	$a3, $a3, $a4
-	add.d	$a2, $a2, $a3
-	addi.d	$a3, $zero, -4
-	maskeqz	$a1, $a3, $a1
+	addi.d	$a4, $zero, -4
+	maskeqz	$a1, $a4, $a1
+	add.d	$a1, $a3, $a1
 	add.w	$a1, $a2, $a1
 .LBB1_30:                               #   in Loop: Header=BB1_7 Depth=2
 	alsl.d	$a0, $s2, $a0, 3
@@ -523,9 +523,9 @@ _Z16initCloneLookupsv:                  # @_Z16initCloneLookupsv
 	addi.d	$a3, $zero, -3
 	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
 	maskeqz	$a3, $a3, $a4
-	add.d	$a2, $a2, $a3
-	addi.d	$a3, $zero, -4
-	maskeqz	$a1, $a3, $a1
+	addi.d	$a4, $zero, -4
+	maskeqz	$a1, $a4, $a1
+	add.d	$a1, $a3, $a1
 	add.w	$fp, $a2, $a1
 	b	.LBB1_5
 .LBB1_35:
@@ -683,7 +683,6 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	addi.d	$t0, $zero, -17
 	maskeqz	$a6, $t0, $a2
 	or	$a5, $a6, $a5
-	add.d	$a4, $a5, $a4
 	st.d	$fp, $sp, 360                   # 8-byte Folded Spill
 	add.d	$a6, $s3, $fp
 	sub.d	$fp, $zero, $a6
@@ -698,14 +697,15 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	add.d	$a7, $a7, $a2
 	st.d	$a7, $sp, 168                   # 8-byte Folded Spill
 	sub.d	$a4, $a4, $a6
+	add.d	$a4, $a5, $a4
 	st.d	$a4, $sp, 160                   # 8-byte Folded Spill
 	add.d	$a3, $a3, $t1
 	st.d	$a3, $sp, 208                   # 8-byte Folded Spill
-	add.d	$a2, $a2, $t1
 	st.d	$s4, $sp, 336                   # 8-byte Folded Spill
-	sub.d	$a2, $a2, $s4
+	sub.d	$a3, $t1, $s4
 	st.d	$s3, $sp, 328                   # 8-byte Folded Spill
-	sub.d	$a2, $a2, $s3
+	sub.d	$a3, $a3, $s3
+	add.d	$a2, $a2, $a3
 	st.d	$a2, $sp, 200                   # 8-byte Folded Spill
 	add.d	$a2, $a1, $t1
 	st.d	$a2, $sp, 152                   # 8-byte Folded Spill
@@ -827,8 +827,8 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	addi.d	$a2, $zero, -2
 	ld.d	$a3, $sp, 376                   # 8-byte Folded Reload
 	maskeqz	$a2, $a2, $a3
-	add.d	$a1, $a1, $a2
-	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
+	add.d	$a2, $a3, $a2
 	add.w	$a1, $a2, $a1
 	addi.w	$a2, $a1, -2
 	maskeqz	$a1, $a1, $a0
@@ -874,8 +874,8 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	addi.d	$a2, $zero, -2
 	ld.d	$a3, $sp, 376                   # 8-byte Folded Reload
 	maskeqz	$a2, $a2, $a3
-	add.d	$a1, $a1, $a2
-	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
+	add.d	$a2, $a3, $a2
 	add.w	$a1, $a2, $a1
 	addi.w	$a2, $a1, -2
 	maskeqz	$a1, $a1, $a0
@@ -918,8 +918,8 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	addi.d	$a3, $zero, -2
 	ld.d	$a4, $sp, 376                   # 8-byte Folded Reload
 	maskeqz	$a3, $a3, $a4
-	add.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
+	add.d	$a3, $a4, $a3
 	add.w	$a2, $a3, $a2
 	addi.w	$a3, $a2, -2
 	maskeqz	$a2, $a2, $a1
@@ -970,15 +970,15 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	masknez	$a2, $a2, $a4
 	maskeqz	$a3, $a3, $a4
 	or	$a2, $a3, $a2
-	ld.d	$a3, $sp, 224                   # 8-byte Folded Reload
-	add.d	$a2, $a3, $a2
 	addi.d	$a3, $zero, -2
 	ld.d	$a4, $sp, 304                   # 8-byte Folded Reload
 	maskeqz	$a3, $a3, $a4
-	add.d	$a2, $a2, $a3
-	addi.d	$a3, $zero, -3
-	masknez	$a1, $a3, $a1
-	add.w	$a1, $a2, $a1
+	ld.d	$a4, $sp, 224                   # 8-byte Folded Reload
+	add.d	$a3, $a4, $a3
+	addi.d	$a4, $zero, -3
+	masknez	$a1, $a4, $a1
+	add.d	$a1, $a3, $a1
+	add.w	$a1, $a1, $a2
 .LBB2_28:                               #   in Loop: Header=BB2_7 Depth=2
 	alsl.d	$a0, $s2, $a0, 3
 	pcaddu18i	$ra, %call36(_ZN10BitBoard646setBitEi)
@@ -1022,14 +1022,14 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	ld.d	$a4, $sp, 360                   # 8-byte Folded Reload
 	maskeqz	$a4, $a3, $a4
 	add.d	$a2, $a2, $a4
-	ld.d	$a4, $sp, 224                   # 8-byte Folded Reload
-	add.d	$a2, $a4, $a2
 	ld.d	$a4, $sp, 304                   # 8-byte Folded Reload
 	maskeqz	$a3, $a3, $a4
-	add.d	$a2, $a2, $a3
-	addi.d	$a3, $zero, -3
-	masknez	$a1, $a3, $a1
-	add.w	$a1, $a2, $a1
+	ld.d	$a4, $sp, 224                   # 8-byte Folded Reload
+	add.d	$a3, $a4, $a3
+	addi.d	$a4, $zero, -3
+	masknez	$a1, $a4, $a1
+	add.d	$a1, $a3, $a1
+	add.w	$a1, $a1, $a2
 .LBB2_33:                               #   in Loop: Header=BB2_7 Depth=2
 	alsl.d	$a0, $s2, $a0, 3
 	sltui	$s0, $s6, 6
@@ -1080,9 +1080,9 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	addi.d	$a3, $zero, -3
 	ld.d	$a4, $sp, 304                   # 8-byte Folded Reload
 	maskeqz	$a3, $a3, $a4
-	add.d	$a2, $a2, $a3
-	addi.d	$a3, $zero, -4
-	masknez	$a1, $a3, $a1
+	addi.d	$a4, $zero, -4
+	masknez	$a1, $a4, $a1
+	add.d	$a1, $a3, $a1
 	add.w	$a1, $a2, $a1
 .LBB2_37:                               #   in Loop: Header=BB2_7 Depth=2
 	alsl.d	$a0, $s2, $a0, 3
@@ -1133,9 +1133,9 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	addi.d	$a3, $zero, -3
 	ld.d	$a4, $sp, 304                   # 8-byte Folded Reload
 	maskeqz	$a3, $a3, $a4
-	add.d	$a2, $a2, $a3
-	addi.d	$a3, $zero, -4
-	masknez	$a1, $a3, $a1
+	addi.d	$a4, $zero, -4
+	masknez	$a1, $a4, $a1
+	add.d	$a1, $a3, $a1
 	add.w	$a1, $a2, $a1
 .LBB2_41:                               #   in Loop: Header=BB2_7 Depth=2
 	alsl.d	$a0, $s2, $a0, 3
@@ -1173,9 +1173,9 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	ori	$a3, $zero, 16
 	maskeqz	$a3, $a3, $a4
 	or	$a2, $a3, $a2
+	ld.d	$a3, $sp, 176                   # 8-byte Folded Reload
+	add.d	$a1, $a3, $a1
 	add.d	$a1, $a1, $a2
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	add.d	$a1, $a2, $a1
 	addi.d	$a2, $a1, -2
 	ld.d	$a3, $sp, 376                   # 8-byte Folded Reload
 	masknez	$a1, $a1, $a3
@@ -1184,10 +1184,10 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	addi.d	$a2, $zero, -3
 	ld.d	$a3, $sp, 352                   # 8-byte Folded Reload
 	maskeqz	$a2, $a2, $a3
-	add.d	$a1, $a1, $a2
-	addi.d	$a2, $zero, -4
-	ld.d	$a3, $sp, 304                   # 8-byte Folded Reload
-	maskeqz	$a2, $a2, $a3
+	addi.d	$a3, $zero, -4
+	ld.d	$a4, $sp, 304                   # 8-byte Folded Reload
+	maskeqz	$a3, $a3, $a4
+	add.d	$a2, $a2, $a3
 	add.w	$a1, $a1, $a2
 .LBB2_46:                               #   in Loop: Header=BB2_7 Depth=2
 	alsl.d	$a0, $s2, $a0, 3
@@ -1229,10 +1229,10 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	addi.d	$a2, $zero, -3
 	ld.d	$a3, $sp, 352                   # 8-byte Folded Reload
 	maskeqz	$a2, $a2, $a3
-	add.d	$a1, $a1, $a2
-	addi.d	$a2, $zero, -4
-	ld.d	$a3, $sp, 304                   # 8-byte Folded Reload
-	maskeqz	$a2, $a2, $a3
+	addi.d	$a3, $zero, -4
+	ld.d	$a4, $sp, 304                   # 8-byte Folded Reload
+	maskeqz	$a3, $a3, $a4
+	add.d	$a2, $a2, $a3
 	add.w	$a1, $a1, $a2
 .LBB2_51:                               #   in Loop: Header=BB2_7 Depth=2
 	alsl.d	$a0, $s2, $a0, 3
@@ -1268,10 +1268,10 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	ori	$a4, $zero, 26
 	maskeqz	$a4, $a4, $a5
 	or	$a3, $a4, $a3
-	add.d	$a2, $a2, $a3
-	addi.d	$a3, $zero, -3
-	ld.d	$a4, $sp, 376                   # 8-byte Folded Reload
-	maskeqz	$a3, $a3, $a4
+	addi.d	$a4, $zero, -3
+	ld.d	$a5, $sp, 376                   # 8-byte Folded Reload
+	maskeqz	$a4, $a4, $a5
+	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $a3
 	addi.d	$a3, $zero, -4
 	maskeqz	$a1, $a3, $a1
@@ -1310,10 +1310,10 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	ori	$a3, $zero, 27
 	maskeqz	$a3, $a3, $a4
 	or	$a2, $a3, $a2
-	add.d	$a1, $a1, $a2
-	addi.d	$a2, $zero, -3
-	ld.d	$a3, $sp, 376                   # 8-byte Folded Reload
-	maskeqz	$a2, $a2, $a3
+	addi.d	$a3, $zero, -3
+	ld.d	$a4, $sp, 376                   # 8-byte Folded Reload
+	maskeqz	$a3, $a3, $a4
+	add.d	$a1, $a1, $a3
 	add.d	$a1, $a1, $a2
 	addi.d	$a2, $zero, -4
 	ld.d	$a3, $sp, 352                   # 8-byte Folded Reload
@@ -1344,12 +1344,12 @@ _Z15initJumpLookupsv:                   # @_Z15initJumpLookupsv
 	masknez	$a1, $s1, $a2
 	maskeqz	$a2, $s5, $a2
 	or	$a1, $a2, $a1
-	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
-	add.d	$a1, $a2, $a1
 	addi.d	$a2, $zero, -3
 	ld.d	$a3, $sp, 376                   # 8-byte Folded Reload
 	maskeqz	$a2, $a2, $a3
-	add.d	$a1, $a1, $a2
+	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
+	add.d	$a2, $a3, $a2
+	add.d	$a1, $a2, $a1
 	addi.d	$a2, $zero, -4
 	ld.d	$a3, $sp, 352                   # 8-byte Folded Reload
 	maskeqz	$a2, $a2, $a3
@@ -2501,10 +2501,10 @@ _ZN13HexxagonBoard16displayBoardTextEi: # @_ZN13HexxagonBoard16displayBoardTextE
 	masknez	$a0, $a0, $fp
 	maskeqz	$a1, $a1, $fp
 	or	$a0, $a1, $a0
-	add.d	$a0, $a0, $s8
 	addi.d	$a1, $zero, -4
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	maskeqz	$a1, $a1, $a2
+	add.d	$a1, $s8, $a1
 	add.w	$s5, $a0, $a1
 	addi.w	$a0, $zero, -1
 	beq	$s5, $a0, .LBB16_8

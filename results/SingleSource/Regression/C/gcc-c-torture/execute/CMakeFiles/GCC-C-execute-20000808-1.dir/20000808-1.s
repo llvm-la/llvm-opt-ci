@@ -81,10 +81,10 @@ f:                                      # @f
 	vpickve2gr.h	$a0, $vr0, 4
 	andi	$a0, $a0, 1
 	slli.d	$a0, $a0, 6
+	vpickve2gr.h	$a2, $vr0, 6
+	slli.d	$a2, $a2, 7
+	or	$a0, $a0, $a2
 	or	$a0, $a1, $a0
-	vpickve2gr.h	$a1, $vr0, 6
-	slli.d	$a1, $a1, 7
-	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255
 	bnez	$a0, .LBB1_6
 # %bb.1:

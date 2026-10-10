@@ -71,7 +71,7 @@ set_ord:                                # @set_ord
 	srli.d	$a7, $a7, 22
 	ldx.w	$a7, $a5, $a7
 	add.d	$a0, $t0, $a0
-	add.d	$a0, $a0, $t1
+	add.d	$a6, $t1, $a6
 	add.d	$a0, $a0, $a6
 	add.w	$a0, $a0, $a7
 	b	.LBB1_2
@@ -127,7 +127,7 @@ set_dist:                               # @set_dist
 	srli.d	$t0, $t0, 22
 	ldx.w	$t0, $a6, $t0
 	add.d	$a0, $t1, $a0
-	add.d	$a0, $a0, $t2
+	add.d	$a7, $t2, $a7
 	add.d	$a0, $a0, $a7
 	add.w	$a0, $a0, $t0
 	b	.LBB2_2
@@ -3593,7 +3593,7 @@ sf_count_restricted:                    # @sf_count_restricted
 	srli.d	$t5, $t5, 22
 	ldx.w	$t5, $t7, $t5
 	add.d	$t2, $t6, $t2
-	add.d	$t2, $t2, $t8
+	add.d	$t4, $t8, $t4
 	add.d	$t2, $t2, $t4
 	add.d	$t2, $t2, $t5
 	b	.LBB41_7
@@ -4099,7 +4099,7 @@ sf_compress:                            # @sf_compress
 	srli.d	$a6, $a6, 22
 	ldx.w	$a6, $a4, $a6
 	add.d	$a7, $a7, $s2
-	add.d	$a7, $a7, $t0
+	add.d	$a5, $t0, $a5
 	add.d	$a5, $a7, $a5
 	add.w	$s2, $a5, $a6
 	b	.LBB46_2

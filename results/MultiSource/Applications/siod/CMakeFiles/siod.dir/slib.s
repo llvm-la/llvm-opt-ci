@@ -10599,11 +10599,11 @@ gc_mark_and_sweep:                      # @gc_mark_and_sweep
 	addi.d	$a2, $a2, -24
 	xor	$a4, $a2, $a3
 	sltu	$a4, $zero, $a4
-	add.d	$a5, $a3, $a4
-	ori	$a6, $s0, 2731
-	sub.d	$a2, $a2, $a5
-	lu32i.d	$a6, -349526
-	lu52i.d	$a5, $a6, -1366
+	sub.d	$a2, $a2, $a3
+	ori	$a5, $s0, 2731
+	sub.d	$a2, $a2, $a4
+	lu32i.d	$a5, -349526
+	lu52i.d	$a5, $a5, -1366
 	mulh.du	$a2, $a2, $a5
 	srli.d	$a2, $a2, 4
 	add.d	$a4, $a2, $a4

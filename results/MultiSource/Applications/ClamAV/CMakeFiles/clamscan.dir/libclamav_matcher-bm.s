@@ -37,9 +37,9 @@ cli_bm_addpatt:                         # @cli_bm_addpatt
 	ldx.bu	$t2, $a5, $t2
 	ld.bu	$t4, $a2, 2
 	mul.d	$t3, $t3, $a7
-	add.d	$t3, $a6, $t3
 	mul.d	$t2, $t2, $t0
-	add.d	$t2, $t3, $t2
+	add.d	$t2, $a6, $t2
+	add.d	$t2, $t2, $t3
 	slli.d	$t3, $t4, 3
 	ldx.d	$t2, $t2, $t3
 	beqz	$t2, .LBB0_5
@@ -65,12 +65,12 @@ cli_bm_addpatt:                         # @cli_bm_addpatt
 	ld.bu	$a4, $a2, 1
 	ori	$a5, $zero, 211
 	mul.d	$a3, $a3, $a5
-	alsl.d	$a5, $a4, $a4, 3
-	ld.bu	$a6, $a2, 2
+	ld.bu	$a5, $a2, 2
+	alsl.d	$a6, $a4, $a4, 3
 	ld.d	$a7, $a0, 8
-	alsl.d	$a4, $a5, $a4, 2
-	add.d	$a3, $a4, $a3
-	add.d	$a4, $a3, $a6
+	alsl.d	$a4, $a6, $a4, 2
+	add.d	$a3, $a3, $a5
+	add.d	$a4, $a4, $a3
 	stx.b	$zero, $a7, $a4
 	ld.d	$a0, $a0, 16
 	slli.d	$a3, $a4, 3
@@ -329,16 +329,16 @@ cli_bm_scanbuff:                        # @cli_bm_scanbuff
                                         #     Child Loop BB3_10 Depth 2
                                         #       Child Loop BB3_19 Depth 3
 	bstrpick.d	$a0, $s6, 31, 0
-	add.d	$s0, $s5, $a0
-	ldx.bu	$s1, $s5, $a0
-	ld.bu	$a0, $s0, 1
-	mul.d	$a1, $s1, $t6
-	alsl.d	$a2, $a0, $a0, 3
-	ld.bu	$a3, $s0, 2
+	ldx.bu	$s0, $s5, $a0
+	add.d	$s1, $s5, $a0
+	ld.bu	$a0, $s1, 1
+	mul.d	$a1, $s0, $t6
+	ld.bu	$a2, $s1, 2
+	alsl.d	$a3, $a0, $a0, 3
 	ld.d	$a4, $s3, 8
-	alsl.d	$a0, $a2, $a0, 2
-	add.d	$a0, $a0, $a1
-	add.d	$a1, $a0, $a3
+	alsl.d	$a0, $a3, $a0, 2
+	add.d	$a1, $a1, $a2
+	add.d	$a1, $a0, $a1
 	ldx.bu	$a0, $a4, $a1
 	bnez	$a0, .LBB3_4
 # %bb.6:                                #   in Loop: Header=BB3_5 Depth=1
@@ -358,7 +358,7 @@ cli_bm_scanbuff:                        # @cli_bm_scanbuff
 	beqz	$a0, .LBB3_3
 .LBB3_9:                                #   in Loop: Header=BB3_10 Depth=2
 	ld.d	$s8, $s8, 48
-	xor	$a0, $fp, $s1
+	xor	$a0, $fp, $s0
 	sltu	$a0, $zero, $a0
 	beqz	$s8, .LBB3_3
 .LBB3_10:                               #   Parent Loop BB3_5 Depth=1
@@ -366,7 +366,7 @@ cli_bm_scanbuff:                        # @cli_bm_scanbuff
                                         #       Child Loop BB3_19 Depth 3
 	ld.d	$a1, $s8, 0
 	ld.bu	$fp, $a1, 0
-	bne	$fp, $s1, .LBB3_8
+	bne	$fp, $s0, .LBB3_8
 # %bb.11:                               #   in Loop: Header=BB3_10 Depth=2
 	ld.hu	$a2, $s8, 16
 	add.w	$a0, $s6, $a2
@@ -384,12 +384,12 @@ cli_bm_scanbuff:                        # @cli_bm_scanbuff
 	beqz	$a4, .LBB3_16
 # %bb.14:                               #   in Loop: Header=BB3_10 Depth=2
 	bstrpick.d	$a4, $a3, 15, 0
-	ldx.bu	$a5, $s0, $a4
+	ldx.bu	$a5, $s1, $a4
 	ldx.bu	$a4, $a1, $a4
 	bne	$a5, $a4, .LBB3_9
 # %bb.15:                               #   in Loop: Header=BB3_10 Depth=2
 	bstrpick.d	$a3, $a3, 15, 1
-	ldx.bu	$a4, $s0, $a3
+	ldx.bu	$a4, $s1, $a3
 	ldx.bu	$a1, $a1, $a3
 	bne	$a4, $a1, .LBB3_9
 .LBB3_16:                               #   in Loop: Header=BB3_10 Depth=2
@@ -405,7 +405,7 @@ cli_bm_scanbuff:                        # @cli_bm_scanbuff
 	ldx.d	$a2, $s8, $a2
 	move	$a4, $zero
 	move	$a5, $zero
-	sub.d	$t1, $s0, $a0
+	sub.d	$t1, $s1, $a0
 	sub.d	$a7, $t8, $a0
 	.p2align	4, , 16
 .LBB3_19:                               #   Parent Loop BB3_5 Depth=1

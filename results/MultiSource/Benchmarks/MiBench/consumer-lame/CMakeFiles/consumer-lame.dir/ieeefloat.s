@@ -115,8 +115,8 @@ ConvertToIeeeSingle:                    # @ConvertToIeeeSingle
 	addu16i.d	$a1, $a1, -128
 	slli.d	$a0, $a0, 23
 	addu16i.d	$a0, $a0, 16128
-	or	$a0, $a1, $a0
-	or	$s0, $a0, $s0
+	or	$a0, $a0, $s0
+	or	$s0, $a1, $a0
 .LBB1_9:
 	revb.2w	$a0, $s0
 	st.w	$a0, $fp, 0

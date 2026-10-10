@@ -31,8 +31,8 @@ bar:                                    # @bar
 	lu32i.d	$a3, 0
 	and	$a2, $a2, $a3
 	srli.d	$a1, $a1, 34
-	add.d	$a1, $a2, $a1
-	sub.w	$a0, $a0, $a1
+	sub.d	$a0, $a0, $a1
+	sub.w	$a0, $a0, $a2
 	ret
 .Lfunc_end1:
 	.size	bar, .Lfunc_end1-bar

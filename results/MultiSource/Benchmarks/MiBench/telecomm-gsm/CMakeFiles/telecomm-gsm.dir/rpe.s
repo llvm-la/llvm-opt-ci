@@ -239,60 +239,60 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	ld.h	$a3, $sp, 232
 	ld.h	$a4, $sp, 234
 	srai.d	$a3, $a3, 2
-	mul.d	$a3, $a3, $a3
 	ld.h	$a5, $sp, 240
+	mul.d	$a3, $a3, $a3
 	srai.d	$a4, $a4, 2
 	mul.d	$a4, $a4, $a4
-	ld.h	$a6, $sp, 246
 	srai.d	$a5, $a5, 2
+	ld.h	$a6, $sp, 246
 	mul.d	$a5, $a5, $a5
+	ld.h	$a7, $sp, 252
 	add.d	$a4, $a5, $a4
 	srai.d	$a5, $a6, 2
-	ld.h	$a6, $sp, 252
 	mul.d	$a5, $a5, $a5
+	srai.d	$a6, $a7, 2
+	mul.d	$a6, $a6, $a6
+	ld.h	$a7, $sp, 258
+	add.d	$a5, $a5, $a6
 	add.d	$a4, $a4, $a5
-	ld.h	$a5, $sp, 258
+	ld.h	$a5, $sp, 264
+	srai.d	$a6, $a7, 2
+	mul.d	$a6, $a6, $a6
+	ld.h	$a7, $sp, 270
+	srai.d	$a5, $a5, 2
+	mul.d	$a5, $a5, $a5
+	add.d	$a5, $a6, $a5
+	srai.d	$a6, $a7, 2
+	mul.d	$a6, $a6, $a6
+	ld.h	$a7, $sp, 276
+	add.d	$a5, $a5, $a6
+	ld.h	$a6, $sp, 282
+	add.d	$a4, $a4, $a5
+	srai.d	$a5, $a7, 2
+	mul.d	$a5, $a5, $a5
+	srai.d	$a6, $a6, 2
+	ld.h	$a7, $sp, 288
+	mul.d	$a6, $a6, $a6
+	add.d	$a5, $a5, $a6
+	ld.h	$a6, $sp, 294
+	srai.d	$a7, $a7, 2
+	mul.d	$a7, $a7, $a7
+	add.d	$a5, $a5, $a7
 	srai.d	$a6, $a6, 2
 	mul.d	$a6, $a6, $a6
-	add.d	$a4, $a4, $a6
-	srai.d	$a5, $a5, 2
-	ld.h	$a6, $sp, 264
-	mul.d	$a5, $a5, $a5
+	ld.h	$a7, $sp, 300
+	add.d	$a5, $a5, $a6
+	ld.h	$a6, $sp, 306
 	add.d	$a4, $a4, $a5
-	ld.h	$a5, $sp, 270
+	srai.d	$a5, $a7, 2
+	mul.d	$a5, $a5, $a5
 	srai.d	$a6, $a6, 2
 	mul.d	$a6, $a6, $a6
-	add.d	$a4, $a4, $a6
-	srai.d	$a5, $a5, 2
-	ld.h	$a6, $sp, 276
-	mul.d	$a5, $a5, $a5
-	add.d	$a4, $a4, $a5
-	ld.h	$a5, $sp, 282
-	srai.d	$a6, $a6, 2
-	mul.d	$a6, $a6, $a6
-	add.d	$a4, $a4, $a6
-	srai.d	$a5, $a5, 2
-	ld.h	$a6, $sp, 288
-	mul.d	$a5, $a5, $a5
-	add.d	$a4, $a4, $a5
-	ld.h	$a5, $sp, 294
-	srai.d	$a6, $a6, 2
-	mul.d	$a6, $a6, $a6
-	add.d	$a4, $a4, $a6
-	srai.d	$a5, $a5, 2
-	ld.h	$a6, $sp, 300
-	mul.d	$a5, $a5, $a5
-	add.d	$a4, $a4, $a5
-	ld.h	$a5, $sp, 306
-	srai.d	$a6, $a6, 2
-	mul.d	$a6, $a6, $a6
-	add.d	$a4, $a4, $a6
-	srai.d	$a5, $a5, 2
-	ld.w	$a6, $sp, 236
-	mul.d	$a5, $a5, $a5
+	ld.w	$a7, $sp, 236
+	add.d	$a5, $a5, $a6
 	add.d	$a4, $a4, $a5
 	slli.d	$a4, $a4, 1
-	vinsgr2vr.w	$vr0, $a6, 0
+	vinsgr2vr.w	$vr0, $a7, 0
 	ld.w	$a5, $sp, 242
 	vsrai.h	$vr0, $vr0, 2
 	vslti.h	$vr1, $vr0, 0
@@ -499,8 +499,8 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	vreplgr2vr.d	$vr0, $a3
 	vpcnt.d	$vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
-	add.d	$a0, $a3, $a0
-	add.d	$a1, $a0, $a1
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $a3, $a0
 	addi.d	$a0, $a1, 5
 	srl.w	$a0, $a2, $a0
 	slli.d	$a1, $a1, 3

@@ -281,19 +281,19 @@ _ZN16CClusterInStream4ReadEPvjPj:       # @_ZN16CClusterInStream4ReadEPvjPj
 .LBB3_11:
 	ld.w	$a0, $fp, 64
 	ori	$s1, $zero, 1
-	sll.w	$s2, $s1, $a0
-	ld.d	$a4, $fp, 88
-	srl.d	$s3, $a3, $a0
-	slli.d	$a5, $s3, 32
-	srai.d	$a5, $a5, 30
-	ldx.wu	$s4, $a4, $a5
-	addi.d	$a4, $s2, -1
+	sll.w	$s3, $s1, $a0
+	srl.d	$s2, $a3, $a0
+	addi.d	$a4, $s3, -1
+	and	$s4, $a4, $a3
+	ld.d	$a3, $fp, 88
+	slli.d	$a4, $s2, 32
+	srai.d	$a4, $a4, 30
 	ld.d	$a5, $fp, 48
-	and	$s5, $a4, $a3
-	sll.d	$a0, $s4, $a0
+	ldx.wu	$s5, $a3, $a4
+	addi.w	$a3, $s4, 0
 	ld.d	$a4, $fp, 24
-	add.d	$a0, $a0, $a5
-	addi.w	$a3, $s5, 0
+	add.d	$a3, $a5, $a3
+	sll.d	$a0, $s5, $a0
 	add.d	$a3, $a0, $a3
 	beq	$a3, $a4, .LBB3_13
 # %bb.12:
@@ -311,11 +311,11 @@ _ZN16CClusterInStream4ReadEPvjPj:       # @_ZN16CClusterInStream4ReadEPvjPj
 	move	$a1, $s6
 	bnez	$a0, .LBB3_10
 .LBB3_13:
-	sub.w	$a0, $s2, $s5
+	sub.w	$a0, $s3, $s4
 	st.w	$a0, $fp, 32
 	ld.w	$a3, $fp, 84
-	addi.w	$a4, $s3, 1
-	addi.w	$a5, $s4, 1
+	addi.w	$a4, $s2, 1
+	addi.w	$a5, $s5, 1
 	ori	$a6, $zero, 63
 	.p2align	4, , 16
 .LBB3_14:                               # =>This Inner Loop Header: Depth=1

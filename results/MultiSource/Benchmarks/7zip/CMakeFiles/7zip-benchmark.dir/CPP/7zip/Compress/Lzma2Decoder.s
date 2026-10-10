@@ -1847,8 +1847,8 @@ _ZN9NCompress6NLzma28CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStream
 	and	$s3, $a0, $a3
 	xor	$a0, $a2, $a1
 	sltui	$a0, $a0, 1
-	or	$a0, $a0, $s3
 	or	$a0, $a0, $s7
+	or	$a0, $a0, $s3
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB24_15
 # %bb.10:                               #   in Loop: Header=BB24_2 Depth=1

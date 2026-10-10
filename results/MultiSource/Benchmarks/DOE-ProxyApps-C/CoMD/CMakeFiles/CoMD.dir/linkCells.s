@@ -224,7 +224,7 @@ getNeighborBoxes:                       # @getNeighborBoxes
 	b	.LBB2_14
 	.p2align	4, , 16
 .LBB2_13:                               #   in Loop: Header=BB2_14 Depth=1
-	blt	$a3, $t4, .LBB2_33
+	blt	$a3, $t4, .LBB2_32
 .LBB2_14:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_16 Depth 2
                                         #       Child Loop BB2_20 Depth 3
@@ -250,16 +250,17 @@ getNeighborBoxes:                       # @getNeighborBoxes
 	b	.LBB2_20
 	.p2align	4, , 16
 .LBB2_17:                               #   in Loop: Header=BB2_20 Depth=3
-	ld.w	$s4, $a0, 4
-	ld.w	$s5, $a0, 0
-	ld.w	$s6, $a0, 12
-	slli.d	$s7, $s3, 1
-	mul.d	$s4, $s4, $s7
-	addi.d	$s5, $s5, 2
-	alsl.d	$s3, $s3, $t6, 1
-	mul.d	$s3, $s5, $s3
-	add.d	$s5, $a7, $s6
-	add.d	$s4, $s5, $s4
+	ld.w	$s3, $a0, 4
+	ld.w	$s4, $a0, 0
+	ld.w	$s5, $a0, 12
+	addi.d	$s6, $s2, -2
+	mul.d	$s6, $s3, $s6
+	addi.d	$s4, $s4, 2
+	add.d	$s7, $t5, $s2
+	add.d	$s3, $s7, $s3
+	mul.d	$s3, $s4, $s3
+	add.d	$s4, $a7, $s5
+	add.d	$s4, $s4, $s6
 .LBB2_18:                               #   in Loop: Header=BB2_20 Depth=3
 	add.d	$s3, $s4, $s3
 .LBB2_19:                               #   in Loop: Header=BB2_20 Depth=3
@@ -275,50 +276,49 @@ getNeighborBoxes:                       # @getNeighborBoxes
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$s3, $a0, 8
 	add.w	$s4, $t0, $t7
-	bne	$s4, $s3, .LBB2_23
+	beq	$s4, $s3, .LBB2_17
 # %bb.21:                               #   in Loop: Header=BB2_20 Depth=3
-	ld.w	$s3, $a0, 4
-	ld.w	$s4, $a0, 0
-	ld.w	$s5, $a0, 12
-	addi.d	$s6, $s2, -2
-	mul.d	$s6, $s3, $s6
-	addi.d	$s4, $s4, 2
-	add.d	$s7, $t5, $s2
-	add.d	$s3, $s7, $s3
-	mul.d	$s3, $s4, $s3
-	add.d	$s4, $a7, $s5
-.LBB2_22:                               #   in Loop: Header=BB2_20 Depth=3
-	add.d	$s4, $s4, $s6
+	bne	$t1, $t7, .LBB2_23
+# %bb.22:                               #   in Loop: Header=BB2_20 Depth=3
+	ld.w	$s4, $a0, 4
+	ld.w	$s5, $a0, 0
+	ld.w	$s6, $a0, 12
+	slli.d	$s7, $s3, 1
+	mul.d	$s4, $s4, $s7
+	addi.d	$s5, $s5, 2
+	alsl.d	$s3, $s3, $t6, 1
+	mul.d	$s3, $s5, $s3
+	add.d	$s5, $a7, $s6
+	add.d	$s4, $s5, $s4
 	b	.LBB2_18
 	.p2align	4, , 16
 .LBB2_23:                               #   in Loop: Header=BB2_20 Depth=3
-	beq	$t1, $t7, .LBB2_17
-# %bb.24:                               #   in Loop: Header=BB2_20 Depth=3
 	ld.w	$s5, $a0, 4
-	bne	$fp, $s5, .LBB2_26
-# %bb.25:                               #   in Loop: Header=BB2_20 Depth=3
+	bne	$fp, $s5, .LBB2_25
+# %bb.24:                               #   in Loop: Header=BB2_20 Depth=3
 	ld.w	$s5, $a0, 0
 	ld.w	$s6, $a0, 12
 	mul.d	$s7, $s0, $s3
 	addi.d	$s5, $s5, 2
 	add.d	$s3, $s4, $s3
 	mul.d	$s3, $s5, $s3
-	add.d	$s4, $a7, $s7
-	b	.LBB2_22
-.LBB2_26:                               #   in Loop: Header=BB2_20 Depth=3
+	add.d	$s4, $a7, $s6
+	add.d	$s4, $s4, $s7
+	b	.LBB2_18
+.LBB2_25:                               #   in Loop: Header=BB2_20 Depth=3
 	addi.w	$s7, $zero, -1
-	beq	$fp, $s7, .LBB2_29
-# %bb.27:                               #   in Loop: Header=BB2_20 Depth=3
+	beq	$fp, $s7, .LBB2_28
+# %bb.26:                               #   in Loop: Header=BB2_20 Depth=3
 	ld.w	$s6, $a0, 0
-	bne	$t4, $s6, .LBB2_30
-# %bb.28:                               #   in Loop: Header=BB2_20 Depth=3
+	bne	$t4, $s6, .LBB2_29
+# %bb.27:                               #   in Loop: Header=BB2_20 Depth=3
 	ld.w	$s6, $a0, 12
 	add.d	$s3, $s4, $s3
 	mul.d	$s3, $s5, $s3
-	add.d	$s3, $s3, $fp
-	add.d	$s3, $s3, $s6
+	add.d	$s4, $fp, $s6
+	add.d	$s3, $s3, $s4
 	b	.LBB2_19
-.LBB2_29:                               #   in Loop: Header=BB2_20 Depth=3
+.LBB2_28:                               #   in Loop: Header=BB2_20 Depth=3
 	ld.w	$s6, $a0, 0
 	ld.w	$s7, $a0, 12
 	mul.d	$s3, $s3, $s5
@@ -328,20 +328,20 @@ getNeighborBoxes:                       # @getNeighborBoxes
 	add.d	$s3, $s3, $s7
 	add.d	$s3, $s3, $s4
 	b	.LBB2_19
-.LBB2_30:                               #   in Loop: Header=BB2_20 Depth=3
+.LBB2_29:                               #   in Loop: Header=BB2_20 Depth=3
 	mul.d	$s3, $s5, $s4
-	beq	$t4, $s7, .LBB2_32
-# %bb.31:                               #   in Loop: Header=BB2_20 Depth=3
+	beq	$t4, $s7, .LBB2_31
+# %bb.30:                               #   in Loop: Header=BB2_20 Depth=3
 	add.d	$s3, $s3, $fp
 	mul.d	$s3, $s6, $s3
 	add.d	$s3, $s3, $t4
 	b	.LBB2_19
-.LBB2_32:                               #   in Loop: Header=BB2_20 Depth=3
+.LBB2_31:                               #   in Loop: Header=BB2_20 Depth=3
 	ld.w	$s4, $a0, 12
-	add.d	$s3, $s3, $fp
+	add.d	$s4, $fp, $s4
 	add.d	$s3, $s3, $s4
 	b	.LBB2_19
-.LBB2_33:
+.LBB2_32:
 	add.w	$a0, $t8, $t7
 	ld.d	$s7, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
@@ -423,7 +423,7 @@ getBoxFromTuple:                        # @getBoxFromTuple
 	ld.w	$a0, $a0, 12
 	add.d	$a1, $a4, $a3
 	mul.d	$a1, $a5, $a1
-	add.d	$a1, $a1, $a2
+	add.d	$a0, $a2, $a0
 	add.w	$a0, $a1, $a0
 	ret
 .LBB3_9:
@@ -448,7 +448,7 @@ getBoxFromTuple:                        # @getBoxFromTuple
 .LBB3_12:
 	ld.w	$a0, $a0, 12
 	mul.d	$a1, $a5, $a3
-	add.d	$a1, $a1, $a2
+	add.d	$a0, $a2, $a0
 	add.w	$a0, $a1, $a0
 	ret
 .Lfunc_end3:
@@ -843,6 +843,7 @@ updateLinkCells:                        # @updateLinkCells
 	alsl.d	$t7, $t8, $t7, 1
 	addi.d	$t7, $t7, 3
 	mul.d	$t6, $t6, $t7
+	add.d	$t5, $t5, $a7
 	add.d	$t5, $t5, $fp
 	b	.LBB7_25
 	.p2align	4, , 16
@@ -873,6 +874,7 @@ updateLinkCells:                        # @updateLinkCells
 	alsl.d	$t8, $t8, $s0, 1
 	addi.d	$t8, $t8, 1
 	mul.d	$t6, $t6, $t8
+	add.d	$t5, $t5, $a7
 	add.d	$t5, $t5, $t7
 	b	.LBB7_25
 .LBB7_20:                               #   in Loop: Header=BB7_11 Depth=2
@@ -882,8 +884,8 @@ updateLinkCells:                        # @updateLinkCells
 # %bb.22:                               #   in Loop: Header=BB7_11 Depth=2
 	add.d	$t5, $s1, $t8
 	mul.d	$t5, $t5, $t7
-	add.d	$t5, $t5, $fp
-	add.w	$t5, $t5, $a7
+	add.d	$t6, $fp, $a7
+	add.w	$t5, $t5, $t6
 	b	.LBB7_26
 .LBB7_23:                               #   in Loop: Header=BB7_11 Depth=2
 	mul.d	$t7, $t7, $t8
@@ -891,8 +893,8 @@ updateLinkCells:                        # @updateLinkCells
 	mul.d	$t6, $t6, $s1
 .LBB7_24:                               #   in Loop: Header=BB7_11 Depth=2
 	alsl.d	$t5, $t7, $t5, 1
-.LBB7_25:                               #   in Loop: Header=BB7_11 Depth=2
 	add.d	$t5, $t5, $a7
+.LBB7_25:                               #   in Loop: Header=BB7_11 Depth=2
 	add.d	$t5, $t5, $t6
 	addi.w	$t5, $t5, 1
 .LBB7_26:                               #   in Loop: Header=BB7_11 Depth=2

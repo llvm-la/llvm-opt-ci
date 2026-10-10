@@ -1695,10 +1695,10 @@ _ZL19checkVectorFunctionIfEvSt8functionIFT_PS1_jEES4_PKc: # @_ZL19checkVectorFun
 	vand.v	$vr14, $vr12, $vr3
 	vor.v	$vr11, $vr14, $vr11
 	vsrli.d	$vr11, $vr11, 1
-	vxor.v	$vr11, $vr11, $vr13
-	vand.v	$vr13, $vr12, $vr4
-	vseqi.d	$vr13, $vr13, 0
-	vandn.v	$vr13, $vr13, $vr5
+	vand.v	$vr14, $vr12, $vr4
+	vseqi.d	$vr14, $vr14, 0
+	vandn.v	$vr14, $vr14, $vr5
+	vxor.v	$vr13, $vr13, $vr14
 	vxor.v	$vr11, $vr11, $vr13
 	beqz	$t7, .LBB1_15
 # %bb.14:                               #   in Loop: Header=BB1_8 Depth=2
@@ -1743,14 +1743,14 @@ _ZL19checkVectorFunctionIfEvSt8functionIFT_PS1_jEES4_PKc: # @_ZL19checkVectorFun
 	vldx	$vr11, $t6, $a7
 	vshuf4i.d	$vr10, $vr11, 9
 	vand.v	$vr10, $vr10, $vr2
+	vand.v	$vr12, $vr11, $vr3
+	vor.v	$vr10, $vr12, $vr10
 	vldx	$vr12, $t6, $t0
-	vand.v	$vr13, $vr11, $vr3
-	vor.v	$vr10, $vr13, $vr10
 	vsrli.d	$vr10, $vr10, 1
-	vxor.v	$vr10, $vr10, $vr12
-	vand.v	$vr12, $vr11, $vr4
-	vseqi.d	$vr12, $vr12, 0
-	vandn.v	$vr12, $vr12, $vr5
+	vand.v	$vr13, $vr11, $vr4
+	vseqi.d	$vr13, $vr13, 0
+	vandn.v	$vr13, $vr13, $vr5
+	vxor.v	$vr12, $vr12, $vr13
 	vxor.v	$vr10, $vr10, $vr12
 	addi.d	$t5, $t5, 16
 	vstx	$vr10, $t6, $t1
@@ -1758,17 +1758,17 @@ _ZL19checkVectorFunctionIfEvSt8functionIFT_PS1_jEES4_PKc: # @_ZL19checkVectorFun
 	bnez	$t5, .LBB1_21
 # %bb.22:                               #   in Loop: Header=BB1_5 Depth=1
 	ld.d	$t6, $a0, 0
-	move	$t5, $zero
 	ldptr.d	$t7, $a0, 4984
+	move	$t5, $zero
 	bstrpick.d	$t8, $t6, 30, 1
-	ldptr.d	$s3, $a0, 3168
 	slli.d	$t8, $t8, 1
 	bstrins.d	$t7, $t8, 30, 0
+	ldptr.d	$t8, $a0, 3168
 	srli.d	$t7, $t7, 1
-	xor	$t7, $t7, $s3
 	andi	$t6, $t6, 1
 	sub.d	$t6, $zero, $t6
 	and	$t6, $t6, $a4
+	xor	$t6, $t8, $t6
 	xor	$t6, $t7, $t6
 	stptr.d	$t6, $a0, 4984
 	b	.LBB1_4

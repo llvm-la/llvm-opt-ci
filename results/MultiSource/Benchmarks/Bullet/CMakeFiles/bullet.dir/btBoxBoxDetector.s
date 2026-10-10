@@ -1216,7 +1216,7 @@ _Z8dBoxBox2RK9btVector3PKfS1_S1_S3_S1_RS_PfPiiP12dContactGeomiRN36btDiscreteColl
 	fld.s	$fa0, $a5, 32
 	srli.d	$a1, $a2, 8
 	andi	$a1, $a1, 254
-	add.d	$a1, $a1, $a3
+	sub.d	$a0, $a0, $a3
 	sub.d	$a0, $a0, $a1
 	andi	$a0, $a0, 255
 	alsl.d	$a1, $a0, $a4, 2

@@ -76,8 +76,8 @@ crc32_z:                                # @crc32_z
 	ldx.w	$t1, $a4, $t1
 	ld.w	$t4, $a1, 4
 	xor	$t2, $t3, $t2
-	xor	$a0, $t2, $a0
 	xor	$a0, $a0, $t1
+	xor	$a0, $t2, $a0
 	xor	$a0, $a0, $t4
 	and	$t1, $a0, $a3
 	andi	$t2, $a0, 255
@@ -93,8 +93,8 @@ crc32_z:                                # @crc32_z
 	ldx.w	$t1, $a4, $t1
 	ld.w	$t4, $a1, 8
 	xor	$t2, $t3, $t2
-	xor	$a0, $t2, $a0
 	xor	$a0, $a0, $t1
+	xor	$a0, $t2, $a0
 	xor	$a0, $a0, $t4
 	and	$t1, $a0, $a3
 	andi	$t2, $a0, 255
@@ -110,8 +110,8 @@ crc32_z:                                # @crc32_z
 	ldx.w	$t1, $a4, $t1
 	ld.w	$t4, $a1, 12
 	xor	$t2, $t3, $t2
-	xor	$a0, $t2, $a0
 	xor	$a0, $a0, $t1
+	xor	$a0, $t2, $a0
 	xor	$a0, $a0, $t4
 	and	$t1, $a0, $a3
 	andi	$t2, $a0, 255
@@ -127,8 +127,8 @@ crc32_z:                                # @crc32_z
 	ldx.w	$t1, $a4, $t1
 	ld.w	$t4, $a1, 16
 	xor	$t2, $t3, $t2
-	xor	$a0, $t2, $a0
 	xor	$a0, $a0, $t1
+	xor	$a0, $t2, $a0
 	xor	$a0, $a0, $t4
 	and	$t1, $a0, $a3
 	andi	$t2, $a0, 255
@@ -144,8 +144,8 @@ crc32_z:                                # @crc32_z
 	ldx.w	$t1, $a4, $t1
 	ld.w	$t4, $a1, 20
 	xor	$t2, $t3, $t2
-	xor	$a0, $t2, $a0
 	xor	$a0, $a0, $t1
+	xor	$a0, $t2, $a0
 	xor	$a0, $a0, $t4
 	and	$t1, $a0, $a3
 	andi	$t2, $a0, 255
@@ -161,8 +161,8 @@ crc32_z:                                # @crc32_z
 	ldx.w	$t1, $a4, $t1
 	ld.w	$t4, $a1, 24
 	xor	$t2, $t3, $t2
-	xor	$a0, $t2, $a0
 	xor	$a0, $a0, $t1
+	xor	$a0, $t2, $a0
 	xor	$a0, $a0, $t4
 	and	$t1, $a0, $a3
 	andi	$t2, $a0, 255
@@ -176,12 +176,11 @@ crc32_z:                                # @crc32_z
 	ldx.w	$a0, $a7, $a0
 	srli.d	$t1, $t1, 22
 	ldx.w	$t1, $a4, $t1
+	ld.w	$t4, $a1, 28
 	xor	$t2, $t3, $t2
-	ld.w	$t3, $a1, 28
-	xor	$a0, $t2, $a0
 	xor	$a0, $a0, $t1
-	addi.d	$a1, $a1, 32
-	xor	$a0, $a0, $t3
+	xor	$a0, $t2, $a0
+	xor	$a0, $a0, $t4
 	and	$t1, $a0, $a3
 	andi	$t2, $a0, 255
 	slli.d	$t2, $t2, 2
@@ -194,10 +193,11 @@ crc32_z:                                # @crc32_z
 	ldx.w	$a0, $a7, $a0
 	srli.d	$t1, $t1, 22
 	ldx.w	$t1, $a4, $t1
+	addi.d	$a1, $a1, 32
 	xor	$t2, $t3, $t2
-	xor	$a0, $t2, $a0
-	addi.d	$a2, $a2, -32
 	xor	$a0, $a0, $t1
+	addi.d	$a2, $a2, -32
+	xor	$a0, $t2, $a0
 	bltu	$t0, $a2, .LBB1_8
 .LBB1_9:
 	ori	$a3, $zero, 4
@@ -213,7 +213,6 @@ crc32_z:                                # @crc32_z
 	.p2align	4, , 16
 .LBB1_11:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$t0, $a1, 0
-	addi.d	$a1, $a1, 4
 	xor	$a0, $t0, $a0
 	and	$t0, $a0, $a3
 	andi	$t1, $a0, 255
@@ -229,10 +228,11 @@ crc32_z:                                # @crc32_z
 	ld.w	$a0, $a0, 1024
 	srli.d	$t0, $t0, 22
 	ldx.w	$t0, $a4, $t0
+	addi.d	$a1, $a1, 4
 	xor	$t1, $t2, $t1
-	xor	$a0, $t1, $a0
-	addi.d	$a2, $a2, -4
 	xor	$a0, $a0, $t0
+	addi.d	$a2, $a2, -4
+	xor	$a0, $t1, $a0
 	bltu	$a7, $a2, .LBB1_11
 .LBB1_12:
 	beqz	$a2, .LBB1_15

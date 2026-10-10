@@ -4138,8 +4138,8 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ldx.d	$a1, $a1, $a3
 	slli.d	$a2, $a2, 9
 	sub.d	$a0, $a0, $a2
-	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $s2
+	add.d	$a0, $a1, $a0
 .LBB3_631:
 	ld.bu	$a0, $a0, 0
 	beqz	$a0, .LBB3_633
@@ -4267,9 +4267,9 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ldx.d	$a2, $a2, $a3
 	slli.d	$a1, $a1, 9
 	sub.d	$a0, $a0, $a1
-	add.d	$a0, $a2, $a0
 	add.d	$a0, $a0, $s1
 	add.d	$a0, $a0, $s4
+	add.d	$a0, $a2, $a0
 	ld.bu	$a0, $a0, 0
 	beqz	$a0, .LBB3_659
 .LBB3_658:                              #   in Loop: Header=BB3_645 Depth=1
@@ -7048,8 +7048,8 @@ _ZN2PP12Restartblock8check_rbERSt6vectorINSt7__cxx1112basic_stringIcSt11char_tra
 	ldx.d	$a1, $a1, $a3
 	slli.d	$a2, $a2, 9
 	sub.d	$a0, $a0, $a2
-	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $s1
+	add.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, 1
 	ld.bu	$a0, $a0, 0
 	beqz	$a0, .LBB9_115
@@ -10136,8 +10136,8 @@ _ZN2PP12Restartblock14list_conditionENSt7__cxx1112basic_stringIcSt11char_traitsI
 	ldx.d	$a1, $a1, $a4
 	slli.d	$a3, $a3, 9
 	sub.d	$a0, $a0, $a3
-	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $s6
+	add.d	$a0, $a1, $a0
 	ld.bu	$a0, $a0, 0
 	beqz	$a0, .LBB12_51
 .LBB12_28:                              #   in Loop: Header=BB12_2 Depth=1

@@ -1580,8 +1580,8 @@ cab_read:                               # @cab_read
 	ld.hu	$a3, $a1, 0
 	ld.d	$a0, $a1, 6
 	slli.d	$a1, $a2, 15
-	add.d	$a1, $a1, $a3
 	lu12i.w	$a2, -8
+	add.d	$a2, $a3, $a2
 	add.w	$a1, $a1, $a2
 	pcaddu18i	$ra, %call36(lzx_set_output_length)
 	jirl	$ra, $ra, 0

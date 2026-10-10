@@ -84,8 +84,8 @@ crc_loop:                               # @crc_loop
 	slli.d	$a2, $a0, 4
 	xor	$a1, $a2, $a1
 	slli.d	$a2, $a0, 8
-	xor	$a1, $a1, $a2
-	slli.d	$a2, $a0, 12
+	slli.d	$a3, $a0, 12
+	xor	$a2, $a2, $a3
 	xor	$a1, $a1, $a2
 	slli.d	$a0, $a0, 16
 	xor	$a0, $a1, $a0

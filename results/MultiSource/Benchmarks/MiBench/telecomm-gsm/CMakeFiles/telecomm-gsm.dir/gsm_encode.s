@@ -292,7 +292,7 @@ gsm_encode:                             # @gsm_encode
 	ld.h	$a1, $sp, 194
 	ld.b	$a7, $sp, 196
 	ld.b	$t0, $sp, 168
-	ld.h	$t5, $sp, 48
+	ld.h	$t6, $sp, 48
 	ld.b	$t1, $sp, 50
 	ld.h	$a4, $sp, 62
 	ld.h	$a2, $sp, 52
@@ -302,7 +302,7 @@ gsm_encode:                             # @gsm_encode
 	ld.h	$t7, $sp, 64
 	ld.b	$t4, $sp, 66
 	ld.h	$a5, $sp, 68
-	ld.b	$t6, $sp, 70
+	ld.b	$t5, $sp, 70
 	ld.b	$t8, $sp, 170
 	ld.h	$s4, $sp, 74
 	ld.b	$s5, $sp, 76
@@ -323,10 +323,10 @@ gsm_encode:                             # @gsm_encode
 	ld.h	$s7, $sp, 154
 	ld.w	$s8, $sp, 56
 	slli.d	$ra, $s3, 7
-	bstrins.d	$ra, $t5, 6, 4
+	bstrins.d	$ra, $t6, 6, 4
 	ld.w	$s3, $sp, 160
 	vinsgr2vr.w	$vr2, $s8, 0
-	ld.h	$t5, $sp, 198
+	ld.h	$t6, $sp, 198
 	bstrins.d	$s2, $t7, 6, 4
 	vinsgr2vr.w	$vr4, $s3, 0
 	slli.d	$s3, $s7, 7
@@ -353,7 +353,6 @@ gsm_encode:                             # @gsm_encode
 	vextrins.b	$vr5, $vr4, 194
 	vinsgr2vr.b	$vr5, $s4, 13
 	vinsgr2vr.b	$vr5, $a3, 14
-	vextrins.b	$vr5, $vr3, 242
 	pcalau12i	$s2, %pc_hi20(.LCPI0_0)
 	vld	$vr6, $s2, %pc_lo12(.LCPI0_0)
 	slli.d	$t8, $t8, 5
@@ -379,7 +378,7 @@ gsm_encode:                             # @gsm_encode
 	slli.d	$t2, $t2, 3
 	slli.d	$t3, $t3, 2
 	slli.d	$t4, $t4, 1
-	slli.d	$t6, $t6, 3
+	slli.d	$t5, $t5, 3
 	ori	$t8, $zero, 28
 	st.b	$t8, $sp, 31
 	ori	$t8, $zero, 255
@@ -390,7 +389,7 @@ gsm_encode:                             # @gsm_encode
 	lu12i.w	$t8, 15
 	ori	$t8, $t8, 3840
 	st.h	$t8, $sp, 16
-	st.b	$t6, $sp, 26
+	st.b	$t5, $sp, 26
 	st.b	$t4, $sp, 25
 	st.b	$t3, $sp, 24
 	st.b	$t2, $sp, 23
@@ -401,9 +400,9 @@ gsm_encode:                             # @gsm_encode
 	vld	$vr8, $sp, 16
 	pcalau12i	$a6, %pc_hi20(.LCPI0_1)
 	vld	$vr9, $a6, %pc_lo12(.LCPI0_1)
+	vextrins.b	$vr5, $vr3, 242
 	vsll.b	$vr5, $vr5, $vr6
 	vand.v	$vr6, $vr7, $vr8
-	vor.v	$vr5, $vr6, $vr5
 	vshuf.h	$vr9, $vr4, $vr1
 	vreplvei.h	$vr1, $vr4, 1
 	vinsgr2vr.h	$vr1, $a4, 0
@@ -411,7 +410,7 @@ gsm_encode:                             # @gsm_encode
 	vinsgr2vr.h	$vr1, $t7, 2
 	vextrins.h	$vr1, $vr0, 65
 	vinsgr2vr.h	$vr9, $a1, 2
-	vinsgr2vr.h	$vr9, $t5, 3
+	vinsgr2vr.h	$vr9, $t6, 3
 	vextrins.h	$vr9, $vr0, 80
 	vinsgr2vr.h	$vr9, $a2, 6
 	vextrins.h	$vr9, $vr2, 112
@@ -430,6 +429,7 @@ gsm_encode:                             # @gsm_encode
 	vsrl.h	$vr1, $vr1, $vr3
 	vpickev.b	$vr0, $vr1, $vr0
 	vand.v	$vr0, $vr0, $vr2
+	vor.v	$vr0, $vr0, $vr6
 	ld.h	$a1, $sp, 90
 	vor.v	$vr0, $vr0, $vr5
 	vst	$vr0, $fp, 1
@@ -535,10 +535,9 @@ gsm_encode:                             # @gsm_encode
 	vinsgr2vr.b	$vr10, $t5, 12
 	vinsgr2vr.b	$vr10, $a5, 13
 	vinsgr2vr.b	$vr10, $t7, 14
-	vinsgr2vr.b	$vr10, $a6, 15
 	pcalau12i	$a0, %pc_hi20(.LCPI0_11)
 	vld	$vr11, $a0, %pc_lo12(.LCPI0_11)
-	vor.v	$vr9, $vr9, $vr10
+	vinsgr2vr.b	$vr10, $a6, 15
 	vextrins.h	$vr0, $vr1, 33
 	vextrins.h	$vr8, $vr1, 48
 	vshuf.h	$vr11, $vr2, $vr8
@@ -563,6 +562,7 @@ gsm_encode:                             # @gsm_encode
 	vpickev.b	$vr0, $vr1, $vr0
 	vand.v	$vr0, $vr0, $vr3
 	vor.v	$vr0, $vr0, $vr9
+	vor.v	$vr0, $vr0, $vr10
 	vst	$vr0, $fp, 17
 	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 208                   # 8-byte Folded Reload

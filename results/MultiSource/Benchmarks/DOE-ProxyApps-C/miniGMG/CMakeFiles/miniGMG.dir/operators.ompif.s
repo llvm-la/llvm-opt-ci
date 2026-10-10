@@ -909,8 +909,8 @@ smooth:                                 # @smooth
 	sub.d	$a1, $a1, $a5
 	addi.w	$s0, $a1, 1
 	addi.d	$a1, $t1, 1
-	add.d	$a2, $a1, $a0
-	sub.w	$s1, $a2, $a5
+	sub.d	$a2, $a1, $a5
+	add.w	$s1, $a2, $a0
 	sub.d	$a2, $a7, $t1
 	slli.d	$a2, $a2, 3
 	st.d	$a2, $sp, 192                   # 8-byte Folded Spill
@@ -5176,13 +5176,13 @@ initialize_grid_to_scalar:              # @initialize_grid_to_scalar
 	vilvl.w	$vr13, $vr13, $vr13
 	vslt.d	$vr15, $vr10, $vr6
 	vslt.d	$vr12, $vr12, $vr6
+	vand.v	$vr15, $vr15, $vr0
 	vand.v	$vr14, $vr14, $vr15
-	vand.v	$vr12, $vr13, $vr12
-	vand.v	$vr13, $vr14, $vr0
 	vand.v	$vr12, $vr12, $vr0
+	vand.v	$vr12, $vr13, $vr12
 	alsl.d	$a6, $s8, $t8, 3
 	slli.d	$t0, $s8, 3
-	vstx	$vr13, $t8, $t0
+	vstx	$vr14, $t8, $t0
 	vst	$vr12, $a6, 16
 	vaddi.du	$vr10, $vr10, 4
 	vaddi.wu	$vr11, $vr11, 4
@@ -5473,8 +5473,8 @@ add_grids:                              # @add_grids
 	sltu	$ra, $zero, $ra
 	add.w	$s0, $s6, $s4
 	slt	$s0, $s0, $s6
-	or	$s0, $s0, $ra
-	or	$s0, $s0, $s5
+	or	$s6, $ra, $s5
+	or	$s0, $s0, $s6
 	andi	$s0, $s0, 1
 	beqz	$s0, .LBB13_15
 .LBB13_12:                              #   in Loop: Header=BB13_10 Depth=3
@@ -5680,8 +5680,8 @@ mul_grids:                              # @mul_grids
 	sltu	$ra, $zero, $ra
 	add.w	$s0, $s6, $s4
 	slt	$s0, $s0, $s6
-	or	$s0, $s0, $ra
-	or	$s0, $s0, $s5
+	or	$s6, $ra, $s5
+	or	$s0, $s0, $s6
 	andi	$s0, $s0, 1
 	beqz	$s0, .LBB14_15
 .LBB14_12:                              #   in Loop: Header=BB14_10 Depth=3
@@ -6665,8 +6665,8 @@ project_cell_to_face:                   # @project_cell_to_face
 	add.w	$s6, $s6, $ra
 	add.w	$t0, $s6, $t5
 	slt	$t0, $t0, $s6
-	or	$a4, $a4, $t0
 	or	$a4, $a4, $s4
+	or	$a4, $a4, $t0
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB20_16
 # %bb.15:                               #   in Loop: Header=BB20_14 Depth=3

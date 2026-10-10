@@ -2860,8 +2860,8 @@ cli_scanpe:                             # @cli_scanpe
 	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	ld.wu	$a0, $a1, 72
 	ld.wu	$a1, $a1, 0
-	add.d	$a0, $s3, $a0
 	sub.d	$a0, $a0, $a1
+	add.d	$a0, $s3, $a0
 	move	$a1, $s3
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(memmove)
@@ -2875,9 +2875,9 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ld.wu	$a0, $s4, 36
 	ld.wu	$a2, $s4, 68
-	add.d	$a0, $s3, $a0
 	bstrpick.d	$a1, $s7, 31, 0
-	sub.d	$a1, $a0, $a1
+	sub.d	$a0, $a0, $a1
+	add.d	$a1, $s3, $a0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
@@ -3117,10 +3117,10 @@ cli_scanpe:                             # @cli_scanpe
 	ori	$a1, $zero, 190
 	bne	$a0, $a1, .LBB0_677
 # %bb.512:
-	ldptr.w	$a0, $sp, 8572
-	ld.w	$a1, $sp, 210
-	add.d	$a0, $a0, $a5
-	sub.w	$s4, $a1, $a0
+	ld.w	$a0, $sp, 210
+	ldptr.w	$a1, $sp, 8572
+	sub.d	$a0, $a0, $a1
+	sub.w	$s4, $a0, $a5
 	addi.d	$a0, $s4, -2048
 	addi.w	$a0, $a0, -2048
 	lu12i.w	$a1, -1
@@ -3203,9 +3203,9 @@ cli_scanpe:                             # @cli_scanpe
 	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	add.d	$a1, $a2, $a1
 	ld.w	$a1, $a1, 12
-	add.d	$a0, $a0, $a1
-	lu12i.w	$a1, -4
-	ori	$a1, $a1, 3557
+	lu12i.w	$a2, -4
+	ori	$a2, $a2, 3557
+	add.d	$a0, $a0, $a2
 	add.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	bgeu	$a1, $a0, .LBB0_527
@@ -6124,14 +6124,14 @@ cli_scanpe:                             # @cli_scanpe
 	ori	$a2, $zero, 224
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	bstrpick.d	$a1, $s7, 31, 0
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	add.d	$a1, $a2, $a1
 	add.d	$a1, $a1, $a0
-	bstrpick.d	$a2, $s7, 31, 0
-	add.d	$a1, $a1, $a2
 	ld.w	$a1, $a1, 2
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	add.d	$a1, $a2, $a1
-	add.d	$a0, $a1, $a0
+	add.d	$a0, $a2, $a0
+	add.d	$a0, $a0, $a1
 	addi.w	$s7, $a0, 6
 	pcalau12i	$a0, %pc_hi20(.L.str.163)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.163)

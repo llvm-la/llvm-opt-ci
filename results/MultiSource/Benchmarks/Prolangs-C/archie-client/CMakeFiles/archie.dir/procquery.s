@@ -174,13 +174,13 @@ display_link:                           # @display_link
 	ld.w	$a1, $a0, 20
 	ld.w	$a2, $sp, 76
 	sub.w	$a1, $a1, $a2
-	addi.d	$a1, $a1, 1900
 	ld.w	$a2, $a0, 16
 	ld.w	$a0, $sp, 72
+	addi.d	$a1, $a1, 1900
 	slli.d	$a3, $a1, 3
 	alsl.d	$a1, $a1, $a3, 2
-	add.d	$a1, $a1, $a2
-	sub.w	$s1, $a1, $a0
+	sub.d	$a2, $a2, $a0
+	add.w	$s1, $a1, $a2
 	pcaddu18i	$ra, %call36(month_sname)
 	jirl	$ra, $ra, 0
 	ld.w	$a3, $sp, 68

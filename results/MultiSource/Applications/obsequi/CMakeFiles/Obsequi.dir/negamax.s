@@ -177,11 +177,11 @@ search_for_move:                        # @search_for_move
 	nor	$a5, $a5, $zero
 	bstrpick.d	$a5, $a5, 15, 0
 	slli.d	$a5, $a5, 2
-	ldx.w	$a5, $a4, $a5
 	srli.d	$a6, $a6, 14
 	ldx.w	$a6, $a4, $a6
-	add.d	$a2, $a5, $a2
+	ldx.w	$a5, $a4, $a5
 	add.d	$a2, $a2, $a6
+	add.d	$a2, $a5, $a2
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 4
 	bnez	$a0, .LBB0_11

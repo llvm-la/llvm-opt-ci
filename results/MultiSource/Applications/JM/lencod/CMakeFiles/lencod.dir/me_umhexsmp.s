@@ -83,14 +83,15 @@ smpUMHEX_get_mem:                       # @smpUMHEX_get_mem
 	ori	$a1, $zero, 9
 	pcaddu18i	$ra, %call36(get_mem3Dint)
 	jirl	$ra, $ra, 0
-	add.d	$fp, $a0, $fp
+	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(smpUMHEX_SearchState)
 	addi.d	$a0, $a0, %pc_lo12(smpUMHEX_SearchState)
 	ori	$a1, $zero, 7
 	ori	$a2, $zero, 7
 	pcaddu18i	$ra, %call36(get_mem2D)
 	jirl	$ra, $ra, 0
-	add.w	$a0, $fp, $a0
+	add.d	$a0, $s0, $a0
+	add.w	$a0, $a0, $fp
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -2748,10 +2749,10 @@ smpUMHEXFullSubPelBlockMotionSearch:    # @smpUMHEXFullSubPelBlockMotionSearch
 	bnez	$a1, .LBB4_38
 .LBB4_36:
 	ld.h	$a1, $ra, 0
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
-	or	$a1, $a2, $a1
 	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
-	or	$a1, $a1, $a2
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	or	$a2, $a3, $a2
+	or	$a1, $a2, $a1
 	slli.d	$a1, $a1, 48
 	bnez	$a1, .LBB4_38
 # %bb.37:
@@ -4162,8 +4163,8 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	or	$t3, $a0, $a1
 	st.d	$s3, $sp, 256                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 296                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	beqz	$a2, .LBB6_32
 # %bb.30:
 	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
@@ -4865,14 +4866,14 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	b	.LBB6_150
 .LBB6_95:
 	move	$a3, $s5
-	move	$s2, $zero
+	move	$fp, $zero
 	sub.w	$a0, $s5, $t1
 	srai.d	$a1, $a0, 31
 	xor	$a0, $a0, $a1
-	sub.w	$t4, $a0, $a1
-	slli.d	$t5, $s5, 2
+	sub.w	$a5, $a0, $a1
+	slli.d	$a6, $s5, 2
 	ld.d	$a0, $sp, 344                   # 8-byte Folded Reload
-	sub.w	$a0, $t5, $a0
+	sub.w	$a0, $a6, $a0
 	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	ori	$a0, $zero, 80
 	alsl.w	$a1, $s5, $a0, 2
@@ -4882,68 +4883,66 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	xor	$a1, $a1, $a2
 	sub.w	$a1, $a1, $a2
 	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
-	slli.d	$t6, $s8, 2
+	slli.d	$t4, $s8, 2
 	ld.d	$a1, $sp, 336                   # 8-byte Folded Reload
-	sub.w	$a1, $t6, $a1
+	sub.w	$a1, $t4, $a1
 	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
 	alsl.w	$a0, $s8, $a0, 2
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	nor	$t7, $t1, $zero
-	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
-	sub.d	$a0, $t5, $a4
-	ld.d	$a6, $sp, 40                    # 8-byte Folded Reload
-	sub.d	$a0, $a0, $a6
-	addi.d	$a0, $a0, -4
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	ori	$t8, $zero, 1
-	sub.d	$s5, $t8, $a7
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
-	add.d	$a0, $a2, $a5
-	ori	$a1, $zero, 4
-	sub.d	$fp, $a1, $a0
+	nor	$t5, $t1, $zero
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	add.d	$a0, $a0, $a1
+	sub.d	$a1, $a6, $a0
+	addi.d	$a1, $a1, -4
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	ori	$t6, $zero, 1
+	sub.d	$s3, $t6, $a7
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	add.d	$a1, $a1, $a2
+	ori	$a2, $zero, 4
+	sub.d	$t7, $a2, $a1
 	nor	$s4, $a7, $zero
-	sub.d	$a0, $t6, $a2
-	sub.d	$a0, $a0, $a5
-	addi.d	$a0, $a0, -4
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
-	sub.d	$a5, $t8, $t1
-	add.d	$a0, $a4, $a6
-	sub.d	$a6, $a1, $a0
+	sub.d	$a1, $t4, $a1
+	addi.d	$a1, $a1, -4
+	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
+	sub.d	$t8, $t6, $t1
+	sub.d	$s0, $a2, $a0
 	bstrpick.d	$s6, $t2, 31, 1
-	addi.d	$s0, $zero, -1
-	ori	$s3, $zero, 84
+	addi.d	$s2, $zero, -1
+	ori	$s5, $zero, 84
 	st.d	$a3, $sp, 248                   # 8-byte Folded Spill
 	st.d	$a3, $sp, 144                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 240                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
-	st.d	$t4, $sp, 176                   # 8-byte Folded Spill
-	st.d	$t5, $sp, 168                   # 8-byte Folded Spill
-	st.d	$t6, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 168                   # 8-byte Folded Spill
+	st.d	$t4, $sp, 160                   # 8-byte Folded Spill
 	b	.LBB6_97
 	.p2align	4, , 16
 .LBB6_96:                               #   in Loop: Header=BB6_97 Depth=1
-	addi.d	$t7, $t7, -2
-	addi.d	$s0, $s0, -2
-	addi.d	$s2, $s2, -8
-	addi.d	$s5, $s5, 2
-	addi.d	$t8, $t8, 2
-	addi.d	$s3, $s3, 8
-	addi.d	$fp, $fp, 8
+	addi.d	$t5, $t5, -2
+	addi.d	$s2, $s2, -2
+	addi.d	$fp, $fp, -8
+	addi.d	$s3, $s3, 2
+	addi.d	$t6, $t6, 2
+	addi.d	$s5, $s5, 8
+	addi.d	$t7, $t7, 8
 	addi.d	$s4, $s4, -2
-	addi.d	$a5, $a5, 2
+	addi.d	$t8, $t8, 2
 	addi.d	$s6, $s6, -1
-	addi.d	$a6, $a6, 8
+	addi.d	$s0, $s0, 8
 	beqz	$s6, .LBB6_75
 .LBB6_97:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	srai.d	$a1, $a0, 31
 	xor	$a0, $a0, $a1
 	sub.w	$a0, $a0, $a1
 	blt	$t2, $a0, .LBB6_102
 # %bb.98:                               #   in Loop: Header=BB6_97 Depth=1
-	bltu	$t2, $t4, .LBB6_102
+	bltu	$t2, $a5, .LBB6_102
 # %bb.99:                               #   in Loop: Header=BB6_97 Depth=1
 	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
@@ -4951,7 +4950,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ldx.w	$a1, $a0, $a1
 	ld.d	$a2, $sp, 352                   # 8-byte Folded Reload
 	ldx.w	$a2, $a0, $a2
-	add.w	$a3, $t6, $fp
+	add.w	$a3, $t4, $t7
 	slli.d	$a3, $a3, 2
 	ldx.w	$a3, $a0, $a3
 	ld.d	$a4, $sp, 200                   # 8-byte Folded Reload
@@ -4970,35 +4969,37 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$t0, $a0, 0
 	sub.w	$a3, $t3, $s7
-	st.d	$a6, $sp, 224                   # 8-byte Folded Spill
-	add.w	$a6, $t6, $s3
+	add.w	$a6, $t4, $s5
 	ld.d	$a0, $sp, 312                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 320                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 264                   # 8-byte Folded Reload
-	st.d	$a5, $sp, 232                   # 8-byte Folded Spill
 	ld.d	$a5, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$a7, $sp, 112                   # 8-byte Folded Reload
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 216                   # 8-byte Folded Spill
 	move	$s3, $t3
-	move	$s8, $fp
-	move	$fp, $t7
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
-	move	$s2, $s0
-	move	$s0, $t8
+	st.d	$s0, $sp, 224                   # 8-byte Folded Spill
+	move	$s0, $t5
+	st.d	$fp, $sp, 232                   # 8-byte Folded Spill
+	move	$fp, $t6
+	move	$s8, $t7
+	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
+	move	$s5, $s2
+	move	$s2, $t8
 	jirl	$ra, $t0, 0
-	ld.d	$a6, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 232                   # 8-byte Folded Reload
-	move	$t8, $s0
-	move	$s0, $s2
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	move	$t7, $fp
-	move	$fp, $s8
-	ld.d	$t6, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t5, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$t4, $sp, 176                   # 8-byte Folded Reload
+	move	$t8, $s2
+	move	$s2, $s5
+	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
+	move	$t7, $s8
+	move	$t6, $fp
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	move	$t5, $s0
+	ld.d	$s0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$t4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 176                   # 8-byte Folded Reload
 	move	$t3, $s3
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$t2, $sp, 288                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$t0, $sp, 304                   # 8-byte Folded Reload
@@ -5007,7 +5008,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	bge	$a0, $s1, .LBB6_102
 # %bb.101:                              #   in Loop: Header=BB6_97 Depth=1
 	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
-	add.d	$a1, $a1, $t8
+	add.d	$a1, $a1, $t6
 	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
 	move	$t3, $a0
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
@@ -5021,7 +5022,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	sub.w	$a0, $a0, $a1
 	blt	$t2, $a0, .LBB6_107
 # %bb.103:                              #   in Loop: Header=BB6_97 Depth=1
-	bltu	$t2, $t4, .LBB6_107
+	bltu	$t2, $a5, .LBB6_107
 # %bb.104:                              #   in Loop: Header=BB6_97 Depth=1
 	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
@@ -5030,7 +5031,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ld.d	$a2, $sp, 352                   # 8-byte Folded Reload
 	ldx.w	$a2, $a0, $a2
 	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
-	add.w	$a3, $a3, $s2
+	add.w	$a3, $a3, $fp
 	slli.d	$a3, $a3, 2
 	ldx.w	$a3, $a0, $a3
 	ld.d	$a4, $sp, 200                   # 8-byte Folded Reload
@@ -5049,36 +5050,38 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$t0, $a0, 0
 	sub.w	$a3, $t3, $s1
-	add.d	$a0, $t6, $s2
-	st.d	$a6, $sp, 224                   # 8-byte Folded Spill
+	add.d	$a0, $t4, $fp
 	addi.w	$a6, $a0, 76
 	ld.d	$a0, $sp, 312                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 320                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 264                   # 8-byte Folded Reload
-	st.d	$a5, $sp, 232                   # 8-byte Folded Spill
 	ld.d	$a5, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$a7, $sp, 112                   # 8-byte Folded Reload
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 216                   # 8-byte Folded Spill
 	move	$s3, $t3
-	move	$s8, $fp
-	move	$fp, $t7
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
-	move	$s2, $s0
-	move	$s0, $t8
+	st.d	$s0, $sp, 224                   # 8-byte Folded Spill
+	move	$s0, $t5
+	st.d	$fp, $sp, 232                   # 8-byte Folded Spill
+	move	$fp, $t6
+	move	$s8, $t7
+	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
+	move	$s5, $s2
+	move	$s2, $t8
 	jirl	$ra, $t0, 0
-	ld.d	$a6, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 232                   # 8-byte Folded Reload
-	move	$t8, $s0
-	move	$s0, $s2
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	move	$t7, $fp
-	move	$fp, $s8
-	ld.d	$t6, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t5, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$t4, $sp, 176                   # 8-byte Folded Reload
+	move	$t8, $s2
+	move	$s2, $s5
+	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
+	move	$t7, $s8
+	move	$t6, $fp
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	move	$t5, $s0
+	ld.d	$s0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$t4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 176                   # 8-byte Folded Reload
 	move	$t3, $s3
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$t2, $sp, 288                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$t0, $sp, 304                   # 8-byte Folded Reload
@@ -5087,7 +5090,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	bge	$a0, $s7, .LBB6_107
 # %bb.106:                              #   in Loop: Header=BB6_97 Depth=1
 	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
-	add.d	$a1, $a1, $s0
+	add.d	$a1, $a1, $s2
 	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
 	move	$t3, $a0
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
@@ -5098,7 +5101,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	bltu	$t2, $a0, .LBB6_96
 # %bb.108:                              #   in Loop: Header=BB6_97 Depth=1
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
-	add.w	$a0, $a0, $a5
+	add.w	$a0, $a0, $t8
 	srai.d	$a1, $a0, 31
 	xor	$a0, $a0, $a1
 	sub.w	$a0, $a0, $a1
@@ -5112,7 +5115,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ldx.w	$a1, $a0, $a1
 	ld.d	$a2, $sp, 352                   # 8-byte Folded Reload
 	ldx.w	$a2, $a0, $a2
-	add.w	$a3, $t5, $a6
+	add.w	$a3, $a6, $s0
 	slli.d	$a3, $a3, 2
 	ldx.w	$a3, $a0, $a3
 	ldx.w	$a0, $a0, $a4
@@ -5129,37 +5132,39 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$t0, $a0, 0
 	sub.w	$a3, $t3, $s7
-	add.w	$a7, $t5, $s3
+	add.w	$a7, $a6, $s5
 	ld.d	$a0, $sp, 312                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 320                   # 8-byte Folded Reload
 	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
 	ld.d	$a4, $sp, 264                   # 8-byte Folded Reload
-	st.d	$a5, $sp, 232                   # 8-byte Folded Spill
 	ld.d	$a5, $sp, 272                   # 8-byte Folded Reload
-	st.d	$a6, $sp, 224                   # 8-byte Folded Spill
 	ld.d	$a6, $sp, 64                    # 8-byte Folded Reload
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 216                   # 8-byte Folded Spill
 	move	$s3, $t3
-	move	$s8, $fp
-	move	$fp, $t7
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
-	move	$s2, $s0
-	move	$s0, $t8
+	st.d	$s0, $sp, 224                   # 8-byte Folded Spill
+	move	$s0, $t5
+	st.d	$fp, $sp, 232                   # 8-byte Folded Spill
+	move	$fp, $t6
+	move	$s8, $t7
+	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
+	move	$s5, $s2
+	move	$s2, $t8
 	jirl	$ra, $t0, 0
 	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a6, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 232                   # 8-byte Folded Reload
-	move	$t8, $s0
-	move	$s0, $s2
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	move	$t7, $fp
-	move	$fp, $s8
-	ld.d	$t6, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t5, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$t4, $sp, 176                   # 8-byte Folded Reload
+	move	$t8, $s2
+	move	$s2, $s5
+	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
+	move	$t7, $s8
+	move	$t6, $fp
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	move	$t5, $s0
+	ld.d	$s0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$t4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 176                   # 8-byte Folded Reload
 	move	$t3, $s3
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$t2, $sp, 288                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$t0, $sp, 304                   # 8-byte Folded Reload
@@ -5168,7 +5173,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	bge	$a0, $s1, .LBB6_112
 # %bb.111:                              #   in Loop: Header=BB6_97 Depth=1
 	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
-	add.d	$a1, $a1, $t8
+	add.d	$a1, $a1, $t6
 	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
 	move	$t3, $a0
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
@@ -5176,7 +5181,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	.p2align	4, , 16
 .LBB6_112:                              #   in Loop: Header=BB6_97 Depth=1
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
-	add.w	$a0, $a0, $t7
+	add.w	$a0, $a0, $t5
 	srai.d	$a1, $a0, 31
 	xor	$a0, $a0, $a1
 	sub.w	$a0, $a0, $a1
@@ -5190,7 +5195,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ldx.w	$a2, $a0, $a2
 	ldx.w	$a3, $a0, $a4
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
-	add.w	$a4, $a4, $s2
+	add.w	$a4, $a4, $fp
 	slli.d	$a4, $a4, 2
 	ldx.w	$a0, $a0, $a4
 	add.d	$a1, $a2, $a1
@@ -5206,36 +5211,38 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$t0, $a0, 0
 	sub.w	$a3, $t3, $s1
-	add.d	$a0, $t5, $s2
+	add.d	$a0, $a6, $fp
 	addi.w	$a7, $a0, 76
 	ld.d	$a0, $sp, 312                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 320                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 264                   # 8-byte Folded Reload
-	st.d	$a5, $sp, 232                   # 8-byte Folded Spill
 	ld.d	$a5, $sp, 272                   # 8-byte Folded Reload
-	st.d	$a6, $sp, 224                   # 8-byte Folded Spill
 	ld.d	$a6, $sp, 64                    # 8-byte Folded Reload
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 216                   # 8-byte Folded Spill
 	move	$s3, $t3
-	move	$s8, $fp
-	move	$fp, $t7
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
-	move	$s2, $s0
-	move	$s0, $t8
+	st.d	$s0, $sp, 224                   # 8-byte Folded Spill
+	move	$s0, $t5
+	st.d	$fp, $sp, 232                   # 8-byte Folded Spill
+	move	$fp, $t6
+	move	$s8, $t7
+	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
+	move	$s5, $s2
+	move	$s2, $t8
 	jirl	$ra, $t0, 0
-	ld.d	$a6, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 232                   # 8-byte Folded Reload
-	move	$t8, $s0
-	move	$s0, $s2
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	move	$t7, $fp
-	move	$fp, $s8
-	ld.d	$t6, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t5, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$t4, $sp, 176                   # 8-byte Folded Reload
+	move	$t8, $s2
+	move	$s2, $s5
+	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
+	move	$t7, $s8
+	move	$t6, $fp
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	move	$t5, $s0
+	ld.d	$s0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$t4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 176                   # 8-byte Folded Reload
 	move	$t3, $s3
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$t2, $sp, 288                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$t0, $sp, 304                   # 8-byte Folded Reload
@@ -5244,7 +5251,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	bge	$a0, $s7, .LBB6_96
 # %bb.115:                              #   in Loop: Header=BB6_97 Depth=1
 	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
-	add.d	$a1, $a1, $s0
+	add.d	$a1, $a1, $s2
 	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
 	move	$t3, $a0
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload

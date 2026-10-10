@@ -587,8 +587,8 @@ __zip_dir_parse:                        # @__zip_dir_parse
 # %bb.56:                               #   in Loop: Header=BB2_42 Depth=1
 	stx.b	$zero, $s6, $s5
 	add.d	$a0, $s7, $s2
-	add.d	$a0, $a0, $s5
-	add.d	$a0, $a0, $s4
+	add.d	$a1, $s5, $s4
+	add.d	$a0, $a0, $a1
 	addi.w	$s4, $a0, 46
 	st.h	$s5, $s1, 18
 	bltu	$fp, $s4, .LBB2_67

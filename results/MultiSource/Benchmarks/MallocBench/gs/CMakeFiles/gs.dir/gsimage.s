@@ -563,43 +563,43 @@ image_unpack_0_spread:                  # @image_unpack_0_spread
 	beqz	$a3, .LBB7_3
 # %bb.1:
 	ld.w	$a0, $a0, 16
+	add.d	$a4, $a0, $a0
 	.p2align	4, , 16
 .LBB7_2:                                # =>This Inner Loop Header: Depth=1
-	ld.bu	$a4, $a2, 0
+	ld.bu	$a5, $a2, 0
 	addi.w	$a3, $a3, -1
 	addi.d	$a2, $a2, 1
-	ext.w.b	$a5, $a4
-	srli.d	$a5, $a5, 7
-	st.b	$a5, $a1, 0
-	add.d	$a5, $a1, $a0
-	slli.w	$a6, $a4, 25
-	srli.d	$a6, $a6, 31
-	stx.b	$a6, $a1, $a0
-	add.d	$a1, $a5, $a0
-	slli.w	$a6, $a4, 26
-	srli.d	$a6, $a6, 31
-	stx.b	$a6, $a5, $a0
-	add.d	$a5, $a1, $a0
-	slli.w	$a6, $a4, 27
-	srli.d	$a6, $a6, 31
-	stx.b	$a6, $a1, $a0
-	add.d	$a1, $a5, $a0
-	slli.w	$a6, $a4, 28
-	srli.d	$a6, $a6, 31
-	stx.b	$a6, $a5, $a0
-	add.d	$a5, $a1, $a0
-	slli.w	$a6, $a4, 29
-	srli.d	$a6, $a6, 31
-	stx.b	$a6, $a1, $a0
-	add.d	$a1, $a5, $a0
-	slli.w	$a6, $a4, 30
-	srli.d	$a6, $a6, 31
-	stx.b	$a6, $a5, $a0
-	add.d	$a5, $a1, $a0
-	andi	$a4, $a4, 1
-	sub.d	$a4, $zero, $a4
-	stx.b	$a4, $a1, $a0
-	add.d	$a1, $a5, $a0
+	ext.w.b	$a6, $a5
+	srli.d	$a6, $a6, 7
+	st.b	$a6, $a1, 0
+	add.d	$a6, $a1, $a0
+	slli.w	$a7, $a5, 25
+	srli.d	$a7, $a7, 31
+	stx.b	$a7, $a1, $a0
+	add.d	$a1, $a6, $a0
+	slli.w	$a7, $a5, 26
+	srli.d	$a7, $a7, 31
+	stx.b	$a7, $a6, $a0
+	add.d	$a6, $a1, $a0
+	slli.w	$a7, $a5, 27
+	srli.d	$a7, $a7, 31
+	stx.b	$a7, $a1, $a0
+	add.d	$a1, $a6, $a0
+	slli.w	$a7, $a5, 28
+	srli.d	$a7, $a7, 31
+	stx.b	$a7, $a6, $a0
+	add.d	$a6, $a1, $a0
+	slli.w	$a7, $a5, 29
+	srli.d	$a7, $a7, 31
+	stx.b	$a7, $a1, $a0
+	add.d	$a1, $a6, $a0
+	slli.w	$a7, $a5, 30
+	srli.d	$a7, $a7, 31
+	stx.b	$a7, $a6, $a0
+	andi	$a5, $a5, 1
+	sub.d	$a5, $zero, $a5
+	stx.b	$a5, $a1, $a0
+	add.d	$a1, $a1, $a4
 	bnez	$a3, .LBB7_2
 .LBB7_3:
 	ret

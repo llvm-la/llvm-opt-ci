@@ -499,16 +499,16 @@ board_full:                             # @board_full
 # %bb.0:
 	ld.b	$a1, $a0, 6
 	ld.b	$a2, $a0, 13
-	ld.b	$a3, $a0, 20
 	add.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $a3
-	ld.b	$a2, $a0, 27
-	ld.b	$a3, $a0, 34
-	ld.b	$a4, $a0, 41
+	ld.b	$a2, $a0, 20
+	ld.b	$a3, $a0, 27
+	ld.b	$a4, $a0, 34
+	ld.b	$a5, $a0, 41
 	ld.b	$a0, $a0, 48
+	add.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $a3
-	add.d	$a1, $a1, $a4
+	add.d	$a2, $a4, $a5
+	add.d	$a0, $a2, $a0
 	add.w	$a0, $a1, $a0
 	addi.d	$a0, $a0, -42
 	sltui	$a0, $a0, 1
@@ -702,17 +702,17 @@ find_winner_p:                          # @find_winner_p
 	move	$a1, $a0
 	ld.b	$a0, $a0, 6
 	ld.b	$a2, $a1, 13
-	ld.b	$a3, $a1, 20
 	add.d	$a0, $a2, $a0
-	add.d	$a0, $a0, $a3
-	ld.b	$a2, $a1, 27
-	ld.b	$a3, $a1, 34
-	ld.b	$a4, $a1, 41
-	ld.b	$a5, $a1, 48
+	ld.b	$a2, $a1, 20
+	ld.b	$a3, $a1, 27
+	ld.b	$a4, $a1, 34
+	ld.b	$a5, $a1, 41
+	ld.b	$a6, $a1, 48
+	add.d	$a2, $a2, $a3
 	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a4
-	add.w	$a2, $a0, $a5
+	add.d	$a2, $a4, $a5
+	add.d	$a2, $a2, $a6
+	add.w	$a2, $a0, $a2
 	ori	$a3, $zero, 42
 	ori	$a0, $zero, 2
 	beq	$a2, $a3, .LBB5_71
@@ -889,9 +889,9 @@ find_winner_p:                          # @find_winner_p
 	vpickve2gr.d	$a4, $vr0, 0
 	pcalau12i	$a2, %pc_hi20(C4VERT)
 	ld.d	$a2, $a2, %pc_lo12(C4VERT)
-	or	$a0, $a4, $a0
 	or	$a0, $a0, $a3
-	or	$a1, $a0, $a1
+	or	$a0, $a0, $a1
+	or	$a1, $a4, $a0
 	andn	$a3, $a2, $a1
 	ori	$a0, $zero, 1
 	beqz	$a3, .LBB5_71
@@ -1363,17 +1363,17 @@ find_winner_c:                          # @find_winner_c
 	move	$a1, $a0
 	ld.b	$a0, $a0, 6
 	ld.b	$a2, $a1, 13
-	ld.b	$a3, $a1, 20
 	add.d	$a0, $a2, $a0
-	add.d	$a0, $a0, $a3
-	ld.b	$a2, $a1, 27
-	ld.b	$a3, $a1, 34
-	ld.b	$a4, $a1, 41
-	ld.b	$a5, $a1, 48
+	ld.b	$a2, $a1, 20
+	ld.b	$a3, $a1, 27
+	ld.b	$a4, $a1, 34
+	ld.b	$a5, $a1, 41
+	ld.b	$a6, $a1, 48
+	add.d	$a2, $a2, $a3
 	add.d	$a0, $a0, $a2
-	add.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a4
-	add.w	$a2, $a0, $a5
+	add.d	$a2, $a4, $a5
+	add.d	$a2, $a2, $a6
+	add.w	$a2, $a0, $a2
 	ori	$a3, $zero, 42
 	ori	$a0, $zero, 2
 	beq	$a2, $a3, .LBB6_71
@@ -1550,9 +1550,9 @@ find_winner_c:                          # @find_winner_c
 	vpickve2gr.d	$a4, $vr0, 0
 	pcalau12i	$a2, %pc_hi20(C4VERT)
 	ld.d	$a2, $a2, %pc_lo12(C4VERT)
-	or	$a0, $a4, $a0
 	or	$a0, $a0, $a3
-	or	$a1, $a0, $a1
+	or	$a0, $a0, $a1
+	or	$a1, $a4, $a0
 	andn	$a3, $a2, $a1
 	ori	$a0, $zero, 1
 	beqz	$a3, .LBB6_71
@@ -4920,195 +4920,195 @@ value:                                  # @value
 	.type	think,@function
 think:                                  # @think
 # %bb.0:
-	addi.d	$sp, $sp, -208
-	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
-	ld.bu	$a3, $a0, 0
-	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
-	ld.bu	$a4, $a0, 7
-	st.d	$a4, $sp, 80                    # 8-byte Folded Spill
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
-	addi.d	$a1, $a3, -111
+	addi.d	$sp, $sp, -224
+	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	ld.bu	$t8, $a0, 0
+	ld.bu	$a3, $a0, 7
+	st.d	$a3, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
+	addi.d	$a1, $t8, -111
 	sltui	$a1, $a1, 1
-	addi.d	$a2, $a4, -111
-	ld.bu	$a3, $a0, 14
-	st.d	$a3, $sp, 72                    # 8-byte Folded Spill
+	addi.d	$a2, $a3, -111
 	sltui	$a2, $a2, 1
+	ld.bu	$a3, $a0, 14
+	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
 	slli.d	$a2, $a2, 1
 	or	$a1, $a2, $a1
+	ld.bu	$a4, $a0, 21
+	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
 	addi.d	$a2, $a3, -111
-	ld.bu	$a3, $a0, 21
-	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 2
+	addi.d	$a3, $a4, -111
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 3
+	ld.bu	$a4, $a0, 28
+	st.d	$a4, $sp, 80                    # 8-byte Folded Spill
+	or	$a2, $a2, $a3
 	or	$a1, $a1, $a2
-	addi.d	$a2, $a3, -111
-	ld.bu	$a3, $a0, 28
-	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	addi.d	$a2, $a3, -111
 	ld.bu	$a3, $a0, 35
-	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 72                    # 8-byte Folded Spill
+	addi.d	$a2, $a4, -111
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 4
+	addi.d	$a3, $a3, -111
+	ld.bu	$a4, $a0, 42
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 5
+	or	$a2, $a2, $a3
+	addi.d	$a3, $a4, -111
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 6
+	ld.bu	$a4, $a0, 1
+	st.d	$a4, $sp, 56                    # 8-byte Folded Spill
+	or	$a2, $a2, $a3
 	or	$a1, $a1, $a2
-	addi.d	$a2, $a3, -111
-	ld.bu	$a3, $a0, 42
-	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 5
-	or	$a1, $a1, $a2
-	addi.d	$a2, $a3, -111
-	ld.bu	$a3, $a0, 1
-	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 6
-	or	$a1, $a1, $a2
-	addi.d	$a2, $a3, -111
 	ld.bu	$a3, $a0, 8
-	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$a2, $a4, -111
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 7
-	or	$a1, $a1, $a2
-	addi.d	$a2, $a3, -111
-	ld.bu	$a3, $a0, 15
-	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 8
-	or	$a1, $a1, $a2
-	addi.d	$a2, $a3, -111
-	ld.bu	$t5, $a0, 22
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 9
-	or	$a1, $a1, $a2
-	addi.d	$a2, $t5, -111
+	addi.d	$a3, $a3, -111
+	ld.bu	$a4, $a0, 15
+	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 8
+	or	$a2, $a2, $a3
+	addi.d	$a3, $a4, -111
+	ld.bu	$a4, $a0, 22
+	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 9
+	or	$a2, $a2, $a3
+	addi.d	$a3, $a4, -111
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 10
 	ld.bu	$t6, $a0, 29
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 10
+	or	$a2, $a2, $a3
 	or	$a1, $a1, $a2
-	addi.d	$a2, $t6, -111
 	ld.bu	$t7, $a0, 36
+	addi.d	$a2, $t6, -111
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 11
+	addi.d	$a3, $t7, -111
+	ld.bu	$fp, $a0, 43
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 12
+	or	$a2, $a2, $a3
+	addi.d	$a3, $fp, -111
+	ld.bu	$s0, $a0, 2
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 13
+	or	$a2, $a2, $a3
+	addi.d	$a3, $s0, -111
+	ld.bu	$s1, $a0, 9
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 14
+	or	$a2, $a2, $a3
+	addi.d	$a3, $s1, -111
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 15
+	ld.bu	$s2, $a0, 16
+	or	$a2, $a2, $a3
 	or	$a1, $a1, $a2
-	addi.d	$a2, $t7, -111
-	ld.bu	$t8, $a0, 43
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 12
-	or	$a1, $a1, $a2
-	addi.d	$a2, $t8, -111
-	ld.bu	$fp, $a0, 2
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 13
-	or	$a1, $a1, $a2
-	addi.d	$a2, $fp, -111
-	ld.bu	$s0, $a0, 9
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 14
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s0, -111
-	ld.bu	$s1, $a0, 16
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 15
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s1, -111
-	ld.bu	$s2, $a0, 23
+	ld.bu	$s3, $a0, 23
+	addi.d	$a2, $s2, -111
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 16
+	addi.d	$a3, $s3, -111
+	ld.bu	$s4, $a0, 30
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 17
+	or	$a2, $a2, $a3
+	addi.d	$a3, $s4, -111
+	ld.bu	$s5, $a0, 37
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 18
+	or	$a2, $a2, $a3
+	addi.d	$a3, $s5, -111
+	ld.bu	$s6, $a0, 44
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 19
+	or	$a2, $a2, $a3
+	addi.d	$a3, $s6, -111
+	ld.bu	$s7, $a0, 3
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 20
+	or	$a2, $a2, $a3
+	addi.d	$a3, $s7, -111
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 21
+	ld.bu	$s8, $a0, 10
+	or	$a2, $a2, $a3
 	or	$a1, $a1, $a2
-	addi.d	$a2, $s2, -111
-	ld.bu	$s3, $a0, 30
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 17
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s3, -111
-	ld.bu	$s4, $a0, 37
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 18
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s4, -111
-	ld.bu	$s5, $a0, 44
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 19
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s5, -111
-	ld.bu	$s6, $a0, 3
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 20
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s6, -111
-	ld.bu	$s7, $a0, 10
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 21
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s7, -111
-	ld.bu	$s8, $a0, 17
+	ld.bu	$ra, $a0, 17
+	addi.d	$a2, $s8, -111
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 22
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s8, -111
-	ld.bu	$ra, $a0, 24
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 23
-	or	$a1, $a1, $a2
-	addi.d	$a2, $ra, -111
+	addi.d	$a3, $ra, -111
+	ld.bu	$t5, $a0, 24
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 23
+	or	$a2, $a2, $a3
+	addi.d	$a3, $t5, -111
 	ld.bu	$t4, $a0, 31
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 24
-	or	$a1, $a1, $a2
-	addi.d	$a2, $t4, -111
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 24
+	or	$a2, $a2, $a3
+	addi.d	$a3, $t4, -111
 	ld.bu	$t3, $a0, 38
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 25
-	or	$a1, $a1, $a2
-	addi.d	$a2, $t3, -111
-	ld.bu	$t2, $a0, 45
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 26
-	or	$a1, $a1, $a2
-	addi.d	$a2, $t2, -111
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 25
+	or	$a2, $a2, $a3
+	addi.d	$a3, $t3, -111
+	ld.bu	$t0, $a0, 45
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 26
+	or	$a2, $a2, $a3
+	addi.d	$a3, $t0, -111
 	ld.bu	$a7, $a0, 4
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 27
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 27
+	or	$a2, $a2, $a3
+	addi.d	$a3, $a7, -111
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 28
+	ld.bu	$t2, $a0, 11
+	or	$a2, $a2, $a3
 	or	$a1, $a1, $a2
-	addi.d	$a2, $a7, -111
-	ld.bu	$a6, $a0, 11
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 28
-	or	$a1, $a1, $a2
-	addi.d	$a2, $a6, -111
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	ld.bu	$a5, $a0, 18
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 29
-	or	$a1, $a1, $a2
+	addi.d	$a1, $t2, -111
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 29
 	addi.d	$a2, $a5, -111
-	ld.bu	$t1, $a0, 25
+	ld.bu	$a4, $a0, 25
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 30
 	or	$a1, $a1, $a2
-	addi.d	$a2, $t1, -111
-	ld.bu	$t0, $a0, 32
+	addi.d	$a2, $a4, -111
+	ld.bu	$t1, $a0, 32
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 31
 	or	$a1, $a1, $a2
-	addi.d	$a2, $t0, -111
-	ld.bu	$a4, $a0, 39
+	addi.d	$a2, $t1, -111
+	ld.bu	$a6, $a0, 39
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 32
 	or	$a2, $a1, $a2
-	addi.d	$a1, $a4, -111
+	addi.d	$a1, $a6, -111
 	ld.bu	$a3, $a0, 46
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 33
@@ -5117,227 +5117,229 @@ think:                                  # @think
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 34
 	or	$a1, $a1, $a2
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$a1, $a1, -120
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$a1, $t8, -120
 	sltui	$a1, $a1, 1
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	addi.d	$a2, $a2, -120
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 1
 	or	$a1, $a2, $a1
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$a2, $a2, -120
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 2
+	ld.d	$t8, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$t8, $t8, -120
+	sltui	$t8, $t8, 1
+	slli.d	$t8, $t8, 3
+	or	$a2, $a2, $t8
 	or	$a1, $a1, $a2
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	addi.d	$a2, $a2, -120
 	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
+	slli.d	$a2, $a2, 4
+	ld.d	$t8, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$t8, $t8, -120
+	sltui	$t8, $t8, 1
+	slli.d	$t8, $t8, 5
+	or	$a2, $a2, $t8
+	ld.d	$t8, $sp, 64                    # 8-byte Folded Reload
+	addi.d	$t8, $t8, -120
+	sltui	$t8, $t8, 1
+	slli.d	$t8, $t8, 6
+	or	$a2, $a2, $t8
 	or	$a1, $a1, $a2
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$a2, $a2, -120
 	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 4
-	or	$a1, $a1, $a2
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	addi.d	$a2, $a2, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 5
-	or	$a1, $a1, $a2
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$a2, $a2, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 6
-	or	$a1, $a1, $a2
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
-	addi.d	$a2, $a2, -120
-	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 7
-	or	$a1, $a1, $a2
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$a2, $a2, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 8
-	or	$a1, $a1, $a2
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
-	addi.d	$a2, $a2, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 9
-	or	$a1, $a1, $a2
-	addi.d	$a2, $t5, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 10
+	ld.d	$t8, $sp, 48                    # 8-byte Folded Reload
+	addi.d	$t8, $t8, -120
+	sltui	$t8, $t8, 1
+	slli.d	$t8, $t8, 8
+	or	$a2, $a2, $t8
+	ld.d	$t8, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$t8, $t8, -120
+	sltui	$t8, $t8, 1
+	slli.d	$t8, $t8, 9
+	or	$a2, $a2, $t8
+	ld.d	$t8, $sp, 32                    # 8-byte Folded Reload
+	addi.d	$t8, $t8, -120
+	sltui	$t8, $t8, 1
+	slli.d	$t8, $t8, 10
+	or	$a2, $a2, $t8
 	or	$a1, $a1, $a2
 	addi.d	$a2, $t6, -120
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 11
-	or	$a1, $a1, $a2
-	addi.d	$a2, $t7, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 12
-	or	$a1, $a1, $a2
-	addi.d	$a2, $t8, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 13
-	or	$a1, $a1, $a2
-	addi.d	$a2, $fp, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 14
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s0, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 15
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s1, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 16
+	addi.d	$t6, $t7, -120
+	sltui	$t6, $t6, 1
+	slli.d	$t6, $t6, 12
+	or	$a2, $a2, $t6
+	addi.d	$t6, $fp, -120
+	sltui	$t6, $t6, 1
+	slli.d	$t6, $t6, 13
+	or	$a2, $a2, $t6
+	addi.d	$t6, $s0, -120
+	sltui	$t6, $t6, 1
+	slli.d	$t6, $t6, 14
+	or	$a2, $a2, $t6
+	addi.d	$t6, $s1, -120
+	sltui	$t6, $t6, 1
+	slli.d	$t6, $t6, 15
+	or	$a2, $a2, $t6
 	or	$a1, $a1, $a2
 	addi.d	$a2, $s2, -120
 	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 17
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s3, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 18
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s4, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 19
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s5, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 20
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s6, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 21
-	or	$a1, $a1, $a2
-	addi.d	$a2, $s7, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 22
+	slli.d	$a2, $a2, 16
+	addi.d	$t6, $s3, -120
+	sltui	$t6, $t6, 1
+	slli.d	$t6, $t6, 17
+	or	$a2, $a2, $t6
+	addi.d	$t6, $s4, -120
+	sltui	$t6, $t6, 1
+	slli.d	$t6, $t6, 18
+	or	$a2, $a2, $t6
+	addi.d	$t6, $s5, -120
+	sltui	$t6, $t6, 1
+	slli.d	$t6, $t6, 19
+	or	$a2, $a2, $t6
+	addi.d	$t6, $s6, -120
+	sltui	$t6, $t6, 1
+	slli.d	$t6, $t6, 20
+	or	$a2, $a2, $t6
+	addi.d	$t6, $s7, -120
+	sltui	$t6, $t6, 1
+	slli.d	$t6, $t6, 21
+	or	$a2, $a2, $t6
 	or	$a1, $a1, $a2
 	addi.d	$a2, $s8, -120
 	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 23
-	or	$a1, $a1, $a2
-	addi.d	$a2, $ra, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 24
-	or	$a1, $a1, $a2
-	addi.d	$a2, $t4, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 25
-	or	$a1, $a1, $a2
-	addi.d	$a2, $t3, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 26
-	or	$a1, $a1, $a2
-	addi.d	$a2, $t2, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 27
-	or	$a1, $a1, $a2
-	addi.d	$a2, $a7, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 28
-	or	$a1, $a1, $a2
-	ld.bu	$a7, $a0, 5
-	addi.d	$a2, $a6, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 29
-	or	$a1, $a1, $a2
-	ld.bu	$a6, $a0, 12
-	addi.d	$a2, $a5, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 30
-	or	$a1, $a1, $a2
-	ld.bu	$a5, $a0, 19
-	addi.d	$a2, $t1, -120
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 31
-	or	$a1, $a1, $a2
-	ld.bu	$a2, $a0, 26
+	slli.d	$a2, $a2, 22
+	addi.d	$t6, $ra, -120
+	sltui	$t6, $t6, 1
+	slli.d	$t6, $t6, 23
+	or	$a2, $a2, $t6
+	addi.d	$t5, $t5, -120
+	sltui	$t5, $t5, 1
+	slli.d	$t5, $t5, 24
+	or	$a2, $a2, $t5
+	addi.d	$t4, $t4, -120
+	sltui	$t4, $t4, 1
+	slli.d	$t4, $t4, 25
+	or	$a2, $a2, $t4
+	addi.d	$t3, $t3, -120
+	sltui	$t3, $t3, 1
+	slli.d	$t3, $t3, 26
+	or	$a2, $a2, $t3
 	addi.d	$t0, $t0, -120
 	sltui	$t0, $t0, 1
-	slli.d	$t0, $t0, 32
-	or	$a1, $a1, $t0
-	ld.bu	$t0, $a0, 33
+	slli.d	$t0, $t0, 27
+	or	$a2, $a2, $t0
+	addi.d	$a7, $a7, -120
+	sltui	$a7, $a7, 1
+	slli.d	$a7, $a7, 28
+	or	$a2, $a2, $a7
+	ld.bu	$t0, $a0, 5
+	or	$a1, $a1, $a2
+	ld.bu	$a7, $a0, 12
+	addi.d	$a2, $t2, -120
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 29
+	addi.d	$a5, $a5, -120
+	sltui	$a5, $a5, 1
+	slli.d	$a5, $a5, 30
+	or	$a2, $a2, $a5
+	ld.bu	$a5, $a0, 19
 	addi.d	$a4, $a4, -120
 	sltui	$a4, $a4, 1
-	slli.d	$a4, $a4, 33
-	or	$a1, $a1, $a4
-	ld.bu	$a4, $a0, 40
+	slli.d	$a4, $a4, 31
+	or	$a2, $a2, $a4
+	ld.bu	$a4, $a0, 26
+	addi.d	$t1, $t1, -120
+	sltui	$t1, $t1, 1
+	slli.d	$t1, $t1, 32
+	or	$a2, $a2, $t1
+	ld.bu	$t1, $a0, 33
+	addi.d	$a6, $a6, -120
+	sltui	$a6, $a6, 1
+	slli.d	$a6, $a6, 33
+	or	$a2, $a2, $a6
+	ld.bu	$a6, $a0, 40
 	ld.bu	$a0, $a0, 47
 	addi.d	$a3, $a3, -120
 	sltui	$a3, $a3, 1
 	slli.d	$a3, $a3, 34
-	or	$a1, $a1, $a3
-	addi.d	$a3, $a7, -120
-	sltui	$a3, $a3, 1
-	slli.d	$a3, $a3, 35
-	or	$a1, $a1, $a3
-	addi.d	$a3, $a6, -120
-	sltui	$a3, $a3, 1
-	slli.d	$a3, $a3, 36
-	or	$a1, $a1, $a3
-	addi.d	$a3, $a5, -120
-	sltui	$a3, $a3, 1
-	slli.d	$a3, $a3, 37
-	or	$a1, $a1, $a3
-	addi.d	$a3, $a2, -120
-	sltui	$a3, $a3, 1
-	slli.d	$a3, $a3, 38
-	or	$a1, $a1, $a3
+	or	$a2, $a2, $a3
 	addi.d	$a3, $t0, -120
 	sltui	$a3, $a3, 1
-	slli.d	$a3, $a3, 39
-	or	$a1, $a1, $a3
+	slli.d	$a3, $a3, 35
+	or	$a2, $a2, $a3
+	addi.d	$a3, $a7, -120
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 36
+	or	$a2, $a2, $a3
+	or	$a1, $a1, $a2
+	addi.d	$a2, $a5, -120
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 37
 	addi.d	$a3, $a4, -120
 	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 38
+	or	$a2, $a2, $a3
+	addi.d	$a3, $t1, -120
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 39
+	or	$a2, $a2, $a3
+	addi.d	$a3, $a6, -120
+	sltui	$a3, $a3, 1
 	slli.d	$a3, $a3, 40
-	or	$a1, $a1, $a3
+	or	$a2, $a2, $a3
 	addi.d	$a3, $a0, -120
 	sltui	$a3, $a3, 1
 	slli.d	$a3, $a3, 41
-	or	$fp, $a1, $a3
-	addi.d	$a1, $a7, -111
+	or	$a2, $a2, $a3
+	or	$fp, $a1, $a2
+	addi.d	$a1, $t0, -111
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 35
-	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
-	or	$a1, $a3, $a1
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	or	$a1, $a2, $a1
+	addi.d	$a2, $a7, -111
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 36
+	or	$a1, $a1, $a2
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	or	$a1, $a2, $a1
+	addi.d	$a2, $a5, -111
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 37
+	addi.d	$a3, $a4, -111
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 38
+	or	$a2, $a2, $a3
+	addi.d	$a3, $t1, -111
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 39
+	or	$a2, $a2, $a3
 	addi.d	$a3, $a6, -111
 	sltui	$a3, $a3, 1
-	slli.d	$a3, $a3, 36
-	or	$a1, $a1, $a3
-	addi.d	$a3, $a5, -111
-	sltui	$a3, $a3, 1
-	slli.d	$a3, $a3, 37
-	or	$a1, $a1, $a3
-	addi.d	$a2, $a2, -111
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 38
-	or	$a1, $a1, $a2
-	addi.d	$a2, $t0, -111
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 39
-	or	$a1, $a1, $a2
-	addi.d	$a2, $a4, -111
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 40
-	or	$a1, $a1, $a2
+	slli.d	$a3, $a3, 40
+	or	$a2, $a2, $a3
 	addi.d	$a0, $a0, -111
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 41
+	or	$a0, $a2, $a0
 	ori	$a2, $zero, 2
 	or	$s0, $a1, $a0
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	beq	$a1, $a2, .LBB8_5
 # %bb.1:
 	ori	$a0, $zero, 1
 	bne	$a1, $a0, .LBB8_8
 # %bb.2:
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	beq	$a1, $a0, .LBB8_11
 # %bb.3:
 	ori	$a0, $zero, 2
@@ -5348,7 +5350,7 @@ think:                                  # @think
 	lu12i.w	$a0, 24
 	ori	$a5, $a0, 1696
 	ori	$a0, $zero, 1
-	addi.d	$a3, $sp, 116
+	addi.d	$a3, $sp, 132
 	move	$a1, $s0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(minimax_comp_ab)
@@ -5356,7 +5358,7 @@ think:                                  # @think
 	b	.LBB8_26
 .LBB8_5:
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	beq	$a1, $a0, .LBB8_23
 # %bb.6:
 	ori	$a0, $zero, 2
@@ -5365,21 +5367,21 @@ think:                                  # @think
 	lu12i.w	$a0, 24
 	ori	$a4, $a0, 1696
 	ori	$a0, $zero, 1
-	addi.d	$a3, $sp, 116
+	addi.d	$a3, $sp, 132
 	move	$a1, $s0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(minimax_comp_ab2)
 	jirl	$ra, $ra, 0
 	b	.LBB8_26
 .LBB8_8:
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	beq	$a1, $a0, .LBB8_24
 # %bb.9:
 	ori	$a0, $zero, 2
 	bne	$a1, $a0, .LBB8_26
 # %bb.10:
 	ori	$a0, $zero, 1
-	addi.d	$a3, $sp, 116
+	addi.d	$a3, $sp, 132
 	move	$a1, $s0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(minimax_comp)
@@ -5403,7 +5405,7 @@ think:                                  # @think
 	ori	$s8, $zero, 5
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 8
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB8_13:                               # =>This Inner Loop Header: Depth=1
 	sll.d	$a0, $s7, $s4
@@ -5430,7 +5432,7 @@ think:                                  # @think
 	and	$a1, $a0, $s6
 	beqz	$a1, .LBB8_19
 # %bb.18:                               #   in Loop: Header=BB8_13 Depth=1
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	sll.d	$a0, $a0, $s4
 	and	$a1, $a0, $s6
 	bnez	$a1, .LBB8_20
@@ -5438,7 +5440,7 @@ think:                                  # @think
 .LBB8_19:                               #   in Loop: Header=BB8_13 Depth=1
 	or	$a1, $a0, $s0
 	ori	$a0, $zero, 2
-	addi.d	$a3, $sp, 116
+	addi.d	$a3, $sp, 132
 	move	$a2, $fp
 	move	$a4, $s2
 	move	$a5, $s1
@@ -5459,13 +5461,13 @@ think:                                  # @think
 	addi.d	$s3, $s3, 1
 	blt	$s2, $s1, .LBB8_13
 .LBB8_22:
-	st.w	$s5, $sp, 116
+	st.w	$s5, $sp, 132
 	b	.LBB8_26
 .LBB8_23:
 	lu12i.w	$a0, -25
 	ori	$a4, $a0, 2400
 	ori	$a0, $zero, 1
-	addi.d	$a3, $sp, 116
+	addi.d	$a3, $sp, 132
 	move	$a1, $s0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(minimax_player_ab2)
@@ -5473,7 +5475,7 @@ think:                                  # @think
 	b	.LBB8_26
 .LBB8_24:
 	ori	$a0, $zero, 1
-	addi.d	$a3, $sp, 116
+	addi.d	$a3, $sp, 132
 	move	$a1, $s0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(minimax_player)
@@ -5485,19 +5487,19 @@ think:                                  # @think
 	pcaddu18i	$ra, %call36(value)
 	jirl	$ra, $ra, 0
 .LBB8_26:
-	ld.w	$a0, $sp, 116
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 208
+	ld.w	$a0, $sp, 132
+	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 224
 	ret
 .Lfunc_end8:
 	.size	think, .Lfunc_end8-think

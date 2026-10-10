@@ -2264,16 +2264,16 @@ _ZN9NCompress6NBZip28CDecoder10DecodeFileERbP21ICompressProgressInfo: # @_ZN9NCo
 	beqz	$a0, .LBB19_63
 # %bb.48:
 	ld.d	$a0, $fp, 376
-	ld.w	$a1, $fp, 336
-	ld.d	$a2, $fp, 344
+	ld.d	$a1, $fp, 344
+	ld.w	$a2, $fp, 336
 	ld.d	$a3, $fp, 360
 	ori	$a4, $zero, 32
-	sub.d	$a1, $a4, $a1
-	ldptr.d	$a4, $fp, 28672
-	bstrpick.d	$a1, $a1, 31, 3
-	add.d	$a0, $a0, $a2
-	add.d	$a1, $a3, $a1
-	add.d	$a1, $a1, $a4
+	ldptr.d	$a5, $fp, 28672
+	sub.d	$a2, $a4, $a2
+	bstrpick.d	$a2, $a2, 31, 3
+	add.d	$a0, $a0, $a1
+	add.d	$a1, $a3, $a5
+	add.d	$a1, $a1, $a2
 	sub.d	$a0, $a0, $a1
 	st.d	$a0, $sp, 48
 	addi.d	$a0, $fp, 24
@@ -2310,18 +2310,18 @@ _ZN9NCompress6NBZip28CDecoder10DecodeFileERbP21ICompressProgressInfo: # @_ZN9NCo
 	ldptr.d	$a0, $fp, 28688
 	beqz	$a0, .LBB19_53
 # %bb.52:                               #   in Loop: Header=BB19_51 Depth=1
-	ld.w	$a0, $fp, 336
-	ld.d	$a1, $fp, 376
+	ld.d	$a0, $fp, 376
+	ld.w	$a1, $fp, 336
 	ld.d	$a2, $fp, 344
 	ld.d	$a3, $fp, 360
-	ori	$a4, $zero, 32
-	sub.d	$a0, $a4, $a0
 	ldptr.d	$a4, $fp, 28672
-	bstrpick.d	$a0, $a0, 31, 3
-	add.d	$a1, $a1, $a2
-	add.d	$a0, $a3, $a0
-	add.d	$a0, $a0, $a4
-	sub.d	$a0, $a1, $a0
+	ori	$a5, $zero, 32
+	sub.d	$a1, $a5, $a1
+	bstrpick.d	$a1, $a1, 31, 3
+	add.d	$a0, $a0, $a2
+	add.d	$a2, $a3, $a4
+	add.d	$a1, $a2, $a1
+	sub.d	$a0, $a0, $a1
 	st.d	$a0, $sp, 48
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNK10COutBuffer16GetProcessedSizeEv)

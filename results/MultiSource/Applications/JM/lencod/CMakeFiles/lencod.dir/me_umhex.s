@@ -289,6 +289,7 @@ UMHEX_get_mem:                          # @UMHEX_get_mem
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(img)
 	ld.d	$s0, $a0, %got_pc_lo12(img)
 	ld.d	$a0, $s0, 0
@@ -346,7 +347,7 @@ UMHEX_get_mem:                          # @UMHEX_get_mem
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s0, 0
 	ld.w	$a2, $a1, 68
-	add.d	$fp, $fp, $a0
+	add.d	$s3, $fp, $a0
 	ld.w	$a0, $a1, 52
 	bstrpick.d	$a1, $a2, 62, 61
 	add.w	$a1, $a2, $a1
@@ -359,7 +360,7 @@ UMHEX_get_mem:                          # @UMHEX_get_mem
 	ori	$a1, $zero, 9
 	pcaddu18i	$ra, %call36(get_mem3Dint)
 	jirl	$ra, $ra, 0
-	add.d	$fp, $fp, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(SearchState)
 	addi.d	$a0, $a0, %pc_lo12(SearchState)
 	ori	$a1, $zero, 7
@@ -368,7 +369,8 @@ UMHEX_get_mem:                          # @UMHEX_get_mem
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s0, 0
 	ld.w	$a1, $a1, 52
-	add.d	$fp, $fp, $a0
+	add.d	$a0, $fp, $a0
+	add.d	$fp, $s3, $a0
 	bstrpick.d	$a0, $a1, 62, 61
 	add.w	$a0, $a1, $a0
 	srai.d	$a2, $a0, 2
@@ -398,7 +400,7 @@ UMHEX_get_mem:                          # @UMHEX_get_mem
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s0, 0
 	ld.w	$a2, $a1, 68
-	add.d	$fp, $a0, $fp
+	move	$s0, $a0
 	ld.w	$a0, $a1, 52
 	bstrpick.d	$a1, $a2, 62, 61
 	add.w	$a1, $a2, $a1
@@ -411,9 +413,11 @@ UMHEX_get_mem:                          # @UMHEX_get_mem
 	ori	$a1, $zero, 9
 	pcaddu18i	$ra, %call36(get_mem3Dint)
 	jirl	$ra, $ra, 0
-	add.w	$fp, $fp, $a0
+	add.d	$a0, $s0, $a0
+	add.w	$fp, $a0, $fp
 .LBB2_4:
 	move	$a0, $fp
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -9305,9 +9309,9 @@ UMHEXSetMotionVectorPredictor:          # @UMHEXSetMotionVectorPredictor
 	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
 	slli.d	$a5, $a5, 2
 	bstrins.d	$a5, $zero, 3, 0
-	add.d	$a1, $a1, $a5
-	ld.d	$a5, $sp, 88                    # 8-byte Folded Reload
-	bstrins.d	$a5, $zero, 1, 0
+	ld.d	$a6, $sp, 88                    # 8-byte Folded Reload
+	bstrins.d	$a6, $zero, 1, 0
+	add.d	$a5, $a5, $a6
 	add.d	$a1, $a1, $a5
 	ld.w	$a1, $a1, 180
 	maskeqz	$a0, $t8, $a0

@@ -1825,8 +1825,8 @@ _ZN9NCompress5NLzma8CDecoder8CodeSpecEP19ISequentialInStreamP20ISequentialOutStr
 # %bb.13:                               #   in Loop: Header=BB24_3 Depth=1
 	xor	$a1, $a0, $s8
 	sltui	$a1, $a1, 1
-	or	$a1, $a1, $s4
 	or	$a1, $a1, $s5
+	or	$a1, $a1, $s4
 	andi	$a1, $a1, 1
 	beqz	$a1, .LBB24_21
 .LBB24_14:                              #   in Loop: Header=BB24_3 Depth=1

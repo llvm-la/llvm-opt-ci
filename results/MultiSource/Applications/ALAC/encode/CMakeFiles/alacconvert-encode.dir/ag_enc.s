@@ -111,9 +111,9 @@ dyn_comp:                               # @dyn_comp
 	pcaddu18i	$ra, %call36(Swap32NtoB)
 	jirl	$ra, $ra, 0
 	andi	$a1, $s4, 7
-	add.d	$a1, $a1, $s2
 	ori	$a2, $zero, 32
 	sub.d	$a1, $a2, $a1
+	sub.d	$a1, $a1, $s2
 	sub.d	$a2, $a2, $s2
 	srl.w	$a2, $s6, $a2
 	sll.w	$a3, $a2, $a1
@@ -324,9 +324,9 @@ dyn_comp:                               # @dyn_comp
 	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(Swap32NtoB)
 	jirl	$ra, $ra, 0
-	add.d	$a1, $s1, $s8
 	ori	$a2, $zero, 32
-	sub.d	$a1, $a2, $a1
+	sub.d	$a1, $a2, $s1
+	sub.d	$a1, $a1, $s8
 	sub.d	$a2, $a2, $s8
 	addi.d	$a3, $zero, -1
 	srl.w	$a2, $a3, $a2

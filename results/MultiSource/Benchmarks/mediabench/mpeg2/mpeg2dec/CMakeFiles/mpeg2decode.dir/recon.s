@@ -766,52 +766,50 @@ form_component_prediction:              # @form_component_prediction
 	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
 	ld.d	$t7, $sp, 32
 	ld.d	$t1, $sp, 40
-	ld.d	$t4, $sp, 48
+	ld.d	$t6, $sp, 48
 	srai.d	$t3, $t7, 1
 	srli.d	$t0, $t1, 1
 	add.d	$t0, $t0, $a7
 	mul.w	$t2, $t0, $a2
-	add.d	$t0, $a0, $t2
-	add.d	$t0, $t0, $a6
+	add.d	$t0, $a0, $a6
 	add.d	$t0, $t0, $t3
+	add.d	$t0, $t0, $t2
 	mul.w	$t5, $a7, $a2
-	add.d	$t6, $a1, $t5
+	add.d	$t4, $a1, $a6
 	or	$a7, $t1, $t7
 	andi	$t8, $a7, 1
-	add.d	$a7, $t6, $a6
+	add.d	$a7, $t4, $t5
 	bnez	$t8, .LBB2_13
 # %bb.1:
 	bstrpick.d	$a2, $a4, 31, 0
-	beqz	$t4, .LBB2_50
+	beqz	$t6, .LBB2_50
 # %bb.2:
-	move	$t1, $zero
-	addi.w	$t4, $a5, -1
-	mul.d	$t4, $a3, $t4
-	add.d	$a1, $a1, $t4
-	add.d	$a1, $a1, $a6
-	add.d	$a1, $a1, $t5
-	add.d	$a1, $a1, $a2
-	add.d	$a0, $a0, $t4
-	add.d	$a0, $a0, $t3
+	move	$a1, $zero
+	addi.w	$t1, $a5, -1
+	mul.d	$t1, $a3, $t1
+	add.d	$a0, $a0, $t1
+	add.d	$t1, $a7, $t1
+	add.d	$t1, $t1, $a2
 	add.d	$a0, $a0, $a6
-	add.d	$a0, $a0, $t2
+	add.d	$a0, $a0, $t3
 	add.d	$a0, $a0, $a2
+	add.d	$a0, $a0, $t2
 	sltu	$a0, $a7, $a0
-	sltu	$a1, $t0, $a1
-	and	$a0, $a0, $a1
-	slti	$a1, $a3, 0
-	or	$a0, $a0, $a1
-	andi	$a1, $a2, 16
-	andi	$a6, $a2, 12
+	sltu	$a6, $t0, $t1
+	and	$a0, $a0, $a6
+	slti	$a6, $a3, 0
+	or	$a0, $a0, $a6
+	andi	$a6, $a2, 16
+	andi	$t1, $a2, 12
 	andi	$t2, $a2, 28
 	ori	$t3, $zero, 16
 	b	.LBB2_4
 	.p2align	4, , 16
 .LBB2_3:                                #   in Loop: Header=BB2_4 Depth=1
 	add.d	$t0, $t0, $a3
-	addi.w	$t1, $t1, 1
+	addi.w	$a1, $a1, 1
 	add.d	$a7, $a7, $a3
-	beq	$t1, $a5, .LBB2_95
+	beq	$a1, $a5, .LBB2_95
 .LBB2_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_10 Depth 2
                                         #     Child Loop BB2_12 Depth 2
@@ -831,11 +829,11 @@ form_component_prediction:              # @form_component_prediction
 	vld	$vr1, $t0, 0
 	vavgr.bu	$vr0, $vr0, $vr1
 	vst	$vr0, $a7, 0
-	beq	$a1, $a2, .LBB2_3
+	beq	$a6, $a2, .LBB2_3
 # %bb.9:                                #   in Loop: Header=BB2_4 Depth=1
-	move	$t4, $a1
-	move	$t5, $a1
-	beqz	$a6, .LBB2_12
+	move	$t4, $a6
+	move	$t5, $a6
+	beqz	$t1, .LBB2_12
 	.p2align	4, , 16
 .LBB2_10:                               #   Parent Loop BB2_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -871,49 +869,47 @@ form_component_prediction:              # @form_component_prediction
 	beqz	$t8, .LBB2_27
 # %bb.15:
 	bstrpick.d	$t1, $a4, 31, 0
-	beqz	$t4, .LBB2_73
+	beqz	$t6, .LBB2_73
 # %bb.16:
-	move	$t4, $zero
-	addi.w	$t6, $a5, -1
-	mul.d	$t6, $a3, $t6
-	add.d	$a1, $a1, $t6
-	add.d	$a1, $a1, $a6
-	add.d	$a1, $a1, $t5
-	add.d	$a1, $a1, $t1
+	move	$a1, $zero
+	addi.w	$t4, $a5, -1
+	mul.d	$t4, $a3, $t4
+	add.d	$t5, $a7, $t4
+	add.d	$t5, $t5, $t1
 	add.d	$a6, $t3, $a6
-	add.d	$t3, $a6, $t6
-	add.d	$t3, $a0, $t3
-	add.d	$t3, $t3, $t2
+	add.d	$t3, $a0, $t4
+	add.d	$t3, $t3, $a6
 	add.d	$t3, $t3, $t1
-	add.d	$t5, $t3, $a2
-	sltu	$t5, $a7, $t5
+	add.d	$t3, $t3, $t2
+	add.d	$t4, $t3, $a2
+	sltu	$t4, $a7, $t4
 	add.d	$a6, $a6, $a2
-	add.d	$a6, $a6, $t2
 	add.d	$a0, $a0, $a6
-	sltu	$a6, $a0, $a1
-	and	$a6, $t5, $a6
+	add.d	$a0, $a0, $t2
+	sltu	$a6, $a0, $t5
+	and	$a6, $t4, $a6
 	sltu	$t2, $a7, $t3
-	sltu	$a1, $t0, $a1
-	and	$a1, $t2, $a1
-	slti	$t2, $a3, 0
-	or	$a1, $a1, $t2
-	or	$a1, $a6, $a1
-	andi	$a6, $t1, 16
-	andi	$t2, $t1, 12
-	andi	$t3, $t1, 28
+	sltu	$t3, $t0, $t5
+	and	$t2, $t2, $t3
+	slti	$t3, $a3, 0
+	or	$t2, $t2, $t3
+	or	$a6, $a6, $t2
+	andi	$t2, $t1, 16
+	andi	$t3, $t1, 12
+	andi	$t4, $t1, 28
 	ori	$t5, $zero, 16
 	b	.LBB2_18
 	.p2align	4, , 16
 .LBB2_17:                               #   in Loop: Header=BB2_18 Depth=1
 	add.d	$t0, $t0, $a3
 	add.d	$a7, $a7, $a3
-	addi.w	$t4, $t4, 1
+	addi.w	$a1, $a1, 1
 	add.d	$a0, $a0, $a3
-	beq	$t4, $a5, .LBB2_95
+	beq	$a1, $a5, .LBB2_95
 .LBB2_18:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_24 Depth 2
                                         #     Child Loop BB2_26 Depth 2
-	beqz	$a1, .LBB2_20
+	beqz	$a6, .LBB2_20
 # %bb.19:                               #   in Loop: Header=BB2_18 Depth=1
 	move	$t7, $zero
 	b	.LBB2_26
@@ -931,11 +927,11 @@ form_component_prediction:              # @form_component_prediction
 	vavgr.bu	$vr0, $vr0, $vr1
 	vavgr.bu	$vr0, $vr2, $vr0
 	vst	$vr0, $a7, 0
-	beq	$a6, $t1, .LBB2_17
+	beq	$t2, $t1, .LBB2_17
 # %bb.23:                               #   in Loop: Header=BB2_18 Depth=1
-	move	$t6, $a6
-	move	$t7, $a6
-	beqz	$t2, .LBB2_26
+	move	$t6, $t2
+	move	$t7, $t2
+	beqz	$t3, .LBB2_26
 	.p2align	4, , 16
 .LBB2_24:                               #   Parent Loop BB2_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -950,10 +946,10 @@ form_component_prediction:              # @form_component_prediction
 	vavgr.bu	$vr0, $vr0, $vr1
 	addi.d	$t6, $t6, 4
 	vstelm.w	$vr0, $s0, 0, 0
-	bne	$t3, $t6, .LBB2_24
+	bne	$t4, $t6, .LBB2_24
 # %bb.25:                               #   in Loop: Header=BB2_18 Depth=1
-	move	$t7, $t3
-	beq	$t3, $t1, .LBB2_17
+	move	$t7, $t4
+	beq	$t4, $t1, .LBB2_17
 	.p2align	4, , 16
 .LBB2_26:                               #   Parent Loop BB2_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -973,33 +969,32 @@ form_component_prediction:              # @form_component_prediction
 .LBB2_27:
 	beqz	$t7, .LBB2_61
 # %bb.28:
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB2_61
+	andi	$a1, $t1, 1
+	bnez	$a1, .LBB2_61
 # %bb.29:
-	bstrpick.d	$a2, $a4, 31, 0
-	addi.w	$t1, $a5, -1
-	mul.d	$t1, $a3, $t1
-	add.d	$a1, $a1, $t1
-	add.d	$a1, $a1, $a6
-	add.d	$a1, $a1, $t5
-	add.d	$a1, $a1, $a2
+	bstrpick.d	$a1, $a4, 31, 0
+	addi.w	$a2, $a5, -1
+	mul.d	$t1, $a3, $a2
+	add.d	$a2, $t4, $t5
+	add.d	$a2, $a2, $t1
+	add.d	$a2, $a2, $a1
 	add.d	$a0, $a0, $t1
-	add.d	$a0, $a0, $t3
 	add.d	$a0, $a0, $a6
+	add.d	$a0, $a0, $t3
+	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $t2
-	add.d	$a0, $a0, $a2
 	addi.d	$a6, $a0, 1
 	move	$a0, $zero
 	sltu	$a6, $a7, $a6
-	sltu	$a1, $t0, $a1
-	and	$a1, $a6, $a1
+	sltu	$a2, $t0, $a2
+	and	$a2, $a6, $a2
 	slti	$a6, $a3, 0
-	or	$a1, $a1, $a6
-	andi	$a6, $a2, 16
-	andi	$t1, $a2, 12
-	andi	$t2, $a2, 28
+	or	$a2, $a2, $a6
+	andi	$a6, $a1, 16
+	andi	$t1, $a1, 12
+	andi	$t2, $a1, 28
 	ori	$t3, $zero, 16
-	bnez	$t4, .LBB2_31
+	bnez	$t6, .LBB2_31
 	b	.LBB2_41
 	.p2align	4, , 16
 .LBB2_30:                               #   in Loop: Header=BB2_31 Depth=1
@@ -1010,7 +1005,7 @@ form_component_prediction:              # @form_component_prediction
 .LBB2_31:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_37 Depth 2
                                         #     Child Loop BB2_39 Depth 2
-	beqz	$a1, .LBB2_33
+	beqz	$a2, .LBB2_33
 # %bb.32:                               #   in Loop: Header=BB2_31 Depth=1
 	move	$t5, $zero
 	b	.LBB2_39
@@ -1028,7 +1023,7 @@ form_component_prediction:              # @form_component_prediction
 	vavgr.bu	$vr0, $vr0, $vr1
 	vavgr.bu	$vr0, $vr2, $vr0
 	vst	$vr0, $a7, 0
-	beq	$a6, $a2, .LBB2_30
+	beq	$a6, $a1, .LBB2_30
 # %bb.36:                               #   in Loop: Header=BB2_31 Depth=1
 	move	$t4, $a6
 	move	$t5, $a6
@@ -1051,7 +1046,7 @@ form_component_prediction:              # @form_component_prediction
 	bne	$t2, $t4, .LBB2_37
 # %bb.38:                               #   in Loop: Header=BB2_31 Depth=1
 	move	$t5, $t2
-	beq	$t2, $a2, .LBB2_30
+	beq	$t2, $a1, .LBB2_30
 	.p2align	4, , 16
 .LBB2_39:                               #   Parent Loop BB2_31 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -1068,7 +1063,7 @@ form_component_prediction:              # @form_component_prediction
 	srli.d	$t4, $t4, 1
 	stx.b	$t4, $a7, $t5
 	move	$t5, $t8
-	bne	$a2, $t8, .LBB2_39
+	bne	$a1, $t8, .LBB2_39
 	b	.LBB2_30
 	.p2align	4, , 16
 .LBB2_40:                               #   in Loop: Header=BB2_41 Depth=1
@@ -1079,7 +1074,7 @@ form_component_prediction:              # @form_component_prediction
 .LBB2_41:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_47 Depth 2
                                         #     Child Loop BB2_49 Depth 2
-	beqz	$a1, .LBB2_43
+	beqz	$a2, .LBB2_43
 # %bb.42:                               #   in Loop: Header=BB2_41 Depth=1
 	move	$t5, $zero
 	b	.LBB2_49
@@ -1095,7 +1090,7 @@ form_component_prediction:              # @form_component_prediction
 	vld	$vr1, $t0, 1
 	vavgr.bu	$vr0, $vr0, $vr1
 	vst	$vr0, $a7, 0
-	beq	$a6, $a2, .LBB2_40
+	beq	$a6, $a1, .LBB2_40
 # %bb.46:                               #   in Loop: Header=BB2_41 Depth=1
 	move	$t4, $a6
 	move	$t5, $a6
@@ -1115,7 +1110,7 @@ form_component_prediction:              # @form_component_prediction
 	bne	$t2, $t4, .LBB2_47
 # %bb.48:                               #   in Loop: Header=BB2_41 Depth=1
 	move	$t5, $t2
-	beq	$t2, $a2, .LBB2_40
+	beq	$t2, $a1, .LBB2_40
 	.p2align	4, , 16
 .LBB2_49:                               #   Parent Loop BB2_41 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -1128,14 +1123,15 @@ form_component_prediction:              # @form_component_prediction
 	srli.d	$t4, $t4, 1
 	stx.b	$t4, $a7, $t5
 	move	$t5, $t7
-	bne	$a2, $t7, .LBB2_49
+	bne	$a1, $t7, .LBB2_49
 	b	.LBB2_40
 .LBB2_50:
-	move	$a1, $zero
+	move	$a6, $zero
+	add.d	$a1, $a1, $t5
 	add.d	$a0, $a0, $t3
+	sub.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $t2
-	sub.d	$a0, $a0, $t6
-	andi	$a6, $a2, 16
+	andi	$a1, $a2, 16
 	andi	$t1, $a2, 12
 	andi	$t2, $a2, 28
 	addi.w	$t3, $zero, -16
@@ -1144,9 +1140,9 @@ form_component_prediction:              # @form_component_prediction
 	.p2align	4, , 16
 .LBB2_51:                               #   in Loop: Header=BB2_52 Depth=1
 	add.d	$t0, $t0, $a3
-	addi.w	$a1, $a1, 1
+	addi.w	$a6, $a6, 1
 	add.d	$a7, $a7, $a3
-	beq	$a1, $a5, .LBB2_95
+	beq	$a6, $a5, .LBB2_95
 .LBB2_52:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_58 Depth 2
                                         #     Child Loop BB2_60 Depth 2
@@ -1164,10 +1160,10 @@ form_component_prediction:              # @form_component_prediction
 .LBB2_56:                               #   in Loop: Header=BB2_52 Depth=1
 	vld	$vr0, $t0, 0
 	vst	$vr0, $a7, 0
-	beq	$a6, $a2, .LBB2_51
+	beq	$a1, $a2, .LBB2_51
 # %bb.57:                               #   in Loop: Header=BB2_52 Depth=1
-	move	$t6, $a6
-	move	$t5, $a6
+	move	$t6, $a1
+	move	$t5, $a1
 	beqz	$t1, .LBB2_60
 	.p2align	4, , 16
 .LBB2_58:                               #   Parent Loop BB2_52 Depth=1
@@ -1188,40 +1184,39 @@ form_component_prediction:              # @form_component_prediction
 	bne	$a2, $t5, .LBB2_60
 	b	.LBB2_51
 .LBB2_61:
-	bstrpick.d	$t1, $a4, 31, 0
-	addi.w	$t6, $a5, -1
-	mul.d	$t7, $a3, $t6
-	add.d	$a1, $a1, $t7
-	add.d	$a1, $a1, $a6
-	add.d	$a1, $a1, $t5
-	add.d	$t5, $a1, $t1
-	add.d	$a1, $a0, $t3
-	add.d	$a1, $a1, $a6
-	add.d	$t6, $a1, $a2
-	add.d	$t6, $t6, $t2
-	add.d	$a1, $a1, $t7
-	add.d	$a1, $a1, $t2
-	add.d	$a1, $a1, $t1
-	addi.d	$t7, $a1, 1
+	bstrpick.d	$a1, $a4, 31, 0
+	addi.w	$t1, $a5, -1
+	mul.d	$t1, $a3, $t1
+	add.d	$t4, $t4, $t5
+	add.d	$t4, $t4, $t1
+	add.d	$t4, $t4, $a1
+	add.d	$t5, $a0, $t3
+	add.d	$t7, $t5, $a6
+	add.d	$t5, $t7, $a2
+	add.d	$t5, $t5, $t2
+	add.d	$t1, $t7, $t1
+	add.d	$t1, $t1, $t2
+	add.d	$t1, $t1, $a1
+	addi.d	$t7, $t1, 1
 	add.d	$t8, $t7, $a2
-	move	$a1, $zero
-	beqz	$t4, .LBB2_84
+	move	$t1, $zero
+	beqz	$t6, .LBB2_84
 # %bb.62:
-	sltu	$t4, $a7, $t8
-	sltu	$t6, $t6, $t5
-	and	$t4, $t4, $t6
-	sltu	$t6, $a7, $t7
-	sltu	$t5, $t0, $t5
+	sltu	$t6, $a7, $t8
+	sltu	$t5, $t5, $t4
 	and	$t5, $t6, $t5
+	sltu	$t6, $a7, $t7
+	sltu	$t4, $t0, $t4
+	and	$t4, $t6, $t4
 	slti	$t6, $a3, 0
-	or	$t5, $t5, $t6
-	or	$t4, $t4, $t5
-	andi	$t5, $t1, 16
-	andi	$t6, $t1, 12
+	or	$t4, $t4, $t6
+	or	$t4, $t5, $t4
+	andi	$t5, $a1, 16
+	andi	$t6, $a1, 12
 	add.d	$t3, $t3, $a6
-	andi	$a6, $t1, 28
+	andi	$a6, $a1, 28
 	add.d	$t3, $t3, $a2
-	add.d	$t2, $t3, $t2
+	add.d	$a0, $a0, $t3
 	add.d	$a0, $a0, $t2
 	ori	$t2, $zero, 16
 	vrepli.b	$vr0, 0
@@ -1230,9 +1225,9 @@ form_component_prediction:              # @form_component_prediction
 .LBB2_63:                               #   in Loop: Header=BB2_64 Depth=1
 	add.d	$t0, $t0, $a3
 	add.d	$a7, $a7, $a3
-	addi.w	$a1, $a1, 1
+	addi.w	$t1, $t1, 1
 	add.d	$a0, $a0, $a3
-	beq	$a1, $a5, .LBB2_95
+	beq	$t1, $a5, .LBB2_95
 .LBB2_64:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_70 Depth 2
                                         #     Child Loop BB2_72 Depth 2
@@ -1278,7 +1273,7 @@ form_component_prediction:              # @form_component_prediction
 	vavgr.hu	$vr2, $vr3, $vr2
 	vpickev.b	$vr1, $vr2, $vr1
 	vst	$vr1, $a7, 0
-	beq	$t5, $t1, .LBB2_63
+	beq	$t5, $a1, .LBB2_63
 # %bb.69:                               #   in Loop: Header=BB2_64 Depth=1
 	move	$t3, $t5
 	move	$t7, $t5
@@ -1304,8 +1299,8 @@ form_component_prediction:              # @form_component_prediction
 	vilvl.b	$vr4, $vr0, $vr4
 	vinsgr2vr.w	$vr5, $fp, 0
 	vilvl.b	$vr5, $vr0, $vr5
-	vadd.h	$vr2, $vr2, $vr3
 	vadd.h	$vr2, $vr2, $vr4
+	vadd.h	$vr2, $vr2, $vr3
 	vadd.h	$vr2, $vr2, $vr5
 	vaddi.hu	$vr2, $vr2, 2
 	vsrli.h	$vr2, $vr2, 2
@@ -1316,7 +1311,7 @@ form_component_prediction:              # @form_component_prediction
 	bne	$a6, $t3, .LBB2_70
 # %bb.71:                               #   in Loop: Header=BB2_64 Depth=1
 	move	$t7, $a6
-	beq	$a6, $t1, .LBB2_63
+	beq	$a6, $a1, .LBB2_63
 	.p2align	4, , 16
 .LBB2_72:                               #   Parent Loop BB2_64 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -1324,13 +1319,13 @@ form_component_prediction:              # @form_component_prediction
 	add.d	$t8, $t0, $t7
 	ldx.bu	$fp, $t0, $t7
 	ld.bu	$t8, $t8, 1
-	add.d	$s0, $a0, $t7
-	ldx.bu	$s1, $a0, $t7
-	ld.bu	$s0, $s0, 1
+	ldx.bu	$s0, $a0, $t7
+	add.d	$s1, $a0, $t7
+	ld.bu	$s1, $s1, 1
 	addi.d	$s2, $t7, 1
+	add.d	$fp, $fp, $s0
 	add.d	$t8, $fp, $t8
 	add.d	$t8, $t8, $s1
-	add.d	$t8, $t8, $s0
 	addi.d	$t8, $t8, 2
 	srli.d	$t8, $t8, 2
 	add.d	$t3, $t3, $t8
@@ -1338,25 +1333,26 @@ form_component_prediction:              # @form_component_prediction
 	srli.d	$t3, $t3, 1
 	stx.b	$t3, $a7, $t7
 	move	$t7, $s2
-	bne	$t1, $s2, .LBB2_72
+	bne	$a1, $s2, .LBB2_72
 	b	.LBB2_63
 .LBB2_73:
-	move	$a1, $zero
-	add.d	$t4, $a0, $t3
-	add.d	$t4, $t4, $t2
-	add.d	$t5, $t4, $a2
-	sub.d	$t5, $t5, $t6
-	sub.d	$t4, $t4, $t6
-	addi.w	$t6, $zero, -16
-	sltu	$t5, $t6, $t5
-	sltu	$t4, $t6, $t4
-	or	$t4, $t5, $t4
+	move	$t4, $zero
+	add.d	$a1, $a1, $t5
+	add.d	$t5, $a0, $t3
+	add.d	$t5, $t5, $t2
+	sub.d	$t6, $a2, $a1
+	add.d	$t6, $t5, $t6
+	sub.d	$a1, $t5, $a1
+	addi.w	$t5, $zero, -16
+	sltu	$t6, $t5, $t6
+	sltu	$a1, $t5, $a1
+	or	$a1, $t6, $a1
 	andi	$t5, $t1, 16
 	andi	$t6, $t1, 12
 	add.d	$t3, $t3, $a6
 	andi	$a6, $t1, 28
 	add.d	$t3, $t3, $a2
-	add.d	$t2, $t3, $t2
+	add.d	$a0, $a0, $t3
 	add.d	$a0, $a0, $t2
 	ori	$t2, $zero, 16
 	b	.LBB2_75
@@ -1364,13 +1360,13 @@ form_component_prediction:              # @form_component_prediction
 .LBB2_74:                               #   in Loop: Header=BB2_75 Depth=1
 	add.d	$t0, $t0, $a3
 	add.d	$a7, $a7, $a3
-	addi.w	$a1, $a1, 1
+	addi.w	$t4, $t4, 1
 	add.d	$a0, $a0, $a3
-	beq	$a1, $a5, .LBB2_95
+	beq	$t4, $a5, .LBB2_95
 .LBB2_75:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_81 Depth 2
                                         #     Child Loop BB2_83 Depth 2
-	beqz	$t4, .LBB2_77
+	beqz	$a1, .LBB2_77
 # %bb.76:                               #   in Loop: Header=BB2_75 Depth=1
 	move	$t7, $zero
 	b	.LBB2_83
@@ -1419,21 +1415,21 @@ form_component_prediction:              # @form_component_prediction
 	bne	$t1, $t7, .LBB2_83
 	b	.LBB2_74
 .LBB2_84:
-	sltu	$t4, $a7, $t8
-	sltu	$t6, $t6, $t5
-	and	$t4, $t4, $t6
-	sltu	$t6, $a7, $t7
-	sltu	$t5, $t0, $t5
+	sltu	$t6, $a7, $t8
+	sltu	$t5, $t5, $t4
 	and	$t5, $t6, $t5
+	sltu	$t6, $a7, $t7
+	sltu	$t4, $t0, $t4
+	and	$t4, $t6, $t4
 	slti	$t6, $a3, 0
-	or	$t5, $t5, $t6
-	or	$t4, $t4, $t5
-	andi	$t5, $t1, 16
-	andi	$t6, $t1, 12
+	or	$t4, $t4, $t6
+	or	$t4, $t5, $t4
+	andi	$t5, $a1, 16
+	andi	$t6, $a1, 12
 	add.d	$t3, $t3, $a6
-	andi	$a6, $t1, 28
+	andi	$a6, $a1, 28
 	add.d	$t3, $t3, $a2
-	add.d	$t2, $t3, $t2
+	add.d	$a0, $a0, $t3
 	add.d	$a0, $a0, $t2
 	ori	$t2, $zero, 16
 	vrepli.b	$vr0, 0
@@ -1442,9 +1438,9 @@ form_component_prediction:              # @form_component_prediction
 .LBB2_85:                               #   in Loop: Header=BB2_86 Depth=1
 	add.d	$t0, $t0, $a3
 	add.d	$a7, $a7, $a3
-	addi.w	$a1, $a1, 1
+	addi.w	$t1, $t1, 1
 	add.d	$a0, $a0, $a3
-	beq	$a1, $a5, .LBB2_95
+	beq	$t1, $a5, .LBB2_95
 .LBB2_86:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_92 Depth 2
                                         #     Child Loop BB2_94 Depth 2
@@ -1485,7 +1481,7 @@ form_component_prediction:              # @form_component_prediction
 	vsrli.h	$vr2, $vr2, 2
 	vpickev.b	$vr1, $vr2, $vr1
 	vst	$vr1, $a7, 0
-	beq	$t5, $t1, .LBB2_85
+	beq	$t5, $a1, .LBB2_85
 # %bb.91:                               #   in Loop: Header=BB2_86 Depth=1
 	move	$t3, $t5
 	move	$t7, $t5
@@ -1507,8 +1503,8 @@ form_component_prediction:              # @form_component_prediction
 	vilvl.b	$vr3, $vr0, $vr3
 	vinsgr2vr.w	$vr4, $t8, 0
 	vilvl.b	$vr4, $vr0, $vr4
-	vadd.h	$vr1, $vr1, $vr2
 	vadd.h	$vr1, $vr1, $vr3
+	vadd.h	$vr1, $vr1, $vr2
 	vadd.h	$vr1, $vr1, $vr4
 	vaddi.hu	$vr1, $vr1, 2
 	vsrli.h	$vr1, $vr1, 2
@@ -1519,25 +1515,25 @@ form_component_prediction:              # @form_component_prediction
 	bne	$a6, $t3, .LBB2_92
 # %bb.93:                               #   in Loop: Header=BB2_86 Depth=1
 	move	$t7, $a6
-	beq	$a6, $t1, .LBB2_85
+	beq	$a6, $a1, .LBB2_85
 	.p2align	4, , 16
 .LBB2_94:                               #   Parent Loop BB2_86 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t3, $t0, $t7
 	ldx.bu	$t8, $t0, $t7
 	ld.bu	$t3, $t3, 1
-	add.d	$fp, $a0, $t7
-	ldx.bu	$s0, $a0, $t7
-	ld.bu	$fp, $fp, 1
+	ldx.bu	$fp, $a0, $t7
+	add.d	$s0, $a0, $t7
+	ld.bu	$s0, $s0, 1
 	addi.d	$s1, $t7, 1
+	add.d	$t8, $t8, $fp
 	add.d	$t3, $t8, $t3
 	add.d	$t3, $t3, $s0
-	add.d	$t3, $t3, $fp
 	addi.d	$t3, $t3, 2
 	srli.d	$t3, $t3, 2
 	stx.b	$t3, $a7, $t7
 	move	$t7, $s1
-	bne	$t1, $s1, .LBB2_94
+	bne	$a1, $s1, .LBB2_94
 	b	.LBB2_85
 .LBB2_95:
 	ld.d	$s2, $sp, 0                     # 8-byte Folded Reload

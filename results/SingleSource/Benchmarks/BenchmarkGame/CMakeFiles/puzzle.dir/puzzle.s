@@ -337,13 +337,13 @@ findDuplicate:                          # @findDuplicate
 .LBB5_4:                                # =>This Inner Loop Header: Depth=1
 	vld	$vr4, $a3, -16
 	vld	$vr5, $a3, 0
+	vpickev.w	$vr6, $vr0, $vr1
+	vaddi.wu	$vr7, $vr6, 1
+	vaddi.wu	$vr6, $vr6, 5
+	vxor.v	$vr2, $vr2, $vr7
 	vxor.v	$vr2, $vr2, $vr4
+	vxor.v	$vr3, $vr3, $vr6
 	vxor.v	$vr3, $vr3, $vr5
-	vpickev.w	$vr4, $vr0, $vr1
-	vaddi.wu	$vr5, $vr4, 1
-	vaddi.wu	$vr4, $vr4, 5
-	vxor.v	$vr2, $vr2, $vr5
-	vxor.v	$vr3, $vr3, $vr4
 	vaddi.du	$vr1, $vr1, 8
 	vaddi.du	$vr0, $vr0, 8
 	addi.d	$a4, $a4, -8
@@ -364,8 +364,8 @@ findDuplicate:                          # @findDuplicate
 	.p2align	4, , 16
 .LBB5_7:                                # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a0, 0
-	xor	$a3, $a3, $a5
 	xor	$a3, $a3, $a2
+	xor	$a3, $a3, $a5
 	addi.d	$a0, $a0, 4
 	addi.d	$a4, $a4, -1
 	addi.w	$a2, $a2, 1
@@ -426,24 +426,24 @@ main:                                   # @main
 .LBB6_1:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_2 Depth 2
 	move	$a4, $zero
-	vori.b	$vr4, $vr1, 0
+	vori.b	$vr5, $vr1, 0
 	vori.b	$vr6, $vr0, 0
 	vori.b	$vr3, $vr2, 0
-	vori.b	$vr5, $vr2, 0
+	vori.b	$vr4, $vr2, 0
 	.p2align	4, , 16
 .LBB6_2:                                #   Parent Loop BB6_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a5, $a0, $a4
 	vldx	$vr7, $a0, $a4
 	vld	$vr8, $a5, 16
+	vpickev.w	$vr9, $vr6, $vr5
+	vaddi.wu	$vr10, $vr9, 1
+	vaddi.wu	$vr9, $vr9, 5
+	vxor.v	$vr3, $vr3, $vr10
 	vxor.v	$vr3, $vr7, $vr3
-	vxor.v	$vr5, $vr8, $vr5
-	vpickev.w	$vr7, $vr6, $vr4
-	vaddi.wu	$vr8, $vr7, 1
-	vaddi.wu	$vr7, $vr7, 5
-	vxor.v	$vr3, $vr3, $vr8
-	vxor.v	$vr5, $vr5, $vr7
-	vaddi.du	$vr4, $vr4, 8
+	vxor.v	$vr4, $vr4, $vr9
+	vxor.v	$vr4, $vr8, $vr4
+	vaddi.du	$vr5, $vr5, 8
 	addi.d	$a4, $a4, 32
 	vaddi.du	$vr6, $vr6, 8
 	bne	$a4, $s1, .LBB6_2
@@ -452,7 +452,7 @@ main:                                   # @main
 	bne	$a1, $a3, .LBB6_1
 # %bb.4:
 	ld.w	$a1, $a2, 0
-	vxor.v	$vr0, $vr5, $vr3
+	vxor.v	$vr0, $vr4, $vr3
 	vbsrl.v	$vr1, $vr0, 8
 	vxor.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
@@ -479,24 +479,24 @@ main:                                   # @main
 .LBB6_5:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_6 Depth 2
 	move	$a4, $zero
-	vori.b	$vr4, $vr1, 0
+	vori.b	$vr5, $vr1, 0
 	vori.b	$vr6, $vr0, 0
 	vori.b	$vr3, $vr2, 0
-	vori.b	$vr5, $vr2, 0
+	vori.b	$vr4, $vr2, 0
 	.p2align	4, , 16
 .LBB6_6:                                #   Parent Loop BB6_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a5, $a0, $a4
 	vldx	$vr7, $a0, $a4
 	vld	$vr8, $a5, 16
+	vpickev.w	$vr9, $vr6, $vr5
+	vaddi.wu	$vr10, $vr9, 1
+	vaddi.wu	$vr9, $vr9, 5
+	vxor.v	$vr3, $vr3, $vr10
 	vxor.v	$vr3, $vr7, $vr3
-	vxor.v	$vr5, $vr8, $vr5
-	vpickev.w	$vr7, $vr6, $vr4
-	vaddi.wu	$vr8, $vr7, 1
-	vaddi.wu	$vr7, $vr7, 5
-	vxor.v	$vr3, $vr3, $vr8
-	vxor.v	$vr5, $vr5, $vr7
-	vaddi.du	$vr4, $vr4, 8
+	vxor.v	$vr4, $vr4, $vr9
+	vxor.v	$vr4, $vr8, $vr4
+	vaddi.du	$vr5, $vr5, 8
 	addi.d	$a4, $a4, 32
 	vaddi.du	$vr6, $vr6, 8
 	bne	$a4, $s1, .LBB6_6
@@ -505,7 +505,7 @@ main:                                   # @main
 	bne	$a1, $a3, .LBB6_5
 # %bb.8:
 	ld.w	$a1, $a2, 0
-	vxor.v	$vr0, $vr5, $vr3
+	vxor.v	$vr0, $vr4, $vr3
 	vbsrl.v	$vr1, $vr0, 8
 	vxor.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
@@ -532,24 +532,24 @@ main:                                   # @main
 .LBB6_9:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_10 Depth 2
 	move	$a4, $zero
-	vori.b	$vr4, $vr1, 0
+	vori.b	$vr5, $vr1, 0
 	vori.b	$vr6, $vr0, 0
 	vori.b	$vr3, $vr2, 0
-	vori.b	$vr5, $vr2, 0
+	vori.b	$vr4, $vr2, 0
 	.p2align	4, , 16
 .LBB6_10:                               #   Parent Loop BB6_9 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a5, $a0, $a4
 	vldx	$vr7, $a0, $a4
 	vld	$vr8, $a5, 16
+	vpickev.w	$vr9, $vr6, $vr5
+	vaddi.wu	$vr10, $vr9, 1
+	vaddi.wu	$vr9, $vr9, 5
+	vxor.v	$vr3, $vr3, $vr10
 	vxor.v	$vr3, $vr7, $vr3
-	vxor.v	$vr5, $vr8, $vr5
-	vpickev.w	$vr7, $vr6, $vr4
-	vaddi.wu	$vr8, $vr7, 1
-	vaddi.wu	$vr7, $vr7, 5
-	vxor.v	$vr3, $vr3, $vr8
-	vxor.v	$vr5, $vr5, $vr7
-	vaddi.du	$vr4, $vr4, 8
+	vxor.v	$vr4, $vr4, $vr9
+	vxor.v	$vr4, $vr8, $vr4
+	vaddi.du	$vr5, $vr5, 8
 	addi.d	$a4, $a4, 32
 	vaddi.du	$vr6, $vr6, 8
 	bne	$a4, $s1, .LBB6_10
@@ -558,7 +558,7 @@ main:                                   # @main
 	bne	$a1, $a3, .LBB6_9
 # %bb.12:
 	ld.w	$a1, $a2, 0
-	vxor.v	$vr0, $vr5, $vr3
+	vxor.v	$vr0, $vr4, $vr3
 	vbsrl.v	$vr1, $vr0, 8
 	vxor.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
@@ -585,24 +585,24 @@ main:                                   # @main
 .LBB6_13:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_14 Depth 2
 	move	$a4, $zero
-	vori.b	$vr4, $vr1, 0
+	vori.b	$vr5, $vr1, 0
 	vori.b	$vr6, $vr0, 0
 	vori.b	$vr3, $vr2, 0
-	vori.b	$vr5, $vr2, 0
+	vori.b	$vr4, $vr2, 0
 	.p2align	4, , 16
 .LBB6_14:                               #   Parent Loop BB6_13 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a5, $a0, $a4
 	vldx	$vr7, $a0, $a4
 	vld	$vr8, $a5, 16
+	vpickev.w	$vr9, $vr6, $vr5
+	vaddi.wu	$vr10, $vr9, 1
+	vaddi.wu	$vr9, $vr9, 5
+	vxor.v	$vr3, $vr3, $vr10
 	vxor.v	$vr3, $vr7, $vr3
-	vxor.v	$vr5, $vr8, $vr5
-	vpickev.w	$vr7, $vr6, $vr4
-	vaddi.wu	$vr8, $vr7, 1
-	vaddi.wu	$vr7, $vr7, 5
-	vxor.v	$vr3, $vr3, $vr8
-	vxor.v	$vr5, $vr5, $vr7
-	vaddi.du	$vr4, $vr4, 8
+	vxor.v	$vr4, $vr4, $vr9
+	vxor.v	$vr4, $vr8, $vr4
+	vaddi.du	$vr5, $vr5, 8
 	addi.d	$a4, $a4, 32
 	vaddi.du	$vr6, $vr6, 8
 	bne	$a4, $s1, .LBB6_14
@@ -611,7 +611,7 @@ main:                                   # @main
 	bne	$a1, $a3, .LBB6_13
 # %bb.16:
 	ld.w	$a1, $a2, 0
-	vxor.v	$vr0, $vr5, $vr3
+	vxor.v	$vr0, $vr4, $vr3
 	vbsrl.v	$vr1, $vr0, 8
 	vxor.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
@@ -637,24 +637,24 @@ main:                                   # @main
 .LBB6_17:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_18 Depth 2
 	move	$a3, $zero
-	vori.b	$vr4, $vr1, 0
+	vori.b	$vr5, $vr1, 0
 	vori.b	$vr6, $vr0, 0
 	vori.b	$vr3, $vr2, 0
-	vori.b	$vr5, $vr2, 0
+	vori.b	$vr4, $vr2, 0
 	.p2align	4, , 16
 .LBB6_18:                               #   Parent Loop BB6_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a4, $a0, $a3
 	vldx	$vr7, $a0, $a3
 	vld	$vr8, $a4, 16
+	vpickev.w	$vr9, $vr6, $vr5
+	vaddi.wu	$vr10, $vr9, 1
+	vaddi.wu	$vr9, $vr9, 5
+	vxor.v	$vr3, $vr3, $vr10
 	vxor.v	$vr3, $vr7, $vr3
-	vxor.v	$vr5, $vr8, $vr5
-	vpickev.w	$vr7, $vr6, $vr4
-	vaddi.wu	$vr8, $vr7, 1
-	vaddi.wu	$vr7, $vr7, 5
-	vxor.v	$vr3, $vr3, $vr8
-	vxor.v	$vr5, $vr5, $vr7
-	vaddi.du	$vr4, $vr4, 8
+	vxor.v	$vr4, $vr4, $vr9
+	vxor.v	$vr4, $vr8, $vr4
+	vaddi.du	$vr5, $vr5, 8
 	addi.d	$a3, $a3, 32
 	vaddi.du	$vr6, $vr6, 8
 	bne	$a3, $s1, .LBB6_18
@@ -663,7 +663,7 @@ main:                                   # @main
 	bne	$a1, $a2, .LBB6_17
 # %bb.20:
 	ldx.w	$a1, $a0, $s1
-	vxor.v	$vr0, $vr5, $vr3
+	vxor.v	$vr0, $vr4, $vr3
 	vbsrl.v	$vr1, $vr0, 8
 	vxor.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4

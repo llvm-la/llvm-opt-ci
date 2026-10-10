@@ -3664,14 +3664,14 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	add.d	$a5, $a0, $a2
 	ld.d	$a6, $a5, 8
 	bstrpick.d	$a7, $a6, 30, 1
-	ldptr.d	$a5, $a5, 3176
 	slli.d	$a7, $a7, 1
 	bstrins.d	$a4, $a7, 30, 0
+	ldptr.d	$a5, $a5, 3176
 	srli.d	$a4, $a4, 1
-	xor	$a4, $a4, $a5
-	andi	$a5, $a6, 1
-	sub.d	$a5, $zero, $a5
-	and	$a5, $a5, $a1
+	andi	$a7, $a6, 1
+	sub.d	$a7, $zero, $a7
+	and	$a7, $a7, $a1
+	xor	$a5, $a5, $a7
 	xor	$a4, $a4, $a5
 	stx.d	$a4, $a0, $a2
 	addi.d	$a2, $a2, 8
@@ -3686,14 +3686,14 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	add.d	$a4, $a0, $a2
 	ldptr.d	$a5, $a4, 4992
 	bstrpick.d	$a6, $a5, 30, 1
-	ldptr.d	$a7, $a4, 3168
 	slli.d	$a6, $a6, 1
 	bstrins.d	$a3, $a6, 30, 0
+	ldptr.d	$a6, $a4, 3168
 	srli.d	$a3, $a3, 1
-	xor	$a3, $a3, $a7
-	andi	$a6, $a5, 1
-	sub.d	$a6, $zero, $a6
-	and	$a6, $a6, $a1
+	andi	$a7, $a5, 1
+	sub.d	$a7, $zero, $a7
+	and	$a7, $a7, $a1
+	xor	$a6, $a6, $a7
 	xor	$a3, $a3, $a6
 	addi.d	$a2, $a2, 8
 	stptr.d	$a3, $a4, 4984
@@ -3701,17 +3701,17 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	bnez	$a2, .LBB2_4
 # %bb.5:
 	ld.d	$a3, $a0, 0
-	move	$a2, $zero
 	ldptr.d	$a4, $a0, 4984
+	move	$a2, $zero
 	bstrpick.d	$a5, $a3, 30, 1
-	ldptr.d	$a6, $a0, 3168
 	slli.d	$a5, $a5, 1
 	bstrins.d	$a4, $a5, 30, 0
+	ldptr.d	$a5, $a0, 3168
 	srli.d	$a4, $a4, 1
-	xor	$a4, $a4, $a6
 	andi	$a3, $a3, 1
 	sub.d	$a3, $zero, $a3
 	and	$a1, $a3, $a1
+	xor	$a1, $a5, $a1
 	xor	$a1, $a4, $a1
 	stptr.d	$a1, $a0, 4984
 .LBB2_6:
