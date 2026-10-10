@@ -444,12 +444,23 @@ def main():
             mark_step("find-merge-base", merge_base=merge_base)
 
         # ── Step 3: Checkout base ──
-        if not step_done("checkout-base"):
-            prog.draw("checkout-base")
-            t0 = time.time()
-            step_num = 3
-            check(f"cd '{LLVM_SRC}' && git checkout {merge_base}")
-            mark_step("checkout-base")
+        # Always enforce the tree position: a previous run's failure restored
+        # the worktree via GitRestore, so a cached "done" marker does not
+        # guarantee the sources actually sit at the merge base.
+        prog.draw("checkout-base")
+        t0 = time.time()
+        step_num = 3
+        r = run(f"cd '{LLVM_SRC}' && git rev-parse HEAD", capture_output=True, text=True)
+        prev_head = r.stdout.strip()
+        check(f"cd '{LLVM_SRC}' && git checkout {merge_base}")
+        if prev_head != merge_base and (step_done("build-llvm-base") or step_done("build-ts-base")):
+            print("\n[..] tree moved since cached base build — invalidating base build cache")
+            s = read_state() or {}
+            for st in ("build-llvm-base", "build-ts-base"):
+                s.pop(st, None)
+                done.discard(st)
+            write_state(s)
+        mark_step("checkout-base")
 
         # ── Step 4: Build LLVM (base) ──
         if not step_done("build-llvm-base"):
@@ -470,12 +481,21 @@ def main():
             mark_step("build-ts-base")
 
         # ── Step 6: Checkout opt ──
-        if not step_done("checkout-opt"):
-            prog.draw("checkout-opt")
-            t0 = time.time()
-            step_num = 6
-            check(f"cd '{LLVM_SRC}' && git checkout {opt_branch}")
-            mark_step("checkout-opt")
+        # Always enforce the tree position (same reasoning as step 3).
+        prog.draw("checkout-opt")
+        t0 = time.time()
+        step_num = 6
+        r = run(f"cd '{LLVM_SRC}' && git rev-parse HEAD", capture_output=True, text=True)
+        prev_head = r.stdout.strip()
+        check(f"cd '{LLVM_SRC}' && git checkout {opt_branch}")
+        if prev_head != commit_sha and (step_done("build-llvm-opt") or step_done("build-ts-opt")):
+            print("\n[..] tree moved since cached opt build — invalidating opt build cache")
+            s = read_state() or {}
+            for st in ("build-llvm-opt", "build-ts-opt"):
+                s.pop(st, None)
+                done.discard(st)
+            write_state(s)
+        mark_step("checkout-opt")
 
         # ── Step 7: Build LLVM (opt) ──
         if not step_done("build-llvm-opt"):
