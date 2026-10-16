@@ -280,6 +280,19 @@ def diff_files(base_dir: str, opt_dir: str) -> list[tuple[str, str, str]]:
     return diffs
 
 
+def get_commit_info(ref: str = "HEAD") -> dict:
+    """Get metadata for the latest commit of the LLVM source at runtime."""
+    fmt = "%H%x1f%h%x1f%an%x1f%ad%x1f%s"
+    r = run(
+        f"cd '{LLVM_SRC}' && git log -1 --date=iso-strict --format={fmt} {ref}",
+        capture_output=True, text=True,
+    )
+    if r.returncode != 0 or not r.stdout.strip():
+        return {}
+    sha, short, author, date, subject = r.stdout.strip().split("\x1f")
+    return {"sha": sha, "short": short, "author": author, "date": date, "subject": subject}
+
+
 def create_commits(branch: str, label: str, flag: str, tests: str, commit_sha: str):
     """Create branch with two commits: base files, then opt files."""
     # Only copy differing files
@@ -305,10 +318,25 @@ def create_commits(branch: str, label: str, flag: str, tests: str, commit_sha: s
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(f1, dst)
 
-    # Commit 1: base
+    # Runtime-latest commit of the LLVM source (tree is checked out at opt)
+    info = get_commit_info() or get_commit_info(commit_sha)
+    short = info.get("short", commit_sha[:8])
+    desc = "\n".join(
+        [
+            f"LLVM commit: {info.get('sha', commit_sha)}",
+            f"Author: {info.get('author', 'unknown')}",
+            f"Date: {info.get('date', 'unknown')}",
+            f"Subject: {info.get('subject', 'unknown')}",
+        ]
+    )
+
+    # Commit 1: base (title keeps a short hash, full details in description)
     check(f"cd '{ROOT}' && git add -A {RESULTS_DIR}")
-    msg = f"base: {label} ({flag}) {commit_sha}"
-    check(f"cd '{ROOT}' && git commit -m '{msg}' --allow-empty")
+    subprocess.run(
+        ["git", "-C", str(ROOT), "commit", "--allow-empty",
+         "-m", f"base: {label} ({flag}) {short}", "-m", desc],
+        check=True,
+    )
 
     # Copy differing files from opt
     for rel, f1, f2 in all_diffs:
@@ -316,10 +344,13 @@ def create_commits(branch: str, label: str, flag: str, tests: str, commit_sha: s
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(f2, dst)
 
-    # Commit 2: opt
+    # Commit 2: opt (title keeps a short hash, full details in description)
     check(f"cd '{ROOT}' && git add -A {RESULTS_DIR}")
-    msg = f"opt: {label} ({flag}) {commit_sha}"
-    check(f"cd '{ROOT}' && git commit -m '{msg}' --allow-empty")
+    subprocess.run(
+        ["git", "-C", str(ROOT), "commit", "--allow-empty",
+         "-m", f"opt: {label} ({flag}) {short}", "-m", desc],
+        check=True,
+    )
 
     print(f"\nBranch '{branch}' created with 2 commits.")
     print(f"  Run: git diff HEAD~1  (view changes)")
