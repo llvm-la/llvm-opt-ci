@@ -5,6 +5,7 @@ Usage:
     ./opt-pr-cov --pr 12345
     ./opt-pr-cov --branch my-feature
     ./opt-pr-cov --branch my-feature --llvm-dir /path/to/llvm --flag "-O2" --test "test-suite,polybench"
+    ./opt-pr-cov --branch my-feature --base HEAD~1   # pin the base commit explicitly
     ./opt-pr-cov --pr 12345 --fresh          # re-run from scratch
 """
 
@@ -109,7 +110,9 @@ def step_done(step: str) -> bool:
     return s.get(step) == "done"
 
 
-def init_state(pr_id: str | None, branch_name: str | None, flag: str, tests: str) -> str:
+def init_state(
+    pr_id: str | None, branch_name: str | None, flag: str, tests: str, base: str
+) -> str:
     """Create or reuse state. Returns result branch name."""
     existing = read_state()
 
@@ -127,11 +130,19 @@ def init_state(pr_id: str | None, branch_name: str | None, flag: str, tests: str
         # Same target — reuse timestamp
         result_branch = existing["branch"]
         # Check parameters — auto-clear if changed
-        if existing.get("flag") != flag or existing.get("test") != tests:
+        if (
+            existing.get("flag") != flag
+            or existing.get("test") != tests
+            or existing.get("base") != base
+        ):
             for s in STEPS:
                 existing.pop(s, None)
+            # Step artifacts too, so context is re-derived (new base => new merge_base)
+            for k in ("opt_branch", "commit_sha", "merge_base"):
+                existing.pop(k, None)
             existing["flag"] = flag
             existing["test"] = tests
+            existing["base"] = base
             write_state(existing)
     else:
         # New or different target — fresh timestamp
@@ -145,6 +156,7 @@ def init_state(pr_id: str | None, branch_name: str | None, flag: str, tests: str
             "branch": result_branch,
             "flag": flag,
             "test": tests,
+            "base": base,
         }
         if pr_id:
             existing["pr"] = pr_id
@@ -217,16 +229,56 @@ def fetch_pr(pr_id: str) -> tuple[str, str]:
     return local_branch, r.stdout.strip()
 
 
+MAIN_REF: str | None = None
+
+
+def main_ref() -> str:
+    """Ref used as the true base: upstream/main when an 'upstream' remote exists.
+
+    The fork's origin/main can lag far behind the real llvm-project, which
+    would drag the merge-base (and thus the base build) hundreds of commits
+    below where the branch was actually created.
+    """
+    global MAIN_REF
+    if MAIN_REF is None:
+        r = run(f"cd '{LLVM_SRC}' && git remote get-url upstream", capture_output=True, text=True)
+        if r.returncode == 0 and r.stdout.strip():
+            MAIN_REF = "upstream/main"
+        else:
+            print(
+                "Warning: no 'upstream' remote in llvm-project; "
+                "merge-base falls back to local main (stale if origin is a fork).",
+                file=sys.stderr,
+            )
+            MAIN_REF = "main"
+    return MAIN_REF
+
+
 def fetch_main():
-    """Fetch origin/main for merge-base calculation."""
-    check(f"cd '{LLVM_SRC}' && git fetch origin main")
+    """Fetch the true upstream main for merge-base calculation."""
+    ref = main_ref()
+    remote = ref.split("/")[0]
+    check(f"cd '{LLVM_SRC}' && git fetch {remote} main")
 
 
 def find_merge_base(opt_branch: str) -> str:
-    """Find merge-base between main and opt_branch. Returns commit SHA."""
-    r = run(f"cd '{LLVM_SRC}' && git merge-base main {opt_branch}", capture_output=True, text=True)
+    """Find merge-base between the true main and opt_branch. Returns commit SHA."""
+    ref = main_ref()
+    r = run(f"cd '{LLVM_SRC}' && git merge-base {ref} {opt_branch}", capture_output=True, text=True)
     if r.returncode != 0:
-        print(f"Error: cannot find merge-base between main and {opt_branch}", file=sys.stderr)
+        print(f"Error: cannot find merge-base between {ref} and {opt_branch}", file=sys.stderr)
+        print(f"  {r.stderr.strip()}", file=sys.stderr)
+        sys.exit(1)
+    return r.stdout.strip()
+
+
+def resolve_base_commit(opt_branch: str, base_ref: str | None) -> str:
+    """Resolve the base commit: explicit --base ref, else merge-base with main."""
+    if not base_ref:
+        return find_merge_base(opt_branch)
+    r = run(f"cd '{LLVM_SRC}' && git rev-parse {base_ref}", capture_output=True, text=True)
+    if r.returncode != 0:
+        print(f"Error: invalid --base ref: {base_ref}", file=sys.stderr)
         print(f"  {r.stderr.strip()}", file=sys.stderr)
         sys.exit(1)
     return r.stdout.strip()
@@ -364,6 +416,13 @@ def parse_args():
     p.add_argument("--pr", type=int, help="LLVM PR number")
     p.add_argument("--llvm-dir", type=Path, help="Path to llvm-project checkout (default: repos/llvm-project)")
     p.add_argument("--branch", help="Local branch name to compare (uses current branch if not set)")
+    p.add_argument(
+        "--base",
+        help=(
+            "Base commit/ref to compare against "
+            "(default: merge-base of branch and upstream/main)"
+        ),
+    )
     p.add_argument("--flag", default="-mlsx -O3", help="Compiler flags (default: -mlsx -O3)")
     p.add_argument("--test", default="test-suite", help="Comma-separated test suites")
     p.add_argument("--fresh", action="store_true", help="Ignore cache, re-run all steps")
@@ -407,7 +466,9 @@ def main():
     local_branch = args.branch or get_current_branch()
 
     # Init state / branch name
-    branch = init_state(pr_id, local_branch if use_local else None, args.flag, args.test)
+    branch = init_state(
+        pr_id, local_branch if use_local else None, args.flag, args.test, args.base or ""
+    )
 
     if args.fresh:
         if use_pr:
@@ -441,7 +502,7 @@ def main():
             r = run(f"cd '{LLVM_SRC}' && git rev-parse {opt_branch}", capture_output=True, text=True)
             commit_sha = r.stdout.strip() if r.returncode == 0 else None
         if not merge_base:
-            merge_base = find_merge_base(opt_branch)
+            merge_base = resolve_base_commit(opt_branch, args.base)
         if not commit_sha or not merge_base:
             print("Error: cannot recover run context from state; use --fresh to re-run.", file=sys.stderr)
             sys.exit(1)
@@ -454,11 +515,10 @@ def main():
             prog.draw("fetch-remote")
             t0 = time.time()
             step_num = 1
+            fetch_main()
             if use_pr:
-                check(f"cd '{LLVM_SRC}' && git fetch origin main")
                 opt_branch, commit_sha = fetch_pr(pr_id)
             else:
-                check(f"cd '{LLVM_SRC}' && git fetch origin main")
                 r = run(f"cd '{LLVM_SRC}' && git rev-parse {local_branch}", capture_output=True, text=True)
                 commit_sha = r.stdout.strip()
                 opt_branch = local_branch
@@ -470,8 +530,9 @@ def main():
             prog.draw("find-merge-base")
             t0 = time.time()
             step_num = 2
-            merge_base = find_merge_base(opt_branch)
-            print(f"\n[OK] Step {step_num}/9: find-merge-base ({fmt_seconds(int(time.time()-t0))}) — {merge_base[:8]}")
+            merge_base = resolve_base_commit(opt_branch, args.base)
+            note = " (--base)" if args.base else ""
+            print(f"\n[OK] Step {step_num}/9: find-merge-base{note} ({fmt_seconds(int(time.time()-t0))}) — {merge_base[:8]}")
             mark_step("find-merge-base", merge_base=merge_base)
 
         # ── Step 3: Checkout base ──

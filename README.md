@@ -135,13 +135,16 @@ CI 运行完成后：
 | `--llvm-dir` | LLVM 源码目录 | `./repos/llvm-project` |
 | `--flag` | 编译器标志 | `-mlsx -O3` |
 | `--test` | 测试套件，逗号分隔 | `test-suite` |
+| `--base` | 显式指定基准 commit/ref，跳过 merge-base 计算 | 自动 |
 | `--fresh` | 强制从头跑，不清除之前的构建缓存 | — |
 
 ### 工作流程
 
 ```
-Step 1/9: fetch-remote      — 拉取 origin/main + 目标分支
-Step 2/9: find-merge-base   — git merge-base main <branch>
+Step 1/9: fetch-remote      — 拉取 upstream/main + 目标分支
+Step 2/9: find-merge-base   — git merge-base upstream/main <branch>
+                              （无 upstream remote 时回退到本地 main；
+                               可用 --base 显式指定基准 commit）
 Step 3/9: checkout-base     — 切换到 merge-base (基准代码)
 Step 4/9: build-llvm-base   — 编译基准 LLVM
 Step 5/9: build-ts-base     — 用 base-LLVM 编译测试套件，生成 .s
