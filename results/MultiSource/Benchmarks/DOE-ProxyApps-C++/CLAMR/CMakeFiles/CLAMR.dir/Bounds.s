@@ -39,16 +39,59 @@ Bounds_Infinite:                        # @Bounds_Infinite
 	.type	Bounds_AddBounds,@function
 Bounds_AddBounds:                       # @Bounds_AddBounds
 # %bb.0:
-	vld	$vr0, $a0, 0
-	vld	$vr1, $a1, 0
-	vfcmp.clt.d	$vr2, $vr0, $vr1
-	vbitsel.v	$vr0, $vr1, $vr0, $vr2
+	vld	$vr1, $a0, 0
+	vld	$vr0, $a1, 0
+	vfcmp.cule.d	$vr1, $vr0, $vr1
+	vmsknz.b	$vr2, $vr1
+	vpickve2gr.hu	$a2, $vr2, 0
+	addi.d	$a3, $a0, 15
+	xor	$a3, $a3, $a0
+	srli.d	$a3, $a3, 12
+	beq	$a2, $zero, .LBB2_6
+	beq	$a3, $zero, .LBB2_5
+# %bb.1:
+	andi	$a3, $a2, 1
+	beq	$a3, $zero, .LBB2_3
+# %bb.2:
+	vstelm.d	$vr0, $a0, 0, 0
+.LBB2_3:
+	andi	$a2, $a2, 256
+	beq	$a2, $zero, .LBB2_6
+# %bb.4:
+	vstelm.d	$vr0, $a0, 8, 1
+	b	.LBB2_6
+.LBB2_5:
+	vld	$vr2, $a0, 0
+	vbitsel.v	$vr0, $vr2, $vr0, $vr1
 	vst	$vr0, $a0, 0
-	vld	$vr0, $a0, 16
-	vld	$vr1, $a1, 16
-	vfcmp.clt.d	$vr2, $vr1, $vr0
-	vbitsel.v	$vr0, $vr1, $vr0, $vr2
-	vst	$vr0, $a0, 16
+.LBB2_6:
+	vld	$vr1, $a0, 16
+	vld	$vr0, $a1, 16
+	addi.d	$a0, $a0, 16
+	vfcmp.cule.d	$vr1, $vr1, $vr0
+	vmsknz.b	$vr2, $vr1
+	vpickve2gr.hu	$a1, $vr2, 0
+	addi.d	$a2, $a0, 15
+	xor	$a2, $a2, $a0
+	srli.d	$a2, $a2, 12
+	beq	$a1, $zero, .LBB2_12
+	beq	$a2, $zero, .LBB2_11
+# %bb.7:
+	andi	$a2, $a1, 1
+	beq	$a2, $zero, .LBB2_9
+# %bb.8:
+	vstelm.d	$vr0, $a0, 0, 0
+.LBB2_9:
+	andi	$a1, $a1, 256
+	beq	$a1, $zero, .LBB2_12
+# %bb.10:
+	vstelm.d	$vr0, $a0, 8, 1
+	ret
+.LBB2_11:
+	vld	$vr2, $a0, 0
+	vbitsel.v	$vr0, $vr2, $vr0, $vr1
+	vst	$vr0, $a0, 0
+.LBB2_12:
 	ret
 .Lfunc_end2:
 	.size	Bounds_AddBounds, .Lfunc_end2-Bounds_AddBounds

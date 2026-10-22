@@ -1233,7 +1233,7 @@ initmask:                               # @initmask
 	bgeu	$s1, $a0, .LBB4_12
 # %bb.10:
 	move	$a0, $zero
-	b	.LBB4_108
+	b	.LBB4_135
 .LBB4_11:
 	ori	$a1, $zero, 255
 	ori	$a2, $zero, 1024
@@ -1250,418 +1250,455 @@ initmask:                               # @initmask
 	ori	$a0, $zero, 32
 	vrepli.b	$vr0, 94
 	vrepli.b	$vr1, 36
+	vrepli.b	$vr2, 10
 	bgeu	$s1, $a0, .LBB4_14
 # %bb.13:
 	move	$a0, $zero
-	b	.LBB4_82
+	b	.LBB4_90
 .LBB4_14:
 	andi	$a1, $s1, 24
 	bstrpick.d	$a0, $s1, 30, 5
 	slli.d	$a0, $a0, 5
-	addi.d	$a2, $s0, 15
-	ori	$a3, $zero, 10
-	move	$a4, $a0
-	b	.LBB4_16
+	addi.d	$a2, $s0, 16
+	move	$a3, $a0
+	b	.LBB4_17
 	.p2align	4, , 16
-.LBB4_15:                               #   in Loop: Header=BB4_16 Depth=1
-	addi.d	$a4, $a4, -32
+.LBB4_15:                               #   in Loop: Header=BB4_17 Depth=1
+	vld	$vr4, $a2, 0
+	vbitsel.v	$vr3, $vr4, $vr2, $vr3
+	vst	$vr3, $a2, 0
+.LBB4_16:                               #   in Loop: Header=BB4_17 Depth=1
+	addi.d	$a3, $a3, -32
 	addi.d	$a2, $a2, 32
-	beqz	$a4, .LBB4_80
-.LBB4_16:                               # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $a2, -15
-	vseq.b	$vr3, $vr2, $vr0
-	vseq.b	$vr2, $vr2, $vr1
-	vor.v	$vr2, $vr3, $vr2
-	vpickve2gr.b	$a5, $vr2, 0
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_49
-# %bb.17:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 1
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_50
-.LBB4_18:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 2
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_51
-.LBB4_19:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 3
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_52
-.LBB4_20:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 4
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_53
-.LBB4_21:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 5
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_54
-.LBB4_22:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 6
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_55
-.LBB4_23:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 7
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_56
-.LBB4_24:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 8
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_57
-.LBB4_25:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 9
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_58
-.LBB4_26:                               #   in Loop: Header=BB4_16 Depth=1
-	vld	$vr3, $a2, 1
-	vpickve2gr.b	$a5, $vr2, 10
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_59
-.LBB4_27:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 11
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_60
-.LBB4_28:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 12
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_61
-.LBB4_29:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 13
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_62
-.LBB4_30:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 14
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_63
-.LBB4_31:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 15
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_33
-.LBB4_32:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 0
-.LBB4_33:                               #   in Loop: Header=BB4_16 Depth=1
-	vseq.b	$vr2, $vr3, $vr0
+	beqz	$a3, .LBB4_88
+.LBB4_17:                               # =>This Inner Loop Header: Depth=1
+	vld	$vr4, $a2, -16
+	addi.d	$a4, $a2, -16
+	vld	$vr3, $a2, 0
+	vseq.b	$vr5, $vr4, $vr0
+	vseq.b	$vr4, $vr4, $vr1
+	vor.v	$vr4, $vr5, $vr4
+	vmsknz.b	$vr5, $vr4
+	vpickve2gr.hu	$a5, $vr5, 0
+	addi.d	$a6, $a4, 15
+	xor	$a6, $a6, $a4
+	srli.d	$a6, $a6, 12
+	beq	$a5, $zero, .LBB4_38
+	beq	$a6, $zero, .LBB4_37
+# %bb.18:                               #   in Loop: Header=BB4_17 Depth=1
+	bstrpick.d	$a6, $a5, 7, 0
+	beq	$a6, $zero, .LBB4_28
+# %bb.19:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a6, $a5, 1
+	bne	$a6, $zero, .LBB4_58
+# %bb.20:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a6, $a5, 2
+	bne	$a6, $zero, .LBB4_59
+.LBB4_21:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a6, $a5, 4
+	bne	$a6, $zero, .LBB4_60
+.LBB4_22:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a6, $a5, 8
+	bne	$a6, $zero, .LBB4_61
+.LBB4_23:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a6, $a5, 16
+	bne	$a6, $zero, .LBB4_62
+.LBB4_24:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a6, $a5, 32
+	bne	$a6, $zero, .LBB4_63
+.LBB4_25:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a6, $a5, 64
+	bne	$a6, $zero, .LBB4_64
+.LBB4_26:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a6, $a5, 128
+	beq	$a6, $zero, .LBB4_28
+.LBB4_27:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 7, 7
+.LBB4_28:                               #   in Loop: Header=BB4_17 Depth=1
+	bstrpick.d	$a6, $a5, 15, 8
+	beq	$a6, $zero, .LBB4_38
+# %bb.29:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a6, $a5, 256
+	bne	$a6, $zero, .LBB4_65
+# %bb.30:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a6, $a5, 512
+	bne	$a6, $zero, .LBB4_66
+.LBB4_31:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a6, $a5, 1024
+	bne	$a6, $zero, .LBB4_67
+.LBB4_32:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a6, $a5, 2048
+	bne	$a6, $zero, .LBB4_68
+.LBB4_33:                               #   in Loop: Header=BB4_17 Depth=1
+	bstrpick.d	$a6, $a5, 12, 12
+	bne	$a6, $zero, .LBB4_69
+.LBB4_34:                               #   in Loop: Header=BB4_17 Depth=1
+	bstrpick.d	$a6, $a5, 13, 13
+	bne	$a6, $zero, .LBB4_70
+.LBB4_35:                               #   in Loop: Header=BB4_17 Depth=1
+	bstrpick.d	$a6, $a5, 14, 14
+	bne	$a6, $zero, .LBB4_71
+.LBB4_36:                               #   in Loop: Header=BB4_17 Depth=1
+	bstrpick.d	$a5, $a5, 15, 15
+	beq	$a5, $zero, .LBB4_38
+	b	.LBB4_72
+	.p2align	4, , 16
+.LBB4_37:                               #   in Loop: Header=BB4_17 Depth=1
+	vld	$vr5, $a4, 0
+	vbitsel.v	$vr4, $vr5, $vr2, $vr4
+	vst	$vr4, $a4, 0
+.LBB4_38:                               #   in Loop: Header=BB4_17 Depth=1
+	vseq.b	$vr4, $vr3, $vr0
 	vseq.b	$vr3, $vr3, $vr1
-	vor.v	$vr2, $vr2, $vr3
-	vpickve2gr.b	$a5, $vr2, 0
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_64
-# %bb.34:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 1
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_65
-.LBB4_35:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 2
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_66
-.LBB4_36:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 3
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_67
-.LBB4_37:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 4
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_68
-.LBB4_38:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 5
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_69
-.LBB4_39:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 6
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_70
-.LBB4_40:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 7
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_71
-.LBB4_41:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 8
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_72
-.LBB4_42:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 9
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_73
-.LBB4_43:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 10
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_74
-.LBB4_44:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 11
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_75
-.LBB4_45:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 12
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_76
-.LBB4_46:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 13
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_77
-.LBB4_47:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 14
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_78
-.LBB4_48:                               #   in Loop: Header=BB4_16 Depth=1
-	vpickve2gr.b	$a5, $vr2, 15
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_15
-	b	.LBB4_79
-	.p2align	4, , 16
-.LBB4_49:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -15
-	vpickve2gr.b	$a5, $vr2, 1
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_18
-.LBB4_50:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -14
-	vpickve2gr.b	$a5, $vr2, 2
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_19
-.LBB4_51:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -13
-	vpickve2gr.b	$a5, $vr2, 3
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_20
-.LBB4_52:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -12
-	vpickve2gr.b	$a5, $vr2, 4
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_21
-.LBB4_53:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -11
-	vpickve2gr.b	$a5, $vr2, 5
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_22
-.LBB4_54:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -10
-	vpickve2gr.b	$a5, $vr2, 6
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_23
-.LBB4_55:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -9
-	vpickve2gr.b	$a5, $vr2, 7
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_24
-.LBB4_56:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -8
-	vpickve2gr.b	$a5, $vr2, 8
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_25
-.LBB4_57:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -7
-	vpickve2gr.b	$a5, $vr2, 9
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_26
-.LBB4_58:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -6
-	vld	$vr3, $a2, 1
-	vpickve2gr.b	$a5, $vr2, 10
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_27
-.LBB4_59:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -5
-	vpickve2gr.b	$a5, $vr2, 11
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_28
-.LBB4_60:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -4
-	vpickve2gr.b	$a5, $vr2, 12
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_29
-.LBB4_61:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -3
-	vpickve2gr.b	$a5, $vr2, 13
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_30
-.LBB4_62:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -2
-	vpickve2gr.b	$a5, $vr2, 14
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_31
-.LBB4_63:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, -1
-	vpickve2gr.b	$a5, $vr2, 15
-	andi	$a5, $a5, 1
-	bnez	$a5, .LBB4_32
-	b	.LBB4_33
-	.p2align	4, , 16
-.LBB4_64:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 1
-	vpickve2gr.b	$a5, $vr2, 1
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_35
-.LBB4_65:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 2
-	vpickve2gr.b	$a5, $vr2, 2
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_36
-.LBB4_66:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 3
-	vpickve2gr.b	$a5, $vr2, 3
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_37
-.LBB4_67:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 4
-	vpickve2gr.b	$a5, $vr2, 4
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_38
-.LBB4_68:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 5
-	vpickve2gr.b	$a5, $vr2, 5
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_39
-.LBB4_69:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 6
-	vpickve2gr.b	$a5, $vr2, 6
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_40
-.LBB4_70:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 7
-	vpickve2gr.b	$a5, $vr2, 7
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_41
-.LBB4_71:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 8
-	vpickve2gr.b	$a5, $vr2, 8
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_42
-.LBB4_72:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 9
-	vpickve2gr.b	$a5, $vr2, 9
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_43
-.LBB4_73:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 10
-	vpickve2gr.b	$a5, $vr2, 10
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_44
-.LBB4_74:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 11
-	vpickve2gr.b	$a5, $vr2, 11
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_45
-.LBB4_75:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 12
-	vpickve2gr.b	$a5, $vr2, 12
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_46
-.LBB4_76:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 13
-	vpickve2gr.b	$a5, $vr2, 13
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_47
-.LBB4_77:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 14
-	vpickve2gr.b	$a5, $vr2, 14
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_48
-.LBB4_78:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 15
-	vpickve2gr.b	$a5, $vr2, 15
-	andi	$a5, $a5, 1
-	beqz	$a5, .LBB4_15
-.LBB4_79:                               #   in Loop: Header=BB4_16 Depth=1
-	st.b	$a3, $a2, 16
-	b	.LBB4_15
-.LBB4_80:
-	beq	$a0, $s1, .LBB4_101
-# %bb.81:
-	beqz	$a1, .LBB4_108
-.LBB4_82:
+	vor.v	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a4, $vr4, 0
+	addi.d	$a5, $a2, 15
+	xor	$a5, $a5, $a2
+	srli.d	$a5, $a5, 12
+	beq	$a4, $zero, .LBB4_16
+	beq	$a5, $zero, .LBB4_15
+# %bb.39:                               #   in Loop: Header=BB4_17 Depth=1
+	bstrpick.d	$a5, $a4, 7, 0
+	beq	$a5, $zero, .LBB4_49
+# %bb.40:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a5, $a4, 1
+	bne	$a5, $zero, .LBB4_73
+# %bb.41:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a5, $a4, 2
+	bne	$a5, $zero, .LBB4_74
+.LBB4_42:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a5, $a4, 4
+	bne	$a5, $zero, .LBB4_75
+.LBB4_43:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a5, $a4, 8
+	bne	$a5, $zero, .LBB4_76
+.LBB4_44:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a5, $a4, 16
+	bne	$a5, $zero, .LBB4_77
+.LBB4_45:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a5, $a4, 32
+	bne	$a5, $zero, .LBB4_78
+.LBB4_46:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a5, $a4, 64
+	bne	$a5, $zero, .LBB4_79
+.LBB4_47:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a5, $a4, 128
+	beq	$a5, $zero, .LBB4_49
+.LBB4_48:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 7, 7
+.LBB4_49:                               #   in Loop: Header=BB4_17 Depth=1
+	bstrpick.d	$a5, $a4, 15, 8
+	beq	$a5, $zero, .LBB4_16
+# %bb.50:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a5, $a4, 256
+	bne	$a5, $zero, .LBB4_80
+# %bb.51:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a5, $a4, 512
+	bne	$a5, $zero, .LBB4_81
+.LBB4_52:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a5, $a4, 1024
+	bne	$a5, $zero, .LBB4_82
+.LBB4_53:                               #   in Loop: Header=BB4_17 Depth=1
+	andi	$a5, $a4, 2048
+	bne	$a5, $zero, .LBB4_83
+.LBB4_54:                               #   in Loop: Header=BB4_17 Depth=1
+	bstrpick.d	$a5, $a4, 12, 12
+	bne	$a5, $zero, .LBB4_84
+.LBB4_55:                               #   in Loop: Header=BB4_17 Depth=1
+	bstrpick.d	$a5, $a4, 13, 13
+	bne	$a5, $zero, .LBB4_85
+.LBB4_56:                               #   in Loop: Header=BB4_17 Depth=1
+	bstrpick.d	$a5, $a4, 14, 14
+	bne	$a5, $zero, .LBB4_86
+.LBB4_57:                               #   in Loop: Header=BB4_17 Depth=1
+	bstrpick.d	$a4, $a4, 15, 15
+	beq	$a4, $zero, .LBB4_16
+	b	.LBB4_87
+.LBB4_58:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 0, 0
+	andi	$a6, $a5, 2
+	beq	$a6, $zero, .LBB4_21
+.LBB4_59:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 1, 1
+	andi	$a6, $a5, 4
+	beq	$a6, $zero, .LBB4_22
+.LBB4_60:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 2, 2
+	andi	$a6, $a5, 8
+	beq	$a6, $zero, .LBB4_23
+.LBB4_61:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 3, 3
+	andi	$a6, $a5, 16
+	beq	$a6, $zero, .LBB4_24
+.LBB4_62:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 4, 4
+	andi	$a6, $a5, 32
+	beq	$a6, $zero, .LBB4_25
+.LBB4_63:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 5, 5
+	andi	$a6, $a5, 64
+	beq	$a6, $zero, .LBB4_26
+.LBB4_64:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 6, 6
+	andi	$a6, $a5, 128
+	bne	$a6, $zero, .LBB4_27
+	b	.LBB4_28
+.LBB4_65:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 8, 8
+	andi	$a6, $a5, 512
+	beq	$a6, $zero, .LBB4_31
+.LBB4_66:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 9, 9
+	andi	$a6, $a5, 1024
+	beq	$a6, $zero, .LBB4_32
+.LBB4_67:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 10, 10
+	andi	$a6, $a5, 2048
+	beq	$a6, $zero, .LBB4_33
+.LBB4_68:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 11, 11
+	bstrpick.d	$a6, $a5, 12, 12
+	beq	$a6, $zero, .LBB4_34
+.LBB4_69:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 12, 12
+	bstrpick.d	$a6, $a5, 13, 13
+	beq	$a6, $zero, .LBB4_35
+.LBB4_70:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 13, 13
+	bstrpick.d	$a6, $a5, 14, 14
+	beq	$a6, $zero, .LBB4_36
+.LBB4_71:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 14, 14
+	bstrpick.d	$a5, $a5, 15, 15
+	beq	$a5, $zero, .LBB4_38
+.LBB4_72:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a4, 15, 15
+	b	.LBB4_38
+.LBB4_73:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 0, 0
+	andi	$a5, $a4, 2
+	beq	$a5, $zero, .LBB4_42
+.LBB4_74:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 1, 1
+	andi	$a5, $a4, 4
+	beq	$a5, $zero, .LBB4_43
+.LBB4_75:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 2, 2
+	andi	$a5, $a4, 8
+	beq	$a5, $zero, .LBB4_44
+.LBB4_76:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 3, 3
+	andi	$a5, $a4, 16
+	beq	$a5, $zero, .LBB4_45
+.LBB4_77:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 4, 4
+	andi	$a5, $a4, 32
+	beq	$a5, $zero, .LBB4_46
+.LBB4_78:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 5, 5
+	andi	$a5, $a4, 64
+	beq	$a5, $zero, .LBB4_47
+.LBB4_79:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 6, 6
+	andi	$a5, $a4, 128
+	bne	$a5, $zero, .LBB4_48
+	b	.LBB4_49
+.LBB4_80:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 8, 8
+	andi	$a5, $a4, 512
+	beq	$a5, $zero, .LBB4_52
+.LBB4_81:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 9, 9
+	andi	$a5, $a4, 1024
+	beq	$a5, $zero, .LBB4_53
+.LBB4_82:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 10, 10
+	andi	$a5, $a4, 2048
+	beq	$a5, $zero, .LBB4_54
+.LBB4_83:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 11, 11
+	bstrpick.d	$a5, $a4, 12, 12
+	beq	$a5, $zero, .LBB4_55
+.LBB4_84:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 12, 12
+	bstrpick.d	$a5, $a4, 13, 13
+	beq	$a5, $zero, .LBB4_56
+.LBB4_85:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 13, 13
+	bstrpick.d	$a5, $a4, 14, 14
+	beq	$a5, $zero, .LBB4_57
+.LBB4_86:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 14, 14
+	bstrpick.d	$a4, $a4, 15, 15
+	beq	$a4, $zero, .LBB4_16
+.LBB4_87:                               #   in Loop: Header=BB4_17 Depth=1
+	vstelm.b	$vr2, $a2, 15, 15
+	b	.LBB4_16
+.LBB4_88:
+	beq	$a0, $s1, .LBB4_128
+# %bb.89:
+	beqz	$a1, .LBB4_135
+.LBB4_90:
 	move	$a2, $a0
 	bstrpick.d	$a0, $s1, 30, 3
 	slli.d	$a0, $a0, 3
-	add.d	$a1, $a2, $s0
-	addi.d	$a1, $a1, 3
-	sub.d	$a2, $a2, $a0
-	ori	$a3, $zero, 10
-	b	.LBB4_84
+	sub.d	$a1, $a2, $a0
+	add.d	$a2, $s0, $a2
+	vrepli.b	$vr3, 0
+	b	.LBB4_92
 	.p2align	4, , 16
-.LBB4_83:                               #   in Loop: Header=BB4_84 Depth=1
-	addi.d	$a2, $a2, 8
+.LBB4_91:                               #   in Loop: Header=BB4_92 Depth=1
 	addi.d	$a1, $a1, 8
-	beqz	$a2, .LBB4_100
-.LBB4_84:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a4, $a1, -3
-	vinsgr2vr.d	$vr2, $a4, 0
-	vseq.b	$vr3, $vr2, $vr0
-	vseq.b	$vr2, $vr2, $vr1
-	vor.v	$vr2, $vr3, $vr2
-	vilvl.b	$vr2, $vr2, $vr2
-	vpickve2gr.h	$a4, $vr2, 0
-	andi	$a4, $a4, 1
-	bnez	$a4, .LBB4_92
-# %bb.85:                               #   in Loop: Header=BB4_84 Depth=1
-	vpickve2gr.h	$a4, $vr2, 1
-	andi	$a4, $a4, 1
-	bnez	$a4, .LBB4_93
-.LBB4_86:                               #   in Loop: Header=BB4_84 Depth=1
-	vpickve2gr.h	$a4, $vr2, 2
-	andi	$a4, $a4, 1
-	bnez	$a4, .LBB4_94
-.LBB4_87:                               #   in Loop: Header=BB4_84 Depth=1
-	vpickve2gr.h	$a4, $vr2, 3
-	andi	$a4, $a4, 1
-	bnez	$a4, .LBB4_95
-.LBB4_88:                               #   in Loop: Header=BB4_84 Depth=1
-	vpickve2gr.h	$a4, $vr2, 4
-	andi	$a4, $a4, 1
-	bnez	$a4, .LBB4_96
-.LBB4_89:                               #   in Loop: Header=BB4_84 Depth=1
-	vpickve2gr.h	$a4, $vr2, 5
-	andi	$a4, $a4, 1
-	bnez	$a4, .LBB4_97
-.LBB4_90:                               #   in Loop: Header=BB4_84 Depth=1
-	vpickve2gr.h	$a4, $vr2, 6
-	andi	$a4, $a4, 1
-	bnez	$a4, .LBB4_98
-.LBB4_91:                               #   in Loop: Header=BB4_84 Depth=1
-	vpickve2gr.h	$a4, $vr2, 7
-	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_83
-	b	.LBB4_99
-	.p2align	4, , 16
-.LBB4_92:                               #   in Loop: Header=BB4_84 Depth=1
-	st.b	$a3, $a1, -3
-	vpickve2gr.h	$a4, $vr2, 1
-	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_86
-.LBB4_93:                               #   in Loop: Header=BB4_84 Depth=1
-	st.b	$a3, $a1, -2
-	vpickve2gr.h	$a4, $vr2, 2
-	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_87
-.LBB4_94:                               #   in Loop: Header=BB4_84 Depth=1
-	st.b	$a3, $a1, -1
-	vpickve2gr.h	$a4, $vr2, 3
-	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_88
-.LBB4_95:                               #   in Loop: Header=BB4_84 Depth=1
-	st.b	$a3, $a1, 0
-	vpickve2gr.h	$a4, $vr2, 4
-	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_89
-.LBB4_96:                               #   in Loop: Header=BB4_84 Depth=1
-	st.b	$a3, $a1, 1
-	vpickve2gr.h	$a4, $vr2, 5
-	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_90
-.LBB4_97:                               #   in Loop: Header=BB4_84 Depth=1
-	st.b	$a3, $a1, 2
-	vpickve2gr.h	$a4, $vr2, 6
-	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_91
-.LBB4_98:                               #   in Loop: Header=BB4_84 Depth=1
-	st.b	$a3, $a1, 3
-	vpickve2gr.h	$a4, $vr2, 7
-	andi	$a4, $a4, 1
-	beqz	$a4, .LBB4_83
-.LBB4_99:                               #   in Loop: Header=BB4_84 Depth=1
-	st.b	$a3, $a1, 4
-	b	.LBB4_83
-.LBB4_100:
-	bne	$a0, $s1, .LBB4_108
-.LBB4_101:
+	addi.d	$a2, $a2, 8
+	beqz	$a1, .LBB4_127
+.LBB4_92:                               # =>This Inner Loop Header: Depth=1
+	ld.d	$a3, $a2, 0
+	vinsgr2vr.d	$vr4, $a3, 0
+	vseq.b	$vr5, $vr4, $vr0
+	vseq.b	$vr4, $vr4, $vr1
+	vor.v	$vr4, $vr5, $vr4
+	vilvl.b	$vr4, $vr4, $vr4
+	vpickve2gr.h	$a3, $vr4, 0
+	vori.b	$vr5, $vr3, 0
+	vinsgr2vr.b	$vr5, $a3, 0
+	vpickve2gr.h	$a3, $vr4, 1
+	vinsgr2vr.b	$vr5, $a3, 1
+	vpickve2gr.h	$a3, $vr4, 2
+	vinsgr2vr.b	$vr5, $a3, 2
+	vpickve2gr.h	$a3, $vr4, 3
+	vinsgr2vr.b	$vr5, $a3, 3
+	vpickve2gr.h	$a3, $vr4, 4
+	vinsgr2vr.b	$vr5, $a3, 4
+	vpickve2gr.h	$a3, $vr4, 5
+	vinsgr2vr.b	$vr5, $a3, 5
+	vpickve2gr.h	$a3, $vr4, 6
+	vinsgr2vr.b	$vr5, $a3, 6
+	vpickve2gr.h	$a3, $vr4, 7
+	vinsgr2vr.b	$vr5, $a3, 7
+	vmsknz.b	$vr4, $vr5
+	vpickve2gr.hu	$a3, $vr4, 0
+	beq	$a3, $zero, .LBB4_91
+# %bb.93:                               #   in Loop: Header=BB4_92 Depth=1
+	bstrpick.d	$a4, $a3, 7, 0
+	beq	$a4, $zero, .LBB4_103
+# %bb.94:                               #   in Loop: Header=BB4_92 Depth=1
+	andi	$a4, $a3, 1
+	bne	$a4, $zero, .LBB4_112
+# %bb.95:                               #   in Loop: Header=BB4_92 Depth=1
+	andi	$a4, $a3, 2
+	bne	$a4, $zero, .LBB4_113
+.LBB4_96:                               #   in Loop: Header=BB4_92 Depth=1
+	andi	$a4, $a3, 4
+	bne	$a4, $zero, .LBB4_114
+.LBB4_97:                               #   in Loop: Header=BB4_92 Depth=1
+	andi	$a4, $a3, 8
+	bne	$a4, $zero, .LBB4_115
+.LBB4_98:                               #   in Loop: Header=BB4_92 Depth=1
+	andi	$a4, $a3, 16
+	bne	$a4, $zero, .LBB4_116
+.LBB4_99:                               #   in Loop: Header=BB4_92 Depth=1
+	andi	$a4, $a3, 32
+	bne	$a4, $zero, .LBB4_117
+.LBB4_100:                              #   in Loop: Header=BB4_92 Depth=1
+	andi	$a4, $a3, 64
+	bne	$a4, $zero, .LBB4_118
+.LBB4_101:                              #   in Loop: Header=BB4_92 Depth=1
+	andi	$a4, $a3, 128
+	beq	$a4, $zero, .LBB4_103
+.LBB4_102:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 7, 7
+.LBB4_103:                              #   in Loop: Header=BB4_92 Depth=1
+	bstrpick.d	$a4, $a3, 15, 8
+	beq	$a4, $zero, .LBB4_91
+# %bb.104:                              #   in Loop: Header=BB4_92 Depth=1
+	andi	$a4, $a3, 256
+	bne	$a4, $zero, .LBB4_119
+# %bb.105:                              #   in Loop: Header=BB4_92 Depth=1
+	andi	$a4, $a3, 512
+	bne	$a4, $zero, .LBB4_120
+.LBB4_106:                              #   in Loop: Header=BB4_92 Depth=1
+	andi	$a4, $a3, 1024
+	bne	$a4, $zero, .LBB4_121
+.LBB4_107:                              #   in Loop: Header=BB4_92 Depth=1
+	andi	$a4, $a3, 2048
+	bne	$a4, $zero, .LBB4_122
+.LBB4_108:                              #   in Loop: Header=BB4_92 Depth=1
+	bstrpick.d	$a4, $a3, 12, 12
+	bne	$a4, $zero, .LBB4_123
+.LBB4_109:                              #   in Loop: Header=BB4_92 Depth=1
+	bstrpick.d	$a4, $a3, 13, 13
+	bne	$a4, $zero, .LBB4_124
+.LBB4_110:                              #   in Loop: Header=BB4_92 Depth=1
+	bstrpick.d	$a4, $a3, 14, 14
+	bne	$a4, $zero, .LBB4_125
+.LBB4_111:                              #   in Loop: Header=BB4_92 Depth=1
+	bstrpick.d	$a3, $a3, 15, 15
+	beq	$a3, $zero, .LBB4_91
+	b	.LBB4_126
+.LBB4_112:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 0, 0
+	andi	$a4, $a3, 2
+	beq	$a4, $zero, .LBB4_96
+.LBB4_113:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 1, 1
+	andi	$a4, $a3, 4
+	beq	$a4, $zero, .LBB4_97
+.LBB4_114:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 2, 2
+	andi	$a4, $a3, 8
+	beq	$a4, $zero, .LBB4_98
+.LBB4_115:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 3, 3
+	andi	$a4, $a3, 16
+	beq	$a4, $zero, .LBB4_99
+.LBB4_116:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 4, 4
+	andi	$a4, $a3, 32
+	beq	$a4, $zero, .LBB4_100
+.LBB4_117:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 5, 5
+	andi	$a4, $a3, 64
+	beq	$a4, $zero, .LBB4_101
+.LBB4_118:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 6, 6
+	andi	$a4, $a3, 128
+	bne	$a4, $zero, .LBB4_102
+	b	.LBB4_103
+.LBB4_119:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 8, 8
+	andi	$a4, $a3, 512
+	beq	$a4, $zero, .LBB4_106
+.LBB4_120:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 9, 9
+	andi	$a4, $a3, 1024
+	beq	$a4, $zero, .LBB4_107
+.LBB4_121:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 10, 10
+	andi	$a4, $a3, 2048
+	beq	$a4, $zero, .LBB4_108
+.LBB4_122:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 11, 11
+	bstrpick.d	$a4, $a3, 12, 12
+	beq	$a4, $zero, .LBB4_109
+.LBB4_123:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 12, 12
+	bstrpick.d	$a4, $a3, 13, 13
+	beq	$a4, $zero, .LBB4_110
+.LBB4_124:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 13, 13
+	bstrpick.d	$a4, $a3, 14, 14
+	beq	$a4, $zero, .LBB4_111
+.LBB4_125:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 14, 14
+	bstrpick.d	$a3, $a3, 15, 15
+	beq	$a3, $zero, .LBB4_91
+.LBB4_126:                              #   in Loop: Header=BB4_92 Depth=1
+	vstelm.b	$vr2, $a2, 15, 15
+	b	.LBB4_91
+.LBB4_127:
+	bne	$a0, $s1, .LBB4_135
+.LBB4_128:
 	ori	$a1, $zero, 255
 	ori	$a2, $zero, 1024
 	move	$a0, $fp
@@ -1669,36 +1706,36 @@ initmask:                               # @initmask
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
 	bstrpick.d	$a1, $s1, 31, 0
-	b	.LBB4_103
+	b	.LBB4_130
 	.p2align	4, , 16
-.LBB4_102:                              #   in Loop: Header=BB4_103 Depth=1
+.LBB4_129:                              #   in Loop: Header=BB4_130 Depth=1
 	addi.d	$a0, $a0, 1
-	beq	$a0, $a1, .LBB4_107
-.LBB4_103:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_105 Depth 2
+	beq	$a0, $a1, .LBB4_134
+.LBB4_130:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB4_132 Depth 2
 	ldx.bu	$a2, $s0, $a0
 	move	$a3, $zero
 	alsl.d	$a4, $a2, $fp, 2
 	move	$a5, $a1
 	move	$a6, $s0
-	b	.LBB4_105
+	b	.LBB4_132
 	.p2align	4, , 16
-.LBB4_104:                              #   in Loop: Header=BB4_105 Depth=2
+.LBB4_131:                              #   in Loop: Header=BB4_132 Depth=2
 	addi.d	$a3, $a3, 1
 	addi.d	$a5, $a5, -1
 	addi.d	$a6, $a6, 1
-	beqz	$a5, .LBB4_102
-.LBB4_105:                              #   Parent Loop BB4_103 Depth=1
+	beqz	$a5, .LBB4_129
+.LBB4_132:                              #   Parent Loop BB4_130 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.bu	$a7, $a6, 0
-	bne	$a2, $a7, .LBB4_104
-# %bb.106:                              #   in Loop: Header=BB4_105 Depth=2
+	bne	$a2, $a7, .LBB4_131
+# %bb.133:                              #   in Loop: Header=BB4_132 Depth=2
 	ld.w	$a7, $a4, 0
 	srl.w	$t0, $s2, $a3
 	andn	$a7, $a7, $t0
 	st.w	$a7, $a4, 0
-	b	.LBB4_104
-.LBB4_107:
+	b	.LBB4_131
+.LBB4_134:
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -1706,26 +1743,26 @@ initmask:                               # @initmask
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
 	ret
-.LBB4_108:
+.LBB4_135:
 	add.d	$a1, $s0, $a0
 	sub.d	$a0, $s1, $a0
 	ori	$a2, $zero, 94
 	ori	$a3, $zero, 10
 	ori	$a4, $zero, 36
-	b	.LBB4_111
+	b	.LBB4_138
 	.p2align	4, , 16
-.LBB4_109:                              #   in Loop: Header=BB4_111 Depth=1
+.LBB4_136:                              #   in Loop: Header=BB4_138 Depth=1
 	st.b	$a3, $a1, 0
-.LBB4_110:                              #   in Loop: Header=BB4_111 Depth=1
+.LBB4_137:                              #   in Loop: Header=BB4_138 Depth=1
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 1
-	beqz	$a0, .LBB4_101
-.LBB4_111:                              # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB4_128
+.LBB4_138:                              # =>This Inner Loop Header: Depth=1
 	ld.bu	$a5, $a1, 0
-	beq	$a5, $a2, .LBB4_109
-# %bb.112:                              #   in Loop: Header=BB4_111 Depth=1
-	beq	$a5, $a4, .LBB4_109
-	b	.LBB4_110
+	beq	$a5, $a2, .LBB4_136
+# %bb.139:                              #   in Loop: Header=BB4_138 Depth=1
+	beq	$a5, $a4, .LBB4_136
+	b	.LBB4_137
 .Lfunc_end4:
 	.size	initmask, .Lfunc_end4-initmask
                                         # -- End function
@@ -3028,218 +3065,2353 @@ m_preprocess:                           # @m_preprocess
 	addi.w	$a1, $s1, -1
 	ori	$a3, $zero, 2
 	pcalau12i	$a0, %pc_hi20(shift_1)
-	blt	$a2, $a3, .LBB11_45
+	blt	$a2, $a3, .LBB11_587
 # %bb.1:
-	vreplgr2vr.w	$vr0, $s1
-	vrepli.b	$vr1, 0
-	ori	$a2, $zero, 256
+	move	$a2, $zero
+	vreplgr2vr.b	$vr0, $a1
+	vreplgr2vr.w	$vr1, $s1
+	vrepli.b	$vr2, 0
 	ori	$a3, $zero, 1
 	move	$a5, $a1
 	b	.LBB11_3
 	.p2align	4, , 16
 .LBB11_2:                               #   in Loop: Header=BB11_3 Depth=1
 	addi.d	$a5, $a4, -1
-	bge	$a3, $a4, .LBB11_39
-.LBB11_3:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB11_5 Depth 2
+	addi.d	$a2, $a2, 1
+	bge	$a3, $a4, .LBB11_581
+.LBB11_3:                               # =>This Inner Loop Header: Depth=1
 	move	$a4, $a5
-	ldx.bu	$t0, $s0, $a5
-	move	$a7, $zero
-	add.d	$a5, $s0, $a5
-	slli.d	$a6, $t0, 3
-	alsl.d	$t0, $t0, $fp, 3
-	b	.LBB11_5
+	ldx.bu	$a5, $s0, $a5
+	slli.d	$a6, $a5, 3
+	vldx	$vr3, $fp, $a6
+	alsl.d	$a6, $a5, $fp, 3
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB11_24
+	beq	$t0, $zero, .LBB11_23
+# %bb.4:                                #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB11_14
+# %bb.5:                                #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB11_341
+# %bb.6:                                #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB11_342
+.LBB11_7:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB11_343
+.LBB11_8:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB11_344
+.LBB11_9:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB11_345
+.LBB11_10:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB11_346
+.LBB11_11:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB11_347
+.LBB11_12:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB11_14
+.LBB11_13:                              #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB11_14:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB11_24
+# %bb.15:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB11_348
+# %bb.16:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB11_349
+.LBB11_17:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB11_350
+.LBB11_18:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB11_351
+.LBB11_19:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB11_352
+.LBB11_20:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB11_353
+.LBB11_21:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB11_354
+.LBB11_22:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB11_24
+	b	.LBB11_355
 	.p2align	4, , 16
-.LBB11_4:                               #   in Loop: Header=BB11_5 Depth=2
-	addi.d	$a7, $a7, 16
-	beq	$a7, $a2, .LBB11_37
-.LBB11_5:                               #   Parent Loop BB11_3 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vldx	$vr2, $t0, $a7
-	vilvl.b	$vr3, $vr1, $vr2
-	vilvl.h	$vr4, $vr1, $vr3
-	vseq.w	$vr4, $vr0, $vr4
-	vpickve2gr.b	$t1, $vr4, 0
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB11_7
-# %bb.6:                                #   in Loop: Header=BB11_5 Depth=2
-	stx.b	$a1, $t0, $a7
-.LBB11_7:                               #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr5, $vr4, 2
-	vpickve2gr.b	$t1, $vr5, 2
-	andi	$t2, $t1, 1
-	add.d	$t1, $t0, $a7
-	bnez	$t2, .LBB11_25
-# %bb.8:                                #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr5, $vr4, 4
-	vpickve2gr.b	$t2, $vr5, 4
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_26
-.LBB11_9:                               #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr4, $vr4, 6
-	vpickve2gr.b	$t2, $vr4, 6
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_11
-.LBB11_10:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 3
-.LBB11_11:                              #   in Loop: Header=BB11_5 Depth=2
-	vilvh.h	$vr3, $vr1, $vr3
-	vseq.w	$vr3, $vr0, $vr3
-	vreplvei.h	$vr4, $vr3, 0
-	vpickve2gr.b	$t2, $vr4, 8
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_27
-# %bb.12:                               #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr4, $vr3, 2
-	vpickve2gr.b	$t2, $vr4, 10
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_28
-.LBB11_13:                              #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr4, $vr3, 4
-	vpickve2gr.b	$t2, $vr4, 12
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_29
-.LBB11_14:                              #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr3, $vr3, 6
-	vpickve2gr.b	$t2, $vr3, 14
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_16
-.LBB11_15:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 7
-.LBB11_16:                              #   in Loop: Header=BB11_5 Depth=2
-	vilvh.b	$vr2, $vr1, $vr2
-	vilvl.h	$vr3, $vr1, $vr2
-	vseq.w	$vr3, $vr0, $vr3
-	vpickve2gr.b	$t2, $vr3, 0
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_30
-# %bb.17:                               #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr4, $vr3, 2
-	vpickve2gr.b	$t2, $vr4, 2
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_31
-.LBB11_18:                              #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr4, $vr3, 4
-	vpickve2gr.b	$t2, $vr4, 4
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_32
-.LBB11_19:                              #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr3, $vr3, 6
-	vpickve2gr.b	$t2, $vr3, 6
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_21
-.LBB11_20:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 11
-.LBB11_21:                              #   in Loop: Header=BB11_5 Depth=2
-	vilvh.h	$vr2, $vr1, $vr2
-	vseq.w	$vr2, $vr0, $vr2
-	vreplvei.h	$vr3, $vr2, 0
-	vpickve2gr.b	$t2, $vr3, 8
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_33
-# %bb.22:                               #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr3, $vr2, 2
-	vpickve2gr.b	$t2, $vr3, 10
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_34
-.LBB11_23:                              #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr3, $vr2, 4
-	vpickve2gr.b	$t2, $vr3, 12
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_35
-.LBB11_24:                              #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr2, $vr2, 6
-	vpickve2gr.b	$t2, $vr2, 14
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_4
-	b	.LBB11_36
+.LBB11_23:                              #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB11_24:                              #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 16
+	addi.d	$a7, $a6, 16
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t0, $vr4, 0
+	addi.d	$t1, $a7, 15
+	xor	$t1, $t1, $a7
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB11_45
+	beq	$t1, $zero, .LBB11_44
+# %bb.25:                               #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 7, 0
+	beq	$t1, $zero, .LBB11_35
+# %bb.26:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB11_356
+# %bb.27:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2
+	bne	$t1, $zero, .LBB11_357
+.LBB11_28:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 4
+	bne	$t1, $zero, .LBB11_358
+.LBB11_29:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 8
+	bne	$t1, $zero, .LBB11_359
+.LBB11_30:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB11_360
+.LBB11_31:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 32
+	bne	$t1, $zero, .LBB11_361
+.LBB11_32:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 64
+	bne	$t1, $zero, .LBB11_362
+.LBB11_33:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 128
+	beq	$t1, $zero, .LBB11_35
+.LBB11_34:                              #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 7, 7
+.LBB11_35:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 15, 8
+	beq	$t1, $zero, .LBB11_45
+# %bb.36:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB11_363
+# %bb.37:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 512
+	bne	$t1, $zero, .LBB11_364
+.LBB11_38:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1024
+	bne	$t1, $zero, .LBB11_365
+.LBB11_39:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2048
+	bne	$t1, $zero, .LBB11_366
+.LBB11_40:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 12, 12
+	bne	$t1, $zero, .LBB11_367
+.LBB11_41:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 13, 13
+	bne	$t1, $zero, .LBB11_368
+.LBB11_42:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 14, 14
+	bne	$t1, $zero, .LBB11_369
+.LBB11_43:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_45
+	b	.LBB11_370
 	.p2align	4, , 16
-.LBB11_25:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 1
-	vreplvei.h	$vr5, $vr4, 4
-	vpickve2gr.b	$t2, $vr5, 4
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_9
-.LBB11_26:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 2
-	vreplvei.h	$vr4, $vr4, 6
-	vpickve2gr.b	$t2, $vr4, 6
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_10
-	b	.LBB11_11
+.LBB11_44:                              #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a7, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a7, 0
+.LBB11_45:                              #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 32
+	addi.d	$a7, $a6, 32
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t0, $vr4, 0
+	addi.d	$t1, $a7, 15
+	xor	$t1, $t1, $a7
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB11_66
+	beq	$t1, $zero, .LBB11_65
+# %bb.46:                               #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 7, 0
+	beq	$t1, $zero, .LBB11_56
+# %bb.47:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB11_371
+# %bb.48:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2
+	bne	$t1, $zero, .LBB11_372
+.LBB11_49:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 4
+	bne	$t1, $zero, .LBB11_373
+.LBB11_50:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 8
+	bne	$t1, $zero, .LBB11_374
+.LBB11_51:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB11_375
+.LBB11_52:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 32
+	bne	$t1, $zero, .LBB11_376
+.LBB11_53:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 64
+	bne	$t1, $zero, .LBB11_377
+.LBB11_54:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 128
+	beq	$t1, $zero, .LBB11_56
+.LBB11_55:                              #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 7, 7
+.LBB11_56:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 15, 8
+	beq	$t1, $zero, .LBB11_66
+# %bb.57:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB11_378
+# %bb.58:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 512
+	bne	$t1, $zero, .LBB11_379
+.LBB11_59:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1024
+	bne	$t1, $zero, .LBB11_380
+.LBB11_60:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2048
+	bne	$t1, $zero, .LBB11_381
+.LBB11_61:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 12, 12
+	bne	$t1, $zero, .LBB11_382
+.LBB11_62:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 13, 13
+	bne	$t1, $zero, .LBB11_383
+.LBB11_63:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 14, 14
+	bne	$t1, $zero, .LBB11_384
+.LBB11_64:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_66
+	b	.LBB11_385
 	.p2align	4, , 16
-.LBB11_27:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 4
-	vreplvei.h	$vr4, $vr3, 2
-	vpickve2gr.b	$t2, $vr4, 10
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_13
-.LBB11_28:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 5
-	vreplvei.h	$vr4, $vr3, 4
-	vpickve2gr.b	$t2, $vr4, 12
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_14
-.LBB11_29:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 6
-	vreplvei.h	$vr3, $vr3, 6
-	vpickve2gr.b	$t2, $vr3, 14
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_15
-	b	.LBB11_16
+.LBB11_65:                              #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a7, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a7, 0
+.LBB11_66:                              #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 48
+	addi.d	$a7, $a6, 48
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t0, $vr4, 0
+	addi.d	$t1, $a7, 15
+	xor	$t1, $t1, $a7
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB11_87
+	beq	$t1, $zero, .LBB11_86
+# %bb.67:                               #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 7, 0
+	beq	$t1, $zero, .LBB11_77
+# %bb.68:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB11_386
+# %bb.69:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2
+	bne	$t1, $zero, .LBB11_387
+.LBB11_70:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 4
+	bne	$t1, $zero, .LBB11_388
+.LBB11_71:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 8
+	bne	$t1, $zero, .LBB11_389
+.LBB11_72:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB11_390
+.LBB11_73:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 32
+	bne	$t1, $zero, .LBB11_391
+.LBB11_74:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 64
+	bne	$t1, $zero, .LBB11_392
+.LBB11_75:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 128
+	beq	$t1, $zero, .LBB11_77
+.LBB11_76:                              #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 7, 7
+.LBB11_77:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 15, 8
+	beq	$t1, $zero, .LBB11_87
+# %bb.78:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB11_393
+# %bb.79:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 512
+	bne	$t1, $zero, .LBB11_394
+.LBB11_80:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1024
+	bne	$t1, $zero, .LBB11_395
+.LBB11_81:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2048
+	bne	$t1, $zero, .LBB11_396
+.LBB11_82:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 12, 12
+	bne	$t1, $zero, .LBB11_397
+.LBB11_83:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 13, 13
+	bne	$t1, $zero, .LBB11_398
+.LBB11_84:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 14, 14
+	bne	$t1, $zero, .LBB11_399
+.LBB11_85:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_87
+	b	.LBB11_400
 	.p2align	4, , 16
-.LBB11_30:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 8
-	vreplvei.h	$vr4, $vr3, 2
-	vpickve2gr.b	$t2, $vr4, 2
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_18
-.LBB11_31:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 9
-	vreplvei.h	$vr4, $vr3, 4
-	vpickve2gr.b	$t2, $vr4, 4
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_19
-.LBB11_32:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 10
-	vreplvei.h	$vr3, $vr3, 6
-	vpickve2gr.b	$t2, $vr3, 6
-	andi	$t2, $t2, 1
-	bnez	$t2, .LBB11_20
-	b	.LBB11_21
+.LBB11_86:                              #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a7, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a7, 0
+.LBB11_87:                              #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 64
+	addi.d	$a7, $a6, 64
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t0, $vr4, 0
+	addi.d	$t1, $a7, 15
+	xor	$t1, $t1, $a7
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB11_108
+	beq	$t1, $zero, .LBB11_107
+# %bb.88:                               #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 7, 0
+	beq	$t1, $zero, .LBB11_98
+# %bb.89:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB11_401
+# %bb.90:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2
+	bne	$t1, $zero, .LBB11_402
+.LBB11_91:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 4
+	bne	$t1, $zero, .LBB11_403
+.LBB11_92:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 8
+	bne	$t1, $zero, .LBB11_404
+.LBB11_93:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB11_405
+.LBB11_94:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 32
+	bne	$t1, $zero, .LBB11_406
+.LBB11_95:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 64
+	bne	$t1, $zero, .LBB11_407
+.LBB11_96:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 128
+	beq	$t1, $zero, .LBB11_98
+.LBB11_97:                              #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 7, 7
+.LBB11_98:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 15, 8
+	beq	$t1, $zero, .LBB11_108
+# %bb.99:                               #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB11_408
+# %bb.100:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 512
+	bne	$t1, $zero, .LBB11_409
+.LBB11_101:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1024
+	bne	$t1, $zero, .LBB11_410
+.LBB11_102:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2048
+	bne	$t1, $zero, .LBB11_411
+.LBB11_103:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 12, 12
+	bne	$t1, $zero, .LBB11_412
+.LBB11_104:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 13, 13
+	bne	$t1, $zero, .LBB11_413
+.LBB11_105:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 14, 14
+	bne	$t1, $zero, .LBB11_414
+.LBB11_106:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_108
+	b	.LBB11_415
 	.p2align	4, , 16
-.LBB11_33:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 12
-	vreplvei.h	$vr3, $vr2, 2
-	vpickve2gr.b	$t2, $vr3, 10
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_23
-.LBB11_34:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 13
-	vreplvei.h	$vr3, $vr2, 4
-	vpickve2gr.b	$t2, $vr3, 12
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_24
-.LBB11_35:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 14
-	vreplvei.h	$vr2, $vr2, 6
-	vpickve2gr.b	$t2, $vr2, 14
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB11_4
-.LBB11_36:                              #   in Loop: Header=BB11_5 Depth=2
-	st.b	$a1, $t1, 15
-	b	.LBB11_4
+.LBB11_107:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a7, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a7, 0
+.LBB11_108:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 80
+	addi.d	$a7, $a6, 80
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t0, $vr4, 0
+	addi.d	$t1, $a7, 15
+	xor	$t1, $t1, $a7
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB11_129
+	beq	$t1, $zero, .LBB11_128
+# %bb.109:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 7, 0
+	beq	$t1, $zero, .LBB11_119
+# %bb.110:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB11_416
+# %bb.111:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2
+	bne	$t1, $zero, .LBB11_417
+.LBB11_112:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 4
+	bne	$t1, $zero, .LBB11_418
+.LBB11_113:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 8
+	bne	$t1, $zero, .LBB11_419
+.LBB11_114:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB11_420
+.LBB11_115:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 32
+	bne	$t1, $zero, .LBB11_421
+.LBB11_116:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 64
+	bne	$t1, $zero, .LBB11_422
+.LBB11_117:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 128
+	beq	$t1, $zero, .LBB11_119
+.LBB11_118:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 7, 7
+.LBB11_119:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 15, 8
+	beq	$t1, $zero, .LBB11_129
+# %bb.120:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB11_423
+# %bb.121:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 512
+	bne	$t1, $zero, .LBB11_424
+.LBB11_122:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1024
+	bne	$t1, $zero, .LBB11_425
+.LBB11_123:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2048
+	bne	$t1, $zero, .LBB11_426
+.LBB11_124:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 12, 12
+	bne	$t1, $zero, .LBB11_427
+.LBB11_125:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 13, 13
+	bne	$t1, $zero, .LBB11_428
+.LBB11_126:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 14, 14
+	bne	$t1, $zero, .LBB11_429
+.LBB11_127:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_129
+	b	.LBB11_430
 	.p2align	4, , 16
-.LBB11_37:                              #   in Loop: Header=BB11_3 Depth=1
-	ld.bu	$a5, $a5, -1
-	add.d	$a5, $a6, $a5
+.LBB11_128:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a7, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a7, 0
+.LBB11_129:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 96
+	addi.d	$a7, $a6, 96
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t0, $vr4, 0
+	addi.d	$t1, $a7, 15
+	xor	$t1, $t1, $a7
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB11_150
+	beq	$t1, $zero, .LBB11_149
+# %bb.130:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 7, 0
+	beq	$t1, $zero, .LBB11_140
+# %bb.131:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB11_431
+# %bb.132:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2
+	bne	$t1, $zero, .LBB11_432
+.LBB11_133:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 4
+	bne	$t1, $zero, .LBB11_433
+.LBB11_134:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 8
+	bne	$t1, $zero, .LBB11_434
+.LBB11_135:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB11_435
+.LBB11_136:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 32
+	bne	$t1, $zero, .LBB11_436
+.LBB11_137:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 64
+	bne	$t1, $zero, .LBB11_437
+.LBB11_138:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 128
+	beq	$t1, $zero, .LBB11_140
+.LBB11_139:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 7, 7
+.LBB11_140:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 15, 8
+	beq	$t1, $zero, .LBB11_150
+# %bb.141:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB11_438
+# %bb.142:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 512
+	bne	$t1, $zero, .LBB11_439
+.LBB11_143:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1024
+	bne	$t1, $zero, .LBB11_440
+.LBB11_144:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2048
+	bne	$t1, $zero, .LBB11_441
+.LBB11_145:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 12, 12
+	bne	$t1, $zero, .LBB11_442
+.LBB11_146:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 13, 13
+	bne	$t1, $zero, .LBB11_443
+.LBB11_147:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 14, 14
+	bne	$t1, $zero, .LBB11_444
+.LBB11_148:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_150
+	b	.LBB11_445
+	.p2align	4, , 16
+.LBB11_149:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a7, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a7, 0
+.LBB11_150:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 112
+	addi.d	$a7, $a6, 112
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t0, $vr4, 0
+	addi.d	$t1, $a7, 15
+	xor	$t1, $t1, $a7
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB11_171
+	beq	$t1, $zero, .LBB11_170
+# %bb.151:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 7, 0
+	beq	$t1, $zero, .LBB11_161
+# %bb.152:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB11_446
+# %bb.153:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2
+	bne	$t1, $zero, .LBB11_447
+.LBB11_154:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 4
+	bne	$t1, $zero, .LBB11_448
+.LBB11_155:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 8
+	bne	$t1, $zero, .LBB11_449
+.LBB11_156:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB11_450
+.LBB11_157:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 32
+	bne	$t1, $zero, .LBB11_451
+.LBB11_158:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 64
+	bne	$t1, $zero, .LBB11_452
+.LBB11_159:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 128
+	beq	$t1, $zero, .LBB11_161
+.LBB11_160:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 7, 7
+.LBB11_161:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 15, 8
+	beq	$t1, $zero, .LBB11_171
+# %bb.162:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB11_453
+# %bb.163:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 512
+	bne	$t1, $zero, .LBB11_454
+.LBB11_164:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1024
+	bne	$t1, $zero, .LBB11_455
+.LBB11_165:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2048
+	bne	$t1, $zero, .LBB11_456
+.LBB11_166:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 12, 12
+	bne	$t1, $zero, .LBB11_457
+.LBB11_167:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 13, 13
+	bne	$t1, $zero, .LBB11_458
+.LBB11_168:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 14, 14
+	bne	$t1, $zero, .LBB11_459
+.LBB11_169:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_171
+	b	.LBB11_460
+	.p2align	4, , 16
+.LBB11_170:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a7, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a7, 0
+.LBB11_171:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 128
+	addi.d	$a7, $a6, 128
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t0, $vr4, 0
+	addi.d	$t1, $a7, 15
+	xor	$t1, $t1, $a7
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB11_192
+	beq	$t1, $zero, .LBB11_191
+# %bb.172:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 7, 0
+	beq	$t1, $zero, .LBB11_182
+# %bb.173:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB11_461
+# %bb.174:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2
+	bne	$t1, $zero, .LBB11_462
+.LBB11_175:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 4
+	bne	$t1, $zero, .LBB11_463
+.LBB11_176:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 8
+	bne	$t1, $zero, .LBB11_464
+.LBB11_177:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB11_465
+.LBB11_178:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 32
+	bne	$t1, $zero, .LBB11_466
+.LBB11_179:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 64
+	bne	$t1, $zero, .LBB11_467
+.LBB11_180:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 128
+	beq	$t1, $zero, .LBB11_182
+.LBB11_181:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 7, 7
+.LBB11_182:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 15, 8
+	beq	$t1, $zero, .LBB11_192
+# %bb.183:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB11_468
+# %bb.184:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 512
+	bne	$t1, $zero, .LBB11_469
+.LBB11_185:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1024
+	bne	$t1, $zero, .LBB11_470
+.LBB11_186:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2048
+	bne	$t1, $zero, .LBB11_471
+.LBB11_187:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 12, 12
+	bne	$t1, $zero, .LBB11_472
+.LBB11_188:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 13, 13
+	bne	$t1, $zero, .LBB11_473
+.LBB11_189:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 14, 14
+	bne	$t1, $zero, .LBB11_474
+.LBB11_190:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_192
+	b	.LBB11_475
+	.p2align	4, , 16
+.LBB11_191:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a7, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a7, 0
+.LBB11_192:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 144
+	addi.d	$a7, $a6, 144
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t0, $vr4, 0
+	addi.d	$t1, $a7, 15
+	xor	$t1, $t1, $a7
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB11_213
+	beq	$t1, $zero, .LBB11_212
+# %bb.193:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 7, 0
+	beq	$t1, $zero, .LBB11_203
+# %bb.194:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB11_476
+# %bb.195:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2
+	bne	$t1, $zero, .LBB11_477
+.LBB11_196:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 4
+	bne	$t1, $zero, .LBB11_478
+.LBB11_197:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 8
+	bne	$t1, $zero, .LBB11_479
+.LBB11_198:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB11_480
+.LBB11_199:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 32
+	bne	$t1, $zero, .LBB11_481
+.LBB11_200:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 64
+	bne	$t1, $zero, .LBB11_482
+.LBB11_201:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 128
+	beq	$t1, $zero, .LBB11_203
+.LBB11_202:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 7, 7
+.LBB11_203:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 15, 8
+	beq	$t1, $zero, .LBB11_213
+# %bb.204:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB11_483
+# %bb.205:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 512
+	bne	$t1, $zero, .LBB11_484
+.LBB11_206:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1024
+	bne	$t1, $zero, .LBB11_485
+.LBB11_207:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2048
+	bne	$t1, $zero, .LBB11_486
+.LBB11_208:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 12, 12
+	bne	$t1, $zero, .LBB11_487
+.LBB11_209:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 13, 13
+	bne	$t1, $zero, .LBB11_488
+.LBB11_210:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 14, 14
+	bne	$t1, $zero, .LBB11_489
+.LBB11_211:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_213
+	b	.LBB11_490
+	.p2align	4, , 16
+.LBB11_212:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a7, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a7, 0
+.LBB11_213:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 160
+	addi.d	$a7, $a6, 160
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t0, $vr4, 0
+	addi.d	$t1, $a7, 15
+	xor	$t1, $t1, $a7
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB11_234
+	beq	$t1, $zero, .LBB11_233
+# %bb.214:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 7, 0
+	beq	$t1, $zero, .LBB11_224
+# %bb.215:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB11_491
+# %bb.216:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2
+	bne	$t1, $zero, .LBB11_492
+.LBB11_217:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 4
+	bne	$t1, $zero, .LBB11_493
+.LBB11_218:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 8
+	bne	$t1, $zero, .LBB11_494
+.LBB11_219:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB11_495
+.LBB11_220:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 32
+	bne	$t1, $zero, .LBB11_496
+.LBB11_221:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 64
+	bne	$t1, $zero, .LBB11_497
+.LBB11_222:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 128
+	beq	$t1, $zero, .LBB11_224
+.LBB11_223:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 7, 7
+.LBB11_224:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 15, 8
+	beq	$t1, $zero, .LBB11_234
+# %bb.225:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB11_498
+# %bb.226:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 512
+	bne	$t1, $zero, .LBB11_499
+.LBB11_227:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1024
+	bne	$t1, $zero, .LBB11_500
+.LBB11_228:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2048
+	bne	$t1, $zero, .LBB11_501
+.LBB11_229:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 12, 12
+	bne	$t1, $zero, .LBB11_502
+.LBB11_230:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 13, 13
+	bne	$t1, $zero, .LBB11_503
+.LBB11_231:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 14, 14
+	bne	$t1, $zero, .LBB11_504
+.LBB11_232:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_234
+	b	.LBB11_505
+	.p2align	4, , 16
+.LBB11_233:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a7, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a7, 0
+.LBB11_234:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 176
+	addi.d	$a7, $a6, 176
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t0, $vr4, 0
+	addi.d	$t1, $a7, 15
+	xor	$t1, $t1, $a7
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB11_255
+	beq	$t1, $zero, .LBB11_254
+# %bb.235:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 7, 0
+	beq	$t1, $zero, .LBB11_245
+# %bb.236:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB11_506
+# %bb.237:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2
+	bne	$t1, $zero, .LBB11_507
+.LBB11_238:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 4
+	bne	$t1, $zero, .LBB11_508
+.LBB11_239:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 8
+	bne	$t1, $zero, .LBB11_509
+.LBB11_240:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB11_510
+.LBB11_241:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 32
+	bne	$t1, $zero, .LBB11_511
+.LBB11_242:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 64
+	bne	$t1, $zero, .LBB11_512
+.LBB11_243:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 128
+	beq	$t1, $zero, .LBB11_245
+.LBB11_244:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 7, 7
+.LBB11_245:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 15, 8
+	beq	$t1, $zero, .LBB11_255
+# %bb.246:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB11_513
+# %bb.247:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 512
+	bne	$t1, $zero, .LBB11_514
+.LBB11_248:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1024
+	bne	$t1, $zero, .LBB11_515
+.LBB11_249:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2048
+	bne	$t1, $zero, .LBB11_516
+.LBB11_250:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 12, 12
+	bne	$t1, $zero, .LBB11_517
+.LBB11_251:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 13, 13
+	bne	$t1, $zero, .LBB11_518
+.LBB11_252:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 14, 14
+	bne	$t1, $zero, .LBB11_519
+.LBB11_253:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_255
+	b	.LBB11_520
+	.p2align	4, , 16
+.LBB11_254:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a7, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a7, 0
+.LBB11_255:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 192
+	addi.d	$a7, $a6, 192
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t0, $vr4, 0
+	addi.d	$t1, $a7, 15
+	xor	$t1, $t1, $a7
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB11_276
+	beq	$t1, $zero, .LBB11_275
+# %bb.256:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 7, 0
+	beq	$t1, $zero, .LBB11_266
+# %bb.257:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB11_521
+# %bb.258:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2
+	bne	$t1, $zero, .LBB11_522
+.LBB11_259:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 4
+	bne	$t1, $zero, .LBB11_523
+.LBB11_260:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 8
+	bne	$t1, $zero, .LBB11_524
+.LBB11_261:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB11_525
+.LBB11_262:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 32
+	bne	$t1, $zero, .LBB11_526
+.LBB11_263:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 64
+	bne	$t1, $zero, .LBB11_527
+.LBB11_264:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 128
+	beq	$t1, $zero, .LBB11_266
+.LBB11_265:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 7, 7
+.LBB11_266:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 15, 8
+	beq	$t1, $zero, .LBB11_276
+# %bb.267:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB11_528
+# %bb.268:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 512
+	bne	$t1, $zero, .LBB11_529
+.LBB11_269:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1024
+	bne	$t1, $zero, .LBB11_530
+.LBB11_270:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2048
+	bne	$t1, $zero, .LBB11_531
+.LBB11_271:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 12, 12
+	bne	$t1, $zero, .LBB11_532
+.LBB11_272:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 13, 13
+	bne	$t1, $zero, .LBB11_533
+.LBB11_273:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 14, 14
+	bne	$t1, $zero, .LBB11_534
+.LBB11_274:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_276
+	b	.LBB11_535
+	.p2align	4, , 16
+.LBB11_275:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a7, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a7, 0
+.LBB11_276:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 208
+	addi.d	$a7, $a6, 208
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t0, $vr4, 0
+	addi.d	$t1, $a7, 15
+	xor	$t1, $t1, $a7
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB11_297
+	beq	$t1, $zero, .LBB11_296
+# %bb.277:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 7, 0
+	beq	$t1, $zero, .LBB11_287
+# %bb.278:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB11_536
+# %bb.279:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2
+	bne	$t1, $zero, .LBB11_537
+.LBB11_280:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 4
+	bne	$t1, $zero, .LBB11_538
+.LBB11_281:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 8
+	bne	$t1, $zero, .LBB11_539
+.LBB11_282:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB11_540
+.LBB11_283:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 32
+	bne	$t1, $zero, .LBB11_541
+.LBB11_284:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 64
+	bne	$t1, $zero, .LBB11_542
+.LBB11_285:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 128
+	beq	$t1, $zero, .LBB11_287
+.LBB11_286:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 7, 7
+.LBB11_287:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 15, 8
+	beq	$t1, $zero, .LBB11_297
+# %bb.288:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB11_543
+# %bb.289:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 512
+	bne	$t1, $zero, .LBB11_544
+.LBB11_290:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1024
+	bne	$t1, $zero, .LBB11_545
+.LBB11_291:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2048
+	bne	$t1, $zero, .LBB11_546
+.LBB11_292:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 12, 12
+	bne	$t1, $zero, .LBB11_547
+.LBB11_293:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 13, 13
+	bne	$t1, $zero, .LBB11_548
+.LBB11_294:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 14, 14
+	bne	$t1, $zero, .LBB11_549
+.LBB11_295:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_297
+	b	.LBB11_550
+	.p2align	4, , 16
+.LBB11_296:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a7, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a7, 0
+.LBB11_297:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 224
+	addi.d	$a7, $a6, 224
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t0, $vr4, 0
+	addi.d	$t1, $a7, 15
+	xor	$t1, $t1, $a7
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB11_318
+	beq	$t1, $zero, .LBB11_317
+# %bb.298:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 7, 0
+	beq	$t1, $zero, .LBB11_308
+# %bb.299:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB11_551
+# %bb.300:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2
+	bne	$t1, $zero, .LBB11_552
+.LBB11_301:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 4
+	bne	$t1, $zero, .LBB11_553
+.LBB11_302:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 8
+	bne	$t1, $zero, .LBB11_554
+.LBB11_303:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB11_555
+.LBB11_304:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 32
+	bne	$t1, $zero, .LBB11_556
+.LBB11_305:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 64
+	bne	$t1, $zero, .LBB11_557
+.LBB11_306:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 128
+	beq	$t1, $zero, .LBB11_308
+.LBB11_307:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 7, 7
+.LBB11_308:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 15, 8
+	beq	$t1, $zero, .LBB11_318
+# %bb.309:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB11_558
+# %bb.310:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 512
+	bne	$t1, $zero, .LBB11_559
+.LBB11_311:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 1024
+	bne	$t1, $zero, .LBB11_560
+.LBB11_312:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t1, $t0, 2048
+	bne	$t1, $zero, .LBB11_561
+.LBB11_313:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 12, 12
+	bne	$t1, $zero, .LBB11_562
+.LBB11_314:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 13, 13
+	bne	$t1, $zero, .LBB11_563
+.LBB11_315:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t1, $t0, 14, 14
+	bne	$t1, $zero, .LBB11_564
+.LBB11_316:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_318
+	b	.LBB11_565
+	.p2align	4, , 16
+.LBB11_317:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a7, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a7, 0
+.LBB11_318:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr3, $a6, 240
+	addi.d	$a6, $a6, 240
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB11_339
+	beq	$t0, $zero, .LBB11_338
+# %bb.319:                              #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB11_329
+# %bb.320:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB11_566
+# %bb.321:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB11_567
+.LBB11_322:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB11_568
+.LBB11_323:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB11_569
+.LBB11_324:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB11_570
+.LBB11_325:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB11_571
+.LBB11_326:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB11_572
+.LBB11_327:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB11_329
+.LBB11_328:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB11_329:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB11_339
+# %bb.330:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB11_573
+# %bb.331:                              #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB11_574
+.LBB11_332:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB11_575
+.LBB11_333:                             #   in Loop: Header=BB11_3 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB11_576
+.LBB11_334:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB11_577
+.LBB11_335:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB11_578
+.LBB11_336:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB11_579
+.LBB11_337:                             #   in Loop: Header=BB11_3 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB11_339
+	b	.LBB11_580
+	.p2align	4, , 16
+.LBB11_338:                             #   in Loop: Header=BB11_3 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB11_339:                             #   in Loop: Header=BB11_3 Depth=1
+	add.d	$a6, $s0, $a4
+	ld.bu	$a6, $a6, -1
+	alsl.d	$a5, $a5, $a6, 3
 	ldx.bu	$a6, $fp, $a5
 	blt	$a6, $a1, .LBB11_2
-# %bb.38:                               #   in Loop: Header=BB11_3 Depth=1
-	sub.d	$a6, $a1, $a4
-	stx.b	$a6, $fp, $a5
+# %bb.340:                              #   in Loop: Header=BB11_3 Depth=1
+	stx.b	$a2, $fp, $a5
 	b	.LBB11_2
-.LBB11_39:
+.LBB11_341:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB11_7
+.LBB11_342:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB11_8
+.LBB11_343:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB11_9
+.LBB11_344:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB11_10
+.LBB11_345:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB11_11
+.LBB11_346:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB11_12
+.LBB11_347:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB11_13
+	b	.LBB11_14
+.LBB11_348:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB11_17
+.LBB11_349:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB11_18
+.LBB11_350:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB11_19
+.LBB11_351:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB11_20
+.LBB11_352:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB11_21
+.LBB11_353:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB11_22
+.LBB11_354:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB11_24
+.LBB11_355:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB11_24
+.LBB11_356:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 0, 0
+	andi	$t1, $t0, 2
+	beq	$t1, $zero, .LBB11_28
+.LBB11_357:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 1, 1
+	andi	$t1, $t0, 4
+	beq	$t1, $zero, .LBB11_29
+.LBB11_358:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 2, 2
+	andi	$t1, $t0, 8
+	beq	$t1, $zero, .LBB11_30
+.LBB11_359:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 3, 3
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB11_31
+.LBB11_360:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 4, 4
+	andi	$t1, $t0, 32
+	beq	$t1, $zero, .LBB11_32
+.LBB11_361:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 5, 5
+	andi	$t1, $t0, 64
+	beq	$t1, $zero, .LBB11_33
+.LBB11_362:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 6, 6
+	andi	$t1, $t0, 128
+	bne	$t1, $zero, .LBB11_34
+	b	.LBB11_35
+.LBB11_363:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 8, 8
+	andi	$t1, $t0, 512
+	beq	$t1, $zero, .LBB11_38
+.LBB11_364:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 9, 9
+	andi	$t1, $t0, 1024
+	beq	$t1, $zero, .LBB11_39
+.LBB11_365:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 10, 10
+	andi	$t1, $t0, 2048
+	beq	$t1, $zero, .LBB11_40
+.LBB11_366:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 11, 11
+	bstrpick.d	$t1, $t0, 12, 12
+	beq	$t1, $zero, .LBB11_41
+.LBB11_367:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 12, 12
+	bstrpick.d	$t1, $t0, 13, 13
+	beq	$t1, $zero, .LBB11_42
+.LBB11_368:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 13, 13
+	bstrpick.d	$t1, $t0, 14, 14
+	beq	$t1, $zero, .LBB11_43
+.LBB11_369:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 14, 14
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_45
+.LBB11_370:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 15, 15
+	b	.LBB11_45
+.LBB11_371:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 0, 0
+	andi	$t1, $t0, 2
+	beq	$t1, $zero, .LBB11_49
+.LBB11_372:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 1, 1
+	andi	$t1, $t0, 4
+	beq	$t1, $zero, .LBB11_50
+.LBB11_373:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 2, 2
+	andi	$t1, $t0, 8
+	beq	$t1, $zero, .LBB11_51
+.LBB11_374:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 3, 3
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB11_52
+.LBB11_375:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 4, 4
+	andi	$t1, $t0, 32
+	beq	$t1, $zero, .LBB11_53
+.LBB11_376:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 5, 5
+	andi	$t1, $t0, 64
+	beq	$t1, $zero, .LBB11_54
+.LBB11_377:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 6, 6
+	andi	$t1, $t0, 128
+	bne	$t1, $zero, .LBB11_55
+	b	.LBB11_56
+.LBB11_378:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 8, 8
+	andi	$t1, $t0, 512
+	beq	$t1, $zero, .LBB11_59
+.LBB11_379:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 9, 9
+	andi	$t1, $t0, 1024
+	beq	$t1, $zero, .LBB11_60
+.LBB11_380:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 10, 10
+	andi	$t1, $t0, 2048
+	beq	$t1, $zero, .LBB11_61
+.LBB11_381:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 11, 11
+	bstrpick.d	$t1, $t0, 12, 12
+	beq	$t1, $zero, .LBB11_62
+.LBB11_382:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 12, 12
+	bstrpick.d	$t1, $t0, 13, 13
+	beq	$t1, $zero, .LBB11_63
+.LBB11_383:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 13, 13
+	bstrpick.d	$t1, $t0, 14, 14
+	beq	$t1, $zero, .LBB11_64
+.LBB11_384:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 14, 14
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_66
+.LBB11_385:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 15, 15
+	b	.LBB11_66
+.LBB11_386:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 0, 0
+	andi	$t1, $t0, 2
+	beq	$t1, $zero, .LBB11_70
+.LBB11_387:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 1, 1
+	andi	$t1, $t0, 4
+	beq	$t1, $zero, .LBB11_71
+.LBB11_388:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 2, 2
+	andi	$t1, $t0, 8
+	beq	$t1, $zero, .LBB11_72
+.LBB11_389:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 3, 3
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB11_73
+.LBB11_390:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 4, 4
+	andi	$t1, $t0, 32
+	beq	$t1, $zero, .LBB11_74
+.LBB11_391:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 5, 5
+	andi	$t1, $t0, 64
+	beq	$t1, $zero, .LBB11_75
+.LBB11_392:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 6, 6
+	andi	$t1, $t0, 128
+	bne	$t1, $zero, .LBB11_76
+	b	.LBB11_77
+.LBB11_393:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 8, 8
+	andi	$t1, $t0, 512
+	beq	$t1, $zero, .LBB11_80
+.LBB11_394:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 9, 9
+	andi	$t1, $t0, 1024
+	beq	$t1, $zero, .LBB11_81
+.LBB11_395:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 10, 10
+	andi	$t1, $t0, 2048
+	beq	$t1, $zero, .LBB11_82
+.LBB11_396:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 11, 11
+	bstrpick.d	$t1, $t0, 12, 12
+	beq	$t1, $zero, .LBB11_83
+.LBB11_397:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 12, 12
+	bstrpick.d	$t1, $t0, 13, 13
+	beq	$t1, $zero, .LBB11_84
+.LBB11_398:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 13, 13
+	bstrpick.d	$t1, $t0, 14, 14
+	beq	$t1, $zero, .LBB11_85
+.LBB11_399:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 14, 14
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_87
+.LBB11_400:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 15, 15
+	b	.LBB11_87
+.LBB11_401:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 0, 0
+	andi	$t1, $t0, 2
+	beq	$t1, $zero, .LBB11_91
+.LBB11_402:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 1, 1
+	andi	$t1, $t0, 4
+	beq	$t1, $zero, .LBB11_92
+.LBB11_403:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 2, 2
+	andi	$t1, $t0, 8
+	beq	$t1, $zero, .LBB11_93
+.LBB11_404:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 3, 3
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB11_94
+.LBB11_405:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 4, 4
+	andi	$t1, $t0, 32
+	beq	$t1, $zero, .LBB11_95
+.LBB11_406:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 5, 5
+	andi	$t1, $t0, 64
+	beq	$t1, $zero, .LBB11_96
+.LBB11_407:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 6, 6
+	andi	$t1, $t0, 128
+	bne	$t1, $zero, .LBB11_97
+	b	.LBB11_98
+.LBB11_408:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 8, 8
+	andi	$t1, $t0, 512
+	beq	$t1, $zero, .LBB11_101
+.LBB11_409:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 9, 9
+	andi	$t1, $t0, 1024
+	beq	$t1, $zero, .LBB11_102
+.LBB11_410:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 10, 10
+	andi	$t1, $t0, 2048
+	beq	$t1, $zero, .LBB11_103
+.LBB11_411:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 11, 11
+	bstrpick.d	$t1, $t0, 12, 12
+	beq	$t1, $zero, .LBB11_104
+.LBB11_412:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 12, 12
+	bstrpick.d	$t1, $t0, 13, 13
+	beq	$t1, $zero, .LBB11_105
+.LBB11_413:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 13, 13
+	bstrpick.d	$t1, $t0, 14, 14
+	beq	$t1, $zero, .LBB11_106
+.LBB11_414:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 14, 14
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_108
+.LBB11_415:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 15, 15
+	b	.LBB11_108
+.LBB11_416:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 0, 0
+	andi	$t1, $t0, 2
+	beq	$t1, $zero, .LBB11_112
+.LBB11_417:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 1, 1
+	andi	$t1, $t0, 4
+	beq	$t1, $zero, .LBB11_113
+.LBB11_418:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 2, 2
+	andi	$t1, $t0, 8
+	beq	$t1, $zero, .LBB11_114
+.LBB11_419:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 3, 3
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB11_115
+.LBB11_420:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 4, 4
+	andi	$t1, $t0, 32
+	beq	$t1, $zero, .LBB11_116
+.LBB11_421:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 5, 5
+	andi	$t1, $t0, 64
+	beq	$t1, $zero, .LBB11_117
+.LBB11_422:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 6, 6
+	andi	$t1, $t0, 128
+	bne	$t1, $zero, .LBB11_118
+	b	.LBB11_119
+.LBB11_423:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 8, 8
+	andi	$t1, $t0, 512
+	beq	$t1, $zero, .LBB11_122
+.LBB11_424:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 9, 9
+	andi	$t1, $t0, 1024
+	beq	$t1, $zero, .LBB11_123
+.LBB11_425:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 10, 10
+	andi	$t1, $t0, 2048
+	beq	$t1, $zero, .LBB11_124
+.LBB11_426:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 11, 11
+	bstrpick.d	$t1, $t0, 12, 12
+	beq	$t1, $zero, .LBB11_125
+.LBB11_427:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 12, 12
+	bstrpick.d	$t1, $t0, 13, 13
+	beq	$t1, $zero, .LBB11_126
+.LBB11_428:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 13, 13
+	bstrpick.d	$t1, $t0, 14, 14
+	beq	$t1, $zero, .LBB11_127
+.LBB11_429:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 14, 14
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_129
+.LBB11_430:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 15, 15
+	b	.LBB11_129
+.LBB11_431:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 0, 0
+	andi	$t1, $t0, 2
+	beq	$t1, $zero, .LBB11_133
+.LBB11_432:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 1, 1
+	andi	$t1, $t0, 4
+	beq	$t1, $zero, .LBB11_134
+.LBB11_433:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 2, 2
+	andi	$t1, $t0, 8
+	beq	$t1, $zero, .LBB11_135
+.LBB11_434:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 3, 3
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB11_136
+.LBB11_435:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 4, 4
+	andi	$t1, $t0, 32
+	beq	$t1, $zero, .LBB11_137
+.LBB11_436:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 5, 5
+	andi	$t1, $t0, 64
+	beq	$t1, $zero, .LBB11_138
+.LBB11_437:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 6, 6
+	andi	$t1, $t0, 128
+	bne	$t1, $zero, .LBB11_139
+	b	.LBB11_140
+.LBB11_438:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 8, 8
+	andi	$t1, $t0, 512
+	beq	$t1, $zero, .LBB11_143
+.LBB11_439:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 9, 9
+	andi	$t1, $t0, 1024
+	beq	$t1, $zero, .LBB11_144
+.LBB11_440:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 10, 10
+	andi	$t1, $t0, 2048
+	beq	$t1, $zero, .LBB11_145
+.LBB11_441:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 11, 11
+	bstrpick.d	$t1, $t0, 12, 12
+	beq	$t1, $zero, .LBB11_146
+.LBB11_442:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 12, 12
+	bstrpick.d	$t1, $t0, 13, 13
+	beq	$t1, $zero, .LBB11_147
+.LBB11_443:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 13, 13
+	bstrpick.d	$t1, $t0, 14, 14
+	beq	$t1, $zero, .LBB11_148
+.LBB11_444:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 14, 14
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_150
+.LBB11_445:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 15, 15
+	b	.LBB11_150
+.LBB11_446:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 0, 0
+	andi	$t1, $t0, 2
+	beq	$t1, $zero, .LBB11_154
+.LBB11_447:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 1, 1
+	andi	$t1, $t0, 4
+	beq	$t1, $zero, .LBB11_155
+.LBB11_448:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 2, 2
+	andi	$t1, $t0, 8
+	beq	$t1, $zero, .LBB11_156
+.LBB11_449:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 3, 3
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB11_157
+.LBB11_450:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 4, 4
+	andi	$t1, $t0, 32
+	beq	$t1, $zero, .LBB11_158
+.LBB11_451:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 5, 5
+	andi	$t1, $t0, 64
+	beq	$t1, $zero, .LBB11_159
+.LBB11_452:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 6, 6
+	andi	$t1, $t0, 128
+	bne	$t1, $zero, .LBB11_160
+	b	.LBB11_161
+.LBB11_453:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 8, 8
+	andi	$t1, $t0, 512
+	beq	$t1, $zero, .LBB11_164
+.LBB11_454:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 9, 9
+	andi	$t1, $t0, 1024
+	beq	$t1, $zero, .LBB11_165
+.LBB11_455:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 10, 10
+	andi	$t1, $t0, 2048
+	beq	$t1, $zero, .LBB11_166
+.LBB11_456:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 11, 11
+	bstrpick.d	$t1, $t0, 12, 12
+	beq	$t1, $zero, .LBB11_167
+.LBB11_457:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 12, 12
+	bstrpick.d	$t1, $t0, 13, 13
+	beq	$t1, $zero, .LBB11_168
+.LBB11_458:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 13, 13
+	bstrpick.d	$t1, $t0, 14, 14
+	beq	$t1, $zero, .LBB11_169
+.LBB11_459:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 14, 14
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_171
+.LBB11_460:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 15, 15
+	b	.LBB11_171
+.LBB11_461:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 0, 0
+	andi	$t1, $t0, 2
+	beq	$t1, $zero, .LBB11_175
+.LBB11_462:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 1, 1
+	andi	$t1, $t0, 4
+	beq	$t1, $zero, .LBB11_176
+.LBB11_463:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 2, 2
+	andi	$t1, $t0, 8
+	beq	$t1, $zero, .LBB11_177
+.LBB11_464:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 3, 3
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB11_178
+.LBB11_465:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 4, 4
+	andi	$t1, $t0, 32
+	beq	$t1, $zero, .LBB11_179
+.LBB11_466:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 5, 5
+	andi	$t1, $t0, 64
+	beq	$t1, $zero, .LBB11_180
+.LBB11_467:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 6, 6
+	andi	$t1, $t0, 128
+	bne	$t1, $zero, .LBB11_181
+	b	.LBB11_182
+.LBB11_468:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 8, 8
+	andi	$t1, $t0, 512
+	beq	$t1, $zero, .LBB11_185
+.LBB11_469:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 9, 9
+	andi	$t1, $t0, 1024
+	beq	$t1, $zero, .LBB11_186
+.LBB11_470:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 10, 10
+	andi	$t1, $t0, 2048
+	beq	$t1, $zero, .LBB11_187
+.LBB11_471:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 11, 11
+	bstrpick.d	$t1, $t0, 12, 12
+	beq	$t1, $zero, .LBB11_188
+.LBB11_472:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 12, 12
+	bstrpick.d	$t1, $t0, 13, 13
+	beq	$t1, $zero, .LBB11_189
+.LBB11_473:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 13, 13
+	bstrpick.d	$t1, $t0, 14, 14
+	beq	$t1, $zero, .LBB11_190
+.LBB11_474:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 14, 14
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_192
+.LBB11_475:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 15, 15
+	b	.LBB11_192
+.LBB11_476:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 0, 0
+	andi	$t1, $t0, 2
+	beq	$t1, $zero, .LBB11_196
+.LBB11_477:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 1, 1
+	andi	$t1, $t0, 4
+	beq	$t1, $zero, .LBB11_197
+.LBB11_478:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 2, 2
+	andi	$t1, $t0, 8
+	beq	$t1, $zero, .LBB11_198
+.LBB11_479:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 3, 3
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB11_199
+.LBB11_480:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 4, 4
+	andi	$t1, $t0, 32
+	beq	$t1, $zero, .LBB11_200
+.LBB11_481:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 5, 5
+	andi	$t1, $t0, 64
+	beq	$t1, $zero, .LBB11_201
+.LBB11_482:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 6, 6
+	andi	$t1, $t0, 128
+	bne	$t1, $zero, .LBB11_202
+	b	.LBB11_203
+.LBB11_483:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 8, 8
+	andi	$t1, $t0, 512
+	beq	$t1, $zero, .LBB11_206
+.LBB11_484:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 9, 9
+	andi	$t1, $t0, 1024
+	beq	$t1, $zero, .LBB11_207
+.LBB11_485:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 10, 10
+	andi	$t1, $t0, 2048
+	beq	$t1, $zero, .LBB11_208
+.LBB11_486:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 11, 11
+	bstrpick.d	$t1, $t0, 12, 12
+	beq	$t1, $zero, .LBB11_209
+.LBB11_487:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 12, 12
+	bstrpick.d	$t1, $t0, 13, 13
+	beq	$t1, $zero, .LBB11_210
+.LBB11_488:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 13, 13
+	bstrpick.d	$t1, $t0, 14, 14
+	beq	$t1, $zero, .LBB11_211
+.LBB11_489:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 14, 14
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_213
+.LBB11_490:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 15, 15
+	b	.LBB11_213
+.LBB11_491:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 0, 0
+	andi	$t1, $t0, 2
+	beq	$t1, $zero, .LBB11_217
+.LBB11_492:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 1, 1
+	andi	$t1, $t0, 4
+	beq	$t1, $zero, .LBB11_218
+.LBB11_493:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 2, 2
+	andi	$t1, $t0, 8
+	beq	$t1, $zero, .LBB11_219
+.LBB11_494:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 3, 3
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB11_220
+.LBB11_495:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 4, 4
+	andi	$t1, $t0, 32
+	beq	$t1, $zero, .LBB11_221
+.LBB11_496:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 5, 5
+	andi	$t1, $t0, 64
+	beq	$t1, $zero, .LBB11_222
+.LBB11_497:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 6, 6
+	andi	$t1, $t0, 128
+	bne	$t1, $zero, .LBB11_223
+	b	.LBB11_224
+.LBB11_498:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 8, 8
+	andi	$t1, $t0, 512
+	beq	$t1, $zero, .LBB11_227
+.LBB11_499:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 9, 9
+	andi	$t1, $t0, 1024
+	beq	$t1, $zero, .LBB11_228
+.LBB11_500:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 10, 10
+	andi	$t1, $t0, 2048
+	beq	$t1, $zero, .LBB11_229
+.LBB11_501:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 11, 11
+	bstrpick.d	$t1, $t0, 12, 12
+	beq	$t1, $zero, .LBB11_230
+.LBB11_502:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 12, 12
+	bstrpick.d	$t1, $t0, 13, 13
+	beq	$t1, $zero, .LBB11_231
+.LBB11_503:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 13, 13
+	bstrpick.d	$t1, $t0, 14, 14
+	beq	$t1, $zero, .LBB11_232
+.LBB11_504:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 14, 14
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_234
+.LBB11_505:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 15, 15
+	b	.LBB11_234
+.LBB11_506:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 0, 0
+	andi	$t1, $t0, 2
+	beq	$t1, $zero, .LBB11_238
+.LBB11_507:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 1, 1
+	andi	$t1, $t0, 4
+	beq	$t1, $zero, .LBB11_239
+.LBB11_508:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 2, 2
+	andi	$t1, $t0, 8
+	beq	$t1, $zero, .LBB11_240
+.LBB11_509:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 3, 3
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB11_241
+.LBB11_510:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 4, 4
+	andi	$t1, $t0, 32
+	beq	$t1, $zero, .LBB11_242
+.LBB11_511:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 5, 5
+	andi	$t1, $t0, 64
+	beq	$t1, $zero, .LBB11_243
+.LBB11_512:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 6, 6
+	andi	$t1, $t0, 128
+	bne	$t1, $zero, .LBB11_244
+	b	.LBB11_245
+.LBB11_513:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 8, 8
+	andi	$t1, $t0, 512
+	beq	$t1, $zero, .LBB11_248
+.LBB11_514:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 9, 9
+	andi	$t1, $t0, 1024
+	beq	$t1, $zero, .LBB11_249
+.LBB11_515:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 10, 10
+	andi	$t1, $t0, 2048
+	beq	$t1, $zero, .LBB11_250
+.LBB11_516:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 11, 11
+	bstrpick.d	$t1, $t0, 12, 12
+	beq	$t1, $zero, .LBB11_251
+.LBB11_517:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 12, 12
+	bstrpick.d	$t1, $t0, 13, 13
+	beq	$t1, $zero, .LBB11_252
+.LBB11_518:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 13, 13
+	bstrpick.d	$t1, $t0, 14, 14
+	beq	$t1, $zero, .LBB11_253
+.LBB11_519:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 14, 14
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_255
+.LBB11_520:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 15, 15
+	b	.LBB11_255
+.LBB11_521:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 0, 0
+	andi	$t1, $t0, 2
+	beq	$t1, $zero, .LBB11_259
+.LBB11_522:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 1, 1
+	andi	$t1, $t0, 4
+	beq	$t1, $zero, .LBB11_260
+.LBB11_523:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 2, 2
+	andi	$t1, $t0, 8
+	beq	$t1, $zero, .LBB11_261
+.LBB11_524:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 3, 3
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB11_262
+.LBB11_525:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 4, 4
+	andi	$t1, $t0, 32
+	beq	$t1, $zero, .LBB11_263
+.LBB11_526:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 5, 5
+	andi	$t1, $t0, 64
+	beq	$t1, $zero, .LBB11_264
+.LBB11_527:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 6, 6
+	andi	$t1, $t0, 128
+	bne	$t1, $zero, .LBB11_265
+	b	.LBB11_266
+.LBB11_528:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 8, 8
+	andi	$t1, $t0, 512
+	beq	$t1, $zero, .LBB11_269
+.LBB11_529:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 9, 9
+	andi	$t1, $t0, 1024
+	beq	$t1, $zero, .LBB11_270
+.LBB11_530:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 10, 10
+	andi	$t1, $t0, 2048
+	beq	$t1, $zero, .LBB11_271
+.LBB11_531:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 11, 11
+	bstrpick.d	$t1, $t0, 12, 12
+	beq	$t1, $zero, .LBB11_272
+.LBB11_532:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 12, 12
+	bstrpick.d	$t1, $t0, 13, 13
+	beq	$t1, $zero, .LBB11_273
+.LBB11_533:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 13, 13
+	bstrpick.d	$t1, $t0, 14, 14
+	beq	$t1, $zero, .LBB11_274
+.LBB11_534:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 14, 14
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_276
+.LBB11_535:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 15, 15
+	b	.LBB11_276
+.LBB11_536:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 0, 0
+	andi	$t1, $t0, 2
+	beq	$t1, $zero, .LBB11_280
+.LBB11_537:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 1, 1
+	andi	$t1, $t0, 4
+	beq	$t1, $zero, .LBB11_281
+.LBB11_538:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 2, 2
+	andi	$t1, $t0, 8
+	beq	$t1, $zero, .LBB11_282
+.LBB11_539:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 3, 3
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB11_283
+.LBB11_540:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 4, 4
+	andi	$t1, $t0, 32
+	beq	$t1, $zero, .LBB11_284
+.LBB11_541:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 5, 5
+	andi	$t1, $t0, 64
+	beq	$t1, $zero, .LBB11_285
+.LBB11_542:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 6, 6
+	andi	$t1, $t0, 128
+	bne	$t1, $zero, .LBB11_286
+	b	.LBB11_287
+.LBB11_543:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 8, 8
+	andi	$t1, $t0, 512
+	beq	$t1, $zero, .LBB11_290
+.LBB11_544:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 9, 9
+	andi	$t1, $t0, 1024
+	beq	$t1, $zero, .LBB11_291
+.LBB11_545:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 10, 10
+	andi	$t1, $t0, 2048
+	beq	$t1, $zero, .LBB11_292
+.LBB11_546:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 11, 11
+	bstrpick.d	$t1, $t0, 12, 12
+	beq	$t1, $zero, .LBB11_293
+.LBB11_547:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 12, 12
+	bstrpick.d	$t1, $t0, 13, 13
+	beq	$t1, $zero, .LBB11_294
+.LBB11_548:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 13, 13
+	bstrpick.d	$t1, $t0, 14, 14
+	beq	$t1, $zero, .LBB11_295
+.LBB11_549:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 14, 14
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_297
+.LBB11_550:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 15, 15
+	b	.LBB11_297
+.LBB11_551:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 0, 0
+	andi	$t1, $t0, 2
+	beq	$t1, $zero, .LBB11_301
+.LBB11_552:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 1, 1
+	andi	$t1, $t0, 4
+	beq	$t1, $zero, .LBB11_302
+.LBB11_553:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 2, 2
+	andi	$t1, $t0, 8
+	beq	$t1, $zero, .LBB11_303
+.LBB11_554:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 3, 3
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB11_304
+.LBB11_555:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 4, 4
+	andi	$t1, $t0, 32
+	beq	$t1, $zero, .LBB11_305
+.LBB11_556:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 5, 5
+	andi	$t1, $t0, 64
+	beq	$t1, $zero, .LBB11_306
+.LBB11_557:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 6, 6
+	andi	$t1, $t0, 128
+	bne	$t1, $zero, .LBB11_307
+	b	.LBB11_308
+.LBB11_558:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 8, 8
+	andi	$t1, $t0, 512
+	beq	$t1, $zero, .LBB11_311
+.LBB11_559:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 9, 9
+	andi	$t1, $t0, 1024
+	beq	$t1, $zero, .LBB11_312
+.LBB11_560:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 10, 10
+	andi	$t1, $t0, 2048
+	beq	$t1, $zero, .LBB11_313
+.LBB11_561:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 11, 11
+	bstrpick.d	$t1, $t0, 12, 12
+	beq	$t1, $zero, .LBB11_314
+.LBB11_562:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 12, 12
+	bstrpick.d	$t1, $t0, 13, 13
+	beq	$t1, $zero, .LBB11_315
+.LBB11_563:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 13, 13
+	bstrpick.d	$t1, $t0, 14, 14
+	beq	$t1, $zero, .LBB11_316
+.LBB11_564:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 14, 14
+	bstrpick.d	$t0, $t0, 15, 15
+	beq	$t0, $zero, .LBB11_318
+.LBB11_565:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a7, 15, 15
+	b	.LBB11_318
+.LBB11_566:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB11_322
+.LBB11_567:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB11_323
+.LBB11_568:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB11_324
+.LBB11_569:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB11_325
+.LBB11_570:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB11_326
+.LBB11_571:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB11_327
+.LBB11_572:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB11_328
+	b	.LBB11_329
+.LBB11_573:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB11_332
+.LBB11_574:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB11_333
+.LBB11_575:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB11_334
+.LBB11_576:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB11_335
+.LBB11_577:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB11_336
+.LBB11_578:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB11_337
+.LBB11_579:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB11_339
+.LBB11_580:                             #   in Loop: Header=BB11_3 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB11_339
+.LBB11_581:
 	move	$a2, $zero
 	st.w	$a1, $a0, %pc_lo12(shift_1)
 	ldx.bu	$a3, $s0, $a1
@@ -3247,16 +5419,16 @@ m_preprocess:                           # @m_preprocess
 	ori	$a5, $zero, 1
 	sub.w	$a5, $a5, $s1
 	.p2align	4, , 16
-.LBB11_40:                              # =>This Inner Loop Header: Depth=1
+.LBB11_582:                             # =>This Inner Loop Header: Depth=1
 	add.w	$a6, $a4, $a2
 	ldx.bu	$a6, $s0, $a6
-	beq	$a6, $a3, .LBB11_44
-# %bb.41:                               #   in Loop: Header=BB11_40 Depth=1
+	beq	$a6, $a3, .LBB11_586
+# %bb.583:                              #   in Loop: Header=BB11_582 Depth=1
 	addi.w	$a2, $a2, -1
-	bne	$a5, $a2, .LBB11_40
-# %bb.42:
-	beqz	$a1, .LBB11_46
-.LBB11_43:
+	bne	$a5, $a2, .LBB11_582
+# %bb.584:
+	beqz	$a1, .LBB11_588
+.LBB11_585:
 	st.b	$zero, $fp, 0
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -3264,16 +5436,16 @@ m_preprocess:                           # @m_preprocess
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret
-.LBB11_44:
+.LBB11_586:
 	ori	$a1, $zero, 1
 	sub.w	$a1, $a1, $a2
-.LBB11_45:
+.LBB11_587:
 	st.w	$a1, $a0, %pc_lo12(shift_1)
-	bnez	$a1, .LBB11_43
-.LBB11_46:
+	bnez	$a1, .LBB11_585
+.LBB11_588:
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, %pc_lo12(shift_1)
-	b	.LBB11_43
+	b	.LBB11_585
 .Lfunc_end11:
 	.size	m_preprocess, .Lfunc_end11-m_preprocess
                                         # -- End function
@@ -3717,7 +5889,7 @@ sgrep:                                  # @sgrep
 	jirl	$ra, $ra, 0
 	ldptr.w	$a1, $sp, 10564
 	ori	$a0, $zero, 256
-	bge	$a1, $a0, .LBB15_164
+	bge	$a1, $a0, .LBB15_736
 # %bb.7:
 	pcalau12i	$a0, %got_pc_hi20(WHOLELINE)
 	ld.d	$a0, $a0, %got_pc_lo12(WHOLELINE)
@@ -3729,16 +5901,16 @@ sgrep:                                  # @sgrep
 	pcalau12i	$a0, %got_pc_hi20(DNA)
 	ld.d	$a0, $a0, %got_pc_lo12(DNA)
 	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB15_50
+	beqz	$a0, .LBB15_592
 # %bb.9:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(prep4)
 	jirl	$ra, $ra, 0
-	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
-	b	.LBB15_87
+	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
+	b	.LBB15_665
 .LBB15_10:
 	ori	$a0, $zero, 21
-	blt	$a1, $a0, .LBB15_56
+	blt	$a1, $a0, .LBB15_598
 # %bb.11:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strlen)
@@ -3754,221 +5926,2357 @@ sgrep:                                  # @sgrep
 	addi.w	$a1, $s4, 0
 	ori	$a2, $zero, 2
 	addi.w	$a0, $s4, -1
-	blt	$a1, $a2, .LBB15_68
+	blt	$a1, $a2, .LBB15_610
 # %bb.12:
-	vreplgr2vr.w	$vr0, $s4
-	vrepli.b	$vr1, 0
-	ori	$a1, $zero, 256
+	move	$a1, $zero
+	vreplgr2vr.b	$vr0, $a0
+	vreplgr2vr.w	$vr1, $s4
+	vrepli.b	$vr2, 0
 	ori	$a2, $zero, 1
 	move	$a4, $a0
+	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB15_14
 	.p2align	4, , 16
 .LBB15_13:                              #   in Loop: Header=BB15_14 Depth=1
 	addi.d	$a4, $a3, -1
-	bge	$a2, $a3, .LBB15_69
-.LBB15_14:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB15_16 Depth 2
+	addi.d	$a1, $a1, 1
+	bge	$a2, $a3, .LBB15_612
+.LBB15_14:                              # =>This Inner Loop Header: Depth=1
 	move	$a3, $a4
-	ldx.bu	$a7, $fp, $a4
-	move	$a6, $zero
-	add.d	$a4, $fp, $a4
-	slli.d	$a5, $a7, 3
-	alsl.d	$a7, $a7, $s3, 3
-	b	.LBB15_16
+	ldx.bu	$a4, $fp, $a4
+	slli.d	$a5, $a4, 3
+	vldx	$vr3, $s3, $a5
+	alsl.d	$a5, $a4, $s3, 3
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a6, $vr4, 0
+	addi.d	$a7, $a5, 15
+	xor	$a7, $a7, $a5
+	srli.d	$a7, $a7, 12
+	beq	$a6, $zero, .LBB15_35
+	beq	$a7, $zero, .LBB15_34
+# %bb.15:                               #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a6, 7, 0
+	beq	$a7, $zero, .LBB15_25
+# %bb.16:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 1
+	bne	$a7, $zero, .LBB15_352
+# %bb.17:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 2
+	bne	$a7, $zero, .LBB15_353
+.LBB15_18:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 4
+	bne	$a7, $zero, .LBB15_354
+.LBB15_19:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 8
+	bne	$a7, $zero, .LBB15_355
+.LBB15_20:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 16
+	bne	$a7, $zero, .LBB15_356
+.LBB15_21:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 32
+	bne	$a7, $zero, .LBB15_357
+.LBB15_22:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 64
+	bne	$a7, $zero, .LBB15_358
+.LBB15_23:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 128
+	beq	$a7, $zero, .LBB15_25
+.LBB15_24:                              #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 7, 7
+.LBB15_25:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a6, 15, 8
+	beq	$a7, $zero, .LBB15_35
+# %bb.26:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 256
+	bne	$a7, $zero, .LBB15_359
+# %bb.27:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 512
+	bne	$a7, $zero, .LBB15_360
+.LBB15_28:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 1024
+	bne	$a7, $zero, .LBB15_361
+.LBB15_29:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 2048
+	bne	$a7, $zero, .LBB15_362
+.LBB15_30:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a6, 12, 12
+	bne	$a7, $zero, .LBB15_363
+.LBB15_31:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a6, 13, 13
+	bne	$a7, $zero, .LBB15_364
+.LBB15_32:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a6, 14, 14
+	bne	$a7, $zero, .LBB15_365
+.LBB15_33:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a6, $a6, 15, 15
+	beq	$a6, $zero, .LBB15_35
+	b	.LBB15_366
 	.p2align	4, , 16
-.LBB15_15:                              #   in Loop: Header=BB15_16 Depth=2
-	addi.d	$a6, $a6, 16
-	beq	$a6, $a1, .LBB15_48
-.LBB15_16:                              #   Parent Loop BB15_14 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vldx	$vr2, $a7, $a6
-	vilvl.b	$vr3, $vr1, $vr2
-	vilvl.h	$vr4, $vr1, $vr3
-	vseq.w	$vr4, $vr0, $vr4
-	vpickve2gr.b	$t0, $vr4, 0
-	andi	$t0, $t0, 1
-	beqz	$t0, .LBB15_18
-# %bb.17:                               #   in Loop: Header=BB15_16 Depth=2
-	stx.b	$a0, $a7, $a6
-.LBB15_18:                              #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr5, $vr4, 2
-	vpickve2gr.b	$t0, $vr5, 2
-	andi	$t1, $t0, 1
-	add.d	$t0, $a7, $a6
-	bnez	$t1, .LBB15_36
-# %bb.19:                               #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr5, $vr4, 4
-	vpickve2gr.b	$t1, $vr5, 4
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_37
-.LBB15_20:                              #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr4, $vr4, 6
-	vpickve2gr.b	$t1, $vr4, 6
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_22
-.LBB15_21:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 3
-.LBB15_22:                              #   in Loop: Header=BB15_16 Depth=2
-	vilvh.h	$vr3, $vr1, $vr3
-	vseq.w	$vr3, $vr0, $vr3
-	vreplvei.h	$vr4, $vr3, 0
-	vpickve2gr.b	$t1, $vr4, 8
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_38
-# %bb.23:                               #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr4, $vr3, 2
-	vpickve2gr.b	$t1, $vr4, 10
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_39
-.LBB15_24:                              #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr4, $vr3, 4
-	vpickve2gr.b	$t1, $vr4, 12
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_40
-.LBB15_25:                              #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr3, $vr3, 6
-	vpickve2gr.b	$t1, $vr3, 14
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_27
-.LBB15_26:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 7
-.LBB15_27:                              #   in Loop: Header=BB15_16 Depth=2
-	vilvh.b	$vr2, $vr1, $vr2
-	vilvl.h	$vr3, $vr1, $vr2
-	vseq.w	$vr3, $vr0, $vr3
-	vpickve2gr.b	$t1, $vr3, 0
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_41
-# %bb.28:                               #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr4, $vr3, 2
-	vpickve2gr.b	$t1, $vr4, 2
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_42
-.LBB15_29:                              #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr4, $vr3, 4
-	vpickve2gr.b	$t1, $vr4, 4
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_43
-.LBB15_30:                              #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr3, $vr3, 6
-	vpickve2gr.b	$t1, $vr3, 6
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_32
-.LBB15_31:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 11
-.LBB15_32:                              #   in Loop: Header=BB15_16 Depth=2
-	vilvh.h	$vr2, $vr1, $vr2
-	vseq.w	$vr2, $vr0, $vr2
-	vreplvei.h	$vr3, $vr2, 0
-	vpickve2gr.b	$t1, $vr3, 8
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_44
-# %bb.33:                               #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr3, $vr2, 2
-	vpickve2gr.b	$t1, $vr3, 10
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_45
-.LBB15_34:                              #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr3, $vr2, 4
-	vpickve2gr.b	$t1, $vr3, 12
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_46
-.LBB15_35:                              #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr2, $vr2, 6
-	vpickve2gr.b	$t1, $vr2, 14
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_15
-	b	.LBB15_47
+.LBB15_34:                              #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a5, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a5, 0
+.LBB15_35:                              #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 16
+	addi.d	$a6, $a5, 16
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB15_56
+	beq	$t0, $zero, .LBB15_55
+# %bb.36:                               #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB15_46
+# %bb.37:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB15_367
+# %bb.38:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB15_368
+.LBB15_39:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB15_369
+.LBB15_40:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB15_370
+.LBB15_41:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB15_371
+.LBB15_42:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB15_372
+.LBB15_43:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB15_373
+.LBB15_44:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB15_46
+.LBB15_45:                              #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB15_46:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB15_56
+# %bb.47:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB15_374
+# %bb.48:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB15_375
+.LBB15_49:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB15_376
+.LBB15_50:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB15_377
+.LBB15_51:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB15_378
+.LBB15_52:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB15_379
+.LBB15_53:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB15_380
+.LBB15_54:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_56
+	b	.LBB15_381
 	.p2align	4, , 16
-.LBB15_36:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 1
-	vreplvei.h	$vr5, $vr4, 4
-	vpickve2gr.b	$t1, $vr5, 4
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_20
-.LBB15_37:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 2
-	vreplvei.h	$vr4, $vr4, 6
-	vpickve2gr.b	$t1, $vr4, 6
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_21
-	b	.LBB15_22
+.LBB15_55:                              #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB15_56:                              #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 32
+	addi.d	$a6, $a5, 32
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB15_77
+	beq	$t0, $zero, .LBB15_76
+# %bb.57:                               #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB15_67
+# %bb.58:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB15_382
+# %bb.59:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB15_383
+.LBB15_60:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB15_384
+.LBB15_61:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB15_385
+.LBB15_62:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB15_386
+.LBB15_63:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB15_387
+.LBB15_64:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB15_388
+.LBB15_65:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB15_67
+.LBB15_66:                              #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB15_67:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB15_77
+# %bb.68:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB15_389
+# %bb.69:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB15_390
+.LBB15_70:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB15_391
+.LBB15_71:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB15_392
+.LBB15_72:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB15_393
+.LBB15_73:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB15_394
+.LBB15_74:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB15_395
+.LBB15_75:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_77
+	b	.LBB15_396
 	.p2align	4, , 16
-.LBB15_38:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 4
-	vreplvei.h	$vr4, $vr3, 2
-	vpickve2gr.b	$t1, $vr4, 10
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_24
-.LBB15_39:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 5
-	vreplvei.h	$vr4, $vr3, 4
-	vpickve2gr.b	$t1, $vr4, 12
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_25
-.LBB15_40:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 6
-	vreplvei.h	$vr3, $vr3, 6
-	vpickve2gr.b	$t1, $vr3, 14
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_26
-	b	.LBB15_27
+.LBB15_76:                              #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB15_77:                              #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 48
+	addi.d	$a6, $a5, 48
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB15_98
+	beq	$t0, $zero, .LBB15_97
+# %bb.78:                               #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB15_88
+# %bb.79:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB15_397
+# %bb.80:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB15_398
+.LBB15_81:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB15_399
+.LBB15_82:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB15_400
+.LBB15_83:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB15_401
+.LBB15_84:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB15_402
+.LBB15_85:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB15_403
+.LBB15_86:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB15_88
+.LBB15_87:                              #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB15_88:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB15_98
+# %bb.89:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB15_404
+# %bb.90:                               #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB15_405
+.LBB15_91:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB15_406
+.LBB15_92:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB15_407
+.LBB15_93:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB15_408
+.LBB15_94:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB15_409
+.LBB15_95:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB15_410
+.LBB15_96:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_98
+	b	.LBB15_411
 	.p2align	4, , 16
-.LBB15_41:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 8
-	vreplvei.h	$vr4, $vr3, 2
-	vpickve2gr.b	$t1, $vr4, 2
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_29
-.LBB15_42:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 9
-	vreplvei.h	$vr4, $vr3, 4
-	vpickve2gr.b	$t1, $vr4, 4
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_30
-.LBB15_43:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 10
-	vreplvei.h	$vr3, $vr3, 6
-	vpickve2gr.b	$t1, $vr3, 6
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB15_31
-	b	.LBB15_32
+.LBB15_97:                              #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB15_98:                              #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 64
+	addi.d	$a6, $a5, 64
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB15_119
+	beq	$t0, $zero, .LBB15_118
+# %bb.99:                               #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB15_109
+# %bb.100:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB15_412
+# %bb.101:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB15_413
+.LBB15_102:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB15_414
+.LBB15_103:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB15_415
+.LBB15_104:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB15_416
+.LBB15_105:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB15_417
+.LBB15_106:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB15_418
+.LBB15_107:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB15_109
+.LBB15_108:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB15_109:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB15_119
+# %bb.110:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB15_419
+# %bb.111:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB15_420
+.LBB15_112:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB15_421
+.LBB15_113:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB15_422
+.LBB15_114:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB15_423
+.LBB15_115:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB15_424
+.LBB15_116:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB15_425
+.LBB15_117:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_119
+	b	.LBB15_426
 	.p2align	4, , 16
-.LBB15_44:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 12
-	vreplvei.h	$vr3, $vr2, 2
-	vpickve2gr.b	$t1, $vr3, 10
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_34
-.LBB15_45:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 13
-	vreplvei.h	$vr3, $vr2, 4
-	vpickve2gr.b	$t1, $vr3, 12
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_35
-.LBB15_46:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 14
-	vreplvei.h	$vr2, $vr2, 6
-	vpickve2gr.b	$t1, $vr2, 14
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB15_15
-.LBB15_47:                              #   in Loop: Header=BB15_16 Depth=2
-	st.b	$a0, $t0, 15
-	b	.LBB15_15
+.LBB15_118:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB15_119:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 80
+	addi.d	$a6, $a5, 80
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB15_140
+	beq	$t0, $zero, .LBB15_139
+# %bb.120:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB15_130
+# %bb.121:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB15_427
+# %bb.122:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB15_428
+.LBB15_123:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB15_429
+.LBB15_124:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB15_430
+.LBB15_125:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB15_431
+.LBB15_126:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB15_432
+.LBB15_127:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB15_433
+.LBB15_128:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB15_130
+.LBB15_129:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB15_130:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB15_140
+# %bb.131:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB15_434
+# %bb.132:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB15_435
+.LBB15_133:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB15_436
+.LBB15_134:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB15_437
+.LBB15_135:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB15_438
+.LBB15_136:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB15_439
+.LBB15_137:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB15_440
+.LBB15_138:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_140
+	b	.LBB15_441
 	.p2align	4, , 16
-.LBB15_48:                              #   in Loop: Header=BB15_14 Depth=1
-	ld.bu	$a4, $a4, -1
-	add.d	$a4, $a5, $a4
+.LBB15_139:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB15_140:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 96
+	addi.d	$a6, $a5, 96
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB15_161
+	beq	$t0, $zero, .LBB15_160
+# %bb.141:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB15_151
+# %bb.142:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB15_442
+# %bb.143:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB15_443
+.LBB15_144:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB15_444
+.LBB15_145:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB15_445
+.LBB15_146:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB15_446
+.LBB15_147:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB15_447
+.LBB15_148:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB15_448
+.LBB15_149:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB15_151
+.LBB15_150:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB15_151:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB15_161
+# %bb.152:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB15_449
+# %bb.153:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB15_450
+.LBB15_154:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB15_451
+.LBB15_155:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB15_452
+.LBB15_156:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB15_453
+.LBB15_157:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB15_454
+.LBB15_158:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB15_455
+.LBB15_159:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_161
+	b	.LBB15_456
+	.p2align	4, , 16
+.LBB15_160:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB15_161:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 112
+	addi.d	$a6, $a5, 112
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB15_182
+	beq	$t0, $zero, .LBB15_181
+# %bb.162:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB15_172
+# %bb.163:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB15_457
+# %bb.164:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB15_458
+.LBB15_165:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB15_459
+.LBB15_166:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB15_460
+.LBB15_167:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB15_461
+.LBB15_168:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB15_462
+.LBB15_169:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB15_463
+.LBB15_170:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB15_172
+.LBB15_171:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB15_172:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB15_182
+# %bb.173:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB15_464
+# %bb.174:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB15_465
+.LBB15_175:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB15_466
+.LBB15_176:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB15_467
+.LBB15_177:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB15_468
+.LBB15_178:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB15_469
+.LBB15_179:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB15_470
+.LBB15_180:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_182
+	b	.LBB15_471
+	.p2align	4, , 16
+.LBB15_181:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB15_182:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 128
+	addi.d	$a6, $a5, 128
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB15_203
+	beq	$t0, $zero, .LBB15_202
+# %bb.183:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB15_193
+# %bb.184:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB15_472
+# %bb.185:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB15_473
+.LBB15_186:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB15_474
+.LBB15_187:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB15_475
+.LBB15_188:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB15_476
+.LBB15_189:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB15_477
+.LBB15_190:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB15_478
+.LBB15_191:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB15_193
+.LBB15_192:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB15_193:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB15_203
+# %bb.194:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB15_479
+# %bb.195:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB15_480
+.LBB15_196:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB15_481
+.LBB15_197:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB15_482
+.LBB15_198:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB15_483
+.LBB15_199:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB15_484
+.LBB15_200:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB15_485
+.LBB15_201:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_203
+	b	.LBB15_486
+	.p2align	4, , 16
+.LBB15_202:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB15_203:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 144
+	addi.d	$a6, $a5, 144
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB15_224
+	beq	$t0, $zero, .LBB15_223
+# %bb.204:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB15_214
+# %bb.205:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB15_487
+# %bb.206:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB15_488
+.LBB15_207:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB15_489
+.LBB15_208:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB15_490
+.LBB15_209:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB15_491
+.LBB15_210:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB15_492
+.LBB15_211:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB15_493
+.LBB15_212:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB15_214
+.LBB15_213:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB15_214:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB15_224
+# %bb.215:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB15_494
+# %bb.216:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB15_495
+.LBB15_217:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB15_496
+.LBB15_218:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB15_497
+.LBB15_219:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB15_498
+.LBB15_220:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB15_499
+.LBB15_221:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB15_500
+.LBB15_222:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_224
+	b	.LBB15_501
+	.p2align	4, , 16
+.LBB15_223:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB15_224:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 160
+	addi.d	$a6, $a5, 160
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB15_245
+	beq	$t0, $zero, .LBB15_244
+# %bb.225:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB15_235
+# %bb.226:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB15_502
+# %bb.227:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB15_503
+.LBB15_228:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB15_504
+.LBB15_229:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB15_505
+.LBB15_230:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB15_506
+.LBB15_231:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB15_507
+.LBB15_232:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB15_508
+.LBB15_233:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB15_235
+.LBB15_234:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB15_235:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB15_245
+# %bb.236:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB15_509
+# %bb.237:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB15_510
+.LBB15_238:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB15_511
+.LBB15_239:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB15_512
+.LBB15_240:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB15_513
+.LBB15_241:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB15_514
+.LBB15_242:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB15_515
+.LBB15_243:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_245
+	b	.LBB15_516
+	.p2align	4, , 16
+.LBB15_244:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB15_245:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 176
+	addi.d	$a6, $a5, 176
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB15_266
+	beq	$t0, $zero, .LBB15_265
+# %bb.246:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB15_256
+# %bb.247:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB15_517
+# %bb.248:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB15_518
+.LBB15_249:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB15_519
+.LBB15_250:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB15_520
+.LBB15_251:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB15_521
+.LBB15_252:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB15_522
+.LBB15_253:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB15_523
+.LBB15_254:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB15_256
+.LBB15_255:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB15_256:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB15_266
+# %bb.257:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB15_524
+# %bb.258:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB15_525
+.LBB15_259:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB15_526
+.LBB15_260:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB15_527
+.LBB15_261:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB15_528
+.LBB15_262:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB15_529
+.LBB15_263:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB15_530
+.LBB15_264:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_266
+	b	.LBB15_531
+	.p2align	4, , 16
+.LBB15_265:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB15_266:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 192
+	addi.d	$a6, $a5, 192
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB15_287
+	beq	$t0, $zero, .LBB15_286
+# %bb.267:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB15_277
+# %bb.268:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB15_532
+# %bb.269:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB15_533
+.LBB15_270:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB15_534
+.LBB15_271:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB15_535
+.LBB15_272:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB15_536
+.LBB15_273:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB15_537
+.LBB15_274:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB15_538
+.LBB15_275:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB15_277
+.LBB15_276:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB15_277:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB15_287
+# %bb.278:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB15_539
+# %bb.279:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB15_540
+.LBB15_280:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB15_541
+.LBB15_281:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB15_542
+.LBB15_282:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB15_543
+.LBB15_283:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB15_544
+.LBB15_284:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB15_545
+.LBB15_285:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_287
+	b	.LBB15_546
+	.p2align	4, , 16
+.LBB15_286:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB15_287:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 208
+	addi.d	$a6, $a5, 208
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB15_308
+	beq	$t0, $zero, .LBB15_307
+# %bb.288:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB15_298
+# %bb.289:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB15_547
+# %bb.290:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB15_548
+.LBB15_291:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB15_549
+.LBB15_292:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB15_550
+.LBB15_293:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB15_551
+.LBB15_294:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB15_552
+.LBB15_295:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB15_553
+.LBB15_296:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB15_298
+.LBB15_297:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB15_298:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB15_308
+# %bb.299:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB15_554
+# %bb.300:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB15_555
+.LBB15_301:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB15_556
+.LBB15_302:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB15_557
+.LBB15_303:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB15_558
+.LBB15_304:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB15_559
+.LBB15_305:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB15_560
+.LBB15_306:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_308
+	b	.LBB15_561
+	.p2align	4, , 16
+.LBB15_307:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB15_308:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 224
+	addi.d	$a6, $a5, 224
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a7, $vr4, 0
+	addi.d	$t0, $a6, 15
+	xor	$t0, $t0, $a6
+	srli.d	$t0, $t0, 12
+	beq	$a7, $zero, .LBB15_329
+	beq	$t0, $zero, .LBB15_328
+# %bb.309:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 7, 0
+	beq	$t0, $zero, .LBB15_319
+# %bb.310:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1
+	bne	$t0, $zero, .LBB15_562
+# %bb.311:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2
+	bne	$t0, $zero, .LBB15_563
+.LBB15_312:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 4
+	bne	$t0, $zero, .LBB15_564
+.LBB15_313:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 8
+	bne	$t0, $zero, .LBB15_565
+.LBB15_314:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB15_566
+.LBB15_315:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 32
+	bne	$t0, $zero, .LBB15_567
+.LBB15_316:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 64
+	bne	$t0, $zero, .LBB15_568
+.LBB15_317:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 128
+	beq	$t0, $zero, .LBB15_319
+.LBB15_318:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 7, 7
+.LBB15_319:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 15, 8
+	beq	$t0, $zero, .LBB15_329
+# %bb.320:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB15_569
+# %bb.321:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 512
+	bne	$t0, $zero, .LBB15_570
+.LBB15_322:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 1024
+	bne	$t0, $zero, .LBB15_571
+.LBB15_323:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$t0, $a7, 2048
+	bne	$t0, $zero, .LBB15_572
+.LBB15_324:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 12, 12
+	bne	$t0, $zero, .LBB15_573
+.LBB15_325:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 13, 13
+	bne	$t0, $zero, .LBB15_574
+.LBB15_326:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$t0, $a7, 14, 14
+	bne	$t0, $zero, .LBB15_575
+.LBB15_327:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_329
+	b	.LBB15_576
+	.p2align	4, , 16
+.LBB15_328:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a6, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a6, 0
+.LBB15_329:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr3, $a5, 240
+	addi.d	$a5, $a5, 240
+	vilvh.b	$vr4, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvh.h	$vr6, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vseq.w	$vr3, $vr1, $vr3
+	vseq.w	$vr6, $vr1, $vr6
+	vpickev.h	$vr3, $vr6, $vr3
+	vseq.w	$vr4, $vr1, $vr4
+	vseq.w	$vr5, $vr1, $vr5
+	vpickev.h	$vr4, $vr5, $vr4
+	vpickev.b	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a6, $vr4, 0
+	addi.d	$a7, $a5, 15
+	xor	$a7, $a7, $a5
+	srli.d	$a7, $a7, 12
+	beq	$a6, $zero, .LBB15_350
+	beq	$a7, $zero, .LBB15_349
+# %bb.330:                              #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a6, 7, 0
+	beq	$a7, $zero, .LBB15_340
+# %bb.331:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 1
+	bne	$a7, $zero, .LBB15_577
+# %bb.332:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 2
+	bne	$a7, $zero, .LBB15_578
+.LBB15_333:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 4
+	bne	$a7, $zero, .LBB15_579
+.LBB15_334:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 8
+	bne	$a7, $zero, .LBB15_580
+.LBB15_335:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 16
+	bne	$a7, $zero, .LBB15_581
+.LBB15_336:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 32
+	bne	$a7, $zero, .LBB15_582
+.LBB15_337:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 64
+	bne	$a7, $zero, .LBB15_583
+.LBB15_338:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 128
+	beq	$a7, $zero, .LBB15_340
+.LBB15_339:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 7, 7
+.LBB15_340:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a6, 15, 8
+	beq	$a7, $zero, .LBB15_350
+# %bb.341:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 256
+	bne	$a7, $zero, .LBB15_584
+# %bb.342:                              #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 512
+	bne	$a7, $zero, .LBB15_585
+.LBB15_343:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 1024
+	bne	$a7, $zero, .LBB15_586
+.LBB15_344:                             #   in Loop: Header=BB15_14 Depth=1
+	andi	$a7, $a6, 2048
+	bne	$a7, $zero, .LBB15_587
+.LBB15_345:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a6, 12, 12
+	bne	$a7, $zero, .LBB15_588
+.LBB15_346:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a6, 13, 13
+	bne	$a7, $zero, .LBB15_589
+.LBB15_347:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a7, $a6, 14, 14
+	bne	$a7, $zero, .LBB15_590
+.LBB15_348:                             #   in Loop: Header=BB15_14 Depth=1
+	bstrpick.d	$a6, $a6, 15, 15
+	beq	$a6, $zero, .LBB15_350
+	b	.LBB15_591
+	.p2align	4, , 16
+.LBB15_349:                             #   in Loop: Header=BB15_14 Depth=1
+	vld	$vr4, $a5, 0
+	vbitsel.v	$vr3, $vr4, $vr0, $vr3
+	vst	$vr3, $a5, 0
+.LBB15_350:                             #   in Loop: Header=BB15_14 Depth=1
+	add.d	$a5, $fp, $a3
+	ld.bu	$a5, $a5, -1
+	alsl.d	$a4, $a4, $a5, 3
 	ldx.bu	$a5, $s3, $a4
 	blt	$a5, $a0, .LBB15_13
-# %bb.49:                               #   in Loop: Header=BB15_14 Depth=1
-	sub.d	$a5, $a0, $a3
-	stx.b	$a5, $s3, $a4
+# %bb.351:                              #   in Loop: Header=BB15_14 Depth=1
+	stx.b	$a1, $s3, $a4
 	b	.LBB15_13
-.LBB15_50:
+.LBB15_352:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 0, 0
+	andi	$a7, $a6, 2
+	beq	$a7, $zero, .LBB15_18
+.LBB15_353:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 1, 1
+	andi	$a7, $a6, 4
+	beq	$a7, $zero, .LBB15_19
+.LBB15_354:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 2, 2
+	andi	$a7, $a6, 8
+	beq	$a7, $zero, .LBB15_20
+.LBB15_355:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 3, 3
+	andi	$a7, $a6, 16
+	beq	$a7, $zero, .LBB15_21
+.LBB15_356:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 4, 4
+	andi	$a7, $a6, 32
+	beq	$a7, $zero, .LBB15_22
+.LBB15_357:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 5, 5
+	andi	$a7, $a6, 64
+	beq	$a7, $zero, .LBB15_23
+.LBB15_358:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 6, 6
+	andi	$a7, $a6, 128
+	bne	$a7, $zero, .LBB15_24
+	b	.LBB15_25
+.LBB15_359:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 8, 8
+	andi	$a7, $a6, 512
+	beq	$a7, $zero, .LBB15_28
+.LBB15_360:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 9, 9
+	andi	$a7, $a6, 1024
+	beq	$a7, $zero, .LBB15_29
+.LBB15_361:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 10, 10
+	andi	$a7, $a6, 2048
+	beq	$a7, $zero, .LBB15_30
+.LBB15_362:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 11, 11
+	bstrpick.d	$a7, $a6, 12, 12
+	beq	$a7, $zero, .LBB15_31
+.LBB15_363:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 12, 12
+	bstrpick.d	$a7, $a6, 13, 13
+	beq	$a7, $zero, .LBB15_32
+.LBB15_364:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 13, 13
+	bstrpick.d	$a7, $a6, 14, 14
+	beq	$a7, $zero, .LBB15_33
+.LBB15_365:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 14, 14
+	bstrpick.d	$a6, $a6, 15, 15
+	beq	$a6, $zero, .LBB15_35
+.LBB15_366:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 15, 15
+	b	.LBB15_35
+.LBB15_367:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB15_39
+.LBB15_368:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB15_40
+.LBB15_369:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB15_41
+.LBB15_370:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB15_42
+.LBB15_371:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB15_43
+.LBB15_372:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB15_44
+.LBB15_373:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB15_45
+	b	.LBB15_46
+.LBB15_374:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB15_49
+.LBB15_375:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB15_50
+.LBB15_376:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB15_51
+.LBB15_377:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB15_52
+.LBB15_378:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB15_53
+.LBB15_379:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB15_54
+.LBB15_380:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_56
+.LBB15_381:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB15_56
+.LBB15_382:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB15_60
+.LBB15_383:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB15_61
+.LBB15_384:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB15_62
+.LBB15_385:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB15_63
+.LBB15_386:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB15_64
+.LBB15_387:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB15_65
+.LBB15_388:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB15_66
+	b	.LBB15_67
+.LBB15_389:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB15_70
+.LBB15_390:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB15_71
+.LBB15_391:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB15_72
+.LBB15_392:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB15_73
+.LBB15_393:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB15_74
+.LBB15_394:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB15_75
+.LBB15_395:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_77
+.LBB15_396:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB15_77
+.LBB15_397:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB15_81
+.LBB15_398:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB15_82
+.LBB15_399:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB15_83
+.LBB15_400:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB15_84
+.LBB15_401:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB15_85
+.LBB15_402:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB15_86
+.LBB15_403:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB15_87
+	b	.LBB15_88
+.LBB15_404:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB15_91
+.LBB15_405:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB15_92
+.LBB15_406:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB15_93
+.LBB15_407:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB15_94
+.LBB15_408:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB15_95
+.LBB15_409:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB15_96
+.LBB15_410:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_98
+.LBB15_411:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB15_98
+.LBB15_412:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB15_102
+.LBB15_413:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB15_103
+.LBB15_414:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB15_104
+.LBB15_415:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB15_105
+.LBB15_416:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB15_106
+.LBB15_417:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB15_107
+.LBB15_418:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB15_108
+	b	.LBB15_109
+.LBB15_419:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB15_112
+.LBB15_420:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB15_113
+.LBB15_421:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB15_114
+.LBB15_422:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB15_115
+.LBB15_423:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB15_116
+.LBB15_424:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB15_117
+.LBB15_425:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_119
+.LBB15_426:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB15_119
+.LBB15_427:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB15_123
+.LBB15_428:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB15_124
+.LBB15_429:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB15_125
+.LBB15_430:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB15_126
+.LBB15_431:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB15_127
+.LBB15_432:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB15_128
+.LBB15_433:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB15_129
+	b	.LBB15_130
+.LBB15_434:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB15_133
+.LBB15_435:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB15_134
+.LBB15_436:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB15_135
+.LBB15_437:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB15_136
+.LBB15_438:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB15_137
+.LBB15_439:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB15_138
+.LBB15_440:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_140
+.LBB15_441:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB15_140
+.LBB15_442:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB15_144
+.LBB15_443:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB15_145
+.LBB15_444:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB15_146
+.LBB15_445:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB15_147
+.LBB15_446:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB15_148
+.LBB15_447:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB15_149
+.LBB15_448:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB15_150
+	b	.LBB15_151
+.LBB15_449:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB15_154
+.LBB15_450:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB15_155
+.LBB15_451:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB15_156
+.LBB15_452:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB15_157
+.LBB15_453:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB15_158
+.LBB15_454:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB15_159
+.LBB15_455:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_161
+.LBB15_456:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB15_161
+.LBB15_457:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB15_165
+.LBB15_458:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB15_166
+.LBB15_459:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB15_167
+.LBB15_460:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB15_168
+.LBB15_461:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB15_169
+.LBB15_462:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB15_170
+.LBB15_463:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB15_171
+	b	.LBB15_172
+.LBB15_464:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB15_175
+.LBB15_465:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB15_176
+.LBB15_466:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB15_177
+.LBB15_467:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB15_178
+.LBB15_468:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB15_179
+.LBB15_469:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB15_180
+.LBB15_470:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_182
+.LBB15_471:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB15_182
+.LBB15_472:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB15_186
+.LBB15_473:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB15_187
+.LBB15_474:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB15_188
+.LBB15_475:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB15_189
+.LBB15_476:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB15_190
+.LBB15_477:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB15_191
+.LBB15_478:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB15_192
+	b	.LBB15_193
+.LBB15_479:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB15_196
+.LBB15_480:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB15_197
+.LBB15_481:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB15_198
+.LBB15_482:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB15_199
+.LBB15_483:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB15_200
+.LBB15_484:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB15_201
+.LBB15_485:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_203
+.LBB15_486:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB15_203
+.LBB15_487:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB15_207
+.LBB15_488:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB15_208
+.LBB15_489:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB15_209
+.LBB15_490:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB15_210
+.LBB15_491:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB15_211
+.LBB15_492:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB15_212
+.LBB15_493:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB15_213
+	b	.LBB15_214
+.LBB15_494:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB15_217
+.LBB15_495:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB15_218
+.LBB15_496:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB15_219
+.LBB15_497:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB15_220
+.LBB15_498:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB15_221
+.LBB15_499:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB15_222
+.LBB15_500:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_224
+.LBB15_501:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB15_224
+.LBB15_502:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB15_228
+.LBB15_503:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB15_229
+.LBB15_504:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB15_230
+.LBB15_505:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB15_231
+.LBB15_506:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB15_232
+.LBB15_507:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB15_233
+.LBB15_508:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB15_234
+	b	.LBB15_235
+.LBB15_509:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB15_238
+.LBB15_510:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB15_239
+.LBB15_511:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB15_240
+.LBB15_512:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB15_241
+.LBB15_513:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB15_242
+.LBB15_514:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB15_243
+.LBB15_515:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_245
+.LBB15_516:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB15_245
+.LBB15_517:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB15_249
+.LBB15_518:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB15_250
+.LBB15_519:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB15_251
+.LBB15_520:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB15_252
+.LBB15_521:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB15_253
+.LBB15_522:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB15_254
+.LBB15_523:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB15_255
+	b	.LBB15_256
+.LBB15_524:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB15_259
+.LBB15_525:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB15_260
+.LBB15_526:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB15_261
+.LBB15_527:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB15_262
+.LBB15_528:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB15_263
+.LBB15_529:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB15_264
+.LBB15_530:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_266
+.LBB15_531:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB15_266
+.LBB15_532:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB15_270
+.LBB15_533:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB15_271
+.LBB15_534:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB15_272
+.LBB15_535:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB15_273
+.LBB15_536:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB15_274
+.LBB15_537:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB15_275
+.LBB15_538:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB15_276
+	b	.LBB15_277
+.LBB15_539:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB15_280
+.LBB15_540:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB15_281
+.LBB15_541:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB15_282
+.LBB15_542:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB15_283
+.LBB15_543:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB15_284
+.LBB15_544:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB15_285
+.LBB15_545:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_287
+.LBB15_546:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB15_287
+.LBB15_547:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB15_291
+.LBB15_548:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB15_292
+.LBB15_549:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB15_293
+.LBB15_550:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB15_294
+.LBB15_551:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB15_295
+.LBB15_552:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB15_296
+.LBB15_553:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB15_297
+	b	.LBB15_298
+.LBB15_554:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB15_301
+.LBB15_555:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB15_302
+.LBB15_556:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB15_303
+.LBB15_557:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB15_304
+.LBB15_558:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB15_305
+.LBB15_559:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB15_306
+.LBB15_560:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_308
+.LBB15_561:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB15_308
+.LBB15_562:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 0, 0
+	andi	$t0, $a7, 2
+	beq	$t0, $zero, .LBB15_312
+.LBB15_563:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 1, 1
+	andi	$t0, $a7, 4
+	beq	$t0, $zero, .LBB15_313
+.LBB15_564:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 2, 2
+	andi	$t0, $a7, 8
+	beq	$t0, $zero, .LBB15_314
+.LBB15_565:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 3, 3
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB15_315
+.LBB15_566:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 4, 4
+	andi	$t0, $a7, 32
+	beq	$t0, $zero, .LBB15_316
+.LBB15_567:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 5, 5
+	andi	$t0, $a7, 64
+	beq	$t0, $zero, .LBB15_317
+.LBB15_568:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 6, 6
+	andi	$t0, $a7, 128
+	bne	$t0, $zero, .LBB15_318
+	b	.LBB15_319
+.LBB15_569:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 8, 8
+	andi	$t0, $a7, 512
+	beq	$t0, $zero, .LBB15_322
+.LBB15_570:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 9, 9
+	andi	$t0, $a7, 1024
+	beq	$t0, $zero, .LBB15_323
+.LBB15_571:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 10, 10
+	andi	$t0, $a7, 2048
+	beq	$t0, $zero, .LBB15_324
+.LBB15_572:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 11, 11
+	bstrpick.d	$t0, $a7, 12, 12
+	beq	$t0, $zero, .LBB15_325
+.LBB15_573:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 12, 12
+	bstrpick.d	$t0, $a7, 13, 13
+	beq	$t0, $zero, .LBB15_326
+.LBB15_574:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 13, 13
+	bstrpick.d	$t0, $a7, 14, 14
+	beq	$t0, $zero, .LBB15_327
+.LBB15_575:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 14, 14
+	bstrpick.d	$a7, $a7, 15, 15
+	beq	$a7, $zero, .LBB15_329
+.LBB15_576:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a6, 15, 15
+	b	.LBB15_329
+.LBB15_577:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 0, 0
+	andi	$a7, $a6, 2
+	beq	$a7, $zero, .LBB15_333
+.LBB15_578:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 1, 1
+	andi	$a7, $a6, 4
+	beq	$a7, $zero, .LBB15_334
+.LBB15_579:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 2, 2
+	andi	$a7, $a6, 8
+	beq	$a7, $zero, .LBB15_335
+.LBB15_580:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 3, 3
+	andi	$a7, $a6, 16
+	beq	$a7, $zero, .LBB15_336
+.LBB15_581:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 4, 4
+	andi	$a7, $a6, 32
+	beq	$a7, $zero, .LBB15_337
+.LBB15_582:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 5, 5
+	andi	$a7, $a6, 64
+	beq	$a7, $zero, .LBB15_338
+.LBB15_583:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 6, 6
+	andi	$a7, $a6, 128
+	bne	$a7, $zero, .LBB15_339
+	b	.LBB15_340
+.LBB15_584:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 8, 8
+	andi	$a7, $a6, 512
+	beq	$a7, $zero, .LBB15_343
+.LBB15_585:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 9, 9
+	andi	$a7, $a6, 1024
+	beq	$a7, $zero, .LBB15_344
+.LBB15_586:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 10, 10
+	andi	$a7, $a6, 2048
+	beq	$a7, $zero, .LBB15_345
+.LBB15_587:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 11, 11
+	bstrpick.d	$a7, $a6, 12, 12
+	beq	$a7, $zero, .LBB15_346
+.LBB15_588:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 12, 12
+	bstrpick.d	$a7, $a6, 13, 13
+	beq	$a7, $zero, .LBB15_347
+.LBB15_589:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 13, 13
+	bstrpick.d	$a7, $a6, 14, 14
+	beq	$a7, $zero, .LBB15_348
+.LBB15_590:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 14, 14
+	bstrpick.d	$a6, $a6, 15, 15
+	beq	$a6, $zero, .LBB15_350
+.LBB15_591:                             #   in Loop: Header=BB15_14 Depth=1
+	vstelm.b	$vr0, $a5, 15, 15
+	b	.LBB15_350
+.LBB15_592:
 	ori	$a0, $zero, 24
-	blt	$a1, $a0, .LBB15_61
-# %bb.51:
+	blt	$a1, $a0, .LBB15_603
+# %bb.593:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -3985,24 +8293,24 @@ sgrep:                                  # @sgrep
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $s4, 0
-	blez	$a1, .LBB15_88
-# %bb.52:
+	blez	$a1, .LBB15_666
+# %bb.594:
 	addi.d	$a0, $s4, -1
 	bstrpick.d	$a0, $a0, 31, 0
 	ori	$a2, $zero, 1
 	addi.w	$a3, $zero, -1
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB15_53:                              # =>This Inner Loop Header: Depth=1
+.LBB15_595:                             # =>This Inner Loop Header: Depth=1
 	ldx.bu	$a5, $fp, $a4
 	addi.d	$a4, $a4, -1
 	stx.b	$a2, $s3, $a5
-	bne	$a4, $a3, .LBB15_53
-# %bb.54:
+	bne	$a4, $a3, .LBB15_595
+# %bb.596:
 	ori	$a2, $zero, 1
-	beq	$a1, $a2, .LBB15_88
+	beq	$a1, $a2, .LBB15_666
 	.p2align	4, , 16
-.LBB15_55:                              # =>This Inner Loop Header: Depth=1
+.LBB15_597:                             # =>This Inner Loop Header: Depth=1
 	move	$a1, $a0
 	ldx.bu	$a0, $fp, $a0
 	add.d	$a3, $fp, $a1
@@ -4011,9 +8319,9 @@ sgrep:                                  # @sgrep
 	add.d	$a0, $s3, $a0
 	stx.b	$a2, $a0, $a3
 	addi.d	$a0, $a1, -1
-	bltu	$a2, $a1, .LBB15_55
-	b	.LBB15_88
-.LBB15_56:
+	bltu	$a2, $a1, .LBB15_597
+	b	.LBB15_666
+.LBB15_598:
 	ext.w.b	$a1, $a1
 	pcalau12i	$a0, %pc_hi20(SHIFT)
 	addi.d	$s3, $a0, %pc_lo12(SHIFT)
@@ -4021,31 +8329,31 @@ sgrep:                                  # @sgrep
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
-	addi.w	$a1, $t0, -1
+	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
+	addi.w	$a1, $t1, -1
 	pcalau12i	$a0, %pc_hi20(shift_1)
-	blez	$t0, .LBB15_74
-# %bb.57:
+	blez	$t1, .LBB15_617
+# %bb.599:
 	pcalau12i	$a2, %pc_hi20(TR)
 	addi.d	$a2, $a2, %pc_lo12(TR)
 	move	$a3, $zero
 	move	$a5, $a1
-	b	.LBB15_59
+	b	.LBB15_601
 	.p2align	4, , 16
-.LBB15_58:                              #   in Loop: Header=BB15_59 Depth=1
+.LBB15_600:                             #   in Loop: Header=BB15_601 Depth=1
 	addi.d	$a5, $a4, -1
 	addi.d	$a3, $a3, 1
-	blez	$a4, .LBB15_64
-.LBB15_59:                              # =>This Inner Loop Header: Depth=1
+	blez	$a4, .LBB15_606
+.LBB15_601:                             # =>This Inner Loop Header: Depth=1
 	move	$a4, $a5
 	ldx.bu	$a5, $fp, $a5
 	ldx.bu	$a5, $a2, $a5
 	ldx.bu	$a6, $s3, $a5
-	blt	$a6, $a1, .LBB15_58
-# %bb.60:                               #   in Loop: Header=BB15_59 Depth=1
+	blt	$a6, $a1, .LBB15_600
+# %bb.602:                              #   in Loop: Header=BB15_601 Depth=1
 	stx.b	$a3, $s3, $a5
-	b	.LBB15_58
-.LBB15_61:
+	b	.LBB15_600
+.LBB15_603:
 	move	$a0, $fp
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(prep)
@@ -4057,38 +8365,45 @@ sgrep:                                  # @sgrep
 	pcalau12i	$a1, %got_pc_hi20(endposition)
 	ld.d	$a1, $a1, %got_pc_lo12(endposition)
 	st.w	$a0, $a1, 0
-	blez	$a5, .LBB15_78
-# %bb.62:
-	ori	$a0, $zero, 4
-	bgeu	$a5, $a0, .LBB15_79
-# %bb.63:
+	blez	$a5, .LBB15_619
+# %bb.604:
+	ori	$a0, $zero, 8
+	bgeu	$a5, $a0, .LBB15_620
+# %bb.605:
 	move	$a0, $zero
-	b	.LBB15_159
-.LBB15_64:
+	b	.LBB15_716
+.LBB15_606:
 	ori	$a3, $zero, 1
 	st.w	$a1, $a0, %pc_lo12(shift_1)
-	beq	$t0, $a3, .LBB15_84
-# %bb.65:
+	beq	$t1, $a3, .LBB15_662
+# %bb.607:
 	ldx.bu	$a4, $fp, $a1
 	move	$a3, $zero
 	ldx.bu	$a4, $a2, $a4
-	addi.d	$a5, $t0, -2
+	addi.d	$a5, $t1, -2
 	ori	$a6, $zero, 1
-	sub.w	$a6, $a6, $t0
+	sub.w	$a6, $a6, $t1
 	.p2align	4, , 16
-.LBB15_66:                              # =>This Inner Loop Header: Depth=1
+.LBB15_608:                             # =>This Inner Loop Header: Depth=1
 	add.w	$a7, $a5, $a3
 	ldx.bu	$a7, $fp, $a7
 	ldx.bu	$a7, $a2, $a7
-	beq	$a7, $a4, .LBB15_81
-# %bb.67:                               #   in Loop: Header=BB15_66 Depth=1
+	beq	$a7, $a4, .LBB15_659
+# %bb.609:                              #   in Loop: Header=BB15_608 Depth=1
 	addi.w	$a3, $a3, -1
-	bne	$a6, $a3, .LBB15_66
-	b	.LBB15_82
-.LBB15_68:
-	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
-	b	.LBB15_76
-.LBB15_69:
+	bne	$a6, $a3, .LBB15_608
+	b	.LBB15_660
+.LBB15_610:
+	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
+	pcalau12i	$a1, %pc_hi20(shift_1)
+	st.w	$a0, $a1, %pc_lo12(shift_1)
+	bnez	$a0, .LBB15_616
+.LBB15_611:
+	pcalau12i	$a0, %pc_hi20(shift_1)
+	ori	$a1, $zero, 1
+	st.w	$a1, $a0, %pc_lo12(shift_1)
+	b	.LBB15_616
+.LBB15_612:
 	move	$a1, $zero
 	pcalau12i	$a2, %pc_hi20(shift_1)
 	st.w	$a0, $a2, %pc_lo12(shift_1)
@@ -4096,74 +8411,225 @@ sgrep:                                  # @sgrep
 	addi.d	$a3, $s4, -2
 	ori	$a4, $zero, 1
 	sub.w	$a4, $a4, $s4
-	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB15_70:                              # =>This Inner Loop Header: Depth=1
+.LBB15_613:                             # =>This Inner Loop Header: Depth=1
 	add.w	$a5, $a3, $a1
 	ldx.bu	$a5, $fp, $a5
-	beq	$a5, $a2, .LBB15_75
-# %bb.71:                               #   in Loop: Header=BB15_70 Depth=1
+	beq	$a5, $a2, .LBB15_618
+# %bb.614:                              #   in Loop: Header=BB15_613 Depth=1
 	addi.w	$a1, $a1, -1
-	bne	$a4, $a1, .LBB15_70
-# %bb.72:
-	beqz	$a0, .LBB15_77
-.LBB15_73:
+	bne	$a4, $a1, .LBB15_613
+# %bb.615:
+	beqz	$a0, .LBB15_611
+.LBB15_616:
 	st.b	$zero, $s3, 0
-	b	.LBB15_87
-.LBB15_74:
+	b	.LBB15_665
+.LBB15_617:
 	move	$a3, $a1
-	b	.LBB15_84
-.LBB15_75:
+	b	.LBB15_662
+.LBB15_618:
 	ori	$a0, $zero, 1
 	sub.w	$a0, $a0, $a1
-.LBB15_76:
 	pcalau12i	$a1, %pc_hi20(shift_1)
 	st.w	$a0, $a1, %pc_lo12(shift_1)
-	bnez	$a0, .LBB15_73
-.LBB15_77:
-	pcalau12i	$a0, %pc_hi20(shift_1)
-	ori	$a1, $zero, 1
-	st.w	$a1, $a0, %pc_lo12(shift_1)
-	b	.LBB15_73
-.LBB15_78:
+	bnez	$a0, .LBB15_616
+	b	.LBB15_611
+.LBB15_619:
 	pcalau12i	$a0, %got_pc_hi20(Mask)
 	ld.d	$a0, $a0, %got_pc_lo12(Mask)
 	ori	$a1, $zero, 255
 	ori	$a2, $zero, 1024
-	b	.LBB15_89
-.LBB15_79:
+	b	.LBB15_667
+.LBB15_620:
 	ori	$a0, $zero, 16
 	vrepli.b	$vr0, 94
 	vrepli.b	$vr1, 36
-	bgeu	$a5, $a0, .LBB15_108
-# %bb.80:
+	vrepli.b	$vr2, 10
+	bgeu	$a5, $a0, .LBB15_687
+# %bb.621:
 	move	$a0, $zero
-	b	.LBB15_142
-.LBB15_81:
+.LBB15_622:
+	move	$a2, $a0
+	bstrpick.d	$a0, $a5, 30, 3
+	slli.d	$a0, $a0, 3
+	sub.d	$a1, $a2, $a0
+	add.d	$a2, $fp, $a2
+	vrepli.b	$vr3, 0
+	b	.LBB15_624
+	.p2align	4, , 16
+.LBB15_623:                             #   in Loop: Header=BB15_624 Depth=1
+	addi.d	$a1, $a1, 8
+	addi.d	$a2, $a2, 8
+	beqz	$a1, .LBB15_686
+.LBB15_624:                             # =>This Inner Loop Header: Depth=1
+	ld.d	$a3, $a2, 0
+	vinsgr2vr.d	$vr4, $a3, 0
+	vseq.b	$vr5, $vr4, $vr0
+	vseq.b	$vr4, $vr4, $vr1
+	vor.v	$vr4, $vr5, $vr4
+	vilvl.b	$vr4, $vr4, $vr4
+	vpickve2gr.h	$a3, $vr4, 0
+	vori.b	$vr5, $vr3, 0
+	vinsgr2vr.b	$vr5, $a3, 0
+	vpickve2gr.h	$a3, $vr4, 1
+	vinsgr2vr.b	$vr5, $a3, 1
+	vpickve2gr.h	$a3, $vr4, 2
+	vinsgr2vr.b	$vr5, $a3, 2
+	vpickve2gr.h	$a3, $vr4, 3
+	vinsgr2vr.b	$vr5, $a3, 3
+	vpickve2gr.h	$a3, $vr4, 4
+	vinsgr2vr.b	$vr5, $a3, 4
+	vpickve2gr.h	$a3, $vr4, 5
+	vinsgr2vr.b	$vr5, $a3, 5
+	vpickve2gr.h	$a3, $vr4, 6
+	vinsgr2vr.b	$vr5, $a3, 6
+	vpickve2gr.h	$a3, $vr4, 7
+	vinsgr2vr.b	$vr5, $a3, 7
+	vmsknz.b	$vr4, $vr5
+	vpickve2gr.hu	$a3, $vr4, 0
+	beq	$a3, $zero, .LBB15_623
+# %bb.625:                              #   in Loop: Header=BB15_624 Depth=1
+	bstrpick.d	$a4, $a3, 7, 0
+	beq	$a4, $zero, .LBB15_635
+# %bb.626:                              #   in Loop: Header=BB15_624 Depth=1
+	andi	$a4, $a3, 1
+	bne	$a4, $zero, .LBB15_644
+# %bb.627:                              #   in Loop: Header=BB15_624 Depth=1
+	andi	$a4, $a3, 2
+	bne	$a4, $zero, .LBB15_645
+.LBB15_628:                             #   in Loop: Header=BB15_624 Depth=1
+	andi	$a4, $a3, 4
+	bne	$a4, $zero, .LBB15_646
+.LBB15_629:                             #   in Loop: Header=BB15_624 Depth=1
+	andi	$a4, $a3, 8
+	bne	$a4, $zero, .LBB15_647
+.LBB15_630:                             #   in Loop: Header=BB15_624 Depth=1
+	andi	$a4, $a3, 16
+	bne	$a4, $zero, .LBB15_648
+.LBB15_631:                             #   in Loop: Header=BB15_624 Depth=1
+	andi	$a4, $a3, 32
+	bne	$a4, $zero, .LBB15_649
+.LBB15_632:                             #   in Loop: Header=BB15_624 Depth=1
+	andi	$a4, $a3, 64
+	bne	$a4, $zero, .LBB15_650
+.LBB15_633:                             #   in Loop: Header=BB15_624 Depth=1
+	andi	$a4, $a3, 128
+	beq	$a4, $zero, .LBB15_635
+.LBB15_634:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 7, 7
+.LBB15_635:                             #   in Loop: Header=BB15_624 Depth=1
+	bstrpick.d	$a4, $a3, 15, 8
+	beq	$a4, $zero, .LBB15_623
+# %bb.636:                              #   in Loop: Header=BB15_624 Depth=1
+	andi	$a4, $a3, 256
+	bne	$a4, $zero, .LBB15_651
+# %bb.637:                              #   in Loop: Header=BB15_624 Depth=1
+	andi	$a4, $a3, 512
+	bne	$a4, $zero, .LBB15_652
+.LBB15_638:                             #   in Loop: Header=BB15_624 Depth=1
+	andi	$a4, $a3, 1024
+	bne	$a4, $zero, .LBB15_653
+.LBB15_639:                             #   in Loop: Header=BB15_624 Depth=1
+	andi	$a4, $a3, 2048
+	bne	$a4, $zero, .LBB15_654
+.LBB15_640:                             #   in Loop: Header=BB15_624 Depth=1
+	bstrpick.d	$a4, $a3, 12, 12
+	bne	$a4, $zero, .LBB15_655
+.LBB15_641:                             #   in Loop: Header=BB15_624 Depth=1
+	bstrpick.d	$a4, $a3, 13, 13
+	bne	$a4, $zero, .LBB15_656
+.LBB15_642:                             #   in Loop: Header=BB15_624 Depth=1
+	bstrpick.d	$a4, $a3, 14, 14
+	bne	$a4, $zero, .LBB15_657
+.LBB15_643:                             #   in Loop: Header=BB15_624 Depth=1
+	bstrpick.d	$a3, $a3, 15, 15
+	beq	$a3, $zero, .LBB15_623
+	b	.LBB15_658
+.LBB15_644:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 0, 0
+	andi	$a4, $a3, 2
+	beq	$a4, $zero, .LBB15_628
+.LBB15_645:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 1, 1
+	andi	$a4, $a3, 4
+	beq	$a4, $zero, .LBB15_629
+.LBB15_646:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 2, 2
+	andi	$a4, $a3, 8
+	beq	$a4, $zero, .LBB15_630
+.LBB15_647:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 3, 3
+	andi	$a4, $a3, 16
+	beq	$a4, $zero, .LBB15_631
+.LBB15_648:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 4, 4
+	andi	$a4, $a3, 32
+	beq	$a4, $zero, .LBB15_632
+.LBB15_649:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 5, 5
+	andi	$a4, $a3, 64
+	beq	$a4, $zero, .LBB15_633
+.LBB15_650:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 6, 6
+	andi	$a4, $a3, 128
+	bne	$a4, $zero, .LBB15_634
+	b	.LBB15_635
+.LBB15_651:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 8, 8
+	andi	$a4, $a3, 512
+	beq	$a4, $zero, .LBB15_638
+.LBB15_652:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 9, 9
+	andi	$a4, $a3, 1024
+	beq	$a4, $zero, .LBB15_639
+.LBB15_653:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 10, 10
+	andi	$a4, $a3, 2048
+	beq	$a4, $zero, .LBB15_640
+.LBB15_654:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 11, 11
+	bstrpick.d	$a4, $a3, 12, 12
+	beq	$a4, $zero, .LBB15_641
+.LBB15_655:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 12, 12
+	bstrpick.d	$a4, $a3, 13, 13
+	beq	$a4, $zero, .LBB15_642
+.LBB15_656:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 13, 13
+	bstrpick.d	$a4, $a3, 14, 14
+	beq	$a4, $zero, .LBB15_643
+.LBB15_657:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 14, 14
+	bstrpick.d	$a3, $a3, 15, 15
+	beq	$a3, $zero, .LBB15_623
+.LBB15_658:                             #   in Loop: Header=BB15_624 Depth=1
+	vstelm.b	$vr2, $a2, 15, 15
+	b	.LBB15_623
+.LBB15_659:
 	ori	$a1, $zero, 1
 	sub.w	$a1, $a1, $a3
 	st.w	$a1, $a0, %pc_lo12(shift_1)
-.LBB15_82:
-	bnez	$a1, .LBB15_85
-# %bb.83:
+.LBB15_660:
+	bnez	$a1, .LBB15_663
+# %bb.661:
 	ori	$a3, $zero, 1
-.LBB15_84:
+.LBB15_662:
 	st.w	$a3, $a0, %pc_lo12(shift_1)
-.LBB15_85:
+.LBB15_663:
 	pcalau12i	$a0, %got_pc_hi20(NOUPPER)
 	ld.d	$a0, $a0, %got_pc_lo12(NOUPPER)
 	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB15_87
-# %bb.86:
+	beqz	$a0, .LBB15_665
+# %bb.664:
 	ld.h	$a0, $s3, 121
 	ld.d	$a1, $s3, 113
 	vld	$vr0, $s3, 97
 	st.h	$a0, $s3, 89
 	st.d	$a1, $s3, 81
 	vst	$vr0, $s3, 65
-.LBB15_87:
-	blez	$t0, .LBB15_90
-.LBB15_88:
+.LBB15_665:
+	blez	$t1, .LBB15_668
+.LBB15_666:
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	add.d	$a0, $fp, $a2
 	ld.b	$a1, $a0, -1
@@ -4171,10 +8637,10 @@ sgrep:                                  # @sgrep
 	ori	$a0, $a0, 2049
 	addi.d	$a3, $sp, 64
 	add.d	$a0, $a3, $a0
-.LBB15_89:
+.LBB15_667:
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-.LBB15_90:
+.LBB15_668:
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	addi.d	$s7, $sp, 64
 	addi.d	$a0, $s7, 2047
@@ -4185,127 +8651,126 @@ sgrep:                                  # @sgrep
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	blez	$a1, .LBB15_107
-# %bb.91:
+	blez	$a1, .LBB15_685
+# %bb.669:
 	sltui	$a1, $s5, 1
-	addi.w	$fp, $a1, 2047
+	addi.w	$s4, $a1, 2047
 	ori	$s8, $zero, 2049
 	ori	$s1, $zero, 10
 	pcalau12i	$a1, %got_pc_hi20(FILENAMEONLY)
-	ld.d	$s0, $a1, %got_pc_lo12(FILENAMEONLY)
+	ld.d	$s2, $a1, %got_pc_lo12(FILENAMEONLY)
 	pcalau12i	$a1, %got_pc_hi20(num_of_matched)
 	ld.d	$a1, $a1, %got_pc_lo12(num_of_matched)
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	ori	$s4, $zero, 1024
+	ori	$s0, $zero, 1024
 	pcalau12i	$a1, %got_pc_hi20(DNA)
 	ld.d	$a1, $a1, %got_pc_lo12(DNA)
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	b	.LBB15_93
+	b	.LBB15_673
+.LBB15_670:                             #   in Loop: Header=BB15_673 Depth=1
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	move	$a3, $s6
+	pcaddu18i	$ra, %call36(monkey)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $s2, 0
+	beqz	$a0, .LBB15_672
 	.p2align	4, , 16
-.LBB15_92:                              #   in Loop: Header=BB15_93 Depth=1
-	slt	$a0, $s4, $s2
-	masknez	$a1, $s4, $a0
-	maskeqz	$a0, $s2, $a0
+.LBB15_671:                             #   in Loop: Header=BB15_673 Depth=1
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.w	$a0, $a0, 0
+	bnez	$a0, .LBB15_684
+.LBB15_672:                             #   in Loop: Header=BB15_673 Depth=1
+	slt	$a0, $s0, $fp
+	masknez	$a1, $s0, $a0
+	maskeqz	$a0, $fp, $a0
 	or	$fp, $a0, $a1
 	add.d	$a0, $s7, $fp
 	move	$a1, $s6
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(strncpy)
 	jirl	$ra, $ra, 0
-	addi.w	$fp, $fp, 1
+	addi.w	$s4, $fp, 1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	move	$a1, $s3
 	lu12i.w	$a2, 2
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 0
-	blez	$a0, .LBB15_107
-.LBB15_93:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB15_94 Depth 2
+	blez	$a0, .LBB15_685
+.LBB15_673:                             # =>This Loop Header: Depth=1
+                                        #     Child Loop BB15_674 Depth 2
 	move	$s5, $zero
-	ori	$s2, $zero, 2048
+	ori	$fp, $zero, 2048
 	.p2align	4, , 16
-.LBB15_94:                              #   Parent Loop BB15_93 Depth=1
+.LBB15_674:                             #   Parent Loop BB15_673 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.w	$s2, $s2, -1
-	add.w	$a1, $s2, $a0
+	addi.w	$fp, $fp, -1
+	add.w	$a1, $fp, $a0
 	addi.d	$s5, $s5, 1
-	bltu	$a1, $s8, .LBB15_96
-# %bb.95:                               #   in Loop: Header=BB15_94 Depth=2
+	bltu	$a1, $s8, .LBB15_676
+# %bb.675:                              #   in Loop: Header=BB15_674 Depth=2
 	ldx.bu	$a2, $a1, $s7
-	bne	$a2, $s1, .LBB15_94
-.LBB15_96:                              #   in Loop: Header=BB15_93 Depth=1
+	bne	$a2, $s1, .LBB15_674
+.LBB15_676:                             #   in Loop: Header=BB15_673 Depth=1
 	add.d	$s6, $s7, $a1
-	add.d	$a2, $s7, $fp
+	add.d	$a2, $s7, $s4
 	st.b	$s1, $a2, -1
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	beqz	$a0, .LBB15_99
-# %bb.97:                               #   in Loop: Header=BB15_93 Depth=1
+	beqz	$a0, .LBB15_679
+# %bb.677:                              #   in Loop: Header=BB15_673 Depth=1
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB15_101
-# %bb.98:                               #   in Loop: Header=BB15_93 Depth=1
+	beqz	$a0, .LBB15_681
+# %bb.678:                              #   in Loop: Header=BB15_673 Depth=1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	move	$a3, $s6
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(monkey4)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s0, 0
-	bnez	$a0, .LBB15_105
-	b	.LBB15_92
+	ld.w	$a0, $s2, 0
+	bnez	$a0, .LBB15_671
+	b	.LBB15_672
 	.p2align	4, , 16
-.LBB15_99:                              #   in Loop: Header=BB15_93 Depth=1
+.LBB15_679:                             #   in Loop: Header=BB15_673 Depth=1
 	ori	$a0, $zero, 21
-	blt	$a1, $a0, .LBB15_103
-# %bb.100:                              #   in Loop: Header=BB15_93 Depth=1
+	bge	$a1, $a0, .LBB15_670
+# %bb.680:                              #   in Loop: Header=BB15_673 Depth=1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	move	$a3, $s6
-	pcaddu18i	$ra, %call36(monkey)
+	pcaddu18i	$ra, %call36(bm)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s0, 0
-	bnez	$a0, .LBB15_105
-	b	.LBB15_92
+	ld.w	$a0, $s2, 0
+	bnez	$a0, .LBB15_671
+	b	.LBB15_672
 	.p2align	4, , 16
-.LBB15_101:                             #   in Loop: Header=BB15_93 Depth=1
+.LBB15_681:                             #   in Loop: Header=BB15_673 Depth=1
 	ori	$a0, $zero, 24
-	blt	$a1, $a0, .LBB15_104
-# %bb.102:                              #   in Loop: Header=BB15_93 Depth=1
+	blt	$a1, $a0, .LBB15_683
+# %bb.682:                              #   in Loop: Header=BB15_673 Depth=1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	move	$a3, $s6
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(a_monkey)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s0, 0
-	bnez	$a0, .LBB15_105
-	b	.LBB15_92
-.LBB15_103:                             #   in Loop: Header=BB15_93 Depth=1
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	move	$a3, $s6
-	pcaddu18i	$ra, %call36(bm)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $s0, 0
-	bnez	$a0, .LBB15_105
-	b	.LBB15_92
-.LBB15_104:                             #   in Loop: Header=BB15_93 Depth=1
+	ld.w	$a0, $s2, 0
+	bnez	$a0, .LBB15_671
+	b	.LBB15_672
+.LBB15_683:                             #   in Loop: Header=BB15_673 Depth=1
                                         # implicit-def: $r4
 	move	$a3, $s6
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(agrep)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s0, 0
-	beqz	$a0, .LBB15_92
-	.p2align	4, , 16
-.LBB15_105:                             #   in Loop: Header=BB15_93 Depth=1
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB15_92
-# %bb.106:
+	ld.w	$a0, $s2, 0
+	bnez	$a0, .LBB15_671
+	b	.LBB15_672
+.LBB15_684:
 	pcalau12i	$a0, %got_pc_hi20(CurrentFileName)
 	ld.d	$a0, $a0, %got_pc_lo12(CurrentFileName)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-.LBB15_107:
+.LBB15_685:
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 432
 	add.d	$sp, $sp, $a0
@@ -4322,240 +8787,87 @@ sgrep:                                  # @sgrep
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB15_108:
-	vld	$vr2, $fp, 0
-	vseq.b	$vr3, $vr2, $vr0
-	vseq.b	$vr2, $vr2, $vr1
-	vor.v	$vr2, $vr3, $vr2
-	vpickve2gr.b	$a0, $vr2, 0
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_125
-# %bb.109:
-	vpickve2gr.b	$a0, $vr2, 1
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_126
-.LBB15_110:
-	vpickve2gr.b	$a0, $vr2, 2
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_127
-.LBB15_111:
-	vpickve2gr.b	$a0, $vr2, 3
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_128
-.LBB15_112:
-	vpickve2gr.b	$a0, $vr2, 4
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_129
-.LBB15_113:
-	vpickve2gr.b	$a0, $vr2, 5
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_130
-.LBB15_114:
-	vpickve2gr.b	$a0, $vr2, 6
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_131
-.LBB15_115:
-	vpickve2gr.b	$a0, $vr2, 7
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_132
-.LBB15_116:
-	vpickve2gr.b	$a0, $vr2, 8
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_133
-.LBB15_117:
-	vpickve2gr.b	$a0, $vr2, 9
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_134
-.LBB15_118:
-	vpickve2gr.b	$a0, $vr2, 10
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_135
-.LBB15_119:
-	vpickve2gr.b	$a0, $vr2, 11
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_136
-.LBB15_120:
-	vpickve2gr.b	$a0, $vr2, 12
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_137
-.LBB15_121:
-	vpickve2gr.b	$a0, $vr2, 13
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB15_138
-.LBB15_122:
-	vpickve2gr.b	$a0, $vr2, 14
-	andi	$a1, $a0, 1
+.LBB15_686:
+	beq	$a0, $a5, .LBB15_709
+	b	.LBB15_716
+.LBB15_687:
+	vld	$vr3, $fp, 0
 	bstrpick.d	$a0, $a5, 30, 4
-	bnez	$a1, .LBB15_139
-.LBB15_123:
-	vpickve2gr.b	$a1, $vr2, 15
-	andi	$a1, $a1, 1
 	slli.d	$a0, $a0, 4
-	bnez	$a1, .LBB15_140
-.LBB15_124:
-	bne	$a0, $a5, .LBB15_141
-	b	.LBB15_153
-.LBB15_125:
-	ori	$a0, $zero, 10
-	st.b	$a0, $fp, 0
-	vpickve2gr.b	$a0, $vr2, 1
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_110
-.LBB15_126:
-	ori	$a0, $zero, 10
-	st.b	$a0, $fp, 1
-	vpickve2gr.b	$a0, $vr2, 2
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_111
-.LBB15_127:
-	ori	$a0, $zero, 10
-	st.b	$a0, $fp, 2
-	vpickve2gr.b	$a0, $vr2, 3
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_112
-.LBB15_128:
-	ori	$a0, $zero, 10
-	st.b	$a0, $fp, 3
-	vpickve2gr.b	$a0, $vr2, 4
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_113
-.LBB15_129:
-	ori	$a0, $zero, 10
-	st.b	$a0, $fp, 4
-	vpickve2gr.b	$a0, $vr2, 5
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_114
-.LBB15_130:
-	ori	$a0, $zero, 10
-	st.b	$a0, $fp, 5
-	vpickve2gr.b	$a0, $vr2, 6
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_115
-.LBB15_131:
-	ori	$a0, $zero, 10
-	st.b	$a0, $fp, 6
-	vpickve2gr.b	$a0, $vr2, 7
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_116
-.LBB15_132:
-	ori	$a0, $zero, 10
-	st.b	$a0, $fp, 7
-	vpickve2gr.b	$a0, $vr2, 8
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_117
-.LBB15_133:
-	ori	$a0, $zero, 10
-	st.b	$a0, $fp, 8
-	vpickve2gr.b	$a0, $vr2, 9
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_118
-.LBB15_134:
-	ori	$a0, $zero, 10
-	st.b	$a0, $fp, 9
-	vpickve2gr.b	$a0, $vr2, 10
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_119
-.LBB15_135:
-	ori	$a0, $zero, 10
-	st.b	$a0, $fp, 10
-	vpickve2gr.b	$a0, $vr2, 11
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_120
-.LBB15_136:
-	ori	$a0, $zero, 10
-	st.b	$a0, $fp, 11
-	vpickve2gr.b	$a0, $vr2, 12
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_121
-.LBB15_137:
-	ori	$a0, $zero, 10
-	st.b	$a0, $fp, 12
-	vpickve2gr.b	$a0, $vr2, 13
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB15_122
-.LBB15_138:
-	ori	$a0, $zero, 10
-	st.b	$a0, $fp, 13
-	vpickve2gr.b	$a0, $vr2, 14
-	andi	$a1, $a0, 1
-	bstrpick.d	$a0, $a5, 30, 4
-	beqz	$a1, .LBB15_123
-.LBB15_139:
-	ori	$a1, $zero, 10
-	st.b	$a1, $fp, 14
-	vpickve2gr.b	$a1, $vr2, 15
-	andi	$a1, $a1, 1
-	slli.d	$a0, $a0, 4
-	beqz	$a1, .LBB15_124
-.LBB15_140:
-	ori	$a1, $zero, 10
-	st.b	$a1, $fp, 15
-	beq	$a0, $a5, .LBB15_153
-.LBB15_141:
-	andi	$a1, $a5, 12
-	beqz	$a1, .LBB15_159
-.LBB15_142:
-	move	$a2, $a0
-	bstrpick.d	$a0, $a5, 30, 2
-	slli.d	$a0, $a0, 2
-	add.d	$a1, $a2, $fp
-	addi.d	$a1, $a1, 1
-	sub.d	$a2, $a2, $a0
-	ori	$a3, $zero, 10
-	b	.LBB15_144
-	.p2align	4, , 16
-.LBB15_143:                             #   in Loop: Header=BB15_144 Depth=1
-	addi.d	$a2, $a2, 4
-	addi.d	$a1, $a1, 4
-	beqz	$a2, .LBB15_152
-.LBB15_144:                             # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a1, -1
-	vinsgr2vr.w	$vr2, $a4, 0
-	vseq.b	$vr3, $vr2, $vr0
-	vseq.b	$vr2, $vr2, $vr1
-	vor.v	$vr2, $vr3, $vr2
-	vilvl.b	$vr2, $vr2, $vr2
-	vilvl.h	$vr2, $vr2, $vr2
-	vslli.w	$vr2, $vr2, 24
-	vsrai.w	$vr2, $vr2, 24
-	vpickve2gr.w	$a4, $vr2, 0
-	andi	$a4, $a4, 1
-	bnez	$a4, .LBB15_148
-# %bb.145:                              #   in Loop: Header=BB15_144 Depth=1
-	vpickve2gr.w	$a4, $vr2, 1
-	andi	$a4, $a4, 1
-	bnez	$a4, .LBB15_149
-.LBB15_146:                             #   in Loop: Header=BB15_144 Depth=1
-	vpickve2gr.w	$a4, $vr2, 2
-	andi	$a4, $a4, 1
-	bnez	$a4, .LBB15_150
-.LBB15_147:                             #   in Loop: Header=BB15_144 Depth=1
-	vpickve2gr.w	$a4, $vr2, 3
-	andi	$a4, $a4, 1
-	beqz	$a4, .LBB15_143
-	b	.LBB15_151
-	.p2align	4, , 16
-.LBB15_148:                             #   in Loop: Header=BB15_144 Depth=1
-	st.b	$a3, $a1, -1
-	vpickve2gr.w	$a4, $vr2, 1
-	andi	$a4, $a4, 1
-	beqz	$a4, .LBB15_146
-.LBB15_149:                             #   in Loop: Header=BB15_144 Depth=1
-	st.b	$a3, $a1, 0
-	vpickve2gr.w	$a4, $vr2, 2
-	andi	$a4, $a4, 1
-	beqz	$a4, .LBB15_147
-.LBB15_150:                             #   in Loop: Header=BB15_144 Depth=1
-	st.b	$a3, $a1, 1
-	vpickve2gr.w	$a4, $vr2, 3
-	andi	$a4, $a4, 1
-	beqz	$a4, .LBB15_143
-.LBB15_151:                             #   in Loop: Header=BB15_144 Depth=1
-	st.b	$a3, $a1, 2
-	b	.LBB15_143
-.LBB15_152:
-	bne	$a0, $a5, .LBB15_159
-.LBB15_153:
+	vseq.b	$vr4, $vr3, $vr0
+	vseq.b	$vr3, $vr3, $vr1
+	vor.v	$vr3, $vr4, $vr3
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$a1, $vr4, 0
+	addi.d	$a2, $fp, 15
+	xor	$a2, $a2, $fp
+	srli.d	$a2, $a2, 12
+	beq	$a1, $zero, .LBB15_708
+	beq	$a2, $zero, .LBB15_707
+# %bb.688:
+	bstrpick.d	$a2, $a1, 7, 0
+	beq	$a2, $zero, .LBB15_698
+# %bb.689:
+	andi	$a2, $a1, 1
+	bne	$a2, $zero, .LBB15_721
+# %bb.690:
+	andi	$a2, $a1, 2
+	bne	$a2, $zero, .LBB15_722
+.LBB15_691:
+	andi	$a2, $a1, 4
+	bne	$a2, $zero, .LBB15_723
+.LBB15_692:
+	andi	$a2, $a1, 8
+	bne	$a2, $zero, .LBB15_724
+.LBB15_693:
+	andi	$a2, $a1, 16
+	bne	$a2, $zero, .LBB15_725
+.LBB15_694:
+	andi	$a2, $a1, 32
+	bne	$a2, $zero, .LBB15_726
+.LBB15_695:
+	andi	$a2, $a1, 64
+	bne	$a2, $zero, .LBB15_727
+.LBB15_696:
+	andi	$a2, $a1, 128
+	beq	$a2, $zero, .LBB15_698
+.LBB15_697:
+	vstelm.b	$vr2, $fp, 7, 7
+.LBB15_698:
+	bstrpick.d	$a2, $a1, 15, 8
+	beq	$a2, $zero, .LBB15_708
+# %bb.699:
+	andi	$a2, $a1, 256
+	bne	$a2, $zero, .LBB15_728
+# %bb.700:
+	andi	$a2, $a1, 512
+	bne	$a2, $zero, .LBB15_729
+.LBB15_701:
+	andi	$a2, $a1, 1024
+	bne	$a2, $zero, .LBB15_730
+.LBB15_702:
+	andi	$a2, $a1, 2048
+	bne	$a2, $zero, .LBB15_731
+.LBB15_703:
+	bstrpick.d	$a2, $a1, 12, 12
+	bne	$a2, $zero, .LBB15_732
+.LBB15_704:
+	bstrpick.d	$a2, $a1, 13, 13
+	bne	$a2, $zero, .LBB15_733
+.LBB15_705:
+	bstrpick.d	$a2, $a1, 14, 14
+	bne	$a2, $zero, .LBB15_734
+.LBB15_706:
+	bstrpick.d	$a1, $a1, 15, 15
+	beq	$a1, $zero, .LBB15_708
+	b	.LBB15_735
+.LBB15_707:
+	vld	$vr4, $fp, 0
+	vbitsel.v	$vr3, $vr4, $vr2, $vr3
+	vst	$vr3, $fp, 0
+.LBB15_708:
+	bne	$a0, $a5, .LBB15_715
+.LBB15_709:
 	pcalau12i	$a0, %got_pc_hi20(Mask)
 	ld.d	$s3, $a0, %got_pc_lo12(Mask)
 	ori	$a1, $zero, 255
@@ -4563,58 +8875,121 @@ sgrep:                                  # @sgrep
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
 	move	$a0, $zero
-	b	.LBB15_155
+	b	.LBB15_711
 	.p2align	4, , 16
-.LBB15_154:                             #   in Loop: Header=BB15_155 Depth=1
+.LBB15_710:                             #   in Loop: Header=BB15_711 Depth=1
 	addi.d	$a0, $a0, 1
-	beq	$a0, $t0, .LBB15_87
-.LBB15_155:                             # =>This Loop Header: Depth=1
-                                        #     Child Loop BB15_157 Depth 2
+	beq	$a0, $t1, .LBB15_665
+.LBB15_711:                             # =>This Loop Header: Depth=1
+                                        #     Child Loop BB15_713 Depth 2
 	ldx.bu	$a1, $fp, $a0
 	move	$a2, $zero
 	alsl.d	$a3, $a1, $s3, 2
 	move	$a4, $fp
-	move	$a5, $t0
-	b	.LBB15_157
+	move	$a5, $t1
+	b	.LBB15_713
 	.p2align	4, , 16
-.LBB15_156:                             #   in Loop: Header=BB15_157 Depth=2
+.LBB15_712:                             #   in Loop: Header=BB15_713 Depth=2
 	addi.d	$a2, $a2, 1
 	addi.d	$a5, $a5, -1
 	addi.d	$a4, $a4, 1
-	beqz	$a5, .LBB15_154
-.LBB15_157:                             #   Parent Loop BB15_155 Depth=1
+	beqz	$a5, .LBB15_710
+.LBB15_713:                             #   Parent Loop BB15_711 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.bu	$a6, $a4, 0
-	bne	$a1, $a6, .LBB15_156
-# %bb.158:                              #   in Loop: Header=BB15_157 Depth=2
+	bne	$a1, $a6, .LBB15_712
+# %bb.714:                              #   in Loop: Header=BB15_713 Depth=2
 	ld.w	$a6, $a3, 0
 	srl.w	$a7, $s4, $a2
 	andn	$a6, $a6, $a7
 	st.w	$a6, $a3, 0
-	b	.LBB15_156
-.LBB15_159:
+	b	.LBB15_712
+.LBB15_715:
+	andi	$a1, $a5, 8
+	bnez	$a1, .LBB15_622
+.LBB15_716:
 	sub.d	$a1, $a5, $a0
 	add.d	$a0, $fp, $a0
 	ori	$a2, $zero, 94
 	ori	$a3, $zero, 10
 	ori	$a4, $zero, 36
-	b	.LBB15_162
+	b	.LBB15_719
 	.p2align	4, , 16
-.LBB15_160:                             #   in Loop: Header=BB15_162 Depth=1
+.LBB15_717:                             #   in Loop: Header=BB15_719 Depth=1
 	st.b	$a3, $a0, 0
-.LBB15_161:                             #   in Loop: Header=BB15_162 Depth=1
+.LBB15_718:                             #   in Loop: Header=BB15_719 Depth=1
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 1
-	beqz	$a1, .LBB15_153
-.LBB15_162:                             # =>This Inner Loop Header: Depth=1
+	beqz	$a1, .LBB15_709
+.LBB15_719:                             # =>This Inner Loop Header: Depth=1
 	ld.bu	$a5, $a0, 0
-	beq	$a5, $a2, .LBB15_160
-# %bb.163:                              #   in Loop: Header=BB15_162 Depth=1
-	beq	$a5, $a4, .LBB15_160
-	b	.LBB15_161
-.LBB15_164:
+	beq	$a5, $a2, .LBB15_717
+# %bb.720:                              #   in Loop: Header=BB15_719 Depth=1
+	beq	$a5, $a4, .LBB15_717
+	b	.LBB15_718
+.LBB15_721:
+	vstelm.b	$vr2, $fp, 0, 0
+	andi	$a2, $a1, 2
+	beq	$a2, $zero, .LBB15_691
+.LBB15_722:
+	vstelm.b	$vr2, $fp, 1, 1
+	andi	$a2, $a1, 4
+	beq	$a2, $zero, .LBB15_692
+.LBB15_723:
+	vstelm.b	$vr2, $fp, 2, 2
+	andi	$a2, $a1, 8
+	beq	$a2, $zero, .LBB15_693
+.LBB15_724:
+	vstelm.b	$vr2, $fp, 3, 3
+	andi	$a2, $a1, 16
+	beq	$a2, $zero, .LBB15_694
+.LBB15_725:
+	vstelm.b	$vr2, $fp, 4, 4
+	andi	$a2, $a1, 32
+	beq	$a2, $zero, .LBB15_695
+.LBB15_726:
+	vstelm.b	$vr2, $fp, 5, 5
+	andi	$a2, $a1, 64
+	beq	$a2, $zero, .LBB15_696
+.LBB15_727:
+	vstelm.b	$vr2, $fp, 6, 6
+	andi	$a2, $a1, 128
+	bne	$a2, $zero, .LBB15_697
+	b	.LBB15_698
+.LBB15_728:
+	vstelm.b	$vr2, $fp, 8, 8
+	andi	$a2, $a1, 512
+	beq	$a2, $zero, .LBB15_701
+.LBB15_729:
+	vstelm.b	$vr2, $fp, 9, 9
+	andi	$a2, $a1, 1024
+	beq	$a2, $zero, .LBB15_702
+.LBB15_730:
+	vstelm.b	$vr2, $fp, 10, 10
+	andi	$a2, $a1, 2048
+	beq	$a2, $zero, .LBB15_703
+.LBB15_731:
+	vstelm.b	$vr2, $fp, 11, 11
+	bstrpick.d	$a2, $a1, 12, 12
+	beq	$a2, $zero, .LBB15_704
+.LBB15_732:
+	vstelm.b	$vr2, $fp, 12, 12
+	bstrpick.d	$a2, $a1, 13, 13
+	beq	$a2, $zero, .LBB15_705
+.LBB15_733:
+	vstelm.b	$vr2, $fp, 13, 13
+	bstrpick.d	$a2, $a1, 14, 14
+	beq	$a2, $zero, .LBB15_706
+.LBB15_734:
+	vstelm.b	$vr2, $fp, 14, 14
+	bstrpick.d	$a1, $a1, 15, 15
+	beq	$a1, $zero, .LBB15_708
+.LBB15_735:
+	vstelm.b	$vr2, $fp, 15, 15
+	b	.LBB15_708
+.LBB15_736:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a0, $a0, 0

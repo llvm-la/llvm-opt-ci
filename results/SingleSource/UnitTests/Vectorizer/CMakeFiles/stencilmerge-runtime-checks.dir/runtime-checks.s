@@ -42031,62 +42031,22 @@ _ZNSt17_Function_handlerIFvPhS0_jllEZ4mainE4$_44E10_M_managerERSt9_Any_dataRKS4_
 	.word	2                               # 0x2
 	.word	3                               # 0x3
 	.size	.LCPI308_3, 16
-	.type	.LCPI308_4,@object
-.LCPI308_4:
-	.dword	14                              # 0xe
-	.dword	15                              # 0xf
-	.size	.LCPI308_4, 16
-	.type	.LCPI308_5,@object
-.LCPI308_5:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
-	.size	.LCPI308_5, 16
-	.type	.LCPI308_6,@object
-.LCPI308_6:
-	.dword	10                              # 0xa
-	.dword	11                              # 0xb
-	.size	.LCPI308_6, 16
-	.type	.LCPI308_7,@object
-.LCPI308_7:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
-	.size	.LCPI308_7, 16
-	.type	.LCPI308_8,@object
-.LCPI308_8:
-	.dword	6                               # 0x6
-	.dword	7                               # 0x7
-	.size	.LCPI308_8, 16
-	.type	.LCPI308_9,@object
-.LCPI308_9:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
-	.size	.LCPI308_9, 16
-	.type	.LCPI308_10,@object
-.LCPI308_10:
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
-	.size	.LCPI308_10, 16
-	.type	.LCPI308_11,@object
-.LCPI308_11:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.size	.LCPI308_11, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end308, nop
 	.type	_ZNSt17_Function_handlerIFvPhS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_,@function
 _ZNSt17_Function_handlerIFvPhS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_: # @"_ZNSt17_Function_handlerIFvPhS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_"
 # %bb.0:
-	ld.w	$a6, $a3, 0
-	beqz	$a6, .LBB308_45
+	ld.w	$t0, $a3, 0
+	beqz	$t0, .LBB308_302
 # %bb.1:
 	ld.d	$a3, $a1, 0
 	ld.d	$a2, $a2, 0
 	ld.d	$a0, $a4, 0
-	bstrpick.d	$a5, $a6, 31, 0
-	ori	$a1, $zero, 16
+	bstrpick.d	$a5, $t0, 31, 0
+	ori	$a1, $zero, 8
 	lu12i.w	$a4, -349526
-	bgeu	$a6, $a1, .LBB308_7
+	bgeu	$t0, $a1, .LBB308_7
 # %bb.2:
 	move	$a1, $zero
 .LBB308_3:
@@ -42104,7 +42064,7 @@ _ZNSt17_Function_handlerIFvPhS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 1
 	addi.d	$a1, $a1, 1
-	beqz	$a5, .LBB308_45
+	beqz	$a5, .LBB308_302
 .LBB308_5:                              # =>This Inner Loop Header: Depth=1
 	mul.w	$t0, $a1, $a4
 	bltu	$t0, $a7, .LBB308_4
@@ -42130,316 +42090,1214 @@ _ZNSt17_Function_handlerIFvPhS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7
 	sub.d	$a7, $a2, $a7
 	bltu	$a6, $a7, .LBB308_3
 # %bb.10:
+	ori	$a1, $zero, 16
+	pcalau12i	$a7, %pc_hi20(.LCPI308_2)
+	pcalau12i	$a6, %pc_hi20(.LCPI308_3)
+	vrepli.b	$vr0, 85
+	bgeu	$t0, $a1, .LBB308_155
+# %bb.11:
+	move	$a1, $zero
+.LBB308_12:
+	move	$t0, $a1
+	bstrpick.d	$a1, $a5, 31, 3
+	vld	$vr1, $a7, %pc_lo12(.LCPI308_2)
+	vld	$vr2, $a6, %pc_lo12(.LCPI308_3)
+	slli.d	$a1, $a1, 3
+	vreplgr2vr.w	$vr3, $t0
+	vor.v	$vr1, $vr3, $vr1
+	vor.v	$vr2, $vr3, $vr2
+	sub.d	$a6, $t0, $a1
+	add.d	$a7, $a3, $t0
+	add.d	$t0, $a2, $t0
+	sub.d	$t1, $zero, $a0
+	ori	$t2, $a4, 2731
+	vreplgr2vr.w	$vr3, $t2
+	vrepli.b	$vr4, 0
+	b	.LBB308_14
+	.p2align	4, , 16
+.LBB308_13:                             #   in Loop: Header=BB308_14 Depth=1
+	vaddi.wu	$vr2, $vr2, 8
+	vaddi.wu	$vr1, $vr1, 8
+	addi.d	$a6, $a6, 8
+	addi.d	$a7, $a7, 8
+	addi.d	$t0, $t0, 8
+	beqz	$a6, .LBB308_154
+.LBB308_14:                             # =>This Inner Loop Header: Depth=1
+	vmul.w	$vr5, $vr2, $vr3
+	vslt.wu	$vr5, $vr0, $vr5
+	vpickve2gr.h	$t2, $vr5, 0
+	vori.b	$vr6, $vr4, 0
+	vinsgr2vr.b	$vr6, $t2, 0
+	vpickve2gr.h	$t2, $vr5, 2
+	vinsgr2vr.b	$vr6, $t2, 1
+	vpickve2gr.h	$t2, $vr5, 4
+	vinsgr2vr.b	$vr6, $t2, 2
+	vpickve2gr.h	$t2, $vr5, 6
+	vinsgr2vr.b	$vr6, $t2, 3
+	vmul.w	$vr5, $vr1, $vr3
+	vslt.wu	$vr5, $vr0, $vr5
+	vpickve2gr.h	$t2, $vr5, 0
+	vinsgr2vr.b	$vr6, $t2, 4
+	vpickve2gr.h	$t2, $vr5, 2
+	vinsgr2vr.b	$vr6, $t2, 5
+	vpickve2gr.h	$t2, $vr5, 4
+	vinsgr2vr.b	$vr6, $t2, 6
+	vpickve2gr.h	$t2, $vr5, 6
+	vinsgr2vr.b	$vr6, $t2, 7
+	vmsknz.b	$vr5, $vr6
+	vpickve2gr.hu	$t2, $vr5, 0
+	beq	$t2, $zero, .LBB308_35
+# %bb.15:                               #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t4, $t2, 7, 0
+	add.d	$t3, $t0, $t1
+                                        # implicit-def: $vr5
+	beq	$t4, $zero, .LBB308_25
+# %bb.16:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 1
+                                        # implicit-def: $vr5
+	bne	$t4, $zero, .LBB308_97
+# %bb.17:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 2
+	bne	$t4, $zero, .LBB308_98
+.LBB308_18:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 4
+	bne	$t4, $zero, .LBB308_99
+.LBB308_19:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 8
+	bne	$t4, $zero, .LBB308_100
+.LBB308_20:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 16
+	bne	$t4, $zero, .LBB308_101
+.LBB308_21:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 32
+	bne	$t4, $zero, .LBB308_102
+.LBB308_22:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 64
+	bne	$t4, $zero, .LBB308_103
+.LBB308_23:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 128
+	beq	$t4, $zero, .LBB308_25
+.LBB308_24:                             #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 7
+	vinsgr2vr.b	$vr5, $t4, 7
+.LBB308_25:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t4, $t2, 15, 8
+	beq	$t4, $zero, .LBB308_35
+# %bb.26:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 256
+	bne	$t4, $zero, .LBB308_104
+# %bb.27:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 512
+	bne	$t4, $zero, .LBB308_105
+.LBB308_28:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 1024
+	bne	$t4, $zero, .LBB308_106
+.LBB308_29:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 2048
+	bne	$t4, $zero, .LBB308_107
+.LBB308_30:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t4, $t2, 12, 12
+	bne	$t4, $zero, .LBB308_108
+.LBB308_31:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t4, $t2, 13, 13
+	bne	$t4, $zero, .LBB308_109
+.LBB308_32:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t4, $t2, 14, 14
+	bne	$t4, $zero, .LBB308_110
+.LBB308_33:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t4, $t2, 15, 15
+	beq	$t4, $zero, .LBB308_35
+.LBB308_34:                             #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t3, 15
+	vinsgr2vr.b	$vr5, $t3, 15
+	.p2align	4, , 16
+.LBB308_35:                             #   in Loop: Header=BB308_14 Depth=1
+	beq	$t2, $zero, .LBB308_56
+# %bb.36:                               #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t3, $t2, 7, 0
+                                        # implicit-def: $vr6
+	beq	$t3, $zero, .LBB308_46
+# %bb.37:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 1
+                                        # implicit-def: $vr6
+	bne	$t3, $zero, .LBB308_111
+# %bb.38:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 2
+	bne	$t3, $zero, .LBB308_112
+.LBB308_39:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 4
+	bne	$t3, $zero, .LBB308_113
+.LBB308_40:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 8
+	bne	$t3, $zero, .LBB308_114
+.LBB308_41:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 16
+	bne	$t3, $zero, .LBB308_115
+.LBB308_42:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 32
+	bne	$t3, $zero, .LBB308_116
+.LBB308_43:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 64
+	bne	$t3, $zero, .LBB308_117
+.LBB308_44:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 128
+	beq	$t3, $zero, .LBB308_46
+.LBB308_45:                             #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 7
+	vinsgr2vr.b	$vr6, $t3, 7
+.LBB308_46:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t3, $t2, 15, 8
+	beq	$t3, $zero, .LBB308_56
+# %bb.47:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 256
+	bne	$t3, $zero, .LBB308_118
+# %bb.48:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 512
+	bne	$t3, $zero, .LBB308_119
+.LBB308_49:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 1024
+	bne	$t3, $zero, .LBB308_120
+.LBB308_50:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 2048
+	bne	$t3, $zero, .LBB308_121
+.LBB308_51:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t3, $t2, 12, 12
+	bne	$t3, $zero, .LBB308_122
+.LBB308_52:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t3, $t2, 13, 13
+	bne	$t3, $zero, .LBB308_123
+.LBB308_53:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t3, $t2, 14, 14
+	bne	$t3, $zero, .LBB308_124
+.LBB308_54:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t3, $t2, 15, 15
+	beq	$t3, $zero, .LBB308_56
+.LBB308_55:                             #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 15
+	vinsgr2vr.b	$vr6, $t3, 15
+	.p2align	4, , 16
+.LBB308_56:                             #   in Loop: Header=BB308_14 Depth=1
+	beq	$t2, $zero, .LBB308_77
+# %bb.57:                               #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t4, $t2, 7, 0
+	add.d	$t3, $t0, $a0
+                                        # implicit-def: $vr7
+	beq	$t4, $zero, .LBB308_67
+# %bb.58:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 1
+                                        # implicit-def: $vr7
+	bne	$t4, $zero, .LBB308_125
+# %bb.59:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 2
+	bne	$t4, $zero, .LBB308_126
+.LBB308_60:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 4
+	bne	$t4, $zero, .LBB308_127
+.LBB308_61:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 8
+	bne	$t4, $zero, .LBB308_128
+.LBB308_62:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 16
+	bne	$t4, $zero, .LBB308_129
+.LBB308_63:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 32
+	bne	$t4, $zero, .LBB308_130
+.LBB308_64:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 64
+	bne	$t4, $zero, .LBB308_131
+.LBB308_65:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 128
+	beq	$t4, $zero, .LBB308_67
+.LBB308_66:                             #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 7
+	vinsgr2vr.b	$vr7, $t4, 7
+.LBB308_67:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t4, $t2, 15, 8
+	beq	$t4, $zero, .LBB308_77
+# %bb.68:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 256
+	bne	$t4, $zero, .LBB308_132
+# %bb.69:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 512
+	bne	$t4, $zero, .LBB308_133
+.LBB308_70:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 1024
+	bne	$t4, $zero, .LBB308_134
+.LBB308_71:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t4, $t2, 2048
+	bne	$t4, $zero, .LBB308_135
+.LBB308_72:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t4, $t2, 12, 12
+	bne	$t4, $zero, .LBB308_136
+.LBB308_73:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t4, $t2, 13, 13
+	bne	$t4, $zero, .LBB308_137
+.LBB308_74:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t4, $t2, 14, 14
+	bne	$t4, $zero, .LBB308_138
+.LBB308_75:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t4, $t2, 15, 15
+	beq	$t4, $zero, .LBB308_77
+.LBB308_76:                             #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t3, 15
+	vinsgr2vr.b	$vr7, $t3, 15
+	.p2align	4, , 16
+.LBB308_77:                             #   in Loop: Header=BB308_14 Depth=1
+	beq	$t2, $zero, .LBB308_13
+# %bb.78:                               #   in Loop: Header=BB308_14 Depth=1
+	vadd.b	$vr5, $vr6, $vr5
+	bstrpick.d	$t3, $t2, 7, 0
+	vadd.b	$vr5, $vr5, $vr7
+	beq	$t3, $zero, .LBB308_88
+# %bb.79:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 1
+	bne	$t3, $zero, .LBB308_139
+# %bb.80:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 2
+	bne	$t3, $zero, .LBB308_140
+.LBB308_81:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 4
+	bne	$t3, $zero, .LBB308_141
+.LBB308_82:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 8
+	bne	$t3, $zero, .LBB308_142
+.LBB308_83:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 16
+	bne	$t3, $zero, .LBB308_143
+.LBB308_84:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 32
+	bne	$t3, $zero, .LBB308_144
+.LBB308_85:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 64
+	bne	$t3, $zero, .LBB308_145
+.LBB308_86:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 128
+	beq	$t3, $zero, .LBB308_88
+.LBB308_87:                             #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 7, 7
+.LBB308_88:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t3, $t2, 15, 8
+	beq	$t3, $zero, .LBB308_13
+# %bb.89:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 256
+	bne	$t3, $zero, .LBB308_146
+# %bb.90:                               #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 512
+	bne	$t3, $zero, .LBB308_147
+.LBB308_91:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 1024
+	bne	$t3, $zero, .LBB308_148
+.LBB308_92:                             #   in Loop: Header=BB308_14 Depth=1
+	andi	$t3, $t2, 2048
+	bne	$t3, $zero, .LBB308_149
+.LBB308_93:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t3, $t2, 12, 12
+	bne	$t3, $zero, .LBB308_150
+.LBB308_94:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t3, $t2, 13, 13
+	bne	$t3, $zero, .LBB308_151
+.LBB308_95:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t3, $t2, 14, 14
+	bne	$t3, $zero, .LBB308_152
+.LBB308_96:                             #   in Loop: Header=BB308_14 Depth=1
+	bstrpick.d	$t2, $t2, 15, 15
+	beq	$t2, $zero, .LBB308_13
+	b	.LBB308_153
+.LBB308_97:                             #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 0
+	vinsgr2vr.b	$vr5, $t4, 0
+	andi	$t4, $t2, 2
+	beq	$t4, $zero, .LBB308_18
+.LBB308_98:                             #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 1
+	vinsgr2vr.b	$vr5, $t4, 1
+	andi	$t4, $t2, 4
+	beq	$t4, $zero, .LBB308_19
+.LBB308_99:                             #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 2
+	vinsgr2vr.b	$vr5, $t4, 2
+	andi	$t4, $t2, 8
+	beq	$t4, $zero, .LBB308_20
+.LBB308_100:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 3
+	vinsgr2vr.b	$vr5, $t4, 3
+	andi	$t4, $t2, 16
+	beq	$t4, $zero, .LBB308_21
+.LBB308_101:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 4
+	vinsgr2vr.b	$vr5, $t4, 4
+	andi	$t4, $t2, 32
+	beq	$t4, $zero, .LBB308_22
+.LBB308_102:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 5
+	vinsgr2vr.b	$vr5, $t4, 5
+	andi	$t4, $t2, 64
+	beq	$t4, $zero, .LBB308_23
+.LBB308_103:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 6
+	vinsgr2vr.b	$vr5, $t4, 6
+	andi	$t4, $t2, 128
+	bne	$t4, $zero, .LBB308_24
+	b	.LBB308_25
+.LBB308_104:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 8
+	vinsgr2vr.b	$vr5, $t4, 8
+	andi	$t4, $t2, 512
+	beq	$t4, $zero, .LBB308_28
+.LBB308_105:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 9
+	vinsgr2vr.b	$vr5, $t4, 9
+	andi	$t4, $t2, 1024
+	beq	$t4, $zero, .LBB308_29
+.LBB308_106:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 10
+	vinsgr2vr.b	$vr5, $t4, 10
+	andi	$t4, $t2, 2048
+	beq	$t4, $zero, .LBB308_30
+.LBB308_107:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 11
+	vinsgr2vr.b	$vr5, $t4, 11
+	bstrpick.d	$t4, $t2, 12, 12
+	beq	$t4, $zero, .LBB308_31
+.LBB308_108:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 12
+	vinsgr2vr.b	$vr5, $t4, 12
+	bstrpick.d	$t4, $t2, 13, 13
+	beq	$t4, $zero, .LBB308_32
+.LBB308_109:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 13
+	vinsgr2vr.b	$vr5, $t4, 13
+	bstrpick.d	$t4, $t2, 14, 14
+	beq	$t4, $zero, .LBB308_33
+.LBB308_110:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 14
+	vinsgr2vr.b	$vr5, $t4, 14
+	bstrpick.d	$t4, $t2, 15, 15
+	bne	$t4, $zero, .LBB308_34
+	b	.LBB308_35
+.LBB308_111:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 0
+	vinsgr2vr.b	$vr6, $t3, 0
+	andi	$t3, $t2, 2
+	beq	$t3, $zero, .LBB308_39
+.LBB308_112:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 1
+	vinsgr2vr.b	$vr6, $t3, 1
+	andi	$t3, $t2, 4
+	beq	$t3, $zero, .LBB308_40
+.LBB308_113:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 2
+	vinsgr2vr.b	$vr6, $t3, 2
+	andi	$t3, $t2, 8
+	beq	$t3, $zero, .LBB308_41
+.LBB308_114:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 3
+	vinsgr2vr.b	$vr6, $t3, 3
+	andi	$t3, $t2, 16
+	beq	$t3, $zero, .LBB308_42
+.LBB308_115:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 4
+	vinsgr2vr.b	$vr6, $t3, 4
+	andi	$t3, $t2, 32
+	beq	$t3, $zero, .LBB308_43
+.LBB308_116:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 5
+	vinsgr2vr.b	$vr6, $t3, 5
+	andi	$t3, $t2, 64
+	beq	$t3, $zero, .LBB308_44
+.LBB308_117:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 6
+	vinsgr2vr.b	$vr6, $t3, 6
+	andi	$t3, $t2, 128
+	bne	$t3, $zero, .LBB308_45
+	b	.LBB308_46
+.LBB308_118:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 8
+	vinsgr2vr.b	$vr6, $t3, 8
+	andi	$t3, $t2, 512
+	beq	$t3, $zero, .LBB308_49
+.LBB308_119:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 9
+	vinsgr2vr.b	$vr6, $t3, 9
+	andi	$t3, $t2, 1024
+	beq	$t3, $zero, .LBB308_50
+.LBB308_120:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 10
+	vinsgr2vr.b	$vr6, $t3, 10
+	andi	$t3, $t2, 2048
+	beq	$t3, $zero, .LBB308_51
+.LBB308_121:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 11
+	vinsgr2vr.b	$vr6, $t3, 11
+	bstrpick.d	$t3, $t2, 12, 12
+	beq	$t3, $zero, .LBB308_52
+.LBB308_122:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 12
+	vinsgr2vr.b	$vr6, $t3, 12
+	bstrpick.d	$t3, $t2, 13, 13
+	beq	$t3, $zero, .LBB308_53
+.LBB308_123:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 13
+	vinsgr2vr.b	$vr6, $t3, 13
+	bstrpick.d	$t3, $t2, 14, 14
+	beq	$t3, $zero, .LBB308_54
+.LBB308_124:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t3, $t0, 14
+	vinsgr2vr.b	$vr6, $t3, 14
+	bstrpick.d	$t3, $t2, 15, 15
+	bne	$t3, $zero, .LBB308_55
+	b	.LBB308_56
+.LBB308_125:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 0
+	vinsgr2vr.b	$vr7, $t4, 0
+	andi	$t4, $t2, 2
+	beq	$t4, $zero, .LBB308_60
+.LBB308_126:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 1
+	vinsgr2vr.b	$vr7, $t4, 1
+	andi	$t4, $t2, 4
+	beq	$t4, $zero, .LBB308_61
+.LBB308_127:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 2
+	vinsgr2vr.b	$vr7, $t4, 2
+	andi	$t4, $t2, 8
+	beq	$t4, $zero, .LBB308_62
+.LBB308_128:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 3
+	vinsgr2vr.b	$vr7, $t4, 3
+	andi	$t4, $t2, 16
+	beq	$t4, $zero, .LBB308_63
+.LBB308_129:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 4
+	vinsgr2vr.b	$vr7, $t4, 4
+	andi	$t4, $t2, 32
+	beq	$t4, $zero, .LBB308_64
+.LBB308_130:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 5
+	vinsgr2vr.b	$vr7, $t4, 5
+	andi	$t4, $t2, 64
+	beq	$t4, $zero, .LBB308_65
+.LBB308_131:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 6
+	vinsgr2vr.b	$vr7, $t4, 6
+	andi	$t4, $t2, 128
+	bne	$t4, $zero, .LBB308_66
+	b	.LBB308_67
+.LBB308_132:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 8
+	vinsgr2vr.b	$vr7, $t4, 8
+	andi	$t4, $t2, 512
+	beq	$t4, $zero, .LBB308_70
+.LBB308_133:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 9
+	vinsgr2vr.b	$vr7, $t4, 9
+	andi	$t4, $t2, 1024
+	beq	$t4, $zero, .LBB308_71
+.LBB308_134:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 10
+	vinsgr2vr.b	$vr7, $t4, 10
+	andi	$t4, $t2, 2048
+	beq	$t4, $zero, .LBB308_72
+.LBB308_135:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 11
+	vinsgr2vr.b	$vr7, $t4, 11
+	bstrpick.d	$t4, $t2, 12, 12
+	beq	$t4, $zero, .LBB308_73
+.LBB308_136:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 12
+	vinsgr2vr.b	$vr7, $t4, 12
+	bstrpick.d	$t4, $t2, 13, 13
+	beq	$t4, $zero, .LBB308_74
+.LBB308_137:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 13
+	vinsgr2vr.b	$vr7, $t4, 13
+	bstrpick.d	$t4, $t2, 14, 14
+	beq	$t4, $zero, .LBB308_75
+.LBB308_138:                            #   in Loop: Header=BB308_14 Depth=1
+	ld.bu	$t4, $t3, 14
+	vinsgr2vr.b	$vr7, $t4, 14
+	bstrpick.d	$t4, $t2, 15, 15
+	bne	$t4, $zero, .LBB308_76
+	b	.LBB308_77
+.LBB308_139:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 0, 0
+	andi	$t3, $t2, 2
+	beq	$t3, $zero, .LBB308_81
+.LBB308_140:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 1, 1
+	andi	$t3, $t2, 4
+	beq	$t3, $zero, .LBB308_82
+.LBB308_141:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 2, 2
+	andi	$t3, $t2, 8
+	beq	$t3, $zero, .LBB308_83
+.LBB308_142:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 3, 3
+	andi	$t3, $t2, 16
+	beq	$t3, $zero, .LBB308_84
+.LBB308_143:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 4, 4
+	andi	$t3, $t2, 32
+	beq	$t3, $zero, .LBB308_85
+.LBB308_144:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 5, 5
+	andi	$t3, $t2, 64
+	beq	$t3, $zero, .LBB308_86
+.LBB308_145:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 6, 6
+	andi	$t3, $t2, 128
+	bne	$t3, $zero, .LBB308_87
+	b	.LBB308_88
+.LBB308_146:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 8, 8
+	andi	$t3, $t2, 512
+	beq	$t3, $zero, .LBB308_91
+.LBB308_147:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 9, 9
+	andi	$t3, $t2, 1024
+	beq	$t3, $zero, .LBB308_92
+.LBB308_148:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 10, 10
+	andi	$t3, $t2, 2048
+	beq	$t3, $zero, .LBB308_93
+.LBB308_149:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 11, 11
+	bstrpick.d	$t3, $t2, 12, 12
+	beq	$t3, $zero, .LBB308_94
+.LBB308_150:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 12, 12
+	bstrpick.d	$t3, $t2, 13, 13
+	beq	$t3, $zero, .LBB308_95
+.LBB308_151:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 13, 13
+	bstrpick.d	$t3, $t2, 14, 14
+	beq	$t3, $zero, .LBB308_96
+.LBB308_152:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 14, 14
+	bstrpick.d	$t2, $t2, 15, 15
+	beq	$t2, $zero, .LBB308_13
+.LBB308_153:                            #   in Loop: Header=BB308_14 Depth=1
+	vstelm.b	$vr5, $a7, 15, 15
+	b	.LBB308_13
+.LBB308_154:
+	bne	$a1, $a5, .LBB308_3
+	b	.LBB308_302
+.LBB308_155:
+	andi	$t0, $a5, 8
 	bstrpick.d	$a1, $a5, 31, 4
 	slli.d	$a1, $a1, 4
-	vreplgr2vr.d	$vr0, $a0
-	addi.d	$a6, $a2, 7
-	pcalau12i	$a7, %pc_hi20(.LCPI308_0)
-	vld	$vr1, $a7, %pc_lo12(.LCPI308_0)
-	pcalau12i	$a7, %pc_hi20(.LCPI308_1)
-	vld	$vr2, $a7, %pc_lo12(.LCPI308_1)
-	pcalau12i	$a7, %pc_hi20(.LCPI308_2)
+	pcalau12i	$t1, %pc_hi20(.LCPI308_0)
+	vld	$vr1, $t1, %pc_lo12(.LCPI308_0)
+	pcalau12i	$t1, %pc_hi20(.LCPI308_1)
+	vld	$vr2, $t1, %pc_lo12(.LCPI308_1)
 	vld	$vr3, $a7, %pc_lo12(.LCPI308_2)
-	pcalau12i	$a7, %pc_hi20(.LCPI308_3)
-	vld	$vr4, $a7, %pc_lo12(.LCPI308_3)
-	pcalau12i	$a7, %pc_hi20(.LCPI308_4)
-	vld	$vr5, $a7, %pc_lo12(.LCPI308_4)
-	pcalau12i	$a7, %pc_hi20(.LCPI308_5)
-	vld	$vr6, $a7, %pc_lo12(.LCPI308_5)
-	pcalau12i	$a7, %pc_hi20(.LCPI308_6)
-	vld	$vr7, $a7, %pc_lo12(.LCPI308_6)
-	pcalau12i	$a7, %pc_hi20(.LCPI308_7)
-	vld	$vr8, $a7, %pc_lo12(.LCPI308_7)
-	pcalau12i	$a7, %pc_hi20(.LCPI308_8)
-	vld	$vr9, $a7, %pc_lo12(.LCPI308_8)
-	pcalau12i	$a7, %pc_hi20(.LCPI308_9)
-	vld	$vr10, $a7, %pc_lo12(.LCPI308_9)
-	pcalau12i	$a7, %pc_hi20(.LCPI308_10)
-	vld	$vr11, $a7, %pc_lo12(.LCPI308_10)
-	pcalau12i	$a7, %pc_hi20(.LCPI308_11)
-	vld	$vr12, $a7, %pc_lo12(.LCPI308_11)
-	addi.d	$a7, $a3, 7
-	ori	$t0, $a4, 2731
-	vreplgr2vr.w	$vr13, $t0
-	vrepli.w	$vr14, 3
-	move	$t0, $a1
-	b	.LBB308_12
+	vld	$vr4, $a6, %pc_lo12(.LCPI308_3)
+	sub.d	$t1, $zero, $a0
+	ori	$t2, $a4, 2731
+	vreplgr2vr.w	$vr5, $t2
+	move	$t2, $a2
+	move	$t3, $a3
+	move	$t4, $a1
+	b	.LBB308_158
 	.p2align	4, , 16
-.LBB308_11:                             #   in Loop: Header=BB308_12 Depth=1
-	vaddi.du	$vr12, $vr12, 16
-	vaddi.du	$vr11, $vr11, 16
-	vaddi.du	$vr10, $vr10, 16
-	vaddi.du	$vr9, $vr9, 16
-	vaddi.du	$vr8, $vr8, 16
-	vaddi.du	$vr7, $vr7, 16
-	vaddi.du	$vr6, $vr6, 16
-	vaddi.du	$vr5, $vr5, 16
+.LBB308_156:                            #   in Loop: Header=BB308_158 Depth=1
+	vld	$vr8, $t3, 0
+	vbitsel.v	$vr6, $vr8, $vr7, $vr6
+	vst	$vr6, $t3, 0
+.LBB308_157:                            #   in Loop: Header=BB308_158 Depth=1
 	vaddi.wu	$vr4, $vr4, 16
 	vaddi.wu	$vr3, $vr3, 16
 	vaddi.wu	$vr2, $vr2, 16
 	vaddi.wu	$vr1, $vr1, 16
-	addi.d	$t0, $t0, -16
-	addi.d	$a6, $a6, 16
-	addi.d	$a7, $a7, 16
-	beqz	$t0, .LBB308_44
-.LBB308_12:                             # =>This Inner Loop Header: Depth=1
-	vmuh.wu	$vr15, $vr4, $vr13
-	vsrli.w	$vr15, $vr15, 1
-	vori.b	$vr16, $vr4, 0
-	vmsub.w	$vr16, $vr15, $vr14
-	vseqi.w	$vr15, $vr16, 0
-	vxori.b	$vr15, $vr15, 255
-	vpickve2gr.b	$t1, $vr15, 0
-	andi	$t1, $t1, 1
-	vsub.d	$vr16, $vr12, $vr0
-	beqz	$t1, .LBB308_14
-# %bb.13:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 0
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, -7
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, -7
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, -7
-.LBB308_14:                             #   in Loop: Header=BB308_12 Depth=1
-	vreplvei.h	$vr17, $vr15, 2
-	vpickve2gr.b	$t1, $vr17, 2
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB308_16
-# %bb.15:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 1
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, -6
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, -6
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, -6
-.LBB308_16:                             #   in Loop: Header=BB308_12 Depth=1
-	vreplvei.h	$vr16, $vr15, 4
-	vpickve2gr.b	$t1, $vr16, 4
-	andi	$t1, $t1, 1
-	vsub.d	$vr16, $vr11, $vr0
-	beqz	$t1, .LBB308_18
-# %bb.17:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 0
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, -5
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, -5
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, -5
-.LBB308_18:                             #   in Loop: Header=BB308_12 Depth=1
-	vreplvei.h	$vr15, $vr15, 6
-	vpickve2gr.b	$t1, $vr15, 6
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB308_20
-# %bb.19:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 1
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, -4
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, -4
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, -4
-.LBB308_20:                             #   in Loop: Header=BB308_12 Depth=1
-	vmuh.wu	$vr15, $vr3, $vr13
-	vsrli.w	$vr15, $vr15, 1
-	vori.b	$vr16, $vr3, 0
-	vmsub.w	$vr16, $vr15, $vr14
-	vseqi.w	$vr15, $vr16, 0
-	vxori.b	$vr15, $vr15, 255
-	vreplvei.h	$vr16, $vr15, 0
-	vpickve2gr.b	$t1, $vr16, 8
-	andi	$t1, $t1, 1
-	vsub.d	$vr16, $vr10, $vr0
-	beqz	$t1, .LBB308_22
-# %bb.21:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 0
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, -3
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, -3
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, -3
-.LBB308_22:                             #   in Loop: Header=BB308_12 Depth=1
-	vreplvei.h	$vr17, $vr15, 2
-	vpickve2gr.b	$t1, $vr17, 10
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB308_24
-# %bb.23:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 1
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, -2
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, -2
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, -2
-.LBB308_24:                             #   in Loop: Header=BB308_12 Depth=1
-	vreplvei.h	$vr16, $vr15, 4
-	vpickve2gr.b	$t1, $vr16, 12
-	andi	$t1, $t1, 1
-	vsub.d	$vr16, $vr9, $vr0
-	beqz	$t1, .LBB308_26
-# %bb.25:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 0
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, -1
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, -1
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, -1
-.LBB308_26:                             #   in Loop: Header=BB308_12 Depth=1
-	vreplvei.h	$vr15, $vr15, 6
-	vpickve2gr.b	$t1, $vr15, 14
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB308_28
-# %bb.27:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 1
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, 0
-	ldx.b	$t3, $a6, $a0
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, 0
-.LBB308_28:                             #   in Loop: Header=BB308_12 Depth=1
-	vmuh.wu	$vr15, $vr2, $vr13
-	vsrli.w	$vr15, $vr15, 1
-	vori.b	$vr16, $vr2, 0
-	vmsub.w	$vr16, $vr15, $vr14
-	vseqi.w	$vr15, $vr16, 0
-	vxori.b	$vr15, $vr15, 255
-	vpickve2gr.b	$t1, $vr15, 0
-	andi	$t1, $t1, 1
-	vsub.d	$vr16, $vr8, $vr0
-	beqz	$t1, .LBB308_30
-# %bb.29:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 0
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, 1
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, 1
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, 1
-.LBB308_30:                             #   in Loop: Header=BB308_12 Depth=1
-	vreplvei.h	$vr17, $vr15, 2
-	vpickve2gr.b	$t1, $vr17, 2
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB308_32
-# %bb.31:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 1
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, 2
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, 2
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, 2
-.LBB308_32:                             #   in Loop: Header=BB308_12 Depth=1
-	vreplvei.h	$vr16, $vr15, 4
-	vpickve2gr.b	$t1, $vr16, 4
-	andi	$t1, $t1, 1
-	vsub.d	$vr16, $vr7, $vr0
-	beqz	$t1, .LBB308_34
-# %bb.33:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 0
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, 3
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, 3
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, 3
-.LBB308_34:                             #   in Loop: Header=BB308_12 Depth=1
-	vreplvei.h	$vr15, $vr15, 6
-	vpickve2gr.b	$t1, $vr15, 6
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB308_36
-# %bb.35:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 1
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, 4
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, 4
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, 4
-.LBB308_36:                             #   in Loop: Header=BB308_12 Depth=1
-	vmuh.wu	$vr15, $vr1, $vr13
-	vsrli.w	$vr15, $vr15, 1
-	vori.b	$vr16, $vr1, 0
-	vmsub.w	$vr16, $vr15, $vr14
-	vseqi.w	$vr15, $vr16, 0
-	vxori.b	$vr15, $vr15, 255
-	vreplvei.h	$vr16, $vr15, 0
-	vpickve2gr.b	$t1, $vr16, 8
-	andi	$t1, $t1, 1
-	vsub.d	$vr16, $vr6, $vr0
-	beqz	$t1, .LBB308_38
-# %bb.37:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 0
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, 5
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, 5
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, 5
-.LBB308_38:                             #   in Loop: Header=BB308_12 Depth=1
-	vreplvei.h	$vr17, $vr15, 2
-	vpickve2gr.b	$t1, $vr17, 10
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB308_40
-# %bb.39:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 1
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, 6
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, 6
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, 6
-.LBB308_40:                             #   in Loop: Header=BB308_12 Depth=1
-	vreplvei.h	$vr16, $vr15, 4
-	vpickve2gr.b	$t1, $vr16, 12
-	andi	$t1, $t1, 1
-	vsub.d	$vr16, $vr5, $vr0
-	beqz	$t1, .LBB308_42
-# %bb.41:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 0
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, 7
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, 7
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, 7
-.LBB308_42:                             #   in Loop: Header=BB308_12 Depth=1
-	vreplvei.h	$vr15, $vr15, 6
-	vpickve2gr.b	$t1, $vr15, 14
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB308_11
-# %bb.43:                               #   in Loop: Header=BB308_12 Depth=1
-	vpickve2gr.d	$t1, $vr16, 1
-	ldx.b	$t1, $a2, $t1
-	ld.b	$t2, $a6, 8
-	add.d	$t3, $a6, $a0
-	ld.b	$t3, $t3, 8
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.b	$t1, $a7, 8
-	b	.LBB308_11
-.LBB308_44:
-	bne	$a1, $a5, .LBB308_3
-.LBB308_45:
+	addi.d	$t4, $t4, -16
+	addi.d	$t3, $t3, 16
+	addi.d	$t2, $t2, 16
+	beqz	$t4, .LBB308_301
+.LBB308_158:                            # =>This Inner Loop Header: Depth=1
+	vmul.w	$vr6, $vr4, $vr5
+	vslt.wu	$vr6, $vr0, $vr6
+	vmul.w	$vr7, $vr3, $vr5
+	vslt.wu	$vr7, $vr0, $vr7
+	vpickev.h	$vr6, $vr7, $vr6
+	vmul.w	$vr7, $vr2, $vr5
+	vslt.wu	$vr7, $vr0, $vr7
+	vmul.w	$vr8, $vr1, $vr5
+	vslt.wu	$vr8, $vr0, $vr8
+	vpickev.h	$vr7, $vr8, $vr7
+	vpickev.b	$vr6, $vr7, $vr6
+	add.d	$t6, $t2, $t1
+	vmsknz.b	$vr7, $vr6
+	vpickve2gr.hu	$t5, $vr7, 0
+	addi.d	$t7, $t6, 15
+	xor	$t7, $t7, $t6
+	srli.d	$t7, $t7, 12
+                                        # implicit-def: $vr7
+	beq	$t5, $zero, .LBB308_179
+	beq	$t7, $zero, .LBB308_178
+# %bb.159:                              #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t7, $t5, 7, 0
+                                        # implicit-def: $vr7
+	beq	$t7, $zero, .LBB308_169
+# %bb.160:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 1
+                                        # implicit-def: $vr7
+	bne	$t7, $zero, .LBB308_241
+# %bb.161:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 2
+	bne	$t7, $zero, .LBB308_242
+.LBB308_162:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 4
+	bne	$t7, $zero, .LBB308_243
+.LBB308_163:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 8
+	bne	$t7, $zero, .LBB308_244
+.LBB308_164:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 16
+	bne	$t7, $zero, .LBB308_245
+.LBB308_165:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 32
+	bne	$t7, $zero, .LBB308_246
+.LBB308_166:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 64
+	bne	$t7, $zero, .LBB308_247
+.LBB308_167:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 128
+	beq	$t7, $zero, .LBB308_169
+.LBB308_168:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 7
+	vinsgr2vr.b	$vr7, $t7, 7
+.LBB308_169:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t7, $t5, 15, 8
+	beq	$t7, $zero, .LBB308_179
+# %bb.170:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 256
+	bne	$t7, $zero, .LBB308_248
+# %bb.171:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 512
+	bne	$t7, $zero, .LBB308_249
+.LBB308_172:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 1024
+	bne	$t7, $zero, .LBB308_250
+.LBB308_173:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 2048
+	bne	$t7, $zero, .LBB308_251
+.LBB308_174:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t7, $t5, 12, 12
+	bne	$t7, $zero, .LBB308_252
+.LBB308_175:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t7, $t5, 13, 13
+	bne	$t7, $zero, .LBB308_253
+.LBB308_176:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t7, $t5, 14, 14
+	bne	$t7, $zero, .LBB308_254
+.LBB308_177:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t7, $t5, 15, 15
+	beq	$t7, $zero, .LBB308_179
+	b	.LBB308_255
+	.p2align	4, , 16
+.LBB308_178:                            #   in Loop: Header=BB308_158 Depth=1
+	vld	$vr7, $t6, 0
+	vbitsel.v	$vr7, $vr0, $vr7, $vr6
+.LBB308_179:                            #   in Loop: Header=BB308_158 Depth=1
+	addi.d	$t6, $t2, 15
+	xor	$t6, $t6, $t2
+	srli.d	$t6, $t6, 12
+                                        # implicit-def: $vr8
+	beq	$t5, $zero, .LBB308_200
+	beq	$t6, $zero, .LBB308_199
+# %bb.180:                              #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t6, $t5, 7, 0
+                                        # implicit-def: $vr8
+	beq	$t6, $zero, .LBB308_190
+# %bb.181:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 1
+                                        # implicit-def: $vr8
+	bne	$t6, $zero, .LBB308_256
+# %bb.182:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 2
+	bne	$t6, $zero, .LBB308_257
+.LBB308_183:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 4
+	bne	$t6, $zero, .LBB308_258
+.LBB308_184:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 8
+	bne	$t6, $zero, .LBB308_259
+.LBB308_185:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 16
+	bne	$t6, $zero, .LBB308_260
+.LBB308_186:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 32
+	bne	$t6, $zero, .LBB308_261
+.LBB308_187:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 64
+	bne	$t6, $zero, .LBB308_262
+.LBB308_188:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 128
+	beq	$t6, $zero, .LBB308_190
+.LBB308_189:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 7
+	vinsgr2vr.b	$vr8, $t6, 7
+.LBB308_190:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t6, $t5, 15, 8
+	beq	$t6, $zero, .LBB308_200
+# %bb.191:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 256
+	bne	$t6, $zero, .LBB308_263
+# %bb.192:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 512
+	bne	$t6, $zero, .LBB308_264
+.LBB308_193:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 1024
+	bne	$t6, $zero, .LBB308_265
+.LBB308_194:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 2048
+	bne	$t6, $zero, .LBB308_266
+.LBB308_195:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t6, $t5, 12, 12
+	bne	$t6, $zero, .LBB308_267
+.LBB308_196:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t6, $t5, 13, 13
+	bne	$t6, $zero, .LBB308_268
+.LBB308_197:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t6, $t5, 14, 14
+	bne	$t6, $zero, .LBB308_269
+.LBB308_198:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t6, $t5, 15, 15
+	beq	$t6, $zero, .LBB308_200
+	b	.LBB308_270
+	.p2align	4, , 16
+.LBB308_199:                            #   in Loop: Header=BB308_158 Depth=1
+	vld	$vr8, $t2, 0
+	vbitsel.v	$vr8, $vr0, $vr8, $vr6
+.LBB308_200:                            #   in Loop: Header=BB308_158 Depth=1
+	add.d	$t6, $t2, $a0
+	addi.d	$t7, $t6, 15
+	xor	$t7, $t7, $t6
+	srli.d	$t7, $t7, 12
+                                        # implicit-def: $vr9
+	beq	$t5, $zero, .LBB308_221
+	beq	$t7, $zero, .LBB308_220
+# %bb.201:                              #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t7, $t5, 7, 0
+                                        # implicit-def: $vr9
+	beq	$t7, $zero, .LBB308_211
+# %bb.202:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 1
+                                        # implicit-def: $vr9
+	bne	$t7, $zero, .LBB308_271
+# %bb.203:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 2
+	bne	$t7, $zero, .LBB308_272
+.LBB308_204:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 4
+	bne	$t7, $zero, .LBB308_273
+.LBB308_205:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 8
+	bne	$t7, $zero, .LBB308_274
+.LBB308_206:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 16
+	bne	$t7, $zero, .LBB308_275
+.LBB308_207:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 32
+	bne	$t7, $zero, .LBB308_276
+.LBB308_208:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 64
+	bne	$t7, $zero, .LBB308_277
+.LBB308_209:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 128
+	beq	$t7, $zero, .LBB308_211
+.LBB308_210:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 7
+	vinsgr2vr.b	$vr9, $t7, 7
+.LBB308_211:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t7, $t5, 15, 8
+	beq	$t7, $zero, .LBB308_221
+# %bb.212:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 256
+	bne	$t7, $zero, .LBB308_278
+# %bb.213:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 512
+	bne	$t7, $zero, .LBB308_279
+.LBB308_214:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 1024
+	bne	$t7, $zero, .LBB308_280
+.LBB308_215:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t7, $t5, 2048
+	bne	$t7, $zero, .LBB308_281
+.LBB308_216:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t7, $t5, 12, 12
+	bne	$t7, $zero, .LBB308_282
+.LBB308_217:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t7, $t5, 13, 13
+	bne	$t7, $zero, .LBB308_283
+.LBB308_218:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t7, $t5, 14, 14
+	bne	$t7, $zero, .LBB308_284
+.LBB308_219:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t7, $t5, 15, 15
+	beq	$t7, $zero, .LBB308_221
+	b	.LBB308_285
+	.p2align	4, , 16
+.LBB308_220:                            #   in Loop: Header=BB308_158 Depth=1
+	vld	$vr9, $t6, 0
+	vbitsel.v	$vr9, $vr0, $vr9, $vr6
+.LBB308_221:                            #   in Loop: Header=BB308_158 Depth=1
+	vadd.b	$vr7, $vr8, $vr7
+	vadd.b	$vr7, $vr7, $vr9
+	addi.d	$t6, $t3, 15
+	xor	$t6, $t6, $t3
+	srli.d	$t6, $t6, 12
+	beq	$t5, $zero, .LBB308_157
+	beq	$t6, $zero, .LBB308_156
+# %bb.222:                              #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t6, $t5, 7, 0
+	beq	$t6, $zero, .LBB308_232
+# %bb.223:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 1
+	bne	$t6, $zero, .LBB308_286
+# %bb.224:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 2
+	bne	$t6, $zero, .LBB308_287
+.LBB308_225:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 4
+	bne	$t6, $zero, .LBB308_288
+.LBB308_226:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 8
+	bne	$t6, $zero, .LBB308_289
+.LBB308_227:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 16
+	bne	$t6, $zero, .LBB308_290
+.LBB308_228:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 32
+	bne	$t6, $zero, .LBB308_291
+.LBB308_229:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 64
+	bne	$t6, $zero, .LBB308_292
+.LBB308_230:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 128
+	beq	$t6, $zero, .LBB308_232
+.LBB308_231:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 7, 7
+.LBB308_232:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t6, $t5, 15, 8
+	beq	$t6, $zero, .LBB308_157
+# %bb.233:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 256
+	bne	$t6, $zero, .LBB308_293
+# %bb.234:                              #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 512
+	bne	$t6, $zero, .LBB308_294
+.LBB308_235:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 1024
+	bne	$t6, $zero, .LBB308_295
+.LBB308_236:                            #   in Loop: Header=BB308_158 Depth=1
+	andi	$t6, $t5, 2048
+	bne	$t6, $zero, .LBB308_296
+.LBB308_237:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t6, $t5, 12, 12
+	bne	$t6, $zero, .LBB308_297
+.LBB308_238:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t6, $t5, 13, 13
+	bne	$t6, $zero, .LBB308_298
+.LBB308_239:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t6, $t5, 14, 14
+	bne	$t6, $zero, .LBB308_299
+.LBB308_240:                            #   in Loop: Header=BB308_158 Depth=1
+	bstrpick.d	$t5, $t5, 15, 15
+	beq	$t5, $zero, .LBB308_157
+	b	.LBB308_300
+.LBB308_241:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 0
+	vinsgr2vr.b	$vr7, $t7, 0
+	andi	$t7, $t5, 2
+	beq	$t7, $zero, .LBB308_162
+.LBB308_242:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 1
+	vinsgr2vr.b	$vr7, $t7, 1
+	andi	$t7, $t5, 4
+	beq	$t7, $zero, .LBB308_163
+.LBB308_243:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 2
+	vinsgr2vr.b	$vr7, $t7, 2
+	andi	$t7, $t5, 8
+	beq	$t7, $zero, .LBB308_164
+.LBB308_244:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 3
+	vinsgr2vr.b	$vr7, $t7, 3
+	andi	$t7, $t5, 16
+	beq	$t7, $zero, .LBB308_165
+.LBB308_245:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 4
+	vinsgr2vr.b	$vr7, $t7, 4
+	andi	$t7, $t5, 32
+	beq	$t7, $zero, .LBB308_166
+.LBB308_246:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 5
+	vinsgr2vr.b	$vr7, $t7, 5
+	andi	$t7, $t5, 64
+	beq	$t7, $zero, .LBB308_167
+.LBB308_247:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 6
+	vinsgr2vr.b	$vr7, $t7, 6
+	andi	$t7, $t5, 128
+	bne	$t7, $zero, .LBB308_168
+	b	.LBB308_169
+.LBB308_248:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 8
+	vinsgr2vr.b	$vr7, $t7, 8
+	andi	$t7, $t5, 512
+	beq	$t7, $zero, .LBB308_172
+.LBB308_249:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 9
+	vinsgr2vr.b	$vr7, $t7, 9
+	andi	$t7, $t5, 1024
+	beq	$t7, $zero, .LBB308_173
+.LBB308_250:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 10
+	vinsgr2vr.b	$vr7, $t7, 10
+	andi	$t7, $t5, 2048
+	beq	$t7, $zero, .LBB308_174
+.LBB308_251:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 11
+	vinsgr2vr.b	$vr7, $t7, 11
+	bstrpick.d	$t7, $t5, 12, 12
+	beq	$t7, $zero, .LBB308_175
+.LBB308_252:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 12
+	vinsgr2vr.b	$vr7, $t7, 12
+	bstrpick.d	$t7, $t5, 13, 13
+	beq	$t7, $zero, .LBB308_176
+.LBB308_253:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 13
+	vinsgr2vr.b	$vr7, $t7, 13
+	bstrpick.d	$t7, $t5, 14, 14
+	beq	$t7, $zero, .LBB308_177
+.LBB308_254:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 14
+	vinsgr2vr.b	$vr7, $t7, 14
+	bstrpick.d	$t7, $t5, 15, 15
+	beq	$t7, $zero, .LBB308_179
+.LBB308_255:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t6, 15
+	vinsgr2vr.b	$vr7, $t6, 15
+	b	.LBB308_179
+.LBB308_256:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 0
+	vinsgr2vr.b	$vr8, $t6, 0
+	andi	$t6, $t5, 2
+	beq	$t6, $zero, .LBB308_183
+.LBB308_257:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 1
+	vinsgr2vr.b	$vr8, $t6, 1
+	andi	$t6, $t5, 4
+	beq	$t6, $zero, .LBB308_184
+.LBB308_258:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 2
+	vinsgr2vr.b	$vr8, $t6, 2
+	andi	$t6, $t5, 8
+	beq	$t6, $zero, .LBB308_185
+.LBB308_259:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 3
+	vinsgr2vr.b	$vr8, $t6, 3
+	andi	$t6, $t5, 16
+	beq	$t6, $zero, .LBB308_186
+.LBB308_260:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 4
+	vinsgr2vr.b	$vr8, $t6, 4
+	andi	$t6, $t5, 32
+	beq	$t6, $zero, .LBB308_187
+.LBB308_261:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 5
+	vinsgr2vr.b	$vr8, $t6, 5
+	andi	$t6, $t5, 64
+	beq	$t6, $zero, .LBB308_188
+.LBB308_262:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 6
+	vinsgr2vr.b	$vr8, $t6, 6
+	andi	$t6, $t5, 128
+	bne	$t6, $zero, .LBB308_189
+	b	.LBB308_190
+.LBB308_263:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 8
+	vinsgr2vr.b	$vr8, $t6, 8
+	andi	$t6, $t5, 512
+	beq	$t6, $zero, .LBB308_193
+.LBB308_264:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 9
+	vinsgr2vr.b	$vr8, $t6, 9
+	andi	$t6, $t5, 1024
+	beq	$t6, $zero, .LBB308_194
+.LBB308_265:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 10
+	vinsgr2vr.b	$vr8, $t6, 10
+	andi	$t6, $t5, 2048
+	beq	$t6, $zero, .LBB308_195
+.LBB308_266:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 11
+	vinsgr2vr.b	$vr8, $t6, 11
+	bstrpick.d	$t6, $t5, 12, 12
+	beq	$t6, $zero, .LBB308_196
+.LBB308_267:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 12
+	vinsgr2vr.b	$vr8, $t6, 12
+	bstrpick.d	$t6, $t5, 13, 13
+	beq	$t6, $zero, .LBB308_197
+.LBB308_268:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 13
+	vinsgr2vr.b	$vr8, $t6, 13
+	bstrpick.d	$t6, $t5, 14, 14
+	beq	$t6, $zero, .LBB308_198
+.LBB308_269:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 14
+	vinsgr2vr.b	$vr8, $t6, 14
+	bstrpick.d	$t6, $t5, 15, 15
+	beq	$t6, $zero, .LBB308_200
+.LBB308_270:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t2, 15
+	vinsgr2vr.b	$vr8, $t6, 15
+	b	.LBB308_200
+.LBB308_271:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 0
+	vinsgr2vr.b	$vr9, $t7, 0
+	andi	$t7, $t5, 2
+	beq	$t7, $zero, .LBB308_204
+.LBB308_272:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 1
+	vinsgr2vr.b	$vr9, $t7, 1
+	andi	$t7, $t5, 4
+	beq	$t7, $zero, .LBB308_205
+.LBB308_273:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 2
+	vinsgr2vr.b	$vr9, $t7, 2
+	andi	$t7, $t5, 8
+	beq	$t7, $zero, .LBB308_206
+.LBB308_274:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 3
+	vinsgr2vr.b	$vr9, $t7, 3
+	andi	$t7, $t5, 16
+	beq	$t7, $zero, .LBB308_207
+.LBB308_275:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 4
+	vinsgr2vr.b	$vr9, $t7, 4
+	andi	$t7, $t5, 32
+	beq	$t7, $zero, .LBB308_208
+.LBB308_276:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 5
+	vinsgr2vr.b	$vr9, $t7, 5
+	andi	$t7, $t5, 64
+	beq	$t7, $zero, .LBB308_209
+.LBB308_277:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 6
+	vinsgr2vr.b	$vr9, $t7, 6
+	andi	$t7, $t5, 128
+	bne	$t7, $zero, .LBB308_210
+	b	.LBB308_211
+.LBB308_278:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 8
+	vinsgr2vr.b	$vr9, $t7, 8
+	andi	$t7, $t5, 512
+	beq	$t7, $zero, .LBB308_214
+.LBB308_279:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 9
+	vinsgr2vr.b	$vr9, $t7, 9
+	andi	$t7, $t5, 1024
+	beq	$t7, $zero, .LBB308_215
+.LBB308_280:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 10
+	vinsgr2vr.b	$vr9, $t7, 10
+	andi	$t7, $t5, 2048
+	beq	$t7, $zero, .LBB308_216
+.LBB308_281:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 11
+	vinsgr2vr.b	$vr9, $t7, 11
+	bstrpick.d	$t7, $t5, 12, 12
+	beq	$t7, $zero, .LBB308_217
+.LBB308_282:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 12
+	vinsgr2vr.b	$vr9, $t7, 12
+	bstrpick.d	$t7, $t5, 13, 13
+	beq	$t7, $zero, .LBB308_218
+.LBB308_283:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 13
+	vinsgr2vr.b	$vr9, $t7, 13
+	bstrpick.d	$t7, $t5, 14, 14
+	beq	$t7, $zero, .LBB308_219
+.LBB308_284:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t7, $t6, 14
+	vinsgr2vr.b	$vr9, $t7, 14
+	bstrpick.d	$t7, $t5, 15, 15
+	beq	$t7, $zero, .LBB308_221
+.LBB308_285:                            #   in Loop: Header=BB308_158 Depth=1
+	ld.bu	$t6, $t6, 15
+	vinsgr2vr.b	$vr9, $t6, 15
+	b	.LBB308_221
+.LBB308_286:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 0, 0
+	andi	$t6, $t5, 2
+	beq	$t6, $zero, .LBB308_225
+.LBB308_287:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 1, 1
+	andi	$t6, $t5, 4
+	beq	$t6, $zero, .LBB308_226
+.LBB308_288:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 2, 2
+	andi	$t6, $t5, 8
+	beq	$t6, $zero, .LBB308_227
+.LBB308_289:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 3, 3
+	andi	$t6, $t5, 16
+	beq	$t6, $zero, .LBB308_228
+.LBB308_290:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 4, 4
+	andi	$t6, $t5, 32
+	beq	$t6, $zero, .LBB308_229
+.LBB308_291:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 5, 5
+	andi	$t6, $t5, 64
+	beq	$t6, $zero, .LBB308_230
+.LBB308_292:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 6, 6
+	andi	$t6, $t5, 128
+	bne	$t6, $zero, .LBB308_231
+	b	.LBB308_232
+.LBB308_293:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 8, 8
+	andi	$t6, $t5, 512
+	beq	$t6, $zero, .LBB308_235
+.LBB308_294:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 9, 9
+	andi	$t6, $t5, 1024
+	beq	$t6, $zero, .LBB308_236
+.LBB308_295:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 10, 10
+	andi	$t6, $t5, 2048
+	beq	$t6, $zero, .LBB308_237
+.LBB308_296:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 11, 11
+	bstrpick.d	$t6, $t5, 12, 12
+	beq	$t6, $zero, .LBB308_238
+.LBB308_297:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 12, 12
+	bstrpick.d	$t6, $t5, 13, 13
+	beq	$t6, $zero, .LBB308_239
+.LBB308_298:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 13, 13
+	bstrpick.d	$t6, $t5, 14, 14
+	beq	$t6, $zero, .LBB308_240
+.LBB308_299:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 14, 14
+	bstrpick.d	$t5, $t5, 15, 15
+	beq	$t5, $zero, .LBB308_157
+.LBB308_300:                            #   in Loop: Header=BB308_158 Depth=1
+	vstelm.b	$vr7, $t3, 15, 15
+	b	.LBB308_157
+.LBB308_301:
+	bne	$a1, $a5, .LBB308_303
+.LBB308_302:
 	ret
+.LBB308_303:
+	beqz	$t0, .LBB308_3
+	b	.LBB308_12
 .Lfunc_end308:
 	.size	_ZNSt17_Function_handlerIFvPhS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_, .Lfunc_end308-_ZNSt17_Function_handlerIFvPhS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_
                                         # -- End function
@@ -42546,21 +43404,11 @@ _ZNSt17_Function_handlerIFvPjS0_jllEZ4mainE4$_44E10_M_managerERSt9_Any_dataRKS4_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFvPjS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_
 	.type	.LCPI312_0,@object
 .LCPI312_0:
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
-	.size	.LCPI312_0, 16
-	.type	.LCPI312_1,@object
-.LCPI312_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.size	.LCPI312_1, 16
-	.type	.LCPI312_2,@object
-.LCPI312_2:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-	.size	.LCPI312_2, 16
+	.size	.LCPI312_0, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end312, nop
@@ -42568,7 +43416,7 @@ _ZNSt17_Function_handlerIFvPjS0_jllEZ4mainE4$_44E10_M_managerERSt9_Any_dataRKS4_
 _ZNSt17_Function_handlerIFvPjS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_: # @"_ZNSt17_Function_handlerIFvPjS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_"
 # %bb.0:
 	ld.w	$a7, $a3, 0
-	beqz	$a7, .LBB312_21
+	beqz	$a7, .LBB312_53
 # %bb.1:
 	ld.d	$a3, $a1, 0
 	ld.d	$a6, $a4, 0
@@ -42595,7 +43443,7 @@ _ZNSt17_Function_handlerIFvPjS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, 1
-	beqz	$a5, .LBB312_21
+	beqz	$a5, .LBB312_53
 .LBB312_5:                              # =>This Inner Loop Header: Depth=1
 	mul.w	$t0, $a1, $a4
 	bltu	$t0, $a7, .LBB312_4
@@ -42618,114 +43466,213 @@ _ZNSt17_Function_handlerIFvPjS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7
 	ori	$t1, $zero, 15
 	bltu	$t0, $t1, .LBB312_3
 # %bb.9:
-	alsl.d	$t0, $a6, $a3, 2
-	sub.d	$t0, $a2, $t0
-	bltu	$a7, $t0, .LBB312_3
+	alsl.d	$a6, $a6, $a3, 2
+	sub.d	$a6, $a2, $a6
+	bltu	$a7, $a6, .LBB312_3
 # %bb.10:
 	bstrpick.d	$a1, $a5, 31, 2
 	slli.d	$a1, $a1, 2
-	vreplgr2vr.d	$vr0, $a6
-	addi.d	$a6, $a2, 8
+	sub.d	$a6, $zero, $a0
 	pcalau12i	$a7, %pc_hi20(.LCPI312_0)
-	vld	$vr1, $a7, %pc_lo12(.LCPI312_0)
-	pcalau12i	$a7, %pc_hi20(.LCPI312_1)
-	vld	$vr2, $a7, %pc_lo12(.LCPI312_1)
-	pcalau12i	$a7, %pc_hi20(.LCPI312_2)
-	vld	$vr3, $a7, %pc_lo12(.LCPI312_2)
-	addi.d	$a7, $a3, 8
-	ori	$t0, $a4, 2731
-	vreplgr2vr.w	$vr4, $t0
-	vrepli.w	$vr5, 3
-	move	$t0, $a1
-	b	.LBB312_12
+	vld	$vr0, $a7, %pc_lo12(.LCPI312_0)
+	ori	$a7, $a4, 2731
+	vreplgr2vr.w	$vr1, $a7
+	vrepli.b	$vr2, 85
+	move	$a7, $a2
+	move	$t0, $a3
+	move	$t1, $a1
+	b	.LBB312_13
 	.p2align	4, , 16
-.LBB312_11:                             #   in Loop: Header=BB312_12 Depth=1
-	vaddi.du	$vr2, $vr2, 4
-	vaddi.du	$vr1, $vr1, 4
-	vaddi.wu	$vr3, $vr3, 4
-	addi.d	$t0, $t0, -4
-	addi.d	$a6, $a6, 16
+.LBB312_11:                             #   in Loop: Header=BB312_13 Depth=1
+	vld	$vr5, $t0, 0
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vst	$vr3, $t0, 0
+.LBB312_12:                             #   in Loop: Header=BB312_13 Depth=1
+	vaddi.wu	$vr0, $vr0, 4
+	addi.d	$t1, $t1, -4
+	addi.d	$t0, $t0, 16
 	addi.d	$a7, $a7, 16
-	beqz	$t0, .LBB312_20
-.LBB312_12:                             # =>This Inner Loop Header: Depth=1
-	vmuh.wu	$vr6, $vr3, $vr4
-	vsrli.w	$vr6, $vr6, 1
-	vori.b	$vr7, $vr3, 0
-	vmsub.w	$vr7, $vr6, $vr5
-	vseqi.w	$vr6, $vr7, 0
-	vxori.b	$vr6, $vr6, 255
-	vpickve2gr.w	$t1, $vr6, 0
-	andi	$t1, $t1, 1
-	vsub.d	$vr7, $vr2, $vr0
-	bnez	$t1, .LBB312_16
-# %bb.13:                               #   in Loop: Header=BB312_12 Depth=1
-	vpickve2gr.w	$t1, $vr6, 1
-	andi	$t1, $t1, 1
-	bnez	$t1, .LBB312_17
-.LBB312_14:                             #   in Loop: Header=BB312_12 Depth=1
-	vpickve2gr.w	$t1, $vr6, 2
-	andi	$t1, $t1, 1
-	vsub.d	$vr7, $vr1, $vr0
-	bnez	$t1, .LBB312_18
-.LBB312_15:                             #   in Loop: Header=BB312_12 Depth=1
-	vpickve2gr.w	$t1, $vr6, 3
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB312_11
-	b	.LBB312_19
+	beqz	$t1, .LBB312_52
+.LBB312_13:                             # =>This Inner Loop Header: Depth=1
+	vmul.w	$vr3, $vr0, $vr1
+	vslt.wu	$vr3, $vr2, $vr3
+	add.d	$t3, $a7, $a6
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t2, $vr4, 0
+	addi.d	$t4, $t3, 15
+	xor	$t4, $t4, $t3
+	srli.d	$t4, $t4, 12
+                                        # implicit-def: $vr4
+	beq	$t2, $zero, .LBB312_23
+	beq	$t4, $zero, .LBB312_18
+# %bb.14:                               #   in Loop: Header=BB312_13 Depth=1
+	andi	$t4, $t2, 1
+                                        # implicit-def: $vr4
+	bne	$t4, $zero, .LBB312_19
+# %bb.15:                               #   in Loop: Header=BB312_13 Depth=1
+	andi	$t4, $t2, 16
+	bne	$t4, $zero, .LBB312_20
+.LBB312_16:                             #   in Loop: Header=BB312_13 Depth=1
+	andi	$t4, $t2, 256
+	bne	$t4, $zero, .LBB312_21
+.LBB312_17:                             #   in Loop: Header=BB312_13 Depth=1
+	bstrpick.d	$t4, $t2, 12, 12
+	bne	$t4, $zero, .LBB312_22
+	b	.LBB312_23
 	.p2align	4, , 16
-.LBB312_16:                             #   in Loop: Header=BB312_12 Depth=1
-	vpickve2gr.d	$t1, $vr7, 0
-	slli.d	$t1, $t1, 2
-	ldx.w	$t1, $a2, $t1
-	ld.w	$t2, $a6, -8
-	add.d	$t3, $a6, $a0
-	ld.w	$t3, $t3, -8
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.w	$t1, $a7, -8
-	vpickve2gr.w	$t1, $vr6, 1
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB312_14
-.LBB312_17:                             #   in Loop: Header=BB312_12 Depth=1
-	vpickve2gr.d	$t1, $vr7, 1
-	slli.d	$t1, $t1, 2
-	ldx.w	$t1, $a2, $t1
-	ld.w	$t2, $a6, -4
-	add.d	$t3, $a6, $a0
-	ld.w	$t3, $t3, -4
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.w	$t1, $a7, -4
-	vpickve2gr.w	$t1, $vr6, 2
-	andi	$t1, $t1, 1
-	vsub.d	$vr7, $vr1, $vr0
-	beqz	$t1, .LBB312_15
-.LBB312_18:                             #   in Loop: Header=BB312_12 Depth=1
-	vpickve2gr.d	$t1, $vr7, 0
-	slli.d	$t1, $t1, 2
-	ldx.w	$t1, $a2, $t1
-	ld.w	$t2, $a6, 0
-	ldx.w	$t3, $a6, $a0
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.w	$t1, $a7, 0
-	vpickve2gr.w	$t1, $vr6, 3
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB312_11
-.LBB312_19:                             #   in Loop: Header=BB312_12 Depth=1
-	vpickve2gr.d	$t1, $vr7, 1
-	slli.d	$t1, $t1, 2
-	ldx.w	$t1, $a2, $t1
-	ld.w	$t2, $a6, 4
-	add.d	$t3, $a6, $a0
-	ld.w	$t3, $t3, 4
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.w	$t1, $a7, 4
-	b	.LBB312_11
-.LBB312_20:
+.LBB312_18:                             #   in Loop: Header=BB312_13 Depth=1
+	vld	$vr4, $t3, 0
+	vbitsel.v	$vr4, $vr0, $vr4, $vr3
+	b	.LBB312_23
+.LBB312_19:                             #   in Loop: Header=BB312_13 Depth=1
+	ld.wu	$t4, $t3, 0
+	vinsgr2vr.w	$vr4, $t4, 0
+	andi	$t4, $t2, 16
+	beq	$t4, $zero, .LBB312_16
+.LBB312_20:                             #   in Loop: Header=BB312_13 Depth=1
+	ld.wu	$t4, $t3, 4
+	vinsgr2vr.w	$vr4, $t4, 1
+	andi	$t4, $t2, 256
+	beq	$t4, $zero, .LBB312_17
+.LBB312_21:                             #   in Loop: Header=BB312_13 Depth=1
+	ld.wu	$t4, $t3, 8
+	vinsgr2vr.w	$vr4, $t4, 2
+	bstrpick.d	$t4, $t2, 12, 12
+	beq	$t4, $zero, .LBB312_23
+.LBB312_22:                             #   in Loop: Header=BB312_13 Depth=1
+	ld.wu	$t3, $t3, 12
+	vinsgr2vr.w	$vr4, $t3, 3
+	.p2align	4, , 16
+.LBB312_23:                             #   in Loop: Header=BB312_13 Depth=1
+	addi.d	$t3, $a7, 15
+	xor	$t3, $t3, $a7
+	srli.d	$t3, $t3, 12
+                                        # implicit-def: $vr5
+	beq	$t2, $zero, .LBB312_33
+	beq	$t3, $zero, .LBB312_28
+# %bb.24:                               #   in Loop: Header=BB312_13 Depth=1
+	andi	$t3, $t2, 1
+                                        # implicit-def: $vr5
+	bne	$t3, $zero, .LBB312_29
+# %bb.25:                               #   in Loop: Header=BB312_13 Depth=1
+	andi	$t3, $t2, 16
+	bne	$t3, $zero, .LBB312_30
+.LBB312_26:                             #   in Loop: Header=BB312_13 Depth=1
+	andi	$t3, $t2, 256
+	bne	$t3, $zero, .LBB312_31
+.LBB312_27:                             #   in Loop: Header=BB312_13 Depth=1
+	bstrpick.d	$t3, $t2, 12, 12
+	bne	$t3, $zero, .LBB312_32
+	b	.LBB312_33
+	.p2align	4, , 16
+.LBB312_28:                             #   in Loop: Header=BB312_13 Depth=1
+	vld	$vr5, $a7, 0
+	vbitsel.v	$vr5, $vr0, $vr5, $vr3
+	b	.LBB312_33
+.LBB312_29:                             #   in Loop: Header=BB312_13 Depth=1
+	ld.wu	$t3, $a7, 0
+	vinsgr2vr.w	$vr5, $t3, 0
+	andi	$t3, $t2, 16
+	beq	$t3, $zero, .LBB312_26
+.LBB312_30:                             #   in Loop: Header=BB312_13 Depth=1
+	ld.wu	$t3, $a7, 4
+	vinsgr2vr.w	$vr5, $t3, 1
+	andi	$t3, $t2, 256
+	beq	$t3, $zero, .LBB312_27
+.LBB312_31:                             #   in Loop: Header=BB312_13 Depth=1
+	ld.wu	$t3, $a7, 8
+	vinsgr2vr.w	$vr5, $t3, 2
+	bstrpick.d	$t3, $t2, 12, 12
+	beq	$t3, $zero, .LBB312_33
+.LBB312_32:                             #   in Loop: Header=BB312_13 Depth=1
+	ld.wu	$t3, $a7, 12
+	vinsgr2vr.w	$vr5, $t3, 3
+	.p2align	4, , 16
+.LBB312_33:                             #   in Loop: Header=BB312_13 Depth=1
+	add.d	$t3, $a7, $a0
+	addi.d	$t4, $t3, 15
+	xor	$t4, $t4, $t3
+	srli.d	$t4, $t4, 12
+                                        # implicit-def: $vr6
+	beq	$t2, $zero, .LBB312_43
+	beq	$t4, $zero, .LBB312_38
+# %bb.34:                               #   in Loop: Header=BB312_13 Depth=1
+	andi	$t4, $t2, 1
+                                        # implicit-def: $vr6
+	bne	$t4, $zero, .LBB312_39
+# %bb.35:                               #   in Loop: Header=BB312_13 Depth=1
+	andi	$t4, $t2, 16
+	bne	$t4, $zero, .LBB312_40
+.LBB312_36:                             #   in Loop: Header=BB312_13 Depth=1
+	andi	$t4, $t2, 256
+	bne	$t4, $zero, .LBB312_41
+.LBB312_37:                             #   in Loop: Header=BB312_13 Depth=1
+	bstrpick.d	$t4, $t2, 12, 12
+	bne	$t4, $zero, .LBB312_42
+	b	.LBB312_43
+	.p2align	4, , 16
+.LBB312_38:                             #   in Loop: Header=BB312_13 Depth=1
+	vld	$vr6, $t3, 0
+	vbitsel.v	$vr6, $vr0, $vr6, $vr3
+	b	.LBB312_43
+.LBB312_39:                             #   in Loop: Header=BB312_13 Depth=1
+	ld.wu	$t4, $t3, 0
+	vinsgr2vr.w	$vr6, $t4, 0
+	andi	$t4, $t2, 16
+	beq	$t4, $zero, .LBB312_36
+.LBB312_40:                             #   in Loop: Header=BB312_13 Depth=1
+	ld.wu	$t4, $t3, 4
+	vinsgr2vr.w	$vr6, $t4, 1
+	andi	$t4, $t2, 256
+	beq	$t4, $zero, .LBB312_37
+.LBB312_41:                             #   in Loop: Header=BB312_13 Depth=1
+	ld.wu	$t4, $t3, 8
+	vinsgr2vr.w	$vr6, $t4, 2
+	bstrpick.d	$t4, $t2, 12, 12
+	beq	$t4, $zero, .LBB312_43
+.LBB312_42:                             #   in Loop: Header=BB312_13 Depth=1
+	ld.wu	$t3, $t3, 12
+	vinsgr2vr.w	$vr6, $t3, 3
+	.p2align	4, , 16
+.LBB312_43:                             #   in Loop: Header=BB312_13 Depth=1
+	vadd.w	$vr4, $vr5, $vr4
+	vadd.w	$vr4, $vr4, $vr6
+	addi.d	$t3, $t0, 15
+	xor	$t3, $t3, $t0
+	srli.d	$t3, $t3, 12
+	beq	$t2, $zero, .LBB312_12
+	beq	$t3, $zero, .LBB312_11
+# %bb.44:                               #   in Loop: Header=BB312_13 Depth=1
+	andi	$t3, $t2, 1
+	bne	$t3, $zero, .LBB312_48
+# %bb.45:                               #   in Loop: Header=BB312_13 Depth=1
+	andi	$t3, $t2, 16
+	bne	$t3, $zero, .LBB312_49
+.LBB312_46:                             #   in Loop: Header=BB312_13 Depth=1
+	andi	$t3, $t2, 256
+	bne	$t3, $zero, .LBB312_50
+.LBB312_47:                             #   in Loop: Header=BB312_13 Depth=1
+	bstrpick.d	$t2, $t2, 12, 12
+	beq	$t2, $zero, .LBB312_12
+	b	.LBB312_51
+.LBB312_48:                             #   in Loop: Header=BB312_13 Depth=1
+	vstelm.w	$vr4, $t0, 0, 0
+	andi	$t3, $t2, 16
+	beq	$t3, $zero, .LBB312_46
+.LBB312_49:                             #   in Loop: Header=BB312_13 Depth=1
+	vstelm.w	$vr4, $t0, 4, 1
+	andi	$t3, $t2, 256
+	beq	$t3, $zero, .LBB312_47
+.LBB312_50:                             #   in Loop: Header=BB312_13 Depth=1
+	vstelm.w	$vr4, $t0, 8, 2
+	bstrpick.d	$t2, $t2, 12, 12
+	beq	$t2, $zero, .LBB312_12
+.LBB312_51:                             #   in Loop: Header=BB312_13 Depth=1
+	vstelm.w	$vr4, $t0, 12, 3
+	b	.LBB312_12
+.LBB312_52:
 	bne	$a1, $a5, .LBB312_3
-.LBB312_21:
+.LBB312_53:
 	ret
 .Lfunc_end312:
 	.size	_ZNSt17_Function_handlerIFvPjS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_, .Lfunc_end312-_ZNSt17_Function_handlerIFvPjS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_
@@ -42829,21 +43776,13 @@ _ZNSt17_Function_handlerIFvPmS0_jllEZ4mainE4$_44E10_M_managerERSt9_Any_dataRKS4_
 	.size	_ZNSt17_Function_handlerIFvPmS0_jllEZ4mainE4$_44E10_M_managerERSt9_Any_dataRKS4_St18_Manager_operation, .Lfunc_end315-_ZNSt17_Function_handlerIFvPmS0_jllEZ4mainE4$_44E10_M_managerERSt9_Any_dataRKS4_St18_Manager_operation
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFvPmS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_
-	.type	.LCPI316_0,@object
-.LCPI316_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.size	.LCPI316_0, 16
-	.text
-	.p2align	2
+	.p2align	2                               # -- Begin function _ZNSt17_Function_handlerIFvPmS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_
 	.prefalign	5, .Lfunc_end316, nop
 	.type	_ZNSt17_Function_handlerIFvPmS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_,@function
 _ZNSt17_Function_handlerIFvPmS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_: # @"_ZNSt17_Function_handlerIFvPmS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_"
 # %bb.0:
 	ld.w	$a7, $a3, 0
-	beqz	$a7, .LBB316_17
+	beqz	$a7, .LBB316_37
 # %bb.1:
 	ld.d	$a3, $a1, 0
 	ld.d	$a6, $a4, 0
@@ -42870,7 +43809,7 @@ _ZNSt17_Function_handlerIFvPmS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7
 	addi.d	$a3, $a3, 8
 	addi.d	$a2, $a2, 8
 	addi.d	$a1, $a1, 1
-	beqz	$a5, .LBB316_17
+	beqz	$a5, .LBB316_37
 .LBB316_5:                              # =>This Inner Loop Header: Depth=1
 	mul.w	$t0, $a1, $a4
 	bltu	$t0, $a7, .LBB316_4
@@ -42893,72 +43832,138 @@ _ZNSt17_Function_handlerIFvPmS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7
 	ori	$t1, $zero, 15
 	bltu	$t0, $t1, .LBB316_3
 # %bb.9:
-	alsl.d	$t0, $a6, $a3, 3
-	sub.d	$t0, $a2, $t0
-	bltu	$a7, $t0, .LBB316_3
+	alsl.d	$a6, $a6, $a3, 3
+	sub.d	$a6, $a2, $a6
+	bltu	$a7, $a6, .LBB316_3
 # %bb.10:
 	bstrpick.d	$a1, $a5, 31, 1
 	slli.d	$a1, $a1, 1
-	vreplgr2vr.d	$vr0, $a6
-	pcalau12i	$a6, %pc_hi20(.LCPI316_0)
-	vld	$vr1, $a6, %pc_lo12(.LCPI316_0)
-	addi.d	$a6, $a3, 8
+	sub.d	$a6, $zero, $a0
 	ori	$a7, $zero, 0
 	lu32i.d	$a7, 1
-	vreplgr2vr.d	$vr2, $a7
+	vreplgr2vr.d	$vr0, $a7
 	ori	$a7, $a4, 2731
-	vreplgr2vr.w	$vr3, $a7
-	vrepli.w	$vr4, 3
-	move	$a7, $a1
-	move	$t0, $a2
-	b	.LBB316_12
+	vreplgr2vr.w	$vr1, $a7
+	vrepli.b	$vr2, 85
+	move	$a7, $a2
+	move	$t0, $a3
+	move	$t1, $a1
+	b	.LBB316_13
 	.p2align	4, , 16
-.LBB316_11:                             #   in Loop: Header=BB316_12 Depth=1
-	vaddi.du	$vr1, $vr1, 2
-	vaddi.wu	$vr2, $vr2, 2
+.LBB316_11:                             #   in Loop: Header=BB316_13 Depth=1
+	vld	$vr5, $t0, 0
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vst	$vr3, $t0, 0
+.LBB316_12:                             #   in Loop: Header=BB316_13 Depth=1
+	vaddi.wu	$vr0, $vr0, 2
+	addi.d	$t1, $t1, -2
 	addi.d	$t0, $t0, 16
-	addi.d	$a7, $a7, -2
-	addi.d	$a6, $a6, 16
-	beqz	$a7, .LBB316_16
-.LBB316_12:                             # =>This Inner Loop Header: Depth=1
-	vmuh.wu	$vr5, $vr2, $vr3
-	vsrli.w	$vr5, $vr5, 1
-	vori.b	$vr6, $vr2, 0
-	vmsub.w	$vr6, $vr5, $vr4
-	vseqi.w	$vr5, $vr6, 0
-	vxori.b	$vr6, $vr5, 255
-	vpickve2gr.d	$t1, $vr6, 0
-	andi	$t1, $t1, 1
-	vsub.d	$vr5, $vr1, $vr0
-	beqz	$t1, .LBB316_14
-# %bb.13:                               #   in Loop: Header=BB316_12 Depth=1
-	vpickve2gr.d	$t1, $vr5, 0
-	slli.d	$t1, $t1, 3
-	ldx.d	$t1, $a2, $t1
-	ld.d	$t2, $t0, 0
-	ldx.d	$t3, $t0, $a0
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.d	$t1, $a6, -8
-.LBB316_14:                             #   in Loop: Header=BB316_12 Depth=1
-	vilvl.w	$vr6, $vr6, $vr6
-	vpickve2gr.d	$t1, $vr6, 1
-	andi	$t1, $t1, 1
-	beqz	$t1, .LBB316_11
-# %bb.15:                               #   in Loop: Header=BB316_12 Depth=1
-	vpickve2gr.d	$t1, $vr5, 1
-	slli.d	$t1, $t1, 3
-	ldx.d	$t1, $a2, $t1
-	ld.d	$t2, $t0, 8
-	add.d	$t3, $t0, $a0
+	addi.d	$a7, $a7, 16
+	beqz	$t1, .LBB316_36
+.LBB316_13:                             # =>This Inner Loop Header: Depth=1
+	vmul.w	$vr3, $vr0, $vr1
+	vslt.wu	$vr3, $vr2, $vr3
+	vilvl.w	$vr3, $vr3, $vr3
+	add.d	$t3, $a7, $a6
+	vmsknz.b	$vr4, $vr3
+	vpickve2gr.hu	$t2, $vr4, 0
+	addi.d	$t4, $t3, 15
+	xor	$t4, $t4, $t3
+	srli.d	$t4, $t4, 12
+                                        # implicit-def: $vr4
+	beq	$t2, $zero, .LBB316_19
+	beq	$t4, $zero, .LBB316_18
+# %bb.14:                               #   in Loop: Header=BB316_13 Depth=1
+	andi	$t4, $t2, 1
+                                        # implicit-def: $vr4
+	beq	$t4, $zero, .LBB316_16
+# %bb.15:                               #   in Loop: Header=BB316_13 Depth=1
+	ld.d	$t4, $t3, 0
+	vinsgr2vr.d	$vr4, $t4, 0
+.LBB316_16:                             #   in Loop: Header=BB316_13 Depth=1
+	andi	$t4, $t2, 256
+	beq	$t4, $zero, .LBB316_19
+# %bb.17:                               #   in Loop: Header=BB316_13 Depth=1
 	ld.d	$t3, $t3, 8
-	add.d	$t1, $t2, $t1
-	add.d	$t1, $t1, $t3
-	st.d	$t1, $a6, 0
-	b	.LBB316_11
-.LBB316_16:
+	vinsgr2vr.d	$vr4, $t3, 1
+	b	.LBB316_19
+	.p2align	4, , 16
+.LBB316_18:                             #   in Loop: Header=BB316_13 Depth=1
+	vld	$vr4, $t3, 0
+	vbitsel.v	$vr4, $vr0, $vr4, $vr3
+.LBB316_19:                             #   in Loop: Header=BB316_13 Depth=1
+	addi.d	$t3, $a7, 15
+	xor	$t3, $t3, $a7
+	srli.d	$t3, $t3, 12
+                                        # implicit-def: $vr5
+	beq	$t2, $zero, .LBB316_25
+	beq	$t3, $zero, .LBB316_24
+# %bb.20:                               #   in Loop: Header=BB316_13 Depth=1
+	andi	$t3, $t2, 1
+                                        # implicit-def: $vr5
+	beq	$t3, $zero, .LBB316_22
+# %bb.21:                               #   in Loop: Header=BB316_13 Depth=1
+	ld.d	$t3, $a7, 0
+	vinsgr2vr.d	$vr5, $t3, 0
+.LBB316_22:                             #   in Loop: Header=BB316_13 Depth=1
+	andi	$t3, $t2, 256
+	beq	$t3, $zero, .LBB316_25
+# %bb.23:                               #   in Loop: Header=BB316_13 Depth=1
+	ld.d	$t3, $a7, 8
+	vinsgr2vr.d	$vr5, $t3, 1
+	b	.LBB316_25
+	.p2align	4, , 16
+.LBB316_24:                             #   in Loop: Header=BB316_13 Depth=1
+	vld	$vr5, $a7, 0
+	vbitsel.v	$vr5, $vr0, $vr5, $vr3
+.LBB316_25:                             #   in Loop: Header=BB316_13 Depth=1
+	add.d	$t3, $a7, $a0
+	addi.d	$t4, $t3, 15
+	xor	$t4, $t4, $t3
+	srli.d	$t4, $t4, 12
+                                        # implicit-def: $vr6
+	beq	$t2, $zero, .LBB316_31
+	beq	$t4, $zero, .LBB316_30
+# %bb.26:                               #   in Loop: Header=BB316_13 Depth=1
+	andi	$t4, $t2, 1
+                                        # implicit-def: $vr6
+	beq	$t4, $zero, .LBB316_28
+# %bb.27:                               #   in Loop: Header=BB316_13 Depth=1
+	ld.d	$t4, $t3, 0
+	vinsgr2vr.d	$vr6, $t4, 0
+.LBB316_28:                             #   in Loop: Header=BB316_13 Depth=1
+	andi	$t4, $t2, 256
+	beq	$t4, $zero, .LBB316_31
+# %bb.29:                               #   in Loop: Header=BB316_13 Depth=1
+	ld.d	$t3, $t3, 8
+	vinsgr2vr.d	$vr6, $t3, 1
+	b	.LBB316_31
+	.p2align	4, , 16
+.LBB316_30:                             #   in Loop: Header=BB316_13 Depth=1
+	vld	$vr6, $t3, 0
+	vbitsel.v	$vr6, $vr0, $vr6, $vr3
+.LBB316_31:                             #   in Loop: Header=BB316_13 Depth=1
+	vadd.d	$vr4, $vr5, $vr4
+	vadd.d	$vr4, $vr4, $vr6
+	addi.d	$t3, $t0, 15
+	xor	$t3, $t3, $t0
+	srli.d	$t3, $t3, 12
+	beq	$t2, $zero, .LBB316_12
+	beq	$t3, $zero, .LBB316_11
+# %bb.32:                               #   in Loop: Header=BB316_13 Depth=1
+	andi	$t3, $t2, 1
+	beq	$t3, $zero, .LBB316_34
+# %bb.33:                               #   in Loop: Header=BB316_13 Depth=1
+	vstelm.d	$vr4, $t0, 0, 0
+.LBB316_34:                             #   in Loop: Header=BB316_13 Depth=1
+	andi	$t2, $t2, 256
+	beq	$t2, $zero, .LBB316_12
+# %bb.35:                               #   in Loop: Header=BB316_13 Depth=1
+	vstelm.d	$vr4, $t0, 8, 1
+	b	.LBB316_12
+.LBB316_36:
 	bne	$a1, $a5, .LBB316_3
-.LBB316_17:
+.LBB316_37:
 	ret
 .Lfunc_end316:
 	.size	_ZNSt17_Function_handlerIFvPmS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_, .Lfunc_end316-_ZNSt17_Function_handlerIFvPmS0_jllEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_OjOlS9_

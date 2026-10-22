@@ -82,28 +82,100 @@ next_data:                              # @next_data
 melt_data:                              # @melt_data
 # %bb.0:
 	pcalau12i	$a2, %pc_hi20(ncol)
-	ld.w	$a2, $a2, %pc_lo12(ncol)
-	beqz	$a2, .LBB2_5
+	ld.w	$a3, $a2, %pc_lo12(ncol)
+	beqz	$a3, .LBB2_22
 # %bb.1:
+	ori	$a2, $zero, 8
+	bltu	$a3, $a2, .LBB2_4
+# %bb.2:
+	alsl.d	$a2, $a3, $a1, 2
+	bgeu	$a0, $a2, .LBB2_9
+# %bb.3:
+	alsl.d	$a2, $a3, $a0, 2
+	bgeu	$a1, $a2, .LBB2_9
+.LBB2_4:
+	move	$a2, $a3
+.LBB2_5:
 	slli.d	$a3, $a2, 2
 	addi.d	$a3, $a3, -4
 	add.d	$a0, $a0, $a3
 	add.d	$a1, $a1, $a3
-	b	.LBB2_3
+	b	.LBB2_7
 	.p2align	4, , 16
-.LBB2_2:                                #   in Loop: Header=BB2_3 Depth=1
+.LBB2_6:                                #   in Loop: Header=BB2_7 Depth=1
 	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, -4
 	addi.d	$a1, $a1, -4
-	beqz	$a2, .LBB2_5
-.LBB2_3:                                # =>This Inner Loop Header: Depth=1
+	beqz	$a2, .LBB2_22
+.LBB2_7:                                # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a0, 0
 	ld.w	$a3, $a1, 0
-	bge	$a3, $a4, .LBB2_2
-# %bb.4:                                #   in Loop: Header=BB2_3 Depth=1
+	bge	$a3, $a4, .LBB2_6
+# %bb.8:                                #   in Loop: Header=BB2_7 Depth=1
 	st.w	$a3, $a0, 0
-	b	.LBB2_2
-.LBB2_5:
+	b	.LBB2_6
+.LBB2_9:
+	slli.d	$a5, $a3, 2
+	andi	$a2, $a3, 3
+	move	$a4, $a3
+	bstrins.d	$a4, $zero, 1, 0
+	addi.d	$a6, $a5, -16
+	add.d	$a5, $a0, $a6
+	add.d	$a6, $a1, $a6
+	move	$a7, $a4
+	b	.LBB2_12
+	.p2align	4, , 16
+.LBB2_10:                               #   in Loop: Header=BB2_12 Depth=1
+	vld	$vr2, $a5, 0
+	vbitsel.v	$vr0, $vr2, $vr0, $vr1
+	vst	$vr0, $a5, 0
+.LBB2_11:                               #   in Loop: Header=BB2_12 Depth=1
+	addi.d	$a5, $a5, -16
+	addi.d	$a7, $a7, -4
+	addi.d	$a6, $a6, -16
+	beqz	$a7, .LBB2_21
+.LBB2_12:                               # =>This Inner Loop Header: Depth=1
+	vld	$vr1, $a5, 0
+	vld	$vr0, $a6, 0
+	vslt.w	$vr1, $vr0, $vr1
+	vmsknz.b	$vr2, $vr1
+	vpickve2gr.hu	$t0, $vr2, 0
+	addi.d	$t1, $a5, 15
+	xor	$t1, $t1, $a5
+	srli.d	$t1, $t1, 12
+	beq	$t0, $zero, .LBB2_11
+	beq	$t1, $zero, .LBB2_10
+# %bb.13:                               #   in Loop: Header=BB2_12 Depth=1
+	andi	$t1, $t0, 1
+	bne	$t1, $zero, .LBB2_17
+# %bb.14:                               #   in Loop: Header=BB2_12 Depth=1
+	andi	$t1, $t0, 16
+	bne	$t1, $zero, .LBB2_18
+.LBB2_15:                               #   in Loop: Header=BB2_12 Depth=1
+	andi	$t1, $t0, 256
+	bne	$t1, $zero, .LBB2_19
+.LBB2_16:                               #   in Loop: Header=BB2_12 Depth=1
+	bstrpick.d	$t0, $t0, 12, 12
+	beq	$t0, $zero, .LBB2_11
+	b	.LBB2_20
+.LBB2_17:                               #   in Loop: Header=BB2_12 Depth=1
+	vstelm.w	$vr0, $a5, 0, 0
+	andi	$t1, $t0, 16
+	beq	$t1, $zero, .LBB2_15
+.LBB2_18:                               #   in Loop: Header=BB2_12 Depth=1
+	vstelm.w	$vr0, $a5, 4, 1
+	andi	$t1, $t0, 256
+	beq	$t1, $zero, .LBB2_16
+.LBB2_19:                               #   in Loop: Header=BB2_12 Depth=1
+	vstelm.w	$vr0, $a5, 8, 2
+	bstrpick.d	$t0, $t0, 12, 12
+	beq	$t0, $zero, .LBB2_11
+.LBB2_20:                               #   in Loop: Header=BB2_12 Depth=1
+	vstelm.w	$vr0, $a5, 12, 3
+	b	.LBB2_11
+.LBB2_21:
+	bne	$a4, $a3, .LBB2_5
+.LBB2_22:
 	ret
 .Lfunc_end2:
 	.size	melt_data, .Lfunc_end2-melt_data

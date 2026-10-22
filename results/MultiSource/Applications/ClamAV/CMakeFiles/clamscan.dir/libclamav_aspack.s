@@ -787,18 +787,18 @@ unaspack212:                            # @unaspack212
 	.type	build_decrypt_dictionaries,@function
 build_decrypt_dictionaries:             # @build_decrypt_dictionaries
 # %bb.0:
-	addi.d	$sp, $sp, -176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 0
 	ori	$a1, $zero, 7
@@ -887,7 +887,7 @@ build_decrypt_dictionaries:             # @build_decrypt_dictionaries
 	beqz	$a0, .LBB1_18
 # %bb.15:
 	move	$s5, $zero
-	addi.d	$s1, $fp, 27
+	addi.d	$s0, $fp, 27
 	addi.d	$a0, $fp, 28
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	ori	$s2, $zero, 16
@@ -896,9 +896,11 @@ build_decrypt_dictionaries:             # @build_decrypt_dictionaries
 	ori	$s8, $zero, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI1_0)
-	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
 	vld	$vr0, $a0, %pc_lo12(.LCPI1_1)
+	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
+	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI1_2)
 	vld	$vr0, $a0, %pc_lo12(.LCPI1_2)
@@ -921,18 +923,18 @@ build_decrypt_dictionaries:             # @build_decrypt_dictionaries
 .LBB1_18:
 	move	$a0, $zero
 .LBB1_19:
-	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB1_20:                               #   in Loop: Header=BB1_22 Depth=1
 	ld.d	$a1, $fp, 1136
@@ -941,23 +943,23 @@ build_decrypt_dictionaries:             # @build_decrypt_dictionaries
 	add.d	$a0, $a1, $a0
 	andi	$a0, $a0, 15
 	addi.w	$s5, $s5, 1
-	stx.b	$a0, $s1, $s5
+	stx.b	$a0, $s0, $s5
 .LBB1_21:                               #   in Loop: Header=BB1_22 Depth=1
 	addi.w	$a0, $s5, 0
 	ori	$a1, $zero, 757
-	bgeu	$a0, $a1, .LBB1_71
+	bgeu	$a0, $a1, .LBB1_90
 .LBB1_22:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_37 Depth 2
                                         #     Child Loop BB1_28 Depth 2
-                                        #     Child Loop BB1_64 Depth 2
-                                        #     Child Loop BB1_68 Depth 2
+                                        #     Child Loop BB1_69 Depth 2
+                                        #     Child Loop BB1_73 Depth 2
                                         #     Child Loop BB1_32 Depth 2
 	ori	$a1, $zero, 3
-	addi.d	$a2, $sp, 84
+	addi.d	$a2, $sp, 100
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(getdec)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 84
+	ld.w	$a1, $sp, 100
 	bnez	$a1, .LBB1_18
 # %bb.23:                               #   in Loop: Header=BB1_22 Depth=1
 	bltu	$a0, $s2, .LBB1_20
@@ -991,31 +993,31 @@ build_decrypt_dictionaries:             # @build_decrypt_dictionaries
 .LBB1_30:                               #   in Loop: Header=BB1_22 Depth=1
 	bgeu	$s3, $a1, .LBB1_41
 # %bb.31:                               #   in Loop: Header=BB1_22 Depth=1
-	ld.d	$a0, $fp, 1128
+	ld.d	$a2, $fp, 1128
 	ld.d	$a3, $fp, 1120
 	.p2align	4, , 16
 .LBB1_32:                               #   Parent Loop BB1_22 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bgeu	$a3, $a0, .LBB1_18
+	bgeu	$a3, $a2, .LBB1_18
 # %bb.33:                               #   in Loop: Header=BB1_32 Depth=2
-	ld.w	$a2, $fp, 4
+	ld.w	$a0, $fp, 4
 	ld.bu	$a4, $a3, 0
-	slli.d	$a2, $a2, 8
-	or	$a2, $a2, $a4
-	st.w	$a2, $fp, 4
+	slli.d	$a0, $a0, 8
+	or	$a0, $a0, $a4
+	st.w	$a0, $fp, 4
 	addi.d	$a3, $a3, 1
 	st.d	$a3, $fp, 1120
 	addi.w	$a1, $a1, -8
 	st.w	$a1, $fp, 0
 	bltu	$s3, $a1, .LBB1_32
 # %bb.34:                               #   in Loop: Header=BB1_22 Depth=1
-	addi.d	$a0, $a1, 2
+	addi.d	$a2, $a1, 2
 	addi.w	$a3, $s5, 0
-	st.w	$a0, $fp, 0
+	st.w	$a2, $fp, 0
 	bgeu	$s4, $a3, .LBB1_42
-	b	.LBB1_71
+	b	.LBB1_90
 .LBB1_35:                               #   in Loop: Header=BB1_22 Depth=1
-	bgeu	$s3, $a1, .LBB1_59
+	bgeu	$s3, $a1, .LBB1_64
 # %bb.36:                               #   in Loop: Header=BB1_22 Depth=1
 	ld.d	$a0, $fp, 1128
 	ld.d	$a2, $fp, 1120
@@ -1034,7 +1036,7 @@ build_decrypt_dictionaries:             # @build_decrypt_dictionaries
 	addi.w	$a1, $a1, -8
 	st.w	$a1, $fp, 0
 	bltu	$s3, $a1, .LBB1_37
-	b	.LBB1_60
+	b	.LBB1_65
 .LBB1_39:                               #   in Loop: Header=BB1_22 Depth=1
 	ld.w	$a3, $fp, 4
 .LBB1_40:                               #   in Loop: Header=BB1_22 Depth=1
@@ -1043,149 +1045,184 @@ build_decrypt_dictionaries:             # @build_decrypt_dictionaries
 	bstrpick.d	$a0, $a0, 23, 21
 	addi.d	$a1, $a1, 3
 	st.w	$a1, $fp, 0
-	addi.d	$s0, $a0, 3
-	b	.LBB1_61
+	addi.d	$s1, $a0, 3
+	b	.LBB1_66
 .LBB1_41:                               #   in Loop: Header=BB1_22 Depth=1
-	ld.w	$a2, $fp, 4
-	addi.d	$a0, $a1, 2
-	st.w	$a0, $fp, 0
+	ld.w	$a0, $fp, 4
+	addi.d	$a2, $a1, 2
+	st.w	$a2, $fp, 0
 .LBB1_42:                               #   in Loop: Header=BB1_22 Depth=1
-	addi.w	$a3, $s5, 0
-	ldx.bu	$a0, $s1, $a3
-	sub.d	$a4, $s4, $a3
-	sltu	$a5, $s4, $a4
-	masknez	$a4, $a4, $a5
+	addi.w	$a2, $s5, 0
+	sub.d	$a3, $s4, $a2
+	sltu	$a4, $s4, $a3
+	masknez	$a3, $a3, $a4
 	sub.d	$a1, $s8, $a1
-	srl.w	$a1, $a2, $a1
-	bstrpick.d	$a1, $a1, 23, 22
-	addi.d	$a1, $a1, 2
-	sltu	$a2, $a4, $a1
-	maskeqz	$a4, $a4, $a2
-	masknez	$a1, $a1, $a2
-	or	$a1, $a4, $a1
-	vreplgr2vr.d	$vr0, $a1
-	vld	$vr1, $sp, 64                   # 16-byte Folded Reload
+	srl.w	$a0, $a0, $a1
+	bstrpick.d	$a0, $a0, 23, 22
+	addi.d	$a0, $a0, 2
+	sltu	$a1, $a3, $a0
+	maskeqz	$a3, $a3, $a1
+	masknez	$a0, $a0, $a1
+	or	$a0, $a3, $a0
+	vreplgr2vr.d	$vr0, $a0
+	vld	$vr1, $sp, 80                   # 16-byte Folded Reload
 	vsle.du	$vr1, $vr1, $vr0
-	vpickve2gr.h	$a2, $vr1, 0
-	andi	$a4, $a2, 1
-	add.d	$a2, $s1, $a3
-	beqz	$a4, .LBB1_44
-# %bb.43:                               #   in Loop: Header=BB1_22 Depth=1
-	st.b	$a0, $a2, 1
-.LBB1_44:                               #   in Loop: Header=BB1_22 Depth=1
-	vreplvei.w	$vr1, $vr1, 2
-	vpickve2gr.h	$a3, $vr1, 2
-	andi	$a3, $a3, 1
-	beqz	$a3, .LBB1_46
-# %bb.45:                               #   in Loop: Header=BB1_22 Depth=1
-	st.b	$a0, $a2, 2
-.LBB1_46:                               #   in Loop: Header=BB1_22 Depth=1
-	vld	$vr1, $sp, 48                   # 16-byte Folded Reload
-	vsle.du	$vr1, $vr1, $vr0
-	vreplvei.w	$vr2, $vr1, 0
-	vpickve2gr.h	$a3, $vr2, 4
-	andi	$a3, $a3, 1
-	beqz	$a3, .LBB1_48
-# %bb.47:                               #   in Loop: Header=BB1_22 Depth=1
-	st.b	$a0, $a2, 3
-.LBB1_48:                               #   in Loop: Header=BB1_22 Depth=1
-	vreplvei.w	$vr1, $vr1, 2
-	vpickve2gr.h	$a3, $vr1, 6
-	andi	$a3, $a3, 1
-	beqz	$a3, .LBB1_50
-# %bb.49:                               #   in Loop: Header=BB1_22 Depth=1
-	st.b	$a0, $a2, 4
-.LBB1_50:                               #   in Loop: Header=BB1_22 Depth=1
+	vld	$vr2, $sp, 64                   # 16-byte Folded Reload
+	vsle.du	$vr2, $vr2, $vr0
+	vpickev.w	$vr1, $vr2, $vr1
+	vpickve2gr.h	$a1, $vr1, 0
+	vld	$vr2, $sp, 48                   # 16-byte Folded Reload
+	vinsgr2vr.b	$vr2, $a1, 0
+	vpickve2gr.h	$a1, $vr1, 2
+	vinsgr2vr.b	$vr2, $a1, 1
+	vpickve2gr.h	$a1, $vr1, 4
+	vinsgr2vr.b	$vr2, $a1, 2
+	vpickve2gr.h	$a1, $vr1, 6
+	vinsgr2vr.b	$vr2, $a1, 3
 	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	vsle.du	$vr1, $vr1, $vr0
-	vpickve2gr.h	$a3, $vr1, 0
-	andi	$a3, $a3, 1
-	beqz	$a3, .LBB1_52
-# %bb.51:                               #   in Loop: Header=BB1_22 Depth=1
-	st.b	$a0, $a2, 5
+	vld	$vr3, $sp, 16                   # 16-byte Folded Reload
+	vsle.du	$vr0, $vr3, $vr0
+	vpickev.w	$vr0, $vr0, $vr1
+	vpickve2gr.h	$a1, $vr0, 0
+	vinsgr2vr.b	$vr2, $a1, 4
+	vpickve2gr.h	$a1, $vr0, 2
+	vinsgr2vr.b	$vr2, $a1, 5
+	vpickve2gr.h	$a1, $vr0, 4
+	vinsgr2vr.b	$vr2, $a1, 6
+	vpickve2gr.h	$a1, $vr0, 6
+	vinsgr2vr.b	$vr2, $a1, 7
+	vmsknz.b	$vr0, $vr2
+	vpickve2gr.hu	$a1, $vr0, 0
+	beq	$a1, $zero, .LBB1_63
+# %bb.43:                               #   in Loop: Header=BB1_22 Depth=1
+	ldx.b	$a3, $s0, $a2
+	add.d	$a2, $s0, $a2
+	vinsgr2vr.b	$vr0, $a3, 0
+	vinsgr2vr.b	$vr0, $a3, 1
+	vinsgr2vr.b	$vr0, $a3, 2
+	vinsgr2vr.b	$vr0, $a3, 3
+	vinsgr2vr.b	$vr0, $a3, 4
+	vinsgr2vr.b	$vr0, $a3, 5
+	vinsgr2vr.b	$vr0, $a3, 6
+	bstrpick.d	$a4, $a1, 7, 0
+	vinsgr2vr.b	$vr0, $a3, 7
+	beq	$a4, $zero, .LBB1_53
+# %bb.44:                               #   in Loop: Header=BB1_22 Depth=1
+	andi	$a3, $a1, 1
+	bne	$a3, $zero, .LBB1_76
+# %bb.45:                               #   in Loop: Header=BB1_22 Depth=1
+	andi	$a3, $a1, 2
+	bne	$a3, $zero, .LBB1_77
+.LBB1_46:                               #   in Loop: Header=BB1_22 Depth=1
+	andi	$a3, $a1, 4
+	bne	$a3, $zero, .LBB1_78
+.LBB1_47:                               #   in Loop: Header=BB1_22 Depth=1
+	andi	$a3, $a1, 8
+	bne	$a3, $zero, .LBB1_79
+.LBB1_48:                               #   in Loop: Header=BB1_22 Depth=1
+	andi	$a3, $a1, 16
+	bne	$a3, $zero, .LBB1_80
+.LBB1_49:                               #   in Loop: Header=BB1_22 Depth=1
+	andi	$a3, $a1, 32
+	bne	$a3, $zero, .LBB1_81
+.LBB1_50:                               #   in Loop: Header=BB1_22 Depth=1
+	andi	$a3, $a1, 64
+	bne	$a3, $zero, .LBB1_82
+.LBB1_51:                               #   in Loop: Header=BB1_22 Depth=1
+	andi	$a3, $a1, 128
+	beq	$a3, $zero, .LBB1_53
 .LBB1_52:                               #   in Loop: Header=BB1_22 Depth=1
-	vreplvei.w	$vr1, $vr1, 2
-	vpickve2gr.h	$a3, $vr1, 2
-	andi	$a3, $a3, 1
-	beqz	$a3, .LBB1_54
-# %bb.53:                               #   in Loop: Header=BB1_22 Depth=1
-	st.b	$a0, $a2, 6
-.LBB1_54:                               #   in Loop: Header=BB1_22 Depth=1
-	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
-	vsle.du	$vr0, $vr1, $vr0
-	vreplvei.w	$vr1, $vr0, 0
-	vpickve2gr.h	$a3, $vr1, 4
-	andi	$a3, $a3, 1
-	beqz	$a3, .LBB1_56
+	vstelm.b	$vr0, $a2, 8, 7
+.LBB1_53:                               #   in Loop: Header=BB1_22 Depth=1
+	bstrpick.d	$a3, $a1, 15, 8
+	beq	$a3, $zero, .LBB1_63
+# %bb.54:                               #   in Loop: Header=BB1_22 Depth=1
+	andi	$a3, $a1, 256
+	bne	$a3, $zero, .LBB1_83
 # %bb.55:                               #   in Loop: Header=BB1_22 Depth=1
-	st.b	$a0, $a2, 7
+	andi	$a3, $a1, 512
+	bne	$a3, $zero, .LBB1_84
 .LBB1_56:                               #   in Loop: Header=BB1_22 Depth=1
-	vreplvei.w	$vr0, $vr0, 2
-	vpickve2gr.h	$a3, $vr0, 6
-	andi	$a3, $a3, 1
-	beqz	$a3, .LBB1_58
-# %bb.57:                               #   in Loop: Header=BB1_22 Depth=1
-	st.b	$a0, $a2, 8
+	andi	$a3, $a1, 1024
+	bne	$a3, $zero, .LBB1_85
+.LBB1_57:                               #   in Loop: Header=BB1_22 Depth=1
+	andi	$a3, $a1, 2048
+	bne	$a3, $zero, .LBB1_86
 .LBB1_58:                               #   in Loop: Header=BB1_22 Depth=1
-	add.d	$a0, $a1, $s5
+	bstrpick.d	$a3, $a1, 12, 12
+	bne	$a3, $zero, .LBB1_87
+.LBB1_59:                               #   in Loop: Header=BB1_22 Depth=1
+	bstrpick.d	$a3, $a1, 13, 13
+	bne	$a3, $zero, .LBB1_88
+.LBB1_60:                               #   in Loop: Header=BB1_22 Depth=1
+	bstrpick.d	$a3, $a1, 14, 14
+	bne	$a3, $zero, .LBB1_89
+.LBB1_61:                               #   in Loop: Header=BB1_22 Depth=1
+	bstrpick.d	$a1, $a1, 15, 15
+	beq	$a1, $zero, .LBB1_63
+.LBB1_62:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 16, 15
+.LBB1_63:                               #   in Loop: Header=BB1_22 Depth=1
+	add.d	$a0, $a0, $s5
 	addi.d	$s5, $a0, 1
 	b	.LBB1_21
-.LBB1_59:                               #   in Loop: Header=BB1_22 Depth=1
+.LBB1_64:                               #   in Loop: Header=BB1_22 Depth=1
 	ld.w	$a3, $fp, 4
-.LBB1_60:                               #   in Loop: Header=BB1_22 Depth=1
+.LBB1_65:                               #   in Loop: Header=BB1_22 Depth=1
 	sub.d	$a0, $s8, $a1
 	srl.w	$a0, $a3, $a0
 	bstrpick.d	$a0, $a0, 23, 17
 	addi.d	$a1, $a1, 7
 	st.w	$a1, $fp, 0
-	addi.d	$s0, $a0, 11
-.LBB1_61:                               #   in Loop: Header=BB1_22 Depth=1
+	addi.d	$s1, $a0, 11
+.LBB1_66:                               #   in Loop: Header=BB1_22 Depth=1
 	addi.w	$s6, $s5, 0
-	bltu	$s4, $s6, .LBB1_71
-# %bb.62:                               #   in Loop: Header=BB1_22 Depth=1
-	move	$s8, $s1
+	bltu	$s4, $s6, .LBB1_90
+# %bb.67:                               #   in Loop: Header=BB1_22 Depth=1
+	move	$s8, $s0
 	addi.d	$a0, $fp, 28
 	add.d	$a0, $a0, $s6
-	addi.w	$s1, $s0, -1
+	addi.w	$s0, $s1, -1
 	sub.w	$a1, $s4, $s5
-	sltu	$a2, $s1, $a1
+	sltu	$a2, $s0, $a1
 	masknez	$a1, $a1, $a2
-	maskeqz	$a2, $s1, $a2
+	maskeqz	$a2, $s0, $a2
 	or	$a1, $a2, $a1
 	addi.w	$a2, $a1, 1
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	sub.d	$a0, $s4, $s6
-	bstrpick.d	$a1, $s1, 31, 0
+	bstrpick.d	$a1, $s0, 31, 0
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
 	or	$a0, $a0, $a1
-	beqz	$a0, .LBB1_66
-# %bb.63:                               #   in Loop: Header=BB1_22 Depth=1
+	beqz	$a0, .LBB1_71
+# %bb.68:                               #   in Loop: Header=BB1_22 Depth=1
 	addi.d	$a0, $a0, 1
 	bstrpick.d	$a2, $a0, 32, 1
 	slli.d	$a1, $a2, 1
 	alsl.d	$s6, $a2, $s6, 1
-	sub.d	$s0, $s0, $a1
+	sub.d	$s1, $s1, $a1
 	move	$a2, $a1
 	.p2align	4, , 16
-.LBB1_64:                               #   Parent Loop BB1_22 Depth=1
+.LBB1_69:                               #   Parent Loop BB1_22 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addi.d	$a2, $a2, -2
-	bnez	$a2, .LBB1_64
-# %bb.65:                               #   in Loop: Header=BB1_22 Depth=1
-	move	$s1, $s8
+	bnez	$a2, .LBB1_69
+# %bb.70:                               #   in Loop: Header=BB1_22 Depth=1
+	move	$s0, $s8
 	ori	$s8, $zero, 8
-	bne	$a0, $a1, .LBB1_67
-	b	.LBB1_70
-.LBB1_66:                               #   in Loop: Header=BB1_22 Depth=1
-	move	$s1, $s8
+	bne	$a0, $a1, .LBB1_72
+	b	.LBB1_75
+.LBB1_71:                               #   in Loop: Header=BB1_22 Depth=1
+	move	$s0, $s8
 	ori	$s8, $zero, 8
-.LBB1_67:                               #   in Loop: Header=BB1_22 Depth=1
+.LBB1_72:                               #   in Loop: Header=BB1_22 Depth=1
 	move	$a0, $s6
-	addi.w	$a1, $s0, -1
+	addi.w	$a1, $s1, -1
 	sub.d	$a2, $s4, $s6
 	sltu	$a3, $s4, $a2
 	masknez	$a2, $a2, $a3
@@ -1197,71 +1234,129 @@ build_decrypt_dictionaries:             # @build_decrypt_dictionaries
 	add.d	$a2, $s6, $a2
 	addi.d	$s6, $a2, 1
 	.p2align	4, , 16
-.LBB1_68:                               #   Parent Loop BB1_22 Depth=1
+.LBB1_73:                               #   Parent Loop BB1_22 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bltu	$s7, $a0, .LBB1_70
-# %bb.69:                               #   in Loop: Header=BB1_68 Depth=2
+	bltu	$s7, $a0, .LBB1_75
+# %bb.74:                               #   in Loop: Header=BB1_73 Depth=2
 	move	$a2, $a1
 	addi.d	$a0, $a0, 1
 	addi.w	$a1, $a1, -1
-	bnez	$a2, .LBB1_68
-.LBB1_70:                               #   in Loop: Header=BB1_22 Depth=1
+	bnez	$a2, .LBB1_73
+.LBB1_75:                               #   in Loop: Header=BB1_22 Depth=1
 	move	$s5, $s6
 	b	.LBB1_21
-.LBB1_71:
+.LBB1_76:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 1, 0
+	andi	$a3, $a1, 2
+	beq	$a3, $zero, .LBB1_46
+.LBB1_77:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 2, 1
+	andi	$a3, $a1, 4
+	beq	$a3, $zero, .LBB1_47
+.LBB1_78:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 3, 2
+	andi	$a3, $a1, 8
+	beq	$a3, $zero, .LBB1_48
+.LBB1_79:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 4, 3
+	andi	$a3, $a1, 16
+	beq	$a3, $zero, .LBB1_49
+.LBB1_80:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 5, 4
+	andi	$a3, $a1, 32
+	beq	$a3, $zero, .LBB1_50
+.LBB1_81:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 6, 5
+	andi	$a3, $a1, 64
+	beq	$a3, $zero, .LBB1_51
+.LBB1_82:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 7, 6
+	andi	$a3, $a1, 128
+	bne	$a3, $zero, .LBB1_52
+	b	.LBB1_53
+.LBB1_83:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 9, 8
+	andi	$a3, $a1, 512
+	beq	$a3, $zero, .LBB1_56
+.LBB1_84:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 10, 9
+	andi	$a3, $a1, 1024
+	beq	$a3, $zero, .LBB1_57
+.LBB1_85:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 11, 10
+	andi	$a3, $a1, 2048
+	beq	$a3, $zero, .LBB1_58
+.LBB1_86:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 12, 11
+	bstrpick.d	$a3, $a1, 12, 12
+	beq	$a3, $zero, .LBB1_59
+.LBB1_87:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 13, 12
+	bstrpick.d	$a3, $a1, 13, 13
+	beq	$a3, $zero, .LBB1_60
+.LBB1_88:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 14, 13
+	bstrpick.d	$a3, $a1, 14, 14
+	beq	$a3, $zero, .LBB1_61
+.LBB1_89:                               #   in Loop: Header=BB1_22 Depth=1
+	vstelm.b	$vr0, $a2, 15, 14
+	bstrpick.d	$a1, $a1, 15, 15
+	bne	$a1, $zero, .LBB1_62
+	b	.LBB1_63
+.LBB1_90:
 	move	$a0, $fp
 	addi.d	$a1, $fp, 28
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(build_decrypt_array)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_18
-# %bb.72:
+# %bb.91:
 	addi.d	$a1, $fp, 749
 	ori	$a2, $zero, 1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(build_decrypt_array)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_18
-# %bb.73:
+# %bb.92:
 	addi.d	$a1, $fp, 777
 	ori	$a2, $zero, 2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(build_decrypt_array)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_18
-# %bb.74:
+# %bb.93:
 	ld.bu	$a1, $fp, 777
 	ori	$a0, $zero, 3
 	st.w	$zero, $fp, 1912
-	bne	$a1, $a0, .LBB1_82
-# %bb.75:
+	bne	$a1, $a0, .LBB1_101
+# %bb.94:
 	ld.bu	$a1, $fp, 778
-	bne	$a1, $a0, .LBB1_82
-# %bb.76:
+	bne	$a1, $a0, .LBB1_101
+# %bb.95:
 	ld.bu	$a1, $fp, 779
 	ori	$a0, $zero, 3
-	bne	$a1, $a0, .LBB1_82
-# %bb.77:
+	bne	$a1, $a0, .LBB1_101
+# %bb.96:
 	ld.bu	$a1, $fp, 780
-	bne	$a1, $a0, .LBB1_82
-# %bb.78:
+	bne	$a1, $a0, .LBB1_101
+# %bb.97:
 	ld.bu	$a1, $fp, 781
 	ori	$a0, $zero, 3
-	bne	$a1, $a0, .LBB1_82
-# %bb.79:
+	bne	$a1, $a0, .LBB1_101
+# %bb.98:
 	ld.bu	$a1, $fp, 782
-	bne	$a1, $a0, .LBB1_82
-# %bb.80:
+	bne	$a1, $a0, .LBB1_101
+# %bb.99:
 	ld.bu	$a1, $fp, 783
 	ori	$a0, $zero, 3
-	bne	$a1, $a0, .LBB1_82
-# %bb.81:
+	bne	$a1, $a0, .LBB1_101
+# %bb.100:
 	ld.bu	$a1, $fp, 784
-	beq	$a1, $a0, .LBB1_83
-.LBB1_82:
+	beq	$a1, $a0, .LBB1_102
+.LBB1_101:
 	ori	$a0, $zero, 1
 	st.w	$a0, $fp, 1912
-.LBB1_83:
+.LBB1_102:
 	ld.d	$a0, $fp, 1136
 	ori	$a2, $zero, 757
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload

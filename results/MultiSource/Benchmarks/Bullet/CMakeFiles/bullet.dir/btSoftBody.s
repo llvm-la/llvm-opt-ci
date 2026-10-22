@@ -7404,37 +7404,172 @@ _ZN10btSoftBody13setVolumeMassEf:       # @_ZN10btSoftBody13setVolumeMassEf
 	addi.d	$a4, $a4, 136
 	bnez	$a2, .LBB45_14
 .LBB45_15:
-	beqz	$a1, .LBB45_29
+	beqz	$a1, .LBB45_54
 # %bb.16:
 	ld.d	$a2, $fp, 832
+	ori	$a3, $zero, 8
 	bstrpick.d	$a1, $a0, 31, 0
+	bltu	$a0, $a3, .LBB45_19
+# %bb.17:
+	addi.d	$a3, $a2, 96
+	alsl.d	$a4, $a1, $s0, 2
+	bgeu	$a3, $a4, .LBB45_24
+# %bb.18:
+	ori	$a3, $zero, 120
+	mul.d	$a3, $a1, $a3
+	add.d	$a3, $a2, $a3
+	addi.d	$a3, $a3, -20
+	bgeu	$s0, $a3, .LBB45_24
+.LBB45_19:
+	move	$a3, $zero
+.LBB45_20:
+	alsl.d	$a4, $a3, $s0, 2
+	ori	$a5, $zero, 120
+	mul.d	$a5, $a3, $a5
+	add.d	$a2, $a5, $a2
 	addi.d	$a2, $a2, 96
+	sub.d	$a3, $a1, $a3
 	movgr2fr.w	$fa0, $zero
-	move	$a3, $a1
-	move	$a4, $s0
-	b	.LBB45_18
+	b	.LBB45_22
 	.p2align	4, , 16
-.LBB45_17:                              #   in Loop: Header=BB45_18 Depth=1
+.LBB45_21:                              #   in Loop: Header=BB45_22 Depth=1
 	addi.d	$a4, $a4, 4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 120
-	beqz	$a3, .LBB45_20
-.LBB45_18:                              # =>This Inner Loop Header: Depth=1
+	beqz	$a3, .LBB45_45
+.LBB45_22:                              # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a2, 0
 	fcmp.cule.s	$fcc0, $fa1, $fa0
-	bcnez	$fcc0, .LBB45_17
-# %bb.19:                               #   in Loop: Header=BB45_18 Depth=1
+	bcnez	$fcc0, .LBB45_21
+# %bb.23:                               #   in Loop: Header=BB45_22 Depth=1
 	fld.s	$fa2, $a4, 0
 	fdiv.s	$fa1, $fa2, $fa1
 	fst.s	$fa1, $a2, 0
-	b	.LBB45_17
-.LBB45_20:
+	b	.LBB45_21
+.LBB45_24:
+	bstrpick.d	$a3, $a1, 31, 2
+	slli.d	$a3, $a3, 2
+	addi.d	$a4, $a2, 336
+	vrepli.b	$vr0, 0
+	move	$a5, $s0
+	move	$a6, $a3
+	b	.LBB45_26
+	.p2align	4, , 16
+.LBB45_25:                              #   in Loop: Header=BB45_26 Depth=1
+	addi.d	$a4, $a4, 480
+	addi.d	$a6, $a6, -4
+	addi.d	$a5, $a5, 16
+	beqz	$a6, .LBB45_44
+.LBB45_26:                              # =>This Inner Loop Header: Depth=1
+	fld.s	$fa6, $a4, -240
+	fld.s	$fa3, $a4, -120
+	fld.s	$fa2, $a4, 0
+	fld.s	$fa1, $a4, 120
+	vori.b	$vr4, $vr6, 0
+	vextrins.w	$vr4, $vr3, 16
+	vextrins.w	$vr4, $vr2, 32
+	vextrins.w	$vr4, $vr1, 48
+	vfcmp.clt.s	$vr4, $vr0, $vr4
+	vmsknz.b	$vr5, $vr4
+	vpickve2gr.hu	$a7, $vr5, 0
+	addi.d	$t0, $a5, 15
+	xor	$t0, $t0, $a5
+	srli.d	$t0, $t0, 12
+                                        # implicit-def: $vr5
+	beq	$a7, $zero, .LBB45_36
+	beq	$t0, $zero, .LBB45_31
+# %bb.27:                               #   in Loop: Header=BB45_26 Depth=1
+	andi	$t0, $a7, 1
+                                        # implicit-def: $vr5
+	bne	$t0, $zero, .LBB45_32
+# %bb.28:                               #   in Loop: Header=BB45_26 Depth=1
+	andi	$t0, $a7, 16
+	bne	$t0, $zero, .LBB45_33
+.LBB45_29:                              #   in Loop: Header=BB45_26 Depth=1
+	andi	$t0, $a7, 256
+	bne	$t0, $zero, .LBB45_34
+.LBB45_30:                              #   in Loop: Header=BB45_26 Depth=1
+	bstrpick.d	$a7, $a7, 12, 12
+	bne	$a7, $zero, .LBB45_35
+	b	.LBB45_36
+	.p2align	4, , 16
+.LBB45_31:                              #   in Loop: Header=BB45_26 Depth=1
+	vld	$vr5, $a5, 0
+	vbitsel.v	$vr5, $vr0, $vr5, $vr4
+	b	.LBB45_36
+.LBB45_32:                              #   in Loop: Header=BB45_26 Depth=1
+	ld.wu	$t0, $a5, 0
+	vinsgr2vr.w	$vr5, $t0, 0
+	andi	$t0, $a7, 16
+	beq	$t0, $zero, .LBB45_29
+.LBB45_33:                              #   in Loop: Header=BB45_26 Depth=1
+	ld.wu	$t0, $a5, 4
+	vinsgr2vr.w	$vr5, $t0, 1
+	andi	$t0, $a7, 256
+	beq	$t0, $zero, .LBB45_30
+.LBB45_34:                              #   in Loop: Header=BB45_26 Depth=1
+	ld.wu	$t0, $a5, 8
+	vinsgr2vr.w	$vr5, $t0, 2
+	bstrpick.d	$a7, $a7, 12, 12
+	beq	$a7, $zero, .LBB45_36
+.LBB45_35:                              #   in Loop: Header=BB45_26 Depth=1
+	ld.wu	$a7, $a5, 12
+	vinsgr2vr.w	$vr5, $a7, 3
+	.p2align	4, , 16
+.LBB45_36:                              #   in Loop: Header=BB45_26 Depth=1
+	vpickve2gr.w	$a7, $vr4, 0
+	andi	$a7, $a7, 1
+	beqz	$a7, .LBB45_40
+# %bb.37:                               #   in Loop: Header=BB45_26 Depth=1
+	vreplvei.w	$vr7, $vr5, 0
+	fdiv.s	$fa6, $fa7, $fa6
+	fst.s	$fa6, $a4, -240
+	vpickve2gr.w	$a7, $vr4, 1
+	andi	$a7, $a7, 1
+	bnez	$a7, .LBB45_41
+.LBB45_38:                              #   in Loop: Header=BB45_26 Depth=1
+	vpickve2gr.w	$a7, $vr4, 2
+	andi	$a7, $a7, 1
+	beqz	$a7, .LBB45_42
+.LBB45_39:                              #   in Loop: Header=BB45_26 Depth=1
+	vreplvei.w	$vr3, $vr5, 2
+	fdiv.s	$fa2, $fa3, $fa2
+	fst.s	$fa2, $a4, 0
+	vpickve2gr.w	$a7, $vr4, 3
+	andi	$a7, $a7, 1
+	beqz	$a7, .LBB45_25
+	b	.LBB45_43
+	.p2align	4, , 16
+.LBB45_40:                              #   in Loop: Header=BB45_26 Depth=1
+	vpickve2gr.w	$a7, $vr4, 1
+	andi	$a7, $a7, 1
+	beqz	$a7, .LBB45_38
+.LBB45_41:                              #   in Loop: Header=BB45_26 Depth=1
+	vreplvei.w	$vr6, $vr5, 1
+	fdiv.s	$fa3, $fa6, $fa3
+	fst.s	$fa3, $a4, -120
+	vpickve2gr.w	$a7, $vr4, 2
+	andi	$a7, $a7, 1
+	bnez	$a7, .LBB45_39
+.LBB45_42:                              #   in Loop: Header=BB45_26 Depth=1
+	vpickve2gr.w	$a7, $vr4, 3
+	andi	$a7, $a7, 1
+	beqz	$a7, .LBB45_25
+.LBB45_43:                              #   in Loop: Header=BB45_26 Depth=1
+	vreplvei.w	$vr2, $vr5, 3
+	fdiv.s	$fa1, $fa2, $fa1
+	fst.s	$fa1, $a4, 120
+	b	.LBB45_25
+.LBB45_44:
+	bne	$a3, $a1, .LBB45_20
+.LBB45_45:
 	ld.d	$a2, $fp, 832
+	movgr2fr.w	$fa0, $zero
 	addi.d	$a3, $a2, 96
 	move	$a4, $a1
 	fmov.s	$fa1, $fa0
 	.p2align	4, , 16
-.LBB45_21:                              # =>This Inner Loop Header: Depth=1
+.LBB45_46:                              # =>This Inner Loop Header: Depth=1
 	fld.s	$fa2, $a3, 0
 	frecip.s	$fa3, $fa2
 	fcmp.clt.s	$fcc0, $fa0, $fa2
@@ -7442,23 +7577,23 @@ _ZN10btSoftBody13setVolumeMassEf:       # @_ZN10btSoftBody13setVolumeMassEf
 	fadd.s	$fa1, $fa1, $fa2
 	addi.d	$a4, $a4, -1
 	addi.d	$a3, $a3, 120
-	bnez	$a4, .LBB45_21
-# %bb.22:
+	bnez	$a4, .LBB45_46
+# %bb.47:
 	frecip.s	$fa0, $fa1
 	ori	$a3, $zero, 4
 	fmul.s	$fa0, $fs0, $fa0
-	bgeu	$a0, $a3, .LBB45_24
-# %bb.23:
+	bgeu	$a0, $a3, .LBB45_49
+# %bb.48:
 	move	$a0, $zero
-	b	.LBB45_27
-.LBB45_24:
+	b	.LBB45_52
+.LBB45_49:
 	bstrpick.d	$a0, $a1, 31, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.w	$vr1, $vr0, 0
 	addi.d	$a3, $a2, 336
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB45_25:                              # =>This Inner Loop Header: Depth=1
+.LBB45_50:                              # =>This Inner Loop Header: Depth=1
 	fld.s	$fa2, $a3, -240
 	fld.s	$fa3, $a3, -120
 	fld.s	$fa4, $a3, 0
@@ -7473,28 +7608,28 @@ _ZN10btSoftBody13setVolumeMassEf:       # @_ZN10btSoftBody13setVolumeMassEf
 	vstelm.w	$vr2, $a3, 120, 3
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 480
-	bnez	$a4, .LBB45_25
-# %bb.26:
-	beq	$a0, $a1, .LBB45_29
-.LBB45_27:
+	bnez	$a4, .LBB45_50
+# %bb.51:
+	beq	$a0, $a1, .LBB45_54
+.LBB45_52:
 	sub.d	$a1, $a1, $a0
 	ori	$a3, $zero, 120
 	mul.d	$a0, $a0, $a3
 	add.d	$a0, $a0, $a2
 	addi.d	$a0, $a0, 96
 	.p2align	4, , 16
-.LBB45_28:                              # =>This Inner Loop Header: Depth=1
+.LBB45_53:                              # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a0, 0
 	fdiv.s	$fa1, $fa1, $fa0
 	fst.s	$fa1, $a0, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 120
-	bnez	$a1, .LBB45_28
-.LBB45_29:
+	bnez	$a1, .LBB45_53
+.LBB45_54:
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 1140
-	beqz	$s0, .LBB45_31
-# %bb.30:
+	beqz	$s0, .LBB45_56
+# %bb.55:
 	move	$a0, $s0
 	fld.d	$fs0, $sp, 8                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -7504,7 +7639,7 @@ _ZN10btSoftBody13setVolumeMassEf:       # @_ZN10btSoftBody13setVolumeMassEf
 	addi.d	$sp, $sp, 48
 	pcaddu18i	$t8, %call36(_Z21btAlignedFreeInternalPv)
 	jr	$t8
-.LBB45_31:
+.LBB45_56:
 	fld.d	$fs0, $sp, 8                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload

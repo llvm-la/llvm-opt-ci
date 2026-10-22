@@ -1273,31 +1273,31 @@ jpeg_set_colorspace:                    # @jpeg_set_colorspace
 	.size	.LCPI7_2, 16
 	.type	.LCPI7_3,@object
 .LCPI7_3:
-	.word	1                               # 0x1
-	.word	5                               # 0x5
 	.word	0                               # 0x0
+	.word	1                               # 0x1
 	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.size	.LCPI7_3, 16
 	.type	.LCPI7_4,@object
 .LCPI7_4:
-	.word	6                               # 0x6
-	.word	63                              # 0x3f
+	.word	1                               # 0x1
+	.word	5                               # 0x5
 	.word	0                               # 0x0
 	.word	2                               # 0x2
 	.size	.LCPI7_4, 16
 	.type	.LCPI7_5,@object
 .LCPI7_5:
+	.word	6                               # 0x6
+	.word	63                              # 0x3f
+	.word	0                               # 0x0
+	.word	2                               # 0x2
+	.size	.LCPI7_5, 16
+	.type	.LCPI7_6,@object
+.LCPI7_6:
 	.word	1                               # 0x1
 	.word	63                              # 0x3f
 	.word	2                               # 0x2
 	.word	1                               # 0x1
-	.size	.LCPI7_5, 16
-	.type	.LCPI7_6,@object
-.LCPI7_6:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
 	.size	.LCPI7_6, 16
 	.type	.LCPI7_7,@object
 .LCPI7_7:
@@ -1391,14 +1391,14 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	pcalau12i	$a1, %pc_hi20(.LCPI7_0)
 	vld	$vr1, $a1, %pc_lo12(.LCPI7_0)
 	vst	$vr0, $a0, 0
-	pcalau12i	$a1, %pc_hi20(.LCPI7_3)
-	vld	$vr0, $a1, %pc_lo12(.LCPI7_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI7_4)
+	vld	$vr0, $a1, %pc_lo12(.LCPI7_4)
 	vst	$vr1, $a0, 20
 	ori	$a1, $zero, 1
 	st.d	$a1, $a0, 36
 	vst	$vr0, $a0, 56
 	st.w	$a1, $a0, 72
-	bne	$a3, $a2, .LBB7_21
+	bne	$a3, $a2, .LBB7_17
 # %bb.9:
 	pcalau12i	$a2, %pc_hi20(.LCPI7_9)
 	vld	$vr0, $a2, %pc_lo12(.LCPI7_9)
@@ -1408,8 +1408,8 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	vst	$vr0, $a0, 92
 	ori	$a2, $zero, 1
 	vst	$vr0, $a0, 128
-	pcalau12i	$a3, %pc_hi20(.LCPI7_4)
-	vld	$vr0, $a3, %pc_lo12(.LCPI7_4)
+	pcalau12i	$a3, %pc_hi20(.LCPI7_5)
+	vld	$vr0, $a3, %pc_lo12(.LCPI7_5)
 	lu32i.d	$a2, 1
 	st.d	$a2, $a0, 108
 	st.d	$a1, $a0, 144
@@ -1449,62 +1449,54 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ori	$a1, $zero, 216
 	ori	$a2, $zero, 212
 	ori	$a3, $zero, 208
-	b	.LBB7_22
+	b	.LBB7_18
 .LBB7_10:
 	ori	$a1, $zero, 5
-	bge	$s0, $a1, .LBB7_24
+	bge	$s0, $a1, .LBB7_20
 # %bb.11:
 	st.w	$s0, $a0, 0
-	blez	$s0, .LBB7_72
+	blez	$s0, .LBB7_25
 # %bb.12:
-	pcalau12i	$a1, %pc_hi20(.LCPI7_1)
-	vld	$vr1, $a1, %pc_lo12(.LCPI7_1)
 	addi.d	$a1, $s0, -1
-	vreplgr2vr.d	$vr0, $a1
-	vsle.du	$vr1, $vr1, $vr0
-	vpickve2gr.w	$a1, $vr1, 0
-	andi	$a1, $a1, 1
-	beqz	$a1, .LBB7_14
+	pcalau12i	$a2, %pc_hi20(.LCPI7_1)
+	vld	$vr0, $a2, %pc_lo12(.LCPI7_1)
+	pcalau12i	$a2, %pc_hi20(.LCPI7_2)
+	vld	$vr1, $a2, %pc_lo12(.LCPI7_2)
+	vreplgr2vr.d	$vr2, $a1
+	addi.d	$a1, $a0, 4
+	vsle.du	$vr0, $vr0, $vr2
+	vsle.du	$vr1, $vr1, $vr2
+	vpickev.w	$vr1, $vr1, $vr0
+	pcalau12i	$a2, %pc_hi20(.LCPI7_3)
+	vld	$vr0, $a2, %pc_lo12(.LCPI7_3)
+	vmsknz.b	$vr2, $vr1
+	vpickve2gr.hu	$a2, $vr2, 0
+	addi.d	$a3, $a1, 15
+	xor	$a3, $a3, $a1
+	srli.d	$a3, $a3, 12
+	beq	$a2, $zero, .LBB7_31
+	beq	$a3, $zero, .LBB7_26
 # %bb.13:
-	st.w	$zero, $a0, 4
-.LBB7_14:
-	vpickve2gr.w	$a1, $vr1, 2
-	andi	$a1, $a1, 1
-	beqz	$a1, .LBB7_16
-# %bb.15:
-	ori	$a1, $zero, 1
-	st.w	$a1, $a0, 8
+	andi	$a3, $a2, 1
+	bne	$a3, $zero, .LBB7_27
+# %bb.14:
+	andi	$a3, $a2, 16
+	bne	$a3, $zero, .LBB7_28
+.LBB7_15:
+	andi	$a3, $a2, 256
+	bne	$a3, $zero, .LBB7_29
 .LBB7_16:
-	pcalau12i	$a1, %pc_hi20(.LCPI7_2)
-	vld	$vr1, $a1, %pc_lo12(.LCPI7_2)
-	vsle.du	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a1, $vr0, 0
-	andi	$a1, $a1, 1
-	beqz	$a1, .LBB7_18
-# %bb.17:
-	ori	$a1, $zero, 2
-	st.w	$a1, $a0, 12
-.LBB7_18:
-	vpickve2gr.w	$a1, $vr0, 2
-	andi	$a1, $a1, 1
-	beqz	$a1, .LBB7_20
-# %bb.19:
-	ori	$a1, $zero, 3
-	st.w	$a1, $a0, 16
-.LBB7_20:
-	pcalau12i	$a1, %pc_hi20(.LCPI7_0)
-	vld	$vr0, $a1, %pc_lo12(.LCPI7_0)
-	vst	$vr0, $a0, 20
-	addi.d	$a3, $a0, 36
-	b	.LBB7_29
-.LBB7_21:
+	bstrpick.d	$a2, $a2, 12, 12
+	bne	$a2, $zero, .LBB7_30
+	b	.LBB7_31
+.LBB7_17:
 	move	$t1, $zero
 	st.w	$a1, $a0, 76
 	vst	$vr0, $a0, 92
 	ori	$a2, $zero, 1
 	vst	$vr0, $a0, 128
-	pcalau12i	$a3, %pc_hi20(.LCPI7_4)
-	vld	$vr0, $a3, %pc_lo12(.LCPI7_4)
+	pcalau12i	$a3, %pc_hi20(.LCPI7_5)
+	vld	$vr0, $a3, %pc_lo12(.LCPI7_5)
 	lu32i.d	$a2, 2
 	st.d	$a2, $a0, 108
 	st.d	$a1, $a0, 144
@@ -1513,8 +1505,8 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	lu32i.d	$a3, 1
 	vst	$vr0, $a0, 200
 	vst	$vr0, $a0, 236
-	pcalau12i	$a4, %pc_hi20(.LCPI7_5)
-	vld	$vr0, $a4, %pc_lo12(.LCPI7_5)
+	pcalau12i	$a4, %pc_hi20(.LCPI7_6)
+	vld	$vr0, $a4, %pc_lo12(.LCPI7_6)
 	st.d	$a3, $a0, 180
 	st.d	$a2, $a0, 216
 	st.d	$a1, $a0, 252
@@ -1557,7 +1549,7 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ori	$a1, $zero, 360
 	ori	$a2, $zero, 356
 	ori	$a3, $zero, 352
-.LBB7_22:
+.LBB7_18:
 	ori	$a4, $zero, 2
 	stx.w	$a4, $a0, $a3
 	ori	$a3, $zero, 1
@@ -1585,7 +1577,7 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ld.d	$t1, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$t3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
-.LBB7_23:
+.LBB7_19:
 	stx.w	$a1, $a0, $t2
 	stx.w	$a3, $a0, $t0
 	stx.w	$zero, $a0, $a2
@@ -1596,8 +1588,8 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	stx.w	$a1, $a0, $a6
 	stx.w	$a2, $a0, $a4
 	stx.w	$zero, $a0, $a5
-	b	.LBB7_71
-.LBB7_24:
+	b	.LBB7_74
+.LBB7_20:
 	move	$a2, $zero
 	bstrpick.d	$a3, $s0, 30, 1
 	slli.d	$a1, $a3, 1
@@ -1610,7 +1602,7 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ori	$a4, $zero, 1
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB7_25:                               # =>This Inner Loop Header: Depth=1
+.LBB7_21:                               # =>This Inner Loop Header: Depth=1
 	addi.d	$a6, $a2, 1
 	st.w	$a4, $a0, -36
 	st.w	$a4, $a0, 0
@@ -1621,38 +1613,76 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	addi.d	$a5, $a5, -2
 	addi.d	$a0, $a0, 72
 	addi.d	$a2, $a2, 2
-	bnez	$a5, .LBB7_25
-# %bb.26:
-	beq	$a1, $s0, .LBB7_29
-# %bb.27:
+	bnez	$a5, .LBB7_21
+# %bb.22:
+	beq	$a1, $s0, .LBB7_32
+# %bb.23:
 	ori	$a0, $zero, 1
 	.p2align	4, , 16
-.LBB7_28:                               # =>This Inner Loop Header: Depth=1
+.LBB7_24:                               # =>This Inner Loop Header: Depth=1
 	st.w	$a0, $a3, 0
 	st.w	$a1, $a3, 4
 	vst	$vr0, $a3, 20
 	addi.w	$a1, $a1, 1
 	addi.d	$a3, $a3, 36
-	bne	$s0, $a1, .LBB7_28
+	bne	$s0, $a1, .LBB7_24
+	b	.LBB7_32
+.LBB7_25:
+	move	$a1, $zero
+	move	$a3, $zero
+	ori	$a5, $zero, 68
+	ori	$a4, $zero, 64
+	ori	$a6, $zero, 56
+	ori	$t1, $zero, 60
+	ori	$a7, $zero, 36
+	ori	$t3, $zero, 32
+	ori	$a2, $zero, 28
+	ori	$t0, $zero, 20
+	ori	$t2, $zero, 24
+	b	.LBB7_19
+.LBB7_26:
+	vld	$vr2, $a1, 0
+	vbitsel.v	$vr0, $vr2, $vr0, $vr1
+	vst	$vr0, $a1, 0
+	b	.LBB7_31
+.LBB7_27:
+	vstelm.w	$vr0, $a1, 0, 0
+	andi	$a3, $a2, 16
+	beq	$a3, $zero, .LBB7_15
+.LBB7_28:
+	vstelm.w	$vr0, $a1, 4, 1
+	andi	$a3, $a2, 256
+	beq	$a3, $zero, .LBB7_16
 .LBB7_29:
+	vstelm.w	$vr0, $a1, 8, 2
+	bstrpick.d	$a2, $a2, 12, 12
+	beq	$a2, $zero, .LBB7_31
+.LBB7_30:
+	vstelm.w	$vr0, $a1, 12, 3
+.LBB7_31:
+	pcalau12i	$a1, %pc_hi20(.LCPI7_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI7_0)
+	vst	$vr0, $a0, 20
+	addi.d	$a3, $a0, 36
+.LBB7_32:
 	addi.w	$a2, $s0, -1
 	bstrpick.d	$a0, $a2, 31, 0
 	addi.d	$a0, $a0, 1
 	bstrpick.d	$a1, $a0, 32, 1
-	pcalau12i	$a6, %pc_hi20(.LCPI7_3)
-	beqz	$a2, .LBB7_33
-# %bb.30:
+	pcalau12i	$a6, %pc_hi20(.LCPI7_4)
+	beqz	$a2, .LBB7_36
+# %bb.33:
 	move	$a7, $zero
 	slli.d	$a5, $a1, 1
 	slli.d	$a4, $a1, 6
 	alsl.d	$a4, $a1, $a4, 3
-	vld	$vr0, $a6, %pc_lo12(.LCPI7_3)
+	vld	$vr0, $a6, %pc_lo12(.LCPI7_4)
 	add.d	$a4, $a3, $a4
 	addi.d	$a3, $a3, 36
 	ori	$t0, $zero, 1
 	move	$t1, $a5
 	.p2align	4, , 16
-.LBB7_31:                               # =>This Inner Loop Header: Depth=1
+.LBB7_34:                               # =>This Inner Loop Header: Depth=1
 	addi.d	$t2, $a7, 1
 	st.w	$t0, $a3, -36
 	st.w	$t0, $a3, 0
@@ -1663,39 +1693,39 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	addi.d	$t1, $t1, -2
 	addi.d	$a3, $a3, 72
 	addi.d	$a7, $a7, 2
-	bnez	$t1, .LBB7_31
-# %bb.32:
-	bne	$a0, $a5, .LBB7_34
-	b	.LBB7_36
-.LBB7_33:
+	bnez	$t1, .LBB7_34
+# %bb.35:
+	bne	$a0, $a5, .LBB7_37
+	b	.LBB7_39
+.LBB7_36:
 	move	$a5, $zero
 	move	$a4, $a3
-.LBB7_34:
-	vld	$vr0, $a6, %pc_lo12(.LCPI7_3)
+.LBB7_37:
+	vld	$vr0, $a6, %pc_lo12(.LCPI7_4)
 	ori	$a3, $zero, 1
 	.p2align	4, , 16
-.LBB7_35:                               # =>This Inner Loop Header: Depth=1
+.LBB7_38:                               # =>This Inner Loop Header: Depth=1
 	st.w	$a3, $a4, 0
 	st.w	$a5, $a4, 4
 	vst	$vr0, $a4, 20
 	addi.w	$a5, $a5, 1
 	addi.d	$a4, $a4, 36
-	bne	$s0, $a5, .LBB7_35
-.LBB7_36:
-	pcalau12i	$a6, %pc_hi20(.LCPI7_4)
-	beqz	$a2, .LBB7_40
-# %bb.37:
+	bne	$s0, $a5, .LBB7_38
+.LBB7_39:
+	pcalau12i	$a6, %pc_hi20(.LCPI7_5)
+	beqz	$a2, .LBB7_43
+# %bb.40:
 	move	$a7, $zero
 	slli.d	$a3, $a1, 1
 	slli.d	$a5, $a1, 6
 	alsl.d	$a5, $a1, $a5, 3
-	vld	$vr0, $a6, %pc_lo12(.LCPI7_4)
+	vld	$vr0, $a6, %pc_lo12(.LCPI7_5)
 	add.d	$a5, $a4, $a5
 	addi.d	$a4, $a4, 36
 	ori	$t0, $zero, 1
 	move	$t1, $a3
 	.p2align	4, , 16
-.LBB7_38:                               # =>This Inner Loop Header: Depth=1
+.LBB7_41:                               # =>This Inner Loop Header: Depth=1
 	addi.d	$t2, $a7, 1
 	st.w	$t0, $a4, -36
 	st.w	$t0, $a4, 0
@@ -1706,39 +1736,39 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	addi.d	$t1, $t1, -2
 	addi.d	$a4, $a4, 72
 	addi.d	$a7, $a7, 2
-	bnez	$t1, .LBB7_38
-# %bb.39:
-	bne	$a0, $a3, .LBB7_41
-	b	.LBB7_43
-.LBB7_40:
+	bnez	$t1, .LBB7_41
+# %bb.42:
+	bne	$a0, $a3, .LBB7_44
+	b	.LBB7_46
+.LBB7_43:
 	move	$a3, $zero
 	move	$a5, $a4
-.LBB7_41:
-	vld	$vr0, $a6, %pc_lo12(.LCPI7_4)
+.LBB7_44:
+	vld	$vr0, $a6, %pc_lo12(.LCPI7_5)
 	ori	$a4, $zero, 1
 	.p2align	4, , 16
-.LBB7_42:                               # =>This Inner Loop Header: Depth=1
+.LBB7_45:                               # =>This Inner Loop Header: Depth=1
 	st.w	$a4, $a5, 0
 	st.w	$a3, $a5, 4
 	vst	$vr0, $a5, 20
 	addi.w	$a3, $a3, 1
 	addi.d	$a5, $a5, 36
-	bne	$s0, $a3, .LBB7_42
-.LBB7_43:
-	pcalau12i	$a6, %pc_hi20(.LCPI7_5)
-	beqz	$a2, .LBB7_47
-# %bb.44:
+	bne	$s0, $a3, .LBB7_45
+.LBB7_46:
+	pcalau12i	$a6, %pc_hi20(.LCPI7_6)
+	beqz	$a2, .LBB7_50
+# %bb.47:
 	move	$a7, $zero
 	slli.d	$a4, $a1, 1
 	slli.d	$a3, $a1, 6
 	alsl.d	$a3, $a1, $a3, 3
-	vld	$vr0, $a6, %pc_lo12(.LCPI7_5)
+	vld	$vr0, $a6, %pc_lo12(.LCPI7_6)
 	add.d	$a3, $a5, $a3
 	addi.d	$a5, $a5, 36
 	ori	$t0, $zero, 1
 	move	$t1, $a4
 	.p2align	4, , 16
-.LBB7_45:                               # =>This Inner Loop Header: Depth=1
+.LBB7_48:                               # =>This Inner Loop Header: Depth=1
 	addi.d	$t2, $a7, 1
 	st.w	$t0, $a5, -36
 	st.w	$t0, $a5, 0
@@ -1749,36 +1779,36 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	addi.d	$t1, $t1, -2
 	addi.d	$a5, $a5, 72
 	addi.d	$a7, $a7, 2
-	bnez	$t1, .LBB7_45
-# %bb.46:
-	bne	$a0, $a4, .LBB7_48
-	b	.LBB7_50
-.LBB7_47:
+	bnez	$t1, .LBB7_48
+# %bb.49:
+	bne	$a0, $a4, .LBB7_51
+	b	.LBB7_53
+.LBB7_50:
 	move	$a4, $zero
 	move	$a3, $a5
-.LBB7_48:
-	vld	$vr0, $a6, %pc_lo12(.LCPI7_5)
+.LBB7_51:
+	vld	$vr0, $a6, %pc_lo12(.LCPI7_6)
 	ori	$a5, $zero, 1
 	.p2align	4, , 16
-.LBB7_49:                               # =>This Inner Loop Header: Depth=1
+.LBB7_52:                               # =>This Inner Loop Header: Depth=1
 	st.w	$a5, $a3, 0
 	st.w	$a4, $a3, 4
 	vst	$vr0, $a3, 20
 	addi.w	$a4, $a4, 1
 	addi.d	$a3, $a3, 36
-	bne	$s0, $a4, .LBB7_49
-.LBB7_50:
+	bne	$s0, $a4, .LBB7_52
+.LBB7_53:
 	addi.d	$a4, $a3, -36
 	ori	$a5, $zero, 5
-	bge	$s0, $a5, .LBB7_53
-# %bb.51:
+	bge	$s0, $a5, .LBB7_56
+# %bb.54:
 	ori	$a5, $zero, 8
 	st.w	$s0, $a3, 0
-	bgeu	$s0, $a5, .LBB7_62
-# %bb.52:
+	bgeu	$s0, $a5, .LBB7_65
+# %bb.55:
 	move	$a3, $zero
-	b	.LBB7_65
-.LBB7_53:
+	b	.LBB7_68
+.LBB7_56:
 	move	$a6, $zero
 	bstrpick.d	$a4, $s0, 30, 1
 	slli.d	$a5, $a4, 1
@@ -1791,7 +1821,7 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ori	$a7, $zero, 1
 	move	$t0, $a5
 	.p2align	4, , 16
-.LBB7_54:                               # =>This Inner Loop Header: Depth=1
+.LBB7_57:                               # =>This Inner Loop Header: Depth=1
 	addi.d	$t1, $a6, 1
 	st.w	$a7, $a3, -36
 	st.w	$a7, $a3, 0
@@ -1802,23 +1832,23 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	addi.d	$t0, $t0, -2
 	addi.d	$a3, $a3, 72
 	addi.d	$a6, $a6, 2
-	bnez	$t0, .LBB7_54
-# %bb.55:
-	beq	$a5, $s0, .LBB7_58
-# %bb.56:
+	bnez	$t0, .LBB7_57
+# %bb.58:
+	beq	$a5, $s0, .LBB7_61
+# %bb.59:
 	ori	$a3, $zero, 1
 	.p2align	4, , 16
-.LBB7_57:                               # =>This Inner Loop Header: Depth=1
+.LBB7_60:                               # =>This Inner Loop Header: Depth=1
 	st.w	$a3, $a4, 0
 	st.w	$a5, $a4, 4
 	vst	$vr0, $a4, 20
 	addi.w	$a5, $a5, 1
 	addi.d	$a4, $a4, 36
-	bne	$s0, $a5, .LBB7_57
-.LBB7_58:
+	bne	$s0, $a5, .LBB7_60
+.LBB7_61:
 	pcalau12i	$a3, %pc_hi20(.LCPI7_7)
-	beqz	$a2, .LBB7_68
-.LBB7_59:
+	beqz	$a2, .LBB7_71
+.LBB7_62:
 	move	$a5, $zero
 	slli.d	$a2, $a1, 1
 	slli.d	$a6, $a1, 6
@@ -1829,7 +1859,7 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ori	$a6, $zero, 1
 	move	$a7, $a2
 	.p2align	4, , 16
-.LBB7_60:                               # =>This Inner Loop Header: Depth=1
+.LBB7_63:                               # =>This Inner Loop Header: Depth=1
 	addi.d	$t0, $a5, 1
 	st.w	$a6, $a4, -36
 	st.w	$a6, $a4, 0
@@ -1840,61 +1870,61 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	addi.d	$a7, $a7, -2
 	addi.d	$a4, $a4, 72
 	addi.d	$a5, $a5, 2
-	bnez	$a7, .LBB7_60
-# %bb.61:
-	bne	$a0, $a2, .LBB7_69
-	b	.LBB7_71
-.LBB7_62:
-	pcalau12i	$a3, %pc_hi20(.LCPI7_6)
-	vld	$vr0, $a3, %pc_lo12(.LCPI7_6)
+	bnez	$a7, .LBB7_63
+# %bb.64:
+	bne	$a0, $a2, .LBB7_72
+	b	.LBB7_74
+.LBB7_65:
+	pcalau12i	$a3, %pc_hi20(.LCPI7_3)
+	vld	$vr0, $a3, %pc_lo12(.LCPI7_3)
 	bstrpick.d	$a3, $s1, 30, 3
 	slli.d	$a3, $a3, 3
 	addi.d	$a5, $a4, 56
 	move	$a6, $a3
 	.p2align	4, , 16
-.LBB7_63:                               # =>This Inner Loop Header: Depth=1
+.LBB7_66:                               # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr1, $vr0, 4
 	vst	$vr0, $a5, -16
 	vst	$vr1, $a5, 0
 	vaddi.wu	$vr0, $vr0, 8
 	addi.d	$a6, $a6, -8
 	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB7_63
-# %bb.64:
-	beq	$a3, $s1, .LBB7_67
-.LBB7_65:
+	bnez	$a6, .LBB7_66
+# %bb.67:
+	beq	$a3, $s1, .LBB7_70
+.LBB7_68:
 	sub.d	$a5, $s1, $a3
 	alsl.d	$a6, $a3, $a4, 2
 	addi.d	$a6, $a6, 40
 	.p2align	4, , 16
-.LBB7_66:                               # =>This Inner Loop Header: Depth=1
+.LBB7_69:                               # =>This Inner Loop Header: Depth=1
 	st.w	$a3, $a6, 0
 	addi.d	$a5, $a5, -1
 	addi.d	$a3, $a3, 1
 	addi.d	$a6, $a6, 4
-	bnez	$a5, .LBB7_66
-.LBB7_67:
+	bnez	$a5, .LBB7_69
+.LBB7_70:
 	pcalau12i	$a3, %pc_hi20(.LCPI7_1)
 	vld	$vr0, $a3, %pc_lo12(.LCPI7_1)
 	vst	$vr0, $a4, 56
 	addi.d	$a4, $a4, 72
 	pcalau12i	$a3, %pc_hi20(.LCPI7_7)
-	bnez	$a2, .LBB7_59
-.LBB7_68:
+	bnez	$a2, .LBB7_62
+.LBB7_71:
 	move	$a2, $zero
 	move	$a1, $a4
-.LBB7_69:
+.LBB7_72:
 	vld	$vr0, $a3, %pc_lo12(.LCPI7_7)
 	ori	$a0, $zero, 1
 	.p2align	4, , 16
-.LBB7_70:                               # =>This Inner Loop Header: Depth=1
+.LBB7_73:                               # =>This Inner Loop Header: Depth=1
 	st.w	$a0, $a1, 0
 	st.w	$a2, $a1, 4
 	vst	$vr0, $a1, 20
 	addi.w	$a2, $a2, 1
 	addi.d	$a1, $a1, 36
-	bne	$s0, $a2, .LBB7_70
-.LBB7_71:
+	bne	$s0, $a2, .LBB7_73
+.LBB7_74:
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
@@ -1908,19 +1938,6 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 128
 	ret
-.LBB7_72:
-	move	$a1, $zero
-	move	$a3, $zero
-	ori	$a5, $zero, 68
-	ori	$a4, $zero, 64
-	ori	$a6, $zero, 56
-	ori	$t1, $zero, 60
-	ori	$a7, $zero, 36
-	ori	$t3, $zero, 32
-	ori	$a2, $zero, 28
-	ori	$t0, $zero, 20
-	ori	$t2, $zero, 24
-	b	.LBB7_23
 .Lfunc_end7:
 	.size	jpeg_simple_progression, .Lfunc_end7-jpeg_simple_progression
                                         # -- End function

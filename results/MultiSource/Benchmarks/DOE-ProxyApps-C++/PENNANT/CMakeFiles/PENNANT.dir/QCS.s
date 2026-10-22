@@ -981,84 +981,126 @@ _ZN3QCS8setForceEPKdPK7double2PdPS2_ii: # @_ZN3QCS8setForceEPKdPK7double2PdPS2_i
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	ld.d	$a0, $a0, 0
-	ld.d	$s6, $a0, 0
-	move	$s2, $a6
+	ld.d	$s7, $a0, 0
+	move	$s3, $a6
 	move	$fp, $a5
-	move	$s3, $a4
+	move	$s2, $a4
 	move	$s0, $a3
 	move	$s1, $a2
 	move	$s4, $a1
-	ld.d	$s5, $s6, 376
-	sub.d	$s7, $a6, $a5
-	addi.w	$a0, $s7, 0
+	ld.d	$s5, $s7, 376
+	sub.d	$s6, $a6, $a5
+	addi.w	$a0, $s6, 0
 	slli.d	$a0, $a0, 3
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	bge	$fp, $s2, .LBB5_7
+	bge	$fp, $s3, .LBB5_16
 # %bb.1:
-	pcalau12i	$a1, %pc_hi20(.LCPI5_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI5_0)
-	vldi	$vr1, -912
-	movgr2fr.d	$fa2, $zero
-	move	$a1, $s0
-	move	$a2, $a0
-	b	.LBB5_3
-	.p2align	4, , 16
-.LBB5_2:                                #   in Loop: Header=BB5_3 Depth=1
-	fst.d	$fa4, $a2, 0
-	fst.d	$fa5, $a1, 0
-	addi.d	$a2, $a2, 8
-	addi.d	$a1, $a1, 8
-	addi.d	$s7, $s7, -1
-	addi.d	$s4, $s4, 8
-	beqz	$s7, .LBB5_5
-.LBB5_3:                                # =>This Inner Loop Header: Depth=1
-	fld.d	$fa3, $a1, 0
-	fneg.d	$fa4, $fa3
-	fmadd.d	$fa6, $fa4, $fa3, $fa1
-	fcmp.clt.d	$fcc0, $fa6, $fa0
-	fmov.d	$fa4, $fa2
-	fmov.d	$fa5, $fa2
-	bcnez	$fcc0, .LBB5_2
-# %bb.4:                                #   in Loop: Header=BB5_3 Depth=1
-	fld.d	$fa4, $s4, 0
-	fdiv.d	$fa4, $fa4, $fa6
-	fmov.d	$fa5, $fa3
-	b	.LBB5_2
+	ori	$a1, $zero, 4
+	bgeu	$s6, $a1, .LBB5_3
+# %bb.2:
+	move	$a1, $fp
+	b	.LBB5_17
+.LBB5_3:
+	sub.d	$a1, $s3, $fp
+	alsl.d	$a2, $a1, $s4, 3
+	bgeu	$s0, $a2, .LBB5_5
+# %bb.4:
+	alsl.d	$a2, $a1, $s0, 3
+	move	$a1, $fp
+	bltu	$s4, $a2, .LBB5_17
 .LBB5_5:
-	ld.d	$a1, $s6, 128
-	ld.d	$a2, $s6, 112
+	move	$a2, $s6
+	bstrins.d	$a2, $zero, 0, 0
+	add.d	$a1, $a2, $fp
+	vldi	$vr0, -912
+	lu12i.w	$a3, -85564
+	ori	$a3, $a3, 813
+	lu32i.d	$a3, -379166
+	lu52i.d	$a3, $a3, 1009
+	vreplgr2vr.d	$vr1, $a3
+	move	$a3, $a2
+	move	$a4, $a0
+	move	$a5, $s4
+	move	$a6, $s0
+	b	.LBB5_8
+	.p2align	4, , 16
+.LBB5_6:                                #   in Loop: Header=BB5_8 Depth=1
+	vld	$vr5, $a5, 0
+	vbitsel.v	$vr5, $vr0, $vr5, $vr3
+.LBB5_7:                                #   in Loop: Header=BB5_8 Depth=1
+	vfdiv.d	$vr4, $vr5, $vr4
+	vand.v	$vr4, $vr3, $vr4
+	vand.v	$vr2, $vr3, $vr2
+	vst	$vr4, $a4, 0
+	vst	$vr2, $a6, 0
+	addi.d	$a6, $a6, 16
+	addi.d	$a5, $a5, 16
+	addi.d	$a3, $a3, -2
+	addi.d	$a4, $a4, 16
+	beqz	$a3, .LBB5_13
+.LBB5_8:                                # =>This Inner Loop Header: Depth=1
+	vld	$vr2, $a6, 0
+	vbitrevi.d	$vr3, $vr2, 63
+	vfmadd.d	$vr4, $vr3, $vr2, $vr0
+	vfcmp.cule.d	$vr3, $vr1, $vr4
+	vmsknz.b	$vr5, $vr3
+	vpickve2gr.hu	$a7, $vr5, 0
+	addi.d	$t0, $a5, 15
+	xor	$t0, $t0, $a5
+	srli.d	$t0, $t0, 12
+                                        # implicit-def: $vr5
+	beq	$a7, $zero, .LBB5_7
+	beq	$t0, $zero, .LBB5_6
+# %bb.9:                                #   in Loop: Header=BB5_8 Depth=1
+	andi	$t0, $a7, 1
+                                        # implicit-def: $vr5
+	beq	$t0, $zero, .LBB5_11
+# %bb.10:                               #   in Loop: Header=BB5_8 Depth=1
+	ld.d	$t0, $a5, 0
+	vinsgr2vr.d	$vr5, $t0, 0
+.LBB5_11:                               #   in Loop: Header=BB5_8 Depth=1
+	andi	$a7, $a7, 256
+	beq	$a7, $zero, .LBB5_7
+# %bb.12:                               #   in Loop: Header=BB5_8 Depth=1
+	ld.d	$a7, $a5, 8
+	vinsgr2vr.d	$vr5, $a7, 1
+	b	.LBB5_7
+.LBB5_13:
+	bne	$s6, $a2, .LBB5_17
+.LBB5_14:
+	ld.d	$a1, $s7, 128
+	ld.d	$a2, $s7, 112
 	alsl.d	$a1, $fp, $a1, 2
 	alsl.d	$a2, $fp, $a2, 2
-	alsl.d	$a3, $fp, $s3, 4
+	alsl.d	$a3, $fp, $s2, 4
 	addi.d	$a4, $s1, 16
-	sub.d	$a5, $s2, $fp
-	move	$a6, $s0
-	move	$a7, $a0
+	move	$a5, $s0
+	move	$a6, $a0
 	.p2align	4, , 16
-.LBB5_6:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$t0, $a1, 0
-	ld.w	$t1, $a2, 0
-	sub.w	$t0, $t0, $fp
-	slli.d	$t1, $t1, 3
-	fldx.d	$fa0, $s5, $t1
-	fld.d	$fa1, $a6, 0
-	fld.d	$fa2, $a7, 0
-	slli.d	$t1, $t0, 3
-	slli.w	$t0, $t0, 1
-	slli.d	$t2, $t0, 4
-	alsl.d	$t0, $t0, $s1, 4
+.LBB5_15:                               # =>This Inner Loop Header: Depth=1
+	ld.w	$a7, $a1, 0
+	ld.w	$t0, $a2, 0
+	sub.w	$a7, $a7, $fp
+	slli.d	$t0, $t0, 3
+	fldx.d	$fa0, $s5, $t0
+	fld.d	$fa1, $a5, 0
+	fld.d	$fa2, $a6, 0
+	slli.d	$t0, $a7, 3
+	slli.w	$a7, $a7, 1
+	slli.d	$t1, $a7, 4
+	alsl.d	$a7, $a7, $s1, 4
 	vld	$vr3, $a4, -16
-	fldx.d	$fa4, $s0, $t1
+	fldx.d	$fa4, $s0, $t0
 	vld	$vr5, $a4, 0
 	vreplvei.d	$vr1, $vr1, 0
 	vfmul.d	$vr1, $vr1, $vr3
-	fldx.d	$fa3, $a0, $t1
+	fldx.d	$fa3, $a0, $t0
 	vfadd.d	$vr1, $vr1, $vr5
 	vreplvei.d	$vr2, $vr2, 0
 	vfmul.d	$vr1, $vr1, $vr2
-	vld	$vr2, $t0, 16
-	vldx	$vr5, $s1, $t2
+	vld	$vr2, $a7, 16
+	vldx	$vr5, $s1, $t1
 	frecip.d	$fa0, $fa0
 	vreplvei.d	$vr4, $vr4, 0
 	vfmul.d	$vr2, $vr4, $vr2
@@ -1073,11 +1115,11 @@ _ZN3QCS8setForceEPKdPK7double2PdPS2_ii: # @_ZN3QCS8setForceEPKdPK7double2PdPS2_i
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 16
 	addi.d	$a4, $a4, 32
-	addi.d	$a7, $a7, 8
-	addi.d	$a5, $a5, -1
 	addi.d	$a6, $a6, 8
-	bnez	$a5, .LBB5_6
-.LBB5_7:
+	addi.d	$s6, $s6, -1
+	addi.d	$a5, $a5, 8
+	bnez	$s6, .LBB5_15
+.LBB5_16:
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
@@ -1091,6 +1133,41 @@ _ZN3QCS8setForceEPKdPK7double2PdPS2_ii: # @_ZN3QCS8setForceEPKdPK7double2PdPS2_i
 	addi.d	$sp, $sp, 96
 	pcaddu18i	$t8, %call36(free)
 	jr	$t8
+.LBB5_17:
+	slli.d	$a2, $a1, 3
+	slli.d	$a3, $fp, 3
+	sub.d	$a4, $a2, $a3
+	add.d	$a2, $a0, $a4
+	add.d	$a3, $s0, $a4
+	add.d	$a4, $s4, $a4
+	pcalau12i	$a5, %pc_hi20(.LCPI5_0)
+	fld.d	$fa0, $a5, %pc_lo12(.LCPI5_0)
+	sub.d	$a1, $s3, $a1
+	vldi	$vr1, -912
+	movgr2fr.d	$fa2, $zero
+	b	.LBB5_19
+	.p2align	4, , 16
+.LBB5_18:                               #   in Loop: Header=BB5_19 Depth=1
+	fst.d	$fa4, $a2, 0
+	fst.d	$fa5, $a3, 0
+	addi.d	$a2, $a2, 8
+	addi.d	$a3, $a3, 8
+	addi.d	$a1, $a1, -1
+	addi.d	$a4, $a4, 8
+	beqz	$a1, .LBB5_14
+.LBB5_19:                               # =>This Inner Loop Header: Depth=1
+	fld.d	$fa3, $a3, 0
+	fneg.d	$fa4, $fa3
+	fmadd.d	$fa6, $fa4, $fa3, $fa1
+	fcmp.clt.d	$fcc0, $fa6, $fa0
+	fmov.d	$fa4, $fa2
+	fmov.d	$fa5, $fa2
+	bcnez	$fcc0, .LBB5_18
+# %bb.20:                               #   in Loop: Header=BB5_19 Depth=1
+	fld.d	$fa4, $a4, 0
+	fdiv.d	$fa4, $fa4, $fa6
+	fmov.d	$fa5, $fa3
+	b	.LBB5_18
 .Lfunc_end5:
 	.size	_ZN3QCS8setForceEPKdPK7double2PdPS2_ii, .Lfunc_end5-_ZN3QCS8setForceEPKdPK7double2PdPS2_ii
 	.cfi_endproc

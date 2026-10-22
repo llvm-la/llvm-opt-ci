@@ -2816,7 +2816,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	move	$s4, $zero
+	move	$s5, $zero
 	move	$a5, $zero
 	ld.d	$a0, $fp, 24
 	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
@@ -2844,11 +2844,11 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB29_42 Depth 3
                                         #       Child Loop BB29_44 Depth 3
-	slli.d	$a0, $s4, 2
+	slli.d	$a0, $s5, 2
 	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
 	ldx.wu	$a0, $a1, $a0
 	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
-	ldx.bu	$s5, $a1, $a0
+	ldx.bu	$s4, $a1, $a0
 	move	$s0, $zero
 	addi.d	$s6, $sp, 464
 	.p2align	4, , 16
@@ -2858,7 +2858,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	ldx.bu	$a0, $s0, $s7
 	addi.d	$s0, $s0, 1
 	addi.d	$s6, $s6, 4
-	bne	$a0, $s5, .LBB29_42
+	bne	$a0, $s4, .LBB29_42
 # %bb.43:                               #   in Loop: Header=BB29_41 Depth=2
 	addi.d	$a0, $s0, -1
 	ori	$a1, $zero, 8
@@ -2895,14 +2895,14 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 .LBB29_47:                              #   in Loop: Header=BB29_41 Depth=2
-	st.b	$s5, $sp, 1496
+	st.b	$s4, $sp, 1496
 	ori	$a0, $zero, 1
 	bne	$s0, $a0, .LBB29_49
 # %bb.48:                               #   in Loop: Header=BB29_41 Depth=2
-	addi.d	$s4, $s4, 1
+	addi.d	$s5, $s5, 1
 	addi.w	$s1, $s1, 1
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
-	bne	$s4, $a0, .LBB29_41
+	bne	$s5, $a0, .LBB29_41
 	b	.LBB29_56
 	.p2align	4, , 16
 .LBB29_49:                              #   in Loop: Header=BB29_40 Depth=1
@@ -2944,12 +2944,12 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	bstrpick.d	$a2, $a2, 31, 0
 	stx.b	$a1, $s2, $a2
 	ld.w	$a1, $s6, 0
-	addi.d	$s4, $s4, 1
+	addi.d	$s5, $s5, 1
 	add.w	$a5, $a5, $a0
 	addi.d	$a0, $a1, 1
 	st.w	$a0, $s6, 0
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
-	bne	$s4, $a0, .LBB29_40
+	bne	$s5, $a0, .LBB29_40
 	b	.LBB29_60
 .LBB29_56:
 	beqz	$s1, .LBB29_59
@@ -2975,7 +2975,6 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 .LBB29_60:
 	ld.d	$a4, $sp, 208                   # 8-byte Folded Reload
 	addi.w	$t6, $a4, 2
-	ori	$s4, $zero, 1
 	ori	$a3, $zero, 254
 	ori	$a2, $zero, 1
 	ori	$a0, $zero, 1
@@ -3157,15 +3156,15 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
 	st.d	$t1, $sp, 80                    # 8-byte Folded Spill
 	andi	$a3, $t1, 7
-	ori	$s1, $zero, 8
-	sub.w	$a3, $s1, $a3
+	ori	$t1, $zero, 8
+	sub.w	$a3, $t1, $a3
 	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
 	addi.d	$a0, $a0, 49
 	bstrpick.d	$a0, $a0, 31, 0
 	lu12i.w	$a3, 335544
 	ori	$a3, $a3, 1311
 	mul.d	$a0, $a0, $a3
-	srli.d	$t1, $a0, 36
+	srli.d	$t2, $a0, 36
 	addi.d	$s7, $fp, 40
 	lu12i.w	$a0, 3
 	ori	$a0, $a0, 1684
@@ -3174,14 +3173,15 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	ori	$a0, $a0, 3684
 	add.d	$a0, $fp, $a0
 	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
-	slt	$a0, $s4, $t6
-	masknez	$a3, $s4, $a0
+	ori	$t1, $zero, 1
+	slt	$a0, $t1, $t6
+	masknez	$a3, $t1, $a0
 	maskeqz	$a0, $t6, $a0
 	or	$t8, $a0, $a3
-	sltu	$a0, $s4, $t1
-	st.d	$t1, $sp, 104                   # 8-byte Folded Spill
-	maskeqz	$a3, $t1, $a0
-	masknez	$a0, $s4, $a0
+	sltu	$a0, $t1, $t2
+	st.d	$t2, $sp, 104                   # 8-byte Folded Spill
+	maskeqz	$a3, $t2, $a0
+	masknez	$a0, $t1, $a0
 	or	$a0, $a3, $a0
 	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	ldx.b	$a0, $fp, $a4
@@ -3199,7 +3199,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	slli.d	$a3, $a3, 4
 	st.d	$a3, $sp, 152                   # 8-byte Folded Spill
 	bstrpick.d	$a3, $t8, 30, 2
-	slli.d	$s8, $a3, 2
+	slli.d	$s4, $a3, 2
 	bstrpick.d	$a3, $t8, 30, 3
 	slli.d	$a3, $a3, 3
 	st.d	$a3, $sp, 232                   # 8-byte Folded Spill
@@ -3211,23 +3211,26 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	vrepli.b	$vr0, 32
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
-	vrepli.w	$vr0, 1
-	vst	$vr0, $sp, 208                  # 16-byte Folded Spill
+	vrepli.w	$vr15, 1
 	addi.w	$a3, $zero, -1
 	st.d	$a3, $sp, 128                   # 8-byte Folded Spill
 	ori	$a5, $zero, 2
+	ori	$s1, $zero, 255
+	addi.d	$s8, $sp, 264
 	ori	$a3, $zero, 2
 	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
 	st.d	$t6, $sp, 240                   # 8-byte Folded Spill
 	st.d	$t8, $sp, 256                   # 8-byte Folded Spill
 	st.d	$s0, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 160                   # 8-byte Folded Spill
+	vst	$vr15, $sp, 208                 # 16-byte Folded Spill
 	b	.LBB29_64
 	.p2align	4, , 16
 .LBB29_63:                              #   in Loop: Header=BB29_64 Depth=1
 	addi.w	$a5, $a5, 1
 	ori	$a0, $zero, 1
-	beq	$a5, $s1, .LBB29_218
+	ori	$a3, $zero, 8
+	beq	$a5, $a3, .LBB29_222
 .LBB29_64:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB29_69 Depth 2
                                         #     Child Loop BB29_73 Depth 2
@@ -3244,25 +3247,25 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
                                         #           Child Loop BB29_114 Depth 5
                                         #         Child Loop BB29_118 Depth 4
                                         #       Child Loop BB29_122 Depth 3
-                                        #         Child Loop BB29_126 Depth 4
-                                        #         Child Loop BB29_145 Depth 4
-                                        #     Child Loop BB29_152 Depth 2
+                                        #         Child Loop BB29_127 Depth 4
+                                        #         Child Loop BB29_149 Depth 4
                                         #     Child Loop BB29_156 Depth 2
-                                        #     Child Loop BB29_158 Depth 2
-                                        #     Child Loop BB29_161 Depth 2
-                                        #       Child Loop BB29_171 Depth 3
-                                        #         Child Loop BB29_173 Depth 4
-                                        #       Child Loop BB29_165 Depth 3
-                                        #     Child Loop BB29_177 Depth 2
-                                        #       Child Loop BB29_179 Depth 3
+                                        #     Child Loop BB29_160 Depth 2
+                                        #     Child Loop BB29_162 Depth 2
+                                        #     Child Loop BB29_165 Depth 2
+                                        #       Child Loop BB29_175 Depth 3
+                                        #         Child Loop BB29_177 Depth 4
+                                        #       Child Loop BB29_169 Depth 3
+                                        #     Child Loop BB29_181 Depth 2
                                         #       Child Loop BB29_183 Depth 3
-                                        #         Child Loop BB29_185 Depth 4
-                                        #           Child Loop BB29_187 Depth 5
+                                        #       Child Loop BB29_187 Depth 3
+                                        #         Child Loop BB29_189 Depth 4
+                                        #           Child Loop BB29_191 Depth 5
+                                        #           Child Loop BB29_200 Depth 5
                                         #           Child Loop BB29_196 Depth 5
-                                        #           Child Loop BB29_192 Depth 5
-                                        #         Child Loop BB29_202 Depth 4
-                                        #     Child Loop BB29_206 Depth 2
-                                        #       Child Loop BB29_212 Depth 3
+                                        #         Child Loop BB29_206 Depth 4
+                                        #     Child Loop BB29_210 Depth 2
+                                        #       Child Loop BB29_216 Depth 3
 	andi	$a0, $a0, 1
 	st.d	$a5, $sp, 144                   # 8-byte Folded Spill
 	beqz	$a0, .LBB29_66
@@ -3411,7 +3414,8 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 # %bb.82:                               #   in Loop: Header=BB29_77 Depth=2
 	beq	$a1, $t3, .LBB29_85
 # %bb.83:                               #   in Loop: Header=BB29_77 Depth=2
-	beq	$a1, $s4, .LBB29_85
+	ori	$t0, $zero, 1
+	beq	$a1, $t0, .LBB29_85
 # %bb.84:                               #   in Loop: Header=BB29_77 Depth=2
 	sub.d	$t0, $a0, $a1
 	andi	$t0, $t0, 1
@@ -3529,8 +3533,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	vsle.d	$vr6, $vr1, $vr2
 	vpickev.w	$vr5, $vr6, $vr5
 	vor.v	$vr4, $vr4, $vr5
-	vld	$vr5, $sp, 208                  # 16-byte Folded Reload
-	vand.v	$vr4, $vr4, $vr5
+	vand.v	$vr4, $vr4, $vr15
 	vpickve2gr.w	$a7, $vr4, 0
 	vinsgr2vr.b	$vr5, $a7, 0
 	vpickve2gr.w	$a7, $vr4, 1
@@ -3544,10 +3547,10 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	addi.d	$t1, $t1, 4
 	vaddi.du	$vr3, $vr3, 4
 	vaddi.du	$vr2, $vr2, 4
-	bne	$s8, $t1, .LBB29_95
+	bne	$s4, $t1, .LBB29_95
 # %bb.96:                               #   in Loop: Header=BB29_77 Depth=2
-	move	$t2, $s8
-	beq	$s8, $t8, .LBB29_76
+	move	$t2, $s4
+	beq	$s4, $t8, .LBB29_76
 	.p2align	4, , 16
 .LBB29_97:                              #   Parent Loop BB29_64 Depth=1
                                         #     Parent Loop BB29_77 Depth=2
@@ -3563,8 +3566,9 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	.p2align	4, , 16
 .LBB29_98:                              #   in Loop: Header=BB29_64 Depth=1
 	move	$a2, $zero
-	slt	$a0, $s4, $t3
-	masknez	$a1, $s4, $a0
+	ori	$a1, $zero, 1
+	slt	$a0, $a1, $t3
+	masknez	$a1, $a1, $a0
 	st.d	$t3, $sp, 136                   # 8-byte Folded Spill
 	maskeqz	$a0, $t3, $a0
 	or	$s0, $a0, $a1
@@ -3577,7 +3581,8 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
 	addi.w	$a2, $a2, 1
 	ori	$a0, $zero, 4
-	beq	$a2, $a0, .LBB29_147
+	addi.d	$s8, $sp, 264
+	beq	$a2, $a0, .LBB29_151
 .LBB29_100:                             #   Parent Loop BB29_64 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB29_101 Depth 3
@@ -3587,8 +3592,8 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
                                         #           Child Loop BB29_114 Depth 5
                                         #         Child Loop BB29_118 Depth 4
                                         #       Child Loop BB29_122 Depth 3
-                                        #         Child Loop BB29_126 Depth 4
-                                        #         Child Loop BB29_145 Depth 4
+                                        #         Child Loop BB29_127 Depth 4
+                                        #         Child Loop BB29_149 Depth 4
 	st.d	$a2, $sp, 200                   # 8-byte Folded Spill
 	addi.d	$a0, $fp, 1588
 	move	$a1, $zero
@@ -3598,9 +3603,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	move	$a1, $zero
 	move	$a0, $zero
 	vld	$vr6, $sp, 176                  # 16-byte Folded Reload
-	ori	$t0, $zero, 255
-	ori	$t1, $zero, 48
-	addi.d	$t7, $sp, 264
+	ori	$t0, $zero, 48
 	.p2align	4, , 16
 .LBB29_101:                             #   Parent Loop BB29_64 Depth=1
                                         #     Parent Loop BB29_100 Depth=2
@@ -3624,7 +3627,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	st.w	$a4, $a5, 0
 	addi.d	$a4, $a6, 1
 	addi.w	$a3, $a3, 1
-	bltu	$t1, $a6, .LBB29_106
+	bltu	$t0, $a6, .LBB29_106
 .LBB29_103:                             #   in Loop: Header=BB29_104 Depth=4
 	addi.d	$a5, $a5, 4
 	addi.d	$a7, $a2, 1
@@ -3638,13 +3641,13 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	ldx.bu	$a4, $s2, $a2
 	move	$a2, $a7
 	addi.w	$a7, $a1, 1
-	beq	$a4, $t0, .LBB29_102
+	beq	$a4, $s1, .LBB29_102
 # %bb.105:                              #   in Loop: Header=BB29_104 Depth=4
 	move	$a1, $a7
 	st.w	$a4, $a5, 0
 	addi.d	$a4, $a6, 1
 	addi.w	$a3, $a3, 1
-	bgeu	$t1, $a6, .LBB29_103
+	bgeu	$t0, $a6, .LBB29_103
 .LBB29_106:                             #   in Loop: Header=BB29_101 Depth=3
 	move	$a6, $zero
 	bstrpick.d	$a5, $a0, 31, 0
@@ -3667,7 +3670,8 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	slli.d	$t2, $a6, 8
 	alsl.d	$t2, $a6, $t2, 1
 	add.d	$t2, $s7, $t2
-	bgeu	$a3, $s1, .LBB29_110
+	ori	$t3, $zero, 8
+	bgeu	$a3, $t3, .LBB29_110
 # %bb.109:                              #   in Loop: Header=BB29_108 Depth=4
 	move	$t4, $zero
 	move	$t3, $zero
@@ -3695,9 +3699,9 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	vpickve2gr.d	$t7, $vr4, 0
 	vpickve2gr.d	$t8, $vr4, 1
 	vpickve2gr.d	$s3, $vr3, 0
-	vpickve2gr.d	$s8, $vr3, 1
-	vpickve2gr.d	$ra, $vr5, 0
-	vpickve2gr.d	$s1, $vr5, 1
+	vpickve2gr.d	$s4, $vr3, 1
+	vpickve2gr.d	$s8, $vr5, 0
+	vpickve2gr.d	$ra, $vr5, 1
 	ldx.b	$t5, $t2, $t5
 	ldx.b	$t6, $t2, $t6
 	ldx.b	$t7, $t2, $t7
@@ -3707,9 +3711,9 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	vinsgr2vr.b	$vr2, $t7, 2
 	vinsgr2vr.b	$vr2, $t8, 3
 	ldx.b	$t5, $t2, $s3
-	ldx.b	$t6, $t2, $s8
-	ldx.b	$t7, $t2, $ra
-	ldx.b	$t8, $t2, $s1
+	ldx.b	$t6, $t2, $s4
+	ldx.b	$t7, $t2, $s8
+	ldx.b	$t8, $t2, $ra
 	vinsgr2vr.b	$vr3, $t5, 0
 	vinsgr2vr.b	$vr3, $t6, 1
 	vinsgr2vr.b	$vr3, $t7, 2
@@ -3729,11 +3733,10 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$t3, $vr0, 0
 	move	$t4, $a7
-	ori	$s1, $zero, 8
-	addi.d	$t7, $sp, 264
+	addi.d	$s8, $sp, 264
 	beq	$a4, $a7, .LBB29_115
 .LBB29_113:                             #   in Loop: Header=BB29_108 Depth=4
-	alsl.d	$t5, $t4, $t7, 2
+	alsl.d	$t5, $t4, $s8, 2
 	.p2align	4, , 16
 .LBB29_114:                             #   Parent Loop BB29_64 Depth=1
                                         #     Parent Loop BB29_100 Depth=2
@@ -3777,175 +3780,191 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	bnez	$a2, .LBB29_118
 # %bb.119:                              #   in Loop: Header=BB29_101 Depth=3
 	addi.w	$a0, $a0, 1
-	ori	$t0, $zero, 255
-	ori	$t1, $zero, 48
+	ori	$t0, $zero, 48
 	bltu	$a1, $s6, .LBB29_101
 # %bb.120:                              #   in Loop: Header=BB29_100 Depth=2
-	move	$s8, $zero
-	addi.d	$s3, $fp, 1588
+	move	$s4, $zero
+	addi.d	$s8, $fp, 1588
+	addi.d	$s3, $fp, 1604
 	b	.LBB29_122
 	.p2align	4, , 16
 .LBB29_121:                             #   in Loop: Header=BB29_122 Depth=3
-	slli.d	$a0, $s8, 10
-	alsl.d	$a0, $s8, $a0, 3
+	slli.d	$a0, $s4, 10
+	alsl.d	$a0, $s4, $a0, 3
 	addi.d	$a1, $fp, 1588
 	add.d	$a0, $a1, $a0
 	ori	$a1, $zero, 1032
-	mul.d	$a1, $s8, $a1
+	mul.d	$a1, $s4, $a1
 	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
 	add.d	$a1, $a2, $a1
 	ori	$a2, $zero, 258
-	mul.d	$a2, $s8, $a2
+	mul.d	$a2, $s4, $a2
 	add.d	$a2, $s7, $a2
 	ori	$a3, $zero, 258
 	ori	$a4, $zero, 16
 	pcaddu18i	$ra, %call36(Huffman_Generate)
 	jirl	$ra, $ra, 0
-	addi.d	$s8, $s8, 1
+	addi.d	$s4, $s4, 1
 	addi.d	$s3, $s3, 1032
-	beq	$s8, $s0, .LBB29_99
+	addi.d	$s8, $s8, 1032
+	beq	$s4, $s0, .LBB29_99
 .LBB29_122:                             #   Parent Loop BB29_64 Depth=1
                                         #     Parent Loop BB29_100 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB29_126 Depth 4
-                                        #         Child Loop BB29_145 Depth 4
+                                        #         Child Loop BB29_127 Depth 4
+                                        #         Child Loop BB29_149 Depth 4
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
-	bge	$a0, $s1, .LBB29_124
+	ori	$a1, $zero, 8
+	bge	$a0, $a1, .LBB29_124
 # %bb.123:                              #   in Loop: Header=BB29_122 Depth=3
 	move	$a1, $zero
-	ld.d	$a3, $sp, 256                   # 8-byte Folded Reload
-	b	.LBB29_143
+	ori	$a5, $zero, 1
+	ld.d	$a6, $sp, 256                   # 8-byte Folded Reload
+	b	.LBB29_147
 	.p2align	4, , 16
 .LBB29_124:                             #   in Loop: Header=BB29_122 Depth=3
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
-	move	$a1, $s3
-	ld.d	$a3, $sp, 256                   # 8-byte Folded Reload
-	b	.LBB29_126
+	move	$a0, $s3
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ori	$a5, $zero, 1
+	ld.d	$a6, $sp, 256                   # 8-byte Folded Reload
+	vld	$vr3, $sp, 208                  # 16-byte Folded Reload
+	b	.LBB29_127
 	.p2align	4, , 16
-.LBB29_125:                             #   in Loop: Header=BB29_126 Depth=4
-	addi.d	$a0, $a0, -8
-	addi.d	$a1, $a1, 32
-	beqz	$a0, .LBB29_142
-.LBB29_126:                             #   Parent Loop BB29_64 Depth=1
+.LBB29_125:                             #   in Loop: Header=BB29_127 Depth=4
+	vld	$vr1, $a0, 0
+	vbitsel.v	$vr0, $vr1, $vr3, $vr0
+	vst	$vr0, $a0, 0
+.LBB29_126:                             #   in Loop: Header=BB29_127 Depth=4
+	addi.d	$a1, $a1, -8
+	addi.d	$a0, $a0, 32
+	beqz	$a1, .LBB29_146
+.LBB29_127:                             #   Parent Loop BB29_64 Depth=1
                                         #     Parent Loop BB29_100 Depth=2
                                         #       Parent Loop BB29_122 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	vld	$vr0, $a1, 0
+	vld	$vr1, $a0, -16
+	addi.d	$a2, $a0, -16
+	vld	$vr0, $a0, 0
+	vseqi.w	$vr1, $vr1, 0
+	vmsknz.b	$vr2, $vr1
+	vpickve2gr.hu	$a3, $vr2, 0
+	addi.d	$a4, $a2, 15
+	xor	$a4, $a4, $a2
+	srli.d	$a4, $a4, 12
+	beq	$a3, $zero, .LBB29_137
+	beq	$a4, $zero, .LBB29_132
+# %bb.128:                              #   in Loop: Header=BB29_127 Depth=4
+	andi	$a4, $a3, 1
+	bne	$a4, $zero, .LBB29_133
+# %bb.129:                              #   in Loop: Header=BB29_127 Depth=4
+	andi	$a4, $a3, 16
+	bne	$a4, $zero, .LBB29_134
+.LBB29_130:                             #   in Loop: Header=BB29_127 Depth=4
+	andi	$a4, $a3, 256
+	bne	$a4, $zero, .LBB29_135
+.LBB29_131:                             #   in Loop: Header=BB29_127 Depth=4
+	bstrpick.d	$a3, $a3, 12, 12
+	bne	$a3, $zero, .LBB29_136
+	b	.LBB29_137
+	.p2align	4, , 16
+.LBB29_132:                             #   in Loop: Header=BB29_127 Depth=4
+	vld	$vr2, $a2, 0
+	vbitsel.v	$vr1, $vr2, $vr3, $vr1
+	vst	$vr1, $a2, 0
+	b	.LBB29_137
+.LBB29_133:                             #   in Loop: Header=BB29_127 Depth=4
+	vstelm.w	$vr3, $a2, 0, 0
+	andi	$a4, $a3, 16
+	beq	$a4, $zero, .LBB29_130
+.LBB29_134:                             #   in Loop: Header=BB29_127 Depth=4
+	vstelm.w	$vr3, $a2, 4, 1
+	andi	$a4, $a3, 256
+	beq	$a4, $zero, .LBB29_131
+.LBB29_135:                             #   in Loop: Header=BB29_127 Depth=4
+	vstelm.w	$vr3, $a2, 8, 2
+	bstrpick.d	$a3, $a3, 12, 12
+	beq	$a3, $zero, .LBB29_137
+.LBB29_136:                             #   in Loop: Header=BB29_127 Depth=4
+	vstelm.w	$vr3, $a2, 12, 3
+	.p2align	4, , 16
+.LBB29_137:                             #   in Loop: Header=BB29_127 Depth=4
 	vseqi.w	$vr0, $vr0, 0
-	vpickve2gr.w	$a2, $vr0, 0
-	andi	$a2, $a2, 1
-	beqz	$a2, .LBB29_130
-# %bb.127:                              #   in Loop: Header=BB29_126 Depth=4
-	st.w	$s4, $a1, 0
-	vpickve2gr.w	$a2, $vr0, 1
-	andi	$a2, $a2, 1
-	bnez	$a2, .LBB29_131
-.LBB29_128:                             #   in Loop: Header=BB29_126 Depth=4
-	vpickve2gr.w	$a2, $vr0, 2
-	andi	$a2, $a2, 1
-	beqz	$a2, .LBB29_132
-.LBB29_129:                             #   in Loop: Header=BB29_126 Depth=4
-	st.w	$s4, $a1, 8
-	vpickve2gr.w	$a2, $vr0, 3
-	andi	$a2, $a2, 1
-	bnez	$a2, .LBB29_133
-	b	.LBB29_134
+	vmsknz.b	$vr1, $vr0
+	vpickve2gr.hu	$a2, $vr1, 0
+	addi.d	$a3, $a0, 15
+	xor	$a3, $a3, $a0
+	srli.d	$a3, $a3, 12
+	beq	$a2, $zero, .LBB29_126
+	beq	$a3, $zero, .LBB29_125
+# %bb.138:                              #   in Loop: Header=BB29_127 Depth=4
+	andi	$a3, $a2, 1
+	bne	$a3, $zero, .LBB29_142
+# %bb.139:                              #   in Loop: Header=BB29_127 Depth=4
+	andi	$a3, $a2, 16
+	bne	$a3, $zero, .LBB29_143
+.LBB29_140:                             #   in Loop: Header=BB29_127 Depth=4
+	andi	$a3, $a2, 256
+	bne	$a3, $zero, .LBB29_144
+.LBB29_141:                             #   in Loop: Header=BB29_127 Depth=4
+	bstrpick.d	$a2, $a2, 12, 12
+	beq	$a2, $zero, .LBB29_126
+	b	.LBB29_145
+.LBB29_142:                             #   in Loop: Header=BB29_127 Depth=4
+	vstelm.w	$vr3, $a0, 0, 0
+	andi	$a3, $a2, 16
+	beq	$a3, $zero, .LBB29_140
+.LBB29_143:                             #   in Loop: Header=BB29_127 Depth=4
+	vstelm.w	$vr3, $a0, 4, 1
+	andi	$a3, $a2, 256
+	beq	$a3, $zero, .LBB29_141
+.LBB29_144:                             #   in Loop: Header=BB29_127 Depth=4
+	vstelm.w	$vr3, $a0, 8, 2
+	bstrpick.d	$a2, $a2, 12, 12
+	beq	$a2, $zero, .LBB29_126
+.LBB29_145:                             #   in Loop: Header=BB29_127 Depth=4
+	vstelm.w	$vr3, $a0, 12, 3
+	b	.LBB29_126
 	.p2align	4, , 16
-.LBB29_130:                             #   in Loop: Header=BB29_126 Depth=4
-	vpickve2gr.w	$a2, $vr0, 1
-	andi	$a2, $a2, 1
-	beqz	$a2, .LBB29_128
-.LBB29_131:                             #   in Loop: Header=BB29_126 Depth=4
-	st.w	$s4, $a1, 4
-	vpickve2gr.w	$a2, $vr0, 2
-	andi	$a2, $a2, 1
-	bnez	$a2, .LBB29_129
-.LBB29_132:                             #   in Loop: Header=BB29_126 Depth=4
-	vpickve2gr.w	$a2, $vr0, 3
-	andi	$a2, $a2, 1
-	beqz	$a2, .LBB29_134
-.LBB29_133:                             #   in Loop: Header=BB29_126 Depth=4
-	st.w	$s4, $a1, 12
-.LBB29_134:                             #   in Loop: Header=BB29_126 Depth=4
-	vld	$vr0, $a1, 16
-	vseqi.w	$vr0, $vr0, 0
-	vpickve2gr.w	$a2, $vr0, 0
-	andi	$a2, $a2, 1
-	beqz	$a2, .LBB29_138
-# %bb.135:                              #   in Loop: Header=BB29_126 Depth=4
-	st.w	$s4, $a1, 16
-	vpickve2gr.w	$a2, $vr0, 1
-	andi	$a2, $a2, 1
-	bnez	$a2, .LBB29_139
-.LBB29_136:                             #   in Loop: Header=BB29_126 Depth=4
-	vpickve2gr.w	$a2, $vr0, 2
-	andi	$a2, $a2, 1
-	beqz	$a2, .LBB29_140
-.LBB29_137:                             #   in Loop: Header=BB29_126 Depth=4
-	st.w	$s4, $a1, 24
-	vpickve2gr.w	$a2, $vr0, 3
-	andi	$a2, $a2, 1
-	beqz	$a2, .LBB29_125
-	b	.LBB29_141
-	.p2align	4, , 16
-.LBB29_138:                             #   in Loop: Header=BB29_126 Depth=4
-	vpickve2gr.w	$a2, $vr0, 1
-	andi	$a2, $a2, 1
-	beqz	$a2, .LBB29_136
-.LBB29_139:                             #   in Loop: Header=BB29_126 Depth=4
-	st.w	$s4, $a1, 20
-	vpickve2gr.w	$a2, $vr0, 2
-	andi	$a2, $a2, 1
-	bnez	$a2, .LBB29_137
-.LBB29_140:                             #   in Loop: Header=BB29_126 Depth=4
-	vpickve2gr.w	$a2, $vr0, 3
-	andi	$a2, $a2, 1
-	beqz	$a2, .LBB29_125
-.LBB29_141:                             #   in Loop: Header=BB29_126 Depth=4
-	st.w	$s4, $a1, 28
-	b	.LBB29_125
-	.p2align	4, , 16
-.LBB29_142:                             #   in Loop: Header=BB29_122 Depth=3
+.LBB29_146:                             #   in Loop: Header=BB29_122 Depth=3
 	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	move	$a1, $a0
-	beq	$a0, $a3, .LBB29_121
-.LBB29_143:                             #   in Loop: Header=BB29_122 Depth=3
-	slli.d	$a0, $a1, 2
-	sub.d	$a1, $a3, $a1
-	b	.LBB29_145
+	beq	$a0, $a6, .LBB29_121
+.LBB29_147:                             #   in Loop: Header=BB29_122 Depth=3
+	alsl.d	$a0, $a1, $s8, 2
+	sub.d	$a1, $a6, $a1
+	b	.LBB29_149
 	.p2align	4, , 16
-.LBB29_144:                             #   in Loop: Header=BB29_145 Depth=4
+.LBB29_148:                             #   in Loop: Header=BB29_149 Depth=4
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 4
 	beqz	$a1, .LBB29_121
-.LBB29_145:                             #   Parent Loop BB29_64 Depth=1
+.LBB29_149:                             #   Parent Loop BB29_64 Depth=1
                                         #     Parent Loop BB29_100 Depth=2
                                         #       Parent Loop BB29_122 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ldx.w	$a2, $s3, $a0
-	bnez	$a2, .LBB29_144
-# %bb.146:                              #   in Loop: Header=BB29_145 Depth=4
-	stx.w	$s4, $s3, $a0
-	b	.LBB29_144
-	.p2align	4, , 16
-.LBB29_147:                             #   in Loop: Header=BB29_64 Depth=1
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
-	bge	$a1, $s1, .LBB29_149
-# %bb.148:                              #   in Loop: Header=BB29_64 Depth=1
-	move	$a0, $zero
-	addi.d	$t2, $sp, 264
-	b	.LBB29_158
-	.p2align	4, , 16
-.LBB29_149:                             #   in Loop: Header=BB29_64 Depth=1
-	vld	$vr2, $sp, 32                   # 16-byte Folded Reload
-	addi.d	$t2, $sp, 264
-	ori	$a0, $zero, 32
-	bge	$a1, $a0, .LBB29_151
-# %bb.150:                              #   in Loop: Header=BB29_64 Depth=1
-	move	$a0, $zero
-	b	.LBB29_155
+	ld.w	$a2, $a0, 0
+	bnez	$a2, .LBB29_148
+# %bb.150:                              #   in Loop: Header=BB29_149 Depth=4
+	st.w	$a5, $a0, 0
+	b	.LBB29_148
 	.p2align	4, , 16
 .LBB29_151:                             #   in Loop: Header=BB29_64 Depth=1
+	ori	$a0, $zero, 8
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	bge	$a1, $a0, .LBB29_153
+# %bb.152:                              #   in Loop: Header=BB29_64 Depth=1
+	move	$a0, $zero
+	b	.LBB29_162
+	.p2align	4, , 16
+.LBB29_153:                             #   in Loop: Header=BB29_64 Depth=1
+	vld	$vr2, $sp, 32                   # 16-byte Folded Reload
+	ori	$a0, $zero, 32
+	bge	$a1, $a0, .LBB29_155
+# %bb.154:                              #   in Loop: Header=BB29_64 Depth=1
+	move	$a0, $zero
+	b	.LBB29_159
+	.p2align	4, , 16
+.LBB29_155:                             #   in Loop: Header=BB29_64 Depth=1
 	pcalau12i	$a0, %pc_hi20(.LCPI29_8)
 	vld	$vr0, $a0, %pc_lo12(.LCPI29_8)
 	bstrpick.d	$a0, $s0, 30, 5
@@ -3954,7 +3973,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	addi.d	$a2, $sp, 280
 	move	$a3, $a0
 	.p2align	4, , 16
-.LBB29_152:                             #   Parent Loop BB29_64 Depth=1
+.LBB29_156:                             #   Parent Loop BB29_64 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vaddi.bu	$vr1, $vr0, 16
 	vst	$vr0, $a2, -16
@@ -3962,12 +3981,12 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	vadd.b	$vr0, $vr0, $vr2
 	addi.d	$a3, $a3, -32
 	addi.d	$a2, $a2, 32
-	bnez	$a3, .LBB29_152
-# %bb.153:                              #   in Loop: Header=BB29_64 Depth=1
-	beq	$a0, $s0, .LBB29_159
-# %bb.154:                              #   in Loop: Header=BB29_64 Depth=1
-	beqz	$a1, .LBB29_158
-.LBB29_155:                             #   in Loop: Header=BB29_64 Depth=1
+	bnez	$a3, .LBB29_156
+# %bb.157:                              #   in Loop: Header=BB29_64 Depth=1
+	beq	$a0, $s0, .LBB29_163
+# %bb.158:                              #   in Loop: Header=BB29_64 Depth=1
+	beqz	$a1, .LBB29_162
+.LBB29_159:                             #   in Loop: Header=BB29_64 Depth=1
 	move	$a2, $a0
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$a0, $a0, 3
@@ -3982,61 +4001,62 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	vor.v	$vr0, $vr0, $vr1
 	sub.d	$a1, $a2, $a0
-	add.d	$a2, $t2, $a2
+	add.d	$a2, $s8, $a2
 	.p2align	4, , 16
-.LBB29_156:                             #   Parent Loop BB29_64 Depth=1
+.LBB29_160:                             #   Parent Loop BB29_64 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vstelm.d	$vr0, $a2, 0, 0
 	vaddi.bu	$vr0, $vr0, 8
 	addi.d	$a1, $a1, 8
 	addi.d	$a2, $a2, 8
-	bnez	$a1, .LBB29_156
-# %bb.157:                              #   in Loop: Header=BB29_64 Depth=1
-	beq	$a0, $s0, .LBB29_159
+	bnez	$a1, .LBB29_160
+# %bb.161:                              #   in Loop: Header=BB29_64 Depth=1
+	beq	$a0, $s0, .LBB29_163
 	.p2align	4, , 16
-.LBB29_158:                             #   Parent Loop BB29_64 Depth=1
+.LBB29_162:                             #   Parent Loop BB29_64 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	stx.b	$a0, $a0, $t2
+	stx.b	$a0, $a0, $s8
 	addi.d	$a0, $a0, 1
-	bne	$s0, $a0, .LBB29_158
-.LBB29_159:                             #   in Loop: Header=BB29_64 Depth=1
-	ld.bu	$t4, $sp, 264
-	move	$t3, $zero
-	b	.LBB29_161
+	bne	$s0, $a0, .LBB29_162
+.LBB29_163:                             #   in Loop: Header=BB29_64 Depth=1
+	ld.bu	$t3, $sp, 264
+	move	$t2, $zero
+	b	.LBB29_165
 	.p2align	4, , 16
-.LBB29_160:                             #   in Loop: Header=BB29_161 Depth=2
-	addi.d	$t3, $t3, 1
-	st.b	$t4, $sp, 264
+.LBB29_164:                             #   in Loop: Header=BB29_165 Depth=2
+	addi.d	$t2, $t2, 1
+	st.b	$t3, $sp, 264
 	ld.d	$t8, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 160                   # 8-byte Folded Reload
+	vld	$vr15, $sp, 208                 # 16-byte Folded Reload
 	ori	$s3, $zero, 4
-	beq	$t3, $a0, .LBB29_175
-.LBB29_161:                             #   Parent Loop BB29_64 Depth=1
+	beq	$t2, $a0, .LBB29_179
+.LBB29_165:                             #   Parent Loop BB29_64 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB29_171 Depth 3
-                                        #         Child Loop BB29_173 Depth 4
-                                        #       Child Loop BB29_165 Depth 3
-	move	$a0, $t4
-	ldx.bu	$t4, $s5, $t3
-	bne	$a0, $t4, .LBB29_169
-# %bb.162:                              #   in Loop: Header=BB29_161 Depth=2
+                                        #       Child Loop BB29_175 Depth 3
+                                        #         Child Loop BB29_177 Depth 4
+                                        #       Child Loop BB29_169 Depth 3
+	move	$a0, $t3
+	ldx.bu	$t3, $s5, $t2
+	bne	$a0, $t3, .LBB29_173
+# %bb.166:                              #   in Loop: Header=BB29_165 Depth=2
 	move	$a0, $zero
-.LBB29_163:                             #   in Loop: Header=BB29_161 Depth=2
+.LBB29_167:                             #   in Loop: Header=BB29_165 Depth=2
 	ld.d	$a1, $fp, 32
 	ld.w	$a5, $a1, 4
 	ld.bu	$a2, $a1, 8
 	move	$a3, $zero
 	ori	$a4, $zero, 1
-	b	.LBB29_165
+	b	.LBB29_169
 	.p2align	4, , 16
-.LBB29_164:                             #   in Loop: Header=BB29_165 Depth=3
+.LBB29_168:                             #   in Loop: Header=BB29_169 Depth=3
 	sll.w	$a5, $a6, $a4
 	sub.d	$a3, $a3, $a5
 	move	$a5, $a7
-	blez	$a4, .LBB29_167
-.LBB29_165:                             #   Parent Loop BB29_64 Depth=1
-                                        #     Parent Loop BB29_161 Depth=2
+	blez	$a4, .LBB29_171
+.LBB29_169:                             #   Parent Loop BB29_64 Depth=1
+                                        #     Parent Loop BB29_165 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	move	$t0, $a4
 	slt	$a4, $a4, $a5
@@ -4051,8 +4071,8 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	st.b	$t1, $a1, 8
 	sub.w	$a7, $a5, $a7
 	st.w	$a7, $a1, 4
-	blt	$t0, $a5, .LBB29_164
-# %bb.166:                              #   in Loop: Header=BB29_165 Depth=3
+	blt	$t0, $a5, .LBB29_168
+# %bb.170:                              #   in Loop: Header=BB29_169 Depth=3
 	ld.wu	$a5, $a1, 0
 	ld.d	$a7, $a1, 16
 	addi.d	$t0, $a5, 1
@@ -4061,53 +4081,52 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	ld.bu	$a2, $a1, 8
 	ori	$a7, $zero, 8
 	st.w	$a7, $a1, 4
-	b	.LBB29_164
+	b	.LBB29_168
 	.p2align	4, , 16
-.LBB29_167:                             #   in Loop: Header=BB29_161 Depth=2
+.LBB29_171:                             #   in Loop: Header=BB29_165 Depth=2
 	addi.w	$a2, $a0, 0
-	blez	$a2, .LBB29_160
-# %bb.168:                              #   in Loop: Header=BB29_161 Depth=2
+	blez	$a2, .LBB29_164
+# %bb.172:                              #   in Loop: Header=BB29_165 Depth=2
 	addi.w	$a0, $a0, -1
 	sub.d	$a1, $a2, $a0
-	add.d	$a0, $t2, $a1
+	add.d	$a0, $s8, $a1
 	addi.d	$a3, $sp, 263
 	add.d	$a1, $a3, $a1
-	move	$s8, $t3
-	move	$s3, $t4
+	move	$s4, $t2
+	move	$s3, $t3
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
-	move	$t4, $s3
-	move	$t3, $s8
-	addi.d	$t2, $sp, 264
-	b	.LBB29_160
+	move	$t3, $s3
+	move	$t2, $s4
+	b	.LBB29_164
 	.p2align	4, , 16
-.LBB29_169:                             #   in Loop: Header=BB29_161 Depth=2
+.LBB29_173:                             #   in Loop: Header=BB29_165 Depth=2
 	move	$a0, $zero
-	b	.LBB29_171
+	b	.LBB29_175
 	.p2align	4, , 16
-.LBB29_170:                             #   in Loop: Header=BB29_171 Depth=3
+.LBB29_174:                             #   in Loop: Header=BB29_175 Depth=3
 	addi.d	$a0, $a0, 1
-	ldx.bu	$a1, $a0, $t2
-	beq	$a1, $t4, .LBB29_163
-.LBB29_171:                             #   Parent Loop BB29_64 Depth=1
-                                        #     Parent Loop BB29_161 Depth=2
+	ldx.bu	$a1, $a0, $s8
+	beq	$a1, $t3, .LBB29_167
+.LBB29_175:                             #   Parent Loop BB29_64 Depth=1
+                                        #     Parent Loop BB29_165 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB29_173 Depth 4
+                                        #         Child Loop BB29_177 Depth 4
 	ld.d	$a1, $fp, 32
 	ld.w	$a5, $a1, 4
 	ld.bu	$a3, $a1, 8
 	ori	$a4, $zero, 1
 	ori	$a2, $zero, 1
-	b	.LBB29_173
+	b	.LBB29_177
 	.p2align	4, , 16
-.LBB29_172:                             #   in Loop: Header=BB29_173 Depth=4
+.LBB29_176:                             #   in Loop: Header=BB29_177 Depth=4
 	sll.w	$a5, $a6, $a4
 	sub.d	$a2, $a2, $a5
 	move	$a5, $a7
-	blez	$a4, .LBB29_170
-.LBB29_173:                             #   Parent Loop BB29_64 Depth=1
-                                        #     Parent Loop BB29_161 Depth=2
-                                        #       Parent Loop BB29_171 Depth=3
+	blez	$a4, .LBB29_174
+.LBB29_177:                             #   Parent Loop BB29_64 Depth=1
+                                        #     Parent Loop BB29_165 Depth=2
+                                        #       Parent Loop BB29_175 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	move	$t0, $a4
 	slt	$a4, $a4, $a5
@@ -4122,8 +4141,8 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	st.b	$t1, $a1, 8
 	sub.w	$a7, $a5, $a7
 	st.w	$a7, $a1, 4
-	blt	$t0, $a5, .LBB29_172
-# %bb.174:                              #   in Loop: Header=BB29_173 Depth=4
+	blt	$t0, $a5, .LBB29_176
+# %bb.178:                              #   in Loop: Header=BB29_177 Depth=4
 	ld.wu	$a5, $a1, 0
 	ld.d	$a7, $a1, 16
 	addi.d	$t0, $a5, 1
@@ -4132,24 +4151,24 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	ld.bu	$a3, $a1, 8
 	ori	$a7, $zero, 8
 	st.w	$a7, $a1, 4
-	b	.LBB29_172
+	b	.LBB29_176
 	.p2align	4, , 16
-.LBB29_175:                             #   in Loop: Header=BB29_64 Depth=1
+.LBB29_179:                             #   in Loop: Header=BB29_64 Depth=1
 	move	$a0, $zero
-	b	.LBB29_177
+	b	.LBB29_181
 	.p2align	4, , 16
-.LBB29_176:                             #   in Loop: Header=BB29_177 Depth=2
+.LBB29_180:                             #   in Loop: Header=BB29_181 Depth=2
 	addi.d	$a0, $a0, 1
-	beq	$a0, $s0, .LBB29_204
-.LBB29_177:                             #   Parent Loop BB29_64 Depth=1
+	beq	$a0, $s0, .LBB29_208
+.LBB29_181:                             #   Parent Loop BB29_64 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB29_179 Depth 3
                                         #       Child Loop BB29_183 Depth 3
-                                        #         Child Loop BB29_185 Depth 4
-                                        #           Child Loop BB29_187 Depth 5
+                                        #       Child Loop BB29_187 Depth 3
+                                        #         Child Loop BB29_189 Depth 4
+                                        #           Child Loop BB29_191 Depth 5
+                                        #           Child Loop BB29_200 Depth 5
                                         #           Child Loop BB29_196 Depth 5
-                                        #           Child Loop BB29_192 Depth 5
-                                        #         Child Loop BB29_202 Depth 4
+                                        #         Child Loop BB29_206 Depth 4
 	ld.d	$a3, $fp, 32
 	slli.d	$a1, $a0, 8
 	alsl.d	$a2, $a0, $a1, 1
@@ -4159,15 +4178,15 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	add.d	$a2, $s7, $a2
 	ori	$a6, $zero, 5
 	move	$a5, $a1
-	b	.LBB29_179
+	b	.LBB29_183
 	.p2align	4, , 16
-.LBB29_178:                             #   in Loop: Header=BB29_179 Depth=3
+.LBB29_182:                             #   in Loop: Header=BB29_183 Depth=3
 	sll.w	$a7, $t0, $a6
 	sub.d	$a5, $a5, $a7
 	move	$a7, $t1
-	blez	$a6, .LBB29_181
-.LBB29_179:                             #   Parent Loop BB29_64 Depth=1
-                                        #     Parent Loop BB29_177 Depth=2
+	blez	$a6, .LBB29_185
+.LBB29_183:                             #   Parent Loop BB29_64 Depth=1
+                                        #     Parent Loop BB29_181 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	move	$t2, $a6
 	slt	$a6, $a6, $a7
@@ -4182,8 +4201,8 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	st.b	$t3, $a3, 8
 	sub.w	$t1, $a7, $t1
 	st.w	$t1, $a3, 4
-	blt	$t2, $a7, .LBB29_178
-# %bb.180:                              #   in Loop: Header=BB29_179 Depth=3
+	blt	$t2, $a7, .LBB29_182
+# %bb.184:                              #   in Loop: Header=BB29_183 Depth=3
 	ld.wu	$a7, $a3, 0
 	ld.d	$t1, $a3, 16
 	addi.d	$t2, $a7, 1
@@ -4192,54 +4211,54 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	ld.bu	$a4, $a3, 8
 	ori	$t1, $zero, 8
 	st.w	$t1, $a3, 4
-	b	.LBB29_178
+	b	.LBB29_182
 	.p2align	4, , 16
-.LBB29_181:                             #   in Loop: Header=BB29_177 Depth=2
+.LBB29_185:                             #   in Loop: Header=BB29_181 Depth=2
 	move	$a3, $zero
-	b	.LBB29_183
+	b	.LBB29_187
 	.p2align	4, , 16
-.LBB29_182:                             #   in Loop: Header=BB29_183 Depth=3
+.LBB29_186:                             #   in Loop: Header=BB29_187 Depth=3
 	addi.d	$a3, $a3, 1
-	beq	$a3, $t8, .LBB29_176
-.LBB29_183:                             #   Parent Loop BB29_64 Depth=1
-                                        #     Parent Loop BB29_177 Depth=2
+	beq	$a3, $t8, .LBB29_180
+.LBB29_187:                             #   Parent Loop BB29_64 Depth=1
+                                        #     Parent Loop BB29_181 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB29_185 Depth 4
-                                        #           Child Loop BB29_187 Depth 5
+                                        #         Child Loop BB29_189 Depth 4
+                                        #           Child Loop BB29_191 Depth 5
+                                        #           Child Loop BB29_200 Depth 5
                                         #           Child Loop BB29_196 Depth 5
-                                        #           Child Loop BB29_192 Depth 5
-                                        #         Child Loop BB29_202 Depth 4
+                                        #         Child Loop BB29_206 Depth 4
 	ldx.bu	$a4, $a2, $a3
-	bne	$a1, $a4, .LBB29_185
-	b	.LBB29_200
+	bne	$a1, $a4, .LBB29_189
+	b	.LBB29_204
 	.p2align	4, , 16
-.LBB29_184:                             #   in Loop: Header=BB29_185 Depth=4
+.LBB29_188:                             #   in Loop: Header=BB29_189 Depth=4
 	ori	$a5, $zero, 1
 	add.w	$a1, $a1, $a5
-	beq	$a1, $a4, .LBB29_199
-.LBB29_185:                             #   Parent Loop BB29_64 Depth=1
-                                        #     Parent Loop BB29_177 Depth=2
-                                        #       Parent Loop BB29_183 Depth=3
+	beq	$a1, $a4, .LBB29_203
+.LBB29_189:                             #   Parent Loop BB29_64 Depth=1
+                                        #     Parent Loop BB29_181 Depth=2
+                                        #       Parent Loop BB29_187 Depth=3
                                         # =>      This Loop Header: Depth=4
-                                        #           Child Loop BB29_187 Depth 5
+                                        #           Child Loop BB29_191 Depth 5
+                                        #           Child Loop BB29_200 Depth 5
                                         #           Child Loop BB29_196 Depth 5
-                                        #           Child Loop BB29_192 Depth 5
 	ld.d	$a5, $fp, 32
 	ld.w	$t1, $a5, 4
 	ld.bu	$a7, $a5, 8
 	ori	$t0, $zero, 1
 	ori	$a6, $zero, 1
-	b	.LBB29_187
+	b	.LBB29_191
 	.p2align	4, , 16
-.LBB29_186:                             #   in Loop: Header=BB29_187 Depth=5
+.LBB29_190:                             #   in Loop: Header=BB29_191 Depth=5
 	sll.w	$t1, $t2, $t0
 	sub.d	$a6, $a6, $t1
 	move	$t1, $t3
-	blez	$t0, .LBB29_189
-.LBB29_187:                             #   Parent Loop BB29_64 Depth=1
-                                        #     Parent Loop BB29_177 Depth=2
-                                        #       Parent Loop BB29_183 Depth=3
-                                        #         Parent Loop BB29_185 Depth=4
+	blez	$t0, .LBB29_193
+.LBB29_191:                             #   Parent Loop BB29_64 Depth=1
+                                        #     Parent Loop BB29_181 Depth=2
+                                        #       Parent Loop BB29_187 Depth=3
+                                        #         Parent Loop BB29_189 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	move	$t4, $t0
 	slt	$t0, $t0, $t1
@@ -4254,8 +4273,8 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	st.b	$t5, $a5, 8
 	sub.w	$t3, $t1, $t3
 	st.w	$t3, $a5, 4
-	blt	$t4, $t1, .LBB29_186
-# %bb.188:                              #   in Loop: Header=BB29_187 Depth=5
+	blt	$t4, $t1, .LBB29_190
+# %bb.192:                              #   in Loop: Header=BB29_191 Depth=5
 	ld.wu	$t1, $a5, 0
 	ld.d	$t3, $a5, 16
 	addi.d	$t4, $t1, 1
@@ -4264,67 +4283,27 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	ld.bu	$a7, $a5, 8
 	ori	$t3, $zero, 8
 	st.w	$t3, $a5, 4
-	b	.LBB29_186
+	b	.LBB29_190
 	.p2align	4, , 16
-.LBB29_189:                             #   in Loop: Header=BB29_185 Depth=4
+.LBB29_193:                             #   in Loop: Header=BB29_189 Depth=4
 	ld.d	$a5, $fp, 32
 	ld.w	$a7, $a5, 4
 	ld.bu	$a6, $a5, 8
-	bgeu	$a1, $a4, .LBB29_194
-# %bb.190:                              #   in Loop: Header=BB29_185 Depth=4
+	bgeu	$a1, $a4, .LBB29_198
+# %bb.194:                              #   in Loop: Header=BB29_189 Depth=4
 	move	$t0, $zero
 	ori	$t1, $zero, 1
-	b	.LBB29_192
-	.p2align	4, , 16
-.LBB29_191:                             #   in Loop: Header=BB29_192 Depth=5
-	sll.w	$a7, $t2, $t1
-	sub.d	$t0, $t0, $a7
-	move	$a7, $t3
-	blez	$t1, .LBB29_184
-.LBB29_192:                             #   Parent Loop BB29_64 Depth=1
-                                        #     Parent Loop BB29_177 Depth=2
-                                        #       Parent Loop BB29_183 Depth=3
-                                        #         Parent Loop BB29_185 Depth=4
-                                        # =>        This Inner Loop Header: Depth=5
-	move	$t4, $t1
-	slt	$t1, $t1, $a7
-	masknez	$t2, $a7, $t1
-	maskeqz	$t1, $t4, $t1
-	or	$t3, $t1, $t2
-	sub.w	$t1, $t4, $t3
-	sll.w	$a6, $a6, $t3
-	srl.w	$t2, $t0, $t1
-	or	$t5, $t2, $a6
-	andi	$a6, $t5, 255
-	st.b	$t5, $a5, 8
-	sub.w	$t3, $a7, $t3
-	st.w	$t3, $a5, 4
-	blt	$t4, $a7, .LBB29_191
-# %bb.193:                              #   in Loop: Header=BB29_192 Depth=5
-	ld.wu	$a7, $a5, 0
-	ld.d	$t3, $a5, 16
-	addi.d	$t4, $a7, 1
-	st.w	$t4, $a5, 0
-	stx.b	$a6, $t3, $a7
-	ld.bu	$a6, $a5, 8
-	ori	$t3, $zero, 8
-	st.w	$t3, $a5, 4
-	b	.LBB29_191
-	.p2align	4, , 16
-.LBB29_194:                             #   in Loop: Header=BB29_185 Depth=4
-	ori	$t1, $zero, 1
-	ori	$t0, $zero, 1
 	b	.LBB29_196
 	.p2align	4, , 16
 .LBB29_195:                             #   in Loop: Header=BB29_196 Depth=5
 	sll.w	$a7, $t2, $t1
 	sub.d	$t0, $t0, $a7
 	move	$a7, $t3
-	blez	$t1, .LBB29_198
+	blez	$t1, .LBB29_188
 .LBB29_196:                             #   Parent Loop BB29_64 Depth=1
-                                        #     Parent Loop BB29_177 Depth=2
-                                        #       Parent Loop BB29_183 Depth=3
-                                        #         Parent Loop BB29_185 Depth=4
+                                        #     Parent Loop BB29_181 Depth=2
+                                        #       Parent Loop BB29_187 Depth=3
+                                        #         Parent Loop BB29_189 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	move	$t4, $t1
 	slt	$t1, $t1, $a7
@@ -4351,28 +4330,68 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	st.w	$t3, $a5, 4
 	b	.LBB29_195
 	.p2align	4, , 16
-.LBB29_198:                             #   in Loop: Header=BB29_185 Depth=4
+.LBB29_198:                             #   in Loop: Header=BB29_189 Depth=4
+	ori	$t1, $zero, 1
+	ori	$t0, $zero, 1
+	b	.LBB29_200
+	.p2align	4, , 16
+.LBB29_199:                             #   in Loop: Header=BB29_200 Depth=5
+	sll.w	$a7, $t2, $t1
+	sub.d	$t0, $t0, $a7
+	move	$a7, $t3
+	blez	$t1, .LBB29_202
+.LBB29_200:                             #   Parent Loop BB29_64 Depth=1
+                                        #     Parent Loop BB29_181 Depth=2
+                                        #       Parent Loop BB29_187 Depth=3
+                                        #         Parent Loop BB29_189 Depth=4
+                                        # =>        This Inner Loop Header: Depth=5
+	move	$t4, $t1
+	slt	$t1, $t1, $a7
+	masknez	$t2, $a7, $t1
+	maskeqz	$t1, $t4, $t1
+	or	$t3, $t1, $t2
+	sub.w	$t1, $t4, $t3
+	sll.w	$a6, $a6, $t3
+	srl.w	$t2, $t0, $t1
+	or	$t5, $t2, $a6
+	andi	$a6, $t5, 255
+	st.b	$t5, $a5, 8
+	sub.w	$t3, $a7, $t3
+	st.w	$t3, $a5, 4
+	blt	$t4, $a7, .LBB29_199
+# %bb.201:                              #   in Loop: Header=BB29_200 Depth=5
+	ld.wu	$a7, $a5, 0
+	ld.d	$t3, $a5, 16
+	addi.d	$t4, $a7, 1
+	st.w	$t4, $a5, 0
+	stx.b	$a6, $t3, $a7
+	ld.bu	$a6, $a5, 8
+	ori	$t3, $zero, 8
+	st.w	$t3, $a5, 4
+	b	.LBB29_199
+	.p2align	4, , 16
+.LBB29_202:                             #   in Loop: Header=BB29_189 Depth=4
 	addi.d	$a5, $zero, -1
 	add.w	$a1, $a1, $a5
-	bne	$a1, $a4, .LBB29_185
-.LBB29_199:                             #   in Loop: Header=BB29_183 Depth=3
+	bne	$a1, $a4, .LBB29_189
+.LBB29_203:                             #   in Loop: Header=BB29_187 Depth=3
 	move	$a1, $a4
-.LBB29_200:                             #   in Loop: Header=BB29_183 Depth=3
+.LBB29_204:                             #   in Loop: Header=BB29_187 Depth=3
 	ld.d	$a4, $fp, 32
 	ld.w	$t0, $a4, 4
 	ld.bu	$a5, $a4, 8
 	move	$a6, $zero
 	ori	$a7, $zero, 1
-	b	.LBB29_202
+	b	.LBB29_206
 	.p2align	4, , 16
-.LBB29_201:                             #   in Loop: Header=BB29_202 Depth=4
+.LBB29_205:                             #   in Loop: Header=BB29_206 Depth=4
 	sll.w	$t0, $t1, $a7
 	sub.d	$a6, $a6, $t0
 	move	$t0, $t2
-	blez	$a7, .LBB29_182
-.LBB29_202:                             #   Parent Loop BB29_64 Depth=1
-                                        #     Parent Loop BB29_177 Depth=2
-                                        #       Parent Loop BB29_183 Depth=3
+	blez	$a7, .LBB29_186
+.LBB29_206:                             #   Parent Loop BB29_64 Depth=1
+                                        #     Parent Loop BB29_181 Depth=2
+                                        #       Parent Loop BB29_187 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	move	$t3, $a7
 	slt	$a7, $a7, $t0
@@ -4387,8 +4406,8 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	st.b	$t4, $a4, 8
 	sub.w	$t2, $t0, $t2
 	st.w	$t2, $a4, 4
-	blt	$t3, $t0, .LBB29_201
-# %bb.203:                              #   in Loop: Header=BB29_202 Depth=4
+	blt	$t3, $t0, .LBB29_205
+# %bb.207:                              #   in Loop: Header=BB29_206 Depth=4
 	ld.wu	$t0, $a4, 0
 	ld.d	$t2, $a4, 16
 	addi.d	$t3, $t0, 1
@@ -4397,9 +4416,9 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	ld.bu	$a5, $a4, 8
 	ori	$t2, $zero, 8
 	st.w	$t2, $a4, 4
-	b	.LBB29_201
+	b	.LBB29_205
 	.p2align	4, , 16
-.LBB29_204:                             #   in Loop: Header=BB29_64 Depth=1
+.LBB29_208:                             #   in Loop: Header=BB29_64 Depth=1
 	move	$a3, $zero
 	move	$a2, $zero
 	move	$a1, $zero
@@ -4408,23 +4427,22 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	ld.d	$t6, $sp, 240                   # 8-byte Folded Reload
 	addi.d	$t7, $sp, 464
 	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
-	b	.LBB29_206
+	b	.LBB29_210
 	.p2align	4, , 16
-.LBB29_205:                             #   in Loop: Header=BB29_206 Depth=2
+.LBB29_209:                             #   in Loop: Header=BB29_210 Depth=2
 	addi.w	$a3, $a3, -1
-	bgeu	$a0, $s6, .LBB29_215
-.LBB29_206:                             #   Parent Loop BB29_64 Depth=1
+	bgeu	$a0, $s6, .LBB29_219
+.LBB29_210:                             #   Parent Loop BB29_64 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB29_212 Depth 3
+                                        #       Child Loop BB29_216 Depth 3
 	bstrpick.d	$a5, $a0, 31, 0
 	ldx.bu	$a7, $s2, $a5
 	addi.w	$a5, $a0, 1
-	ori	$a6, $zero, 255
-	beq	$a7, $a6, .LBB29_214
-# %bb.207:                              #   in Loop: Header=BB29_206 Depth=2
+	beq	$a7, $s1, .LBB29_218
+# %bb.211:                              #   in Loop: Header=BB29_210 Depth=2
 	move	$a0, $a5
-	bnez	$a3, .LBB29_209
-.LBB29_208:                             #   in Loop: Header=BB29_206 Depth=2
+	bnez	$a3, .LBB29_213
+.LBB29_212:                             #   in Loop: Header=BB29_210 Depth=2
 	bstrpick.d	$a1, $a2, 31, 0
 	ldx.bu	$a3, $s5, $a1
 	addi.w	$a2, $a2, 1
@@ -4436,24 +4454,24 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
 	add.d	$a4, $a4, $a3
 	ori	$a3, $zero, 50
-.LBB29_209:                             #   in Loop: Header=BB29_206 Depth=2
+.LBB29_213:                             #   in Loop: Header=BB29_210 Depth=2
 	ldx.bu	$a6, $a1, $a7
-	beqz	$a6, .LBB29_205
-# %bb.210:                              #   in Loop: Header=BB29_206 Depth=2
+	beqz	$a6, .LBB29_209
+# %bb.214:                              #   in Loop: Header=BB29_210 Depth=2
 	ld.d	$a5, $fp, 32
 	slli.d	$a7, $a7, 2
 	ldx.w	$a7, $a4, $a7
 	ld.w	$t1, $a5, 4
 	ld.bu	$t0, $a5, 8
-	b	.LBB29_212
+	b	.LBB29_216
 	.p2align	4, , 16
-.LBB29_211:                             #   in Loop: Header=BB29_212 Depth=3
+.LBB29_215:                             #   in Loop: Header=BB29_216 Depth=3
 	sll.w	$t1, $t2, $a6
 	sub.d	$a7, $a7, $t1
 	move	$t1, $t3
-	blez	$a6, .LBB29_205
-.LBB29_212:                             #   Parent Loop BB29_64 Depth=1
-                                        #     Parent Loop BB29_206 Depth=2
+	blez	$a6, .LBB29_209
+.LBB29_216:                             #   Parent Loop BB29_64 Depth=1
+                                        #     Parent Loop BB29_210 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	move	$t4, $a6
 	slt	$a6, $a6, $t1
@@ -4468,8 +4486,8 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	st.b	$t5, $a5, 8
 	sub.w	$t3, $t1, $t3
 	st.w	$t3, $a5, 4
-	blt	$t4, $t1, .LBB29_211
-# %bb.213:                              #   in Loop: Header=BB29_212 Depth=3
+	blt	$t4, $t1, .LBB29_215
+# %bb.217:                              #   in Loop: Header=BB29_216 Depth=3
 	ld.wu	$t1, $a5, 0
 	ld.d	$t3, $a5, 16
 	addi.d	$t4, $t1, 1
@@ -4478,22 +4496,22 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	ld.bu	$t0, $a5, 8
 	ori	$t3, $zero, 8
 	st.w	$t3, $a5, 4
-	b	.LBB29_211
+	b	.LBB29_215
 	.p2align	4, , 16
-.LBB29_214:                             #   in Loop: Header=BB29_206 Depth=2
+.LBB29_218:                             #   in Loop: Header=BB29_210 Depth=2
 	bstrpick.d	$a5, $a5, 31, 0
 	ldx.bu	$a5, $s2, $a5
 	addi.w	$a0, $a0, 2
 	addi.d	$a7, $a5, 255
-	bnez	$a3, .LBB29_209
-	b	.LBB29_208
+	bnez	$a3, .LBB29_213
+	b	.LBB29_212
 	.p2align	4, , 16
-.LBB29_215:                             #   in Loop: Header=BB29_64 Depth=1
+.LBB29_219:                             #   in Loop: Header=BB29_64 Depth=1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 0
 	ld.d	$a5, $sp, 144                   # 8-byte Folded Reload
-	beqz	$a0, .LBB29_218
-# %bb.216:                              #   in Loop: Header=BB29_64 Depth=1
+	beqz	$a0, .LBB29_222
+# %bb.220:                              #   in Loop: Header=BB29_64 Depth=1
 	ld.d	$a1, $fp, 32
 	ld.w	$a0, $a1, 0
 	ld.w	$a2, $a1, 4
@@ -4503,12 +4521,12 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	sub.w	$a0, $a0, $a3
 	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
 	bltu	$a3, $a0, .LBB29_63
-# %bb.217:                              #   in Loop: Header=BB29_64 Depth=1
+# %bb.221:                              #   in Loop: Header=BB29_64 Depth=1
 	st.d	$a5, $sp, 88                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	ori	$a0, $zero, 6
 	bne	$a5, $a0, .LBB29_63
-.LBB29_218:
+.LBB29_222:
 	ld.d	$s8, $sp, 1752                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1760                  # 8-byte Folded Reload
 	ld.d	$s6, $sp, 1768                  # 8-byte Folded Reload

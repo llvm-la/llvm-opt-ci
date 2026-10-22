@@ -23203,8 +23203,27 @@ GCC_except_table110:
 .Lcst_end53:
 	.p2align	2, 0x0
                                         # -- End function
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3ELj512EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_
+	.type	.LCPI111_0,@object
+.LCPI111_0:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
+	.size	.LCPI111_0, 16
+	.type	.LCPI111_1,@object
+.LCPI111_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.size	.LCPI111_1, 16
+	.type	.LCPI111_2,@object
+.LCPI111_2:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.size	.LCPI111_2, 16
 	.text
-	.p2align	2                               # -- Begin function _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3ELj512EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_
+	.p2align	2
 	.prefalign	5, .Lfunc_end111, nop
 	.type	_ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3ELj512EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_,@function
 _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3ELj512EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_: # @_ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3ELj512EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_
@@ -23212,11 +23231,172 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3E
 	ld.d	$a4, $a1, 0
 	ld.d	$a1, $a2, 0
 	ld.d	$a2, $a3, 0
+	sub.d	$a5, $a4, $a1
+	addi.w	$a3, $zero, -16
+	bltu	$a3, $a5, .LBB111_35
+# %bb.1:
+	sub.d	$a5, $a4, $a2
+	bltu	$a3, $a5, .LBB111_35
+# %bb.2:
+	sub.d	$a5, $a1, $a2
+	bltu	$a3, $a5, .LBB111_35
+# %bb.3:
+	move	$a3, $zero
+	pcalau12i	$a5, %pc_hi20(.LCPI111_0)
+	vld	$vr0, $a5, %pc_lo12(.LCPI111_0)
+	pcalau12i	$a5, %pc_hi20(.LCPI111_1)
+	vld	$vr1, $a5, %pc_lo12(.LCPI111_1)
+	pcalau12i	$a5, %pc_hi20(.LCPI111_2)
+	vld	$vr2, $a5, %pc_lo12(.LCPI111_2)
+	vrepli.d	$vr3, 511
+	vrepli.w	$vr4, 511
+	ori	$a5, $zero, 1022
+	vreplgr2vr.w	$vr5, $a5
+	ori	$a5, $zero, 2048
+	b	.LBB111_6
+	.p2align	4, , 16
+.LBB111_4:                              #   in Loop: Header=BB111_6 Depth=1
+	vld	$vr8, $a7, 0
+	vbitsel.v	$vr6, $vr8, $vr7, $vr6
+	vst	$vr6, $a7, 0
+.LBB111_5:                              #   in Loop: Header=BB111_6 Depth=1
+	vaddi.du	$vr1, $vr1, 4
+	vaddi.du	$vr0, $vr0, 4
+	addi.d	$a3, $a3, 16
+	vaddi.wu	$vr2, $vr2, 4
+	beq	$a3, $a5, .LBB111_37
+.LBB111_6:                              # =>This Inner Loop Header: Depth=1
+	vslt.du	$vr6, $vr1, $vr3
+	vslt.du	$vr7, $vr0, $vr3
+	vpickev.w	$vr6, $vr7, $vr6
+	add.d	$a7, $a4, $a3
+	vpickev.w	$vr7, $vr0, $vr1
+	vaddi.wu	$vr7, $vr7, 1
+	vmsknz.b	$vr8, $vr6
+	vpickve2gr.hu	$a6, $vr8, 0
+	addi.d	$t0, $a7, 15
+	xor	$t0, $t0, $a7
+	srli.d	$t0, $t0, 12
+	beq	$a6, $zero, .LBB111_16
+	beq	$t0, $zero, .LBB111_11
+# %bb.7:                                #   in Loop: Header=BB111_6 Depth=1
+	andi	$t0, $a6, 1
+	bne	$t0, $zero, .LBB111_12
+# %bb.8:                                #   in Loop: Header=BB111_6 Depth=1
+	andi	$t0, $a6, 16
+	bne	$t0, $zero, .LBB111_13
+.LBB111_9:                              #   in Loop: Header=BB111_6 Depth=1
+	andi	$t0, $a6, 256
+	bne	$t0, $zero, .LBB111_14
+.LBB111_10:                             #   in Loop: Header=BB111_6 Depth=1
+	bstrpick.d	$t0, $a6, 12, 12
+	bne	$t0, $zero, .LBB111_15
+	b	.LBB111_16
+	.p2align	4, , 16
+.LBB111_11:                             #   in Loop: Header=BB111_6 Depth=1
+	vld	$vr8, $a7, 0
+	vbitsel.v	$vr7, $vr8, $vr7, $vr6
+	vst	$vr7, $a7, 0
+	b	.LBB111_16
+.LBB111_12:                             #   in Loop: Header=BB111_6 Depth=1
+	vstelm.w	$vr7, $a7, 0, 0
+	andi	$t0, $a6, 16
+	beq	$t0, $zero, .LBB111_9
+.LBB111_13:                             #   in Loop: Header=BB111_6 Depth=1
+	vstelm.w	$vr7, $a7, 4, 1
+	andi	$t0, $a6, 256
+	beq	$t0, $zero, .LBB111_10
+.LBB111_14:                             #   in Loop: Header=BB111_6 Depth=1
+	vstelm.w	$vr7, $a7, 8, 2
+	bstrpick.d	$t0, $a6, 12, 12
+	beq	$t0, $zero, .LBB111_16
+.LBB111_15:                             #   in Loop: Header=BB111_6 Depth=1
+	vstelm.w	$vr7, $a7, 12, 3
+	.p2align	4, , 16
+.LBB111_16:                             #   in Loop: Header=BB111_6 Depth=1
+	add.d	$a7, $a1, $a3
+	vadd.w	$vr7, $vr2, $vr4
+	addi.d	$t0, $a7, 15
+	xor	$t0, $t0, $a7
+	srli.d	$t0, $t0, 12
+	beq	$a6, $zero, .LBB111_26
+	beq	$t0, $zero, .LBB111_21
+# %bb.17:                               #   in Loop: Header=BB111_6 Depth=1
+	andi	$t0, $a6, 1
+	bne	$t0, $zero, .LBB111_22
+# %bb.18:                               #   in Loop: Header=BB111_6 Depth=1
+	andi	$t0, $a6, 16
+	bne	$t0, $zero, .LBB111_23
+.LBB111_19:                             #   in Loop: Header=BB111_6 Depth=1
+	andi	$t0, $a6, 256
+	bne	$t0, $zero, .LBB111_24
+.LBB111_20:                             #   in Loop: Header=BB111_6 Depth=1
+	bstrpick.d	$t0, $a6, 12, 12
+	bne	$t0, $zero, .LBB111_25
+	b	.LBB111_26
+	.p2align	4, , 16
+.LBB111_21:                             #   in Loop: Header=BB111_6 Depth=1
+	vld	$vr8, $a7, 0
+	vbitsel.v	$vr7, $vr8, $vr7, $vr6
+	vst	$vr7, $a7, 0
+	b	.LBB111_26
+.LBB111_22:                             #   in Loop: Header=BB111_6 Depth=1
+	vstelm.w	$vr7, $a7, 0, 0
+	andi	$t0, $a6, 16
+	beq	$t0, $zero, .LBB111_19
+.LBB111_23:                             #   in Loop: Header=BB111_6 Depth=1
+	vstelm.w	$vr7, $a7, 4, 1
+	andi	$t0, $a6, 256
+	beq	$t0, $zero, .LBB111_20
+.LBB111_24:                             #   in Loop: Header=BB111_6 Depth=1
+	vstelm.w	$vr7, $a7, 8, 2
+	bstrpick.d	$t0, $a6, 12, 12
+	beq	$t0, $zero, .LBB111_26
+.LBB111_25:                             #   in Loop: Header=BB111_6 Depth=1
+	vstelm.w	$vr7, $a7, 12, 3
+	.p2align	4, , 16
+.LBB111_26:                             #   in Loop: Header=BB111_6 Depth=1
+	add.d	$a7, $a2, $a3
+	vadd.w	$vr7, $vr2, $vr5
+	addi.d	$t0, $a7, 15
+	xor	$t0, $t0, $a7
+	srli.d	$t0, $t0, 12
+	beq	$a6, $zero, .LBB111_5
+	beq	$t0, $zero, .LBB111_4
+# %bb.27:                               #   in Loop: Header=BB111_6 Depth=1
+	andi	$t0, $a6, 1
+	bne	$t0, $zero, .LBB111_31
+# %bb.28:                               #   in Loop: Header=BB111_6 Depth=1
+	andi	$t0, $a6, 16
+	bne	$t0, $zero, .LBB111_32
+.LBB111_29:                             #   in Loop: Header=BB111_6 Depth=1
+	andi	$t0, $a6, 256
+	bne	$t0, $zero, .LBB111_33
+.LBB111_30:                             #   in Loop: Header=BB111_6 Depth=1
+	bstrpick.d	$a6, $a6, 12, 12
+	beq	$a6, $zero, .LBB111_5
+	b	.LBB111_34
+.LBB111_31:                             #   in Loop: Header=BB111_6 Depth=1
+	vstelm.w	$vr7, $a7, 0, 0
+	andi	$t0, $a6, 16
+	beq	$t0, $zero, .LBB111_29
+.LBB111_32:                             #   in Loop: Header=BB111_6 Depth=1
+	vstelm.w	$vr7, $a7, 4, 1
+	andi	$t0, $a6, 256
+	beq	$t0, $zero, .LBB111_30
+.LBB111_33:                             #   in Loop: Header=BB111_6 Depth=1
+	vstelm.w	$vr7, $a7, 8, 2
+	bstrpick.d	$a6, $a6, 12, 12
+	beq	$a6, $zero, .LBB111_5
+.LBB111_34:                             #   in Loop: Header=BB111_6 Depth=1
+	vstelm.w	$vr7, $a7, 12, 3
+	b	.LBB111_5
+.LBB111_35:
 	move	$a3, $zero
 	ori	$a5, $zero, 1022
 	ori	$a6, $zero, 2044
 	.p2align	4, , 16
-.LBB111_1:                              # =>This Inner Loop Header: Depth=1
+.LBB111_36:                             # =>This Inner Loop Header: Depth=1
 	addi.d	$a7, $a5, -1021
 	stx.w	$a7, $a4, $a3
 	addi.d	$a7, $a5, -511
@@ -23224,33 +23404,33 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3E
 	stx.w	$a5, $a2, $a3
 	addi.d	$a3, $a3, 4
 	addi.d	$a5, $a5, 1
-	bne	$a3, $a6, .LBB111_1
-# %bb.2:
+	bne	$a3, $a6, .LBB111_36
+.LBB111_37:
 	ld.w	$a3, $a0, 0
 	ori	$a5, $zero, 511
-	bltu	$a3, $a5, .LBB111_6
-# %bb.3:
+	bltu	$a3, $a5, .LBB111_41
+# %bb.38:
 	ld.w	$a5, $a0, 4
 	ori	$a3, $zero, 510
-	bgeu	$a3, $a5, .LBB111_7
-.LBB111_4:
+	bgeu	$a3, $a5, .LBB111_42
+.LBB111_39:
 	ld.w	$a0, $a0, 8
-	bgeu	$a3, $a0, .LBB111_8
-.LBB111_5:
+	bgeu	$a3, $a0, .LBB111_43
+.LBB111_40:
 	ret
-.LBB111_6:
+.LBB111_41:
 	slli.d	$a3, $a3, 2
 	stx.w	$zero, $a4, $a3
 	ld.w	$a5, $a0, 4
 	ori	$a3, $zero, 510
-	bltu	$a3, $a5, .LBB111_4
-.LBB111_7:
+	bltu	$a3, $a5, .LBB111_39
+.LBB111_42:
 	slli.d	$a5, $a5, 2
 	ldx.w	$a4, $a4, $a5
 	stx.w	$a4, $a1, $a5
 	ld.w	$a0, $a0, 8
-	bltu	$a3, $a0, .LBB111_5
-.LBB111_8:
+	bltu	$a3, $a0, .LBB111_40
+.LBB111_43:
 	slli.d	$a0, $a0, 2
 	ldx.w	$a1, $a1, $a0
 	stx.w	$a1, $a2, $a0
@@ -23307,7 +23487,27 @@ _ZNSt8functionIFvPiS0_S0_EEC2IRZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3EL
 	.size	_ZNSt8functionIFvPiS0_S0_EEC2IRZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3ELj512EEvS_IFjS_IFvPT_S6_S6_EEEESA_SA_SA_SA_PKcEUlS0_S0_S0_E0_vEEOS5_, .Lfunc_end113-_ZNSt8functionIFvPiS0_S0_EEC2IRZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3ELj512EEvS_IFjS_IFvPT_S6_S6_EEEESA_SA_SA_SA_PKcEUlS0_S0_S0_E0_vEEOS5_
 	.cfi_endproc
                                         # -- End function
-	.p2align	2                               # -- Begin function _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3ELj512EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E0_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3ELj512EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E0_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_
+	.type	.LCPI114_0,@object
+.LCPI114_0:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
+	.size	.LCPI114_0, 16
+	.type	.LCPI114_1,@object
+.LCPI114_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.size	.LCPI114_1, 16
+	.type	.LCPI114_2,@object
+.LCPI114_2:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.size	.LCPI114_2, 16
+	.text
+	.p2align	2
 	.prefalign	5, .Lfunc_end114, nop
 	.type	_ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3ELj512EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E0_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_,@function
 _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3ELj512EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E0_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_: # @_ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3ELj512EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E0_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_
@@ -23315,11 +23515,172 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3E
 	ld.d	$a0, $a1, 0
 	ld.d	$a1, $a2, 0
 	ld.d	$a2, $a3, 0
+	sub.d	$a4, $a0, $a1
+	addi.w	$a3, $zero, -16
+	bltu	$a3, $a4, .LBB114_35
+# %bb.1:
+	sub.d	$a4, $a0, $a2
+	bltu	$a3, $a4, .LBB114_35
+# %bb.2:
+	sub.d	$a4, $a1, $a2
+	bltu	$a3, $a4, .LBB114_35
+# %bb.3:
+	move	$a3, $zero
+	pcalau12i	$a4, %pc_hi20(.LCPI114_0)
+	vld	$vr0, $a4, %pc_lo12(.LCPI114_0)
+	pcalau12i	$a4, %pc_hi20(.LCPI114_1)
+	vld	$vr1, $a4, %pc_lo12(.LCPI114_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI114_2)
+	vld	$vr2, $a4, %pc_lo12(.LCPI114_2)
+	vrepli.d	$vr3, 511
+	vrepli.w	$vr4, 511
+	ori	$a4, $zero, 1022
+	vreplgr2vr.w	$vr5, $a4
+	ori	$a4, $zero, 2048
+	b	.LBB114_6
+	.p2align	4, , 16
+.LBB114_4:                              #   in Loop: Header=BB114_6 Depth=1
+	vld	$vr8, $a6, 0
+	vbitsel.v	$vr6, $vr8, $vr7, $vr6
+	vst	$vr6, $a6, 0
+.LBB114_5:                              #   in Loop: Header=BB114_6 Depth=1
+	vaddi.du	$vr1, $vr1, 4
+	vaddi.du	$vr0, $vr0, 4
+	addi.d	$a3, $a3, 16
+	vaddi.wu	$vr2, $vr2, 4
+	beq	$a3, $a4, .LBB114_37
+.LBB114_6:                              # =>This Inner Loop Header: Depth=1
+	vslt.du	$vr6, $vr1, $vr3
+	vslt.du	$vr7, $vr0, $vr3
+	vpickev.w	$vr6, $vr7, $vr6
+	add.d	$a6, $a0, $a3
+	vpickev.w	$vr7, $vr0, $vr1
+	vaddi.wu	$vr7, $vr7, 1
+	vmsknz.b	$vr8, $vr6
+	vpickve2gr.hu	$a5, $vr8, 0
+	addi.d	$a7, $a6, 15
+	xor	$a7, $a7, $a6
+	srli.d	$a7, $a7, 12
+	beq	$a5, $zero, .LBB114_16
+	beq	$a7, $zero, .LBB114_11
+# %bb.7:                                #   in Loop: Header=BB114_6 Depth=1
+	andi	$a7, $a5, 1
+	bne	$a7, $zero, .LBB114_12
+# %bb.8:                                #   in Loop: Header=BB114_6 Depth=1
+	andi	$a7, $a5, 16
+	bne	$a7, $zero, .LBB114_13
+.LBB114_9:                              #   in Loop: Header=BB114_6 Depth=1
+	andi	$a7, $a5, 256
+	bne	$a7, $zero, .LBB114_14
+.LBB114_10:                             #   in Loop: Header=BB114_6 Depth=1
+	bstrpick.d	$a7, $a5, 12, 12
+	bne	$a7, $zero, .LBB114_15
+	b	.LBB114_16
+	.p2align	4, , 16
+.LBB114_11:                             #   in Loop: Header=BB114_6 Depth=1
+	vld	$vr8, $a6, 0
+	vbitsel.v	$vr7, $vr8, $vr7, $vr6
+	vst	$vr7, $a6, 0
+	b	.LBB114_16
+.LBB114_12:                             #   in Loop: Header=BB114_6 Depth=1
+	vstelm.w	$vr7, $a6, 0, 0
+	andi	$a7, $a5, 16
+	beq	$a7, $zero, .LBB114_9
+.LBB114_13:                             #   in Loop: Header=BB114_6 Depth=1
+	vstelm.w	$vr7, $a6, 4, 1
+	andi	$a7, $a5, 256
+	beq	$a7, $zero, .LBB114_10
+.LBB114_14:                             #   in Loop: Header=BB114_6 Depth=1
+	vstelm.w	$vr7, $a6, 8, 2
+	bstrpick.d	$a7, $a5, 12, 12
+	beq	$a7, $zero, .LBB114_16
+.LBB114_15:                             #   in Loop: Header=BB114_6 Depth=1
+	vstelm.w	$vr7, $a6, 12, 3
+	.p2align	4, , 16
+.LBB114_16:                             #   in Loop: Header=BB114_6 Depth=1
+	add.d	$a6, $a1, $a3
+	vadd.w	$vr7, $vr2, $vr4
+	addi.d	$a7, $a6, 15
+	xor	$a7, $a7, $a6
+	srli.d	$a7, $a7, 12
+	beq	$a5, $zero, .LBB114_26
+	beq	$a7, $zero, .LBB114_21
+# %bb.17:                               #   in Loop: Header=BB114_6 Depth=1
+	andi	$a7, $a5, 1
+	bne	$a7, $zero, .LBB114_22
+# %bb.18:                               #   in Loop: Header=BB114_6 Depth=1
+	andi	$a7, $a5, 16
+	bne	$a7, $zero, .LBB114_23
+.LBB114_19:                             #   in Loop: Header=BB114_6 Depth=1
+	andi	$a7, $a5, 256
+	bne	$a7, $zero, .LBB114_24
+.LBB114_20:                             #   in Loop: Header=BB114_6 Depth=1
+	bstrpick.d	$a7, $a5, 12, 12
+	bne	$a7, $zero, .LBB114_25
+	b	.LBB114_26
+	.p2align	4, , 16
+.LBB114_21:                             #   in Loop: Header=BB114_6 Depth=1
+	vld	$vr8, $a6, 0
+	vbitsel.v	$vr7, $vr8, $vr7, $vr6
+	vst	$vr7, $a6, 0
+	b	.LBB114_26
+.LBB114_22:                             #   in Loop: Header=BB114_6 Depth=1
+	vstelm.w	$vr7, $a6, 0, 0
+	andi	$a7, $a5, 16
+	beq	$a7, $zero, .LBB114_19
+.LBB114_23:                             #   in Loop: Header=BB114_6 Depth=1
+	vstelm.w	$vr7, $a6, 4, 1
+	andi	$a7, $a5, 256
+	beq	$a7, $zero, .LBB114_20
+.LBB114_24:                             #   in Loop: Header=BB114_6 Depth=1
+	vstelm.w	$vr7, $a6, 8, 2
+	bstrpick.d	$a7, $a5, 12, 12
+	beq	$a7, $zero, .LBB114_26
+.LBB114_25:                             #   in Loop: Header=BB114_6 Depth=1
+	vstelm.w	$vr7, $a6, 12, 3
+	.p2align	4, , 16
+.LBB114_26:                             #   in Loop: Header=BB114_6 Depth=1
+	add.d	$a6, $a2, $a3
+	vadd.w	$vr7, $vr2, $vr5
+	addi.d	$a7, $a6, 15
+	xor	$a7, $a7, $a6
+	srli.d	$a7, $a7, 12
+	beq	$a5, $zero, .LBB114_5
+	beq	$a7, $zero, .LBB114_4
+# %bb.27:                               #   in Loop: Header=BB114_6 Depth=1
+	andi	$a7, $a5, 1
+	bne	$a7, $zero, .LBB114_31
+# %bb.28:                               #   in Loop: Header=BB114_6 Depth=1
+	andi	$a7, $a5, 16
+	bne	$a7, $zero, .LBB114_32
+.LBB114_29:                             #   in Loop: Header=BB114_6 Depth=1
+	andi	$a7, $a5, 256
+	bne	$a7, $zero, .LBB114_33
+.LBB114_30:                             #   in Loop: Header=BB114_6 Depth=1
+	bstrpick.d	$a5, $a5, 12, 12
+	beq	$a5, $zero, .LBB114_5
+	b	.LBB114_34
+.LBB114_31:                             #   in Loop: Header=BB114_6 Depth=1
+	vstelm.w	$vr7, $a6, 0, 0
+	andi	$a7, $a5, 16
+	beq	$a7, $zero, .LBB114_29
+.LBB114_32:                             #   in Loop: Header=BB114_6 Depth=1
+	vstelm.w	$vr7, $a6, 4, 1
+	andi	$a7, $a5, 256
+	beq	$a7, $zero, .LBB114_30
+.LBB114_33:                             #   in Loop: Header=BB114_6 Depth=1
+	vstelm.w	$vr7, $a6, 8, 2
+	bstrpick.d	$a5, $a5, 12, 12
+	beq	$a5, $zero, .LBB114_5
+.LBB114_34:                             #   in Loop: Header=BB114_6 Depth=1
+	vstelm.w	$vr7, $a6, 12, 3
+	b	.LBB114_5
+.LBB114_35:
 	move	$a3, $zero
 	ori	$a4, $zero, 1022
 	ori	$a5, $zero, 2044
 	.p2align	4, , 16
-.LBB114_1:                              # =>This Inner Loop Header: Depth=1
+.LBB114_36:                             # =>This Inner Loop Header: Depth=1
 	addi.d	$a6, $a4, -1021
 	stx.w	$a6, $a0, $a3
 	addi.d	$a6, $a4, -511
@@ -23327,8 +23688,8 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3E
 	stx.w	$a4, $a2, $a3
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 1
-	bne	$a3, $a5, .LBB114_1
-# %bb.2:
+	bne	$a3, $a5, .LBB114_36
+.LBB114_37:
 	ret
 .Lfunc_end114:
 	.size	_ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3ELj512EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E0_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_, .Lfunc_end114-_ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3ELj3ELj512EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E0_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_
@@ -25755,8 +26116,27 @@ GCC_except_table139:
 .Lcst_end66:
 	.p2align	2, 0x0
                                         # -- End function
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17ELj17EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_
+	.type	.LCPI140_0,@object
+.LCPI140_0:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
+	.size	.LCPI140_0, 16
+	.type	.LCPI140_1,@object
+.LCPI140_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.size	.LCPI140_1, 16
+	.type	.LCPI140_2,@object
+.LCPI140_2:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.size	.LCPI140_2, 16
 	.text
-	.p2align	2                               # -- Begin function _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17ELj17EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_
+	.p2align	2
 	.prefalign	5, .Lfunc_end140, nop
 	.type	_ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17ELj17EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_,@function
 _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17ELj17EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_: # @_ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17ELj17EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_
@@ -25764,11 +26144,172 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17
 	ld.d	$a4, $a1, 0
 	ld.d	$a1, $a2, 0
 	ld.d	$a2, $a3, 0
+	sub.d	$a5, $a4, $a1
+	addi.w	$a3, $zero, -16
+	bltu	$a3, $a5, .LBB140_35
+# %bb.1:
+	sub.d	$a5, $a4, $a2
+	bltu	$a3, $a5, .LBB140_35
+# %bb.2:
+	sub.d	$a5, $a1, $a2
+	bltu	$a3, $a5, .LBB140_35
+# %bb.3:
+	move	$a3, $zero
+	pcalau12i	$a5, %pc_hi20(.LCPI140_0)
+	vld	$vr0, $a5, %pc_lo12(.LCPI140_0)
+	pcalau12i	$a5, %pc_hi20(.LCPI140_1)
+	vld	$vr1, $a5, %pc_lo12(.LCPI140_1)
+	pcalau12i	$a5, %pc_hi20(.LCPI140_2)
+	vld	$vr2, $a5, %pc_lo12(.LCPI140_2)
+	vrepli.d	$vr3, 511
+	vrepli.w	$vr4, 511
+	ori	$a5, $zero, 1022
+	vreplgr2vr.w	$vr5, $a5
+	ori	$a5, $zero, 2048
+	b	.LBB140_6
+	.p2align	4, , 16
+.LBB140_4:                              #   in Loop: Header=BB140_6 Depth=1
+	vld	$vr8, $a7, 0
+	vbitsel.v	$vr6, $vr8, $vr7, $vr6
+	vst	$vr6, $a7, 0
+.LBB140_5:                              #   in Loop: Header=BB140_6 Depth=1
+	vaddi.du	$vr1, $vr1, 4
+	vaddi.du	$vr0, $vr0, 4
+	addi.d	$a3, $a3, 16
+	vaddi.wu	$vr2, $vr2, 4
+	beq	$a3, $a5, .LBB140_37
+.LBB140_6:                              # =>This Inner Loop Header: Depth=1
+	vslt.du	$vr6, $vr1, $vr3
+	vslt.du	$vr7, $vr0, $vr3
+	vpickev.w	$vr6, $vr7, $vr6
+	add.d	$a7, $a4, $a3
+	vpickev.w	$vr7, $vr0, $vr1
+	vaddi.wu	$vr7, $vr7, 1
+	vmsknz.b	$vr8, $vr6
+	vpickve2gr.hu	$a6, $vr8, 0
+	addi.d	$t0, $a7, 15
+	xor	$t0, $t0, $a7
+	srli.d	$t0, $t0, 12
+	beq	$a6, $zero, .LBB140_16
+	beq	$t0, $zero, .LBB140_11
+# %bb.7:                                #   in Loop: Header=BB140_6 Depth=1
+	andi	$t0, $a6, 1
+	bne	$t0, $zero, .LBB140_12
+# %bb.8:                                #   in Loop: Header=BB140_6 Depth=1
+	andi	$t0, $a6, 16
+	bne	$t0, $zero, .LBB140_13
+.LBB140_9:                              #   in Loop: Header=BB140_6 Depth=1
+	andi	$t0, $a6, 256
+	bne	$t0, $zero, .LBB140_14
+.LBB140_10:                             #   in Loop: Header=BB140_6 Depth=1
+	bstrpick.d	$t0, $a6, 12, 12
+	bne	$t0, $zero, .LBB140_15
+	b	.LBB140_16
+	.p2align	4, , 16
+.LBB140_11:                             #   in Loop: Header=BB140_6 Depth=1
+	vld	$vr8, $a7, 0
+	vbitsel.v	$vr7, $vr8, $vr7, $vr6
+	vst	$vr7, $a7, 0
+	b	.LBB140_16
+.LBB140_12:                             #   in Loop: Header=BB140_6 Depth=1
+	vstelm.w	$vr7, $a7, 0, 0
+	andi	$t0, $a6, 16
+	beq	$t0, $zero, .LBB140_9
+.LBB140_13:                             #   in Loop: Header=BB140_6 Depth=1
+	vstelm.w	$vr7, $a7, 4, 1
+	andi	$t0, $a6, 256
+	beq	$t0, $zero, .LBB140_10
+.LBB140_14:                             #   in Loop: Header=BB140_6 Depth=1
+	vstelm.w	$vr7, $a7, 8, 2
+	bstrpick.d	$t0, $a6, 12, 12
+	beq	$t0, $zero, .LBB140_16
+.LBB140_15:                             #   in Loop: Header=BB140_6 Depth=1
+	vstelm.w	$vr7, $a7, 12, 3
+	.p2align	4, , 16
+.LBB140_16:                             #   in Loop: Header=BB140_6 Depth=1
+	add.d	$a7, $a1, $a3
+	vadd.w	$vr7, $vr2, $vr4
+	addi.d	$t0, $a7, 15
+	xor	$t0, $t0, $a7
+	srli.d	$t0, $t0, 12
+	beq	$a6, $zero, .LBB140_26
+	beq	$t0, $zero, .LBB140_21
+# %bb.17:                               #   in Loop: Header=BB140_6 Depth=1
+	andi	$t0, $a6, 1
+	bne	$t0, $zero, .LBB140_22
+# %bb.18:                               #   in Loop: Header=BB140_6 Depth=1
+	andi	$t0, $a6, 16
+	bne	$t0, $zero, .LBB140_23
+.LBB140_19:                             #   in Loop: Header=BB140_6 Depth=1
+	andi	$t0, $a6, 256
+	bne	$t0, $zero, .LBB140_24
+.LBB140_20:                             #   in Loop: Header=BB140_6 Depth=1
+	bstrpick.d	$t0, $a6, 12, 12
+	bne	$t0, $zero, .LBB140_25
+	b	.LBB140_26
+	.p2align	4, , 16
+.LBB140_21:                             #   in Loop: Header=BB140_6 Depth=1
+	vld	$vr8, $a7, 0
+	vbitsel.v	$vr7, $vr8, $vr7, $vr6
+	vst	$vr7, $a7, 0
+	b	.LBB140_26
+.LBB140_22:                             #   in Loop: Header=BB140_6 Depth=1
+	vstelm.w	$vr7, $a7, 0, 0
+	andi	$t0, $a6, 16
+	beq	$t0, $zero, .LBB140_19
+.LBB140_23:                             #   in Loop: Header=BB140_6 Depth=1
+	vstelm.w	$vr7, $a7, 4, 1
+	andi	$t0, $a6, 256
+	beq	$t0, $zero, .LBB140_20
+.LBB140_24:                             #   in Loop: Header=BB140_6 Depth=1
+	vstelm.w	$vr7, $a7, 8, 2
+	bstrpick.d	$t0, $a6, 12, 12
+	beq	$t0, $zero, .LBB140_26
+.LBB140_25:                             #   in Loop: Header=BB140_6 Depth=1
+	vstelm.w	$vr7, $a7, 12, 3
+	.p2align	4, , 16
+.LBB140_26:                             #   in Loop: Header=BB140_6 Depth=1
+	add.d	$a7, $a2, $a3
+	vadd.w	$vr7, $vr2, $vr5
+	addi.d	$t0, $a7, 15
+	xor	$t0, $t0, $a7
+	srli.d	$t0, $t0, 12
+	beq	$a6, $zero, .LBB140_5
+	beq	$t0, $zero, .LBB140_4
+# %bb.27:                               #   in Loop: Header=BB140_6 Depth=1
+	andi	$t0, $a6, 1
+	bne	$t0, $zero, .LBB140_31
+# %bb.28:                               #   in Loop: Header=BB140_6 Depth=1
+	andi	$t0, $a6, 16
+	bne	$t0, $zero, .LBB140_32
+.LBB140_29:                             #   in Loop: Header=BB140_6 Depth=1
+	andi	$t0, $a6, 256
+	bne	$t0, $zero, .LBB140_33
+.LBB140_30:                             #   in Loop: Header=BB140_6 Depth=1
+	bstrpick.d	$a6, $a6, 12, 12
+	beq	$a6, $zero, .LBB140_5
+	b	.LBB140_34
+.LBB140_31:                             #   in Loop: Header=BB140_6 Depth=1
+	vstelm.w	$vr7, $a7, 0, 0
+	andi	$t0, $a6, 16
+	beq	$t0, $zero, .LBB140_29
+.LBB140_32:                             #   in Loop: Header=BB140_6 Depth=1
+	vstelm.w	$vr7, $a7, 4, 1
+	andi	$t0, $a6, 256
+	beq	$t0, $zero, .LBB140_30
+.LBB140_33:                             #   in Loop: Header=BB140_6 Depth=1
+	vstelm.w	$vr7, $a7, 8, 2
+	bstrpick.d	$a6, $a6, 12, 12
+	beq	$a6, $zero, .LBB140_5
+.LBB140_34:                             #   in Loop: Header=BB140_6 Depth=1
+	vstelm.w	$vr7, $a7, 12, 3
+	b	.LBB140_5
+.LBB140_35:
 	move	$a3, $zero
 	ori	$a5, $zero, 1022
 	ori	$a6, $zero, 2044
 	.p2align	4, , 16
-.LBB140_1:                              # =>This Inner Loop Header: Depth=1
+.LBB140_36:                             # =>This Inner Loop Header: Depth=1
 	addi.d	$a7, $a5, -1021
 	stx.w	$a7, $a4, $a3
 	addi.d	$a7, $a5, -511
@@ -25776,33 +26317,33 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17
 	stx.w	$a5, $a2, $a3
 	addi.d	$a3, $a3, 4
 	addi.d	$a5, $a5, 1
-	bne	$a3, $a6, .LBB140_1
-# %bb.2:
+	bne	$a3, $a6, .LBB140_36
+.LBB140_37:
 	ld.w	$a3, $a0, 0
 	ori	$a5, $zero, 511
-	bltu	$a3, $a5, .LBB140_6
-# %bb.3:
+	bltu	$a3, $a5, .LBB140_41
+# %bb.38:
 	ld.w	$a5, $a0, 4
 	ori	$a3, $zero, 510
-	bgeu	$a3, $a5, .LBB140_7
-.LBB140_4:
+	bgeu	$a3, $a5, .LBB140_42
+.LBB140_39:
 	ld.w	$a0, $a0, 8
-	bgeu	$a3, $a0, .LBB140_8
-.LBB140_5:
+	bgeu	$a3, $a0, .LBB140_43
+.LBB140_40:
 	ret
-.LBB140_6:
+.LBB140_41:
 	slli.d	$a3, $a3, 2
 	stx.w	$zero, $a4, $a3
 	ld.w	$a5, $a0, 4
 	ori	$a3, $zero, 510
-	bltu	$a3, $a5, .LBB140_4
-.LBB140_7:
+	bltu	$a3, $a5, .LBB140_39
+.LBB140_42:
 	slli.d	$a5, $a5, 2
 	ldx.w	$a4, $a4, $a5
 	stx.w	$a4, $a1, $a5
 	ld.w	$a0, $a0, 8
-	bltu	$a3, $a0, .LBB140_5
-.LBB140_8:
+	bltu	$a3, $a0, .LBB140_40
+.LBB140_43:
 	slli.d	$a0, $a0, 2
 	ldx.w	$a1, $a1, $a0
 	stx.w	$a1, $a2, $a0
@@ -25859,7 +26400,27 @@ _ZNSt8functionIFvPiS0_S0_EEC2IRZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17
 	.size	_ZNSt8functionIFvPiS0_S0_EEC2IRZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17ELj17EEvS_IFjS_IFvPT_S6_S6_EEEESA_SA_SA_SA_PKcEUlS0_S0_S0_E0_vEEOS5_, .Lfunc_end142-_ZNSt8functionIFvPiS0_S0_EEC2IRZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17ELj17EEvS_IFjS_IFvPT_S6_S6_EEEESA_SA_SA_SA_PKcEUlS0_S0_S0_E0_vEEOS5_
 	.cfi_endproc
                                         # -- End function
-	.p2align	2                               # -- Begin function _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17ELj17EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E0_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17ELj17EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E0_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_
+	.type	.LCPI143_0,@object
+.LCPI143_0:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
+	.size	.LCPI143_0, 16
+	.type	.LCPI143_1,@object
+.LCPI143_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.size	.LCPI143_1, 16
+	.type	.LCPI143_2,@object
+.LCPI143_2:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.size	.LCPI143_2, 16
+	.text
+	.p2align	2
 	.prefalign	5, .Lfunc_end143, nop
 	.type	_ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17ELj17EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E0_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_,@function
 _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17ELj17EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E0_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_: # @_ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17ELj17EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E0_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_
@@ -25867,11 +26428,172 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17
 	ld.d	$a0, $a1, 0
 	ld.d	$a1, $a2, 0
 	ld.d	$a2, $a3, 0
+	sub.d	$a4, $a0, $a1
+	addi.w	$a3, $zero, -16
+	bltu	$a3, $a4, .LBB143_35
+# %bb.1:
+	sub.d	$a4, $a0, $a2
+	bltu	$a3, $a4, .LBB143_35
+# %bb.2:
+	sub.d	$a4, $a1, $a2
+	bltu	$a3, $a4, .LBB143_35
+# %bb.3:
+	move	$a3, $zero
+	pcalau12i	$a4, %pc_hi20(.LCPI143_0)
+	vld	$vr0, $a4, %pc_lo12(.LCPI143_0)
+	pcalau12i	$a4, %pc_hi20(.LCPI143_1)
+	vld	$vr1, $a4, %pc_lo12(.LCPI143_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI143_2)
+	vld	$vr2, $a4, %pc_lo12(.LCPI143_2)
+	vrepli.d	$vr3, 511
+	vrepli.w	$vr4, 511
+	ori	$a4, $zero, 1022
+	vreplgr2vr.w	$vr5, $a4
+	ori	$a4, $zero, 2048
+	b	.LBB143_6
+	.p2align	4, , 16
+.LBB143_4:                              #   in Loop: Header=BB143_6 Depth=1
+	vld	$vr8, $a6, 0
+	vbitsel.v	$vr6, $vr8, $vr7, $vr6
+	vst	$vr6, $a6, 0
+.LBB143_5:                              #   in Loop: Header=BB143_6 Depth=1
+	vaddi.du	$vr1, $vr1, 4
+	vaddi.du	$vr0, $vr0, 4
+	addi.d	$a3, $a3, 16
+	vaddi.wu	$vr2, $vr2, 4
+	beq	$a3, $a4, .LBB143_37
+.LBB143_6:                              # =>This Inner Loop Header: Depth=1
+	vslt.du	$vr6, $vr1, $vr3
+	vslt.du	$vr7, $vr0, $vr3
+	vpickev.w	$vr6, $vr7, $vr6
+	add.d	$a6, $a0, $a3
+	vpickev.w	$vr7, $vr0, $vr1
+	vaddi.wu	$vr7, $vr7, 1
+	vmsknz.b	$vr8, $vr6
+	vpickve2gr.hu	$a5, $vr8, 0
+	addi.d	$a7, $a6, 15
+	xor	$a7, $a7, $a6
+	srli.d	$a7, $a7, 12
+	beq	$a5, $zero, .LBB143_16
+	beq	$a7, $zero, .LBB143_11
+# %bb.7:                                #   in Loop: Header=BB143_6 Depth=1
+	andi	$a7, $a5, 1
+	bne	$a7, $zero, .LBB143_12
+# %bb.8:                                #   in Loop: Header=BB143_6 Depth=1
+	andi	$a7, $a5, 16
+	bne	$a7, $zero, .LBB143_13
+.LBB143_9:                              #   in Loop: Header=BB143_6 Depth=1
+	andi	$a7, $a5, 256
+	bne	$a7, $zero, .LBB143_14
+.LBB143_10:                             #   in Loop: Header=BB143_6 Depth=1
+	bstrpick.d	$a7, $a5, 12, 12
+	bne	$a7, $zero, .LBB143_15
+	b	.LBB143_16
+	.p2align	4, , 16
+.LBB143_11:                             #   in Loop: Header=BB143_6 Depth=1
+	vld	$vr8, $a6, 0
+	vbitsel.v	$vr7, $vr8, $vr7, $vr6
+	vst	$vr7, $a6, 0
+	b	.LBB143_16
+.LBB143_12:                             #   in Loop: Header=BB143_6 Depth=1
+	vstelm.w	$vr7, $a6, 0, 0
+	andi	$a7, $a5, 16
+	beq	$a7, $zero, .LBB143_9
+.LBB143_13:                             #   in Loop: Header=BB143_6 Depth=1
+	vstelm.w	$vr7, $a6, 4, 1
+	andi	$a7, $a5, 256
+	beq	$a7, $zero, .LBB143_10
+.LBB143_14:                             #   in Loop: Header=BB143_6 Depth=1
+	vstelm.w	$vr7, $a6, 8, 2
+	bstrpick.d	$a7, $a5, 12, 12
+	beq	$a7, $zero, .LBB143_16
+.LBB143_15:                             #   in Loop: Header=BB143_6 Depth=1
+	vstelm.w	$vr7, $a6, 12, 3
+	.p2align	4, , 16
+.LBB143_16:                             #   in Loop: Header=BB143_6 Depth=1
+	add.d	$a6, $a1, $a3
+	vadd.w	$vr7, $vr2, $vr4
+	addi.d	$a7, $a6, 15
+	xor	$a7, $a7, $a6
+	srli.d	$a7, $a7, 12
+	beq	$a5, $zero, .LBB143_26
+	beq	$a7, $zero, .LBB143_21
+# %bb.17:                               #   in Loop: Header=BB143_6 Depth=1
+	andi	$a7, $a5, 1
+	bne	$a7, $zero, .LBB143_22
+# %bb.18:                               #   in Loop: Header=BB143_6 Depth=1
+	andi	$a7, $a5, 16
+	bne	$a7, $zero, .LBB143_23
+.LBB143_19:                             #   in Loop: Header=BB143_6 Depth=1
+	andi	$a7, $a5, 256
+	bne	$a7, $zero, .LBB143_24
+.LBB143_20:                             #   in Loop: Header=BB143_6 Depth=1
+	bstrpick.d	$a7, $a5, 12, 12
+	bne	$a7, $zero, .LBB143_25
+	b	.LBB143_26
+	.p2align	4, , 16
+.LBB143_21:                             #   in Loop: Header=BB143_6 Depth=1
+	vld	$vr8, $a6, 0
+	vbitsel.v	$vr7, $vr8, $vr7, $vr6
+	vst	$vr7, $a6, 0
+	b	.LBB143_26
+.LBB143_22:                             #   in Loop: Header=BB143_6 Depth=1
+	vstelm.w	$vr7, $a6, 0, 0
+	andi	$a7, $a5, 16
+	beq	$a7, $zero, .LBB143_19
+.LBB143_23:                             #   in Loop: Header=BB143_6 Depth=1
+	vstelm.w	$vr7, $a6, 4, 1
+	andi	$a7, $a5, 256
+	beq	$a7, $zero, .LBB143_20
+.LBB143_24:                             #   in Loop: Header=BB143_6 Depth=1
+	vstelm.w	$vr7, $a6, 8, 2
+	bstrpick.d	$a7, $a5, 12, 12
+	beq	$a7, $zero, .LBB143_26
+.LBB143_25:                             #   in Loop: Header=BB143_6 Depth=1
+	vstelm.w	$vr7, $a6, 12, 3
+	.p2align	4, , 16
+.LBB143_26:                             #   in Loop: Header=BB143_6 Depth=1
+	add.d	$a6, $a2, $a3
+	vadd.w	$vr7, $vr2, $vr5
+	addi.d	$a7, $a6, 15
+	xor	$a7, $a7, $a6
+	srli.d	$a7, $a7, 12
+	beq	$a5, $zero, .LBB143_5
+	beq	$a7, $zero, .LBB143_4
+# %bb.27:                               #   in Loop: Header=BB143_6 Depth=1
+	andi	$a7, $a5, 1
+	bne	$a7, $zero, .LBB143_31
+# %bb.28:                               #   in Loop: Header=BB143_6 Depth=1
+	andi	$a7, $a5, 16
+	bne	$a7, $zero, .LBB143_32
+.LBB143_29:                             #   in Loop: Header=BB143_6 Depth=1
+	andi	$a7, $a5, 256
+	bne	$a7, $zero, .LBB143_33
+.LBB143_30:                             #   in Loop: Header=BB143_6 Depth=1
+	bstrpick.d	$a5, $a5, 12, 12
+	beq	$a5, $zero, .LBB143_5
+	b	.LBB143_34
+.LBB143_31:                             #   in Loop: Header=BB143_6 Depth=1
+	vstelm.w	$vr7, $a6, 0, 0
+	andi	$a7, $a5, 16
+	beq	$a7, $zero, .LBB143_29
+.LBB143_32:                             #   in Loop: Header=BB143_6 Depth=1
+	vstelm.w	$vr7, $a6, 4, 1
+	andi	$a7, $a5, 256
+	beq	$a7, $zero, .LBB143_30
+.LBB143_33:                             #   in Loop: Header=BB143_6 Depth=1
+	vstelm.w	$vr7, $a6, 8, 2
+	bstrpick.d	$a5, $a5, 12, 12
+	beq	$a5, $zero, .LBB143_5
+.LBB143_34:                             #   in Loop: Header=BB143_6 Depth=1
+	vstelm.w	$vr7, $a6, 12, 3
+	b	.LBB143_5
+.LBB143_35:
 	move	$a3, $zero
 	ori	$a4, $zero, 1022
 	ori	$a5, $zero, 2044
 	.p2align	4, , 16
-.LBB143_1:                              # =>This Inner Loop Header: Depth=1
+.LBB143_36:                             # =>This Inner Loop Header: Depth=1
 	addi.d	$a6, $a4, -1021
 	stx.w	$a6, $a0, $a3
 	addi.d	$a6, $a4, -511
@@ -25879,8 +26601,8 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17
 	stx.w	$a4, $a2, $a3
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 1
-	bne	$a3, $a5, .LBB143_1
-# %bb.2:
+	bne	$a3, $a5, .LBB143_36
+.LBB143_37:
 	ret
 .Lfunc_end143:
 	.size	_ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17ELj17EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E0_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_, .Lfunc_end143-_ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17ELj17ELj17EEvSt8functionIFjS3_IFvPT_S5_S5_EEEES9_S9_S9_S9_PKcEUlS0_S0_S0_E0_E9_M_invokeERKSt9_Any_dataOS0_SH_SH_

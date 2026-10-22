@@ -546,7 +546,17 @@ size_sort:                              # @size_sort
 .Lfunc_end3:
 	.size	size_sort, .Lfunc_end3-size_sort
                                         # -- End function
-	.globl	mini_sort                       # -- Begin function mini_sort
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function mini_sort
+	.type	.LCPI4_0,@object
+.LCPI4_0:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.size	.LCPI4_0, 16
+	.text
+	.globl	mini_sort
 	.p2align	2
 	.prefalign	5, .Lfunc_end4, nop
 	.type	mini_sort,@function
@@ -568,60 +578,206 @@ mini_sort:                              # @mini_sort
 	ld.w	$a1, $fp, 12
 	ld.w	$a2, $fp, 0
 	mul.w	$a2, $a2, $a1
-	blez	$a2, .LBB4_9
+	blez	$a2, .LBB4_34
 # %bb.1:
 	ld.d	$a1, $fp, 24
 	alsl.d	$a2, $a2, $a1, 2
-	blez	$s1, .LBB4_8
+	blez	$s1, .LBB4_33
 # %bb.2:
-	lu12i.w	$a3, 131071
-	ori	$a3, $a3, 4092
+	bstrpick.d	$a3, $s1, 30, 3
+	slli.d	$a3, $a3, 3
+	addi.d	$a4, $a0, 16
+	ori	$a5, $zero, 8
+	lu12i.w	$a6, 131071
+	pcalau12i	$a7, %pc_hi20(.LCPI4_0)
+	vld	$vr0, $a7, %pc_lo12(.LCPI4_0)
+	ori	$a6, $a6, 4092
+	vrepli.b	$vr1, 0
+	vrepli.w	$vr2, 1
 	b	.LBB4_4
 	.p2align	4, , 16
 .LBB4_3:                                #   in Loop: Header=BB4_4 Depth=1
-	st.h	$a5, $a1, 2
-	ld.w	$a4, $fp, 0
-	alsl.d	$a1, $a4, $a1, 2
-	bgeu	$a1, $a2, .LBB4_9
+	st.h	$a7, $a1, 2
+	ld.w	$a7, $fp, 0
+	alsl.d	$a1, $a7, $a1, 2
+	bgeu	$a1, $a2, .LBB4_34
 .LBB4_4:                                # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_6 Depth 2
-	move	$a4, $zero
-	move	$a6, $zero
-	move	$a5, $zero
-	move	$a7, $a0
-	b	.LBB4_6
+                                        #     Child Loop BB4_9 Depth 2
+                                        #     Child Loop BB4_31 Depth 2
+	bgeu	$s1, $a5, .LBB4_6
+# %bb.5:                                #   in Loop: Header=BB4_4 Depth=1
+	move	$t0, $zero
+	move	$a7, $zero
+	b	.LBB4_29
 	.p2align	4, , 16
-.LBB4_5:                                #   in Loop: Header=BB4_6 Depth=2
-	addi.d	$a6, $a6, 1
-	addi.d	$a7, $a7, 4
-	addi.d	$a4, $a4, 1
-	beq	$s1, $a6, .LBB4_3
-.LBB4_6:                                #   Parent Loop BB4_4 Depth=1
+.LBB4_6:                                #   in Loop: Header=BB4_4 Depth=1
+	move	$a7, $zero
+	move	$t0, $a4
+	vori.b	$vr3, $vr1, 0
+	vori.b	$vr4, $vr1, 0
+	vori.b	$vr5, $vr0, 0
+	b	.LBB4_9
+	.p2align	4, , 16
+.LBB4_7:                                #   in Loop: Header=BB4_9 Depth=2
+	vld	$vr7, $t0, 0
+	vbitsel.v	$vr7, $vr1, $vr7, $vr8
+.LBB4_8:                                #   in Loop: Header=BB4_9 Depth=2
+	vadd.w	$vr3, $vr3, $vr6
+	vadd.w	$vr4, $vr4, $vr7
+	addi.d	$a7, $a7, 8
+	vaddi.wu	$vr5, $vr5, 8
+	addi.d	$t0, $t0, 32
+	beq	$a3, $a7, .LBB4_28
+.LBB4_9:                                #   Parent Loop BB4_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	srli.d	$t0, $a6, 3
-	and	$t0, $t0, $a3
-	add.d	$t0, $a1, $t0
-	ld.w	$t0, $t0, 4
-	srl.w	$t0, $t0, $a4
-	andi	$t0, $t0, 1
-	beqz	$t0, .LBB4_5
-# %bb.7:                                #   in Loop: Header=BB4_6 Depth=2
-	ld.w	$t0, $a7, 0
-	add.d	$a5, $t0, $a5
-	b	.LBB4_5
+	srli.d	$t1, $a7, 3
+	and	$t1, $t1, $a6
+	add.d	$t1, $a1, $t1
+	vldrepl.w	$vr7, $t1, 4
+	vsrl.w	$vr6, $vr7, $vr5
+	vand.v	$vr6, $vr6, $vr2
+	vseqi.w	$vr6, $vr6, 0
+	vxori.b	$vr8, $vr6, 255
+	addi.d	$t1, $t0, -16
+	vmsknz.b	$vr6, $vr8
+	vpickve2gr.hu	$t2, $vr6, 0
+	addi.d	$t3, $t1, 15
+	xor	$t3, $t3, $t1
+	srli.d	$t3, $t3, 12
+	vori.b	$vr6, $vr1, 0
+	beq	$t2, $zero, .LBB4_19
+	beq	$t3, $zero, .LBB4_14
+# %bb.10:                               #   in Loop: Header=BB4_9 Depth=2
+	andi	$t3, $t2, 1
+	vori.b	$vr6, $vr1, 0
+	bne	$t3, $zero, .LBB4_15
+# %bb.11:                               #   in Loop: Header=BB4_9 Depth=2
+	andi	$t3, $t2, 16
+	bne	$t3, $zero, .LBB4_16
+.LBB4_12:                               #   in Loop: Header=BB4_9 Depth=2
+	andi	$t3, $t2, 256
+	bne	$t3, $zero, .LBB4_17
+.LBB4_13:                               #   in Loop: Header=BB4_9 Depth=2
+	bstrpick.d	$t2, $t2, 12, 12
+	bne	$t2, $zero, .LBB4_18
+	b	.LBB4_19
 	.p2align	4, , 16
-.LBB4_8:                                # =>This Inner Loop Header: Depth=1
+.LBB4_14:                               #   in Loop: Header=BB4_9 Depth=2
+	vld	$vr6, $t1, 0
+	vbitsel.v	$vr6, $vr1, $vr6, $vr8
+	b	.LBB4_19
+.LBB4_15:                               #   in Loop: Header=BB4_9 Depth=2
+	ld.wu	$t3, $t1, 0
+	vori.b	$vr6, $vr1, 0
+	vinsgr2vr.w	$vr6, $t3, 0
+	andi	$t3, $t2, 16
+	beq	$t3, $zero, .LBB4_12
+.LBB4_16:                               #   in Loop: Header=BB4_9 Depth=2
+	ld.wu	$t3, $t1, 4
+	vinsgr2vr.w	$vr6, $t3, 1
+	andi	$t3, $t2, 256
+	beq	$t3, $zero, .LBB4_13
+.LBB4_17:                               #   in Loop: Header=BB4_9 Depth=2
+	ld.wu	$t3, $t1, 8
+	vinsgr2vr.w	$vr6, $t3, 2
+	bstrpick.d	$t2, $t2, 12, 12
+	beq	$t2, $zero, .LBB4_19
+.LBB4_18:                               #   in Loop: Header=BB4_9 Depth=2
+	ld.wu	$t1, $t1, 12
+	vinsgr2vr.w	$vr6, $t1, 3
+	.p2align	4, , 16
+.LBB4_19:                               #   in Loop: Header=BB4_9 Depth=2
+	vaddi.wu	$vr8, $vr5, 4
+	vsrl.w	$vr7, $vr7, $vr8
+	vand.v	$vr7, $vr7, $vr2
+	vseqi.w	$vr7, $vr7, 0
+	vxori.b	$vr8, $vr7, 255
+	vmsknz.b	$vr7, $vr8
+	vpickve2gr.hu	$t1, $vr7, 0
+	addi.d	$t2, $t0, 15
+	xor	$t2, $t2, $t0
+	srli.d	$t2, $t2, 12
+	vori.b	$vr7, $vr1, 0
+	beq	$t1, $zero, .LBB4_8
+	beq	$t2, $zero, .LBB4_7
+# %bb.20:                               #   in Loop: Header=BB4_9 Depth=2
+	andi	$t2, $t1, 1
+	vori.b	$vr7, $vr1, 0
+	bne	$t2, $zero, .LBB4_24
+# %bb.21:                               #   in Loop: Header=BB4_9 Depth=2
+	andi	$t2, $t1, 16
+	bne	$t2, $zero, .LBB4_25
+.LBB4_22:                               #   in Loop: Header=BB4_9 Depth=2
+	andi	$t2, $t1, 256
+	bne	$t2, $zero, .LBB4_26
+.LBB4_23:                               #   in Loop: Header=BB4_9 Depth=2
+	bstrpick.d	$t1, $t1, 12, 12
+	beq	$t1, $zero, .LBB4_8
+	b	.LBB4_27
+.LBB4_24:                               #   in Loop: Header=BB4_9 Depth=2
+	ld.wu	$t2, $t0, 0
+	vori.b	$vr7, $vr1, 0
+	vinsgr2vr.w	$vr7, $t2, 0
+	andi	$t2, $t1, 16
+	beq	$t2, $zero, .LBB4_22
+.LBB4_25:                               #   in Loop: Header=BB4_9 Depth=2
+	ld.wu	$t2, $t0, 4
+	vinsgr2vr.w	$vr7, $t2, 1
+	andi	$t2, $t1, 256
+	beq	$t2, $zero, .LBB4_23
+.LBB4_26:                               #   in Loop: Header=BB4_9 Depth=2
+	ld.wu	$t2, $t0, 8
+	vinsgr2vr.w	$vr7, $t2, 2
+	bstrpick.d	$t1, $t1, 12, 12
+	beq	$t1, $zero, .LBB4_8
+.LBB4_27:                               #   in Loop: Header=BB4_9 Depth=2
+	ld.wu	$t1, $t0, 12
+	vinsgr2vr.w	$vr7, $t1, 3
+	b	.LBB4_8
+	.p2align	4, , 16
+.LBB4_28:                               #   in Loop: Header=BB4_4 Depth=1
+	vadd.w	$vr3, $vr4, $vr3
+	vhaddw.d.w	$vr3, $vr3, $vr3
+	vhaddw.q.d	$vr3, $vr3, $vr3
+	vpickve2gr.d	$a7, $vr3, 0
+	move	$t0, $a3
+	beq	$a3, $s1, .LBB4_3
+.LBB4_29:                               #   in Loop: Header=BB4_4 Depth=1
+	alsl.d	$t1, $t0, $a0, 2
+	move	$t2, $t0
+	b	.LBB4_31
+	.p2align	4, , 16
+.LBB4_30:                               #   in Loop: Header=BB4_31 Depth=2
+	addi.d	$t0, $t0, 1
+	addi.d	$t1, $t1, 4
+	addi.d	$t2, $t2, 1
+	beq	$s1, $t0, .LBB4_3
+.LBB4_31:                               #   Parent Loop BB4_4 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	srli.d	$t3, $t0, 3
+	and	$t3, $t3, $a6
+	add.d	$t3, $a1, $t3
+	ld.w	$t3, $t3, 4
+	srl.w	$t3, $t3, $t2
+	andi	$t3, $t3, 1
+	beqz	$t3, .LBB4_30
+# %bb.32:                               #   in Loop: Header=BB4_31 Depth=2
+	ld.w	$t3, $t1, 0
+	add.d	$a7, $t3, $a7
+	b	.LBB4_30
+	.p2align	4, , 16
+.LBB4_33:                               # =>This Inner Loop Header: Depth=1
 	ld.hu	$a3, $a1, 0
 	st.w	$a3, $a1, 0
 	ld.w	$a3, $fp, 0
 	alsl.d	$a1, $a3, $a1, 2
-	bltu	$a1, $a2, .LBB4_8
-.LBB4_9:
-	beqz	$a0, .LBB4_11
-# %bb.10:
+	bltu	$a1, $a2, .LBB4_33
+.LBB4_34:
+	beqz	$a0, .LBB4_36
+# %bb.35:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB4_11:
+.LBB4_36:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(sf_list)
 	jirl	$ra, $ra, 0

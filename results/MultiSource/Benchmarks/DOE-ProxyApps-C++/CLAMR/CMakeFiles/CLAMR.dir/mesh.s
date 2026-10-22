@@ -7112,19 +7112,21 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception8
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 40                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -7136,6 +7138,8 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
+	.cfi_offset 56, -96
+	.cfi_offset 57, -104
 	move	$s3, $a1
 	ld.d	$a1, $a1, 8
 	ld.d	$s5, $s3, 0
@@ -7143,7 +7147,7 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	move	$s1, $a2
 	move	$fp, $a0
 	sub.d	$s2, $a1, $s5
-	beq	$a1, $s5, .LBB18_17
+	beq	$a1, $s5, .LBB18_18
 # %bb.1:
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -7158,98 +7162,574 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	jirl	$ra, $ra, 0
 .LBB18_3:
 	ld.d	$a0, $fp, 1160
-	beqz	$a0, .LBB18_18
+	beqz	$a0, .LBB18_19
 # %bb.4:
-	move	$a1, $zero
-	move	$a2, $zero
-	ld.d	$a3, $fp, 1360
-	ld.d	$a4, $fp, 1328
-	ld.d	$a5, $fp, 1336
-	ori	$a6, $zero, 1
-	addi.d	$a7, $zero, -1
+	ld.d	$a1, $fp, 1360
+	ld.d	$a2, $fp, 1328
+	ld.d	$a3, $fp, 1336
+	ori	$a4, $zero, 8
+	bgeu	$a0, $a4, .LBB18_20
+# %bb.5:
+	move	$a4, $zero
+	move	$a5, $zero
+	move	$a6, $zero
+.LBB18_6:
+	alsl.d	$a3, $a4, $a3, 2
+	alsl.d	$a2, $a4, $a2, 2
+	alsl.d	$a1, $a4, $a1, 2
+	addi.d	$a7, $a4, 1
+	alsl.d	$a4, $a4, $s4, 2
 	ori	$t0, $zero, 1
-	bstrins.d	$t0, $t0, 32, 31
-	move	$t1, $s4
+	addi.d	$t1, $zero, -1
 	ori	$t2, $zero, 1
-	b	.LBB18_7
-.LBB18_5:                               #   in Loop: Header=BB18_7 Depth=1
-	addi.d	$a2, $a2, 1
+	bstrins.d	$t2, $t2, 32, 31
+	b	.LBB18_9
+.LBB18_7:                               #   in Loop: Header=BB18_9 Depth=1
+	addi.d	$a6, $a6, 1
 	.p2align	4, , 16
-.LBB18_6:                               #   in Loop: Header=BB18_7 Depth=1
-	bstrpick.d	$t3, $t2, 31, 0
-	addi.d	$a5, $a5, 4
-	addi.d	$a4, $a4, 4
+.LBB18_8:                               #   in Loop: Header=BB18_9 Depth=1
+	bstrpick.d	$t3, $a7, 31, 0
 	addi.d	$a3, $a3, 4
-	addi.d	$t2, $t2, 1
-	addi.d	$t1, $t1, 4
-	bgeu	$t3, $a0, .LBB18_16
-.LBB18_7:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$t3, $t1, 0
-	bltz	$t3, .LBB18_11
-# %bb.8:                                #   in Loop: Header=BB18_7 Depth=1
-	beqz	$t3, .LBB18_6
-# %bb.9:                                #   in Loop: Header=BB18_7 Depth=1
-	ld.w	$t3, $a3, 0
-	bne	$t3, $a6, .LBB18_5
-# %bb.10:                               #   in Loop: Header=BB18_7 Depth=1
-	addi.d	$a2, $a2, 3
-	b	.LBB18_6
-	.p2align	4, , 16
-.LBB18_11:                              #   in Loop: Header=BB18_7 Depth=1
-	ld.w	$t5, $a3, 0
+	addi.d	$a2, $a2, 4
+	addi.d	$a1, $a1, 4
+	addi.d	$a7, $a7, 1
+	addi.d	$a4, $a4, 4
+	bgeu	$t3, $a0, .LBB18_105
+.LBB18_9:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$t3, $a4, 0
-	ld.w	$t4, $a5, 0
-	bne	$t5, $a6, .LBB18_13
-# %bb.12:                               #   in Loop: Header=BB18_7 Depth=1
+	bltz	$t3, .LBB18_13
+# %bb.10:                               #   in Loop: Header=BB18_9 Depth=1
+	beqz	$t3, .LBB18_8
+# %bb.11:                               #   in Loop: Header=BB18_9 Depth=1
+	ld.w	$t3, $a1, 0
+	bne	$t3, $t0, .LBB18_7
+# %bb.12:                               #   in Loop: Header=BB18_9 Depth=1
+	addi.d	$a6, $a6, 3
+	b	.LBB18_8
+	.p2align	4, , 16
+.LBB18_13:                              #   in Loop: Header=BB18_9 Depth=1
+	ld.w	$t5, $a1, 0
+	ld.w	$t3, $a2, 0
+	ld.w	$t4, $a3, 0
+	bne	$t5, $t0, .LBB18_15
+# %bb.14:                               #   in Loop: Header=BB18_9 Depth=1
 	andi	$t3, $t3, 1
 	andi	$t4, $t4, 1
 	sub.d	$t4, $zero, $t4
-	maskeqz	$t5, $a7, $t3
+	maskeqz	$t5, $t1, $t3
 	masknez	$t3, $t4, $t3
 	or	$t3, $t5, $t3
-	add.d	$a1, $t3, $a1
-	b	.LBB18_6
-.LBB18_13:                              #   in Loop: Header=BB18_7 Depth=1
-	and	$t5, $t3, $t0
+	add.d	$a5, $t3, $a5
+	b	.LBB18_8
+.LBB18_15:                              #   in Loop: Header=BB18_9 Depth=1
+	and	$t5, $t3, $t2
 	addi.w	$t5, $t5, 0
-	bne	$t5, $a6, .LBB18_15
-# %bb.14:                               #   in Loop: Header=BB18_7 Depth=1
-	and	$t5, $t4, $t0
-	beq	$t5, $a6, .LBB18_6
-.LBB18_15:                              #   in Loop: Header=BB18_7 Depth=1
+	bne	$t5, $t0, .LBB18_17
+# %bb.16:                               #   in Loop: Header=BB18_9 Depth=1
+	and	$t5, $t4, $t2
+	beq	$t5, $t0, .LBB18_8
+.LBB18_17:                              #   in Loop: Header=BB18_9 Depth=1
 	or	$t3, $t4, $t3
 	andi	$t3, $t3, 1
-	sub.d	$a1, $a1, $t3
-	b	.LBB18_6
-.LBB18_16:
-	st.w	$a2, $s1, 0
-	st.w	$a1, $s6, 0
-	b	.LBB18_19
-.LBB18_17:
+	sub.d	$a5, $a5, $t3
+	b	.LBB18_8
+.LBB18_18:
 	move	$s4, $zero
 	bgtz	$s2, .LBB18_2
 	b	.LBB18_3
-.LBB18_18:
+.LBB18_19:
 	st.w	$zero, $s1, 0
 	st.w	$zero, $s6, 0
-	beqz	$s4, .LBB18_20
-.LBB18_19:
+	bnez	$s4, .LBB18_106
+	b	.LBB18_107
+.LBB18_20:
+	addi.d	$a5, $a0, -1
+	bstrpick.d	$a6, $a5, 31, 0
+	addi.w	$a7, $zero, -1
+	lu32i.d	$a7, 0
+	move	$a4, $zero
+	beq	$a6, $a7, .LBB18_336
+# %bb.21:
+	srli.d	$a7, $a5, 32
+	move	$a5, $a4
+	move	$a6, $a4
+	bnez	$a7, .LBB18_6
+# %bb.22:
+	bstrpick.d	$a4, $a0, 32, 3
+	slli.d	$a4, $a4, 3
+	addi.d	$a5, $a3, 16
+	addi.d	$a6, $s4, 16
+	addi.d	$a7, $a2, 16
+	addi.d	$t0, $a1, 16
+	vrepli.b	$vr0, 0
+	vrepli.w	$vr1, 1
+	lu12i.w	$t1, -524288
+	ori	$t1, $t1, 1
+	vreplgr2vr.w	$vr2, $t1
+	vrepli.w	$vr3, 3
+	move	$t1, $a4
+	vori.b	$vr6, $vr0, 0
+	vori.b	$vr7, $vr0, 0
+	vori.b	$vr4, $vr0, 0
+	vori.b	$vr5, $vr0, 0
+	b	.LBB18_25
+	.p2align	4, , 16
+.LBB18_23:                              #   in Loop: Header=BB18_25 Depth=1
+	vld	$vr19, $a5, 0
+	vbitsel.v	$vr19, $vr0, $vr19, $vr14
+.LBB18_24:                              #   in Loop: Header=BB18_25 Depth=1
+	vseqi.w	$vr9, $vr9, 1
+	vseqi.w	$vr11, $vr11, 1
+	vand.v	$vr9, $vr8, $vr9
+	vand.v	$vr11, $vr10, $vr11
+	vseqi.w	$vr13, $vr13, 1
+	vseqi.w	$vr15, $vr15, 1
+	vandn.v	$vr20, $vr13, $vr12
+	vandn.v	$vr21, $vr15, $vr14
+	vand.v	$vr22, $vr16, $vr2
+	vand.v	$vr23, $vr17, $vr2
+	vseqi.w	$vr22, $vr22, 1
+	vseqi.w	$vr23, $vr23, 1
+	vand.v	$vr24, $vr18, $vr2
+	vand.v	$vr25, $vr19, $vr2
+	vseqi.w	$vr24, $vr24, 1
+	vseqi.w	$vr25, $vr25, 1
+	vand.v	$vr22, $vr22, $vr24
+	vand.v	$vr23, $vr23, $vr25
+	vandn.v	$vr20, $vr22, $vr20
+	vandn.v	$vr21, $vr23, $vr21
+	vor.v	$vr22, $vr18, $vr16
+	vor.v	$vr23, $vr19, $vr17
+	vand.v	$vr22, $vr22, $vr1
+	vand.v	$vr23, $vr23, $vr1
+	vand.v	$vr12, $vr12, $vr13
+	vand.v	$vr13, $vr14, $vr15
+	vslli.w	$vr14, $vr16, 31
+	vsrai.w	$vr14, $vr14, 31
+	vslli.w	$vr15, $vr17, 31
+	vsrai.w	$vr15, $vr15, 31
+	vand.v	$vr16, $vr18, $vr1
+	vand.v	$vr17, $vr19, $vr1
+	vneg.w	$vr16, $vr16
+	vneg.w	$vr17, $vr17
+	vor.v	$vr14, $vr14, $vr16
+	vor.v	$vr15, $vr15, $vr17
+	vbitsel.v	$vr16, $vr0, $vr22, $vr20
+	vneg.w	$vr16, $vr16
+	vbitsel.v	$vr12, $vr16, $vr14, $vr12
+	vadd.w	$vr6, $vr6, $vr12
+	vbitsel.v	$vr12, $vr0, $vr23, $vr21
+	vneg.w	$vr12, $vr12
+	vbitsel.v	$vr12, $vr12, $vr15, $vr13
+	vadd.w	$vr7, $vr7, $vr12
+	vbitsel.v	$vr9, $vr1, $vr3, $vr9
+	vand.v	$vr8, $vr8, $vr9
+	vadd.w	$vr4, $vr4, $vr8
+	vbitsel.v	$vr8, $vr1, $vr3, $vr11
+	vand.v	$vr8, $vr10, $vr8
+	vadd.w	$vr5, $vr5, $vr8
+	addi.d	$t1, $t1, -8
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	addi.d	$a7, $a7, 32
+	addi.d	$t0, $t0, 32
+	beqz	$t1, .LBB18_104
+.LBB18_25:                              # =>This Inner Loop Header: Depth=1
+	vld	$vr12, $a6, -16
+	vslt.w	$vr8, $vr0, $vr12
+	addi.d	$t3, $t0, -16
+	vmsknz.b	$vr9, $vr8
+	vpickve2gr.hu	$t2, $vr9, 0
+	addi.d	$t4, $t3, 15
+	xor	$t4, $t4, $t3
+	srli.d	$t4, $t4, 12
+                                        # implicit-def: $vr9
+	beq	$t2, $zero, .LBB18_35
+	beq	$t4, $zero, .LBB18_30
+# %bb.26:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t5, $t2, 1
+                                        # implicit-def: $vr9
+	bne	$t5, $zero, .LBB18_31
+# %bb.27:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t5, $t2, 16
+	bne	$t5, $zero, .LBB18_32
+.LBB18_28:                              #   in Loop: Header=BB18_25 Depth=1
+	andi	$t5, $t2, 256
+	bne	$t5, $zero, .LBB18_33
+.LBB18_29:                              #   in Loop: Header=BB18_25 Depth=1
+	bstrpick.d	$t2, $t2, 12, 12
+	bne	$t2, $zero, .LBB18_34
+	b	.LBB18_35
+	.p2align	4, , 16
+.LBB18_30:                              #   in Loop: Header=BB18_25 Depth=1
+	vld	$vr9, $t3, 0
+	vbitsel.v	$vr9, $vr0, $vr9, $vr8
+	b	.LBB18_35
+.LBB18_31:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t5, $t3, 0
+	vinsgr2vr.w	$vr9, $t5, 0
+	andi	$t5, $t2, 16
+	beq	$t5, $zero, .LBB18_28
+.LBB18_32:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t5, $t3, 4
+	vinsgr2vr.w	$vr9, $t5, 1
+	andi	$t5, $t2, 256
+	beq	$t5, $zero, .LBB18_29
+.LBB18_33:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t5, $t3, 8
+	vinsgr2vr.w	$vr9, $t5, 2
+	bstrpick.d	$t2, $t2, 12, 12
+	beq	$t2, $zero, .LBB18_35
+.LBB18_34:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t2, $t3, 12
+	vinsgr2vr.w	$vr9, $t2, 3
+	.p2align	4, , 16
+.LBB18_35:                              #   in Loop: Header=BB18_25 Depth=1
+	vld	$vr14, $a6, 0
+	vslt.w	$vr10, $vr0, $vr14
+	vmsknz.b	$vr11, $vr10
+	vpickve2gr.hu	$t2, $vr11, 0
+	addi.d	$t5, $t0, 15
+	xor	$t5, $t5, $t0
+	srli.d	$t5, $t5, 12
+                                        # implicit-def: $vr11
+	beq	$t2, $zero, .LBB18_45
+	beq	$t5, $zero, .LBB18_40
+# %bb.36:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t6, $t2, 1
+                                        # implicit-def: $vr11
+	bne	$t6, $zero, .LBB18_41
+# %bb.37:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t6, $t2, 16
+	bne	$t6, $zero, .LBB18_42
+.LBB18_38:                              #   in Loop: Header=BB18_25 Depth=1
+	andi	$t6, $t2, 256
+	bne	$t6, $zero, .LBB18_43
+.LBB18_39:                              #   in Loop: Header=BB18_25 Depth=1
+	bstrpick.d	$t2, $t2, 12, 12
+	bne	$t2, $zero, .LBB18_44
+	b	.LBB18_45
+	.p2align	4, , 16
+.LBB18_40:                              #   in Loop: Header=BB18_25 Depth=1
+	vld	$vr11, $t0, 0
+	vbitsel.v	$vr11, $vr0, $vr11, $vr10
+	b	.LBB18_45
+.LBB18_41:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t6, $t0, 0
+	vinsgr2vr.w	$vr11, $t6, 0
+	andi	$t6, $t2, 16
+	beq	$t6, $zero, .LBB18_38
+.LBB18_42:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t6, $t0, 4
+	vinsgr2vr.w	$vr11, $t6, 1
+	andi	$t6, $t2, 256
+	beq	$t6, $zero, .LBB18_39
+.LBB18_43:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t6, $t0, 8
+	vinsgr2vr.w	$vr11, $t6, 2
+	bstrpick.d	$t2, $t2, 12, 12
+	beq	$t2, $zero, .LBB18_45
+.LBB18_44:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t2, $t0, 12
+	vinsgr2vr.w	$vr11, $t2, 3
+	.p2align	4, , 16
+.LBB18_45:                              #   in Loop: Header=BB18_25 Depth=1
+	vslti.w	$vr12, $vr12, 0
+	vmsknz.b	$vr13, $vr12
+	vpickve2gr.hu	$t2, $vr13, 0
+                                        # implicit-def: $vr13
+	beq	$t2, $zero, .LBB18_55
+	beq	$t4, $zero, .LBB18_50
+# %bb.46:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t4, $t2, 1
+                                        # implicit-def: $vr13
+	bne	$t4, $zero, .LBB18_51
+# %bb.47:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t4, $t2, 16
+	bne	$t4, $zero, .LBB18_52
+.LBB18_48:                              #   in Loop: Header=BB18_25 Depth=1
+	andi	$t4, $t2, 256
+	bne	$t4, $zero, .LBB18_53
+.LBB18_49:                              #   in Loop: Header=BB18_25 Depth=1
+	bstrpick.d	$t4, $t2, 12, 12
+	bne	$t4, $zero, .LBB18_54
+	b	.LBB18_55
+	.p2align	4, , 16
+.LBB18_50:                              #   in Loop: Header=BB18_25 Depth=1
+	vld	$vr13, $t3, 0
+	vbitsel.v	$vr13, $vr0, $vr13, $vr12
+	b	.LBB18_55
+.LBB18_51:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t4, $t3, 0
+	vinsgr2vr.w	$vr13, $t4, 0
+	andi	$t4, $t2, 16
+	beq	$t4, $zero, .LBB18_48
+.LBB18_52:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t4, $t3, 4
+	vinsgr2vr.w	$vr13, $t4, 1
+	andi	$t4, $t2, 256
+	beq	$t4, $zero, .LBB18_49
+.LBB18_53:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t4, $t3, 8
+	vinsgr2vr.w	$vr13, $t4, 2
+	bstrpick.d	$t4, $t2, 12, 12
+	beq	$t4, $zero, .LBB18_55
+.LBB18_54:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t3, $t3, 12
+	vinsgr2vr.w	$vr13, $t3, 3
+	.p2align	4, , 16
+.LBB18_55:                              #   in Loop: Header=BB18_25 Depth=1
+	vslti.w	$vr14, $vr14, 0
+	vmsknz.b	$vr15, $vr14
+	vpickve2gr.hu	$t3, $vr15, 0
+                                        # implicit-def: $vr15
+	beq	$t3, $zero, .LBB18_65
+	beq	$t5, $zero, .LBB18_60
+# %bb.56:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t4, $t3, 1
+                                        # implicit-def: $vr15
+	bne	$t4, $zero, .LBB18_61
+# %bb.57:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t4, $t3, 16
+	bne	$t4, $zero, .LBB18_62
+.LBB18_58:                              #   in Loop: Header=BB18_25 Depth=1
+	andi	$t4, $t3, 256
+	bne	$t4, $zero, .LBB18_63
+.LBB18_59:                              #   in Loop: Header=BB18_25 Depth=1
+	bstrpick.d	$t4, $t3, 12, 12
+	bne	$t4, $zero, .LBB18_64
+	b	.LBB18_65
+	.p2align	4, , 16
+.LBB18_60:                              #   in Loop: Header=BB18_25 Depth=1
+	vld	$vr15, $t0, 0
+	vbitsel.v	$vr15, $vr0, $vr15, $vr14
+	b	.LBB18_65
+.LBB18_61:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t4, $t0, 0
+	vinsgr2vr.w	$vr15, $t4, 0
+	andi	$t4, $t3, 16
+	beq	$t4, $zero, .LBB18_58
+.LBB18_62:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t4, $t0, 4
+	vinsgr2vr.w	$vr15, $t4, 1
+	andi	$t4, $t3, 256
+	beq	$t4, $zero, .LBB18_59
+.LBB18_63:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t4, $t0, 8
+	vinsgr2vr.w	$vr15, $t4, 2
+	bstrpick.d	$t4, $t3, 12, 12
+	beq	$t4, $zero, .LBB18_65
+.LBB18_64:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t4, $t0, 12
+	vinsgr2vr.w	$vr15, $t4, 3
+	.p2align	4, , 16
+.LBB18_65:                              #   in Loop: Header=BB18_25 Depth=1
+	addi.d	$t4, $a7, -16
+	addi.d	$t5, $t4, 15
+	xor	$t5, $t5, $t4
+	srli.d	$t5, $t5, 12
+                                        # implicit-def: $vr16
+	beq	$t2, $zero, .LBB18_75
+	beq	$t5, $zero, .LBB18_70
+# %bb.66:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t5, $t2, 1
+                                        # implicit-def: $vr16
+	bne	$t5, $zero, .LBB18_71
+# %bb.67:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t5, $t2, 16
+	bne	$t5, $zero, .LBB18_72
+.LBB18_68:                              #   in Loop: Header=BB18_25 Depth=1
+	andi	$t5, $t2, 256
+	bne	$t5, $zero, .LBB18_73
+.LBB18_69:                              #   in Loop: Header=BB18_25 Depth=1
+	bstrpick.d	$t5, $t2, 12, 12
+	bne	$t5, $zero, .LBB18_74
+	b	.LBB18_75
+	.p2align	4, , 16
+.LBB18_70:                              #   in Loop: Header=BB18_25 Depth=1
+	vld	$vr16, $t4, 0
+	vbitsel.v	$vr16, $vr0, $vr16, $vr12
+	b	.LBB18_75
+.LBB18_71:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t5, $t4, 0
+	vinsgr2vr.w	$vr16, $t5, 0
+	andi	$t5, $t2, 16
+	beq	$t5, $zero, .LBB18_68
+.LBB18_72:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t5, $t4, 4
+	vinsgr2vr.w	$vr16, $t5, 1
+	andi	$t5, $t2, 256
+	beq	$t5, $zero, .LBB18_69
+.LBB18_73:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t5, $t4, 8
+	vinsgr2vr.w	$vr16, $t5, 2
+	bstrpick.d	$t5, $t2, 12, 12
+	beq	$t5, $zero, .LBB18_75
+.LBB18_74:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t4, $t4, 12
+	vinsgr2vr.w	$vr16, $t4, 3
+	.p2align	4, , 16
+.LBB18_75:                              #   in Loop: Header=BB18_25 Depth=1
+	addi.d	$t4, $a7, 15
+	xor	$t4, $t4, $a7
+	srli.d	$t4, $t4, 12
+                                        # implicit-def: $vr17
+	beq	$t3, $zero, .LBB18_85
+	beq	$t4, $zero, .LBB18_80
+# %bb.76:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t4, $t3, 1
+                                        # implicit-def: $vr17
+	bne	$t4, $zero, .LBB18_81
+# %bb.77:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t4, $t3, 16
+	bne	$t4, $zero, .LBB18_82
+.LBB18_78:                              #   in Loop: Header=BB18_25 Depth=1
+	andi	$t4, $t3, 256
+	bne	$t4, $zero, .LBB18_83
+.LBB18_79:                              #   in Loop: Header=BB18_25 Depth=1
+	bstrpick.d	$t4, $t3, 12, 12
+	bne	$t4, $zero, .LBB18_84
+	b	.LBB18_85
+	.p2align	4, , 16
+.LBB18_80:                              #   in Loop: Header=BB18_25 Depth=1
+	vld	$vr17, $a7, 0
+	vbitsel.v	$vr17, $vr0, $vr17, $vr14
+	b	.LBB18_85
+.LBB18_81:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t4, $a7, 0
+	vinsgr2vr.w	$vr17, $t4, 0
+	andi	$t4, $t3, 16
+	beq	$t4, $zero, .LBB18_78
+.LBB18_82:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t4, $a7, 4
+	vinsgr2vr.w	$vr17, $t4, 1
+	andi	$t4, $t3, 256
+	beq	$t4, $zero, .LBB18_79
+.LBB18_83:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t4, $a7, 8
+	vinsgr2vr.w	$vr17, $t4, 2
+	bstrpick.d	$t4, $t3, 12, 12
+	beq	$t4, $zero, .LBB18_85
+.LBB18_84:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t4, $a7, 12
+	vinsgr2vr.w	$vr17, $t4, 3
+	.p2align	4, , 16
+.LBB18_85:                              #   in Loop: Header=BB18_25 Depth=1
+	addi.d	$t4, $a5, -16
+	addi.d	$t5, $t4, 15
+	xor	$t5, $t5, $t4
+	srli.d	$t5, $t5, 12
+                                        # implicit-def: $vr18
+	beq	$t2, $zero, .LBB18_95
+	beq	$t5, $zero, .LBB18_90
+# %bb.86:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t5, $t2, 1
+                                        # implicit-def: $vr18
+	bne	$t5, $zero, .LBB18_91
+# %bb.87:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t5, $t2, 16
+	bne	$t5, $zero, .LBB18_92
+.LBB18_88:                              #   in Loop: Header=BB18_25 Depth=1
+	andi	$t5, $t2, 256
+	bne	$t5, $zero, .LBB18_93
+.LBB18_89:                              #   in Loop: Header=BB18_25 Depth=1
+	bstrpick.d	$t2, $t2, 12, 12
+	bne	$t2, $zero, .LBB18_94
+	b	.LBB18_95
+	.p2align	4, , 16
+.LBB18_90:                              #   in Loop: Header=BB18_25 Depth=1
+	vld	$vr18, $t4, 0
+	vbitsel.v	$vr18, $vr0, $vr18, $vr12
+	b	.LBB18_95
+.LBB18_91:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t5, $t4, 0
+	vinsgr2vr.w	$vr18, $t5, 0
+	andi	$t5, $t2, 16
+	beq	$t5, $zero, .LBB18_88
+.LBB18_92:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t5, $t4, 4
+	vinsgr2vr.w	$vr18, $t5, 1
+	andi	$t5, $t2, 256
+	beq	$t5, $zero, .LBB18_89
+.LBB18_93:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t5, $t4, 8
+	vinsgr2vr.w	$vr18, $t5, 2
+	bstrpick.d	$t2, $t2, 12, 12
+	beq	$t2, $zero, .LBB18_95
+.LBB18_94:                              #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t2, $t4, 12
+	vinsgr2vr.w	$vr18, $t2, 3
+	.p2align	4, , 16
+.LBB18_95:                              #   in Loop: Header=BB18_25 Depth=1
+	addi.d	$t2, $a5, 15
+	xor	$t2, $t2, $a5
+	srli.d	$t2, $t2, 12
+                                        # implicit-def: $vr19
+	beq	$t3, $zero, .LBB18_24
+	beq	$t2, $zero, .LBB18_23
+# %bb.96:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t2, $t3, 1
+                                        # implicit-def: $vr19
+	bne	$t2, $zero, .LBB18_100
+# %bb.97:                               #   in Loop: Header=BB18_25 Depth=1
+	andi	$t2, $t3, 16
+	bne	$t2, $zero, .LBB18_101
+.LBB18_98:                              #   in Loop: Header=BB18_25 Depth=1
+	andi	$t2, $t3, 256
+	bne	$t2, $zero, .LBB18_102
+.LBB18_99:                              #   in Loop: Header=BB18_25 Depth=1
+	bstrpick.d	$t2, $t3, 12, 12
+	beq	$t2, $zero, .LBB18_24
+	b	.LBB18_103
+.LBB18_100:                             #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t2, $a5, 0
+	vinsgr2vr.w	$vr19, $t2, 0
+	andi	$t2, $t3, 16
+	beq	$t2, $zero, .LBB18_98
+.LBB18_101:                             #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t2, $a5, 4
+	vinsgr2vr.w	$vr19, $t2, 1
+	andi	$t2, $t3, 256
+	beq	$t2, $zero, .LBB18_99
+.LBB18_102:                             #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t2, $a5, 8
+	vinsgr2vr.w	$vr19, $t2, 2
+	bstrpick.d	$t2, $t3, 12, 12
+	beq	$t2, $zero, .LBB18_24
+.LBB18_103:                             #   in Loop: Header=BB18_25 Depth=1
+	ld.wu	$t2, $a5, 12
+	vinsgr2vr.w	$vr19, $t2, 3
+	b	.LBB18_24
+.LBB18_104:
+	vadd.w	$vr0, $vr7, $vr6
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a5, $vr0, 0
+	vadd.w	$vr0, $vr5, $vr4
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a6, $vr0, 0
+	bne	$a0, $a4, .LBB18_6
+.LBB18_105:
+	st.w	$a6, $s1, 0
+	st.w	$a5, $s6, 0
+.LBB18_106:
 	move	$a0, $s4
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB18_20:
+.LBB18_107:
 	ld.w	$s0, $s1, 0
 	addi.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(cpu_timer_start)
 	jirl	$ra, $ra, 0
 	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
-	blez	$s0, .LBB18_27
-# %bb.21:
+	blez	$s0, .LBB18_114
+# %bb.108:
 	ld.w	$a0, $fp, 1120
 	ori	$a1, $zero, 2
-	blt	$a0, $a1, .LBB18_27
-# %bb.22:
+	blt	$a0, $a1, .LBB18_114
+# %bb.109:
 	ld.w	$a0, $fp, 628
 	sltui	$a0, $a0, 1
 	ori	$a1, $zero, 1176
@@ -7261,11 +7741,11 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	ldx.d	$s0, $fp, $a0
 	addi.d	$a0, $a1, 1
 	st.w	$a0, $fp, 588
-	beqz	$s0, .LBB18_41
-# %bb.23:
+	beqz	$s0, .LBB18_128
+# %bb.110:
 	srli.d	$a0, $s0, 61
-	bnez	$a0, .LBB18_164
-# %bb.24:
+	bnez	$a0, .LBB18_340
+# %bb.111:
 	slli.d	$s2, $s0, 2
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -7273,35 +7753,35 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	move	$s4, $a0
 	ori	$a0, $zero, 1
 	st.w	$zero, $s4, 0
-	beq	$s0, $a0, .LBB18_26
-# %bb.25:
+	beq	$s0, $a0, .LBB18_113
+# %bb.112:
 	addi.d	$a0, $s4, 4
 	addi.d	$a2, $s2, -4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-.LBB18_26:
+.LBB18_113:
 	alsl.d	$a6, $s0, $s4, 2
-	b	.LBB18_42
-.LBB18_27:
+	b	.LBB18_129
+.LBB18_114:
 	move	$s6, $zero
 	move	$s2, $zero
 	move	$s8, $zero
 	ld.d	$a1, $fp, 1176
 	sub.d	$s4, $s8, $s2
 	srai.d	$a0, $s4, 2
-	bgeu	$a0, $a1, .LBB18_80
-.LBB18_28:
+	bgeu	$a0, $a1, .LBB18_167
+.LBB18_115:
 	sub.d	$s7, $a1, $a0
 	sub.d	$a1, $s6, $s8
 	srai.d	$a1, $a1, 2
-	bgeu	$a1, $s7, .LBB18_38
-# %bb.29:
+	bgeu	$a1, $s7, .LBB18_125
+# %bb.116:
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	xor	$a2, $a0, $a1
-	bltu	$a2, $s7, .LBB18_162
-# %bb.30:
+	bltu	$a2, $s7, .LBB18_338
+# %bb.117:
 	sltu	$a2, $s7, $a0
 	masknez	$a3, $s7, $a2
 	maskeqz	$a2, $a0, $a2
@@ -7316,78 +7796,78 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp143:                               # EH_LABEL
-# %bb.31:
+# %bb.118:
 	move	$s5, $a0
 	add.d	$s8, $a0, $s4
 	ori	$a0, $zero, 1
 	stx.w	$zero, $s5, $s4
-	beq	$s7, $a0, .LBB18_33
-# %bb.32:
+	beq	$s7, $a0, .LBB18_120
+# %bb.119:
 	addi.d	$a0, $s8, 4
 	slli.d	$a1, $s7, 2
 	addi.d	$a2, $a1, -4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-.LBB18_33:
-	blez	$s4, .LBB18_35
-# %bb.34:
+.LBB18_120:
+	blez	$s4, .LBB18_122
+# %bb.121:
 	move	$a0, $s5
 	move	$a1, $s2
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB18_35:
-	beqz	$s2, .LBB18_37
-# %bb.36:
+.LBB18_122:
+	beqz	$s2, .LBB18_124
+# %bb.123:
 	sub.d	$a1, $s6, $s2
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB18_37:
+.LBB18_124:
 	alsl.d	$s8, $s7, $s8, 2
 	alsl.d	$s6, $s0, $s5, 2
 	move	$s2, $s5
-	b	.LBB18_82
-.LBB18_38:
+	b	.LBB18_169
+.LBB18_125:
 	st.w	$zero, $s8, 0
 	ori	$a1, $zero, 1
 	addi.d	$a0, $s8, 4
-	bne	$s7, $a1, .LBB18_40
-# %bb.39:
+	bne	$s7, $a1, .LBB18_127
+# %bb.126:
 	move	$s8, $a0
-	b	.LBB18_82
-.LBB18_40:
+	b	.LBB18_169
+.LBB18_127:
 	slli.d	$a1, $s7, 2
 	alsl.d	$s8, $s7, $s8, 2
 	addi.d	$a2, $a1, -4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	b	.LBB18_82
-.LBB18_41:
+	b	.LBB18_169
+.LBB18_128:
 	move	$s4, $zero
 	move	$a6, $zero
-.LBB18_42:
+.LBB18_129:
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 2
 	ori	$a2, $zero, 1
 	move	$a7, $a6
-	b	.LBB18_44
+	b	.LBB18_131
 	.p2align	4, , 16
-.LBB18_43:                              #   in Loop: Header=BB18_44 Depth=1
+.LBB18_130:                             #   in Loop: Header=BB18_131 Depth=1
 	ld.w	$a4, $s1, 0
 	add.d	$a4, $a4, $a5
 	st.w	$a4, $s1, 0
 	move	$a6, $s6
 	move	$a7, $a3
 	move	$s4, $s2
-	blez	$a5, .LBB18_79
-.LBB18_44:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB18_49 Depth 2
+	blez	$a5, .LBB18_166
+.LBB18_131:                             # =>This Loop Header: Depth=1
+                                        #     Child Loop BB18_136 Depth 2
 	ld.w	$a3, $fp, 1120
-	bge	$a2, $a3, .LBB18_78
-# %bb.45:                               #   in Loop: Header=BB18_44 Depth=1
+	bge	$a2, $a3, .LBB18_165
+# %bb.132:                              #   in Loop: Header=BB18_131 Depth=1
 	ld.d	$s2, $s3, 0
 	ld.d	$a3, $s3, 8
 	ld.d	$a4, $fp, 1160
@@ -7395,160 +7875,160 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	st.d	$s4, $s3, 0
 	st.d	$a7, $s3, 8
 	st.d	$a6, $s3, 16
-	beqz	$a4, .LBB18_79
-# %bb.46:                               #   in Loop: Header=BB18_44 Depth=1
+	beqz	$a4, .LBB18_166
+# %bb.133:                              #   in Loop: Header=BB18_131 Depth=1
 	ld.d	$a6, $fp, 1352
 	move	$a7, $zero
 	move	$a5, $zero
 	addi.w	$a2, $a2, 1
 	ori	$t0, $zero, 1
-	b	.LBB18_49
+	b	.LBB18_136
 	.p2align	4, , 16
-.LBB18_47:                              #   in Loop: Header=BB18_49 Depth=2
+.LBB18_134:                             #   in Loop: Header=BB18_136 Depth=2
 	stx.w	$a0, $s4, $a7
 	addi.w	$a5, $a5, 1
-.LBB18_48:                              #   in Loop: Header=BB18_49 Depth=2
+.LBB18_135:                             #   in Loop: Header=BB18_136 Depth=2
 	bstrpick.d	$t1, $t0, 31, 0
 	addi.d	$t0, $t0, 1
 	addi.d	$a7, $a7, 4
-	bgeu	$t1, $a4, .LBB18_43
-.LBB18_49:                              #   Parent Loop BB18_44 Depth=1
+	bgeu	$t1, $a4, .LBB18_130
+.LBB18_136:                             #   Parent Loop BB18_131 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.w	$t2, $s2, $a7
 	ldx.w	$t1, $a6, $a7
 	stx.w	$t2, $s4, $a7
-	bgtz	$t2, .LBB18_48
-# %bb.50:                               #   in Loop: Header=BB18_49 Depth=2
+	bgtz	$t2, .LBB18_135
+# %bb.137:                              #   in Loop: Header=BB18_136 Depth=2
 	ld.d	$t2, $fp, 1368
 	ldx.w	$t3, $t2, $a7
-	bltz	$t3, .LBB18_57
-# %bb.51:                               #   in Loop: Header=BB18_49 Depth=2
+	bltz	$t3, .LBB18_144
+# %bb.138:                              #   in Loop: Header=BB18_136 Depth=2
 	ld.w	$t2, $fp, 1176
-	bge	$t3, $t2, .LBB18_57
-# %bb.52:                               #   in Loop: Header=BB18_49 Depth=2
+	bge	$t3, $t2, .LBB18_144
+# %bb.139:                              #   in Loop: Header=BB18_136 Depth=2
 	slli.d	$t3, $t3, 2
 	ldx.w	$t5, $s2, $t3
 	ldx.w	$t4, $a6, $t3
 	slt	$t5, $zero, $t5
 	sub.d	$t6, $t4, $t1
 	add.w	$t5, $t6, $t5
-	blt	$a0, $t5, .LBB18_47
-# %bb.53:                               #   in Loop: Header=BB18_49 Depth=2
-	bge	$t1, $t4, .LBB18_57
-# %bb.54:                               #   in Loop: Header=BB18_49 Depth=2
+	blt	$a0, $t5, .LBB18_134
+# %bb.140:                              #   in Loop: Header=BB18_136 Depth=2
+	bge	$t1, $t4, .LBB18_144
+# %bb.141:                              #   in Loop: Header=BB18_136 Depth=2
 	ld.d	$t4, $fp, 1392
 	ldx.w	$t3, $t4, $t3
-	bltz	$t3, .LBB18_57
-# %bb.55:                               #   in Loop: Header=BB18_49 Depth=2
-	bgeu	$t3, $t2, .LBB18_57
-# %bb.56:                               #   in Loop: Header=BB18_49 Depth=2
+	bltz	$t3, .LBB18_144
+# %bb.142:                              #   in Loop: Header=BB18_136 Depth=2
+	bgeu	$t3, $t2, .LBB18_144
+# %bb.143:                              #   in Loop: Header=BB18_136 Depth=2
 	slli.d	$t2, $t3, 2
 	ldx.w	$t3, $s2, $t2
 	ldx.w	$t2, $a6, $t2
 	slt	$t3, $zero, $t3
 	sub.d	$t2, $t2, $t1
 	add.w	$t2, $t2, $t3
-	blt	$a0, $t2, .LBB18_47
+	blt	$a0, $t2, .LBB18_134
 	.p2align	4, , 16
-.LBB18_57:                              #   in Loop: Header=BB18_49 Depth=2
+.LBB18_144:                             #   in Loop: Header=BB18_136 Depth=2
 	ld.d	$t2, $fp, 1376
 	ldx.w	$t4, $t2, $a7
-	bltz	$t4, .LBB18_64
-# %bb.58:                               #   in Loop: Header=BB18_49 Depth=2
+	bltz	$t4, .LBB18_151
+# %bb.145:                              #   in Loop: Header=BB18_136 Depth=2
 	ld.w	$t3, $fp, 1176
-	bge	$t4, $t3, .LBB18_64
-# %bb.59:                               #   in Loop: Header=BB18_49 Depth=2
+	bge	$t4, $t3, .LBB18_151
+# %bb.146:                              #   in Loop: Header=BB18_136 Depth=2
 	slli.d	$t4, $t4, 2
 	ldx.w	$t6, $s2, $t4
 	ldx.w	$t5, $a6, $t4
 	slt	$t6, $zero, $t6
 	sub.d	$t7, $t5, $t1
 	add.w	$t6, $t7, $t6
-	blt	$a0, $t6, .LBB18_47
-# %bb.60:                               #   in Loop: Header=BB18_49 Depth=2
-	bge	$t1, $t5, .LBB18_64
-# %bb.61:                               #   in Loop: Header=BB18_49 Depth=2
+	blt	$a0, $t6, .LBB18_134
+# %bb.147:                              #   in Loop: Header=BB18_136 Depth=2
+	bge	$t1, $t5, .LBB18_151
+# %bb.148:                              #   in Loop: Header=BB18_136 Depth=2
 	ld.d	$t5, $fp, 1392
 	ldx.w	$t4, $t5, $t4
-	bltz	$t4, .LBB18_64
-# %bb.62:                               #   in Loop: Header=BB18_49 Depth=2
-	bgeu	$t4, $t3, .LBB18_64
-# %bb.63:                               #   in Loop: Header=BB18_49 Depth=2
+	bltz	$t4, .LBB18_151
+# %bb.149:                              #   in Loop: Header=BB18_136 Depth=2
+	bgeu	$t4, $t3, .LBB18_151
+# %bb.150:                              #   in Loop: Header=BB18_136 Depth=2
 	slli.d	$t3, $t4, 2
 	ldx.w	$t4, $s2, $t3
 	ldx.w	$t3, $a6, $t3
 	slt	$t4, $zero, $t4
 	sub.d	$t3, $t3, $t1
 	add.w	$t3, $t3, $t4
-	blt	$a0, $t3, .LBB18_47
+	blt	$a0, $t3, .LBB18_134
 	.p2align	4, , 16
-.LBB18_64:                              #   in Loop: Header=BB18_49 Depth=2
+.LBB18_151:                             #   in Loop: Header=BB18_136 Depth=2
 	ld.d	$t3, $fp, 1392
 	ldx.w	$t4, $t3, $a7
-	bltz	$t4, .LBB18_71
-# %bb.65:                               #   in Loop: Header=BB18_49 Depth=2
+	bltz	$t4, .LBB18_158
+# %bb.152:                              #   in Loop: Header=BB18_136 Depth=2
 	ld.w	$t3, $fp, 1176
-	bge	$t4, $t3, .LBB18_71
-# %bb.66:                               #   in Loop: Header=BB18_49 Depth=2
+	bge	$t4, $t3, .LBB18_158
+# %bb.153:                              #   in Loop: Header=BB18_136 Depth=2
 	slli.d	$t4, $t4, 2
 	ldx.w	$t6, $s2, $t4
 	ldx.w	$t5, $a6, $t4
 	slt	$t6, $zero, $t6
 	sub.d	$t7, $t5, $t1
 	add.w	$t6, $t7, $t6
-	blt	$a0, $t6, .LBB18_47
-# %bb.67:                               #   in Loop: Header=BB18_49 Depth=2
-	bge	$t1, $t5, .LBB18_71
-# %bb.68:                               #   in Loop: Header=BB18_49 Depth=2
+	blt	$a0, $t6, .LBB18_134
+# %bb.154:                              #   in Loop: Header=BB18_136 Depth=2
+	bge	$t1, $t5, .LBB18_158
+# %bb.155:                              #   in Loop: Header=BB18_136 Depth=2
 	ldx.w	$t4, $t2, $t4
-	bltz	$t4, .LBB18_71
-# %bb.69:                               #   in Loop: Header=BB18_49 Depth=2
-	bgeu	$t4, $t3, .LBB18_71
-# %bb.70:                               #   in Loop: Header=BB18_49 Depth=2
+	bltz	$t4, .LBB18_158
+# %bb.156:                              #   in Loop: Header=BB18_136 Depth=2
+	bgeu	$t4, $t3, .LBB18_158
+# %bb.157:                              #   in Loop: Header=BB18_136 Depth=2
 	slli.d	$t3, $t4, 2
 	ldx.w	$t4, $s2, $t3
 	ldx.w	$t3, $a6, $t3
 	slt	$t4, $zero, $t4
 	sub.d	$t3, $t3, $t1
 	add.w	$t3, $t3, $t4
-	blt	$a0, $t3, .LBB18_47
+	blt	$a0, $t3, .LBB18_134
 	.p2align	4, , 16
-.LBB18_71:                              #   in Loop: Header=BB18_49 Depth=2
+.LBB18_158:                             #   in Loop: Header=BB18_136 Depth=2
 	ld.d	$t3, $fp, 1384
 	ldx.w	$t4, $t3, $a7
-	bltz	$t4, .LBB18_48
-# %bb.72:                               #   in Loop: Header=BB18_49 Depth=2
+	bltz	$t4, .LBB18_135
+# %bb.159:                              #   in Loop: Header=BB18_136 Depth=2
 	ld.w	$t3, $fp, 1176
-	bge	$t4, $t3, .LBB18_48
-# %bb.73:                               #   in Loop: Header=BB18_49 Depth=2
+	bge	$t4, $t3, .LBB18_135
+# %bb.160:                              #   in Loop: Header=BB18_136 Depth=2
 	slli.d	$t4, $t4, 2
 	ldx.w	$t6, $s2, $t4
 	ldx.w	$t5, $a6, $t4
 	slt	$t6, $zero, $t6
 	sub.d	$t7, $t5, $t1
 	add.w	$t6, $t7, $t6
-	blt	$a0, $t6, .LBB18_47
-# %bb.74:                               #   in Loop: Header=BB18_49 Depth=2
-	bge	$t1, $t5, .LBB18_48
-# %bb.75:                               #   in Loop: Header=BB18_49 Depth=2
+	blt	$a0, $t6, .LBB18_134
+# %bb.161:                              #   in Loop: Header=BB18_136 Depth=2
+	bge	$t1, $t5, .LBB18_135
+# %bb.162:                              #   in Loop: Header=BB18_136 Depth=2
 	ldx.w	$t2, $t2, $t4
-	bltz	$t2, .LBB18_48
-# %bb.76:                               #   in Loop: Header=BB18_49 Depth=2
-	bgeu	$t2, $t3, .LBB18_48
-# %bb.77:                               #   in Loop: Header=BB18_49 Depth=2
+	bltz	$t2, .LBB18_135
+# %bb.163:                              #   in Loop: Header=BB18_136 Depth=2
+	bgeu	$t2, $t3, .LBB18_135
+# %bb.164:                              #   in Loop: Header=BB18_136 Depth=2
 	slli.d	$t2, $t2, 2
 	ldx.w	$t3, $s2, $t2
 	ldx.w	$t2, $a6, $t2
 	slt	$t3, $zero, $t3
 	sub.d	$t1, $t2, $t1
 	add.w	$t1, $t1, $t3
-	bge	$t1, $a1, .LBB18_47
-	b	.LBB18_48
-.LBB18_78:
+	bge	$t1, $a1, .LBB18_134
+	b	.LBB18_135
+.LBB18_165:
 	move	$s2, $s4
 	move	$a3, $a7
 	move	$s6, $a6
-.LBB18_79:
+.LBB18_166:
 	xor	$a0, $a3, $s2
 	sltui	$a0, $a0, 1
 	masknez	$a1, $s2, $a0
@@ -7557,26 +8037,26 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	ld.d	$a1, $fp, 1176
 	sub.d	$s4, $s8, $s2
 	srai.d	$a0, $s4, 2
-	bltu	$a0, $a1, .LBB18_28
-.LBB18_80:
-	bgeu	$a1, $a0, .LBB18_82
-# %bb.81:
+	bltu	$a0, $a1, .LBB18_115
+.LBB18_167:
+	bgeu	$a1, $a0, .LBB18_169
+# %bb.168:
 	alsl.d	$a0, $a1, $s2, 2
 	xor	$a1, $s8, $a0
 	sltui	$a1, $a1, 1
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $s8, $a1
 	or	$s8, $a1, $a0
-.LBB18_82:
-	ld.d	$s4, $s3, 0
+.LBB18_169:
+	ld.d	$s5, $s3, 0
 	ld.d	$a0, $s3, 8
 	ld.d	$s7, $fp, 1160
 	ld.d	$a3, $s3, 16
 	st.d	$s2, $s3, 0
 	st.d	$s8, $s3, 8
 	st.d	$s6, $s3, 16
-	beqz	$s7, .LBB18_134
-# %bb.83:
+	beqz	$s7, .LBB18_221
+# %bb.170:
 	move	$a4, $zero
 	ori	$a5, $zero, 1
 	lu12i.w	$a1, -245
@@ -7584,92 +8064,92 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	lu12i.w	$a2, -524288
 	ori	$a2, $a2, 1
 	ori	$a6, $zero, 1
-	b	.LBB18_86
+	b	.LBB18_173
 	.p2align	4, , 16
-.LBB18_84:                              #   in Loop: Header=BB18_86 Depth=1
+.LBB18_171:                             #   in Loop: Header=BB18_173 Depth=1
 	stx.w	$zero, $s2, $a4
-.LBB18_85:                              #   in Loop: Header=BB18_86 Depth=1
+.LBB18_172:                             #   in Loop: Header=BB18_173 Depth=1
 	bstrpick.d	$a7, $a6, 31, 0
 	addi.d	$a6, $a6, 1
 	addi.d	$a4, $a4, 4
-	bgeu	$a7, $s7, .LBB18_104
-.LBB18_86:                              # =>This Inner Loop Header: Depth=1
-	ldx.w	$a7, $s4, $a4
+	bgeu	$a7, $s7, .LBB18_191
+.LBB18_173:                             # =>This Inner Loop Header: Depth=1
+	ldx.w	$a7, $s5, $a4
 	stx.w	$a7, $s2, $a4
-	bltu	$a7, $a1, .LBB18_85
-# %bb.87:                               #   in Loop: Header=BB18_86 Depth=1
+	bltu	$a7, $a1, .LBB18_172
+# %bb.174:                              #   in Loop: Header=BB18_173 Depth=1
 	ld.d	$a7, $fp, 1328
 	ld.d	$t0, $fp, 1336
 	ldx.w	$t1, $a7, $a4
 	ldx.w	$a7, $t0, $a4
 	and	$t0, $t1, $a2
 	and	$t2, $a7, $a2
-	bne	$t0, $a5, .LBB18_90
-# %bb.88:                               #   in Loop: Header=BB18_86 Depth=1
-	bne	$t2, $a5, .LBB18_90
-# %bb.89:                               #   in Loop: Header=BB18_86 Depth=1
+	bne	$t0, $a5, .LBB18_177
+# %bb.175:                              #   in Loop: Header=BB18_173 Depth=1
+	bne	$t2, $a5, .LBB18_177
+# %bb.176:                              #   in Loop: Header=BB18_173 Depth=1
 	ld.d	$a7, $fp, 1376
-	b	.LBB18_93
+	b	.LBB18_180
 	.p2align	4, , 16
-.LBB18_90:                              #   in Loop: Header=BB18_86 Depth=1
+.LBB18_177:                             #   in Loop: Header=BB18_173 Depth=1
 	andi	$t1, $t1, 1
-	bnez	$t1, .LBB18_96
-# %bb.91:                               #   in Loop: Header=BB18_86 Depth=1
-	bne	$t2, $a5, .LBB18_96
-# %bb.92:                               #   in Loop: Header=BB18_86 Depth=1
+	bnez	$t1, .LBB18_183
+# %bb.178:                              #   in Loop: Header=BB18_173 Depth=1
+	bne	$t2, $a5, .LBB18_183
+# %bb.179:                              #   in Loop: Header=BB18_173 Depth=1
 	ld.d	$a7, $fp, 1368
-.LBB18_93:                              #   in Loop: Header=BB18_86 Depth=1
+.LBB18_180:                             #   in Loop: Header=BB18_173 Depth=1
 	ldx.w	$t0, $a7, $a4
 	ld.d	$a7, $fp, 1352
 	slli.d	$t0, $t0, 2
-	ldx.w	$t1, $s4, $t0
+	ldx.w	$t1, $s5, $t0
 	ldx.w	$t2, $a7, $t0
 	ldx.w	$t0, $a7, $a4
 	slt	$t1, $zero, $t1
 	add.w	$t1, $t2, $t1
-	blt	$t0, $t1, .LBB18_84
-# %bb.94:                               #   in Loop: Header=BB18_86 Depth=1
+	blt	$t0, $t1, .LBB18_171
+# %bb.181:                              #   in Loop: Header=BB18_173 Depth=1
 	ld.d	$t1, $fp, 1392
-.LBB18_95:                              #   in Loop: Header=BB18_86 Depth=1
+.LBB18_182:                             #   in Loop: Header=BB18_173 Depth=1
 	ldx.w	$t1, $t1, $a4
 	slli.d	$t1, $t1, 2
-	ldx.w	$t2, $s4, $t1
+	ldx.w	$t2, $s5, $t1
 	ldx.w	$a7, $a7, $t1
 	slt	$t1, $zero, $t2
 	add.w	$a7, $a7, $t1
-	bge	$t0, $a7, .LBB18_85
-	b	.LBB18_84
-.LBB18_96:                              #   in Loop: Header=BB18_86 Depth=1
-	bne	$t0, $a5, .LBB18_99
-# %bb.97:                               #   in Loop: Header=BB18_86 Depth=1
+	bge	$t0, $a7, .LBB18_172
+	b	.LBB18_171
+.LBB18_183:                             #   in Loop: Header=BB18_173 Depth=1
+	bne	$t0, $a5, .LBB18_186
+# %bb.184:                              #   in Loop: Header=BB18_173 Depth=1
 	andi	$t0, $a7, 1
-	bnez	$t0, .LBB18_99
-# %bb.98:                               #   in Loop: Header=BB18_86 Depth=1
+	bnez	$t0, .LBB18_186
+# %bb.185:                              #   in Loop: Header=BB18_173 Depth=1
 	ld.d	$a7, $fp, 1376
-	b	.LBB18_102
-.LBB18_99:                              #   in Loop: Header=BB18_86 Depth=1
-	bnez	$t1, .LBB18_85
-# %bb.100:                              #   in Loop: Header=BB18_86 Depth=1
+	b	.LBB18_189
+.LBB18_186:                             #   in Loop: Header=BB18_173 Depth=1
+	bnez	$t1, .LBB18_172
+# %bb.187:                              #   in Loop: Header=BB18_173 Depth=1
 	andi	$a7, $a7, 1
-	bnez	$a7, .LBB18_85
-# %bb.101:                              #   in Loop: Header=BB18_86 Depth=1
+	bnez	$a7, .LBB18_172
+# %bb.188:                              #   in Loop: Header=BB18_173 Depth=1
 	ld.d	$a7, $fp, 1368
-.LBB18_102:                             #   in Loop: Header=BB18_86 Depth=1
+.LBB18_189:                             #   in Loop: Header=BB18_173 Depth=1
 	ldx.w	$t0, $a7, $a4
 	ld.d	$a7, $fp, 1352
 	slli.d	$t0, $t0, 2
-	ldx.w	$t1, $s4, $t0
+	ldx.w	$t1, $s5, $t0
 	ldx.w	$t2, $a7, $t0
 	ldx.w	$t0, $a7, $a4
 	slt	$t1, $zero, $t1
 	add.w	$t1, $t2, $t1
-	blt	$t0, $t1, .LBB18_84
-# %bb.103:                              #   in Loop: Header=BB18_86 Depth=1
+	blt	$t0, $t1, .LBB18_171
+# %bb.190:                              #   in Loop: Header=BB18_173 Depth=1
 	ld.d	$t1, $fp, 1384
-	b	.LBB18_95
-.LBB18_104:
+	b	.LBB18_182
+.LBB18_191:
 	move	$a4, $zero
-	st.d	$s4, $s3, 0
+	st.d	$s5, $s3, 0
 	st.d	$a0, $s3, 8
 	st.d	$a3, $s3, 16
 	addi.d	$a3, $fp, 1392
@@ -7678,100 +8158,100 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	addi.d	$a7, $fp, 1384
 	ori	$t0, $zero, 1
 	ori	$t1, $zero, 1
-	b	.LBB18_107
+	b	.LBB18_194
 	.p2align	4, , 16
-.LBB18_105:                             #   in Loop: Header=BB18_107 Depth=1
-	stx.w	$zero, $s4, $a4
-.LBB18_106:                             #   in Loop: Header=BB18_107 Depth=1
+.LBB18_192:                             #   in Loop: Header=BB18_194 Depth=1
+	stx.w	$zero, $s5, $a4
+.LBB18_193:                             #   in Loop: Header=BB18_194 Depth=1
 	bstrpick.d	$t2, $t1, 31, 0
 	addi.d	$a4, $a4, 4
 	addi.d	$t1, $t1, 1
-	bgeu	$t2, $s7, .LBB18_125
-.LBB18_107:                             # =>This Inner Loop Header: Depth=1
+	bgeu	$t2, $s7, .LBB18_212
+.LBB18_194:                             # =>This Inner Loop Header: Depth=1
 	ldx.w	$t2, $s2, $a4
-	stx.w	$t2, $s4, $a4
-	bltu	$t2, $a1, .LBB18_106
-# %bb.108:                              #   in Loop: Header=BB18_107 Depth=1
+	stx.w	$t2, $s5, $a4
+	bltu	$t2, $a1, .LBB18_193
+# %bb.195:                              #   in Loop: Header=BB18_194 Depth=1
 	ld.d	$t2, $fp, 1328
 	ld.d	$t3, $fp, 1336
 	ldx.w	$t4, $t2, $a4
 	ldx.w	$t3, $t3, $a4
 	and	$t2, $t4, $a2
 	and	$t7, $t3, $a2
-	bne	$t2, $t0, .LBB18_110
-# %bb.109:                              #   in Loop: Header=BB18_107 Depth=1
+	bne	$t2, $t0, .LBB18_197
+# %bb.196:                              #   in Loop: Header=BB18_194 Depth=1
 	move	$t5, $a7
 	move	$t6, $a5
-	beq	$t7, $t0, .LBB18_116
-.LBB18_110:                             #   in Loop: Header=BB18_107 Depth=1
+	beq	$t7, $t0, .LBB18_203
+.LBB18_197:                             #   in Loop: Header=BB18_194 Depth=1
 	andi	$t4, $t4, 1
-	bnez	$t4, .LBB18_112
-# %bb.111:                              #   in Loop: Header=BB18_107 Depth=1
+	bnez	$t4, .LBB18_199
+# %bb.198:                              #   in Loop: Header=BB18_194 Depth=1
 	move	$t5, $a7
 	move	$t6, $a6
-	beq	$t7, $t0, .LBB18_116
-.LBB18_112:                             #   in Loop: Header=BB18_107 Depth=1
-	bne	$t2, $t0, .LBB18_114
-# %bb.113:                              #   in Loop: Header=BB18_107 Depth=1
+	beq	$t7, $t0, .LBB18_203
+.LBB18_199:                             #   in Loop: Header=BB18_194 Depth=1
+	bne	$t2, $t0, .LBB18_201
+# %bb.200:                              #   in Loop: Header=BB18_194 Depth=1
 	andi	$t2, $t3, 1
 	move	$t5, $a3
 	move	$t6, $a5
-	beqz	$t2, .LBB18_116
-.LBB18_114:                             #   in Loop: Header=BB18_107 Depth=1
+	beqz	$t2, .LBB18_203
+.LBB18_201:                             #   in Loop: Header=BB18_194 Depth=1
 	move	$t2, $zero
-	bnez	$t4, .LBB18_124
-# %bb.115:                              #   in Loop: Header=BB18_107 Depth=1
+	bnez	$t4, .LBB18_211
+# %bb.202:                              #   in Loop: Header=BB18_194 Depth=1
 	andi	$t7, $t3, 1
 	move	$t5, $a3
 	move	$t6, $a6
 	move	$t3, $t2
 	move	$t4, $t2
-	bnez	$t7, .LBB18_118
+	bnez	$t7, .LBB18_205
 	.p2align	4, , 16
-.LBB18_116:                             #   in Loop: Header=BB18_107 Depth=1
+.LBB18_203:                             #   in Loop: Header=BB18_194 Depth=1
 	ld.d	$t2, $t5, 0
 	ldx.w	$t4, $t2, $a4
 	ld.d	$t2, $t6, 0
 	slli.d	$t3, $t4, 2
 	ldx.w	$t5, $t2, $t3
-	bltz	$t5, .LBB18_105
-# %bb.117:                              #   in Loop: Header=BB18_107 Depth=1
+	bltz	$t5, .LBB18_192
+# %bb.204:                              #   in Loop: Header=BB18_194 Depth=1
 	ldx.w	$t3, $t2, $a4
 	bstrpick.d	$t2, $t5, 31, 0
-.LBB18_118:                             #   in Loop: Header=BB18_107 Depth=1
+.LBB18_205:                             #   in Loop: Header=BB18_194 Depth=1
 	slli.d	$t6, $t4, 2
 	ldx.w	$t5, $s2, $t6
 	addi.w	$t4, $zero, -1
-	bne	$t5, $t4, .LBB18_105
-.LBB18_119:                             #   in Loop: Header=BB18_107 Depth=1
+	bne	$t5, $t4, .LBB18_192
+.LBB18_206:                             #   in Loop: Header=BB18_194 Depth=1
 	ld.d	$t5, $fp, 1352
 	ldx.w	$t7, $t5, $t6
 	ldx.w	$t6, $t5, $a4
-	bne	$t7, $t6, .LBB18_105
-# %bb.120:                              #   in Loop: Header=BB18_107 Depth=1
+	bne	$t7, $t6, .LBB18_192
+# %bb.207:                              #   in Loop: Header=BB18_194 Depth=1
 	slli.d	$t3, $t3, 2
 	ldx.w	$t7, $s2, $t3
-	bne	$t7, $t4, .LBB18_105
-# %bb.121:                              #   in Loop: Header=BB18_107 Depth=1
+	bne	$t7, $t4, .LBB18_192
+# %bb.208:                              #   in Loop: Header=BB18_194 Depth=1
 	ldx.w	$t3, $t5, $t3
-	bne	$t3, $t6, .LBB18_105
-# %bb.122:                              #   in Loop: Header=BB18_107 Depth=1
+	bne	$t3, $t6, .LBB18_192
+# %bb.209:                              #   in Loop: Header=BB18_194 Depth=1
 	slli.d	$t2, $t2, 2
 	ldx.w	$t3, $s2, $t2
-	bne	$t3, $t4, .LBB18_105
-# %bb.123:                              #   in Loop: Header=BB18_107 Depth=1
+	bne	$t3, $t4, .LBB18_192
+# %bb.210:                              #   in Loop: Header=BB18_194 Depth=1
 	ldx.w	$t2, $t5, $t2
-	beq	$t2, $t6, .LBB18_106
-	b	.LBB18_105
-.LBB18_124:                             #   in Loop: Header=BB18_107 Depth=1
+	beq	$t2, $t6, .LBB18_193
+	b	.LBB18_192
+.LBB18_211:                             #   in Loop: Header=BB18_194 Depth=1
 	move	$t3, $t2
 	move	$t4, $t2
 	slli.d	$t6, $t4, 2
 	ldx.w	$t5, $s2, $t6
 	addi.w	$t4, $zero, -1
-	bne	$t5, $t4, .LBB18_105
-	b	.LBB18_119
-.LBB18_125:
+	bne	$t5, $t4, .LBB18_192
+	b	.LBB18_206
+.LBB18_212:
 	ld.d	$a1, $fp, 1360
 	addi.d	$a2, $fp, 1384
 	addi.d	$a3, $fp, 1392
@@ -7782,158 +8262,149 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	pcalau12i	$t0, %pc_hi20(.LJTI18_0)
 	addi.d	$t0, $t0, %pc_lo12(.LJTI18_0)
 	move	$t1, $zero
-	b	.LBB18_129
-.LBB18_126:                             #   in Loop: Header=BB18_129 Depth=1
+	b	.LBB18_216
+.LBB18_213:                             #   in Loop: Header=BB18_216 Depth=1
 	move	$t2, $a3
-.LBB18_127:                             #   in Loop: Header=BB18_129 Depth=1
+.LBB18_214:                             #   in Loop: Header=BB18_216 Depth=1
 	ld.d	$t2, $t2, 0
 	ldx.w	$t2, $t2, $t1
 	slli.d	$t2, $t2, 2
-	ldx.w	$t2, $s4, $t2
-	stx.w	$t2, $s4, $t1
-.LBB18_128:                             #   in Loop: Header=BB18_129 Depth=1
+	ldx.w	$t2, $s5, $t2
+	stx.w	$t2, $s5, $t1
+.LBB18_215:                             #   in Loop: Header=BB18_216 Depth=1
 	bstrpick.d	$t2, $a6, 31, 0
 	addi.d	$t1, $t1, 4
 	addi.d	$a6, $a6, 1
-	bgeu	$t2, $s7, .LBB18_135
-.LBB18_129:                             # =>This Inner Loop Header: Depth=1
+	bgeu	$t2, $s7, .LBB18_222
+.LBB18_216:                             # =>This Inner Loop Header: Depth=1
 	ldx.w	$t2, $a1, $t1
-	bgez	$t2, .LBB18_128
-# %bb.130:                              #   in Loop: Header=BB18_129 Depth=1
+	bgez	$t2, .LBB18_215
+# %bb.217:                              #   in Loop: Header=BB18_216 Depth=1
 	addi.d	$t2, $t2, 4
-	bltu	$a7, $t2, .LBB18_128
-# %bb.131:                              #   in Loop: Header=BB18_129 Depth=1
+	bltu	$a7, $t2, .LBB18_215
+# %bb.218:                              #   in Loop: Header=BB18_216 Depth=1
 	slli.d	$t2, $t2, 2
 	ldx.w	$t2, $t0, $t2
 	add.d	$t3, $t0, $t2
 	move	$t2, $a5
 	jr	$t3
-.LBB18_132:                             #   in Loop: Header=BB18_129 Depth=1
+.LBB18_219:                             #   in Loop: Header=BB18_216 Depth=1
 	move	$t2, $a2
-	b	.LBB18_127
-.LBB18_133:                             #   in Loop: Header=BB18_129 Depth=1
+	b	.LBB18_214
+.LBB18_220:                             #   in Loop: Header=BB18_216 Depth=1
 	move	$t2, $a4
-	b	.LBB18_127
-.LBB18_134:
-	st.d	$s4, $s3, 0
+	b	.LBB18_214
+.LBB18_221:
+	st.d	$s5, $s3, 0
 	st.d	$a0, $s3, 8
 	st.d	$a3, $s3, 16
-.LBB18_135:
-	sub.d	$s3, $a0, $s4
-	beq	$a0, $s4, .LBB18_153
-# %bb.136:
+.LBB18_222:
+	sub.d	$s3, $a0, $s5
+	beq	$a0, $s5, .LBB18_241
+# %bb.223:
 .Ltmp144:                               # EH_LABEL
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp145:                               # EH_LABEL
-# %bb.137:
-	move	$s5, $a0
-	blez	$s3, .LBB18_139
-.LBB18_138:
-	move	$a0, $s5
-	move	$a1, $s4
+# %bb.224:
+	move	$s4, $a0
+	blez	$s3, .LBB18_226
+.LBB18_225:
+	move	$a0, $s4
+	move	$a1, $s5
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB18_139:
-	beqz	$s7, .LBB18_154
-# %bb.140:
-	move	$s4, $zero
-	move	$a0, $zero
-	ld.d	$a1, $fp, 1360
-	ld.d	$a2, $fp, 1328
-	ld.d	$a3, $fp, 1336
-	ori	$a4, $zero, 1
-	addi.d	$a5, $zero, -1
+.LBB18_226:
+	beqz	$s7, .LBB18_242
+# %bb.227:
+	ld.d	$a0, $fp, 1360
+	ld.d	$a1, $fp, 1328
+	ld.d	$a2, $fp, 1336
+	ori	$a3, $zero, 8
+	bgeu	$s7, $a3, .LBB18_248
+# %bb.228:
+	move	$a3, $zero
+	move	$s5, $zero
+	move	$a4, $zero
+.LBB18_229:
+	alsl.d	$a2, $a3, $a2, 2
+	alsl.d	$a1, $a3, $a1, 2
+	alsl.d	$a0, $a3, $a0, 2
+	addi.d	$a5, $a3, 1
+	alsl.d	$a3, $a3, $s4, 2
 	ori	$a6, $zero, 1
-	bstrins.d	$a6, $a6, 32, 31
-	move	$a7, $s5
+	addi.d	$a7, $zero, -1
 	ori	$t0, $zero, 1
-	b	.LBB18_143
-.LBB18_141:                             #   in Loop: Header=BB18_143 Depth=1
-	addi.d	$a0, $a0, 1
+	bstrins.d	$t0, $t0, 32, 31
+	b	.LBB18_232
+.LBB18_230:                             #   in Loop: Header=BB18_232 Depth=1
+	addi.d	$a4, $a4, 1
 	.p2align	4, , 16
-.LBB18_142:                             #   in Loop: Header=BB18_143 Depth=1
-	bstrpick.d	$t1, $t0, 31, 0
-	addi.d	$a3, $a3, 4
+.LBB18_231:                             #   in Loop: Header=BB18_232 Depth=1
+	bstrpick.d	$t1, $a5, 31, 0
 	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, 4
-	addi.d	$t0, $t0, 1
-	addi.d	$a7, $a7, 4
-	bgeu	$t1, $s7, .LBB18_152
-.LBB18_143:                             # =>This Inner Loop Header: Depth=1
-	ld.w	$t1, $a7, 0
-	bltz	$t1, .LBB18_147
-# %bb.144:                              #   in Loop: Header=BB18_143 Depth=1
-	beqz	$t1, .LBB18_142
-# %bb.145:                              #   in Loop: Header=BB18_143 Depth=1
-	ld.w	$t1, $a1, 0
-	bne	$t1, $a4, .LBB18_141
-# %bb.146:                              #   in Loop: Header=BB18_143 Depth=1
-	addi.d	$a0, $a0, 3
-	b	.LBB18_142
+	addi.d	$a0, $a0, 4
+	addi.d	$a5, $a5, 1
+	addi.d	$a3, $a3, 4
+	bgeu	$t1, $s7, .LBB18_333
+.LBB18_232:                             # =>This Inner Loop Header: Depth=1
+	ld.w	$t1, $a3, 0
+	bltz	$t1, .LBB18_236
+# %bb.233:                              #   in Loop: Header=BB18_232 Depth=1
+	beqz	$t1, .LBB18_231
+# %bb.234:                              #   in Loop: Header=BB18_232 Depth=1
+	ld.w	$t1, $a0, 0
+	bne	$t1, $a6, .LBB18_230
+# %bb.235:                              #   in Loop: Header=BB18_232 Depth=1
+	addi.d	$a4, $a4, 3
+	b	.LBB18_231
 	.p2align	4, , 16
-.LBB18_147:                             #   in Loop: Header=BB18_143 Depth=1
-	ld.w	$t3, $a1, 0
-	ld.w	$t1, $a2, 0
-	ld.w	$t2, $a3, 0
-	bne	$t3, $a4, .LBB18_149
-# %bb.148:                              #   in Loop: Header=BB18_143 Depth=1
+.LBB18_236:                             #   in Loop: Header=BB18_232 Depth=1
+	ld.w	$t3, $a0, 0
+	ld.w	$t1, $a1, 0
+	ld.w	$t2, $a2, 0
+	bne	$t3, $a6, .LBB18_238
+# %bb.237:                              #   in Loop: Header=BB18_232 Depth=1
 	andi	$t1, $t1, 1
 	andi	$t2, $t2, 1
 	sub.d	$t2, $zero, $t2
-	maskeqz	$t3, $a5, $t1
+	maskeqz	$t3, $a7, $t1
 	masknez	$t1, $t2, $t1
 	or	$t1, $t3, $t1
-	add.d	$s4, $t1, $s4
-	b	.LBB18_142
-.LBB18_149:                             #   in Loop: Header=BB18_143 Depth=1
-	and	$t3, $t1, $a6
+	add.d	$s5, $t1, $s5
+	b	.LBB18_231
+.LBB18_238:                             #   in Loop: Header=BB18_232 Depth=1
+	and	$t3, $t1, $t0
 	addi.w	$t3, $t3, 0
-	bne	$t3, $a4, .LBB18_151
-# %bb.150:                              #   in Loop: Header=BB18_143 Depth=1
-	and	$t3, $t2, $a6
-	beq	$t3, $a4, .LBB18_142
-.LBB18_151:                             #   in Loop: Header=BB18_143 Depth=1
+	bne	$t3, $a6, .LBB18_240
+# %bb.239:                              #   in Loop: Header=BB18_232 Depth=1
+	and	$t3, $t2, $t0
+	beq	$t3, $a6, .LBB18_231
+.LBB18_240:                             #   in Loop: Header=BB18_232 Depth=1
 	or	$t1, $t2, $t1
 	andi	$t1, $t1, 1
-	sub.d	$s4, $s4, $t1
-	b	.LBB18_142
-.LBB18_152:
-	st.w	$a0, $s1, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	st.w	$s4, $a0, 0
-	ld.w	$s8, $s1, 0
-	b	.LBB18_155
-.LBB18_153:
-	move	$s5, $zero
-	bgtz	$s3, .LBB18_138
-	b	.LBB18_139
-.LBB18_154:
+	sub.d	$s5, $s5, $t1
+	b	.LBB18_231
+.LBB18_241:
+	move	$s4, $zero
+	bgtz	$s3, .LBB18_225
+	b	.LBB18_226
+.LBB18_242:
 	st.w	$zero, $s1, 0
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	st.w	$zero, $a0, 0
 	ld.w	$s8, $s1, 0
-	move	$s4, $zero
+	move	$s5, $zero
 	move	$s0, $zero
 	move	$a0, $s8
-	beqz	$s5, .LBB18_156
-.LBB18_155:
-	move	$a0, $s5
-	move	$a1, $s3
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $s1, 0
-	move	$s0, $s4
-.LBB18_156:
+	bnez	$s4, .LBB18_334
+# %bb.243:
 	ori	$a2, $zero, 1
-	bnez	$a0, .LBB18_158
-# %bb.157:
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	ld.w	$a0, $a0, 0
-	sltu	$a2, $zero, $a0
-.LBB18_158:
+	beqz	$a0, .LBB18_335
+.LBB18_244:
 	ld.d	$a0, $sp, 24
 	ld.d	$a1, $sp, 32
 	st.b	$a2, $fp, 616
@@ -7941,55 +8412,552 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	pcaddu18i	$ra, %call36(cpu_timer_stop)
 	jirl	$ra, $ra, 0
 .Ltmp147:                               # EH_LABEL
-# %bb.159:
+# %bb.245:
 	fld.d	$fa1, $fp, 352
 	fadd.d	$fa0, $fa0, $fa1
 	fst.d	$fa0, $fp, 352
-	beqz	$s2, .LBB18_161
-# %bb.160:
+	beqz	$s2, .LBB18_247
+# %bb.246:
 	sub.d	$a1, $s6, $s2
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB18_161:
+.LBB18_247:
 	add.d	$a0, $s0, $s7
 	add.w	$a0, $a0, $s8
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	fld.d	$fs1, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 48                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 	ret
-.LBB18_162:
+.LBB18_248:
+	addi.d	$a4, $s7, -1
+	bstrpick.d	$a5, $a4, 31, 0
+	addi.w	$a6, $zero, -1
+	lu32i.d	$a6, 0
+	move	$a3, $zero
+	beq	$a5, $a6, .LBB18_337
+# %bb.249:
+	srli.d	$a5, $a4, 32
+	move	$s5, $a3
+	move	$a4, $a3
+	bnez	$a5, .LBB18_229
+# %bb.250:
+	bstrpick.d	$a3, $s7, 32, 3
+	slli.d	$a3, $a3, 3
+	addi.d	$a4, $a2, 16
+	addi.d	$a5, $s4, 16
+	addi.d	$a6, $a1, 16
+	addi.d	$a7, $a0, 16
+	vrepli.b	$vr0, 0
+	vrepli.w	$vr1, 1
+	lu12i.w	$t0, -524288
+	ori	$t0, $t0, 1
+	vreplgr2vr.w	$vr2, $t0
+	vrepli.w	$vr3, 3
+	move	$t0, $a3
+	vori.b	$vr6, $vr0, 0
+	vori.b	$vr7, $vr0, 0
+	vori.b	$vr4, $vr0, 0
+	vori.b	$vr5, $vr0, 0
+	b	.LBB18_253
+	.p2align	4, , 16
+.LBB18_251:                             #   in Loop: Header=BB18_253 Depth=1
+	vld	$vr19, $a4, 0
+	vbitsel.v	$vr19, $vr0, $vr19, $vr14
+.LBB18_252:                             #   in Loop: Header=BB18_253 Depth=1
+	vseqi.w	$vr9, $vr9, 1
+	vseqi.w	$vr11, $vr11, 1
+	vand.v	$vr9, $vr8, $vr9
+	vand.v	$vr11, $vr10, $vr11
+	vseqi.w	$vr13, $vr13, 1
+	vseqi.w	$vr15, $vr15, 1
+	vandn.v	$vr20, $vr13, $vr12
+	vandn.v	$vr21, $vr15, $vr14
+	vand.v	$vr22, $vr16, $vr2
+	vand.v	$vr23, $vr17, $vr2
+	vseqi.w	$vr22, $vr22, 1
+	vseqi.w	$vr23, $vr23, 1
+	vand.v	$vr24, $vr18, $vr2
+	vand.v	$vr25, $vr19, $vr2
+	vseqi.w	$vr24, $vr24, 1
+	vseqi.w	$vr25, $vr25, 1
+	vand.v	$vr22, $vr22, $vr24
+	vand.v	$vr23, $vr23, $vr25
+	vandn.v	$vr20, $vr22, $vr20
+	vandn.v	$vr21, $vr23, $vr21
+	vor.v	$vr22, $vr18, $vr16
+	vor.v	$vr23, $vr19, $vr17
+	vand.v	$vr22, $vr22, $vr1
+	vand.v	$vr23, $vr23, $vr1
+	vand.v	$vr12, $vr12, $vr13
+	vand.v	$vr13, $vr14, $vr15
+	vslli.w	$vr14, $vr16, 31
+	vsrai.w	$vr14, $vr14, 31
+	vslli.w	$vr15, $vr17, 31
+	vsrai.w	$vr15, $vr15, 31
+	vand.v	$vr16, $vr18, $vr1
+	vand.v	$vr17, $vr19, $vr1
+	vneg.w	$vr16, $vr16
+	vneg.w	$vr17, $vr17
+	vor.v	$vr14, $vr14, $vr16
+	vor.v	$vr15, $vr15, $vr17
+	vbitsel.v	$vr16, $vr0, $vr22, $vr20
+	vneg.w	$vr16, $vr16
+	vbitsel.v	$vr12, $vr16, $vr14, $vr12
+	vadd.w	$vr6, $vr6, $vr12
+	vbitsel.v	$vr12, $vr0, $vr23, $vr21
+	vneg.w	$vr12, $vr12
+	vbitsel.v	$vr12, $vr12, $vr15, $vr13
+	vadd.w	$vr7, $vr7, $vr12
+	vbitsel.v	$vr9, $vr1, $vr3, $vr9
+	vand.v	$vr8, $vr8, $vr9
+	vadd.w	$vr4, $vr4, $vr8
+	vbitsel.v	$vr8, $vr1, $vr3, $vr11
+	vand.v	$vr8, $vr10, $vr8
+	vadd.w	$vr5, $vr5, $vr8
+	addi.d	$t0, $t0, -8
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	addi.d	$a7, $a7, 32
+	beqz	$t0, .LBB18_332
+.LBB18_253:                             # =>This Inner Loop Header: Depth=1
+	vld	$vr12, $a5, -16
+	vslt.w	$vr8, $vr0, $vr12
+	addi.d	$t2, $a7, -16
+	vmsknz.b	$vr9, $vr8
+	vpickve2gr.hu	$t1, $vr9, 0
+	addi.d	$t3, $t2, 15
+	xor	$t3, $t3, $t2
+	srli.d	$t3, $t3, 12
+                                        # implicit-def: $vr9
+	beq	$t1, $zero, .LBB18_263
+	beq	$t3, $zero, .LBB18_258
+# %bb.254:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t4, $t1, 1
+                                        # implicit-def: $vr9
+	bne	$t4, $zero, .LBB18_259
+# %bb.255:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t4, $t1, 16
+	bne	$t4, $zero, .LBB18_260
+.LBB18_256:                             #   in Loop: Header=BB18_253 Depth=1
+	andi	$t4, $t1, 256
+	bne	$t4, $zero, .LBB18_261
+.LBB18_257:                             #   in Loop: Header=BB18_253 Depth=1
+	bstrpick.d	$t1, $t1, 12, 12
+	bne	$t1, $zero, .LBB18_262
+	b	.LBB18_263
+	.p2align	4, , 16
+.LBB18_258:                             #   in Loop: Header=BB18_253 Depth=1
+	vld	$vr9, $t2, 0
+	vbitsel.v	$vr9, $vr0, $vr9, $vr8
+	b	.LBB18_263
+.LBB18_259:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t4, $t2, 0
+	vinsgr2vr.w	$vr9, $t4, 0
+	andi	$t4, $t1, 16
+	beq	$t4, $zero, .LBB18_256
+.LBB18_260:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t4, $t2, 4
+	vinsgr2vr.w	$vr9, $t4, 1
+	andi	$t4, $t1, 256
+	beq	$t4, $zero, .LBB18_257
+.LBB18_261:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t4, $t2, 8
+	vinsgr2vr.w	$vr9, $t4, 2
+	bstrpick.d	$t1, $t1, 12, 12
+	beq	$t1, $zero, .LBB18_263
+.LBB18_262:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t1, $t2, 12
+	vinsgr2vr.w	$vr9, $t1, 3
+	.p2align	4, , 16
+.LBB18_263:                             #   in Loop: Header=BB18_253 Depth=1
+	vld	$vr14, $a5, 0
+	vslt.w	$vr10, $vr0, $vr14
+	vmsknz.b	$vr11, $vr10
+	vpickve2gr.hu	$t1, $vr11, 0
+	addi.d	$t4, $a7, 15
+	xor	$t4, $t4, $a7
+	srli.d	$t4, $t4, 12
+                                        # implicit-def: $vr11
+	beq	$t1, $zero, .LBB18_273
+	beq	$t4, $zero, .LBB18_268
+# %bb.264:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t5, $t1, 1
+                                        # implicit-def: $vr11
+	bne	$t5, $zero, .LBB18_269
+# %bb.265:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t5, $t1, 16
+	bne	$t5, $zero, .LBB18_270
+.LBB18_266:                             #   in Loop: Header=BB18_253 Depth=1
+	andi	$t5, $t1, 256
+	bne	$t5, $zero, .LBB18_271
+.LBB18_267:                             #   in Loop: Header=BB18_253 Depth=1
+	bstrpick.d	$t1, $t1, 12, 12
+	bne	$t1, $zero, .LBB18_272
+	b	.LBB18_273
+	.p2align	4, , 16
+.LBB18_268:                             #   in Loop: Header=BB18_253 Depth=1
+	vld	$vr11, $a7, 0
+	vbitsel.v	$vr11, $vr0, $vr11, $vr10
+	b	.LBB18_273
+.LBB18_269:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t5, $a7, 0
+	vinsgr2vr.w	$vr11, $t5, 0
+	andi	$t5, $t1, 16
+	beq	$t5, $zero, .LBB18_266
+.LBB18_270:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t5, $a7, 4
+	vinsgr2vr.w	$vr11, $t5, 1
+	andi	$t5, $t1, 256
+	beq	$t5, $zero, .LBB18_267
+.LBB18_271:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t5, $a7, 8
+	vinsgr2vr.w	$vr11, $t5, 2
+	bstrpick.d	$t1, $t1, 12, 12
+	beq	$t1, $zero, .LBB18_273
+.LBB18_272:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t1, $a7, 12
+	vinsgr2vr.w	$vr11, $t1, 3
+	.p2align	4, , 16
+.LBB18_273:                             #   in Loop: Header=BB18_253 Depth=1
+	vslti.w	$vr12, $vr12, 0
+	vmsknz.b	$vr13, $vr12
+	vpickve2gr.hu	$t1, $vr13, 0
+                                        # implicit-def: $vr13
+	beq	$t1, $zero, .LBB18_283
+	beq	$t3, $zero, .LBB18_278
+# %bb.274:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t3, $t1, 1
+                                        # implicit-def: $vr13
+	bne	$t3, $zero, .LBB18_279
+# %bb.275:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t3, $t1, 16
+	bne	$t3, $zero, .LBB18_280
+.LBB18_276:                             #   in Loop: Header=BB18_253 Depth=1
+	andi	$t3, $t1, 256
+	bne	$t3, $zero, .LBB18_281
+.LBB18_277:                             #   in Loop: Header=BB18_253 Depth=1
+	bstrpick.d	$t3, $t1, 12, 12
+	bne	$t3, $zero, .LBB18_282
+	b	.LBB18_283
+	.p2align	4, , 16
+.LBB18_278:                             #   in Loop: Header=BB18_253 Depth=1
+	vld	$vr13, $t2, 0
+	vbitsel.v	$vr13, $vr0, $vr13, $vr12
+	b	.LBB18_283
+.LBB18_279:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t3, $t2, 0
+	vinsgr2vr.w	$vr13, $t3, 0
+	andi	$t3, $t1, 16
+	beq	$t3, $zero, .LBB18_276
+.LBB18_280:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t3, $t2, 4
+	vinsgr2vr.w	$vr13, $t3, 1
+	andi	$t3, $t1, 256
+	beq	$t3, $zero, .LBB18_277
+.LBB18_281:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t3, $t2, 8
+	vinsgr2vr.w	$vr13, $t3, 2
+	bstrpick.d	$t3, $t1, 12, 12
+	beq	$t3, $zero, .LBB18_283
+.LBB18_282:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t2, $t2, 12
+	vinsgr2vr.w	$vr13, $t2, 3
+	.p2align	4, , 16
+.LBB18_283:                             #   in Loop: Header=BB18_253 Depth=1
+	vslti.w	$vr14, $vr14, 0
+	vmsknz.b	$vr15, $vr14
+	vpickve2gr.hu	$t2, $vr15, 0
+                                        # implicit-def: $vr15
+	beq	$t2, $zero, .LBB18_293
+	beq	$t4, $zero, .LBB18_288
+# %bb.284:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t3, $t2, 1
+                                        # implicit-def: $vr15
+	bne	$t3, $zero, .LBB18_289
+# %bb.285:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t3, $t2, 16
+	bne	$t3, $zero, .LBB18_290
+.LBB18_286:                             #   in Loop: Header=BB18_253 Depth=1
+	andi	$t3, $t2, 256
+	bne	$t3, $zero, .LBB18_291
+.LBB18_287:                             #   in Loop: Header=BB18_253 Depth=1
+	bstrpick.d	$t3, $t2, 12, 12
+	bne	$t3, $zero, .LBB18_292
+	b	.LBB18_293
+	.p2align	4, , 16
+.LBB18_288:                             #   in Loop: Header=BB18_253 Depth=1
+	vld	$vr15, $a7, 0
+	vbitsel.v	$vr15, $vr0, $vr15, $vr14
+	b	.LBB18_293
+.LBB18_289:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t3, $a7, 0
+	vinsgr2vr.w	$vr15, $t3, 0
+	andi	$t3, $t2, 16
+	beq	$t3, $zero, .LBB18_286
+.LBB18_290:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t3, $a7, 4
+	vinsgr2vr.w	$vr15, $t3, 1
+	andi	$t3, $t2, 256
+	beq	$t3, $zero, .LBB18_287
+.LBB18_291:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t3, $a7, 8
+	vinsgr2vr.w	$vr15, $t3, 2
+	bstrpick.d	$t3, $t2, 12, 12
+	beq	$t3, $zero, .LBB18_293
+.LBB18_292:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t3, $a7, 12
+	vinsgr2vr.w	$vr15, $t3, 3
+	.p2align	4, , 16
+.LBB18_293:                             #   in Loop: Header=BB18_253 Depth=1
+	addi.d	$t3, $a6, -16
+	addi.d	$t4, $t3, 15
+	xor	$t4, $t4, $t3
+	srli.d	$t4, $t4, 12
+                                        # implicit-def: $vr16
+	beq	$t1, $zero, .LBB18_303
+	beq	$t4, $zero, .LBB18_298
+# %bb.294:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t4, $t1, 1
+                                        # implicit-def: $vr16
+	bne	$t4, $zero, .LBB18_299
+# %bb.295:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t4, $t1, 16
+	bne	$t4, $zero, .LBB18_300
+.LBB18_296:                             #   in Loop: Header=BB18_253 Depth=1
+	andi	$t4, $t1, 256
+	bne	$t4, $zero, .LBB18_301
+.LBB18_297:                             #   in Loop: Header=BB18_253 Depth=1
+	bstrpick.d	$t4, $t1, 12, 12
+	bne	$t4, $zero, .LBB18_302
+	b	.LBB18_303
+	.p2align	4, , 16
+.LBB18_298:                             #   in Loop: Header=BB18_253 Depth=1
+	vld	$vr16, $t3, 0
+	vbitsel.v	$vr16, $vr0, $vr16, $vr12
+	b	.LBB18_303
+.LBB18_299:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t4, $t3, 0
+	vinsgr2vr.w	$vr16, $t4, 0
+	andi	$t4, $t1, 16
+	beq	$t4, $zero, .LBB18_296
+.LBB18_300:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t4, $t3, 4
+	vinsgr2vr.w	$vr16, $t4, 1
+	andi	$t4, $t1, 256
+	beq	$t4, $zero, .LBB18_297
+.LBB18_301:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t4, $t3, 8
+	vinsgr2vr.w	$vr16, $t4, 2
+	bstrpick.d	$t4, $t1, 12, 12
+	beq	$t4, $zero, .LBB18_303
+.LBB18_302:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t3, $t3, 12
+	vinsgr2vr.w	$vr16, $t3, 3
+	.p2align	4, , 16
+.LBB18_303:                             #   in Loop: Header=BB18_253 Depth=1
+	addi.d	$t3, $a6, 15
+	xor	$t3, $t3, $a6
+	srli.d	$t3, $t3, 12
+                                        # implicit-def: $vr17
+	beq	$t2, $zero, .LBB18_313
+	beq	$t3, $zero, .LBB18_308
+# %bb.304:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t3, $t2, 1
+                                        # implicit-def: $vr17
+	bne	$t3, $zero, .LBB18_309
+# %bb.305:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t3, $t2, 16
+	bne	$t3, $zero, .LBB18_310
+.LBB18_306:                             #   in Loop: Header=BB18_253 Depth=1
+	andi	$t3, $t2, 256
+	bne	$t3, $zero, .LBB18_311
+.LBB18_307:                             #   in Loop: Header=BB18_253 Depth=1
+	bstrpick.d	$t3, $t2, 12, 12
+	bne	$t3, $zero, .LBB18_312
+	b	.LBB18_313
+	.p2align	4, , 16
+.LBB18_308:                             #   in Loop: Header=BB18_253 Depth=1
+	vld	$vr17, $a6, 0
+	vbitsel.v	$vr17, $vr0, $vr17, $vr14
+	b	.LBB18_313
+.LBB18_309:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t3, $a6, 0
+	vinsgr2vr.w	$vr17, $t3, 0
+	andi	$t3, $t2, 16
+	beq	$t3, $zero, .LBB18_306
+.LBB18_310:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t3, $a6, 4
+	vinsgr2vr.w	$vr17, $t3, 1
+	andi	$t3, $t2, 256
+	beq	$t3, $zero, .LBB18_307
+.LBB18_311:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t3, $a6, 8
+	vinsgr2vr.w	$vr17, $t3, 2
+	bstrpick.d	$t3, $t2, 12, 12
+	beq	$t3, $zero, .LBB18_313
+.LBB18_312:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t3, $a6, 12
+	vinsgr2vr.w	$vr17, $t3, 3
+	.p2align	4, , 16
+.LBB18_313:                             #   in Loop: Header=BB18_253 Depth=1
+	addi.d	$t3, $a4, -16
+	addi.d	$t4, $t3, 15
+	xor	$t4, $t4, $t3
+	srli.d	$t4, $t4, 12
+                                        # implicit-def: $vr18
+	beq	$t1, $zero, .LBB18_323
+	beq	$t4, $zero, .LBB18_318
+# %bb.314:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t4, $t1, 1
+                                        # implicit-def: $vr18
+	bne	$t4, $zero, .LBB18_319
+# %bb.315:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t4, $t1, 16
+	bne	$t4, $zero, .LBB18_320
+.LBB18_316:                             #   in Loop: Header=BB18_253 Depth=1
+	andi	$t4, $t1, 256
+	bne	$t4, $zero, .LBB18_321
+.LBB18_317:                             #   in Loop: Header=BB18_253 Depth=1
+	bstrpick.d	$t1, $t1, 12, 12
+	bne	$t1, $zero, .LBB18_322
+	b	.LBB18_323
+	.p2align	4, , 16
+.LBB18_318:                             #   in Loop: Header=BB18_253 Depth=1
+	vld	$vr18, $t3, 0
+	vbitsel.v	$vr18, $vr0, $vr18, $vr12
+	b	.LBB18_323
+.LBB18_319:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t4, $t3, 0
+	vinsgr2vr.w	$vr18, $t4, 0
+	andi	$t4, $t1, 16
+	beq	$t4, $zero, .LBB18_316
+.LBB18_320:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t4, $t3, 4
+	vinsgr2vr.w	$vr18, $t4, 1
+	andi	$t4, $t1, 256
+	beq	$t4, $zero, .LBB18_317
+.LBB18_321:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t4, $t3, 8
+	vinsgr2vr.w	$vr18, $t4, 2
+	bstrpick.d	$t1, $t1, 12, 12
+	beq	$t1, $zero, .LBB18_323
+.LBB18_322:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t1, $t3, 12
+	vinsgr2vr.w	$vr18, $t1, 3
+	.p2align	4, , 16
+.LBB18_323:                             #   in Loop: Header=BB18_253 Depth=1
+	addi.d	$t1, $a4, 15
+	xor	$t1, $t1, $a4
+	srli.d	$t1, $t1, 12
+                                        # implicit-def: $vr19
+	beq	$t2, $zero, .LBB18_252
+	beq	$t1, $zero, .LBB18_251
+# %bb.324:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t1, $t2, 1
+                                        # implicit-def: $vr19
+	bne	$t1, $zero, .LBB18_328
+# %bb.325:                              #   in Loop: Header=BB18_253 Depth=1
+	andi	$t1, $t2, 16
+	bne	$t1, $zero, .LBB18_329
+.LBB18_326:                             #   in Loop: Header=BB18_253 Depth=1
+	andi	$t1, $t2, 256
+	bne	$t1, $zero, .LBB18_330
+.LBB18_327:                             #   in Loop: Header=BB18_253 Depth=1
+	bstrpick.d	$t1, $t2, 12, 12
+	beq	$t1, $zero, .LBB18_252
+	b	.LBB18_331
+.LBB18_328:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t1, $a4, 0
+	vinsgr2vr.w	$vr19, $t1, 0
+	andi	$t1, $t2, 16
+	beq	$t1, $zero, .LBB18_326
+.LBB18_329:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t1, $a4, 4
+	vinsgr2vr.w	$vr19, $t1, 1
+	andi	$t1, $t2, 256
+	beq	$t1, $zero, .LBB18_327
+.LBB18_330:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t1, $a4, 8
+	vinsgr2vr.w	$vr19, $t1, 2
+	bstrpick.d	$t1, $t2, 12, 12
+	beq	$t1, $zero, .LBB18_252
+.LBB18_331:                             #   in Loop: Header=BB18_253 Depth=1
+	ld.wu	$t1, $a4, 12
+	vinsgr2vr.w	$vr19, $t1, 3
+	b	.LBB18_252
+.LBB18_332:
+	vadd.w	$vr0, $vr7, $vr6
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$s5, $vr0, 0
+	vadd.w	$vr0, $vr5, $vr4
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
+	bne	$s7, $a3, .LBB18_229
+.LBB18_333:
+	st.w	$a4, $s1, 0
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	st.w	$s5, $a0, 0
+	ld.w	$s8, $s1, 0
+.LBB18_334:
+	move	$a0, $s4
+	move	$a1, $s3
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $s1, 0
+	move	$s0, $s5
+	ori	$a2, $zero, 1
+	bnez	$a0, .LBB18_244
+.LBB18_335:
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.w	$a0, $a0, 0
+	sltu	$a2, $zero, $a0
+	b	.LBB18_244
+.LBB18_336:
+	move	$a5, $a4
+	move	$a6, $a4
+	b	.LBB18_6
+.LBB18_337:
+	move	$s5, $a3
+	move	$a4, $a3
+	b	.LBB18_229
+.LBB18_338:
 .Ltmp148:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.141)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.141)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp149:                               # EH_LABEL
-# %bb.163:
-.LBB18_164:
+# %bb.339:
+.LBB18_340:
 	pcalau12i	$a0, %pc_hi20(.L.str.141)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.141)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
-.LBB18_165:
+.LBB18_341:
 .Ltmp150:                               # EH_LABEL
 	move	$fp, $a0
-	beqz	$s2, .LBB18_167
-# %bb.166:
+	beqz	$s2, .LBB18_343
+# %bb.342:
 	sub.d	$a1, $s6, $s2
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB18_167:
+.LBB18_343:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
@@ -8000,10 +8968,10 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	.p2align	2, 0x0
 	.type	.LJTI18_0,@object
 .LJTI18_0:
-	.word	.LBB18_132-.LJTI18_0
-	.word	.LBB18_126-.LJTI18_0
-	.word	.LBB18_133-.LJTI18_0
-	.word	.LBB18_127-.LJTI18_0
+	.word	.LBB18_219-.LJTI18_0
+	.word	.LBB18_213-.LJTI18_0
+	.word	.LBB18_220-.LJTI18_0
+	.word	.LBB18_214-.LJTI18_0
 	.size	.LJTI18_0, 16
 	.section	.gcc_except_table,"a",@progbits
 	.p2align	2, 0x0
@@ -9805,78 +10773,575 @@ GCC_except_table19:
 _ZN4Mesh12rezone_countESt6vectorIiSaIiEERiS3_: # @_ZN4Mesh12rezone_countESt6vectorIiSaIiEERiS3_
 # %bb.0:
 	ld.d	$a4, $a0, 1160
-	beqz	$a4, .LBB20_13
+	beqz	$a4, .LBB20_15
 # %bb.1:
-	move	$a5, $zero
-	move	$a6, $zero
+	addi.d	$sp, $sp, -48
+	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 8                    # 8-byte Folded Spill
 	ld.d	$a1, $a1, 0
-	ld.d	$a7, $a0, 1360
-	ld.d	$t0, $a0, 1328
+	ld.d	$a5, $a0, 1360
+	ld.d	$a6, $a0, 1328
 	ld.d	$a0, $a0, 1336
-	ori	$t1, $zero, 1
-	addi.d	$t2, $zero, -1
-	ori	$t3, $zero, 1
-	bstrins.d	$t3, $t3, 32, 31
+	ori	$a7, $zero, 8
+	bgeu	$a4, $a7, .LBB20_16
+# %bb.2:
+	move	$a7, $zero
+	move	$t0, $zero
+	move	$t1, $zero
+.LBB20_3:
+	addi.d	$t2, $a7, 1
+	alsl.d	$a1, $a7, $a1, 2
+	alsl.d	$a5, $a7, $a5, 2
+	alsl.d	$a6, $a7, $a6, 2
+	alsl.d	$a0, $a7, $a0, 2
+	ori	$a7, $zero, 1
+	addi.d	$t3, $zero, -1
 	ori	$t4, $zero, 1
-	b	.LBB20_4
-.LBB20_2:                               #   in Loop: Header=BB20_4 Depth=1
-	addi.d	$a6, $a6, 1
+	bstrins.d	$t4, $t4, 32, 31
+	b	.LBB20_6
+.LBB20_4:                               #   in Loop: Header=BB20_6 Depth=1
+	addi.d	$t1, $t1, 1
 	.p2align	4, , 16
-.LBB20_3:                               #   in Loop: Header=BB20_4 Depth=1
-	bstrpick.d	$t5, $t4, 31, 0
-	addi.d	$t4, $t4, 1
+.LBB20_5:                               #   in Loop: Header=BB20_6 Depth=1
+	bstrpick.d	$t5, $t2, 31, 0
+	addi.d	$t2, $t2, 1
 	addi.d	$a1, $a1, 4
-	addi.d	$a7, $a7, 4
-	addi.d	$t0, $t0, 4
+	addi.d	$a5, $a5, 4
+	addi.d	$a6, $a6, 4
 	addi.d	$a0, $a0, 4
-	bgeu	$t5, $a4, .LBB20_14
-.LBB20_4:                               # =>This Inner Loop Header: Depth=1
+	bgeu	$t5, $a4, .LBB20_101
+.LBB20_6:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$t5, $a1, 0
-	bltz	$t5, .LBB20_8
-# %bb.5:                                #   in Loop: Header=BB20_4 Depth=1
-	beqz	$t5, .LBB20_3
-# %bb.6:                                #   in Loop: Header=BB20_4 Depth=1
-	ld.w	$t5, $a7, 0
-	bne	$t5, $t1, .LBB20_2
-# %bb.7:                                #   in Loop: Header=BB20_4 Depth=1
-	addi.d	$a6, $a6, 3
-	b	.LBB20_3
+	bltz	$t5, .LBB20_10
+# %bb.7:                                #   in Loop: Header=BB20_6 Depth=1
+	beqz	$t5, .LBB20_5
+# %bb.8:                                #   in Loop: Header=BB20_6 Depth=1
+	ld.w	$t5, $a5, 0
+	bne	$t5, $a7, .LBB20_4
+# %bb.9:                                #   in Loop: Header=BB20_6 Depth=1
+	addi.d	$t1, $t1, 3
+	b	.LBB20_5
 	.p2align	4, , 16
-.LBB20_8:                               #   in Loop: Header=BB20_4 Depth=1
-	ld.w	$t7, $a7, 0
-	ld.w	$t5, $t0, 0
+.LBB20_10:                              #   in Loop: Header=BB20_6 Depth=1
+	ld.w	$t7, $a5, 0
+	ld.w	$t5, $a6, 0
 	ld.w	$t6, $a0, 0
-	bne	$t7, $t1, .LBB20_10
-# %bb.9:                                #   in Loop: Header=BB20_4 Depth=1
+	bne	$t7, $a7, .LBB20_12
+# %bb.11:                               #   in Loop: Header=BB20_6 Depth=1
 	andi	$t5, $t5, 1
 	andi	$t6, $t6, 1
 	sub.d	$t6, $zero, $t6
-	maskeqz	$t7, $t2, $t5
+	maskeqz	$t7, $t3, $t5
 	masknez	$t5, $t6, $t5
 	or	$t5, $t7, $t5
-	add.d	$a5, $t5, $a5
-	b	.LBB20_3
-.LBB20_10:                              #   in Loop: Header=BB20_4 Depth=1
-	and	$t7, $t5, $t3
+	add.d	$t0, $t5, $t0
+	b	.LBB20_5
+.LBB20_12:                              #   in Loop: Header=BB20_6 Depth=1
+	and	$t7, $t5, $t4
 	addi.w	$t7, $t7, 0
-	bne	$t7, $t1, .LBB20_12
-# %bb.11:                               #   in Loop: Header=BB20_4 Depth=1
-	and	$t7, $t6, $t3
-	beq	$t7, $t1, .LBB20_3
-.LBB20_12:                              #   in Loop: Header=BB20_4 Depth=1
+	bne	$t7, $a7, .LBB20_14
+# %bb.13:                               #   in Loop: Header=BB20_6 Depth=1
+	and	$t7, $t6, $t4
+	beq	$t7, $a7, .LBB20_5
+.LBB20_14:                              #   in Loop: Header=BB20_6 Depth=1
 	or	$t5, $t6, $t5
 	andi	$t5, $t5, 1
-	sub.d	$a5, $a5, $t5
-	b	.LBB20_3
-.LBB20_13:
-	move	$a6, $zero
-	move	$a5, $zero
-.LBB20_14:
-	st.w	$a6, $a2, 0
-	st.w	$a5, $a3, 0
+	sub.d	$t0, $t0, $t5
+	b	.LBB20_5
+.LBB20_15:
+	move	$t1, $zero
+	move	$t0, $zero
+	b	.LBB20_102
+.LBB20_16:
+	addi.d	$t0, $a4, -1
+	bstrpick.d	$t1, $t0, 31, 0
+	addi.w	$t2, $zero, -1
+	lu32i.d	$t2, 0
+	move	$a7, $zero
+	beq	$t1, $t2, .LBB20_103
+# %bb.17:
+	srli.d	$t2, $t0, 32
+	move	$t0, $a7
+	move	$t1, $a7
+	bnez	$t2, .LBB20_3
+# %bb.18:
+	bstrpick.d	$a7, $a4, 32, 3
+	slli.d	$a7, $a7, 3
+	addi.d	$t0, $a0, 16
+	addi.d	$t1, $a1, 16
+	addi.d	$t2, $a6, 16
+	addi.d	$t3, $a5, 16
+	vrepli.b	$vr0, 0
+	lu12i.w	$t4, -524288
+	ori	$t4, $t4, 1
+	vreplgr2vr.w	$vr1, $t4
+	vrepli.w	$vr2, 1
+	vrepli.w	$vr3, 3
+	move	$t4, $a7
+	vori.b	$vr6, $vr0, 0
+	vori.b	$vr7, $vr0, 0
+	vori.b	$vr4, $vr0, 0
+	vori.b	$vr5, $vr0, 0
+	b	.LBB20_21
+	.p2align	4, , 16
+.LBB20_19:                              #   in Loop: Header=BB20_21 Depth=1
+	vld	$vr19, $t0, 0
+	vbitsel.v	$vr19, $vr0, $vr19, $vr14
+.LBB20_20:                              #   in Loop: Header=BB20_21 Depth=1
+	vseqi.w	$vr9, $vr9, 1
+	vseqi.w	$vr11, $vr11, 1
+	vand.v	$vr20, $vr8, $vr9
+	vand.v	$vr21, $vr10, $vr11
+	vseqi.w	$vr13, $vr13, 1
+	vseqi.w	$vr15, $vr15, 1
+	vandn.v	$vr22, $vr13, $vr12
+	vandn.v	$vr23, $vr15, $vr14
+	vand.v	$vr24, $vr16, $vr1
+	vand.v	$vr25, $vr17, $vr1
+	vseqi.w	$vr24, $vr24, 1
+	vseqi.w	$vr25, $vr25, 1
+	vand.v	$vr26, $vr18, $vr1
+	vand.v	$vr27, $vr19, $vr1
+	vseqi.w	$vr26, $vr26, 1
+	vseqi.w	$vr27, $vr27, 1
+	vand.v	$vr24, $vr24, $vr26
+	vand.v	$vr25, $vr25, $vr27
+	vandn.v	$vr22, $vr24, $vr22
+	vandn.v	$vr23, $vr25, $vr23
+	vor.v	$vr24, $vr18, $vr16
+	vor.v	$vr25, $vr19, $vr17
+	vand.v	$vr24, $vr24, $vr2
+	vand.v	$vr25, $vr25, $vr2
+	vand.v	$vr12, $vr12, $vr13
+	vand.v	$vr13, $vr14, $vr15
+	vslli.w	$vr14, $vr16, 31
+	vsrai.w	$vr14, $vr14, 31
+	vslli.w	$vr15, $vr17, 31
+	vsrai.w	$vr15, $vr15, 31
+	vand.v	$vr16, $vr18, $vr2
+	vand.v	$vr17, $vr19, $vr2
+	vneg.w	$vr16, $vr16
+	vneg.w	$vr17, $vr17
+	vor.v	$vr14, $vr14, $vr16
+	vor.v	$vr15, $vr15, $vr17
+	vand.v	$vr12, $vr12, $vr14
+	vneg.w	$vr14, $vr24
+	vbitsel.v	$vr12, $vr12, $vr14, $vr22
+	vadd.w	$vr6, $vr6, $vr12
+	vand.v	$vr12, $vr13, $vr15
+	vneg.w	$vr13, $vr25
+	vbitsel.v	$vr12, $vr12, $vr13, $vr23
+	vadd.w	$vr7, $vr7, $vr12
+	vandn.v	$vr8, $vr9, $vr8
+	vand.v	$vr8, $vr8, $vr2
+	vbitsel.v	$vr8, $vr8, $vr3, $vr20
+	vadd.w	$vr4, $vr4, $vr8
+	vandn.v	$vr8, $vr11, $vr10
+	vand.v	$vr8, $vr8, $vr2
+	vbitsel.v	$vr8, $vr8, $vr3, $vr21
+	vadd.w	$vr5, $vr5, $vr8
+	addi.d	$t4, $t4, -8
+	addi.d	$t0, $t0, 32
+	addi.d	$t1, $t1, 32
+	addi.d	$t2, $t2, 32
+	addi.d	$t3, $t3, 32
+	beqz	$t4, .LBB20_100
+.LBB20_21:                              # =>This Inner Loop Header: Depth=1
+	vld	$vr12, $t1, -16
+	vslt.w	$vr8, $vr0, $vr12
+	addi.d	$t6, $t3, -16
+	vmsknz.b	$vr9, $vr8
+	vpickve2gr.hu	$t5, $vr9, 0
+	addi.d	$t7, $t6, 15
+	xor	$t7, $t7, $t6
+	srli.d	$t7, $t7, 12
+                                        # implicit-def: $vr9
+	beq	$t5, $zero, .LBB20_31
+	beq	$t7, $zero, .LBB20_26
+# %bb.22:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$t8, $t5, 1
+                                        # implicit-def: $vr9
+	bne	$t8, $zero, .LBB20_27
+# %bb.23:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$t8, $t5, 16
+	bne	$t8, $zero, .LBB20_28
+.LBB20_24:                              #   in Loop: Header=BB20_21 Depth=1
+	andi	$t8, $t5, 256
+	bne	$t8, $zero, .LBB20_29
+.LBB20_25:                              #   in Loop: Header=BB20_21 Depth=1
+	bstrpick.d	$t5, $t5, 12, 12
+	bne	$t5, $zero, .LBB20_30
+	b	.LBB20_31
+	.p2align	4, , 16
+.LBB20_26:                              #   in Loop: Header=BB20_21 Depth=1
+	vld	$vr9, $t6, 0
+	vbitsel.v	$vr9, $vr0, $vr9, $vr8
+	b	.LBB20_31
+.LBB20_27:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t8, $t6, 0
+	vinsgr2vr.w	$vr9, $t8, 0
+	andi	$t8, $t5, 16
+	beq	$t8, $zero, .LBB20_24
+.LBB20_28:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t8, $t6, 4
+	vinsgr2vr.w	$vr9, $t8, 1
+	andi	$t8, $t5, 256
+	beq	$t8, $zero, .LBB20_25
+.LBB20_29:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t8, $t6, 8
+	vinsgr2vr.w	$vr9, $t8, 2
+	bstrpick.d	$t5, $t5, 12, 12
+	beq	$t5, $zero, .LBB20_31
+.LBB20_30:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t5, $t6, 12
+	vinsgr2vr.w	$vr9, $t5, 3
+	.p2align	4, , 16
+.LBB20_31:                              #   in Loop: Header=BB20_21 Depth=1
+	vld	$vr14, $t1, 0
+	vslt.w	$vr10, $vr0, $vr14
+	vmsknz.b	$vr11, $vr10
+	vpickve2gr.hu	$t5, $vr11, 0
+	addi.d	$t8, $t3, 15
+	xor	$t8, $t8, $t3
+	srli.d	$t8, $t8, 12
+                                        # implicit-def: $vr11
+	beq	$t5, $zero, .LBB20_41
+	beq	$t8, $zero, .LBB20_36
+# %bb.32:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$fp, $t5, 1
+                                        # implicit-def: $vr11
+	bne	$fp, $zero, .LBB20_37
+# %bb.33:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$fp, $t5, 16
+	bne	$fp, $zero, .LBB20_38
+.LBB20_34:                              #   in Loop: Header=BB20_21 Depth=1
+	andi	$fp, $t5, 256
+	bne	$fp, $zero, .LBB20_39
+.LBB20_35:                              #   in Loop: Header=BB20_21 Depth=1
+	bstrpick.d	$t5, $t5, 12, 12
+	bne	$t5, $zero, .LBB20_40
+	b	.LBB20_41
+	.p2align	4, , 16
+.LBB20_36:                              #   in Loop: Header=BB20_21 Depth=1
+	vld	$vr11, $t3, 0
+	vbitsel.v	$vr11, $vr0, $vr11, $vr10
+	b	.LBB20_41
+.LBB20_37:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$fp, $t3, 0
+	vinsgr2vr.w	$vr11, $fp, 0
+	andi	$fp, $t5, 16
+	beq	$fp, $zero, .LBB20_34
+.LBB20_38:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$fp, $t3, 4
+	vinsgr2vr.w	$vr11, $fp, 1
+	andi	$fp, $t5, 256
+	beq	$fp, $zero, .LBB20_35
+.LBB20_39:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$fp, $t3, 8
+	vinsgr2vr.w	$vr11, $fp, 2
+	bstrpick.d	$t5, $t5, 12, 12
+	beq	$t5, $zero, .LBB20_41
+.LBB20_40:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t5, $t3, 12
+	vinsgr2vr.w	$vr11, $t5, 3
+	.p2align	4, , 16
+.LBB20_41:                              #   in Loop: Header=BB20_21 Depth=1
+	vslti.w	$vr12, $vr12, 0
+	vmsknz.b	$vr13, $vr12
+	vpickve2gr.hu	$t5, $vr13, 0
+                                        # implicit-def: $vr13
+	beq	$t5, $zero, .LBB20_51
+	beq	$t7, $zero, .LBB20_46
+# %bb.42:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$t7, $t5, 1
+                                        # implicit-def: $vr13
+	bne	$t7, $zero, .LBB20_47
+# %bb.43:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$t7, $t5, 16
+	bne	$t7, $zero, .LBB20_48
+.LBB20_44:                              #   in Loop: Header=BB20_21 Depth=1
+	andi	$t7, $t5, 256
+	bne	$t7, $zero, .LBB20_49
+.LBB20_45:                              #   in Loop: Header=BB20_21 Depth=1
+	bstrpick.d	$t7, $t5, 12, 12
+	bne	$t7, $zero, .LBB20_50
+	b	.LBB20_51
+	.p2align	4, , 16
+.LBB20_46:                              #   in Loop: Header=BB20_21 Depth=1
+	vld	$vr13, $t6, 0
+	vbitsel.v	$vr13, $vr0, $vr13, $vr12
+	b	.LBB20_51
+.LBB20_47:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t7, $t6, 0
+	vinsgr2vr.w	$vr13, $t7, 0
+	andi	$t7, $t5, 16
+	beq	$t7, $zero, .LBB20_44
+.LBB20_48:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t7, $t6, 4
+	vinsgr2vr.w	$vr13, $t7, 1
+	andi	$t7, $t5, 256
+	beq	$t7, $zero, .LBB20_45
+.LBB20_49:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t7, $t6, 8
+	vinsgr2vr.w	$vr13, $t7, 2
+	bstrpick.d	$t7, $t5, 12, 12
+	beq	$t7, $zero, .LBB20_51
+.LBB20_50:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t6, $t6, 12
+	vinsgr2vr.w	$vr13, $t6, 3
+	.p2align	4, , 16
+.LBB20_51:                              #   in Loop: Header=BB20_21 Depth=1
+	vslti.w	$vr14, $vr14, 0
+	vmsknz.b	$vr15, $vr14
+	vpickve2gr.hu	$t6, $vr15, 0
+                                        # implicit-def: $vr15
+	beq	$t6, $zero, .LBB20_61
+	beq	$t8, $zero, .LBB20_56
+# %bb.52:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$t7, $t6, 1
+                                        # implicit-def: $vr15
+	bne	$t7, $zero, .LBB20_57
+# %bb.53:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$t7, $t6, 16
+	bne	$t7, $zero, .LBB20_58
+.LBB20_54:                              #   in Loop: Header=BB20_21 Depth=1
+	andi	$t7, $t6, 256
+	bne	$t7, $zero, .LBB20_59
+.LBB20_55:                              #   in Loop: Header=BB20_21 Depth=1
+	bstrpick.d	$t7, $t6, 12, 12
+	bne	$t7, $zero, .LBB20_60
+	b	.LBB20_61
+	.p2align	4, , 16
+.LBB20_56:                              #   in Loop: Header=BB20_21 Depth=1
+	vld	$vr15, $t3, 0
+	vbitsel.v	$vr15, $vr0, $vr15, $vr14
+	b	.LBB20_61
+.LBB20_57:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t7, $t3, 0
+	vinsgr2vr.w	$vr15, $t7, 0
+	andi	$t7, $t6, 16
+	beq	$t7, $zero, .LBB20_54
+.LBB20_58:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t7, $t3, 4
+	vinsgr2vr.w	$vr15, $t7, 1
+	andi	$t7, $t6, 256
+	beq	$t7, $zero, .LBB20_55
+.LBB20_59:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t7, $t3, 8
+	vinsgr2vr.w	$vr15, $t7, 2
+	bstrpick.d	$t7, $t6, 12, 12
+	beq	$t7, $zero, .LBB20_61
+.LBB20_60:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t7, $t3, 12
+	vinsgr2vr.w	$vr15, $t7, 3
+	.p2align	4, , 16
+.LBB20_61:                              #   in Loop: Header=BB20_21 Depth=1
+	addi.d	$t7, $t2, -16
+	addi.d	$t8, $t7, 15
+	xor	$t8, $t8, $t7
+	srli.d	$t8, $t8, 12
+                                        # implicit-def: $vr16
+	beq	$t5, $zero, .LBB20_71
+	beq	$t8, $zero, .LBB20_66
+# %bb.62:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$t8, $t5, 1
+                                        # implicit-def: $vr16
+	bne	$t8, $zero, .LBB20_67
+# %bb.63:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$t8, $t5, 16
+	bne	$t8, $zero, .LBB20_68
+.LBB20_64:                              #   in Loop: Header=BB20_21 Depth=1
+	andi	$t8, $t5, 256
+	bne	$t8, $zero, .LBB20_69
+.LBB20_65:                              #   in Loop: Header=BB20_21 Depth=1
+	bstrpick.d	$t8, $t5, 12, 12
+	bne	$t8, $zero, .LBB20_70
+	b	.LBB20_71
+	.p2align	4, , 16
+.LBB20_66:                              #   in Loop: Header=BB20_21 Depth=1
+	vld	$vr16, $t7, 0
+	vbitsel.v	$vr16, $vr0, $vr16, $vr12
+	b	.LBB20_71
+.LBB20_67:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t8, $t7, 0
+	vinsgr2vr.w	$vr16, $t8, 0
+	andi	$t8, $t5, 16
+	beq	$t8, $zero, .LBB20_64
+.LBB20_68:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t8, $t7, 4
+	vinsgr2vr.w	$vr16, $t8, 1
+	andi	$t8, $t5, 256
+	beq	$t8, $zero, .LBB20_65
+.LBB20_69:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t8, $t7, 8
+	vinsgr2vr.w	$vr16, $t8, 2
+	bstrpick.d	$t8, $t5, 12, 12
+	beq	$t8, $zero, .LBB20_71
+.LBB20_70:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t7, $t7, 12
+	vinsgr2vr.w	$vr16, $t7, 3
+	.p2align	4, , 16
+.LBB20_71:                              #   in Loop: Header=BB20_21 Depth=1
+	addi.d	$t7, $t2, 15
+	xor	$t7, $t7, $t2
+	srli.d	$t7, $t7, 12
+                                        # implicit-def: $vr17
+	beq	$t6, $zero, .LBB20_81
+	beq	$t7, $zero, .LBB20_76
+# %bb.72:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$t7, $t6, 1
+                                        # implicit-def: $vr17
+	bne	$t7, $zero, .LBB20_77
+# %bb.73:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$t7, $t6, 16
+	bne	$t7, $zero, .LBB20_78
+.LBB20_74:                              #   in Loop: Header=BB20_21 Depth=1
+	andi	$t7, $t6, 256
+	bne	$t7, $zero, .LBB20_79
+.LBB20_75:                              #   in Loop: Header=BB20_21 Depth=1
+	bstrpick.d	$t7, $t6, 12, 12
+	bne	$t7, $zero, .LBB20_80
+	b	.LBB20_81
+	.p2align	4, , 16
+.LBB20_76:                              #   in Loop: Header=BB20_21 Depth=1
+	vld	$vr17, $t2, 0
+	vbitsel.v	$vr17, $vr0, $vr17, $vr14
+	b	.LBB20_81
+.LBB20_77:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t7, $t2, 0
+	vinsgr2vr.w	$vr17, $t7, 0
+	andi	$t7, $t6, 16
+	beq	$t7, $zero, .LBB20_74
+.LBB20_78:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t7, $t2, 4
+	vinsgr2vr.w	$vr17, $t7, 1
+	andi	$t7, $t6, 256
+	beq	$t7, $zero, .LBB20_75
+.LBB20_79:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t7, $t2, 8
+	vinsgr2vr.w	$vr17, $t7, 2
+	bstrpick.d	$t7, $t6, 12, 12
+	beq	$t7, $zero, .LBB20_81
+.LBB20_80:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t7, $t2, 12
+	vinsgr2vr.w	$vr17, $t7, 3
+	.p2align	4, , 16
+.LBB20_81:                              #   in Loop: Header=BB20_21 Depth=1
+	addi.d	$t7, $t0, -16
+	addi.d	$t8, $t7, 15
+	xor	$t8, $t8, $t7
+	srli.d	$t8, $t8, 12
+                                        # implicit-def: $vr18
+	beq	$t5, $zero, .LBB20_91
+	beq	$t8, $zero, .LBB20_86
+# %bb.82:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$t8, $t5, 1
+                                        # implicit-def: $vr18
+	bne	$t8, $zero, .LBB20_87
+# %bb.83:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$t8, $t5, 16
+	bne	$t8, $zero, .LBB20_88
+.LBB20_84:                              #   in Loop: Header=BB20_21 Depth=1
+	andi	$t8, $t5, 256
+	bne	$t8, $zero, .LBB20_89
+.LBB20_85:                              #   in Loop: Header=BB20_21 Depth=1
+	bstrpick.d	$t5, $t5, 12, 12
+	bne	$t5, $zero, .LBB20_90
+	b	.LBB20_91
+	.p2align	4, , 16
+.LBB20_86:                              #   in Loop: Header=BB20_21 Depth=1
+	vld	$vr18, $t7, 0
+	vbitsel.v	$vr18, $vr0, $vr18, $vr12
+	b	.LBB20_91
+.LBB20_87:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t8, $t7, 0
+	vinsgr2vr.w	$vr18, $t8, 0
+	andi	$t8, $t5, 16
+	beq	$t8, $zero, .LBB20_84
+.LBB20_88:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t8, $t7, 4
+	vinsgr2vr.w	$vr18, $t8, 1
+	andi	$t8, $t5, 256
+	beq	$t8, $zero, .LBB20_85
+.LBB20_89:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t8, $t7, 8
+	vinsgr2vr.w	$vr18, $t8, 2
+	bstrpick.d	$t5, $t5, 12, 12
+	beq	$t5, $zero, .LBB20_91
+.LBB20_90:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t5, $t7, 12
+	vinsgr2vr.w	$vr18, $t5, 3
+	.p2align	4, , 16
+.LBB20_91:                              #   in Loop: Header=BB20_21 Depth=1
+	addi.d	$t5, $t0, 15
+	xor	$t5, $t5, $t0
+	srli.d	$t5, $t5, 12
+                                        # implicit-def: $vr19
+	beq	$t6, $zero, .LBB20_20
+	beq	$t5, $zero, .LBB20_19
+# %bb.92:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$t5, $t6, 1
+                                        # implicit-def: $vr19
+	bne	$t5, $zero, .LBB20_96
+# %bb.93:                               #   in Loop: Header=BB20_21 Depth=1
+	andi	$t5, $t6, 16
+	bne	$t5, $zero, .LBB20_97
+.LBB20_94:                              #   in Loop: Header=BB20_21 Depth=1
+	andi	$t5, $t6, 256
+	bne	$t5, $zero, .LBB20_98
+.LBB20_95:                              #   in Loop: Header=BB20_21 Depth=1
+	bstrpick.d	$t5, $t6, 12, 12
+	beq	$t5, $zero, .LBB20_20
+	b	.LBB20_99
+.LBB20_96:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t5, $t0, 0
+	vinsgr2vr.w	$vr19, $t5, 0
+	andi	$t5, $t6, 16
+	beq	$t5, $zero, .LBB20_94
+.LBB20_97:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t5, $t0, 4
+	vinsgr2vr.w	$vr19, $t5, 1
+	andi	$t5, $t6, 256
+	beq	$t5, $zero, .LBB20_95
+.LBB20_98:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t5, $t0, 8
+	vinsgr2vr.w	$vr19, $t5, 2
+	bstrpick.d	$t5, $t6, 12, 12
+	beq	$t5, $zero, .LBB20_20
+.LBB20_99:                              #   in Loop: Header=BB20_21 Depth=1
+	ld.wu	$t5, $t0, 12
+	vinsgr2vr.w	$vr19, $t5, 3
+	b	.LBB20_20
+.LBB20_100:
+	vadd.w	$vr0, $vr7, $vr6
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t0, $vr0, 0
+	vadd.w	$vr0, $vr5, $vr4
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t1, $vr0, 0
+	bne	$a4, $a7, .LBB20_3
+.LBB20_101:
+	fld.d	$fs3, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
+.LBB20_102:
+	st.w	$t1, $a2, 0
+	st.w	$t0, $a3, 0
 	ld.w	$a0, $a2, 0
-	add.w	$a0, $a0, $a5
+	add.w	$a0, $a0, $t0
 	ret
+.LBB20_103:
+	move	$t0, $a7
+	move	$t1, $a7
+	b	.LBB20_3
 .Lfunc_end20:
 	.size	_ZN4Mesh12rezone_countESt6vectorIiSaIiEERiS3_, .Lfunc_end20-_ZN4Mesh12rezone_countESt6vectorIiSaIiEERiS3_
                                         # -- End function
