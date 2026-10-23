@@ -78,8 +78,12 @@ jobs:
           cd ${LLVM_SRC_DIR}
           git fetch origin pull/${{ needs.configure.outputs.PR_ID }}/head:${PR_BRANCH}
           git checkout ${PR_BRANCH}
-          pr_commits=$(git rev-list main.. --count)
-          git checkout HEAD~${pr_commits}
+          # merge-base against the true mainline (upstream/main, falling back
+          # to origin/main). The old `git rev-list main.. --count` + HEAD~N
+          # heuristic silently picked a wrong base for PRs with merge commits
+          # or when the fork's main was behind.
+          BASE_SHA=$(python3 scripts/baseref.py --llvm-dir . --opt-branch "${PR_BRANCH}")
+          git checkout ${BASE_SHA}
 
       - name: Build LLVM
         id: build

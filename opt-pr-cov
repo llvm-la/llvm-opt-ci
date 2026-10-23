@@ -39,6 +39,7 @@ if str(_SCRIPTS) not in sys.path:
     sys.path.insert(0, str(_SCRIPTS))
 
 import asmcompare  # noqa: E402
+import baseref  # noqa: E402
 import report as report_mod  # noqa: E402
 import runstate  # noqa: E402
 from steprunner import (  # noqa: E402
@@ -153,34 +154,9 @@ def fetch_pr(pr_id: str, verbose: bool) -> tuple[str, str]:
     return local_branch, r.stdout.strip()
 
 
-MAIN_REF: str | None = None
-
-
-def main_ref() -> str:
-    """Ref used as the true base: upstream/main when an 'upstream' remote exists.
-
-    The fork's origin/main can lag far behind the real llvm-project, which
-    would drag the merge-base (and thus the base build) hundreds of commits
-    below where the branch was actually created.
-    """
-    global MAIN_REF
-    if MAIN_REF is None:
-        r = run(f"cd '{LLVM_SRC}' && git remote get-url upstream", capture_output=True, text=True)
-        if r.returncode == 0 and r.stdout.strip():
-            MAIN_REF = "upstream/main"
-        else:
-            print(
-                "Warning: no 'upstream' remote in llvm-project; "
-                "merge-base falls back to local main (stale if origin is a fork).",
-                file=sys.stderr,
-            )
-            MAIN_REF = "main"
-    return MAIN_REF
-
-
 def fetch_main(verbose: bool):
     """Fetch the true upstream main for merge-base calculation."""
-    ref = main_ref()
+    ref = baseref.base_ref(str(LLVM_SRC))
     remote = ref.split("/")[0]
     check_logged(
         "fetch-remote",
@@ -189,27 +165,10 @@ def fetch_main(verbose: bool):
     )
 
 
-def find_merge_base(opt_branch: str) -> str:
-    """Find merge-base between the true main and opt_branch. Returns commit SHA."""
-    ref = main_ref()
-    r = run(f"cd '{LLVM_SRC}' && git merge-base {ref} {opt_branch}", capture_output=True, text=True)
-    if r.returncode != 0:
-        print(f"Error: cannot find merge-base between {ref} and {opt_branch}", file=sys.stderr)
-        print(f"  {r.stderr.strip()}", file=sys.stderr)
-        sys.exit(1)
-    return r.stdout.strip()
-
-
-def resolve_base_commit(opt_branch: str, base_ref: str | None) -> str:
-    """Resolve the base commit: explicit --base ref, else merge-base with main."""
-    if not base_ref:
-        return find_merge_base(opt_branch)
-    r = run(f"cd '{LLVM_SRC}' && git rev-parse {base_ref}", capture_output=True, text=True)
-    if r.returncode != 0:
-        print(f"Error: invalid --base ref: {base_ref}", file=sys.stderr)
-        print(f"  {r.stderr.strip()}", file=sys.stderr)
-        sys.exit(1)
-    return r.stdout.strip()
+def resolve_base_commit(opt_branch: str, base_ref_name: str | None) -> str:
+    """Resolve the base commit via the shared baseref module."""
+    sha, _ = baseref.resolve_base(str(LLVM_SRC), opt_branch, base_ref_name)
+    return sha
 
 
 def get_current_branch() -> str:
@@ -362,7 +321,8 @@ def create_results(ctx: "RunContext") -> str:
     commit_sha = state.get("commit_sha", "")
     opt_info = get_commit_info() or get_commit_info(commit_sha)
     merge_base = state.get("merge_base", "")
-    base_source = f"--base {args.base}" if args.base else f"merge-base:{main_ref()}"
+    base_source = (f"--base {args.base}" if args.base
+                   else f"merge-base:{baseref.base_ref(str(LLVM_SRC))}")
     base_info = get_commit_info(merge_base) if merge_base else {}
 
     rd = report_mod.build_report(
@@ -594,7 +554,11 @@ def cmd_run(argv: list[str]) -> int:
             r = run(f"cd '{LLVM_SRC}' && git rev-parse {ctx.opt_branch}", capture_output=True, text=True)
             ctx.commit_sha = r.stdout.strip() if r.returncode == 0 else None
         if not ctx.merge_base:
-            ctx.merge_base = resolve_base_commit(ctx.opt_branch, args.base)
+            try:
+                ctx.merge_base = resolve_base_commit(ctx.opt_branch, args.base)
+            except ValueError as e:
+                print(f"Error: {e}", file=sys.stderr)
+                return 1
         if not ctx.commit_sha or not ctx.merge_base:
             print("Error: cannot recover run context from state; use --fresh to re-run.", file=sys.stderr)
             return 1

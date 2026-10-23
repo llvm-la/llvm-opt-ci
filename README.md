@@ -50,7 +50,7 @@ test=test-suite
 │                                                 │
 │  2. without-pr (编译基准版本 base)                │
 │     ├ git fetch origin/pull/{id}/head            │
-│     ├ git checkout HEAD~{pr_commits} (回到合并前) │
+│     ├ git checkout $(baseref) (merge-base，回到合并前) │
 │     ├ sh scripts/build-llvm.sh                   │
 │     └ make build copy-asm (编译测试套件+取 .s)    │
 │                                                 │
