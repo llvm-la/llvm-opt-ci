@@ -100,33 +100,36 @@ CI 运行完成后：
 
 ## 本地开发
 
-`opt-pr-cov` 是本地可执行脚本，兼容 CI 流程，适合开发者在本地做优化对比。
+`opt-pr-cov` 是本地可执行工具，也是 AI Agent 调用的首选入口：一次 run 的结果落在固定的 `results/` 目录（含机器可读的 `report.json`），不碰 git，退出码稳定。
 
 ### 环境要求
 
 - Linux（推荐 Debian/Arch）
 - Python 3.10+
-- clang/clang++ 编译器（用于编译 LLVM）
+- clang/clang++ 编译器（用于编译 LLVM）、git
 - ninja + cmake
 - 以下可选工具：`sccache`（加速缓存）、`mold`（加速链接）、`fd` + `rsync`（拷贝汇编文件）
 
-### 用法
+### 子命令
 
 ```bash
-# 对比上游 PR
-./opt-pr-cov --pr 12345
+# 对比上游 PR（run 为默认子命令，旧用法 ./opt-pr-cov --pr N 仍兼容）
+./opt-pr-cov run --pr 12345
 
 # 对比本地分支（指定 LLVM 源码目录）
-./opt-pr-cov --branch my-patch --llvm-dir ~/dev/llvm-project
+./opt-pr-cov run --branch my-patch --llvm-dir ~/dev/llvm-project
 
-# 指定编译标志和测试套件
-./opt-pr-cov --pr 12345 --flag "-mlsx -O3" --test "test-suite,polybench"
+# 指定编译标志和测试套件；清空缓存重跑
+./opt-pr-cov run --pr 12345 --flag "-mlsx -O3" --test "test-suite,polybench" --fresh
 
-# 清空缓存，重新跑
-./opt-pr-cov --pr 12345 --fresh
+# 查看当前 run 状态（缓存进度 / base·opt SHA / 最近一次结果摘要）
+./opt-pr-cov status
+
+# 从 results/report.json 重新渲染 report.md
+./opt-pr-cov report
 ```
 
-### 参数说明
+### 参数说明（run）
 
 | 参数 | 说明 | 默认值 |
 |---|---|---|
@@ -136,7 +139,25 @@ CI 运行完成后：
 | `--flag` | 编译器标志 | `-mlsx -O3` |
 | `--test` | 测试套件，逗号分隔 | `test-suite` |
 | `--base` | 显式指定基准 commit/ref，跳过 merge-base 计算 | 自动 |
-| `--fresh` | 强制从头跑，不清除之前的构建缓存 | — |
+| `--fresh` | 作废步骤缓存，全部重跑 | — |
+| `--publish-branch` | 额外创建结果分支（2 个 commit），供上传后网页看 diff | 关（纯目录产物） |
+| `--fail-on-no-diff` | 无差异时退出码置 1 | 关 |
+| `--verbose` | 构建输出同时流式打印到 stdout | 关 |
+
+### 产物契约（每次 run 结束后）
+
+```
+results/
+├── report.json        # 全量结构化结果：status / base·opt SHA / summary / 每文件 ±行数
+├── report.md          # summary + top-10，人读
+├── base/<path>        # base 侧汇编（仅有差异的文件）
+└── opt/<path>         # opt 侧汇编
+build/logs/<step>.log  # 每个 step 的完整输出（fetch / build-*）
+```
+
+- **退出码**：`0` = run 完成（有差异 / 无差异都是 0，由 `report.json` 的 `status` 字段区分）；`1` = 失败（stdout 会给出失败步骤、错误尾部与日志路径）
+- **零 git 写操作**：默认不建分支、不 commit；工具仓库无需保持干净（`llvm-project` 源码树除外，步骤需要 checkout）
+- **断点续跑**：`build/.state/current` 记录已完成步骤，重跑同一命令自动跳过缓存步骤；源码树位置漂移会自动作废对应构建缓存
 
 ### 工作流程
 
@@ -151,16 +172,18 @@ Step 5/9: build-ts-base     — 用 base-LLVM 编译测试套件，生成 .s
 Step 6/9: checkout-opt      — 切换到补丁分支
 Step 7/9: build-llvm-opt    — 编译补丁 LLVM
 Step 8/9: build-ts-opt      — 用 opt-LLVM 编译测试套件，生成 .s
-Step 9/9: create-commits    — diff base/opt 的 .s，创建 2 个 commit
+Step 9/9: create-results    — diff base/opt 的 .s，写出 results/ 产物
 ```
 
-### 特性
+### 开发
 
-- **增量执行**：`build/.state/current` 记录已完成步骤，断点续跑
-- **结果分支**：`opt-pr-{id}-{timestamp}` 或 `opt-{branch}-{timestamp}`，含两个 commit：
-  - Commit 1：base 的 asm 文件
-  - Commit 2：opt 的 asm 文件（`git diff HEAD~1` 即是优化前后差异）
-- **GitRestore**：try/finally 保证 llvm-project 恢复到进入前的分支
+单元测试（纯函数，秒级，不依赖 LLVM 构建）：
+
+```bash
+python3 -m unittest discover -s scripts/tests -v
+```
+
+术语表见 [GLOSSARY.md](GLOSSARY.md)。
 
 ---
 
@@ -168,7 +191,8 @@ Step 9/9: create-commits    — diff base/opt 的 .s，创建 2 个 commit
 
 ```
 ./
-├── opt-pr-cov                    # 本地开发脚本 (命令行入口)
+├── opt-pr-cov                    # 本地工具 (CLI 入口: run / status / report)
+├── GLOSSARY.md                   # 领域术语表
 ├── .github/
 │   ├── workflows/
 │   │   ├── llvm-opt-ci.yml       # CI 工作流
@@ -176,18 +200,23 @@ Step 9/9: create-commits    — diff base/opt 的 .s，创建 2 个 commit
 │   └── ISSUE_TEMPLATE/
 │       └── llvm-pr.md            # Issue 模板
 ├── scripts/
+│   ├── asmcompare.py             # 深模块：两个 asm 目录的结构化 diff
+│   ├── report.py                 # report.json 组装 + markdown 渲染（纯函数）
+│   ├── runstate.py               # run 状态持久化
 │   ├── build-llvm.sh             # 编译 LLVM
 │   ├── build-test-suite.sh       # 编译测试套件
 │   ├── fetch-upstream.sh         # 拉取上游代码
-│   ├── gen_report.py             # 生成 diff 报告
+│   ├── gen_report.py             # 生成 diff 报告 (CI 用)
 │   ├── Makefile                  # make 驱动编译+拷贝 asm
-│   ├── parse_request.py          # 解析 issue 参数
-│   └── publish.py                # 发布结果
+│   ├── parse_request.py          # 解析 issue 参数 (CI 用)
+│   ├── publish.py                # 发布结果 (CI 用)
+│   └── tests/                    # 单元测试 (unittest)
 ├── repos/                        # 源码仓库 (需自行克隆)
 │   ├── llvm-project/             # LLVM 源码
 │   ├── llvm-test-suite/          # 默认测试套件
 │   └── <other-suites>/           # 其他测试套件
-└── build/                        # 编译输出（自动生成）
+├── results/                      # run 产物（自动生成：report.json/md + base/opt asm）
+└── build/                        # 编译输出与日志（自动生成）
 ```
 
 ## 添加新测试套件
