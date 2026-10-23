@@ -3,10 +3,11 @@
 
 AI-agent-friendly 本地对比工具。产物契约（见 README「本地开发」）：
 
-    ./opt-pr-cov run  --pr 12345                       # run 为默认子命令
-    ./opt-pr-cov run  --branch my-feature --llvm-dir ~/dev/llvm-project
-    ./opt-pr-cov status                                # 只读：当前 run 状态
-    ./opt-pr-cov report                                # 从 report.json 重渲染 report.md
+    ./opt-pr-cov run  [--pr N | --branch B] [--flag F] [--test T] [--base REF]
+                      [--fresh] [--from STEP] [--publish-branch]
+                      [--fail-on-no-diff] [--llvm-dir D] [--verbose]
+    ./opt-pr-cov status                               # 只读：当前 run 状态
+    ./opt-pr-cov report                               # 从 report.json 重渲染 report.md
 
 一次完成的 run 产出（都在固定路径，指向最近一次 run）：
     results/report.json        全量结构化结果（Agent 读这个）
@@ -19,6 +20,7 @@ AI-agent-friendly 本地对比工具。产物契约（见 README「本地开发�
 可选行为：
     --publish-branch     额外创建 opt-pr-<id>-<ts> 分支（2 个 commit），供上传后网页看 diff
     --fail-on-no-diff    无差异时退出码置 1（供 gate 式调用方）
+    --from STEP          作废 STEP 及其后的步骤缓存，从这里重跑
 """
 
 import argparse
@@ -28,7 +30,7 @@ import shutil
 import subprocess
 import sys
 import time
-from collections import deque
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -39,6 +41,10 @@ if str(_SCRIPTS) not in sys.path:
 import asmcompare  # noqa: E402
 import report as report_mod  # noqa: E402
 import runstate  # noqa: E402
+from steprunner import (  # noqa: E402
+    Progress, Runner, Step, StepFailure,
+    check_logged, fmt_seconds, names, names_from,
+)
 
 # ── Paths (match workflow env layout) ───────────────────────────────────────
 
@@ -51,28 +57,9 @@ RESULTS_DIR = ROOT / "results"
 STATE_DIR = BUILD_DIR / ".state"
 LOG_DIR = BUILD_DIR / "logs"
 
-# ── Steps ──────────────────────────────────────────────────────────────────
-
-STEPS = [
-    "fetch-remote",
-    "find-merge-base",
-    "checkout-base",
-    "build-llvm-base",
-    "build-ts-base",
-    "checkout-opt",
-    "build-llvm-opt",
-    "build-ts-opt",
-    "create-results",
-]
-
 SUBCOMMANDS = {"run", "status", "report"}
 
 # ── Helpers ─────────────────────────────────────────────────────────────────
-
-
-def fmt_seconds(seconds: int) -> str:
-    m, s = divmod(seconds, 60)
-    return f"{m}m {s}s" if m else f"{s}s"
 
 
 def env_for_phase(phase: str, flag: str, suites: str) -> dict:
@@ -89,12 +76,6 @@ def env_for_phase(phase: str, flag: str, suites: str) -> dict:
     return e
 
 
-# ── Process helpers ────────────────────────────────────────────────────────
-# run/check 用于快速的 git 查询（输出本来就短，直接进 stdout）。
-# run_logged/check_logged 用于高噪声步骤（fetch/build）：输出全部 tee 进
-# 日志文件，stdout 保持安静；失败时由 StepFailure 携带最后 30 行 + 日志路径。
-
-
 def run(cmd: str, **kwargs):
     """Run a shell command, return CompletedProcess."""
     return subprocess.run(cmd, shell=True, **kwargs)
@@ -105,43 +86,8 @@ def check(cmd: str, **kwargs):
     subprocess.run(cmd, shell=True, check=True, **kwargs)
 
 
-class StepFailure(Exception):
-    """高噪声步骤失败：附日志路径与错误尾部。"""
-
-    def __init__(self, cmd: str, returncode: int, log_path: str, tail: list[str]):
-        self.cmd = cmd
-        self.returncode = returncode
-        self.log_path = log_path
-        self.tail = tail
-        super().__init__(f"exit {returncode}: {cmd}")
-
-
-def run_logged(cmd: str, log_path: str, verbose: bool = False, **kwargs):
-    """执行命令，stdout/stderr 全量写入 log_path。返回 (returncode, 最后30行)。"""
-    os.makedirs(os.path.dirname(log_path), exist_ok=True)
-    tail: deque[bytes] = deque(maxlen=30)
-    with open(log_path, "w") as log:
-        proc = subprocess.Popen(
-            cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, **kwargs
-        )
-        assert proc.stdout is not None
-        for raw in iter(proc.stdout.readline, b""):
-            log.write(raw)
-            log.flush()
-            tail.append(raw)
-            if verbose:
-                sys.stdout.buffer.write(raw)
-                sys.stdout.flush()
-        rc = proc.wait()
-    decoded = [line.decode(errors="replace").rstrip() for line in tail]
-    return rc, decoded
-
-
-def check_logged(cmd: str, log_path: str, verbose: bool = False, **kwargs):
-    rc, tail = run_logged(cmd, log_path, verbose=verbose, **kwargs)
-    if rc != 0:
-        raise StepFailure(cmd, rc, log_path, tail)
-
+# 高噪声命令（fetch/build）走 steprunner.check_logged：输出全量进日志文件，
+# stdout 保持安静；失败时 StepFailure 携带最后 30 行 + 日志路径。
 
 # ── State (thin wrappers over runstate) ────────────────────────────────────
 
@@ -158,11 +104,6 @@ def mark_step(step: str, **meta):
     runstate.mark_step(str(STATE_DIR), step, **meta)
 
 
-def mark_step_done(step: str, timings: dict[str, int]):
-    """标记步骤完成并记录耗时（dur_<step>，供 status 展示）。"""
-    runstate.mark_step(str(STATE_DIR), step, **{f"dur_{step}": timings[step]})
-
-
 def step_done(step: str) -> bool:
     return runstate.step_done(str(STATE_DIR), step)
 
@@ -171,26 +112,9 @@ def clear_steps():
     runstate.clear_steps(str(STATE_DIR), STEPS)
 
 
-# ── Progress display ────────────────────────────────────────────────────────
-
-
-class Progress:
-    def __init__(self, steps: list[str], done: set[str]):
-        self.steps = steps
-        self.done = done
-        self.max_len = max(len(s) for s in steps)
-
-    def draw(self, current: str | None = None):
-        lines = []
-        for i, step in enumerate(self.steps, 1):
-            if step in self.done:
-                marker = "[OK]"
-            elif step == current:
-                marker = "[-->]"
-            else:
-                marker = "[  ]"
-            lines.append(f"{marker} Step {i}/{len(self.steps)}: {step}")
-        print("\r" + "\n".join(lines))
+def mark_step_done(step: str, timings: dict[str, int]):
+    """标记步骤完成并记录耗时（dur_<step>，供 status 展示）。"""
+    runstate.mark_step(str(STATE_DIR), step, **{f"dur_{step}": timings[step]})
 
 
 # ── Git helpers ─────────────────────────────────────────────────────────────
@@ -221,6 +145,7 @@ def fetch_pr(pr_id: str, verbose: bool) -> tuple[str, str]:
     """Fetch PR branch. Returns (local_branch, commit_sha)."""
     local_branch = f"pr-{pr_id}-local"
     check_logged(
+        "fetch-remote",
         f"cd '{LLVM_SRC}' && git fetch origin pull/{pr_id}/head:{local_branch}",
         str(LOG_DIR / "fetch-remote.log"), verbose=verbose,
     )
@@ -258,6 +183,7 @@ def fetch_main(verbose: bool):
     ref = main_ref()
     remote = ref.split("/")[0]
     check_logged(
+        "fetch-remote",
         f"cd '{LLVM_SRC}' && git fetch {remote} main",
         str(LOG_DIR / "fetch-remote.log"), verbose=verbose,
     )
@@ -310,19 +236,22 @@ def get_commit_info(ref: str = "HEAD") -> dict:
     return {"sha": sha, "short": short, "author": author, "date": date, "subject": subject}
 
 
-# ── Step implementations ───────────────────────────────────────────────────
+# ── Pipeline step implementations ──────────────────────────────────────────
+# 每个步骤是一个 Step(name, fn)；fn(ctx) 返回可选备注，失败抛 StepFailure。
 
 
-def step_build_llvm(phase: str, verbose: bool):
+def _build_llvm(phase: str, verbose: bool):
     check_logged(
+        f"build-llvm-{phase}",
         f"BUILD_LLVM_DIR='{BUILD_LLVM_DIR}' LLVM_SRC_DIR='{LLVM_SRC}' "
         f"sh '{ROOT}/scripts/build-llvm.sh'",
         str(LOG_DIR / f"build-llvm-{phase}.log"), verbose=verbose,
     )
 
 
-def step_build_ts(phase: str, flag: str, suites: str, verbose: bool):
+def _build_ts(phase: str, flag: str, suites: str, verbose: bool):
     check_logged(
+        f"build-ts-{phase}",
         f'cd "{ROOT}" && make -f scripts/Makefile '
         f'SUITES="{suites}" PHASE={phase} build copy-asm',
         str(LOG_DIR / f"build-ts-{phase}.log"), verbose=verbose,
@@ -381,12 +310,11 @@ def publish_branch(
     return branch
 
 
-def create_results(
-    args, timings: dict[str, int], pr_id: str | None, local_branch: str
-) -> str:
+def create_results(ctx: "RunContext") -> str:
     """Step 9：对比 base/opt 汇编，写出 results/ 产物。返回 "diff" 或 "no_diff"。"""
-    # 重读 state：前面步骤 mark_step 写入的 commit_sha / merge_base 需要在这里用
+    # 重读 state：前面步骤写入的 commit_sha / merge_base 需要在这里用
     state = read_state() or {}
+    args = ctx.args
     if RESULTS_DIR.exists():
         shutil.rmtree(RESULTS_DIR)
     RESULTS_DIR.mkdir(parents=True)
@@ -416,10 +344,10 @@ def create_results(
         if status == "no_diff":
             print("No differences — nothing to publish as a branch.")
         else:
-            if use_pr_mode(pr_id):
-                label = f"LLVM PR #{pr_id}"
+            if ctx.pr_id:
+                label = f"LLVM PR #{ctx.pr_id}"
             else:
-                label = f"branch {local_branch}"
+                label = f"branch {ctx.local_branch}"
             published = publish_branch(
                 args, state, entries, label, state.get("commit_sha", "")
             )
@@ -440,9 +368,9 @@ def create_results(
     rd = report_mod.build_report(
         status=status,
         target={
-            "kind": "pr" if pr_id else "branch",
-            "pr": int(pr_id) if pr_id else None,
-            "branch_name": local_branch,
+            "kind": "pr" if ctx.pr_id else "branch",
+            "pr": int(ctx.pr_id) if ctx.pr_id else None,
+            "branch_name": ctx.local_branch,
         },
         base={"sha": merge_base, "source": base_source,
               "subject": base_info.get("subject", "")},
@@ -452,8 +380,8 @@ def create_results(
         flag=args.flag,
         suites=suites,
         started_at=state.get("started_at", ""),
-        duration_seconds=sum(timings.values()),
-        step_timings=dict(timings),
+        duration_seconds=sum(ctx.timings.values()),
+        step_timings=dict(ctx.timings),
         comparison=comparison,
         published_branch=published,
     )
@@ -472,8 +400,88 @@ def create_results(
     return status
 
 
-def use_pr_mode(pr_id: str | None) -> bool:
-    return pr_id is not None
+# ── Run context + step registry ────────────────────────────────────────────
+
+
+@dataclass
+class RunContext:
+    """一次 run 的共享上下文，在各步骤间传递。"""
+
+    args: argparse.Namespace
+    timings: dict[str, int] = field(default_factory=dict)
+    pr_id: str | None = None
+    local_branch: str = ""
+    verbose: bool = False
+    # 以下由步骤写入 / 从 state 恢复
+    opt_branch: str | None = None
+    commit_sha: str | None = None
+    merge_base: str | None = None
+    status: str | None = None
+
+    def invalidate(self, step_names: list[str]):
+        """作废步骤缓存标记（树位置漂移时由 checkout 步骤调用）。"""
+        s = read_state() or {}
+        for st in step_names:
+            s.pop(st, None)
+        write_state(s)
+
+
+def _step_fetch(ctx: RunContext) -> str:
+    fetch_main(ctx.verbose)
+    if ctx.pr_id:
+        ctx.opt_branch, ctx.commit_sha = fetch_pr(ctx.pr_id, ctx.verbose)
+    else:
+        r = run(f"cd '{LLVM_SRC}' && git rev-parse {ctx.local_branch}", capture_output=True, text=True)
+        ctx.commit_sha = r.stdout.strip()
+        ctx.opt_branch = ctx.local_branch
+    runstate.set_meta(str(STATE_DIR), opt_branch=ctx.opt_branch, commit_sha=ctx.commit_sha)
+    return ""
+
+
+def _step_merge_base(ctx: RunContext) -> str:
+    # Always re-resolve from the tree: a cached marker cannot know the remote moved.
+    ctx.merge_base = resolve_base_commit(ctx.opt_branch, ctx.args.base)
+    runstate.set_meta(str(STATE_DIR), merge_base=ctx.merge_base)
+    note = " (--base)" if ctx.args.base else ""
+    return f"{ctx.merge_base[:8]}{note}"
+
+
+def _step_checkout_base(ctx: RunContext) -> str:
+    # Always enforce the tree position: a previous run's failure restored the
+    # worktree via GitRestore, so a cached "done" marker does not guarantee the
+    # sources actually sit at the merge base.
+    r = run(f"cd '{LLVM_SRC}' && git rev-parse HEAD", capture_output=True, text=True)
+    prev_head = r.stdout.strip()
+    check(f"cd '{LLVM_SRC}' && git checkout {ctx.merge_base}")
+    if prev_head != ctx.merge_base and (step_done("build-llvm-base") or step_done("build-ts-base")):
+        print("\n[..] tree moved since cached base build — invalidating base build cache")
+        ctx.invalidate(["build-llvm-base", "build-ts-base"])
+    return ""
+
+
+def _step_checkout_opt(ctx: RunContext) -> str:
+    # Always enforce the tree position (same reasoning as checkout-base).
+    r = run(f"cd '{LLVM_SRC}' && git rev-parse HEAD", capture_output=True, text=True)
+    prev_head = r.stdout.strip()
+    check(f"cd '{LLVM_SRC}' && git checkout {ctx.opt_branch}")
+    if prev_head != ctx.commit_sha and (step_done("build-llvm-opt") or step_done("build-ts-opt")):
+        print("\n[..] tree moved since cached opt build — invalidating opt build cache")
+        ctx.invalidate(["build-llvm-opt", "build-ts-opt"])
+    return ""
+
+
+STEPS_DEF = [
+    Step("fetch-remote", _step_fetch),
+    Step("find-merge-base", _step_merge_base),
+    Step("checkout-base", _step_checkout_base, always=True),
+    Step("build-llvm-base", lambda ctx: _build_llvm("base", ctx.verbose)),
+    Step("build-ts-base", lambda ctx: _build_ts("base", ctx.args.flag, ctx.args.test, ctx.verbose)),
+    Step("checkout-opt", _step_checkout_opt, always=True),
+    Step("build-llvm-opt", lambda ctx: _build_llvm("opt", ctx.verbose)),
+    Step("build-ts-opt", lambda ctx: _build_ts("opt", ctx.args.flag, ctx.args.test, ctx.verbose)),
+    Step("create-results", lambda ctx: create_results(ctx)),
+]
+STEPS = names(STEPS_DEF)
 
 
 # ── Subcommand: run ─────────────────────────────────────────────────────────
@@ -494,6 +502,8 @@ def parse_run_args(argv: list[str]):
     p.add_argument("--flag", default="-mlsx -O3", help="Compiler flags (default: -mlsx -O3)")
     p.add_argument("--test", default="test-suite", help="Comma-separated test suites")
     p.add_argument("--fresh", action="store_true", help="Ignore cached steps, re-run all")
+    p.add_argument("--from", dest="from_step", choices=STEPS, metavar="STEP",
+                   help="Invalidate STEP and everything after it, then re-run from there")
     p.add_argument("--publish-branch", action="store_true",
                    help="Also create a result branch with 2 commits (opt-in; default is directory-only output)")
     p.add_argument("--fail-on-no-diff", action="store_true",
@@ -552,161 +562,61 @@ def cmd_run(argv: list[str]) -> int:
             print(f"Fresh run on branch '{branch}' (branch: {local_branch})")
         clear_steps()
 
+    if args.from_step:
+        todo = names_from(STEPS_DEF, args.from_step)
+        s = read_state() or {}
+        for st in todo:
+            s.pop(st, None)
+        write_state(s)
+        print(f"[--from {args.from_step}] invalidating: {', '.join(todo)}")
+
     LOG_DIR.mkdir(parents=True, exist_ok=True)
 
     git = GitRestore()
     git.save()
 
-    done = {s for s in STEPS if step_done(s)}
-    prog = Progress(STEPS, done)
-    prog.draw()
+    ctx = RunContext(
+        args=args,
+        verbose=args.verbose,
+        pr_id=pr_id,
+        local_branch=local_branch,
+    )
 
     # Restore context persisted by earlier runs (needed when steps are skipped).
     state = read_state() or {}
-    opt_branch = state.get("opt_branch")
-    commit_sha = state.get("commit_sha")
-    merge_base = state.get("merge_base")
-    if state.get("fetch-remote") == "done" and not opt_branch:
-        opt_branch = f"pr-{pr_id}-local" if use_pr else local_branch
-    if opt_branch and (not commit_sha or not merge_base):
-        if not commit_sha:
-            r = run(f"cd '{LLVM_SRC}' && git rev-parse {opt_branch}", capture_output=True, text=True)
-            commit_sha = r.stdout.strip() if r.returncode == 0 else None
-        if not merge_base:
-            merge_base = resolve_base_commit(opt_branch, args.base)
-        if not commit_sha or not merge_base:
+    ctx.opt_branch = state.get("opt_branch")
+    ctx.commit_sha = state.get("commit_sha")
+    ctx.merge_base = state.get("merge_base")
+    if state.get("fetch-remote") == "done" and not ctx.opt_branch:
+        ctx.opt_branch = f"pr-{pr_id}-local" if use_pr else local_branch
+    if ctx.opt_branch and (not ctx.commit_sha or not ctx.merge_base):
+        if not ctx.commit_sha:
+            r = run(f"cd '{LLVM_SRC}' && git rev-parse {ctx.opt_branch}", capture_output=True, text=True)
+            ctx.commit_sha = r.stdout.strip() if r.returncode == 0 else None
+        if not ctx.merge_base:
+            ctx.merge_base = resolve_base_commit(ctx.opt_branch, args.base)
+        if not ctx.commit_sha or not ctx.merge_base:
             print("Error: cannot recover run context from state; use --fresh to re-run.", file=sys.stderr)
             return 1
 
-    timings: dict[str, int] = {}
     exit_code = 0
-    status = None
-
     try:
-        # ── Step 1: Fetch remote ──
-        if not step_done("fetch-remote"):
-            prog.draw("fetch-remote")
-            t0 = time.time()
-            fetch_main(args.verbose)
-            if use_pr:
-                opt_branch, commit_sha = fetch_pr(pr_id, args.verbose)
-            else:
-                r = run(f"cd '{LLVM_SRC}' && git rev-parse {local_branch}", capture_output=True, text=True)
-                commit_sha = r.stdout.strip()
-                opt_branch = local_branch
-            timings["fetch-remote"] = int(time.time() - t0)
-            print(f"\n[OK] Step 1/9: fetch-remote   ({fmt_seconds(timings['fetch-remote'])})")
-            mark_step("fetch-remote", opt_branch=opt_branch, commit_sha=commit_sha)
-            mark_step_done("fetch-remote", timings)
+        Runner(
+            STEPS_DEF,
+            is_done=step_done,
+            mark_done=lambda name: mark_step_done(name, ctx.timings),
+            progress=Progress(STEPS),
+        ).run(ctx)
 
-        # ── Step 2: Find merge-base ──
-        if not step_done("find-merge-base"):
-            prog.draw("find-merge-base")
-            t0 = time.time()
-            merge_base = resolve_base_commit(opt_branch, args.base)
-            timings["find-merge-base"] = int(time.time() - t0)
-            note = " (--base)" if args.base else ""
-            print(f"\n[OK] Step 2/9: find-merge-base{note} "
-                  f"({fmt_seconds(timings['find-merge-base'])}) — {merge_base[:8]}")
-            mark_step("find-merge-base", merge_base=merge_base)
-            mark_step_done("find-merge-base", timings)
+        if ctx.status == "no_diff" and args.fail_on_no_diff:
+            print("\n--fail-on-no-diff: no differences found, exiting 1", file=sys.stderr)
+            exit_code = 1
 
-        # ── Step 3: Checkout base ──
-        # Always enforce the tree position: a previous run's failure restored
-        # the worktree via GitRestore, so a cached "done" marker does not
-        # guarantee the sources actually sit at the merge base.
-        prog.draw("checkout-base")
-        t0 = time.time()
-        r = run(f"cd '{LLVM_SRC}' && git rev-parse HEAD", capture_output=True, text=True)
-        prev_head = r.stdout.strip()
-        check(f"cd '{LLVM_SRC}' && git checkout {merge_base}")
-        if prev_head != merge_base and (step_done("build-llvm-base") or step_done("build-ts-base")):
-            print("\n[..] tree moved since cached base build — invalidating base build cache")
-            s = read_state() or {}
-            for st in ("build-llvm-base", "build-ts-base"):
-                s.pop(st, None)
-                done.discard(st)
-            write_state(s)
-        timings["checkout-base"] = int(time.time() - t0)
-        mark_step("checkout-base")
-        mark_step_done("checkout-base", timings)
-
-        # ── Step 4: Build LLVM (base) ──
-        if not step_done("build-llvm-base"):
-            prog.draw("build-llvm-base")
-            t0 = time.time()
-            step_build_llvm("base", args.verbose)
-            timings["build-llvm-base"] = int(time.time() - t0)
-            print(f"\n[OK] Step 4/9: build-llvm-base ({fmt_seconds(timings['build-llvm-base'])})")
-            mark_step("build-llvm-base")
-            mark_step_done("build-llvm-base", timings)
-
-        # ── Step 5: Build test suites (base) ──
-        if not step_done("build-ts-base"):
-            prog.draw("build-ts-base")
-            t0 = time.time()
-            step_build_ts("base", args.flag, args.test, args.verbose)
-            timings["build-ts-base"] = int(time.time() - t0)
-            print(f"\n[OK] Step 5/9: build-ts-base   ({fmt_seconds(timings['build-ts-base'])})")
-            mark_step("build-ts-base")
-            mark_step_done("build-ts-base", timings)
-
-        # ── Step 6: Checkout opt ──
-        # Always enforce the tree position (same reasoning as step 3).
-        prog.draw("checkout-opt")
-        t0 = time.time()
-        r = run(f"cd '{LLVM_SRC}' && git rev-parse HEAD", capture_output=True, text=True)
-        prev_head = r.stdout.strip()
-        check(f"cd '{LLVM_SRC}' && git checkout {opt_branch}")
-        if prev_head != commit_sha and (step_done("build-llvm-opt") or step_done("build-ts-opt")):
-            print("\n[..] tree moved since cached opt build — invalidating opt build cache")
-            s = read_state() or {}
-            for st in ("build-llvm-opt", "build-ts-opt"):
-                s.pop(st, None)
-                done.discard(st)
-            write_state(s)
-        timings["checkout-opt"] = int(time.time() - t0)
-        mark_step("checkout-opt")
-        mark_step_done("checkout-opt", timings)
-
-        # ── Step 7: Build LLVM (opt) ──
-        if not step_done("build-llvm-opt"):
-            prog.draw("build-llvm-opt")
-            t0 = time.time()
-            step_build_llvm("opt", args.verbose)
-            timings["build-llvm-opt"] = int(time.time() - t0)
-            print(f"\n[OK] Step 7/9: build-llvm-opt  ({fmt_seconds(timings['build-llvm-opt'])})")
-            mark_step("build-llvm-opt")
-            mark_step_done("build-llvm-opt", timings)
-
-        # ── Step 8: Build test suites (opt) ──
-        if not step_done("build-ts-opt"):
-            prog.draw("build-ts-opt")
-            t0 = time.time()
-            step_build_ts("opt", args.flag, args.test, args.verbose)
-            timings["build-ts-opt"] = int(time.time() - t0)
-            print(f"\n[OK] Step 8/9: build-ts-opt    ({fmt_seconds(timings['build-ts-opt'])})")
-            mark_step("build-ts-opt")
-            mark_step_done("build-ts-opt", timings)
-
-        # ── Step 9: Create results ──
-        if not step_done("create-results"):
-            prog.draw("create-results")
-            t0 = time.time()
-            status = create_results(args, timings, pr_id, local_branch)
-            timings["create-results"] = int(time.time() - t0)
-            print(f"\n[OK] Step 9/9: create-results  ({fmt_seconds(timings['create-results'])})")
-            mark_step("create-results")
-            mark_step_done("create-results", timings)
-            if status == "no_diff" and args.fail_on_no_diff:
-                print("\n--fail-on-no-diff: no differences found, exiting 1", file=sys.stderr)
-                exit_code = 1
-
-        print(f"\nAll steps complete.{' Results: ' + str(RESULTS_DIR) if status != 'no_diff' else ' (no differences)'}")
+        print(f"\nAll steps complete.{' Results: ' + str(RESULTS_DIR) if ctx.status != 'no_diff' else ' (no differences)'}")
 
     except StepFailure as e:
         exit_code = 1
-        print(f"\nFAILED (exit {e.returncode}): {e.cmd}", file=sys.stderr)
+        print(f"\nFAILED step '{e.step}' (exit {e.returncode}): {e.cmd}", file=sys.stderr)
         print(f"Log: {e.log_path}", file=sys.stderr)
         if e.tail:
             print("--- last lines ---", file=sys.stderr)
@@ -759,6 +669,7 @@ def cmd_status() -> int:
     if pending:
         print(f"Next       : {pending[0]}")
         print("Resume     : ./opt-pr-cov run  (re-run the same command; cached steps are skipped)")
+        print(f"Jump       : ./opt-pr-cov run --from {pending[0]}  (redo this step and everything after)")
 
     rp = RESULTS_DIR / "report.json"
     if rp.exists():

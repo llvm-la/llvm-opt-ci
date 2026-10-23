@@ -53,6 +53,13 @@ def mark_step(state_dir: str, step: str, **meta) -> None:
     write(state_dir, d)
 
 
+def set_meta(state_dir: str, **meta) -> None:
+    """只写元数据，不碰任何步骤标记（供步骤执行中记录派生上下文）。"""
+    d = read(state_dir) or {}
+    d.update(meta)
+    write(state_dir, d)
+
+
 def step_done(state_dir: str, step: str) -> bool:
     d = read(state_dir) or {}
     return d.get(step) == "done"
