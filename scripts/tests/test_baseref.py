@@ -33,11 +33,14 @@ def _shift_stdout(stdout: str) -> str:
 
 
 class BaserefTestBase(unittest.TestCase):
-    """搭建：upstream(main: A→C→D) · origin(main: A) · work(feature: A→U1→U2)。
+    """确定性夹具：upstream 由 origin 克隆后再前进一个 commit。
 
-    feature 含只有 upstream 才有的 commit（U1/U2），所以：
-      merge-base(upstream/main, feature) = U1
-      merge-base(origin/main,  feature) = A     ← fork main 落后时的退化答案
+      origin/main : A
+      upstream/main : A → C          （upstream 领先，fork 落后）
+      work/feature  : A → C → U2     （基于 upstream/main 创建）
+
+    于是：merge-base(upstream/main, feature) = C（正确答案）
+          merge-base(origin/main,  feature) = A（fork 落后时的退化答案）
     """
 
     def setUp(self):
@@ -47,24 +50,20 @@ class BaserefTestBase(unittest.TestCase):
         self.origin = root / "origin"
         self.work = root / "work"
 
-        _git(root, "init", "-q", "-b", "main", str(self.upstream))
-        _commit(self.upstream, "a.txt", "A", "A")
-        a = sha_of(self.upstream, "main")
-        _commit(self.upstream, "c.txt", "C", "C")
-
         _git(root, "init", "-q", "-b", "main", str(self.origin))
         _commit(self.origin, "a.txt", "A", "A")
-        assert sha_of(self.origin, "main") == a
+        self.a = sha_of(self.origin, "main")
+
+        _git(root, "clone", "-q", str(self.origin), str(self.upstream))
+        _commit(self.upstream, "c.txt", "C", "C")
+        self.u1 = sha_of(self.upstream, "main")  # = C
 
         _git(root, "clone", "-q", str(self.origin), str(self.work))
         _git(self.work, "remote", "add", "upstream", str(self.upstream))
         _git(self.work, "fetch", "-q", "upstream")
-        _git(self.work, "checkout", "-q", "-b", "feature", a)
-        self.u1 = sha_of(self.work, "upstream/main")  # = C
-        _git(self.work, "reset", "-q", "--hard", "upstream/main")
+        _git(self.work, "checkout", "-q", "-b", "feature", "upstream/main")
         _commit(self.work, "u2.txt", "U2", "U2")
         self.u2 = sha_of(self.work, "feature")
-        self.a = a
 
     def tearDown(self):
         self.tmp.cleanup()
