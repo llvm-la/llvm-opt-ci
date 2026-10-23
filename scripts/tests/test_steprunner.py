@@ -1,11 +1,14 @@
 """tests for scripts/steprunner — 数据驱动编排：跳过缓存、always、计时、失败传播。"""
 
+import os
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+import steprunner  # noqa: E402
 from steprunner import (  # noqa: E402
     Progress, Runner, Step, StepFailure, names, names_from,
 )
@@ -144,3 +147,31 @@ class TestNamesFrom(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestRunLogged(unittest.TestCase):
+    """run_logged/check_logged：输出必须全量落日志，失败必须带尾部。"""
+
+    def test_captures_output_to_log(self):
+        with tempfile.TemporaryDirectory() as td:
+            log_path = os.path.join(td, "logs", "x.log")  # 目录不存在也要能建
+            rc, tail = steprunner.run_logged("echo hello; echo world", log_path)
+            self.assertEqual(rc, 0)
+            with open(log_path, encoding="utf-8") as f:  # 日志必须是合法文本
+                self.assertEqual(f.read(), "hello\nworld\n")
+            self.assertEqual(tail, ["hello", "world"])
+
+    def test_quiet_command_writes_empty_log(self):
+        with tempfile.TemporaryDirectory() as td:
+            log_path = os.path.join(td, "x.log")
+            rc, tail = steprunner.run_logged("true", log_path)
+            self.assertEqual((rc, tail), (0, []))
+            self.assertEqual(open(log_path).read(), "")
+
+    def test_check_logged_raises_with_tail(self):
+        with tempfile.TemporaryDirectory() as td:
+            log_path = os.path.join(td, "x.log")
+            with self.assertRaises(steprunner.StepFailure) as cm:
+                steprunner.check_logged("s", "echo boom; exit 3", log_path)
+            self.assertEqual(cm.exception.returncode, 3)
+            self.assertIn("boom", cm.exception.tail[-1])

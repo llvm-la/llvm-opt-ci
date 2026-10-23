@@ -67,9 +67,12 @@ def names_from(steps: list[Step], start: str) -> list[str]:
 
 def run_logged(cmd: str, log_path: str, verbose: bool = False, **kwargs):
     """执行命令，stdout/stderr 全量写入 log_path。返回 (returncode, 最后30行)。"""
-    os.makedirs(os.path.dirname(log_path), exist_ok=True)
+    log_dir = os.path.dirname(log_path)
+    if log_dir:
+        os.makedirs(log_dir, exist_ok=True)
     tail: deque[bytes] = deque(maxlen=30)
-    with open(log_path, "w") as log:
+    # Popen 管道是二进制的，日志也按二进制写，避免逐行 decode 的开销与编码坑
+    with open(log_path, "wb") as log:
         proc = subprocess.Popen(
             cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, **kwargs
         )
