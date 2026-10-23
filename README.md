@@ -2,6 +2,8 @@
 
 LLVM 优化对比测试工具。自动对比 LLVM 补丁（PR 或本地分支）优化前后的汇编差异：在 merge-base 和补丁两个 commit 分别编译 LLVM → 用各自版本的编译器跑测试套件生成汇编 → diff → 将结果发布。
 
+> **AI Agent 入口**：本仓库可作为 agent skill 使用，见 [`SKILL.md`](SKILL.md)（命令契约、结果解读、缓存陷阱）。
+
 ---
 
 ## 目录
@@ -192,6 +194,7 @@ python3 -m unittest discover -s scripts/tests -v
 ```
 ./
 ├── opt-pr-cov                    # 本地工具 (CLI 入口: run / status / report)
+├── SKILL.md                      # AI agent 技能文档（命令契约与结果解读）
 ├── GLOSSARY.md                   # 领域术语表
 ├── .github/
 │   ├── workflows/
