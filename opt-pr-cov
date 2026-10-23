@@ -326,17 +326,10 @@ def create_results(ctx: "RunContext") -> str:
     )
     json_path, md_path = report_mod.write(str(RESULTS_DIR), rd)
 
-    s = rd["summary"]
-    print(f"\nStatus : {status}")
-    print(f"Report : {json_path}")
-    print(f"         {md_path}")
-    if status == "diff":
-        print(f"Diff   : {s['files_changed']} files, "
-              f"+{s['added']:,} / -{s['removed']:,} lines (net {s['net']:+,})")
-        print("Inspect: results/base/<path> vs results/opt/<path>")
+    note = status
     if published:
-        print(f"Branch : {published}")
-    return status
+        note += f" — branch: {published}"
+    return note
 
 
 # ── Run context + step registry ────────────────────────────────────────────
@@ -386,26 +379,52 @@ def _step_merge_base(ctx: RunContext) -> str:
 
 
 def _step_checkout_base(ctx: RunContext) -> str:
-    # Always enforce the tree position: a previous run's failure restored the
-    # worktree via GitRestore, so a cached "done" marker does not guarantee the
-    # sources actually sit at the merge base.
-    r = run(f"cd '{LLVM_SRC}' && git rev-parse HEAD", capture_output=True, text=True)
-    prev_head = r.stdout.strip()
-    check(f"cd '{LLVM_SRC}' && git checkout {ctx.merge_base}")
-    if prev_head != ctx.merge_base and (step_done("build-llvm-base") or step_done("build-ts-base")):
-        print("\n[..] tree moved since cached base build — invalidating base build cache")
-        ctx.invalidate(["build-llvm-base", "build-ts-base"])
+    # checkout 强制把树摆到 merge_base，所以判定缓存有效性只看「上次构建
+    # 时的 commit 是否仍是本次要构建的 commit」（树在 checkout 前的位置
+    # 与构建内容无关 —— GitRestore 每轮结束都会把树还原到用户分支）。
+    check_logged("checkout-base", f"cd '{LLVM_SRC}' && git checkout {ctx.merge_base}",
+                 str(LOG_DIR / "checkout-base.log"), verbose=ctx.verbose)
+    if step_done("build-llvm-base") or step_done("build-ts-base"):
+        built_at = (read_state() or {}).get("built_base_at")
+        if built_at != ctx.merge_base:
+            ctx.invalidate(["build-llvm-base", "build-ts-base"])
+            return "source commit changed; base build cache invalidated"
     return ""
 
 
 def _step_checkout_opt(ctx: RunContext) -> str:
-    # Always enforce the tree position (same reasoning as checkout-base).
-    r = run(f"cd '{LLVM_SRC}' && git rev-parse HEAD", capture_output=True, text=True)
-    prev_head = r.stdout.strip()
-    check(f"cd '{LLVM_SRC}' && git checkout {ctx.opt_branch}")
-    if prev_head != ctx.commit_sha and (step_done("build-llvm-opt") or step_done("build-ts-opt")):
-        print("\n[..] tree moved since cached opt build — invalidating opt build cache")
-        ctx.invalidate(["build-llvm-opt", "build-ts-opt"])
+    # 同 checkout-base：只对比「缓存构建时的 commit」。
+    check_logged("checkout-opt", f"cd '{LLVM_SRC}' && git checkout {ctx.opt_branch}",
+                 str(LOG_DIR / "checkout-opt.log"), verbose=ctx.verbose)
+    if step_done("build-llvm-opt") or step_done("build-ts-opt"):
+        built_at = (read_state() or {}).get("built_opt_at")
+        if built_at != ctx.commit_sha:
+            ctx.invalidate(["build-llvm-opt", "build-ts-opt"])
+            return "source commit changed; opt build cache invalidated"
+    return ""
+
+
+def _step_build_llvm_base(ctx: RunContext) -> str:
+    _build_llvm("base", ctx.verbose)
+    runstate.set_meta(str(STATE_DIR), built_base_at=ctx.merge_base)  # 缓存有效性判据：构建时的 commit
+    return ""
+
+
+def _step_build_ts_base(ctx: RunContext) -> str:
+    _build_ts("base", ctx.args.flag, ctx.args.test, ctx.verbose)
+    runstate.set_meta(str(STATE_DIR), built_base_at=ctx.merge_base)
+    return ""
+
+
+def _step_build_llvm_opt(ctx: RunContext) -> str:
+    _build_llvm("opt", ctx.verbose)
+    runstate.set_meta(str(STATE_DIR), built_opt_at=ctx.commit_sha)
+    return ""
+
+
+def _step_build_ts_opt(ctx: RunContext) -> str:
+    _build_ts("opt", ctx.args.flag, ctx.args.test, ctx.verbose)
+    runstate.set_meta(str(STATE_DIR), built_opt_at=ctx.commit_sha)
     return ""
 
 
@@ -413,11 +432,11 @@ STEPS_DEF = [
     Step("fetch-remote", _step_fetch),
     Step("find-merge-base", _step_merge_base),
     Step("checkout-base", _step_checkout_base, always=True),
-    Step("build-llvm-base", lambda ctx: _build_llvm("base", ctx.verbose)),
-    Step("build-ts-base", lambda ctx: _build_ts("base", ctx.args.flag, ctx.args.test, ctx.verbose)),
+    Step("build-llvm-base", _step_build_llvm_base),
+    Step("build-ts-base", _step_build_ts_base),
     Step("checkout-opt", _step_checkout_opt, always=True),
-    Step("build-llvm-opt", lambda ctx: _build_llvm("opt", ctx.verbose)),
-    Step("build-ts-opt", lambda ctx: _build_ts("opt", ctx.args.flag, ctx.args.test, ctx.verbose)),
+    Step("build-llvm-opt", _step_build_llvm_opt),
+    Step("build-ts-opt", _step_build_ts_opt),
     Step("create-results", lambda ctx: create_results(ctx)),
 ]
 STEPS = names(STEPS_DEF)
@@ -543,6 +562,8 @@ def cmd_run(argv: list[str]) -> int:
             return 1
 
     exit_code = 0
+    ident = f"pr={pr_id}" if use_pr else f"branch={local_branch}"
+    print(f"run: {ident}  flag=\"{args.flag}\"  test={args.test}")
     try:
         Runner(
             STEPS_DEF,
@@ -552,19 +573,31 @@ def cmd_run(argv: list[str]) -> int:
         ).run(ctx)
 
         if ctx.status == "no_diff" and args.fail_on_no_diff:
-            print("\n--fail-on-no-diff: no differences found, exiting 1", file=sys.stderr)
+            print("--fail-on-no-diff: no differences found, exiting 1", file=sys.stderr)
             exit_code = 1
 
-        print(f"\nAll steps complete.{' Results: ' + str(RESULTS_DIR) if ctx.status != 'no_diff' else ' (no differences)'}")
+        # 收尾摘要行：从规范 report.json 读（单一真相源），无论 create-results
+        # 是刚执行还是缓存命中，都能看到结果指向。
+        rj = RESULTS_DIR / "report.json"
+        if step_done("create-results") and rj.exists():
+            try:
+                d = json.loads(rj.read_text())
+                s = d.get("summary", {})
+                tail = (f"{s.get('files_changed', 0)} files, "
+                        f"+{s.get('added', 0):,}/-{s.get('removed', 0):,} "
+                        f"(net {s.get('net', 0):+,})") if d.get("status") == "diff" \
+                    else "no differences"
+                print(f"report: {rj} — {tail}")
+            except (json.JSONDecodeError, OSError):
+                print(f"report: {rj} (unreadable — re-run with --from create-results)")
 
     except StepFailure as e:
         exit_code = 1
-        print(f"\nFAILED step '{e.step}' (exit {e.returncode}): {e.cmd}", file=sys.stderr)
-        print(f"Log: {e.log_path}", file=sys.stderr)
+        print(f"FAILED: {e.step} (exit {e.returncode}) — log: {e.log_path}", file=sys.stderr)
         if e.tail:
-            print("--- last lines ---", file=sys.stderr)
+            print("  last lines:", file=sys.stderr)
             for line in e.tail:
-                print(line, file=sys.stderr)
+                print(f"  {line}", file=sys.stderr)
     except subprocess.CalledProcessError as e:
         exit_code = 1
         print(f"\nBuild failed at step '{e.cmd}' (exit {e.returncode})", file=sys.stderr)

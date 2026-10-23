@@ -159,7 +159,7 @@ build/logs/<step>.log  # 每个 step 的完整输出（fetch / build-*）
 
 - **退出码**：`0` = run 完成（有差异 / 无差异都是 0，由 `report.json` 的 `status` 字段区分）；`1` = 失败（stdout 会给出失败步骤、错误尾部与日志路径）
 - **零 git 写操作**：默认不建分支、不 commit；工具仓库无需保持干净（`llvm-project` 源码树除外，步骤需要 checkout）
-- **断点续跑**：`build/.state/current` 记录已完成步骤，重跑同一命令自动跳过缓存步骤；源码树位置漂移会自动作废对应构建缓存
+- **断点续跑**：`build/.state/current` 记录已完成步骤，重跑同一命令自动跳过缓存步骤；构建步骤的有效性按「构建时所用的源码 commit」判定，commit 变化才自动作废对应缓存（全缓存续跑秒级完成）
 
 ### 工作流程
 

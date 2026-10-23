@@ -175,3 +175,17 @@ class TestRunLogged(unittest.TestCase):
                 steprunner.check_logged("s", "echo boom; exit 3", log_path)
             self.assertEqual(cm.exception.returncode, 3)
             self.assertIn("boom", cm.exception.tail[-1])
+
+
+class TestInterrupt(unittest.TestCase):
+    def test_keyboard_interrupt_exits_130_with_hint(self):
+        def slow(ctx):
+            raise KeyboardInterrupt
+        runner = Runner(
+            [Step("a", lambda ctx: None), Step("slow", slow)],
+            is_done=lambda n: False, mark_done=lambda n: None,
+            progress=Progress(["a", "slow"]),
+        )
+        with self.assertRaises(SystemExit) as cm:
+            runner.run(Ctx())
+        self.assertEqual(cm.exception.code, 130)

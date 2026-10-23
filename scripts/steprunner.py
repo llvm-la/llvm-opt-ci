@@ -95,24 +95,35 @@ def check_logged(step: str, cmd: str, log_path: str, verbose: bool = False, **kw
         raise StepFailure(step, cmd, rc, log_path, tail)
 
 
-# ── 进度板 ──────────────────────────────────────────────────────────────────
+# ── 进度输出：每步一行，命运确定才打印 ────────────────────────────────────
 
 
 class Progress:
-    def __init__(self, names_list: list[str]):
-        self.names = names_list
+    """极简进度输出：每个步骤只占一行，绝不重画整版。
 
-    def draw(self, done: set[str], current: str | None = None):
-        lines = []
-        for i, name in enumerate(self.names, 1):
-            if name in done:
-                marker = "[OK]"
-            elif name == current:
-                marker = "[-->]"
-            else:
-                marker = "[  ]"
-            lines.append(f"{marker} Step {i}/{len(self.names)}: {name}")
-        print("\r" + "\n".join(lines))
+      fetch-remote      cached
+      checkout-base     1s — tree moved; base build cache invalidated
+      build-llvm-base   2m 9s
+
+    设计动机：本工具的大多数调用是缓存命中的续跑，整版面板会被重复
+    画十遍；一行一事件对终端、日志、CI 同样友好。
+    """
+
+    def __init__(self, names_list: list[str]):
+        self._pad = max((len(n) for n in names_list), default=0)
+
+    def _line(self, name: str, status: str) -> None:
+        print(f"  {name:<{self._pad}}  {status}")
+
+    def cached(self, name: str) -> None:
+        self._line(name, "cached")
+
+    def done(self, name: str, secs: int, note: str = "") -> None:
+        status = fmt_seconds(secs) + (f" — {note}" if note else "")
+        self._line(name, status)
+
+    def interrupted(self, name: str) -> None:
+        self._line(name, "interrupted — progress saved; re-run the same command to resume")
 
 
 # ── Runner ──────────────────────────────────────────────────────────────────
@@ -134,28 +145,25 @@ class Runner:
         self.mark_done = mark_done
         self.progress = progress or Progress(names(steps))
 
-    def _live_done(self) -> set[str]:
-        return {s.name for s in self.steps if self.is_done(s.name)}
-
     def run(self, ctx: Any) -> None:
         """执行整个 pipeline。失败异常向上传播，已完成的步骤保持已标记。
 
         跳过判断每步实时查询 is_done（而非启动时快照）：前置步骤（如
         checkout）可能在运行中途作废后续步骤的缓存，必须立即生效。
+        每步命运确定（跳过/完成/中断）时打一行，不重画面板。
         """
-        self.progress.draw(self._live_done())
-        total = len(self.steps)
-        for i, s in enumerate(self.steps, 1):
+        for s in self.steps:
             if not s.always and self.is_done(s.name):
+                self.progress.cached(s.name)
                 continue
-            self.progress.draw(self._live_done(), s.name)
             t0 = time.time()
-            note = s.fn(ctx) or ""
+            try:
+                note = s.fn(ctx) or ""
+            except KeyboardInterrupt:
+                self.progress.interrupted(s.name)
+                raise SystemExit(130) from None
             secs = int(time.time() - t0)
             ctx.timings[s.name] = secs
             if not s.always:
                 self.mark_done(s.name)
-            line = f"\n[OK] Step {i}/{total}: {s.name} ({fmt_seconds(secs)})"
-            if note:
-                line += f" — {note}"
-            print(line)
+            self.progress.done(s.name, secs, note)
