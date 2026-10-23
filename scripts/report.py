@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 import sys
 from typing import TYPE_CHECKING
 
@@ -128,6 +129,22 @@ def render_markdown(report: dict) -> str:
         lines.append(f"| {f['path']} | +{_fmt(f['added'])} | -{_fmt(f['removed'])} |")
     lines.append("")
     return "\n".join(lines)
+
+
+def write_diff_files(results_dir: str, entries: list[tuple[str, str, str]]) -> None:
+    """写出规范 results 布局：results/{base,opt}/<rel>（清空后重写）。
+
+    entries: [(带 suite 前缀的相对路径, base 绝对路径, opt 绝对路径)]，
+    与 asmcompare.compare_suites 的返回一致。rel 同时是 files[].path 的约定。
+    """
+    if os.path.exists(results_dir):
+        shutil.rmtree(results_dir)
+    os.makedirs(results_dir)
+    for rel, base_abs, opt_abs in entries:
+        for src, side in ((base_abs, "base"), (opt_abs, "opt")):
+            dst = os.path.join(results_dir, side, rel)
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            shutil.copy2(src, dst)
 
 
 def write(results_dir: str, report: dict) -> tuple[str, str]:

@@ -274,27 +274,9 @@ def create_results(ctx: "RunContext") -> str:
     # 重读 state：前面步骤写入的 commit_sha / merge_base 需要在这里用
     state = read_state() or {}
     args = ctx.args
-    if RESULTS_DIR.exists():
-        shutil.rmtree(RESULTS_DIR)
-    RESULTS_DIR.mkdir(parents=True)
 
     suites = [s.strip() for s in args.test.split(",") if s.strip()]
-    # entries 保留每侧绝对路径（拷贝用）；merged 为报告用的带 suite 前缀路径。
-    entries: list[tuple[str, str, str]] = []
-    merged: list[asmcompare.FileDiff] = []
-    for suite in suites:
-        base_suite = BUILD_DIR / "asm" / "base" / suite
-        opt_suite = BUILD_DIR / "asm" / "opt" / suite
-        if base_suite.is_dir() and opt_suite.is_dir():
-            c = asmcompare.compare(str(base_suite), str(opt_suite))
-            for fd in c:
-                base_abs, opt_abs = c.paths(fd)
-                entries.append((f"{suite}/{fd.path}", base_abs, opt_abs))
-                merged.append(asmcompare.FileDiff(f"{suite}/{fd.path}", fd.added, fd.removed))
-        else:
-            print(f"[warn] skipping suite '{suite}': missing asm dirs "
-                  f"({base_suite if not base_suite.is_dir() else opt_suite})")
-    comparison = asmcompare.Comparison(merged)
+    entries, comparison = asmcompare.compare_suites(str(BUILD_DIR / "asm"), suites)
     status = "diff" if len(comparison) else "no_diff"
 
     # --publish-branch（可选，先于 results/ 规范布局写入；publish 会重建 results/）
@@ -311,12 +293,9 @@ def create_results(ctx: "RunContext") -> str:
                 args, state, entries, label, state.get("commit_sha", "")
             )
 
-    # 规范布局：results/{base,opt}/<suite>/<suite 内路径>
-    for rel, base_abs, opt_abs in entries:
-        for src, side in ((base_abs, "base"), (opt_abs, "opt")):
-            dst = RESULTS_DIR / side / rel
-            dst.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(src, dst)
+    # 规范布局：results/{base,opt}/<suite>/<suite 内路径>（publish 若已重建
+    # results/，这里会再清空重写为规范布局）
+    report_mod.write_diff_files(str(RESULTS_DIR), entries)
 
     commit_sha = state.get("commit_sha", "")
     opt_info = get_commit_info() or get_commit_info(commit_sha)

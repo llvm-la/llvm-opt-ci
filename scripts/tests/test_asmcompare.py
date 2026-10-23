@@ -7,6 +7,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+import asmcompare  # noqa: E402
 from asmcompare import compare  # noqa: E402
 
 
@@ -102,3 +103,26 @@ class TestCompare(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestCompareSuites(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        write(self.root / "base" / "test-suite" / "a.s", "x\ny\n")
+        write(self.root / "opt" / "test-suite" / "a.s", "x\nY\n")
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_entries_prefixed_and_merged(self):
+        entries, merged = asmcompare.compare_suites(str(self.root), ["test-suite"])
+        self.assertEqual([e[0] for e in entries], ["test-suite/a.s"])
+        self.assertEqual(entries[0][1], str(self.root / "base" / "test-suite" / "a.s"))
+        self.assertEqual(merged.summary()["files_changed"], 1)
+        self.assertEqual(merged.files[0].path, "test-suite/a.s")
+
+    def test_missing_suite_skipped_with_warning(self):
+        entries, merged = asmcompare.compare_suites(str(self.root), ["test-suite", "polybench"])
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(merged.summary()["files_changed"], 1)

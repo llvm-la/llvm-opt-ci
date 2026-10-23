@@ -80,8 +80,8 @@ test=test-suite
 | `scripts/parse_request.py` | 解析 issue body，提取 PR 编号、编译标志、测试套件 |
 | `scripts/build-llvm.sh` | 编译 LLVM（cmake + ninja） |
 | `scripts/Makefile` | 编译测试套件并拷贝 .s 汇编文件 |
-| `scripts/gen_report.py` | 对比 base/opt 汇编，生成 diff 统计报告 |
-| `scripts/publish.py` | 创建结果分支并推送到 origin，生成 PR |
+| `scripts/baseref.py` | 统一 base-commit 解析（merge-base，本地与 CI 共用） |
+| `scripts/publish.py` | 对比产物 → 规范 results/ + 展示分支 + PR（与本地共用 asmcompare/report） |
 
 ### 结果查看
 
@@ -203,13 +203,14 @@ python3 -m unittest discover -s scripts/tests -v
 │   ├── asmcompare.py             # 深模块：两个 asm 目录的结构化 diff
 │   ├── report.py                 # report.json 组装 + markdown 渲染（纯函数）
 │   ├── runstate.py               # run 状态持久化
+│   ├── steprunner.py             # 数据驱动步骤编排器
+│   ├── baseref.py                # base-commit 解析（merge-base，本地/CI 共用）
 │   ├── build-llvm.sh             # 编译 LLVM
 │   ├── build-test-suite.sh       # 编译测试套件
 │   ├── fetch-upstream.sh         # 拉取上游代码
-│   ├── gen_report.py             # 生成 diff 报告 (CI 用)
 │   ├── Makefile                  # make 驱动编译+拷贝 asm
 │   ├── parse_request.py          # 解析 issue 参数 (CI 用)
-│   ├── publish.py                # 发布结果 (CI 用)
+│   ├── publish.py                # CI 展示 adapter：产物 → 分支 + PR
 │   └── tests/                    # 单元测试 (unittest)
 ├── repos/                        # 源码仓库 (需自行克隆)
 │   ├── llvm-project/             # LLVM 源码

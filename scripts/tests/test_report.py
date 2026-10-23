@@ -135,3 +135,25 @@ class TestWrite(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestWriteDiffFiles(unittest.TestCase):
+    def test_writes_canonical_layout_and_wipes(self):
+        with tempfile.TemporaryDirectory() as td:
+            src = Path(td) / "src"
+            for p in ("base/a.s", "opt/a.s", "base/sub/b.s", "opt/sub/b.s"):
+                f = src / p
+                f.parent.mkdir(parents=True, exist_ok=True)
+                f.write_text("asm")
+            results = Path(td) / "results"
+            stale = results / "stale.txt"
+            stale.parent.mkdir(parents=True, exist_ok=True)
+            stale.write_text("old")
+            entries = [
+                ("test-suite/a.s", str(src / "base/a.s"), str(src / "opt/a.s")),
+                ("test-suite/sub/b.s", str(src / "base/sub/b.s"), str(src / "opt/sub/b.s")),
+            ]
+            report_mod.write_diff_files(str(results), entries)
+            self.assertFalse(stale.exists())  # 旧内容被清空
+            self.assertTrue((results / "base" / "test-suite" / "a.s").exists())
+            self.assertTrue((results / "opt" / "test-suite" / "sub" / "b.s").exists())

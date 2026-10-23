@@ -151,6 +151,32 @@ def compare(base_dir: str, opt_dir: str) -> Comparison:
     return Comparison(files, base_dir=os.path.abspath(base_dir), opt_dir=os.path.abspath(opt_dir))
 
 
+def compare_suites(asm_root: str, suites: list[str]) -> tuple[list[tuple[str, str, str]], Comparison]:
+    """对比规范中间布局 <asm_root>/{base,opt}/<suite>/（本地与 CI 共用）。
+
+    返回 (entries, merged)：
+      entries = [(带 suite 前缀的相对路径, base 绝对路径, opt 绝对路径)]
+      merged  = 合并后的 Comparison（路径带 suite 前缀，供报告用）
+    suite 目录缺失时跳过并向 stderr 发警告（不视为错误：套件可能未克隆）。
+    """
+    entries: list[tuple[str, str, str]] = []
+    merged_files: list[FileDiff] = []
+    for suite in suites:
+        base_suite = os.path.join(asm_root, "base", suite)
+        opt_suite = os.path.join(asm_root, "opt", suite)
+        if os.path.isdir(base_suite) and os.path.isdir(opt_suite):
+            c = compare(base_suite, opt_suite)
+            for fd in c:
+                base_abs, opt_abs = c.paths(fd)
+                entries.append((f"{suite}/{fd.path}", base_abs, opt_abs))
+                merged_files.append(FileDiff(f"{suite}/{fd.path}", fd.added, fd.removed))
+        else:
+            missing = base_suite if not os.path.isdir(base_suite) else opt_suite
+            print(f"[warn] skipping suite '{suite}': missing asm dirs ({missing})",
+                  file=sys.stderr)
+    return entries, Comparison(merged_files)
+
+
 if __name__ == "__main__":
     if len(sys.argv) != 3:
         print(f"usage: {sys.argv[0]} BASE_DIR OPT_DIR", file=sys.stderr)
