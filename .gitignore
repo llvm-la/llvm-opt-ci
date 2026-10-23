@@ -2,3 +2,5 @@ repos/*
 !repos/important.txt
 
 build/
+
+__pycache__/
