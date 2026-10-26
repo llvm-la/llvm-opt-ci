@@ -73,7 +73,9 @@ def commit_side(
         msg_args += ["-m", m]
     staged = {rel: Path(src).read_bytes() for rel, src in (extra_files or {}).items()}
     _write_side_tree(results_dir, entries, side, staged)
-    subprocess.run(["git", "add", "-A", "results"], cwd=workspace, check=True)
+    # -f：results/ 在工具仓库的 .gitignore 里（run 产物不入主分支），
+    # 但 Result Branch 恰恰只要这个目录
+    subprocess.run(["git", "add", "-f", "-A", "results"], cwd=workspace, check=True)
     subprocess.run(
         ["git", "commit", "-q", "--allow-empty", *msg_args],
         cwd=workspace, check=True, stdout=subprocess.DEVNULL,
