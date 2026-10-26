@@ -219,7 +219,7 @@ def publish_branch(
             f"Subject: {info.get('subject', 'unknown')}",
         ]
     )
-    title = "{{side}}: " + f"{label} ({args.flag}) {short}"
+    title = "{side}: " + f"{label} ({args.flag}) {short}"
 
     r = run(f"cd '{ROOT}' && git branch --show-current", capture_output=True, text=True)
     orig_branch = r.stdout.strip()
