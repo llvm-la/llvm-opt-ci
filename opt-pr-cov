@@ -491,6 +491,12 @@ def cmd_run(argv: list[str]) -> int:
         runstate.clear_steps(str(STATE_DIR), todo)
         print(f"[--from {args.from_step}] invalidating: {', '.join(todo)}")
 
+    if args.publish_branch and step_done("create-results"):
+        # --publish-branch 属于 create-results 的行为，但缓存看不到参数：
+        # 缓存命中的结果不含分支发布，作废重做（对比+写出只有几秒）
+        runstate.clear_steps(str(STATE_DIR), ["create-results"])
+        print("[--publish-branch] invalidating cached create-results (republish)")
+
     LOG_DIR.mkdir(parents=True, exist_ok=True)
 
     git = GitRestore()
